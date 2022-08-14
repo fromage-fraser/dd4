@@ -46,6 +46,7 @@ int     mana_gain       args( ( CHAR_DATA *ch ) );
 int     move_gain       args( ( CHAR_DATA *ch ) );
 int     rage_gain       args( ( CHAR_DATA *ch ) );
 int     meter_gain      args( ( CHAR_DATA *ch ) );
+int     engrave_gain    args( ( CHAR_DATA *ch ) );
 void    mobile_update   args( ( void ) );
 void    weather_update  args( ( void ) );
 void    char_update     args( ( void ) );
@@ -938,6 +939,7 @@ int move_gain( CHAR_DATA *ch )
         return UMIN(gain, ch->max_move - ch->move);
 }
 
+/* empower meter loss */
 int meter_gain( CHAR_DATA *ch )
 {
         int gain = -20;
@@ -952,6 +954,22 @@ int meter_gain( CHAR_DATA *ch )
         else
                 return gain;
 }
+/* engrave loss */
+int engrave_gain( CHAR_DATA *ch )
+{
+        int gain = -20;
+        if (IS_NPC(ch))
+                return 0;
+        
+        if (ch->pcdata->dam_meter < 20)
+        {       
+                gain = ch->pcdata->dam_meter;
+                return -gain;
+        }
+        else
+                return gain;
+}
+
 /*
  *  Update blood and rage
  */
@@ -1532,8 +1550,11 @@ void char_update( void )
                                 ch->move += move_gain(ch);
 
                         ch->rage += rage_gain(ch);
+
                         if (!IS_NPC(ch))
                                 ch->pcdata->meter += meter_gain(ch);
+                        if (!IS_NPC(ch))
+                                ch->pcdata->dam_meter += engrave_gain(ch);                
                 }
 
                 if (ch->position == POS_STUNNED)

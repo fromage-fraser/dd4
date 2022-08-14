@@ -286,6 +286,7 @@ const struct cmd_type cmd_table [] =
         { "donate",             do_donate,         POS_SLEEPING,    0,  LOG_NORMAL },
         { "dowse",              do_dowse,          POS_RESTING,     0,  LOG_NORMAL },
         { "empower",            do_empower,        POS_STANDING,    0,  LOG_NORMAL },
+        { "engrave",            do_engrave,        POS_STANDING,    0,  LOG_NORMAL },
         { "follow",             do_follow,         POS_RESTING,     0,  LOG_NORMAL },
         { "forage",             do_forage,         POS_STANDING,    0,  LOG_NORMAL },
         { "forge",              do_forge,          POS_STANDING,    0,  LOG_NORMAL },

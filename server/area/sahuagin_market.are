@@ -10,8 +10,8 @@ Pheskak cartographer~
 Pheskak~
 Pheskak stands here, eager to sell you maps.
 ~
-Pheskak is a covetous, churlish sahuagin who makes it his business to collect 
-maps of the surrounding areas to sell to locals and would-be adventurers.  
+Pheskak is a covetous, churlish sahuagin who makes it his business to collect
+maps of the surrounding areas to sell to locals and would-be adventurers.
 Have a look and see if he has anything that tickles your fancy.
 ~
 2|64|512|4096|32768|8388608|16777216 32|512|67108864 -450 S
@@ -21,10 +21,10 @@ Have a look and see if he has anything that tickles your fancy.
 >greet_prog 35~
 if rand(25)
 	say Hmm.  You want map?
-else 
+else
 	if rand (25)
 		say Maps.  I buy, I sell.  You want?
-	else 
+	else
 		if rand(25)
 			emote snorts and gestures at his selection of maps
 			say Do any interest you, $n?
@@ -40,7 +40,7 @@ teller broodcoin~
 a Broodcoin teller~
 A Broodcoin teller waits for you to make a request.
 ~
-The Broodcoin teller waits impatiently for you to make a financial request of 
+The Broodcoin teller waits impatiently for you to make a financial request of
 some sort.  She doesn't seem the friendly or polite type, even for a sahuagin.
 ~
 2|64|512|4096|32768|524288|8388608|16777216 32|512|67108864 -360 S
@@ -51,10 +51,10 @@ some sort.  She doesn't seem the friendly or polite type, even for a sahuagin.
 if rand(25)
 	emote sighs
 	say Yes?
-else 
+else
 	if rand (25)
 		say This is a bank.  Do you have banking to do?
-	else 
+	else
 		if rand(25)
 			emote huffd
 			say I'm quite busy.  Do you have an appointment?
@@ -70,7 +70,7 @@ broodcoin clerk~
 a Broodcoin clerk~
 A Broodcoin clerk is here, hard at work.
 ~
-One sahuagin Broodcoin clerk looks very much like another: hardworking, 
+One sahuagin Broodcoin clerk looks very much like another: hardworking,
 irritable, and sour-faced.
 ~
 2|64|67108864 32|512|67108864 -410 S
@@ -168,7 +168,7 @@ Fautap~
 Fautap the tinker regards you with sour indifference.
 ~
 The sahuagin Fautap is Ota'ar Dar's tinker.  While unfriendly, he is moderately
-competent at repairwork, and should be able to attend to your damaged and degrading 
+competent at repairwork, and should be able to attend to your damaged and degrading
 items for a (hefty!) fee.
 ~
 2|64|512|4096|32768|262144|8388608|16777216 32|512|67108864 -470 S
@@ -178,10 +178,10 @@ items for a (hefty!) fee.
 >greet_prog 35~
 if rand(25)
 	say What?
-else 
+else
 	if rand (25)
 		say Busted some equipment, hmm?  Typical.
-	else 
+	else
 		if rand(25)
 			emote sighs at you
 			say Are you just going to stand there like an idiot?  What do you want?
@@ -197,8 +197,8 @@ Shauak shopkeeper~
 Shauak~
 Shauak the leather goods supplier stands here, arms crossed.
 ~
-Shauak is a tall, thin sahuagin, with a weary look on his worn face.  He has 
-little patience for fools or lollygaggers, so if you don't want to wear out 
+Shauak is a tall, thin sahuagin, with a weary look on his worn face.  He has
+little patience for fools or lollygaggers, so if you don't want to wear out
 your welcome, you might want to purchase something from him.
 ~
 2|64|512|4096|32768|8388608|16777216 32|512|67108864 -370 S
@@ -208,10 +208,10 @@ your welcome, you might want to purchase something from him.
 >greet_prog 35~
 if rand(25)
 	say Buy or leave, surfacer.
-else 
+else
 	if rand (25)
 		say Yes, what is it?
-	else 
+	else
 		if rand(25)
 			emote sighs
 			say Stop wasting my time.  Buy something or leave.
@@ -228,9 +228,9 @@ Cluh'g Mani guildmaster warrior~
 Cluh'g Mani, Warrior Guildmaster of Ota'ar Dar~
 Cluh'g Mani, the Warrior Guildmaster of Ota'ar Dar stands here, glaring at you.
 ~
-Cluh'g Mani is a baron sahuagin, meaning he has four functional arms with their 
-consequent combat advantages. He cuts an imposing and experienced figure, and 
-you have no doubt he is a savage and capable fighter, even if a veteran. 
+Cluh'g Mani is a baron sahuagin, meaning he has four functional arms with their
+consequent combat advantages. He cuts an imposing and experienced figure, and
+you have no doubt he is a savage and capable fighter, even if a veteran.
 
 He regards you coldly, waiting for you to make the first move.
 ~
@@ -265,9 +265,9 @@ Kianar~
 Kianar~
 Kianar the sahuagin mount specialist is here, ready to serve.
 ~
-Kianar is a graceful sahuagin female, who enjoys breeding and selling the 
-magically-enhanced sharks and rays that sahuagin use as mounts. She is 
-surprisingly good-natured for a sahuagin, seeming merely 'rude' by the 
+Kianar is a graceful sahuagin female, who enjoys breeding and selling the
+magically-enhanced sharks and rays that sahuagin use as mounts. She is
+surprisingly good-natured for a sahuagin, seeming merely 'rude' by the
 standards of most other civilised races.
 ~
 2|64|512|4096|32768|8388608|16777216 32|512|67108864 -330 S
@@ -277,10 +277,10 @@ standards of most other civilised races.
 >greet_prog 35~
 	if rand(25)
 		say Greetings.  My sharks and rays are the finest.  It is known.
-	else 
+	else
 	if rand (25)
 		say You need a good mount.  I can help.
-	else 
+	else
 	if rand(25)
 		emote almost smiles at you.  It looks like it hurt her
 		say Do any of these mounts tempt you, $n?
@@ -299,10 +299,10 @@ skate ray~
 a skate~
 A large skate floats here.
 ~
-The skate is a kind of flattened, cartilaginous fish, similar in appearance to 
-a ray. 
+The skate is a kind of flattened, cartilaginous fish, similar in appearance to
+a ray.
 
-This one has been magically enchanted to serve as a mount for sahuagin warriors, 
+This one has been magically enchanted to serve as a mount for sahuagin warriors,
 underwater, on land, and in the air.
 ~
 256|131072 32|512|524288|67108864 0 S
@@ -314,9 +314,9 @@ blue shark~
 a blue shark~
 A blue shark glides about hungrily.
 ~
-The blue shark, is a species of requiem shark that inhabits deep waters in the 
-world's temperate and tropical oceans. This one has been magically enchanted to 
-serve as a mount for sahuagin warriors, and can operate on land, under the sea, 
+The blue shark, is a species of requiem shark that inhabits deep waters in the
+world's temperate and tropical oceans. This one has been magically enchanted to
+serve as a mount for sahuagin warriors, and can operate on land, under the sea,
 and in the air.
 ~
 256|131072 32|512|524288|67108864 0 S
@@ -328,11 +328,11 @@ stingray~
 a stingray~
 A stingray glares at you, bristling with menace.
 ~
-The stingray is a kind of ray that are common in coastal tropical and 
-subtropical marine waters throughout the world. They have up to three sharp 
-spinal blades in their tails that may be poisoned and are used in self-defense. 
+The stingray is a kind of ray that are common in coastal tropical and
+subtropical marine waters throughout the world. They have up to three sharp
+spinal blades in their tails that may be poisoned and are used in self-defense.
 
-This one has been magically enchanted to serve as a mount for sahuagin warriors, 
+This one has been magically enchanted to serve as a mount for sahuagin warriors,
 and can operate on land, under the sea, and in the air.
 ~
 256|131072 32|512|524288|67108864 0 S
@@ -344,11 +344,11 @@ hammerhead shark~
 a hammerhead shark~
 A hammerhead shark glides about here, moving non-stop.
 ~
-Hammerhead sharks are a group of sharks that form the family Sphyrnidae, and are 
-so-named for the unusual and distinctive structure of their heads, which are 
-flattened and laterally extended into a "hammer" shape called a cephalofoil. 
+Hammerhead sharks are a group of sharks that form the family Sphyrnidae, and are
+so-named for the unusual and distinctive structure of their heads, which are
+flattened and laterally extended into a "hammer" shape called a cephalofoil.
 
-This one has been magically enchanted to serve as a mount for sahuagin warriors, 
+This one has been magically enchanted to serve as a mount for sahuagin warriors,
 and can operate on land, under the sea, and in the air.
 ~
 256|131072 32|128|512|524288|67108864 0 S
@@ -360,11 +360,11 @@ giant manta ray~
 a giant manta ray~
 The mob stands here, completely clueless.
 ~
-Over 9 metres long and 7 metres across, this giant manta ray is a fearsome 
-sight. Though generally docile, giant mantas' sheer size makes them fearsome in 
-combat, especially when ridden and controlled by an experienced warrior. 
+Over 9 metres long and 7 metres across, this giant manta ray is a fearsome
+sight. Though generally docile, giant mantas' sheer size makes them fearsome in
+combat, especially when ridden and controlled by an experienced warrior.
 
-This manta has been magically enchanted to serve as a mount for sahuagin 
+This manta has been magically enchanted to serve as a mount for sahuagin
 warriors, and can operate on land, under the sea, and in the air.
 ~
 256|131072 32|128|512|524288|67108864 0 S
@@ -376,10 +376,10 @@ great white shark~
 a great white shark~
 A great white shark grins at you toothily.
 ~
-This terrifying apex predator grins at you with a huge maw full of teeth. It 
-might be 6 metres from snout to tailfin. Best not to annoy it. 
+This terrifying apex predator grins at you with a huge maw full of teeth. It
+might be 6 metres from snout to tailfin. Best not to annoy it.
 
-The terrifying beast has been magically enchanted to serve as a mount for 
+The terrifying beast has been magically enchanted to serve as a mount for
 sahuagin warriors, and can operate on land, under the sea, and in the air.
 ~
 256|131072 32|128|512|524288|67108864 0 S
@@ -391,10 +391,10 @@ Reaver Maeril questmaster~
 Reaver Maeril~
 Reaver Maeril stands here, sizing you up.
 ~
-Reaver Maeril is the quest master of the Reaver guildhalls, sending reavers and 
-prospective reavers out on quests across the domain to prove their worth. He is 
-a sahuagin of the four-armed baron type, and looks like he's lived a long and 
-violent life. 
+Reaver Maeril is the quest master of the Reaver guildhalls, sending reavers and
+prospective reavers out on quests across the domain to prove their worth. He is
+a sahuagin of the four-armed baron type, and looks like he's lived a long and
+violent life.
 
 Type 'HELP QUEST' to see how you can interact with him.
 ~
@@ -411,9 +411,9 @@ Therem Drinkmaster~
 Therem the Drinkmaster~
 Therem looks up from the bar at you, expectantly.
 ~
-Therem is an older sahuagin and somewhat smaller in stature than many other 
-male sahuagin you've seen.  He has managed Ota'ar's popular drinking 
-establishment, "Drinker's Den," for a decade now and would be happy to sell 
+Therem is an older sahuagin and somewhat smaller in stature than many other
+male sahuagin you've seen.  He has managed Ota'ar's popular drinking
+establishment, "Drinker's Den," for a decade now and would be happy to sell
 you any of the various foul liquids concocted in this city.
 ~
 2|64|512|4096|32768|8388608|16777216 8|32|512|67108864 -150 S
@@ -423,10 +423,10 @@ you any of the various foul liquids concocted in this city.
 >greet_prog 35~
 if rand(25)
 	say Care to dry your gurgler?
-else 
+else
 	if rand (25)
 		say Can I help you?
-	else 
+	else
 		if rand(25)
 			emote grimaces
 			say Salty Dogs for sahuagin, and Owl's Lifeblood for surface-dwellers.
@@ -442,8 +442,8 @@ Reaver Tiareo~
 Reaver Tiareo~
 Reaver Tiareo sits here placidly, waiting for you to explain yourself.
 ~
-Reaver Tiareo is the receptionist and first point of contact for entrants into 
-the Reaver guildhall. She often sets new initiates taks to test their mettle 
+Reaver Tiareo is the receptionist and first point of contact for entrants into
+the Reaver guildhall. She often sets new initiates taks to test their mettle
 and suitability as Reavers. If you're interested, ask her about a 'quest'.
 ~
 2|64|512|4096|32768|8388608|16777216 32|512|67108864 -670 S
@@ -455,8 +455,8 @@ Holo Orl'as~
 Holo Orl'as~
 Holo Orl'as, the proprietor of Gorge Palace, greets you.
 ~
-Holo Orl'as is a trim and rather elegantly-dressed individual (for a sahuagin).  
-Gorge Palace is his establishment. You can pay for your meals here and take 
+Holo Orl'as is a trim and rather elegantly-dressed individual (for a sahuagin).
+Gorge Palace is his establishment. You can pay for your meals here and take
 them with you, or travel upstairs to the bar/lounge to eat them.
 ~
 2|64|512|4096|32768|8388608|16777216 32|512|67108864 -220 S
@@ -464,17 +464,17 @@ them with you, or travel upstairs to the bar/lounge to eat them.
 0 0
 8 8 1
 >speech_prog skates claspers~
-	say Hmmm.  Pink skate you say?  I did see one some days ago, but it ended up being taken by the lot at the temple... 
+	say Hmmm.  Pink skate you say?  I did see one some days ago, but it ended up being taken by the lot at the temple...
 	mpecho He looks like he's about to say something else, but thinks better of it.
 	say So... anything else I can help you with?  Have a look at our menu, perhaps?
 ~
 >greet_prog 35~
 if rand(25)
 	say Hungry, $n?  You've come to the right place!
-else 
+else
 	if rand (25)
 		say I highly recommend the blubber, $n.  It's very filling.
-	else 
+	else
 		if rand(25)
 			emote looks at you steadily
 			say Please view our menu.  I'm sure you'll find something to your taste.
@@ -490,7 +490,7 @@ surly sahuagin warrior~
 a surly sahuagin warrior~
 A surly sahuagin warrior sits here, nursing a drink.
 ~
-A surly sahuagin sits here, drinking something foul-tasting.  He doesn't look 
+A surly sahuagin sits here, drinking something foul-tasting.  He doesn't look
 like he wants to be disturbed.
 ~
 2|64 32|512|67108864 -800 S
@@ -524,7 +524,7 @@ lecherous sahuagin~
 a lecherous sahuagin~
 A lecherous sahuagin is on the lookout for a mate.
 ~
-This sahuagin female appears deep in her cups, and is busy hitting on anyone 
+This sahuagin female appears deep in her cups, and is busy hitting on anyone
 who can't get away from her fast enough.
 ~
 2|64 32|512|67108864 -500 S
@@ -536,7 +536,7 @@ sahuagin diner~
 a sahuagin diner~
 A sahuagin diner is here, scoffing down something foul.
 ~
-This sahuagin is busy scoffing down some foul-smelling, fishy slop and pays 
+This sahuagin is busy scoffing down some foul-smelling, fishy slop and pays
 little attention to your intrusion.
 ~
 2|64 32|512|67108864 -520 S
@@ -584,8 +584,8 @@ sahuagin diner female~
 a sahuagin diner~
 A female sahuagin is gobbling down a plate of mermaid's purses.
 ~
-A female sahuagin is here, gluttonously consuming a plate of mermaid's purses, 
-the egg capsules of some species of shark (or related animal).  She doesn't 
+A female sahuagin is here, gluttonously consuming a plate of mermaid's purses,
+the egg capsules of some species of shark (or related animal).  She doesn't
 seem at all interested in or bothered by you.
 ~
 2|64 32|512|67108864 -412 S
@@ -626,8 +626,8 @@ Ffeka lootsmith sahuagin~
 Ffeka the Lootsmith~
 Ffeka the Lootsmith is here, happy to divest you of your valuables.
 ~
-Ffeka the Lootsmith is a trader in treasure, gems, and the like and the 
-proprietor of The Kraken's Den.  He is greedy, unscrupulous, pays a pittance, 
+Ffeka the Lootsmith is a trader in treasure, gems, and the like and the
+proprietor of The Kraken's Den.  He is greedy, unscrupulous, pays a pittance,
 and sells at an outrageous markup.  You have been warned.
 ~
 2|64|512|4096|32768|8388608|16777216 32|512|67108864 -710 S
@@ -637,7 +637,7 @@ and sells at an outrageous markup.  You have been warned.
 >greet_prog 35~
 if rand(25)
 	say Ah, a customer.  Please examine my excellent selection.
-else 
+else
 	if rand (25)
 		say Only the finest gems and treasure items here!
 		else
@@ -656,8 +656,8 @@ dryad~
 a dryad~
 A green-skinned dryad hangs her head in sorrow.
 ~
-This wood nymph belongs in an ancient forest, flitting between great trees, 
-her eyes gleaming.  Tragically she has been captured by the sahuagin and 
+This wood nymph belongs in an ancient forest, flitting between great trees,
+her eyes gleaming.  Tragically she has been captured by the sahuagin and
 brought here, to their slave market, to be sold.  You pity her.
 ~
 2|64 512|32768|524288 0 S
@@ -675,8 +675,8 @@ What looks like a giant woodlouse floats before you.
 ~
 The malacost reminds you in appearance somewhat of a slater. That is,
 if you can imagine a slater the size of a large dog, hovering impossibly
-before you, making lazy swimming motions. The outer edges of its segmented 
-body-plates glow an eerie blue-green.  You doubt it has any understanding 
+before you, making lazy swimming motions. The outer edges of its segmented
+body-plates glow an eerie blue-green.  You doubt it has any understanding
 of where it is or how it got here.
 ~
 2|64|128 512|8192|524288|67108864 175 S
@@ -719,7 +719,7 @@ wolf cub~
 the wolf cub~
 A wolf cub tries to hide from everyone.
 ~
-The tiny wolf cub tries to escape your notice by burrowing in the sand.  He's not 
+The tiny wolf cub tries to escape your notice by burrowing in the sand.  He's not
 having much luck. Poor thing.
 ~
 2|4|64 8|32|8388608 0 S
@@ -745,7 +745,7 @@ A Wandering Crewman~
 A crewman wanders aimlessly here.
 ~
 He looks fit and healthy from climbing the riggings in high seas and
-strong winds. However, he may be wishing he'd done a llittle less 
+strong winds. However, he may be wishing he'd done a llittle less
 wandering and a little more looking out for sahuagin raiders right now.
 ~
 2|64 0 -300 S
@@ -757,9 +757,9 @@ Aernth slavemaster~
 Aernth the Slavemaster~
 Aernth the Slavemaster is here, sneering at you.
 ~
-Particularly vile, even for a sahuagin, Aernth on of Ota'ar Dar's slavemasters.  
-He is responsible for purchasing slaves from sahuagin raiders and selling them 
-profitably here, at the slavemarket. He takes a deeply unwholesome pleasure in 
+Particularly vile, even for a sahuagin, Aernth on of Ota'ar Dar's slavemasters.
+He is responsible for purchasing slaves from sahuagin raiders and selling them
+profitably here, at the slavemarket. He takes a deeply unwholesome pleasure in
 his business and it makes your skin crawl to even share a space with him.
 ~
 2|64 32|512|67108864 -1000 S
@@ -778,8 +778,8 @@ Luanar teha barehands~
 Luanar 'Barehands' Teha~
 Luanar 'Barehands' Teha is here, practising unarmed combat.
 ~
-Luanar 'Barehands' Teha owns this brawlarium and trains sahuagin warriors in 
-weaponless combat.  Not overly-tall but very wide and muscular, he is an 
+Luanar 'Barehands' Teha owns this brawlarium and trains sahuagin warriors in
+weaponless combat.  Not overly-tall but very wide and muscular, he is an
 intimidating presence.
 ~
 2|64 8|32|512|4194304|8388608|67108864 -310 S
@@ -816,8 +816,8 @@ Pha'la Imd'st receptionist~
 Pha'la Imd'st~
 The Brawlarium receptionist, Pha'la Imd'st, regards you frostily.
 ~
-Pha'la Imd'st is a female sahuagin of middling years.  She acts as the 
-Barehands Brawlarium's receptionist, and is curious as to what business you 
+Pha'la Imd'st is a female sahuagin of middling years.  She acts as the
+Barehands Brawlarium's receptionist, and is curious as to what business you
 have here.
 ~
 2|64 32|512|67108864 -438 S
@@ -837,8 +837,8 @@ Kaumav baker~
 Kaumav the baker~
 Kaumav the baker is here, toiling over her comestibles.
 ~
-Kaumav is an older female sahuagin and owns 'The Fisher's Crust,' the Ota'ar 
-Dar bakery/eaterie. She seems to work very hard, which seems a pity given how 
+Kaumav is an older female sahuagin and owns 'The Fisher's Crust,' the Ota'ar
+Dar bakery/eaterie. She seems to work very hard, which seems a pity given how
 unappetising her wares typically are.
 ~
 2|64|512|4096|32768|8388608|16777216 32|512|67108864 -200 S
@@ -848,7 +848,7 @@ unappetising her wares typically are.
 >greet_prog 35~
 if rand(25)
 	say Ah, interest you in a ray wing pie perhaps?
-else 
+else
 	if rand (25)
 		say The stonefish souffle is PARTICULARLY good!
 		else
@@ -879,7 +879,7 @@ offering, try to 'bet' or 'wager' some gold coins.
 if rand(25)
 	grunt
 	say You playin'?
-else 
+else
 	if rand (25)
 		say We play 'Seven' down here.  You can play Upper-Lower-Triple up above.
 		else
@@ -899,9 +899,9 @@ Ahomar Weaponsmith~
 Ahomar the Weaponsmith~
 Ahomar the Weaponsmith is here, sellings weapons for sahuagin warriors.
 ~
-Ahomar the Weaponsmith is a tall, grim, well-muscled sahuagin. He sells 
-weapons suitable for sahuagin warriors, making many of them in the forge he 
-shares with Zigrysk, to the east.  He is also happy to buy 
+Ahomar the Weaponsmith is a tall, grim, well-muscled sahuagin. He sells
+weapons suitable for sahuagin warriors, making many of them in the forge he
+shares with Zigrysk, to the east.  He is also happy to buy
 weapons, though he's not known to pay great prices.
 ~
 2|64|512|4096|32768|8388608|16777216 32|512|67108864 -400 S
@@ -911,10 +911,10 @@ weapons, though he's not known to pay great prices.
 >greet_prog 35~
 if rand(25)
 	say I have weapons.  What do you want?
-else 
+else
 	if rand (25)
 		say You look too weak to wield a sahuagin weapon.  Are you in the right place?
-	else 
+	else
 		if rand(25)
 			say Crossbows, tridents, scimtars, nets, and spears.  Have a look.
 		else
@@ -929,10 +929,10 @@ Bilani~
 Bilani~
 Bilani stands behind her wares, waiting to be of service.
 ~
-Bilani is a young, slender, and unusually well-spoken female sahuagin.  
-Quite unusually for one of her people, she is interested in magics, 
-specifically how they may be used to infuse potions with divine (and 
-other) effects. She sells a variety of such potions here, and invites 
+Bilani is a young, slender, and unusually well-spoken female sahuagin.
+Quite unusually for one of her people, she is interested in magics,
+specifically how they may be used to infuse potions with divine (and
+other) effects. She sells a variety of such potions here, and invites
 you to sample and purchase them.
 ~
 2|64|512|4096|32768|8388608|16777216 8|32|128|512|67108864 -190 S
@@ -942,10 +942,10 @@ you to sample and purchase them.
 >greet_prog 35~
 if rand(25)
 	say Greetings.  Are you interested in potions?
-else 
+else
 	if rand (25)
 		say Hello there, surfacer.  Would you like to see my potions?
-	else 
+	else
 		if rand(25)
 			say Elixirs, teas, draughts, oils.  If you can drink it, I'll sell it.
 		else
@@ -960,8 +960,8 @@ Zigrysk~
 Zigrysk~
 Zigrysk is here, selling goods for surface-dwellers.
 ~
-Zigrysk is a young sahuagin of average height who has an unusual curiosity 
-about the surface-dwelling races.  He has made it his business to supply 
+Zigrysk is a young sahuagin of average height who has an unusual curiosity
+about the surface-dwelling races.  He has made it his business to supply
 things that they need to operate in the underwater realm.
 ~
 2|64|512|4096|32768|8388608|16777216 32|512|67108864 -220 S
@@ -971,10 +971,10 @@ things that they need to operate in the underwater realm.
 >greet_prog 35~
 if rand(25)
 	say Oh, hello.  Are you from the surface?
-else 
+else
 	if rand (25)
 		say New in town?  Need some surface-dweller supplies?
-	else 
+	else
 		if rand(25)
 			say Operating underwater can be tough for surface-dwellers!  I'm here to help!
 		else
@@ -990,8 +990,8 @@ endif
 Nirlisk the Healer~
 Nirlisk the Healer stands here, offering her services.
 ~
-Nirlisk looks at you in a way you'd be tempted to describe as 'fondly,' for a 
-sahuagin.  She explains that she is the resident healer of this temple to 
+Nirlisk looks at you in a way you'd be tempted to describe as 'fondly,' for a
+sahuagin.  She explains that she is the resident healer of this temple to
 Sekolah, and just to say 'HEAL' to her if you'd like a list of her services.
 ~
 2|64|512|4096|8192|32768|8388608|16777216 8|32|128|512|2048|8192|16777216|67108864 -75 S
@@ -1003,9 +1003,9 @@ Testris torturer~
 Testris the Torturer~
 Testris the Torturer is here, grinning evilly.
 ~
-There's no pastime sahuagin enjoy more than torturing (or watching others 
-tortured) and Testris is happy to supply them with everything they need to 
-participate in their favourite hobby.  He's also happy to demonstrate the 
+There's no pastime sahuagin enjoy more than torturing (or watching others
+tortured) and Testris is happy to supply them with everything they need to
+participate in their favourite hobby.  He's also happy to demonstrate the
 use of the equipment upstairs... for a fee.  Read the shop sign for
 demonstration prices.
 ~
@@ -1018,9 +1018,9 @@ Malu Thubyr~
 Malu Thubyr, Servant of Sekolah~
 Malu Thubyr is here, selling temple supplies.
 ~
-Malu Thubyr is a youngish, small sahuagin, with a slightly obsequious 
-demeanour. He sells high-quality clerical goods to sahuagin and foreigner 
-alike in a dedicated part of Sekolah's Ota'ar Dah temple, 'the House of 
+Malu Thubyr is a youngish, small sahuagin, with a slightly obsequious
+demeanour. He sells high-quality clerical goods to sahuagin and foreigner
+alike in a dedicated part of Sekolah's Ota'ar Dah temple, 'the House of
 the Joyful Hunter'.
 ~
 2|64|512|4096|32768|8388608|16777216 8|32|128|512|8192|67108864 -160 S
@@ -1030,10 +1030,10 @@ the Joyful Hunter'.
 >greet_prog 35~
 if rand(25)
 	say Greetings.  Interested in some clerical supplies?
-else 
+else
 	if rand (25)
 		say Cursed?  Poisoned?  I can be of service.
-	else 
+	else
 		if rand(25)
 			say Just raising coin for the temple.  Can I interest you in our selection?
 		else
@@ -1049,9 +1049,9 @@ Mafite Kilim Sekolah matron~
 Mafite Kilim, Sekolah matron~
 Mafite Kilim the Sekolah Matron is here, awaiting supplicants.
 ~
-Mafite Kilim is an older female sahuagin, and her clothing and demanour make 
-it clear she is an important figure in the Sekolah-worshipping hierarchy.  
-She has little time for foreigners, but may be of some use to sahuagin, 
+Mafite Kilim is an older female sahuagin, and her clothing and demanour make
+it clear she is an important figure in the Sekolah-worshipping hierarchy.
+She has little time for foreigners, but may be of some use to sahuagin,
 especially fellow clerics of Sekolah.
 ~
 2|64 8|32|128|512|8192|524288|67108864 -840 S
@@ -1078,7 +1078,7 @@ Acolyte Sekolah sahuagin~
 an acolyte of Sekolah~
 An acolyte of Sekolah is going about his business.
 ~
-A young male sahuagin of relatively peaceable disposition is quietly going 
+A young male sahuagin of relatively peaceable disposition is quietly going
 about his business here.
 ~
 2|64 8|32|512|8192|524288|67108864 -650 S
@@ -1090,7 +1090,7 @@ acolyte sahuagin Sekolah~
 an acolyte of Sekolah~
 An acolyte of Sekolah is going about her business.
 ~
-A young female sahuagin of relatively peaceable disposition is quietly going 
+A young female sahuagin of relatively peaceable disposition is quietly going
 about her business here.
 ~
 2|64 8|32|512|8192|524288|67108864 -550 S
@@ -1102,7 +1102,7 @@ Mala't Sage identifier~
 Mala't the Sage~
 Mala't the Sage is here, happy to help you identify your artefacts.
 ~
-A wise and sagacious older sahuagin, Mala't has set up shop here identifying 
+A wise and sagacious older sahuagin, Mala't has set up shop here identifying
 artefacts for those lacking the skill to.
 ~
 2|64|512|4096|32768|1048576|8388608|16777216 8|32|512|8192|524288|67108864 -125 S
@@ -1112,10 +1112,10 @@ artefacts for those lacking the skill to.
 >greet_prog 35~
 if rand(25)
 	emote regards you with curiosity
-else 
+else
 	if rand (25)
 		say I might know a thing or two about a thing or two.
-	else 
+	else
 		if rand(25)
 			say Need some help identifying anything?
 		else
@@ -1131,15 +1131,15 @@ Mohmit~
 Mohmit~
 Mohmit stands here, ready to sell you magical supplies.
 ~
-In what is a very unusual sight in Ota'ar Dar, Mohmit is a human mage from the 
-Great Eastern Desert who has made his home and livelihood here.  While many 
-sahuagin grudgingly accept the use of magic and magical goods, they generally 
-will at best view them as a necessary evil, and for a sahuagin to directly 
-trade in such goods would be regarded as scandalous.  So it is that Mohmit saw 
+In what is a very unusual sight in Ota'ar Dar, Mohmit is a human mage from the
+Great Eastern Desert who has made his home and livelihood here.  While many
+sahuagin grudgingly accept the use of magic and magical goods, they generally
+will at best view them as a necessary evil, and for a sahuagin to directly
+trade in such goods would be regarded as scandalous.  So it is that Mohmit saw
 an opportunity and seized it.
 
-He is a swarthy-skinned, reasonably cheerful, somewhat rotund, and rather 
-short gentleman, who is eager to sell you his wares.  Perhaps a little TOO 
+He is a swarthy-skinned, reasonably cheerful, somewhat rotund, and rather
+short gentleman, who is eager to sell you his wares.  Perhaps a little TOO
 eager, as he talks to you incessantly as you browse the shelves in the shop.
 ~
 2|64|512|4096|32768|8388608|16777216 8|32|128|512|8192|524288|67108864 -30 S
@@ -1149,10 +1149,10 @@ eager, as he talks to you incessantly as you browse the shelves in the shop.
 >greet_prog 35~
 if rand(25)
 	say Ah, a fellow surfacer!  Welcome, welcome!
-else 
+else
 	if rand (25)
 		say Do you have any magical items to sell?  I buy!
-	else 
+	else
 		if rand(25)
 			say A fellow surfacer--it's been a while!  What news?
 		else
@@ -1183,7 +1183,7 @@ citizen Ota'ar Dar sahuagin~
 a citizen of Ota'ar Dar~
 A female citizen of Ota'ar Dar goes about her business here.
 ~
-This fairly nondescript female sahuagin is just going about her business, 
+This fairly nondescript female sahuagin is just going about her business,
 running errands and the like.
 ~
 64|128 32|512|67108864 -330 S
@@ -1195,7 +1195,7 @@ citizen Ota'ar Dar sahuagin~
 a citizen of Ota'ar Dar~
 A male citizen of Ota'ar Dar goes about his business here.
 ~
-This fairly nondescript male sahuagin is just going about his business, 
+This fairly nondescript male sahuagin is just going about his business,
 running errands and the like.
 ~
 64 32|512|67108864 -276 S
@@ -1207,7 +1207,7 @@ sahuagin thief~
 a sahuagin thief~
 A sahuagin thief lurks in the shadows, looking for marks to pickpocket.
 ~
-The sahuagin thief wears dark clothing and sticks to the shadows, darting out 
+The sahuagin thief wears dark clothing and sticks to the shadows, darting out
 to stealthily separate inattentive individuals from their valuables.
 ~
 64 32|512|32768|65536|67108864 -620 S
@@ -1219,7 +1219,7 @@ Ota'ar Dar crier sahuagin~
 the Ota'ar Dar crier~
 The Ota'ar Dar crier is here, relaying the Prince's proclamations.
 ~
-Ota'ar Dar's crier is a tall, smartly-dressed sahuagin whose job it is to 
+Ota'ar Dar's crier is a tall, smartly-dressed sahuagin whose job it is to
 travel the city and share the Prince's proclamations with the populace.
 ~
 64 32|512|67108864 -379 S
@@ -1309,8 +1309,8 @@ manta ray~
 a manta ray~
 A manta ray swims by, its wings undulating gracefully.
 ~
-A manta is a large ray with triangular pectoral fins, horn-shaped cephalic 
-fins, and a large, forward-facing mouth.  This one appears to be going lazily 
+A manta is a large ray with triangular pectoral fins, horn-shaped cephalic
+fins, and a large, forward-facing mouth.  This one appears to be going lazily
 about its business, searching for zooplankton to feed on.
 ~
 64|128 32|512|32768|67108864 34 S
@@ -1322,7 +1322,7 @@ mako shark~
 a mako shark~
 A mako shark swims busily by, hunting for prey.
 ~
-The shortfin mako shark is a large mackerel shark, and can reach a length of 
+The shortfin mako shark is a large mackerel shark, and can reach a length of
 4 metres.  It is notorious for the power of its bite and speed of its movement
 --best be cautious around it!
 ~
@@ -1335,8 +1335,8 @@ Ota'ar Dar cityguard sahuagin guard~
 an Ota'ar Dar cityguard~
 An Ota'ar Dar cityguard is here, keeping the prince's peace.
 ~
-Ota'ar Dar cityguards look very much like sahuagin soldiers, but their 
-pauldrons are stamped with the city's mark.  They are selected for their 
+Ota'ar Dar cityguards look very much like sahuagin soldiers, but their
+pauldrons are stamped with the city's mark.  They are selected for their
 strength, youth, and loyalty to the prince.
 ~
 64 32|512|67108864 -430 S
@@ -1348,8 +1348,8 @@ shady sahuagin~
 a shady sahuagin~
 A shady sahuagin lurks here, beckoning you over.
 ~
-This short, thin, nervous-looking sahuagin beckons you over.  He says he buys 
-and sells various items and offers much better prices than most of the 
+This short, thin, nervous-looking sahuagin beckons you over.  He says he buys
+and sells various items and offers much better prices than most of the
 shopkeepers here, as he keeps his overheads low.
 ~
 4|64|128 32|512|32768|67108864 -710 S
@@ -1361,7 +1361,7 @@ electric eel~
 an electric eel~
 An electric eel wriggles its way through the water.
 ~
-This rather large electric eel hums and crackles. Best be cautious about 
+This rather large electric eel hums and crackles. Best be cautious about
 bothering it.
 ~
 4|64 8|32|512|67108864 0 S
@@ -1373,9 +1373,9 @@ tiger shark~
 a tiger shark~
 A huge tiger shark cruises through the deep.
 ~
-This tiger shark is a large macropredator, over 5 metres long. Its name derives 
-from the dark stripes down its body, which resemble a tiger's pattern, but fade 
-as the shark matures.  It's minding its own business right now, but taking a 
+This tiger shark is a large macropredator, over 5 metres long. Its name derives
+from the dark stripes down its body, which resemble a tiger's pattern, but fade
+as the shark matures.  It's minding its own business right now, but taking a
 look at its fearsome jaws, you're in no hurry to distract it.
 ~
 4|64 32|512|67108864 -75 S
@@ -1387,8 +1387,8 @@ bull shark~
 a bull shark~
 An bad-tempered bull shark swims here, looking for prey.
 ~
-Bull sharks are known for their aggressive nature, and the frequency of their 
-attacks on humans.  This one is female, a couple of metres long, large and 
+Bull sharks are known for their aggressive nature, and the frequency of their
+attacks on humans.  This one is female, a couple of metres long, large and
 stout, and has an extremely bad attitude.
 ~
 4|64 32|512|67108864 -670 S
@@ -1400,8 +1400,8 @@ devil fish~
 a devil fish~
 A devil fish moves gracefully through the water.
 ~
-A species of ray, the devil fish is a bit smaller than the oceanic and reef 
-rays, but can still reach a disk size of 3.5 metres.  Additionally it is the 
+A species of ray, the devil fish is a bit smaller than the oceanic and reef
+rays, but can still reach a disk size of 3.5 metres.  Additionally it is the
 only member of its species with a tail spine.
 ~
 64 32|512|67108864 0 S
@@ -1413,10 +1413,10 @@ spotted eagle ray~
 a spotted eagle ray~
 A spotted eagle ray prowls about looking for small fish and crustaceans.
 ~
-This ray can be identified by its dark dorsal surface covered in white spots 
-or rings. Near the base of the ray's relatively long tail, just behind the 
-pelvic fins, are several venomous, barbed stingers. Spotted eagle rays commonly 
-feed on small fish and crustaceans, and will sometimes dig with their snouts 
+This ray can be identified by its dark dorsal surface covered in white spots
+or rings. Near the base of the ray's relatively long tail, just behind the
+pelvic fins, are several venomous, barbed stingers. Spotted eagle rays commonly
+feed on small fish and crustaceans, and will sometimes dig with their snouts
 to look for food buried in the sand of the sea bed.
 ~
 4|64 32|512|67108864 -300 S
@@ -1428,7 +1428,7 @@ sahuagin warrior trainee~
 a sahuagin warrior trainee~
 A sahuagin warrior trainee practises with weapons here.
 ~
-The sahuagin warrior trainee is here, testing his weapon skills with other 
+The sahuagin warrior trainee is here, testing his weapon skills with other
 recruits.
 ~
 2|64 32|512|67108864 -500 S
@@ -1455,10 +1455,10 @@ Reaver Ciy'yn sahuagin~
 Reaver Ciy'yn~
 Reaver Ciy'yn stands here, scowling at your intrusion.
 ~
-Reaver Ciy'yn is the Ota'ar Dar Reaver guildmaster.  He is a wiry, 
-grim-looking sahuagin, whose many raids and journeys of dangerous 
-exploration have left him scarred and world-weary.  He doesn't seem 
-at all impressed that you've wandered into his presence, and 
+Reaver Ciy'yn is the Ota'ar Dar Reaver guildmaster.  He is a wiry,
+grim-looking sahuagin, whose many raids and journeys of dangerous
+exploration have left him scarred and world-weary.  He doesn't seem
+at all impressed that you've wandered into his presence, and
 impatiently awaits an explanation.
 ~
 2|64 32|512|67108864 -800 S
@@ -1470,7 +1470,7 @@ Reaver recruit~
 a Reaver recruit~
 A Reaver recruit is milling about here, awaiting his next deployment.
 ~
-This sahuagin is a recent recruit to the Reaver fold.  He is currently relaxing 
+This sahuagin is a recent recruit to the Reaver fold.  He is currently relaxing
 before his next trip of exploration and conquest.
 ~
 2|64 32|512|67108864 -420 S
@@ -1482,7 +1482,7 @@ reaver recruit~
 a Reaver recruit~
 A Reaver recruit is sleeping here.
 ~
-This sahuagin is a recent recruit to the Reaver fold.  She is currently 
+This sahuagin is a recent recruit to the Reaver fold.  She is currently
 catching up on sleep before her next trip of exploration and conquest.
 ~
 2|64 32|512|131072|67108864 -370 S
@@ -1498,10 +1498,10 @@ Filani slavemistress sahuagin~
 Filani the Slavemistress~
 Filani the Slavemistress is here, sneering at you.
 ~
-Particularly vile, even for a sahuagin, Filani is one of Ota'ar Dar's 
-slavemistresses.  She is responsible for purchasing slaves from sahuagin 
-raiders and selling them profitably here, at the slavemarket.  She takes 
-a deep pleasure in her business and it makes your skin crawl to even share 
+Particularly vile, even for a sahuagin, Filani is one of Ota'ar Dar's
+slavemistresses.  She is responsible for purchasing slaves from sahuagin
+raiders and selling them profitably here, at the slavemarket.  She takes
+a deep pleasure in her business and it makes your skin crawl to even share
 a space with her.
 ~
 2|64 32|512|67108864 -1000 S
@@ -1520,8 +1520,8 @@ giant sea-worm sea worm~
 a giant sea-worm~
 {MA giant sea worm wriggles through the water.{x
 ~
-This hideous sea worm must be 4 metres long.  Bright pink, smooth, and eyeless, 
-it uses its electrical and other senses to navigate the ocean's depths in its 
+This hideous sea worm must be 4 metres long.  Bright pink, smooth, and eyeless,
+it uses its electrical and other senses to navigate the ocean's depths in its
 relentless quest for sustenance.
 ~
 4|32|64|128 1|8|32|512|32768|524288|67108864 0 S
@@ -1533,8 +1533,8 @@ acolyte of Sekolah~
 an acolyte of Sekolah~
 An acolyte of Sekolah concentrates on ritual spell-weaving.
 ~
-This fierce-looking sahuagin acolyte of Sekolah wear a different robe from the 
-ones you've seen before now.  You wonder if he has been specially trained or 
+This fierce-looking sahuagin acolyte of Sekolah wear a different robe from the
+ones you've seen before now.  You wonder if he has been specially trained or
 set aside for some purpose.
 ~
 2|32|64 8|32|512|8192|524288|67108864 -1000 S
@@ -1546,8 +1546,8 @@ acolyte Sekolah~
 an acolyte of Sekolah~
 An acolyte of Sekolah concentrates on ritual spell-weaving.
 ~
-This fierce-looking sahuagin acolyte of Sekolah wear a different robe from the 
-ones you've seen before now.  You wonder if he has been specially trained or 
+This fierce-looking sahuagin acolyte of Sekolah wear a different robe from the
+ones you've seen before now.  You wonder if he has been specially trained or
 set aside for some purpose.
 ~
 2|32|64 8|32|512|8192|524288|67108864 -1000 S
@@ -1559,9 +1559,9 @@ small sad sahuagin Sogesk~
 a small, sad sahuagin~
 A small, sad sahuagin male cowers here, trying to avoid attention.
 ~
-This sahuagin really looks like he's been through the wars.  His body is 
-covered in scars and bruises, and he wears an expression of resigned misery 
-so clear it translates between any pair of sentient races.  
+This sahuagin really looks like he's been through the wars.  His body is
+covered in scars and bruises, and he wears an expression of resigned misery
+so clear it translates between any pair of sentient races.
 ~
 64|128 4|1024|65536|67108864 0 S
 35 0 0 0d0+0 0d0+0
@@ -1589,7 +1589,7 @@ Dae'yn pit critter sahuaginr~
 Dae'yn~
 Dae'yn the pit critter waits for you to wager gold.
 ~
-Dae'yn is a lean, taciturn sahuagin and a pit critter working at 'Sekolah's 
+Dae'yn is a lean, taciturn sahuagin and a pit critter working at 'Sekolah's
 Whim Casino,' a lower-class Ota'ar Dar gambling den.  To see what game he's
 offering, try to 'bet' or 'wager' some gold coins here.
 ~
@@ -1601,7 +1601,7 @@ offering, try to 'bet' or 'wager' some gold coins here.
 if rand(25)
 	grunt
 	say You betting?
-else 
+else
 	if rand (25)
 		say We play 'Upper-Lower-Triple' down here.  You can play 'Seven' down below.
 		else
@@ -1638,7 +1638,7 @@ You examine a map of a dark undersea realm...
 {b                   |  |
                 |-[ ][ ]-|
              |-[ ][ ][ ][ ]-
-           -[ ][ ][ ][ ][ ]- 
+           -[ ][ ][ ][ ][ ]-
            -[ ][ ][ ][ ][ ]-
        |  |-[ ][ ][ ][ ][ ]-
     |-[ ][ ][ ][ ][ ][ ][{G*{x{b]-
@@ -1647,7 +1647,7 @@ You examine a map of a dark undersea realm...
     |-[ ][ ][ ][ ]-|  |
        |-[ ][ ]-|
           |  |
-{x    
+{x
 ~
 #27201
 map Ota'ar Dar market canton lower~
@@ -1716,7 +1716,7 @@ You examine a map of a watery zone just below the surface of the Yeats sea...
          [ ][ ]{B[ ]{c[ ][ ]
       [ ][ ][ ]{B[ ]{c[ ][ ]
       [ ][ ][ ][ ]
-         [ ][ ]{x                   
+         [ ][ ]{x
 ~
 #27204
 map deeper below~
@@ -1729,7 +1729,7 @@ A map of an area somewhat deeper below the surface of the Yeats sea is here.~
 E
 map deeper below~
 You examine a map of an area some distance below the surface of the Yeats sea...
-{c                  
+{c
                   {C[ ][ ]{x
                {c[ ][ ][ ]
                [ ][ ][ ]
@@ -1737,7 +1737,7 @@ You examine a map of an area some distance below the surface of the Yeats sea...
          [ ][ ]{B[ ]{x{c[ ][ ]
       [ ][ ][ ]{B[ ]{x{c[ ][ ]
       [ ][ ][ ][ ]
-         [ ][ ]{x  
+         [ ][ ]{x
 ~
 #27205
 map ocean deep~
@@ -1750,21 +1750,21 @@ A map of an area deep below the surface of the Yeats sea lies here.~
 E
 map ocean deep~
 You examine a map of an area deep below the surface of the Yeats sea...
-{y      
+{y
      [{M*{x{y][ ]
      [ ][ ][{G*{x{y]{B[ ][ ]{x
      {y[ ][ ]{x{B[ ][ ][ ]
            [ ][ ][ ]
            [ ][ ][ ]
         [ ]{x{b[ ]{x{B[ ][ ]
-  [ ][ ][ ]{x{b[ ]{x{B[ ][ ]	
-  [ ][ ][ ][ ] 
+  [ ][ ][ ]{x{b[ ]{x{B[ ][ ]
+  [ ][ ][ ][ ]
      [ ][ ] {x
         {y[ ]      [{C*{x{y]
-        [ ][ ][{M*{x{y][ ]             
+        [ ][ ][{M*{x{y][ ]
            [ ][ ][ ]
-           [{M*{x{y][ ][ ] {x 
-		   
+           [{M*{x{y][ ][ ] {x
+
 ~
 #27206
 a metal sea chest trunk~
@@ -1776,7 +1776,7 @@ A large metal sea chest has been bolted into the stone floor here.~
 105 0 0
 E
 metal sea chest trunk~
-This chest probably contains items personal to Pheskak. Rifling through it 
+This chest probably contains items personal to Pheskak. Rifling through it
 seems rather rude.
 ~
 #27207
@@ -1849,7 +1849,7 @@ A smart leather suitcase rests here.~
 30 0 0
 E
 smart leather suitcase~
-The suitcase looks brand-new, and has that distinctive 'new leather' smell.  
+The suitcase looks brand-new, and has that distinctive 'new leather' smell.
 Must be worth a few coins.
 ~
 #27214
@@ -2058,9 +2058,9 @@ A Broodcoin bank ledger sits here.~
 1 0 0
 E
 ledger~
-This ledger records transactions made at Ota'ar Dar's branch of the Broodcoin 
-bank.  It has been clerically enchanted to be able to be used underwater.  
-It's also unbelievably boring; trying to read it is a positively painful 
+This ledger records transactions made at Ota'ar Dar's branch of the Broodcoin
+bank.  It has been clerically enchanted to be able to be used underwater.
+It's also unbelievably boring; trying to read it is a positively painful
 experience.
 ~
 #27238
@@ -2074,11 +2074,11 @@ A slide rules lies here.~
 E
 slide rule~
 The slide rule is a mechanical device used for doing computation, and is used
-primarily for multiplication and division, and for functions such as 
-exponents, roots, logarithms, and trigonometry. It is not typically designed 
-for addition or subtraction, which is usually performed using other methods. 
-Maximum accuracy for standard linear slide rules is about three decimal 
-significant digits, while scientific notation is used to keep track of the 
+primarily for multiplication and division, and for functions such as
+exponents, roots, logarithms, and trigonometry. It is not typically designed
+for addition or subtraction, which is usually performed using other methods.
+Maximum accuracy for standard linear slide rules is about three decimal
+significant digits, while scientific notation is used to keep track of the
 order of magnitude of results.  This one has seen better days.
 ~
 #27239
@@ -2091,8 +2091,8 @@ A feathered writing instrument lies here.~
 1 0 0
 E
 quill feather writing instrument~
-This quill is a writing tool made from a moulted primary wing-feather of a 
-large bird, you think possibly a seagull.  This one has been clerically 
+This quill is a writing tool made from a moulted primary wing-feather of a
+large bird, you think possibly a seagull.  This one has been clerically
 enchanted to write underwater.
 ~
 #27240
@@ -2361,9 +2361,9 @@ A platter of mermaid purses is here.~
 1 0 0
 E
 mermaid purse platter~
-A mermaid's purse is the casing that surrounds the eggs of oviparous sharks, 
-skates and chimaeras. Egg cases typically contain one embryo, as all these 
-purses do, which have been boiled and then fried.  Not exactly... appetising 
+A mermaid's purse is the casing that surrounds the eggs of oviparous sharks,
+skates and chimaeras. Egg cases typically contain one embryo, as all these
+purses do, which have been boiled and then fried.  Not exactly... appetising
 to non-sahuagin.
 ~
 #27268
@@ -2376,7 +2376,7 @@ A bowl of scrambled octopus parts is here.~
 1 0 0
 E
 octopus scramble bowl~
-Various octopus parts have been blended and scrambled together into this... 
+Various octopus parts have been blended and scrambled together into this...
 soup?  Chowder?  Stew?  Ech.
 ~
 #27269
@@ -2389,8 +2389,8 @@ A plate of conch worms is here.~
 1 0 0
 E
 conch worm surprise plate~
-The conch 'worm,' also know as the conch 'pistol' is believed to be an 
-aphrodisiac.  It's colourless, odourless, slimy, and wiggly.  This is a 
+The conch 'worm,' also know as the conch 'pistol' is believed to be an
+aphrodisiac.  It's colourless, odourless, slimy, and wiggly.  This is a
 plate full of them.  Enjoy.
 ~
 #27270
@@ -2403,7 +2403,7 @@ A bowl of steamed cod sperm is here.~
 1 0 0
 E
 steamed cod sperm bowl~
-Creamy and custard-like.  You can call it 'shirako' if it makes you feel better 
+Creamy and custard-like.  You can call it 'shirako' if it makes you feel better
 about eating it.
 ~
 #27271
@@ -2416,7 +2416,7 @@ A bowl of dead jellyfish is here.~
 1 0 0
 E
 jellyfish jelly~
-I mean it just looks like a bowl of jellyfish, replete with stingers.  
+I mean it just looks like a bowl of jellyfish, replete with stingers.
 I wouldn't.
 ~
 #27272
@@ -2429,7 +2429,7 @@ A raw sea urchin on a plate is here.~
 1 0 0
 E
 raw sea urchin plate~
-Break the spiky exterior, then scoop out the gonads of the sea urchin and eat 
+Break the spiky exterior, then scoop out the gonads of the sea urchin and eat
 them raw. They are said to have a briny, almost creamy taste.
 ~
 #27273
@@ -2454,7 +2454,7 @@ A jewel-encrusted box sits on a mantelpiece here.~
 3 0 0
 E
 jewel-encrusted box~
-This is a very elaborately-decorated and jewel-encrusted glory box.  
+This is a very elaborately-decorated and jewel-encrusted glory box.
 What treasures might it contain?
 ~
 #27275
@@ -2483,9 +2483,9 @@ A blue diamond lies here.~
 1 0 30
 E
 blue diamond~
-A blue diamond is a type of diamond which exhibits all of the mineral's 
-inherent properties with the additional element of blue colour. They are 
-colored blue by trace amounts of boron which contaminate the structure 
+A blue diamond is a type of diamond which exhibits all of the mineral's
+inherent properties with the additional element of blue colour. They are
+colored blue by trace amounts of boron which contaminate the structure
 of the crystalline lattice. This one is of brathtaking, flawless quality.
 ~
 #27278
@@ -2498,9 +2498,9 @@ A black opal lies here.~
 1 0 30
 E
 black opal~
-While black opal exists abundantly in the gemstone market, high-quality black 
-opal is rare because of the stone's vivid color contrast between the dark body 
-tone and rainbow flashes that shine so brilliantly across the gemstone.  
+While black opal exists abundantly in the gemstone market, high-quality black
+opal is rare because of the stone's vivid color contrast between the dark body
+tone and rainbow flashes that shine so brilliantly across the gemstone.
 This is a beautiful specimen.
 ~
 #27279
@@ -2513,9 +2513,9 @@ A red beryl lies here.~
 1 0 30
 E
 red beryl~
-Consisting of beryllium, aluminum, and silicate, this mineral is colorless in 
-its pure form, coloration being determined by traces of other elements in the 
-stone. Red beryl gems are typically small, as this one is, and come in various 
+Consisting of beryllium, aluminum, and silicate, this mineral is colorless in
+its pure form, coloration being determined by traces of other elements in the
+stone. Red beryl gems are typically small, as this one is, and come in various
 shades of dark red.
 ~
 #27280
@@ -2528,10 +2528,10 @@ An emerald lies here.~
 1 0 30
 E
 emerald~
-An emerald can go for many platinum coins per carat. One of the world's most 
-popular gemstones, its exotic green tones appeal to many. Most emeralds have 
-minor imperfections but flawless ones can hit extraordinarily high values.  
-You see no obvious flaws in this one. 
+An emerald can go for many platinum coins per carat. One of the world's most
+popular gemstones, its exotic green tones appeal to many. Most emeralds have
+minor imperfections but flawless ones can hit extraordinarily high values.
+You see no obvious flaws in this one.
 ~
 #27281
 red diamond~
@@ -2543,9 +2543,9 @@ A red diamond rests here.~
 1 0 30
 E
 red diamond~
-Red diamonds have the same mineral properties as colourless diamonds, yet 
-display red colour. They are the world's most expensive and rare colour of 
-diamonds. Like pink diamonds, the source of their colour is hotly debated.  
+Red diamonds have the same mineral properties as colourless diamonds, yet
+display red colour. They are the world's most expensive and rare colour of
+diamonds. Like pink diamonds, the source of their colour is hotly debated.
 This is a small, but very beautiful specimen.
 ~
 #27282
@@ -2558,13 +2558,13 @@ A brilliant pearl lies here.~
 1 0 30
 E
 Yeats sea pearl~
-A pearl is a hard, glistening object produced within the soft tissue 
-(specifically the mantle) of a living shelled mollusk or other similar animal. 
-Just like the shell of a mollusk, a pearl is composed of calcium carbonate 
-(mainly aragonite or a mixture of aragonite and calcite) in minute crystalline 
-form, which has deposited in concentric layers. The ideal pearl is perfectly 
-round and smooth, but many other shapes, known as baroque pearls, can occur. 
-The finest quality of natural pearls have been highly valued as gemstones and 
+A pearl is a hard, glistening object produced within the soft tissue
+(specifically the mantle) of a living shelled mollusk or other similar animal.
+Just like the shell of a mollusk, a pearl is composed of calcium carbonate
+(mainly aragonite or a mixture of aragonite and calcite) in minute crystalline
+form, which has deposited in concentric layers. The ideal pearl is perfectly
+round and smooth, but many other shapes, known as baroque pearls, can occur.
+The finest quality of natural pearls have been highly valued as gemstones and
 objects of beauty for many centuries. This one is large and perfectly spherical.
 ~
 #27283
@@ -2577,11 +2577,11 @@ An ornate gold bracelet lies here.~
 1 0 30
 E
 ornate gold bracelet~
-Just looking at the bracelet fills you with an unbidden sense of preternatural 
-dread.  The goldwork is ornate and extraordinarily beautiful, and it carries 
+Just looking at the bracelet fills you with an unbidden sense of preternatural
+dread.  The goldwork is ornate and extraordinarily beautiful, and it carries
 an inscription on the inside of the band. It reads:
 
-"Do Monica Ionescu-Ogrezeanu, dá hathair, ar lá a pósta. Bíodh mallacht go deo 
+"Do Monica Ionescu-Ogrezeanu, dá hathair, ar lá a pósta. Bíodh mallacht go deo
 ar aon duine eile a chaitheann í, fiú mar a bheannaítear go deo í."
 ~
 #27284
@@ -2594,7 +2594,7 @@ A crude wooden platform has been erected on the floor here.~
 400 0 0
 E
 crude wooden platform~
-This roughly-constructed platform has been placed here for Ota'ar Dar's slavers 
+This roughly-constructed platform has been placed here for Ota'ar Dar's slavers
 to display and auction their slaves on.  Depressing.
 ~
 #27285
@@ -2657,7 +2657,7 @@ A
 4 -2
 E
 slaver's whip~
-A cruel and unsavoury weapon, the whip has had sharp metal pieces woven into 
+A cruel and unsavoury weapon, the whip has had sharp metal pieces woven into
 it to increase the damage it inflicts on its victims.
 ~
 #27289
@@ -2681,7 +2681,7 @@ A bowl of blue-ring kalamari sits here.~
 1 0 0
 E
 blue-ring kalamari bowl~
-You seem to remember something about blue-ringed something-a-rathers... it's 
+You seem to remember something about blue-ringed something-a-rathers... it's
 escaping you right now...
 ~
 #27291
@@ -2706,7 +2706,7 @@ A pie made of goblin shark meat lies here.~
 1 0 30
 E
 goblin shark pie~
-Well, you've met a few goblin sharks and... yeah.  It doesn't look great.  
+Well, you've met a few goblin sharks and... yeah.  It doesn't look great.
 You do feel a bit... more perceptive,  somehow?.. after eating it, though.
 ~
 #27293
@@ -2787,8 +2787,8 @@ A blood-stained altar sits upon a stone podium.~
 5000 0 0
 E
 blood-stained altar~
-This altar accepts blood sacrifices to Sekolah, the sahuagin shark god.  
-Generally, animal sacrifices are made, but... exceptions... have sometimes 
+This altar accepts blood sacrifices to Sekolah, the sahuagin shark god.
+Generally, animal sacrifices are made, but... exceptions... have sometimes
 been made, when the need for Sekolah's assistance has been deemed critical.
 ~
 #27301
@@ -2941,9 +2941,9 @@ A scrap of paper with writing on it lies here.~
 1 0 0
 E
 scrap paper writing~
-The writing on the paper describes a series of gestures that have to be made 
-before the entrance to a secret underwater chamber to gain access to it.  
-You think you can perform them as long as you have the note handy to check 
+The writing on the paper describes a series of gestures that have to be made
+before the entrance to a secret underwater chamber to gain access to it.
+You think you can perform them as long as you have the note handy to check
 them against.
 ~
 #27318
@@ -2980,7 +2980,7 @@ A very large ink sac lies here.~
 15 0 0
 E
 huge ink sac~
-A large ink sac belonging to a presumably very large octopus. You suspect 
+A large ink sac belonging to a presumably very large octopus. You suspect
 drinking the ink would be a very bad idea.
 ~
 #27322
@@ -2995,11 +2995,11 @@ A
 13 37
 E
 turquoise stone~
-A fairly roughly-cut stone, it nonetheless radiates a powerful healing energy 
-when you hold it in your hands. It has an inscription on it in Yipyak, the 
+A fairly roughly-cut stone, it nonetheless radiates a powerful healing energy
+when you hold it in your hands. It has an inscription on it in Yipyak, the
 language of the kobolds:
 
-"nomeno inhelk belhalic ekess snutt. nomag vi chikohk qe acht tikilvi svaust 
+"nomeno inhelk belhalic ekess snutt. nomag vi chikohk qe acht tikilvi svaust
 steals coi de jacion."
 ~
 #27323
@@ -3104,7 +3104,7 @@ A
 19 4
 E
 wooden breathing box~
-This cleverly-crafted 'breathing box' allows you to breathe underwater, as 
+This cleverly-crafted 'breathing box' allows you to breathe underwater, as
 well as providing some protection for your body.
 ~
 #27335
@@ -3121,7 +3121,7 @@ A
 19 6
 E
 spiky aqua harness~
-This harness robustly armours the body and discourages attack, as well as 
+This harness robustly armours the body and discourages attack, as well as
 permitting underwater breathing.
 ~
 #27336
@@ -3202,9 +3202,9 @@ A
 40 -1
 E
 mechanical suit~
-This is a very strange artefact.  It is a large machine of some kind, but one 
-you put on rather like a suit, that covers your entire body.  It has clearly 
-had magical enchantments placed upon it, and confers a number of unusual 
+This is a very strange artefact.  It is a large machine of some kind, but one
+you put on rather like a suit, that covers your entire body.  It has clearly
+had magical enchantments placed upon it, and confers a number of unusual
 abilities on the wearer.
 ~
 #27341
@@ -3217,7 +3217,7 @@ A driftwood staff wreathed with seaweed has been left here.~
 9 0 0
 E
 driftwood staff seaweed~
-The staff looks very old, and rather ugly.  It fills you with a powerful sense 
+The staff looks very old, and rather ugly.  It fills you with a powerful sense
 of understanding when you place your hands on it.
 ~
 #27342
@@ -3230,7 +3230,7 @@ An ottoman chest made of driftwood sits agains the far wall here.~
 90 0 0
 E
 ottoman driftwood chest~
-Though made of driftwood, the box is surprisingly strong, and has been very 
+Though made of driftwood, the box is surprisingly strong, and has been very
 well-crafted.
 ~
 #27343
@@ -3259,8 +3259,8 @@ A large black cube pulses with magical energy.~
 5000 0 0
 E
 large black cube~
-This large, perfect black cube glows with dark magical energy.  You see no 
-cracks or openings in its surface, and no obvious way to get into it.  It 
+This large, perfect black cube glows with dark magical energy.  You see no
+cracks or openings in its surface, and no obvious way to get into it.  It
 also seems impossibly heavy, as though welded to the ground.
 ~
 #27346
@@ -3273,7 +3273,7 @@ A black stone lies here, crackling with magical energy.~
 20 0 0
 E
 glowing black stone~
-The stone seems much heavier than it looks, and crackles with a dark 
+The stone seems much heavier than it looks, and crackles with a dark
 magical energy.  You wonder what it's for.~
 #27347
 shifta's surprise friendly-looking concoction~
@@ -3285,7 +3285,7 @@ A friendly-looking concoction has been left here.~
 1 0 30
 E
 shifta's surprise friendly-looking concoction~
-Looks delicious and extremely friendly.  It'll probably do all kinds of 
+Looks delicious and extremely friendly.  It'll probably do all kinds of
 amazingly good things for you.
 ~
 #27348
@@ -3354,9 +3354,9 @@ a torture rack~
 300 0 0
 E
 torture rack~
-A wooden frame with two ropes fixed to the bottom and another two tied to a 
-handle in the top.  A sophisticated device, it is used to dislocate the bones 
-of a person being tortured, and eventually to tear their limbs apart, ripping 
+A wooden frame with two ropes fixed to the bottom and another two tied to a
+handle in the top.  A sophisticated device, it is used to dislocate the bones
+of a person being tortured, and eventually to tear their limbs apart, ripping
 them whole from their sockets.
 ~
 #27356
@@ -3379,9 +3379,9 @@ A
 19 2
 E
 thumbscrew simple vice~
-A simple vice, with protruding studs on the interior surfaces. The crushing 
-bars are lined with sharp metal points to puncture the nails and savagely 
-stimulate the flesh of the nail beds. This particular thumbscrew is designed 
+A simple vice, with protruding studs on the interior surfaces. The crushing
+bars are lined with sharp metal points to puncture the nails and savagely
+stimulate the flesh of the nail beds. This particular thumbscrew is designed
 only to operate on a single thumb or big toe.
 ~
 #27357
@@ -3398,12 +3398,12 @@ A
 18 -3
 E
 tongue tearer~
-A good way to silence a person and send a strong message at the same time, 
-the tongue tearer is a torture device often used to silence people who commit 
-blasphemy or heresy. The victim's mouth is forced open, then the tongue tearer 
-is clamped onto the victim's tongue; the screw at its back is tightened to 
-make sure the grip on the tongue is firm. The torturer then yanks the tongue 
-out of the victim's head with all his might, silencing the victim (hopefully) 
+A good way to silence a person and send a strong message at the same time,
+the tongue tearer is a torture device often used to silence people who commit
+blasphemy or heresy. The victim's mouth is forced open, then the tongue tearer
+is clamped onto the victim's tongue; the screw at its back is tightened to
+make sure the grip on the tongue is firm. The torturer then yanks the tongue
+out of the victim's head with all his might, silencing the victim (hopefully)
 for good.
 ~
 #27358
@@ -3426,13 +3426,13 @@ A
 19 2
 E
 instep borer iron boot~
-The instep borer was is an instrument of torture that externally resembles 
-an iron boot. It is hinged to permit the free insertion and removal of a bare 
-foot. A crank projects from a housing over the instep, which conceals a long, 
-thick, serrated iron blade, grooved so as to inflict maximum damage and 
-promote liberal blood flow. Turning the crank slowly advances the blade into 
-the boot, punching a hole through the center of the instep. The resulting 
-wound is so large that it is not unusual for its victim to die of toxaemia 
+The instep borer was is an instrument of torture that externally resembles
+an iron boot. It is hinged to permit the free insertion and removal of a bare
+foot. A crank projects from a housing over the instep, which conceals a long,
+thick, serrated iron blade, grooved so as to inflict maximum damage and
+promote liberal blood flow. Turning the crank slowly advances the blade into
+the boot, punching a hole through the center of the instep. The resulting
+wound is so large that it is not unusual for its victim to die of toxaemia
 soon after.
 ~
 #27359
@@ -3451,10 +3451,10 @@ A
 2 -1
 E
 pear anguish metal object~
-The pear of anguish is a torture device whose mechanism consists of a 
-pear-shaped metal body divided into spoon-like segments that can be 
-spread apart with a spring or (in this version's case) by turning a key. 
-It can variously be inserted into the mouth, rectum, or vagina, and 
+The pear of anguish is a torture device whose mechanism consists of a
+pear-shaped metal body divided into spoon-like segments that can be
+spread apart with a spring or (in this version's case) by turning a key.
+It can variously be inserted into the mouth, rectum, or vagina, and
 then expanded to gag or mutilate its victim.
 ~
 #27360
@@ -3473,7 +3473,7 @@ A
 2 -2
 E
 breast ripper clawed iron~
-The breast ripper is a torture instrument designed to rip off breasts and is 
+The breast ripper is a torture instrument designed to rip off breasts and is
 made from iron, which is usually heated before the instrument is applied.
 ~
 #27361
@@ -3486,7 +3486,7 @@ A medium-length stick lies here.~
 2 0 30
 E
 batog stick~
-It is a stick about the thickness of an average sahuagin's finger, and is 
+It is a stick about the thickness of an average sahuagin's finger, and is
 used to beat a torture victim.
 ~
 #27362
@@ -3507,7 +3507,7 @@ A
 4 1
 E
 birch rod bundle leafless twigs~
-Despite its name, it is a bundle of leafless birch twigs bound together to 
+Despite its name, it is a bundle of leafless birch twigs bound together to
 form an implement for administering corporal punishment.
 ~
 #27363
@@ -3520,8 +3520,8 @@ a large wooden chair~
 300 0 0
 E
 large wooden chair~
-This large wooden chair is covered in various straps and other restraints. It 
-seems designed to ensure that anyone strapped into in it won't be going anywhere 
+This large wooden chair is covered in various straps and other restraints. It
+seems designed to ensure that anyone strapped into in it won't be going anywhere
 anytime soon.
 ~
 #27364
@@ -3642,12 +3642,12 @@ elves, actually.
 #ROOMS
 #27308
 Sekolah Way South, Lower~
-{CYou stand in the middle of a pedestrian throughfare on the sandy ocean floor, 
-amongst the inhabited ruins of a great, ancient city.  To the south a huge gate 
-looms, cutting off access to this canton from the rest of the city.  To the east 
-you see the entrance to a shop.  The sign above it reads "Phesak's Maps".  
+{CYou stand in the middle of a pedestrian throughfare on the sandy ocean floor,
+amongst the inhabited ruins of a great, ancient city.  To the south a huge gate
+looms, cutting off access to this canton from the rest of the city.  To the east
+you see the entrance to a shop.  The sign above it reads "Phesak's Maps".
 
-The road continues north, and you may also swim upwards, towards a huge, looming 
+The road continues north, and you may also swim upwards, towards a huge, looming
 area of darkness in the water above.{x
 ~
 0 0 8
@@ -3670,9 +3670,9 @@ D4
 S
 #27309
 Pheskak's Maps~
-{GYou stand inside the lower floor of a two-storey ruined building, deep under 
-the sea.  It is being used as a shop by Pheskak, a cartographer and trader in 
-maps.  Labelled scrolls line the battered shelves, protected from degradation 
+{GYou stand inside the lower floor of a two-storey ruined building, deep under
+the sea.  It is being used as a shop by Pheskak, a cartographer and trader in
+maps.  Labelled scrolls line the battered shelves, protected from degradation
 by clerical magic and careful storage.  A north-south road can be seen to the
 west, or you may swim up to the second storey of the building.{x
 ~
@@ -3689,10 +3689,10 @@ S
 #27310
 Broodcoin Reception~
 {GYou stand inside the lower floor of a large, two-storey ruined building, deep
-under the sea.  It has been converted into a reception area for the Ota'ar Dar 
+under the sea.  It has been converted into a reception area for the Ota'ar Dar
 bank, 'Broodcoin'.  It is clean and tidy, and less dilapidated than many of the
-buildings in Ota'ar Dar, but is relatively featureless save for the teller's 
-desk that faces the entrance.  You can travel north out to Kaliah Alley, or 
+buildings in Ota'ar Dar, but is relatively featureless save for the teller's
+desk that faces the entrance.  You can travel north out to Kaliah Alley, or
 straight up to the Broodcoin offices.{x
 ~
 0 8 8
@@ -3707,13 +3707,13 @@ D4
 S
 #27311
 Sekolah Way, Lower~
-{CYou stand in the middle of a pedestrian throughfare on the sandy ocean floor, 
-amongst the inhabited ruins of a great, ancient city.  Some distance to the 
-south you see a huge gate, cutting off access to this canton from the rest of 
-the city.  To the west you see the entrance to a shop.  The sign above it reads 
-"Fautaps's Fixit".  
+{CYou stand in the middle of a pedestrian throughfare on the sandy ocean floor,
+amongst the inhabited ruins of a great, ancient city.  Some distance to the
+south you see a huge gate, cutting off access to this canton from the rest of
+the city.  To the west you see the entrance to a shop.  The sign above it reads
+"Fautaps's Fixit".
 
-The road continues north and south, and you may also swim upwards, towards a 
+The road continues north and south, and you may also swim upwards, towards a
 huge, looming area of darkness in the water above. {x
 ~
 0 0 8
@@ -3736,11 +3736,11 @@ D4
 S
 #27312
 Fautap's Fixit~
-{GYou stand inside the lower floor of a two-storey ruined building, deep under 
-the sea.  It has been converted into a shop by Fautap, Ota'ar Dar's tinker, who 
-repairs damaged items for sahuagin and foreigners alike. Tools and items in 
-various states of disrepair/repair fill the shelves and litter the surfaces 
-around you. A north-south road can be seen to the east, or you may swim up from 
+{GYou stand inside the lower floor of a two-storey ruined building, deep under
+the sea.  It has been converted into a shop by Fautap, Ota'ar Dar's tinker, who
+repairs damaged items for sahuagin and foreigners alike. Tools and items in
+various states of disrepair/repair fill the shelves and litter the surfaces
+around you. A north-south road can be seen to the east, or you may swim up from
 here to the second floor of the building.{x
 ~
 0 8 8
@@ -3755,12 +3755,12 @@ D4
 S
 #27313
 Shauak's Leathers~
-{GYou stand inside the lower floor of a two-storey ruined building, deep under 
-the sea.  It has been converted into a leathergoods shop by Shauak, who 
-creates, buys, and sells items made of leather for sahuagin and foreigners 
-who pass through the city. The shop is stuffed with leather goods, which fill 
-the racks and hooks that cover the floorspace and walls. An alley running north 
-can be seen to the east, or you may swim up from here to the second floor of the 
+{GYou stand inside the lower floor of a two-storey ruined building, deep under
+the sea.  It has been converted into a leathergoods shop by Shauak, who
+creates, buys, and sells items made of leather for sahuagin and foreigners
+who pass through the city. The shop is stuffed with leather goods, which fill
+the racks and hooks that cover the floorspace and walls. An alley running north
+can be seen to the east, or you may swim up from here to the second floor of the
 building.{x
 ~
 0 8 8
@@ -3775,12 +3775,12 @@ D4
 S
 #27314
 Kaliah Alley South, Lower~
-{CYou stand at the southern end of a narrow alley on the sandy ocean floor, 
-amongst the inhabited ruins of a great, ancient city.  To the west you see 
-the entrance to a shop, with a sign above it reading "Shauak's Leathers". 
-To the south is the reception area of the Broodcoin bank.  
+{CYou stand at the southern end of a narrow alley on the sandy ocean floor,
+amongst the inhabited ruins of a great, ancient city.  To the west you see
+the entrance to a shop, with a sign above it reading "Shauak's Leathers".
+To the south is the reception area of the Broodcoin bank.
 
-The alley continues north, and you may also swim upwards, towards a huge, looming 
+The alley continues north, and you may also swim upwards, towards a huge, looming
 area of darkness in the water above. {x
 ~
 0 0 8
@@ -3803,11 +3803,11 @@ D4
 S
 #27315
 Abyssal Close, Lower~
-{CYou stand in the middle of a small close on the sandy ocean floor, amongst the 
-inhabited ruins of a great, ancient city. To the west you see the entrance to 
-the Ota'ar Dar Battle Dojo, while to the north is the entrance to "Drinker's 
-Den," one of Ota'ar Dar's most notorious watering holes. To the east the close 
-joins a road running north-south, and you can also swim straight upwards from 
+{CYou stand in the middle of a small close on the sandy ocean floor, amongst the
+inhabited ruins of a great, ancient city. To the west you see the entrance to
+the Ota'ar Dar Battle Dojo, while to the north is the entrance to "Drinker's
+Den," one of Ota'ar Dar's most notorious watering holes. To the east the close
+joins a road running north-south, and you can also swim straight upwards from
 here, towards a huge, looming area of darkness in the water above.{x
 ~
 0 0 8
@@ -3830,13 +3830,13 @@ D4
 S
 #27316
 Battle Dojo, Reception~
-{GYou stand inside the lower floor of a large two-storey ruined building, deep 
-under the sea.  It has at some point been converted into a training gymnasium 
-for sahuagin warriors.  This lower floor is the reception area for new 
-recruits, though there doesn't appear to be anyone present to greet newcomers 
-at the moment.  All around the edges of this large room you see prospective 
-sahuagin warriors training with mock-weapons. The dead end of a close that 
-runs east can be seen just outside the entrance, or you may swim up from here 
+{GYou stand inside the lower floor of a large two-storey ruined building, deep
+under the sea.  It has at some point been converted into a training gymnasium
+for sahuagin warriors.  This lower floor is the reception area for new
+recruits, though there doesn't appear to be anyone present to greet newcomers
+at the moment.  All around the edges of this large room you see prospective
+sahuagin warriors training with mock-weapons. The dead end of a close that
+runs east can be seen just outside the entrance, or you may swim up from here
 to the second floor of the building.{x
 ~
 0 8 8
@@ -3851,11 +3851,11 @@ D4
 S
 #27317
 Intersection of Abyssal Close and Sekolah Way, Lower~
-{CYou stand on the sandy ocean floor at the intersection of Abyssal Close and 
-Sekolah Way, amongst the inhabited ruins of a great, ancient city. Abyssal Close 
-terminates a short distance to the west, while Sekolah Way continues both to the 
-north and south. To the east you see the entrance to "Sharks'n'Rays," Ota'ar 
-Dar's mount shop, and you can also swim straight upwards from here, towards a 
+{CYou stand on the sandy ocean floor at the intersection of Abyssal Close and
+Sekolah Way, amongst the inhabited ruins of a great, ancient city. Abyssal Close
+terminates a short distance to the west, while Sekolah Way continues both to the
+north and south. To the east you see the entrance to "Sharks'n'Rays," Ota'ar
+Dar's mount shop, and you can also swim straight upwards from here, towards a
 huge, looming area of darkness in the water above.{x
 ~
 0 0 8
@@ -3882,10 +3882,10 @@ D4
 S
 #27318
 Sharks'n'Rays~
-{GYou stand inside the lower floor of a large two-storey building, deep under 
-the sea.  It has been converted into a sahuagin mount shop by Kianar, the 
-proprietor, who sells mountable underwater steeds of various kinds to local 
-sahuagin and foreigners passing through the city. A wide, major throughfare 
+{GYou stand inside the lower floor of a large two-storey building, deep under
+the sea.  It has been converted into a sahuagin mount shop by Kianar, the
+proprietor, who sells mountable underwater steeds of various kinds to local
+sahuagin and foreigners passing through the city. A wide, major throughfare
 running north and south can be seen to the west.{x
 ~
 0 8|4096 8
@@ -3896,10 +3896,10 @@ D3
 S
 #27618
 Kaliah Alley, Lower~
-{CYou stand in the middle of a narrow north-south alley on the sandy ocean 
-floor, amongst the inhabited ruins of a great, ancient city. You may continue 
-further to the north, where the alley meets Aquan Avenue, or to the south, 
-where you see a couple of commercial buildings. You may also swim upwards, 
+{CYou stand in the middle of a narrow north-south alley on the sandy ocean
+floor, amongst the inhabited ruins of a great, ancient city. You may continue
+further to the north, where the alley meets Aquan Avenue, or to the south,
+where you see a couple of commercial buildings. You may also swim upwards,
 towards a huge, looming area of darkness in the water above. {x
 ~
 0 0 8
@@ -3918,10 +3918,10 @@ D4
 S
 #27320
 Reavers' Guild Hall~
-{GYou stand in a large hall, in the lower floor of a ruined building, deep 
-underwater.  This is the guild hall of the Reavers, a sahuagin organisation 
-dedicated to exploration and plunder of the underwater and surface world 
-outside of Ota'ar Dar. You can travel north from here, to the Reavers' guild 
+{GYou stand in a large hall, in the lower floor of a ruined building, deep
+underwater.  This is the guild hall of the Reavers, a sahuagin organisation
+dedicated to exploration and plunder of the underwater and surface world
+outside of Ota'ar Dar. You can travel north from here, to the Reavers' guild
 reception area, or up, to the members' quarters.{x
 ~
 0 4|8 8
@@ -3936,12 +3936,12 @@ D4
 S
 #27321
 Drinker's Den~
-{GYou stand inside the lower floor of a large two-storey building, deep under 
-the sea.  It has been fairly crudely converted into a bar, by Therem the 
-Drinkmaster, who sells technically-drinkable brews of varying degrees of 
-foulness to mostly local sahuagin (and the odd visitor to the city crazy enough 
-to try them).  An exit south leads to Abyssal Close, or you can travel through 
-the bar north, to an attached eating establishment. You also see an exit up, 
+{GYou stand inside the lower floor of a large two-storey building, deep under
+the sea.  It has been fairly crudely converted into a bar, by Therem the
+Drinkmaster, who sells technically-drinkable brews of varying degrees of
+foulness to mostly local sahuagin (and the odd visitor to the city crazy enough
+to try them).  An exit south leads to Abyssal Close, or you can travel through
+the bar north, to an attached eating establishment. You also see an exit up,
 to the main drinking lounge area.{x
 ~
 0 8 8
@@ -3961,10 +3961,10 @@ S
 #27322
 Corner of Aquan Avenue West and Sekolah Way North, Lower~
 {CYou stand on the sandy ocean floor at the western corner of Aquan Avenue West
-and Sekolah Way, amongst the inhabited ruins of a great, ancient city. Sekolah 
-Way continues to the south, and Aquan Avenue to the east. To the north you see 
-the entrance to "The Kraken's Den," Ota'ar Dar's Lootsmith, and you can also 
-swim straight upwards from here, towards a huge, looming area of darkness in 
+and Sekolah Way, amongst the inhabited ruins of a great, ancient city. Sekolah
+Way continues to the south, and Aquan Avenue to the east. To the north you see
+the entrance to "The Kraken's Den," Ota'ar Dar's Lootsmith, and you can also
+swim straight upwards from here, towards a huge, looming area of darkness in
 the water above.{x
 ~
 0 0 8
@@ -3988,9 +3988,9 @@ S
 #27323
 Intersection of Aquan Avenue and Dae'as Street South, Lower~
 {CYou stand on the sandy ocean floor at the intersection of Aquan Avenue and
-Dae'as Street, amongst the inhabited ruins of a great, ancient city. Dae'as 
-Street continues to the north, and Aquan Avenue continues both west and east. 
-You can also swim straight upwards from here, towards a huge, looming area 
+Dae'as Street, amongst the inhabited ruins of a great, ancient city. Dae'as
+Street continues to the north, and Aquan Avenue continues both west and east.
+You can also swim straight upwards from here, towards a huge, looming area
 of darkness in the water above.{x
 ~
 0 0 8
@@ -4014,11 +4014,11 @@ S
 #27324
 Corner of Aquan Avenue East and Kaliah Alley, Lower~
 {CYou stand on the sandy ocean floor at the corner of Aquan Avenue and
-Kaliah Alley, amongst the inhabited ruins of a great, ancient city. Aquan 
+Kaliah Alley, amongst the inhabited ruins of a great, ancient city. Aquan
 Avenue Street continues to the west, and Kaliah Alley runs south, towards
-several commercial buildings. To the north is Ota'ar Dar's notorious slave 
-market, while an entrance to the Reavers' Guild lies to your immediate east. 
-You can also swim straight upwards from here, towards a huge, looming area 
+several commercial buildings. To the north is Ota'ar Dar's notorious slave
+market, while an entrance to the Reavers' Guild lies to your immediate east.
+You can also swim straight upwards from here, towards a huge, looming area
 of darkness in the water above.{x
 ~
 0 0 8
@@ -4046,11 +4046,11 @@ S
 #27325
 Reavers' Guild Reception~
 {GYou stand inside the lower floor of a large, two-storey ruined building, deep
-under the sea.  It has been converted into a reception area for the Ota'ar Dar 
+under the sea.  It has been converted into a reception area for the Ota'ar Dar
 Reavers' Guild. The room is dominated by a large desk, belonging to Reaver Tiareo.
 There is a large sign on the wall behind the desk.
 
-From this reception room you can leave west to Aquan Avenue, south to the Reavers' 
+From this reception room you can leave west to Aquan Avenue, south to the Reavers'
 members' quarters, or up, to the quarters of the Reaver guildmaster.{x
 ~
 0 8 8
@@ -4078,10 +4078,10 @@ Currently available quests for prospective Reavers to undertake:
 S
 #27326
 Gorge Palace~
-{GYou stand inside the lower floor of a large two-storey building, deep under 
-the sea.  This level has been converted into a sit-down eatery named "Gorge 
-Palace," by Holo Orl'as, who sells various plates of unsavoury-looking food 
-here to mostly local sahuagin. You can walk through the restaurant south, to 
+{GYou stand inside the lower floor of a large two-storey building, deep under
+the sea.  This level has been converted into a sit-down eatery named "Gorge
+Palace," by Holo Orl'as, who sells various plates of unsavoury-looking food
+here to mostly local sahuagin. You can walk through the restaurant south, to
 the Drinking Den, or up, to Gorge Palace's lounge and bar.{x
 ~
 0 8 8
@@ -4096,12 +4096,12 @@ D4
 S
 #27327
 The Kraken's Den~
-{GYou stand inside the Kraken's Den, on the lower floor of a two-storey ruined 
-building, deep under the sea. It is what the sahugin call a Lootsmithy, which 
-is to say a shop where one may buy and sell 'loot,' usually meant to refer to 
-gemstones and similar treasures. This Lootsmithy is run by the notoriously 
-greedy and usurious Ffeka. You may leave the shop south, and exit to the corner 
-of Aquan Avenue and Sekolah Way, or you may swim up from here to the second 
+{GYou stand inside the Kraken's Den, on the lower floor of a two-storey ruined
+building, deep under the sea. It is what the sahugin call a Lootsmithy, which
+is to say a shop where one may buy and sell 'loot,' usually meant to refer to
+gemstones and similar treasures. This Lootsmithy is run by the notoriously
+greedy and usurious Ffeka. You may leave the shop south, and exit to the corner
+of Aquan Avenue and Sekolah Way, or you may swim up from here to the second
 floor of the building, to Ffeka's private quarters.{x
 ~
 0 8 8
@@ -4116,10 +4116,10 @@ D4
 S
 #27328
 Dae'as Street, Lower~
-{CYou stand in the middle of a wide north-south running street on the sandy 
-ocean floor, amongst the inhabited ruins of a great, ancient city. You may 
-continue for some distance further along the street to either the north or 
-south.  To the east you see Ota'ar Dar's notorious slave markets, and can 
+{CYou stand in the middle of a wide north-south running street on the sandy
+ocean floor, amongst the inhabited ruins of a great, ancient city. You may
+continue for some distance further along the street to either the north or
+south.  To the east you see Ota'ar Dar's notorious slave markets, and can
 also swim upwards, towards a huge, looming area of darkness in the water above. {x
 ~
 0 0 8
@@ -4142,17 +4142,17 @@ D4
 S
 #27329
 Mother's Ruin Slavemarket, Lower Level~
-{GYou stand in the lower level of Ota'ar Dar's notorious slave market, 
-"Mother's Ruin". Some sort of magic is in effect here that keeps the ocean's 
-water at bay, despite being so far below the sea's surface.  
+{GYou stand in the lower level of Ota'ar Dar's notorious slave market,
+"Mother's Ruin". Some sort of magic is in effect here that keeps the ocean's
+water at bay, despite being so far below the sea's surface.
 
-All around you you see evidence of the misery of the Domain's sentient 
-species, and the cruel joy of their unscrupulous captors.  Shackled slaves 
-are lined up on wooden platforms while their owners stand nearby, making 
-exaggerated claims regarding their quality and abilities and haggling with 
-prospective buyers.  
+All around you you see evidence of the misery of the Domain's sentient
+species, and the cruel joy of their unscrupulous captors.  Shackled slaves
+are lined up on wooden platforms while their owners stand nearby, making
+exaggerated claims regarding their quality and abilities and haggling with
+prospective buyers.
 
-You may exit west to Dae'as Street, swim up to the second level of the slave 
+You may exit west to Dae'as Street, swim up to the second level of the slave
 market, or enter Ota'ar Dar's Brawlarium, to the east.{x
 ~
 0 8 0
@@ -4175,12 +4175,12 @@ D4
 S
 #27330
 Barehands' Brawlarium~
-{GYou stand inside Barehands' Brawlarium, on the lower floor of a two-storey 
-ruined building, deep under the sea. This place was set up by Luanar 
-'Barehands' Teha to teach sahuagin warriors the finer points of unarmed combat, 
-and it is usually busy with students and teachers refining their martial 
-skills. You may leave the Brawlarium to the west, and enter Ota'ar Dar's 
-slave markets, or you may swim up from here to the second floor of the 
+{GYou stand inside Barehands' Brawlarium, on the lower floor of a two-storey
+ruined building, deep under the sea. This place was set up by Luanar
+'Barehands' Teha to teach sahuagin warriors the finer points of unarmed combat,
+and it is usually busy with students and teachers refining their martial
+skills. You may leave the Brawlarium to the west, and enter Ota'ar Dar's
+slave markets, or you may swim up from here to the second floor of the
 building, where Luanar himself can usually be found.{x
 ~
 0 8 8
@@ -4195,11 +4195,11 @@ D4
 S
 #27331
 The Fisher's Crust~
-{GYou stand inside the lower floor of a small two-storey building, deep under 
-the sea.  It has been converted into a bakery/convenience food store named 
-"The Fisher's Crust" by the proprietor, Kaumav.  Not exactly upmarket... cheap 
-and cheerful might be a good way of describing it?  Only... not that cheerful.  
-Ahem. You can leave east, out to Dae'as Street, or swim up to the second floor 
+{GYou stand inside the lower floor of a small two-storey building, deep under
+the sea.  It has been converted into a bakery/convenience food store named
+"The Fisher's Crust" by the proprietor, Kaumav.  Not exactly upmarket... cheap
+and cheerful might be a good way of describing it?  Only... not that cheerful.
+Ahem. You can leave east, out to Dae'as Street, or swim up to the second floor
 of the building.{x
 ~
 0 8 8
@@ -4214,12 +4214,12 @@ D4
 S
 #27332
 Dae'as Street, Lower~
-{CYou stand in the middle of a wide north-south street on the sandy ocean floor, 
-amongst the inhabited ruins of a great, ancient city. You may continue for some 
-distance further along the street to the south, or travel a short way north, 
-to the intersection of Dae'as Street and Malana Bridge Road.  To the west you 
+{CYou stand in the middle of a wide north-south street on the sandy ocean floor,
+amongst the inhabited ruins of a great, ancient city. You may continue for some
+distance further along the street to the south, or travel a short way north,
+to the intersection of Dae'as Street and Malana Bridge Road.  To the west you
 see the entrance to "The Fisher's Crust" bakery/eaterie, while to the east you
-a sign for 'Sekolah's Whim Casino'. You can also swim upwards, towards a huge, 
+a sign for 'Sekolah's Whim Casino'. You can also swim upwards, towards a huge,
 looming area of darkness in the water above. {x
 ~
 0 0 8
@@ -4246,9 +4246,9 @@ D4
 S
 #27333
 Sekolah's Whim Casino, Lower~
-{GYou stand inside the lower floor of a ruined, two-storey building, deep 
+{GYou stand inside the lower floor of a ruined, two-storey building, deep
 under the sea. It has been set up as a casino, and there are various mostly
-dice-based games of chance available here. You can leave west, out to Dae'as 
+dice-based games of chance available here. You can leave west, out to Dae'as
 Street, or swim up from here to the second floor of the casino.{x
 ~
 0 8 8
@@ -4263,10 +4263,10 @@ D4
 S
 #27334
 Pillagers' Arms~
-{GYou stand inside the lower floor of a medium-sized two-storey building, deep 
-under the sea.  It has been converted into a weapons store named "Pillager's 
-Arms" by the proprietor, Ahomar; the weapons that are for sale cover the 
-walls and display areas within the shop. You can leave north, out to Ilr'ta 
+{GYou stand inside the lower floor of a medium-sized two-storey building, deep
+under the sea.  It has been converted into a weapons store named "Pillager's
+Arms" by the proprietor, Ahomar; the weapons that are for sale cover the
+walls and display areas within the shop. You can leave north, out to Ilr'ta
 Close, east to a large forge, or swim up to the second floor of the building.{x
 ~
 0 8 8
@@ -4285,13 +4285,13 @@ D4
 S
 #27335
 The Metalworkers' Forge, Lower~
-{GYou stand in a large, well-equipped smithy, on the lower floor of a 
-two-storey ruined building, deep under the sea. There are two forges here, 
-one on the lower floor and one on the upper, as the smithy is shared by two 
-busy metalworkers: Ahomar the weaponsmith, and Zigrysk, who makes and deals 
-in goods for surface-dwellers visiting or living in Ota'ar Dar. 
+{GYou stand in a large, well-equipped smithy, on the lower floor of a
+two-storey ruined building, deep under the sea. There are two forges here,
+one on the lower floor and one on the upper, as the smithy is shared by two
+busy metalworkers: Ahomar the weaponsmith, and Zigrysk, who makes and deals
+in goods for surface-dwellers visiting or living in Ota'ar Dar.
 
-From this room you may travel west to the weaponsmith's shop, north to the 
+From this room you may travel west to the weaponsmith's shop, north to the
 "Surface-dwellers' Emporium," or up to the second level of the smithy.{x
 ~
 0 4|8|128 8
@@ -4310,11 +4310,11 @@ D4
 S
 #27336
 Malana Bridge Road, Lower~
-{CYou stand in the middle of a short east-west road on the sandy ocean floor, 
-amongst the inhabited ruins of a great, ancient city. Huge, locked gates loom 
-to the west, sealing off this canton. You see Ota'ar Dar's large temple, 
-"the House of the Joyful Hunter," to the north, may travel to the intersection 
-of Malana Bridge Road and Dae'as Street to the east, or can swim up, towards 
+{CYou stand in the middle of a short east-west road on the sandy ocean floor,
+amongst the inhabited ruins of a great, ancient city. Huge, locked gates loom
+to the west, sealing off this canton. You see Ota'ar Dar's large temple,
+"the House of the Joyful Hunter," to the north, may travel to the intersection
+of Malana Bridge Road and Dae'as Street to the east, or can swim up, towards
 a huge, looming area of darkness in the water above. {x
 ~
 0 0 8
@@ -4337,9 +4337,9 @@ D4
 S
 #27337
 Intersection of Dae'as Street North and Malana Bridge Road, Lower~
-{CYou stand at the intersection of Dae'as Street North and Malana Bridge Road on 
-the sandy ocean floor, amongst the inhabited ruins of a great, ancient city. 
-From here you can travel further north or south, or up, towards a huge, looming 
+{CYou stand at the intersection of Dae'as Street North and Malana Bridge Road on
+the sandy ocean floor, amongst the inhabited ruins of a great, ancient city.
+From here you can travel further north or south, or up, towards a huge, looming
 area of darkness in the water above. {x
 ~
 0 0 8
@@ -4362,12 +4362,12 @@ D4
 S
 #27338
 Bilani's Brews~
-{GYou stand inside the lower floor of a small two-storey building, deep under 
-the sea. It has been converted into a potion store named "Bilani's Brews" by 
-the proprietor... Bilani. You can hardly move for all the potions and 
-associated paraphenalia that fill up the space.  
+{GYou stand inside the lower floor of a small two-storey building, deep under
+the sea. It has been converted into a potion store named "Bilani's Brews" by
+the proprietor... Bilani. You can hardly move for all the potions and
+associated paraphenalia that fill up the space.
 
-You can leave north, out to the intersection of Teth Avenue and Prince's 
+You can leave north, out to the intersection of Teth Avenue and Prince's
 Cross, or swim up to the second floor of the building.{x
 ~
 0 8 8
@@ -4382,11 +4382,11 @@ D4
 S
 #27339
 Ilr'ta Close, Lower~
-{CYou stand in the middle of Ilr'ta Close, on the sandy ocean floor, amongst the 
-inhabited ruins of a great, ancient city. To the south you see the entrance to 
-"Pillager's Arms," Ota'ar Dar's weaponsmith, while to the east is the 
-"Surface-dwellers' Emporium," where you can buy goods useful for visitors to the 
-city. You can also swim upwards, towards a huge, looming area of darkness in the 
+{CYou stand in the middle of Ilr'ta Close, on the sandy ocean floor, amongst the
+inhabited ruins of a great, ancient city. To the south you see the entrance to
+"Pillager's Arms," Ota'ar Dar's weaponsmith, while to the east is the
+"Surface-dwellers' Emporium," where you can buy goods useful for visitors to the
+city. You can also swim upwards, towards a huge, looming area of darkness in the
 water above. {x
 ~
 0 0 8
@@ -4409,12 +4409,12 @@ D4
 S
 #27340
 Surface-dwellers' Emporium~
-{GYou stand inside the lower floor of a large two-storey building, deep under 
-the sea.  It has been converted into a shop that sells goods of use to 
+{GYou stand inside the lower floor of a large two-storey building, deep under
+the sea.  It has been converted into a shop that sells goods of use to
 surface-dwelling visitors by its proprietor, Zigrysk.
 
-An exit south leads to a forge, where some of the items in the shop are made, 
-while you can also exit out west to Ilr'ta Close, or up to the second storey 
+An exit south leads to a forge, where some of the items in the shop are made,
+while you can also exit out west to Ilr'ta Close, or up to the second storey
 of the building.{x
 ~
 0 8 8
@@ -4433,15 +4433,15 @@ D4
 S
 #27341
 House of the Joyful Hunter~
-{GYou stand in the Ota'ar Dar temple of Sekolah, the shark god of the sahuagin.  
-A large, richly-decorated building, it is attended by acolytes of Sekolah, 
-whose training building is attached to the temple.  While Sekolah cares little 
-for his followers, encouraging them to be self-sufficient, this building is 
-still one where believers may come to prostrate themselves before and petition 
-their god, despite the near-certainty that he will ignore, or even punish them.  
+{GYou stand in the Ota'ar Dar temple of Sekolah, the shark god of the sahuagin.
+A large, richly-decorated building, it is attended by acolytes of Sekolah,
+whose training building is attached to the temple.  While Sekolah cares little
+for his followers, encouraging them to be self-sufficient, this building is
+still one where believers may come to prostrate themselves before and petition
+their god, despite the near-certainty that he will ignore, or even punish them.
 
-From here you can head out to Malana Bridge road, to the south, visit the temple 
-shop to the north, exit to Dae'as Street to the east, or swim up, above the 
+From here you can head out to Malana Bridge road, to the south, visit the temple
+shop to the north, exit to Dae'as Street to the east, or swim up, above the
 temple's altar.{x
 ~
 0 4|8|65536 8
@@ -4464,12 +4464,12 @@ D4
 S
 #27342
 Corner of Dae'as Street North and Teth Avenue West, Lower~
-{CYou stand at the corner of Dae'as Street and Teth Avenue on the sandy ocean 
-floor, amongst the inhabited ruins of a great, ancient city. Ota'ar Dar's main 
-temple to Sekolah, "The House of the Joyful Hunter" may be accessed to the 
-west, while you can enter "Sekolah's Depths," where temple acolytes are 
-trained, to the north.  Teth Avenue continues to the east, and Dae'as Street 
-to the south. You can also head upwards, towards a huge, looming area of 
+{CYou stand at the corner of Dae'as Street and Teth Avenue on the sandy ocean
+floor, amongst the inhabited ruins of a great, ancient city. Ota'ar Dar's main
+temple to Sekolah, "The House of the Joyful Hunter" may be accessed to the
+west, while you can enter "Sekolah's Depths," where temple acolytes are
+trained, to the north.  Teth Avenue continues to the east, and Dae'as Street
+to the south. You can also head upwards, towards a huge, looming area of
 darkness in the water above. {x
 ~
 0 0 8
@@ -4496,11 +4496,11 @@ D4
 S
 #27343
 Intersection of Teth Avenue and Prince's Cross, Lower~
-{CYou stand at the intersection of Teth Avenue and Prince's Cross on the sandy 
-ocean floor, amongst the inhabited ruins of a great, ancient city. Teth Avenue 
-continues to the east and west, while the great gates to the Prince's canton 
-loom to the north. To the south you can enter Bilani's Brews, Ota'ar Dar's 
-clerical potion store, or you can head upwards, towards a huge, looming area 
+{CYou stand at the intersection of Teth Avenue and Prince's Cross on the sandy
+ocean floor, amongst the inhabited ruins of a great, ancient city. Teth Avenue
+continues to the east and west, while the great gates to the Prince's canton
+loom to the north. To the south you can enter Bilani's Brews, Ota'ar Dar's
+clerical potion store, or you can head upwards, towards a huge, looming area
 of darkness in the water above. {x
 ~
 0 0 8
@@ -4527,11 +4527,11 @@ D4
 S
 #27344
 Intersection of Teth Avenue and Ilr'ta Close, Lower~
-{CYou stand at the intersection of Teth Avenue and  Ilr'ta Close on the sandy 
-ocean floor, amongst the inhabited ruins of a great, ancient city. Teth Avenue 
-continues to the east and west, while Ilr'ta Close and the several shops it 
-hosts lie just to the south.  To the north you can visit Mala't the Sage, 
-Ota'ar Dar's chief identifier of artefacts, or you can head upwards, towards 
+{CYou stand at the intersection of Teth Avenue and  Ilr'ta Close on the sandy
+ocean floor, amongst the inhabited ruins of a great, ancient city. Teth Avenue
+continues to the east and west, while Ilr'ta Close and the several shops it
+hosts lie just to the south.  To the north you can visit Mala't the Sage,
+Ota'ar Dar's chief identifier of artefacts, or you can head upwards, towards
 a huge, looming area of darkness in the water above. {x
 ~
 0 0 8
@@ -4558,11 +4558,11 @@ D4
 S
 #27345
 Teth Avenue East, Lower~
-{CYou stand at the easternmost end of Teth Avenue, 
-amongst the inhabited ruins of a great, ancient city. To the north lies 
-"Mohmit's Magical Supplies," while to the east you note that "Torturer's 
-Delight" is open, and recall with a shudder sahuagin society's favourite 
-collective pastime. Teth Avenue continues west, and you can also head 
+{CYou stand at the easternmost end of Teth Avenue,
+amongst the inhabited ruins of a great, ancient city. To the north lies
+"Mohmit's Magical Supplies," while to the east you note that "Torturer's
+Delight" is open, and recall with a shudder sahuagin society's favourite
+collective pastime. Teth Avenue continues west, and you can also head
 upwards, towards a huge, looming area of darkness in the water above. {x
 ~
 0 0 8
@@ -4585,14 +4585,14 @@ D4
 S
 #27346
 Torturers' Delight~
-{GYou stand inside the lower floor of a large two-storey building, deep under 
-the sea. It has been converted to a shop, "Torturers' Delight," which 
-specialises in the sale of equipment for torturing, one of the sahuagin's 
-favourite pastimes.  The shop is redolent with the gruesome instruments and 
-implements of the professional (or keen hobbyist) practitioner of the 
+{GYou stand inside the lower floor of a large two-storey building, deep under
+the sea. It has been converted to a shop, "Torturers' Delight," which
+specialises in the sale of equipment for torturing, one of the sahuagin's
+favourite pastimes.  The shop is redolent with the gruesome instruments and
+implements of the professional (or keen hobbyist) practitioner of the
 torturer's craft. There's a large SIGN on the eastern wall.
 
-From here an exit west will deposit you in Teth Avenue, or you may swim up 
+From here an exit west will deposit you in Teth Avenue, or you may swim up
 to the second storey of the building.{x
 ~
 0 8 8
@@ -4606,16 +4606,16 @@ D4
 0 -1 27646
 E
 sign~
-It is a list of prices for demonstrating the various implements of torture.  
+It is a list of prices for demonstrating the various implements of torture.
 
 It reads:
 
 "Any device we sell may be demonstrated upstairs, for a fee.  Demonstrations
  includes a gratis copy of the device in question, after the demonstration has
  taken place.
- 
+
  {YPrices:{x
- 
+
  {y600  coppers{x   {WThe Thumbscrew{x
  {y625  coppers{x	{WThe Tongue Tearer{x
  {y650  coppers{x	{WThe Instep Borer{x
@@ -4624,18 +4624,18 @@ It reads:
  {y725  coppers{x	{WThe Batog{x
  {y750  coppers{x	{WThe Birch Rod{x
  {y1000 coppers{x	{WThe Rack{X {R*{x
- 
+
  {R*{x {wNo gratis copy included with this demonstration.{x"
 ~
 S
 #27347
 Sekolah's Supplies~
-{GYou stand in the Ota'ar Dar temple of Sekolah, the shark god of the sahuagin.  
-This part of the temple includes a shop selling clerical and religious 
-materials; Sekolah encourages his followers to pursue self-sufficiency in all 
+{GYou stand in the Ota'ar Dar temple of Sekolah, the shark god of the sahuagin.
+This part of the temple includes a shop selling clerical and religious
+materials; Sekolah encourages his followers to pursue self-sufficiency in all
 things, including finances.
 
-From here you can head east into Sekolah's Depths, where new acolytes are 
+From here you can head east into Sekolah's Depths, where new acolytes are
 trained, up to the area above the shop, or south to the temple's altar.{x
 ~
 0 4|8 8
@@ -4654,13 +4654,13 @@ D4
 S
 #27348
 Sekolah's Depths~
-{GYou stand inside the lower floor of a medium-sized two-storey building, deep 
-under the sea.  It is part of 'Sekolah's Depths,' the training facilities for 
-acolytes of Sekolah, the sahuagin shark god.  This is the communal study and 
+{GYou stand inside the lower floor of a medium-sized two-storey building, deep
+under the sea.  It is part of 'Sekolah's Depths,' the training facilities for
+acolytes of Sekolah, the sahuagin shark god.  This is the communal study and
 work area, and is typically presided over by Sekolah Depths' Matron. In places
-the floor feels a little springy. 
+the floor feels a little springy.
 
-You can leave west, out to the main Sekolah temple, south, to the corner of 
+You can leave west, out to the main Sekolah temple, south, to the corner of
 Dae'as Street and Teth Avenue, or swim up to the second floor of the building.{x
 ~
 0 8 8
@@ -4677,7 +4677,7 @@ D4
 ~
 0 -1 27648
 D5
-You find a hidden wooden trapdoor in a corner of the room.  
+You find a hidden wooden trapdoor in a corner of the room.
 It's covered in a slimy substance.
 ~
 trapdoor down floor ground springy~
@@ -4685,11 +4685,11 @@ trapdoor down floor ground springy~
 S
 #27349
 Prince's Cross, Lower~
-{CYou stand before the northern gates of Prince's Cross on the sandy ocean 
-floor, amongst the inhabited ruins of a great, ancient city. While the 
-northern gates to the Prince's canton are currently sealed and impassable, 
-you may travel south from here to the intersection of Teth Avenue and 
-Prince's Cross, or can head upwards, towards a huge, looming area of 
+{CYou stand before the northern gates of Prince's Cross on the sandy ocean
+floor, amongst the inhabited ruins of a great, ancient city. While the
+northern gates to the Prince's canton are currently sealed and impassable,
+you may travel south from here to the intersection of Teth Avenue and
+Prince's Cross, or can head upwards, towards a huge, looming area of
 darkness in the water above. {x
 ~
 0 0 8
@@ -4708,12 +4708,12 @@ D4
 S
 #27350
 Mala't the Sage~
-{GYou stand inside the lower floor of a small two-storey building, deep under 
-the sea. It feels more like a sahuagin's home than a place of business, with a 
-dining table and chairs in the centre of the room, and other accoutrements of 
-ocean-floor domesticity everywhere you else you look.  
+{GYou stand inside the lower floor of a small two-storey building, deep under
+the sea. It feels more like a sahuagin's home than a place of business, with a
+dining table and chairs in the centre of the room, and other accoutrements of
+ocean-floor domesticity everywhere you else you look.
 
-You can leave south, out to the intersection of Teth Avenue and Ilr'ta Close, 
+You can leave south, out to the intersection of Teth Avenue and Ilr'ta Close,
 or swim up to the second floor of the building.{x
 ~
 0 8 8
@@ -4728,13 +4728,13 @@ D4
 S
 #27351
 Mohmit's Magical Supplies~
-{GYou stand inside the lower floor of a small two-storey building, deep under 
-the sea. It has been converted into a magical supplies store by is proprietor, 
-Mohmit.  While clerical magic is tolerated by sahuagin, most are deeply 
-suspicious and fearful of other sorts of magic, and loather those who practice 
+{GYou stand inside the lower floor of a small two-storey building, deep under
+the sea. It has been converted into a magical supplies store by is proprietor,
+Mohmit.  While clerical magic is tolerated by sahuagin, most are deeply
+suspicious and fearful of other sorts of magic, and loather those who practice
 such arts. This is why the owner, Mohmit, is a foreigner.
 
-You can travel east to investigate Mohmit's magical laboratory, south, out 
+You can travel east to investigate Mohmit's magical laboratory, south, out
 to Teth Avenue, or swim up to the second floor of the building.{x
 ~
 0 8 8
@@ -4753,12 +4753,12 @@ D4
 S
 #27352
 Mohmit's Magical Laboratory, Lower~
-{GYou stand inside the lower floor of a small two-storey building, deep under 
-the sea. This floor and the one above it have been converted into a 
-fully-functioning magical laboratory by their  owner, Mohmit.  This is where 
+{GYou stand inside the lower floor of a small two-storey building, deep under
+the sea. This floor and the one above it have been converted into a
+fully-functioning magical laboratory by their  owner, Mohmit.  This is where
 he manufactures all the magical goods he sells in his shop to the west.
 
-You can travel west and visit Mohmit's shop, or swim up to the second floor 
+You can travel west and visit Mohmit's shop, or swim up to the second floor
 of the building to see the rest of the laboratory.{x
 ~
 0 8|256 8
@@ -4783,11 +4783,11 @@ D3
 S
 #27608
 Sekolah Way South, Upper~
-{cYou stand in the middle of a pedestrian throughfare about 4 metres above the 
-sandy ocean floor, amongst the inhabited ruins of a great, ancient city.  
-To the south a huge gate looms, cutting off access to this canton from the rest 
-of the city.  The road continues north, and you may also swim upwards, into the 
-huge, looming area of darkness in the water just above your head, or head 
+{cYou stand in the middle of a pedestrian throughfare about 4 metres above the
+sandy ocean floor, amongst the inhabited ruins of a great, ancient city.
+To the south a huge gate looms, cutting off access to this canton from the rest
+of the city.  The road continues north, and you may also swim upwards, into the
+huge, looming area of darkness in the water just above your head, or head
 straight down towards the ocean floor. {x
 ~
 0 0 8
@@ -4810,9 +4810,9 @@ D5
 S
 #27609
 Pheskak's Quarters~
-{gYou stand in the private quarters of Pheskak the cartographer, in the 
-underwater ruins of an ancient city.  The room contains all the standard 
-amenities for sahuagin living, as well as a locked trunk that has been bolted 
+{gYou stand in the private quarters of Pheskak the cartographer, in the
+underwater ruins of an ancient city.  The room contains all the standard
+amenities for sahuagin living, as well as a locked trunk that has been bolted
 into the stone floor.  You may travel down into Pheskak's shop, or up, into the
 huge, looming area of dark water above you.{x
 ~
@@ -4828,10 +4828,10 @@ D5
 S
 #27610
 Broodcoin Office~
-{gYou are in the second-storey offices of Broodcoin, Ota'ar Dar's bank. 
-Various chairs, desks and collections of files fill the room, and there 
-are also typically a number of Broodcoin employees here, busy with paperwork. 
-You may swim down, to the bank's reception area, or up, into the huge, 
+{gYou are in the second-storey offices of Broodcoin, Ota'ar Dar's bank.
+Various chairs, desks and collections of files fill the room, and there
+are also typically a number of Broodcoin employees here, busy with paperwork.
+You may swim down, to the bank's reception area, or up, into the huge,
 looming area of dark water above you.{x
 ~
 0 4 8
@@ -4846,11 +4846,11 @@ D5
 S
 #27611
 Sekolah Way, Upper~
-{cYou stand in the middle of a pedestrian throughfare about 4 metres above the 
-sandy ocean floor, amongst the inhabited ruins of a great, ancient city.  Some 
-distance to the south you see a huge gate, which cuts off access to this canton 
-from the rest of the city.  The throughfare continues north and south, and you 
-may also swim upwards, into the huge, looming area of darkness in the water 
+{cYou stand in the middle of a pedestrian throughfare about 4 metres above the
+sandy ocean floor, amongst the inhabited ruins of a great, ancient city.  Some
+distance to the south you see a huge gate, which cuts off access to this canton
+from the rest of the city.  The throughfare continues north and south, and you
+may also swim upwards, into the huge, looming area of darkness in the water
 just above your head, or head straight down towards the ocean floor. {x
 ~
 0 0 8
@@ -4873,11 +4873,11 @@ D5
 S
 #27612
 Fautap's Quarters~
-{gYou stand in the private quarters of Fautap the tinker, in the underwater 
-ruins of an ancient city.  The room contains all the standard amenities for 
-sahuagin living, as well a considerable overflow of tools and repaired or 
-being-repaired goods from Fautap's downstairs business.  You may travel down 
-into his shop, or directly up, into the huge, looming area of dark water 
+{gYou stand in the private quarters of Fautap the tinker, in the underwater
+ruins of an ancient city.  The room contains all the standard amenities for
+sahuagin living, as well a considerable overflow of tools and repaired or
+being-repaired goods from Fautap's downstairs business.  You may travel down
+into his shop, or directly up, into the huge, looming area of dark water
 above you.{x
 ~
 0 4 8
@@ -4892,10 +4892,10 @@ D5
 S
 #27613
 Shauak's Quarters~
-{gYou stand in the private quarters of Shauak the leather goods vendor, in the 
-underwater  ruins of an ancient city.  The room contains all the standard 
-amenities for sahuagin living, as well a considerable overflow of stock from 
-Shauak's downstairs business.  You may travel down into his shop, or directly 
+{gYou stand in the private quarters of Shauak the leather goods vendor, in the
+underwater  ruins of an ancient city.  The room contains all the standard
+amenities for sahuagin living, as well a considerable overflow of stock from
+Shauak's downstairs business.  You may travel down into his shop, or directly
 up, into the huge, looming area of dark water above you.{x
 ~
 0 4 8
@@ -4910,10 +4910,10 @@ D5
 S
 #27614
 Kaliah Alley South, Upper~
-{cYou stand in a narrow alleyway about 4 metres above the sandy ocean floor, 
-amongst the inhabited ruins of a great, ancient city. The alley continues 
-north, where it eventually rounds a corner to the west.  You may also swim 
-upwards, into the huge, looming area of darkness in the water just above your 
+{cYou stand in a narrow alleyway about 4 metres above the sandy ocean floor,
+amongst the inhabited ruins of a great, ancient city. The alley continues
+north, where it eventually rounds a corner to the west.  You may also swim
+upwards, into the huge, looming area of darkness in the water just above your
 head, or head straight down towards the ocean floor. {x
 ~
 0 0 8
@@ -4932,10 +4932,10 @@ D5
 S
 #27615
 Abyssal Close, Upper~
-{cYou stand in the middle of a small close about 4 metres above the sandy ocean 
-floor, amongst the inhabited ruins of a great, ancient city. To the east the 
-close joins a longer road running north-south. You can also swim upwards from 
-here, into the huge, looming area of darkness in the water just above your head, 
+{cYou stand in the middle of a small close about 4 metres above the sandy ocean
+floor, amongst the inhabited ruins of a great, ancient city. To the east the
+close joins a longer road running north-south. You can also swim upwards from
+here, into the huge, looming area of darkness in the water just above your head,
 or head straight down towards the ocean floor.{x
 ~
 0 0 8
@@ -4954,11 +4954,11 @@ D5
 S
 #27616
 Battle Dojo, Training Hall~
-{gYou stand in the second-storey room of Ota'ar Dar's Battle Dojo, in the 
-underwater ruins of an ancient city.  The room contains various pieces of 
-advanced warrior training equipment, as well as amenities for trainee and 
-guildmaster rest and recuperation. You may travel down to the battle dojo 
-reception floor, or directly up, into the huge, looming area of dark water 
+{gYou stand in the second-storey room of Ota'ar Dar's Battle Dojo, in the
+underwater ruins of an ancient city.  The room contains various pieces of
+advanced warrior training equipment, as well as amenities for trainee and
+guildmaster rest and recuperation. You may travel down to the battle dojo
+reception floor, or directly up, into the huge, looming area of dark water
 directly above you.{x
 ~
 0 0 8
@@ -4973,11 +4973,11 @@ D5
 S
 #27617
 Intersection of Abyssal Close and Sekolah Way, Upper~
-{cYou stand in the intersection of Abyssal Close and Sekolah Way about 4 metres 
-above the ocean floor, amongst the inhabited ruins of a great, ancient city. 
-Abyssal Close terminates not far to the west, while Sekolah Way continues north 
-and south. You can also swim straight upwards, into the huge, looming area of 
-darkness in the water just above your head, or head down, towards the ocean 
+{cYou stand in the intersection of Abyssal Close and Sekolah Way about 4 metres
+above the ocean floor, amongst the inhabited ruins of a great, ancient city.
+Abyssal Close terminates not far to the west, while Sekolah Way continues north
+and south. You can also swim straight upwards, into the huge, looming area of
+darkness in the water just above your head, or head down, towards the ocean
 floor.{x
 ~
 0 0 8
@@ -5010,10 +5010,10 @@ Put the pets for the pet store in here.
 S
 #27619
 Kaliah Alley, Upper~
-{cYou stand in the middle of a north-south running alley, about 4 metres above 
-the sandy ocean floor, amongst the inhabited ruins of a great, ancient city. 
-To the north the alley joins Aquan Avenue, which curves around to the west. 
-You can also swim upwards from here, into the huge, looming area of darkness 
+{cYou stand in the middle of a north-south running alley, about 4 metres above
+the sandy ocean floor, amongst the inhabited ruins of a great, ancient city.
+To the north the alley joins Aquan Avenue, which curves around to the west.
+You can also swim upwards from here, into the huge, looming area of darkness
 in the water just above your head, or head straight down towards the ocean floor.{x
 ~
 0 0 8
@@ -5036,11 +5036,11 @@ D5
 S
 #27620
 Reavers' Guild Member Quarters~
-{gYou stand in a large dormitory-like area, on the upper floor of a ruined 
-building, deep underwater.  This is the members' quarters of the Reavers, 
-a sahuagin organisation dedicated to exploration and plunder of the underwater 
-and surface world outside of Ota'ar Dar.  You can travel north from here, to 
-the Reavers' guild master's quarters, down, to the guild hall, or up, into the 
+{gYou stand in a large dormitory-like area, on the upper floor of a ruined
+building, deep underwater.  This is the members' quarters of the Reavers,
+a sahuagin organisation dedicated to exploration and plunder of the underwater
+and surface world outside of Ota'ar Dar.  You can travel north from here, to
+the Reavers' guild master's quarters, down, to the guild hall, or up, into the
 huge, looming area of darkness in the water just above your head.{x
 ~
 0 0 8
@@ -5059,10 +5059,10 @@ D5
 S
 #27621
 Drinker's Lounge~
-{gYou stand in the Drinker's Den drinking lounge, in the underwater ruins of an 
-ancient city.  The room contains couches and tables in varying states of 
-disrepair.  From here you may travel down into the main bar area, north to the 
-eating area of the attached "restaurant," or directly up, into the huge, looming 
+{gYou stand in the Drinker's Den drinking lounge, in the underwater ruins of an
+ancient city.  The room contains couches and tables in varying states of
+disrepair.  From here you may travel down into the main bar area, north to the
+eating area of the attached "restaurant," or directly up, into the huge, looming
 area of dark water above you.{x
 ~
 0 0 8
@@ -5081,11 +5081,11 @@ D5
 S
 #27622
 Corner of Aquan Avenue West and Sekolah Way North, Upper~
-{cYou stand at the western corner of Aquan Avenue and Sekolah Way, about 4 
-metres above the ocean floor, amongst the inhabited ruins of a great, ancient 
-city. You can keep travelling along Aquan Avenure to the east, while Sekolah 
-Way continues south. You can also swim straight upwards, into the huge, looming 
-area of darkness in the water just above your head, or head down, towards the 
+{cYou stand at the western corner of Aquan Avenue and Sekolah Way, about 4
+metres above the ocean floor, amongst the inhabited ruins of a great, ancient
+city. You can keep travelling along Aquan Avenure to the east, while Sekolah
+Way continues south. You can also swim straight upwards, into the huge, looming
+area of darkness in the water just above your head, or head down, towards the
 ocean floor.{x
 ~
 0 0 8
@@ -5108,11 +5108,11 @@ D5
 S
 #27623
 Intersection of Aquan Avenue and Dae'as Street South, Upper~
-{cYou stand at the intersection of Aquan Avenue and Dae'as Street, about 4 
-metres above the ocean floor, amongst the inhabited ruins of a great, ancient 
-city. You can keep travelling along Aquan Avenure to the west or east, while 
-Dae'as Street continues north. You can also swim straight upwards, into the 
-huge, looming area of darkness in the water just above your head, or head 
+{cYou stand at the intersection of Aquan Avenue and Dae'as Street, about 4
+metres above the ocean floor, amongst the inhabited ruins of a great, ancient
+city. You can keep travelling along Aquan Avenure to the west or east, while
+Dae'as Street continues north. You can also swim straight upwards, into the
+huge, looming area of darkness in the water just above your head, or head
 down, towards the ocean floor.{x
 ~
 0 0 8
@@ -5139,11 +5139,11 @@ D5
 S
 #27624
 Corner of Aquan Avenue East and Kaliah Alley, Upper~
-{cYou stand on the corner of Aquan Avenue and Kaliah Alley, about 4 metres 
-above the ocean floor, amongst the inhabited ruins of a great, ancient city. 
-You can keep travelling along Aquan Avenure to the west, while Kaliah Alley  
-continues south. You can also swim straight upwards, into the huge, looming 
-area of darkness in the water just above your head, or head down, towards 
+{cYou stand on the corner of Aquan Avenue and Kaliah Alley, about 4 metres
+above the ocean floor, amongst the inhabited ruins of a great, ancient city.
+You can keep travelling along Aquan Avenure to the west, while Kaliah Alley
+continues south. You can also swim straight upwards, into the huge, looming
+area of darkness in the water just above your head, or head down, towards
 the ocean floor.{x
 ~
 0 0 8
@@ -5166,11 +5166,11 @@ D5
 S
 #27625
 Reavers' Guild Master Quarters~
-{gYou stand in the guild master's quarters in Ota'ar Dar's Reavers' Guild, in 
-the underwater ruins of an ancient city.  While containing basic sahuagin 
-living amenties, the room is otherwise sparsely furnished and decorated, having 
-a strong  minimalist feel to it. From here you may travel down to the Reavers' 
-guild reception area, south to the members' quarters, or directly up, into the 
+{gYou stand in the guild master's quarters in Ota'ar Dar's Reavers' Guild, in
+the underwater ruins of an ancient city.  While containing basic sahuagin
+living amenties, the room is otherwise sparsely furnished and decorated, having
+a strong  minimalist feel to it. From here you may travel down to the Reavers'
+guild reception area, south to the members' quarters, or directly up, into the
 huge, looming area of dark water above you.{x
 ~
 0 4 8
@@ -5189,10 +5189,10 @@ D5
 S
 #27626
 Gorge Palace Upstairs Lounge and Bar~
-{gYou stand in the Gorge Palace upstairs eating and drinking lounge, in the 
-underwater ruins of an ancient city.  The room contains couches, armchairs, 
-and tables in varying states of disrepair.  From here you may travel down into 
-the main restaurant area, head south to the Drinker's Lounge, or swim directly 
+{gYou stand in the Gorge Palace upstairs eating and drinking lounge, in the
+underwater ruins of an ancient city.  The room contains couches, armchairs,
+and tables in varying states of disrepair.  From here you may travel down into
+the main restaurant area, head south to the Drinker's Lounge, or swim directly
 up, into the huge, looming area of dark water above you.{x
 ~
 0 0 8
@@ -5211,11 +5211,11 @@ D5
 S
 #27627
 The Lootsmith's Quarters~
-{gYou stand in Ota'ar Dar's Loothsmith's quarters on the second storey of a 
-building deep underwater in the ruins of an ancient city.  The room contains 
-elaborate and luxurious living amenities for a sahuagin and the walls are 
-richly decorated with expensive pieces of art. You may travel down from here 
-to "The Kraken's Den" shop, or directly up, into the huge, looming area of 
+{gYou stand in Ota'ar Dar's Loothsmith's quarters on the second storey of a
+building deep underwater in the ruins of an ancient city.  The room contains
+elaborate and luxurious living amenities for a sahuagin and the walls are
+richly decorated with expensive pieces of art. You may travel down from here
+to "The Kraken's Den" shop, or directly up, into the huge, looming area of
 dark water above you.{x
 ~
 0 4 8
@@ -5230,10 +5230,10 @@ D5
 S
 #27628
 Dae'as Street, Upper~
-{cYou stand in the middle of a long street running north-south, about 4 metres 
-above the ocean floor, amongst the inhabited ruins of a great, ancient city. 
-You can keep travelling along the street either north or south, and can also 
-swim straight upwards, into the huge, looming area of darkness in the water 
+{cYou stand in the middle of a long street running north-south, about 4 metres
+above the ocean floor, amongst the inhabited ruins of a great, ancient city.
+You can keep travelling along the street either north or south, and can also
+swim straight upwards, into the huge, looming area of darkness in the water
 just above your head, or head down, towards the ocean floor.{x
 ~
 0 0 8
@@ -5256,17 +5256,17 @@ D5
 S
 #27629
 Mother's Ruin Slavemarket, Upper Level~
-{gYou stand in the upper level of Ota'ar Dar's notorious slave market, 
-"Mother's Ruin". Some sort of magic is in effect here that keeps the ocean's 
-water at bay, despite being so far below the sea's surface.  
+{gYou stand in the upper level of Ota'ar Dar's notorious slave market,
+"Mother's Ruin". Some sort of magic is in effect here that keeps the ocean's
+water at bay, despite being so far below the sea's surface.
 
-All around you you see evidence of the misery of the Domain's sentient 
-species, and the cruel joy of their unscrupulous captors.  Shackled slaves 
-are lined up on wooden platforms while their owners stand nearby, making 
-exaggerated claims regarding their quality and abilities and haggling with 
-prospective buyers. 
+All around you you see evidence of the misery of the Domain's sentient
+species, and the cruel joy of their unscrupulous captors.  Shackled slaves
+are lined up on wooden platforms while their owners stand nearby, making
+exaggerated claims regarding their quality and abilities and haggling with
+prospective buyers.
 
-You may travel down from here to the slave market's ground level, or directly 
+You may travel down from here to the slave market's ground level, or directly
 up, into the huge, looming area of dark water just above your head.{x
 ~
 0 0 0
@@ -5281,11 +5281,11 @@ D5
 S
 #27630
 Barehands' Quarters~
-{gYou stand in the private quarters of Luanar 'Barehands' Teha, the reknowned 
-sahuagin weaponless training master, in the underwater  ruins of an ancient 
-city. The sparsely-furnished room contains all the standard amenities for 
-sahuagin living, as well as a variety of martial training equipment.  You may 
-travel down into the main Brawlarium, or directly up, into the huge, looming 
+{gYou stand in the private quarters of Luanar 'Barehands' Teha, the reknowned
+sahuagin weaponless training master, in the underwater  ruins of an ancient
+city. The sparsely-furnished room contains all the standard amenities for
+sahuagin living, as well as a variety of martial training equipment.  You may
+travel down into the main Brawlarium, or directly up, into the huge, looming
 area of dark water above you.{x
 ~
 0 4 8
@@ -5300,10 +5300,10 @@ D5
 S
 #27631
 The Fisher's Crust Storage~
-{gYou stand in a smallish storage room on the second floor of a ruined 
-building, deep underwater.  The room contains mostly stock and cooking 
-equipment for the bakery/eaterie downstairs. You may travel down from 
-here, to the shop, or directly up, into the huge, looming area of dark 
+{gYou stand in a smallish storage room on the second floor of a ruined
+building, deep underwater.  The room contains mostly stock and cooking
+equipment for the bakery/eaterie downstairs. You may travel down from
+here, to the shop, or directly up, into the huge, looming area of dark
 water above you.{x
 ~
 0 4 8
@@ -5318,11 +5318,11 @@ D5
 S
 #27632
 Dae'as Street, Upper~
-{cYou stand in the middle of a long street running north-south, about 4 metres 
-above the ocean floor, amongst the inhabited ruins of a great, ancient city. 
-You can keep travelling along the street either north, to the intersection of 
-Dae'as Street and Malana Bridge Road, or south, towards Dae'as Street South.  
-You can also swim straight upwards, into the huge, looming area of darkness in 
+{cYou stand in the middle of a long street running north-south, about 4 metres
+above the ocean floor, amongst the inhabited ruins of a great, ancient city.
+You can keep travelling along the street either north, to the intersection of
+Dae'as Street and Malana Bridge Road, or south, towards Dae'as Street South.
+You can also swim straight upwards, into the huge, looming area of darkness in
 the water just above your head, or head down, towards the ocean floor.{x
 ~
 0 0 8
@@ -5345,10 +5345,10 @@ D5
 S
 #27633
 Sekolah's Whim Casino, Upper~
-{gYou stand on the second floor of a ruined building, deep underwater, 
-in a large room that has been crudely set up as a casino.  It seems that mostly 
-dice-based games are being offered here. You may travel down, to the lower 
-floor of the casino, or directly up, into the huge, looming area of dark water 
+{gYou stand on the second floor of a ruined building, deep underwater,
+in a large room that has been crudely set up as a casino.  It seems that mostly
+dice-based games are being offered here. You may travel down, to the lower
+floor of the casino, or directly up, into the huge, looming area of dark water
 above you.{x
 ~
 0 0 8
@@ -5363,10 +5363,10 @@ D5
 S
 #27634
 Weaponsmith's Quarters~
-{gYou stand in the private quarters of Ahomar the weaponsmith, in the 
-underwater ruins of an ancient city. The sparsely-furnished room contains all 
-the standard amenities for sahuagin living, as well as a variety of martial 
-training equipment.  You may travel down into the Pillager's Arms, or directly 
+{gYou stand in the private quarters of Ahomar the weaponsmith, in the
+underwater ruins of an ancient city. The sparsely-furnished room contains all
+the standard amenities for sahuagin living, as well as a variety of martial
+training equipment.  You may travel down into the Pillager's Arms, or directly
 up, into the huge, looming area of dark water above you.{x
 ~
 0 4 8
@@ -5381,14 +5381,14 @@ D5
 S
 #27635
 The Metalworkers' Forge, Upper~
-{GYou stand in a large, well-equipped smithy, on the upper floor of a 
-two-storey ruined building, deep under the sea. There are two forges here, one 
-on the lower floor and one on this one, as the smithy is shared by two busy 
-metalworkers: Ahomar the weaponsmith, and Zigrysk, who makes and deals in goods 
-for surface-dwellers visiting or living in Ota'ar Dar. 
+{GYou stand in a large, well-equipped smithy, on the upper floor of a
+two-storey ruined building, deep under the sea. There are two forges here, one
+on the lower floor and one on this one, as the smithy is shared by two busy
+metalworkers: Ahomar the weaponsmith, and Zigrysk, who makes and deals in goods
+for surface-dwellers visiting or living in Ota'ar Dar.
 
-From this room you may travel north to Zigrysk's attached quarters, down 
-to the lower level of the smithy, or up, into the huge, looming area of dark 
+From this room you may travel north to Zigrysk's attached quarters, down
+to the lower level of the smithy, or up, into the huge, looming area of dark
 water above you.{x
 ~
 0 4|128 8
@@ -5407,13 +5407,13 @@ D5
 S
 #27636
 Malana Bridge Road, Upper~
-{cYou are at the western end of a short east-west road, about 4 metres above 
-the ocean floor, amongst the inhabited ruins of a great, ancient city. Huge, 
+{cYou are at the western end of a short east-west road, about 4 metres above
+the ocean floor, amongst the inhabited ruins of a great, ancient city. Huge,
 locked gates loom to the west, sealing off this canton.
 
-You can keep travelling along the street east, to the intersection of Dae'as 
-Street and Malana Bridge Road, or can swim up, towards a huge, looming area 
-of darkness in the water just above your head.  You can also head down, towards 
+You can keep travelling along the street east, to the intersection of Dae'as
+Street and Malana Bridge Road, or can swim up, towards a huge, looming area
+of darkness in the water just above your head.  You can also head down, towards
 the ocean floor.{x
 ~
 0 0 8
@@ -5436,11 +5436,11 @@ D5
 S
 #27637
 Intersection of Dae'as Street North and Malana Bridge Road, Upper~
-{cYou are at the intersection of Dae'as Street and Malana Bridge Road, about 
-4 metres above the ocean floor, amongst the inhabited ruins of a great, ancient 
-city. From here you can keep travelling along Dae'as Street to the north or 
-south, or head east, to Malana Bridge Road. Otherwise you can swim up, towards 
-a huge, looming area of darkness in the water just above your head, or head 
+{cYou are at the intersection of Dae'as Street and Malana Bridge Road, about
+4 metres above the ocean floor, amongst the inhabited ruins of a great, ancient
+city. From here you can keep travelling along Dae'as Street to the north or
+south, or head east, to Malana Bridge Road. Otherwise you can swim up, towards
+a huge, looming area of darkness in the water just above your head, or head
 down, towards the ocean floor.{x
 ~
 0 0 8
@@ -5467,11 +5467,11 @@ D5
 S
 #27638
 Bilani's Quarters~
-{gYou stand in Ota'ar Dar's potionmaker  quarters on the second storey of a 
-building deep underwater in the ruins of an ancient city.  The room contains 
-modest living amenities for a sahuagin, but is filled with reagents and 
-potion-making paraphenalia of all kinds.. You may travel down from here 
-to "Bilani's Brews" shop, or directly up, into the huge, looming area of 
+{gYou stand in Ota'ar Dar's potionmaker  quarters on the second storey of a
+building deep underwater in the ruins of an ancient city.  The room contains
+modest living amenities for a sahuagin, but is filled with reagents and
+potion-making paraphenalia of all kinds.. You may travel down from here
+to "Bilani's Brews" shop, or directly up, into the huge, looming area of
 dark water above you.{x
 ~
 0 4 8
@@ -5486,10 +5486,10 @@ D5
 S
 #27639
 Ilr'ta Close, Upper~
-{cYou stand in Ilr'ta Close, about 4 metres above the ocean floor, amongst the 
-inhabited ruins of a great, ancient city. You can travel north from here, to 
-the intersection of Teth Avenue and Ilr'ta Close, swim straight upwards, into 
-the huge, looming area of darkness in the water just above your head, or head 
+{cYou stand in Ilr'ta Close, about 4 metres above the ocean floor, amongst the
+inhabited ruins of a great, ancient city. You can travel north from here, to
+the intersection of Teth Avenue and Ilr'ta Close, swim straight upwards, into
+the huge, looming area of darkness in the water just above your head, or head
 down, towards the ocean floor.{x
 ~
 0 0 8
@@ -5508,14 +5508,14 @@ D5
 S
 #27640
 Emporium Quarters~
-{gYou stand in the quarters of Zigrysk, the proprietor of "Surface-dweller's 
-Emporium," on the second storey of a ruined building, deep underwater.  
-The room contains the usual modest living amenities one associates with 
-sahuagin, but also is used to store various items thought by Zigrysk to be of 
-use to surface-dwellers and manufacturing equipment for the items he constructs 
-personally. 
+{gYou stand in the quarters of Zigrysk, the proprietor of "Surface-dweller's
+Emporium," on the second storey of a ruined building, deep underwater.
+The room contains the usual modest living amenities one associates with
+sahuagin, but also is used to store various items thought by Zigrysk to be of
+use to surface-dwellers and manufacturing equipment for the items he constructs
+personally.
 
-You may travel down from here to the shop, or directly up, into the huge, 
+You may travel down from here to the shop, or directly up, into the huge,
 looming area of dark water above you.{x
 ~
 0 4 8
@@ -5534,12 +5534,12 @@ D5
 S
 #27641
 House of the Joyful Hunter, Above the Altar~
-{GYou float 4 meters above the ocean floor in the Ota'ar Dar temple to Sekolah, 
-the terrifying shark god of the sahuagin. From here you can make out the 
+{GYou float 4 meters above the ocean floor in the Ota'ar Dar temple to Sekolah,
+the terrifying shark god of the sahuagin. From here you can make out the
 paintings and reliefs that cover the walls much better than from down below.
 
-You can head north to the area above the temple shop, down to the temple altar 
-and main supplicant area, or up, straight into the large, dark patch of water 
+You can head north to the area above the temple shop, down to the temple altar
+and main supplicant area, or up, straight into the large, dark patch of water
 just above your head.{x
 ~
 0 4 8
@@ -5557,19 +5557,19 @@ D5
 0 -1 27341
 E
 paintings reliefs walls~
-The decorations depict many blood sacrifices being made to Sekolah, and him 
-ignoring nearly all of them, scorning those weak enough to petition him for 
-aid. He seems only to intervene in sahuagin affairs to feast on his followers' 
-enemies once their destruction already seems assured, or to sate his bloodlust 
-on gargantuan creatures of the sea who may or may not coincidentally pose a 
+The decorations depict many blood sacrifices being made to Sekolah, and him
+ignoring nearly all of them, scorning those weak enough to petition him for
+aid. He seems only to intervene in sahuagin affairs to feast on his followers'
+enemies once their destruction already seems assured, or to sate his bloodlust
+on gargantuan creatures of the sea who may or may not coincidentally pose a
 threat to his worshippers.~
 S
 #27642
 Corner of Dae'as Street North and Teth Avenue West, Upper~
-{cYou stand on the corner of Dae'as Street North and Teth Avenue West, about 
-4 metres above the ocean floor, amongst the inhabited ruins of a great, ancient 
-city. You can travel south from here, to Dae'as Street, east along Teth Avenue 
-Close, straight upwards, into the huge, looming area of darkness in the water 
+{cYou stand on the corner of Dae'as Street North and Teth Avenue West, about
+4 metres above the ocean floor, amongst the inhabited ruins of a great, ancient
+city. You can travel south from here, to Dae'as Street, east along Teth Avenue
+Close, straight upwards, into the huge, looming area of darkness in the water
 just above your head, or down, towards the ocean floor.{x
 ~
 0 0 8
@@ -5592,10 +5592,10 @@ D5
 S
 #27643
 Intersection of Teth Avenue and Prince's Cross, Upper~
-{cYou stand at the intersection of Teth Avenue and Prince's Cross, about 4 
-metres above the ocean floor, amongst the inhabited ruins of a great, ancient 
-city. From here you can travel east and west along Teth Avenue, north towards 
-Prince's Cross, straight upwards, into the huge, looming area of darkness in 
+{cYou stand at the intersection of Teth Avenue and Prince's Cross, about 4
+metres above the ocean floor, amongst the inhabited ruins of a great, ancient
+city. From here you can travel east and west along Teth Avenue, north towards
+Prince's Cross, straight upwards, into the huge, looming area of darkness in
 the water just above your head, or down, towards the ocean floor.{x
 ~
 0 0 8
@@ -5622,10 +5622,10 @@ D5
 S
 #27644
 Intersection of Teth Avenue and Ilr'ta Close, Upper~
-{cYou stand at the intersection of Teth Avenue and Ilr'ta Close, about 4 
-metres above the ocean floor, amongst the inhabited ruins of a great, ancient 
-city. From here you can travel east and west along Teth Avenue, south to Ilr'ta 
-Close, straight upwards, into the huge, looming area of darkness in the water 
+{cYou stand at the intersection of Teth Avenue and Ilr'ta Close, about 4
+metres above the ocean floor, amongst the inhabited ruins of a great, ancient
+city. From here you can travel east and west along Teth Avenue, south to Ilr'ta
+Close, straight upwards, into the huge, looming area of darkness in the water
 just above your head, or down, towards the ocean floor.{x
 ~
 0 0 8
@@ -5652,10 +5652,10 @@ D5
 S
 #27645
 Teth Avenue East, Upper~
-{cYou stand at the far eastern end of Teth Avenue, about 4 metres above the 
-ocean floor, amongst the inhabited ruins of a great, ancient city. From here 
-you can travel west along Teth Avenue, straight upwards, into the huge, looming 
-area of darkness in the water just above your head, or straight down, towards 
+{cYou stand at the far eastern end of Teth Avenue, about 4 metres above the
+ocean floor, amongst the inhabited ruins of a great, ancient city. From here
+you can travel west along Teth Avenue, straight upwards, into the huge, looming
+area of darkness in the water just above your head, or straight down, towards
 the ocean floor.{x
 ~
 0 0 8
@@ -5674,14 +5674,14 @@ D5
 S
 #27646
 Torturers' Training Dungeon~
-{gYou stand on the second storey of a ruined building, deep underwater. The 
-room has been converted to a torturer's dungeon, for the purposes of 
-demonstrating the goods that are sold in the shop below.  It is dank, grim, 
-and the walls are covered with various hideous-looking devices for the torture 
-of the hopeless and hapless.  The entire room gives you a foul feeling, as 
+{gYou stand on the second storey of a ruined building, deep underwater. The
+room has been converted to a torturer's dungeon, for the purposes of
+demonstrating the goods that are sold in the shop below.  It is dank, grim,
+and the walls are covered with various hideous-looking devices for the torture
+of the hopeless and hapless.  The entire room gives you a foul feeling, as
 though it has been cursed by dark magiks.
 
-You may travel down from here to the main floor of the "Torturers' Delight" 
+You may travel down from here to the main floor of the "Torturers' Delight"
 shop, or swim directly up, into the huge, looming area of dark water above you.{x
 ~
 0 1|4|8192|16384 8
@@ -5697,11 +5697,11 @@ S
 #27647
 House of the Joyful Hunter, Above the Temple Shop~
 {GYou float 4 meters above the ocean floor in the Ota'ar Dar temple to Sekolah,
-the terrifying shark god of the sahuagin. From here you can make out the 
+the terrifying shark god of the sahuagin. From here you can make out the
 paintings and reliefs that cover the walls much better than from down below.
 
-You can head east to the living quarters of Sekolah's acolytes, south to the 
-area directly above the temple altar, down to the temple shop, or up, straight 
+You can head east to the living quarters of Sekolah's acolytes, south to the
+area directly above the temple altar, down to the temple shop, or up, straight
 into the large, dark patch of water just above your head.{x
 ~
 0 4 8
@@ -5723,23 +5723,23 @@ D5
 0 -1 27347
 E
 paintings murals walls~
-The decorations depict many blood sacrifices being made to Sekolah, and him 
-ignoring nearly all of them, scorning those weak enough to petition  him for 
-aid.  HThe paintings givethe impression that he will intervene in sahuagin 
-affairs to feast on his followers' enemies once their destruction already 
-seems assured, or to sate his bloodlust on gargantuan creatures of the sea 
-who may or may not pose a threat to his worshippers, with any benefit accruing 
+The decorations depict many blood sacrifices being made to Sekolah, and him
+ignoring nearly all of them, scorning those weak enough to petition  him for
+aid.  HThe paintings givethe impression that he will intervene in sahuagin
+affairs to feast on his followers' enemies once their destruction already
+seems assured, or to sate his bloodlust on gargantuan creatures of the sea
+who may or may not pose a threat to his worshippers, with any benefit accruing
 to them being a complete coincidence.~
 S
 #27648
 Sekolah's Depths Quarters~
-{gYou stand in the upper level of 'Sekolah's Depths,' the training facilities 
-for acolytes of Sekolah, the sahuagin shark god.  This is where her acolytes 
-quarter themselves, and is orderly and monastic in feel... for a sahuagin 
-dwelling. 
+{gYou stand in the upper level of 'Sekolah's Depths,' the training facilities
+for acolytes of Sekolah, the sahuagin shark god.  This is where her acolytes
+quarter themselves, and is orderly and monastic in feel... for a sahuagin
+dwelling.
 
-From here you can swim west, out to the main Sekolah temple, upwards into the 
-huge, looming area of darkness in the water just above your head, or down to 
+From here you can swim west, out to the main Sekolah temple, upwards into the
+huge, looming area of darkness in the water just above your head, or down to
 Sekolah's Depths' main living and study area.{x
 ~
 0 0 8
@@ -5758,12 +5758,12 @@ D5
 S
 #27649
 Prince's Cross, Upper~
-{cYou stand before the northern gates of Prince's Cross, about 4 metres above 
-the ocean floor, amongst the inhabited ruins of a great, ancient city. 
+{cYou stand before the northern gates of Prince's Cross, about 4 metres above
+the ocean floor, amongst the inhabited ruins of a great, ancient city.
 
-While the northern gates to the Prince's canton are currently sealed and 
-impassable, from here you can still travel south, back to Teth Avenue, straight 
-upwards, into the huge, looming area of darkness in the water just above your 
+While the northern gates to the Prince's canton are currently sealed and
+impassable, from here you can still travel south, back to Teth Avenue, straight
+upwards, into the huge, looming area of darkness in the water just above your
 head, or straight down, towards the ocean floor.{x
 ~
 0 0 8
@@ -5786,12 +5786,12 @@ D5
 S
 #27650
 Mala't's Quarters~
-{gYou stand in the quarters of Mala't the Sage, chief artefact identifier 
-of Ota'ar Dar, on the second storey of a ruined building, deep underwater.  
-The room is very comfortable-feeling and homely for a sahuagin dwelling, 
-you imagine Mala't must enjoy his 'creature' comforts. 
+{gYou stand in the quarters of Mala't the Sage, chief artefact identifier
+of Ota'ar Dar, on the second storey of a ruined building, deep underwater.
+The room is very comfortable-feeling and homely for a sahuagin dwelling,
+you imagine Mala't must enjoy his 'creature' comforts.
 
-You may travel down from here to the first floor of Mala't's home, or 
+You may travel down from here to the first floor of Mala't's home, or
 directly up, into the huge, looming area of dark water above you.{x
 ~
 0 4 8
@@ -5806,13 +5806,13 @@ D5
 S
 #27651
 Mohmit's Quarters~
-{gYou stand in the quarters of Mohmit, magical goods supplier of Ota'ar Dar, 
-on the second storey of a ruined building, deep underwater.  The room is 
-tidy but full of curious-looking and doubtlessly magical objects; no doubt 
-the product of a lifetime's work in the magical goods trade. 
+{gYou stand in the quarters of Mohmit, magical goods supplier of Ota'ar Dar,
+on the second storey of a ruined building, deep underwater.  The room is
+tidy but full of curious-looking and doubtlessly magical objects; no doubt
+the product of a lifetime's work in the magical goods trade.
 
-You may travel down from here to the magical supplies shop, directly up, 
-into the huge, looming area of dark water above you, or east to the top 
+You may travel down from here to the magical supplies shop, directly up,
+into the huge, looming area of dark water above you, or east to the top
 floor of Mohmit's magical laboratory.{x
 ~
 0 4 8
@@ -5831,13 +5831,13 @@ D5
 S
 #27652
 Mohmit's Magical Laboratory, Upper~
-{GYou stand inside the upper floor of a small two-storey building, deep under 
-the sea. This floor and the one below it have been converted into a 
-fully-functioning magical laboratory by their  owner, Mohmit.  This is where 
+{GYou stand inside the upper floor of a small two-storey building, deep under
+the sea. This floor and the one below it have been converted into a
+fully-functioning magical laboratory by their  owner, Mohmit.  This is where
 he manufactures all the magical goods he sells in his shop.
 
-You can travel west to Mohmit's living quarters, down to the first floor of 
-the laboratory, or directly up, into the huge, looming area of dark water 
+You can travel west to Mohmit's living quarters, down to the first floor of
+the laboratory, or directly up, into the huge, looming area of dark water
 above you.{x
 ~
 0 256 8
@@ -5856,8 +5856,8 @@ D5
 S
 #27799
 {YUnder Sekolah's Depths{x~
-{yYou stand in an underwater tunnel cut out of the ocean bedrock; the walls are 
-covered in slime. It's dark here, and you'll have to feel around to figure out 
+{yYou stand in an underwater tunnel cut out of the ocean bedrock; the walls are
+covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
 0 1|4|8|512|8192 8
@@ -5872,8 +5872,8 @@ trapdoor~
 S
 #27800
 {YUnder Sekolah's Depths{x~
-{yYou stand in an underwater tunnel cut out of the ocean bedrock; the walls are 
-covered in slime. It's dark here, and you'll have to feel around to figure out 
+{yYou stand in an underwater tunnel cut out of the ocean bedrock; the walls are
+covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
 0 1|8|512|8192 8
@@ -5888,8 +5888,8 @@ D1
 S
 #27801
 {YUnder Sekolah's Depths{x~
-{yYou stand in an underwater tunnel cut out of the ocean bedrock; the walls are 
-covered in slime. It's dark here, and you'll have to feel around to figure out 
+{yYou stand in an underwater tunnel cut out of the ocean bedrock; the walls are
+covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
 0 1|8|8192 8
@@ -5904,8 +5904,8 @@ D3
 S
 #27802
 {YUnder Sekolah's Depths{x~
-{yYou stand in an underwater tunnel cut out of the ocean bedrock; the walls are 
-covered in slime. It's dark here, and you'll have to feel around to figure out 
+{yYou stand in an underwater tunnel cut out of the ocean bedrock; the walls are
+covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
 0 1|8|8192 8
@@ -5920,8 +5920,8 @@ D3
 S
 #27803
 {YUnder Sekolah's Depths{x~
-{yYou stand in an underwater tunnel cut out of the ocean bedrock; the walls are 
-covered in slime. It's dark here, and you'll have to feel around to figure out 
+{yYou stand in an underwater tunnel cut out of the ocean bedrock; the walls are
+covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
 0 1|8|8192 8
@@ -5936,8 +5936,8 @@ D3
 S
 #27804
 {YUnder Sekolah's Depths{x~
-{yYou stand in an underwater tunnel cut out of the ocean bedrock; the walls are 
-covered in slime. It's dark here, and you'll have to feel around to figure out 
+{yYou stand in an underwater tunnel cut out of the ocean bedrock; the walls are
+covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
 0 1|8|8192 8
@@ -5952,8 +5952,8 @@ D3
 S
 #27805
 {YUnder Sekolah's Depths{x~
-{yYou stand in an underwater tunnel cut out of the ocean bedrock; the walls are 
-covered in slime. It's dark here, and you'll have to feel around to figure out 
+{yYou stand in an underwater tunnel cut out of the ocean bedrock; the walls are
+covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
 0 1|8|8192 8
@@ -5968,8 +5968,8 @@ D3
 S
 #27806
 {YUnder Sekolah's Depths{x~
-{yYou stand in an underwater tunnel cut out of the ocean bedrock; the walls are 
-covered in slime. It's dark here, and you'll have to feel around to figure out 
+{yYou stand in an underwater tunnel cut out of the ocean bedrock; the walls are
+covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
 0 1|8|8192 8
@@ -5984,8 +5984,8 @@ D3
 S
 #27807
 {YUnder Sekolah's Depths{x~
-{yYou stand in an underwater tunnel cut out of the ocean bedrock; the walls are 
-covered in slime. It's dark here, and you'll have to feel around to figure out 
+{yYou stand in an underwater tunnel cut out of the ocean bedrock; the walls are
+covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
 0 1|8|8192 8
@@ -6000,9 +6000,9 @@ D4
 S
 #27808
 Sekolah's Grotto~
-{cYou stand in a large cavern, deep under the sea.  Obviously some sort of 
-ritual area related to Sekolah, the sahuagin shark god, the walls are covered 
-in strange glyphs and markings, and a large, blood-stained stone altar lies 
+{cYou stand in a large cavern, deep under the sea.  Obviously some sort of
+ritual area related to Sekolah, the sahuagin shark god, the walls are covered
+in strange glyphs and markings, and a large, blood-stained stone altar lies
 in the middle of the room. You probably shouldn't be here.{x
 ~
 0 4|8192 8
@@ -6016,20 +6016,20 @@ D5
 0 -1 27807
 E
 glyphs markings~
-The glyphs and markings, as best you can tell, describe the magical creation 
-by the acolytes of a large, dark, cursed region of sea directly above Ota'ar 
-Dar, to keep the city safe from the depredations of surface-dwellers and their 
-other, sea-dwelling enemies enemies. They also depict malevolent spirit 
-entities being summoned to populate and patrol the region.  
+The glyphs and markings, as best you can tell, describe the magical creation
+by the acolytes of a large, dark, cursed region of sea directly above Ota'ar
+Dar, to keep the city safe from the depredations of surface-dwellers and their
+other, sea-dwelling enemies. They also depict malevolent spirit entities being
+summoned to populate and patrol the region.
 
-You get the impression from the images that blood sacrifices are required to 
-maintain the magic, but it is unclear if sentient species must be killed for 
+You get the impression from the images that blood sacrifices are required to
+maintain the magic, but it is unclear if sentient species must be killed for
 this purpose.~
 S
 #27809
 A Secret Side-chamber~
-{cThis small room is full of blood and gore. It looks to be where (mostly) 
-animals have been slaughtered before being made blood sacrifices of in 
+{cThis small room is full of blood and gore. It looks to be where (mostly)
+animals have been slaughtered before being made blood sacrifices of in
 the ritual chamber to the west.{x
 ~
 0 1|4|8|512 8
@@ -6462,7 +6462,7 @@ E 1 27231 100 13
 *
 M 1 27260 1 27620			a Reaver recruit to Reavers' Guild Member Quarters
 O 1 27274 100 27627			a small jewel-encrusted box  to The Lootsmith's Quarters
-P 1 27276 100 27274			a small pile of coins to container small jewel-encrusted box 
+P 1 27276 100 27274			a small pile of coins to container small jewel-encrusted box
 O 1 27284 100 27629			a crude wooden platform to Mother's Ruin Slavemarket, Upper Level
 O 1 27284 100 27329			a crude wooden platform to Mother's Ruin Slavemarket, Lower Level
 *
@@ -6526,13 +6526,13 @@ P 1 27341 100 27342			a driftwood staff wreathed with seaweed to container ottom
 O 1 27344 100 27652			a spellcrafting bench to Mohmit's Magical Laboratory, Upper
 O 1 27344 100 27352			a spellcrafting bench to Mohmit's Magical Laboratory, Lower
 O 1 27345 100 27651			a large black cube to Mohmit's Quarters
-P 1 27354 100 27345			a glass cylinder to container large black cube 
-P 1 27353 100 27345			a blank sheet of paper to container large black cube 
-P 1 27352 100 27345			an auctionmaster's scrip to container large black cube 
-P 1 27351 100 27345			a pottle of tarry brine to container large black cube 
-P 1 27350 100 27345			glowing seaweed to container large black cube 
-P 1 27349 100 27345			a flask of true seeing to container large black cube 
-P 1 27348 100 27345			a magical encyclopaedia to container large black cube 
+P 1 27354 100 27345			a glass cylinder to container large black cube
+P 1 27353 100 27345			a blank sheet of paper to container large black cube
+P 1 27352 100 27345			an auctionmaster's scrip to container large black cube
+P 1 27351 100 27345			a pottle of tarry brine to container large black cube
+P 1 27350 100 27345			glowing seaweed to container large black cube
+P 1 27349 100 27345			a flask of true seeing to container large black cube
+P 1 27348 100 27345			a magical encyclopaedia to container large black cube
 O 1 27355 100 27646			a torture rack to Torturers' Training Dungeon
 O 1 27363 100 27646			a large wooden chair to Torturers' Training Dungeon
 *
@@ -6572,7 +6572,7 @@ S
 
 
 #SPECIALS
-M  27205 spec_warrior			Cluh'g Mani	
+M  27205 spec_warrior			Cluh'g Mani
 M  27233 spec_warrior 			Ahomar
 M  27217 spec_warrior 			A surly sahuagin warrior
 M  27218 spec_cast_hooker	    A lecherous sahuagin

@@ -732,15 +732,25 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 
                 }
                 
+                /* adds to teh meter for smithys */
                 if ( wield && (IS_SET(wield->ego_flags, EGO_ITEM_EMPOWERED)) && (ch->pcdata->meter < 100) )
                 {
                         if ( (number_percent() < ch->pcdata->learned[gsn_empower]) && (victim->level +5 >= ch->level))
                         {
                                 ch->pcdata->meter += (number_percent() /15 );
                                 if (ch->pcdata->meter >= 100)
-                                        send_to_char("<556><352><196>You are fully E M P O W E R E D<0>\n\r",ch);
+                                        send_to_char("<556><352><196>You are fully E M P O W E R E D.<0>\n\r",ch);
                         }
 
+                }
+
+                if ( wield && (IS_SET(wield->ego_flags, EGO_ITEM_ENGRAVED)) 
+                        && (ch->pcdata->dam_meter < ch->damage_enhancement)
+                        &&  (victim->level +5 >= ch->level) )
+                {
+                                ch->pcdata->dam_meter += (number_percent() /35 );
+                                if (ch->pcdata->dam_meter >= ch->damage_enhancement)
+                                        send_to_char("<556><352><196>Your E N G R A V I N G S are maxed.<0>\n\r",ch);
                 }
 
                 if (!IS_NPC(ch)
@@ -749,6 +759,11 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                     && ch->form != FORM_DRAGON)
                         dam += dam * ch->pcdata->learned[gsn_enhanced_damage] / 200;
 
+                /* adds the damage_enhancement for smithys */
+                if (!IS_NPC(ch)
+                    && ch->pcdata->learned[gsn_engrave] > 0 )
+                        dam += dam * ch->damage_enhancement / 100; 
+                
                 if (!IS_NPC(ch) && ch->pcdata->learned[gsn_enhanced_hit] > 0)
                         dam += dam * ch->pcdata->learned[gsn_enhanced_hit] / 400;
 
