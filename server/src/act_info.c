@@ -182,6 +182,20 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
         
         if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED))
                 strcat( buf, "<556><352><196>(EMPOWERED)<0> " );
+        
+        if (IS_OBJ_STAT(obj, ITEM_EGO) &&  IS_SET(obj->ego_flags, EGO_ITEM_ENGRAVED) )
+                strcat( buf, "<15>(ENGRAVED)<0> " );
+
+        if (obj->item_type == ITEM_WEAPON && (
+                IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED)
+                || IS_SET(obj->ego_flags, EGO_ITEM_ENGRAVED)
+                || IS_SET(obj->ego_flags, EGO_ITEM_BALANCED)
+                || IS_SET(obj->ego_flags, EGO_ITEM_CHAINED)
+                || IS_SET(obj->ego_flags, EGO_ITEM_IMBUED)
+                || IS_SET(obj->ego_flags, EGO_ITEM_SERATED)) )
+        {
+                strcat( buf, "" );
+        }
 
         if ( IS_OBJ_STAT( obj, ITEM_SHARP ) )
                 strcat( buf, "<195>(Sharp)<0> " );
@@ -1316,6 +1330,11 @@ void do_score (CHAR_DATA *ch, char *argument)
         {
                 sprintf( buf, "Dam Reduction: {W%d%%{x  ", ch->damage_mitigation );
                 strcat( buf1, buf );
+                if ((!CAN_DO(ch, gsn_engrave)))
+                {
+                        sprintf( buf, "Dam Enchancement: {W%d%%{x  ", ch->damage_enhancement );
+                        strcat( buf1, buf );
+                }
         }
 
         if( ch->level >= 20 )

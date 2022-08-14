@@ -1978,7 +1978,8 @@ PROMPT <<%*> creates a prompt where %* represents the following variables:
     %A :  Alignment numerical value  (not shown before level 10)
     %b :  Spell 'blink' status       ('on' or 'off')
     %r :  Room name
-    %G :  Empower Meter percentage   (Smithy Only)
+    %G :  Empower Meter percentage          (Smithy Only)
+    %k :  Engraved current power/max power  (Smithy Only)
 
     %s :  Personal safety: whether you personally are safe or unsafe
           from being pkilled at your current location.
@@ -7054,7 +7055,7 @@ into the cache.
 
 1 EMPOWER~
 
-Syntax: empower <weapon>
+Syntax: empower <<weapon>
 
 Smithys can empower weapons which enables those weapons to obtain a 
 charge when successfully hitting their opponent. When the weapon is
@@ -7073,6 +7074,23 @@ how to customise this.
 Syntax: discharge 
 Upon reaching 100% charge on a empowered weapon (See help EMPOWER)
 you are able to unleash a devistating attack on an opponent.
+~
+
+1 ENGRAVE~
+
+Syntax: engrave <<item>
+
+An experianced SMITHY is able to apply an engraving to armour and 
+weapons. Each item that is engraved will contribute to your total 
+maximum enhanced damage. 
+
+During battle the engravings channel charge into an 
+engraved weapon, enhancing its damage, upto the maximum.
+
+You can see this in your PROMPT with %k (see HELP PROMPT)
+
+{WNOTE: You must have an engraved weapon equipped to channel the 
+energy back to the opponent.{x 
 ~
 
 0 $~

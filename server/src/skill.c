@@ -2092,7 +2092,7 @@ void do_strengthen (CHAR_DATA *ch, char *argument)
                 cost_ti = 20;
         if (obj->level > 15 )
                 cost_st = 10;
-        if (obj->level > 1 )
+        if (obj->level >= 1 )
                 cost_st += 12;
 
         if ( cost_st > ch->smelted_steel
@@ -3847,6 +3847,11 @@ void do_engrave (CHAR_DATA *ch, char *argument)
         char arg [ MAX_INPUT_LENGTH ];
         AFFECT_DATA *paf;
         bool found;
+        int cost_st;
+        int cost_ti;
+        int cost_ad;
+        int cost_el;
+        int cost_sm;
 
         if (IS_NPC(ch))
                 return;
@@ -3874,12 +3879,6 @@ void do_engrave (CHAR_DATA *ch, char *argument)
         if (!(obj = get_obj_carry(ch, arg)))
         {
                 send_to_char("You do not have that.\n\r", ch);
-                return;
-        }
-
-        if (obj->item_type != ITEM_ARMOR)
-        {
-                send_to_char("That item is not armour.\n\r", ch);
                 return;
         }
 
@@ -3927,6 +3926,40 @@ void do_engrave (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        cost_sm =0;
+        cost_ad = 0;
+        cost_el = 0;
+        cost_st = 0;
+        cost_ti = 0;
+
+        if ( (obj->level > 90) )
+                cost_sm = 1;
+
+        if (obj->level > 70 )
+                cost_el = 10;
+
+        if (obj->level > 50 )
+                cost_ad = 15;
+        if (obj->level > 25 )
+                cost_ti = 20;
+        if (obj->level > 15 )
+                cost_st = 10;
+        if (obj->level >= 1 )
+                cost_st += 12;
+
+        if ( cost_st > ch->smelted_steel
+        ||  cost_ti > ch->smelted_titanium
+        ||  cost_ad > ch->smelted_adamantite
+        ||  cost_el > ch->smelted_electrum
+        ||  cost_sm > ch->smelted_starmetal)
+        {
+                send_to_char( "You don't have enough raw materials, you need:\n\r", ch );
+                sprintf(buf, "%d Steel %d Titanium %d Adamantite %d Electrum %d Starmetal and %d",
+                cost_st, cost_ti, cost_ad, cost_el, cost_sm, obj->level);
+                act(buf, ch, NULL, NULL, TO_CHAR);
+                return;
+        }
+
         if (number_percent() > ch->pcdata->learned[gsn_engrave])
         {
                 send_to_char("You slip while enrgaving!\n\r", ch);
@@ -3934,7 +3967,7 @@ void do_engrave (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        act ("You skilfully engraves $P!", ch, NULL, obj, TO_CHAR);
+        act ("$P glows softly as the runes form in the forge.", ch, NULL, obj, TO_CHAR);
         act ("$n skilfully engraves $P!", ch, NULL, obj, TO_ROOM);
 
         SET_BIT(obj->extra_flags, ITEM_EGO);
@@ -3951,7 +3984,7 @@ void do_engrave (CHAR_DATA *ch, char *argument)
         paf->type           = gsn_engrave;
         paf->duration       = -1;
         paf->location       = APPLY_ENGRAVED;
-        paf->modifier       = 1 + ( ch->level / 50 );
+        paf->modifier       = 1 + ( ch->level / 15 );
         paf->bitvector      = 0;
         paf->next           = obj->affected;
         obj->affected       = paf;

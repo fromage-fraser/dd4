@@ -2118,9 +2118,10 @@ extern  WANTED_DATA *wanted_list_last;
 #define EGO_ITEM_TURRET_MODULE          BIT_7
 #define EGO_ITEM_CHAINED                BIT_8
 #define EGO_ITEM_STRENGTHEN             BIT_9
-#define EGO_ITEM_CONSTRUCTED            BIT_10 /* for ny constructed weapon */
+#define EGO_ITEM_CONSTRUCTED            BIT_10 /* for any constructed weapon */
 #define EGO_ITEM_EMPOWERED              BIT_11 /*Empowered weapon */
 #define EGO_ITEM_ENGRAVED               BIT_12 /* ENGRAVED armour */
+#define EGO_ITEM_SERATED                BIT_13 /*Serated weapon */
 
 /*
  * Apply types (for affects).
@@ -2563,6 +2564,7 @@ struct char_data
         int                     tournament_team;        /* mobs can use this too */
         int                     exp_modifier;
         int                     damage_mitigation;
+        int                     damage_enhancement;
         /*
         *  Does the variable you're about to add belong here or in 'pcdata'?
         */
@@ -2675,6 +2677,7 @@ struct  pc_data
         int             soar;
         int             group_support_bonus;
         int             meter;
+        int             dam_meter;
 };
 
 

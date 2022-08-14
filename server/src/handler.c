@@ -379,6 +379,23 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         break;
                 }
 
+            case APPLY_ENGRAVED:
+                af.type = skill_lookup( "engrave");
+                if ( fAdd )
+                {
+                        ch->damage_enhancement += mod;
+                        if ( ( (wield = get_eq_char(ch, WEAR_WIELD)) && !IS_SET(wield->ego_flags, EGO_ITEM_ENGRAVED))
+                                || !(wield = get_eq_char(ch, WEAR_WIELD)) )
+                        {
+                              send_to_char( "You will need to wield an engraved weapon to benefit from this engraving.\n\r", ch );  
+                        }
+                        break;
+                }
+                else
+                {
+                        ch->damage_enhancement += mod;
+                        break;
+                }
 
             case APPLY_SANCTUARY:
                 af.type = skill_lookup( "sanctuary" );
@@ -566,7 +583,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 af.type = skill_lookup( "counterbalance" );
                                 if( fAdd )
                 {
-                        send_to_char( "The perfectly weighted weapon fills you with confidence.\n\r", ch );
+                        send_to_char( "The counterbalanced weapon will improve your attack speed.\n\r", ch );
                         break;
                 }
                 else
@@ -2667,6 +2684,7 @@ char *affect_loc_name( int location )
             case APPLY_BREATHE_WATER:           return "breathe water";
             case APPLY_BALANCE:                 return "attack speed";
             case APPLY_STRENGTHEN:              return "damage mitigation";
+            case APPLY_ENGRAVED:                return "damage enhancement";
         }
 
         bug( "Affect_location_name: unknown location %d.", location );

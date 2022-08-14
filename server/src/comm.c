@@ -1583,6 +1583,13 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
                                 sprintf(buf2, " ");
                         i = buf2;
                         break;
+                    case 'k' :
+                        if (ch->pcdata->dam_meter >= 0)
+                                sprintf(buf2, "%d/%d%%", ch->pcdata->dam_meter, ch->damage_enhancement );
+                        else
+                                sprintf(buf2, " ");
+                        i = buf2;
+                        break;
                     case 'b':
                         if (!IS_NPC(ch) && ch->pcdata->blink)
                                 sprintf(buf2, "on");
