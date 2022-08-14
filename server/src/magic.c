@@ -2310,6 +2310,7 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                 if (IS_AFFECTED(victim, AFF_SWALLOWED) && IS_IMMORTAL( ch ))
                 {
                         strip_swallow(victim);
+                        return;
                 }
 
                 if (IS_AFFECTED(victim, AFF_BLIND) && IS_IMMORTAL( ch ))

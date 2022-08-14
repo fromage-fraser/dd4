@@ -2176,7 +2176,7 @@ void do_recall (CHAR_DATA *ch, char *argument)
 
                 if (IS_AFFECTED(ch, AFF_SWALLOWED))
                 {
-                    strip_swallow(ch);
+                        strip_swallow(ch);
                 }
 
                 arena_commentary("$n has recalled to safety.", ch, NULL);
