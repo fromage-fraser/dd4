@@ -1,7 +1,6 @@
+/* Last modified 14/8/22 - Owl */
 
-/* Last modified 1/6 - Mat */
-
-/* Total Pre_Reqs == 37  */
+/* Total Pre_Reqs == 47 */
 
 /* Starting Skills - have decided what worldly is going to be yet?*/
 {&gsn_group_forms,              &gsn_shifter_base,      30,     PRE_SHIFTER},
@@ -68,5 +67,6 @@
 
 { &gsn_dive,                    &gsn_form_dragon,       70,     PRE_SHIFTER},
 { &gsn_tailwhip,                &gsn_form_dragon,       70,     PRE_SHIFTER},
+{ &gsn_swallow,                 &gsn_form_dragon,       95,     PRE_SHIFTER},
 
 { &gsn_group_riding,            &gsn_shifter_base,      59,     PRE_SHIFTER},

@@ -480,6 +480,30 @@ void strip_mount (CHAR_DATA* ch)
         ch->mount = NULL;
 }
 
+void strip_swallow (CHAR_DATA* ch)
+{
+        char buf[MAX_STRING_LENGTH];
+
+        if (!ch->inside)
+        {
+                bug("strip_swallow: 'ch->inside' is null", 0);
+                return;
+        }
+
+        REMOVE_BIT(ch->affected_by, AFF_SWALLOWED);
+        affect_strip(ch, gsn_swallow);
+
+        sprintf(buf, "You broke out from inside of %s!\n\r",
+                IS_NPC(ch->inside) ? ch->inside->short_descr : ch->inside->name);
+        send_to_char (buf, ch);
+
+        sprintf(buf, "$c broke out from inside of %s!",
+                IS_NPC(ch->inside) ? ch->inside->short_descr : ch->inside->name);
+        act (buf, ch, NULL, NULL, TO_ROOM);
+
+        ch->inside = NULL;
+}
+
 
 void do_mount(CHAR_DATA *ch, char *argument)
 {
@@ -3818,7 +3842,7 @@ void do_discharge (CHAR_DATA *ch, char *argument)
         if (ch->pcdata->meter < 100)
         {
                 send_to_char("Not at full charge yet.\n\r", ch);
-                return; 
+                return;
         }
 
         if (number_percent() < ch->pcdata->learned[gsn_discharge])

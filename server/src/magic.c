@@ -2309,11 +2309,7 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
 
                 if (IS_AFFECTED(victim, AFF_SWALLOWED) && IS_IMMORTAL( ch ))
                 {
-                        REMOVE_BIT(victim->affected_by, AFF_SWALLOWED);
-                        send_to_char( "You escape from the creature that swallowed you.\n\r", victim );
-                        act( "$n escapes from the creature $e was inside.", victim, NULL, NULL, TO_ROOM );
-                        affect_strip(victim, gsn_swallow);
-                        ch->inside = NULL;
+                        strip_swallow(victim);
                         return;
                 }
 

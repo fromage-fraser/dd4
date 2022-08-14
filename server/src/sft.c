@@ -2111,8 +2111,15 @@ void do_morph (CHAR_DATA *ch, char *argument)
 
         if (argument[0] == '\0')
         {
-                send_to_char("Morph to which form?\n\r", ch);
-                return;
+                argument = "normal";
+                /*
+                 * send_to_char("Morph to which form?\n\r", ch);
+                 * return;
+                 *
+                 * Made it so no argument->normal form. Uncomment if
+                 * original behaviour desired.  --Owl 14/8/22
+                 */
+
         }
 
         old_form = ch->form;
