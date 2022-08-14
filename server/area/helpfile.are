@@ -393,12 +393,12 @@ Dragons Domain version 4.2020
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
-    {W8-bit colour is in! Type 'ansi reset' for your current characters, then
-    read 'HELP COLOR3' and 'HELP ANSI'!{x
-
     {WSMITHY class is now beta testing!!!!{x
 
-    {WDUERGAR is a new playable race.{x
+    {W8-bit colour is in! Type 'ansi reset' for your current characters, then
+    read 'HELP COLOR3' and 'HELP ANSI'!{X
+
+    {WDNew skill SWALLOW for dragon form!{x
 
 
 
@@ -435,6 +435,9 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 0 CHANGES~
 
 {WAugust 2022{x
+- Dragon form now has SWALLOW
+- Skills SWALLOW and FLUKESLAP are in, with spec_small_whale and
+  spec_large_whale
 - Smithy is in for testing
 - Duergar added as playable race
 - Spells SLOW and STABILISE are in, but not given to any classes yet.
