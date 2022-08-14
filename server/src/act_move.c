@@ -2174,6 +2174,22 @@ void do_recall (CHAR_DATA *ch, char *argument)
                         check_for_tournament_winner();
                 }
 
+                if (IS_AFFECTED(ch, AFF_SWALLOWED))
+                {
+                        REMOVE_BIT(ch->affected_by, AFF_SWALLOWED);
+                        affect_strip(ch, gsn_swallow);
+
+                        sprintf(buf, "You broke out from inside of %s!\n\r",
+                                IS_NPC(ch->inside) ? ch->inside->short_descr : ch->inside->name);
+                        send_to_char (buf, ch);
+
+                        sprintf(buf, "$c broke out from inside of %s!",
+                                IS_NPC(ch->inside) ? ch->inside->short_descr : ch->inside->name);
+                        act (buf, ch, NULL, NULL, TO_ROOM);
+
+                        ch->inside = NULL;
+                }
+
                 arena_commentary("$n has recalled to safety.", ch, NULL);
 
                 ch->move /= 2;
