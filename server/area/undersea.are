@@ -3690,12 +3690,13 @@ S
 
 
 #SPECIALS
-M  27000 spec_fido			the megalodon
-M  27001 spec_fido			a vampire squid
-M  27002 spec_fido			a spider crab
+M  27000 spec_fido			    the megalodon
+M  27001 spec_fido			    a vampire squid
+M  27002 spec_fido			    a spider crab
 M  27003 spec_poison			a sea anemone
-M  27004 spec_fido			the anglerfish
-M  27007 spec_fido			a sea lion
+M  27004 spec_fido			    the anglerfish
+M  27006 spec_small_whale	    a female dolphin
+M  27007 spec_fido			    a sea lion
 M  27009 spec_poison			a sea snake
 M  27011 spec_poison			a jellyfish
 M  27015 spec_poison			a porcupinefish

@@ -731,7 +731,7 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                         dam += dam / 3;
 
                 }
-                
+
                 /* adds to teh meter for smithys */
                 if ( wield && (IS_SET(wield->ego_flags, EGO_ITEM_EMPOWERED)) && (ch->pcdata->meter < 100) )
                 {
@@ -744,7 +744,7 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 
                 }
 
-                if ( wield && (IS_SET(wield->ego_flags, EGO_ITEM_ENGRAVED)) 
+                if ( wield && (IS_SET(wield->ego_flags, EGO_ITEM_ENGRAVED))
                         && (ch->pcdata->dam_meter < ch->damage_enhancement)
                         &&  (victim->level +5 >= ch->level) )
                 {
@@ -762,8 +762,8 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 /* adds the damage_enhancement for smithys */
                 if (!IS_NPC(ch)
                     && ch->pcdata->learned[gsn_engrave] > 0 )
-                        dam += dam * ch->damage_enhancement / 100; 
-                
+                        dam += dam * ch->damage_enhancement / 100;
+
                 if (!IS_NPC(ch) && ch->pcdata->learned[gsn_enhanced_hit] > 0)
                         dam += dam * ch->pcdata->learned[gsn_enhanced_hit] / 400;
 
@@ -3894,9 +3894,9 @@ void do_berserk (CHAR_DATA *ch, char *argument)
 
 void do_flee (CHAR_DATA *ch, char *argument)
 {
-        CHAR_DATA       *victim;
-        ROOM_INDEX_DATA *was_in;
-        ROOM_INDEX_DATA *now_in;
+        CHAR_DATA        *victim;
+        ROOM_INDEX_DATA  *was_in;
+        ROOM_INDEX_DATA  *now_in;
         int              attempt;
         bool             lose_xp;
 
@@ -4027,6 +4027,23 @@ void do_flee (CHAR_DATA *ch, char *argument)
                         {
                                 send_to_char("You flee from combat!\n\r", ch);
                                 return;
+                        }
+
+                        /* if they were swallowed, some text indicating escape + stripping effects */
+                        if (IS_AFFECTED(ch, AFF_SWALLOWED))
+                        {
+                                REMOVE_BIT(ch->affected_by, AFF_SWALLOWED);
+                                affect_strip(ch, gsn_swallow);
+
+                                sprintf(buf, "You broke out from inside of %s!\n\r",
+                                        IS_NPC(ch->inside) ? ch->inside->short_descr : ch->inside->name);
+                                send_to_char (buf, ch);
+
+                                sprintf(buf, "$c broke out from inside of %s!",
+                                        IS_NPC(ch->inside) ? ch->inside->short_descr : ch->inside->name);
+                                act (buf, ch, NULL, NULL, TO_ROOM);
+
+                                ch->inside = NULL;
                         }
 
                         if (ch->form == FORM_GRIFFIN)
