@@ -4032,18 +4032,7 @@ void do_flee (CHAR_DATA *ch, char *argument)
                         /* if they were swallowed, some text indicating escape + stripping effects */
                         if (IS_AFFECTED(ch, AFF_SWALLOWED))
                         {
-                                REMOVE_BIT(ch->affected_by, AFF_SWALLOWED);
-                                affect_strip(ch, gsn_swallow);
-
-                                sprintf(buf, "You broke out from inside of %s!\n\r",
-                                        IS_NPC(ch->inside) ? ch->inside->short_descr : ch->inside->name);
-                                send_to_char (buf, ch);
-
-                                sprintf(buf, "$c broke out from inside of %s!",
-                                        IS_NPC(ch->inside) ? ch->inside->short_descr : ch->inside->name);
-                                act (buf, ch, NULL, NULL, TO_ROOM);
-
-                                ch->inside = NULL;
+                                strip_swallow(ch);
                         }
 
                         if (ch->form == FORM_GRIFFIN)
@@ -6725,6 +6714,7 @@ void do_swallow (CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
         char    arg [MAX_INPUT_LENGTH ];
+        char    buf [MAX_INPUT_LENGTH ];
         int     chance;
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_swallow))
@@ -6787,7 +6777,7 @@ void do_swallow (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if ( IS_AFFECTED(ch,AFF_CHARM) && ch->master == victim )
+        if ( IS_AFFECTED(victim,AFF_CHARM) && victim->master == ch )
         {
                 act ("But $N is such a good friend!",ch,NULL,victim,TO_CHAR);
                 return;
@@ -6810,34 +6800,34 @@ void do_swallow (CHAR_DATA *ch, char *argument)
                 AFFECT_DATA af;
 
                 arena_commentary("$n swallows $N whole!", ch, victim);
-                /*act ("$n is swallowed whole by $N!", victim, NULL, NULL, TO_ROOM);*/
-                send_to_char("<15>You swallow your opponent whole!<0>\n\r", ch);
+                sprintf(buf, "<15>You swallow %s whole!<0>\n\r",
+                        IS_NPC(victim) ? victim->short_descr : victim->name);
+                send_to_char(buf, ch);
                 act( "<15>$c swallows $N whole!<0>", ch, NULL, victim, TO_NOTVICT );
-                /* damage(ch, victim, number_range(30,50), gsn_swallow, FALSE); */
                 send_to_char("You have been <132>SWALLOWED<0> and can't see a thing!\n\r", victim);
 
                 victim->inside = ch;
 
                 af.type      = gsn_swallow;
-                af.duration  = 0;
+                af.duration  = ( ch->level / 75 ); /* 0 until lvl 75, 1 thereafter */
 
                 af.location     = APPLY_HITROLL;
-                af.modifier     = -10;
+                af.modifier     = ( ch->level / -5 );
                 af.bitvector    = AFF_BLIND;
                 affect_to_char(victim,&af);
 
                 af.location     = APPLY_DAMROLL;
-                af.modifier     = -10;
+                af.modifier     = ( ch->level / -5 );
                 af.bitvector    = AFF_HOLD;
                 affect_to_char(victim, &af);
 
                 af.location     = APPLY_DEX;
-                af.modifier     = -5;
+                af.modifier     = ( ch->level / -10 );
                 af.bitvector    = AFF_SWALLOWED;
                 affect_to_char(victim, &af);
 
                 af.location     = APPLY_MOVE;
-                af.modifier     = -500;
+                af.modifier     = ((ch->level * -10) + (ch->level * 2));
                 af.bitvector    = AFF_CURSE;
                 affect_to_char(victim, &af);
 

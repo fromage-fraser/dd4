@@ -179,10 +179,10 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
 
         if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
                 strcat( buf, "<155>(Balanced)<0> " );
-        
+
         if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED))
                 strcat( buf, "<556><352><196>(EMPOWERED)<0> " );
-        
+
         if (IS_OBJ_STAT(obj, ITEM_EGO) &&  IS_SET(obj->ego_flags, EGO_ITEM_ENGRAVED) )
                 strcat( buf, "<15>(ENGRAVED)<0> " );
 

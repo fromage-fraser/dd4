@@ -515,6 +515,12 @@ void do_transfer( CHAR_DATA *ch, char *argument )
         if (victim->rider)
                 strip_mount (victim->rider);
 
+        /* if they were swallowed, some text indicating escape + stripping effects */
+        if (IS_AFFECTED(victim, AFF_SWALLOWED))
+        {
+                strip_swallow(victim);
+        }
+
         act( "$n disappears in a mushroom cloud.", victim, NULL, NULL, TO_ROOM );
 
         if (is_entered_in_tournament(victim) && tournament_status == TOURNAMENT_STATUS_RUNNING)
@@ -525,7 +531,7 @@ void do_transfer( CHAR_DATA *ch, char *argument )
 
         char_from_room( victim );
         char_to_room( victim, location );
-        act( "$n arrives from a puff of smoke.", victim, NULL, NULL, TO_ROOM );
+        act( "$n arrives in a puff of smoke.", victim, NULL, NULL, TO_ROOM );
         if ( ch != victim )
                 act( "$n has transferred you.", ch, NULL, victim, TO_VICT );
         do_look( victim, "auto" );

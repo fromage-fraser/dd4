@@ -318,11 +318,11 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
 #define MAX_SKILL                   535     /* 533 + 2 for flukeslap and swallow - Owl Aug 2022 */
-#define MAX_PRE_REQ                 1370    /* 2 new blueprints */
-#define MAX_SPELL_GROUP             437     /* 2 new blueprints  --Brutus Aug 22 */
+#define MAX_PRE_REQ                 1371    /* 1370 + 1 for 'swallow' - Owl Aug 2022 */
+#define MAX_SPELL_GROUP             438     /* 437 + 1 for 'swallow' - Owl Aug 2022 */
 #define MAX_GROUPS                  58      /* added smithy groups - Brutus 30 Jul 2022 */
-#define MAX_FORM_SKILL              73      /* for form skill table */
-#define MAX_VAMPIRE_GAG             26      /* ugly vampire/werewolf hack */
+#define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
+#define MAX_VAMPIRE_GAG             27      /* 26 + 1 for 'swallow' | ugly vampire/werewolf hack */
 
 
 /*
@@ -3922,7 +3922,7 @@ DECLARE_DO_FUN( do_infamy                       );       /* Shade Apr 22 */
 DECLARE_DO_FUN( do_repair                       );      /* Owl 16/6/22 */
 DECLARE_DO_FUN( do_strengthen                   );
 DECLARE_DO_FUN( do_flukeslap                    );      /* Owl 13/8/22 for 'whale' specials */
-DECLARE_DO_FUN( do_swallow                      );      /* Owl 13/8/22 for 'whale' specials */
+DECLARE_DO_FUN( do_swallow                      );      /* Owl 13/8/22 for 'whale' specials  & dragon form */
 
 /* The following are for mob programs - Brutus */
 DECLARE_DO_FUN( do_mpasound                     );
@@ -4732,6 +4732,7 @@ bool is_valid_soar                     args( ( CHAR_DATA *ch, int soar_index ) )
 
 /* skill.c */
 void strip_mount                             ( CHAR_DATA *ch );
+void strip_swallow                           ( CHAR_DATA *ch );
 bool is_bladed_weapon                        ( OBJ_DATA *obj );
 bool is_blunt_weapon                         ( OBJ_DATA *obj );
 bool is_piercing_weapon                      ( OBJ_DATA *obj );

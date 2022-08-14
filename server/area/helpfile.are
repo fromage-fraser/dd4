@@ -393,12 +393,12 @@ Dragons Domain version 4.2020
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
-    {W8-bit colour is in! Type 'ansi reset' for your current characters, then
-    read 'HELP COLOR3' and 'HELP ANSI'!{x
-
     {WSMITHY class is now beta testing!!!!{x
 
-    {WDUERGAR is a new playable race.{x
+    {W8-bit colour is in! Type 'ansi reset' for your current characters, then
+    read 'HELP COLOR3' and 'HELP ANSI'!{X
+
+    {WDNew skill SWALLOW for dragon form!{x
 
 
 
@@ -435,6 +435,9 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 0 CHANGES~
 
 {WAugust 2022{x
+- Dragon form now has SWALLOW
+- Skills SWALLOW and FLUKESLAP are in, with spec_small_whale and
+  spec_large_whale
 - Smithy is in for testing
 - Duergar added as playable race
 - Spells SLOW and STABILISE are in, but not given to any classes yet.
@@ -5348,7 +5351,8 @@ hydra form              phoenix form            demon form
                           fly {Y*{x                 dragon form
 griffin form              resist heat {Y*{x           dive
   maul                                            tailwhip
-                        fly form                  dragon aura {Y*{x
+                        fly form                  swallow
+                                                  dragon aura {Y*{x
 
 {Y*{x These skills are automatically gained at 100% by morphing to the
   appropriate form.
@@ -5870,6 +5874,14 @@ Syntax: tailwhip
 During combat, shape shifters in dragon form may use their massive tails
 to batter their opponents to the ground, inflicting damage and stunning
 them.
+~
+
+0 swallow~
+Syntax: swallow <<target>
+
+During combat, shape shifters in dragon form may attempt to SWALLOW their
+opponents, severely impairing their combat ability for a short time.  Note
+that they may not SWALLOW very large opponents.
 ~
 
 0 'DRAGON AURA'~
@@ -7057,21 +7069,21 @@ into the cache.
 
 Syntax: empower <<weapon>
 
-Smithys can empower weapons which enables those weapons to obtain a 
+Smithys can empower weapons which enables those weapons to obtain a
 charge when successfully hitting their opponent. When the weapon is
-fully charged they use DISCHARGE to unleash a devistating attack 
+fully charged they use DISCHARGE to unleash a devistating attack
 back onto their enemies.
 
 Your weapons power decays over time when idle.
 
-Note a charge meter is enabled to your prompt when you empower a 
-sword, and added to your prompt. See HELP PROMPT to understand 
+Note a charge meter is enabled to your prompt when you empower a
+sword, and added to your prompt. See HELP PROMPT to understand
 how to customise this.
 ~
 
 1 DISCHARGE~
 
-Syntax: discharge 
+Syntax: discharge
 Upon reaching 100% charge on a empowered weapon (See help EMPOWER)
 you are able to unleash a devistating attack on an opponent.
 ~
@@ -7080,17 +7092,17 @@ you are able to unleash a devistating attack on an opponent.
 
 Syntax: engrave <<item>
 
-An experianced SMITHY is able to apply an engraving to armour and 
-weapons. Each item that is engraved will contribute to your total 
-maximum enhanced damage. 
+An experianced SMITHY is able to apply an engraving to armour and
+weapons. Each item that is engraved will contribute to your total
+maximum enhanced damage.
 
-During battle the engravings channel charge into an 
+During battle the engravings channel charge into an
 engraved weapon, enhancing its damage, upto the maximum.
 
 You can see this in your PROMPT with %k (see HELP PROMPT)
 
-{WNOTE: You must have an engraved weapon equipped to channel the 
-energy back to the opponent.{x 
+{WNOTE: You must have an engraved weapon equipped to channel the
+energy back to the opponent.{x
 ~
 
 0 $~
