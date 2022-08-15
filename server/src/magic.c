@@ -2293,6 +2293,7 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                 }
 
                 /* AFF bits that only imms can dispel, i.e. the rest of them. -- Owl 19/2/22 */
+                /* Should replace this with a loop that strips ALL spells and ALL AFF_bits maybe? */
 
                 if (IS_AFFECTED(victim, AFF_BATTLE_AURA) && IS_IMMORTAL( ch ))
                 {

@@ -58,6 +58,7 @@ DECLARE_SPEC_FUN( spec_cast_cleric         );
 DECLARE_SPEC_FUN( spec_cast_judge          );
 DECLARE_SPEC_FUN( spec_cast_mage           );
 DECLARE_SPEC_FUN( spec_cast_druid          );
+DECLARE_SPEC_FUN( spec_cast_water_sprite   );
 DECLARE_SPEC_FUN( spec_cast_psionicist     );
 DECLARE_SPEC_FUN( spec_cast_undead         );
 DECLARE_SPEC_FUN( spec_executioner         );
@@ -107,6 +108,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_cast_judge"))           return spec_cast_judge;
         if (!str_cmp(name, "spec_cast_mage"))            return spec_cast_mage;
         if (!str_cmp(name, "spec_cast_druid"))           return spec_cast_druid;
+        if (!str_cmp(name, "spec_cast_water_sprite"))    return spec_cast_water_sprite;
         if (!str_cmp(name, "spec_cast_psionicist"))      return spec_cast_psionicist;
         if (!str_cmp(name, "spec_cast_undead"))          return spec_cast_undead;
         if (!str_cmp(name, "spec_executioner"))          return spec_executioner;
@@ -167,6 +169,7 @@ char* spec_fun_name (CHAR_DATA *ch)
         if (ch->spec_fun == spec_lookup("spec_cast_judge"))         return "spec_cast_judge";
         if (ch->spec_fun == spec_lookup("spec_cast_mage"))          return "spec_cast_mage";
         if (ch->spec_fun == spec_lookup("spec_cast_druid"))         return "spec_cast_druid";
+        if (ch->spec_fun == spec_lookup("spec_cast_water_sprite"))  return "spec_cast_water_sprite";
         if (ch->spec_fun == spec_lookup("spec_cast_psionicist"))    return "spec_cast_psionicist";
         if (ch->spec_fun == spec_lookup("spec_cast_undead"))        return "spec_cast_undead";
         if (ch->spec_fun == spec_lookup("spec_executioner"))        return "spec_executioner";
@@ -651,6 +654,110 @@ bool spec_cast_druid( CHAR_DATA *ch )
                     default:
                         min_level = 20;
                         spell = "wither";
+                        break;
+                }
+
+                if ( ch->level >= min_level )
+                        break;
+        }
+
+        if ( ( sn = skill_lookup( spell ) ) < 0 )
+                return FALSE;
+
+        if (target_self)
+                act ("$c concentrates intensely.", ch, NULL, NULL, TO_ROOM);
+        else
+        {
+                act ("$c gestures towards $N.", ch, NULL, victim, TO_NOTVICT);
+                act ("$c gestures towards you.", ch, NULL, victim, TO_VICT);
+        }
+
+        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+
+        return TRUE;
+}
+
+bool spec_cast_water_sprite( CHAR_DATA *ch )
+{
+        CHAR_DATA *victim;
+        char      *spell;
+        int        sn;
+        bool       target_self;
+
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim->deleted)
+                        continue;
+
+                if (victim->fighting == ch && !number_bits(1))
+                        break;
+        }
+
+        if (!victim)
+                return FALSE;
+
+        while (1)
+        {
+            int min_level;
+            target_self = FALSE;
+
+                switch ( number_range (0, 13) )
+                {
+                    case  0:
+                    case  1:
+                        min_level =  0;
+                        spell = "faerie fire";
+                        break;
+
+                    case  2:
+                        min_level =  5;
+                        spell = "shocking grasp";
+                        break;
+
+                    case  3:
+                        min_level =  10;
+                        spell = "chill touch";
+                        break;
+
+                    case  4:
+                        min_level = 11;
+                        spell = "armor";
+                        target_self = TRUE;
+                        break;
+
+                    case  5:
+                        min_level = 15;
+                        spell = "fear";
+                        break;
+
+                    case  6:
+                        min_level = 18;
+                        spell = "feeblemind";
+                        break;
+
+                    case  7:
+                        min_level = 18;
+                        spell = "steal strength";
+                        break;
+
+                    case  8:
+                        min_level = 20;
+                        spell = "paralysis";
+                        break;
+
+                    case  9:
+                        min_level = 25;
+                        spell = "energy drain";
+                        break;
+
+                    case  10:
+                        min_level = 35;
+                        spell = "slow";
+                        break;
+
+                    default:
+                        min_level = 25;
+                        spell = "fury of nature";
                         break;
                 }
 
