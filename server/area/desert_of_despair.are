@@ -4,11 +4,11 @@
 #MOBILES
 #18100
 Bedouin man warrior~
-A Bedouin man.~
+a Bedouin man~
 A Bedouin man walks about doing his work.
 ~
 Tall and straight, this man is proud and strong.  Dark skin and a hooded
-cloak make his features hard to make out.
+cloak make his features hard to determine.
 ~
 64 8|32|8192|32768 0 S
 10 0 0 0d0+0 0d0+0
@@ -20,7 +20,8 @@ the woman~
 A Bedouin woman carries her day's work in a large basket here.
 ~
 Tough and wry, this woman could keep any man going.  Although her skin is dry
-from the continuously heat of the sun, a bit of Elizabeth Arden would see her right.
+from the continuous heat of the sun, it is nothing a bit of Elizabeth Arden
+wouldn't see right.
 ~
 4|64|128 0 100 S
 15 0 0 0d0+0 0d0+0
@@ -29,13 +30,13 @@ from the continuously heat of the sun, a bit of Elizabeth Arden would see her ri
 #18102
 snake viper king~
 a snake~
-A King Viper slithers across your path.
+A king viper slithers across your path.
 ~
-This snake has a deadly bite to it; large, dark brown markings are striped across its back.
+This snake has a deadly bite to it; large, dark-brown markings are striped across its back.
 ~
 32|64|128 32768 -700 S
 10 0 0 0d0+0 0d0+0
-60 0
+60|512 0
 8 8 0
 #18103
 bedouin child~
@@ -57,16 +58,16 @@ Small but deadly this snake could kill you with its venom easy.
 ~
 32|64|128 32768 -900 S
 7 0 0 0d0+0 0d0+0
-60 0
+60|512 0
 8 8 0
 #0
 
 
 #OBJECTS
 #18100
-sword~
+sword black jewelled~
 a sword~
-A black hilted sword, with a jewelled pommel lies here.~
+A black-hilted sword with a jewelled pommel lies here.~
 ~
 5 0 1|8192
 0~ 6~ 25~ 3~
@@ -76,9 +77,9 @@ A
 A
 19 1
 #18101
-cloak~
+cloak pockets~
 a small cloak with pockets~
-A small piece of brown, sacklike material.~
+A small piece of brown, sack-like material.~
 ~
 15 64 1|1024
 100~ 1~ -1~ 11~
@@ -113,16 +114,16 @@ A rabbit's foot on a small ring.~
 5 0 0
 #18105
 belt leather~
-a Leather Belt~
-A Leather Belt with a shiny silver buckle lies here.~
+a leather belt~
+A leather belt with a shiny silver buckle lies here.~
 ~
 9 0 1|2048
 4~ 1~ 6~ 11~
 5 0 0
 #18106
-boots~
-a pair of low heeled boots~
-A well made pair of boots is here on the ground.~
+boots low-heeled~
+a pair of low-heeled boots~
+A well-made pair of boots is here on the ground.~
 ~
 9 0 1|64
 3~ 1~ 6~ 11~

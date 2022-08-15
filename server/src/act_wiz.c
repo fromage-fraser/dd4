@@ -3807,6 +3807,8 @@ void do_mset( CHAR_DATA *ch, char *argument )
         char                    arg2 [ MAX_INPUT_LENGTH  ];
         char                    arg3 [ MAX_INPUT_LENGTH  ];
         unsigned long int       value;
+        unsigned long int       bvalue;
+        char                    *bptr;
         int                     max;
 
         rch = get_char( ch );
@@ -3828,8 +3830,8 @@ void do_mset( CHAR_DATA *ch, char *argument )
                              "  hp mana move str_prac int_prac align\n\r"
                              "  thirst drunk full sub_class form race \n\r"
                              "  bounty fame questpoints totalqp questtime\n\r"
+                             "  patron deity_timer deity_flags affected_by\n\r"
                              "  bank plat gold silver copper age\n\r"
-                             "  patron deity_timer deity_flags\n\r"
                              "  rage spec\n\r"
                              "String being one of:\n\r"
                              "  name short long title spec\n\r", ch);
@@ -3846,6 +3848,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
          * Snarf the value (which need not be numeric).
          */
         value = is_number( arg3 ) ? atoi( arg3 ) : -1;
+        bvalue = strtoul(arg3, &bptr, 10);
 
         /*
          * Set something.
@@ -4064,7 +4067,13 @@ void do_mset( CHAR_DATA *ch, char *argument )
                 if( !IS_NPC( victim ) )
                         send_to_char( "You can't set body form on PCs.\n\r", ch );
                 else
-                        victim->body_form = value;
+                        victim->body_form = bvalue;
+                return;
+        }
+
+        if( !str_cmp( arg2, "affected_by" ) )
+        {
+                victim->affected_by = bvalue;
                 return;
         }
 

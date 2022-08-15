@@ -1111,7 +1111,7 @@ It's {Mpink{x. And a Dragon.
 ~
 0 8|32|512 0 S
 20 0 0 0d0+0 0d0+0
-128 0
+128|512 0
 0 0 1
 
 #758
@@ -1188,8 +1188,8 @@ Her song works its way into your mind.
 
 #764
 Bone Golem~
-a Bone Golem~
-{WA Bone Golem lumbers toward you.{x
+a bone golem~
+{WA bone golem lumbers toward you.{x
 ~
 It's large and deadly.
 ~
@@ -1231,7 +1231,7 @@ It's snake-like with wings.
 ~
 0 8|32|512 0 S
 75 0 0 0d0+0 0d0+0
-0 0
+512 0
 0 0 1
 
 #768

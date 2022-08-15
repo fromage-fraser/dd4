@@ -15,7 +15,7 @@ move to avoid running aground. There is a Clockwise current running through
 the high seas. There is a random 4 room area (sea of chaos). There is
 a whirlpool which dumps you on other portion of ocean. There are sunken
 wrecks and sirens, and of course the ghost ship which has the map to the
-entire area (onum 17001). Because most rooms average 4 exits, this area
+entire area (vnum 17001). Because most rooms average 4 exits, this area
 was a real &)*)*(* to code exit wise. The pirates and typhoon are supposed
 to be wandering marauders of the high seas.
 ~
@@ -163,7 +163,7 @@ you something.
 #17001
 map strange~
 a strange map~
-A strange looking map is here.~
+A strange-looking map is here.~
 ~
 13 0 1|16384
 0~ 0~ 0~ 0~
