@@ -14,7 +14,7 @@ inside them. Best hope he's not hungry.
 ~
 4|32|64 8|32|512|33554432|67108864 -250 S
 20 0 0 0d0+0 0d0+0
-172 0
+172|512 0
 8 8 2
 >all_greet_prog 1~
 mpecho The megalodon lunges suddenly at you!
@@ -116,7 +116,7 @@ for unsuspecting prey to wander by.  Will you be on the menu today?
 ~
 2|32|64 8|32|512|65536|8388608|67108864 0 S
 24 0 0 0d0+0 0d0+0
-44 0
+44|512 0
 8 8 2
 #27005
 baby dolphin~
@@ -129,7 +129,7 @@ as though he's desperately looking for someone or something.
 ~
 64|128 8|32|512|67108864 500 S
 20 0 0 0d0+0 0d0+0
-44 0
+44|512 0
 8 8 1
 >rand_prog 5~
 mpasound ::ickickiiiick!::
@@ -146,7 +146,7 @@ Better not get in her way!
 ~
 64 8|32|512|67108864 600 S
 23 0 0 0d0+0 0d0+0
-44 0
+44|512 0
 8 8 2
 >all_greet_prog 100~
 follow baby
@@ -188,7 +188,7 @@ is which.
 ~
 64 8|32|512|32768|67108864 0 S
 19 0 0 0d0+0 0d0+0
-44 0
+44|512 0
 8 8 1
 #27009
 sea snake seasnake~
@@ -204,7 +204,7 @@ is which.
 ~
 64 8|32|512|32768|67108864 -300 S
 19 0 0 0d0+0 0d0+0
-44 0
+44|512 0
 8 8 2
 >greet_prog 2~
 mpecho A {Bs{We{Ba {Ws{Bn{Wa{Bk{We{x lashes out suddenly at you!
@@ -275,7 +275,7 @@ predators have migrated closer to the surface.
 ~
 64 8|32|512|67108864 -125 S
 16 0 0 0d0+0 0d0+0
-44 0
+44|512 0
 8 8 2
 >greet_prog 10~
 mpecho A {Ggoblin shark{x turns suddenly to attack you!
@@ -297,7 +297,7 @@ are poisonous, but aren't sure how to tell which ones.
 ~
 64 8|32|512|8192|67108864 0 S
 15 0 0 0d0+0 0d0+0
-0 0
+44|512 0
 8 8 2
 #27015
 porcupine fish porcupinefish~
@@ -310,7 +310,7 @@ are poisonous, but aren't sure how to tell which ones.
 ~
 64 8|32|512|8192|67108864 -300 S
 15 0 0 0d0+0 0d0+0
-44 0
+44|512 0
 8 8 1
 #27016
 a giant lobster~
@@ -366,7 +366,7 @@ to do what you couldn't say.
 ~
 64 8|32|512|67108864 -400 S
 23 0 0 0d0+0 0d0+0
-0 0
+512 0
 8 8 1
 >all_greet_prog 100~
 if race($n) == 19
@@ -3690,12 +3690,13 @@ S
 
 
 #SPECIALS
-M  27000 spec_fido			the megalodon
-M  27001 spec_fido			a vampire squid
-M  27002 spec_fido			a spider crab
+M  27000 spec_fido			    the megalodon
+M  27001 spec_fido			    a vampire squid
+M  27002 spec_fido			    a spider crab
 M  27003 spec_poison			a sea anemone
-M  27004 spec_fido			the anglerfish
-M  27007 spec_fido			a sea lion
+M  27004 spec_fido			    the anglerfish
+M  27006 spec_small_whale	    a female dolphin
+M  27007 spec_fido			    a sea lion
 M  27009 spec_poison			a sea snake
 M  27011 spec_poison			a jellyfish
 M  27015 spec_poison			a porcupinefish

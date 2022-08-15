@@ -515,6 +515,12 @@ void do_transfer( CHAR_DATA *ch, char *argument )
         if (victim->rider)
                 strip_mount (victim->rider);
 
+        /* if they were swallowed, some text indicating escape + stripping effects */
+        if (IS_AFFECTED(victim, AFF_SWALLOWED))
+        {
+                strip_swallow(victim);
+        }
+
         act( "$n disappears in a mushroom cloud.", victim, NULL, NULL, TO_ROOM );
 
         if (is_entered_in_tournament(victim) && tournament_status == TOURNAMENT_STATUS_RUNNING)
@@ -525,7 +531,7 @@ void do_transfer( CHAR_DATA *ch, char *argument )
 
         char_from_room( victim );
         char_to_room( victim, location );
-        act( "$n arrives from a puff of smoke.", victim, NULL, NULL, TO_ROOM );
+        act( "$n arrives in a puff of smoke.", victim, NULL, NULL, TO_ROOM );
         if ( ch != victim )
                 act( "$n has transferred you.", ch, NULL, victim, TO_VICT );
         do_look( victim, "auto" );
@@ -3801,6 +3807,8 @@ void do_mset( CHAR_DATA *ch, char *argument )
         char                    arg2 [ MAX_INPUT_LENGTH  ];
         char                    arg3 [ MAX_INPUT_LENGTH  ];
         unsigned long int       value;
+        unsigned long int       bvalue;
+        char                    *bptr;
         int                     max;
 
         rch = get_char( ch );
@@ -3822,8 +3830,8 @@ void do_mset( CHAR_DATA *ch, char *argument )
                              "  hp mana move str_prac int_prac align\n\r"
                              "  thirst drunk full sub_class form race \n\r"
                              "  bounty fame questpoints totalqp questtime\n\r"
+                             "  patron deity_timer deity_flags affected_by\n\r"
                              "  bank plat gold silver copper age\n\r"
-                             "  patron deity_timer deity_flags\n\r"
                              "  rage spec\n\r"
                              "String being one of:\n\r"
                              "  name short long title spec\n\r", ch);
@@ -3840,6 +3848,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
          * Snarf the value (which need not be numeric).
          */
         value = is_number( arg3 ) ? atoi( arg3 ) : -1;
+        bvalue = strtoul(arg3, &bptr, 10);
 
         /*
          * Set something.
@@ -4058,7 +4067,13 @@ void do_mset( CHAR_DATA *ch, char *argument )
                 if( !IS_NPC( victim ) )
                         send_to_char( "You can't set body form on PCs.\n\r", ch );
                 else
-                        victim->body_form = value;
+                        victim->body_form = bvalue;
+                return;
+        }
+
+        if( !str_cmp( arg2, "affected_by" ) )
+        {
+                victim->affected_by = bvalue;
                 return;
         }
 

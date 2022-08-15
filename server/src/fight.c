@@ -731,7 +731,7 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                         dam += dam / 3;
 
                 }
-                
+
                 /* adds to teh meter for smithys */
                 if ( wield && (IS_SET(wield->ego_flags, EGO_ITEM_EMPOWERED)) && (ch->pcdata->meter < 100) )
                 {
@@ -744,7 +744,7 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 
                 }
 
-                if ( wield && (IS_SET(wield->ego_flags, EGO_ITEM_ENGRAVED)) 
+                if ( wield && (IS_SET(wield->ego_flags, EGO_ITEM_ENGRAVED))
                         && (ch->pcdata->dam_meter < ch->damage_enhancement)
                         &&  (victim->level +5 >= ch->level) )
                 {
@@ -762,8 +762,8 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 /* adds the damage_enhancement for smithys */
                 if (!IS_NPC(ch)
                     && ch->pcdata->learned[gsn_engrave] > 0 )
-                        dam += dam * ch->damage_enhancement / 100; 
-                
+                        dam += dam * ch->damage_enhancement / 100;
+
                 if (!IS_NPC(ch) && ch->pcdata->learned[gsn_enhanced_hit] > 0)
                         dam += dam * ch->pcdata->learned[gsn_enhanced_hit] / 400;
 
@@ -2343,6 +2343,14 @@ void death_cry (CHAR_DATA *ch)
                 break;
 
             case 7:
+                if (MAKES_CORPSE(ch) && HAS_TAIL(ch))
+                {
+                        strcpy(msg, "$c's tail is sliced from $s body.");
+                        body_part_vnum = OBJ_VNUM_SLICED_TAIL;
+                }
+                break;
+
+            case 8:
                 if (MAKES_CORPSE(ch) && HAS_HEAD(ch) && !IS_INORGANIC(ch))
                         strcpy(msg, "$c's head splits apart, revealing $s brain.");
                 break;
@@ -3894,9 +3902,9 @@ void do_berserk (CHAR_DATA *ch, char *argument)
 
 void do_flee (CHAR_DATA *ch, char *argument)
 {
-        CHAR_DATA       *victim;
-        ROOM_INDEX_DATA *was_in;
-        ROOM_INDEX_DATA *now_in;
+        CHAR_DATA        *victim;
+        ROOM_INDEX_DATA  *was_in;
+        ROOM_INDEX_DATA  *now_in;
         int              attempt;
         bool             lose_xp;
 
@@ -4027,6 +4035,12 @@ void do_flee (CHAR_DATA *ch, char *argument)
                         {
                                 send_to_char("You flee from combat!\n\r", ch);
                                 return;
+                        }
+
+                        /* if they were swallowed, some text indicating escape + stripping effects */
+                        if (IS_AFFECTED(ch, AFF_SWALLOWED))
+                        {
+                                strip_swallow(ch);
                         }
 
                         if (ch->form == FORM_GRIFFIN)
@@ -6708,6 +6722,7 @@ void do_swallow (CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
         char    arg [MAX_INPUT_LENGTH ];
+        char    buf [MAX_INPUT_LENGTH ];
         int     chance;
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_swallow))
@@ -6770,7 +6785,7 @@ void do_swallow (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if ( IS_AFFECTED(ch,AFF_CHARM) && ch->master == victim )
+        if ( IS_AFFECTED(victim,AFF_CHARM) && victim->master == ch )
         {
                 act ("But $N is such a good friend!",ch,NULL,victim,TO_CHAR);
                 return;
@@ -6793,35 +6808,36 @@ void do_swallow (CHAR_DATA *ch, char *argument)
                 AFFECT_DATA af;
 
                 arena_commentary("$n swallows $N whole!", ch, victim);
-                /*act ("$n is swallowed whole by $N!", victim, NULL, NULL, TO_ROOM);*/
-                send_to_char("<15>You swallow your opponent whole!<0>\n\r", ch);
+                sprintf(buf, "<15>You swallow %s whole!<0>\n\r",
+                        IS_NPC(victim) ? victim->short_descr : victim->name);
+                send_to_char(buf, ch);
                 act( "<15>$c swallows $N whole!<0>", ch, NULL, victim, TO_NOTVICT );
-                /* damage(ch, victim, number_range(30,50), gsn_swallow, FALSE); */
                 send_to_char("You have been <132>SWALLOWED<0> and can't see a thing!\n\r", victim);
 
                 victim->inside = ch;
 
                 af.type      = gsn_swallow;
-                af.duration  = 0;
+                af.duration  = ( ch->level / 75 ); /* 0 until lvl 75, 1 thereafter */
 
                 af.location     = APPLY_HITROLL;
-                af.modifier     = -10;
+                af.modifier     = ( ch->level / -5 );
                 af.bitvector    = AFF_BLIND;
                 affect_to_char(victim,&af);
 
                 af.location     = APPLY_DAMROLL;
-                af.modifier     = -10;
+                af.modifier     = ( ch->level / -5 );
                 af.bitvector    = AFF_HOLD;
                 affect_to_char(victim, &af);
 
                 af.location     = APPLY_DEX;
-                af.modifier     = -5;
+                af.modifier     = ( ch->level / -10 );
                 af.bitvector    = AFF_SWALLOWED;
                 affect_to_char(victim, &af);
 
                 af.location     = APPLY_MOVE;
-                af.modifier     = -500;
-                af.bitvector    = AFF_CURSE;
+                af.modifier     = ((ch->level * -10) + (ch->level * 2));
+                af.bitvector    = AFF_NO_RECALL;
+
                 affect_to_char(victim, &af);
 
                 check_group_bonus(ch);

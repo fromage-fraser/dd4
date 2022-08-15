@@ -242,7 +242,7 @@ doors and portals.
 ~
 512|4096|32768 8|16|32|512|8192|32768|524288 0 S
 20 0 0 0d0+0 0d0+0
-0 0
+512 0
 8 8 1
 >rand_prog 10~
 if rand(25)
@@ -1187,6 +1187,15 @@ Trying to add extended BVs, this item is a test.~
 5 65536|262144|16777216|17179869184|2305843009213693952 1|64
 0~ 15~ 20~ 14~
 1 10000 7500
+
+#502
+tail~
+the tail of %s~
+The sliced-off tail of %s is lying here.~
+~
+19 0 1
+20~ 0~ 0~ 0~
+5 0 0
 #0
 
 
