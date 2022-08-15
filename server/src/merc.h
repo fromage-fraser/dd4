@@ -318,8 +318,8 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
 #define MAX_SKILL                   535     /* 533 + 2 for flukeslap and swallow - Owl Aug 2022 */
-#define MAX_PRE_REQ                 1371    /* 1370 + 1 for 'swallow' - Owl Aug 2022 */
-#define MAX_SPELL_GROUP             438     /* 437 + 1 for 'swallow' - Owl Aug 2022 */
+#define MAX_PRE_REQ                 1375    /* 1373 + 2 for 'stabilise' - Owl Aug 2022 */
+#define MAX_SPELL_GROUP             440     /* 439 + 1 for 'stabilise' - Owl Aug 2022 */
 #define MAX_GROUPS                  58      /* added smithy groups - Brutus 30 Jul 2022 */
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
 #define MAX_VAMPIRE_GAG             27      /* 26 + 1 for 'swallow' | ugly vampire/werewolf hack */
@@ -784,6 +784,7 @@ struct descriptor_data
 #define BODY_NO_CORPSE          BIT_6
 #define BODY_HUGE               BIT_7
 #define BODY_INORGANIC          BIT_8
+#define BODY_HAS_TAIL           BIT_9
 
 #define HAS_HEAD( ch )          ( !( ch->body_form & BODY_NO_HEAD ) )
 #define HAS_EYES( ch )          ( !( ch->body_form & BODY_NO_EYES ) )
@@ -794,6 +795,7 @@ struct descriptor_data
 #define MAKES_CORPSE( ch )      ( !( ch->body_form & BODY_NO_CORPSE ) )
 #define IS_HUGE( ch )              ( ch->body_form & BODY_HUGE )
 #define IS_INORGANIC( ch )         ( ch->body_form & BODY_INORGANIC )
+#define HAS_TAIL( ch )             ( ch->body_form & BODY_HAS_TAIL )
 
 
 /*
@@ -1804,6 +1806,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define AFF_DETECT_CURSE                BIT_29  /* Mob will attack cursed players, see is_cursed() --Owl */
 #define AFF_DETECT_GOOD                 BIT_30
 #define AFF_SWALLOWED                   BIT_31  /* Has been swallowed by a large creature */
+#define AFF_NO_RECALL                   BIT_32  /* Use to prevent recall without baggage of AFF_CURSE */
 #define AFF_SLOW                        BIT_63  /* last */
 
 /* forms - Brutus */
@@ -1897,6 +1900,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define OBJ_VNUM_TORN_HEART                13
 #define OBJ_VNUM_SLICED_ARM                14
 #define OBJ_VNUM_SLICED_LEG                15
+#define OBJ_VNUM_SLICED_TAIL               502
 
 #define OBJ_VNUM_MUSHROOM                  20
 #define OBJ_VNUM_LIGHT_BALL                21
@@ -2560,7 +2564,7 @@ struct char_data
         int                     gag;
         int                     backstab;
         int                     edrain;
-        int                     body_form;
+        unsigned long int       body_form;
         int                     tournament_team;        /* mobs can use this too */
         int                     exp_modifier;
         int                     damage_mitigation;

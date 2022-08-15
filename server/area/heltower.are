@@ -37,7 +37,7 @@ psionically probes your mind.
 ~
 4|32|64|128 32768|65536 0 S
 30 0 0 0d0+0 0d0+0
-0 0
+512 0
 8 8 0
 #13503
 Flamewing Flame Wing~
@@ -72,7 +72,7 @@ reveal row upon row of razor sharp teeth.
 ~
 4|32|64|128 8|32|32768 0 S
 30 0 0 0d0+0 0d0+0
-44 0
+44|512 0
 8 8 0
 #13506
 Death old lady Hag~

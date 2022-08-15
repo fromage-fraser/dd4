@@ -2080,8 +2080,10 @@ void do_recall (CHAR_DATA *ch, char *argument)
                 if (ch->in_room == location)
                         return;
 
-                if ((IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || IS_AFFECTED(ch, AFF_CURSE))
-                    && !IS_SET(ch->in_room->room_flags, ROOM_PLAYER_KILLER))
+                if ( ( IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL )
+                   ||  IS_AFFECTED( ch, AFF_CURSE )
+                   ||  IS_AFFECTED( ch, AFF_NO_RECALL ) )
+                && !IS_SET( ch->in_room->room_flags, ROOM_PLAYER_KILLER ) )
                 {
                         send_to_char("God has forsaken you.\n\r", ch);
                         return;
@@ -2329,7 +2331,8 @@ void do_home (CHAR_DATA *ch, char *argument)
                 return;
 
         if (IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)
-            || IS_AFFECTED(ch, AFF_CURSE))
+            || IS_AFFECTED(ch, AFF_CURSE)
+            || IS_AFFECTED(ch, AFF_NO_RECALL) )
         {
                 send_to_char("God has forsaken you.\n\r", ch);
                 return;
@@ -2427,7 +2430,8 @@ void do_arena (CHAR_DATA *ch, char *argument)
         }
 
         if (IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)
-            || is_affected(ch, AFF_CURSE))
+            || is_affected(ch, AFF_CURSE)
+            || is_affected(ch, AFF_NO_RECALL))
         {
                 send_to_char("Your cries fall upon deaf ears.\n\r", ch);
                 return;
