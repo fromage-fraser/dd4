@@ -3538,7 +3538,6 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "kick", &gsn_kick,
                 TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_null, 0, 8,
-                /*"kick", "!Kick!"*/
                 "kick", "!Kick!"
 
         },
