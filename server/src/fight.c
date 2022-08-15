@@ -6837,6 +6837,7 @@ void do_swallow (CHAR_DATA *ch, char *argument)
                 af.location     = APPLY_MOVE;
                 af.modifier     = ((ch->level * -10) + (ch->level * 2));
                 af.bitvector    = AFF_NO_RECALL;
+
                 affect_to_char(victim, &af);
 
                 check_group_bonus(ch);
