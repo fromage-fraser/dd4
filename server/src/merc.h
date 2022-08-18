@@ -317,9 +317,9 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   537     /* 537 Inate knowledge, Brutus Aug 2022 */
-#define MAX_PRE_REQ                 1376    /* 1376 +1 for inate knowldge 1 for 'swallow' - Brutus Aug 2022 */
-#define MAX_SPELL_GROUP             441     /* 441 +1 inate knowldege +Brutus Aug 2022 */
+#define MAX_SKILL                   538     /* 537 + 1 for 'spit mucus' -Owl 18/8/22 */
+#define MAX_PRE_REQ                 1376    /* 1376 +1 for innate knowledge 1 for 'swallow' - Brutus Aug 2022 */
+#define MAX_SPELL_GROUP             441     /* 441 +1 innate knowledge Brutus Aug 2022 */
 #define MAX_GROUPS                  58      /* added smithy groups - Brutus 30 Jul 2022 */
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
 #define MAX_VAMPIRE_GAG             27      /* 26 + 1 for 'swallow' | ugly vampire/werewolf hack */
@@ -3542,6 +3542,7 @@ extern int gsn_slow;
 extern int gsn_stabilise;
 extern int gsn_flukeslap;
 extern int gsn_swallow;
+extern int gsn_spit_mucus;
 
 /*
  *  Deity gsns
@@ -3930,6 +3931,7 @@ DECLARE_DO_FUN( do_strengthen                   );
 DECLARE_DO_FUN( do_flukeslap                    );      /* Owl 13/8/22 for 'whale' specials */
 DECLARE_DO_FUN( do_swallow                      );      /* Owl 13/8/22 for 'whale' specials  & dragon form */
 DECLARE_DO_FUN( do_serrate                      );
+DECLARE_DO_FUN( do_spit_mucus                   );       /* Owl 18/8/22 'lag out' attack for aboleth and similar */
 
 /* The following are for mob programs - Brutus */
 DECLARE_DO_FUN( do_mpasound                     );

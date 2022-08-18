@@ -86,6 +86,8 @@ DECLARE_SPEC_FUN( spec_demon               );
 DECLARE_SPEC_FUN( spec_cast_electric       );
 DECLARE_SPEC_FUN( spec_small_whale         );
 DECLARE_SPEC_FUN( spec_large_whale         );
+DECLARE_SPEC_FUN( spec_kappa               );
+DECLARE_SPEC_FUN( spec_aboleth             );
 
 
 /*
@@ -137,6 +139,8 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_cast_electric"))        return spec_cast_electric;
         if (!str_cmp(name, "spec_small_whale"))          return spec_small_whale;
         if (!str_cmp(name, "spec_large_whale"))          return spec_large_whale;
+        if (!str_cmp(name, "spec_kappa"))                return spec_kappa;
+        if (!str_cmp(name, "spec_aboleth"))              return spec_aboleth;
 
 
         return 0;
@@ -198,6 +202,8 @@ char* spec_fun_name (CHAR_DATA *ch)
         if (ch->spec_fun == spec_lookup("spec_cast_electric"))      return "spec_cast_electric";
         if (ch->spec_fun == spec_lookup("spec_small_whale"))        return "spec_small_whale";
         if (ch->spec_fun == spec_lookup("spec_large_whale"))        return "spec_large_whale";
+        if (ch->spec_fun == spec_lookup("spec_kappa"))              return "spec_kappa";
+        if (ch->spec_fun == spec_lookup("spec_aboleth"))            return "spec_aboleth";
     }
     else {
         return "none";
@@ -1253,6 +1259,129 @@ bool spec_cast_psionicist( CHAR_DATA *ch )
                 return FALSE;
 
         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
+
+        return TRUE;
+}
+
+/*
+ * Aboleth special.  Similar to psionic.
+ */
+bool spec_aboleth( CHAR_DATA *ch )
+{
+        CHAR_DATA *victim;
+        char      *spell;
+        int        sn;
+        bool       target_self;
+        char buf[MAX_STRING_LENGTH];
+
+        spell = "ego whip";
+
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim->deleted)
+                        continue;
+
+                if (victim->fighting == ch && !number_bits(1))
+                        break;
+        }
+
+        if (!victim)
+                return FALSE;
+
+        while (1)
+        {
+            int min_level;
+            target_self = FALSE;
+
+                switch ( number_range (0, 9) )
+                {
+                    case  0:
+                        min_level = 5;
+                        if (is_affected(victim, gsn_psychic_drain))
+                        {
+                                break;
+                        }
+                        else {
+                                if ( CAN_SPEAK(ch) ) { sprintf(buf,"So strong, so confident..."); }
+                                spell = "psychic drain";
+                                break;
+                        }
+
+                    case  1:
+                        min_level = 11;
+                        if (is_affected(ch, gsn_biofeedback))
+                        {
+                                break;
+                        }
+                        else {
+                                if ( CAN_SPEAK(ch) ) { sprintf(buf,"I am not without my defenses, fleshling..."); }
+                                spell = "biofeedback";
+                                target_self = TRUE;
+                                break;
+                        }
+
+                    case  2:
+                        if ( CAN_SPEAK(ch) ) { do_say(ch, "What a sticky situation this is..."); }
+                        do_spit_mucus( ch, victim->name);
+                        return TRUE;
+
+                    case  3:
+                        if ( CAN_SPEAK(ch) ) { do_say(ch, "Thinking?  Oh we can't have that!"); }
+                        do_spit_mucus( ch, victim->name);
+                        return TRUE;
+
+                    case  4:
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Mmmmmm... energy..."); }
+                        min_level = 14;
+                        spell = "energy drain";
+                        break;
+
+                    case  5:
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"How about a shock to the system?"); }
+                        min_level = 50;
+                        spell = "synaptic blast";
+                        break;
+
+                    case  6:
+                        min_level = 25;
+                        if (is_affected(ch, gsn_combat_mind))
+                        {
+                                break;
+                        }
+                        else {
+                                if ( CAN_SPEAK(ch) ) { sprintf(buf,"Let me retrieve some relevant memories..."); }
+                                spell = "combat mind";
+                                target_self = TRUE;
+                                break;
+                        }
+
+                    case  7:
+
+                    default:
+                        min_level = 1;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Behold the power of an ancient mind!"); }
+                        spell = "ultrablast";
+                        break;
+                }
+
+                if ( ch->level >= min_level )
+                        break;
+        }
+
+        if ( ( sn = skill_lookup( spell ) ) < 0 )
+                return FALSE;
+
+        do_say(ch,buf);
+
+        if (target_self)
+                act ("$c lifts $s hideous head up and closes one of $s three eyes.", ch, NULL, NULL, TO_ROOM);
+        else
+        {
+                act ("$c motions towards $N with $s tentacles.", ch, NULL, victim, TO_NOTVICT);
+                act ("$c motions towards you with $s tentacles.", ch, NULL, victim, TO_VICT);
+        }
+
+        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
 
         return TRUE;
 }
@@ -2785,5 +2914,120 @@ bool spec_large_whale( CHAR_DATA *ch )
         return FALSE;
 }
 
+bool spec_kappa( CHAR_DATA *ch )
+{
+        CHAR_DATA *victim;
+        char      *spell;
+        int        sn;
+        bool       target_self;
+        char buf[MAX_STRING_LENGTH];
 
+        spell = "fury of nature";
+        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Mmmmm, how's the water?"); }
+
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim->deleted)
+                        continue;
+
+                if (victim->fighting == ch && !number_bits(1))
+                        break;
+        }
+
+        if (!victim)
+                return FALSE;
+
+        while (1)
+        {
+            int min_level;
+            target_self = FALSE;
+
+                switch ( number_range (0, 11) )
+                {
+                    case  0:
+                    case  1:
+
+                    case  2:
+
+                    case  3:
+
+                    case  4:
+                        min_level = 11;
+                        if (is_affected(ch, gsn_inertial_barrier))
+                        {
+                                break;
+                        }
+                        else {
+                                if ( CAN_SPEAK(ch) ) { sprintf(buf,"Time to harden up!"); }
+                                spell = "inertial barrier";
+                                target_self = TRUE;
+                                break;
+                        }
+
+                    case  5:
+                        min_level = 5;
+                        if (is_affected(ch, gsn_armor))
+                        {
+                                break;
+                        }
+                        else {
+                                if ( CAN_SPEAK(ch) ) { sprintf(buf,"You think the only protection I have is this SHELL?"); }
+                                spell = "armor";
+                                target_self = TRUE;
+                                break;
+                        }
+
+                    case  6:
+                        if ( CAN_SPEAK(ch) ) { do_say(ch, "Meet my melon!"); }
+                        do_flying_headbutt( ch, victim->name);
+                        return TRUE;
+
+                    case  7:
+                        if ( CAN_SPEAK(ch) ) { do_say(ch, "Like to play a little footsie?"); }
+                        do_kick( ch, "");
+                        return TRUE;
+
+                    case  8:
+                        if ( CAN_SPEAK(ch) ) { do_say(ch, "Let's take it down to pound town!"); }
+                        do_grapple( ch, victim->name);
+                        return TRUE;
+
+                    case  9:
+                        min_level = 25;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"You think you can hurt ME?"); }
+                        spell = "power heal";
+                        target_self = TRUE;
+                        break;
+
+                    case  10:
+
+                    default:
+                        min_level = 35;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Great weather we're having, no?"); }
+                        spell = "fury of nature";
+                        break;
+                }
+
+                if ( ch->level >= min_level )
+                        break;
+        }
+
+        if ( ( sn = skill_lookup( spell ) ) < 0 )
+                return FALSE;
+
+        do_say(ch,buf);
+
+        if (target_self)
+                act ("$c clutches at $s chest with $s claws.", ch, NULL, NULL, TO_ROOM);
+        else
+        {
+                act ("$c waves $s claws at $N.", ch, NULL, victim, TO_NOTVICT);
+                act ("$c waves $s claws at you.", ch, NULL, victim, TO_VICT);
+        }
+
+        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+
+        return TRUE;
+
+}
 
