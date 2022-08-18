@@ -1173,6 +1173,13 @@ void do_ostat( CHAR_DATA *ch, char *argument )
 
                 if (IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED))
                         strcat (buf, " empowered");
+        
+                if (IS_SET(obj->ego_flags, EGO_ITEM_SERRATED))
+                        strcat (buf, " serrated");
+                
+                if (IS_SET(obj->ego_flags, EGO_ITEM_ENGRAVED))
+                        strcat (buf, " engraved");
+
                 strcat(buf, "{x\n\r");
                 strcat(buf1, buf);
         }

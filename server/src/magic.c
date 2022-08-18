@@ -3431,6 +3431,11 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         strcat (buf, " Strengthened");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED))
                         strcat (buf, " Empowered");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_SERRATED))
+                        strcat (buf, " Serrated");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_ENGRAVED))
+                        strcat (buf, " Engraved");
+                        
 
                 strcat (buf, ".\n\r");
                 send_paragraph_to_char (buf, ch, 4);

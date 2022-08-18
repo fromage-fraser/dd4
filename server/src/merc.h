@@ -317,9 +317,9 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   535     /* 533 + 2 for flukeslap and swallow - Owl Aug 2022 */
-#define MAX_PRE_REQ                 1371    /* 1370 + 1 for 'swallow' - Owl Aug 2022 */
-#define MAX_SPELL_GROUP             438     /* 437 + 1 for 'swallow' - Owl Aug 2022 */
+#define MAX_SKILL                   537     /* 537 Inate knowledge, 536 - Serrate, Brutus Aug 2022 */
+#define MAX_PRE_REQ                 1372    /* 1371 +1 for inate knowldge 1 for 'swallow' - Owl Aug 2022 */
+#define MAX_SPELL_GROUP             439     /* 438 +1 inate knowldege + 1 for 'swallow' - Owl Aug 2022 */
 #define MAX_GROUPS                  58      /* added smithy groups - Brutus 30 Jul 2022 */
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
 #define MAX_VAMPIRE_GAG             27      /* 26 + 1 for 'swallow' | ugly vampire/werewolf hack */
@@ -2121,7 +2121,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define EGO_ITEM_CONSTRUCTED            BIT_10 /* for any constructed weapon */
 #define EGO_ITEM_EMPOWERED              BIT_11 /*Empowered weapon */
 #define EGO_ITEM_ENGRAVED               BIT_12 /* ENGRAVED armour */
-#define EGO_ITEM_SERATED                BIT_13 /*Serated weapon */
+#define EGO_ITEM_SERRATED                BIT_13 /*Serated weapon */
 
 /*
  * Apply types (for affects).
@@ -2175,6 +2175,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define APPLY_SET_LEGENDARY                     45
 #define APPLY_STRENGTHEN                        46
 #define APPLY_ENGRAVED                          47
+#define APPLY_SERRATED                          48
 
 /*
  * Values for containers (value[1]).
@@ -3501,7 +3502,8 @@ extern int gsn_counterbalance;
 extern int gsn_weaponchain;
 extern int gsn_shieldchain;
 extern int gsn_hurl;
-extern int gsn_serate;
+extern int gsn_serrate;
+extern int gsn_innate_knowledge;
 extern int gsn_engrave;
 extern int gsn_discharge;
 extern int gsn_trigger;
@@ -3923,6 +3925,7 @@ DECLARE_DO_FUN( do_repair                       );      /* Owl 16/6/22 */
 DECLARE_DO_FUN( do_strengthen                   );
 DECLARE_DO_FUN( do_flukeslap                    );      /* Owl 13/8/22 for 'whale' specials */
 DECLARE_DO_FUN( do_swallow                      );      /* Owl 13/8/22 for 'whale' specials  & dragon form */
+DECLARE_DO_FUN( do_serrate                      );
 
 /* The following are for mob programs - Brutus */
 DECLARE_DO_FUN( do_mpasound                     );
@@ -4396,6 +4399,7 @@ int   has_pre_req                             ( CHAR_DATA *ch, int sn );
 char* number_suffix                           ( int num );
 void  print_player_status                     ( CHAR_DATA *ch, char *buf );
 void  print_who_data                          ( CHAR_DATA *ch, char *buf );
+void  print_smithy_data                       ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf );
 int   get_colour_index_by_code                ( int ccode );
 
 /* act_move.c */

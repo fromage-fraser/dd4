@@ -7107,6 +7107,15 @@ You can see this in your PROMPT with %k (see HELP PROMPT)
 energy back to the opponent.{x
 ~
 
+1 SERRATE~
+
+Syntax: Seratte <<weapon>
+
+Smithys can serrate bladed weapons to add bleed effects to opponents.
+
+A forge is needed to do this.
+~
+
 0 $~
 #$
 

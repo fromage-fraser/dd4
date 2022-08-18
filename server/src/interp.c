@@ -322,6 +322,7 @@ const struct cmd_type cmd_table [] =
         { "save",               do_save,           POS_DEAD,        0,  LOG_NORMAL },
         { "scan",               do_scan,           POS_STANDING,    0,  LOG_NORMAL },
         { "scribe",             do_scribe,         POS_STANDING,    0,  LOG_NORMAL },
+        { "serrate",            do_serrate,        POS_STANDING,    0,  LOG_NORMAL },
         { "shadow form",        do_shadow_form,    POS_STANDING,    0,  LOG_NORMAL },
         { "sharpen",            do_sharpen,        POS_STANDING,    0,  LOG_NORMAL },
         { "sing",               do_sing,           POS_RESTING,     0,  LOG_NORMAL },
