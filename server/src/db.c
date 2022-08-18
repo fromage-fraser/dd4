@@ -627,6 +627,7 @@ int     gsn_flukeslap;
 int     gsn_swallow;
 int     gsn_serrate;
 int     gsn_innate_knowledge;
+int     gsn_spit_mucus;
 
 /*
  *  Spell groups
@@ -2460,54 +2461,62 @@ void load_specials( FILE *fp )
                          * non combat specials
                          */
 
-                        if (pMobIndex->spec_fun == spec_lookup("spec_fido")
-                            || pMobIndex->spec_fun == spec_lookup("spec_thief")
-                            || pMobIndex->spec_fun == spec_lookup("spec_janitor")
-                            || pMobIndex->spec_fun == spec_lookup("spec_repairman")
-                            || pMobIndex->spec_fun == spec_lookup("spec_celestial_repairman")
-                            || pMobIndex->spec_fun == spec_lookup("spec_cast_adept")
-                            || pMobIndex->spec_fun == spec_lookup("spec_cast_hooker")
-                            || pMobIndex->spec_fun == spec_lookup("spec_clan_guard")
-                            || pMobIndex->spec_fun == spec_lookup("spec_bounty")
-                            || pMobIndex->spec_fun == spec_lookup("spec_executioner")
-                            || pMobIndex->spec_fun == spec_lookup("spec_cast_orb"))
+                        if ( pMobIndex->spec_fun == spec_lookup("spec_fido")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_thief")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_janitor")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_repairman")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_celestial_repairman")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_cast_adept")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_cast_hooker")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_clan_guard")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_bounty")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_executioner")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_cast_orb") )
                                 bonus = 0;
 
                         /*
                          * weak combat specials
                          */
 
-                        if (pMobIndex->spec_fun == spec_lookup("spec_poison")
-                            || pMobIndex->spec_fun == spec_lookup("spec_bloodsucker")
-                            || pMobIndex->spec_fun == spec_lookup("spec_spectral_minion")
-                            || pMobIndex->spec_fun == spec_lookup("spec_kungfu_poison")
-                            || pMobIndex->spec_fun == spec_lookup("spec_guard")
-                            || pMobIndex->spec_fun == spec_lookup("spec_judge")
-                            || pMobIndex->spec_fun == spec_lookup("spec_small_whale")
-                            || pMobIndex->spec_fun == spec_lookup("spec_large_whale"))
+                        if ( pMobIndex->spec_fun == spec_lookup("spec_poison")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_bloodsucker")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_spectral_minion")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_kungfu_poison")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_guard")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_judge") )
                                 bonus = 5;
+
+                        /*
+                         * moderate combat specials
+                         */
+
+                        if ( pMobIndex->spec_fun == spec_lookup("spec_small_whale")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_large_whale")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_kappa")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_warrior") )
+                                bonus = 10;
 
                         /*
                          * strong combat specials
                          */
 
-                        else if (pMobIndex->spec_fun == spec_lookup("spec_warrior")
-                                 || pMobIndex->spec_fun == spec_lookup("spec_cast_druid")
-                                 || pMobIndex->spec_fun == spec_lookup("spec_demon")
-                                 || pMobIndex->spec_fun == spec_lookup("spec_cast_electric")
-                                 || pMobIndex->spec_fun == spec_lookup("spec_assassin")
-                                 || pMobIndex->spec_fun == spec_lookup("spec_cast_water_sprite"))
+                        if ( pMobIndex->spec_fun == spec_lookup("spec_cast_druid")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_demon")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_cast_electric")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_assassin")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_aboleth")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_cast_water_sprite") )
                                 bonus = 15;
 
                         /*
                          * bad ass combat specials
                          */
 
-                        else if (pMobIndex->spec_fun == spec_lookup("spec_priestess")
-                                 || pMobIndex->spec_fun == spec_lookup("spec_mast_vampire")
-                                 || pMobIndex->spec_fun == spec_lookup("spec_evil_evil_gezhp")
-                                 || pMobIndex->spec_fun == spec_lookup("spec_grail")
-                                 || pMobIndex->spec_fun == spec_lookup("spec_cast_archmage"))
+                        if ( pMobIndex->spec_fun == spec_lookup("spec_priestess")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_mast_vampire")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_evil_evil_gezhp")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_grail")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_cast_archmage") )
                                 bonus = 20;
 
                         pMobIndex->spec_fun_exp_modifier = bonus;

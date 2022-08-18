@@ -5052,6 +5052,7 @@ void do_headbutt (CHAR_DATA *ch, char *argument)
         if (IS_NPC(ch)
         && !( ch->spec_fun == spec_lookup("spec_warrior")
            || ch->spec_fun == spec_lookup("spec_grail")
+           || ch->spec_fun == spec_lookup("spec_kappa")
            || ch->spec_fun == spec_lookup("spec_guard") ) )
                 return;
 
@@ -5662,7 +5663,8 @@ void do_grapple (CHAR_DATA *ch, char *argument)
         CHAR_DATA *victim;
         int chance;
 
-        if ( IS_NPC(ch) )
+        if (IS_NPC(ch)
+        && !( ch->spec_fun == spec_lookup("spec_kappa") ) )
                 return;
 
         one_argument(argument,arg);
@@ -5763,7 +5765,8 @@ void do_flying_headbutt (CHAR_DATA *ch, char *argument)
         CHAR_DATA *victim;
         int chance;
 
-        if ( IS_NPC(ch) )
+        if (IS_NPC(ch)
+        && !( ch->spec_fun == spec_lookup("spec_kappa") ) )
                 return;
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_flying_headbutt))
@@ -6734,6 +6737,67 @@ void do_flukeslap (CHAR_DATA *ch, char *argument)
 
         victim->position = POS_RESTING;
 }
+
+void do_spit_mucus (CHAR_DATA *ch, char *argument)
+{
+        /* For Aboleth or similar creatures.  Basically a heavy 'stun' (waitstate) attack.  Does
+        very little physical damage. */
+
+        CHAR_DATA *victim;
+        char arg [MAX_INPUT_LENGTH];
+        int chance;
+
+        if (!IS_NPC(ch))
+        {
+                send_to_char("You're the wrong kind of creature to be trying that.\n\r", ch);
+                return;
+        }
+
+        if (!ch->fighting)
+        {
+                send_to_char ("You aren't fighting anyone.\n\r", ch);
+                return;
+        }
+
+        one_argument (argument, arg);
+        victim = ch->fighting;
+
+        if (arg[0] != '\0' && !(victim = get_char_room (ch, arg)))
+        {
+                send_to_char ("They aren't here.\n\r", ch);
+                return;
+        }
+
+        if (is_safe(ch, victim))
+                return;
+
+        chance = 95;
+
+        WAIT_STATE (ch, PULSE_VIOLENCE);
+
+        if (number_percent() > chance)
+        {
+                act ("You spit grey mucus at $N but miss $M.", ch, NULL, victim, TO_CHAR);
+                act ("$c spits grey mucus at you but misses!", ch, NULL, victim, TO_VICT);
+                act ("$c spits grey mucus at $N but misses $M.", ch, NULL, victim, TO_NOTVICT);
+                return;
+        }
+
+        act ("You spit grey mucus at $N and $E is stunned!", ch, NULL, victim, TO_CHAR);
+        act ("$c spits grey mucus at you and your mind FREEZES UP!",  ch, NULL, victim, TO_VICT);
+        act ("$c spits grey mucus at $N and $E is stunned!", ch, NULL, victim, TO_NOTVICT);
+        arena_commentary("$c spits grey mucus at $N and $E is STUNNED!", ch, victim);
+
+        WAIT_STATE (victim, ((ch->level > 50 ) ? 50 : ch->level) );
+        WAIT_STATE (ch, (ch->level/2));
+        damage(ch, victim, number_range (0, (ch->level/2)), gsn_spit_mucus, FALSE);
+
+        if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                return;
+
+        victim->position = POS_RESTING;
+}
+
 
 void do_swallow (CHAR_DATA *ch, char *argument)
 {

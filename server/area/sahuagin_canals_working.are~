@@ -1,15 +1,6 @@
-#AREA Owl~ Ota'ar Dar Canals~
-30 60 20 100
+#AREA	{ 30 60} Owl  Ota'ar Dar Canals~
 
-#AREA_SPECIAL
-no_teleport
-no_quest
-exp_mod 105
-hidden
-$
 
-#RECALL
-27347
 #MOBILES
 #27267
 giant starfish~
@@ -268,9 +259,9 @@ bowhead whale~
 a bowhead whale~
 <240>A bowhead whale strains zooplankton from the sea water.<0>
 ~
-The bowhead whale has a large, robust, dark-coloured body and a white
-chin/lower jaw. It has a massive triangular skull, which it uses to break
-through ice to breathe. This one is looking for zooplankton, which it strains
+The bowhead whale has a large, robust, dark-coloured body and a white 
+chin/lower jaw. It has a massive triangular skull, which it uses to break 
+through ice to breathe. This one is looking for zooplankton, which it strains 
 using the massive baleen plates inside its huge mouth.
 ~
 64 512|8192 0 S
@@ -282,9 +273,9 @@ bowhead whale~
 a bowhead whale~
 <240>A bowhead whale strains zooplankton from the sea water.<0>
 ~
-The bowhead whale has a large, robust, dark-coloured body and a white
-chin/lower jaw. It has a massive triangular skull, which it uses to break
-through ice to breathe. This one is looking for zooplankton, which it strains
+The bowhead whale has a large, robust, dark-coloured body and a white 
+chin/lower jaw. It has a massive triangular skull, which it uses to break 
+through ice to breathe. This one is looking for zooplankton, which it strains 
 using the massive baleen plates inside its huge mouth.
 ~
 64 512 0 S
@@ -296,9 +287,9 @@ humpback whale~
 a humpback whale~
 <24>A humpback whale moves purposefully through the water.<0>
 ~
-The humpback is a very large, bulky whale with a thin rostrum and
-proportionally long flippers, each around one-third of its body length.
-It has a short dorsal fin and its head is covered with bumps full of
+The humpback is a very large, bulky whale with a thin rostrum and 
+proportionally long flippers, each around one-third of its body length.  
+It has a short dorsal fin and its head is covered with bumps full of 
 nerves that serve as sensory organs.
 ~
 64 512|8192 0 S
@@ -310,10 +301,10 @@ ocean sunfish~
 an ocean sunfish~
 <96>A large, round, flattened fish swims past.<0>
 ~
-The caudal fin of the ocean sunfish is replaced by a rounded clavus, creating
-the ocean sunfish's distinct truncated shape. Its body is flattened laterally,
-giving it a long oval shape when seen head-on. The pectoral fins are small and
-fan-shaped, while the dorsal fin and the anal fin are lengthened, often making
+The caudal fin of the ocean sunfish is replaced by a rounded clavus, creating 
+the ocean sunfish's distinct truncated shape. Its body is flattened laterally, 
+giving it a long oval shape when seen head-on. The pectoral fins are small and 
+fan-shaped, while the dorsal fin and the anal fin are lengthened, often making 
 the fish as tall as it is long.  This one looks to be nearly 3 metres tall.
 ~
 64 512|8192 0 S
@@ -325,15 +316,15 @@ giant gar alligator~
 a giant gar~
 <65>A massive, sleek alligator gar torpedoes through the deep.<0>
 ~
-The body of an alligator gar is torpedo-shaped, usually brown or olive, fading
-to a lighter gray or yellow ventral surface. Their scales are not like the
-scales of other fishes; rather, they are ganoid scales, which are bone-like,
-rhomboidal-shaped scales, often with serrated edges, and covered by an
-enamel-like substance. They are nearly impenetrable and are excellent
-protection against predation. Unlike other gar species, the upper jaw of an
-alligator gar has a dual row of large, sharp teeth that are used to impale
-and hold prey. Alligator gar are stalking, ambush predators, primarily
-piscivores, but they also ambush and eat waterfowl and small mammals they find
+The body of an alligator gar is torpedo-shaped, usually brown or olive, fading 
+to a lighter gray or yellow ventral surface. Their scales are not like the 
+scales of other fishes; rather, they are ganoid scales, which are bone-like, 
+rhomboidal-shaped scales, often with serrated edges, and covered by an 
+enamel-like substance. They are nearly impenetrable and are excellent 
+protection against predation. Unlike other gar species, the upper jaw of an 
+alligator gar has a dual row of large, sharp teeth that are used to impale 
+and hold prey. Alligator gar are stalking, ambush predators, primarily 
+piscivores, but they also ambush and eat waterfowl and small mammals they find 
 floating on the water's surface.
 ~
 4|32|64 8|32|512|32768 0 S
@@ -345,9 +336,9 @@ locathah hunter~
 a locathah hunter~
 <166>A locathah hunter is here, tracking his prey.<0>
 ~
-This locathah has fine, ochre scales covering his body. His fish-like head
-features large eyes, a toothless mouth,  and small fins where ears would
-normally be. Instead of hair, he has a dorsal fin and flukes.  Usually
+This locathah has fine, ochre scales covering his body. His fish-like head 
+features large eyes, a toothless mouth,  and small fins where ears would 
+normally be. Instead of hair, he has a dorsal fin and flukes.  Usually 
 locathah hunt with seals; there's likely to be one around here someplace.
 ~
 64|128 32|512|32768 125 S
@@ -359,7 +350,7 @@ hunting seal~
 a hunting seal~
 <94>A hunting seal swims about, looking distressed and angry.<0>
 ~
-This seal swims about anxiously, looking both distressed and aggressive.
+This seal swims about anxiously, looking both distressed and aggressive.  
 It might pay not to get too close.
 ~
 4|32|64 32|8192 50 S
@@ -371,9 +362,9 @@ sea zombie~
 a sea zombie~
 <70>A sea zombie lumbers through the water, groaning.<0>
 ~
-Once the corpse of a drowned human, the sea zombie looks bloated; his
-discoloured flesh is foul with putrefaction. His eye-sockets are empty,
-his lips are blackened, and his tongue protrudes hideously. You notice his
+Once the corpse of a drowned human, the sea zombie looks bloated; his 
+discoloured flesh is foul with putrefaction. His eye-sockets are empty, 
+his lips are blackened, and his tongue protrudes hideously. You notice his 
 body is encrusted with barnacles.
 ~
 64 512 -545 S
@@ -386,7 +377,7 @@ a sea zombie~
 <106>A sea zombie lumbers through the water, groaning.<0>
 ~
 Once the corpse of a drowned human, the sea zombie looks bloated; her
-discoloured flesh is foul with putrefaction. Her eye-sockets are empty,
+discoloured flesh is foul with putrefaction. Her eye-sockets are empty, 
 her lips are blackened, and her tongue protrudes hideously. You notice her
 body is encrusted with small starfish.
 ~
@@ -399,7 +390,7 @@ zin snake pale blue~
 a Zin~
 <159>A large, pale blue snake swims gracefully through the current.<0>
 ~
-It is a large, pale blue--nearly transparent--snake that is covered in a very
+It is a large, pale blue--nearly transparent--snake that is covered in a very 
 unusual mosaic pattern.
 ~
 64 8|32|512|32768|1048576 -125 S
@@ -411,75 +402,11 @@ mob~
 a Zin~
 <157>A large, pale green snake swims gracefully through the current.<0>
 ~
-It is a large, pale green--nearly transparent--snake that is covered in a very
+It is a large, pale green--nearly transparent--snake that is covered in a very 
 unusual mosaic pattern.
 ~
 64 8|32|512|32768|1048576 -125 S
 43 0 0 0d0+0 0d0+0
-0 0
-8 8 2
-#27296
-water drake silvery-blue elemental ~
-a water drake~
-<110>A silvery-blue elemental drake swims about here.<0>
-~
-Draconic in form and about 12�feet (3.7�meters) long. It has silvery-blue 
-scales that are more fish-like than reptilian.
-~
-64 8|32|512 -100 S
-45 0 0 0d0+0 0d0+0
-0 0
-8 8 1
-#27297
-water drake silvery-blue elemental ~
-a water drake~
-<110>A silvery-blue elemental drake swims about here.<0>
-~
-Draconic in form and about 12�feet (3.7�meters) long. It has silvery-blue 
-scales that are more fish-like than reptilian.
-~
-64 8|32|512 -85 S
-45 0 0 0d0+0 0d0+0
-0 0
-8 8 2
-#27298
-kappa hard-shelled humanoid creature~
-a kappa~
-<28>A small, hard-shelled humanoid creature glowers at you.<0>
-~
-The creature is of small-humanoid size and has a stooped stance; his main 
-distinguishing feature is a hard shell that covers his back. His head is flat 
-and pudgy, and his webbed hands end in sharp claws.
-~
-64 512 -210 S
-47 0 0 0d0+0 0d0+0
-0 0
-8 8 1
-#27299
-kappa hard-shelled humanoid creature~
-a kappa~
-<28>A small, hard-shelled humanoid creature glowers at you.<0>
-~
-The creature is of small-humanoid size and has a stooped stance; her main 
-distinguishing feature is a hard shell that covers her back. Her head is flat 
-and pudgy, and her webbed hands end in sharp claws.
-~
-64 512 -235 S
-47 0 0 0d0+0 0d0+0
-0 0
-8 8 2
-#27300
-giant squid huge~
-a giant squid~
-<206>A huge squid propels itself through the brine.<0>
-~
-This gigantic squid is over 12 metres long and quite capable of defending 
-itself against most predators with its enormous tentacles and large beak.  
-It doesn't look interested in you, and you'd imagine its focused more on 
-evading the larger toothed-whale predators it has down here.
-~
-4|64 32|512 0 S
-50 0 0 0d0+0 0d0+0
 0 0
 8 8 2
 #0
@@ -497,7 +424,7 @@ A wet heap of krill is here.~
 E
 krill heap~
 Krill are small crustaceans of the order Euphausiacea, and are found in all the
-world's oceans. What you have here is a big, wet heap of them in various stages
+world's oceans. What you have here is abig, wet heap of them in various stages
 of digestion.  They're probably edible, but... not delicious.
 ~
 #27373
@@ -522,10 +449,7 @@ A
 19 2
 E
 teak javelin~
-Looks like it probably belongs to a nixe--you know they make their wooden
-weapons out of teak, for its high resistance to water and craking.  It's
-carefully crafted, but is otherwise not especially remarkable.
-~
+Looks like it probably belongs to a nixe--you know they make their wooden weapons out of teak, for its high resistance to water and craking.  It's id carefully crafted, but otherwise not very remarkable.~
 #27375
 small sharp dagger~
 a small, sharp dagger~
@@ -536,8 +460,7 @@ A small, sharp dagger has been left here.~
 1 0 0
 E
 small sharp dagger~
-To judge by its size and make, you suspect it belonged to a nixie. It's
-coated with a foul-smelling substance.~
+To judge by its size and make, you suspect it belonged to a nixie.  It's coated with a very foul-smelling substance.~
 #27376
 seaweed loincloth~
 a seaweed loincloth~
@@ -606,9 +529,7 @@ A
 17 -5
 E
 broken collar~
-The collar looks like one used by locathah hunters to keep their hunting
-beasts under control.  It is broken.
-~
+The collar looks like one used by locathah hunters to keep their hunting beasts under control.  It is broken.~
 #27384
 belaying pin~
 a belaying pin~
@@ -621,9 +542,7 @@ A
 18 8
 E
 belaying pin~
-It is a short rod made of wood that was inserted into holes bored through
-a ship's rail.
-~
+It is a short rod made of wood that was inserted into holes bored through a ship's rail. ~
 #27385
 rusty short sword~
 a rusty short sword~
@@ -644,49 +563,7 @@ A very pale egg yolk in a thin shell is here.~
 1 0 0
 E
 translucent egg yolk shell thin~
-It looks very unnatural and feels strange and unpleasant to hold.
-You suspect magic.
-~
-#27387
-hard outer shell~
-a hard outer shell~
-The tough outer shell of some aquatic creature lies here.~
-~
-9 4096 1|8
-0~ 0~ 0~ 0~
-20 0 0
-A
-17 -30
-A
-5 3
-A
-14 -100
-A
-2 -2
-A
-19 3
-A
-18 -2
-#27388
-sharp beak~
-a sharp beak~
-The sharp beak of some aquatic creatire is here.~
-~
-5 67108864 1|8192
-0~ 0~ 0~ 10~
-4 0 0
-#27389
-kappa head bowl~
-a kappa's head bowl~
-The head bowl of a kappa lies here.~
-~
-10 64 1|16384
-35~ power heal~ armor~ inertial barrier~
-2 0 0
-E
-kappa head bowl~
-The head bowl of a kappa contains magic-infused waters, which are the source 
-of their magical powers.~
+It looks very unnatural and feels strange and unpleasant to hold.  You suspect magic.~
 #0
 
 
@@ -4599,44 +4476,6 @@ G 1 27386 100
 *
 M 1 27295 1 27558			a Zin to Above Canton Canal
 G 1 27386 100
-*
-M 1 27296 2 27689			a water drake to Above Bridge to North Living Canton
-E 1 27234 100 16
-*
-M 1 27296 2 27691			a water drake to Above Canton Canal
-E 1 27234 100 16
-*
-M 1 27297 2 27662			a water drake to Above Canton Canal
-E 1 27234 100 16
-*
-M 1 27297 2 27693			a water drake to Above Canton Canal
-E 1 27234 100 16
-*
-M 1 27299 2 27697			a kappa to Above Canton Canal
-E 1 27387 100 5
-E 1 53 100 16
-*
-M 1 27299 2 27657			a kappa to Above Canton Canal
-E 1 27387 100 5
-E 1 53 100 16
-*
-M 1 27298 2 27391			a kappa to Canton Canal
-E 1 27387 100 5
-E 1 53 100 16
-G 1 27389 100
-*
-M 1 27298 2 27388			a kappa to Bridge to North Living Canton
-E 1 27387 100 5
-E 1 53 100 16
-*
-M 1 27300 3 27392			a giant squid to Canton Canal
-E 1 27388 100 16
-*
-M 1 27300 3 27394			a giant squid to Canton Canal
-E 1 27388 100 16
-*
-M 1 27300 3 27358			a giant squid to Canton Canal
-E 1 27388 100 16
 S
 
 
@@ -4662,7 +4501,6 @@ M  27287 spec_large_whale			a humpback whale
 M  27292 spec_cast_undead			a sea zombie
 M  27293 spec_cast_undead			a sea zombie
 M  27294 spec_cast_undead			a Zin
-M  27298 spec_kappa			        a kappa (male)
 S
 
 

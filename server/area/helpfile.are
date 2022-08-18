@@ -7120,11 +7120,11 @@ Smithys can serrate bladed weapons to add bleed effects to opponents.
 A forge is needed to do this.
 ~
 
-1 'INNATE KNOWLEDGE'
+1 'INNATE KNOWLEDGE'~
 
 Syntax: look <<item>
 
-This passive skill allows the SMITHY to be able to determine properties 
+This passive skill allows the SMITHY to be able to determine properties
 of weapons and armour only. The higher the skill, the more details is revealed
 about an item.
 
@@ -7133,4 +7133,3 @@ Simply look at the item to understand additional information.
 
 0 $~
 #$
-

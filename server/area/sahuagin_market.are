@@ -1147,19 +1147,23 @@ eager, as he talks to you incessantly as you browse the shelves in the shop.
 0 0
 8 8 1
 >greet_prog 35~
-if rand(25)
+if rand(20)
 	say Ah, a fellow surfacer!  Welcome, welcome!
 else
-	if rand (25)
+	if rand (21)
 		say Do you have any magical items to sell?  I buy!
 	else
-		if rand(25)
+		if rand(22)
 			say A fellow surfacer--it's been a while!  What news?
 		else
-			smile
-			say So pleased to make your acquaintance.  How goes it?
-		endif
-	endif
+            if rand(25)
+			say Do be careful of my portal upstairs! It hasn't been working very well lately.
+		    else
+			    smile
+			    say So pleased to make your acquaintance.  How goes it?
+		    endif
+	    endif
+    endif
 endif
 ~
 >rand_prog 1~
@@ -3636,6 +3640,19 @@ gruesome scenes~
 Seems to be a lot of sahuagin warriors decapitating and otherwise dismembering sea
 elves, actually.
 ~
+#27381
+glowing blue portal circle~
+a glowing blue portal~
+<87>A glowing blue circle is set into the wall.<0>~
+~
+33 1 0
+472~ 55476~ 0~ 100~
+2000 0 0
+E
+glowing blue portal circle~
+It crackles with magical energy.  It is quite large and you could probably step right
+into it if you wanted to.
+~
 #0
 
 
@@ -4073,6 +4090,7 @@ Currently available quests for prospective Reavers to undertake:
 {W1.{w 	{w"The Demon Thief"{x
 {W2.{w 	{w"Poisonous Secrets"{x
 {W3.{w 	{w"An Out of Body Experience"{x
+{W4.{w 	{w"Every Frog Has His Day"{x
 
 ~
 S
@@ -6538,6 +6556,7 @@ P 1 27341 100 27342			a driftwood staff wreathed with seaweed to container ottom
 O 1 27344 100 27652			a spellcrafting bench to Mohmit's Magical Laboratory, Upper
 O 1 27344 100 27352			a spellcrafting bench to Mohmit's Magical Laboratory, Lower
 O 1 27345 100 27651			a large black cube to Mohmit's Quarters
+O 1 27381 100 27651	        a glowing blue portal to Mohmit's Quarters
 P 1 27354 100 27345			a glass cylinder to container large black cube
 P 1 27353 100 27345			a blank sheet of paper to container large black cube
 P 1 27352 100 27345			an auctionmaster's scrip to container large black cube
