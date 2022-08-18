@@ -6060,6 +6060,13 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "innate knowledge", "!Innate Knowledge!"
         },
 
+        {
+                "spit mucus", &gsn_spit_mucus,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 24,
+                "<236>e<237>x<238>p<239>e<240>c<241>t<242>o<243>r<245>a<246>t<247>e<248>d <249>m<250>u<251>c<252>u<253>s<0>", "You regain autonomy over your body."
+        },
+
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
          */

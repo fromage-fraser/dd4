@@ -260,6 +260,7 @@ const struct cmd_type cmd_table [] =
         { "hurl",               do_hurl,        POS_FIGHTING,    0,  LOG_NORMAL },
         { "flukeslap",          do_flukeslap,   POS_FIGHTING,    0,  LOG_NORMAL },
         { "swallow",            do_swallow,     POS_FIGHTING,    0,  LOG_NORMAL },
+        { "spit mucus",         do_spit_mucus,  POS_FIGHTING,    0,  LOG_NORMAL },
 
         /*
          * Miscellaneous commands.
