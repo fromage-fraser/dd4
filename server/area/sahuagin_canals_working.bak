@@ -414,7 +414,8 @@ water drake silvery-blue elemental ~
 a water drake~
 <110>A silvery-blue elemental drake swims about here.<0>
 ~
-Draconic in form and about 12�feet (3.7�meters) long. It has silvery-blue scales that are more fish-like than reptilian.
+Draconic in form and about 12�feet (3.7�meters) long. It has silvery-blue 
+scales that are more fish-like than reptilian.
 ~
 64 8|32|512 -100 S
 45 0 0 0d0+0 0d0+0
@@ -425,7 +426,8 @@ water drake silvery-blue elemental ~
 a water drake~
 <110>A silvery-blue elemental drake swims about here.<0>
 ~
-Draconic in form and about 12�feet (3.7�meters) long. It has silvery-blue scales that are more fish-like than reptilian.
+Draconic in form and about 12�feet (3.7�meters) long. It has silvery-blue 
+scales that are more fish-like than reptilian.
 ~
 64 8|32|512 -85 S
 45 0 0 0d0+0 0d0+0
@@ -436,7 +438,9 @@ kappa hard-shelled humanoid creature~
 a kappa~
 <28>A small, hard-shelled humanoid creature glowers at you.<0>
 ~
-The creature is of small-humanoid size and has a stooped stance; his main distinguishing feature is a hard shell that covers his back. His head is flat and pudgy, and his webbed hands end in sharp claws.
+The creature is of small-humanoid size and has a stooped stance; his main 
+distinguishing feature is a hard shell that covers his back. His head is flat 
+and pudgy, and his webbed hands end in sharp claws.
 ~
 64 512 -210 S
 47 0 0 0d0+0 0d0+0
@@ -447,7 +451,9 @@ kappa hard-shelled humanoid creature~
 a kappa~
 <28>A small, hard-shelled humanoid creature glowers at you.<0>
 ~
-The creature is of small-humanoid size and has a stooped stance; her main distinguishing feature is a hard shell that covers her back. Her head is flat and pudgy, and her webbed hands end in sharp claws.
+The creature is of small-humanoid size and has a stooped stance; her main 
+distinguishing feature is a hard shell that covers her back. Her head is flat 
+and pudgy, and her webbed hands end in sharp claws.
 ~
 64 512 -235 S
 47 0 0 0d0+0 0d0+0
@@ -458,12 +464,83 @@ giant squid huge~
 a giant squid~
 <206>A huge squid propels itself through the brine.<0>
 ~
-This gigantic squid is over 12 metres long and quite capable of defending itself against most predators with its enormous tentacles and large beak.  It doesn't look interested in you, and you'd imagine its focused more on evading the larger whale predators it has down here.
+This gigantic squid is over 12 metres long and quite capable of defending 
+itself against most predators with its enormous tentacles and large beak.  
+It doesn't look interested in you, and you'd imagine its focused more on 
+evading the larger toothed-whale predators it has down here.
 ~
 4|64 32|512 0 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+#27301
+giant lobster~
+a giant lobster~
+<124>A giant lobster swims through the gloom.<0>
+~
+This 20-foot monster crustacean has a long body with a muscular tail and a pair of huge, frightening-looking claws.  It doesn't seem interested in your presence and will probably leave you alone if you don't harass it.
+~
+4|64 512 0 S
+45 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27302
+giant lobster~
+a giant lobster~
+<124>A particularly large giant lobster swims through the gloom.<0>
+~
+This 22-foot monster crustacean has a long body with a muscular tail and a pair of huge, frightening-looking claws.  It seems particularly confident for a lobster, and you surmise it is a male who has been frequently successful in combat with other lobsters, and has thus risen to the top of the lobster dominance heierarchy on the back of the bucketfuls of serotonin flowing through its (relatively) tiny brain.  
+
+It doesn't seem interested in your presence, though, and will probably leave you alone if you don't harass it.
+~
+4|64 512 -200 S
+45 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27303
+vodyanoi creature large lumbering~
+a vodyanoi~
+<58>A large, lumbering creature grumps about irritably.<0>
+~
+This is a vodyanoi, a creature related to the umber hulk but somewhat larger and water-dwelling. It has slimy green skin, webbed hands and feed, and powerful manibles.  They have a reputation as an evil and violent creature, but this one's attention doesn't seem to have turned to you... yet.
+~
+64 512 -1000 S
+47 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27304
+merrow male~
+a male merrow~
+<76>A large male merrow stares at you, furious at the intrusion!<0>
+~
+He has black teeth and nails; webbed hands and feet; a long, thick neck; an underbite; and sloping shoulders. He does not seem pleased to see you.
+~
+2|32|64 8|32|512 -1000 S
+49 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27305
+female merrow~
+a female merrow~
+<76>A large female merrow stares at you, furious at the intrusion!<0>
+~
+She has black teeth and nails; webbed hands and feet; a long, thick neck; an underbite; and sloping shoulders. She is also covered in tattoos that seem mainly to depict acts of death and destruction.
+~
+2|32|64 8|32|512 -1000 S
+49 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27306
+eel-like creature aboleth~
+an aboleth~
+<20>A huge, eel-like creature slithers through the abyssal depths.<0>
+~
+It resembles a bizarre eel, with a long, tubular body, a tail at one end, two fins near the head, and another along the back. Its mouth is lamprey-like, and filled with serrated, jawless teeth. You feel afraid just being in its presence, and have a strong intuition that it might be best to leave it alone.
+~
+64 8|32|512 -730 S
+50 0 0 0d0+0 0d0+0
+0 0
+8 8 0
 #0
 
 
@@ -479,7 +556,7 @@ A wet heap of krill is here.~
 E
 krill heap~
 Krill are small crustaceans of the order Euphausiacea, and are found in all the
-world's oceans. What you have here is abig, wet heap of them in various stages
+world's oceans. What you have here is a big, wet heap of them in various stages
 of digestion.  They're probably edible, but... not delicious.
 ~
 #27373
@@ -569,13 +646,15 @@ The huge tentacles of a froghemoth are here.~
 0~ 0~ 0~ 4~
 1 0 0
 #27382
-smooth tentacles~
-palceholder object~
-Start new objects from this number 381 is used in another file.~
+murderous claws~
+a murderous pair of claws~
+A large pair of lobster claws has been left here.~
 ~
 5 67108864 0
-0~ 0~ 0~ 4~
-1 0 0
+0~ 15~ 20~ 8~
+1 10000 0
+A
+19 5
 #27383
 broken collar~
 a broken collar~
@@ -652,11 +731,73 @@ A
 #27388
 sharp beak~
 a sharp beak~
-The sharp beak of some aquatic creatire is here.~
+The sharp beak of some aquatic creature is here.~
 ~
 5 67108864 1|8192
 0~ 0~ 0~ 10~
 4 0 0
+#27389
+kappa head bowl~
+a kappa's head bowl~
+The head bowl of a kappa lies here.~
+~
+10 64 1|16384
+35~ power heal~ armor~ inertial barrier~
+2 0 0
+E
+kappa head bowl~
+The head bowl of a kappa contains magic-infused waters, which are the source 
+of their magical powers.~
+#27390
+huge mandibles~
+huge mandibles~
+The mandibles of some monstrous creature lie here.~
+~
+5 67108864 0
+0~ 15~ 20~ 10~
+1 10000 0
+A
+19 8
+#27391
+treasure pile~
+a treasure pile~
+A pile of treasure has been heaped here.~
+~
+20 1 1|16384
+314~ 55~ 28~ 3~
+15 0 0
+#27392
+rotting corpse sahuagin~
+the rotting corpse of a sahuagin~
+The rotting corpse of a sahuagin lies here, tied to a patch of kelp.~
+~
+23 0 1
+0~ 0~ 0~ 0~
+85 0 0
+E
+rotting corpse sahuagin~
+The corpse is well-decayed.  Sufficiently so, in fact, it's a bit of a struggle at first to figure out what creature it belongs to.  It has been tied to a patch of kelp, which keeps it from being cast adrift in the ocean currents.  Perhaps it serves as some sort of marker?~
+#27393
+crude longspear~
+a crude longspear~
+A crude longspear has been discarded here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 2~
+4 0 0
+A
+19 6
+E
+crude longspear~
+Crudely-made, but quite deadly.~
+#27394
+ivory horns~
+ivory horns~
+A pair of ivory horns have been dropped here.~
+~
+8 0 1|16
+0~ 0~ 0~ 0~
+2 0 0
 #0
 
 
@@ -726,6 +867,10 @@ D1
 ~
 ~
 0 -1 27246
+D2
+~
+~
+0 -1 27813
 D4
 ~
 ~
@@ -4421,7 +4566,7 @@ D5
 S
 #27810
 A Mud-filled Underwater Tunnel~
-You are standing in room #27811.
+You are standing in room #27810.
 ~
 0 1|4|8|2048 8
 D1
@@ -4435,7 +4580,7 @@ D4
 S
 #27811
 A Mud-filled Underwater Tunnel~
-You are standing in room #27812.
+You are standing in room #27811.
 ~
 0 1|4|8|512 8
 D0
@@ -4449,13 +4594,65 @@ D3
 S
 #27812
 An Underwater Cavern~
-You are standing in room #27813.
+You are standing in room #27812.
 ~
 0 8 8
 D2
 ~
 ~
 0 -1 27811
+S
+#27813
+The Dark Entrance to an Undersea Cave~
+You are standing in room #27813.
+~
+0 1|4|8 8
+D0
+~
+~
+0 -1 27247
+D5
+~
+~
+0 -1 27814
+S
+#27814
+A Tunnel in an Undersea Cave~
+You are standing in room #27814.
+~
+0 1|8 8
+D2
+~
+~
+0 -1 27815
+D4
+~
+~
+0 -1 27813
+S
+#27815
+A Tunnel in an Undersea Cave~
+You are standing in room #27815.
+~
+0 1|8 8
+D0
+~
+~
+0 -1 27814
+D3
+~
+~
+0 -1 27816
+S
+#27816
+A Large Chamber in an Undersea Cave~
+You are standing in room #27816.
+~
+0 1|8|2048 6
+D1
+~
+~
+0 -1 27815
 S
 #0
 
@@ -4593,6 +4790,7 @@ E 1 53 100 16
 M 1 27298 2 27391			a kappa to Canton Canal
 E 1 27387 100 5
 E 1 53 100 16
+G 1 27389 100
 *
 M 1 27298 2 27388			a kappa to Bridge to North Living Canton
 E 1 27387 100 5
@@ -4606,6 +4804,34 @@ E 1 27388 100 16
 *
 M 1 27300 3 27358			a giant squid to Canton Canal
 E 1 27388 100 16
+*
+M 1 27301 2 27247			a giant lobster to Canton Canal
+E 1 27382 100 16
+*
+M 1 27301 2 27244			a giant lobster to Bridge to Military Canton
+E 1 27382 100 16
+*
+M 1 27302 1 27252			a giant lobster to Canton Canal
+E 1 27382 100 16
+*
+M 1 27303 2 27248			a vodyanoi to Canton Canal
+E 1 27390 100 16
+*
+M 1 27303 1 27251			a vodyanoi to Canton Canal
+E 1 27390 100 16
+O 1 27391 100 27816			a treasure pile to A Large Chamber in an Undersea Cave
+O 1 27392 100 27813			the rotting corpse of a sahuagin to The Dark Entrance to an Undersea Cave
+*
+M 1 27304 1 27816			a male merrow to A Large Chamber in an Undersea Cave
+E 1 27393 100 16
+E 1 27394 100 6
+*
+M 1 27305 1 27816			a female merrow to A Large Chamber in an Undersea Cave
+E 1 27393 100 16
+*
+M 1 27306 1 27548			an aboleth to Above Canton Canal
+E 1 27234 100 16
+E 1 27380 100 18
 S
 
 
@@ -4632,6 +4858,7 @@ M  27292 spec_cast_undead			a sea zombie
 M  27293 spec_cast_undead			a sea zombie
 M  27294 spec_cast_undead			a Zin
 M  27298 spec_kappa			        a kappa (male)
+M  27306 spec_aboleth	      		an aboleth
 S
 
 
