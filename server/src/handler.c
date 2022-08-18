@@ -591,6 +591,17 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         send_to_char( "You feel less prepared for battle.\n\r", ch );
                         break;
                 }
+                case APPLY_SERRATED:
+                af.type = skill_lookup( "serrated" );
+                                if( fAdd )
+                {
+                        break;
+                }
+                else
+                {
+                        break;
+                }
+
 
             case APPLY_FLY:
                 af.type = skill_lookup( "fly" );
@@ -2685,6 +2696,7 @@ char *affect_loc_name( int location )
             case APPLY_BALANCE:                 return "attack speed";
             case APPLY_STRENGTHEN:              return "damage mitigation";
             case APPLY_ENGRAVED:                return "damage enhancement";
+            case APPLY_SERRATED:                return "bleed over time";
         }
 
         bug( "Affect_location_name: unknown location %d.", location );

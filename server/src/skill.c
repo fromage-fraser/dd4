@@ -4015,6 +4015,117 @@ void do_engrave (CHAR_DATA *ch, char *argument)
 
 }
 
+void do_serrate (CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA *obj;
+        OBJ_DATA *forge;
+        char arg [ MAX_INPUT_LENGTH ];
+        AFFECT_DATA *paf;
+        bool found;
+    
+        if ( IS_NPC( ch ) )
+                return;
+
+        if (!CAN_DO(ch, gsn_serrate))
+        {
+                send_to_char("What do you think you are, a smithy?\n\r", ch);
+                return;
+        }
+
+        one_argument(argument, arg);
+
+        if (arg[0] == '\0')
+        {
+                send_to_char("What do you want to serrate?\n\r", ch);
+                return;
+        }
+
+        if (ch->fighting)
+        {
+                send_to_char("While you're fighting?  Nice try.\n\r", ch);
+                return;
+        }
+
+        if (!(obj = get_obj_carry(ch, arg)))
+        {
+                send_to_char("You do not have that weapon.\n\r", ch);
+                return;
+        }
+
+        if (obj->item_type != ITEM_WEAPON)
+        {
+                send_to_char("That item is not a weapon.\n\r", ch);
+                return;
+        }
+
+        if (IS_SET(obj->extra_flags, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_SERRATED))
+        {
+                send_to_char("That is already serrated.\n\r", ch);
+                return;
+        }
+        
+        if (IS_OBJ_STAT(obj, ITEM_POISONED))
+        {
+                send_to_char("That weapon is poisoned and cannot be serrated!\n\r", ch);
+                return;
+        }
+
+        if (!is_bladed_weapon(obj))
+        {
+                send_to_char("You can only sharpen bladed weapons.\n\r",ch);
+                return;
+        }
+
+        for (forge = ch->in_room->contents; forge; forge = forge->next_content)
+        {
+                if (forge->item_type == ITEM_FORGE)
+                {
+                        found = TRUE;
+                        break;
+                }
+        }
+
+        if (!found)
+        {
+                send_to_char("There is no forge here!\n\r", ch);
+                return;
+        }
+
+
+        if (number_percent() > ch->pcdata->learned[gsn_serrate])
+        {
+                send_to_char("You slip while serrating your blade! You ruin the stone and cut yourself!!\n\r", ch);
+                damage(ch, ch, ch->level, gsn_serrate, FALSE);
+                act ("$n cuts $mself while serrating $m blade!", ch, NULL, NULL, TO_ROOM);
+                return;
+        }
+
+        act ("You staggers the edges of the blade of $P, creating a deadly weapon!",
+             ch, NULL, obj, TO_CHAR);
+        act ("$n staggers the blade of $P, creating a deadly blade!",
+             ch, NULL, obj, TO_ROOM);
+
+        SET_BIT(obj->extra_flags, ITEM_EGO);
+        SET_BIT(obj->ego_flags, EGO_ITEM_SERRATED);
+        set_obj_owner(obj, ch->name);
+
+        if (!affect_free)
+                paf = alloc_perm(sizeof(*paf));
+        else
+        {
+                paf = affect_free;
+                affect_free = affect_free->next;
+        }
+
+        paf->type           = gsn_serrate;
+        paf->duration       = -1;
+        paf->location       = APPLY_SERRATED;
+        paf->modifier       = (ch->pcdata->learned[gsn_serrate]);
+        paf->bitvector      = 0;
+        paf->next           = obj->affected;
+        obj->affected       = paf;
+}
+
 void do_imbue (CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;

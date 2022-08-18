@@ -9,11 +9,11 @@ giant starfish~
 a giant starfish~
 <94>A giant starfish floats through the water, hunting for gastropods and limpets.<0>
 ~
-The giant starfish has a dense body with tan-coloured, thick arms. Its arms 
-contain blunt spines that are bluish in color with purple tips that are swollen 
-and surrounded by brown fuzz and pedicellariae that have a plier-like shape.  
-You'd guess it'd be 5 feet in diameter. It's minding its own business searching 
-for large gastropods and limpets it can use its flexible stomach to pry open 
+The giant starfish has a dense body with tan-coloured, thick arms. Its arms
+contain blunt spines that are bluish in color with purple tips that are swollen
+and surrounded by brown fuzz and pedicellariae that have a plier-like shape.
+You'd guess it'd be 5 feet in diameter. It's minding its own business searching
+for large gastropods and limpets it can use its flexible stomach to pry open
 and absorb.
 ~
 4|64 8192|67108864 0 S
@@ -25,11 +25,11 @@ giant starfish~
 a giant starfish~
 <94>A giant starfish floats through the water, hunting for gastropods and limpets.<0>
 ~
-The giant starfish has a dense body with tan-coloured, thick arms. Its arms 
-contain blunt spines that are bluish in color with purple tips that are swollen 
-and surrounded by brown fuzz and pedicellariae that have a plier-like shape.  
-You'd guess it'd be 5 feet in diameter. It's minding its own business searching 
-for large gastropods and limpets it can use its flexible stomach to pry open 
+The giant starfish has a dense body with tan-coloured, thick arms. Its arms
+contain blunt spines that are bluish in color with purple tips that are swollen
+and surrounded by brown fuzz and pedicellariae that have a plier-like shape.
+You'd guess it'd be 5 feet in diameter. It's minding its own business searching
+for large gastropods and limpets it can use its flexible stomach to pry open
 and absorb.
 ~
 4|64 8192 0 S
@@ -41,11 +41,11 @@ pilot whale~
 a pilot whale~
 <243>A pilot whale swims about, looking for deep-sea squid.<0>
 ~
-The pilot whale is mostly dark grey, with lighter grey patches behind his 
-dorsal fin, under his chin, behind his eye, and on his belly.  His dorsal 
-fin is set forward on the back and sweeps backwards. Larger and more 
-robust than most dolphins, pilot whales have a distinctive large, bulbous 
-melon. This guy is deep-diving to try and find some squid, one of his 
+The pilot whale is mostly dark grey, with lighter grey patches behind his
+dorsal fin, under his chin, behind his eye, and on his belly.  His dorsal
+fin is set forward on the back and sweeps backwards. Larger and more
+robust than most dolphins, pilot whales have a distinctive large, bulbous
+melon. This guy is deep-diving to try and find some squid, one of his
 favourite snacks.
 ~
 64 8|32|512 0 S
@@ -57,11 +57,11 @@ pilot whale~
 a pilot whale~
 <243>A pilot whale swims about, looking for deep-sea squid.<0>
 ~
-The pilot whale is mostly dark grey, with lighter grey patches behind her 
-dorsal fin, under her chin, behind her eye, and on her belly.  Her dorsal 
-fin is set forward on the back and sweeps backwards. Larger and more 
-robust than most dolphins, pilot whales have a distinctive large, bulbous 
-melon. This pilot whale is deep-diving to try and find some squid, one of 
+The pilot whale is mostly dark grey, with lighter grey patches behind her
+dorsal fin, under her chin, behind her eye, and on her belly.  Her dorsal
+fin is set forward on the back and sweeps backwards. Larger and more
+robust than most dolphins, pilot whales have a distinctive large, bulbous
+melon. This pilot whale is deep-diving to try and find some squid, one of
 her favourite snacks.
 ~
 64 8|32|512 0 S
@@ -73,8 +73,8 @@ minke whale~
 a minke whale~
 <61>A minke whale cruises the depths for krill.<0>
 ~
-While small for a baleen whale, the minke whale is still nearly 30 feet long 
-and weighs almost 7 tons. This one is cruising for krill, though he'd be happy 
+While small for a baleen whale, the minke whale is still nearly 30 feet long
+and weighs almost 7 tons. This one is cruising for krill, though he'd be happy
 to take herring or capelin if there were none to be found.
 ~
 64 8|32|8192 0 S
@@ -86,8 +86,8 @@ minke whale~
 a minke whale~
 <61>A minke whale cruises the depths for krill.<0>
 ~
-While small for a baleen whale, the minke whale is still nearly 30 feet long 
-and weighs almost 7 tons. This one is cruising for krill, though she'd be happy 
+While small for a baleen whale, the minke whale is still nearly 30 feet long
+and weighs almost 7 tons. This one is cruising for krill, though she'd be happy
 to take herring or capelin if there were none to be found.
 ~
 64 8|32|8192 0 S
@@ -99,8 +99,8 @@ baiji pale dolphin~
 a baiji~
 <159>A pale, odd-looking dolphin swims about here.<0>
 ~
-The baiji is pale blue to gray on her back, and white on her belly. She has a 
-long and slightly upturned beak and a low and triangular dorsal fin. You also 
+The baiji is pale blue to gray on her back, and white on her belly. She has a
+long and slightly upturned beak and a low and triangular dorsal fin. You also
 notice her eyes are much smaller than those of most of the dolphins you've seen.
 ~
 64 8|32|512|32768 0 S
@@ -112,8 +112,8 @@ dolphin baiji pale odd~
 a baiji~
 <159>A pale, odd-looking dolphin swims about here.<0>
 ~
-The baiji is pale blue to gray on his back, and white on his belly. He has a 
-long and slightly upturned beak and a low and triangular dorsal fin. You also 
+The baiji is pale blue to gray on his back, and white on his belly. He has a
+long and slightly upturned beak and a low and triangular dorsal fin. You also
 notice his eyes are much smaller than those of most of the dolphins you've seen.
 ~
 64 8|32|512|32768 0 S
@@ -125,8 +125,8 @@ right whale~
 a right whale~
 <237>A huge right whale tunnels obliviously through the water.<0>
 ~
-This right whale is easily 15 metres long. She has an extremely thick body, 
-and large, broad and blunt pectoral flippers. A filter-feeder, she cruises 
+This right whale is easily 15 metres long. She has an extremely thick body,
+and large, broad and blunt pectoral flippers. A filter-feeder, she cruises
 obliviously through the wtaer, paying no attention to you at all.
 ~
 64 8|32|512|32768 0 S
@@ -147,8 +147,8 @@ A wet heap of krill is here.~
 3 0 0
 E
 krill heap~
-Krill are small crustaceans of the order Euphausiacea, and are found in all the 
-world's oceans. What you have here is abig, wet heap of them in various stages 
+Krill are small crustaceans of the order Euphausiacea, and are found in all the
+world's oceans. What you have here is abig, wet heap of them in various stages
 of digestion.  They're probably edible, but... not delicious.
 ~
 #0

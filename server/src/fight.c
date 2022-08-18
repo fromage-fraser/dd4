@@ -392,10 +392,27 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                         if ( paf->location == APPLY_BALANCE )
                         {
                                 if (number_percent() < paf->modifier)
-                                        one_hit(ch, victim, dt);
+                                        one_hit(ch, victim, gsn_counterbalance);
                         }
                 }
         }
+
+        /* for Serrated - adds another attack. Serrated weapons always hit*/
+
+        if ( !IS_NPC(ch) && get_eq_char(ch, WEAR_WIELD) && ch->pcdata->learned[gsn_serrate] > 0 )
+        {
+                OBJ_DATA *wield;
+                AFFECT_DATA *paf;
+                wield = get_eq_char(ch, WEAR_WIELD);
+                for ( paf = wield->affected; paf; paf = paf->next )
+                {
+                        if ( paf->location == APPLY_SERRATED )
+                        {
+                                        one_hit(ch, victim, gsn_serrate);
+                        }
+                }
+        }
+
         /*
          * Multiple attacks for shifter forms
          */
