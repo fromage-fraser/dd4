@@ -317,9 +317,9 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   537     /* 537 Inate knowledge, 536 - Serrate, Brutus Aug 2022 */
-#define MAX_PRE_REQ                 1372    /* 1371 +1 for inate knowldge 1 for 'swallow' - Owl Aug 2022 */
-#define MAX_SPELL_GROUP             439     /* 438 +1 inate knowldege + 1 for 'swallow' - Owl Aug 2022 */
+#define MAX_SKILL                   537     /* 537 Inate knowledge, Brutus Aug 2022 */
+#define MAX_PRE_REQ                 1376    /* 1376 +1 for inate knowldge 1 for 'swallow' - Brutus Aug 2022 */
+#define MAX_SPELL_GROUP             441     /* 441 +1 inate knowldege +Brutus Aug 2022 */
 #define MAX_GROUPS                  58      /* added smithy groups - Brutus 30 Jul 2022 */
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
 #define MAX_VAMPIRE_GAG             27      /* 26 + 1 for 'swallow' | ugly vampire/werewolf hack */
