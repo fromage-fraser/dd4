@@ -23,7 +23,7 @@
  *  around, comes around.                                                  *
  ***************************************************************************/
 
-/*  
+/*
     This code was written by Maniac to support the #GAMES section in the
     Envy2.0 area format... it was discribed in the area.txt but the code
     was not implemented... so i wrote my own... -- Maniac --
@@ -149,7 +149,7 @@ void do_bet( CHAR_DATA *ch, char *argument )
 
     if ( croupier->fighting )
     {
-        act( "$n tells you 'Can't you see i'm busy fighting!'",
+        act( "$n tells you 'Can't you see I'm busy fighting?'",
             croupier, NULL, ch, TO_VICT );
         ch->reply = croupier;
 	return;
@@ -246,7 +246,7 @@ void game_u_l_t( CHAR_DATA *ch, CHAR_DATA *croupier,
 
 /*
  *  At the moment, the winnings (and losses) do not actually go through
- *  the croupier.  They could do so, if each croupier is loaded with a 
+ *  the croupier.  They could do so, if each croupier is loaded with a
  *  certain bankroll.  Unfortunately, they would probably be popular
  *  (and rich) targets.
  */

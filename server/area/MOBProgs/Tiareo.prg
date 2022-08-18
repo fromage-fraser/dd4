@@ -44,9 +44,9 @@
                 say You're far too experienced to undertake that mission.
         break
         else
-                mpecho {W'One of the notorious pirate lords of the Domain, Mizzenmast, has stolen the'{x 
-                mpecho {W'secret of sahuagin poison and heretically used it to coat one of his own'{x 
-                mpecho {W'weapons. Your mission is to track him down, punish him for his effrontery,'{x  
+                mpecho {W'One of the notorious pirate lords of the Domain, Mizzenmast, has stolen the'{x
+                mpecho {W'secret of sahuagin poison and heretically used it to coat one of his own'{x
+                mpecho {W'weapons. Your mission is to track him down, punish him for his effrontery,'{x
                 mpecho {W'and return to us with his poisoned weapon to prove that you were successful.'{x
                 mpecho {W'We look forward to your triumphant and speedy return!'{x
         endif
@@ -62,10 +62,28 @@
         break
         else
                 mpecho {W'The regional Reaver leader is going to visit Ota'ar Dar's branch soon. We would'{x
-                mpecho {W'like to provide him with his favourite meal, which, unfortunately for us, is'{x 
-                mpecho {W'jellied pink skate's clasper. Pink skates are very rare in this part of the'{x 
-                mpecho {W'ocean, and we have had a lot of trouble trying to find one. We're not sure'{x  
+                mpecho {W'like to provide him with his favourite meal, which, unfortunately for us, is'{x
+                mpecho {W'jellied pink skate's clasper. Pink skates are very rare in this part of the'{x
+                mpecho {W'ocean, and we have had a lot of trouble trying to find one. We're not sure'{x
                 mpecho {W'exactly where to look. Perhaps ask Holo Orl'as about 'skates' or 'claspers'?{x'
+        endif
+        endif
+~
+>speech_prog four 4~
+        if level($n) < 40
+                say I'm sorry, that mission is too dangerous for someone of your limited experience.
+        break
+        else
+        if level($n) > 45
+                say You're far too experienced to undertake that mission.
+        break
+        else
+                mpecho {W'A bullywug associate of ours set out some time ago to locate a froghemoth, in'{x
+                mpecho {W'order to provide us with a certain part of its anatomy for use in clerical'{x
+                mpecho {W'magic. He has not returned, and we must assume the worst.  Therefore we would'{x
+                mpecho {W'like to charge you with his task: locate a froghemoth and bring us one of its'{x
+                mpecho {W'tentacles. They are most often found in deep, muddy holes in the general area'{x
+                mpecho {W'of the Ota'a Dar canal system.'{x
         endif
         endif
 ~
