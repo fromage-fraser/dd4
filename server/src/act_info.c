@@ -114,6 +114,7 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
 {
         static char buf [ MAX_STRING_LENGTH ];
         OBJSET_INDEX_DATA *pObjSetIndex;
+        int smithy_flags=0;
 
         buf[0] = '\0';
 
@@ -127,6 +128,36 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
                         strcat( buf, "<93>[SET]<0> ");
                 if ( (objset_type(pObjSetIndex->vnum)) == ("<178>Legendary<0>") )
                         strcat( buf, "<178>[SET]<0> ");
+        }
+
+        if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
+                smithy_flags++;
+
+        if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
+                smithy_flags++;
+
+        if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
+                smithy_flags++;
+
+        if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED))
+                smithy_flags++;
+
+        if (IS_OBJ_STAT(obj, ITEM_EGO) &&  IS_SET(obj->ego_flags, EGO_ITEM_ENGRAVED) )
+                smithy_flags++;
+        
+        if (IS_OBJ_STAT(obj, ITEM_EGO) &&  IS_SET(obj->ego_flags, EGO_ITEM_SERRATED) )
+                smithy_flags++;
+
+        if (obj->item_type == ITEM_WEAPON && smithy_flags > 0)
+        {
+                if (smithy_flags <=2)
+                strcat( buf, "<34>(Uncommon)<0> " );
+                else if (smithy_flags <= 4)
+                strcat( buf, "<39>[Rare]<0> " );
+                else if (smithy_flags <= 5)
+                strcat( buf, "<15>[-=><135>EPIC<0><15><<=-]<0> " );
+                else if (smithy_flags <= 6)
+                strcat( buf, "<514><556><16>-=[<560>LEGENDARY<561>]=-<0><557> " );
         }
 
         if ( IS_OBJ_STAT( obj, ITEM_INVIS) )
@@ -171,31 +202,6 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
         if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_FIREBRAND))
                 strcat( buf, "<202>(Searing)<0> " );
 
-        if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
-                strcat( buf, "<15>(Imbued)<0> " );
-
-        if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
-                strcat( buf, "<159>(Chained)<0> " );
-
-        if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
-                strcat( buf, "<155>(Balanced)<0> " );
-
-        if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED))
-                strcat( buf, "<556><352><196>(EMPOWERED)<0> " );
-
-        if (IS_OBJ_STAT(obj, ITEM_EGO) &&  IS_SET(obj->ego_flags, EGO_ITEM_ENGRAVED) )
-                strcat( buf, "<15>(ENGRAVED)<0> " );
-
-        if (obj->item_type == ITEM_WEAPON && (
-                IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED)
-                || IS_SET(obj->ego_flags, EGO_ITEM_ENGRAVED)
-                || IS_SET(obj->ego_flags, EGO_ITEM_BALANCED)
-                || IS_SET(obj->ego_flags, EGO_ITEM_CHAINED)
-                || IS_SET(obj->ego_flags, EGO_ITEM_IMBUED)
-                || IS_SET(obj->ego_flags, EGO_ITEM_SERATED)) )
-        {
-                strcat( buf, "" );
-        }
 
         if ( IS_OBJ_STAT( obj, ITEM_SHARP ) )
                 strcat( buf, "<195>(Sharp)<0> " );
@@ -657,6 +663,136 @@ bool check_blind( CHAR_DATA *ch )
 }
 
 
+void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
+{
+        AFFECT_DATA             *paf;
+        char tmp [MAX_STRING_LENGTH];
+
+        buf[0] = '\0'; /* buf1 sent to char at end */
+       
+       sprintf( tmp, "\n\r=================================\n\r");
+        strcat( buf, tmp);
+
+        switch (obj->item_type)
+        {
+        case ITEM_WEAPON:
+                if (ch->pcdata->learned[gsn_innate_knowledge] < 50 )
+                {
+                        sprintf( tmp, "You cant quite determine the damage output of %s.\n\r", obj->name);
+                        strcat( buf, tmp);    
+                
+                }
+                else if (ch->pcdata->learned[gsn_innate_knowledge] < 65)
+                {
+                sprintf( tmp, "This weapon does on average {W%d{x damage.\n\r",
+                        (obj->value[1]+obj->value[2])/2);
+                strcat( buf, tmp);
+                }
+                else
+                {
+                        sprintf( tmp, "This weapon does between {W%d{x and {W%d{x base points of damage.\n\r",
+                        obj->value[1],
+                        obj->value[2]);
+                strcat( buf, tmp);
+                }
+                break;
+
+        case ITEM_ARMOR:
+                if (ch->pcdata->learned[gsn_innate_knowledge] >55)
+                {
+                sprintf( buf, "It has an armour class of {W%d{x.\n\r", obj->value[0] );
+                strcat( buf, tmp);
+                }
+                else
+                {
+                        sprintf( tmp, "You cant quite determine the armour class of %s.\n\r", obj->name);
+                        strcat( buf, tmp);      
+                }
+                break;
+        }
+
+
+        for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
+        {
+                if ( paf->location != APPLY_NONE && paf->modifier != 0
+                && strcmp (affect_loc_name (paf->location), "(unknown)")
+                && (ch->pcdata->learned[gsn_innate_knowledge] >75 ))
+                {
+                        if (paf->location < APPLY_SANCTUARY)
+                                sprintf( tmp, "It modifies {Y%s{x by {Y%d{x.\n\r",
+                                        affect_loc_name( paf->location ), paf->modifier );
+                        else    sprintf (tmp, "It gives the wearer {Y%s{x.\n\r",
+                                        affect_loc_name (paf->location));
+                        strcat( buf, tmp);
+                }
+                else
+                {
+                        sprintf( tmp, "%s has additional properties..\n\r", obj->name);
+                        strcat( buf, tmp);
+                        break;
+                }
+        }
+
+        for ( paf = obj->affected; paf; paf = paf->next )
+        {
+                if ( paf->location != APPLY_NONE
+                && paf->modifier != 0
+                && strcmp (affect_loc_name (paf->location), "(unknown)")
+                && (ch->pcdata->learned[gsn_innate_knowledge] >75 )) 
+                {
+                        if (paf->location < APPLY_SANCTUARY)
+                                sprintf( tmp, "It modifies {Y%s{x by {Y%d{x.\n\r",
+                                        affect_loc_name( paf->location ), paf->modifier );
+                        else
+                                sprintf (tmp, "It gives the wearer {Y%s{x.\n\r",
+                                        affect_loc_name (paf->location));
+                        strcat( buf, tmp);
+                }
+                else
+                {
+                        sprintf( tmp, "%s has additional properties..\n\r", obj->name);
+                        strcat( buf, tmp);
+                        break;
+                }
+        }
+        if IS_SET(obj->extra_flags, ITEM_EGO)
+        {
+                if  (ch->pcdata->learned[gsn_innate_knowledge] < 20)
+                {
+                        sprintf( tmp, "%s has been enhanced by a Smithy\n\r", obj->name);
+                        strcat( buf, tmp);
+                }
+                else{
+                        
+                        strcat( buf, tmp);
+                        sprintf( tmp, "<560><15>Smithy Enhancements:<561><0>\n\r");
+                        
+                        if (IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
+                                strcat (tmp, "<228>I<229>m<230>b<231>u<230>e<229>d<0>\n\r");
+                        if (IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
+                                strcat (tmp, "<83>Balanced<0>\n\r");
+                        if (IS_SET(obj->ego_flags, EGO_ITEM_TURRET))
+                                strcat (tmp, "Engineer's turret\n\r");
+                        if (IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE))
+                                strcat (tmp, "Turret module\n\r");
+                        if (IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
+                                strcat (tmp, "<102><560>Chain Attached<561><0>\n\r");
+                        if (IS_SET(obj->ego_flags, EGO_ITEM_STRENGTHEN))
+                                strcat (tmp, "<541><556>Strengthened<0>\n\r");
+                        if (IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED))
+                                strcat (tmp, "<556><352><196>(EMPOWERED)<0>\n\r");
+                        if (IS_SET(obj->ego_flags, EGO_ITEM_ENGRAVED))
+                                strcat (tmp, "<556><542><16>E N G R A V E D<557><0>\n\r");
+                        if (IS_SET(obj->ego_flags, EGO_ITEM_SERRATED))
+                                strcat (tmp, "<562><255>S<253>E<251>R<249>R<247>A<245>T<243>E<241>D<563><0>\n\r");
+
+                        strcat (tmp, "\n\r");
+                        strcat( buf, tmp);
+                }
+        }
+}
+
+
 void do_look( CHAR_DATA *ch, char *argument )
 {
         OBJ_DATA  *obj;
@@ -819,25 +955,44 @@ void do_look( CHAR_DATA *ch, char *argument )
         {
                 if ( can_see_obj( ch, obj ) )
                 {
+                        char    buf1 [ MAX_STRING_LENGTH ];
                         pdesc = get_extra_descr( arg1, obj->extra_descr );
                         if ( pdesc )
                         {
                                 send_to_char( pdesc, ch );
-                                return;
+                                if ( (ch->class == CLASS_SMITHY) && (obj->item_type == ITEM_WEAPON || obj->item_type == ITEM_ARMOR) )
+                                {
+                                        print_smithy_data( ch, obj, buf1);
+                                        send_to_char( buf1, ch );
+                                        return;
+                                }
                         }
 
                         pdesc = get_extra_descr( arg1, obj->pIndexData->extra_descr );
                         if ( pdesc )
                         {
                                 send_to_char( pdesc, ch );
-                                return;
+                                if ( (ch->class == CLASS_SMITHY) && (obj->item_type == ITEM_WEAPON || obj->item_type == ITEM_ARMOR) )
+                                {
+                                        print_smithy_data( ch, obj, buf1);
+                                        send_to_char( buf1, ch );
+                                        return;
+                                }
                         }
                 }
 
                 if ( is_name( arg1, obj->name ) )
                 {
+                        char    buf1 [ MAX_STRING_LENGTH ];
                         send_to_char( obj->description, ch );
                         send_to_char( "\n\r", ch );
+                        
+                        if ( (ch->class == CLASS_SMITHY) && 
+                                (obj->item_type == ITEM_WEAPON || obj->item_type == ITEM_ARMOR) )
+                        {
+                                print_smithy_data( ch, obj, buf1);
+                                send_to_char( buf1, ch );
+                        }
                         return;
                 }
         }

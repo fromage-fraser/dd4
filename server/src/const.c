@@ -2437,9 +2437,10 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_imbue,			                0 },
         { &gsn_shieldchain,		                0 },
         { &gsn_craft_weapon,		                0 },
-        { &gsn_serate,		                        0 },
+        { &gsn_serrate,		                        0 },
         { &gsn_engrave,		                        0 },
         { &gsn_discharge,		                0 },
+        { &gsn_innate_knowledge,                        0 },
 
         { &gsn_group_turret_tech,	                0 },
         { &gsn_trigger,			                0 },
@@ -6043,6 +6044,20 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_STR, TAR_IGNORE, POS_FIGHTING,
                 spell_null, 0, 24,
                 "<132>s<168>w<204>a<204>l<203>l<168>o<132>w<0>", "You escape from the insides of the creature."
+        },
+
+        {
+                "serrate", &gsn_serrate,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "<231>bl<225>ee<219>d e<213>ff<207>ec<201>t<0>", "!Serrate!"
+        },
+
+        {
+                "innate knowledge", &gsn_innate_knowledge,
+                TYPE_INT, TAR_IGNORE, POS_RESTING,
+                spell_null, 0, 0,
+                "innate knowledge", "!Innate Knowledge!"
         },
 
         /*

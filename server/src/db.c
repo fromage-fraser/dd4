@@ -625,6 +625,8 @@ int     gsn_slow;
 int     gsn_stabilise;
 int     gsn_flukeslap;
 int     gsn_swallow;
+int     gsn_serrate;
+int     gsn_innate_knowledge;
 
 /*
  *  Spell groups
