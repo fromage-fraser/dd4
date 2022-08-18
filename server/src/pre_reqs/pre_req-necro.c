@@ -27,7 +27,6 @@
 {&gsn_deter,                    &gsn_fear,              85,     PRE_NECRO},
 {&gsn_deter,                    &gsn_necro_base,        30,     PRE_NECRO},
 
-
 {&gsn_spiritwrack,              &gsn_group_death,       90,     PRE_NECRO},
 {&gsn_spiritwrack,              &gsn_fear,              80,     PRE_NECRO},
 {&gsn_spiritwrack,              &gsn_deter,             80,     PRE_NECRO},
@@ -57,6 +56,9 @@
 
 {&gsn_recharge_item,            &gsn_group_craft,       50,     PRE_NECRO},
 {&gsn_recharge_item,            &gsn_necro_base,        30,     PRE_NECRO},
+
+{&gsn_stabilise,                &gsn_necro_base,        30,     PRE_NECRO},
+{&gsn_stabilise,                &gsn_group_craft,       70,     PRE_NECRO},
 
 {&gsn_bladethirst,              &gsn_necro_base,        50,     PRE_NECRO},
 {&gsn_bladethirst,              &gsn_group_craft,       90,     PRE_NECRO},

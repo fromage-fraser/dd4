@@ -2360,6 +2360,14 @@ void death_cry (CHAR_DATA *ch)
                 break;
 
             case 7:
+                if (MAKES_CORPSE(ch) && HAS_TAIL(ch))
+                {
+                        strcpy(msg, "$c's tail is sliced from $s body.");
+                        body_part_vnum = OBJ_VNUM_SLICED_TAIL;
+                }
+                break;
+
+            case 8:
                 if (MAKES_CORPSE(ch) && HAS_HEAD(ch) && !IS_INORGANIC(ch))
                         strcpy(msg, "$c's head splits apart, revealing $s brain.");
                 break;
@@ -6845,7 +6853,8 @@ void do_swallow (CHAR_DATA *ch, char *argument)
 
                 af.location     = APPLY_MOVE;
                 af.modifier     = ((ch->level * -10) + (ch->level * 2));
-                af.bitvector    = AFF_CURSE;
+                af.bitvector    = AFF_NO_RECALL;
+
                 affect_to_char(victim, &af);
 
                 check_group_bonus(ch);

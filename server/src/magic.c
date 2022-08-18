@@ -1880,9 +1880,10 @@ void spell_curse( int sn, int level, CHAR_DATA *ch, void *vo )
         CHAR_DATA  *victim = (CHAR_DATA *) vo;
         AFFECT_DATA af;
 
-        if ( IS_AFFECTED( victim, AFF_CURSE ) || saves_spell( level, victim ) )
+        if ( IS_AFFECTED( victim, AFF_CURSE )
+        ||   saves_spell( level, victim ) )
         {
-                send_to_char( "You have failed.\n\r", ch );
+                send_to_char( "You fail to inflict your curse.\n\r", ch );
                 return;
         }
 
@@ -1898,7 +1899,9 @@ void spell_curse( int sn, int level, CHAR_DATA *ch, void *vo )
         affect_to_char( victim, &af );
 
         if ( ch != victim )
+        {
                 send_to_char( "You curse their existence.\n\r", ch );
+        }
 
         send_to_char( "You feel unclean.\n\r", victim );
         return;
@@ -2290,6 +2293,7 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                 }
 
                 /* AFF bits that only imms can dispel, i.e. the rest of them. -- Owl 19/2/22 */
+                /* Should replace this with a loop that strips ALL spells and ALL AFF_bits maybe? */
 
                 if (IS_AFFECTED(victim, AFF_BATTLE_AURA) && IS_IMMORTAL( ch ))
                 {
@@ -2310,6 +2314,14 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                 if (IS_AFFECTED(victim, AFF_SWALLOWED) && IS_IMMORTAL( ch ))
                 {
                         strip_swallow(victim);
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_NO_RECALL) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_NO_RECALL);
+                        send_to_char( "You can recall again.\n\r", victim );
+                        act( "$n is no longer prevented from recalling.", victim, NULL, NULL, TO_ROOM );
                         return;
                 }
 
@@ -2334,14 +2346,6 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                         REMOVE_BIT(victim->affected_by, AFF_CHARM);
                         send_to_char( "You feel more self-confident.\n\r", victim );
                         act( "$n's mind is no longer under the dominion of another.", victim, NULL, NULL, TO_ROOM );
-                        return;
-                }
-
-                if (IS_AFFECTED(victim, AFF_HOLD) && IS_IMMORTAL( ch ))
-                {
-                        REMOVE_BIT(victim->affected_by, AFF_HOLD);
-                        send_to_char( "You are no longer entrapped.\n\r", victim );
-                        act( "$n is released from $s confinement.", victim, NULL, NULL, TO_ROOM );
                         return;
                 }
 
@@ -2722,11 +2726,18 @@ void spell_entrapment( int sn, int level, CHAR_DATA *ch, void *vo )
         }
 
         af.type = sn;
-        af.duration = level / 20;
-        af.location = APPLY_HITROLL;
-        af.modifier = -8;
-        af.bitvector= AFF_HOLD;
+        af.duration     = level / 20;
+
+        af.location     = APPLY_HITROLL;
+        af.modifier     = -8;
+        af.bitvector    = AFF_HOLD;
         affect_to_char(victim, &af);
+
+        af.location     = APPLY_MOVE;
+        af.modifier     = ( ch->level * -5 );
+        af.bitvector    = AFF_NO_RECALL;
+        affect_to_char(victim, &af);
+
 
         act( "You successfully immobilise $N in your stasis field.", ch, NULL, victim, TO_CHAR );
         act( "A stasis field surrounds you, preventing you from moving.",
@@ -3897,6 +3908,11 @@ void spell_paralysis( int sn, int level, CHAR_DATA *ch, void *vo )
         af.modifier  = -5;
         af.bitvector = AFF_HOLD;
         affect_join( victim, &af );
+
+        af.location     = APPLY_MOVE;
+        af.modifier     = ( ch->level * -10 );
+        af.bitvector    = AFF_NO_RECALL;
+        affect_to_char(victim, &af);
 
         if ( ch != victim )
                 send_to_char( "You successfully paralyse your victim.\n\r", ch );

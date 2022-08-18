@@ -387,7 +387,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         if ( ( (wield = get_eq_char(ch, WEAR_WIELD)) && !IS_SET(wield->ego_flags, EGO_ITEM_ENGRAVED))
                                 || !(wield = get_eq_char(ch, WEAR_WIELD)) )
                         {
-                              send_to_char( "You will need to wield an engraved weapon to benefit from this engraving.\n\r", ch );  
+                              send_to_char( "You will need to wield an engraved weapon to benefit from this engraving.\n\r", ch );
                         }
                         break;
                 }
@@ -2787,6 +2787,7 @@ char *affect_bit_name (unsigned long int vector)
         if ( vector & AFF_DETECT_CURSE  ) return "detect_curse";
         if ( vector & AFF_DETECT_GOOD   ) return "detect_good";
         if ( vector & AFF_SWALLOWED     ) return "swallowed";
+        if ( vector & AFF_NO_RECALL     ) return "no_recall";
         if ( vector & AFF_SLOW          ) return "slow";
 
         return "none";
@@ -2829,6 +2830,7 @@ char* affect_bit_name_nice (unsigned long int vector)
         if ( vector & AFF_DETECT_CURSE  ) return "detect curse";
         if ( vector & AFF_DETECT_GOOD   ) return "detect good";
         if ( vector & AFF_SWALLOWED     ) return "swallowed";
+        if ( vector & AFF_NO_RECALL     ) return "no_recall";
         if ( vector & AFF_SLOW          ) return "slow";
 
         return "some unknown effect";
@@ -2924,6 +2926,7 @@ char* body_form_name (unsigned long int vector)
                 case BODY_NO_CORPSE:        return "no_corpse";
                 case BODY_HUGE:             return "huge";
                 case BODY_INORGANIC:        return "inorganic";
+                case BODY_HAS_TAIL:         return "has_tail";
 
                 default: return "none";
         }

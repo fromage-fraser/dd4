@@ -2047,6 +2047,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_battle_aura,                             0 },
         { &gsn_fast_healing,                            0 },
         { &gsn_berserk,                                 0 },
+        { &gsn_slow,                                    0 },
 
         { &gsn_group_knowledge,                         0 },
         { &gsn_lore,                                    0 },
@@ -2324,6 +2325,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_scribe,                                  0 },
         { &gsn_recharge_item,                           0 },
         { &gsn_transport,                               0 },
+        { &gsn_stabilise,                               0 },
 
         { &gsn_group_mentald,                           0 },
         { &gsn_thought_shield,                          0 },
@@ -3537,7 +3539,6 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "kick", &gsn_kick,
                 TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_null, 0, 8,
-                /*"kick", "!Kick!"*/
                 "kick", "!Kick!"
 
         },

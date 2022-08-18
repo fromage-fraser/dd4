@@ -125,7 +125,7 @@ This snake is actually a baby naga snake, the most deadly species of snake known
 ~
 64|128 0 0 S
 4|8|32 0 0 0d0+0 0d0+0
-60 0
+60|512 0
 8 8 0
 #21509
 troll~
@@ -168,7 +168,7 @@ The large rat nibbles on your boots.
 The large rat will eat anything that moves, including you!
 ~
 4|32 0 -1000 S
-30 0 0 0d0+0 0d0+0
+30|512 0 0 0d0+0 0d0+0
 36 0
 8 8 1
 #21513
@@ -226,7 +226,7 @@ The black wolf growls at you and attacks!
 ~
 4|32|64|128 0 0 S
 20 0 0 0d0+0 0d0+0
-4|32 0
+4|32|512 0
 8 8 0
 #21518
 elf dark~
@@ -305,7 +305,7 @@ over its body.
 ~
 64 0 0 S
 75 0 0 0d0+0 0d0+0
-4|32|128 0
+4|32|128|512 0
 8 8 2
 #21525
 troll~
@@ -338,7 +338,7 @@ The baby black naga is kinda cute...for a snake.
 ~
 64|128 0 0 S
 65 0 0 0d0+0 0d0+0
-4|8|32 0
+4|8|32|512 0
 8 8 1
 #21528
 giant~

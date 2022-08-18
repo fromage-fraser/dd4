@@ -107,7 +107,7 @@ Upon careful inspection, you are sure it is NOT a cobra!
 ~
 32|64|128 32768 0 S
 4 16 4 4d4+44 1d8+4
-60 500
+60|512 500
 8 8 0
 #8909
 druid~

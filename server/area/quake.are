@@ -100,7 +100,7 @@ It looks strong.
 ~
 3 0 250 S
 18 0 0 1d1+1 1d1+1
-44 0
+44|512 0
 0 0 0
 #12010
 fish jelly jelly-fish~
@@ -210,7 +210,7 @@ She looks very pretty but has sharp teeth so watch out.
 ~
 5 0 500 S
 10 0 0 1d1+1 1d1+1
-32 0
+32|512 0
 0 0 2
 #12020
 gorilla aggressive~

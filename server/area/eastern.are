@@ -37,7 +37,7 @@ and black.
 ~
 64 0 -10 S
 4 17 4 4d4+40 1d9+0
-60 500
+60|512 500
 8 8 0
 #5003
 scorpion small~
@@ -48,7 +48,7 @@ The little tail is mighty dangerous for such a small creature.
 ~
 64 0 -50 S
 3 17 1 3d3+30 1d8+0
-63 500
+63|512 500
 8 8 0
 #5004
 worm giant~
@@ -59,7 +59,7 @@ He's big, mean, and purple. Watch out!
 ~
 2|32 0 -100 S
 18 -1 0 18d18+180 3d6+4
-60 50000
+60|128|512 50000
 8 8 0
 #5005
 dragon brass~
@@ -71,7 +71,7 @@ Then adds to it, 'Prepare to die, have a nice day!'
 2|4|32|16384 8|128 450 S
 30 -10 -10 30d30+300 1d9+25
 5500 295000
-128 8 2
+128|512 8 2
 #5006
 nomad leader~
 the nomad leader~
@@ -127,7 +127,7 @@ Obviously it no longer fears death.
 ~
 2083 136 -1000 S
 20 1 -2 20d20+200 25d2+0
-75000 50000
+16|128|256|512 50000
 8 8 0
 #5011
 drider drow~
@@ -193,7 +193,7 @@ Don't mess with this animal.
 ~
 34 0 -351 S
 5 12 6 6d6+60 2d4+3
-36 700
+36|512 700
 8 8 0
 #0
 

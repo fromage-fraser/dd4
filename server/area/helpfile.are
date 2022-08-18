@@ -380,7 +380,7 @@ Dragons Domain version 4.2020
 
 -1 MOTD~
 {x
-    [4 August 2022]
+    [15 August 2022]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -398,8 +398,9 @@ Dragons Domain version 4.2020
     {W8-bit colour is in! Type 'ansi reset' for your current characters, then
     read 'HELP COLOR3' and 'HELP ANSI'!{X
 
+    {WNew skills: SWALLOW for dragon form, STABILISE for necromancers, and SLOW
+    for warlocks!{x
 
-    {WNew skill SWALLOW for dragon form!{x
 
 
 
@@ -440,9 +441,10 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 - Dragon form now has SWALLOW
 - Skills SWALLOW and FLUKESLAP are in, with spec_small_whale and
   spec_large_whale
-- Smithy is in for testing
+- Smithy class is in for testing
 - Duergar added as playable race
-- Spells SLOW and STABILISE are in, but not given to any classes yet.
+- Spells SLOW and STABILISE are in for warlocks and necromancers
+  respectively
 
 {WJuly 2022{x
 - Added 8-bit colour to MUD
@@ -5431,7 +5433,7 @@ entrapment              animate dead            fireshield
 third spell             bladethirst             fear
 deter                   harm                    cure poison
 cure blind              refresh                 remove curse
-second attack
+second attack           stabilise
 ~
 
 -1 SNINJA~
@@ -5475,6 +5477,7 @@ fast healing            grip                    recharge item
 warcry                  enhanced hit            whirlwind
 dual                    forge                   dragon shield
 fireshield              transport item          swim
+slow
 ~
 
 -1 SWITCH~
@@ -6421,6 +6424,7 @@ merc.h):
         BODY_NO_CORPSE     64   Won't leave a corpse when killed
         BODY_HUGE         128   Massive size
         BODY_INORGANIC    256   Not made of living tissue
+        BODY_HAS_TAIL     512   Has a tail
 
 You may need to manually edit your finished area files to set body_form
 values correctly.  The 'gold' field occurs immediately after the
@@ -6447,9 +6451,9 @@ Examples
 
 Here are a few common non-human forms as examples:
 
-        Dogs, cats, horses, livestock        4|32   =    36
+        Dogs, cats, horses, livestock    4|32|512   =   548
         Golems, animated statues        16|32|256   =   304
-        Snakes, worms                      4|8|32   =    44
+        Snakes, worms                  4|8|32|512   =   556
         Ghosts, wraiths, spirits      2|16|64|256   =   336
 
 

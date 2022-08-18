@@ -9,18 +9,17 @@ $
 
 #RECALL
 27347
-
 #MOBILES
 #27267
 giant starfish~
 a giant starfish~
 <94>A giant starfish floats through the water, hunting for gastropods and limpets.<0>
 ~
-The giant starfish has a dense body with tan-coloured, thick arms. Its arms 
-contain blunt spines that are bluish in color with purple tips that are swollen 
-and surrounded by brown fuzz and pedicellariae that have a plier-like shape.  
-You'd guess it'd be 5 feet in diameter. It's minding its own business searching 
-for large gastropods and limpets it can use its flexible stomach to pry open 
+The giant starfish has a dense body with tan-coloured, thick arms. Its arms
+contain blunt spines that are bluish in color with purple tips that are swollen
+and surrounded by brown fuzz and pedicellariae that have a plier-like shape.
+You'd guess it'd be 5 feet in diameter. It's minding its own business searching
+for large gastropods and limpets it can use its flexible stomach to pry open
 and absorb.
 ~
 4|64 8192|67108864 0 S
@@ -32,11 +31,11 @@ giant starfish~
 a giant starfish~
 <94>A giant starfish floats through the water, hunting for gastropods and limpets.<0>
 ~
-The giant starfish has a dense body with tan-coloured, thick arms. Its arms 
-contain blunt spines that are bluish in color with purple tips that are swollen 
-and surrounded by brown fuzz and pedicellariae that have a plier-like shape.  
-You'd guess it'd be 5 feet in diameter. It's minding its own business searching 
-for large gastropods and limpets it can use its flexible stomach to pry open 
+The giant starfish has a dense body with tan-coloured, thick arms. Its arms
+contain blunt spines that are bluish in color with purple tips that are swollen
+and surrounded by brown fuzz and pedicellariae that have a plier-like shape.
+You'd guess it'd be 5 feet in diameter. It's minding its own business searching
+for large gastropods and limpets it can use its flexible stomach to pry open
 and absorb.
 ~
 4|64 8192 0 S
@@ -48,11 +47,11 @@ pilot whale~
 a pilot whale~
 <243>A pilot whale swims about, looking for deep-sea squid.<0>
 ~
-The pilot whale is mostly dark grey, with lighter grey patches behind his 
-dorsal fin, under his chin, behind his eye, and on his belly.  His dorsal 
-fin is set forward on the back and sweeps backwards. Larger and more 
-robust than most dolphins, pilot whales have a distinctive large, bulbous 
-melon. This guy is deep-diving to try and find some squid, one of his 
+The pilot whale is mostly dark grey, with lighter grey patches behind his
+dorsal fin, under his chin, behind his eye, and on his belly.  His dorsal
+fin is set forward on the back and sweeps backwards. Larger and more
+robust than most dolphins, pilot whales have a distinctive large, bulbous
+melon. This guy is deep-diving to try and find some squid, one of his
 favourite snacks.
 ~
 64 8|32|512 0 S
@@ -64,11 +63,11 @@ pilot whale~
 a pilot whale~
 <243>A pilot whale swims about, looking for deep-sea squid.<0>
 ~
-The pilot whale is mostly dark grey, with lighter grey patches behind her 
-dorsal fin, under her chin, behind her eye, and on her belly.  Her dorsal 
-fin is set forward on the back and sweeps backwards. Larger and more 
-robust than most dolphins, pilot whales have a distinctive large, bulbous 
-melon. This pilot whale is deep-diving to try and find some squid, one of 
+The pilot whale is mostly dark grey, with lighter grey patches behind her
+dorsal fin, under her chin, behind her eye, and on her belly.  Her dorsal
+fin is set forward on the back and sweeps backwards. Larger and more
+robust than most dolphins, pilot whales have a distinctive large, bulbous
+melon. This pilot whale is deep-diving to try and find some squid, one of
 her favourite snacks.
 ~
 64 8|32|512 0 S
@@ -80,8 +79,8 @@ minke whale~
 a minke whale~
 <61>A minke whale cruises the depths for krill.<0>
 ~
-While small for a baleen whale, the minke whale is still nearly 30 feet long 
-and weighs almost 7 tons. This one is cruising for krill, though he'd be happy 
+While small for a baleen whale, the minke whale is still nearly 30 feet long
+and weighs almost 7 tons. This one is cruising for krill, though he'd be happy
 to take herring or capelin if there were none to be found.
 ~
 64 8|32|8192 0 S
@@ -93,8 +92,8 @@ minke whale~
 a minke whale~
 <61>A minke whale cruises the depths for krill.<0>
 ~
-While small for a baleen whale, the minke whale is still nearly 30 feet long 
-and weighs almost 7 tons. This one is cruising for krill, though she'd be happy 
+While small for a baleen whale, the minke whale is still nearly 30 feet long
+and weighs almost 7 tons. This one is cruising for krill, though she'd be happy
 to take herring or capelin if there were none to be found.
 ~
 64 8|32|8192 0 S
@@ -106,8 +105,8 @@ baiji pale dolphin~
 a baiji~
 <159>A pale, odd-looking dolphin swims about here.<0>
 ~
-The baiji is pale blue to gray on her back, and white on her belly. She has a 
-long and slightly upturned beak and a low and triangular dorsal fin. You also 
+The baiji is pale blue to gray on her back, and white on her belly. She has a
+long and slightly upturned beak and a low and triangular dorsal fin. You also
 notice her eyes are much smaller than those of most of the dolphins you've seen.
 ~
 64 8|32|512|32768 0 S
@@ -119,8 +118,8 @@ dolphin baiji pale odd~
 a baiji~
 <159>A pale, odd-looking dolphin swims about here.<0>
 ~
-The baiji is pale blue to gray on his back, and white on his belly. He has a 
-long and slightly upturned beak and a low and triangular dorsal fin. You also 
+The baiji is pale blue to gray on his back, and white on his belly. He has a
+long and slightly upturned beak and a low and triangular dorsal fin. You also
 notice his eyes are much smaller than those of most of the dolphins you've seen.
 ~
 64 8|32|512|32768 0 S
@@ -132,8 +131,8 @@ right whale~
 a right whale~
 <237>A huge right whale tunnels obliviously through the water.<0>
 ~
-This right whale is easily 15 metres long. She has an extremely thick body, 
-and large, broad and blunt pectoral flippers. A filter-feeder, she cruises 
+This right whale is easily 15 metres long. She has an extremely thick body,
+and large, broad and blunt pectoral flippers. A filter-feeder, she cruises
 obliviously through the wtaer, paying no attention to you at all.
 ~
 64 8|32|512|32768 0 S
@@ -145,8 +144,8 @@ spectacled porpoise~
 a spectacled porpoise~
 <234>A spectacled porpoise frolicks about in the deep.<0>
 ~
-This spectacled porpoise has a black dorsal region which is sharply delineated 
-from his white belly, and an obvious dark eye patch. He looks like he's having 
+This spectacled porpoise has a black dorsal region which is sharply delineated
+from his white belly, and an obvious dark eye patch. He looks like he's having
 a lot of fun just frolicking about.
 ~
 64|128 8|32|512|8192 0 S
@@ -158,14 +157,80 @@ spectacled porpoise~
 a spectacled porpoise~
 <242>A spectacled porpoise frolicks about in the deep.<0>
 ~
-This spectacled porpoise has a lightish-grey dorsal region which is delineated 
-from her white belly, and an obvious dark eye patch. She looks like she's 
+This spectacled porpoise has a lightish-grey dorsal region which is delineated
+from her white belly, and an obvious dark eye patch. She looks like she's
 having a lot of fun just frolicking about.
 ~
 64|128 8|32|512|8192 0 S
 39 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+#27278
+fin whale~
+a fin whale~
+<247>A huge fin whale barrels through the water, filter-feeding.<0>
+~
+The huge fin whale's body is long and slender, coloured brownish-grey with a paler underside.  It is known as the greyhound of the sea for its speed and elegance.  It's not very interested in you, and won't attack unless you provoke it.
+~
+64 8192 0 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27279
+fin whale~
+a fin whale~
+<247>A huge fin whale barrels through the water, filter-feeding.<0>
+~
+The huge fin whale's body is long and slender, coloured brownish-grey with a paler underside.  It is known as the greyhound of the sea for its speed and elegance.  It's not very interested in you, and won't attack unless you provoke it.
+~
+64 8192 0 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27280
+sperm whale~
+a sperm whale~
+<59>A sperm whale hunts in the ocean deep.<0>
+~
+The sperm whale is the largest toothed whale, and this one looks to be at least 20 metres long.  With a huge head and a mouth full of large, conical teeth, it busies itself searching for the giant squid that are its favourite meal.
+~
+64 8192 0 S
+38 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27281
+sperm whale~
+a sperm whale~
+<59>A sperm whale hunts in the ocean deep.<0>
+~
+The sperm whale is the largest toothed whale, and this one looks to be at least 11 metres long but mature--meaning it is probably a female.  With a huge head and a mouth full of large, conical teeth, it busies itself searching for the giant squid that are its favourite meal.
+~
+64 8192 0 S
+38 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27282
+female nixie~
+a female nixie~
+<121>A female nixie regards you with unabashed curiosity.<0>
+~
+Nixies are an aquatic race of sprite, quite small and elven in appearance.  This one has pale green skin, dark green hair, webbed fingers and toes, pointed ears, and wide, silvery eyes.  She stands about 4 feet tall, and is wearing colourful clothing made out of seaweed, shells, and pearls.
+~
+64 8|32|512|8192|32768 0 S
+41 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27283
+male nixie~
+a male nixie~
+<121>A male nixie regards you with curiosity and some trepidation.<0>
+~
+Nixies are an aquatic race of sprite, quite small and elven in appearance.  This one has pale green skin, dark green hair, webbed fingers and toes, pointed ears, and wide, silvery eyes.  He stands about 4 feet tall, and is wearing a loincloth made out of colourful seaweed.
+~
+64 8|32|512|8192|32768 0 S
+41 0 0 0d0+0 0d0+0
+0 0
+8 8 1
 #0
 
 
@@ -180,10 +245,76 @@ A wet heap of krill is here.~
 3 0 0
 E
 krill heap~
-Krill are small crustaceans of the order Euphausiacea, and are found in all the 
-world's oceans. What you have here is abig, wet heap of them in various stages 
+Krill are small crustaceans of the order Euphausiacea, and are found in all the
+world's oceans. What you have here is abig, wet heap of them in various stages
 of digestion.  They're probably edible, but... not delicious.
 ~
+#27373
+jaws teeth large conical~
+jaws full of large conical teeth~
+Your large, conical teeth protrude from your fearsome jaws.~
+~
+5 67108864 0
+0~ 0~ 0~ 10~
+1 0 0
+#27374
+teak javelin~
+a teak javelin~
+A javelin carved out of teak wood is here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 11~
+2 0 0
+A
+18 8
+A
+19 2
+E
+teak javelin~
+Looks like it probably belongs to a nixe--you know they make their wooden weapons out of teak, for its high resistance to water and craking.  It's id carefully crafted, but otherwise not very remarkable.~
+#27375
+small sharp dagger~
+a small, sharp dagger~
+A small, sharp dagger has been left here.~
+~
+5 16384 1|8192
+0~ 0~ 0~ 2~
+1 0 0
+E
+small sharp dagger~
+To judge by its size and make, you suspect it belonged to a nixie.  It's coated with a very foul-smelling substance.~
+#27376
+seaweed loincloth~
+a seaweed loincloth~
+A loincloth made out of brightly-coloured seaweed is here.~
+~
+9 0 1|2048
+0~ 0~ 0~ 0~
+2 0 0
+A
+17 -5
+A
+2 2
+#27377
+ seaweed body wrap~
+a seaweed body wrap~
+A tight whole-body wrap made of colourful seaweed is here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~
+5 0 0
+A
+17 -15
+#27378
+pearl strings bracelet~
+a pearl string bracelet~
+A bracelet made of strings of pearls lies here.~
+~
+8 1|64 1|256
+0~ 0~ 0~ 0~
+1 0 0
+A
+12 0
 #0
 
 
@@ -352,7 +483,7 @@ S
 Canton Canal~
 You are standing in room #27253.
 ~
-0 0 8
+0 4 8
 D0
 ~
 ~
@@ -468,7 +599,7 @@ S
 Canton Canal~
 You are standing in room #27259.
 ~
-0 0 8
+0 4 8
 D0
 ~
 ~
@@ -512,7 +643,7 @@ S
 Canton Canal~
 You are standing in room #27261.
 ~
-0 0 8
+0 4 8
 D1
 ~
 ~
@@ -850,7 +981,7 @@ S
 Canton Canal~
 You are standing in room #27356.
 ~
-0 0 8
+0 4 8
 D0
 ~
 ~
@@ -1008,7 +1139,7 @@ S
 Canton Canal~
 You are standing in room #27363.
 ~
-0 0 8
+0 4 8
 D0
 ~
 ~
@@ -2212,7 +2343,7 @@ S
 Above Canton Canal~
 You are standing in room #27553.
 ~
-0 0 8
+0 4 8
 D0
 ~
 ~
@@ -2324,7 +2455,7 @@ S
 Above Canton Canal~
 You are standing in room #27559.
 ~
-0 0 8
+0 4 8
 D0
 ~
 ~
@@ -2368,7 +2499,7 @@ S
 Above Canton Canal~
 You are standing in room #27561.
 ~
-0 0 8
+0 4 8
 D1
 ~
 ~
@@ -2732,7 +2863,7 @@ S
 Above Canton Canal~
 You are standing in room #27656.
 ~
-0 0 8
+0 4 8
 D0
 ~
 ~
@@ -2890,7 +3021,7 @@ S
 Above Canton Canal~
 You are standing in room #27663.
 ~
-0 0 8
+0 4 8
 D0
 ~
 ~
@@ -3966,12 +4097,12 @@ M 1 27270 1 27654			<245>a pilot whale<0> to Above Canton Canal
 M 1 27271 3 27256			a minke whale to Canton Canal
 G 1 27372 100
 *
-M 1 27271 3 27660			a minke whale to Above Canton Canal
+M 1 27271 3 27560			a minke whale to Above Canton Canal
 *
-M 1 27271 3 27654			a minke whale to Above Canton Canal
+M 1 27271 3 27554			a minke whale to Above Canton Canal
 G 1 27372 100
 *
-M 1 27272 2 27663			a minke whale to Above Canton Canal
+M 1 27272 2 27563			a minke whale to Above Canton Canal
 *
 M 1 27272 1 27653			a minke whale to Malana Bridge, Upper
 G 1 27372 100
@@ -3982,22 +4113,61 @@ M 1 27274 1 27607			a baiji to Above Bridge to Market Canton
 *
 M 1 27275 1 27264			a right whale to Canton Canal
 *
-M 1 27276 1 27662			a spectacled porpoise to Above Canton Canal
+M 1 27276 1 27562			a spectacled porpoise to Above Canton Canal
 *
-M 1 27277 1 27654			a spectacled porpoise to Above Canton Canal
+M 1 27277 1 27554			a spectacled porpoise to Above Canton Canal
+*
+M 1 27278 2 27364			a fin whale to Canton Canal
+*
+M 1 27278 2 27423			a fin whale to Canton Canal
+*
+M 1 27279 2 27424			a fin whale to Canton Canal
+*
+M 1 27279 2 27360			a fin whale to Canton Canal
+*
+M 1 27280 2 27365			a sperm whale to Canton Canal
+E 1 27373 100 16
+*
+M 1 27280 2 27721			a sperm whale to Above Canton Canal
+E 1 27373 100 16
+*
+M 1 27281 1 27725			a sperm whale to Above Canton Canal
+E 1 27373 100 16
+*
+M 1 27283 2 27659			a male nixie to Above Canton Canal
+E 1 27376 100 13
+E 1 27374 100 16
+*
+M 1 27283 2 27725			a male nixie to Above Canton Canal
+E 1 27376 100 13
+E 1 27375 100 16
+*
+M 1 27282 2 27660			a female nixie to Above Canton Canal
+E 1 27377 100 5
+E 1 27378 100 10
+*
+M 1 27282 1 27724			a female nixie to Above Canton Canal
+E 1 27377 100 5
+E 1 27378 100 10
 S
 
 
 #SPECIALS
 M  27269 spec_small_whale			a pilot whale
 M  27270 spec_small_whale			a pilot whale
-M  27273 spec_small_whale			a baiji
-M  27274 spec_small_whale			a baiji
-M  27276 spec_small_whale			a spectacled porpoise
-M  27277 spec_small_whale			a spectacled porpoise
 M  27271 spec_large_whale 			a minke whale
 M  27272 spec_large_whale 			a minke whale
+M  27273 spec_small_whale			a baiji
+M  27274 spec_small_whale			a baiji
 M  27275 spec_large_whale			a right whale
+M  27276 spec_small_whale			a spectacled porpoise
+M  27277 spec_small_whale			a spectacled porpoise
+M  27278 spec_large_whale			a fin whale
+M  27279 spec_large_whale			a fin whale
+M  27280 spec_large_whale			a sperm whale
+M  27281 spec_large_whale			a sperm whale
+M  27282 spec_cast_water_sprite		a female nixie
+M  27282 spec_cast_water_sprite		a female nixie
 S
 
 
