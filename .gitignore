@@ -1,5 +1,7 @@
 *.swp
 *.iml
+*.are~
+*.bak
 .idea/
 
 *.o
@@ -13,6 +15,10 @@ server/area/sahuagin_remainder_working.are
 server/area/sahuagin_remainder.are~
 server/area/sahuagin_sunken_working.are
 server/area/sahuagin_sunken_working.are~
+server/area/sahuagin_canals_working.bak
+server/area/sahuagin_canals_working.are
+server/area/sahuagin_canals_working.are~
+server/area/sahuagin_canals.are~
 server/area/sahuagin_sunken_working.bak
 server/area/sahuagin_sunken_working2.are
 server/area/sahuagin_sunken_working2.are~
