@@ -88,6 +88,7 @@ DECLARE_SPEC_FUN( spec_small_whale         );
 DECLARE_SPEC_FUN( spec_large_whale         );
 DECLARE_SPEC_FUN( spec_kappa               );
 DECLARE_SPEC_FUN( spec_aboleth             );
+DECLARE_SPEC_FUN( spec_laghathti           );
 
 
 /*
@@ -141,6 +142,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_large_whale"))          return spec_large_whale;
         if (!str_cmp(name, "spec_kappa"))                return spec_kappa;
         if (!str_cmp(name, "spec_aboleth"))              return spec_aboleth;
+        if (!str_cmp(name, "spec_laghathti"))            return spec_laghathti;
 
 
         return 0;
@@ -204,6 +206,7 @@ char* spec_fun_name (CHAR_DATA *ch)
         if (ch->spec_fun == spec_lookup("spec_large_whale"))        return "spec_large_whale";
         if (ch->spec_fun == spec_lookup("spec_kappa"))              return "spec_kappa";
         if (ch->spec_fun == spec_lookup("spec_aboleth"))            return "spec_aboleth";
+        if (ch->spec_fun == spec_lookup("spec_laghathti"))          return "spec_laghathti";
     }
     else {
         return "none";
@@ -3023,6 +3026,160 @@ bool spec_kappa( CHAR_DATA *ch )
         {
                 act ("$c waves $s claws at $N.", ch, NULL, victim, TO_NOTVICT);
                 act ("$c waves $s claws at you.", ch, NULL, victim, TO_VICT);
+        }
+
+        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+
+        return TRUE;
+
+}
+
+bool spec_laghathti( CHAR_DATA *ch )
+{
+        CHAR_DATA *victim;
+        char      *spell;
+        int        sn;
+        bool       target_self;
+
+        spell = "energy drain";
+
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim->deleted)
+                        continue;
+
+                if (victim->fighting == ch && !number_bits(1))
+                        break;
+        }
+
+        if (!victim)
+                return FALSE;
+
+        while (1)
+        {
+            int min_level;
+            target_self = FALSE;
+
+                switch ( number_range (0, 11) )
+                {
+                    case  0:
+                        if (is_affected(victim, gsn_coil))
+                        {
+                                do_strangle( ch, victim->name);
+                                return TRUE;
+                        }
+                        else {
+                                return TRUE;
+                        }
+
+                    case  1:
+                        if (is_affected(victim, gsn_coil))
+                        {
+                                do_constrict( ch, victim->name);
+                                return TRUE;
+                        }
+                        else {
+                                return TRUE;
+                        }
+
+                    case  2:
+                        min_level = 11;
+                        if (is_affected(victim, gsn_psychic_drain))
+                        {
+                                break;
+                        }
+                        else {
+                                spell = "psychic drain";
+                                break;
+                        }
+
+                    case  3:
+                        if (is_affected(victim, gsn_coil))
+                        {
+                                do_constrict( ch, victim->name);
+                                return TRUE;
+                        }
+                        else {
+                                return TRUE;
+                        }
+
+                    case  4:
+                        min_level = 11;
+                        if (is_affected(victim, gsn_ego_whip))
+                        {
+                                break;
+                        }
+                        else {
+                                spell = "ego whip";
+                                break;
+                        }
+
+                    case  5:
+                        if (is_affected(victim, gsn_coil))
+                        {
+                                do_strangle( ch, victim->name);
+                                return TRUE;
+                        }
+                        else {
+                                return TRUE;
+                        }
+
+                    case  6:
+                        if (!is_affected(victim, gsn_coil))
+                        {
+                                do_coil( ch, victim->name);
+                                return TRUE;
+                        }
+                        else {
+                                return TRUE;
+                        }
+
+                    case  7:
+                        if (!is_affected(victim, gsn_coil))
+                        {
+                                do_coil( ch, victim->name);
+                                return TRUE;
+                        }
+                        else {
+                                return TRUE;
+                        }
+
+                    case  8:
+                        do_grapple( ch, victim->name);
+                        return TRUE;
+
+                    case  9:
+                        min_level = 25;
+                        if (is_affected(victim, gsn_feeblemind))
+                        {
+                                break;
+                        }
+                        else {
+                                spell = "feeblemind";
+                                break;
+                        }
+
+                    case  10:
+
+                    default:
+                        min_level = 35;
+                        spell = "energy drain";
+                        break;
+                }
+
+                if ( ch->level >= min_level )
+                        break;
+        }
+
+        if ( ( sn = skill_lookup( spell ) ) < 0 )
+                return FALSE;
+
+        if (target_self)
+                act ("$c strokes $mself with $s hideous tentacles.", ch, NULL, NULL, TO_ROOM);
+        else
+        {
+                act ("$c waves $s hideous tentacles at $N.", ch, NULL, victim, TO_NOTVICT);
+                act ("$c waves $s hideous tentacles at you.", ch, NULL, victim, TO_VICT);
         }
 
         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );

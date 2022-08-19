@@ -478,7 +478,9 @@ giant lobster~
 a giant lobster~
 <124>A giant lobster swims through the gloom.<0>
 ~
-This 20-foot monster crustacean has a long body with a muscular tail and a pair of huge, frightening-looking claws.  It doesn't seem interested in your presence and will probably leave you alone if you don't harass it.
+This 20-foot monster crustacean has a long body with a muscular tail and a 
+pair of huge, frightening-looking claws.  It doesn't seem interested in your 
+presence and will probably leave you alone if you don't harass it.
 ~
 4|64 512 0 S
 45 0 0 0d0+0 0d0+0
@@ -489,9 +491,15 @@ giant lobster~
 a giant lobster~
 <124>A particularly large giant lobster swims through the gloom.<0>
 ~
-This 22-foot monster crustacean has a long body with a muscular tail and a pair of huge, frightening-looking claws.  It seems particularly confident for a lobster, and you surmise it is a male who has been frequently successful in combat with other lobsters, and has thus risen to the top of the lobster dominance heierarchy on the back of the bucketfuls of serotonin flowing through its (relatively) tiny brain.  
+This 22-foot monster crustacean has a long body with a muscular tail and a 
+pair of huge, frightening-looking claws.  It seems particularly confident for 
+a lobster, and you surmise it is a male who has been frequently successful in 
+combat with other lobsters, and has thus risen to the top of the lobster 
+dominance heierarchy on the back of the bucketfuls of serotonin flowing through 
+its (relatively) tiny brain.  
 
-It doesn't seem interested in your presence, though, and will probably leave you alone if you don't harass it.
+It doesn't seem interested in your presence, though, and will probably leave 
+you alone if you don't harass it.
 ~
 4|64 512 -200 S
 45 0 0 0d0+0 0d0+0
@@ -502,7 +510,10 @@ vodyanoi creature large lumbering~
 a vodyanoi~
 <58>A large, lumbering creature grumps about irritably.<0>
 ~
-This is a vodyanoi, a creature related to the umber hulk but somewhat larger and water-dwelling. It has slimy green skin, webbed hands and feed, and powerful manibles.  They have a reputation as an evil and violent creature, but this one's attention doesn't seem to have turned to you... yet.
+This is a vodyanoi, a creature related to the umber hulk but somewhat larger 
+and water-dwelling. It has slimy green skin, webbed hands and feed, and 
+powerful manibles.  They have a reputation as an evil and violent creature, 
+but this one's attention doesn't seem to have turned to you... yet.
 ~
 64 512 -1000 S
 47 0 0 0d0+0 0d0+0
@@ -513,7 +524,8 @@ merrow male~
 a male merrow~
 <76>A large male merrow stares at you, furious at the intrusion!<0>
 ~
-He has black teeth and nails; webbed hands and feet; a long, thick neck; an underbite; and sloping shoulders. He does not seem pleased to see you.
+He has black teeth and nails; webbed hands and feet; a long, thick neck; an 
+underbite; and sloping shoulders. He does not seem pleased to see you.
 ~
 2|32|64 8|32|512 -1000 S
 49 0 0 0d0+0 0d0+0
@@ -524,7 +536,9 @@ female merrow~
 a female merrow~
 <76>A large female merrow stares at you, furious at the intrusion!<0>
 ~
-She has black teeth and nails; webbed hands and feet; a long, thick neck; an underbite; and sloping shoulders. She is also covered in tattoos that seem mainly to depict acts of death and destruction.
+She has black teeth and nails; webbed hands and feet; a long, thick neck; an 
+underbite; and sloping shoulders. She is also covered in tattoos that seem 
+mainly to depict acts of death and destruction.
 ~
 2|32|64 8|32|512 -1000 S
 49 0 0 0d0+0 0d0+0
@@ -535,34 +549,93 @@ eel-like creature aboleth~
 an aboleth~
 <20>A huge, eel-like creature slithers through the abyssal depths.<0>
 ~
-It resembles a bizarre eel, with a long, tubular body, a tail at one end, two fins near the head, and another along the back. Its mouth is lamprey-like, and filled with serrated, jawless teeth. You feel afraid just being in its presence, and have a strong intuition that it might be best to leave it alone.
+It resembles a bizarre eel, with a long, tubular body, a tail at one end, two 
+fins near the head, and another along the back. Its mouth is lamprey-like, and 
+filled with serrated, jawless teeth. You feel afraid just being in its presence, 
+and have a strong intuition that it might be best to leave it alone.
 ~
 64 8|32|512 -730 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 0
 #27307
-yuran lobster male~
+yurian lobster male~
 a yurian male~
 <96>A bizarre humanoid lobster creature scuttles about.<0>
 ~
-He resembles a lobster the size of a human being, walking on two humanoid legs but also able to swim like a lobster. His face is similar to that of a human, though encased in chitinous armor and with eyes on stalks.
+He resembles a lobster the size of a human being, walking on two humanoid legs 
+but also able to swim like a lobster. His face is similar to that of a human, 
+though encased in chitinous armor and with eyes on stalks.
 ~
 64 512 125 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #27308
-yuran lobster female~
+yurian lobster female~
 a yurian female~
 <96>A bizarre humanoid lobster creature scuttles about.<0>
 ~
-She resembles a lobster the size of a human being, walking on two humanoid legs but also able to swim like a lobster. Her face is similar to that of a human, though encased in chitinous armor and with eyes on stalks.
+She resembles a lobster the size of a human being, walking on two humanoid legs 
+but also able to swim like a lobster. Her face is similar to that of a human, 
+though encased in chitinous armor and with eyes on stalks.
 ~
 64 512 135 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+#27309
+chuul horrible mix crustacean insect serpent~
+a chuul~
+<154>A horrible mix of crustacean, insect, and serpent scuttles about here.<0>
+~
+It is a chuul, which has been described as "a horrible mix of crustacean, 
+insect, and serpent", but most closely resembles an 8-foot-tall yellow-green 
+lobster, weighing around 300 kilograms with four long legs, two large claws, 
+a strong protective exoskeleton, a fan-like tail, and a mass of poisonous 
+tentacles around its mouth.  Yikes.
+~
+64 512 -850 S
+52 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27310
+chuul horrible mix crustacean insect serpent~
+a chuul~
+<154>A horrible mix of crustacean, insect, and serpent scuttles about here.<0>
+~
+It is a chuul, which has been described as "a horrible mix of crustacean, 
+insect, and serpent", but most closely resembles an 8-foot-tall yellow-green 
+lobster, weighing around 300 kilograms with four long legs, two large claws, 
+a strong protective exoskeleton, a fan-like tail, and a mass of poisonous 
+tentacles around its mouth.  Yikes.
+~
+64 512 -800 S
+52 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27311
+giant sea leech~
+a giant sea leech~
+<53>A giant sea leech pulses and wiggles about.<0>
+~
+It similar in all morphological respects to a regular sea leech--wormlike with large suckers at both ends--but huge.  You'd hate to have it feasting on you.
+~
+4|64 8|32|512 -147 S
+53 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#27312
+laghathti~
+a laghathti~
+<21>A spherical mass of writhing tentacles radiates pure evil.<0>
+~
+This is a laghathti,a kind of cephalopodan obyrith demon.  It has a loose resemblance to octopuses, but that comparison in no way captures its alien appearance. For one, it seemingly has no core; what passes for a body is really just a spherical mass of writhing tendrils, roughly 8 feet in diameter. Aside from that, its form consists of twelve, midnight-blue tentacles. Five of them have a pale underside riddled with hundreds of tiny mouths, another five are slimmer and ended in wide, paddle-like fins, and the other two are shorter, stronger, and end in long, crocodilian jaws from which the creature's high-pitched wails emanate.
+~
+64 8|32|512 -1000 S
+54 0 0 0d0+0 0d0+0
+0 0
+8 8 0
 #0
 
 
@@ -798,7 +871,11 @@ The rotting corpse of a sahuagin lies here, tied to a patch of kelp.~
 85 0 0
 E
 rotting corpse sahuagin~
-The corpse is well-decayed.  Sufficiently so, in fact, it's a bit of a struggle at first to figure out what creature it belongs to.  It has been tied to a patch of kelp, which keeps it from being cast adrift in the ocean currents.  Perhaps it serves as some sort of marker?~
+The corpse is well-decayed.  Sufficiently so, in fact, it's a bit of a struggle
+at first to figure out what kind of creature it is.  It has been tied to a 
+patch of kelp, which keeps it from being cast adrift in the ocean currents.  
+Perhaps it serves as some sort of marker?
+~
 #27393
 crude longspear~
 a crude longspear~
@@ -820,6 +897,42 @@ A pair of ivory horns have been dropped here.~
 8 0 1|16
 0~ 0~ 0~ 0~
 2 0 0
+#27395
+pinchers~
+pinchers~
+A large pair of pinchers has been severed from a creature and left here.~
+~
+5 67108864 0
+0~ 15~ 20~ 8~
+1 10000 0
+A
+19 5
+#27396
+leech egg~
+a giant leech egg~
+<98>A huge purple egg sac lies here.<0>~
+~
+26 0 1|16384
+55~ cell adjustment~ heal~ heal~
+3 0 0
+#27397
+midnight-blue tentacles~
+tentacles~
+<4>A hideous mass of midnight-blue tentacles has been severed from a creature and left here.<0>~
+~
+5 67108864 0
+0~ 15~ 20~ 12~
+1 10000 0
+A
+19 5
+#27398
+bladder laghathti blood~
+a bladder of laghathti blood~
+A sword rests here.~
+~
+10 16|64 1|16384
+53~ stabilise~ intellect fortress~ mental barrier~
+1 0 0
 #0
 
 
@@ -4681,238 +4794,293 @@ S
 
 #RESETS
 *
-M 1 27267 2 27307			<94>a giant starfish<0> to Bridge to Market Canton
+M 1 27267 2 27307        <94>a giant starfish<0> to Bridge to Market Canton
 *
-M 1 27267 2 27260			<94>a giant starfish<0> to Canton Canal
+M 1 27267 2 27260        <94>a giant starfish<0> to Canton Canal
 *
-M 1 27268 1 27355			<94>a giant starfish<0> to Canton Canal
+M 1 27268 1 27355        <94>a giant starfish<0> to Canton Canal
 *
-M 1 27269 2 27557			<245>a pilot whale<0> to Above Canton Canal
+M 1 27269 2 27557        <245>a pilot whale<0> to Above Canton Canal
 *
-M 1 27269 2 27562			<245>a pilot whale<0> to Above Canton Canal
+M 1 27269 2 27562        <245>a pilot whale<0> to Above Canton Canal
 *
-M 1 27270 1 27654			<245>a pilot whale<0> to Above Canton Canal
+M 1 27270 1 27654        <245>a pilot whale<0> to Above Canton Canal
 *
-M 1 27271 3 27256			a minke whale to Canton Canal
+M 1 27271 3 27256        a minke whale to Canton Canal
 G 1 27372 100
 *
-M 1 27271 3 27560			a minke whale to Above Canton Canal
+M 1 27271 3 27560        a minke whale to Above Canton Canal
 *
-M 1 27271 3 27554			a minke whale to Above Canton Canal
+M 1 27271 3 27554        a minke whale to Above Canton Canal
 G 1 27372 100
 *
-M 1 27272 2 27563			a minke whale to Above Canton Canal
+M 1 27272 2 27563        a minke whale to Above Canton Canal
 *
-M 1 27272 1 27653			a minke whale to Malana Bridge, Upper
+M 1 27272 1 27653        a minke whale to Malana Bridge, Upper
 G 1 27372 100
 *
-M 1 27273 1 27655			a baiji to Above Canton Canal
+M 1 27273 1 27655        a baiji to Above Canton Canal
 *
-M 1 27274 1 27607			a baiji to Above Bridge to Market Canton
+M 1 27274 1 27607        a baiji to Above Bridge to Market Canton
 *
-M 1 27275 1 27264			a right whale to Canton Canal
+M 1 27275 1 27264        a right whale to Canton Canal
 *
-M 1 27276 1 27562			a spectacled porpoise to Above Canton Canal
+M 1 27276 1 27562        a spectacled porpoise to Above Canton Canal
 *
-M 1 27277 1 27554			a spectacled porpoise to Above Canton Canal
+M 1 27277 1 27554        a spectacled porpoise to Above Canton Canal
 *
-M 1 27278 2 27364			a fin whale to Canton Canal
+M 1 27278 2 27364        a fin whale to Canton Canal
 *
-M 1 27278 2 27423			a fin whale to Canton Canal
+M 1 27278 2 27423        a fin whale to Canton Canal
 *
-M 1 27279 2 27424			a fin whale to Canton Canal
+M 1 27279 2 27424        a fin whale to Canton Canal
 *
-M 1 27279 2 27360			a fin whale to Canton Canal
+M 1 27279 2 27360        a fin whale to Canton Canal
 *
-M 1 27280 2 27365			a sperm whale to Canton Canal
+M 1 27280 2 27365        a sperm whale to Canton Canal
 E 1 27373 100 16
 *
-M 1 27280 2 27721			a sperm whale to Above Canton Canal
+M 1 27280 2 27721        a sperm whale to Above Canton Canal
 E 1 27373 100 16
 *
-M 1 27281 1 27725			a sperm whale to Above Canton Canal
+M 1 27281 1 27725        a sperm whale to Above Canton Canal
 E 1 27373 100 16
 *
-M 1 27283 2 27659			a male nixie to Above Canton Canal
+M 1 27283 2 27659        a male nixie to Above Canton Canal
 E 1 27376 100 13
 E 1 27374 100 16
 *
-M 1 27283 2 27725			a male nixie to Above Canton Canal
+M 1 27283 2 27725        a male nixie to Above Canton Canal
 E 1 27376 100 13
 E 1 27375 100 16
 *
-M 1 27282 2 27660			a female nixie to Above Canton Canal
+M 1 27282 2 27660        a female nixie to Above Canton Canal
 E 1 27377 100 5
 E 1 27378 100 10
 *
-M 1 27282 1 27724			a female nixie to Above Canton Canal
+M 1 27282 1 27724        a female nixie to Above Canton Canal
 E 1 27377 100 5
 E 1 27378 100 10
 *
-M 1 27284 1 27812			the froghemoth to An Underwater Cavern
+M 1 27284 1 27812        the froghemoth to An Underwater Cavern
 E 1 27379 100 16
 E 1 27380 100 18
 *
-M 1 27285 2 27267			a bowhead whale to Canton Canal
+M 1 27285 2 27267        a bowhead whale to Canton Canal
 *
-M 1 27285 2 27269			a bowhead whale to Canton Canal
+M 1 27285 2 27269        a bowhead whale to Canton Canal
 *
-M 1 27286 1 27275			a bowhead whale to Canton Canal
+M 1 27286 1 27275        a bowhead whale to Canton Canal
 *
-M 1 27287 2 27569			a humpback whale to Above Canton Canal
+M 1 27287 2 27569        a humpback whale to Above Canton Canal
 *
-M 1 27287 2 27573			a humpback whale to Above Canton Canal
+M 1 27287 2 27573        a humpback whale to Above Canton Canal
 *
-M 1 27288 2 27270			an ocean sunfish to Canton Canal
+M 1 27288 2 27270        an ocean sunfish to Canton Canal
 *
-M 1 27288 1 27570			an ocean sunfish to Above Canton Canal
+M 1 27288 1 27570        an ocean sunfish to Above Canton Canal
 *
-M 1 27289 1 27575			a giant gar to Above Canton Canal
+M 1 27289 1 27575        a giant gar to Above Canton Canal
 E 1 27234 100 16
 *
-M 1 27291 1 27269			a hunting seal to Canton Canal
+M 1 27291 1 27269        a hunting seal to Canton Canal
 E 1 27383 100 3
 *
-M 1 27292 2 27395			a sea zombie to Canton Canal
+M 1 27292 2 27395        a sea zombie to Canton Canal
 *
-M 1 27292 2 27393			a sea zombie to Canton Canal
+M 1 27292 2 27393        a sea zombie to Canton Canal
 E 1 27385 100 16
 *
-M 1 27293 1 27393			a sea zombie to Canton Canal
+M 1 27293 1 27393        a sea zombie to Canton Canal
 E 1 27384 100 16
 *
-M 1 27293 2 27362			a sea zombie to Canton Canal
+M 1 27293 2 27362        a sea zombie to Canton Canal
 *
-M 1 27294 1 27396			a Zin to Canton Canal
+M 1 27294 1 27396        a Zin to Canton Canal
 G 1 27386 100
 *
-M 1 27295 1 27558			a Zin to Above Canton Canal
+M 1 27295 1 27558        a Zin to Above Canton Canal
 G 1 27386 100
 *
-M 1 27296 2 27689			a water drake to Above Bridge to North Living Canton
+M 1 27296 2 27689        a water drake to Above Bridge to North Living Canton
 E 1 27234 100 16
 *
-M 1 27296 2 27691			a water drake to Above Canton Canal
+M 1 27296 2 27691        a water drake to Above Canton Canal
 E 1 27234 100 16
 *
-M 1 27297 2 27662			a water drake to Above Canton Canal
+M 1 27297 2 27662        a water drake to Above Canton Canal
 E 1 27234 100 16
 *
-M 1 27297 2 27693			a water drake to Above Canton Canal
+M 1 27297 2 27693        a water drake to Above Canton Canal
 E 1 27234 100 16
 *
-M 1 27299 2 27697			a kappa to Above Canton Canal
+M 1 27299 2 27697        a kappa to Above Canton Canal
 E 1 27387 100 5
 E 1 53 100 16
 *
-M 1 27299 2 27657			a kappa to Above Canton Canal
+M 1 27299 2 27657        a kappa to Above Canton Canal
 E 1 27387 100 5
 E 1 53 100 16
 *
-M 1 27298 2 27391			a kappa to Canton Canal
+M 1 27298 2 27391        a kappa to Canton Canal
 E 1 27387 100 5
 E 1 53 100 16
 G 1 27389 100
 *
-M 1 27298 2 27388			a kappa to Bridge to North Living Canton
+M 1 27298 2 27388        a kappa to Bridge to North Living Canton
 E 1 27387 100 5
 E 1 53 100 16
 *
-M 1 27300 3 27392			a giant squid to Canton Canal
+M 1 27300 3 27392        a giant squid to Canton Canal
 E 1 27388 100 16
 *
-M 1 27300 3 27394			a giant squid to Canton Canal
+M 1 27300 3 27394        a giant squid to Canton Canal
 E 1 27388 100 16
 *
-M 1 27300 3 27358			a giant squid to Canton Canal
+M 1 27300 3 27358        a giant squid to Canton Canal
 E 1 27388 100 16
 *
-M 1 27301 2 27247			a giant lobster to Canton Canal
+M 1 27301 2 27247        a giant lobster to Canton Canal
 E 1 27382 100 16
 *
-M 1 27301 2 27244			a giant lobster to Bridge to Military Canton
+M 1 27301 2 27244        a giant lobster to Bridge to Military Canton
 E 1 27382 100 16
 *
-M 1 27302 1 27252			a giant lobster to Canton Canal
+M 1 27302 1 27252        a giant lobster to Canton Canal
 E 1 27382 100 16
 *
-M 1 27303 2 27248			a vodyanoi to Canton Canal
+M 1 27303 2 27248        a vodyanoi to Canton Canal
 E 1 27390 100 16
 *
-M 1 27303 1 27251			a vodyanoi to Canton Canal
+M 1 27303 1 27251        a vodyanoi to Canton Canal
 E 1 27390 100 16
-O 1 27391 100 27816			a treasure pile to A Large Chamber in an Undersea Cave
-O 1 27392 100 27813			the rotting corpse of a sahuagin to The Dark Entrance to an Undersea Cave
+O 1 27391 100 27816      a treasure pile to A Large Chamber in an Undersea Cave
+O 1 27392 100 27813      the rotting corpse of a sahuagin to The Dark Entrance to an Undersea Cave
 *
-M 1 27304 1 27816			a male merrow to A Large Chamber in an Undersea Cave
+M 1 27304 1 27816        a male merrow to A Large Chamber in an Undersea Cave
 E 1 27393 100 16
 E 1 27394 100 6
 *
-M 1 27305 1 27816			a female merrow to A Large Chamber in an Undersea Cave
+M 1 27305 1 27816        a female merrow to A Large Chamber in an Undersea Cave
 E 1 27393 100 16
 *
-M 1 27306 1 27548			an aboleth to Above Canton Canal
+M 1 27306 1 27548        an aboleth to Above Canton Canal
 E 1 27234 100 16
 E 1 27380 100 18
 *
-M 1 27307 4 27458			a yurian male to Canton Canal
+M 1 27307 4 27458        a yurian male to Canton Canal
 E 1 27387 100 5
 E 1 27382 100 16
 *
-M 1 27307 4 27465			a yurian male to Canton Canal
+M 1 27307 4 27465        a yurian male to Canton Canal
 E 1 27387 100 5
 E 1 27382 100 16
 *
-M 1 27307 4 27470			a yurian male to Canton Canal
+M 1 27307 4 27470        a yurian male to Canton Canal
 E 1 27387 100 5
 E 1 27382 100 16
 *
-M 1 27307 4 27366			a yurian male to Canton Canal
+M 1 27307 4 27366        a yurian male to Canton Canal
 E 1 27387 100 5
 E 1 27382 100 16
 *
-M 1 27308 4 27457			a yurian female to Canton Canal
+M 1 27308 4 27457        a yurian female to Canton Canal
 E 1 27387 100 5
 E 1 27382 100 16
 *
-M 1 27308 4 27450			a yurian female to Canton Canal
+M 1 27308 4 27450        a yurian female to Canton Canal
 E 1 27387 100 5
 E 1 27382 100 16
 *
-M 1 27308 4 27469			a yurian female to Canton Canal
+M 1 27308 4 27469        a yurian female to Canton Canal
 E 1 27387 100 5
 E 1 27382 100 16
 *
-M 1 27308 4 27444			a yurian female to Canton Canal
+M 1 27308 4 27444        a yurian female to Canton Canal
 E 1 27387 100 5
 E 1 27382 100 16
+*
+M 1 27309 3 27453        a chuul to Canton Canal
+E 1 27387 100 5
+E 1 27395 100 16
+*
+M 1 27309 3 27446        a chuul to Canton Canal
+E 1 27387 100 5
+E 1 27395 100 16
+*
+M 1 27309 3 27459        a chuul to Canton Canal
+E 1 27387 100 5
+E 1 27395 100 16
+*
+M 1 27310 3 27467        a chuul to Canton Canal
+E 1 27387 100 5
+E 1 27395 100 16
+*
+M 1 27310 3 27462        a chuul to Canton Canal
+E 1 27387 100 5
+E 1 27395 100 16
+*
+M 1 27310 3 27367        a chuul to Canton Canal
+E 1 27387 100 5
+E 1 27395 100 16
+*
+M 1 27311 4 27749			a giant sea leech to Above Canton Canal
+G 1 27396 100
+*
+M 1 27311 4 27745			a giant sea leech to Above Canton Canal
+*
+M 1 27311 4 27666			a giant sea leech to Above Canton Canal
+G 1 27396 100
+*
+M 1 27311 4 27768			a giant sea leech to Above Canton Canal
+G 1 27396 100
+*
+M 1 27312 4 27756			a laghathti to Above Canton Canal
+E 1 27397 100 16
+G 1 27398 100
+*
+M 1 27312 4 27745			a laghathti to Above Canton Canal
+E 1 27397 100 16
+G 1 27398 100
+*
+M 1 27312 4 27765			a laghathti to Above Canton Canal
+E 1 27397 100 16
+G 1 27398 100
+*
+M 1 27312 4 27769			a laghathti to Above Canton Canal
+E 1 27397 100 16
+G 1 27398 100
 S
 
 
 #SPECIALS
-M  27269 spec_small_whale			a pilot whale
-M  27270 spec_small_whale			a pilot whale
-M  27271 spec_large_whale 			a minke whale
-M  27272 spec_large_whale 			a minke whale
-M  27273 spec_small_whale			a baiji
-M  27274 spec_small_whale			a baiji
-M  27275 spec_large_whale			a right whale
-M  27276 spec_small_whale			a spectacled porpoise
-M  27277 spec_small_whale			a spectacled porpoise
-M  27278 spec_large_whale			a fin whale
-M  27279 spec_large_whale			a fin whale
-M  27280 spec_large_whale			a sperm whale
-M  27281 spec_large_whale			a sperm whale
-M  27282 spec_cast_water_sprite		a female nixie
-M  27284 spec_warrior 				a froghemoth
-M  27285 spec_large_whale			a bowhead whale
-M  27286 spec_large_whale			a bowhead whale
-M  27287 spec_large_whale			a humpback whale
-M  27292 spec_cast_undead			a sea zombie
-M  27293 spec_cast_undead			a sea zombie
-M  27294 spec_cast_undead			a Zin
-M  27298 spec_kappa			        a kappa (male)
-M  27306 spec_aboleth	      		an aboleth
+M  27269 spec_small_whale           a pilot whale
+M  27270 spec_small_whale           a pilot whale
+M  27271 spec_large_whale           a minke whale
+M  27272 spec_large_whale           a minke whale
+M  27273 spec_small_whale           a baiji
+M  27274 spec_small_whale           a baiji
+M  27275 spec_large_whale           a right whale
+M  27276 spec_small_whale           a spectacled porpoise
+M  27277 spec_small_whale           a spectacled porpoise
+M  27278 spec_large_whale           a fin whale
+M  27279 spec_large_whale           a fin whale
+M  27280 spec_large_whale           a sperm whale
+M  27281 spec_large_whale           a sperm whale
+M  27282 spec_cast_water_sprite     a female nixie
+M  27284 spec_warrior               a froghemoth
+M  27285 spec_large_whale           a bowhead whale
+M  27286 spec_large_whale           a bowhead whale
+M  27287 spec_large_whale           a humpback whale
+M  27292 spec_cast_undead           a sea zombie
+M  27293 spec_cast_undead           a sea zombie
+M  27294 spec_cast_undead           a Zin
+M  27298 spec_kappa                 a kappa (male)
+M  27306 spec_aboleth               an aboleth
+M  27309 spec_poison                a chuul
+M  27310 spec_poison                a chuul
+M  27311 spec_bloodsucker           a giant sea leech
+M  27312 spec_laghathti             a laghathti
 S
 
 
