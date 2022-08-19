@@ -144,7 +144,7 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
 
         if (IS_OBJ_STAT(obj, ITEM_EGO) &&  IS_SET(obj->ego_flags, EGO_ITEM_ENGRAVED) )
                 smithy_flags++;
-        
+
         if (IS_OBJ_STAT(obj, ITEM_EGO) &&  IS_SET(obj->ego_flags, EGO_ITEM_SERRATED) )
                 smithy_flags++;
 
@@ -669,7 +669,7 @@ void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
         char tmp [MAX_STRING_LENGTH];
 
         buf[0] = '\0'; /* buf1 sent to char at end */
-       
+
        sprintf( tmp, "\n\r=================================\n\r");
         strcat( buf, tmp);
 
@@ -679,8 +679,8 @@ void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
                 if (ch->pcdata->learned[gsn_innate_knowledge] < 50 )
                 {
                         sprintf( tmp, "You cant quite determine the damage output of %s.\n\r", obj->name);
-                        strcat( buf, tmp);    
-                
+                        strcat( buf, tmp);
+
                 }
                 else if (ch->pcdata->learned[gsn_innate_knowledge] < 65)
                 {
@@ -706,7 +706,7 @@ void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
                 else
                 {
                         sprintf( tmp, "You cant quite determine the armour class of %s.\n\r", obj->name);
-                        strcat( buf, tmp);      
+                        strcat( buf, tmp);
                 }
                 break;
         }
@@ -738,7 +738,7 @@ void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
                 if ( paf->location != APPLY_NONE
                 && paf->modifier != 0
                 && strcmp (affect_loc_name (paf->location), "(unknown)")
-                && (ch->pcdata->learned[gsn_innate_knowledge] >75 )) 
+                && (ch->pcdata->learned[gsn_innate_knowledge] >75 ))
                 {
                         if (paf->location < APPLY_SANCTUARY)
                                 sprintf( tmp, "It modifies {Y%s{x by {Y%d{x.\n\r",
@@ -763,10 +763,10 @@ void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
                         strcat( buf, tmp);
                 }
                 else{
-                        
+
                         strcat( buf, tmp);
                         sprintf( tmp, "<560><15>Smithy Enhancements:<561><0>\n\r");
-                        
+
                         if (IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
                                 strcat (tmp, "<228>I<229>m<230>b<231>u<230>e<229>d<0>\n\r");
                         if (IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
@@ -986,8 +986,8 @@ void do_look( CHAR_DATA *ch, char *argument )
                         char    buf1 [ MAX_STRING_LENGTH ];
                         send_to_char( obj->description, ch );
                         send_to_char( "\n\r", ch );
-                        
-                        if ( (ch->class == CLASS_SMITHY) && 
+
+                        if ( (ch->class == CLASS_SMITHY) &&
                                 (obj->item_type == ITEM_WEAPON || obj->item_type == ITEM_ARMOR) )
                         {
                                 print_smithy_data( ch, obj, buf1);
@@ -3947,98 +3947,98 @@ void do_config( CHAR_DATA *ch, char *argument )
 
         if ( arg[0] == '\0' )
         {
-                send_to_char( "[ Keyword  ] Option\n\r", ch );
+                send_to_char( "<14>[<0> <15>Keyword<0>  <14>]<0> <15>Option<0>\n\r-------------------\n\r", ch );
 
                 send_to_char(  IS_SET( ch->act, PLR_AUTOWIELD )
-                             ? "[+AUTOWIELD] You automatically wield picked up weapons in combat.\n\r"
-                             : "[-autowield] You don't automatically wield picked up weapons in combat.\n\r"
+                             ? "<6>[<40>+<0><556>AUTOWIELD<0><6>]<0> You automatically wield picked up weapons in combat.\n\r"
+                             : "<6>[<196>-<0><246>autowield<0><6>]<0> You don't automatically wield picked up weapons in combat.\n\r"
                              , ch );
 
                 send_to_char(  IS_SET( ch->act, PLR_AUTOEXIT  )
-                             ? "[+AUTOEXIT ] You automatically see exits.\n\r"
-                             : "[-autoexit ] You don't automatically see exits.\n\r"
+                             ? "<6>[<40>+<0><556>AUTOEXIT<0> <6>]<0> You automatically see exits.\n\r"
+                             : "<6>[<196>-<0><246>autoexit<0> <6>]<0> You don't automatically see exits.\n\r"
                              , ch );
 
                 send_to_char(  IS_SET( ch->act, PLR_AUTOLOOT  )
-                             ? "[+AUTOLOOT ] You automatically loot corpses.\n\r"
-                             : "[-autoloot ] You don't automatically loot corpses.\n\r"
+                             ? "<6>[<40>+<0><556>AUTOLOOT<0> <6>]<0> You automatically loot corpses.\n\r"
+                             : "<6>[<196>-<0><246>autoloot<0> <6>]<0> You don't automatically loot corpses.\n\r"
                              , ch );
 
                 send_to_char(  IS_SET( ch->act, PLR_AUTOCOIN  )
-                             ? "[+AUTOCOIN ] You automatically take coin from corpses.\n\r"
-                             : "[-autocoin ] You don't automatically take coin from corpses.\n\r"
+                             ? "<6>[<40>+<0><556>AUTOCOIN<0> <6>]<0> You automatically take coin from corpses.\n\r"
+                             : "<6>[<196>-<0><246>autocoin<0> <6>]<0> You don't automatically take coin from corpses.\n\r"
                              , ch );
 
                 send_to_char(  IS_SET( ch->act, PLR_AUTOSAC   )
-                             ? "[+AUTOSAC  ] You automatically sacrifice corpses.\n\r"
-                             : "[-autosac  ] You don't automatically sacrifice corpses.\n\r"
+                             ? "<6>[<40>+<0><556>AUTOSAC<0>  <6>]<0> You automatically sacrifice corpses.\n\r"
+                             : "<6>[<196>-<0><246>autosac<0>  <6>]<0> You don't automatically sacrifice corpses.\n\r"
                              , ch );
 
                 send_to_char(  IS_SET( ch->act, PLR_AUTOLEVEL  )
-                             ? "[+AUTOLEVEL] You automatically level if you have enough experience.\n\r"
-                             : "[-autolevel] You don't automatically level if you have enough experience.\n\r"
+                             ? "<6>[<40>+<0><556>AUTOLEVEL<0><6>]<0> You automatically level if you have enough experience.\n\r"
+                             : "<6>[<196>-<0><246>autolevel<0><6>]<0> You don't automatically level if you have enough experience.\n\r"
                              , ch );
 
                 send_to_char(  IS_SET( ch->act, PLR_BLANK     )
-                             ? "[+BLANK    ] You have a blank line before your prompt.\n\r"
-                             : "[-blank    ] You have no blank line before your prompt.\n\r"
+                             ? "<6>[<40>+<0><556>BLANK<0>    <6>]<0> You have a blank line before your prompt.\n\r"
+                             : "<6>[<196>-<0><246>blank<0>    <6>]<0> You have no blank line before your prompt.\n\r"
                              , ch );
 
                 send_to_char(  IS_SET( ch->act, PLR_BRIEF     )
-                             ? "[+BRIEF    ] You see brief descriptions.\n\r"
-                             : "[-brief    ] You see long descriptions.\n\r"
+                             ? "<6>[<40>+<0><556>BRIEF<0>    <6>]<0> You see brief descriptions.\n\r"
+                             : "<6>[<196>-<0><246>brief<0>    <6>]<0> You see long descriptions.\n\r"
                              , ch );
 
                 send_to_char(  IS_SET( ch->act, PLR_COMBINE   )
-                             ? "[+COMBINE  ] You see object lists in combined format.\n\r"
-                             : "[-combine  ] You see object lists in single format.\n\r"
+                             ? "<6>[<40>+<0><556>COMBINE<0>  <6>]<0> You see object lists in combined format.\n\r"
+                             : "<6>[<196>-<0><246>combine<0>  <6>]<0> You see object lists in single format.\n\r"
                              , ch );
 
                 send_to_char(  IS_SET( ch->act, PLR_PROMPT    )
-                             ? "[+PROMPT   ] You have a prompt.\n\r"
-                             : "[-prompt   ] You don't have a prompt.\n\r"
+                             ? "<6>[<40>+<0><556>PROMPT<0>   <6>]<0> You have a prompt.\n\r"
+                             : "<6>[<196>-<0><246>prompt<0>   <6>]<0> You don't have a prompt.\n\r"
                              , ch );
 
                 send_to_char(  IS_SET( ch->act, PLR_ANSI     )
-                             ? "[+ANSI     ] You have color.\n\r"
-                             : "[-ANSI     ] You don't have color.\n\r"
+                             ? "<6>[<40>+<0><556>ANSI<0>     <6>]<0> You have color.\n\r"
+                             : "<6>[<196>-<0><246>ANSI<0>     <6>]<0> You don't have color.\n\r"
                              , ch );
 
                 send_to_char( (ch->gag != 0)
                              ? ( (ch->gag == 1)
-                                ? "[+GAG light] You are gagging some combat messages.\n\r"
-                                : "[+GAG heavy] You are gagging many combat messages.\n\r")
-                             : "[-gag      ] You receive all combat messages.\n\r"
+                                ? "<6>[<40>+<0><556>GAG light<0><6>]<0> You are gagging some combat messages.\n\r"
+                                : "<6>[<40>+<0><556>GAG heavy<0><6>]<0> You are gagging many combat messages.\n\r")
+                             : "<6>[<196>-<0><246>gag<0>      <6>]<0> You receive all combat messages.\n\r"
                              , ch );
 
                 send_to_char( (ch->silent_mode)
-                             ? "[+QUIET    ] You're in quiet mode.\n\r"
-                             : "[-quiet    ] Quiet mode is off.\n\r"
+                             ? "<6>[<40>+<0><556>QUIET<0>    <6>]<0> You're in quiet mode.\n\r"
+                             : "<6>[<196>-<0><246>quiet<0>    <6>]<0> Quiet mode is off.\n\r"
                              , ch );
 
                 send_to_char( (ch->pcdata->allow_look)
-                             ? "[+ALLOWEQ  ] Players see your description and equipment.\n\r"
-                             : "[-alloweq  ] Players see your description only.\n\r"
+                             ? "<6>[<40>+<0><556>ALLOWEQ<0>  <6>]<0> Players see your description and equipment.\n\r"
+                             : "<6>[<196>-<0><246>alloweq<0>  <6>]<0> Players see your description only.\n\r"
                              , ch );
 
                 send_to_char(  IS_SET( ch->act, PLR_TELNET_GA )
-                             ? "[+TELNETGA ] You receive a telnet GA sequence.\n\r"
-                             : "[-telnetga ] You don't receive a telnet GA sequence.\n\r"
+                             ? "<6>[<40>+<0><556>TELNETGA<0> <6>]<0> You receive a telnet GA sequence.\n\r"
+                             : "<6>[<196>-<0><246>telnetga<0> <6>]<0> You don't receive a telnet GA sequence.\n\r"
                              , ch );
 
                 send_to_char(  IS_SET( ch->act, PLR_SILENCE   )
-                             ? "[+SILENCE  ] You are silenced.\n\r"
+                             ? "<6>[<40>+<0><556>SILENCE<0>  <6>]<0> You are silenced.\n\r"
                              : ""
                              , ch );
 
                 send_to_char( !IS_SET( ch->act, PLR_NO_EMOTE  )
                              ? ""
-                             : "[-emote    ] You can't emote.\n\r"
+                             : "<6>[<196>-<0><246>emote<0>    <6>]<0> You can't emote.\n\r"
                              , ch );
 
                 send_to_char( !IS_SET( ch->act, PLR_NO_TELL   )
-                             ? "[+TELL     ] You receive tells.\n\r"
-                             : "[-tell     ] You don't hear tells.\n\r"
+                             ? "<6>[<40>+<0><556>TELL<0>     <6>]<0> You receive tells.\n\r"
+                             : "<6>[<196>-<0><246>tell<0>     <6>]<0> You don't hear tells.\n\r"
                              , ch );
         }
         else
