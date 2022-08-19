@@ -31,6 +31,7 @@
 #include "merc.h"
 
 
+
 /*
  * Local functions.
  */

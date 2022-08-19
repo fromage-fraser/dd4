@@ -14,13 +14,15 @@
  *  In particular, you may not remove either of these copyright notices.   *
  *                                                                         *
  *  Much time and thought has gone into this software and you are          *
- *  benefitting.  We hope that you share your changes too.  What goes      *
- *  around, comes around.                                                  *
+ *  benefitting.  We hope that you share your changes too. What goes       *
+ *  around, comes around..                                                 *
  ***************************************************************************/
 #pragma once
-#include <math.h>
+/* #include <math.h> */
 #include <stdint.h>
 #include <unistd.h>
+#include <zlib.h>
+#include <stdio.h>
 #define _XOPEN_SOURCE
 
 /*
@@ -41,6 +43,47 @@
 #define DECLARE_GAME_FUN( fun )		GAME_FUN        fun
 #define DECLARE_CONSTRUCT_FUN( fun )    CONSTRUCT_FUN   fun
 #endif
+
+#define BV00		(0   <<  0)
+#define BV01		(1   <<  0)
+#define BV02		(1   <<  1)
+#define BV03		(1   <<  2)
+#define BV04		(1   <<  3)
+#define BV05		(1   <<  4)
+#define BV06		(1   <<  5)
+#define BV07		(1   <<  6)
+#define BV08		(1   <<  7)
+#define BV09		(1   <<  8)
+#define BV10		(1   <<  9)
+#define BV11		(1   << 10)
+#define BV12		(1   << 11)
+#define BV13		(1   << 12)
+#define BV14		(1   << 13)
+#define BV15		(1   << 14)
+#define BV16		(1   << 15)
+#define BV17		(1   << 16)
+#define BV18		(1   << 17)
+#define BV19		(1   << 18)
+#define BV20		(1   << 19)
+#define BV21		(1   << 20)
+#define BV22		(1   << 21)
+#define BV23		(1   << 22)
+#define BV24		(1   << 23)
+#define BV25		(1   << 24)
+#define BV26		(1   << 25)
+#define BV27		(1   << 26)
+#define BV28		(1   << 27)
+#define BV29		(1   << 28)
+#define BV30		(1   << 29)
+#define BV31		(1   << 30)
+#define BV32		(1LL << 31)
+#define BV33		(1LL << 32)
+#define BV34		(1LL << 33)
+#define BV35		(1LL << 34)
+#define BV36		(1LL << 35)
+#define BV37		(1LL << 36)
+#define BV38		(1LL << 37)
+#define BV39		(1LL << 38)
 
 /* System calls - for delete ( from ROM ) */
 int     unlink();
@@ -142,6 +185,7 @@ typedef short int sh_int;
 /*
  * Structure types.
  */
+typedef struct mud_data                         MUD_DATA;
 typedef struct affect_data                      AFFECT_DATA;
 typedef struct area_data                        AREA_DATA;
 typedef struct ban_data                         BAN_DATA;
@@ -170,6 +214,8 @@ typedef struct auction_data                     AUCTION_DATA;
 typedef struct game_data		        GAME_DATA;
 typedef struct coin_data                        COIN_DATA;
 typedef struct smelting_data                    SMELTING_DATA;
+typedef struct math_data                        MATH_DATA;
+typedef struct mth_data                         MTH_DATA;
 /* typedef struct raw_mats_data                    RAW_MATERIAL_DATA; */
 
 /*
@@ -282,6 +328,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define MAX_KEY_HASH              1024    /* 1024 */
 #define MAX_STRING_LENGTH        32768    /* 8192  */
 #define MAX_INPUT_LENGTH          1024    /* 256 */
+#define COMPRESS_BUF_SIZE                 60000  /* GMCP*/
 
 
 /*
@@ -655,6 +702,109 @@ struct ban_data
         char *          name;
 };
 
+/* mud data - for mud protocol */
+struct mud_data
+{
+/*	DESCRIPTOR_DATA     * f_desc;
+	DESCRIPTOR_DATA     * l_desc;
+	PLAYER_GAME         * f_player;
+	PLAYER_GAME         * l_player;
+	AREA_DATA           * f_area;
+	AREA_DATA           * l_area;
+	CHAR_DATA           * f_char;
+	CHAR_DATA           * l_char;
+	SHOP_DATA           * f_shop;
+	SHOP_DATA           * l_shop;
+	OBJ_DATA            * f_obj;
+	OBJ_DATA            * l_obj;
+	CLAN_DATA           * f_clan;
+	CLAN_DATA           * l_clan;
+	JUNK_DATA           * f_junk;
+	JUNK_DATA           * l_junk;
+	ROOM_TIMER_DATA     * f_room_timer;
+	ROOM_TIMER_DATA     * l_room_timer;
+	FIGHT_DATA          * f_fight;
+	FIGHT_DATA          * l_fight;
+	PET_DATA            * f_pet;
+	PET_DATA            * l_pet;
+	NOTE_DATA           * f_note;
+	NOTE_DATA           * l_note;
+	BOUNTY_DATA         * f_bounty;
+	BOUNTY_DATA         * l_bounty;
+	BAN_DATA            * f_ban;
+	BAN_DATA            * l_ban;
+	BAN_DATA            * f_nban;
+	BAN_DATA            * l_nban;
+	TRIVIA_DATA         * f_trivia;
+	TRIVIA_DATA         * l_trivia;
+	FILE_DATA           * f_open_file;
+	FILE_DATA           * l_open_file;
+	MATH_DATA           * f_math;
+	MATH_DATA           * l_math;
+	DESCRIPTOR_DATA     * update_gld;
+	CHAR_DATA           * update_wch;
+	CHAR_DATA           * update_ich;
+	CHAR_DATA           * update_rch;
+	OBJ_DATA            * update_obj;
+	CHAR_DATA           * mp_group_greeter;
+	CHAR_DATA           * mp_group_greeted;
+	HISCORE_LIST        * high_scores[MOST_MOST];
+	TIME_INFO_DATA      * time_info;
+	USAGE_DATA          * usage;
+	TACTICAL_MAP        * tactical;
+	struct tm             time;
+	time_t                current_time;
+	long long             total_io_bytes;
+	long long             total_io_ticks;
+	long long             total_io_delay;
+	long long             total_io_exec;
+	int                   bitvector_ref[26];
+	int                   command_ref[26];
+	int                   social_ref[26];
+	time_t                boot_time;
+	int                   port;
+	int                   control;
+	int                   flags;
+	int                   msdp_table_size;
+	int                   mudprog_nest;
+	int                   total_mob;
+	int                   total_obj;
+	int                   total_plr;
+	int                   total_desc;
+	int                   top_exit;
+	int                   top_affect;
+	int                   top_area;
+	int                   top_ed;
+	int                   top_help;
+	int                   top_mob_index;
+	int                   top_obj_index;
+	int                   top_room;
+	int                   top_reset;
+	int                   top_shop;
+	int                   top_mprog;
+	int                   top_oprog;
+	int                   top_mtrig;
+	bool                  sunlight;
+	char                * last_player_cmd;
+*/
+	unsigned char       * mccp_buf;
+	int                   mccp_len;
+        int                   top_help;
+	int                   top_mob_index;
+	int                   top_obj_index;
+	int                   top_room;
+	int                   top_reset;
+        time_t                boot_time;
+        int                   total_plr;
+	int                   top_area;
+	int                   msdp_table_size;
+        time_t                current_time;
+	int                   port;     
+	MATH_DATA           * f_math;
+	MATH_DATA           * l_math;     
+};
+
+
 
 /*
  * Time and weather
@@ -745,6 +895,7 @@ struct descriptor_data
 {
         DESCRIPTOR_DATA *     next;
         DESCRIPTOR_DATA *     snoop_by;
+        MTH_DATA          *   mth;
         CHAR_DATA *           character;
         CHAR_DATA *           original;
         char *                host;
@@ -857,6 +1008,15 @@ struct shop_data
         int             close_hour;                     /* First closing hour */
 };
 
+/* GMCP */
+struct math_data
+{
+	MATH_DATA			* next;
+	MATH_DATA			* prev;
+	char				* str1;
+	char				* str2;
+	char				* str3;
+};
 
 /*
  * Game stuff
@@ -1083,6 +1243,22 @@ struct affect_data
         unsigned long int       bitvector;
         bool                    deleted;
 };
+
+struct mth_data
+{
+	struct msdp_data ** msdp_data;
+	char              * proxy;
+	char              * terminal_type;
+	char                telbuf[MAX_INPUT_LENGTH];
+	int                 teltop;
+	long long           mtts;
+	int                 comm_flags;
+	short               cols;
+	short               rows;
+	z_stream          * mccp2;
+	z_stream          * mccp3;
+};
+
 
 /* Set items struct */
 struct objset_data
@@ -2918,6 +3094,35 @@ struct skill_type
         char *          msg_off;                        /* Wear off message */
 };
 
+/* added GCMP */
+extern char *telcmds[];
+
+struct telnet_type
+{
+	char      *name;
+	int       flags;
+};
+
+extern struct telnet_type telnet_table[];
+
+typedef void MSDP_FUN (struct descriptor_data *d, int index);
+
+struct msdp_type
+{
+	char     *name;
+	int       flags;
+	MSDP_FUN *fun;
+};
+
+struct msdp_data
+{
+	char     *value;
+	int      flags;
+};
+
+extern struct msdp_type msdp_table[];
+
+/***end add*/
 
 /* class basic gsn's */
 extern int gsn_mage_base;
@@ -3695,10 +3900,12 @@ extern struct           form_skill_struct       form_skill_table                
 extern struct           vampire_gag             vampire_gag_table               [ MAX_VAMPIRE_GAG ];
 
 
+#include "mth.h"
 
 /*
  * Global variables.
  */
+extern MUD_DATA			* mud;
 extern HELP_DATA                * help_first;
 extern SHOP_DATA                * shop_first;
 extern GAME_DATA	        * game_first;
@@ -4453,6 +4660,14 @@ int  colour_8bit                        args( ( int icode, CHAR_DATA *ch, char *
 void strip_colour_8bit                  args( ( int icode, CHAR_DATA *ch, char *string ) );
 int  digits_in_int                            ( int number );
 void reverse_char_array                       ( char arr[], int n );
+/* GMCP */
+void        ch_printf              args((CHAR_DATA *ch, const char *fmt, ...));
+void        log_build_printf       args((int vnum, char *fmt, ...));
+void        log_printf             args((char *fmt, ...));
+void        push_call(char *f, ...);
+void        pop_call(void);
+void        dump_stack(void);
+/* end GMCP */
 
 /* db.c */
 void    boot_db                         args( ( void ) );
@@ -4645,6 +4860,18 @@ bool saves_spell                        args( ( int level, CHAR_DATA *victim ) )
 void obj_cast_spell                     args( ( int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *obj ) );
 bool mob_interacts_players                    ( CHAR_DATA *mob );
 
+/*
+	math.c - GMCP
+*/
+
+long long mathexp(CHAR_DATA *ch, const char *str);
+long long mathexp_tokenize(CHAR_DATA *ch, const char *str);
+void      mathexp_level(CHAR_DATA *ch, MATH_DATA *node);
+void      mathexp_compute(CHAR_DATA *ch, MATH_DATA *node);
+long long tintoi(const char *str);
+long long tincmp(const char *left, const char *right);
+long long tindice(const char *left, const char *right);
+
 /* mob_commands.c */
 char*   mprog_type_to_name              args( ( int type ) );
 
@@ -4751,12 +4978,88 @@ bool is_cursed                               ( CHAR_DATA *ch );
 /* quest.c */
 bool mob_is_quest_target                     ( CHAR_DATA *ch );
 
+/*
+	str_hash.c
+*/
+char *str_alloc( char *str );
+char *str_dupe( char *str );
+void str_free( char *str );
+
 /* twister.c */
 #ifndef __MTWISTER_H
 #define __MTWISTER_H
 
 #define STATE_VECTOR_LENGTH 624
 #define STATE_VECTOR_M      397 /* changes to STATE_VECTOR_LENGTH also require changes to this */
+
+/* GMCP */
+#define LINK(link, first, last, next, prev) \
+{ \
+	if (!(first)) \
+	{ \
+		(first)				= (link); \
+	} \
+	else \
+	{ \
+		(last)->next			= (link); \
+	} \
+	(link)->next				= NULL; \
+	(link)->prev				= (last); \
+	(last)					= (link); \
+}
+
+#define ALLOCMEM(result, type, number) \
+{ \
+	result = calloc(1, sizeof(type) * (number)); \
+}
+
+#define FREEMEM(point) \
+{ \
+	if (point == NULL) \
+	{ \
+		log_printf("FREEMEM: Freeing NULL pointer in file %s on line %d", __FILE__, __LINE__); \
+	} \
+	free(point); \
+	point = NULL; \
+}
+
+#define STRALLOC(point)			str_alloc((point))
+
+#define STRFREE(point) \
+{ \
+	str_free((point)); \
+	point = NULL; \
+}
+
+#define UNLINK(link, first, last, next, prev) \
+{ \
+	if (!(link)->prev) \
+	{ \
+		(first)				= (link)->next; \
+	} \
+	else \
+	{ \
+		(link)->prev->next		= (link)->next; \
+	} \
+	if (!(link)->next) \
+	{ \
+		(last)				= (link)->prev; \
+	} \
+	else \
+	{ \
+		(link)->next->prev		= (link)->prev; \
+	} \
+	(link)->next = NULL; \
+	(link)->prev = NULL; \
+}
+
+#define RESTRING(point, value) \
+{ \
+	STRFREE(point); \
+	point = str_alloc((value)); \
+}
+
+/* end GMSP */
 
 typedef struct tagMTRand {
   unsigned long mt[STATE_VECTOR_LENGTH];

@@ -91,6 +91,13 @@ const   char    echo_off_str    [] = { IAC, WILL, TELOPT_ECHO, '\0' };
 const   char    echo_on_str     [] = { IAC, WONT, TELOPT_ECHO, '\0' };
 const   char    go_ahead_str    [] = { IAC, GA, '\0' };
 
+/* GCMP */
+#define MAX_STACK_CALL		200
+#define MAX_STACK_CALL_LEN	200
+
+char	call_stack[MAX_STACK_CALL][MAX_STACK_CALL_LEN];
+int	call_index;
+/* end GCMP */
 
 #define     WNOHANG         1       /* Don't block waiting.  */
 
@@ -182,6 +189,10 @@ int main(int argc, char **argv)
         malloc_debug(2);
 #endif
 
+        ALLOCMEM(mud,				MUD_DATA,			1);
+
+	init_mth();
+
         /*
          * Init time.
          */
@@ -189,6 +200,9 @@ int main(int argc, char **argv)
         current_time = (time_t) now_time.tv_sec;
         boot_time = current_time;
         strcpy(str_boot_time, ctime(&boot_time));
+        mud->current_time = now_time.tv_sec;
+	mud->boot_time	   = now_time.tv_sec;
+	mud->port         = 8888;
 
         /*
          * Reserve one channel for our use.
@@ -4524,5 +4538,94 @@ int digits_in_int (int number )
         return count;
 }
 
+/* GCMP */
+void ch_printf(CHAR_DATA *ch, const char *fmt, ...)
+{
+	char buf[MAX_STRING_LENGTH];
+	va_list args;
+
+	va_start(args, fmt);
+	vsprintf(buf, fmt, args);
+	va_end(args);
+
+	send_to_char(buf, ch);
+}
+
+
+void log_printf (char * fmt, ...)
+{
+	char buf [MAX_STRING_LENGTH];
+	va_list args;
+
+	va_start (args, fmt);
+	vsprintf (buf, fmt, args);
+	va_end (args);
+
+	log_string (buf);
+}
+
+void log_build_printf (int vnum, char * fmt, ...)
+{
+	char buf [MAX_STRING_LENGTH];
+	va_list args;
+
+	va_start (args, fmt);
+	vsprintf (buf, fmt, args);
+	va_end (args);
+
+	/* log_build_string (vnum, buf); removed Brutus */
+}
+
+void pop_call(void)
+{
+	if (call_index != 0)
+	{
+		call_index--;
+	}
+	else
+	{
+		log_printf("pop_call: index is zero: %s", call_stack[0]);
+	}
+}
+
+
+
+
+void push_call(char *f, ...)
+{
+	va_list ap;
+
+	va_start(ap, f);
+
+	if (call_index >= MAX_STACK_CALL)
+	{
+		call_index = MAX_STACK_CALL / 2;
+		log_printf("push_call: max stack size reached");
+		dump_stack();
+		call_index = 0;
+	}
+
+/*	strcpy(call_stack[call_index], f); */
+
+	vsprintf(call_stack[call_index], f, ap);
+
+	call_index++;
+}
+
+void dump_stack(void)
+{
+	int i;
+
+	log_printf("Stack trace (index = %d)", call_index);
+
+	for (i = 0 ; i < call_index ; i++)
+	{
+		log_printf("call_stack[%03d] = %s", i, call_stack[i]);
+	}
+	log_printf("End of stack");
+}
+
+
+/* end GCMP */
 
 /* EOF comm.c */
