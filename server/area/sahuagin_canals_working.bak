@@ -416,6 +416,7 @@ a water drake~
 ~
 Draconic in form and about 12�feet (3.7�meters) long. It has silvery-blue 
 scales that are more fish-like than reptilian.
+
 ~
 64 8|32|512 -100 S
 45 0 0 0d0+0 0d0+0
@@ -428,6 +429,7 @@ a water drake~
 ~
 Draconic in form and about 12�feet (3.7�meters) long. It has silvery-blue 
 scales that are more fish-like than reptilian.
+
 ~
 64 8|32|512 -85 S
 45 0 0 0d0+0 0d0+0
@@ -441,6 +443,7 @@ a kappa~
 The creature is of small-humanoid size and has a stooped stance; his main 
 distinguishing feature is a hard shell that covers his back. His head is flat 
 and pudgy, and his webbed hands end in sharp claws.
+
 ~
 64 512 -210 S
 47 0 0 0d0+0 0d0+0
@@ -454,6 +457,7 @@ a kappa~
 The creature is of small-humanoid size and has a stooped stance; her main 
 distinguishing feature is a hard shell that covers her back. Her head is flat 
 and pudgy, and her webbed hands end in sharp claws.
+
 ~
 64 512 -235 S
 47 0 0 0d0+0 0d0+0
@@ -468,6 +472,7 @@ This gigantic squid is over 12 metres long and quite capable of defending
 itself against most predators with its enormous tentacles and large beak.  
 It doesn't look interested in you, and you'd imagine its focused more on 
 evading the larger toothed-whale predators it has down here.
+
 ~
 4|64 32|512 0 S
 50 0 0 0d0+0 0d0+0
@@ -732,6 +737,7 @@ A
 sharp beak~
 a sharp beak~
 The sharp beak of some aquatic creature is here.~
+
 ~
 5 67108864 1|8192
 0~ 0~ 0~ 10~
@@ -4567,6 +4573,7 @@ S
 #27810
 A Mud-filled Underwater Tunnel~
 You are standing in room #27810.
+
 ~
 0 1|4|8|2048 8
 D1
@@ -4581,6 +4588,7 @@ S
 #27811
 A Mud-filled Underwater Tunnel~
 You are standing in room #27811.
+
 ~
 0 1|4|8|512 8
 D0
@@ -4595,6 +4603,7 @@ S
 #27812
 An Underwater Cavern~
 You are standing in room #27812.
+
 ~
 0 8 8
 D2
@@ -4859,6 +4868,7 @@ M  27293 spec_cast_undead			a sea zombie
 M  27294 spec_cast_undead			a Zin
 M  27298 spec_kappa			        a kappa (male)
 M  27306 spec_aboleth	      		an aboleth
+
 S
 
 

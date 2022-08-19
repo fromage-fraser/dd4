@@ -4857,7 +4857,7 @@ M  27277 spec_small_whale			a spectacled porpoise
 M  27278 spec_large_whale			a fin whale
 M  27279 spec_large_whale			a fin whale
 M  27280 spec_large_whale			a sperm whale
-M  27281 spec_large_whale			a sperm whale
+M  27281 spec_large_whale			    a sperm whale
 M  27282 spec_cast_water_sprite		a female nixie
 M  27284 spec_warrior 				a froghemoth
 M  27285 spec_large_whale			a bowhead whale
@@ -4866,8 +4866,9 @@ M  27287 spec_large_whale			a humpback whale
 M  27292 spec_cast_undead			a sea zombie
 M  27293 spec_cast_undead			a sea zombie
 M  27294 spec_cast_undead			a Zin
-M  27298 spec_kappa			        a kappa (male)
-M  27306 spec_aboleth	      		an aboleth
+M  27298 spec_kappa			      a kappa (male)
+M  27306 spec_aboleth	        an aboleth
+
 S
 
 
