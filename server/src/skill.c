@@ -1568,10 +1568,12 @@ void do_suck (CHAR_DATA *ch, char *argument)
         CHAR_DATA *victim;
         char       arg [ MAX_INPUT_LENGTH ];
 
-        if (IS_NPC(ch))
+        if (IS_NPC(ch)
+        && !( ch->spec_fun == spec_lookup("spec_laghathti") ))
                 return;
 
-        if (!CAN_DO(ch, gsn_suck))
+        if ( !IS_NPC(ch)
+        &&   !CAN_DO(ch, gsn_suck) )
         {
                 send_to_char("Huh?\n\r", ch);
                 return;
@@ -4022,7 +4024,7 @@ void do_serrate (CHAR_DATA *ch, char *argument)
         char arg [ MAX_INPUT_LENGTH ];
         AFFECT_DATA *paf;
         bool found;
-    
+
         if ( IS_NPC( ch ) )
                 return;
 
@@ -4063,7 +4065,7 @@ void do_serrate (CHAR_DATA *ch, char *argument)
                 send_to_char("That is already serrated.\n\r", ch);
                 return;
         }
-        
+
         if (IS_OBJ_STAT(obj, ITEM_POISONED))
         {
                 send_to_char("That weapon is poisoned and cannot be serrated!\n\r", ch);

@@ -2493,6 +2493,7 @@ void load_specials( FILE *fp )
                         if ( pMobIndex->spec_fun == spec_lookup("spec_small_whale")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_large_whale")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_kappa")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_laghathti")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_warrior") )
                                 bonus = 10;
 

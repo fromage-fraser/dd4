@@ -4839,10 +4839,12 @@ void do_transfix (CHAR_DATA *ch, char *argument)
         char            arg[MAX_INPUT_LENGTH];
         int             chance;
 
-        if (IS_NPC(ch))
+        if ( IS_NPC(ch)
+        && !( ch->spec_fun == spec_lookup("spec_laghathti") ) )
                 return;
 
-        if (!CAN_DO(ch, gsn_transfix))
+        if ( !IS_NPC(ch)
+        &&   !CAN_DO(ch, gsn_transfix))
         {
                 send_to_char("Huh?\n\r", ch);
                 return;
@@ -5664,7 +5666,8 @@ void do_grapple (CHAR_DATA *ch, char *argument)
         int chance;
 
         if (IS_NPC(ch)
-        && !( ch->spec_fun == spec_lookup("spec_kappa") ) )
+        && !( ch->spec_fun == spec_lookup("spec_kappa") )
+        && !( ch->spec_fun == spec_lookup("spec_laghathti") ) )
                 return;
 
         one_argument(argument,arg);

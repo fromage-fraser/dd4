@@ -495,7 +495,8 @@ void do_coil (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (ch->form != FORM_SNAKE)
+        if ( ch->form != FORM_SNAKE
+        && !( ch->spec_fun == spec_lookup("spec_laghathti") ) )
         {
                 send_to_char("You are not in the correct form.\n\r", ch);
                 return;
@@ -570,16 +571,19 @@ void do_constrict (CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
 
-        if ( IS_NPC( ch ) )
+        if ( IS_NPC( ch )
+        && !( ch->spec_fun == spec_lookup("spec_laghathti") ) )
                 return;
 
-        if (!CAN_DO(ch, gsn_constrict))
+        if ( !IS_NPC( ch)
+        && !CAN_DO(ch, gsn_constrict))
         {
                 send_to_char("Huh?\n\r", ch);
                 return;
         }
 
-        if (ch->form != FORM_SNAKE)
+        if (ch->form != FORM_SNAKE
+        && !( ch->spec_fun == spec_lookup("spec_laghathti") ) )
         {
                 send_to_char("You are not in the correct form.\n\r", ch);
                 return;
@@ -610,18 +614,21 @@ void do_strangle (CHAR_DATA *ch, char *argument)
         CHAR_DATA *victim;
         int base_damage;
 
-        if (IS_NPC(ch))
+        if ( IS_NPC( ch )
+        && !( ch->spec_fun == spec_lookup("spec_laghathti") ) )
                 return;
 
-        if (!CAN_DO(ch, gsn_strangle))
+        if ( !IS_NPC( ch)
+        && !CAN_DO(ch, gsn_constrict))
         {
                 send_to_char("Huh?\n\r", ch);
                 return;
         }
 
-        if (ch->form != FORM_SNAKE)
+        if (ch->form != FORM_SNAKE
+        && !( ch->spec_fun == spec_lookup("spec_laghathti") ) )
         {
-                send_to_char("You are not in the correct form.\n\r",ch);
+                send_to_char("You are not in the correct form.\n\r", ch);
                 return;
         }
 
