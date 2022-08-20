@@ -1866,7 +1866,7 @@ void do_time( CHAR_DATA *ch, char *argument )
         sprintf( buf, "The moon is currently %s.\n\r", moon );
         send_to_char( buf, ch );
 
-        sprintf( buf, "DD4 was started at %s\rThe system time is %s\r",
+        sprintf( buf, "DD was started at %s\rThe system time is %s\r",
                 str_boot_time,
                 (char *) ctime( &current_time ) );
         send_to_char( buf, ch );

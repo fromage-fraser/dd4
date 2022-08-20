@@ -4363,7 +4363,7 @@ char * crypt args( ( const char *key, const char *salt ) );
 
 /*
  * Our function prototypes.
- * One big lump ... this is every function in DD4.
+ * One big lump ... this is every function in DD.
  */
 #define CD      CHAR_DATA
 #define MID     MOB_INDEX_DATA
