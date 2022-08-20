@@ -179,7 +179,10 @@ int     main                    args((int argc, char **argv));
 bool		nanny			args((DESCRIPTOR_DATA *d, char *argument));
 bool    process_output          args((DESCRIPTOR_DATA *d, bool fPrompt));
 void    read_from_buffer        args((DESCRIPTOR_DATA *d));
+/*
 void    stop_idling             args((CHAR_DATA *ch));
+*/
+void		stop_idling		args((DESCRIPTOR_DATA *d));
 void    bust_a_prompt           args((DESCRIPTOR_DATA *d));
 void    assert_directory_exists args((const char *path));
 
@@ -199,9 +202,9 @@ int main(int argc, char **argv)
 #endif
 
         ALLOCMEM(mud,				MUD_DATA,			1);
-   /*     ALLOCMEM(mud->usage,			USAGE_DATA,		1);
+        ALLOCMEM(mud->usage,			USAGE_DATA,		1);
 	ALLOCMEM(mud->time_info,		TIME_INFO_DATA,	1);
-	ALLOCMEM(mud->tactical,		TACTICAL_MAP,		1);
+/*	ALLOCMEM(mud->tactical,		TACTICAL_MAP,		1);
 	ALLOCMEM(mud->last_player_cmd,	unsigned char, 	MAX_INPUT_LENGTH)
 */
 	init_mth();
@@ -254,12 +257,12 @@ int main(int argc, char **argv)
         /*
          * Run the game.
          */
-      /*  mudport = port;
-        control = init_socket(port);
+      /*  mudport = port; */
+     /*   control = init_socket(mud->port); */
         boot_db();
         sprintf(log_buf, "DD4 is ready to rock on port %d.", port);
         log_string(log_buf);
-        game_loop_unix(control, wizPort);
+       /* game_loop_unix(control, wizPort);
         close(control);
         */
 
@@ -284,7 +287,128 @@ int main(int argc, char **argv)
         return 0;
 }
 
+int init_socket(void)
+{
+	static struct sockaddr_in sa_zero;
+	struct sockaddr_in sa;
+	int x=1;
+	int fd;
 
+	push_call("init_socket(void)");
+
+	if ((fd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
+	{
+		perror("init_socket: socket");
+		abort();
+	}
+
+	if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, (char *) &x, sizeof(x)) < 0)
+	{
+		perror("init_socket: SO_REUSEADDR");
+		close(fd);
+		abort();
+	}
+
+	{
+		struct linger ld;
+
+		ld.l_onoff  = 0;
+		ld.l_linger = 100;
+
+		if (setsockopt(fd, SOL_SOCKET, SO_LINGER, (char *) &ld, sizeof(ld)) < 0)
+		{
+			perror("init_socket: SO_LINGER");
+			close(fd);
+			abort();
+		}
+	}
+
+/*
+	{
+		int sockbuf;
+		unsigned int socksize;
+
+		socksize = sizeof(sockbuf);
+
+		if (getsockopt(fd, SOL_SOCKET, SO_RCVBUF, (char *) &sockbuf, &socksize) < 0)
+		{
+			perror("getsockopt: SO_RCVBUF");
+			close(fd);
+			abort();
+		}
+
+		log_printf("Initial SO_RCVBUF size:  %d", sockbuf);
+
+
+		if (getsockopt(fd, SOL_SOCKET, SO_SNDBUF, (char *) &sockbuf, &socksize) < 0)
+		{
+			perror("getsockopt: SO_SNDBUF");
+			close(fd);
+			abort();
+		}
+
+		log_printf("Initial SO_SNDBUF size: %d", sockbuf);
+
+		sockbuf = MAX_INPUT_LENGTH;
+
+		if (setsockopt(fd, SOL_SOCKET, SO_RCVBUF, (char *) &sockbuf, sizeof(socksize)) < 0)
+		{
+			perror("getsockopt: SO_RCVBUF");
+			close(fd);
+			abort();
+		}
+
+		if (getsockopt(fd, SOL_SOCKET, SO_RCVBUF, (char *) &sockbuf, &socksize) < 0)
+		{
+			perror("getsockopt: SO_RCVBUF");
+			close(fd);
+			abort();
+		}
+
+		log_printf("Modified SO_RCVBUF size: %d", sockbuf);
+
+
+		sockbuf = MAX_STRING_LENGTH;
+
+		if (setsockopt(fd, SOL_SOCKET, SO_SNDBUF, (char *) &sockbuf, sizeof(socksize)) < 0)
+		{
+			perror("getsockopt: SO_SNDBUF");
+			close(fd);
+			abort();
+		}
+
+		if (getsockopt(fd, SOL_SOCKET, SO_SNDBUF, (char *) &sockbuf, &socksize) < 0)
+		{
+			perror("getsockopt: SO_SNDBUF");
+			close(fd);
+			abort();
+		}
+
+		log_printf("Modified SO_SNDBUF size: %d", sockbuf);
+	}
+*/
+	sa			= sa_zero;
+	sa.sin_family	= AF_INET;
+	sa.sin_port	= htons(mud->port);
+
+	if (bind(fd, (struct sockaddr *) &sa, sizeof(sa)) < 0)
+	{
+		perror("init_socket: bind");
+		close(fd);
+		abort();
+	}
+
+	if (listen(fd, 20) < 0)
+	{
+		perror("init_socket: listen");
+		close(fd);
+		abort();
+	}
+	pop_call();
+	return fd;
+}
+
+/*
 int init_socket(int port)
 {
         static struct sockaddr_in sa_zero;
@@ -343,8 +467,7 @@ int init_socket(int port)
                 exit(1);
         }
 
-        /* system("rm SHUTDOWN.TXT"); */
-
+      
         {
                 char buf[128];
                 char *when;
@@ -361,6 +484,7 @@ int init_socket(int port)
         return fd;
 }
 
+*/
 
 /*
  * Here comes the ident driver code.
@@ -3521,7 +3645,34 @@ bool check_playing (DESCRIPTOR_DATA *d, char *name)
 }
 
 
+void stop_idling(DESCRIPTOR_DATA *d)
+{
+	push_call("stop_idling(%p)",d);
 
+	if (d->character == NULL || d->connected < CON_PLAYING)
+	{
+		pop_call();
+		return;
+	}
+
+        if ( !CH(d)->desc
+            || !CH(d)->was_in_room
+            ||  CH(d)->in_room != get_room_index(ROOM_VNUM_LIMBO))
+        {
+                		pop_call();
+                                return;
+        }
+	CH(d)->timer = 0;
+        char_from_room(CH(d));
+        char_to_room(CH(d), CH(d)->was_in_room);
+        CH(d)->was_in_room = NULL;
+        act("$n has returned from the void.", CH(d), NULL, NULL, TO_ROOM);
+
+	pop_call();
+	return;
+}
+
+/*
 void stop_idling(CHAR_DATA *ch)
 {
         if (!ch
@@ -3540,7 +3691,7 @@ void stop_idling(CHAR_DATA *ch)
         act("$n has returned from the void.", ch, NULL, NULL, TO_ROOM);
         return;
 }
-
+*/
 
 /*
  * Write to all in the room.

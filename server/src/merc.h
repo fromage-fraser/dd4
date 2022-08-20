@@ -832,7 +832,7 @@ struct mud_data
 	int                   top_room;
 	int                   top_reset;
         time_t                boot_time;
-     /*   struct tm              time; */
+     /*   struct tm              time;  */
         int                   total_plr;
 	int                   top_area;
 	int                   msdp_table_size;

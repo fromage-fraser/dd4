@@ -920,17 +920,17 @@ int process_do_mssp( DESCRIPTOR_DATA *d, unsigned char *src, int srclen )
 	descriptor_printf(d, "%c%s%c%d", MSSP_VAR, "PLAYERS",           MSSP_VAL, mud->total_plr);
 	descriptor_printf(d, "%c%s%c%d", MSSP_VAR, "UPTIME",            MSSP_VAL, mud->boot_time);
 	descriptor_printf(d, "%c%s%c%d", MSSP_VAR, "CRAWL DELAY",       MSSP_VAL, 11);
-	descriptor_printf(d, "%c%s%c%s", MSSP_VAR, "CODEBASE",          MSSP_VAL, "Lowlands 1.5");
+	descriptor_printf(d, "%c%s%c%s", MSSP_VAR, "CODEBASE",          MSSP_VAL, "Dragons Domain 5");
 	descriptor_printf(d, "%c%s%c%s", MSSP_VAR, "CONTACT",           MSSP_VAL, "");
-	descriptor_printf(d, "%c%s%c%s", MSSP_VAR, "CREATED",           MSSP_VAL, "2007");
-	descriptor_printf(d, "%c%s%c%s", MSSP_VAR, "HOSTNAME",          MSSP_VAL, "slackhalla.org");
+	descriptor_printf(d, "%c%s%c%s", MSSP_VAR, "CREATED",           MSSP_VAL, "1998");
+	descriptor_printf(d, "%c%s%c%s", MSSP_VAR, "HOSTNAME",          MSSP_VAL, "dd4.webredirect.org");
 	descriptor_printf(d, "%c%s%c%s", MSSP_VAR, "ICON",              MSSP_VAL, "");
-	descriptor_printf(d, "%c%s%c%s", MSSP_VAR, "IP",                MSSP_VAL, "217.19.28.128");
+	descriptor_printf(d, "%c%s%c%s", MSSP_VAR, "IP",                MSSP_VAL, "206.189.85.89");
 	descriptor_printf(d, "%c%s%c%s", MSSP_VAR, "LANGUAGE",          MSSP_VAL, "English");
-	descriptor_printf(d, "%c%s%c%s", MSSP_VAR, "LOCATION",          MSSP_VAL, "Netherlands");
+	descriptor_printf(d, "%c%s%c%s", MSSP_VAR, "LOCATION",          MSSP_VAL, "New Zealand");
 	descriptor_printf(d, "%c%s%c%s", MSSP_VAR, "MINIMUM AGE",       MSSP_VAL, "0");
-	descriptor_printf(d, "%c%s%c%s", MSSP_VAR, "NAME",              MSSP_VAL, "Lowlands");
-	descriptor_printf(d, "%c%s%c%s", MSSP_VAR, "PORT",              MSSP_VAL, "6969");
+	descriptor_printf(d, "%c%s%c%s", MSSP_VAR, "NAME",              MSSP_VAL, "Dragons Domain");
+	descriptor_printf(d, "%c%s%c%s", MSSP_VAR, "PORT",              MSSP_VAL, "8888");
 
 	descriptor_printf(d, "%c%s%c%s", MSSP_VAR, "FAMILY",            MSSP_VAL, "Emud");
 	descriptor_printf(d, "%c%s%c%s", MSSP_VAR, "FAMILY",            MSSP_VAL, "MrMud");
