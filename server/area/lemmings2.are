@@ -53,6 +53,9 @@ digging a new tunnel somewhere deeper in the cave.
 13 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+& 15 'teacher base'
+& 75 'weaponsmithing'
+& 75 'armoursmithing'
 #29954
 miner lemming~
 a miner lemming~
@@ -328,7 +331,7 @@ A small path leads north into the trees.~
 north path~
 0 -1 6006
 D5
-The tunnel looks just large enough for you to enter--seems kinda dark 
+The tunnel looks just large enough for you to enter--seems kinda dark
 down there though...~
 down tunnel cave~
 0 -1 29951
@@ -533,7 +536,7 @@ pile boards~
 Yes, it's a big pile of boards, probably more than you can
 carry anyway. Besides, what do you need boards for? Building
 a new house? Making your own trireme? Why? Do you even know
-HOW to build a trireme? Just go steal one from a pirate or 
+HOW to build a trireme? Just go steal one from a pirate or
 something..
 ~
 E
@@ -878,7 +881,7 @@ west~
 S
 #29977
 The dark corridor ends~
-Here the corridor ends... there are several places where 
+Here the corridor ends... there are several places where
 the dirt floor has been greatly scuffled and disturbed,
 and you hear a deep grumbling noise through a hole in the
 southern wall. It sounds like a great beast has a lair there,

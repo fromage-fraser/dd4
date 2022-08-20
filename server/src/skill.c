@@ -3362,7 +3362,7 @@ void do_smelt (CHAR_DATA *ch, char *argument)
 
         if (!check_blind(ch))
         {
-                send_to_char("you can't see anything.\n\r", ch);
+                send_to_char("You can't see anything.\n\r", ch);
                 return;
         }
 
@@ -3414,7 +3414,7 @@ void do_smelt (CHAR_DATA *ch, char *argument)
 
         if (obj->level > ch->level)
         {
-                send_to_char("You worldy knowledge of items is not at the point to allow you to smelt that yet.\n\r", ch);
+                send_to_char("You don't know how to smelt that yet.\n\r", ch);
                 return;
         }
 
@@ -3447,7 +3447,7 @@ void do_smelt (CHAR_DATA *ch, char *argument)
         else
         {
                 send_to_char("You skill in smelting lets you down. You fail to recover anything.\n\r", ch);
-                act("You watch as $p slowly disolves into the belly of the forge.",ch, obj, NULL, TO_CHAR);
+                act("You watch as $p slowly dissolves into the belly of the forge.",ch, obj, NULL, TO_CHAR);
                 act("$n fails to recover any materials from $p.",ch, obj, NULL, TO_ROOM);
                 extract_obj(obj);
                 return;
@@ -3562,7 +3562,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 ||  blueprint_list[i].blueprint_cost[3] > ch->smelted_electrum
                 ||  blueprint_list[i].blueprint_cost[4] > ch->smelted_starmetal)
         {
-                send_to_char( "You don't have enough raw materials, you need:\n\r", ch );
+                send_to_char( "You don't have enough raw materials. You need:\n\r", ch );
                 sprintf(buf, "%d Steel %d Titanium %d Adamantite %d Electrum %d Starmetal",
                 blueprint_list[i].blueprint_cost[0],
                 blueprint_list[i].blueprint_cost[1],
@@ -3979,7 +3979,7 @@ void do_engrave (CHAR_DATA *ch, char *argument)
         ||  cost_el > ch->smelted_electrum
         ||  cost_sm > ch->smelted_starmetal)
         {
-                send_to_char( "You don't have enough raw materials, you need:\n\r", ch );
+                send_to_char( "You don't have enough raw materials. You need:\n\r", ch );
                 sprintf(buf, "%d Steel %d Titanium %d Adamantite %d Electrum %d Starmetal and %d",
                 cost_st, cost_ti, cost_ad, cost_el, cost_sm, obj->level);
                 act(buf, ch, NULL, NULL, TO_CHAR);

@@ -229,7 +229,7 @@ int main(int argc, char **argv)
         mudport = port;
         control = init_socket(port);
         boot_db();
-        sprintf(log_buf, "DD4 is ready to rock on port %d.", port);
+        sprintf(log_buf, "DD is ready to rock on port %d.", port);
         log_string(log_buf);
         game_loop_unix(control, wizPort);
         close(control);
@@ -884,7 +884,7 @@ void new_descriptor (int control)
         {
                 if (!str_prefix(pban->name, dnew->host))
                 {
-                        write_to_descriptor(desc, "Your site has been banned from DD4.\n\r", 0);
+                        write_to_descriptor(desc, "Your site has been banned from DD.\n\r", 0);
                         close(desc);
                         free_string(dnew->host);
                         free_mem(dnew->outbuf, dnew->outsize);
@@ -1560,7 +1560,7 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
                                         {
                                                 first = first / 10;
                                         }
-                                        
+
                                         if (ch->pcdata->meter == 0)
                                                 sprintf(buf2, "[  <51>0%%<0> ]");
                                         else if (ch->pcdata->meter < 10)

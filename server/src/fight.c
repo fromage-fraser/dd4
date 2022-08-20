@@ -6206,6 +6206,7 @@ void do_hurl (CHAR_DATA *ch, char *argument)
         CHAR_DATA *victim;
         char arg1 [ MAX_INPUT_LENGTH ];
         char buf[MAX_STRING_LENGTH];
+        char buf2[MAX_STRING_LENGTH];
 
 
         if (IS_NPC(ch))
@@ -6265,7 +6266,9 @@ void do_hurl (CHAR_DATA *ch, char *argument)
                 AFFECT_DATA af;
                 if (is_affected(victim, gsn_stun))
                 {
-                        send_to_char("They are already stunned.\n\r",ch);
+                        sprintf(buf2,"It looks like %s is already stunned.\n\r",
+                                (IS_NPC(victim)) ? victim->short_descr : victim->name);
+                        send_to_char(buf2,ch);
                         return;
                 }
 
@@ -6290,10 +6293,10 @@ void do_hurl (CHAR_DATA *ch, char *argument)
 
                 if (IS_NPC(ch) || number_percent() < chance)
                 {
-                        act ("You hurl your shield. It slams into the side of their head.. THUNK!!",
+                        act ("You hurl your shield. It slams into the side of $S head.. THUNK!!",
                         ch, NULL, victim, TO_CHAR);
                         act ("You're knocked out cold by a shield to the head.", ch, NULL, victim, TO_VICT);
-                        act ("$n hurls their shield at $N. It slams into the side of their head... THUNK!",
+                        act ("$n hurls their shield at $N. It slams into the side of $S head... THUNK!",
                         ch, NULL, victim, TO_NOTVICT);
                         arena_commentary("$n knocks $N out cold.", ch, victim);
 
@@ -6315,7 +6318,7 @@ void do_hurl (CHAR_DATA *ch, char *argument)
                 }
                 else
                 {
-                        act ("It sails past their head and returns to your arm. MISS!",
+                        act ("It sails past $S head and returns to your arm. MISS!",
                         ch, NULL, victim, TO_CHAR);
                         damage(ch, victim, 0, gsn_stun, FALSE);
                 }
@@ -6341,7 +6344,7 @@ void do_hurl (CHAR_DATA *ch, char *argument)
                 else
                 {
 
-                        act ("It sails past their head and returns to your hand. MISS!",
+                        act ("It sails past $S head and returns to your hand. MISS!",
                                 ch, NULL, victim, TO_CHAR);
                         damage (ch, victim, 0, gsn_hurl, FALSE);
                 }

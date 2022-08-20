@@ -103,8 +103,8 @@ Holy Slayer~
 the Holy Slayer~
 The slayer isn't aware of your presence.
 ~
-A ghostlike, swirling mass that somewhat resembles a knight. He murmurs 
-something about making a big mistake and having to roam the lands searching 
+A ghostlike, swirling mass that somewhat resembles a knight. He murmurs
+something about making a big mistake and having to roam the lands searching
 for peace.
 ~
 1 642 0 S
@@ -152,7 +152,7 @@ Keeper~
 the Keeper of the Tower~
 The keeper greets you.
 ~
-His sole duty is to see that his beacon stays lit. It's really the only 
+His sole duty is to see that his beacon stays lit. It's really the only
 thing he cares about.
 ~
 2 0 0 S
@@ -164,7 +164,7 @@ Nessy~
 Nessy~
 Nessy grins.
 ~
-Before you stands a reptilian sea monster of enormous size. 
+Before you stands a reptilian sea monster of enormous size.
 You better not pick a fight with her!
 ~
 2 128 200 S
@@ -234,7 +234,7 @@ Keeper~
 the Keeper of the Tower~
 The keeper greets you.
 ~
-His sole duty is to see that his beacon stays lit. It's really the only 
+His sole duty is to see that his beacon stays lit. It's really the only
 thing he cares about.
 ~
 2 0 0 S
@@ -246,7 +246,7 @@ Keeper~
 the Keeper of the Tower~
 The keeper greets you.
 ~
-His sole duty is to see that his beacon stays lit. It's really the only 
+His sole duty is to see that his beacon stays lit. It's really the only
 thing he cares about.
 ~
 2 0 0 S
@@ -258,7 +258,7 @@ Keeper~
 the Keeper of the Tower~
 The keeper greets you.
 ~
-His sole duty is to see that his beacon stays lit. It's really the only 
+His sole duty is to see that his beacon stays lit. It's really the only
 thing he cares about.
 ~
 2 0 0 S
@@ -287,7 +287,7 @@ a barbarian sword~
 A barbed sword lies here.~
 ~
 5 0 8193
-0~ 0~ 0~ 6~
+0~ 0~ 0~ 3~
 12 1250 0
 A
 3 -2
@@ -608,7 +608,7 @@ D4
 S
 #11501
 The Bog~
-You trudge through a filthy bog; there's nothing but mud and mist 
+You trudge through a filthy bog; there's nothing but mud and mist
 as far as the eye can see.
 ~
 115 1 10
@@ -631,7 +631,7 @@ D3
 S
 #11502
 The Bog~
-You trudge through a filthy bog; there's nothing but mud and mist 
+You trudge through a filthy bog; there's nothing but mud and mist
 as far as the eye can see.
 ~
 115 1 10
@@ -654,7 +654,7 @@ D3
 S
 #11503
 The Bog~
-You trudge through a filthy bog; there's nothing but mud and mist 
+You trudge through a filthy bog; there's nothing but mud and mist
 as far as the eye can see. To the east, the bog and mist become too
 dense to continue.
 ~
@@ -674,7 +674,7 @@ D3
 S
 #11504
 The Bog~
-You trudge through a filthy bog; there's nothing but mud and mist 
+You trudge through a filthy bog; there's nothing but mud and mist
 as far as the eye can see. To the west, the bog and mist become too
 dense to continue.
 ~
@@ -694,7 +694,7 @@ D2
 S
 #11505
 The Bog~
-You trudge through a filthy bog; there's nothing but mud and mist 
+You trudge through a filthy bog; there's nothing but mud and mist
 as far as the eye can see.
 ~
 115 1 10
@@ -717,7 +717,7 @@ D3
 S
 #11506
 The Bog~
-You trudge through a filthy bog; there's nothing but mud and mist 
+You trudge through a filthy bog; there's nothing but mud and mist
 as far as the eye can see.
 ~
 115 1 10
@@ -740,7 +740,7 @@ D3
 S
 #11507
 The Bog~
-You trudge through a filthy bog; there's nothing but mud and mist 
+You trudge through a filthy bog; there's nothing but mud and mist
 as far as the eye can see.
 ~
 115 1 10
@@ -763,7 +763,7 @@ D3
 S
 #11508
 The Bog~
-You trudge through a filthy bog; there's nothing but mud and mist 
+You trudge through a filthy bog; there's nothing but mud and mist
 as far as the eye can see.
 ~
 115 1 10
@@ -786,7 +786,7 @@ D3
 S
 #11509
 The Bog~
-You trudge through a filthy bog; there's nothing but mud and mist 
+You trudge through a filthy bog; there's nothing but mud and mist
 as far as the eye can see.
 ~
 115 1 10
@@ -809,8 +809,8 @@ D3
 S
 #11510
 The Bog~
-You trudge through a filthy bog; there's nothing but mud and mist 
-as far as the eye can see. To the north and east, the bog and mist 
+You trudge through a filthy bog; there's nothing but mud and mist
+as far as the eye can see. To the north and east, the bog and mist
 become too dense to continue.
 ~
 115 1 10
@@ -825,7 +825,7 @@ D3
 S
 #11511
 The Bog~
-You trudge through a filthy bog; there's nothing but mud and mist 
+You trudge through a filthy bog; there's nothing but mud and mist
 as far as the eye can see.
 ~
 115 1 10
@@ -848,7 +848,7 @@ D3
 S
 #11512
 The Bog~
-You trudge through a filthy bog; there's nothing but mud and mist 
+You trudge through a filthy bog; there's nothing but mud and mist
 as far as the eye can see.
 ~
 115 1 10
@@ -871,7 +871,7 @@ D3
 S
 #11513
 The Bog~
-You trudge through a filthy bog; there's nothing but mud and mist 
+You trudge through a filthy bog; there's nothing but mud and mist
 as far as the eye can see.
 ~
 115 1 10
@@ -894,7 +894,7 @@ D3
 S
 #11514
 The Bog~
-You trudge through a filthy bog; there's nothing but mud and mist 
+You trudge through a filthy bog; there's nothing but mud and mist
 as far as the eye can see.
 ~
 115 1 10
@@ -917,7 +917,7 @@ D3
 S
 #11515
 The Bog~
-You trudge through a filthy bog; there's nothing but mud and mist 
+You trudge through a filthy bog; there's nothing but mud and mist
 as far as the eye can see.
 ~
 115 1 10
@@ -940,7 +940,7 @@ D3
 S
 #11516
 The Bog~
-You trudge through a filthy bog; there's nothing but mud and mist 
+You trudge through a filthy bog; there's nothing but mud and mist
 as far as the eye can see.
 ~
 115 1 10
@@ -963,8 +963,8 @@ D3
 S
 #11517
 The Bog~
-You trudge through a filthy bog; there's nothing but mud and mist 
-as far as the eye can see. The ground looks as though it becomes a 
+You trudge through a filthy bog; there's nothing but mud and mist
+as far as the eye can see. The ground looks as though it becomes a
 little firmer a short distance to the north.
 ~
 115 1 10
@@ -987,7 +987,7 @@ D3
 S
 #11518
 The Bog~
-You trudge through a filthy bog; there's nothing but mud and mist 
+You trudge through a filthy bog; there's nothing but mud and mist
 as far as the eye can see.
 ~
 115 1 10
@@ -1010,8 +1010,8 @@ D3
 S
 #11519
 A path~
-On solid ground again. You have entered a valley. In the distance you 
-hear the gentle baahing of sheep; you can also make out the distinct 
+On solid ground again. You have entered a valley. In the distance you
+hear the gentle baahing of sheep; you can also make out the distinct
 sound of bagpipes being played.
 ~
 115 4 4
@@ -1085,7 +1085,7 @@ West  -> Southwestern Beacon Tower
 S
 #11523
 Path to the southeastern Beacon Tower~
-The path is getting steeper as it continues uphill, and the terrain gets 
+The path is getting steeper as it continues uphill, and the terrain gets
 more difficult to handle. Many boulders lie scattered about.
 ~
 115 1 4
@@ -1100,8 +1100,8 @@ D3
 S
 #11524
 A path uphill~
-The path is getting steeper as it continues uphill, and the terrain gets 
-more difficult to handle. The ground is getting slippery--you might fall 
+The path is getting steeper as it continues uphill, and the terrain gets
+more difficult to handle. The ground is getting slippery--you might fall
 on your face and hurt yourself!
 ~
 115 1 4
@@ -1116,7 +1116,7 @@ D3
 S
 #11525
 A path uphill~
-The path is getting steeper as it continues uphill, and the terrain gets 
+The path is getting steeper as it continues uphill, and the terrain gets
 more difficult to handle. The tower is becoming more distinct!
 ~
 115 1 4
@@ -1131,7 +1131,7 @@ D3
 S
 #11526
 A path uphill~
-The path is getting steeper as it continues uphill, and the terrain gets 
+The path is getting steeper as it continues uphill, and the terrain gets
 more difficult to handle. Almost there.
 ~
 115 1 4
@@ -1146,7 +1146,7 @@ D3
 S
 #11527
 A path uphill~
-The path is getting steeper as it continues uphill, and the terrain gets 
+The path is getting steeper as it continues uphill, and the terrain gets
 more difficult to handle. A bit further still.
 ~
 115 1 4
@@ -1161,7 +1161,7 @@ D3
 S
 #11528
 A path uphill~
-The path is getting steeper as it continues uphill, and the terrain gets 
+The path is getting steeper as it continues uphill, and the terrain gets
 more difficult to handle. Almost there.
 ~
 115 1 4
@@ -1176,7 +1176,7 @@ D3
 S
 #11529
 A path uphill~
-The path is getting steeper as it continues uphill, and the terrain gets 
+The path is getting steeper as it continues uphill, and the terrain gets
 more difficult to handle.
 ~
 115 1 4
@@ -1191,7 +1191,7 @@ D3
 S
 #11530
 Before the southeastern tower~
-The path is getting steeper as it continues uphill, and the terrain gets 
+The path is getting steeper as it continues uphill, and the terrain gets
 more difficult to handle. The tower is nearby.
 ~
 115 1 4
@@ -1206,7 +1206,7 @@ door~
 S
 #11531
 The path to the southwestern Beacon Tower~
-The path is getting steeper as it continues uphill, and the terrain gets 
+The path is getting steeper as it continues uphill, and the terrain gets
 more difficult to handle. You see scorch marks in the vegetation.
 ~
 115 1 4
@@ -1221,7 +1221,7 @@ D3
 S
 #11532
 A path uphill~
-The path is getting steeper as it continues uphill, and the terrain gets 
+The path is getting steeper as it continues uphill, and the terrain gets
 more difficult to handle.
 ~
 115 1 4
@@ -1236,7 +1236,7 @@ D3
 S
 #11533
 A path uphill~
-The path is getting steeper as it continues uphill, and the terrain gets 
+The path is getting steeper as it continues uphill, and the terrain gets
 more difficult to handle. Watch the rocks, they're slippery!
 ~
 115 1 4
@@ -1328,7 +1328,7 @@ S
 Crossroads at the Lake~
 You stand at a crossroads; in front of you is a lake. A highlander stands here;
 he says, 'Och lads the loch is not safe, turn back lads, much safer!'
-His wife says, 'Stay away from the castle now; it's a terrible business!' 
+His wife says, 'Stay away from the castle now; it's a terrible business!'
 The highlander goes on playing his bagpipes.
 
 A barely legible roadsign is here.
@@ -1362,7 +1362,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1379,7 +1379,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1396,7 +1396,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1413,7 +1413,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1430,7 +1430,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1447,7 +1447,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1464,7 +1464,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1481,7 +1481,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1498,7 +1498,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1515,7 +1515,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1532,7 +1532,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1549,7 +1549,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1566,7 +1566,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 
 The path branches off to the east, up a hill.
@@ -1589,7 +1589,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1606,7 +1606,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1623,7 +1623,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1640,7 +1640,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 
 Towards the north you see a castle, it looks sinister.
@@ -1664,7 +1664,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1681,7 +1681,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1698,7 +1698,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1715,7 +1715,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1732,7 +1732,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 
 To the west a path branches off up hill.
@@ -1755,7 +1755,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1772,7 +1772,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1789,7 +1789,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1806,7 +1806,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1823,7 +1823,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1840,7 +1840,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1857,7 +1857,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1874,7 +1874,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1891,7 +1891,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1908,7 +1908,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1925,7 +1925,7 @@ S
 Path along lake~
 This path is filthy with sticky black mud. You still hear
 bagpipes and sheep but they're quieter now--perhaps too quiet.
-The birds have stopped singing, and a feeling of dread 
+The birds have stopped singing, and a feeling of dread
 fills you. This place must harbour a great evil.
 ~
 115 1 2
@@ -1984,8 +1984,8 @@ D2
 S
 #11576
 On the Isle~
-You are on the isle. It's just a wee isle, with little by way of vegetation 
-or other notable features; in general it seems a godforsaken place. To the 
+You are on the isle. It's just a wee isle, with little by way of vegetation
+or other notable features; in general it seems a godforsaken place. To the
 north you can explore the isle further.
 ~
 115 4 4
@@ -2028,7 +2028,7 @@ D3
 S
 #11579
 A path~
-You enter a forest. It's extremely dark in here, so mind your step--don't trip 
+You enter a forest. It's extremely dark in here, so mind your step--don't trip
 over any tree stumps!
 ~
 115 8 4
@@ -2087,9 +2087,9 @@ D3
 S
 #11583
 Near the tower~
-You have almost reached the tower. You can see the lake from up here, and 
-the other towers are also visible on the horizon. If this were a lush valley 
-you would have a magnificent view from your vantage point, but alas--the 
+You have almost reached the tower. You can see the lake from up here, and
+the other towers are also visible on the horizon. If this were a lush valley
+you would have a magnificent view from your vantage point, but alas--the
 highlands are a dead and barren place. You reluctantly continue on.
 ~
 115 4 5
@@ -2105,7 +2105,7 @@ S
 #11584
 In front of the northwestern tower~
 The keeper greets you stiffly and takes another slug from his bottle of scotch.
-'Ahhh, that makes me stomach burn,' he growls. You think you could use some of 
+'Ahhh, that makes me stomach burn,' he growls. You think you could use some of
 his draught too, as the cold, wet weather here permeates your body.
 ~
 115 4 5
@@ -2120,7 +2120,7 @@ D2
 S
 #11585
 A path along a cliff~
-Watch out here, there are mountain goats up the cliff. They occasionally kick 
+Watch out here, there are mountain goats up the cliff. They occasionally kick
 rocks down the cliff--if they fall on your head you're history!
 ~
 115 0 5
@@ -2194,7 +2194,7 @@ S
 
 #11590
 On another path uphill~
-Again you are forced to exert yourself considerably. The terrain changes suddenly 
+Again you are forced to exert yourself considerably. The terrain changes suddenly
 from vegetation and rocks to complete barrenness.
 ~
 115 0 5
@@ -2225,7 +2225,7 @@ S
 #11592
 In the southeastern tower~
 The room is in disorder; the keeper must be a lousy housekeeper. Everywhere you see
-broken chairs, tables, cabinets and other furniture. You also notice a crate of 
+broken chairs, tables, cabinets and other furniture. You also notice a crate of
 bottles; upon closer inspection they appear to be full of scotch.
 ~
 115 8 0
@@ -2244,7 +2244,7 @@ D5
 S
 #11593
 In the southwestern tower~
-The room is totally clean, with not the tiniest mote of dust to be found. This keeper 
+The room is totally clean, with not the tiniest mote of dust to be found. This keeper
 must be a terrific housekeeper, unlike some of his fellow-keepers.
 ~
 115 8 0
@@ -2263,8 +2263,8 @@ D5
 S
 #11594
 In the northwestern tower~
-The keeper must be a real ascetic, as only the absolute minimal requirements of indoor 
-living are present here.  He has one chair, one table, one plate, one spoon, and 
+The keeper must be a real ascetic, as only the absolute minimal requirements of indoor
+living are present here.  He has one chair, one table, one plate, one spoon, and
 evidently sleeps on a pile of straw in the corner of the room.
 ~
 115 8 0
@@ -2283,7 +2283,7 @@ D5
 S
 #11595
 In the northeastern tower~
-The keeper must be a rose-lover, as roses are painted on everything in here: the plates, 
+The keeper must be a rose-lover, as roses are painted on everything in here: the plates,
 the chairs, the bed--everything!
 ~
 115 8 0
@@ -2363,7 +2363,7 @@ D2
 S
 #11600
 Near Nessy's cave~
-You are just outside Nessy's cave; a huge creature shuffles about before you, 
+You are just outside Nessy's cave; a huge creature shuffles about before you,
 deep in shadow.
 ~
 115 8 0
@@ -2378,7 +2378,7 @@ D3
 S
 #11601
 In Nessy's nest~
-A hulking reptilian form grins at you. Beware! Nessy might seem friendly, but her 
+A hulking reptilian form grins at you. Beware! Nessy might seem friendly, but her
 demeanor can be deceiving; she has killed and devoured many unwary interlopers.
 ~
 115 8 0
@@ -2440,7 +2440,7 @@ D4
 S
 #11606
 On the first floor~
-You travel up. This is the keeper's bedroom, and is in as great a state of 
+You travel up. This is the keeper's bedroom, and is in as great a state of
 disorder as the living room below.
 ~
 115 8 0
@@ -2470,7 +2470,7 @@ D5
 S
 #11608
 On the top of the tower~
-A brilliant light shines out across the land from here; it must be the one the 
+A brilliant light shines out across the land from here; it must be the one the
 keeper tends. You can look out in all directions from here.
 ~
 115 0 1
@@ -2532,7 +2532,7 @@ D5
 S
 #11611
 On the second floor~
-Almost at the top. Looking around you see nothing in the room, as if it 
+Almost at the top. Looking around you see nothing in the room, as if it
 functions as a buffer with regard to possible harm from above.
 ~
 115 8 0
@@ -2548,7 +2548,7 @@ D5
 S
 #11612
 On the top of the tower~
-A mage is here, chanting arcane words and making strange gestures. You reluctantly 
+A mage is here, chanting arcane words and making strange gestures. You reluctantly
 move towards him, hoping the bright light from the beacon conceals your approach.
 ~
 115 0 1
@@ -2626,7 +2626,7 @@ D4
 S
 #11616
 On the first floor~
-This room serves as a bedroom. The place is a mess! The keeper must hate making 
+This room serves as a bedroom. The place is a mess! The keeper must hate making
 beds and doing laundry.
 ~
 115 8 0
@@ -2669,7 +2669,7 @@ trap-door door trap trapdoor down~
 S
 #11619
 In the cellar~
-A fine mess the keeper made of this room, how can he can find anything here? Food remnants 
+A fine mess the keeper made of this room, how can he can find anything here? Food remnants
 and empty bottles of scotch are strewn about haphazardly.
 ~
 115 8 0
@@ -2690,7 +2690,7 @@ D4
 S
 #11620
 On the first floor~
-Everything is here rose-themed too, talk about obsession! An easel stands in the middle of 
+Everything is here rose-themed too, talk about obsession! An easel stands in the middle of
 the room; when you look at it you notice (shocker!) it's a half-finished painting of a rose.
 ~
 115 8 0
@@ -2706,7 +2706,7 @@ S
 #11621
 On the second floor~
 The walls are covered with paintings and consistent with the theme they are all of roses.
-Small roses, big roses, bunches of roses, single roses, a rose in a field of petunias, a 
+Small roses, big roses, bunches of roses, single roses, a rose in a field of petunias, a
 rose in a vase, a rose on a table, a rose held in a hand and that's just for starters!
 ~
 115 8 0
@@ -2722,7 +2722,7 @@ D5
 S
 #11622
 On the top of a tower~
-The beacon light shines brilliantly here, casting the shadow-image of a giant ROSE over 
+The beacon light shines brilliantly here, casting the shadow-image of a giant ROSE over
 the surrounding landscape.
 ~
 115 0 1
@@ -2745,7 +2745,7 @@ You see another tower!
 ~
 E
 west~
-You see a large castle, completely black in colour. 
+You see a large castle, completely black in colour.
 Further along from it is another tower.
 ~
 S
@@ -2765,7 +2765,7 @@ D3
 S
 #11624
 Another gangway~
-This gangway has been finely carved out from the wet stone and is very smooth.  Perhaps 
+This gangway has been finely carved out from the wet stone and is very smooth.  Perhaps
 the work of a master mason?
 ~
 115 9 0
@@ -2781,7 +2781,7 @@ something south~
 S
 #11625
 On a secret gangway~
-The gangway is carved out of the wet underground stone. The rocks are slippery and covered 
+The gangway is carved out of the wet underground stone. The rocks are slippery and covered
 with strange vegetation.
 ~
 115 9 0
@@ -2797,7 +2797,7 @@ back side furniture west~
 S
 #11626
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -2812,7 +2812,7 @@ D3
 S
 #11627
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -2827,7 +2827,7 @@ D1
 S
 #11628
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -2842,7 +2842,7 @@ D2
 S
 #11629
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -2857,7 +2857,7 @@ D2
 S
 #11630
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -2872,7 +2872,7 @@ D3
 S
 #11631
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -2887,7 +2887,7 @@ D3
 S
 #11632
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -2902,7 +2902,7 @@ D2
 S
 #11633
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -2917,7 +2917,7 @@ D3
 S
 #11634
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -2932,7 +2932,7 @@ D1
 S
 #11635
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -2947,7 +2947,7 @@ D2
 S
 #11636
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -2962,7 +2962,7 @@ D2
 S
 #11637
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -2977,7 +2977,7 @@ D2
 S
 #11638
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -2992,7 +2992,7 @@ D3
 S
 #11639
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -3007,7 +3007,7 @@ D2
 S
 #11640
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -3022,7 +3022,7 @@ D2
 S
 #11641
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -3037,7 +3037,7 @@ D3
 S
 #11642
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -3052,7 +3052,7 @@ D3
 S
 #11643
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -3067,7 +3067,7 @@ D3
 S
 #11644
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -3082,7 +3082,7 @@ D3
 S
 #11645
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -3097,7 +3097,7 @@ D3
 S
 #11646
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -3112,7 +3112,7 @@ D2
 S
 #11647
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -3127,7 +3127,7 @@ D3
 S
 #11648
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -3142,7 +3142,7 @@ D3
 S
 #11649
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -3157,7 +3157,7 @@ D3
 S
 #11650
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -3172,7 +3172,7 @@ D3
 S
 #11651
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -3187,7 +3187,7 @@ D3
 S
 #11652
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -3202,7 +3202,7 @@ D3
 S
 #11653
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -3217,7 +3217,7 @@ D3
 S
 #11654
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -3232,7 +3232,7 @@ D3
 S
 #11655
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -3247,7 +3247,7 @@ D2
 S
 #11656
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
 to see far ahead.
 ~
 115 9 0
@@ -3262,8 +3262,8 @@ D2
 S
 #11657
 On a secret gangway~
-It's so dark you can barely see anything in front of you. Even with a light it's difficult 
-to see far ahead. Fortunately the ground is very smooth, so you needn't be afraid of 
+It's so dark you can barely see anything in front of you. Even with a light it's difficult
+to see far ahead. Fortunately the ground is very smooth, so you needn't be afraid of
 tripping over anything.
 ~
 115 9 0
@@ -3307,7 +3307,7 @@ D3
 S
 #11660
 On a secret gangway~
-You can see better now. You even discern a strangely-shaped... something(?) ahead of you, but 
+You can see better now. You even discern a strangely-shaped... something(?) ahead of you, but
 can't quite make out what it is yet.
 ~
 115 8 0
@@ -3322,8 +3322,8 @@ D3
 S
 #11661
 On a secret gangway~
-You can clearly see what is ahead of you now--the porch is guarded by some sort of malevolent 
-fiery creatures. They appear not to be moving-- perhaps they're just statues, placed to scare 
+You can clearly see what is ahead of you now--the porch is guarded by some sort of malevolent
+fiery creatures. They appear not to be moving-- perhaps they're just statues, placed to scare
 people off?
 ~
 115 8 0
@@ -3338,8 +3338,8 @@ D3
 S
 #11662
 At the porch~
-You stand on a porch. A door leading west from it into a wooden building is closed but you're 
-not sure if it's locked.  There are weird piles of dust scattered about. Maybe this is the way 
+You stand on a porch. A door leading west from it into a wooden building is closed but you're
+not sure if it's locked.  There are weird piles of dust scattered about. Maybe this is the way
 into the castle?
 ~
 115 8 0
@@ -3383,7 +3383,7 @@ door~
 S
 #11666
 In the hallway~
-You hear loud noises coming from the north. It sounds like a party is going on.  
+You hear loud noises coming from the north. It sounds like a party is going on.
 You love parties, go have a look!
 ~
 115 8 0
@@ -3398,7 +3398,7 @@ D2
 S
 #11667
 In the hallway~
-A door is to the north, the noises you can hear are coming from behind 
+A door is to the north, the noises you can hear are coming from behind
 it. It sounds like some party!
 ~
 115 8 0
@@ -3465,8 +3465,8 @@ S
 #11671
 A guard barracks~
 A troop of guards is in here, busy with the upkeep of their equipment.
-At first they ignore you, but then one looks up and sounds the alarm. 
-They then all turn towards you and rush to the attack--it was not a 
+At first they ignore you, but then one looks up and sounds the alarm.
+They then all turn towards you and rush to the attack--it was not a
 smart move walking in here.
 ~
 115 8 0
@@ -3523,7 +3523,7 @@ D2
 S
 #11675
 In the west of the foyer~
-You stand in the western corner of the foyer. Shimmering teleporters 
+You stand in the western corner of the foyer. Shimmering teleporters
 surround you.
 ~
 115 8 0
@@ -3558,7 +3558,7 @@ S
 #11677
 In the north of the foyer~
 You stand in the northern corner of the foyer. There are stairs nearby,
-but you're having trouble figuring out how to get to them. Shimmering 
+but you're having trouble figuring out how to get to them. Shimmering
 teleporters surround you.
 ~
 115 8 0
@@ -3641,7 +3641,7 @@ D4
 S
 #11681
 In the northeastern corner of the foyer~
-You stand in the northeastern corner of the foyer. Shimmering teleporters 
+You stand in the northeastern corner of the foyer. Shimmering teleporters
 surround you.
 ~
 115 8 0
@@ -3656,7 +3656,7 @@ D3
 S
 #11682
 In the east of the foyer~
-You stand in the eastern part of the foyer. Shimmering teleporters 
+You stand in the eastern part of the foyer. Shimmering teleporters
 surround you.
 ~
 115 8 0
@@ -3675,7 +3675,7 @@ D3
 S
 #11683
 In the southeastern corner of the foyer~
-You stand in the southeastern corner of the foyer. Shimmering teleporters 
+You stand in the southeastern corner of the foyer. Shimmering teleporters
 surround you.
 ~
 115 8 0
@@ -3704,7 +3704,7 @@ D5
 S
 #11685
 A hallway on the first floor~
-This hallway is lined with red carpet. There are elaborate tapestries on the walls 
+This hallway is lined with red carpet. There are elaborate tapestries on the walls
 between the large, heavy doors.  The ambiance is generally imposing, but comfortable.
 ~
 115 8 0
@@ -3751,7 +3751,7 @@ D3
 S
 #11688
 The Lord's bedroom~
-An elaborate and richly-decorated sleeping chamber. The Lord of the castle appears 
+An elaborate and richly-decorated sleeping chamber. The Lord of the castle appears
 to be absent, so you feel free to look around and learn how the nobility live.
 ~
 115 8 0
@@ -3764,7 +3764,7 @@ S
 In a hallway~
 A painting of an ugly man is on the left and one of an even uglier
 woman is to the right.  You are really taken aback by their sheer
-hideousness. The note beneath the paintings have only one numeral 
+hideousness. The note beneath the paintings have only one numeral
 on them, suggesting both the man and woman might be still alive.
 You silently pray that you never encounter them.
 ~
@@ -3781,7 +3781,7 @@ S
 #11690
 A bedroom~
 The cleric's bedroom, and this time the occupant is home. The cleric turns
-around to look at you--quickly comprehending that you are intruders, he 
+around to look at you--quickly comprehending that you are intruders, he
 charges at you!
 ~
 115 8 0
@@ -3816,9 +3816,9 @@ D3
 S
 #11692
 The Lady's bedroom~
-You enter the bedroom of the Lady of the castle. She has her eyes fixed 
-on the mirror before her. She is SPECTACULARLY hideous. You accidentally 
-move a quarter of an inch; she turns towards you, and, without saying a 
+You enter the bedroom of the Lady of the castle. She has her eyes fixed
+on the mirror before her. She is SPECTACULARLY hideous. You accidentally
+move a quarter of an inch; she turns towards you, and, without saying a
 word, charges directly at you.
 ~
 115 8 0
@@ -3829,7 +3829,7 @@ D3
 S
 #11693
 In a hallway~
-The tapestries here depict battles from long ago, in long-forgotten lands, 
+The tapestries here depict battles from long ago, in long-forgotten lands,
 fought for long-forgotten reasons.
 ~
 115 8 0
@@ -3888,8 +3888,8 @@ D4
 S
 #11697
 Before a flight of stairs~
-You can go down the flight of stairs here or continue on to the 
-anteroom. You see what you assume by his garb to be a farmer, 
+You can go down the flight of stairs here or continue on to the
+anteroom. You see what you assume by his garb to be a farmer,
 waiting in the room.
 ~
 115 8 0
@@ -3919,8 +3919,8 @@ D2
 S
 #11699
 A room between the throne and the anteroom~
-Here is where people are searched for weapons and the like, as part of the 
-Lord's security detail. The guards take one look at you, however, and decide 
+Here is where people are searched for weapons and the like, as part of the
+Lord's security detail. The guards take one look at you, however, and decide
 you cannot possibly have good intentions. They decide to kill you on the spot.
 ~
 115 8 0
