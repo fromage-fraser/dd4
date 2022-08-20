@@ -7,6 +7,8 @@ services:
     build:
       context: .
       dockerfile: docker/server.Dockerfile
+    security_opt:
+      - seccomp:unconfined
     ports:
       - "8888:8888"
     volumes:
@@ -21,6 +23,8 @@ services:
     build:
       context: .
       dockerfile: docker/dev.Dockerfile
+    security_opt:
+      - seccomp:unconfined
     ports:
       - "18888:8888"
     volumes:

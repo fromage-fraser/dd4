@@ -23,6 +23,7 @@
 #else
 #include <sys/types.h>
 #endif
+#include <sys/time.h>
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -38,6 +39,29 @@ extern  int     _filbuf         args( (FILE *) );
 #include <memory.h>
 #endif
 
+long long timers[TIMER_MAXTIMER][5];
+
+const char timer_strings[TIMER_MAXTIMER][40] =
+{
+	"Area Save Time:",
+	"Update Shops:",
+	"Update Time:",
+	"Update Areas:",
+	"Update Weather:",
+	"Update Objects:",
+	"Char Save Time:",
+	"Update Violence:",
+	"Update Obj Progs:",
+	"Update Mob Progs:",
+	"Update Mobiles:",
+	"Update MSDP:",
+	"Update Aggressive:",
+	"Update Purger:",
+	"Update Tactical:",
+	"Scan Descriptor:",
+	"Process Input:",
+	"Process Output:",
+};
 
 /*
  * Globals.
@@ -4123,6 +4147,99 @@ void do_memory( CHAR_DATA *ch, char *argument )
         }
 }
 
+/*
+	Returns 1000 times normal percentage value
+*/
+
+long long display_timer( CHAR_DATA *ch, int timer )
+{
+	long long tot_usage, ind_usage;
+
+	push_call("display_timer(%p,%p)",ch,timer);
+
+	tot_usage = mud->total_io_exec + mud->total_io_delay;
+
+	if (tot_usage == 0)
+	{
+		pop_call();
+		return(0);
+	}
+
+	if (timers[timer][1] == 0 || timers[timer][4] == 0)
+	{
+		pop_call();
+		return(0);
+	}
+	ind_usage = timers[timer][0] / timers[timer][1] * timers[timer][4];
+
+	ch_printf(ch, "%-30s%8lld       %8lld      %8.2f     %8.2f\n\r",
+		timer_strings[timer],
+		timers[timer][0] / timers[timer][1],
+		timers[timer][3] / timers[timer][4] / 1000,
+		100.0 * (double) ind_usage / (double) mud->total_io_exec,
+		100.0 * (double) ind_usage / (double) tot_usage);
+
+	pop_call();
+	return ind_usage;
+}
+
+
+void start_timer( int timer )
+{
+	struct timeval last_time;
+	long long cur_time;
+
+	gettimeofday(&last_time, NULL);
+
+	cur_time = (long long) last_time.tv_usec + 1000000LL * (long long) last_time.tv_sec;
+
+	if (timers[timer][2] == 0)
+	{
+		timers[timer][2] = cur_time ;
+		return;
+	}
+
+	timers[timer][3] += cur_time - timers[timer][2];
+	timers[timer][2] = cur_time;
+	timers[timer][4] ++;
+
+	return;
+}
+
+char *get_time_string( time_t time )
+{
+	char *time_string;
+
+	push_call("get_time_string(%p)",time);
+
+	time_string = ctime( (const time_t *) &time);
+
+	time_string[strlen(time_string)-1] = '\0';
+
+	pop_call();
+	return time_string;
+}
+
+void close_timer( int timer )
+{
+	struct timeval last_time;
+	long long cur_time;
+
+	gettimeofday(&last_time, NULL);
+
+	cur_time = (long long) last_time.tv_usec + 1000000LL * (long long) last_time.tv_sec;
+
+/*
+	if (cur_time - timers[timer][2] > 1000000 / PULSE_PER_SECOND)
+	{
+		bug("%s heartbeat violation of %lld usec", timer_strings[timer], cur_time - timers[timer][2] - (1000000LL / PULSE_PER_SECOND));
+	}
+*/
+	timers[timer][0] += (cur_time - timers[timer][2]);
+	timers[timer][1] ++;
+
+	return;
+}
 
 /*
  * Stick a little fuzz on a number.

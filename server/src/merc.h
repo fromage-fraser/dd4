@@ -15,7 +15,7 @@
  *                                                                         *
  *  Much time and thought has gone into this software and you are          *
  *  benefitting.  We hope that you share your changes too. What goes       *
- *  around, comes around..                                                 *
+ *  around, comes around.                                                  *
  ***************************************************************************/
 #pragma once
 /* #include <math.h> */
@@ -186,6 +186,9 @@ typedef short int sh_int;
  * Structure types.
  */
 typedef struct mud_data                         MUD_DATA;
+typedef struct usage_data                       USAGE_DATA;
+typedef struct tactical_map                     TACTICAL_MAP;
+typedef struct player_game                      PLAYER_GAME;
 typedef struct affect_data                      AFFECT_DATA;
 typedef struct area_data                        AREA_DATA;
 typedef struct ban_data                         BAN_DATA;
@@ -330,6 +333,25 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define MAX_INPUT_LENGTH          1024    /* 256 */
 #define COMPRESS_BUF_SIZE                 60000  /* GMCP*/
 
+/*CGMP */
+
+#define MUD_EMUD_BOOTING		BV01
+#define MUD_EMUD_DOWN		BV02
+#define MUD_EMUD_REBOOT		BV03
+#define MUD_EMUD_COPYOVER	BV04
+#define MUD_EMUD_CRASH		BV05
+#define MUD_EMUD_BOOTDB		BV06
+#define MUD_EMUD_REALGAME	BV07
+#define MUD_WIZLOCK			BV08
+#define MUD_CLANRENT		BV09
+#define MUD_DUALFLIP		BV10
+#define MUD_SKIPOUTPUT		BV11
+#define MUD_EQAFFECTING		BV12
+#define MUD_LOGALL			BV13
+#define MUD_PURGER			BV14
+#define MUD_STRAIGHTNUMBERS	BV15
+
+/* end */
 
 /*
  * Game parameters.
@@ -550,6 +572,12 @@ DECLARE_DO_FUN ( do_board );
 #define PULSE_TICK                     ( 30 * PULSE_PER_SECOND )
 #define PULSE_AREA                     ( 60 * PULSE_PER_SECOND )
 #define PULSE_AUCTION                  ( 20 * PULSE_PER_SECOND )
+#define	PULSE_AGGRESSIVE   1 * PULSE_PER_SECOND / 2
+#define	PULSE_PROGRAM      4 * PULSE_PER_SECOND
+#define	PULSE_CHARSAVE  1800 * PULSE_PER_SECOND
+#define PULSE_MSDP         1 * PULSE_PER_SECOND
+
+
 
 /* character types et al. */
 #define CLASS_MAGE                        0
@@ -787,24 +815,43 @@ struct mud_data
 	bool                  sunlight;
 	char                * last_player_cmd;
 */
-	unsigned char       * mccp_buf;
+	int                   flags;
+        PLAYER_GAME         * f_player;
+        TIME_INFO_DATA      * time_info;
+        DESCRIPTOR_DATA     * f_desc;
+	DESCRIPTOR_DATA     * l_desc;
+        DESCRIPTOR_DATA     * update_gld;
+	AREA_DATA           * f_area;
+        USAGE_DATA          * usage;
+        unsigned char       * mccp_buf;
 	int                   mccp_len;
+        int                   control;
         int                   top_help;
 	int                   top_mob_index;
 	int                   top_obj_index;
 	int                   top_room;
 	int                   top_reset;
         time_t                boot_time;
+     /*   struct tm              time; */
         int                   total_plr;
 	int                   top_area;
 	int                   msdp_table_size;
+        int                   total_desc;
         time_t                current_time;
-	int                   port;     
+	int                   port; 
+ 	long long             total_io_bytes;
+	long long             total_io_ticks;
+	long long             total_io_delay;
+	long long             total_io_exec; 
+        bool                  sunlight;
 	MATH_DATA           * f_math;
-	MATH_DATA           * l_math;     
+	MATH_DATA           * l_math;   
+        BAN_DATA            * f_ban;  
 };
 
-
+#define AUTO_OFF				0
+#define AUTO_AUTO				1
+#define AUTO_QUICK				2
 
 /*
  * Time and weather
@@ -844,6 +891,12 @@ struct weather_data
 #define IS_FULL_MOON ( weather_info.moonlight == MOON_FULL \
                                         && weather_info.sunlight == SUN_DARK )
 
+struct player_game
+{
+	PLAYER_GAME * next;
+	PLAYER_GAME * prev;
+	CHAR_DATA   * ch;
+};
 
 /* Auction data */
 struct  auction_data
@@ -894,6 +947,7 @@ extern DESCRIPTOR_DATA *initiative_list [ MAX_CONNECTIONS ];
 struct descriptor_data
 {
         DESCRIPTOR_DATA *     next;
+        DESCRIPTOR_DATA *     prev;
         DESCRIPTOR_DATA *     snoop_by;
         MTH_DATA          *   mth;
         CHAR_DATA *           character;
@@ -905,12 +959,18 @@ struct descriptor_data
         char                  inbuf  [ MAX_INPUT_LENGTH * 6 ];        /* was 4 */
         char                  incomm [ MAX_INPUT_LENGTH * 2 ];        /* was 1 */
         char                  inlast [ MAX_INPUT_LENGTH * 2 ];        /* was 1 */
+        char                * inlast_gmcp;
         int                   repeat;
         char *                showstr_head;
         char *                showstr_point;
         char *                outbuf;
         int                   outsize;
         int                   outtop;
+        int                 intop;
+	int                 port_size;
+	int                 connecting_time;
+	bool                lookup;
+	sh_int              timeout;
 
         /* ident stuff */
         int                   ifd;
@@ -972,6 +1032,40 @@ struct con_app_type
         int     shock;
 };
 
+
+/* GCMP */
+#define INTERP_ALIAS          BV01
+#define INTERP_PROG               BV02
+#define INTERP_FORCE          BV03
+#define INTERP_DUMP               BV04
+#define INTERP_SCROLL          BV05
+#define INTERP_PAGE               BV06
+#define INTERP_PAUSE          BV07
+#define INTERP_AUTO               BV08
+#define INTERP_HELP               BV09
+#define INTERP_TACT_UPDATE     BV10
+
+#define TIMER_AREA_SAVE		 0
+#define TIMER_SHOP_UPD		 1
+#define TIMER_CHAR_UPD		 2
+#define TIMER_AREA_UPD		 3
+#define TIMER_WEATHER_UPD	 4
+#define TIMER_OBJ_UPD		 5
+#define TIMER_CHAR_SAVE		 6
+#define TIMER_VIOL_UPD		 7
+#define TIMER_OBJ_PROG		 8
+#define TIMER_MOB_PROG		 9
+#define TIMER_MOB_UPD		10
+#define TIMER_MSDP            11
+#define TIMER_AGGR_UPD		12
+#define TIMER_PURGE			13
+#define TIMER_TACTICAL_UPD	14
+#define TIMER_SCAN_DESC		15
+#define TIMER_PROCESS_INPUT	16
+#define TIMER_PROCESS_OUTPUT	17
+#define TIMER_MAXTIMER		18
+
+/* END GCMP */
 
 /*
  * TO types for act.
@@ -1504,6 +1598,15 @@ DECLARE_DO_FUN ( do_pantheoninfo );
 DECLARE_DO_FUN ( do_pantheonrank );
 DECLARE_DO_FUN ( do_pantheon );
 DECLARE_DO_FUN ( do_pray );
+
+#define MAX_TACTICAL_ROW  20
+#define MAX_TACTICAL_COL 160
+
+struct tactical_map
+{
+	unsigned char   map[MAX_TACTICAL_ROW * MAX_TACTICAL_COL];
+	unsigned int  color[MAX_TACTICAL_ROW * MAX_TACTICAL_COL];
+};
 
 struct deity_info
 {
@@ -2798,7 +2901,14 @@ struct  pc_data
         char *          bamfout;
         char *          title;
         char *          tailing;
-        CHAR_DATA *     group_leader;
+        CHAR_DATA *     group_leader; /* GCMP */
+        ROOM_INDEX_DATA     * travel_from;	/* Traveling old room  */
+        int                   travel; /* GCMP */
+        char                * tracking; /* GCMP */
+        char                * auto_command;
+        bool                  auto_flags;
+        sh_int                interp;
+        sh_int                wimpy; /* GCMP */
         int             perm_str;
         int             perm_int;
         int             perm_wis;
@@ -2859,6 +2969,12 @@ struct  pc_data
         int             group_support_bonus;
         int             meter;
         int             dam_meter;
+        sh_int                vt100_flags;
+	sh_int                screensize_h;
+	sh_int                screensize_v;
+	sh_int                tactical_flags;
+	sh_int                tactical_size_v;
+	sh_int                tactical_size_c;
 };
 
 
@@ -3010,6 +3126,7 @@ struct area_data
         AREA_DATA *             next_sort;
         RESET_DATA *            reset_first;
         RESET_DATA *            reset_last;
+	HELP_DATA			* first_help;
 
         char *                  author;
         char *                  name;
@@ -3055,6 +3172,15 @@ struct room_index_data
         int                     sector_type;
 };
 
+
+/*
+	System usage information
+*/
+
+struct usage_data
+{
+	int					players[24][7];
+};
 
 /*
  * Types of attacks.
@@ -3121,6 +3247,10 @@ struct msdp_data
 };
 
 extern struct msdp_type msdp_table[];
+
+bool write_to_descriptor args((DESCRIPTOR_DATA *d, char *txt, int length));
+void write_to_port args((DESCRIPTOR_DATA *d));
+
 
 /***end add*/
 
@@ -3875,6 +4005,8 @@ extern const    struct cmd_type                 cmd_table                       
 extern const    struct liq_type                 liq_table                       [ LIQ_MAX  ];
 extern const    struct blueprint_type           blueprint_list                  [ BLUEPRINTS_MAX ];
 extern const    struct set_type                 set_list                        [ MAX_SETS ];
+extern char *  dir_name        [];
+extern sh_int                                   rev_dir                         [];
 /* extern const    struct raw_mats_data            raw_mats_table                  [ RAW_MATS_MAX ]; */
 extern const    struct skill_type               skill_table                     [ MAX_SKILL ];
 extern const    struct social_type              social_table                    [ ];
@@ -3903,9 +4035,12 @@ extern struct           vampire_gag             vampire_gag_table               
 #include "mth.h"
 
 /*
- * Global variables.
+ * Global variables..
  */
-extern MUD_DATA			* mud;
+/*CGMP */
+MUD_DATA			* mud;
+
+/* en */
 extern HELP_DATA                * help_first;
 extern SHOP_DATA                * shop_first;
 extern GAME_DATA	        * game_first;
@@ -4582,7 +4717,28 @@ char * crypt args( ( const char *key, const char *salt ) );
 #define SF      SPEC_FUN
 #define ED      EXIT_DATA
 #define GF      GAME_FUN
+#define TM  TACTICAL_MAP
 
+
+/*
+	vt100.c
+*/
+
+TM        * get_tactical_map            args((CHAR_DATA *ch));
+void        clear_tactical_map          args((TACTICAL_MAP *tact));
+TM        * get_diff_tactical           args((CHAR_DATA *ch));
+char      * get_tactical_string         args((CHAR_DATA *ch, TACTICAL_MAP *tact)); 
+void        vt100on                     args((CHAR_DATA *));
+void        vt100off                    args((CHAR_DATA *));
+void        vt100prompt                 args((CHAR_DATA *));
+void        vt100prompter               args((CHAR_DATA *));
+char      * ansi_translate              args((char *txt));
+char      * ansi_translate_def          args((CHAR_DATA *ch, char *txt, char *def));
+char      * ansi_translate_text         args((CHAR_DATA *ch, char *txt));
+char      * ansi_compress               args((CHAR_DATA *ch, char *txt, int color, int code));
+char      * get_color_diff              args((CHAR_DATA *, int, int, int, int, int, int));
+int         ansi_strlen                 args((char *txt));
+void        process_naws                args((DESCRIPTOR_DATA *d, int cols, int rows));
 
 /* act_comm.c */
 void add_follower                       args( ( CHAR_DATA *ch, CHAR_DATA *master ) );
@@ -4667,6 +4823,7 @@ void        log_printf             args((char *fmt, ...));
 void        push_call(char *f, ...);
 void        pop_call(void);
 void        dump_stack(void);
+void force_help(DESCRIPTOR_DATA *, char *);
 /* end GMCP */
 
 /* db.c */
@@ -4714,6 +4871,11 @@ void    bug                             args( ( const char *str, int param ) );
 void    log_string                      args( ( const char *str ) );
 void    tail_chain                      args( ( void ) );
 void    reset_area                      args( ( AREA_DATA * pArea ) );
+/* GCMPP */
+void        start_timer            args((int timer));
+void        close_timer            args((int timer));
+long long   display_timer          args((CHAR_DATA *ch, int timer));
+char      * get_time_string        args((time_t time));
 
 /* fight.c */
 void    violence_update                 args( ( void ) );
@@ -4735,6 +4897,7 @@ bool    aggro_damage                          ( CHAR_DATA *ch, CHAR_DATA *victim
 void    check_autoloot                        ( CHAR_DATA *ch, CHAR_DATA *victim );
 void    check_group_bonus                     (CHAR_DATA *ch) ;
 char *  get_damage_string               args( ( int damage_value, bool is_singular ) );
+CD        * who_fighting            args((CHAR_DATA *ch));
 
 /* handler.c */
 int     get_dir                         args( ( char *txt  ) );
@@ -5024,6 +5187,7 @@ void str_free( char *str );
 }
 
 #define STRALLOC(point)			str_alloc((point))
+#define STRDUPE(point)			str_dupe((point))
 
 #define STRFREE(point) \
 { \
@@ -5059,6 +5223,39 @@ void str_free( char *str );
 	point = str_alloc((value)); \
 }
 
+#define INSERT_LEFT(link, rght, first, next, prev) \
+{ \
+	(link)->prev				= (rght)->prev; \
+	(rght)->prev				= (link); \
+	(link)->next				= (rght); \
+	\
+	if ((link)->prev) \
+	{ \
+		(link)->prev->next		= (link); \
+	} \
+	else \
+	{ \
+		(first)				= (link); \
+	} \
+}
+
+
+#define INSERT_RIGHT(link, left, last, next, prev) \
+{ \
+	(link)->next				= (left)->next; \
+	(left)->next				= (link); \
+	(link)->prev				= (left); \
+	\
+	if ((link)->next) \
+	{ \
+		(link)->next->prev		= (link); \
+	} \
+	else \
+	{ \
+		(last)				= (link); \
+	} \
+}
+
 /* end GMSP */
 
 typedef struct tagMTRand {
@@ -5081,6 +5278,8 @@ double genRand(MTRand* rand);
 #undef  RID
 #undef  OSID
 #undef  SF
+#undef  TM
+
 
 
 /* EOF merc.h */

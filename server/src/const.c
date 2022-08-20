@@ -1868,6 +1868,16 @@ const struct liq_type liq_table [ LIQ_MAX ] =
         { "cola",                       "cherry",               {  0, 1,  5 } }   /* 15 */
 };
 
+char * dir_name [] =
+{
+        "north", "east", "south", "west", "up", "down"
+};
+
+sh_int rev_dir [] =
+{
+        DIR_SOUTH, DIR_WEST, DIR_NORTH, DIR_EAST, DIR_DOWN, DIR_UP
+};
+
 /*
  *  Skill pre-reqs
  */

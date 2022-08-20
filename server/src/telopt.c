@@ -1,20 +1,12 @@
 /***************************************************************************
- * Mud Telopt Handler 1.5 by Igor van den Hoven                  2009-2019 *
+ * Mud Telopt Handler 1.5 by Igor van den Hoven.                  2009-2019 *
  ***************************************************************************/
-
-/* #include "mud.h" */
-#if defined( macintosh )
-#include <types.h>
-#else
-#include <sys/types.h>
-#endif
-#include <stdio.h>
-#include <string.h>
-#include <time.h>
-#include <zlib.h>
+#define _XOPEN_SOURCE
 #include "merc.h"
 #include "mth.h"
-
+#include <string.h>
+#include <strings.h>
+#include <stdlib.h>
 
 #define TELOPT_DEBUG 0
 

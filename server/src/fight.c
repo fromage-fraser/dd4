@@ -7275,6 +7275,39 @@ void check_autoloot (CHAR_DATA *ch, CHAR_DATA *victim)
         }
 }
 
+CHAR_DATA *who_fighting( CHAR_DATA *ch )
+{
+        push_call("who_fighting(%p)",ch);
+
+        if (ch->fighting == NULL)
+        {
+                pop_call();
+                return NULL;
+        }
+
+     /*   if (ch->fighting->who == NULL)
+        {
+                pop_call();
+                return NULL;
+        }
+
+        if (ch->fighting->who->name == NULL)
+        {
+                log_printf("who_fighting: who->name == NULL for %s", ch->name);
+                dump_stack();
+                pop_call();
+                return NULL;
+        }
+
+        if (ch->fighting->who->in_room != ch->in_room)
+        {
+                pop_call();
+                return NULL;
+        }
+*/
+        pop_call();
+        return ch->fighting;
+}
 
 char *get_damage_string( int damage_value, bool is_singular )
 {

@@ -94,7 +94,6 @@ const   char    go_ahead_str    [] = { IAC, GA, '\0' };
 /* GCMP */
 #define MAX_STACK_CALL		200
 #define MAX_STACK_CALL_LEN	200
-char				* str_empty;
 
 char	call_stack[MAX_STACK_CALL][MAX_STACK_CALL_LEN];
 int	call_index;
@@ -151,14 +150,9 @@ time_t              current_time;       /* Time of this pulse           */
 time_t              boot_time;
 int                 mudport;            /* mudport */
 
-
-void	game_loop_unix			args((void)); /* new GCMP */
-int	init_socket			args(());
-void	new_descriptor			args((void));
-
-/* void    game_loop_unix          args((int control, int wizPort)); 
-int     init_socket             args((int port)); 
-void    new_descriptor          args((int control)); */
+void    game_loop_unix          args((int control, int wizPort));
+int     init_socket             args((int port));
+void    new_descriptor          args((int control));
 void    wizPort_handler args((int control));
 bool    read_from_descriptor    args((DESCRIPTOR_DATA *d));
 /* bool    write_to_descriptor     args((int desc, char *txt, int length)); - changed GCMP */
@@ -175,8 +169,7 @@ bool    check_parse_name        args((char *name));
 bool    check_reconnect         args((DESCRIPTOR_DATA *d, char *name, bool fConn));
 bool    check_playing           args((DESCRIPTOR_DATA *d, char *name));
 int     main                    args((int argc, char **argv));
-/* void    nanny                   args((DESCRIPTOR_DATA *d, char *argument)); */
-bool		nanny			args((DESCRIPTOR_DATA *d, char *argument));
+void    nanny                   args((DESCRIPTOR_DATA *d, char *argument));
 bool    process_output          args((DESCRIPTOR_DATA *d, bool fPrompt));
 void    read_from_buffer        args((DESCRIPTOR_DATA *d));
 void    stop_idling             args((CHAR_DATA *ch));
@@ -188,8 +181,7 @@ int main(int argc, char **argv)
 {
         struct timeval now_time;
         int port;
-        int control;
-     /*   int wizPort = 0; */
+        int control, wizPort = 0;
 
         /*
          * Memory debugging if needed.
@@ -199,13 +191,8 @@ int main(int argc, char **argv)
 #endif
 
         ALLOCMEM(mud,				MUD_DATA,			1);
-   /*     ALLOCMEM(mud->usage,			USAGE_DATA,		1);
-	ALLOCMEM(mud->time_info,		TIME_INFO_DATA,	1);
-	ALLOCMEM(mud->tactical,		TACTICAL_MAP,		1);
-	ALLOCMEM(mud->last_player_cmd,	unsigned char, 	MAX_INPUT_LENGTH)
-*/
+
 	init_mth();
-        str_empty				= STRALLOC("");
 
         /*
          * Init time.
@@ -254,26 +241,13 @@ int main(int argc, char **argv)
         /*
          * Run the game.
          */
-      /*  mudport = port;
+        mudport = port;
         control = init_socket(port);
         boot_db();
         sprintf(log_buf, "DD4 is ready to rock on port %d.", port);
         log_string(log_buf);
         game_loop_unix(control, wizPort);
         close(control);
-        */
-
-	if (!IS_SET(mud->flags, MUD_EMUD_COPYOVER))
-	{
-		sprintf(log_buf, "Initializing socket for port %d", mud->port);
-		mud->control = init_socket();
-	}
-
-	sprintf(log_buf,"Starting game_loop_unix: control = %d, port = %d", mud->control, mud->port);
-
-	game_loop_unix();
-
-	close(mud->control);
 
         /*
          * That's all, folks.
@@ -588,731 +562,390 @@ void create_ident(DESCRIPTOR_DATA *d, long ip, sh_int port)
 
 
 
-void game_loop_unix(void)
+void game_loop_unix(int control, int wizPort)
 {
-	static struct timeval null_time;
-	struct timeval last_time;
-	DESCRIPTOR_DATA *d;
-	char dbuf[180];
-
-	fd_set in_set;
-	fd_set out_set;
-	fd_set exc_set;
-	int maxdesc;
-
-	struct timeval now_time, stall_time;
-
-	int usec_gameloop, usec_gamewait;
-
-	push_call("game_loop_unix(void)");
-
-	gettimeofday(&last_time, NULL);
-	mud->current_time = (time_t) last_time.tv_sec;
-
-	stall_time.tv_sec  = 0;
-
-	/*
-		Main loop
-	*/
-
-	while (!IS_SET(mud->flags, MUD_EMUD_DOWN))
-	{
-		gettimeofday(&last_time, NULL);
-
-		mud->current_time = last_time.tv_sec;
-
-		if (mud->f_desc == NULL && IS_SET(mud->flags, MUD_EMUD_REBOOT))
-		{
-			SET_BIT(mud->flags, MUD_EMUD_DOWN);
-		}
-
-		alarm(30);
-
-	/*	mud->time = *localtime(&mud->current_time); */
-
-		/*
-			Take care of various update routines
-		*/
-
-		update_handler();
-
-		start_timer(TIMER_SCAN_DESC);
-
-		/*
-			Poll all active descriptors.
-		*/
-
-		FD_ZERO(&in_set );
-		FD_ZERO(&out_set);
-		FD_ZERO(&exc_set);
-		FD_SET(mud->control, &in_set);
-
-		maxdesc = mud->control;
-
-		for (d = mud->f_desc ; d ; d = d->next)
-		{
-			maxdesc = UMAX(maxdesc, d->descriptor);
-			FD_SET(d->descriptor, &in_set );
-			FD_SET(d->descriptor, &out_set);
-			FD_SET(d->descriptor, &exc_set);
-		}
-
-		if (select(maxdesc+1, &in_set, &out_set, &exc_set, &null_time) < 0)
-		{
-			perror("Game_loop: select: poll");
-			abort();
-		}
-
-		/*
-			New connection?
-		*/
-
-		if (FD_ISSET(mud->control, &in_set))
-		{
-			new_descriptor();
-		}
-
-		/*
-			Kick out the freaky folks.
-		*/
-
-		for (d = mud->f_desc ; d ; d = mud->update_gld)
-		{
-			mud->update_gld = d->next;
-
-			if (FD_ISSET(d->descriptor, &exc_set) || IS_SET(d->mth->comm_flags, COMM_FLAG_DISCONNECT))
-			{
-				FD_CLR(d->descriptor, &in_set );
-				FD_CLR(d->descriptor, &out_set);
-				d->outtop = 0;
-
-				if (d->character != NULL)
-				{
-					log_printf("Kicking off %s for being freaky", d->character->name);
-				}
-				close_socket(d);
-			}
-		}
-
-		if (mud->f_desc && !IS_SET(mud->flags, MUD_EMUD_BOOTING))
-		{
-			for (d = mud->f_desc ; d ; d = d->next)
-			{
-				REMOVE_BIT(d->mth->comm_flags, COMM_FLAG_COMMAND);
-			}
-		}
-/*
-		if (mud->mp_group_greeter && mud->mp_group_greeted)
-		{
-			if (MP_VALID_MOB(mud->mp_group_greeter))
-			{
-				mudprog_percent_check(mud->mp_group_greeter->pIndexData->first_prog, mud->mp_group_greeter, mud->mp_group_greeted, NULL, NULL, GROUP_GREET_PROG, mud->mp_group_greeter->pIndexData->vnum);
-			}
-			mud->mp_group_greeter = mud->mp_group_greeted = NULL;
-		}
- removed GCMP*/
-		close_timer(TIMER_SCAN_DESC);
-
-		start_timer(TIMER_PROCESS_INPUT);
-
-		/*
-			Process input.
-		*/
-
-		if (mud->f_desc != NULL && !IS_SET(mud->flags, MUD_EMUD_BOOTING))
-		{
-			for (d = mud->f_desc ; d ; d = mud->update_gld)
-			{
-				mud->update_gld = d->next;
-
-				if (FD_ISSET(d->descriptor, &in_set))
-				{
-					if (d->character == NULL || d->character->desc != d || !IS_SET(CH(d)->pcdata->interp, INTERP_ALIAS))
-					{
-						if (!read_from_descriptor(d))
-						{
-							FD_CLR(d->descriptor, &out_set);
-							d->outtop = 0;
-							SET_BIT(d->mth->comm_flags, COMM_FLAG_DISCONNECT);
-							close_socket(d);
-							continue;
-						}
-					}
-				}
-
-			/*	if (d->connected < CON_PLAYING && d->connecting_time + DESCRIPTOR_TIMEOUT < mud->current_time)
-				{
-					write_to_descriptor(d, "\n\r\n\rLogin time out reached.\n\r\n\r", 0);
-					log_god_printf("Login timeout reached for D%d@%s", d->descriptor, d->host);
-					close_socket(d);
-					continue;
-				}
-                        */
-		/*		process_naws(d, d->mth->cols, d->mth->rows); */
-
-			/*	if (d->character != NULL && d->character->wait > 0)
-				{
-					bool HighSpeed = FALSE;
-
-					if (IS_NPC(d->character))
-					{
-						d->character->wait--;
-						if (d->character->wait == 0)
-						{
-							vt100prompt(d->character);
-						}
-						continue;
-					}
-
-					if (d->incomm[0] == '\0')
-					{
-						if (d->connected >= CON_PLAYING && d->character && !IS_NPC(d->character) && who_fighting(d->character))
-						{
-							if (d->character->pcdata->auto_flags == AUTO_QUICK && d->character->hit > d->character->pcdata->wimpy)
-							{
-								HighSpeed = TRUE;
-							}
-						}
-					}
-					if (HighSpeed)
-					{
-						d->character->wait -= 2;
-						if (d->character->wait < 0)
-						{
-							d->character->wait = 0;
-						}
-					}
-					else
-					{
-						--d->character->wait;
-						if (d->character->wait < 0)
-						{
-							d->character->wait = 0;
-						}
-					}
-					if (d->character->wait == 0)
-					{
-						vt100prompt(d->character);
-					}
-					continue;
-				}
-                                */
-				/*
-					Reset characters from aliasses - removing - GCMP
-				
-
-				if (*d->incomm == '\0' && d->connected >= CON_PLAYING && d->character && d == d->character->desc && *d->inbuf == '\0' && d->intop == 0)
-				{
-					REMOVE_BIT(CH(d)->pcdata->interp, INTERP_ALIAS);
-
-					if (d->back_buf != NULL)
-					{
-						d->intop = str_cpy_max(d->inbuf, d->back_buf, MAX_INPUT_LENGTH-10);
-						STRFREE(d->back_buf);
-						d->back_buf = NULL;
-					}
-					else
-					{
-						SET_BIT(d->mth->comm_flags, COMM_FLAG_NOINPUT);
-					}
-				}
-				read_from_buffer(d);
-                                */
-
-				/*
-					Auto reactions
-				*/
-
-			/*	if (d->incomm[0] == '\0'
-				&&  d->connected == CON_PLAYING
-				&&  d->character != NULL
-				&&  d->original == NULL
-				&&  d == d->character->desc
-				&&  d->character->wait == 0
-				&&  d->character->in_room != room_index[ROOM_VNUM_LIMBO])
-				{
-					if (who_fighting(d->character) && d->character->pcdata->auto_flags != AUTO_OFF && d->character->hit > d->character->pcdata->wimpy)
-					{
-						int sn;
-						bool hadtostand	= FALSE;
-						bool ms			= FALSE;
-
-						switch(d->character->position)
-						{
-							case POS_SLEEPING:
-							case POS_RESTING:
-							case POS_SITTING:
-								do_stand(d->character,"");
-								hadtostand = TRUE;
-								break;
-							case POS_STANDING:
-								d->character->position = POS_FIGHTING;
-								break;
-							case POS_FIGHTING:
-								break;
-							default:
-								hadtostand = TRUE;
-								break;
-						}
-						if (hadtostand)
-						{
-							break;
-						}
-
-						if (!str_prefix("mass ", d->character->pcdata->auto_command))
-						{
-							ms = TRUE;
-							sn = skill_lookup(&d->character->pcdata->auto_command[5]);
-						}
-						else
-						{
-							sn = skill_lookup(d->character->pcdata->auto_command);
-						}
-
-						if (sn != -1)
-						{
-							if (is_spell(sn))
-							{
-								if (d->character->mana > 2 * get_mana(d->character, sn))
-								{
-									SET_BIT(d->character->pcdata->interp, INTERP_AUTO);
-									d->character->wait = 2;
-									if (ms)
-									{
-										sprintf(dbuf, "mass '%s'", skill_table[sn].name);
-									}
-									else
-									{
-										sprintf(dbuf, "cast '%s'", skill_table[sn].name);
-									}
-									write_to_buffer(d, "", 0);
-									str_cpy_max(d->incomm, dbuf, MAX_INPUT_LENGTH);
-								}
-							}
-							else
-							{
-								if (d->character->move > 2 * skill_table[sn].cost)
-								{
-									SET_BIT(d->character->pcdata->interp, INTERP_AUTO);
-									d->character->wait = 2;
-									sprintf(dbuf, "%s", skill_table[sn].name);
-									write_to_buffer(d, "", 0);
-									str_cpy_max(d->incomm, dbuf, MAX_INPUT_LENGTH);
-								}
-							}
-						}
-						else
-						{
-							ch_printf(d->character, "%s is not a spell or skill.\n\r", d->character->pcdata->auto_command);
-							log_printf("%s has auto command set to: %s", d->character->name, d->character->pcdata->auto_command);
-							d->character->pcdata->auto_flags = AUTO_OFF;
-							STRFREE(d->character->pcdata->auto_command);
-							d->character->pcdata->auto_command = STRALLOC("");
-						}
-					}
-					else if (*d->character->pcdata->tracking != '\0')
-					{
-						CHAR_DATA * rch;
-
-							Tracking Skill
-						
-
-						for (rch = d->character->in_room->first_person ; rch ; rch = rch->next_in_room)
-						{
-							if (!strcasecmp(rch->name, d->character->pcdata->tracking) || !strcasecmp(rch->short_descr, d->character->pcdata->tracking))
-							{
-								send_to_char("You've found your prey!\n\r", d->character);
-
-								if (IS_AFFECTED(d->character, AFF_HUNT) && number_percent() < d->character->pcdata->learned[gsn_greater_hunt])
-								{
-									if (!IS_NPC(rch))
-									{
-										do_murder(d->character, d->character->pcdata->tracking);
-									}
-									else
-									{
-										do_kill(d->character, rch->name);
-									}
-								}
-								STRFREE(d->character->pcdata->tracking);
-								d->character->pcdata->tracking = STRALLOC("");
-								break;
-							}
-						}
-						if (rch == NULL)
-						{
-							do_track(d->character, d->character->pcdata->tracking);
-						}
-					} */
-			/*		else if (d->character->pcdata->travel >= 0)
-					{
-						int exit_cnt, new_exit, cnt;
-						CHAR_DATA *ch;
-
-						
-							Travel Command
-						
-
-					 	if (d->character->position != POS_STANDING || d->character->fighting || d->character->hit < d->character->pcdata->wimpy)
-					 	{
-							d->character->pcdata->travel		= -1;
-							d->character->pcdata->travel_from	= NULL;
-							send_to_char("You stop traveling.\n\r", d->character);
-						}
-						else
-						{
-							ch		= d->character;
-							exit_cnt	= 0;
-							new_exit	= 0;
-							cnt		= 0;
-
-							for (; cnt < 6 ; cnt++)
-							{
-								if (cnt != rev_dir[d->character->pcdata->travel] && get_exit(ch->in_room->vnum, cnt) != NULL)
-								{
-									if (can_move_char(ch, cnt))
-									{
-										if (ch->pcdata->travel_from == NULL || ch->pcdata->travel_from != room_index[ch->in_room->exit[cnt]->to_room])
-										{
-											new_exit = cnt;
-											exit_cnt++;
-										}
-									}
-								}
-							}
-
-							if (exit_cnt != 1)
-							{
-								if (exit_cnt < 1)
-								{
-									if (ch->move > 15)
-									{
-										send_to_char("You stop traveling due to a dead end.\n\r", ch);
-									}
-									else
-									{
-										send_to_char("You stop traveling to rest.\n\r", ch);
-									}
-								}
-								else
-								{
-									send_to_char("You stop traveling to pick directions.\n\r", ch);
-								}
-								ch->pcdata->travel		= -1;
-								ch->pcdata->travel_from	= NULL;
-							}
-							else
-							{
-								ch->pcdata->travel		= new_exit;
-								ch->pcdata->travel_from	= ch->in_room;
-
-								ch_printf(ch, "You travel %s.\n\r", dir_name[new_exit]);
-								 move_char(ch, new_exit, TRUE); 
-                                                                move_char(ch, new_exit);
-							}
-						}
-					} */
-				/*} */ 
-
-				/*
-					Check input
-				*/
-				if (d->incomm[0] != '\0')
-				{
-					if (IS_SET(d->mth->comm_flags, COMM_FLAG_NOINPUT))
-					{
-						REMOVE_BIT(d->mth->comm_flags, COMM_FLAG_NOINPUT);
-						SET_BIT(d->mth->comm_flags, COMM_FLAG_COMMAND);
-					}
-					stop_idling(d);
-
-					if (!IS_SET(d->mth->comm_flags, COMM_FLAG_DISCONNECT))
-					{
-						if (d->connected == CON_PLAYING)
-						{
-							interpret(d->character, d->incomm);
-						}
-					/*	else if (d->connected == CON_EDITING)
-						{
-							edit_buffer(d->character, d->incomm);
-						} */
-						else
-						{
-							if (nanny(d, d->incomm))
-							{
-								continue;
-							}
-						}
-					}
-
-				}
-			}
-		}
-
-		close_timer(TIMER_PROCESS_INPUT);
-
-		/*
-			Prompt and Tactical.
-		*/
-
-		start_timer(TIMER_TACTICAL_UPD);
-
-		if (mud->f_desc != NULL && !IS_SET(mud->flags, MUD_EMUD_BOOTING))
-		{
-			for (d = mud->f_desc ; d ; d = mud->update_gld)
-			{
-				mud->update_gld = d->next;
-
-				*d->incomm = '\0';
-
-				if ((IS_SET(d->mth->comm_flags, COMM_FLAG_COMMAND) || d->outtop > 0) && FD_ISSET(d->descriptor, &out_set))
-				{
-					if (!process_output(d, TRUE) || IS_SET(d->mth->comm_flags, COMM_FLAG_DISCONNECT))
-					{
-						d->outtop = 0;
-						close_socket(d);
-					}
-				}
-			}
-		}
-
-/*
-		if (mud->f_desc != NULL && !IS_SET(mud->flags, MUD_EMUD_BOOTING))
-		{
-			for (d = mud->f_desc ; d ; d = mud->update_gld)
-			{
-				mud->update_gld = d->next;
-
-				if (!IS_SET(d->mth->comm_flags, COMM_FLAG_DISCONNECT) && d->character && d->connected >= CON_PLAYING && CH(d)->pcdata && IS_SET(CH(d)->pcdata->interp, INTERP_TACT_UPDATE))
-				{
-					vt100prompter(d->character);
-				}
-			}
-		}
-*/
-		close_timer(TIMER_TACTICAL_UPD);
-
-		start_timer(TIMER_PROCESS_OUTPUT);
-
-		if (mud->f_desc != NULL && !IS_SET(mud->flags, MUD_EMUD_BOOTING))
-		{
-			for (d = mud->f_desc ; d ; d = mud->update_gld)
-			{
-				mud->update_gld = d->next;
-
-				if (IS_SET(d->mth->comm_flags, COMM_FLAG_DISCONNECT))
-				{
-					continue;
-				}
-				if (d->outtop)
-				{
-					if (d->outbuf[d->outtop - 1] != '\r')
-					{
-						d->outbuf[d->outtop++] = IAC;
-						d->outbuf[d->outtop++] = EOR;
-					}
-					write_to_port(d);
-				}
-			}
-		}
-
-		close_timer(TIMER_PROCESS_OUTPUT);
-
-		/*
-			pause the loop
-		*/
-
-		gettimeofday(&now_time, NULL);
-
-		if (now_time.tv_sec == last_time.tv_sec)
-		{
-			usec_gameloop = now_time.tv_usec - last_time.tv_usec;
-		}
-		else
-		{
-			usec_gameloop = 1000000 - last_time.tv_usec + now_time.tv_usec;
-		}
-
-		usec_gamewait = 1000000 / PULSE_PER_SECOND - usec_gameloop;
-
-		stall_time.tv_usec = usec_gamewait;
-
-		mud->total_io_ticks++;
-		mud->total_io_exec  += usec_gameloop;
-		mud->total_io_delay += usec_gamewait;
-
-		if (usec_gamewait >= 0)
-		{
-			if (select(0, NULL, NULL, NULL, &stall_time) < 0)
-			{
-				perror("Game_loop: select: stall");
-			}
-		}
-		else
-		{
-			/*
-			log_printf("game_loop_unix: heartbeat violation of %lld usec", usec_gameloop - 1000000LL / PULSE_PER_SECOND);
-			*/
-		}
-	}
-	pop_call();
-	return;
-}
-void init_descriptor (DESCRIPTOR_DATA *dnew, int desc)
-{
-	dnew->descriptor		= desc;
-	dnew->connected			= CON_GET_NAME;
-	dnew->connecting_time		= mud->current_time;
-	dnew->port_size			= 10000;
-	dnew->inlast_gmcp       	= STRDUPE(str_empty);
+        static struct timeval null_time;
+        struct timeval last_time;
+
+        signal(SIGPIPE, SIG_IGN);
+        gettimeofday(&last_time, NULL);
+        current_time = (time_t) last_time.tv_sec;
+
+        install_crash_handler();
+
+        /* Main loop */
+        while (!merc_down)
+        {
+                DESCRIPTOR_DATA *d;
+                fd_set           in_set;
+                fd_set           out_set;
+                fd_set           exc_set;
+                int              maxdesc;
+
+                /*
+                 fd_set           wizPort_in_set;
+                 fd_set           wizPort_out_set;
+                 fd_set           wizPort_exc_set;
+                 int              wizPort_maxdesc;
+                 */
+
+#if defined(MALLOC_DEBUG)
+                if (malloc_verify() != 1)
+                        abort();
+#endif
+
+                /*
+                 * Poll all active descriptors.
+                 */
+                FD_ZERO(&in_set);
+                FD_ZERO(&out_set);
+                FD_ZERO(&exc_set);
+                FD_SET(control, &in_set);
+
+                maxdesc = control;
+
+                /*
+                 FD_ZERO(&wizPort_in_set);
+                 FD_ZERO(&wizPort_out_set);
+                 FD_ZERO(&wizPort_exc_set);
+                 FD_SET(wizPort, &wizPort_in_set);
+                 wizPort_maxdesc = wizPort;
+                 */
+
+                for (d = descriptor_list; d; d = d->next)
+                {
+                        maxdesc = UMAX(maxdesc, d->descriptor);
+                        FD_SET(d->descriptor, &in_set);
+                        FD_SET(d->descriptor, &out_set);
+                        FD_SET(d->descriptor, &exc_set);
+                        if (d->ifd!=-1 && d->ipid!=-1)
+                        {
+                                maxdesc = UMAX(maxdesc, d->ifd);
+                                FD_SET(d->ifd, &in_set);
+                        }
+                }
+
+                if (select(maxdesc+1, &in_set, &out_set, &exc_set, &null_time) < 0
+                    /*|| select(maxdesc+2, &wizPort_in_set, &out_set,
+                    &exc_set, &null_time) < 0*/)
+                {
+                        perror("Game_loop: select: poll");
+                        exit(1);
+                }
+
+                /*
+                 * New connection?
+                 */
+                if (FD_ISSET(control, &in_set))
+                        new_descriptor(control);
+
+                /*
+                if (FD_ISSET(wizPort, &wizPort_in_set))
+                        wizPort_handler(wizPort);
+                 */
+
+                /*
+                 * Kick out the freaky folks.
+                 */
+                for (d = descriptor_list; d; d = d_next)
+                {
+                        d_next = d->next;
+                        if (FD_ISSET(d->descriptor, &exc_set))
+                        {
+                                FD_CLR(d->descriptor, &in_set);
+                                FD_CLR(d->descriptor, &out_set);
+                                if (d->character)
+                                        save_char_obj(d->character);
+                                d->outtop = 0;
+                                close_socket(d);
+                        }
+                }
+
+                /*
+                 * Process input.
+                 */
+                for (d = descriptor_list; d; d = d_next)
+                {
+                        d_next  = d->next;
+                        d->fcommand     = FALSE;
+
+                        if (FD_ISSET(d->descriptor, &in_set))
+                        {
+                                if (d->character)
+                                        d->character->timer = 0;
+                                if (!read_from_descriptor(d))
+                                {
+                                        FD_CLR(d->descriptor, &out_set);
+                                        if (d->character)
+                                                save_char_obj(d->character);
+                                        d->outtop = 0;
+                                        close_socket(d);
+                                        continue;
+                                }
+                        }
+
+                        /* check for input from the ident */
+                        if ((d->connected==CON_PLAYING || CH(d) != NULL)
+                            && d->ifd != -1 && FD_ISSET(d->ifd, &in_set))
+                                process_ident(d);
+
+                        if (d->character
+                            && d->character->wait > 0
+                            && !IS_TRUE_IMMORTAL(d->character))
+                        {
+                                --d->character->wait;
+                                continue;
+                        }
+
+                        read_from_buffer(d);
+                        if (d->incomm[0] != '\0')
+                        {
+                                d->fcommand     = TRUE;
+                                stop_idling(d->character);
+
+                                if (d->connected == CON_PLAYING)
+                                        if (d->showstr_point)
+                                                show_string(d, d->incomm);
+                                else
+                                        interpret(d->character, d->incomm);
+                                else
+                                        nanny(d, d->incomm);
+
+                                d->incomm[0]    = '\0';
+                        }
+                }
+
+                /*
+                 * Autonomous game motion.
+                 */
+                update_handler();
+
+                /*
+                 * Output.
+                 */
+                for (d = descriptor_list; d; d = d_next)
+                {
+                        d_next = d->next;
+
+                        if ((d->fcommand || d->outtop > 0)
+                            && FD_ISSET(d->descriptor, &out_set))
+                        {
+                                if (!process_output(d, TRUE))
+                                {
+                                        if (d->character)
+                                                save_char_obj(d->character);
+                                        d->outtop       = 0;
+                                        close_socket(d);
+                                }
+                        }
+                }
+
+                /*
+                 * Synchronize to a clock.
+                 * Sleep(last_time + 1/PULSE_PER_SECOND - now).
+                 * Careful here of signed versus unsigned arithmetic.
+                 */
+                {
+                        struct timeval now_time;
+                        long secDelta;
+                        long usecDelta;
+
+                        gettimeofday(&now_time, NULL);
+
+                        usecDelta = ((int) last_time.tv_usec)
+                                - ((int)  now_time.tv_usec)
+                                + 1000000 / PULSE_PER_SECOND;
+                        secDelta = ((int) last_time.tv_sec)
+                                - ((int)  now_time.tv_sec);
+
+                        while (usecDelta < 0)
+                        {
+                                usecDelta += 1000000;
+                                secDelta  -= 1;
+                        }
+
+                        while (usecDelta >= 1000000)
+                        {
+                                usecDelta -= 1000000;
+                                secDelta  += 1;
+                        }
+
+                        if (secDelta > 0 || (secDelta == 0 && usecDelta > 0))
+                        {
+                                struct timeval stall_time;
+
+                                stall_time.tv_usec = usecDelta;
+                                stall_time.tv_sec  = secDelta;
+
+                                if (select(0, NULL, NULL, NULL, &stall_time) < 0)
+                                {
+                                        perror("Game_loop: select: stall");
+                                        exit(1);
+                                }
+                        }
+                }
+
+                gettimeofday(&last_time, NULL);
+                current_time = (time_t) last_time.tv_sec;
+        }
+
+        return;
 }
 
-void new_descriptor(void)
+
+void new_descriptor (int control)
 {
-	DESCRIPTOR_DATA *dnew, *dtmp;
-	BAN_DATA *pban;
-	struct sockaddr_in sock;
-	int desc, sockbuf;
-	socklen_t size;
-	struct linger ld;
+        BAN_DATA               *pban;
+        static DESCRIPTOR_DATA  d_zero;
+        DESCRIPTOR_DATA        *dnew;
+        struct sockaddr_in      sock;
+        struct hostent         *from;
+        char                    buf [ MAX_STRING_LENGTH ];
+        int                     desc;
+        socklen_t               size;
+        int                     addr;
 
-	size = sizeof(sock);
+        size = sizeof(sock);
+        getsockname(control, (struct sockaddr *) &sock, &size);
 
-	push_call("new_descriptor(void)");
+        if ((desc = accept(control, (struct sockaddr *) &sock, &size)) < 0)
+        {
+                perror("New_descriptor: accept");
+                return;
+        }
 
-	getsockname(mud->control, (struct sockaddr *) &sock, &size);
+#if !defined(FNDELAY)
+# if defined(__hpux)
+#  define FNDELAY O_NONBLOCK
+# else
+#  define FNDELAY O_NDELAY
+# endif
+#endif
 
-	if ((desc = accept(mud->control, (struct sockaddr *) &sock, &size)) < 0)
-	{
-		perror("New_descriptor: accept");
-		pop_call();
-		return;
-	}
+        if (fcntl(desc, F_SETFL, FNDELAY) == -1)
+        {
+                perror("New_descriptor: fcntl: FNDELAY");
+                return;
+        }
 
-	if (fcntl(desc, F_SETFL, O_NDELAY|O_NONBLOCK) == -1)
-	{
-		perror("new_descriptor: fcntl: O_NDELAY|O_NONBLOCK");
-		pop_call();
-		return;
-	}
+        /*
+         * Cons a new descriptor.
+         */
+        if (!descriptor_free)
+        {
+                dnew            = alloc_perm(sizeof(*dnew));
+        }
+        else
+        {
+                dnew            = descriptor_free;
+                descriptor_free = descriptor_free->next;
+        }
 
-	sockbuf = 2048;
+        *dnew           = d_zero;
+        dnew->descriptor        = desc;
+        dnew->character     = NULL;
+        dnew->connected = CON_GET_NAME;
+        dnew->showstr_head  = str_dup("");
+        dnew->showstr_point = 0;
+        dnew->outsize   = 2000;
+        dnew->outbuf    = alloc_mem(dnew->outsize);
 
-	if (setsockopt(desc, SOL_SOCKET, SO_RCVBUF, (char *) &sockbuf, sizeof(sockbuf)) < 0)
-	{
-		perror("new_socket: SO_RCVBUF");
-	}
+        size = sizeof(sock);
 
-	ld.l_onoff  = 0;
-	ld.l_linger = 100;
+        /*
+         * Would be nice to use inet_ntoa here but it takes a struct arg,
+         * which ain't very compatible between gcc and system libraries.
+         */
 
-	if (setsockopt(desc, SOL_SOCKET, SO_LINGER, (char *) &ld, sizeof(ld)) < 0)
-	{
-		perror("new_socket: SO_LINGER");
-	}
+        addr = ntohl (sock.sin_addr.s_addr);
+        sprintf(buf, "%d.%d.%d.%d",
+                (addr >> 24) & 0xFF, (addr >> 16) & 0xFF,
+                (addr >>  8) & 0xFF, (addr) & 0xFF);
+        sprintf(log_buf, "New socket from: %s", buf);
+        log_string(log_buf);
 
-	/*
-		Cons a new descriptor.
-	*/
+        /* from = gethostbyaddr((char *) &sock.sin_addr,
+                sizeof(sock.sin_addr), AF_INET); */
+        from = NULL;
 
-	ALLOCMEM(dnew, DESCRIPTOR_DATA, 1);
+        dnew->host = str_dup(from ? from->h_name : buf);
+        if (from) sprintf (log_buf, "New socket from: %s", from->h_name);
+        server_message (log_buf);
 
-	init_descriptor (dnew, desc);
-
-	init_mth_socket(dnew);
-
-	size = sizeof(sock);
-
-	if (getpeername(desc, (struct sockaddr *) &sock, &size) < 0)
-	{
-		perror("new_descriptor: getpeername");
-		dnew->host   = STRALLOC("(unknown)");
-		SET_BIT(dnew->mth->comm_flags, COMM_FLAG_DISCONNECT);
-	}
-	else
-	{
-		int addr, address[4];
-		char buf[MAX_INPUT_LENGTH];
-
-		addr = ntohl(sock.sin_addr.s_addr);
-
-		address[0] = (addr >> 24) & 0xFF ;
-		address[1] = (addr >> 16) & 0xFF ;
-		address[2] = (addr >>  8) & 0xFF ;
-		address[3] = (addr      ) & 0xFF ;
-
-		sprintf(buf, "%d.%d.%d.%d", address[0], address[1], address[2], address[3]);
-		dnew->host = STRALLOC(buf);
-
-		/* log_god_printf("New connect: %s D%d", dnew->host , dnew->descriptor); */
-                sprintf(log_buf, "New connect: %s D%d", dnew->host , dnew->descriptor);
-                log_string(log_buf);
-	}
-
-	/*
-		Init descriptor data.
-	*/
-
-	for (dtmp = mud->f_desc ; dtmp ; dtmp = dtmp->next)
-	{
-		if (strcmp(dnew->host, dtmp->host) < 0)
-		{
-			INSERT_LEFT(dnew, dtmp, mud->f_desc, next, prev);
-			break;
-		}
-	}
-
-	if (dtmp == NULL)
-	{
-		LINK(dnew, mud->f_desc, mud->l_desc, next, prev);
-	}
-
-	mud->total_desc++;
-
-	for (pban = mud->f_ban ; pban ; pban = pban->next)
-	{
-		if (!str_prefix(pban->name, dnew->host))
-		{
-			write_to_descriptor(dnew, "\n\rYour site has been banned from this Mud.\n\r\n\r", 0);
-		/*	log_god_printf("Ban prefix '%s' for '%s', denying access.", pban->name, dnew->host); */
-                        sprintf(log_buf, "Ban prefix '%s' for '%s', denying access.", pban->name, dnew->host);
-                        log_string(log_buf);
-			close_socket(dnew);
-
-			pop_call();
-			return;
-		}
-	}
-
-	if (mud->total_desc > MAX_CONNECTIONS)  /* Limit descriptors  */
-	{
-		char buf[MAX_STRING_LENGTH];
-
+        /*
+         *  Can we accept any more connections?
+         */
+        if (connection_count >= MAX_CONNECTIONS)
+        {
+             /*   write_to_descriptor(desc, "Sorry, too many characters are playing at the moment.\n\r", 0);
+                close(desc);
+                free_string(dnew->host);
+                free_mem(dnew->outbuf, dnew->outsize);
+                dnew->next = descriptor_free;
+                descriptor_free = dnew;
+                return;  eremoved GCMP */
+        	char buf[MAX_STRING_LENGTH];
 		sprintf(buf,"\n\rSorry, the limit of %d players online has been reached.\n\rPlease try back later.\n\r\n\r", MAX_CONNECTIONS);
 		write_to_descriptor(dnew, buf, 0);
 		close_socket(dnew);
 		pop_call();
 		return;
-	}
 
-	/*
-		Inform the client about emud's telnet support
-	*/
+        }
 
-	/*
-		Send the greeting.
-	*/
-	{
-		char buf[40];
+        /*
+         * Swiftest: I added the following to ban sites.  I don't
+         * endorse banning of sites, but Copper has few descriptors now
+         * and some people from certain sites keep abusing access by
+         * using automated 'autodialers' and leaving connections hanging.
+         *
+         * Furey: added suffix check by request of Nickel of HiddenWorlds.
+         * Shade: changed str_suffix to str_prefix
+         */
+        for (pban = ban_list; pban; pban = pban->next)
+        {
+             /*   if (!str_prefix(pban->name, dnew->host))
+                {
+                        write_to_descriptor(desc, "Your site has been banned from DD4.\n\r", 0);
+                        close(desc);
+                        free_string(dnew->host);
+                        free_mem(dnew->outbuf, dnew->outsize);
+                        dnew->next = descriptor_free;
+                        descriptor_free = dnew;
+                        return;
+                } removed GCMP */
+		if (!str_prefix(pban->name, dnew->host))
+		{
+			write_to_descriptor(dnew, "\n\rYour site has been banned from this Mud.\n\r\n\r", 0);
+		/*	log_god_printf("Ban prefix '%s' for '%s', denying access.", pban->name, dnew->host); */
+			close_socket(dnew);
 
-		sprintf(buf, "greeting%d", number_range(1, 8));
+			pop_call();
+			return;
+		}
+        }
 
-		force_help(dnew, buf);
-	}
-	pop_call();
-	return;
+        /*
+         * Init descriptor data.
+         */
+        dnew->next = descriptor_list;
+        descriptor_list = dnew;
+        connection_count++;
+
+        /*
+         * Send the greeting.
+         */
+        {
+                extern char * help_greeting;
+
+                if (help_greeting[0] == '.')
+                        write_to_buffer(dnew, help_greeting+1, 0);
+                else
+                        write_to_buffer(dnew, help_greeting  , 0);
+        }
+
+        return;
 }
-
 
 
 void close_socket (DESCRIPTOR_DATA *dclose)
@@ -2210,7 +1843,7 @@ void write_to_port(DESCRIPTOR_DATA *d)
 /*
  * Deal with sockets that haven't logged in yet.
  */
-bool nanny (DESCRIPTOR_DATA *d, char *argument)
+void nanny (DESCRIPTOR_DATA *d, char *argument)
 {
         CHAR_DATA *ch;
         char      *pwdnew;
@@ -2240,13 +1873,13 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
             default:
                 bug("Nanny: bad d->connected %d.", d->connected);
                 close_socket(d);
-                return FALSE;
+                return;
 
             case CON_GET_NAME:
                 if (argument[0] == '\0')
                 {
                         close_socket(d);
-                        return FALSE;
+                        return;
                 }
 
                 argument[0] = UPPER(argument[0]);
@@ -2258,7 +1891,7 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                         if (!fOld)
                         {
                                 write_to_buffer(d, "Illegal name: try another.\n\rName: ", 0);
-                                return FALSE;
+                                return;
                         }
                         else
                         {
@@ -2269,7 +1902,7 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                                 if (ch->level < 1)
                                 {
                                         write_to_buffer(d, "Illegal name: try another.\n\rName: ", 0);
-                                        return FALSE;
+                                        return;
                                 }
                                 sprintf(buf, "Illegal name:  %s", argument);
                                 bug(buf, 0);
@@ -2282,7 +1915,7 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                         log_string(log_buf);
                         write_to_buffer(d, "You are denied access.\n\r", 0);
                         close_socket(d);
-                        return FALSE;
+                        return;
                 }
 
                 if (check_reconnect(d, argument, FALSE))
@@ -2294,14 +1927,14 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                         {
                                 write_to_buffer(d, "The game is wizlocked.\n\r", 0);
                                 close_socket(d);
-                                return FALSE;
+                                return;
                         }
 
                         if (ch->level <= numlock && numlock != 0)
                         {
                                 write_to_buffer(d, "The game is locked to your level character.\n\r\n\r", 0);
                                 close_socket(d) ;
-                                return FALSE;
+                                return;
                         }
                 }
 
@@ -2310,7 +1943,7 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                         if (d->connected != CON_GET_DISCONNECTION_PASSWORD)
                                 close_socket(d);
 
-                        return FALSE;
+                        return;
                 }
 
                 if (fOld)
@@ -2319,7 +1952,7 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                         write_to_buffer(d, "Password: ", 0);
                         write_to_buffer(d, echo_off_str, 0);
                         d->connected = CON_GET_OLD_PASSWORD;
-                        return FALSE;
+                        return;
                 }
                 else
                 {
@@ -2327,7 +1960,7 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                         sprintf(buf, "Did I get that right, %s? [y/n] ", argument);
                         write_to_buffer(d, buf, 0);
                         d->connected = CON_CONFIRM_NEW_NAME;
-                        return  FALSE;
+                        return;
                 }
                 break;
 
@@ -2341,13 +1974,13 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                 {
                         write_to_buffer(d, "Wrong password.\n\r", 0);
                         close_socket(d);
-                        return FALSE;
+                        return;
                 }
 
                 write_to_buffer(d, echo_on_str, 0);
 
                 if (check_reconnect(d, ch->name, TRUE))
-                        return TRUE;
+                        return;
 
                 sprintf(log_buf, "%s@%s has connected (on desc %d).",
                         ch->name, d->host, d->descriptor);
@@ -2393,7 +2026,7 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                 if (strlen(argument) < 5)
                 {
                         write_to_buffer(d, "Password must be at least five characters long.\n\rPassword: ", 0);
-                        return FALSE;
+                        return;
                 }
 
                 pwdnew = crypt(argument, ch->name);
@@ -2402,7 +2035,7 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                         if (*p == '~')
                         {
                                 write_to_buffer(d, "New password isn't acceptable, please try again.\n\rPassword: ", 0);
-                                return FALSE;
+                                return;
                         }
                 }
 
@@ -2421,7 +2054,7 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                 {
                         write_to_buffer(d, "The passwords didn't match.\n\r\n\rPlease enter a password: ", 0);
                         d->connected = CON_GET_NEW_PASSWORD;
-                        return FALSE;
+                        return;
                 }
 
                 write_to_buffer(d, echo_on_str, 0);
@@ -2443,7 +2076,7 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
 
                     default:
                         write_to_buffer(d, "Do you want to enable colour? [y/n] ",0);
-                        return FALSE;
+                        return;
                 }
 
                 write_to_buffer(d, "\n\r", 2);
@@ -2501,13 +2134,13 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                     default:
                         send_to_char("\n\r{Y}rInvalid race!{x\n\r"
                                 "{cPlease choose a race, or press ENTER to display the list of races. {C[a-y]{x ", ch);
-                        return FALSE;
+                        return;
                 }
 
                 if (ch->race < 1 || ch->race > ( MAX_RACE - 1 ) )
                 {
                         send_to_char("\n\r{cPlease choose a race for your character. {C[a-y]{x ", ch);
-                        return FALSE;
+                        return;
                 }
 
                 sprintf(buf, "\n\r{WRace selected: %s{x\n\r\n\r",
@@ -2527,7 +2160,7 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                         do_help (ch, "race");
                         send_to_char("\n\r{cPlease choose a race for your character. {C[a-x]{x ", ch);
                         d->connected = CON_GET_NEW_RACE;
-                        return FALSE;
+                        return;
                 }
 
                 send_to_char("\n\r\n\r{W}bSelect a gender{x\n\r\n\r"
@@ -2541,7 +2174,7 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                 if (argument[0] == '\0')
                 {
                         send_to_char("{cMale, female or neuter? {C[m/f/n]{x ", ch);
-                        return FALSE;
+                        return;
                 }
 
                 switch (argument[0])
@@ -2552,7 +2185,7 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                     default:
                         send_to_char("\n\r{Y}rInvalid gender!{x\n\r"
                                      "{cMale, female or neuter? {C[m/f/n]{x ", ch);
-                        return FALSE;
+                        return;
                 }
 
                 d->connected = CON_DISPLAY_CLASS;
@@ -2571,7 +2204,7 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                                      "Please indicate what sex your character is.\n\r"
                                      "{cMale, female or neuter? {C[m/f/n]{x ", ch);
                         d->connected = CON_GET_NEW_SEX;
-                        return FALSE;
+                        return;
                 }
 
                 send_to_char("\n\r\n\r{W}bSelect a class{x\n\r\n\r"
@@ -2603,7 +2236,7 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                         }
 
                         send_to_char("\n\r{cPlease choose a class for your character:{x ", ch);
-                        return FALSE;
+                        return;
                 }
 
                 for (iClass = 0; iClass < MAX_CLASS ; iClass++)
@@ -2619,7 +2252,7 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                 {
                         send_to_char("\n\r{Y}rInvalid class!{x\n\r"
                                      "{cPlease choose a class, or press ENTER to list available classes:{x ", ch);
-                        return FALSE;
+                        return;
                 }
 
                 write_to_buffer(d, "\n\r", 0);
@@ -2668,7 +2301,7 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
 
                         send_to_char("\n\r{cPlease choose a class for your character:{x ", ch);
                         d->connected = CON_GET_NEW_CLASS;
-                        return FALSE;
+                        return;
                 }
 
                 sprintf(log_buf, "%s@%s new player.", ch->name, d->host);
@@ -2709,7 +2342,7 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                                 ch->pcdata->perm_dex,
                                 ch->pcdata->perm_con);
                         send_to_char(buf, ch);
-                        return FALSE;
+                        return;
                 }
 
                 send_to_char("\n\r{WCharacter generation complete.{x\n\r\n\r"
@@ -2928,7 +2561,7 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                     && strcmp(crypt(argument, ch->pcdata->pwd), ch->pcdata->pwd))
                 {
                         close_socket(d);
-                        return FALSE;
+                        return;
                 }
 
                 write_to_buffer(d, echo_on_str, 0);
@@ -2960,8 +2593,6 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                 d->connected = CON_PLAYING;
                 break;
         }
-        pop_call();
-	return FALSE;
 } /* nanny mark */
 
 
@@ -5116,29 +4747,6 @@ void dump_stack(void)
 	log_printf("End of stack");
 }
 
-void force_help(DESCRIPTOR_DATA *d, char *argument)
-{
-	AREA_DATA *pArea;
-	HELP_DATA *pHelp;
-
-	push_call("force_help(%p,%p)",d,argument);
-
-	for (pArea = mud->f_area ; pArea ; pArea = pArea->next)
-	{
-		for (pHelp = pArea->first_help ; pHelp ; pHelp = pHelp->next)
-		{
-			if (is_name(argument, pHelp->keyword))
-			{
-				/*write_to_buffer(d, ansi_translate(pHelp->text), 1000000); */
-                                write_to_buffer(d, pHelp->text,  1000000);
-				pop_call();
-				return;
-			}
-		}
-	}
-	pop_call();
-	return;
-}
 
 /* end GCMP */
 

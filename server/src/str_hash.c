@@ -5,6 +5,8 @@
  ***************************************************************************/
 
 #include "merc.h"
+#include <stdlib.h>
+#include <string.h>
 
 /*
 	Generate a kinky hash index - Scandum

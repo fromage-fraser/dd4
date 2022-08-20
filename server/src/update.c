@@ -18,14 +18,15 @@
  *  around, comes around.                                                  *
  ***************************************************************************/
 
-#if defined( macintosh )
+#if defined(macintosh)
 #include <types.h>
+#include <time.h>
 #else
 #include <sys/types.h>
+#include <sys/time.h>
 #endif
 #include <stdio.h>
-#include <string.h>
-#include <time.h>
+#include <string.h>  
 #include "merc.h"
 /*
  * Externals
@@ -53,6 +54,13 @@ void    char_update     args( ( void ) );
 void    obj_update      args( ( void ) );
 void    aggr_update     args( ( void ) );
 void    quest_update    args( ( void ) ); /* Vassago - quest.c */
+
+void msdp_update                args ((void));
+void shop_update                args ((void));
+void time_update                args ((void));
+void bounty_update              args ((void));
+void auto_area_save             args ((void));
+void mob_program_update         args ((void));
 
 
 /*
@@ -1713,6 +1721,31 @@ void char_update( void )
                 }
         }
 
+/*	{
+		static int lastHour;
+
+		mud->usage->players[mud->time.tm_hour][mud->time.tm_wday] = mud->total_plr;
+
+		if (lastHour != mud->time.tm_hour)
+		{
+			save_usage();
+			save_hiscores();
+			bounty_update();
+			save_timeinfo();
+
+
+
+			if (mud->time.tm_hour == 0)
+			{
+				log_printf("Backing up player files.");
+
+				system("cd ..;./backup&");
+			} 
+		}
+		lastHour = mud->time.tm_hour;
+	} */
+
+	pop_call();
         return;
 }
 
@@ -2034,6 +2067,7 @@ void aggr_update()
 
 
 /* Update the check on time for autoshutdown */
+/*
 void time_update()
 {
         FILE *fp;
@@ -2081,7 +2115,102 @@ void time_update()
                 merc_down = TRUE;
         }
 }
+*/
 
+void time_update (void)
+{
+	char buf[MAX_INPUT_LENGTH];
+	AREA_DATA 		*area;
+	PLAYER_GAME		*gpl;
+
+	push_call("time_update()");
+
+	mud->time_info->hour++;
+
+	if (mud->time_info->hour >= 24)
+	{
+		mud->time_info->hour = 0;
+		mud->time_info->day++;
+	}
+
+	if (mud->time_info->day >= 35)
+	{
+		mud->time_info->day = 0;
+		mud->time_info->month++;
+	}
+
+	if (mud->time_info->month >= 16)
+	{
+		mud->time_info->month = 0;
+		mud->time_info->year++;
+	}
+
+	switch (mud->time_info->hour)
+	{
+		case 5:
+			mud->sunlight = SUN_RISE;
+			break;
+		case 6:
+			mud->sunlight = SUN_LIGHT;
+			break;
+
+		case 19:
+			mud->sunlight = SUN_SET;
+			break;
+
+		case 20:
+			mud->sunlight = SUN_DARK;
+			break;
+	}
+
+	for (area = mud->f_area ; area ; area = area->next)
+	{
+
+
+		if (area->nplayer == 0)
+		{
+			continue;
+		}
+
+		buf[0] = '\0';
+
+		switch (mud->time_info->hour)
+		{
+			case 5:
+				sprintf(buf, "The day has begun.\n\r");
+				break;
+
+			case 6:
+				sprintf(buf, "The sun rises in the east.\n\r");
+				break;
+
+			case 19:
+				sprintf(buf, "The sun slowly disappears in the west.\n\r");
+				break;
+
+			case 20:
+				sprintf(buf, "The night has begun.\n\r");
+				break;
+		}
+
+		if (buf[0] == '\0')
+		{
+			continue;
+		}
+
+		for (gpl = mud->f_player ; gpl ; gpl = gpl->next)
+		{
+			if (gpl->ch->in_room->area == area
+			&&  IS_OUTSIDE(gpl->ch)
+			&& IS_AWAKE(gpl->ch))
+			{
+				send_to_char(buf, gpl->ch);
+			}
+		}
+	}
+	pop_call();
+	return;
+}
 
 /*
  * Remove deleted EXTRA_DESCR_DATA from objects.
@@ -2284,6 +2413,150 @@ void list_update ()
  * Called once per pulse from game loop.
  * Random times to defeat tick-timing clients and players.
  */
+
+/*
+	Called once per pulse from game loop.
+	Random times to defeat tick-timing clients and players.
+	Update routines spread out over 10 pulses
+	Scandum - 14-05-2003
+*/
+
+void update_handler (void)
+{
+	static sh_int pulse_area			= 9 + PULSE_TICK;
+	static sh_int pulse_weather		= 9 + PULSE_TICK;
+	static sh_int pulse_obj			= 8 + PULSE_TICK;
+	static sh_int pulse_tick			= 7 + PULSE_TICK;
+	static sh_int pulse_msdp           = 5 + PULSE_MSDP;
+	static sh_int pulse_mobprog		= 4 + PULSE_PROGRAM;
+	static sh_int pulse_violence		= 2 + PULSE_VIOLENCE;
+	static sh_int pulse_mobile		= 1 + PULSE_MOBILE;
+	static sh_int pulse_aggressive	= 0 + PULSE_AGGRESSIVE;
+
+	push_call("update_handler()");
+
+/*	if (--pulse_areasave <= 0)
+	{
+		pulse_areasave = PULSE_AREASAVE;
+		start_timer(TIMER_AREA_SAVE);
+		auto_area_save();
+		close_timer(TIMER_AREA_SAVE);
+	}
+
+	if (--pulse_shops <= 0)
+	{
+		pulse_shops = PULSE_SHOPS;
+		start_timer (TIMER_SHOP_UPD);
+		shop_update ();
+		close_timer (TIMER_SHOP_UPD);
+	}
+*/
+	if (--pulse_tick <= 0)
+	{
+		pulse_tick = PULSE_TICK / 2 + 10 * number_range(0, PULSE_TICK / 10);
+		start_timer (TIMER_CHAR_UPD);
+		time_update();
+		char_update();
+		close_timer(TIMER_CHAR_UPD);
+	}
+
+	if (--pulse_area <= 0)
+	{
+		pulse_area = PULSE_AREA / 2 + 10 * number_range(0, PULSE_AREA / 10);
+		start_timer (TIMER_AREA_UPD);
+		area_update ();
+                quest_update ();
+		close_timer (TIMER_AREA_UPD);
+	}
+
+	if (--pulse_weather <= 0)
+	{
+		pulse_weather = PULSE_TICK / 2 + 10 * number_range(0, PULSE_TICK / 10);
+		start_timer (TIMER_WEATHER_UPD);
+		weather_update ();
+		close_timer (TIMER_WEATHER_UPD);
+	}
+
+	if (--pulse_obj <= 0)
+	{
+		pulse_obj = PULSE_TICK / 2 + 10 * number_range(0, PULSE_TICK / 10);
+		start_timer (TIMER_OBJ_UPD);
+		obj_update ();
+		close_timer (TIMER_OBJ_UPD);
+	}
+
+/*	if (--pulse_charsave <= 0)
+	{
+		pulse_charsave = PULSE_CHARSAVE;
+		start_timer( TIMER_CHAR_SAVE );
+		auto_char_save();
+		close_timer( TIMER_CHAR_SAVE );
+	}
+*/
+	if (--pulse_violence <= 0)
+	{
+		pulse_violence = PULSE_VIOLENCE;
+		start_timer (TIMER_VIOL_UPD);
+		violence_update ();
+		close_timer (TIMER_VIOL_UPD);
+	}
+
+	if (--pulse_msdp <= 0)
+	{
+		pulse_msdp = PULSE_MSDP;
+		start_timer(TIMER_MSDP);
+		msdp_update();
+		close_timer(TIMER_MSDP);
+	}
+
+	if (--pulse_mobprog <= 0)
+	{
+		pulse_mobprog = PULSE_PROGRAM;
+		start_timer(TIMER_MOB_PROG);
+	/*	mob_program_update(); */
+                bot_update();
+		close_timer(TIMER_MOB_PROG);
+	}
+
+/*	if (--pulse_objprog <= 0)
+	{
+		pulse_objprog = PULSE_PROGRAM;
+		start_timer(TIMER_OBJ_PROG);
+		obj_program_update();
+		close_timer(TIMER_OBJ_PROG);
+	}
+*/
+	if (--pulse_mobile <= 0)
+	{
+		pulse_mobile = PULSE_MOBILE;
+		start_timer (TIMER_MOB_UPD);
+		mobile_update();
+		close_timer (TIMER_MOB_UPD);
+	}
+
+	if (--pulse_aggressive <= 0)
+	{
+		pulse_aggressive = PULSE_AGGRESSIVE;
+		start_timer (TIMER_AGGR_UPD);
+		aggr_update();
+		close_timer (TIMER_AGGR_UPD);
+	}
+/*
+	{
+		start_timer (TIMER_PURGE);
+		purger_update();
+		if (IS_SET(mud->flags, MUD_PURGER))
+		{
+			update_purger();
+		}
+		close_timer (TIMER_PURGE);
+	}
+*/
+	pop_call();
+	return;
+}
+
+ /*
 void update_handler ()
 {
         static int pulse_area;
@@ -2348,6 +2621,7 @@ void update_handler ()
         tail_chain();
         return;
 }
+*/
 
 
 /*
@@ -2559,5 +2833,35 @@ bool check_questpoints_allow_level_gain (CHAR_DATA* ch, bool verbose)
         return TRUE;
 }
 
+/* GMCP */
+void msdp_update(void)
+{
+	DESCRIPTOR_DATA *d;
+
+	for (d = mud->f_desc ; d ; d = d->next)
+	{
+		if (d->mth->msdp_data == NULL || CH(d) == NULL)
+		{
+			continue;
+		}
+
+		msdp_update_var(d, "ALIGNMENT", "%d", CH(d)->alignment);
+/*		msdp_update_var(d, "EXPERIENCE", "%d", CH(d)->pcdata->exp);
+		msdp_update_var(d, "EXPERIENCE_MAX", "%d", exp_level(CH(d)->class, CH(d)->level) - exp_level(CH(d)->class, CH(d)->level-1)); */
+		msdp_update_var(d, "HEALTH", "%d", CH(d)->hit);
+		msdp_update_var(d, "HEALTH_MAX", "%d", CH(d)->max_hit);
+		msdp_update_var(d, "LEVEL", "%d", CH(d)->level);
+		msdp_update_var(d, "MANA", "%d", CH(d)->mana);
+		msdp_update_var(d, "MANA_MAX", "%d", CH(d)->max_mana);
+		msdp_update_var(d, "MONEY", "%d", CH(d)->gold);
+		msdp_update_var(d, "MOVEMENT", "%d", CH(d)->move);
+		msdp_update_var(d, "MOVEMENT_MAX", "%d", CH(d)->max_move);
+
+		if (IS_SET(d->mth->comm_flags, COMM_FLAG_MSDPUPDATE))
+		{
+			msdp_send_update(d);
+		}
+	}
+}
 
 /* EOF update.c */
