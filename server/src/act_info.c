@@ -1483,11 +1483,11 @@ void do_score (CHAR_DATA *ch, char *argument)
 
         if( ch->class == CLASS_SMITHY )
         {
-                sprintf( buf, "Dam Reduction: {W%d%%{x  ", ch->damage_mitigation );
+                sprintf( buf, "Dam reduction: {W%d%%{x  ", ch->damage_mitigation );
                 strcat( buf1, buf );
                 if ((!CAN_DO(ch, gsn_engrave)))
                 {
-                        sprintf( buf, "Dam Enchancement: {W%d%%{x  ", ch->damage_enhancement );
+                        sprintf( buf, "Dam enhancement: {W%d%%{x  ", ch->damage_enhancement );
                         strcat( buf1, buf );
                 }
         }
