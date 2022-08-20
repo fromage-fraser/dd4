@@ -5903,7 +5903,8 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "hurl", &gsn_hurl,
                 TYPE_STR, TAR_IGNORE, POS_FIGHTING,
                 spell_null, 0, 24,
-                "hurl", "!Hurl!"
+                "hurled weapon", "!Hurl!"
+                /* is used for weapons and shields but 'hurled weapon' is not called by shield attack, so. */
         },
 
         {
