@@ -892,6 +892,7 @@ He seems like a man who knows many secrets.
 & 10 'teacher base'
 & 70 'weaponsmithing'
 & 70 'armoursmithing'
+& 70 'defense knowledge'
 #0
 
 #MOBPROGS
@@ -3462,7 +3463,7 @@ The alley leads west.
 S
 #3046
 Eastern end of Alley~
-You are standing at the eastern end of the alley. Smoke bellows 
+You are standing at the eastern end of the alley. Smoke bellows
 from the chimneys of Midgaard Forge to the south, while a tinker's
 shop lies to the east.
 ~
