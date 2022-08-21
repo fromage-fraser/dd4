@@ -226,6 +226,7 @@ typedef struct coin_data                        COIN_DATA;
 typedef struct smelting_data                    SMELTING_DATA;
 typedef struct math_data                        MATH_DATA;
 typedef struct mth_data                         MTH_DATA;
+typedef struct fighting_data                    FIGHT_DATA;
 /* typedef struct raw_mats_data                    RAW_MATERIAL_DATA; */
 
 /*
@@ -252,6 +253,7 @@ typedef struct map_data                         MAP_DATA;               /* This 
 typedef struct mapbook_data                     MAPBOOK_DATA;           /* This struct is whole pc map book */
 #define MAP_FORWARD 0
 #define MAP_REVERSE 1
+#define DESCRIPTOR_TIMEOUT   60 * 60 * 24 * 365
 
 /*
  * Function types.
@@ -727,6 +729,52 @@ struct quest_recall
 #define RACE_GRUNG                      24
 #define RACE_DUERGAR                    25
 
+#define COLOR_NO_CHANGE                      -1
+#define COLOR_TEXT                            0
+#define COLOR_TOP_STAT                        1
+#define COLOR_BOT_STAT                        2
+#define COLOR_SCORE                           3
+#define COLOR_YOU_ARE_HIT                     4
+#define COLOR_YOU_HIT                         5
+#define COLOR_PROMPT                          6
+#define COLOR_EXITS                           7
+#define COLOR_PARTY_HIT                       8
+#define COLOR_SPEACH                          9
+#define COLOR_OBJECTS                        10
+#define COLOR_MOBILES                        11
+#define COLOR_TACTICAL                       12
+#define COLOR_TACT_PARTY                     13
+#define COLOR_TACT_ENEMY                     14
+#define COLOR_TACT_NEUTRAL                   15
+#define COLOR_CHAT                           16
+#define COLOR_TALK                           17
+#define COLOR_PLAN                           18
+#define COLOR_MAX                            19
+
+#define VT102_DIM                             0
+#define VT102_BOLD                            1
+#define VT102_UNDERLINE                       4
+#define VT102_FLASHING                        5
+#define VT102_REVERSE                         7
+
+#define VT100_FAST                         BV01
+#define VT100_BEEP                         BV02
+#define VT100_HIGHLIGHT                    BV03
+#define VT100_ECMA48                       BV04
+#define VT100_BOLD                         BV05
+#define VT100_UNDERLINE                    BV06
+#define VT100_FLASH                        BV07
+#define VT100_REVERSE                      BV08
+#define VT100_ANSI                         BV09
+#define VT100_DRAW                         BV10
+#define VT100_INTERFACE                    BV11
+#define VT100_REFRESH                      BV12
+
+#define TACTICAL_TOP                       BV01
+#define TACTICAL_INDEX                     BV02
+#define TACTICAL_EXPTNL                    BV03
+
+
 
 /*
  * Site ban structure
@@ -822,7 +870,8 @@ struct mud_data
 	bool                  sunlight;
 	char                * last_player_cmd;
 */
-	int                   flags;
+	TACTICAL_MAP        * tactical;
+        int                   flags;
         PLAYER_GAME         * f_player;
         TIME_INFO_DATA      * time_info;
         DESCRIPTOR_DATA     * f_desc;
@@ -951,6 +1000,51 @@ extern DESCRIPTOR_DATA *initiative_list [ MAX_CONNECTIONS ];
 /*
  * Descriptor (channel) structure.
  */
+
+struct descriptor_data
+{
+	DESCRIPTOR_DATA   * next;
+	DESCRIPTOR_DATA   * prev;
+	DESCRIPTOR_DATA   * snoop_by;
+	MTH_DATA          * mth;
+	CHAR_DATA         * character;
+	CHAR_DATA         * original;
+	char              * host;
+	sh_int              descriptor;
+	sh_int              connected;
+	char                inbuf [MAX_INPUT_LENGTH];
+	char                incomm [MAX_INPUT_LENGTH];
+	char              * back_buf;    /* Used for aliasses */
+	char              * inlast;
+	int                 repeat;
+	char                outbuf [MAX_STRING_LENGTH];
+	int                 outtop;
+	int                 intop;
+	int                 port_size;
+	int                 connecting_time;
+	bool                lookup;
+	sh_int              timeout;
+                /* ident stuff */
+        int                   ifd;
+        pid_t                 ipid;
+        char *                ident;
+        int                   port;
+        int                   ip;
+        char *                showstr_head;
+        char *                showstr_point;
+        int                   outsize;
+        char                * inlast_gmcp;
+};
+
+struct fighting_data
+{
+	FIGHT_DATA	*	next;
+	FIGHT_DATA	*	prev;
+	CHAR_DATA		*	who;
+	CHAR_DATA		*	ch;
+};
+
+/*
 struct descriptor_data
 {
         DESCRIPTOR_DATA *     next;
@@ -963,9 +1057,9 @@ struct descriptor_data
         int                   descriptor;
         int                   connected;
         bool                  fcommand;
-        char                  inbuf  [ MAX_INPUT_LENGTH * 6 ];        /* was 4 */
-        char                  incomm [ MAX_INPUT_LENGTH * 2 ];        /* was 1 */
-        char                  inlast [ MAX_INPUT_LENGTH * 2 ];        /* was 1 */
+        char                  inbuf  [ MAX_INPUT_LENGTH * 6 ];        * was 4 *
+        char                  incomm [ MAX_INPUT_LENGTH * 2 ];        * was 1 *
+        char                  inlast [ MAX_INPUT_LENGTH * 2 ];        * was 1 *
         char                * inlast_gmcp;
         int                   repeat;
         char *                showstr_head;
@@ -979,14 +1073,14 @@ struct descriptor_data
 	bool                lookup;
 	sh_int              timeout;
 
-        /* ident stuff */
+        * ident stuff *
         int                   ifd;
         pid_t                 ipid;
         char *                ident;
         int                   port;
         int                   ip;
 };
-
+*/
 
 /*
  *  Mobile body bits and macros.
@@ -2024,6 +2118,10 @@ extern  WANTED_DATA *wanted_list_last;
 #define MOB_VNUM_DEMON                  19905
 #define MOB_VNUM_LESSER                 19906
 
+#define SFLAG_NONE               BV00
+#define SFLAG_INDOORS          BV01
+#define SFLAG_NOWEATHER          BV02
+#define SFLAG_SWIM               BV03
 
 /*
  * ACT bits for mobs.  Used in #MOBILES.
@@ -2549,15 +2647,29 @@ extern DIR_DATA directions [ MAX_DIR ];
  * Exit flags.
  * Used in #ROOMS.
  */
-#define EX_ISDOOR               1
-#define EX_CLOSED               2
-#define EX_LOCKED               4
-#define EX_BASHED               8
-#define EX_BASHPROOF            16
-#define EX_PICKPROOF            32
-#define EX_PASSPROOF            64
-#define EX_WALL                 128
-#define EX_SECRET               256
+#define EX_ISDOOR               BIT_0
+#define EX_CLOSED               BIT_1
+#define EX_LOCKED               BIT_2
+#define EX_BASHED               BIT_3
+#define EX_BASHPROOF            BIT_4
+#define EX_PICKPROOF            BIT_5
+#define EX_PASSPROOF            BIT_6
+#define EX_WALL                 BIT_7
+#define EX_SECRET              BIT_8
+#define EX_HIDDEN                  BIT_9
+#define EX_RIP                     BIT_10
+#define EX_MAGICPROOF              BIT_11
+#define EX_UNBARRED                BIT_13
+#define EX_BACKDOOR                BIT_14
+#define EX_CLAN_BACKDOOR          BIT_15
+#define EX_MAGICAL_LOCK            BIT_16
+#define EX_TRAPPED_LOCK            BIT_17
+#define EX_MECHANICAL_LOCK         BIT_18
+#define EX_SMALL_LOCK              BIT_19
+#define EX_BIG_LOCK               BIT_20
+#define EX_EASY_PICK               BIT_21
+#define EX_HARD_PICK              BIT_22
+#define EX_RIFT                    BIT_23
 
 
 /*
@@ -2732,6 +2844,15 @@ struct  learned_data
         int learned [ MAX_SKILL ];
 };
 
+struct sector_type
+{
+	char            sector_name[20];
+	int             movement;
+	int             color;
+	sh_int          flags;
+	sh_int          light;
+	sh_int          sight;
+};
 
 /*
  * Prototype for a mob.
@@ -2780,6 +2901,7 @@ struct char_data
         CHAR_DATA *                     reply;
         CHAR_DATA *                     mount;
         CHAR_DATA *                     rider;
+        AFFECT_DATA         * first_affect;
         SPEC_FUN *                      spec_fun;
         MOB_INDEX_DATA *                pIndexData;
         DESCRIPTOR_DATA *               desc;
@@ -2856,6 +2978,7 @@ struct char_data
         int                     exp_modifier;
         int                     damage_mitigation;
         int                     damage_enhancement;
+        bool               	  speed;
         /*
         *  Does the variable you're about to add belong here or in 'pcdata'?
         */
@@ -2921,6 +3044,15 @@ struct  pc_data
 	sh_int                scroll_end; /* GCMP */
         char                * scroll_buf[MAX_SCROLL_BUF];  /* GCMP */
         char                * last_command; /* GCMP */
+        int                   color[COLOR_MAX]; /* GCMP */
+        TACTICAL_MAP        * tactical;          /* The recorded tactical map for comparison */
+        int                   pvnum; /* GCMP */
+	int                   speak;
+        int                   last_connect;
+	char                * tactical_index;/* The two byte index for a player */
+	int                   exp;
+	char                * back_buf[26];	/* Change to pointer to string mode */
+        int                   clock; /* END GCMP */
         int             perm_str;
         int             perm_int;
         int             perm_wis;
@@ -3170,6 +3302,7 @@ struct area_data
 struct room_index_data
 {
         ROOM_INDEX_DATA *       next;
+        CHAR_DATA              * first_person;
         CHAR_DATA *             people;
         OBJ_DATA *              contents;
         EXTRA_DESCR_DATA *      extra_descr;
@@ -3181,7 +3314,8 @@ struct room_index_data
         int                     vnum;
         unsigned long int       room_flags;
         int                     light;
-        int                     sector_type;
+       /* int                     sector_type; */
+        short                    sector_type;
 };
 
 
@@ -3913,6 +4047,7 @@ extern int gsn_prayer_plague;
 #define LOWER( c )                      ( ( c ) >= 'A' && ( c ) <= 'Z' ? ( c ) + 'a' - 'A' : ( c ) )
 #define UPPER( c )                      ( ( c ) >= 'a' && ( c ) <= 'z' ? ( c ) + 'A' - 'a' : ( c ) )
 #define IS_SET( flag, bit )             ( ( flag ) &   ( bit ) )
+#define HAS_BIT(var, bit)               ( ( var )  &   ( bit ) )
 #define SET_BIT( var, bit )             ( ( var )  |=  ( bit ) )
 #define REMOVE_BIT( var, bit )          ( ( var )  &= ~( bit ) )
 #define MOD(a)                          ( a < 0 ? (a * -1) : (a) )
@@ -4017,6 +4152,7 @@ extern const    struct cmd_type                 cmd_table                       
 extern const    struct liq_type                 liq_table                       [ LIQ_MAX  ];
 extern const    struct blueprint_type           blueprint_list                  [ BLUEPRINTS_MAX ];
 extern const    struct set_type                 set_list                        [ MAX_SETS ];
+extern const    struct sector_type              sector_table                    [SECT_MAX];
 extern char *  dir_name        [];
 extern sh_int                                   rev_dir                         [];
 /* extern const    struct raw_mats_data            raw_mats_table                  [ RAW_MATS_MAX ]; */
@@ -4731,9 +4867,10 @@ char * crypt args( ( const char *key, const char *salt ) );
 #define GF      GAME_FUN
 #define TM  TACTICAL_MAP
 
+bool is_desc_valid(CHAR_DATA *);
 
 /*
-	vt100.c
+	 vt100.c
 */
 
 TM        * get_tactical_map            args((CHAR_DATA *ch));
@@ -4786,7 +4923,8 @@ int   get_colour_index_by_code                ( int ccode );
 /* act_move.c */
 void move_char                          args( ( CHAR_DATA *ch, int door ) );
 int  find_door                          args( ( CHAR_DATA *ch, char *arg ) );
-ED * get_exit                           args( ( ROOM_INDEX_DATA *room, int dir ) );
+/* ED * get_exit                           args( ( ROOM_INDEX_DATA *room, int dir ) ); */
+ED        * get_exit                       args((int vnum, bool door));
 
 /* act_obj.c */
 void  do_auction                        args( ( CHAR_DATA *ch, char *argument ) );
@@ -4829,7 +4967,7 @@ int  colour_8bit                        args( ( int icode, CHAR_DATA *ch, char *
 void strip_colour_8bit                  args( ( int icode, CHAR_DATA *ch, char *string ) );
 int  digits_in_int                            ( int number );
 void reverse_char_array                       ( char arr[], int n );
-/* GMCP */
+/* GMCP   */
 void        ch_printf              args((CHAR_DATA *ch, const char *fmt, ...));
 void        log_build_printf       args((int vnum, char *fmt, ...));
 void        log_printf             args((char *fmt, ...));
@@ -4838,6 +4976,8 @@ void        pop_call(void);
 void        dump_stack(void);
 int         cat_sprintf            args((char *dest, const char *fmt, ...));
 void force_help(DESCRIPTOR_DATA *, char *);
+void        ch_printf_color        args((CHAR_DATA *ch, const char *fmt, ...));
+void        send_to_char_color     args((char *txt, CHAR_DATA *ch));
 /* end GMCP */
 
 /* db.c */
@@ -5021,6 +5161,9 @@ int     objset_bonus_num_pos                  ( int vnum, int pos);
 bool    gets_bonus_objset                     ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos);
 bool    rem_bonus_objset                      ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos);
 int     get_pager_breakpt           args((CHAR_DATA *ch));
+bool        can_use_exit                   args((CD *ch, EXIT_DATA *exit));
+bool        can_see_in_room                args((CHAR_DATA *ch, ROOM_INDEX_DATA *room));
+ED        * get_exit                       args((int vnum, bool door));
 
 /* hunt.c   */
 void hunt_victim                        args( ( CHAR_DATA *ch ) );

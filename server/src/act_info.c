@@ -4881,5 +4881,36 @@ void do_allow_look(CHAR_DATA *ch, char *argument)
         }
 }
 
+char *get_color_string( CHAR_DATA *ch, int regist , int vt_code )
+{
+	static char buf[10];
+
+	push_call("get_color_string(%p,%p,%p)",ch,regist,vt_code);
+
+	if (!ch->desc)
+	{
+		pop_call();
+		return "";
+	}
+
+	if (!IS_SET(CH(ch->desc)->pcdata->vt100_flags, VT100_ANSI) && !IS_SET(CH(ch->desc)->pcdata->vt100_flags, VT100_BOLD) && !IS_SET(CH(ch->desc)->pcdata->vt100_flags, VT100_REVERSE))
+	{
+		pop_call();
+		return "";
+	}
+
+	if (regist >= 0 && regist < COLOR_MAX )
+	{
+		strcpy(buf, get_color_diff(ch, 8, 8, 8, CH(ch->desc)->pcdata->color[regist] % 10, CH(ch->desc)->pcdata->color[regist] / 10, vt_code));
+	}
+	else
+	{
+		strcpy(buf, get_color_diff(ch, 8, 8, 8, 8, 8, vt_code));
+	}
+
+	pop_call();
+	return( buf );
+}
+
 
 /* EOF act_info.c */

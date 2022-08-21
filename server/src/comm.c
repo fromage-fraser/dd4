@@ -897,8 +897,12 @@ void game_loop_unix(void)
 				{
 					if (d->character == NULL || d->character->desc != d || !IS_SET(CH(d)->pcdata->interp, INTERP_ALIAS))
 					{
-						if (!read_from_descriptor(d))
+				                sprintf(log_buf, "DO i get here 1");
+                                                log_string(log_buf);
+                                                if (!read_from_descriptor(d))
 						{
+                        			                sprintf(log_buf, "DO i get here 2");
+                                                                log_string(log_buf);
 							FD_CLR(d->descriptor, &out_set);
 							d->outtop = 0;
 							SET_BIT(d->mth->comm_flags, COMM_FLAG_DISCONNECT);
@@ -908,19 +912,24 @@ void game_loop_unix(void)
 					}
 				}
 
-			/*	if (d->connected < CON_PLAYING && d->connecting_time + DESCRIPTOR_TIMEOUT < mud->current_time)
+				if (d->connected < CON_PLAYING && d->connecting_time + DESCRIPTOR_TIMEOUT < mud->current_time)
 				{
 					write_to_descriptor(d, "\n\r\n\rLogin time out reached.\n\r\n\r", 0);
-					log_god_printf("Login timeout reached for D%d@%s", d->descriptor, d->host);
+					/* log_god_printf("Login timeout reached for D%d@%s", d->descriptor, d->host); */
+                                        sprintf(log_buf, "Login timeout reached for D%d@%s", d->descriptor, d->host);
+                                        log_string(log_buf);
 					close_socket(d);
 					continue;
 				}
-                        */
-		/*		process_naws(d, d->mth->cols, d->mth->rows); */
+                        
+				process_naws(d, d->mth->cols, d->mth->rows); 
 
-			/*	if (d->character != NULL && d->character->wait > 0)
+				if (d->character != NULL && d->character->wait > 0)
 				{
-					bool HighSpeed = FALSE;
+					
+                                            sprintf(log_buf, "DO i get here not null and waiting");
+                                                log_string(log_buf);
+                                                bool HighSpeed = FALSE;
 
 					if (IS_NPC(d->character))
 					{
@@ -964,7 +973,7 @@ void game_loop_unix(void)
 					}
 					continue;
 				}
-                                */
+                                
 				/*
 					Reset characters from aliasses - removing - GCMP
 				
@@ -983,9 +992,9 @@ void game_loop_unix(void)
 					{
 						SET_BIT(d->mth->comm_flags, COMM_FLAG_NOINPUT);
 					}
-				}
+				} */
 				read_from_buffer(d);
-                                */
+                                
 
 				/*
 					Auto reactions
@@ -1474,8 +1483,12 @@ void new_descriptor(void)
 		char buf[40];
 
 		sprintf(buf, "greeting%d", number_range(1, 8));
+                sprintf(log_buf, "Sent a greeting.");
+                log_string(log_buf);
 
-		force_help(dnew, buf);
+		/* force_help(dnew, buf); */
+                sprintf(log_buf, "Sent a force_help.");
+                log_string(log_buf);
 	}
 	pop_call();
 	return;
@@ -1618,42 +1631,194 @@ bool read_from_descriptor (DESCRIPTOR_DATA *d)
         return TRUE;
 }
 
+/*
+	Transfer one line from input buffer to input line.
+*/
+
+void read_from_buffer(DESCRIPTOR_DATA *d)
+{
+	int i, k;
+	CHAR_DATA *ch,*sh;
+
+	/*
+		Hold horses if pending command already.
+	*/
+
+	push_call("read_from_buffer(%p)",d);
+
+	if (d->incomm[0] != '\0')
+	{
+		pop_call();
+		return;
+	}
+
+	if (d->inbuf[0] == '\0')
+	{
+		if (d->intop > 0)
+		{
+			fprintf(stderr, "%12s: ITE: %3d %3d %3d %3d %3d %3d %3d %3d %3d\n",
+				CH(d) ? CH(d)->name : "Nanny",
+				d->inbuf[0], d->inbuf[1], d->inbuf[2],
+				d->inbuf[3], d->inbuf[4], d->inbuf[5],
+				d->inbuf[6], d->inbuf[7], d->inbuf[8]);
+
+			memmove(&d->inbuf[0], &d->inbuf[1], MAX_INPUT_LENGTH - 1);
+
+			d->intop--;
+		}
+		pop_call();
+		return;
+	}
+
+	ch = d->original ? d->original : d->character;
+
+	/*
+		Look for at least one new line.
+	*/
+
+	if (d->intop < MAX_INPUT_LENGTH -10)
+	{
+		for (i = 0 ; d->inbuf[i] != '\n' ; i++)
+		{
+			if (i >= d->intop)
+			{
+				pop_call();
+				return;
+			}
+
+			if (d->inbuf[i] == '\0')
+			{
+				/* log_god_printf("Read_from_buffer D%d@%s NULL byte in input string.", d->descriptor, d->host); */
+                                sprintf(log_buf, "Read_from_buffer D%d@%s NULL byte in input string.", d->descriptor, d->host);
+                                log_string(log_buf);
+				write_to_buffer(d, "Input error.\n\r", 0);
+				
+				d->inbuf[0] = 0;
+				d->intop = 0;
+
+				pop_call();
+				return;
+			}
+		}
+	}
+
+	for (i = k = 0 ; d->inbuf[i] != '\n' ; i++)
+	{
+		if (i >= MAX_INPUT_LENGTH - 20)
+		{
+			write_to_buffer(d, "Line too long.\n\r", 0);
+
+			d->inbuf[i]    = '\n';
+			d->inbuf[i+1]  = '\0';
+			d->intop       = i+1;
+			break;
+		}
+
+		if (d->inbuf[i] == '\b' && k > 0)
+		{
+			--k;
+		}
+		else
+		{
+			d->incomm[k++] = d->inbuf[i];
+		}
+	}
+
+	/*
+		Finish off the line.
+	*/
+	if (k == 0)
+	{
+		d->incomm[k++] = ' ';
+	}
+
+	d->incomm[k] = '\0';
+
+	/*
+		Do '!' substitution.
+	*/
+
+	if (d->connected >= CON_PLAYING && !IS_SET(ch->pcdata->interp, INTERP_ALIAS))
+	{
+		if (d->incomm[0] == '.' || d->incomm[0] == '!')
+		{
+			if (isalpha(d->incomm[1]))
+			{
+				str_cpy_max(d->incomm, ch->pcdata->back_buf[tolower(d->incomm[1]) - 'a'], MAX_INPUT_LENGTH);
+			}
+			else
+			{
+				strcpy(d->incomm, d->inlast);
+			}
+		}
+		else
+		{
+			if (isalpha(d->incomm[0]))
+			{
+				RESTRING(d->inlast, d->incomm);
+
+				STRFREE(ch->pcdata->back_buf[tolower(d->incomm[0]) - 'a']);
+				ch->pcdata->back_buf[tolower(d->incomm[0]) - 'a'] = STRDUPE(d->inlast);
+			}
+		}
+	}
+
+	if (d->snoop_by && d->character)
+	{
+		sh = d->snoop_by->original ? d->snoop_by->original : d->snoop_by->character;
+
+		if (sh && sh->desc && sh->desc->character == sh)
+		{
+			ch_printf_color(sh, "{168}%s {078}[{178}%s{078}]\n\r", ch->name, d->incomm);
+		}
+	}
+
+	d->intop -= i + 1;
+
+	memmove(d->inbuf, d->inbuf + i + 1, d->intop);
+
+	d->inbuf[d->intop] = 0;
+
+	pop_call();
+	return;
+}
+
 
 /*
  * Transfer one line from input buffer to input line.
- */
+ 
 void read_from_buffer (DESCRIPTOR_DATA *d)
 {
         int i;
         int j;
         int k;
 
-        /*
+        *
          * Hold horses if pending command already.
-         */
+         *
         if (d->incomm[0] != '\0')
                 return;
 
-        /*
+        *
          * Look for at least one new line.
-         */
+         *
         for (i = 0; d->inbuf[i] != '\n' && d->inbuf[i] != '\r'; i++)
         {
                 if (d->inbuf[i] == '\0')
                         return;
         }
 
-        /*
+*
          * Canonical input processing.
-         */
+         *
         for (i = 0, k = 0; d->inbuf[i] != '\n' && d->inbuf[i] != '\r'; i++)
         {
                 if (k >= MAX_INPUT_LENGTH - 2)
                 {
-                    /*    write_to_descriptor(d->descriptor, "Line too long.\n\r", 0); remove d GCMP */
+                    *    write_to_descriptor(d->descriptor, "Line too long.\n\r", 0); remove d GCMP *
 
                         write_to_descriptor(d, "Line too long.\n\r", 0);
-                        /* skip the rest of the line */
+                        * skip the rest of the line *
                         for (; d->inbuf[i] != '\0'; i++)
                         {
                                 if (d->inbuf[i] == '\n' || d->inbuf[i] == '\r')
@@ -1670,16 +1835,16 @@ void read_from_buffer (DESCRIPTOR_DATA *d)
                         d->incomm[k++] = d->inbuf[i];
         }
 
-        /*
+        *
          * Finish off the line.
-         */
+         *
         if (k == 0)
                 d->incomm[k++] = ' ';
         d->incomm[k] = '\0';
 
-        /*
+        *
          * Deal with bozos with #repeat 1000 ...
-         */
+         *
         if (k > 1 || d->incomm[0] == '!')
         {
                 if (d->incomm[0] != '!' && strcmp(d->incomm, d->inlast))
@@ -1692,8 +1857,8 @@ void read_from_buffer (DESCRIPTOR_DATA *d)
                         {
                                 sprintf(log_buf, "%s input spamming!", d->host);
                                 log_string(log_buf);
-                         /*       write_to_descriptor(d->descriptor,
-                                                    "\n\r*** PUT A LID ON IT!!! ***\n\r", 0); remove GCMP*/
+                         *       write_to_descriptor(d->descriptor,
+                                                    "\n\r*** PUT A LID ON IT!!! ***\n\r", 0); remove GCMP*
                                 write_to_descriptor(d,
                                                     "\n\r*** PUT A LID ON IT!!! ***\n\r", 0);                    
                                 strcpy(d->incomm, "quit");
@@ -1701,17 +1866,17 @@ void read_from_buffer (DESCRIPTOR_DATA *d)
                 }
         }
 
-        /*
+        *
          * Do '!' substitution.
-         */
+         *
         if (d->incomm[0] == '!')
                 strcpy(d->incomm, d->inlast);
         else
                 strcpy(d->inlast, d->incomm);
 
-        /*
+        
          * Shift the input buffer.
-         */
+         *
         while (d->inbuf[i] == '\n' || d->inbuf[i] == '\r')
                 i++;
         for (j = 0; (d->inbuf[j] = d->inbuf[i+j]) != '\0'; j++)
@@ -1719,7 +1884,30 @@ void read_from_buffer (DESCRIPTOR_DATA *d)
 
         return;
 }
+*/
 
+
+void ch_printf_color(CHAR_DATA *ch, const char *fmt, ...)
+{
+	char buf[MAX_STRING_LENGTH];
+	va_list args;
+
+	va_start(args, fmt);
+	vsprintf(buf, fmt, args);
+	va_end(args);
+
+	send_to_char_color(buf, ch);
+}
+
+void send_to_char_color(char *txt, CHAR_DATA *ch)
+{
+	push_call("send_to_char_color(%p,%p)",txt,ch);
+
+	send_to_char(ansi_translate_text(ch, txt), ch);
+
+	pop_call();
+	return;
+}
 
 /*
  * Low level output function.
@@ -2713,7 +2901,8 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
         DESCRIPTOR_DATA *temp;
         startcoins = (COIN_DATA *) malloc (sizeof(COIN_DATA));
 
-
+                sprintf(log_buf, "DO i get here");
+                log_string(log_buf);
         /* Delete leading spaces UNLESS character is writing a note */
         if (d->connected != CON_NOTE_TEXT)
         {
@@ -4045,6 +4234,28 @@ void stop_idling(DESCRIPTOR_DATA *d)
 
 	pop_call();
 	return;
+}
+
+bool is_desc_valid(CHAR_DATA *ch)
+{
+	push_call("is_desc_valid(%p)",ch);
+
+	if (ch == NULL)
+	{
+		pop_call();
+		return(FALSE);
+	}
+
+	if (ch->desc != NULL && ch->desc->character == ch)
+	{
+		pop_call();
+		return(TRUE);
+	}
+	else
+	{
+		pop_call();
+		return(FALSE);
+	}
 }
 
 /*
@@ -5662,6 +5873,8 @@ void force_help(DESCRIPTOR_DATA *d, char *argument)
 	AREA_DATA *pArea;
 	HELP_DATA *pHelp;
 
+        printf(log_buf, "Sent a force_help.");
+        log_string(log_buf);
 	push_call("force_help(%p,%p)",d,argument);
 
 	for (pArea = mud->f_area ; pArea ; pArea = pArea->next)
@@ -5672,6 +5885,8 @@ void force_help(DESCRIPTOR_DATA *d, char *argument)
 			{
 				/*write_to_buffer(d, ansi_translate(pHelp->text), 1000000); */
                                 write_to_buffer(d, pHelp->text,  1000000);
+                                printf(log_buf, "Sent a force_help.");
+                                log_string(log_buf);
 				pop_call();
 				return;
 			}

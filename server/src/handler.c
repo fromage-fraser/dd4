@@ -75,6 +75,138 @@ int get_pager_breakpt( CHAR_DATA *ch )
 	return breakpt;
 }
 
+bool can_use_exit( CHAR_DATA *ch, EXIT_DATA *exit )
+{
+//	int pvnum;
+
+	push_call("can_use_exit(%p,%p)",ch,exit);
+
+//	pvnum = room_index[exit->to_room]->creator_pvnum;
+
+/*	if (IS_GOD(ch) && IS_SET(ch->act, PLR_HOLYLIGHT))
+	{
+		pop_call();
+		return TRUE;
+	}
+
+	if (IS_SET(exit->flags, EX_RIP) && !pvnum_in_group(ch, room_index[exit->to_room]->creator_pvnum))
+	{
+		pop_call();
+		return FALSE;
+	}
+
+	if (IS_SET(exit->flags, EX_BACKDOOR) && !pvnum_in_group(ch, ch->in_room->creator_pvnum))
+	{
+		pop_call();
+		return FALSE;
+	}
+
+	if (!IS_NPC(ch) && IS_SET(exit->flags, EX_CLAN_BACKDOOR))
+	{
+		if (get_clan_from_vnum(ch->in_room->creator_pvnum) != ch->pcdata->clan)
+		{
+			pop_call();
+			return FALSE;
+		}
+	} */
+	pop_call();
+	return TRUE;
+}
+
+bool can_see_in_room( CHAR_DATA *ch, ROOM_INDEX_DATA *room)
+{
+	int vision, light;
+
+	push_call("can_see_in_room(%p,%p)",ch,room);
+
+/*	if (!IS_NPC(ch) && IS_SET(ch->act, PLR_HOLYLIGHT))
+	{
+		pop_call();
+		return TRUE;
+	}
+
+	if (IS_SET(room->room_flags, ROOM_GLOBE) && race_table[ch->race].vision < 2 && !IS_AFFECTED(ch, AFF_ETHEREAL))
+	{
+		pop_call();
+		return FALSE;
+	}
+
+	if (IS_AFFECTED(ch, AFF_TRUESIGHT))
+	{
+		pop_call();
+		return TRUE;
+	}
+*/
+	if (IS_AFFECTED(ch, AFF_BLIND))
+	{
+		pop_call();
+		return FALSE;
+	}
+
+        if ( !room_is_dark( ch->in_room ) )
+                return TRUE;
+
+        if ( room_is_dark( ch->in_room ) && ch->sub_class == SUB_CLASS_VAMPIRE)
+                return TRUE;
+
+        if (!IS_NPC(ch) && is_affected(ch, gsn_song_of_revelation))
+                return TRUE;
+
+        if ( room_is_dark( ch->in_room ) && !IS_AFFECTED( ch, AFF_INFRARED ) )
+                return FALSE;
+
+	if (IS_NPC(ch) && ch->desc == NULL)
+	{
+		pop_call();
+		return TRUE;
+	}
+/*
+	vision = get_vision(ch);
+	light  = get_room_light(ch, ch->in_room, TRUE);
+
+	if (ch->in_room == room)
+	{
+		if (vision + light >= 0)
+		{
+			pop_call();
+			return TRUE;
+		}
+	}
+	else
+	{
+		light = UMIN(light, light + get_room_light(ch, room, TRUE));
+
+		if (vision + light >= 0)
+		{
+			pop_call();
+			return TRUE;
+		}
+	} */
+	pop_call();
+	return FALSE;
+}
+
+EXIT_DATA *get_exit( int vnum, bool door )
+{
+	push_call("get_exit(%p,%p)",vnum,door);
+
+/*	if (room_index[vnum]->exit[door] == NULL)
+	{
+		pop_call();
+		return NULL;
+	}
+
+	if (room_index[room_index[vnum]->exit[door]->to_room] == NULL)
+	{
+		pop_call();
+		return NULL;
+	}
+*/
+	pop_call();
+	/* return room_index[vnum]->exit[door]; */
+        return NULL; /* need to FIX this */
+}
+
 /*
  * Retrieve a character's age.
  */

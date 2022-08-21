@@ -1843,6 +1843,183 @@ const struct con_app_type con_app [ MAX_STAT ] =
         { 20, 99 }
 };
 
+const	struct	sector_type	sector_table	[SECT_MAX] =
+{
+	{	"inside",
+		2,
+		7 + 0 * 8 + 0 * 128,
+		SFLAG_INDOORS|SFLAG_NOWEATHER,
+		50,
+		25
+	},
+
+	{
+		"city",
+		2,
+		5 + 7 * 8 + 0 * 128,
+		SFLAG_NONE,
+		50,
+		30
+	},
+	{
+		"field",
+		3,
+		0 + 3 * 8 + 0 * 128,
+		SFLAG_NONE,
+		50,
+		25
+	},
+	{
+		"forest",
+		4,
+		1 + 2 * 8 + 0 * 128,
+		SFLAG_NONE,
+		25,
+		50
+	},
+	{
+		"hills",
+		5,
+		0 + 7 * 8 + 0 * 128,
+		SFLAG_NONE,
+		50,
+		40
+	},
+	{
+		"mountain",
+		6,
+		4 + 7 * 8 + 0 * 128,
+		SFLAG_NONE,
+		50,
+		40
+	},
+	{
+		"lake",
+		4,
+		4 + 6 * 8 + 0 * 128,
+		SFLAG_SWIM,
+		50,
+		25
+	},
+	{
+		"river",
+		4,
+		7 + 6 * 8 + 0 * 128,
+		SFLAG_SWIM,
+		50,
+		25
+	},
+	{
+		"ocean",
+		6,
+		6 + 4 * 8 + 0 * 128,
+		SFLAG_SWIM,
+		50,
+		25
+	},
+	{	"air",
+		1,
+		0 + 6 * 8 + 0 * 128,
+		SFLAG_NONE,
+		50,
+		25
+	},
+	{	"desert",
+		8,
+		1 + 3 * 8 + 0 * 128,
+		SFLAG_NONE,
+		50,
+		30
+	}/*,
+	{
+		"lava",
+		10,	3 + 1 * 8 + 0 * 128,
+		SFLAG_NONE,
+		100,
+		50
+	},
+	{
+		"ethereal",
+		1,
+		2 + 0 * 8 + 0 * 128,
+		SFLAG_NOWEATHER,
+		100,
+		50
+	},
+	{
+		"astral",
+		1,
+		3 + 0 * 8 + 0 * 128,
+		SFLAG_NOWEATHER,
+		100,
+		50
+	},
+	{
+		"underwater",
+		10,
+		4 + 0 * 8 + 0 * 128,
+		SFLAG_NOWEATHER,
+		-100,
+		75
+	},
+	{
+		"underground",
+		3,
+		5 + 0 * 8 + 0 * 128,
+		SFLAG_INDOORS|SFLAG_NOWEATHER,
+		-50,
+		50
+	},
+	{
+		"deepearth",
+		3,
+		1 + 0 * 8 + 0 * 128,
+		SFLAG_INDOORS|SFLAG_NOWEATHER,
+		-50,
+		50
+	},
+	{
+		"road",
+		1,
+		3 + 7 * 8 + 0 * 128,
+		SFLAG_NONE,
+		50,
+		25
+	},
+	{
+		"swamp",
+		6,
+		2 + 3 * 8 + 0 * 128,
+		SFLAG_NONE,
+		25,
+		50
+	},
+	{
+		"beach",
+		4,
+		7 + 3 * 8 + 0 * 128,
+		SFLAG_NONE,
+		50,
+		25
+	},
+	{
+		"tundra",
+		3,
+		1 + 7 * 8 + 0 * 128,
+		SFLAG_NONE,
+		50,
+		30
+	},
+	{
+		"edge",
+		10,
+		0 + 0 * 8 + 1 * 128,
+		SFLAG_NONE,
+		0,
+		25
+	}*/
+};
+
 
 /*
  * Liquid properties.
