@@ -4705,6 +4705,84 @@ void show_vnums(CHAR_DATA *ch, int low, int high,  bool shownl,
         return;
 }
 
+int str_apd_max( const char *out_str, const char *add_str, int start, int max_size )
+{
+	register char *str_pt1, *str_pt2;
+	register int str_actual, str_size;
+
+	push_call("str_apd_max(%p,%p,%d,%d)",out_str,add_str,start,max_size);
+
+	if (out_str == NULL)
+	{
+		log_printf("str_apd_max(): out_str = NULL.");
+		pop_call();
+		return 0;
+	}
+
+	str_actual = URANGE(1, max_size - 1, MAX_STRING_LENGTH - 1);
+
+	if (str_actual <= start)
+	{
+		*((char *) out_str + str_actual) = '\0';
+
+		pop_call();
+		return( str_actual );
+	}
+
+	str_pt1	= (char *) (out_str + start);
+	str_size	= start;
+
+	for (str_pt2 = (char *) add_str ; *str_pt2 != '\0' ; str_pt1++, str_pt2++, str_size++)
+	{
+		if (str_size == str_actual)
+		{
+			break;
+		}
+		else
+		{
+			*str_pt1 = *str_pt2;
+		}
+	}
+	*str_pt1 = '\0';
+
+	pop_call();
+	return( str_size );
+}
+
+int str_cpy_max( const char *out_str, const char *add_str, int max_size )
+{
+	register char *str_pt1, *str_pt2;
+	register int str_actual, str_size;
+
+	push_call("str_cpy_max(%p,%p,%p)",out_str,add_str,max_size);
+
+	/*
+		Set limits of size, and subtract for the terminator
+	*/
+
+	str_actual = URANGE(0, max_size, MAX_STRING_LENGTH-1);
+
+	str_pt1 = (char *)out_str;
+	str_pt2 = (char *)add_str;
+
+	for (str_size = 0 ; *str_pt2 != '\0' ; str_pt1++, str_pt2++, str_size++)
+	{
+		if (str_size == str_actual)
+		{
+			*str_pt1 = '\0';
+			pop_call();
+			return( str_size );
+		}
+		else
+		{
+			*str_pt1 = *str_pt2;
+		}
+	}
+	*str_pt1 = '\0';
+
+	pop_call();
+	return( str_size );
+}
 
 /*
  * Shows installed areas, sorted.  Mark unloaded areas with an X

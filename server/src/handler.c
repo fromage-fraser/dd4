@@ -52,6 +52,28 @@ int get_trust( CHAR_DATA *ch )
                 return ch->level;
 }
 
+int get_pager_breakpt( CHAR_DATA *ch )
+{
+	int breakpt = ch->pcdata->screensize_v;
+
+	push_call("get_pager_breakpt(%p",ch);
+
+	if (IS_SET(ch->act, PLR_ANSI) || IS_SET(ch->act, PLR_VT100))
+        /*if (HAS_BIT(ch->pcdata->vt100_flags, VT100_INTERFACE))*/
+	{
+		breakpt -= 4 + ch->pcdata->tactical_size_v;
+	}
+	else if (IS_SET(ch->act, PLR_BLANK))
+	{
+		breakpt -= 4;
+	}
+	else
+	{
+		breakpt -= 3;
+	}
+	pop_call();
+	return breakpt;
+}
 
 /*
  * Retrieve a character's age.

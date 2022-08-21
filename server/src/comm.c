@@ -40,7 +40,7 @@
  * -- Furey  26 Jan 1993
  */
 
-
+/*
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/time.h>
@@ -54,30 +54,74 @@
 #include "merc.h"
 
 
-/*
- * Malloc debugging stuff.
- */
 #if defined(MALLOC_DEBUG)
 #include <malloc.h>
 extern  int     malloc_debug    args((int));
 extern  int     malloc_verify   args((void));
 #endif
 
-
-/*
- * Signal handling.
- */
 #include <signal.h>
-
-
-/*
- * Socket and TCP/IP stuff.
- */
 #include <fcntl.h>
 #include <netdb.h>
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <arpa/telnet.h>
+*/
+/* this i added back in - Brutus */
+#include <dirent.h>
+#include <stdlib.h>
+/* end that */
+
+#include <sys/time.h>
+#include <sys/socket.h>
+#include <sys/resource.h>
+
+#include <unistd.h>
+#include <stdarg.h>
+
+#include "merc.h"
+
+/*
+	Socket and TCP/IP stuff.
+*/
+
+#include <signal.h>
+#include <fcntl.h>
+#include <netinet/in.h>
+#include <sys/wait.h>
+
+#define IAC 255
+#define EOR 239
+
+void		pipe_handler(int signal);
+void		trap_handler(int signal);
+void		scan_object_for_dup(CHAR_DATA *ch, OBJ_DATA *obj);
+char	*	prompt_return(CHAR_DATA *, char *);
+int		pager(DESCRIPTOR_DATA *, const char *, int, char *);
+void		scroll(DESCRIPTOR_DATA *, const char *, int);
+char		ansi_strip_txt[MAX_STRING_LENGTH];
+bool		scroll_you(DESCRIPTOR_DATA *, const char *, bool);
+
+
+/*
+	OS-dependent declarations.
+*/
+
+#if defined(linux)
+int	close		args((int fd));
+#ifndef __GLIBC__2__
+int	getpeername	args((int s, struct sockaddr *name, int *namelen));
+int	getsockname	args((int s, struct sockaddr *name, int *namelen));
+int	listen		args((int s, int backlog));
+#endif
+
+/* int	gettimeofday	args((struct timeval *tp, struct timezone *tzp)); */
+int	select		args((int width, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct timeval *timeout));
+int	socket		args((int domain, int type, int protocol));
+#endif
+
+
+
 
 /*
  * identd
@@ -1770,7 +1814,7 @@ bool process_output (DESCRIPTOR_DATA *d, bool fPrompt)
                                 bust_a_prompt(d);
 
                         if (IS_SET(ch->act, PLR_TELNET_GA))
-                                write_to_buffer(d, go_ahead_str, 0);
+                                write_to_buffer(d, (char *)go_ahead_str, 0);
                 }
         }
 
@@ -1805,6 +1849,203 @@ bool process_output (DESCRIPTOR_DATA *d, bool fPrompt)
         }
 }
 
+/*
+	The buffer that works with the page pauser
+*/
+
+int pager(DESCRIPTOR_DATA *d, const char *istr, int lng, char *ostr)
+{
+	int lines, pt, breakpt, lengt, cnt;
+	char pag_buf[MAX_STRING_LENGTH], buf[MAX_INPUT_LENGTH], lcc[10];
+	register char *ptt, *pto, *pti;
+
+	push_call("pager(%p,%p,%p,%p)",d,istr,lng,ostr);
+
+	if (d->connected < CON_PLAYING
+	||  CH(d)->pcdata->last_command
+	||  IS_SET(CH(d)->act, PLR_PAGER)
+	||  IS_SET(CH(d)->pcdata->interp, INTERP_PAGE)
+	||  IS_SET(CH(d)->pcdata->interp, INTERP_SCROLL))
+	{
+		REMOVE_BIT(CH(d)->pcdata->interp, INTERP_PAUSE);
+
+		pop_call();
+		return (str_cpy_max(ostr, istr, MAX_STRING_LENGTH));
+	}
+
+	for (ptt = (char *)istr, pt = 0, lines = 0 ; pt < lng ; pt++, ptt++)
+	{
+		if (*ptt == '\n')
+		{
+			lines++;
+		}
+	}
+
+	breakpt = get_pager_breakpt(CH(d));
+
+	if (lines <= breakpt+1)
+	{
+		REMOVE_BIT(CH(d)->pcdata->interp, INTERP_PAUSE);
+
+		pop_call();
+		return (str_cpy_max(ostr, istr, MAX_STRING_LENGTH));
+	}
+
+	SET_BIT(CH(d)->pcdata->interp, INTERP_PAUSE);
+
+	pti = (char *)istr;
+	pto = ostr;
+
+	lcc[0] = '\0';
+
+	for (pt = 0, lines = 0 ; lines < breakpt ; pt++, pti++, pto++)
+	{
+		*pto = *pti;
+
+		if (*pti == '\033' && *(pti+1) == '[')
+		{
+			for (cnt = 0 ; *(pti+cnt) != 'm' && *(pti+cnt) != '\0' ; cnt++)
+			{
+				lcc[cnt] = *(pti+cnt);
+			}
+			lcc[cnt] = 'm';
+			cnt++;
+			lcc[cnt] = '\0';
+		}
+		if (*pti == '\n')
+		{
+			lines++;
+		}
+	}
+
+	if (*pti == '\r')
+	{
+		*pto = *pti;
+		pto++;
+		pti++;
+		pt++;
+	}
+
+	lengt = pt;
+
+	*pto = '\0';
+
+	for (pto = pag_buf, cnt = 0 ; lcc[cnt] != '\0' ; cnt++, pto++)
+	{
+		*pto = lcc[cnt];
+	}
+
+	for (; pt < lng ; pto++, pti++, pt++)
+	{
+		*pto = *pti;
+	}
+	*pto = '\0';
+
+	/* if (!IS_SET(CH(d)->pcdata->vt100_flags, VT100_INTERFACE)) */
+        if (IS_SET(CH(d)->act, PLR_ANSI) || IS_SET(CH(d)->act, PLR_VT100))
+	{
+		/* sprintf(buf, "%s --------------------------[Press Return to Continue]--------------------------%s\n\r", ansi_translate_text(CH(d), "{128}"), ansi_translate_text(CH(d), "{300}")); */
+		sprintf(buf, "--------------------------[Press Return to Continue]--------------------------\n\r"); 
+                str_apd_max(ostr, buf, lengt, MAX_STRING_LENGTH);
+	}
+	STRFREE(CH(d)->pcdata->page_buf);
+	CH(d)->pcdata->page_buf = STRALLOC(pag_buf);
+
+	SET_BIT(CH(d)->pcdata->interp, INTERP_PAGE);
+
+	pop_call();
+	return(lengt);
+}
+
+/*
+	The buffer used for the grep command.
+*/
+
+void scroll(DESCRIPTOR_DATA *d, const char *txi, int lng)
+{
+	PC_DATA *pch;
+	char buf[MAX_STRING_LENGTH], *pti, *pto;
+
+	pti = (char *) txi;
+	pto = (char *) buf;
+
+	push_call("scroll(%p,%p,%p)",d,txi,lng);
+
+	if (d->connected != CON_PLAYING)
+	{
+		pop_call();
+		return;
+	}
+
+	pch = CH(d)->pcdata;
+
+	if (IS_SET(pch->interp, INTERP_SCROLL))
+	{
+		pop_call();
+		return;
+	}
+
+	while (*pti)
+	{
+		if (pti[0] == '\n' && pti[1] == '\r')
+		{
+			if (pti[2] == '\033')
+			{
+				*pto = 0;
+
+				pch->scroll_buf[pch->scroll_end] = STRALLOC(buf);
+
+				pch->scroll_end++;
+
+				if (pch->scroll_end >= MAX_SCROLL_BUF)
+				{
+					pch->scroll_beg = 1;
+					pch->scroll_end = 0;
+				}
+
+				if (pch->scroll_buf[pch->scroll_end])
+				{
+					STRFREE(pch->scroll_buf[pch->scroll_end]);
+				}
+
+				pto = buf;
+				pti += 2;
+			}
+			else if (pti[2] == 0)
+			{
+				*pto = 0;
+
+				pch->scroll_buf[pch->scroll_end] = STRALLOC(buf);
+
+				pch->scroll_end++;
+
+				if (pch->scroll_end >= MAX_SCROLL_BUF)
+				{
+					pch->scroll_beg = 1;
+					pch->scroll_end = 0;
+				}
+
+				if (pch->scroll_buf[pch->scroll_end])
+				{
+					STRFREE(pch->scroll_buf[pch->scroll_end]);
+				}
+				break;
+			}
+			else
+			{
+				*pto++ = *pti++;
+			}
+		}
+		else
+		{
+			*pto++ = *pti++;
+		}
+	}
+
+
+	pop_call();
+	return;
+}
 
 /*
  * Bust a prompt (player settable prompt)
@@ -2146,21 +2387,144 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
 
 }
 
+/* new write_t_buffer */
+void write_to_buffer(DESCRIPTOR_DATA *d, char *txt, int length)
+{
+	char buf[MAX_STRING_LENGTH];
+	char txo[MAX_STRING_LENGTH];
+	CHAR_DATA *ch, *sh;
+	int size;
+
+	push_call("write_to_buffer(%p,%p,%p)",d,txt,length);
+
+	if (d == NULL || txt == NULL)
+	{
+		pop_call();
+		return;
+	}
+
+	ch = CH(d);
+
+	if (IS_SET(mud->flags, MUD_SKIPOUTPUT) && length != 1000000)
+	{
+		if (ch == NULL || IS_NPC(ch) || ch->level < MAX_LEVEL )
+		{
+			pop_call();
+			return;
+		}
+	}
+
+	if (ch)
+	{
+		if ((IS_SET(ch->act, PLR_ANSI) || IS_SET(ch->act, PLR_VT100)) && d->connected >= CON_PLAYING && length != 1000000)
+		{
+			if (txt[0] == '\0')
+			{
+				pop_call();
+				return;
+			}
+			size = UMIN(strlen(txt), MAX_STRING_LENGTH - 200);
+
+			size = pager(d, txt, size, txo);
+
+			if (length != 1000000)
+			{
+				scroll(d, txo, size);
+			}
+
+			buf[0] = 0;
+
+			if (d->outtop == 0 && IS_SET(d->mth->comm_flags, COMM_FLAG_COMMAND))
+			{
+				strcat(buf, "\033[0K");
+			}
+
+			if (d->outtop == 0)
+			{
+				cat_sprintf(buf, "\0337\033[%d;1H%s%s\0338", ch->pcdata->screensize_v - 2, IS_SET(ch->act, PLR_BLANK) ? "\n\r" : "", txo);
+			}
+			else
+			{
+				cat_sprintf(buf, "\0337\033[%d;1H%s\0338", ch->pcdata->screensize_v - 2, txo);
+			}
+
+			if (IS_SET(ch->pcdata->interp, INTERP_PAUSE))
+			{
+				/* cat_sprintf(buf, "%s --------------------------[Press Return to Continue]--------------------------%s", ansi_translate_text(ch, "{128}"), get_color_string(ch, COLOR_PROMPT, VT102_DIM)); */
+                                cat_sprintf(buf, "--------------------------[Press Return to Continue]--------------------------" ); 
+			}
+		}
+		else
+		{
+			if ((IS_SET(ch->act, PLR_ANSI) || IS_SET(ch->act, PLR_VT100)) && d->connected >= CON_PLAYING && d->outtop == 0 && !IS_SET(d->mth->comm_flags, COMM_FLAG_COMMAND))
+			{
+				d->outbuf[0] = '\n';
+				d->outbuf[1] = '\r';
+				d->outbuf[2] = '\0';
+				d->outtop = 2;
+			}
+
+			size = UMIN(strlen(txt), MAX_STRING_LENGTH - 100);
+
+			size = pager(d, txt, size, txo);
+
+			if (length != 1000000)
+			{
+				scroll(d, txo, size);
+			}
+			strcpy(buf, txo);
+		}
+
+		if (d->snoop_by && length != 1000000)
+		{
+			sh = CH(d->snoop_by);
+
+			if (sh && sh->desc && sh->desc->character == sh)
+			{
+				if (IS_SET(CH(d)->pcdata->interp, INTERP_PAUSE))
+				{
+					send_to_char(txo, sh);
+				}
+				else
+				{
+					send_to_char(txt, sh);
+				}
+			}
+		}
+	}
+	else
+	{
+		if (d->outtop == 0 && d->connected >= CON_PLAYING && !IS_SET(d->mth->comm_flags, COMM_FLAG_COMMAND))
+		{
+			d->outbuf[0] = '\n';
+			d->outbuf[1] = '\r';
+			d->outbuf[2] = '\0';
+			d->outtop    = 2;
+		}
+		strcpy(buf, txt);
+	}
+
+	d->outtop = str_apd_max(d->outbuf, buf, d->outtop, MAX_STRING_LENGTH);
+
+	pop_call();
+	return;
+}
 
 /*
  * Append onto an output buffer.
  */
+/*
 void write_to_buffer (DESCRIPTOR_DATA *d, const char *txt, int length)
 {
-        /*
+        *
          * Find length in case caller didn't.
-         */
+         *
         if (length <= 0)
                 length = strlen(txt);
 
-        /*
+        *
          * Initial \n\r if needed.
-         */
+         *
         if (d->outtop == 0 && !d->fcommand)
         {
                 d->outbuf[0]    = '\n';
@@ -2168,9 +2532,9 @@ void write_to_buffer (DESCRIPTOR_DATA *d, const char *txt, int length)
                 d->outtop       = 2;
         }
 
-        /*
+        *
          * Expand the buffer as needed.
-         */
+         *
         while (d->outtop + length >= d->outsize)
         {
                 char *outbuf;
@@ -2182,14 +2546,14 @@ void write_to_buffer (DESCRIPTOR_DATA *d, const char *txt, int length)
                 d->outsize *= 2;
         }
 
-        /*
+        *
          * Copy.  Modifications sent in by Zavod.
-         */
+         *
         strncpy(d->outbuf + d->outtop, txt, length);
         d->outtop += length;
         return;
 }
-
+*/
 
 /*
  * Lowest level output function.
@@ -2244,7 +2608,8 @@ bool write_to_descriptor(DESCRIPTOR_DATA *d, char *txt, int length)
 	{
 		length = UMIN(length, MAX_STRING_LENGTH - d->outtop - 10);
 	}
-	memcpy(&d->outbuf[d->outtop], txt, length);
+	
+        memcpy(&d->outbuf[d->outtop], txt, length);
 
 	d->outtop += length;
 
@@ -2441,7 +2806,8 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                 {
                         /* Old player */
                         write_to_buffer(d, "Password: ", 0);
-                        write_to_buffer(d, echo_off_str, 0);
+                        /* write_to_buffer(d, echo_off_str, 0); */
+                        send_echo_off(d);
                         d->connected = CON_GET_OLD_PASSWORD;
                         return FALSE;
                 }
@@ -2468,7 +2834,8 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                         return FALSE;
                 }
 
-                write_to_buffer(d, echo_on_str, 0);
+                send_echo_on(d);
+                /* write_to_buffer(d, echo_on_str, 0); */
 
                 if (check_reconnect(d, ch->name, TRUE))
                         return TRUE;
@@ -2548,13 +2915,17 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                         return FALSE;
                 }
 
-                write_to_buffer(d, echo_on_str, 0);
+                send_echo_on(d);
+                /* write_to_buffer(d, echo_on_str, 0); */
+
                 write_to_buffer(d, "Do you want to enable colour? [y/n] ",0);
                 d->connected = CON_CHECK_ANSI;
                 break;
 
             case CON_CHECK_ANSI:
-                write_to_buffer(d, echo_on_str, 0);
+                send_echo_on(d);
+                /* write_to_buffer(d, echo_on_str, 0); */
+
 
                 switch (*argument)
                 {
@@ -3055,7 +3426,8 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
                         return FALSE;
                 }
 
-                write_to_buffer(d, echo_on_str, 0);
+                send_echo_on(d);
+                /* write_to_buffer(d, echo_on_str, 0); */
 
                 for (temp = descriptor_list; temp; temp = temp->next)
                 {
@@ -3633,8 +4005,9 @@ bool check_playing (DESCRIPTOR_DATA *d, char *name)
                         }
 
                         write_to_buffer(d, "To reconnect using that character, enter their "
-                                        "password.\n\rPassword for reconnection: ", 0);
-                        write_to_buffer(d, echo_off_str, 0);
+                                        "password.\n\rPassword for reconnection: ", 1000000);
+                        /* write_to_buffer(d, echo_off_str, 0); */
+                        send_echo_off(d);
                         d->connected = CON_GET_DISCONNECTION_PASSWORD;
 
                         return TRUE;
@@ -3667,6 +4040,8 @@ void stop_idling(DESCRIPTOR_DATA *d)
         char_to_room(CH(d), CH(d)->was_in_room);
         CH(d)->was_in_room = NULL;
         act("$n has returned from the void.", CH(d), NULL, NULL, TO_ROOM);
+        return;
+
 
 	pop_call();
 	return;
@@ -3738,7 +4113,7 @@ void send_to_char_bw (const char *txt, CHAR_DATA *ch)
          * Saves process time.
          */
         if (strlen(txt) < 600)
-                write_to_buffer(ch->desc, txt, strlen(txt));
+                write_to_buffer(ch->desc, (char *)txt, strlen(txt));
         else
         {
                 free_string(ch->desc->showstr_head);
@@ -3862,7 +4237,7 @@ void ansi_color(const char *txt, CHAR_DATA *ch)
                                     || !str_cmp(txt, PURPLE))
                                         return;
                         }
-                write_to_buffer(ch->desc, txt, strlen(txt));
+                write_to_buffer(ch->desc, (char *)txt, strlen(txt));
                 return;
         }
 }
@@ -4442,6 +4817,21 @@ void bit_explode (CHAR_DATA *ch, char* buf, long unsigned int n)
             sep = "|";
         }
     }
+}
+
+int cat_sprintf(char *dest, const char *fmt, ...)
+{
+	char buf[MAX_STRING_LENGTH];
+	int size;
+	va_list args;
+
+	va_start(args, fmt);
+	size = vsprintf(buf, fmt, args);
+	va_end(args);
+
+	strcat(dest, buf);
+
+	return size;
 }
 
 int bgcolour (char type, CHAR_DATA *ch, char *string)

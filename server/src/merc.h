@@ -20,10 +20,17 @@
 #pragma once
 /* #include <math.h> */
 #include <stdint.h>
-#include <unistd.h>
+#include <unistd.h> 
 #include <zlib.h>
 #include <stdio.h>
+/* GCMP adds here likely just for comm.c */
+#include <string.h>
+#include <errno.h>
+#include <ctype.h>
+#include <time.h>
+/* end */
 #define _XOPEN_SOURCE
+#define __GLIBC__2__
 
 /*
  * Accommodate old non-Ansi compilers.
@@ -392,7 +399,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define MAX_GROUPS                  58      /* added smithy groups - Brutus 30 Jul 2022 */
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
 #define MAX_VAMPIRE_GAG             27      /* 26 + 1 for 'swallow' | ugly vampire/werewolf hack */
-
+#define MAX_SCROLL_BUF              1000
 
 /*
  * Channel recall, 'review' command; Gezhp 2001
@@ -963,7 +970,7 @@ struct descriptor_data
         int                   repeat;
         char *                showstr_head;
         char *                showstr_point;
-        char *                outbuf;
+        char                  outbuf[ MAX_INPUT_LENGTH ];
         int                   outsize;
         int                   outtop;
         int                 intop;
@@ -2673,7 +2680,7 @@ extern DIR_DATA directions [ MAX_DIR ];
 #define PLR_AFK                         BIT_26
 #define PLR_AUTOWIELD                   BIT_27
 #define PLR_AUTOCOIN                    BIT_28  /* Automatically loot coins; Gez */
-
+#define PLR_PAGER                       BIT_29
 
 /*
  * Status bits
@@ -2909,6 +2916,11 @@ struct  pc_data
         bool                  auto_flags;
         sh_int                interp;
         sh_int                wimpy; /* GCMP */
+	char                * page_buf; /*GCMP */
+        sh_int                scroll_beg; /* GCMP */
+	sh_int                scroll_end; /* GCMP */
+        char                * scroll_buf[MAX_SCROLL_BUF];  /* GCMP */
+        char                * last_command; /* GCMP */
         int             perm_str;
         int             perm_int;
         int             perm_wis;
@@ -4801,7 +4813,8 @@ ROOM_INDEX_DATA *       find_qlocation  args( ( CHAR_DATA *ch, char *arg, int vn
 
 /* comm.c */
 void close_socket                       args( ( DESCRIPTOR_DATA *dclose ) );
-void write_to_buffer                    args( ( DESCRIPTOR_DATA *d, const char *txt, int length ) );
+/* void write_to_buffer                    args( ( DESCRIPTOR_DATA *d, const char *txt, int length ) ); */
+void write_to_buffer                    args((DESCRIPTOR_DATA *d, char *txt, int length));
 void send_to_all_char                   args( ( const char *text ) );
 void send_to_char                       args( ( const char *txt, CHAR_DATA *ch ) );
 void send_paragraph_to_char                   ( char* text, CHAR_DATA* ch, unsigned int indent );
@@ -4823,6 +4836,7 @@ void        log_printf             args((char *fmt, ...));
 void        push_call(char *f, ...);
 void        pop_call(void);
 void        dump_stack(void);
+int         cat_sprintf            args((char *dest, const char *fmt, ...));
 void force_help(DESCRIPTOR_DATA *, char *);
 /* end GMCP */
 
@@ -4876,6 +4890,8 @@ void        start_timer            args((int timer));
 void        close_timer            args((int timer));
 long long   display_timer          args((CHAR_DATA *ch, int timer));
 char      * get_time_string        args((time_t time));
+int         str_apd_max            args((const char *, const char *, int, int));
+int         str_cpy_max            args((const char *, const char *, int));
 
 /* fight.c */
 void    violence_update                 args( ( void ) );
@@ -5004,6 +5020,7 @@ int     objset_bonus_num                      ( int vnum );
 int     objset_bonus_num_pos                  ( int vnum, int pos);
 bool    gets_bonus_objset                     ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos);
 bool    rem_bonus_objset                      ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos);
+int     get_pager_breakpt           args((CHAR_DATA *ch));
 
 /* hunt.c   */
 void hunt_victim                        args( ( CHAR_DATA *ch ) );

@@ -1145,7 +1145,7 @@ void handle_con_note_text (DESCRIPTOR_DATA *d, char * argument)
         if ((!str_cmp(buf, "~")) || (!str_cmp(buf, "END")))
         {
                 write_to_buffer (d, "\n\r\n\r",0);
-                write_to_buffer (d, szFinishPrompt, 0);
+                write_to_buffer (d, (char *)szFinishPrompt, 0);
                 write_to_buffer (d, "\n\r", 0);
                 d->connected = CON_NOTE_FINISH;
                 return;
@@ -1221,7 +1221,7 @@ void handle_con_note_finish (DESCRIPTOR_DATA *d, char * argument)
                                 }
                                 else
                                         write_to_buffer (d,"You haven't written a thing!\n\r\n\r",0);
-                                write_to_buffer (d, szFinishPrompt, 0);
+                                write_to_buffer (d, (char *)szFinishPrompt, 0);
                                 write_to_buffer (d, "\n\r",0);
                                 break;
 
@@ -1251,7 +1251,7 @@ void handle_con_note_finish (DESCRIPTOR_DATA *d, char * argument)
 
                         default: /* invalid response */
                                 write_to_buffer (d, "Huh? Valid answers are:\n\r\n\r",0);
-                                write_to_buffer (d, szFinishPrompt, 0);
+                                write_to_buffer (d, (char *)szFinishPrompt, 0);
                                 write_to_buffer (d, "\n\r",0);
 
                 }
