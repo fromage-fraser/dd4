@@ -3295,6 +3295,7 @@ bool spec_superwimpy( CHAR_DATA *ch )
 
 }
 
+
 bool spec_uzollru( CHAR_DATA *ch )
 {
         CHAR_DATA *victim;
@@ -3458,4 +3459,3 @@ bool spec_uzollru( CHAR_DATA *ch )
         return TRUE;
 
 }
-
