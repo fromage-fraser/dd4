@@ -2138,4 +2138,67 @@ void save_pkscore_table ()
         fpReserve = fopen(NULL_FILE, "r");
 }
 
+/*
+void	add_pvnum( CHAR_DATA *ch )
+{
+	PVNUM_DATA *pvnum;
+
+	push_call("add_pvnum(%p)",ch);
+
+	if (ch->pcdata->pvnum && pvnum_index[ch->pcdata->pvnum] == NULL)
+	{
+		ALLOCMEM(pvnum, PVNUM_DATA, 1);
+
+		pvnum->name = STRALLOC(capitalize_name(ch->name));
+		pvnum->date = mud->current_time;
+
+		pvnum_index[ch->pcdata->pvnum] = pvnum;
+	}
+	pop_call();
+	return;
+}
+
+int find_free_pvnum()
+{
+	int cnt;
+
+	push_call("find_free_pvnum()");
+
+	for (cnt = 100 ; cnt < MAX_PVNUM / 2 ; cnt++)
+	{
+		if (pvnum_index[cnt] == NULL)
+		{
+			pop_call();
+			return cnt;
+		}
+	}
+	log_printf("find_free_pvnum: no free pvnum index found: removing deleted players");
+
+	for (cnt = 100 ; cnt < MAX_PVNUM ; cnt++)
+	{
+		if (pvnum_index[cnt] == NULL)
+		{
+			continue;
+		}
+		if (IS_SET(pvnum_index[cnt]->flags, PVNUM_DELETED))
+		{
+			STRFREE(pvnum_index[cnt]->name);
+			FREEMEM(pvnum_index[cnt]);
+		}
+	}
+
+	for (cnt = 100 ; cnt < MAX_PVNUM ; cnt++)
+	{
+		if (pvnum_index[cnt] == NULL)
+		{
+			pop_call();
+			return cnt;
+		}
+	}
+	log_printf("find_free_pvnum: no free pvnum index found");
+
+	pop_call();
+	return 0;
+}
+*/
 

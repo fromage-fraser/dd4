@@ -395,6 +395,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
+#define MAX_LINKPERPORT                     750
 #define MAX_SKILL                   538     /* 537 + 1 for 'spit mucus' -Owl 18/8/22 */
 #define MAX_PRE_REQ                 1376    /* 1376 +1 for innate knowledge 1 for 'swallow' - Brutus Aug 2022 */
 #define MAX_SPELL_GROUP             441     /* 441 +1 innate knowledge Brutus Aug 2022 */
@@ -991,7 +992,9 @@ struct  auction_data
 #define CON_WELCOME_RACE                        21
 #define CON_GET_DISCONNECTION_PASSWORD          22
 #define CON_CHECK_ANSI                          23
-
+#define CON_GET_NEW_NAME                        24
+#define CON_ANSI                      25
+#define CON_VT100                     26
 #define MAX_CONNECTIONS                         256   /* Maximum number of descriptors */
 extern int connection_count;
 extern DESCRIPTOR_DATA *initiative_list [ MAX_CONNECTIONS ];
@@ -3052,6 +3055,7 @@ struct  pc_data
 	char                * tactical_index;/* The two byte index for a player */
 	int                   exp;
 	char                * back_buf[26];	/* Change to pointer to string mode */
+        char                * host;
         int                   clock; /* END GCMP */
         int             perm_str;
         int             perm_int;
@@ -4919,6 +4923,9 @@ void  print_player_status                     ( CHAR_DATA *ch, char *buf );
 void  print_who_data                          ( CHAR_DATA *ch, char *buf );
 void  print_smithy_data                       ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf );
 int   get_colour_index_by_code                ( int ccode );
+char            * get_color_string     args((CHAR_DATA *ch, int regist, int vt_code));
+char            * get_color_code          args((CHAR_DATA *ch, int regist, int vt_code));
+CHAR_DATA *lookup_char(char *);
 
 /* act_move.c */
 void move_char                          args( ( CHAR_DATA *ch, int door ) );
@@ -4949,6 +4956,9 @@ int   get_spellcraft_obj_bonus                ( CHAR_DATA *ch );
 ROOM_INDEX_DATA *       find_location   args( ( CHAR_DATA *ch, char *arg ) );
 ROOM_INDEX_DATA *       find_qlocation  args( ( CHAR_DATA *ch, char *arg, int vnum ) );
 
+/* color.c */
+int substitute_color             args((char *input, char *output, int colors));
+
 /* comm.c */
 void close_socket                       args( ( DESCRIPTOR_DATA *dclose ) );
 /* void write_to_buffer                    args( ( DESCRIPTOR_DATA *d, const char *txt, int length ) ); */
@@ -4967,13 +4977,14 @@ int  colour_8bit                        args( ( int icode, CHAR_DATA *ch, char *
 void strip_colour_8bit                  args( ( int icode, CHAR_DATA *ch, char *string ) );
 int  digits_in_int                            ( int number );
 void reverse_char_array                       ( char arr[], int n );
-/* GMCP   */
+/* GMCP    */
 void        ch_printf              args((CHAR_DATA *ch, const char *fmt, ...));
 void        log_build_printf       args((int vnum, char *fmt, ...));
 void        log_printf             args((char *fmt, ...));
 void        push_call(char *f, ...);
 void        pop_call(void);
 void        dump_stack(void);
+void        push_call_format(char *f, ...);
 int         cat_sprintf            args((char *dest, const char *fmt, ...));
 void force_help(DESCRIPTOR_DATA *, char *);
 void        ch_printf_color        args((CHAR_DATA *ch, const char *fmt, ...));
@@ -5238,6 +5249,8 @@ void load_pkscore_table                      ( );
 void save_pkscore_table                      ( );
 void load_infamy_table                       ( );
 void save_infamy_table                       ( );
+void        add_pvnum                   args((CHAR_DATA *ch));
+int         find_free_pvnum             args((void));
 
 /* gamble.c */
 GF *    game_lookup                    args( ( const char *name ) );

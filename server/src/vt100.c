@@ -476,7 +476,7 @@ char *ansi_compress( CHAR_DATA *ch, char *txt, int color, int code )
 	Basic color translator for internal usage - Scandum 21-05-2002
 */
 
-/*
+
 char *ansi_translate(char *text_in)
 {
 	char ansi_translate_buffer[MAX_STRING_LENGTH];
@@ -545,7 +545,7 @@ char *ansi_translate(char *text_in)
 	pop_call();
 	return( xterm_translate_buffer );
 }
-*/
+
 /*
 	Translates color codes setting {300} to given def - Scandum 14-05-2002
 */
@@ -621,7 +621,7 @@ char *ansi_translate_def( CHAR_DATA *ch, char *text_in, char *def )
 	return( xterm_translate_buffer );
 }
 */
-/*
+
 void reset_color (CHAR_DATA * ch)
 {
 	push_call("reset_color(%p)",ch);
@@ -656,7 +656,7 @@ void reset_color (CHAR_DATA * ch)
 	return;
 }
 
-*/
+
 char *get_color_diff (CHAR_DATA * ch, int old_for, int old_bak, int old_bold, int new_for, int new_bak, int new_bold)
 {
 	static char buf[20];
@@ -2290,8 +2290,7 @@ void vt100prompter (CHAR_DATA * ch)
 
 void process_naws( DESCRIPTOR_DATA *d, int width, int height )
 {
-	push_call("process_naws(%p,%d,%d)",d, width, height);
-    sprintf(log_buf, "DO i get here naws");
+
     log_string(log_buf);
 	if (CH(d) == NULL)
 	{
@@ -2303,8 +2302,7 @@ void process_naws( DESCRIPTOR_DATA *d, int width, int height )
 	{
 		height = URANGE(15, height, 99);
 	push_call("process_naws(%p,%d,%d)",d, width, height);
-    sprintf(log_buf, "DO i get here naws height");
-	log_string(log_buf);
+
 		if (height != CH(d)->pcdata->screensize_v)
 		{
 			CH(d)->pcdata->screensize_v = height;
@@ -2327,8 +2325,7 @@ void process_naws( DESCRIPTOR_DATA *d, int width, int height )
 	if (width)
 	{
 		width = URANGE(80, width, MAX_TACTICAL_COL);
-   sprintf(log_buf, "DO i get here naws width");
-	log_string(log_buf);
+
 		if (width != CH(d)->pcdata->screensize_h)
 		{
 			CH(d)->pcdata->screensize_h = width;

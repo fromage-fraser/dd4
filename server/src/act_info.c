@@ -4912,5 +4912,22 @@ char *get_color_string( CHAR_DATA *ch, int regist , int vt_code )
 	return( buf );
 }
 
+CHAR_DATA *lookup_char( char *name)
+{
+	PLAYER_GAME *gpl;
+
+	push_call("lookup_char(%p)",name);
+
+	for (gpl = mud->f_player ; gpl ; gpl = gpl->next)
+	{
+		if (!strcasecmp(gpl->ch->name, name))
+		{
+			pop_call();
+			return( gpl->ch );
+		}
+	}
+	pop_call();
+	return( NULL);
+}
 
 /* EOF act_info.c */
