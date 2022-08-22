@@ -4640,7 +4640,8 @@ void do_trap (CHAR_DATA *ch, char *argument)
         char    arg[MAX_INPUT_LENGTH];
         int     chance;
 
-        if (IS_NPC(ch))
+        if (IS_NPC(ch)
+        && !( ch->spec_fun == spec_lookup("spec_uzollru") ) )
         {
                 if (ch->pIndexData->vnum != BOT_VNUM)
                     return;

@@ -1573,7 +1573,8 @@ void do_suck (CHAR_DATA *ch, char *argument)
         char       arg [ MAX_INPUT_LENGTH ];
 
         if (IS_NPC(ch)
-        && !( ch->spec_fun == spec_lookup("spec_laghathti") ))
+        && !( ch->spec_fun == spec_lookup("spec_laghathti") )
+        && !( ch->spec_fun == spec_lookup("spec_uzollru") ) )
                 return;
 
         if ( !IS_NPC(ch)

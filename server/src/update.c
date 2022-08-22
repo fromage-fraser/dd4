@@ -746,6 +746,18 @@ int hit_gain( CHAR_DATA *ch )
                 }
         }
 
+        if (!IS_NPC(ch)
+        && !ch->fighting
+        && is_affected(ch, gsn_coil))
+        {
+                affect_strip(ch, gsn_coil);
+
+                if (IS_AFFECTED(ch, AFF_HOLD))
+                {
+                        REMOVE_BIT(ch->affected_by, AFF_HOLD);
+                }
+        }
+
         if (is_affected(ch, gsn_song_of_rejuvenation))
         {
                 amt = (ch->pcdata->learned[gsn_song_of_rejuvenation]) * ch->level / 100;

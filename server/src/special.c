@@ -90,6 +90,7 @@ DECLARE_SPEC_FUN( spec_kappa               );
 DECLARE_SPEC_FUN( spec_aboleth             );
 DECLARE_SPEC_FUN( spec_laghathti           );
 DECLARE_SPEC_FUN( spec_superwimpy          );
+DECLARE_SPEC_FUN( spec_uzollru             );
 
 
 /*
@@ -145,6 +146,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_aboleth"))              return spec_aboleth;
         if (!str_cmp(name, "spec_laghathti"))            return spec_laghathti;
         if (!str_cmp(name, "spec_superwimpy"))           return spec_superwimpy;
+        if (!str_cmp(name, "spec_uzollru"))              return spec_uzollru;
 
 
         return 0;
@@ -210,6 +212,7 @@ char* spec_fun_name (CHAR_DATA *ch)
         if (ch->spec_fun == spec_lookup("spec_aboleth"))            return "spec_aboleth";
         if (ch->spec_fun == spec_lookup("spec_laghathti"))          return "spec_laghathti";
         if (ch->spec_fun == spec_lookup("spec_superwimpy"))         return "spec_superwimpy";
+        if (ch->spec_fun == spec_lookup("spec_uzollru"))            return "spec_uzollru";
     }
     else {
         return "none";
@@ -3193,7 +3196,8 @@ bool spec_laghathti( CHAR_DATA *ch )
 
 bool spec_superwimpy( CHAR_DATA *ch )
 {
-        /* For cowardly magic-using mobs that just want to get out of combat */
+        /* For cowardly magic-using mobs that just want to be left ALONE */
+
         CHAR_DATA *victim;
         EXIT_DATA *pexit;
         char       *spell;
@@ -3224,9 +3228,14 @@ bool spec_superwimpy( CHAR_DATA *ch )
         {
             int min_level;
             target_self = FALSE;
-/* force recall?*/
-                switch ( number_range (2, 6) )
+
+                switch ( number_range (1, 6) )
                 {
+                    case  1:
+                        if ( CAN_SPEAK(ch) ) { do_say(ch, "Just go HOME, you bully!"); }
+                        do_recall(victim, "");
+                        return TRUE;
+
                     case  2:
                         min_level = 1;
                         if ( CAN_SPEAK(ch) ) { sprintf(buf,"Get out of here!  Shoo!"); }
@@ -3279,6 +3288,170 @@ bool spec_superwimpy( CHAR_DATA *ch )
                 return FALSE;
 
         do_say(ch,buf);
+
+        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+
+        return TRUE;
+
+}
+
+bool spec_uzollru( CHAR_DATA *ch )
+{
+        CHAR_DATA *victim;
+        char      *spell;
+        int        sn;
+        bool       target_self;
+
+        spell = "poison";
+
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim->deleted)
+                        continue;
+
+                if (victim->fighting == ch && !number_bits(1))
+                        break;
+        }
+
+        if (!victim)
+                return FALSE;
+
+        while (1)
+        {
+            int min_level;
+            target_self = FALSE;
+
+                switch ( number_range (0, 9) )
+                {
+                    case  0:
+                        if (is_affected(victim, gsn_coil))
+                        {
+                                act( "You attempt to pull your tentacles tight about the neck of $N!",  ch, NULL, victim, TO_CHAR  );
+                                act( "$n attempts to pull $s tentacles tight about your neck!", ch, NULL, victim, TO_VICT  );
+                                act( "$n attempts to pull $s tentacles tight about the neck of $N!",  ch, NULL, victim, TO_NOTVICT );
+                                do_strangle( ch, victim->name);
+                                return TRUE;
+                        }
+                        else {
+                                return TRUE;
+                        }
+
+                    case  1:
+                        if (is_affected(victim, gsn_coil))
+                        {
+                                act( "You tighten your tentacles around $N!",  ch, NULL, victim, TO_CHAR  );
+                                act( "$n tightens the grip of $s tentacles on you!", ch, NULL, victim, TO_VICT  );
+                                act( "$n tightens the grip of $s tentacles on $N!",  ch, NULL, victim, TO_NOTVICT );
+                                do_constrict( ch, victim->name);
+                                return TRUE;
+                        }
+                        else {
+                                return TRUE;
+                        }
+
+                    case  2:
+                        min_level = 1;
+                        act( "Your tentacles burrow into $N!",  ch, NULL, victim, TO_CHAR    );
+                        act( "$n's tentacles burrow into you...", ch, NULL, victim, TO_VICT  );
+                        act( "$n's tentacles burrow into $N!",  ch, NULL, victim, TO_NOTVICT );
+                        spell_poison( gsn_poison, ch->level, ch, victim );
+                        one_hit(ch, victim, gsn_suck);
+                        one_hit(ch, victim, gsn_suck);
+                        return TRUE;
+
+                    case  3:
+                        if (is_affected(victim, gsn_coil))
+                        {
+                                act( "You tighten your tentacles around $N!",  ch, NULL, victim, TO_CHAR  );
+                                act( "$n tightens the grip of $s tentacles on you!", ch, NULL, victim, TO_VICT  );
+                                act( "$n tightens the grip of $s tentacles on $N!",  ch, NULL, victim, TO_NOTVICT );
+                                do_constrict( ch, victim->name);
+                                return TRUE;
+                        }
+                        else {
+                                return TRUE;
+                        }
+
+                    case  4:
+                        min_level = 1;
+                        act( "Your tentacles burrow into $N' flesh!",  ch, NULL, victim, TO_CHAR    );
+                        act( "$n's tentacles burrow into your flesh!", ch, NULL, victim, TO_VICT    );
+                        act( "$n's tentacles burrow into $N's flesh!",  ch, NULL, victim, TO_NOTVICT );
+                        spell_poison( gsn_poison, ch->level, ch, victim );
+                        one_hit(ch, victim, gsn_suck);
+                        one_hit(ch, victim, gsn_suck);
+                        return TRUE;
+
+                    case  5:
+                        if (is_affected(victim, gsn_coil))
+                        {
+                                act( "You attempt to pull your tentacles tight about the neck of $N!",  ch, NULL, victim, TO_CHAR  );
+                                act( "$n attempts to pull $s tentacles tight about your neck!", ch, NULL, victim, TO_VICT  );
+                                act( "$n attempts to pull $s tentacles tight about the neck of $N!",  ch, NULL, victim, TO_NOTVICT );
+                                do_strangle( ch, victim->name);
+                                return TRUE;
+                        }
+                        else {
+                                return TRUE;
+                        }
+
+                    case  6:
+                        if (!is_affected(victim, gsn_coil))
+                        {
+                                act( "You wrap your hideous tentacles around $N!",  ch, NULL, victim, TO_CHAR  );
+                                act( "$n wraps $s hideous tentacles around you!", ch, NULL, victim, TO_VICT  );
+                                act( "$n wraps $s hideous tentacles around $N!",  ch, NULL, victim, TO_NOTVICT );
+                                do_coil( ch, victim->name);
+                                return TRUE;
+                        }
+                        else {
+                                return TRUE;
+                        }
+
+                    case  7:
+                        if (!is_affected(victim, gsn_coil))
+                        {
+                                act( "You wrap your hideous tentacles around $N!",  ch, NULL, victim, TO_CHAR  );
+                                act( "$n wraps $s hideous tentacles around you!", ch, NULL, victim, TO_VICT  );
+                                act( "$n wraps $s hideous tentacles around $N!",  ch, NULL, victim, TO_NOTVICT );
+                                do_coil( ch, victim->name);
+                                return TRUE;
+                        }
+                        else {
+                                return TRUE;
+                        }
+
+                    case  8:
+                        min_level = 25;
+                        if (is_affected(victim, gsn_feeblemind))
+                        {
+                                break;
+                        }
+                        else {
+                                spell = "feeblemind";
+                                break;
+                        }
+
+                    default:
+                        min_level = 1;
+                        spell = "poison";
+                        break;
+                }
+
+                if ( ch->level >= min_level )
+                        break;
+        }
+
+        if ( ( sn = skill_lookup( spell ) ) < 0 )
+                return FALSE;
+
+        if (target_self)
+                act ("$c strokes $mself with $s hideous tentacles.", ch, NULL, NULL, TO_ROOM);
+        else
+        {
+                act ("$c caresses $N with $s hideous tentacles.", ch, NULL, victim, TO_NOTVICT);
+                act ("$c caresses you with $s hideous tentacles.", ch, NULL, victim, TO_VICT);
+        }
 
         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
 
