@@ -423,7 +423,7 @@ water drake silvery-blue elemental ~
 a water drake~
 <110>A silvery-blue elemental drake swims about here.<0>
 ~
-Draconic in form and about 12�feet (3.7�meters) long. It has silvery-blue 
+Draconic in form and about 12�feet (3.7�meters) long. It has silvery-blue
 scales that are more fish-like than reptilian.
 ~
 64 8|32|512 -100 S
@@ -435,7 +435,7 @@ water drake silvery-blue elemental ~
 a water drake~
 <110>A silvery-blue elemental drake swims about here.<0>
 ~
-Draconic in form and about 12�feet (3.7�meters) long. It has silvery-blue 
+Draconic in form and about 12�feet (3.7�meters) long. It has silvery-blue
 scales that are more fish-like than reptilian.
 ~
 64 8|32|512 -85 S
@@ -447,8 +447,8 @@ kappa hard-shelled humanoid creature~
 a kappa~
 <28>A small, hard-shelled humanoid creature glowers at you.<0>
 ~
-The creature is of small-humanoid size and has a stooped stance; his main 
-distinguishing feature is a hard shell that covers his back. His head is flat 
+The creature is of small-humanoid size and has a stooped stance; his main
+distinguishing feature is a hard shell that covers his back. His head is flat
 and pudgy, and his webbed hands end in sharp claws.
 ~
 64 512 -210 S
@@ -460,8 +460,8 @@ kappa hard-shelled humanoid creature~
 a kappa~
 <28>A small, hard-shelled humanoid creature glowers at you.<0>
 ~
-The creature is of small-humanoid size and has a stooped stance; her main 
-distinguishing feature is a hard shell that covers her back. Her head is flat 
+The creature is of small-humanoid size and has a stooped stance; her main
+distinguishing feature is a hard shell that covers her back. Her head is flat
 and pudgy, and her webbed hands end in sharp claws.
 ~
 64 512 -235 S
@@ -473,9 +473,9 @@ giant squid huge~
 a giant squid~
 <206>A huge squid propels itself through the brine.<0>
 ~
-This gigantic squid is over 12 metres long and quite capable of defending 
-itself against most predators with its enormous tentacles and large beak.  
-It doesn't look interested in you, and you'd imagine its focused more on 
+This gigantic squid is over 12 metres long and quite capable of defending
+itself against most predators with its enormous tentacles and large beak.
+It doesn't look interested in you, and you'd imagine its focused more on
 evading the larger toothed-whale predators it has down here.
 ~
 4|64 32|512 0 S
@@ -487,8 +487,8 @@ giant lobster~
 a giant lobster~
 <124>A giant lobster swims through the gloom.<0>
 ~
-This 20-foot monster crustacean has a long body with a muscular tail and a 
-pair of huge, frightening-looking claws.  It doesn't seem interested in your 
+This 20-foot monster crustacean has a long body with a muscular tail and a
+pair of huge, frightening-looking claws.  It doesn't seem interested in your
 presence and will probably leave you alone if you don't harass it.
 ~
 4|64 512 0 S
@@ -500,14 +500,14 @@ giant lobster~
 a giant lobster~
 <124>A particularly large giant lobster swims through the gloom.<0>
 ~
-This 22-foot monster crustacean has a long body with a muscular tail and a 
-pair of huge, frightening-looking claws.  It seems particularly confident for 
-a lobster, and you surmise it is a male who has been frequently successful in 
-combat with other lobsters, and has thus risen to the top of the lobster 
-dominance heierarchy on the back of the bucketfuls of serotonin flowing through 
-its (relatively) tiny brain.  
+This 22-foot monster crustacean has a long body with a muscular tail and a
+pair of huge, frightening-looking claws.  It seems particularly confident for
+a lobster, and you surmise it is a male who has been frequently successful in
+combat with other lobsters, and has thus risen to the top of the lobster
+dominance heierarchy on the back of the bucketfuls of serotonin flowing through
+its (relatively) tiny brain.
 
-It doesn't seem interested in your presence, though, and will probably leave 
+It doesn't seem interested in your presence, though, and will probably leave
 you alone if you don't harass it.
 ~
 4|64 512 -200 S
@@ -519,10 +519,11 @@ vodyanoi creature large lumbering~
 a vodyanoi~
 <58>A large, lumbering creature grumps about irritably.<0>
 ~
-This is a vodyanoi, a creature related to the umber hulk but somewhat larger 
-and water-dwelling. It has slimy green skin, webbed hands and feed, and 
-powerful manibles.  They have a reputation as an evil and violent creature, 
+This is a vodyanoi, a creature related to the umber hulk but somewhat larger
+and water-dwelling. It has slimy green skin, webbed hands and feed, and
+powerful manibles.  They have a reputation as an evil and violent creature,
 but this one's attention doesn't seem to have turned to you... yet.
+
 ~
 64 512 -1000 S
 47 0 0 0d0+0 0d0+0
@@ -533,8 +534,9 @@ merrow male~
 a male merrow~
 <76>A large male merrow stares at you, furious at the intrusion!<0>
 ~
-He has black teeth and nails; webbed hands and feet; a long, thick neck; an 
+He has black teeth and nails; webbed hands and feet; a long, thick neck; an
 underbite; and sloping shoulders. He does not seem pleased to see you.
+
 ~
 2|32|64 8|32|512 -1000 S
 49 0 0 0d0+0 0d0+0
@@ -545,9 +547,10 @@ female merrow~
 a female merrow~
 <76>A large female merrow stares at you, furious at the intrusion!<0>
 ~
-She has black teeth and nails; webbed hands and feet; a long, thick neck; an 
-underbite; and sloping shoulders. She is also covered in tattoos that seem 
+She has black teeth and nails; webbed hands and feet; a long, thick neck; an
+underbite; and sloping shoulders. She is also covered in tattoos that seem
 mainly to depict acts of death and destruction.
+
 ~
 2|32|64 8|32|512 -1000 S
 49 0 0 0d0+0 0d0+0
@@ -558,10 +561,11 @@ eel-like creature aboleth~
 an aboleth~
 <20>A huge, eel-like creature slithers through the abyssal depths.<0>
 ~
-It resembles a bizarre eel, with a long, tubular body, a tail at one end, two 
-fins near the head, and another along the back. Its mouth is lamprey-like, and 
-filled with serrated, jawless teeth. You feel afraid just being in its presence, 
+It resembles a bizarre eel, with a long, tubular body, a tail at one end, two
+fins near the head, and another along the back. Its mouth is lamprey-like, and
+filled with serrated, jawless teeth. You feel afraid just being in its presence,
 and have a strong intuition that it might be best to leave it alone.
+
 ~
 64 8|32|512 -730 S
 50 0 0 0d0+0 0d0+0
@@ -572,9 +576,10 @@ yurian lobster male~
 a yurian male~
 <96>A bizarre humanoid lobster creature scuttles about.<0>
 ~
-He resembles a lobster the size of a human being, walking on two humanoid legs 
-but also able to swim like a lobster. His face is similar to that of a human, 
+He resembles a lobster the size of a human being, walking on two humanoid legs
+but also able to swim like a lobster. His face is similar to that of a human,
 though encased in chitinous armor and with eyes on stalks.
+
 ~
 64 512 125 S
 50 0 0 0d0+0 0d0+0
@@ -585,9 +590,10 @@ yurian lobster female~
 a yurian female~
 <96>A bizarre humanoid lobster creature scuttles about.<0>
 ~
-She resembles a lobster the size of a human being, walking on two humanoid legs 
-but also able to swim like a lobster. Her face is similar to that of a human, 
+She resembles a lobster the size of a human being, walking on two humanoid legs
+but also able to swim like a lobster. Her face is similar to that of a human,
 though encased in chitinous armor and with eyes on stalks.
+
 ~
 64 512 135 S
 50 0 0 0d0+0 0d0+0
@@ -598,10 +604,10 @@ chuul horrible mix crustacean insect serpent~
 a chuul~
 <154>A horrible mix of crustacean, insect, and serpent scuttles about here.<0>
 ~
-It is a chuul, which has been described as "a horrible mix of crustacean, 
-insect, and serpent", but most closely resembles an 8-foot-tall yellow-green 
-lobster, weighing around 300 kilograms with four long legs, two large claws, 
-a strong protective exoskeleton, a fan-like tail, and a mass of poisonous 
+It is a chuul, which has been described as "a horrible mix of crustacean,
+insect, and serpent", but most closely resembles an 8-foot-tall yellow-green
+lobster, weighing around 300 kilograms with four long legs, two large claws,
+a strong protective exoskeleton, a fan-like tail, and a mass of poisonous
 tentacles around its mouth.  Yikes.
 ~
 64 512 -850 S
@@ -613,10 +619,10 @@ chuul horrible mix crustacean insect serpent~
 a chuul~
 <154>A horrible mix of crustacean, insect, and serpent scuttles about here.<0>
 ~
-It is a chuul, which has been described as "a horrible mix of crustacean, 
-insect, and serpent", but most closely resembles an 8-foot-tall yellow-green 
-lobster, weighing around 300 kilograms with four long legs, two large claws, 
-a strong protective exoskeleton, a fan-like tail, and a mass of poisonous 
+It is a chuul, which has been described as "a horrible mix of crustacean,
+insect, and serpent", but most closely resembles an 8-foot-tall yellow-green
+lobster, weighing around 300 kilograms with four long legs, two large claws,
+a strong protective exoskeleton, a fan-like tail, and a mass of poisonous
 tentacles around its mouth.  Yikes.
 ~
 64 512 -800 S
@@ -639,7 +645,7 @@ laghathti~
 a laghathti~
 <21>A spherical mass of writhing tentacles radiates pure evil.<0>
 ~
-This is a laghathti,a kind of cephalopodan obyrith demon.  It has a loose resemblance to octopuses, but that comparison in no way captures its alien appearance. For one, it seemingly has no core; what passes for a body is really just a spherical mass of writhing tendrils, roughly 8 feet in diameter. Aside from that, its form consists of twelve, midnight-blue tentacles. Five of them have a pale underside riddled with hundreds of tiny mouths, another five are slimmer and ended in wide, paddle-like fins, and the other two are shorter, stronger, and end in long, crocodilian jaws from which the creature's high-pitched wails emanate.
+This is a laghathti,a kind of cephalopodan obyrith demon.  It has a loose resemblance to octopuses, but that comparison in no way captures its alien appearance. For one, it seemingly has no core; what passes for a body is really just a spherical mass of writhing tendrils, roughly 8�feet in diameter. Aside from that, its form consists of twelve, midnight-blue tentacles. Five of them have a pale underside riddled with hundreds of tiny mouths, another five are slimmer and ended in wide, paddle-like fins, and the other two are shorter, stronger, and end in long, crocodilian jaws from which the creature's high-pitched wails emanate.
 ~
 64 8|32|512 -1000 S
 54 0 0 0d0+0 0d0+0
@@ -850,7 +856,7 @@ The head bowl of a kappa lies here.~
 2 0 0
 E
 kappa head bowl~
-The head bowl of a kappa contains magic-infused waters, which are the source 
+The head bowl of a kappa contains magic-infused waters, which are the source
 of their magical powers.~
 #27390
 huge mandibles~
@@ -881,10 +887,11 @@ The rotting corpse of a sahuagin lies here, tied to a patch of kelp.~
 E
 rotting corpse sahuagin~
 The corpse is well-decayed.  Sufficiently so, in fact, it's a bit of a struggle
-at first to figure out what kind of creature it is.  It has been tied to a 
-patch of kelp, which keeps it from being cast adrift in the ocean currents.  
+at first to figure out what kind of creature it is.  It has been tied to a
+patch of kelp, which keeps it from being cast adrift in the ocean currents.
 Perhaps it serves as some sort of marker?
 ~
+
 #27393
 crude longspear~
 a crude longspear~
@@ -4895,6 +4902,8 @@ E 1 27234 100 16
 M 1 27291 1 27269        a hunting seal to Canton Canal
 E 1 27383 100 3
 *
+M 1 27290 1 27269        a locathah hunter to Canton Canal
+*
 M 1 27292 2 27395        a sea zombie to Canton Canal
 *
 M 1 27292 2 27393        a sea zombie to Canton Canal
@@ -5090,7 +5099,7 @@ M  27309 spec_poison                a chuul
 M  27310 spec_poison                a chuul
 M  27311 spec_bloodsucker           a giant sea leech
 M  27312 spec_laghathti             a laghathti
-
+M  27290 spec_superwimpy            a locathah hunter
 S
 
 

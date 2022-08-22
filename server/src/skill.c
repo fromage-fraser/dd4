@@ -1310,10 +1310,11 @@ void do_push (CHAR_DATA *ch, char *argument)
         argument = one_argument(argument, arg);
         argument = one_argument(argument, arg2);
 
-        if (IS_NPC(ch))
+        if ( IS_NPC(ch) )
                 return;
 
-        if (!CAN_DO(ch, gsn_push))
+        if ( !IS_NPC(ch)
+        &&   !CAN_DO(ch, gsn_push) )
         {
                 send_to_char("Huh?\n\r",ch);
                 return;
@@ -1390,32 +1391,35 @@ void do_push (CHAR_DATA *ch, char *argument)
         chance += ch->level - victim->level;
         race_bonus = 0;
 
-        switch (ch->race)
+        if ( !IS_NPC(ch) )
         {
-            case 2:  race_bonus =  -4; break;
-            case 3:  race_bonus =   2; break;
-            case 4:  race_bonus =   4; break;
-            case 5:  race_bonus =  10; break;
-            case 6:  race_bonus =  -2; break;
-            case 7:  race_bonus =  10; break;
-            case 8:  race_bonus =  -4; break;
-            case 9:  race_bonus =   7; break;
-            case 10: race_bonus =  -5; break;
-            case 11: race_bonus =   6; break;
-            case 12: race_bonus =   4; break;
-            case 13: race_bonus =  -4; break;
-            case 14: race_bonus =   8; break;
-            case 15: race_bonus =   5; break;
-            case 16: race_bonus =   3; break;
-            case 17: race_bonus =   4; break;
-            case 18: race_bonus = -10; break;
-            case 19: race_bonus =   6; break;
-            case 21: race_bonus =  10; break;
-            case 22: race_bonus =  -3; break;
-            case 23: race_bonus =  -6; break;
-            case 24: race_bonus =  -1; break;
-            case 25: race_bonus =   2; break;
-            default: break;
+                switch (ch->race)
+                {
+                case 2:  race_bonus =  -4; break;
+                case 3:  race_bonus =   2; break;
+                case 4:  race_bonus =   4; break;
+                case 5:  race_bonus =  10; break;
+                case 6:  race_bonus =  -2; break;
+                case 7:  race_bonus =  10; break;
+                case 8:  race_bonus =  -4; break;
+                case 9:  race_bonus =   7; break;
+                case 10: race_bonus =  -5; break;
+                case 11: race_bonus =   6; break;
+                case 12: race_bonus =   4; break;
+                case 13: race_bonus =  -4; break;
+                case 14: race_bonus =   8; break;
+                case 15: race_bonus =   5; break;
+                case 16: race_bonus =   3; break;
+                case 17: race_bonus =   4; break;
+                case 18: race_bonus = -10; break;
+                case 19: race_bonus =   6; break;
+                case 21: race_bonus =  10; break;
+                case 22: race_bonus =  -3; break;
+                case 23: race_bonus =  -6; break;
+                case 24: race_bonus =  -1; break;
+                case 25: race_bonus =   2; break;
+                default: break;
+                }
         }
 
         chance += race_bonus;
