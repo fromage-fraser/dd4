@@ -443,7 +443,7 @@ DECLARE_DO_FUN ( do_board );
 #define MAX_ADDQP               10000
 #define MIN_MSET_AGE               17
 #define MAX_MSET_AGE            10000
-#define MIN_MSET_HP               -10
+#define MIN_MSET_HP                 0
 #define MAX_MSET_HP             30000
 #define MIN_MSET_MANA               0
 #define MAX_MSET_MANA           30000
