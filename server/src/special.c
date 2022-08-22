@@ -89,6 +89,7 @@ DECLARE_SPEC_FUN( spec_large_whale         );
 DECLARE_SPEC_FUN( spec_kappa               );
 DECLARE_SPEC_FUN( spec_aboleth             );
 DECLARE_SPEC_FUN( spec_laghathti           );
+DECLARE_SPEC_FUN( spec_superwimpy          );
 
 
 /*
@@ -143,6 +144,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_kappa"))                return spec_kappa;
         if (!str_cmp(name, "spec_aboleth"))              return spec_aboleth;
         if (!str_cmp(name, "spec_laghathti"))            return spec_laghathti;
+        if (!str_cmp(name, "spec_superwimpy"))           return spec_superwimpy;
 
 
         return 0;
@@ -207,6 +209,7 @@ char* spec_fun_name (CHAR_DATA *ch)
         if (ch->spec_fun == spec_lookup("spec_kappa"))              return "spec_kappa";
         if (ch->spec_fun == spec_lookup("spec_aboleth"))            return "spec_aboleth";
         if (ch->spec_fun == spec_lookup("spec_laghathti"))          return "spec_laghathti";
+        if (ch->spec_fun == spec_lookup("spec_superwimpy"))         return "spec_superwimpy";
     }
     else {
         return "none";
@@ -3181,6 +3184,101 @@ bool spec_laghathti( CHAR_DATA *ch )
                 act ("$c waves $s hideous tentacles at $N.", ch, NULL, victim, TO_NOTVICT);
                 act ("$c waves $s hideous tentacles at you.", ch, NULL, victim, TO_VICT);
         }
+
+        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+
+        return TRUE;
+
+}
+
+bool spec_superwimpy( CHAR_DATA *ch )
+{
+        /* For cowardly magic-using mobs that just want to get out of combat */
+        CHAR_DATA *victim;
+        EXIT_DATA *pexit;
+        char       *spell;
+        int        sn;
+        bool       target_self;
+        char       buf[MAX_STRING_LENGTH];
+        int        door;
+        int        i;
+        bool       stopped_fight;
+
+        door    = 0;
+        spell   = "fear";
+        stopped_fight = FALSE;
+
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim->deleted)
+                        continue;
+
+                if (victim->fighting == ch && !number_bits(1))
+                        break;
+        }
+
+        if (!victim)
+                return FALSE;
+
+        while (1)
+        {
+            int min_level;
+            target_self = FALSE;
+/* force recall?*/
+                switch ( number_range (2, 6) )
+                {
+                    case  2:
+                        min_level = 1;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Get out of here!  Shoo!"); }
+                        spell = "fear";
+                        break;
+
+                    case  3:
+                        if ( CAN_SPEAK(ch) ) { do_say(ch, "Just STOP!"); }
+                        stop_fighting( ch, TRUE );
+                        stopped_fight = TRUE;
+                        for (i = 0;i <=3; i++)
+                        {
+                                door = rand() % 5;
+                                if ( (door <= 5)
+                                && (pexit = ch->in_room->exit[door])
+                                && pexit->to_room
+                                && !IS_SET(pexit->exit_info, EX_CLOSED)
+                                && !IS_SET(pexit->to_room->room_flags, ROOM_NO_MOB)
+                                && (stopped_fight == TRUE))
+                                {
+                                        move_char(ch, door);
+                                        stopped_fight = FALSE;
+                                }
+                        }
+
+                        stopped_fight = FALSE;
+                        return TRUE;
+
+                    case  4:
+                        if ( CAN_SPEAK(ch) ) { do_say(ch, "You can't hurt what you can't see!"); }
+                        do_smoke_bomb( ch, victim->name);
+                        return TRUE;
+
+                    case  5:
+                        if ( CAN_SPEAK(ch) ) { do_say(ch, "Leave me alone!  I didn't do anything!"); }
+                        do_flee( ch, "");
+                        return TRUE;
+
+                    default:
+                        if ( CAN_SPEAK(ch) ) { do_say(ch, "Leave me alone!  Stop hurting me!"); }
+                        do_flee( ch, "");
+                        return TRUE;
+                }
+
+                if ( ch->level >= min_level )
+                        break;
+        }
+
+        if ( ( sn = skill_lookup( spell ) ) < 0 )
+                return FALSE;
+
+        do_say(ch,buf);
 
         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
 

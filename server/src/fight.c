@@ -4117,6 +4117,11 @@ void do_smoke_bomb (CHAR_DATA *ch, char *argument)
         int             door;
         AFFECT_DATA     af;
 
+
+        if ( (IS_NPC(ch)
+        &&   !(ch->spec_fun == spec_lookup("spec_superwimpy")) ))
+                return;
+
         if (!(victim = ch->fighting))
         {
                 if (ch->position == POS_FIGHTING)
@@ -4158,8 +4163,18 @@ void do_smoke_bomb (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (IS_NPC(ch) || number_percent() > (50 + (ch->pcdata->learned[gsn_smoke_bomb] / 2)))
+        if ( !IS_NPC(ch)
+        && (number_percent() > (50 + (ch->pcdata->learned[gsn_smoke_bomb] / 2))))
         {
+                act ("You throw a smoke bomb but your enemies aren't confused!", ch, NULL, NULL, TO_CHAR);
+                act ("$n drops a smoke bomb but fails to escape!", ch, NULL, NULL, TO_ROOM);
+                return;
+        }
+
+        if ( IS_NPC(ch)
+        && (number_percent() > 85))
+        {
+                /* Put this in here for spec_superwimpy -- Owl 22/8/22 */
                 act ("You throw a smoke bomb but your enemies aren't confused!", ch, NULL, NULL, TO_CHAR);
                 act ("$n drops a smoke bomb but fails to escape!", ch, NULL, NULL, TO_ROOM);
                 return;

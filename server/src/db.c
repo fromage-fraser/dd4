@@ -2480,6 +2480,7 @@ void load_specials( FILE *fp )
 
                         if ( pMobIndex->spec_fun == spec_lookup("spec_poison")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_bloodsucker")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_superwimpy")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_spectral_minion")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_kungfu_poison")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_guard")
