@@ -113,9 +113,10 @@
 
 {&gsn_frost_breath,             &gsn_group_breath,      30,     PRE_MAGE},
 {&gsn_fire_breath,              &gsn_group_breath,      60,     PRE_MAGE},
+{&gsn_steam_breath,             &gsn_group_breath,      80,     PRE_MAGE},
+{&gsn_lightning_breath,         &gsn_group_breath,      85,     PRE_MAGE},
 {&gsn_acid_breath,              &gsn_group_breath,      90,     PRE_MAGE},
 {&gsn_gas_breath,               &gsn_group_breath,      95,     PRE_MAGE},
-{&gsn_lightning_breath,         &gsn_group_breath,      85,     PRE_MAGE},
 
 /* **** MAJOR PROTECTIVE **** */
 

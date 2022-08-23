@@ -605,12 +605,17 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                                         chance *= 100; /* shifters */
                         }
 
-                        chance /= 100; /* had weirdness with exp_mod so two step % */
-
-                        chance += (get_curr_dex(ch) - 25);
+                        if (!IS_NPC(ch))
+                        {
+                                /* NPCs don't have dex and don't have %s boosted above -- Owl 23/8/22 */
+                                chance /= 100;
+                                chance += (get_curr_dex(ch) - 25);
+                        }
 
                         if (chance < number_percent())
+                        {
                                 break;
+                        }
 
                 }
 

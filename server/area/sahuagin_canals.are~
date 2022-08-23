@@ -4,49 +4,1007 @@
 #AREA_SPECIAL
 no_teleport
 no_quest
+exp_mod 105
 hidden
 $
 
+#RECALL
+27347
 #MOBILES
 #27267
-placeholder mob~
-a placeholder mob~
-A placeholder mob stands here.
+giant starfish~
+a giant starfish~
+<94>A giant starfish floats through the water, hunting for gastropods and limpets.<0>
 ~
-This mob is a placeholder.  Start at this number.
+The giant starfish has a dense body with tan-coloured, thick arms. Its arms
+contain blunt spines that are bluish in color with purple tips that are swollen
+and surrounded by brown fuzz and pedicellariae that have a plier-like shape.
+You'd guess it'd be 5 feet in diameter. It's minding its own business searching
+for large gastropods and limpets it can use its flexible stomach to pry open
+and absorb.
 ~
-2|64 2|8|32|524288 0 S
+4|64 8192|67108864 0 S
 35 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27268
+giant starfish~
+a giant starfish~
+<94>A giant starfish floats through the water, hunting for gastropods and limpets.<0>
+~
+The giant starfish has a dense body with tan-coloured, thick arms. Its arms
+contain blunt spines that are bluish in color with purple tips that are swollen
+and surrounded by brown fuzz and pedicellariae that have a plier-like shape.
+You'd guess it'd be 5 feet in diameter. It's minding its own business searching
+for large gastropods and limpets it can use its flexible stomach to pry open
+and absorb.
+~
+4|64 8192 0 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27269
+pilot whale~
+a pilot whale~
+<243>A pilot whale swims about, looking for deep-sea squid.<0>
+~
+The pilot whale is mostly dark grey, with lighter grey patches behind his
+dorsal fin, under his chin, behind his eye, and on his belly.  His dorsal
+fin is set forward on the back and sweeps backwards. Larger and more
+robust than most dolphins, pilot whales have a distinctive large, bulbous
+melon. This guy is deep-diving to try and find some squid, one of his
+favourite snacks.
+~
+64 8|32|512 0 S
+36 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27270
+pilot whale~
+a pilot whale~
+<243>A pilot whale swims about, looking for deep-sea squid.<0>
+~
+The pilot whale is mostly dark grey, with lighter grey patches behind her
+dorsal fin, under her chin, behind her eye, and on her belly.  Her dorsal
+fin is set forward on the back and sweeps backwards. Larger and more
+robust than most dolphins, pilot whales have a distinctive large, bulbous
+melon. This pilot whale is deep-diving to try and find some squid, one of
+her favourite snacks.
+~
+64 8|32|512 0 S
+36 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27271
+minke whale~
+a minke whale~
+<61>A minke whale cruises the depths for krill.<0>
+~
+While small for a baleen whale, the minke whale is still nearly 30 feet long
+and weighs almost 7 tons. This one is cruising for krill, though he'd be happy
+to take herring or capelin if there were none to be found.
+~
+64 8|32|8192 0 S
+37 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27272
+minke whale~
+a minke whale~
+<61>A minke whale cruises the depths for krill.<0>
+~
+While small for a baleen whale, the minke whale is still nearly 30 feet long
+and weighs almost 7 tons. This one is cruising for krill, though she'd be happy
+to take herring or capelin if there were none to be found.
+~
+64 8|32|8192 0 S
+37 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27273
+baiji pale dolphin~
+a baiji~
+<159>A pale, odd-looking dolphin swims about here.<0>
+~
+The baiji is pale blue to gray on her back, and white on her belly. She has a
+long and slightly upturned beak and a low and triangular dorsal fin. You also
+notice her eyes are much smaller than those of most of the dolphins you've seen.
+~
+64 8|32|512|32768 0 S
+38 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27274
+dolphin baiji pale odd~
+a baiji~
+<159>A pale, odd-looking dolphin swims about here.<0>
+~
+The baiji is pale blue to gray on his back, and white on his belly. He has a
+long and slightly upturned beak and a low and triangular dorsal fin. You also
+notice his eyes are much smaller than those of most of the dolphins you've seen.
+~
+64 8|32|512|32768 0 S
+38 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27275
+right whale~
+a right whale~
+<237>A huge right whale tunnels obliviously through the water.<0>
+~
+This right whale is easily 15 metres long. She has an extremely thick body,
+and large, broad and blunt pectoral flippers. A filter-feeder, she cruises
+obliviously through the wtaer, paying no attention to you at all.
+~
+64 8|32|512|32768 0 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27276
+spectacled porpoise~
+a spectacled porpoise~
+<250>A spectacled porpoise frolicks about in the deep.<0>
+~
+This spectacled porpoise has a black dorsal region which is sharply delineated
+from his white belly, and an obvious dark eye patch. He looks like he's having
+a lot of fun just frolicking about.
+~
+64|128 8|32|512|8192 0 S
+39 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27277
+spectacled porpoise~
+a spectacled porpoise~
+<250>A spectacled porpoise frolicks about in the deep.<0>
+~
+This spectacled porpoise has a lightish-grey dorsal region which is delineated
+from her white belly, and an obvious dark eye patch. She looks like she's
+having a lot of fun just frolicking about.
+~
+64|128 8|32|512|8192 0 S
+39 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27278
+fin whale~
+a fin whale~
+<247>A huge fin whale barrels through the water, filter-feeding.<0>
+~
+The huge fin whale's body is long and slender, coloured brownish-grey with a
+paler underside.  It is known as the greyhound of the sea for its speed and
+elegance. It's not very interested in you, and won't attack unless you
+provoke it.
+~
+64 8192 0 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27279
+fin whale~
+a fin whale~
+<247>A huge fin whale barrels through the water, filter-feeding.<0>
+~
+The huge fin whale's body is long and slender, coloured brownish-grey with a
+paler underside.  It is known as the greyhound of the sea for its speed and
+elegance.  It's not very interested in you, and won't attack unless you
+provoke it.
+~
+64 8192 0 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27280
+sperm whale~
+a sperm whale~
+<59>A sperm whale hunts in the ocean deep.<0>
+~
+The sperm whale is the largest toothed whale, and this one looks to be at
+least 20 metres long.  With a huge head and a mouth full of large, conical
+teeth, it busies itself searching for the giant squid that are its favourite
+meal.
+~
+64 8192 0 S
+38 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27281
+sperm whale~
+a sperm whale~
+<59>A sperm whale hunts in the ocean deep.<0>
+~
+The sperm whale is the largest toothed whale, and this one looks to be at
+least 11 metres long but mature--meaning it is probably a female.  With a
+huge head and a mouth full of large, conical teeth, it busies itself
+searching for the giant squid that are its favourite meal.
+~
+64 512|8192 0 S
+38 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27282
+female nixie~
+a female nixie~
+<121>A female nixie regards you with unabashed curiosity.<0>
+~
+Nixies are an aquatic race of sprite, quite small and elven in appearance.
+This one has pale green skin, dark green hair, webbed fingers and toes,
+pointed ears, and wide, silvery eyes.  She stands about 4 feet tall, and
+is wearing colourful clothing made out of seaweed, shells, and pearls.
+~
+64 8|32|512|8192|32768 0 S
+41 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27283
+male nixie~
+a male nixie~
+<121>A male nixie regards you with curiosity and some trepidation.<0>
+~
+Nixies are an aquatic race of sprite, quite small and elven in appearance.
+This one has pale green skin, dark green hair, webbed fingers and toes,
+pointed ears, and wide, silvery eyes.  He stands about 4 feet tall, and is
+wearing a loincloth made out of colourful seaweed.
+~
+64 8|32|512|8192|32768 0 S
+41 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27284
+froghemoth hideous froglike monstrosity~
+the froghemoth~
+<58>An elephant-sized MONSTROSITY lurks here!<0>
+~
+A hideous FROGHEMOTH stands before you, and it looks hungry. These
+elephant-sized amphibious predators have four tentacles, three eyes,
+and six tons of bad attitude.
+~
+2|4|32|64 32|512 0 S
+45 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27285
+bowhead whale~
+a bowhead whale~
+<240>A bowhead whale strains zooplankton from the sea water.<0>
+~
+The bowhead whale has a large, robust, dark-coloured body and a white
+chin/lower jaw. It has a massive triangular skull, which it uses to break
+through ice to breathe. This one is looking for zooplankton, which it strains
+using the massive baleen plates inside its huge mouth.
+~
+64 512|8192 0 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27286
+bowhead whale~
+a bowhead whale~
+<240>A bowhead whale strains zooplankton from the sea water.<0>
+~
+The bowhead whale has a large, robust, dark-coloured body and a white
+chin/lower jaw. It has a massive triangular skull, which it uses to break
+through ice to breathe. This one is looking for zooplankton, which it strains
+using the massive baleen plates inside its huge mouth.
+~
+64 512 0 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27287
+humpback whale~
+a humpback whale~
+<24>A humpback whale moves purposefully through the water.<0>
+~
+The humpback is a very large, bulky whale with a thin rostrum and
+proportionally long flippers, each around one-third of its body length.
+It has a short dorsal fin and its head is covered with bumps full of
+nerves that serve as sensory organs.
+~
+64 512|8192 0 S
+41 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27288
+ocean sunfish fish~
+an ocean sunfish~
+<96>A large, round, flattened fish swims past.<0>
+~
+The caudal fin of the ocean sunfish is replaced by a rounded clavus, creating
+the ocean sunfish's distinct truncated shape. Its body is flattened laterally,
+giving it a long oval shape when seen head-on. The pectoral fins are small and
+fan-shaped, while the dorsal fin and the anal fin are lengthened, often making
+the fish as tall as it is long.  This one looks to be nearly 3 metres tall.
+~
+64 512|8192 0 S
+43 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27289
+giant gar alligator~
+a giant gar~
+<65>A massive, sleek alligator gar torpedoes through the deep.<0>
+~
+The body of an alligator gar is torpedo-shaped, usually brown or olive, fading
+to a lighter gray or yellow ventral surface. Their scales are not like the
+scales of other fishes; rather, they are ganoid scales, which are bone-like,
+rhomboidal-shaped scales, often with serrated edges, and covered by an
+enamel-like substance. They are nearly impenetrable and are excellent
+protection against predation. Unlike other gar species, the upper jaw of an
+alligator gar has a dual row of large, sharp teeth that are used to impale
+and hold prey. Alligator gar are stalking, ambush predators, primarily
+piscivores, but they also ambush and eat waterfowl and small mammals they find
+floating on the water's surface.
+~
+4|32|64 8|32|512|32768 0 S
+45 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27290
+locathah hunter~
+a locathah hunter~
+<166>A locathah hunter is here, tracking his prey.<0>
+~
+This locathah has fine, ochre scales covering his body. His fish-like head
+features large eyes, a toothless mouth,  and small fins where ears would
+normally be. Instead of hair, he has a dorsal fin and flukes.  Usually
+locathah hunt with seals; there's likely to be one around here someplace.
+~
+64|128 32|512|32768 125 S
+42 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27291
+hunting seal~
+a hunting seal~
+<94>A hunting seal swims about, looking distressed and angry.<0>
+~
+This seal swims about anxiously, looking both distressed and aggressive.
+It might pay not to get too close.
+~
+4|32|64 32|8192 50 S
+42 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27292
+sea zombie~
+a sea zombie~
+<70>A sea zombie lumbers through the water, groaning.<0>
+~
+Once the corpse of a drowned human, the sea zombie looks bloated; his
+discoloured flesh is foul with putrefaction. His eye-sockets are empty,
+his lips are blackened, and his tongue protrudes hideously. You notice his
+body is encrusted with barnacles.
+~
+64 512 -545 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27293
+sea zombie~
+a sea zombie~
+<106>A sea zombie lumbers through the water, groaning.<0>
+~
+Once the corpse of a drowned human, the sea zombie looks bloated; her
+discoloured flesh is foul with putrefaction. Her eye-sockets are empty,
+her lips are blackened, and her tongue protrudes hideously. You notice her
+body is encrusted with small starfish.
+~
+64 512 -530 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27294
+zin snake pale blue~
+a Zin~
+<159>A large, pale blue snake swims gracefully through the current.<0>
+~
+It is a large, pale blue--nearly transparent--snake that is covered in a very
+unusual mosaic pattern.
+~
+64 8|32|512|32768|1048576 -125 S
+43 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27295
+mob~
+a Zin~
+<157>A large, pale green snake swims gracefully through the current.<0>
+~
+It is a large, pale green--nearly transparent--snake that is covered in a very
+unusual mosaic pattern.
+~
+64 8|32|512|32768|1048576 -125 S
+43 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27296
+water drake silvery-blue elemental ~
+a water drake~
+<110>A silvery-blue elemental drake swims about here.<0>
+~
+Draconic in form and about 12�feet (3.7�meters) long. It has silvery-blue
+scales that are more fish-like than reptilian.
+~
+64 8|32|512 -100 S
+45 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27297
+water drake silvery-blue elemental ~
+a water drake~
+<110>A silvery-blue elemental drake swims about here.<0>
+~
+Draconic in form and about 12�feet (3.7�meters) long. It has silvery-blue
+scales that are more fish-like than reptilian.
+~
+64 8|32|512 -85 S
+45 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27298
+kappa hard-shelled humanoid creature~
+a kappa~
+<28>A small, hard-shelled humanoid creature glowers at you.<0>
+~
+The creature is of small-humanoid size and has a stooped stance; his main
+distinguishing feature is a hard shell that covers his back. His head is flat
+and pudgy, and his webbed hands end in sharp claws.
+~
+64 512 -210 S
+47 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27299
+kappa hard-shelled humanoid creature~
+a kappa~
+<28>A small, hard-shelled humanoid creature glowers at you.<0>
+~
+The creature is of small-humanoid size and has a stooped stance; her main
+distinguishing feature is a hard shell that covers her back. Her head is flat
+and pudgy, and her webbed hands end in sharp claws.
+~
+64 512 -235 S
+47 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27300
+giant squid huge~
+a giant squid~
+<206>A huge squid propels itself through the brine.<0>
+~
+This gigantic squid is over 12 metres long and quite capable of defending
+itself against most predators with its enormous tentacles and large beak.
+It doesn't look interested in you, and you'd imagine its focused more on
+evading the larger toothed-whale predators it has down here.
+~
+4|64 32|512 0 S
+50 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27301
+giant lobster~
+a giant lobster~
+<124>A giant lobster swims through the gloom.<0>
+~
+This 20-foot monster crustacean has a long body with a muscular tail and a
+pair of huge, frightening-looking claws.  It doesn't seem interested in your
+presence and will probably leave you alone if you don't harass it.
+~
+4|64 512 0 S
+45 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27302
+giant lobster~
+a giant lobster~
+<124>A particularly large giant lobster swims through the gloom.<0>
+~
+This 22-foot monster crustacean has a long body with a muscular tail and a
+pair of huge, frightening-looking claws.  It seems particularly confident for
+a lobster, and you surmise it is a male who has been frequently successful in
+combat with other lobsters, and has thus risen to the top of the lobster
+dominance heierarchy on the back of the bucketfuls of serotonin flowing through
+its (relatively) tiny brain.
+
+It doesn't seem interested in your presence, though, and will probably leave
+you alone if you don't harass it.
+~
+4|64 512 -200 S
+45 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27303
+vodyanoi creature large lumbering~
+a vodyanoi~
+<58>A large, lumbering creature grumps about irritably.<0>
+~
+This is a vodyanoi, a creature related to the umber hulk but somewhat larger
+and water-dwelling. It has slimy green skin, webbed hands and feed, and
+powerful manibles.  They have a reputation as an evil and violent creature,
+but this one's attention doesn't seem to have turned to you... yet.
+~
+64 512 -1000 S
+47 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27304
+merrow male~
+a male merrow~
+<76>A large male merrow stares at you, furious at the intrusion!<0>
+~
+He has black teeth and nails; webbed hands and feet; a long, thick neck; an
+underbite; and sloping shoulders. He does not seem pleased to see you.
+~
+2|32|64 8|32|512 -1000 S
+49 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27305
+female merrow~
+a female merrow~
+<76>A large female merrow stares at you, furious at the intrusion!<0>
+~
+She has black teeth and nails; webbed hands and feet; a long, thick neck; an
+underbite; and sloping shoulders. She is also covered in tattoos that seem
+mainly to depict acts of death and destruction.
+~
+2|32|64 8|32|512 -1000 S
+49 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27306
+eel-like creature aboleth~
+an aboleth~
+<20>A huge, eel-like creature slithers through the abyssal depths.<0>
+~
+It resembles a bizarre eel, with a long, tubular body, a tail at one end, two
+fins near the head, and another along the back. Its mouth is lamprey-like, and
+filled with serrated, jawless teeth. You feel afraid just being in its presence,
+and have a strong intuition that it might be best to leave it alone.
+~
+64 8|32|512 -730 S
+50 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#27307
+yurian lobster male~
+a yurian male~
+<96>A bizarre humanoid lobster creature scuttles about.<0>
+~
+He resembles a lobster the size of a human being, walking on two humanoid legs
+but also able to swim like a lobster. His face is similar to that of a human,
+though encased in chitinous armor and with eyes on stalks.
+~
+64 512 125 S
+50 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27308
+yurian lobster female~
+a yurian female~
+<96>A bizarre humanoid lobster creature scuttles about.<0>
+~
+She resembles a lobster the size of a human being, walking on two humanoid legs
+but also able to swim like a lobster. Her face is similar to that of a human,
+though encased in chitinous armor and with eyes on stalks.
+~
+64 512 135 S
+50 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27309
+chuul horrible mix crustacean insect serpent~
+a chuul~
+<154>A horrible mix of crustacean, insect, and serpent scuttles about here.<0>
+~
+It is a chuul, which has been described as "a horrible mix of crustacean,
+insect, and serpent", but most closely resembles an 8-foot-tall yellow-green
+lobster, weighing around 300 kilograms with four long legs, two large claws,
+a strong protective exoskeleton, a fan-like tail, and a mass of poisonous
+tentacles around its mouth.  Yikes.
+~
+64 512 -850 S
+52 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27310
+chuul horrible mix crustacean insect serpent~
+a chuul~
+<154>A horrible mix of crustacean, insect, and serpent scuttles about here.<0>
+~
+It is a chuul, which has been described as "a horrible mix of crustacean,
+insect, and serpent", but most closely resembles an 8-foot-tall yellow-green
+lobster, weighing around 300 kilograms with four long legs, two large claws,
+a strong protective exoskeleton, a fan-like tail, and a mass of poisonous
+tentacles around its mouth.  Yikes.
+~
+64 512 -800 S
+52 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27311
+giant sea leech~
+a giant sea leech~
+<53>A giant sea leech pulses and wiggles about.<0>
+~
+It similar in all morphological respects to a regular sea leech--wormlike with large suckers at both ends--but huge.  You'd hate to have it feasting on you.
+~
+4|64 8|32|512 -147 S
+53 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#27312
+laghathti~
+a laghathti~
+<21>A spherical mass of writhing tentacles radiates pure evil.<0>
+~
+This is a laghathti,a kind of cephalopodan obyrith demon.  It has a loose resemblance to octopuses, but that comparison in no way captures its alien appearance. For one, it seemingly has no core; what passes for a body is really just a spherical mass of writhing tendrils, roughly 8�feet in diameter. Aside from that, its form consists of twelve, midnight-blue tentacles. Five of them have a pale underside riddled with hundreds of tiny mouths, another five are slimmer and ended in wide, paddle-like fins, and the other two are shorter, stronger, and end in long, crocodilian jaws from which the creature's high-pitched wails emanate.
+~
+64 8|32|512 -1000 S
+54 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#27313
+reekmurk dark ink cloud~
+a reekmurk~
+<17>What appears to be a dark, drifting cloud of ink travels past.<0>
+~
+The reekmurk is a huge, rare aquatic ooze, found usually in deep oceans.  It gains its name from its appearance and horrible smell.  It resembles nothing so much as a drifting cloud of ink, though can move surprisingly fast for all that.
+~
+64 8|32|512|32768|1048576 0 S
+55 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#27314
+uzollru giant centipede~
+an uzollru~
+<49>What looks like a huge, giant centipede swims here.<0>
+~
+This uzollru has the vague appearance of a giant centipede with dozens of spiny flippers rather than legs. Its head resembles that of a sea anemone with a bulging red eye at the center and five long tentacles extending from behind the eye in a radial pattern around it. On both sides of its head are gigantic arms like those of a lobster ending in tremendous, barbed claws.
+~
+4|64 8|32|512 -1000 S
+56 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #0
 
 
 #OBJECTS
-#27371
-placeholder object~
-a placeholder object~
-A placeholder object is here.~
+#27372
+krill heap~
+a heap of partially-digested krill~
+A wet heap of krill is here.~
+~
+19 0 1|16384
+35~ 0~ 0~ 0~
+3 0 0
+E
+krill heap~
+Krill are small crustaceans of the order Euphausiacea, and are found in all the
+world's oceans. What you have here is a big, wet heap of them in various stages
+of digestion.  They're probably edible, but... not delicious.
+~
+#27373
+jaws teeth large conical~
+jaws full of large conical teeth~
+Your large, conical teeth protrude from your fearsome jaws.~
+~
+5 67108864 0
+0~ 0~ 0~ 10~
+1 0 0
+#27374
+teak javelin~
+a teak javelin~
+A javelin carved out of teak wood is here.~
 ~
 5 0 1|8192
+0~ 0~ 0~ 11~
+2 0 0
+A
+18 8
+A
+19 2
+E
+teak javelin~
+Looks like it probably belongs to a nixe--you know they make their wooden
+weapons out of teak, for its high resistance to water and craking.  It's
+carefully crafted, but is otherwise not especially remarkable.
+~
+#27375
+small sharp dagger~
+a small, sharp dagger~
+A small, sharp dagger has been left here.~
+~
+5 16384 1|8192
+0~ 0~ 0~ 2~
+1 0 0
+E
+small sharp dagger~
+To judge by its size and make, you suspect it belonged to a nixie. It's
+coated with a foul-smelling substance.~
+#27376
+seaweed loincloth~
+a seaweed loincloth~
+A loincloth made out of brightly-coloured seaweed is here.~
+~
+9 0 1|2048
 0~ 0~ 0~ 0~
-4 0 0
+2 0 0
+A
+17 -5
 A
 2 2
-A
-19 1
-A
-14 15
-A
-4 1
-E
-placeholder object~
-This is a placeholder object.  Start with this number.
+#27377
+seaweed body wrap~
+a seaweed body wrap~
+A tight whole-body wrap made of colourful seaweed is here.~
 ~
+9 0 1|8
+0~ 0~ 0~ 0~
+5 0 0
+A
+17 -15
+#27378
+pearl strings bracelet~
+a pearl string bracelet~
+A bracelet made of strings of pearls lies here.~
+~
+8 1|64 1|256
+0~ 0~ 0~ 0~
+1 0 0
+A
+12 0
+#27379
+tongue~
+a long tongue, tipped with spiky protrusions~
+A huge tongue tipped with spikes is here.~
+~
+5 67108864 0
+0~ 0~ 0~ 11~
+1 0 0
+#27380
+smooth tentacles~
+powerful, smooth tentacles~
+The huge tentacles of some aquatic monster are here.~
+~
+5 67108864 0
+0~ 0~ 0~ 4~
+1 0 0
+#27382
+murderous claws~
+a murderous pair of claws~
+A large pair of claws has been left here.~
+~
+5 67108864 0
+0~ 15~ 20~ 8~
+1 10000 0
+A
+19 5
+#27383
+broken collar~
+a broken collar~
+A broken collar lies here.~
+~
+9 0 1|4|8192
+0~ 0~ 0~ 0~
+2 0 0
+A
+17 -5
+E
+broken collar~
+The collar looks like one used by locathah hunters to keep their hunting
+beasts under control.  It is broken.
+~
+#27384
+belaying pin~
+a belaying pin~
+A belaying pin has been left here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 7~
+3 0 0
+A
+18 8
+E
+belaying pin~
+It is a short rod made of wood that was inserted into holes bored through
+a ship's rail.
+~
+#27385
+rusty short sword~
+a rusty short sword~
+A very rusty short sword has been left here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 3~
+6 0 0
+A
+18 7
+#27386
+translucent egg yolk shell thin~
+a translucent egg yolk~
+A very pale egg yolk in a thin shell is here.~
+~
+10 1|32|64 1|16384
+43~ sanctuary~ heal~ ~
+1 0 0
+E
+translucent egg yolk shell thin~
+It looks very unnatural and feels strange and unpleasant to hold.
+You suspect magic.
+~
+#27387
+hard outer shell~
+a hard outer shell~
+The tough outer shell of some aquatic creature lies here.~
+~
+9 4096 1|8
+0~ 0~ 0~ 0~
+20 0 0
+A
+17 -30
+A
+5 3
+A
+14 -100
+A
+2 -2
+A
+19 3
+A
+18 -2
+#27388
+sharp beak~
+a sharp beak~
+The sharp beak of some aquatic creature is here.~
+~
+5 67108864 1|8192
+0~ 0~ 0~ 10~
+4 0 0
+#27389
+kappa head bowl~
+a kappa's head bowl~
+The head bowl of a kappa lies here.~
+~
+10 64 1|16384
+35~ power heal~ armor~ inertial barrier~
+2 0 0
+E
+kappa head bowl~
+The head bowl of a kappa contains magic-infused waters, which are the source
+of their magical powers.~
+#27390
+huge mandibles~
+huge mandibles~
+The mandibles of some monstrous creature lie here.~
+~
+5 67108864 0
+0~ 15~ 20~ 10~
+1 10000 0
+A
+19 8
+#27391
+treasure pile~
+a treasure pile~
+A pile of treasure has been heaped here.~
+~
+20 1 1|16384
+314~ 55~ 28~ 3~
+15 0 0
+#27392
+rotting corpse sahuagin~
+the rotting corpse of a sahuagin~
+The rotting corpse of a sahuagin lies here, tied to a patch of kelp.~
+~
+23 0 1
+0~ 0~ 0~ 0~
+85 0 0
+E
+rotting corpse sahuagin~
+The corpse is well-decayed.  Sufficiently so, in fact, it's a bit of a struggle
+at first to figure out what kind of creature it is.  It has been tied to a
+patch of kelp, which keeps it from being cast adrift in the ocean currents.
+Perhaps it serves as some sort of marker?
+~
+#27393
+crude longspear~
+a crude longspear~
+A crude longspear has been discarded here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 2~
+4 0 0
+A
+19 6
+E
+crude longspear~
+Crudely-made, but quite deadly.~
+#27394
+ivory horns~
+ivory horns~
+A pair of ivory horns have been dropped here.~
+~
+8 0 1|16
+0~ 0~ 0~ 0~
+2 0 0
+#27395
+pinchers~
+pinchers~
+A large pair of pinchers has been severed from a creature and left here.~
+~
+5 67108864 0
+0~ 15~ 20~ 8~
+1 10000 0
+A
+19 5
+#27396
+leech egg~
+a giant leech egg~
+<98>A huge purple egg sac lies here.<0>~
+~
+26 0 1|16384
+55~ cell adjustment~ heal~ heal~
+3 0 0
+#27397
+midnight-blue tentacles~
+tentacles~
+<4>A hideous mass of midnight-blue tentacles has been severed from a creature and left here.<0>~
+~
+5 67108864 0
+0~ 15~ 20~ 12~
+1 10000 0
+A
+19 5
+#27398
+bladder laghathti blood~
+a bladder of laghathti blood~
+A sword rests here.~
+~
+10 16|64 1|16384
+53~ stabilise~ intellect fortress~ mental barrier~
+1 0 0
+#27399
+inky-black black inky stone~
+an inky-black stone~
+<17>An <21>inky-black stone<0> has been left here.<0>~
+~
+9 16|64 1|32768
+0~ 0~ 0~ 0~
+1 0 0
+A
+13 55
+#27400
+bulging red eye~
+a bulging red eye~
+The bulging red eye of some hideous sea-creature lies here.~
+~
+9 16|64|512 1|16384
+0~ 0~ 0~ 0~
+30 0 0
+A 
+1 8
+A
+40 -1
+E
+bulging red eye~
+this huge, hideous red eye belongs to some sort of sea monster, you are sure.  It feels~
 #0
 
 
 #ROOMS
+#27235
+Dummy Connecting Room~
+PLACEHOLDER UNTIL CONNECTED AREA IN.
+~
+0 4 8
+S
+#27243
+Dummy Connecting Room~
+PLACEHOLDER UNTIL CONNECTED AREA IN.
+~
+0 4 8
+S
 #27244
 Bridge to Military Canton~
 You are standing in room #27244.
@@ -100,6 +1058,10 @@ D1
 ~
 ~
 0 -1 27246
+D2
+~
+~
+0 -1 27813
 D4
 ~
 ~
@@ -199,7 +1161,7 @@ S
 Canton Canal~
 You are standing in room #27253.
 ~
-0 0 8
+0 4 8
 D0
 ~
 ~
@@ -315,7 +1277,7 @@ S
 Canton Canal~
 You are standing in room #27259.
 ~
-0 0 8
+0 4 8
 D0
 ~
 ~
@@ -359,7 +1321,7 @@ S
 Canton Canal~
 You are standing in room #27261.
 ~
-0 0 8
+0 4 8
 D1
 ~
 ~
@@ -629,6 +1591,12 @@ D4
 ~
 0 -1 27575
 S
+#27283
+Dummy Connecting Room~
+PLACEHOLDER UNTIL CONNECTED AREA IN.
+~
+0 4 8
+S
 #27307
 Bridge to Market Canton~
 You are standing in room #27307.
@@ -691,7 +1659,7 @@ S
 Canton Canal~
 You are standing in room #27356.
 ~
-0 0 8
+0 4 8
 D0
 ~
 ~
@@ -849,7 +1817,7 @@ S
 Canton Canal~
 You are standing in room #27363.
 ~
-0 0 8
+0 4 8
 D0
 ~
 ~
@@ -950,6 +1918,12 @@ D4
 ~
 ~
 0 -1 27667
+S
+#27385
+Dummy Connecting Room~
+PLACEHOLDER UNTIL CONNECTED AREA IN.
+~
+0 4 8
 S
 #27388
 Bridge to North Living Canton~
@@ -1163,6 +2137,18 @@ D4
 ~
 0 -1 27697
 S
+#27398
+Dummy Connecting Room~
+PLACEHOLDER UNTIL CONNECTED AREA IN.
+~
+0 4 8
+S
+#27412
+Dummy Connecting Room~
+PLACEHOLDER UNTIL CONNECTED AREA IN.
+~
+0 4 8
+S
 #27418
 Bridge to Prince's Canton~
 You are standing in room #27418.
@@ -1364,6 +2350,24 @@ D4
 ~
 ~
 0 -1 27726
+D5
+What looked like a filthy puddle of mud turns out to be a narrow entrance to
+some sort of underwater cavern.  You could squeeze down there, you think.
+~
+puddle mud filthy~
+0 -1 27810
+S
+#27427
+Dummy Connecting Room~
+PLACEHOLDER UNTIL CONNECTED AREA IN.
+~
+0 4 8
+S
+#27439
+Dummy Connecting Room~
+PLACEHOLDER UNTIL CONNECTED AREA IN.
+~
+0 4 8
 S
 #27444
 Canton Canal~
@@ -1859,1659 +2863,17 @@ D4
 ~
 0 -1 27770
 S
-#27471
-Prince's Canton~
-You are standing in room #27471.
-~
-0 0 8
-D0
-~
-~
-0 -1 27476
-D1
-~
-~
-0 -1 27472
-D2
-~
-~
-0 -1 27439
-D4
-~
-~
-0 -1 27771
-S
-#27472
-Prince's Canton~
-You are standing in room #27472.
-~
-0 0 8
-D0
-~
-~
-0 -1 27478
-D1
-~
-~
-0 -1 27473
-D2
-~
-~
-0 -1 27440
-D3
-~
-~
-0 -1 27471
-D4
-~
-~
-0 -1 27772
-S
-#27473
-Prince's Canton~
-You are standing in room #27473.
-~
-0 0 8
-D0
-~
-~
-0 -1 27479
-D1
-~
-~
-0 -1 27474
-D2
-~
-~
-0 -1 27441
-D3
-~
-~
-0 -1 27472
-D4
-~
-~
-0 -1 27773
-S
-#27474
-Prince's Canton~
-You are standing in room #27474.
-~
-0 0 8
-D0
-~
-~
-0 -1 27480
-D1
-~
-~
-0 -1 27475
-D2
-~
-~
-0 -1 27442
-D3
-~
-~
-0 -1 27473
-D4
-~
-~
-0 -1 27774
-S
-#27475
-Prince's Canton~
-You are standing in room #27475.
-~
-0 0 8
-D2
-~
-~
-0 -1 27443
-D3
-~
-~
-0 -1 27474
-D4
-~
-~
-0 -1 27775
-S
-#27476
-Prince's Canton~
-You are standing in room #27476.
-~
-0 0 8
-D0
-~
-~
-0 -1 27482
-D1
-~
-~
-0 -1 27478
-D2
-~
-~
-0 -1 27471
-D3
-~
-~
-0 -1 27477
-D4
-~
-~
-0 -1 27776
-S
-#27477
-Prince's Canton~
-You are standing in room #27477.
-~
-0 0 8
-D0
-~
-~
-0 -1 27481
-D1
-~
-~
-0 -1 27476
-D4
-~
-~
-0 -1 27777
-S
-#27478
-Prince's Canton~
-You are standing in room #27478.
-~
-0 0 8
-D0
-~
-~
-0 -1 27483
-D1
-~
-~
-0 -1 27479
-D2
-~
-~
-0 -1 27472
-D3
-~
-~
-0 -1 27476
-D4
-~
-~
-0 -1 27778
-S
-#27479
-Prince's Canton~
-You are standing in room #27479.
-~
-0 0 8
-D0
-~
-~
-0 -1 27484
-D1
-~
-~
-0 -1 27480
-D2
-~
-~
-0 -1 27473
-D3
-~
-~
-0 -1 27478
-D4
-~
-~
-0 -1 27779
-S
-#27480
-Prince's Canton~
-You are standing in room #27480.
-~
-0 0 8
-D0
-~
-~
-0 -1 27485
-D2
-~
-~
-0 -1 27474
-D3
-~
-~
-0 -1 27479
-D4
-~
-~
-0 -1 27780
-S
-#27481
-Prince's Canton~
-You are standing in room #27481.
-~
-0 0 8
-D0
-~
-~
-0 -1 27486
-D1
-~
-~
-0 -1 27482
-D2
-~
-~
-0 -1 27477
-D4
-~
-~
-0 -1 27781
-S
-#27482
-Prince's Canton~
-You are standing in room #27482.
-~
-0 0 8
-D0
-~
-~
-0 -1 27488
-D1
-~
-~
-0 -1 27483
-D2
-~
-~
-0 -1 27476
-D3
-~
-~
-0 -1 27481
-D4
-~
-~
-0 -1 27782
-S
-#27483
-Prince's Canton~
-You are standing in room #27483.
-~
-0 0 8
-D0
-~
-~
-0 -1 27489
-D1
-~
-~
-0 -1 27484
-D2
-~
-~
-0 -1 27478
-D3
-~
-~
-0 -1 27482
-D4
-~
-~
-0 -1 27783
-S
-#27484
-Prince's Canton~
-You are standing in room #27484.
-~
-0 0 8
-D0
-~
-~
-0 -1 27490
-D1
-~
-~
-0 -1 27485
-D2
-~
-~
-0 -1 27479
-D3
-~
-~
-0 -1 27483
-D4
-~
-~
-0 -1 27784
-S
-#27485
-Prince's Canton~
-You are standing in room #27485.
-~
-0 0 8
-D0
-~
-~
-0 -1 27491
-D2
-~
-~
-0 -1 27480
-D3
-~
-~
-0 -1 27484
-D4
-~
-~
-0 -1 27785
-S
-#27486
-Prince's Canton~
-You are standing in room #27486.
-~
-0 0 8
-D0
-~
-~
-0 -1 27492
-D1
-~
-~
-0 -1 27488
-D2
-~
-~
-0 -1 27481
-D3
-~
-~
-0 -1 27487
-D4
-~
-~
-0 -1 27786
-S
-#27487
-Prince's Canton~
-You are standing in room #27487.
-~
-0 0 8
-D1
-~
-~
-0 -1 27486
-D4
-~
-~
-0 -1 27787
-S
-#27488
-Prince's Canton~
-You are standing in room #27488.
-~
-0 0 8
-D0
-~
-~
-0 -1 27493
-D1
-~
-~
-0 -1 27489
-D2
-~
-~
-0 -1 27482
-D3
-~
-~
-0 -1 27486
-D4
-~
-~
-0 -1 27788
-S
-#27489
-Prince's Canton~
-You are standing in room #27489.
-~
-0 0 8
-D0
-~
-~
-0 -1 27494
-D1
-~
-~
-0 -1 27490
-D2
-~
-~
-0 -1 27483
-D3
-~
-~
-0 -1 27488
-D4
-~
-~
-0 -1 27789
-S
-#27490
-Prince's Canton~
-You are standing in room #27490.
-~
-0 0 8
-D0
-~
-~
-0 -1 27495
-D1
-~
-~
-0 -1 27491
-D2
-~
-~
-0 -1 27484
-D3
-~
-~
-0 -1 27489
-D4
-~
-~
-0 -1 27790
-S
-#27491
-Prince's Canton~
-You are standing in room #27491.
-~
-0 0 8
-D2
-~
-~
-0 -1 27485
-D3
-~
-~
-0 -1 27490
-D4
-~
-~
-0 -1 27791
-S
-#27492
-Prince's Canton~
-You are standing in room #27492.
-~
-0 0 8
-D1
-~
-~
-0 -1 27493
-D2
-~
-~
-0 -1 27486
-D4
-~
-~
-0 -1 27792
-S
-#27493
-Prince's Canton~
-You are standing in room #27493.
-~
-0 0 8
-D0
-~
-~
-0 -1 27496
-D1
-~
-~
-0 -1 27494
-D2
-~
-~
-0 -1 27488
-D3
-~
-~
-0 -1 27492
-D4
-~
-~
-0 -1 27793
-S
-#27494
-Prince's Canton~
-You are standing in room #27494.
-~
-0 0 8
-D0
-~
-~
-0 -1 27497
-D1
-~
-~
-0 -1 27495
-D2
-~
-~
-0 -1 27489
-D3
-~
-~
-0 -1 27493
-D4
-~
-~
-0 -1 27794
-S
-#27495
-Prince's Canton~
-You are standing in room #27495.
-~
-0 0 8
-D0
-~
-~
-0 -1 27498
-D2
-~
-~
-0 -1 27490
-D3
-~
-~
-0 -1 27494
-D4
-~
-~
-0 -1 27795
-S
-#27496
-Prince's Canton~
-You are standing in room #27496.
-~
-0 0 8
-D1
-~
-~
-0 -1 27497
-D2
-~
-~
-0 -1 27493
-D4
-~
-~
-0 -1 27796
-S
-#27497
-Prince's Canton~
-You are standing in room #27497.
-~
-0 0 8
-D1
-~
-~
-0 -1 27498
-D2
-~
-~
-0 -1 27494
-D3
-~
-~
-0 -1 27496
-D4
-~
-~
-0 -1 27797
-S
-#27498
-Prince's Canton~
-You are standing in room #27498.
-~
-0 0 8
-D2
-~
-~
-0 -1 27495
-D3
-~
-~
-0 -1 27497
-D4
-~
-~
-0 -1 27798
-S
-#27500
-Arena-Prison Upper~
-You are standing in room #27500.
-~
-0 0 8
-D0
-~
-~
-0 -1 27503
-D1
-~
-~
-0 -1 27501
-D5
-~
-~
-0 -1 27200
-S
-#27501
-Arena-Prison Upper~
-You are standing in room #27501.
-~
-0 0 8
-D0
-~
-~
-0 -1 27504
-D3
-~
-~
-0 -1 27500
-D5
-~
-~
-0 -1 27201
-S
-#27503
-Arena-Prison Upper~
-You are standing in room #27503.
-~
-0 0 8
-D0
-~
-~
-0 -1 27507
-D1
-~
-~
-0 -1 27504
-D2
-~
-~
-0 -1 27500
-D5
-~
-~
-0 -1 27203
-S
-#27504
-Arena-Prison Upper~
-You are standing in room #27504.
-~
-0 0 8
-D0
-~
-~
-0 -1 27508
-D1
-~
-~
-0 -1 27505
-D2
-~
-~
-0 -1 27501
-D3
-~
-~
-0 -1 27503
-D5
-~
-~
-0 -1 27204
-S
-#27505
-Arena-Prison Upper~
-You are standing in room #27505.
-~
-0 0 8
-D0
-~
-~
-0 -1 27509
-D1
-~
-~
-0 -1 27506
-D3
-~
-~
-0 -1 27504
-D5
-~
-~
-0 -1 27205
-S
-#27506
-Arena-Prison Upper~
-You are standing in room #27506.
-~
-0 0 8
-D0
-~
-~
-0 -1 27510
-D3
-~
-~
-0 -1 27505
-D5
-~
-~
-0 -1 27206
-S
-#27507
-Arena-Prison Upper~
-You are standing in room #27507.
-~
-0 0 8
-D0
-~
-~
-0 -1 27514
-D1
-~
-~
-0 -1 27508
-D2
-~
-~
-0 -1 27503
-D5
-~
-~
-0 -1 27207
-S
-#27508
-Arena-Prison Upper~
-You are standing in room #27508.
-~
-0 0 8
-D0
-~
-~
-0 -1 27515
-D1
-~
-~
-0 -1 27509
-D2
-~
-~
-0 -1 27504
-D3
-~
-~
-0 -1 27507
-D5
-~
-~
-0 -1 27208
-S
-#27509
-Arena-Prison Upper~
-You are standing in room #27509.
-~
-0 0 8
-D0
-~
-~
-0 -1 27516
-D1
-~
-~
-0 -1 27510
-D2
-~
-~
-0 -1 27505
-D3
-~
-~
-0 -1 27508
-D5
-~
-~
-0 -1 27209
-S
-#27510
-Arena-Prison Upper~
-You are standing in room #27510.
-~
-0 0 8
-D0
-~
-~
-0 -1 27517
-D1
-~
-~
-0 -1 27511
-D2
-~
-~
-0 -1 27506
-D3
-~
-~
-0 -1 27509
-D5
-~
-~
-0 -1 27210
-S
-#27511
-Arena-Prison Upper~
-You are standing in room #27511.
-~
-0 0 8
-D0
-~
-~
-0 -1 27518
-D1
-~
-~
-0 -1 27512
-D3
-~
-~
-0 -1 27510
-D5
-~
-~
-0 -1 27211
-S
-#27512
-Arena-Prison Upper~
-You are standing in room #27512.
-~
-0 0 8
-D0
-~
-~
-0 -1 27519
-D1
-~
-~
-0 -1 27513
-D3
-~
-~
-0 -1 27511
-D5
-~
-~
-0 -1 27212
-S
-#27513
-Arena-Prison Upper~
-You are standing in room #27513.
-~
-0 0 8
-D0
-~
-~
-0 -1 27520
-D3
-~
-~
-0 -1 27512
-D5
-~
-~
-0 -1 27213
-S
-#27514
-Arena-Prison Upper~
-You are standing in room #27514.
-~
-0 0 8
-D0
-~
-~
-0 -1 27523
-D1
-~
-~
-0 -1 27515
-D2
-~
-~
-0 -1 27507
-D5
-~
-~
-0 -1 27214
-S
-#27515
-Arena-Prison Upper~
-You are standing in room #27515.
-~
-0 0 8
-D0
-~
-~
-0 -1 27524
-D1
-~
-~
-0 -1 27516
-D2
-~
-~
-0 -1 27508
-D3
-~
-~
-0 -1 27514
-D5
-~
-~
-0 -1 27215
-S
-#27516
-Arena-Prison Upper~
-You are standing in room #27516.
-~
-0 0 8
-D0
-~
-~
-0 -1 27525
-D1
-~
-~
-0 -1 27517
-D2
-~
-~
-0 -1 27509
-D3
-~
-~
-0 -1 27515
-D5
-~
-~
-0 -1 27216
-S
-#27517
-Arena-Prison Upper~
-You are standing in room #27517.
-~
-0 0 8
-D0
-~
-~
-0 -1 27526
-D1
-~
-~
-0 -1 27518
-D2
-~
-~
-0 -1 27510
-D3
-~
-~
-0 -1 27516
-D5
-~
-~
-0 -1 27217
-S
-#27518
-Arena-Prison Upper~
-You are standing in room #27518.
-~
-0 0 8
-D0
-~
-~
-0 -1 27527
-D1
-~
-~
-0 -1 27519
-D2
-~
-~
-0 -1 27511
-D3
-~
-~
-0 -1 27517
-D5
-~
-~
-0 -1 27218
-S
-#27519
-Arena-Prison Upper~
-You are standing in room #27519.
-~
-0 0 8
-D0
-~
-~
-0 -1 27528
-D1
-~
-~
-0 -1 27520
-D2
-~
-~
-0 -1 27512
-D3
-~
-~
-0 -1 27518
-D5
-~
-~
-0 -1 27219
-S
-#27520
-Arena-Prison Upper~
-You are standing in room #27520.
-~
-0 0 8
-D0
-~
-~
-0 -1 27529
-D1
-~
-~
-0 -1 27521
-D2
-~
-~
-0 -1 27513
-D3
-~
-~
-0 -1 27519
-D5
-~
-~
-0 -1 27220
-S
-#27521
-Arena-Prison Upper~
-You are standing in room #27521.
-~
-0 0 8
-D0
-~
-~
-0 -1 27530
-D1
-~
-~
-0 -1 27522
-D3
-~
-~
-0 -1 27520
-D5
-~
-~
-0 -1 27221
-S
-#27522
-Arena-Prison Upper~
-You are standing in room #27522.
-~
-0 0 8
-D0
-~
-~
-0 -1 27531
-D3
-~
-~
-0 -1 27521
-D5
-~
-~
-0 -1 27222
-S
-#27523
-Arena-Prison Upper~
-You are standing in room #27523.
-~
-0 0 8
-D0
-~
-~
-0 -1 27533
-D1
-~
-~
-0 -1 27524
-D2
-~
-~
-0 -1 27514
-D5
-~
-~
-0 -1 27223
-S
-#27524
-Arena-Prison Upper~
-You are standing in room #27524.
-~
-0 0 8
-D0
-~
-~
-0 -1 27534
-D1
-~
-~
-0 -1 27525
-D2
-~
-~
-0 -1 27515
-D3
-~
-~
-0 -1 27523
-D5
-~
-~
-0 -1 27224
-S
-#27525
-Arena-Prison Upper~
-You are standing in room #27525.
-~
-0 0 8
-D0
-~
-~
-0 -1 27535
-D1
-~
-~
-0 -1 27526
-D2
-~
-~
-0 -1 27516
-D3
-~
-~
-0 -1 27524
-D5
-~
-~
-0 -1 27225
-S
-#27526
-Arena-Prison Upper~
-You are standing in room #27526.
-~
-0 0 8
-D0
-~
-~
-0 -1 27536
-D1
-~
-~
-0 -1 27527
-D2
-~
-~
-0 -1 27517
-D3
-~
-~
-0 -1 27525
-D5
-~
-~
-0 -1 27226
-S
-#27527
-Arena-Prison Upper~
-You are standing in room #27527.
-~
-0 0 8
-D0
-~
-~
-0 -1 27537
-D1
-~
-~
-0 -1 27528
-D2
-~
-~
-0 -1 27518
-D3
-~
-~
-0 -1 27526
-D5
-~
-~
-0 -1 27227
-S
-#27528
-Arena-Prison Upper~
-You are standing in room #27528.
-~
-0 0 8
-D0
-~
-~
-0 -1 27538
-D1
-~
-~
-0 -1 27529
-D2
-~
-~
-0 -1 27519
-D3
-~
-~
-0 -1 27527
-D5
-~
-~
-0 -1 27228
-S
-#27529
-Arena-Prison Upper~
-You are standing in room #27529.
-~
-0 0 8
-D0
-~
-~
-0 -1 27539
-D1
-~
-~
-0 -1 27530
-D2
-~
-~
-0 -1 27520
-D3
-~
-~
-0 -1 27528
-D5
-~
-~
-0 -1 27229
-S
-#27530
-Arena-Prison Upper~
-You are standing in room #27530.
-~
-0 0 8
-D0
-~
-~
-0 -1 27540
-D1
-~
-~
-0 -1 27531
-D2
-~
-~
-0 -1 27521
-D3
-~
-~
-0 -1 27529
-D5
-~
-~
-0 -1 27230
-S
-#27531
-Arena-Prison Upper~
-You are standing in room #27531.
-~
-0 0 8
-D0
-~
-~
-0 -1 27541
-D1
-~
-~
-0 -1 27532
-D2
-~
-~
-0 -1 27522
-D3
-~
-~
-0 -1 27530
-D5
-~
-~
-0 -1 27231
-S
-#27532
-Arena-Prison Upper~
-You are standing in room #27532.
-~
-0 0 8
-D0
-~
-~
-0 -1 27542
-D3
-~
-~
-0 -1 27531
-D5
-~
-~
-0 -1 27232
-S
-#27533
-Arena-Prison Upper~
-You are standing in room #27533.
-~
-0 0 8
-D1
-~
-~
-0 -1 27534
-D2
-~
-~
-0 -1 27523
-D5
-~
-~
-0 -1 27233
-S
-#27534
-Arena-Prison Upper~
-You are standing in room #27534.
-~
-0 0 8
-D1
-~
-~
-0 -1 27535
-D2
-~
-~
-0 -1 27524
-D3
-~
-~
-0 -1 27533
-D5
-~
-~
-0 -1 27234
-S
 #27535
-Arena-Prison Upper~
-You are standing in room #27535.
+Dummy Connecting Room~
+PLACEHOLDER UNTIL CONNECTED AREA IN.
 ~
-0 0 8
-D0
-~
-~
-0 -1 27544
-D1
-~
-~
-0 -1 27536
-D2
-~
-~
-0 -1 27525
-D3
-~
-~
-0 -1 27534
-D5
-~
-~
-0 -1 27235
-S
-#27536
-Arena-Prison Upper~
-You are standing in room #27536.
-~
-0 0 8
-D1
-~
-~
-0 -1 27537
-D2
-~
-~
-0 -1 27526
-D3
-~
-~
-0 -1 27535
-D5
-~
-~
-0 -1 27236
-S
-#27537
-Arena-Prison Upper~
-You are standing in room #27537.
-~
-0 0 8
-D0
-~
-~
-0 -1 27576
-D1
-~
-~
-0 -1 27538
-D2
-~
-~
-0 -1 27527
-D3
-~
-~
-0 -1 27536
-D5
-~
-~
-0 -1 27237
-S
-#27538
-Arena-Prison Upper~
-You are standing in room #27538.
-~
-0 0 8
-D0
-~
-~
-0 -1 27577
-D1
-~
-~
-0 -1 27539
-D2
-~
-~
-0 -1 27528
-D3
-~
-~
-0 -1 27537
-D5
-~
-~
-0 -1 27238
-S
-#27539
-Arena-Prison Upper~
-You are standing in room #27539.
-~
-0 0 8
-D0
-~
-~
-0 -1 27578
-D1
-~
-~
-0 -1 27540
-D2
-~
-~
-0 -1 27529
-D3
-~
-~
-0 -1 27538
-D5
-~
-~
-0 -1 27239
-S
-#27540
-Arena-Prison Upper~
-You are standing in room #27540.
-~
-0 0 8
-D0
-~
-~
-0 -1 27579
-D1
-~
-~
-0 -1 27541
-D2
-~
-~
-0 -1 27530
-D3
-~
-~
-0 -1 27539
-D5
-~
-~
-0 -1 27240
-S
-#27541
-Arena-Prison Upper~
-You are standing in room #27541.
-~
-0 0 8
-D0
-~
-~
-0 -1 27580
-D1
-~
-~
-0 -1 27542
-D2
-~
-~
-0 -1 27531
-D3
-~
-~
-0 -1 27540
-D5
-~
-~
-0 -1 27241
-S
-#27542
-Arena-Prison Upper~
-You are standing in room #27542.
-~
-0 0 8
-D1
-~
-~
-0 -1 27543
-D2
-~
-~
-0 -1 27532
-D3
-~
-~
-0 -1 27541
-D5
-~
-~
-0 -1 27242
+0 4 8
 S
 #27543
-Arena-Prison Upper~
-You are standing in room #27543.
+Dummy Connecting Room~
+PLACEHOLDER UNTIL CONNECTED AREA IN.
 ~
-0 0 8
-D0
-~
-~
-0 -1 27607
-D3
-~
-~
-0 -1 27542
-D5
-~
-~
-0 -1 27243
+0 4 8
 S
 #27544
 Above Bridge to Military Canton~
@@ -3665,7 +3027,7 @@ S
 Above Canton Canal~
 You are standing in room #27553.
 ~
-0 0 8
+0 4 8
 D0
 ~
 ~
@@ -3777,7 +3139,7 @@ S
 Above Canton Canal~
 You are standing in room #27559.
 ~
-0 0 8
+0 4 8
 D0
 ~
 ~
@@ -3821,7 +3183,7 @@ S
 Above Canton Canal~
 You are standing in room #27561.
 ~
-0 0 8
+0 4 8
 D1
 ~
 ~
@@ -4091,683 +3453,11 @@ D5
 ~
 0 -1 27275
 S
-#27576
-Arena-Prison Upper~
-You are standing in room #27576.
-~
-0 0 8
-D1
-~
-~
-0 -1 27577
-D2
-~
-~
-0 -1 27537
-D5
-~
-~
-0 -1 27276
-S
-#27577
-Arena-Prison Upper~
-You are standing in room #27577.
-~
-0 0 8
-D1
-~
-~
-0 -1 27578
-D2
-~
-~
-0 -1 27538
-D3
-~
-~
-0 -1 27576
-D5
-~
-~
-0 -1 27277
-S
-#27578
-Arena-Prison Upper~
-You are standing in room #27578.
-~
-0 0 8
-D0
-~
-~
-0 -1 27581
-D1
-~
-~
-0 -1 27579
-D2
-~
-~
-0 -1 27539
-D3
-~
-~
-0 -1 27577
-D5
-~
-~
-0 -1 27278
-S
-#27579
-Arena-Prison Upper~
-You are standing in room #27579.
-~
-0 0 8
-D0
-~
-~
-0 -1 27582
-D1
-~
-~
-0 -1 27580
-D2
-~
-~
-0 -1 27540
-D3
-~
-~
-0 -1 27578
-D5
-~
-~
-0 -1 27279
-S
-#27580
-Arena-Prison Upper~
-You are standing in room #27580.
-~
-0 0 8
-D2
-~
-~
-0 -1 27541
-D3
-~
-~
-0 -1 27579
-D5
-~
-~
-0 -1 27280
-S
-#27581
-Arena-Prison Upper~
-You are standing in room #27581.
-~
-0 0 8
-D1
-~
-~
-0 -1 27582
-D2
-~
-~
-0 -1 27578
-D5
-~
-~
-0 -1 27281
-S
-#27582
-Arena-Prison Upper~
-You are standing in room #27582.
-~
-0 0 8
-D2
-~
-~
-0 -1 27579
-D3
-~
-~
-0 -1 27581
-D5
-~
-~
-0 -1 27282
-S
 #27583
-Above Military Canton~
-You are standing in room #27583.
+Dummy Connecting Room~
+PLACEHOLDER UNTIL CONNECTED AREA IN.
 ~
-0 0 8
-D0
-~
-~
-0 -1 27588
-D2
-~
-~
-0 -1 27544
-D3
-~
-~
-0 -1 27584
-D5
-~
-~
-0 -1 27283
-S
-#27584
-Above Military Canton~
-You are standing in room #27584.
-~
-0 0 8
-D0
-~
-~
-0 -1 27587
-D1
-~
-~
-0 -1 27583
-D3
-~
-~
-0 -1 27585
-D5
-~
-~
-0 -1 27284
-S
-#27585
-Above Military Canton~
-You are standing in room #27585.
-~
-0 0 8
-D0
-~
-~
-0 -1 27586
-D1
-~
-~
-0 -1 27584
-D5
-~
-~
-0 -1 27285
-S
-#27586
-Above Military Canton~
-You are standing in room #27586.
-~
-0 0 8
-D0
-~
-~
-0 -1 27591
-D1
-~
-~
-0 -1 27587
-D2
-~
-~
-0 -1 27585
-D5
-~
-~
-0 -1 27286
-S
-#27587
-Above Military Canton~
-You are standing in room #27587.
-~
-0 0 8
-D0
-~
-~
-0 -1 27592
-D1
-~
-~
-0 -1 27588
-D2
-~
-~
-0 -1 27584
-D3
-~
-~
-0 -1 27586
-D5
-~
-~
-0 -1 27287
-S
-#27588
-Above Military Canton~
-You are standing in room #27588.
-~
-0 0 8
-D0
-~
-~
-0 -1 27593
-D1
-~
-~
-0 -1 27589
-D2
-~
-~
-0 -1 27583
-D3
-~
-~
-0 -1 27587
-D5
-~
-~
-0 -1 27288
-S
-#27589
-Above Military Canton~
-You are standing in room #27589.
-~
-0 0 8
-D0
-~
-~
-0 -1 27594
-D1
-~
-~
-0 -1 27590
-D3
-~
-~
-0 -1 27588
-D5
-~
-~
-0 -1 27289
-S
-#27590
-Above Military Canton~
-You are standing in room #27590.
-~
-0 0 8
-D0
-~
-~
-0 -1 27595
-D3
-~
-~
-0 -1 27589
-D5
-~
-~
-0 -1 27290
-S
-#27591
-Above Military Canton~
-You are standing in room #27591.
-~
-0 0 8
-D0
-~
-~
-0 -1 27597
-D1
-~
-~
-0 -1 27592
-D2
-~
-~
-0 -1 27586
-D5
-~
-~
-0 -1 27291
-S
-#27592
-Above Military Canton~
-You are standing in room #27592.
-~
-0 0 8
-D0
-~
-~
-0 -1 27598
-D1
-~
-~
-0 -1 27593
-D2
-~
-~
-0 -1 27587
-D3
-~
-~
-0 -1 27591
-D5
-~
-~
-0 -1 27292
-S
-#27593
-Above Military Canton~
-You are standing in room #27593.
-~
-0 0 8
-D0
-~
-~
-0 -1 27599
-D1
-~
-~
-0 -1 27594
-D2
-~
-~
-0 -1 27588
-D3
-~
-~
-0 -1 27592
-D5
-~
-~
-0 -1 27293
-S
-#27594
-Above Military Canton~
-You are standing in room #27594.
-~
-0 0 8
-D0
-~
-~
-0 -1 27600
-D1
-~
-~
-0 -1 27595
-D2
-~
-~
-0 -1 27589
-D3
-~
-~
-0 -1 27593
-D5
-~
-~
-0 -1 27294
-S
-#27595
-Above Military Canton~
-You are standing in room #27595.
-~
-0 0 8
-D0
-~
-~
-0 -1 27601
-D1
-~
-~
-0 -1 27596
-D2
-~
-~
-0 -1 27590
-D3
-~
-~
-0 -1 27594
-D5
-~
-~
-0 -1 27295
-S
-#27596
-Above Military Canton~
-You are standing in room #27596.
-~
-0 0 8
-D3
-~
-~
-0 -1 27595
-D5
-~
-~
-0 -1 27296
-S
-#27597
-Above Military Canton~
-You are standing in room #27597.
-~
-0 0 8
-D0
-~
-~
-0 -1 27602
-D1
-~
-~
-0 -1 27598
-D2
-~
-~
-0 -1 27591
-D5
-~
-~
-0 -1 27297
-S
-#27598
-Above Military Canton~
-You are standing in room #27598.
-~
-0 0 8
-D0
-~
-~
-0 -1 27603
-D1
-~
-~
-0 -1 27599
-D2
-~
-~
-0 -1 27592
-D3
-~
-~
-0 -1 27597
-D5
-~
-~
-0 -1 27298
-S
-#27599
-Above Military Canton~
-You are standing in room #27599.
-~
-0 0 8
-D0
-~
-~
-0 -1 27604
-D1
-~
-~
-0 -1 27600
-D2
-~
-~
-0 -1 27593
-D3
-~
-~
-0 -1 27598
-D5
-~
-~
-0 -1 27299
-S
-#27600
-Above Military Canton~
-You are standing in room #27600.
-~
-0 0 8
-D0
-~
-~
-0 -1 27605
-D1
-~
-~
-0 -1 27601
-D2
-~
-~
-0 -1 27594
-D3
-~
-~
-0 -1 27599
-D5
-~
-~
-0 -1 27300
-S
-#27601
-Above Military Canton~
-You are standing in room #27601.
-~
-0 0 8
-D2
-~
-~
-0 -1 27595
-D3
-~
-~
-0 -1 27600
-D5
-~
-~
-0 -1 27301
-S
-#27602
-Above Military Canton~
-You are standing in room #27602.
-~
-0 0 8
-D1
-~
-~
-0 -1 27603
-D2
-~
-~
-0 -1 27597
-D5
-~
-~
-0 -1 27302
-S
-#27603
-Above Military Canton~
-You are standing in room #27603.
-~
-0 0 8
-D1
-~
-~
-0 -1 27604
-D2
-~
-~
-0 -1 27598
-D3
-~
-~
-0 -1 27602
-D5
-~
-~
-0 -1 27303
-S
-#27604
-Above Military Canton~
-You are standing in room #27604.
-~
-0 0 8
-D0
-~
-~
-0 -1 27606
-D1
-~
-~
-0 -1 27605
-D2
-~
-~
-0 -1 27599
-D3
-~
-~
-0 -1 27603
-D5
-~
-~
-0 -1 27304
-S
-#27605
-Above Military Canton~
-You are standing in room #27605.
-~
-0 0 8
-D2
-~
-~
-0 -1 27600
-D3
-~
-~
-0 -1 27604
-D5
-~
-~
-0 -1 27305
-S
-#27606
-Above Military Canton~
-You are standing in room #27606.
-~
-0 0 8
-D2
-~
-~
-0 -1 27604
-D5
-~
-~
-0 -1 27306
+0 4 8
 S
 #27607
 Above Bridge to Market Canton~
@@ -4857,7 +3547,7 @@ S
 Above Canton Canal~
 You are standing in room #27656.
 ~
-0 0 8
+0 4 8
 D0
 ~
 ~
@@ -5015,7 +3705,7 @@ S
 Above Canton Canal~
 You are standing in room #27663.
 ~
-0 0 8
+0 4 8
 D0
 ~
 ~
@@ -5118,452 +3808,16 @@ D5
 0 -1 27367
 S
 #27668
-Above South Living Canton~
-You are standing in room #27668.
+Dummy Connecting Room~
+PLACEHOLDER UNTIL CONNECTED AREA IN.
 ~
-0 0 8
-D0
-~
-~
-0 -1 27682
-D1
-~
-~
-0 -1 27653
-D3
-~
-~
-0 -1 27669
-D5
-~
-~
-0 -1 27368
-S
-#27669
-Above South Living Canton~
-You are standing in room #27669.
-~
-0 0 8
-D0
-~
-~
-0 -1 27681
-D1
-~
-~
-0 -1 27668
-D2
-~
-~
-0 -1 27670
-D3
-~
-~
-0 -1 27675
-D5
-~
-~
-0 -1 27369
-S
-#27670
-Above South Living Canton~
-You are standing in room #27670.
-~
-0 0 8
-D0
-~
-~
-0 -1 27669
-D2
-~
-~
-0 -1 27671
-D3
-~
-~
-0 -1 27673
-D5
-~
-~
-0 -1 27370
-S
-#27671
-Above South Living Canton~
-You are standing in room #27671.
-~
-0 0 8
-D0
-~
-~
-0 -1 27670
-D3
-~
-~
-0 -1 27672
-D5
-~
-~
-0 -1 27371
-S
-#27672
-Above South Living Canton~
-You are standing in room #27672.
-~
-0 0 8
-D0
-~
-~
-0 -1 27673
-D1
-~
-~
-0 -1 27671
-D5
-~
-~
-0 -1 27372
-S
-#27673
-Above South Living Canton~
-You are standing in room #27673.
-~
-0 0 8
-D0
-~
-~
-0 -1 27675
-D1
-~
-~
-0 -1 27670
-D2
-~
-~
-0 -1 27672
-D3
-~
-~
-0 -1 27674
-D5
-~
-~
-0 -1 27373
-S
-#27674
-Above South Living Canton~
-You are standing in room #27674.
-~
-0 0 8
-D0
-~
-~
-0 -1 27676
-D1
-~
-~
-0 -1 27673
-D5
-~
-~
-0 -1 27374
-S
-#27675
-Above South Living Canton~
-You are standing in room #27675.
-~
-0 0 8
-D0
-~
-~
-0 -1 27680
-D1
-~
-~
-0 -1 27669
-D2
-~
-~
-0 -1 27673
-D3
-~
-~
-0 -1 27676
-D5
-~
-~
-0 -1 27375
-S
-#27676
-Above South Living Canton~
-You are standing in room #27676.
-~
-0 0 8
-D0
-~
-~
-0 -1 27679
-D1
-~
-~
-0 -1 27675
-D2
-~
-~
-0 -1 27674
-D3
-~
-~
-0 -1 27677
-D5
-~
-~
-0 -1 27376
-S
-#27677
-Above South Living Canton~
-You are standing in room #27677.
-~
-0 0 8
-D0
-~
-~
-0 -1 27678
-D1
-~
-~
-0 -1 27676
-D5
-~
-~
-0 -1 27377
-S
-#27678
-Above South Living Canton~
-You are standing in room #27678.
-~
-0 0 8
-D0
-~
-~
-0 -1 27683
-D1
-~
-~
-0 -1 27679
-D2
-~
-~
-0 -1 27677
-D5
-~
-~
-0 -1 27378
-S
-#27679
-Above South Living Canton~
-You are standing in room #27679.
-~
-0 0 8
-D0
-~
-~
-0 -1 27684
-D1
-~
-~
-0 -1 27680
-D2
-~
-~
-0 -1 27676
-D3
-~
-~
-0 -1 27678
-D5
-~
-~
-0 -1 27379
-S
-#27680
-Above South Living Canton~
-You are standing in room #27680.
-~
-0 0 8
-D0
-~
-~
-0 -1 27685
-D1
-~
-~
-0 -1 27681
-D2
-~
-~
-0 -1 27675
-D3
-~
-~
-0 -1 27679
-D5
-~
-~
-0 -1 27380
-S
-#27681
-Above South Living Canton~
-You are standing in room #27681.
-~
-0 0 8
-D0
-~
-~
-0 -1 27686
-D1
-~
-~
-0 -1 27682
-D2
-~
-~
-0 -1 27669
-D3
-~
-~
-0 -1 27680
-D5
-~
-~
-0 -1 27381
-S
-#27682
-Above South Living Canton~
-You are standing in room #27682.
-~
-0 0 8
-D0
-~
-~
-0 -1 27687
-D2
-~
-~
-0 -1 27668
-D3
-~
-~
-0 -1 27681
-D5
-~
-~
-0 -1 27382
-S
-#27683
-Above South Living Canton~
-You are standing in room #27683.
-~
-0 0 8
-D1
-~
-~
-0 -1 27684
-D2
-~
-~
-0 -1 27678
-D5
-~
-~
-0 -1 27383
-S
-#27684
-Above South Living Canton~
-You are standing in room #27684.
-~
-0 0 8
-D1
-~
-~
-0 -1 27685
-D2
-~
-~
-0 -1 27679
-D3
-~
-~
-0 -1 27683
-D5
-~
-~
-0 -1 27384
+0 4 8
 S
 #27685
-Above South Living Canton~
-You are standing in room #27685.
+Dummy Connecting Room~
+PLACEHOLDER UNTIL CONNECTED AREA IN.
 ~
-0 0 8
-D0
-~
-~
-0 -1 27688
-D1
-~
-~
-0 -1 27686
-D2
-~
-~
-0 -1 27680
-D3
-~
-~
-0 -1 27684
-D5
-~
-~
-0 -1 27385
-S
-#27686
-Above South Living Canton~
-You are standing in room #27686.
-~
-0 0 8
-D1
-~
-~
-0 -1 27687
-D2
-~
-~
-0 -1 27681
-D3
-~
-~
-0 -1 27685
-D5
-~
-~
-0 -1 27386
-S
-#27687
-Above South Living Canton~
-You are standing in room #27687.
-~
-0 0 8
-D2
-~
-~
-0 -1 27682
-D3
-~
-~
-0 -1 27686
-D5
-~
-~
-0 -1 27387
+0 4 8
 S
 #27688
 Above Bridge to North Living Canton~
@@ -5778,452 +4032,16 @@ D5
 0 -1 27397
 S
 #27698
-Above North Living Canton~
-You are standing in room #27698.
+Dummy Connecting Room~
+PLACEHOLDER UNTIL CONNECTED AREA IN.
 ~
-0 0 8
-D0
-~
-~
-0 -1 27705
-D1
-~
-~
-0 -1 27701
-D2
-~
-~
-0 -1 27689
-D3
-~
-~
-0 -1 27699
-D5
-~
-~
-0 -1 27398
-S
-#27699
-Above North Living Canton~
-You are standing in room #27699.
-~
-0 0 8
-D0
-~
-~
-0 -1 27704
-D1
-~
-~
-0 -1 27698
-D3
-~
-~
-0 -1 27700
-D5
-~
-~
-0 -1 27399
-S
-#27700
-Above North Living Canton~
-You are standing in room #27700.
-~
-0 0 8
-D0
-~
-~
-0 -1 27703
-D1
-~
-~
-0 -1 27699
-D5
-~
-~
-0 -1 27400
-S
-#27701
-Above North Living Canton~
-You are standing in room #27701.
-~
-0 0 8
-D0
-~
-~
-0 -1 27706
-D1
-~
-~
-0 -1 27702
-D3
-~
-~
-0 -1 27698
-D5
-~
-~
-0 -1 27401
-S
-#27702
-Above North Living Canton~
-You are standing in room #27702.
-~
-0 0 8
-D0
-~
-~
-0 -1 27707
-D3
-~
-~
-0 -1 27701
-D5
-~
-~
-0 -1 27402
-S
-#27703
-Above North Living Canton~
-You are standing in room #27703.
-~
-0 0 8
-D0
-~
-~
-0 -1 27708
-D1
-~
-~
-0 -1 27704
-D2
-~
-~
-0 -1 27700
-D5
-~
-~
-0 -1 27403
-S
-#27704
-Above North Living Canton~
-You are standing in room #27704.
-~
-0 0 8
-D0
-~
-~
-0 -1 27709
-D1
-~
-~
-0 -1 27705
-D2
-~
-~
-0 -1 27699
-D3
-~
-~
-0 -1 27703
-D5
-~
-~
-0 -1 27404
-S
-#27705
-Above North Living Canton~
-You are standing in room #27705.
-~
-0 0 8
-D0
-~
-~
-0 -1 27710
-D1
-~
-~
-0 -1 27706
-D2
-~
-~
-0 -1 27698
-D3
-~
-~
-0 -1 27704
-D5
-~
-~
-0 -1 27405
-S
-#27706
-Above North Living Canton~
-You are standing in room #27706.
-~
-0 0 8
-D0
-~
-~
-0 -1 27711
-D1
-~
-~
-0 -1 27707
-D2
-~
-~
-0 -1 27701
-D3
-~
-~
-0 -1 27705
-D5
-~
-~
-0 -1 27406
-S
-#27707
-Above North Living Canton~
-You are standing in room #27707.
-~
-0 0 8
-D0
-~
-~
-0 -1 27712
-D2
-~
-~
-0 -1 27702
-D3
-~
-~
-0 -1 27706
-D5
-~
-~
-0 -1 27407
-S
-#27708
-Above North Living Canton~
-You are standing in room #27708.
-~
-0 0 8
-D1
-~
-~
-0 -1 27709
-D2
-~
-~
-0 -1 27703
-D5
-~
-~
-0 -1 27408
-S
-#27709
-Above North Living Canton~
-You are standing in room #27709.
-~
-0 0 8
-D0
-~
-~
-0 -1 27713
-D1
-~
-~
-0 -1 27710
-D2
-~
-~
-0 -1 27704
-D3
-~
-~
-0 -1 27708
-D5
-~
-~
-0 -1 27409
-S
-#27710
-Above North Living Canton~
-You are standing in room #27710.
-~
-0 0 8
-D0
-~
-~
-0 -1 27714
-D1
-~
-~
-0 -1 27711
-D2
-~
-~
-0 -1 27705
-D3
-~
-~
-0 -1 27709
-D5
-~
-~
-0 -1 27410
-S
-#27711
-Above North Living Canton~
-You are standing in room #27711.
-~
-0 0 8
-D0
-~
-~
-0 -1 27715
-D1
-~
-~
-0 -1 27712
-D2
-~
-~
-0 -1 27706
-D3
-~
-~
-0 -1 27710
-D5
-~
-~
-0 -1 27411
+0 4 8
 S
 #27712
-Above North Living Canton~
-You are standing in room #27712.
+Dummy Connecting Room~
+PLACEHOLDER UNTIL CONNECTED AREA IN.
 ~
-0 0 8
-D1
-~
-~
-0 -1 27718
-D2
-~
-~
-0 -1 27707
-D3
-~
-~
-0 -1 27711
-D5
-~
-~
-0 -1 27412
-S
-#27713
-Above North Living Canton~
-You are standing in room #27713.
-~
-0 0 8
-D1
-~
-~
-0 -1 27714
-D2
-~
-~
-0 -1 27709
-D5
-~
-~
-0 -1 27413
-S
-#27714
-Above North Living Canton~
-You are standing in room #27714.
-~
-0 0 8
-D0
-~
-~
-0 -1 27716
-D1
-~
-~
-0 -1 27715
-D2
-~
-~
-0 -1 27710
-D3
-~
-~
-0 -1 27713
-D5
-~
-~
-0 -1 27414
-S
-#27715
-Above North Living Canton~
-You are standing in room #27715.
-~
-0 0 8
-D0
-~
-~
-0 -1 27717
-D2
-~
-~
-0 -1 27711
-D3
-~
-~
-0 -1 27714
-D5
-~
-~
-0 -1 27415
-S
-#27716
-Above North Living Canton~
-You are standing in room #27716.
-~
-0 0 8
-D1
-~
-~
-0 -1 27717
-D2
-~
-~
-0 -1 27714
-D5
-~
-~
-0 -1 27416
-S
-#27717
-Above North Living Canton~
-You are standing in room #27717.
-~
-0 0 8
-D2
-~
-~
-0 -1 27715
-D3
-~
-~
-0 -1 27716
-D5
-~
-~
-0 -1 27417
+0 4 8
 S
 #27718
 Above Bridge to Prince's Canton~
@@ -6428,402 +4246,16 @@ D5
 0 -1 27426
 S
 #27727
-Above Prince's Canton~
-You are standing in room #27727.
+Dummy Connecting Room~
+PLACEHOLDER UNTIL CONNECTED AREA IN.
 ~
-0 0 8
-D0
-~
-~
-0 -1 27735
-D1
-~
-~
-0 -1 27730
-D2
-~
-~
-0 -1 27720
-D3
-~
-~
-0 -1 27728
-D5
-~
-~
-0 -1 27427
-S
-#27728
-Above Prince's Canton~
-You are standing in room #27728.
-~
-0 0 8
-D0
-~
-~
-0 -1 27734
-D1
-~
-~
-0 -1 27727
-D3
-~
-~
-0 -1 27729
-D5
-~
-~
-0 -1 27428
-S
-#27729
-Above Prince's Canton~
-You are standing in room #27729.
-~
-0 0 8
-D0
-~
-~
-0 -1 27733
-D1
-~
-~
-0 -1 27728
-D5
-~
-~
-0 -1 27429
-S
-#27730
-Above Prince's Canton~
-You are standing in room #27730.
-~
-0 0 8
-D0
-~
-~
-0 -1 27736
-D1
-~
-~
-0 -1 27731
-D3
-~
-~
-0 -1 27727
-D5
-~
-~
-0 -1 27430
-S
-#27731
-Above Prince's Canton~
-You are standing in room #27731.
-~
-0 0 8
-D0
-~
-~
-0 -1 27737
-D1
-~
-~
-0 -1 27732
-D3
-~
-~
-0 -1 27730
-D5
-~
-~
-0 -1 27431
-S
-#27732
-Above Prince's Canton~
-You are standing in room #27732.
-~
-0 0 8
-D0
-~
-~
-0 -1 27738
-D3
-~
-~
-0 -1 27731
-D5
-~
-~
-0 -1 27432
-S
-#27733
-Above Prince's Canton~
-You are standing in room #27733.
-~
-0 0 8
-D0
-~
-~
-0 -1 27739
-D1
-~
-~
-0 -1 27734
-D2
-~
-~
-0 -1 27729
-D5
-~
-~
-0 -1 27433
-S
-#27734
-Above Prince's Canton~
-You are standing in room #27734.
-~
-0 0 8
-D0
-~
-~
-0 -1 27740
-D1
-~
-~
-0 -1 27735
-D2
-~
-~
-0 -1 27728
-D3
-~
-~
-0 -1 27733
-D5
-~
-~
-0 -1 27434
-S
-#27735
-Above Prince's Canton~
-You are standing in room #27735.
-~
-0 0 8
-D0
-~
-~
-0 -1 27741
-D1
-~
-~
-0 -1 27736
-D2
-~
-~
-0 -1 27727
-D3
-~
-~
-0 -1 27734
-D5
-~
-~
-0 -1 27435
-S
-#27736
-Above Prince's Canton~
-You are standing in room #27736.
-~
-0 0 8
-D0
-~
-~
-0 -1 27742
-D1
-~
-~
-0 -1 27737
-D2
-~
-~
-0 -1 27730
-D3
-~
-~
-0 -1 27735
-D5
-~
-~
-0 -1 27436
-S
-#27737
-Above Prince's Canton~
-You are standing in room #27737.
-~
-0 0 8
-D0
-~
-~
-0 -1 27743
-D1
-~
-~
-0 -1 27738
-D2
-~
-~
-0 -1 27731
-D3
-~
-~
-0 -1 27736
-D5
-~
-~
-0 -1 27437
-S
-#27738
-Above Prince's Canton~
-You are standing in room #27738.
-~
-0 0 8
-D2
-~
-~
-0 -1 27732
-D3
-~
-~
-0 -1 27737
-D5
-~
-~
-0 -1 27438
+0 4 8
 S
 #27739
-Above Prince's Canton~
-You are standing in room #27739.
+Dummy Connecting Room~
+PLACEHOLDER UNTIL CONNECTED AREA IN.
 ~
-0 0 8
-D0
-~
-~
-0 -1 27771
-D1
-~
-~
-0 -1 27740
-D2
-~
-~
-0 -1 27733
-D3
-~
-~
-0 -1 27718
-D5
-~
-~
-0 -1 27439
-S
-#27740
-Above Prince's Canton~
-You are standing in room #27740.
-~
-0 0 8
-D0
-~
-~
-0 -1 27772
-D1
-~
-~
-0 -1 27741
-D2
-~
-~
-0 -1 27734
-D3
-~
-~
-0 -1 27739
-D5
-~
-~
-0 -1 27440
-S
-#27741
-Above Prince's Canton~
-You are standing in room #27741.
-~
-0 0 8
-D0
-~
-~
-0 -1 27773
-D1
-~
-~
-0 -1 27742
-D2
-~
-~
-0 -1 27735
-D3
-~
-~
-0 -1 27740
-D5
-~
-~
-0 -1 27441
-S
-#27742
-Above Prince's Canton~
-You are standing in room #27742.
-~
-0 0 8
-D0
-~
-~
-0 -1 27774
-D1
-~
-~
-0 -1 27743
-D2
-~
-~
-0 -1 27736
-D3
-~
-~
-0 -1 27741
-D5
-~
-~
-0 -1 27442
-S
-#27743
-Above Prince's Canton~
-You are standing in room #27743.
-~
-0 0 8
-D0
-~
-~
-0 -1 27775
-D2
-~
-~
-0 -1 27737
-D3
-~
-~
-0 -1 27742
-D5
-~
-~
-0 -1 27443
+0 4 8
 S
 #27744
 Above Canton Canal~
@@ -7323,658 +4755,415 @@ D5
 ~
 0 -1 27470
 S
-#27771
-Above Prince's Canton~
-You are standing in room #27771.
-~
-0 0 8
-D0
-~
-~
-0 -1 27776
-D1
-~
-~
-0 -1 27772
-D2
-~
-~
-0 -1 27739
-D5
-~
-~
-0 -1 27471
-S
-#27772
-Above Prince's Canton~
-You are standing in room #27772.
-~
-0 0 8
-D0
-~
-~
-0 -1 27778
-D1
-~
-~
-0 -1 27773
-D2
-~
-~
-0 -1 27740
-D3
-~
-~
-0 -1 27771
-D5
-~
-~
-0 -1 27472
-S
-#27773
-Above Prince's Canton~
-You are standing in room #27773.
-~
-0 0 8
-D0
-~
-~
-0 -1 27779
-D1
-~
-~
-0 -1 27774
-D2
-~
-~
-0 -1 27741
-D3
-~
-~
-0 -1 27772
-D5
-~
-~
-0 -1 27473
-S
-#27774
-Above Prince's Canton~
-You are standing in room #27774.
-~
-0 0 8
-D0
-~
-~
-0 -1 27780
-D1
-~
-~
-0 -1 27775
-D2
-~
-~
-0 -1 27742
-D3
-~
-~
-0 -1 27773
-D5
-~
-~
-0 -1 27474
-S
-#27775
-Above Prince's Canton~
-You are standing in room #27775.
-~
-0 0 8
-D2
-~
-~
-0 -1 27743
-D3
-~
-~
-0 -1 27774
-D5
-~
-~
-0 -1 27475
-S
-#27776
-Above Prince's Canton~
-You are standing in room #27776.
-~
-0 0 8
-D0
-~
-~
-0 -1 27782
-D1
-~
-~
-0 -1 27778
-D2
-~
-~
-0 -1 27771
-D3
-~
-~
-0 -1 27777
-D5
-~
-~
-0 -1 27476
-S
-#27777
-Above Prince's Canton~
-You are standing in room #27777.
-~
-0 0 8
-D0
-~
-~
-0 -1 27781
-D1
-~
-~
-0 -1 27776
-D5
-~
-~
-0 -1 27477
-S
-#27778
-Above Prince's Canton~
-You are standing in room #27778.
-~
-0 0 8
-D0
-~
-~
-0 -1 27783
-D1
-~
-~
-0 -1 27779
-D2
-~
-~
-0 -1 27772
-D3
-~
-~
-0 -1 27776
-D5
-~
-~
-0 -1 27478
-S
-#27779
-Above Prince's Canton~
-You are standing in room #27779.
-~
-0 0 8
-D0
-~
-~
-0 -1 27784
-D1
-~
-~
-0 -1 27780
-D2
-~
-~
-0 -1 27773
-D3
-~
-~
-0 -1 27778
-D5
-~
-~
-0 -1 27479
-S
-#27780
-Above Prince's Canton~
-You are standing in room #27780.
-~
-0 0 8
-D0
-~
-~
-0 -1 27785
-D2
-~
-~
-0 -1 27774
-D3
-~
-~
-0 -1 27779
-D5
-~
-~
-0 -1 27480
-S
-#27781
-Above Prince's Canton~
-You are standing in room #27781.
-~
-0 0 8
-D0
-~
-~
-0 -1 27786
-D1
-~
-~
-0 -1 27782
-D2
-~
-~
-0 -1 27777
-D5
-~
-~
-0 -1 27481
-S
-#27782
-Above Prince's Canton~
-You are standing in room #27782.
-~
-0 0 8
-D0
-~
-~
-0 -1 27788
-D1
-~
-~
-0 -1 27783
-D2
-~
-~
-0 -1 27776
-D3
-~
-~
-0 -1 27781
-D5
-~
-~
-0 -1 27482
-S
-#27783
-Above Prince's Canton~
-You are standing in room #27783.
-~
-0 0 8
-D0
-~
-~
-0 -1 27789
-D1
-~
-~
-0 -1 27784
-D2
-~
-~
-0 -1 27778
-D3
-~
-~
-0 -1 27782
-D5
-~
-~
-0 -1 27483
-S
-#27784
-Above Prince's Canton~
-You are standing in room #27784.
-~
-0 0 8
-D0
-~
-~
-0 -1 27790
-D1
-~
-~
-0 -1 27785
-D2
-~
-~
-0 -1 27779
-D3
-~
-~
-0 -1 27783
-D5
-~
-~
-0 -1 27484
-S
-#27785
-Above Prince's Canton~
-You are standing in room #27785.
-~
-0 0 8
-D0
-~
-~
-0 -1 27791
-D2
-~
-~
-0 -1 27780
-D3
-~
-~
-0 -1 27784
-D5
-~
-~
-0 -1 27485
-S
-#27786
-Above Prince's Canton~
-You are standing in room #27786.
-~
-0 0 8
-D0
-~
-~
-0 -1 27792
-D1
-~
-~
-0 -1 27788
-D2
-~
-~
-0 -1 27781
-D3
-~
-~
-0 -1 27787
-D5
-~
-~
-0 -1 27486
-S
-#27787
-Above Prince's Canton~
-You are standing in room #27787.
-~
-0 0 8
-D1
-~
-~
-0 -1 27786
-D5
-~
-~
-0 -1 27487
-S
-#27788
-Above Prince's Canton~
-You are standing in room #27788.
-~
-0 0 8
-D0
-~
-~
-0 -1 27793
-D1
-~
-~
-0 -1 27789
-D2
-~
-~
-0 -1 27782
-D3
-~
-~
-0 -1 27786
-D5
-~
-~
-0 -1 27488
-S
-#27789
-Above Prince's Canton~
-You are standing in room #27789.
-~
-0 0 8
-D0
-~
-~
-0 -1 27794
-D1
-~
-~
-0 -1 27790
-D2
-~
-~
-0 -1 27783
-D3
-~
-~
-0 -1 27788
-D5
-~
-~
-0 -1 27489
-S
-#27790
-Above Prince's Canton~
-You are standing in room #27790.
-~
-0 0 8
-D0
-~
-~
-0 -1 27795
-D1
-~
-~
-0 -1 27791
-D2
-~
-~
-0 -1 27784
-D3
-~
-~
-0 -1 27789
-D5
-~
-~
-0 -1 27490
-S
-#27791
-Above Prince's Canton~
-You are standing in room #27791.
-~
-0 0 8
-D2
-~
-~
-0 -1 27785
-D3
-~
-~
-0 -1 27790
-D5
-~
-~
-0 -1 27491
-S
-#27792
-Above Prince's Canton~
-You are standing in room #27792.
-~
-0 0 8
-D1
-~
-~
-0 -1 27793
-D2
-~
-~
-0 -1 27786
-D5
-~
-~
-0 -1 27492
-S
-#27793
-Above Prince's Canton~
-You are standing in room #27793.
-~
-0 0 8
-D0
-~
-~
-0 -1 27796
-D1
-~
-~
-0 -1 27794
-D2
-~
-~
-0 -1 27788
-D3
-~
-~
-0 -1 27792
-D5
-~
-~
-0 -1 27493
-S
-#27794
-Above Prince's Canton~
-You are standing in room #27794.
-~
-0 0 8
-D0
-~
-~
-0 -1 27797
-D1
-~
-~
-0 -1 27795
-D2
-~
-~
-0 -1 27789
-D3
-~
-~
-0 -1 27793
-D5
-~
-~
-0 -1 27494
-S
-#27795
-Above Prince's Canton~
-You are standing in room #27795.
-~
-0 0 8
-D0
-~
-~
-0 -1 27798
-D2
-~
-~
-0 -1 27790
-D3
-~
-~
-0 -1 27794
-D5
-~
-~
-0 -1 27495
-S
-#27796
-Above Prince's Canton~
-You are standing in room #27796.
-~
-0 0 8
-D1
-~
-~
-0 -1 27797
-D2
-~
-~
-0 -1 27793
-D5
-~
-~
-0 -1 27496
-S
-#27797
-Above Prince's Canton~
-You are standing in room #27797.
-~
-0 0 8
-D1
-~
-~
-0 -1 27798
-D2
-~
-~
-0 -1 27794
-D3
-~
-~
-0 -1 27796
-D5
-~
-~
-0 -1 27497
-S
-#27798
-Above Prince's Canton~
-You are standing in room #27798.
-~
-0 0 8
-D2
-~
-~
-0 -1 27795
-D3
-~
-~
-0 -1 27797
-D5
-~
-~
-0 -1 27498
-S
-
 #27810
-A Placeholder room~
-{cStart new rooms from this number.{x
+A Mud-filled Underwater Tunnel~
+You are standing in room #27810.
+~
+0 1|4|8|2048 8
+D1
+~
+~
+0 -1 27811
+D4
+~
+~
+1 -1 27426
+S
+#27811
+A Mud-filled Underwater Tunnel~
+You are standing in room #27811.
 ~
 0 1|4|8|512 8
+D0
+~
+~
+0 -1 27812
+D3
+~
+~
+0 -1 27810
+S
+#27812
+An Underwater Cavern~
+You are standing in room #27812.
+~
+0 8 8
+D2
+~
+~
+0 -1 27811
+S
+#27813
+The Dark Entrance to an Undersea Cave~
+You are standing in room #27813.
+~
+0 1|4|8 8
+D0
+~
+~
+0 -1 27247
+D5
+~
+~
+0 -1 27814
+S
+#27814
+A Tunnel in an Undersea Cave~
+You are standing in room #27814.
+~
+0 1|8 8
+D2
+~
+~
+0 -1 27815
+D4
+~
+~
+0 -1 27813
+S
+#27815
+A Tunnel in an Undersea Cave~
+You are standing in room #27815.
+~
+0 1|8 8
+D0
+~
+~
+0 -1 27814
+D3
+~
+~
+0 -1 27816
+S
+#27816
+A Large Chamber in an Undersea Cave~
+You are standing in room #27816.
+~
+0 1|8|2048 6
+D1
+~
+~
+0 -1 27815
 S
 #0
+
+
+#RESETS
+*
+M 1 27267 2 27307     <94>a giant starfish<0> to Bridge to Market Canton
+*
+M 1 27267 2 27260     <94>a giant starfish<0> to Canton Canal
+*
+M 1 27268 1 27355     <94>a giant starfish<0> to Canton Canal
+*
+M 1 27269 2 27557     <245>a pilot whale<0> to Above Canton Canal
+*
+M 1 27269 2 27562     <245>a pilot whale<0> to Above Canton Canal
+*
+M 1 27270 1 27654     <245>a pilot whale<0> to Above Canton Canal
+*
+M 1 27271 3 27256     a minke whale to Canton Canal
+G 1 27372 100
+*
+M 1 27271 3 27560     a minke whale to Above Canton Canal
+*
+M 1 27271 3 27554     a minke whale to Above Canton Canal
+G 1 27372 100
+*
+M 1 27272 2 27563     a minke whale to Above Canton Canal
+*
+M 1 27272 1 27653     a minke whale to Malana Bridge, Upper
+G 1 27372 100
+*
+M 1 27273 1 27655     a baiji to Above Canton Canal
+*
+M 1 27274 1 27607     a baiji to Above Bridge to Market Canton
+*
+M 1 27275 1 27264     a right whale to Canton Canal
+*
+M 1 27276 1 27562     a spectacled porpoise to Above Canton Canal
+*
+M 1 27277 1 27554     a spectacled porpoise to Above Canton Canal
+*
+M 1 27278 2 27364     a fin whale to Canton Canal
+*
+M 1 27278 2 27423     a fin whale to Canton Canal
+*
+M 1 27279 2 27424     a fin whale to Canton Canal
+*
+M 1 27279 2 27360     a fin whale to Canton Canal
+*
+M 1 27280 2 27365     a sperm whale to Canton Canal
+E 1 27373 100 16
+*
+M 1 27280 2 27721     a sperm whale to Above Canton Canal
+E 1 27373 100 16
+*
+M 1 27281 1 27725     a sperm whale to Above Canton Canal
+E 1 27373 100 16
+*
+M 1 27283 2 27659     a male nixie to Above Canton Canal
+E 1 27376 100 13
+E 1 27374 100 16
+*
+M 1 27283 2 27725     a male nixie to Above Canton Canal
+E 1 27376 100 13
+E 1 27375 100 16
+*
+M 1 27282 2 27660     a female nixie to Above Canton Canal
+E 1 27377 100 5
+E 1 27378 100 10
+*
+M 1 27282 1 27724     a female nixie to Above Canton Canal
+E 1 27377 100 5
+E 1 27378 100 10
+*
+M 1 27284 1 27812     the froghemoth to An Underwater Cavern
+E 1 27379 100 16
+E 1 27380 100 18
+*
+M 1 27285 2 27267     a bowhead whale to Canton Canal
+*
+M 1 27285 2 27269     a bowhead whale to Canton Canal
+*
+M 1 27286 1 27275     a bowhead whale to Canton Canal
+*
+M 1 27287 2 27569     a humpback whale to Above Canton Canal
+*
+M 1 27287 2 27573     a humpback whale to Above Canton Canal
+*
+M 1 27288 2 27270     an ocean sunfish to Canton Canal
+*
+M 1 27288 1 27570     an ocean sunfish to Above Canton Canal
+*
+M 1 27289 1 27575     a giant gar to Above Canton Canal
+E 1 27234 100 16
+*
+M 1 27291 1 27269     a hunting seal to Canton Canal
+E 1 27383 100 3
+*
+M 1 27290 1 27269     a locathah hunter to Canton Canal
+*
+M 1 27292 2 27395     a sea zombie to Canton Canal
+*
+M 1 27292 2 27393     a sea zombie to Canton Canal
+E 1 27385 100 16
+*
+M 1 27293 1 27393     a sea zombie to Canton Canal
+E 1 27384 100 16
+*
+M 1 27293 2 27362     a sea zombie to Canton Canal
+*
+M 1 27294 1 27396     a Zin to Canton Canal
+G 1 27386 100
+*
+M 1 27295 1 27558     a Zin to Above Canton Canal
+G 1 27386 100
+*
+M 1 27296 2 27689     a water drake to Above Bridge to North Living Canton
+E 1 27234 100 16
+*
+M 1 27296 2 27691     a water drake to Above Canton Canal
+E 1 27234 100 16
+*
+M 1 27297 2 27662     a water drake to Above Canton Canal
+E 1 27234 100 16
+*
+M 1 27297 2 27693     a water drake to Above Canton Canal
+E 1 27234 100 16
+*
+M 1 27299 2 27697     a kappa to Above Canton Canal
+E 1 27387 100 5
+E 1 53 100 16
+*
+M 1 27299 2 27657     a kappa to Above Canton Canal
+E 1 27387 100 5
+E 1 53 100 16
+*
+M 1 27298 2 27391     a kappa to Canton Canal
+E 1 27387 100 5
+E 1 53 100 16
+G 1 27389 100
+*
+M 1 27298 2 27388     a kappa to Bridge to North Living Canton
+E 1 27387 100 5
+E 1 53 100 16
+*
+M 1 27300 3 27392     a giant squid to Canton Canal
+E 1 27388 100 16
+*
+M 1 27300 3 27394     a giant squid to Canton Canal
+E 1 27388 100 16
+*
+M 1 27300 3 27358     a giant squid to Canton Canal
+E 1 27388 100 16
+*
+M 1 27301 2 27247     a giant lobster to Canton Canal
+E 1 27382 100 16
+*
+M 1 27301 2 27244     a giant lobster to Bridge to Military Canton
+E 1 27382 100 16
+*
+M 1 27302 1 27252     a giant lobster to Canton Canal
+E 1 27382 100 16
+*
+M 1 27303 2 27248     a vodyanoi to Canton Canal
+E 1 27390 100 16
+*
+M 1 27303 1 27251     a vodyanoi to Canton Canal
+E 1 27390 100 16
+O 1 27391 100 27816   a treasure pile to A Large Chamber in an Undersea Cave
+O 1 27392 100 27813   the rotting corpse of a sahuagin to The Dark Entrance to an Undersea Cave
+*
+M 1 27304 1 27816     a male merrow to A Large Chamber in an Undersea Cave
+E 1 27393 100 16
+E 1 27394 100 6
+*
+M 1 27305 1 27816     a female merrow to A Large Chamber in an Undersea Cave
+E 1 27393 100 16
+*
+M 1 27306 1 27548     an aboleth to Above Canton Canal
+E 1 27234 100 16
+E 1 27380 100 18
+*
+M 1 27307 4 27458     a yurian male to Canton Canal
+E 1 27387 100 5
+E 1 27382 100 16
+*
+M 1 27307 4 27465     a yurian male to Canton Canal
+E 1 27387 100 5
+E 1 27382 100 16
+*
+M 1 27307 4 27470     a yurian male to Canton Canal
+E 1 27387 100 5
+E 1 27382 100 16
+*
+M 1 27307 4 27366     a yurian male to Canton Canal
+E 1 27387 100 5
+E 1 27382 100 16
+*
+M 1 27308 4 27457     a yurian female to Canton Canal
+E 1 27387 100 5
+E 1 27382 100 16
+*
+M 1 27308 4 27450     a yurian female to Canton Canal
+E 1 27387 100 5
+E 1 27382 100 16
+*
+M 1 27308 4 27469     a yurian female to Canton Canal
+E 1 27387 100 5
+E 1 27382 100 16
+*
+M 1 27308 4 27444     a yurian female to Canton Canal
+E 1 27387 100 5
+E 1 27382 100 16
+*
+M 1 27309 3 27453     a chuul to Canton Canal
+E 1 27387 100 5
+E 1 27395 100 16
+*
+M 1 27309 3 27446     a chuul to Canton Canal
+E 1 27387 100 5
+E 1 27395 100 16
+*
+M 1 27309 3 27459     a chuul to Canton Canal
+E 1 27387 100 5
+E 1 27395 100 16
+*
+M 1 27310 3 27467     a chuul to Canton Canal
+E 1 27387 100 5
+E 1 27395 100 16
+*
+M 1 27310 3 27462     a chuul to Canton Canal
+E 1 27387 100 5
+E 1 27395 100 16
+*
+M 1 27310 3 27367     a chuul to Canton Canal
+E 1 27387 100 5
+E 1 27395 100 16
+*
+M 1 27311 4 27749			a giant sea leech to Above Canton Canal
+G 1 27396 100
+*
+M 1 27311 4 27745			a giant sea leech to Above Canton Canal
+*
+M 1 27311 4 27666			a giant sea leech to Above Canton Canal
+G 1 27396 100
+*
+M 1 27311 4 27768			a giant sea leech to Above Canton Canal
+G 1 27396 100
+*
+M 1 27312 4 27756			a laghathti to Above Canton Canal
+E 1 27397 100 16
+G 1 27398 100
+*
+M 1 27312 4 27745			a laghathti to Above Canton Canal
+E 1 27397 100 16
+G 1 27398 100
+*
+M 1 27312 4 27765			a laghathti to Above Canton Canal
+E 1 27397 100 16
+G 1 27398 100
+*
+M 1 27312 4 27769			a laghathti to Above Canton Canal
+E 1 27397 100 16
+G 1 27398 100
+*
+M 1 27313 3 27764			a reekmurk to Above Canton Canal
+E 1 27399 100 19
+*
+M 1 27313 3 27769			a reekmurk to Above Canton Canal
+E 1 27399 100 19
+*
+M 1 27313 3 27766			a reekmurk to Above Canton Canal
+E 1 27399 100 19
+*
+M 1 27314 2 27768			an uzollru to Above Canton Canal
+E 1 27387 100 5
+E 1 27382 100 16
+E 1 27380 100 18
+E 1 27400 100 6
+*
+M 1 27314 2 27763			an uzollru to Above Canton Canal
+E 1 27387 100 5
+E 1 27382 100 16
+E 1 27380 100 18
+E 1 27400 100 6
+S
+
+
+#SPECIALS
+M  27269 spec_small_whale           a pilot whale
+M  27270 spec_small_whale           a pilot whale
+M  27271 spec_large_whale           a minke whale
+M  27272 spec_large_whale           a minke whale
+M  27273 spec_small_whale           a baiji
+M  27274 spec_small_whale           a baiji
+M  27275 spec_large_whale           a right whale
+M  27276 spec_small_whale           a spectacled porpoise
+M  27277 spec_small_whale           a spectacled porpoise
+M  27278 spec_large_whale           a fin whale
+M  27279 spec_large_whale           a fin whale
+M  27280 spec_large_whale           a sperm whale
+M  27281 spec_large_whale           a sperm whale
+M  27282 spec_cast_water_sprite     a female nixie
+M  27284 spec_warrior               a froghemoth
+M  27285 spec_large_whale           a bowhead whale
+M  27286 spec_large_whale           a bowhead whale
+M  27287 spec_large_whale           a humpback whale
+M  27290 spec_superwimpy            a locathah hunter
+M  27292 spec_cast_undead           a sea zombie
+M  27293 spec_cast_undead           a sea zombie
+M  27294 spec_cast_undead           a Zin
+M  27298 spec_kappa                 a kappa (male)
+M  27306 spec_aboleth               an aboleth
+M  27309 spec_poison                a chuul
+M  27310 spec_poison                a chuul
+M  27311 spec_bloodsucker           a giant sea leech
+M  27312 spec_laghathti             a laghathti
+M  27313 spec_breath_acid			a reekmurk
+M  27314 spec_uzollru			    an uzollru
+S
 
 
 #$

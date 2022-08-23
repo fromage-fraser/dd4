@@ -2311,6 +2311,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_fire_breath,                             0 },
         { &gsn_gas_breath,                              0 },
         { &gsn_lightning_breath,                        0 },
+        { &gsn_steam_breath,                            0 },
 
         { &gsn_group_destruction,                       0 },
         { &gsn_firestorm,                               0 },
@@ -6066,6 +6067,13 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_STR, TAR_IGNORE, POS_FIGHTING,
                 spell_null, 0, 24,
                 "<236>e<237>x<238>p<239>e<240>c<241>t<242>o<243>r<245>a<246>t<247>e<248>d <249>m<250>u<251>c<252>u<253>s<0>", "You regain autonomy over your body."
+        },
+
+        {
+                "steam breath", &gsn_steam_breath,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                spell_steam_breath, 50, 12,
+                "<51>j<87>e<123>t<159> o<195>f<253> s<254>t<255>e<15>a<556>m<0>", "!Steam Breath!"
         },
 
         /*

@@ -398,8 +398,7 @@ Dragons Domain version 4.2020
     {W8-bit colour is in! Type 'ansi reset' for your current characters, then
     read 'HELP COLOR3' and 'HELP ANSI'!{X
 
-    {WNew skills: SWALLOW for dragon form, STABILISE for necromancers, and SLOW
-    for warlocks!{x
+    {WNew skill: STEAM BREATH for mages and dragons!{x
 
 
 
@@ -438,6 +437,7 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 0 CHANGES~
 
 {WAugust 2022{x
+- STEAM BREATH added for mages and dragons
 - Dragon form now has SWALLOW
 - Skills SWALLOW and FLUKESLAP are in, with spec_small_whale and
   spec_large_whale
@@ -3310,13 +3310,14 @@ This spell reduces the strength of the victim by two points.
 0 'ACID BREATH' 'FIRE BREATH' 'FROST BREATH' 'GAS BREATH' 'LIGHTNING BREATH'~
 Syntax: cast 'acid breath'      <<victim>
 Syntax: cast 'fire breath'      <<victim>
+Syntax: cast 'steam breath'     <<victim>
 Syntax: cast 'frost breath'     <<victim>
 Syntax: cast 'gas breath'
 Syntax: cast 'lightning breath' <<victim>
 
-These spells are for the use of dragons.  Acid, fire, frost, and lightning
-damage one victim, whereas gas damages every target in the room.  Fire and
-frost can break objects, and acid can damage armor.
+These spells are for the use of dragons.  Acid, fire, steam, frost, and
+lightning damage one victim, whereas gas damages every target in the room.
+Fire, frost, and steam can break objects, and acid can damage armor.
 
 High level mages may learn and cast these spells as well.
 ~
@@ -5197,7 +5198,7 @@ lightning breath        acid breath             fire breath
 scribe                  gas breath              recharge item
 fourth spell            firestorm               meteor storm
 third spell             haste                   prismatic spray
-mount                   globe of invulnerability
+mount                   steam breath            globe of invulnerability
 
 See 'HELP SWARLOCK' and 'HELP SNECROMANCER' for lists of warlock and
 necromancer skills respectively.
@@ -5855,7 +5856,8 @@ This skill allows the shifter in HYDRA or DRAGON form to use breath weapons
 to harm an opponent.  HYDRA form will automatically BREATHE a combination of
 colour spray, fireball, and acid blast depending on how skilled the SHIFTER
 is at the form, whereas SHIFTERs in DRAGON form may choose between fire,
-lightning, frost, gas or acid by supplying those words as arguments to BREATHE.
+lightning, steam, frost, gas or acid by supplying those words as arguments
+to BREATHE.
 ~
 
 0 'SUMMON LESSER DEMON' 'SUMMON DEMON'~
