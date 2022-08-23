@@ -5218,8 +5218,8 @@ void do_owhere( CHAR_DATA *ch, char *argument )
         OBJ_DATA  *obj;
         OBJ_DATA  *in_obj;
         CHAR_DATA *rch;
-        char       buf  [ MAX_STRING_LENGTH   ];
-        char       arg  [ MAX_INPUT_LENGTH    ];
+        char       buf  [ MAX_STRING_LENGTH ];
+        char       arg  [ MAX_INPUT_LENGTH  ];
         int        obj_counter = 1;
         bool       found = FALSE;
 
@@ -5258,7 +5258,7 @@ void do_owhere( CHAR_DATA *ch, char *argument )
                                 if ( !can_see( ch, in_obj->carried_by ) )
                                         continue;
 
-                                sprintf( buf, "%-3d %s carried by %s at [%5d].\n\r",
+                                sprintf( buf, "[%-3d] {g%s{x carried by {c%s{x at [%5d]\n\r",
                                         obj_counter,
                                         obj->short_descr,
                                         PERS( in_obj->carried_by, ch ),
@@ -5266,8 +5266,10 @@ void do_owhere( CHAR_DATA *ch, char *argument )
                         }
                         else
                         {
-                                sprintf( buf, "%-3d %s in %s at [%5d].\n\r", obj_counter,
-                                        obj->short_descr, ( !in_obj->in_room ) ?
+                                sprintf( buf, "[%-3d] {g%s{x in {c%s{x at [%5d]\n\r",
+                                        obj_counter,
+                                        obj->short_descr,
+                                        ( !in_obj->in_room ) ?
                                         "somewhere" : in_obj->in_room->name,
                                         ( !in_obj->in_room ) ?
                                         0 : in_obj->in_room->vnum );

@@ -49,6 +49,7 @@ DECLARE_SPEC_FUN( spec_breath_fire         );
 DECLARE_SPEC_FUN( spec_breath_frost        );
 DECLARE_SPEC_FUN( spec_breath_gas          );
 DECLARE_SPEC_FUN( spec_breath_lightning    );
+DECLARE_SPEC_FUN( spec_breath_steam        );
 DECLARE_SPEC_FUN( spec_cast_adept          );
 DECLARE_SPEC_FUN( spec_cast_hooker         );
 DECLARE_SPEC_FUN( spec_buddha              );
@@ -105,6 +106,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_breath_frost"))         return spec_breath_frost;
         if (!str_cmp(name, "spec_breath_gas"))           return spec_breath_gas;
         if (!str_cmp(name, "spec_breath_lightning"))     return spec_breath_lightning;
+        if (!str_cmp(name, "spec_breath_steam"))         return spec_breath_steam;
         if (!str_cmp(name, "spec_cast_adept"))           return spec_cast_adept;
         if (!str_cmp(name, "spec_cast_hooker"))          return spec_cast_hooker;
         if (!str_cmp(name, "spec_buddha"))               return spec_buddha;
@@ -171,6 +173,7 @@ char* spec_fun_name (CHAR_DATA *ch)
         if (ch->spec_fun == spec_lookup("spec_breath_frost"))       return "spec_breath_frost";
         if (ch->spec_fun == spec_lookup("spec_breath_gas"))         return "spec_breath_gas";
         if (ch->spec_fun == spec_lookup("spec_breath_lightning"))   return "spec_breath_lightning";
+        if (ch->spec_fun == spec_lookup("spec_breath_steam"))       return "spec_breath_steam";
         if (ch->spec_fun == spec_lookup("spec_cast_adept"))         return "spec_cast_adept";
         if (ch->spec_fun == spec_lookup("spec_cast_hooker"))        return "spec_cast_hooker";
         if (ch->spec_fun == spec_lookup("spec_buddha"))             return "spec_buddha";
@@ -261,6 +264,9 @@ bool dragon( CHAR_DATA *ch, char *spell_name )
                 act("Bolts of lightning streak from $n's mouth!",
                     ch, NULL, NULL, TO_ROOM);
 
+        else if (sn == skill_lookup("steam breath"))
+                act("Superheated steam blasts from $n's mouth!",
+                    ch, NULL, NULL, TO_ROOM);
 
         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
 
@@ -282,7 +288,7 @@ bool spec_breath_any( CHAR_DATA *ch )
             case 3: return spec_breath_gas              ( ch );
             case 4: return spec_breath_acid             ( ch );
             case 5:
-            case 6:
+            case 6: return spec_breath_steam            ( ch );
             case 7: return spec_breath_frost            ( ch );
         }
 
@@ -303,10 +309,15 @@ bool spec_breath_fire( CHAR_DATA *ch )
 }
 
 
-
 bool spec_breath_frost( CHAR_DATA *ch )
 {
         return dragon( ch, "frost breath" );
+}
+
+
+bool spec_breath_steam( CHAR_DATA *ch )
+{
+        return dragon( ch, "steam breath" );
 }
 
 
@@ -1912,7 +1923,7 @@ bool spec_buddha( CHAR_DATA *ch )
             case 3: return spec_breath_gas              ( ch );
             case 4: return spec_breath_acid             ( ch );
             case 5: return spec_cast_cleric             ( ch );
-            case 6:
+            case 6: return spec_breath_steam            ( ch );
             case 7: return spec_breath_frost            ( ch );
         }
 
@@ -3295,7 +3306,6 @@ bool spec_superwimpy( CHAR_DATA *ch )
 
 }
 
-
 bool spec_uzollru( CHAR_DATA *ch )
 {
         CHAR_DATA *victim;
@@ -3459,3 +3469,4 @@ bool spec_uzollru( CHAR_DATA *ch )
         return TRUE;
 
 }
+

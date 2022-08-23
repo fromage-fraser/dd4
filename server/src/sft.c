@@ -1710,6 +1710,9 @@ void do_morph_dragon (CHAR_DATA *ch, bool to_form)
                 if (ch->pcdata->learned[gsn_form_dragon] > 80)
                         send_to_char("You can now breathe frost!\n\r",ch);
 
+                if (ch->pcdata->learned[gsn_form_dragon] > 83)
+                        send_to_char("You can now breathe steam!\n\r",ch);
+
                 if (ch->pcdata->learned[gsn_form_dragon] > 85)
                         send_to_char("You can now breathe fire!\n\r",ch);
 

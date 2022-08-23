@@ -628,6 +628,7 @@ int     gsn_swallow;
 int     gsn_serrate;
 int     gsn_innate_knowledge;
 int     gsn_spit_mucus;
+int     gsn_steam_breath;
 
 /*
  *  Spell groups
@@ -758,7 +759,7 @@ void            mprog_read_programs     (FILE *fp, MOB_INDEX_DATA *pMobIndex);
  * Increase MAX_STRING if you have to.
  * Tune the others only if you understand what you're doing.
  */
-#define                 MAX_STRING      5500000     /* 5000000 */
+#define                 MAX_STRING      6000000     /* 5000000 */
 
 #if defined( machintosh )
 # define                        MAX_PERM_BLOCK  131072
@@ -771,13 +772,14 @@ const int               rgSizeList              [ MAX_MEM_LIST       ]  =
 };
 
 #else
-# define                        MAX_PERM_BLOCK  131072
-# define                        MAX_MEM_LIST    12
+# define                        MAX_PERM_BLOCK  131072 /* was 131072 */
+# define                        MAX_MEM_LIST    12 /* was 12 */
 
 void *                  rgFreeList              [ MAX_MEM_LIST       ];
 const int               rgSizeList              [ MAX_MEM_LIST       ]  =
 {
         16, 32, 64, 128, 256, 1024, 2048, 4096, 8192, 16384, 32768, 65536
+        /* was 16, 32, 64, 128, 256, 1024, 2048, 4096, 8192, 16384, 32768, 65536 */
 };
 #endif
 

@@ -4790,6 +4790,66 @@ void spell_fire_breath( int sn, int level, CHAR_DATA *ch, void *vo )
         damage( ch, victim, dam, sn, FALSE );
 }
 
+void spell_steam_breath( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+        OBJ_DATA  *obj_lose;
+        OBJ_DATA  *obj_next;
+        CHAR_DATA *victim = (CHAR_DATA *) vo;
+        int dam;
+        int hpch;
+        bool resist = FALSE;
+
+        if (is_affected(victim, gsn_resist_heat))
+                resist = TRUE;
+
+        if (number_percent() < 2 * level
+            && !saves_spell(level, victim)
+            && !IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER)
+            && !is_affected(victim,gsn_dragon_shield))
+        {
+                for ( obj_lose = victim->carrying; obj_lose; obj_lose = obj_next )
+                {
+                        char *msg;
+                        obj_next = obj_lose->next_content;
+
+                        if ( obj_lose->deleted )
+                                continue;
+
+                        if ( number_bits( 2 ) != 0 )
+                                continue;
+
+                        if (resist && number_bits(1))
+                                continue;
+
+                        switch ( obj_lose->item_type )
+                        {
+                            default:             continue;
+                            case ITEM_SCROLL:           msg = "{Y$p is soggy and illegible!{x";         break;
+                            case ITEM_FOOD:             msg = "{Y$p is saturated and slushy!{x";        break;
+                            case ITEM_POISON_POWDER:    msg = "{Y$p turns into a watery paste!{x";      break;
+                            case ITEM_PILL:             msg = "{Y$p is sodden and mushy!{x";            break;
+                            case ITEM_CLIMBING_EQ:      msg = "{Y$p is soused and frays!{x";            break;
+                            case ITEM_PAINT:            msg = "{Y$p is drenched and diluted!{x";        break;
+                            case ITEM_AUCTION_TICKET:   msg = "{Y$p is soaked right through!{x";        break;
+                        }
+
+                        act( msg, victim, obj_lose, NULL, TO_CHAR );
+                        extract_obj( obj_lose );
+                }
+        }
+
+        hpch = UMAX( 10, ch->hit );
+        dam  = number_range( hpch / 7 + 1, hpch / 4 );
+
+        if (resist || saves_spell(level, victim))
+                dam /= 2;
+
+        if (is_affected(victim, gsn_dragon_shield))
+                dam /= 2;
+
+        damage( ch, victim, dam, sn, FALSE );
+}
+
 
 void spell_frost_breath( int sn, int level, CHAR_DATA *ch, void *vo )
 {

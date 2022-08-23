@@ -2207,7 +2207,7 @@ void do_breathe (CHAR_DATA *ch, char *argument)
 
         if (ch->form == FORM_DRAGON && (arg[0] == '\0'))
         {
-                send_to_char("Breathe fire, lightning, acid or gas?\n\r", ch);
+                send_to_char("Breathe fire, lightning, acid, steam, or gas?\n\r", ch);
                 return;
         }
 
@@ -2272,6 +2272,17 @@ void do_breathe (CHAR_DATA *ch, char *argument)
                         if ( ( sn = skill_lookup( "acid breath" ) ) < 0 )
                                 return;
                         arena_commentary("$n breathes acid on $N.", ch, victim);
+                        WAIT_STATE(ch, skill_table[gsn_breathe].beats);
+                        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
+                        return;
+                }
+
+                if ( !str_cmp( arg, "steam" ) )
+                {
+                        int sn;
+                        if ( ( sn = skill_lookup( "steam breath" ) ) < 0 )
+                                return;
+                        arena_commentary("$n breathes steam on $N.", ch, victim);
                         WAIT_STATE(ch, skill_table[gsn_breathe].beats);
                         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
                         return;
