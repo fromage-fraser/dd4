@@ -7,7 +7,11 @@
  ***************************************************************************/
 
 #include <stdarg.h>
+#include <stdlib.h>
+#include <strings.h>
 #include "merc.h"
+
+char                    str_empty               [ 1 ];
 /*
 void do_vt100( CHAR_DATA *ch, char *arg)
 {
@@ -36,7 +40,7 @@ void do_vt100( CHAR_DATA *ch, char *arg)
 
 		strcpy(buf0, buf4);
 
-		sprintf(buf1, "%s", IS_SET(ch->pcdata->vt100_flags, VT100_INTERFACE) ? "ON" : "OFF");
+		sprintf(buf1, "%s", HAS_BIT(ch->pcdata->vt100_flags, VT100_INTERFACE) ? "ON" : "OFF");
 		sprintf(buf2, "%s", IS_SET(ch->pcdata->vt100_flags, VT100_FAST) ? "FAST" : "SLOW");
 		cat_sprintf(buf0, "%s |%s         VT100 Mode%s:%s %-11s %s             VT100 Speed%s:%s %-11s      %s|\n\r",
 		colg,
@@ -60,14 +64,14 @@ void do_vt100( CHAR_DATA *ch, char *arg)
 		return;
 	}
 
-	if (!strcasecmp(buf0,  "on") && !IS_SET(ch->pcdata->vt100_flags, VT100_INTERFACE))
+	if (!strcasecmp(buf0,  "on") && !HAS_BIT(ch->pcdata->vt100_flags, VT100_INTERFACE))
 	{
 		vt100on(ch);
 		pop_call();
 		return;
 	}
 
-	if (!strcasecmp(buf0, "off") && IS_SET(ch->pcdata->vt100_flags, VT100_INTERFACE))
+	if (!strcasecmp(buf0, "off") && HAS_BIT(ch->pcdata->vt100_flags, VT100_INTERFACE))
 	{
 		vt100off(ch);
 		pop_call();
@@ -137,8 +141,8 @@ void do_vt100( CHAR_DATA *ch, char *arg)
 	pop_call();
 	return;
 }
-*/
-/*
+
+
 void do_color (CHAR_DATA * ch, char *argument)
 {
 	char buf[MAX_STRING_LENGTH];
@@ -155,7 +159,7 @@ void do_color (CHAR_DATA * ch, char *argument)
 
 	if (!strcasecmp ("on", argument))
 	{
-		if (IS_SET(ch->pcdata->vt100_flags, VT100_ANSI))
+		if (HAS_BIT(ch->pcdata->vt100_flags, VT100_ANSI))
 		{
 			send_to_char ("You already have color on.\n\r", ch);
 			pop_call();
@@ -170,7 +174,9 @@ void do_color (CHAR_DATA * ch, char *argument)
 
 	if (!strcasecmp ("reset", argument))
 	{
-
+		*
+			Scandum's favorite colors
+		*
 		reset_color (ch);
 		do_refresh(ch, "");
 		send_to_char ("Colors reset to defaults.\n\r", ch);
@@ -180,7 +186,7 @@ void do_color (CHAR_DATA * ch, char *argument)
 
 	if (!strcasecmp ("off", argument))
 	{
-		REMOVE_BIT(ch->pcdata->vt100_flags, VT100_ANSI);
+		DEL_BIT(ch->pcdata->vt100_flags, VT100_ANSI);
 		do_refresh(ch, "");
 		send_to_char ("Ansi color is OFF.\n\r", ch);
 		pop_call();
@@ -244,10 +250,12 @@ void do_color (CHAR_DATA * ch, char *argument)
 	return;
 }
 */
+
+
 /*
 	gives back string length not including color codes - Scandum 10-05-2002
 */
-/*
+
 int ansi_strlen(char *text)
 {
 	int length = 0;
@@ -302,11 +310,10 @@ int ansi_strlen(char *text)
 	pop_call();
 	return length;
 }
-*/
+
 /*
 	rewritten, will mainly be replaced by _def version - Scandum 10-05-2002
 */
-
 
 char *ansi_translate_text( CHAR_DATA *ch, char *text_in )
 {
@@ -367,11 +374,11 @@ char *ansi_translate_text( CHAR_DATA *ch, char *text_in )
 
 	color = 0;
 
-	if (IS_SET(CH(ch->desc)->pcdata->vt100_flags, VT100_ANSI))
+	if (HAS_BIT(CH(ch->desc)->pcdata->vt100_flags, VT100_ANSI))
 	{
 		color = 16;
 
-		if (IS_SET(ch->desc->mth->comm_flags, COMM_FLAG_256COLORS))
+		if (HAS_BIT(ch->desc->mth->comm_flags, COMM_FLAG_256COLORS))
 		{
 			color = 256;
 		}
@@ -387,7 +394,6 @@ char *ansi_translate_text( CHAR_DATA *ch, char *text_in )
 	Uses minimal amount of color codes - Scandum
 */
 
-/*
 char *ansi_compress( CHAR_DATA *ch, char *txt, int color, int code )
 {
 	char ansi_buf[MAX_STRING_LENGTH];
@@ -456,11 +462,11 @@ char *ansi_compress( CHAR_DATA *ch, char *txt, int color, int code )
 
 	mode = 0;
 
-	if (IS_SET(CH(ch->desc)->pcdata->vt100_flags, VT100_ANSI))
+	if (HAS_BIT(CH(ch->desc)->pcdata->vt100_flags, VT100_ANSI))
 	{
 		mode = 16;
 
-		if (IS_SET(ch->desc->mth->comm_flags, COMM_FLAG_256COLORS))
+		if (HAS_BIT(ch->desc->mth->comm_flags, COMM_FLAG_256COLORS))
 		{
 			mode = 256;
 		}
@@ -471,11 +477,10 @@ char *ansi_compress( CHAR_DATA *ch, char *txt, int color, int code )
 	pop_call();
 	return( xterm_buf );
 }
-*/
+
 /*
 	Basic color translator for internal usage - Scandum 21-05-2002
 */
-
 
 char *ansi_translate(char *text_in)
 {
@@ -550,7 +555,6 @@ char *ansi_translate(char *text_in)
 	Translates color codes setting {300} to given def - Scandum 14-05-2002
 */
 
-/*
 char *ansi_translate_def( CHAR_DATA *ch, char *text_in, char *def )
 {
 	char ansi_translate_buffer[MAX_STRING_LENGTH];
@@ -605,11 +609,11 @@ char *ansi_translate_def( CHAR_DATA *ch, char *text_in, char *def )
 
 	color = 0;
 
-	if (IS_SET(CH(ch->desc)->pcdata->vt100_flags, VT100_ANSI))
+	if (HAS_BIT(CH(ch->desc)->pcdata->vt100_flags, VT100_ANSI))
 	{
 		color = 16;
 
-		if (IS_SET(ch->desc->mth->comm_flags, COMM_FLAG_256COLORS))
+		if (HAS_BIT(ch->desc->mth->comm_flags, COMM_FLAG_256COLORS))
 		{
 			color = 256;
 		}
@@ -620,7 +624,6 @@ char *ansi_translate_def( CHAR_DATA *ch, char *text_in, char *def )
 	pop_call();
 	return( xterm_translate_buffer );
 }
-*/
 
 void reset_color (CHAR_DATA * ch)
 {
@@ -656,7 +659,6 @@ void reset_color (CHAR_DATA * ch)
 	return;
 }
 
-
 char *get_color_diff (CHAR_DATA * ch, int old_for, int old_bak, int old_bold, int new_for, int new_bak, int new_bold)
 {
 	static char buf[20];
@@ -671,14 +673,15 @@ char *get_color_diff (CHAR_DATA * ch, int old_for, int old_bak, int old_bold, in
 		return buf;
 	}
 
-	if (!IS_SET(CH(ch->desc)->pcdata->vt100_flags, VT100_ANSI) && !IS_SET(CH(ch->desc)->pcdata->vt100_flags, VT100_BOLD) && !IS_SET(CH(ch->desc)->pcdata->vt100_flags, VT100_REVERSE))
+	if (!HAS_BIT(CH(ch->desc)->pcdata->vt100_flags, VT100_ANSI) && !IS_SET(CH(ch->desc)->pcdata->vt100_flags, VT100_BOLD) && !IS_SET(CH(ch->desc)->pcdata->vt100_flags, VT100_REVERSE))
 	{
 		pop_call();
 		return buf;
 	}
 
+	/* supporting bold and background color */
 
-	if (!IS_SET(CH(ch->desc)->pcdata->vt100_flags, VT100_ANSI))
+	if (!HAS_BIT(CH(ch->desc)->pcdata->vt100_flags, VT100_ANSI))
 	{
 		if (new_bak == old_bak && new_bold == old_bold)
 		{
@@ -752,7 +755,6 @@ char *get_color_diff (CHAR_DATA * ch, int old_for, int old_bak, int old_bold, in
 		return buf;
 	}
 
-
 	/*
 		VT100 and minor ECMA-48 support - Scandum 27-02-2002
 	*/
@@ -814,7 +816,6 @@ char *get_color_diff (CHAR_DATA * ch, int old_for, int old_bak, int old_bold, in
 }
 
 
-
 void do_refresh (CHAR_DATA * ch, char *argument)
 {
 	push_call("do_refresh(%p, %p)",ch,argument);
@@ -825,7 +826,7 @@ void do_refresh (CHAR_DATA * ch, char *argument)
 		return;
 	}
 
-	if (!IS_SET(CH(ch->desc)->pcdata->vt100_flags, VT100_INTERFACE))
+	if (!HAS_BIT(CH(ch->desc)->pcdata->vt100_flags, VT100_INTERFACE))
 	{
 		pop_call();
 		return;
@@ -843,9 +844,6 @@ void do_refresh (CHAR_DATA * ch, char *argument)
 	return;
 }
 
-
-
-/*
 void do_tactical (CHAR_DATA * ch, char *arg)
 {
 	int val;
@@ -889,10 +887,10 @@ void do_tactical (CHAR_DATA * ch, char *arg)
 			old_bak = new_bak;
 		}
 
-		if (IS_SET(ch->act, PLR_WIZTIME))
+		/*if (IS_SET(ch->act, PLR_WIZTIME))
 		{
 			cat_sprintf(buf, "Size: %d bytes.\n\r", strlen(buf));
-		}
+		}*/
 		ch_printf(ch, "%s", buf);
 		pop_call();
 		return;
@@ -908,7 +906,7 @@ void do_tactical (CHAR_DATA * ch, char *arg)
 
 	if (!strcasecmp (arg, "bottom"))
 	{
-		REMOVE_BIT(ch->pcdata->tactical_flags, TACTICAL_TOP);
+		DEL_BIT(ch->pcdata->tactical_flags, TACTICAL_TOP);
 
 		send_to_char ("Your tactical is set to the bottom.\n\r", ch);
 		pop_call();
@@ -917,7 +915,7 @@ void do_tactical (CHAR_DATA * ch, char *arg)
 
 	if (arg[0] == 'n' || arg[0] == 'N')
 	{
-		if (IS_SET(ch->pcdata->tactical_flags, TACTICAL_INDEX))
+		if (HAS_BIT(ch->pcdata->tactical_flags, TACTICAL_INDEX))
 		{
 			send_to_char ("You turn the tactical index off.\n\r", ch);
 		}
@@ -1048,26 +1046,81 @@ void do_tactical (CHAR_DATA * ch, char *arg)
 	pop_call();
 	return;
 }
-*/
-
 
 void clear_tactical_map (TACTICAL_MAP *tact)
 {
+
+/*
 	static const TACTICAL_MAP clear_tact;
 
-	*tact = clear_tact;
+ 	*tact = clear_tact; 
 
+	tact->map		= &str_empty[0];
+	tact->color		= 0;
+*/
+/* a = (const struct *tact){ 0 }; */
+
+
+/*
+       
+	    static CHAR_DATA ch_zero;
+
+        *ch                     = ch_zero;
+        ch->name                = &str_empty[0];
+        ch->short_descr         = &str_empty[0];
+        ch->long_descr          = &str_empty[0];
+        ch->description         = &str_empty[0];
+        ch->prompt              = str_dup("> ");
+        ch->last_note           = 0;
+        ch->logon               = current_time;
+        ch->armor               = 100;
+        ch->position            = POS_STANDING;
+        ch->level               = 0;
+        ch->status              = 0;
+        ch->hit                 = 20;
+        ch->max_hit             = 20;
+        ch->mana                = 100;
+        ch->max_mana            = 100;
+        ch->move                = 100;
+        ch->max_move            = 100;
+        ch->rage                = 50;
+        ch->max_rage            = 100;
+        ch->leader              = NULL;
+        ch->master              = NULL;
+        ch->mount               = NULL;
+        ch->deleted             = FALSE;
+        ch->exp_modifier        = 100;
+
+		struct tactical_map
+{
+	unsigned char   map[MAX_TACTICAL_ROW * MAX_TACTICAL_COL];
+	unsigned int  color[MAX_TACTICAL_ROW * MAX_TACTICAL_COL];
+};
+
+
+	memset(&tact,   0, MAX_TACTICAL_ROW * MAX_TACTICAL_COL);
+/*	memset(tact->color, 0, MAX_TACTICAL_ROW * MAX_TACTICAL_COL);
+*/
+/*
+	memset(tact->map, 0, MAX_TACTICAL_ROW * MAX_TACTICAL_COL);
+	memset(tact->color, 0, MAX_TACTICAL_ROW * MAX_TACTICAL_COL);
+	unsigned char *tact = malloc( sizeof( unsigned char ) * 64 );
 	memset(tact->map,   0, MAX_TACTICAL_ROW * MAX_TACTICAL_COL);
 	memset(tact->color, 0, MAX_TACTICAL_ROW * MAX_TACTICAL_COL);
 
+	struct tactical_map
+{
+	unsigned char   map[MAX_TACTICAL_ROW * MAX_TACTICAL_COL];
+	unsigned int  color[MAX_TACTICAL_ROW * MAX_TACTICAL_COL];
+};
+
+*/
 	return;
 }
-
 
 /*
 	Chaos - 3/1/95
 */
-
 
 char *get_tactical_string (CHAR_DATA * ch, TACTICAL_MAP * tact)
 {
@@ -1140,7 +1193,7 @@ char *get_tactical_string (CHAR_DATA * ch, TACTICAL_MAP * tact)
 					new_bld = 0;
 				}
 
-				if (!IS_SET(CH(d)->pcdata->vt100_flags, VT100_ANSI))
+				if (!HAS_BIT(CH(d)->pcdata->vt100_flags, VT100_ANSI))
 				{
 					new_for = 0;
 					new_bak = 1;
@@ -1209,15 +1262,13 @@ char *get_tactical_string (CHAR_DATA * ch, TACTICAL_MAP * tact)
 	return(buf);
 }
 
-
-
 TACTICAL_MAP *get_tactical_map (CHAR_DATA * ch)
 {
 	int val, cnt, lcnt, size_v, size_h, cuc, door;
 	bool *pti, *pto;
 	bool *ptoc;
 	AFFECT_DATA *paf;
-	PC_DATA *pcd;			
+	PC_DATA *pcd;			/* Shortcutt one reference */
 	char buf[MAX_STRING_LENGTH], buf2[MAX_INPUT_LENGTH], buf3[MAX_INPUT_LENGTH];
 	bool *ptb;
 	int color1, color2, color3;
@@ -1234,8 +1285,10 @@ TACTICAL_MAP *get_tactical_map (CHAR_DATA * ch)
 
 	clk = *localtime (&mud->current_time);
 
+
 	clear_tactical_map(mud->tactical);
 
+	
 	tm = (unsigned char *) mud->tactical->map;
 	tc = (unsigned char *) mud->tactical->color;
 
@@ -1252,11 +1305,11 @@ TACTICAL_MAP *get_tactical_map (CHAR_DATA * ch)
 		{
 			*tm = 128 + ' ';
 
-			if (IS_SET(pcd->tactical_flags, TACTICAL_TOP) && lcnt == 0)
+			if (HAS_BIT(pcd->tactical_flags, TACTICAL_TOP) && lcnt == 0)
 			{
 				*tc = color1;
 			}
-			else if (!IS_SET(pcd->tactical_flags, TACTICAL_TOP) && lcnt == pcd->tactical_size_v -1)
+			else if (!HAS_BIT(pcd->tactical_flags, TACTICAL_TOP) && lcnt == pcd->tactical_size_v -1)
 			{
 				*tc = color1;
 			}
@@ -1271,12 +1324,12 @@ TACTICAL_MAP *get_tactical_map (CHAR_DATA * ch)
 		}
 	}
 
-
+	/* Let's use these as a index pointer for speed */
 
 	tm = (unsigned char *) mud->tactical->map;
 	tc = (unsigned char *) mud->tactical->color;
 
-	if (IS_SET(pcd->tactical_flags, TACTICAL_TOP))
+	if (HAS_BIT(pcd->tactical_flags, TACTICAL_TOP))
 	{
 		pto = tm;
 	}
@@ -1347,12 +1400,12 @@ TACTICAL_MAP *get_tactical_map (CHAR_DATA * ch)
 
 	if (!IS_NPC(ch))
 	{
-		if (IS_SET(ch->act, PLR_HOLYLIGHT))
+	/*	if (IS_SET(ch->act, PLR_HOLYLIGHT))
 		{
 			cnt++;
 			*pto-- = 'L' + 128;
 			*pto-- = 'H' + 128;
-		}
+		} */
 		if (IS_SET(ch->act, PLR_WIZINVIS))
 		{
 			cnt++;
@@ -1412,13 +1465,16 @@ TACTICAL_MAP *get_tactical_map (CHAR_DATA * ch)
 	}
 	*pto-- = ' ';
 
+	/*
+		Add the bottom stat bar
+	*/
 
 	pto  = tm + (size_h * (size_v - 1));
 	ptoc = tc + (size_h * (size_v - 1));
 
 	cuc = color3;
 
-/*	if (!IS_NPC(ch) && IS_IMMORTAL(ch) && ch->pcdata->editmode != MODE_NONE && pcd->subprompt && *pcd->subprompt)
+	if (!IS_NPC(ch) && IS_IMMORTAL(ch) && pcd->subprompt && *pcd->subprompt)
 	{
 		sprintf(buf, "%-61s", ch->pcdata->subprompt);
 
@@ -1433,7 +1489,7 @@ TACTICAL_MAP *get_tactical_map (CHAR_DATA * ch)
 			*pto++ = 128 + ' ';
 		}
 	}
-	else */
+	else
 	{
 		*pto++  = 128 + ' ';
 		*ptoc++ = cuc;
@@ -1555,7 +1611,7 @@ TACTICAL_MAP *get_tactical_map (CHAR_DATA * ch)
 
 		cuc = color3;
 
-		if (IS_SET(pcd->tactical_flags, TACTICAL_EXPTNL))
+		if (HAS_BIT(pcd->tactical_flags, TACTICAL_EXPTNL))
 		{
 			*pto		= 'e';	pto++;
 			*pto		= 'X';	pto++;
@@ -1567,7 +1623,7 @@ TACTICAL_MAP *get_tactical_map (CHAR_DATA * ch)
 		}
 		*pto		= ':';	pto++;
 
-		if (IS_SET(pcd->tactical_flags, TACTICAL_EXPTNL))
+		if (HAS_BIT(pcd->tactical_flags, TACTICAL_EXPTNL))
 		{
 			if (ch->level >= 95)
 			{
@@ -1575,7 +1631,8 @@ TACTICAL_MAP *get_tactical_map (CHAR_DATA * ch)
 			}
 			else
 			{
-				sprintf (buf, "%-10d", ch->exp = level_table[ch->level].exp_total /*exp_level(ch->class, ch->level) - (IS_NPC(ch) ? 0 : ch->pcdata->exp)*/);
+				/* sprintf (buf, "%-10d", exp_level(ch->class, ch->level) - (IS_NPC(ch) ? 0 : ch->pcdata->exp)); */
+				sprintf (buf, "%-10d", ch->exp - (IS_NPC(ch) ? 0 : ch->pcdata->exp));
 			}
 		}
 		else
@@ -1612,9 +1669,9 @@ TACTICAL_MAP *get_tactical_map (CHAR_DATA * ch)
 		{
 			if ((pexit = get_exit(ch->in_room->vnum, door)) != NULL
 		/*	&&   !IS_SET(pexit->flags, EX_CLOSED)
-			&&  (!IS_SET(ch->in_room->room_flags, ROOM_SMOKE)	|| can_see_smoke(ch)) 
-			&&  (!IS_SET(pexit->flags, EX_HIDDEN) || can_see_hidden(ch)) */
-			&&   can_use_exit(ch, pexit))
+			&&  (!IS_SET(ch->in_room->room_flags, ROOM_SMOKE)	|| can_see_smoke(ch))
+			&&  (!IS_SET(pexit->flags, EX_HIDDEN) || can_see_hidden(ch))
+			&&   can_use_exit(ch, pexit) */)
 			{
 				cnt++;
 				switch (door)
@@ -1690,7 +1747,7 @@ TACTICAL_MAP *get_tactical_map (CHAR_DATA * ch)
 		*pto = *ptb + 128;	pto++;
 	}
 
-
+	/* Do the room mobiles  */
 
 	if (size_v - 1 > 1)
 	{
@@ -1706,19 +1763,18 @@ TACTICAL_MAP *get_tactical_map (CHAR_DATA * ch)
 		{
 			for (fch = ch->in_room->first_person ; fch ; fch = fch->next_in_room)
 			{
-				if (col < max_width && can_see(ch, fch) && !(IS_AFFECTED(fch, AFF_HIDE) 
-				/*|| IS_AFFECTED(fch, AFF_STEALTH) || IS_AFFECTED(fch, AFF_ETHEREAL)) */) )
+				if (col < max_width && can_see(ch, fch) && !(IS_AFFECTED(fch, AFF_HIDE) ))
 				{
 					pti = IS_NPC(fch) ? (bool *) capitalize (fch->short_descr) : (bool *) fch->name;
 
-					if (fch->fighting && (who_fighting(fch) == NULL /* || fch->fighting->who->in_room != fch->in_room) */))
+					if (fch->fighting && (who_fighting(fch) == NULL || fch->fighting->in_room != fch->in_room))
 					{
 						stop_fighting(fch, FALSE);
 					}
 
 					bld = (fch->fighting != NULL) ? 128 : 0;
 
-					if (IS_SET(pcd->tactical_flags, TACTICAL_TOP))
+					if (HAS_BIT(pcd->tactical_flags, TACTICAL_TOP))
 					{
 						pto  = tm + size_h * row + col;
 						ptoc = tc + size_h * row + col;
@@ -1746,7 +1802,7 @@ TACTICAL_MAP *get_tactical_map (CHAR_DATA * ch)
 					}
 					ptoc++;
 
-					if (IS_SET(pcd->tactical_flags, TACTICAL_INDEX))
+					if (HAS_BIT(pcd->tactical_flags, TACTICAL_INDEX))
 					{
 						if (IS_NPC(fch))
 						{
@@ -1776,7 +1832,7 @@ TACTICAL_MAP *get_tactical_map (CHAR_DATA * ch)
 						ptoc++;
 					}
 
-					if (who_fighting(fch) && is_same_group( fch, ch ) /*is_same_group(fch->fighting->who, ch)*/)
+					if (who_fighting(fch) && is_same_group(fch->fighting, ch))
 					{
 						colors = pcd->color[COLOR_TACT_ENEMY] % 10   + pcd->color[COLOR_TACT_ENEMY] / 10 * 8;
 					}
@@ -1788,8 +1844,8 @@ TACTICAL_MAP *get_tactical_map (CHAR_DATA * ch)
 					{
 						colors = pcd->color[COLOR_TACT_NEUTRAL] % 10 + pcd->color[COLOR_TACT_NEUTRAL] / 10 * 8;
 					}
-					/* NEED TO FIX THIS 
-					if (who_fighting(fch) == NULL || !IS_SET(pcd->tactical_flags, TACTICAL_INDEX))
+
+					if (who_fighting(fch) == NULL || !HAS_BIT(pcd->tactical_flags, TACTICAL_INDEX))
 					{
 						for ( ; cnt < 12 && *pti ; cnt++)
 						{
@@ -1810,8 +1866,30 @@ TACTICAL_MAP *get_tactical_map (CHAR_DATA * ch)
 							*ptoc++ = colors;
 						}
 						*pto++ = '>';
-						ptoc++;
 
+						ptoc++;
+						if (IS_NPC(fch->fighting))
+						{
+							*pto++ = isupper(*fch->fighting->name) ? *fch->fighting->name : toupper(*fch->fighting->name);
+							ptoc++;
+							*pto++ = 'a' + ((int) fch->fighting % 25);
+							ptoc++;
+						}
+						else if (fch->fighting->pcdata->tactical_index[0] == '\0')
+						{
+							*pto++ = '0' + ((fch->fighting->pcdata->pvnum % 100) / 10);
+							ptoc++;
+							*pto++ = '0' + (fch->fighting->pcdata->pvnum % 10);
+							ptoc++;
+						}
+						else
+						{
+							*pto++ = fch->fighting->pcdata->tactical_index[0];
+							ptoc++;
+							*pto++ = fch->fighting->pcdata->tactical_index[1];
+							ptoc++;
+						}
+						/*
 						if (IS_NPC(fch->fighting->who))
 						{
 							*pto++ = isupper(*fch->fighting->who->name) ? *fch->fighting->who->name : toupper(*fch->fighting->who->name);
@@ -1832,8 +1910,8 @@ TACTICAL_MAP *get_tactical_map (CHAR_DATA * ch)
 							ptoc++;
 							*pto++ = fch->fighting->who->pcdata->tactical_index[1];
 							ptoc++;
-						}
-					} */
+						} */
+					}
 					row++;
 					if (row > size_v - 2)
 					{
@@ -1844,7 +1922,7 @@ TACTICAL_MAP *get_tactical_map (CHAR_DATA * ch)
 			}
 		}
 
-
+		/* Compass code  */
 
 		if (can_see_in_room(ch, ch->in_room))
 		{
@@ -1871,21 +1949,20 @@ TACTICAL_MAP *get_tactical_map (CHAR_DATA * ch)
 						{
 							continue;
 						}
-					/*	if (IS_SET(ch->in_room->room_flags, ROOM_SMOKE) && !can_see_smoke(ch))
+			/*			if (IS_SET(ch->in_room->room_flags, ROOM_SMOKE) && !can_see_smoke(ch))
 						{
 							continue;
 						}
 						if (IS_SET(pexit->flags, EX_HIDDEN) && !can_see_hidden(ch))
 						{
 							continue;
-						} */
+						}
 						if (!can_use_exit(ch, pexit))
 						{
 							continue;
-						}
-						
-						/* colors = sector_table[room_index[pexit->to_room]->sector_type].color; */
-					/*	if (!IS_SET(pexit->flags, EX_CLOSED))
+						} */
+			/*			colors = sector_table[room_index[pexit->to_room]->sector_type].color;
+						if (!IS_SET(pexit->flags, EX_CLOSED))
 						{
 							if (!can_see_in_room(ch, room_index[pexit->to_room]))
 							{
@@ -1896,7 +1973,7 @@ TACTICAL_MAP *get_tactical_map (CHAR_DATA * ch)
 								strcpy (buf3, room_index[pexit->to_room]->name);
 							}
 						}
-						else
+						else */
 						{
 							if (pexit->keyword[0] != '\0')
 							{
@@ -1906,10 +1983,10 @@ TACTICAL_MAP *get_tactical_map (CHAR_DATA * ch)
 							{
 								strcpy(buf3, "Door");
 							}
-						} */
+						}
 					}
 
-					if (IS_SET(pcd->tactical_flags, TACTICAL_TOP))
+					if (HAS_BIT(pcd->tactical_flags, TACTICAL_TOP))
 					{
 						vo = 0;
 					}
@@ -2076,7 +2153,6 @@ TACTICAL_MAP *get_tactical_map (CHAR_DATA * ch)
 	return (mud->tactical);
 }
 
-
 TACTICAL_MAP *get_diff_tactical (CHAR_DATA * ch)
 {
 	int size_v, size_h;
@@ -2108,6 +2184,7 @@ TACTICAL_MAP *get_diff_tactical (CHAR_DATA * ch)
 	pop_call();
 	return NULL;
 }
+
 
 
 void vt100on (CHAR_DATA * ch)
@@ -2153,7 +2230,7 @@ void vt100on (CHAR_DATA * ch)
 
 	clear_tactical_map(CH(d)->pcdata->tactical);
 
-	REMOVE_BIT(CH(d)->pcdata->vt100_flags, VT100_REFRESH);
+	DEL_BIT(CH(d)->pcdata->vt100_flags, VT100_REFRESH);
 
 	vt100prompter(ch);
 
@@ -2162,9 +2239,6 @@ void vt100on (CHAR_DATA * ch)
 	pop_call();
 	return;
 }
-
-
-
 
 void vt100off (CHAR_DATA * ch)
 {
@@ -2179,7 +2253,7 @@ void vt100off (CHAR_DATA * ch)
 		return;
 	}
 
-	if (!IS_SET(CH(ch->desc)->pcdata->vt100_flags, VT100_INTERFACE))
+	if (!HAS_BIT(CH(ch->desc)->pcdata->vt100_flags, VT100_INTERFACE))
 	{
 		pop_call();
 		return;
@@ -2194,7 +2268,7 @@ void vt100off (CHAR_DATA * ch)
 
 	d->outtop = 0;
 
-	REMOVE_BIT(CH(d)->pcdata->vt100_flags, VT100_INTERFACE);
+	DEL_BIT(CH(d)->pcdata->vt100_flags, VT100_INTERFACE);
 
 	REMOVE_BIT(CH(d)->pcdata->interp, INTERP_TACT_UPDATE);
 
@@ -2207,16 +2281,13 @@ void vt100off (CHAR_DATA * ch)
 	return;
 }
 
-
-
-
 void vt100prompt(CHAR_DATA * ch)
 {
 	push_call("vt100prompt(%p)",ch);
 
 	if (is_desc_valid(ch))
 	{
-		if (IS_SET(CH(ch->desc)->pcdata->vt100_flags, VT100_INTERFACE))
+		if (HAS_BIT(CH(ch->desc)->pcdata->vt100_flags, VT100_INTERFACE))
 		{
 			if (CH(ch->desc)->pcdata->tactical == NULL)
 			{
@@ -2258,7 +2329,7 @@ void vt100prompter (CHAR_DATA * ch)
 		return;
 	}
 
-	if (IS_SET(CH(d)->pcdata->vt100_flags, VT100_REFRESH))
+	if (HAS_BIT(CH(d)->pcdata->vt100_flags, VT100_REFRESH))
 	{
 		do_refresh(ch, "");
 		pop_call();
@@ -2290,8 +2361,8 @@ void vt100prompter (CHAR_DATA * ch)
 
 void process_naws( DESCRIPTOR_DATA *d, int width, int height )
 {
+	push_call("process_naws(%p,%d,%d)",d, width, height);
 
-    log_string(log_buf);
 	if (CH(d) == NULL)
 	{
 		pop_call();
@@ -2301,7 +2372,6 @@ void process_naws( DESCRIPTOR_DATA *d, int width, int height )
 	if (height)
 	{
 		height = URANGE(15, height, 99);
-	push_call("process_naws(%p,%d,%d)",d, width, height);
 
 		if (height != CH(d)->pcdata->screensize_v)
 		{
@@ -2314,7 +2384,7 @@ void process_naws( DESCRIPTOR_DATA *d, int width, int height )
 				CH(d)->pcdata->tactical_size_v = height;
 			}
 
-			if (d->connected >= CON_PLAYING && IS_SET(CH(d)->pcdata->vt100_flags, VT100_INTERFACE))
+			if (d->connected >= CON_PLAYING && HAS_BIT(CH(d)->pcdata->vt100_flags, VT100_INTERFACE))
 			{
 				SET_BIT(CH(d)->pcdata->vt100_flags, VT100_REFRESH);
 				SET_BIT(CH(d)->pcdata->interp, INTERP_TACT_UPDATE);
@@ -2330,7 +2400,7 @@ void process_naws( DESCRIPTOR_DATA *d, int width, int height )
 		{
 			CH(d)->pcdata->screensize_h = width;
 
-			if (d->connected >= CON_PLAYING && IS_SET(CH(d)->pcdata->vt100_flags, VT100_INTERFACE))
+			if (d->connected >= CON_PLAYING && HAS_BIT(CH(d)->pcdata->vt100_flags, VT100_INTERFACE))
 			{
 				SET_BIT(CH(d)->pcdata->vt100_flags, VT100_REFRESH);
 				SET_BIT(CH(d)->pcdata->interp, INTERP_TACT_UPDATE);

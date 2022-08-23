@@ -318,6 +318,7 @@ const struct cmd_type cmd_table [] =
         { "quest",              do_quest,          POS_SLEEPING,    0,  LOG_NORMAL },
         { "rage",               do_rage,           POS_STANDING,    0,  LOG_NORMAL },
         { "recall",             do_recall,         POS_FIGHTING,    0,  LOG_NORMAL },
+        { "refresh",            do_refresh,        POS_DEAD,        0,  LOG_NORMAL },
         { "repair",             do_repair,         POS_STANDING,    0,  LOG_NORMAL },
         { "/",                  do_recall,         POS_FIGHTING,    0,  LOG_NORMAL },
         { "save",               do_save,           POS_DEAD,        0,  LOG_NORMAL },
@@ -3591,6 +3592,7 @@ bool wiz_do (CHAR_DATA *ch, char *command)
 
         return FALSE;
 }
+
 
 
 /* EOF interp.c */

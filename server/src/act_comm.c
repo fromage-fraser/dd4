@@ -2172,6 +2172,103 @@ void do_suicide (CHAR_DATA *ch, char *argument)
         do_look(ch, "");
 }
 
+/*
+	Returns justified buffer for ansi translated text - Scandum 13-05-2002
+*/
+
+char *ansi_justify (char *inp, int length)
+{
+	static char justified_buf[MAX_STRING_LENGTH];
+	char *pti, *pto, *last_i_space, *last_o_space;
+	int cnt, skp;
+
+	push_call("ansi_justify(%p)",inp);
+
+	last_o_space = pto = (char *) justified_buf;
+	last_i_space = pti = inp;
+
+	length = 80;
+
+	cnt = skp = 0;
+
+	while (TRUE)
+	{
+		*pto = *pti;
+		switch (*pto)
+		{
+			case '\0':
+				pop_call();
+				return ((char *) justified_buf);
+				break;
+			case ' ':
+				last_o_space = pto;
+				last_i_space = pti;
+				break;
+			case '\n':
+			case '\r':
+				cnt = 0;
+				skp = 0;
+				pto++;
+				pti++;
+				continue;
+				break;
+			case '{':
+				if (*(pti+1) >= '0'	&& *(pti+1) <= '8'
+				&&  *(pti+2) >= '0' && *(pti+2) <= '8'
+				&&  *(pti+3) >= '0' && *(pti+3) <= '8'
+				&&  *(pti+4) == '}')
+				{
+					pto++; pti++; *pto = *pti;
+					pto++; pti++; *pto = *pti;
+					pto++; pti++; *pto = *pti;
+					pto++; pti++; *pto = *pti;
+					pto++;
+					pti++;
+					skp += 5;
+					continue;
+				}
+				break;
+		}
+		pto++;
+		pti++;
+		cnt++;
+		if (cnt >= length)
+		{
+			if (*pti == '\n' || *pti == '\0')
+			{
+				continue;
+			}
+			if (*pti == ' ')
+			{
+				last_o_space = pto;
+				last_i_space = pti;
+			}
+			if (pto - last_o_space > 20 + skp)
+			{
+				*pto = '\n';
+				pto++;
+				*pto = '\r';
+				pto++;
+				cnt  = 0;
+				skp  = 0;
+			}
+			else
+			{
+				pto  = last_o_space;
+				*pto = '\n';
+				pto++;
+				*pto = '\r';
+				pto++;
+				pti  = last_i_space;
+				pti++;
+				cnt  = 0;
+				skp  = 0;
+			}
+		}
+	}
+	pop_call();
+	return ((char *)justified_buf);
+}
 
 
 /* EOF act_comm.c */

@@ -18,7 +18,7 @@
  *  around, comes around.                                                  *
  ***************************************************************************/
 #pragma once
-/* #include <math.h> */
+/* #include <math.h>   */
 #include <stdint.h>
 #include <unistd.h> 
 #include <zlib.h>
@@ -190,9 +190,10 @@ typedef short int sh_int;
 #define BIT_MAX 0x8000000000000000    /*  9223372036854775808  */
 
 /*
- * Structure types.
+ * Structure types. 
  */
 typedef struct mud_data                         MUD_DATA;
+typedef struct pvnum_data                       PVNUM_DATA;
 typedef struct usage_data                       USAGE_DATA;
 typedef struct tactical_map                     TACTICAL_MAP;
 typedef struct player_game                      PLAYER_GAME;
@@ -403,6 +404,8 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
 #define MAX_VAMPIRE_GAG             27      /* 26 + 1 for 'swallow' | ugly vampire/werewolf hack */
 #define MAX_SCROLL_BUF              1000
+#define MAX_PVNUM                         12000
+
 
 /*
  * Channel recall, 'review' command; Gezhp 2001
@@ -786,6 +789,14 @@ struct ban_data
         char *          name;
 };
 
+struct pvnum_data
+{
+	char               * name;
+	int               	date;
+	int               	flags;
+	CHAR_DATA          * ch;
+};
+
 /* mud data - for mud protocol */
 struct mud_data
 {
@@ -871,7 +882,10 @@ struct mud_data
 	bool                  sunlight;
 	char                * last_player_cmd;
 */
-	TACTICAL_MAP        * tactical;
+	CHAR_DATA           * f_char;
+	CHAR_DATA           * l_char;
+        PLAYER_GAME         * l_player;
+        TACTICAL_MAP        * tactical;
         int                   flags;
         PLAYER_GAME         * f_player;
         TIME_INFO_DATA      * time_info;
@@ -1111,7 +1125,8 @@ struct descriptor_data
 #define IS_HUGE( ch )              ( ch->body_form & BODY_HUGE )
 #define IS_INORGANIC( ch )         ( ch->body_form & BODY_INORGANIC )
 #define HAS_TAIL( ch )             ( ch->body_form & BODY_HAS_TAIL )
-
+#define MP_VALID_MOB(ch)           ((ch)->desc == NULL && IS_NPC(ch) && !IS_AFFECTED(ch, AFF_CHARM) )
+#define IS_GOD(ch)                      (!IS_NPC((ch)) && (ch)->pcdata->pvnum < 100)
 
 /*
  * Attribute bonus structures.
@@ -1680,7 +1695,7 @@ struct clan_member_data
 #define DEITY_PFLAG_LEFT_NEUTRAL                BIT_5
 #define DEITY_PFLAG_LEFT_EVIL                   BIT_6
 #define DEITY_PFLAG_RELEASE_ATTEMPT             BIT_7
-#define DEITY_PFLAG_GRANT_ACCESS                BIT_8   /* temporary for testing */
+#define DEITY_PFLAG_GRANT_ACCESS                BIT_8   /* temporary for testing  */
 
 #define DEITY_DEFAULT_PLAYER_TIMER              360
 #define DEITY_PRAYER_TIME_PENALTY               480
@@ -2870,6 +2885,8 @@ struct  mob_index_data
         SHOP_DATA *             pShop;
         MPROG_DATA *            mobprogs;
         LEARNED_DATA *          skills;         /* used by practisers only */
+        CHAR_DATA			*	first_instance;
+	CHAR_DATA			*	last_instance;
 
         char *                  player_name;
         char *                  short_descr;
@@ -2895,7 +2912,10 @@ struct  mob_index_data
 struct char_data
 {
         CHAR_DATA *                     next;
+        CHAR_DATA                       * prev;
         CHAR_DATA *                     next_in_room;
+        CHAR_DATA *           next_instance;
+	CHAR_DATA *           prev_instance;
         CHAR_DATA *                     master;
         CHAR_DATA *                     inside;
         CHAR_DATA *                     leader;
@@ -3048,7 +3068,7 @@ struct  pc_data
         char                * scroll_buf[MAX_SCROLL_BUF];  /* GCMP */
         char                * last_command; /* GCMP */
         int                   color[COLOR_MAX]; /* GCMP */
-        TACTICAL_MAP        * tactical;          /* The recorded tactical map for comparison */
+        TACTICAL_MAP        * tactical;          /* The recorded  tactical map for comparison */
         int                   pvnum; /* GCMP */
 	int                   speak;
         int                   last_connect;
@@ -3056,6 +3076,8 @@ struct  pc_data
 	int                   exp;
 	char                * back_buf[26];	/* Change to pointer to string mode */
         char                * host;
+	char                * subprompt;	/* subprompt for OLC*/
+        char                * prompt_layout;	/* For reconfiguration */
         int                   clock; /* END GCMP */
         int             perm_str;
         int             perm_int;
@@ -4055,6 +4077,12 @@ extern int gsn_prayer_plague;
 #define SET_BIT( var, bit )             ( ( var )  |=  ( bit ) )
 #define REMOVE_BIT( var, bit )          ( ( var )  &= ~( bit ) )
 #define MOD(a)                          ( a < 0 ? (a * -1) : (a) )
+#define SHIFT(bit)              ((1)    << (bit))
+#define UNSHIFT(bit)            ((ffs(bit) - 1))
+
+#define DEL_BIT(var, bit)       ((var) &= (~(bit)))
+#define TOG_BIT(var, bit)       ((var) ^= (bit))
+#define TOGGLE_BIT(var, bit)	((var)  ^= (bit))
 
 #define replace_string( pstr, nstr ){ free_string( (pstr) ); pstr=str_dup( (nstr) ); }
 
@@ -4191,6 +4219,7 @@ extern struct           vampire_gag             vampire_gag_table               
  */
 /*CGMP */
 MUD_DATA			* mud;
+PVNUM_DATA		* pvnum_index[MAX_PVNUM];
 
 /* en */
 extern HELP_DATA                * help_first;
@@ -4507,6 +4536,7 @@ DECLARE_DO_FUN( do_rename                       );      /* New hero wiz-command 
 DECLARE_DO_FUN( do_rent                         );
 DECLARE_DO_FUN( do_reply                        );
 DECLARE_DO_FUN( do_report                       );
+DECLARE_DO_FUN( do_refresh                      );
 DECLARE_DO_FUN( do_rescue                       );
 DECLARE_DO_FUN( do_reset                        );
 DECLARE_DO_FUN( do_rest                         );
@@ -4871,7 +4901,11 @@ char * crypt args( ( const char *key, const char *salt ) );
 #define GF      GAME_FUN
 #define TM  TACTICAL_MAP
 
+
+
 bool is_desc_valid(CHAR_DATA *);
+void reset_color(CHAR_DATA *);
+
 
 /*
 	 vt100.c
@@ -4903,6 +4937,7 @@ void talk_auction                       args( ( char *argument ) );
 void do_quit                            args( ( CHAR_DATA *ch, char *argument ) );
 bool is_group_members_mount                   ( CHAR_DATA *mount, CHAR_DATA *ch );
 void server_message                           ( const char *text );
+char      * ansi_justify         args((char *inp, int length));
 
 /*
  * Colour stuff by Lope of Loping Through The MUD
@@ -4924,13 +4959,13 @@ void  print_who_data                          ( CHAR_DATA *ch, char *buf );
 void  print_smithy_data                       ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf );
 int   get_colour_index_by_code                ( int ccode );
 char            * get_color_string     args((CHAR_DATA *ch, int regist, int vt_code));
-char            * get_color_code          args((CHAR_DATA *ch, int regist, int vt_code));
+char              * get_color_code          args((CHAR_DATA *ch, int regist, int vt_code));
 CHAR_DATA *lookup_char(char *);
 
 /* act_move.c */
 void move_char                          args( ( CHAR_DATA *ch, int door ) );
 int  find_door                          args( ( CHAR_DATA *ch, char *arg ) );
-/* ED * get_exit                           args( ( ROOM_INDEX_DATA *room, int dir ) ); */
+/* ED * get_exit                           args( ( ROOM_INDEX_DATA *room, int dir ) );  */
 ED        * get_exit                       args((int vnum, bool door));
 
 /* act_obj.c */
@@ -4989,6 +5024,8 @@ int         cat_sprintf            args((char *dest, const char *fmt, ...));
 void force_help(DESCRIPTOR_DATA *, char *);
 void        ch_printf_color        args((CHAR_DATA *ch, const char *fmt, ...));
 void        send_to_char_color     args((char *txt, CHAR_DATA *ch));
+void        display_empty_screen args((DESCRIPTOR_DATA *d));
+void        sub_player             args((CHAR_DATA *ch));
 /* end GMCP */
 
 /* db.c */
@@ -5043,6 +5080,7 @@ long long   display_timer          args((CHAR_DATA *ch, int timer));
 char      * get_time_string        args((time_t time));
 int         str_apd_max            args((const char *, const char *, int, int));
 int         str_cpy_max            args((const char *, const char *, int));
+void        remove_bad_desc_name   args((char *name));
 
 /* fight.c */
 void    violence_update                 args( ( void ) );
@@ -5175,6 +5213,10 @@ int     get_pager_breakpt           args((CHAR_DATA *ch));
 bool        can_use_exit                   args((CD *ch, EXIT_DATA *exit));
 bool        can_see_in_room                args((CHAR_DATA *ch, ROOM_INDEX_DATA *room));
 ED        * get_exit                       args((int vnum, bool door));
+int         get_page_width              args((CHAR_DATA *ch));
+char      * get_name                    args((CHAR_DATA *ch));
+CD        * get_char_pvnum              args((int pvnum));
+
 
 /* hunt.c   */
 void hunt_victim                        args( ( CHAR_DATA *ch ) );
@@ -5187,6 +5229,7 @@ char * one_argument                     args( ( char *argument, char *arg_first 
 char * first_arg                              ( char *argument, char *arg_first, bool fCase );
 bool   IS_SWITCHED                      args( ( CHAR_DATA *ch ) );
 bool   wiz_do                           args( ( CHAR_DATA *ch, char *command ) );
+long long get_game_usec(void);
 
 /* magic.c */
 int  skill_lookup                       args( ( const char *name ) );
@@ -5267,6 +5310,8 @@ void auction_update                    args( ( void ) );
 void form_equipment_update                   ( CHAR_DATA *ch );
 int  check_stat_advance                      ( CHAR_DATA *ch, int stat );
 bool check_questpoints_allow_level_gain      ( CHAR_DATA *ch, bool verbose );
+
+/*int         exp_level                args((int class, int level));*/
 
 /* trap.c */
 bool checkmovetrap                     args( ( CHAR_DATA *ch, int dir) );

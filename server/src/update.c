@@ -341,8 +341,101 @@ void advance_level( CHAR_DATA *ch )
         for (i = 0; i < DEITY_NUMBER_PERSONALITIES; i++)
                 SET_DEITY_PERSONALITY_TIMER(ch, i, UMIN(-120, 0 - (ch->pcdata->deity_personality_timer[i] / 2)));
 }
+/*
+int exp_level(int class, int level)
+{
+	int num, cnt;
+	float low, mid, top;
 
+	push_call("exp_level(%p,%p)",class,level);
 
+	switch (class)
+	{
+		case CLASS_RANGER:
+			low = 1700;
+			mid =  574;
+			top =   16;
+			break;
+
+		case CLASS_GLADIATOR:
+			low = 1750;
+			mid =  680;
+			top =   17;
+			break;
+
+		case CLASS_MARAUDER:
+			low = 1500;
+			mid =  430;
+			top =   15;
+			break;
+
+		case CLASS_NINJA:
+			low = 1650;
+			mid =  574;
+			top =   17;
+			break;
+
+		case CLASS_ELEMENTALIST:
+			low = 1600;
+			mid =  501;
+			top =   16;
+			break;
+
+		case CLASS_ILLUSIONIST:
+			low = 1650;
+			mid =  610;
+			top =   17;
+			break;
+
+		case CLASS_MONK:
+			low = 1550;
+			mid =  501;
+			top =   15;
+			break;
+
+		case CLASS_NECROMANCER:
+			low = 1700;
+			mid =  644;
+			top =   17;
+			break;
+
+		case CLASS_MONSTER:
+			low =  75.00;
+			mid = 100.00;
+			top = URANGE(1, level, 100);
+			break;
+
+		default:
+			pop_call();
+			return (0);
+	}
+
+	if (class != CLASS_MONSTER)
+	{
+		num = level * low;
+
+		for (cnt = 0 ; cnt < level ; cnt++)
+		{
+			num += cnt * cnt * mid;
+
+			num += cnt * cnt * cnt * top;
+		}
+	}
+	else
+	{
+		num = low;
+
+		for (cnt = 0 ; cnt < level ; cnt++)
+		{
+			num += top * mid / 2;
+
+			num += top * top / 4;
+		}
+	}
+	pop_call();
+	return num;
+}
+*/
 void gain_exp( CHAR_DATA *ch, int gain )
 {
         char buf [ MAX_STRING_LENGTH ];

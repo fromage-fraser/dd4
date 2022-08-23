@@ -26,6 +26,7 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
+#include <strings.h>
 #include <time.h>
 #include <math.h>
 #include "merc.h"
@@ -115,7 +116,7 @@ bool can_use_exit( CHAR_DATA *ch, EXIT_DATA *exit )
 
 bool can_see_in_room( CHAR_DATA *ch, ROOM_INDEX_DATA *room)
 {
-	int vision, light;
+	/* int vision, light; */
 
 	push_call("can_see_in_room(%p,%p)",ch,room);
 
@@ -1677,6 +1678,16 @@ void extract_char( CHAR_DATA *ch, bool fPull )
         OBJ_DATA  *obj_next;
         extern bool delete_char;
 
+  	push_call("extract_char(%p)",ch);
+
+	if (ch == NULL || ch->name == NULL)
+	{
+		log_printf("found nullified data in extract_char.");
+		dump_stack();
+		pop_call();
+		return;
+	}
+        
         if ( !ch->in_room )
         {
                 bug( "Extract_char: NULL.", 0 );
@@ -1749,6 +1760,29 @@ void extract_char( CHAR_DATA *ch, bool fPull )
                 if ( wch->reply == ch )
                         wch->reply = NULL;
         }
+
+	if ((ch->prev == NULL && ch != mud->f_char)
+	||  (ch->next == NULL && ch != mud->l_char))
+	{
+		if (IS_NPC(ch))
+		{
+			log_printf( "UNLINK ERROR character %s not found in char_list.", ch->name);
+			dump_stack();
+		}
+	}
+	else
+	{
+		UNLINK(ch, mud->f_char, mud->l_char, next, prev);
+	}
+
+	if (!IS_NPC(ch))
+	{
+		sub_player(ch);
+	}
+	else
+	{
+		UNLINK(ch, ch->pIndexData->first_instance, ch->pIndexData->last_instance, next_instance, prev_instance);
+	}
 
         ch->deleted = TRUE;
 
@@ -3732,6 +3766,277 @@ int advatoi( const char *s )
 
     return number;
 }
+
+int get_page_width( CHAR_DATA *ch )
+{
+	push_call("get_page_width(%p)",ch);
+
+	if (ch->desc)
+	{
+		pop_call();
+		return (CH(ch->desc)->pcdata->screensize_h);
+	}
+	pop_call();
+	return 80;
+}
+
+char *get_name( CHAR_DATA *ch )
+{
+	static char get_name_buffer[2][MAX_INPUT_LENGTH];
+	static int cnt;
+
+	push_call("get_name(%p)",ch);
+
+	cnt = (cnt + 1) % 2;
+
+	get_name_buffer[cnt][0] = '\0';
+
+	if (!IS_NPC(ch))
+	{
+		if (ch->level >= MAX_LEVEL)
+		{
+			if (IS_GOD(ch))
+			{
+				if (!strcasecmp(ch->name, "chaos"))
+				{
+					strcpy(get_name_buffer[cnt], "Lord ");
+				}
+				if (!strcasecmp(ch->name, "order"))
+				{
+					strcpy(get_name_buffer[cnt], "Lord ");
+				}
+
+				if (!strcasecmp(ch->name, "manwe"))
+				{
+					switch(number_range(1, 4))
+					{
+						case 1 : strcpy (get_name_buffer[cnt], "Lord of the Wind ");break;
+						case 2 : strcpy (get_name_buffer[cnt], "Cloud Chaser ");	break;
+						case 3 : strcpy (get_name_buffer[cnt], "Stormbringer ");	break;
+						case 4 : strcpy (get_name_buffer[cnt], "Lord of Birds ");	break;
+					}
+				}
+				if (!strcasecmp(ch->name, "demise"))
+				{
+					switch(number_range(1, 5))
+					{
+						case 1 : strcpy(get_name_buffer[cnt],"Fire Starter ");		break;
+						case 2 : strcpy(get_name_buffer[cnt],"Pyromaniac ");		break;
+						case 3 : strcpy(get_name_buffer[cnt],"Lord of Fire ");		break;
+						case 4 : strcpy(get_name_buffer[cnt],"Hot Hot ");			break;
+						case 5 : strcpy(get_name_buffer[cnt],"Fireproof ");		break;
+					}
+				}
+				if (!strcasecmp(ch->name, "hypnos"))
+				{
+					switch(number_range(1, 4))
+					{
+						case 1 : strcpy(get_name_buffer[cnt], "Mad Scientist ");	break;
+						case 2 : strcpy(get_name_buffer[cnt], "Sleepbringer ");	break;
+						case 3 : strcpy(get_name_buffer[cnt], "Sandman ");		break;
+						case 4 : strcpy(get_name_buffer[cnt], "Dream Stalker ");	break;
+					}
+				}
+				if (!strcasecmp(ch->name, "ulmo"))
+				{
+					switch(number_range(1, 2))
+					{
+						case 1 : strcpy(get_name_buffer[cnt], "Cold Bringer ");	break;
+						case 2 : strcpy(get_name_buffer[cnt], "Lord of the Seas ");	break;
+					}
+				}
+				if (!strcasecmp(ch->name, "gaia"))
+				{
+					switch(number_range(1, 3))
+					{
+						case 1 : strcpy(get_name_buffer[cnt], "Goddess of Earth ");	break;
+						case 2 : strcpy(get_name_buffer[cnt], "Green Lady ");		break;
+						case 3 : strcpy(get_name_buffer[cnt], "Mother Nature ");	break;
+					}
+				}
+			}
+			else
+			{
+				/* bug("Illegal GOD: %s (%d)", ch->name, ch->pcdata->pvnum); */
+				pop_call();
+				return(ch->name);
+			}
+		}
+		else if (ch->level > 97)
+		{
+			strcpy(get_name_buffer[cnt], "Archangel ");
+		}
+		else if (ch->level > 96)
+		{
+			strcpy(get_name_buffer[cnt], "Angel ");
+		}
+		else if (ch->level > 95)
+		{
+			strcpy(get_name_buffer[cnt], ch->sex == SEX_FEMALE ? "Dutchess " : "Duke ");
+		}
+	/*	else if (ch->level > 90)
+		{
+			strcpy(get_name_buffer[cnt], honorific_table[ch->pcdata->honorific + URANGE(0, ch->sex-1, 1) * 4]);
+		} */
+		else if (ch->level > 89)
+		{
+			strcpy(get_name_buffer[cnt], ch->sex == SEX_FEMALE ? "Lady " : "Sir " );
+		}
+		strcat(get_name_buffer[cnt], ch->name);
+
+		pop_call();
+		return( get_name_buffer[cnt] );
+	}
+
+	if (ch->short_descr)
+	{
+		strcpy( get_name_buffer[cnt], ch->short_descr );
+
+		pop_call();
+		return( get_name_buffer[cnt] );
+	}
+	else
+	{
+		log_printf("get_name: mob %d has NULL short_descr", ch->pIndexData->vnum);
+
+		pop_call();
+		return "(NULL)";
+	}
+}
+
+CHAR_DATA * get_char_pvnum(int pvnum)
+{
+	push_call("get_char_pvnum(%p)",pvnum);
+
+	if (pvnum < 0 || pvnum >= MAX_PVNUM)
+	{
+		pop_call();
+		return NULL;
+	}
+
+	if (pvnum_index[pvnum] == NULL)
+	{
+		pop_call();
+		return NULL;
+	}
+
+	pop_call();
+	return pvnum_index[pvnum]->ch;
+}
+
+
+/*
+void extract_char( CHAR_DATA *ch )
+{
+	PLAYER_GAME *gpl;
+
+	push_call("extract_char(%p)",ch);
+
+	if (ch == NULL || ch->name == NULL)
+	{
+		log_printf("found nullified data in extract_char.");
+		dump_stack();
+		pop_call();
+		return;
+	}
+
+	if (ch->desc && ch->desc->original)
+	{
+		do_return(ch, NULL);
+	}
+
+	die_follower(ch);
+
+	if (!IS_NPC(ch))
+	{
+		if (ch->pcdata->shadowing)
+		{
+			stop_shadow(ch);
+		}
+		if (ch->pcdata->shadowed_by)
+		{
+			stop_shadow(ch->pcdata->shadowed_by);
+		}
+		check_bad_desc(ch);
+	}
+	stop_fighting(ch, TRUE);
+
+	if (mud->update_rch == ch)
+	{
+		mud->update_rch = ch->next_in_room;
+	}
+
+	if (mud->update_wch == ch)
+	{
+		mud->update_wch = ch->next;
+	}
+
+	if (mud->update_ich == ch)
+	{
+		mud->update_ich = ch->next_instance;
+	}
+
+	if (ch->in_room)
+	{
+		char_from_room( ch );
+	}
+
+	if (IS_NPC(ch))
+	{
+		--ch->pIndexData->total_mobiles;
+		--mud->total_mob;
+
+		if (ch->reset != NULL && ch->reset->mob == ch)
+		{
+			ch->reset->mob = NULL;
+		}
+	}
+
+	if (!IS_NPC(ch) && is_desc_valid(ch))
+	{
+		for (gpl = mud->f_player ; gpl ; gpl = gpl->next)
+		{
+			if (is_desc_valid(gpl->ch) && gpl->ch->desc->snoop_by == ch->desc)
+			{
+				gpl->ch->desc->snoop_by = NULL;
+			}
+		}
+	}
+
+	if (!IS_NPC(ch) && ch->pcdata->corpse)
+	{
+		extract_obj(ch->pcdata->corpse);
+	}
+
+	if ((ch->prev == NULL && ch != mud->f_char)
+	||  (ch->next == NULL && ch != mud->l_char))
+	{
+		if (IS_NPC(ch))
+		{
+			log_printf( "UNLINK ERROR character %s not found in char_list.", ch->name);
+			dump_stack();
+		}
+	}
+	else
+	{
+		UNLINK(ch, mud->f_char, mud->l_char, next, prev);
+	}
+
+	if (!IS_NPC(ch))
+	{
+		sub_player(ch);
+	}
+	else
+	{
+		UNLINK(ch, ch->pIndexData->first_instance, ch->pIndexData->last_instance, next_instance, prev_instance);
+	}
+	
+	free_char( ch );
+
+	pop_call();
+	return;
+}
+*/
 
 /* EOF handler.c */
 

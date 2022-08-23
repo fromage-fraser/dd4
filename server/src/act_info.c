@@ -27,6 +27,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <strings.h>
 #include <time.h>
 #include "merc.h"
 
@@ -4879,6 +4880,30 @@ void do_allow_look(CHAR_DATA *ch, char *argument)
                 send_to_char("Players can now view your equipment.\n\r", ch);
                 ch->pcdata->allow_look = 1;
         }
+}
+
+char *get_color_code(CHAR_DATA *ch, int regist, int vt_code)
+{
+	static char buf[10];
+
+	push_call("get_color_code(%p,%p,%p)",ch,regist,vt_code);
+
+	if (ch->desc == NULL)
+	{
+		pop_call();
+		return "";
+	}
+
+	if (!HAS_BIT(CH(ch->desc)->pcdata->vt100_flags, VT100_ANSI) && !IS_SET(CH(ch->desc)->pcdata->vt100_flags, VT100_BOLD) && !IS_SET(CH(ch->desc)->pcdata->vt100_flags, VT100_REVERSE))
+	{
+		pop_call();
+		return "";
+	}
+
+	sprintf(buf, "{%d%d%d}", vt_code, CH(ch->desc)->pcdata->color[regist] % 10, CH(ch->desc)->pcdata->color[regist] / 10);
+
+	pop_call();
+	return( buf );
 }
 
 char *get_color_string( CHAR_DATA *ch, int regist , int vt_code )

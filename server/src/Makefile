@@ -6,7 +6,7 @@ LINK    =
 O_FLAGS = -O2 -m64
 C_FLAGS = $(O_FLAGS) -Wall  \
           -Wno-trigraphs -Wno-unused-result -Wno-overlength-strings -Wno-overflow \
-          $(DEBUG) $(PROF) $(NOCRYPT) -Dlinux -Dunix -D_SVID_SOURCE
+          $(DEBUG) $(PROF) $(NOCRYPT) -Dlinux -Dunix -D_SVID_SOURCE -std=c99
 L_FLAGS = $(LINK) $(DEBUG) $(PROF) -lcrypt -lm -lz
 
 O_FILES = act_comm.o act_info.o act_move.o act_obj.o act_wiz.o board.o comm.o color.o const.o \
