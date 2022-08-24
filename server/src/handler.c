@@ -3924,6 +3924,37 @@ CHAR_DATA * get_char_pvnum(int pvnum)
 	return pvnum_index[pvnum]->ch;
 }
 
+bool is_name_short( const char *str, char *namelist )
+{
+	char name[MAX_INPUT_LENGTH];
+
+	push_call("is_name_short(%p,%p)",str,namelist);
+
+	if (strlen(str) < 2)
+	{
+		pop_call();
+		return FALSE;
+	}
+
+	for ( ; ; )
+	{
+		namelist = one_argument_nolower(namelist, name);
+
+		if (*name == '\0')
+		{
+			pop_call();
+			return FALSE;
+		}
+
+		if (!str_prefix(str, name))
+		{
+			pop_call();
+			return TRUE;
+		}
+	}
+	pop_call();
+	return FALSE;
+}
 
 /*
 void extract_char( CHAR_DATA *ch )

@@ -793,6 +793,7 @@ void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
         }
 }
 
+/*
 
 void do_look( CHAR_DATA *ch, char *argument )
 {
@@ -805,11 +806,11 @@ void do_look( CHAR_DATA *ch, char *argument )
         char      *pdesc;
         int        door;
 
-        /* sprintf(buf2,"rand: %d %d %d %d %d %d %d %d %d %d\n------------------\n",
+        * sprintf(buf2,"rand: %d %d %d %d %d %d %d %d %d %d\n------------------\n",
         number_percent(), number_percent(), number_percent(), number_percent(),
         number_percent(), number_percent(), number_percent(), number_percent(),
         number_percent(), number_percent());
-        log_string(buf2); */
+        log_string(buf2); *
 
         if ( !IS_NPC( ch ) && !ch->desc )
                 return;
@@ -845,7 +846,7 @@ void do_look( CHAR_DATA *ch, char *argument )
 
         if ( arg1[0] == '\0' || !str_cmp( arg1, "auto" ) )
         {
-                /* 'look' or 'look auto' */
+                * 'look' or 'look auto' *
                 ansi_color( GREY, ch );
                 ansi_color( BOLD, ch );
 
@@ -867,7 +868,7 @@ void do_look( CHAR_DATA *ch, char *argument )
 
                 ansi_color( NTEXT, ch );
 
-                /* Insert "crafting room" messages here. --Owl 4/5/22 */
+                * Insert "crafting room" messages here. --Owl 4/5/22 *
                 if ( !IS_NPC(ch)
                 &&   can_craft( ch )
                 &&   IS_SET( ch->in_room->room_flags, ROOM_CRAFT ) )
@@ -894,7 +895,7 @@ void do_look( CHAR_DATA *ch, char *argument )
 
         if ( !str_prefix( arg1, "in" ) )
         {
-                /* 'look in' */
+                * 'look in' *
                 if ( arg2[0] == '\0' )
                 {
                         send_to_char( "Look in what?\n\r", ch );
@@ -1044,7 +1045,7 @@ void do_look( CHAR_DATA *ch, char *argument )
                 return;
         }
 
-        /* 'look direction' */
+        * 'look direction' *
         if ( !( pexit = ch->in_room->exit[door] ) )
         {
                 send_to_char( "Nothing special there.\n\r", ch );
@@ -1071,7 +1072,439 @@ void do_look( CHAR_DATA *ch, char *argument )
 
         return;
 }
+*/
 
+
+void do_look( CHAR_DATA *ch, char *argument )
+{
+	char buf  [MAX_STRING_LENGTH];
+	char arg1 [MAX_INPUT_LENGTH];
+	char arg2 [MAX_INPUT_LENGTH];
+	CHAR_DATA *victim;
+	OBJ_DATA *obj;
+        EXIT_DATA *pexit;
+	char *pdesc;
+	int door;
+        /*int cnt, trails; */
+
+	push_call("do_look(%p,%p)",ch,argument);
+
+	if (ch->desc == NULL)
+	{
+		pop_call();
+		return;
+	}
+
+	if (ch->position < POS_SLEEPING)
+	{
+		send_to_char( "You can't see anything but stars!\n\r", ch );
+		pop_call();
+		return;
+	}
+
+	if (ch->position == POS_SLEEPING)
+	{
+		send_to_char( "You can't see anything, you're sleeping!\n\r", ch );
+		pop_call();
+		return;
+	}
+
+	if (!check_blind(ch))
+	{
+		pop_call();
+		return;
+	}
+
+	argument = one_argument( argument, arg1 );
+	argument = one_argument( argument, arg2 );
+
+	if (arg1[0] == '\0' || !strcasecmp( arg1, "auto" ) )
+	{
+		buf[0] = '\0';
+
+		if (ch->level == 1 && ch->in_room->vnum == ROOM_VNUM_SCHOOL)
+		{
+			do_help(ch, "newchar");
+		}
+
+	/*	if (show_build_vnum(ch, ch->in_room->vnum))
+		{
+			cat_sprintf(buf, "%s(%d) ", get_color_string(ch, COLOR_PROMPT, VT102_DIM), ch->in_room->vnum);
+		}
+        */
+		cat_sprintf(buf, "%s%s\n\r", get_color_string(ch, COLOR_PROMPT,VT102_BOLD), ch->in_room->name );
+
+		send_to_char(buf, ch);
+
+		if (ch->desc && IS_SET(CH(ch->desc)->act, PLR_AUTOEXIT) /* && IS_SET(CH(ch->desc)->act, PLR_EXITPOS)*/)
+		{
+			do_exits( ch, "auto" );
+		}
+
+		if (arg1[0] == '\0' || (!IS_NPC(ch) && !IS_SET(ch->act, PLR_BRIEF)))
+		{
+			if (!can_see_in_room(ch, ch->in_room))
+			{
+				send_to_char( "It is pitch black ... \n\r", ch );
+			}
+		/*	else if (IS_SET(ch->in_room->room_flags, ROOM_DYNAMIC))
+			{
+				ch_printf_color(ch, "{300}%s", justify(get_dynamic_description(ch), 80));
+			} */
+			else
+			{
+				ch_printf_color(ch, "{300}%s", ch->in_room->description);
+			}
+		}
+
+		if (ch->desc && IS_SET(CH(ch->desc)->act, PLR_AUTOEXIT) /* && !IS_SET(CH(ch->desc)->act, PLR_EXITPOS)*/)
+		{
+			do_exits( ch, "auto" );
+		}
+
+	/*	if (IS_SET(ch->in_room->room_flags, ROOM_GLOBE))
+		{
+			send_to_char( "A cloud of impenetrable darkness enshrouds your surroundings.\n\r", ch);
+		}
+        */
+		/*if (can_see_in_room(ch, ch->in_room))
+		{
+			if (IS_SET(ch->in_room->room_flags, ROOM_SMOKE))
+			{
+				send_to_char( "A cloud of dark purple smoke partially obscures your vision.\n\r", ch);
+			}
+
+			if (IS_SET(ch->in_room->room_flags, ROOM_ICE))
+			{
+				send_to_char( "Sheets of ice covering every surface chill the air around you.\n\r", ch);
+			}
+
+			for (trails = cnt = 0 ; cnt < MAX_LAST_LEFT ; cnt++)
+			{
+				if (IS_SET(ch->in_room->last_left_bits[cnt], TRACK_BLOOD))
+				{
+					trails++;
+				}
+			}
+
+			if (trails && trails > 2)
+			{
+				ch_printf_color(ch, "{118}     Trails of blood lead in multiple directions.\n\r");
+			}
+			else if (trails)
+			{
+				for (cnt = 0 ; cnt < MAX_LAST_LEFT ; cnt++)
+				{
+					if (IS_SET(ch->in_room->last_left_bits[cnt], TRACK_BLOOD))
+					{
+						ch_printf_color(ch, "{118}     A trail of blood leads %s.\n\r", dir_name[UNSHIFT(ch->in_room->last_left_bits[cnt])]);
+					}
+				}
+			}
+		}*/
+
+                /*              * Insert "crafting room" messages here. --Owl 4/5/22 * */
+                if ( !IS_NPC(ch)
+                &&   can_craft( ch )
+                &&   IS_SET( ch->in_room->room_flags, ROOM_CRAFT ) )
+                {
+                        sprintf(buf, "{CYou see tools and a workspace here for superior crafting.{x\n\r");
+                        send_to_char(buf, ch);
+                }
+
+                if ( !IS_NPC(ch)
+                &&   can_spellcraft( ch )
+                &&   IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ) )
+                {
+                        sprintf(buf, "{MYou have everything you need here to do magical crafting.{x\n\r");
+                        send_to_char(buf, ch);
+                }
+
+		/* show_list_to_char( ch->in_room->first_content, ch, 1, FALSE );
+		show_char_to_char( ch->in_room->first_person,   ch ); */
+                show_list_to_char( ch->in_room->contents, ch, FALSE, FALSE );
+                show_char_to_char( ch->in_room->people,   ch );
+
+		pop_call();
+		return;
+	}
+
+	if (!strcasecmp(arg1, "i") || !strcasecmp(arg1, "in"))
+	{
+		if (arg2[0] == '\0')
+		{
+			send_to_char( "Look in what?\n\r", ch );
+			pop_call();
+			return;
+		}
+
+		if ((obj = get_obj_here(ch, arg2)) == NULL)
+		{
+			send_to_char( "You do not see that here.\n\r", ch );
+			pop_call();
+			return;
+		}
+
+		switch (obj->item_type)
+		{
+			default:
+				send_to_char( "That is not a container.\n\r", ch );
+				break;
+
+			case ITEM_DRINK_CON:
+				if (obj->value[1] <= 0)
+				{
+					send_to_char( "It is empty.\n\r", ch );
+					break;
+				}
+				sprintf(buf, "It's %s half full of a %s liquid.\n\r",
+					obj->value[1] <     obj->value[0] / 4 ? "less than" :
+					obj->value[1] < 3 * obj->value[0] / 4 ? "about"     : "more than",
+					liq_table[obj->value[2]].liq_color	);
+				send_to_char( buf, ch );
+				break;
+
+			case ITEM_CONTAINER:
+			case ITEM_CORPSE_NPC:
+			case ITEM_CORPSE_PC:
+				if (IS_SET(obj->value[1], CONT_CLOSED))
+				{
+					send_to_char( "It is closed.\n\r", ch );
+					break;
+				}
+				act( "$p contains:", ch, obj, NULL, TO_CHAR );
+				show_list_to_char( obj->contains, ch, 0, TRUE );
+				break;
+		}
+		pop_call();
+		return;
+	}
+
+	if ((victim = get_char_room(ch, arg1)) != NULL)
+	{
+		show_char_to_char_1( victim, ch );
+		if (can_see(victim, ch))
+		{
+			act( "$n looks at you.", ch, NULL, victim, TO_VICT    );
+			act( "$n looks at $N.",  ch, NULL, victim, TO_NOTVICT );
+		}
+		pop_call();
+		return;
+	}
+
+        for ( obj = ch->carrying; obj; obj = obj->next_content )
+        {
+                if ( can_see_obj( ch, obj ) )
+                {
+                        char    buf1 [ MAX_STRING_LENGTH ];
+                        pdesc = get_extra_descr( arg1, obj->extra_descr );
+                        if ( pdesc )
+                        {
+                                ch_printf_color(ch, "{300}%s", pdesc);
+				pop_call();
+                                if ( (ch->class == CLASS_SMITHY) && (obj->item_type == ITEM_WEAPON || obj->item_type == ITEM_ARMOR) )
+                                {
+                                        print_smithy_data( ch, obj, buf1);
+                                        ch_printf_color(ch, "{300}%s", buf1);
+				        pop_call();
+                                        return;
+                                }
+                        }
+
+                        pdesc = get_extra_descr( arg1, obj->pIndexData->extra_descr );
+                        if ( pdesc )
+                        {
+                                ch_printf_color(ch, "{300}%s", pdesc);
+				pop_call();
+                                if ( (ch->class == CLASS_SMITHY) && (obj->item_type == ITEM_WEAPON || obj->item_type == ITEM_ARMOR) )
+                                {
+                                        print_smithy_data( ch, obj, buf1);
+                                        ch_printf_color(ch, "{300}%s", buf1);
+				        pop_call();
+                                        return;
+                                }
+                        }
+                }
+
+                if ( is_name( arg1, obj->name ) )
+                {
+                        char    buf1 [ MAX_STRING_LENGTH ];
+                        send_to_char( obj->description, ch );
+                        send_to_char( "\n\r", ch );
+                        
+                        if ( (ch->class == CLASS_SMITHY) && 
+                                (obj->item_type == ITEM_WEAPON || obj->item_type == ITEM_ARMOR) )
+                        {
+                                print_smithy_data( ch, obj, buf1);
+                                ch_printf_color(ch, "{300}%s", buf1);
+			        pop_call();
+                        }
+                        return;
+                }
+        }
+
+        /* commented out better code :) */
+	/* for (obj = ch->first_carrying ; obj ; obj = obj->next_content)
+	{
+		if (can_see_obj(ch, obj))
+		{
+			if ((pdesc = get_extra_descr(arg1, obj->pIndexData->first_extradesc)) != NULL)
+			{
+				ch_printf_color(ch, "{300}%s", pdesc);
+				pop_call();
+				return;
+			}
+		}
+	}
+
+	for (obj = ch->in_room->first_content ; obj ; obj = obj->next_content)
+	{
+		if (can_see_obj(ch, obj))
+		{
+			if ((pdesc = get_extra_descr(arg1, obj->pIndexData->first_extradesc)) != NULL)
+			{
+				ch_printf_color(ch, "{300}%s", pdesc);
+				pop_call();
+				return;
+			}
+		}
+	} */
+
+/* 	for (victim = ch->in_room->first_person ; victim ; victim = victim->next_in_room)
+	{
+		if (IS_NPC(victim) && can_see(ch, victim))
+		{
+			if ((pdesc = get_extra_descr(arg1, victim->pIndexData->first_extradesc)) != NULL)
+			{
+				ch_printf_color(ch, "{300}%s", pdesc);
+				pop_call();
+				return;
+			}
+		}
+	} */
+
+
+        if ( ( victim = get_char_room( ch, arg1 ) ) )
+        {
+                show_char_to_char_1( victim, ch );
+                return;
+        }
+        /*
+        if ( ( victim = get_char_room( ch, arg1 ) ) )
+        {
+                
+                if (IS_NPC(victim) && can_see(ch, victim))
+		{
+			if ((pdesc = get_extra_descr(arg1, victim->pIndexData->description)) != NULL)
+			{
+				ch_printf_color(ch, "{300}%s", pdesc);
+				pop_call();
+				return;
+			}
+		}
+             show_char_to_char_1( victim, ch );
+                return; 
+        }*/
+
+	pdesc = get_extra_descr( arg1, ch->in_room->extra_descr );
+        if ( pdesc )
+        {
+                ch_printf_color(ch, "{300}%s", pdesc);
+		pop_call();
+		return;
+        }
+        
+        /*if (pdsec = get_extra_descr( arg1, ch->in_room->extra_descr ));
+	{
+		ch_printf_color(ch, "{300}%s", pdesc);
+		pop_call();
+		return;
+	}*/
+
+	if ((obj = get_obj_here(ch, arg1)) != NULL)
+	{
+		if (obj->description[0] == '\0')
+		{
+			ch_printf(ch, "You see nothing special about %s.\n\r", obj->short_descr );
+		}
+		else
+		{
+			ch_printf_color(ch, "{300}%s", obj->description);
+		}
+		/* if (!IS_NPC(ch) && obj->poison && learned(ch, gsn_make_poison))
+		{
+			ch_printf(ch, "There is a %s %s poison on this object.\n\r",
+				obj->poison->instant_damage_high == 0 ? "blue" : obj->poison->constant_damage_high == 0 ? "purple" : "green",
+				obj->poison->for_npc ? "murky" : "clear");
+		} */
+		pop_call();
+		return;
+	}
+
+	if (!strcasecmp(arg1, "n") || !strcasecmp(arg1, "north"))
+	{
+		door = 0;
+	}
+	else if (!strcasecmp(arg1, "e") || !strcasecmp(arg1, "east"))
+	{
+		door = 1;
+	}
+	else if (!strcasecmp(arg1, "s") || !strcasecmp(arg1, "south"))
+	{
+		door = 2;
+	}
+	else if (!strcasecmp(arg1, "w") || !strcasecmp(arg1, "west"))
+	{
+		door = 3;
+	}
+	else if (!strcasecmp(arg1, "u") || !strcasecmp(arg1, "up"))
+	{
+		door = 4;
+	}
+	else if (!strcasecmp(arg1, "d") || !strcasecmp(arg1, "down"))
+	{
+		door = 5;
+	}
+	else
+	{
+		send_to_char( "You do not see that here.\n\r", ch);
+		pop_call();
+		return;
+	}
+
+	/*
+		look direction
+	*/
+        if ( !( pexit = ch->in_room->exit[door] ) )
+        {
+                send_to_char( "Nothing special there.\n\r", ch );
+                return;
+        }
+
+        if ( pexit->description && pexit->description[0] != '\0' )
+                send_to_char( pexit->description, ch );
+        else
+                send_to_char( "Nothing special there.\n\r", ch );
+
+        if (   pexit->keyword
+            && pexit->keyword[0] != '\0'
+            && pexit->keyword[0] != ' ' )
+        {
+                if ( IS_SET( pexit->exit_info, EX_BASHED ) )
+                        act( "The $d has been bashed from its hinges.",
+                            ch, NULL, pexit->keyword, TO_CHAR );
+                else if ( IS_SET( pexit->exit_info, EX_CLOSED ) )
+                        act( "The $d is closed.", ch, NULL, pexit->keyword, TO_CHAR );
+                else if ( IS_SET( pexit->exit_info, EX_ISDOOR ) )
+                        act( "The $d is open.",   ch, NULL, pexit->keyword, TO_CHAR );
+        }
+
+
+	/* show_char_dir(ch, door); */
+
+	pop_call();
+	return;
+}
 
 void do_examine (CHAR_DATA *ch, char *argument)
 {
@@ -1599,7 +2032,8 @@ void do_score (CHAR_DATA *ch, char *argument)
         if (ch->level == 99 && ch->pcdata->totalqp < 1000)
                 strcat(buf1, "\n\r{RYou need at least 1000 total quest points before you can reach level 100.{x\n\r");
 
-        send_to_char(buf1, ch);
+        ch_printf_color(ch, "{300}%s", buf1);
+      /*  send_to_char(buf1, ch); */
 }
 
 
@@ -1956,16 +2390,46 @@ void do_weather( CHAR_DATA *ch, char *argument )
         return;
 }
 
-
-void do_help( CHAR_DATA *ch, char *argument )
+HELP_DATA *get_help( CHAR_DATA *ch, char *argument )
 {
-        HELP_DATA *pHelp;
+	AREA_DATA *pArea;
+	HELP_DATA *pHelp;
         char buf [MAX_STRING_LENGTH];
 
-        if (argument[0] == '\0')
-                argument = "summary";
+	push_call("get_help(%p,%p)",ch,argument);
 
-        /* First, attempt to find an entry with the exact name */
+	/* for (pArea = mud->f_area ; pArea ; pArea = pArea->next)
+	{
+		for (pHelp = pArea->first_help ; pHelp ; pHelp = pHelp->next)
+		{
+			if (pHelp->level > ch->level)
+			{
+				continue;
+			}
+			if (is_name(argument, pHelp->keyword))
+			{
+				pop_call();
+				return pHelp;
+			}
+		}
+	}
+
+	for (pArea = mud->f_area ; pArea ; pArea = pArea->next)
+	{
+		for (pHelp = pArea->first_help ; pHelp ; pHelp = pHelp->next)
+		{
+			if (pHelp->level > ch->level)
+			{
+				continue;
+			}
+			if (is_name_short(argument, pHelp->keyword))
+			{
+				pop_call();
+				return pHelp;
+			}
+		}
+	} */
+
         for (pHelp = help_first; pHelp; pHelp = pHelp->next)
         {
                 if (pHelp->level > get_trust(ch))
@@ -1995,6 +2459,127 @@ void do_help( CHAR_DATA *ch, char *argument )
                 return;
         }
 
+
+
+	pop_call();
+	return NULL;
+}
+
+
+void do_help( CHAR_DATA *ch, char *argument )
+{
+	HELP_DATA *pHelp;
+        char buf [MAX_STRING_LENGTH];
+
+	push_call("do_help(%p,%p)",ch,argument);
+
+	if (IS_NPC(ch))
+	{
+		pop_call();
+		return;
+	}
+
+	/*if (argument[0] == '\0')
+	{
+		argument = "mainmenu";
+	}
+
+	if ((pHelp = get_help(ch, argument)) == NULL)
+	{
+		ch_printf(ch, "No help available for '%s'.\n\r", argument);
+		pop_call();
+		return;
+	}*/
+
+           /* First, attempt to find an entry with the exact name */
+        for (pHelp = help_first; pHelp; pHelp = pHelp->next)
+        {
+                if (pHelp->level > get_trust(ch))
+                        continue;
+
+                if (is_full_name(argument, pHelp->keyword))
+                        break;
+        }
+
+/* * Then attempt a partial match */
+        if (!pHelp)
+        {
+                for (pHelp = help_first; pHelp; pHelp = pHelp->next)
+                {
+                        if (pHelp->level > get_trust(ch))
+                                continue;
+
+                        if (is_name(argument, pHelp->keyword))
+                                break;
+                }
+        }
+
+        if (!pHelp)
+        {
+                sprintf(buf, "There is no help entry for '%s'.\n\r", argument);
+                send_to_char(buf, ch);
+                return;
+        }
+
+    /*    if (pHelp->level >= 0 && str_cmp(argument, "imotd"))
+        {
+                sprintf(buf, "{c[Help for: %s]{x\n\r\n\r",
+                        pHelp->keyword);
+                send_paragraph_to_char(buf, ch, 11);
+        }
+*/
+
+	ch->pcdata->prev_help = ch->pcdata->last_help;
+	ch->pcdata->last_help = pHelp;
+
+	SET_BIT(ch->pcdata->interp, INTERP_HELP);
+
+	ch_printf_color(ch, "{300}%s", pHelp->text);
+
+	pop_call();
+	return;
+}
+
+
+/*
+void do_help( CHAR_DATA *ch, char *argument )
+{
+        HELP_DATA *pHelp;
+        char buf [MAX_STRING_LENGTH];
+
+        if (argument[0] == '\0')
+                argument = "summary";
+
+        * First, attempt to find an entry with the exact name *
+        for (pHelp = help_first; pHelp; pHelp = pHelp->next)
+        {
+                if (pHelp->level > get_trust(ch))
+                        continue;
+
+                if (is_full_name(argument, pHelp->keyword))
+                        break;
+        }
+
+* Then attempt a partial match *
+        if (!pHelp)
+        {
+                for (pHelp = help_first; pHelp; pHelp = pHelp->next)
+                {
+                        if (pHelp->level > get_trust(ch))
+                                continue;
+
+                        if (is_name(argument, pHelp->keyword))
+                                break;
+                }
+        }
+
+        if (!pHelp)
+        {
+                sprintf(buf, "There is no help entry for '%s'.\n\r", argument);
+                send_to_char(buf, ch);
+                return;
+        }
+
         if (pHelp->level >= 0 && str_cmp(argument, "imotd"))
         {
                 sprintf(buf, "{c[Help for: %s]{x\n\r\n\r",
@@ -2002,13 +2587,13 @@ void do_help( CHAR_DATA *ch, char *argument )
                 send_paragraph_to_char(buf, ch, 11);
         }
 
-        /* Strip leading '.' to allow initial blanks */
+        * Strip leading '.' to allow initial blanks *
         if ( pHelp->text[0] == '.' )
                 send_to_char( pHelp->text+1, ch );
         else
                 send_to_char( pHelp->text  , ch );
 }
-
+*/
 
 /*
  *  Routines for printing 'who' information for individual characters

@@ -3593,6 +3593,50 @@ bool wiz_do (CHAR_DATA *ch, char *command)
         return FALSE;
 }
 
+char *one_argument_nolower( char *argument, char *arg_first )
+{
+	char cEnd;
 
+	push_call("one_argument(%p,%p)",argument,arg_first);
+
+	if (argument == NULL)
+	{
+		log_string("one_argument_nolower(), argument is NULL");
+		pop_call();
+		return NULL;
+	}
+
+	while ( *argument==' ' || *argument=='\n' || *argument=='\r' || *argument==27)
+	{
+    		argument++;
+	}
+	cEnd = ' ';
+	if ( *argument == '\'' || *argument == '"' )
+	{
+		cEnd = *argument++;
+	}
+
+	while ( *argument != '\0' && *argument != '\n' && *argument != '\r' )
+	{
+		if ( *argument == cEnd )
+		{
+			argument++;
+			break;
+		}
+
+		*arg_first = *argument;
+
+		arg_first++;
+		argument++;
+	}
+	*arg_first = '\0';
+
+	while ( *argument==' ' || *argument=='\n' || *argument=='\r' || *argument==27)
+	{
+		argument++;
+	}
+	pop_call();
+	return argument;
+}
 
 /* EOF interp.c */

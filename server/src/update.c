@@ -341,11 +341,11 @@ void advance_level( CHAR_DATA *ch )
         for (i = 0; i < DEITY_NUMBER_PERSONALITIES; i++)
                 SET_DEITY_PERSONALITY_TIMER(ch, i, UMIN(-120, 0 - (ch->pcdata->deity_personality_timer[i] / 2)));
 }
-/*
+
 int exp_level(int class, int level)
 {
-	int num, cnt;
-	float low, mid, top;
+	int num;
+/*	float low, mid, top;
 
 	push_call("exp_level(%p,%p)",class,level);
 
@@ -431,11 +431,13 @@ int exp_level(int class, int level)
 
 			num += top * top / 4;
 		}
-	}
+	} */
+
+        num =  (level_table[level].exp_total);
 	pop_call();
 	return num;
 }
-*/
+
 void gain_exp( CHAR_DATA *ch, int gain )
 {
         char buf [ MAX_STRING_LENGTH ];

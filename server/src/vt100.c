@@ -1050,11 +1050,11 @@ void do_tactical (CHAR_DATA * ch, char *arg)
 void clear_tactical_map (TACTICAL_MAP *tact)
 {
 
-/*
+
 	static const TACTICAL_MAP clear_tact;
 
- 	*tact = clear_tact; 
-
+	*tact = clear_tact;
+/*
 	tact->map		= &str_empty[0];
 	tact->color		= 0;
 */
@@ -1099,8 +1099,9 @@ void clear_tactical_map (TACTICAL_MAP *tact)
 
 
 	memset(&tact,   0, MAX_TACTICAL_ROW * MAX_TACTICAL_COL);
-/*	memset(tact->color, 0, MAX_TACTICAL_ROW * MAX_TACTICAL_COL);
+	memset(tact->color, 0, MAX_TACTICAL_ROW * MAX_TACTICAL_COL);
 */
+
 /*
 	memset(tact->map, 0, MAX_TACTICAL_ROW * MAX_TACTICAL_COL);
 	memset(tact->color, 0, MAX_TACTICAL_ROW * MAX_TACTICAL_COL);

@@ -236,10 +236,11 @@ void    assert_directory_exists args((const char *path));
 int main(int argc, char **argv)
 {
         struct timeval now_time;
-        int port; /*
+        int cntr;
+       /* int port; 
         int control;
         int wizPort = 0; */
-
+        push_call("main(%p,%p)",argc,argv);
         /*
          * Memory debugging if needed.
          */
@@ -250,9 +251,9 @@ int main(int argc, char **argv)
         ALLOCMEM(mud,				MUD_DATA,			1);
         ALLOCMEM(mud->usage,			USAGE_DATA,		1);
 	ALLOCMEM(mud->time_info,		TIME_INFO_DATA,	1);
-/*	ALLOCMEM(mud->tactical,		TACTICAL_MAP,		1);
-	ALLOCMEM(mud->last_player_cmd,	unsigned char, 	MAX_INPUT_LENGTH)
-*/
+	ALLOCMEM(mud->tactical,		TACTICAL_MAP,		1);
+	/* ALLOCMEM(mud->last_player_cmd,	unsigned char, 	MAX_INPUT_LENGTH) */
+
 	init_mth();
         str_empty				= STRALLOC("");
 
@@ -279,7 +280,12 @@ int main(int argc, char **argv)
         /*
          * Get the port number.
          */
-        port = 8888;
+        
+        if (mud->port == 8888)
+	{
+		SET_BIT(mud->flags, MUD_EMUD_REALGAME);
+	}
+
         if (argc > 1)
         {
                 if (!is_number(argv[1]))
@@ -287,7 +293,7 @@ int main(int argc, char **argv)
                         fprintf(stderr, "Usage: %s [port #]\n", argv[0]);
                         exit(1);
                 }
-                else if ((port = atoi(argv[1])) <= 1024)
+                else if ((mud->port = atoi(argv[1])) <= 1024)
                 {
                         fprintf(stderr, "Port number must be above 1024.\n");
                         exit(1);
@@ -306,7 +312,7 @@ int main(int argc, char **argv)
       /*  mudport = port; */
      /*   control = init_socket(mud->port); */
         boot_db();
-        sprintf(log_buf, "DD4 is ready to rock on port %d.", port);
+        sprintf(log_buf, "DD4 is ready to rock on port %d.", mud->port);
         log_string(log_buf);
        /* game_loop_unix(control, wizPort);
         close(control);
@@ -333,6 +339,10 @@ int main(int argc, char **argv)
         return 0;
 }
 
+/**
+ * REPLACED with LOLA code Lola  1.0 by Igor van den Hoven.   
+ * Deal with sockets that haven't logged in yet.    
+ */
 int init_socket(void)
 {
 	static struct sockaddr_in sa_zero;
@@ -454,83 +464,7 @@ int init_socket(void)
 	return fd;
 }
 
-/*
-int init_socket(int port)
-{
-        static struct sockaddr_in sa_zero;
-        struct sockaddr_in sa;
-        int x  = 1;
-        int fd;
 
-        last_command[0] = '\0';
-
-        if ((fd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
-        {
-                perror("Init_socket: socket");
-                exit(1);
-        }
-
-        if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR,
-                       (char *) &x, sizeof(x)) < 0)
-        {
-                perror("Init_socket: SO_REUSEADDR");
-                close(fd);
-                exit(1);
-        }
-
-#if defined(SO_DONTLINGER) && !defined(SYSV)
-        {
-                struct  linger  ld;
-
-                ld.l_onoff  = 1;
-                ld.l_linger = 1000;
-
-                if (setsockopt(fd, SOL_SOCKET, SO_DONTLINGER,
-                               (char *) &ld, sizeof(ld)) < 0)
-                {
-                        perror("Init_socket: SO_DONTLINGER");
-                        close(fd);
-                        exit(1);
-                }
-        }
-#endif
-
-        sa                  = sa_zero;
-        sa.sin_family       = AF_INET;
-        sa.sin_port         = htons(port);
-
-        if (bind(fd, (struct sockaddr *) &sa, sizeof(sa)) < 0)
-        {
-                perror("Init_socket: bind");
-                close(fd);
-                exit(1);
-        }
-
-        if (listen(fd, 3) < 0)
-        {
-                perror("Init_socket: listen");
-                close(fd);
-                exit(1);
-        }
-
-      
-        {
-                char buf[128];
-                char *when;
-
-                when = ctime(&current_time);
-                when[strlen(when)-1] = '\0';
-                sprintf(buf, "Log starts at %s", when);
-                log_string(buf);
-
-                sprintf(buf, "Init_socket on port %d (returning fd: %d).", port, fd);
-                log_string(buf);
-        }
-
-        return fd;
-}
-
-*/
 
 /*
  * Here comes the ident driver code.
@@ -757,7 +691,10 @@ void create_ident(DESCRIPTOR_DATA *d, long ip, sh_int port)
 #endif
 
 
-
+/**
+ * REPLACED with LOLA code Lola  1.0 by Igor van den Hoven.   
+ * Deal with sockets that haven't logged in yet.    
+ */
 void game_loop_unix(void)
 {
 	static struct timeval null_time;
@@ -1339,6 +1276,11 @@ void game_loop_unix(void)
 	pop_call();
 	return;
 }
+
+/**
+ * REPLACED with LOLA code Lola  1.0 by Igor van den Hoven.   
+ * Deal with sockets that haven't logged in yet.    
+ */
 void init_descriptor (DESCRIPTOR_DATA *dnew, int desc)
 {
 	dnew->descriptor			= desc;
@@ -1348,6 +1290,10 @@ void init_descriptor (DESCRIPTOR_DATA *dnew, int desc)
 	dnew->inlast				= STRDUPE(str_empty);
 }
 
+/**
+ * REPLACED with LOLA code Lola  1.0 by Igor van den Hoven.   
+ * Deal with sockets that haven't logged in yet.    
+ */
 void new_descriptor(void)
 {
 	DESCRIPTOR_DATA *dnew, *dtmp;
@@ -1484,19 +1430,21 @@ void new_descriptor(void)
 		Send the greeting.
 	*/
 	{
-                char buf[40];
                 extern char * help_greeting;
-		/* sprintf(buf, "greeting%d", number_range(1, 8)); */
-                sprintf(buf, "greeting"); 
-           /*     write_to_buffer(dnew, help_greeting  , 0); */
-		/* force_help(dnew, buf); */
-                write_to_buffer(dnew, help_greeting, 1000000);
+
+                if (help_greeting[0] == '.')
+                        write_to_buffer(dnew, help_greeting+1, 0);
+                else
+                        write_to_buffer(dnew, help_greeting  , 0);
 	}
 	pop_call();
 	return;
 }
 
-
+/**
+ * REPLACED with LOLA code Lola  1.0 by Igor van den Hoven.   
+ * Deal with sockets that haven't logged in yet.    
+ */
 void close_socket(DESCRIPTOR_DATA *dclose)
 {
 	CHAR_DATA *ch;
@@ -1554,7 +1502,9 @@ void close_socket(DESCRIPTOR_DATA *dclose)
 			dclose->descriptor,
 			dclose->connected); */
 
-		if (dclose->connected >= CON_PLAYING)
+		if ((dclose->connected == CON_PLAYING)
+                    || ((dclose->connected >= CON_NOTE_TO)
+                        && (dclose->connected <= CON_NOTE_FINISH)))
 		{
 			act("$n has lost $s link.", ch, NULL, NULL, TO_ROOM);
 			ch->desc = NULL;
@@ -1563,11 +1513,11 @@ void close_socket(DESCRIPTOR_DATA *dclose)
 		{
 			dclose->character = NULL;
 
-		/*	if (get_char_pvnum(ch->pcdata->pvnum) == NULL)
+			if (get_char_pvnum(ch->pcdata->pvnum) == NULL)
 			{
 				ch->desc = NULL;
-				extract_char(ch);
-			} */
+				extract_char(ch, TRUE);
+			} 
 		}
 	}
 
@@ -1605,78 +1555,11 @@ void close_socket(DESCRIPTOR_DATA *dclose)
 	return;
 }
 
-/*
 
-void close_socket (DESCRIPTOR_DATA *dclose)
-{
-        CHAR_DATA *ch;
-        DESCRIPTOR_DATA *d;
-
-        if (dclose->outtop > 0)
-                process_output(dclose, FALSE);
-
-        if (dclose->snoop_by)
-        {
-                write_to_buffer(dclose->snoop_by,
-                                "Your victim has left the game.\n\r", 0);
-        }
-
-        for (d = descriptor_list; d; d = d->next)
-        {
-                if (d->snoop_by == dclose)
-                        d->snoop_by = NULL;
-        }
-
-        if ((ch = dclose->character))
-        {
-                sprintf(log_buf, "Closing link to %s.", ch->name);
-                log_string(log_buf);
-
-                if ((dclose->connected == CON_PLAYING)
-                    || ((dclose->connected >= CON_NOTE_TO)
-                        && (dclose->connected <= CON_NOTE_FINISH)))
-                {
-                        act("$n has lost $s link.", ch, NULL, NULL, TO_ROOM);
-                        ch->desc = NULL;
-                }
-                else
-                {
-                        free_char(dclose->character);
-                }
-        }
-
-        if (d_next == dclose)
-                d_next = d_next->next;
-
-        if (dclose == descriptor_list)
-        {
-                descriptor_list = descriptor_list->next;
-        }
-        else
-        {
-                DESCRIPTOR_DATA *d;
-
-                for (d = descriptor_list; d && d->next != dclose; d = d->next)
-                        ;
-                if (d)
-                        d->next = dclose->next;
-                else
-                        bug("Close_socket: dclose not found.", 0);
-        }
-
-        close(dclose->descriptor);
-
-        free_string(dclose->host);
-
-         RT socket leak fix 
-        free_mem(dclose->outbuf, dclose->outsize);
-
-        dclose->next    = descriptor_free;
-        descriptor_free = dclose;
-        connection_count--;
-}
-*/
-
+/**
+ * REPLACED with LOLA code Lola  1.0 by Igor van den Hoven.   
+ * Deal with sockets that haven't logged in yet.    
+ */
 bool read_from_descriptor(DESCRIPTOR_DATA *d)
 {
 	CHAR_DATA *ch;
@@ -1765,77 +1648,11 @@ bool read_from_descriptor(DESCRIPTOR_DATA *d)
 	pop_call();
 	return TRUE;
 }
-/*
-bool read_from_descriptor (DESCRIPTOR_DATA *d)
-{
-        int iStart;
 
-        * Hold horses if pending command already. *
-        if (d->incomm[0] != '\0')
-                return TRUE;
-
-        * Check for overflow. *
-        iStart = strlen(d->inbuf);
-        if ( iStart >= sizeof(d->inbuf) - 10 )
-        {
-                sprintf(log_buf, "%s input overflow!", d->host);
-                log_string(log_buf);
-        *        write_to_descriptor(d->descriptor, "\n\r*** PUT A LID ON IT!!! ***\n\r", 0); removed GCMP *
-        	write_to_descriptor(d, "\n\r*** PUT A LID ON IT!!! ***\n\rYou have just overflowed your buffer.  You may get back on the game.\n\r", 0);
-		pop_call();
-                return FALSE;
-        }
-
-        * Snarf input. *
-#if defined(macintosh)
-        for (; ;)
-        {
-                int c;
-                c = getc(stdin);
-                if (c == '\0' || c == EOF)
-                        break;
-                putc(c, stdout);
-                if (c == '\r')
-                        putc('\n', stdout);
-                d->inbuf[iStart++] = c;
-                if (iStart > sizeof(d->inbuf) - 10)
-                        break;
-        }
-#endif
-
-#if defined(MSDOS) || defined(unix)
-        for (; ;)
-        {
-                int nRead;
-
-                nRead = read(d->descriptor, d->inbuf + iStart,
-                             sizeof(d->inbuf) - 10 - iStart);
-                if (nRead > 0)
-                {
-                        iStart += nRead;
-                        if (d->inbuf[iStart-1] == '\n' || d->inbuf[iStart-1] == '\r')
-                                break;
-                }
-                else if (nRead == 0)
-                {
-                        return FALSE;
-                }
-                else if (errno == EWOULDBLOCK || errno == EAGAIN)
-                        break;
-                else
-                        return FALSE;
-        }
-#endif
-
-        d->inbuf[iStart] = '\0';
-        return TRUE;
-}
-*/
-
-/*
-	Transfer one line from input buffer to input line.
-*/
-
+/**
+ * REPLACED with LOLA code Lola  1.0 by Igor van den Hoven.   
+ * Deal with sockets that haven't logged in yet.    
+ */
 void read_from_buffer(DESCRIPTOR_DATA *d)
 {
 	int i, k;
@@ -1995,109 +1812,6 @@ void read_from_buffer(DESCRIPTOR_DATA *d)
 }
 
 
-/*
- * Transfer one line from input buffer to input line.
- 
-void read_from_buffer (DESCRIPTOR_DATA *d)
-{
-        int i;
-        int j;
-        int k;
-
-        *
-         * Hold horses if pending command already.
-         *
-        if (d->incomm[0] != '\0')
-                return;
-
-        *
-         * Look for at least one new line.
-         *
-        for (i = 0; d->inbuf[i] != '\n' && d->inbuf[i] != '\r'; i++)
-        {
-                if (d->inbuf[i] == '\0')
-                        return;
-        }
-
-*
-         * Canonical input processing.
-         *
-        for (i = 0, k = 0; d->inbuf[i] != '\n' && d->inbuf[i] != '\r'; i++)
-        {
-                if (k >= MAX_INPUT_LENGTH - 2)
-                {
-                    *    write_to_descriptor(d->descriptor, "Line too long.\n\r", 0); remove d GCMP *
-
-                        write_to_descriptor(d, "Line too long.\n\r", 0);
-                        * skip the rest of the line *
-                        for (; d->inbuf[i] != '\0'; i++)
-                        {
-                                if (d->inbuf[i] == '\n' || d->inbuf[i] == '\r')
-                                        break;
-                        }
-                        d->inbuf[i]   = '\n';
-                        d->inbuf[i+1] = '\0';
-                        break;
-                }
-
-                if (d->inbuf[i] == '\b' && k > 0)
-                        --k;
-                else if (isascii(d->inbuf[i]) && isprint(d->inbuf[i]))
-                        d->incomm[k++] = d->inbuf[i];
-        }
-
-        *
-         * Finish off the line.
-         *
-        if (k == 0)
-                d->incomm[k++] = ' ';
-        d->incomm[k] = '\0';
-
-        *
-         * Deal with bozos with #repeat 1000 ...
-         *
-        if (k > 1 || d->incomm[0] == '!')
-        {
-                if (d->incomm[0] != '!' && strcmp(d->incomm, d->inlast))
-                {
-                        d->repeat = 0;
-                }
-                else
-                {
-                        if ( ( ++d->repeat >= 50 ) )
-                        {
-                                sprintf(log_buf, "%s input spamming!", d->host);
-                                log_string(log_buf);
-                         *       write_to_descriptor(d->descriptor,
-                                                    "\n\r*** PUT A LID ON IT!!! ***\n\r", 0); remove GCMP*
-                                write_to_descriptor(d,
-                                                    "\n\r*** PUT A LID ON IT!!! ***\n\r", 0);                    
-                                strcpy(d->incomm, "quit");
-                        }
-                }
-        }
-
-        *
-         * Do '!' substitution.
-         *
-        if (d->incomm[0] == '!')
-                strcpy(d->incomm, d->inlast);
-        else
-                strcpy(d->inlast, d->incomm);
-
-        
-         * Shift the input buffer.
-         *
-        while (d->inbuf[i] == '\n' || d->inbuf[i] == '\r')
-                i++;
-        for (j = 0; (d->inbuf[j] = d->inbuf[i+j]) != '\0'; j++)
-                ;
-
-        return;
-}
-*/
-
-
 void ch_printf_color(CHAR_DATA *ch, const char *fmt, ...)
 {
 	char buf[MAX_STRING_LENGTH];
@@ -2120,6 +1834,10 @@ void send_to_char_color(char *txt, CHAR_DATA *ch)
 	return;
 }
 
+/**
+ * REPLACED with LOLA code Lola  1.0 by Igor van den Hoven.   
+ * Deal with sockets that haven't logged in yet.    
+ */
 bool process_output(DESCRIPTOR_DATA *d, bool fPrompt)
 {
 	char buf[MAX_STRING_LENGTH];
@@ -2178,140 +1896,12 @@ bool process_output(DESCRIPTOR_DATA *d, bool fPrompt)
 }
 
 /*
- * Low level output function.
- */
-
-/*
-bool process_output (DESCRIPTOR_DATA *d, bool fPrompt)
-{
-        extern bool merc_down;
-
-        *
-         * Bust a prompt.
-         *
-        if (fPrompt && !merc_down && d->connected == CON_PLAYING)
-        {
-                if (d->showstr_point)
-                {
-                        write_to_buffer(d, "[Please type (c)ontinue, (r)efresh, (b)ack, (q)uit, or RETURN]:  ", 0);
-                }
-                else
-                {
-                        CHAR_DATA *ch;
-                        CHAR_DATA *victim;
-
-                        ch = d->original ? d->original : d->character;
-
-                        * battle prompt *
-                        if ((victim = ch->fighting) != NULL)
-                        {
-                                int percent;
-                                char wound[100];
-                                char buf[MAX_STRING_LENGTH];
-
-                                if (victim->max_hit > 0)
-                                        percent = victim->hit * 100 / victim->max_hit;
-                                else
-                                        percent = -1;
-
-                                if ( !IS_INORGANIC( victim ) )
-                                {
-                                        if (percent >= 100)
-                                                sprintf(wound,"is in excellent condition.");
-                                        else if (percent >= 90)
-                                                sprintf(wound,"has a few scratches.");
-                                        else if (percent >= 75)
-                                                sprintf(wound,"has some small wounds and bruises.");
-                                        else if (percent >= 50)
-                                                sprintf(wound,"has quite a few wounds.");
-                                        else if (percent >= 30)
-                                                sprintf(wound,"has some big nasty wounds and scratches.");
-                                        else if (percent >= 15)
-                                                sprintf(wound,"looks pretty hurt.");
-                                        else if (percent >= 0)
-                                                sprintf(wound,"is in awful condition.");
-                                        else
-                                                sprintf(wound,"is bleeding to death!");
-                                }
-                                else {
-
-                                        if ( percent >= 100 )
-                                                sprintf(wound,"is in perfect condition.");
-                                        else if ( percent >=  90 )
-                                                sprintf(wound,"is slightly damaged.");
-                                        else if ( percent >=  80 )
-                                                sprintf(wound,"has a few signs of damage.");
-                                        else if ( percent >=  70 )
-                                                sprintf(wound,"has noticeable damage.");
-                                        else if ( percent >=  60 )
-                                                sprintf(wound,"is moderately damaged.");
-                                        else if ( percent >=  50 )
-                                                sprintf(wound,"has taken a lot of damage.");
-                                        else if ( percent >=  40 )
-                                                sprintf(wound,"has very significant damage.");
-                                        else if ( percent >=  30 )
-                                                sprintf(wound,"is very heavily damaged.");
-                                        else if ( percent >=  20 )
-                                                sprintf(wound,"is ruinously damaged.");
-                                        else if ( percent >=  10 )
-                                                sprintf(wound,"is on the brink of destruction.");
-                                        else
-                                                sprintf(wound,"is beyond saving.");
-                                }
-
-                                sprintf (buf, "%s %s\n\r",
-                                         capitalize_initial (PERS(victim, ch)),
-                                         wound);
-                                write_to_buffer(d, buf, 0);
-                        }
-
-                        if (IS_SET(ch->act, PLR_BLANK))
-                                write_to_buffer(d, "\n\r", 2);
-
-                        if (IS_SET(ch->act, PLR_PROMPT))
-                                bust_a_prompt(d);
-
-                        if (IS_SET(ch->act, PLR_TELNET_GA))
-                                write_to_buffer(d, (char *)go_ahead_str, 0);
-                }
-        }
-
-        *
-         * Short-circuit if nothing to write.
-         *
-        if (d->outtop == 0)
-                return TRUE;
-
-        *
-         * Snoop-o-rama.
-         *
-        if (d->snoop_by)
-        {
-                write_to_buffer(d->snoop_by, "% ", 2);
-                write_to_buffer(d->snoop_by, d->outbuf, d->outtop);
-        }
-
-        *
-         * OS-dependent output.
-         *
-      *  if (!write_to_descriptor(d->descriptor, d->outbuf, d->outtop)) *
-        if (!write_to_descriptor(d, d->outbuf, d->outtop))
-        {
-                d->outtop = 0;
-                return FALSE;
-        }
-        else
-        {
-                d->outtop = 0;
-                return TRUE;
-        }
-}
-
-*/
-/*
 	The buffer that works with the page pauser
 */
-
+/**
+ * REPLACED with LOLA code Lola  1.0 by Igor van den Hoven.   
+ * Deal with sockets that haven't logged in yet.    
+ */
 int pager(DESCRIPTOR_DATA *d, const char *istr, int lng, char *ostr)
 {
 	int lines, pt, breakpt, lengt, cnt;
@@ -2418,7 +2008,10 @@ int pager(DESCRIPTOR_DATA *d, const char *istr, int lng, char *ostr)
 /*
 	The buffer used for the grep command.
 */
-
+/**
+ * REPLACED with LOLA code Lola  1.0 by Igor van den Hoven.   
+ * Deal with sockets that haven't logged in yet.    
+ */
 void scroll(DESCRIPTOR_DATA *d, const char *txi, int lng)
 {
 	PC_DATA *pch;
@@ -2845,7 +2438,10 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
 
 }
 
-/* new write_t_buffer */
+/**
+ * REPLACED with LOLA code Lola  1.0 by Igor van den Hoven.   
+ * Deal with sockets that haven't logged in yet.    
+ */
 void write_to_buffer(DESCRIPTOR_DATA *d, char *txt, int length)
 {
 	char buf[MAX_STRING_LENGTH];
@@ -2973,91 +2569,15 @@ void write_to_buffer(DESCRIPTOR_DATA *d, char *txt, int length)
 }
 
 /*
- * Append onto an output buffer.
- */
-/*
-void write_to_buffer (DESCRIPTOR_DATA *d, const char *txt, int length)
-{
-        *
-         * Find length in case caller didn't.
-         *
-        if (length <= 0)
-                length = strlen(txt);
-
-        *
-         * Initial \n\r if needed.
-         *
-        if (d->outtop == 0 && !d->fcommand)
-        {
-                d->outbuf[0]    = '\n';
-                d->outbuf[1]    = '\r';
-                d->outtop       = 2;
-        }
-
-        *
-         * Expand the buffer as needed.
-         *
-        while (d->outtop + length >= d->outsize)
-        {
-                char *outbuf;
-
-                outbuf = alloc_mem(2 * d->outsize);
-                strncpy(outbuf, d->outbuf, d->outtop);
-                free_mem(d->outbuf, d->outsize);
-                d->outbuf = outbuf;
-                d->outsize *= 2;
-        }
-
-        *
-         * Copy.  Modifications sent in by Zavod.
-         *
-        strncpy(d->outbuf + d->outtop, txt, length);
-        d->outtop += length;
-        return;
-}
-*/
-
-/*
  * Lowest level output function.
  * Write a block of text to the file descriptor.
  * If this gives errors on very long blocks (like 'ofind all'),
  *   try lowering the max block size.
  */
- /*
-bool write_to_descriptor (int desc, char *txt, int length)
-{
-        int iStart;
-        int nWrite;
-        int nBlock;
-        int i;
-
-        if (length <= 0)
-                length = strlen(txt);
-
-        for (iStart = 0; iStart < length; iStart += nWrite)
-        {
-                nBlock = UMIN(length - iStart, 4096);
-
-                Added some voodoo to prevent dropping connections due to blocking behaviour; Gezhp 2007 
-                for (i = 0; i < 1024; i++) {
-                    if ((nWrite = write(desc, txt + iStart, nBlock)) < 0) {
-                        if (errno == EWOULDBLOCK || errno == EAGAIN) {
-                            continue;
-                        }
-
-                        perror("Write_to_descriptor");
-                        return FALSE;
-                    }
-                    else {
-                        break;
-                    }
-                }
-        }
-
-        return TRUE;
-}
-*/
-/* GMCP adds */
+/**
+ * REPLACED with LOLA code Lola  1.0 by Igor van den Hoven.   
+ * Deal with sockets that haven't logged in yet.    
+ */
 bool write_to_descriptor(DESCRIPTOR_DATA *d, char *txt, int length)
 {
 	push_call("write_to_descriptor(%p,%p,%p)",d,txt,length);
@@ -3087,7 +2607,10 @@ bool write_to_descriptor(DESCRIPTOR_DATA *d, char *txt, int length)
 	Used to flush the outbuf buffer to the actual socket.
 	Chaos 5/17/95
 */
-
+/**
+ * REPLACED with LOLA code Lola  1.0 by Igor van den Hoven.   
+ * Deal with sockets that haven't logged in yet.    
+ */
 void write_to_port(DESCRIPTOR_DATA *d)
 {
 	int nWrite, tWrite, nBlock, failure = FALSE;
@@ -3156,12 +2679,12 @@ void write_to_port(DESCRIPTOR_DATA *d)
 	pop_call();
 	return;
 }
-/* end GMCP */
 
-/*
- * Deal with sockets that haven't logged in yet.
+
+/**
+ * REPLACED with LOLA code Lola  1.0 by Igor van den Hoven.   
+ * Deal with sockets that haven't logged in yet.    
  */
-
 bool nanny(DESCRIPTOR_DATA *d, char *argument)
 {
 	/* char buf[MAX_STRING_LENGTH],buf2[MAX_STRING_LENGTH]; */
@@ -3429,14 +2952,14 @@ bool nanny(DESCRIPTOR_DATA *d, char *argument)
 				return FALSE;
 			}
 			free_string(ch->pcdata->pwd);
-                        ch->pcdata->pwd = str_dup(pwdnew);
-                /* ch->pcdata->pwd = encrypt64(argument); */
+                        ch->pcdata->pwd = str_dup(argument);
+                        /* ch->pcdata->pwd = encrypt64(argument); */
 
 			/*
 				Determine if it's a new guy over limit
 			*/
 
-			if (mud->total_plr >= MAX_LINKPERPORT && !d->lookup && !IS_IMMORTAL(ch))
+			if (mud->total_plr >= MAX_CONNECTIONS && !d->lookup && !IS_IMMORTAL(ch))
 			{
 				ch_printf_color(ch, "\n\r\n\r{078}The game currently has the maximum amount of %d players online\n\rTry back in a few minutes.\n\r", MAX_LINKPERPORT);
 				close_socket(d);
@@ -3637,10 +3160,6 @@ bool nanny(DESCRIPTOR_DATA *d, char *argument)
 			break;
 
 		case CON_GET_NEW_SEX:
-                #if defined(unix)
-                write_to_buffer(d, "\n\r", 2);
-                #endif
-
                         switch (argument[0])
 			{
 				case 'm':
@@ -3672,14 +3191,14 @@ bool nanny(DESCRIPTOR_DATA *d, char *argument)
                 #endif
                         if (argument[0] != 'y' && argument[0] != 'Y')
                         {
-                                send_to_char("\n\r\n\r{W}bSelect a gender{x\n\r\n\r"
+                                send_to_char("\n\r\n\rSelect a gender\n\r\n\r"
                                         "Please indicate what sex your character is.\n\r"
-                                        "{cMale, female or neuter? {C[m/f/n]{x ", ch);
+                                        "Male, female or neuter? [m/f/n] ", ch);
                                 d->connected = CON_GET_NEW_SEX;
-                                return;
+                                return FALSE;
                         }
 
-                        send_to_char("\n\r\n\r{W}bSelect a class{x\n\r\n\r"
+                        send_to_char("\n\r\n\rSelect a class\n\r\n\r"
                                 "Now you should select which class (profession) your character belongs to.\n\r"
                                 "New characters may choose one of the following classes:\n\r\n\r",
                                 ch);
@@ -3690,7 +3209,7 @@ bool nanny(DESCRIPTOR_DATA *d, char *argument)
                                 send_to_char(buf, ch);
                         }
 
-                        send_to_char("\n\r{cPlease choose a class for your character:{x ", ch);
+                        send_to_char("\n\rPlease choose a class for your character: ", ch);
                         d->connected = CON_GET_NEW_CLASS;
                         break;
 
@@ -3701,7 +3220,7 @@ bool nanny(DESCRIPTOR_DATA *d, char *argument)
 
 	        if (argument[0] == '\0')
                 {
-                        send_to_char("\n\r\n\r{W}bSelect a class{x\n\r\n\r",
+                        send_to_char("\n\r\n\rSelect a class\n\r\n\r",
                                      ch);
 
                         for (iClass = 0; iClass < MAX_CLASS ; iClass++)
@@ -3710,7 +3229,7 @@ bool nanny(DESCRIPTOR_DATA *d, char *argument)
                                 send_to_char(buf, ch);
                         }
 
-                        send_to_char("\n\r{cPlease choose a class for your character:{x ", ch);
+                        send_to_char("\n\rPlease choose a class for your character: ", ch);
                         return FALSE;
                 }
 
@@ -3725,8 +3244,8 @@ bool nanny(DESCRIPTOR_DATA *d, char *argument)
 
                 if (iClass == MAX_CLASS )
                 {
-                        send_to_char("\n\r{Y}rInvalid class!{x\n\r"
-                                     "{cPlease choose a class, or press ENTER to list available classes:{x ", ch);
+                        send_to_char("\n\rInvalid class!\n\r"
+                                     "Please choose a class, or press ENTER to list available classes: ", ch);
                         return FALSE;
                 }
 
@@ -3749,7 +3268,7 @@ bool nanny(DESCRIPTOR_DATA *d, char *argument)
 
                 if (strlen(classname) > 0)
                 {
-                        sprintf(buf, "\n\r{WClass selected: %s{x\n\r\n\r",
+                        sprintf(buf, "\n\rClass selected: %s\n\r\n\r",
                                 classname);
                         send_to_char(buf, ch);
                         do_help(ch, classname);
@@ -3757,7 +3276,7 @@ bool nanny(DESCRIPTOR_DATA *d, char *argument)
                 else
                         bug("Nanny CON_GET_NEW_CLASS:  ch->class (%d) not valid", ch->class);
 
-                send_to_char("\n\r{cAre you sure you want this class? {C[y/n]{x ", ch);
+                send_to_char("\n\rAre you sure you want this class? [y/n] ", ch);
                 d->connected = CON_CONFIRM_CLASS;
                 break;
 
@@ -3769,7 +3288,7 @@ bool nanny(DESCRIPTOR_DATA *d, char *argument)
                 {
                     case 'y': case 'Y': break;
                     default:
-                        send_to_char("\n\r\n\r{W}bSelect a class{x\n\r\n\r", ch);
+                        send_to_char("\n\r\n\rbSelect a class\n\r\n\r", ch);
 
                         for (iClass = 0; iClass < MAX_CLASS ; iClass++)
                         {
@@ -3777,7 +3296,7 @@ bool nanny(DESCRIPTOR_DATA *d, char *argument)
                                 send_to_char(buf, ch);
                         }
 
-                        send_to_char("\n\r{cPlease choose a class for your character:{x ", ch);
+                        send_to_char("\n\rPlease choose a class for your character: ", ch);
                         d->connected = CON_GET_NEW_CLASS;
                         return FALSE;
                 }
@@ -3785,9 +3304,9 @@ bool nanny(DESCRIPTOR_DATA *d, char *argument)
                 sprintf(log_buf, "%s@%s new player.", ch->name, d->host);
                 log_string(log_buf);
 
-                send_to_char("\n\r\n\r{W}bGenerate random attribute scores{x\n\r\n\r", ch);
+                send_to_char("\n\r\n\rGenerate random attribute scores\n\r\n\r", ch);
                 do_help(ch, "random");
-                send_to_char("\n\r{cPress {CENTER{X{c to begin rolling your character's attributes.{x ", ch);
+                send_to_char("\n\rPress ENTER to begin rolling your character's attributes. ", ch);
                 d->connected = CON_GENERATE_STATS;
                 break;
 
@@ -3798,7 +3317,7 @@ bool nanny(DESCRIPTOR_DATA *d, char *argument)
                 generate_stats (ch);
 
                 sprintf(buf, "\n\rStr: %2d  Int: %2d  Wis: %2d  Dex: %2d  Con: %2d\n\r"
-                        "{cAccept? {C[y/n]{x ",
+                        "Accept? [y/n] ",
                         ch->pcdata->perm_str,
                         ch->pcdata->perm_int,
                         ch->pcdata->perm_wis,
@@ -3819,7 +3338,7 @@ bool nanny(DESCRIPTOR_DATA *d, char *argument)
                         generate_stats (ch);
 
                         sprintf(buf, "\n\rStr: %2d  Int: %2d  Wis: %2d  Dex: %2d  Con: %2d\n\r"
-                                "{cAccept? {C[y/n]{x ",
+                                "Accept? [y/n] ",
                                 ch->pcdata->perm_str,
                                 ch->pcdata->perm_int,
                                 ch->pcdata->perm_wis,
@@ -3829,7 +3348,7 @@ bool nanny(DESCRIPTOR_DATA *d, char *argument)
                         return FALSE;
                 }
 
-                send_to_char("\n\r{WCharacter generation complete.{x\n\r\n\r"
+                send_to_char("\n\rCharacter generation complete.\n\r\n\r"
                              "You are now ready to enter the Dragons Domain and begin your training!\n\r\n\r", ch);
                 SET_BIT(ch->act, PLR_AUTOLEVEL);
                 ch->pcdata->pagelen = 100;
@@ -3842,9 +3361,9 @@ bool nanny(DESCRIPTOR_DATA *d, char *argument)
                 #endif
                 if (argument[0] == '\0')
                 {
-                        send_to_char("\n\r\n\r{W}bSelect a race{x\n\r\n\r", ch);
+                        send_to_char("\n\r\n\rSelect a race\n\r\n\r", ch);
                         do_help(ch, "race");
-                        send_to_char("\n\r{cPlease choose a race for your character. {C[a-y]{x ", ch);
+                        send_to_char("\n\rPlease choose a race for your character. [a-y] ", ch);
                         break;
                 }
 
@@ -3877,14 +3396,14 @@ bool nanny(DESCRIPTOR_DATA *d, char *argument)
                     case 'y': case 'Y': ch->race = 25;      break;
 
                     default:
-                        send_to_char("\n\r{Y}rInvalid race!{x\n\r"
-                                "{cPlease choose a race, or press ENTER to display the list of races. {C[a-y]{x ", ch);
+                        send_to_char("\n\rrInvalid race!\n\r"
+                                "Please choose a race, or press ENTER to display the list of races. [a-y] ", ch);
                         return FALSE;
                 }
 
                 if (ch->race < 1 || ch->race > ( MAX_RACE - 1 ) )
                 {
-                        send_to_char("\n\r{cPlease choose a race for your character. {C[a-y]{x ", ch);
+                        send_to_char("\n\rPlease choose a race for your character. [a-y] ", ch);
                         return FALSE;
                 }
 
@@ -4986,93 +4505,54 @@ bool nanny (DESCRIPTOR_DATA *d, char *argument)
 } * nanny mark *
 */
 
-/*
- * Send to one char, new colour version, by Lope.
+/**
+ * REPLACED with LOLA code Lola  1.0 by Igor van den Hoven.       
  */
-/*
-void send_to_char (const char *txt, CHAR_DATA *ch)
+void send_to_char(const char *txt, CHAR_DATA *ch)
 {
-        const char    *point;
-        char    *point2;
-        char    buf[ MAX_STRING_LENGTH*4 ];
-        int     skip = 0;
+	char buf[MAX_STRING_LENGTH];
+	bool foundyou;
 
-        buf[0] = '\0';
-        point2 = buf;
+	push_call("send_to_char(%p,%p)",txt,ch);
 
-        if (txt && ch->desc)
-        {
-                if (IS_SET(ch->act, PLR_ANSI))
-                {
-                        for(point = txt ; *point ; point++)
-                        {
-                                if(*point == '{')
-                                {
-                                        point++;
-                                        skip = colour(*point, ch, point2);
-                                        while(skip-- > 0)
-                                                ++point2;
-                                        continue;
-                                }
+	if (txt == NULL || ch == NULL || ch->desc == NULL)
+	{
+		pop_call();
+		return;
+	}
 
-                                if(*point == '}')
-                                {
-                                        point++;
-                                        skip = bgcolour(*point, ch, point2);
-                                        while(skip-- > 0)
-                                                ++point2;
-                                        continue;
-                                }
+	if (IS_SET(mud->flags, MUD_SKIPOUTPUT))
+	{
+		if (IS_NPC(ch) || ch->level < MAX_LEVEL /*|| !IS_SET(ch->act, PLR_WIZTIME)*/)
+		{
+			pop_call();
+			return;
+		}
+	}
 
-                                *point2 = *point;
-                                *++point2 = '\0';
-                        }
-                        *point2 = '\0';
-                        free_string(ch->desc->showstr_head);
-                        ch->desc->showstr_head  = str_dup(buf);
-                        ch->desc->showstr_point = ch->desc->showstr_head;
-                        show_string(ch->desc, "");
-                }
-                else
-                {
-                        for(point = txt ; *point ; point++)
-                        {
-                                if(*point == '{')
-                                {
-                                        point++;
-                                        if(*point == '{')
-                                        {
-                                                *point2 = *point;
-                                                *++point2 = '\0';
-                                        }
-                                        continue;
-                                }
+	if (txt[0] != '\033')
+	{
+		foundyou = scroll_you(ch->desc, txt, IS_SET(CH(ch->desc)->pcdata->vt100_flags, VT100_HIGHLIGHT));
 
-                                if(*point == '}')
-                                {
-                                        point++;
-                                        if(*point == '}')
-                                        {
-                                                *point2 = *point;
-                                                *++point2 = '\0';
-                                        }
-                                        continue;
-                                }
-
-
-                                *point2 = *point;
-                                *++point2 = '\0';
-                        }
-                        *point2 = '\0';
-                        free_string(ch->desc->showstr_head);
-                        ch->desc->showstr_head  = str_dup(buf);
-                        ch->desc->showstr_point = ch->desc->showstr_head;
-                        show_string(ch->desc, "");
-                }
-        }
-        return;
+		if (foundyou)
+		{
+			snprintf(buf, MAX_STRING_LENGTH-1, "%s%s", get_color_string(ch, COLOR_TEXT, VT102_BOLD), txt);
+		}
+		else
+		{
+			snprintf(buf, MAX_STRING_LENGTH-1, "%s%s", get_color_string(ch, COLOR_TEXT, VT102_DIM),  txt);
+		}
+		write_to_buffer(ch->desc, (char *)buf, 0);
+	}
+	else
+	{
+		write_to_buffer(ch->desc, (char *)txt, 0);
+	}
+	pop_call();
+	return;
 }
-*/
+
+/*
 void send_to_char (const char *txt, CHAR_DATA *ch)
 {
         const char    *point;
@@ -5085,7 +4565,7 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
         char open_token;
         char close_token;
 
-        /* If you change these tokens, you should change the color_table_8bit act_codes as well */
+        * If you change these tokens, you should change the color_table_8bit act_codes as well *
         open_token   = '<';
         close_token  = '>';
 
@@ -5322,94 +4802,55 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
         }
         return;
 }
-
-/*
- * Parse a name for acceptability.
- *
-bool check_parse_name (char *name)
-{
-        int i;
-
-        *
-         * Reserved words.
-         *
-        if (is_name(name, "all auto imm immortal self someone somebody"))
-                return FALSE;
-
-        *
-         * Obscenities
-         *
-        if (is_name(name, "fuck shit ass arse asshole bitch bastard gay lesbian pussy fucker fucked fart vagina penis cunt faggot nigger"))
-                return FALSE;
-
-        *
-         * Length restrictions.
-         *
-        if (strlen(name) <  3)
-                return FALSE;
-
-        if (strlen(name) > 12)
-                return FALSE;
-
-        *
-         * Alphanumerics only.
-         * Lock out IllIll twits.
-         *
-        {
-                char *pc;
-                bool fIll;
-
-                fIll = TRUE;
-                for (pc = name; *pc != '\0'; pc++)
-                {
-                        if (!isalpha(*pc) || *pc == '_')
-                                return FALSE;
-                        if (LOWER(*pc) != 'i' && LOWER(*pc) != 'l')
-                                fIll = FALSE;
-                }
-
-                if (fIll)
-                        return FALSE;
-        }
-
-        *
-         * Prevent players from naming themselves after mobs.
-         *
-        {
-                extern MOB_INDEX_DATA *mob_index_hash [ MAX_KEY_HASH ];
-                MOB_INDEX_DATA *pMobIndex;
-                int iHash;
-
-                for (iHash = 0; iHash < MAX_KEY_HASH; iHash++)
-                {
-                        for (pMobIndex  = mob_index_hash[iHash];
-                             pMobIndex;
-                             pMobIndex  = pMobIndex->next)
-                        {
-                                if (is_name(name, pMobIndex->player_name))
-                                        return FALSE;
-                        }
-                }
-        }
-
-        *
-         * No deity or arena bot names either
-         *
-        for (i = 0; i < NUMBER_DEITIES; i++)
-        {
-                if (is_name(name, deity_info_table[i].name))
-                        return FALSE;
-        }
-
-        for (i = 0; i < BOT_TEMPLATE_NUMBER; i++)
-        {
-                if (is_name(name, bot_template_table[i].name))
-                        return FALSE;
-        }
-
-        return TRUE;
-}
 */
+
+bool scroll_you(DESCRIPTOR_DATA *d, const char *txi, bool youcheck)
+{
+	register char *pti;
+
+	push_call("scroll_you(%p,%p,%p)",d,txi,youcheck);
+
+	if (!youcheck)
+	{
+		pop_call();
+		return(FALSE);
+	}
+
+	if (!IS_SET(CH(d)->pcdata->vt100_flags, VT100_BOLD))
+	{
+		pop_call();
+		return FALSE;
+	}
+
+	if (d->connected != CON_PLAYING)
+	{
+		pop_call();
+		return(FALSE);
+	}
+
+	if (strlen(txi) < 3)
+	{
+		pop_call();
+		return FALSE;
+	}
+
+	for (pti = (char *) txi ; *(pti+2) != '\0' ; pti++)
+	{
+		if ((*(pti+0) == 'Y' || *(pti+0) == 'y')
+		&&  (*(pti+1) == 'O' || *(pti+1) == 'o')
+		&&  (*(pti+2) == 'U' || *(pti+2) == 'u'))
+		{
+			pop_call();
+			return TRUE;
+		}
+	}
+	pop_call();
+	return FALSE;
+}
+
+/**
+ * REPLACED with LOLA code Lola  1.0 by Igor van den Hoven.       
+ */
 bool check_parse_name(char *name , bool mobcheck)
 {
 	push_call("check_parse_name(%p,%p)",name,mobcheck);
@@ -5884,12 +5325,16 @@ void ansi_color(const char *txt, CHAR_DATA *ch)
 /*
  * The primary output interface for formatted output.
  */
+/**
+ * REPLACED with LOLA code Lola  1.0 by Igor van den Hoven.   
+ * Deal with sockets that haven't logged in yet.    
+ */
 void act(const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type)
 {
 	static char * const he_she  [] = { "it",  "he",  "she" };
 	static char * const him_her [] = { "it",  "him", "her" };
 	static char * const his_her [] = { "its", "his", "her" };
-
+/*
 	static char * const fake_name [] =
 	{
 		"no one in particular",		"a white rabbit",
@@ -5904,7 +5349,7 @@ void act(const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, 
 		"your alter ego",			"a fortune cookie",
 		"your shadow",				"the world"
 	};
-
+*/
 	char buf[MAX_STRING_LENGTH];
 	CHAR_DATA *to;
 	CHAR_DATA *vch = (CHAR_DATA *) arg2;
@@ -6950,7 +6395,7 @@ void write_last_command()
         if (last_command[0] == '\0')
                 return;
 
-     /*   fd = open ("../log/last_command.txt", O_WRONLY|O_CREAT, S_IRUSR|S_IWUSR); */
+       /* fd = open ("../log/last_command.txt", O_WRONLY|O_CREAT, S_IRUSR|S_IWUSR);  */
 
         if (fd < 0)
                 return;
@@ -6965,7 +6410,7 @@ void write_last_command()
         }
 
         write (fd, "\n", 1);
-        close (fd);
+        close (fd); 
         abort();
 }
 
@@ -7701,9 +7146,7 @@ void force_help(DESCRIPTOR_DATA *d, char *argument)
 		{
 			if (is_name(argument, pHelp->keyword))
 			{
-				/*write_to_buffer(d, ansi_translate(pHelp->text), 1000000); */
-                                write_to_buffer(d, pHelp->text,  1000000);
-
+				write_to_buffer(d, ansi_translate(pHelp->text), 1000000);
 				pop_call();
 				return;
 			}
@@ -7865,7 +7308,7 @@ char *prompt_return(CHAR_DATA *ch, char *layout)
 
 	push_call("prompt_return(%p,%p)",ch,layout);
 
-	if (!IS_NPC(ch) && ch->level >= LEVEL_IMMORTAL && ch->pcdata->editmode != MODE_NONE && ch->pcdata->subprompt && ch->pcdata->subprompt[0] != '\0')
+	if (!IS_NPC(ch) && ch->level >= LEVEL_IMMORTAL/* && ch->pcdata->editmode != MODE_NONE*/ && ch->pcdata->subprompt && ch->pcdata->subprompt[0] != '\0')
 	{
 		sprintf (prompt_buffer, "{138}<{158}%s{138}> {078}", ch->pcdata->subprompt);
 	}
@@ -7990,10 +7433,10 @@ char *prompt_return(CHAR_DATA *ch, char *layout)
 							for (door = 0 ; door < 6 ; door++)
 							{
 								if ((pexit = get_exit(ch->in_room->vnum, door)) != NULL
-								&&   !IS_SET(pexit->flags, EX_CLOSED)
+								/*&&   !IS_SET(pexit->flags, EX_CLOSED)
 								&&  (!IS_SET(ch->in_room->room_flags, ROOM_SMOKE)	|| can_see_smoke(ch))
 								&&  (!IS_SET(pexit->flags, EX_HIDDEN) || can_see_hidden(ch))
-								&&   can_use_exit(ch, pexit))
+								&&   can_use_exit(ch, pexit)*/)
 								{
 									switch (door)
 									{
@@ -8013,7 +7456,8 @@ char *prompt_return(CHAR_DATA *ch, char *layout)
 						pto++;
 						break;
 					case 't':
-						sprintf(tbuf, "%s", tocivilian(mud->time_info->hour));
+						sprintf(tbuf, "%d", mud->time_info->hour);
+                                                /*sprintf(tbuf, "%s", tocivilian(mud->time_info->hour));*/
 						strcpy(pto, tbuf);
 						pto += strlen(tbuf);
 						break;

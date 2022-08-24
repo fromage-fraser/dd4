@@ -97,7 +97,7 @@ int     unlink();
 
 /*
  * Short scalar types.
- * Diavolo reports AIX compiler has bugs with short types.
+ * Diavolo reports AIX compiler has bugs with short types..
  */
 #if !defined( FALSE )
 #define FALSE    0
@@ -3054,6 +3054,8 @@ struct  pc_data
         char *          bamfout;
         char *          title;
         char *          tailing;
+        HELP_DATA           * last_help;
+	HELP_DATA           * prev_help;
         CHAR_DATA *     group_leader; /* GCMP */
         ROOM_INDEX_DATA     * travel_from;	/* Traveling old room  */
         int                   travel; /* GCMP */
@@ -4900,6 +4902,7 @@ char * crypt args( ( const char *key, const char *salt ) );
 #define ED      EXIT_DATA
 #define GF      GAME_FUN
 #define TM  TACTICAL_MAP
+#define HD  HELP_DATA
 
 
 
@@ -4961,6 +4964,8 @@ int   get_colour_index_by_code                ( int ccode );
 char            * get_color_string     args((CHAR_DATA *ch, int regist, int vt_code));
 char              * get_color_code          args((CHAR_DATA *ch, int regist, int vt_code));
 CHAR_DATA *lookup_char(char *);
+HD		* get_help	          args((CHAR_DATA *ch, char *argument));
+
 
 /* act_move.c */
 void move_char                          args( ( CHAR_DATA *ch, int door ) );
@@ -5115,6 +5120,7 @@ int     get_curr_dex                    args( ( CHAR_DATA *ch ) );
 int     get_curr_con                    args( ( CHAR_DATA *ch ) );
 int     can_carry_n                     args( ( CHAR_DATA *ch ) );
 int     can_carry_w                     args( ( CHAR_DATA *ch ) );
+bool        is_name_short               args((const char *str, char *namelist));
 bool    is_name                         args( ( const char *str, char *namelist ) );
 bool    multi_keyword_match             args( ( char *keys, char *namelist ) );
 bool    is_full_name                    args( ( const char *str, char *namelist ) );
@@ -5230,6 +5236,7 @@ char * first_arg                              ( char *argument, char *arg_first,
 bool   IS_SWITCHED                      args( ( CHAR_DATA *ch ) );
 bool   wiz_do                           args( ( CHAR_DATA *ch, char *command ) );
 long long get_game_usec(void);
+char      * one_argument_nolower           args((char *argument, char *arg_first));
 
 /* magic.c */
 int  skill_lookup                       args( ( const char *name ) );
@@ -5310,8 +5317,7 @@ void auction_update                    args( ( void ) );
 void form_equipment_update                   ( CHAR_DATA *ch );
 int  check_stat_advance                      ( CHAR_DATA *ch, int stat );
 bool check_questpoints_allow_level_gain      ( CHAR_DATA *ch, bool verbose );
-
-/*int         exp_level                args((int class, int level));*/
+int         exp_level                args((int class, int level));
 
 /* trap.c */
 bool checkmovetrap                     args( ( CHAR_DATA *ch, int dir) );
