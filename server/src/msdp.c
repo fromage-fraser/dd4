@@ -1,15 +1,7 @@
 /***************************************************************************
  * Mud Telopt Handler 1.5 Copyright 2009-2019 Igor van den Hoven           *
  ***************************************************************************/
-#if defined( macintosh )
-#include <types.h>
-#else
-#include <sys/types.h>
-#endif
-#include <stdio.h>
-#include <string.h>
-#include <time.h>
-#include <zlib.h>
+
 #include "merc.h"
 #include "mth.h"
 
@@ -118,7 +110,7 @@ int msdp_update_var(DESCRIPTOR_DATA *d, char *var, char *fmt, ...)
 	{
 		RESTRING(d->mth->msdp_data[index]->value, buf);
 
-		if (IS_SET(d->mth->msdp_data[index]->flags, MSDP_FLAG_REPORTED))
+		if (HAS_BIT(d->mth->msdp_data[index]->flags, MSDP_FLAG_REPORTED))
 		{
 			SET_BIT(d->mth->msdp_data[index]->flags, MSDP_FLAG_UPDATED);
 			SET_BIT(d->mth->comm_flags, COMM_FLAG_MSDPUPDATE);
@@ -160,7 +152,7 @@ void msdp_update_var_instant(DESCRIPTOR_DATA *d, char *var, char *fmt, ...)
 		RESTRING(d->mth->msdp_data[index]->value, buf);
 	}
 
-	if (IS_SET(d->mth->msdp_data[index]->flags, MSDP_FLAG_REPORTED))
+	if (HAS_BIT(d->mth->msdp_data[index]->flags, MSDP_FLAG_REPORTED))
 	{
 		length = sprintf(out, "%c%c%c%c%s%c%s%c%c", IAC, SB, TELOPT_MSDP, MSDP_VAR, msdp_table[index].name, MSDP_VAL, buf, IAC, SE);
 
@@ -186,11 +178,11 @@ void msdp_send_update(DESCRIPTOR_DATA *d)
 
 	for (index = 0 ; index < mud->msdp_table_size ; index++)
 	{
-		if (IS_SET(d->mth->msdp_data[index]->flags, MSDP_FLAG_UPDATED))
+		if (HAS_BIT(d->mth->msdp_data[index]->flags, MSDP_FLAG_UPDATED))
 		{
 			ptr += sprintf(ptr, "%c%s%c%s", MSDP_VAR, msdp_table[index].name, MSDP_VAL, d->mth->msdp_data[index]->value);
 
-			REMOVE_BIT(d->mth->msdp_data[index]->flags, MSDP_FLAG_UPDATED);
+			DEL_BIT(d->mth->msdp_data[index]->flags, MSDP_FLAG_UPDATED);
 		}
 
 		if (ptr - buf > MAX_STRING_LENGTH - MAX_INPUT_LENGTH)
@@ -204,7 +196,7 @@ void msdp_send_update(DESCRIPTOR_DATA *d)
 
 	write_msdp_to_descriptor(d, buf, ptr - buf);
 
-	REMOVE_BIT(d->mth->comm_flags, COMM_FLAG_MSDPUPDATE);
+	DEL_BIT(d->mth->comm_flags, COMM_FLAG_MSDPUPDATE);
 }
 
 
@@ -313,7 +305,7 @@ void process_msdp_varval( DESCRIPTOR_DATA *d, char *var, char *val )
 		return;
 	}
 
-	if (IS_SET(msdp_table[var_index].flags, MSDP_FLAG_CONFIGURABLE))
+	if (HAS_BIT(msdp_table[var_index].flags, MSDP_FLAG_CONFIGURABLE))
 	{
 		RESTRING(d->mth->msdp_data[var_index]->value, val);
 
@@ -326,7 +318,7 @@ void process_msdp_varval( DESCRIPTOR_DATA *d, char *var, char *val )
 
 	// Commands only take variables as arguments.
 
-	if (IS_SET(msdp_table[var_index].flags, MSDP_FLAG_COMMAND))
+	if (HAS_BIT(msdp_table[var_index].flags, MSDP_FLAG_COMMAND))
 	{
 		if (*val == MSDP_ARRAY_OPEN)
 		{
@@ -356,7 +348,7 @@ void msdp_command_list(DESCRIPTOR_DATA *d, int index)
 	char *ptr, buf[MAX_STRING_LENGTH];
 	int flag;
 
-	if (!IS_SET(msdp_table[index].flags, MSDP_FLAG_LIST))
+	if (!HAS_BIT(msdp_table[index].flags, MSDP_FLAG_LIST))
 	{
 		return;
 	}
@@ -371,14 +363,14 @@ void msdp_command_list(DESCRIPTOR_DATA *d, int index)
 	{
 		if (flag != MSDP_FLAG_LIST)
 		{
-			if (IS_SET(d->mth->msdp_data[index]->flags, flag) && !IS_SET(d->mth->msdp_data[index]->flags, MSDP_FLAG_LIST))
+			if (HAS_BIT(d->mth->msdp_data[index]->flags, flag) && !HAS_BIT(d->mth->msdp_data[index]->flags, MSDP_FLAG_LIST))
 			{
 				ptr += sprintf(ptr, "%c%s", MSDP_VAL, msdp_table[index].name);
 			}
 		}
 		else
 		{
-			if (IS_SET(d->mth->msdp_data[index]->flags, MSDP_FLAG_LIST))
+			if (HAS_BIT(d->mth->msdp_data[index]->flags, MSDP_FLAG_LIST))
 			{
 				ptr += sprintf(ptr, "%c%s", MSDP_VAL, msdp_table[index].name);
 			}
@@ -392,14 +384,14 @@ void msdp_command_list(DESCRIPTOR_DATA *d, int index)
 
 void msdp_command_report(DESCRIPTOR_DATA *d, int index)
 {
-	if (!IS_SET(msdp_table[index].flags, MSDP_FLAG_REPORTABLE))
+	if (!HAS_BIT(msdp_table[index].flags, MSDP_FLAG_REPORTABLE))
 	{
 		return;
 	}
 
 	SET_BIT(d->mth->msdp_data[index]->flags, MSDP_FLAG_REPORTED);
 
-	if (!IS_SET(msdp_table[index].flags, MSDP_FLAG_SENDABLE))
+	if (!HAS_BIT(msdp_table[index].flags, MSDP_FLAG_SENDABLE))
 	{
 		return;
 	}
@@ -412,7 +404,7 @@ void msdp_command_reset(DESCRIPTOR_DATA *d, int index)
 {
 	int flag;
 
-	if (!IS_SET(msdp_table[index].flags, MSDP_FLAG_LIST))
+	if (!HAS_BIT(msdp_table[index].flags, MSDP_FLAG_LIST))
 	{
 		return;
 	}
@@ -421,7 +413,7 @@ void msdp_command_reset(DESCRIPTOR_DATA *d, int index)
 
 	for (index = 0 ; index < mud->msdp_table_size ; index++)
 	{
-		if (IS_SET(d->mth->msdp_data[index]->flags, flag))
+		if (HAS_BIT(d->mth->msdp_data[index]->flags, flag))
 		{
 			d->mth->msdp_data[index]->flags = msdp_table[index].flags;
 		}
@@ -430,7 +422,7 @@ void msdp_command_reset(DESCRIPTOR_DATA *d, int index)
 
 void msdp_command_send(DESCRIPTOR_DATA *d, int index)
 {
-	if (IS_SET(d->mth->msdp_data[index]->flags, MSDP_FLAG_SENDABLE))
+	if (HAS_BIT(d->mth->msdp_data[index]->flags, MSDP_FLAG_SENDABLE))
 	{
 		SET_BIT(d->mth->msdp_data[index]->flags, MSDP_FLAG_UPDATED);	
 		SET_BIT(d->mth->comm_flags, COMM_FLAG_MSDPUPDATE);
@@ -439,17 +431,16 @@ void msdp_command_send(DESCRIPTOR_DATA *d, int index)
 
 void msdp_command_unreport(DESCRIPTOR_DATA *d, int index)
 {
-	if (!IS_SET(msdp_table[index].flags, MSDP_FLAG_REPORTABLE))
+	if (!HAS_BIT(msdp_table[index].flags, MSDP_FLAG_REPORTABLE))
 	{
 		return;
 	}
 
-	REMOVE_BIT(d->mth->msdp_data[index]->flags, MSDP_FLAG_REPORTED);
+	DEL_BIT(d->mth->msdp_data[index]->flags, MSDP_FLAG_REPORTED);
 }
 
-/*
 // Comment out if you don't want Arachnos Intermud support
-
+/*
 void msdp_configure_arachnos(DESCRIPTOR_DATA *d, int index)
 {
 	char var[MAX_INPUT_LENGTH], val[MAX_INPUT_LENGTH];
@@ -562,19 +553,18 @@ void msdp_configure_arachnos(DESCRIPTOR_DATA *d, int index)
 	}
 }
 */
-
 void msdp_configure_editbuffer(DESCRIPTOR_DATA *d, int index)
 {
 	log_printf("msdp_configure_editbuffer(%s)", d->mth->msdp_data[index]->value);
 
-/*	start_editing(CH(d), d->mth->msdp_data[index]->value); removed brutus*/
+	start_editing(CH(d), d->mth->msdp_data[index]->value);
 }
 
 struct msdp_type msdp_table[] =
 {
 	{    "ALIGNMENT",                     MSDP_FLAG_SENDABLE|MSDP_FLAG_REPORTABLE,    NULL },
-/*	{    "ARACHNOS_DEVEL",            MSDP_FLAG_CONFIGURABLE|MSDP_FLAG_REPORTABLE,    msdp_configure_arachnos },
-	{    "ARACHNOS_MUDLIST",                               MSDP_FLAG_CONFIGURABLE,    msdp_configure_arachnos }, */
+	{    "ARACHNOS_DEVEL",            MSDP_FLAG_CONFIGURABLE|MSDP_FLAG_REPORTABLE,    msdp_configure_arachnos },
+	{    "ARACHNOS_MUDLIST",                               MSDP_FLAG_CONFIGURABLE,    msdp_configure_arachnos },
 	{    "COMMANDS",                             MSDP_FLAG_COMMAND|MSDP_FLAG_LIST,    NULL },
 	{    "CONFIGURABLE_VARIABLES",          MSDP_FLAG_CONFIGURABLE|MSDP_FLAG_LIST,    NULL },
 	{    "EDIT_BUFFER",               MSDP_FLAG_REPORTABLE|MSDP_FLAG_CONFIGURABLE,    msdp_configure_editbuffer },
@@ -608,7 +598,7 @@ void write_msdp_to_descriptor(DESCRIPTOR_DATA *d, char *src, int length)
 {
 	char out[MAX_STRING_LENGTH];
 
-	if (!IS_SET(d->mth->comm_flags, COMM_FLAG_GMCP))
+	if (!HAS_BIT(d->mth->comm_flags, COMM_FLAG_GMCP))
 	{
 		write_to_descriptor(d, src, length);
 	}
