@@ -523,6 +523,7 @@ This is a vodyanoi, a creature related to the umber hulk but somewhat larger
 and water-dwelling. It has slimy green skin, webbed hands and feed, and
 powerful manibles.  They have a reputation as an evil and violent creature,
 but this one's attention doesn't seem to have turned to you... yet.
+
 ~
 64 512 -1000 S
 47 0 0 0d0+0 0d0+0
@@ -535,6 +536,7 @@ a male merrow~
 ~
 He has black teeth and nails; webbed hands and feet; a long, thick neck; an
 underbite; and sloping shoulders. He does not seem pleased to see you.
+
 ~
 2|32|64 8|32|512 -1000 S
 49 0 0 0d0+0 0d0+0
@@ -548,6 +550,7 @@ a female merrow~
 She has black teeth and nails; webbed hands and feet; a long, thick neck; an
 underbite; and sloping shoulders. She is also covered in tattoos that seem
 mainly to depict acts of death and destruction.
+
 ~
 2|32|64 8|32|512 -1000 S
 49 0 0 0d0+0 0d0+0
@@ -562,6 +565,7 @@ It resembles a bizarre eel, with a long, tubular body, a tail at one end, two
 fins near the head, and another along the back. Its mouth is lamprey-like, and
 filled with serrated, jawless teeth. You feel afraid just being in its presence,
 and have a strong intuition that it might be best to leave it alone.
+
 ~
 64 8|32|512 -730 S
 50 0 0 0d0+0 0d0+0
@@ -575,6 +579,7 @@ a yurian male~
 He resembles a lobster the size of a human being, walking on two humanoid legs
 but also able to swim like a lobster. His face is similar to that of a human,
 though encased in chitinous armor and with eyes on stalks.
+
 ~
 64 512 125 S
 50 0 0 0d0+0 0d0+0
@@ -588,6 +593,7 @@ a yurian female~
 She resembles a lobster the size of a human being, walking on two humanoid legs
 but also able to swim like a lobster. Her face is similar to that of a human,
 though encased in chitinous armor and with eyes on stalks.
+
 ~
 64 512 135 S
 50 0 0 0d0+0 0d0+0
@@ -979,6 +985,7 @@ at first to figure out what kind of creature it is.  It has been tied to a
 patch of kelp, which keeps it from being cast adrift in the ocean currents.
 Perhaps it serves as some sort of marker?
 ~
+
 #27393
 crude longspear~
 a crude longspear~
