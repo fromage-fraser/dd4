@@ -29,6 +29,7 @@
 #include <time.h>
 #include <math.h>
 #include "merc.h"
+#include "protocol.h"
 
 
 AFFECT_DATA *affect_free;

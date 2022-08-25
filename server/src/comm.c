@@ -52,7 +52,7 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
-
+#include "protocol.h"
 
 /*
  * Malloc debugging stuff.
@@ -791,7 +791,7 @@ void new_descriptor (int control)
         int                     desc;
         socklen_t               size;
         int                     addr;
-        dnew->pProtocol     = ProtocolCreate(); /* <--- GCMP */
+
 
         size = sizeof(sock);
         getsockname(control, (struct sockaddr *) &sock, &size);
@@ -837,6 +837,7 @@ void new_descriptor (int control)
         dnew->showstr_point = 0;
         dnew->outsize   = 2000;
         dnew->outbuf    = alloc_mem(dnew->outsize);
+        dnew->pProtocol     = ProtocolCreate(); /* <--- GCMP */
 
         size = sizeof(sock);
 
@@ -902,9 +903,8 @@ void new_descriptor (int control)
          */
         dnew->next = descriptor_list;
         descriptor_list = dnew;
-        connection_count++;
         ProtocolNegotiate(dnew); /* <--- GCMP */
-
+        connection_count++;
         /*
          * Send the greeting.
          */
