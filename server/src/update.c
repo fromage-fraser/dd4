@@ -415,13 +415,15 @@ int hit_gain( CHAR_DATA *ch )
         int gain;
         int amt;
         int count;
+        int regen_mult = 1;
 
         if (IS_NPC(ch))
         {
                 gain = ch->level * 3 / 2;
 
-                if (IS_SET(ch->act, ACT_HEALING_FACTOR))
-                      gain *= 10;
+                if (IS_SET(ch->act, ACT_REGENERATOR))
+                      regen_mult = (ch->level / 10) + 2;
+                      gain *= regen_mult;
 
                 if (IS_AFFECTED(ch, AFF_POISON)
                     || IS_AFFECTED(ch, AFF_PRAYER_PLAGUE))
@@ -1938,8 +1940,6 @@ void aggr_update()
                         &&   ( ch->level < LEVEL_IMMORTAL ) )
                         {
                                 cursed_utterance = 1;
-                                /* sprintf(buf,"%s and %s and cu: %d\r\n", mch->short_descr, ch->name, cursed_utterance);
-                                log_string(buf); */
                                 goto fightloop;
                         }
 

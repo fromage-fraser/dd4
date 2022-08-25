@@ -1753,7 +1753,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define ACT_PET                         BIT_8   /* Auto set for pets */
 #define ACT_NO_QUEST                    BIT_9   /* Cannot be selected as quest target */
 #define ACT_PRACTICE                    BIT_10  /* Can practice PC's */
-#define ACT_HEALING_FACTOR              BIT_11  /* Mob heals at very accelerated rate.  Was ACT_GAMBLE. - Owl */
+#define ACT_REGENERATOR                 BIT_11  /* Mob heals at an accelerated rate.  Was ACT_GAMBLE. - Owl */
 #define ACT_NOCHARM                     BIT_12  /* Not charmable - Brutus */
 #define ACT_IS_HEALER                   BIT_13  /* For healer spec */
 #define ACT_IS_FAMOUS                   BIT_14  /* Award fame for kill */
