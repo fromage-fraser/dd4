@@ -2138,7 +2138,7 @@ void save_pkscore_table ()
         fpReserve = fopen(NULL_FILE, "r");
 }
 
-/*
+
 void	add_pvnum( CHAR_DATA *ch )
 {
 	PVNUM_DATA *pvnum;
@@ -2200,5 +2200,20 @@ int find_free_pvnum()
 	pop_call();
 	return 0;
 }
-*/
+
+long long encrypt64( char *str )
+{
+	long long h;
+
+	push_call("encrypt64(%p)",str);
+
+	for (h = 0 ; *str != 0 ; str++)
+	{
+		h = (h << 7) + *str;
+	}
+
+	pop_call();
+	return h;
+}
+
 

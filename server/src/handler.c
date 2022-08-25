@@ -1097,6 +1097,7 @@ void affect_join( CHAR_DATA *ch, AFFECT_DATA *paf )
 /*
  * Move a char out of a room.
  */
+
 void char_from_room( CHAR_DATA *ch )
 {
         OBJ_DATA *obj;
@@ -1144,6 +1145,8 @@ void char_from_room( CHAR_DATA *ch )
         ch->next_in_room = NULL;
         return;
 }
+
+
 
 
 /*

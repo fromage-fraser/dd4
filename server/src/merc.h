@@ -15,7 +15,7 @@
  *                                                                         *
  *  Much time and thought has gone into this software and you are          *
  *  benefitting.  We hope that you share your changes too. What goes       *
- *  around, comes around.                                                  *
+ *  around, comes around.                                                    *
  ***************************************************************************/
 #pragma once
 /* #include <math.h>   */
@@ -884,6 +884,7 @@ struct mud_data
 */
 	CHAR_DATA           * f_char;
 	CHAR_DATA           * l_char;
+        CHAR_DATA           * update_rch;
         PLAYER_GAME         * l_player;
         TACTICAL_MAP        * tactical;
         int                   flags;
@@ -2778,7 +2779,13 @@ extern DIR_DATA directions [ MAX_DIR ];
 #define POS_FIGHTING                    6
 #define POS_STANDING                    7
 
-
+#define PVNUM_SILENCED             BV01
+#define PVNUM_DENIED               BV02
+#define PVNUM_MUTED                BV03
+#define PVNUM_FROZEN               BV04
+#define PVNUM_LOGGED               BV05
+#define PVNUM_ARRESTED             BV06
+#define PVNUM_DELETED              BV07
 /*
  * ACT bits for players.
  */
@@ -2914,6 +2921,7 @@ struct char_data
         CHAR_DATA *                     next;
         CHAR_DATA                       * prev;
         CHAR_DATA *                     next_in_room;
+	CHAR_DATA           * prev_in_room;
         CHAR_DATA *           next_instance;
 	CHAR_DATA *           prev_instance;
         CHAR_DATA *                     master;
@@ -3002,6 +3010,7 @@ struct char_data
         int                     damage_mitigation;
         int                     damage_enhancement;
         bool               	  speed;
+        
         /*
         *  Does the variable you're about to add belong here or in 'pcdata'?
         */
@@ -3080,6 +3089,9 @@ struct  pc_data
         char                * host;
 	char                * subprompt;	/* subprompt for OLC*/
         char                * prompt_layout;	/* For reconfiguration */
+        sh_int                mclass[MAX_CLASS];
+        int                   played;
+        int                   was_in_room;
         int                   clock; /* END GCMP */
         int             perm_str;
         int             perm_int;
@@ -3331,6 +3343,7 @@ struct room_index_data
 {
         ROOM_INDEX_DATA *       next;
         CHAR_DATA              * first_person;
+        CHAR_DATA              * last_person;
         CHAR_DATA *             people;
         OBJ_DATA *              contents;
         EXTRA_DESCR_DATA *      extra_descr;
@@ -4970,6 +4983,7 @@ HD		* get_help	          args((CHAR_DATA *ch, char *argument));
 /* act_move.c */
 void move_char                          args( ( CHAR_DATA *ch, int door ) );
 int  find_door                          args( ( CHAR_DATA *ch, char *arg ) );
+void 	show_who_can_see     args((CHAR_DATA *ch, char *txt));
 /* ED * get_exit                           args( ( ROOM_INDEX_DATA *room, int dir ) );  */
 ED        * get_exit                       args((int vnum, bool door));
 
@@ -5031,6 +5045,7 @@ void        ch_printf_color        args((CHAR_DATA *ch, const char *fmt, ...));
 void        send_to_char_color     args((char *txt, CHAR_DATA *ch));
 void        display_empty_screen args((DESCRIPTOR_DATA *d));
 void        sub_player             args((CHAR_DATA *ch));
+void        add_player             args((CHAR_DATA *ch));
 /* end GMCP */
 
 /* db.c */
@@ -5086,6 +5101,12 @@ char      * get_time_string        args((time_t time));
 int         str_apd_max            args((const char *, const char *, int, int));
 int         str_cpy_max            args((const char *, const char *, int));
 void        remove_bad_desc_name   args((char *name));
+void        add_char               args((CHAR_DATA *ch));
+void        save_players           args((void));
+char      * capitalize_name        args((const char *str));
+void        open_reserve(void);
+void        close_reserve(void);
+FILE * my_fopen(char *filename, char *opentype, bool silent);
 
 /* fight.c */
 void    violence_update                 args( ( void ) );
@@ -5301,6 +5322,7 @@ void load_infamy_table                       ( );
 void save_infamy_table                       ( );
 void        add_pvnum                   args((CHAR_DATA *ch));
 int         find_free_pvnum             args((void));
+long long   encrypt64                   args((char *str));
 
 /* gamble.c */
 GF *    game_lookup                    args( ( const char *name ) );

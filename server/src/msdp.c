@@ -553,21 +553,24 @@ void msdp_configure_arachnos(DESCRIPTOR_DATA *d, int index)
 	}
 }
 */
+
+/*
 void msdp_configure_editbuffer(DESCRIPTOR_DATA *d, int index)
 {
 	log_printf("msdp_configure_editbuffer(%s)", d->mth->msdp_data[index]->value);
 
 	start_editing(CH(d), d->mth->msdp_data[index]->value);
 }
+*/
 
 struct msdp_type msdp_table[] =
 {
 	{    "ALIGNMENT",                     MSDP_FLAG_SENDABLE|MSDP_FLAG_REPORTABLE,    NULL },
-	{    "ARACHNOS_DEVEL",            MSDP_FLAG_CONFIGURABLE|MSDP_FLAG_REPORTABLE,    msdp_configure_arachnos },
+	/*{    "ARACHNOS_DEVEL",            MSDP_FLAG_CONFIGURABLE|MSDP_FLAG_REPORTABLE,    msdp_configure_arachnos },
 	{    "ARACHNOS_MUDLIST",                               MSDP_FLAG_CONFIGURABLE,    msdp_configure_arachnos },
-	{    "COMMANDS",                             MSDP_FLAG_COMMAND|MSDP_FLAG_LIST,    NULL },
+	*/{    "COMMANDS",                             MSDP_FLAG_COMMAND|MSDP_FLAG_LIST,    NULL },
 	{    "CONFIGURABLE_VARIABLES",          MSDP_FLAG_CONFIGURABLE|MSDP_FLAG_LIST,    NULL },
-	{    "EDIT_BUFFER",               MSDP_FLAG_REPORTABLE|MSDP_FLAG_CONFIGURABLE,    msdp_configure_editbuffer },
+	/*{    "EDIT_BUFFER",               MSDP_FLAG_REPORTABLE|MSDP_FLAG_CONFIGURABLE,    msdp_configure_editbuffer }, */
 	{    "EXPERIENCE",                    MSDP_FLAG_SENDABLE|MSDP_FLAG_REPORTABLE,    NULL },
 	{    "EXPERIENCE_MAX",                MSDP_FLAG_SENDABLE|MSDP_FLAG_REPORTABLE,    NULL },
 	{    "HEALTH",                        MSDP_FLAG_SENDABLE|MSDP_FLAG_REPORTABLE,    NULL },

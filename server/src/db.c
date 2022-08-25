@@ -4912,7 +4912,159 @@ void load_games( FILE *fp )
     return;
 }
 
+void add_char( CHAR_DATA *ch )
+{
+	push_call("add_char(%p)",ch);
 
+	if (!IS_NPC(ch))
+	{
+		 /*if (learned(ch, gsn_first_strike) && mud->f_char)
+		{
+			INSERT_LEFT(ch, mud->f_char, mud->f_char, next, prev);
+		}
+		else
+		{ */
+			LINK(ch, mud->f_char, mud->l_char, next, prev);
+		/* } */
+	}
+	else
+	{
+		LINK(ch, mud->f_char, mud->l_char, next, prev);
+		LINK(ch, ch->pIndexData->first_instance, ch->pIndexData->last_instance, next_instance, prev_instance);
+	}
+	pop_call();
+	return;
+}
+
+char *capitalize_name( const char *str )
+{
+	static char strcap[MAX_STRING_LENGTH];
+	char *pti, *pto;
+
+	push_call("capitalize_name(%p)",str);
+
+	if (str == NULL)
+	{
+		*strcap = '\0';
+		pop_call();
+		return strcap;
+	}
+	pti=(char *)str;
+	pto=(char *)strcap;
+	for ( ; *pti != '\0'; pti++, pto++ )
+	{
+		*pto=LOWER(*pti);
+	}
+	*pto = '\0';
+	*strcap = UPPER(*strcap);
+	pop_call();
+	return strcap;
+}
+
+/*
+void save_players( )
+{
+	FILE *fpout;
+	int vnum;
+
+	push_call("save_players()");
+
+	close_reserve();
+
+	if ((fpout = my_fopen(PLAYER_LIST_TMP, "w", FALSE)) == NULL)
+	{
+		perror(PLAYER_LIST_TMP);
+		open_reserve();
+		pop_call();
+		return;
+	}
+
+	for (vnum = 0 ; vnum < MAX_PVNUM ; vnum++)
+	{
+		if (pvnum_index[vnum])
+		{
+			fprintf( fpout, "P %5d %10d %10d %s~\n", vnum, pvnum_index[vnum]->date, pvnum_index[vnum]->flags, pvnum_index[vnum]->name);
+		}
+	}
+
+	fprintf( fpout, "$\nXXXXXXXXXX\n#%s\n", PLAYER_LIST );
+
+	my_fclose( fpout );
+
+	if (is_valid_save(PLAYER_LIST_TMP, PLAYER_LIST ))
+	{
+		rename (PLAYER_LIST_TMP, PLAYER_LIST);
+	}
+	else
+	{
+		log_printf("Invalid save: %s", PLAYER_LIST);
+	}
+	open_reserve();
+
+	pop_call();
+	return;
+}
+
+
+void open_reserve( void )
+{
+	FILE_DATA *fdp;
+
+	push_call("open_reserve(void)");
+
+	fpReserve = fopen(NULL_FILE, "r");
+
+	if (fpReserve == NULL)
+	{
+		log_printf("open_reserve: Failed to open %s (%s)", NULL_FILE, "r");
+		print_errno(errno);
+	}
+	else
+	{
+		ALLOCMEM(fdp, FILE_DATA, 1);
+
+		fdp->filename = STRALLOC(NULL_FILE);
+		fdp->opentype = STRALLOC("r");
+		fdp->fp = fpReserve;
+
+		LINK(fdp, mud->f_open_file, mud->l_open_file, next, prev);
+	}
+	pop_call();
+	return;
+}
+
+
+void close_reserve( void )
+{
+	FILE_DATA *fdp;
+
+	push_call("close_reserve(void)");
+
+	for (fdp = mud->f_open_file ; fdp ; fdp = fdp->next)
+	{
+		if (fdp->fp == fpReserve)
+		{
+			fclose(fdp->fp);
+
+			STRFREE(fdp->filename);
+			STRFREE(fdp->opentype);
+
+			UNLINK(fdp, mud->f_open_file, mud->l_open_file, next, prev);
+			FREEMEM(fdp);
+
+			pop_call();
+			return;
+		}
+	}
+	if (fdp == NULL)
+	{
+		log_printf("close_reserve: file data not found");
+		dump_stack();
+	}
+	pop_call();
+	return;
+}
+*/
 
 /*
  * This function is here to aid in debugging.

@@ -3243,5 +3243,30 @@ void do_pattern(CHAR_DATA* ch, char* argument)
         return;
 }
 
+void show_who_can_see( CHAR_DATA *ch, char *txt )
+{
+	CHAR_DATA *fch;
 
+	push_call("show_who_can_see(%p,%p)",ch,txt);
+
+	for (fch = ch->in_room->first_person ; fch ; fch = fch->next_in_room)
+	{
+		if (fch->desc == NULL || fch == ch || !IS_AWAKE(fch))
+		{
+			continue;
+		}
+
+			if (!can_see(fch, ch))
+			{
+				continue;
+			}
+		if (is_same_group(fch, ch) && !IS_NPC(fch))
+		{
+			continue;
+		}
+		ch_printf(fch, "%s%s", capitalize(PERS(ch, fch)), txt);
+	}
+	pop_call();
+	return;
+}
 /* EOF act_move.c */
