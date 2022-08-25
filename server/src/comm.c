@@ -686,6 +686,8 @@ void game_loop_unix(int control, int wizPort)
                         if (d->incomm[0] != '\0')
                         {
                                 d->fcommand     = TRUE;
+                                 if ( d->pProtocol != NULL )
+                                        d->pProtocol->WriteOOB = 0;
                                 stop_idling(d->character);
 
                                 if (d->connected == CON_PLAYING)
@@ -789,6 +791,7 @@ void new_descriptor (int control)
         int                     desc;
         socklen_t               size;
         int                     addr;
+        dnew->pProtocol     = ProtocolCreate(); /* <--- GCMP */
 
         size = sizeof(sock);
         getsockname(control, (struct sockaddr *) &sock, &size);
@@ -900,6 +903,7 @@ void new_descriptor (int control)
         dnew->next = descriptor_list;
         descriptor_list = dnew;
         connection_count++;
+        ProtocolNegotiate(dnew); /* <--- GCMP */
 
         /*
          * Send the greeting.
@@ -980,7 +984,7 @@ void close_socket (DESCRIPTOR_DATA *dclose)
 
         /* RT socket leak fix */
         free_mem(dclose->outbuf, dclose->outsize);
-
+         ProtocolDestroy( dclose->pProtocol ); /* <--- GCMP */
         dclose->next    = descriptor_free;
         descriptor_free = dclose;
         connection_count--;
@@ -991,13 +995,20 @@ bool read_from_descriptor (DESCRIPTOR_DATA *d)
 {
         int iStart;
 
+        static char read_buf[MAX_PROTOCOL_BUFFER]; /* <--- Add this line */
+        read_buf[0] = '\0';                        /* <--- Add this line */
+
         /* Hold horses if pending command already. */
         if (d->incomm[0] != '\0')
                 return TRUE;
 
-        /* Check for overflow. */
+        /* Check for overflow. 
         iStart = strlen(d->inbuf);
-        if ( iStart >= sizeof(d->inbuf) - 10 )
+        if ( iStart >= sizeof(d->inbuf) - 10 ) */
+        
+        /* Check for overflow. */
+        iStart = 0;
+        if ( strlen(d->inbuf) >= sizeof(d->inbuf) - 10 )
         {
                 sprintf(log_buf, "%s input overflow!", d->host);
                 log_string(log_buf);
@@ -1015,9 +1026,12 @@ bool read_from_descriptor (DESCRIPTOR_DATA *d)
                 if (c == '\0' || c == EOF)
                         break;
                 putc(c, stdout);
-                if (c == '\r')
+               /* if (c == '\r')
                         putc('\n', stdout);
-                d->inbuf[iStart++] = c;
+                d->inbuf[iStart++] = c; */
+                if ( c == '\r' )
+	                putc( '\n', stdout );
+	        read_buf[iStart++] = c;
                 if (iStart > sizeof(d->inbuf) - 10)
                         break;
         }
@@ -1028,13 +1042,21 @@ bool read_from_descriptor (DESCRIPTOR_DATA *d)
         {
                 int nRead;
 
-                nRead = read(d->descriptor, d->inbuf + iStart,
+       /*         nRead = read(d->descriptor, d->inbuf + iStart,
                              sizeof(d->inbuf) - 10 - iStart);
                 if (nRead > 0)
                 {
                         iStart += nRead;
                         if (d->inbuf[iStart-1] == '\n' || d->inbuf[iStart-1] == '\r')
                                 break;
+                } */
+                nRead = read( d->descriptor, read_buf + iStart,
+	        sizeof(read_buf) - 10 - iStart );
+                if ( nRead > 0 )
+                {
+                iStart += nRead;
+                if ( read_buf[iStart-1] == '\n' || read_buf[iStart-1] == '\r' )
+                        break;
                 }
                 else if (nRead == 0)
                 {
@@ -1047,8 +1069,12 @@ bool read_from_descriptor (DESCRIPTOR_DATA *d)
         }
 #endif
 
-        d->inbuf[iStart] = '\0';
+     /*   d->inbuf[iStart] = '\0';
+        return TRUE; */
+        read_buf[iStart] = '\0';
+        ProtocolInput( d, read_buf, iStart, d->inbuf );
         return TRUE;
+        
 }
 
 
@@ -1161,7 +1187,9 @@ bool process_output (DESCRIPTOR_DATA *d, bool fPrompt)
         /*
          * Bust a prompt.
          */
-        if (fPrompt && !merc_down && d->connected == CON_PLAYING)
+        if ( d->pProtocol->WriteOOB ) /* <-- Add this, and the ";" and "else" */
+        ; /* The last sent data was OOB, so do NOT draw the prompt */
+        else if (fPrompt && !merc_down && d->connected == CON_PLAYING)
         {
                 if (d->showstr_point)
                 {
@@ -1625,6 +1653,9 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
  */
 void write_to_buffer (DESCRIPTOR_DATA *d, const char *txt, int length)
 {
+        txt = ProtocolOutput( d, txt, &length );  /* <--- GCMP */
+        if ( d->pProtocol->WriteOOB > 0 )         /* <--- GCMP */
+                --d->pProtocol->WriteOOB;             /* <--- GCMP */
         /*
          * Find length in case caller didn't.
          */
@@ -1633,8 +1664,9 @@ void write_to_buffer (DESCRIPTOR_DATA *d, const char *txt, int length)
 
         /*
          * Initial \n\r if needed.
-         */
-        if (d->outtop == 0 && !d->fcommand)
+         *
+        if (d->outtop == 0 && !d->fcommand) */
+        if ( d->outtop == 0 && !d->fcommand && !d->pProtocol->WriteOOB )
         {
                 d->outbuf[0]    = '\n';
                 d->outbuf[1]    = '\r';
@@ -1814,7 +1846,8 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 {
                         /* Old player */
                         write_to_buffer(d, "Password: ", 0);
-                        write_to_buffer(d, echo_off_str, 0);
+                        /* write_to_buffer(d, echo_off_str, 0); */
+                        ProtocolNoEcho( d, true );
                         d->connected = CON_GET_OLD_PASSWORD;
                         return;
                 }
@@ -1842,7 +1875,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 }
 
                 write_to_buffer(d, echo_on_str, 0);
-
+                /* ProtocolNoEcho( d, false ); */
                 if (check_reconnect(d, ch->name, TRUE))
                         return;
 
@@ -1863,8 +1896,11 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 switch (*argument)
                 {
                     case 'y': case 'Y':
+                            ProtocolNoEcho( d, true );
+                        sprintf( buf, "New character.\n\rGive me a password for %s: ",ch->name );
+                        /*
                         sprintf(buf, "\n\rNew character.\n\rEnter a password for %s: %s",
-                                ch->name, echo_off_str);
+                                ch->name, echo_off_str); */
                         write_to_buffer(d, buf, 0);
                         d->connected = CON_GET_NEW_PASSWORD;
                         break;
@@ -1921,13 +1957,15 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         return;
                 }
 
-                write_to_buffer(d, echo_on_str, 0);
+                 /*write_to_buffer(d, echo_on_str, 0); */ 
+                 ProtocolNoEcho( d, false );
                 write_to_buffer(d, "Do you want to enable colour? [y/n] ",0);
                 d->connected = CON_CHECK_ANSI;
                 break;
 
             case CON_CHECK_ANSI:
-                write_to_buffer(d, echo_on_str, 0);
+                /* write_to_buffer(d, echo_on_str, 0); */
+                 ProtocolNoEcho( d, false );
 
                 switch (*argument)
                 {
@@ -2341,7 +2379,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         sprintf(buf, "%s has entered the Dragons Domain...", ch->name);
                         do_info(ch,  buf);
                 }
-
+                MXPSendTag( d, "<VERSION>" );  /* <--- GCMP */
                 /*
                  *  Entry lag and warning; Gez & Shade 2000
                  */
@@ -2428,7 +2466,8 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         return;
                 }
 
-                write_to_buffer(d, echo_on_str, 0);
+                /* write_to_buffer(d, echo_on_str, 0); */
+                 ProtocolNoEcho( d, false );
 
                 for (temp = descriptor_list; temp; temp = temp->next)
                 {

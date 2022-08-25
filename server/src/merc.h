@@ -22,6 +22,7 @@
 #include <stdint.h>
 #include <unistd.h>
 #define _XOPEN_SOURCE
+#include "protocol.h"
 
 /*
  * Accommodate old non-Ansi compilers.
@@ -760,6 +761,7 @@ struct descriptor_data
         char *                outbuf;
         int                   outsize;
         int                   outtop;
+        protocol_t *        pProtocol; /* <--- GMCP */
 
         /* ident stuff */
         int                   ifd;
