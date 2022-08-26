@@ -3636,11 +3636,13 @@ void WriteGMCP( descriptor_t *apDescriptor, GMCP_PACKAGE package )
 	sprintf( buf, "%s%s.%s { ", ( char * ) iac_sb_gmcp, GMCPPackageTable[package].module, GMCPPackageTable[package].message );
 	#else
 	sprintf( buf, "%s%s.%s {{ ", ( char * ) iac_sb_gmcp, GMCPPackageTable[package].module, GMCPPackageTable[package].message );
+
 	#endif
 
 	for ( i = 0; GMCPVariableTable[i].variable != GMCP_MAX; i++ )
 	{
-		if ( GMCPVariableTable[i].package != package )
+	
+      if ( GMCPVariableTable[i].package != package )
 			continue;
 
 		if ( !first )
@@ -3648,15 +3650,16 @@ void WriteGMCP( descriptor_t *apDescriptor, GMCP_PACKAGE package )
 			first++;
 			switch ( GMCPVariableTable[i].type )
 			{
-				case GMCP_STRING: sprintf( buf2, "\"%s\": \"%s\"", GMCPVariableTable[i].name, GMCPStrip( apDescriptor->pProtocol->GMCPVariable[i] ) );
-				break;
+				case GMCP_STRING: 
+               sprintf( buf2, "\"%s\": \"%s\"", GMCPVariableTable[i].name, GMCPStrip( apDescriptor->pProtocol->GMCPVariable[i] ) );
+               break;
 
 				case GMCP_NUMBER: sprintf( buf2, "\"%s\": \"%d\"", GMCPVariableTable[i].name, atoi( apDescriptor->pProtocol->GMCPVariable[i] ) );
-				break;
+            break;
 
 				#ifndef COLOR_CODE_FIX
 				case GMCP_OBJECT: sprintf( buf2, ", \"%s\": { %s }", GMCPVariableTable[i].name, apDescriptor->pProtocol->GMCPVariable[i] );
-				break;
+            break;
 				#else
 				case GMCP_OBJECT: sprintf( buf2, ", \"%s\": {{ %s }", GMCPVariableTable[i].name, apDescriptor->pProtocol->GMCPVariable[i] );
 				break;
@@ -3664,7 +3667,7 @@ void WriteGMCP( descriptor_t *apDescriptor, GMCP_PACKAGE package )
 
 				case GMCP_ARRAY:
 					sprintf( buf, "%s%s.%s [ %s ]%s", ( char * ) iac_sb_gmcp, GMCPPackageTable[package].module, GMCPPackageTable[package].message, apDescriptor->pProtocol->GMCPVariable[i], ( char * ) iac_se );
-					Write( apDescriptor, buf );
+               Write( apDescriptor, buf );
 					return;
 				break;
 
@@ -3743,7 +3746,7 @@ void UpdateGMCPString( descriptor_t *apDescriptor, GMCP_VARIABLE var, const char
 	return;
 }
 
-void UpdateGMCPNumber( descriptor_t *apDescriptor, GMCP_VARIABLE var, const long long number )
+void UpdateGMCPNumber( descriptor_t *apDescriptor, GMCP_VARIABLE var, const long number )
 {
 	char buf[MAX_PROTOCOL_BUFFER];
 
@@ -3753,7 +3756,7 @@ void UpdateGMCPNumber( descriptor_t *apDescriptor, GMCP_VARIABLE var, const long
 	if ( var < 0 || var >= GMCP_MAX )
 		return;
 
-	sprintf( buf, "%lld", number );
+	sprintf( buf, "%ld", number );
 
 	if ( !strcmp( apDescriptor->pProtocol->GMCPVariable[var], buf ) )
 		return;
@@ -3767,10 +3770,10 @@ void UpdateGMCPNumber( descriptor_t *apDescriptor, GMCP_VARIABLE var, const long
 
 static char *OneArg( char *fStr, char *bStr )
 {
-	while ( isspace( *fStr ) )
-		fStr++;
+   char argEnd = ' ';
 
-	char argEnd = ' ';
+   while ( isspace( *fStr ) )
+		fStr++;
 
 	if( *fStr == '\'')
 	{

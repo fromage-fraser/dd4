@@ -52,9 +52,9 @@ typedef struct descriptor_data descriptor_t;
  If your offer a Mudlet GUI for autoinstallation, put the path/filename here.
  ******************************************************************************/
 
-
+/*
 #define MUDLET_PACKAGE "1\nhttp://www.godwars2.org/download/mudlet/GW2_GUI.mpackage"
-
+*/
 
 /******************************************************************************
  Symbolic constants.
@@ -83,14 +83,14 @@ typedef struct descriptor_data descriptor_t;
 #define TELOPT_GMCP                    201
 
 /* UNCOMMENT the line below if your color code is '{'. */
-
+/*
 #define COLOR_CODE_FIX
-
+*/
 
 /* These constants are used to send Discord information to the client, set appropriately.
 https://wiki.mudlet.org/w/Standards:Discord_GMCP */
 
-#define DISCORD_INVITE_URL ""
+#define DISCORD_INVITE_URL "www.blarg.org"
 #define DISCORD_APPLICACTION_ID ""
 #define DISCORD_ICON_1 ""
 #define DISCORD_ICON_2 ""
@@ -786,7 +786,7 @@ extern const char iac_sb_gmcp[];
 extern const char iac_se[];
 extern void SendUpdatedGMCP( descriptor_t *apDescriptor );
 extern void UpdateGMCPString( descriptor_t *apDescriptor, GMCP_VARIABLE var, const char *string );
-extern void UpdateGMCPNumber( descriptor_t *apDescriptor, GMCP_VARIABLE var, const long long number );
+extern void UpdateGMCPNumber( descriptor_t *apDescriptor, GMCP_VARIABLE var, const long number );
 /*************** END GMCP ***************/
 
 #endif /* PROTOCOL_H */

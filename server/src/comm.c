@@ -995,8 +995,8 @@ bool read_from_descriptor (DESCRIPTOR_DATA *d)
 {
         int iStart;
 
-        static char read_buf[MAX_PROTOCOL_BUFFER]; /* <--- Add this line */
-        read_buf[0] = '\0';                        /* <--- Add this line */
+        static char read_buf[MAX_PROTOCOL_BUFFER]; /* <--- GCMP */
+        read_buf[0] = '\0';                        /* <--- GCMP */
 
         /* Hold horses if pending command already. */
         if (d->incomm[0] != '\0')
@@ -1270,6 +1270,9 @@ bool process_output (DESCRIPTOR_DATA *d, bool fPrompt)
 
                         if (IS_SET(ch->act, PLR_PROMPT))
                                 bust_a_prompt(d);
+
+        		if ( !d->pProtocol->bSGA )			/* <- GCMP */
+			        write_to_buffer( d, GoAheadStr, 0 );	
 
                         if (IS_SET(ch->act, PLR_TELNET_GA))
                                 write_to_buffer(d, go_ahead_str, 0);
@@ -1874,8 +1877,8 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         return;
                 }
 
-                write_to_buffer(d, echo_on_str, 0);
-                /* ProtocolNoEcho( d, false ); */
+                /* write_to_buffer(d, echo_on_str, 0); */
+                ProtocolNoEcho( d, false );   /* <--- GMCP */
                 if (check_reconnect(d, ch->name, TRUE))
                         return;
 
@@ -2959,7 +2962,7 @@ bool check_reconnect (DESCRIPTOR_DATA *d, char *name, bool fConn)
                                         ch->name, d->host, d->descriptor);
                                 log_string(log_buf);
                                 d->connected = CON_PLAYING;
-
+                                MXPSendTag( d, "<VERSION>" );
                                 /*
                                  *  Reconnection must not be able to be used to
                                  *  avoid entry lag; Gez 2000
@@ -3044,7 +3047,8 @@ bool check_playing (DESCRIPTOR_DATA *d, char *name)
 
                         write_to_buffer(d, "To reconnect using that character, enter their "
                                         "password.\n\rPassword for reconnection: ", 0);
-                        write_to_buffer(d, echo_off_str, 0);
+                        /* write_to_buffer(d, echo_off_str, 0); */
+                        ProtocolNoEcho( d, true );   /* <--- GMCP */
                         d->connected = CON_GET_DISCONNECTION_PASSWORD;
 
                         return TRUE;
