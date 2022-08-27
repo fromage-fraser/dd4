@@ -12,18 +12,20 @@ CP_VERBOSE=-v
 CHOWN_PATH=/bin/chown
 CHMOD_PATH=/bin/chmod
 ECHO_PATH=/bin/echo
-SERVER_USER=dakur
-LOCAL_AREA_FILE_DIR=/home/dd/dd4/server/area/
-SERVER_AREA_FILE_DIR=/home/dakur/dd4/area/
-LOCAL_DOC_DIR=/home/dd/dd4/server/doc/
-SERVER_DOC_DIR=/home/dakur/dd4/doc/
-LOCAL_STARTUP_SCRIPT=/home/dd/dd4/server/scripts/start_dd4
-SERVER_STARTUP_SCRIPT=/home/dakur/dd4/scripts/start_dd4
-LOCAL_EXECUTABLE=/home/dd/dd4/server/src/dd4
-SERVER_EXECUTABLE=/home/dakur/dd4/src/dd4.new
+SERVER_USER=ddhost
+LOCAL_AREA_FILE_DIR=/home/ddsrc/dd4/server/area/
+SERVER_AREA_FILE_DIR=/home/ddhost/dd4/area/
+LOCAL_MOBPROG_FILE_DIR=/home/ddsrc/dd4/server/area/MOBProgs/
+SERVER_MOBPROG_FILE_DIR=/home/ddhost/dd4/area/MOBProgs/
+LOCAL_DOC_DIR=/home/ddsrc/dd4/server/doc/
+SERVER_DOC_DIR=/home/ddhost/dd4/doc/
+LOCAL_STARTUP_SCRIPT=/home/ddsrc/dd4/server/scripts/start_dd4
+SERVER_STARTUP_SCRIPT=/home/ddhost/dd4/scripts/start_dd4
+LOCAL_EXECUTABLE=/home/ddsrc/dd4/server/src/dd4
+SERVER_EXECUTABLE=/home/ddhost/dd4/src/dd4.new
 
 if [[ $EUID -ne 0 ]]; then
-   $ECHO_PATH -e "\r\n\e[38;5;0;48;5;196mThis script must be run as root, exiting without doing anything...\e[0m\r\n" 
+   $ECHO_PATH -e "\r\n\e[38;5;0;48;5;196mThis script must be run as root, exiting without doing anything...\e[0m\r\n"
    exit 1
 fi
 
