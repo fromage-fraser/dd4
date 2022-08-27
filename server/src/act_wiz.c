@@ -1173,10 +1173,10 @@ void do_ostat( CHAR_DATA *ch, char *argument )
 
                 if (IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED))
                         strcat (buf, " empowered");
-        
+
                 if (IS_SET(obj->ego_flags, EGO_ITEM_SERRATED))
                         strcat (buf, " serrated");
-                
+
                 if (IS_SET(obj->ego_flags, EGO_ITEM_ENGRAVED))
                         strcat (buf, " engraved");
 
@@ -3839,7 +3839,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
                              "  bounty fame questpoints totalqp questtime\n\r"
                              "  patron deity_timer deity_flags affected_by\n\r"
                              "  bank plat gold silver copper age\n\r"
-                             "  rage spec\n\r"
+                             "  rage spec act\n\r"
                              "String being one of:\n\r"
                              "  name short long title spec\n\r", ch);
                 return;
@@ -4081,6 +4081,27 @@ void do_mset( CHAR_DATA *ch, char *argument )
         if( !str_cmp( arg2, "affected_by" ) )
         {
                 victim->affected_by = bvalue;
+                return;
+        }
+
+        if( !str_cmp( arg2, "act" ) )
+        {
+                /* Below to ensure NPC bit is not removed from mobs. */
+
+                if (IS_NPC(victim))
+                {
+                        if ( (ACT_IS_NPC & (1 << bvalue )) != 0 )
+                        {
+                                victim->act = ( bvalue + ACT_IS_NPC );
+
+                        }
+                        else {
+                                victim->act = bvalue;
+                        }
+                }
+                else {
+                        victim->act = bvalue;
+                }
                 return;
         }
 
@@ -5197,8 +5218,8 @@ void do_owhere( CHAR_DATA *ch, char *argument )
         OBJ_DATA  *obj;
         OBJ_DATA  *in_obj;
         CHAR_DATA *rch;
-        char       buf  [ MAX_STRING_LENGTH   ];
-        char       arg  [ MAX_INPUT_LENGTH    ];
+        char       buf  [ MAX_STRING_LENGTH ];
+        char       arg  [ MAX_INPUT_LENGTH  ];
         int        obj_counter = 1;
         bool       found = FALSE;
 
@@ -5237,7 +5258,7 @@ void do_owhere( CHAR_DATA *ch, char *argument )
                                 if ( !can_see( ch, in_obj->carried_by ) )
                                         continue;
 
-                                sprintf( buf, "%-3d %s carried by %s at [%5d].\n\r",
+                                sprintf( buf, "[%-3d] {g%s{x carried by {c%s{x at [%5d]\n\r",
                                         obj_counter,
                                         obj->short_descr,
                                         PERS( in_obj->carried_by, ch ),
@@ -5245,8 +5266,10 @@ void do_owhere( CHAR_DATA *ch, char *argument )
                         }
                         else
                         {
-                                sprintf( buf, "%-3d %s in %s at [%5d].\n\r", obj_counter,
-                                        obj->short_descr, ( !in_obj->in_room ) ?
+                                sprintf( buf, "[%-3d] {g%s{x in {c%s{x at [%5d]\n\r",
+                                        obj_counter,
+                                        obj->short_descr,
+                                        ( !in_obj->in_room ) ?
                                         "somewhere" : in_obj->in_room->name,
                                         ( !in_obj->in_room ) ?
                                         0 : in_obj->in_room->vnum );

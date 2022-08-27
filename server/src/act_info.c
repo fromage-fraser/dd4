@@ -667,10 +667,13 @@ void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
 {
         AFFECT_DATA             *paf;
         char tmp [MAX_STRING_LENGTH];
+        int addprop;
 
         buf[0] = '\0'; /* buf1 sent to char at end */
 
-       sprintf( tmp, "\n\r=================================\n\r");
+        addprop = 0;
+
+        sprintf( tmp, "\n\r=================================\n\r");
         strcat( buf, tmp);
 
         switch (obj->item_type)
@@ -678,13 +681,13 @@ void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
         case ITEM_WEAPON:
                 if (ch->pcdata->learned[gsn_innate_knowledge] < 50 )
                 {
-                        sprintf( tmp, "You cant quite determine the damage output of %s.\n\r", obj->name);
+                        sprintf( tmp, "You can't determine the damage output of %s yet.\n\r", obj->short_descr);
                         strcat( buf, tmp);
 
                 }
                 else if (ch->pcdata->learned[gsn_innate_knowledge] < 65)
                 {
-                sprintf( tmp, "This weapon does on average {W%d{x damage.\n\r",
+                sprintf( tmp, "This weapon does {W%d{x damage on average.\n\r",
                         (obj->value[1]+obj->value[2])/2);
                 strcat( buf, tmp);
                 }
@@ -705,7 +708,7 @@ void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
                 }
                 else
                 {
-                        sprintf( tmp, "You cant quite determine the armour class of %s.\n\r", obj->name);
+                        sprintf( tmp, "You can't determine the armour class of %s yet.\n\r", obj->short_descr);
                         strcat( buf, tmp);
                 }
                 break;
@@ -727,9 +730,17 @@ void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
                 }
                 else
                 {
-                        sprintf( tmp, "%s has additional properties..\n\r", obj->name);
-                        strcat( buf, tmp);
-                        break;
+                        if (addprop < 1)
+                        {
+                                sprintf( tmp, "%s has other properties you can't determine yet.\n\r", obj->short_descr);
+                                addprop++;
+                                tmp[0] = UPPER( tmp[0] );
+                                strcat( buf, tmp);
+                                break;
+                        }
+                        else {
+                                break;
+                        }
                 }
         }
 
@@ -750,16 +761,24 @@ void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
                 }
                 else
                 {
-                        sprintf( tmp, "%s has additional properties..\n\r", obj->name);
-                        strcat( buf, tmp);
-                        break;
+                        if (addprop < 1)
+                        {
+                                sprintf( tmp, "%s has other properties you can't determine yet.\n\r", obj->short_descr);
+                                addprop++;
+                                tmp[0] = UPPER( tmp[0] );
+                                strcat( buf, tmp);
+                                break;
+                        }
+                        else {
+                                break;
+                        }
                 }
         }
         if IS_SET(obj->extra_flags, ITEM_EGO)
         {
                 if  (ch->pcdata->learned[gsn_innate_knowledge] < 20)
                 {
-                        sprintf( tmp, "%s has been enhanced by a Smithy\n\r", obj->name);
+                        sprintf( tmp, "%s has been enhanced by a smithy.\n\r", obj->short_descr);
                         strcat( buf, tmp);
                 }
                 else{

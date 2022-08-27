@@ -628,6 +628,7 @@ int     gsn_swallow;
 int     gsn_serrate;
 int     gsn_innate_knowledge;
 int     gsn_spit_mucus;
+int     gsn_steam_breath;
 
 /*
  *  Spell groups
@@ -688,6 +689,8 @@ int     gsn_group_inscription;
 int     gsn_group_alchemy;
 int     gsn_group_turret_tech;
 int     gsn_group_mech_tech;
+int     gsn_group_adv_smith;
+int     gsn_group_weaponlore;
 int     gsn_group_last;
 
 
@@ -758,7 +761,7 @@ void            mprog_read_programs     (FILE *fp, MOB_INDEX_DATA *pMobIndex);
  * Increase MAX_STRING if you have to.
  * Tune the others only if you understand what you're doing.
  */
-#define                 MAX_STRING      5500000     /* 5000000 */
+#define                 MAX_STRING      6000000     /* 5000000 */
 
 #if defined( machintosh )
 # define                        MAX_PERM_BLOCK  131072
@@ -771,13 +774,14 @@ const int               rgSizeList              [ MAX_MEM_LIST       ]  =
 };
 
 #else
-# define                        MAX_PERM_BLOCK  131072
-# define                        MAX_MEM_LIST    12
+# define                        MAX_PERM_BLOCK  131072 /* was 131072 */
+# define                        MAX_MEM_LIST    12 /* was 12 */
 
 void *                  rgFreeList              [ MAX_MEM_LIST       ];
 const int               rgSizeList              [ MAX_MEM_LIST       ]  =
 {
         16, 32, 64, 128, 256, 1024, 2048, 4096, 8192, 16384, 32768, 65536
+        /* was 16, 32, 64, 128, 256, 1024, 2048, 4096, 8192, 16384, 32768, 65536 */
 };
 #endif
 
@@ -2480,6 +2484,7 @@ void load_specials( FILE *fp )
 
                         if ( pMobIndex->spec_fun == spec_lookup("spec_poison")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_bloodsucker")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_superwimpy")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_spectral_minion")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_kungfu_poison")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_guard")
@@ -2494,6 +2499,7 @@ void load_specials( FILE *fp )
                         ||   pMobIndex->spec_fun == spec_lookup("spec_large_whale")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_kappa")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_laghathti")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_uzollru")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_warrior") )
                                 bonus = 10;
 

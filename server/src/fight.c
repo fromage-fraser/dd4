@@ -605,12 +605,17 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                                         chance *= 100; /* shifters */
                         }
 
-                        chance /= 100; /* had weirdness with exp_mod so two step % */
-
-                        chance += (get_curr_dex(ch) - 25);
+                        if (!IS_NPC(ch))
+                        {
+                                /* NPCs don't have dex and don't have %s boosted above -- Owl 23/8/22 */
+                                chance /= 100;
+                                chance += (get_curr_dex(ch) - 25);
+                        }
 
                         if (chance < number_percent())
+                        {
                                 break;
+                        }
 
                 }
 
@@ -719,10 +724,12 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                                         dam += number_range(4, 8);
                         }
 
-                        if (wield && dam > 2000)
+                        if (wield && dam > MAX_DAMAGE)
                         {
-                                sprintf(buf, "One_hit dam range > 2000 from %d to %d",
-                                        wield->value[1], wield->value[2]);
+                                sprintf(buf, "One_hit dam range > %d from %d to %d",
+                                        MAX_DAMAGE,
+                                        wield->value[1],
+                                        wield->value[2] );
                                 bug(buf, 0);
                         }
                 }
@@ -1107,7 +1114,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
 
                 if (dam > MAX_DAMAGE)
                 {
-                        /*char buf[MAX_STRING_LENGTH];
+                        char buf[MAX_STRING_LENGTH];
 
                         if (IS_NPC(ch) && ch->desc)
                                 sprintf(buf, "Damage: %d from %s by %s: > %d points with %d dt!",
@@ -1123,7 +1130,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                                         MAX_DAMAGE,
                                         dt);
 
-                        log_string(buf);*/
+                        log_string(buf);
                         dam = MAX_DAMAGE;
                 }
 
@@ -1270,7 +1277,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                     && number_percent() < victim->pcdata->learned[gsn_resist_toxin]
                     && victim->gag < 2)
                 {
-                        send_to_char("You resist the poison surging through your veins.\n\r", victim);
+                        send_to_char("<135>You resist the poison surging through your veins.<0>\n\r", victim);
                 }
                 else
                 {
@@ -1585,7 +1592,7 @@ bool is_safe (CHAR_DATA *ch, CHAR_DATA *victim)
 
                 if (!in_pkill_range(ch, victim->rider) && !IS_IMMORTAL( ch ))
                 {
-                        send_to_char("They are not within your pkilling range.\n\r", ch);
+                        send_to_char("They are not in your pkilling range.\n\r", ch);
                         return TRUE;
                 }
         }
@@ -1627,7 +1634,7 @@ bool is_safe (CHAR_DATA *ch, CHAR_DATA *victim)
 
         if (!in_pkill_range(ch, victim) && !IS_IMMORTAL( ch ))
         {
-                send_to_char("They are not within your pkilling range.\n\r",ch);
+                send_to_char("They are not in your pkilling range.\n\r",ch);
                 return TRUE;
         }
 
@@ -1887,7 +1894,7 @@ bool check_dodge(CHAR_DATA *ch, CHAR_DATA *victim)
                 act ("<77>$C dodges your attack.<0>", ch, NULL, victim, TO_CHAR);
 
         if(!IS_NPC(victim) && !victim->gag)
-                act ("<113You dodge $n's attack.<0>", ch, NULL, victim, TO_VICT);
+                act ("<113>You dodge $n's attack.<0>", ch, NULL, victim, TO_VICT);
 
         return TRUE;
 }
@@ -4117,6 +4124,11 @@ void do_smoke_bomb (CHAR_DATA *ch, char *argument)
         int             door;
         AFFECT_DATA     af;
 
+
+        if ( (IS_NPC(ch)
+        &&   !(ch->spec_fun == spec_lookup("spec_superwimpy")) ))
+                return;
+
         if (!(victim = ch->fighting))
         {
                 if (ch->position == POS_FIGHTING)
@@ -4158,8 +4170,18 @@ void do_smoke_bomb (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (IS_NPC(ch) || number_percent() > (50 + (ch->pcdata->learned[gsn_smoke_bomb] / 2)))
+        if ( !IS_NPC(ch)
+        && (number_percent() > (50 + (ch->pcdata->learned[gsn_smoke_bomb] / 2))))
         {
+                act ("You throw a smoke bomb but your enemies aren't confused!", ch, NULL, NULL, TO_CHAR);
+                act ("$n drops a smoke bomb but fails to escape!", ch, NULL, NULL, TO_ROOM);
+                return;
+        }
+
+        if ( IS_NPC(ch)
+        && (number_percent() > 85))
+        {
+                /* Put this in here for spec_superwimpy -- Owl 22/8/22 */
                 act ("You throw a smoke bomb but your enemies aren't confused!", ch, NULL, NULL, TO_CHAR);
                 act ("$n drops a smoke bomb but fails to escape!", ch, NULL, NULL, TO_ROOM);
                 return;
@@ -4625,7 +4647,8 @@ void do_trap (CHAR_DATA *ch, char *argument)
         char    arg[MAX_INPUT_LENGTH];
         int     chance;
 
-        if (IS_NPC(ch))
+        if (IS_NPC(ch)
+        && !( ch->spec_fun == spec_lookup("spec_uzollru") ) )
         {
                 if (ch->pIndexData->vnum != BOT_VNUM)
                     return;

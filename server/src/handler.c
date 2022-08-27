@@ -29,6 +29,7 @@
 #include <time.h>
 #include <math.h>
 #include "merc.h"
+#include "protocol.h"
 
 
 AFFECT_DATA *affect_free;
@@ -2890,7 +2891,7 @@ char *act_bit_name (unsigned long int vector)
         if ( vector & ACT_PET                   ) return "pet";
         if ( vector & ACT_NO_QUEST              ) return "no_quest";
         if ( vector & ACT_PRACTICE              ) return "practice";
-        if ( vector & ACT_HEALING_FACTOR        ) return "healing_factor";
+        if ( vector & ACT_REGENERATOR           ) return "regenerator";
         if ( vector & ACT_NOCHARM               ) return "no_charm";
         if ( vector & ACT_IS_HEALER             ) return "is_healer";
         if ( vector & ACT_IS_FAMOUS             ) return "is_famous";

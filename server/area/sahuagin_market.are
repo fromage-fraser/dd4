@@ -1234,7 +1234,14 @@ travel the city and share the Prince's proclamations with the populace.
 if isfight($i)
 break
 else
-say Hear ye all!  The market canton has been sealed pending word from the Prince!
+say All Marids demanding to be addressed as 'Endless Wave upon the Sea of Fate'.  Does their arrogance know no bounds?
+endif
+~
+>rand_prog 1~
+if isfight($i)
+break
+else
+say Hear ye all!  The market canton has been opened to canal traffic, but the other cantons remain inaccesible!
 endif
 ~
 >rand_prog 1~
@@ -3653,6 +3660,114 @@ glowing blue portal circle~
 It crackles with magical energy.  It is quite large and you could probably step right
 into it if you wanted to.
 ~
+#27409
+map Ota'ar Dar canals lower~
+a map of the Ota'ar Dar canals - lower level~
+A map of the Ota'ar Dar canals' lower level lies here.~
+~
+2 0 1|16384
+0~ ~ ~ ~
+1 0 25
+E
+map Ota'ar Dar canals lower~
+You examine a map of the Ota'ar Dar canals' lower level...
+
+{W                              [?] 
+                           [ ][ ]
+            [ ][ ][ ]      [ ]
+                  [ ][ ][ ][ ]
+                     [ ][ ]
+                  [ ][ ][ ][ ] 
+               [ ][ ]      [ ]
+      [ ]   [ ][ ]         [ ][ ]
+      [ ][ ][ ]               {C[ ]{W
+                              [ ]
+            [ ]               [ ]
+            [ ][ ][ ]{C[ ]{W[ ][ ][{G*{W][ ][ ]{C[ ]{W[ ][ ][?]
+            [ ][ ][ ]{C[ ]{W[ ][ ][{G*{W][ ][ ]{C[ ]{W[ ][ ][ ] 
+            [ ]               [ ]
+                              [ ]
+      [ ][ ][ ]               {C[ ]{W
+      [ ]   [ ][ ]         [ ][ ]  
+               [ ][ ]      [?]
+                  [ ][{G*{W][ ][ ]
+                     [{G*{W][ ]
+                  [ ][{G*{W][ ][ ]
+            [ ][ ][ ]      [ ][ ]
+   [ ][ ]{C[ ]{W[ ]               [ ]{C[ ]{W
+    |
+{x
+~
+#27410
+map Ota'ar Dar canals upper~
+a map of the Ota'ar Dar canals - upper level~
+A map of the Ota'ar Dar canals' upper level lies here.~
+~
+2 0 1|16384
+0~ ~ ~ ~
+1 0 25
+E
+map Ota'ar Dar canals upper~
+You examine a map of the Ota'ar Dar canals' upper level...
+
+{w                              [ ] 
+                           [ ][ ]
+            [ ][ ][ ]      [ ]
+                  [ ][ ][ ][ ]
+                     [ ][ ]
+                  [ ][ ][ ][ ] 
+               [ ][ ]      [ ]
+      [ ]   [ ][ ]         [ ][ ]
+      [ ][ ][ ]               {B[ ]{x{w
+                              [ ]
+            [ ]               [ ]
+            [ ][ ][ ]{B[ ]{x{w[ ][ ][{G {x{w][ ][ ]{B[ ]{x{w[ ][ ][ ]
+            [ ][ ][ ]{B[ ]{x{w[ ][ ][{G {x{w][ ][ ]{B[ ]{x{w[ ][ ][ ] 
+            [ ]               [ ]
+                              [ ]
+      [ ][ ][ ]               {B[ ]{x{w
+      [ ]   [ ][ ]         [ ][ ]  
+               [ ][ ]      [ ]
+                  [ ][{G {x{w][ ][ ]
+                     [{G {x{w][ ]
+                  [ ][{G {x{w][ ][ ]
+            [ ][ ][ ]      [ ][ ]
+   [ ][ ]{B[ ]{x{w[ ]               [ ]{B[ ]{x
+{x
+~
+#27411
+map dragon caves~
+a map of the dragon's caves~
+A map of the dragon's caves lies here.~
+~
+2 0 1|16384
+0~ ~ ~ ~
+1 0 50
+E
+map dragon dragon's caves~
+You examine a map of the dragon's caves...    
+{m                                
+                                     [ ][ ]
+                                     /   |
+                                   [ ]
+                                   /
+                              [ ][ ]
+                              [ ]
+                        [ ][ ][ ]
+                        /
+                      [ ]   
+                      /
+                    [ ]
+                    /
+                  [ ]
+               {B[ ][ ][ ]{x
+               {B[ ]{g[{R*{x{g]{x{B[ ]{x
+               {B[ ][ ][ ]{x
+                  {m[ ]
+         [ ][ ][ ][ ]
+  -[ ][ ][ ]             
+{x
+~
 #0
 
 
@@ -3665,7 +3780,9 @@ looms, cutting off access to this canton from the rest of the city.  To the east
 you see the entrance to a shop.  The sign above it reads "Phesak's Maps".
 
 The road continues north, and you may also swim upwards, towards a huge, looming
-area of darkness in the water above.{x
+area of darkness in the water above. You notice, however, that the canton wall to 
+the west doesn't quite reach all the way to the dark region of water above.
+Perhaps you could climb or fly over it?{x
 ~
 0 0 8
 D0
@@ -3679,7 +3796,11 @@ D1
 D2
 ~
 gate~
-8 -1 27307
+1 -1 27307
+D3
+~
+wall~
+9 -1 27257
 D4
 ~
 ~
@@ -4087,10 +4208,10 @@ E
 sign~
 Currently available quests for prospective Reavers to undertake:
 
-{W1.{w 	{w"The Demon Thief"{x
-{W2.{w 	{w"Poisonous Secrets"{x
-{W3.{w 	{w"An Out of Body Experience"{x
-{W4.{w 	{w"Every Frog Has His Day"{x
+{W1.{w 	{w"The Demon Thief"{x               (<123>30-40<0>)
+{W2.{w 	{w"Poisonous Secrets"{x             (<123>30-40<0>)
+{W3.{w 	{w"An Out of Body Experience"{x     (<123>30-40<0>)
+{W4.{w 	{w"Every Frog Has His Day"{x        (<123>40-45<0>)
 
 ~
 S
@@ -4791,21 +4912,30 @@ D4
 S
 #27353
 Malana Bridge, Lower~
-You are standing in room #27353.
+<14>You stand on the bridge that connects Ota'ar Dar's southern residential canton 
+<87>to its market canton. The southern residential canton gates lie to the west,  
+<123>while the sturdy market canton gates are eastward. To the north and south you  
+<159>may venture into the deep canal system which separates Ota'ar Dar's cantons  
+from each other, or you can head upwards, towards the huge, looming area of 
+darkness in the water above.<0>
 ~
 0 4 8
 D0
 ~
 ~
 0 -1 27354
+D1
+~
+gate~
+8 -1 27336
 D2
 ~
 ~
 0 -1 27266
 D3
 ~
-~
-8 -1 27352
+gate~
+8 -1 27368
 D4
 ~
 ~
@@ -5915,6 +6045,10 @@ D1
 ~
 ~
 0 -1 27801
+D3
+~
+~
+0 -1 27850
 S
 #27801
 {YUnder Sekolah's Depths{x~
@@ -6073,12 +6207,13 @@ S
 
 #RESETS
 D 1 27353 3 2			; Malana Bridge, Lower Lock West
-D 1 27349 0 2			; Prince's Cross, Lower Lock North
-D 1 27308 2 2			; Sekolah Way South, Lower Lock South
-D 1 27608 2 2			; Sekolah Way South, Upper Lock South
-D 1 27649 0 2			; Prince's Cross, Upper Lock North
-D 1 27336 3 2			; Malana Bridge Road, Lower Lock West
-D 1 27636 3 2			; Malana Bridge Road, Upper Lock West
+D 1 27353 1 1			; Malana Bridge, Lower Close East
+D 1 27349 0 1			; Prince's Cross, Lower Close North
+D 1 27649 0 1			; Prince's Cross, Upper Close North
+D 1 27308 2 1			; Sekolah Way South, Lower Close South
+D 1 27608 2 1			; Sekolah Way South, Upper Close South
+D 1 27336 3 1			; Malana Bridge Road, Lower Close West
+D 1 27636 3 1			; Malana Bridge Road, Upper Close West
 D 1 27809 3 1			; A Secret Side-chamber Close West
 *
 M 1 27200 1 27309			Pheskak to Pheskak's Maps
@@ -6089,6 +6224,9 @@ G 1 27202 100
 G 1 27203 100
 G 1 27204 100
 G 1 27205 100
+G 1 27409 100
+G 1 27410 100
+G 1 27411 100
 *
 O 1 27263 100 27625			a heavy trunk to Reavers' Guild Master's Quarters
 P 1 27265 100 27263			a Reaver's heavy crossbow to container trunk heavy

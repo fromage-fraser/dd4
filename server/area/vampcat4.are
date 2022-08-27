@@ -67,7 +67,7 @@ great leathery wings.
 ~
 64 8|32|512|524288 0 S
 55 0 0 0d0+0 0d0+0
-0 0
+32 0
 8 8 2
 >death_prog 90~
 mpecho {wThe giant bat's body vanishes in a puff of smoke.{x

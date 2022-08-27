@@ -49,6 +49,7 @@ DECLARE_SPEC_FUN( spec_breath_fire         );
 DECLARE_SPEC_FUN( spec_breath_frost        );
 DECLARE_SPEC_FUN( spec_breath_gas          );
 DECLARE_SPEC_FUN( spec_breath_lightning    );
+DECLARE_SPEC_FUN( spec_breath_steam        );
 DECLARE_SPEC_FUN( spec_cast_adept          );
 DECLARE_SPEC_FUN( spec_cast_hooker         );
 DECLARE_SPEC_FUN( spec_buddha              );
@@ -89,6 +90,8 @@ DECLARE_SPEC_FUN( spec_large_whale         );
 DECLARE_SPEC_FUN( spec_kappa               );
 DECLARE_SPEC_FUN( spec_aboleth             );
 DECLARE_SPEC_FUN( spec_laghathti           );
+DECLARE_SPEC_FUN( spec_superwimpy          );
+DECLARE_SPEC_FUN( spec_uzollru             );
 
 
 /*
@@ -103,6 +106,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_breath_frost"))         return spec_breath_frost;
         if (!str_cmp(name, "spec_breath_gas"))           return spec_breath_gas;
         if (!str_cmp(name, "spec_breath_lightning"))     return spec_breath_lightning;
+        if (!str_cmp(name, "spec_breath_steam"))         return spec_breath_steam;
         if (!str_cmp(name, "spec_cast_adept"))           return spec_cast_adept;
         if (!str_cmp(name, "spec_cast_hooker"))          return spec_cast_hooker;
         if (!str_cmp(name, "spec_buddha"))               return spec_buddha;
@@ -143,6 +147,8 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_kappa"))                return spec_kappa;
         if (!str_cmp(name, "spec_aboleth"))              return spec_aboleth;
         if (!str_cmp(name, "spec_laghathti"))            return spec_laghathti;
+        if (!str_cmp(name, "spec_superwimpy"))           return spec_superwimpy;
+        if (!str_cmp(name, "spec_uzollru"))              return spec_uzollru;
 
 
         return 0;
@@ -167,6 +173,7 @@ char* spec_fun_name (CHAR_DATA *ch)
         if (ch->spec_fun == spec_lookup("spec_breath_frost"))       return "spec_breath_frost";
         if (ch->spec_fun == spec_lookup("spec_breath_gas"))         return "spec_breath_gas";
         if (ch->spec_fun == spec_lookup("spec_breath_lightning"))   return "spec_breath_lightning";
+        if (ch->spec_fun == spec_lookup("spec_breath_steam"))       return "spec_breath_steam";
         if (ch->spec_fun == spec_lookup("spec_cast_adept"))         return "spec_cast_adept";
         if (ch->spec_fun == spec_lookup("spec_cast_hooker"))        return "spec_cast_hooker";
         if (ch->spec_fun == spec_lookup("spec_buddha"))             return "spec_buddha";
@@ -207,6 +214,8 @@ char* spec_fun_name (CHAR_DATA *ch)
         if (ch->spec_fun == spec_lookup("spec_kappa"))              return "spec_kappa";
         if (ch->spec_fun == spec_lookup("spec_aboleth"))            return "spec_aboleth";
         if (ch->spec_fun == spec_lookup("spec_laghathti"))          return "spec_laghathti";
+        if (ch->spec_fun == spec_lookup("spec_superwimpy"))         return "spec_superwimpy";
+        if (ch->spec_fun == spec_lookup("spec_uzollru"))            return "spec_uzollru";
     }
     else {
         return "none";
@@ -255,6 +264,9 @@ bool dragon( CHAR_DATA *ch, char *spell_name )
                 act("Bolts of lightning streak from $n's mouth!",
                     ch, NULL, NULL, TO_ROOM);
 
+        else if (sn == skill_lookup("steam breath"))
+                act("Superheated steam blasts from $n's mouth!",
+                    ch, NULL, NULL, TO_ROOM);
 
         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
 
@@ -276,7 +288,7 @@ bool spec_breath_any( CHAR_DATA *ch )
             case 3: return spec_breath_gas              ( ch );
             case 4: return spec_breath_acid             ( ch );
             case 5:
-            case 6:
+            case 6: return spec_breath_steam            ( ch );
             case 7: return spec_breath_frost            ( ch );
         }
 
@@ -297,10 +309,15 @@ bool spec_breath_fire( CHAR_DATA *ch )
 }
 
 
-
 bool spec_breath_frost( CHAR_DATA *ch )
 {
         return dragon( ch, "frost breath" );
+}
+
+
+bool spec_breath_steam( CHAR_DATA *ch )
+{
+        return dragon( ch, "steam breath" );
 }
 
 
@@ -1906,7 +1923,7 @@ bool spec_buddha( CHAR_DATA *ch )
             case 3: return spec_breath_gas              ( ch );
             case 4: return spec_breath_acid             ( ch );
             case 5: return spec_cast_cleric             ( ch );
-            case 6:
+            case 6: return spec_breath_steam            ( ch );
             case 7: return spec_breath_frost            ( ch );
         }
 
@@ -3180,6 +3197,271 @@ bool spec_laghathti( CHAR_DATA *ch )
         {
                 act ("$c waves $s hideous tentacles at $N.", ch, NULL, victim, TO_NOTVICT);
                 act ("$c waves $s hideous tentacles at you.", ch, NULL, victim, TO_VICT);
+        }
+
+        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+
+        return TRUE;
+
+}
+
+bool spec_superwimpy( CHAR_DATA *ch )
+{
+        /* For cowardly magic-using mobs that just want to be left ALONE */
+
+        CHAR_DATA *victim;
+        EXIT_DATA *pexit;
+        char       *spell;
+        int        sn;
+        bool       target_self;
+        char       buf[MAX_STRING_LENGTH];
+        int        door;
+        int        i;
+        bool       stopped_fight;
+
+        door    = 0;
+        spell   = "fear";
+        stopped_fight = FALSE;
+
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim->deleted)
+                        continue;
+
+                if (victim->fighting == ch && !number_bits(1))
+                        break;
+        }
+
+        if (!victim)
+                return FALSE;
+
+        while (1)
+        {
+            int min_level;
+            target_self = FALSE;
+
+                switch ( number_range (1, 6) )
+                {
+                    case  1:
+                        if ( CAN_SPEAK(ch) ) { do_say(ch, "Just go HOME, you bully!"); }
+                        do_recall(victim, "");
+                        return TRUE;
+
+                    case  2:
+                        min_level = 1;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Get out of here!  Shoo!"); }
+                        spell = "fear";
+                        break;
+
+                    case  3:
+                        if ( CAN_SPEAK(ch) ) { do_say(ch, "Just STOP!"); }
+                        stop_fighting( ch, TRUE );
+                        stopped_fight = TRUE;
+                        for (i = 0;i <=3; i++)
+                        {
+                                door = rand() % 5;
+                                if ( (door <= 5)
+                                && (pexit = ch->in_room->exit[door])
+                                && pexit->to_room
+                                && !IS_SET(pexit->exit_info, EX_CLOSED)
+                                && !IS_SET(pexit->to_room->room_flags, ROOM_NO_MOB)
+                                && (stopped_fight == TRUE))
+                                {
+                                        move_char(ch, door);
+                                        stopped_fight = FALSE;
+                                }
+                        }
+
+                        stopped_fight = FALSE;
+                        return TRUE;
+
+                    case  4:
+                        if ( CAN_SPEAK(ch) ) { do_say(ch, "You can't hurt what you can't see!"); }
+                        do_smoke_bomb( ch, victim->name);
+                        return TRUE;
+
+                    case  5:
+                        if ( CAN_SPEAK(ch) ) { do_say(ch, "Leave me alone!  I didn't do anything!"); }
+                        do_flee( ch, "");
+                        return TRUE;
+
+                    default:
+                        if ( CAN_SPEAK(ch) ) { do_say(ch, "Leave me alone!  Stop hurting me!"); }
+                        do_flee( ch, "");
+                        return TRUE;
+                }
+
+                if ( ch->level >= min_level )
+                        break;
+        }
+
+        if ( ( sn = skill_lookup( spell ) ) < 0 )
+                return FALSE;
+
+        do_say(ch,buf);
+
+        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+
+        return TRUE;
+
+}
+
+bool spec_uzollru( CHAR_DATA *ch )
+{
+        CHAR_DATA *victim;
+        char      *spell;
+        int        sn;
+        bool       target_self;
+
+        spell = "poison";
+
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim->deleted)
+                        continue;
+
+                if (victim->fighting == ch && !number_bits(1))
+                        break;
+        }
+
+        if (!victim)
+                return FALSE;
+
+        while (1)
+        {
+            int min_level;
+            target_self = FALSE;
+
+                switch ( number_range (0, 9) )
+                {
+                    case  0:
+                        if (is_affected(victim, gsn_coil))
+                        {
+                                act( "You attempt to pull your tentacles tight about the neck of $N!",  ch, NULL, victim, TO_CHAR  );
+                                act( "$n attempts to pull $s tentacles tight about your neck!", ch, NULL, victim, TO_VICT  );
+                                act( "$n attempts to pull $s tentacles tight about the neck of $N!",  ch, NULL, victim, TO_NOTVICT );
+                                do_strangle( ch, victim->name);
+                                return TRUE;
+                        }
+                        else {
+                                return TRUE;
+                        }
+
+                    case  1:
+                        if (is_affected(victim, gsn_coil))
+                        {
+                                act( "You tighten your tentacles around $N!",  ch, NULL, victim, TO_CHAR  );
+                                act( "$n tightens the grip of $s tentacles on you!", ch, NULL, victim, TO_VICT  );
+                                act( "$n tightens the grip of $s tentacles on $N!",  ch, NULL, victim, TO_NOTVICT );
+                                do_constrict( ch, victim->name);
+                                return TRUE;
+                        }
+                        else {
+                                return TRUE;
+                        }
+
+                    case  2:
+                        min_level = 1;
+                        act( "Your tentacles burrow into $N!",  ch, NULL, victim, TO_CHAR    );
+                        act( "$n's tentacles burrow into you...", ch, NULL, victim, TO_VICT  );
+                        act( "$n's tentacles burrow into $N!",  ch, NULL, victim, TO_NOTVICT );
+                        spell_poison( gsn_poison, ch->level, ch, victim );
+                        one_hit(ch, victim, gsn_suck);
+                        one_hit(ch, victim, gsn_suck);
+                        return TRUE;
+
+                    case  3:
+                        if (is_affected(victim, gsn_coil))
+                        {
+                                act( "You tighten your tentacles around $N!",  ch, NULL, victim, TO_CHAR  );
+                                act( "$n tightens the grip of $s tentacles on you!", ch, NULL, victim, TO_VICT  );
+                                act( "$n tightens the grip of $s tentacles on $N!",  ch, NULL, victim, TO_NOTVICT );
+                                do_constrict( ch, victim->name);
+                                return TRUE;
+                        }
+                        else {
+                                return TRUE;
+                        }
+
+                    case  4:
+                        min_level = 1;
+                        act( "Your tentacles burrow into $N' flesh!",  ch, NULL, victim, TO_CHAR    );
+                        act( "$n's tentacles burrow into your flesh!", ch, NULL, victim, TO_VICT    );
+                        act( "$n's tentacles burrow into $N's flesh!",  ch, NULL, victim, TO_NOTVICT );
+                        spell_poison( gsn_poison, ch->level, ch, victim );
+                        one_hit(ch, victim, gsn_suck);
+                        one_hit(ch, victim, gsn_suck);
+                        return TRUE;
+
+                    case  5:
+                        if (is_affected(victim, gsn_coil))
+                        {
+                                act( "You attempt to pull your tentacles tight about the neck of $N!",  ch, NULL, victim, TO_CHAR  );
+                                act( "$n attempts to pull $s tentacles tight about your neck!", ch, NULL, victim, TO_VICT  );
+                                act( "$n attempts to pull $s tentacles tight about the neck of $N!",  ch, NULL, victim, TO_NOTVICT );
+                                do_strangle( ch, victim->name);
+                                return TRUE;
+                        }
+                        else {
+                                return TRUE;
+                        }
+
+                    case  6:
+                        if (!is_affected(victim, gsn_coil))
+                        {
+                                act( "You wrap your hideous tentacles around $N!",  ch, NULL, victim, TO_CHAR  );
+                                act( "$n wraps $s hideous tentacles around you!", ch, NULL, victim, TO_VICT  );
+                                act( "$n wraps $s hideous tentacles around $N!",  ch, NULL, victim, TO_NOTVICT );
+                                do_coil( ch, victim->name);
+                                return TRUE;
+                        }
+                        else {
+                                return TRUE;
+                        }
+
+                    case  7:
+                        if (!is_affected(victim, gsn_coil))
+                        {
+                                act( "You wrap your hideous tentacles around $N!",  ch, NULL, victim, TO_CHAR  );
+                                act( "$n wraps $s hideous tentacles around you!", ch, NULL, victim, TO_VICT  );
+                                act( "$n wraps $s hideous tentacles around $N!",  ch, NULL, victim, TO_NOTVICT );
+                                do_coil( ch, victim->name);
+                                return TRUE;
+                        }
+                        else {
+                                return TRUE;
+                        }
+
+                    case  8:
+                        min_level = 25;
+                        if (is_affected(victim, gsn_feeblemind))
+                        {
+                                break;
+                        }
+                        else {
+                                spell = "feeblemind";
+                                break;
+                        }
+
+                    default:
+                        min_level = 1;
+                        spell = "poison";
+                        break;
+                }
+
+                if ( ch->level >= min_level )
+                        break;
+        }
+
+        if ( ( sn = skill_lookup( spell ) ) < 0 )
+                return FALSE;
+
+        if (target_self)
+                act ("$c strokes $mself with $s hideous tentacles.", ch, NULL, NULL, TO_ROOM);
+        else
+        {
+                act ("$c caresses $N with $s hideous tentacles.", ch, NULL, victim, TO_NOTVICT);
+                act ("$c caresses you with $s hideous tentacles.", ch, NULL, victim, TO_VICT);
         }
 
         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );

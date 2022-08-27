@@ -22,6 +22,7 @@
 #include <stdint.h>
 #include <unistd.h>
 #define _XOPEN_SOURCE
+#include "protocol.h"
 
 /*
  * Accommodate old non-Ansi compilers.
@@ -317,10 +318,10 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   538     /* 537 + 1 for 'spit mucus' -Owl 18/8/22 */
-#define MAX_PRE_REQ                 1376    /* 1376 +1 for innate knowledge 1 for 'swallow' - Brutus Aug 2022 */
-#define MAX_SPELL_GROUP             441     /* 441 +1 innate knowledge Brutus Aug 2022 */
-#define MAX_GROUPS                  58      /* added smithy groups - Brutus 30 Jul 2022 */
+#define MAX_SKILL                   545     /* +6 Smithy post 30 groups' -Brutus 27/8/22 */
+#define MAX_PRE_REQ                 1387    /* +10 for smithy post 30 - Brutus 27/8/22 */
+#define MAX_SPELL_GROUP             444     /* +2 - for post 30 smithy skills Brutus 27/8/22 */
+#define MAX_GROUPS                  60      /* added smithy groups - Brutus Aug 2022 */
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
 #define MAX_VAMPIRE_GAG             27      /* 26 + 1 for 'swallow' | ugly vampire/werewolf hack */
 
@@ -443,7 +444,7 @@ DECLARE_DO_FUN ( do_board );
 #define MAX_ADDQP               10000
 #define MIN_MSET_AGE               17
 #define MAX_MSET_AGE            10000
-#define MIN_MSET_HP               -10
+#define MIN_MSET_HP                 0
 #define MAX_MSET_HP             30000
 #define MIN_MSET_MANA               0
 #define MAX_MSET_MANA           30000
@@ -760,6 +761,7 @@ struct descriptor_data
         char *                outbuf;
         int                   outsize;
         int                   outtop;
+        protocol_t *        pProtocol; /* <--- GMCP */
 
         /* ident stuff */
         int                   ifd;
@@ -1753,7 +1755,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define ACT_PET                         BIT_8   /* Auto set for pets */
 #define ACT_NO_QUEST                    BIT_9   /* Cannot be selected as quest target */
 #define ACT_PRACTICE                    BIT_10  /* Can practice PC's */
-#define ACT_HEALING_FACTOR              BIT_11  /* Mob heals at very accelerated rate.  Was ACT_GAMBLE. - Owl */
+#define ACT_REGENERATOR                 BIT_11  /* Mob heals at an accelerated rate.  Was ACT_GAMBLE. - Owl */
 #define ACT_NOCHARM                     BIT_12  /* Not charmable - Brutus */
 #define ACT_IS_HEALER                   BIT_13  /* For healer spec */
 #define ACT_IS_FAMOUS                   BIT_14  /* Award fame for kill */
@@ -2024,12 +2026,12 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_EVIL                       BIT_4
 #define ITEM_INVIS                      BIT_5
 #define ITEM_MAGIC                      BIT_6
-#define ITEM_NODROP                     BIT_7   /* carrier will be attacked by mobs with DETECT_CURSE */
+#define ITEM_NODROP                     BIT_7   /* carrier attacked by mobs with DETECT_CURSE */
 #define ITEM_BLESS                      BIT_8
 #define ITEM_ANTI_GOOD                  BIT_9
 #define ITEM_ANTI_EVIL                  BIT_10
 #define ITEM_ANTI_NEUTRAL               BIT_11
-#define ITEM_NOREMOVE                   BIT_12   /* carrier will be attacked by mobs with DETECT_CURSE */
+#define ITEM_NOREMOVE                   BIT_12   /* carrier attacked by mobs with DETECT_CURSE */
 #define ITEM_INVENTORY                  BIT_13
 #define ITEM_POISONED                   BIT_14
 #define ITEM_ANTI_MAGE                  BIT_15
@@ -2049,7 +2051,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_ANTI_SHAPE_SHIFTER         BIT_29
 #define ITEM_BOW                        BIT_30
 #define ITEM_ANTI_SMITHY                BIT_34
-#define ITEM_CURSED                     BIT_61
+#define ITEM_CURSED                     BIT_61  /* carrier attacked by mobs with DETECT_CURSE, magic travel nonfunctional if carried */
 
 
 /*
@@ -3101,7 +3103,7 @@ extern int gsn_holylight;
 extern int gsn_immtalk;
 extern int gsn_dirtalk;
 extern int gsn_killsocket;
-extern int gsn_leader;                  /* for the clan leader flag */
+extern int gsn_leader;                  /* for the clan leader flag  */
 extern int gsn_log;
 extern int gsn_memory;
 extern int gsn_mfind;
@@ -3214,6 +3216,8 @@ extern int gsn_group_inscription;
 extern int gsn_group_alchemy;
 extern int gsn_group_turret_tech;
 extern int gsn_group_mech_tech;
+extern int gsn_group_adv_smith;
+extern int gsn_group_weaponlore;
 extern int gsn_group_last;
 
 extern int gsn_form_chameleon;
@@ -3543,6 +3547,7 @@ extern int gsn_stabilise;
 extern int gsn_flukeslap;
 extern int gsn_swallow;
 extern int gsn_spit_mucus;
+extern int gsn_steam_breath;
 
 /*
  *  Deity gsns
@@ -4310,6 +4315,7 @@ DECLARE_SPELL_FUN( spell_detect_curse           );
 DECLARE_SPELL_FUN( spell_imprint                );
 DECLARE_SPELL_FUN( spell_slow                   );
 DECLARE_SPELL_FUN( spell_stabilise              );
+DECLARE_SPELL_FUN( spell_steam_breath           );
 
 
 #define MOB_VNUM_SKELETON  3404

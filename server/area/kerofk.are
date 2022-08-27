@@ -855,16 +855,17 @@ Gorn the Blacksmith~
 Gorn the Blacksmith hammers a breastplate.
 ~
 Gorn is Kerofk's blacksmith. His spectacles hang low on his nose, allowing
-him to look over them as you approach. His orderly workshop provides a 
+him to look over them as you approach. His orderly workshop provides a
 welcoming abode for those who wish to use his tools or simply converse.
 ~
-2|64|512|32768|16777216 8 200 S
+2|64|512|1024|32768|16777216 8 200 S
 53 0 -40 6d10+490 4d6+4
 0 0
 8 8 1
 & 20 'teacher base'
 & 80 'weaponsmithing'
 & 80 'armoursmithing'
+& 80 'defense knowledge'
 
 #0
 
@@ -2086,8 +2087,8 @@ S
 #30227
 Moon Gate Road~
 Here's something you weren't expecting in a city this size: a
-Foundry belows smoke to the south.  Also, Moon Gate Road continues 
-east-west. The air seems to crackle with energy here, but you can 
+Foundry belows smoke to the south.  Also, Moon Gate Road continues
+east-west. The air seems to crackle with energy here, but you can
 find no source for such power.
 ~
 0 8 1
@@ -4387,9 +4388,9 @@ D5
 S
 #30355
 Tinker Tim's Timely Repairs~
-This cluttered but cheerful store is full of the bits and pieces a tinker 
-needs to mend damaged items, as well as repaired items for sale that unscrupulous 
-or indigent customers haven't uplifted.  You imagine you could get just about 
+This cluttered but cheerful store is full of the bits and pieces a tinker
+needs to mend damaged items, as well as repaired items for sale that unscrupulous
+or indigent customers haven't uplifted.  You imagine you could get just about
 anything fixed here if you had the money!
 ~
 0 4|8|1024 0

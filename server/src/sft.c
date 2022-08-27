@@ -496,7 +496,8 @@ void do_coil (CHAR_DATA *ch, char *argument)
         }
 
         if ( ch->form != FORM_SNAKE
-        && !( ch->spec_fun == spec_lookup("spec_laghathti") ) )
+        && !( ch->spec_fun == spec_lookup("spec_laghathti") )
+        && !( ch->spec_fun == spec_lookup("spec_uzollru") )  )
         {
                 send_to_char("You are not in the correct form.\n\r", ch);
                 return;
@@ -572,7 +573,8 @@ void do_constrict (CHAR_DATA *ch, char *argument)
         CHAR_DATA *victim;
 
         if ( IS_NPC( ch )
-        && !( ch->spec_fun == spec_lookup("spec_laghathti") ) )
+        && !( ch->spec_fun == spec_lookup("spec_laghathti") )
+        && !( ch->spec_fun == spec_lookup("spec_uzollru") )  )
                 return;
 
         if ( !IS_NPC( ch)
@@ -583,7 +585,8 @@ void do_constrict (CHAR_DATA *ch, char *argument)
         }
 
         if (ch->form != FORM_SNAKE
-        && !( ch->spec_fun == spec_lookup("spec_laghathti") ) )
+        && !( ch->spec_fun == spec_lookup("spec_laghathti") )
+        && !( ch->spec_fun == spec_lookup("spec_uzollru") ) )
         {
                 send_to_char("You are not in the correct form.\n\r", ch);
                 return;
@@ -615,7 +618,8 @@ void do_strangle (CHAR_DATA *ch, char *argument)
         int base_damage;
 
         if ( IS_NPC( ch )
-        && !( ch->spec_fun == spec_lookup("spec_laghathti") ) )
+        && !( ch->spec_fun == spec_lookup("spec_laghathti") )
+        && !( ch->spec_fun == spec_lookup("spec_uzollru") ) )
                 return;
 
         if ( !IS_NPC( ch)
@@ -626,7 +630,8 @@ void do_strangle (CHAR_DATA *ch, char *argument)
         }
 
         if (ch->form != FORM_SNAKE
-        && !( ch->spec_fun == spec_lookup("spec_laghathti") ) )
+        && !( ch->spec_fun == spec_lookup("spec_laghathti") )
+        && !( ch->spec_fun == spec_lookup("spec_uzollru") ) )
         {
                 send_to_char("You are not in the correct form.\n\r", ch);
                 return;
@@ -648,9 +653,11 @@ void do_strangle (CHAR_DATA *ch, char *argument)
 
         base_damage = number_range (2 * ch->level, 5 * ch->level);
 
-        if (victim->hit > (victim->max_hit / 2))
+        if ( ( victim->hit > (victim->max_hit / 2) )
+        &&  !( ch->spec_fun == spec_lookup("spec_laghathti") )
+        &&  !( ch->spec_fun == spec_lookup("spec_uzollru") ) )
         {
-                send_to_char("You attempt to wrap your coils around your victim's neck, but fail.\n\r",ch);
+                send_to_char("You try to strangle your victim but they are currently too strong, and resist!\n\r",ch);
                 return;
         }
 
@@ -1702,6 +1709,9 @@ void do_morph_dragon (CHAR_DATA *ch, bool to_form)
 
                 if (ch->pcdata->learned[gsn_form_dragon] > 80)
                         send_to_char("You can now breathe frost!\n\r",ch);
+
+                if (ch->pcdata->learned[gsn_form_dragon] > 83)
+                        send_to_char("You can now breathe steam!\n\r",ch);
 
                 if (ch->pcdata->learned[gsn_form_dragon] > 85)
                         send_to_char("You can now breathe fire!\n\r",ch);
