@@ -318,10 +318,10 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   539     /* 538 + 1 for 'steam breath' -Owl 23/8/22 */
-#define MAX_PRE_REQ                 1377    /* 1376 +1 for 'steam breath'/mage -Owl 23/8/22 */
-#define MAX_SPELL_GROUP             442     /* 441 + 1 for 'steam breath' -Owl 23/8/22 */
-#define MAX_GROUPS                  58      /* added smithy groups - Brutus 30 Jul 2022 */
+#define MAX_SKILL                   545     /* +6 Smithy post 30 groups' -Brutus 27/8/22 */
+#define MAX_PRE_REQ                 1387    /* +10 for smithy post 30 - Brutus 27/8/22 */
+#define MAX_SPELL_GROUP             444     /* +2 - for post 30 smithy skills Brutus 27/8/22 */
+#define MAX_GROUPS                  60      /* added smithy groups - Brutus Aug 2022 */
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
 #define MAX_VAMPIRE_GAG             27      /* 26 + 1 for 'swallow' | ugly vampire/werewolf hack */
 
@@ -3103,7 +3103,7 @@ extern int gsn_holylight;
 extern int gsn_immtalk;
 extern int gsn_dirtalk;
 extern int gsn_killsocket;
-extern int gsn_leader;                  /* for the clan leader flag */
+extern int gsn_leader;                  /* for the clan leader flag  */
 extern int gsn_log;
 extern int gsn_memory;
 extern int gsn_mfind;
@@ -3216,6 +3216,8 @@ extern int gsn_group_inscription;
 extern int gsn_group_alchemy;
 extern int gsn_group_turret_tech;
 extern int gsn_group_mech_tech;
+extern int gsn_group_adv_smith;
+extern int gsn_group_weaponlore;
 extern int gsn_group_last;
 
 extern int gsn_form_chameleon;

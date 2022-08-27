@@ -1,5 +1,5 @@
 /* SMITHY BASE */
-/* 19 skill s- Brutus Jun 2022 */
+/* 33 skill s- Brutus Jun 2022 */
 
 /* Armousmith */
 
@@ -28,14 +28,33 @@
 
 
 /* 30+ skills */
+
+{&gsn_group_adv_smith,   &gsn_smithy_base,          60,     PRE_SMITHY},
+
+{&gsn_bloodforged_set,  &gsn_group_adv_smith,	    30, 	PRE_SMITHY},
 {&gsn_bloodforged_set,  &gsn_group_armoursmith,	    71, 	PRE_SMITHY},
+
 {&gsn_astral_set,	    &gsn_group_armoursmith,	    88, 	PRE_SMITHY},
+{&gsn_astral_set,       &gsn_group_adv_smith,	    71, 	PRE_SMITHY},
+
 {&gsn_repelling,		&gsn_group_armoursmith,    	90,	    PRE_SMITHY},
+{&gsn_repelling,        &gsn_group_adv_smith,	    71, 	PRE_SMITHY},
 
 
 /* 30+ */
+{&gsn_group_weaponlore,      &gsn_smithy_base,           60,     PRE_SMITHY},
+
 {&gsn_innate_knowledge, &gsn_group_weaponsmith,     71,     PRE_SMITHY},
+{&gsn_innate_knowledge, &gsn_group_weaponlore,            71,     PRE_SMITHY},
+
 {&gsn_serrate,			&gsn_group_weaponsmith,	    85, 	PRE_SMITHY},
+{&gsn_serrate,			&gsn_group_weaponlore,	        85, 	PRE_SMITHY},
+
 {&gsn_engrave,			&gsn_group_weaponsmith,	    71, 	PRE_SMITHY},
+{&gsn_engrave,			&gsn_group_weaponlore,	        71, 	PRE_SMITHY},
+
 {&gsn_discharge,		&gsn_group_weaponsmith,	    80, 	PRE_SMITHY},
+{&gsn_discharge,		&gsn_group_weaponlore,	            80, 	PRE_SMITHY},
+
 {&gsn_empower,  		&gsn_group_weaponsmith,	    80, 	PRE_SMITHY},
+{&gsn_empower,  		&gsn_group_weaponlore,	        80, 	PRE_SMITHY},
