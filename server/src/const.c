@@ -1966,6 +1966,8 @@ const int *spell_groups [ MAX_GROUPS ] =
         &gsn_group_mech_tech,
         &gsn_group_alchemy,
         &gsn_group_inscription,
+        &gsn_group_adv_smith,
+        &gsn_group_weaponlore,
         &gsn_group_last
 
 };
@@ -2421,12 +2423,8 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_group_armoursmith,                       0 },
         { &gsn_smelt,                                   0 },
         { &gsn_strengthen,		                0 },
-        { &gsn_empower,                                 0 },
         { &gsn_uncommon_set,	                        0 },
         { &gsn_rare_set,		                0 },
-        { &gsn_bloodforged_set,		                0 },
-        { &gsn_astral_set,	                        0 },
-        { &gsn_repelling,		                0 },
         { &gsn_steel_broadsword,                        0 },
         { &gsn_titanium_rapier,                         0 },
         { &gsn_steel_cache,                             0 },
@@ -2438,10 +2436,6 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_imbue,			                0 },
         { &gsn_shieldchain,		                0 },
         { &gsn_craft_weapon,		                0 },
-        { &gsn_serrate,		                        0 },
-        { &gsn_engrave,		                        0 },
-        { &gsn_discharge,		                0 },
-        { &gsn_innate_knowledge,                        0 },
 
         { &gsn_group_turret_tech,	                0 },
         { &gsn_trigger,			                0 },
@@ -2476,6 +2470,18 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_enhancement,                   	        0 },
         { &gsn_healing,                                 0 },
         { &gsn_ward,                                    0 },
+
+        { &gsn_group_adv_smith,                         0 },
+        { &gsn_bloodforged_set,                         0 },
+        { &gsn_astral_set,                              0 },
+        { &gsn_repelling,                               0 },
+
+        { &gsn_group_weaponlore,                        0 },
+        { &gsn_innate_knowledge,                        0 },
+        { &gsn_serrate,                                 0 },
+        { &gsn_engrave,                                 0 },
+        { &gsn_discharge,                               0 },
+        { &gsn_empower,                                 0 },
 
         {&gsn_group_last,                              0 }
 };
@@ -6076,6 +6082,48 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "<51>j<87>e<123>t<159> o<195>f<253> s<254>t<255>e<15>a<556>m<0>", "!Steam Breath!"
         },
 
+        {
+                "mech tech", &gsn_group_mech_tech,
+                TYPE_STR, TAR_IGNORE, POS_DEAD,
+                spell_null, 0, 0,
+                "", "!Group MechTech!"
+        },
+
+        {
+                "turret tech", &gsn_group_turret_tech,
+                TYPE_STR, TAR_IGNORE, POS_DEAD,
+                spell_null, 0, 0,
+                "", "!Group TurretTech!"
+        },
+
+        {
+                "alchemy", &gsn_group_alchemy,
+                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                spell_null, 0, 0,
+                "", "!Group Alchemy!"
+        },
+
+        {
+                "inscription", &gsn_group_inscription,
+                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                spell_null, 0, 0,
+                "", "!Group Inscription!"
+        },
+        
+        {
+                "advanced smithing", &gsn_group_adv_smith,
+                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                spell_null, 0, 0,
+                "", "!Group Advanced Smithing!"
+        },
+          
+        {
+                "weapon lore", &gsn_group_weaponlore,
+                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                spell_null, 0, 0,
+                "", "!Group Weapon Lore!"
+        },
+
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
          */
@@ -6277,7 +6325,6 @@ const struct skill_type skill_table [MAX_SKILL] =
                 spell_null, 0, 0,
                 "", "!-alchemist base-!"
         },
-
 
         /*
          *  When adding base skills for new classes, put the base class base after the last base class above
