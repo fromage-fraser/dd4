@@ -858,7 +858,7 @@ Gorn is Kerofk's blacksmith. His spectacles hang low on his nose, allowing
 him to look over them as you approach. His orderly workshop provides a
 welcoming abode for those who wish to use his tools or simply converse.
 ~
-2|64|512|32768|16777216 8 200 S
+2|64|512|1024|32768|16777216 8 200 S
 53 0 -40 6d10+490 4d6+4
 0 0
 8 8 1

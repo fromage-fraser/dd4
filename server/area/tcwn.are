@@ -20,8 +20,8 @@ $
                  |                 |      Dungeon          |
 W. Gate _________|_______________Temple________|___________|_________ E. Gate
                  |                 |                       |
-      Smith _____|       Locksmith_|_Book Shop             |_____ Weapon Smith
-                 |                 |                       |
+    Smithy  _____|       Locksmith_|_Book Shop             |_____ Weapon Smith
+                 |                 |                       |       (Trainer)
         _________|_________________|_______________________|________
         |        |        |        |           |           |       |
         |       Bank   Grocer      |         Baker        Bar      |
@@ -97,10 +97,21 @@ heating a breastplate to glowing heat so that it can be pounded
 into shape. He looks you up and down, but as none of your armor
 is damaged it hardly needs repair.
 ~
-2|64|32768|16777216 4 1000 S
+2|64|512|1024|32768|16777216 8 1000 S
 99 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+& 35 'teacher base'
+& 95 'weaponsmithing'
+& 95 'armoursmithing'
+& 95 'mech tech'
+& 95 'turret tech'
+& 95 'alchemy'
+& 95 'inscription'
+& 95 'advanced smithing'
+& 95 'weapon lore'
+& 30 'engineer base'
+& 30 'alchemist base'
 #31003
 armorer~
 the Armorer~
@@ -1003,6 +1014,29 @@ know and he'll get to work on it straight away.
 6 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+#31067
+Fragsteed blacksmith smithy~
+Fragsteed the Blacksmith~
+Fragsteed the Blacksmith leans against a wall.
+~
+Fragsteed is Anon's blacksmith. Hes a bit messed up. A long scar on his right 
+cheek, and left ear appears to be burnt off. Nonetheless he appears interested
+in your presense. He has knowldege to obtain.
+~
+2|64|512|32768|16777216 8 200 S
+53 0 -40 6d10+490 4d6+4
+0 0
+8 8 1
+& 35 'teacher base'
+& 95 'weaponsmithing'
+& 95 'armoursmithing'
+& 95 'mech tech'
+& 95 'turret tech'
+& 95 'alchemy'
+& 95 'inscription'
+& 30 'engineer base'
+& 30 'alchemist base'
+
 #0
 
 
@@ -2293,6 +2327,14 @@ E
 potion dark blue~
 Fly like an eagle.
 ~
+#31097
+forge~
+a forge~
+A large forge dominates the room.~
+~
+43 1 0
+5~ 0~ 0~ 0~
+1000 0 0
 #0
 
 
@@ -4563,6 +4605,7 @@ G 1 31001 0         Gives bronze key
 *
 M 1 31002 1 31041   LOADS BLACKSMITH
 O 1 31093 1 31041   Loads anvil
+O 1 31097 1 31041   Loads Forge
 *
 M 1 31003 1 31043   LOADS ARMORER
 G 1 31017 0         0
