@@ -15,7 +15,7 @@ a giant starfish~
 <94>A giant starfish floats through the water, hunting for gastropods and limpets.<0>
 ~
 The giant starfish has a dense body with tan-coloured, thick arms. Its arms
-contain blunt spines that are bluish in color with purple tips that are swollen
+contain blunt spines that are bluish in colour with purple tips that are swollen
 and surrounded by brown fuzz and pedicellariae that have a plier-like shape.
 You'd guess it'd be 5 feet in diameter. It's minding its own business searching
 for large gastropods and limpets it can use its flexible stomach to pry open
@@ -40,7 +40,7 @@ a giant starfish~
 <94>A giant starfish floats through the water, hunting for gastropods and limpets.<0>
 ~
 The giant starfish has a dense body with tan-coloured, thick arms. Its arms
-contain blunt spines that are bluish in color with purple tips that are swollen
+contain blunt spines that are bluish in colour with purple tips that are swollen
 and surrounded by brown fuzz and pedicellariae that have a plier-like shape.
 You'd guess it'd be 5 feet in diameter. It's minding its own business searching
 for large gastropods and limpets it can use its flexible stomach to pry open
@@ -368,7 +368,7 @@ mammals found floating on the water's surface.
 ~
 4|32|64 32|512|32768|67108864 0 S
 45 0 0 0d0+0 0d0+0
-0 0
+4|8|512 0
 8 8 2
 #27290
 locathah hunter~
@@ -630,8 +630,6 @@ mpkill $n
 ~
 >death_prog 70~
 	mpecho {RWhen the vodyanoi dies, a swarm of electric eels rush to its corpse!{x
-	mpmload 27252
-	mpmload 27252
 	mpmload 27252
 	mpmload 27252
 	mpmload 27252
