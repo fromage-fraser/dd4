@@ -689,6 +689,8 @@ int     gsn_group_inscription;
 int     gsn_group_alchemy;
 int     gsn_group_turret_tech;
 int     gsn_group_mech_tech;
+int     gsn_group_adv_smith;
+int     gsn_group_weaponlore;
 int     gsn_group_last;
 
 
