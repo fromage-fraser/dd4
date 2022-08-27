@@ -424,8 +424,10 @@ int hit_gain( CHAR_DATA *ch )
                 gain = ch->level * 3 / 2;
 
                 if (IS_SET(ch->act, ACT_REGENERATOR))
+                {
                       regen_mult = (ch->level / 10) + 2;
                       gain *= regen_mult;
+                }
 
                 if (IS_AFFECTED(ch, AFF_POISON)
                     || IS_AFFECTED(ch, AFF_PRAYER_PLAGUE))
