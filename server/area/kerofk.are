@@ -50,7 +50,7 @@ guildmaster due more to her personality than her wizardly power.  Her
 powers are no small matter, however; she is still one of the best
 mages in the city.
 ~
-2|512|32768|16777216 0 700 S
+2|512|1024|32768|16777216 0 700 S
 51 0 -40 5d10+600 2d6+10
 0 0
 8 8 2
@@ -92,7 +92,7 @@ The Thieves' Guildmaster, Seobagn, watches you with narrowed eyes.
 Seobagn snickers at you while he spins a coin around his fingers with
 practised ease.  You wonder if its your coin.
 ~
-2|512|32768|16777216 0 -800 S
+2|512|1024|32768|16777216 0 -800 S
 51 0 -40 3d10+490 3d6+10
 0 0
 8 8 1
@@ -244,7 +244,7 @@ The herbalist is an ancient woman, but she still seems spry and
 sharp-minded when it comes to plants.  You've no doubt this woman is
 an expert in her field.
 ~
-2|512|32768|16777216 0 500 S
+2|512|1024|32768|16777216 0 500 S
 49 0 20 6d10+390 1d8+12
 0 0
 8 8 2
@@ -399,7 +399,7 @@ The High Priest is here, glowing with the benevolence of Brutus.
 The High Priest will be ascending to the realm of Brutus soon, and now his
 entire body glows with the same light as his soul.
 ~
-2|512|32768|16777216 128 1000 S
+2|512|1024|32768|16777216 128 1000 S
 51 0 -30 4d6+483 3d8+4
 0 0
 8 8 1
@@ -443,7 +443,7 @@ The Captain of the Guard salutes you with his epee.
 The Captain has a true love of civilized fighting.  He raises his
 eyebrow to you...shall we have a go at it?
 ~
-2|512|32768|16777216 0 200 S
+2|512|1024|32768|16777216 0 200 S
 53 0 -40 6d10+490 4d6+4
 0 0
 8 8 1
@@ -773,7 +773,7 @@ This pugilist has a true love of unarmed fighting. His combo of
 punches astounds you as you watch his shadow dance. He may
 be able to teach you some of his ways..
 ~
-2|512|32768|16777216 0 200 S
+2|512|1024|32768|16777216 0 200 S
 53 0 -40 6d10+490 4d6+4
 0 0
 8 8 1
@@ -796,7 +796,7 @@ The psionic master seems at one with his surroundings as she floats
 effortlessly before you. Before you can speak, a reply to your questions
 appears in your minds eye. You could well learn a great deal here.
 ~
-2|512|32768|16777216 0 200 S
+2|512|1024|32768|16777216 0 200 S
 53 0 -40 6d10+490 4d6+4
 0 0
 8 8 1
@@ -826,7 +826,7 @@ chameleon form, shapeshifters are nearly impossible to spot and are
 greatly feared in battle. This rare encounter may prove a great learning
 opportunity.
 ~
-64|512|32768|16777216 8 200 S
+64|512|1024|32768|16777216 8 200 S
 53 0 -40 6d10+490 4d6+4
 0 0
 8 8 1

@@ -428,7 +428,7 @@ a land roving birdlike creature which roams the surface of the island.
 Being of Hawk Form, The Hawklord is all knowing in the ways of the
 ShapeShifter. You might be able to learn from this master.
 ~
-2|64|512 524288 100 S
+2|64|512|1024 524288 100 S
 37 0 0 0d0+0 0d0+0
 0 0
 8 8 1

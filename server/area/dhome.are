@@ -112,12 +112,12 @@ tune.
 #20509
 dwarven bard~
 the bard~
-A bard playes her lute and sings a wondrous tune.
+A bard plays her lute and sings a wondrous tune.
 ~
-The bard is playing her little lute, and singing a tune about a young,
+The bard is playing her little lute and singing a tune about a young,
 brave adventurer and his many great adventures in the Fortress of Goblins.
 ~
-2|64|512|524288 8|8192 700 S
+2|64|512|1024|524288 8|8192 700 S
 28 0 0 6d12+778 2d12+8
 0 0
 8 8 2

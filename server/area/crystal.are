@@ -19,7 +19,7 @@ strength, and more than a little cunning. All you have to do is say you will
 accept the quest, and it will begin."
 
 ~
-3|8|512|4096|16777216 128 900 S
+3|8|512|1024|4096|16777216 128 900 S
 25 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -51,7 +51,7 @@ Riverwind the Ranger is standing here.
 A black haired ranger whose muscles surge with power.
 He looks travel weary and tired but happy to help.
 ~
-64|512 128 900 S
+64|512|1024 128 900 S
 30 0 0 0d0+0 0d0+0
 0 0
 0 0 1
