@@ -656,10 +656,15 @@ S
 #20104
 Mountain shrine~
 A small shrine lies in one corner of this small clearing. This place
-looks deserted and very forgotten. To your west, a huge stone boulder is
-set into the mountain. South leads you back to the mountain path.
+looks deserted and very forgotten. To the west and north huge stone boulders 
+are set into the mountain. South takes you back to the mountain path.
 ~
 201 1 3
+D0
+A huge stone set into the mountain.
+~
+stone boulder~
+2 -1 27845
 D3
 A huge stone set into the mountain.
 ~
@@ -1294,6 +1299,7 @@ S
 *
 * close doors
 D 0 20104 3 1   cave from outside
+D 0 20104 0 1   cave from outside
 D 0 20105 1 1   from inside
 D 0 20108 0 1   side court from outside
 D 0 20108 2 1

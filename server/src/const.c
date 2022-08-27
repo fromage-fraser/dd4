@@ -6124,7 +6124,6 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "", "!Group Weapon Lore!"
         },
 
-
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
          */

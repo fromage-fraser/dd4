@@ -161,4 +161,26 @@
         endif
         endif
 ~
+>give_prog froghemoth tentacle~
+        if level($n) > 45
+                say That mission was for someone less experienced.
+                give tentacle $n
+        break
+        else
+        if number($o) == 27412
+                mpjunk tentacle
+                say Great work, $n, the clerics will be overjoyed!
+                mpoload 27413 40
+                mpoload 27413 40
+                say We had the clerics whip you up something special by way of reward.
+                give vial $n
+                give vial $n
+        break
+        else
+                mpecho $I examines $O closely.
+                say Sorry $n, this isn't quite the item we're after.
+                give clasper $n
+        endif
+        endif
+~
 |
