@@ -1660,7 +1660,7 @@ Ota'ar Dar Canals South Junction, Lower~
 <254>but you can still travel north, west, or east, further along the canal system,
 or upwards, towards the  huge, looming area of darkness in the water above.<0>
 ~
-0 4 8
+0 4|65536 8
 D0
 ~
 ~
@@ -1807,7 +1807,7 @@ Ota'ar Dar Canals South Junction, Lower~
 <254>but you can still travel north, south, or east, further along the canal system,
 or upwards, towards the  huge, looming area of darkness in the water above.<0>
 ~
-0 4 8
+0 4|65536 8
 D0
 ~
 ~
@@ -1859,7 +1859,7 @@ Ota'ar Dar Canals South Junction, Lower~
 <254>but you can still travel west, east, or south further along the canal system,
 or upwards, towards the  huge, looming area of darkness in the water above.<0>
 ~
-0 4 8
+0 4|65536 8
 D1
 ~
 ~
@@ -2292,7 +2292,7 @@ Ota'ar Dar Canals Central Junction, Lower~
 <254>the cantons, but you can still travel north, south, east, or west further along
 the canal system, or upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
-0 4 8
+0 4|65536 8
 D0
 ~
 ~
@@ -2479,7 +2479,7 @@ Ota'ar Dar Canals Central Junction, Lower~
 the canal system, or upwards, towards the huge, looming area of darkness in the
 water above.<0>
 ~
-0 4 8
+0 4|65536 8
 D0
 ~
 ~
@@ -3498,7 +3498,7 @@ Ota'ar Dar/Omu Canals North Junction, Lower~
 the canal system, or upwards, towards the huge, looming area of darkness in the
 water above.<0>
 ~
-0 0 8
+0 65536 8
 D0
 ~
 ~
@@ -3525,7 +3525,7 @@ Ota'ar Dar/Omu Canals North Junction, Lower~
 the canal system, or upwards, towards the huge, looming area of darkness in the
 water above.<0>
 ~
-0 0 8
+0 65536 8
 D0
 ~
 ~
