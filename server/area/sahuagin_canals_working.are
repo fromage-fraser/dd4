@@ -14,10 +14,19 @@ You'd guess it'd be 5 feet in diameter. It's minding its own business searching
 for large gastropods and limpets it can use its flexible stomach to pry open
 and absorb.
 ~
-4|64 8192|67108864 0 S
+4|64|2048 8192|67108864|9223372036854775808  0 S
 35 0 0 0d0+0 0d0+0
-0 0
+63 0
 8 8 2
+>greet_prog 5~
+mpecho <94>A giant starfish suddenly launches itself at you!<0>
+mpkill $n
+~
+>entry_prog 5~
+mpecho <94>A giant starfish suddenly launches itself at you!<0>
+mpkill $n
+~
+|
 #27268
 giant starfish~
 a giant starfish~
@@ -30,10 +39,19 @@ You'd guess it'd be 5 feet in diameter. It's minding its own business searching
 for large gastropods and limpets it can use its flexible stomach to pry open
 and absorb.
 ~
-4|64 8192 0 S
+4|64|2048 8192|67108864|9223372036854775808  0 S
 35 0 0 0d0+0 0d0+0
-0 0
+63 0
 8 8 1
+>greet_prog 5~
+mpecho <94>A giant starfish suddenly launches itself at you!<0>
+mpkill $n
+~
+>entry_prog 5~
+mpecho <94>A giant starfish suddenly launches itself at you!<0>
+mpkill $n
+~
+|
 #27269
 pilot whale~
 a pilot whale~
@@ -46,9 +64,9 @@ robust than most dolphins, pilot whales have a distinctive large, bulbous
 melon. This guy is deep-diving to try and find some squid, one of his
 favourite snacks.
 ~
-64 8|32|512 0 S
+64 512|8192|67108864 0 S
 36 0 0 0d0+0 0d0+0
-0 0
+684 0
 8 8 1
 #27270
 pilot whale~
@@ -62,9 +80,9 @@ robust than most dolphins, pilot whales have a distinctive large, bulbous
 melon. This pilot whale is deep-diving to try and find some squid, one of
 her favourite snacks.
 ~
-64 8|32|512 0 S
+64 512|8192|67108864 0 S
 36 0 0 0d0+0 0d0+0
-0 0
+684 0
 8 8 2
 #27271
 minke whale~
@@ -75,9 +93,9 @@ While small for a baleen whale, the minke whale is still nearly 30 feet long
 and weighs almost 7 tons. This one is cruising for krill, though he'd be happy
 to take herring or capelin if there were none to be found.
 ~
-64 8|32|8192 0 S
+64 512|8192|67108864 0 S
 37 0 0 0d0+0 0d0+0
-0 0
+684 0
 8 8 1
 #27272
 minke whale~
@@ -88,9 +106,9 @@ While small for a baleen whale, the minke whale is still nearly 30 feet long
 and weighs almost 7 tons. This one is cruising for krill, though she'd be happy
 to take herring or capelin if there were none to be found.
 ~
-64 8|32|8192 0 S
+64 512|8192|67108864 0 S
 37 0 0 0d0+0 0d0+0
-0 0
+684 0
 8 8 2
 #27273
 baiji pale dolphin~
@@ -101,9 +119,9 @@ The baiji is pale blue to gray on her back, and white on her belly. She has a
 long and slightly upturned beak and a low and triangular dorsal fin. You also
 notice her eyes are much smaller than those of most of the dolphins you've seen.
 ~
-64 8|32|512|32768 0 S
+64 512|32768|67108864 0 S
 38 0 0 0d0+0 0d0+0
-0 0
+556 0
 8 8 2
 #27274
 dolphin baiji pale odd~
@@ -114,9 +132,9 @@ The baiji is pale blue to gray on his back, and white on his belly. He has a
 long and slightly upturned beak and a low and triangular dorsal fin. You also
 notice his eyes are much smaller than those of most of the dolphins you've seen.
 ~
-64 8|32|512|32768 0 S
+64 512|32768|67108864 0 S
 38 0 0 0d0+0 0d0+0
-0 0
+556 0
 8 8 1
 #27275
 right whale~
@@ -125,11 +143,11 @@ a right whale~
 ~
 This right whale is easily 15 metres long. She has an extremely thick body,
 and large, broad and blunt pectoral flippers. A filter-feeder, she cruises
-obliviously through the wtaer, paying no attention to you at all.
+obliviously through the water, paying no attention to you at all.
 ~
-64 8|32|512|32768 0 S
+64 512|8192|67108864 0 S
 40 0 0 0d0+0 0d0+0
-0 0
+684 0
 8 8 1
 #27276
 spectacled porpoise~
@@ -140,9 +158,9 @@ This spectacled porpoise has a black dorsal region which is sharply delineated
 from his white belly, and an obvious dark eye patch. He looks like he's having
 a lot of fun just frolicking about.
 ~
-64|128 8|32|512|8192 0 S
+64|128 512|67108864 0 S
 39 0 0 0d0+0 0d0+0
-0 0
+556 0
 8 8 1
 #27277
 spectacled porpoise~
@@ -153,9 +171,9 @@ This spectacled porpoise has a lightish-grey dorsal region which is delineated
 from her white belly, and an obvious dark eye patch. She looks like she's
 having a lot of fun just frolicking about.
 ~
-64|128 8|32|512|8192 0 S
+64|128 512|67108864 0 S
 39 0 0 0d0+0 0d0+0
-0 0
+556 0
 8 8 2
 #27278
 fin whale~
@@ -167,9 +185,9 @@ paler underside.  It is known as the greyhound of the sea for its speed and
 elegance. It's not very interested in you, and won't attack unless you
 provoke it.
 ~
-64 8192 0 S
+64 512|8192|67108864 0 S
 35 0 0 0d0+0 0d0+0
-0 0
+684 0
 8 8 1
 #27279
 fin whale~
@@ -181,9 +199,9 @@ paler underside.  It is known as the greyhound of the sea for its speed and
 elegance.  It's not very interested in you, and won't attack unless you
 provoke it.
 ~
-64 8192 0 S
+64 512|8192|67108864 0 S
 35 0 0 0d0+0 0d0+0
-0 0
+684 0
 8 8 2
 #27280
 sperm whale~
@@ -195,9 +213,9 @@ least 20 metres long.  With a huge head and a mouth full of large, conical
 teeth, it busies itself searching for the giant squid that are its favourite
 meal.
 ~
-64 8192 0 S
+64 512|8192|67108864 0 S
 38 0 0 0d0+0 0d0+0
-0 0
+684 0
 8 8 1
 #27281
 sperm whale~
@@ -209,9 +227,9 @@ least 11 metres long but mature--meaning it is probably a female.  With a
 huge head and a mouth full of large, conical teeth, it busies itself
 searching for the giant squid that are its favourite meal.
 ~
-64 512|8192 0 S
+64 512|8192|67108864 0 S
 38 0 0 0d0+0 0d0+0
-0 0
+684 0
 8 8 2
 #27282
 female nixie~
@@ -223,7 +241,7 @@ This one has pale green skin, dark green hair, webbed fingers and toes,
 pointed ears, and wide, silvery eyes.  She stands about 4 feet tall, and
 is wearing colourful clothing made out of seaweed, shells, and pearls.
 ~
-64 8|32|512|8192|32768 0 S
+64|4096|8388608 4|8|32|128|512|8192|32768|524288|8388608|67108864|1073741824 0 S
 41 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -237,23 +255,38 @@ This one has pale green skin, dark green hair, webbed fingers and toes,
 pointed ears, and wide, silvery eyes.  He stands about 4 feet tall, and is
 wearing a loincloth made out of colourful seaweed.
 ~
-64 8|32|512|8192|32768 0 S
+64|4096|8388608 4|8|32|512|8192|32768|8388608|67108864|1073741824 0 S
 41 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #27284
-froghemoth hideous froglike monstrosity~
+froghemoth hideous froglike monstrosity elephant-sized~
 the froghemoth~
-<58>An elephant-sized MONSTROSITY lurks here!<0>
+<58>The elephant-sized froghemoth is VERY displeased by your intrusion.<0>
 ~
-A hideous FROGHEMOTH stands before you, and it looks hungry. These
+A hideous froghemoth stands before you, and it looks hungry. These
 elephant-sized amphibious predators have four tentacles, three eyes,
 and six tons of bad attitude.
 ~
-2|4|32|64 32|512 0 S
+2|4|32|64 32|512|67108864 0 S
 45 0 0 0d0+0 0d0+0
-0 0
+164 0
 8 8 1
+>all_greet_prog 100~
+mpecho {GThe hideous froghemoth lunges at you, its tentacles flailing!{x
+mpkill $n
+~
+>rand_prog 3~
+mpasound ::RIBBIT::
+~
+>rand_prog 3~
+mpasound You hear something slimy slithering over rock.
+~
+>death_prog 100~
+	mpecho {WWith your final blow, you sever one of the froghemoth's tentacles!{x
+	mpoload 27412
+~
+|
 #27285
 bowhead whale~
 a bowhead whale~
@@ -264,9 +297,9 @@ chin/lower jaw. It has a massive triangular skull, which it uses to break
 through ice to breathe. This one is looking for zooplankton, which it strains
 using the massive baleen plates inside its huge mouth.
 ~
-64 512|8192 0 S
+64 512|8192|67108864 0 S
 40 0 0 0d0+0 0d0+0
-0 0
+684 0
 8 8 1
 #27286
 bowhead whale~
@@ -278,9 +311,9 @@ chin/lower jaw. It has a massive triangular skull, which it uses to break
 through ice to breathe. This one is looking for zooplankton, which it strains
 using the massive baleen plates inside its huge mouth.
 ~
-64 512 0 S
+64 512|8192|67108864 0 S
 40 0 0 0d0+0 0d0+0
-0 0
+684 0
 8 8 2
 #27287
 humpback whale~
@@ -292,9 +325,9 @@ proportionally long flippers, each around one-third of its body length.
 It has a short dorsal fin and its head is covered with bumps full of
 nerves that serve as sensory organs.
 ~
-64 512|8192 0 S
+64 512|8192|67108864 0 S
 41 0 0 0d0+0 0d0+0
-0 0
+684 0
 8 8 2
 #27288
 ocean sunfish fish~
@@ -307,27 +340,26 @@ giving it a long oval shape when seen head-on. The pectoral fins are small and
 fan-shaped, while the dorsal fin and the anal fin are lengthened, often making
 the fish as tall as it is long.  This one looks to be nearly 3 metres tall.
 ~
-64 512|8192 0 S
+64 512|8192|67108864 0 S
 43 0 0 0d0+0 0d0+0
-0 0
+556 0
 8 8 2
 #27289
 giant gar alligator~
 a giant gar~
 <65>A massive, sleek alligator gar torpedoes through the deep.<0>
 ~
-The body of an alligator gar is torpedo-shaped, usually brown or olive, fading
-to a lighter gray or yellow ventral surface. Their scales are not like the
-scales of other fishes; rather, they are ganoid scales, which are bone-like,
-rhomboidal-shaped scales, often with serrated edges, and covered by an
-enamel-like substance. They are nearly impenetrable and are excellent
+The body of this alligator gar is torpedo-shaped and olive in colour (fading
+to a lighter gray on the ventral surface). Her scales are ganoid, which are 
+bone-like, rhomboidal-shaped scales with serrated edges, which are covered 
+by an enamel-like substance making them nearly impenetrable and excellent
 protection against predation. Unlike other gar species, the upper jaw of an
-alligator gar has a dual row of large, sharp teeth that are used to impale
-and hold prey. Alligator gar are stalking, ambush predators, primarily
-piscivores, but they also ambush and eat waterfowl and small mammals they find
-floating on the water's surface.
+alligator gar like this has a dual row of large, sharp teeth that are used 
+to impale and hold prey. This is a stalking, ambush predator, primarily
+a piscivore, but they also prepared to ambush and eat waterfowl and small 
+mammals found floating on the water's surface.
 ~
-4|32|64 8|32|512|32768 0 S
+4|32|64 32|512|32768|67108864 0 S
 45 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -341,9 +373,9 @@ features large eyes, a toothless mouth,  and small fins where ears would
 normally be. Instead of hair, he has a dorsal fin and flukes.  Usually
 locathah hunt with seals; there's likely to be one around here someplace.
 ~
-64|128 32|512|32768 125 S
+64|128 32|512|32768|8388608|67108864 125 S
 42 0 0 0d0+0 0d0+0
-0 0
+512 0
 8 8 1
 #27291
 hunting seal~
@@ -353,10 +385,14 @@ a hunting seal~
 This seal swims about anxiously, looking both distressed and aggressive.
 It might pay not to get too close.
 ~
-4|32|64 32|8192 50 S
+4|32|64 32|512|8192|8388608|67108864 50 S
 42 0 0 0d0+0 0d0+0
-0 0
+44 0
 8 8 2
+>rand_prog 5~
+mpasound You hear a distressed whining sound.
+~
+|
 #27292
 sea zombie~
 a sea zombie~
@@ -367,10 +403,14 @@ discoloured flesh is foul with putrefaction. His eye-sockets are empty,
 his lips are blackened, and his tongue protrudes hideously. You notice his
 body is encrusted with barnacles.
 ~
-64 512 -545 S
+64 4|8|16|32|512|1024|67108864|1073741824 -545 S
 40 0 0 0d0+0 0d0+0
-0 0
+32 0
 8 8 1
+>rand_prog 3~
+mpasound GroOOooooOan...
+~
+|
 #27293
 sea zombie~
 a sea zombie~
@@ -381,57 +421,99 @@ discoloured flesh is foul with putrefaction. Her eye-sockets are empty,
 her lips are blackened, and her tongue protrudes hideously. You notice her
 body is encrusted with small starfish.
 ~
-64 512 -530 S
+64 4|8|16|32|512|1024|67108864|1073741824 -530 S
 40 0 0 0d0+0 0d0+0
-0 0
+32 0
 8 8 2
+>rand_prog 3~
+mpasound gRoOOooooOaN...
+~
+|
 #27294
 zin snake pale blue~
 a Zin~
 <159>A large, pale blue snake swims gracefully through the current.<0>
 ~
 It is a large, pale blue--nearly transparent--snake that is covered in a very
-unusual mosaic pattern.
+unusual mosaic pattern.  It has a very sly and mischevious look about it.
 ~
-64 8|32|512|32768|1048576 -125 S
+64|8388608 4|8|16|32|512|32768|524288|1048576|67108864|1073741824 -125 S
 43 0 0 0d0+0 0d0+0
-0 0
+588 0
 8 8 1
+>rand_prog 1~
+say How do you make a pool table laugh? Tickle its balls!
+~
+>rand_prog 1~
+say Why did the sperm cross the road? Because I put on the wrong sock this morning.
+~
+>rand_prog 1~
+say Why does a mermaid wear seashells? Because she outgrew her B-shells!
+~
+>rand_prog 1~
+say What did the leper say to the hooker? Keep the tip.
+~
+>rand_prog 1~
+say Did you know that diarrhea was hereditary? Yep.  It runs in your genes!
+~
+>rand_prog 1~
+say What do you get when you cross a dick with a potato? A dictator!
+~
+|
 #27295
 mob~
 a Zin~
 <157>A large, pale green snake swims gracefully through the current.<0>
 ~
 It is a large, pale green--nearly transparent--snake that is covered in a very
-unusual mosaic pattern.
+unusual mosaic pattern. It has a very sly and mischevious look about it.
 ~
-64 8|32|512|32768|1048576 -125 S
+64|8388608 4|8|16|32|512|32768|524288|1048576|67108864|1073741824 -125 S
 43 0 0 0d0+0 0d0+0
-0 0
+588 0
 8 8 2
+>rand_prog 1~
+say What do you call an expert fisherman? A Master Baiter.
+~
+>rand_prog 1~
+say Why can't you hear rabbits having sex? Because they have cotton balls.
+~
+>rand_prog 1~
+say How do you make your girlfriend scream during sex? Call and tell her about it.
+~
+>rand_prog 1~
+say What's the difference between hungry and horny? Where you stick the cucumber.
+~
+>rand_prog 1~
+say What does the sign on an out-of-business brothel say? Beat it. We're closed.
+~
+>rand_prog 1~
+say If your Uncle Jack was on his roof, and he wanted you to help him down, would you help your Uncle Jack off?
+~
+|
 #27296
 water drake silvery-blue elemental ~
 a water drake~
 <110>A silvery-blue elemental drake swims about here.<0>
 ~
-Draconic in form and about 12ï¿½feet (3.7ï¿½meters) long. It has silvery-blue
-scales that are more fish-like than reptilian.
+Draconic in form and about 3.7 metres long, he has silvery-blue scales that 
+appear more fish-like than reptilian.
 ~
-64 8|32|512 -100 S
+64 8|16|32|512|524288|67108864 -100 S
 45 0 0 0d0+0 0d0+0
-0 0
+512 0
 8 8 1
 #27297
 water drake silvery-blue elemental ~
 a water drake~
 <110>A silvery-blue elemental drake swims about here.<0>
 ~
-Draconic in form and about 12ï¿½feet (3.7ï¿½meters) long. It has silvery-blue
-scales that are more fish-like than reptilian.
+Draconic in form and about 3.7 metres long, she has silvery-blue scales that 
+appear more fish-like than reptilian.
 ~
-64 8|32|512 -85 S
+64 8|16|32|512|524288|67108864 -85 S
 45 0 0 0d0+0 0d0+0
-0 0
+512 0
 8 8 2
 #27298
 kappa hard-shelled humanoid creature~
@@ -442,7 +524,7 @@ The creature is of small-humanoid size and has a stooped stance; his main
 distinguishing feature is a hard shell that covers his back. His head is flat
 and pudgy, and his webbed hands end in sharp claws.
 ~
-64 512 -210 S
+64 512|67108864 -210 S
 47 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -455,7 +537,7 @@ The creature is of small-humanoid size and has a stooped stance; her main
 distinguishing feature is a hard shell that covers her back. Her head is flat
 and pudgy, and her webbed hands end in sharp claws.
 ~
-64 512 -235 S
+64 512|67108864 -235 S
 47 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -469,10 +551,21 @@ itself against most predators with its enormous tentacles and large beak.
 It doesn't look interested in you, and you'd imagine its focused more on
 evading the larger toothed-whale predators it has down here.
 ~
-4|64 32|512 0 S
+4|64 32|512|67108864 0 S
 50 0 0 0d0+0 0d0+0
-0 0
+168 0
 8 8 2
+>hitprcnt_prog 10~
+    mpecho {bA huge cloud of black ink forms in the water.{x
+    flee
+    flee
+    flee
+    hide
+~
+>rand_prog 1~
+vis
+~
+|
 #27301
 giant lobster~
 a giant lobster~
@@ -482,9 +575,9 @@ This 20-foot monster crustacean has a long body with a muscular tail and a
 pair of huge, frightening-looking claws.  It doesn't seem interested in your
 presence and will probably leave you alone if you don't harass it.
 ~
-4|64 512 0 S
+4|64 512|67108864 0 S
 45 0 0 0d0+0 0d0+0
-0 0
+672 0
 8 8 2
 #27302
 giant lobster~
@@ -501,9 +594,9 @@ its (relatively) tiny brain.
 It doesn't seem interested in your presence, though, and will probably leave
 you alone if you don't harass it.
 ~
-4|64 512 -200 S
+4|64 512|67108864 -200 S
 45 0 0 0d0+0 0d0+0
-0 0
+672 0
 8 8 1
 #27303
 vodyanoi creature large lumbering~
@@ -515,19 +608,37 @@ and water-dwelling. It has slimy green skin, webbed hands and feed, and
 powerful manibles.  They have a reputation as an evil and violent creature,
 but this one's attention doesn't seem to have turned to you... yet.
 ~
-64 512 -1000 S
+64 512|67108864 -1000 S
 47 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+>greet_prog 10~
+mpecho A <58>vodyanoi<0> lunges for you with its powerful mandibles!
+mpkill $n
+~
+>entry_prog 10~
+mpecho A <58>vodyanoi<0> lunges at you suddenly!
+mpkill $n
+~
+>death_prog 70~
+	mpecho {RWhen the vodyanoi dies, a swarm of electric eels rush to its corpse!{x
+	mpmload 27252
+	mpmload 27252
+	mpmload 27252
+	mpmload 27252
+	mpmload 27252
+	mpmload 27252
+~
+|
 #27304
 merrow male~
 a male merrow~
 <76>A large male merrow stares at you, furious at the intrusion!<0>
 ~
-He has black teeth and nails; webbed hands and feet; a long, thick neck; an
-underbite; and sloping shoulders. He does not seem pleased to see you.
+He has black teeth and nails, webbed hands and feet, a long, thick neck, an
+underbite, and sloping shoulders. He does not seem pleased to see you.
 ~
-2|32|64 8|32|512 -1000 S
+2|32|64 512|4194304|67108864 -1000 S
 49 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -536,11 +647,11 @@ female merrow~
 a female merrow~
 <76>A large female merrow stares at you, furious at the intrusion!<0>
 ~
-She has black teeth and nails; webbed hands and feet; a long, thick neck; an
-underbite; and sloping shoulders. She is also covered in tattoos that seem
+She has black teeth and nails, webbed hands and feet, a long, thick neck, an
+underbite, and sloping shoulders. She is also covered in tattoos that seem
 mainly to depict acts of death and destruction.
 ~
-2|32|64 8|32|512 -1000 S
+2|32|64 512|67108864 -1000 S
 49 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -554,9 +665,9 @@ fins near the head, and another along the back. Its mouth is lamprey-like, and
 filled with serrated, jawless teeth. You feel afraid just being in its presence,
 and have a strong intuition that it might be best to leave it alone.
 ~
-64 8|32|512 -730 S
+64|2048|16384|8388608 4|8|16|32|512|524288|2097152|8388608|67108864|1073741824 -730 S
 50 0 0 0d0+0 0d0+0
-0 0
+648 0
 8 8 0
 #27307
 yurian lobster male~
@@ -567,9 +678,9 @@ He resembles a lobster the size of a human being, walking on two humanoid legs
 but also able to swim like a lobster. His face is similar to that of a human,
 though encased in chitinous armor and with eyes on stalks.
 ~
-64 512 125 S
+64 512|67108864 125 S
 50 0 0 0d0+0 0d0+0
-0 0
+512 0
 8 8 1
 #27308
 yurian lobster female~
@@ -580,9 +691,9 @@ She resembles a lobster the size of a human being, walking on two humanoid legs
 but also able to swim like a lobster. Her face is similar to that of a human,
 though encased in chitinous armor and with eyes on stalks.
 ~
-64 512 135 S
+64 512|67108864 135 S
 50 0 0 0d0+0 0d0+0
-0 0
+512 0
 8 8 2
 #27309
 chuul horrible mix crustacean insect serpent~
@@ -595,9 +706,9 @@ lobster, weighing around 300 kilograms with four long legs, two large claws,
 a strong protective exoskeleton, a fan-like tail, and a mass of poisonous
 tentacles around its mouth.  Yikes.
 ~
-64 512 -850 S
+64 512|67108864 -850 S
 52 0 0 0d0+0 0d0+0
-0 0
+512 0
 8 8 1
 #27310
 chuul horrible mix crustacean insect serpent~
@@ -610,9 +721,9 @@ lobster, weighing around 300 kilograms with four long legs, two large claws,
 a strong protective exoskeleton, a fan-like tail, and a mass of poisonous
 tentacles around its mouth.  Yikes.
 ~
-64 512 -800 S
+64 512|67108864 -800 S
 52 0 0 0d0+0 0d0+0
-0 0
+512 0
 8 8 2
 #27311
 giant sea leech~
@@ -622,9 +733,9 @@ a giant sea leech~
 It similar in all morphological respects to a regular sea leech--wormlike with 
 large suckers at both ends--but huge.  You'd hate to have it feasting on you.
 ~
-4|64 8|32|512 -147 S
+4|64 1|512|67108864 -147 S
 53 0 0 0d0+0 0d0+0
-0 0
+686 0
 8 8 0
 #27312
 laghathti~
@@ -634,17 +745,24 @@ a laghathti~
 This is a laghathti,a kind of cephalopodan obyrith demon.  It has a loose 
 resemblance to octopuses, but that comparison in no way captures its alien 
 appearance. For one, it seemingly has no core; what passes for a body is 
-really just a spherical mass of writhing tendrils, roughly 8ï¿½feet in diameter. 
+really just a spherical mass of writhing tendrils, roughly 8 feet in diameter. 
 Aside from that, its form consists of twelve, midnight-blue tentacles. Five 
 of them have a pale underside riddled with hundreds of tiny mouths, another 
 five are slimmer and ended in wide, paddle-like fins, and the other two are 
 shorter, stronger, and end in long, crocodilian jaws from which the creature's 
 high-pitched wails emanate.
 ~
-64 8|32|512 -1000 S
+64|2048|8388608 1|4|8|16|32|512|524288|67108864|1073741824 -1000 S
 54 0 0 0d0+0 0d0+0
-0 0
+27 0
 8 8 0
+>rand_prog 3~
+mpasound A high-pitched wail echoes through the deep water.
+~
+>rand_prog 3~
+mpasound You hear a hideous high-pitched wailing in the distance.
+~
+|
 #27313
 reekmurk dark ink cloud~
 a reekmurk~
@@ -652,12 +770,12 @@ a reekmurk~
 ~
 The reekmurk is a huge, rare aquatic ooze, found usually in deep oceans.  It 
 gains its name from its appearance and horrible smell.  It resembles nothing 
-so much as a drifting cloud of ink, though can move surprisingly fast for all 
-that.
+so much as a drifting cloud of ink, though can move surprisingly fast when it 
+wants to.
 ~
-64 8|32|512|32768|1048576 0 S
+64|128|2048 1|32768|524288|1048576|67108864 0 S
 55 0 0 0d0+0 0d0+0
-0 0
+255 0
 8 8 0
 #27314
 uzollru giant centipede~
@@ -670,9 +788,9 @@ a bulging red eye at the center and five long tentacles extending from behind
 the eye in a radial pattern around it. On both sides of its head are gigantic 
 arms like those of a lobster ending in tremendous, barbed claws.
 ~
-4|64 8|32|512 -1000 S
+4|64 4|8|32|512|67108864|1073741824 -1000 S
 56 0 0 0d0+0 0d0+0
-0 0
+672 0
 8 8 1
 #27315
 marid warrior humanoid~
@@ -684,10 +802,16 @@ and with a skin colour containing a variety of blue hues, which seem to change
 with  his mood. A very impressive creature, he seems to be waiting for you to 
 say something to him.  Perhaps flattery?
 ~
-64 2|8|32|512 -35 S
+64|2048|16384 2|4|8|16|32|128|512|8192|524288|1048576|16777216|67108864|1073741824 -35 S
 57 0 0 0d0+0 0d0+0
-0 0
+216 0
 8 8 1
+>speech_prog p endless wave upon the sea of fate~
+say It is so rare to find someone with good manners! For you.
+    mpoload 27402 57
+    give pearls $n
+~
+|
 #27316
 marid humanoid~
 a Marid~
@@ -700,10 +824,16 @@ with her mood. She crackles with magical energy.
 A very impressive creature, she seems to be waiting for you to say something 
 to her.  Perhaps flattery?
 ~
-64 2|8|32|512 -60 S
+64|2048|16384 2|4|8|16|32|128|512|8192|524288|1048576|16777216|67108864|1073741824 -60 S
 57 0 0 0d0+0 0d0+0
-0 0
+216 0
 8 8 2
+>speech_prog p endless wave upon the sea of fate~
+say Hmph, very nice.  About time one of you learned some manners.
+    mpoload 27401 57
+    give coral $n
+~
+|
 #27317
 dragon turtle fearsome huge~
 a dragon turtle~
@@ -715,20 +845,154 @@ and a massive shell that must be 7 metres in diameter, which is covered in
 wicked, jagged protrusions.  An ambush predator, it has been lurking here for 
 many hours, waiting for someone foolish enough to venture within its reach.
 ~
-2|4|32|64 32|512 -35 S
+2|4|32|64|16384 32|512|8192|4194304|67108864 -35 S
 58 0 0 0d0+0 0d0+0
-0 0
+676 0
 8 8 2
+>rand_prog 3~
+mpasound You hear what sounds like a VERY large animal shifting its weight around.
+~
+>rand_prog 3~
+mpasound ::rumble::
+~
+>rand_prog 3~
+mpasound You hear the sharp hiss of expelled steam.
+~
+|
 #27318
 large black dragon Arlauthra~
 Arlauthra~
 Arlauthra the black dragon regards you with simmering fury.
 ~
-Arlauthra the black dragon has been a bane upon the domain for decades now, and now you stand before him, ready to mete out justice, at last.  He appears abnormally slender in comparison to other chromatic dragons—wiry, but not gaunt. His wicked horns protrude from the sides of his head and wrap around, projecting forward. A large frill adorns the upper part of its neck. He smells like nothign so much as rotting vegetation and foul water. He must be 5 metres tall and 25 metres long.  He is not at all pleased to see you here.
+Arlauthra the black dragon has been a bane upon the domain for decades now, 
+and now you stand before him, ready to mete out justice at long last.  He 
+appears abnormally slender in comparison to other chromatic dragons--wiry, 
+but not gaunt. His wicked horns protrude from the sides of his head and wrap 
+around, projecting forward. A large frill adorns the upper part of its neck. 
+He smells like nothing so much as rotting vegetation and foul water. He must 
+be 5 metres tall and 25 metres long. He is not at all pleased to see you here.
 ~
-2|32|64 8|32|512|8192|524288 -1000 S
+2|32|64|16384 4|8|16|32|512|8192|524288|4194304|8388608|1073741824 -1000 S
 60 0 0 0d0+0 0d0+0
-0 0
+640 0
+8 8 1
+>rand_prog 3~
+    mpasound A hideous reptilian screeching comes from the rocky island.
+~
+>rand_prog 3~
+    mpasound You hear the sound of some huge beast moving around.
+~
+>rand_prog 3~
+    mpasound The acidic burbling of some huge creature fills the air.
+~
+>fight_prog 10~
+    swallow $n
+~
+|
+#27319
+giant limpet~
+a giant limpet~
+<103>A giant limpet is here, clinging resolutely to a rock.<0>
+~
+Limpets are a kind of aquatic snail that with a conical shell shape and a 
+strong, muscular foot. This might be the largest one you've ever seen--it 
+must be 2 metres across!
+~
+2|64 64|8192|131072|67108864|9223372036854775808  0 S
+41 0 0 0d0+0 0d0+0
+44 0
+8 8 1
+#27320
+coral reef~
+a coral reef~
+<48>A <168>beautiful <144>coral <107>reef <254>is <63>here, <228>shimmering <6>with <60>a <181>thousand <87>colours.<0>
+~
+A coral reef is an underwater ecosystem characterized by reef-building corals. 
+This reef was formed by colonies of coral polyps held together by calcium 
+carbonate. Like most coral reefs, this one was built from stony corals, whose 
+polyps cluster in groups.  It really is beautiful.
+~
+2|64|2048|4096 1|64|256|8192|67108864|9223372036854775808  0 S
+49 0 0 0d0+0 0d0+0
+511 0
+8 8 0
+#27321
+giant sea cucumber~
+a giant sea cucumber~
+<143>A giant sea cucumber is here, scavenging on the ocean floor.<0>
+~
+Sea cucumbers are marine animals with a leathery skin and an elongated body 
+containing a single, branched gonad, and are found of sea floors the world 
+over. This one is several metres long.
+~
+2|4|64 1|67108864|9223372036854775808  0 S
+36 0 0 0d0+0 0d0+0
+574 0
+8 8 1
+#27322
+polyp colony coral~
+a polyp colony~
+<99>A colony of coral polyps sways in the ocean current.<0>
+~
+Many thousands of tiny coral polyps have joined together to form a colony here.  
+They sway in the ocean currents as they wait for morsels of food to fall into 
+their mouths.
+~
+2|64|2048|4096 1|64|67108864|9223372036854775808  0 S
+42 0 0 0d0+0 0d0+0
+127 0
+8 8 0
+#27323
+zoanthid network coral~
+a zoanthid network~
+<222>A stolonal network of zoanthids coats the surrounding coral here.<0>
+~
+Zoanthids are an order of cnidarians commonly found in coral reefs, the deep 
+sea and many other marine environments around the world. They come in a variety 
+of different colonizing formations and in numerous colors; these one are a 
+rather delicate yellow colour, and exist as a large 'mat' created from small 
+pieces of sediment, sand and rock.
+~
+2|64|2048|4096 1|64|67108864|9223372036854775808 0 S
+49 0 0 0d0+0 0d0+0
+127 0
+8 8 0
+#27324
+viperfish deep sea deep-sea fish~
+a viperfish~
+<27>A fearsome-looking deep sea fish roams the tunnel network.<0>
+~
+This unusually large viperfish has long, needle-like teeth and a hinged lower 
+jaw.  It cruises through deep-sea tunnels, looking for smaller fish and
+crustaceans to feed upon.
+~
+4|64 512|67108864 0 S
+36 0 0 0d0+0 0d0+0
+556 0
+8 8 1
+#27325
+giant bat vampire form~
+a giant vampire bat~
+<94>A giant winged form looms before you.<0>
+~
+The giant vampire bat hisses and screeches as it swoops through the air on its
+great leathery wings.
+~
+64 8|32|512|524288 0 S
+56 0 0 0d0+0 0d0+0
+32 0
+8 8 2
+#27326
+giant vampire bat~
+a giant vampire bat~
+<58>A giant vampire bat swoops through the subterranean darkness.<0>
+~
+You catch a glimpse of the huge bat's hideous leering visage as it swoops past
+your head. You recoil in horror.
+~
+64 8|32|512|524288 0 S
+56 0 0 0d0+0 0d0+0
+32 0
 8 8 1
 #0
 
@@ -761,7 +1025,7 @@ teak javelin~
 a teak javelin~
 A javelin carved out of teak wood is here.~
 ~
-5 0 1|8192
+5 134217728 1|8192
 0~ 0~ 0~ 11~
 2 0 0
 A
@@ -889,7 +1153,7 @@ translucent egg yolk shell thin~
 a translucent egg yolk~
 A very pale egg yolk in a thin shell is here.~
 ~
-10 1|32|64 1|16384
+10 1|16|32|64 1|16384
 43~ sanctuary~ heal~ ~
 1 0 0
 E
@@ -898,9 +1162,9 @@ It looks very unnatural and feels strange and unpleasant to hold.
 You suspect magic.
 ~
 #27387
-hard outer shell~
-a hard outer shell~
-The tough outer shell of some aquatic creature lies here.~
+tough outer shell~
+a tough outer shell~
+The tough outer shell of some large aquatic creature lies here.~
 ~
 9 4096 1|8
 0~ 0~ 0~ 0~
@@ -950,7 +1214,7 @@ A
 #27391
 treasure pile~
 a treasure pile~
-A pile of treasure has been heaped here.~
+<214>A pile of treasure has been heaped here.<0>~
 ~
 20 1 1|16384
 314~ 55~ 28~ 3~
@@ -975,7 +1239,7 @@ crude longspear~
 a crude longspear~
 A crude longspear has been discarded here.~
 ~
-5 0 1|8192
+5 134217728 1|8192
 0~ 0~ 0~ 2~
 4 0 0
 A
@@ -1084,7 +1348,7 @@ large sabre~
 a large sabre~
 A very large sabre has been discarded here.~
 ~
-5 1|64|512|1024 1|8192
+5 1|64|512|1024|16777216 1|8192
 0~ 0~ 0~ 1~
 14 0 0
 A
@@ -1105,13 +1369,15 @@ A large leathery egg is here.~
 5 0 0
 E
 large leathery egg~
-This very large leathery egg has a thin, quite fragile shell, and appears mostly liquid inside.  It would be easy to make a small incision and drink from it... if you think that's a good idea.~
+This very large leathery egg has a thin, quite fragile shell, and appears 
+mostly liquid inside.  It would be easy to make a small incision and drink 
+from it... if you think that's a good idea.~
 #27405
 horns Arlauthra~
 horns of Arlauthra~
 The wicked, curved horns of a black dragon have been left here.~
 ~
-9 16|64 1|16
+9 16|64|65536 1|16
 0~ 0~ 0~ 0~
 12 0 0
 A
@@ -1138,6 +1404,38 @@ A
 18 20
 A
 17 -50
+#27407
+sharp coral outgrowths~
+sharp coral outgrowths~
+Sharp coral formations lie here.~
+~
+5 16384|16777216 1|8192
+0~ 0~ 0~ 14~
+25 0 0
+#27408
+coral polyps~
+coral polyps~
+A handful of coral polyps have been left here.~
+~
+26 0 1|16384
+47~ cure poison~ detect hidden~ infravision~
+1 0 0
+#27412
+froghemoth tentacle~
+a froghemoth's tentacle~
+The huge, severed tentacle of a froghemoth lies here.~
+~
+5 0 1|16384
+0~ 0~ 0~ 4~
+1 0 0
+#27413
+bright green vial~
+a bright green vial~
+A bright green vial has been left here.~
+~
+10 0 1|16384
+40~ power heal~ inertial barrier~ combat mind~
+1 500 0
 #0
 
 
@@ -1155,22 +1453,26 @@ PLACEHOLDER UNTIL CONNECTED AREA IN.
 0 4 8
 S
 #27244
-Bridge to Military Canton~
-You are standing in room #27244.
+Arena Way Westbridge, Lower~
+<14>You stand on the bridge that connects Ota'ar Dar's arena canton to its military 
+<87>canton. The arena canton gates lie to the south, while the imposing military 
+<123>canton gates loom northward. To the east and west you may venture into the 
+<159>deep canal system which separates Ota'ar Dar's cantons from each other, or you 
+can head upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
 ~
-~
-0 -1 27283
+gate~
+8 -1 27283
 D1
 ~
 ~
 0 -1 27248
 D2
 ~
-~
-0 -1 27235
+gate~
+8 -1 27235
 D3
 ~
 ~
@@ -1181,8 +1483,13 @@ D4
 0 -1 27544
 S
 #27246
-Canton Canal~
-You are standing in room #27246.
+Ota'ar Dar Military/Arena Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton, to the north, and its arena canton, to the south. The high canal
+<252>walls prevent access from here to either canton, but you may travel west, further  
+<254>along the canal system, upwards, towards the huge, looming area of darkness in the 
+water above, or to the east, where you can see the bridge that connects the 
+cantons to each other.<0>
 ~
 0 0 8
 D1
@@ -1199,8 +1506,15 @@ D4
 0 -1 27546
 S
 #27247
-Canton Canal~
-You are standing in room #27247.
+Ota'ar Dar Military/Arena Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, at the western end of a deep canal 
+<250>between Ota'ar Dar's military canton, to the north, and its arena canton, to 
+<252>the south. The high canal walls prevent access to either canton from here, 
+<254>and a huge iron grate prevents further travel east, but you may travel 
+east along the canal or upwards, towards the huge, looming area of darkness 
+in the water above. You also notice what looks like the entrance to an
+underground cave to the south--a large opening has been carved through the canal 
+walls and into the sea bedrock.<0>
 ~
 0 0 8
 D1
@@ -1217,8 +1531,13 @@ D4
 0 -1 27547
 S
 #27248
-Canton Canal~
-You are standing in room #27248.
+Ota'ar Dar Military/Arena Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton, to the northwest, and its arena canton, to the south and east. 
+<252>The high canal walls prevent access from here to either canton, but you may travel 
+<254>north, further along the canal system, upwards, towards the huge, looming area of 
+darkness in the water above, or to the west, where you see the bridge that connects the 
+cantons to each other.<0>
 ~
 0 0 8
 D0
@@ -1235,8 +1554,12 @@ D4
 0 -1 27548
 S
 #27249
-Canton Canal~
-You are standing in room #27249.
+Ota'ar Dar Military/Arena Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton, to the north and west, and its arena canton, to the southeast. 
+<252>The high canal walls prevent access from here to either canton, but you may travel 
+<254>east or south, further along the canal system, or upwards, towards the huge, looming 
+area of darkness in the water above.<0>
 ~
 0 0 8
 D1
@@ -1253,8 +1576,12 @@ D4
 0 -1 27549
 S
 #27250
-Canton Canal~
-You are standing in room #27250.
+Ota'ar Dar Military/Arena Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton, to the north, and its arena canton, to the south.  The high 
+<252>canal walls prevent access from here to either canton, but you may travel east
+<254>or west, further along the canal system, or upwards, towards the huge, looming 
+area of darkness in the water above.<0>
 ~
 0 0 8
 D1
@@ -1271,8 +1598,12 @@ D4
 0 -1 27550
 S
 #27251
-Canton Canal~
-You are standing in room #27251.
+Ota'ar Dar Military/Arena Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton, to the northwest, and its arena canton, to the south and east. 
+<252>The high canal walls prevent access from here to either canton, but you may 
+<254>travel north or west, further along the canal system, or upwards, towards the  
+huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -1289,8 +1620,12 @@ D4
 0 -1 27551
 S
 #27252
-Canton Canal~
-You are standing in room #27252.
+Ota'ar Dar Military/Arena Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton, to the north and west, and its arena canton, to the southeast. 
+<252>The high canal walls prevent access from here to either canton, but you may 
+<254>travel south or east, further along the canal system, or upwards, towards the  
+huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D1
@@ -1307,8 +1642,12 @@ D4
 0 -1 27552
 S
 #27253
-Canton Canal~
-You are standing in room #27253.
+Ota'ar Dar Canals South Junction, Lower~
+<248>You are at the bottom of the ocean floor, in the large canal junction that 
+<250>exists between Ota'ar Dar's military, arena, market, and southern residential 
+<252>cantons. The high canal walls prevent access from here to any of the cantons, 
+<254>but you can still travel north, west, or east, further along the canal system, 
+or upwards, towards the  huge, looming area of darkness in the water above.<0>
 ~
 0 4 8
 D0
@@ -1329,8 +1668,12 @@ D4
 0 -1 27553
 S
 #27254
-Canton Canal~
-You are standing in room #27254.
+Ota'ar Dar Canals South Junction, Lower~
+<248>You are at the bottom of the ocean floor, in the large canal junction that 
+<250>exists between Ota'ar Dar's military, arena, market, and southern residential 
+<252>cantons. The high canal walls prevent access from here to any of the cantons, 
+<254>but you can still travel north, west, or east, further along the canal system, 
+or upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -1351,8 +1694,12 @@ D4
 0 -1 27554
 S
 #27255
-Canton Canal~
-You are standing in room #27255.
+Ota'ar Dar Market/Arena Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>market canton, to the north and east, and its arena canton, to the southwest. 
+<252>The high canal walls prevent access from here to either canton, but you may 
+<254>travel south or west, further along the canal system, or upwards, towards the  
+huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D2
@@ -1369,8 +1716,12 @@ D4
 0 -1 27555
 S
 #27256
-Canton Canal~
-You are standing in room #27256.
+Ota'ar Dar Market/Arena Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>market canton, to the northeast, and its arena canton, to the south and west. 
+<252>The high canal walls prevent access from here to either canton, but you may 
+<254>travel north or east, further along the canal system, or upwards, towards the  
+huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -1387,10 +1738,20 @@ D4
 0 -1 27556
 S
 #27257
-Canton Canal~
-You are standing in room #27257.
+Ota'ar Dar Market/Arena Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>market canton, to the north and east, and its arena canton, to the southwest. 
+<252>The high canal walls would usually prevent access from here to either canton, 
+<254>but seem a little lower to the east--perhaps you could climb or fly over it 
+to the market canton from here? You may also travel south or west, further along 
+the canal system, or upwards, towards the huge, looming area of darkness in the 
+water above.<0>
 ~
 0 0 8
+D1
+~
+wall~
+9 -1 27308
 D2
 ~
 ~
@@ -1405,8 +1766,13 @@ D4
 0 -1 27557
 S
 #27258
-Canton Canal~
-You are standing in room #27258.
+Ota'ar Dar Market/Arena Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>market canton, to the northeast, and its arena canton, to the south and west. 
+<252>The high canal walls prevent access from here to either canton, but you may 
+<254>travel north, further along the canal system, east, in the direction of the 
+bridge linking the market and arena cantons, or upwards, towards the huge, looming 
+area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -1423,8 +1789,12 @@ D4
 0 -1 27558
 S
 #27259
-Canton Canal~
-You are standing in room #27259.
+Ota'ar Dar Canals South Junction, Lower~
+<248>You are at the bottom of the ocean floor, in the large canal junction that 
+<250>exists between Ota'ar Dar's military, arena, market, and southern residential 
+<252>cantons. The high canal walls prevent access from here to any of the cantons, 
+<254>but you can still travel north, south, or east, further along the canal system, 
+or upwards, towards the  huge, looming area of darkness in the water above.<0>
 ~
 0 4 8
 D0
@@ -1445,8 +1815,12 @@ D4
 0 -1 27559
 S
 #27260
-Canton Canal~
-You are standing in room #27260.
+Ota'ar Dar Canals South Junction, Lower~
+<248>You are at the bottom of the ocean floor, in the large canal junction that 
+<250>exists between Ota'ar Dar's military, arena, market, and southern residential 
+<252>cantons. The high canal walls prevent access from here to any of the cantons, 
+<254>but you can still travel north, south, or west, further along the canal system, 
+or upwards, towards the  huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -1467,8 +1841,12 @@ D4
 0 -1 27560
 S
 #27261
-Canton Canal~
-You are standing in room #27261.
+Ota'ar Dar Canals South Junction, Lower~
+<248>You are at the bottom of the ocean floor, in the large canal junction that 
+<250>exists between Ota'ar Dar's military, arena, market, and southern residential 
+<252>cantons. The high canal walls prevent access from here to any of the cantons, 
+<254>but you can still travel west, east, or south further along the canal system, 
+or upwards, towards the  huge, looming area of darkness in the water above.<0>
 ~
 0 4 8
 D1
@@ -1489,8 +1867,12 @@ D4
 0 -1 27561
 S
 #27262
-Canton Canal~
-You are standing in room #27262.
+Ota'ar Dar Canals South Junction, Lower~
+<248>You are at the bottom of the ocean floor, in the large canal junction that 
+<250>exists between Ota'ar Dar's military, arena, market, and southern residential 
+<252>cantons. The high canal walls prevent access from here to any of the cantons, 
+<254>but you can still travel west, east, or south, further along the canal system, 
+or upwards, towards the  huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D1
@@ -1511,8 +1893,12 @@ D4
 0 -1 27562
 S
 #27263
-Canton Canal~
-You are standing in room #27263.
+Ota'ar Dar Market/Southern Residential Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>market canton, to the south and east, and its southern residential canton, to 
+<252>the northwest. The high canal walls prevent access from here to either canton, 
+<254>but you may travel north or west, further along the canal system, or upwards, 
+towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -1529,14 +1915,25 @@ D4
 0 -1 27563
 S
 #27264
-Canton Canal~
-You are standing in room #27264.
+Ota'ar Dar Market/Southern Residential Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>market canton, to the east, and its southern residential canton, to the west. 
+<252>The high canal walls prevent access from here to either canton, but you may
+<254>travel north or south, further along the canal system, or upwards, towards the
+huge, looming area of darkness in the water above. You notice a narrow grate
+choked with seaweed in the eastern wall of the canal.<0>
 ~
 0 0 8
 D0
 ~
 ~
 0 -1 27265
+D1
+The grate looks like it might be wide enough for you to squeeze through, with 
+all the seaweed cleared out of it.
+~
+grate~
+10 -1 27846
 D2
 ~
 ~
@@ -1545,10 +1942,19 @@ D4
 ~
 ~
 0 -1 27564
+E
+narrow grate choked seaweed~
+Upon close inspection, the grate looks like it might be wide enough for you to
+squeeze through, with all the seaweed cleared out of it.
+~
 S
 #27265
-Canton Canal~
-You are standing in room #27265.
+Ota'ar Dar Market/Southern Residential Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>market canton, to the southeast, and its southern residential canton, to the  
+<252>north and west. The high canal walls prevent access from here to either canton, 
+<254>but you may travel east or south, further along the canal system, or upwards, 
+towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D1
@@ -1565,8 +1971,13 @@ D4
 0 -1 27565
 S
 #27266
-Canton Canal~
-You are standing in room #27266.
+Ota'ar Dar Market/Southern Residential Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>market canton, to the south and east, and its southern residential canton, 
+<252>to the northwest. The high canal walls prevent access from here to either  
+<254>canton, but you may travel west, further along the canal system, north, in the  
+direction of the bridge linking the market and southern residential cantons, or 
+upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -1583,8 +1994,12 @@ D4
 0 -1 27566
 S
 #27267
-Canton Canal~
-You are standing in room #27267.
+Ota'ar Dar Military/Southern Residential Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton, to the south and west, and its southern residential canton,   
+<252>to the northeast. The high canal walls prevent access from here to either  
+<254>canton, but you may travel east or north, further along the canal system, or 
+upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -1601,8 +2016,12 @@ D4
 0 -1 27567
 S
 #27268
-Canton Canal~
-You are standing in room #27268.
+Ota'ar Dar Military/Southern Residential Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton, to the southwest, and its southern residential canton, to the  
+<252>north and east. The high canal walls prevent access from here to either canton,  
+<254>but you may travel south and west, further along the canal system, or upwards,
+towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D2
@@ -1619,8 +2038,12 @@ D4
 0 -1 27568
 S
 #27269
-Canton Canal~
-You are standing in room #27269.
+Ota'ar Dar Military/Southern Residential Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton, to the south and west, and its southern residential canton, to   
+<252>the northeast. The high canal walls prevent access from here to either canton,  
+<254>but you may travel north and east, further along the canal system, or upwards,
+towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -1637,8 +2060,12 @@ D4
 0 -1 27569
 S
 #27270
-Canton Canal~
-You are standing in room #27270.
+Ota'ar Dar Military/Southern Residential Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton, to the southwest, and its southern residential canton, to the  
+<252>north and east. The high canal walls prevent access from here to either canton,  
+<254>but you may travel south and west, further along the canal system, or upwards,
+towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D2
@@ -1655,8 +2082,12 @@ D4
 0 -1 27570
 S
 #27271
-Canton Canal~
-You are standing in room #27271.
+Ota'ar Dar Military/Southern Residential Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton, to the south and west, and its southern residential canton, to   
+<252>the northeast. The high canal walls prevent access from here to either canton,  
+<254>but you may travel north and east, further along the canal system, or upwards,
+towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -1673,8 +2104,15 @@ D4
 0 -1 27571
 S
 #27272
-Canton Canal~
-You are standing in room #27272.
+Ota'ar Dar Military/Southern Residential/Old City Centre Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton, to the southwest, its southern residential canton, to the  
+<252>east, and the old city centre, to the north. The high canal walls and the old 
+<254>city's fortifications prevent access from here to the old city centre or either 
+<254>canton, but you may travel south and west, further along the canal system, or
+upwards, towards the huge, looming area of darkness in the water above. To the
+north you see the bridge that connects Ota'ar Dar's southern residential canton
+to the old city centre, but a large iron grate prevents access to it from here.<0>
 ~
 0 0 8
 D2
@@ -1691,8 +2129,13 @@ D4
 0 -1 27572
 S
 #27273
-Canton Canal~
-You are standing in room #27273.
+Ota'ar Dar Military/Old City Centre Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton, to the south, and the old city centre, to the north. The high 
+<252>canal walls and the old city's fortifications prevent access from here to the 
+<254>old city centre or the military canton, but you may travel east and west, 
+further along the canal system, or upwards, towards the huge, looming area of 
+darkness in the water above.<0>
 ~
 0 0 8
 D1
@@ -1709,8 +2152,13 @@ D4
 0 -1 27573
 S
 #27274
-Canton Canal~
-You are standing in room #27274.
+Ota'ar Dar Military/Old City Centre Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton, to the southeast, and the old city centre, to the north and  
+<252>west. The high canal walls and the old city's fortifications prevent access  
+<254>from here to the old city centre or the military canton, but you may travel  
+east and south, further along the canal system, or upwards, towards the huge,  
+looming area of darkness in the water above.<0>
 ~
 0 0 8
 D1
@@ -1727,8 +2175,15 @@ D4
 0 -1 27574
 S
 #27275
-Canton Canal~
-You are standing in room #27275.
+Ota'ar Dar Military/Old City Centre Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton, to the south and east, and the old city centre, to the west.  
+<252>The high canal walls and the old city's fortifications prevent access from 
+<254>here to the old city centre or the military canton, but you may travel north, 
+further along the canal system, or upwards, towards the huge, looming area of 
+darkness in the water above. To the west you see the bridge that connects 
+Ota'ar Dar's military canton to the old city centre, but a large iron grate 
+prevents access to it from here.<0>
 ~
 0 0 8
 D0
@@ -1747,18 +2202,23 @@ PLACEHOLDER UNTIL CONNECTED AREA IN.
 0 4 8
 S
 #27307
-Bridge to Market Canton~
-You are standing in room #27307.
+Arena Way Eastbridge, Lower~
+<14>You stand on the bridge that connects Ota'ar Dar's arena canton to its market 
+<87>canton. The arena canton gates lie to the south, while the market canton gates
+<123>rise to the north. To the east you may venture into the deep canal system
+<159>which separates Ota'ar Dar's cantons from each other, or you can head upwards, 
+towards the huge, looming area of darkness in the water above.  To the east a huge
+iron grate prevents travel out into the open ocean.<0>
 ~
 0 0 8
 D0
 ~
-~
+gate~
 8 -1 27308
 D2
 ~
-~
-0 -1 27243
+gate~
+8 -1 27243
 D3
 ~
 ~
@@ -1769,8 +2229,13 @@ D4
 0 -1 27607
 S
 #27354
-Canton Canal~
-You are standing in room #27354.
+Ota'ar Dar Market/Southern Residential Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>market canton, to the east, and its southern residential canton, to the west. 
+<252>The high canal walls prevent access from here to either canton, but you may 
+<254>travel north, further along the canal system, south, in the direction of the 
+bridge linking the market and southern residential cantons, or upwards, towards 
+the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -1787,8 +2252,12 @@ D4
 0 -1 27654
 S
 #27355
-Canton Canal~
-You are standing in room #27355.
+Ota'ar Dar Market/Southern Residential Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>market canton, to the east, and its southern residential canton, to the west. 
+<252>The high canal walls prevent access from here to either canton, but you may
+<254>travel north or south, further along the canal system, or upwards, towards the
+huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -1805,8 +2274,12 @@ D4
 0 -1 27655
 S
 #27356
-Canton Canal~
-You are standing in room #27356.
+Ota'ar Dar Canals Central Junction, Lower~
+<248>You are at the bottom of the ocean floor, in the small canal junction that 
+<250>exists between Ota'ar Dar's southern residential, northern residential, market,
+<252>and prince's cantons. The high canal walls prevent access from here to any of
+<254>the cantons, but you can still travel north, south, east, or west further along
+the canal system, or upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
 0 4 8
 D0
@@ -1831,8 +2304,12 @@ D4
 0 -1 27656
 S
 #27357
-Canton Canal~
-You are standing in room #27357.
+Ota'ar Dar Northern/Southern Residential Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>northern and southern residential cantons. The high canal walls prevent access
+<252>from here to either canton, but you may travel north, west, or east further
+<254>along the canal system, or upwards, towards the huge, looming area of darkness 
+in the water above.<0>
 ~
 0 0 8
 D0
@@ -1853,8 +2330,12 @@ D4
 0 -1 27657
 S
 #27358
-Canton Canal~
-You are standing in room #27358.
+Ota'ar Dar Northern/Southern Residential Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>northern and southern residential cantons. The high canal walls prevent access
+<252>from here to either canton, but you may travel north or east further along the
+<254>canal system, west towards the bridge connecting the two cantons, or upwards, 
+towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -1875,8 +2356,12 @@ D4
 0 -1 27658
 S
 #27359
-Canton Canal~
-You are standing in room #27359.
+Ota'ar Dar Market/Prince's Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>market and prince's cantons. The high canal walls prevent access from here to 
+<252>either canton, but you may travel north, west, or east further along the canal
+<254>system, or upwards, towards the huge, looming area of darkness in the water 
+above.<0>
 ~
 0 0 8
 D0
@@ -1897,8 +2382,12 @@ D4
 0 -1 27659
 S
 #27360
-Canton Canal~
-You are standing in room #27360.
+Ota'ar Dar Market/Prince's Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>market and prince's cantons. The high canal walls prevent access from here to 
+<252>either canton, but you may travel north or west further along the canal
+<254>system, east, towards the bridge that connects the two cantons, or upwards, 
+towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -1919,8 +2408,12 @@ D4
 0 -1 27660
 S
 #27361
-Canton Canal~
-You are standing in room #27361.
+Ota'ar Dar Northern/Southern Residential Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>northern and southern residential cantons. The high canal walls prevent access
+<252>from here to either canton, but you may travel south or east further along the
+<254>canal system, west towards the bridge connecting the two cantons, or upwards, 
+towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D1
@@ -1941,8 +2434,12 @@ D4
 0 -1 27661
 S
 #27362
-Canton Canal~
-You are standing in room #27362.
+Ota'ar Dar Northern/Southern Residential Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>northern and southern residential cantons. The high canal walls prevent access
+<252>from here to either canton, but you may travel south, west, or east further
+<254>along the canal system, or upwards, towards the huge, looming area of darkness 
+in the water above.<0>
 ~
 0 0 8
 D1
@@ -1963,8 +2460,13 @@ D4
 0 -1 27662
 S
 #27363
-Canton Canal~
-You are standing in room #27363.
+Ota'ar Dar Canals Central Junction, Lower~
+<248>You are at the bottom of the ocean floor, in the small canal junction that 
+<250>exists between Ota'ar Dar's southern residential, northern residential, market,
+<252>and prince's cantons. The high canal walls prevent access from here to any of
+<254>the cantons, but you can still travel north, south, east or west further along
+the canal system, or upwards, towards the huge, looming area of darkness in the 
+water above.<0>
 ~
 0 4 8
 D0
@@ -1989,8 +2491,12 @@ D4
 0 -1 27663
 S
 #27364
-Canton Canal~
-You are standing in room #27364.
+Ota'ar Dar Market/Prince's Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>market and prince's cantons. The high canal walls prevent access from here to 
+<252>either canton, but you may travel south, west, or east further along the canal
+<254>system, or upwards, towards the huge, looming area of darkness in the water 
+above.<0>
 ~
 0 0 8
 D1
@@ -2011,8 +2517,12 @@ D4
 0 -1 27664
 S
 #27365
-Canton Canal~
-You are standing in room #27365.
+Ota'ar Dar Market/Prince's Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>market and prince's cantons. The high canal walls prevent access from here to 
+<252>either canton, but you may travel south or west further along the canal
+<254>system, east, towards the bridge that connects the two cantons, or upwards, 
+towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D1
@@ -2033,8 +2543,12 @@ D4
 0 -1 27665
 S
 #27366
-Canton Canal~
-You are standing in room #27366.
+Ota'ar Dar Northern Residential/Prince's Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>northern residential and prince's cantons. The high canal walls prevent access 
+<252>from here to either canton, but you may travel north or south further along 
+<254>the canal system, or upwards, towards the huge, looming area of darkness in  
+the water above.<0>
 ~
 0 0 8
 D0
@@ -2051,8 +2565,12 @@ D4
 0 -1 27666
 S
 #27367
-Canton Canal~
-You are standing in room #27367.
+Ota'ar Dar Northern Residential/Prince's Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>northern residential and prince's cantons. The high canal walls prevent access 
+<252>from here to either canton, but you may travel south, further along the canal
+<254>system, north, towards the bridge that connects the two cantons, or upwards, 
+towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -2068,6 +2586,12 @@ D4
 ~
 0 -1 27667
 S
+#27368
+Dummy Connecting Room~
+PLACEHOLDER UNTIL CONNECTED AREA IN.
+~
+0 0 8
+S
 #27385
 Dummy Connecting Room~
 PLACEHOLDER UNTIL CONNECTED AREA IN.
@@ -2075,8 +2599,13 @@ PLACEHOLDER UNTIL CONNECTED AREA IN.
 0 4 8
 S
 #27388
-Bridge to North Living Canton~
-You are standing in room #27388.
+Residential Bridge South, Lower~
+<14>You stand on the long bridge that connects Ota'ar Dar's northern residential  
+<87>canton to its southern one. The southern residential gates lie to your immediate 
+<123>south, while the bridge continues north towards the northern ones. To the east  
+<159>and west you may venture into the deep canal system which separates Ota'ar Dar's 
+cantons from each other, or you can head upwards, towards the huge, looming area of
+darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -2089,8 +2618,8 @@ D1
 0 -1 27358
 D2
 ~
-~
-0 -1 27385
+gate~
+8 -1 27385
 D3
 ~
 ~
@@ -2101,14 +2630,19 @@ D4
 0 -1 27688
 S
 #27389
-Bridge to North Living Canton~
-You are standing in room #27389.
+Residential Bridge North, Lower~
+<14>You stand on the long bridge that connects Ota'ar Dar's northern residential  
+<87>canton to its southern one. The northern residential gates lie to your immediate 
+<123>north, while the bridge continues south towards the southern ones. To the east  
+<159>and west you may venture into the deep canal system which separates Ota'ar Dar's 
+cantons from each other, or you can head upwards, towards the huge, looming area of
+darkness in the water above.<0>
 ~
 0 0 8
 D0
 ~
-~
-0 -1 27398
+gate~
+8 -1 27398
 D1
 ~
 ~
@@ -2127,8 +2661,12 @@ D4
 0 -1 27689
 S
 #27390
-Canton Canal~
-You are standing in room #27390.
+Ota'ar Dar Northern/Southern Residential Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>northern and southern residential cantons. The high canal walls prevent access
+<252>from here to either canton, but you may travel north or west further along the
+<254>canal system, east towards the bridge connecting the two cantons, or upwards, 
+towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -2149,8 +2687,12 @@ D4
 0 -1 27690
 S
 #27391
-Canton Canal~
-You are standing in room #27391.
+Ota'ar Dar Northern/Southern Residential Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>northern and southern residential cantons. The high canal walls prevent access
+<252>from here to either canton, but you may travel north, west, or east further
+<254>along the canal system, or upwards, towards the huge, looming area of darkness 
+in the water above.<0>
 ~
 0 0 8
 D0
@@ -2171,8 +2713,12 @@ D4
 0 -1 27691
 S
 #27392
-Canton Canal~
-You are standing in room #27392.
+Ota'ar Dar Old City Centre/Southern Residential Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>southern residential canton and the old city centre. The high canal walls and 
+<252>the old city's fortifications prevent access from here to the canton or the old 
+<254>city centre, but you may travel north, south or east, further along the canal 
+system, or upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -2193,8 +2739,14 @@ D4
 0 -1 27692
 S
 #27393
-Canton Canal~
-You are standing in room #27393.
+Ota'ar Dar Old City Centre/Southern Residential Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>southern residential canton and the old city centre. The high canal walls and 
+<252>the old city's fortifications prevent access from here to the canton or the old 
+<254>city centre, but you may travel north, further along the canal system, or 
+upwards, towards the huge, looming area of darkness in the water above.  To the 
+south you see the bridge that connects the southern residential canton to the
+old city centre, but a large iron grate prevents access to it from here.<0>
 ~
 0 0 8
 D0
@@ -2207,8 +2759,12 @@ D4
 0 -1 27693
 S
 #27394
-Canton Canal~
-You are standing in room #27394.
+Ota'ar Dar Old City Centre/Northern Residential Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>northern residential canton and the old city centre. The high canal walls and 
+<252>the old city's fortifications prevent access from here to the canton or the old 
+<254>city centre, but you may travel north, south or east, further along the canal 
+system, or upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -2229,8 +2785,14 @@ D4
 0 -1 27694
 S
 #27395
-Canton Canal~
-You are standing in room #27395.
+Ota'ar Dar Old City Centre/Northern Residential Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>northern residential canton and the old city centre. The high canal walls and 
+<252>the old city's fortifications prevent access from here to the canton or the old 
+<254>city centre, but you may travel south, further along the canal system, or 
+upwards, towards the huge, looming area of darkness in the water above.  To the
+north you see the bridge that connects Ota'ar Dar's northern residential canton
+to the old city centre, but a large iron grate prevents access to it from here.<0>
 ~
 0 0 8
 D2
@@ -2243,8 +2805,12 @@ D4
 0 -1 27695
 S
 #27396
-Canton Canal~
-You are standing in room #27396.
+Ota'ar Dar Northern/Southern Residential Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>northern and southern residential cantons. The high canal walls prevent access
+<252>from here to either canton, but you may travel south, west, or east further
+<254>along the canal system, or upwards, towards the huge, looming area of darkness 
+in the water above.<0>
 ~
 0 0 8
 D1
@@ -2265,8 +2831,12 @@ D4
 0 -1 27696
 S
 #27397
-Canton Canal~
-You are standing in room #27397.
+Ota'ar Dar Northern/Southern Residential Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>northern and southern residential cantons. The high canal walls prevent access
+<252>from here to either canton, but you may travel south or west further along the
+<254>canal system, east towards the bridge connecting the two cantons, or upwards, 
+towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D1
@@ -2299,34 +2869,44 @@ PLACEHOLDER UNTIL CONNECTED AREA IN.
 0 4 8
 S
 #27418
-Bridge to Prince's Canton~
-You are standing in room #27418.
+Stately Way Bridge, Lower~
+<14>You stand on the bridge that connects the prince's canton to the northern
+<87>residential canton. The prince's impressive canton gates lie to the east, 
+<123>while the northern residential ones rise to the west. To the north and  
+<159>south you may venture into the deep canal system which separates Ota'ar 
+Dar's cantons from each other, or you can head upwards, towards the huge, 
+looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
 ~
 ~
-0 -1 27744
+0 -1 27444
 D1
 ~
-~
-0 -1 27439
+gate~
+8 -1 27439
 D2
 ~
 ~
 0 -1 27367
 D3
 ~
-~
-0 -1 27412
+gate~
+8 -1 27412
 D4
 ~
 ~
 0 -1 27718
 S
 #27419
-Bridge to Prince's Canton~
-You are standing in room #27419.
+Prince's Cross Bridge South, Lower~
+<14>You stand on the bridge that connects the prince's canton to the market
+<87>canton. The prince's impressive canton gates lie some distance to the north, 
+<123>while the southern market ones are immediately to your south. To the west   
+<159>and east you may venture into the deep canal system which separates Ota'ar 
+Dar's cantons from each other, or you can head upwards, towards the huge, 
+looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -2339,7 +2919,7 @@ D1
 0 -1 27421
 D2
 ~
-~
+gate~
 8 -1 27349
 D3
 ~
@@ -2351,14 +2931,19 @@ D4
 0 -1 27719
 S
 #27420
-Bridge to Prince's Canton~
-You are standing in room #27420.
+Prince's Cross Bridge North, Lower~
+<14>You stand on the bridge that connects the prince's canton to the market
+<87>canton. The prince's very impressive and imposing canton gates lie 
+<123>immediately to the north, while the southern market ones are some distance
+<159>from here, to your south. To the west and east you may venture into the 
+deep canal system which separates Ota'ar Dar's cantons from each other, or you 
+can head upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
 ~
-~
-0 -1 27427
+gate~
+8 -1 27427
 D1
 ~
 ~
@@ -2377,8 +2962,12 @@ D4
 0 -1 27720
 S
 #27421
-Canton Canal~
-You are standing in room #27421.
+Ota'ar Dar Market/Prince's Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>market and prince's cantons. The high canal walls prevent access from here to 
+<252>either canton, but you may travel north or east further along the canal
+<254>system, west, towards the bridge that connects the two cantons, or upwards, 
+towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -2399,8 +2988,12 @@ D4
 0 -1 27721
 S
 #27422
-Canton Canal~
-You are standing in room #27422.
+Ota'ar Dar Market/Prince's Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>market and prince's cantons. The high canal walls prevent access from here to 
+<252>either canton, but you may travel north, west, or east further along the canal
+<254>system, or upwards, towards the huge, looming area of darkness in the water 
+above.<0>
 ~
 0 0 8
 D0
@@ -2421,8 +3014,13 @@ D4
 0 -1 27722
 S
 #27423
-Canton Canal~
-You are standing in room #27423.
+Ota'ar Dar Market/Prince's Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>market and prince's cantons. The high canal walls prevent access from here to 
+<252>either canton, but you may travel north or west further along the canal system,
+<254>or upwards, towards the huge, looming area of darkness in the water above. To 
+the immediate east a huge iron grate has been installed to block access to the open 
+ocean.<0>
 ~
 0 0 8
 D0
@@ -2439,8 +3037,12 @@ D4
 0 -1 27723
 S
 #27424
-Canton Canal~
-You are standing in room #27424.
+Ota'ar Dar Market/Prince's Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>market and prince's cantons. The high canal walls prevent access from here to 
+<252>either canton, but you may travel south or east further along the canal
+<254>system, west, towards the bridge that connects the two cantons, or upwards, 
+towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D1
@@ -2461,8 +3063,12 @@ D4
 0 -1 27724
 S
 #27425
-Canton Canal~
-You are standing in room #27425.
+Ota'ar Dar Market/Prince's Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>market and prince's cantons. The high canal walls prevent access from here to 
+<252>either canton, but you may travel aouth, west, or east further along the canal
+<254>system, or upwards, towards the huge, looming area of darkness in the water 
+above.<0>
 ~
 0 0 8
 D1
@@ -2483,8 +3089,14 @@ D4
 0 -1 27725
 S
 #27426
-Canton Canal~
-You are standing in room #27426.
+Ota'ar Dar Market/Prince's Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>market and prince's cantons. The high canal walls prevent access from here to 
+<252>either canton, but you may travel south or west further along the canal system,
+<254>or upwards, towards the huge, looming area of darkness in the water above. To 
+the immediate east a huge iron grate has been installed to block access to 
+the open ocean, and there is a very large and filthy puddle of mud at your 
+feet that looks to have been recently disturbed.<0>
 ~
 0 0 8
 D2
@@ -2500,11 +3112,18 @@ D4
 ~
 0 -1 27726
 D5
-What looked like a filthy puddle of mud turns out to be a narrow entrance to
-some sort of underwater cavern.  You could squeeze down there, you think.
+What looked like a filthy puddle of mud turns out to be an obscured narrow 
+entrance to some sort of underwater cavern.  You could squeeze down there, 
+you think.
 ~
 puddle mud filthy~
-0 -1 27810
+10 -1 27810
+E
+puddle mud filthy~
+What looked like a filthy puddle of mud turns out to be an obscured narrow 
+entrance to some sort of underwater cavern.  You could squeeze down there, 
+you think.
+~
 S
 #27427
 Dummy Connecting Room~
@@ -2519,10 +3138,18 @@ PLACEHOLDER UNTIL CONNECTED AREA IN.
 0 4 8
 S
 #27444
-Canton Canal~
-You are standing in room #27444.
+Ota'ar Dar Northern Residential/Prince's Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>northern residential and prince's cantons. The high canal walls prevent access 
+<252>from here to either canton, but you may travel west, further along the canal
+<254>system, south, towards the bridge that connects the two cantons, or upwards, 
+towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
+D2
+~
+~
+0 -1 27418
 D3
 ~
 ~
@@ -2533,8 +3160,12 @@ D4
 0 -1 27744
 S
 #27445
-Canton Canal~
-You are standing in room #27445.
+Ota'ar Dar Northern Residential/Prince's Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>northern residential and prince's cantons. The high canal walls prevent access 
+<252>from here to either canton, but you may travel north or east, further along 
+<254>the canal system, or upwards, towards the huge, looming area of darkness in 
+the water above.<0>
 ~
 0 0 8
 D0
@@ -2551,8 +3182,12 @@ D4
 0 -1 27745
 S
 #27446
-Canton Canal~
-You are standing in room #27446.
+Ota'ar Dar Northern Residential/Prince's Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>northern residential and prince's cantons. The high canal walls prevent access 
+<252>from here to either canton, but you may travel north or south, further along 
+<254>the canal system, or upwards, towards the huge, looming area of darkness in 
+the water above.<0>
 ~
 0 0 8
 D0
@@ -2569,8 +3204,12 @@ D4
 0 -1 27746
 S
 #27447
-Canton Canal~
-You are standing in room #27447.
+Ota'ar Dar Northern Residential/Prince's Canton Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>northern residential and prince's cantons. The high canal walls prevent access 
+<252>from here to either canton, but you may travel west or south, further along 
+<254>the canal system, or upwards, towards the huge, looming area of darkness in 
+the water above.<0>
 ~
 0 0 8
 D2
@@ -2587,8 +3226,13 @@ D4
 0 -1 27747
 S
 #27448
-Canton Canal~
-You are standing in room #27448.
+Ota'ar Dar/Omu Canals North Junction, Lower~
+<248>You are at the bottom of the ocean floor, in the large canal junction that 
+<250>exists between Ota'ar Dar's northern residential canton, prince's canton, and
+<252>the Grung city of Omu. The high canal walls prevent access from here to any of
+<254>the cantons or Omu, but you can still travel north, west, or east further along
+the canal system, or upwards, towards the huge, looming area of darkness in the 
+water above.<0>
 ~
 0 0 8
 D0
@@ -2609,8 +3253,13 @@ D4
 0 -1 27748
 S
 #27449
-Canton Canal~
-You are standing in room #27449.
+Ota'ar Dar/Omu Canals North Junction, Lower~
+<248>You are at the bottom of the ocean floor, in the large canal junction that 
+<250>exists between Ota'ar Dar's northern residential canton, prince's canton, and
+<252>the Grung city of Omu. The high canal walls prevent access from here to any of
+<254>the cantons or Omu, but you can still travel north, west, or east further along
+the canal system, or upwards, towards the huge, looming area of darkness in the 
+water above.<0>
 ~
 0 0 8
 D0
@@ -2631,8 +3280,12 @@ D4
 0 -1 27749
 S
 #27450
-Canton Canal~
-You are standing in room #27450.
+Ota'ar Dar Northern Residential/Omu Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>northern residential canton and the Grung city of Omu. The high canal walls  
+<252>prevent access from here to either canton, but you may travel east or south,  
+<254>further along the canal system, or upwards, towards the huge, looming area of  
+darkness in the water above.<0>
 ~
 0 0 8
 D1
@@ -2649,8 +3302,12 @@ D4
 0 -1 27750
 S
 #27451
-Canton Canal~
-You are standing in room #27451.
+Ota'ar Dar Northern Residential/Omu Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>northern residential canton and the Grung city of Omu. The high canal walls  
+<252>prevent access from here to either canton, but you may travel north or west,  
+<254>further along the canal system, or upwards, towards the huge, looming area of  
+darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -2667,8 +3324,12 @@ D4
 0 -1 27751
 S
 #27452
-Canton Canal~
-You are standing in room #27452.
+Ota'ar Dar Northern Residential/Omu Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>northern residential canton and the Grung city of Omu. The high canal walls  
+<252>prevent access from here to either canton, but you may travel east or south,  
+<254>further along the canal system, or upwards, towards the huge, looming area of  
+darkness in the water above.<0>
 ~
 0 0 8
 D1
@@ -2685,8 +3346,12 @@ D4
 0 -1 27752
 S
 #27453
-Canton Canal~
-You are standing in room #27453.
+Ota'ar Dar Northern Residential/Omu Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>northern residential canton and the Grung city of Omu. The high canal walls  
+<252>prevent access from here to either canton, but you may travel north or west,  
+<254>further along the canal system, or upwards, towards the huge, looming area of  
+darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -2703,8 +3368,12 @@ D4
 0 -1 27753
 S
 #27454
-Canton Canal~
-You are standing in room #27454.
+Ota'ar Dar Northern Residential/Omu Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>northern residential canton and the Grung city of Omu. The high canal walls  
+<252>prevent access from here to either canton, but you may travel east or south,  
+<254>further along the canal system, or upwards, towards the huge, looming area of  
+darkness in the water above.<0>
 ~
 0 0 8
 D1
@@ -2721,8 +3390,15 @@ D4
 0 -1 27754
 S
 #27455
-Canton Canal~
-You are standing in room #27455.
+Ota'ar Dar Northern Residential/Omu/Old City Centre Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>northern residential canton, the Grung city of Omu, and the centre of the old   
+<252>city. The high canal walls and the old city's fortifications prevent access 
+<254>from here to the canton, Omu, or the old city centre itself, but you may travel 
+north or west, further along the canal system, or upwards, towards the huge, 
+looming area of darkness in the water above.  To the south you see the bridge
+that connects the old city centre to Ota'ar Dar's northern residential canton,
+but a large iron grate prevents access to it from here.<0>
 ~
 0 0 8
 D0
@@ -2739,8 +3415,12 @@ D4
 0 -1 27755
 S
 #27456
-Canton Canal~
-You are standing in room #27456.
+Omu/Old City Centre Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between the Grung 
+<250>city of Omu and the centre of the old city. The high canal walls and the old   
+<252>city's fortifications prevent access from here to Omu or the old city centre 
+<254>itself, but you may travel west or east, further along the canal system, or 
+upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D1
@@ -2757,8 +3437,12 @@ D4
 0 -1 27756
 S
 #27457
-Canton Canal~
-You are standing in room #27457.
+Omu/Old City Centre Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between the Grung 
+<250>city of Omu and the centre of the old city. The high canal walls and the old   
+<252>city's fortifications prevent access from here to Omu or the old city centre 
+<254>itself, but you may travel north or east, further along the canal system, or 
+upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -2775,8 +3459,14 @@ D4
 0 -1 27757
 S
 #27458
-Canton Canal~
-You are standing in room #27458.
+Omu/Old City Centre Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between the Grung 
+<250>city of Omu and the centre of the old city. The high canal walls and the old   
+<252>city's fortifications prevent access from here to Omu or the old city centre 
+<254>itself, but you may travel south, further along the canal system, or upwards, 
+towards the huge, looming area of darkness in the water above.  To the west you 
+see the bridge that connects Omu to the old city centre, but a large iron grate
+seals off access to it from here.<0>
 ~
 0 0 8
 D2
@@ -2789,8 +3479,13 @@ D4
 0 -1 27758
 S
 #27459
-Canton Canal~
-You are standing in room #27459.
+Ota'ar Dar/Omu Canals North Junction, Lower~
+<248>You are at the bottom of the ocean floor, in the large canal junction that 
+<250>exists between Ota'ar Dar's northern residential canton, prince's canton, and
+<252>the Grung city of Omu. The high canal walls prevent access from here to any of
+<254>the cantons or Omu, but you can still travel north, south, or west further along
+the canal system, or upwards, towards the huge, looming area of darkness in the 
+water above.<0>
 ~
 0 0 8
 D0
@@ -2811,8 +3506,13 @@ D4
 0 -1 27759
 S
 #27460
-Canton Canal~
-You are standing in room #27460.
+Ota'ar Dar/Omu Canals North Junction, Lower~
+<248>You are at the bottom of the ocean floor, in the large canal junction that 
+<250>exists between Ota'ar Dar's northern residential canton, prince's canton, and
+<252>the Grung city of Omu. The high canal walls prevent access from here to any of
+<254>the cantons or Omu, but you can still travel north, south, or east further along
+the canal system, or upwards, towards the huge, looming area of darkness in the 
+water above.<0>
 ~
 0 0 8
 D0
@@ -2833,8 +3533,13 @@ D4
 0 -1 27760
 S
 #27461
-Canton Canal~
-You are standing in room #27461.
+Ota'ar Dar/Omu Canals North Junction, Lower~
+<248>You are at the bottom of the ocean floor, in the large canal junction that 
+<250>exists between Ota'ar Dar's northern residential canton, prince's canton, and
+<252>the Grung city of Omu. The high canal walls prevent access from here to any of
+<254>the cantons or Omu, but you can still travel south, west, or east further along
+the canal system, or upwards, towards the huge, looming area of darkness in the 
+water above.<0>
 ~
 0 0 8
 D1
@@ -2855,8 +3560,12 @@ D4
 0 -1 27761
 S
 #27462
-Canton Canal~
-You are standing in room #27462.
+Ota'ar Dar Prince's Canton/Omu Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>prince's canton and the Grung city of Omu. The high canal walls prevent access 
+<252>from here to the canton or to Omu, but you may travel north or west, further along 
+<254>the canal system, or upwards, towards the huge, looming area of darkness in 
+the water above.<0>
 ~
 0 0 8
 D0
@@ -2873,8 +3582,12 @@ D4
 0 -1 27762
 S
 #27463
-Canton Canal~
-You are standing in room #27463.
+Ota'ar Dar Prince's Canton/Omu Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>prince's canton and the Grung city of Omu. The high canal walls prevent access 
+<252>from here to the canton or to Omu, but you may travel south or east, further along 
+<254>the canal system, or upwards, towards the huge, looming area of darkness in 
+the water above.<0>
 ~
 0 0 8
 D1
@@ -2891,8 +3604,12 @@ D4
 0 -1 27763
 S
 #27464
-Canton Canal~
-You are standing in room #27464.
+Ota'ar Dar Prince's Canton/Omu Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>prince's canton and the Grung city of Omu. The high canal walls prevent access 
+<252>from here to the canton or to Omu, but you may travel north or west, further along 
+<254>the canal system, or upwards, towards the huge, looming area of darkness in 
+the water above.<0>
 ~
 0 0 8
 D0
@@ -2909,14 +3626,24 @@ D4
 0 -1 27764
 S
 #27465
-Canton Canal~
-You are standing in room #27465.
+Ota'ar Dar Prince's Canton/Omu Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>prince's canton and the Grung city of Omu. The high canal walls prevent access 
+<252>from here to the canton or to Omu, but you may travel south, further along the
+<254>canal system, or upwards, towards the huge, looming area of darkness in the 
+water above.  
+
+To your immediate east you see the bridge that connects the prince's
+canton to Omu, but a large iron grate seals it off from the canal. You also 
+notice, covering the bottom of the eastern bridge support structure, a large 
+quantity of seaweed that seems to have been recently disturbed.<0>
 ~
 0 0 8
 D1
+The mass of seaweed covers a huge cavemouth at the bottom of the bridge.
 ~
-~
-0 -1 27817
+seaweed disturbed structure support east~
+10 -1 27817
 D2
 ~
 ~
@@ -2925,10 +3652,20 @@ D4
 ~
 ~
 0 -1 27765
+E
+seaweed disturbed structure support eas~
+The mass of seaweed covers a huge cavemouth at the bottom of the bridge. It
+would be easy enough to clear it away and enter the cave.
+~
 S
 #27466
-Canton Canal~
-You are standing in room #27466.
+Ota'ar Dar/Omu Canals North Junction, Lower~
+<248>You are at the bottom of the ocean floor, in the large canal junction that 
+<250>exists between Ota'ar Dar's northern residential canton, prince's canton, and
+<252>the Grung city of Omu. The high canal walls prevent access from here to any of
+<254>the cantons or Omu, but you can still travel south, west, or east further along
+the canal system, or upwards, towards the huge, looming area of darkness in the 
+water above.<0>
 ~
 0 0 8
 D1
@@ -2949,8 +3686,11 @@ D4
 0 -1 27766
 S
 #27467
-Canton Canal~
-You are standing in room #27467.
+Omu Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between the two 
+<250>major cantons of the Grung city of Omu. The high canal walls prevent access 
+<252>to Omu, but you may travel north or east, further along the canal system, or
+<254>upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -2967,8 +3707,11 @@ D4
 0 -1 27767
 S
 #27468
-Canton Canal~
-You are standing in room #27468.
+Omu Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between the two 
+<250>major cantons of the Grung city of Omu. The high canal walls prevent access 
+<252>to Omu, but you may travel south or west further along the canal system, or
+<254>upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D2
@@ -2985,8 +3728,11 @@ D4
 0 -1 27768
 S
 #27469
-Canton Canal~
-You are standing in room #27469.
+Omu Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between the two 
+<250>major cantons of the Grung city of Omu. The high canal walls prevent access 
+<252>to Omu, but you may travel east or west, further along the canal system, or
+<254>upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D1
@@ -3003,8 +3749,11 @@ D4
 0 -1 27769
 S
 #27470
-Canton Canal~
-You are standing in room #27470.
+Omu Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between the two 
+<250>major cantons of the Grung city of Omu. The high canal walls prevent access 
+<252>to Omu, but you may travel east, further along the canal system, or upwards,
+<254>towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D1
@@ -3029,14 +3778,19 @@ PLACEHOLDER UNTIL CONNECTED AREA IN.
 0 4 8
 S
 #27544
-Above Bridge to Military Canton~
-You are standing in room #27544.
+Arena Way Westbridge, Upper~
+<21>You float about 4 metres above the bridge that connects Ota'ar Dar's arena  
+<27>canton to its military canton. The upper arena canton gates lie to the south,  
+<33>while the imposing military canton gates loom northward. To the east and west  
+<39>you may venture into the upper part of the deep canal system which separates 
+<45>Ota'ar Dar's cantons from each other, the ocean floor lies downwards, or you 
+can swim up, directly into the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
 ~
 ~
-0 -1 27583
+8 -1 27583
 D1
 ~
 ~
@@ -3044,19 +3798,28 @@ D1
 D2
 ~
 ~
-0 -1 27535
+8 -1 27535
 D3
 ~
 ~
 0 -1 27546
+D4
+~
+~
+0 -1 27148
 D5
 ~
 ~
 0 -1 27244
 S
 #27546
-Above Canton Canal~
-You are standing in room #27546.
+<252>Ota'ar Dar Military/Arena Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar Dar's
+<238>military canton, to the north, and its arena canton, to the south. The high canal
+<241>walls prevent access from here to either canton, but you may travel west, further  
+<244>along the canal system, downwards, towards the coean floor, upwards, directly into  
+<246>the huge, looming area of dark water above your head, or to the east, where  
+you can see the area above the bridge that connects the cantons to each other.<0>
 ~
 0 0 8
 D1
@@ -3067,28 +3830,46 @@ D3
 ~
 ~
 0 -1 27547
+D4
+~
+~
+0 -1 27148
 D5
 ~
 ~
 0 -1 27246
 S
 #27547
-Above Canton Canal~
-You are standing in room #27547.
+<252>Ota'ar Dar Military/Arena Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar Dar's
+<238>military canton, to the north, and its arena canton, to the south. The high canal
+<241>walls prevent access from here to either canton and a huge iron grate prevents  
+<244>further travel west, but you may travel east, along the canal system, downwards,  
+<246>towards the ocean floor, or upwards, directly into the huge, looming area of 
+dark water above your head.<0>
 ~
 0 0 8
 D1
 ~
 ~
 0 -1 27546
+D4
+~
+~
+0 -1 27148
 D5
 ~
 ~
 0 -1 27247
 S
 #27548
-Above Canton Canal~
-You are standing in room #27548.
+<252>Ota'ar Dar Military/Arena Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar Dar's
+<238>military canton, to the northwest, and its arena canton, to the south and east. 
+<241>The high canal walls prevent access from here to either canton, but you may travel   
+<244>north, further along the canal system, downwards, towards the ocean floor, upwards,  
+<246>directly into the huge, looming area of dark water above your head, or to the west, 
+where you can see the area above the bridge that connects the cantons to each other.<0>
 ~
 0 0 8
 D0
@@ -3099,14 +3880,22 @@ D3
 ~
 ~
 0 -1 27544
+D4
+~
+~
+0 -1 27148
 D5
 ~
 ~
 0 -1 27248
 S
 #27549
-Above Canton Canal~
-You are standing in room #27549.
+<252>Ota'ar Dar Military/Arena Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar Dar's
+<238>military canton, to the north and west, and its arena canton, to the southeast. 
+<241>The high canal walls prevent access from here to either canton, but you may travel   
+<244>east or south, further along the canal system, downwards, towards the ocean floor,   
+<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D1
@@ -3117,14 +3906,22 @@ D2
 ~
 ~
 0 -1 27548
+D4
+~
+~
+0 -1 27149
 D5
 ~
 ~
 0 -1 27249
 S
 #27550
-Above Canton Canal~
-You are standing in room #27550.
+<252>Ota'ar Dar Military/Arena Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar Dar's
+<238>military canton, to the north, and its arena canton, to the south. The high canal
+<241>walls prevent access from here to either canton, but you may travel east or west,  
+<244>further along the canal system, downwards, towards the ocean floor, or upwards, 
+<246>directly into the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D1
@@ -3135,14 +3932,22 @@ D3
 ~
 ~
 0 -1 27549
+D4
+~
+~
+0 -1 27149
 D5
 ~
 ~
 0 -1 27250
 S
 #27551
-Above Canton Canal~
-You are standing in room #27551.
+<252>Ota'ar Dar Military/Arena Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar Dar's
+<238>military canton, to the northwest, and its arena canton, to the south and east. 
+<241>The high canal walls prevent access from here to either canton, but you may travel   
+<244>north or west, further along the canal system, downwards, towards the ocean floor,  
+<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -3153,14 +3958,22 @@ D3
 ~
 ~
 0 -1 27550
+D4
+~
+~
+0 -1 27149
 D5
 ~
 ~
 0 -1 27251
 S
 #27552
-Above Canton Canal~
-You are standing in room #27552.
+<252>Ota'ar Dar Military/Arena Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar Dar's
+<238>military canton, to the north and west, and its arena canton, to the southeast. 
+<241>The high canal walls prevent access from here to either canton, but you may travel   
+<244>south or east, further along the canal system, downwards, towards the ocean floor,   
+<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D1
@@ -3171,14 +3984,23 @@ D2
 ~
 ~
 0 -1 27551
+D4
+~
+~
+0 -1 27145
 D5
 ~
 ~
 0 -1 27252
 S
 #27553
-Above Canton Canal~
-You are standing in room #27553.
+<252>Ota'ar Dar Canals South Junction, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in the large canal junction  
+<238>that exists between Ota'ar Dar's military, arena, market, and southern  
+<241>residential cantons. The high canal walls prevent access from here to any of  
+<244>the cantons, but you can still travel north, west, or east, further along the  
+<246>canal system, downwards, towards the ocean floor, or upwards, directly into  
+the huge, looming area of dark water above your head.<0>
 ~
 0 4 8
 D0
@@ -3193,14 +4015,23 @@ D3
 ~
 ~
 0 -1 27552
+D4
+~
+~
+0 -1 27145
 D5
 ~
 ~
 0 -1 27253
 S
 #27554
-Above Canton Canal~
-You are standing in room #27554.
+<252>Ota'ar Dar Canals South Junction, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in the large canal junction  
+<238>that exists between Ota'ar Dar's military, arena, market, and southern  
+<241>residential cantons. The high canal walls prevent access from here to any of  
+<244>the cantons, but you can still travel north, west, or east, further along the  
+<246>canal system, downwards, towards the ocean floor, or upwards, directly into 
+the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -3215,14 +4046,23 @@ D3
 ~
 ~
 0 -1 27553
+D4
+~
+~
+0 -1 27145
 D5
 ~
 ~
 0 -1 27254
 S
 #27555
-Above Canton Canal~
-You are standing in room #27555.
+<252>Ota'ar Dar Market/Arena Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's market canton, to the north and east, and its arena canton, to the 
+<241>southwest. The high canal walls prevent access from here to either canton, but  
+<244>you may travel south or west, further along the canal system, downwards, 
+<246>towards the ocean floor, or upwards, directly into the huge, looming area of 
+dark water above your head.<0>
 ~
 0 0 8
 D2
@@ -3233,14 +4073,23 @@ D3
 ~
 ~
 0 -1 27554
+D4
+~
+~
+0 -1 27145
 D5
 ~
 ~
 0 -1 27255
 S
 #27556
-Above Canton Canal~
-You are standing in room #27556.
+<252>Ota'ar Dar Market/Arena Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's market canton, to the northeast, and its arena canton, to the south and
+<241>west. The high canal walls prevent access from here to either canton, but  
+<244>you may travel north or east, further along the canal system, downwards,  
+<246>towards the ocean floor, or upwards, directly into the huge, looming area of 
+dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -3251,14 +4100,23 @@ D1
 ~
 ~
 0 -1 27557
+D4
+~
+~
+0 -1 27149
 D5
 ~
 ~
 0 -1 27256
 S
 #27557
-Above Canton Canal~
-You are standing in room #27557.
+<252>Ota'ar Dar Market/Arena Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's market canton, to the north and east, and its arena canton, to the 
+<241>southwest. The high canal walls prevent access from here to either canton, but  
+<244>you may travel south or west, further along the canal system, downwards, towards 
+<246>the ocean floor, or upwards, directly into the huge, looming area of dark water 
+above your head.<0>
 ~
 0 0 8
 D2
@@ -3269,28 +4127,51 @@ D3
 ~
 ~
 0 -1 27556
+D4
+~
+~
+0 -1 27149
 D5
 ~
 ~
 0 -1 27257
 S
 #27558
-Above Canton Canal~
-You are standing in room #27558.
+<252>Ota'ar Dar Market/Arena Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's market canton, to the northeast, and its arena canton, to the south and
+<241>west. The high canal walls prevent access from here to either canton, but  
+<244>you may travel north, further along the canal system, downwards, towards the 
+<246>ocean floor, upwards, directly into the huge, looming area of dark water above 
+your head, or east, where you can see the area above the bridge that connects the 
+cantons to each other.<0>
 ~
 0 0 8
 D0
 ~
 ~
 0 -1 27557
+D1
+~
+~
+0 -1 27607
+D4
+~
+~
+0 -1 27148
 D5
 ~
 ~
 0 -1 27258
 S
 #27559
-Above Canton Canal~
-You are standing in room #27559.
+<252>Ota'ar Dar Canals South Junction, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in the large canal junction  
+<238>that exists between Ota'ar Dar's military, arena, market, and southern  
+<241>residential cantons. The high canal walls prevent access from here to any of  
+<244>the cantons, but you can still travel north, south, or east, further along the  
+<246>canal system, downwards, towards the ocean floor, or upwards, directly into 
+the huge, looming area of dark water above your head.<0>
 ~
 0 4 8
 D0
@@ -3305,14 +4186,23 @@ D2
 ~
 ~
 0 -1 27553
+D4
+~
+~
+0 -1 27144
 D5
 ~
 ~
 0 -1 27259
 S
 #27560
-Above Canton Canal~
-You are standing in room #27560.
+<252>Ota'ar Dar Canals South Junction, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in the large canal junction  
+<238>that exists between Ota'ar Dar's military, arena, market, and southern  
+<241>residential cantons. The high canal walls prevent access from here to any of  
+<244>the cantons, but you can still travel north, south, or west, further along the  
+<246>canal system, downwards, towards the ocean floor, or upwards, directly into the 
+huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -3327,14 +4217,23 @@ D3
 ~
 ~
 0 -1 27559
+D4
+~
+~
+0 -1 27144
 D5
 ~
 ~
 0 -1 27260
 S
 #27561
-Above Canton Canal~
-You are standing in room #27561.
+<252>Ota'ar Dar Canals South Junction, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in the large canal junction  
+<238>that exists between Ota'ar Dar's military, arena, market, and southern  
+<241>residential cantons. The high canal walls prevent access from here to any of  
+<244>the cantons, but you can still travel east, south, or west, further along the  
+<246>canal system, downwards, towards the ocean floor, or upwards, directly into the 
+huge, looming area of dark water above your head.<0>
 ~
 0 4 8
 D1
@@ -3349,14 +4248,23 @@ D3
 ~
 ~
 0 -1 27567
+D4
+~
+~
+0 -1 27147
 D5
 ~
 ~
 0 -1 27261
 S
 #27562
-Above Canton Canal~
-You are standing in room #27562.
+<252>Ota'ar Dar Canals South Junction, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in the large canal junction  
+<238>that exists between Ota'ar Dar's military, arena, market, and southern  
+<241>residential cantons. The high canal walls prevent access from here to any of  
+<244>the cantons, but you can still travel east, south, or west, further along the  
+<246>canal system, downwards, towards the ocean floor, or upwards, directly into the 
+huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D1
@@ -3371,14 +4279,23 @@ D3
 ~
 ~
 0 -1 27561
+D4
+~
+~
+0 -1 27147
 D5
 ~
 ~
 0 -1 27262
 S
 #27563
-Above Canton Canal~
-You are standing in room #27563.
+<252>Ota'ar Dar Market/Southern Residential Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's market canton, to the south and east, and its southern residential  
+<241>canton, to the northwest. The high canal walls prevent access from here to  
+<244>either canton, but you may travel north or west, further along the canal 
+<246>system, downwards, towards the ocean floor, or upwards, directly into the  
+huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -3389,14 +4306,23 @@ D3
 ~
 ~
 0 -1 27562
+D4
+~
+~
+0 -1 27147
 D5
 ~
 ~
 0 -1 27263
 S
 #27564
-Above Canton Canal~
-You are standing in room #27564.
+<252>Ota'ar Dar Market/Southern Residential Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's market canton, to the east, and its southern residential canton, to the 
+<241>west. The high canal walls prevent access from here to either canton, but you
+<244>may travel north or south, further along the canal system, downwards, towards  
+<246>the ocean floor, or upwards, directly into the huge, looming area of dark water
+above your head.<0>
 ~
 0 0 8
 D0
@@ -3407,14 +4333,23 @@ D2
 ~
 ~
 0 -1 27563
+D4
+~
+~
+0 -1 27134
 D5
 ~
 ~
 0 -1 27264
 S
 #27565
-Above Canton Canal~
-You are standing in room #27565.
+<252>Ota'ar Dar Market/Southern Residential Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's market canton, to the southeast, and its southern residential canton, to 
+<241>the north and west. The high canal walls prevent access from here to either 
+<244>canton, but you may travel east or south, further along the canal system,  
+<246>downwards, towards the ocean floor, or upwards, directly into the huge, looming 
+area of dark water above your head.<0>
 ~
 0 0 8
 D1
@@ -3425,14 +4360,24 @@ D2
 ~
 ~
 0 -1 27564
+D4
+~
+~
+0 -1 27135
 D5
 ~
 ~
 0 -1 27265
 S
 #27566
-Above Canton Canal~
-You are standing in room #27566.
+<252>Ota'ar Dar Market/Southern Residential Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's market canton, to the south and east, and its southern residential  
+<241>canton, to the northwest. The high canal walls prevent access from here to  
+<244>either canton, but you may travel west, further along the canal system, 
+<246>upwards, directly into the huge, looming area of dark water above your head, 
+downwards, towards the ocean floor, or north, to the area above the bridge 
+connecting the two cantons.<0>
 ~
 0 0 8
 D0
@@ -3443,14 +4388,23 @@ D3
 ~
 ~
 0 -1 27565
+D4
+~
+~
+0 -1 27135
 D5
 ~
 ~
 0 -1 27266
 S
 #27567
-Above Canton Canal~
-You are standing in room #27567.
+<252>Ota'ar Dar Military/Southern Residential Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's military canton, to the south and west, and its southern residential  
+<241>canton, to the northeast. The high canal walls prevent access from here to  
+<244>either canton, but you may travel north or east, further along the canal 
+<246>system, downwards, towards the ocean floor, or upwards, directly into the huge, 
+looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -3461,14 +4415,23 @@ D1
 ~
 ~
 0 -1 27561
+D4
+~
+~
+0 -1 27147
 D5
 ~
 ~
 0 -1 27267
 S
 #27568
-Above Canton Canal~
-You are standing in room #27568.
+<252>Ota'ar Dar Military/Southern Residential Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's military canton, to the southwest, and its southern residential canton,
+<241>to the north and east. The high canal walls prevent access from here to  
+<244>either canton, but you may travel south or west, further along the canal 
+<246>system, downwards, towards the ocean floor, or upwards, directly into the huge, 
+looming area of dark water above your head.<0>
 ~
 0 0 8
 D2
@@ -3479,14 +4442,23 @@ D3
 ~
 ~
 0 -1 27569
+D4
+~
+~
+0 -1 27134
 D5
 ~
 ~
 0 -1 27268
 S
 #27569
-Above Canton Canal~
-You are standing in room #27569.
+<252>Ota'ar Dar Military/Southern Residential Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's military canton, to the south and west, and its southern residential 
+<241>canton, to the northeast. The high canal walls prevent access from here to  
+<244>either canton, but you may travel north or east, further along the canal 
+<246>system, downwards, towards the ocean floor, or upwards, directly into the huge, 
+looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -3497,14 +4469,23 @@ D1
 ~
 ~
 0 -1 27568
+D4
+~
+~
+0 -1 27134
 D5
 ~
 ~
 0 -1 27269
 S
 #27570
-Above Canton Canal~
-You are standing in room #27570.
+<252>Ota'ar Dar Military/Southern Residential Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's military canton, to the southwest, and its southern residential canton,
+<241>to the north and east. The high canal walls prevent access from here to  
+<244>either canton, but you may travel south or west, further along the canal 
+<246>system, downwards, towards the ocean floor, or upwards, directly into the 
+huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D2
@@ -3515,14 +4496,23 @@ D3
 ~
 ~
 0 -1 27571
+D4
+~
+~
+0 -1 27135
 D5
 ~
 ~
 0 -1 27270
 S
 #27571
-Above Canton Canal~
-You are standing in room #27571.
+<252>Ota'ar Dar Military/Southern Residential Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's military canton, to the south and west, and its southern residential 
+<241>canton, to the northeast. The high canal walls prevent access from here to  
+<244>either canton, but you may travel north or east, further along the canal 
+<246>system, downwards, towards the ocean floor, or upwards, directly into the huge, 
+looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -3533,14 +4523,26 @@ D1
 ~
 ~
 0 -1 27570
+D4
+~
+~
+0 -1 27135
 D5
 ~
 ~
 0 -1 27271
 S
 #27572
-Above Canton Canal~
-You are standing in room #27572.
+<252>Ota'ar Dar Military/Southern Residential/Old City Centre Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's military canton, to the southwest, its southern residential canton, to 
+<241>the east, and the old city centre, to the north. The high canal walls prevent   
+<244>access from here to the old city centre or either canton, but you may travel 
+<246>south or west, further along the canal system, downwards, towards the ocean 
+floor, or upwards, directly into the huge, looming area of dark water above 
+your head. To the north you see the area above the bridge that connects the 
+southern residential canton to the old city centre, but a large iron grate 
+prevents access to it from here.<0>
 ~
 0 0 8
 D2
@@ -3551,14 +4553,23 @@ D3
 ~
 ~
 0 -1 27573
+D4
+~
+~
+0 -1 27136
 D5
 ~
 ~
 0 -1 27272
 S
 #27573
-Above Canton Canal~
-You are standing in room #27573.
+<252>Ota'ar Dar Military/Old City Centre Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's military canton, to the south, and the old city centre, to the north.
+<241>The high canal walls prevent access from here to the old city centre or the 
+<244>canton, but you may travel east or west, further along the canal system, 
+<246>downwards, towards the ocean floor, or upwards, directly into the huge, looming 
+area of dark water above your head.<0>
 ~
 0 0 8
 D1
@@ -3569,14 +4580,23 @@ D3
 ~
 ~
 0 -1 27574
+D4
+~
+~
+0 -1 27136
 D5
 ~
 ~
 0 -1 27273
 S
 #27574
-Above Canton Canal~
-You are standing in room #27574.
+<252>Ota'ar Dar Military/Old City Centre Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's military canton, to the southeast, and the old city centre, to the north
+<241>and west. The high canal walls prevent access from here to the old city centre  
+<244>or the canton, but you may travel east or south, further along the canal  
+<246>system, downwards, towards the ocean floor, or upwards, directly into the huge, 
+looming area of dark water above your head. <0>
 ~
 0 0 8
 D1
@@ -3587,20 +4607,35 @@ D2
 ~
 ~
 0 -1 27575
+D4
+~
+~
+0 -1 27136
 D5
 ~
 ~
 0 -1 27274
 S
 #27575
-Above Canton Canal~
-You are standing in room #27575.
+<252>Ota'ar Dar Military/Old City Centre Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's military canton, to the south and east, and the old city centre, to the 
+<241>west. The high canal walls prevent access from here to the old city centre  
+<244>or the canton, but you may travel north, further along the canal system, 
+<246>downwards, towards the ocean floor, or upwards, directly into the huge, looming 
+area of dark water above your head. To the west you see the area above the bridge 
+that connects Ota'ar Dar's military canton to the old city centre, but a large iron 
+grate prevents access to it from here.<0>
 ~
 0 0 8
 D0
 ~
 ~
 0 -1 27574
+D4
+~
+~
+0 -1 27135
 D5
 ~
 ~
@@ -3613,18 +4648,32 @@ PLACEHOLDER UNTIL CONNECTED AREA IN.
 0 4 8
 S
 #27607
-Above Bridge to Market Canton~
-You are standing in room #27607.
+Arena Way Eastbridge, Upper~
+<21>You float about 4 metres above the bridge that connects Ota'ar Dar's arena  
+<27>canton to its market canton. The upper market canton gates lie to the north,  
+<33>while the arena canton gates loom southward. To the west you may venture 
+<39>into the upper part of the deep canal system which separates Ota'ar Dar's
+<45>cantons from each other, you can swim upwards, directly into the huge, looming
+area of dark water above you, or head downwards, towards the ocean floor. 
+To the east a huge iron grate prevents travel out into the open ocean.<0>
 ~
 0 0 8
 D0
 ~
-~
+gate~
 8 -1 27608
 D2
 ~
+gate~
+8 -1 27543
+D3
 ~
-0 -1 27543
+~
+0 -1 27558
+D4
+~
+~
+0 -1 27139
 D5
 ~
 ~
@@ -3632,7 +4681,13 @@ D5
 S
 #27653
 Malana Bridge, Upper~
-You are standing in room #27653.
+<21>You float about 4 metres above the bridge that connects Ota'ar Dar's southern  
+<27>residential canton to its market canton. The upper market canton gates lie to ,  
+<33>the east while the southern residential canton gates loom westward. To the north  
+<39>and south you may venture into the upper part of the deep canal system which 
+<45>separates Ota'ar Dar's cantons from each other, you can go downwards, towards 
+the ocean floor, or you can swim upwards, directly into the huge, looming area 
+of dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -3641,7 +4696,7 @@ D0
 0 -1 27654
 D1
 ~
-~
+gate~
 8 -1 27636
 D2
 ~
@@ -3649,8 +4704,8 @@ D2
 0 -1 27566
 D3
 ~
-~
-0 -1 27668
+gate~
+8 -1 27668
 D4
 ~
 ~
@@ -3661,8 +4716,13 @@ D5
 0 -1 27353
 S
 #27654
-Above Canton Canal~
-You are standing in room #27654.
+<252>Ota'ar Dar Market/Southern Residential Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's market canton, to the east, and its southern residential canton, to the 
+<241>west. The high canal walls prevent access from here to either canton, but you 
+<244>may travel north, further along the canal system, downwards, towards the ocean 
+<246>floor, upwards, directly into the huge, looming area of dark water above your 
+head, or south, to the area above the bridge linking the two cantons.<0>
 ~
 0 0 8
 D0
@@ -3673,14 +4733,23 @@ D2
 ~
 ~
 0 -1 27653
+D4
+~
+~
+0 -1 27136
 D5
 ~
 ~
 0 -1 27354
 S
 #27655
-Above Canton Canal~
-You are standing in room #27655.
+<252>Ota'ar Dar Market/Southern Residential Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's market canton, to the east, and its southern residential canton, to the 
+<241>west. The high canal walls prevent access from here to either canton, but you 
+<244>may travel north or south, further along the canal system, downwards, towards 
+<246>the ocean floor, or upwards, directly into the huge, looming area of dark 
+water above your head.<0>
 ~
 0 0 8
 D0
@@ -3691,14 +4760,23 @@ D2
 ~
 ~
 0 -1 27654
+D4
+~
+~
+0 -1 27132
 D5
 ~
 ~
 0 -1 27355
 S
 #27656
-Above Canton Canal~
-You are standing in room #27656.
+<252>Ota'ar Dar Canals Central Junction, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in the small canal junction  
+<238>that exists between Ota'ar Dar's southern residential, northern residential, 
+<241>market, and prince's cantons. The high canal walls prevent access from here
+<244>to any of the cantons, but you can still travel north, south, east, or west 
+<246>further along the canal system, downwards, towards the ocean floor, or upwards, 
+directly into the huge, looming area of dark water above your head.<0>
 ~
 0 4 8
 D0
@@ -3717,14 +4795,22 @@ D3
 ~
 ~
 0 -1 27657
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27356
 S
 #27657
-Above Canton Canal~
-You are standing in room #27657.
+<252>Ota'ar Dar Northern/Southern Residential Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's northern and southern residential cantons. The high canal walls prevent
+<241>access from here to either canton, but you may travel north, west or east,
+<244>further along the canal system, downwards, towards the ocean floor, or upwards, 
+<246>directly into the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -3739,14 +4825,23 @@ D3
 ~
 ~
 0 -1 27658
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27357
 S
 #27658
-Above Canton Canal~
-You are standing in room #27658.
+<252>Ota'ar Dar Northern/Southern Residential Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's northern and southern residential cantons. The high canal walls prevent
+<241>access from here to either canton, but you may travel north or east,
+<244>further along the canal system, downwards, towards the ocean floor, upwards, 
+<246>directly into the huge, looming area of dark water above your head, or west, 
+to the area above the bridge connecting the two cantons.<0>
 ~
 0 0 8
 D0
@@ -3761,14 +4856,22 @@ D3
 ~
 ~
 0 -1 27688
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27358
 S
 #27659
-Above Canton Canal~
-You are standing in room #27659.
+<252>Ota'ar Dar Market/Prince's Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's market and prince's cantons. The high canal walls prevent access from
+<241>here to either canton, but you may travel north, west or east, further along  
+<244>the canal system, downwards, towards the ocean floor, or upwards, directly into 
+<246>the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -3783,14 +4886,23 @@ D3
 ~
 ~
 0 -1 27656
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27359
 S
 #27660
-Above Canton Canal~
-You are standing in room #27660.
+<252>Ota'ar Dar Market/Prince's Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's market and prince's cantons. The high canal walls prevent access from
+<241>here to either canton, but you may travel north or west, further along the  
+<244>canal system, downwards, towards the ocean floor, upwards, directly into the 
+<246>huge, looming area of dark water above your head, or east, to the area above 
+the long bridge connecting the cantons.<0>
 ~
 0 0 8
 D0
@@ -3805,14 +4917,23 @@ D3
 ~
 ~
 0 -1 27659
+D4
+~
+~
+0 -1 27130
 D5
 ~
 ~
 0 -1 27360
 S
 #27661
-Above Canton Canal~
-You are standing in room #27661.
+252>Ota'ar Dar Northern/Southern Residential Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's northern and southern residential cantons. The high canal walls prevent
+<241>access from here to either canton, but you may travel south or east,
+<244>further along the canal system, downwards, towards the ocean floor, upwards, 
+<246>directly into the huge, looming area of dark water above your head, or west, 
+to the area above the bridge connecting the two cantons.<0>
 ~
 0 0 8
 D1
@@ -3827,14 +4948,22 @@ D3
 ~
 ~
 0 -1 27689
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27361
 S
 #27662
-Above Canton Canal~
-You are standing in room #27662.
+<252>Ota'ar Dar Northern/Southern Residential Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's northern and southern residential cantons. The high canal walls prevent
+<241>access from here to either canton, but you may travel south, west or east,
+<244>further along the canal system, downwards, towards the ocean floor, or upwards, 
+<246>directly into the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D1
@@ -3849,14 +4978,23 @@ D3
 ~
 ~
 0 -1 27661
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27362
 S
 #27663
-Above Canton Canal~
-You are standing in room #27663.
+<252>Ota'ar Dar Canals Central Junction, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in the small canal junction  
+<238>that exists between Ota'ar Dar's southern residential, northern residential, 
+<241>market, and prince's cantons. The high canal walls prevent access from here
+<244>to any of the cantons, but you can still travel north, south, east, or west 
+<246>further along the canal system, downwards, towards the ocean floor, or 
+upwards, directly into the huge, looming area of dark water above your head.<0>
 ~
 0 4 8
 D0
@@ -3875,14 +5013,22 @@ D3
 ~
 ~
 0 -1 27662
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27363
 S
 #27664
-Above Canton Canal~
-You are standing in room #27664.
+<252>Ota'ar Dar Market/Prince's Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's market and prince's cantons. The high canal walls prevent access from
+<241>here to either canton, but you may travel south, west or east, further along  
+<244>the canal system, downwards, towards the ocean floor, or upwards, directly into 
+<246>the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D1
@@ -3897,14 +5043,23 @@ D3
 ~
 ~
 0 -1 27663
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27364
 S
 #27665
-Above Canton Canal~
-You are standing in room #27665.
+<252>Ota'ar Dar Market/Prince's Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's market and prince's cantons. The high canal walls prevent access from
+<241>here to either canton, but you may travel south or west, further along the  
+<244>canal system, downwards, towards the ocean floor, upwards, directly into the 
+<246>huge, looming area of dark water above your head, or east, to the area above 
+the long bridge connecting the cantons.<0>
 ~
 0 0 8
 D1
@@ -3919,14 +5074,23 @@ D3
 ~
 ~
 0 -1 27664
+D4
+~
+~
+0 -1 27130
 D5
 ~
 ~
 0 -1 27365
 S
 #27666
-Above Canton Canal~
-You are standing in room #27666.
+<252>Ota'ar Dar Northern Residential/Prince's Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's northern residential canton, to the west, and the prince's canton, to the 
+<241>east. The high canal walls prevent access from here to either canton, but you 
+<244>may travel north or south, further along the canal system, downwards, towards 
+<246>the ocean floor, or upwards, directly into the huge, looming area of dark water 
+above your head.<0>
 ~
 0 0 8
 D0
@@ -3937,14 +5101,23 @@ D2
 ~
 ~
 0 -1 27663
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27366
 S
 #27667
-Above Canton Canal~
-You are standing in room #27667.
+<252>Ota'ar Dar Northern Residential/Prince's Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's northern residential canton, to the west, and the prince's canton, to the 
+<241>east. The high canal walls prevent access from here to either canton, but you 
+<244>may travel south, further along the canal system, downwards, towards the ocean 
+<246>floor, upwards, directly into the huge, looming area of dark water above your 
+head, or north, to the area above the bridge connecting the cantons.<0>
 ~
 0 0 8
 D0
@@ -3955,6 +5128,10 @@ D2
 ~
 ~
 0 -1 27666
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
@@ -3973,8 +5150,14 @@ PLACEHOLDER UNTIL CONNECTED AREA IN.
 0 4 8
 S
 #27688
-Above Bridge to North Living Canton~
-You are standing in room #27688.
+Residential Bridge South, Upper~
+<21>You float about 4 metres above the long bridge that connects Ota'ar Dar's   
+<27>southern and northern residential cantons to each other. The upper southern   
+<33>residential gates lie to your immediate south, while the northern ones lie some
+<39>distance to the north. To the east and west you may venture into the upper part 
+<45>of the deep canal system which separates Ota'ar Dar's cantons from each other, 
+you may travel downwards, towards the ocean floor, or you can swim upwards, 
+directly into the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -3987,26 +5170,36 @@ D1
 0 -1 27658
 D2
 ~
-~
-0 -1 27685
+gate~
+8 -1 27685
 D3
 ~
 ~
 0 -1 27690
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27388
 S
 #27689
-Above Bridge to North Living Canton~
-You are standing in room #27689.
+Residential Bridge North, Upper~
+<21>You float about 4 metres above the long bridge that connects Ota'ar Dar's   
+<27>southern and northern residential cantons to each other. The upper northern   
+<33>residential gates lie to your immediate north, while the southern ones lie some
+<39>distance to the south. To the east and west you may venture into the upper part 
+<45>of the deep canal system which separates Ota'ar Dar's cantons from each other, 
+you can travel downwards, towards the ocean floor, or you can swim upwards, 
+directly into the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
 ~
-~
-0 -1 27698
+gate~
+8 -1 27698
 D1
 ~
 ~
@@ -4019,14 +5212,23 @@ D3
 ~
 ~
 0 -1 27697
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27389
 S
 #27690
-Above Canton Canal~
-You are standing in room #27690.
+<252>Ota'ar Dar Northern/Southern Residential Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's northern and southern residential cantons. The high canal walls prevent
+<241>access from here to either canton, but you may travel north or west,
+<244>further along the canal system, downwards, towards the ocean floor, upwards, 
+<246>directly into the huge, looming area of dark water above your head, or east, 
+to the area above the bridge connecting the two cantons.<0>
 ~
 0 0 8
 D0
@@ -4041,14 +5243,22 @@ D3
 ~
 ~
 0 -1 27691
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27390
 S
 #27691
-Above Canton Canal~
-You are standing in room #27691.
+<252>Ota'ar Dar Northern/Southern Residential Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's northern and southern residential cantons. The high canal walls prevent
+<241>access from here to either canton, but you may travel north, west or east,
+<244>further along the canal system, downwards, towards the ocean floor, or upwards, 
+<246>directly into the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -4063,14 +5273,23 @@ D3
 ~
 ~
 0 -1 27692
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27391
 S
 #27692
-Above Canton Canal~
-You are standing in room #27692.
+Ota'ar Dar Old City Centre/Southern Residential Canton Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's southern residential canton and the old city centre. The high canal walls 
+<241>and the old city's fortifications prevent access from here to the canton or the 
+<244>old city centre, but you may travel north, east or south, further along the  
+<246>canal system, downwards, towards the ocean floor, or upwards, directly into the 
+huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -4085,28 +5304,48 @@ D2
 ~
 ~
 0 -1 27693
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27392
 S
 #27693
-Above Canton Canal~
-You are standing in room #27693.
+Ota'ar Dar Old City Centre/Southern Residential Canton Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's southern residential canton and the old city centre. The high canal walls 
+<241>and the old city's fortifications prevent access from here to the canton or the 
+<244>old city centre, but you may travel north, further along the canal system, 
+<246>downwards, towards the ocean floor, or upwards, directly into the huge, looming 
+area of dark water above your head. To the south you see the area above the 
+bridge that connects the southern residential canton to the old city centre, 
+but a large iron grate prevents access to it from here.<0>
 ~
 0 0 8
 D0
 ~
 ~
 0 -1 27692
+D4
+~
+~
+0 -1 27132
 D5
 ~
 ~
 0 -1 27393
 S
 #27694
-Above Canton Canal~
-You are standing in room #27694.
+Ota'ar Dar Old City Centre/Northern Residential Canton Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's northern residential canton and the old city centre. The high canal walls 
+<241>and the old city's fortifications prevent access from here to the canton or the 
+<244>old city centre, but you may travel north, east or south, further along the  
+<246>canal system, downwards, towards the ocean floor, or upwards, directly into 
+the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -4121,28 +5360,47 @@ D2
 ~
 ~
 0 -1 27692
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27394
 S
 #27695
-Above Canton Canal~
-You are standing in room #27695.
+Ota'ar Dar Old City Centre/Northern Residential Canton Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's northern residential canton and the old city centre. The high canal walls 
+<241>and the old city's fortifications prevent access from here to the canton or the 
+<244>old city centre, but you may travel south, further along the canal system, 
+<246>downwards, towards the ocean floor, or upwards, directly into the huge, 
+looming area of dark water above your head. To the north you see the area above 
+the bridge that connects the northern residential canton to the old city 
+centre, but a large iron grate prevents access to it from here.<0>
 ~
 0 0 8
 D2
 ~
 ~
 0 -1 27694
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27395
 S
 #27696
-Above Canton Canal~
-You are standing in room #27696.
+<252>Ota'ar Dar Northern/Southern Residential Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's northern and southern residential cantons. The high canal walls prevent
+<241>access from here to either canton, but you may travel south, west or east,
+<244>further along the canal system, downwards, towards the ocean floor, or upwards, 
+<246>directly into the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D1
@@ -4157,14 +5415,23 @@ D3
 ~
 ~
 0 -1 27694
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27396
 S
 #27697
-Above Canton Canal~
-You are standing in room #27697.
+<252>Ota'ar Dar Northern/Southern Residential Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's northern and southern residential cantons. The high canal walls prevent
+<241>access from here to either canton, but you may travel south or west,
+<244>further along the canal system, downwards, towards the ocean floor, or upwards, 
+<246>directly into the huge, looming  area of dark water above your head, or east, 
+to the area above the bridge connecting the two cantons.<0>
 ~
 0 0 8
 D1
@@ -4179,6 +5446,10 @@ D3
 ~
 ~
 0 -1 27696
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
@@ -4197,8 +5468,14 @@ PLACEHOLDER UNTIL CONNECTED AREA IN.
 0 4 8
 S
 #27718
-Above Bridge to Prince's Canton~
-You are standing in room #27718.
+Stately Way Bridge, Upper~
+<21>You float about 4 metres above the bridge that connects the prince's canton to  
+<27>the northern residential canton. The prince's impressive canton gates lie to 
+<33>the east, while the northern residential canton gates lie westward. To the north  
+<39>and south you may venture into the upper part of the deep canal system which 
+<45>separates Ota'ar Dar's cantons from each other, downwards, towards the ocean 
+floor, or you can swim upwards, directly into the huge, looming area of dark water 
+just above your head.<0>
 ~
 0 0 8
 D0
@@ -4207,24 +5484,34 @@ D0
 0 -1 27744
 D1
 ~
-~
-0 -1 27739
+gate~
+8 -1 27739
 D2
 ~
 ~
 0 -1 27667
 D3
 ~
+gate~
+8 -1 27712
+D4
 ~
-0 -1 27712
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27418
 S
 #27719
-Above Bridge to Prince's Canton~
-You are standing in room #27719.
+Prince's Cross Bridge South, Upper~
+<21>You float about 4 metres above the long bridge that connects the prince's canton  
+<27>to the market canton. The prince's impressive canton gates lie some distance to 
+<33>the north, while the southern market ones are immediately to your south. To the  
+<39>east and west you may venture into the upper part of the deep canal system that
+<45>separates Ota'ar Dar's cantons from each other, downwards, towards the ocean 
+floor, or you can swim upwards, directly into the huge, looming area of dark 
+water above your head.<0>
 ~
 0 0 8
 D0
@@ -4237,26 +5524,36 @@ D1
 0 -1 27721
 D2
 ~
-~
+gate~
 8 -1 27649
 D3
 ~
 ~
 0 -1 27660
+D4
+~
+~
+0 -1 27130
 D5
 ~
 ~
 0 -1 27419
 S
 #27720
-Above Bridge to Prince's Canton~
-You are standing in room #27720.
+Prince's Cross Bridge North, Upper~
+<21>You float about 4 metres above the long bridge that connects the prince's canton  
+<27>to the market canton. The prince's impressive canton gates lie immediately to 
+<33>the north, while the southern market ones are some distance from here, to your   
+<39>south. To the east and west you may venture into the upper part of the deep 
+<45>canal system that separates Ota'ar Dar's cantons from each other, you can travel 
+downwards, towards the ocean floor, or you can swim up, directly into the huge, 
+looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
 ~
-~
-0 -1 27727
+gate~
+8 -1 27727
 D1
 ~
 ~
@@ -4269,14 +5566,23 @@ D3
 ~
 ~
 0 -1 27665
+D4
+~
+~
+0 -1 27130
 D5
 ~
 ~
 0 -1 27420
 S
 #27721
-Above Canton Canal~
-You are standing in room #27721.
+<252>Ota'ar Dar Market/Prince's Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's market and prince's cantons. The high canal walls prevent access from
+<241>here to either canton, but you may travel north or east, further along the  
+<244>canal system, downwards, towards the ocean floor, or upwards, directly into the 
+<246>huge, looming area of dark water above your head, or west, to the area above 
+the long bridge connecting the cantons.<0>
 ~
 0 0 8
 D0
@@ -4291,14 +5597,22 @@ D3
 ~
 ~
 0 -1 27719
+D4
+~
+~
+0 -1 27130
 D5
 ~
 ~
 0 -1 27421
 S
 #27722
-Above Canton Canal~
-You are standing in room #27722.
+<252>Ota'ar Dar Market/Prince's Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's market and prince's cantons. The high canal walls prevent access from
+<241>here to either canton, but you may travel north, west or east, further along the  
+<244>canal system, downwards, towards the ocean floor, or upwards, directly into 
+<246>the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -4313,14 +5627,23 @@ D3
 ~
 ~
 0 -1 27721
+D4
+~
+~
+0 -1 27130
 D5
 ~
 ~
 0 -1 27422
 S
 #27723
-Above Canton Canal~
-You are standing in room #27723.
+<252>Ota'ar Dar Market/Prince's Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's market and prince's cantons. The high canal walls prevent access from
+<241>here to either canton, but you may travel north or west, further along the  
+<244>canal system, downwards, towards the ocean floor, or upwards, directly into the 
+<246>huge, looming area of dark water above your head. To the immediate east a huge 
+iron grate has been installed to block access to the open ocean.<0>
 ~
 0 0 8
 D0
@@ -4331,14 +5654,23 @@ D3
 ~
 ~
 0 -1 27722
+D4
+~
+~
+0 -1 27137
 D5
 ~
 ~
 0 -1 27423
 S
 #27724
-Above Canton Canal~
-You are standing in room #27724.
+<252>Ota'ar Dar Market/Prince's Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's market and prince's cantons. The high canal walls prevent access from
+<241>here to either canton, but you may travel south or east, further along the  
+<244>canal system, downwards, towards the ocean floor, or upwards, directly into the 
+<246>huge, looming area of dark water above your head, or west, to the area above 
+the long bridge connecting the cantons.<0>
 ~
 0 0 8
 D1
@@ -4353,14 +5685,22 @@ D3
 ~
 ~
 0 -1 27720
+D4
+~
+~
+0 -1 27130
 D5
 ~
 ~
 0 -1 27424
 S
 #27725
-Above Canton Canal~
-You are standing in room #27725.
+<252>Ota'ar Dar Market/Prince's Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's market and prince's cantons. The high canal walls prevent access from
+<241>here to either canton, but you may travel south, west or east, further along the  
+<244>canal system, downwards, towards the ocean floor, or upwards, directly into the 
+<246>huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D1
@@ -4375,14 +5715,23 @@ D3
 ~
 ~
 0 -1 27724
+D4
+~
+~
+0 -1 27130
 D5
 ~
 ~
 0 -1 27425
 S
 #27726
-Above Canton Canal~
-You are standing in room #27726.
+<252>Ota'ar Dar Market/Prince's Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's market and prince's cantons. The high canal walls prevent access from
+<241>here to either canton, but you may travel south or west, further along the  
+<244>canal system, down to the ocean floor, or upwards, directly into the huge, 
+<246>looming area of dark water above your head. To the immediate east a huge iron  
+grate has been installed to block access to the open ocean.<0>
 ~
 0 0 8
 D2
@@ -4393,6 +5742,10 @@ D3
 ~
 ~
 0 -1 27725
+D4
+~
+~
+0 -1 27137
 D5
 ~
 ~
@@ -4411,8 +5764,13 @@ PLACEHOLDER UNTIL CONNECTED AREA IN.
 0 4 8
 S
 #27744
-Above Canton Canal~
-You are standing in room #27744.
+<252>Ota'ar Dar Northern Residential/Prince's Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's northern residential canton, to the southwest, and the prince's canton,  
+<241>to the north and east. The high canal walls prevent access from here to either  
+<244>canton, but you may travel north, further along the canal system, downwards,  
+<246>towards the ocean floor, upwards, directly into the huge, looming area of dark 
+water above your head, or south, to the area above the bridge connecting the cantons.<0>
 ~
 0 0 8
 D2
@@ -4423,14 +5781,23 @@ D3
 ~
 ~
 0 -1 27745
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27444
 S
 #27745
-Above Canton Canal~
-You are standing in room #27745.
+<252>Ota'ar Dar Northern Residential/Prince's Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's northern residential canton, to the west and south, and the prince's  
+<241>canton, to the northeast. The high canal walls prevent access from here to 
+<244>either canton, but you may travel north or east, further along the canal  
+<246>system, downwards, towards the ocean floor, or upwards, directly into the huge, 
+looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -4441,14 +5808,23 @@ D1
 ~
 ~
 0 -1 27744
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27445
 S
 #27746
-Above Canton Canal~
-You are standing in room #27746.
+<252>Ota'ar Dar Northern Residential/Prince's Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's northern residential canton, to the west, and the prince's canton, to 
+<241>the east. The high canal walls prevent access from here to either canton, but
+<244>you may travel north or south, further along the canal system, downwards,
+<246>towards the ocean floor, or upwards, directly into the huge, looming area of 
+dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -4465,8 +5841,13 @@ D5
 0 -1 27446
 S
 #27747
-Above Canton Canal~
-You are standing in room #27747.
+<252>Ota'ar Dar Northern Residential/Prince's Canton Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's northern residential canton, to the southwest, and the prince's canton, 
+<241>to the north and east. The high canal walls prevent access from here to either
+<244>canton, but you may travel south or west, further along the canal system, 
+<246>downwards, towards the ocean floor, or upwards, directly into the huge, looming 
+area of dark water above your head.<0>
 ~
 0 0 8
 D2
@@ -4477,14 +5858,23 @@ D3
 ~
 ~
 0 -1 27748
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27447
 S
 #27748
-Above Canton Canal~
-You are standing in room #27748.
+<252>Ota'ar Dar/Omu Canals North Junction, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in the large canal junction  
+<238>that exists between Ota'ar Dar's northern residential canton, prince's canton,
+<241>and the Grung city of Omu. The high canal walls prevent access from here to any
+<244>of the cantons or Omu, but you can still travel north, west, or east further 
+<246>along the canal system, downwards, towards the ocean floor, or upwards, 
+directly into the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -4499,14 +5889,23 @@ D3
 ~
 ~
 0 -1 27749
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27448
 S
 #27749
-Above Canton Canal~
-You are standing in room #27749.
+<252>Ota'ar Dar/Omu Canals North Junction, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in the large canal junction  
+<238>that exists between Ota'ar Dar's northern residential canton, prince's canton,
+<241>and the Grung city of Omu. The high canal walls prevent access from here to any
+<244>of the cantons or Omu, but you can still travel north, west, or east further 
+<246>along the canal system, downwards, towards the ocean floor, or upwards, 
+directly into the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -4521,14 +5920,22 @@ D3
 ~
 ~
 0 -1 27750
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27449
 S
 #27750
-Above Canton Canal~
-You are standing in room #27750.
+<252>Ota'ar Dar Northern Residential/Omu Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar Dar's
+<238>northern residential canton and the Grung city of Omu. The high canal walls  
+<241>prevent access from here to either canton, but you may travel east or south,  
+<244>further along the canal system, downwards, towards the ocean floor, or upwards, 
+<246>directly into the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D1
@@ -4539,14 +5946,22 @@ D2
 ~
 ~
 0 -1 27751
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27450
 S
 #27751
-Above Canton Canal~
-You are standing in room #27751.
+<252>Ota'ar Dar Northern Residential/Omu Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar Dar's
+<238>northern residential canton and the Grung city of Omu. The high canal walls  
+<241>prevent access from here to either canton, but you may travel north or west,  
+<244>further along the canal system, downwards, towards the ocean floor, or upwards, 
+<246>directly into the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -4563,8 +5978,12 @@ D5
 0 -1 27451
 S
 #27752
-Above Canton Canal~
-You are standing in room #27752.
+<252>Ota'ar Dar Northern Residential/Omu Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar Dar's
+<238>northern residential canton and the Grung city of Omu. The high canal walls  
+<241>prevent access from here to either canton, but you may travel south or east,  
+<244>further along the canal system, downwards, towards the ocean floor, or upwards, 
+<246>directly into the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D1
@@ -4575,14 +5994,22 @@ D2
 ~
 ~
 0 -1 27753
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27452
 S
 #27753
-Above Canton Canal~
-You are standing in room #27753.
+<252>Ota'ar Dar Northern Residential/Omu Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar Dar's
+<238>northern residential canton and the Grung city of Omu. The high canal walls  
+<241>prevent access from here to either canton, but you may travel north or west,  
+<244>further along the canal system, downwards, towards the ocean floor, or upwards, 
+<246>directly into the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -4593,14 +6020,22 @@ D3
 ~
 ~
 0 -1 27754
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27453
 S
 #27754
-Above Canton Canal~
-You are standing in room #27754.
+<252>Ota'ar Dar Northern Residential/Omu Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar Dar's
+<238>northern residential canton and the Grung city of Omu. The high canal walls  
+<241>prevent access from here to either canton, but you may travel south or east,  
+<244>further along the canal system, downwards, towards the ocean floor, or upwards, 
+<246>directly into the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D1
@@ -4611,14 +6046,26 @@ D2
 ~
 ~
 0 -1 27755
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27454
 S
 #27755
-Above Canton Canal~
-You are standing in room #27755.
+<252>Ota'ar Dar Northern Residential/Omu/Old City Centre Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's northern residential canton, the Grung city of Omu, and the centre of the 
+<241>old city. The high canal walls and the old city's fortifications prevent access 
+<244>from here to the canton, Omu, or the old city centre itself, but you may travel 
+<246>north or west, further along the canal system, downwards, towards the ocean 
+floor, or upwards, directly into the huge, looming area of darkness in the water 
+above. To the south you see the bridge that connects the old city centre to 
+Ota'ar Dar's northern residential canton, but a large iron grate prevents 
+access to it from here.<0>
 ~
 0 0 8
 D0
@@ -4629,14 +6076,23 @@ D3
 ~
 ~
 0 -1 27756
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27455
 S
 #27756
-Above Canton Canal~
-You are standing in room #27756.
+<252>Omu/Old City Centre Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between the 
+<238>Grung city of Omu and the centre of the old city. The high canal walls and the 
+<241>old city's fortifications prevent access from here to Omu, or the old city 
+<244>centre itself, but you may travel east or west, further along the canal system, 
+<246>downwards, towards the ocean floor, or upwards, directly into the huge, looming 
+area of darkness in the water above.<0>
 ~
 0 0 8
 D1
@@ -4653,8 +6109,13 @@ D5
 0 -1 27456
 S
 #27757
-Above Canton Canal~
-You are standing in room #27757.
+<252>Omu/Old City Centre Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between the 
+<238>Grung city of Omu and the centre of the old city. The high canal walls and the 
+<241>old city's fortifications prevent access from here to Omu, or the old city 
+<244>centre itself, but you may travel north or east, further along the canal system, 
+<246>downwards, towards the ocean floor, or upwards, directly into the huge, looming 
+area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -4665,28 +6126,48 @@ D1
 ~
 ~
 0 -1 27756
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27457
 S
 #27758
-Above Canton Canal~
-You are standing in room #27758.
+<252>Omu/Old City Centre Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between the 
+<238>Grung city of Omu and the centre of the old city. The high canal walls and the 
+<241>old city's fortifications prevent access from here to Omu, or the old city 
+<244>centre itself, but you may travel south, further along the canal system, 
+<246>downwards, towards the ocean floor, or upwards, directly into the huge, looming 
+area of darkness in the water above. To the west you see the area above the 
+bridge that connects Omu to the old city centre, but a large iron grate seals 
+off access to it from here.<0>
 ~
 0 0 8
 D2
 ~
 ~
 0 -1 27757
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27458
 S
 #27759
-Above Canton Canal~
-You are standing in room #27759.
+<252>Ota'ar Dar/Omu Canals North Junction, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in the large canal junction  
+<238>that exists between Ota'ar Dar's northern residential canton, prince's canton,
+<241>and the Grung city of Omu. The high canal walls prevent access from here to any
+<244>of the cantons or Omu, but you can still travel north, west, or south further 
+<246>along the canal system, downwards, towards the ocean floor, or upwards, 
+directly into the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -4701,14 +6182,23 @@ D3
 ~
 ~
 0 -1 27760
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27459
 S
 #27760
-Above Canton Canal~
-You are standing in room #27760.
+<252>Ota'ar Dar/Omu Canals North Junction, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in the large canal junction  
+<238>that exists between Ota'ar Dar's northern residential canton, prince's canton,
+<241>and the Grung city of Omu. The high canal walls prevent access from here to any
+<244>of the cantons or Omu, but you can still travel north, south, or east further 
+<246>along the canal system, downwards, towards the ocean floor, or upwards, 
+directly into the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D0
@@ -4723,14 +6213,23 @@ D2
 ~
 ~
 0 -1 27749
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27460
 S
 #27761
-Above Canton Canal~
-You are standing in room #27761.
+<252>Ota'ar Dar/Omu Canals North Junction, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in the large canal junction  
+<238>that exists between Ota'ar Dar's northern residential canton, prince's canton,
+<241>and the Grung city of Omu. The high canal walls prevent access from here to any
+<244>of the cantons or Omu, but you can still travel south, west, or east further 
+<246>along the canal system, downwards, towards the ocean floor, or upwards, 
+directly into the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D1
@@ -4745,14 +6244,22 @@ D3
 ~
 ~
 0 -1 27766
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27461
 S
 #27762
-Above Canton Canal~
-You are standing in room #27762.
+<252>Ota'ar Dar Prince's Canton/Omu Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's prince's canton and the Grung city of Omu. The high canal walls prevent 
+<241>access from here to the canton or Omu, but you may travel north or west,
+<244>further along the canal system, downwards, towards the ocean floor, or upwards,
+<246>directly into the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -4763,14 +6270,22 @@ D3
 ~
 ~
 0 -1 27761
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27462
 S
 #27763
-Above Canton Canal~
-You are standing in room #27763.
+<252>Ota'ar Dar Prince's Canton/Omu Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's prince's canton and the Grung city of Omu. The high canal walls prevent 
+<241>access from here to the canton or Omu, but you may travel south or east,
+<244>further along the canal system, downwards, towards the ocean floor, or upwards,
+<246>directly into the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D1
@@ -4781,14 +6296,22 @@ D2
 ~
 ~
 0 -1 27762
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27463
 S
 #27764
-Above Canton Canal~
-You are standing in room #27764.
+<252>Ota'ar Dar Prince's Canton/Omu Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's prince's canton and the Grung city of Omu. The high canal walls prevent 
+<241>access from here to the canton or Omu, but you may travel north or west,
+<244>further along the canal system, downwards, towards the ocean floor, or upwards,
+<246>directly into the huge, looming area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -4799,28 +6322,47 @@ D3
 ~
 ~
 0 -1 27763
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27464
 S
 #27765
-Above Canton Canal~
-You are standing in room #27765.
+<252>Ota'ar Dar Prince's Canton/Omu Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's prince's canton and the Grung city of Omu. The high canal walls prevent 
+<241>access from here to the canton or Omu, but you may travel south, further along
+<244>the canal system, downwards, towards the ocean floor, or upwards, directly into 
+<246>the huge, looming area of darkness in the water above. To your immediate east 
+you see the area above the bridge that connects the prince's canton to Omu, but 
+a large iron grate seals it off from the canal.<0>
 ~
 0 0 8
 D2
 ~
 ~
 0 -1 27764
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27465
 S
 #27766
-Above Canton Canal~
-You are standing in room #27766.
+<252>Ota'ar Dar/Omu Canals North Junction, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in the large canal junction  
+<238>that exists between Ota'ar Dar's northern residential canton, prince's canton,
+<241>and the Grung city of Omu. The high canal walls prevent access from here to any
+<244>of the cantons or Omu, but you can still travel south, west, or east further 
+<246>along the canal system, downwards, towards the ocean floor, or upwards, 
+directly into the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D1
@@ -4835,14 +6377,22 @@ D3
 ~
 ~
 0 -1 27767
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27466
 S
 #27767
-Above Canton Canal~
-You are standing in room #27767.
+<252>Omu Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between the two 
+<238>major cantons of the Grung city of Omu. The high canal walls prevent access to 
+<241>Omu from here, but you may travel north or east, further along the canal system,
+<244>downwards, towards the ocean floor, or upwards, directly into the huge, looming
+<246>area of darkness in the water above.<0>
 ~
 0 0 8
 D0
@@ -4853,14 +6403,22 @@ D1
 ~
 ~
 0 -1 27766
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27467
 S
 #27768
-Above Canton Canal~
-You are standing in room #27768.
+<252>Omu Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between the two 
+<238>major cantons of the Grung city of Omu. The high canal walls prevent access to 
+<241>Omu from here, but you may travel south or west, further along the canal system,
+<244>downwards, towards the ocean floor, or upwards, directly into the huge, looming
+<246>area of darkness in the water above.<0>
 ~
 0 0 8
 D2
@@ -4871,14 +6429,22 @@ D3
 ~
 ~
 0 -1 27769
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27468
 S
 #27769
-Above Canton Canal~
-You are standing in room #27769.
+<252>Omu Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between the two 
+<238>major cantons of the Grung city of Omu. The high canal walls prevent access to 
+<241>Omu from here, but you may travel east or west, further along the canal system,
+<244>downwards, towards the ocean floor, or upwards, directly into the huge, looming
+<246>area of darkness in the water above.<0>
 ~
 0 0 8
 D1
@@ -4889,14 +6455,22 @@ D3
 ~
 ~
 0 -1 27770
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
 0 -1 27469
 S
 #27770
-Above Canton Canal~
-You are standing in room #27770.
+<252>Omu Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between the two 
+<238>major cantons of the Grung city of Omu. The high canal walls prevent access to 
+<241>Omu from here, but you may travel east, further along the canal system,
+<244>downwards, towards the ocean floor, or upwards, directly into the huge, looming
+<246>area of darkness in the water above.<0>
 ~
 0 0 8
 D1
@@ -4909,8 +6483,10 @@ D5
 0 -1 27470
 S
 #27810
-A Mud-filled Underwater Tunnel~
-You are standing in room #27810.
+<202>A Mud-filled Underwater Tunnel<0>~
+<130>The water is thick with mud down here, and you have to feel your way carefully 
+<94>through the very cramped and uncomfortable tunnel.  You wonder idly what could
+have stirred up this much sediment--and be keeping it stirred-up?<0>
 ~
 0 1|4|8|2048 8
 D1
@@ -4923,8 +6499,9 @@ D4
 1 -1 27426
 S
 #27811
-A Mud-filled Underwater Tunnel~
-You are standing in room #27811.
+<202>A Mud-filled Underwater Tunnel<0>~
+<130>The water is thick with mud down here, and you have to feel your way carefully 
+<94>through the narrow tunnel. You step on something... crunchy.<0>
 ~
 0 1|4|8|512 8
 D0
@@ -4935,10 +6512,17 @@ D3
 ~
 ~
 0 -1 27810
+E
+something crunchy~
+Feeling your feet you deduce that the crunchy thing is also slimy... like humanoid
+remains.
+~
 S
 #27812
-An Underwater Cavern~
-You are standing in room #27812.
+<202>An Underwater Cavern<0>~
+<130>You stand in an underwater cavern measuring roughly 10 metres square.  Piles of 
+<94>animal and humanoid remains litter the ground and evidence of the feeding 
+habits of some large carnivorous beast are everywhere.<0>
 ~
 0 8 8
 D2
@@ -4947,8 +6531,12 @@ D2
 0 -1 27811
 S
 #27813
-The Dark Entrance to an Undersea Cave~
-You are standing in room #27813.
+<45>The Dark Entrance to an Undersea Cave<0>~
+<24>This roughly-hewn undersea cave entrance has been carved out of the solid rock
+canal walls and directly into the sea bedrock.  It must have taken considerable
+physical effort, and you wonder what sorts of undersea creatures might be
+capable of such a feat.  The cavemouth leads directly downwards from here, or 
+you can swim north, into Ota'ar Dar's canal network.<0>
 ~
 0 1|4|8 8
 D0
@@ -4961,8 +6549,10 @@ D5
 0 -1 27814
 S
 #27814
-A Tunnel in an Undersea Cave~
-You are standing in room #27814.
+<45>A Tunnel in an Undersea Cave~
+<24>You stand in a dark underwater cave that looks to have been roughly carved out
+of the sea bedrock. You can swim up, where it seems a little lighter, or south,
+deeper into the cavern.<0>
 ~
 0 1|8 8
 D2
@@ -4975,8 +6565,10 @@ D4
 0 -1 27813
 S
 #27815
-A Tunnel in an Undersea Cave~
-You are standing in room #27815.
+<45>A Tunnel in an Undersea Cave~
+<24>You stand in a dark underwater cave that looks to have been roughly carved out
+of the sea bedrock. You can swim west or north from this point.  A faint glow comes 
+from the west.<0>
 ~
 0 1|8 8
 D0
@@ -4989,20 +6581,29 @@ D3
 0 -1 27816
 S
 #27816
-A Large Chamber in an Undersea Cave~
-You are standing in room #27816.
+<51>A Large Chamber in an Undersea Cave<0>~
+<31>You stand in a large underwater chamber crudely carved out of the deep sea 
+bedrock.  Signs of recent habitation are everywhere; your guess would be this
+chamber is the home of multiple large, moderately-intelligent aquatic bipedal 
+humanoids. Violent and carnivorous ones.<0>
 ~
-0 1|8|2048 6
+0 1|8 6
 D1
 ~
 ~
 0 -1 27815
 S
 #27817
-Entrance to an Underwater Cave~
-This is the entrance to the Black Dragon's Cave System.  Make it hidden.
+<161>Entrance to an Underwater Cave<0>~
+<53>You stand in the mouth of a very large underwater cave, hidden at the base of a
+<54>huge bridge structure. It must be at least 10 metres high and 40 metres wide. 
+<55>It looks to have been almost burned out of the sea bedrock; all of the cave 
+<56>walls look heavily scorched and scarred. The exit, to your west, has been 
+<57>covered by a huge heap of seaweed, but you should be able to fight your way 
+through it if you'd like to leave. You can also head east, deeper into the cave 
+system.<0>
 ~
-0 1|8 8
+0 1|4|8 8
 D1
 ~
 ~
@@ -5013,8 +6614,12 @@ D3
 0 -1 27465
 S
 #27818
-A room~
-You are standing in room #27818.
+<161>A Large Underwater Tunnel<0>~
+<53>You stand in the middle of a very large underwater tunnel, perhaps 10 metres  
+<54>tall and 40 metres wide. It looks to have been almost burned out of the sea  
+<55>bedrock; all of the cave walls look heavily scorched and scarred. You can head
+<56>west, towards what looks like an exit, or head deeper into the cave system, to 
+<57>your east.<0>
 ~
 0 1|8 8
 D1
@@ -5027,8 +6632,11 @@ D3
 0 -1 27817
 S
 #27819
-A room~
-You are standing in room #27819.
+<161>A Large Underwater Tunnel<0>~
+<53>You stand in the middle of a very large underwater tunnel, perhaps 10 metres  
+<54>tall and 40 metres wide. It looks to have been almost burned out of the sea  
+<55>bedrock; all of the cave walls look heavily scorched and scarred. You can head
+<56>west and north from here.<0>
 ~
 0 1|8 8
 D0
@@ -5041,8 +6649,11 @@ D3
 0 -1 27818
 S
 #27820
-A room~
-You are standing in room #27820.
+<161>A Large Underwater Tunnel<0>~
+<53>You stand in the middle of a very large underwater tunnel, perhaps 10 metres  
+<54>tall and 40 metres wide. It looks to have been almost burned out of the sea  
+<55>bedrock; all of the cave walls look heavily scorched and scarred. You can head
+<56>south and east from here.<0>
 ~
 0 1|8 8
 D1
@@ -5055,8 +6666,11 @@ D2
 0 -1 27819
 S
 #27821
-A room~
-You are standing in room #27821.
+<161>A Large Underwater Tunnel<0>~
+<53>You stand in the middle of a very large underwater tunnel, perhaps 10 metres  
+<54>tall and 40 metres wide. It looks to have been almost burned out of the sea  
+<55>bedrock; all of the cave walls look heavily scorched and scarred. You can head
+<56>west and east from here.<0>
 ~
 0 1|8 8
 D1
@@ -5069,8 +6683,11 @@ D3
 0 -1 27820
 S
 #27822
-A room~
-You are standing in room #27822.
+<161>A Large Underwater Tunnel<0>~
+<53>You stand in the middle of a very large underwater tunnel, perhaps 10 metres  
+<54>tall and 40 metres wide. It looks to have been almost burned out of the sea  
+<55>bedrock; all of the cave walls look heavily scorched and scarred. You can head
+<56>west and east from here.<0>
 ~
 0 1|8 8
 D1
@@ -5083,8 +6700,11 @@ D3
 0 -1 27821
 S
 #27823
-A room~
-You are standing in room #27823.
+<161>A Large Underwater Tunnel<0>~
+<53>You stand in the middle of a very large underwater tunnel, perhaps 10 metres  
+<54>tall and 40 metres wide. It looks to have been almost burned out of the sea  
+<55>bedrock; all of the cave walls look heavily scorched and scarred. You can head
+<56>west and north from here. It seems to be a little less dark to the north.<0>
 ~
 0 1|8 8
 D0
@@ -5097,10 +6717,15 @@ D3
 0 -1 27822
 S
 #27824
-A room~
-You are standing in room #27824.
+<197>Underwater Tunnel, Before a Huge Chamber<0>~
+<54>You stand in the middle of a very large underwater tunnel, perhaps 10 metres  
+<55>tall and 40 metres wide. It looks to have been almost burned out of the sea  
+<56>bedrock; all of the cave walls look heavily scorched and scarred. To the north
+<57>you can see that the tunnel opens out into a huge, well-lit, and partially-air
+<93>filled chamber, while south the tunnel is completely submerged, like this part
+is, and much darker.<0>
 ~
-0 1|8 8
+0 4|8 8
 D0
 ~
 ~
@@ -5111,8 +6736,12 @@ D2
 0 -1 27823
 S
 #27825
-A room~
-You are standing in room #27825.
+<51>Huge Cave Chamber, Southwest<0>~
+<61>You stand in a huge underground cave chamber, several hundred metres wide and 
+<62>perhaps 30 metres high, which is fairly well-lit by many kinds of colourful 
+<63>bioluminescent fungi and bacteria. The chamber is only partially submerged,
+<27>and looks like a rocky island (in the chamber's centre) encircled by a 'moat'
+<26> of seawater.  You can follow the 'moat' to the north or east from here.<0>
 ~
 0 8 6
 D0
@@ -5125,8 +6754,14 @@ D1
 0 -1 27826
 S
 #27826
-A room~
-You are standing in room #27826.
+<51>Huge Cave Chamber, South<0>~
+<61>You stand in a huge underground cave chamber, several hundred metres wide and 
+<62>perhaps 30 metres high, which is fairly well-lit by many kinds of colourful 
+<63>bioluminescent fungi and bacteria. The chamber is only partially submerged,
+<27>and looks like a rocky island (in the chamber's centre) that is encircled by 
+<26>a 'moat' of seawater.  You can head towards the 'island' to the north, follow 
+<25>the 'moat' to the west or east, or head into the tunnel to your south, to exit 
+the chamber.<0>
 ~
 0 8 6
 D0
@@ -5147,8 +6782,12 @@ D3
 0 -1 27825
 S
 #27827
-A room~
-You are standing in room #27827.
+<51>Huge Cave Chamber, Southeast<0>~
+<61>You stand in a huge underground cave chamber, several hundred metres wide and 
+<62>perhaps 30 metres high, which is fairly well-lit by many kinds of colourful 
+<63>bioluminescent fungi and bacteria. The chamber is only partially submerged,
+<27>and looks like a rocky island (in the chamber's centre) encircled by a 'moat'
+<26> of seawater.  You can follow the 'moat' to the north or west from here.<0>
 ~
 0 8 6
 D0
@@ -5161,8 +6800,13 @@ D3
 0 -1 27826
 S
 #27828
-A room~
-You are standing in room #27828.
+<51>Huge Cave Chamber, West<0>~
+<61>You stand in a huge underground cave chamber, several hundred metres wide and 
+<62>perhaps 30 metres high, which is fairly well-lit by many kinds of colourful 
+<63>bioluminescent fungi and bacteria. The chamber is only partially submerged,
+<27>and looks like a rocky island (in the chamber's centre) that is encircled by 
+<26>a 'moat' of seawater. From here you can head towards the 'island' to the east, 
+<25>or follow the 'moat' to the north or south.<0>
 ~
 0 8 6
 D0
@@ -5179,10 +6823,18 @@ D2
 0 -1 27825
 S
 #27829
-A room~
-You are standing in room #27829.
+<40>Rocky Island in the Huge Cave Chamber<0>~
+<26>You stand on what seems like a small, rocky island, in a large cave chamber, 
+<25>deep underground. The rock of the 'island' is heavily scorched and scarred, as
+<24>if by some fire or terrible corrosive liquid, and the ground is littered with
+<23>animal and humanoid remains in various stages of having been consumed, burned, 
+<22>or dismembered. It doesn't feel like the sort of place you ought to spend a
+lot of time, if you can help it.
+
+The 'island' is surround by what looks like a 'moat,' which you can travel to
+via any cardinal direction.<0>
 ~
-0 8 5
+0 4|8 5
 D0
 ~
 ~
@@ -5201,8 +6853,13 @@ D3
 0 -1 27828
 S
 #27830
-A room~
-You are standing in room #27830.
+<51>Huge Cave Chamber, East<0>~
+<61>You stand in a huge underground cave chamber, several hundred metres wide and 
+<62>perhaps 30 metres high, which is fairly well-lit by many kinds of colourful 
+<63>bioluminescent fungi and bacteria. The chamber is only partially submerged,
+<27>and looks like a rocky island (in the chamber's centre) that is encircled by 
+<26>a 'moat' of seawater. From here you can head towards the 'island' to the west, 
+<25>or follow the 'moat' to the north or south.<0>
 ~
 0 8 6
 D0
@@ -5219,8 +6876,12 @@ D3
 0 -1 27829
 S
 #27831
-A room~
-You are standing in room #27831.
+<51>Huge Cave Chamber, Northwest<0>~
+<61>You stand in a huge underground cave chamber, several hundred metres wide and 
+<62>perhaps 30 metres high, which is fairly well-lit by many kinds of colourful 
+<63>bioluminescent fungi and bacteria. The chamber is only partially submerged,
+<27>and looks like a rocky island (in the chamber's centre) encircled by a 'moat'
+<26> of seawater.  You can follow the 'moat' to the south or east from here.<0>
 ~
 0 8 6
 D1
@@ -5233,8 +6894,14 @@ D2
 0 -1 27828
 S
 #27832
-A room~
-You are standing in room #27832.
+<51>Huge Cave Chamber, North<0>~
+<61>You stand in a huge underground cave chamber, several hundred metres wide and 
+<62>perhaps 30 metres high, which is fairly well-lit by many kinds of colourful 
+<63>bioluminescent fungi and bacteria. The chamber is only partially submerged,
+<27>and looks like a rocky island (in the chamber's centre) that is encircled by 
+<26>a 'moat' of seawater.  You can head towards the 'island' to the south, follow 
+<25>the 'moat' to the west or east, or head into the tunnel to your north, to exit 
+the chamber.<0>
 ~
 0 0 6
 D0
@@ -5255,8 +6922,12 @@ D3
 0 -1 27831
 S
 #27833
-A room~
-You are standing in room #27833.
+<51>Huge Cave Chamber, Northeast<0>~
+<61>You stand in a huge underground cave chamber, several hundred metres wide and 
+<62>perhaps 30 metres high, which is fairly well-lit by many kinds of colourful 
+<63>bioluminescent fungi and bacteria. The chamber is only partially submerged,
+<27>and looks like a rocky island (in the chamber's centre) encircled by a 'moat'
+<26> of seawater.  You can follow the 'moat' to the south or west from here.<0>
 ~
 0 8 6
 D2
@@ -5269,8 +6940,14 @@ D3
 0 -1 27832
 S
 #27834
-A room~
-You are standing in room #27834.
+<197>Cave Tunnel, Before a Huge Chamber<0>~
+<54>You stand in the middle of a very large cave tunnel, perhaps 40 metres 
+<55>wide with a ceiling that disappears too high up for you to make out from here. 
+<56>It looks to have been almost burned out of the bedrock; all of the cave walls  
+<57>look heavily scorched and scarred. To the south you can see that the tunnel  
+<93>opens out into a huge, well-lit, and partially-submerged chamber; you might also  
+be able to travel up from here towards the ceiling if you're able to fly or 
+levitate.<0>
 ~
 0 8 5
 D2
@@ -5283,8 +6960,11 @@ D4
 0 -1 27835
 S
 #27835
-A room~
-You are standing in room #27835.
+<161>In an Underground Shaft, Floating in the Air<0>~
+<53>You float in the air, in a rocky underground shaft that runs a great distance 
+<54>up and down. While you can't see the top of the shaft from here, the floor is 
+<55>only 10 metres or so below you, and you can fly (or fall!) down to it if you
+<56>wish.  Otherwise, you can try flying further up.<0>
 ~
 0 1|8 9
 D4
@@ -5297,8 +6977,12 @@ D5
 0 -1 27834
 S
 #27836
-A room~
-You are standing in room #27836.
+<161>In an Underground Shaft, Floating in the Air<0>~
+<53>You float in the air, in a rocky underground shaft that runs a great distance 
+<54>up and down. While you can't see the bottom of the shaft from here, you spy a 
+<55>large rocky ledge only a few metres above that you think you could fly up to
+<56>without too much trouble, otherwise you can fly (or fall!) down deeper into 
+the gloom.<0>
 ~
 0 1|8 9
 D4
@@ -5311,8 +6995,11 @@ D5
 0 -1 27835
 S
 #27837
-On The High Ledge, Above the Abyss~
-You are standing in room #27837.
+<161>On A Rocky Ledge, Perched Above a Deep Shaft<0>~
+<53>You are in an underground cave complex, on a rocky ledge that gives way to a 
+<54>deep up/down shaft that barrels deep into the gloom just below you.  You can
+<55>jump down into it (hope you can fly!) or travel in a more horizontal fashion
+<56>into the cave to your east.<0>
 ~
 0 1|8 5
 D1
@@ -5325,8 +7012,11 @@ D5
 0 -1 27836
 S
 #27838
-A room~
-You are standing in room #27838.
+<161>A Large Underground Tunnel<0>~
+<53>You stand in the middle of a very large underground tunnel, perhaps 10 metres  
+<54>tall and 40 metres wide. It looks to have been almost burned out of the bedrock;  
+<55>all of the cave walls look heavily scorched and scarred. You can head west and 
+<56>east from here.<0>
 ~
 0 1|8 5
 D1
@@ -5339,8 +7029,11 @@ D3
 0 -1 27837
 S
 #27839
-A room~
-You are standing in room #27839.
+<161>A Large Underground Tunnel<0>~
+<53>You stand in the middle of a very large underground tunnel, perhaps 10 metres  
+<54>tall and 40 metres wide. It looks to have been almost burned out of the bedrock;  
+<55>all of the cave walls look heavily scorched and scarred. You can head west and 
+<56>north from here.<0>
 ~
 0 1|8 5
 D0
@@ -5353,8 +7046,11 @@ D3
 0 -1 27838
 S
 #27840
-A room~
-You are standing in room #27840.
+<161>A Large Underground Tunnel<0>~
+<53>You stand in the middle of a very large underground tunnel, perhaps 10 metres  
+<54>tall and 40 metres wide. It looks to have been almost burned out of the bedrock;  
+<55>all of the cave walls look heavily scorched and scarred. You can head south and 
+<56>north from here.<0>
 ~
 0 1|8 5
 D0
@@ -5367,8 +7063,11 @@ D2
 0 -1 27839
 S
 #27841
-A room~
-You are standing in room #27841.
+<161>A Large Underground Tunnel<0>~
+<53>You stand in the middle of a very large underground tunnel, perhaps 10 metres  
+<54>tall and 40 metres wide. It looks to have been almost burned out of the bedrock;  
+<55>all of the cave walls look heavily scorched and scarred. You can head south and 
+<56>east from here.<0>
 ~
 0 1|8 5
 D1
@@ -5381,8 +7080,11 @@ D2
 0 -1 27840
 S
 #27842
-A room~
-You are standing in room #27842.
+<161>A Large Underground Tunnel<0>~
+<53>You stand in the middle of a very large underground tunnel, perhaps 40 metres 
+<54>wide, but with no ceiling you can see, just a sheer vertical shaft barrelling up
+<55>into the gloom. You can head west from here or try to fly into the shaft, to
+<56>see where it leads.<0>
 ~
 0 1|8 5
 D3
@@ -5395,8 +7097,11 @@ D4
 0 -1 27843
 S
 #27843
-A room~
-You are standing in room #27843.
+<161>In an Underground Shaft, Floating in the Air<0>~
+<53>You float in the air, in a rocky underground shaft that runs some distance 
+<54>up and down. The bottom of the shaft isn't too far down below you, and you 
+<55>also spy a large rocky ledge only a few metres above you you think you could fly
+<56>to without too much trouble.<0>
 ~
 0 1|8 9
 D4
@@ -5409,8 +7114,11 @@ D5
 0 -1 27842
 S
 #27844
-On the second Ledge~
-You are standing in room #27844.
+<161>On A Rocky Ledge, Perched Above a Shallow Shaft<0>~
+<53>You are in an underground cave complex, on a rocky ledge that gives way to a 
+<54>shallow up/down shaft that travels down perhaps a few storeys below you. You can
+<55>jump down into it or travel to your east, where you notice it gets considerably
+<56>lighter.<0>
 ~
 0 8 5
 D1
@@ -5423,14 +7131,103 @@ D5
 0 -1 27843
 S
 #27845
-A room~
-You are standing in room #27845.
+<161>A Large Cave Chamber<0>~
+<53>You stand in the middle of a large cave chamber, perhaps 10 metres tall and 40
+<54>metres wide. It looks to have been almost burned out of the mountain stone;  
+<55>all of the chamber walls look heavily scorched and scarred. A huge stone boulder
+<56>seals the exit to the mountain path at the south end of the chamber, and you can 
+also travel west, deeper into the cave system.<0>
 ~
-0 8 5
+0 4|8 5
+D2
+A huge stone set into the mountain.
+~
+stone boulder~
+2 -1 20104
 D3
 ~
 ~
 0 -1 27844
+S
+#27846
+{YEntrance to an Undersea Cave{x~
+{yYou stand in the partially-obscured, narrow entrance to an underwater tunnel system 
+cut out of the ocean bedrock; the walls are covered in slime. It's dark here, 
+and you'll have to feel around to figure out where you can go.{x
+~
+0 1|4|8|512|8192 8
+D1
+~
+~
+0 -1 27847
+D3
+~
+~
+0 -1 27264
+S
+#27847
+{YUnder Sekolah's Depths{x~
+{yYou stand in an underwater tunnel cut out of the ocean bedrock; the walls are
+covered in slime. It's dark here, and you'll have to feel around to figure out
+where you can go.{x
+~
+0 1|8|8192 8
+D0
+~
+~
+0 -1 27848
+D3
+~
+~
+0 -1 27846
+S
+#27848
+{YUnder Sekolah's Depths{x~
+{yYou stand in an underwater tunnel cut out of the ocean bedrock; the walls are
+covered in slime. It's dark here, and you'll have to feel around to figure out
+where you can go.{x
+~
+0 1|8|8192 8
+D0
+~
+~
+0 -1 27849
+D2
+~
+~
+0 -1 27847
+S
+#27849
+{YUnder Sekolah's Depths{x~
+{yYou stand in an underwater tunnel cut out of the ocean bedrock; the walls are
+covered in slime. It's dark here, and you'll have to feel around to figure out
+where you can go.{x
+~
+0 1|8|8192 8
+D0
+~
+~
+0 -1 27850
+D2
+~
+~
+0 -1 27848
+S
+#27850
+{YUnder Sekolah's Depths{x~
+{yYou stand in an underwater tunnel cut out of the ocean bedrock; the walls are
+covered in slime. It's dark here, and you'll have to feel around to figure out
+where you can go.{x
+~
+0 1|4|8|8192 8
+D1
+~
+~
+0 -1 27800
+D2
+~
+~
+0 -1 27849
 S
 #0
 
@@ -5459,7 +7256,7 @@ G 1 27372 100
 *
 M 1 27272 2 27563			a minke whale to Above Canton Canal
 *
-M 1 27272 1 27653			a minke whale to Malana Bridge, Upper
+M 1 27272 2 27653			a minke whale to Malana Bridge, Upper
 G 1 27372 100
 *
 M 1 27273 1 27655			a baiji to Above Canton Canal
@@ -5501,7 +7298,7 @@ M 1 27282 2 27660			a female nixie to Above Canton Canal
 E 1 27377 100 5
 E 1 27378 100 10
 *
-M 1 27282 1 27724			a female nixie to Above Canton Canal
+M 1 27282 2 27724			a female nixie to Above Canton Canal
 E 1 27377 100 5
 E 1 27378 100 10
 *
@@ -5521,9 +7318,9 @@ M 1 27287 2 27573			a humpback whale to Above Canton Canal
 *
 M 1 27288 2 27270			an ocean sunfish to Canton Canal
 *
-M 1 27288 1 27570			an ocean sunfish to Above Canton Canal
+M 1 27288 2 27570			an ocean sunfish to Above Canton Canal
 *
-M 1 27289 1 27575			a giant gar to Above Canton Canal
+M 1 27289 2 27575			a giant gar to Above Canton Canal
 E 1 27234 100 16
 *
 M 1 27291 1 27269			a hunting seal to Canton Canal
@@ -5536,7 +7333,7 @@ M 1 27292 2 27395			a sea zombie to Canton Canal
 M 1 27292 2 27393			a sea zombie to Canton Canal
 E 1 27385 100 16
 *
-M 1 27293 1 27393			a sea zombie to Canton Canal
+M 1 27293 2 27393			a sea zombie to Canton Canal
 E 1 27384 100 16
 *
 M 1 27293 2 27362			a sea zombie to Canton Canal
@@ -5597,7 +7394,7 @@ E 1 27382 100 16
 M 1 27303 2 27248			a vodyanoi to Canton Canal
 E 1 27390 100 16
 *
-M 1 27303 1 27251			a vodyanoi to Canton Canal
+M 1 27303 2 27251			a vodyanoi to Canton Canal
 E 1 27390 100 16
 O 1 27391 100 27816			a treasure pile to A Large Chamber in an Undersea Cave
 O 1 27392 100 27813			the rotting corpse of a sahuagin to The Dark Entrance to an Undersea Cave
@@ -5669,15 +7466,15 @@ M 1 27310 3 27367			a chuul to Canton Canal
 E 1 27387 100 5
 E 1 27395 100 16
 *
-M 1 27311 4 27749			a giant sea leech to Above Canton Canal
+M 1 27311 6 27749			a giant sea leech to Above Canton Canal
 G 1 27396 100
 *
-M 1 27311 4 27745			a giant sea leech to Above Canton Canal
+M 1 27311 6 27745			a giant sea leech to Above Canton Canal
 *
-M 1 27311 4 27666			a giant sea leech to Above Canton Canal
+M 1 27311 6 27666			a giant sea leech to Above Canton Canal
 G 1 27396 100
 *
-M 1 27311 4 27768			a giant sea leech to Above Canton Canal
+M 1 27311 6 27768			a giant sea leech to Above Canton Canal
 G 1 27396 100
 *
 M 1 27312 4 27756			a laghathti to Above Canton Canal
@@ -5705,13 +7502,13 @@ E 1 27399 100 19
 M 1 27313 3 27766			a reekmurk to Above Canton Canal
 E 1 27399 100 19
 *
-M 1 27314 2 27768			an uzollru to Above Canton Canal
+M 1 27314 3 27768			an uzollru to Above Canton Canal
 E 1 27387 100 5
 E 1 27382 100 16
 E 1 27380 100 18
 E 1 27400 100 6
 *
-M 1 27314 2 27763			an uzollru to Above Canton Canal
+M 1 27314 3 27763			an uzollru to Above Canton Canal
 E 1 27387 100 5
 E 1 27382 100 16
 E 1 27380 100 18
@@ -5721,7 +7518,7 @@ M 1 27315 1 27745			a Marid warrior to Above Canton Canal
 E 1 27403 100 16
 G 1 27401 100
 *
-M 1 27314 2 27757			an uzollru to Above Canton Canal
+M 1 27314 3 27757			an uzollru to Above Canton Canal
 *
 M 1 27316 1 27749			a Marid warrior to Above Canton Canal
 G 1 27402 100
@@ -5737,6 +7534,82 @@ M 1 27318 1 27829			Arlauthra to A room
 E 1 27405 100 6
 E 1 27234 100 16
 E 1 27406 100 18
+O 1 27391 100 27829			a treasure pile to A Large Chamber in an Undersea Cave
+*
+M 1 27319 3 27363			a giant limpet to Canton Canal
+E 1 27387 100 5
+*
+M 1 27319 3 27363			a giant limpet to Canton Canal
+E 1 27387 100 5
+*
+M 1 27319 3 27363			a giant limpet to Canton Canal
+E 1 27387 100 5
+*
+M 1 27320 1 27356			a coral reef to Canton Canal
+E 1 27407 100 16
+G 1 27408 100
+G 1 27408 100
+*
+M 1 27321 1 27261			a giant sea cucumber to Canton Canal
+*
+M 1 27322 1 27259			a polyp colony to Canton Canal
+*
+M 1 27323 1 27253			a zoanthid network to Canton Canal
+*
+M 1 27324 2 27847			a viperfish to {YUnder Sekolah's Depths{x
+*
+M 1 27324 2 27849			a viperfish to {YUnder Sekolah's Depths{x
+*
+M 1 27325 3 27844			a vampire bat to On A Rocky Ledge, Perched Above a Shallow Shaft
+E 1 25604 100 16
+*
+M 1 27325 3 27842			a vampire bat to A Large Underground Tunnel
+E 1 25604 100 16
+*
+M 1 27325 3 27840			a vampire bat to A Large Underground Tunnel
+E 1 25604 100 16
+*
+M 1 27326 2 27838			a vampire bat to A Large Underground Tunnel
+E 1 25604 100 16
+*
+M 1 27326 2 27836			a vampire bat to In an Underground Shaft, Floating in the Air
+E 1 25604 100 16
+*
+M 1 27289 2 27832			a giant gar to Huge Cave Chamber, North
+E 1 27234 100 16
+*
+M 1 27311 6 27818			a giant sea leech to A Large Underwater Tunnel
+G 1 27396 100
+*
+M 1 27311 6 27823			a giant sea leech to A Large Underwater Tunnel
+G 1 27396 100
+*
+
+
+
+D 1 27244 0 2			; Arena Way Westbridge, Lower Lock North
+D 1 27244 2 2			; Arena Way Westbridge, Lower Lock South
+D 1 27307 0 1			; Arena Way Eastbridge, Lower Close North
+D 1 27307 2 2			; Arena Way Eastbridge, Lower Lock South
+D 1 27419 2 1           ; Prince's Cross Bridge South, Close South
+D 1 27420 0 2           ; Prince's Cross Bridge North, Lock North
+D 1 27719 2 1           ; Prince's Cross Bridge South, Close South
+D 1 27720 0 2           ; Prince's Cross Bridge North, Lock North
+D 1 27388 2 2           ; Residential Bridge South, Lock South
+D 1 27389 0 2           ; Residential Bridge North, Lock North
+D 1 27688 2 2           ; Residential Bridge South, Lock South
+D 1 27689 0 2           ; Residential Bridge North, Lock North
+D 1 27418 1 2           ; Stately Way, Lock East
+D 1 27418 3 2           ; Stately Way, Lock West
+D 1 27718 1 2           ; Stately Way, Lock East
+D 1 27718 3 2           ; Stately Way, Lock West
+D 1 27607 0 1			; Arena Way Eastbridge, Upper Close North
+D 1 27607 2 2			; Arena Way Eastbridge, Upper Lock South
+D 1 27544 0 2			; Arena Way Westbridge, Upper Lock North
+D 1 27544 2 2			; Arena Way Westbridge, Upper Lock South
+D 1 27653 1 1			; Malana Bridge, Upper Close East
+D 1 27653 3 2			; Malana Bridge, Upper Lock West
+D 1 27845 2 1           ; Exit from dragon cave close south
 S
 
 
@@ -5775,6 +7648,7 @@ M  27315 spec_warrior               a Marid warrior
 M  27316 spec_cast_water_sprite     a Marid caster
 M  27317 spec_breath_steam          a dragon turtle
 M  27318 spec_breath_acid			Arlauthra
+M  27322 spec_poison			    a polyp colony
 S
 
 

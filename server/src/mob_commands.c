@@ -474,7 +474,8 @@ void do_mpoload( CHAR_DATA *ch, char *argument )
             return;
         }
         level = atoi( arg2 );
-        if ( level < 0 || level > get_trust( ch ) )
+        /* Removed trust check, mobs can load whatever level items they like -- Owl 27/8/22 */
+        if ( level < 0 )
         {
             bug( "Mpoload - Bad level: vnum %d.", ch->pIndexData->vnum );
             return;

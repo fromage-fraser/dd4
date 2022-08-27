@@ -380,7 +380,7 @@ Dragons Domain version 4.2020
 
 -1 MOTD~
 {x
-    [15 August 2022]
+    [27 August 2022]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -393,12 +393,11 @@ Dragons Domain version 4.2020
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
-    {WSMITHY class is now beta testing!!!!{x
+    {WSMITHY class is in for beta testing!{x
 
-    {W8-bit colour is in! Type 'ansi reset' for your current characters, then
-    read 'HELP COLOR3' and 'HELP ANSI'!{X
+    {WNEW 30-60 area OTA'AR DAR CANALS is now accessible via the Ota'ar Dar
+    Market Canton!{X
 
-    {WNew skill: STEAM BREATH for mages and dragons!{x
 
 
 
@@ -437,6 +436,7 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 0 CHANGES~
 
 {WAugust 2022{x
+- New 30-60 area 'Ota'ar Canals' is in and linked
 - STEAM BREATH added for mages and dragons
 - Dragon form now has SWALLOW
 - Skills SWALLOW and FLUKESLAP are in, with spec_small_whale and
@@ -3307,7 +3307,7 @@ Syntax: cast weaken <<victim>
 This spell reduces the strength of the victim by two points.
 ~
 
-0 'ACID BREATH' 'FIRE BREATH' 'FROST BREATH' 'GAS BREATH' 'LIGHTNING BREATH'~
+0 'ACID BREATH' 'FIRE BREATH' 'FROST BREATH' 'GAS BREATH' 'LIGHTNING BREATH' 'STEAM BREATH'~
 Syntax: cast 'acid breath'      <<victim>
 Syntax: cast 'fire breath'      <<victim>
 Syntax: cast 'steam breath'     <<victim>
@@ -6812,9 +6812,15 @@ social texts in natural English (as in the above example).
 Swedish socials will have to pass a rigorous translation process.
 ~
 
-0 OTA'AR DAR OTAAR~
+0 'OTA'AR DAR' OTAAR~
 A large city belonging to the sahuagin, ruled over by their prince, Elb'kl Ala.
 It may be accessed via the Yeats Sea, south and west of the Midgaard levee.
+~
+
+0 'OTA'AR DAR CANALS' CANALS~
+A large canal complex separating the cantons of OTA'AR DAR.  Accessible from
+Ota'ar Dar cantons (such as the market canton), and (allegedly) via the Shaolin
+Temple mountain.
 ~
 
 -1 MIDGAARD~
