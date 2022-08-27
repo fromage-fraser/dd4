@@ -2,10 +2,7 @@
 30 60 20 100
 
 #AREA_SPECIAL
-no_teleport
-no_quest
 exp_mod 107
-hidden
 $
 
 #RECALL
