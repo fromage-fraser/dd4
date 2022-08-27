@@ -248,7 +248,7 @@ An old wizard sits quietly at the counter waiting for a sale.
 ~
 This old wizard almost looks like he is about to fall over and sleep.
 ~
-2 8|128|512|8192 550 S
+2 8|128|512|1024|8192 550 S
 84 0 -300 30d30+300 99d99+40
 0 0
 8 8 1
@@ -345,7 +345,7 @@ A bard sings of the glory of Krondor.
 This musical fellow plays a happy song with his fellow comrades.
 For some reason, you think being a bard does not really suit him.
 ~
-2|4 512 450 S
+2|4|1024 512 450 S
 68 15 4 6d6+600 5d5+35
 0 0
 8 8 1
@@ -358,7 +358,7 @@ This bard merrily skips along singing of the glory of getting drunk.
 ~
 This musical fellow wanders the world singing of the glory of drinking.
 ~
-4 512 550 S
+4|1024 512 550 S
 58 15 3 7d7+70 3d4+30
 0 0
 8 8 1
@@ -895,7 +895,7 @@ Huge is the only size this giant's feet would be described as. His thick, heavy
 armour sparkles. With a heavy sword hanging from one side and a sharp dagger
 on the other, this man looks tough.
 ~
-2|64 2|8|128|8192 0 S
+2|64|1024 2|8|128|8192 0 S
 150 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -974,7 +974,7 @@ The high priest stands here.
 Red robes flow from shoulders that are just able to hold upright
 the large white has with a cross insignia in the centre of it.
 ~
-2|64 8|32|128|8192 1000 S
+2|64|1024 8|32|128|8192 1000 S
 80 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -1042,7 +1042,7 @@ The stablemaster for the Imperials Guards stands at attention
 A very heavy clad stablemaster that looks more like a warrior
 than someone ready to deck you with a new horse.
 ~
-2|64 8|32|8192|524288 1000 S
+2|64|1024 8|32|8192|524288 1000 S
 131 0 0 0d0+0 0d0+0
 0 0
 8 8 1

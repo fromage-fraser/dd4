@@ -49,7 +49,7 @@ The lemming smithy busily hammers away at a new pickaxe.
 It appears to be making a new pickaxe... maybe the lemmings are
 digging a new tunnel somewhere deeper in the cave.
 ~
-2|128 8|32|8192 250 S
+2|128|1024 8|32|8192 250 S
 13 0 0 0d0+0 0d0+0
 0 0
 8 8 0

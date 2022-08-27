@@ -234,7 +234,7 @@ you have no doubt he is a savage and capable fighter, even if a veteran.
 
 He regards you coldly, waiting for you to make the first move.
 ~
-2|64 8|32|512|4194304|8388608|67108864 -700 S
+2|64|1024 8|32|512|4194304|8388608|67108864 -700 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -270,7 +270,7 @@ magically-enhanced sharks and rays that sahuagin use as mounts. She is
 surprisingly good-natured for a sahuagin, seeming merely 'rude' by the
 standards of most other civilised races.
 ~
-2|64|512|4096|32768|8388608|16777216 32|512|67108864 -330 S
+2|64|512|1024|4096|32768|8388608|16777216 32|512|67108864 -330 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -782,7 +782,7 @@ Luanar 'Barehands' Teha owns this brawlarium and trains sahuagin warriors in
 weaponless combat.  Not overly-tall but very wide and muscular, he is an
 intimidating presence.
 ~
-2|64 8|32|512|4194304|8388608|67108864 -310 S
+2|64|1024 8|32|512|4194304|8388608|67108864 -310 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -1054,7 +1054,7 @@ it clear she is an important figure in the Sekolah-worshipping hierarchy.
 She has little time for foreigners, but may be of some use to sahuagin,
 especially fellow clerics of Sekolah.
 ~
-2|64 8|32|128|512|8192|524288|67108864 -840 S
+2|64|1024 8|32|128|512|8192|524288|67108864 -840 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 2
