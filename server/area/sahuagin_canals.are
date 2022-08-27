@@ -4124,12 +4124,17 @@ S
 <252>Ota'ar Dar Market/Arena Canton Canal, Upper<0>~
 <237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
 <238>Dar's market canton, to the north and east, and its arena canton, to the
-<241>southwest. The high canal walls prevent access from here to either canton, but
-<244>you may travel south or west, further along the canal system, downwards, towards
-<246>the ocean floor, or upwards, directly into the huge, looming area of dark water
-above your head.<0>
+<241>southwest. The high canal walls prevent access from here to the arena canton,
+<244>but the wall to the east looks a little lower than usual--perhaps you could
+<246>climb or fly over it? You may also travel south or west, further along the
+canal system, downwards, towards the ocean floor, or upwards, directly into the
+huge, looming area of dark water above your head.<0>
 ~
 0 0 8
+D1
+~
+wall~
+9 -1 27608
 D2
 ~
 ~

@@ -4948,7 +4948,8 @@ sandy ocean floor, amongst the inhabited ruins of a great, ancient city.
 To the south a huge gate looms, cutting off access to this canton from the rest
 of the city.  The road continues north, and you may also swim upwards, into the
 huge, looming area of darkness in the water just above your head, or head
-straight down towards the ocean floor. {x
+straight down towards the ocean floor. The canton wall to your west seems a
+little lower than usual--perhaps you could fly or climb over it from here?{x
 ~
 0 0 8
 D0
@@ -4959,6 +4960,10 @@ D2
 ~
 gate~
 8 -1 27607
+D3
+~
+wall~
+9 -1 27557
 D4
 ~
 ~
