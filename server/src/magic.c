@@ -3665,7 +3665,7 @@ void spell_dark_ritual( int sn, int level, CHAR_DATA *ch, void *vo )
         extract_obj ( obj );
         ch->alignment = UMAX(-1000, ch->alignment - ch->level * 2);
 
-        act("You make a ritual sacrifice to $D and their blessing fills you with ecstasy!\n\r",
+        act("You make a ritual sacrifice to $D and their favour fills you with ecstasy!\n\r",
             ch, NULL, NULL, TO_CHAR);
         act("$n sacrifices a corpse to $D... a dark cloud surrounds the body and it smoulders and burns!",
             ch, NULL, NULL, TO_ROOM);
@@ -3837,8 +3837,8 @@ void spell_pass_door( int sn, int level, CHAR_DATA *ch, void *vo )
         af.bitvector = AFF_PASS_DOOR;
         affect_to_char( victim, &af );
 
-        send_to_char( "You turn translucent.\n\r", victim );
-        act( "$n turns translucent.", victim, NULL, NULL, TO_ROOM );
+        send_to_char( "<230>You become translucent.<0>\n\r", victim );
+        act( "$n becomes translucent.", victim, NULL, NULL, TO_ROOM );
         return;
 }
 
@@ -5563,7 +5563,7 @@ void spell_ectoplasmic_form ( int sn, int level, CHAR_DATA *ch, void *vo )
         af.bitvector = AFF_PASS_DOOR;
         affect_to_char( victim, &af );
 
-        send_to_char( "You turn translucent.\n\r", victim );
+        send_to_char( "<230>You turn translucent.<0>\n\r", victim );
         act( "$n turns translucent.", victim, NULL, NULL, TO_ROOM );
         return;
 }
