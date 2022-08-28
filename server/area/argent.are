@@ -34,7 +34,7 @@ The bandit leader demands you hand over your gold.
 The bandit leader is muscular and tall.  His dirty clothes are somewhat finer
 than those of his ragged band.  He grins widely.
 ~
-64 0 -200 S
+64|1024 0 -200 S
 17 0 0 0d0+0 0d0+0
 0 0
 8 8 1

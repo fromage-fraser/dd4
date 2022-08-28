@@ -58,7 +58,7 @@ guards.  Jacklyn is very beautiful, but whether it is due to her pale softness
 or her magic, no one has ever found out.  She isn't very strong physically,
 but she need not be.
 ~
-2 8200 1000 S
+2|1024 8200 1000 S
 27 0 -8 27d27+180 1d4+17
 0 100000
 8 8 2
@@ -377,7 +377,7 @@ The Priestess of Ofcol is an old woman, perfectly at peace with herself and
 with the world.  She devotes all her time to help teach you the ways of her
 god, Bahamut.  The dragon symbol around her neck looks almost alive.
 ~
-2 8|128|8192 1000 S
+2|1024 8|128|8192 1000 S
 30 -10 -20 30d30+300 1d4+20
 0 120000
 8 8 2

@@ -12,7 +12,7 @@ The Knight is standing here, smiling at you. He is dressed all in
 white, blue and silver. He looks VERY strong, as he stands here, ready to
 help the innocent.
 ~
-64|512 136 1000 S
+64|512|1024 136 1000 S
 29 -5 -9 20d10+700 2d6+14
 0 100000
 8 8 1

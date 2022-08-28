@@ -234,7 +234,7 @@ you have no doubt he is a savage and capable fighter, even if a veteran.
 
 He regards you coldly, waiting for you to make the first move.
 ~
-2|64 8|32|512|4194304|8388608|67108864 -700 S
+2|64|1024 8|32|512|4194304|8388608|67108864 -700 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -270,7 +270,7 @@ magically-enhanced sharks and rays that sahuagin use as mounts. She is
 surprisingly good-natured for a sahuagin, seeming merely 'rude' by the
 standards of most other civilised races.
 ~
-2|64|512|4096|32768|8388608|16777216 32|512|67108864 -330 S
+2|64|512|1024|4096|32768|8388608|16777216 32|512|67108864 -330 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -782,7 +782,7 @@ Luanar 'Barehands' Teha owns this brawlarium and trains sahuagin warriors in
 weaponless combat.  Not overly-tall but very wide and muscular, he is an
 intimidating presence.
 ~
-2|64 8|32|512|4194304|8388608|67108864 -310 S
+2|64|1024 8|32|512|4194304|8388608|67108864 -310 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -1054,7 +1054,7 @@ it clear she is an important figure in the Sekolah-worshipping hierarchy.
 She has little time for foreigners, but may be of some use to sahuagin,
 especially fellow clerics of Sekolah.
 ~
-2|64 8|32|128|512|8192|524288|67108864 -840 S
+2|64|1024 8|32|128|512|8192|524288|67108864 -840 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -3672,23 +3672,23 @@ E
 map Ota'ar Dar canals lower~
 You examine a map of the Ota'ar Dar canals' lower level...
 
-{W                              [?] 
+{W                              [?]
                            [ ][ ]
             [ ][ ][ ]      [ ]
                   [ ][ ][ ][ ]
                      [ ][ ]
-                  [ ][ ][ ][ ] 
+                  [ ][ ][ ][ ]
                [ ][ ]      [ ]
       [ ]   [ ][ ]         [ ][ ]
       [ ][ ][ ]               {C[ ]{W
                               [ ]
             [ ]               [ ]
             [ ][ ][ ]{C[ ]{W[ ][ ][{G*{W][ ][ ]{C[ ]{W[ ][ ][?]
-            [ ][ ][ ]{C[ ]{W[ ][ ][{G*{W][ ][ ]{C[ ]{W[ ][ ][ ] 
+            [ ][ ][ ]{C[ ]{W[ ][ ][{G*{W][ ][ ]{C[ ]{W[ ][ ][ ]
             [ ]               [ ]
                               [ ]
       [ ][ ][ ]               {C[ ]{W
-      [ ]   [ ][ ]         [ ][ ]  
+      [ ]   [ ][ ]         [ ][ ]
                [ ][ ]      [?]
                   [ ][{G*{W][ ][ ]
                      [{G*{W][ ]
@@ -3710,23 +3710,23 @@ E
 map Ota'ar Dar canals upper~
 You examine a map of the Ota'ar Dar canals' upper level...
 
-{w                              [ ] 
+{w                              [ ]
                            [ ][ ]
             [ ][ ][ ]      [ ]
                   [ ][ ][ ][ ]
                      [ ][ ]
-                  [ ][ ][ ][ ] 
+                  [ ][ ][ ][ ]
                [ ][ ]      [ ]
       [ ]   [ ][ ]         [ ][ ]
       [ ][ ][ ]               {B[ ]{x{w
                               [ ]
             [ ]               [ ]
             [ ][ ][ ]{B[ ]{x{w[ ][ ][{G {x{w][ ][ ]{B[ ]{x{w[ ][ ][ ]
-            [ ][ ][ ]{B[ ]{x{w[ ][ ][{G {x{w][ ][ ]{B[ ]{x{w[ ][ ][ ] 
+            [ ][ ][ ]{B[ ]{x{w[ ][ ][{G {x{w][ ][ ]{B[ ]{x{w[ ][ ][ ]
             [ ]               [ ]
                               [ ]
       [ ][ ][ ]               {B[ ]{x{w
-      [ ]   [ ][ ]         [ ][ ]  
+      [ ]   [ ][ ]         [ ][ ]
                [ ][ ]      [ ]
                   [ ][{G {x{w][ ][ ]
                      [{G {x{w][ ]
@@ -3745,8 +3745,8 @@ A map of the dragon's caves lies here.~
 1 0 50
 E
 map dragon dragon's caves~
-You examine a map of the dragon's caves...    
-{m                                
+You examine a map of the dragon's caves...
+{m
                                      [ ][ ]
                                      /   |
                                    [ ]
@@ -3755,7 +3755,7 @@ You examine a map of the dragon's caves...
                               [ ]
                         [ ][ ][ ]
                         /
-                      [ ]   
+                      [ ]
                       /
                     [ ]
                     /
@@ -3765,7 +3765,7 @@ You examine a map of the dragon's caves...
                {B[ ][ ][ ]{x
                   {m[ ]
          [ ][ ][ ][ ]
-  -[ ][ ][ ]             
+  -[ ][ ][ ]
 {x
 ~
 #0
@@ -3780,7 +3780,7 @@ looms, cutting off access to this canton from the rest of the city.  To the east
 you see the entrance to a shop.  The sign above it reads "Phesak's Maps".
 
 The road continues north, and you may also swim upwards, towards a huge, looming
-area of darkness in the water above. You notice, however, that the canton wall to 
+area of darkness in the water above. You notice, however, that the canton wall to
 the west doesn't quite reach all the way to the dark region of water above.
 Perhaps you could climb or fly over it?{x
 ~
@@ -3796,7 +3796,7 @@ D1
 D2
 ~
 gate~
-1 -1 27307
+8 -1 27307
 D3
 ~
 wall~
@@ -4912,11 +4912,11 @@ D4
 S
 #27353
 Malana Bridge, Lower~
-<14>You stand on the bridge that connects Ota'ar Dar's southern residential canton 
-<87>to its market canton. The southern residential canton gates lie to the west,  
-<123>while the sturdy market canton gates are eastward. To the north and south you  
-<159>may venture into the deep canal system which separates Ota'ar Dar's cantons  
-from each other, or you can head upwards, towards the huge, looming area of 
+<14>You stand on the bridge that connects Ota'ar Dar's southern residential canton
+<87>to its market canton. The southern residential canton gates lie to the west,
+<123>while the sturdy market canton gates are eastward. To the north and south you
+<159>may venture into the deep canal system which separates Ota'ar Dar's cantons
+from each other, or you can head upwards, towards the huge, looming area of
 darkness in the water above.<0>
 ~
 0 4 8
@@ -4948,7 +4948,8 @@ sandy ocean floor, amongst the inhabited ruins of a great, ancient city.
 To the south a huge gate looms, cutting off access to this canton from the rest
 of the city.  The road continues north, and you may also swim upwards, into the
 huge, looming area of darkness in the water just above your head, or head
-straight down towards the ocean floor. {x
+straight down towards the ocean floor. The canton wall to your west seems a
+little lower than usual--perhaps you could fly or climb over it from here?{x
 ~
 0 0 8
 D0
@@ -4959,6 +4960,10 @@ D2
 ~
 gate~
 8 -1 27607
+D3
+~
+wall~
+9 -1 27557
 D4
 ~
 ~

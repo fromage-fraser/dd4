@@ -95,6 +95,10 @@ void do_scan (CHAR_DATA *ch, char *argument)
                                 if (IS_SET(pexit->exit_info, EX_SECRET))
                                         continue;
 
+                                /* Can't scan through walls, Clark Kent. --Owl 27/8/22 */
+                                if (IS_SET(pexit->exit_info, EX_WALL))
+                                        continue;
+
                                 scan(ch, dir);
                                 found = TRUE;
                         }
@@ -207,6 +211,10 @@ void scan (CHAR_DATA *ch, int door)
                    && pexit->to_room != was_in_room)
                 {
                         if (IS_SET( pexit->exit_info, EX_SECRET ))
+                                break;
+
+                        /* Can't scan through walls --Owl 27/8/22 */
+                        if (IS_SET( pexit->exit_info, EX_WALL ))
                                 break;
 
                         if (IS_SET(pexit->exit_info, EX_CLOSED))

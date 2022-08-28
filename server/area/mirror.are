@@ -75,7 +75,7 @@ Gordon is dressed in full mithril plate, and he looks indestructible.  He eyes
 you suspiciously not only because you are a stranger, but because you are an
 ARMED stranger.  Better not do any funny stuff in his presence.
 ~
-64|512 128 1000 S
+64|512|1024 128 1000 S
 35 0 -10 35d35+350 1d8+30
 0 150000
 8 8 1
@@ -108,7 +108,7 @@ He stands here gloriously telling of Thalos's history, how it is now referred
 by the world as 'The City of Peace'.  He is very happy to be the high priest
 here.
 ~
-2 128 1000 S
+2|1024 128 1000 S
 20 5 -5 20d20+200 1d4+15
 0 17000
 8 8 1

@@ -62,7 +62,7 @@ A sullen bard is here, drinking away his problems.
 You can smell the alcohol on his breath from across the room.  This poor bard
 has been sitting here quite a while, drinking himself into oblivion.
 ~
-66 8 600 S
+66|1024 8 600 S
 8 13 3 1d12+110 2d6+0
 0 3750
 6 6 1

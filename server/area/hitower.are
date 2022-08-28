@@ -326,7 +326,7 @@ He looks back at you and you can see the knowledge in his eyes. Although
 not strong in power he is a good teacher and can communicate his knowledge
 easily and effectively.
 ~
-66 8 200 S
+66|1024 8 200 S
 15 5 1 15d15+150 3d4+4
 0 15800
 5 5 1
@@ -436,7 +436,7 @@ the master summoner~
 The master summoner is here holding gateways open to other planes.
 ~
 ~
-2|32|64|128 8 -200 S
+2|32|64|128|1024 8 -200 S
 22 5 -2 22d22+220 3d5+6
 0 27050
 8 8 1
@@ -754,7 +754,7 @@ pretty for one of such stature in the guild, no doubt she has kept her
 youthful appearance through the use of strong magiks.
 The Grand Master pets her familiar and smiles at you in confidence.
 ~
-66 136 0 S
+66|1024 136 0 S
 50 -20 -30 50d50+500 3d4+20
 0 500000
 8 8 2

@@ -424,8 +424,10 @@ int hit_gain( CHAR_DATA *ch )
                 gain = ch->level * 3 / 2;
 
                 if (IS_SET(ch->act, ACT_REGENERATOR))
+                {
                       regen_mult = (ch->level / 10) + 2;
                       gain *= regen_mult;
+                }
 
                 if (IS_AFFECTED(ch, AFF_POISON)
                     || IS_AFFECTED(ch, AFF_PRAYER_PLAGUE))
@@ -2354,7 +2356,8 @@ void update_handler ()
         }
 
         sprintf (last_function, "calling gmcp_update");
-        gmcp_update(); /* <---- GMCP */
+        /* gmcp_update();  Just commenting out until we can address atability issues -- Owl 27/8/22 */
+        /* <---- GMCP */
 
         sprintf (last_function, "calling time_update");
         time_update();
@@ -2691,7 +2694,7 @@ void msdp_update( void )
             {
                 char skill_buf[MAX_STRING_LENGTH];
                 sprintf( skill_buf, "%c%s%c%d",
-                    (char)MSDP_VAR, skill_table[paf->type].name, 
+                    (char)MSDP_VAR, skill_table[paf->type].name,
                     (char)MSDP_VAL, paf->duration );
                 strcat( buf, skill_buf );
             }
@@ -2701,8 +2704,8 @@ void msdp_update( void )
         }
     }
 
-    /* Ideally this should be called once at startup, and again whenever 
-     * someone leaves or joins the mud.  But this works, and it keeps the 
+    /* Ideally this should be called once at startup, and again whenever
+     * someone leaves or joins the mud.  But this works, and it keeps the
      * snippet simple.  Optimise as you see fit.
      */
     MSSPSetPlayers( PlayerCount );
@@ -2711,7 +2714,7 @@ void msdp_update( void )
 /***************************************************************************
  * GMCP ADDON
  * File: update.c
- * 
+ *
  * Add a new gmcp_update() function.
  ***************************************************************************/
 void gmcp_update( void )
@@ -2748,7 +2751,7 @@ void gmcp_update( void )
 			UpdateGMCPNumber( d, GMCP_DAMROLL, GET_DAMROLL( d->character ) );
 			UpdateGMCPNumber( d, GMCP_WIMPY, d->character->wimpy );
 
-		/*	UpdateGMCPNumber( d, GMCP_AC_PIERCE, GET_AC( d->character, AC_PIERCE ) ); 
+		/*	UpdateGMCPNumber( d, GMCP_AC_PIERCE, GET_AC( d->character, AC_PIERCE ) );
 			UpdateGMCPNumber( d, GMCP_AC_BASH, GET_AC( d->character, AC_BASH ) );
 			UpdateGMCPNumber( d, GMCP_AC_SLASH, GET_AC( d->character, AC_SLASH ) );
 			UpdateGMCPNumber( d, GMCP_AC_EXOTIC, GET_AC( d->character, AC_EXOTIC ) );
@@ -2781,7 +2784,7 @@ void gmcp_update( void )
 					if ( buf[0] == '\0' )
 					{
 						#ifndef COLOR_CODE_FIX
-                                                
+
 						sprintf( buf, "\"%s\": \"%d\"", capitalize( directions[i].name ), exit->to_room->name );
 						#else
 						sprintf( buf, "\"%s\": \"%d\"", capitalize( directions[i].name ), exit->to_room->name);
@@ -2856,7 +2859,7 @@ void gmcp_update( void )
 					sprintf( buf2, ", {{ \"name\": \"%s\", \"duration\": \"%d\" }", skill_table[paf->type].name, paf->duration );
 					strcat( buf, buf2 );
 				}
-				#endif                
+				#endif
             }
 
 			if ( buf[0] == '\0' )

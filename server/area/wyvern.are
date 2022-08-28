@@ -209,7 +209,7 @@ A grim ranger reclines at a table.
 ~
 The years of wandering have left the ranger hardened and strong.
 ~
-2|4|64 8 200 S
+2|4|64|1024 8 200 S
 12 11 0 12d12+120 3d4+3
 0 7500
 5 8 1
