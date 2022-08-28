@@ -2356,7 +2356,7 @@ void update_handler ()
         }
 
         sprintf (last_function, "calling gmcp_update");
-        /* gmcp_update();  Just commenting out until we can address atability issues -- Owl 27/8/22 */
+        gmcp_update();  /* Comment this out to disable for troubleshooting */
         /* <---- GMCP */
 
         sprintf (last_function, "calling time_update");
