@@ -586,7 +586,7 @@ int     gsn_rare_set;
 int     gsn_bloodforged_set;
 int     gsn_astral_set;
 int     gsn_steel_broadsword;
-int     gsn_titanium_rapier;
+int     gsn_titanium_rapier;   
 int     gsn_repelling;
 int     gsn_craft_weapon;
 int     gsn_counterbalance;
@@ -629,7 +629,16 @@ int     gsn_serrate;
 int     gsn_innate_knowledge;
 int     gsn_spit_mucus;
 int     gsn_steam_breath;
-
+int     gsn_adamantite_katana;
+int     gsn_electrum_sword;
+int     gsn_starmetal_dual_blade;
+int     gsn_blade_module;
+int     gsn_shuriken_module;
+int     gsn_spear_module;
+int     gsn_arrestor_module;
+int     gsn_driver_module;
+int     gsn_reflector_module;
+int     gsn_shield_module;
 /*
  *  Spell groups
  */
