@@ -1297,7 +1297,7 @@ A
 #27398
 bladder laghathti blood~
 a bladder of laghathti blood~
-A sword rests here.~
+The bloody bladder of some large sea creature lies here.~
 ~
 10 16|64 1|16384
 53~ stabilise~ intellect fortress~ mental barrier~
@@ -1305,7 +1305,7 @@ A sword rests here.~
 #27399
 inky-black black inky stone~
 an inky-black stone~
-<17>An <21>inky-black stone<0> has been left here.<0>~
+<17>An <21>inky-black stone<0> <17>has been left here.<0>~
 ~
 9 16|64 1|32768
 0~ 0~ 0~ 0~
