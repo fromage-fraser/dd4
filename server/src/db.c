@@ -3226,6 +3226,10 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
             case ITEM_CRAFT:
             case ITEM_SPELLCRAFT:
             case ITEM_FORGE:
+            case ITEM_ARRESTOR_UNIT:
+            case ITEM_DRIVER_UNIT:
+            case ITEM_REFLECTOR_UNIT:
+            case ITEM_SHIELD_UNIT:
                 break;
 
             case ITEM_TREASURE:
@@ -3272,7 +3276,8 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
                 {
                         break;
                 }
-                else{
+                else
+                {
                         obj->value[1]   = number_fuzzy( number_fuzzy( 1 * level / 4 + 2 ) );
                         obj->value[2]   = number_fuzzy( number_fuzzy( 3 * level / 4 + 6 ) );
                         break;

@@ -2629,6 +2629,10 @@ char *item_type_name( OBJ_DATA *obj  )
             case ITEM_SPELLCRAFT:       return "spellcrafting";
             case ITEM_TURRET_MODULE:    return "turret module";
             case ITEM_FORGE:            return "forge";
+            case ITEM_ARRESTOR_UNIT:    return "arrestor unit";
+            case ITEM_DRIVER_UNIT:      return "driver unit";
+            case ITEM_REFLECTOR_UNIT:   return "reflector unit";
+            case ITEM_SHIELD_UNIT:      return "shield unit";
         }
 
         for ( in_obj = obj; in_obj->in_obj; in_obj = in_obj->in_obj )

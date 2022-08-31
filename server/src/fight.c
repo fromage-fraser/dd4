@@ -1006,9 +1006,38 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
         CHAR_DATA *opponent;
         int count;
         int no_defense = 0;
+        OBJ_DATA *turret_unit;
+        bool found = FALSE;
+        bool arrestor_unit = FALSE;
+        bool reflector_unit = FALSE;
+        bool shield_unit = FALSE;
 
         if (victim->position == POS_DEAD)
                 return;
+        
+        /* Engineer Turret stuff! */
+        for (turret_unit = ch->in_room->contents; turret_unit; turret_unit = turret_unit->next_content)
+        {
+                if (turret_unit->item_type == ITEM_ARRESTOR_UNIT)
+                {
+                        arrestor_unit = TRUE;
+                        if (IS_SPELL(dt) && arrestor_unit)
+                        {
+                                act ("The SPell is grouned by the Arrestor Unit!!!", ch, NULL, NULL, TO_CHAR); 
+                                obj_from_room(turret_unit);
+                        }
+                }
+                else if (turret_unit->item_type == ITEM_REFLECTOR_UNIT)
+                {
+                        reflector_unit = TRUE;
+                }
+                else if (turret_unit->item_type == ITEM_SHIELD_UNIT)
+                {
+                        shield_unit = TRUE;
+                }
+        }
+
+
 
         /*
          *  Damage inflicted to other

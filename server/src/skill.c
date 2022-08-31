@@ -4460,12 +4460,6 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         if (is_safe(ch, victim))
                 return;
 
-        if (ch->position < POS_STANDING)
-        {
-                send_to_char("You're not ready.\n\r", ch);
-                return;
-        }
-
         turret = get_obj_here(ch, "turret");
 
         if (!turret)
@@ -4516,13 +4510,36 @@ void do_trigger (CHAR_DATA *ch, char *argument)
 
                 if ( number_range(0,100) < ch->pcdata->learned[gsn_trigger])
                 {
-                
-                switch (obj.)
-                    
-                        /* moght do a case here depending on type of module      */
-                        act("You trigger your $p.", ch, obj, NULL ,TO_CHAR);
-                        act("$n triggers $m $p.", ch, obj, NULL, TO_ROOM);
-                        damage(ch, victim, number_range(10, ch->level), glookup, FALSE);
+                        int i;
+                        int unit = -1;
+
+                        for (i = 0; i < BLUEPRINTS_MAX; i++)
+                        {
+                                if (!strcmp( arg1, blueprint_list[i].blueprint_name))
+                                {
+                                        unit = blueprint_list[i].blueprint_damage[2];
+                                        break;
+                                }
+                        }
+
+                        if ( unit == OBJ_VNUM_ARRESTOR_UNIT 
+                                || unit == OBJ_VNUM_DRIVER_UNIT
+                                || unit == OBJ_VNUM_REFLECTOR_UNIT
+                                || unit == OBJ_VNUM_SHIELD_UNIT)
+                        {
+                                OBJ_DATA *deployed;
+                                deployed = create_object( get_obj_index( unit ), 0 );
+                                obj_to_room(deployed, ch->in_room);
+                                act("Your turret deploys $p.", ch, deployed, NULL ,TO_CHAR);
+                                act("$n deploys $p from their turret.", ch, deployed, NULL, TO_ROOM);
+                                set_obj_owner(deployed, ch->name);
+                        }   
+                        else
+                        {   /* moght do a case here depending on type of module      */ 
+                                act("You trigger your $p.", ch, obj, NULL ,TO_CHAR);
+                                act("$n triggers $m $p.", ch, obj, NULL, TO_ROOM);
+                                damage(ch, victim, number_range(10, ch->level), glookup, FALSE);
+                        }
                 }
                 else
                 {
@@ -4530,7 +4547,6 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                         act("$n triggers $m $p, but nothing happens.", ch, obj, NULL, TO_ROOM);
                 }
         }
-
         return;
 }
 

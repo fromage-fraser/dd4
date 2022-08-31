@@ -245,7 +245,7 @@ struct blueprint_type
         char    *blueprint_desc;
         int     blueprint_ref;
         int     blueprint_ego;
-        int     blueprint_damage [2];
+        int     blueprint_damage [3];
         int     blueprint_cost [5];
         char    *skill_name;
 };
@@ -2033,9 +2033,9 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_TURRET_MODULE                      42
 #define ITEM_FORGE                              43
 #define ITEM_ARRESTOR_UNIT                      44
-#define ITEM_DRIVER_UNIT                      45
-#define ITEM_REFLECTOR_UNIT                      46
-#define ITEM_SHIELD_UNIT                      47
+#define ITEM_DRIVER_UNIT                        45
+#define ITEM_REFLECTOR_UNIT                     46
+#define ITEM_SHIELD_UNIT                        47
 
 
 /*
