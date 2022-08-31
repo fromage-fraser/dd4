@@ -7040,15 +7040,23 @@ different items, and augments. Using the CONSTRUCT skill without an
 argument will list known blueprints.
 ~
 
-1 'TITANIUM REAPER' 'STEEL BOARDSWORD'~
+1 'TITANIUM REAPER' 'STEEL BOARDSWORD' 'ADAMANITE KATANA' 'ELECTRUM SWORD' 'STARMETAL DUAL BLADE'~
 
-Syntax: construct steel broadsword
-Syntax: construct titanium Reaper
-Syntax: construct .....
+Syntax: construct 'steel broadsword'
+Syntax: construct 'titanium reaper'
+Syntax: construct 'adamantite katana'
+Syntax: construct 'electrum sword'
+Syntax: construct 'starmetal dual blade'
 
 These are primarily weapons that the SMITHY can CONSTRUCT. Each require
 different amounts of raw materials, which you can determine from
 typing construct with no arguments.
+
+Icons: Those that specialise in the Smithy Profession obtain icons for
+their weapons:
+adamantite katana:      <11>{}oo((X))ΞΞΞΞΞΞΞΞΞΞΞΞΞ><0
+electrum sword:         <7>@()xxx[:::":::":::":::":::=><0>
+starmetal dual blade:   <1>₪₪₪₪§|(Ξ≥≤≥≤≥≤ΞΞΞΞΞΞΞΞ><0>
 ~
 
 1 'WRENCH OF THE CROW' 'WINGS OF THE CROW' 'HUNTSMITHS'~
@@ -7138,6 +7146,21 @@ about an item.
 
 Simply look at the item to understand additional information.
 ~
+
+1 'DART MODULE' 'ARROW MODULE' 'BLADE MODULE' 'SHURIKEN MODULE' 'SPEAR MODULE'~
+
+Syntax: construct dart
+Syntax: construct arrow
+Syntax: construct 'blade module'
+Syntax: construct 'shuriken module'
+Syntax: construct 'spear module'
+
+This will contruct modules that you can equip into your turret.
+Each module will have different damage outputs, and capacity.
+
+You can see these by typing 'construct'
+~
+
 
 0 $~
 #$

@@ -171,6 +171,7 @@ typedef struct auction_data                     AUCTION_DATA;
 typedef struct game_data		        GAME_DATA;
 typedef struct coin_data                        COIN_DATA;
 typedef struct smelting_data                    SMELTING_DATA;
+typedef struct blueprint_data                   BLUEPRINT_DATA;
 /* typedef struct raw_mats_data                    RAW_MATERIAL_DATA; */
 
 /*
@@ -1941,6 +1942,11 @@ extern  WANTED_DATA *wanted_list_last;
 #define OBJ_VNUM_AD_SWORD1                   2727
 #define OBJ_VNUM_EL_SWORD1                   2728
 #define OBJ_VNUM_SM_SWORD1                   2729
+#define OBJ_VNUM_ARRESTOR_UNIT          2730
+#define OBJ_VNUM_DRIVER_UNIT          2731
+#define OBJ_VNUM_REFLECTOR_UNIT          2732
+#define OBJ_VNUM_SHIELD_UNIT          2733
+
 
 /* End SMithy Stuff */
 
@@ -2026,6 +2032,11 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_SPELLCRAFT                         41 /* Increase bonus to spellcrafting that takes place in ROOM_SPELLCRAFT */
 #define ITEM_TURRET_MODULE                      42
 #define ITEM_FORGE                              43
+#define ITEM_ARRESTOR_UNIT                      44
+#define ITEM_DRIVER_UNIT                      45
+#define ITEM_REFLECTOR_UNIT                      46
+#define ITEM_SHIELD_UNIT                      47
+
 
 /*
  * Extra flags.

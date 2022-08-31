@@ -4514,8 +4514,11 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                         }
                 }
 
-                if ( number_range(0,100) < ch->pcdata->learned[gsn_dart])
+                if ( number_range(0,100) < ch->pcdata->learned[gsn_trigger])
                 {
+                
+                switch (obj.)
+                    
                         /* moght do a case here depending on type of module      */
                         act("You trigger your $p.", ch, obj, NULL ,TO_CHAR);
                         act("$n triggers $m $p.", ch, obj, NULL, TO_ROOM);
