@@ -2845,7 +2845,13 @@ void gmcp_update( void )
 
 			for ( paf = d->character->affected; paf; paf = paf->next )
 			{
-				#ifndef COLOR_CODE_FIX
+		                if (paf->duration < 0)
+                                        continue;
+
+                                if (paf->deleted)
+                                        continue;
+
+                                #ifndef COLOR_CODE_FIX
 				if ( buf[0] == '\0' ) sprintf( buf, "[ { \"name\": \"%s\", \"duration\": \"%d\" }", skill_table[paf->type].name, paf->duration );
 				else
 				{
