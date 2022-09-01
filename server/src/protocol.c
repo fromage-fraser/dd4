@@ -3,13 +3,13 @@
 
  In case this is not legally possible:
 
- The copyright holder grants any entity the right to use this work for any 
+ The copyright holder grants any entity the right to use this work for any
  purpose, without any conditions, unless such conditions are required by law.
  ******************************************************************************/
 
 /******************************************************************************
- This snippet was originally designed to be codebase independent, but has been 
- modified slightly so that it runs out-of-the-box on Merc derivatives.  To use 
+ This snippet was originally designed to be codebase independent, but has been
+ modified slightly so that it runs out-of-the-box on Merc derivatives.  To use
  it for other codebases, just change the code in the "Diku/Merc" section below.
  ******************************************************************************/
 
@@ -38,7 +38,7 @@ static void Write( descriptor_t *apDescriptor, const char *apData )
 {
    if ( apDescriptor != NULL && !apDescriptor->fcommand )
    {
-      if ( apDescriptor->pProtocol->WriteOOB > 0 || 
+      if ( apDescriptor->pProtocol->WriteOOB > 0 ||
          apDescriptor->outtop == 0 )
       {
          apDescriptor->pProtocol->WriteOOB = 2;
@@ -60,10 +60,10 @@ static void InfoMessage( descriptor_t *apDescriptor, const char *apData )
 
 static void CompressStart( descriptor_t *apDescriptor )
 {
-   /* If your mud uses MCCP (Mud Client Compression Protocol), you need to 
-    * call whatever function normally starts compression from here - the 
+   /* If your mud uses MCCP (Mud Client Compression Protocol), you need to
+    * call whatever function normally starts compression from here - the
     * ReportBug() call should then be deleted.
-    * 
+    *
     * Otherwise you can just ignore this function.
     */
    ReportBug( "CompressStart() in protocol.c is being called, but it doesn't do anything!\n" );
@@ -71,10 +71,10 @@ static void CompressStart( descriptor_t *apDescriptor )
 
 static void CompressEnd( descriptor_t *apDescriptor )
 {
-   /* If your mud uses MCCP (Mud Client Compression Protocol), you need to 
-    * call whatever function normally starts compression from here - the 
+   /* If your mud uses MCCP (Mud Client Compression Protocol), you need to
+    * call whatever function normally starts compression from here - the
     * ReportBug() call should then be deleted.
-    * 
+    *
     * Otherwise you can just ignore this function.
     */
    ReportBug( "CompressEnd() in protocol.c is being called, but it doesn't do anything!\n" );
@@ -98,12 +98,12 @@ char *PullJSONString( int start, int end, const char *string );
  MSDP file-scope variables.
  ******************************************************************************/
 
-/* These are for the GUI_VARIABLES, my unofficial extension of MSDP.  They're 
- * intended for clients that wish to offer a generic GUI - not as nice as a 
+/* These are for the GUI_VARIABLES, my unofficial extension of MSDP.  They're
+ * intended for clients that wish to offer a generic GUI - not as nice as a
  * custom GUI, admittedly, but still better than a plain terminal window.
  *
- * These are per-player so that they can be customised for different characters 
- * (eg changing 'mana' to 'blood' for vampires).  You could even allow players 
+ * These are per-player so that they can be customised for different characters
+ * (eg changing 'mana' to 'blood' for vampires).  You could even allow players
  * to customise the buttons and gauges themselves if you wish.
  */
 static const char s_Button1[] = "\005\002Help\002help\006";
@@ -132,80 +132,80 @@ static const char s_Gauge5[]  = "\005\002Opponent\002darkred\002OPPONENT_HEALTH\
 #define STRING_WRITE_ONCE(x,y)     true,  true,  true,  false, -1, -1,  0, NULL
 #define STRING_GUI(x)              true,  false, false, true,  -1, -1,  0, x
 
-static variable_name_t VariableNameTable[eMSDP_MAX+1] = 
+static variable_name_t VariableNameTable[eMSDP_MAX+1] =
 {
    /* General */
-   { eMSDP_CHARACTER_NAME,   "CHARACTER_NAME",   STRING_READ_ONLY }, 
-   { eMSDP_SERVER_ID,        "SERVER_ID",        STRING_READ_ONLY }, 
-   { eMSDP_SERVER_TIME,      "SERVER_TIME",      NUMBER_READ_ONLY }, 
-   { eMSDP_SNIPPET_VERSION,  "SNIPPET_VERSION",  NUMBER_READ_ONLY_SET_TO(SNIPPET_VERSION) }, 
+   { eMSDP_CHARACTER_NAME,   "CHARACTER_NAME",   STRING_READ_ONLY },
+   { eMSDP_SERVER_ID,        "SERVER_ID",        STRING_READ_ONLY },
+   { eMSDP_SERVER_TIME,      "SERVER_TIME",      NUMBER_READ_ONLY },
+   { eMSDP_SNIPPET_VERSION,  "SNIPPET_VERSION",  NUMBER_READ_ONLY_SET_TO(SNIPPET_VERSION) },
 
    /* Character */
-   { eMSDP_AFFECTS,          "AFFECTS",          STRING_READ_ONLY }, 
-   { eMSDP_ALIGNMENT,        "ALIGNMENT",        NUMBER_READ_ONLY }, 
-   { eMSDP_EXPERIENCE,       "EXPERIENCE",       NUMBER_READ_ONLY }, 
-   { eMSDP_EXPERIENCE_MAX,   "EXPERIENCE_MAX",   NUMBER_READ_ONLY }, 
-   { eMSDP_EXPERIENCE_TNL,   "EXPERIENCE_TNL",   NUMBER_READ_ONLY }, 
-   { eMSDP_HEALTH,           "HEALTH",           NUMBER_READ_ONLY }, 
-   { eMSDP_HEALTH_MAX,       "HEALTH_MAX",       NUMBER_READ_ONLY }, 
-   { eMSDP_LEVEL,            "LEVEL",            NUMBER_READ_ONLY }, 
-   { eMSDP_RACE,             "RACE",             STRING_READ_ONLY }, 
-   { eMSDP_CLASS,            "CLASS",            STRING_READ_ONLY }, 
-   { eMSDP_MANA,             "MANA",             NUMBER_READ_ONLY }, 
-   { eMSDP_MANA_MAX,         "MANA_MAX",         NUMBER_READ_ONLY }, 
-   { eMSDP_WIMPY,            "WIMPY",            NUMBER_READ_ONLY }, 
-   { eMSDP_PRACTICE,         "PRACTICE",         NUMBER_READ_ONLY }, 
-   { eMSDP_MONEY,            "MONEY",            NUMBER_READ_ONLY }, 
-   { eMSDP_MOVEMENT,         "MOVEMENT",         NUMBER_READ_ONLY }, 
-   { eMSDP_MOVEMENT_MAX,     "MOVEMENT_MAX",     NUMBER_READ_ONLY }, 
-   { eMSDP_HITROLL,          "HITROLL",          NUMBER_READ_ONLY }, 
-   { eMSDP_DAMROLL,          "DAMROLL",          NUMBER_READ_ONLY }, 
-   { eMSDP_AC,               "AC",               NUMBER_READ_ONLY }, 
-   { eMSDP_STR,              "STR",              NUMBER_READ_ONLY }, 
-   { eMSDP_INT,              "INT",              NUMBER_READ_ONLY }, 
-   { eMSDP_WIS,              "WIS",              NUMBER_READ_ONLY }, 
-   { eMSDP_DEX,              "DEX",              NUMBER_READ_ONLY }, 
-   { eMSDP_CON,              "CON",              NUMBER_READ_ONLY }, 
-   { eMSDP_STR_PERM,         "STR_PERM",         NUMBER_READ_ONLY }, 
-   { eMSDP_INT_PERM,         "INT_PERM",         NUMBER_READ_ONLY }, 
-   { eMSDP_WIS_PERM,         "WIS_PERM",         NUMBER_READ_ONLY }, 
-   { eMSDP_DEX_PERM,         "DEX_PERM",         NUMBER_READ_ONLY }, 
-   { eMSDP_CON_PERM,         "CON_PERM",         NUMBER_READ_ONLY }, 
+   { eMSDP_AFFECTS,          "AFFECTS",          STRING_READ_ONLY },
+   { eMSDP_ALIGNMENT,        "ALIGNMENT",        NUMBER_READ_ONLY },
+   { eMSDP_EXPERIENCE,       "EXPERIENCE",       NUMBER_READ_ONLY },
+   { eMSDP_EXPERIENCE_MAX,   "EXPERIENCE_MAX",   NUMBER_READ_ONLY },
+   { eMSDP_EXPERIENCE_TNL,   "EXPERIENCE_TNL",   NUMBER_READ_ONLY },
+   { eMSDP_HEALTH,           "HEALTH",           NUMBER_READ_ONLY },
+   { eMSDP_HEALTH_MAX,       "HEALTH_MAX",       NUMBER_READ_ONLY },
+   { eMSDP_LEVEL,            "LEVEL",            NUMBER_READ_ONLY },
+   { eMSDP_RACE,             "RACE",             STRING_READ_ONLY },
+   { eMSDP_CLASS,            "CLASS",            STRING_READ_ONLY },
+   { eMSDP_MANA,             "MANA",             NUMBER_READ_ONLY },
+   { eMSDP_MANA_MAX,         "MANA_MAX",         NUMBER_READ_ONLY },
+   { eMSDP_WIMPY,            "WIMPY",            NUMBER_READ_ONLY },
+   { eMSDP_PRACTICE,         "PRACTICE",         NUMBER_READ_ONLY },
+   { eMSDP_MONEY,            "MONEY",            NUMBER_READ_ONLY },
+   { eMSDP_MOVEMENT,         "MOVEMENT",         NUMBER_READ_ONLY },
+   { eMSDP_MOVEMENT_MAX,     "MOVEMENT_MAX",     NUMBER_READ_ONLY },
+   { eMSDP_HITROLL,          "HITROLL",          NUMBER_READ_ONLY },
+   { eMSDP_DAMROLL,          "DAMROLL",          NUMBER_READ_ONLY },
+   { eMSDP_AC,               "AC",               NUMBER_READ_ONLY },
+   { eMSDP_STR,              "STR",              NUMBER_READ_ONLY },
+   { eMSDP_INT,              "INT",              NUMBER_READ_ONLY },
+   { eMSDP_WIS,              "WIS",              NUMBER_READ_ONLY },
+   { eMSDP_DEX,              "DEX",              NUMBER_READ_ONLY },
+   { eMSDP_CON,              "CON",              NUMBER_READ_ONLY },
+   { eMSDP_STR_PERM,         "STR_PERM",         NUMBER_READ_ONLY },
+   { eMSDP_INT_PERM,         "INT_PERM",         NUMBER_READ_ONLY },
+   { eMSDP_WIS_PERM,         "WIS_PERM",         NUMBER_READ_ONLY },
+   { eMSDP_DEX_PERM,         "DEX_PERM",         NUMBER_READ_ONLY },
+   { eMSDP_CON_PERM,         "CON_PERM",         NUMBER_READ_ONLY },
 
    /* Combat */
-   { eMSDP_OPPONENT_HEALTH,  "OPPONENT_HEALTH",  NUMBER_READ_ONLY }, 
-   { eMSDP_OPPONENT_HEALTH_MAX,"OPPONENT_HEALTH_MAX",NUMBER_READ_ONLY }, 
-   { eMSDP_OPPONENT_LEVEL,   "OPPONENT_LEVEL",   NUMBER_READ_ONLY }, 
-   { eMSDP_OPPONENT_NAME,    "OPPONENT_NAME",    STRING_READ_ONLY }, 
+   { eMSDP_OPPONENT_HEALTH,  "OPPONENT_HEALTH",  NUMBER_READ_ONLY },
+   { eMSDP_OPPONENT_HEALTH_MAX,"OPPONENT_HEALTH_MAX",NUMBER_READ_ONLY },
+   { eMSDP_OPPONENT_LEVEL,   "OPPONENT_LEVEL",   NUMBER_READ_ONLY },
+   { eMSDP_OPPONENT_NAME,    "OPPONENT_NAME",    STRING_READ_ONLY },
 
    /* World */
-   { eMSDP_AREA_NAME,        "AREA_NAME",        STRING_READ_ONLY }, 
-   { eMSDP_ROOM_EXITS,       "ROOM_EXITS",       STRING_READ_ONLY }, 
-   { eMSDP_ROOM_NAME,        "ROOM_NAME",        STRING_READ_ONLY }, 
-   { eMSDP_ROOM_VNUM,        "ROOM_VNUM",        NUMBER_READ_ONLY }, 
-   { eMSDP_WORLD_TIME,       "WORLD_TIME",       NUMBER_READ_ONLY }, 
+   { eMSDP_AREA_NAME,        "AREA_NAME",        STRING_READ_ONLY },
+   { eMSDP_ROOM_EXITS,       "ROOM_EXITS",       STRING_READ_ONLY },
+   { eMSDP_ROOM_NAME,        "ROOM_NAME",        STRING_READ_ONLY },
+   { eMSDP_ROOM_VNUM,        "ROOM_VNUM",        NUMBER_READ_ONLY },
+   { eMSDP_WORLD_TIME,       "WORLD_TIME",       NUMBER_READ_ONLY },
 
    /* Configurable variables */
-   { eMSDP_CLIENT_ID,        "CLIENT_ID",        STRING_WRITE_ONCE(1,40) }, 
-   { eMSDP_CLIENT_VERSION,   "CLIENT_VERSION",   STRING_WRITE_ONCE(1,40) }, 
-   { eMSDP_PLUGIN_ID,        "PLUGIN_ID",        STRING_WITH_LENGTH_OF(1,40) }, 
-   { eMSDP_ANSI_COLORS,      "ANSI_COLORS",      BOOLEAN_SET_TO(1) }, 
-   { eMSDP_XTERM_256_COLORS, "XTERM_256_COLORS", BOOLEAN_SET_TO(0) }, 
-   { eMSDP_UTF_8,            "UTF_8",            BOOLEAN_SET_TO(0) }, 
-   { eMSDP_SOUND,            "SOUND",            BOOLEAN_SET_TO(0) }, 
-   { eMSDP_MXP,              "MXP",              BOOLEAN_SET_TO(0) }, 
+   { eMSDP_CLIENT_ID,        "CLIENT_ID",        STRING_WRITE_ONCE(1,40) },
+   { eMSDP_CLIENT_VERSION,   "CLIENT_VERSION",   STRING_WRITE_ONCE(1,40) },
+   { eMSDP_PLUGIN_ID,        "PLUGIN_ID",        STRING_WITH_LENGTH_OF(1,40) },
+   { eMSDP_ANSI_COLORS,      "ANSI_COLORS",      BOOLEAN_SET_TO(1) },
+   { eMSDP_XTERM_256_COLORS, "XTERM_256_COLORS", BOOLEAN_SET_TO(0) },
+   { eMSDP_UTF_8,            "UTF_8",            BOOLEAN_SET_TO(0) },
+   { eMSDP_SOUND,            "SOUND",            BOOLEAN_SET_TO(0) },
+   { eMSDP_MXP,              "MXP",              BOOLEAN_SET_TO(0) },
 
    /* GUI variables */
-   { eMSDP_BUTTON_1,         "BUTTON_1",         STRING_GUI(s_Button1) }, 
-   { eMSDP_BUTTON_2,         "BUTTON_2",         STRING_GUI(s_Button2) }, 
-   { eMSDP_BUTTON_3,         "BUTTON_3",         STRING_GUI(s_Button3) }, 
-   { eMSDP_BUTTON_4,         "BUTTON_4",         STRING_GUI(s_Button4) }, 
-   { eMSDP_BUTTON_5,         "BUTTON_5",         STRING_GUI(s_Button5) }, 
-   { eMSDP_GAUGE_1,          "GAUGE_1",          STRING_GUI(s_Gauge1) }, 
-   { eMSDP_GAUGE_2,          "GAUGE_2",          STRING_GUI(s_Gauge2) }, 
-   { eMSDP_GAUGE_3,          "GAUGE_3",          STRING_GUI(s_Gauge3) }, 
-   { eMSDP_GAUGE_4,          "GAUGE_4",          STRING_GUI(s_Gauge4) }, 
-   { eMSDP_GAUGE_5,          "GAUGE_5",          STRING_GUI(s_Gauge5) }, 
+   { eMSDP_BUTTON_1,         "BUTTON_1",         STRING_GUI(s_Button1) },
+   { eMSDP_BUTTON_2,         "BUTTON_2",         STRING_GUI(s_Button2) },
+   { eMSDP_BUTTON_3,         "BUTTON_3",         STRING_GUI(s_Button3) },
+   { eMSDP_BUTTON_4,         "BUTTON_4",         STRING_GUI(s_Button4) },
+   { eMSDP_BUTTON_5,         "BUTTON_5",         STRING_GUI(s_Button5) },
+   { eMSDP_GAUGE_1,          "GAUGE_1",          STRING_GUI(s_Gauge1) },
+   { eMSDP_GAUGE_2,          "GAUGE_2",          STRING_GUI(s_Gauge2) },
+   { eMSDP_GAUGE_3,          "GAUGE_3",          STRING_GUI(s_Gauge3) },
+   { eMSDP_GAUGE_4,          "GAUGE_4",          STRING_GUI(s_Gauge4) },
+   { eMSDP_GAUGE_5,          "GAUGE_5",          STRING_GUI(s_Gauge5) },
 
    { eMSDP_MAX,              "", 0 } /* This must always be last. */
 };
@@ -436,7 +436,7 @@ void ProtocolInput( descriptor_t *apDescriptor, char *apData, int aSize, char *a
          else
            IacBuf[IacIndex++] = apData[Index];
       }
-      else if ( apData[Index] == (char)27 && apData[Index+1] == '[' && 
+      else if ( apData[Index] == (char)27 && apData[Index+1] == '[' &&
          isdigit(apData[Index+2]) && apData[Index+3] == 'z' )
       {
          char MXPBuffer [1024];
@@ -490,8 +490,8 @@ void ProtocolInput( descriptor_t *apDescriptor, char *apData, int aSize, char *a
             }
             else if ( MatchString( "ATLANTIS", pClientName ) )
             {
-               /* Atlantis 0.9.9.0 supports XTerm 256 colours, but it doesn't 
-                * yet have MXP.  However MXP is planned, so once it responds 
+               /* Atlantis 0.9.9.0 supports XTerm 256 colours, but it doesn't
+                * yet have MXP.  However MXP is planned, so once it responds
                 * to a <VERSION> tag we'll know we can use 256 colours.
                 */
                pProtocol->pVariables[eMSDP_XTERM_256_COLORS]->ValueInt = 1;
@@ -508,7 +508,7 @@ void ProtocolInput( descriptor_t *apDescriptor, char *apData, int aSize, char *a
          if ( strcmp(pProtocol->pMXPVersion, "Unknown") )
          {
             Write( apDescriptor, "\n" );
-            sprintf( MXPBuffer, "MXP version %s detected and enabled.\r\n", 
+            sprintf( MXPBuffer, "MXP version %s detected and enabled.\r\n",
                pProtocol->pMXPVersion );
             InfoMessage( apDescriptor, MXPBuffer );
          }
@@ -527,7 +527,7 @@ void ProtocolInput( descriptor_t *apDescriptor, char *apData, int aSize, char *a
                case (char)DO: /* Handshake. */
                case (char)DONT:
                case (char)WILL:
-               case (char)WONT: 
+               case (char)WONT:
                   PerformHandshake( apDescriptor, apData[Index+1], apData[Index+2] );
                   Index += 2;
                   break;
@@ -578,7 +578,7 @@ const char *ProtocolOutput( descriptor_t *apDescriptor, const char *apData, int 
    if ( pProtocol->bMSP || pProtocol->pVariables[eMSDP_SOUND]->ValueInt )
       bUseMSP = true;
 
-   for ( ; i < MAX_OUTPUT_BUFFER && apData[j] != '\0' && !bTerminate && 
+   for ( ; i < MAX_OUTPUT_BUFFER && apData[j] != '\0' && !bTerminate &&
       (*apLength <= 0 || j < *apLength); ++j )
    {
       if ( apData[j] == '\t' )
@@ -772,13 +772,13 @@ const char *ProtocolOutput( descriptor_t *apDescriptor, const char *apData, int 
 
                   if ( !bDone || !bValid )
                   {
-                     sprintf( BugString, "BUG: RGB %sground colour '%s' wasn't terminated with ']'.\n", 
+                     sprintf( BugString, "BUG: RGB %sground colour '%s' wasn't terminated with ']'.\n",
                         (tolower(Buffer[0]) == 'f') ? "fore" : "back", &Buffer[1] );
                      ReportBug( BugString );
                   }
                   else if ( !IsValidColour(Buffer) )
                   {
-                     sprintf( BugString, "BUG: RGB %sground colour '%s' invalid (each digit must be in the range 0-5).\n", 
+                     sprintf( BugString, "BUG: RGB %sground colour '%s' invalid (each digit must be in the range 0-5).\n",
                         (tolower(Buffer[0]) == 'f') ? "fore" : "back", &Buffer[1] );
                      ReportBug( BugString );
                   }
@@ -818,7 +818,7 @@ const char *ProtocolOutput( descriptor_t *apDescriptor, const char *apData, int 
                      sprintf( BugString, "BUG: Required MXP version '%s' too long.  Missing ']'?\n", Buffer );
                      ReportBug( BugString );
                   }
-                  else if ( !strcmp(pProtocol->pMXPVersion, "Unknown") || 
+                  else if ( !strcmp(pProtocol->pMXPVersion, "Unknown") ||
                      strcmp(pProtocol->pMXPVersion, Buffer) < 0 )
                   {
                      /* Their version of MXP isn't high enough */
@@ -1008,7 +1008,7 @@ const char *ProtocolOutput( descriptor_t *apDescriptor, const char *apData, int 
             Result[i++] = *pCopyFrom++;
          bUseMXP = false;
       }
-      else if ( bUseMSP && j > 0 && apData[j-1] == '!' && apData[j] == '!' && 
+      else if ( bUseMSP && j > 0 && apData[j-1] == '!' && apData[j] == '!' &&
          PrefixString("SOUND(", &apData[j+1]) )
       {
          /* Avoid accidental triggering of old-style MSP triggers */
@@ -1038,10 +1038,10 @@ const char *ProtocolOutput( descriptor_t *apDescriptor, const char *apData, int 
    return Result;
 }
 
-/* Some clients (such as GMud) don't properly handle negotiation, and simply 
- * display every printable character to the screen.  However TTYPE isn't a 
- * printable character, so we negotiate for it first, and only negotiate for 
- * other protocols if the client responds with IAC WILL TTYPE or IAC WONT 
+/* Some clients (such as GMud) don't properly handle negotiation, and simply
+ * display every printable character to the screen.  However TTYPE isn't a
+ * printable character, so we negotiate for it first, and only negotiate for
+ * other protocols if the client responds with IAC WILL TTYPE or IAC WONT
  * TTYPE.  Thanks go to Donky on MudBytes for the suggestion.
  */
 void ProtocolNegotiate( descriptor_t *apDescriptor )
@@ -1190,7 +1190,7 @@ void CopyoverSet( descriptor_t *apDescriptor, const char *apData )
       pProtocol->ScreenWidth = Width;
       pProtocol->ScreenHeight = Height;
 
-      /* If we're using MSDP or ATCP, we need to renegotiate it so that the 
+      /* If we're using MSDP or ATCP, we need to renegotiate it so that the
        * client can resend the list of variables it wants us to REPORT.
        *
        * Note that we only use ATCP if MSDP is not supported.
@@ -1267,30 +1267,30 @@ void MSDPSend( descriptor_t *apDescriptor, variable_t aMSDP )
       if ( VariableNameTable[aMSDP].bString )
       {
          /* Should really be replaced with a dynamic buffer */
-         int RequiredBuffer = strlen(VariableNameTable[aMSDP].pName) + 
+         int RequiredBuffer = strlen(VariableNameTable[aMSDP].pName) +
             strlen(pProtocol->pVariables[aMSDP]->pValueString) + 12;
 
          if ( RequiredBuffer >= MAX_VARIABLE_LENGTH )
          {
-            sprintf( MSDPBuffer, 
-               "MSDPSend: %s %d bytes (exceeds MAX_VARIABLE_LENGTH of %d).\n", 
-               VariableNameTable[aMSDP].pName, RequiredBuffer, 
+            sprintf( MSDPBuffer,
+               "MSDPSend: %s %d bytes (exceeds MAX_VARIABLE_LENGTH of %d).\n",
+               VariableNameTable[aMSDP].pName, RequiredBuffer,
                MAX_VARIABLE_LENGTH );
             ReportBug( MSDPBuffer );
             MSDPBuffer[0] = '\0';
          }
          else if ( pProtocol->bMSDP )
          {
-            sprintf( MSDPBuffer, "%c%c%c%c%s%c%s%c%c", 
-               IAC, SB, TELOPT_MSDP, MSDP_VAR, 
-               VariableNameTable[aMSDP].pName, MSDP_VAL, 
+            sprintf( MSDPBuffer, "%c%c%c%c%s%c%s%c%c",
+               IAC, SB, TELOPT_MSDP, MSDP_VAR,
+               VariableNameTable[aMSDP].pName, MSDP_VAL,
                pProtocol->pVariables[aMSDP]->pValueString, IAC, SE );
          }
          else if ( pProtocol->bATCP )
          {
-            sprintf( MSDPBuffer, "%c%c%cMSDP.%s %s%c%c", 
-               IAC, SB, TELOPT_ATCP, 
-               VariableNameTable[aMSDP].pName, 
+            sprintf( MSDPBuffer, "%c%c%cMSDP.%s %s%c%c",
+               IAC, SB, TELOPT_ATCP,
+               VariableNameTable[aMSDP].pName,
                pProtocol->pVariables[aMSDP]->pValueString, IAC, SE );
          }
       }
@@ -1298,16 +1298,16 @@ void MSDPSend( descriptor_t *apDescriptor, variable_t aMSDP )
       {
          if ( pProtocol->bMSDP )
          {
-            sprintf( MSDPBuffer, "%c%c%c%c%s%c%d%c%c", 
-               IAC, SB, TELOPT_MSDP, MSDP_VAR, 
-               VariableNameTable[aMSDP].pName, MSDP_VAL, 
+            sprintf( MSDPBuffer, "%c%c%c%c%s%c%d%c%c",
+               IAC, SB, TELOPT_MSDP, MSDP_VAR,
+               VariableNameTable[aMSDP].pName, MSDP_VAL,
                pProtocol->pVariables[aMSDP]->ValueInt, IAC, SE );
          }
          else if ( pProtocol->bATCP )
          {
-            sprintf( MSDPBuffer, "%c%c%cMSDP.%s %d%c%c", 
-               IAC, SB, TELOPT_ATCP, 
-               VariableNameTable[aMSDP].pName, 
+            sprintf( MSDPBuffer, "%c%c%cMSDP.%s %d%c%c",
+               IAC, SB, TELOPT_ATCP,
+               VariableNameTable[aMSDP].pName,
                pProtocol->pVariables[aMSDP]->ValueInt, IAC, SE );
          }
       }
@@ -1333,14 +1333,14 @@ void MSDPSendPair( descriptor_t *apDescriptor, const char *apVariable, const cha
       {
          if ( RequiredBuffer - strlen(apValue) < MAX_VARIABLE_LENGTH )
          {
-            sprintf( MSDPBuffer, 
-               "MSDPSendPair: %s %d bytes (exceeds MAX_VARIABLE_LENGTH of %d).\n", 
+            sprintf( MSDPBuffer,
+               "MSDPSendPair: %s %d bytes (exceeds MAX_VARIABLE_LENGTH of %d).\n",
                apVariable, RequiredBuffer, MAX_VARIABLE_LENGTH );
          }
          else /* The variable name itself is too long */
          {
-            sprintf( MSDPBuffer, 
-               "MSDPSendPair: Variable name has a length of %d bytes (exceeds MAX_VARIABLE_LENGTH of %d).\n", 
+            sprintf( MSDPBuffer,
+               "MSDPSendPair: Variable name has a length of %d bytes (exceeds MAX_VARIABLE_LENGTH of %d).\n",
                RequiredBuffer, MAX_VARIABLE_LENGTH );
          }
 
@@ -1349,13 +1349,13 @@ void MSDPSendPair( descriptor_t *apDescriptor, const char *apVariable, const cha
       }
       else if ( pProtocol->bMSDP )
       {
-         sprintf( MSDPBuffer, "%c%c%c%c%s%c%s%c%c", 
-            IAC, SB, TELOPT_MSDP, MSDP_VAR, apVariable, MSDP_VAL, 
+         sprintf( MSDPBuffer, "%c%c%c%c%s%c%s%c%c",
+            IAC, SB, TELOPT_MSDP, MSDP_VAR, apVariable, MSDP_VAL,
             apValue, IAC, SE );
       }
       else if ( pProtocol->bATCP )
       {
-         sprintf( MSDPBuffer, "%c%c%cMSDP.%s %s%c%c", 
+         sprintf( MSDPBuffer, "%c%c%cMSDP.%s %s%c%c",
             IAC, SB, TELOPT_ATCP, apVariable, apValue, IAC, SE );
       }
 
@@ -1380,14 +1380,14 @@ void MSDPSendList( descriptor_t *apDescriptor, const char *apVariable, const cha
       {
          if ( RequiredBuffer - strlen(apValue) < MAX_VARIABLE_LENGTH )
          {
-            sprintf( MSDPBuffer, 
-               "MSDPSendList: %s %d bytes (exceeds MAX_VARIABLE_LENGTH of %d).\n", 
+            sprintf( MSDPBuffer,
+               "MSDPSendList: %s %d bytes (exceeds MAX_VARIABLE_LENGTH of %d).\n",
                apVariable, RequiredBuffer, MAX_VARIABLE_LENGTH );
          }
          else /* The variable name itself is too long */
          {
-            sprintf( MSDPBuffer, 
-               "MSDPSendList: Variable name has a length of %d bytes (exceeds MAX_VARIABLE_LENGTH of %d).\n", 
+            sprintf( MSDPBuffer,
+               "MSDPSendList: Variable name has a length of %d bytes (exceeds MAX_VARIABLE_LENGTH of %d).\n",
                RequiredBuffer, MAX_VARIABLE_LENGTH );
          }
 
@@ -1397,8 +1397,8 @@ void MSDPSendList( descriptor_t *apDescriptor, const char *apVariable, const cha
       else if ( pProtocol->bMSDP )
       {
          int i; /* Loop counter */
-         sprintf( MSDPBuffer, "%c%c%c%c%s%c%c%c%s%c%c%c", 
-            IAC, SB, TELOPT_MSDP, MSDP_VAR, apVariable, MSDP_VAL, 
+         sprintf( MSDPBuffer, "%c%c%c%c%s%c%c%c%s%c%c%c",
+            IAC, SB, TELOPT_MSDP, MSDP_VAR, apVariable, MSDP_VAL,
             MSDP_ARRAY_OPEN, MSDP_VAL, apValue, MSDP_ARRAY_CLOSE, IAC, SE );
 
          /* Convert the spaces to MSDP_VAL */
@@ -1410,7 +1410,7 @@ void MSDPSendList( descriptor_t *apDescriptor, const char *apVariable, const cha
       }
       else if ( pProtocol->bATCP )
       {
-         sprintf( MSDPBuffer, "%c%c%cMSDP.%s %s%c%c", 
+         sprintf( MSDPBuffer, "%c%c%cMSDP.%s %s%c%c",
             IAC, SB, TELOPT_ATCP, apVariable, apValue, IAC, SE );
       }
 
@@ -1547,7 +1547,7 @@ const char *MXPCreateTag( descriptor_t *apDescriptor, const char *apTag )
 {
    protocol_t *pProtocol = apDescriptor ? apDescriptor->pProtocol : NULL;
 
-   if ( pProtocol != NULL && pProtocol->pVariables[eMSDP_MXP]->ValueInt && 
+   if ( pProtocol != NULL && pProtocol->pVariables[eMSDP_MXP]->ValueInt &&
       strlen(apTag) < 1000 )
    {
       static char MXPBuffer [1024];
@@ -1574,8 +1574,8 @@ void MXPSendTag( descriptor_t *apDescriptor, const char *apTag )
       }
       else if ( pProtocol->bRenegotiate )
       {
-         /* Tijer pointed out that when MUSHclient autoconnects, it fails 
-          * to complete the negotiation.  This workaround will attempt to 
+         /* Tijer pointed out that when MUSHclient autoconnects, it fails
+          * to complete the negotiation.  This workaround will attempt to
           * renegotiate after the character has connected.
           */
 
@@ -1748,7 +1748,7 @@ static void PerformHandshake( descriptor_t *apDescriptor, char aCmd, char aProto
                pProtocol->bNegotiated = true;
                Negotiate(apDescriptor);
 
-               /* We may need to renegotiate if they don't reply */            
+               /* We may need to renegotiate if they don't reply */
                pProtocol->bRenegotiate = true;
             }
          }
@@ -1759,14 +1759,14 @@ static void PerformHandshake( descriptor_t *apDescriptor, char aCmd, char aProto
 
             if ( !pProtocol->bNegotiated )
             {
-               /* Still negotiate, as this client obviously knows how to 
-                * correctly respond to negotiation attempts - but we don't 
+               /* Still negotiate, as this client obviously knows how to
+                * correctly respond to negotiation attempts - but we don't
                 * ask for TTYPE, as it doesn't support it.
                 */
                pProtocol->bNegotiated = true;
                Negotiate(apDescriptor);
 
-               /* We may need to renegotiate if they don't reply */            
+               /* We may need to renegotiate if they don't reply */
                pProtocol->bRenegotiate = true;
             }
          }
@@ -1965,11 +1965,11 @@ static void PerformHandshake( descriptor_t *apDescriptor, char aCmd, char aProto
 
             if ( !pProtocol->bMXP )
             {
-               /* The MXP standard doesn't actually specify whether you should 
-                * negotiate with IAC DO MXP or IAC WILL MXP.  As a result, some 
+               /* The MXP standard doesn't actually specify whether you should
+                * negotiate with IAC DO MXP or IAC WILL MXP.  As a result, some
                 * clients support one, some the other, and some support both.
-                * 
-                * Therefore we first try IAC DO MXP, and if the client replies 
+                *
+                * Therefore we first try IAC DO MXP, and if the client replies
                 * with WONT, we try again (here) with IAC WILL MXP.
                 */
                ConfirmNegotiation(apDescriptor, eNEGOTIATED_MXP2, true, true);
@@ -2113,34 +2113,34 @@ static void PerformSubnegotiation( descriptor_t *apDescriptor, char aCmd, char *
                free(pProtocol->pVariables[eMSDP_CLIENT_ID]->pValueString);
                pProtocol->pVariables[eMSDP_CLIENT_ID]->pValueString = AllocString(pClientName);
 
-               /* This is a bit nasty, but using cyclic TTYPE on windows telnet 
-                * causes it to lock up.  None of the clients we need to cycle 
-                * with send ANSI to start with anyway, so we shouldn't have any 
+               /* This is a bit nasty, but using cyclic TTYPE on windows telnet
+                * causes it to lock up.  None of the clients we need to cycle
+                * with send ANSI to start with anyway, so we shouldn't have any
                 * conflicts.
-                * 
-                * An alternative solution is to use escape sequences to check 
-                * for windows telnet prior to negotiation, and this also avoids 
-                * the player losing echo, but it has other issues.  Because the 
-                * escape codes are technically in-band, even though they'll be 
-                * stripped from the display, the newlines will still cause some 
-                * scrolling.  Therefore you need to either pause the session 
-                * for a few seconds before displaying the login screen, or wait 
+                *
+                * An alternative solution is to use escape sequences to check
+                * for windows telnet prior to negotiation, and this also avoids
+                * the player losing echo, but it has other issues.  Because the
+                * escape codes are technically in-band, even though they'll be
+                * stripped from the display, the newlines will still cause some
+                * scrolling.  Therefore you need to either pause the session
+                * for a few seconds before displaying the login screen, or wait
                 * until the player has entered their name before negotiating.
                 */
                if ( !strcmp(pClientName,"ANSI") )
                   bStopCyclicTTYPE = true;
             }
 
-            /* Cycle through the TTYPEs until we get the same result twice, or 
+            /* Cycle through the TTYPEs until we get the same result twice, or
              * find ourselves back at the start.
-             * 
-             * If the client follows RFC1091 properly then it will indicate the 
-             * end of the list by repeating the last response, and then return 
-             * to the top of the list.  If you're the trusting type, then feel 
+             *
+             * If the client follows RFC1091 properly then it will indicate the
+             * end of the list by repeating the last response, and then return
+             * to the top of the list.  If you're the trusting type, then feel
              * free to remove the second strcmp ;)
              */
-            if ( pProtocol->pLastTTYPE == NULL || 
-               (strcmp(pProtocol->pLastTTYPE, pClientName) && 
+            if ( pProtocol->pLastTTYPE == NULL ||
+               (strcmp(pProtocol->pLastTTYPE, pClientName) &&
                strcmp(pProtocol->pVariables[eMSDP_CLIENT_ID]->pValueString, pClientName)) )
             {
                char RequestTTYPE [] = { (char)IAC, (char)SB, TELOPT_TTYPE, SEND, (char)IAC, (char)SE, '\0' };
@@ -2153,7 +2153,7 @@ static void PerformSubnegotiation( descriptor_t *apDescriptor, char aCmd, char *
                /* Look for 256 colour support */
                if ( pStartPos != NULL && MatchString(pStartPos, "-256color") )
                {
-                  /* This is currently the only way to detect support for 256 
+                  /* This is currently the only way to detect support for 256
                    * colours in TinTin++, WinTin++ and BlowTorch.
                    */
                   pProtocol->pVariables[eMSDP_XTERM_256_COLORS]->ValueInt = 1;
@@ -2167,10 +2167,10 @@ static void PerformSubnegotiation( descriptor_t *apDescriptor, char aCmd, char *
 
             if ( PrefixString("Mudlet", pClientName) )
             {
-               /* Mudlet beta 15 and later supports 256 colours, but we can't 
-                * identify it from the mud - everything prior to 1.1 claims 
+               /* Mudlet beta 15 and later supports 256 colours, but we can't
+                * identify it from the mud - everything prior to 1.1 claims
                 * to be version 1.0, so we just don't know.
-                */ 
+                */
                pProtocol->b256Support = eSOMETIMES;
 
                if ( strlen(pClientName) > 7 )
@@ -2210,11 +2210,11 @@ static void PerformSubnegotiation( descriptor_t *apDescriptor, char aCmd, char *
                   pProtocol->pVariables[eMSDP_CLIENT_VERSION]->pValueString = AllocString(pClientName+9);
                }
             }
-            else if ( MatchString(pClientName, "MUSHCLIENT") || 
-               MatchString(pClientName, "CMUD") || 
-               MatchString(pClientName, "ATLANTIS") || 
-               MatchString(pClientName, "KILDCLIENT") || 
-               MatchString(pClientName, "TINTIN++") || 
+            else if ( MatchString(pClientName, "MUSHCLIENT") ||
+               MatchString(pClientName, "CMUD") ||
+               MatchString(pClientName, "ATLANTIS") ||
+               MatchString(pClientName, "KILDCLIENT") ||
+               MatchString(pClientName, "TINTIN++") ||
                MatchString(pClientName, "TINYFUGUE") )
             {
                /* We know that some versions of this client have support */
@@ -2246,8 +2246,8 @@ static void PerformSubnegotiation( descriptor_t *apDescriptor, char aCmd, char *
       case (char)TELOPT_CHARSET:
          if ( pProtocol->bCHARSET )
          {
-            /* Because we're only asking about UTF-8, we can just check the 
-             * first character.  If you ask for more than one CHARSET you'll 
+            /* Because we're only asking about UTF-8, we can just check the
+             * first character.  If you ask for more than one CHARSET you'll
              * need to read through the results to see which are accepted.
              *
              * Note that the user must also use a unicode font!
@@ -2434,7 +2434,7 @@ static void ExecuteMSDPPair( descriptor_t *apDescriptor, const char *apVariable,
       }
       else if ( MatchString(apVariable, "RESET") )
       {
-         if ( MatchString(apValue, "REPORTABLE_VARIABLES") || 
+         if ( MatchString(apValue, "REPORTABLE_VARIABLES") ||
             MatchString(apValue, "REPORTED_VARIABLES") )
          {
             int i; /* Loop counter */
@@ -2475,7 +2475,7 @@ static void ExecuteMSDPPair( descriptor_t *apDescriptor, const char *apVariable,
             MSDPSendList( apDescriptor, "LISTS", MSDPCommands );
          }
          /* Split this into two if some variables aren't REPORTABLE */
-         else if ( MatchString(apValue, "SENDABLE_VARIABLES") || 
+         else if ( MatchString(apValue, "SENDABLE_VARIABLES") ||
             MatchString(apValue, "REPORTABLE_VARIABLES") )
          {
             char MSDPCommands[MAX_OUTPUT_BUFFER] = { '\0' };
@@ -2568,14 +2568,14 @@ static void ExecuteMSDPPair( descriptor_t *apDescriptor, const char *apVariable,
                {
                   if ( VariableNameTable[i].bString )
                   {
-                     /* A write-once variable can only be set if the value 
-                      * is "Unknown".  This is for things like client name, 
-                      * where we don't really want the player overwriting a 
-                      * proper client name with junk - but on the other hand, 
-                      * its possible a client may choose to use MSDP to 
+                     /* A write-once variable can only be set if the value
+                      * is "Unknown".  This is for things like client name,
+                      * where we don't really want the player overwriting a
+                      * proper client name with junk - but on the other hand,
+                      * its possible a client may choose to use MSDP to
                       * identify itself.
                       */
-                     if ( !VariableNameTable[i].bWriteOnce || 
+                     if ( !VariableNameTable[i].bWriteOnce ||
                         !strcmp(apDescriptor->pProtocol->pVariables[i]->pValueString, "Unknown") )
                      {
                         /* Store the new value if it's valid */
@@ -2605,7 +2605,7 @@ static void ExecuteMSDPPair( descriptor_t *apDescriptor, const char *apVariable,
                      if ( *apValue != '\0' && IsNumber(apValue) )
                      {
                         int Value = atoi(apValue);
-                        if ( Value >= VariableNameTable[i].Min && 
+                        if ( Value >= VariableNameTable[i].Min &&
                            Value <= VariableNameTable[i].Max )
                         {
                            apDescriptor->pProtocol->pVariables[i]->ValueInt = Value;
@@ -2632,11 +2632,11 @@ static void ParseATCP( descriptor_t *apDescriptor, const char *apData )
    {
       switch ( *apData )
       {
-         case '@': 
+         case '@':
             pPos = pStart = Variable[0];
             apData++;
             break;
-         case ' ': 
+         case ' ':
             pPos = pStart = Variable[1];
             apData++;
             break;
@@ -2672,14 +2672,14 @@ static void SendATCP( descriptor_t *apDescriptor, const char *apVariable, const 
       {
          if ( RequiredBuffer - strlen(apValue) < MAX_VARIABLE_LENGTH )
          {
-            sprintf( ATCPBuffer, 
-               "SendATCP: %s %d bytes (exceeds MAX_VARIABLE_LENGTH of %d).\n", 
+            sprintf( ATCPBuffer,
+               "SendATCP: %s %d bytes (exceeds MAX_VARIABLE_LENGTH of %d).\n",
                apVariable, RequiredBuffer, MAX_VARIABLE_LENGTH );
          }
          else /* The variable name itself is too long */
          {
-            sprintf( ATCPBuffer, 
-               "SendATCP: Variable name has a length of %d bytes (exceeds MAX_VARIABLE_LENGTH of %d).\n", 
+            sprintf( ATCPBuffer,
+               "SendATCP: Variable name has a length of %d bytes (exceeds MAX_VARIABLE_LENGTH of %d).\n",
                RequiredBuffer, MAX_VARIABLE_LENGTH );
          }
 
@@ -2688,7 +2688,7 @@ static void SendATCP( descriptor_t *apDescriptor, const char *apVariable, const 
       }
       else if ( pProtocol->bATCP )
       {
-         sprintf( ATCPBuffer, "%c%c%c%s %s%c%c", 
+         sprintf( ATCPBuffer, "%c%c%c%s %s%c%c",
             IAC, SB, TELOPT_ATCP, apVariable, apValue, IAC, SE );
       }
 
@@ -2731,7 +2731,7 @@ static void SendMSSP( descriptor_t *apDescriptor )
     *
     * http://tintin.sourceforge.net/mssp/
     *
-    * It's important that you use the correct format and spelling for the MSSP 
+    * It's important that you use the correct format and spelling for the MSSP
     * variables, otherwise crawlers may reject the data as invalid.
     */
    static MSSP_t MSSPTable[] =
@@ -2739,7 +2739,7 @@ static void SendMSSP( descriptor_t *apDescriptor )
       /* Required */
       { "NAME",               MUD_NAME },   /* Change this in protocol.h */
       { "PLAYERS",            FUNCTION_CALL( GetMSSP_Players ) },
-      { "UPTIME" ,            FUNCTION_CALL( GetMSSP_Uptime ) }, 
+      { "UPTIME" ,            FUNCTION_CALL( GetMSSP_Uptime ) },
 
       /* Generic */
       { "CRAWL DELAY",        "-1" },
@@ -2851,8 +2851,8 @@ static void SendMSSP( descriptor_t *apDescriptor )
       int SizePair;
 
       /* Retrieve the next MSSP variable/value pair */
-      sprintf( MSSPPair, "%c%s%c%s", MSSP_VAR, MSSPTable[i].pName, MSSP_VAL, 
-         MSSPTable[i].pFunction ? (*MSSPTable[i].pFunction)() : 
+      sprintf( MSSPPair, "%c%s%c%s", MSSP_VAR, MSSPTable[i].pName, MSSP_VAL,
+         MSSPTable[i].pFunction ? (*MSSPTable[i].pFunction)() :
          MSSPTable[i].pValue );
 
       /* Make sure we don't overflow the buffer */
@@ -2943,7 +2943,7 @@ static const char *GetRGBColour( bool_t abBackground, int aRed, int aGreen, int 
 {
    static char Result[16];
    int ColVal = 16 + (aRed * 36) + (aGreen * 6) + aBlue;
-   sprintf( Result, "\033[%c8;5;%c%c%cm", 
+   sprintf( Result, "\033[%c8;5;%c%c%cm",
       '3'+abBackground,      /* Background */
       '0'+(ColVal/100),      /* Red        */
       '0'+((ColVal%100)/10), /* Green      */
@@ -3021,14 +3021,13 @@ const char iac_se[] = { IAC, SE, '\0' };
 
 const struct gmcp_receive_struct GMCPReceiveTable[GMCP_RECEIVE_MAX+1] =
 {
-	{ GMCP_CORE_HELLO,					"Core.Hello"						},
-	{ GMCP_CORE_SUPPORTS_SET,			"Core.Supports.Set"					},
-	{ GMCP_CORE_SUPPORTS_ADD,			"Core.Supports.Add"					},
+	{ GMCP_CORE_HELLO,			"Core.Hello"					},
+	{ GMCP_CORE_SUPPORTS_SET,		"Core.Supports.Set"				},
+	{ GMCP_CORE_SUPPORTS_ADD,		"Core.Supports.Add"				},
 	{ GMCP_CORE_SUPPORTS_REMOVE,		"Core.Supports.Remove"				},
 	{ GMCP_EXTERNAL_DISCORD_HELLO,		"External.Discord.Hello"			},
 	{ GMCP_EXTERNAL_DISCORD_GET,		"External.Discord.Get"				},
-
-	{ GMCP_RECEIVE_MAX,					"",									}
+	{ GMCP_RECEIVE_MAX,			"",						}
 };
 
 const struct gmcp_package_struct GMCPPackageTable[GMCP_PACKAGE_MAX+1] =
@@ -3036,7 +3035,7 @@ const struct gmcp_package_struct GMCPPackageTable[GMCP_PACKAGE_MAX+1] =
 	{ GMCP_BASE,					GMCP_SUPPORT_CHAR,			"Char",			"Base"		},
 	{ GMCP_VITALS,					GMCP_SUPPORT_CHAR,			"Char",			"Vitals"	},
 	{ GMCP_STATS,					GMCP_SUPPORT_CHAR,			"Char",			"Stats"		},
-	{ GMCP_AC,						GMCP_SUPPORT_CHAR,			"Char",			"AC"		},
+	{ GMCP_AC,					GMCP_SUPPORT_CHAR,			"Char",			"AC"		},
 	{ GMCP_WORTH,					GMCP_SUPPORT_CHAR,			"Char",			"Worth"		},
 	{ GMCP_AFFECTED,				GMCP_SUPPORT_CHAR,			"Char",			"Affect"	},
 	{ GMCP_ENEMIES,					GMCP_SUPPORT_CHAR,			"Char",			"Enemies"	},
@@ -3055,56 +3054,56 @@ const struct gmcp_support_struct bGMCPSupportTable[GMCP_SUPPORT_MAX+1] =
 
 const struct gmcp_variable_struct GMCPVariableTable[GMCP_MAX+1] =
 {
-	{ GMCP_CLIENT,		-1,					"client",		GMCP_STRING	},
-	{ GMCP_VERSION,		-1,					"version",		GMCP_STRING	},
+	{ GMCP_CLIENT,		-1,			"client",		GMCP_STRING	},
+	{ GMCP_VERSION,		-1,			"version",		GMCP_STRING	},
 
-	{ GMCP_NAME,		GMCP_BASE,			"name",			GMCP_STRING	},
-	{ GMCP_RACE,		GMCP_BASE,			"race",			GMCP_STRING	},
-	{ GMCP_CLASS,		GMCP_BASE,			"class",		GMCP_STRING	},
+	{ GMCP_NAME,		GMCP_BASE,		"name",			GMCP_STRING	},
+	{ GMCP_RACE,		GMCP_BASE,		"race",			GMCP_STRING	},
+	{ GMCP_CLASS,		GMCP_BASE,		"class",		GMCP_STRING	},
 
-	{ GMCP_HP,			GMCP_VITALS,		"hp",			GMCP_NUMBER	},
+	{ GMCP_HP,		GMCP_VITALS,		"hp",			GMCP_NUMBER	},
 	{ GMCP_MANA,		GMCP_VITALS,		"mana",			GMCP_NUMBER	},
 	{ GMCP_MOVE,		GMCP_VITALS,		"move",			GMCP_NUMBER	},
 	{ GMCP_MAX_HP,		GMCP_VITALS,		"maxhp",		GMCP_NUMBER	},
 	{ GMCP_MAX_MANA,	GMCP_VITALS,		"maxmana",		GMCP_NUMBER	},
 	{ GMCP_MAX_MOVE,	GMCP_VITALS,		"maxmove",		GMCP_NUMBER	},
 
-	{ GMCP_STR,			GMCP_STATS,			"str",			GMCP_NUMBER	},
-	{ GMCP_INT,			GMCP_STATS,			"int",			GMCP_NUMBER	},
-	{ GMCP_WIS,			GMCP_STATS,			"wis",			GMCP_NUMBER	},
-	{ GMCP_DEX,			GMCP_STATS,			"dex",			GMCP_NUMBER	},
-	{ GMCP_CON,			GMCP_STATS,			"con",			GMCP_NUMBER	},
-	{ GMCP_HITROLL,		GMCP_STATS,			"hitroll",		GMCP_NUMBER	},
-	{ GMCP_DAMROLL,		GMCP_STATS,			"damroll",		GMCP_NUMBER	},
-	{ GMCP_STR_PERM,	GMCP_STATS,			"permstr",		GMCP_NUMBER	},
-	{ GMCP_INT_PERM,	GMCP_STATS,			"permint",		GMCP_NUMBER	},
-	{ GMCP_WIS_PERM,	GMCP_STATS,			"permwis",		GMCP_NUMBER	},
-	{ GMCP_DEX_PERM,	GMCP_STATS,			"permdex",		GMCP_NUMBER	},
-	{ GMCP_CON_PERM,	GMCP_STATS,			"permcon",		GMCP_NUMBER	},
-	{ GMCP_WIMPY,		GMCP_STATS,			"wimpy",		GMCP_NUMBER	},
+	{ GMCP_STR,		GMCP_STATS,		"str",			GMCP_NUMBER	},
+	{ GMCP_INT,		GMCP_STATS,		"int",			GMCP_NUMBER	},
+	{ GMCP_WIS,		GMCP_STATS,		"wis",			GMCP_NUMBER	},
+	{ GMCP_DEX,		GMCP_STATS,		"dex",			GMCP_NUMBER	},
+	{ GMCP_CON,		GMCP_STATS,		"con",			GMCP_NUMBER	},
+	{ GMCP_HITROLL,		GMCP_STATS,		"hitroll",		GMCP_NUMBER	},
+	{ GMCP_DAMROLL,		GMCP_STATS,		"damroll",		GMCP_NUMBER	},
+	{ GMCP_STR_PERM,	GMCP_STATS,		"permstr",		GMCP_NUMBER	},
+	{ GMCP_INT_PERM,	GMCP_STATS,		"permint",		GMCP_NUMBER	},
+	{ GMCP_WIS_PERM,	GMCP_STATS,		"permwis",		GMCP_NUMBER	},
+	{ GMCP_DEX_PERM,	GMCP_STATS,		"permdex",		GMCP_NUMBER	},
+	{ GMCP_CON_PERM,	GMCP_STATS,		"permcon",		GMCP_NUMBER	},
+	{ GMCP_WIMPY,		GMCP_STATS,		"wimpy",		GMCP_NUMBER	},
 
-	{ GMCP_AC_PIERCE,	GMCP_AC,			"pierce",		GMCP_NUMBER	},
-	{ GMCP_AC_BASH,		GMCP_AC,			"bash",			GMCP_NUMBER	},
-	{ GMCP_AC_SLASH,	GMCP_AC,			"slash",		GMCP_NUMBER	},
-	{ GMCP_AC_EXOTIC,	GMCP_AC,			"exotic",		GMCP_NUMBER	},
+	{ GMCP_AC_PIERCE,	GMCP_AC,		"pierce",		GMCP_NUMBER	},
+	{ GMCP_AC_BASH,		GMCP_AC,		"bash",			GMCP_NUMBER	},
+	{ GMCP_AC_SLASH,	GMCP_AC,		"slash",		GMCP_NUMBER	},
+	{ GMCP_AC_EXOTIC,	GMCP_AC,		"exotic",		GMCP_NUMBER	},
 
-	{ GMCP_ALIGNMENT,	GMCP_WORTH,			"alignment",	GMCP_NUMBER	},
-	{ GMCP_XP,			GMCP_WORTH,			"xp",			GMCP_NUMBER	},
-	{ GMCP_XP_MAX,		GMCP_WORTH,			"maxxp",		GMCP_NUMBER	},
-	{ GMCP_XP_TNL,		GMCP_WORTH,			"xptnl",		GMCP_NUMBER	},
-	{ GMCP_PRACTICE,	GMCP_WORTH,			"practice",		GMCP_NUMBER	},
-	{ GMCP_MONEY,		GMCP_WORTH,			"money",		GMCP_NUMBER	},
+	{ GMCP_ALIGNMENT,	GMCP_WORTH,		"alignment",	        GMCP_NUMBER	},
+	{ GMCP_XP,		GMCP_WORTH,		"xp",			GMCP_NUMBER	},
+	{ GMCP_XP_MAX,		GMCP_WORTH,		"maxxp",		GMCP_NUMBER	},
+	{ GMCP_XP_TNL,		GMCP_WORTH,		"xptnl",		GMCP_NUMBER	},
+	{ GMCP_PRACTICE,	GMCP_WORTH,		"practice",		GMCP_NUMBER	},
+	{ GMCP_MONEY,		GMCP_WORTH,		"money",		GMCP_NUMBER	},
 
 	{ GMCP_ENEMY,		GMCP_ENEMIES,		NULL,			GMCP_ARRAY	},
 
 	{ GMCP_AFFECT,		GMCP_AFFECTED,		NULL,			GMCP_ARRAY	},
 
-	{ GMCP_AREA,		GMCP_ROOM,			"area",			GMCP_STRING	},
-	{ GMCP_ROOM_NAME,	GMCP_ROOM,			"name",			GMCP_STRING	},
-	{ GMCP_ROOM_EXITS,	GMCP_ROOM,			"exit",			GMCP_OBJECT	},
-	{ GMCP_ROOM_VNUM,	GMCP_ROOM,			"vnum",			GMCP_NUMBER	},
+	{ GMCP_AREA,		GMCP_ROOM,		"area",			GMCP_STRING	},
+	{ GMCP_ROOM_NAME,	GMCP_ROOM,		"name",			GMCP_STRING	},
+	{ GMCP_ROOM_EXITS,	GMCP_ROOM,		"exit",			GMCP_OBJECT	},
+	{ GMCP_ROOM_VNUM,	GMCP_ROOM,		"vnum",			GMCP_NUMBER	},
 
-	{ GMCP_MAX,			-1,					"",				GMCP_NUMBER	}
+	{ GMCP_MAX,			-1,		"",			GMCP_NUMBER	}
 };
 
 /******************************************************************************
@@ -3641,7 +3640,7 @@ void WriteGMCP( descriptor_t *apDescriptor, GMCP_PACKAGE package )
 
 	for ( i = 0; GMCPVariableTable[i].variable != GMCP_MAX; i++ )
 	{
-	
+
       if ( GMCPVariableTable[i].package != package )
 			continue;
 
@@ -3650,7 +3649,7 @@ void WriteGMCP( descriptor_t *apDescriptor, GMCP_PACKAGE package )
 			first++;
 			switch ( GMCPVariableTable[i].type )
 			{
-				case GMCP_STRING: 
+				case GMCP_STRING:
                sprintf( buf2, "\"%s\": \"%s\"", GMCPVariableTable[i].name, GMCPStrip( apDescriptor->pProtocol->GMCPVariable[i] ) );
                break;
 
