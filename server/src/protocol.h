@@ -380,30 +380,30 @@ typedef enum
 struct gmcp_receive_struct
 {
 	GMCP_RECEIVE		module;
-	char				*string;
+	char			*string;
 };
 
 struct gmcp_package_struct
 {
 	GMCP_PACKAGE		package;
 	GMCP_SUPPORT		support;
-	char				*module;
-	char				*message;
-	char				bSettable;
+	char			*module;
+	char			*message;
+	char			bSettable;
 };
 
 struct gmcp_support_struct
 {
 	GMCP_SUPPORT		module;
-	char				*name;
+	char			*name;
 };
 
 struct gmcp_variable_struct
 {
 	GMCP_VARIABLE		variable;
 	GMCP_PACKAGE		package;
-	char				*name;
-	GMCP_TYPE			type;
+	char			*name;
+	GMCP_TYPE		type;
 };
 /*************** END GMCP ***************/
 
