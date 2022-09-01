@@ -291,7 +291,7 @@ arrestor module~
 arrestor module~
 A modular arrestor component for an Engineers turret.~
 ~
-8 0 1
+48 0 1
 0~ 0~ 10~ 10~
 3 0 0
 #2724
@@ -299,7 +299,7 @@ driver module~
 driver module~
 A modular driver component for an Engineers turret.~
 ~
-8 0 1
+42 0 1
 0~ 0~ 6~ 6~
 3 0 0
 #2725
@@ -307,15 +307,15 @@ reflector module~
 reflector module~
 A modular arrestor component for an Engineers turret.~
 ~
-8 0 1
+48 0 1
 0~ 0~ 3~ 3~
 3 0 0
 #2726
-sheld module~
+shield module~
 shield module~
 A modular shield component for an Engineers turret.~
 ~
-8 0 1
+48 0 1
 0~ 0~ 3~ 3~
 3 0 0
 #2727

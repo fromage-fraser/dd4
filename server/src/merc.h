@@ -2036,6 +2036,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_DRIVER_UNIT                        45
 #define ITEM_REFLECTOR_UNIT                     46
 #define ITEM_SHIELD_UNIT                        47
+#define ITEM_DEFENSIVE_TURRET_MODULE            48
+
 
 
 /*

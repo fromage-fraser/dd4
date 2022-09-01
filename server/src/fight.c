@@ -48,6 +48,8 @@ void    make_corpse          args((CHAR_DATA *ch));
 void    disarm               args((CHAR_DATA *ch, CHAR_DATA *victim));
 void    trip                 args((CHAR_DATA *ch, CHAR_DATA *victim));
 void    use_magical_item     args((CHAR_DATA *ch));
+bool    check_arrestor_unit  args((CHAR_DATA *ch, CHAR_DATA *victim, int dt));
+bool    check_shield_unit    args((CHAR_DATA *ch, CHAR_DATA *victim, int dt));
 
 
 /*
@@ -1015,7 +1017,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
         if (victim->position == POS_DEAD)
                 return;
         
-        /* Engineer Turret stuff! */
+        /* Engineer Turret stuff! 
         for (turret_unit = ch->in_room->contents; turret_unit; turret_unit = turret_unit->next_content)
         {
                 if (turret_unit->item_type == ITEM_ARRESTOR_UNIT)
@@ -1035,7 +1037,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 {
                         shield_unit = TRUE;
                 }
-        }
+        } */
 
 
 
@@ -1211,6 +1213,14 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
 
                         if (dam && !no_defense)
                         {
+                                /* Engineerts turrent deployable units come before any character defense */
+
+                                if (check_arrestor_unit(ch, victim, dt))
+                                        return;
+                                
+                                if (check_shield_unit(ch, victim, dt))
+                                        return;
+                                
                                 if (check_shield_block(ch, victim))
                                         return;
 
@@ -1842,6 +1852,68 @@ bool check_shield_block (CHAR_DATA *ch, CHAR_DATA *victim)
         return TRUE;
 }
 
+/*
+ * Check for arrestor unit
+ */
+bool check_arrestor_unit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
+{
+        OBJ_DATA *turret_unit;
+        bool arrestor_unit = FALSE;
+
+        for (turret_unit = ch->in_room->contents; turret_unit; turret_unit = turret_unit->next_content)
+        {
+                if (turret_unit->item_type == ITEM_ARRESTOR_UNIT)
+                {
+                        arrestor_unit = TRUE;
+                        if (IS_SPELL(dt) && arrestor_unit)
+                        {
+                                if(!IS_NPC(victim) && !victim->gag)
+                                        act ("<51>$N's spell is grounded by your $p.<0>",  ch, turret_unit, victim, TO_VICT);
+                                if (!IS_NPC(ch) && !ch->gag)
+                                        act ("<87>$N's spell is grounded by the $p.<0>", ch, turret_unit, victim, TO_CHAR);
+                                return TRUE;
+                                obj_from_room(turret_unit);
+                        }
+                }
+        }
+        return FALSE;       
+}
+
+bool check_shield_unit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
+{
+        OBJ_DATA *turret_unit;
+        bool shield_unit;
+        shield_unit = FALSE;
+
+        for (turret_unit = ch->in_room->contents; turret_unit; turret_unit = turret_unit->next_content)
+        {
+                if (turret_unit->item_type == ITEM_SHIELD_UNIT)
+                {
+                        shield_unit = TRUE;
+                        if (!IS_SPELL(dt) && shield_unit)
+                        {
+                                if(!IS_NPC(victim) && !victim->gag)
+                                        act ("<51>$N's attack is blocked by your $p.<0>",  ch, turret_unit, victim, TO_VICT);
+                                if (!IS_NPC(ch) && !ch->gag)
+                                        act ("<87>$N's attack is blocked by the $p.<0>", ch, turret_unit, victim, TO_CHAR);
+                                
+                                if (--turret_unit->value[0] <= 0)
+                                {
+                                        act("Your $p shatters under the prolonged attack.", ch, turret_unit, NULL, TO_CHAR);
+                                        act("$n's $p shatters under the prolonged attack.", ch, turret_unit, NULL, TO_ROOM);
+                                        obj_from_room(turret_unit);
+
+                                }
+                                return TRUE;
+                        }
+                }
+        }
+        return FALSE;       
+}
+
+/*
+                else if (turret_unit->item_type == ITEM_REFLECTOR_UNIT)
+*/
 
 /*
  * Check for JasBlink enabled
