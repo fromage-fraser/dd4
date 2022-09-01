@@ -2724,8 +2724,8 @@ void gmcp_update( void )
 	for ( d = descriptor_list; d != NULL; d = d->next )
 	{
 		if ( d->character && d->connected == CON_PLAYING && !IS_NPC(d->character) )
-        {
-            char buf[MAX_STRING_LENGTH];
+                {
+                        char buf[MAX_STRING_LENGTH];
 			char buf2[MAX_STRING_LENGTH];
 			ROOM_INDEX_DATA *room = d->character->in_room;
 			CHAR_DATA *enemy = d->character->fighting;
@@ -2751,21 +2751,21 @@ void gmcp_update( void )
 			UpdateGMCPNumber( d, GMCP_DAMROLL, GET_DAMROLL( d->character ) );
 			UpdateGMCPNumber( d, GMCP_WIMPY, d->character->wimpy );
 
-		/*	UpdateGMCPNumber( d, GMCP_AC_PIERCE, GET_AC( d->character, AC_PIERCE ) );
-			UpdateGMCPNumber( d, GMCP_AC_BASH, GET_AC( d->character, AC_BASH ) );
-			UpdateGMCPNumber( d, GMCP_AC_SLASH, GET_AC( d->character, AC_SLASH ) );
-			UpdateGMCPNumber( d, GMCP_AC_EXOTIC, GET_AC( d->character, AC_EXOTIC ) );
-*/
+		        /*	UpdateGMCPNumber( d, GMCP_AC_PIERCE, GET_AC( d->character, AC_PIERCE ) );
+			        UpdateGMCPNumber( d, GMCP_AC_BASH, GET_AC( d->character, AC_BASH ) );
+			        UpdateGMCPNumber( d, GMCP_AC_SLASH, GET_AC( d->character, AC_SLASH ) );
+			        UpdateGMCPNumber( d, GMCP_AC_EXOTIC, GET_AC( d->character, AC_EXOTIC ) );
+                        */
 			UpdateGMCPNumber( d, GMCP_ALIGNMENT, d->character->alignment );
 			UpdateGMCPNumber( d, GMCP_XP, d->character->exp );
-			UpdateGMCPNumber( d, GMCP_XP_MAX, d->character->exp );
-			UpdateGMCPNumber( d, GMCP_XP_TNL, ( level_table[ d->character->level].exp_total)-d->character->exp );
+			UpdateGMCPNumber( d, GMCP_XP_MAX, (level_table[ d->character->level].exp_total) );
+			UpdateGMCPNumber( d, GMCP_XP_TNL, ( level_table[ d->character->level].exp_total) - d->character->exp );
 			UpdateGMCPNumber( d, GMCP_PRACTICE, d->character->pcdata->str_prac );
 			UpdateGMCPNumber( d, GMCP_MONEY, d->character->gold );
 
 			sprintf( buf, "%d", room->vnum );
 
-		/*	if ( room && strcmp( buf, d->pProtocol->GMCPVariable[GMCP_ROOM_VNUM] ) )
+		        /*	if ( room && strcmp( buf, d->pProtocol->GMCPVariable[GMCP_ROOM_VNUM] ) )
 			{
 				static const char *exit[] = { "n", "e", "s", "w", "u", "d" };
 				int i;
@@ -2842,12 +2842,14 @@ void gmcp_update( void )
 
 			buf[0] = '\0';
 			buf2[0] = '\0';
-
 			for ( paf = d->character->affected; paf; paf = paf->next )
 			{
 				#ifndef COLOR_CODE_FIX
-				if ( buf[0] == '\0' ) sprintf( buf, "[ { \"name\": \"%s\", \"duration\": \"%d\" }", skill_table[paf->type].name, paf->duration );
-				else
+				if ( buf[0] == '\0' )
+                                {
+                                        sprintf( buf, "[ { \"name\": \"%s\", \"duration\": \"%d\" }", skill_table[paf->type].name, paf->duration );
+                                }
+                                else
 				{
 					sprintf( buf2, ", { \"name\": \"%s\", \"duration\": \"%d\" }", skill_table[paf->type].name, paf->duration );
 					strcat( buf, buf2 );
@@ -2860,7 +2862,7 @@ void gmcp_update( void )
 					strcat( buf, buf2 );
 				}
 				#endif
-            }
+                        }
 
 			if ( buf[0] == '\0' )
 				sprintf( buf, "[]" );

@@ -304,8 +304,12 @@ void do_cast( CHAR_DATA *ch, char *argument )
                  mana = 25;
          }
 
-        if (ch->level >= LEVEL_IMMORTAL || IS_NPC(ch))
+        /*if (ch->level >= LEVEL_IMMORTAL || IS_NPC(ch))*/
+        if (IS_NPC(ch))
                 mana = 0;
+
+        if (ch->level >= LEVEL_IMMORTAL)
+                mana = 1;
 
         /*
          * Locate targets.
@@ -460,7 +464,8 @@ void do_cast( CHAR_DATA *ch, char *argument )
                 break;
         }
 
-        if ( ch->mana < mana )
+        if ( ch->mana < mana
+        && ch->level < LEVEL_IMMORTAL)
         {
                 send_to_char( "You don't have enough mana.\n\r", ch );
                 return;
@@ -495,6 +500,13 @@ void do_cast( CHAR_DATA *ch, char *argument )
                 int chance;
                 spell_attack_number = 1;
                 ch->mana -= mana;
+
+                if ( ch->level >= LEVEL_IMMORTAL
+                &&  ( ch->mana < 1 ) )
+                {
+                        ch->mana = 1;
+                }
+
                 (*skill_table[sn].spell_fun) (sn, URANGE(1, ch->level, MAX_LEVEL), ch, vo);
 
                 /*
@@ -521,7 +533,8 @@ void do_cast( CHAR_DATA *ch, char *argument )
                         if (IS_NPC(ch) || ch->pcdata->spell_attacks < 2)
                                 return;
 
-                        if (ch->mana < mana)
+                        if (ch->mana < mana
+                        && ch->level < LEVEL_IMMORTAL)
                         {
                                 send_to_char ("You don't have enough mana for a second cast.\n\r", ch);
                                 return;
@@ -538,6 +551,13 @@ void do_cast( CHAR_DATA *ch, char *argument )
                                 return;
 
                         ch->mana -= mana;
+
+                        if ( ch->level >= LEVEL_IMMORTAL
+                        &&  ( ch->mana < 1 ) )
+                        {
+                                ch->mana = 1;
+                        }
+
                         spell_attack_number = 2;
 
                         (*skill_table[sn].spell_fun)
@@ -556,7 +576,8 @@ void do_cast( CHAR_DATA *ch, char *argument )
                         if (ch->pcdata->spell_attacks < 3)
                                 return;
 
-                        if (ch->mana < mana)
+                        if (ch->mana < mana
+                        && ch->level < LEVEL_IMMORTAL)
                         {
                                 send_to_char ("You don't have enough mana for a third cast.\n\r", ch);
                                 return;
@@ -573,6 +594,13 @@ void do_cast( CHAR_DATA *ch, char *argument )
                                 return;
 
                         ch->mana -= mana;
+
+                        if ( ch->level >= LEVEL_IMMORTAL
+                        &&  ( ch->mana < 1 ) )
+                        {
+                                ch->mana = 1;
+                        }
+
                         spell_attack_number = 3;
 
                         (*skill_table[sn].spell_fun)
@@ -591,7 +619,8 @@ void do_cast( CHAR_DATA *ch, char *argument )
                         if (ch->pcdata->spell_attacks < 4)
                                 return;
 
-                        if (ch->mana < mana)
+                        if (ch->mana < mana
+                        && ch->level < LEVEL_IMMORTAL)
                         {
                                 send_to_char ("You don't have enough mana for a fourth cast.\n\r", ch);
                                 return;
@@ -608,6 +637,13 @@ void do_cast( CHAR_DATA *ch, char *argument )
                                 return;
 
                         ch->mana -= mana;
+
+                        if ( ch->level >= LEVEL_IMMORTAL
+                        &&  ( ch->mana < 1 ) )
+                        {
+                                ch->mana = 1;
+                        }
+
                         spell_attack_number = 4;
 
                         (*skill_table[sn].spell_fun)
