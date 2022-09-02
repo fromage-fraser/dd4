@@ -4406,13 +4406,12 @@ void do_trigger (CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
         OBJ_DATA *turret;
-        OBJ_DATA *obj;
         OBJ_DATA *module;
-        OBJ_DATA *obj_next;
         char      arg1 [ MAX_INPUT_LENGTH ];
         char      arg2 [ MAX_INPUT_LENGTH ];
-        int        sn;
-        int        glookup;
+        int     glookup;
+        int     unit;
+        int     i;
 
         argument = one_argument(argument, arg1);
         argument = one_argument(argument, arg2);
@@ -4440,18 +4439,17 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        for (obj = ch->in_room->contents; obj; obj = obj->next_content)
+        for (turret = ch->in_room->contents; turret; turret = turret->next_content)
         {
-                if (IS_SET(obj->ego_flags, EGO_ITEM_TURRET))
-                        turret = obj;
+                if (IS_SET(turret->ego_flags, EGO_ITEM_TURRET))
+                        break;
         }
-
+        
         if (!turret)
         {
                 send_to_char("Your turret is not deployed!\n\r", ch);
                 return;
-        }
-
+        } 
 
         if (!(module = get_obj_list(ch, arg1, turret->contains )))
         {
@@ -4461,32 +4459,53 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         
         if (module->level > ch->level)
         {
-                act("$p is too high level for you.", ch, obj, NULL, TO_CHAR);
+                act("$p is too high level for you.", ch, module, NULL, TO_CHAR);
                 return;
         }
-                
-        if (module->item_type == ITEM_DEFENSIVE_TURRET_MODULE)
-        {
-                OBJ_DATA *deployed;
-                int i;
-                int unit = -1;
 
-                for (i = 0; i < BLUEPRINTS_MAX; i++)
+        /* find some module details */
+        for (i = 0; i < BLUEPRINTS_MAX; i++)
+        {
+                if (module->pIndexData->vnum == blueprint_list[i].blueprint_ref)
                 {
-                        if (!strcmp( arg1, blueprint_list[i].blueprint_name))
-                        {
-                                unit = blueprint_list[i].blueprint_damage[2];
-                                break;
-                        }
+                        glookup = skill_lookup(blueprint_list[i].skill_name);
+                        unit = blueprint_list[i].blueprint_damage[2];
+                        break;
                 }
+                glookup = -1;
+                unit = -1;
+        }
+
+  
+        /* Deploy a defenseive module unit */         
+
+
+        if ((module->item_type == ITEM_DEFENSIVE_TURRET_MODULE) 
+                && ( number_range(0,100) < ch->pcdata->learned[gsn_trigger])
+                && (unit > 1))
+        {
+                OBJ_DATA *deployed;  
 
                 deployed = create_object( get_obj_index( unit ), ch->level );
                 obj_to_room(deployed, ch->in_room);
                 act("Your turret deploys $p.", ch, deployed, NULL ,TO_CHAR);
                 act("$n deploys $p from their turret.", ch, deployed, NULL, TO_ROOM);
-                set_obj_owner(deployed, ch->name);   
+                set_obj_owner(deployed, ch->name); 
+                return;  
+        }
+        else if (unit <0)
+        {
+                send_to_char("BUG: cant lookup unit from mobule.\n\r", ch);
+                return;
+        }
+        else
+        {
+                act("The triggering mechanism fails for the $p. Nothing happens.", ch, turret, NULL ,TO_CHAR);
+                act("$n triggers $m $p, but nothing happens.", ch, turret, NULL, TO_ROOM);
+                return; 
         }
 
+        /* If you have an offensive module */
         if (arg2[0] == '\0')
         {
                 send_to_char ("Who would you trigger an attack on?\n\r", ch);
@@ -4509,66 +4528,32 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         if (is_safe(ch, victim))
                 return;
 
-        if (!IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE) )
+        if (!IS_SET(module->ego_flags, EGO_ITEM_TURRET_MODULE) )
         {
                 send_to_char("How did that get in there - it's not a turret module! (report bug).\n\r", ch);
                 return;
         }
 
-        for (obj = get_obj_list(ch, arg1, turret->contains ); obj; obj = obj_next)
+
+        
+        if (( number_range(0,100) < ch->pcdata->learned[gsn_trigger]) && (glookup > 1))
         {
-                obj_next = obj->next_content;
-                glookup = -1;
-                for ( sn = 0; sn < MAX_SKILL; sn++ )
-                {
-                        if (!str_cmp(skill_table[sn].name,arg1))
-                        {
-                                glookup = sn;
-                                break;
-                        }
-                }
 
-                if ( number_range(0,100) < ch->pcdata->learned[gsn_trigger])
-                {
-                   /*     int i;
-                        int unit = -1;
 
-                        for (i = 0; i < BLUEPRINTS_MAX; i++)
-                        {
-                                if (!strcmp( arg1, blueprint_list[i].blueprint_name))
-                                {
-                                        unit = blueprint_list[i].blueprint_damage[2];
-                                        break;
-                                }
-                        }
-
-                        if ( unit == OBJ_VNUM_ARRESTOR_UNIT 
-                                || unit == OBJ_VNUM_DRIVER_UNIT
-                                || unit == OBJ_VNUM_REFLECTOR_UNIT
-                                || unit == OBJ_VNUM_SHIELD_UNIT)
-                        {
-                                OBJ_DATA *deployed;
-                                deployed = create_object( get_obj_index( unit ), ch->level );
-                                obj_to_room(deployed, ch->in_room);
-                                act("Your turret deploys $p.", ch, deployed, NULL ,TO_CHAR);
-                                act("$n deploys $p from their turret.", ch, deployed, NULL, TO_ROOM);
-                                set_obj_owner(deployed, ch->name);
-                        }   
-                        else */
-                        {   /* moght do a case here depending on type of module      */ 
-                                act("You trigger your $p.", ch, obj, NULL ,TO_CHAR);
-                                act("$n triggers $m $p.", ch, obj, NULL, TO_ROOM);
-                                damage(ch, victim, number_range(10, ch->level), glookup, FALSE);
-                        }
+                {      /* moght do a case here depending on type of module      */ 
+                        act("You trigger your $p.", ch, turret, NULL ,TO_CHAR);
+                        act("$n triggers $m $p.", ch, turret, NULL, TO_ROOM);
+                        damage(ch, victim, number_range(10, ch->level), glookup, FALSE);
                 }
-                else
-                {
-                        act("The triggering mechanism collapses for the $p. Nothing happens.", ch, obj, NULL ,TO_CHAR);
-                        act("$n triggers $m $p, but nothing happens.", ch, obj, NULL, TO_ROOM);
-                }
+        }
+        else
+        {
+                act("The triggering mechanism fails for the $p. Nothing happens.", ch, turret, NULL ,TO_CHAR);
+                act("$n triggers $m $p, but nothing happens.", ch, turret, NULL, TO_ROOM);
         }
         return;
 }
+
 
 
 void do_classify( CHAR_DATA *ch, char *arg )

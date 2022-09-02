@@ -3228,7 +3228,8 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
             case ITEM_FORGE:
             case ITEM_ARRESTOR_UNIT:
             case ITEM_DRIVER_UNIT:
-            case ITEM_REFLECTOR_UNIT:      
+            case ITEM_REFLECTOR_UNIT: 
+            case ITEM_DEFENSIVE_TURRET_MODULE:     
                 break;
 
             case ITEM_TREASURE:

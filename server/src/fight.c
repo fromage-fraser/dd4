@@ -1858,57 +1858,58 @@ bool check_shield_block (CHAR_DATA *ch, CHAR_DATA *victim)
 bool check_arrestor_unit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 {
         OBJ_DATA *turret_unit;
-        bool arrestor_unit = FALSE;
-
+        
         for (turret_unit = ch->in_room->contents; turret_unit; turret_unit = turret_unit->next_content)
         {
                 if (turret_unit->item_type == ITEM_ARRESTOR_UNIT)
-                {
-                        arrestor_unit = TRUE;
-                        if (IS_SPELL(dt) && arrestor_unit)
-                        {
-                                if(!IS_NPC(victim) && !victim->gag)
-                                        act ("<51>$N's spell is grounded by your $p.<0>",  ch, turret_unit, victim, TO_VICT);
-                                if (!IS_NPC(ch) && !ch->gag)
-                                        act ("<87>$N's spell is grounded by the $p.<0>", ch, turret_unit, victim, TO_CHAR);
-                                return TRUE;
-                                obj_from_room(turret_unit);
-                        }
-                }
+                break;
         }
-        return FALSE;       
+
+        if (!turret_unit)
+                return FALSE;
+
+        if (IS_SPELL(dt) && (!IS_NPC(victim)))
+        {
+                if(!IS_NPC(victim) && !victim->gag)
+                        act ("<51>$n's spell is grounded by your $p, which is destroyed.<0>",  ch, turret_unit, victim, TO_VICT);
+                
+                if (!IS_NPC(ch) && !ch->gag)
+                        act ("<87>$N's spell is grounded by the $p.<0>", ch, turret_unit, victim, TO_CHAR);
+            
+                obj_from_room(turret_unit);
+                return TRUE;
+        }
+        return FALSE;           
 }
 
 bool check_shield_unit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 {
         OBJ_DATA *turret_unit;
-        bool shield_unit;
-        shield_unit = FALSE;
+                char            buf[MAX_STRING_LENGTH];
 
         for (turret_unit = ch->in_room->contents; turret_unit; turret_unit = turret_unit->next_content)
         {
                 if (turret_unit->item_type == ITEM_SHIELD_UNIT)
-                {
-                        shield_unit = TRUE;
-                        if (!IS_SPELL(dt) && shield_unit)
-                        {
-                                if(!IS_NPC(victim) && !victim->gag)
-                                        act ("<51>$N's attack is blocked by your $p.<0>",  ch, turret_unit, victim, TO_VICT);
-                                if (!IS_NPC(ch) && !ch->gag)
-                                        act ("<87>$N's attack is blocked by the $p.<0>", ch, turret_unit, victim, TO_CHAR);
-                                
-                                if (--turret_unit->value[0] <= 0)
-                                {
-                                        act("Your $p shatters under the prolonged attack.", ch, turret_unit, NULL, TO_CHAR);
-                                        act("$n's $p shatters under the prolonged attack.", ch, turret_unit, NULL, TO_ROOM);
-                                        obj_from_room(turret_unit);
-
-                                }
-                                return TRUE;
-                        }
-                }
+                break;
         }
-        return FALSE;       
+
+        if (!turret_unit)
+        return FALSE;
+
+        if (dt >= TYPE_HIT && (!IS_NPC(victim)))
+        {
+                if(!IS_NPC(victim) && !victim->gag)
+                        act ("<51>$n's attack is blocked by $p.<0>",  ch, turret_unit, victim, TO_VICT);
+                        act ("<87>Your attack is blocked by $p.<0>", ch, turret_unit, victim, TO_CHAR);
+                
+                if (--turret_unit->value[0] <= 0)
+                {
+                        act("Your $p <316><102><562>S H A T T E R S<563><0> under the prolonged attack.<0>", ch, turret_unit, victim, TO_VICT);
+                        obj_from_room(turret_unit);
+                }
+                return TRUE;
+        }
+        return FALSE;
 }
 
 /*
