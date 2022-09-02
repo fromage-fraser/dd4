@@ -2844,6 +2844,7 @@ void gmcp_update( void )
 			buf2[0] = '\0';
 			for ( paf = d->character->affected; paf; paf = paf->next )
 			{
+      
 				#ifndef COLOR_CODE_FIX
 				if ( buf[0] == '\0' )
                                 {
