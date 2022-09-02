@@ -2847,11 +2847,22 @@ void gmcp_update( void )
 				#ifndef COLOR_CODE_FIX
 				if ( buf[0] == '\0' )
                                 {
-                                        sprintf( buf, "[ { \"name\": \"%s\", \"duration\": \"%d\" }", skill_table[paf->type].name, paf->duration );
+                                        sprintf( buf, "[ { \"name\": \"%s\", \"gives\": \"%s\", \"modifies\": \"%s\", \"mod_amount\": \"%d\", \"duration\": \"%d\" }",
+                                                skill_table[paf->type].name,
+                                                affect_bit_name_nice( paf->bitvector ),
+                                                affect_loc_name( paf->location ),
+                                                paf->modifier,
+                                                paf->duration );
                                 }
                                 else
 				{
-					sprintf( buf2, ", { \"name\": \"%s\", \"duration\": \"%d\" }", skill_table[paf->type].name, paf->duration );
+					sprintf( buf2, ", { \"name\": \"%s\", \"gives\": \"%s\", \"modifies\": \"%s\", \"mod_amount\": \"%d\", \"duration\": \"%d\" }",
+                                                skill_table[paf->type].name,
+                                                affect_bit_name_nice( paf->bitvector ),
+                                                affect_loc_name( paf->location ),
+                                                paf->modifier,
+                                                paf->duration );
+
 					strcat( buf, buf2 );
 				}
 				#else
