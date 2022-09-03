@@ -4407,6 +4407,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         CHAR_DATA *victim;
         OBJ_DATA *turret;
         OBJ_DATA *module;
+        OBJ_DATA *turret_unit;
         char      arg1 [ MAX_INPUT_LENGTH ];
         char      arg2 [ MAX_INPUT_LENGTH ];
         int     glookup;
@@ -4451,107 +4452,241 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 return;
         } 
 
-        if (!(module = get_obj_list(ch, arg1, turret->contains )))
-        {
-                send_to_char("That module is not in your turret.\n\r", ch);
-                return;
-        }
-        
-        if (module->level > ch->level)
-        {
-                act("$p is too high level for you.", ch, module, NULL, TO_CHAR);
-                return;
-        }
 
-        /* find some module details */
-        for (i = 0; i < BLUEPRINTS_MAX; i++)
+        /* trigger 1 object in the turret' */
+        if (str_cmp(arg1, "all") && str_prefix("all.", arg1))
         {
-                if (module->pIndexData->vnum == blueprint_list[i].blueprint_ref)
+                if (!(module = get_obj_list(ch, arg1, turret->contains )) && (arg2[0] == '\0' ))
                 {
-                        glookup = skill_lookup(blueprint_list[i].skill_name);
-                        unit = blueprint_list[i].blueprint_damage[2];
-                        break;
+                        send_to_char("That module is not in your turret.\n\r", ch);
+                        return;
                 }
-                glookup = -1;
-                unit = -1;
-        }
+                
+                if (module->level > ch->level)
+                {
+                        act("$p is too high level for you.", ch, module, NULL, TO_CHAR);
+                        return;
+                }
 
-  
-        /* Deploy a defenseive module unit */         
+                /* find some module details - this is for the defensive modules that produce units */
+                for (i = 0; i < BLUEPRINTS_MAX; i++)
+                {
+                        if (module->pIndexData->vnum == blueprint_list[i].blueprint_ref)
+                        {
+                                glookup = skill_lookup(blueprint_list[i].skill_name);
+                                unit = blueprint_list[i].blueprint_damage[2];
+                                break;
+                        }
+                        glookup = -1;
+                        unit = -1;
+                }
+
+                /* check if a unit already exists */
+                for (turret_unit = ch->in_room->contents; turret_unit; turret_unit = turret_unit->next_content)
+                {
+                        if (turret_unit->pIndexData->vnum == unit)
+                        {
+                                send_to_char("That module unit already exists here.\n\r", ch);
+                                return;
+                        }
+                }
+
+                /* Deploy a defenseive module unit */         
+                if ((module->item_type == ITEM_DEFENSIVE_TURRET_MODULE) && (unit >= 1))
+                {
+                
+                        if ( number_range(0,100) < ch->pcdata->learned[gsn_trigger])
+                        {
+                                OBJ_DATA *deployed;  
+
+                                deployed = create_object( get_obj_index( unit ), ch->level );
+                                obj_to_room(deployed, ch->in_room);
+                                act("Your turret deploys $p.", ch, deployed, NULL ,TO_CHAR);
+                                act("$n deploys $p from their turret.", ch, deployed, NULL, TO_ROOM);
+                                set_obj_owner(deployed, ch->name); 
+                                return;  
+                        }
+                        else
+                        {
+                                act("The triggering mechanism fails for the $p. Nothing happens.", ch, turret, NULL ,TO_CHAR);
+                                act("$n triggers $m $p, but nothing happens.", ch, turret, NULL, TO_ROOM);
+                                return; 
+                        }
+                }
+                
+                if ((module->item_type == ITEM_DEFENSIVE_TURRET_MODULE) && (unit <= 0))
+                {
+                        send_to_char("BUG: cant lookup unit from module.\n\r", ch);
+                        return;
+                }
+
+                /* If you have an offensive module */
+                if (arg2[0] == '\0')
+                {
+                        send_to_char ("Who would you trigger an attack on?\n\r", ch);
+                        return;
+                }
+
+                if (!( victim = get_char_room( ch, arg2) ) )
+                {
+
+                        send_to_char ("They aren't here.\n\r", ch);
+                        return;
+                }
+
+                if (victim == ch)
+                {
+                        send_to_char("You cant target yourself.\n\r", ch);
+                        return;
+                }
+
+                if (is_safe(ch, victim))
+                        return;
+
+                if (!IS_SET(module->ego_flags, EGO_ITEM_TURRET_MODULE) )
+                {
+                        send_to_char("How did that get in there - it's not a turret module! (report bug).\n\r", ch);
+                        return;
+                }
+                
 
 
-        if ((module->item_type == ITEM_DEFENSIVE_TURRET_MODULE) 
-                && ( number_range(0,100) < ch->pcdata->learned[gsn_trigger])
-                && (unit > 1))
-        {
-                OBJ_DATA *deployed;  
-
-                deployed = create_object( get_obj_index( unit ), ch->level );
-                obj_to_room(deployed, ch->in_room);
-                act("Your turret deploys $p.", ch, deployed, NULL ,TO_CHAR);
-                act("$n deploys $p from their turret.", ch, deployed, NULL, TO_ROOM);
-                set_obj_owner(deployed, ch->name); 
-                return;  
-        }
-        else if (unit <0)
-        {
-                send_to_char("BUG: cant lookup unit from mobule.\n\r", ch);
-                return;
-        }
-        else
-        {
-                act("The triggering mechanism fails for the $p. Nothing happens.", ch, turret, NULL ,TO_CHAR);
-                act("$n triggers $m $p, but nothing happens.", ch, turret, NULL, TO_ROOM);
-                return; 
-        }
-
-        /* If you have an offensive module */
-        if (arg2[0] == '\0')
-        {
-                send_to_char ("Who would you trigger an attack on?\n\r", ch);
-                return;
-        }
-
-        if (!( victim = get_char_room( ch, arg2) ) )
-        {
-
-                send_to_char ("They aren't here.\n\r", ch);
-                return;
-        }
-
-        if (victim == ch)
-        {
-                send_to_char("You cant target yourself.\n\r", ch);
-                return;
-        }
-
-        if (is_safe(ch, victim))
-                return;
-
-        if (!IS_SET(module->ego_flags, EGO_ITEM_TURRET_MODULE) )
-        {
-                send_to_char("How did that get in there - it's not a turret module! (report bug).\n\r", ch);
-                return;
-        }
 
 
-        
-        if (( number_range(0,100) < ch->pcdata->learned[gsn_trigger]) && (glookup > 1))
-        {
 
-
-                {      /* moght do a case here depending on type of module      */ 
+                if (( number_percent() < ch->pcdata->learned[gsn_trigger]) && (glookup > 1))
+                {
+                        /* moght do a case here depending on type of module      */ 
                         act("You trigger your $p.", ch, turret, NULL ,TO_CHAR);
                         act("$n triggers $m $p.", ch, turret, NULL, TO_ROOM);
-                        damage(ch, victim, number_range(10, ch->level), glookup, FALSE);
+                        damage(ch, victim, number_range(module->value[0],module->value[1]), glookup, FALSE);        
                 }
+                else
+                {
+                        act("The triggering mechanism fails for the $p. Nothing happens.", ch, turret, NULL ,TO_CHAR);
+                        act("$n triggers $m $p, but nothing happens.", ch, turret, NULL, TO_ROOM);
+                }
+                return;
         }
         else
         {
-                act("The triggering mechanism fails for the $p. Nothing happens.", ch, turret, NULL ,TO_CHAR);
-                act("$n triggers $m $p, but nothing happens.", ch, turret, NULL, TO_ROOM);
-        }
-        return;
+                /* 'trigger ALL the modules ' or ' ALL.modules' */
+                OBJ_DATA *module_next;
+
+                for (module = turret->contains; module; module = module_next)
+                {
+                        module_next = module->next_content;
+
+                        if ((arg1[3] == '\0' || is_name(&arg1[4], module->name)))
+                        {
+                                if (!(module = get_obj_list(ch, arg1, turret->contains )) && (arg2[0] == '\0' ))
+                                {
+                                        send_to_char("That module is not in your turret.\n\r", ch);
+                                        return;
+                                }
+                                
+                                if (module->level > ch->level)
+                                {
+                                        act("$p is too high level for you.", ch, module, NULL, TO_CHAR);
+                                        return;
+                                }
+
+                                /* find some module details - this is for the defensive modules that produce units */
+                                for (i = 0; i < BLUEPRINTS_MAX; i++)
+                                {
+                                        if (module->pIndexData->vnum == blueprint_list[i].blueprint_ref)
+                                        {
+                                                glookup = skill_lookup(blueprint_list[i].skill_name);
+                                                unit = blueprint_list[i].blueprint_damage[2];
+                                                break;
+                                        }
+                                        glookup = -1;
+                                        unit = -1;
+                                }
+
+                                /* check if a unit already exists */
+                                for (turret_unit = ch->in_room->contents; turret_unit; turret_unit = turret_unit->next_content)
+                                {
+                                        if (turret_unit->pIndexData->vnum == unit)
+                                        {
+                                                send_to_char("That module unit already exists here.\n\r", ch);
+                                                return;
+                                        }
+                                }
+
+                                /* Deploy a defenseive module unit */         
+                                if ((module->item_type == ITEM_DEFENSIVE_TURRET_MODULE) && (unit >= 1))
+                                {
+                                
+                                        if ( number_range(0,100) < ch->pcdata->learned[gsn_trigger])
+                                        {
+                                                OBJ_DATA *deployed;  
+
+                                                deployed = create_object( get_obj_index( unit ), ch->level );
+                                                obj_to_room(deployed, ch->in_room);
+                                                act("Your turret deploys $p.", ch, deployed, NULL ,TO_CHAR);
+                                                act("$n deploys $p from their turret.", ch, deployed, NULL, TO_ROOM);
+                                                set_obj_owner(deployed, ch->name); 
+                                                return;  
+                                        }
+                                        else
+                                        {
+                                                act("The triggering mechanism fails for the $p. Nothing happens.", ch, turret, NULL ,TO_CHAR);
+                                                act("$n triggers $m $p, but nothing happens.", ch, turret, NULL, TO_ROOM);
+                                                return; 
+                                        }
+                                }
+                                
+                                if ((module->item_type == ITEM_DEFENSIVE_TURRET_MODULE) && (unit <= 0))
+                                {
+                                        send_to_char("BUG: cant lookup unit from module.\n\r", ch);
+                                        return;
+                                }
+
+                                /* If you have an offensive module */
+                                if (arg2[0] == '\0')
+                                {
+                                        send_to_char ("Who would you trigger an attack on?\n\r", ch);
+                                        return;
+                                }
+
+                                if (!( victim = get_char_room( ch, arg2) ) )
+                                {
+
+                                        send_to_char ("They aren't here.\n\r", ch);
+                                        return;
+                                }
+
+                                if (victim == ch)
+                                {
+                                        send_to_char("You cant target yourself.\n\r", ch);
+                                        return;
+                                }
+
+                                if (is_safe(ch, victim))
+                                        return;
+
+                                if (!IS_SET(module->ego_flags, EGO_ITEM_TURRET_MODULE) )
+                                {
+                                        send_to_char("How did that get in there - it's not a turret module! (report bug).\n\r", ch);
+                                        return;
+                                }
+
+                                if (( number_percent() < ch->pcdata->learned[gsn_trigger]) && (glookup > 1))
+                                {
+                                        /* moght do a case here depending on type of module      */ 
+                                        act("You trigger your $p.", ch, turret, NULL ,TO_CHAR);
+                                        act("$n triggers $m $p.", ch, turret, NULL, TO_ROOM);
+                                        damage(ch, victim, number_range(module->value[0],module->value[1]), glookup, FALSE);        
+                                }
+                                else
+                                {
+                                        act("The triggering mechanism fails for the $p. Nothing happens.", ch, turret, NULL ,TO_CHAR);
+                                        act("$n triggers $m $p, but nothing happens.", ch, turret, NULL, TO_ROOM);
+                                }
+                        }
+                }
+        }      
 }
 
 

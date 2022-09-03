@@ -271,11 +271,11 @@ A modular pellet component for an Engineers turret.~
 30~ 40~ 9~ 9~
 3 0 0
 #2721
-suriken module~
-suriken module~
+shuriken module~
+shuriken module~
 A modular shuriken component for an Engineers turret.~
 ~
-8 0 1
+42 0 1
 38~ 45~ 15~ 15~
 3 0 0
 #2722
@@ -283,7 +283,7 @@ spear module~
 spear module~
 A modular spear component for an Engineers turret.~
 ~
-8 0 1
+42 0 1
 80~ 100~ 4~ 4~
 3 0 0
 #2723
@@ -299,7 +299,7 @@ driver module~
 driver module~
 A modular driver component for an Engineers turret.~
 ~
-42 0 1
+48 0 1
 0~ 0~ 6~ 6~
 3 0 0
 #2725

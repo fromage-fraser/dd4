@@ -50,6 +50,7 @@ void    trip                 args((CHAR_DATA *ch, CHAR_DATA *victim));
 void    use_magical_item     args((CHAR_DATA *ch));
 bool    check_arrestor_unit  args((CHAR_DATA *ch, CHAR_DATA *victim, int dt));
 bool    check_shield_unit    args((CHAR_DATA *ch, CHAR_DATA *victim, int dt));
+bool    check_driver_unit    args((CHAR_DATA *ch, CHAR_DATA *victim));
 
 
 /*
@@ -1009,37 +1010,11 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
         int count;
         int no_defense = 0;
         OBJ_DATA *turret_unit;
-        bool found = FALSE;
-        bool arrestor_unit = FALSE;
-        bool reflector_unit = FALSE;
-        bool shield_unit = FALSE;
+        int reflected_dam = 0;
+        
 
         if (victim->position == POS_DEAD)
                 return;
-        
-        /* Engineer Turret stuff! 
-        for (turret_unit = ch->in_room->contents; turret_unit; turret_unit = turret_unit->next_content)
-        {
-                if (turret_unit->item_type == ITEM_ARRESTOR_UNIT)
-                {
-                        arrestor_unit = TRUE;
-                        if (IS_SPELL(dt) && arrestor_unit)
-                        {
-                                act ("The SPell is grouned by the Arrestor Unit!!!", ch, NULL, NULL, TO_CHAR); 
-                                obj_from_room(turret_unit);
-                        }
-                }
-                else if (turret_unit->item_type == ITEM_REFLECTOR_UNIT)
-                {
-                        reflector_unit = TRUE;
-                }
-                else if (turret_unit->item_type == ITEM_SHIELD_UNIT)
-                {
-                        shield_unit = TRUE;
-                }
-        } */
-
-
 
         /*
          *  Damage inflicted to other
@@ -1256,13 +1231,53 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
 
                                         if (check_aura_of_fear(ch,victim))
                                                 return;
+                                        
+                                        if (check_driver_unit(ch,victim))
+                                                return;
                                 }
                         }
                 }
         }
 
+        /* Reflector Unit (Smithy) */   
+        for (turret_unit = victim->in_room->contents; turret_unit; turret_unit = turret_unit->next_content)
+        {
+                if (turret_unit->item_type == ITEM_REFLECTOR_UNIT)
+                {
+                        if ((dam > 0) && ( dt < 1000 ) && (ch != victim) && (!IS_NPC(victim)))
+                        {
+                        reflected_dam = dam;
+                        dam = 0;
+                        }
+                }
+                break;
+        }
+
+      /*  if (!IS_NPC(victim))
+        {
+                char       buf [ MAX_STRING_LENGTH ];
+                sprintf(buf, "damage incoming %d for %d damage", dt, dam );
+                send_to_char(buf, victim);
+        }
+*/
         if (dt != TYPE_UNDEFINED)
                 dam_message(ch, victim, dam, dt, poison);
+
+        /* Reflector Unit (Smithy) */   
+        if ( (turret_unit) && (reflected_dam > 0) && (IS_SPELL(dt)) && (ch != victim) && (!IS_NPC(victim)))
+        {    
+                dam_message(victim, ch, reflected_dam, gsn_reflector_module, FALSE);
+                ch->hit -= reflected_dam;
+
+                if (IS_NPC(ch) && IS_SET(ch->act, ACT_UNKILLABLE) && ch->hit < 1)
+                        ch->hit = 1;
+
+                if (!IS_NPC(ch) && ch->level >= LEVEL_IMMORTAL && ch->hit < 1)
+                        ch->hit = 1;
+
+                act("Your $p <316><102><562>V A P O R I S E S<563><0> from the overload.<0>", ch, turret_unit, victim, TO_VICT);
+                obj_from_room(turret_unit); 
+        }
 
         /* Fireshield */
         if (IS_AFFECTED(victim, AFF_FLAMING)
@@ -1287,6 +1302,8 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 if (!IS_NPC(ch) && ch->level >= LEVEL_IMMORTAL && ch->hit < 1)
                         ch->hit = 1;
         }
+
+
 
         /* hurt the victim, and inform the victim of his new state */
         victim->hit -= dam;
@@ -1875,8 +1892,40 @@ bool check_arrestor_unit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 
                 if (!IS_NPC(ch) && !ch->gag)
                         act ("<87>$N's spell is grounded by the $p.<0>", ch, turret_unit, victim, TO_CHAR);
-            
+
+                act("Your $p <316><102><562>M E L T S<563><0> from the overload.<0>", ch, turret_unit, victim, TO_VICT);
                 obj_from_room(turret_unit);
+                return TRUE;
+        }
+        return FALSE;           
+}
+
+bool check_driver_unit (CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        OBJ_DATA *turret_unit;
+        
+        for (turret_unit = ch->in_room->contents; turret_unit; turret_unit = turret_unit->next_content)
+        {
+                if (turret_unit->item_type == ITEM_DRIVER_UNIT)
+                break;
+        }
+
+        if (!turret_unit)
+                return FALSE;
+
+        if ((!IS_NPC(victim)))
+        {
+                if(!IS_NPC(victim) && !victim->gag)
+                        act ("<51>Your $p pounds the ground, unbalancing $n.<0>",  ch, turret_unit, victim, TO_VICT);
+                
+                if (!IS_NPC(ch) && !ch->gag)
+                        act ("<87>$N's attacked is unbalanced by the $p.<0>", ch, turret_unit, victim, TO_CHAR);
+            
+                if (--turret_unit->value[0] <= 0)
+                {
+                        act("Your $p <316><102><562>C R U M P L E S<563><0> from the impacts.<0>", ch, turret_unit, victim, TO_VICT);
+                        obj_from_room(turret_unit);
+                }
                 return TRUE;
         }
         return FALSE;           
@@ -1885,7 +1934,6 @@ bool check_arrestor_unit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 bool check_shield_unit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 {
         OBJ_DATA *turret_unit;
-                char            buf[MAX_STRING_LENGTH];
 
         for (turret_unit = ch->in_room->contents; turret_unit; turret_unit = turret_unit->next_content)
         {
@@ -1896,7 +1944,7 @@ bool check_shield_unit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         if (!turret_unit)
         return FALSE;
 
-        if (dt >= TYPE_HIT && (!IS_NPC(victim)))
+        if ((number_percent() < 50) && (!IS_NPC(victim)))
         {
                 if(!IS_NPC(victim) && !victim->gag)
                         act ("<51>$n's attack is blocked by $p.<0>",  ch, turret_unit, victim, TO_VICT);
@@ -1911,10 +1959,6 @@ bool check_shield_unit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         }
         return FALSE;
 }
-
-/*
-                else if (turret_unit->item_type == ITEM_REFLECTOR_UNIT)
-*/
 
 /*
  * Check for JasBlink enabled

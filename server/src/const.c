@@ -311,9 +311,9 @@ const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
         { "astral plain",         "Astral plane of travel",             OBJ_VNUM_AS_SET4,       -1,                     { 0, 0, 0 },       { 50, 20, 2, 30, 8 },   "astral set" },
         { "astral transcendence", "Astral transcendence",               OBJ_VNUM_AS_SET5,       -1,                     { 0, 0, 0 },       { 70, 30, 5, 40, 10 },  "astral set" },
         { "steel cache",          "Smithys steel cache",               OBJ_VNUM_STEEL_CACHE,   -1,                     { 0, 0, 0 },       { 6, 0, 0, 0, 0 },      "steel cache" },
-        { "blade",                "a blade module",                    OBJ_VNUM_BLADE,         EGO_ITEM_TURRET_MODULE, { 30, 40, 0 },     { 10, 1, 1, 0, 0 },    "blade module" },
-        { "shuriken",             "a shuriken module",                 OBJ_VNUM_SHURIKEN,      EGO_ITEM_TURRET_MODULE, { 38, 45, 0 },     { 10, 10, 1, 1, 0 },    "shuriken module" },
-        { "spear",                "a spear module",                    OBJ_VNUM_SPEAR,         EGO_ITEM_TURRET_MODULE, { 80, 100, 0 },     { 10, 10, 1, 1, 1 },   "spear module" },
+        { "blade module",         "a blade module",                    OBJ_VNUM_BLADE,         EGO_ITEM_TURRET_MODULE, { 30, 40, 0 },     { 10, 1, 1, 0, 0 },    "blade module" },
+        { "shuriken module",      "a shuriken module",                 OBJ_VNUM_SHURIKEN,      EGO_ITEM_TURRET_MODULE, { 38, 45, 0 },     { 10, 10, 1, 1, 0 },    "shuriken module" },
+        { "spear module",         "a spear module",                    OBJ_VNUM_SPEAR,         EGO_ITEM_TURRET_MODULE, { 80, 100, 0 },     { 10, 10, 1, 1, 1 },   "spear module" },
         { "arrestor module",      "an arrestor module",                OBJ_VNUM_ARRESTOR,      EGO_ITEM_TURRET_MODULE, { 0, 0, OBJ_VNUM_ARRESTOR_UNIT },     { 10, 1, 0, 0, 0 },      "arrestor module" },
         { "driver module",        "a driver module",                   OBJ_VNUM_DRIVER,        EGO_ITEM_TURRET_MODULE, { 0, 0, OBJ_VNUM_DRIVER_UNIT },     { 10, 1, 0, 0, 0 },      "driver module" },
         { "reflector module",     "a reflector module",                OBJ_VNUM_REFLECTOR,     EGO_ITEM_TURRET_MODULE, { 0, 0, OBJ_VNUM_REFLECTOR_UNIT },     { 10, 1, 0, 0, 0 },      "reflector module" },
@@ -6177,7 +6177,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "reflector module", &gsn_reflector_module,
                 TYPE_STR, TAR_IGNORE, POS_FIGHTING,
                 spell_null, 0, 0,
-                "", "!DRiver Module!"
+                "reflected spell", "!DRiver Module!"
         },
 
         {
