@@ -2633,6 +2633,8 @@ char *item_type_name( OBJ_DATA *obj  )
             case ITEM_DRIVER_UNIT:      return "driver unit";
             case ITEM_REFLECTOR_UNIT:   return "reflector unit";
             case ITEM_SHIELD_UNIT:      return "shield unit";
+            case ITEM_TURRET:           return "turret";
+            case ITEM_DEFENSIVE_TURRET_MODULE: return "turret module";
         }
 
         for ( in_obj = obj; in_obj->in_obj; in_obj = in_obj->in_obj )
@@ -2748,6 +2750,8 @@ int item_name_type( char *name )
         if ( !str_cmp( name, "spellcrafting item"   ) ) return ITEM_SPELLCRAFT ;
         if ( !str_cmp( name, "turret module"        ) ) return ITEM_TURRET_MODULE;
         if ( !str_cmp( name, "forge"                ) ) return ITEM_FORGE;
+        if ( !str_cmp( name, "turret"               ) ) return ITEM_TURRET;
+        if ( !str_cmp( name, "turret module"        ) ) return ITEM_DEFENSIVE_TURRET_MODULE;
 
         return 0;
 

@@ -3230,6 +3230,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
             case ITEM_REFLECTOR_UNIT: 
             case ITEM_DEFENSIVE_TURRET_MODULE: 
             case ITEM_TURRET_MODULE:    
+            case ITEM_TURRET:
                 break;
 
             case ITEM_TREASURE:

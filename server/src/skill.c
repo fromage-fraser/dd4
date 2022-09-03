@@ -4579,12 +4579,15 @@ void do_trigger (CHAR_DATA *ch, char *argument)
 
                         if ((arg1[3] == '\0' || is_name(&arg1[4], module->name)))
                         {
-                                if (!(module = get_obj_list(ch, arg1, turret->contains )) && (arg2[0] == '\0' ))
+                                if (!(module = get_obj_list(ch, &arg1[4], turret->contains )))
                                 {
                                         send_to_char("That module is not in your turret.\n\r", ch);
                                         return;
                                 }
                                 
+                                if (module->item_type == ITEM_DEFENSIVE_TURRET_MODULE)
+                                        return;
+                
                                 if (module->level > ch->level)
                                 {
                                         act("$p is too high level for you.", ch, module, NULL, TO_CHAR);
@@ -4674,10 +4677,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
 
                                 if (( number_percent() < ch->pcdata->learned[gsn_trigger]) && (glookup > 1))
                                 {
-                                        /* moght do a case here depending on type of module      */ 
-                                        act("You trigger your $p.", ch, turret, NULL ,TO_CHAR);
-                                        act("$n triggers $m $p.", ch, turret, NULL, TO_ROOM);
-                                        damage(ch, victim, number_range(module->value[0],module->value[1]), glookup, FALSE);        
+                                        damage(ch, victim, number_range(module->value[0],module->value[1]), glookup, FALSE);      
                                 }
                                 else
                                 {

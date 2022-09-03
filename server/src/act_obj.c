@@ -310,6 +310,7 @@ void do_get (CHAR_DATA *ch, char *argument)
                         return;
 
                     case ITEM_CONTAINER:
+                    case ITEM_TURRET:
                     case ITEM_CORPSE_NPC:
                         break;
 
@@ -462,8 +463,11 @@ void do_put (CHAR_DATA *ch, char *argument)
 
         if (container->item_type != ITEM_CONTAINER)
         {
-                send_to_char("That's not a container.\n\r", ch);
-                return;
+                if (container->item_type != ITEM_TURRET)
+                {
+                        send_to_char("That's not a container.\n\r", ch);
+                        return;
+                }
         }
 
         if (IS_SET(container->value[1], CONT_CLOSED))
