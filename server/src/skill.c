@@ -3997,8 +3997,8 @@ void do_engrave (CHAR_DATA *ch, char *argument)
         ||  cost_sm > ch->smelted_starmetal)
         {
                 send_to_char( "You don't have enough raw materials. You need:\n\r", ch );
-                sprintf(buf, "%d Steel %d Titanium %d Adamantite %d Electrum %d Starmetal and %d",
-                cost_st, cost_ti, cost_ad, cost_el, cost_sm, obj->level);
+                sprintf(buf, "%d Steel %d Titanium %d Adamantite %d Electrum %d Starmetal",
+                cost_st, cost_ti, cost_ad, cost_el, cost_sm);
                 act(buf, ch, NULL, NULL, TO_CHAR);
                 return;
         }
@@ -4453,8 +4453,15 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         } 
 
 
+        if (!str_cmp(arg1, "all"))
+        {
+                send_to_char("You cant trigger everything at once.\n\r", ch);
+                return;
+        }
         /* trigger 1 object in the turret' */
-        if (str_cmp(arg1, "all") && str_prefix("all.", arg1))
+
+        /*if (str_cmp(arg1, "all") && str_prefix("all.", arg1)) */
+        if (str_prefix("all.", arg1))
         {
                 if (!(module = get_obj_list(ch, arg1, turret->contains )) && (arg2[0] == '\0' ))
                 {
@@ -4504,12 +4511,24 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                                 act("Your turret deploys $p.", ch, deployed, NULL ,TO_CHAR);
                                 act("$n deploys $p from their turret.", ch, deployed, NULL, TO_ROOM);
                                 set_obj_owner(deployed, ch->name); 
+                                if (--module->value[2] <= 0)
+                                {
+                                        act("Your $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_CHAR);
+                                        act("$n's $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_ROOM);
+                                        extract_obj(module);
+                                }
                                 return;  
                         }
                         else
                         {
                                 act("The triggering mechanism fails for the $p. Nothing happens.", ch, turret, NULL ,TO_CHAR);
                                 act("$n triggers $m $p, but nothing happens.", ch, turret, NULL, TO_ROOM);
+                                if (--module->value[2] <= 0)
+                                {
+                                        act("Your $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_CHAR);
+                                        act("$n's $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_ROOM);
+                                        extract_obj(module);
+                                }
                                 return; 
                         }
                 }
@@ -4548,29 +4567,36 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                         send_to_char("How did that get in there - it's not a turret module! (report bug).\n\r", ch);
                         return;
                 }
-                
-
-
-
-
 
                 if (( number_percent() < ch->pcdata->learned[gsn_trigger]) && (glookup > 1))
                 {
                         /* moght do a case here depending on type of module      */ 
                         act("You trigger your $p.", ch, turret, NULL ,TO_CHAR);
                         act("$n triggers $m $p.", ch, turret, NULL, TO_ROOM);
-                        damage(ch, victim, number_range(module->value[0],module->value[1]), glookup, FALSE);        
+                        damage(ch, victim, number_range(module->value[0],module->value[1]), glookup, FALSE);   
+                        if (--module->value[2] <= 0)
+                        {
+                                act("Your $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_CHAR);
+                                act("$n's $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_ROOM);
+                                extract_obj(module);
+                        }     
                 }
                 else
                 {
                         act("The triggering mechanism fails for the $p. Nothing happens.", ch, turret, NULL ,TO_CHAR);
                         act("$n triggers $m $p, but nothing happens.", ch, turret, NULL, TO_ROOM);
+                        if (--module->value[2] <= 0)
+                        {
+                                act("Your $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_CHAR);
+                                act("$n's $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_ROOM);
+                                extract_obj(module);
+                        }
                 }
                 return;
         }
         else
         {
-                /* 'trigger ALL the modules ' or ' ALL.modules' */
+                /* trigger  ' ALL.modules' */
                 OBJ_DATA *module_next;
 
                 for (module = turret->contains; module; module = module_next)
@@ -4630,12 +4656,24 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                                                 act("Your turret deploys $p.", ch, deployed, NULL ,TO_CHAR);
                                                 act("$n deploys $p from their turret.", ch, deployed, NULL, TO_ROOM);
                                                 set_obj_owner(deployed, ch->name); 
+                                                if (--module->value[2] <= 0)
+                                                {
+                                                        act("Your $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_CHAR);
+                                                        act("$n's $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_ROOM);
+                                                        extract_obj(module);
+                                                }
                                                 return;  
                                         }
                                         else
                                         {
                                                 act("The triggering mechanism fails for the $p. Nothing happens.", ch, turret, NULL ,TO_CHAR);
                                                 act("$n triggers $m $p, but nothing happens.", ch, turret, NULL, TO_ROOM);
+                                                if (--module->value[2] <= 0)
+                                                {
+                                                        act("Your $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_CHAR);
+                                                        act("$n's $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_ROOM);
+                                                        extract_obj(module);
+                                                }
                                                 return; 
                                         }
                                 }
@@ -4677,12 +4715,24 @@ void do_trigger (CHAR_DATA *ch, char *argument)
 
                                 if (( number_percent() < ch->pcdata->learned[gsn_trigger]) && (glookup > 1))
                                 {
-                                        damage(ch, victim, number_range(module->value[0],module->value[1]), glookup, FALSE);      
+                                        damage(ch, victim, number_range(module->value[0],module->value[1]), glookup, FALSE); 
+                                        if (--module->value[2] <= 0)
+                                        {
+                                                act("Your $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_CHAR);
+                                                act("$n's $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_ROOM);
+                                                extract_obj(module);
+                                        }     
                                 }
                                 else
                                 {
-                                        act("The triggering mechanism fails for the $p. Nothing happens.", ch, turret, NULL ,TO_CHAR);
+                                        act("The triggering mechanism fails for the $p. Nothing happens.", ch, module, NULL ,TO_CHAR);
                                         act("$n triggers $m $p, but nothing happens.", ch, turret, NULL, TO_ROOM);
+                                        if (--module->value[2] <= 0)
+                                        {
+                                                act("Your $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_CHAR);
+                                                act("$n's $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_ROOM);
+                                                extract_obj(module);
+                                        }
                                 }
                         }
                 }

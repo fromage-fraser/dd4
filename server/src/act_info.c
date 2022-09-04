@@ -731,6 +731,53 @@ void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
                 }
                 break;
 
+        case ITEM_TURRET:
+                if (ch->pcdata->learned[gsn_innate_knowledge] >5)
+                {
+
+                        if (ch->pcdata->learned[gsn_turret] > 1 )
+                        {
+                                sprintf( tmp, "SLOT 1 of 4: ENABLED\n\r" );
+                                strcat( buf, tmp);
+
+                        }
+                        if (ch->pcdata->learned[gsn_turret] > 60 )
+                        {
+                                sprintf( tmp, "SLOT 2 of 4: ENABLED\n\r" );
+                                strcat( buf, tmp);
+
+                        }
+                        else
+                        {
+                                sprintf( tmp, "SLOT 2 of 4: DISABLED\n\r" );
+                                strcat( buf, tmp);    
+                        }
+                        if (ch->pcdata->learned[gsn_turret] > 85 )
+                        {
+                                sprintf( tmp, "SLOT 3 of 4: ENABLED\n\r" );
+                                strcat( buf, tmp);
+
+                        }
+                        else
+                        {
+                                sprintf( tmp, "SLOT 3 of 4: DISABLED\n\r" );
+                                strcat( buf, tmp);    
+                        }
+                        if (ch->pcdata->learned[gsn_turret] > 95 )
+                        {
+                                sprintf( tmp, "SLOT 4 of 4: ENABLED\n\r" );
+                                strcat( buf, tmp);
+
+                        }
+                        else
+                        {
+                                sprintf( tmp, "SLOT 4 of 4: DISABLED\n\r" );
+                                strcat( buf, tmp);    
+                        }
+    
+                }
+                break;
+
         case ITEM_DEFENSIVE_TURRET_MODULE:
                 if (ch->pcdata->learned[gsn_innate_knowledge] >5)
                 {
@@ -1047,6 +1094,7 @@ void do_look( CHAR_DATA *ch, char *argument )
                                 (obj->item_type == ITEM_WEAPON 
                                 || obj->item_type == ITEM_ARMOR
                                 || obj->item_type == ITEM_TURRET_MODULE
+                                || obj->item_type == ITEM_TURRET
                                 || obj->item_type == ITEM_DEFENSIVE_TURRET_MODULE) )
                         {
                                 print_smithy_data( ch, obj, buf1);

@@ -516,6 +516,17 @@ void do_put (CHAR_DATA *ch, char *argument)
                         return;
                 };
 
+                if (IS_SET(container->ego_flags, EGO_ITEM_TURRET ))
+                {
+                      if ( ( (ch->pcdata->learned[gsn_turret] < 60 ) && (get_container_count(container) >=1 ) )
+                      || ((ch->pcdata->learned[gsn_turret] < 85 ) && (get_container_count(container) >= 2 ) )
+                      || ((ch->pcdata->learned[gsn_turret] < 95 ) && (get_container_count(container) >= 3 ) ) )
+                      {
+                                send_to_char("You will need to improve your knowledge of turrets.\n\r", ch);
+                                return;
+                      }
+                }
+
                 if (get_obj_weight(obj) + get_obj_weight(container)
                     > container->value[0])
                 {

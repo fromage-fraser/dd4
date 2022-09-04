@@ -2300,6 +2300,18 @@ int get_obj_number( OBJ_DATA *obj )
         */
 }
 
+int get_container_count( OBJ_DATA *obj)
+{
+        int number = 0;
+        for ( obj = obj->contains; obj; obj = obj->next_content )
+        {
+                if ( obj->deleted )
+                        continue;
+                number++;
+        }
+        return number;
+}
+
 
 /*
  * Return weight of an object, including weight of contents.

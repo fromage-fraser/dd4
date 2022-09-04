@@ -4608,6 +4608,7 @@ OD *    create_smelted_materials        args( ( int smelted_steel, int smelted_t
 int     get_obj_number                  args( ( OBJ_DATA *obj ) );
 int     get_inv_number                  args( ( OBJ_DATA *obj ) );
 int     get_obj_weight                  args( ( OBJ_DATA *obj ) );
+int     get_container_count             args( ( OBJ_DATA *obj ) );
 bool    is_clan                         args( ( CHAR_DATA *ch ) );
 bool    is_same_clan                    args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 int     clan_lookup                     args( ( const char *name ) );
