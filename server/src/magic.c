@@ -7224,6 +7224,7 @@ void spell_lore( int sn, int level, CHAR_DATA *ch, void *vo )
         &&   obj->item_type != ITEM_WHETSTONE
         &&   obj->item_type != ITEM_CRAFT
         &&   obj->item_type != ITEM_TURRET_MODULE
+        &&   obj->item_type != ITEM_TURRET
         &&   obj->item_type != ITEM_FORGE )
         {
                 send_to_char ( "You can't determine this item's properties.\n\r", ch );

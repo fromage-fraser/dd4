@@ -59,7 +59,7 @@ turret metal mechanical~
 a turret~
 A finely-crafted mechanical turret is deployed, ready for action.~
 ~
-15 2 1
+49 2 1
 22~ 0~ 0~ 0~
 10 0 0
 E
@@ -262,6 +262,136 @@ E
 steel storage box smithy's~
 A simple storage box. Inside it has hooks and latches that can be used
 to hang or contain any sort of armour piece. On top is a steel whistle.~
+#2720
+blade module~
+blade module~
+A modular pellet component for an Engineers turret.~
+~
+8 0 1
+60~ 120~ 9~ 9~
+3 0 0
+#2721
+shuriken module~
+shuriken module~
+A modular shuriken component for an Engineers turret.~
+~
+42 0 1
+80~ 200~ 15~ 15~
+3 0 0
+#2722
+spear module~
+spear module~
+A modular spear component for an Engineers turret.~
+~
+42 0 1
+400~ 700~ 4~ 4~
+3 0 0
+#2723
+arrestor module~
+arrestor module~
+A modular arrestor component for an Engineers turret.~
+~
+48 0 1
+0~ 0~ 10~ 10~
+3 0 0
+#2724
+driver module~
+driver module~
+A modular driver component for an Engineers turret.~
+~
+48 0 1
+0~ 0~ 6~ 6~
+3 0 0
+#2725
+reflector module~
+reflector module~
+A modular arrestor component for an Engineers turret.~
+~
+48 0 1
+0~ 0~ 3~ 3~
+3 0 0
+#2726
+shield module~
+shield module~
+A modular shield component for an Engineers turret.~
+~
+48 0 1
+0~ 0~ 3~ 3~
+3 0 0
+#2727
+adamantite katana~ 
+<11>{}oo((X))ΞΞΞΞΞΞΞΞΞΞΞΞΞ><0>~
+An elegant katana lies here.~
+~
+5 1|4 1024 8193
+0~ 30~ 45~ 1~
+5 0 0
+A
+2 2
+A
+18 5
+A
+19 6
+#2728
+electrum sword~
+<7>@()xxx[{:::":::":::":::":::=><0>~
+An intricate electrum sword lies here.~
+~
+5 1|4 1024 8193
+0~ 50~ 67~ 1~
+5 0 0
+A
+2 2
+A
+18 5
+A
+19 6
+#2729
+starmetal dual blade sword~
+<1>₪₪₪₪§|(Ξ≥≤≥≤≥≤ΞΞΞΞΞΞΞΞ><8>~
+A dual blade startmetal sword draws your attention.~
+~
+5 1|4 1024 8193
+0~ 69~ 169~ 1~
+5 0 0
+A
+2 2
+A
+18 5
+A
+19 6
+#2730
+arrestor unit~
+arrestor unit~
+A metal pole with spider-web like branches has been driven into the ground.~
+~
+44 1 0
+0~ 0~ 0~ 0~
+5000 5000 0
+#2731
+driver unit~
+driver unit~
+A driver unit with a clubed base.~
+~
+45 1 0
+0~ 0~ 0~ 0~
+5000 5000 0
+#2732
+reflector unit~
+reflector unit~
+A very shiny metallic concave cone is here.~
+~
+46 1 0
+0~ 0~ 0~ 0~
+5000 5000 0
+#2733
+shield unit~
+shield unit~
+A large metal fanned semi-circle in here protecting you.~
+~
+47 1 0
+0~ 0~ 0~ 0~
+5000 5000 0
 
 #0
 
