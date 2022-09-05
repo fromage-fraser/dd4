@@ -707,7 +707,7 @@ void obj_cast_spell( int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DA
             case TAR_CHAR_DEFENSIVE:
                 if ( !victim )
                         victim = ch;
-
+                
                 if (!IS_NPC(ch)
                     && !IS_NPC(victim)
                     && victim->level > 10
@@ -3531,6 +3531,8 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
 
             case ITEM_WAND:
             case ITEM_STAFF:
+            case ITEM_COMBAT_PULSE:
+            case ITEM_DEFENSIVE_PULSE:
                 if (obj->value[2] == 1 && obj->value[1] == 1)
                         sprintf(buf, "It contains {W1{x charge of level {W%d{x",
                                 obj->value[0]);

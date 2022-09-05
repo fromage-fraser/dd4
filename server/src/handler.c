@@ -2647,6 +2647,8 @@ char *item_type_name( OBJ_DATA *obj  )
             case ITEM_SHIELD_UNIT:      return "shield unit";
             case ITEM_TURRET:           return "turret";
             case ITEM_DEFENSIVE_TURRET_MODULE: return "turret module";
+            case ITEM_COMBAT_PULSE:     return "combat pulse";
+            case ITEM_DEFENSIVE_PULSE:  return "defenseive pulse";
         }
 
         for ( in_obj = obj; in_obj->in_obj; in_obj = in_obj->in_obj )
@@ -2764,7 +2766,8 @@ int item_name_type( char *name )
         if ( !str_cmp( name, "forge"                ) ) return ITEM_FORGE;
         if ( !str_cmp( name, "turret"               ) ) return ITEM_TURRET;
         if ( !str_cmp( name, "turret module"        ) ) return ITEM_DEFENSIVE_TURRET_MODULE;
-
+        if ( !str_cmp( name, "combat pulse"         ) ) return ITEM_COMBAT_PULSE;
+        if ( !str_cmp( name, "defensive pulse"      ) ) return ITEM_DEFENSIVE_PULSE;
         return 0;
 
 }

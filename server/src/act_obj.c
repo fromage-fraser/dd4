@@ -4793,7 +4793,9 @@ void do_auction (CHAR_DATA *ch, char *argument)
                     && obj->item_type != ITEM_STAFF
                     && obj->item_type != ITEM_LIGHT
                     && obj->item_type != ITEM_WAND
-                    && obj->item_type != ITEM_SCROLL)
+                    && obj->item_type != ITEM_SCROLL
+                    && obj->item_type != ITEM_COMBAT_PULSE
+                    && obj->item_type != ITEM_DEFENSIVE_PULSE)
                 {
                         send_to_char("You cannot auction that kind of item.\n\r", ch);
                         return;

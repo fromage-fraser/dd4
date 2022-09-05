@@ -494,7 +494,7 @@ DECLARE_DO_FUN ( do_board );
 #define TYPE_STR                          2
 #define TYPE_WIZ                          3
 #define TYPE_NULL                         4
-#define MAX_ITEM_TYPE                    43
+#define MAX_ITEM_TYPE                    51
 #define MAX_WEAR                         22
 #define MAX_COLOR_LIST                   18
 
@@ -2038,6 +2038,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_SHIELD_UNIT                        47
 #define ITEM_DEFENSIVE_TURRET_MODULE            48
 #define ITEM_TURRET                             49
+#define ITEM_COMBAT_PULSE                       50
+#define ITEM_DEFENSIVE_PULSE                    51
 
 
 

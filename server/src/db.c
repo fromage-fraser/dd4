@@ -1939,6 +1939,8 @@ void load_objects( FILE *fp )
 
                     case ITEM_STAFF:
                     case ITEM_WAND:
+                    case ITEM_COMBAT_PULSE:
+                    case ITEM_DEFENSIVE_PULSE:
                         pObjIndex->value[0] = atoi( value[0] );
                         pObjIndex->value[1] = atoi( value[1] );
                         pObjIndex->value[2] = atoi( value[2] );
@@ -2923,6 +2925,8 @@ void reset_area( AREA_DATA *pArea )
                                                 break;
 
                                             case ITEM_WAND:
+                                            case ITEM_COMBAT_PULSE:
+                                            case ITEM_DEFENSIVE_PULSE:
                                                 olevel = number_range( 10, 20 );
                                                 break;
 
@@ -3246,6 +3250,8 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
                 obj->value[0]   = (level /7);
 
             case ITEM_WAND:
+            case ITEM_COMBAT_PULSE:
+            case ITEM_DEFENSIVE_PULSE:
                 obj->value[0]   = number_fuzzy( obj->value[0] );
                 obj->value[1]   = number_fuzzy( obj->value[1] );
                 obj->value[2]   = obj->value[1];
