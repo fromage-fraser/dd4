@@ -7040,15 +7040,26 @@ different items, and augments. Using the CONSTRUCT skill without an
 argument will list known blueprints.
 ~
 
-1 'TITANIUM REAPER' 'STEEL BOARDSWORD'~
+1 'TITANIUM REAPER' 'STEEL BOARDSWORD' 'ADAMANITE KATANA' 'ELECTRUM SWORD' 'STARMETAL DUAL BLADE'~
 
-Syntax: construct steel broadsword
-Syntax: construct titanium Reaper
-Syntax: construct .....
+Syntax: construct 'steel broadsword'
+Syntax: construct 'titanium reaper'
+Syntax: construct 'adamantite katana'
+Syntax: construct 'electrum sword'
+Syntax: construct 'starmetal dual blade'
 
 These are primarily weapons that the SMITHY can CONSTRUCT. Each require
 different amounts of raw materials, which you can determine from
 typing construct with no arguments.
+
+Icons: Those that specialise in the Smithy Profession obtain icons for
+their weapons:
+
+adamantite katana:      <11>{}oo((X))ΞΞΞΞΞΞΞΞΞΞΞΞΞ><0>
+
+electrum sword:         <7>@()xxx[:::":::":::":::":::=><0>
+
+starmetal dual blade:   <1>₪₪₪₪§|(Ξ≥≤≥≤≥≤ΞΞΞΞΞΞΞΞ><0>
 ~
 
 1 'WRENCH OF THE CROW' 'WINGS OF THE CROW' 'HUNTSMITHS'~
@@ -7133,11 +7144,132 @@ A forge is needed to do this.
 Syntax: look <<item>
 
 This passive skill allows the SMITHY to be able to determine properties
-of weapons and armour only. The higher the skill, the more details is revealed
-about an item.
+of weapons, armour, turrets, and turret modules. 
 
+The higher the skill, the more details is revealed about an item.
 Simply look at the item to understand additional information.
 ~
+
+1 'DART MODULE' 'ARROW MODULE' 'BLADE MODULE' 'SHURIKEN MODULE' 'SPEAR MODULE'~
+
+Syntax: construct dart
+Syntax: construct arrow
+Syntax: construct 'blade module'
+Syntax: construct 'shuriken module'
+Syntax: construct 'spear module'
+
+These moduels are deemed to be offensive modules that can be 
+TRIGGERED by the ENGINEER.
+
+This will contruct modules that you can equip into your turret.
+Each module will have different damage outputs, and capacity.
+
+You can see these by typing 'construct'
+~
+
+1 TURRET~
+
+Syntax: construct turret (to make)
+Syntax: look turret (to inspect)
+
+Turrets are an engineers support. They can provide additional 
+damage or if you so choose, a means to defend yourself. Turrets can 
+contain upto 4 modules. Each module performs a differnt ability
+and can be broken up into Offensive or Defensive modules.
+
+All modules are TRIGGERED by the Engineer.
+All modules must be placed in the turret to work.
+
+Defensive modules such as the ARRESTOR MODULE generally prevent or 
+reduce damage you take. Defensive modules will deploy a unit when
+triggered.
+
+Offensive modules deal various armounts of damage.
+
+It is possible to have more than one of the same offensive module
+in 1 turret. You can TRIGGER similar modules by prefixing with
+all. i.e. 'trigger all.spear <target>
+
+Note: The higher the skill, the more turret modules are available.
+~
+
+1 TRIGGER~
+
+Syntax: trigger <defensive module>
+Syntax: trigger <offensive module> <target>
+Syntax: trigger <all.offensive module> <target>
+
+Trigger will fire the module that has been placed in a turret.
+
+Defensive modules such as the ARRESTOR MODULE generally prevent or 
+reduce damage you take. Defensive modules will deploy a unit when
+triggered.
+
+Offensive modules deal various armounts of damage.
+
+It is possible to have more than one of the same offensive module
+in 1 turret. You can TRIGGER similar modules by prefixing with
+all. i.e. 'trigger all.spear <target>
+~
+
+1 'ARRESTOR MODULE'~
+
+Syntax: construct 'arrestor module' (To build)
+Syntax: trigger 'arrestor module'  (to use)
+
+This module is a defensive turret module.
+
+When triggered the arrestor module deploys an arresting pole
+which will ground any offensive spell preventing it from hitting
+you. The Energy it relays will destory the arresting pole.
+
+All modules must be placed in the turret to use.
+~
+
+1 'DRIVER MODULE'~
+
+Syntax: construct 'driver module' (To build)
+Syntax: trigger 'driver module'  (to use)
+
+This module is a defensive turret module.
+
+When triggered the driver module deploys a clubbed pounding
+mechanism which will occasionally unbalance any attacker, 
+preventing them from attacking you. The repeated pounding 
+will eventually destroy the mechanism.
+
+All modules must be placed in the turret to use.
+~
+
+1 'REFLECTOR MODULE'~
+
+Syntax: construct 'reflector module' (To build)
+Syntax: trigger 'reflector module'  (to use)
+
+This module is a defensive turret module.
+
+When triggered the reflector module deploys a focusing array
+which will reflect any offensive spell back to the caster.
+The Energy it relays will destory the array.
+
+All modules must be placed in the turret to use.
+~
+
+1 'SHIELD MODULE'~
+
+Syntax: construct 'shield module' (To build)
+Syntax: trigger 'shield module'  (to use)
+
+This module is a defensive turret module.
+
+When triggered the arrestor module deploys a large metallic
+shield which will block any offensive attacks from hitting
+you. It will only prevent a certain amount of attacks before
+being destroy.
+
+All modules must be placed in the turret to use.
+~
+
 
 0 $~
 #$

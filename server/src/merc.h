@@ -171,6 +171,7 @@ typedef struct auction_data                     AUCTION_DATA;
 typedef struct game_data		        GAME_DATA;
 typedef struct coin_data                        COIN_DATA;
 typedef struct smelting_data                    SMELTING_DATA;
+typedef struct blueprint_data                   BLUEPRINT_DATA;
 /* typedef struct raw_mats_data                    RAW_MATERIAL_DATA; */
 
 /*
@@ -235,7 +236,7 @@ struct imbue_types
 
 #define MAX_IMBUE 9
 
-#define BLUEPRINTS_MAX  22
+#define BLUEPRINTS_MAX  32
 
 /* Blueprint structure : blueprint_name, blueprint_desc, blueprint_ref, blueprint_cost steel, titanium, adamantite, electrum, starmetal */
 struct blueprint_type
@@ -244,7 +245,7 @@ struct blueprint_type
         char    *blueprint_desc;
         int     blueprint_ref;
         int     blueprint_ego;
-        int     blueprint_damage [2];
+        int     blueprint_damage [3];
         int     blueprint_cost [5];
         char    *skill_name;
 };
@@ -318,9 +319,9 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   545     /* +6 Smithy post 30 groups' -Brutus 27/8/22 */
-#define MAX_PRE_REQ                 1387    /* +10 for smithy post 30 - Brutus 27/8/22 */
-#define MAX_SPELL_GROUP             444     /* +2 - for post 30 smithy skills Brutus 27/8/22 */
+#define MAX_SKILL                   555     /* 10 Smithy and Engineer post 30 skills' -Brutus 29/8/22 */
+#define MAX_PRE_REQ                 1396    /* +9 for smithy & engy post 30 - Brutus 27/8/22 */
+#define MAX_SPELL_GROUP             448     /* +4 - for post 30 engineer skills Brutus 27/8/22 */
 #define MAX_GROUPS                  60      /* added smithy groups - Brutus Aug 2022 */
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
 #define MAX_VAMPIRE_GAG             27      /* 26 + 1 for 'swallow' | ugly vampire/werewolf hack */
@@ -1931,6 +1932,23 @@ extern  WANTED_DATA *wanted_list_last;
 #define OBJ_VNUM_AS_SET4                2717
 #define OBJ_VNUM_AS_SET5                2718
 #define OBJ_VNUM_STEEL_CACHE            2719
+#define OBJ_VNUM_BLADE                   2720
+#define OBJ_VNUM_SHURIKEN                   2721
+#define OBJ_VNUM_SPEAR                   2722
+#define OBJ_VNUM_ARRESTOR                   2723
+#define OBJ_VNUM_DRIVER                   2724
+#define OBJ_VNUM_REFLECTOR                   2725
+#define OBJ_VNUM_SHIELD                 2726
+#define OBJ_VNUM_AD_SWORD1                   2727
+#define OBJ_VNUM_EL_SWORD1                   2728
+#define OBJ_VNUM_SM_SWORD1                   2729
+#define OBJ_VNUM_ARRESTOR_UNIT          2730
+#define OBJ_VNUM_DRIVER_UNIT          2731
+#define OBJ_VNUM_REFLECTOR_UNIT          2732
+#define OBJ_VNUM_SHIELD_UNIT          2733
+
+
+/* End SMithy Stuff */
 
 #define OBJ_VNUM_SCHOOL_MACE             3700
 #define OBJ_VNUM_SCHOOL_DAGGER           3701
@@ -2014,6 +2032,14 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_SPELLCRAFT                         41 /* Increase bonus to spellcrafting that takes place in ROOM_SPELLCRAFT */
 #define ITEM_TURRET_MODULE                      42
 #define ITEM_FORGE                              43
+#define ITEM_ARRESTOR_UNIT                      44
+#define ITEM_DRIVER_UNIT                        45
+#define ITEM_REFLECTOR_UNIT                     46
+#define ITEM_SHIELD_UNIT                        47
+#define ITEM_DEFENSIVE_TURRET_MODULE            48
+#define ITEM_TURRET                             49
+
+
 
 /*
  * Extra flags.
@@ -3502,6 +3528,9 @@ extern int gsn_bloodforged_set;
 extern int gsn_astral_set;
 extern int gsn_steel_broadsword;
 extern int gsn_titanium_rapier;
+extern int gsn_adamantite_katana;
+extern int gsn_electrum_sword;
+extern int gsn_starmetal_dual_blade;
 extern int gsn_repelling;
 extern int gsn_steel_cache;
 extern int gsn_group_weaponsmith;
@@ -3517,12 +3546,15 @@ extern int gsn_discharge;
 extern int gsn_trigger;
 extern int gsn_dart;
 extern int gsn_arrow;
+extern int gsn_blade_module;
+extern int gsn_shuriken_module;
+extern int gsn_spear_module;
 extern int gsn_turret;
 extern int gsn_launcher;
-extern int gsn_reflector;
-extern int gsn_shield;
-extern int gsn_arrestor;
-extern int gsn_driver;
+extern int gsn_reflector_module;
+extern int gsn_shield_module;
+extern int gsn_arrestor_module;
+extern int gsn_driver_module;
 extern int gsn_emergency;
 extern int gsn_deploy;
 extern int gsn_forager;
@@ -4576,6 +4608,7 @@ OD *    create_smelted_materials        args( ( int smelted_steel, int smelted_t
 int     get_obj_number                  args( ( OBJ_DATA *obj ) );
 int     get_inv_number                  args( ( OBJ_DATA *obj ) );
 int     get_obj_weight                  args( ( OBJ_DATA *obj ) );
+int     get_container_count             args( ( OBJ_DATA *obj ) );
 bool    is_clan                         args( ( CHAR_DATA *ch ) );
 bool    is_same_clan                    args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 int     clan_lookup                     args( ( const char *name ) );

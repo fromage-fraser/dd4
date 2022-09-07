@@ -2844,18 +2844,26 @@ void gmcp_update( void )
 			buf2[0] = '\0';
 			for ( paf = d->character->affected; paf; paf = paf->next )
 			{
-
-        if (paf->duration < 0)
-          continue;
-
-        if (paf->deleted)
-          continue;
-
-        #ifndef COLOR_CODE_FIX
-				if ( buf[0] == '\0' ) sprintf( buf, "[ { \"name\": \"%s\", \"duration\": \"%d\" }", skill_table[paf->type].name, paf->duration );
-				else
+      
+				#ifndef COLOR_CODE_FIX
+				if ( buf[0] == '\0' )
+                                {
+                                        sprintf( buf, "[ { \"name\": \"%s\", \"gives\": \"%s\", \"modifies\": \"%s\", \"mod_amount\": \"%d\", \"duration\": \"%d\" }",
+                                                skill_table[paf->type].name,
+                                                affect_bit_name_nice( paf->bitvector ),
+                                                affect_loc_name( paf->location ),
+                                                paf->modifier,
+                                                paf->duration );
+                                }
+                                else
 				{
-					sprintf( buf2, ", { \"name\": \"%s\", \"duration\": \"%d\" }", skill_table[paf->type].name, paf->duration );
+					sprintf( buf2, ", { \"name\": \"%s\", \"gives\": \"%s\", \"modifies\": \"%s\", \"mod_amount\": \"%d\", \"duration\": \"%d\" }",
+                                                skill_table[paf->type].name,
+                                                affect_bit_name_nice( paf->bitvector ),
+                                                affect_loc_name( paf->location ),
+                                                paf->modifier,
+                                                paf->duration );
+
 					strcat( buf, buf2 );
 				}
 				#else

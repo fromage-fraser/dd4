@@ -1,5 +1,5 @@
 /* SMITHY BASE */
-/* 33 skill s- Brutus Jun 2022 */
+/* 39 skill s- Brutus Jun 2022 */
 
 /* Armousmith */
 
@@ -58,3 +58,14 @@
 
 {&gsn_empower,  		&gsn_group_weaponsmith,	    80, 	PRE_SMITHY},
 {&gsn_empower,  		&gsn_group_weaponlore,	        80, 	PRE_SMITHY},
+
+{&gsn_adamantite_katana,  	&gsn_group_weaponsmith,	    80, 	PRE_SMITHY},
+{&gsn_adamantite_katana,  	&gsn_group_weaponlore,	        80, 	PRE_SMITHY},
+
+{&gsn_electrum_sword, 	&gsn_group_weaponsmith,	    90, 	PRE_SMITHY},
+{&gsn_electrum_sword,  	&gsn_group_weaponlore,	        90, 	PRE_SMITHY},
+
+{&gsn_starmetal_dual_blade,  	&gsn_group_weaponsmith,	    97, 	PRE_SMITHY},
+{&gsn_starmetal_dual_blade,  	&gsn_group_weaponlore,	        95, 	PRE_SMITHY},
+
+

@@ -289,28 +289,39 @@ const struct HERB herb_table [ MAX_HERBS ] =
 
 const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
 {
-        { "turret",               "a turret",                           OBJ_VNUM_TURRET,        EGO_ITEM_TURRET,        { 0, 0 },       { 30, 1, 0, 0, 0 },     "turret" },
-        { "dart",                 "a dart module",                      OBJ_VNUM_DART,          EGO_ITEM_TURRET_MODULE, { 10, 20 },     { 10, 1, 0, 0, 0 },     "dart" },
-        { "weaponchain",          "a weaponchain",                      -1,                     EGO_ITEM_CHAINED,       { 0, 0 },       { 12, 0, 0, 0, 0 },     "weaponchain" },
-        { "shieldchain",          "a shieldchain",                      -1,                     EGO_ITEM_CHAINED,       { 0, 0 },       { 100, 10, 0, 0, 0 },   "shieldchain" },
-        { "arrow",                "an arrow module",                    OBJ_VNUM_ARROW,         EGO_ITEM_TURRET_MODULE, { 25, 35 },     { 20, 10, 1, 0, 0 },    "arrow" },
-        { "wrench of the crow",   "Enchanted Wrench of the Crow",       OBJ_VNUM_UNCOMMON1,     -1,                     { 0, 0 },       { 10, 1, 0, 0, 0 },     "uncommon set" },
-        { "wings of the crow",    "Splayed Wings of the Crow",          OBJ_VNUM_UNCOMMON2,     -1,                     { 0, 0 },       { 10, 1, 0, 0, 0 },     "uncommon set" },
-        { "huntsmith's gloves",   "Huntsmith's gloves of the flame",    OBJ_VNUM_RARE1,         -1,                     { 0, 0 },       { 40, 10, 1, 0, 0 },    "rare set" },
-        { "huntsmith's belt",     "Huntsmith's belt of the flame",      OBJ_VNUM_RARE2,         -1,                     { 0, 0 },       { 50, 20, 2, 0, 0 },    "rare set" },
-        { "huntsmith's boots",    "Huntsmith's boots of the flame",     OBJ_VNUM_RARE3,         -1,                     { 0, 0 },       { 70, 30, 5, 0, 0 },    "rare set" },
-        { "steel broadsword",     "Fierce steel broadsword",            OBJ_VNUM_ST_SWORD1,     -1,                     { 8, 18 },      { 25, 0, 0, 0, 0 },     "steel broadsword" },
-        { "titanium rapier",      "Titanium rapier of torment",         OBJ_VNUM_TI_SWORD1,     -1,                     { 14, 23 },     { 40, 15, 0, 0, 0 },    "titanium rapier" },
-        { "bloodforged helm",     "Bloodforged battlehelm",             OBJ_VNUM_BF_SET1,       -1,                     { 0, 0 },       { 40, 20, 10, 5, 0 },   "bloodforged set" },
-        { "bloodforged boots",    "Bloodforged swiftboots",             OBJ_VNUM_BF_SET2,       -1,                     { 0, 0 },       { 50, 20, 12, 7, 0 },   "bloodforged set" },
-        { "bloodforged leggings", "Bloodforged spiked leggings",        OBJ_VNUM_BF_SET3,       -1,                     { 0, 0 },       { 70, 30, 15, 9, 0 },   "bloodforged set" },
-        { "bloodforged grips",    "Bloodforged grips",                  OBJ_VNUM_BF_SET4,       -1,                     { 0, 0 },       { 80, 40, 21, 12, 0 },  "bloodforged set" },
-        { "astral horizon",       "Astral horizon of ascendance",       OBJ_VNUM_AS_SET1,       -1,                     { 0, 0 },       { 50, 20, 2, 20, 3 },   "astral set" },
-        { "astral wrap",          "Astral wrap of insight",             OBJ_VNUM_AS_SET2,       -1,                     { 0, 0 },       { 70, 30, 5, 20, 5 },   "astral set" },
-        { "astral anomaly",       "Astral anomaly of knowing",          OBJ_VNUM_AS_SET3,       -1,                     { 0, 0 },       { 40, 10, 1, 20, 6 },   "astral set" },
-        { "astral plain",         "Astral plane of travel",             OBJ_VNUM_AS_SET4,       -1,                     { 0, 0 },       { 50, 20, 2, 30, 8 },   "astral set" },
-        { "astral transcendence", "Astral transcendence",               OBJ_VNUM_AS_SET5,       -1,                     { 0, 0 },       { 70, 30, 5, 40, 10 },  "astral set" },
-        { "steel cache",          "Smithy's steel cache",               OBJ_VNUM_STEEL_CACHE,   -1,                     { 0, 0 },       { 6, 0, 0, 0, 0 },      "steel cache" }
+        { "turret",               "a turret",                    OBJ_VNUM_TURRET,        EGO_ITEM_TURRET,        { 0, 0, 0},       { 30, 1, 0, 0, 0 },     "turret" },
+        { "dart",                 "a dart module",                      OBJ_VNUM_DART,          EGO_ITEM_TURRET_MODULE, { 10, 20, 0 },     { 1, 0, 0, 0, 0 },     "dart" },
+        { "weaponchain",          "a weaponchain",                      -1,                     EGO_ITEM_CHAINED,       { 0, 0, 0 },       { 12, 0, 0, 0, 0 },     "weaponchain" },
+        { "shieldchain",          "a shieldchain",                      -1,                     EGO_ITEM_CHAINED,       { 0, 0, 0 },       { 100, 10, 0, 0, 0 },   "shieldchain" },
+        { "arrow",                "an arrow module",                    OBJ_VNUM_ARROW,         EGO_ITEM_TURRET_MODULE, { 25, 35, 0 },     { 1, 1, 0, 0, 0 },    "arrow" },
+        { "wrench of the crow",   "Enchanted Wrench of the Crow",       OBJ_VNUM_UNCOMMON1,     -1,                     { 0, 0, 0 },       { 10, 1, 0, 0, 0 },     "uncommon set" },
+        { "wings of the crow",    "Splayed Wings of the Crow",          OBJ_VNUM_UNCOMMON2,     -1,                     { 0, 0, 0 },       { 10, 1, 0, 0, 0 },     "uncommon set" },
+        { "huntsmith's gloves",   "Huntsmith's gloves of the flame",    OBJ_VNUM_RARE1,         -1,                     { 0, 0, 0 },       { 40, 10, 1, 0, 0 },    "rare set" },
+        { "huntsmith's belt",     "Huntsmith's belt of the flame",      OBJ_VNUM_RARE2,         -1,                     { 0, 0, 0 },       { 50, 20, 2, 0, 0 },    "rare set" },
+        { "huntsmith's boots",    "Huntsmith's boots of the flame",     OBJ_VNUM_RARE3,         -1,                     { 0, 0, 0 },       { 70, 30, 5, 0, 0 },    "rare set" },
+        { "steel broadsword",     "Fierce steel broadsword",            OBJ_VNUM_ST_SWORD1,     -1,                     { 8, 18, 0 },      { 25, 0, 0, 0, 0 },     "steel broadsword" },
+        { "titanium rapier",      "Titanium rapier of torment",         OBJ_VNUM_TI_SWORD1,     -1,                     { 14, 23, 0 },     { 40, 15, 0, 0, 0 },    "titanium rapier" },
+        { "bloodforged helm",     "Bloodforged battlehelm",             OBJ_VNUM_BF_SET1,       -1,                     { 0, 0, 0 },       { 40, 20, 10, 5, 0 },   "bloodforged set" },
+        { "bloodforged boots",    "Bloodforged swiftboots",             OBJ_VNUM_BF_SET2,       -1,                     { 0, 0, 0 },       { 50, 20, 12, 7, 0 },   "bloodforged set" },
+        { "bloodforged leggings", "Bloodforged spiked leggings",        OBJ_VNUM_BF_SET3,       -1,                     { 0, 0, 0 },       { 70, 30, 15, 9, 0 },   "bloodforged set" },
+        { "bloodforged grips",    "Bloodforged grips",                  OBJ_VNUM_BF_SET4,       -1,                     { 0, 0, 0 },       { 80, 40, 21, 12, 0 },  "bloodforged set" },
+        { "astral horizon",       "Astral horizon of ascendance",       OBJ_VNUM_AS_SET1,       -1,                     { 0, 0, 0 },       { 50, 20, 2, 20, 3 },   "astral set" },
+        { "astral wrap",          "Astral wrap of insight",             OBJ_VNUM_AS_SET2,       -1,                     { 0, 0, 0 },       { 70, 30, 5, 20, 5 },   "astral set" },
+        { "astral anomaly",       "Astral anomaly of knowing",          OBJ_VNUM_AS_SET3,       -1,                     { 0, 0, 0 },       { 40, 10, 1, 20, 6 },   "astral set" },
+        { "astral plain",         "Astral plane of travel",             OBJ_VNUM_AS_SET4,       -1,                     { 0, 0, 0 },       { 50, 20, 2, 30, 8 },   "astral set" },
+        { "astral transcendence", "Astral transcendence",               OBJ_VNUM_AS_SET5,       -1,                     { 0, 0, 0 },       { 70, 30, 5, 40, 10 },  "astral set" },
+        { "steel cache",          "Smithys steel cache",               OBJ_VNUM_STEEL_CACHE,   -1,                     { 0, 0, 0 },       { 6, 0, 0, 0, 0 },      "steel cache" },
+        { "blade module",         "a blade module",                    OBJ_VNUM_BLADE,         EGO_ITEM_TURRET_MODULE, { 60, 120, 0 },     { 10, 1, 1, 0, 0 },    "blade module" },
+        { "shuriken module",      "a shuriken module",                 OBJ_VNUM_SHURIKEN,      EGO_ITEM_TURRET_MODULE, { 80, 200, 0 },     { 10, 10, 1, 1, 0 },    "shuriken module" },
+        { "spear module",         "a spear module",                    OBJ_VNUM_SPEAR,         EGO_ITEM_TURRET_MODULE, { 400, 700, 0 },     { 10, 10, 1, 1, 1 },   "spear module" },
+        { "arrestor module",      "an arrestor module",                OBJ_VNUM_ARRESTOR,      EGO_ITEM_TURRET_MODULE, { 0, 0, OBJ_VNUM_ARRESTOR_UNIT },     { 10, 1, 0, 0, 0 },      "arrestor module" },
+        { "driver module",        "a driver module",                   OBJ_VNUM_DRIVER,        EGO_ITEM_TURRET_MODULE, { 0, 0, OBJ_VNUM_DRIVER_UNIT },     { 10, 1, 0, 0, 0 },      "driver module" },
+        { "reflector module",     "a reflector module",                OBJ_VNUM_REFLECTOR,     EGO_ITEM_TURRET_MODULE, { 0, 0, OBJ_VNUM_REFLECTOR_UNIT },     { 10, 1, 0, 0, 0 },      "reflector module" },
+        { "shield module",        "a shield module",                   OBJ_VNUM_SHIELD,        EGO_ITEM_TURRET_MODULE, { 0, 0, OBJ_VNUM_SHIELD_UNIT },     { 10, 1, 0, 0, 0 },      "shield module" },
+        { "adamantite katana",    "Adamantite Katana of souls",         OBJ_VNUM_AD_SWORD1,     -1,                     { 30, 45, 0 },      { 25, 0, 0, 0, 0 },    "adamantite katana" },
+        { "electrum sword",       "HeartForged electrum sword",         OBJ_VNUM_EL_SWORD1,     -1,                     { 50, 67, 0 },      { 25, 0, 0, 0, 0 },    "electrum sword" },
+        { "starmetal dual blade", "Starmetal Dual-Vibro Blade",         OBJ_VNUM_SM_SWORD1,     -1,                     { 69, 169, 0 },      { 25, 0, 0, 0, 0 },   "starmetal dual blade" },
+
 };
 
 /* set_name, set_desc, set_ego, set_bonus1, set_bonus2, set_bonus3 */
@@ -2425,8 +2436,6 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_strengthen,		                0 },
         { &gsn_uncommon_set,	                        0 },
         { &gsn_rare_set,		                0 },
-        { &gsn_steel_broadsword,                        0 },
-        { &gsn_titanium_rapier,                         0 },
         { &gsn_steel_cache,                             0 },
 
         { &gsn_group_weaponsmith,	                0 },
@@ -2435,7 +2444,11 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_hurl,		                        0 },
         { &gsn_imbue,			                0 },
         { &gsn_shieldchain,		                0 },
-        { &gsn_craft_weapon,		                0 },
+        { &gsn_steel_broadsword,                        0 },
+        { &gsn_titanium_rapier,                         0 },
+        { &gsn_adamantite_katana,                       0 },
+        { &gsn_electrum_sword,                          0 },
+        { &gsn_starmetal_dual_blade,	                0 },
 
         { &gsn_group_turret_tech,	                0 },
         { &gsn_trigger,			                0 },
@@ -2443,9 +2456,10 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_arrow,                                   0 },
         { &gsn_turret,                                  0 },
         { &gsn_launcher,	                        0 },
-        { &gsn_reflector,		                0 },
-        { &gsn_arrestor,		                0 },
-        { &gsn_driver,			                0 },
+        { &gsn_reflector_module,		        0 },
+        { &gsn_shield_module,		                0 },
+        { &gsn_arrestor_module,		                0 },
+        { &gsn_driver_module,			        0 },
         { &gsn_emergency,		                0 },
 
         { &gsn_group_mech_tech,                         0 },
@@ -6123,6 +6137,78 @@ const struct skill_type skill_table [MAX_SKILL] =
                 spell_null, 0, 0,
                 "", "!Group Weapon Lore!"
         },
+
+        {
+                "blade module", &gsn_blade_module,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "razor blade", "!Blade Module!"
+        },
+
+        {
+                "shuriken module", &gsn_shuriken_module,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "shuriken", "!Shuriken Module!"
+        },
+
+        {
+                "spear module", &gsn_spear_module,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "sharpened spear", "!Spear Module!"
+        },
+
+        {
+                "arrestor module", &gsn_arrestor_module,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "", "!Arrestor Module!"
+        },
+
+        {
+                "driver module", &gsn_driver_module,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "", "!DRiver Module!"
+        },
+
+        {
+                "reflector module", &gsn_reflector_module,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "reflected spell", "!DRiver Module!"
+        },
+
+        {
+                "shield module", &gsn_shield_module,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "", "!Shield Module!"
+        },
+
+        {
+                "adamantite katana", &gsn_adamantite_katana,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "", "!Titanium_rapier!"
+        },
+
+        {
+                "electrum sword", &gsn_electrum_sword,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "", "!Electrum sword!"
+        },
+
+        {
+                "starmetal dual blade", &gsn_starmetal_dual_blade,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "", "!Starmetal dual blade!"
+        },
+
+
 
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.

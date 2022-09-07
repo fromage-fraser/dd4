@@ -310,6 +310,7 @@ void do_get (CHAR_DATA *ch, char *argument)
                         return;
 
                     case ITEM_CONTAINER:
+                    case ITEM_TURRET:
                     case ITEM_CORPSE_NPC:
                         break;
 
@@ -462,8 +463,11 @@ void do_put (CHAR_DATA *ch, char *argument)
 
         if (container->item_type != ITEM_CONTAINER)
         {
-                send_to_char("That's not a container.\n\r", ch);
-                return;
+                if (container->item_type != ITEM_TURRET)
+                {
+                        send_to_char("That's not a container.\n\r", ch);
+                        return;
+                }
         }
 
         if (IS_SET(container->value[1], CONT_CLOSED))
@@ -511,6 +515,17 @@ void do_put (CHAR_DATA *ch, char *argument)
                         send_to_char("You can only put modules into the turret slots.\n\r", ch);
                         return;
                 };
+
+                if (IS_SET(container->ego_flags, EGO_ITEM_TURRET ))
+                {
+                      if ( ( (ch->pcdata->learned[gsn_turret] < 60 ) && (get_container_count(container) >=1 ) )
+                      || ((ch->pcdata->learned[gsn_turret] < 85 ) && (get_container_count(container) >= 2 ) )
+                      || ((ch->pcdata->learned[gsn_turret] < 95 ) && (get_container_count(container) >= 3 ) ) )
+                      {
+                                send_to_char("You will need to improve your knowledge of turrets.\n\r", ch);
+                                return;
+                      }
+                }
 
                 if (get_obj_weight(obj) + get_obj_weight(container)
                     > container->value[0])
