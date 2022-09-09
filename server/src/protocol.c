@@ -3038,6 +3038,7 @@ const struct gmcp_package_struct GMCPPackageTable[GMCP_PACKAGE_MAX+1] =
 	{ GMCP_AC,					GMCP_SUPPORT_CHAR,			"Char",			"AC"		},
 	{ GMCP_WORTH,					GMCP_SUPPORT_CHAR,			"Char",			"Worth"		},
 	{ GMCP_AFFECTED,				GMCP_SUPPORT_CHAR,			"Char",			"Affect"	},
+	{ GMCP_ITEMS,				        GMCP_SUPPORT_CHAR,			"Char",			"Items"	        },
 	{ GMCP_ENEMIES,					GMCP_SUPPORT_CHAR,			"Char",			"Enemies"	},
 	{ GMCP_ROOM,					GMCP_SUPPORT_ROOM,			"Room",			"Info"		},
 
@@ -3081,6 +3082,10 @@ const struct gmcp_variable_struct GMCPVariableTable[GMCP_MAX+1] =
 	{ GMCP_DEX_PERM,	GMCP_STATS,		"permdex",		GMCP_NUMBER	},
 	{ GMCP_CON_PERM,	GMCP_STATS,		"permcon",		GMCP_NUMBER	},
 	{ GMCP_WIMPY,		GMCP_STATS,		"wimpy",		GMCP_NUMBER	},
+  { GMCP_CARRY_NUMBER,    GMCP_STATS,		"carry_num",		GMCP_NUMBER	},
+  { GMCP_CARRY_MAXNUM,    GMCP_STATS,		"maxcarry_num",		GMCP_NUMBER	},
+  { GMCP_CARRY_WEIGHT,    GMCP_STATS,		"carry_wt",		GMCP_NUMBER	},
+  { GMCP_CARRY_MAXWEIGHT, GMCP_STATS,		"maxcarry_wt",	        GMCP_NUMBER	},
 
 	{ GMCP_AC_PIERCE,	GMCP_AC,		"pierce",		GMCP_NUMBER	},
 	{ GMCP_AC_BASH,		GMCP_AC,		"bash",			GMCP_NUMBER	},
@@ -3097,6 +3102,8 @@ const struct gmcp_variable_struct GMCPVariableTable[GMCP_MAX+1] =
 	{ GMCP_ENEMY,		GMCP_ENEMIES,		NULL,			GMCP_ARRAY	},
 
 	{ GMCP_AFFECT,		GMCP_AFFECTED,		NULL,			GMCP_ARRAY	},
+
+	{ GMCP_INVENTORY,	GMCP_ITEMS,		NULL,			GMCP_ARRAY	},
 
 	{ GMCP_AREA,		GMCP_ROOM,		"area",			GMCP_STRING	},
 	{ GMCP_ROOM_NAME,	GMCP_ROOM,		"name",			GMCP_STRING	},
@@ -3730,14 +3737,19 @@ void SendUpdatedGMCP( descriptor_t *apDescriptor )
 void UpdateGMCPString( descriptor_t *apDescriptor, GMCP_VARIABLE var, const char *string )
 {
 	if ( !apDescriptor || !apDescriptor->pProtocol )
+        {
 		return;
+        }
 
 	if ( var < 0 || var >= GMCP_MAX )
-		return;
+	{
+                return;
+        }
 
 	if ( !strcmp( apDescriptor->pProtocol->GMCPVariable[var], string ) )
-		return;
-
+	{
+                return;
+        }
 	free( apDescriptor->pProtocol->GMCPVariable[var] );
 	apDescriptor->pProtocol->GMCPVariable[var] = AllocString( string );
 	apDescriptor->pProtocol->bGMCPUpdatePackage[GMCPVariableTable[var].package] = 1;
