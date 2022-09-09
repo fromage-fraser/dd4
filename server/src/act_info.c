@@ -91,7 +91,6 @@ int max_on = 0;
 /*
  * Local functions.
  */
-char *  format_obj_to_char      args( ( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort ) );
 void    show_char_to_char_0     args( ( CHAR_DATA *victim, CHAR_DATA *ch ) );
 void    show_char_to_char_1     args( ( CHAR_DATA *victim, CHAR_DATA *ch ) );
 void    prac_slist                    ( CHAR_DATA *ch );
@@ -112,10 +111,11 @@ int get_colour_index_by_code ( int ccode )
 
 char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
 {
-        static char buf [ MAX_STRING_LENGTH ];
-        OBJSET_INDEX_DATA *pObjSetIndex;
-        int smithy_flags=0;
+        static char             buf [ MAX_STRING_LENGTH ];
+        OBJSET_INDEX_DATA       *pObjSetIndex;
+        int                     smithy_flags;
 
+        smithy_flags = 0;
         buf[0] = '\0';
 
         if ( (pObjSetIndex = objects_objset(obj->pIndexData->vnum)) )
@@ -277,7 +277,8 @@ void show_list_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNo
         {
                 /* Objects with empty descriptions are intended to be hidden.
                    Suppress blanks lines that can appear in room descriptions: these can tip off players. */
-                if (!fShort && !strcmp(obj->description, "")) {
+                if (!fShort && !strcmp(obj->description, ""))
+                {
                         continue;
                 }
 

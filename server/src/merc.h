@@ -4404,6 +4404,7 @@ void    send_to_char_bw                 args( ( const char *txt, CHAR_DATA *ch )
 
 /* act_info.c */
 void  show_list_to_char                 args( ( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNothing ) );
+char* format_obj_to_char                args( ( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort ) );
 void  show_char_to_char                 args( ( CHAR_DATA *list, CHAR_DATA *ch ) );
 void  set_title                         args( ( CHAR_DATA *ch, char *title ) );
 bool  check_blind                       args( ( CHAR_DATA *ch ) );
