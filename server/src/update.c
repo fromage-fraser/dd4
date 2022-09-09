@@ -2356,7 +2356,9 @@ void update_handler ()
         }
 
         sprintf (last_function, "calling gmcp_update");
+        
         gmcp_update();   /* Comment this out to disable for troubleshooting */
+
         /* <---- GMCP */
 
         sprintf (last_function, "calling time_update");
@@ -2725,27 +2727,28 @@ void gmcp_update( void )
 	{
 		if ( d->character && d->connected == CON_PLAYING && !IS_NPC(d->character) )
                 {
+
 			ROOM_INDEX_DATA *room = d->character->in_room;
 			CHAR_DATA       *enemy = d->character->fighting;
 			AFFECT_DATA     *paf;
-                        OBJ_DATA        *obj;
-                        char            buf[MAX_STRING_LENGTH];
+      OBJ_DATA        *obj;
+      char            buf[MAX_STRING_LENGTH];
 			char            buf2[MAX_STRING_LENGTH];
 			char            buf3[MAX_STRING_LENGTH];
-                        char            **prgpstrShow;
-                        char            *pstrShow;
-                        int             *prgnShow;
-                        int             obj_count;
-                        int             nShow;
-                        int             iShow;
-                        bool            fShort;
-                        bool            fShowNothing;
-                        bool            fCombine;
+      char            **prgpstrShow;
+      char            *pstrShow;
+      int             *prgnShow;
+      int             obj_count;
+      int             nShow;
+      int             iShow;
+      bool            fShort;
+      bool            fShowNothing;
+      bool            fCombine;
 
-                        obj_count       = 0;
-                        nShow           = 0;
-                        fShort          = TRUE;
-                        fShowNothing    = TRUE;
+      obj_count       = 0;
+      nShow           = 0;
+      fShort          = TRUE;
+      fShowNothing    = TRUE;
 
 			UpdateGMCPString( d, GMCP_NAME, d->character->name );
 			UpdateGMCPString( d, GMCP_RACE, race_table[d->character->race].race_name );
@@ -2862,34 +2865,34 @@ void gmcp_update( void )
 
 			buf[0] = '\0';
 			buf2[0] = '\0';
-
 			for ( paf = d->character->affected; paf; paf = paf->next )
 			{
+      
 				#ifndef COLOR_CODE_FIX
 
-                                if ( paf->deleted != 1 )
-                                {
-                                        if ( buf[0] == '\0' )
-                                        {
-                                                sprintf( buf, "[ { \"name\": \"%s\", \"gives\": \"%s\", \"modifies\": \"%s\", \"mod_amount\": \"%d\", \"duration\": \"%d\" }",
-                                                        skill_table[paf->type].name,
-                                                        affect_bit_name_nice( paf->bitvector ),
-                                                        affect_loc_name( paf->location ),
-                                                        paf->modifier,
-                                                        paf->duration );
-                                        }
-                                        else
-                                        {
-                                                sprintf( buf2, ", { \"name\": \"%s\", \"gives\": \"%s\", \"modifies\": \"%s\", \"mod_amount\": \"%d\", \"duration\": \"%d\" }",
-                                                        skill_table[paf->type].name,
-                                                        affect_bit_name_nice( paf->bitvector ),
-                                                        affect_loc_name( paf->location ),
-                                                        paf->modifier,
-                                                        paf->duration );
+       if ( paf->deleted != 1 )
+       {
+          if ( buf[0] == '\0' )
+          {
+              sprintf( buf, "[ { \"name\": \"%s\", \"gives\": \"%s\", \"modifies\": \"%s\", \"mod_amount\": \"%d\", \"duration\": \"%d\" }",
+                      skill_table[paf->type].name,
+                      affect_bit_name_nice( paf->bitvector ),
+                      affect_loc_name( paf->location ),
+                      paf->modifier,
+                      paf->duration );
+          }
+          else
+          {
+              sprintf( buf2, ", { \"name\": \"%s\", \"gives\": \"%s\", \"modifies\": \"%s\", \"mod_amount\": \"%d\", \"duration\": \"%d\" }",
+                      skill_table[paf->type].name,
+                      affect_bit_name_nice( paf->bitvector ),
+                      affect_loc_name( paf->location ),
+                      paf->modifier,
+                      paf->duration );
 
-                                                strcat( buf, buf2 );
-                                        }
-                                }
+              strcat( buf, buf2 );
+          }
+        }
 				#else
 				if ( buf[0] == '\0' ) sprintf( buf, "[ {{ \"name\": \"%s\", \"duration\": \"%d\" }", skill_table[paf->type].name, paf->duration );
 				else
