@@ -90,7 +90,7 @@ typedef struct descriptor_data descriptor_t;
 /* These constants are used to send Discord information to the client, set appropriately.
 https://wiki.mudlet.org/w/Standards:Discord_GMCP */
 
-#define DISCORD_INVITE_URL "www.blarg.org"
+#define DISCORD_INVITE_URL "https://discord.gg/EjYUwSq4"
 #define DISCORD_APPLICACTION_ID ""
 #define DISCORD_ICON_1 ""
 #define DISCORD_ICON_2 ""
@@ -306,6 +306,7 @@ typedef enum
 	GMCP_AC,
 	GMCP_WORTH,
 	GMCP_AFFECTED,
+        GMCP_ITEMS,
 	GMCP_ENEMIES,
 	GMCP_ROOM,
 	GMCP_PACKAGE_MAX
@@ -346,6 +347,10 @@ typedef enum
 	GMCP_DEX_PERM,
 	GMCP_CON_PERM,
 	GMCP_WIMPY,
+        GMCP_CARRY_NUMBER,
+        GMCP_CARRY_MAXNUM,
+        GMCP_CARRY_WEIGHT,
+        GMCP_CARRY_MAXWEIGHT,
 
 	/* AC */
 	GMCP_AC_PIERCE,
@@ -366,6 +371,9 @@ typedef enum
 
 	/* Affected */
 	GMCP_AFFECT,
+
+        /* Inventory */
+	GMCP_INVENTORY,
 
 	/* Room */
 	GMCP_AREA,
