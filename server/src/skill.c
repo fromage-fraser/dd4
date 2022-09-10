@@ -3508,7 +3508,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 for (i = 0; i < BLUEPRINTS_MAX; i++)
                 {
 
-                        if(ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)]  > 0)
+                        if ((ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)]  > 0) && (blueprint_list[i].blueprint_cost[0] > 0))
                         {
                                 sprintf(buf, "{W%20s{x {G%7d{x%% {c%6d{x {C%6d{x {w%6d{x {y%3d{x {Y%3d{x {W%3d{x {R%3d{x\n\r",
                                 blueprint_list[i].blueprint_name,
@@ -3541,12 +3541,13 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         if (found == -1)
         {
+                send_to_char( "Unknown Blueprint\n\rTry wrapping your blueprint in '' if its more than one word.\n\r", ch);
                 send_to_char( "          Blueprints         Learned      Damage\n\r", ch);
                 send_to_char(bar, ch);
 
                 for (i = 0; i < BLUEPRINTS_MAX; i++)
                 {
-                        if( ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)] > 0)
+                        if ((ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)]  > 0) && (blueprint_list[i].blueprint_cost[0] > 0))
                         {
                                  sprintf(buf, "{W%20s{x {G%7d{x%% {c%6d{x {C%6d{x {w%6d{x {y%3d{x {Y%3d{x {W%3d{x {R%3d{x\n\r",
                                 blueprint_list[i].blueprint_name,
@@ -3996,8 +3997,8 @@ void do_engrave (CHAR_DATA *ch, char *argument)
         ||  cost_sm > ch->smelted_starmetal)
         {
                 send_to_char( "You don't have enough raw materials. You need:\n\r", ch );
-                sprintf(buf, "%d Steel %d Titanium %d Adamantite %d Electrum %d Starmetal and %d",
-                cost_st, cost_ti, cost_ad, cost_el, cost_sm, obj->level);
+                sprintf(buf, "%d Steel %d Titanium %d Adamantite %d Electrum %d Starmetal",
+                cost_st, cost_ti, cost_ad, cost_el, cost_sm);
                 act(buf, ch, NULL, NULL, TO_CHAR);
                 return;
         }
@@ -4031,6 +4032,208 @@ void do_engrave (CHAR_DATA *ch, char *argument)
         paf->next           = obj->affected;
         obj->affected       = paf;
 
+}
+
+void do_inscribe (CHAR_DATA *ch, char *argument)
+{
+        char            buf[MAX_STRING_LENGTH];
+        OBJ_DATA *obj;
+        OBJ_DATA *anvil;
+        char            arg[MAX_INPUT_LENGTH];
+
+        AFFECT_DATA *paf;
+        bool found_rune;
+        bool found_obj;
+        bool found_anvil;
+        int cost_st;
+        int cost_ti;
+        int cost_ad;
+        int cost_el;
+        int cost_sm;
+        int i;
+
+        one_argument(argument, arg);
+
+        if (IS_NPC(ch))
+                return;
+
+  /*      if (ch->sub_class != SUB_CLASS_RUNESMITH)
+        {
+                send_to_char( "You'd better find a Runesmith.\n\r", ch );
+                return;
+        }
+*/
+        if (arg[0] == '\0')
+        {
+                send_to_char("Either inscribe equipment/weapon or inscibe your rune.\n\r", ch);
+                return;
+        }
+
+
+/* --------------------------------- */
+        found_rune = FALSE;
+        for (i = 0; i < BLUEPRINTS_MAX; i++)
+        {
+                if (!strcmp( arg, blueprint_list[i].blueprint_name))
+                {
+                        found_rune = TRUE;
+                        break;
+                }
+        }
+
+
+        found_obj = FALSE;
+        if ((obj = get_obj_carry(ch, arg)))
+        {
+                found_obj = TRUE;
+        }
+
+        
+
+        if (!found_rune && (!found_obj))
+        {
+                send_to_char( "Cannot find the object or rune to inscribe within the room.\n\r", ch);
+                return;
+        }
+
+/*        if( !ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] )
+        {
+                send_to_char( "You don't know how to construct that.\n\r", ch );
+                return;
+        }
+*/
+        /* prefer finding runes over objects */
+        if (found_rune)
+        {
+                OBJ_DATA        *creation;
+                creation = create_object( get_obj_index( blueprint_list[i].blueprint_ref ), ch->level );
+                obj_to_room( creation, ch->in_room );
+                if (blueprint_list[i].blueprint_ego >= 1 )
+                {
+                        SET_BIT(creation->extra_flags, ITEM_EGO);
+                        SET_BIT(creation->ego_flags, blueprint_list[i].blueprint_ego);
+                }
+                set_obj_owner(creation, ch->name);
+
+                sprintf(buf, "You inscribe {W%s{x into the ground.", blueprint_list[i].blueprint_desc);
+                act(buf, ch, NULL, NULL, TO_CHAR);
+
+                sprintf(buf, "$n inscribes {W%s{x into the ground.", blueprint_list[i].blueprint_desc);
+                act(buf, ch, NULL, NULL, TO_ROOM);
+                return;
+        }
+ /*        ---------------------------  */
+        if (found_obj)
+        {
+                if (IS_SET(obj->extra_flags, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_INSCRIBED))
+                {
+                        send_to_char("That is already inscribed.\n\r", ch);
+                        return;
+                }
+
+                if (obj->wear_flags)
+                {
+                        int next;
+                        bit_explode(ch, buf, obj->wear_flags);
+
+                        for (next = 1; next <= BIT_17; next *= 2)
+                        {
+                                if (IS_SET(obj->wear_flags, next))
+                                {
+                                        if (
+                                        !str_cmp( wear_flag_name(next), "float")
+                                        || !str_cmp( wear_flag_name(next), "neck")
+                                        || !str_cmp( wear_flag_name(next), "about" ) )
+                                        {
+                                                send_to_char("You cannot inscribe that type of armour.\n\r", ch);
+                                                return;
+                                        }
+                                }
+                        }
+                }
+        
+                found_anvil = FALSE;
+                for (anvil = ch->in_room->contents; anvil; anvil = anvil->next_content)
+                {
+                        if (anvil->item_type == ITEM_ANVIL)
+                        {
+                                found_anvil = TRUE;
+                                break;
+                        }
+                }
+
+                if ((!found_anvil) && (found_obj))
+                {
+                        send_to_char("You will need to find an anvil.\n\r", ch);
+                        return;
+                }
+                
+                
+                cost_sm =0;
+                cost_ad = 0;
+                cost_el = 0;
+                cost_st = 0;
+                cost_ti = 0;
+
+                if ( (obj->level > 90) )
+                        cost_sm = 1;
+
+                if (obj->level > 70 )
+                        cost_el = 10;
+
+                if (obj->level > 50 )
+                        cost_ad = 15;
+                if (obj->level > 25 )
+                        cost_ti = 20;
+                if (obj->level > 15 )
+                        cost_st = 10;
+                if (obj->level >= 1 )
+                        cost_st += 12;
+
+                if ( cost_st > ch->smelted_steel
+                ||  cost_ti > ch->smelted_titanium
+                ||  cost_ad > ch->smelted_adamantite
+                ||  cost_el > ch->smelted_electrum
+                ||  cost_sm > ch->smelted_starmetal)
+                {
+                        send_to_char( "You don't have enough raw materials. You need:\n\r", ch );
+                        sprintf(buf, "%d Steel %d Titanium %d Adamantite %d Electrum %d Starmetal",
+                        cost_st, cost_ti, cost_ad, cost_el, cost_sm);
+                        act(buf, ch, NULL, NULL, TO_CHAR);
+                        return;
+                }
+
+                if (number_percent() > ch->pcdata->learned[gsn_inscribe])
+                {
+                        send_to_char("You slip while inscribing!\n\r", ch);
+                        act ("$n slips while inscribing $s armour!", ch, NULL, NULL, TO_ROOM);
+                        smelted_to_char( cost_st, cost_ti, cost_ad, cost_el, cost_sm, ch, COINS_REPLACE);
+                        return;
+                }
+
+                act ("$P glows softly as the inscriptions form in the forge.", ch, NULL, obj, TO_CHAR);
+                act ("$n skilfully inscribes $P!", ch, NULL, obj, TO_ROOM);
+                smelted_to_char( cost_st, cost_ti, cost_ad, cost_el, cost_sm, ch, COINS_REPLACE);
+
+                SET_BIT(obj->extra_flags, ITEM_EGO);
+                SET_BIT(obj->ego_flags, EGO_ITEM_INSCRIBED);
+                set_obj_owner(obj, ch->name);
+                if (!affect_free)
+                        paf = alloc_perm(sizeof(*paf));
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+
+                paf->type           = gsn_inscribe;
+                paf->duration       = -1;
+                paf->location       = APPLY_INSCRIBED;
+                paf->modifier       = 1 + ( ch->level / 15 );
+                paf->bitvector      = 0;
+                paf->next           = obj->affected;
+                obj->affected       = paf;
+        }
 }
 
 void do_serrate (CHAR_DATA *ch, char *argument)
@@ -4405,12 +4608,13 @@ void do_trigger (CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
         OBJ_DATA *turret;
-        OBJ_DATA *obj;
-        OBJ_DATA *obj_next;
+        OBJ_DATA *module;
+        OBJ_DATA *turret_unit;
         char      arg1 [ MAX_INPUT_LENGTH ];
         char      arg2 [ MAX_INPUT_LENGTH ];
-        int        sn;
-        int        glookup;
+        int     glookup;
+        int     unit;
+        int     i;
 
         argument = one_argument(argument, arg1);
         argument = one_argument(argument, arg2);
@@ -4432,104 +4636,311 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (  (arg1[0] == '\0' || arg2[0] == '\0') )
+        if (  (arg1[0] == '\0' ) )
         {
                 send_to_char( "Trigger what against who?\n\r", ch );
                 return;
         }
 
-        if (arg2[0] == '\0')
+        for (turret = ch->in_room->contents; turret; turret = turret->next_content)
         {
-                send_to_char ("Who would you trigger an attack on?\n\r", ch);
-                return;
+                if (IS_SET(turret->ego_flags, EGO_ITEM_TURRET))
+                        break;
         }
-
-        if (!( victim = get_char_room( ch, arg2) ) )
-        {
-
-                send_to_char ("They aren't here.\n\r", ch);
-                return;
-        }
-
-        if (victim == ch)
-        {
-                send_to_char("You cant target yourself.\n\r", ch);
-                return;
-        }
-
-        if (is_safe(ch, victim))
-                return;
-
-        if (ch->position < POS_STANDING)
-        {
-                send_to_char("You're not ready.\n\r", ch);
-                return;
-        }
-
-        turret = get_obj_here(ch, "turret");
-
+        
         if (!turret)
         {
                 send_to_char("Your turret is not deployed!\n\r", ch);
                 return;
-        }
-        else
-        {
-                        /*
-                        if (!check_blind(ch))
-                                return;
-                        */
+        } 
 
-                if (!(obj = get_obj_list(ch, arg1, turret->contains )))
+
+        if (!str_cmp(arg1, "all"))
+        {
+                send_to_char("You cant trigger everything at once.\n\r", ch);
+                return;
+        }
+        /* trigger 1 object in the turret' */
+
+        /*if (str_cmp(arg1, "all") && str_prefix("all.", arg1)) */
+        if (str_prefix("all.", arg1))
+        {
+                if (!(module = get_obj_list(ch, arg1, turret->contains )) && (arg2[0] == '\0' ))
                 {
                         send_to_char("That module is not in your turret.\n\r", ch);
                         return;
                 }
-                else
+                
+                if (module->level > ch->level)
                 {
-                        if (obj->level > ch->level)
+                        act("$p is too high level for you.", ch, module, NULL, TO_CHAR);
+                        return;
+                }
+
+                /* find some module details - this is for the defensive modules that produce units */
+                for (i = 0; i < BLUEPRINTS_MAX; i++)
+                {
+                        if (module->pIndexData->vnum == blueprint_list[i].blueprint_ref)
                         {
-                                act("$p is too high level for you.", ch, obj, NULL, TO_CHAR);
+                                glookup = skill_lookup(blueprint_list[i].skill_name);
+                                unit = blueprint_list[i].blueprint_damage[2];
+                                break;
+                        }
+                        glookup = -1;
+                        unit = -1;
+                }
+
+                /* check if a unit already exists */
+                for (turret_unit = ch->in_room->contents; turret_unit; turret_unit = turret_unit->next_content)
+                {
+                        if (turret_unit->pIndexData->vnum == unit)
+                        {
+                                send_to_char("That module unit already exists here.\n\r", ch);
                                 return;
                         }
                 }
-        }
 
-        if (!IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE) )
-        {
-                send_to_char("How did that get in there - it's not a turret module! (report bug).\n\r", ch);
-                return;
-        }
-
-        for (obj = get_obj_list(ch, arg1, turret->contains ); obj; obj = obj_next)
-        {
-                obj_next = obj->next_content;
-                glookup = -1;
-                for ( sn = 0; sn < MAX_SKILL; sn++ )
+                /* Deploy a defenseive module unit */         
+                if ((module->item_type == ITEM_DEFENSIVE_TURRET_MODULE) && (unit >= 1))
                 {
-                        if (!str_cmp(skill_table[sn].name,arg1))
+                
+                        if ( number_range(0,100) < ch->pcdata->learned[gsn_trigger])
                         {
-                                glookup = sn;
-                                break;
+                                OBJ_DATA *deployed;  
+
+                                deployed = create_object( get_obj_index( unit ), ch->level );
+                                obj_to_room(deployed, ch->in_room);
+                                act("Your turret deploys $p.", ch, deployed, NULL ,TO_CHAR);
+                                act("$n deploys $p from their turret.", ch, deployed, NULL, TO_ROOM);
+                                set_obj_owner(deployed, ch->name); 
+                                if (--module->value[2] <= 0)
+                                {
+                                        act("Your $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_CHAR);
+                                        act("$n's $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_ROOM);
+                                        extract_obj(module);
+                                }
+                                return;  
+                        }
+                        else
+                        {
+                                act("The triggering mechanism fails for the $p. Nothing happens.", ch, turret, NULL ,TO_CHAR);
+                                act("$n triggers $m $p, but nothing happens.", ch, turret, NULL, TO_ROOM);
+                                if (--module->value[2] <= 0)
+                                {
+                                        act("Your $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_CHAR);
+                                        act("$n's $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_ROOM);
+                                        extract_obj(module);
+                                }
+                                return; 
                         }
                 }
-
-                if ( number_range(0,100) < ch->pcdata->learned[gsn_dart])
+                
+                if ((module->item_type == ITEM_DEFENSIVE_TURRET_MODULE) && (unit <= 0))
                 {
-                        /* moght do a case here depending on type of module      */
-                        act("You trigger your $p.", ch, obj, NULL ,TO_CHAR);
-                        act("$n triggers $m $p.", ch, obj, NULL, TO_ROOM);
-                        damage(ch, victim, number_range(10, ch->level), glookup, FALSE);
+                        send_to_char("BUG: cant lookup unit from module.\n\r", ch);
+                        return;
+                }
+
+                /* If you have an offensive module */
+                if (arg2[0] == '\0')
+                {
+                        send_to_char ("Who would you trigger an attack on?\n\r", ch);
+                        return;
+                }
+
+                if (!( victim = get_char_room( ch, arg2) ) )
+                {
+
+                        send_to_char ("They aren't here.\n\r", ch);
+                        return;
+                }
+
+                if (victim == ch)
+                {
+                        send_to_char("You cant target yourself.\n\r", ch);
+                        return;
+                }
+
+                if (is_safe(ch, victim))
+                        return;
+
+                if (!IS_SET(module->ego_flags, EGO_ITEM_TURRET_MODULE) )
+                {
+                        send_to_char("How did that get in there - it's not a turret module! (report bug).\n\r", ch);
+                        return;
+                }
+
+                if (( number_percent() < ch->pcdata->learned[gsn_trigger]) && (glookup > 1))
+                {
+                        /* moght do a case here depending on type of module      */ 
+                        act("You trigger your $p.", ch, turret, NULL ,TO_CHAR);
+                        act("$n triggers $m $p.", ch, turret, NULL, TO_ROOM);
+                        damage(ch, victim, number_range(module->value[0],module->value[1]), glookup, FALSE);   
+                        if (--module->value[2] <= 0)
+                        {
+                                act("Your $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_CHAR);
+                                act("$n's $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_ROOM);
+                                extract_obj(module);
+                        }     
                 }
                 else
                 {
-                        act("The triggering mechanism collapses for the $p. Nothing happens.", ch, obj, NULL ,TO_CHAR);
-                        act("$n triggers $m $p, but nothing happens.", ch, obj, NULL, TO_ROOM);
+                        act("The triggering mechanism fails for the $p. Nothing happens.", ch, turret, NULL ,TO_CHAR);
+                        act("$n triggers $m $p, but nothing happens.", ch, turret, NULL, TO_ROOM);
+                        if (--module->value[2] <= 0)
+                        {
+                                act("Your $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_CHAR);
+                                act("$n's $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_ROOM);
+                                extract_obj(module);
+                        }
                 }
+                return;
         }
+        else
+        {
+                /* trigger  ' ALL.modules' */
+                OBJ_DATA *module_next;
 
-        return;
+                for (module = turret->contains; module; module = module_next)
+                {
+                        module_next = module->next_content;
+
+                        if ((arg1[3] == '\0' || is_name(&arg1[4], module->name)))
+                        {
+                                if (!(module = get_obj_list(ch, &arg1[4], turret->contains )))
+                                {
+                                        send_to_char("That module is not in your turret.\n\r", ch);
+                                        return;
+                                }
+                                
+                                if (module->item_type == ITEM_DEFENSIVE_TURRET_MODULE)
+                                        return;
+                
+                                if (module->level > ch->level)
+                                {
+                                        act("$p is too high level for you.", ch, module, NULL, TO_CHAR);
+                                        return;
+                                }
+
+                                /* find some module details - this is for the defensive modules that produce units */
+                                for (i = 0; i < BLUEPRINTS_MAX; i++)
+                                {
+                                        if (module->pIndexData->vnum == blueprint_list[i].blueprint_ref)
+                                        {
+                                                glookup = skill_lookup(blueprint_list[i].skill_name);
+                                                unit = blueprint_list[i].blueprint_damage[2];
+                                                break;
+                                        }
+                                        glookup = -1;
+                                        unit = -1;
+                                }
+
+                                /* check if a unit already exists */
+                                for (turret_unit = ch->in_room->contents; turret_unit; turret_unit = turret_unit->next_content)
+                                {
+                                        if (turret_unit->pIndexData->vnum == unit)
+                                        {
+                                                send_to_char("That module unit already exists here.\n\r", ch);
+                                                return;
+                                        }
+                                }
+
+                                /* Deploy a defenseive module unit */         
+                                if ((module->item_type == ITEM_DEFENSIVE_TURRET_MODULE) && (unit >= 1))
+                                {
+                                
+                                        if ( number_range(0,100) < ch->pcdata->learned[gsn_trigger])
+                                        {
+                                                OBJ_DATA *deployed;  
+
+                                                deployed = create_object( get_obj_index( unit ), ch->level );
+                                                obj_to_room(deployed, ch->in_room);
+                                                act("Your turret deploys $p.", ch, deployed, NULL ,TO_CHAR);
+                                                act("$n deploys $p from their turret.", ch, deployed, NULL, TO_ROOM);
+                                                set_obj_owner(deployed, ch->name); 
+                                                if (--module->value[2] <= 0)
+                                                {
+                                                        act("Your $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_CHAR);
+                                                        act("$n's $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_ROOM);
+                                                        extract_obj(module);
+                                                }
+                                                return;  
+                                        }
+                                        else
+                                        {
+                                                act("The triggering mechanism fails for the $p. Nothing happens.", ch, turret, NULL ,TO_CHAR);
+                                                act("$n triggers $m $p, but nothing happens.", ch, turret, NULL, TO_ROOM);
+                                                if (--module->value[2] <= 0)
+                                                {
+                                                        act("Your $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_CHAR);
+                                                        act("$n's $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_ROOM);
+                                                        extract_obj(module);
+                                                }
+                                                return; 
+                                        }
+                                }
+                                
+                                if ((module->item_type == ITEM_DEFENSIVE_TURRET_MODULE) && (unit <= 0))
+                                {
+                                        send_to_char("BUG: cant lookup unit from module.\n\r", ch);
+                                        return;
+                                }
+
+                                /* If you have an offensive module */
+                                if (arg2[0] == '\0')
+                                {
+                                        send_to_char ("Who would you trigger an attack on?\n\r", ch);
+                                        return;
+                                }
+
+                                if (!( victim = get_char_room( ch, arg2) ) )
+                                {
+
+                                        send_to_char ("They aren't here.\n\r", ch);
+                                        return;
+                                }
+
+                                if (victim == ch)
+                                {
+                                        send_to_char("You cant target yourself.\n\r", ch);
+                                        return;
+                                }
+
+                                if (is_safe(ch, victim))
+                                        return;
+
+                                if (!IS_SET(module->ego_flags, EGO_ITEM_TURRET_MODULE) )
+                                {
+                                        send_to_char("How did that get in there - it's not a turret module! (report bug).\n\r", ch);
+                                        return;
+                                }
+
+                                if (( number_percent() < ch->pcdata->learned[gsn_trigger]) && (glookup > 1))
+                                {
+                                        damage(ch, victim, number_range(module->value[0],module->value[1]), glookup, FALSE); 
+                                        if (--module->value[2] <= 0)
+                                        {
+                                                act("Your $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_CHAR);
+                                                act("$n's $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_ROOM);
+                                                extract_obj(module);
+                                        }     
+                                }
+                                else
+                                {
+                                        act("The triggering mechanism fails for the $p. Nothing happens.", ch, module, NULL ,TO_CHAR);
+                                        act("$n triggers $m $p, but nothing happens.", ch, turret, NULL, TO_ROOM);
+                                        if (--module->value[2] <= 0)
+                                        {
+                                                act("Your $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_CHAR);
+                                                act("$n's $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_ROOM);
+                                                extract_obj(module);
+                                        }
+                                }
+                        }
+                }
+        }      
 }
+
 
 
 void do_classify( CHAR_DATA *ch, char *arg )

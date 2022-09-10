@@ -707,7 +707,7 @@ void obj_cast_spell( int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DA
             case TAR_CHAR_DEFENSIVE:
                 if ( !victim )
                         victim = ch;
-
+                
                 if (!IS_NPC(ch)
                     && !IS_NPC(victim)
                     && victim->level > 10
@@ -3531,6 +3531,8 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
 
             case ITEM_WAND:
             case ITEM_STAFF:
+            case ITEM_COMBAT_PULSE:
+            case ITEM_DEFENSIVE_PULSE:
                 if (obj->value[2] == 1 && obj->value[1] == 1)
                         sprintf(buf, "It contains {W1{x charge of level {W%d{x",
                                 obj->value[0]);
@@ -7224,6 +7226,7 @@ void spell_lore( int sn, int level, CHAR_DATA *ch, void *vo )
         &&   obj->item_type != ITEM_WHETSTONE
         &&   obj->item_type != ITEM_CRAFT
         &&   obj->item_type != ITEM_TURRET_MODULE
+        &&   obj->item_type != ITEM_TURRET
         &&   obj->item_type != ITEM_FORGE )
         {
                 send_to_char ( "You can't determine this item's properties.\n\r", ch );
@@ -8068,6 +8071,132 @@ void spell_chaos_blast (int sn, int level, CHAR_DATA *ch, void *vo)
 
 }
 
+
+void spell_runic_flames (int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        CHAR_DATA *victim = (CHAR_DATA *) vo;
+        int dam;
+
+        dam = dice(level, 4) + level;
+
+        if (saves_spell(level, victim))
+                dam /= 2;
+
+        damage(ch, victim, dam, sn, FALSE);
+}
+
+void spell_runic_frost (int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        CHAR_DATA *victim = (CHAR_DATA *) vo;
+        int dam;
+
+        dam = dice(level, 4) + level;
+
+        if (saves_spell(level, victim))
+                dam /= 2;
+
+        damage(ch, victim, dam, sn, FALSE);
+}
+
+void spell_runic_bolts (int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        CHAR_DATA *victim = (CHAR_DATA *) vo;
+        int dam;
+
+        dam = dice(level, 4) + level;
+
+        if (saves_spell(level, victim))
+                dam /= 2;
+
+        damage(ch, victim, dam, sn, FALSE);
+}
+
+void spell_runic_stab (int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        CHAR_DATA *victim = (CHAR_DATA *) vo;
+        int dam;
+
+        dam = dice(level, 4) + level;
+
+        if (saves_spell(level, victim))
+                dam /= 2;
+
+        damage(ch, victim, dam, sn, FALSE);
+}
+
+void spell_runic_rend (int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        CHAR_DATA *victim = (CHAR_DATA *) vo;
+        int dam;
+
+        dam = dice(level, 4) + level;
+
+        if (saves_spell(level, victim))
+                dam /= 2;
+
+        damage(ch, victim, dam, sn, FALSE);
+}
+
+
+
+void spell_runic_mend( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+        CHAR_DATA *victim = (CHAR_DATA *) vo;
+        int heal;
+
+        heal = 4 + dice( 4, 8 ) + level;
+
+        if (heal > 75)
+                heal = 75;
+
+        if( victim->hit > victim->max_hit )
+                return;
+
+        victim->hit = UMIN( victim->hit + heal, victim->max_hit - victim->aggro_dam );
+        update_pos( victim );
+
+        send_to_char( "You feel better!\n\r", victim );
+}
+
+void spell_runic_cure( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+        CHAR_DATA *victim = (CHAR_DATA *) vo;
+
+        if (!is_affected(victim, gsn_poison))
+                return;
+
+        affect_strip(victim, gsn_poison);
+
+        if (ch != victim)
+        {
+                act( "You purge the poison from $M.", ch, NULL, victim, TO_CHAR );
+                check_group_bonus(ch);
+        }
+
+        send_to_char("A warm feeling runs through your body.\n\r", victim);
+        act("$N looks better.", ch, NULL, victim, TO_NOTVICT);
+
+}
+
+void spell_runic_ward( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+        CHAR_DATA *victim = (CHAR_DATA *) vo;
+
+        if (!is_affected(victim, gsn_poison))
+                return;
+
+        affect_strip(victim, gsn_poison);
+
+        if (ch != victim)
+        {
+                act( "You purge the poison from $M.", ch, NULL, victim, TO_CHAR );
+                check_group_bonus(ch);
+        }
+
+        send_to_char("A warm feeling runs through your body.\n\r", victim);
+        act("$N looks better.", ch, NULL, victim, TO_NOTVICT);
+
+}
 
 /*
  * Some affect types cannot be dispelled
