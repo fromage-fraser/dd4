@@ -449,6 +449,12 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
 
         if (IS_AFFECTED (victim, AFF_GLOBE ))
                 strcat(buf, "<220>(Globed)<0> " );
+        
+        if (IS_SET(victim->act, ACT_QUESTMASTER) && (!IS_SET(ch->act, PLR_QUESTOR)))
+                strcat(buf, "<11>(!)<0> ");
+
+        if (IS_SET(victim->act, ACT_QUESTMASTER) && (IS_SET(ch->act, PLR_QUESTOR)))
+                strcat(buf, "<11>(?)<0> ");      
 
         if (!IS_NPC(victim ) && IS_SET(victim->status, PLR_KILLER )  )
                 strcat(buf, "<254>(KILLER)<0> " );
@@ -704,13 +710,82 @@ void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
         case ITEM_ARMOR:
                 if (ch->pcdata->learned[gsn_innate_knowledge] >55)
                 {
-                sprintf( buf, "It has an armour class of {W%d{x.\n\r", obj->value[0] );
+                sprintf( tmp, "It has an armour class of {W%d{x.\n\r", obj->value[0] );
                 strcat( buf, tmp);
                 }
                 else
                 {
                         sprintf( tmp, "You can't determine the armour class of %s yet.\n\r", obj->short_descr);
                         strcat( buf, tmp);
+                }
+                break;
+
+        case ITEM_TURRET_MODULE:
+                if (ch->pcdata->learned[gsn_innate_knowledge] >5)
+                {
+                        sprintf( tmp, "This module does {W%d{x to {W%d{x points of damage. It has {W%d/%d{x charges.\n\r",
+                                obj->value[0],
+                                obj->value[1],
+                                obj->value[2],
+                                obj->value[3]);
+                        strcat( buf, tmp);   
+                }
+                break;
+
+        case ITEM_TURRET:
+                if (ch->pcdata->learned[gsn_innate_knowledge] >5)
+                {
+
+                        if (ch->pcdata->learned[gsn_turret] > 1 )
+                        {
+                                sprintf( tmp, "SLOT 1 of 4: ENABLED\n\r" );
+                                strcat( buf, tmp);
+
+                        }
+                        if (ch->pcdata->learned[gsn_turret] > 60 )
+                        {
+                                sprintf( tmp, "SLOT 2 of 4: ENABLED\n\r" );
+                                strcat( buf, tmp);
+
+                        }
+                        else
+                        {
+                                sprintf( tmp, "SLOT 2 of 4: DISABLED\n\r" );
+                                strcat( buf, tmp);    
+                        }
+                        if (ch->pcdata->learned[gsn_turret] > 85 )
+                        {
+                                sprintf( tmp, "SLOT 3 of 4: ENABLED\n\r" );
+                                strcat( buf, tmp);
+
+                        }
+                        else
+                        {
+                                sprintf( tmp, "SLOT 3 of 4: DISABLED\n\r" );
+                                strcat( buf, tmp);    
+                        }
+                        if (ch->pcdata->learned[gsn_turret] > 95 )
+                        {
+                                sprintf( tmp, "SLOT 4 of 4: ENABLED\n\r" );
+                                strcat( buf, tmp);
+
+                        }
+                        else
+                        {
+                                sprintf( tmp, "SLOT 4 of 4: DISABLED\n\r" );
+                                strcat( buf, tmp);    
+                        }
+    
+                }
+                break;
+
+        case ITEM_DEFENSIVE_TURRET_MODULE:
+                if (ch->pcdata->learned[gsn_innate_knowledge] >5)
+                {
+                        sprintf( tmp, "This module has {W%d/%d{x charges.\n\r",
+                                obj->value[2],
+                                obj->value[3]);
+                        strcat( buf, tmp);   
                 }
                 break;
         }
@@ -779,14 +854,14 @@ void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
         {
                 if  (ch->pcdata->learned[gsn_innate_knowledge] < 20)
                 {
-                        sprintf( tmp, "%s has been enhanced by a smithy.\n\r", obj->short_descr);
+                        sprintf( tmp, "%s has been enhanced...\n\r", obj->short_descr);
                         strcat( buf, tmp);
                 }
                 else{
 
-                        strcat( buf, tmp);
-                        sprintf( tmp, "<560><15>Smithy Enhancements:<561><0>\n\r");
 
+                        sprintf( tmp, "<560><15>Smithy Enhancements:<561><0>\n\r");
+                        
                         if (IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
                                 strcat (tmp, "<228>I<229>m<230>b<231>u<230>e<229>d<0>\n\r");
                         if (IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
@@ -950,6 +1025,7 @@ void do_look( CHAR_DATA *ch, char *argument )
                         break;
 
                     case ITEM_CONTAINER:
+                    case ITEM_TURRET:
                     case ITEM_CORPSE_NPC:
                     case ITEM_CORPSE_PC:
                         if ( IS_SET( obj->value[1], CONT_CLOSED ) )
@@ -980,7 +1056,11 @@ void do_look( CHAR_DATA *ch, char *argument )
                         if ( pdesc )
                         {
                                 send_to_char( pdesc, ch );
-                                if ( (ch->class == CLASS_SMITHY) && (obj->item_type == ITEM_WEAPON || obj->item_type == ITEM_ARMOR) )
+                                if ( (ch->class == CLASS_SMITHY) 
+                                        && (obj->item_type == ITEM_WEAPON 
+                                        || obj->item_type == ITEM_ARMOR
+                                        || obj->item_type == ITEM_TURRET_MODULE
+                                        || obj->item_type == ITEM_DEFENSIVE_TURRET_MODULE) )
                                 {
                                         print_smithy_data( ch, obj, buf1);
                                         send_to_char( buf1, ch );
@@ -992,7 +1072,11 @@ void do_look( CHAR_DATA *ch, char *argument )
                         if ( pdesc )
                         {
                                 send_to_char( pdesc, ch );
-                                if ( (ch->class == CLASS_SMITHY) && (obj->item_type == ITEM_WEAPON || obj->item_type == ITEM_ARMOR) )
+                                if ( (ch->class == CLASS_SMITHY) 
+                                        && (obj->item_type == ITEM_WEAPON 
+                                        || obj->item_type == ITEM_ARMOR
+                                        || obj->item_type == ITEM_TURRET_MODULE
+                                        || obj->item_type == ITEM_DEFENSIVE_TURRET_MODULE) )
                                 {
                                         print_smithy_data( ch, obj, buf1);
                                         send_to_char( buf1, ch );
@@ -1008,7 +1092,11 @@ void do_look( CHAR_DATA *ch, char *argument )
                         send_to_char( "\n\r", ch );
 
                         if ( (ch->class == CLASS_SMITHY) &&
-                                (obj->item_type == ITEM_WEAPON || obj->item_type == ITEM_ARMOR) )
+                                (obj->item_type == ITEM_WEAPON 
+                                || obj->item_type == ITEM_ARMOR
+                                || obj->item_type == ITEM_TURRET_MODULE
+                                || obj->item_type == ITEM_TURRET
+                                || obj->item_type == ITEM_DEFENSIVE_TURRET_MODULE) )
                         {
                                 print_smithy_data( ch, obj, buf1);
                                 send_to_char( buf1, ch );
@@ -1132,6 +1220,7 @@ void do_examine (CHAR_DATA *ch, char *argument)
                 {
                     case ITEM_DRINK_CON:
                     case ITEM_CONTAINER:
+                    case ITEM_TURRET:
                     case ITEM_CORPSE_NPC:
                     case ITEM_CORPSE_PC:
                         send_to_char ("When you look inside, you see:\n\r", ch);

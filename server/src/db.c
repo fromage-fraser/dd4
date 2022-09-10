@@ -586,7 +586,7 @@ int     gsn_rare_set;
 int     gsn_bloodforged_set;
 int     gsn_astral_set;
 int     gsn_steel_broadsword;
-int     gsn_titanium_rapier;
+int     gsn_titanium_rapier;   
 int     gsn_repelling;
 int     gsn_craft_weapon;
 int     gsn_counterbalance;
@@ -629,7 +629,16 @@ int     gsn_serrate;
 int     gsn_innate_knowledge;
 int     gsn_spit_mucus;
 int     gsn_steam_breath;
-
+int     gsn_adamantite_katana;
+int     gsn_electrum_sword;
+int     gsn_starmetal_dual_blade;
+int     gsn_blade_module;
+int     gsn_shuriken_module;
+int     gsn_spear_module;
+int     gsn_arrestor_module;
+int     gsn_driver_module;
+int     gsn_reflector_module;
+int     gsn_shield_module;
 /*
  *  Spell groups
  */
@@ -3217,6 +3226,11 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
             case ITEM_CRAFT:
             case ITEM_SPELLCRAFT:
             case ITEM_FORGE:
+            case ITEM_ARRESTOR_UNIT:
+            case ITEM_REFLECTOR_UNIT: 
+            case ITEM_DEFENSIVE_TURRET_MODULE: 
+            case ITEM_TURRET_MODULE:    
+            case ITEM_TURRET:
                 break;
 
             case ITEM_TREASURE:
@@ -3226,6 +3240,10 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
             case ITEM_SCROLL:
                 obj->value[0]   = number_fuzzy( obj->value[0] );
                 break;
+        
+            case ITEM_SHIELD_UNIT:
+            case ITEM_DRIVER_UNIT:
+                obj->value[0]   = (level /7);
 
             case ITEM_WAND:
                 obj->value[0]   = number_fuzzy( obj->value[0] );
@@ -3263,7 +3281,8 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
                 {
                         break;
                 }
-                else{
+                else
+                {
                         obj->value[1]   = number_fuzzy( number_fuzzy( 1 * level / 4 + 2 ) );
                         obj->value[2]   = number_fuzzy( number_fuzzy( 3 * level / 4 + 6 ) );
                         break;
