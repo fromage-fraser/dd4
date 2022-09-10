@@ -2306,7 +2306,7 @@ void update_handler ()
         static int pulse_mobile;
         static int pulse_violence;
         static int pulse_point;
-        static int pulse_msdp; /* <--- GMCP */
+        static int pulse_msdp; /* <--- GCMP */
 
         sprintf (last_function, "entering update_hander");
 
@@ -2357,7 +2357,7 @@ void update_handler ()
 
         sprintf (last_function, "calling gmcp_update");
         gmcp_update();   /* Comment this out to disable for troubleshooting */
-        
+
         /* <---- GMCP */
 
         sprintf (last_function, "calling time_update");
@@ -2725,8 +2725,8 @@ void gmcp_update( void )
 	for ( d = descriptor_list; d != NULL; d = d->next )
 	{
 		if ( d->character && d->connected == CON_PLAYING && !IS_NPC(d->character) )
-                {
-
+    {
+                
 			ROOM_INDEX_DATA *room = d->character->in_room;
 			CHAR_DATA       *enemy = d->character->fighting;
 			AFFECT_DATA     *paf;
@@ -2789,7 +2789,6 @@ void gmcp_update( void )
       UpdateGMCPNumber( d, GMCP_FAME, d->character->pcdata->fame );
       UpdateGMCPNumber( d, GMCP_SAVE_VS, d->character->saving_throw );
 
-
 			UpdateGMCPNumber( d, GMCP_ALIGNMENT, d->character->alignment );
 			UpdateGMCPNumber( d, GMCP_LEVEL, d->character->level );
 			UpdateGMCPNumber( d, GMCP_XP, d->character->exp );
@@ -2805,6 +2804,7 @@ void gmcp_update( void )
 			UpdateGMCPNumber( d, GMCP_ADAMANTITE, d->character->smelted_adamantite );
 			UpdateGMCPNumber( d, GMCP_ELECTRUM, d->character->smelted_electrum );
 			UpdateGMCPNumber( d, GMCP_STARMETAL, d->character->smelted_starmetal );
+
 
       UpdateGMCPString( d, GMCP_AREA, d->character->in_room->area->name );
 			UpdateGMCPString( d, GMCP_ROOM_NAME, d->character->in_room->name );
@@ -2835,7 +2835,7 @@ void gmcp_update( void )
 
 			/* sprintf( buf, "%d", room->vnum ); */
 
-      /*	if ( room && strcmp( buf, d->pProtocol->GMCPVariable[GMCP_ROOM_VNUM] ) )
+		        /*	if ( room && strcmp( buf, d->pProtocol->GMCPVariable[GMCP_ROOM_VNUM] ) )
 			{
 				static const char *exit[] = { "n", "e", "s", "w", "u", "d" };
 				int i;
@@ -2885,10 +2885,21 @@ void gmcp_update( void )
 					if ( enemy == ch->fighting || ch->fighting == d->character )
 					{
 						#ifndef COLOR_CODE_FIX
-						if ( buf[0] == '\0' ) sprintf( buf, "[ { \"name\": \"%s\", \"level\": \"%d\", \"hp\": \"%d\", \"maxhp\": \"%d\" }", enemy->name, enemy->level, enemy->hit, enemy->max_hit );
+						if ( buf[0] == '\0' )
+                                                {
+                                                        sprintf( buf, "[ { \"name\": \"%s\", \"level\": \"%d\", \"hp\": \"%d\", \"maxhp\": \"%d\" }",
+                                                                (IS_NPC(enemy) ? enemy->short_descr : enemy->name),
+                                                                enemy->level,
+                                                                enemy->hit,
+                                                                enemy->max_hit );
+                                                }
 						else
 						{
-							sprintf( buf2, ", { \"name\": \"%s\", \"level\": \"%d\", \"hp\": \"%d\", \"maxhp\": \"%d\" }", enemy->name, enemy->level, enemy->hit, enemy->max_hit );
+							sprintf( buf2, ", { \"name\": \"%s\", \"level\": \"%d\", \"hp\": \"%d\", \"maxhp\": \"%d\" }",
+                                                                (IS_NPC(enemy) ? enemy->short_descr : enemy->name),
+                                                                enemy->level,
+                                                                enemy->hit,
+                                                                enemy->max_hit );
 							strcat( buf, buf2 );
 						}
 						#else
@@ -2916,7 +2927,6 @@ void gmcp_update( void )
 			{
       
 				#ifndef COLOR_CODE_FIX
-
         if ( paf->deleted != 1 )
         {
                 if ( buf[0] == '\0' )
@@ -2940,6 +2950,7 @@ void gmcp_update( void )
                         strcat( buf, buf2 );
                 }
         }
+
 				#else
 				if ( buf[0] == '\0' ) sprintf( buf, "[ {{ \"name\": \"%s\", \"duration\": \"%d\" }", skill_table[paf->type].name, paf->duration );
 				else
