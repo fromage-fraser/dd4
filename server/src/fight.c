@@ -416,6 +416,47 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 }
         }
 
+        /* Pulse objects go off every round (mainly alchemists) */
+        if ( !IS_NPC(ch) )
+        {
+                OBJ_DATA *pulse;
+                for (pulse = ch->in_room->contents; pulse; pulse = pulse->next_content)
+                {
+                        if (pulse->item_type == ITEM_COMBAT_PULSE || ITEM_DEFENSIVE_PULSE)
+                        {
+                                if (skill_table[pulse->value[3]].target == TAR_CHAR_DEFENSIVE )
+                                        victim = ch; 
+
+                                if (victim)
+                                {
+                                        if (ch == victim)
+                                        {
+                                                act("Your $p pulses.", ch, pulse, victim, TO_CHAR);
+                                                act("$n's $p pulses.", ch, pulse, victim, TO_NOTVICT);
+                                        }
+                                        else
+                                        {
+                                                act("$p pulses and targets $N.", ch, pulse, victim, TO_CHAR);
+                                                act("$n's $p pulses and targets you!", ch, pulse, victim, TO_VICT);
+                                                act("$n's $p pulses and targets $p.", ch, pulse, victim, TO_NOTVICT);
+                                        }
+                                }
+                                else
+                                {
+                                        act("You pulese  with $p.", ch, pulse, NULL, TO_CHAR);
+                                        act("$n pulse with $p.", ch, pulse, NULL, TO_ROOM);
+                                }
+                                obj_cast_spell(pulse->value[3], pulse->value[0], ch, victim, pulse); 
+                        }
+                        if (--pulse->value[2] <= 0)
+                        {
+                                act("Your $p explodes into fragments.", ch, pulse, NULL, TO_CHAR);
+                                act("$n's $p explodes into fragments.", ch, pulse, NULL, TO_ROOM);
+                                extract_obj(pulse);
+                        }
+                }
+        }
+
         /*
          * Multiple attacks for shifter forms
          */

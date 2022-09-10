@@ -106,12 +106,13 @@ is damaged it hardly needs repair.
 & 95 'armoursmithing'
 & 95 'mech tech'
 & 95 'turret tech'
-& 95 'alchemy'
+& 95 'rune casting'
+& 95 'runic arts'
 & 95 'inscription'
 & 95 'advanced smithing'
 & 95 'weapon lore'
 & 30 'engineer base'
-& 30 'alchemist base'
+& 30 'runesmith base'
 #31003
 armorer~
 the Armorer~
@@ -1032,10 +1033,11 @@ in your presense. He has knowldege to obtain.
 & 95 'armoursmithing'
 & 95 'mech tech'
 & 95 'turret tech'
-& 95 'alchemy'
+& 95 'runic arts'
+& 95 'rune casting'
 & 95 'inscription'
 & 30 'engineer base'
-& 30 'alchemist base'
+& 30 'runesmith base'
 
 #0
 
