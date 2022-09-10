@@ -113,7 +113,7 @@ int     gsn_barbarian_base;
 int     gsn_bard_base;
 int     gsn_smithy_base;
 int     gsn_engineer_base;
-int     gsn_alchemist_base;
+int     gsn_runesmith_base;
 int     gsn_teacher_base;
 
 
@@ -610,17 +610,17 @@ int     gsn_forager;
 int     gsn_spyglass;
 int     gsn_base;
 int     gsn_miner;
-int     gsn_fire_flask;
-int     gsn_frost_flask;
-int     gsn_stun_flask;
-int     gsn_blind_flask;
-int     gsn_lightning_flask;
-int     gsn_acid_flask;
-int     gsn_bmf_flask;
+int     gsn_pyro_rune;
+int     gsn_cyro_rune;
+int     gsn_bolt_rune;
+int     gsn_stab_rune;
+int     gsn_rend_rune;
+int     gsn_mend_rune;
+int     gsn_cure_rune;
 int     gsn_inscribe;
-int     gsn_enhancement;
-int     gsn_healing;
-int     gsn_ward;
+int     gsn_runic_blade;
+int     gsn_ward_rune;
+int     gsn_group_rune_casting;
 int     gsn_slow;
 int     gsn_stabilise;
 int     gsn_flukeslap;
@@ -639,6 +639,16 @@ int     gsn_arrestor_module;
 int     gsn_driver_module;
 int     gsn_reflector_module;
 int     gsn_shield_module;
+int     gsn_lightning_lunge;
+int     gsn_fiery_strike;
+int     gsn_death_strike;
+int     gsn_conducting_blast;
+int     gsn_group_runic_arts;
+int     gsn_adamantite_runic_blade;
+int     gsn_electrum_runic_blade;
+int     gsn_starmetal_runic_blade;
+
+
 /*
  *  Spell groups
  */
@@ -695,7 +705,7 @@ int     gsn_group_resistance;
 int     gsn_group_weaponsmith;
 int     gsn_group_armoursmith;
 int     gsn_group_inscription;
-int     gsn_group_alchemy;
+int     gsn_runic_arts;
 int     gsn_group_turret_tech;
 int     gsn_group_mech_tech;
 int     gsn_group_adv_smith;
@@ -1939,6 +1949,8 @@ void load_objects( FILE *fp )
 
                     case ITEM_STAFF:
                     case ITEM_WAND:
+                    case ITEM_COMBAT_PULSE:
+                    case ITEM_DEFENSIVE_PULSE:
                         pObjIndex->value[0] = atoi( value[0] );
                         pObjIndex->value[1] = atoi( value[1] );
                         pObjIndex->value[2] = atoi( value[2] );
@@ -2923,6 +2935,8 @@ void reset_area( AREA_DATA *pArea )
                                                 break;
 
                                             case ITEM_WAND:
+                                            case ITEM_COMBAT_PULSE:
+                                            case ITEM_DEFENSIVE_PULSE:
                                                 olevel = number_range( 10, 20 );
                                                 break;
 
@@ -3246,6 +3260,8 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
                 obj->value[0]   = (level /7);
 
             case ITEM_WAND:
+            case ITEM_COMBAT_PULSE:
+            case ITEM_DEFENSIVE_PULSE:
                 obj->value[0]   = number_fuzzy( obj->value[0] );
                 obj->value[1]   = number_fuzzy( obj->value[1] );
                 obj->value[2]   = obj->value[1];

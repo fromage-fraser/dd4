@@ -3035,14 +3035,13 @@ const struct gmcp_package_struct GMCPPackageTable[GMCP_PACKAGE_MAX+1] =
 	{ GMCP_BASE,					GMCP_SUPPORT_CHAR,			"Char",			"Base"		},
 	{ GMCP_VITALS,					GMCP_SUPPORT_CHAR,			"Char",			"Vitals"	},
 	{ GMCP_STATS,					GMCP_SUPPORT_CHAR,			"Char",			"Stats"		},
-	{ GMCP_AC,					GMCP_SUPPORT_CHAR,			"Char",			"AC"		},
 	{ GMCP_WORTH,					GMCP_SUPPORT_CHAR,			"Char",			"Worth"		},
 	{ GMCP_AFFECTED,				GMCP_SUPPORT_CHAR,			"Char",			"Affect"	},
 	{ GMCP_ITEMS,				        GMCP_SUPPORT_CHAR,			"Char",			"Items"	        },
 	{ GMCP_ENEMIES,					GMCP_SUPPORT_CHAR,			"Char",			"Enemies"	},
 	{ GMCP_ROOM,					GMCP_SUPPORT_ROOM,			"Room",			"Info"		},
 
-	{ GMCP_PACKAGE_MAX,				-1,							"",				""			}
+	{ GMCP_PACKAGE_MAX,				-1,					    "",			""		}
 };
 
 const struct gmcp_support_struct bGMCPSupportTable[GMCP_SUPPORT_MAX+1] =
@@ -3068,6 +3067,7 @@ const struct gmcp_variable_struct GMCPVariableTable[GMCP_MAX+1] =
 	{ GMCP_MAX_HP,		GMCP_VITALS,		"maxhp",		GMCP_NUMBER	},
 	{ GMCP_MAX_MANA,	GMCP_VITALS,		"maxmana",		GMCP_NUMBER	},
 	{ GMCP_MAX_MOVE,	GMCP_VITALS,		"maxmove",		GMCP_NUMBER	},
+	{ GMCP_POSITION,	GMCP_VITALS,		"position",		GMCP_NUMBER	},
 
 	{ GMCP_STR,		GMCP_STATS,		"str",			GMCP_NUMBER	},
 	{ GMCP_INT,		GMCP_STATS,		"int",			GMCP_NUMBER	},
@@ -3076,28 +3076,35 @@ const struct gmcp_variable_struct GMCPVariableTable[GMCP_MAX+1] =
 	{ GMCP_CON,		GMCP_STATS,		"con",			GMCP_NUMBER	},
 	{ GMCP_HITROLL,		GMCP_STATS,		"hitroll",		GMCP_NUMBER	},
 	{ GMCP_DAMROLL,		GMCP_STATS,		"damroll",		GMCP_NUMBER	},
-	{ GMCP_STR_PERM,	GMCP_STATS,		"permstr",		GMCP_NUMBER	},
-	{ GMCP_INT_PERM,	GMCP_STATS,		"permint",		GMCP_NUMBER	},
-	{ GMCP_WIS_PERM,	GMCP_STATS,		"permwis",		GMCP_NUMBER	},
-	{ GMCP_DEX_PERM,	GMCP_STATS,		"permdex",		GMCP_NUMBER	},
-	{ GMCP_CON_PERM,	GMCP_STATS,		"permcon",		GMCP_NUMBER	},
+	{ GMCP_STR_MOD, 	GMCP_STATS,		"str_mod",		GMCP_NUMBER	},
+	{ GMCP_INT_MOD,	        GMCP_STATS,		"int_mod",		GMCP_NUMBER	},
+	{ GMCP_WIS_MOD,	        GMCP_STATS,		"wis_mod",		GMCP_NUMBER	},
+	{ GMCP_DEX_MOD,	        GMCP_STATS,		"dex_mod",		GMCP_NUMBER	},
+	{ GMCP_CON_MOD,	        GMCP_STATS,		"con_mod",		GMCP_NUMBER	},
 	{ GMCP_WIMPY,		GMCP_STATS,		"wimpy",		GMCP_NUMBER	},
   { GMCP_CARRY_NUMBER,    GMCP_STATS,		"carry_num",		GMCP_NUMBER	},
   { GMCP_CARRY_MAXNUM,    GMCP_STATS,		"maxcarry_num",		GMCP_NUMBER	},
   { GMCP_CARRY_WEIGHT,    GMCP_STATS,		"carry_wt",		GMCP_NUMBER	},
   { GMCP_CARRY_MAXWEIGHT, GMCP_STATS,		"maxcarry_wt",	        GMCP_NUMBER	},
-
-	{ GMCP_AC_PIERCE,	GMCP_AC,		"pierce",		GMCP_NUMBER	},
-	{ GMCP_AC_BASH,		GMCP_AC,		"bash",			GMCP_NUMBER	},
-	{ GMCP_AC_SLASH,	GMCP_AC,		"slash",		GMCP_NUMBER	},
-	{ GMCP_AC_EXOTIC,	GMCP_AC,		"exotic",		GMCP_NUMBER	},
+	{ GMCP_AC,	        GMCP_STATS,		"ac",		        GMCP_NUMBER	},
+	{ GMCP_FAME,	        GMCP_STATS,		"fame",		        GMCP_NUMBER	},
+	{ GMCP_SAVE_VS,	        GMCP_STATS,		"save_vs",		GMCP_NUMBER	},
 
 	{ GMCP_ALIGNMENT,	GMCP_WORTH,		"alignment",	        GMCP_NUMBER	},
+	{ GMCP_LEVEL,	        GMCP_WORTH,		"level",	        GMCP_NUMBER	},
 	{ GMCP_XP,		GMCP_WORTH,		"xp",			GMCP_NUMBER	},
 	{ GMCP_XP_MAX,		GMCP_WORTH,		"maxxp",		GMCP_NUMBER	},
 	{ GMCP_XP_TNL,		GMCP_WORTH,		"xptnl",		GMCP_NUMBER	},
 	{ GMCP_PRACTICE,	GMCP_WORTH,		"practice",		GMCP_NUMBER	},
-	{ GMCP_MONEY,		GMCP_WORTH,		"money",		GMCP_NUMBER	},
+	{ GMCP_PLATINUM,	GMCP_WORTH,		"platinum",		GMCP_NUMBER	},
+	{ GMCP_GOLD,		GMCP_WORTH,		"gold",		        GMCP_NUMBER	},
+	{ GMCP_SILVER,		GMCP_WORTH,		"silver",		GMCP_NUMBER	},
+	{ GMCP_COPPER,		GMCP_WORTH,		"copper",		GMCP_NUMBER	},
+	{ GMCP_STEEL,           GMCP_WORTH,		"steel",		GMCP_NUMBER	},
+	{ GMCP_TITANIUM,        GMCP_WORTH,		"titanium",		GMCP_NUMBER	},
+	{ GMCP_ADAMANTITE,      GMCP_WORTH,		"adamantite",		GMCP_NUMBER	},
+	{ GMCP_ELECTRUM,        GMCP_WORTH,		"electrum",		GMCP_NUMBER	},
+	{ GMCP_STARMETAL,       GMCP_WORTH,		"starmetal",		GMCP_NUMBER	},
 
 	{ GMCP_ENEMY,		GMCP_ENEMIES,		NULL,			GMCP_ARRAY	},
 
@@ -3107,8 +3114,10 @@ const struct gmcp_variable_struct GMCPVariableTable[GMCP_MAX+1] =
 
 	{ GMCP_AREA,		GMCP_ROOM,		"area",			GMCP_STRING	},
 	{ GMCP_ROOM_NAME,	GMCP_ROOM,		"name",			GMCP_STRING	},
-	{ GMCP_ROOM_EXITS,	GMCP_ROOM,		"exit",			GMCP_OBJECT	},
+	{ GMCP_ROOM_SECT,	GMCP_ROOM,		"sector",		GMCP_NUMBER	},
+	{ GMCP_ROOM_FLAGS,	GMCP_ROOM,		"flags",		GMCP_STRING	},
 	{ GMCP_ROOM_VNUM,	GMCP_ROOM,		"vnum",			GMCP_NUMBER	},
+	{ GMCP_ROOM_EXITS,	GMCP_ROOM,		"exit",			GMCP_OBJECT	},
 
 	{ GMCP_MAX,			-1,		"",			GMCP_NUMBER	}
 };

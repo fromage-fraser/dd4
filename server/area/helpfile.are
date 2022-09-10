@@ -1480,7 +1480,7 @@ retrieve objects from a player's corpse.
 Syntax: arena
 
 By typing this command, you are transported into the Arena of Death. The
-Arena is a place where players can come an attempt to kill each other
+Arena is a place where players can come and attempt to kill each other
 without the fear of getting a KILLER flag or any other penalties for dying
 that they might normally get (loss of experience, fame, etc).
 
@@ -2602,7 +2602,7 @@ SUB_CLASS_MARTIAL_ARTIST    14
 SUB_CLASS_BARBARIAN         15
 SUB_CLASS_BARD              16
 SUB_CLASS_ENGINEER          17
-SUB_CLASS_ALCHEMIST         18
+SUB_CLASS_RUNESMITH         18
 ~
 
 103 FORCE~

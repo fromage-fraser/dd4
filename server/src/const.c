@@ -109,7 +109,7 @@ const struct class_type class_table [ MAX_CLASS ] =
                 "Smi",  "Smithy",
                 APPLY_STR,  OBJ_VNUM_SCHOOL_SWORD,
                 0,  85, 18,  0,  10, 13,  FALSE,
-                "Engineer",  "Alchemist",  "Eng",  "Alc",
+                "Engineer",  "Runesmith",  "Eng",  "Run",
                 { 2, 2, 0, -2, 0 }
         }
 
@@ -141,7 +141,7 @@ const struct sub_class_type sub_class_table [ MAX_SUB_CLASS ] =
         {       "Brb",  "Barbarian",            APPLY_STR,      FALSE   },
         {       "Brd",  "Bard",                 APPLY_DEX,      TRUE    },
         {       "Eng",  "Engineer",             APPLY_INT,      FALSE   },
-        {       "Alc",  "Alchemist",            APPLY_INT,      FALSE   }
+        {       "Run",  "Runesmith",            APPLY_INT,      FALSE   }
 };
 
 
@@ -321,6 +321,17 @@ const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
         { "adamantite katana",    "Adamantite Katana of souls",         OBJ_VNUM_AD_SWORD1,     -1,                     { 30, 45, 0 },      { 25, 0, 0, 0, 0 },    "adamantite katana" },
         { "electrum sword",       "HeartForged electrum sword",         OBJ_VNUM_EL_SWORD1,     -1,                     { 50, 67, 0 },      { 25, 0, 0, 0, 0 },    "electrum sword" },
         { "starmetal dual blade", "Starmetal Dual-Vibro Blade",         OBJ_VNUM_SM_SWORD1,     -1,                     { 69, 169, 0 },      { 25, 0, 0, 0, 0 },   "starmetal dual blade" },
+        { "adamantite runic blade", "Adamantite Runic Blade",           OBJ_VNUM_AD_RB,     -1,                     { 69, 169, 0 },      { 25, 0, 0, 0, 0 },   "adamantite runic blade" },
+        { "electrum runic blade", "Electrum Runic Blade",               OBJ_VNUM_EL_RB,     -1,                     { 69, 169, 0 },      { 25, 0, 0, 0, 0 },   "electrum runic blade" },
+        { "starmetal runic blade", "Starmetal Runic Blade",             OBJ_VNUM_SM_RB,     -1,                     { 69, 169, 0 },      { 25, 0, 0, 0, 0 },   "starmetal runic blade" },
+        { "pyro rune",          "Pyro Rune",                            OBJ_VNUM_PYRO_RUNE,     -1,         { 0, 0, 0 },      { 0, 0, 0, 0, 0 },   "pyro rune" },
+        { "cyro rune",          "Cyro Rune",                            OBJ_VNUM_CYRO_RUNE,     -1,         { 0, 0, 0 },      { 0, 0, 0, 0, 0 },   "cyro rune" },
+        { "bolt rune",          "Bolt Rune",                            OBJ_VNUM_BOLT_RUNE,     -1,         { 0, 0, 0 },      { 0, 0, 0, 0, 0 },   "bolt rune" },
+        { "stab rune",          "Stab Rune",                            OBJ_VNUM_STAB_RUNE,     -1,         { 0, 0, 0 },      { 0, 0, 0, 0, 0 },   "stab rune" },
+        { "rend rune",          "Rend Rune",                            OBJ_VNUM_REND_RUNE,     -1,         { 0, 0, 0 },      { 0, 0, 0, 0, 0 },   "rend rune" },
+        { "mending rune",       "Mending Rune",                         OBJ_VNUM_MEND_RUNE,     -1,         { 0, 0, 0 },      { 0, 0, 0, 0, 0 },   "mending rune" },
+        { "cure rune",          "Cure Rune",                            OBJ_VNUM_CURE_RUNE,     -1,         { 0, 0, 0 },      { 0, 0, 0, 0, 0 },   "cure rune" },
+        { "ward rune",          "Ward Rune",                            OBJ_VNUM_WARD_RUNE,     -1,         { 0, 0, 0 },      { 0, 0, 0, 0, 0 },   "ward rune" },
 
 };
 
@@ -1911,7 +1922,7 @@ struct pre_req_struct pre_req_table [ MAX_PRE_REQ ] =
 #include "pre_reqs/pre_req-barbarian.c"
 #include "pre_reqs/pre_req-smithy.c"
 #include "pre_reqs/pre_req-engineer.c"
-#include "pre_reqs/pre_req-alchemist.c"
+#include "pre_reqs/pre_req-runesmith.c"
 };
 
 
@@ -1975,10 +1986,11 @@ const int *spell_groups [ MAX_GROUPS ] =
         &gsn_group_weaponsmith,
         &gsn_group_turret_tech,
         &gsn_group_mech_tech,
-        &gsn_group_alchemy,
+        &gsn_group_runic_arts,
         &gsn_group_inscription,
         &gsn_group_adv_smith,
         &gsn_group_weaponlore,
+        &gsn_group_rune_casting,
         &gsn_group_last
 
 };
@@ -2469,21 +2481,23 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_base,          		                0 },
         { &gsn_miner,          		                0 },
 
-        { &gsn_group_alchemy,          		        0 },
-        { &gsn_fire_flask,            		        0 },
-        { &gsn_frost_flask,           		        0 },
-        { &gsn_stun_flask,                              0 },
-        { &gsn_blind_flask,                   	        0 },
-        { &gsn_lightning_flask,           		0 },
-        { &gsn_acid_flask,                              0 },
-        { &gsn_bmf_flask,                               0 },
+        { &gsn_group_runic_arts,          		        0 },
+        { &gsn_pyro_rune,            		        0 },
+        { &gsn_cyro_rune,           		        0 },
+        { &gsn_bolt_rune,                              0 },
+        { &gsn_stab_rune,                   	        0 },
+        { &gsn_rend_rune,           		        0 },
+        { &gsn_mend_rune,                              0 },
+        { &gsn_cure_rune,                               0 },
+        { &gsn_ward_rune,                               0 },
 
         { &gsn_group_inscription, 	       	        0 },
         { &gsn_inscribe,                  	        0 },
         { &gsn_protection,                   	        0 },
-        { &gsn_enhancement,                   	        0 },
-        { &gsn_healing,                                 0 },
-        { &gsn_ward,                                    0 },
+        { &gsn_adamantite_runic_blade,                  0 },
+        { &gsn_electrum_runic_blade,              	0 },
+        { &gsn_starmetal_runic_blade,                   0 },
+
 
         { &gsn_group_adv_smith,                         0 },
         { &gsn_bloodforged_set,                         0 },
@@ -2496,6 +2510,10 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_engrave,                                 0 },
         { &gsn_discharge,                               0 },
         { &gsn_empower,                                 0 },
+
+        { &gsn_group_rune_casting,                      0 },
+        { &gsn_fiery_strike,                            0 },
+        { &gsn_lightning_lunge,                         0 },
 
         {&gsn_group_last,                              0 }
 };
@@ -6111,10 +6129,10 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
 
         {
-                "alchemy", &gsn_group_alchemy,
+                "runic arts", &gsn_group_runic_arts,
                 TYPE_INT, TAR_IGNORE, POS_DEAD,
                 spell_null, 0, 0,
-                "", "!Group Alchemy!"
+                "", "!Group Runic Arts!"
         },
 
         {
@@ -6208,8 +6226,96 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "", "!Starmetal dual blade!"
         },
 
+        {
+                "inscribe", &gsn_inscribe,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 24,
+                "inscribe", "!Inscribe!"
+        },
 
+        {
+                "adamantite runic blade", &gsn_adamantite_runic_blade,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "runic blade", "!Adamantite runic blade!"
+        },
 
+        {
+                "electrum runic blade", &gsn_electrum_runic_blade,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "runic blade", "!Electrum runic blade!"
+        },
+
+        {
+                "starmetal runic blade", &gsn_starmetal_runic_blade,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "runic blade", "!Starmetal runic blade!"
+        },
+
+        {
+                "pyro rune", &gsn_pyro_rune,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                spell_runic_flames, 0, 0,
+                "runic flames", "!Pyro rune!"
+        },
+
+        {
+                "cyro rune", &gsn_cyro_rune,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                spell_runic_frost, 0, 0,
+                "runic frost", "!Cyro rune!"
+        },
+
+        {
+                "bolt rune", &gsn_bolt_rune,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                spell_runic_bolts, 0, 0,
+                "runic bolts", "!Bolt rune!"
+        },
+
+        {
+                "stab rune", &gsn_stab_rune,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                spell_runic_stab, 0, 0,
+                "runic stab", "!Pyro rune!"
+        },
+
+        {
+                "rend rune", &gsn_rend_rune,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                spell_runic_rend, 0, 0,
+                "runic rend", "!Rend rune!"
+        },
+
+        {
+                "mending rune", &gsn_mend_rune,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
+                spell_runic_mend, 0, 0,
+                "runic mend", "!Mending rune!"
+        },
+
+        {
+                "cure rune", &gsn_cure_rune,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
+                spell_runic_cure, 0, 0,
+                "runic cure", "!Cure rune!"
+        },
+
+        {
+                "ward rune", &gsn_ward_rune,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
+                spell_runic_ward, 0, 0,
+                "runic cure", "!Ward rune!"
+        },
+
+        {
+                "rune casting", &gsn_group_rune_casting,
+                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                spell_null, 0, 0,
+                "", "!Group Rune Casting!"
+        },
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
          */
@@ -6406,10 +6512,10 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
 
         {
-                "alchemist base", &gsn_alchemist_base,
+                "runesmith base", &gsn_runesmith_base,
                 TYPE_NULL, TAR_IGNORE, POS_STANDING,
                 spell_null, 0, 0,
-                "", "!-alchemist base-!"
+                "", "!-runesmith base-!"
         },
 
         /*
