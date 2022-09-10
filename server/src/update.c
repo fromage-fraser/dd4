@@ -2732,18 +2732,23 @@ void gmcp_update( void )
                         char            buf[MAX_STRING_LENGTH];
 			char            buf2[MAX_STRING_LENGTH];
 			char            buf3[MAX_STRING_LENGTH];
+			char            buf4[MAX_STRING_LENGTH];
                         char            **prgpstrShow;
                         char            *pstrShow;
                         int             *prgnShow;
                         int             obj_count;
                         int             nShow;
                         int             iShow;
+                        int             rNext;
+                        int             rSetcount;
                         bool            fShort;
                         bool            fShowNothing;
                         bool            fCombine;
 
                         obj_count       = 0;
                         nShow           = 0;
+                        rNext           = 0;
+                        rSetcount       = 0;
                         fShort          = TRUE;
                         fShowNothing    = TRUE;
 
@@ -2757,12 +2762,20 @@ void gmcp_update( void )
 			UpdateGMCPNumber( d, GMCP_MAX_HP, d->character->max_hit );
 			UpdateGMCPNumber( d, GMCP_MAX_MANA, d->character->max_mana );
 			UpdateGMCPNumber( d, GMCP_MAX_MOVE, d->character->max_move );
+			UpdateGMCPNumber( d, GMCP_POSITION, d->character->position );
 
 			UpdateGMCPNumber( d, GMCP_STR, d->character->pcdata->perm_str );
 			UpdateGMCPNumber( d, GMCP_INT, d->character->pcdata->perm_int );
 			UpdateGMCPNumber( d, GMCP_WIS, d->character->pcdata->perm_wis );
 			UpdateGMCPNumber( d, GMCP_DEX, d->character->pcdata->perm_dex );
 			UpdateGMCPNumber( d, GMCP_CON, d->character->pcdata->perm_con);
+
+			UpdateGMCPNumber( d, GMCP_STR_MOD, (get_curr_str(d->character)) );
+			UpdateGMCPNumber( d, GMCP_INT_MOD, (get_curr_int(d->character)) );
+			UpdateGMCPNumber( d, GMCP_WIS_MOD, (get_curr_wis(d->character)) );
+			UpdateGMCPNumber( d, GMCP_DEX_MOD, (get_curr_dex(d->character)) );
+			UpdateGMCPNumber( d, GMCP_CON_MOD, (get_curr_con(d->character)) );
+
 			UpdateGMCPNumber( d, GMCP_HITROLL, GET_HITROLL( d->character ) );
 			UpdateGMCPNumber( d, GMCP_DAMROLL, GET_DAMROLL( d->character ) );
 			UpdateGMCPNumber( d, GMCP_WIMPY, d->character->wimpy );
@@ -2770,20 +2783,54 @@ void gmcp_update( void )
 			UpdateGMCPNumber( d, GMCP_CARRY_MAXNUM, ( can_carry_n( d->character ) ) );
 			UpdateGMCPNumber( d, GMCP_CARRY_WEIGHT, ( d->character->carry_weight + d->character->coin_weight ) );
 			UpdateGMCPNumber( d, GMCP_CARRY_MAXWEIGHT, ( can_carry_w( d->character ) ) );
+                        UpdateGMCPNumber( d, GMCP_AC, GET_AC( d->character) );
+                        UpdateGMCPNumber( d, GMCP_FAME, d->character->pcdata->fame );
+                        UpdateGMCPNumber( d, GMCP_SAVE_VS, d->character->saving_throw );
 
-		        /*	UpdateGMCPNumber( d, GMCP_AC_PIERCE, GET_AC( d->character, AC_PIERCE ) );
-			        UpdateGMCPNumber( d, GMCP_AC_BASH, GET_AC( d->character, AC_BASH ) );
-			        UpdateGMCPNumber( d, GMCP_AC_SLASH, GET_AC( d->character, AC_SLASH ) );
-			        UpdateGMCPNumber( d, GMCP_AC_EXOTIC, GET_AC( d->character, AC_EXOTIC ) );
-                        */
 			UpdateGMCPNumber( d, GMCP_ALIGNMENT, d->character->alignment );
+			UpdateGMCPNumber( d, GMCP_LEVEL, d->character->level );
 			UpdateGMCPNumber( d, GMCP_XP, d->character->exp );
 			UpdateGMCPNumber( d, GMCP_XP_MAX, (level_table[ d->character->level].exp_total) );
 			UpdateGMCPNumber( d, GMCP_XP_TNL, ( level_table[ d->character->level].exp_total) - d->character->exp );
 			UpdateGMCPNumber( d, GMCP_PRACTICE, d->character->pcdata->str_prac );
-			UpdateGMCPNumber( d, GMCP_MONEY, d->character->gold );
+			UpdateGMCPNumber( d, GMCP_PLATINUM, d->character->plat );
+			UpdateGMCPNumber( d, GMCP_GOLD, d->character->gold );
+			UpdateGMCPNumber( d, GMCP_SILVER, d->character->silver );
+			UpdateGMCPNumber( d, GMCP_COPPER, d->character->copper );
+			UpdateGMCPNumber( d, GMCP_STEEL, d->character->smelted_steel );
+			UpdateGMCPNumber( d, GMCP_TITANIUM, d->character->smelted_titanium );
+			UpdateGMCPNumber( d, GMCP_ADAMANTITE, d->character->smelted_adamantite );
+			UpdateGMCPNumber( d, GMCP_ELECTRUM, d->character->smelted_electrum );
+			UpdateGMCPNumber( d, GMCP_STARMETAL, d->character->smelted_starmetal );
 
-			sprintf( buf, "%d", room->vnum );
+                        UpdateGMCPString( d, GMCP_AREA, d->character->in_room->area->name );
+			UpdateGMCPString( d, GMCP_ROOM_NAME, d->character->in_room->name );
+			UpdateGMCPNumber( d, GMCP_ROOM_SECT, d->character->in_room->sector_type );
+			UpdateGMCPNumber( d, GMCP_ROOM_VNUM, d->character->in_room->vnum );
+                        UpdateGMCPNumber( d, GMCP_ROOM_FLAGS, d->character->in_room->room_flags );
+
+                        buf4[0] = '\0';
+                        if (d->character->in_room->room_flags)
+                        {
+                                for (rNext = 1; rNext > 0 && rNext <= BIT_25; rNext *= 2)
+                                {
+                                        if (IS_SET(d->character->in_room->room_flags, rNext))
+                                        {
+                                                rSetcount++;
+
+                                                if (rSetcount != 1)
+                                                        strcat(buf4, " ");
+
+                                                strcat(buf4, room_flag_name(rNext));
+                                        }
+                                }
+                        }
+                        rSetcount = 0;
+                        /* log_string(buf4); */
+			UpdateGMCPString( d, GMCP_ROOM_FLAGS, buf4 );
+                        buf4[0] = '\0';
+
+			/* sprintf( buf, "%d", room->vnum ); */
 
 		        /*	if ( room && strcmp( buf, d->pProtocol->GMCPVariable[GMCP_ROOM_VNUM] ) )
 			{
