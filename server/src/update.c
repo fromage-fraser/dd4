@@ -2306,7 +2306,7 @@ void update_handler ()
         static int pulse_mobile;
         static int pulse_violence;
         static int pulse_point;
-        static  int     pulse_msdp; /* <--- GCMP */
+        static int pulse_msdp; /* <--- GMCP */
 
         sprintf (last_function, "entering update_hander");
 

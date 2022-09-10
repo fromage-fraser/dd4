@@ -365,6 +365,11 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 ch->saving_throw += mod;
                 break;
 
+            case APPLY_INSCRIBED:
+                af.type = skill_lookup( "inscribe");
+                ch->inscription_total += mod;
+                break;
+
             case APPLY_STRENGTHEN:
                 af.type = skill_lookup( "strengthen");
                 if ( fAdd )
@@ -1188,7 +1193,6 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
         {
                 int count;
                 count=0;
-                send_to_char ( "You wear a part of a set.\n\r", ch);
                 for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
                 {
                         count++;
@@ -2718,6 +2722,7 @@ char *affect_loc_name( int location )
             case APPLY_STRENGTHEN:              return "damage mitigation";
             case APPLY_ENGRAVED:                return "damage enhancement";
             case APPLY_SERRATED:                return "bleed over time";
+            case APPLY_INSCRIBED:               return "rune focus";
         }
 
         bug( "Affect_location_name: unknown location %d.", location );
@@ -3196,7 +3201,7 @@ char *full_sub_class_name (int sub_class)
         if (sub_class == SUB_CLASS_BARBARIAN)           return "Barbarian";
         if (sub_class == SUB_CLASS_BARD)                return "Bard";
         if (sub_class == SUB_CLASS_ENGINEER)            return "Engineer";
-        if (sub_class == SUB_CLASS_ALCHEMIST)           return "Alchemist";
+        if (sub_class == SUB_CLASS_RUNESMITH)           return "Alchemist";
 
         return "none";
 }
@@ -3310,6 +3315,7 @@ char *extra_bit_name (unsigned long int extra_flags)
             case ITEM_BOW:                  return "bow";
             case ITEM_ANTI_SMITHY:          return "anti_smithy";
             case ITEM_CURSED:               return "cursed";
+            case ITEM_RUNE:                 return "rune";
 
             default: return "(unknown)";
         }

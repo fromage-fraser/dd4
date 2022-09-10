@@ -160,6 +160,12 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
                 strcat( buf, "<514><556><16>-=[<560>LEGENDARY<561>]=-<0><557> " );
         }
 
+        if ( IS_OBJ_STAT( obj, ITEM_DEPLOYED))
+                strcat( buf, "[DEPLOYED] ");
+        
+        if ( IS_OBJ_STAT( obj, ITEM_RUNE))
+                strcat( buf, "[Channeling] ");
+
         if ( IS_OBJ_STAT( obj, ITEM_INVIS) )
                 strcat( buf, "<39>(Invis)<0> " );
 
@@ -3459,7 +3465,7 @@ void show_slist (CHAR_DATA *ch, int number)
             case SUB_CLASS_BARBARIAN: do_help(ch, "sbarbarian"); break;
             case SUB_CLASS_BARD: do_help(ch, "sbard"); break;
             case SUB_CLASS_ENGINEER: do_help(ch, "sbard"); break;
-            case SUB_CLASS_ALCHEMIST: do_help(ch, "sbard"); break;
+            case SUB_CLASS_RUNESMITH: do_help(ch, "sbard"); break;
 
             default: break;
         }

@@ -236,7 +236,7 @@ struct imbue_types
 
 #define MAX_IMBUE 9
 
-#define BLUEPRINTS_MAX  32
+#define BLUEPRINTS_MAX  43
 
 /* Blueprint structure : blueprint_name, blueprint_desc, blueprint_ref, blueprint_cost steel, titanium, adamantite, electrum, starmetal */
 struct blueprint_type
@@ -319,10 +319,10 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   555     /* 10 Smithy and Engineer post 30 skills' -Brutus 29/8/22 */
-#define MAX_PRE_REQ                 1396    /* +9 for smithy & engy post 30 - Brutus 27/8/22 */
-#define MAX_SPELL_GROUP             448     /* +4 - for post 30 engineer skills Brutus 27/8/22 */
-#define MAX_GROUPS                  60      /* added smithy groups - Brutus Aug 2022 */
+#define MAX_SKILL                   568     /* +13 runic blades and skills -Brutus 9/9/22 */
+#define MAX_PRE_REQ                 1397    /* 1 for runesmith  for smithy & engy post 30 - Brutus 27/8/22 */
+#define MAX_SPELL_GROUP             451    /* +3 - for post 30 engineer skills Brutus 27/8/22 */
+#define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
 #define MAX_VAMPIRE_GAG             27      /* 26 + 1 for 'swallow' | ugly vampire/werewolf hack */
 
@@ -579,7 +579,7 @@ struct quest_recall
 #define SUB_CLASS_BARBARIAN                     15
 #define SUB_CLASS_BARD                          16
 #define SUB_CLASS_ENGINEER                      17
-#define SUB_CLASS_ALCHEMIST                     18
+#define SUB_CLASS_RUNESMITH                     18
 
 #define CLASS_WARLOCK   SUB_CLASS_WARLOCK
 
@@ -610,7 +610,7 @@ struct quest_recall
 #define PRE_BARBARIAN      SUB_CLASS_BARBARIAN         + MAX_CLASS
 #define PRE_BARD           SUB_CLASS_MONK              + MAX_CLASS
 #define PRE_ENGINEER       SUB_CLASS_ENGINEER          + MAX_CLASS
-#define PRE_ALCHEMIST      SUB_CLASS_ALCHEMIST         + MAX_CLASS
+#define PRE_RUNESMITH      SUB_CLASS_RUNESMITH         + MAX_CLASS
 
 /* Set this to the &gsn of your new base class if you add new classes.
    Used in do_change and do_advance. */
@@ -1946,7 +1946,17 @@ extern  WANTED_DATA *wanted_list_last;
 #define OBJ_VNUM_DRIVER_UNIT          2731
 #define OBJ_VNUM_REFLECTOR_UNIT          2732
 #define OBJ_VNUM_SHIELD_UNIT          2733
-
+#define OBJ_VNUM_AD_RB                  2734
+#define OBJ_VNUM_EL_RB                  2735
+#define OBJ_VNUM_SM_RB                  2736
+#define OBJ_VNUM_PYRO_RUNE                  2737
+#define OBJ_VNUM_CYRO_RUNE                  2738
+#define OBJ_VNUM_BOLT_RUNE                  2739
+#define OBJ_VNUM_STAB_RUNE                  2740
+#define OBJ_VNUM_REND_RUNE                  2741
+#define OBJ_VNUM_MEND_RUNE                  2742
+#define OBJ_VNUM_CURE_RUNE                  2743
+#define OBJ_VNUM_WARD_RUNE                  2744
 
 /* End SMithy Stuff */
 
@@ -2042,7 +2052,6 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_DEFENSIVE_PULSE                    51
 
 
-
 /*
  * Extra flags.
  * Used in #OBJECTS.
@@ -2079,6 +2088,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_ANTI_SHAPE_SHIFTER         BIT_29
 #define ITEM_BOW                        BIT_30
 #define ITEM_ANTI_SMITHY                BIT_34
+#define ITEM_DEPLOYED                   BIT_35
+#define ITEM_RUNE                       BIT_36
 #define ITEM_CURSED                     BIT_61  /* carrier attacked by mobs with DETECT_CURSE, magic travel nonfunctional if carried */
 
 
@@ -2156,6 +2167,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define EGO_ITEM_EMPOWERED              BIT_11 /*Empowered weapon */
 #define EGO_ITEM_ENGRAVED               BIT_12 /* ENGRAVED armour */
 #define EGO_ITEM_SERRATED                BIT_13 /*Serated weapon */
+#define EGO_ITEM_INSCRIBED             BIT_14
+
 
 /*
  * Apply types (for affects).
@@ -2210,6 +2223,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define APPLY_STRENGTHEN                        46
 #define APPLY_ENGRAVED                          47
 #define APPLY_SERRATED                          48
+#define APPLY_INSCRIBED                         49
 
 /*
  * Values for containers (value[1]).
@@ -2600,6 +2614,7 @@ struct char_data
         int                     exp_modifier;
         int                     damage_mitigation;
         int                     damage_enhancement;
+        int                     inscription_total;
         /*
         *  Does the variable you're about to add belong here or in 'pcdata'?
         */
@@ -2960,7 +2975,7 @@ extern int gsn_brawler_base;
 extern int gsn_ranger_base;
 extern int gsn_smithy_base;
 extern int gsn_engineer_base;
-extern int gsn_alchemist_base;
+extern int gsn_runesmith_base;
 extern int gsn_necro_base;
 extern int gsn_warlock_base;
 extern int gsn_templar_base;
@@ -3241,11 +3256,12 @@ extern int gsn_group_resistance;
 extern int gsn_group_weaponsmith;
 extern int gsn_group_armoursmith;
 extern int gsn_group_inscription;
-extern int gsn_group_alchemy;
+extern int gsn_group_runic_arts;
 extern int gsn_group_turret_tech;
 extern int gsn_group_mech_tech;
 extern int gsn_group_adv_smith;
 extern int gsn_group_weaponlore;
+extern int gsn_group_rune_casting;
 extern int gsn_group_last;
 
 extern int gsn_form_chameleon;
@@ -3486,8 +3502,8 @@ extern int gsn_second_shot;
 extern int gsn_third_shot;
 extern int gsn_accuracy;
 extern int gsn_snare;
-extern int gsn_classify;
 extern int gsn_gather_herbs;
+extern int gsn_classify;
 extern int gsn_song_of_revelation;
 extern int gsn_song_of_rejuvenation;
 extern int gsn_song_of_tranquility;
@@ -3563,25 +3579,30 @@ extern int gsn_forager;
 extern int gsn_spyglass;
 extern int gsn_base;
 extern int gsn_miner;
-extern int gsn_fire_flask;
-extern int gsn_frost_flask;
-extern int gsn_stun_flask;
-extern int gsn_blind_flask;
-extern int gsn_lightning_flask;
-extern int gsn_acid_flask;
-extern int gsn_bmf_flask;
+extern int gsn_pyro_rune;
+extern int gsn_cyro_rune;
+extern int gsn_bolt_rune;
+extern int gsn_stab_rune;
+extern int gsn_rend_rune;
+extern int gsn_mend_rune;
+extern int gsn_cure_rune;
 extern int gsn_group_inscription;
 extern int gsn_inscribe;
-extern int gsn_protection;
-extern int gsn_enhancement;
-extern int gsn_healing;
-extern int gsn_ward;
+extern int gsn_runic_blade;
+extern int gsn_ward_rune;
 extern int gsn_slow;
 extern int gsn_stabilise;
 extern int gsn_flukeslap;
 extern int gsn_swallow;
 extern int gsn_spit_mucus;
 extern int gsn_steam_breath;
+extern int gsn_adamantite_runic_blade;
+extern int gsn_electrum_runic_blade;
+extern int gsn_starmetal_runic_blade;
+extern int gsn_lightning_lunge;
+extern int gsn_fiery_strike;
+extern int gsn_death_strike;
+extern int gsn_conducting_blast;
 
 /*
  *  Deity gsns
@@ -3928,6 +3949,7 @@ DECLARE_DO_FUN( do_dirtalk                      );
 DECLARE_DO_FUN( do_identify                     );      /* new identify code */
 DECLARE_DO_FUN( do_imbue                        );      /* Smithy Imbue - Brutus Jun 2022 */
 DECLARE_DO_FUN( do_imprint                      );      /* For brew/scribe skills */
+DECLARE_DO_FUN( do_inscribe                     );
 DECLARE_DO_FUN( do_info                         );      /* new info channel */
 DECLARE_DO_FUN( do_intimidate                   );      /* intimidate - thugs */
 DECLARE_DO_FUN( do_extort                       );
@@ -4161,6 +4183,7 @@ DECLARE_DO_FUN( do_knife_toss                   );
 DECLARE_DO_FUN( do_smoke_bomb                   );
 DECLARE_DO_FUN( do_snap_shot                    );
 DECLARE_DO_FUN( do_swoop                        );      /* swoop for shifter phoenix form - Owl */
+DECLARE_DO_FUN( do_deploy                       );
 
 /*
  * Spell functions.
@@ -4350,6 +4373,14 @@ DECLARE_SPELL_FUN( spell_imprint                );
 DECLARE_SPELL_FUN( spell_slow                   );
 DECLARE_SPELL_FUN( spell_stabilise              );
 DECLARE_SPELL_FUN( spell_steam_breath           );
+DECLARE_SPELL_FUN( spell_runic_flames           );
+DECLARE_SPELL_FUN( spell_runic_frost            );
+DECLARE_SPELL_FUN( spell_runic_bolts            );
+DECLARE_SPELL_FUN( spell_runic_stab             );
+DECLARE_SPELL_FUN( spell_runic_rend             );
+DECLARE_SPELL_FUN( spell_runic_mend             );
+DECLARE_SPELL_FUN( spell_runic_cure             );
+DECLARE_SPELL_FUN( spell_runic_ward             );
 
 
 #define MOB_VNUM_SKELETON  3404

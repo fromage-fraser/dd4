@@ -8072,6 +8072,132 @@ void spell_chaos_blast (int sn, int level, CHAR_DATA *ch, void *vo)
 }
 
 
+void spell_runic_flames (int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        CHAR_DATA *victim = (CHAR_DATA *) vo;
+        int dam;
+
+        dam = dice(level, 4) + level;
+
+        if (saves_spell(level, victim))
+                dam /= 2;
+
+        damage(ch, victim, dam, sn, FALSE);
+}
+
+void spell_runic_frost (int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        CHAR_DATA *victim = (CHAR_DATA *) vo;
+        int dam;
+
+        dam = dice(level, 4) + level;
+
+        if (saves_spell(level, victim))
+                dam /= 2;
+
+        damage(ch, victim, dam, sn, FALSE);
+}
+
+void spell_runic_bolts (int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        CHAR_DATA *victim = (CHAR_DATA *) vo;
+        int dam;
+
+        dam = dice(level, 4) + level;
+
+        if (saves_spell(level, victim))
+                dam /= 2;
+
+        damage(ch, victim, dam, sn, FALSE);
+}
+
+void spell_runic_stab (int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        CHAR_DATA *victim = (CHAR_DATA *) vo;
+        int dam;
+
+        dam = dice(level, 4) + level;
+
+        if (saves_spell(level, victim))
+                dam /= 2;
+
+        damage(ch, victim, dam, sn, FALSE);
+}
+
+void spell_runic_rend (int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        CHAR_DATA *victim = (CHAR_DATA *) vo;
+        int dam;
+
+        dam = dice(level, 4) + level;
+
+        if (saves_spell(level, victim))
+                dam /= 2;
+
+        damage(ch, victim, dam, sn, FALSE);
+}
+
+
+
+void spell_runic_mend( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+        CHAR_DATA *victim = (CHAR_DATA *) vo;
+        int heal;
+
+        heal = 4 + dice( 4, 8 ) + level;
+
+        if (heal > 75)
+                heal = 75;
+
+        if( victim->hit > victim->max_hit )
+                return;
+
+        victim->hit = UMIN( victim->hit + heal, victim->max_hit - victim->aggro_dam );
+        update_pos( victim );
+
+        send_to_char( "You feel better!\n\r", victim );
+}
+
+void spell_runic_cure( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+        CHAR_DATA *victim = (CHAR_DATA *) vo;
+
+        if (!is_affected(victim, gsn_poison))
+                return;
+
+        affect_strip(victim, gsn_poison);
+
+        if (ch != victim)
+        {
+                act( "You purge the poison from $M.", ch, NULL, victim, TO_CHAR );
+                check_group_bonus(ch);
+        }
+
+        send_to_char("A warm feeling runs through your body.\n\r", victim);
+        act("$N looks better.", ch, NULL, victim, TO_NOTVICT);
+
+}
+
+void spell_runic_ward( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+        CHAR_DATA *victim = (CHAR_DATA *) vo;
+
+        if (!is_affected(victim, gsn_poison))
+                return;
+
+        affect_strip(victim, gsn_poison);
+
+        if (ch != victim)
+        {
+                act( "You purge the poison from $M.", ch, NULL, victim, TO_CHAR );
+                check_group_bonus(ch);
+        }
+
+        send_to_char("A warm feeling runs through your body.\n\r", victim);
+        act("$N looks better.", ch, NULL, victim, TO_NOTVICT);
+
+}
+
 /*
  * Some affect types cannot be dispelled
  */

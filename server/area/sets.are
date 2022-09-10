@@ -393,6 +393,96 @@ A large metal fanned semi-circle in here protecting you.~
 0~ 0~ 0~ 0~
 5000 5000 0
 #2734
+adamantite rune blade~
+adamantite rune blade~
+A adamantite blade covered with glowing intricate runes rests here.~
+~
+5 1|4 1024 8193
+0~ 69~ 169~ 1~
+5 0 0
+#2735
+electrum rune blade~
+electrum rune blade~
+A electrum blade covered with glowing intricate runes rests here.~
+~
+5 1|4 1024 8193
+0~ 69~ 169~ 1~
+5 0 0
+#2736
+starmetal rune blade~
+starmetal rune blade~
+A starmetal blade covered with glowing intricate runes rests here.~
+~
+5 1|4 1024 8193
+0~ 69~ 169~ 1~
+5 0 0
+#2737
+pyro rune~
+a pyro rune~
+A rune depicting fire is inscribed here.~
+~
+50 68719476736 1|16384
+30~ 10~ 10~ pyro rune~
+2 0 0
+#2738
+cyro rune~
+a cyro rune~
+A rune depicting ice is inscribed here.~
+~
+50 68719476736 1
+30~ 10~ 10~ cyro rune~
+2 0 0
+#2739
+bolt rune~
+a bolt rune~
+A rune depicting a projectile is inscribed here.~
+~
+50 68719476736 1
+30~ 10~ 10~ bolt rune~
+2 0 0
+#2740
+stab rune~
+a stab rune~
+A rune depicting a dagger is inscribed here.~
+~
+50 68719476736 1
+30~ 10~ 10~ stab rune~
+2 0 0
+#2741
+rend rune~
+a rend rune~
+A rune depicting a sword is inscribed here.~
+~
+50 68719476736 1
+30~ 10~ 10~ rend rune~
+2 0 0
+#2742
+mend rune~
+a mend rune~
+A rune depicting healing is inscribed here.~
+~
+50 68719476736 1
+30~ 10~ 10~ mend rune~
+2 0 0
+#2743
+cure rune~
+a cure rune~
+A rune depicting potions is inscribed here.~
+~
+50 68719476736 1
+30~ 10~ 10~ cure rune~
+2 0 0
+#2744
+ward rune~
+a ward rune~
+A rune depicting isolation is inscribed here.~
+~
+50 68719476736 1
+30~ 10~ 10~ ward rune~
+2 0 0
+
+
+#2794
 pulse object~
 a offensive object~
 A small black pulse object.~
@@ -400,7 +490,7 @@ A small black pulse object.~
 50 2 1|16384
 30~ 10~ 10~ colour spray~
 2 0 0
-#2735
+#2795
 pulse2 object2~
 a defensive object~
 A small black pulse object.~
@@ -408,6 +498,14 @@ A small black pulse object.~
 50 2 1|16384
 30~ 10~ 10~ heal~
 2 0 0
+#2796
+pulser non combat~
+a non combat pulser~
+A tiny black pulsing thing.~
+~
+51 64 1
+80~ bless~ armour~ fly~
+0 0 0
 
 #0
 

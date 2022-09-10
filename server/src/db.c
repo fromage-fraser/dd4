@@ -113,7 +113,7 @@ int     gsn_barbarian_base;
 int     gsn_bard_base;
 int     gsn_smithy_base;
 int     gsn_engineer_base;
-int     gsn_alchemist_base;
+int     gsn_runesmith_base;
 int     gsn_teacher_base;
 
 
@@ -610,17 +610,17 @@ int     gsn_forager;
 int     gsn_spyglass;
 int     gsn_base;
 int     gsn_miner;
-int     gsn_fire_flask;
-int     gsn_frost_flask;
-int     gsn_stun_flask;
-int     gsn_blind_flask;
-int     gsn_lightning_flask;
-int     gsn_acid_flask;
-int     gsn_bmf_flask;
+int     gsn_pyro_rune;
+int     gsn_cyro_rune;
+int     gsn_bolt_rune;
+int     gsn_stab_rune;
+int     gsn_rend_rune;
+int     gsn_mend_rune;
+int     gsn_cure_rune;
 int     gsn_inscribe;
-int     gsn_enhancement;
-int     gsn_healing;
-int     gsn_ward;
+int     gsn_runic_blade;
+int     gsn_ward_rune;
+int     gsn_group_rune_casting;
 int     gsn_slow;
 int     gsn_stabilise;
 int     gsn_flukeslap;
@@ -639,6 +639,16 @@ int     gsn_arrestor_module;
 int     gsn_driver_module;
 int     gsn_reflector_module;
 int     gsn_shield_module;
+int     gsn_lightning_lunge;
+int     gsn_fiery_strike;
+int     gsn_death_strike;
+int     gsn_conducting_blast;
+int     gsn_group_runic_arts;
+int     gsn_adamantite_runic_blade;
+int     gsn_electrum_runic_blade;
+int     gsn_starmetal_runic_blade;
+
+
 /*
  *  Spell groups
  */
@@ -695,7 +705,7 @@ int     gsn_group_resistance;
 int     gsn_group_weaponsmith;
 int     gsn_group_armoursmith;
 int     gsn_group_inscription;
-int     gsn_group_alchemy;
+int     gsn_runic_arts;
 int     gsn_group_turret_tech;
 int     gsn_group_mech_tech;
 int     gsn_group_adv_smith;

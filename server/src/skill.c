@@ -3508,7 +3508,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 for (i = 0; i < BLUEPRINTS_MAX; i++)
                 {
 
-                        if(ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)]  > 0)
+                        if ((ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)]  > 0) && (blueprint_list[i].blueprint_cost[0] > 0))
                         {
                                 sprintf(buf, "{W%20s{x {G%7d{x%% {c%6d{x {C%6d{x {w%6d{x {y%3d{x {Y%3d{x {W%3d{x {R%3d{x\n\r",
                                 blueprint_list[i].blueprint_name,
@@ -3547,7 +3547,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
                 for (i = 0; i < BLUEPRINTS_MAX; i++)
                 {
-                        if( ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)] > 0)
+                        if ((ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)]  > 0) && (blueprint_list[i].blueprint_cost[0] > 0))
                         {
                                  sprintf(buf, "{W%20s{x {G%7d{x%% {c%6d{x {C%6d{x {w%6d{x {y%3d{x {Y%3d{x {W%3d{x {R%3d{x\n\r",
                                 blueprint_list[i].blueprint_name,
@@ -4032,6 +4032,208 @@ void do_engrave (CHAR_DATA *ch, char *argument)
         paf->next           = obj->affected;
         obj->affected       = paf;
 
+}
+
+void do_inscribe (CHAR_DATA *ch, char *argument)
+{
+        char            buf[MAX_STRING_LENGTH];
+        OBJ_DATA *obj;
+        OBJ_DATA *anvil;
+        char            arg[MAX_INPUT_LENGTH];
+
+        AFFECT_DATA *paf;
+        bool found_rune;
+        bool found_obj;
+        bool found_anvil;
+        int cost_st;
+        int cost_ti;
+        int cost_ad;
+        int cost_el;
+        int cost_sm;
+        int i;
+
+        one_argument(argument, arg);
+
+        if (IS_NPC(ch))
+                return;
+
+  /*      if (ch->sub_class != SUB_CLASS_RUNESMITH)
+        {
+                send_to_char( "You'd better find a Runesmith.\n\r", ch );
+                return;
+        }
+*/
+        if (arg[0] == '\0')
+        {
+                send_to_char("Either inscribe equipment/weapon or inscibe your rune.\n\r", ch);
+                return;
+        }
+
+
+/* --------------------------------- */
+        found_rune = FALSE;
+        for (i = 0; i < BLUEPRINTS_MAX; i++)
+        {
+                if (!strcmp( arg, blueprint_list[i].blueprint_name))
+                {
+                        found_rune = TRUE;
+                        break;
+                }
+        }
+
+
+        found_obj = FALSE;
+        if ((obj = get_obj_carry(ch, arg)))
+        {
+                found_obj = TRUE;
+        }
+
+        
+
+        if (!found_rune && (!found_obj))
+        {
+                send_to_char( "Cannot find the object or rune to inscribe within the room.\n\r", ch);
+                return;
+        }
+
+/*        if( !ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] )
+        {
+                send_to_char( "You don't know how to construct that.\n\r", ch );
+                return;
+        }
+*/
+        /* prefer finding runes over objects */
+        if (found_rune)
+        {
+                OBJ_DATA        *creation;
+                creation = create_object( get_obj_index( blueprint_list[i].blueprint_ref ), ch->level );
+                obj_to_room( creation, ch->in_room );
+                if (blueprint_list[i].blueprint_ego >= 1 )
+                {
+                        SET_BIT(creation->extra_flags, ITEM_EGO);
+                        SET_BIT(creation->ego_flags, blueprint_list[i].blueprint_ego);
+                }
+                set_obj_owner(creation, ch->name);
+
+                sprintf(buf, "You inscribe {W%s{x into the ground.", blueprint_list[i].blueprint_desc);
+                act(buf, ch, NULL, NULL, TO_CHAR);
+
+                sprintf(buf, "$n inscribes {W%s{x into the ground.", blueprint_list[i].blueprint_desc);
+                act(buf, ch, NULL, NULL, TO_ROOM);
+                return;
+        }
+ /*        ---------------------------  */
+        if (found_obj)
+        {
+                if (IS_SET(obj->extra_flags, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_INSCRIBED))
+                {
+                        send_to_char("That is already inscribed.\n\r", ch);
+                        return;
+                }
+
+                if (obj->wear_flags)
+                {
+                        int next;
+                        bit_explode(ch, buf, obj->wear_flags);
+
+                        for (next = 1; next <= BIT_17; next *= 2)
+                        {
+                                if (IS_SET(obj->wear_flags, next))
+                                {
+                                        if (
+                                        !str_cmp( wear_flag_name(next), "float")
+                                        || !str_cmp( wear_flag_name(next), "neck")
+                                        || !str_cmp( wear_flag_name(next), "about" ) )
+                                        {
+                                                send_to_char("You cannot inscribe that type of armour.\n\r", ch);
+                                                return;
+                                        }
+                                }
+                        }
+                }
+        
+                found_anvil = FALSE;
+                for (anvil = ch->in_room->contents; anvil; anvil = anvil->next_content)
+                {
+                        if (anvil->item_type == ITEM_ANVIL)
+                        {
+                                found_anvil = TRUE;
+                                break;
+                        }
+                }
+
+                if ((!found_anvil) && (found_obj))
+                {
+                        send_to_char("You will need to find an anvil.\n\r", ch);
+                        return;
+                }
+                
+                
+                cost_sm =0;
+                cost_ad = 0;
+                cost_el = 0;
+                cost_st = 0;
+                cost_ti = 0;
+
+                if ( (obj->level > 90) )
+                        cost_sm = 1;
+
+                if (obj->level > 70 )
+                        cost_el = 10;
+
+                if (obj->level > 50 )
+                        cost_ad = 15;
+                if (obj->level > 25 )
+                        cost_ti = 20;
+                if (obj->level > 15 )
+                        cost_st = 10;
+                if (obj->level >= 1 )
+                        cost_st += 12;
+
+                if ( cost_st > ch->smelted_steel
+                ||  cost_ti > ch->smelted_titanium
+                ||  cost_ad > ch->smelted_adamantite
+                ||  cost_el > ch->smelted_electrum
+                ||  cost_sm > ch->smelted_starmetal)
+                {
+                        send_to_char( "You don't have enough raw materials. You need:\n\r", ch );
+                        sprintf(buf, "%d Steel %d Titanium %d Adamantite %d Electrum %d Starmetal",
+                        cost_st, cost_ti, cost_ad, cost_el, cost_sm);
+                        act(buf, ch, NULL, NULL, TO_CHAR);
+                        return;
+                }
+
+                if (number_percent() > ch->pcdata->learned[gsn_inscribe])
+                {
+                        send_to_char("You slip while inscribing!\n\r", ch);
+                        act ("$n slips while inscribing $s armour!", ch, NULL, NULL, TO_ROOM);
+                        smelted_to_char( cost_st, cost_ti, cost_ad, cost_el, cost_sm, ch, COINS_REPLACE);
+                        return;
+                }
+
+                act ("$P glows softly as the inscriptions form in the forge.", ch, NULL, obj, TO_CHAR);
+                act ("$n skilfully inscribes $P!", ch, NULL, obj, TO_ROOM);
+                smelted_to_char( cost_st, cost_ti, cost_ad, cost_el, cost_sm, ch, COINS_REPLACE);
+
+                SET_BIT(obj->extra_flags, ITEM_EGO);
+                SET_BIT(obj->ego_flags, EGO_ITEM_INSCRIBED);
+                set_obj_owner(obj, ch->name);
+                if (!affect_free)
+                        paf = alloc_perm(sizeof(*paf));
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+
+                paf->type           = gsn_inscribe;
+                paf->duration       = -1;
+                paf->location       = APPLY_INSCRIBED;
+                paf->modifier       = 1 + ( ch->level / 15 );
+                paf->bitvector      = 0;
+                paf->next           = obj->affected;
+                obj->affected       = paf;
+        }
 }
 
 void do_serrate (CHAR_DATA *ch, char *argument)
