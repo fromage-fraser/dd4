@@ -1,0 +1,772 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.001">
+	<ScriptPackage>
+		<ScriptGroup isActive="yes" isFolder="yes">
+			<name>Template</name>
+			<packageName>Template</packageName>
+			<script>mudlet = mudlet or {}
+
+ms_path = string.gsub(getMudletHomeDir().."/DD-GUI","\\","/")
+
+mudlet.mapper_script = true</script>
+			<eventHandlerList />
+			<ScriptGroup isActive="yes" isFolder="yes">
+				<name>CSSman</name>
+				<packageName>CSSman</packageName>
+				<script></script>
+				<eventHandlerList />
+				<Script isActive="yes" isFolder="no">
+					<name>CSSMan</name>
+					<packageName></packageName>
+					<script>-- CSSMan by Vadi. Public domain.
+
+CSSMan = {}
+CSSMan.__index = CSSMan
+
+function CSSMan.new(stylesheet)
+  local obj  = { stylesheet = {} }
+  setmetatable(obj,CSSMan)
+  local trim = string.trim
+
+  assert(type(stylesheet) == "string", "CSSMan.new: no stylesheet provided. A possible error is that you might have used CSSMan.new, not CSSMan:new")
+
+  for line in stylesheet:gmatch("[^\r\n]+") do
+    local attribute, value = line:match("^(.-):(.-);$")
+    if attribute and value then
+      attribute, value = trim(attribute), trim(value)
+      obj.stylesheet[attribute] = value
+    end
+  end
+
+  return obj
+end
+
+function CSSMan:set(key, value)
+  self.stylesheet[key] = value
+end
+
+function CSSMan:get(key)
+  return self.stylesheet[key]
+end
+
+function CSSMan:getCSS(key)
+  local lines, concat = {}, table.concat
+  for k,v in pairs(self.stylesheet) do lines[#lines+1] = concat({k,": ", v, ";"}) end
+  return concat(lines, "\n")
+end
+
+function CSSMan:gettable()
+  return self.stylesheet
+end
+
+function CSSMan:settable(tbl)
+  assert(type(tbl) == "table", "CSSMan:settable: table expected, got "..type(tbl))
+
+  self.stylesheet = tbl
+end</script>
+					<eventHandlerList>
+						<string>gmcp.Char.Vitals</string>
+					</eventHandlerList>
+				</Script>
+			</ScriptGroup>
+			<ScriptGroup isActive="yes" isFolder="yes">
+				<name>DD-GUI</name>
+				<packageName></packageName>
+				<script>GUI = GUI or {}</script>
+				<eventHandlerList />
+				<Script isActive="yes" isFolder="no">
+					<name>Set Borders</name>
+					<packageName></packageName>
+					<script>local w,h = getMainWindowSize()
+setBorderTop((h * 36) / 100)
+setBorderBottom((h * 6) / 100)
+setBorderRight((w * 26) / 100)</script>
+					<eventHandlerList>
+						<string>gmcp.Char.Vitals</string>
+					</eventHandlerList>
+				</Script>
+				<Script isActive="yes" isFolder="no">
+					<name>Create Background</name>
+					<packageName></packageName>
+					<script>GUI.BackgroundCSS = CSSMan.new([[
+  background-color: rgb(0,0,0);
+]])
+
+GUI.Right = Geyser.Label:new({
+  name = "GUI.Right",
+  x = "-26%", y = "0%",
+  width = "26%",
+  height = "100%",
+})
+GUI.Right:setStyleSheet(GUI.BackgroundCSS:getCSS())
+
+GUI.Top = Geyser.Label:new({
+  name = "GUI.Top",
+  x = "0%", y = "0%",
+  width = "100%",
+  height = "36%",
+})
+GUI.Top:setStyleSheet(GUI.BackgroundCSS:getCSS())
+
+GUI.Bottom = Geyser.Label:new({
+  name = "GUI.Bottom",
+  x = "0%", y = "94%",
+  width = "74%",
+  height = "6%",
+})
+GUI.Bottom:setStyleSheet(GUI.BackgroundCSS:getCSS())</script>
+					<eventHandlerList>
+						<string>gmcp.Char.Vitals</string>
+					</eventHandlerList>
+				</Script>
+				<Script isActive="yes" isFolder="no">
+					<name>BoxesDefinitions</name>
+					<packageName></packageName>
+					<script>GUI.BoxCSS = CSSMan.new([[
+  background-color: rgba(0,0,0,100);
+  border-style: solid;
+  border-width: 0px;
+  border-radius: 10px;
+  border-color: red;
+  margin: 5px;
+]])
+
+GUI.MapBox = Geyser.Label:new({
+  name = "GUI.MapBox",
+  x = "3%", y = "17%",
+  width = "21%",
+  height = "83%",
+},GUI.Top)
+GUI.MapBox:setStyleSheet(GUI.BoxCSS:getCSS())
+GUI.MapBox:echo("&lt;center&gt;GUI.MapBox")
+
+GUI.EnemyBox = Geyser.Label:new({
+  name = "GUI.EnemyBox",
+  x = "24%", y = "17%",
+  width = "25%",
+  height = "83%",
+},GUI.Top)
+GUI.EnemyBox:setStyleSheet(GUI.BoxCSS:getCSS())
+GUI.EnemyBox:echo("&lt;center&gt;GUI.EnemyBox")
+
+GUI.CharsheetBox = Geyser.Label:new({
+  name = "GUI.CharsheetBox",
+  x = "49%", y = "17%",
+  width = "25%",
+  height = "83%",
+},GUI.Top)
+GUI.CharsheetBox:setStyleSheet(GUI.BoxCSS:getCSS())
+GUI.CharsheetBox:echo("&lt;center&gt;GUI.CharsheetBox")
+
+GUI.ChannelBox = Geyser.Label:new({
+  name = "GUI.ChannelBox",
+  x = "74%", y = "17%",
+  width = "23%",
+  height = "83%",
+},GUI.Top)
+GUI.ChannelBox:setStyleSheet(GUI.BoxCSS:getCSS())
+GUI.ChannelBox:echo("&lt;center&gt;GUI.ChannelBox")
+
+GUI.InventoryBox = Geyser.Label:new({
+  name = "GUI.InventoryBox",
+  x = "0%", y = "36%",
+  width = "89%",
+  height = "34%",
+},GUI.Right)
+GUI.InventoryBox:setStyleSheet(GUI.BoxCSS:getCSS())
+--GUI.InventoryBox:echo("&lt;center&gt;GUI.InventoryBox")
+
+GUI.AffectBox = Geyser.Label:new({
+  name = "GUI.AffectBox",
+  x = "0%", y = "70%",
+  width = "89%",
+  height = "30%",
+},GUI.Right)
+GUI.AffectBox:setStyleSheet(GUI.BoxCSS:getCSS())
+--GUI.AffectBox:echo("&lt;center&gt;GUI.AffectBox")
+
+GUI.GaugesBox = Geyser.Label:new({
+  name = "GUI.GaugesBox",
+  x = "4%", y = 0,
+  width = "92%",
+  height = "100%",
+},GUI.Bottom)
+GUI.GaugesBox:setStyleSheet(GUI.BoxCSS:getCSS())
+--GUI.GaugesBox:echo("&lt;center&gt;GUI.GaugesBox")
+
+
+
+
+
+
+</script>
+					<eventHandlerList>
+						<string>gmcp.Char.Vitals</string>
+					</eventHandlerList>
+				</Script>
+				<Script isActive="yes" isFolder="no">
+					<name>GUI.GaugesBox</name>
+					<packageName></packageName>
+					<script>GUI.Footer = Geyser.HBox:new({ 
+  name = "GUI.Footer", 
+  x = "5%", y = "15%", 
+  width = "90%", height = "70%", 
+},GUI.Bottom ) 
+
+GUI.FirstColumn = Geyser.VBox:new({ 
+  name = "GUI.FirstColumn",
+  x = "0%", y = "0%", 
+  width = "25%", height = "100%",
+},GUI.Footer)
+
+GUI.SecondColumn = Geyser.VBox:new({ 
+  name = "GUI.SecondColumn", 
+  x = "0%", y = "0%", 
+  width = "25%", height = "100%",
+},GUI.Footer) 
+
+GUI.ThirdColumn = Geyser.VBox:new({ 
+  name = "GUI.ThirdColumn", 
+  x = "0%", y = "0%", 
+  width = "25%", height = "100%",
+},GUI.Footer)
+
+GUI.FourthColumn = Geyser.VBox:new({ 
+  name = "GUI.FourthColumn", 
+  x = "0%", y = "0%", 
+  width = "25%", height = "100%",
+},GUI.Footer) 
+
+
+--Hitpoints
+
+GUI.HitpointsGaugeBackCSS = CSSMan.new([[ 
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #bd3333, stop: 0.1 #bd2020, stop: 0.49 #990000, stop: 0.5 #700000, stop: 1 #990000);
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 7;
+    padding: 10px; 
+]]) 
+
+GUI.HitpointsGaugeFrontCSS = CSSMan.new([[ 
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f04141, stop: 0.1 #ef2929, stop: 0.49 #cc0000, stop: 0.5 #a40000, stop: 1 #cc0000);
+    border-top: 1px black solid;
+    border-left: 1px black solid;
+    border-bottom: 1px black solid;
+    border-radius: 7;
+    padding: 10px;
+]]) 
+
+GUI.Hitpoints = Geyser.Gauge:new({ name = "GUI.Hitpoints", },GUI.FirstColumn) 
+GUI.Hitpoints.back:setStyleSheet(GUI.HitpointsGaugeBackCSS:getCSS()) 
+GUI.Hitpoints.front:setStyleSheet(GUI.HitpointsGaugeFrontCSS:getCSS()) 
+GUI.Hitpoints:setValue(((gmcp.Char.Vitals.hp * 1000) / gmcp.Char.Vitals.maxhp),1000)
+
+HitpointsLabel = Geyser.Label:new({
+  name = "HitpointsLabel",
+  x = 0, y = "15%",
+  width = "50%", height = "70%",
+  fgColor = "black",
+  message = [[&amp;nbsp;Hits]]
+}, GUI.Hitpoints )
+HitpointsLabel:setColor(0,0,0,0)
+HitpointsLabel:setFgColor("Grey")
+HitpointsLabel:setFontSize(10)
+
+--Mana
+
+GUI.ManaGaugeBackCSS = CSSMan.new([[
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #3833bd, stop: 0.1 #2020bd, stop: 0.49 #000399, stop: 0.5 #000470, stop: 1 #000399);
+    border-top: 1px black solid;
+    border-left: 1px black solid;
+    border-bottom: 1px black solid;
+    border-radius: 7;
+    padding: 10px;
+]])
+
+GUI.ManaGaugeFrontCSS = CSSMan.new([[ 
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #4147f0, stop: 0.1 #2929f0, stop: 0.49 #0007cc, stop: 0.5 #0000a3, stop: 1 #0007cc);
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 7;
+    padding: 10px;
+]])
+
+GUI.Mana = Geyser.Gauge:new({ name = "GUI.Mana", },GUI.SecondColumn) 
+GUI.Mana.back:setStyleSheet(GUI.ManaGaugeBackCSS:getCSS())
+GUI.Mana.front:setStyleSheet(GUI.ManaGaugeFrontCSS:getCSS()) 
+GUI.Mana:setValue(((gmcp.Char.Vitals.mana * 1000) / gmcp.Char.Vitals.maxmana),1000) 
+
+ManaLabel = Geyser.Label:new({
+  name = "ManaLabel",
+  x = 0, y = "15%",
+  width = "50%", height = "70%",
+  fgColor = "White",
+  message = [[&amp;nbsp;Mana]]
+}, GUI.Mana )
+ManaLabel:setColor(0,0,0,0)
+ManaLabel:setFgColor("Grey")
+ManaLabel:setFontSize(10)
+
+-- XP
+
+GUI.XpGaugeBackCSS = CSSMan.new([[
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #78bd33, stop: 0.1 #6ebd20, stop: 0.49 #4c9900, stop: 0.5 #387000, stop: 1 #4c9900);
+    border-top: 1px black solid;
+    border-left: 1px black solid;
+    border-bottom: 1px black solid;
+    border-radius: 7;
+    padding: 10px;
+]])
+
+GUI.XpGaugeFrontCSS = CSSMan.new([[ 
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #98f041, stop: 0.1 #8cf029, stop: 0.49 #66cc00, stop: 0.5 #52a300, stop: 1 #66cc00);
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 7;
+    padding: 10px;
+]])
+
+GUI.Xp = Geyser.Gauge:new({ name = "GUI.Xp", },GUI.ThirdColumn) 
+GUI.Xp.back:setStyleSheet(GUI.XpGaugeBackCSS:getCSS())  
+GUI.Xp.front:setStyleSheet(GUI.XpGaugeFrontCSS:getCSS()) 
+GUI.Xp:setValue(((gmcp.Char.Worth.maxxp * 1000) / gmcp.Char.Worth.xp), 1000)
+
+XpLabel = Geyser.Label:new({
+  name = "XpLabel",
+  x = 0, y = "15%",
+  width = "50%", height = "70%",
+  fgColor = "Black",
+  message = [[&amp;nbsp;Xp]]
+}, GUI.Xp )
+XpLabel:setColor(0,0,0,0)
+XpLabel:setFgColor("White")
+XpLabel:setFontSize(10)
+
+--Moves
+
+GUI.MovesGaugeBackCSS = CSSMan.new([[
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #33bdb4, stop: 0.1 #20bdb0, stop: 0.49 #009996, stop: 0.5 #00706e, stop: 1 #009996);
+    border-top: 1px black solid;
+    border-left: 1px black solid;
+    border-bottom: 1px black solid;
+    border-radius: 7;
+    padding: 10px;
+]])
+
+GUI.MovesGaugeFrontCSS = CSSMan.new([[ 
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #41f0d6, stop: 0.1 #29f0df, stop: 0.49 #00ccc9, stop: 0.5 #009ea3, stop: 1 #00ccc9);
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 7;
+    padding: 10px;
+]])
+
+GUI.Moves = Geyser.Gauge:new({ name = "GUI.Moves", },GUI.FourthColumn) 
+GUI.Moves.back:setStyleSheet(GUI.MovesGaugeBackCSS:getCSS())
+GUI.Moves.front:setStyleSheet(GUI.MovesGaugeFrontCSS:getCSS()) 
+GUI.Moves:setValue(((gmcp.Char.Vitals.move * 1000) / gmcp.Char.Vitals.maxmove),1000) 
+
+MovesLabel = Geyser.Label:new({
+  name = "MovesLabel",
+  x = 0, y = "15%",
+  width = "50%", height = "70%",
+  fgColor = "Black",
+  message = [[&amp;nbsp;Moves]]
+}, GUI.Moves )
+MovesLabel:setColor(0,0,0,0)
+MovesLabel:setFgColor("White")
+MovesLabel:setFontSize(10)
+
+</script>
+					<eventHandlerList>
+						<string>gmcp.Char.Vitals</string>
+					</eventHandlerList>
+				</Script>
+				<Script isActive="yes" isFolder="no">
+					<name>GUI.AffectsBox</name>
+					<packageName></packageName>
+					<script>GUI.AffectsTopRow = Geyser.HBox:new({ 
+  name = "GUI.AffectsTopRow", 
+  x = "5%", y = "3%", 
+  width = "90%", height = "10%", 
+},GUI.AffectBox ) 
+
+AffectsTitleLabel = Geyser.Label:new({
+  name = "AffectsTitleLabel",
+  x = 0, y = "15%",
+  width = "50%", height = "70%",
+  message = [[You are affected by:]]
+}, GUI.AffectsTopRow )
+AffectsTitleLabel:setColor(0,0,0,0)
+AffectsTitleLabel:setFgColor("Cyan")
+AffectsTitleLabel:setFontSize(10)
+AffectsTitleLabel:setBold(1)
+
+--GUI.AffectsList = Geyser.HBox:new({ 
+--  name = "GUI.AffectsList", 
+--  x = "5%", y = "13%", 
+--  width = "90%", height = "84%", 
+--},GUI.AffectBox )
+--
+--AffectsListLabel = Geyser.Label:new({
+--  name = "AffectsListLabel",
+--  x = 0, y = "15%",
+--  width = "50%", height = "46%",
+--  fgColor = "white",
+--  message = [[&amp;nbsp;No affects.]]
+--}, GUI.AffectsList )
+
+--AffectsListLabel:setColor(0,0,0,0)
+--AffectsListLabel:setFgColor("White")
+--AffectsListLabel:setFontSize(10)
+--AffectsListLabel:setBold(1)
+
+--AffectsListLabel:setStyleSheet([[
+--  background-color: rgba(50,50,50,50%);
+--]])
+
+--AffectsListLabel:setColor(0,0,0,0)
+--AffectsListLabel:setFgColor("White")
+--AffectsListLabel:setFontSize(10)
+--AffectsListLabel:setBold(1)
+
+
+
+
+
+
+
+</script>
+					<eventHandlerList>
+						<string>gmcp.Char.Vitals</string>
+					</eventHandlerList>
+				</Script>
+				<Script isActive="yes" isFolder="no">
+					<name>AffectsConsole</name>
+					<packageName></packageName>
+					<script>AffectsConsole = Geyser.MiniConsole:new({
+  name="AffectsConsole",
+  x = "5%", y = "13%",
+  width="90%", 
+  height="84%",
+  autoWrap = true,
+  color = "black",
+  scrollBar = false,
+  fontSize = 10,
+}, GUI.AffectBox)</script>
+					<eventHandlerList>
+						<string>gmcp.Char.Vitals</string>
+					</eventHandlerList>
+				</Script>
+				<Script isActive="yes" isFolder="no">
+					<name>GUI.InventoryBox</name>
+					<packageName></packageName>
+					<script>GUI.InventoryTopRow = Geyser.HBox:new({ 
+  name = "GUI.InventoryTopRow", 
+  x = "5%", y = "3%", 
+  width = "90%", height = "10%", 
+},GUI.InventoryBox ) 
+
+InventoryTitleLabel = Geyser.Label:new({
+  name = "InventoryTitleLabel",
+  x = 0, y = "15%",
+  width = "50%", height = "70%",
+  message = [[You are carrying:]]
+}, GUI.InventoryTopRow )
+InventoryTitleLabel:setColor(0,0,0,0)
+InventoryTitleLabel:setFgColor("Cyan")
+InventoryTitleLabel:setFontSize(10)
+InventoryTitleLabel:setBold(1)
+
+
+
+
+
+
+
+
+</script>
+					<eventHandlerList>
+						<string>gmcp.Char.Vitals</string>
+					</eventHandlerList>
+				</Script>
+				<Script isActive="yes" isFolder="no">
+					<name>InventoryConsole</name>
+					<packageName></packageName>
+					<script>InventoryConsole = Geyser.MiniConsole:new({
+  name="InventoryConsole",
+  x = "5%", y = "13%",
+  width="90%", 
+  height="90%",
+  autoWrap = true,
+  color = "black",
+  scrollBar = false,
+  fontSize = 10,
+}, GUI.InventoryBox)</script>
+					<eventHandlerList>
+						<string>gmcp.Char.Vitals</string>
+					</eventHandlerList>
+				</Script>
+				<ScriptGroup isActive="yes" isFolder="yes">
+					<name>Functions</name>
+					<packageName></packageName>
+					<script></script>
+					<eventHandlerList />
+					<Script isActive="yes" isFolder="no">
+						<name>update_vitals</name>
+						<packageName></packageName>
+						<script>function update_vitals()
+  --GUI.Hitpoints:setValue((100/tonumber(gmcp.Char.Vitals.maxhp))*tonumber(gmcp.Char.Vitals.hp),100,tonumber(gmcp.Char.Vitals.hp))
+  GUI.Hitpoints:setValue(((gmcp.Char.Vitals.hp * 1000) / gmcp.Char.Vitals.maxhp),1000)
+  GUI.Mana:setValue(((gmcp.Char.Vitals.mana * 1000) / gmcp.Char.Vitals.maxmana),1000)
+  GUI.Moves:setValue(((gmcp.Char.Vitals.move * 1000) / gmcp.Char.Vitals.maxmove),1000)
+  GUI.Xp:setValue(((gmcp.Char.Worth.maxxp * 1000) / gmcp.Char.Worth.xp), 1000)
+end</script>
+						<eventHandlerList>
+							<string>gmcp.Char.Vitals</string>
+						</eventHandlerList>
+					</Script>
+					<Script isActive="yes" isFolder="no">
+						<name>update_affects</name>
+						<packageName></packageName>
+						<script>debug.setmetatable(nil, { __index=function () end })
+
+function update_affects()
+  local duration_ordered = {}
+  for key, value in orderedPairs(gmcp.Char.Affect[1]) do
+    duration_ordered[key] = value.duration
+  end
+  
+  --display(dump(duration_ordered))
+  local sorted_dur_keys = getKeysSortedByValue(duration_ordered, function(a, b) return tonumber(a) &lt; tonumber(b) end)
+  --display(dump(sorted_dur_keys))
+  
+  AffectsConsole:clear()
+  AffectsConsole:resetAutoWrap ()
+  
+  for i, count in ipairs(sorted_dur_keys) do
+    local has_mod = 0
+    --display(name)
+    if (gmcp.Char.Affect[1][count].name) ~= nil then
+      if (#gmcp.Char.Affect[1][count].name) &gt; 18 then
+        local tmp_string = replace_char(18, gmcp.Char.Affect[1][count].name, '.')
+        local tmp_string = replace_char(17, tmp_string, '.')
+        AffectsConsole:cecho("&lt;white&gt;"..string.format("%.18s",tmp_string).."&lt;reset&gt;")
+      else
+        AffectsConsole:cecho("&lt;white&gt;"..string.format("%-18s", gmcp.Char.Affect[1][count].name).."&lt;reset&gt;")
+      end
+    end
+    --[[if gmcp.Char.Affect[1][count].gives ~= nil then
+      if gmcp.Char.Affect[1][count].gives ~= "some unknown effect" then
+        AffectsConsole:cecho("gives: &lt;green&gt;"     ..gmcp.Char.Affect[1][count].gives..      "&lt;reset&gt;\n")
+      end
+    end]]--
+    if gmcp.Char.Affect[1][count].modifies ~= nil then
+      if gmcp.Char.Affect[1][count].modifies ~= "none" then
+        AffectsConsole:cecho("\n&lt;green&gt;"..string.format("%-12s", gmcp.Char.Affect[1][count].modifies).."&lt;reset&gt;")
+      end
+    end
+    if gmcp.Char.Affect[1][count].mod_amount ~= nil then
+      if tonumber(gmcp.Char.Affect[1][count].mod_amount) ~= 0 then
+        has_mod = 1
+        AffectsConsole:cecho("&lt;yellow&gt;"       ..string.format("%10s", gmcp.Char.Affect[1][count].mod_amount).. "&lt;reset&gt;")
+      end
+    end
+    if gmcp.Char.Affect[1][count].duration ~= nil then
+      if tonumber(gmcp.Char.Affect[1][count].duration) &lt; 0 then
+        AffectsConsole:cecho("&lt;green&gt;" ..string.format("%17s","indefinite").. "&lt;reset&gt;\n")
+      elseif tonumber(gmcp.Char.Affect[1][count].duration) == 0 and has_mod == 1 then
+        AffectsConsole:cecho("&lt;green&gt;" ..string.format("%13s","&lt; 1").. "&lt;reset&gt;\n")
+        has_mod = 0
+      elseif tonumber(gmcp.Char.Affect[1][count].duration) == 0 and has_mod == 0 then
+        AffectsConsole:cecho("&lt;green&gt;" ..string.format("%17s","&lt; 1").. "&lt;reset&gt;\n")
+      elseif has_mod == 1 then
+        AffectsConsole:cecho("&lt;green&gt;"  ..string.format("%9s",gmcp.Char.Affect[1][count].duration)..   "&lt;reset&gt; hrs\n")
+        has_mod = 0
+      else
+        AffectsConsole:cecho("&lt;green&gt;"  ..string.format("%13s",gmcp.Char.Affect[1][count].duration)..   "&lt;reset&gt; hrs\n")
+      end
+    end
+  end
+end</script>
+						<eventHandlerList>
+							<string>gmcp.Char.Affect</string>
+						</eventHandlerList>
+					</Script>
+					<Script isActive="yes" isFolder="no">
+						<name>update_inventory</name>
+						<packageName></packageName>
+						<script>debug.setmetatable(nil, { __index=function () end })
+
+function update_inventory()
+  local quantity_ordered = {}
+  
+  for key, value in orderedPairs(gmcp.Char.Items[1]) do
+    quantity_ordered[key] = value.quan
+  end
+  
+  --display(dump(quantity_ordered))
+  local sorted_quan_keys = getKeysSortedByValue(quantity_ordered, function(a, b) return tonumber(a) &gt; tonumber(b) end)
+  --display(dump(sorted_quan_keys))
+  
+  InventoryConsole:clear()
+  InventoryConsole:resetAutoWrap ()
+  
+  for i, count in ipairs(sorted_quan_keys) do
+    --local has_mod = 0
+    if (gmcp.Char.Items[1][count].quan) ~= nil then
+      local desc_string = gmcp.Char.Items[1][count].short_desc
+      --display(desc_string)
+      desc_string = ansi2string(desc_string)
+      --display(desc_string)
+      desc_string = string.gsub(desc_string, "%b()", "")
+      desc_string = string.gsub(desc_string, "^%s+", "")
+      --display(desc_string)
+      InventoryConsole:cecho("&lt;white&gt;" ..string.format("(%3d)", gmcp.Char.Items[1][count].quan).. "&lt;reset&gt; ")
+      if (#desc_string) &gt; 34 then
+        local tmp_string = replace_char(28, desc_string, '.')
+        local tmp_string = replace_char(27, tmp_string, '.')
+        InventoryConsole:echo(string.format("%.28s", tmp_string) .."\n")
+      else
+        InventoryConsole:echo(string.format("%-28s", desc_string).."\n")
+      end
+    end
+    --[[if gmcp.Char.Affect[1][count].gives ~= nil then
+      if gmcp.Char.Affect[1][count].gives ~= "some unknown effect" then
+        AffectsConsole:cecho("gives: &lt;green&gt;"     ..gmcp.Char.Affect[1][count].gives..      "&lt;reset&gt;\n")
+      end
+    end
+    if gmcp.Char.Affect[1][count].modifies ~= nil then
+      if gmcp.Char.Affect[1][count].modifies ~= "none" then
+        AffectsConsole:cecho("\n&lt;green&gt;"..string.format("%-12s", gmcp.Char.Affect[1][count].modifies).."&lt;reset&gt;")
+      end
+    end
+    if gmcp.Char.Affect[1][count].mod_amount ~= nil then
+      if tonumber(gmcp.Char.Affect[1][count].mod_amount) ~= 0 then
+        has_mod = 1
+        AffectsConsole:cecho("&lt;yellow&gt;"       ..string.format("%10s", gmcp.Char.Affect[1][count].mod_amount).. "&lt;reset&gt;")
+      end
+    end
+    if gmcp.Char.Affect[1][count].duration ~= nil then
+      if tonumber(gmcp.Char.Affect[1][count].duration) &lt; 0 then
+        AffectsConsole:cecho("&lt;green&gt;" ..string.format("%17s","indefinite").. "&lt;reset&gt;\n")
+      elseif tonumber(gmcp.Char.Affect[1][count].duration) == 0 and has_mod == 1 then
+        AffectsConsole:cecho("&lt;green&gt;" ..string.format("%13s","&lt; 1").. "&lt;reset&gt;\n")
+        has_mod = 0
+      elseif tonumber(gmcp.Char.Affect[1][count].duration) == 0 and has_mod == 0 then
+        AffectsConsole:cecho("&lt;green&gt;" ..string.format("%17s","&lt; 1").. "&lt;reset&gt;\n")
+      elseif has_mod == 1 then
+        AffectsConsole:cecho("&lt;green&gt;"  ..string.format("%9s",gmcp.Char.Affect[1][count].duration)..   "&lt;reset&gt; hrs\n")
+        has_mod = 0
+      else
+        AffectsConsole:cecho("&lt;green&gt;"  ..string.format("%13s",gmcp.Char.Affect[1][count].duration)..   "&lt;reset&gt; hrs\n")
+      end
+    end
+  --]]
+  end
+end</script>
+						<eventHandlerList>
+							<string>gmcp.Char.Items</string>
+						</eventHandlerList>
+					</Script>
+					<Script isActive="yes" isFolder="no">
+						<name>order_table_functions</name>
+						<packageName></packageName>
+						<script>--[[
+Ordered table iterator, allow to iterate on the natural order of the keys of a
+table.
+
+Example:
+]]
+
+function getKeysSortedByValue(tbl, sortFunction)
+  local keys = {}
+  for key in pairs(tbl) do
+    table.insert(keys, key)
+  end
+
+  table.sort(keys, function(a, b)
+    return sortFunction(tbl[a], tbl[b])
+  end)
+
+  return keys
+end
+
+function dump(o)
+   if type(o) == 'table' then
+      local s = '{ '
+      for k,v in pairs(o) do
+         if type(k) ~= 'number' then k = '"'..k..'"' end
+         s = s .. '['..k..'] = ' .. dump(v) .. ','
+      end
+      return s .. '} '
+   else
+      return tostring(o)
+   end
+end
+
+function __genOrderedIndex( t )
+    local orderedIndex = {}
+    for key in pairs(t) do
+        table.insert( orderedIndex, key )
+    end
+    table.sort( orderedIndex )
+    return orderedIndex
+end
+
+function orderedNext(t, state)
+    -- Equivalent of the next function, but returns the keys in the alphabetic
+    -- order. We use a temporary ordered key table that is stored in the
+    -- table being iterated.
+
+    local key = nil
+    --print("orderedNext: state = "..tostring(state) )
+    if state == nil then
+        -- the first time, generate the index
+        t.__orderedIndex = __genOrderedIndex( t )
+        key = t.__orderedIndex[1]
+    else
+        -- fetch the next value
+        for i = 1,table.getn(t.__orderedIndex) do
+            if t.__orderedIndex[i] == state then
+                key = t.__orderedIndex[i+1]
+            end
+        end
+    end
+
+    if key then
+        return key, t[key]
+    end
+
+    -- no more value to return, cleanup
+    t.__orderedIndex = nil
+    return
+end
+
+function orderedPairs(t)
+    -- Equivalent of the pairs() function on tables. Allows to iterate
+    -- in order
+    return orderedNext, t, nil
+end
+</script>
+						<eventHandlerList />
+					</Script>
+					<Script isActive="yes" isFolder="no">
+						<name>string_functions</name>
+						<packageName></packageName>
+						<script>function replace_char(pos, str, r)
+    return table.concat{str:sub(1,pos-1), r, str:sub(pos+1)}
+end</script>
+						<eventHandlerList />
+					</Script>
+				</ScriptGroup>
+			</ScriptGroup>
+		</ScriptGroup>
+	</ScriptPackage>
+</MudletPackage>

@@ -24,7 +24,7 @@ new: $(O_FILES)
 
 const.o: const.c pre_reqs/*.c merc.h
 
-%.o: %.c merc.h
+%.o: %.c merc.h protocol.h
 	$(CC) -c $(C_FLAGS) $<
 
 clean:

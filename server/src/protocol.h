@@ -90,7 +90,7 @@ typedef struct descriptor_data descriptor_t;
 /* These constants are used to send Discord information to the client, set appropriately.
 https://wiki.mudlet.org/w/Standards:Discord_GMCP */
 
-#define DISCORD_INVITE_URL "www.blarg.org"
+#define DISCORD_INVITE_URL "https://discord.gg/EjYUwSq4"
 #define DISCORD_APPLICACTION_ID ""
 #define DISCORD_ICON_1 ""
 #define DISCORD_ICON_2 ""
@@ -303,9 +303,9 @@ typedef enum
 	GMCP_BASE,
 	GMCP_VITALS,
 	GMCP_STATS,
-	GMCP_AC,
 	GMCP_WORTH,
 	GMCP_AFFECTED,
+        GMCP_ITEMS,
 	GMCP_ENEMIES,
 	GMCP_ROOM,
 	GMCP_PACKAGE_MAX
@@ -331,6 +331,7 @@ typedef enum
 	GMCP_MAX_HP,
 	GMCP_MAX_MANA,
 	GMCP_MAX_MOVE,
+	GMCP_POSITION,
 
 	/* Stats */
 	GMCP_STR,
@@ -338,28 +339,38 @@ typedef enum
 	GMCP_WIS,
 	GMCP_DEX,
 	GMCP_CON,
+	GMCP_STR_MOD,
+	GMCP_INT_MOD,
+	GMCP_WIS_MOD,
+	GMCP_DEX_MOD,
+	GMCP_CON_MOD,
 	GMCP_HITROLL,
 	GMCP_DAMROLL,
-	GMCP_STR_PERM,
-	GMCP_INT_PERM,
-	GMCP_WIS_PERM,
-	GMCP_DEX_PERM,
-	GMCP_CON_PERM,
 	GMCP_WIMPY,
-
-	/* AC */
-	GMCP_AC_PIERCE,
-	GMCP_AC_BASH,
-	GMCP_AC_SLASH,
-	GMCP_AC_EXOTIC,
+  GMCP_CARRY_NUMBER,
+  GMCP_CARRY_MAXNUM,
+  GMCP_CARRY_WEIGHT,
+  GMCP_CARRY_MAXWEIGHT,
+  GMCP_AC,
+  GMCP_FAME,
+  GMCP_SAVE_VS,
 
 	/* Worth */
 	GMCP_ALIGNMENT,
+	GMCP_LEVEL,
 	GMCP_XP,
 	GMCP_XP_MAX,
 	GMCP_XP_TNL,
 	GMCP_PRACTICE,
-	GMCP_MONEY,
+	GMCP_PLATINUM,
+	GMCP_GOLD,
+	GMCP_SILVER,
+	GMCP_COPPER,
+	GMCP_STEEL,
+	GMCP_TITANIUM,
+	GMCP_ADAMANTITE,
+	GMCP_ELECTRUM,
+	GMCP_STARMETAL,
 
 	/* Enemies */
 	GMCP_ENEMY,
@@ -367,13 +378,17 @@ typedef enum
 	/* Affected */
 	GMCP_AFFECT,
 
+  /* Inventory */
+	GMCP_INVENTORY,
+
 	/* Room */
 	GMCP_AREA,
 	GMCP_ROOM_NAME,
-	GMCP_ROOM_EXITS,
+	GMCP_ROOM_SECT,
+  GMCP_ROOM_FLAGS,
 	GMCP_ROOM_VNUM,
-
-	GMCP_MAX
+	GMCP_ROOM_EXITS,
+  GMCP_MAX
 
 } GMCP_VARIABLE;
 
