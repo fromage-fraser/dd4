@@ -2818,7 +2818,7 @@ char *affect_bit_name (unsigned long int vector)
         if ( vector & AFF_SWALLOWED     ) return "swallowed";
         if ( vector & AFF_NO_RECALL     ) return "no_recall";
         if ( vector & AFF_SLOW          ) return "slow";
-        if ( vector & AFF_DOT           ) return "damage over time";
+        if ( vector & AFF_DOT           ) return "DOT";
 
         return "none";
 }
