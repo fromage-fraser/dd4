@@ -378,7 +378,9 @@ typedef enum
 	/* Affected */
 	GMCP_AFFECT,
 
+
   /* Inventory */
+
 	GMCP_INVENTORY,
 
 	/* Room */
@@ -388,7 +390,8 @@ typedef enum
   GMCP_ROOM_FLAGS,
 	GMCP_ROOM_VNUM,
 	GMCP_ROOM_EXITS,
-  GMCP_MAX
+
+	GMCP_MAX
 
 } GMCP_VARIABLE;
 
