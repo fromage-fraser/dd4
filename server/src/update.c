@@ -2879,24 +2879,29 @@ void gmcp_update( void )
 					if ( ch == d->character )
 						continue;
 
+                                        /* isnpc value is 0 if enemy is a PC, otherwise it is the VNUM of the mobile. */
 					if ( enemy == ch->fighting || ch->fighting == d->character )
 					{
 						#ifndef COLOR_CODE_FIX
 						if ( buf[0] == '\0' )
                                                 {
-                                                        sprintf( buf, "[ { \"name\": \"%s\", \"level\": \"%d\", \"hp\": \"%d\", \"maxhp\": \"%d\" }",
+                                                        sprintf( buf, "[ { \"name\": \"%s\", \"level\": \"%d\", \"hp\": \"%d\", \"maxhp\": \"%d\", \"isnpc\": \"%d\" }",
                                                                 (IS_NPC(enemy) ? enemy->short_descr : enemy->name),
                                                                 enemy->level,
                                                                 enemy->hit,
-                                                                enemy->max_hit );
+                                                                enemy->max_hit,
+                                                                (IS_NPC(enemy) ? enemy->pIndexData->vnum : 0 )
+                                                         );
                                                 }
 						else
 						{
-							sprintf( buf2, ", { \"name\": \"%s\", \"level\": \"%d\", \"hp\": \"%d\", \"maxhp\": \"%d\" }",
+							sprintf( buf2, ", { \"name\": \"%s\", \"level\": \"%d\", \"hp\": \"%d\", \"maxhp\": \"%d\", \"isnpc\": \"%d\" }",
                                                                 (IS_NPC(enemy) ? enemy->short_descr : enemy->name),
                                                                 enemy->level,
                                                                 enemy->hit,
-                                                                enemy->max_hit );
+                                                                enemy->max_hit,
+                                                                (IS_NPC(enemy) ? enemy->pIndexData->vnum : 0 )
+                                                        );
 							strcat( buf, buf2 );
 						}
 						#else
