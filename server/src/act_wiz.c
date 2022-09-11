@@ -1067,6 +1067,8 @@ void do_ostat( CHAR_DATA *ch, char *argument )
 
             case ITEM_WAND:
             case ITEM_STAFF:
+            case ITEM_COMBAT_PULSE:
+            case ITEM_DEFENSIVE_PULSE:
                 sprintf( buf, "Has {c%d{x/{C%d{x charges of level {G%d{x '{G",
                         obj->value[1], obj->value[2], obj->value[0] );
                 strcat( buf1, buf );

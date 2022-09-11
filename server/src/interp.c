@@ -304,6 +304,7 @@ const struct cmd_type cmd_table [] =
         { "identify",           do_identify,       POS_STANDING,    0,  LOG_NORMAL },
         { "imbue",              do_imbue,          POS_STANDING,    0,  LOG_NORMAL },
         { "intimidate",         do_intimidate,     POS_STANDING,    0,  LOG_NORMAL },
+        { "inscribe",           do_inscribe,       POS_STANDING,    0,  LOG_NORMAL },
         { "extort",             do_extort,         POS_STANDING,    0,  LOG_NORMAL },
         { "mist walk",          do_mist_walk,      POS_STANDING,    0,  LOG_NORMAL },
         { "morph",              do_morph,          POS_FIGHTING,    0,  LOG_NORMAL },

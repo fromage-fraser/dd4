@@ -310,6 +310,7 @@ void do_get (CHAR_DATA *ch, char *argument)
                         return;
 
                     case ITEM_CONTAINER:
+                    case ITEM_TURRET:
                     case ITEM_CORPSE_NPC:
                         break;
 
@@ -462,8 +463,11 @@ void do_put (CHAR_DATA *ch, char *argument)
 
         if (container->item_type != ITEM_CONTAINER)
         {
-                send_to_char("That's not a container.\n\r", ch);
-                return;
+                if (container->item_type != ITEM_TURRET)
+                {
+                        send_to_char("That's not a container.\n\r", ch);
+                        return;
+                }
         }
 
         if (IS_SET(container->value[1], CONT_CLOSED))
@@ -512,6 +516,17 @@ void do_put (CHAR_DATA *ch, char *argument)
                         return;
                 };
 
+                if (IS_SET(container->ego_flags, EGO_ITEM_TURRET ))
+                {
+                      if ( ( (ch->pcdata->learned[gsn_turret] < 60 ) && (get_container_count(container) >=1 ) )
+                      || ((ch->pcdata->learned[gsn_turret] < 85 ) && (get_container_count(container) >= 2 ) )
+                      || ((ch->pcdata->learned[gsn_turret] < 95 ) && (get_container_count(container) >= 3 ) ) )
+                      {
+                                send_to_char("You will need to improve your knowledge of turrets.\n\r", ch);
+                                return;
+                      }
+                }
+
                 if (get_obj_weight(obj) + get_obj_weight(container)
                     > container->value[0])
                 {
@@ -557,6 +572,54 @@ void do_put (CHAR_DATA *ch, char *argument)
         }
 
         return;
+}
+
+
+void do_deploy (CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA *obj;
+        char      arg [ MAX_INPUT_LENGTH ];
+
+        if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
+        {
+                send_to_char("Not in your current form.\n\r", ch);
+                return;
+        }
+
+        argument = one_argument(argument, arg);
+
+        if (arg[0] == '\0')
+        {
+                send_to_char("Deploy what?\n\r", ch);
+                return;
+        }
+
+        if (IS_SET(ch->in_room->room_flags, ROOM_NO_DROP))
+	{
+	      send_to_char ("A powerful enchantment prevents you from deploying anything here.\n\r", ch);
+	      return;
+	}
+
+        if (str_cmp(arg, "all") && str_prefix("all.", arg))
+        {
+                /* 'drop obj' */
+                if (!(obj = get_obj_carry(ch, arg)))
+                {
+                        send_to_char("You do not have that item.\n\r", ch);
+                        return;
+                }
+
+                obj_from_char(obj);
+                obj_to_room(obj, ch->in_room);
+                SET_BIT(obj->extra_flags, ITEM_DEPLOYED);
+                act("You deploy your $p.", ch, obj, NULL, TO_CHAR);
+                act("$n deploys their $p.", ch, obj, NULL, TO_ROOM);
+        }
+        else
+        {
+                act("One deployment at a time please.", ch, NULL, NULL, TO_CHAR);
+                return;
+        }
 }
 
 
@@ -4778,7 +4841,9 @@ void do_auction (CHAR_DATA *ch, char *argument)
                     && obj->item_type != ITEM_STAFF
                     && obj->item_type != ITEM_LIGHT
                     && obj->item_type != ITEM_WAND
-                    && obj->item_type != ITEM_SCROLL)
+                    && obj->item_type != ITEM_SCROLL
+                    && obj->item_type != ITEM_COMBAT_PULSE
+                    && obj->item_type != ITEM_DEFENSIVE_PULSE)
                 {
                         send_to_char("You cannot auction that kind of item.\n\r", ch);
                         return;
