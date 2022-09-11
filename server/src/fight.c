@@ -400,18 +400,17 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 }
         }
 
-        /* for Serrated - adds another attack. Serrated weapons always hit*/
-
-        if ( !IS_NPC(ch) && get_eq_char(ch, WEAR_WIELD) && ch->pcdata->learned[gsn_serrate] > 0 )
+        if (IS_AFFECTED(victim, AFF_DOT))
         {
-                OBJ_DATA *wield;
-                AFFECT_DATA *paf;
-                wield = get_eq_char(ch, WEAR_WIELD);
-                for ( paf = wield->affected; paf; paf = paf->next )
+                AFFECT_DATA *paf;  
+                for ( paf = victim->affected; paf; paf = paf->next )
                 {
-                        if ( paf->location == APPLY_SERRATED )
+                        if ( paf->deleted )
+                                continue;
+
+                        if( paf->bitvector == AFF_DOT )
                         {
-                                        one_hit(ch, victim, gsn_serrate);
+                                damage(ch, victim, paf->modifier, paf->type, FALSE); 
                         }
                 }
         }
@@ -738,6 +737,11 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                  * Calc damage.
                  */
                 hit = TRUE;
+
+                /* for Serrated - adds a stack of bleed*/
+
+
+
 
                 if (IS_NPC(ch))
                 {
@@ -1344,7 +1348,25 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                         ch->hit = 1;
         }
 
+        /* if we get here add a stack of serrate */
+        if ( ( !IS_NPC(ch) && ch->pcdata->learned[gsn_serrate] > 0 ) && (dt != gsn_serrate))
+        {
+                OBJ_DATA        *wield2;
+                wield2 = get_eq_char(ch, WEAR_WIELD);
 
+                if (IS_SET(wield2->ego_flags, EGO_ITEM_SERRATED))
+                {
+                        CHAR_DATA  *vic = (CHAR_DATA *) victim;                                
+                        AFFECT_DATA af;                      
+                        af.type      = gsn_serrate;
+                        af.duration  = 1;
+                        af.location  = APPLY_NONE;
+                        af.modifier  = 15;
+                        af.bitvector = AFF_DOT;
+                        affect_join(vic, &af);
+                }
+
+        }
 
         /* hurt the victim, and inform the victim of his new state */
         victim->hit -= dam;
