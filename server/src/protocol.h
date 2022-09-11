@@ -378,9 +378,7 @@ typedef enum
 	/* Affected */
 	GMCP_AFFECT,
 
-
   /* Inventory */
-
 	GMCP_INVENTORY,
 
 	/* Room */

@@ -1810,6 +1810,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define AFF_DETECT_GOOD                 BIT_30
 #define AFF_SWALLOWED                   BIT_31  /* Has been swallowed by a large creature */
 #define AFF_NO_RECALL                   BIT_32  /* Use to prevent recall without baggage of AFF_CURSE */
+#define AFF_DOT                         BIT_33  /* Damage Over Time - Brutus */
 #define AFF_SLOW                        BIT_63  /* last */
 
 /* forms - Brutus */

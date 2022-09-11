@@ -2726,15 +2726,14 @@ void gmcp_update( void )
 	{
 		if ( d->character && d->connected == CON_PLAYING && !IS_NPC(d->character) )
     {
-                
-			ROOM_INDEX_DATA *room = d->character->in_room;
-			CHAR_DATA       *enemy = d->character->fighting;
-			AFFECT_DATA     *paf;
+      ROOM_INDEX_DATA *room = d->character->in_room;
+      CHAR_DATA       *enemy = d->character->fighting;
+      AFFECT_DATA     *paf;
       OBJ_DATA        *obj;
       char            buf[MAX_STRING_LENGTH];
-			char            buf2[MAX_STRING_LENGTH];
-			char            buf3[MAX_STRING_LENGTH];
-			char            buf4[MAX_STRING_LENGTH];
+      char            buf2[MAX_STRING_LENGTH];
+      char            buf3[MAX_STRING_LENGTH];
+      char            buf4[MAX_STRING_LENGTH];
       char            **prgpstrShow;
       char            *pstrShow;
       int             *prgnShow;
@@ -2753,6 +2752,7 @@ void gmcp_update( void )
       rSetcount       = 0;
       fShort          = TRUE;
       fShowNothing    = TRUE;
+
 
 			UpdateGMCPString( d, GMCP_NAME, d->character->name );
 			UpdateGMCPString( d, GMCP_RACE, race_table[d->character->race].race_name );
@@ -2805,7 +2805,6 @@ void gmcp_update( void )
 			UpdateGMCPNumber( d, GMCP_ELECTRUM, d->character->smelted_electrum );
 			UpdateGMCPNumber( d, GMCP_STARMETAL, d->character->smelted_starmetal );
 
-
       UpdateGMCPString( d, GMCP_AREA, d->character->in_room->area->name );
 			UpdateGMCPString( d, GMCP_ROOM_NAME, d->character->in_room->name );
 			UpdateGMCPNumber( d, GMCP_ROOM_SECT, d->character->in_room->sector_type );
@@ -2830,7 +2829,7 @@ void gmcp_update( void )
       }
       rSetcount = 0;
       /* log_string(buf4); */
-			UpdateGMCPString( d, GMCP_ROOM_FLAGS, buf4 );
+      UpdateGMCPString( d, GMCP_ROOM_FLAGS, buf4 );
       buf4[0] = '\0';
 
 			/* sprintf( buf, "%d", room->vnum ); */
@@ -2882,24 +2881,29 @@ void gmcp_update( void )
 					if ( ch == d->character )
 						continue;
 
+                                        /* isnpc value is 0 if enemy is a PC, otherwise it is the VNUM of the mobile. */
 					if ( enemy == ch->fighting || ch->fighting == d->character )
 					{
 						#ifndef COLOR_CODE_FIX
 						if ( buf[0] == '\0' )
-                                                {
-                                                        sprintf( buf, "[ { \"name\": \"%s\", \"level\": \"%d\", \"hp\": \"%d\", \"maxhp\": \"%d\" }",
-                                                                (IS_NPC(enemy) ? enemy->short_descr : enemy->name),
-                                                                enemy->level,
-                                                                enemy->hit,
-                                                                enemy->max_hit );
-                                                }
+            {
+                    sprintf( buf, "[ { \"name\": \"%s\", \"level\": \"%d\", \"hp\": \"%d\", \"maxhp\": \"%d\", \"isnpc\": \"%d\" }",
+                            (IS_NPC(enemy) ? enemy->short_descr : enemy->name),
+                            enemy->level,
+                            enemy->hit,
+                            enemy->max_hit,
+                            (IS_NPC(enemy) ? enemy->pIndexData->vnum : 0 )
+                     );
+            }
 						else
 						{
-							sprintf( buf2, ", { \"name\": \"%s\", \"level\": \"%d\", \"hp\": \"%d\", \"maxhp\": \"%d\" }",
-                                                                (IS_NPC(enemy) ? enemy->short_descr : enemy->name),
-                                                                enemy->level,
-                                                                enemy->hit,
-                                                                enemy->max_hit );
+							sprintf( buf2, ", { \"name\": \"%s\", \"level\": \"%d\", \"hp\": \"%d\", \"maxhp\": \"%d\", \"isnpc\": \"%d\" }",
+                      (IS_NPC(enemy) ? enemy->short_descr : enemy->name),
+                      enemy->level,
+                      enemy->hit,
+                      enemy->max_hit,
+                      (IS_NPC(enemy) ? enemy->pIndexData->vnum : 0 )
+              );
 							strcat( buf, buf2 );
 						}
 						#else
@@ -2927,6 +2931,7 @@ void gmcp_update( void )
 			{
       
 				#ifndef COLOR_CODE_FIX
+
         if ( paf->deleted != 1 )
         {
                 if ( buf[0] == '\0' )
@@ -2950,7 +2955,6 @@ void gmcp_update( void )
                         strcat( buf, buf2 );
                 }
         }
-
 				#else
 				if ( buf[0] == '\0' ) sprintf( buf, "[ {{ \"name\": \"%s\", \"duration\": \"%d\" }", skill_table[paf->type].name, paf->duration );
 				else
