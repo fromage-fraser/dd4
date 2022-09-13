@@ -3040,7 +3040,6 @@ const struct gmcp_package_struct GMCPPackageTable[GMCP_PACKAGE_MAX+1] =
 	{ GMCP_ITEMS,				        GMCP_SUPPORT_CHAR,			"Char",			"Items"	        },
 	{ GMCP_ENEMIES,					GMCP_SUPPORT_CHAR,			"Char",			"Enemies"	},
 	{ GMCP_ROOM,					GMCP_SUPPORT_ROOM,			"Room",			"Info"		},
-
 	{ GMCP_PACKAGE_MAX,				-1,					    "",			""		}
 };
 
@@ -3048,8 +3047,7 @@ const struct gmcp_support_struct bGMCPSupportTable[GMCP_SUPPORT_MAX+1] =
 {
 	{ GMCP_SUPPORT_CHAR,			"Char"						},
 	{ GMCP_SUPPORT_ROOM,			"Room"						},
-
-	{ GMCP_SUPPORT_MAX,				NULL						}
+	{ GMCP_SUPPORT_MAX,			NULL						}
 };
 
 const struct gmcp_variable_struct GMCPVariableTable[GMCP_MAX+1] =
