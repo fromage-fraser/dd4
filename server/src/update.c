@@ -1565,7 +1565,7 @@ void char_update( void )
                                 ch->pcdata->dam_meter += engrave_gain(ch);
                 }
 
-                if (ch->position == POS_STUNNED)
+                if (ch->position == POS_STUNNED || ch->position == POS_PRONE || ch->position == POS_DAZED)
                         update_pos(ch);
 
                 if (!IS_NPC(ch) && (ch->level < LEVEL_IMMORTAL

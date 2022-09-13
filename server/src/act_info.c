@@ -509,6 +509,8 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
             case POS_STUNNED:  strcat( buf, " is lying here, stunned." ); break;
             case POS_SLEEPING: strcat( buf, " is sleeping here."      ); break;
             case POS_RESTING:  strcat( buf, " is resting here."       ); break;
+            case POS_DAZED:    strcat( buf, " is dazed."              ); break;
+            case POS_PRONE:    strcat( buf, " is lying here prone.");    break;
             case POS_STANDING: strcat( buf, " is here."               ); break;
 
             case POS_FIGHTING:

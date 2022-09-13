@@ -3289,6 +3289,7 @@ void interpret( CHAR_DATA *ch, char *argument )
                         break;
 
                     case POS_STUNNED:
+                    case POS_DAZED:
                         send_to_char( "You are too stunned to do that.\n\r",    ch );
                         break;
 
@@ -3374,6 +3375,7 @@ bool check_social( CHAR_DATA *ch, char *command, char *argument )
                 return TRUE;
 
             case POS_STUNNED:
+            case POS_DAZED:
                 send_to_char( "You are too stunned to do that.\n\r",      ch );
                 return TRUE;
 

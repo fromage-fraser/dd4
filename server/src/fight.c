@@ -317,6 +317,100 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 {
         int chance;
 
+/*
+ * These 2 functions are at the top, as Im about to put a check for dazed things
+ * If you are dazed you cant attack, BUT things you have in the room can still go off
+ * DOTS and Pulese objects - Brutus
+ * 
+ */
+
+       if (IS_AFFECTED(victim, AFF_DOT))
+        {
+                AFFECT_DATA *paf;  
+                for ( paf = victim->affected; paf; paf = paf->next )
+                {
+                        if ( paf->deleted )
+                                continue;
+
+                        if( paf->bitvector == AFF_DOT )
+                        {
+                                damage(ch, victim, paf->modifier, paf->type, FALSE); 
+                        }
+                }
+        }
+
+        /* Pulse objects go off every round (mainly runsmiths) */
+        if ( !IS_NPC(ch) )
+        {
+                OBJ_DATA *pulse;
+                for (pulse = ch->in_room->contents; pulse; pulse = pulse->next_content)
+                {
+                        if (pulse->item_type == ITEM_COMBAT_PULSE || ITEM_DEFENSIVE_PULSE)
+                        {
+                                if (skill_table[pulse->value[3]].target == TAR_CHAR_DEFENSIVE )
+                                        victim = ch; 
+
+                                if (victim)
+                                {
+                                        if (ch == victim)
+                                        {
+                                                act("Your $p pulses.", ch, pulse, victim, TO_CHAR);
+                                                act("$n's $p pulses.", ch, pulse, victim, TO_NOTVICT);
+                                        }
+                                        else
+                                        {
+                                                act("$p pulses and targets $N.", ch, pulse, victim, TO_CHAR);
+                                                act("$n's $p pulses and targets you!", ch, pulse, victim, TO_VICT);
+                                                act("$n's $p pulses and targets $p.", ch, pulse, victim, TO_NOTVICT);
+                                        }
+                                }
+                                else
+                                {
+                                        act("You pulese  with $p.", ch, pulse, NULL, TO_CHAR);
+                                        act("$n pulse with $p.", ch, pulse, NULL, TO_ROOM);
+                                }
+                                obj_cast_spell(pulse->value[3], pulse->value[0], ch, victim, pulse); 
+                        }
+                        if (--pulse->value[2] <= 0)
+                        {
+                                act("Your $p explodes into fragments.", ch, pulse, NULL, TO_CHAR);
+                                act("$n's $p explodes into fragments.", ch, pulse, NULL, TO_ROOM);
+                                extract_obj(pulse);
+                        }
+                }
+        }
+
+/*
+ *
+ * Everything below here is for players - but Im going to assume your not Dazed first - Brutus
+ * 
+ */
+
+        if (IS_AFFECTED(ch, AFF_DAZED))
+        {
+                AFFECT_DATA *paf;   
+                
+                for (paf = ch->affected; paf; paf = paf->next)
+                {
+                        if ((paf->bitvector == AFF_DAZED))
+                        {
+                                paf->modifier -= 1;
+                                
+                                if (paf->modifier <=0 )
+                                {
+                                        REMOVE_BIT(ch->affected_by, AFF_DAZED);
+                                        affect_strip(ch, paf->type);
+                                }
+                                if (paf->modifier > 0 )
+                                {
+                                        act("$n is DAZED, unable to attack or defend themselves.", ch, NULL, NULL, TO_ROOM);
+                                        return;
+                                }
+
+                        }           
+                }
+        }
+                
         /*
          * One attack
          */
@@ -400,61 +494,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 }
         }
 
-        if (IS_AFFECTED(victim, AFF_DOT))
-        {
-                AFFECT_DATA *paf;  
-                for ( paf = victim->affected; paf; paf = paf->next )
-                {
-                        if ( paf->deleted )
-                                continue;
-
-                        if( paf->bitvector == AFF_DOT )
-                        {
-                                damage(ch, victim, paf->modifier, paf->type, FALSE); 
-                        }
-                }
-        }
-
-        /* Pulse objects go off every round (mainly alchemists) */
-        if ( !IS_NPC(ch) )
-        {
-                OBJ_DATA *pulse;
-                for (pulse = ch->in_room->contents; pulse; pulse = pulse->next_content)
-                {
-                        if (pulse->item_type == ITEM_COMBAT_PULSE || ITEM_DEFENSIVE_PULSE)
-                        {
-                                if (skill_table[pulse->value[3]].target == TAR_CHAR_DEFENSIVE )
-                                        victim = ch; 
-
-                                if (victim)
-                                {
-                                        if (ch == victim)
-                                        {
-                                                act("Your $p pulses.", ch, pulse, victim, TO_CHAR);
-                                                act("$n's $p pulses.", ch, pulse, victim, TO_NOTVICT);
-                                        }
-                                        else
-                                        {
-                                                act("$p pulses and targets $N.", ch, pulse, victim, TO_CHAR);
-                                                act("$n's $p pulses and targets you!", ch, pulse, victim, TO_VICT);
-                                                act("$n's $p pulses and targets $p.", ch, pulse, victim, TO_NOTVICT);
-                                        }
-                                }
-                                else
-                                {
-                                        act("You pulese  with $p.", ch, pulse, NULL, TO_CHAR);
-                                        act("$n pulse with $p.", ch, pulse, NULL, TO_ROOM);
-                                }
-                                obj_cast_spell(pulse->value[3], pulse->value[0], ch, victim, pulse); 
-                        }
-                        if (--pulse->value[2] <= 0)
-                        {
-                                act("Your $p explodes into fragments.", ch, pulse, NULL, TO_CHAR);
-                                act("$n's $p explodes into fragments.", ch, pulse, NULL, TO_ROOM);
-                                extract_obj(pulse);
-                        }
-                }
-        }
+ 
 
         /*
          * Multiple attacks for shifter forms
@@ -738,11 +778,6 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                  */
                 hit = TRUE;
 
-                /* for Serrated - adds a stack of bleed*/
-
-
-
-
                 if (IS_NPC(ch))
                 {
                         dam = number_range(ch->level / 2, ch->level * 3 / 2);
@@ -841,7 +876,10 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 
                 if (!IS_AWAKE(victim))
                         dam *= 2;
-
+                else if (victim->position == POS_DAZED)
+                        dam += dam / 4;
+                else if (victim->position == POS_PRONE)
+                        dam += dam / 8;
                 else if (IS_RESTING(victim))
                         dam += dam / 4;
 
@@ -1191,7 +1229,8 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 /* check for disarm, trip, parry, dodge and shield block et al. */
                 if (dt >= TYPE_HIT
                     && victim->position > POS_SLEEPING
-                    && ch->position > POS_SLEEPING)
+                    && ch->position > POS_SLEEPING 
+                    && !IS_AFFECTED(victim, AFF_DAZED))
                 {
                         int leveldiff = ch->level - victim->level;
 
@@ -1349,7 +1388,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
         }
 
         /* if we get here add a stack of serrate */
-        if ( ( !IS_NPC(ch) && ch->pcdata->learned[gsn_serrate] > 0 ) && (dt != gsn_serrate))
+        if ( ( !IS_NPC(ch) && ch->pcdata->learned[gsn_serrate] > 0 ) && (get_eq_char(ch, WEAR_WIELD)) && (dt != gsn_serrate))
         {
                 OBJ_DATA        *wield2;
                 wield2 = get_eq_char(ch, WEAR_WIELD);
@@ -2202,6 +2241,11 @@ void update_pos (CHAR_DATA *victim)
         {
                 if (victim->position <= POS_STUNNED)
                         victim->position = POS_STANDING;
+                if ((victim->position == POS_DAZED || victim->position == POS_PRONE) && (!victim->fighting) )
+                {
+                        bug( "Undazed someone", 0 );
+                     victim->position = POS_STANDING;
+                }
                 return;
         }
 
@@ -3318,7 +3362,36 @@ void trip (CHAR_DATA *ch, CHAR_DATA *victim)
         return;
 }
 
+void prone (CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        if (victim->wait == 0)
+        {
+                act ("You knock $N to the ground!", ch, NULL, victim, TO_CHAR);
+                act ("$n knocks you to the ground!", ch, NULL, victim, TO_VICT);
+                act ("$n knocks $N to the ground!", ch, NULL, victim, TO_NOTVICT);
 
+                WAIT_STATE(ch,     2 * PULSE_VIOLENCE);
+                WAIT_STATE(victim, 2 * PULSE_VIOLENCE);
+                victim->position = POS_PRONE;
+        }
+
+        return;
+}
+void daze (CHAR_DATA *ch, CHAR_DATA *victim)
+{
+       /* if (victim->wait == 0)
+        {
+*/                act ("You stun and daze $N!", ch, NULL, victim, TO_CHAR);
+                act ("$n dazes you. You see stars!!", ch, NULL, victim, TO_VICT);
+                act ("$n dazes $N and $E are helpless!", ch, NULL, victim, TO_NOTVICT);
+
+                WAIT_STATE(ch,     2 * PULSE_VIOLENCE);
+                WAIT_STATE(victim, 2 * PULSE_VIOLENCE);
+                victim->position = POS_DAZED;
+  /*      }
+*/
+        return;
+}
 void do_kill (CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
@@ -6547,6 +6620,15 @@ void do_hurl (CHAR_DATA *ch, char *argument)
                         ch, NULL, victim, TO_NOTVICT);
                         arena_commentary("$n knocks $N out cold.", ch, victim);
 
+                      
+                
+                        af.type      = gsn_hurl;
+                        af.duration  = -1;
+                        af.location  = APPLY_NONE;
+                        af.modifier  = 2;
+                        af.bitvector = AFF_DAZED;
+                        affect_to_char(victim,&af);
+                /*
                         af.type = gsn_stun;
                         af.modifier = 0;
                         af.location = APPLY_NONE;
@@ -6560,13 +6642,12 @@ void do_hurl (CHAR_DATA *ch, char *argument)
                         do_sleep(victim,"");
 
                         check_group_bonus(ch);
-
-                        WAIT_STATE (victim, 2 * PULSE_VIOLENCE);
+                
+                        daze(ch, victim);
+                        WAIT_STATE (victim, 2 * PULSE_VIOLENCE); */
                 }
                 else
                 {
-                        act ("It sails past $S head and returns to your arm. MISS!",
-                        ch, NULL, victim, TO_CHAR);
                         damage(ch, victim, 0, gsn_stun, FALSE);
                 }
         }

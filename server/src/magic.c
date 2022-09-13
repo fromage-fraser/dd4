@@ -2393,6 +2393,14 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                         return;
                 }
 
+                if (IS_AFFECTED(victim, AFF_DAZED) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_DAZED);
+                        send_to_char( "You recover.\n\r", victim );
+                        act( "$n recovers.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
                 if (IS_AFFECTED(victim, AFF_SLEEP) && IS_IMMORTAL( ch ))
                 {
                         REMOVE_BIT(victim->affected_by, AFF_SLEEP);

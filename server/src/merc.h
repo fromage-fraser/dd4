@@ -1087,6 +1087,10 @@ struct affect_data
         bool                    deleted;
 };
 
+
+/* A fight Affect */
+
+
 /* Set items struct */
 struct objset_data
 {
@@ -1811,6 +1815,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define AFF_SWALLOWED                   BIT_31  /* Has been swallowed by a large creature */
 #define AFF_NO_RECALL                   BIT_32  /* Use to prevent recall without baggage of AFF_CURSE */
 #define AFF_DOT                         BIT_33  /* Damage Over Time - Brutus */
+#define AFF_PRONE                       BIT_34  /* Prone - cant do skills, can cast - Brutus*/
+#define AFF_DAZED                       BIT_35  /*dazed - cant do anytrhing - Brutus */
 #define AFF_SLOW                        BIT_63  /* last */
 
 /* forms - Brutus */
@@ -2404,8 +2410,10 @@ extern DIR_DATA directions [ MAX_DIR ];
 #define POS_STUNNED                     3
 #define POS_SLEEPING                    4
 #define POS_RESTING                     5
-#define POS_FIGHTING                    6
-#define POS_STANDING                    7
+#define POS_DAZED                       6
+#define POS_PRONE                       7
+#define POS_FIGHTING                    8
+#define POS_STANDING                    9
 
 
 /*
