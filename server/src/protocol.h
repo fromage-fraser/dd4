@@ -323,6 +323,7 @@ typedef enum
 	GMCP_NAME,
 	GMCP_RACE,
 	GMCP_CLASS,
+	GMCP_SEX,
 
 	/* Vitals */
 	GMCP_HP,

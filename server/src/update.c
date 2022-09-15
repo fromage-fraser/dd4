@@ -2771,6 +2771,7 @@ void gmcp_update( void )
                         UpdateGMCPString( d, GMCP_NAME, d->character->name );
                         UpdateGMCPString( d, GMCP_RACE, race_table[d->character->race].race_name );
                         UpdateGMCPString( d, GMCP_CLASS, full_class_name( d->character->class ) );
+                        UpdateGMCPNumber( d, GMCP_SEX, d->character->sex );
 
                         UpdateGMCPNumber( d, GMCP_HP, d->character->hit );
                         UpdateGMCPNumber( d, GMCP_MANA, d->character->mana );

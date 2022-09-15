@@ -674,11 +674,12 @@ is increased while you are meditating.
 
 
 0 CLASSES~
-Your class is your basic profession.  There are eight base classes; each
+Your class is your basic profession.  There are nine base classes; each
 base class has two specialised subclasses.  The base classes are:
 
     {YMage            {GCleric             {BThief           {MWarrior
     {WPsionicist      {RShape Shifter      {CBrawler         {x{wRanger{x
+    {cSmithy{x
 
 See 'HELP <<class name>' for more information.  See 'HELP SUBCLASSES' for
 information on the sixteen subclasses.
@@ -7144,7 +7145,7 @@ A forge is needed to do this.
 Syntax: look <<item>
 
 This passive skill allows the SMITHY to be able to determine properties
-of weapons, armour, turrets, and turret modules. 
+of weapons, armour, turrets, and turret modules.
 
 The higher the skill, the more details is revealed about an item.
 Simply look at the item to understand additional information.
@@ -7158,7 +7159,7 @@ Syntax: construct 'blade module'
 Syntax: construct 'shuriken module'
 Syntax: construct 'spear module'
 
-These moduels are deemed to be offensive modules that can be 
+These moduels are deemed to be offensive modules that can be
 TRIGGERED by the ENGINEER.
 
 This will contruct modules that you can equip into your turret.
@@ -7172,15 +7173,15 @@ You can see these by typing 'construct'
 Syntax: construct turret (to make)
 Syntax: look turret (to inspect)
 
-Turrets are an engineers support. They can provide additional 
-damage or if you so choose, a means to defend yourself. Turrets can 
+Turrets are an engineers support. They can provide additional
+damage or if you so choose, a means to defend yourself. Turrets can
 contain upto 4 modules. Each module performs a differnt ability
 and can be broken up into Offensive or Defensive modules.
 
 All modules are TRIGGERED by the Engineer.
 All modules must be placed in the turret to work.
 
-Defensive modules such as the ARRESTOR MODULE generally prevent or 
+Defensive modules such as the ARRESTOR MODULE generally prevent or
 reduce damage you take. Defensive modules will deploy a unit when
 triggered.
 
@@ -7201,7 +7202,7 @@ Syntax: trigger <all.offensive module> <target>
 
 Trigger will fire the module that has been placed in a turret.
 
-Defensive modules such as the ARRESTOR MODULE generally prevent or 
+Defensive modules such as the ARRESTOR MODULE generally prevent or
 reduce damage you take. Defensive modules will deploy a unit when
 triggered.
 
@@ -7234,8 +7235,8 @@ Syntax: trigger 'driver module'  (to use)
 This module is a defensive turret module.
 
 When triggered the driver module deploys a clubbed pounding
-mechanism which will occasionally unbalance any attacker, 
-preventing them from attacking you. The repeated pounding 
+mechanism which will occasionally unbalance any attacker,
+preventing them from attacking you. The repeated pounding
 will eventually destroy the mechanism.
 
 All modules must be placed in the turret to use.
