@@ -1679,6 +1679,20 @@ void char_update( void )
                                         REMOVE_BIT(ch->affected_by, AFF_MEDITATE);
                         }
 
+                        if (IS_AFFECTED(ch, AFF_DOT) )
+                        {
+                                for (paf = ch->affected; paf; paf = paf->next)
+                                {
+                                        if ( paf->deleted )
+                                        continue;
+
+                                        if( paf->bitvector == AFF_DOT )
+                                        {
+                                                damage(ch, ch, paf->modifier, paf->type, FALSE); 
+                                        }
+                                }       
+                        }
+
                         /* Drowning? */
                         if (!IS_NPC(ch)
                             && ch->level <= LEVEL_HERO
