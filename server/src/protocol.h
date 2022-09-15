@@ -323,6 +323,7 @@ typedef enum
 	GMCP_NAME,
 	GMCP_RACE,
 	GMCP_CLASS,
+	GMCP_SEX,
 
 	/* Vitals */
 	GMCP_HP,
@@ -347,13 +348,13 @@ typedef enum
 	GMCP_HITROLL,
 	GMCP_DAMROLL,
 	GMCP_WIMPY,
-  GMCP_CARRY_NUMBER,
-  GMCP_CARRY_MAXNUM,
-  GMCP_CARRY_WEIGHT,
-  GMCP_CARRY_MAXWEIGHT,
-  GMCP_AC,
-  GMCP_FAME,
-  GMCP_SAVE_VS,
+        GMCP_CARRY_NUMBER,
+        GMCP_CARRY_MAXNUM,
+        GMCP_CARRY_WEIGHT,
+        GMCP_CARRY_MAXWEIGHT,
+        GMCP_AC,
+        GMCP_FAME,
+        GMCP_SAVE_VS,
 
 	/* Worth */
 	GMCP_ALIGNMENT,
@@ -378,14 +379,14 @@ typedef enum
 	/* Affected */
 	GMCP_AFFECT,
 
-  /* Inventory */
+        /* Inventory */
 	GMCP_INVENTORY,
 
 	/* Room */
 	GMCP_AREA,
 	GMCP_ROOM_NAME,
 	GMCP_ROOM_SECT,
-  GMCP_ROOM_FLAGS,
+        GMCP_ROOM_FLAGS,
 	GMCP_ROOM_VNUM,
 	GMCP_ROOM_EXITS,
 
