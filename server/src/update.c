@@ -1565,7 +1565,7 @@ void char_update( void )
                                 ch->pcdata->dam_meter += engrave_gain(ch);
                 }
 
-                if (ch->position == POS_STUNNED || ch->position == POS_PRONE || ch->position == POS_DAZED)
+                if (ch->position == POS_STUNNED)
                         update_pos(ch);
 
                 if (!IS_NPC(ch) && (ch->level < LEVEL_IMMORTAL
@@ -2320,6 +2320,7 @@ void update_handler ()
         static int pulse_mobile;
         static int pulse_violence;
         static int pulse_point;
+        static int pulse_state; /* for prone and dazed state initially - Brutus */
         static int pulse_msdp; /* <--- GCMP */
 
         sprintf (last_function, "entering update_hander");
@@ -2338,6 +2339,13 @@ void update_handler ()
                 pulse_violence = PULSE_VIOLENCE;
                 sprintf (last_function, "update_hander: calling violence_update");
                 violence_update();
+        }
+
+        if (--pulse_state <= 0)
+        {
+                pulse_state = PULSE_STATE;
+                sprintf (last_function, "update_hander: calling state_update");
+                state_update();
         }
 
         if (--pulse_mobile <= 0)

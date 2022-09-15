@@ -3165,8 +3165,6 @@ char *position_name (int position)
         if (position == POS_STUNNED)    return "stunned";
         if (position == POS_SLEEPING)   return "sleeping";
         if (position == POS_RESTING)    return "resting";
-        if (position == POS_DAZED)      return "dazed";
-        if (position == POS_PRONE)      return "prone";
         if (position == POS_FIGHTING)   return "fighting";
         if (position == POS_STANDING)   return "standing";
 

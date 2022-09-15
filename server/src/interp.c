@@ -3212,6 +3212,24 @@ void interpret( CHAR_DATA *ch, char *argument )
                 }
         }
 
+        /* IF your Dazed cant do much.
+         * If your PRONE - cant do attack skills
+         */
+
+        if ((cmd_table[cmd].position >= POS_RESTING) && (IS_AFFECTED(ch, AFF_DAZED)))
+        {
+                send_to_char( "You see STARS. You are dazed at present.\n\r", ch ); 
+                return; 
+        }
+
+        if ((cmd_table[cmd].position == POS_FIGHTING) 
+                && (IS_AFFECTED(ch, AFF_PRONE)) 
+                && (str_cmp( "cast", cmd_table[cmd].name )))
+        {
+                send_to_char( "You cant, you're lying PRONE on the ground.\n\r", ch ); 
+                return; 
+        }
+
         /*
          * Strip hide if affected
          */
@@ -3289,7 +3307,6 @@ void interpret( CHAR_DATA *ch, char *argument )
                         break;
 
                     case POS_STUNNED:
-                    case POS_DAZED:
                         send_to_char( "You are too stunned to do that.\n\r",    ch );
                         break;
 
@@ -3375,7 +3392,6 @@ bool check_social( CHAR_DATA *ch, char *command, char *argument )
                 return TRUE;
 
             case POS_STUNNED:
-            case POS_DAZED:
                 send_to_char( "You are too stunned to do that.\n\r",      ch );
                 return TRUE;
 

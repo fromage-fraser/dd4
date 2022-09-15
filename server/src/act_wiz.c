@@ -1555,28 +1555,46 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                                 paf->modifier);
                         strcat( buf1, buf );
 
-                        if( paf->duration > 1 )
+                        if (paf->bitvector
+                                && ( paf->bitvector == AFF_PRONE
+                                || paf->bitvector == AFF_DAZED))
                         {
-                                sprintf( buf, " for {G%d{x hours",
-                                        paf->duration );
-                                strcat( buf1, buf );
-                        }
-                        else if( paf->duration == 1 )
-                        {
-                                sprintf( buf, " for {G%d{x hour",
-                                        paf->duration );
-                                strcat( buf1, buf );
-                        }
-                        else if( paf->duration == 0 )
-                        {
-                                sprintf( buf, " for less than an hour");
-                                strcat( buf1, buf );
+                                if( paf->duration > 1 )
+                                {
+                                        sprintf( buf, " for {G%d{x min", paf->duration );
+                                        strcat( buf1, buf );
+                                }
+                                else
+                                {
+                                        sprintf( buf, " for {G%d{x min", paf->duration );
+                                        strcat( buf1, buf );
+                                }
                         }
                         else
                         {
-                                strcat( buf1, " indefinitely" );
-                        }
 
+                                if( paf->duration > 1 )
+                                {
+                                        sprintf( buf, " for {G%d{x hours",
+                                                paf->duration );
+                                        strcat( buf1, buf );
+                                }
+                                else if( paf->duration == 1 )
+                                {
+                                        sprintf( buf, " for {G%d{x hour",
+                                                paf->duration );
+                                        strcat( buf1, buf );
+                                }
+                                else if( paf->duration == 0 )
+                                {
+                                        sprintf( buf, " for less than an hour");
+                                        strcat( buf1, buf );
+                                }
+                                else
+                                {
+                                        strcat( buf1, " indefinitely" );
+                                }
+                        }
                         sprintf( buf, " with bit {R%s{x\n\r",
                                 affect_bit_name( paf->bitvector ) );
                         strcat( buf1, buf );

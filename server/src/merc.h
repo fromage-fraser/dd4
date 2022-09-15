@@ -501,6 +501,7 @@ DECLARE_DO_FUN ( do_board );
 /* Timing */
 #define PULSE_PER_SECOND                  4
 #define PULSE_VIOLENCE                 (  3 * PULSE_PER_SECOND )
+#define PULSE_STATE                    (  3 * PULSE_PER_SECOND )
 #define PULSE_MOBILE                   (  4 * PULSE_PER_SECOND )
 #define PULSE_TICK                     ( 30 * PULSE_PER_SECOND )
 #define PULSE_AREA                     ( 60 * PULSE_PER_SECOND )
@@ -2410,10 +2411,8 @@ extern DIR_DATA directions [ MAX_DIR ];
 #define POS_STUNNED                     3
 #define POS_SLEEPING                    4
 #define POS_RESTING                     5
-#define POS_DAZED                       6
-#define POS_PRONE                       7
-#define POS_FIGHTING                    8
-#define POS_STANDING                    9
+#define POS_FIGHTING                    6
+#define POS_STANDING                    7
 
 
 /*
@@ -2624,6 +2623,7 @@ struct char_data
         int                     damage_mitigation;
         int                     damage_enhancement;
         int                     inscription_total;
+        int                     dazed;
         /*
         *  Does the variable you're about to add belong here or in 'pcdata'?
         */
@@ -4583,6 +4583,7 @@ void    reset_area                      args( ( AREA_DATA * pArea ) );
 
 /* fight.c */
 void    violence_update                 args( ( void ) );
+void    state_update                    args( ( void ) );
 bool    is_safe                         args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 void    multi_hit                       args( ( CHAR_DATA *ch, CHAR_DATA *victim, int dt ) );
 void    damage                          args( ( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison ) );

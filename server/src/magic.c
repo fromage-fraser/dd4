@@ -241,6 +241,12 @@ void do_cast( CHAR_DATA *ch, char *argument )
         int        mana;
         int        sn;
 
+        if (IS_AFFECTED(ch, AFF_DAZED))
+        {
+              send_to_char( "You see STARS. You are dazed at present.\n\r", ch ); 
+              return; 
+        }
+
         if (IS_NPC(ch) && IS_AFFECTED(ch, AFF_CHARM))
                 return;
 
