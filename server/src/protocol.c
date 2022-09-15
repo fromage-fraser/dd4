@@ -3058,6 +3058,7 @@ const struct gmcp_variable_struct GMCPVariableTable[GMCP_MAX+1] =
 	{ GMCP_NAME,		GMCP_BASE,		"name",			GMCP_STRING	},
 	{ GMCP_RACE,		GMCP_BASE,		"race",			GMCP_STRING	},
 	{ GMCP_CLASS,		GMCP_BASE,		"class",		GMCP_STRING	},
+	{ GMCP_SEX,		GMCP_BASE,		"sex",		        GMCP_STRING	},
 
 	{ GMCP_HP,		GMCP_VITALS,		"hp",			GMCP_NUMBER	},
 	{ GMCP_MANA,		GMCP_VITALS,		"mana",			GMCP_NUMBER	},
