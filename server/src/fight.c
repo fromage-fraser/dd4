@@ -1357,9 +1357,24 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 if (IS_SET(wield2->ego_flags, EGO_ITEM_SERRATED))
                 {
                         CHAR_DATA  *vic = (CHAR_DATA *) victim;                                
-                        AFFECT_DATA af;                      
+                        AFFECT_DATA af;     
+                        AFFECT_DATA *paf;                  
+                        
+
+                        
                         af.type      = gsn_serrate;
-                        af.duration  = 1;
+                        af.duration  = 2;
+
+                        /* limiting serrate to 2 rounds of damage after fight */
+                        for (paf = victim->affected; paf; paf = paf->next)
+                        {
+                                if (( paf->type == gsn_serrate ) && ( paf->duration > 2) )
+                                {
+                                        af.duration = 0;
+                                        break;
+                                }
+                        }
+
                         af.location  = APPLY_NONE;
                         af.modifier  = 15;
                         af.bitvector = AFF_DOT;

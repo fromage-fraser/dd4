@@ -162,7 +162,7 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
 
         if ( IS_OBJ_STAT( obj, ITEM_DEPLOYED))
                 strcat( buf, "[DEPLOYED] ");
-        
+
         if ( IS_OBJ_STAT( obj, ITEM_RUNE))
                 strcat( buf, "[Channeling] ");
 
@@ -455,12 +455,12 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
 
         if (IS_AFFECTED (victim, AFF_GLOBE ))
                 strcat(buf, "<220>(Globed)<0> " );
-        
+
         if (IS_SET(victim->act, ACT_QUESTMASTER) && (!IS_SET(ch->act, PLR_QUESTOR)))
                 strcat(buf, "<11>(!)<0> ");
 
         if (IS_SET(victim->act, ACT_QUESTMASTER) && (IS_SET(ch->act, PLR_QUESTOR)))
-                strcat(buf, "<11>(?)<0> ");      
+                strcat(buf, "<11>(?)<0> ");
 
         if (!IS_NPC(victim ) && IS_SET(victim->status, PLR_KILLER )  )
                 strcat(buf, "<254>(KILLER)<0> " );
@@ -734,7 +734,7 @@ void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
                                 obj->value[1],
                                 obj->value[2],
                                 obj->value[3]);
-                        strcat( buf, tmp);   
+                        strcat( buf, tmp);
                 }
                 break;
 
@@ -757,7 +757,7 @@ void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
                         else
                         {
                                 sprintf( tmp, "SLOT 2 of 4: DISABLED\n\r" );
-                                strcat( buf, tmp);    
+                                strcat( buf, tmp);
                         }
                         if (ch->pcdata->learned[gsn_turret] > 85 )
                         {
@@ -768,7 +768,7 @@ void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
                         else
                         {
                                 sprintf( tmp, "SLOT 3 of 4: DISABLED\n\r" );
-                                strcat( buf, tmp);    
+                                strcat( buf, tmp);
                         }
                         if (ch->pcdata->learned[gsn_turret] > 95 )
                         {
@@ -779,9 +779,9 @@ void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
                         else
                         {
                                 sprintf( tmp, "SLOT 4 of 4: DISABLED\n\r" );
-                                strcat( buf, tmp);    
+                                strcat( buf, tmp);
                         }
-    
+
                 }
                 break;
 
@@ -791,7 +791,7 @@ void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
                         sprintf( tmp, "This module has {W%d/%d{x charges.\n\r",
                                 obj->value[2],
                                 obj->value[3]);
-                        strcat( buf, tmp);   
+                        strcat( buf, tmp);
                 }
                 break;
         }
@@ -867,7 +867,7 @@ void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
 
 
                         sprintf( tmp, "<560><15>Smithy Enhancements:<561><0>\n\r");
-                        
+
                         if (IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
                                 strcat (tmp, "<228>I<229>m<230>b<231>u<230>e<229>d<0>\n\r");
                         if (IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
@@ -1062,8 +1062,8 @@ void do_look( CHAR_DATA *ch, char *argument )
                         if ( pdesc )
                         {
                                 send_to_char( pdesc, ch );
-                                if ( (ch->class == CLASS_SMITHY) 
-                                        && (obj->item_type == ITEM_WEAPON 
+                                if ( (ch->class == CLASS_SMITHY)
+                                        && (obj->item_type == ITEM_WEAPON
                                         || obj->item_type == ITEM_ARMOR
                                         || obj->item_type == ITEM_TURRET_MODULE
                                         || obj->item_type == ITEM_DEFENSIVE_TURRET_MODULE) )
@@ -1078,8 +1078,8 @@ void do_look( CHAR_DATA *ch, char *argument )
                         if ( pdesc )
                         {
                                 send_to_char( pdesc, ch );
-                                if ( (ch->class == CLASS_SMITHY) 
-                                        && (obj->item_type == ITEM_WEAPON 
+                                if ( (ch->class == CLASS_SMITHY)
+                                        && (obj->item_type == ITEM_WEAPON
                                         || obj->item_type == ITEM_ARMOR
                                         || obj->item_type == ITEM_TURRET_MODULE
                                         || obj->item_type == ITEM_DEFENSIVE_TURRET_MODULE) )
@@ -1098,7 +1098,7 @@ void do_look( CHAR_DATA *ch, char *argument )
                         send_to_char( "\n\r", ch );
 
                         if ( (ch->class == CLASS_SMITHY) &&
-                                (obj->item_type == ITEM_WEAPON 
+                                (obj->item_type == ITEM_WEAPON
                                 || obj->item_type == ITEM_ARMOR
                                 || obj->item_type == ITEM_TURRET_MODULE
                                 || obj->item_type == ITEM_TURRET
@@ -1609,7 +1609,7 @@ void do_score (CHAR_DATA *ch, char *argument)
 
         if( ch->level >= 20 )
         {
-                sprintf( buf, "Armour class: {W%d{x.  ", GET_AC( ch ) );
+                sprintf( buf, "\nArmour class: {W%d{x.  ", GET_AC( ch ) );
                 strcat( buf1, buf );
         }
 
