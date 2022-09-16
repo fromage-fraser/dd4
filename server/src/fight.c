@@ -6714,32 +6714,7 @@ void do_hurl (CHAR_DATA *ch, char *argument)
                         act ("$n hurls their shield at $N. It slams into the side of $S head... THUNK!",
                         ch, NULL, victim, TO_NOTVICT);
                         arena_commentary("$n knocks $N out cold.", ch, victim);
-
-                      
-                
-                        af.type      = gsn_hurl;
-                        af.duration  = 2;
-                        af.location  = APPLY_NONE;
-                        af.modifier  = 0;
-                        af.bitvector = AFF_DAZED;
-                        affect_to_char(victim,&af);
-                /*
-                        af.type = gsn_stun;
-                        af.modifier = 0;
-                        af.location = APPLY_NONE;
-                        af.duration = 0;
-                        af.bitvector = AFF_SLEEP;
-                        affect_to_char(victim,&af);
-
-                        if ( victim->position == POS_FIGHTING )
-                        stop_fighting( victim, TRUE );
-
-                        do_sleep(victim,"");
-
-                        check_group_bonus(ch);
-                
-                        daze(ch, victim);
-                        WAIT_STATE (victim, 2 * PULSE_VIOLENCE); */
+                        daze(ch,victim, gsn_hurl, 1);
                 }
                 else
                 {
