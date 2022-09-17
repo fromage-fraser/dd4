@@ -1816,30 +1816,57 @@ void do_affects( CHAR_DATA *ch, char *argument )
                                         strcat( buf1, buf );
                                 }
                                 else if (paf->bitvector
+                                        && paf->bitvector == AFF_DAZED
+                                        && paf->bitvector == AFF_PRONE)
+                                {
+                                        sprintf( buf, " ");
+                                        strcat( buf1, buf );
+                                }
+                                else if (paf->bitvector
                                          && paf->bitvector != AFF_HIDE
-                                         && paf->bitvector != AFF_SNEAK)
+                                         && paf->bitvector != AFF_SNEAK
+                                         && paf->bitvector != AFF_DAZED
+                                         && paf->bitvector != AFF_PRONE)
                                 {
                                         sprintf( buf, " gives you {G%s{x",
                                                 affect_bit_name_nice( paf->bitvector ));
                                         strcat( buf1, buf );
                                 }
 
-                                if( paf->duration > 1 )
+                                if (paf->bitvector
+                                         && ( paf->bitvector == AFF_PRONE
+                                         || paf->bitvector == AFF_DAZED))
                                 {
-                                        sprintf( buf, " for {G%d{x hours", paf->duration );
-                                        strcat( buf1, buf );
+                                        if( paf->duration > 1 )
+                                        {
+                                                sprintf( buf, " for {G%d{x min", paf->duration );
+                                                strcat( buf1, buf );
+                                        }
+                                        else
+                                        {
+                                                sprintf( buf, " for {G%d{x min", paf->duration );
+                                                strcat( buf1, buf );
+                                        }
                                 }
-                                else if( paf->duration == 1 )
-                                {
-                                        sprintf( buf, " for {G%d{x hour", paf->duration );
-                                        strcat( buf1, buf );
+                                else
+                                        {
+                                        if( paf->duration > 1 )
+                                        {
+                                                sprintf( buf, " for {G%d{x hours", paf->duration );
+                                                strcat( buf1, buf );
+                                        }
+                                        else if( paf->duration == 1 )
+                                        {
+                                                sprintf( buf, " for {G%d{x hour", paf->duration );
+                                                strcat( buf1, buf );
+                                        }
+                                        else if( paf->duration == 0 )
+                                        {
+                                                sprintf( buf, " for less than an hour");
+                                                strcat( buf1, buf );
+                                        }
+                                        else strcat( buf1, " indefinitely" );
                                 }
-                                else if( paf->duration == 0 )
-                                {
-                                        sprintf( buf, " for less than an hour");
-                                        strcat( buf1, buf );
-                                }
-                                else strcat( buf1, " indefinitely" );
                         }
                         strcat( buf1, "\n\r" );
                 }

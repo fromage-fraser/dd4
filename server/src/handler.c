@@ -2819,6 +2819,9 @@ char *affect_bit_name (unsigned long int vector)
         if ( vector & AFF_NO_RECALL     ) return "no_recall";
         if ( vector & AFF_SLOW          ) return "slow";
         if ( vector & AFF_DOT           ) return "DOT";
+        if ( vector & AFF_DAZED         ) return "dazed";
+        if ( vector & AFF_PRONE         ) return "prone";
+        
 
         return "none";
 }
@@ -2863,6 +2866,8 @@ char* affect_bit_name_nice (unsigned long int vector)
         if ( vector & AFF_NO_RECALL     ) return "no_recall";
         if ( vector & AFF_SLOW          ) return "slow";
         if ( vector & AFF_DOT           ) return "DOT";
+        if ( vector & AFF_DAZED         ) return "dazed";
+        if ( vector & AFF_PRONE         ) return "prone";
 
         return "some unknown effect";
 }
