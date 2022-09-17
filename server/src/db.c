@@ -3206,6 +3206,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
         obj->trap_charge            = pObjIndex->trap_charge;
         obj->ego_flags              = pObjIndex->ego_flags;
         obj->deleted                = FALSE;
+        obj->identified             = FALSE;
 
         /*
          * Mess with object properties.

@@ -1186,6 +1186,9 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 strcat(buf1, buf);
         }
 
+        sprintf(buf, "Object Score: %d Identified: %s\n\r", calc_item_score(obj), obj->identified ? "true" : "false");
+        strcat(buf1, buf);
+
         if ( (pObjSetIndex = objects_objset(obj->pIndexData->vnum) ) )
         {
                 sprintf(buf, "This is part of a %s set.\n\rSet tags: %s. Vnum [%d]\n\r\n\r", objset_type(pObjSetIndex->vnum), pObjSetIndex->name, pObjSetIndex->vnum);

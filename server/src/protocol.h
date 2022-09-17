@@ -52,9 +52,8 @@ typedef struct descriptor_data descriptor_t;
  If you offer a Mudlet GUI for autoinstallation, put the path/filename here.
  ******************************************************************************/
 
-/*
-#define MUDLET_PACKAGE "1\nhttp://www.godwars2.org/download/mudlet/GW2_GUI.mpackage"
-*/
+/* #define MUDLET_PACKAGE "1\nhttp://www.godwars2.org/download/mudlet/GW2_GUI.mpackage" */
+#define MUDLET_PACKAGE "1\nhttp://smihilist.com/dd4/web/main/gui/DD_GUI.mpackage"
 
 /******************************************************************************
  Symbolic constants.
