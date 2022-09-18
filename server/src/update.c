@@ -1679,6 +1679,20 @@ void char_update( void )
                                         REMOVE_BIT(ch->affected_by, AFF_MEDITATE);
                         }
 
+                        if (IS_AFFECTED(ch, AFF_DOT) )
+                        {
+                                for (paf = ch->affected; paf; paf = paf->next)
+                                {
+                                        if ( paf->deleted )
+                                        continue;
+
+                                        if( paf->bitvector == AFF_DOT )
+                                        {
+                                                damage(ch, ch, paf->modifier, paf->type, FALSE); 
+                                        }
+                                }       
+                        }
+
                         /* Drowning? */
                         if (!IS_NPC(ch)
                             && ch->level <= LEVEL_HERO
@@ -2306,6 +2320,7 @@ void update_handler ()
         static int pulse_mobile;
         static int pulse_violence;
         static int pulse_point;
+        static int pulse_state; /* for prone and dazed state initially - Brutus */
         static int pulse_msdp; /* <--- GCMP */
 
         sprintf (last_function, "entering update_hander");
@@ -2324,6 +2339,13 @@ void update_handler ()
                 pulse_violence = PULSE_VIOLENCE;
                 sprintf (last_function, "update_hander: calling violence_update");
                 violence_update();
+        }
+
+        if (--pulse_state <= 0)
+        {
+                pulse_state = PULSE_STATE;
+                sprintf (last_function, "update_hander: calling state_update");
+                state_update();
         }
 
         if (--pulse_mobile <= 0)
@@ -2923,6 +2945,9 @@ void gmcp_update( void )
                         {
                                 UpdateGMCPString( d, GMCP_ENEMY, "" );
                         }
+                        rSetcount = 0;
+                        UpdateGMCPString( d, GMCP_ROOM_FLAGS, buf4 );
+                        buf4[0] = '\0';
 
                         buf[0] = '\0';
                         buf2[0] = '\0';

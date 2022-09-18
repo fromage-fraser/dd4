@@ -72,6 +72,81 @@ const char* purgatory_message =
  * total CPU time.
  */
 
+void state_update (void)
+{
+        CHAR_DATA *ch;
+    /*    char      buf [ MAX_STRING_LENGTH ];
+
+        sprintf(last_function, "entering status_update");
+        sprintf(buf, "Entered state_update" ); 
+        bug(buf, 0); */
+
+        for (ch = char_list; ch; ch = ch->next)
+        {
+                if (!ch->in_room || ch->deleted)
+                        continue;
+
+                if ((IS_AFFECTED(ch, AFF_DAZED)) || (IS_AFFECTED(ch, AFF_PRONE)))
+                {
+                        AFFECT_DATA *paf;   
+                        
+                        for (paf = ch->affected; paf; paf = paf->next)
+                        {
+                                if ((paf->bitvector == AFF_DAZED) ||(paf->bitvector == AFF_PRONE) )
+                                {
+                                        if ( paf->deleted )
+                                                continue;
+
+                                        if (paf->duration > 0)
+                                                paf->duration--;
+                
+                                        if (paf->duration <= 0)
+                                        {
+                                                send_to_char(skill_table[paf->type].msg_off, ch);
+                                                send_to_char("\n\r", ch);
+                                                act("<15>$n recovers, and re-focuses on the fight.<0>", ch, NULL, NULL, TO_ROOM);
+                                                affect_remove(ch, paf);
+                                        }
+
+/*
+                                        if (paf->bitvector == AFF_DAZED)
+                                        {
+                                                if (paf->duration <=0 )
+                                                {
+                                                        REMOVE_BIT(ch->affected_by, AFF_DAZED);
+                                                        affect_strip(ch, paf->type); 
+                                                        char_update
+                                                        act("$n recovers, and re-focuses on the fight.", ch, NULL, NULL, TO_ROOM);
+                                                        act("You regain your senses, and re-focus on the fight at hand.", ch, NULL, NULL, TO_CHAR);
+                                                }
+                                                if (paf->duration > 0 )
+                                                {
+                                                        act("$n is DAZED, unable to attack or defend themselves.", ch, NULL, NULL, TO_ROOM);
+                                                        return;
+                                                }
+                                        }
+                                        else if (paf->bitvector == AFF_PRONE)
+                                        {
+                                                if (paf->duration <=0 )
+                                                {
+                                                        REMOVE_BIT(ch->affected_by, AFF_PRONE);
+                                                        affect_strip(ch, paf->type);
+                                                        act("$n is longer vulnerable to attack.", ch, NULL, NULL, TO_ROOM);
+                                                        act("You clamber back to your feet.", ch, NULL, NULL, TO_CHAR);
+                                                }
+                                                if (paf->duration > 0 )
+                                                {
+                                                        act("$n is vulnerable, lying PRONE on the ground.", ch, NULL, NULL, TO_ROOM);
+                                                }
+                                        } */
+
+                                }           
+                        }
+                }
+        }
+        sprintf (last_function, "leaving state_update");
+}
+
 void violence_update (void)
 {
         CHAR_DATA *ch;
@@ -317,90 +392,14 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 {
         int chance;
 
-        /*
-         * One attack
-         */
-        one_hit(ch, victim, dt);
+/*
+ * These 2 functions are at the top, as Im about to put a check for dazed things
+ * If you are dazed you cant attack, BUT things you have in the room can still go off
+ * DOTS and Pulese objects - Brutus
+ * 
+ */
 
-        /*
-         * Double backstab
-         */
-        if (dt == gsn_backstab)
-        {
-                if (IS_NPC(ch))
-                {
-                        /* Arena bots just a little too strong */
-                        if (ch->pIndexData->vnum == BOT_VNUM)
-                                return;
-                        else
-                                chance = ch->level;
-                }
-                else
-                        chance = ch->pcdata->learned[gsn_double_backstab];
-
-                if (number_percent() < chance)
-                        one_hit(ch, victim, dt);
-
-                return;
-        }
-
-        /*
-         * Restrict some attack types
-         */
-        if (ch->fighting != victim
-            || dt == gsn_circle
-            || dt == gsn_thrust
-            || dt == gsn_constrict
-            || dt == gsn_suck
-            || dt == gsn_snap_shot)
-                return;
-
-        /*
-         * Multiple attacks for Monks
-         */
-        if (!IS_NPC(ch) && ch->sub_class == SUB_CLASS_MONK)
-        {
-                int attacks;
-
-                for (attacks = 2; attacks <= ch->level / 10; attacks++)
-                {
-                        chance = 3 * ch->level / attacks;
-                        if (number_percent() < chance)
-                        {
-                                one_hit(ch, victim, dt);
-
-                                if (ch->fighting != victim)
-                                        return;
-                        }
-                }
-
-                return;
-        }
-
-        /*
-         * Haste
-         */
-        if (is_affected(ch, gsn_haste))
-                one_hit(ch, victim, dt);
-
-        /* for counterbalance - adds another attack.*/
-
-        if ( !IS_NPC(ch) && get_eq_char(ch, WEAR_WIELD) && ch->pcdata->learned[gsn_counterbalance] > 0 )
-        {
-                OBJ_DATA *wield;
-                AFFECT_DATA *paf;
-                wield = get_eq_char(ch, WEAR_WIELD);
-                for ( paf = wield->affected; paf; paf = paf->next )
-                {
-                        if ( paf->location == APPLY_BALANCE )
-                        {
-                                if (number_percent() < paf->modifier)
-                                        one_hit(ch, victim, gsn_counterbalance);
-                        }
-                }
-        }
-
-        if (IS_AFFECTED(victim, AFF_DOT))
+       if (IS_AFFECTED(victim, AFF_DOT))
         {
                 AFFECT_DATA *paf;  
                 for ( paf = victim->affected; paf; paf = paf->next )
@@ -415,7 +414,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 }
         }
 
-        /* Pulse objects go off every round (mainly alchemists) */
+        /* Pulse objects go off every round (mainly runsmiths) */
         if ( !IS_NPC(ch) )
         {
                 OBJ_DATA *pulse;
@@ -456,6 +455,115 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 }
         }
 
+/*
+ *
+ * Everything below here is for players -- Brutus
+ * If your DAZED you cant attack.
+ */
+        if (IS_AFFECTED(ch, AFF_DAZED))
+        {
+                
+                act("$n is DAZED, unable to attack or defend themselves.", ch, NULL, NULL, TO_ROOM);
+                return;
+        }
+       
+        /*
+         * One attack (Even if Prone, everythign else is 50% less likely.)
+         */
+        one_hit(ch, victim, dt);
+
+        /*
+         * Double backstab
+         */
+        if (dt == gsn_backstab)
+        {
+                if (IS_NPC(ch))
+                {
+                        /* Arena bots just a little too strong */
+                        if (ch->pIndexData->vnum == BOT_VNUM)
+                                return;
+                        else
+                                chance = ch->level;
+                }
+                else
+                        chance = ch->pcdata->learned[gsn_double_backstab];
+                
+                /* If your PRONE, your 1/2 as likely to Succeed in anything */
+                if (IS_AFFECTED(ch, AFF_PRONE))
+                        chance /= 2;
+
+                if (number_percent() < chance)
+                        one_hit(ch, victim, dt);
+
+                return;
+        }
+
+        /*
+         * Restrict some attack types
+         */
+        if (ch->fighting != victim
+            || dt == gsn_circle
+            || dt == gsn_thrust
+            || dt == gsn_constrict
+            || dt == gsn_suck
+            || dt == gsn_snap_shot)
+                return;
+
+        /*
+         * Multiple attacks for Monks
+         */
+        if (!IS_NPC(ch) && ch->sub_class == SUB_CLASS_MONK)
+        {
+                int attacks;
+
+                for (attacks = 2; attacks <= ch->level / 10; attacks++)
+                {
+                        chance = 3 * ch->level / attacks;
+
+                        /* If your PRONE, your 1/2 as likely to Succeed in anything */
+                        if (IS_AFFECTED(ch, AFF_PRONE))
+                                chance /= 2;
+
+                        if (number_percent() < chance)
+                        {
+                                one_hit(ch, victim, dt);
+
+                                if (ch->fighting != victim)
+                                        return;
+                        }
+                }
+
+                return;
+        }
+
+        /*
+         * Haste
+         */
+        if ((is_affected(ch, gsn_haste)) && !IS_AFFECTED(ch, AFF_PRONE))
+                one_hit(ch, victim, dt);
+
+        /* for counterbalance - adds another attack.*/
+
+        if ( !IS_NPC(ch) 
+                && get_eq_char(ch, WEAR_WIELD) 
+                && ch->pcdata->learned[gsn_counterbalance] > 0 
+                && !IS_AFFECTED(ch, AFF_PRONE))
+        {
+                OBJ_DATA *wield;
+                AFFECT_DATA *paf;
+                wield = get_eq_char(ch, WEAR_WIELD);
+                for ( paf = wield->affected; paf; paf = paf->next )
+                {
+                        if ( paf->location == APPLY_BALANCE )
+                        {
+                                if (number_percent() < paf->modifier)
+                                        one_hit(ch, victim, gsn_counterbalance);
+                        }
+                }
+        }
+
+ 
+
         /*
          * Multiple attacks for shifter forms
          */
@@ -464,12 +572,22 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
             || ch->form == FORM_HYDRA
             || ch->form == FORM_DRAGON
             || ch->form == FORM_GRIFFIN)
-                one_hit(ch,victim,dt);
+        {
+                if ((IS_AFFECTED(ch, AFF_PRONE)) && (number_percent() < 50) )
+                        one_hit(ch,victim,dt);
+                else    
+                        one_hit(ch,victim,dt); 
+        }
 
         if (ch->form == FORM_HYDRA
             || ch->form == FORM_DRAGON
             || ch->form == FORM_GRIFFIN)
-                one_hit(ch,victim,dt);
+        {
+                if ((IS_AFFECTED(ch, AFF_PRONE)) && (number_percent() < 50) )
+                        one_hit(ch,victim,dt);
+                else    
+                        one_hit(ch,victim,dt); 
+        }
 
         /*
          * 2nd attack
@@ -477,7 +595,6 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         chance = IS_NPC(ch) ? ((ch->level / 2) + ch->level)
                 : ((45 + ch->pcdata->learned[gsn_second_attack] / 2)
                    * CAN_DO(ch, gsn_second_attack));
-
 
         if (IS_AFFECTED(ch, AFF_SLOW))
         {
@@ -505,8 +622,9 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         {
                 chance /= 2;
         }
-
-        if (number_percent() < chance)
+        
+        /* If your PRONE, dont get this attack */
+        if ((number_percent() < chance) && (!IS_AFFECTED(ch, AFF_PRONE)))
         {
                 one_hit(ch, victim, dt);
 
@@ -528,8 +646,8 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 chance /= 2;
         }
 
-        if (number_percent() < chance)
-        {
+        /* If your PRONE, dont get this attack */
+       if ((number_percent() < chance) && (!IS_AFFECTED(ch, AFF_PRONE)))        {
                 one_hit(ch, victim, dt);
 
                 if (ch->fighting != victim)
@@ -542,7 +660,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         /*
          * 5th attack for mobiles
          */
-        if (ch->level < 20)
+        if ((ch->level < 20) || (IS_AFFECTED(ch, AFF_PRONE)) )
                 return;
 
         chance = ch->level;
@@ -738,11 +856,6 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                  */
                 hit = TRUE;
 
-                /* for Serrated - adds a stack of bleed*/
-
-
-
-
                 if (IS_NPC(ch))
                 {
                         dam = number_range(ch->level / 2, ch->level * 3 / 2);
@@ -841,9 +954,14 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 
                 if (!IS_AWAKE(victim))
                         dam *= 2;
-
                 else if (IS_RESTING(victim))
                         dam += dam / 4;
+
+                if (IS_AFFECTED(victim, AFF_PRONE))
+                        dam += dam / 4;
+
+                if (IS_AFFECTED(victim, AFF_DAZED))
+                        dam += dam / 2;
 
                 if (ch->form)
                 {
@@ -1189,9 +1307,12 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                         dam = 0;
 
                 /* check for disarm, trip, parry, dodge and shield block et al. */
+                /* Cant disarm OR trip OR use magic items */
                 if (dt >= TYPE_HIT
                     && victim->position > POS_SLEEPING
-                    && ch->position > POS_SLEEPING)
+                    && ch->position > POS_SLEEPING
+                    && !IS_AFFECTED(ch, AFF_PRONE) 
+                    && !IS_AFFECTED(victim, AFF_DAZED))
                 {
                         int leveldiff = ch->level - victim->level;
 
@@ -1206,9 +1327,10 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                                 disarm(ch, victim);
                         }
 
-                        /* mob: trip */
+                        /* mob: trip  */
                         if (IS_NPC(ch)
                             && !IS_AFFECTED(victim, AFF_FLYING)
+                            && !IS_AFFECTED(ch, AFF_PRONE)
                             && !is_affected(victim, gsn_haste)
                             && !is_affected(victim, gsn_fly)
                             && !is_affected(victim, gsn_levitation)
@@ -1222,6 +1344,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
 
                         /* mob: using magic item */
                         if (IS_NPC(ch)
+                            && !IS_AFFECTED(ch, AFF_PRONE) 
                             && number_percent() < 5
                             && !IS_NPC(victim))
                         {
@@ -1262,7 +1385,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
 
                                         return;
                                 }
-
+                                /* cant dodge or use acrobatics while PRONE */
                                 if (check_dodge(ch, victim))
                                         return;
 
@@ -1297,8 +1420,8 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 }
                 break;
         }
-
-      /*  if (!IS_NPC(victim))
+/*
+        if (!IS_NPC(victim))
         {
                 char       buf [ MAX_STRING_LENGTH ];
                 sprintf(buf, "damage incoming %d for %d damage", dt, dam );
@@ -1349,7 +1472,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
         }
 
         /* if we get here add a stack of serrate */
-        if ( ( !IS_NPC(ch) && ch->pcdata->learned[gsn_serrate] > 0 ) && (dt != gsn_serrate))
+        if ( ( !IS_NPC(ch) && ch->pcdata->learned[gsn_serrate] > 0 ) && (get_eq_char(ch, WEAR_WIELD)) && (dt != gsn_serrate))
         {
                 OBJ_DATA        *wield2;
                 wield2 = get_eq_char(ch, WEAR_WIELD);
@@ -1357,9 +1480,24 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 if (IS_SET(wield2->ego_flags, EGO_ITEM_SERRATED))
                 {
                         CHAR_DATA  *vic = (CHAR_DATA *) victim;                                
-                        AFFECT_DATA af;                      
+                        AFFECT_DATA af;     
+                        AFFECT_DATA *paf;                  
+                        
+
+                        
                         af.type      = gsn_serrate;
-                        af.duration  = 1;
+                        af.duration  = 2;
+
+                        /* limiting serrate to 2 rounds of damage after fight */
+                        for (paf = victim->affected; paf; paf = paf->next)
+                        {
+                                if (( paf->type == gsn_serrate ) && ( paf->duration > 2) )
+                                {
+                                        af.duration = 0;
+                                        break;
+                                }
+                        }
+
                         af.location  = APPLY_NONE;
                         af.modifier  = 15;
                         af.bitvector = AFF_DOT;
@@ -2074,6 +2212,9 @@ bool check_dodge(CHAR_DATA *ch, CHAR_DATA *victim)
 
         if (IS_AFFECTED(victim, AFF_HOLD))
                 return FALSE;
+        
+        if (IS_AFFECTED(victim, AFF_PRONE))
+                return FALSE;
 
         if (!IS_NPC(victim) && (ch->form == FORM_WOLF || ch->form == FORM_DIREWOLF))
                 return FALSE;
@@ -2117,6 +2258,9 @@ bool check_acrobatics (CHAR_DATA *ch, CHAR_DATA *victim)
         int chance;
 
         if (IS_AFFECTED(victim, AFF_HOLD))
+                return FALSE;
+
+        if (IS_AFFECTED(victim, AFF_PRONE))
                 return FALSE;
 
         if (IS_AFFECTED(victim, AFF_BLIND))
@@ -3303,6 +3447,38 @@ void trip (CHAR_DATA *ch, CHAR_DATA *victim)
         return;
 }
 
+void prone (CHAR_DATA *ch, CHAR_DATA *victim, int sn, int rounds)
+{
+        if (!IS_AFFECTED(victim, AFF_PRONE))
+        {
+                AFFECT_DATA af;
+
+                af.type      = sn;
+                af.duration  = rounds;
+                af.location  = APPLY_NONE;
+                af.modifier  = 0;
+                af.bitvector = AFF_PRONE;
+                affect_to_char(victim,&af);
+        }
+        return;
+}
+
+void daze (CHAR_DATA *ch, CHAR_DATA *victim, int sn, int rounds)
+{
+        if (!IS_AFFECTED(victim, AFF_DAZED))
+        {
+                AFFECT_DATA af;
+
+                af.type      = sn;
+                af.duration  = rounds;
+                af.location  = APPLY_NONE;
+                af.modifier  = 0;
+                af.bitvector = AFF_DAZED;
+                affect_to_char(victim,&af);
+                ch->dazed += 1;
+        }
+        return;
+}
 
 void do_kill (CHAR_DATA *ch, char *argument)
 {
@@ -5882,8 +6058,12 @@ void do_trip (CHAR_DATA *ch, char *argument)
 
         if (IS_NPC(ch)|| number_percent() < chance)
         {
+                act ("<15>You trip $N and $E goes down!<0>", ch, NULL, victim, TO_CHAR);
+                act ("$n trips you and you go down!", ch, NULL, victim, TO_VICT);
+                act ("$n trips $N and $E goes down!", ch, NULL, victim, TO_NOTVICT);
                 arena_commentary("$n trips up $N.", ch, victim);
-                trip(ch, victim);
+               /* trip(ch, victim); */
+                prone(ch,victim, gsn_trip, 1);
         }
         else
                 send_to_char("You failed.\n\r", ch);
@@ -5974,7 +6154,7 @@ void do_grapple (CHAR_DATA *ch, char *argument)
         WAIT_STATE(ch,skill_table[gsn_grapple].beats);
 
         if ((IS_NPC(ch) || number_percent() < chance)
-            && victim->position == POS_FIGHTING)
+            && (victim->position == POS_FIGHTING) && (ch->dazed < 3))
         {
                 act ("You {Wgrapple{x $N down, winding them.", ch, NULL, victim, TO_CHAR);
                 act ("$n {Wgrapples{x you down!", ch, NULL, victim, TO_VICT);
@@ -5983,8 +6163,11 @@ void do_grapple (CHAR_DATA *ch, char *argument)
 
                 WAIT_STATE (ch,        2 * PULSE_VIOLENCE);
                 WAIT_STATE (victim,    2 * PULSE_VIOLENCE);
-                one_hit (ch, victim, gsn_grapple);
+              /*  one_hit (ch, victim, gsn_grapple); */
+                daze(ch,victim, gsn_grapple, 1);
         }
+        else if (ch->dazed >= 3)
+                send_to_char("Your opponent has learnt to avoid your grapple.\n\r",ch);
         else
                 send_to_char("Your grapple fails.\n\r",ch);
 }
@@ -6531,27 +6714,10 @@ void do_hurl (CHAR_DATA *ch, char *argument)
                         act ("$n hurls their shield at $N. It slams into the side of $S head... THUNK!",
                         ch, NULL, victim, TO_NOTVICT);
                         arena_commentary("$n knocks $N out cold.", ch, victim);
-
-                        af.type = gsn_stun;
-                        af.modifier = 0;
-                        af.location = APPLY_NONE;
-                        af.duration = 0;
-                        af.bitvector = AFF_SLEEP;
-                        affect_to_char(victim,&af);
-
-                        if ( victim->position == POS_FIGHTING )
-                        stop_fighting( victim, TRUE );
-
-                        do_sleep(victim,"");
-
-                        check_group_bonus(ch);
-
-                        WAIT_STATE (victim, 2 * PULSE_VIOLENCE);
+                        daze(ch,victim, gsn_hurl, 1);
                 }
                 else
                 {
-                        act ("It sails past $S head and returns to your arm. MISS!",
-                        ch, NULL, victim, TO_CHAR);
                         damage(ch, victim, 0, gsn_stun, FALSE);
                 }
         }

@@ -501,6 +501,7 @@ DECLARE_DO_FUN ( do_board );
 /* Timing */
 #define PULSE_PER_SECOND                  4
 #define PULSE_VIOLENCE                 (  3 * PULSE_PER_SECOND )
+#define PULSE_STATE                    (  3 * PULSE_PER_SECOND )
 #define PULSE_MOBILE                   (  4 * PULSE_PER_SECOND )
 #define PULSE_TICK                     ( 30 * PULSE_PER_SECOND )
 #define PULSE_AREA                     ( 60 * PULSE_PER_SECOND )
@@ -1086,6 +1087,10 @@ struct affect_data
         unsigned long int       bitvector;
         bool                    deleted;
 };
+
+
+/* A fight Affect */
+
 
 /* Set items struct */
 struct objset_data
@@ -1811,6 +1816,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define AFF_SWALLOWED                   BIT_31  /* Has been swallowed by a large creature */
 #define AFF_NO_RECALL                   BIT_32  /* Use to prevent recall without baggage of AFF_CURSE */
 #define AFF_DOT                         BIT_33  /* Damage Over Time - Brutus */
+#define AFF_PRONE                       BIT_34  /* Prone - cant do skills, can cast - Brutus*/
+#define AFF_DAZED                       BIT_35  /*dazed - cant do anytrhing - Brutus */
 #define AFF_SLOW                        BIT_63  /* last */
 
 /* forms - Brutus */
@@ -2616,6 +2623,7 @@ struct char_data
         int                     damage_mitigation;
         int                     damage_enhancement;
         int                     inscription_total;
+        int                     dazed;
         /*
         *  Does the variable you're about to add belong here or in 'pcdata'?
         */
@@ -4575,6 +4583,7 @@ void    reset_area                      args( ( AREA_DATA * pArea ) );
 
 /* fight.c */
 void    violence_update                 args( ( void ) );
+void    state_update                    args( ( void ) );
 bool    is_safe                         args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 void    multi_hit                       args( ( CHAR_DATA *ch, CHAR_DATA *victim, int dt ) );
 void    damage                          args( ( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison ) );
