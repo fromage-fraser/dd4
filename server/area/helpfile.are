@@ -7145,13 +7145,16 @@ A forge is needed to do this.
 
 1 'INNATE KNOWLEDGE'~
 
-Syntax: look <<item>
+Syntax: examine <<item>
 
-This passive skill allows the SMITHY to be able to determine properties
-of weapons, armour, turrets, and turret modules.
+By examining weapons, armour, turrets, and turret modules, you are able
+to uncover the properties of them.
 
-The higher the skill, the more details is revealed about an item.
+Higher level objects will require a higher level of knowledge.
 Simply look at the item to understand additional information.
+
+After examining the objects, the properties will be available
+simply by looking at the object.
 ~
 
 1 'DART MODULE' 'ARROW MODULE' 'BLADE MODULE' 'SHURIKEN MODULE' 'SPEAR MODULE'~

@@ -1778,7 +1778,7 @@ void do_examine (CHAR_DATA *ch, char *argument)
         }
 
         obj = get_obj_here (ch, arg);
-        if ( (ch->class == CLASS_SMITHY) &&
+        if ( (ch->class == CLASS_SMITHY) &&  (ch->pcdata->learned[gsn_innate_knowledge] > obj->level ) &&
                 (obj->item_type == ITEM_WEAPON
                 || obj->item_type == ITEM_ARMOR
                 || obj->item_type == ITEM_TURRET_MODULE
