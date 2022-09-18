@@ -3188,10 +3188,13 @@ Syntax: identify      <<object>
 The spell IDENTIFY reveals detailed information about an object.  LORE
 works similar to identify, except can only be used on armour and weapons.
 
+Identifying an object is now permanent. Simply look at an identified object
+to understand its properties.
+
 Some creatures will identify objects for you if you are unable to cast
 these spells.  Type 'IDENTIFY <<object>' to receive their services.  The
 Sage in Anon, Magnus in Solace and the Loremaster in the Mud School will
-identify items, for a small price.
+identify items, for 1 Gold.
 ~
 
 0 INFRAVISION~

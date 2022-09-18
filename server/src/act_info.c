@@ -117,6 +117,9 @@ int calc_item_score ( OBJ_DATA *obj)
         
         for ( paf = obj->affected; paf; paf = paf->next )
         {
+                if (!obj->level)
+                        continue;
+                
                 if ( paf->location != APPLY_NONE
                     && paf->modifier != 0
                     && strcmp (affect_loc_name (paf->location), "(unknown)"))
@@ -134,27 +137,47 @@ int calc_item_score ( OBJ_DATA *obj)
                                 }
                                 break;
 
+                                case APPLY_BALANCE:
+                                case APPLY_STRENGTHEN:
+                                case APPLY_ENGRAVED:
+                                case APPLY_SERRATED:
+                                case APPLY_INSCRIBED:
+                                {
+                                        score += 150;
+                                }
+                                break;
+
                                 case APPLY_STR:
                                 case APPLY_DEX:
                                 case APPLY_INT:
                                 case APPLY_WIS:
                                 case APPLY_CON:
                                 {
-                                        score += ((paf->modifier * 400) / obj->level);
+                                        if (obj->level < 3 )
+                                                score += ((paf->modifier * 200) / obj->level);
+                                        else if (obj->level < 6)
+                                                score += ((paf->modifier * 500) / obj->level);
+                                        else if (obj->level < 16)
+                                                score += ((paf->modifier * 1000) / obj->level);
+                                        else
+                                                score += ((paf->modifier * 2500) / obj->level);
                                 }
                                 break;
 
                                 case APPLY_MANA:
                                 case APPLY_HIT:
                                 {
-                                        score += ((paf->modifier * 10) / obj->level);
+                                        score += ((paf->modifier * 20) / obj->level);
                                 }
                                 break;
 
                                 case APPLY_DAMROLL:
                                 case APPLY_HITROLL:
                                 {
-                                        score += ((paf->modifier * 100) / obj->level);
+                                        if (obj->level < 10)
+                                                score += ((paf->modifier * 500) / obj->level);
+                                        else
+                                                score += ((paf->modifier * 1000) / obj->level);
                                 }
                                 break;
 
@@ -185,6 +208,9 @@ int calc_item_score ( OBJ_DATA *obj)
         
         for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
         {
+                if (!obj->level)
+                        continue;
+                
                 if ( paf->location != APPLY_NONE
                     && paf->modifier != 0
                     && strcmp (affect_loc_name (paf->location), "(unknown)"))
@@ -202,13 +228,30 @@ int calc_item_score ( OBJ_DATA *obj)
                                 }
                                 break;
 
+                                case APPLY_BALANCE:
+                                case APPLY_STRENGTHEN:
+                                case APPLY_ENGRAVED:
+                                case APPLY_SERRATED:
+                                case APPLY_INSCRIBED:
+                                {
+                                        score += 150;
+                                }
+                                break;
+
                                 case APPLY_STR:
                                 case APPLY_DEX:
                                 case APPLY_INT:
                                 case APPLY_WIS:
                                 case APPLY_CON:
                                 {
-                                        score += ((paf->modifier * 4000) / obj->level);
+                                        if (obj->level < 3 )
+                                                score += ((paf->modifier * 200) / obj->level);
+                                        else if (obj->level < 6)
+                                                score += ((paf->modifier * 500) / obj->level);
+                                        else if (obj->level < 16)
+                                                score += ((paf->modifier * 1000) / obj->level);
+                                        else
+                                                score += ((paf->modifier * 2500) / obj->level);
                                 }
                                 break;
 
@@ -222,7 +265,12 @@ int calc_item_score ( OBJ_DATA *obj)
                                 case APPLY_DAMROLL:
                                 case APPLY_HITROLL:
                                 {
-                                        score += ((paf->modifier * 1000) / obj->level);
+                                        if (obj->level < 3 )
+                                                score += ((paf->modifier * 150) / obj->level);
+                                        else if (obj->level < 10)
+                                                score += ((paf->modifier * 500) / obj->level);
+                                        else
+                                                score += ((paf->modifier * 1000) / obj->level);
                                 }
                                 break;
 
@@ -262,13 +310,7 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
 {
         static char             buf [ MAX_STRING_LENGTH ];
         OBJSET_INDEX_DATA       *pObjSetIndex;
-        int                     smithy_flags;
-
-        smithy_flags = 0;
         buf[0] = '\0';
-
-
-
 
         if ( (pObjSetIndex = objects_objset(obj->pIndexData->vnum)) )
         {
@@ -280,38 +322,6 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
                         strcat( buf, "<93>[SET]<0> ");
                 if ( (objset_type(pObjSetIndex->vnum)) == ("<178>Legendary<0>") )
                         strcat( buf, "<178>[SET]<0> ");
-        }
-
-
-
-        if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
-                smithy_flags++;
-
-        if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
-                smithy_flags++;
-
-        if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
-                smithy_flags++;
-
-        if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED))
-                smithy_flags++;
-
-        if (IS_OBJ_STAT(obj, ITEM_EGO) &&  IS_SET(obj->ego_flags, EGO_ITEM_ENGRAVED) )
-                smithy_flags++;
-
-        if (IS_OBJ_STAT(obj, ITEM_EGO) &&  IS_SET(obj->ego_flags, EGO_ITEM_SERRATED) )
-                smithy_flags++;
-
-        if (obj->item_type == ITEM_WEAPON && smithy_flags > 0)
-        {
-                if (smithy_flags <=2)
-                strcat( buf, "<34>(Uncommon)<0> " );
-                else if (smithy_flags <= 4)
-                strcat( buf, "<39>[Rare]<0> " );
-                else if (smithy_flags <= 5)
-                strcat( buf, "<15>[-=><135>EPIC<0><15><<=-]<0> " );
-                else if (smithy_flags <= 6)
-                strcat( buf, "<514><556><16>-=[<560>LEGENDARY<561>]=-<0><557> " );
         }
 
         if ( IS_OBJ_STAT( obj, ITEM_DEPLOYED))
@@ -386,25 +396,25 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
 
         if ((calc_item_score(obj) > 100) && obj->identified)
         {
-                if (calc_item_score(obj) > 900)
+                if (calc_item_score(obj) > ITEM_SCORE_LEGENDARY)
                         strcat( buf, "<514><556><16>[<560>LEGENDARY<561>]<0><557> ");
-                else if (calc_item_score(obj) > 500)
+                else if (calc_item_score(obj) > ITEM_SCORE_EPIC)
                         strcat( buf, "<93>[Epic]<0> ");
-                else if (calc_item_score(obj) > 300)
+                else if (calc_item_score(obj) > ITEM_SCORE_RARE )
                         strcat( buf, "<39>[Rare]<0> ");
-                else if (calc_item_score(obj) > 100)
+                else if (calc_item_score(obj) > ITEM_SCORE_UNCOMMON)
                         strcat( buf, "<34>(Uncommon)<0> ");
         }
         
         if (calc_item_score(obj) > 100 && !obj->identified)
         {
-                if (calc_item_score(obj) > 900)
+                if (calc_item_score(obj) > ITEM_SCORE_LEGENDARY)
                         strcat( buf, "<178>[*?*]<0> ");
-                else if (calc_item_score(obj) > 500)
+                else if (calc_item_score(obj) > ITEM_SCORE_EPIC)
                         strcat( buf, "<93>[=?=]<0> ");
-                else if (calc_item_score(obj) > 300)
+                else if (calc_item_score(obj) > ITEM_SCORE_RARE )
                         strcat( buf, "<39>[-?-]<0> ");
-                else if (calc_item_score(obj) > 100)
+                else if (calc_item_score(obj) > ITEM_SCORE_UNCOMMON)
                         strcat( buf, "<34>[_?_]<0> ");
         }
         
@@ -5254,7 +5264,7 @@ void do_identify( CHAR_DATA *ch, char *argument )
 
         if (argument[0] == '\0')
         {
-                act("$C asks you, 'Which object would you like to identify?'",
+                act("$C asks you, 'Which object would you like to identify? (1G fee)'",
                     ch, NULL, rch, TO_CHAR);
                 return;
         }
@@ -5272,7 +5282,7 @@ void do_identify( CHAR_DATA *ch, char *argument )
                 return;
         }
 
-        cost = obj->level * 50;
+        cost = obj->level * 1000;
         send_to_char("Your purse feels lighter.\n\r", ch);
         coins_from_char(cost, ch);
         act("$C examines $p and identifies its properties.\n\r", ch, obj, rch, TO_CHAR);

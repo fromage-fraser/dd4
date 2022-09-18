@@ -237,6 +237,7 @@ int     gsn_noemote;
 int     gsn_notell;
 int     gsn_numlock;
 int     gsn_ofind;
+int     gsn_oscore;
 int     gsn_osfind;
 int     gsn_oload;
 int     gsn_oset;

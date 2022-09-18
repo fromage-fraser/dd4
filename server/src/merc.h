@@ -319,14 +319,17 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   568     /* +13 runic blades and skills -Brutus 9/9/22 */
+#define MAX_SKILL                   569     /* +1 oscore  -Brutus 18/9/22 */
 #define MAX_PRE_REQ                 1397    /* 1 for runesmith  for smithy & engy post 30 - Brutus 27/8/22 */
 #define MAX_SPELL_GROUP             451    /* +3 - for post 30 engineer skills Brutus 27/8/22 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
 #define MAX_VAMPIRE_GAG             27      /* 26 + 1 for 'swallow' | ugly vampire/werewolf hack */
 
-
+#define ITEM_SCORE_LEGENDARY    900
+#define ITEM_SCORE_EPIC         600
+#define ITEM_SCORE_RARE         300
+#define ITEM_SCORE_UNCOMMON     120
 /*
  * Channel recall, 'review' command; Gezhp 2001
  */
@@ -3170,6 +3173,7 @@ extern int gsn_noemote;
 extern int gsn_notell;
 extern int gsn_numlock;
 extern int gsn_ofind;
+extern int gsn_oscore;
 extern int gsn_osfind;
 extern int gsn_oload;
 extern int gsn_oset;
@@ -4036,6 +4040,7 @@ DECLARE_DO_FUN( do_note                         );
 DECLARE_DO_FUN( do_notell                       );
 DECLARE_DO_FUN( do_numlock                      );
 DECLARE_DO_FUN( do_ofind                        );
+DECLARE_DO_FUN( do_oscore                       );
 DECLARE_DO_FUN( do_osfind                       );
 DECLARE_DO_FUN( do_oload                        );
 DECLARE_DO_FUN( do_open                         );

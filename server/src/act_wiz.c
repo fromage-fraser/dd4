@@ -1993,6 +1993,130 @@ void do_ofind( CHAR_DATA *ch, char *argument )
         return;
 }
 
+void do_oscore( CHAR_DATA *ch, char *argument )
+{
+
+        int             uncommon, rare, epic, legendary;
+        char tmp [MAX_STRING_LENGTH];
+        OBJ_DATA  *obj;
+        OBJ_DATA  *in_obj;
+        CHAR_DATA *rch;
+        char       buf  [ MAX_STRING_LENGTH ];
+        char       arg  [ MAX_INPUT_LENGTH  ];
+        int        obj_counter = 1;
+
+        uncommon = 0;
+        rare = 0;
+        epic = 0;
+        legendary = 0;
+        buf[0] = '\0';
+
+        rch = get_char( ch );
+
+        if ( !authorized( rch, gsn_owhere ) )
+                return;
+
+        one_argument( argument, arg );
+
+        if( arg[0] == '\0' )
+        {
+                for ( obj = object_list; obj; obj = obj->next )
+                {
+                        if ( !can_see_obj( ch, obj ) )
+                                continue;
+
+                        for ( in_obj = obj; in_obj->in_obj; in_obj = in_obj->in_obj )
+                                ;
+
+                        if (calc_item_score(obj) > ITEM_SCORE_LEGENDARY)
+                        {
+                                legendary++;
+                                if ( in_obj->carried_by )
+                                {
+                                        if ( !can_see( ch, in_obj->carried_by ) )
+                                                continue;
+
+                                        sprintf( tmp, "[LEGENDARY] {g%s{x carried by {c%s{x at [%5d]\n\r",
+                                                obj->short_descr,
+                                                PERS( in_obj->carried_by, ch ),
+                                                in_obj->carried_by->in_room->vnum );
+                                }
+                                else
+                                {
+                                        sprintf( tmp, "[LEGENDARY] {g%s{x in {c%s{x at [%5d]\n\r",
+                                                obj->short_descr,
+                                                ( !in_obj->in_room ) ?
+                                                "somewhere" : in_obj->in_room->name,
+                                                ( !in_obj->in_room ) ?
+                                                0 : in_obj->in_room->vnum );
+                                }
+                                strcat( buf, tmp);
+                        }
+                        else if (calc_item_score(obj) > ITEM_SCORE_EPIC)
+                                epic++;
+                        else if (calc_item_score(obj) > ITEM_SCORE_RARE)
+                                rare++;
+                        else if (calc_item_score(obj) > ITEM_SCORE_UNCOMMON)
+                                uncommon++;
+
+                        obj_counter++;
+ 
+                }
+                sprintf( tmp, "Total[%5d] Uncommon[%5d] Rare[%5d] Epic[%5d] Legendary[%5d]\n\r", obj_counter, uncommon, rare, epic, legendary ); 
+                                                strcat( buf, tmp);
+                /* buf[0] = UPPER( buf[0] ); */
+                send_to_char (buf, ch);
+                return;
+       }
+ /*       else
+        {
+                if (strlen (arg) < 3)
+                {
+                        send_to_char ("Argument must be at least three letters long.\n\r", ch);
+                        return;
+                }
+
+                for ( obj = object_list; obj; obj = obj->next )
+                {
+                        if ( !can_see_obj( ch, obj ) || !multi_keyword_match( arg, obj->name ) )
+                                continue;
+
+
+                        for ( in_obj = obj; in_obj->in_obj; in_obj = in_obj->in_obj )
+                                ;
+
+                        if ( in_obj->carried_by )
+                        {
+                                if ( !can_see( ch, in_obj->carried_by ) )
+                                        continue;
+
+                                sprintf( buf, "[%-3d] {g%s{x carried by {c%s{x at [%5d]\n\r",
+                                        obj_counter,
+                                        obj->short_descr,
+                                        PERS( in_obj->carried_by, ch ),
+                                        in_obj->carried_by->in_room->vnum );
+                        }
+                        else
+                        {
+                                sprintf( buf, "[%-3d] {g%s{x in {c%s{x at [%5d]\n\r",
+                                        obj_counter,
+                                        obj->short_descr,
+                                        ( !in_obj->in_room ) ?
+                                        "somewhere" : in_obj->in_room->name,
+                                        ( !in_obj->in_room ) ?
+                                        0 : in_obj->in_room->vnum );
+                        }
+
+                        obj_counter++;
+                        buf[0] = UPPER( buf[0] );
+                        send_to_char (buf, ch);
+                }
+        }
+        return;
+*/
+}
+
+
 void do_osfind( CHAR_DATA *ch, char *argument )
 {
         CHAR_DATA       *rch;
