@@ -2753,7 +2753,6 @@ void gmcp_update( void )
                         fShort          = TRUE;
                         fShowNothing    = TRUE;
 
-
                         UpdateGMCPString( d, GMCP_NAME, d->character->name );
                         UpdateGMCPString( d, GMCP_RACE, race_table[d->character->race].race_name );
                         UpdateGMCPString( d, GMCP_CLASS, full_class_name( d->character->class ) );
