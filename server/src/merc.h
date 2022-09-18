@@ -3900,6 +3900,7 @@ DECLARE_DO_FUN( do_disarm                       );
 DECLARE_DO_FUN( do_discharge                    );
 DECLARE_DO_FUN( do_dive                         );      /* dragons */
 DECLARE_DO_FUN( do_disconnect                   );
+DECLARE_DO_FUN( do_protocols                    );
 DECLARE_DO_FUN( do_donate                       );      /* Donate command */
 DECLARE_DO_FUN( do_down                         );
 DECLARE_DO_FUN( do_drink                        );

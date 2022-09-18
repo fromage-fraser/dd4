@@ -416,6 +416,7 @@ const struct cmd_type cmd_table [] =
         { "snoop",      do_snoop,       POS_DEAD,    L_JUN,  LOG_ALWAYS },
         { "wizinvis",   do_invis,       POS_DEAD,    L_JUN,  LOG_NORMAL },
         { "disconnect", do_disconnect,  POS_DEAD,    L_APP,  LOG_ALWAYS },
+        { "protocols",  do_protocols,   POS_DEAD,    L_SEN,  LOG_NORMAL },
         { "mfind",      do_mfind,       POS_DEAD,    L_APP,  LOG_NORMAL },
         { "ofind",      do_ofind,       POS_DEAD,    L_APP,  LOG_NORMAL },
         { "osfind",     do_osfind,      POS_DEAD,    L_APP,  LOG_NORMAL },

@@ -219,6 +219,65 @@ void do_disconnect( CHAR_DATA *ch, char *argument )
         return;
 }
 
+void do_protocols( CHAR_DATA *ch, char *argument )
+{
+        CHAR_DATA       *rch;
+        CHAR_DATA       *victim;
+        DESCRIPTOR_DATA *d;
+        char buf[MAX_STRING_LENGTH];
+        char tmp[MAX_STRING_LENGTH];
+        char             arg [ MAX_INPUT_LENGTH ];
+
+        rch = get_char( ch );
+
+        if ( !authorized( rch, gsn_disconnect ) )
+                return;
+
+        one_argument( argument, arg );
+        if ( arg[0] == '\0' )
+        {
+                send_to_char( "Protocols for  whom?\n\r", ch );
+                return;
+        }
+
+        if ( !( victim = get_char_world( ch, arg ) ) )
+        {
+                send_to_char( "They aren't here.\n\r", ch );
+                return;
+        }
+
+        if ( !victim->desc )
+        {
+                act( "$N doesn't have a descriptor.", ch, NULL, victim, TO_CHAR );
+                return;
+        }
+
+        buf[0] = '\0';
+
+        for ( d = descriptor_list; d; d = d->next )
+        {
+                if ( d == victim->desc )
+                {
+                        sprintf( tmp, "Protocols Negotiated for %s\n\r bATCP: %5s\n\r bMSDP: %5s\n\r bMXP:  %5s\n\r bMSP:  %5s\n\r bGMCP: %5s\n\r Client: %s Version: %s\n\r", 
+                        d->character->name, 
+                        d->pProtocol->bATCP  ? "TRUE" : "false", 
+                        d->pProtocol->bMSDP  ? "TRUE" : "false", 
+                        d->pProtocol->bMXP ? "TRUE" : "false",
+                        d->pProtocol->bMSP  ? "TRUE" : "false",
+                        d->pProtocol->bGMCP  ? "TRUE" : "false",
+                        d->pProtocol->pVariables[eMSDP_CLIENT_ID]->pValueString,
+                        d->pProtocol->pVariables[eMSDP_CLIENT_VERSION]->pValueString);
+                        strcat (buf, tmp);
+                        send_to_char ( buf, ch );
+                        return;
+                }
+        }
+ 
+
+        bug( "Do_disconnect: desc not found.", 0 );
+        send_to_char( "Descriptor not found!\n\r", ch );
+        return;
+}
 
 void do_killsocket( CHAR_DATA *ch, char *argument )
 {

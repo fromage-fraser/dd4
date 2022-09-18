@@ -6678,7 +6678,6 @@ void do_hurl (CHAR_DATA *ch, char *argument)
         if ( obj->item_type != ITEM_WEAPON) /*do this if hurling a shield */
         {
                 int chance;
-                AFFECT_DATA af;
                 if (is_affected(victim, gsn_stun))
                 {
                         sprintf(buf2,"It looks like %s is already stunned.\n\r",
