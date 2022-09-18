@@ -2775,7 +2775,6 @@ void gmcp_update( void )
                         fShort          = TRUE;
                         fShowNothing    = TRUE;
 
-
                         UpdateGMCPString( d, GMCP_NAME, d->character->name );
                         UpdateGMCPString( d, GMCP_RACE, race_table[d->character->race].race_name );
                         UpdateGMCPString( d, GMCP_CLASS, full_class_name( d->character->class ) );
@@ -2946,6 +2945,9 @@ void gmcp_update( void )
                         {
                                 UpdateGMCPString( d, GMCP_ENEMY, "" );
                         }
+                        rSetcount = 0;
+                        UpdateGMCPString( d, GMCP_ROOM_FLAGS, buf4 );
+                        buf4[0] = '\0';
 
                         buf[0] = '\0';
                         buf2[0] = '\0';

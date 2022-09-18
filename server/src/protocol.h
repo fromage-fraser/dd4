@@ -52,8 +52,11 @@ typedef struct descriptor_data descriptor_t;
  If you offer a Mudlet GUI for autoinstallation, put the path/filename here.
  ******************************************************************************/
 
+#define MUDLET_PACKAGE "0.0.3\nhttps://smihilist.com/dd4/web/main/gui/DD_GUI.mpackage"
+
 /*
-#define MUDLET_PACKAGE "1\nhttp://www.godwars2.org/download/mudlet/GW2_GUI.mpackage" 
+#define GMCP_GUI_VERSION        "0.0.2"
+#define GMCP_GUI_URL            "https://smihilist.com/dd4/web/main/gui/DD_GUI.mpackage"
 */
 
 /******************************************************************************
@@ -62,7 +65,7 @@ typedef struct descriptor_data descriptor_t;
 
 #define SNIPPET_VERSION                8 /* Helpful for debugging */
 
-#define MAX_PROTOCOL_BUFFER            32768    /* was 2048 Owl 19/9/22 */
+#define MAX_PROTOCOL_BUFFER            32768 /* was 2048 Owl 19/9/22 */
 #define MAX_VARIABLE_LENGTH            4096
 #define MAX_OUTPUT_BUFFER              32768    /* was 8192 set to this to match send_to_char buffer */
 #define MAX_MSSP_BUFFER                4096
