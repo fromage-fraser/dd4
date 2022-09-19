@@ -6518,6 +6518,12 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "", "!-runesmith base-!"
         },
 
+        {
+                "oscore", &gsn_oscore,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                spell_null, 0, 0,
+                "", "!OScore!"
+        },
         /*
          *  When adding base skills for new classes, put the base class base after the last base class above
          *  (smithy base as at 12/8/22) the order is critical.  Also set LAST_BASE_CLASS_INDEX in merc.h to its

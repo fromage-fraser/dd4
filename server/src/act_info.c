@@ -108,14 +108,208 @@ int get_colour_index_by_code ( int ccode )
         return i;
 }
 
+/* Idea is to return a score based on an object which is used to calculate rarity 
+                Scale is 0-1000 */
+int calc_item_score ( OBJ_DATA *obj)
+{
+        AFFECT_DATA             *paf;
+        int score = 0;
+        
+        for ( paf = obj->affected; paf; paf = paf->next )
+        {
+                if (!obj->level)
+                        continue;
+                
+                if ( paf->location != APPLY_NONE
+                    && paf->modifier != 0
+                    && strcmp (affect_loc_name (paf->location), "(unknown)"))
+                {
+                    /*    char          buf          [ MAX_STRING_LENGTH ];
+                        sprintf(buf, "calc_item_score %d %d", score, paf->location);
+                        bug(buf, 0); */ 
+                        switch (paf->location)
+                        {
+                                case APPLY_FLAMING:
+                                case APPLY_SANCTUARY:
+                                case APPLY_DRAGON_AURA:
+                                {
+                                        score += 200;
+                                }
+                                break;
+
+                                case APPLY_BALANCE:
+                                case APPLY_STRENGTHEN:
+                                case APPLY_ENGRAVED:
+                                case APPLY_SERRATED:
+                                case APPLY_INSCRIBED:
+                                {
+                                        score += 150;
+                                }
+                                break;
+
+                                case APPLY_STR:
+                                case APPLY_DEX:
+                                case APPLY_INT:
+                                case APPLY_WIS:
+                                case APPLY_CON:
+                                {
+                                        if (obj->level < 3 )
+                                                score += ((paf->modifier * 200) / obj->level);
+                                        else if (obj->level < 6)
+                                                score += ((paf->modifier * 500) / obj->level);
+                                        else if (obj->level < 16)
+                                                score += ((paf->modifier * 1000) / obj->level);
+                                        else
+                                                score += ((paf->modifier * 2500) / obj->level);
+                                }
+                                break;
+
+                                case APPLY_MANA:
+                                case APPLY_HIT:
+                                {
+                                        score += ((paf->modifier * 20) / obj->level);
+                                }
+                                break;
+
+                                case APPLY_DAMROLL:
+                                case APPLY_HITROLL:
+                                {
+                                        if (obj->level < 10)
+                                                score += ((paf->modifier * 500) / obj->level);
+                                        else
+                                                score += ((paf->modifier * 1000) / obj->level);
+                                }
+                                break;
+
+                                case APPLY_FLY:
+                                case APPLY_SNEAK:
+                                case APPLY_INVIS:
+                                {
+                                        score += 100;
+                                }
+                                break;
+
+                                case APPLY_DETECT_HIDDEN:
+                                case APPLY_DETECT_INVIS:
+                                case APPLY_RESIST_ACID:
+                                case APPLY_RESIST_COLD:
+                                case APPLY_RESIST_HEAT:
+                                case APPLY_RESIST_LIGHTNING:
+                                {
+                                        score += 50;
+                                }
+                                break;
+
+                                default:
+                                        score +=0;
+                        }
+                }
+        }
+        
+        for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
+        {
+                if (!obj->level)
+                        continue;
+                
+                if ( paf->location != APPLY_NONE
+                    && paf->modifier != 0
+                    && strcmp (affect_loc_name (paf->location), "(unknown)"))
+                {
+                      /*  char          buf          [ MAX_STRING_LENGTH ];
+                        sprintf(buf, "calc_item_score %d %d", score, paf->location);
+                        bug(buf, 0); */
+                        switch (paf->location)
+                        {
+                                case APPLY_FLAMING:
+                                case APPLY_SANCTUARY:
+                                case APPLY_DRAGON_AURA:
+                                {
+                                        score += 200;
+                                }
+                                break;
+
+                                case APPLY_BALANCE:
+                                case APPLY_STRENGTHEN:
+                                case APPLY_ENGRAVED:
+                                case APPLY_SERRATED:
+                                case APPLY_INSCRIBED:
+                                {
+                                        score += 150;
+                                }
+                                break;
+
+                                case APPLY_STR:
+                                case APPLY_DEX:
+                                case APPLY_INT:
+                                case APPLY_WIS:
+                                case APPLY_CON:
+                                {
+                                        if (obj->level < 3 )
+                                                score += ((paf->modifier * 200) / obj->level);
+                                        else if (obj->level < 6)
+                                                score += ((paf->modifier * 500) / obj->level);
+                                        else if (obj->level < 16)
+                                                score += ((paf->modifier * 1000) / obj->level);
+                                        else
+                                                score += ((paf->modifier * 2500) / obj->level);
+                                }
+                                break;
+
+                                case APPLY_MANA:
+                                case APPLY_HIT:
+                                {
+                                        score += ((paf->modifier * 20) / obj->level);
+                                }
+                                break;
+
+                                case APPLY_DAMROLL:
+                                case APPLY_HITROLL:
+                                {
+                                        if (obj->level < 3 )
+                                                score += ((paf->modifier * 150) / obj->level);
+                                        else if (obj->level < 10)
+                                                score += ((paf->modifier * 500) / obj->level);
+                                        else
+                                                score += ((paf->modifier * 1000) / obj->level);
+                                }
+                                break;
+
+                                case APPLY_FLY:
+                                case APPLY_SNEAK:
+                                case APPLY_INVIS:
+                                {
+                                        score += 100;
+                                }
+                                break;
+
+                                case APPLY_DETECT_HIDDEN:
+                                case APPLY_DETECT_INVIS:
+                                case APPLY_RESIST_ACID:
+                                case APPLY_RESIST_COLD:
+                                case APPLY_RESIST_HEAT:
+                                case APPLY_RESIST_LIGHTNING:
+                                {
+                                        score += 50;
+                                }
+                                break;
+
+                                default:
+                                        score +=0;
+                        }
+                }
+        }
+        if (score <0)
+                score =0;
+        if (score > 1000)
+                score =1000;
+
+        return score;
+}
 
 char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
 {
         static char             buf [ MAX_STRING_LENGTH ];
         OBJSET_INDEX_DATA       *pObjSetIndex;
-        int                     smithy_flags;
-
-        smithy_flags = 0;
         buf[0] = '\0';
 
         if ( (pObjSetIndex = objects_objset(obj->pIndexData->vnum)) )
@@ -128,36 +322,6 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
                         strcat( buf, "<93>[SET]<0> ");
                 if ( (objset_type(pObjSetIndex->vnum)) == ("<178>Legendary<0>") )
                         strcat( buf, "<178>[SET]<0> ");
-        }
-
-        if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
-                smithy_flags++;
-
-        if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
-                smithy_flags++;
-
-        if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
-                smithy_flags++;
-
-        if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED))
-                smithy_flags++;
-
-        if (IS_OBJ_STAT(obj, ITEM_EGO) &&  IS_SET(obj->ego_flags, EGO_ITEM_ENGRAVED) )
-                smithy_flags++;
-
-        if (IS_OBJ_STAT(obj, ITEM_EGO) &&  IS_SET(obj->ego_flags, EGO_ITEM_SERRATED) )
-                smithy_flags++;
-
-        if (obj->item_type == ITEM_WEAPON && smithy_flags > 0)
-        {
-                if (smithy_flags <=2)
-                strcat( buf, "<34>(Uncommon)<0> " );
-                else if (smithy_flags <= 4)
-                strcat( buf, "<39>[Rare]<0> " );
-                else if (smithy_flags <= 5)
-                strcat( buf, "<15>[-=><135>EPIC<0><15><<=-]<0> " );
-                else if (smithy_flags <= 6)
-                strcat( buf, "<514><556><16>-=[<560>LEGENDARY<561>]=-<0><557> " );
         }
 
         if ( IS_OBJ_STAT( obj, ITEM_DEPLOYED))
@@ -230,6 +394,30 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
                 strcat(buf, "<196>(Damaged)<0> ");
         }
 
+        if ((calc_item_score(obj) > 100) && obj->identified)
+        {
+                if (calc_item_score(obj) > ITEM_SCORE_LEGENDARY)
+                        strcat( buf, "<514><556><16>[<560>LEGENDARY<561>]<0><557> ");
+                else if (calc_item_score(obj) > ITEM_SCORE_EPIC)
+                        strcat( buf, "<93>[Epic]<0> ");
+                else if (calc_item_score(obj) > ITEM_SCORE_RARE )
+                        strcat( buf, "<39>[Rare]<0> ");
+                else if (calc_item_score(obj) > ITEM_SCORE_UNCOMMON)
+                        strcat( buf, "<34>(Uncommon)<0> ");
+        }
+        
+        if (calc_item_score(obj) > 100 && !obj->identified)
+        {
+                if (calc_item_score(obj) > ITEM_SCORE_LEGENDARY)
+                        strcat( buf, "<178>[*?*]<0> ");
+                else if (calc_item_score(obj) > ITEM_SCORE_EPIC)
+                        strcat( buf, "<93>[=?=]<0> ");
+                else if (calc_item_score(obj) > ITEM_SCORE_RARE )
+                        strcat( buf, "<39>[-?-]<0> ");
+                else if (calc_item_score(obj) > ITEM_SCORE_UNCOMMON)
+                        strcat( buf, "<34>[_?_]<0> ");
+        }
+        
         if ( fShort )
         {
                 if ( obj->short_descr )
@@ -675,6 +863,368 @@ bool check_blind( CHAR_DATA *ch )
         return TRUE;
 }
 
+void print_identified_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
+{
+        /*
+         *  Rewritten by Gezhp, 2000
+         */
+
+        AFFECT_DATA             *paf;
+        int                     j, list [50];
+        unsigned long int       i, k;
+        char                    tmp [MAX_STRING_LENGTH];
+        OBJSET_INDEX_DATA       *pObjSetIndex;
+
+        const char* type [MAX_ITEM_TYPE+1] =
+        {
+                "something strange",       "a light source",             "a scroll",
+                "a wand",                  "a staff",                    "a weapon",
+                "something strange",       "something strange",          "treasure",
+                "a piece of armour",       "a potion",                   "something strange",
+                "a piece of furniture",    "a piece of trash",           "something strange",
+                "a container",             "something strange",          "a drink container",
+                "a key",                   "food",                       "money",
+                "something strange",       "a boat",                     "a corpse",
+                "a corpse",                "a fountain",                 "a pill",
+                "some climbing equipment",                               "some paint",
+                "something strange",       "an anvil",                   "an auction ticket",
+                "a special clan artefact",                               "a magical portal",
+                "some poison powder",      "a lockpick",                 "a musical instrument",
+                "an armourer's hammer",    "some mithril",               "a whetstone",
+                "a crafting tool",         "a magical crafting tool",    "a turret module",
+                "a forge"
+        };
+
+        const char* extras [MAX_BITS] =
+        {
+                "glows faintly",           "emits a low humming noise",
+                "?",                       "?",                          "is evil",
+                "is invisible",            "has a magical aura",         "cannot be dropped",
+                "has been blessed",        "?",                          "?",
+                "?",
+                "cannot be removed",       "?",                          "is coated in poison",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "is a vorpal weapon",
+                "?",                       "?",                          "is bloodthirsty",
+                "has been sharpened",      "has been forged",            "is a body part",
+                "can be used as a lance",                                "?",
+                "?",                       "can be used as a bow",       "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "is cursed",
+                "?",                       "?"
+        };
+
+        const long unsigned int class_restrictions [MAX_CLASS] =
+        {
+                ITEM_ANTI_MAGE,         ITEM_ANTI_CLERIC,       ITEM_ANTI_THIEF,
+                ITEM_ANTI_WARRIOR,      ITEM_ANTI_PSIONIC,      ITEM_ANTI_SHAPE_SHIFTER,
+                ITEM_ANTI_BRAWLER,      ITEM_ANTI_RANGER,       ITEM_ANTI_SMITHY
+        };
+
+        const int align_restriction_bits [3] =
+        {
+                ITEM_ANTI_GOOD,         ITEM_ANTI_NEUTRAL,      ITEM_ANTI_EVIL
+        };
+
+        const char* align_restriction_names [3] =
+        {
+                "good",                 "neutral",              "evil"
+        };
+
+        const char* wear_slots [18] =
+        {
+                "?",                            "is worn on the fingers",
+                "is worn about the neck",       "is worn on the body",
+                "is worn on the head",          "is worn on the legs",
+                "is worn on the feet",          "is worn on the hands",
+                "is worn on the arms",          "is used as a shield",
+                "is worn about the body",       "is worn around the waist",
+                "is worn on the wrist",         "?",
+                "is held in the hands",         "floats about your head",
+                "is worn as a belt pouch",      "?"
+        };
+
+
+        /*
+         *  Name and type
+         */
+        sprintf (buf, "You determine that {W%s{x is %s.\n\r",
+                 obj->short_descr,
+                 (obj->item_type < 0 || obj->item_type >= MAX_ITEM_TYPE+1)
+                 ? "something strange" : type[obj->item_type]);
+        send_paragraph_to_char (buf, ch, 4);
+
+        /*
+         *  Wear position if sensible
+         */
+        for (j = 1, i = 2; j < 18; j++, i *= 2)
+        {
+                if ((obj->wear_flags & i) && strcmp (wear_slots[j], "?"))
+                {
+                        sprintf(buf, "It %s.\n\r", wear_slots[j]);
+                        send_to_char(buf, ch);
+                        break;
+                }
+        }
+
+        /*
+         *  Any extra flags
+         */
+        i = 0;
+        for (j = 0, k = 1; j < MAX_BITS; j++, k *= 2)
+        {
+                if ((k & obj->extra_flags) && strcmp (extras[j], "?"))
+                        list[i++] = j;
+        }
+        if (i)
+        {
+                sprintf (buf, "{cIt");
+                for (j = 0; j < i; j++)
+                {
+                        if (j == i-1 && j)
+                                strcat (buf, " and");
+                        else if (j)
+                                strcat (buf, ",");
+                        sprintf (tmp, " %s", extras[list[j]]);
+                        strcat (buf, tmp);
+                }
+                strcat (buf, ".{x\n\r");
+                send_paragraph_to_char (buf, ch, 4);
+        }
+
+        /*
+         *  Any alignment restrictions
+         */
+        i = 0;
+        for (j = 0; j < 3; j++)
+        {
+                if (align_restriction_bits[j] & obj->extra_flags)
+                        list[i++] = j;
+        }
+        if (i)
+        {
+                sprintf (buf, "{cIt cannot be equipped by those of");
+                for (j = 0; j < i; j++)
+                {
+                        if (j == i-1 && j)
+                                strcat (buf, " or");
+                        else if (j)
+                                strcat (buf, ",");
+                        sprintf (tmp, " %s", align_restriction_names[list[j]]);
+                        strcat (buf, tmp);
+                }
+                strcat (buf, " alignment.{x\n\r");
+                send_paragraph_to_char (buf, ch, 4);
+        }
+
+        /*
+         *  Any class restrictions
+         */
+        i = 0;
+        for (j = 0; j < MAX_CLASS; j++)
+        {
+                if (class_restrictions[j] & obj->extra_flags)
+                {
+                        list[i++] = j;
+                }
+        }
+
+        if (i)
+        {
+                sprintf (buf, "{cIt cannot be used by those of the");
+                for (j = 0; j < i; j++)
+                {
+                        if (j == i-1 && j)
+                                strcat (buf, " or");
+                        else if (j)
+                                strcat (buf, ",");
+                        strcat (buf, " ");
+                        strcat (buf, full_class_name(list[j]));
+                }
+                sprintf (tmp, " class%s.{x\n\r",
+                         (i == 1) ? "" : "es");
+                strcat (buf, tmp);
+                send_paragraph_to_char (buf, ch, 4);
+        }
+
+        if IS_SET(obj->extra_flags, ITEM_EGO)
+        {
+                sprintf( buf, "Specialist enhancements:");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_BLOODLUST))
+                        strcat (buf, " Bloodlust");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_SOUL_STEALER))
+                        strcat (buf, " Soul stealer");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_FIREBRAND))
+                        strcat (buf, " Firebrand");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
+                        strcat (buf, " Imbued");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
+                        strcat (buf, " Balanced");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_BATTLE_TERROR))
+                        strcat (buf, " Battle terror");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_TURRET))
+                        strcat (buf, " Engineer's turret");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE))
+                        strcat (buf, " Turret module");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
+                        strcat (buf, " Chain Attached");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_STRENGTHEN))
+                        strcat (buf, " Strengthened");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED))
+                        strcat (buf, " Empowered");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_SERRATED))
+                        strcat (buf, " Serrated");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_ENGRAVED))
+                        strcat (buf, " Engraved");
+
+
+                strcat (buf, ".\n\r");
+                send_paragraph_to_char (buf, ch, 4);
+        }
+
+        sprintf( buf, "It weighs {W%d{x lbs, is worth {W%d{x copper coins and is level {W%d{x.\n\r",
+                obj->weight,
+                obj->cost,
+                obj->level );
+        send_paragraph_to_char (buf, ch, 4);
+
+        /*
+         *  Item type specific information
+         */
+        switch (obj->item_type)
+        {
+            case ITEM_PILL:
+            case ITEM_PAINT:
+            case ITEM_SCROLL:
+            case ITEM_POTION:
+                i = 0;
+                for (j = 1; j < 4; j++)
+                {
+                        if ( obj->value[j] >= 0 && obj->value[j] < MAX_SKILL )
+                                list[i++] = obj->value[j];
+                }
+                if (i)
+                {
+                        sprintf( buf, "It contains %slevel {W%d{X spell%s of",
+                                (i == 1) ? "a " : "",
+                                obj->value[0],
+                                (i == 1) ? "" : "s");
+                        for (j = 0; j < i; j++)
+                        {
+                                if (j == i-1 && j)
+                                        strcat (buf, " and");
+                                else if (j)
+                                        strcat (buf, ",");
+                                sprintf (tmp, " '{C%s{x'", skill_table[list[j]].name);
+                                strcat (buf, tmp);
+                        }
+                        strcat (buf, ".\n\r");
+                        send_paragraph_to_char (buf, ch, 4);
+                }
+                break;
+
+            case ITEM_WAND:
+            case ITEM_STAFF:
+            case ITEM_COMBAT_PULSE:
+            case ITEM_DEFENSIVE_PULSE:
+                if (obj->value[2] == 1 && obj->value[1] == 1)
+                        sprintf(buf, "It contains {W1{x charge of level {W%d{x",
+                                obj->value[0]);
+                else
+                        sprintf( buf, "It contains {W%d{x out of {W%d{x charges of level {W%d{x",
+                                obj->value[2], obj->value[1], obj->value[0] );
+
+                j = 0;
+                if ( obj->value[3] >= 0 && obj->value[3] < MAX_SKILL ) {
+                        j++;
+                        strcat( buf, " '{C" );
+                        strcat( buf, skill_table[obj->value[3]].name );
+                        strcat( buf, "{x'" );
+                }
+
+                strcat (buf, ".\n\r");
+                if (j) send_paragraph_to_char( buf, ch, 4 );
+                break;
+
+            case ITEM_WEAPON:
+                sprintf( buf, "This weapon does between {W%d{x and {W%d{x base points of damage.\n\r",
+                        obj->value[1],
+                        obj->value[2]);
+                send_paragraph_to_char( buf, ch, 4 );
+                break;
+
+            case ITEM_ARMOR:
+                sprintf( buf, "It has an armour class of {W%d{x.\n\r", obj->value[0] );
+                send_to_char( buf, ch );
+                break;
+        }
+
+        for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
+        {
+                if ( paf->location != APPLY_NONE && paf->modifier != 0
+                    && strcmp (affect_loc_name (paf->location), "(unknown)"))
+                {
+                        if (paf->location < APPLY_SANCTUARY)
+                                sprintf( buf, "It modifies {Y%s{x by {Y%d{x.\n\r",
+                                        affect_loc_name( paf->location ), paf->modifier );
+                        else    sprintf (buf, "It gives the wearer {Y%s{x.\n\r",
+                                         affect_loc_name (paf->location));
+                        send_to_char( buf, ch );
+                }
+        }
+
+        for ( paf = obj->affected; paf; paf = paf->next )
+        {
+                if ( paf->location != APPLY_NONE
+                    && paf->modifier != 0
+                    && strcmp (affect_loc_name (paf->location), "(unknown)"))
+                {
+                        if (paf->location < APPLY_SANCTUARY)
+                                sprintf( buf, "It modifies {Y%s{x by {Y%d{x.\n\r",
+                                        affect_loc_name( paf->location ), paf->modifier );
+                        else
+                                sprintf (buf, "It gives the wearer {Y%s{x.\n\r",
+                                         affect_loc_name (paf->location));
+                        send_to_char( buf, ch );
+                }
+        }
+
+/* 2nd pass at sets - Brutus */
+
+        if ( (pObjSetIndex = objects_objset(obj->pIndexData->vnum) ) )
+        {
+                int count;
+                count = 0;
+                sprintf (buf, "{W-=-=-=-=-=-=-=-=-=-=-=-=-=-=-={x\n\r");
+                send_to_char( buf,ch);
+                sprintf(buf, "This is part of a %s set.\n\r",
+                objset_type(pObjSetIndex->vnum));
+                send_to_char( buf,ch);
+                sprintf(buf, "%s", pObjSetIndex->description );
+                send_to_char( buf,ch);
+                sprintf(buf, "<560>Its Set Bonuses are:<0>\n\r");
+
+                for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
+                {
+                        count++;
+                        sprintf( buf, "Equip {W%d{x items to provide {Y%s{x by {Y%d{x\n\r",
+                        objset_bonus_num_pos(pObjSetIndex->vnum, count),
+                        affect_loc_name( paf->location ),
+                        paf->modifier );
+                        send_to_char( buf,ch);
+                }
+        }
+        obj->identified = TRUE;
+
+}
 
 void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
 {
@@ -1062,7 +1612,12 @@ void do_look( CHAR_DATA *ch, char *argument )
                         if ( pdesc )
                         {
                                 send_to_char( pdesc, ch );
-                                if ( (ch->class == CLASS_SMITHY)
+                                if (obj->identified)
+                                {        
+                                        print_identified_data( ch, obj, buf1);
+                                        send_to_char( buf1, ch);
+                                }
+                            /*    if ( (ch->class == CLASS_SMITHY)
                                         && (obj->item_type == ITEM_WEAPON
                                         || obj->item_type == ITEM_ARMOR
                                         || obj->item_type == ITEM_TURRET_MODULE
@@ -1071,14 +1626,20 @@ void do_look( CHAR_DATA *ch, char *argument )
                                         print_smithy_data( ch, obj, buf1);
                                         send_to_char( buf1, ch );
                                         return;
-                                }
+                                } */
                         }
 
                         pdesc = get_extra_descr( arg1, obj->pIndexData->extra_descr );
                         if ( pdesc )
                         {
                                 send_to_char( pdesc, ch );
-                                if ( (ch->class == CLASS_SMITHY)
+
+                                if (obj->identified)
+                                {        
+                                        print_identified_data( ch, obj, buf1);
+                                        send_to_char( buf1, ch);
+                                }
+                           /*     if ( (ch->class == CLASS_SMITHY)
                                         && (obj->item_type == ITEM_WEAPON
                                         || obj->item_type == ITEM_ARMOR
                                         || obj->item_type == ITEM_TURRET_MODULE
@@ -1087,7 +1648,7 @@ void do_look( CHAR_DATA *ch, char *argument )
                                         print_smithy_data( ch, obj, buf1);
                                         send_to_char( buf1, ch );
                                         return;
-                                }
+                                } */
                         }
                 }
 
@@ -1096,8 +1657,13 @@ void do_look( CHAR_DATA *ch, char *argument )
                         char    buf1 [ MAX_STRING_LENGTH ];
                         send_to_char( obj->description, ch );
                         send_to_char( "\n\r", ch );
+                        if (obj->identified)
+                        {        
+                                print_identified_data( ch, obj, buf1);
+                                send_to_char( buf1, ch);
+                        }
 
-                        if ( (ch->class == CLASS_SMITHY) &&
+                     /*   if ( (ch->class == CLASS_SMITHY) &&
                                 (obj->item_type == ITEM_WEAPON
                                 || obj->item_type == ITEM_ARMOR
                                 || obj->item_type == ITEM_TURRET_MODULE
@@ -1106,7 +1672,7 @@ void do_look( CHAR_DATA *ch, char *argument )
                         {
                                 print_smithy_data( ch, obj, buf1);
                                 send_to_char( buf1, ch );
-                        }
+                        } */
                         return;
                 }
         }
@@ -1211,10 +1777,25 @@ void do_examine (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        obj = get_obj_here (ch, arg);
+        if ( (ch->class == CLASS_SMITHY) &&  (ch->pcdata->learned[gsn_innate_knowledge] > obj->level ) &&
+                (obj->item_type == ITEM_WEAPON
+                || obj->item_type == ITEM_ARMOR
+                || obj->item_type == ITEM_TURRET_MODULE
+                || obj->item_type == ITEM_TURRET
+                || obj->item_type == ITEM_DEFENSIVE_TURRET_MODULE) )
+        {
+                send_to_char ("You cast your expert eye over the item.\n\r", ch);
+                obj->identified = TRUE;
+        }
+
         do_look (ch, arg);
 
-        if ((obj = get_obj_here (ch, arg)))
+        /*if ((obj = get_obj_here (ch, arg))) */
+        if (obj)
         {
+        
+                        
                 if (!IS_NPC(ch) && IS_SET(obj->extra_flags, ITEM_TRAP)
                     && number_percent() < ch->pcdata->learned[gsn_find_traps])
                 {
@@ -4683,7 +5264,7 @@ void do_identify( CHAR_DATA *ch, char *argument )
 
         if (argument[0] == '\0')
         {
-                act("$C asks you, 'Which object would you like to identify?'",
+                act("$C asks you, 'Which object would you like to identify? (1G fee)'",
                     ch, NULL, rch, TO_CHAR);
                 return;
         }
@@ -4701,7 +5282,7 @@ void do_identify( CHAR_DATA *ch, char *argument )
                 return;
         }
 
-        cost = obj->level * 50;
+        cost = obj->level * 1000;
         send_to_char("Your purse feels lighter.\n\r", ch);
         coins_from_char(cost, ch);
         act("$C examines $p and identifies its properties.\n\r", ch, obj, rch, TO_CHAR);

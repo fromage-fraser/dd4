@@ -3634,6 +3634,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         send_to_char( buf,ch);
                 }
         }
+        obj->identified = TRUE;
 }
 
 
