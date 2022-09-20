@@ -3170,7 +3170,7 @@ and very warm.  Large palms and mangroves grow to the west of this chamber
 behind a wide, low arch that bisects the room.  A door to the east will take
 you back to dry land.
 ~
-0 1|8 0
+0 1|8 11
 D1
 A door leads east.
 ~
@@ -3194,7 +3194,7 @@ and many tall palms and twisted mangroves rise above the slime.  A wooden
 stake stands between several large trees, several skulls skewered over its
 sharpened tip.
 ~
-0 1|8 0
+0 1|8 11
 D1
 Swamp oozes to the east.
 ~
@@ -3218,7 +3218,7 @@ slime and filth floating on its surface in several places.  A ripe smell issues
 from the west, and you notice a few insects whining through the humid
 atmosphere.
 ~
-0 1|8 0
+0 1|8 11
 D1
 The corridor continues east.
 ~
@@ -3235,7 +3235,7 @@ Boggy Corridor~
 Water seeps from underneath a wooden door directly west.  Mud and grim also
 cover the floor at this end of the corridor, which stretches east.
 ~
-0 1|8 0
+0 1|8 11
 D1
 A door open east.
 ~
@@ -3701,7 +3701,7 @@ mounds contain reptilian eggs.  Movement about you draws your attention to
 several beasts the comb the muck.  You may head further north and east, while
 the door west will take you back into the Grand Hall.
 ~
-0 1|8 0
+0 1|8 11
 D0
 The chamber stretches northwards.
 ~
@@ -3723,7 +3723,7 @@ Egg Chamber~
 Stinking mounds of filth cover serpent eggs as they incubate.  The swampy
 chamber stretches west and south.
 ~
-0 1|8 0
+0 1|8 11
 D2
 The chamber stretches southwards.
 ~
@@ -3740,7 +3740,7 @@ Egg Chamber~
 Stinking mounds of filth cover serpent eggs as they incubate.  The swampy
 chamber stretches east and south.
 ~
-0 1|8 0
+0 1|8 11
 D1
 The chamber stretches east.
 ~
@@ -3757,7 +3757,7 @@ Egg Chamber~
 Stinking mounds of filth cover serpent eggs as they incubate.  The swampy
 chamber stretches west and north.
 ~
-0 1|8 0
+0 1|8 11
 D0
 The chamber stretches northwards.
 ~

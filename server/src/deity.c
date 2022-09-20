@@ -2254,6 +2254,7 @@ void deity_update ()
                                     case SECT_FOREST:
                                     case SECT_HILLS:
                                     case SECT_MOUNTAIN:
+                                    case SECT_SWAMP:
                                         SET_DEITY_TYPE_TIMER(d->character, DEITY_TYPE_NATURE, -2);
                                         break;
 

@@ -243,8 +243,8 @@ void do_cast( CHAR_DATA *ch, char *argument )
 
         if (IS_AFFECTED(ch, AFF_DAZED))
         {
-              send_to_char( "You see STARS. You are dazed at present.\n\r", ch ); 
-              return; 
+              send_to_char( "You see STARS. You are dazed at present.\n\r", ch );
+              return;
         }
 
         if (IS_NPC(ch) && IS_AFFECTED(ch, AFF_CHARM))
@@ -713,7 +713,7 @@ void obj_cast_spell( int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DA
             case TAR_CHAR_DEFENSIVE:
                 if ( !victim )
                         victim = ch;
-                
+
                 if (!IS_NPC(ch)
                     && !IS_NPC(victim)
                     && victim->level > 10
@@ -6875,6 +6875,7 @@ void spell_natures_fury( int sn, int level, CHAR_DATA *ch, void *vo )
             case SECT_WATER_SWIM:
             case SECT_WATER_NOSWIM:
             case SECT_UNDERWATER:
+            case SECT_SWAMP:
                 msg = "{BA huge water spout erupts beneath $N!{x";
                 break;
 

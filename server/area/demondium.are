@@ -5010,7 +5010,7 @@ and there is a perpetual fog all around you. You
 have a feeling that you are being watched.
 Something slimy brushes past your leg...
 ~
-0 1|8 5
+0 1|8 11
 D1
 ~
 ~
@@ -5034,7 +5034,7 @@ You are standing knee deep in the swamps.
 The air is humid, and there is a perpetual
 fog all around you. You feel somewhat lost.
 ~
-0 1|8 5
+0 1|8 11
 D1
 ~
 ~
@@ -5051,7 +5051,7 @@ The air is humid, and there is a perpetual fog
 all around you. You feel somewhat lost. Debris
 in the swamp blocks any further progress.
 ~
-0 1|8 5
+0 1|8 11
 D1
 ~
 ~
@@ -5063,7 +5063,7 @@ You are standing knee deep in the swamps.
 The air is humid, and there is a perpetual fog
 all around you. You feel somewhat lost.
 ~
-0 1|8 5
+0 1|8 11
 D1
 ~
 ~
@@ -5080,7 +5080,7 @@ The air is humid, and there is a perpetual fog
 all around you. You feel somewhat lost. Debris
 in the swamp blocks any further progress.
 ~
-0 1|8 5
+0 1|8 11
 D3
 ~
 ~
@@ -5092,7 +5092,7 @@ You are standing knee deep in the swamps.
 The air is humid, and there is a perpetual fog
 all around you. You feel somewhat lost.
 ~
-0 1|8 5
+0 1|8 11
 D0
 ~
 ~
@@ -5108,7 +5108,7 @@ You are standing knee deep in the swamps.
 The air is humid, and there is a perpetual fog
 all around you. You feel somewhat lost.
 ~
-0 1|8 5
+0 1|8 11
 D0
 ~
 ~
@@ -5127,7 +5127,7 @@ You are having great difficulty breathing
 in this stench.  This place looks and
 smells like a garbage dump.
 ~
-0 1|4|8 5
+0 1|4|8 11
 D0
 ~
 ~
@@ -5149,7 +5149,7 @@ organic material, both plant and animal.
 You are having great difficulty breathing
 in this stench.
 ~
-0 1|8 5
+0 1|8 11
 D1
 ~
 ~
@@ -5167,7 +5167,7 @@ organic material, both plant and animal.
 You are having great difficulty breathing
 in this stench.
 ~
-0 1|8 5
+0 1|8 11
 D0
 ~
 ~
@@ -5185,7 +5185,7 @@ organic material, both plant and animal.
 You are having great difficulty breathing
 in this stench.
 ~
-0 1|8 5
+0 1|8 11
 D0
 ~
 ~
@@ -5203,7 +5203,7 @@ organic material, both plant and animal.
 You are having great difficulty breathing
 in this stench.
 ~
-0 1|8 5
+0 1|8 11
 D1
 ~
 ~
@@ -5225,7 +5225,7 @@ organic material, both plant and animal.
 You are having great difficulty breathing
 in this stench.
 ~
-0 1|8 5
+0 1|8 11
 D0
 ~
 ~
@@ -5242,7 +5242,7 @@ All around you lies the decaying remains
 of organic material, both plant and animal.
 You are having great difficulty breathing in this stench.
 ~
-0 1|8 5
+0 1|8 11
 D0
 ~
 ~
@@ -5259,7 +5259,7 @@ All around you lies the decaying remains of organic
 material, both plant and animal. You are having
 great difficulty breathing in this stench.
 ~
-0 1|8 5
+0 1|8 11
 D2
 ~
 ~
@@ -5278,7 +5278,7 @@ in this stench.  Here, the swamp becomes worse, almost a bog.
 You are having difficulty wading through the thick mud that clutches
 at your legs.
 ~
-0 1|8 5
+0 1|8 11
 D0
 ~
 ~
@@ -5294,7 +5294,7 @@ The stench of the bog is almost overwhelming,
 and you are barely able to move southwards
 between two large piles of decay.
 ~
-0 1|8 5
+0 1|8 11
 D0
 ~
 ~
@@ -5312,7 +5312,7 @@ two large piles of decay. You have a sense of
 foreboding about this place, although what could
 possibly live here you do not know.
 ~
-0 1|4|8 5
+0 1|4|8 11
 D0
 ~
 ~
@@ -5329,7 +5329,7 @@ suddenly, showering you in the most unimaginable
 filth and stench. A hideous creature emerges from
 the bog and heads right at you!
 ~
-0 1|8 5
+0 1|8 11
 D0
 ~
 ~
@@ -5358,7 +5358,7 @@ a great desert, its sands shimmering in the heat. There is
 absolutely no wind at all and the sun beats down harshly upon
 you. There is a path leading southwards.
 ~
-0 0 2
+0 0 10
 D2
 ~
 ~
@@ -5371,7 +5371,7 @@ sands shimmering in the heat. There is
 absolutely no wind at all and the sun beats
 down harshly upon you.
 ~
-0 0 1
+0 0 10
 D0
 ~
 ~
@@ -5388,7 +5388,7 @@ sands shimmering in the heat. There is
 absolutely no wind at all and the sun beats
 down harshly upon you.
 ~
-0 0 1
+0 0 10
 D0
 ~
 ~
@@ -5405,7 +5405,7 @@ sands shimmering in the heat.  There is
 absolutely no wind at all and the sun beats
 down harshly upon you.
 ~
-0 0 1
+0 0 10
 D0
 ~
 ~
@@ -5422,7 +5422,7 @@ sands shimmering in the heat.  There is
 absolutely no wind at all and the sun beats
 down harshly upon you.
 ~
-0 0 1
+0 0 10
 D0
 ~
 ~
@@ -5439,7 +5439,7 @@ sands shimmering in the heat. There is
 absolutely no wind at all and the sun beats
 down harshly upon you.
 ~
-0 0 1
+0 0 10
 D0
 ~
 ~
@@ -5457,7 +5457,7 @@ absolutely no wind at all and the sun beats
 down harshly upon you. The track branches
 off to the east and west.
 ~
-0 4 1
+0 4 10
 D0
 ~
 ~
@@ -5482,7 +5482,7 @@ sands shimmering in the heat.  There is
 absolutely no wind at all and the sun beats
 down harshly upon you.
 ~
-0 0 1
+0 0 10
 D0
 ~
 ~
@@ -5499,7 +5499,7 @@ sands shimmering in the heat. There is
 absolutely no wind at all and the sun beats
 down harshly upon you.
 ~
-0 0 1
+0 0 10
 D0
 ~
 ~
@@ -5517,7 +5517,7 @@ forks here and goes east and west. The wind picks up and you feel that a sandsto
 may be on the way.  You hope that you choose the correct branch in the path to
 take, as one wrong step here could leave you here forever lost...
 ~
-0 4 1
+0 4 10
 D0
 ~
 ~
@@ -5538,7 +5538,7 @@ sands shimmering in the heat. There is
 absolutely no wind at all and the sun beats
 down harshly upon you.
 ~
-0 0 1
+0 0 10
 D1
 ~
 ~
@@ -5555,7 +5555,7 @@ sands shimmering in the heat. There is
 absolutely no wind at all and the sun beats
 down harshly upon you.
 ~
-0 0 1
+0 0 10
 D0
 ~
 ~
@@ -5576,7 +5576,7 @@ sands shimmering in the heat. There is
 absolutely no wind at all and the sun beats
 down harshly upon you.
 ~
-0 0 1
+0 0 10
 D1
 ~
 ~
@@ -5595,7 +5595,7 @@ down harshly upon you. The shimmering clears
 for a moment and you see you have reached
 an encampment of some sort.
 ~
-0 0 1
+0 0 10
 D0
 ~
 ~
@@ -5615,7 +5615,7 @@ You wander around a nomad camp, avoiding
 camel dung.  There is a large tent to the
 east, but you cannot see any entrance to it.
 ~
-0 0 1
+0 0 10
 D0
 ~
 ~
@@ -5630,7 +5630,7 @@ Nomad camp~
 You wander around a nomad camp, avoiding
 camel dung.
 ~
-0 0 1
+0 0 10
 D1
 ~
 ~
@@ -5646,7 +5646,7 @@ You wander around a nomad camp, avoiding
 camel dung.  There is a large tent to the
 south, but you cannot see any entrance to it.
 ~
-0 0 1
+0 0 10
 D1
 ~
 ~
@@ -5661,7 +5661,7 @@ Nomad camp~
 You wander around a nomad camp, avoiding
 camel dung.
 ~
-0 0 1
+0 0 10
 D2
 ~
 ~
@@ -5677,7 +5677,7 @@ You wander around a nomad camp, avoiding
 camel dung.  There is a large tent to the
 west, and the tent flaps are open, allowing free access.
 ~
-0 0 1
+0 0 10
 D0
 ~
 ~
@@ -5696,7 +5696,7 @@ Nomad camp~
 You wander around a nomad camp, avoiding
 camel dung.
 ~
-0 0 1
+0 0 10
 D0
 ~
 ~
@@ -5712,7 +5712,7 @@ You wander around a nomad camp, avoiding
 camel dung.  There is a large tent to the
 north, but you cannot see any entrance to it.
 ~
-0 0 1
+0 0 10
 D1
 ~
 ~
@@ -5727,7 +5727,7 @@ Nomad camp~
 You wander around a nomad camp, avoiding
 camel dung.
 ~
-0 0 1
+0 0 10
 D0
 ~
 ~
@@ -5742,7 +5742,7 @@ Nomad camp~
 You wander around a nomad camp, avoiding
 camel dung.
 ~
-0 0 1
+0 0 10
 D0
 ~
 ~
@@ -5757,7 +5757,7 @@ Nomad's tent~
 You are inside the tent of the Nomad leader. It is dirty and dimly lit. The nomad
 leader rises to greet you...
 ~
-0 1|8 1
+0 1|8 10
 D1
 ~
 ~
@@ -5769,7 +5769,7 @@ You wander around a bedouin camp, avoiding
 camel dung. There is a large tent to the west,
 but you cannot see any entrance to it.
 ~
-0 0 1
+0 0 10
 D0
 ~
 ~
@@ -5783,7 +5783,7 @@ S
 Bedouin camp~
 You wander around a bedouin camp, avoiding camel dung.
 ~
-0 0 1
+0 0 10
 D2
 ~
 ~
@@ -5799,7 +5799,7 @@ You wander around a bedouin camp, avoiding
 camel dung. There is a large tent to the south,
 but you cannot see any entrance to it.
 ~
-0 0 1
+0 0 10
 D1
 ~
 ~
@@ -5813,7 +5813,7 @@ S
 Bedouin camp~
 You wander around a bedouin camp, avoiding camel dung.
 ~
-0 0 1
+0 0 10
 D1
 ~
 ~
@@ -5829,7 +5829,7 @@ You wander around a bedouin camp, avoiding
 camel dung. There is a large tent to the east,
 and the tent flaps are open, allowing free access.
 ~
-0 0 1
+0 0 10
 D0
 ~
 ~
@@ -5847,7 +5847,7 @@ S
 Bedouin camp~
 You wander around a bedouin camp, avoiding camel dung.
 ~
-0 0 1
+0 0 10
 D0
 ~
 ~
@@ -5863,7 +5863,7 @@ You wander around a bedouin camp, avoiding
 camel dung. There is a large tent to the
 north, but you cannot see an entrance to it.
 ~
-0 0 1
+0 0 10
 D1
 ~
 ~
@@ -5877,7 +5877,7 @@ S
 Bedouin camp~
 You wander around a bedouin camp, avoiding camel dung.
 ~
-0 0 1
+0 0 10
 D0
 ~
 ~
@@ -5891,7 +5891,7 @@ S
 Bedouin camp~
 You wander around a bedouin camp, avoiding camel dung.
 ~
-0 0 1
+0 0 10
 D0
 ~
 ~

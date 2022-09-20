@@ -45,7 +45,7 @@ DIR_DATA directions [MAX_DIR] =
 
 const int movement_loss [SECT_MAX] =
 {
-        1, 2, 2, 3, 4, 5, 4, 1, 3, 10, 6
+        1, 2, 2, 3, 4, 5, 4, 1, 3, 10, 6, 4
 };
 
 
@@ -627,6 +627,7 @@ void move_char(CHAR_DATA *ch, int door)
 
                 if ( ( ( to_room->sector_type == SECT_WATER_NOSWIM )
                 ||     ( to_room->sector_type == SECT_WATER_SWIM )
+                ||     ( to_room->sector_type == SECT_SWAMP )
                 ||     ( to_room->sector_type == SECT_UNDERWATER ) )
                 && ( ( ch->race == RACE_SAHUAGIN )
                   || ( ch->race == RACE_GRUNG )
@@ -766,6 +767,7 @@ void move_char(CHAR_DATA *ch, int door)
         &&       ( ch->level <= LEVEL_HERO ) )
             && ( ch->in_room->sector_type != SECT_UNDERWATER )
             && ( ch->in_room->sector_type != SECT_WATER_SWIM )
+            && ( ch->in_room->sector_type != SECT_SWAMP )
             && ( ch->in_room->sector_type != SECT_WATER_NOSWIM ) )
         {
                 affect_strip(ch, gsn_swim);

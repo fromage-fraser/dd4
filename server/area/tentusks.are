@@ -2160,7 +2160,7 @@ brown clumps, and green slimes spread across the surface of the mire.  The
 air is thick with gigantic insects, and it is oppressively hot.  The swamp
 spreads out forever in every direction.
 ~
-0 4 3
+0 4 11
 D0
 ~
 ~
@@ -2185,7 +2185,7 @@ brown clumps, and green slimes spread across the surface of the mire.  The
 air is thick with gigantic insects, and it is oppressively hot.  The swamp
 spreads out forever in every direction.
 ~
-0 0 3
+0 0 11
 D0
 ~
 ~
@@ -2209,7 +2209,7 @@ Thick, putrid filth rises almost to your waist, the smell of rot
 overwhelming in this horrible quagmire.  The mire spreads north, west and
 south.
 ~
-0 0 3
+0 0 11
 D0
 ~
 ~
@@ -2231,7 +2231,7 @@ fill the air with a sickly sweet odour that makes you feel ill.  You can
 travel east and north from here; the trees to the west and south are so
 dense that you can not progress any further in those directions.
 ~
-0 0 3
+0 0 11
 D0
 ~
 ~
@@ -2249,7 +2249,7 @@ air is thick with gigantic insects, and it is oppressively hot.  The swamp
 spreads out forever in every direction, with a forest of gnarled mangroves
 rising to the west.
 ~
-0 0 3
+0 0 11
 D0
 ~
 ~
@@ -2274,7 +2274,7 @@ brown clumps, and green slimes spread across the surface of the mire.  The
 air is thick with gigantic insects, and it is oppressively hot.  The swamp
 spreads out forever in every direction.
 ~
-0 0 3
+0 0 11
 D0
 ~
 ~
@@ -2299,7 +2299,7 @@ brown clumps, and green slimes spread across the surface of the mire.  The
 air is thick with gigantic insects, and it is oppressively hot.  The swamp
 spreads out forever in every direction.
 ~
-0 0 3
+0 0 11
 D0
 ~
 ~
@@ -2322,7 +2322,7 @@ Quagmire~
 Thick, putrid filth rises almost to your waist, the smell of rot
 overwhelming in this horrible quagmire.  The mire spreads north and west.
 ~
-0 0 3
+0 0 11
 D0
 ~
 ~
@@ -2338,7 +2338,7 @@ Swamp grasses and masses of tall reeds emerge from the muddy surface of the
 marsh.  Unseen creatures hoot and growl from the distance.  You can travel
 north, east and south from here.
 ~
-0 0 3
+0 0 11
 D0
 ~
 ~
@@ -2358,7 +2358,7 @@ Swamp grasses and masses of tall reeds emerge from the muddy surface of the
 marsh.  Unseen creatures hoot and growl from the distance.  You can travel
 north, east and west from here.
 ~
-0 0 3
+0 0 11
 D0
 ~
 ~
@@ -2378,7 +2378,7 @@ Swamp grasses and masses of tall reeds emerge from the muddy surface of the
 marsh.  Unseen creatures hoot and growl from the distance.  You can travel
 north, west and south from here.
 ~
-0 0 3
+0 0 11
 D0
 ~
 ~
@@ -2400,7 +2400,7 @@ northwards towards the centre of the marsh.  An intense circular light
 hangs in the air to the west, an ancient stone hallway is barely visible on
 the other side of this portal.
 ~
-0 0 3
+0 0 11
 D0
 ~
 ~
@@ -2416,7 +2416,7 @@ Swamp grasses and masses of tall reeds emerge from the muddy surface of the
 marsh.  Unseen creatures hoot and growl from the distance.  Marsh lays to
 the north, while a huge, twisted tree rises to the east.
 ~
-0 0 3
+0 0 11
 D0
 ~
 ~
@@ -2434,7 +2434,7 @@ naked branches rise like withered hands into the air, with only a few dry
 and dying leaves hanging from the thinner twigs.  You can head west into
 the marsh, or climb up the tree into the thick nest of branches above you.
 ~
-0 0 3
+0 0 11
 D3
 ~
 ~
@@ -2452,7 +2452,7 @@ fill the air with a sickly sweet odour that makes you feel ill.  You can
 travel east and south from here; the trees to the west and north are so
 dense that you can not progress any further in those directions.
 ~
-0 0 3
+0 0 11
 D1
 ~
 ~
@@ -2470,7 +2470,7 @@ air is thick with gigantic insects, and it is oppressively hot.  The swamp
 spreads out forever in every direction, with gnarled mangroves rising to
 the west.
 ~
-0 0 3
+0 0 11
 D0
 ~
 ~
@@ -2495,7 +2495,7 @@ brown clumps, and green slimes spread across the surface of the mire.  The
 air is thick with gigantic insects, and it is oppressively hot.  The swamp
 spreads east and south, with a small patch of mangrove forest to the north.
 ~
-0 0 3
+0 0 11
 D0
 ~
 ~
@@ -2516,7 +2516,7 @@ brown clumps, and green slimes spread across the surface of the mire.  The
 air is thick with gigantic insects, and it is oppressively hot.  The swamp
 spreads west, south and east.
 ~
-0 0 3
+0 0 11
 D1
 ~
 ~
@@ -2537,7 +2537,7 @@ brown clumps, and green slimes spread across the surface of the mire.  The
 air is thick with gigantic insects, and it is oppressively hot.  The swamp
 spreads west, south and east; a tall cliff rises to the north.
 ~
-0 0 3
+0 0 11
 D0
 ~
 ~
@@ -2561,7 +2561,7 @@ Thick, putrid filth rises almost to your waist, the smell of rot
 overwhelming in this horrible quagmire.  The mire spreads to the west and
 south, while steep cliffs rise north and east of here.
 ~
-0 0 3
+0 0 11
 D0
 ~
 ~
@@ -2602,7 +2602,7 @@ twisted roots making it difficult to move quickly.  Rotting mangrove fruits
 fill the air with a sickly sweet odour that makes you feel ill.  The
 vegetation is so dense that you can only return south into the swamp.
 ~
-0 0 3
+0 0 11
 D2
 ~
 ~
