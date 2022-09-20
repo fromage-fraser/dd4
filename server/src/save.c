@@ -345,6 +345,7 @@ void fwrite_obj (CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest)
         fprintf(fp, "EgoFlags     %d\n",        obj->ego_flags              );
         fprintf(fp, "WearLoc      %d\n",        obj->wear_loc               );
         fprintf(fp, "ItemType     %d\n",        obj->item_type              );
+        fprintf(fp, "Identified   %d\n",        obj->identified             );
         fprintf(fp, "Weight       %d\n",        obj->weight                 );
         fprintf(fp, "Level        %d\n",        obj->level                  );
         fprintf(fp, "Timer        %d\n",        obj->timer                  );
@@ -1172,6 +1173,7 @@ void fread_obj (CHAR_DATA *ch, FILE *fp)
 
                     case 'I':
                         KEY("ItemType", obj->item_type, fread_number( fp, &stat ));
+                        KEY("Identified", obj->identified, fread_number( fp, &stat));
                         break;
 
                     case 'L':
