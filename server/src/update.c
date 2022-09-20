@@ -495,6 +495,40 @@ int hit_gain( CHAR_DATA *ch )
                 gain *= count;
         }
 
+        /* Small terrain healing bonuses for various classes and races --Owl 20/9/22 */
+
+        if ( ch->sub_class == SUB_CLASS_WITCH
+        &&   ( ch->in_room->sector_type == SECT_SWAMP
+          ||   ch->in_room->sector_type == SECT_FOREST ) )
+        {
+                gain += ( get_curr_con(ch) / 3 );
+        }
+
+        if ( ch->sub_class == CLASS_RANGER
+        &&   ( ch->in_room->sector_type == SECT_HILLS
+          ||   ch->in_room->sector_type == SECT_FOREST ) )
+        {
+                gain += ( get_curr_con(ch) / 3 );
+        }
+
+        if ( ( ch->race == RACE_HUMAN           && ch->in_room->sector_type == SECT_CITY )
+          || ( ch->race == RACE_FAE             && ch->in_room->sector_type == SECT_AIR )
+          || ( ch->race == RACE_WILD_ELF        && ch->in_room->sector_type == SECT_FOREST )
+          || ( ch->race == RACE_SATYR           && ch->in_room->sector_type == SECT_FOREST )
+          || ( ch->race == RACE_HALF_DRAGON     && ch->in_room->sector_type == SECT_MOUNTAIN )
+          || ( ch->race == RACE_DWARF           && ch->in_room->sector_type == SECT_MOUNTAIN )
+          || ( ch->race == RACE_OGRE            && ch->in_room->sector_type == SECT_HILLS )
+          || ( ch->race == RACE_HALFLING        && ch->in_room->sector_type == SECT_FIELD )
+          || ( ch->race == RACE_DWARF           && ch->in_room->sector_type == SECT_MOUNTAIN )
+          || ( ch->race == RACE_TROLL           && ch->in_room->sector_type == SECT_SWAMP )
+          || ( ch->race == RACE_YUAN_TI         && ch->in_room->sector_type == SECT_DESERT )
+          || ( ch->race == RACE_DUERGAR         && ch->in_room->sector_type == SECT_MOUNTAIN ) )
+        {
+                gain += ( get_curr_con(ch) / 4 );
+        }
+
+
+
         if (ch->sub_class == SUB_CLASS_VAMPIRE
             && IS_OUTSIDE(ch)
             && !IS_SET(ch->in_room->room_flags, ROOM_DARK)
@@ -511,14 +545,16 @@ int hit_gain( CHAR_DATA *ch )
                         gain = ch->hit -1;
         }
 
-        /* Being in watery rooms rehydrates Sahuagin & Grung */
+        /* Being in watery rooms rehydrates and somewhat speeds healing for Sahuagin & Grung */
 
         if ( ( ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG )
         && (  ( ch->in_room->sector_type == SECT_UNDERWATER )
            || ( ch->in_room->sector_type == SECT_WATER_SWIM )
+           || ( ch->in_room->sector_type == SECT_SWAMP )
            || ( ch->in_room->sector_type == SECT_WATER_NOSWIM ) ) )
         {
                 ch->pcdata->condition[COND_THIRST] = 48;
+                gain += ( get_curr_con(ch) / 4 );
         }
 
         /*
@@ -548,7 +584,7 @@ int hit_gain( CHAR_DATA *ch )
                 /*
                  *  Anti-swim (?); Owl 14/7/22
                  *
-                 *  Strip the swim skill and affect for PCs when they're not in 'wet' rooms.  Leaves
+                 *  Strip the swim skill and affect for PCs when they're not in 'deep water' rooms.  Leaves
                  *  shifter snake form unaffected.
                  */
 
@@ -702,6 +738,7 @@ int hit_gain( CHAR_DATA *ch )
                                 {
                                         if ( ch->in_room->sector_type == SECT_WATER_NOSWIM
                                         ||   ch->in_room->sector_type == SECT_WATER_SWIM
+                                        ||   ch->in_room->sector_type == SECT_SWAMP
                                         ||   ch->in_room->sector_type == SECT_UNDERWATER )
                                         {
                                                 send_to_char("{BYou splashdown into water!{x\n\r", ch);
@@ -1688,9 +1725,9 @@ void char_update( void )
 
                                         if( paf->bitvector == AFF_DOT )
                                         {
-                                                damage(ch, ch, paf->modifier, paf->type, FALSE); 
+                                                damage(ch, ch, paf->modifier, paf->type, FALSE);
                                         }
-                                }       
+                                }
                         }
 
                         /* Drowning? */

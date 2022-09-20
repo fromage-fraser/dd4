@@ -2821,7 +2821,7 @@ char *affect_bit_name (unsigned long int vector)
         if ( vector & AFF_DOT           ) return "DOT";
         if ( vector & AFF_DAZED         ) return "dazed";
         if ( vector & AFF_PRONE         ) return "prone";
-        
+
 
         return "none";
 }
@@ -3097,6 +3097,7 @@ char* sector_name (int sector_num)
         if (sector_num == SECT_UNDERWATER)      return "underwater";
         if (sector_num == SECT_AIR)             return "air";
         if (sector_num == SECT_DESERT)          return "desert";
+        if (sector_num == SECT_SWAMP)           return "swamp";
         if (sector_num == SECT_MAX)             return "max";
 
         return "NO SECTOR NUM";

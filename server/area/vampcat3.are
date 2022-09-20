@@ -3445,7 +3445,7 @@ You stand at the foot of a steep slope, waist-deep in mud. Northward the
 mud turns into a foul-smelling bog and collects at the foot of the narrow
 ravine. It appears to end at a sheer rock face.
 ~
-0 1|8|8192 6
+0 1|8|8192 11
 D0
 ~
 ~
@@ -3466,7 +3466,7 @@ outlet pumping a steady stream of effluent into the bog in which you now float.
 The stoney hill ranges join together far above you, barring movement in all
 directions but south.
 ~
-0 1|8|8192 6
+0 1|8|8192 11
 D2
 ~
 ~
