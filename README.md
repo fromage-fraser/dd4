@@ -5,7 +5,7 @@ It has been significantly customised, with many original game mechanics and area
 
 🐉 &ensp; _DD4_ is currently hosted in New Zealand and can be accessed at **dd4.webredirect.org** on port **8888**.
 
-🐲 &ensp; Visit [smihilist.com/dd4/web/](https://smihilist.com/dd4/web/) for more information!
+🐲 &ensp; Visit [www.dragons-domain.org](https://www.dragons-domain.org/) for more information!
 
 The codebase is ancient, but can be built and run fairly easily with Docker (see below).
 

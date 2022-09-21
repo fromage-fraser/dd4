@@ -1002,10 +1002,10 @@ bool read_from_descriptor (DESCRIPTOR_DATA *d)
         if (d->incomm[0] != '\0')
                 return TRUE;
 
-        /* Check for overflow. 
+        /* Check for overflow.
         iStart = strlen(d->inbuf);
         if ( iStart >= sizeof(d->inbuf) - 10 ) */
-        
+
         /* Check for overflow. */
         iStart = 0;
         if ( strlen(d->inbuf) >= sizeof(d->inbuf) - 10 )
@@ -1074,7 +1074,7 @@ bool read_from_descriptor (DESCRIPTOR_DATA *d)
         read_buf[iStart] = '\0';
         ProtocolInput( d, read_buf, iStart, d->inbuf );
         return TRUE;
-        
+
 }
 
 
@@ -1272,7 +1272,7 @@ bool process_output (DESCRIPTOR_DATA *d, bool fPrompt)
                                 bust_a_prompt(d);
 
         		if ( !d->pProtocol->bSGA )			/* <- GCMP */
-			        write_to_buffer( d, GoAheadStr, 0 );	
+			        write_to_buffer( d, GoAheadStr, 0 );
 
                         if (IS_SET(ch->act, PLR_TELNET_GA))
                                 write_to_buffer(d, go_ahead_str, 0);
@@ -1960,7 +1960,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         return;
                 }
 
-                 /*write_to_buffer(d, echo_on_str, 0); */ 
+                 /*write_to_buffer(d, echo_on_str, 0); */
                  ProtocolNoEcho( d, false );
                 write_to_buffer(d, "Do you want to enable colour? [y/n] ",0);
                 d->connected = CON_CHECK_ANSI;
@@ -2253,6 +2253,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 send_to_char("\n\r{WCharacter generation complete.{x\n\r\n\r"
                              "You are now ready to enter the Dragons Domain and begin your training!\n\r\n\r", ch);
                 SET_BIT(ch->act, PLR_AUTOLEVEL);
+                SET_BIT(ch->act, PLR_TELNET_GA);
                 ch->pcdata->pagelen = 100;
                 d->connected = CON_READ_MOTD;
                 break;

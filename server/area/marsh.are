@@ -299,7 +299,7 @@ skies above the murky marsh, leaving the path before you dark and sinister.
 You see some disturbances in the marsh, but after a few strangled screams,
 the sounds stop.
 ~
-83 0 5
+83 0 11
 D0
 ~
 ~
@@ -322,7 +322,7 @@ trees it is one.  Occasionally you see a whole humanoid form floating face down
 in the water, but mostly you only find pieces.  You hear a loud bellow in the
 distance and feel fear creep into your heart.
 ~
-83 1 5
+83 1 11
 D1
 Eastward is the thick bog of ooze...
 ~
@@ -374,7 +374,7 @@ beasts flap over you and send chilling glares your way.  You feel out
 of place, and feel that the occupants of this realm will soon
 have you for a feast.
 ~
-83 1 5
+83 1 11
 D1
 Eastward lies a horde of disgusting looking monsters.
 ~
@@ -395,7 +395,7 @@ An Oozing Bog~
 The ground here is soft and oozing.  You feel slimy water seeping into your
 boots.  Better stop and check for leeches when you get out of here.
 ~
-83 1 5
+83 1 11
 D3
 You see a large tree limb that looks easily moved.
 ~
@@ -411,7 +411,7 @@ Swamp Thing's Lair~
 A horrible swamp thing resides here.  Mutilated corpses fill the air with
 the overwhelming stench of putrid flesh.
 ~
-83 1 6
+83 1 11
 D3
 A pool of quick sand lies to the west.
 ~
@@ -429,7 +429,7 @@ You stand by a large oozing pool of quick sand.  Luckily only a complete
 klutz could not avoid it.  Dancing lights fly about you and one seems to
 be taunting you towards the pool.
 ~
-83 1 6
+83 1 11
 D1
 The swamp thing's lair.
 ~
@@ -488,7 +488,7 @@ a huge patch of vegetation.  You sense an evil presence and notice
 a beast flying overhead to the south east, towards what looks to be a
 huge fortress, half buried in the marsh.
 ~
-83 1 6
+83 1 11
 D0
 To the north a hill protrudes from the marshes.
 ~
@@ -589,7 +589,7 @@ A murky bog surrounds you.  To the east a black monolith juts forth from the
 ground.  Far to the north lies a huge pool of quicksand.  Snarls can be heard
 echoing as if from a great distance.
 ~
-83 1 5
+83 1 11
 D0
 To the north lies a huge pool of quicksand.
 ~

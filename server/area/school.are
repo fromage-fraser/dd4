@@ -819,10 +819,10 @@ You are beginning to be pulled towards the planet far below.
 
 {WGetting Help{x
 
-The Dragons Domain has a website posted at <<{Bhttps://smihilist.com/dd4/web/{x>:
+The Dragons Domain has a website posted at <<{Bhttps://www.dragons-domain.org/{x>:
 you are encouraged to check it out!  If this is the first time you have visited
 the Domain, you should also read the `Frequently Asked Questions' at
-<{Bhttps://smihilist.com/dd4/web/main/faq/dd-faq.html{x>.
+<{Bhttps://www.dragons-domain.org/main/faq/dd-faq.html{x>.
 
 Help is available online by using the HELP command.  If online help
 cannot answer your question, try reading the FAQ.  Also read HELP NEWBIE.
@@ -849,7 +849,7 @@ can support ANSI colour, enter the command COLOR to toggle colour on or
 off.  Enter the command AUTO to bring up a list of options.  Your prompt
 can also be changed using the PROMPT command.
 
-Enter `HELP ANSI', `HELP ANSI2', `HELP ANSI3', `HELP AUTO' and 
+Enter `HELP ANSI', `HELP ANSI2', `HELP ANSI3', `HELP AUTO' and
 `HELP PROMPT' for more information.
 
 You fly DOWN towards a vast, forested continent.
@@ -1457,7 +1457,7 @@ E
 imp~
 The Imp tells you "Kill the gladiator and loot his corpse.  He has three
 important pieces of equipment: a Mud School diploma, which has magical
-effects if you hold it in your hand, a snowy white stone which provides 
+effects if you hold it in your hand, a snowy white stone which provides
 wisdom while floating by your head, and a large key.  Use the key to
 unlock the northern door: enter `UNLOCK NORTH'.  After that, leave north
 to the next room."
@@ -1565,8 +1565,8 @@ E
 imp~
 The Imp says "If you have just come back from training for the first
 time, then you should head east to see the Loremaster to use your
-initial practices to learn your first set of skills and spells.  Then 
-you can return here and head south to practice your combat skills until 
+initial practices to learn your first set of skills and spells.  Then
+you can return here and head south to practice your combat skills until
 you raise a level.  Once you have levelled, you'll be able to SAVE.
 
 "If you head down and north, you can rest at the Altar of the Temple,

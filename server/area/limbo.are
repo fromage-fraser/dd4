@@ -30,7 +30,7 @@ confuses your senses and disorientates you.
 ~
 >rand_prog 20~
 if rand(20)
-say See https://smihilist.com/dd4/web/main/faq/dd-faq.html for A's to all your Q's.
+say See https://www.dragons-domain.org/main/faq/dd-faq.html for A's to all your Q's.
 else
 if rand(10)
 say No, I'm not THAT Puff. Stupid "magic dragon"...

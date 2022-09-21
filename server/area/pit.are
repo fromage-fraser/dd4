@@ -1076,7 +1076,7 @@ to overflow mud into the area thus creating the bogginess. To the west is the
 tower on the island but you can see no way of getting there.  To the south you
 see a large tree growing out of the bog.
 ~
-0 8|1024|8192 10
+0 8|1024|8192 11
 D1
 ~
 ~
@@ -1098,7 +1098,7 @@ the cold water, you feel something slither past your leg.  To the west
 you see the tower in the centre.  Above you the spikes on the wall
 prevent you from entertaining any ideas of escape.
 ~
-0 8|1024|8192 10
+0 8|1024|8192 11
 D2
 ~
 ~
@@ -1115,7 +1115,7 @@ around the entire wall making escape impossible.  To the west is a lone
 tower on an island and to the south you see a large tree growing out of
 the swamp.
 ~
-0 8|1024|8192 10
+0 8|1024|8192 11
 D0
 ~
 ~
@@ -1140,7 +1140,7 @@ this fetid, smelly swamp.  Above you, the wall has spikes protruding from it
 to prevent escape.  To the west, you see a tower on an island and to
 the south west is a large knotty tree.
 ~
-0 8|1024|8192 10
+0 8|1024|8192 11
 D0
 ~
 ~
@@ -1157,7 +1157,7 @@ sticky mire that impedes your progress quite considerably.  To the west, past th
 moat, a tower stands on an island.  To the south of you is a huge, knotty tree
 growing next to a steep, muddy bank.
 ~
-0 8|1024|8192 10
+0 8|1024|8192 11
 D0
 ~
 ~
@@ -1177,7 +1177,7 @@ The moat here overflows into the bog creating a dirty mire.  Progress through he
 is slow and tiresome going.  To the south you see a huge tree and to the west is a
 lone tower standing upon an island across the moat.  To the east is a portcullis.
 ~
-0 8|1024|8192 10
+0 8|1024|8192 11
 D0
 ~
 ~
@@ -1197,7 +1197,7 @@ A steep, muddy and treacherous-looking bank reaches up to the wooded area above 
 However, a huge, knotted oak stands here, it's branches reaching over and above the
 top of the bank. The tree looks the better option.
 ~
-0 4|8|1024|8192 4
+0 4|8|1024|8192 11
 D0
 ~
 ~
