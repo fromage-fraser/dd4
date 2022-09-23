@@ -228,6 +228,7 @@ int     gsn_log;
 int     gsn_memory;
 int     gsn_mfind;
 int     gsn_mload;
+int     gsn_mnstat;
 int     gsn_mset;
 int     gsn_oclanitem;
 int     gsn_mstat;
@@ -774,7 +775,7 @@ int             mprog_name_to_type      (char* name);
 MPROG_DATA *    mprog_file_read         (char* f, MPROG_DATA* mprg, MOB_INDEX_DATA *pMobIndex);
 void            load_mobprogs           (FILE *fp);
 void            mprog_read_programs     (FILE *fp, MOB_INDEX_DATA *pMobIndex);
-
+void            load_mob_spec           (FILE *fp, MOB_INDEX_DATA *pMobIndex);
 
 /*
  * Memory management.
@@ -1602,6 +1603,76 @@ void load_area_special (FILE *fp)
         }
 }
 
+int mob_lookup( const char *name )
+{
+        int sn;
+        char buf2[100];
+        for ( sn = 0; sn < MAX_MOB; sn++ )
+        {
+                if ( !mob_table[sn].name )
+                        break;
+
+                if ( !str_cmp(name, mob_table[sn].name))
+                {
+                        sprintf(buf2, "[*****] BUG: Mob Lookup: %s: %s, %d",
+                        name, mob_table[sn].name, sn);
+                        log_string (buf2);
+                        return sn;
+                }
+        }
+
+        return -1;
+}
+
+
+/*
+ *  Load the mob_spec
+ */
+void load_mob_spec (FILE *fp, MOB_INDEX_DATA *pMobIndex)
+{
+        int ms;
+        char letter;
+        char *buf;
+        char buf2[100];
+        buf2[0] = '\0';     
+
+        letter = fread_letter( fp );
+
+        while (letter == '<')
+        {
+                buf = fread_word(fp);
+                ms = mob_lookup(buf);
+
+                if (ms < 0)
+                {
+                        sprintf(buf2, "[*****] BUG: Fread_mob_spec: unknown spec: mob vnum %d: %s",
+                                pMobIndex->vnum, buf);
+                        log_string (buf2);
+                }
+                else                     
+                {
+                        pMobIndex->mobspec = buf;
+                        /* pMobIndex2 = get_mob_index( atoi(  ) )  */
+                        sprintf(buf2, "[*****] INFO: load_mob_spec: vnum %d ms: %d buf: %s mobpspec %s",
+                        pMobIndex->vnum, ms, buf, pMobIndex->mobspec);
+                        log_string (buf2);
+                }
+                letter = fread_letter( fp );
+                sprintf(buf2, "[*****] INFO: load_mob_spec: vnum %d ms: %d buf: %s mobpspec %s",
+                        pMobIndex->vnum, ms, buf, pMobIndex->mobspec);
+                        log_string (buf2);
+        }
+        sprintf(buf2, "[*****] INFO: load_mob_spec: vnum %d  mobpspec %s",
+        pMobIndex->vnum,   pMobIndex->mobspec);
+        log_string (buf2);
+        
+        ungetc( letter, fp );
+        
+        sprintf(buf2, "[*****] INFO: load_mob_spec: vnum %d  mobpspec %s",
+        pMobIndex->vnum, pMobIndex->mobspec);
+        log_string (buf2);
+}
+
 
 /*
  *  Load the teachers skills
@@ -1650,7 +1721,7 @@ void load_mobiles( FILE *fp )
 {
         MOB_INDEX_DATA *pMobIndex;
         char buf[MAX_STRING_LENGTH];
-
+        char buf2[100];
         for ( ; ; )
         {
                 char letter;
@@ -1733,6 +1804,7 @@ void load_mobiles( FILE *fp )
                         exit( 1 );
                 }
 
+
                 /* This is for mob-programs - Brutus */
 
                 letter = fread_letter( fp );
@@ -1744,8 +1816,21 @@ void load_mobiles( FILE *fp )
                 else
                         ungetc( letter, fp );
 
-                /* this is for teachers...... :)  geoff */
+                pMobIndex->mobspec = NULL;
+                /* This is for a mob_spec */
+                letter = fread_letter( fp );
+                if ( letter == '<' )
+                {
+                        ungetc( letter, fp );
+                        load_mob_spec(fp,pMobIndex);
+                        sprintf(buf2, "[*****] INFO: Read Mob_spec %d %s ",
+                                vnum, pMobIndex->mobspec);
+                        log_string (buf2);
+                }
+                else
+                        ungetc( letter, fp );
 
+                /* this is for teachers...... :)  geoff */
                 pMobIndex->skills = NULL;
 
                 letter = fread_letter( fp );
@@ -3105,7 +3190,7 @@ void reset_area( AREA_DATA *pArea )
 CHAR_DATA *create_mobile( MOB_INDEX_DATA *pMobIndex )
 {
         CHAR_DATA *mob;
-
+        char buf2[100];
         if ( !pMobIndex )
         {
                 bug( "Create_mobile: NULL pMobIndex.", 0 );
@@ -3138,7 +3223,10 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA *pMobIndex )
         mob->alignment          = pMobIndex->alignment;
         mob->sex                = pMobIndex->sex;
         mob->body_form          = pMobIndex->body_form;
-
+        mob->mobspec            = pMobIndex->mobspec;
+                /*       sprintf(buf2, "[*****] INFO: create_mob %s %s ",
+                                mob->name, mob->mobspec);
+                        log_string (buf2); */
         mob->armor              = interpolate( mob->level, 100, -100 );
 
         mob->max_hit = mob->level * 8

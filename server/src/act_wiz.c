@@ -1907,6 +1907,53 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         }
                 }
 
+                if ( victim->mobspec )
+                {
+                        int sn;
+                        int spec;   
+                        sprintf( buf, "mobspec:%s %s\n\r",
+                                        victim->mobspec, victim->pIndexData->mobspec);
+                                        strcat( buf1, buf );           
+
+                        for ( sn = 0; sn < MAX_MOB; sn++ )
+                        {
+                                if ( !mob_table[sn].name )
+                                        break;
+                                        
+                                sprintf( buf, "Name: %s sn: %d mobspec:%s\n\r",
+                                        mob_table[sn].name, sn, victim->mobspec);
+                                        strcat( buf1, buf );
+                                if ( !str_cmp(victim->mobspec, mob_table[sn].name))
+                                {
+                                        strcat(buf, "{WThe Mobs Specification:{x\n\r");
+                                        strcat( buf1, buf );
+                                
+                                        sprintf( buf, "Name: %s Species: %s\n\r",
+                                        mob_table[sn].name, mob_table[sn].species);
+                                        strcat( buf1, buf );
+                                        sprintf( buf, "resists: %d Vulnerable: %d Immunes: %d\n\r",
+                                        mob_table[sn].resists, mob_table[sn].vulnerabilities, mob_table[sn].immunes);
+                                        strcat( buf1, buf );
+                                        sprintf( buf, "HP Mod: %d Dam Mod: %d Crit Mod: %d Haste Mod: %d\n\r",
+                                        mob_table[sn].hp_mod, mob_table[sn].dam_mod, mob_table[sn].crit_mod, mob_table[sn].haste_mod);
+                                        strcat( buf1, buf );
+                                        sprintf( buf, "Height: %d Weight: %d Size: %d\n\r",
+                                        mob_table[sn].height, mob_table[sn].weight, mob_table[sn].size);
+                                        strcat( buf1, buf );
+                                        sprintf( buf, "Body Parts: %d Attack PArts: %d Lang: %d\n\r",
+                                        mob_table[sn].body_parts, mob_table[sn].attack_parts, mob_table[sn].language);
+                                        strcat( buf1, buf );
+                                        sprintf( buf, "Spec_1: %s Spec_2: %s Spec_3: %s\n\r",
+                                        mob_table[sn].spec_fun1, mob_table[sn].spec_fun2, mob_table[sn].spec_boss);
+                                        strcat( buf1, buf );
+                                }
+                        }
+
+
+
+                }
+
+
         }
 
         send_to_char( buf1, ch );
@@ -2523,6 +2570,51 @@ void do_return( CHAR_DATA *ch, char *argument )
         return;
 }
 
+void do_mnstat( CHAR_DATA *ch, char *argument )
+{
+        CHAR_DATA      *rch;
+        MOB_INDEX_DATA *pMobIndex;
+                char       buf  [ MAX_STRING_LENGTH ];
+        char       buf1 [ MAX_STRING_LENGTH ];
+        char            arg [ MAX_INPUT_LENGTH ];
+
+        rch = get_char( ch );
+
+        buf[0] = '\0';
+        buf1[0] = '\0';
+
+        if ( !authorized( rch, gsn_mload ) )
+                return;
+
+        one_argument( argument, arg );
+
+        if ( arg[0] == '\0' || !is_number( arg ) )
+        {
+                send_to_char( "Syntax: mmstat <<vnum>.\n\r", ch );
+                return;
+        }
+
+        if ( !( pMobIndex = get_mob_index( atoi( arg ) ) ) )
+        {
+                send_to_char( "No mob has that vnum.\n\r", ch );
+                return;
+        }
+
+        sprintf( buf, "Vnum: {R%d{x\n\r", pMobIndex->vnum);
+        strcat( buf1, buf );
+
+                if ( pMobIndex->short_descr[0] != '\0'
+                &&   pMobIndex->long_descr[0]  != '\0' )
+                {
+                        sprintf( buf, "Short description: {W%s{x\n\rMobspec: {W%s{x\n\rLong description: \n\r  {W%s{x",
+                                pMobIndex->short_descr,
+                                pMobIndex->mobspec,
+                                pMobIndex->long_descr );
+                        strcat( buf1, buf );
+                }
+        send_to_char( buf1, ch );
+        return;
+}
 
 void do_mload( CHAR_DATA *ch, char *argument )
 {

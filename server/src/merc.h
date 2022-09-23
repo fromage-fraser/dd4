@@ -153,6 +153,7 @@ typedef struct extra_descr_data                 EXTRA_DESCR_DATA;
 typedef struct help_data                        HELP_DATA;
 typedef struct kill_data                        KILL_DATA;
 typedef struct learned_data                     LEARNED_DATA;
+typedef struct mob_spec_data                    MOB_SPEC_DATA;
 typedef struct mob_index_data                   MOB_INDEX_DATA;
 typedef struct note_data                        NOTE_DATA;
 typedef struct obj_data                         OBJ_DATA;
@@ -2516,10 +2517,12 @@ struct  mob_index_data
         MPROG_DATA *            mobprogs;
         LEARNED_DATA *          skills;         /* used by practisers only */
 
+      
         char *                  player_name;
         char *                  short_descr;
         char *                  long_descr;
         char *                  description;
+        char *                  mobspec;        /* MB SPEC data */
         int                     vnum;
         int                     count;
         int                     killed;
@@ -2564,6 +2567,7 @@ struct char_data
         char *                  long_descr;
         char *                  description;
         char *                  prompt;
+        char *                  mobspec;        /* MOB SPEC data  */
         int                     sex;
         int                     class;
         int                     sub_class;
@@ -2976,6 +2980,99 @@ struct skill_type
         char *          msg_off;                        /* Wear off message */
 };
 
+/*
+ * Body parts
+ */
+#define PART_HEAD		  BIT_0
+#define PART_MANY_HEAD            BIT_1
+#define PART_ARMS		  BIT_2
+#define PART_MANY_ARMS		  BIT_3
+#define PART_LEGS		  BIT_4
+#define PART_2_LEGS		  BIT_5
+#define PART_4_LEGS		  BIT_6
+#define PART_MANY_LEGS		  BIT_7
+#define PART_HEART		  BIT_8
+#define PART_BRAINS		  BIT_9
+#define PART_GUTS		  BIT_10
+#define PART_HANDS		  BIT_11
+#define PART_FEET		  BIT_12
+#define PART_FINGERS		  BIT_13
+#define PART_EAR		  BIT_14
+#define PART_EYE		  BIT_15
+#define PART_LONG_TONGUE	  BIT_16
+#define PART_EYESTALKS		  BIT_17
+#define PART_TENTACLES		  BIT_18
+#define PART_FINS		  BIT_19
+#define PART_WINGS		  BIT_20
+#define PART_TAIL		  BIT_21
+#define PART_SCALES		  BIT_22
+/* for combat */
+#define PART_CLAWS		  BIT_23
+#define PART_FANGS		  BIT_24
+#define PART_HORNS		  BIT_25
+#define PART_TUSKS		  BIT_26
+#define PART_TAILATTACK		  BIT_27
+#define PART_SHARPSCALES	  BIT_28
+#define PART_BEAK		  BIT_29
+#define PART_HAUNCH		  BIT_30
+#define PART_HOOVES		  BIT_31
+#define PART_PAWS		  BIT_32
+#define PART_FORELEGS		  BIT_33
+#define PART_FEATHERS		  BIT_34
+#define PART_HUSK_SHELL		  BIT_35
+
+/*
+ * Resistant Immune Susceptible flags
+ */
+#define RIS_FIRE		  BIT_0
+#define RIS_COLD		  BIT_1
+#define RIS_ELECTRICITY		  BIT_2
+#define RIS_ENERGY		  BIT_3
+#define RIS_BLUNT		  BIT_4
+#define RIS_PIERCE		  BIT_5
+#define RIS_SLASH		  BIT_6
+#define RIS_ACID		  BIT_7
+#define RIS_POISON		  BIT_8
+#define RIS_DRAIN		  BIT_9
+#define RIS_SLEEP		  BIT_10
+#define RIS_CHARM		  BIT_11
+#define RIS_HOLD		  BIT_12
+#define RIS_NONMAGIC		  BIT_13
+#define RIS_MAGIC		  BIT_14
+#define RIS_PARALYSIS		  BIT_15
+
+#define MAX_MOB 2
+
+/* lmob_spec_data Brutus */
+struct  mob_spec_data
+{
+        char * learned;
+};
+
+struct mob_type
+{
+  char *name;                   /* name of spec e.g. fire_elemental */
+  char *species;                /* species e.g. elemental */
+  char *icon_m;                 /* Male Icon name */
+  char *icon_f;                 /* Femail icon name */
+  int resists;                  /* lists of resists */
+  int vulnerabilities;          /* vulberable to */
+  int immunes;                  /* immune to */
+  int hp_mod;                   /* hp modifier ( in %) */
+  int dam_mod;                  /* dam modifier ( in %) */
+  int crit_mod;                 /* crit modifier ( in %) */
+  int haste_mod;                /* haste modifier ( in %) */
+  int height;   
+  int weight;
+  int size;
+  int body_parts;               /* body parts they have */
+  int attack_parts;             /* body parts race attacks with */
+  int language;                 /* future use */
+  char   *spec_fun1;            /* a attack spec */
+  char   *spec_fun2;            /* a 2nd attack spec */
+  char   *spec_boss;            /* a 3rd/boss attack spec */
+};
+
 
 /* class basic gsn's */
 extern int gsn_mage_base;
@@ -3164,6 +3261,7 @@ extern int gsn_log;
 extern int gsn_memory;
 extern int gsn_mfind;
 extern int gsn_mload;
+extern int gsn_mnstat;
 extern int gsn_oclanitem;
 extern int gsn_mset;
 extern int gsn_mstat;
@@ -3746,6 +3844,7 @@ extern const    struct blueprint_type           blueprint_list                  
 extern const    struct set_type                 set_list                        [ MAX_SETS ];
 /* extern const    struct raw_mats_data            raw_mats_table                  [ RAW_MATS_MAX ]; */
 extern const    struct skill_type               skill_table                     [ MAX_SKILL ];
+extern const    struct mob_type                 mob_table                       [ MAX_MOB ];
 extern const    struct social_type              social_table                    [ ];
 extern const    struct pattern_points           pattern_list                    [ MAX_PATTERN ];
 extern const    struct soar_points              soar_list                       [ MAX_SOAR ];
@@ -3995,6 +4094,7 @@ DECLARE_DO_FUN( do_meditate                     );
 DECLARE_DO_FUN( do_memory                       );
 DECLARE_DO_FUN( do_mfind                        );
 DECLARE_DO_FUN( do_mload                        );
+DECLARE_DO_FUN( do_mnstat                       );
 DECLARE_DO_FUN( do_morph                        );      /* for changing forms - geoff */
 DECLARE_DO_FUN( do_mount                        );      /* mounting mobs for riding */
 DECLARE_DO_FUN( do_dismount                     );

@@ -406,6 +406,7 @@ const struct cmd_type cmd_table [] =
         { "echo",       do_echo,        POS_DEAD,    L_JUN,  LOG_ALWAYS },
         { "memory",     do_memory,      POS_DEAD,    L_JUN,  LOG_NORMAL },
         { "mload",      do_mload,       POS_DEAD,    L_JUN,  LOG_ALWAYS },
+        { "mnstat",     do_mnstat,      POS_DEAD,    L_JUN,  LOG_ALWAYS },
         { "newlock",    do_newlock,     POS_DEAD,    L_JUN,  LOG_ALWAYS },
         { "peace",      do_peace,       POS_DEAD,    L_JUN,  LOG_NORMAL },
         { "reboo",      do_reboo,       POS_DEAD,    L_JUN,  LOG_NORMAL },
