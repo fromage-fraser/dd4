@@ -445,12 +445,12 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                                         act("$n pulse with $p.", ch, pulse, NULL, TO_ROOM);
                                 }
                                 obj_cast_spell(pulse->value[3], pulse->value[0], ch, victim, pulse);
-                        }
-                        if (--pulse->value[2] <= 0)
-                        {
-                                act("Your $p explodes into fragments.", ch, pulse, NULL, TO_CHAR);
-                                act("$n's $p explodes into fragments.", ch, pulse, NULL, TO_ROOM);
-                                extract_obj(pulse);
+                                if (--pulse->value[2] <= 0)
+                                {
+                                        act("Your $p explodes into fragments.", ch, pulse, NULL, TO_CHAR);
+                                        act("$n's $p explodes into fragments.", ch, pulse, NULL, TO_ROOM);
+                                        extract_obj(pulse);
+                                }
                         }
                 }
         }
