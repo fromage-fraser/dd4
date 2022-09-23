@@ -1305,14 +1305,22 @@ void do_exits( CHAR_DATA *ch, char *argument )
         {
                 if ( ( pexit = ch->in_room->exit[door] )
                     && pexit->to_room
-                    && !IS_SET( pexit->exit_info, EX_CLOSED )
                     &&  !IS_SET( pexit->exit_info, EX_SECRET ))
                 {
                         found = TRUE;
                         if ( fAuto )
                         {
-                                strcat( buf, " " );
-                                strcat( buf, directions[door].name );
+                                if (IS_SET( pexit->exit_info, EX_CLOSED ))
+                                {
+                                        strcat( buf, " (" );
+                                        strcat( buf, directions[door].name );
+                                        strcat( buf, ")" );
+
+                                }
+                                else {
+                                        strcat( buf, " " );
+                                        strcat( buf, directions[door].name );
+                                }
                         }
                         else
                         {
