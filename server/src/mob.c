@@ -37,6 +37,17 @@ const struct mob_type mob_table [MAX_MOB] =
     * if the current order gets screwed up.
     */
   {
+          "reserved", "reserved", "icon1", "icon2",
+          0, 0, 0, 
+          0, 0, 0, 0, 
+          0, 0, 0,
+          0, 0, 0,
+          "NULL", 
+          "NULL", 
+          "NULL"
+  },
+
+  {
           "goat", "mammal", "icon1", "icon2",
           1, 1, 1, 
           20, 20, -10, -2, 

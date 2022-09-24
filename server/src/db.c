@@ -1817,21 +1817,75 @@ void load_mobiles( FILE *fp )
                         ungetc( letter, fp );
 
                 pMobIndex->mobspec = NULL;
+
                 /* This is for a mob_spec */
                 letter = fread_letter( fp );
                 if ( letter == '<' )
                 {
-                        ungetc( letter, fp );
-                        load_mob_spec(fp,pMobIndex);
-                        sprintf(buf2, "[*****] INFO: Read Mob_spec %d %s ",
-                                vnum, pMobIndex->mobspec);
-                        log_string (buf2);
+                        int ms;
+                        char *name;
+
+                                      sprintf(buf2, "[*****] INFO: Mob Lookup letter: %d", letter);
+                                        log_string (buf2);
+                       /* ungetc( letter, fp ); */
+                        name = fread_word(fp);       
+
+                        /* find the mob from index */
+                        for ( ms = 0; ms < MAX_MOB; ms++ )
+                        {
+                                if ( !mob_table[ms].name )
+                                        break;
+                                      sprintf(buf2, "[*****] INFO: Mob Lookup 4 loop: %s: %s, %d",
+                                        name, mob_table[ms].name, ms);
+                                        log_string (buf2);
+                                        
+                                if ( !str_cmp(name, mob_table[ms].name))
+                                {
+                                        
+                                        
+                                        sprintf(buf2, "[*****] BUG: Mob Lookup: %s: %s, %d",
+                                        name, mob_table[ms].name, ms);
+                                        log_string (buf2);
+
+
+                                        if (ms < 0)
+                                        {
+                                                sprintf(buf2, "[*****] BUG: Fread_mob_spec: unknown spec: mob vnum %d: %s",
+                                                        pMobIndex->vnum, name);
+                                                log_string (buf2);
+                                        }
+                                        else                     
+                                        {
+                                                pMobIndex->mobspec = name;
+                                                /* pMobIndex2 = get_mob_index( atoi(  ) )  */
+                                                sprintf(buf2, "[*****] INFO: load_mob_spec: vnum %d ms: %d name: %s mobpspec %s",
+                                                pMobIndex->vnum, ms, name, pMobIndex->mobspec);
+                                                log_string (buf2);
+                                        }
+                                        sprintf(buf2, "[*****] INFO: load_mob_spec: vnum %d ms: %d name: %s mobpspec %s",
+                                        pMobIndex->vnum, ms, name, pMobIndex->mobspec);
+                                        log_string (buf2);        
+                                }
+                        }
                 }
                 else
                         ungetc( letter, fp );
 
+                if (pMobIndex->vnum == 2700)
+                {
+                        sprintf(buf2, "[*****] INFO: load_mob_spec: vnum %d  mobpspec %s",
+                        pMobIndex->vnum, pMobIndex->mobspec);
+                        log_string (buf2);  
+                }
                 /* this is for teachers...... :)  geoff */
                 pMobIndex->skills = NULL;
+
+                if (pMobIndex->vnum == 2700)
+                {
+                        sprintf(buf2, "[*****] INFO: load_mob_spec: vnum %d  mobpspec %s",
+                        pMobIndex->vnum, pMobIndex->mobspec);
+                        log_string (buf2);  
+                } 
 
                 letter = fread_letter( fp );
                 if ( letter == '&' )
@@ -1860,6 +1914,13 @@ void load_mobiles( FILE *fp )
                                 vnum,
                                 pMobIndex->short_descr);
                         log_string(buf);
+                }
+                        
+                if (pMobIndex->vnum == 2700)
+                {
+                        sprintf(buf2, "[*****] INFO: load_mob_spec: vnum %d  mobpspec %s",
+                        pMobIndex->vnum, pMobIndex->mobspec);
+                        log_string (buf2);  
                 }
         }
 }
@@ -3224,9 +3285,12 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA *pMobIndex )
         mob->sex                = pMobIndex->sex;
         mob->body_form          = pMobIndex->body_form;
         mob->mobspec            = pMobIndex->mobspec;
-                /*       sprintf(buf2, "[*****] INFO: create_mob %s %s ",
-                                mob->name, mob->mobspec);
-                        log_string (buf2); */
+                
+                if (mob->pIndexData->vnum == 2700)
+                {       sprintf(buf2, "[*****] INFO: create_mob %s %s %s ",
+                                mob->name, mob->mobspec, pMobIndex->mobspec);
+                        log_string (buf2); 
+                }
         mob->armor              = interpolate( mob->level, 100, -100 );
 
         mob->max_hit = mob->level * 8

@@ -3041,7 +3041,7 @@ struct skill_type
 #define RIS_MAGIC		  BIT_14
 #define RIS_PARALYSIS		  BIT_15
 
-#define MAX_MOB 2
+#define MAX_MOB 3
 
 /* lmob_spec_data Brutus */
 struct  mob_spec_data
