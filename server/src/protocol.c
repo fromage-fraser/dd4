@@ -3129,10 +3129,10 @@ const struct gmcp_variable_struct GMCPVariableTable[GMCP_MAX+1] =
         { GMCP_ROOM_SECT,	GMCP_ROOM,		"sector",		GMCP_NUMBER	},
         { GMCP_ROOM_FLAGS,	GMCP_ROOM,		"flags",		GMCP_STRING	},
         { GMCP_ROOM_VNUM,	GMCP_ROOM,		"vnum",			GMCP_NUMBER	},
-        { GMCP_ROOM_EXITS,	GMCP_ROOM,		"exit",			GMCP_OBJECT	},
+        { GMCP_ROOM_EXITS,	GMCP_ROOM,		"exits",		GMCP_OBJECT	},
 
         { GMCP_MAX,			-1,		"",			GMCP_NUMBER	}
-        
+
 };
 
 /******************************************************************************
