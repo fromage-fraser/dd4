@@ -441,7 +441,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                                 }
                                 else
                                 {
-                                        act("You pulese  with $p.", ch, pulse, NULL, TO_CHAR);
+                                        act("You pulse  with $p.", ch, pulse, NULL, TO_CHAR);
                                         act("$n pulse with $p.", ch, pulse, NULL, TO_ROOM);
                                 }
                                 obj_cast_spell(pulse->value[3], pulse->value[0], ch, victim, pulse);
