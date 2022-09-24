@@ -903,6 +903,39 @@ int mana_gain( CHAR_DATA *ch )
                 gain = gain  * count;
         }
 
+        /* Small terrain mana healing bonuses for various classes and races --Owl 20/9/22 */
+
+        if ( ch->sub_class == SUB_CLASS_WITCH
+        &&   ( ch->in_room->sector_type == SECT_SWAMP
+          ||   ch->in_room->sector_type == SECT_FOREST ) )
+        {
+                gain += ( ( get_curr_int(ch) / 6 )  +  ( get_curr_wis(ch) / 6 ));
+        }
+
+        if ( ch->sub_class == CLASS_RANGER
+        &&   ( ch->in_room->sector_type == SECT_HILLS
+          ||   ch->in_room->sector_type == SECT_FOREST ) )
+        {
+                gain += ( ( get_curr_int(ch) / 6 )  +  ( get_curr_wis(ch) / 6 ));
+        }
+
+        if ( ( ch->race == RACE_HUMAN           && ch->in_room->sector_type == SECT_CITY )
+          || ( ch->race == RACE_FAE             && ch->in_room->sector_type == SECT_AIR )
+          || ( ch->race == RACE_WILD_ELF        && ch->in_room->sector_type == SECT_FOREST )
+          || ( ch->race == RACE_SATYR           && ch->in_room->sector_type == SECT_FOREST )
+          || ( ch->race == RACE_HALF_DRAGON     && ch->in_room->sector_type == SECT_MOUNTAIN )
+          || ( ch->race == RACE_DWARF           && ch->in_room->sector_type == SECT_MOUNTAIN )
+          || ( ch->race == RACE_OGRE            && ch->in_room->sector_type == SECT_HILLS )
+          || ( ch->race == RACE_HALFLING        && ch->in_room->sector_type == SECT_FIELD )
+          || ( ch->race == RACE_DWARF           && ch->in_room->sector_type == SECT_MOUNTAIN )
+          || ( ch->race == RACE_TROLL           && ch->in_room->sector_type == SECT_SWAMP )
+          || ( ch->race == RACE_YUAN_TI         && ch->in_room->sector_type == SECT_DESERT )
+          || ( ch->race == RACE_DUERGAR         && ch->in_room->sector_type == SECT_MOUNTAIN ) )
+        {
+                gain += ( ( get_curr_int(ch) / 8 )  +  ( get_curr_wis(ch) / 8 ));;
+        }
+
+
         if (is_affected(ch, gsn_song_of_rejuvenation))
         {
                 amt = ch->pcdata->learned[gsn_song_of_rejuvenation] * ch->level;
@@ -2868,7 +2901,7 @@ void gmcp_update( void )
                         UpdateGMCPString( d, GMCP_ROOM_NAME, d->character->in_room->name );
                         UpdateGMCPNumber( d, GMCP_ROOM_SECT, d->character->in_room->sector_type );
                         UpdateGMCPNumber( d, GMCP_ROOM_VNUM, d->character->in_room->vnum );
-                        UpdateGMCPNumber( d, GMCP_ROOM_FLAGS, d->character->in_room->room_flags );
+                        /* UpdateGMCPNumber( d, GMCP_ROOM_FLAGS, d->character->in_room->room_flags ); */
 
                         buf4[0] = '\0';
                         if (d->character->in_room->room_flags)
@@ -2887,19 +2920,18 @@ void gmcp_update( void )
                                 }
                         }
                         rSetcount = 0;
+
                         UpdateGMCPString( d, GMCP_ROOM_FLAGS, buf4 );
-                        buf4[0] = '\0';
 
-                        /* sprintf( buf, "%d", room->vnum ); */
+                        sprintf( buf, "%d", d->character->in_room->vnum );
 
-                        /*	if ( room && strcmp( buf, d->pProtocol->GMCPVariable[GMCP_ROOM_VNUM] ) )
+                        if ( room && !strcmp( buf, d->pProtocol->GMCPVariable[GMCP_ROOM_VNUM] ) )
                         {
                                 static const char *exit[] = { "n", "e", "s", "w", "u", "d" };
                                 int i;
-                                UpdateGMCPString( d, GMCP_AREA, d->character->in_room->area->name );
+                                /*UpdateGMCPString( d, GMCP_AREA, d->character->in_room->area->name );
                                 UpdateGMCPString( d, GMCP_ROOM_NAME, d->character->in_room->name );
-                                UpdateGMCPNumber( d, GMCP_ROOM_VNUM, d->character->in_room->vnum );
-
+                                UpdateGMCPNumber( d, GMCP_ROOM_VNUM, d->character->in_room->vnum );*/
                                 buf[0] = '\0';
                                 buf2[0] = '\0';
 
@@ -2912,20 +2944,21 @@ void gmcp_update( void )
                                         {
                                                 #ifndef COLOR_CODE_FIX
 
-                                                sprintf( buf, "\"%s\": \"%d\"", capitalize( directions[i].name ), exit->to_room->name );
+                                                sprintf( buf, "\"%s\": \"%d\"", exit[i], room->exit[i]->to_room->vnum);
                                                 #else
-                                                sprintf( buf, "\"%s\": \"%d\"", capitalize( directions[i].name ), exit->to_room->name);
+                                                sprintf( buf, "\"%s\": \"%d\"", exit[i], room->exit[i]->to_room->vnum);
                                                 #endif
                                         }
                                         else
                                         {
-                                                sprintf( buf2, ", \"%s\": \"%d\"", capitalize( directions[i].name ), exit->to_room->name);
+                                                sprintf( buf2, ", \"%s\": \"%d\"", exit[i], room->exit[i]->to_room->vnum);
                                                 strcat( buf, buf2 );
                                         }
                                 }
 
                                 UpdateGMCPString( d, GMCP_ROOM_EXITS, buf );
-                        } */
+
+                        }
 
                         if ( enemy )
                         {
@@ -2982,8 +3015,7 @@ void gmcp_update( void )
                         {
                                 UpdateGMCPString( d, GMCP_ENEMY, "" );
                         }
-                        rSetcount = 0;
-                        UpdateGMCPString( d, GMCP_ROOM_FLAGS, buf4 );
+
                         buf4[0] = '\0';
 
                         buf[0] = '\0';

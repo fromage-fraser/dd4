@@ -420,7 +420,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 OBJ_DATA *pulse;
                 for (pulse = ch->in_room->contents; pulse; pulse = pulse->next_content)
                 {
-                        if (pulse->item_type == ITEM_COMBAT_PULSE || ITEM_DEFENSIVE_PULSE)
+                        if ( ( IS_OBJ_STAT( pulse, ITEM_RUNE ) ) && ( pulse->item_type == ITEM_COMBAT_PULSE || ITEM_DEFENSIVE_PULSE) )
                         {
                                 if (skill_table[pulse->value[3]].target == TAR_CHAR_DEFENSIVE )
                                         victim = ch;
@@ -445,13 +445,12 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                                         act("$n pulse with $p.", ch, pulse, NULL, TO_ROOM);
                                 }
                                 obj_cast_spell(pulse->value[3], pulse->value[0], ch, victim, pulse);
-
-                                if (--pulse->value[2] <= 0)
-                                {
-                                        act("Your $p explodes into fragments.", ch, pulse, NULL, TO_CHAR);
-                                        act("$n's $p explodes into fragments.", ch, pulse, NULL, TO_ROOM);
-                                        extract_obj(pulse);
-                                }
+                        }
+                        if (--pulse->value[2] <= 0)
+                        {
+                                act("Your $p explodes into fragments.", ch, pulse, NULL, TO_CHAR);
+                                act("$n's $p explodes into fragments.", ch, pulse, NULL, TO_ROOM);
+                                extract_obj(pulse);
                         }
                 }
         }
