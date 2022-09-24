@@ -258,10 +258,10 @@ void do_protocols( CHAR_DATA *ch, char *argument )
         {
                 if ( d == victim->desc )
                 {
-                        sprintf( tmp, "Protocols Negotiated for %s\n\r bATCP: %5s\n\r bMSDP: %5s\n\r bMXP:  %5s\n\r bMSP:  %5s\n\r bGMCP: %5s\n\r Client: %s Version: %s\n\r", 
-                        d->character->name, 
-                        d->pProtocol->bATCP  ? "TRUE" : "false", 
-                        d->pProtocol->bMSDP  ? "TRUE" : "false", 
+                        sprintf( tmp, "Protocols Negotiated for %s\n\r bATCP: %5s\n\r bMSDP: %5s\n\r bMXP:  %5s\n\r bMSP:  %5s\n\r bGMCP: %5s\n\r Client: %s Version: %s\n\r",
+                        d->character->name,
+                        d->pProtocol->bATCP  ? "TRUE" : "false",
+                        d->pProtocol->bMSDP  ? "TRUE" : "false",
                         d->pProtocol->bMXP ? "TRUE" : "false",
                         d->pProtocol->bMSP  ? "TRUE" : "false",
                         d->pProtocol->bGMCP  ? "TRUE" : "false",
@@ -272,7 +272,7 @@ void do_protocols( CHAR_DATA *ch, char *argument )
                         return;
                 }
         }
- 
+
 
         bug( "Do_disconnect: desc not found.", 0 );
         send_to_char( "Descriptor not found!\n\r", ch );
@@ -4315,7 +4315,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
                 if (value < 1 || value >= MAX_RACE )
                 {
                         char buf [ MAX_STRING_LENGTH ];
-                        sprintf( buf, "The range is 1 to %d (see help race).\n\r", MAX_RACE );
+                        sprintf( buf, "The range is 1 to %d (see help race).\n\r", ( MAX_RACE - 1) );
                         send_to_char( buf, ch );
                         return;
                 }

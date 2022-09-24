@@ -198,6 +198,7 @@ void do_soar(CHAR_DATA* ch, char* argument)
                 &&   ch->in_room->sector_type != SECT_HILLS
                 &&   ch->in_room->sector_type != SECT_MOUNTAIN
                 &&   ch->in_room->sector_type != SECT_DESERT
+                &&   ch->in_room->sector_type != SECT_SWAMP
                 &&   ch->in_room->sector_type != SECT_WATER_SWIM
                 &&   ch->in_room->sector_type != SECT_WATER_NOSWIM ) )
                 {
@@ -243,6 +244,7 @@ void do_soar(CHAR_DATA* ch, char* argument)
                 &&   ch->in_room->sector_type != SECT_HILLS
                 &&   ch->in_room->sector_type != SECT_MOUNTAIN
                 &&   ch->in_room->sector_type != SECT_DESERT
+                &&   ch->in_room->sector_type != SECT_SWAMP
                 &&   ch->in_room->sector_type != SECT_WATER_SWIM
                 &&   ch->in_room->sector_type != SECT_WATER_NOSWIM ) )
 
@@ -292,6 +294,7 @@ void do_soar(CHAR_DATA* ch, char* argument)
         &&   ch->in_room->sector_type != SECT_HILLS
         &&   ch->in_room->sector_type != SECT_MOUNTAIN
         &&   ch->in_room->sector_type != SECT_DESERT
+        &&   ch->in_room->sector_type != SECT_SWAMP
         &&   ch->in_room->sector_type != SECT_WATER_SWIM
         &&   ch->in_room->sector_type != SECT_WATER_NOSWIM ) )
 
@@ -333,7 +336,8 @@ void do_soar(CHAR_DATA* ch, char* argument)
 
         if ( ch->mount
         && ( ch->in_room->sector_type == SECT_WATER_SWIM
-        ||   ch->in_room->sector_type == SECT_WATER_NOSWIM ) )
+        ||   ch->in_room->sector_type == SECT_WATER_NOSWIM
+        ||   ch->in_room->sector_type == SECT_SWAMP ) )
         {
                 act ("{yYou release $N from your talons and $E splashes down into the water.\n\r{x", ch, NULL, ch->mount, TO_CHAR);
                 act ("{y$N releases $n from $S talons and $e splashes down into the water.\n\r{x", ch->mount, NULL, ch, TO_NOTVICT);
@@ -341,14 +345,16 @@ void do_soar(CHAR_DATA* ch, char* argument)
 
         if ( ch->mount
         &&   ch->in_room->sector_type != SECT_WATER_SWIM
-        &&   ch->in_room->sector_type != SECT_WATER_NOSWIM )
+        &&   ch->in_room->sector_type != SECT_WATER_NOSWIM
+        &&   ch->in_room->sector_type != SECT_SWAMP )
         {
                 act ("{yYou release $N from your talons and $E tumbles to the ground.\n\r{x", ch, NULL, ch->mount, TO_CHAR);
                 act ("{y$N releases $n from $S talons and $e tumbles to the ground.\n\r{x", ch->mount, NULL, ch, TO_NOTVICT);
         }
 
         if ( ch->in_room->sector_type == SECT_WATER_SWIM
-        ||   ch->in_room->sector_type == SECT_WATER_NOSWIM )
+        ||   ch->in_room->sector_type == SECT_WATER_NOSWIM
+        ||   ch->in_room->sector_type == SECT_SWAMP )
         {
                 act ("{y$c swoops down from the sky and lands gracefully on the water.{x", ch, NULL, NULL, TO_ROOM);
         }
@@ -1010,6 +1016,7 @@ void do_forage(CHAR_DATA *ch,  char *argument)
             && ch->in_room->sector_type != SECT_FOREST
             && ch->in_room->sector_type != SECT_DESERT
             && ch->in_room->sector_type != SECT_MOUNTAIN
+            && ch->in_room->sector_type != SECT_SWAMP
             && ch->in_room->sector_type != SECT_HILLS)
         {
                 send_to_char("Not in this type of terrain.\n\r",ch);

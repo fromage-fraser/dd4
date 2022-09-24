@@ -4771,7 +4771,7 @@ fairly rickety, they seem to have held up fairly well under the gloom and muck
 surrounding them. There seems to be no color in this land, no color at all; the
 swamp mud is a deep black, while the sun and sky themselves seem dull and gray.
 ~
-0 0 1
+0 0 11
 D0
 ~
 ~
@@ -4799,7 +4799,7 @@ stinking puddles on the grey, rotten wood.
 To the west lies a small wooden house; the mountain wall appears to have torn
 it in two.
 ~
-0 0 1
+0 0 11
 D0
 ~
 ~
@@ -4824,7 +4824,7 @@ wall, and curving around the murkier, more watery part of the swamp.  Strange
 plants grow in the muck here, with forked, grayish-green leaves and twisted
 brown stems.
 ~
-0 0 1
+0 0 11
 D1
 ~
 ~
@@ -4859,7 +4859,7 @@ rises up from the various dead things lying about; brown, decaying reeds and
 grasses cover the surface, while a school of fish is rotting away in a thick
 cluster of bushes and cattails that hangs over the northern end of the pond.
 ~
-0 4 7
+0 4 11
 D1
 ~
 ~
@@ -4903,7 +4903,7 @@ the bottom of the swamp.  Rushes and cattails grow up out of the edge of the
 pond, keeping the wet soil there from sliding into the deeper parts
 of the pond.
 ~
-0 4 7
+0 4 11
 D0
 ~
 ~
@@ -4962,7 +4962,7 @@ to hold them in the steep, marshy ground.  A small gazebo stands to the south,
 seeming to have lost the struggle against the decay of the swamp; several of its
 gray boards have fallen into the waters below.
 ~
-0 4 7
+0 4 11
 D1
 ~
 ~
@@ -5008,7 +5008,7 @@ the pond, half over the swamp and half over the marshland; the supports on its
 left side have rotted away, leaving it tilted sharply to one side, and most
 likely preventing anyone from calling it their home.
 ~
-0 4 7
+0 4 11
 D0
 ~
 ~
@@ -5034,7 +5034,7 @@ given way, making the hut lean sharply downwards.  More stable ground lies to
 the south--at least, it's stable enough to allow a dense, dark grove of trees
 to grow high into the air.
 ~
-0 0 2
+0 0 11
 D0
 ~
 ~
@@ -5064,7 +5064,7 @@ somewhat less here, probably because of the fresh air that spills over the
 mountain wall to the north and east; in any case, your stomach isn't churning
 quite as much now.....
 ~
-0 0 2
+0 0 11
 D2
 ~
 ~
@@ -5080,7 +5080,7 @@ The wooden path continues here between the murky swamp and the row of wooden
 buildings; to the south, it connects with an intersection, while to the north,
 it heads towards a darker area just before the northern mountain wall.
 ~
-0 0 2
+0 0 11
 D0
 ~
 ~
@@ -5101,7 +5101,7 @@ the back of a row of wooden buildings, while the other leads over the water to
 the west, passing through a wooden gazebo, and continues eastwards between two
 of the buildings, heading towards a glittering black tower.
 ~
-0 4 2
+0 4 11
 D0
 ~
 ~
@@ -5123,7 +5123,8 @@ S
 The Path~
 Here, the wooden path passes behind a row of decrepit wooden buildings to the
 east; each is two stories high, and prevents you from seeing whatever lies on
-the other side. There is a break in the row to the north, however, with a path leading between two of the buildings; also, the swamp lies to the west, while
+the other side. There is a break in the row to the north, however, with a path
+leading between two of the buildings; also, the swamp lies to the west, while
 a dark forest rises in the distance to the south.
 ~
 0 0 2
@@ -5417,7 +5418,7 @@ much wetter and soggier part of the swamp.  A decrepit gazebo lies just to the
 east; several of its floorboards have fallen into the marsh below, and just
 barely stick out above the water's surface.
 ~
-0 0 1
+0 0 11
 D1
 ~
 ~
@@ -5799,7 +5800,7 @@ ground hasn't stopped a dense cluster of trees from springing up here. Eerie
 sounds emerge from the gloom around you, sounds like the ooze and spluck of
 bubbling mud to the faint raspy breathing of some sort of animal.
 ~
-0 1 3
+0 1 11
 D0
 ~
 ~
@@ -5978,7 +5979,7 @@ an enormous hole in the western wall....
 mire sticks to your clothing, and gets in your mouth; it smells awful, and now
 so do you.
 ~
-0 0 0
+0 0 11
 D0
 ~
 ~

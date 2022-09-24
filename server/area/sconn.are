@@ -101,7 +101,7 @@ the waters of the swamp is a dangerous snake.  It would be best to move
 quickly while stepping safely.  Southwards you spy the grand gates of
 Draagdim, and relative safety.
 ~
-0 1|4 6
+0 1|4 11
 D0
 ~
 ~
@@ -117,7 +117,7 @@ The swamp bubbles all around.  It is tough to tell in which direction solid
 ground lies.  The noises of the swamp echo from everywhere.  Off in the
 distance dances a glowing ball of light that seems always just out of reach.
 ~
-0 1 6
+0 1 11
 D0
 ~
 ~
@@ -133,7 +133,7 @@ The swamp is dark and ominous.  The sounds that you once heard have gone
 strangely silent.  It is nearly impossible to tell in which direction lies
 solid ground and which direction will lead to a swampy grave.
 ~
-0 1 6
+0 1 11
 D0
 ~
 ~
@@ -154,7 +154,7 @@ slowly to the surface and release into the air.  Slipping away into the waters
 of the swamp is a dangerous snake.  It would be best to move quickly while
 stepping safely.
 ~
-0 1 6
+0 1 11
 D1
 ~
 ~
@@ -170,7 +170,7 @@ The swamp bubbles all around.  It is tough to tell in which direction solid
 ground lies.  The noises of the swamp echo from everywhere.  Off in the
 distance dances a glowing ball of light that seems always just out of reach.
 ~
-0 1 6
+0 1 11
 D0
 ~
 ~
@@ -186,7 +186,7 @@ The swamp is dark and ominous.  The sounds that you once heard have gone
 strangely silent.  It is nearly impossible to tell in which direction lies
 solid ground and which direction will lead to a swampy grave.
 ~
-0 1 6
+0 1 11
 D1
 ~
 ~
@@ -203,7 +203,7 @@ slowly to the surface and release into the air.  Slipping away into the waters
 of the swamp is a dangerous snake.  It would be best to move quickly while
 stepping safely.
 ~
-0 1 6
+0 1 11
 D0
 ~
 ~
@@ -223,7 +223,7 @@ The swamp bubbles all around.  It is tough to tell in which direction solid
 ground lies.  The noises of the swamp echo from everywhere.  Off in the
 distance dances a glowing ball of light that seems always just out of reach.
 ~
-0 1 6
+0 1 11
 D1
 ~
 ~
@@ -239,7 +239,7 @@ The swamp is dark and ominous.  The sounds that you once heard have gone
 strangely silent.  It is nearly impossible to tell in which direction lies
 solid ground and which direction will lead to a swampy grave.
 ~
-0 1 6
+0 1 11
 D2
 ~
 ~
@@ -256,7 +256,7 @@ slowly to the surface and release into the air.  Slipping away into the waters
 of the swamp is a dangerous snake.  It would be best to move quickly while
 stepping safely.
 ~
-0 1 6
+0 1 11
 D0
 ~
 ~
@@ -274,7 +274,7 @@ distance dances a glowing ball of light that seems always just out of reach.
 
 To the east a misty portal hangs in the air.
 ~
-0 1|4 6
+0 1|4 11
 D3
 ~
 ~
@@ -286,7 +286,7 @@ The swamp is dark and ominous.  The sounds that you once heard have gone
 strangely silent.  It is nearly impossible to tell in which direction lies
 solid ground and which direction will lead to a swampy grave.
 ~
-0 1 6
+0 1 11
 D1
 ~
 ~
@@ -303,7 +303,7 @@ slowly to the surface and release into the air.  Slipping away into the waters
 of the swamp is a dangerous snake.  It would be best to move quickly while
 stepping safely.
 ~
-0 1 6
+0 1 11
 D1
 ~
 ~
@@ -319,7 +319,7 @@ The swamp bubbles all around.  It is tough to tell in which direction solid
 ground lies.  The noises of the swamp echo from everywhere.  Off in the
 distance dances a glowing ball of light that seems always just out of reach.
 ~
-0 1 6
+0 1 11
 D0
 ~
 ~
@@ -335,7 +335,7 @@ The swamp is dark and ominous.  The sounds that you once heard have gone
 strangely silent.  It is nearly impossible to tell in which direction lies
 solid ground and which direction will lead to a swampy grave.
 ~
-0 1|4 6
+0 1|4 11
 D2
 ~
 ~
@@ -348,7 +348,7 @@ slowly to the surface and release into the air.  Slipping away into the waters
 of the swamp is a dangerous snake.  It would be best to move quickly while
 stepping safely.
 ~
-0 1 6
+0 1 11
 D0
 ~
 ~
@@ -368,7 +368,7 @@ The swamp bubbles all around.  It is tough to tell in which direction solid
 ground lies.  The noises of the swamp echo from everywhere.  Off in the
 distance dances a glowing ball of light that seems always just out of reach.
 ~
-0 1 6
+0 1 11
 D1
 ~
 ~
@@ -384,7 +384,7 @@ The swamp is dark and ominous.  The sounds that you once heard have gone
 strangely silent.  It is nearly impossible to tell in which direction lies
 solid ground and which direction will lead to a swampy grave.
 ~
-0 1 6
+0 1 11
 D0
 ~
 ~
@@ -401,7 +401,7 @@ slowly to the surface and release into the air.  Slipping away into the waters
 of the swamp is a dangerous snake.  It would be best to move quickly while
 stepping safely.
 ~
-0 1 6
+0 1 11
 D0
 ~
 ~
@@ -417,7 +417,7 @@ The swamp bubbles all around.  It is tough to tell in which direction solid
 ground lies.  The noises of the swamp echo from everywhere.  Off in the
 distance dances a glowing ball of light that seems always just out of reach.
 ~
-0 1 6
+0 1 11
 D0
 ~
 ~
@@ -437,7 +437,7 @@ The swamp is dark and ominous.  The sounds that you once heard have gone
 strangely silent.  It is nearly impossible to tell in which direction lies
 solid ground and which direction will lead to a swampy grave.
 ~
-0 1 6
+0 1 11
 D0
 ~
 ~
@@ -454,7 +454,7 @@ slowly to the surface and release into the air.  Slipping away into the waters
 of the swamp is a dangerous snake.  It would be best to move quickly while
 stepping safely.
 ~
-0 1 6
+0 1 11
 D1
 ~
 ~
@@ -470,7 +470,7 @@ The swamp bubbles all around.  It is tough to tell in which direction solid
 ground lies.  The noises of the swamp echo from everywhere.  Off in the
 distance dances a glowing ball of light that seems always just out of reach.
 ~
-0 1 6
+0 1 11
 D1
 ~
 ~
@@ -486,7 +486,7 @@ The swamp is dark and ominous.  The sounds that you once heard have gone
 strangely silent.  It is nearly impossible to tell in which direction lies
 solid ground and which direction will lead to a swampy grave.
 ~
-0 1 6
+0 1 11
 D2
 ~
 ~
@@ -503,7 +503,7 @@ slowly to the surface and release into the air.  Slipping away into the waters
 of the swamp is a dangerous snake.  It would be best to move quickly while
 stepping safely.
 ~
-0 1 6
+0 1 11
 D0
 ~
 ~
@@ -519,7 +519,7 @@ The swamp bubbles all around.  It is tough to tell in which direction solid
 ground lies.  The noises of the swamp echo from everywhere.  Off in the
 distance dances a glowing ball of light that seems always just out of reach.
 ~
-0 1 6
+0 1 11
 D0
 ~
 ~
@@ -535,7 +535,7 @@ The swamp is dark and ominous.  The sounds that you once heard have gone
 strangely silent.  It is nearly impossible to tell in which direction lies
 solid ground and which direction will lead to a swampy grave.
 ~
-0 1|4 6
+0 1|4 11
 D0
 ~
 ~
@@ -552,7 +552,7 @@ slowly to the surface and release into the air.  Slipping away into the waters
 of the swamp is a dangerous snake.  It would be best to move quickly while
 stepping safely.
 ~
-0 1 6
+0 1 11
 D0
 ~
 ~
@@ -568,7 +568,7 @@ The swamp bubbles all around.  It is tough to tell in which direction solid
 ground lies.  The noises of the swamp echo from everywhere.  Off in the
 distance dances a glowing ball of light that seems always just out of reach.
 ~
-0 1 6
+0 1 11
 D2
 ~
 ~
@@ -584,7 +584,7 @@ The swamp is dark and ominous.  The sounds that you once heard have gone
 strangely silent.  It is nearly impossible to tell in which direction lies
 solid ground and which direction will lead to a swampy grave.
 ~
-0 1 6
+0 1 11
 D1
 ~
 ~
@@ -601,7 +601,7 @@ slowly to the surface and release into the air.  Slipping away into the waters
 of the swamp is a dangerous snake.  It would be best to move quickly while
 stepping safely.
 ~
-0 1 6
+0 1 11
 D0
 ~
 ~
@@ -621,7 +621,7 @@ The swamp bubbles all around.  It is tough to tell in which direction solid
 ground lies.  The noises of the swamp echo from everywhere.  Off in the
 distance dances a glowing ball of light that seems always just out of reach.
 ~
-0 1 6
+0 1 11
 D1
 ~
 ~
@@ -637,7 +637,7 @@ The swamp is dark and ominous.  The sounds that you once heard have gone
 strangely silent.  It is nearly impossible to tell in which direction lies
 solid ground and which direction will lead to a swampy grave.
 ~
-0 1|4 6
+0 1|4 11
 D1
 ~
 ~
@@ -649,7 +649,7 @@ It is difficult to find solid ground in this swamp.  Bubbles of swamp gas rise
 slowly to the surface and release into the air.  Slipping away into the waters
 of the swamp is a dangerous snake.  It would be best to move quickly while stepping safely.
 ~
-0 1|4 6
+0 1|4 11
 D2
 ~
 ~
@@ -661,7 +661,7 @@ The swamp bubbles all around.  It is tough to tell in which direction solid
 ground lies.  The noises of the swamp echo from everywhere.  Off in the
 distance dances a glowing ball of light that seems always just out of reach.
 ~
-0 1 6
+0 1 11
 D0
 ~
 ~
@@ -677,7 +677,7 @@ The swamp is dark and ominous.  The sounds that you once heard have gone
 strangely silent.  It is nearly impossible to tell in which direction lies
 solid ground and which direction will lead to a swampy grave.
 ~
-0 1 6
+0 1 11
 D2
 ~
 ~
@@ -694,7 +694,7 @@ slowly to the surface and release into the air.  Slipping away into the waters
 of the swamp is a dangerous snake.  It would be best to move quickly while
 stepping safely.
 ~
-0 1 6
+0 1 11
 D0
 ~
 ~
@@ -714,7 +714,7 @@ The swamp bubbles all around.  It is tough to tell in which direction solid
 ground lies.  The noises of the swamp echo from everywhere.  Off in the
 distance dances a glowing ball of light that seems always just out of reach.
 ~
-0 1 6
+0 1 11
 D1
 ~
 ~
@@ -734,7 +734,7 @@ The swamp is dark and ominous.  The sounds that you once heard have gone
 strangely silent.  It is nearly impossible to tell in which direction lies
 solid ground and which direction will lead to a swampy grave.
 ~
-0 1 6
+0 1 11
 D0
 ~
 ~
@@ -751,7 +751,7 @@ slowly to the surface and release into the air.  Slipping away into the waters
 of the swamp is a dangerous snake.  It would be best to move quickly while
 stepping safely.
 ~
-0 1 6
+0 1 11
 D0
 ~
 ~
@@ -767,7 +767,7 @@ The swamp bubbles all around.  It is tough to tell in which direction solid
 ground lies.  The noises of the swamp echo from everywhere.  Off in the
 distance dances a glowing ball of light that seems always just out of reach.
 ~
-0 1 6
+0 1 11
 D0
 ~
 ~
@@ -783,7 +783,7 @@ The swamp is dark and ominous.  The sounds that you once heard have gone
 strangely silent.  It is nearly impossible to tell in which direction lies
 solid ground and which direction will lead to a swampy grave.
 ~
-0 1|4 6
+0 1|4 11
 D1
 ~
 ~
@@ -800,7 +800,7 @@ slowly to the surface and release into the air.  Slipping away into the waters
 of the swamp is a dangerous snake.  It would be best to move quickly while
 stepping safely.
 ~
-0 1|4 6
+0 1|4 11
 D1
 ~
 ~
@@ -820,7 +820,7 @@ The swamp bubbles all around.  It is tough to tell in which direction solid
 ground lies.  The noises of the swamp echo from everywhere.  Off in the
 distance dances a glowing ball of light that seems always just out of reach.
 ~
-0 1 6
+0 1 11
 D0
 ~
 ~
@@ -836,7 +836,7 @@ The swamp is dark and ominous.  The sounds that you once heard have gone
 strangely silent.  It is nearly impossible to tell in which direction lies
 solid ground and which direction will lead to a swampy grave.
 ~
-0 1 6
+0 1 11
 D0
 ~
 ~
@@ -853,7 +853,7 @@ slowly to the surface and release into the air.  Slipping away into the waters
 of the swamp is a dangerous snake.  It would be best to move quickly while
 stepping safely.
 ~
-0 1 6
+0 1 11
 D2
 ~
 ~
@@ -869,7 +869,7 @@ The swamp bubbles all around.  It is tough to tell in which direction solid
 ground lies.  The noises of the swamp echo from everywhere.  Off in the
 distance dances a glowing ball of light that seems always just out of reach.
 ~
-0 1 6
+0 1 11
 D0
 ~
 ~
@@ -890,7 +890,7 @@ strangely silent.  It is nearly impossible to tell in which direction lies
 solid ground and which direction will lead to a swampy grave.
 The path seems to solidify to the north.
 ~
-0 1|4 6
+0 1|4 11
 D0
 ~
 ~
@@ -907,7 +907,7 @@ slowly to the surface and release into the air.  Slipping away into the waters
 of the swamp is a dangerous snake.  It would be best to move quickly while
 stepping safely.
 ~
-0 1|4 6
+0 1|4 11
 D0
 ~
 ~

@@ -3147,23 +3147,24 @@ void do_dowse(CHAR_DATA *ch, char *arg)
 
         if( !CAN_DO( ch, gsn_dowse ) )
         {
-                send_to_char( "You wouldn't know how to dowse for water.\n\r", ch );
+                send_to_char( "You wouldn't know how to dowse for fresh water.\n\r", ch );
                 return;
         }
 
         if( ch->in_room->sector_type != SECT_FOREST
            && ch->in_room->sector_type != SECT_FIELD
            && ch->in_room->sector_type != SECT_HILLS
+           && ch->in_room->sector_type != SECT_SWAMP
            && ch->in_room->sector_type != SECT_MOUNTAIN )
         {
-                send_to_char( "You wouldn't find a water source in this terrain.\n\r", ch );
+                send_to_char( "You wouldn't find a fresh water source in this terrain.\n\r", ch );
                 return;
         }
 
         if( number_percent() > ch->pcdata->learned[gsn_dowse] )
         {
-                send_to_char( "You're unable to locate a water source.\n\r", ch );
-                act( "$n searches for a water source, but finds none.", ch, NULL,
+                send_to_char( "You're unable to locate a fresh water source.\n\r", ch );
+                act( "$n searches for a fresh water source, but doesn't find one.", ch, NULL,
                         NULL, TO_ROOM );
         }
         else
@@ -3172,8 +3173,8 @@ void do_dowse(CHAR_DATA *ch, char *arg)
                 spring->timer    = ch->level;
                 spring->timermax = spring->timer;
                 obj_to_room( spring, ch->in_room );
-                send_to_char( "You search for a water source and find a small spring.\n\r", ch);
-                act( "$n searches for a water source, and locates a small spring.",
+                send_to_char( "You search for a fresh water source and find a small spring.\n\r", ch);
+                act( "$n searches for a fresh water source, and locates a small spring.",
                     ch, NULL, NULL, TO_ROOM );
         }
 
@@ -3204,6 +3205,7 @@ void do_gather (CHAR_DATA *ch, char *arg)
         if( ch->in_room->sector_type != SECT_FOREST
            && ch->in_room->sector_type != SECT_FIELD
            && ch->in_room->sector_type != SECT_HILLS
+           && ch->in_room->sector_type != SECT_SWAMP
            && ch->in_room->sector_type != SECT_MOUNTAIN )
         {
                 send_to_char( "You wouldn't find any herbs in this terrain.\n\r", ch );
@@ -4088,7 +4090,7 @@ void do_inscribe (CHAR_DATA *ch, char *argument)
                 found_obj = TRUE;
         }
 
-        
+
 
         if (!found_rune && (!found_obj))
         {
@@ -4151,7 +4153,7 @@ void do_inscribe (CHAR_DATA *ch, char *argument)
                                 }
                         }
                 }
-        
+
                 found_anvil = FALSE;
                 for (anvil = ch->in_room->contents; anvil; anvil = anvil->next_content)
                 {
@@ -4167,8 +4169,8 @@ void do_inscribe (CHAR_DATA *ch, char *argument)
                         send_to_char("You will need to find an anvil.\n\r", ch);
                         return;
                 }
-                
-                
+
+
                 cost_sm =0;
                 cost_ad = 0;
                 cost_el = 0;
@@ -4647,12 +4649,12 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 if (IS_SET(turret->ego_flags, EGO_ITEM_TURRET))
                         break;
         }
-        
+
         if (!turret)
         {
                 send_to_char("Your turret is not deployed!\n\r", ch);
                 return;
-        } 
+        }
 
 
         if (!str_cmp(arg1, "all"))
@@ -4670,7 +4672,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                         send_to_char("That module is not in your turret.\n\r", ch);
                         return;
                 }
-                
+
                 if (module->level > ch->level)
                 {
                         act("$p is too high level for you.", ch, module, NULL, TO_CHAR);
@@ -4700,26 +4702,26 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                         }
                 }
 
-                /* Deploy a defenseive module unit */         
+                /* Deploy a defenseive module unit */
                 if ((module->item_type == ITEM_DEFENSIVE_TURRET_MODULE) && (unit >= 1))
                 {
-                
+
                         if ( number_range(0,100) < ch->pcdata->learned[gsn_trigger])
                         {
-                                OBJ_DATA *deployed;  
+                                OBJ_DATA *deployed;
 
                                 deployed = create_object( get_obj_index( unit ), ch->level );
                                 obj_to_room(deployed, ch->in_room);
                                 act("Your turret deploys $p.", ch, deployed, NULL ,TO_CHAR);
                                 act("$n deploys $p from their turret.", ch, deployed, NULL, TO_ROOM);
-                                set_obj_owner(deployed, ch->name); 
+                                set_obj_owner(deployed, ch->name);
                                 if (--module->value[2] <= 0)
                                 {
                                         act("Your $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_CHAR);
                                         act("$n's $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_ROOM);
                                         extract_obj(module);
                                 }
-                                return;  
+                                return;
                         }
                         else
                         {
@@ -4731,10 +4733,10 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                                         act("$n's $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_ROOM);
                                         extract_obj(module);
                                 }
-                                return; 
+                                return;
                         }
                 }
-                
+
                 if ((module->item_type == ITEM_DEFENSIVE_TURRET_MODULE) && (unit <= 0))
                 {
                         send_to_char("BUG: cant lookup unit from module.\n\r", ch);
@@ -4772,16 +4774,16 @@ void do_trigger (CHAR_DATA *ch, char *argument)
 
                 if (( number_percent() < ch->pcdata->learned[gsn_trigger]) && (glookup > 1))
                 {
-                        /* moght do a case here depending on type of module      */ 
+                        /* moght do a case here depending on type of module      */
                         act("You trigger your $p.", ch, turret, NULL ,TO_CHAR);
                         act("$n triggers $m $p.", ch, turret, NULL, TO_ROOM);
-                        damage(ch, victim, number_range(module->value[0],module->value[1]), glookup, FALSE);   
+                        damage(ch, victim, number_range(module->value[0],module->value[1]), glookup, FALSE);
                         if (--module->value[2] <= 0)
                         {
                                 act("Your $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_CHAR);
                                 act("$n's $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_ROOM);
                                 extract_obj(module);
-                        }     
+                        }
                 }
                 else
                 {
@@ -4812,10 +4814,10 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                                         send_to_char("That module is not in your turret.\n\r", ch);
                                         return;
                                 }
-                                
+
                                 if (module->item_type == ITEM_DEFENSIVE_TURRET_MODULE)
                                         return;
-                
+
                                 if (module->level > ch->level)
                                 {
                                         act("$p is too high level for you.", ch, module, NULL, TO_CHAR);
@@ -4845,26 +4847,26 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                                         }
                                 }
 
-                                /* Deploy a defenseive module unit */         
+                                /* Deploy a defenseive module unit */
                                 if ((module->item_type == ITEM_DEFENSIVE_TURRET_MODULE) && (unit >= 1))
                                 {
-                                
+
                                         if ( number_range(0,100) < ch->pcdata->learned[gsn_trigger])
                                         {
-                                                OBJ_DATA *deployed;  
+                                                OBJ_DATA *deployed;
 
                                                 deployed = create_object( get_obj_index( unit ), ch->level );
                                                 obj_to_room(deployed, ch->in_room);
                                                 act("Your turret deploys $p.", ch, deployed, NULL ,TO_CHAR);
                                                 act("$n deploys $p from their turret.", ch, deployed, NULL, TO_ROOM);
-                                                set_obj_owner(deployed, ch->name); 
+                                                set_obj_owner(deployed, ch->name);
                                                 if (--module->value[2] <= 0)
                                                 {
                                                         act("Your $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_CHAR);
                                                         act("$n's $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_ROOM);
                                                         extract_obj(module);
                                                 }
-                                                return;  
+                                                return;
                                         }
                                         else
                                         {
@@ -4876,10 +4878,10 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                                                         act("$n's $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_ROOM);
                                                         extract_obj(module);
                                                 }
-                                                return; 
+                                                return;
                                         }
                                 }
-                                
+
                                 if ((module->item_type == ITEM_DEFENSIVE_TURRET_MODULE) && (unit <= 0))
                                 {
                                         send_to_char("BUG: cant lookup unit from module.\n\r", ch);
@@ -4917,13 +4919,13 @@ void do_trigger (CHAR_DATA *ch, char *argument)
 
                                 if (( number_percent() < ch->pcdata->learned[gsn_trigger]) && (glookup > 1))
                                 {
-                                        damage(ch, victim, number_range(module->value[0],module->value[1]), glookup, FALSE); 
+                                        damage(ch, victim, number_range(module->value[0],module->value[1]), glookup, FALSE);
                                         if (--module->value[2] <= 0)
                                         {
                                                 act("Your $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_CHAR);
                                                 act("$n's $p is empty. It ejects itself from the turret.", ch, module, NULL, TO_ROOM);
                                                 extract_obj(module);
-                                        }     
+                                        }
                                 }
                                 else
                                 {
@@ -4938,7 +4940,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                                 }
                         }
                 }
-        }      
+        }
 }
 
 

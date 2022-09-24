@@ -679,8 +679,8 @@ girdle pouches many~
 It appears to be full of tiny pockets.
 ~
 #2320
-robe heavy woolen~
-a heavy woolen robe~
+robe heavy woollen~
+a heavy woollen robe~
 A heavy pile of wool lies here.~
 ~
 9 64 1025
@@ -2015,7 +2015,7 @@ out all light and stifle the wind. You smell swamp gas and hear damp squashing
 sounds all around you. The path leads east deeper into the swamp. You also see
 a dark forest to the west.
 ~
-23 13 3
+23 13 11
 D1
 ~
 ~
@@ -2032,7 +2032,7 @@ quicksand and rotting vegetation. Unlike the forest to the west, the swamp is
 teeming with life. Some of it is harmless, some is not. The path leads east
 and west into more swamp.
 ~
-23 9 3
+23 9 11
 D1
 ~
 ~
@@ -2050,7 +2050,7 @@ carefully picking your way around obstacles. Large, gnarled trees rise above
 you. Their moss covered branches block out all traces of the sun. The path
 here leads east and west.
 ~
-23 9 3
+23 9 11
 D1
 ~
 ~
@@ -2066,7 +2066,7 @@ You come upon a bend in the swampy path. The ground here is fairly sturdy,
 as this place is elevated above the rest of the swamp. Looking around, you see
 a dark, mist filled swamp. Small paths lead south and west into the mist.
 ~
-23 9 3
+23 9 11
 D2
 ~
 ~
@@ -2078,11 +2078,11 @@ D3
 S
 #2331
 The swampy path~
-You tread lightly through the mirky water and sludge that makes up the path
+You tread lightly through the mmurky water and sludge that makes up the path
 you follow. To the east, there is a thick wall of mist. You can see nothing
 within it. Harder ground rises to the north.
 ~
-23 9 3
+23 9 11
 D0
 ~
 ~
@@ -2507,7 +2507,7 @@ S
 #2352
 The frigid wastelands~
 You wander through the frigid wastelands. Your breath is a cloud before you.
-The cold cuts to the bine. Swirling snow and wind make it impossible to
+The cold cuts to the bone. Swirling snow and wind make it impossible to
 discern any directions.
 ~
 23 0 5
