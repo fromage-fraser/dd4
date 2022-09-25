@@ -2964,6 +2964,66 @@ char* body_form_name (unsigned long int vector)
                 case BODY_INORGANIC:        return "inorganic";
                 case BODY_HAS_TAIL:         return "has_tail";
 
+                case PART_HEAD:                 return "head";
+                case PART_MANY_HEAD:            return "many_heads";
+                case PART_ARMS:                 return "arms";
+                case PART_MANY_ARMS:            return "many_arms";
+                case PART_2_LEGS:               return "tail";
+                case PART_4_LEGS:               return "four_legs";
+                case PART_MANY_LEGS:            return "many_legs";
+                case PART_HEART:                return "heart";
+                case PART_BRAINS:               return "brains";
+                case PART_GUTS:                 return "guts";
+                case PART_FINGERS:              return "fingers";
+                case PART_EAR:                  return "ear";
+                case PART_EYE:                  return "eye";
+                case PART_LONG_TONGUE:          return "long_tounge";
+                case PART_EYESTALKS:            return "eyestalks";
+                case PART_TENTACLES:            return "tantacles";
+                case PART_FINS:                 return "fins";
+                case PART_WINGS:                return "wings";
+                case PART_TAIL:                 return "tail";
+                case PART_SCALES:               return "scales";
+
+                case PART_CLAWS:                return "claws";
+                case PART_FANGS:                return "fangs";
+                case PART_HORNS:                return "horns";
+                case PART_TUSKS:                return "tusks";
+                case PART_TAILATTACK:           return "tail";
+                case PART_SHARPSCALES:          return "sharp_scales";
+                case PART_BEAK:                 return "beak";
+                case PART_HAUNCH:               return "haunch";
+                case PART_HOOVES:               return "hooves";
+                case PART_PAWS:                 return "paws";
+                case PART_FORELEGS:             return "forelegs";
+                case PART_FEATHERS:             return "feathers";
+                case PART_HUSK_SHELL:           return "husk_shell";
+
+                default: return "none";
+        }
+}
+
+char* resist_name (unsigned long int vector)
+{
+        switch (vector)
+        {
+                case RES_FIRE:          return "fire";
+                case RES_COLD:          return "cold";
+                case RES_ELECTRICITY:   return "electricity";
+                case RES_ENERGY:        return "energy";
+                case RES_BLUNT:         return "blunt";
+                case RES_PIERCE:        return "piercing";
+                case RES_SLASH:         return "slash";
+                case RES_ACID:          return "acid";
+                case RES_POISON:        return "poison";
+                case RES_DRAIN:         return "drain";
+                case RES_SLEEP:         return "sleep";
+                case RES_CHARM:         return "charm";
+                case RES_HOLD:          return "hold";
+                case RES_NONMAGIC:      return "non_magic";
+                case RES_MAGIC:         return "magic";
+                case RES_PARALYSIS:     return "paralysis";
+
                 default: return "none";
         }
 }

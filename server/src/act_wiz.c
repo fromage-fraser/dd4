@@ -1910,7 +1910,6 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                 if ( victim->mobspec )
                 {
                         int sn;
-                        int spec;   
                         sprintf( buf, "mobspec:%s %s\n\r",
                                         victim->mobspec, victim->pIndexData->mobspec);
                                         strcat( buf1, buf );           
@@ -1931,20 +1930,106 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                                         sprintf( buf, "Name: %s Species: %s\n\r",
                                         mob_table[sn].name, mob_table[sn].species);
                                         strcat( buf1, buf );
-                                        sprintf( buf, "resists: %d Vulnerable: %d Immunes: %d\n\r",
-                                        mob_table[sn].resists, mob_table[sn].vulnerabilities, mob_table[sn].immunes);
+
+                                        /* resists */
+                                        sprintf( buf, "Resistant to (num): {W");
                                         strcat( buf1, buf );
+                                        bit_explode(ch, buf, mob_table[sn].resists);
+                                        strcat( buf1, buf );
+                                        strcat(buf1, "{x\n\r");
+                                        strcat(buf1, "Resistant To (txt):{R");
+                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                                        {
+                                                if (IS_SET(mob_table[sn].resists, next))
+                                                {
+                                                        strcat(buf1, " ");
+                                                        strcat(buf1, resist_name(next));
+
+                                                }
+                                        }
+                                        strcat(buf1, "{x\n\r");
+
+                                                /* Vulnerable */
+                                        sprintf( buf, "Vulnerable to (num): {W");
+                                        strcat( buf1, buf );
+                                        bit_explode(ch, buf, mob_table[sn].vulnerabilities);
+                                        strcat( buf1, buf );
+                                        strcat(buf1, "{x\n\r");
+                                        strcat(buf1, "Vulnerable To (txt):{R");
+                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                                        {
+                                                if (IS_SET(mob_table[sn].vulnerabilities, next))
+                                                {
+                                                        strcat(buf1, " ");
+                                                        strcat(buf1, resist_name(next));
+
+                                                }
+                                        }
+                                        strcat(buf1, "{x\n\r");
+                                        
+                                        /*  Immune */
+                                        sprintf( buf, "Immune to (num): {W");
+                                        strcat( buf1, buf );
+                                        bit_explode(ch, buf, mob_table[sn].immunes);
+                                        strcat( buf1, buf );
+                                        strcat(buf1, "{x\n\r");
+                                        strcat(buf1, "Immune To (txt):{R");
+                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                                        {
+                                                if (IS_SET(mob_table[sn].immunes, next))
+                                                {
+                                                        strcat(buf1, " ");
+                                                        strcat(buf1, resist_name(next));
+
+                                                }
+                                        }
+                                        strcat(buf1, "{x\n\r");
+
                                         sprintf( buf, "HP Mod: %d Dam Mod: %d Crit Mod: %d Haste Mod: %d\n\r",
                                         mob_table[sn].hp_mod, mob_table[sn].dam_mod, mob_table[sn].crit_mod, mob_table[sn].haste_mod);
                                         strcat( buf1, buf );
                                         sprintf( buf, "Height: %d Weight: %d Size: %d\n\r",
                                         mob_table[sn].height, mob_table[sn].weight, mob_table[sn].size);
                                         strcat( buf1, buf );
-                                        sprintf( buf, "Body Parts: %d Attack PArts: %d Lang: %d\n\r",
-                                        mob_table[sn].body_parts, mob_table[sn].attack_parts, mob_table[sn].language);
+
+                                        /* body parts */
+                                        sprintf( buf, "Body Parts (num): {W");
                                         strcat( buf1, buf );
-                                        sprintf( buf, "Spec_1: %s Spec_2: %s Spec_3: %s\n\r",
-                                        mob_table[sn].spec_fun1, mob_table[sn].spec_fun2, mob_table[sn].spec_boss);
+                                        bit_explode(ch, buf, mob_table[sn].body_parts);
+                                        strcat( buf1, buf );
+                                        strcat(buf1, "{x\n\r");
+                                        strcat(buf1, "Body Parts (txt):{R");
+                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                                        {
+                                                if (IS_SET(mob_table[sn].body_parts, next))
+                                                {
+                                                        strcat(buf1, " ");
+                                                        strcat(buf1, body_form_name(next));
+
+                                                }
+                                        }
+                                        strcat(buf1, "{x\n\r");
+
+                                        /* Attack PArts */
+                                        sprintf( buf, "Attack Parts (num): {W");
+                                        strcat( buf1, buf );
+                                        bit_explode(ch, buf, mob_table[sn].attack_parts);
+                                        strcat( buf1, buf );
+                                        strcat(buf1, "{x\n\r");            
+                                        strcat(buf1, "Attack Parts (txt):{R");
+                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                                        {
+                                                if (IS_SET(mob_table[sn].attack_parts, next))
+                                                {
+                                                        strcat(buf1, " ");
+                                                        strcat(buf1, body_form_name(next));
+
+                                                }
+                                        }
+                                        strcat(buf1, "{x\n\r");
+
+                                        sprintf( buf, "Lang: %d\n\r Spec_1: %s\n\r Spec_2: %s\n\r Spec_3: %s\n\r",
+                                        mob_table[sn].language, mob_table[sn].spec_fun1, mob_table[sn].spec_fun2, mob_table[sn].spec_boss);
                                         strcat( buf1, buf );
                                 }
                         }

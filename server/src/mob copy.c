@@ -84,31 +84,31 @@ typedef enum
 /*
  * Resistant Immune Susceptible flags
  */
-#define RIS_FIRE		  BV00
-#define RIS_COLD		  BV01
-#define RIS_ELECTRICITY		  BV02
-#define RIS_ENERGY		  BV03
-#define RIS_BLUNT		  BV04
-#define RIS_PIERCE		  BV05
-#define RIS_SLASH		  BV06
-#define RIS_ACID		  BV07
-#define RIS_POISON		  BV08
-#define RIS_DRAIN		  BV09
-#define RIS_SLEEP		  BV10
-#define RIS_CHARM		  BV11
-#define RIS_HOLD		  BV12
-#define RIS_NONMAGIC		  BV13
-#define RIS_PLUS1		  BV14
-#define RIS_PLUS2		  BV15
-#define RIS_PLUS3		  BV16
-#define RIS_PLUS4		  BV17
-#define RIS_PLUS5		  BV18
-#define RIS_PLUS6		  BV19
-#define RIS_MAGIC		  BV20
-#define RIS_PARALYSIS		  BV21
+#define RES_FIRE		  BV00
+#define RES_COLD		  BV01
+#define RES_ELECTRICITY		  BV02
+#define RES_ENERGY		  BV03
+#define RES_BLUNT		  BV04
+#define RES_PIERCE		  BV05
+#define RES_SLASH		  BV06
+#define RES_ACID		  BV07
+#define RES_POISON		  BV08
+#define RES_DRAIN		  BV09
+#define RES_SLEEP		  BV10
+#define RES_CHARM		  BV11
+#define RES_HOLD		  BV12
+#define RES_NONMAGIC		  BV13
+#define RES_PLUS1		  BV14
+#define RES_PLUS2		  BV15
+#define RES_PLUS3		  BV16
+#define RES_PLUS4		  BV17
+#define RES_PLUS5		  BV18
+#define RES_PLUS6		  BV19
+#define RES_MAGIC		  BV20
+#define RES_PARALYSIS		  BV21
 #ifdef ENABLE_WEAPONPROF
-#define RIS_HACK      BV22
-#define RIS_LASH      BV23
+#define RES_HACK      BV22
+#define RES_LASH      BV23
 #endif
 
 

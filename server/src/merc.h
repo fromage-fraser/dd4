@@ -154,6 +154,7 @@ typedef struct help_data                        HELP_DATA;
 typedef struct kill_data                        KILL_DATA;
 typedef struct learned_data                     LEARNED_DATA;
 typedef struct mob_spec_data                    MOB_SPEC_DATA;
+typedef struct mob_species_data                 MOB_SPECIES_DATA;
 typedef struct mob_index_data                   MOB_INDEX_DATA;
 typedef struct note_data                        NOTE_DATA;
 typedef struct obj_data                         OBJ_DATA;
@@ -793,17 +794,57 @@ struct descriptor_data
 #define BODY_HUGE               BIT_7
 #define BODY_INORGANIC          BIT_8
 #define BODY_HAS_TAIL           BIT_9
+#define PART_HEAD		  BIT_10
+#define PART_MANY_HEAD            BIT_11
+#define PART_ARMS		  BIT_12
+#define PART_MANY_ARMS		  BIT_13
+#define PART_2_LEGS		  BIT_15
+#define PART_4_LEGS		  BIT_16
+#define PART_MANY_LEGS		  BIT_17
+#define PART_HEART		  BIT_18
+#define PART_BRAINS		  BIT_19
+#define PART_GUTS		  BIT_20
+#define PART_HANDS		  BIT_21
+#define PART_FEET		  BIT_22
+#define PART_FINGERS		  BIT_23
+#define PART_EAR		  BIT_24
+#define PART_EYE		  BIT_25
+#define PART_LONG_TONGUE	  BIT_26
+#define PART_EYESTALKS		  BIT_27
+#define PART_TENTACLES		  BIT_28
+#define PART_FINS		  BIT_29
+#define PART_WINGS		  BIT_30
+#define PART_TAIL		  BIT_31
+#define PART_SCALES		  BIT_32
+/* for combat */
+#define PART_CLAWS		  BIT_33
+#define PART_FANGS		  BIT_34
+#define PART_HORNS		  BIT_35
+#define PART_TUSKS		  BIT_36
+#define PART_TAILATTACK		  BIT_37
+#define PART_SHARPSCALES	  BIT_38
+#define PART_BEAK		  BIT_39
+#define PART_HAUNCH		  BIT_40
+#define PART_HOOVES		  BIT_41
+#define PART_PAWS		  BIT_42
+#define PART_FORELEGS		  BIT_43
+#define PART_FEATHERS		  BIT_44
+#define PART_HUSK_SHELL		  BIT_45
 
-#define HAS_HEAD( ch )          ( !( ch->body_form & BODY_NO_HEAD ) )
-#define HAS_EYES( ch )          ( !( ch->body_form & BODY_NO_EYES ) )
-#define HAS_ARMS( ch )          ( !( ch->body_form & BODY_NO_ARMS ) )
-#define HAS_LEGS( ch )          ( !( ch->body_form & BODY_NO_LEGS ) )
-#define HAS_HEART( ch )         ( !( ch->body_form & BODY_NO_HEART ) )
+
+
+
+
+#define HAS_HEAD( ch )          ( !( ch->body_form & BODY_NO_HEAD ) || (ch->body_form & PART_HEAD) || (ch->body_form & PART_MANY_HEAD))
+#define HAS_EYES( ch )          ( !( ch->body_form & BODY_NO_EYES ) || ( ch->body_form & PART_EYE ))
+#define HAS_ARMS( ch )          ( !( ch->body_form & BODY_NO_ARMS ) || ( ch->body_form & PART_ARMS ) || ( ch->body_form & PART_MANY_ARMS ))
+#define HAS_LEGS( ch )          ( !( ch->body_form & BODY_NO_LEGS ) || ( ch->body_form & PART_2_LEGS ) || ( ch->body_form & PART_4_LEGS ) || ( ch->body_form & PART_MANY_LEGS ))
+#define HAS_HEART( ch )         ( !( ch->body_form & BODY_NO_HEART ) || ( ch->body_form & PART_HEART ))
 #define CAN_SPEAK( ch )         ( !( ch->body_form & BODY_NO_SPEECH ) )
 #define MAKES_CORPSE( ch )      ( !( ch->body_form & BODY_NO_CORPSE ) )
 #define IS_HUGE( ch )              ( ch->body_form & BODY_HUGE )
 #define IS_INORGANIC( ch )         ( ch->body_form & BODY_INORGANIC )
-#define HAS_TAIL( ch )             ( ch->body_form & BODY_HAS_TAIL )
+#define HAS_TAIL( ch )             ( ( ch->body_form & BODY_HAS_TAIL ) || ( ch->body_form & PART_TAIL ))
 
 
 /*
@@ -2974,6 +3015,7 @@ struct skill_type
         int             prac_type;                      /* for praccing */
         int             target;                         /* Legal targets */
         int             minimum_position;               /* Position for caster / user */
+        unsigned long int res_type;                     /* resistance type e.g. fireball will have res_fire */
         SPELL_FUN *     spell_fun;                      /* Spell pointer (for spells) */
         int             min_mana;                       /* Minimum mana used */
         int             beats;                          /* Waiting time after use */
@@ -2982,69 +3024,33 @@ struct skill_type
 };
 
 /*
- * Body parts
- */
-#define PART_HEAD		  BIT_0
-#define PART_MANY_HEAD            BIT_1
-#define PART_ARMS		  BIT_2
-#define PART_MANY_ARMS		  BIT_3
-#define PART_LEGS		  BIT_4
-#define PART_2_LEGS		  BIT_5
-#define PART_4_LEGS		  BIT_6
-#define PART_MANY_LEGS		  BIT_7
-#define PART_HEART		  BIT_8
-#define PART_BRAINS		  BIT_9
-#define PART_GUTS		  BIT_10
-#define PART_HANDS		  BIT_11
-#define PART_FEET		  BIT_12
-#define PART_FINGERS		  BIT_13
-#define PART_EAR		  BIT_14
-#define PART_EYE		  BIT_15
-#define PART_LONG_TONGUE	  BIT_16
-#define PART_EYESTALKS		  BIT_17
-#define PART_TENTACLES		  BIT_18
-#define PART_FINS		  BIT_19
-#define PART_WINGS		  BIT_20
-#define PART_TAIL		  BIT_21
-#define PART_SCALES		  BIT_22
-/* for combat */
-#define PART_CLAWS		  BIT_23
-#define PART_FANGS		  BIT_24
-#define PART_HORNS		  BIT_25
-#define PART_TUSKS		  BIT_26
-#define PART_TAILATTACK		  BIT_27
-#define PART_SHARPSCALES	  BIT_28
-#define PART_BEAK		  BIT_29
-#define PART_HAUNCH		  BIT_30
-#define PART_HOOVES		  BIT_31
-#define PART_PAWS		  BIT_32
-#define PART_FORELEGS		  BIT_33
-#define PART_FEATHERS		  BIT_34
-#define PART_HUSK_SHELL		  BIT_35
-
-/*
  * Resistant Immune Susceptible flags
  */
-#define RIS_FIRE		  BIT_0
-#define RIS_COLD		  BIT_1
-#define RIS_ELECTRICITY		  BIT_2
-#define RIS_ENERGY		  BIT_3
-#define RIS_BLUNT		  BIT_4
-#define RIS_PIERCE		  BIT_5
-#define RIS_SLASH		  BIT_6
-#define RIS_ACID		  BIT_7
-#define RIS_POISON		  BIT_8
-#define RIS_DRAIN		  BIT_9
-#define RIS_SLEEP		  BIT_10
-#define RIS_CHARM		  BIT_11
-#define RIS_HOLD		  BIT_12
-#define RIS_NONMAGIC		  BIT_13
-#define RIS_MAGIC		  BIT_14
-#define RIS_PARALYSIS		  BIT_15
+#define RES_FIRE		  BIT_0
+#define RES_COLD		  BIT_1
+#define RES_ELECTRICITY		  BIT_2
+#define RES_ENERGY		  BIT_3
+#define RES_BLUNT		  BIT_4
+#define RES_PIERCE		  BIT_5
+#define RES_SLASH		  BIT_6
+#define RES_ACID		  BIT_7
+#define RES_POISON		  BIT_8
+#define RES_DRAIN		  BIT_9
+#define RES_SLEEP		  BIT_10
+#define RES_CHARM		  BIT_11
+#define RES_HOLD		  BIT_12
+#define RES_NONMAGIC		  BIT_13
+#define RES_MAGIC		  BIT_14
+#define RES_PARALYSIS		  BIT_15
+#define RES_PSYCHIC               BIT_16
+#define RES_HOLY                  BIT_17
+#define RES_DARK                  BIT_18
+#define RES_CURSE                 BIT_19
 
 #define MAX_MOB 3
+#define MAX_SPECIES 3
 
-/* lmob_spec_data Brutus */
+/* mob_spec_data Brutus */
 struct  mob_spec_data
 {
         char * learned;
@@ -3052,28 +3058,36 @@ struct  mob_spec_data
 
 struct mob_type
 {
-  char *name;                   /* name of spec e.g. fire_elemental */
-  char *species;                /* species e.g. elemental */
-  char *icon_m;                 /* Male Icon name */
-  char *icon_f;                 /* Femail icon name */
-  int resists;                  /* lists of resists */
-  int vulnerabilities;          /* vulberable to */
-  int immunes;                  /* immune to */
-  int hp_mod;                   /* hp modifier ( in %) */
-  int dam_mod;                  /* dam modifier ( in %) */
-  int crit_mod;                 /* crit modifier ( in %) */
-  int haste_mod;                /* haste modifier ( in %) */
+  
+    
+  char *name;                           /* name of spec e.g. fire_elemental */
+  char *species;                        /* species e.g. elemental */
+  char *icon_m;                         /* Male Icon name */
+  char *icon_f;                         /* Femail icon name */
+  unsigned long int resists;            /* lists of resists */
+  unsigned long int vulnerabilities;    /* vulberable to */
+  unsigned long int immunes;            /* immune to */
+  int hp_mod;                           /* hp modifier ( in %) */
+  int dam_mod;                          /* dam modifier ( in %) */
+  int crit_mod;                         /* crit modifier ( in %) */
+  int haste_mod;                        /* haste modifier ( in %) */
   int height;   
   int weight;
   int size;
-  int body_parts;               /* body parts they have */
-  int attack_parts;             /* body parts race attacks with */
-  int language;                 /* future use */
-  char   *spec_fun1;            /* a attack spec */
-  char   *spec_fun2;            /* a 2nd attack spec */
-  char   *spec_boss;            /* a 3rd/boss attack spec */
+  unsigned long int body_parts;         /* body parts they have */
+  unsigned long int attack_parts;       /* body parts race attacks with */
+  int language;                         /* future use */
+  char   *spec_fun1;                    /* a attack spec */
+  char   *spec_fun2;                    /* a 2nd attack spec */
+  char   *spec_boss;                    /* a 3rd/boss attack spec */
 };
 
+struct species_type
+{
+        char *species;                        /* species e.g. elemental */
+        unsigned long int body_parts;         /* body parts they have */
+        unsigned long int attack_parts;       /* body parts race attacks with */ 
+};
 
 /* class basic gsn's */
 extern int gsn_mage_base;
@@ -3846,6 +3860,7 @@ extern const    struct set_type                 set_list                        
 /* extern const    struct raw_mats_data            raw_mats_table                  [ RAW_MATS_MAX ]; */
 extern const    struct skill_type               skill_table                     [ MAX_SKILL ];
 extern const    struct mob_type                 mob_table                       [ MAX_MOB ];
+extern const    struct species_type             species_table                   [ MAX_SPECIES ];
 extern const    struct social_type              social_table                    [ ];
 extern const    struct pattern_points           pattern_list                    [ MAX_PATTERN ];
 extern const    struct soar_points              soar_list                       [ MAX_SOAR ];
@@ -4787,6 +4802,7 @@ char *  extra_form_name                 args( ( int form ) );
 int     extra_form_int                        ( char *name );
 char *  extra_bit_name                  args( ( unsigned long int extra_flags ) );
 char *  body_form_name                  args( ( unsigned long int vector ) );
+char *  resist_name                     args( ( unsigned long int vector ) );
 char *  room_flag_name                  args( ( unsigned long int vector ) );
 char *  area_flag_name                  args( ( unsigned long int vector ) );
 char *  wear_flag_name                  args( ( int vector ) );
