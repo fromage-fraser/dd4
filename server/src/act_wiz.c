@@ -779,13 +779,10 @@ void do_rstat( CHAR_DATA *ch, char *argument )
 
                 for (next = 1; next < BIT_MAX; next *= 2)
                 {
-                        /*sprintf(buf2,"checking: %lu \r\n", next);
-                        log_string(buf2);*/
                         if (IS_SET(location->area->area_flags, next))
                         {
                                 strcat(buf1, " ");
                                 strcat(buf1, area_flag_name(next));
-                                /*log_string(buf1);*/
                         }
                 }
 
@@ -796,8 +793,6 @@ void do_rstat( CHAR_DATA *ch, char *argument )
                 strcat(buf1, "Area flags: {Rnone {x[{W0{x]\n\r");
         }
 
-        /*sprintf(buf2,"room flags: %lu \r\n", location->room_flags);
-        log_string(buf2);*/
         if (location->room_flags)
         {
                 sprintf( buf, "Room flags (num): {W");
@@ -2119,9 +2114,9 @@ void do_oscore( CHAR_DATA *ch, char *argument )
                                 uncommon++;
 
                         obj_counter++;
- 
+
                 }
-                sprintf( tmp, "Total[%5d] Uncommon[%5d] Rare[%5d] Epic[%5d] Legendary[%5d]\n\r", obj_counter, uncommon, rare, epic, legendary ); 
+                sprintf( tmp, "Total[%5d] Uncommon[%5d] Rare[%5d] Epic[%5d] Legendary[%5d]\n\r", obj_counter, uncommon, rare, epic, legendary );
                                                 strcat( buf, tmp);
                 /* buf[0] = UPPER( buf[0] ); */
                 send_to_char (buf, ch);
