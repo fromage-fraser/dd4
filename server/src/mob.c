@@ -49,14 +49,14 @@ const struct species_type  species_table [ MAX_SPECIES ] =
 
         {       
                 "elemental",
-                4|8|16|256|1024, 
-                0
+                4|8|16|256|1024, /* body parts */ 
+                0                /* attack parts */
         },
 
         {
                 "farm_mammal",
-                BIT_10|BIT_15|BIT_16|BIT_18|BIT_19|BIT_20|BIT_24|BIT_25,
-                BIT_41
+                BIT_10|BIT_15|BIT_16|BIT_18|BIT_19|BIT_20|BIT_24|BIT_25, /* body parts */
+                BIT_41                  /* attack parts */
         }
 
 };
@@ -89,11 +89,11 @@ const struct mob_type mob_table [MAX_MOB] =
   },
 
   {
-          "goat", "mammal", "icon1", "icon2",
+          "goat", "farm_mammal", "icon1", "icon2",
           0, 1|2|4|8, 0,        /*resists, vulnerabilites, immunes*/
           20, 20, -10, -2,      /*hp %gain, dam % gain, crit % gain, haste % gain*/
           1, 30, 100,           /*height, weight, size*/
-          22, 12, 3,            /*body_parts, attack_parts, language,*/
+          0, 0, 3,            /*body_parts, attack_parts, language,*/
           "spec_fido", 
           "NULL", 
           "NULL"
@@ -101,10 +101,10 @@ const struct mob_type mob_table [MAX_MOB] =
 
   {
           "fire_elemental", "elemental", "icon1", "icon2",
-          16|32|64, 2, 1, 
-          0, 0, 0, 20, 
-          2, 20, 3,
-          4|8|16|256|1024, 0, 1,
+          16|32|64, 2, 1,       /*resists, vulnerabilites, immunes*/
+          0, 0, 0, 20,          /*hp %gain, dam % gain, crit % gain, haste % gain*/
+          2, 20, 3,             /*height, weight, size*/
+          0, 0, 1,              /*body_parts, attack_parts, language,*/
           "spec_breath_fire", 
           "NULL", 
           "NULL"

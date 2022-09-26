@@ -1902,21 +1902,18 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         }
                 }
 
+                /* Pull out the Species specifc info for this mob - Brutus Sept 2022 */
                 if ( victim->mobspec )
                 {
                         int sn;
-                        sprintf( buf, "mobspec:%s %s\n\r",
-                                        victim->mobspec, victim->pIndexData->mobspec);
-                                        strcat( buf1, buf );           
+                        int species;
+                        species = species_sn(victim);
 
                         for ( sn = 0; sn < MAX_MOB; sn++ )
                         {
                                 if ( !mob_table[sn].name )
                                         break;
                                         
-                                sprintf( buf, "Name: %s sn: %d mobspec:%s\n\r",
-                                        mob_table[sn].name, sn, victim->mobspec);
-                                        strcat( buf1, buf );
                                 if ( !str_cmp(victim->mobspec, mob_table[sn].name))
                                 {
                                         strcat(buf, "{WThe Mobs Specification:{x\n\r");
@@ -1944,7 +1941,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                                         }
                                         strcat(buf1, "{x\n\r");
 
-                                                /* Vulnerable */
+                                        /* Vulnerable */
                                         sprintf( buf, "Vulnerable to (num): {W");
                                         strcat( buf1, buf );
                                         bit_explode(ch, buf, mob_table[sn].vulnerabilities);
@@ -1987,16 +1984,17 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                                         mob_table[sn].height, mob_table[sn].weight, mob_table[sn].size);
                                         strcat( buf1, buf );
 
-                                        /* body parts */
+                                        /* body parts from Species Table */
                                         sprintf( buf, "Body Parts (num): {W");
                                         strcat( buf1, buf );
-                                        bit_explode(ch, buf, mob_table[sn].body_parts);
+                                        bit_explode(ch, buf, species_table[species].body_parts);
                                         strcat( buf1, buf );
                                         strcat(buf1, "{x\n\r");
                                         strcat(buf1, "Body Parts (txt):{R");
+                                        
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
-                                                if (IS_SET(mob_table[sn].body_parts, next))
+                                                if (IS_SET(species_table[species].body_parts, next))
                                                 {
                                                         strcat(buf1, " ");
                                                         strcat(buf1, body_form_name(next));
@@ -2005,16 +2003,16 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                                         }
                                         strcat(buf1, "{x\n\r");
 
-                                        /* Attack PArts */
+                                        /* Attack Parts  from Species Table*/
                                         sprintf( buf, "Attack Parts (num): {W");
                                         strcat( buf1, buf );
-                                        bit_explode(ch, buf, mob_table[sn].attack_parts);
+                                        bit_explode(ch, buf, species_table[species].attack_parts);
                                         strcat( buf1, buf );
                                         strcat(buf1, "{x\n\r");            
                                         strcat(buf1, "Attack Parts (txt):{R");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
-                                                if (IS_SET(mob_table[sn].attack_parts, next))
+                                                if (IS_SET(species_table[species].attack_parts, next))
                                                 {
                                                         strcat(buf1, " ");
                                                         strcat(buf1, body_form_name(next));

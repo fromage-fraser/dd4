@@ -857,6 +857,42 @@ void show_char_to_char (CHAR_DATA *list, CHAR_DATA *ch)
         }
 }
 
+/* REturn the species index number for a character */
+int species_sn ( CHAR_DATA *ch)
+{
+        /* char          buf          [ MAX_STRING_LENGTH ]; */
+        if ( ch->mobspec )
+        {
+                int sn;
+                int ms;
+                char * mobspec_species;
+
+                mobspec_species = "NULL";
+                for ( ms = 0; ms < MAX_MOB; ms++ )
+                        {
+                                if ( !mob_table[ms].name )
+                                        break;
+
+                                mobspec_species = mob_table[ms].species;
+                        }
+                if (!mobspec_species)
+                        return -1;
+                
+                for ( sn = 0; sn < MAX_SPECIES; sn++ )
+                {
+                 /*        sprintf(buf, "%s %s",species_table[sn].species, ch->mobspec );
+                        bug(buf, 0);   */
+                       
+                        if ( !species_table[sn].species )
+                                break;
+
+                        if ( species_table[sn].species == mobspec_species)
+                                return sn;
+                }
+        }
+        return -1;
+}
+
 
 bool check_blind( CHAR_DATA *ch )
 {

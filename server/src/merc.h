@@ -3804,6 +3804,11 @@ extern int gsn_prayer_plague;
 #define IS_SPELL( skill )               ( skill_table [ skill ].spell_fun != spell_null )
 #define CAN_DO( ch, sn )                ( (ch->pcdata->learned [ sn ] > 0) && ( form_skill_allow( ch, sn ) ) )
 
+/*
+ * Mobspec macros
+ */
+
+#define IS_MOBSPEC_PART( ch, stat ) ( IS_SET( species_table->(ch->mobspec->species), stat ) )
 
 /*
  * Description macros.
@@ -4604,6 +4609,7 @@ void  show_list_to_char                 args( ( OBJ_DATA *list, CHAR_DATA *ch, b
 char* format_obj_to_char                args( ( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort ) );
 void  show_char_to_char                 args( ( CHAR_DATA *list, CHAR_DATA *ch ) );
 void  set_title                         args( ( CHAR_DATA *ch, char *title ) );
+int   species_sn                        args( (CHAR_DATA *ch) );
 bool  check_blind                       args( ( CHAR_DATA *ch ) );
 int   has_pre_req                             ( CHAR_DATA *ch, int sn );
 char* number_suffix                           ( int num );
