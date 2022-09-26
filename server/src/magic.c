@@ -193,6 +193,84 @@ void say_spell( CHAR_DATA *ch, int sn )
 }
 
 
+bool is_immune_to (CHAR_DATA *victim, unsigned long int damtype)
+{
+        if (victim == NULL)
+        {
+                return FALSE;
+        }
+
+        /* This part to check the mobs spec - WIll need another seciton for character */
+        if ( victim->mobspec && IS_NPC(victim))
+        {
+                int ms;
+                for ( ms = 0; ms < MAX_MOB; ms++ )
+                {
+                        if ( !mob_table[ms].name )
+                                break;
+                        
+                        if ( !str_cmp(victim->mobspec, mob_table[ms].name))  /* our victim has a mob spec */
+                        {        
+                           
+                             switch (damtype)
+                                {
+                                case RES_FIRE:
+                                if (IS_SET (mob_table[ms].immunes, RES_FIRE))
+                                        return TRUE;
+                                case RES_COLD:
+                                if (IS_SET (mob_table[ms].immunes, RES_COLD))
+                                        return TRUE;
+                                case RES_ELECTRICITY:
+                                if (IS_SET (mob_table[ms].immunes, RES_ELECTRICITY))
+                                        return TRUE;
+                                case RES_ENERGY:
+                                if (IS_SET (mob_table[ms].immunes, RES_ENERGY))
+                                        return TRUE;
+                                case RES_ACID:
+                                if (IS_SET (mob_table[ms].immunes, RES_ACID))
+                                        return TRUE;
+                                case RES_POISON:
+                                if (IS_SET (mob_table[ms].immunes, RES_POISON))
+                                        return TRUE;
+                                case RES_DRAIN:
+                                if (IS_SET (mob_table[ms].immunes, RES_DRAIN))
+                                        return TRUE;
+                                case RES_SLEEP:
+                                if (IS_SET (mob_table[ms].immunes, RES_SLEEP))
+                                        return TRUE;
+                                case RES_CHARM:
+                                if (IS_SET (mob_table[ms].immunes, RES_CHARM))
+                                        return TRUE;
+                                case RES_HOLD:
+                                if (IS_SET (mob_table[ms].immunes, RES_HOLD))
+                                        return TRUE;
+                                case RES_MAGIC:
+                                if (IS_SET (mob_table[ms].immunes, RES_MAGIC))
+                                        return TRUE;                             
+                                case RES_PSYCHIC:
+                                if (IS_SET (mob_table[ms].immunes, RES_PSYCHIC))
+                                        return TRUE;
+                                case RES_HOLY:
+                                if (IS_SET (mob_table[ms].immunes, RES_HOLY))
+                                        return TRUE;
+                                case RES_DARK:
+                                if (IS_SET (mob_table[ms].immunes, RES_DARK))
+                                        return TRUE;
+                                case RES_CURSE:
+                                if (IS_SET (mob_table[ms].immunes, RES_CURSE))
+                                        return TRUE;
+                                case RES_PARALYSIS:
+                                if (IS_SET (mob_table[ms].immunes, RES_PARALYSIS))
+                                        return TRUE;                                
+                                return FALSE;
+                                }
+                        }
+                }
+        }
+        return FALSE;
+}
+
+
 /*
  * Compute a saving throw.
  * Negative apply's make saving throw better.
@@ -483,7 +561,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
                 say_spell( ch, sn );
         }
 
-        WAIT_STATE( ch, skill_table[sn].beats );
+        WAIT_STATE( ch, skill_table[sn].beats );      
 
         if ( !IS_NPC(ch)
             && ch->level <= LEVEL_HERO
@@ -504,6 +582,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
         else
         {
                 int chance;
+                unsigned long int res;
                 spell_attack_number = 1;
                 ch->mana -= mana;
 
@@ -513,6 +592,33 @@ void do_cast( CHAR_DATA *ch, char *argument )
                         ch->mana = 1;
                 }
 
+                if (skill_table[sn].target == TAR_CHAR_OFFENSIVE || skill_table[sn].target == TAR_CHAR_OFFENSIVE_SINGLE)
+                {
+                        /* Check for immunities/resists/vuln */
+                        bit_explode(ch, buf, skill_table[sn].res_type);
+                        for (res = 1; res > 0 && res <= BIT_MAX; res *= 2)
+                        {
+                                if (IS_SET(skill_table[sn].res_type, res))
+                                {
+                                        if (is_immune_to(victim, res))
+                                        {
+                                                send_to_char("They are immune to this type of damage!\n\r", ch);
+
+                                        /* Kick off Combat even if immune */
+                                        if (skill_table[sn].target == TAR_CHAR_OFFENSIVE
+                                        && victim->master != ch
+                                        && victim != ch
+                                        && IS_AWAKE(victim)
+                                        && !victim->fighting)
+                                        {
+                                                multi_hit(victim, ch, TYPE_UNDEFINED);
+                                        }
+                                        return;
+                                        }
+                                }
+                        }
+                }
+                
                 (*skill_table[sn].spell_fun) (sn, URANGE(1, ch->level, MAX_LEVEL), ch, vo);
 
                 /*

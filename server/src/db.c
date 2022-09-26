@@ -488,8 +488,6 @@ int     gsn_fireball;
 int     gsn_flamestrike;
 int     gsn_lightning_bolt;
 int     gsn_moonray;
-int     gsn_firestorm;
-int     gsn_meteor_storm;
 int     gsn_animate_dead;
 int     gsn_create_food;
 int     gsn_create_water;
@@ -1606,7 +1604,6 @@ void load_area_special (FILE *fp)
 int mob_lookup( const char *name )
 {
         int sn;
-        char buf2[100];
         for ( sn = 0; sn < MAX_MOB; sn++ )
         {
                 if ( !mob_table[sn].name )
@@ -1614,13 +1611,9 @@ int mob_lookup( const char *name )
 
                 if ( !str_cmp(name, mob_table[sn].name))
                 {
-                        sprintf(buf2, "[*****] BUG: Mob Lookup: %s: %s, %d",
-                        name, mob_table[sn].name, sn);
-                        log_string (buf2);
                         return sn;
                 }
         }
-
         return -1;
 }
 
@@ -1654,13 +1647,8 @@ void load_mob_spec (FILE *fp, MOB_INDEX_DATA *pMobIndex)
                         pMobIndex->mobspec = name;
                 
                 letter = fread_letter( fp ); 
-        }        
-        
+        }               
         ungetc( letter, fp ); 
-       
-        sprintf(buf2, "[*****] INFO: load_mob_spec: vnum %d  mobpspec .%s.",
-        pMobIndex->vnum, pMobIndex->mobspec);
-        log_string (buf2);
 }
 
 
@@ -1850,13 +1838,6 @@ void load_mobiles( FILE *fp )
                                 vnum,
                                 pMobIndex->short_descr);
                         log_string(buf);
-                }
-                        
-                if (pMobIndex->vnum == 2700)
-                {
-                        sprintf(buf2, "[*****] INFO: load_mob_spec: vnum %d  mobpspec %s",
-                        pMobIndex->vnum, pMobIndex->mobspec);
-                        log_string (buf2);  
                 }
         }
 }
@@ -3187,7 +3168,6 @@ void reset_area( AREA_DATA *pArea )
 CHAR_DATA *create_mobile( MOB_INDEX_DATA *pMobIndex )
 {
         CHAR_DATA *mob;
-        char buf2[100];
         if ( !pMobIndex )
         {
                 bug( "Create_mobile: NULL pMobIndex.", 0 );
@@ -3221,13 +3201,6 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA *pMobIndex )
         mob->alignment          = pMobIndex->alignment;
         mob->sex                = pMobIndex->sex;
         mob->body_form          = pMobIndex->body_form;
-        
-                
-                if (mob->pIndexData->vnum == 2700)
-                {       sprintf(buf2, "[*****] INFO: create_mob %s %s %s ",
-                                mob->name, mob->mobspec, pMobIndex->mobspec);
-                        log_string (buf2); 
-                }
         mob->armor              = interpolate( mob->level, 100, -100 );
 
         mob->max_hit = mob->level * 8

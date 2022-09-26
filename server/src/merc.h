@@ -4851,6 +4851,7 @@ bool   wiz_do                           args( ( CHAR_DATA *ch, char *command ) )
 /* magic.c */
 int  skill_lookup                       args( ( const char *name ) );
 bool saves_spell                        args( ( int level, CHAR_DATA *victim ) );
+bool is_immune_to                       args( (CHAR_DATA *victim, unsigned long int dam_type) );
 void obj_cast_spell                     args( ( int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *obj ) );
 bool mob_interacts_players                    ( CHAR_DATA *mob );
 
