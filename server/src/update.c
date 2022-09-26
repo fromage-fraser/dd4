@@ -3151,8 +3151,6 @@ void gmcp_update( void )
                                         if (prgnShow[iShow] != 1)
                                         {
                                                 colourconv_8bit(buf3, prgpstrShow[iShow], d->character);
-                                                /* log_string("Buf3: ");
-                                                log_string(buf3); */
 
                                                 if ( buf[0] == '\0' )
                                                 {
@@ -3169,8 +3167,6 @@ void gmcp_update( void )
                                                         strcat( buf, buf2 );
                                                 }
                                                 buf3[0] = '\0';
-                                                /* log_string("Buf with combine:");
-                                                log_string(buf); */
                                         }
                                 }
                                 if ( !IS_SET(d->character->act, PLR_COMBINE)
@@ -3192,8 +3188,6 @@ void gmcp_update( void )
                                                         buf3 );
                                                 strcat( buf, buf2 );
                                                 buf3[0] = '\0';
-                                                /* log_string("Buf without combine:");
-                                                log_string(buf); */
                                         }
                                 }
                                 free_string(prgpstrShow[iShow]);
@@ -3206,18 +3200,10 @@ void gmcp_update( void )
                         free_mem(prgpstrShow,   obj_count * sizeof( char * ) );
                         free_mem(prgnShow,      obj_count * sizeof( int ) );
 
-                        /*
-                        sprintf(buf,"Object count: %d\n", obj_count);
-                        log_string(buf);
-                        */
-
                         if ( buf[0] == '\0' )
                                 sprintf( buf, "[]" );
                         else
                                 strcat( buf, " ]" );
-
-                        /* log_string("Final buf:");
-                        log_string(buf); */
 
                         UpdateGMCPString( d, GMCP_INVENTORY, buf );
 

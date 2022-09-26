@@ -2062,6 +2062,7 @@ void do_recall (CHAR_DATA *ch, char *argument)
 
                 if (place == DEFAULT_RECALL
                     && ch->level > 40
+                    && ch->level < LEVEL_IMMORTAL
                     && ch->clan
                     && !ch->pcdata->current_recall)
                 {

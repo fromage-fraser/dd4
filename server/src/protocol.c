@@ -1989,7 +1989,6 @@ static void PerformHandshake( descriptor_t *apDescriptor, char aCmd, char aProto
       case (char)TELOPT_ATCP:
          #if defined(MUDLET_PACKAGE)
          /* Send the Mudlet GUI package to the user. */
-         /*log_string("Trying to match the Mudlet string here");*/
          if ( MatchString( "Mudlet",
                 pProtocol->pVariables[eMSDP_CLIENT_ID]->pValueString ) )
          {
@@ -2660,13 +2659,11 @@ static void SendATCP( descriptor_t *apDescriptor, const char *apVariable, const 
 {
    char ATCPBuffer[MAX_VARIABLE_LENGTH+1] = { '\0' };
 
-   /* log_string("Trying to send an atcp message"); */
    if ( apVariable != NULL && apValue != NULL )
    {
       /* protocol_t *pProtocol = apDescriptor ? apDescriptor->pProtocol : NULL; */
       /* Should really be replaced with a dynamic buffer */
       int RequiredBuffer = strlen(apVariable) + strlen(apValue) + 12;
-      /* log_string("apVariable != NULL && apValue != NULL"); */
 
       if ( RequiredBuffer >= MAX_VARIABLE_LENGTH )
       {
@@ -2676,14 +2673,12 @@ static void SendATCP( descriptor_t *apDescriptor, const char *apVariable, const 
             sprintf( ATCPBuffer,
                "SendATCP: %s %d bytes (exceeds MAX_VARIABLE_LENGTH of %d).\n",
                apVariable, RequiredBuffer, MAX_VARIABLE_LENGTH );
-           /* log_string("Variable too long 1"); */
          }
          else /* The variable name itself is too long */
          {
             sprintf( ATCPBuffer,
                "SendATCP: Variable name has a length of %d bytes (exceeds MAX_VARIABLE_LENGTH of %d).\n",
                RequiredBuffer, MAX_VARIABLE_LENGTH );
-           /* log_string("Variable name too long"); */
          }
 
          ReportBug( ATCPBuffer );
@@ -2694,15 +2689,10 @@ static void SendATCP( descriptor_t *apDescriptor, const char *apVariable, const 
       {
          sprintf( ATCPBuffer, "%c%c%c%s %s%c%c",
             IAC, SB, TELOPT_ATCP, apVariable, apValue, IAC, SE );
-         /* log_string("pProtocol->bATCP"); */
       }
 
-      /* log_string("ATCP buffer is:");
-      log_string(ATCPBuffer);
- */
       /* Just in case someone calls this function without checking ATCP */
       if ( ATCPBuffer[0] != '\0' ) {
-                /* log_string("Buffer not empty"); */
                 Write( apDescriptor, ATCPBuffer );
         }
    }
