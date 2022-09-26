@@ -1,11 +1,11 @@
 /***************************************************************************
  *  mob.c
  *
- *  Mapping system for Dragons Domain III
- *
+ *  Mob Specs & Species types go here.
+ *  
  *  
  *
- * 
+ * Brutus 2022.
  *
  ***************************************************************************/
 #if defined( macintosh )
@@ -16,26 +16,6 @@
 #include <stdio.h>
 #include <time.h>
 #include "merc.h"
-
-
-/*#define RES_FIRE		  BIT_0
-#define RES_COLD		  BIT_1
-#define RES_ELECTRICITY		  BIT_2
-#define RES_ENERGY		  BIT_3
-#define RES_BLUNT		  BIT_4
-#define RES_PIERCE		  BIT_5
-#define RES_SLASH		  BIT_6
-#define RES_ACID		  BIT_7
-#define RES_POISON		  BIT_8
-#define RES_DRAIN		  BIT_9
-#define RES_SLEEP		  BIT_10
-#define RES_CHARM		  BIT_11
-#define RES_HOLD		  BIT_12
-#define RES_NONMAGIC		  BIT_13
-#define RES_MAGIC		  BIT_14
-#define RES_PARALYSIS		  BIT_15
-*/
-
 
 const struct species_type  species_table [ MAX_SPECIES ] =
 {
