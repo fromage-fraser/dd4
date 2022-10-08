@@ -1758,7 +1758,7 @@ void load_mobiles( FILE *fp )
                 fread_number( fp, &stat );   /* Unused */
                 fread_number( fp, &stat );   /* Unused */
                 fread_number( fp, &stat );   /* Unused */
-                fread_letter( fp );   /* Unused */
+                pMobIndex->rank                 = fread_letter( fp );   /* Now used to determine rank of a mob - Brutus Oct 2022 */
                 fread_number( fp, &stat );   /* Unused */
                 fread_letter( fp );   /* Unused */
                 fread_number( fp, &stat );   /* Unused */

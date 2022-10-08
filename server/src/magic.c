@@ -600,13 +600,13 @@ void do_cast( CHAR_DATA *ch, char *argument )
                         {
                                 if (IS_SET(skill_table[sn].res_type, res))
                                 {
+                                       
                                         if (is_immune_to(victim, res))
                                         {
                                                 send_to_char("They are immune to this type of damage!\n\r", ch);
 
                                         /* Kick off Combat even if immune */
-                                        if (skill_table[sn].target == TAR_CHAR_OFFENSIVE
-                                        && victim->master != ch
+                                        if (victim->master != ch
                                         && victim != ch
                                         && IS_AWAKE(victim)
                                         && !victim->fighting)

@@ -1662,8 +1662,33 @@ void do_mstat( CHAR_DATA *ch, char *argument )
         {
                 /* All MOBILE mstat stuff goes here. */
 
-                sprintf( buf, "Vnum: {R%d{x\n\r",
+                sprintf( buf, "Vnum: {R%d{x ",
                         victim->pIndexData->vnum);
+                strcat( buf1, buf );
+
+                switch ( victim->pIndexData->rank )
+                {
+                        default:
+                        sprintf( buf, "Rank: {WCommon.{x\n\r");
+                        break;
+
+                        case 'd':
+                        sprintf( buf, "Rank: {WCommon.{x\n\r");
+                        break;
+
+                        case 'e':
+                        sprintf( buf, "Rank: {WElite.{x\n\r");
+                        break;
+
+                        case 'b':
+                        sprintf( buf, "Rank: {WBoss.{x\n\r");
+                        break;
+
+                        case 'r':
+                        sprintf( buf, "Rank: {WRare.{x\n\r");
+                        break;
+
+                }
                 strcat( buf1, buf );
 
                 if ( victim->short_descr[0] != '\0'
