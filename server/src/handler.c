@@ -331,6 +331,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
             case APPLY_WEIGHT:
             case APPLY_GOLD:
             case APPLY_EXP:
+            case APPLY_DRAGON_AURA:
                 break;
 
             case APPLY_HASTE:
