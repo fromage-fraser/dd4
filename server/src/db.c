@@ -1797,6 +1797,7 @@ void load_objects( FILE *fp )
                 char  letter;
                 int   vnum;
                 int   iHash;
+                int   item_affects=0;
 
                 letter = fread_letter( fp );
                 if ( letter != '#' )
@@ -1893,6 +1894,8 @@ void load_objects( FILE *fp )
 
                         if ( letter == 'A' )
                         {
+                                /* random affects - will likely delete this, or maybe a counter */
+                                
                                 AFFECT_DATA *paf;
 
                                 paf                     = alloc_perm( sizeof( *paf ) );
@@ -1904,6 +1907,7 @@ void load_objects( FILE *fp )
                                 paf->next               = pObjIndex->affected;
                                 pObjIndex->affected     = paf;
                                 top_affect++;
+                                item_affects++;
                         }
                         else if ( letter == 'E' )
                         {
@@ -1976,6 +1980,7 @@ void load_resets( FILE *fp )
 {
         RESET_DATA *pReset;
         int stat;
+        int last_mob_level=1;
 
         if ( !area_last )
         {
@@ -1988,6 +1993,7 @@ void load_resets( FILE *fp )
                 EXIT_DATA       *pexit;
                 ROOM_INDEX_DATA *pRoomIndex;
                 char             letter;
+                MOB_INDEX_DATA *pMobIndex;
 
                 letter = fread_letter( fp );
 
@@ -2024,12 +2030,18 @@ void load_resets( FILE *fp )
                 {
                     default:
                         bug( "Load_resets: bad command '%c'.", letter );
+                        last_mob_level=1;
                         exit( 1 );
                         break;
 
                     case 'M':
+
                         get_mob_index  ( pReset->arg1 );
                         get_room_index ( pReset->arg3 );
+                        /* random affects - get the mob rank, to determine random affects - Brutus Oct 2022*/
+                        pMobIndex = get_mob_index( pReset->arg1 );
+                        last_mob_level = pMobIndex->level;
+                        
                         break;
 
                     case 'O':
@@ -3102,7 +3114,7 @@ void reset_area( AREA_DATA *pArea )
 /*
  * Create an instance of a mobile.
  */
-CHAR_DATA *create_mobile( MOB_INDEX_DATA *pMobIndex )
+CHAR_DATA * create_mobile( MOB_INDEX_DATA *pMobIndex )
 {
         CHAR_DATA *mob;
 
@@ -3145,6 +3157,8 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA *pMobIndex )
                 + number_range( mob->level * mob->level / 4, mob->level * mob->level );
 
         mob->hit                = mob->max_hit;
+        mob->crit               = 5;
+        mob->haste              = 5;
 
         if (IS_SET(mob->act, ACT_CLAN_GUARD))
                 REMOVE_BIT(mob->affected_by, AFF_HIDE);
@@ -3294,6 +3308,13 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
                 break;
 
             case ITEM_WEAPON:
+                /* random stats 
+                        if (level == 109)
+                        {
+                                randomise_object(obj, 109);
+                        }
+                */
+                randomise_object(obj, level);
                 /* proceed if not constructed - as it will take damage fields from blueprint table */
                 if (IS_SET(obj->ego_flags, EGO_ITEM_CONSTRUCTED))
                 {
@@ -3317,6 +3338,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
                 break;
 
             case ITEM_ARMOR:
+                randomise_object(obj, level);
                 obj->value[0]   = number_fuzzy( level / 5 + 2 );
                 break;
 
@@ -4761,7 +4783,236 @@ void load_games( FILE *fp )
     return;
 }
 
+/* Random iser - Brutus Oct 2022 
+void randomise_object(CHAR_DATA *ch, OBJ_DATA *obj, int level) */
+void randomise_object( OBJ_DATA *obj, int level)
+{
+        AFFECT_DATA *paf;
+        int random;
+        int r1;
+        int r2;
+        int r3;
+        int r4;
+        char buf2[256];
+        char mod1;
+        char mod2;
+        char mod3;
+        char mod4;
+       
+   /*     if (obj->item_type != ITEM_WEAPON)
+        {
+                return;
+        }
+*/
+        /* Find some unique random buffs */
+        random = number_range ( 0,1000);
 
+        r1 = number_range ( 0, MAX_RANDOMS-1);
+
+        r2 = number_range ( 0, MAX_RANDOMS-1);
+        while (r1 == r2)
+        {
+                r2 = number_range ( 0, MAX_RANDOMS-1);
+        }
+
+        r3 = number_range ( 0, MAX_RANDOMS);
+        while ( r1 == r3 || r2 == r3)
+        {
+              r3 = number_range ( 0, MAX_RANDOMS-1);  
+        }
+
+        r4 = number_range ( 0, MAX_RANDOMS-1);
+        while ( r1 == r4 || r2 == r4 || r3 ==r4 )
+        {
+             r4 = number_range ( 0, MAX_RANDOMS-1);   
+        }
+
+        mod1 = random_list[r1].apply_buff;
+        mod2 = random_list[r2].apply_buff;
+        mod3 = random_list[r3].apply_buff;
+        mod4 = random_list[r4].apply_buff;
+
+        sprintf(buf2, "[*****] RANDOMS: %d: %d %d %d %d", random, r1, r2, r3, r4);
+        log_string (buf2);
+
+        if (random > 998) /* 1 in 1000 chance to get a legendary */
+        {
+
+                if (!affect_free)
+                {
+                        paf = alloc_perm( sizeof( *paf ) );
+                }
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+
+                paf->type       = -1;
+                paf->duration   = -1;
+                paf->location   = mod1;
+                paf->modifier   = random_list[r1].base_gain * 5;
+                paf->bitvector  = 0;
+                paf->next       = obj->affected;
+                obj->affected   = paf;     
+
+                if (!affect_free)
+                {
+                        paf = alloc_perm( sizeof( *paf ) );
+                }
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+
+                paf->type       = -1;
+                paf->duration   = -1;
+                paf->location   = mod2;
+                paf->modifier   = random_list[r2].base_gain *5;
+                paf->bitvector  = 0;
+                paf->next       = obj->affected;
+                obj->affected   = paf;   
+
+                if (!affect_free)
+                {
+                        paf = alloc_perm( sizeof( *paf ) );
+                }
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+
+                paf->type       = -1;
+                paf->duration   = -1;
+                paf->location   = mod3;
+                paf->modifier   = random_list[r3].base_gain *5;
+                paf->bitvector  = 0;
+                paf->next       = obj->affected;
+                obj->affected   = paf;   
+
+                if (!affect_free)
+                {
+                        paf = alloc_perm( sizeof( *paf ) );
+                }
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+
+                paf->type       = -1;
+                paf->duration   = -1;
+                paf->location   = mod4;
+                paf->modifier   = random_list[r4].base_gain * 5;
+                paf->bitvector  = 0;
+                paf->next       = obj->affected;
+                obj->affected   = paf;   
+
+        }
+        else if (random > 900)
+        {
+                if (!affect_free)
+                {
+                        paf = alloc_perm( sizeof( *paf ) );
+                }
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+
+                paf->type       = -1;
+                paf->duration   = -1;
+                paf->location   = mod1;
+                paf->modifier   = random_list[r1].base_gain * 5;
+                paf->bitvector  = 0;
+                paf->next       = obj->affected;
+                obj->affected   = paf;     
+
+                if (!affect_free)
+                {
+                        paf = alloc_perm( sizeof( *paf ) );
+                }
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+
+                paf->type       = -1;
+                paf->duration   = -1;
+                paf->location   = mod2;
+                paf->modifier   = random_list[r2].base_gain *5;
+                paf->bitvector  = 0;
+                paf->next       = obj->affected;
+                obj->affected   = paf;   
+
+                if (!affect_free)
+                {
+                        paf = alloc_perm( sizeof( *paf ) );
+                }
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+
+                paf->type       = -1;
+                paf->duration   = -1;
+                paf->location   = mod3;
+                paf->modifier   = random_list[r3].base_gain *5;
+                paf->bitvector  = 0;
+                paf->next       = obj->affected;
+                obj->affected   = paf;  
+        }
+        else if (random > 500)
+        {
+                if (!affect_free)
+                {
+                        paf = alloc_perm( sizeof( *paf ) );
+                }
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+
+                paf->type       = -1;
+                paf->duration   = -1;
+                paf->location   = mod1;
+                paf->modifier   = random_list[r1].base_gain * 5;
+                paf->bitvector  = 0;
+                paf->next       = obj->affected;
+                obj->affected   = paf;     
+
+                if (!affect_free)
+                {
+                        paf = alloc_perm( sizeof( *paf ) );
+                }
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+
+                paf->type       = -1;
+                paf->duration   = -1;
+                paf->location   = mod2;
+                paf->modifier   = random_list[r2].base_gain *5;
+                paf->bitvector  = 0;
+                paf->next       = obj->affected;
+                obj->affected   = paf;   
+
+
+        }
+        else    
+                return;
+        
+        
+        SET_BIT(obj->extra_flags, ITEM_MAGIC);
+}
 
 /*
  * This function is here to aid in debugging.

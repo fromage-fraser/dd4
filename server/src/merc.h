@@ -234,8 +234,14 @@ struct imbue_types
         int     base_gain;
 };
 
-#define MAX_IMBUE 9
+struct random_types
+{
+        char    apply_buff;
+        int     base_gain;
+};
 
+#define MAX_IMBUE 11
+#define MAX_RANDOMS 10
 #define BLUEPRINTS_MAX  43
 
 /* Blueprint structure : blueprint_name, blueprint_desc, blueprint_ref, blueprint_cost steel, titanium, adamantite, electrum, starmetal */
@@ -2235,6 +2241,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define APPLY_ENGRAVED                          47
 #define APPLY_SERRATED                          48
 #define APPLY_INSCRIBED                         49
+#define APPLY_CRIT                              50
+#define APPLY_HASTE                             51
 
 /*
  * Values for containers (value[1]).
@@ -2626,6 +2634,8 @@ struct char_data
         int                     exp_modifier;
         int                     damage_mitigation;
         int                     damage_enhancement;
+        int                     crit;
+        int                     haste;
         int                     inscription_total;
         int                     dazed;
         /*
@@ -3752,6 +3762,7 @@ extern const    struct pattern_points           pattern_list                    
 extern const    struct soar_points              soar_list                       [ MAX_SOAR ];
 extern const    struct HERB                     herb_table                      [ MAX_HERBS ];
 extern const    struct imbue_types              imbue_list                      [ MAX_IMBUE ];
+extern const    struct random_types             random_list                     [ MAX_RANDOMS ];
 extern const    struct song                     song_table                      [ MAX_SONGS ];
 extern char *   const  color_list                                               [ MAX_COLOR_LIST ];
 extern char *   const  clan_title               [ MAX_CLAN ]                    [ MAX_CLAN_LEVEL + 1 ];
@@ -4590,6 +4601,7 @@ void    bug                             args( ( const char *str, int param ) );
 void    log_string                      args( ( const char *str ) );
 void    tail_chain                      args( ( void ) );
 void    reset_area                      args( ( AREA_DATA * pArea ) );
+void    randomise_object                args( ( OBJ_DATA *obj, int level ) );
 
 /* fight.c */
 void    violence_update                 args( ( void ) );

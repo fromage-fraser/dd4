@@ -39,7 +39,7 @@ bool    check_acrobatics     args((CHAR_DATA *ch, CHAR_DATA *victim));
 bool    check_aura_of_fear   args((CHAR_DATA *ch, CHAR_DATA *victim));
 void    check_killer         args((CHAR_DATA *ch, CHAR_DATA *victim));
 bool    check_parry          args((CHAR_DATA *ch, CHAR_DATA *victim));
-void    dam_message          args((CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison));
+void    dam_message          args((CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison, bool crit));
 bool    check_shield_block   args((CHAR_DATA *ch, CHAR_DATA *victim));
 void    death_cry            args((CHAR_DATA *ch));
 void    group_gain           args((CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called));
@@ -537,9 +537,12 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         }
 
         /*
-         * Haste
+         * Haste Spell & Haste
          */
         if ((is_affected(ch, gsn_haste)) && !IS_AFFECTED(ch, AFF_PRONE))
+                one_hit(ch, victim, dt);
+        
+        if ( number_percent() < ch->haste)
                 one_hit(ch, victim, dt);
 
         /* for counterbalance - adds another attack.*/
@@ -1174,6 +1177,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
         int no_defense = 0;
         OBJ_DATA *turret_unit;
         int reflected_dam = 0;
+        bool crit = FALSE;
 
 
         if (victim->position == POS_DEAD)
@@ -1266,6 +1270,12 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 if (IS_AFFECTED(victim, AFF_SANCTUARY))
                         dam /= 2;
 
+                if ( number_percent() < ch->crit)
+                {
+                        dam *= 2;
+                        crit = TRUE;
+                }
+                        
                 /* this is to support strengthen, but could be applied for other things - Brutus */
                 if (!IS_NPC(victim))
                 {
@@ -1429,12 +1439,12 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
         }
 */
         if (dt != TYPE_UNDEFINED)
-                dam_message(ch, victim, dam, dt, poison);
+                dam_message(ch, victim, dam, dt, poison, crit);
 
         /* Reflector Unit (Smithy) */
         if ( (turret_unit) && (reflected_dam > 0) && (IS_SPELL(dt)) && (ch != victim) && (!IS_NPC(victim)))
         {
-                dam_message(victim, ch, reflected_dam, gsn_reflector_module, FALSE);
+                dam_message(victim, ch, reflected_dam, gsn_reflector_module, FALSE, FALSE);
                 ch->hit -= reflected_dam;
 
                 if (IS_NPC(ch) && IS_SET(ch->act, ACT_UNKILLABLE) && ch->hit < 1)
@@ -1461,7 +1471,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 if (is_affected(ch, gsn_resist_heat))
                         firedam *= 0.8;
 
-                dam_message(victim, ch, firedam, gsn_fireshield, FALSE);
+                dam_message(victim, ch, firedam, gsn_fireshield, FALSE, FALSE);
                 ch->hit -= firedam;
 
                 if (IS_NPC(ch) && IS_SET(ch->act, ACT_UNKILLABLE) && ch->hit < 1)
@@ -3212,7 +3222,7 @@ int xp_compute (CHAR_DATA *gch, CHAR_DATA *victim)
 
 
 
-void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
+void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison, bool crit)
 {
         static char * const attack_table [] =
         {
@@ -3244,12 +3254,19 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
         char          buf3         [ 256 ];
         char          buf4         [ 256 ];
         char          buf5         [ 256 ];
+        char          buf9         [ 256 ];
         char          punct;
 
         vs = get_damage_string(dam, TRUE);
         vp = get_damage_string(dam, FALSE);
 
         punct = (dam <= 24) ? '.' : '!';
+
+        if ((crit) && (dam > 0))
+                sprintf(buf9, " *CRITICAL HIT*");
+        else {
+                *buf9 = '\0';  
+        }
 
         if (dt == TYPE_HIT)
         {
@@ -3258,11 +3275,11 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                 if ( ( ( ch->gag == 2 )
                     && ( dam > 0 ) ) )
                 {
-                        sprintf(buf1, "You %s $N%c",       vs, punct);
+                        sprintf(buf1, "You %s $N%c (%d)",       vs, punct, dam);
                 }
                 else if ( dam > 0 )
                 {
-                        sprintf(buf1, "You %s $N%c",       vs, punct);
+                        sprintf(buf1, "You %s $N%c (%d)",       vs, punct, dam);
                 }
                 else if ( ch->gag < 2 )
                 {
@@ -3272,6 +3289,8 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                        *buf1 = '\0';
                 }
 
+                strcat( buf1, buf9 );
+                
                 /*
                  * Shade 10.5.2022 - make you getting hit stand out more, help when a lot of room spam
                  */
@@ -3324,18 +3343,24 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                 else
                 {
                         sprintf(buf1, "Your %s %s $N%c",  attack, vp, punct);
-
+                        strcat( buf1, buf9 );
+                        
                         if (dam > 0)
                         {
-                                sprintf(buf2, "$c's %s %s you%c", attack, vp, punct);
+                                sprintf(buf2, "$c's %s %s you%c (%d)", attack, vp, punct, dam);
+                                                strcat( buf2, buf9 );
                         }
                         else
                         {
                                 sprintf(buf2, "$c's %s %s you%c", attack, vp, punct);
+                                                strcat( buf2, buf9 );
                         }
                         sprintf(buf3, "$c's %s %s $N%c",  attack, vp, punct);
                         sprintf(buf4, "Your %s %s you%c", attack, vp, punct);
                         sprintf(buf5, "$c's %s %s $n%c",  attack, vp, punct);
+                        strcat( buf3, buf9 );
+                        strcat( buf4, buf9 );
+                        strcat( buf5, buf9 );
                 }
         }
 

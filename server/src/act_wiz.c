@@ -1435,6 +1435,11 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         victim->saving_throw,
                         victim->damage_mitigation);
                 strcat( buf1, buf );
+        
+                sprintf( buf, "Crit: {R%d{x  Haste: {R%d{x\n\r",
+                        victim->crit,
+                        victim->haste);
+                strcat( buf1, buf );                
 
                 sprintf( buf, "Align: {W%d{x  Exp: {W%d{x  Class: {W%d{x ({G%s{x)  SubCl: {W%d{x ({G%s{x)\n\rAge: {W%d{x  Fame: {W%d{x  Form: {W%s{x  Aggro_dam: {R%d{x  Rage: {R%d{x\n\r",
                         victim->alignment,
@@ -1715,6 +1720,11 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         GET_AC( victim ),
                         victim->saving_throw);
                 strcat( buf1, buf );
+
+                sprintf( buf, "Crit: {R%d{x  Haste: {R%d{x\n\r",
+                        victim->crit,
+                        victim->haste);
+                strcat( buf1, buf );  
 
                 sprintf( buf, "Position: {G%d{x [{W%s{x]  Wimpy: {W%d{x  Exp modifier: {W%d{x\n\r",
                         victim->position,
