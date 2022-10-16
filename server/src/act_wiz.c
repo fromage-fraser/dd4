@@ -937,6 +937,63 @@ void do_rstat( CHAR_DATA *ch, char *argument )
 }
 
 
+void do_onstat( CHAR_DATA *ch, char *argument )
+{
+        OBJ_INDEX_DATA *pObjIndex;
+        CHAR_DATA   *rch;
+                AFFECT_DATA *paf;
+        char         buf  [ MAX_STRING_LENGTH ];
+        char         buf1 [ MAX_STRING_LENGTH ];
+        char         arg  [ MAX_INPUT_LENGTH  ];
+
+
+        rch = get_char( ch );
+
+        buf[0] = '\0';
+        buf1[0] = '\0';
+
+        if ( !authorized( rch, gsn_mload ) )
+                return;
+
+        one_argument( argument, arg );
+
+        if ( arg[0] == '\0' || !is_number( arg ) )
+        {
+                send_to_char( "Syntax: mmstat <<vnum>.\n\r", ch );
+                return;
+        }
+
+        if ( !( pObjIndex = get_obj_index( atoi( arg ) ) ) )
+        {
+                send_to_char( "No object has that vnum.\n\r", ch );
+                return;
+        }
+
+        sprintf( buf, "Vnum: {R%d{x\n\r", pObjIndex->vnum);
+        strcat( buf1, buf );
+
+        sprintf( buf, "Short description: {W%s{x\n\rKeywords: {W%s{x\n\r",
+                pObjIndex->short_descr,
+                pObjIndex->name );
+        strcat( buf1, buf );
+
+        sprintf( buf, "Level: {W%d{x  Cost: {W%d{x \n\r",
+                pObjIndex->level, pObjIndex->cost );
+        strcat( buf1, buf );
+
+        for ( paf = pObjIndex->affected; paf; paf = paf->next )
+        {
+                sprintf( buf, "Affects {Y%s{x by {Y%d{x\n\r",
+                        affect_loc_name( paf->location ), paf->modifier );
+                strcat( buf1, buf );
+        }
+        
+        send_to_char( buf1, ch );
+        return;
+}
+
+
+
 void do_ostat( CHAR_DATA *ch, char *argument )
 {
         OBJ_DATA    *obj;
@@ -1185,7 +1242,7 @@ void do_ostat( CHAR_DATA *ch, char *argument )
 
         for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
         {
-                sprintf( buf, "Affects {Y%s{x by {Y%d{x\n\r",
+                sprintf( buf, "Affects {Y%s{x by {Y%d{x (Index)\n\r",
                         affect_loc_name( paf->location ), paf->modifier );
                 strcat( buf1, buf );
         }

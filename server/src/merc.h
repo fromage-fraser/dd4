@@ -241,7 +241,7 @@ struct random_types
 };
 
 #define MAX_IMBUE 11
-#define MAX_RANDOMS 10
+#define MAX_RANDOMS 15
 #define BLUEPRINTS_MAX  43
 
 /* Blueprint structure : blueprint_name, blueprint_desc, blueprint_ref, blueprint_cost steel, titanium, adamantite, electrum, starmetal */
@@ -336,6 +336,12 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define ITEM_SCORE_EPIC         600
 #define ITEM_SCORE_RARE         300
 #define ITEM_SCORE_UNCOMMON     120
+
+/* these are chance in 1000 - Brutus */
+#define LEGENDARY_CHANCE        1
+#define EPIC_CHANCE             10
+#define RARE_CHANCE             50
+#define UNCOMMON_CHANCE         150
 /*
  * Channel recall, 'review' command; Gezhp 2001
  */
@@ -4061,6 +4067,7 @@ DECLARE_DO_FUN( do_open_seal                    );      /*for werewolfs*/
 DECLARE_DO_FUN( do_order                        );
 DECLARE_DO_FUN( do_oset                         );
 DECLARE_DO_FUN( do_ostat                        );
+DECLARE_DO_FUN( do_onstat                       );
 DECLARE_DO_FUN( do_osstat                       );
 DECLARE_DO_FUN( do_owhere                       );
 DECLARE_DO_FUN( do_pagelen                      );
@@ -4641,6 +4648,8 @@ bool    multi_keyword_match             args( ( char *keys, char *namelist ) );
 bool    is_full_name                    args( ( const char *str, char *namelist ) );
 void    affect_to_char                  args( ( CHAR_DATA *ch, AFFECT_DATA *paf ) );
 void    affect_remove                   args( ( CHAR_DATA *ch, AFFECT_DATA *paf ) );
+void    affect_from_obj                 args( (OBJ_DATA *obj, AFFECT_DATA *paf ) );
+void    affect_obj_modify               args( (OBJ_DATA *obj, AFFECT_DATA *paf, bool fAdd ));
 void    affect_strip                    args( ( CHAR_DATA *ch, int sn ) );
 bool    is_affected                     args( ( CHAR_DATA *ch, int sn ) );
 void    affect_join                     args( ( CHAR_DATA *ch, AFFECT_DATA *paf ) );

@@ -431,6 +431,7 @@ const struct cmd_type cmd_table [] =
         { "mstat",      do_mstat,       POS_DEAD,    L_BUI,  LOG_NORMAL },
         { "mwhere",     do_mwhere,      POS_DEAD,    L_BUI,  LOG_NORMAL },
         { "ostat",      do_ostat,       POS_DEAD,    L_BUI,  LOG_NORMAL },
+        { "onstat",     do_onstat,      POS_DEAD,    L_BUI,  LOG_NORMAL },
         { "osstat",     do_osstat,      POS_DEAD,    L_BUI,  LOG_NORMAL },
         { "owhere",     do_owhere,      POS_DEAD,    L_BUI,  LOG_NORMAL },
         { "rstat",      do_rstat,       POS_DEAD,    L_BUI,  LOG_NORMAL },

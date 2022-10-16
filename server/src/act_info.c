@@ -153,6 +153,7 @@ int calc_item_score ( OBJ_DATA *obj )
                                 case APPLY_WIS:
                                 case APPLY_CON:
                                 case APPLY_CRIT:
+                                case APPLY_HASTE:
                                 {
                                         if (obj->level < 3 )
                                                 score += ((paf->modifier * 200) / obj->level);
@@ -174,7 +175,6 @@ int calc_item_score ( OBJ_DATA *obj )
 
                                 case APPLY_DAMROLL:
                                 case APPLY_HITROLL:
-                                case APPLY_HASTE:
                                 {
                                         if (obj->level < 10)
                                                 score += ((paf->modifier * 500) / obj->level);
