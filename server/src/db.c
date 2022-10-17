@@ -3204,6 +3204,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
         static OBJ_DATA obj_zero;
         OBJ_DATA*       obj;
         int             i;
+        int rank=4;
         const int       complete_heal_sn = skill_lookup("complete heal");
 
         if ( !pObjIndex )
@@ -3343,7 +3344,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
                         {
                                 paf->deleted = TRUE;
                         }
-                        randomise_object(obj, level);
+                        randomise_object(obj, level, rank);
                 }
                 /* proceed if not constructed - as it will take damage fields from blueprint table */
                 if (IS_SET(obj->ego_flags, EGO_ITEM_CONSTRUCTED))
@@ -3378,7 +3379,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
                         {
                                 paf->deleted = TRUE;
                         }
-                        randomise_object(obj, level);
+                        randomise_object(obj, level, rank);
                 }
                 break;
 
@@ -4824,7 +4825,7 @@ void load_games( FILE *fp )
 }
 
 /* Randomiser - Brutus Oct 2022 */
-void randomise_object( OBJ_DATA *obj, int level)
+void randomise_object( OBJ_DATA *obj, int level, int rank)
 {
         AFFECT_DATA *paf;
         int random;

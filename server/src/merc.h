@@ -4608,7 +4608,7 @@ void    bug                             args( ( const char *str, int param ) );
 void    log_string                      args( ( const char *str ) );
 void    tail_chain                      args( ( void ) );
 void    reset_area                      args( ( AREA_DATA * pArea ) );
-void    randomise_object                args( ( OBJ_DATA *obj, int level ) );
+void    randomise_object                args( ( OBJ_DATA *obj, int level, int rank) );
 
 /* fight.c */
 void    violence_update                 args( ( void ) );
