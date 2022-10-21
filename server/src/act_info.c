@@ -110,7 +110,7 @@ int get_colour_index_by_code ( int ccode )
 
 /* Idea is to return a score based on an object which is used to calculate rarity 
                 Scale is 0-1000 */
-int calc_item_score ( OBJ_DATA *obj)
+int calc_item_score ( OBJ_DATA *obj )
 {
         AFFECT_DATA             *paf;
         int score = 0;
@@ -152,6 +152,8 @@ int calc_item_score ( OBJ_DATA *obj)
                                 case APPLY_INT:
                                 case APPLY_WIS:
                                 case APPLY_CON:
+                                case APPLY_CRIT:
+                                case APPLY_HASTE:
                                 {
                                         if (obj->level < 3 )
                                                 score += ((paf->modifier * 200) / obj->level);
@@ -243,6 +245,7 @@ int calc_item_score ( OBJ_DATA *obj)
                                 case APPLY_INT:
                                 case APPLY_WIS:
                                 case APPLY_CON:
+                                case APPLY_CRIT:
                                 {
                                         if (obj->level < 3 )
                                                 score += ((paf->modifier * 200) / obj->level);
@@ -264,6 +267,7 @@ int calc_item_score ( OBJ_DATA *obj)
 
                                 case APPLY_DAMROLL:
                                 case APPLY_HITROLL:
+                                case APPLY_HASTE:
                                 {
                                         if (obj->level < 3 )
                                                 score += ((paf->modifier * 150) / obj->level);

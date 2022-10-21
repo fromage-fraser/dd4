@@ -331,8 +331,15 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
             case APPLY_WEIGHT:
             case APPLY_GOLD:
             case APPLY_EXP:
+            case APPLY_DRAGON_AURA:
                 break;
 
+            case APPLY_HASTE:
+                ch->haste +=mod;
+
+            case APPLY_CRIT:
+                ch->crit +=mod;
+                
             case APPLY_MANA:
                 ch->max_mana += mod;
                 break;
@@ -2723,6 +2730,9 @@ char *affect_loc_name( int location )
             case APPLY_ENGRAVED:                return "damage enhancement";
             case APPLY_SERRATED:                return "bleed over time";
             case APPLY_INSCRIBED:               return "rune focus";
+            case APPLY_CRIT:                    return "critical hit chance";
+            case APPLY_HASTE:                   return "attack speed";
+            case APPLY_DRAGON_AURA:             return "aura of the dragon";
         }
 
         bug( "Affect_location_name: unknown location %d.", location );

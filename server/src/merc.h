@@ -236,8 +236,14 @@ struct imbue_types
         int     base_gain;
 };
 
-#define MAX_IMBUE 9
+struct random_types
+{
+        char    apply_buff;
+        int     base_gain;
+};
 
+#define MAX_IMBUE 11
+#define MAX_RANDOMS 15
 #define BLUEPRINTS_MAX  43
 
 /* Blueprint structure : blueprint_name, blueprint_desc, blueprint_ref, blueprint_cost steel, titanium, adamantite, electrum, starmetal */
@@ -328,10 +334,24 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
 #define MAX_VAMPIRE_GAG             27      /* 26 + 1 for 'swallow' | ugly vampire/werewolf hack */
 
+/* Define the levels for items - Brutus */
 #define ITEM_SCORE_LEGENDARY    900
 #define ITEM_SCORE_EPIC         600
 #define ITEM_SCORE_RARE         300
 #define ITEM_SCORE_UNCOMMON     120
+
+/* these are chance in 1000 - Brutus */
+#define LEGENDARY_CHANCE        1
+#define EPIC_CHANCE             10
+#define RARE_CHANCE             25
+#define UNCOMMON_CHANCE         150
+/* define the types of mobs we have - Brutus */
+#define NPC_COMMON      1
+#define NPC_RARE        2
+#define NPC_ELITE       3
+#define NPC_BOSS        4
+#define NPC_WORLD_BOSS  5
+
 /*
  * Channel recall, 'review' command; Gezhp 2001
  */
@@ -2277,6 +2297,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define APPLY_ENGRAVED                          47
 #define APPLY_SERRATED                          48
 #define APPLY_INSCRIBED                         49
+#define APPLY_CRIT                              50
+#define APPLY_HASTE                             51
 
 /*
  * Values for containers (value[1]).
@@ -2672,6 +2694,8 @@ struct char_data
         int                     exp_modifier;
         int                     damage_mitigation;
         int                     damage_enhancement;
+        int                     crit;
+        int                     haste;
         int                     inscription_total;
         int                     dazed;
         /*
@@ -3872,6 +3896,7 @@ extern const    struct pattern_points           pattern_list                    
 extern const    struct soar_points              soar_list                       [ MAX_SOAR ];
 extern const    struct HERB                     herb_table                      [ MAX_HERBS ];
 extern const    struct imbue_types              imbue_list                      [ MAX_IMBUE ];
+extern const    struct random_types             random_list                     [ MAX_RANDOMS ];
 extern const    struct song                     song_table                      [ MAX_SONGS ];
 extern char *   const  color_list                                               [ MAX_COLOR_LIST ];
 extern char *   const  clan_title               [ MAX_CLAN ]                    [ MAX_CLAN_LEVEL + 1 ];
@@ -4171,6 +4196,7 @@ DECLARE_DO_FUN( do_open_seal                    );      /*for werewolfs*/
 DECLARE_DO_FUN( do_order                        );
 DECLARE_DO_FUN( do_oset                         );
 DECLARE_DO_FUN( do_ostat                        );
+DECLARE_DO_FUN( do_onstat                       );
 DECLARE_DO_FUN( do_osstat                       );
 DECLARE_DO_FUN( do_owhere                       );
 DECLARE_DO_FUN( do_pagelen                      );
@@ -4712,6 +4738,7 @@ void    bug                             args( ( const char *str, int param ) );
 void    log_string                      args( ( const char *str ) );
 void    tail_chain                      args( ( void ) );
 void    reset_area                      args( ( AREA_DATA * pArea ) );
+void    randomise_object                args( ( OBJ_DATA *obj, int level, int rank) );
 
 /* fight.c */
 void    violence_update                 args( ( void ) );
@@ -4751,6 +4778,8 @@ bool    multi_keyword_match             args( ( char *keys, char *namelist ) );
 bool    is_full_name                    args( ( const char *str, char *namelist ) );
 void    affect_to_char                  args( ( CHAR_DATA *ch, AFFECT_DATA *paf ) );
 void    affect_remove                   args( ( CHAR_DATA *ch, AFFECT_DATA *paf ) );
+void    affect_from_obj                 args( (OBJ_DATA *obj, AFFECT_DATA *paf ) );
+void    affect_obj_modify               args( (OBJ_DATA *obj, AFFECT_DATA *paf, bool fAdd ));
 void    affect_strip                    args( ( CHAR_DATA *ch, int sn ) );
 bool    is_affected                     args( ( CHAR_DATA *ch, int sn ) );
 void    affect_join                     args( ( CHAR_DATA *ch, AFFECT_DATA *paf ) );

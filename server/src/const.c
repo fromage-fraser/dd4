@@ -192,8 +192,28 @@ const struct imbue_types imbue_list [ MAX_IMBUE ] =
         { "to_dex", "More damage", APPLY_DEX, 1 },
         { "to_damage", "More damage", APPLY_DAMROLL, 12 },
         { "to_ac", "More damage", APPLY_AC, -22 },
+        { "to_crit", "Crit damage", APPLY_CRIT, 1},
+        { "to_haste", "Haste Gain", APPLY_HASTE, 2},
 };
 
+const struct random_types random_list [ MAX_RANDOMS ] =
+{
+        { APPLY_DAMROLL, 1000},
+        { APPLY_HITROLL, 1000},
+        { APPLY_AC, 22},
+        { APPLY_STR, 2500},
+        { APPLY_DEX, 2500},
+        { APPLY_WIS, 2500},
+        { APPLY_CON, 2500},
+        { APPLY_CRIT, 2500},
+        { APPLY_MANA, 20},
+        { APPLY_HIT, 20},
+        { APPLY_RESIST_ACID, 2500},
+        { APPLY_RESIST_LIGHTNING, 2500},
+        { APPLY_RESIST_HEAT, 2500},
+        { APPLY_RESIST_COLD, 2500},
+        { APPLY_HASTE, 2500},
+};
 
 const struct HERB herb_table [ MAX_HERBS ] =
 {

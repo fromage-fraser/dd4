@@ -183,6 +183,8 @@ void fwrite_char (CHAR_DATA *ch, FILE *fp)
         fprintf(fp, "Gag         %d\n",  ch->gag);
         fprintf(fp, "DamageMit   %d\n",  ch->damage_mitigation);
         fprintf(fp, "DamangeEnh  %d\n",  ch->damage_enhancement);
+        fprintf(fp, "Crit        %d\n",  ch->crit);
+        fprintf(fp, "Haste       %d\n",  ch->haste);
         fprintf(fp, "Quiet       %d\n",  ch->silent_mode);
         fprintf(fp, "AllowLook   %d\n",  ch->pcdata->allow_look);
         fprintf(fp, "XPLevel     %d\n",  ch->pcdata->level_xp_loss);
@@ -467,6 +469,8 @@ bool load_char_obj (DESCRIPTOR_DATA *d, char *name)
         ch->silent_mode = 0;
         ch->pcdata->allow_look = 0;
         ch->pcdata->level_xp_loss = 0;
+        ch->crit = 5;
+        ch->haste = 5;
         ch->pcdata->air_supply = FULL_AIR_SUPPLY;
         ch->tournament_team = -1;
         ch->pcdata->deity_patron = -1;
@@ -727,6 +731,7 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         KEY("Clan", ch->clan, fread_number( fp, &stat ));
                         KEY("ClnLvl", ch->clan_level, fread_number( fp, &stat ));
                         KEY("Copper", ch->copper, fread_number( fp, &stat ));
+                        KEY("Crit", ch->crit, fread_number( fp, &stat ));
                         KEY("CurRecall", ch->pcdata->current_recall, fread_number( fp, &stat ));
 
                         if (!str_cmp(word, "Cond"))
@@ -824,6 +829,7 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         break;
 
                     case 'H':
+                        KEY("Haste", ch->haste, fread_number( fp, &stat ));
                         KEY("Hit", ch->hitroll, fread_number( fp, &stat ));
 
                         if (!str_cmp(word, "HpMnMv"))
