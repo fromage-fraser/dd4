@@ -2000,7 +2000,7 @@ void load_resets( FILE *fp )
         RESET_DATA *pReset;
         int stat;
         int last_mob_level=1;
-                char buf[256];
+    /*            char buf[256]; */
 
         if ( !area_last )
         {
@@ -3339,6 +3339,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
                 if (level >= 10)
                 {
                         AFFECT_DATA *paf;
+                        rank = 4;
                         /* strip old effects then randomise stats */
                         for ( paf = obj->affected; paf; paf = paf->next )
                         {
@@ -3374,6 +3375,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
                 if (level >= 10)
                 {
                         AFFECT_DATA *paf;
+                        rank = 1;
                         /* strip old effects then randomise stats */
                         for ( paf = obj->affected; paf; paf = paf->next )
                         {
@@ -4829,6 +4831,7 @@ void randomise_object( OBJ_DATA *obj, int level, int rank)
 {
         AFFECT_DATA *paf;
         int random;
+        int mob_bonus=1;
         int r1;
         int r2;
         int r3;
@@ -4880,6 +4883,17 @@ void randomise_object( OBJ_DATA *obj, int level, int rank)
                 }
         }
 
+        /* Figure out the mob rank*/
+        if (rank >=4)
+                mob_bonus=10;
+        else if (rank ==3 )
+                mob_bonus=3;
+        else if (rank == 2)
+                mob_bonus=2;
+        else
+                mob_bonus=1;
+
+
         /* Find some unique random buffs */
         random = number_range ( 0,1000);
 
@@ -4919,7 +4933,7 @@ void randomise_object( OBJ_DATA *obj, int level, int rank)
         sprintf(buf2, "[*****] RANDOMS: %d: 1:(%d %d %d) 2:(%d %d %d) 3:(%d %d %d) 4:(%d %d %d)", random, mod1, gain1, modifier1, mod2, gain2, modifier2, mod3, gain3, modifier3, mod4, gain4, modifier4);
         log_string (buf2); 
 
-        if (random > (999-LEGENDARY_CHANCE)) /* 1 in 1000 chance to get a legendary */
+        if (random > (999-(LEGENDARY_CHANCE * mob_bonus)) && rank >= NPC_BOSS)/* 1 in 1000 chance to get a legendary */
         {
 
               /* try to randomise the gains for each mod */
@@ -5004,7 +5018,7 @@ void randomise_object( OBJ_DATA *obj, int level, int rank)
                 obj->affected   = paf;   
 
         }
-        else if (random > (999-EPIC_CHANCE))
+        else if (random > (999-(EPIC_CHANCE * mob_bonus)) && rank >= NPC_ELITE)
         {
                 /* try to randomise the gains for each mod */
                 while ( number_fuzzy(ITEM_SCORE_EPIC) > 
@@ -5071,7 +5085,7 @@ void randomise_object( OBJ_DATA *obj, int level, int rank)
                 paf->next       = obj->affected;
                 obj->affected   = paf;  
         }
-        else if (random > (999-RARE_CHANCE))
+        else if (random > (999-(RARE_CHANCE * mob_bonus)))
         {
                 
                 /* try to randomise the gains for each mod */
@@ -5121,7 +5135,35 @@ void randomise_object( OBJ_DATA *obj, int level, int rank)
 
 
         }
-        else    
+        else if (random > (999-(UNCOMMON_CHANCE * mob_bonus) ))
+        {
+                
+                /* try to randomise the gains for each mod */
+                while ( number_fuzzy(ITEM_SCORE_RARE) > 
+                ( (modifier1 * gain1)/level )) 
+                {
+                modifier1 += number_fuzzy(2500/gain1);      
+                }
+
+                if (!affect_free)
+                {
+                        paf = alloc_perm( sizeof( *paf ) );
+                }
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+
+                paf->type       = -1;
+                paf->duration   = -1;
+                paf->location   = mod1;
+                paf->modifier   = modifier1;
+                paf->bitvector  = 0;
+                paf->next       = obj->affected;
+                obj->affected   = paf;   
+        }
+        else   
                 return;
         
         

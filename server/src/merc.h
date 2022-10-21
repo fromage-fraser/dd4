@@ -332,6 +332,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
 #define MAX_VAMPIRE_GAG             27      /* 26 + 1 for 'swallow' | ugly vampire/werewolf hack */
 
+/* Define the levels for items - Brutus */
 #define ITEM_SCORE_LEGENDARY    900
 #define ITEM_SCORE_EPIC         600
 #define ITEM_SCORE_RARE         300
@@ -340,8 +341,15 @@ bool    has_tranquility ( CHAR_DATA *ch );
 /* these are chance in 1000 - Brutus */
 #define LEGENDARY_CHANCE        1
 #define EPIC_CHANCE             10
-#define RARE_CHANCE             50
+#define RARE_CHANCE             25
 #define UNCOMMON_CHANCE         150
+/* define the types of mobs we have - Brutus */
+#define NPC_COMMON      1
+#define NPC_RARE        2
+#define NPC_ELITE       3
+#define NPC_BOSS        4
+#define NPC_WORLD_BOSS  5
+
 /*
  * Channel recall, 'review' command; Gezhp 2001
  */
