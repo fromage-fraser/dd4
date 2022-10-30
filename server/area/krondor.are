@@ -32,7 +32,7 @@ him firmly to the ground.  Nidhogg gnaws on the chains in a vain attempt
 to escape.
 ~
 2|4|16777216 8|16|32|128|512 0 S
-75 20 -280 4d50+700 4d10+35
+75 20 -280 4e50+700 4d10+35
 0 0
 8 8 1
 #30001
@@ -137,7 +137,7 @@ He eyes you suspiciously not only because you are a stranger, but because
 you are an ARMED stranger.  Better not do any funny stuff in his presence.
 ~
 1 128|512|32768 1000 S
-75 30 -30 5d35+350 3d15+30
+75 30 -30 5r35+350 3d15+30
 0 0
 8 8 1
 #30009
@@ -524,7 +524,7 @@ but pure evil.  Its ember eyes pierce through your soul, and you feel part
 of your existence consumed.
 ~
 2|32 2|4|16|32|128|512|8192|65536 -1000 S
-100 -20 -280 4d50+700 2d10+60
+100 -20 -280 4e50+700 2d10+60
 0 0
 8 8 0
 #30040

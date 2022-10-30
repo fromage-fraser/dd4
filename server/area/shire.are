@@ -20,7 +20,7 @@ than the oldest man, he seems to have an inner strength which most mortals
 cannot overcome.
 ~
 2|64 8 500 S
-18 5 0 18d18+180 3d2+15
+18 5 0 18r18+180 3d2+15
 0 30000
 8 8 1
 #1101
@@ -176,7 +176,7 @@ as long as he's in office, the Shire will always remain a safe haven for
 Shire folk.
 ~
 64 0 400 S
-14 7 -3 14d14+140 1d4+12
+14 7 -3 14e14+140 1d4+12
 0 20000
 6 6 1
 #1113

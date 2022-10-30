@@ -696,7 +696,7 @@ void do_morph_snake (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
-                bite = create_object(get_obj_index(OBJ_SNAKE_BITE), ch->level);
+                bite = create_object(get_obj_index(OBJ_SNAKE_BITE), ch->level, 1, FALSE);
                 obj_to_char(bite, ch);
                 form_equip_char(ch, bite, WEAR_WIELD);
 
@@ -747,7 +747,7 @@ void do_morph_scorpion (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
-                sting = create_object(get_obj_index(OBJ_SCORPION_STING), ch->level);
+                sting = create_object(get_obj_index(OBJ_SCORPION_STING), ch->level, 1, FALSE);
 
                 if (!affect_free)
                         paf = alloc_perm(sizeof(*paf));
@@ -976,7 +976,7 @@ void do_morph_spider (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
-                mandibles = create_object(get_obj_index(OBJ_SPIDER_MANDIBLES), ch->level);
+                mandibles = create_object(get_obj_index(OBJ_SPIDER_MANDIBLES), ch->level, 1, FALSE);
                 if (mandibles)
                 {
                         obj_to_char(mandibles, ch);
@@ -1042,7 +1042,7 @@ void do_morph_bear (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
-                claws = create_object(get_obj_index(OBJ_BEAR_CLAWS), ch->level);
+                claws = create_object(get_obj_index(OBJ_BEAR_CLAWS), ch->level, 1, FALSE);
                 if (claws)
                 {
                         claws->value[1] *= 1.5;
@@ -1311,8 +1311,8 @@ void do_morph_tiger (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
-                claws = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level);
-                fangs = create_object(get_obj_index(OBJ_TIGER_FANGS), ch->level);
+                claws = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level, 1, FALSE);
+                fangs = create_object(get_obj_index(OBJ_TIGER_FANGS), ch->level, 1, FALSE);
 
                 if (!affect_free)
                         paf = alloc_perm(sizeof(*paf));
@@ -1396,8 +1396,8 @@ void do_morph_wolf (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
-                claws = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level);
-                fangs = create_object(get_obj_index(OBJ_TIGER_FANGS), ch->level);
+                claws = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level, 1, FALSE);
+                fangs = create_object(get_obj_index(OBJ_TIGER_FANGS), ch->level, 1, FALSE);
 
                 if (!affect_free)
                         paf = alloc_perm(sizeof(*paf));
@@ -1529,8 +1529,8 @@ void do_morph_direwolf (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
-                claws = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level);
-                fangs = create_object(get_obj_index(OBJ_TIGER_FANGS), ch->level);
+                claws = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level, 1, FALSE);
+                fangs = create_object(get_obj_index(OBJ_TIGER_FANGS), ch->level, 1, FALSE);
 
                 if (!affect_free)
                         paf = alloc_perm(sizeof(*paf));
@@ -1658,7 +1658,7 @@ void do_morph_hydra (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
-                teeth = create_object(get_obj_index(OBJ_HYDRA_TEETH), ch->level);
+                teeth = create_object(get_obj_index(OBJ_HYDRA_TEETH), ch->level, 1, FALSE);
                 teeth->value[1] *= 2;
                 teeth->value[2] *= 2;
 
@@ -1756,8 +1756,8 @@ void do_morph_dragon (CHAR_DATA *ch, bool to_form)
                         affect_to_char (ch, &af);
                 }
 
-                claws = create_object(get_obj_index(OBJ_DRAGON_CLAWS), ch->level);
-                fangs = create_object(get_obj_index(OBJ_DRAGON_CLAWS), ch->level);
+                claws = create_object(get_obj_index(OBJ_DRAGON_CLAWS), ch->level, 1, FALSE);
+                fangs = create_object(get_obj_index(OBJ_DRAGON_CLAWS), ch->level, 1, FALSE);
 
                 if (!affect_free)
                         paf = alloc_perm(sizeof(*paf));
@@ -1845,7 +1845,7 @@ void do_morph_phoenix (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
-                beak = create_object(get_obj_index(OBJ_PHOENIX_BEAK), ch->level);
+                beak = create_object(get_obj_index(OBJ_PHOENIX_BEAK), ch->level, 1, FALSE);
                 if (beak)
                 {
                         beak->value[1] *= 1.5;
@@ -2029,8 +2029,8 @@ void do_morph_griffin (CHAR_DATA *ch, bool to_form)
                         affect_to_char(ch, &af);
                 }
 
-                claws = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level);
-                claw = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level);
+                claws = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level, 1, FALSE);
+                claw = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level, 1, FALSE);
 
                 if (!affect_free)
                         paf = alloc_perm(sizeof(*paf));

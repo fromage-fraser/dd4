@@ -18,7 +18,7 @@ flashes off her fractal scales, creating a sparkling ignis fatuus that
 confuses your senses and disorientates you.
 ~
 1|2048 0 1000 S
-826 1 -1 5d10+550 4d6+3
+826 1 -1 5w10+550 4d6+3
 0 0
 8 8 2
 >greet_prog 100~

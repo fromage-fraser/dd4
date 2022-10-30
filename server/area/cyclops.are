@@ -28,7 +28,7 @@ and body. This cyclops is very experienced and he is moving toward you
 shouting, "Ahhhh some REAL practice for me at last. MUHAHAHAHAHAHA."
 ~
 2|32|64 8|16|32|128|512 -1000 S
-46 -2 -200 1d1+2000 1d50+50
+46 -2 -200 1e1+2000 1d50+50
 0 0
 8 8 1
 #14003
@@ -130,7 +130,7 @@ has emerged from, victorious. You shudder as you see the mighty jagged dagger he
 holds in his right hand. The orb that he holds seem to draw you to it.
 ~
 2|32|64 0 -1000 S
-55 0 0 0d0+0 0d0+0
+55 0 0 0b0+0 0d0+0
 0 0
 8 8 1
 #14012
@@ -154,7 +154,7 @@ when I saw you slay the King, for I knew that the good cities would no longer
 be in danger. For this I am indebted to you.
 ~
 2|8|64|128|1024|4096 8|32|128|512|2048|8192|524288 1000 S
-56 0 0 0d0+0 0d0+0
+56 0 0 0r0+0 0d0+0
 0 0
 8 8 2
 & 50 'teacher base'
@@ -507,7 +507,7 @@ it sneak in the shadows with great success. Its dual-wielded weapons will be
 a great problem for you to overcome.
 ~
 2|4|64|4096 2|8|128|2048|65536 -400 S
-45 0 0 0d0+0 0d0+0
+45 0 0 0r0+0 0d0+0
 1000 0
 8 8 1
 #0

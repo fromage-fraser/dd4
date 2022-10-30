@@ -92,7 +92,7 @@ Painkiller stands here, sharpening his bladed armour.
 Oh dear. Painkiller, dressed in his spiked and bladed armour is going to kill you.
 ~
 4|32|64|4096 8|32|512|8192 -650 S
-55 0 0 0d0+0 0d0+0
+55 0 0 0e0+0 0d0+0
 0 0
 8 8 1
 >greet_prog 100~

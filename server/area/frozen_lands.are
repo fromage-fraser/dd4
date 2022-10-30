@@ -236,7 +236,7 @@ of a winter sky. The dragon regards you momentarily then continues with its sear
 
 ~
 64 8|32|128|32768|524288|8388608 1000 S
-80 0 0 0d0+0 0d0+0
+80 0 0 0e0+0 0d0+0
 128 0
 8 8 0
 >give_prog dragon gem~
@@ -347,7 +347,7 @@ path you will probably be crushed to death.
 
 ~
 32|64 8|32|8388608 0 S
-90 0 0 0d0+0 0d0+0
+90 0 0 0r0+0 0d0+0
 172 0
 8 8 0
 >all_greet_prog 100~
@@ -420,7 +420,7 @@ interest and more than a hint of mischief.
 
 ~
 2|64|512 8|32|128|512|8192|524288|1048576|8388608 1000 S
-85 0 0 0d0+0 0d0+0
+85 0 0 0e0+0 0d0+0
 80 0
 8 8 2
 >hitprcnt_prog 33~

@@ -2266,9 +2266,9 @@ OBJ_DATA *create_money( int plat, int gold, int silver, int copper )
         }
 
         if ( (plat + gold + silver + copper) == 1 )
-                obj = create_object( get_obj_index( OBJ_VNUM_MONEY_ONE  ), 0 );
+                obj = create_object( get_obj_index( OBJ_VNUM_MONEY_ONE  ), 0, 1, FALSE );
         else
-                obj = create_object( get_obj_index( OBJ_VNUM_MONEY_SOME ), 0 );
+                obj = create_object( get_obj_index( OBJ_VNUM_MONEY_SOME ), 0, 1, FALSE);
 
         obj->value[0]           = copper;
         obj->value[1]           = silver;
@@ -3394,6 +3394,7 @@ char *extra_bit_name (unsigned long int extra_flags)
             case ITEM_ANTI_SMITHY:          return "anti_smithy";
             case ITEM_CURSED:               return "cursed";
             case ITEM_RUNE:                 return "rune";
+            case ITEM_DONOT_RANDOMISE:      return "pure";
 
             default: return "(unknown)";
         }

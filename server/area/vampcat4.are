@@ -211,7 +211,7 @@ It seems to be the well-bemuscled executioner from Midgaard's Temple Square,
 yet something about him that you cannot put your finger on strikes you as odd.
 ~
 2|64|4096 8|32|128|512|2048|32768|16777216 -1000 S
-80 0 0 0d0+0 0d0+0
+80 0 0 0e0+0 0d0+0
 0 0
 8 8 1
 #25609
@@ -386,7 +386,7 @@ The figure in the heart of the shadows is barely visible to you even with
 your enhanced sensory powers, she seems no more than the fading memory of a woman.
 ~
 2|4|32|64|4096 2|8|32|512|32768|65536|524288|1048576|8388608 -400 S
-75 0 0 0d0+0 0d0+0
+75 0 0 0r0+0 0d0+0
 0 0
 8 8 2
 >all_greet_prog 100~

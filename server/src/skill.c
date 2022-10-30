@@ -3169,7 +3169,7 @@ void do_dowse(CHAR_DATA *ch, char *arg)
         }
         else
         {
-                spring = create_object( get_obj_index( OBJ_VNUM_SPRING ), 0 );
+                spring = create_object( get_obj_index( OBJ_VNUM_SPRING ), 0, 1, FALSE );
                 spring->timer    = ch->level;
                 spring->timermax = spring->timer;
                 obj_to_room( spring, ch->in_room );
@@ -3299,7 +3299,7 @@ void do_gather (CHAR_DATA *ch, char *arg)
 
         for( i=0; i<herb_dose; i++ )
         {
-                herb = create_object( get_obj_index( ITEM_VNUM_HERB ), 0 );
+                herb = create_object( get_obj_index( ITEM_VNUM_HERB ), 0, 1, FALSE );
                 free_string(herb->name);
                 free_string(herb->short_descr);
                 free_string(herb->description);
@@ -3695,7 +3695,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 return;
         }
 
-        creation = create_object( get_obj_index( blueprint_list[i].blueprint_ref ), ch->level );
+        creation = create_object( get_obj_index( blueprint_list[i].blueprint_ref ), ch->level, 1, FALSE );
         obj_to_char( creation, ch );
         if (blueprint_list[i].blueprint_ego >= 1 )
         {
@@ -4108,7 +4108,7 @@ void do_inscribe (CHAR_DATA *ch, char *argument)
         if (found_rune)
         {
                 OBJ_DATA        *creation;
-                creation = create_object( get_obj_index( blueprint_list[i].blueprint_ref ), ch->level );
+                creation = create_object( get_obj_index( blueprint_list[i].blueprint_ref ), ch->level, 1, FALSE );
                 obj_to_room( creation, ch->in_room );
                 if (blueprint_list[i].blueprint_ego >= 1 )
                 {
@@ -4710,7 +4710,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                         {
                                 OBJ_DATA *deployed;
 
-                                deployed = create_object( get_obj_index( unit ), ch->level );
+                                deployed = create_object( get_obj_index( unit ), ch->level, 1, FALSE );
                                 obj_to_room(deployed, ch->in_room);
                                 act("Your turret deploys $p.", ch, deployed, NULL ,TO_CHAR);
                                 act("$n deploys $p from their turret.", ch, deployed, NULL, TO_ROOM);
@@ -4855,7 +4855,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                                         {
                                                 OBJ_DATA *deployed;
 
-                                                deployed = create_object( get_obj_index( unit ), ch->level );
+                                                deployed = create_object( get_obj_index( unit ), ch->level, 1, FALSE );
                                                 obj_to_room(deployed, ch->in_room);
                                                 act("Your turret deploys $p.", ch, deployed, NULL ,TO_CHAR);
                                                 act("$n deploys $p from their turret.", ch, deployed, NULL, TO_ROOM);

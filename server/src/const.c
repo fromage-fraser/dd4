@@ -193,26 +193,26 @@ const struct imbue_types imbue_list [ MAX_IMBUE ] =
         { "to_damage", "More damage", APPLY_DAMROLL, 12 },
         { "to_ac", "More damage", APPLY_AC, -22 },
         { "to_crit", "Crit damage", APPLY_CRIT, 1},
-        { "to_haste", "Haste Gain", APPLY_HASTE, 2},
+        { "to_haste", "Haste Gain", APPLY_HASTE, 1},
 };
 
 const struct random_types random_list [ MAX_RANDOMS ] =
 {
-        { APPLY_DAMROLL, 1000},
-        { APPLY_HITROLL, 1000},
+        { APPLY_DAMROLL, SCORE_HIT_DAM},
+        { APPLY_HITROLL, SCORE_HIT_DAM},
         { APPLY_AC, 22},
-        { APPLY_STR, 2500},
-        { APPLY_DEX, 2500},
-        { APPLY_WIS, 2500},
-        { APPLY_CON, 2500},
-        { APPLY_CRIT, 2500},
-        { APPLY_MANA, 20},
-        { APPLY_HIT, 20},
-        { APPLY_RESIST_ACID, 2500},
-        { APPLY_RESIST_LIGHTNING, 2500},
-        { APPLY_RESIST_HEAT, 2500},
-        { APPLY_RESIST_COLD, 2500},
-        { APPLY_HASTE, 2500},
+        { APPLY_STR, SCORE_STATS},
+        { APPLY_DEX, SCORE_STATS},
+        { APPLY_WIS, SCORE_STATS },
+        { APPLY_CON, SCORE_STATS },
+        { APPLY_CRIT, SCORE_STATS },
+        { APPLY_MANA, SCORE_HP_MANA},
+        { APPLY_HIT, SCORE_HP_MANA},
+        { APPLY_RESIST_ACID, SCORE_RESISTS},
+        { APPLY_RESIST_LIGHTNING, SCORE_RESISTS},
+        { APPLY_RESIST_HEAT, SCORE_RESISTS},
+        { APPLY_RESIST_COLD, SCORE_RESISTS},
+        { APPLY_HASTE, SCORE_RESISTS},
 };
 
 const struct HERB herb_table [ MAX_HERBS ] =

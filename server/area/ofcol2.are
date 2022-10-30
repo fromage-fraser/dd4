@@ -29,7 +29,7 @@ is the hardest metal she can find.  She is willing to defend Ofcol to her
 death.
 ~
 2|16777216 8328 1000 S
-33 -10 -10 33d33+400 1d4+30
+33 -10 -10 33e33+400 1d4+30
 0 200000
 8 8 2
 #602
@@ -43,7 +43,7 @@ descendent of a surviving cityguard of old Thalos.  He believes that everything
 has to be hard won to be kept, and that laxity is for the weak.
 ~
 64 8|128|8192 1000 S
-27 -3 -7 27d27+270 1d4+20
+27 -3 -7 27r27+270 1d4+20
 0 100000
 8 8 1
 #603
@@ -59,7 +59,7 @@ or her magic, no one has ever found out.  She isn't very strong physically,
 but she need not be.
 ~
 2|1024 8200 1000 S
-27 0 -8 27d27+180 1d4+17
+27 0 -8 27r27+180 1d4+17
 0 100000
 8 8 2
 & 15 'teacher base'

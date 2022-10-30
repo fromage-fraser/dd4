@@ -945,7 +945,7 @@ meet your maker, and I know who I am betting on. Be warned however, you cannot
 defeat me......"
 ~
 2|4|64 8|32|128|512|8192|1048576 -1000 S
-107 0 0 0d0+0 0d0+0
+107 0 0 0b0+0 0d0+0
 0 0
 8 8 1
 >greet_prog 100~
@@ -2343,7 +2343,7 @@ one~
 (Vibrating) THE ONE~
 The sword that legends are made of. There can only be ONE!~
 ~
-5 1|2|64|1024|2048|1048576 1|8192
+5 1|2|64|1024|2048|1048576|137438953472 1|8192
 0~ 70~ 120~ 11~
 15 0 0
 A

@@ -147,7 +147,7 @@ A masked man with muscles bulging all over his body.  You can tell by
 the look in his eyes that he enjoys seeing you cower in his presence.
 ~
 2|64|4096|16777216 8|128|2048|16777216 1000 S
-80 -10 -20 1d1+1499 1d4+30
+80 -10 -20 1e1+1499 1d4+30
 0 500000
 8 8 1
 >fight_prog 40~
@@ -163,7 +163,7 @@ The Healer says Type 'heal' to see what I offer.
 Although retired from adventuring, The healer has made a comeback.
 ~
 2|64|4096|8192|32768|16777216 8|128|8388608|16777216 1000 S
-40 -10 -20 1d1+29999 2d4+30
+40 -10 -20 1r1+29999 2d4+30
 0 0
 8 8 1
 #3020

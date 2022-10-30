@@ -419,6 +419,7 @@ const struct cmd_type cmd_table [] =
         { "disconnect", do_disconnect,  POS_DEAD,    L_APP,  LOG_ALWAYS },
         { "protocols",  do_protocols,   POS_DEAD,    L_SEN,  LOG_NORMAL },
         { "mfind",      do_mfind,       POS_DEAD,    L_APP,  LOG_NORMAL },
+        { "mrank",      do_mrank,       POS_DEAD,    L_APP,  LOG_NORMAL },
         { "ofind",      do_ofind,       POS_DEAD,    L_APP,  LOG_NORMAL },
         { "oscore",     do_oscore,      POS_DEAD,    L_APP,  LOG_NORMAL },    
         { "osfind",     do_osfind,      POS_DEAD,    L_APP,  LOG_NORMAL },

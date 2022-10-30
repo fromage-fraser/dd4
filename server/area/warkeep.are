@@ -31,7 +31,7 @@ He would appear to be almost angelic were it not for the diabolical gleam
 to his eyes, and the evil grin on his thin, cruel lips.
 ~
 2|64|128 4|8|16|32|128|512|8192|524288 -1000 S
-87 0 0 0d0+0 0d0+0
+87 0 0 0e0+0 0d0+0
 0 0
 8 8 0
 #15901
@@ -45,7 +45,7 @@ a variety of potions, scrolls and throwing daggers. She would be very
 attractive if she didn't cackle insanely so much.
 ~
 2|64|128 8|128|512|8192 -1000 S
-80 0 0 0d0+0 0d0+0
+80 0 0 0e0+0 0d0+0
 0 0
 8 8 2
 #15902
@@ -59,7 +59,7 @@ it again. And now you're in here with this eight foot tall, four armed,
 green skinned monstrosity from the lower planes. Great.
 ~
 2|32|64 8|128|512|524288 -1000 S
-90 0 0 0d0+0 0d0+0
+90 0 0 0r0+0 0d0+0
 0 0
 8 8 0
 #15903

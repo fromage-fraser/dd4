@@ -39,7 +39,7 @@ wrote,
          by her bloodstained hands.'
 ~
 2|4 8|32|128|512 -1000 S
-85 0 -2 3d6+425 2d8+7
+85 0 -2 3b6+425 2d8+7
 0 0
 8 8 2
 #16803
@@ -52,7 +52,7 @@ of both soothing balms and poisons.  Even death could not release
 him... the necromancers just reanimated him.
 ~
 2 8|32|128 -900 S
-75 2 0 2d8+222 2d10+2
+75 2 0 2e8+222 2d10+2
 0 0
 8 8 1
 #16804

@@ -137,7 +137,7 @@ in grime.  He giggles like a little girl.  "On your knees," he gloats.  "You're
 gonna hurt in the morning!"
 ~
 2|64 0 -200 S
-18 0 0 0d0+0 0d0+0
+18 0 0 0r0+0 0d0+0
 0 0
 8 8 1
 #25211
@@ -184,7 +184,7 @@ Levisticus raises a fist and the bloodthirsty crowd roars!  His large net looks
 vicious: he can wield it with great skill, and deadly efficiency.
 ~
 2|64 0 100 S
-21 0 0 0d0+0 0d0+0
+21 0 0 0e0+0 0d0+0
 0 0
 8 8 1
 #25215
@@ -358,7 +358,7 @@ in many campaigns.  He inspects his men carefully, adjusting straps and
 positioning armour, all the time joking but having complete authority.
 ~
 64 0 200 S
-24 0 0 0d0+0 0d0+0
+24 0 0 0e0+0 0d0+0
 0 0
 8 8 1
 #25229
@@ -397,7 +397,7 @@ throng and shouts, "Yes, my friends, watch the lads cut these dogs like corn:
 you'll be next!  Hahahar!"
 ~
 64 0 -500 S
-25 0 0 0d0+0 0d0+0
+25 0 0 0b0+0 0d0+0
 0 0
 8 8 1
 #25232

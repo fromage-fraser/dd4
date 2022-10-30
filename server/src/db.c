@@ -227,6 +227,7 @@ int     gsn_guide;
 int     gsn_log;
 int     gsn_memory;
 int     gsn_mfind;
+int     gsn_mrank;
 int     gsn_mload;
 int     gsn_mnstat;
 int     gsn_mset;
@@ -2905,7 +2906,7 @@ void reset_area( AREA_DATA *pArea )
                                 break;
                         }
 
-                        obj       = create_object( pObjIndex, number_fuzzy( level ) );
+                        obj = create_object( pObjIndex, number_fuzzy( level ), 1, FALSE );
                         obj->cost = 0;
                         obj_to_room( obj, pRoomIndex );
                         last = TRUE;
@@ -2947,7 +2948,7 @@ void reset_area( AREA_DATA *pArea )
                                 break;
                         }
 
-                        obj = create_object(pObjIndex, number_fuzzy(pReset->arg1));
+                        obj = create_object(pObjIndex, number_fuzzy(pReset->arg1), 1, FALSE);
                         obj->cost = 0;
                         obj_to_room(obj, pRoomIndex);
                         last = TRUE;
@@ -2980,7 +2981,7 @@ void reset_area( AREA_DATA *pArea )
                                 break;
                         }
 
-                        obj = create_object( pObjIndex, number_fuzzy( obj_to->level ) );
+                        obj = create_object( pObjIndex, number_fuzzy( obj_to->level ), 1, FALSE );
                         obj_to_obj( obj, obj_to );
                         last = TRUE;
                         break;
@@ -3067,7 +3068,9 @@ void reset_area( AREA_DATA *pArea )
                                 }
                                 /* End of item level additions */
 
-                                obj = create_object( pObjIndex, olevel );
+                                        
+                                                
+                                obj = create_object( pObjIndex, olevel, 1, FALSE );
 
                                 if ( pReset->command == 'G' )
                                         SET_BIT( obj->extra_flags, ITEM_INVENTORY );
@@ -3076,10 +3079,40 @@ void reset_area( AREA_DATA *pArea )
                         {
                                 /* Make sure MUD School loot is level 1 */
                                 if (IS_SET(pArea->area_flags, AREA_FLAG_SCHOOL) && level <= 5) {
-                                        obj = create_object(pObjIndex, 1);
+                                        obj = create_object(pObjIndex, 1, 1, FALSE);
                                 }
                                 else {
-                                        obj = create_object(pObjIndex, number_fuzzy(level));
+                                        int rank = 1;
+                                        if (IS_NPC(mob))
+                                        switch ( mob->rank )
+                                                {
+                                                        default:
+                                                        rank = 1;
+                                                        break;
+
+                                                        case 'd':
+                                                        rank = 1;
+                                                        break;
+
+                                                        case 'e':
+                                                        rank = 3;
+                                                        break;
+
+                                                        case 'b':
+                                                        rank = 4;
+                                                        break;
+
+                                                        case 'r':
+                                                        rank = 2;
+                                                        break;
+
+                                                        case 'w':
+                                                        rank = 5;
+                                                        break;
+
+                                                }
+
+                                        obj = create_object(pObjIndex, number_fuzzy(level), rank, TRUE);
                                 }
 
                                 if (obj->level > LEVEL_HERO) {
@@ -3206,6 +3239,7 @@ void reset_area( AREA_DATA *pArea )
 CHAR_DATA * create_mobile( MOB_INDEX_DATA *pMobIndex )
 {
         CHAR_DATA *mob;
+        int rank_bonus;
         if ( !pMobIndex )
         {
                 bug( "Create_mobile: NULL pMobIndex.", 0 );
@@ -3232,7 +3266,35 @@ CHAR_DATA * create_mobile( MOB_INDEX_DATA *pMobIndex )
         mob->mobspec            = pMobIndex->mobspec;
         mob->spec_fun           = pMobIndex->spec_fun;
         mob->prompt             = str_dup( "<%hhp %mm %vmv> " );
+        mob->rank               = pMobIndex->rank;
 
+        switch ( mob->rank )
+                {
+                        default:
+                        rank_bonus = 1;
+                        break;
+
+                        case 'd':
+                        rank_bonus = 1;
+                        break;
+
+                        case 'e':
+                        rank_bonus = 2;
+                        break;
+
+                        case 'b':
+                        rank_bonus = 5;
+                        break;
+
+                        case 'r':
+                        rank_bonus = 3;
+                        break;
+
+                        case 'w':
+                        rank_bonus = 10;
+                        break;
+
+                }
         mob->level              = number_fuzzy( pMobIndex->level );
         mob->act                = pMobIndex->act;
         mob->affected_by        = pMobIndex->affected_by;
@@ -3243,6 +3305,7 @@ CHAR_DATA * create_mobile( MOB_INDEX_DATA *pMobIndex )
 
         mob->max_hit = mob->level * 8
                 + number_range( mob->level * mob->level / 4, mob->level * mob->level );
+        mob->max_hit *= rank_bonus;
 
         mob->hit                = mob->max_hit;
         mob->crit               = 5;
@@ -3261,12 +3324,11 @@ CHAR_DATA * create_mobile( MOB_INDEX_DATA *pMobIndex )
 /*
  * Create an instance of an object.
  */
-OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
+OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, int rank, bool randomise)
 {
         static OBJ_DATA obj_zero;
         OBJ_DATA*       obj;
         int             i;
-        int rank=4;
         const int       complete_heal_sn = skill_lookup("complete heal");
 
         if ( !pObjIndex )
@@ -3398,10 +3460,9 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
 
             case ITEM_WEAPON:
                 /* random stats  */
-                if (level >= 10)
+                if (level >= 10 && randomise && (!IS_OBJ_STAT(obj,ITEM_DONOT_RANDOMISE)))
                 {
                         AFFECT_DATA *paf;
-                        rank = 4;
                         /* strip old effects then randomise stats */
                         for ( paf = obj->affected; paf; paf = paf->next )
                         {
@@ -3434,10 +3495,9 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
             case ITEM_ARMOR:
                 /* random stats  */
                 obj->value[0]   = number_fuzzy( level / 5 + 2 );
-                if (level >= 10)
+                if (level >= 10 && randomise && (!IS_OBJ_STAT(obj,ITEM_DONOT_RANDOMISE)))
                 {
                         AFFECT_DATA *paf;
-                        rank = 1;
                         /* strip old effects then randomise stats */
                         for ( paf = obj->affected; paf; paf = paf->next )
                         {
@@ -4709,6 +4769,127 @@ void log_string (const char *str)
         fprintf(stderr, "%s :: %s\n", &strtime[4], str);
 }
 
+void do_mrank( CHAR_DATA *ch, char *argument )
+{
+
+        char       arg  [ MAX_INPUT_LENGTH    ];
+        char buf[MAX_STRING_LENGTH];
+        AREA_DATA *pArea, *first_sort;
+                CHAR_DATA *victim;
+        int count;
+                                        OBJ_DATA  *in_obj;
+                                OBJ_DATA  *obj;
+                                int        obj_counter = 1;
+
+        first_sort = area_first;
+        count = 0;
+
+        one_argument( argument, arg );
+
+        for ( pArea = first_sort; pArea; pArea = pArea->next )
+        {
+
+              if ( multi_keyword_match( arg, pArea->name ) )
+              {
+                        sprintf(buf, "<15>%-30s<0>| <42>Rooms:<0> %5d-%-5d"
+                        " <33>Objs:<0> %5d-%-5d <228>Mobs:<0> %5d-%-5d\n\r",
+                        (pArea->name ? pArea->name : "<160>(invalid)<0>"),
+                        pArea->low_r_vnum, pArea->hi_r_vnum,
+                        pArea->low_o_vnum, pArea->hi_o_vnum,
+                        pArea->low_m_vnum, pArea->hi_m_vnum);
+
+                send_to_char( buf, ch );
+                
+                sprintf( buf, "\n\r{W[Special Mobs]{x-----------------------------------------------------\n\r");
+                send_to_char (buf, ch);
+
+                for ( victim = char_list; victim; victim = victim->next )
+                {
+                        if (victim->in_room->vnum > pArea->low_r_vnum && victim->in_room->vnum < pArea->hi_r_vnum )
+                        {
+                                if ( IS_NPC( victim )
+                                && victim->in_room
+                                && ( victim->rank == 'e' || victim->rank == 'b' || victim->rank == 'r' || victim->rank == 'w') )
+                                {
+                                        char *display_rank;
+                                        
+                                        display_rank = "";
+
+                                        if (victim->rank == 'e')
+                                                display_rank = " <93>[Elite]<0>";
+                                        
+                                        if (victim->rank == 'r')
+                                                display_rank = " <39>[Rare]<0>";
+                                        
+                                        if (victim->rank == 'w')
+                                                display_rank = " <81>[WO<75>RL<69>D B<75>OS<81>S]<0>";
+                                        if (victim->rank == 'b')
+                                                display_rank = " <514><556><16>[<560>BOSS<561>]<0><557>";
+
+
+
+                                        sprintf( buf, "[%5d] %-28s at [%5d] %s\n\r",
+                                                
+                                                victim->pIndexData->vnum,
+                                                victim->short_descr,
+                                                victim->in_room->vnum,
+                                                display_rank );
+                                        send_to_char (buf, ch);
+                                }
+                        }
+
+                }
+                
+                sprintf( buf, "\n\r{W[Special Objects (Epic or Legendary)]{x-----------------------------\n\r");
+                send_to_char (buf, ch);
+                
+                for ( obj = object_list; obj; obj = obj->next )
+                {
+
+                        if (obj->pIndexData->vnum < pArea->low_o_vnum || obj->pIndexData->vnum > pArea->hi_o_vnum)
+                                continue;
+                        if (calc_item_score(obj) < ITEM_SCORE_EPIC)
+                                continue;
+
+                        for ( in_obj = obj; in_obj->in_obj; in_obj = in_obj->in_obj )
+                                ;
+
+                        
+                        if ( in_obj->carried_by )
+                        {
+                                if ( !can_see( ch, in_obj->carried_by ) )
+                                        continue;
+
+                                sprintf( buf, "[%-3d] {g%s{x carried by {c%s{x at [%5d] (Obj Score:%4d)\n\r",
+                                        obj_counter,
+                                        obj->short_descr,
+                                        PERS( in_obj->carried_by, ch ),
+                                        in_obj->carried_by->in_room->vnum, calc_item_score(obj)  );
+                        }
+                        else
+                        {
+                                sprintf( buf, "[%-3d] {g%s{x in {c%s{x at [%5d] (Obj Score:%4d)\n\r",
+                                        obj_counter,
+                                        obj->short_descr,
+                                        ( !in_obj->in_room ) ?
+                                        "somewhere" : in_obj->in_room->name,
+                                        ( !in_obj->in_room ) ?
+                                        0 : in_obj->in_room->vnum, calc_item_score(obj) );
+                        }
+
+                        obj_counter++;
+                        buf[0] = UPPER( buf[0] );
+                        send_to_char (buf, ch);
+                }
+                count++;
+              }
+        }
+
+        sprintf( buf, "Areas listed: %d\n\r", count );
+        send_to_char( buf, ch );
+        return;
+}
+
 
 /*
  * Display vnums currently assigned to areas            -Altrag & Thoric
@@ -4908,7 +5089,7 @@ void randomise_object( OBJ_DATA *obj, int level, int rank)
         int modifier2 = 1;
         int modifier3 = 1;
         int modifier4 = 1;
-        char buf2[256];
+   /*     char buf2[256]; */
         char mod1;
         char mod2;
         char mod3;
@@ -4949,11 +5130,11 @@ void randomise_object( OBJ_DATA *obj, int level, int rank)
 
         /* Figure out the mob rank*/
         if (rank >=4)
-                mob_bonus=10;
+                mob_bonus=50;
         else if (rank ==3 )
-                mob_bonus=3;
+                mob_bonus=10;
         else if (rank == 2)
-                mob_bonus=2;
+                mob_bonus=5;
         else
                 mob_bonus=1;
 
@@ -4994,9 +5175,9 @@ void randomise_object( OBJ_DATA *obj, int level, int rank)
         modifier3 = number_fuzzy(2500/gain3);  
         modifier4 = number_fuzzy(2500/gain4);  
 
-        sprintf(buf2, "[*****] RANDOMS: %d: 1:(%d %d %d) 2:(%d %d %d) 3:(%d %d %d) 4:(%d %d %d)", random, mod1, gain1, modifier1, mod2, gain2, modifier2, mod3, gain3, modifier3, mod4, gain4, modifier4);
+     /*   sprintf(buf2, "[*****] RANDOMS: %d: 1:(%d %d %d) 2:(%d %d %d) 3:(%d %d %d) 4:(%d %d %d)", random, mod1, gain1, modifier1, mod2, gain2, modifier2, mod3, gain3, modifier3, mod4, gain4, modifier4);
         log_string (buf2); 
-
+*/
         if (random > (999-(LEGENDARY_CHANCE * mob_bonus)) && rank >= NPC_BOSS)/* 1 in 1000 chance to get a legendary */
         {
 
@@ -5203,7 +5384,7 @@ void randomise_object( OBJ_DATA *obj, int level, int rank)
         {
                 
                 /* try to randomise the gains for each mod */
-                while ( number_fuzzy(ITEM_SCORE_RARE) > 
+                while ( number_fuzzy(ITEM_SCORE_UNCOMMON) > 
                 ( (modifier1 * gain1)/level )) 
                 {
                 modifier1 += number_fuzzy(2500/gain1);      

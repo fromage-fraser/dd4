@@ -1728,7 +1728,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         victim->pIndexData->vnum);
                 strcat( buf1, buf );
 
-                switch ( victim->pIndexData->rank )
+                switch ( victim->rank )
                 {
                         default:
                         sprintf( buf, "Rank: {WCommon.{x\n\r");
@@ -1748,6 +1748,10 @@ void do_mstat( CHAR_DATA *ch, char *argument )
 
                         case 'r':
                         sprintf( buf, "Rank: {WRare.{x\n\r");
+                        break;
+
+                        case 'w':
+                        sprintf( buf, "Rank: {WWorld Boss.{x\n\r");
                         break;
 
                 }
@@ -2203,6 +2207,121 @@ void do_mfind( CHAR_DATA *ch, char *argument )
 }
 
 
+
+ /*       CHAR_DATA *rch;
+        CHAR_DATA *victim;
+        char       buf  [ MAX_STRING_LENGTH   ];
+        char       arg  [ MAX_INPUT_LENGTH    ];
+        bool       founda;
+        bool    found;
+        AREA_DATA *pArea, *first_sort;
+        int        count = 0;
+
+        first_sort = pArea;
+
+        rch = get_char( ch );
+
+        if ( !authorized( rch, gsn_mfind ) )
+                return;
+
+        one_argument( argument, arg );
+        if ( arg[0] == '\0' )
+        {
+                send_to_char( "Mrank <<zone>\n\r", ch );
+                return;
+        }
+
+        if (strlen (arg) < 3)
+        {
+                send_to_char ("Argument must be at least three letters long.\n\r", ch);
+                return;
+        }
+
+        founda   = FALSE;
+        found   = FALSE;
+
+        for ( pArea = first_sort; pArea; pArea = pArea->next )
+        {
+
+                        sprintf( buf, "area %s arg %s\n\r", pArea->name, arg );
+                        send_to_char (buf, ch);
+
+                        count++;
+        }
+
+
+        *for (pArea = area_first; pArea; pArea = pArea->next)
+        {
+                        
+                sprintf( buf, "area %s arg %s\n\r", pArea->name, arg );
+                        send_to_char (buf, ch);
+                if ( multi_keyword_match( arg, pArea->name ) )
+                {
+                        founda=TRUE;
+                        break;
+                }
+        }
+*
+        if ( !founda )
+        {
+                send_to_char( "Cant find that area.\n\r", ch);
+                return;
+        }
+
+        for ( victim = char_list; victim; victim = victim->next )
+        {
+                int rank;
+                switch ( victim->rank )
+                {
+                        default:
+                        rank = 1;
+                        break;
+
+                        case 'd':
+                        rank = 1;
+                        break;
+
+                        case 'e':
+                        rank = 3;
+                        break;
+
+                        case 'b':
+                        rank = 4;
+                        break;
+
+                        case 'r':
+                        rank = 2;
+                        break;
+
+                        case 'w':
+                        rank = 5;
+                        break;
+
+                }        
+                if ( IS_NPC( victim )
+                    && victim->in_room->vnum >= pArea->low_r_vnum
+                    && victim->in_room->vnum <= pArea->hi_r_vnum
+                    && rank > 1 )
+                {
+                        found = TRUE;
+                        sprintf( buf, "%-3d [%5d] [%2d] [%5d]\n\r",
+                                ++count,
+                                victim->pIndexData->vnum,
+                                rank,
+                                victim->in_room->vnum );
+                        send_to_char (buf, ch);
+                }
+        }
+
+        if ( !found )
+        {
+                send_to_char( "Nothing like that in the domain.\n\r", ch);
+                return;
+        }
+
+        return; 
+}
+*/
 
 void do_ofind( CHAR_DATA *ch, char *argument )
 {
@@ -2898,7 +3017,7 @@ void do_oload( CHAR_DATA *ch, char *argument )
 
         for ( cc_def = 1; cc_def <= copies; cc_def++ )
         {
-                obj = create_object( pObjIndex, level );
+                obj = create_object( pObjIndex, level, 1, TRUE );
                 if ( IS_SET(obj->wear_flags, ITEM_TAKE) )
                 {
                         if ( (ch->carry_number + copies) > can_carry_n( ch ))
@@ -4262,7 +4381,7 @@ void do_oclanitem (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        clanobj = create_object(get_obj_index(itemvnum), level);
+        clanobj = create_object(get_obj_index(itemvnum), level, 1, FALSE);
         set_obj_owner(clanobj, victim->name);
         obj_to_char(clanobj, ch);
 
@@ -6206,7 +6325,7 @@ void do_wizbrew (CHAR_DATA *ch, char *argument)
          *      Okedoke, command's okay so let's make a potion
          */
 
-        potion = create_object (get_obj_index (ITEM_VNUM_WIZBREW_VIAL), 0);
+        potion = create_object (get_obj_index (ITEM_VNUM_WIZBREW_VIAL), 0, 1, FALSE);
         if (!potion)
         {
                 send_to_char ("Oops, couldn't create the potion object: abort!\n\r", ch);

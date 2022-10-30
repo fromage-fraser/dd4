@@ -241,7 +241,7 @@ where he was shipwrecked and he lost his flaming belt. He was using the belt
 for warmth when he was captured by Redbeard, and brought here for ransom.
 ~
 2 0 1000 S
-28 0 0 0d0+0 0d0+0
+28 0 0 0e0+0 0d0+0
 0 0
 8 8 1
 #17030
@@ -254,7 +254,7 @@ little interest in the affairs of men, dwarves, elves, etc. He
 stands some 20' tall, and is made entirely of flame.
 ~
 2 8|32|128|512 0 S
-32 0 0 0d0+0 0d0+0
+32 0 0 0e0+0 0d0+0
 96 0
 8 8 0
 #17031
@@ -269,7 +269,7 @@ from a once profitable career. He knows enough to delegate his work
 to others, and leaves all the major thinking to Shifty.
 ~
 2 131072 -800 S
-35 0 0 0d0+0 0d0+0
+35 0 0 0b0+0 0d0+0
 0 0
 8 8 1
 #17032
@@ -763,7 +763,7 @@ When you don't respond, Cutter replies, `very well, lets
 have at it', and he downs a purple potion.
 ~
 2 128 -1000 S
-45 0 0 0d0+0 0d0+0
+45 0 0 0b0+0 0d0+0
 0 0
 8 8 0
 #17070

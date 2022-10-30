@@ -154,7 +154,7 @@ A Captain of the guards stands here.
 The captain growls and asks your business in the castle.
 ~
 2|4|64 128 0 S
-30 0 0 0d0+0 0d0+0
+30 0 0 0e0+0 0d0+0
 0 0
 8 8 1
 #16614
@@ -221,7 +221,7 @@ The king Stands here looking at you.
 He is very regal looking.
 ~
 4|64|128 128 0 S
-30 0 0 0d0+0 0d0+0
+30 0 0 0b0+0 0d0+0
 0 0
 8 8 1
 #16620

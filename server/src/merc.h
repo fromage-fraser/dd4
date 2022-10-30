@@ -345,12 +345,24 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define EPIC_CHANCE             10
 #define RARE_CHANCE             25
 #define UNCOMMON_CHANCE         150
+
 /* define the types of mobs we have - Brutus */
 #define NPC_COMMON      1
 #define NPC_RARE        2
 #define NPC_ELITE       3
 #define NPC_BOSS        4
 #define NPC_WORLD_BOSS  5
+
+/* Define the  stat scores - used in calc_item_score, and randomise_object function */
+#define SCORE_AURAS             500
+#define SCORE_SMITHY            150
+#define SCORE_STATS             2500    /*Obj->level dependant*/
+#define SCORE_CRIT_HASTE        2500    /*Obj->level dependant*/
+#define SCORE_HP_MANA           20      /*Obj->level dependant*/
+#define SCORE_HIT_DAM           1000
+#define SCORE_FLY               100
+#define SCORE_DETECTS           50
+#define SCORE_RESISTS           1500    /*Obj->level dependant*/
 
 /*
  * Channel recall, 'review' command; Gezhp 2001
@@ -2163,6 +2175,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_ANTI_SMITHY                BIT_34
 #define ITEM_DEPLOYED                   BIT_35
 #define ITEM_RUNE                       BIT_36
+#define ITEM_DONOT_RANDOMISE            BIT_37
 #define ITEM_CURSED                     BIT_61  /* carrier attacked by mobs with DETECT_CURSE, magic travel nonfunctional if carried */
 
 
@@ -2633,6 +2646,7 @@ struct char_data
         char *                  description;
         char *                  prompt;
         char *                  mobspec;        /* MOB SPEC data  */
+        char                    rank;
         int                     sex;
         int                     class;
         int                     sub_class;
@@ -3300,6 +3314,7 @@ extern int gsn_leader;                  /* for the clan leader flag  */
 extern int gsn_log;
 extern int gsn_memory;
 extern int gsn_mfind;
+extern int gsn_mrank;
 extern int gsn_mload;
 extern int gsn_mnstat;
 extern int gsn_oclanitem;
@@ -4140,6 +4155,7 @@ DECLARE_DO_FUN( do_mawasigeri                   );      /* Martial artist - brut
 DECLARE_DO_FUN( do_meditate                     );
 DECLARE_DO_FUN( do_memory                       );
 DECLARE_DO_FUN( do_mfind                        );
+DECLARE_DO_FUN( do_mrank                        );
 DECLARE_DO_FUN( do_mload                        );
 DECLARE_DO_FUN( do_mnstat                       );
 DECLARE_DO_FUN( do_morph                        );      /* for changing forms - geoff */
@@ -4697,7 +4713,7 @@ void reverse_char_array                       ( char arr[], int n );
 void    boot_db                         args( ( void ) );
 void    area_update                     args( ( void ) );
 CD *    create_mobile                   args( ( MOB_INDEX_DATA *pMobIndex ) );
-OD *    create_object                   args( ( OBJ_INDEX_DATA *pObjIndex, int level ) );
+OD *    create_object                   args( ( OBJ_INDEX_DATA *pObjIndex, int level, int rank, bool randomise ) );
 void    clear_char                      args( ( CHAR_DATA *ch ) );
 void    free_char                       args( ( CHAR_DATA *ch ) );
 char *  get_extra_descr                 args( ( const char *name, EXTRA_DESCR_DATA *ed ) );

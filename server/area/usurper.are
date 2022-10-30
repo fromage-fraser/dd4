@@ -32,7 +32,7 @@ The captain of the guard glares at you disdainfully.
 The captain of the guard is dressed up for something important.
 ~
 2|32|64 0 0 S
-35 0 0 0d0+0 0d0+0
+35 0 0 0r0+0 0d0+0
 0 0
 8 8 1
 #29803
@@ -458,7 +458,7 @@ so too, and that the nice palfrey you saw in the stables probably belongs to
 her.  She looks sultrily at you.
 ~
 2|64 0 0 S
-35 0 0 0d0+0 0d0+0
+35 0 0 0e0+0 0d0+0
 0 0
 8 8 2
 >bribe_prog 500~
@@ -579,7 +579,7 @@ surface.  But you detect a slightly crazed look in his eye, and his fingers
 drum nervously on the arms of his throne.
 ~
 2|64 0 -1000 S
-40 0 0 0d0+0 0d0+0
+40 0 0 0b0+0 0d0+0
 0 0
 8 8 1
 #29843

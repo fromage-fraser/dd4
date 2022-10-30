@@ -68,7 +68,7 @@ A crystal dragon sleeps quietly upon his treasure.
 The near translucent dragon is sleek and slender but looks incredibly strong.
 ~
 2|64 128|524288|1048576 0 S
-55 0 0 0d0+0 0d0+0
+55 0 0 0b0+0 0d0+0
 128 0
 8 8 1
 >act_prog looks at you~
@@ -190,7 +190,7 @@ cape. This has been the Darkone's prison for centuries yet fresh
 blood stains his pale hands.
 ~
 2|64 2048 -1000 S
-80 0 0 0d0+0 0d0+0
+80 0 0 0e0+0 0d0+0
 0 0
 8 8 1
 >all_greet_prog 100~

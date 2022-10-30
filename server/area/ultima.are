@@ -650,7 +650,7 @@ of humans and there combat tactics.  He is red with wings, and is
 strong and his aura is overpowering.
 ~
 0 128 1000 S
-35 0 0 0d0+0 0d0+0
+35 0 0 0e0+0 0d0+0
 304 0
 0 0 1
 #2449
@@ -727,7 +727,7 @@ position.  The Enlightened smile on his face confirms that he
 indeed is one with the spirit of Spirituality.
 ~
 2 128 1000 S
-35 0 0 0d0+0 0d0+0
+35 0 0 0e0+0 0d0+0
 0 0
 0 0 1
 #2455
@@ -754,7 +754,7 @@ He is the latest, and some people say greatest of the Avatar's
 enemies.  And now you have the joy of meeting him.
 ~
 2|32 128 -1000 S
-45 0 0 0d0+0 0d0+0
+45 0 0 0e0+0 0d0+0
 0 0
 0 0 1
 #2457
@@ -855,7 +855,7 @@ Justice, Spirituality, Honesty, Sacrifice, Valor, and Honor.  He
 truly is an inspiration to those who know him.
 ~
 2 128 1000 S
-50 0 0 0d0+0 0d0+0
+50 0 0 0b0+0 0d0+0
 0 0
 0 0 1
 #2464
@@ -869,7 +869,7 @@ him you see the three crown jewels.  These hold power both
 figuratively and  truly.
 ~
 2 128 1000 S
-60 0 0 0d0+0 0d0+0
+60 0 0 0e0+0 0d0+0
 48 0
 0 0 1
 #2465

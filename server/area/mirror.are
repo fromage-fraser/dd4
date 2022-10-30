@@ -76,7 +76,7 @@ you suspiciously not only because you are a stranger, but because you are an
 ARMED stranger.  Better not do any funny stuff in his presence.
 ~
 64|512|1024 128 1000 S
-35 0 -10 35d35+350 1d8+30
+35 0 -10 35r35+350 1d8+30
 0 150000
 8 8 1
 & 25 'teacher base'

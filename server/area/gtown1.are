@@ -267,7 +267,7 @@ after the weak Xantharus lost control of his creations. He is a powerful,
 diabolically evil mage, and will not hesitate to destroy you.
 ~
 2|32|64|4096 4|8|16|32|128|8192 -1000 S
-80 0 0 0d0+0 0d0+0
+80 0 0 0e0+0 0d0+0
 0 0
 8 8 1
 #8820
@@ -363,7 +363,7 @@ wielding a shiny silver sword, he would look as he did in life save for his
 rotting face...
 ~
 2|32|64 8|32|128|512 -1000 S
-80 0 0 0d0+0 0d0+0
+80 0 0 0r0+0 0d0+0
 0 0
 8 8 0
 #8828
@@ -417,7 +417,7 @@ He is not really meant to be here, and thus will avoid attracting attention
 of the powers of the Prime Material Plane by avoiding combat.
 ~
 2|64|128 2|4|8|16|32|128|512|8192 -1000 S
-87 0 0 0d0+0 0d0+0
+87 0 0 0b0+0 0d0+0
 128 0
 8 8 0
 #8832
@@ -452,7 +452,7 @@ centuries ago, who had not the power to slay them utterly, and now thanks
 to your disturbance they have risen again!
 ~
 2|32|64|4096 8|32|128|512|8192 -1000 S
-80 0 0 0d0+0 0d0+0
+80 0 0 0e0+0 0d0+0
 96 0
 8 8 0
 #0

@@ -227,7 +227,7 @@ towards you, you catch a glimpse of his face: thin, well-worn laugh lines
 intersect with thick, brownish scars.
 ~
 64 8|32|8192 1000 S
-35 0 0 0d0+0 0d0+0
+35 0 0 0e0+0 0d0+0
 0 0
 8 8 1
 #19017
@@ -242,7 +242,7 @@ over his hooded eyes, making it almost impossible to tell just where he's
 looking.
 ~
 64 8|32|512|8192 1000 S
-35 0 0 0d0+0 0d0+0
+35 0 0 0e0+0 0d0+0
 0 0
 8 8 1
 #19018
@@ -256,7 +256,7 @@ her face has a certain beauty, it has an air of sternness as well, enhanced by
 the razor-sharp crystal sword at her side.
 ~
 64 8|32|512|8192 1000 S
-35 0 0 0d0+0 0d0+0
+35 0 0 0e0+0 0d0+0
 0 0
 8 8 1
 #19019
@@ -270,7 +270,7 @@ Realm, constantly shifting his gaze as he enjoys the land's beauty and watches
 for possible threats.
 ~
 64 8|32|512|8192 1000 S
-35 0 0 0d0+0 0d0+0
+35 0 0 0e0+0 0d0+0
 0 0
 8 8 1
 #19020
@@ -284,7 +284,7 @@ possibly in challenge--catching the light and the blue of his robe in the
 facets of his sword.
 ~
 64 8|32|512|8192 1000 S
-35 0 0 0d0+0 0d0+0
+35 0 0 0e0+0 0d0+0
 0 0
 8 8 1
 #19021
@@ -298,7 +298,7 @@ in its folds.  At his side, his clear crystal sword looks almost dark as it
 absorbs and reflects the colors of his robe.
 ~
 64 8|32|512|8192 1000 S
-35 0 0 0d0+0 0d0+0
+35 0 0 0e0+0 0d0+0
 0 0
 8 8 1
 #19022
@@ -820,7 +820,7 @@ and head--they contain no features at all, and only radiate a bright golden
 glow.
 ~
 2|64 8|32|128|512|8192 1000 S
-50 0 0 0d0+0 0d0+0
+50 0 0 0b0+0 0d0+0
 0 0
 8 8 0
 #19062
@@ -834,7 +834,7 @@ feathers intertwined with a few golden ones; its silvery beak glistens in the
 light, with faint sparkles shining on its razor-sharp edges.
 ~
 2|4|32|64 8|32|512|8192 0 S
-50 0 0 0d0+0 0d0+0
+50 0 0 0r0+0 0d0+0
 36 0
 8 8 0
 #19063
