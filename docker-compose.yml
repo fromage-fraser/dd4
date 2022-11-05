@@ -3,6 +3,7 @@ services:
 
   # Build and run the DD4 MUD server
   server:
+    platform: linux/amd64
     image: dd4-server
     build:
       context: .
@@ -17,6 +18,7 @@ services:
 
   # Development environment
   dev:
+    platform: linux/amd64
     image: dd4-dev
     build:
       context: .
