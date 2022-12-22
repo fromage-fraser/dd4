@@ -5367,14 +5367,14 @@ void do_identify( CHAR_DATA *ch, char *argument )
                 return;
         }
 
-        if (total_coins_char(ch) < obj->level * 50)
+        if (total_coins_char(ch) < 1000 )
         {
                 act( "$C decides you do not have enough money for $s services.",
                     ch, obj, rch, TO_CHAR );
                 return;
         }
 
-        cost = obj->level * 1000;
+        cost = 1000;
         send_to_char("Your purse feels lighter.\n\r", ch);
         coins_from_char(cost, ch);
         act("$C examines $p and identifies its properties.\n\r", ch, obj, rch, TO_CHAR);

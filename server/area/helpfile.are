@@ -7006,7 +7006,9 @@ connect
 
 1 'UNCOMMON SET' 'RARE SET' 'EPIC SET' 'LEGENDARY SET'~
 
+Syntax: construct (To view what armour set pieces are available)
 Syntax: construct <<blueprint>
+
 Smithys are able to create sets of armour with additional bonuses. These
 bonuses are activated when certain pieces are worn together. Set pieces will
 be listed as seperate items to be learned.
@@ -7048,7 +7050,7 @@ different items, and augments. Using the CONSTRUCT skill without an
 argument will list known blueprints.
 ~
 
-1 'TITANIUM REAPER' 'STEEL BOARDSWORD' 'ADAMANITE KATANA' 'ELECTRUM SWORD' 'STARMETAL DUAL BLADE'~
+1 'TITANIUM REAPER' 'STEEL BROADSWORD' 'ADAMANITE KATANA' 'ELECTRUM SWORD' 'STARMETAL DUAL BLADE'~
 
 Syntax: construct 'steel broadsword'
 Syntax: construct 'titanium reaper'
@@ -7281,6 +7283,34 @@ being destroy.
 All modules must be placed in the turret to use.
 ~
 
+1 'BLOODFORGED HELM' 'BLOODFORGED BOOTS' 'BLOODFORGED LEGGINGS' 'BLOODFORGED GRIPS'~
+
+This is an EPIC set only available for experianced Smithys.
+
+Syntax: construct 'bloodforged helm'
+Syntax: construct 'bloodforged boots'
+Syntax: construct 'bloodforged leggings'
+Syntax: construct 'bloodforged grips'
+
+The bloodforged set is infamous in smithy legend as the first set to
+be created and worn by Brudrouk Gravelforge. The set was forged in the
+blood of a red dragon to empower it with additional properties that led to
+many famous victories.
+~
+
+1 'ASTRAL WRAP' 'ASTRAL ANOMALY' 'ASTRAL PLANE' 'ASTRAL ANOMALY' 'ASTRAL TRANSCENDENCE'~
+
+This is a LEGENDARY set only available for experienced Smithys.
+
+Syntax: construct 'astral <<item>'
+
+120 moons ago an unusual red metal was discovered beneath Zyklor's Tower.
+This metal was Starmetal. Smithies started experimenting with this metal
+over the following years and found it had a number of inexplicable characteristics
+and properties. It would shimmer or turn translucent, or provide visions of other
+dimensions. Indeed, it is thought that this metal might provide pathways into
+other worlds.
+~
 
 0 $~
 #$

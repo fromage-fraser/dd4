@@ -347,7 +347,7 @@ void gain_exp( CHAR_DATA *ch, int gain )
         /* get the xp until we've checked they can advance! */
 
         tmp = ch->exp + gain;
-        if (tmp > (level_table[ch->level].exp_total))
+        if (tmp >= (level_table[ch->level].exp_total))
         {
                 if (!check_questpoints_allow_level_gain(ch, TRUE))
                 {
