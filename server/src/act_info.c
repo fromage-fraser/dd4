@@ -5289,14 +5289,14 @@ void do_identify( CHAR_DATA *ch, char *argument )
                 return;
         }
 
-        if (total_coins_char(ch) < 1000 )
+        if (total_coins_char(ch) < 100 )
         {
                 act( "$C decides you do not have enough money for $s services.",
                     ch, obj, rch, TO_CHAR );
                 return;
         }
-
-        cost = 1000;
+        /* Setting to 1G as its now permanent - Brutus */
+        cost = 100;
         send_to_char("Your purse feels lighter.\n\r", ch);
         coins_from_char(cost, ch);
         act("$C examines $p and identifies its properties.\n\r", ch, obj, rch, TO_CHAR);
