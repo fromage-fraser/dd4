@@ -7002,7 +7002,9 @@ connect
 
 1 'UNCOMMON SET' 'RARE SET' 'EPIC SET' 'LEGENDARY SET'~
 
+Syntax: construct (To view what armour set pieces are available)
 Syntax: construct <<blueprint>
+
 Smithys are able to create sets of armour with additional bonuses. These
 bonuses are activated when certain pieces are worn together. Set pieces will
 be listed as seperate items to be learned.
