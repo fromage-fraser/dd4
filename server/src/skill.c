@@ -4435,7 +4435,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         paf->type           = gsn_imbue;
         paf->duration       = -1;
         paf->location       = modifier;
-        paf->modifier       = imbue_list[random_buff].base_gain * ch->pcdata->learned[gsn_imbue] / 20;
+        paf->modifier       = ch->level * imbue_list[random_buff].base_gain * ch->pcdata->learned[gsn_imbue] / 1000;
         paf->bitvector      = 0;
         paf->next           = obj->affected;
         obj->affected       = paf;
@@ -4456,7 +4456,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 paf->type           = gsn_imbue;
                 paf->duration       = -1;
                 paf->location       = modifier;
-                paf->modifier       = imbue_list[random_buff2].base_gain * ch->pcdata->learned[gsn_imbue] / 20;
+                paf->modifier       = ch->level * imbue_list[random_buff].base_gain * ch->pcdata->learned[gsn_imbue] / 1000;
                 paf->bitvector      = 0;
                 paf->next           = obj->affected;
                 obj->affected       = paf;
@@ -4478,7 +4478,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 paf->type           = gsn_imbue;
                 paf->duration       = -1;
                 paf->location       = modifier;
-                paf->modifier       = imbue_list[random_buff3].base_gain * ch->pcdata->learned[gsn_imbue] / 20;
+                paf->modifier       = ch->level * imbue_list[random_buff].base_gain * ch->pcdata->learned[gsn_imbue] / 1000;
                 paf->next           = obj->affected;
                 obj->affected       = paf;
                 random_buff = -1;
