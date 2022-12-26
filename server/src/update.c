@@ -2940,6 +2940,9 @@ void gmcp_update( void )
                                         if ( !room->exit[i] )
                                                 continue;
 
+                                        if ( !room->exit[i]->to_room )
+                                                continue;
+
                                         if ( buf[0] == '\0' )
                                         {
                                                 #ifndef COLOR_CODE_FIX
