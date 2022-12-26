@@ -3309,7 +3309,7 @@ CHAR_DATA * create_mobile( MOB_INDEX_DATA *pMobIndex )
 
         mob->hit                = mob->max_hit;
         mob->crit               = 5;
-        mob->haste              = 5;
+        mob->swiftness              = 5;
 
         if (IS_SET(mob->act, ACT_CLAN_GUARD))
                 REMOVE_BIT(mob->affected_by, AFF_HIDE);
@@ -3466,6 +3466,12 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, int rank, bool ra
                         /* strip old effects then randomise stats */
                         for ( paf = obj->affected; paf; paf = paf->next )
                         {
+                                if (paf->bitvector == AFF_SANCTUARY 
+                                        || paf->bitvector == AFF_FLYING 
+                                        || paf->bitvector == AFF_SWIM
+                                        || paf->bitvector == AFF_INVISIBLE)
+                                        continue;
+
                                 paf->deleted = TRUE;
                         }
                         randomise_object(obj, level, rank);
@@ -3501,6 +3507,11 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, int rank, bool ra
                         /* strip old effects then randomise stats */
                         for ( paf = obj->affected; paf; paf = paf->next )
                         {
+                                if (paf->bitvector == AFF_SANCTUARY 
+                                        || paf->bitvector == AFF_FLYING 
+                                        || paf->bitvector == AFF_SWIM
+                                        || paf->bitvector == AFF_INVISIBLE)
+                                continue;
                                 paf->deleted = TRUE;
                         }
                         randomise_object(obj, level, rank);

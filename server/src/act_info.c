@@ -153,7 +153,7 @@ int calc_item_score ( OBJ_DATA *obj )
                                 case APPLY_WIS:
                                 case APPLY_CON:
                                 case APPLY_CRIT:
-                                case APPLY_HASTE:
+                                case APPLY_SWIFTNESS:
                                 {
                                         if (obj->level < 3 )
                                                 score += ((paf->modifier * 200) / obj->level);
@@ -251,7 +251,7 @@ int calc_item_score ( OBJ_DATA *obj )
                                 case APPLY_WIS:
                                 case APPLY_CON:
                                 case APPLY_CRIT:
-                                case APPLY_HASTE:
+                                case APPLY_SWIFTNESS:
                                 {
                                         if (obj->level < 3 )
                                                 score += ((paf->modifier * 200) / obj->level);
@@ -5517,6 +5517,19 @@ void print_player_status (CHAR_DATA *ch, char* buf)
                 sprintf( tmp, "      Blood:      {R%3d{x/{R%3d{x",
                         ch->rage,
                         ch->max_rage );
+                strcat( buf, tmp );
+        }
+        strcat (buf, "\n\r");
+        
+        if( ch->level >= 15 )
+        {
+                sprintf( tmp, "Hit roll: {C%3d{x     Dam roll: {C%3d{x",
+                        GET_HITROLL(ch), GET_DAMROLL(ch));
+                strcat( buf, tmp );
+
+                
+                sprintf( tmp, "      Crit: {C%3d%%{x    Swiftness: {C%3d%%{x",
+                        ch->crit, ch->swiftness);
                 strcat( buf, tmp );
         }
         strcat (buf, "\n\r");

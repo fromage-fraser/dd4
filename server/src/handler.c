@@ -334,8 +334,8 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
             case APPLY_DRAGON_AURA:
                 break;
 
-            case APPLY_HASTE:
-                ch->haste +=mod;
+            case APPLY_SWIFTNESS:
+                ch->swiftness +=mod;
 
             case APPLY_CRIT:
                 ch->crit +=mod;
@@ -2731,7 +2731,7 @@ char *affect_loc_name( int location )
             case APPLY_SERRATED:                return "bleed over time";
             case APPLY_INSCRIBED:               return "rune focus";
             case APPLY_CRIT:                    return "critical hit chance";
-            case APPLY_HASTE:                   return "attack speed";
+            case APPLY_SWIFTNESS:                   return "attack speed";
             case APPLY_DRAGON_AURA:             return "aura of the dragon";
         }
 

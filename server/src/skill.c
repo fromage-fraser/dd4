@@ -1623,7 +1623,7 @@ void do_suck (CHAR_DATA *ch, char *argument)
         {
                 arena_commentary("$n sucks blood from $N's neck.", ch, victim);
                 WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
-                one_hit(ch, victim, gsn_suck);
+                one_hit(ch, victim, gsn_suck, FALSE);
                 ch->rage += 2;
                 ch->rage = UMIN(ch->rage, ch->max_rage);
 

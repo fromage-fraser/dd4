@@ -245,6 +245,7 @@ struct random_types
 #define MAX_IMBUE 11
 #define MAX_RANDOMS 15
 #define BLUEPRINTS_MAX  43
+#define MAX_DPR 20
 
 /* Blueprint structure : blueprint_name, blueprint_desc, blueprint_ref, blueprint_cost steel, titanium, adamantite, electrum, starmetal */
 struct blueprint_type
@@ -357,7 +358,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define SCORE_AURAS             500
 #define SCORE_SMITHY            150
 #define SCORE_STATS             2500    /*Obj->level dependant*/
-#define SCORE_CRIT_HASTE        2500    /*Obj->level dependant*/
+#define SCORE_CRIT_SWIFTNESS        2500    /*Obj->level dependant*/
 #define SCORE_HP_MANA           20      /*Obj->level dependant*/
 #define SCORE_HIT_DAM           1000
 #define SCORE_FLY               100
@@ -1038,6 +1039,11 @@ struct sub_class_type
         bool    bMana;                  /* Mana bonus for new class? */
 };
 
+struct dpr
+{
+        char    *dpr_verb;
+        int     dam;
+};
 
 /*
  * wearing restrictions, body parts for form, types for wear
@@ -2311,7 +2317,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define APPLY_SERRATED                          48
 #define APPLY_INSCRIBED                         49
 #define APPLY_CRIT                              50
-#define APPLY_HASTE                             51
+#define APPLY_SWIFTNESS                             51
 
 /*
  * Values for containers (value[1]).
@@ -2709,7 +2715,7 @@ struct char_data
         int                     damage_mitigation;
         int                     damage_enhancement;
         int                     crit;
-        int                     haste;
+        int                     swiftness;
         int                     inscription_total;
         int                     dazed;
         /*
@@ -2825,6 +2831,8 @@ struct  pc_data
         int             group_support_bonus;
         int             meter;
         int             dam_meter;
+        int             rounds;
+        int             dam_per_fight;
 };
 
 
@@ -3893,6 +3901,7 @@ extern const    struct dex_app_type             dex_app                         
 extern const    struct con_app_type             con_app                         [ MAX_STAT ];
 extern const    struct class_type               class_table                     [ MAX_CLASS ];
 extern const    struct sub_class_type           sub_class_table                 [ MAX_SUB_CLASS ];
+extern const    struct dpr                      dprs                            [ MAX_DPR ];
 extern const    struct clan_items               clan_item_list                  [ MAX_CLAN ];
 extern const    struct clan_type                clan_table                      [ MAX_CLAN ];
 extern const    struct color_data               color_table                     [ ];
@@ -4767,7 +4776,7 @@ void    set_fighting                    args( ( CHAR_DATA *ch, CHAR_DATA *victim
 void    stop_fighting                   args( ( CHAR_DATA *ch, bool fBoth ) );
 void    raw_kill                              ( CHAR_DATA *ch, CHAR_DATA *victim, bool corpse );
 void    death_cry                       args( ( CHAR_DATA *ch ) );
-bool    one_hit                         args( ( CHAR_DATA *ch, CHAR_DATA *victim, int dt ) );
+bool    one_hit                         args( ( CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste ) );
 void    death_penalty                   args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 void    check_player_death              args( ( CHAR_DATA *opponent, CHAR_DATA *victim ) );
 bool    in_pkill_range                  args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
@@ -4777,6 +4786,7 @@ bool    aggro_damage                          ( CHAR_DATA *ch, CHAR_DATA *victim
 void    check_autoloot                        ( CHAR_DATA *ch, CHAR_DATA *victim );
 void    check_group_bonus                     (CHAR_DATA *ch) ;
 char *  get_damage_string               args( ( int damage_value, bool is_singular ) );
+char *  get_dpr                         args( (int dam) );
 
 /* handler.c */
 int     get_dir                         args( ( char *txt  ) );

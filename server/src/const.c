@@ -115,6 +115,31 @@ const struct class_type class_table [ MAX_CLASS ] =
 
 };
 
+const struct dpr dprs [ MAX_DPR ] =
+{
+        /* description, minimum dpr*/
+        { "<0><237>Trifling<0>",             10     },
+        { "<0><238>Inconsequential<0>",      20},
+        { "<0><239>Paltry<0>",               30},
+        { "<0><240>Meager<0>",               40},
+        { "<0><241>Light<0>",                55},
+        { "<0><241>Moderate<0>",             70},
+        { "<0><243>Heavy<0>",                85},
+        { "<0><244>Serious<0>",              100},
+        { "<0><245>Critical<0>",             120},
+        { "Grievous",             140},
+        { "Disastrous",           160},
+        { "Demolishing",          180},
+        { "Annihilating",         200},
+        { "Crushing",             250},
+        { "Destructive",          300},
+        { "Devastating",          375},
+        { "Wrecking",             500},
+        { "Pulverizing",          750},
+        { "Decimating",           1000},       
+        { "Obliterating",          1500}
+};
+
 
 /*
  *  SUB_CLASS TABLE - Brutus
@@ -193,7 +218,7 @@ const struct imbue_types imbue_list [ MAX_IMBUE ] =
         { "to_damage", "More damage", APPLY_DAMROLL, 8 },
         { "to_ac", "More damage", APPLY_AC, -22 },
         { "to_crit", "Crit damage", APPLY_CRIT, 1},
-        { "to_haste", "Haste Gain", APPLY_HASTE, 1},
+        { "to_swiftness", "Swiftness Gain", APPLY_SWIFTNESS, 1},
 };
 
 const struct random_types random_list [ MAX_RANDOMS ] =
@@ -212,7 +237,7 @@ const struct random_types random_list [ MAX_RANDOMS ] =
         { APPLY_RESIST_LIGHTNING, SCORE_RESISTS},
         { APPLY_RESIST_HEAT, SCORE_RESISTS},
         { APPLY_RESIST_COLD, SCORE_RESISTS},
-        { APPLY_HASTE, SCORE_RESISTS},
+        { APPLY_SWIFTNESS, SCORE_RESISTS},
 };
 
 const struct HERB herb_table [ MAX_HERBS ] =

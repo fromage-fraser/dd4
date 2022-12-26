@@ -1493,9 +1493,9 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         victim->damage_mitigation);
                 strcat( buf1, buf );
         
-                sprintf( buf, "Crit: {R%d{x  Haste: {R%d{x\n\r",
+                sprintf( buf, "Crit: {R%d{x  Swiftness: {R%d{x\n\r",
                         victim->crit,
-                        victim->haste);
+                        victim->swiftness);
                 strcat( buf1, buf );                
 
                 sprintf( buf, "Align: {W%d{x  Exp: {W%d{x  Class: {W%d{x ({G%s{x)  SubCl: {W%d{x ({G%s{x)\n\rAge: {W%d{x  Fame: {W%d{x  Form: {W%s{x  Aggro_dam: {R%d{x  Rage: {R%d{x\n\r",
@@ -1807,9 +1807,9 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         victim->saving_throw);
                 strcat( buf1, buf );
 
-                sprintf( buf, "Crit: {R%d{x  Haste: {R%d{x\n\r",
+                sprintf( buf, "Crit: {R%d{x  Swiftness: {R%d{x\n\r",
                         victim->crit,
-                        victim->haste);
+                        victim->swiftness);
                 strcat( buf1, buf );  
 
                 sprintf( buf, "Position: {G%d{x [{W%s{x]  Wimpy: {W%d{x  Exp modifier: {W%d{x\n\r",
@@ -2073,7 +2073,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                                         }
                                         strcat(buf1, "{x\n\r");
 
-                                        sprintf( buf, "HP Mod: %d Dam Mod: %d Crit Mod: %d Haste Mod: %d\n\r",
+                                        sprintf( buf, "HP Mod: %d Dam Mod: %d Crit Mod: %d Swiftness Mod: %d\n\r",
                                         mob_table[sn].hp_mod, mob_table[sn].dam_mod, mob_table[sn].crit_mod, mob_table[sn].haste_mod);
                                         strcat( buf1, buf );
                                         sprintf( buf, "Height: %d Weight: %d Size: %d\n\r",
