@@ -6791,9 +6791,6 @@ void do_hurl (CHAR_DATA *ch, char *argument)
                 }
                 else
                 {
-
-                        act ("It sails past $S head and returns to your hand. MISS!",
-                                ch, NULL, victim, TO_CHAR);
                         damage (ch, victim, 0, gsn_hurl, FALSE);
                 }
         }

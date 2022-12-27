@@ -4668,7 +4668,6 @@ char* number_suffix                           ( int num );
 void  print_player_status                     ( CHAR_DATA *ch, char *buf );
 void  print_who_data                          ( CHAR_DATA *ch, char *buf );
 void  print_smithy_data                       ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf );
-void  print_identified_data                   ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf );
 int   get_colour_index_by_code                ( int ccode );
 int   calc_item_score                         ( OBJ_DATA *obj);
 
