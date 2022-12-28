@@ -7312,5 +7312,23 @@ dimensions. Indeed, it is thought that this metal might provide pathways into
 other worlds.
 ~
 
+1 CRIT CRITICAL~
+
+A stat that determines your ability to gain bonus damage.
+Items and WISDOM may affect this stat.
+~
+
+1 SWIFTNESS~
+
+A stat that determines your ability to gain an extra attack.
+Items and DEXTERITY may affect the chance.
+~
+
+1 DPR 'DAMAGE PER ROUND'~
+
+Relates the average armount of damage you do per round during the course of 
+a fight. 
+~
+
 0 $~
 #$

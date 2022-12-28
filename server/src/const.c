@@ -118,26 +118,26 @@ const struct class_type class_table [ MAX_CLASS ] =
 const struct dpr dprs [ MAX_DPR ] =
 {
         /* description, minimum dpr*/
-        { "<0><237>Trifling<0>",             10     },
-        { "<0><238>Inconsequential<0>",      20},
-        { "<0><239>Paltry<0>",               30},
-        { "<0><240>Meager<0>",               40},
-        { "<0><241>Light<0>",                55},
-        { "<0><241>Moderate<0>",             70},
-        { "<0><243>Heavy<0>",                85},
-        { "<0><244>Serious<0>",              100},
-        { "<0><245>Critical<0>",             120},
-        { "Grievous",             140},
-        { "Disastrous",           160},
-        { "Demolishing",          180},
-        { "Annihilating",         200},
-        { "Crushing",             250},
-        { "Destructive",          300},
-        { "Devastating",          375},
-        { "Wrecking",             500},
-        { "Pulverizing",          750},
-        { "Decimating",           1000},       
-        { "Obliterating",          1500}
+        { "<0><241>Trifling<0>",             10     },
+        { "<0><242>Inconsequential<0>",      20},
+        { "<0><243>Paltry<0>",               30},
+        { "<0><244>Meager<0>",               50},
+        { "<0><245>Light<0>",                75},
+        { "<0><246>Moderate<0>",             100},
+        { "<0><247>Heavy<0>",                150},
+        { "<0><248>Serious<0>",              300},
+        { "<0><249>Critical<0>",             500},
+        { "<0><251>GRIEVOUS<0>",             750},
+        { "<0><253>DISASTEROUS<0>",          1000},
+        { "<0><255>* DEMOLISHING *<0>",      1250},
+        { "<0><255>** ANNIHILATING **<0>",   1500},
+        { "<0><124>-<**<160><558>CRUSHING<0><0><124>**-<0>",     2000},
+        { "<0><88>-+*>>##<558>Destructive<559><0><88>##<<<<*+-<0>",          3000},
+        { "<0><52>-+*###<88><558>Devastating<559><0><52>###*+-<0>",          4000},
+        { "<0><52>-=*<<|<556>[Wrecking<52>]<557>|>*=-<0>",             5000},
+        { "<0><52>--=<<#[|<556><460><52>Pulverizing<0><52>|]#>=--<0>",          7500},
+        { "<0><52>-=+*<<(|[ <556><388><196>Decimating<0><52> ]|)>*+=-<0>",           10000},       
+        { "<0><52>-+<<<<[[ <556><352><196>O B L I T E R A T I N G<0><52> ]]>>+-<0>",          20000}
 };
 
 
@@ -237,7 +237,7 @@ const struct random_types random_list [ MAX_RANDOMS ] =
         { APPLY_RESIST_LIGHTNING, SCORE_RESISTS},
         { APPLY_RESIST_HEAT, SCORE_RESISTS},
         { APPLY_RESIST_COLD, SCORE_RESISTS},
-        { APPLY_SWIFTNESS, SCORE_RESISTS},
+        { APPLY_SWIFTNESS, SCORE_STATS},
 };
 
 const struct HERB herb_table [ MAX_HERBS ] =

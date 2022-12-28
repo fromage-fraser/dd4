@@ -2966,14 +2966,18 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called)
 
                 level_dif = victim->level - gch->level;
                 fame = 0;
-
-                /*if (gch->pcdata->rounds > 0)
-                        sprintf(buf, "DPR: %d\n\r", ch->pcdata->dam_per_fight/ch->pcdata->rounds);
-                
-                sprintf(buf, "DPR: %d %d\n\r", ch->pcdata->dam_per_fight, ch->pcdata->rounds);
-                */
-                sprintf(buf, "Damage Per Round (DPR): %s\n\r", get_dpr(ch->pcdata->dam_per_fight/ch->pcdata->rounds));
+                /* print out damage per round - Brutus*/
+                sprintf(buf, "Damage Per Round (DPR): %s", get_dpr(ch->pcdata->dam_per_fight/ch->pcdata->rounds));
                 send_to_char(buf, gch);
+                if (ch->level > 50)
+                {
+                sprintf(buf, "%d\n\r", ch->pcdata->dam_per_fight/ch->pcdata->rounds);
+                send_to_char(buf, gch);      
+                }
+                else {
+                sprintf(buf, "\n\r");
+                send_to_char(buf, gch);        
+                }
                 ch->pcdata->rounds = 0;
                 ch->pcdata->dam_per_fight = 0;
 
@@ -7626,6 +7630,8 @@ void reset_char_stats (CHAR_DATA *ch)
         ch->saving_throw = 0;
         ch->carry_weight = 0;
         ch->carry_number = 0;
+        ch->crit         = 5;
+        ch->swiftness    = 5;
         ch->pcdata->mod_str = 0;
         ch->pcdata->mod_int = 0;
         ch->pcdata->mod_wis = 0;

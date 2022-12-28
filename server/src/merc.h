@@ -358,7 +358,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define SCORE_AURAS             500
 #define SCORE_SMITHY            150
 #define SCORE_STATS             2500    /*Obj->level dependant*/
-#define SCORE_CRIT_SWIFTNESS        2500    /*Obj->level dependant*/
+#define SCORE_CRIT_SWIFTNESS    2500    /*Obj->level dependant*/
 #define SCORE_HP_MANA           20      /*Obj->level dependant*/
 #define SCORE_HIT_DAM           1000
 #define SCORE_FLY               100
@@ -2716,6 +2716,10 @@ struct char_data
         int                     damage_enhancement;
         int                     crit;
         int                     swiftness;
+        int                     resist_acid;
+        int                     resist_lightning;
+        int                     resist_heat;
+        int                     resist_cold;
         int                     inscription_total;
         int                     dazed;
         /*

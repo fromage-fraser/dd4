@@ -5120,14 +5120,13 @@ void print_player_status (CHAR_DATA *ch, char* buf)
         
         if( ch->level >= 15 )
         {
-                sprintf( tmp, "Hit roll: {C%3d{x     Dam roll: {C%3d{x",
-                        GET_HITROLL(ch), GET_DAMROLL(ch));
-                strcat( buf, tmp );
-
-                
-                sprintf( tmp, "      Crit: {C%3d%%{x    Swiftness: {C%3d%%{x",
+                sprintf( tmp, "Crit: {C%3d%%{x        Swiftness: {C%3d%%{x\n\r",
                         ch->crit, ch->swiftness);
                 strcat( buf, tmp );
+                sprintf( tmp, "{WResistances:{x Acid:{C%3d%%{x Lightning:{C%3d%%{x Heat:{C%3d%%{x Cold:{C%3d%%{x ",
+                        ch->resist_acid, ch->resist_lightning, ch->resist_heat, ch->resist_cold);
+                strcat( buf, tmp );
+                
         }
         strcat (buf, "\n\r");
 }
