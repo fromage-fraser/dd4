@@ -393,15 +393,15 @@ Dragons Domain version 4.2020
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
-    {WSMITHY class is in for beta testing!{x
+    {WLARGE PATCH:{x
 
-    {WNEW 30-60 area OTA'AR DAR CANALS is now accessible via the Ota'ar Dar
-    Market Canton!{X
-
-
-
-
-
+    {WNew Stats, Crit, Haste, and Resists are in.{x
+    {WBOSS MOBS!! Area Boss mobs are now tougher! (CONSDER is your friend){x
+    {WRandom stats on items above level 10!{X
+    {WEpic and LEGENDARY items only are in play (chance to drop only on
+    boss & elite mobs)}
+    {WSET Pieces are now part of the realm. The first starter set is available
+    2 items in the foundry and dwarven daycare are now linked..}
 
 To Enter the Dragons Domain press <<Return>.
 ~
@@ -1577,11 +1577,7 @@ as a comparison of your relative health.  Of course, it's only a rough
 estimate.
 
 Those with the ADVANCED CONSIDER skill are able to gain more detailed
-information about an opponent. Additionally you will also be able to 
-see which creatures in the realm are stronger than normal when entering
-a room.
-
-There are now Rare, Elite, Boss and World Boss creatures. Take care!
+information about an opponent.
 ~
 
 0 CREDITS~
@@ -7310,24 +7306,6 @@ over the following years and found it had a number of inexplicable characteristi
 and properties. It would shimmer or turn translucent, or provide visions of other
 dimensions. Indeed, it is thought that this metal might provide pathways into
 other worlds.
-~
-
-1 CRIT CRITICAL~
-
-A stat that determines your ability to gain bonus damage.
-Items and WISDOM may affect this stat.
-~
-
-1 SWIFTNESS~
-
-A stat that determines your ability to gain an extra attack.
-Items and DEXTERITY may affect the chance.
-~
-
-1 DPR 'DAMAGE PER ROUND'~
-
-Relates the average armount of damage you do per round during the course of 
-a fight. 
 ~
 
 0 $~
