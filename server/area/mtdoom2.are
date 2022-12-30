@@ -17,9 +17,10 @@ rend the very earth asunder if he is angered. It is small wonder the dark
 powers have chosen him as their fell agent on Anon.
 ~
 2|8|64 4|8|16|128|512|8192 -1000 S
-88 0 0 0b0+0 0d0+0
+88 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ boss~
 #15701
 death knight~
 a death knight~
@@ -60,9 +61,10 @@ Krothgar performs. This does not mean that he will fail to defend himself
 to the best of his considerable abilities if the need arises.
 ~
 2|8|64 4|8|16|32|128|512 -1000 S
-81 0 0 0e0+0 0d0+0
+81 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #15704
 axtraxes arch mage~
 axtraxes~

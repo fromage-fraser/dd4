@@ -959,7 +959,7 @@ void do_onstat( CHAR_DATA *ch, char *argument )
 
         if ( arg[0] == '\0' || !is_number( arg ) )
         {
-                send_to_char( "Syntax: mmstat <<vnum>.\n\r", ch );
+                send_to_char( "Syntax: onstat <<vnum>.\n\r", ch );
                 return;
         }
 
@@ -1723,39 +1723,10 @@ void do_mstat( CHAR_DATA *ch, char *argument )
         else
         {
                 /* All MOBILE mstat stuff goes here. */
-
-                sprintf( buf, "Vnum: {R%d{x ",
-                        victim->pIndexData->vnum);
-                strcat( buf1, buf );
-
-                switch ( victim->rank )
-                {
-                        default:
-                        sprintf( buf, "Rank: {WCommon.{x\n\r");
-                        break;
-
-                        case 'd':
-                        sprintf( buf, "Rank: {WCommon.{x\n\r");
-                        break;
-
-                        case 'e':
-                        sprintf( buf, "Rank: {WElite.{x\n\r");
-                        break;
-
-                        case 'b':
-                        sprintf( buf, "Rank: {WBoss.{x\n\r");
-                        break;
-
-                        case 'r':
-                        sprintf( buf, "Rank: {WRare.{x\n\r");
-                        break;
-
-                        case 'w':
-                        sprintf( buf, "Rank: {WWorld Boss.{x\n\r");
-                        break;
-
-                }
-                strcat( buf1, buf );
+                int temp = rank_sn(victim);
+                sprintf( buf, "Vnum: {R%d{x Rank: %s %d\n\r",
+                        victim->pIndexData->vnum, rank_table[rank_sn(victim)].who_format, temp);
+                strcat( buf1, buf );                
 
                 if ( victim->short_descr[0] != '\0'
                 &&   victim->long_descr[0]  != '\0' )
@@ -2012,7 +1983,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                                         
                                 if ( !str_cmp(victim->mobspec, mob_table[sn].name))
                                 {
-                                        strcat(buf, "{WThe Mobs Specification:{x\n\r");
+                                        strcat(buf, "\n\r{WThe Mobs Specification:{x\n\r");
                                         strcat( buf1, buf );
                                 
                                         sprintf( buf, "Name: %s Species: %s\n\r",
@@ -2205,123 +2176,6 @@ void do_mfind( CHAR_DATA *ch, char *argument )
                 send_to_char( buf1, ch );
         return;
 }
-
-
-
- /*       CHAR_DATA *rch;
-        CHAR_DATA *victim;
-        char       buf  [ MAX_STRING_LENGTH   ];
-        char       arg  [ MAX_INPUT_LENGTH    ];
-        bool       founda;
-        bool    found;
-        AREA_DATA *pArea, *first_sort;
-        int        count = 0;
-
-        first_sort = pArea;
-
-        rch = get_char( ch );
-
-        if ( !authorized( rch, gsn_mfind ) )
-                return;
-
-        one_argument( argument, arg );
-        if ( arg[0] == '\0' )
-        {
-                send_to_char( "Mrank <<zone>\n\r", ch );
-                return;
-        }
-
-        if (strlen (arg) < 3)
-        {
-                send_to_char ("Argument must be at least three letters long.\n\r", ch);
-                return;
-        }
-
-        founda   = FALSE;
-        found   = FALSE;
-
-        for ( pArea = first_sort; pArea; pArea = pArea->next )
-        {
-
-                        sprintf( buf, "area %s arg %s\n\r", pArea->name, arg );
-                        send_to_char (buf, ch);
-
-                        count++;
-        }
-
-
-        *for (pArea = area_first; pArea; pArea = pArea->next)
-        {
-                        
-                sprintf( buf, "area %s arg %s\n\r", pArea->name, arg );
-                        send_to_char (buf, ch);
-                if ( multi_keyword_match( arg, pArea->name ) )
-                {
-                        founda=TRUE;
-                        break;
-                }
-        }
-*
-        if ( !founda )
-        {
-                send_to_char( "Cant find that area.\n\r", ch);
-                return;
-        }
-
-        for ( victim = char_list; victim; victim = victim->next )
-        {
-                int rank;
-                switch ( victim->rank )
-                {
-                        default:
-                        rank = 1;
-                        break;
-
-                        case 'd':
-                        rank = 1;
-                        break;
-
-                        case 'e':
-                        rank = 3;
-                        break;
-
-                        case 'b':
-                        rank = 4;
-                        break;
-
-                        case 'r':
-                        rank = 2;
-                        break;
-
-                        case 'w':
-                        rank = 5;
-                        break;
-
-                }        
-                if ( IS_NPC( victim )
-                    && victim->in_room->vnum >= pArea->low_r_vnum
-                    && victim->in_room->vnum <= pArea->hi_r_vnum
-                    && rank > 1 )
-                {
-                        found = TRUE;
-                        sprintf( buf, "%-3d [%5d] [%2d] [%5d]\n\r",
-                                ++count,
-                                victim->pIndexData->vnum,
-                                rank,
-                                victim->in_room->vnum );
-                        send_to_char (buf, ch);
-                }
-        }
-
-        if ( !found )
-        {
-                send_to_char( "Nothing like that in the domain.\n\r", ch);
-                return;
-        }
-
-        return; 
-}
-*/
 
 void do_ofind( CHAR_DATA *ch, char *argument )
 {
@@ -2879,7 +2733,7 @@ void do_mnstat( CHAR_DATA *ch, char *argument )
 
         if ( arg[0] == '\0' || !is_number( arg ) )
         {
-                send_to_char( "Syntax: mmstat <<vnum>.\n\r", ch );
+                send_to_char( "Syntax: mnstat <<vnum>.\n\r", ch );
                 return;
         }
 

@@ -145,9 +145,11 @@ in slimy, dark blue scales, its gaping maw filled with countless
 yellow fangs.
 ~
 1|2|32 0 0 S
-3 0 0 0r0+0 0d0+0
+3 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< reserved~ rare~
+
 #0
 
 

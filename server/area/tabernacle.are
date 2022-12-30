@@ -469,7 +469,7 @@ This one doesn't have the calm stance of the illusion, but
 a dangerous look of anger in his eyes.
 ~
 2 128|2048|8192|524288|16777216 -1000 S
-75 0 0 0b0+0 0d0+0
+75 0 0 0d0+0 0d0+0
 64 0
 0 0 1
 >death_prog 100~
@@ -481,7 +481,7 @@ a dangerous look of anger in his eyes.
    mpat 39059 mpforce all look
 ~
 |
-
+< reserved~ boss~
 #39034
 featureless humanoid~
 a featureless humanoid~

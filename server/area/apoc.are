@@ -14,9 +14,10 @@ hangs over his matchstick-like body.  You find yourself growing
 hungry as you stand near this starving man.
 ~
 4|32|64 2|8|32|128|512|32768|65536 0 S
-85 0 0 0e0+0 0d0+0
+85 0 0 0d0+0 0d0+0
 16|32|256 0
 8 8 1
+< reserved~ elite~
 #5601
 War~
 War~
@@ -31,9 +32,10 @@ beauty.  Her fiery red hair twirls about her body as she dances her
 ballet of death and destruction.  Finally, it is your turn.
 ~
 4|32|64 2|8|32|128|512|32768|65536 0 S
-95 0 0 0e0+0 0d0+0
+95 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< reserved~ elite~
 #5602
 Death~
 Death~
@@ -48,9 +50,10 @@ spine.  Swift and strong, Death raises his scythe and prepares to
 take his next soul...YOURS!!!!
 ~
 4|32|64 2|8|32|128|512|32768|65536 0 S
-100 0 0 0e0+0 0d0+0
+100 0 0 0d0+0 0d0+0
 96 0
 8 8 1
+< reserved~ elite~
 #5603
 Pestilence~
 Pestilence~
@@ -64,9 +67,10 @@ everywhere, and once they are whipped into a frenzy, they attack
 viciously.
 ~
 4|32|64 2|8|32|128|512|32768|65536 0 S
-90 0 0 0e0+0 0d0+0
+90 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #5604
 starving man~
 the starving man~

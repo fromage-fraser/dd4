@@ -101,9 +101,10 @@ glory.  Not only is he the captain of the guard, but he is also
 Prince Erich, second born to King Guntharson.
 ~
 64 8|32|128|512|2048|8192 1000 S
-85 0 0 0e0+0 0d0+0
+85 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #24007
 dwarf king guntharson~
 Guntharson, King of Cobresh~
@@ -117,9 +118,10 @@ armour that he wore back then.  A large hammer hangs at his side.
 Try as you might to talk, he will not listen.
 ~
 2|64 8|32|128|512|2048|8192 1000 S
-80 0 0 0b0+0 0d0+0
+80 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ boss~
 #24008
 ivan prince dwarf~
 Prince Ivan~
@@ -133,9 +135,10 @@ some reason, he seems in a hurry to leave, and you hear him mumble
 something about a dragon as he hastily packs.
 ~
 2|64|128 512|8192 1000 S
-70 0 0 0r0+0 0d0+0
+70 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ rare~
 #24009
 hanson white dwarf~
 Hanson~

@@ -945,7 +945,7 @@ meet your maker, and I know who I am betting on. Be warned however, you cannot
 defeat me......"
 ~
 2|4|64 8|32|128|512|8192|1048576 -1000 S
-107 0 0 0b0+0 0d0+0
+107 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 >greet_prog 100~
@@ -954,6 +954,7 @@ if ispc($n)
     endif
 ~
 |
+< reserved~ boss~
 #14563
 red dragon zyklor warlock~
 Zyklor~

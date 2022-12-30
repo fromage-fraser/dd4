@@ -696,9 +696,10 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         break;
                 }
 
-            case APPLY_RESIST_HEAT:
-                af.type = skill_lookup("resist heat");
-                if( fAdd )
+            case APPLY_RESIST_HEAT:             
+                ch->resist_heat += mod;
+              /*  af.type = skill_lookup("resist heat");
+              if( fAdd )
                 {
                         if( is_affected( ch, af.type ) )
                                 break;
@@ -715,10 +716,12 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 {
                         affect_strip( ch, af.type );
                         send_to_char("You feel vulnerable to heat and flame.\n\r", ch);
-                }
+                } */
                 break;
 
             case APPLY_RESIST_COLD:
+                ch->resist_cold += mod;
+ /*
                 af.type = skill_lookup("resist cold");
                 if( fAdd )
                 {
@@ -738,9 +741,11 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         affect_strip( ch, af.type );
                         send_to_char("You feel vulnerable to cold and ice.\n\r", ch);
                 }
-                break;
+                break; */
 
             case APPLY_RESIST_LIGHTNING:
+                ch->resist_lightning += mod;
+                /*
                 af.type = skill_lookup("resist lightning");
                 if( fAdd )
                 {
@@ -759,11 +764,12 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 {
                         affect_strip( ch, af.type );
                         send_to_char("You feel vulnerable to electricity.\n\r", ch);
-                }
+                } */
                 break;
-
+                
             case APPLY_RESIST_ACID:
-                af.type = skill_lookup("resist acid");
+                ch->resist_acid += mod;
+         /*     af.type = skill_lookup("resist acid");
                 if( fAdd )
                 {
                         if( is_affected( ch, af.type ) )
@@ -781,7 +787,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 {
                         affect_strip( ch, af.type );
                         send_to_char("You feel vulnerable to acid.\n\r", ch);
-                }
+                }*/
                 break;
 
             case APPLY_BREATHE_WATER:

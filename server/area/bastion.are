@@ -311,9 +311,10 @@ harp and singing an enchanting song. Floating above the angel's head a
 golden halo is shining in the sun and long white robes billow out around it.
 ~
 2|64 8|32|128|512|524288|8388608|536870912 1000 S
-100 0 0 0e0+0 0d0+0
+100 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< reserved~ elite~
 #30620
 dark angel~
 the Dark Angel~
@@ -431,7 +432,7 @@ have long claws protruding from the ends of his bony fingers. He grinds
 his teeth in his lumpy head and seems to be regarding you as a tasty morsel.
 ~
 2|32|64|512 8|32|512|2048|8192|524288|1048576|8388608 -1000 S
-115 0 0 0b0+0 0d0+0
+115 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 >all_greet_prog 100~
@@ -439,6 +440,7 @@ mpecho {wThe Shadow Lord turns towards you and shrieks, "You dare to disturb me!
 mpkill $n
 ~
 |
+< reserved~ boss~
 #30629
 giant crow~
 the Giant crow~

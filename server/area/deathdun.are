@@ -27,7 +27,7 @@ of his office, including a very ostentatious piece of headwear, much like
 those worn by the Timelords of Gallifrey, not that the baron would know that.
 ~
 2|64 4|8|16|32|128|512|8192 0 S
-120 0 0 0b0+0 0d0+0
+120 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 >greet_prog 100~
@@ -36,6 +36,7 @@ if ispc($n)
 endif
 ~
 |
+< reserved~ boss~
 #17701
 spectator~
 a spectator~
@@ -922,7 +923,7 @@ Pit Fiends resembles the T-Rex, save that they are a little shorter, and a
 LOT more aggressive.
 ~
 2|32|64 512|8192 -765 S
-67 0 0 0r0+0 0d0+0
+67 0 0 0d0+0 0d0+0
 0 0
 8 8 0
 >greet_prog 100~
@@ -931,6 +932,8 @@ if ispc($n)
  endif
 ~
 |
+< reserved~ rare~
+
 #0
 
 

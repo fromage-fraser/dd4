@@ -1605,16 +1605,22 @@ void load_area_special (FILE *fp)
 int mob_lookup( const char *name )
 {
         int sn;
+          char buf2[100];
         for ( sn = 0; sn < MAX_MOB; sn++ )
         {
+
                 if ( !mob_table[sn].name )
                         break;
 
                 if ( !str_cmp(name, mob_table[sn].name))
                 {
+
                         return sn;
                 }
         }
+        sprintf(buf2, "[*****] BUG: Cant do mob_lookup: %s: %s, %d",
+        name, mob_table[sn].name, sn);
+        log_string (buf2);
         return -1;
 }
 
@@ -1627,6 +1633,7 @@ void load_mob_spec (FILE *fp, MOB_INDEX_DATA *pMobIndex)
         int ms;
         char letter;
         char *name;
+        char *rank;
         char buf2[100];
         buf2[0] = '\0';     
 
@@ -1636,6 +1643,7 @@ void load_mob_spec (FILE *fp, MOB_INDEX_DATA *pMobIndex)
         while (letter == '<')
         {                
                 name = fread_string(fp);
+                rank = fread_string(fp);
                 ms = mob_lookup(name);
 
                 if (ms < 0)
@@ -1646,6 +1654,8 @@ void load_mob_spec (FILE *fp, MOB_INDEX_DATA *pMobIndex)
                 }
                 else                     
                         pMobIndex->mobspec = name;
+
+                pMobIndex->rank = rank;
                 
                 letter = fread_letter( fp ); 
         }               
@@ -1759,7 +1769,8 @@ void load_mobiles( FILE *fp )
                 fread_number( fp, &stat );   /* Unused */
                 fread_number( fp, &stat );   /* Unused */
                 fread_number( fp, &stat );   /* Unused */
-                pMobIndex->rank                 = fread_letter( fp );   /* Now used to determine rank of a mob - Brutus Oct 2022 */
+                /* pMobIndex->rank                 = fread_letter( fp );    Now used to determine rank of a mob - Brutus Oct 2022 */
+                fread_letter( fp );   /* Unused */
                 fread_number( fp, &stat );   /* Unused */
                 fread_letter( fp );   /* Unused */
                 fread_number( fp, &stat );   /* Unused */
@@ -1802,8 +1813,8 @@ void load_mobiles( FILE *fp )
                 if ( letter == '<' )
                 {
                         ungetc( letter, fp );
-                        sprintf(buf2, "[*****] INFO: Read Mob_spec %d %s ",
-                                vnum, pMobIndex->mobspec);
+                        sprintf(buf2, "[*****] INFO: Read in Mob_spec %d",
+                                vnum);
                         log_string (buf2);
                         load_mob_spec(fp,pMobIndex);
                 }
@@ -3082,37 +3093,7 @@ void reset_area( AREA_DATA *pArea )
                                         obj = create_object(pObjIndex, 1, 1, FALSE);
                                 }
                                 else {
-                                        int rank = 1;
-                                        if (IS_NPC(mob))
-                                        switch ( mob->rank )
-                                                {
-                                                        default:
-                                                        rank = 1;
-                                                        break;
-
-                                                        case 'd':
-                                                        rank = 1;
-                                                        break;
-
-                                                        case 'e':
-                                                        rank = 3;
-                                                        break;
-
-                                                        case 'b':
-                                                        rank = 4;
-                                                        break;
-
-                                                        case 'r':
-                                                        rank = 2;
-                                                        break;
-
-                                                        case 'w':
-                                                        rank = 5;
-                                                        break;
-
-                                                }
-
-                                        obj = create_object(pObjIndex, number_fuzzy(level), rank, TRUE);
+                                        obj = create_object(pObjIndex, number_fuzzy(level), rank_sn(mob), TRUE);
                                 }
 
                                 if (obj->level > LEVEL_HERO) {
@@ -3239,7 +3220,6 @@ void reset_area( AREA_DATA *pArea )
 CHAR_DATA * create_mobile( MOB_INDEX_DATA *pMobIndex )
 {
         CHAR_DATA *mob;
-        int rank_bonus;
         if ( !pMobIndex )
         {
                 bug( "Create_mobile: NULL pMobIndex.", 0 );
@@ -3267,34 +3247,6 @@ CHAR_DATA * create_mobile( MOB_INDEX_DATA *pMobIndex )
         mob->spec_fun           = pMobIndex->spec_fun;
         mob->prompt             = str_dup( "<%hhp %mm %vmv> " );
         mob->rank               = pMobIndex->rank;
-
-        switch ( mob->rank )
-                {
-                        default:
-                        rank_bonus = 1;
-                        break;
-
-                        case 'd':
-                        rank_bonus = 1;
-                        break;
-
-                        case 'e':
-                        rank_bonus = 2;
-                        break;
-
-                        case 'b':
-                        rank_bonus = 5;
-                        break;
-
-                        case 'r':
-                        rank_bonus = 3;
-                        break;
-
-                        case 'w':
-                        rank_bonus = 10;
-                        break;
-
-                }
         mob->level              = number_fuzzy( pMobIndex->level );
         mob->act                = pMobIndex->act;
         mob->affected_by        = pMobIndex->affected_by;
@@ -3305,7 +3257,8 @@ CHAR_DATA * create_mobile( MOB_INDEX_DATA *pMobIndex )
 
         mob->max_hit = mob->level * 8
                 + number_range( mob->level * mob->level / 4, mob->level * mob->level );
-        mob->max_hit *= rank_bonus;
+       /* mob->max_hit *= rank_bonus; */
+        mob->max_hit *= rank_table[rank_sn_index(pMobIndex)].rank_bonus; 
 
         mob->hit                = mob->max_hit;
         mob->crit               = 5;
@@ -4820,31 +4773,14 @@ void do_mrank( CHAR_DATA *ch, char *argument )
                         {
                                 if ( IS_NPC( victim )
                                 && victim->in_room
-                                && ( victim->rank == 'e' || victim->rank == 'b' || victim->rank == 'r' || victim->rank == 'w') )
+                                && ( rank_sn(victim) > 1 ) )
                                 {
-                                        char *display_rank;
-                                        
-                                        display_rank = "";
-
-                                        if (victim->rank == 'e')
-                                                display_rank = " <93>[Elite]<0>";
-                                        
-                                        if (victim->rank == 'r')
-                                                display_rank = " <39>[Rare]<0>";
-                                        
-                                        if (victim->rank == 'w')
-                                                display_rank = " <81>[WO<75>RL<69>D B<75>OS<81>S]<0>";
-                                        if (victim->rank == 'b')
-                                                display_rank = " <514><556><16>[<560>BOSS<561>]<0><557>";
-
-
-
                                         sprintf( buf, "[%5d] %-28s at [%5d] %s\n\r",
                                                 
                                                 victim->pIndexData->vnum,
                                                 victim->short_descr,
                                                 victim->in_room->vnum,
-                                                display_rank );
+                                                rank_table[rank_sn(victim)].who_format );
                                         send_to_char (buf, ch);
                                 }
                         }

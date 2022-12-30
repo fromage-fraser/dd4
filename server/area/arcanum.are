@@ -66,7 +66,7 @@ A cloaked figure shifts slightly as you enter.
 He is cloaked from head to foot in dark garb and you can't make out any of his features.
 ~
 2|32768 2048 0 S
-101 0 0 0r0+0 0d0+0
+101 0 0 0d0+0 0d0+0
 64|256 0
 0 0 1
 >all_greet_prog 100~
@@ -110,6 +110,7 @@ He is cloaked from head to foot in dark garb and you can't make out any of his f
 endif
 ~
 |
+< reserved~ rare~
 
 #26004
 cyan guard~
@@ -1055,13 +1056,14 @@ He looks kinda like a cross between an umpaloompa and David Hasselhoff, with
 just a tad of Dwarf thrown in.
 ~
 2 0 -1000 S
-101 0 0 0e0+0 0d0+0
+101 0 0 0d0+0 0d0+0
 0 0
 0 0 1
 >rand_prog 1~
    yell Dwarves rule!
 ~
 |
+< reserved~ elite~
 
 #26063
 Rzzrdehcurfn~
@@ -1072,9 +1074,10 @@ He looks like he seems to be scared, but you get the sense it's an act. His
 gaze seems to challenge you to call the bluff.
 ~
 2 0 1000 S
-100 0 0 0e0+0 0d0+0
+100 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< reserved~ elite~
 
 #26064
 milo dungeon guard dog~

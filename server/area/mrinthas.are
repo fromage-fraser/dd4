@@ -116,9 +116,10 @@ entire Temple staff who has not been effected by the passage of time. You
 notice that nothing escapes the Guard Captain's gaze
 ~
 2|64|128 8|32|128|512|8192 1000 S
-40 0 0 0e0+0 0d0+0
+40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #13010
 Temple Guard zombie undead~
 Ready Temple Guards~
@@ -152,9 +153,11 @@ splashing hissing, green acid as it flexes it's huge arms and clicks it's
 claws.
 ~
 2|4|32|64 8|32|512|8192|32768|65536|524288 -500 S
-40 0 0 0e0+0 0d0+0
+40 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< reserved~ elite~
+
 #0
 
 

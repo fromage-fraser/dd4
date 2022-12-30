@@ -131,13 +131,14 @@ A Copper Dragon is here, waiting to take to the skies with its master.
 ``--------..._``--.__{X
 ~
 2|64|131072 8|32|128|2048|524288|16777216 0 S
-90 0 0 0e0+0 0d0+0
+90 0 0 0d0+0 0d0+0
 128 0
 0 0 2
 >speech_prog p Arelith follow me.~
 follow $n
 ~
 |
+< reserved~ elite~
 
 #55049
 Pink Bunny Punnbinky~
@@ -1151,7 +1152,7 @@ Adonis stands here, gazing at you steadily.
 {x                             /__(    '-._`,
 ~
 2|64 8|32|2048|8388608 -1000 S
-65 0 0 0e0+0 0d0+0
+65 0 0 0d0+0 0d0+0
 0 0
 0 0 1
 >all_greet_prog 100~
@@ -1196,7 +1197,7 @@ endif
 mppurge
 ~
 |
-
+< reserved~ elite~
 #55043
 Adonis(2Tynan2)~
 Adonis~

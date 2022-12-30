@@ -340,7 +340,7 @@ to pull a sailing ship underwater, and seems VERY angry at your intrusion
 into its domain!
 ~
 2|32|64 8|32|512|8192|8388608|67108864 0 S
-25 0 0 0e0+0 0d0+0
+25 0 0 0d0+0 0d0+0
 168 0
 8 8 2
 >all_greet_prog 100~
@@ -354,6 +354,7 @@ mpasound ::shLOooOOOoOooRp::
 mpasound ::SHLOoOOoOOOOORP::
 ~
 |
+< reserved~ elite~
 #27018
 sahuagin warrior~
 a sahuagin warrior~

@@ -99,9 +99,10 @@ mind, her eyes are glazed over and she looks right through you.  Her robes
 are almost completely ruined; nothing but rags now.
 ~
 2|64 8192 -350 S
-35 0 0 0r0+0 0d0+0
+35 0 0 0d0+0 0d0+0
 0 0
 0 0 2
+< reserved~ rare~
 
 #10107
 wraith~
@@ -133,6 +134,7 @@ grins back at you.
     mpecho The imp throws back his head and cackles with insane glee!
 ~
 |
+< reserved~ elite~
 
 #10108
 demon spirit aiseen~
@@ -145,7 +147,7 @@ features are pure malevolence and her eyes stab you like a knife when her
 gaze falls upon you.
 ~
 2|32|64 8|32|8192|65536|524288 -1000 S
-36 0 0 0b0+0 0d0+0
+36 0 0 0r0+0 0d0+0
 0 0
 0 0 2
 >death_prog 100~
@@ -157,7 +159,7 @@ gaze falls upon you.
     mpecho {x
 ~
 |
-
+< reserved~ rare~
 #10109
 wight~
 a wight~

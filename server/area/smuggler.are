@@ -92,9 +92,10 @@ skin. His features are noble and handsome in a rugged sort of a way, you guess
 he is a bastard or poor nobleman.
 ~
 2|32|64|16384 8|32|128 -700 S
-45 0 0 0b0+0 0d0+0
+45 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ boss~
 #17503
 pirate~
 A Wandering Crewman~
@@ -130,9 +131,10 @@ many years of sailing. He looks at you calmly, confident in his ability to
 deal with you should you prove troublesome.
 ~
 2|64 8|32|128 0 S
-42 0 0 0r0+0 0d0+0
+42 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ rare~
 #17506
 Harvey Bosun~
 Harvey the Bosun~
@@ -305,9 +307,11 @@ Punjak is a cruel and vain man, the world will be a better place without
 his presence.
 ~
 2|32|64 2|8|32|128|524288 -500 S
-43 0 0 0e0+0 0d0+0
+43 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
+
 #0
 
 

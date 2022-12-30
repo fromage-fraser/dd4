@@ -333,9 +333,10 @@ have bitten off more that they can chew."  The smile disappears, and a taloned
 hand moves nearer to a large sheathed dagger.
 ~
 2|64 8|32|512|524288 -500 S
-55 0 0 0e0+0 0d0+0
+55 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< reserved~ elite~
 #25025
 brass robot machinery~
 a brass robot~
@@ -374,9 +375,10 @@ dull, shifting clouds that cloak his body.  Two points of intense light have
 replaced his eyes, and for a second you feel you hear a horrible screaming.
 ~
 2|64 512 0 S
-60 0 0 0e0+0 0d0+0
+60 0 0 0d0+0 0d0+0
 96 0
 8 8 0
+< reserved~ elite~
 #25028
 kahsis queen~
 Kahsis~
@@ -392,9 +394,10 @@ will easssily dessstroy you.  The pagan godsss can not help you now, even if
 they gathered the courage to do ssso.  Prepare..."
 ~
 2|64 8|32|128|512|524288 -1000 S
-70 0 0 0b0+0 0d0+0
+70 0 0 0d0+0 0d0+0
 96 0
 8 8 2
+< reserved~ boss~
 #25029
 kahsis serpent snake~
 Kahsis~
@@ -406,9 +409,11 @@ razor sharp and filed with vile poisons.  Screeching and bellowing foul
 incantations you now no longer understand, Kahsis rears for her final victory.
 ~
 2|64 8|32|512 -1000 S
-60 0 0 0r0+0 0d0+0
+60 0 0 0d0+0 0d0+0
 60|128 0
 8 8 0
+< reserved~ rare~
+
 #0
 
 

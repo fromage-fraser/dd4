@@ -8041,8 +8041,8 @@ void spell_resist_heat (int sn, int level, CHAR_DATA *ch, void *vo)
 
         af.type = sn;
         af.duration = 5 + level / 4;
-        af.location = APPLY_NONE;
-        af.modifier = 0;
+        af.location = APPLY_RESIST_HEAT;
+        af.modifier = level/5;
         af.bitvector = 0;
         affect_to_char(victim, &af);
 
@@ -8063,8 +8063,8 @@ void spell_resist_cold (int sn, int level, CHAR_DATA *ch, void *vo)
 
         af.type = sn;
         af.duration = 5 + level / 4;
-        af.location = APPLY_NONE;
-        af.modifier = 0;
+        af.location = APPLY_RESIST_COLD;
+        af.modifier = level/5;
         af.bitvector = 0;
         affect_to_char(victim, &af);
 
@@ -8085,8 +8085,8 @@ void spell_resist_lightning (int sn, int level, CHAR_DATA *ch, void *vo)
 
         af.type = sn;
         af.duration = 5 + level / 4;
-        af.location = APPLY_NONE;
-        af.modifier = 0;
+        af.location = APPLY_RESIST_LIGHTNING;
+        af.modifier = level/5;
         af.bitvector = 0;
         affect_to_char(victim, &af);
 
@@ -8107,8 +8107,8 @@ void spell_resist_acid (int sn, int level, CHAR_DATA *ch, void *vo)
 
         af.type = sn;
         af.duration = 5 + level / 4;
-        af.location = APPLY_NONE;
-        af.modifier = 0;
+        af.location = APPLY_RESIST_ACID;
+        af.modifier = level/5;
         af.bitvector = 0;
         affect_to_char(victim, &af);
 

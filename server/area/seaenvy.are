@@ -153,9 +153,11 @@ appear very wise in the ways of the world and may be able to teach
 you something.
 ~
 4|128|512|1024|2048 128|8192 0 S
-70 0 0 0r0+0 0d0+0
+70 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< reserved~ rare~
+
 #0
 
 

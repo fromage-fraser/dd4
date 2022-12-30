@@ -62,7 +62,7 @@ come here seeking her out, as well as studying herb and forest-lore. She
 smiles at your entrance, as if she had been waiting for you all day.
 ~
 2|64|512|1024 8|32|128|512|8192|16777216|536870912 1000 S
-50 0 0 0r0+0 0d0+0
+50 0 0 0d0+0 0d0+0
 0 0
 8 8 2
 >speech_prog p Morc thinks of you still~
@@ -89,6 +89,7 @@ give lace $n
 mpecho {WWith her dying breath Zelda whimpers, `I love you Morc...'{x
 ~
 |
+< reserved~ rare~
 & 40 'teacher base'
 & 97 'armed combat knowledge'
 & 97 'defense knowledge'
@@ -331,7 +332,7 @@ dreams and feed upon the lifeblood of her prey. She regards you with cold
 fury as green tendrils of smoke creep from the corners of her mouth.
 ~
 2|32|64 8|32|512|2048|65536 0 S
-50 0 0 0e0+0 0d0+0
+50 0 0 0d0+0 0d0+0
 0 0
 8 8 2
 >death_prog 100~
@@ -339,6 +340,7 @@ mpecho {RAs Ilyana's body is destroyed a giant black leech erupts from her skin!
     mpmload 20626
 ~
 |
+< reserved~ elite~
 #20617
 fire bonfire~
 the bonfire~
@@ -560,7 +562,7 @@ Mavros is a fearsome sight in his suit of black iron full-plate armour. He
 reeks of blood and death.
 ~
 2 8|32|128 0 S
-50 0 0 0e0+0 0d0+0
+50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 >rand_prog 50~
@@ -575,6 +577,7 @@ mpecho {RAs Mavros's body is destroyed a giant black leech erupts from his skin!
     mpmload 20626
 ~
 |
+< reserved~ elite~
 #20626
 leech~
 A foul black leech~

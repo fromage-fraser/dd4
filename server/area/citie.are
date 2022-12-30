@@ -329,9 +329,10 @@ A serpent queen glares down at you.
 She is wearing a lavish dress.
 ~
 2|64 0 0 S
-50 0 0 0e0+0 0d0+0
+50 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< reserved~ elite~
 #23530
 blacksmith smith~
 the blacksmith~
@@ -550,9 +551,10 @@ A powerful man stands here.
 SIN and die!
 ~
 64 524288 0 S
-50 0 0 0e0+0 0d0+0
+50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #23551
 horse~
 the horse~

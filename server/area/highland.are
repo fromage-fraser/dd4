@@ -58,9 +58,10 @@ The elite of the army they will protect their Lord at all cost,
 even unto death.
 ~
 2 0 -600 S
-21 0 0 0e0+0 0d0+0
+21 0 0 0d0+0 0d0+0
 0 38000
 0 0 1
+< reserved~ elite~
 #11505
 Highlander~
 a Highlander~
@@ -83,9 +84,10 @@ fear him. Not a looker, his teeth have more than a passing resemblance
 to a boar's tusks.
 ~
 2 128 -1000 S
-25 0 0 0b0+0 0d0+0
+25 0 0 0d0+0 0d0+0
 0 90000
 0 0 1
+< reserved~ boss~
 #11507
 Wife~
 the wife of the Lord~
@@ -108,9 +110,10 @@ something about making a big mistake and having to roam the lands searching
 for peace.
 ~
 1 642 0 S
-35 0 0 0r0+0 0d0+0
+35 0 0 0d0+0 0d0+0
 0 100000
 0 0 0
+< reserved~ rare~
 #11509
 sheep~
 a sheep~

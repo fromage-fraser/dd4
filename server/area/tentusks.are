@@ -230,9 +230,10 @@ Gortholsa the hobgoblin has claimed this swamp as his own, jealously
 patrolling its waters and chasing off intruders.  He leers at you evilly.
 ~
 2|64 0 -150 S
-40 0 0 0e0+0 0d0+0
+40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #25417
 smoke demon~
 a smoke demon~
@@ -289,9 +290,10 @@ A mist dragon hangs in the vapour.
 The sleek white dragon curls like a snake through the air.
 ~
 64 8192|524288 100 S
-35 0 0 0r0+0 0d0+0
+35 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< reserved~ rare~
 #25422
 weathermonger weather monger~
 the Weathermonger~
@@ -486,9 +488,10 @@ Llewllokin the High Druid chants and gestures.
 Clad in pale white robes, the High Druid conducts some obscene pagan rite.
 ~
 64 128|8192 0 S
-41 0 0 0r0+0 0d0+0
+41 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ rare~
 #25438
 druid berserker~
 a druid berserker~
@@ -589,7 +592,7 @@ Larger and uglier than One Tusk, this demon stands ten feet tall, two
 thick ram's horns curling from the sides of his head.
 ~
 2|64 128|1048576 0 S
-40 0 0 0r0+0 0d0+0
+40 0 0 0d0+0 0d0+0
 0 0
 8 8 0
 >hitprcnt_prog 30~
@@ -599,6 +602,7 @@ thick ram's horns curling from the sides of his head.
         kick
 ~
 |
+< reserved~ rare~
 #25446
 three tusks~
 Three Tusks~
@@ -608,13 +612,14 @@ This twelve foot giant dissolves from the ether of the Nexus, stooping over
 you and roaring terribly.
 ~
 2|64 128|1048576 0 S
-45 0 0 0e0+0 0d0+0
+45 0 0 0d0+0 0d0+0
 0 0
 8 8 0
 >hitprcnt_prog 50~
         head
 ~
 |
+< reserved~ elite~
 #25447
 four tusks~
 Four Tusks~
@@ -625,7 +630,7 @@ growing from each side of his head, and stands fifteen feet tall.  His very
 presence fills you with complete terror.
 ~
 2|64 128|1048576 0 S
-50 0 0 0b0+0 0d0+0
+50 0 0 0d0+0 0d0+0
 0 0
 8 8 0
 >hitprcnt_prog 30~
@@ -643,6 +648,7 @@ presence fills you with complete terror.
         berserk
 ~
 |
+< reserved~ boss~
 #25448
 water elemental~
 a water elemental~

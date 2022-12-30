@@ -226,9 +226,10 @@ the door and sleeping, a trick he has learned to appear
 as if he is actually guarding something.
 ~
 2 131072 -400 S
-11 0 0 0e0+0 0d0+0
+11 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #4518
 prisoner beaten unconscious~
 The beaten prisoner~
@@ -383,9 +384,10 @@ The leader of the goblins is here.
 The leader is trying to grab the pigeon.
 ~
 2 0 -1000 S
-15 0 0 0b0+0 0d0+0
+15 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ boss~
 #0
 
 

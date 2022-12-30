@@ -403,9 +403,10 @@ to face you, his long dreadlocks swinging about his body as he screams at you,
 "You are trespassing in my sanctum. You will die this day."
 ~
 2|32|64 8|32|128|512 -1000 S
-45 0 0 0e0+0 0d0+0
+45 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #9512
 Amanda~
 Amanda~
@@ -635,9 +636,10 @@ his form.
 "Now you will die intruder, for already you have seen and know too much."
 ~
 2|32|64 8|32|128|512 -580 S
-41 0 0 0r0+0 0d0+0
+41 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ rare~
 #9523
 Mavralyn vampire~
 Mavralyn~
@@ -938,7 +940,7 @@ entrance into his abode - and then your gaze slips to the syringe he still
 clutches fiercely in his right hand.
 ~
 2|64 128|512|8192 580 S
-42 0 0 0r0+0 0d0+0
+42 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 >rand_prog 3~
@@ -975,6 +977,7 @@ sleep
 endif
 ~
 |
+< reserved~ rare~
 #9540
 Saul vampire~
 Saul~
@@ -986,7 +989,7 @@ vampires everywhere to act in a spirit of moderation and humility when taking
 life and consuming blood.
 ~
 2|64|4096|8192|32768 8|32|128|512|2048|8192|524288|16777216 -1000 S
-50 0 0 0r0+0 0d0+0
+50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 >rand_prog 3~
@@ -997,6 +1000,7 @@ mpecho $I pounds his fist against the lectern to emphasize a point in his sermon
 endif
 ~
 |
+< reserved~ rare~
 #9541
 Augus vampire~
 Augus~
@@ -1009,9 +1013,10 @@ debate as to the existentialist implication of you breaking his nose and driving
 the cartilage into his brain with your fist.
 ~
 2|128 0 -200 S
-42 0 0 0r0+0 0d0+0
+42 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ rare~
 #9542
 Grieb vampire tortured writer~
 Grieb~
@@ -1152,7 +1157,7 @@ Peering into the shadows you think you discern a figure - could it be a legendar
 shadowthief, feared inner-circle member of Midgaard's most notorious thief cult?
 ~
 128 2|8|32|128|512|2048|8192|32768|65536|1048576|4194304|8388608 -600 S
-60 0 0 0e0+0 0d0+0
+60 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 >rand_prog 3~
@@ -1191,6 +1196,7 @@ mpecho Something metal flashes in the darkness.
 endif
 ~
 |
+< reserved~ elite~
 #0
 
 

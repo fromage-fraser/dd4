@@ -2606,7 +2606,7 @@ struct  mob_index_data
         char *                  long_descr;
         char *                  description;
         char *                  mobspec;        /* MB SPEC data */
-        char                    rank;           /* Rank of a mob (eliete, boss, rare) */
+        char *                  rank;           /* Rank of a mob (eliete, boss, rare) */
         int                     vnum;
         int                     count;
         int                     killed;
@@ -2652,7 +2652,7 @@ struct char_data
         char *                  description;
         char *                  prompt;
         char *                  mobspec;        /* MOB SPEC data  */
-        char                    rank;
+        char *                  rank;
         int                     sex;
         int                     class;
         int                     sub_class;
@@ -3100,6 +3100,7 @@ struct skill_type
 
 #define MAX_MOB 3
 #define MAX_SPECIES 3
+#define MAX_RANK 6
 
 /* mob_spec_data Brutus */
 struct  mob_spec_data
@@ -3138,6 +3139,13 @@ struct species_type
         char *species;                        /* species e.g. elemental */
         unsigned long int body_parts;         /* body parts they have */
         unsigned long int attack_parts;       /* body parts race attacks with */ 
+};
+
+struct rank
+{
+        char *name;
+        int rank_bonus;
+        char *who_format;
 };
 
 /* class basic gsn's */
@@ -3919,6 +3927,7 @@ extern const    struct set_type                 set_list                        
 extern const    struct skill_type               skill_table                     [ MAX_SKILL ];
 extern const    struct mob_type                 mob_table                       [ MAX_MOB ];
 extern const    struct species_type             species_table                   [ MAX_SPECIES ];
+extern const    struct rank                     rank_table                      [ MAX_RANK ];
 extern const    struct social_type              social_table                    [ ];
 extern const    struct pattern_points           pattern_list                    [ MAX_PATTERN ];
 extern const    struct soar_points              soar_list                       [ MAX_SOAR ];
@@ -4666,6 +4675,8 @@ char* format_obj_to_char                args( ( OBJ_DATA *obj, CHAR_DATA *ch, bo
 void  show_char_to_char                 args( ( CHAR_DATA *list, CHAR_DATA *ch ) );
 void  set_title                         args( ( CHAR_DATA *ch, char *title ) );
 int   species_sn                        args( (CHAR_DATA *ch) );
+int   rank_sn                           args( (CHAR_DATA *ch) );
+int   rank_sn_index                     args( (MOB_INDEX_DATA *pMobIndex) );
 bool  check_blind                       args( ( CHAR_DATA *ch ) );
 int   has_pre_req                             ( CHAR_DATA *ch, int sn );
 char* number_suffix                           ( int num );

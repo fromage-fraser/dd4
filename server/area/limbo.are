@@ -18,7 +18,7 @@ flashes off her fractal scales, creating a sparkling ignis fatuus that
 confuses your senses and disorientates you.
 ~
 1|2048 0 1000 S
-826 1 -1 5w10+550 4d6+3
+826 1 -1 5d10+550 4d6+3
 0 0
 8 8 2
 >greet_prog 100~
@@ -84,6 +84,7 @@ emote points to the sign on the wall.
 mpforce $n chat I can't read! Woe is me!
 ~
 |
+< reserved~ boss~
 #2
 darkside~
 The Mighty Darkside~
@@ -97,6 +98,7 @@ to disintegrate you.  Beholders are not known for their personality.
 25 6 0 25d25+250 6d6+5
 12 0
 8 8 0
+< reserved~ boss~
 #3
 apprentice mouldy~
 Gezhp's Apprentice~
@@ -231,7 +233,7 @@ else
 endif
 ~
 |
-
+< reserved~ boss~
 #6
 winged monkey flying~
 a winged monkey~
@@ -278,6 +280,7 @@ and alert, this man is more than a match for most mortals.
             mpecho CHAT Masters, I have been defeated!
 ~
 |
+< reserved~ boss~
 #76
 watcher~
 The Watcher~
@@ -289,6 +292,7 @@ The Watcher~
 826 1 -1 5d10+550 4d6+3
 0 0
 8 8 2
+< reserved~ boss~
 #77
 chicken doom~
 the Chicken of Doom~
@@ -315,6 +319,7 @@ if rand(25)
 endif
 ~
 |
+< reserved~ boss~
 #78
 Ducky duck~
 Ducky the duck~

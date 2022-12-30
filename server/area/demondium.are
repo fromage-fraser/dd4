@@ -787,9 +787,10 @@ Osiris is the protector of the Underworld, and as such knows everything that
 happens or has happened here. Perhaps he may be able to help you.
 ~
 2|64 8|32|128 1000 S
-90 0 0 0b0+0 0d0+0
+90 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ boss~
 #21560
 pharaoh undead~
 the undead pharaoh~
@@ -823,9 +824,10 @@ Osiris is the protector of this realm.  He also decides where the souls that
 come through here will go next.  What will he decide about you?
 ~
 2|32|64 8|32|128 1000 S
-90 0 0 0b0+0 0d0+0
+90 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ boss~
 #21563
 mummy~
 the mummy~
@@ -940,9 +942,10 @@ Akmar is the first guardian of the hall of Thrasher.  He once was chief deputy
 under Redferne, but came here after being bewitched by Primus.
 ~
 2|64 8|32|128|512|8192 -1000 S
-90 0 0 0e0+0 0d0+0
+90 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #21573
 chaymi~
 Chaymi~
@@ -952,9 +955,10 @@ Chaymi is a powerful priestess from the region of Hell who was sent here to
 teach black magic to the followers of Thrasher.
 ~
 2|64 8|32|128|512|8192|524288 -1000 S
-85 0 0 0r0+0 0d0+0
+85 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< reserved~ rare~
 #21574
 jaguar~
 Jaguar~
@@ -964,9 +968,10 @@ Jaguar is the master of disguise, and appears to be a large feline with huge
 fangs and claws.  Maybe it is a disguise.  Then again maybe not.
 ~
 2|64 8|32|128|512|8192 -1000 S
-87 0 0 0r0+0 0d0+0
+87 0 0 0d0+0 0d0+0
 4|32 0
 8 8 1
+< reserved~ rare~
 #21575
 shadow master~
 the master of shadows~
@@ -1280,7 +1285,7 @@ patience of the immortal being that he is.  He flicks out a small
 burst of power from his mind and you are instantly frozen to the spot!
 ~
 2|64 128 -1000 S
-90 0 0 0b0+0 0d0+0
+90 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 >fight_prog 75~
@@ -1289,6 +1294,7 @@ if ispc($n)
    endif
 ~
 |
+< reserved~ boss~
 #21601
 dead tree~
 the dead tree~

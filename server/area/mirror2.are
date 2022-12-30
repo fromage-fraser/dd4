@@ -227,9 +227,10 @@ towards you, you catch a glimpse of his face: thin, well-worn laugh lines
 intersect with thick, brownish scars.
 ~
 64 8|32|8192 1000 S
-35 0 0 0e0+0 0d0+0
+35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #19017
 orange lord~
 the Orange Lord~
@@ -242,9 +243,10 @@ over his hooded eyes, making it almost impossible to tell just where he's
 looking.
 ~
 64 8|32|512|8192 1000 S
-35 0 0 0e0+0 0d0+0
+35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #19018
 yellow lord~
 the Yellow Lord~
@@ -256,9 +258,10 @@ her face has a certain beauty, it has an air of sternness as well, enhanced by
 the razor-sharp crystal sword at her side.
 ~
 64 8|32|512|8192 1000 S
-35 0 0 0e0+0 0d0+0
+35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #19019
 green lord~
 the Green Lord~
@@ -270,9 +273,10 @@ Realm, constantly shifting his gaze as he enjoys the land's beauty and watches
 for possible threats.
 ~
 64 8|32|512|8192 1000 S
-35 0 0 0e0+0 0d0+0
+35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #19020
 blue lord~
 the Blue Lord~
@@ -284,9 +288,10 @@ possibly in challenge--catching the light and the blue of his robe in the
 facets of his sword.
 ~
 64 8|32|512|8192 1000 S
-35 0 0 0e0+0 0d0+0
+35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #19021
 violet lord~
 the Violet Lord~
@@ -298,9 +303,10 @@ in its folds.  At his side, his clear crystal sword looks almost dark as it
 absorbs and reflects the colors of his robe.
 ~
 64 8|32|512|8192 1000 S
-35 0 0 0e0+0 0d0+0
+35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #19022
 gardner gardener lady~
 the gardener~
@@ -820,9 +826,10 @@ and head--they contain no features at all, and only radiate a bright golden
 glow.
 ~
 2|64 8|32|128|512|8192 1000 S
-50 0 0 0b0+0 0d0+0
+50 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< reserved~ boss~
 #19062
 phoenix bird~
 the Phoenix~
@@ -834,9 +841,10 @@ feathers intertwined with a few golden ones; its silvery beak glistens in the
 light, with faint sparkles shining on its razor-sharp edges.
 ~
 2|4|32|64 8|32|512|8192 0 S
-50 0 0 0r0+0 0d0+0
+50 0 0 0d0+0 0d0+0
 36 0
 8 8 0
+< reserved~ rare~
 #19063
 mandeep beekeeper bee keeper~
 Mandeep the Beekeeper~

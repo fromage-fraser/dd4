@@ -202,7 +202,7 @@ and orders his guard to attack.  He is human, but is so twisted and evil that
 he is barely recognisable as such.
 ~
 2|64 8|32|8388608 -1000 S
-15 0 0 0e0+0 0d0+0
+15 0 0 0d0+0 0d0+0
 0 0
 0 0 1
 >greet_prog 100~
@@ -211,6 +211,8 @@ he is barely recognisable as such.
     mpforce senior mpkill $n
 ~
 |
+< reserved~ elite~
+
 #0
 
 #OBJECTS

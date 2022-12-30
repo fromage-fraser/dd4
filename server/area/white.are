@@ -329,6 +329,7 @@ The statue of the Golden Buddha of Contentment sits here.
 46 2 2 1r1+30000 1d8+32
 304 0
 8 8 1
+< reserved~ rare~
 #10730
 shrine attendant~
 shrine attendant~
@@ -384,6 +385,7 @@ The White Lotus Chief is here meditating.
 50 2 2 1b1+30000 1d8+32
 0 0
 8 8 1
+< reserved~ boss~
 #10735
 chief personal guard white lotus~
 personal guard of the White Lotus Chief~
@@ -780,6 +782,7 @@ The Grand Abbot is here, doing what Grand Abbots normally do.
 64 2 2 1e1+30000 1d8+32
 0 0
 8 8 1
+< reserved~ elite~
 #10771
 disciple of buddha~
 disciple of buddha~

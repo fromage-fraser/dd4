@@ -72,9 +72,10 @@ resides in the central area.  A large mouth with razor sharp teeth lies below
 this huge eye.  A hard chitinous covering protects the body.
 ~
 1|2|64 4|8|16|32 0 S
-60 0 2 0r0+0 0d0+0
+60 0 2 0d0+0 0d0+0
 1|4|8|16|32 0
 8 8 0
+< reserved~ rare~
 #16006
 beholder~
 The beholder~

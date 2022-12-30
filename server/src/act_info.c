@@ -685,32 +685,73 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
         if (!IS_NPC(victim ) && IS_SET(victim->act, PLR_AFK )  )
                 strcat(buf, "<22><<<40>AFK<0><22>><0> ");
 
-        if (IS_NPC(victim) && !IS_NPC(ch) && ch->pcdata->learned[gsn_advanced_consider] > 1)
-            switch ( victim->rank )
+   
+/*           if (IS_NPC(victim) && !IS_NPC(ch) && ch->pcdata->learned[gsn_advanced_consider] > 1)
+            switch ( rank_sn(victim) )
                 {
                         default:
                         strcat( buf, "");
                         break;
 
-                        case 'd':
+                        case '0':
                         strcat( buf, "");
                         break;
 
-                        case 'e':
+                        case '2':
                         strcat( buf, "<93>[Elite]<0> ");
                         break;
 
-                        case 'b':
+                        case '4':
                         strcat( buf, "<514><556><16>[<560>BOSS<561>]<0><557> ");
                         break;
 
-                        case 'r':
+                        case '3':
                         strcat( buf, "<39>[Rare]<0> ");
                         break;
                 }
 
-        if (victim->rank == 'w')
+        if (rank_sn(victim) == '5')
                 strcat( buf, "<81>[WO<75>RL<69>D B<75>OS<81>S]<0> ");
+*/
+ /*      if (IS_NPC(victim) && !IS_NPC(ch) && (ch->pcdata->learned[gsn_advanced_consider] > 1))
+        {
+            switch ( rank_sn(victim) )
+                {
+                        default:
+                        strcat( buf, "");
+                        break;
+
+                        case '0':
+                        case '1':
+                        strcat( buf, "");
+                        break;
+
+                        case '3':
+                        strcat( buf, rank_table[3].who_format);
+                        break;
+
+                        case '4':
+                        strcat( buf, rank_table[4].who_format);
+                        break;
+
+                        case '2':
+                        strcat( buf, rank_table[2].who_format);
+                        break;
+                }
+        }
+*/
+        if ( IS_NPC(victim) && !IS_NPC(ch) && !strcmp( rank_table[rank_sn(victim)].name, "uncommon") && (ch->pcdata->learned[gsn_advanced_consider] > 1))
+                strcat( buf, rank_table[0].who_format);
+        if ( IS_NPC(victim) && !IS_NPC(ch) && !strcmp( rank_table[rank_sn(victim)].name, "none") && (ch->pcdata->learned[gsn_advanced_consider] > 1))
+                strcat( buf, rank_table[1].who_format);
+        if ( IS_NPC(victim) && !IS_NPC(ch) && !strcmp( rank_table[rank_sn(victim)].name, "rare") && (ch->pcdata->learned[gsn_advanced_consider] > 1))
+                strcat( buf, rank_table[2].who_format);
+        if ( IS_NPC(victim) && !IS_NPC(ch) && !strcmp( rank_table[rank_sn(victim)].name, "elite") && (ch->pcdata->learned[gsn_advanced_consider] > 1))
+                strcat( buf, rank_table[3].who_format);
+        if ( IS_NPC(victim) && !IS_NPC(ch) && !strcmp( rank_table[rank_sn(victim)].name, "boss") && (ch->pcdata->learned[gsn_advanced_consider] > 1))
+                strcat( buf, rank_table[4].who_format);
+        if ( IS_NPC(victim) && !IS_NPC(ch) && !strcmp( rank_table[rank_sn(victim)].name, "world") )
+                strcat( buf, rank_table[5].who_format);
 
         if (victim->form != FORM_NORMAL)
         {
@@ -894,6 +935,39 @@ void show_char_to_char (CHAR_DATA *list, CHAR_DATA *ch)
                         send_to_char("You see glowing red eyes watching YOU!\n\r", ch);
         }
 }
+
+int rank_sn ( CHAR_DATA *ch)
+{
+        if ( ch->rank )
+        {
+                int sn;
+                for ( sn = 0; sn < MAX_RANK; sn++ )
+                {
+                        if ( !strcmp( ch->rank, rank_table[sn].name ) )
+                                return sn;
+                }
+                return 1;
+        }
+        return 1;
+
+}
+
+int rank_sn_index ( MOB_INDEX_DATA *pMobIndex)
+{
+        if ( pMobIndex->rank )
+        {
+                int sn;
+                for ( sn = 0; sn < MAX_RANK; sn++ )
+                {
+                        if ( !strcmp( pMobIndex->rank, rank_table[sn].name ) )
+                                return sn;
+                }
+                return 1;
+        }
+        return 1;
+
+}
+
 
 /* REturn the species index number for a character */
 int species_sn ( CHAR_DATA *ch)
@@ -3087,7 +3161,7 @@ void do_consider( CHAR_DATA *ch, char *argument )
                 act ("You suspect $N of having unusual capabilities.", ch,
                      NULL, victim, TO_CHAR );
 
-        if ( IS_NPC( victim ) && victim->rank > 1 )
+        if ( IS_NPC( victim ) && rank_sn(victim) > 1 )
                 act ("$N is {Wstronger{x than what you have been used to.", ch, NULL, victim, TO_CHAR );
 
 }

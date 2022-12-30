@@ -856,7 +856,7 @@ wicked, jagged protrusions.  An ambush predator, it has been lurking here for
 many hours, waiting for someone foolish enough to venture within its reach.
 ~
 2|4|32|64|16384 32|512|8192|4194304|67108864 -35 S
-58 0 0 0e0+0 0d0+0
+58 0 0 0d0+0 0d0+0
 676 0
 8 8 2
 >rand_prog 3~
@@ -869,6 +869,7 @@ mpasound ::rumble::
 mpasound You hear the sharp hiss of expelled steam.
 ~
 |
+< reserved~ elite~
 #27318
 large black dragon Arlauthra~
 Arlauthra~
@@ -883,7 +884,7 @@ He smells like nothing so much as rotting vegetation and foul water. He must
 be 5 metres tall and 25 metres long. He is not at all pleased to see you here.
 ~
 2|32|64|16384 4|8|16|32|512|8192|524288|4194304|8388608|1073741824 -1000 S
-60 0 0 0b0+0 0d0+0
+60 0 0 0d0+0 0d0+0
 640 0
 8 8 1
 >rand_prog 3~
@@ -899,6 +900,7 @@ be 5 metres tall and 25 metres long. He is not at all pleased to see you here.
     swallow $n
 ~
 |
+< reserved~ boss~
 #27319
 giant limpet~
 a giant limpet~
