@@ -306,9 +306,10 @@ He has been the leader of this tribe for many years, and has acquired much
 wisdom.
 ~
 2|4 2 200 S
-12 11 1 12d12+120 2d4+3
+12 11 1 12b12+120 2d4+3
 0 7000
 5 8 1
+< reserved~ boss~
 #1720
 displacer beast~
 a displacer beast~

@@ -229,6 +229,7 @@ as if he is actually guarding something.
 11 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #4518
 prisoner beaten unconscious~
 The beaten prisoner~
@@ -386,6 +387,7 @@ The leader is trying to grab the pigeon.
 15 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ boss~
 #0
 
 

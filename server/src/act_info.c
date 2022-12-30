@@ -109,8 +109,8 @@ int get_colour_index_by_code ( int ccode )
 }
 
 /* Idea is to return a score based on an object which is used to calculate rarity 
-                Scale is 0-1000 */
-int calc_item_score ( OBJ_DATA *obj)
+                Scale is 0-1000  - Brutus*/
+int calc_item_score ( OBJ_DATA *obj )
 {
         AFFECT_DATA             *paf;
         int score = 0;
@@ -133,7 +133,7 @@ int calc_item_score ( OBJ_DATA *obj)
                                 case APPLY_SANCTUARY:
                                 case APPLY_DRAGON_AURA:
                                 {
-                                        score += 200;
+                                        score += SCORE_AURAS;
                                 }
                                 break;
 
@@ -143,7 +143,7 @@ int calc_item_score ( OBJ_DATA *obj)
                                 case APPLY_SERRATED:
                                 case APPLY_INSCRIBED:
                                 {
-                                        score += 150;
+                                        score += SCORE_SMITHY;
                                 }
                                 break;
 
@@ -152,6 +152,8 @@ int calc_item_score ( OBJ_DATA *obj)
                                 case APPLY_INT:
                                 case APPLY_WIS:
                                 case APPLY_CON:
+                                case APPLY_CRIT:
+                                case APPLY_SWIFTNESS:
                                 {
                                         if (obj->level < 3 )
                                                 score += ((paf->modifier * 200) / obj->level);
@@ -160,14 +162,14 @@ int calc_item_score ( OBJ_DATA *obj)
                                         else if (obj->level < 16)
                                                 score += ((paf->modifier * 1000) / obj->level);
                                         else
-                                                score += ((paf->modifier * 2500) / obj->level);
+                                                score += ((paf->modifier * SCORE_STATS) / obj->level);
                                 }
                                 break;
 
                                 case APPLY_MANA:
                                 case APPLY_HIT:
                                 {
-                                        score += ((paf->modifier * 20) / obj->level);
+                                        score += ((paf->modifier * SCORE_HP_MANA) / obj->level);
                                 }
                                 break;
 
@@ -177,7 +179,7 @@ int calc_item_score ( OBJ_DATA *obj)
                                         if (obj->level < 10)
                                                 score += ((paf->modifier * 500) / obj->level);
                                         else
-                                                score += ((paf->modifier * 1000) / obj->level);
+                                                score += ((paf->modifier * SCORE_HIT_DAM) / obj->level);
                                 }
                                 break;
 
@@ -185,18 +187,23 @@ int calc_item_score ( OBJ_DATA *obj)
                                 case APPLY_SNEAK:
                                 case APPLY_INVIS:
                                 {
-                                        score += 100;
+                                        score += SCORE_FLY;
                                 }
                                 break;
 
                                 case APPLY_DETECT_HIDDEN:
                                 case APPLY_DETECT_INVIS:
+                                {
+                                        score += SCORE_DETECTS;
+                                }
+                                break;
+
                                 case APPLY_RESIST_ACID:
                                 case APPLY_RESIST_COLD:
                                 case APPLY_RESIST_HEAT:
                                 case APPLY_RESIST_LIGHTNING:
                                 {
-                                        score += 50;
+                                        score += ((paf->modifier * SCORE_RESISTS) / obj->level);
                                 }
                                 break;
 
@@ -220,11 +227,11 @@ int calc_item_score ( OBJ_DATA *obj)
                         bug(buf, 0); */
                         switch (paf->location)
                         {
-                                case APPLY_FLAMING:
+                                 case APPLY_FLAMING:
                                 case APPLY_SANCTUARY:
                                 case APPLY_DRAGON_AURA:
                                 {
-                                        score += 200;
+                                        score += SCORE_AURAS;
                                 }
                                 break;
 
@@ -234,7 +241,7 @@ int calc_item_score ( OBJ_DATA *obj)
                                 case APPLY_SERRATED:
                                 case APPLY_INSCRIBED:
                                 {
-                                        score += 150;
+                                        score += SCORE_SMITHY;
                                 }
                                 break;
 
@@ -243,6 +250,8 @@ int calc_item_score ( OBJ_DATA *obj)
                                 case APPLY_INT:
                                 case APPLY_WIS:
                                 case APPLY_CON:
+                                case APPLY_CRIT:
+                                case APPLY_SWIFTNESS:
                                 {
                                         if (obj->level < 3 )
                                                 score += ((paf->modifier * 200) / obj->level);
@@ -251,26 +260,24 @@ int calc_item_score ( OBJ_DATA *obj)
                                         else if (obj->level < 16)
                                                 score += ((paf->modifier * 1000) / obj->level);
                                         else
-                                                score += ((paf->modifier * 2500) / obj->level);
+                                                score += ((paf->modifier * SCORE_STATS) / obj->level);
                                 }
                                 break;
 
                                 case APPLY_MANA:
                                 case APPLY_HIT:
                                 {
-                                        score += ((paf->modifier * 20) / obj->level);
+                                        score += ((paf->modifier * SCORE_HP_MANA) / obj->level);
                                 }
                                 break;
 
                                 case APPLY_DAMROLL:
                                 case APPLY_HITROLL:
                                 {
-                                        if (obj->level < 3 )
-                                                score += ((paf->modifier * 150) / obj->level);
-                                        else if (obj->level < 10)
+                                        if (obj->level < 10)
                                                 score += ((paf->modifier * 500) / obj->level);
                                         else
-                                                score += ((paf->modifier * 1000) / obj->level);
+                                                score += ((paf->modifier * SCORE_HIT_DAM) / obj->level);
                                 }
                                 break;
 
@@ -278,18 +285,23 @@ int calc_item_score ( OBJ_DATA *obj)
                                 case APPLY_SNEAK:
                                 case APPLY_INVIS:
                                 {
-                                        score += 100;
+                                        score += SCORE_FLY;
                                 }
                                 break;
 
                                 case APPLY_DETECT_HIDDEN:
                                 case APPLY_DETECT_INVIS:
+                                {
+                                        score += SCORE_DETECTS;
+                                }
+                                break;
+
                                 case APPLY_RESIST_ACID:
                                 case APPLY_RESIST_COLD:
                                 case APPLY_RESIST_HEAT:
                                 case APPLY_RESIST_LIGHTNING:
                                 {
-                                        score += 50;
+                                        score += ((paf->modifier * SCORE_RESISTS) / obj->level);
                                 }
                                 break;
 
@@ -673,6 +685,73 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
         if (!IS_NPC(victim ) && IS_SET(victim->act, PLR_AFK )  )
                 strcat(buf, "<22><<<40>AFK<0><22>><0> ");
 
+   
+/*           if (IS_NPC(victim) && !IS_NPC(ch) && ch->pcdata->learned[gsn_advanced_consider] > 1)
+            switch ( rank_sn(victim) )
+                {
+                        default:
+                        strcat( buf, "");
+                        break;
+
+                        case '0':
+                        strcat( buf, "");
+                        break;
+
+                        case '2':
+                        strcat( buf, "<93>[Elite]<0> ");
+                        break;
+
+                        case '4':
+                        strcat( buf, "<514><556><16>[<560>BOSS<561>]<0><557> ");
+                        break;
+
+                        case '3':
+                        strcat( buf, "<39>[Rare]<0> ");
+                        break;
+                }
+
+        if (rank_sn(victim) == '5')
+                strcat( buf, "<81>[WO<75>RL<69>D B<75>OS<81>S]<0> ");
+*/
+ /*      if (IS_NPC(victim) && !IS_NPC(ch) && (ch->pcdata->learned[gsn_advanced_consider] > 1))
+        {
+            switch ( rank_sn(victim) )
+                {
+                        default:
+                        strcat( buf, "");
+                        break;
+
+                        case '0':
+                        case '1':
+                        strcat( buf, "");
+                        break;
+
+                        case '3':
+                        strcat( buf, rank_table[3].who_format);
+                        break;
+
+                        case '4':
+                        strcat( buf, rank_table[4].who_format);
+                        break;
+
+                        case '2':
+                        strcat( buf, rank_table[2].who_format);
+                        break;
+                }
+        }
+*/
+        if ( IS_NPC(victim) && !IS_NPC(ch) && !strcmp( rank_table[rank_sn(victim)].name, "uncommon") && (ch->pcdata->learned[gsn_advanced_consider] > 1))
+                strcat( buf, rank_table[0].who_format);
+        if ( IS_NPC(victim) && !IS_NPC(ch) && !strcmp( rank_table[rank_sn(victim)].name, "none") && (ch->pcdata->learned[gsn_advanced_consider] > 1))
+                strcat( buf, rank_table[1].who_format);
+        if ( IS_NPC(victim) && !IS_NPC(ch) && !strcmp( rank_table[rank_sn(victim)].name, "rare") && (ch->pcdata->learned[gsn_advanced_consider] > 1))
+                strcat( buf, rank_table[2].who_format);
+        if ( IS_NPC(victim) && !IS_NPC(ch) && !strcmp( rank_table[rank_sn(victim)].name, "elite") && (ch->pcdata->learned[gsn_advanced_consider] > 1))
+                strcat( buf, rank_table[3].who_format);
+        if ( IS_NPC(victim) && !IS_NPC(ch) && !strcmp( rank_table[rank_sn(victim)].name, "boss") && (ch->pcdata->learned[gsn_advanced_consider] > 1))
+                strcat( buf, rank_table[4].who_format);
+        if ( IS_NPC(victim) && !IS_NPC(ch) && !strcmp( rank_table[rank_sn(victim)].name, "world") )
+                strcat( buf, rank_table[5].who_format);
 
         if (victim->form != FORM_NORMAL)
         {
@@ -855,6 +934,75 @@ void show_char_to_char (CHAR_DATA *list, CHAR_DATA *ch)
                          && (!IS_NPC(rch) || !IS_SET(rch->act, ACT_WIZINVIS_MOB)))
                         send_to_char("You see glowing red eyes watching YOU!\n\r", ch);
         }
+}
+
+int rank_sn ( CHAR_DATA *ch)
+{
+        if ( ch->rank )
+        {
+                int sn;
+                for ( sn = 0; sn < MAX_RANK; sn++ )
+                {
+                        if ( !strcmp( ch->rank, rank_table[sn].name ) )
+                                return sn;
+                }
+                return 1;
+        }
+        return 1;
+
+}
+
+int rank_sn_index ( MOB_INDEX_DATA *pMobIndex)
+{
+        if ( pMobIndex->rank )
+        {
+                int sn;
+                for ( sn = 0; sn < MAX_RANK; sn++ )
+                {
+                        if ( !strcmp( pMobIndex->rank, rank_table[sn].name ) )
+                                return sn;
+                }
+                return 1;
+        }
+        return 1;
+
+}
+
+/* REturn the species index number for a character */
+int mob_type_sn ( CHAR_DATA *ch)
+{
+        if ( ch->mobspec )
+        {
+                int sn;
+                for ( sn = 0; sn < MAX_MOB; sn++ )
+                        {
+                                if ( !strcmp( ch->mobspec, mob_table[sn].name ) )
+                                return sn;
+                        }
+                return -1;
+        }
+        return -1;
+}
+
+
+/* REturn the species index number for a character */
+int species_sn ( CHAR_DATA *ch)
+{
+        /* make sure the mob has a mob_type first*/
+        if (mob_type_sn(ch))
+        {
+                int sn;
+                for ( sn = 0; sn < MAX_SPECIES; sn++ )
+                {
+                 /*        sprintf(buf, "%s %s",species_table[sn].species, ch->mobspec );
+                        bug(buf, 0);   */
+                        /* compare the mob_table species name and the species_table*/
+                        if ( !strcmp( mob_table[mob_type_sn(ch)].species, species_table[sn].species ) )
+                        return sn;
+                }
+                return -1;
+        }
+        return -1;
 }
 
 
@@ -3012,6 +3160,10 @@ void do_consider( CHAR_DATA *ch, char *argument )
         if ( IS_NPC( victim ) && ch->sub_class == 7 && victim->spec_fun != 0 )
                 act ("You suspect $N of having unusual capabilities.", ch,
                      NULL, victim, TO_CHAR );
+
+        if ( IS_NPC( victim ) && rank_sn(victim) > 1 )
+                act ("$N is {Wstronger{x than what you have been used to.", ch, NULL, victim, TO_CHAR );
+
 }
 
 
@@ -5037,6 +5189,18 @@ void print_player_status (CHAR_DATA *ch, char* buf)
                         ch->rage,
                         ch->max_rage );
                 strcat( buf, tmp );
+        }
+        strcat (buf, "\n\r");
+        
+        if( ch->level >= 15 )
+        {
+                sprintf( tmp, "Crit: {C%3d%%{x        Swiftness: {C%3d%%{x\n\r",
+                        ch->crit, ch->swiftness);
+                strcat( buf, tmp );
+                sprintf( tmp, "{WResistances:{x Acid:{C%3d%%{x Lightning:{C%3d%%{x Heat:{C%3d%%{x Cold:{C%3d%%{x ",
+                        ch->resist_acid, ch->resist_lightning, ch->resist_heat, ch->resist_cold);
+                strcat( buf, tmp );
+                
         }
         strcat (buf, "\n\r");
 }

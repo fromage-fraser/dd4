@@ -89,6 +89,7 @@ give lace $n
 mpecho {WWith her dying breath Zelda whimpers, `I love you Morc...'{x
 ~
 |
+< reserved~ rare~
 & 40 'teacher base'
 & 97 'armed combat knowledge'
 & 97 'defense knowledge'
@@ -339,6 +340,7 @@ mpecho {RAs Ilyana's body is destroyed a giant black leech erupts from her skin!
     mpmload 20626
 ~
 |
+< reserved~ elite~
 #20617
 fire bonfire~
 the bonfire~
@@ -575,6 +577,7 @@ mpecho {RAs Mavros's body is destroyed a giant black leech erupts from his skin!
     mpmload 20626
 ~
 |
+< reserved~ elite~
 #20626
 leech~
 A foul black leech~

@@ -261,6 +261,7 @@ of a winter sky. The dragon regards you momentarily then continues with its sear
       endif
 ~
 |
+< reserved~ elite~
 #18617
 thief~
 the Thief~
@@ -355,6 +356,7 @@ em lashes out at you with its tail!
 mpkill $n
 ~
 |
+< reserved~ rare~
 #18623
 abominable snowman~
 the Abominable Snowman~
@@ -435,6 +437,7 @@ mpgoto 18747
 endif
 ~
 |
+< reserved~ elite~
 #18627
 witch~
 the White Witch~

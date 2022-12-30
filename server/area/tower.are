@@ -954,6 +954,7 @@ if ispc($n)
     endif
 ~
 |
+< reserved~ boss~
 #14563
 red dragon zyklor warlock~
 Zyklor~
@@ -2343,7 +2344,7 @@ one~
 (Vibrating) THE ONE~
 The sword that legends are made of. There can only be ONE!~
 ~
-5 1|2|64|1024|2048|1048576 1|8192
+5 1|2|64|1024|2048|1048576|137438953472 1|8192
 0~ 70~ 120~ 11~
 15 0 0
 A

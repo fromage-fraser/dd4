@@ -105,7 +105,7 @@ queen goddess, who disliked him.  But he finished them all and at the end was
 granted immortality. He is a very brave and strong fighter.
 ~
 66 128 1000 S
-39 0 -3 6d5+400 5d4+10
+39 0 -3 6e5+400 5d4+10
 0 60000
 8 8 1
 #9310
@@ -180,7 +180,7 @@ You see a white goat here, the first guardian of the Zodiac,
 also the ruler of Spring. He looks as if he is expecting you.
 ~
 66 128 700 S
-33 0 -5 6d4+500 4d5+3
+33 0 -5 6r4+500 4d5+3
 4 80000
 6 6 1
 #9316
@@ -374,7 +374,7 @@ He is the King of Might as well as of the Universe. You suddenly feel very
 weak and useless in front of him.
 ~
 66 128 700 S
-41 0 -6 10d4+700 4d8+1
+41 0 -6 10e4+700 4d8+1
 0 110000
 6 6 1
 #9332
@@ -388,7 +388,7 @@ actually a STAR, with dazzling bright light ... maybe you shouldn't have come
 here at all?
 ~
 66 138 1000 S
-44 0 -10 0d0+1500 6d6+3
+44 0 -10 0b0+1500 6d6+3
 96 200000
 8 8 1
 #0

@@ -406,6 +406,7 @@ to face you, his long dreadlocks swinging about his body as he screams at you,
 45 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #9512
 Amanda~
 Amanda~
@@ -638,6 +639,7 @@ his form.
 41 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ rare~
 #9523
 Mavralyn vampire~
 Mavralyn~
@@ -975,6 +977,7 @@ sleep
 endif
 ~
 |
+< reserved~ rare~
 #9540
 Saul vampire~
 Saul~
@@ -997,6 +1000,7 @@ mpecho $I pounds his fist against the lectern to emphasize a point in his sermon
 endif
 ~
 |
+< reserved~ rare~
 #9541
 Augus vampire~
 Augus~
@@ -1012,6 +1016,7 @@ the cartilage into his brain with your fist.
 42 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ rare~
 #9542
 Grieb vampire tortured writer~
 Grieb~
@@ -1191,6 +1196,7 @@ mpecho Something metal flashes in the darkness.
 endif
 ~
 |
+< reserved~ elite~
 #0
 
 

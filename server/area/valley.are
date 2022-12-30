@@ -157,7 +157,7 @@ An old mage busies himself with some chemicals.
 Talemon looks harmless, but the fireballs he throws at you don't.
 ~
 2|4|32 0 0 S
-25 0 -10 25d25+250 1d4+10
+25 0 -10 25e25+250 1d4+10
 0 100000
 8 8 1
 #7812
@@ -169,7 +169,7 @@ This daemon is unhappy with its summoned job, and is willing to take out it's
 anger at you!
 ~
 2|32 0 -500 S
-25 -2 -10 25d25+250 2d4+20
+25 -2 -10 25r25+250 2d4+20
 0 80000
 8 8 0
 #7813

@@ -36,6 +36,7 @@ if ispc($n)
 endif
 ~
 |
+< reserved~ boss~
 #17701
 spectator~
 a spectator~
@@ -931,6 +932,8 @@ if ispc($n)
  endif
 ~
 |
+< reserved~ rare~
+
 #0
 
 

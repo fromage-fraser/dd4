@@ -270,6 +270,7 @@ diabolically evil mage, and will not hesitate to destroy you.
 80 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #8820
 shambling mound~
 a shambling mound~
@@ -366,6 +367,7 @@ rotting face...
 80 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< reserved~ rare~
 #8828
 nightmare~
 a nightmare~
@@ -420,6 +422,7 @@ of the powers of the Prime Material Plane by avoiding combat.
 87 0 0 0d0+0 0d0+0
 128 0
 8 8 0
+< reserved~ boss~
 #8832
 water weird~
 a water weird~
@@ -455,6 +458,7 @@ to your disturbance they have risen again!
 80 0 0 0d0+0 0d0+0
 96 0
 8 8 0
+< reserved~ elite~
 #0
 
 

@@ -153,6 +153,8 @@ typedef struct extra_descr_data                 EXTRA_DESCR_DATA;
 typedef struct help_data                        HELP_DATA;
 typedef struct kill_data                        KILL_DATA;
 typedef struct learned_data                     LEARNED_DATA;
+typedef struct mob_spec_data                    MOB_SPEC_DATA;
+typedef struct mob_species_data                 MOB_SPECIES_DATA;
 typedef struct mob_index_data                   MOB_INDEX_DATA;
 typedef struct note_data                        NOTE_DATA;
 typedef struct obj_data                         OBJ_DATA;
@@ -234,9 +236,16 @@ struct imbue_types
         int     base_gain;
 };
 
-#define MAX_IMBUE 9
+struct random_types
+{
+        char    apply_buff;
+        int     base_gain;
+};
 
+#define MAX_IMBUE 11
+#define MAX_RANDOMS 15
 #define BLUEPRINTS_MAX  43
+#define MAX_DPR 20
 
 /* Blueprint structure : blueprint_name, blueprint_desc, blueprint_ref, blueprint_cost steel, titanium, adamantite, electrum, starmetal */
 struct blueprint_type
@@ -326,10 +335,36 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
 #define MAX_VAMPIRE_GAG             27      /* 26 + 1 for 'swallow' | ugly vampire/werewolf hack */
 
+/* Define the levels for items - Brutus */
 #define ITEM_SCORE_LEGENDARY    900
 #define ITEM_SCORE_EPIC         600
 #define ITEM_SCORE_RARE         300
 #define ITEM_SCORE_UNCOMMON     120
+
+/* these are chance in 1000 - Brutus */
+#define LEGENDARY_CHANCE        1
+#define EPIC_CHANCE             10
+#define RARE_CHANCE             25
+#define UNCOMMON_CHANCE         150
+
+/* define the types of mobs we have - Brutus */
+#define NPC_COMMON      1
+#define NPC_RARE        2
+#define NPC_ELITE       3
+#define NPC_BOSS        4
+#define NPC_WORLD_BOSS  5
+
+/* Define the  stat scores - used in calc_item_score, and randomise_object function */
+#define SCORE_AURAS             500
+#define SCORE_SMITHY            150
+#define SCORE_STATS             2500    /*Obj->level dependant*/
+#define SCORE_CRIT_SWIFTNESS    2500    /*Obj->level dependant*/
+#define SCORE_HP_MANA           20      /*Obj->level dependant*/
+#define SCORE_HIT_DAM           1000
+#define SCORE_FLY               100
+#define SCORE_DETECTS           50
+#define SCORE_RESISTS           1500    /*Obj->level dependant*/
+
 /*
  * Channel recall, 'review' command; Gezhp 2001
  */
@@ -792,17 +827,57 @@ struct descriptor_data
 #define BODY_HUGE               BIT_7
 #define BODY_INORGANIC          BIT_8
 #define BODY_HAS_TAIL           BIT_9
+#define PART_HEAD		  BIT_10
+#define PART_MANY_HEAD            BIT_11
+#define PART_ARMS		  BIT_12
+#define PART_MANY_ARMS		  BIT_13
+#define PART_2_LEGS		  BIT_15
+#define PART_4_LEGS		  BIT_16
+#define PART_MANY_LEGS		  BIT_17
+#define PART_HEART		  BIT_18
+#define PART_BRAINS		  BIT_19
+#define PART_GUTS		  BIT_20
+#define PART_HANDS		  BIT_21
+#define PART_FEET		  BIT_22
+#define PART_FINGERS		  BIT_23
+#define PART_EAR		  BIT_24
+#define PART_EYE		  BIT_25
+#define PART_LONG_TONGUE	  BIT_26
+#define PART_EYESTALKS		  BIT_27
+#define PART_TENTACLES		  BIT_28
+#define PART_FINS		  BIT_29
+#define PART_WINGS		  BIT_30
+#define PART_TAIL		  BIT_31
+#define PART_SCALES		  BIT_32
+/* for combat */
+#define PART_CLAWS		  BIT_33
+#define PART_FANGS		  BIT_34
+#define PART_HORNS		  BIT_35
+#define PART_TUSKS		  BIT_36
+#define PART_TAILATTACK		  BIT_37
+#define PART_SHARPSCALES	  BIT_38
+#define PART_BEAK		  BIT_39
+#define PART_HAUNCH		  BIT_40
+#define PART_HOOVES		  BIT_41
+#define PART_PAWS		  BIT_42
+#define PART_FORELEGS		  BIT_43
+#define PART_FEATHERS		  BIT_44
+#define PART_HUSK_SHELL		  BIT_45
 
-#define HAS_HEAD( ch )          ( !( ch->body_form & BODY_NO_HEAD ) )
-#define HAS_EYES( ch )          ( !( ch->body_form & BODY_NO_EYES ) )
-#define HAS_ARMS( ch )          ( !( ch->body_form & BODY_NO_ARMS ) )
-#define HAS_LEGS( ch )          ( !( ch->body_form & BODY_NO_LEGS ) )
-#define HAS_HEART( ch )         ( !( ch->body_form & BODY_NO_HEART ) )
+
+
+
+
+#define HAS_HEAD( ch )          ( !( ch->body_form & BODY_NO_HEAD ) || (ch->body_form & PART_HEAD) || (ch->body_form & PART_MANY_HEAD))
+#define HAS_EYES( ch )          ( !( ch->body_form & BODY_NO_EYES ) || ( ch->body_form & PART_EYE ))
+#define HAS_ARMS( ch )          ( !( ch->body_form & BODY_NO_ARMS ) || ( ch->body_form & PART_ARMS ) || ( ch->body_form & PART_MANY_ARMS ))
+#define HAS_LEGS( ch )          ( !( ch->body_form & BODY_NO_LEGS ) || ( ch->body_form & PART_2_LEGS ) || ( ch->body_form & PART_4_LEGS ) || ( ch->body_form & PART_MANY_LEGS ))
+#define HAS_HEART( ch )         ( !( ch->body_form & BODY_NO_HEART ) || ( ch->body_form & PART_HEART ))
 #define CAN_SPEAK( ch )         ( !( ch->body_form & BODY_NO_SPEECH ) )
 #define MAKES_CORPSE( ch )      ( !( ch->body_form & BODY_NO_CORPSE ) )
 #define IS_HUGE( ch )              ( ch->body_form & BODY_HUGE )
 #define IS_INORGANIC( ch )         ( ch->body_form & BODY_INORGANIC )
-#define HAS_TAIL( ch )             ( ch->body_form & BODY_HAS_TAIL )
+#define HAS_TAIL( ch )             ( ( ch->body_form & BODY_HAS_TAIL ) || ( ch->body_form & PART_TAIL ))
 
 
 /*
@@ -964,6 +1039,11 @@ struct sub_class_type
         bool    bMana;                  /* Mana bonus for new class? */
 };
 
+struct dpr
+{
+        char    *dpr_verb;
+        int     dam;
+};
 
 /*
  * wearing restrictions, body parts for form, types for wear
@@ -2101,6 +2181,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_ANTI_SMITHY                BIT_34
 #define ITEM_DEPLOYED                   BIT_35
 #define ITEM_RUNE                       BIT_36
+#define ITEM_DONOT_RANDOMISE            BIT_37
 #define ITEM_CURSED                     BIT_61  /* carrier attacked by mobs with DETECT_CURSE, magic travel nonfunctional if carried */
 
 
@@ -2235,6 +2316,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define APPLY_ENGRAVED                          47
 #define APPLY_SERRATED                          48
 #define APPLY_INSCRIBED                         49
+#define APPLY_CRIT                              50
+#define APPLY_SWIFTNESS                             51
 
 /*
  * Values for containers (value[1]).
@@ -2517,10 +2600,13 @@ struct  mob_index_data
         MPROG_DATA *            mobprogs;
         LEARNED_DATA *          skills;         /* used by practisers only */
 
+      
         char *                  player_name;
         char *                  short_descr;
         char *                  long_descr;
         char *                  description;
+        char *                  mobspec;        /* MB SPEC data */
+        char *                  rank;           /* Rank of a mob (eliete, boss, rare) */
         int                     vnum;
         int                     count;
         int                     killed;
@@ -2565,6 +2651,8 @@ struct char_data
         char *                  long_descr;
         char *                  description;
         char *                  prompt;
+        char *                  mobspec;        /* MOB SPEC data  */
+        char *                  rank;
         int                     sex;
         int                     class;
         int                     sub_class;
@@ -2626,6 +2714,12 @@ struct char_data
         int                     exp_modifier;
         int                     damage_mitigation;
         int                     damage_enhancement;
+        int                     crit;
+        int                     swiftness;
+        int                     resist_acid;
+        int                     resist_lightning;
+        int                     resist_heat;
+        int                     resist_cold;
         int                     inscription_total;
         int                     dazed;
         /*
@@ -2741,6 +2835,8 @@ struct  pc_data
         int             group_support_bonus;
         int             meter;
         int             dam_meter;
+        int             rounds;
+        int             dam_per_fight;
 };
 
 
@@ -2970,6 +3066,7 @@ struct skill_type
         int             prac_type;                      /* for praccing */
         int             target;                         /* Legal targets */
         int             minimum_position;               /* Position for caster / user */
+        unsigned long int res_type;                     /* resistance type e.g. fireball will have res_fire */
         SPELL_FUN *     spell_fun;                      /* Spell pointer (for spells) */
         int             min_mana;                       /* Minimum mana used */
         int             beats;                          /* Waiting time after use */
@@ -2977,6 +3074,79 @@ struct skill_type
         char *          msg_off;                        /* Wear off message */
 };
 
+/*
+ * Resistant Immune Susceptible flags
+ */
+#define RES_FIRE		  BIT_0
+#define RES_COLD		  BIT_1
+#define RES_ELECTRICITY		  BIT_2
+#define RES_ENERGY		  BIT_3
+#define RES_BLUNT		  BIT_4
+#define RES_PIERCE		  BIT_5
+#define RES_SLASH		  BIT_6
+#define RES_ACID		  BIT_7
+#define RES_POISON		  BIT_8
+#define RES_DRAIN		  BIT_9
+#define RES_SLEEP		  BIT_10
+#define RES_CHARM		  BIT_11
+#define RES_HOLD		  BIT_12
+#define RES_NONMAGIC		  BIT_13
+#define RES_MAGIC		  BIT_14
+#define RES_PARALYSIS		  BIT_15
+#define RES_PSYCHIC               BIT_16
+#define RES_HOLY                  BIT_17
+#define RES_DARK                  BIT_18
+#define RES_CURSE                 BIT_19
+
+#define MAX_MOB 3
+#define MAX_SPECIES 4
+#define MAX_RANK 6
+
+/* mob_spec_data Brutus */
+struct  mob_spec_data
+{
+        char * learned;
+};
+
+struct mob_type
+{
+  
+    
+  char *name;                           /* name of spec e.g. fire_elemental */
+  char *species;                        /* species e.g. elemental */
+  char *icon_m;                         /* Male Icon name */
+  char *icon_f;                         /* Femail icon name */
+  unsigned long int resists;            /* lists of resists */
+  unsigned long int vulnerabilities;    /* vulberable to */
+  unsigned long int immunes;            /* immune to */
+  int hp_mod;                           /* hp modifier ( in %) */
+  int dam_mod;                          /* dam modifier ( in %) */
+  int crit_mod;                         /* crit modifier ( in %) */
+  int haste_mod;                        /* haste modifier ( in %) */
+  int height;   
+  int weight;
+  int size;
+  unsigned long int body_parts;         /* body parts they have */
+  unsigned long int attack_parts;       /* body parts race attacks with */
+  int language;                         /* future use */
+  char   *spec_fun1;                    /* a attack spec */
+  char   *spec_fun2;                    /* a 2nd attack spec */
+  char   *spec_boss;                    /* a 3rd/boss attack spec */
+};
+
+struct species_type
+{
+        char *species;                        /* species e.g. elemental */
+        unsigned long int body_parts;         /* body parts they have */
+        unsigned long int attack_parts;       /* body parts race attacks with */ 
+};
+
+struct rank
+{
+        char *name;
+        int rank_bonus;
+        char *who_format;
+};
 
 /* class basic gsn's */
 extern int gsn_mage_base;
@@ -3164,7 +3334,9 @@ extern int gsn_leader;                  /* for the clan leader flag  */
 extern int gsn_log;
 extern int gsn_memory;
 extern int gsn_mfind;
+extern int gsn_mrank;
 extern int gsn_mload;
+extern int gsn_mnstat;
 extern int gsn_oclanitem;
 extern int gsn_mset;
 extern int gsn_mstat;
@@ -3692,6 +3864,11 @@ extern int gsn_prayer_plague;
 #define IS_SPELL( skill )               ( skill_table [ skill ].spell_fun != spell_null )
 #define CAN_DO( ch, sn )                ( (ch->pcdata->learned [ sn ] > 0) && ( form_skill_allow( ch, sn ) ) )
 
+/*
+ * Mobspec macros
+ */
+
+#define IS_MOBSPEC_PART( ch, stat ) ( IS_SET( species_table->(ch->mobspec->species), stat ) )
 
 /*
  * Description macros.
@@ -3736,6 +3913,7 @@ extern const    struct dex_app_type             dex_app                         
 extern const    struct con_app_type             con_app                         [ MAX_STAT ];
 extern const    struct class_type               class_table                     [ MAX_CLASS ];
 extern const    struct sub_class_type           sub_class_table                 [ MAX_SUB_CLASS ];
+extern const    struct dpr                      dprs                            [ MAX_DPR ];
 extern const    struct clan_items               clan_item_list                  [ MAX_CLAN ];
 extern const    struct clan_type                clan_table                      [ MAX_CLAN ];
 extern const    struct color_data               color_table                     [ ];
@@ -3747,11 +3925,15 @@ extern const    struct blueprint_type           blueprint_list                  
 extern const    struct set_type                 set_list                        [ MAX_SETS ];
 /* extern const    struct raw_mats_data            raw_mats_table                  [ RAW_MATS_MAX ]; */
 extern const    struct skill_type               skill_table                     [ MAX_SKILL ];
+extern const    struct mob_type                 mob_table                       [ MAX_MOB ];
+extern const    struct species_type             species_table                   [ MAX_SPECIES ];
+extern const    struct rank                     rank_table                      [ MAX_RANK ];
 extern const    struct social_type              social_table                    [ ];
 extern const    struct pattern_points           pattern_list                    [ MAX_PATTERN ];
 extern const    struct soar_points              soar_list                       [ MAX_SOAR ];
 extern const    struct HERB                     herb_table                      [ MAX_HERBS ];
 extern const    struct imbue_types              imbue_list                      [ MAX_IMBUE ];
+extern const    struct random_types             random_list                     [ MAX_RANDOMS ];
 extern const    struct song                     song_table                      [ MAX_SONGS ];
 extern char *   const  color_list                                               [ MAX_COLOR_LIST ];
 extern char *   const  clan_title               [ MAX_CLAN ]                    [ MAX_CLAN_LEVEL + 1 ];
@@ -3995,7 +4177,9 @@ DECLARE_DO_FUN( do_mawasigeri                   );      /* Martial artist - brut
 DECLARE_DO_FUN( do_meditate                     );
 DECLARE_DO_FUN( do_memory                       );
 DECLARE_DO_FUN( do_mfind                        );
+DECLARE_DO_FUN( do_mrank                        );
 DECLARE_DO_FUN( do_mload                        );
+DECLARE_DO_FUN( do_mnstat                       );
 DECLARE_DO_FUN( do_morph                        );      /* for changing forms - geoff */
 DECLARE_DO_FUN( do_mount                        );      /* mounting mobs for riding */
 DECLARE_DO_FUN( do_dismount                     );
@@ -4050,6 +4234,7 @@ DECLARE_DO_FUN( do_open_seal                    );      /*for werewolfs*/
 DECLARE_DO_FUN( do_order                        );
 DECLARE_DO_FUN( do_oset                         );
 DECLARE_DO_FUN( do_ostat                        );
+DECLARE_DO_FUN( do_onstat                       );
 DECLARE_DO_FUN( do_osstat                       );
 DECLARE_DO_FUN( do_owhere                       );
 DECLARE_DO_FUN( do_pagelen                      );
@@ -4489,6 +4674,10 @@ void  show_list_to_char                 args( ( OBJ_DATA *list, CHAR_DATA *ch, b
 char* format_obj_to_char                args( ( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort ) );
 void  show_char_to_char                 args( ( CHAR_DATA *list, CHAR_DATA *ch ) );
 void  set_title                         args( ( CHAR_DATA *ch, char *title ) );
+int   species_sn                        args( ( CHAR_DATA *ch) );
+int   mob_type_sn                       args( ( CHAR_DATA *ch) );
+int   rank_sn                           args( ( CHAR_DATA *ch) );
+int   rank_sn_index                     args( ( MOB_INDEX_DATA *pMobIndex) );
 bool  check_blind                       args( ( CHAR_DATA *ch ) );
 int   has_pre_req                             ( CHAR_DATA *ch, int sn );
 char* number_suffix                           ( int num );
@@ -4548,7 +4737,7 @@ void reverse_char_array                       ( char arr[], int n );
 void    boot_db                         args( ( void ) );
 void    area_update                     args( ( void ) );
 CD *    create_mobile                   args( ( MOB_INDEX_DATA *pMobIndex ) );
-OD *    create_object                   args( ( OBJ_INDEX_DATA *pObjIndex, int level ) );
+OD *    create_object                   args( ( OBJ_INDEX_DATA *pObjIndex, int level, int rank, bool randomise ) );
 void    clear_char                      args( ( CHAR_DATA *ch ) );
 void    free_char                       args( ( CHAR_DATA *ch ) );
 char *  get_extra_descr                 args( ( const char *name, EXTRA_DESCR_DATA *ed ) );
@@ -4589,6 +4778,7 @@ void    bug                             args( ( const char *str, int param ) );
 void    log_string                      args( ( const char *str ) );
 void    tail_chain                      args( ( void ) );
 void    reset_area                      args( ( AREA_DATA * pArea ) );
+void    randomise_object                args( ( OBJ_DATA *obj, int level, int rank) );
 
 /* fight.c */
 void    violence_update                 args( ( void ) );
@@ -4601,7 +4791,7 @@ void    set_fighting                    args( ( CHAR_DATA *ch, CHAR_DATA *victim
 void    stop_fighting                   args( ( CHAR_DATA *ch, bool fBoth ) );
 void    raw_kill                              ( CHAR_DATA *ch, CHAR_DATA *victim, bool corpse );
 void    death_cry                       args( ( CHAR_DATA *ch ) );
-bool    one_hit                         args( ( CHAR_DATA *ch, CHAR_DATA *victim, int dt ) );
+bool    one_hit                         args( ( CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste ) );
 void    death_penalty                   args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 void    check_player_death              args( ( CHAR_DATA *opponent, CHAR_DATA *victim ) );
 bool    in_pkill_range                  args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
@@ -4611,6 +4801,7 @@ bool    aggro_damage                          ( CHAR_DATA *ch, CHAR_DATA *victim
 void    check_autoloot                        ( CHAR_DATA *ch, CHAR_DATA *victim );
 void    check_group_bonus                     (CHAR_DATA *ch) ;
 char *  get_damage_string               args( ( int damage_value, bool is_singular ) );
+char *  get_dpr                         args( (int dam) );
 
 /* handler.c */
 int     get_dir                         args( ( char *txt  ) );
@@ -4628,6 +4819,8 @@ bool    multi_keyword_match             args( ( char *keys, char *namelist ) );
 bool    is_full_name                    args( ( const char *str, char *namelist ) );
 void    affect_to_char                  args( ( CHAR_DATA *ch, AFFECT_DATA *paf ) );
 void    affect_remove                   args( ( CHAR_DATA *ch, AFFECT_DATA *paf ) );
+void    affect_from_obj                 args( (OBJ_DATA *obj, AFFECT_DATA *paf ) );
+void    affect_obj_modify               args( (OBJ_DATA *obj, AFFECT_DATA *paf, bool fAdd ));
 void    affect_strip                    args( ( CHAR_DATA *ch, int sn ) );
 bool    is_affected                     args( ( CHAR_DATA *ch, int sn ) );
 void    affect_join                     args( ( CHAR_DATA *ch, AFFECT_DATA *paf ) );
@@ -4686,6 +4879,7 @@ char *  extra_form_name                 args( ( int form ) );
 int     extra_form_int                        ( char *name );
 char *  extra_bit_name                  args( ( unsigned long int extra_flags ) );
 char *  body_form_name                  args( ( unsigned long int vector ) );
+char *  resist_name                     args( ( unsigned long int vector ) );
 char *  room_flag_name                  args( ( unsigned long int vector ) );
 char *  area_flag_name                  args( ( unsigned long int vector ) );
 char *  wear_flag_name                  args( ( int vector ) );
@@ -4734,6 +4928,7 @@ bool   wiz_do                           args( ( CHAR_DATA *ch, char *command ) )
 /* magic.c */
 int  skill_lookup                       args( ( const char *name ) );
 bool saves_spell                        args( ( int level, CHAR_DATA *victim ) );
+bool is_immune_to                       args( (CHAR_DATA *victim, unsigned long int dam_type) );
 void obj_cast_spell                     args( ( int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *obj ) );
 bool mob_interacts_players                    ( CHAR_DATA *mob );
 

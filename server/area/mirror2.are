@@ -230,6 +230,7 @@ intersect with thick, brownish scars.
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #19017
 orange lord~
 the Orange Lord~
@@ -245,6 +246,7 @@ looking.
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #19018
 yellow lord~
 the Yellow Lord~
@@ -259,6 +261,7 @@ the razor-sharp crystal sword at her side.
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #19019
 green lord~
 the Green Lord~
@@ -273,6 +276,7 @@ for possible threats.
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #19020
 blue lord~
 the Blue Lord~
@@ -287,6 +291,7 @@ facets of his sword.
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #19021
 violet lord~
 the Violet Lord~
@@ -301,6 +306,7 @@ absorbs and reflects the colors of his robe.
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #19022
 gardner gardener lady~
 the gardener~
@@ -823,6 +829,7 @@ glow.
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< reserved~ boss~
 #19062
 phoenix bird~
 the Phoenix~
@@ -837,6 +844,7 @@ light, with faint sparkles shining on its razor-sharp edges.
 50 0 0 0d0+0 0d0+0
 36 0
 8 8 0
+< reserved~ rare~
 #19063
 mandeep beekeeper bee keeper~
 Mandeep the Beekeeper~

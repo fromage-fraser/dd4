@@ -104,6 +104,7 @@ if ispc($n)
 endif
 ~
 |
+< reserved~ elite~
 #13704
 sentinel~
 The Sentinel~

@@ -110,6 +110,7 @@ He is cloaked from head to foot in dark garb and you can't make out any of his f
 endif
 ~
 |
+< reserved~ rare~
 
 #26004
 cyan guard~
@@ -1062,6 +1063,7 @@ just a tad of Dwarf thrown in.
    yell Dwarves rule!
 ~
 |
+< reserved~ elite~
 
 #26063
 Rzzrdehcurfn~
@@ -1075,6 +1077,7 @@ gaze seems to challenge you to call the bluff.
 100 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< reserved~ elite~
 
 #26064
 milo dungeon guard dog~

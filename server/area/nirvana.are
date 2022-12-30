@@ -128,7 +128,7 @@ The secundi appear as incredibly thin, tall humanoids with long, narrow faces
 and deepset eyes.
 ~
 1|2|32|64 8|128 0 S
-45 0 -6 1d1+499 5d6+10
+45 0 -6 1e1+499 5d6+10
 0 200000
 8 8 0
 #8111
@@ -141,7 +141,7 @@ violet eyes. His right hand is wreathed in darkness, his left in light, and
 he looks very displeased to see you.
 ~
 1|2|32|64 8|128 0 S
-60 0 -10 1d1+1999 3d20+20
+60 0 -10 1b1+1999 3d20+20
 0 700000
 8 8 0
 #0

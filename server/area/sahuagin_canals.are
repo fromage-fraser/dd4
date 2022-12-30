@@ -869,6 +869,7 @@ mpasound ::rumble::
 mpasound You hear the sharp hiss of expelled steam.
 ~
 |
+< reserved~ elite~
 #27318
 large black dragon Arlauthra~
 Arlauthra~
@@ -899,6 +900,7 @@ be 5 metres tall and 25 metres long. He is not at all pleased to see you here.
     swallow $n
 ~
 |
+< reserved~ boss~
 #27319
 giant limpet~
 a giant limpet~

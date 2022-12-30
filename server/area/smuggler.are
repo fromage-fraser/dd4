@@ -95,6 +95,7 @@ he is a bastard or poor nobleman.
 45 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ boss~
 #17503
 pirate~
 A Wandering Crewman~
@@ -133,6 +134,7 @@ deal with you should you prove troublesome.
 42 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ rare~
 #17506
 Harvey Bosun~
 Harvey the Bosun~
@@ -308,6 +310,8 @@ his presence.
 43 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
+
 #0
 
 

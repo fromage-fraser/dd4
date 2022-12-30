@@ -606,7 +606,7 @@ The dark black robes hide most of his features, but you can barely make
 out his emaciated face beneath his hood.
 ~
 1|2|32|64 8|32|512 -1000 S
-53 2 2 1d1+30000 1d8+32
+53 2 2 1e1+30000 1d8+32
 0 80000
 8 8 1
 
@@ -643,7 +643,7 @@ This is the High Judge of Hell. He has never found anyone innocent,
 and is notorious for his painful and harsh punishments.
 ~
 1|2|64 8|32|512 -1000 S
-52 2 2 1d1+30000 1d8+32
+52 2 2 1e1+30000 1d8+32
 0 80000
 8 8 0
 
@@ -905,7 +905,7 @@ nails rip slowly through their flesh, as he cackles with glee at the
 sounds of their unending pain...
 ~
 1|2|64 512 -1000 S
-56 2 2 1d1+30000 1d8+32
+56 2 2 1e1+30000 1d8+32
 0 80000
 8 8 0
 

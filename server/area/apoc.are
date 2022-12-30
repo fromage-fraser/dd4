@@ -17,6 +17,7 @@ hungry as you stand near this starving man.
 85 0 0 0d0+0 0d0+0
 16|32|256 0
 8 8 1
+< reserved~ elite~
 #5601
 War~
 War~
@@ -34,6 +35,7 @@ ballet of death and destruction.  Finally, it is your turn.
 95 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< reserved~ elite~
 #5602
 Death~
 Death~
@@ -51,6 +53,7 @@ take his next soul...YOURS!!!!
 100 0 0 0d0+0 0d0+0
 96 0
 8 8 1
+< reserved~ elite~
 #5603
 Pestilence~
 Pestilence~
@@ -67,6 +70,7 @@ viciously.
 90 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #5604
 starving man~
 the starving man~

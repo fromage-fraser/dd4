@@ -140,6 +140,7 @@ gonna hurt in the morning!"
 18 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ rare~
 #25211
 prisoner miserable~
 a miserable prisoner~
@@ -187,6 +188,7 @@ vicious: he can wield it with great skill, and deadly efficiency.
 21 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #25215
 lion starved~
 a starved lion~
@@ -361,6 +363,7 @@ positioning armour, all the time joking but having complete authority.
 24 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #25229
 charger horse~
 a charger~
@@ -400,6 +403,7 @@ you'll be next!  Hahahar!"
 25 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ boss~
 #25232
 sailor~
 a sailor~

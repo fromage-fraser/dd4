@@ -214,6 +214,7 @@ yet something about him that you cannot put your finger on strikes you as odd.
 80 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #25609
 fido dog spy~
 the spy recruit~
@@ -394,6 +395,7 @@ say You dare intrude on me unannounced? Perish!
 mpkill $n
 ~
 |
+< reserved~ rare~
 #25624
 vagabond spy recruit~
 the spy recruit~

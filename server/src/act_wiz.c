@@ -937,6 +937,63 @@ void do_rstat( CHAR_DATA *ch, char *argument )
 }
 
 
+void do_onstat( CHAR_DATA *ch, char *argument )
+{
+        OBJ_INDEX_DATA *pObjIndex;
+        CHAR_DATA   *rch;
+                AFFECT_DATA *paf;
+        char         buf  [ MAX_STRING_LENGTH ];
+        char         buf1 [ MAX_STRING_LENGTH ];
+        char         arg  [ MAX_INPUT_LENGTH  ];
+
+
+        rch = get_char( ch );
+
+        buf[0] = '\0';
+        buf1[0] = '\0';
+
+        if ( !authorized( rch, gsn_mload ) )
+                return;
+
+        one_argument( argument, arg );
+
+        if ( arg[0] == '\0' || !is_number( arg ) )
+        {
+                send_to_char( "Syntax: onstat <<vnum>.\n\r", ch );
+                return;
+        }
+
+        if ( !( pObjIndex = get_obj_index( atoi( arg ) ) ) )
+        {
+                send_to_char( "No object has that vnum.\n\r", ch );
+                return;
+        }
+
+        sprintf( buf, "Vnum: {R%d{x\n\r", pObjIndex->vnum);
+        strcat( buf1, buf );
+
+        sprintf( buf, "Short description: {W%s{x\n\rKeywords: {W%s{x\n\r",
+                pObjIndex->short_descr,
+                pObjIndex->name );
+        strcat( buf1, buf );
+
+        sprintf( buf, "Level: {W%d{x  Cost: {W%d{x \n\r",
+                pObjIndex->level, pObjIndex->cost );
+        strcat( buf1, buf );
+
+        for ( paf = pObjIndex->affected; paf; paf = paf->next )
+        {
+                sprintf( buf, "Affects {Y%s{x by {Y%d{x\n\r",
+                        affect_loc_name( paf->location ), paf->modifier );
+                strcat( buf1, buf );
+        }
+        
+        send_to_char( buf1, ch );
+        return;
+}
+
+
+
 void do_ostat( CHAR_DATA *ch, char *argument )
 {
         OBJ_DATA    *obj;
@@ -1185,7 +1242,7 @@ void do_ostat( CHAR_DATA *ch, char *argument )
 
         for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
         {
-                sprintf( buf, "Affects {Y%s{x by {Y%d{x\n\r",
+                sprintf( buf, "Affects {Y%s{x by {Y%d{x (Index)\n\r",
                         affect_loc_name( paf->location ), paf->modifier );
                 strcat( buf1, buf );
         }
@@ -1435,6 +1492,11 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         victim->saving_throw,
                         victim->damage_mitigation);
                 strcat( buf1, buf );
+        
+                sprintf( buf, "Crit: {R%d{x  Swiftness: {R%d{x\n\r",
+                        victim->crit,
+                        victim->swiftness);
+                strcat( buf1, buf );                
 
                 sprintf( buf, "Align: {W%d{x  Exp: {W%d{x  Class: {W%d{x ({G%s{x)  SubCl: {W%d{x ({G%s{x)\n\rAge: {W%d{x  Fame: {W%d{x  Form: {W%s{x  Aggro_dam: {R%d{x  Rage: {R%d{x\n\r",
                         victim->alignment,
@@ -1661,10 +1723,10 @@ void do_mstat( CHAR_DATA *ch, char *argument )
         else
         {
                 /* All MOBILE mstat stuff goes here. */
-
-                sprintf( buf, "Vnum: {R%d{x\n\r",
-                        victim->pIndexData->vnum);
-                strcat( buf1, buf );
+                int temp = rank_sn(victim);
+                sprintf( buf, "Vnum: {R%d{x Rank: %s %d\n\r",
+                        victim->pIndexData->vnum, rank_table[rank_sn(victim)].who_format, temp);
+                strcat( buf1, buf );                
 
                 if ( victim->short_descr[0] != '\0'
                 &&   victim->long_descr[0]  != '\0' )
@@ -1715,6 +1777,11 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         GET_AC( victim ),
                         victim->saving_throw);
                 strcat( buf1, buf );
+
+                sprintf( buf, "Crit: {R%d{x  Swiftness: {R%d{x\n\r",
+                        victim->crit,
+                        victim->swiftness);
+                strcat( buf1, buf );  
 
                 sprintf( buf, "Position: {G%d{x [{W%s{x]  Wimpy: {W%d{x  Exp modifier: {W%d{x\n\r",
                         victim->position,
@@ -1902,6 +1969,136 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         }
                 }
 
+                /* Pull out the Species specifc info for this mob - Brutus Sept 2022 */
+                if ( victim->mobspec )
+                {
+                        int sn;
+                        int species;
+                        species = species_sn(victim);
+
+                        for ( sn = 0; sn < MAX_MOB; sn++ )
+                        {
+                                if ( !mob_table[sn].name )
+                                        break;
+                                        
+                                if ( !str_cmp(victim->mobspec, mob_table[sn].name))
+                                {
+                                        strcat(buf, "\n\r{WThe Mobs Specification:{x\n\r");
+                                        strcat( buf1, buf );
+                                
+                                        sprintf( buf, "Name: %s Species: %s\n\r",
+                                        mob_table[sn].name, mob_table[sn].species);
+                                        strcat( buf1, buf );
+
+                                        /* resists */
+                                        sprintf( buf, "Resistant to (num): {W");
+                                        strcat( buf1, buf );
+                                        bit_explode(ch, buf, mob_table[sn].resists);
+                                        strcat( buf1, buf );
+                                        strcat(buf1, "{x\n\r");
+                                        strcat(buf1, "Resistant To (txt):{R");
+                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                                        {
+                                                if (IS_SET(mob_table[sn].resists, next))
+                                                {
+                                                        strcat(buf1, " ");
+                                                        strcat(buf1, resist_name(next));
+
+                                                }
+                                        }
+                                        strcat(buf1, "{x\n\r");
+
+                                        /* Vulnerable */
+                                        sprintf( buf, "Vulnerable to (num): {W");
+                                        strcat( buf1, buf );
+                                        bit_explode(ch, buf, mob_table[sn].vulnerabilities);
+                                        strcat( buf1, buf );
+                                        strcat(buf1, "{x\n\r");
+                                        strcat(buf1, "Vulnerable To (txt):{R");
+                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                                        {
+                                                if (IS_SET(mob_table[sn].vulnerabilities, next))
+                                                {
+                                                        strcat(buf1, " ");
+                                                        strcat(buf1, resist_name(next));
+
+                                                }
+                                        }
+                                        strcat(buf1, "{x\n\r");
+                                        
+                                        /*  Immune */
+                                        sprintf( buf, "Immune to (num): {W");
+                                        strcat( buf1, buf );
+                                        bit_explode(ch, buf, mob_table[sn].immunes);
+                                        strcat( buf1, buf );
+                                        strcat(buf1, "{x\n\r");
+                                        strcat(buf1, "Immune To (txt):{R");
+                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                                        {
+                                                if (IS_SET(mob_table[sn].immunes, next))
+                                                {
+                                                        strcat(buf1, " ");
+                                                        strcat(buf1, resist_name(next));
+
+                                                }
+                                        }
+                                        strcat(buf1, "{x\n\r");
+
+                                        sprintf( buf, "HP Mod: %d Dam Mod: %d Crit Mod: %d Swiftness Mod: %d\n\r",
+                                        mob_table[sn].hp_mod, mob_table[sn].dam_mod, mob_table[sn].crit_mod, mob_table[sn].haste_mod);
+                                        strcat( buf1, buf );
+                                        sprintf( buf, "Height: %d Weight: %d Size: %d\n\r",
+                                        mob_table[sn].height, mob_table[sn].weight, mob_table[sn].size);
+                                        strcat( buf1, buf );
+
+                                        /* body parts from Species Table */
+                                        sprintf( buf, "Body Parts (num): {W");
+                                        strcat( buf1, buf );
+                                        bit_explode(ch, buf, species_table[species].body_parts);
+                                        strcat( buf1, buf );
+                                        strcat(buf1, "{x\n\r");
+                                        strcat(buf1, "Body Parts (txt):{R");
+                                        
+                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                                        {
+                                                if (IS_SET(species_table[species].body_parts, next))
+                                                {
+                                                        strcat(buf1, " ");
+                                                        strcat(buf1, body_form_name(next));
+
+                                                }
+                                        }
+                                        strcat(buf1, "{x\n\r");
+
+                                        /* Attack Parts  from Species Table*/
+                                        sprintf( buf, "Attack Parts (num): {W");
+                                        strcat( buf1, buf );
+                                        bit_explode(ch, buf, species_table[species].attack_parts);
+                                        strcat( buf1, buf );
+                                        strcat(buf1, "{x\n\r");            
+                                        strcat(buf1, "Attack Parts (txt):{R");
+                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                                        {
+                                                if (IS_SET(species_table[species].attack_parts, next))
+                                                {
+                                                        strcat(buf1, " ");
+                                                        strcat(buf1, body_form_name(next));
+
+                                                }
+                                        }
+                                        strcat(buf1, "{x\n\r");
+
+                                        sprintf( buf, "Lang: %d\n\r Spec_1: %s\n\r Spec_2: %s\n\r Spec_3: %s\n\r",
+                                        mob_table[sn].language, mob_table[sn].spec_fun1, mob_table[sn].spec_fun2, mob_table[sn].spec_boss);
+                                        strcat( buf1, buf );
+                                }
+                        }
+
+
+
+                }
+
+
         }
 
         send_to_char( buf1, ch );
@@ -1979,8 +2176,6 @@ void do_mfind( CHAR_DATA *ch, char *argument )
                 send_to_char( buf1, ch );
         return;
 }
-
-
 
 void do_ofind( CHAR_DATA *ch, char *argument )
 {
@@ -2518,6 +2713,51 @@ void do_return( CHAR_DATA *ch, char *argument )
         return;
 }
 
+void do_mnstat( CHAR_DATA *ch, char *argument )
+{
+        CHAR_DATA      *rch;
+        MOB_INDEX_DATA *pMobIndex;
+                char       buf  [ MAX_STRING_LENGTH ];
+        char       buf1 [ MAX_STRING_LENGTH ];
+        char            arg [ MAX_INPUT_LENGTH ];
+
+        rch = get_char( ch );
+
+        buf[0] = '\0';
+        buf1[0] = '\0';
+
+        if ( !authorized( rch, gsn_mload ) )
+                return;
+
+        one_argument( argument, arg );
+
+        if ( arg[0] == '\0' || !is_number( arg ) )
+        {
+                send_to_char( "Syntax: mnstat <<vnum>.\n\r", ch );
+                return;
+        }
+
+        if ( !( pMobIndex = get_mob_index( atoi( arg ) ) ) )
+        {
+                send_to_char( "No mob has that vnum.\n\r", ch );
+                return;
+        }
+
+        sprintf( buf, "Vnum: {R%d{x\n\r", pMobIndex->vnum);
+        strcat( buf1, buf );
+
+                if ( pMobIndex->short_descr[0] != '\0'
+                &&   pMobIndex->long_descr[0]  != '\0' )
+                {
+                        sprintf( buf, "Short description: {W%s{x\n\rMobspec: {W%s{x\n\rLong description: \n\r  {W%s{x",
+                                pMobIndex->short_descr,
+                                pMobIndex->mobspec,
+                                pMobIndex->long_descr );
+                        strcat( buf1, buf );
+                }
+        send_to_char( buf1, ch );
+        return;
+}
 
 void do_mload( CHAR_DATA *ch, char *argument )
 {
@@ -2631,7 +2871,7 @@ void do_oload( CHAR_DATA *ch, char *argument )
 
         for ( cc_def = 1; cc_def <= copies; cc_def++ )
         {
-                obj = create_object( pObjIndex, level );
+                obj = create_object( pObjIndex, level, 1, TRUE );
                 if ( IS_SET(obj->wear_flags, ITEM_TAKE) )
                 {
                         if ( (ch->carry_number + copies) > can_carry_n( ch ))
@@ -3995,7 +4235,7 @@ void do_oclanitem (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        clanobj = create_object(get_obj_index(itemvnum), level);
+        clanobj = create_object(get_obj_index(itemvnum), level, 1, FALSE);
         set_obj_owner(clanobj, victim->name);
         obj_to_char(clanobj, ch);
 
@@ -5939,7 +6179,7 @@ void do_wizbrew (CHAR_DATA *ch, char *argument)
          *      Okedoke, command's okay so let's make a potion
          */
 
-        potion = create_object (get_obj_index (ITEM_VNUM_WIZBREW_VIAL), 0);
+        potion = create_object (get_obj_index (ITEM_VNUM_WIZBREW_VIAL), 0, 1, FALSE);
         if (!potion)
         {
                 send_to_char ("Oops, couldn't create the potion object: abort!\n\r", ch);

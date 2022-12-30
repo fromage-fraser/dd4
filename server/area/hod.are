@@ -138,6 +138,7 @@ A Copper Dragon is here, waiting to take to the skies with its master.
 follow $n
 ~
 |
+< reserved~ elite~
 
 #55049
 Pink Bunny Punnbinky~
@@ -1196,7 +1197,7 @@ endif
 mppurge
 ~
 |
-
+< reserved~ elite~
 #55043
 Adonis(2Tynan2)~
 Adonis~

@@ -2754,7 +2754,7 @@ void do_smash (CHAR_DATA *ch, char *argument)
                 arena_commentary("$n smashes $N to the ground.", ch, ch->fighting);
 
                 WAIT_STATE(ch->fighting, 2 * PULSE_VIOLENCE);
-                one_hit(ch, ch->fighting, gsn_smash);
+                one_hit(ch, ch->fighting, gsn_smash, FALSE);
         }
         else
         {

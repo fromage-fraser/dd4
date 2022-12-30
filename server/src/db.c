@@ -227,7 +227,9 @@ int     gsn_guide;
 int     gsn_log;
 int     gsn_memory;
 int     gsn_mfind;
+int     gsn_mrank;
 int     gsn_mload;
+int     gsn_mnstat;
 int     gsn_mset;
 int     gsn_oclanitem;
 int     gsn_mstat;
@@ -487,8 +489,6 @@ int     gsn_fireball;
 int     gsn_flamestrike;
 int     gsn_lightning_bolt;
 int     gsn_moonray;
-int     gsn_firestorm;
-int     gsn_meteor_storm;
 int     gsn_animate_dead;
 int     gsn_create_food;
 int     gsn_create_water;
@@ -774,7 +774,7 @@ int             mprog_name_to_type      (char* name);
 MPROG_DATA *    mprog_file_read         (char* f, MPROG_DATA* mprg, MOB_INDEX_DATA *pMobIndex);
 void            load_mobprogs           (FILE *fp);
 void            mprog_read_programs     (FILE *fp, MOB_INDEX_DATA *pMobIndex);
-
+void            load_mob_spec           (FILE *fp, MOB_INDEX_DATA *pMobIndex);
 
 /*
  * Memory management.
@@ -1602,6 +1602,66 @@ void load_area_special (FILE *fp)
         }
 }
 
+int mob_lookup( const char *name )
+{
+        int sn;
+          char buf2[100];
+        for ( sn = 0; sn < MAX_MOB; sn++ )
+        {
+
+                if ( !mob_table[sn].name )
+                        break;
+
+                if ( !str_cmp(name, mob_table[sn].name))
+                {
+
+                        return sn;
+                }
+        }
+        sprintf(buf2, "[*****] BUG: Cant do mob_lookup: %s: %s, %d",
+        name, mob_table[sn].name, sn);
+        log_string (buf2);
+        return -1;
+}
+
+
+/*
+ *  Load the mob_spec
+ */
+void load_mob_spec (FILE *fp, MOB_INDEX_DATA *pMobIndex)
+{
+        int ms;
+        char letter;
+        char *name;
+        char *rank;
+        char buf2[100];
+        buf2[0] = '\0';     
+
+
+        letter = fread_letter( fp );
+        
+        while (letter == '<')
+        {                
+                name = fread_string(fp);
+                rank = fread_string(fp);
+                ms = mob_lookup(name);
+
+                if (ms < 0)
+                {
+                        sprintf(buf2, "[*****] BUG: Fread_mob_spec: unknown spec: mob vnum %d: %s",
+                                pMobIndex->vnum, name);
+                        log_string (buf2);
+                }
+                else                     
+                        pMobIndex->mobspec = name;
+
+                pMobIndex->rank = rank;
+                
+                letter = fread_letter( fp ); 
+        }               
+        ungetc( letter, fp ); 
+}
+
 
 /*
  *  Load the teachers skills
@@ -1650,7 +1710,7 @@ void load_mobiles( FILE *fp )
 {
         MOB_INDEX_DATA *pMobIndex;
         char buf[MAX_STRING_LENGTH];
-
+        char buf2[100];
         for ( ; ; )
         {
                 char letter;
@@ -1709,6 +1769,7 @@ void load_mobiles( FILE *fp )
                 fread_number( fp, &stat );   /* Unused */
                 fread_number( fp, &stat );   /* Unused */
                 fread_number( fp, &stat );   /* Unused */
+                /* pMobIndex->rank                 = fread_letter( fp );    Now used to determine rank of a mob - Brutus Oct 2022 */
                 fread_letter( fp );   /* Unused */
                 fread_number( fp, &stat );   /* Unused */
                 fread_letter( fp );   /* Unused */
@@ -1733,6 +1794,7 @@ void load_mobiles( FILE *fp )
                         exit( 1 );
                 }
 
+
                 /* This is for mob-programs - Brutus */
 
                 letter = fread_letter( fp );
@@ -1744,10 +1806,23 @@ void load_mobiles( FILE *fp )
                 else
                         ungetc( letter, fp );
 
+                pMobIndex->mobspec = NULL;
+
+                /* This is for a mob_spec */
+                letter = fread_letter( fp );
+                if ( letter == '<' )
+                {
+                        ungetc( letter, fp );
+                        sprintf(buf2, "[*****] INFO: Read in Mob_spec %d",
+                                vnum);
+                        log_string (buf2);
+                        load_mob_spec(fp,pMobIndex);
+                }
+                else
+                        ungetc( letter, fp );
+
                 /* this is for teachers...... :)  geoff */
-
                 pMobIndex->skills = NULL;
-
                 letter = fread_letter( fp );
                 if ( letter == '&' )
                 {
@@ -1797,6 +1872,7 @@ void load_objects( FILE *fp )
                 char  letter;
                 int   vnum;
                 int   iHash;
+                int   item_affects=0;
 
                 letter = fread_letter( fp );
                 if ( letter != '#' )
@@ -1885,7 +1961,7 @@ void load_objects( FILE *fp )
                         bug( "Vnum %d : light source with ITEM_INVIS set", vnum );
                         REMOVE_BIT( pObjIndex->extra_flags, ITEM_INVIS );
                 }
-
+                   
                 for ( ; ; )
                 {
                         char letter;
@@ -1893,17 +1969,39 @@ void load_objects( FILE *fp )
 
                         if ( letter == 'A' )
                         {
-                                AFFECT_DATA *paf;
+                                 AFFECT_DATA *paf;
+                                int location;
+                                int modifier;
 
-                                paf                     = alloc_perm( sizeof( *paf ) );
-                                paf->type               = -1;
-                                paf->duration           = -1;
-                                paf->location           = fread_number( fp, &stat );
-                                paf->modifier           = fread_number( fp, &stat );
-                                paf->bitvector          = 0;
-                                paf->next               = pObjIndex->affected;
-                                pObjIndex->affected     = paf;
-                                top_affect++;
+                                location           = fread_number( fp, &stat );
+                                modifier           = fread_number( fp, &stat ); 
+                                /* random affects - will conintue to honor objects set with the following flags*/
+                                /* I need to PASS IN THE LEVEL OF THE MOB THIS GOES TO */
+                                                              /*  sprintf(buf, "Vnum %d Level %d", vnum, pObjIndex->level);
+                                log_string(buf); */
+
+                   /*             if ( (location == APPLY_SANCTUARY)
+                                        || (location == APPLY_FLAMING)
+                                        || ( location == APPLY_FLY)
+                                        || ( location == APPLY_SNEAK)
+                                        || ( location == APPLY_GLOBE)
+                                        || ( location == APPLY_BREATHE_WATER)
+                                        || ( location == APPLY_INVIS) 
+                                         )
+                                { */
+                                       
+
+                                        paf                     = alloc_perm( sizeof( *paf ) );
+                                        paf->type               = -1;
+                                        paf->duration           = -1;
+                                        paf->location           = location;
+                                        paf->modifier           = modifier;
+                                        paf->bitvector          = 0;
+                                        paf->next               = pObjIndex->affected;
+                                        pObjIndex->affected     = paf;
+                                        top_affect++;
+                                        item_affects++;
+                              /*  } */
                         }
                         else if ( letter == 'E' )
                         {
@@ -1976,6 +2074,8 @@ void load_resets( FILE *fp )
 {
         RESET_DATA *pReset;
         int stat;
+        int last_mob_level=1;
+    /*            char buf[256]; */
 
         if ( !area_last )
         {
@@ -1988,6 +2088,8 @@ void load_resets( FILE *fp )
                 EXIT_DATA       *pexit;
                 ROOM_INDEX_DATA *pRoomIndex;
                 char             letter;
+                MOB_INDEX_DATA *pMobIndex;
+                OBJ_INDEX_DATA *pObjIndex;
 
                 letter = fread_letter( fp );
 
@@ -2024,12 +2126,18 @@ void load_resets( FILE *fp )
                 {
                     default:
                         bug( "Load_resets: bad command '%c'.", letter );
+                        last_mob_level=1;
                         exit( 1 );
                         break;
 
                     case 'M':
+
                         get_mob_index  ( pReset->arg1 );
                         get_room_index ( pReset->arg3 );
+                        /* random affects - get the mob rank, to determine random affects - Brutus Oct 2022*/
+                        pMobIndex = get_mob_index( pReset->arg1 );
+                        last_mob_level = pMobIndex->level;
+                        
                         break;
 
                     case 'O':
@@ -2060,14 +2168,19 @@ void load_resets( FILE *fp )
                     case 'P':
                         get_obj_index  ( pReset->arg1 );
                         get_obj_index  ( pReset->arg3 );
+                        last_mob_level = 1;
                         break;
 
                     case 'F':
                         get_obj_index ( pReset->arg1 );
                         get_obj_index ( pReset->arg3 );
                     case 'G':
+                        pObjIndex =  get_obj_index  ( pReset->arg1 );
+                        break;
                     case 'E':
-                        get_obj_index  ( pReset->arg1 );
+                        pObjIndex =  get_obj_index  ( pReset->arg1 );
+                        /* need to set level here for the obj level to be approx the mob level for random affects -  Brutus*/
+                        pObjIndex->level = last_mob_level;
                         break;
 
                     case 'D':
@@ -2804,7 +2917,7 @@ void reset_area( AREA_DATA *pArea )
                                 break;
                         }
 
-                        obj       = create_object( pObjIndex, number_fuzzy( level ) );
+                        obj = create_object( pObjIndex, number_fuzzy( level ), 1, FALSE );
                         obj->cost = 0;
                         obj_to_room( obj, pRoomIndex );
                         last = TRUE;
@@ -2846,7 +2959,7 @@ void reset_area( AREA_DATA *pArea )
                                 break;
                         }
 
-                        obj = create_object(pObjIndex, number_fuzzy(pReset->arg1));
+                        obj = create_object(pObjIndex, number_fuzzy(pReset->arg1), 1, FALSE);
                         obj->cost = 0;
                         obj_to_room(obj, pRoomIndex);
                         last = TRUE;
@@ -2879,7 +2992,7 @@ void reset_area( AREA_DATA *pArea )
                                 break;
                         }
 
-                        obj = create_object( pObjIndex, number_fuzzy( obj_to->level ) );
+                        obj = create_object( pObjIndex, number_fuzzy( obj_to->level ), 1, FALSE );
                         obj_to_obj( obj, obj_to );
                         last = TRUE;
                         break;
@@ -2966,7 +3079,9 @@ void reset_area( AREA_DATA *pArea )
                                 }
                                 /* End of item level additions */
 
-                                obj = create_object( pObjIndex, olevel );
+                                        
+                                                
+                                obj = create_object( pObjIndex, olevel, 1, FALSE );
 
                                 if ( pReset->command == 'G' )
                                         SET_BIT( obj->extra_flags, ITEM_INVENTORY );
@@ -2975,10 +3090,10 @@ void reset_area( AREA_DATA *pArea )
                         {
                                 /* Make sure MUD School loot is level 1 */
                                 if (IS_SET(pArea->area_flags, AREA_FLAG_SCHOOL) && level <= 5) {
-                                        obj = create_object(pObjIndex, 1);
+                                        obj = create_object(pObjIndex, 1, 1, FALSE);
                                 }
                                 else {
-                                        obj = create_object(pObjIndex, number_fuzzy(level));
+                                        obj = create_object(pObjIndex, number_fuzzy(level), rank_sn(mob), TRUE);
                                 }
 
                                 if (obj->level > LEVEL_HERO) {
@@ -3102,10 +3217,9 @@ void reset_area( AREA_DATA *pArea )
 /*
  * Create an instance of a mobile.
  */
-CHAR_DATA *create_mobile( MOB_INDEX_DATA *pMobIndex )
+CHAR_DATA * create_mobile( MOB_INDEX_DATA *pMobIndex )
 {
         CHAR_DATA *mob;
-
         if ( !pMobIndex )
         {
                 bug( "Create_mobile: NULL pMobIndex.", 0 );
@@ -3129,22 +3243,26 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA *pMobIndex )
         mob->short_descr        = pMobIndex->short_descr;
         mob->long_descr         = pMobIndex->long_descr;
         mob->description        = pMobIndex->description;
+        mob->mobspec            = pMobIndex->mobspec;
         mob->spec_fun           = pMobIndex->spec_fun;
         mob->prompt             = str_dup( "<%hhp %mm %vmv> " );
-
+        mob->rank               = pMobIndex->rank;
         mob->level              = number_fuzzy( pMobIndex->level );
         mob->act                = pMobIndex->act;
         mob->affected_by        = pMobIndex->affected_by;
         mob->alignment          = pMobIndex->alignment;
         mob->sex                = pMobIndex->sex;
         mob->body_form          = pMobIndex->body_form;
-
         mob->armor              = interpolate( mob->level, 100, -100 );
 
         mob->max_hit = mob->level * 8
                 + number_range( mob->level * mob->level / 4, mob->level * mob->level );
+       /* mob->max_hit *= rank_bonus; */
+        mob->max_hit *= rank_table[rank_sn_index(pMobIndex)].rank_bonus; 
 
         mob->hit                = mob->max_hit;
+        mob->crit               = 5;
+        mob->swiftness              = 5;
 
         if (IS_SET(mob->act, ACT_CLAN_GUARD))
                 REMOVE_BIT(mob->affected_by, AFF_HIDE);
@@ -3159,7 +3277,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA *pMobIndex )
 /*
  * Create an instance of an object.
  */
-OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
+OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, int rank, bool randomise)
 {
         static OBJ_DATA obj_zero;
         OBJ_DATA*       obj;
@@ -3294,6 +3412,23 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
                 break;
 
             case ITEM_WEAPON:
+                /* random stats  */
+                if (level >= 10 && randomise && (!IS_OBJ_STAT(obj,ITEM_DONOT_RANDOMISE)))
+                {
+                        AFFECT_DATA *paf;
+                        /* strip old effects then randomise stats */
+                        for ( paf = obj->affected; paf; paf = paf->next )
+                        {
+                                if (paf->bitvector == AFF_SANCTUARY 
+                                        || paf->bitvector == AFF_FLYING 
+                                        || paf->bitvector == AFF_SWIM
+                                        || paf->bitvector == AFF_INVISIBLE)
+                                        continue;
+
+                                paf->deleted = TRUE;
+                        }
+                        randomise_object(obj, level, rank);
+                }
                 /* proceed if not constructed - as it will take damage fields from blueprint table */
                 if (IS_SET(obj->ego_flags, EGO_ITEM_CONSTRUCTED))
                 {
@@ -3317,7 +3452,23 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
                 break;
 
             case ITEM_ARMOR:
+                /* random stats  */
                 obj->value[0]   = number_fuzzy( level / 5 + 2 );
+                if (level >= 10 && randomise && (!IS_OBJ_STAT(obj,ITEM_DONOT_RANDOMISE)))
+                {
+                        AFFECT_DATA *paf;
+                        /* strip old effects then randomise stats */
+                        for ( paf = obj->affected; paf; paf = paf->next )
+                        {
+                                if (paf->bitvector == AFF_SANCTUARY 
+                                        || paf->bitvector == AFF_FLYING 
+                                        || paf->bitvector == AFF_SWIM
+                                        || paf->bitvector == AFF_INVISIBLE)
+                                continue;
+                                paf->deleted = TRUE;
+                        }
+                        randomise_object(obj, level, rank);
+                }
                 break;
 
             case ITEM_POTION:
@@ -3366,6 +3517,7 @@ void clear_char( CHAR_DATA *ch )
         ch->short_descr         = &str_empty[0];
         ch->long_descr          = &str_empty[0];
         ch->description         = &str_empty[0];
+        ch->mobspec             = &str_empty[0];
         ch->prompt              = str_dup("> ");
         ch->last_note           = 0;
         ch->logon               = current_time;
@@ -3432,6 +3584,7 @@ void free_char( CHAR_DATA *ch )
         free_string( ch->short_descr );
         free_string( ch->long_descr );
         free_string( ch->description );
+        free_string( ch->mobspec );
         free_string( ch->prompt );
 
         if ( ch->pcdata )
@@ -4580,6 +4733,110 @@ void log_string (const char *str)
         fprintf(stderr, "%s :: %s\n", &strtime[4], str);
 }
 
+void do_mrank( CHAR_DATA *ch, char *argument )
+{
+
+        char       arg  [ MAX_INPUT_LENGTH    ];
+        char buf[MAX_STRING_LENGTH];
+        AREA_DATA *pArea, *first_sort;
+                CHAR_DATA *victim;
+        int count;
+                                        OBJ_DATA  *in_obj;
+                                OBJ_DATA  *obj;
+                                int        obj_counter = 1;
+
+        first_sort = area_first;
+        count = 0;
+
+        one_argument( argument, arg );
+
+        for ( pArea = first_sort; pArea; pArea = pArea->next )
+        {
+
+              if ( multi_keyword_match( arg, pArea->name ) )
+              {
+                        sprintf(buf, "<15>%-30s<0>| <42>Rooms:<0> %5d-%-5d"
+                        " <33>Objs:<0> %5d-%-5d <228>Mobs:<0> %5d-%-5d\n\r",
+                        (pArea->name ? pArea->name : "<160>(invalid)<0>"),
+                        pArea->low_r_vnum, pArea->hi_r_vnum,
+                        pArea->low_o_vnum, pArea->hi_o_vnum,
+                        pArea->low_m_vnum, pArea->hi_m_vnum);
+
+                send_to_char( buf, ch );
+                
+                sprintf( buf, "\n\r{W[Special Mobs]{x-----------------------------------------------------\n\r");
+                send_to_char (buf, ch);
+
+                for ( victim = char_list; victim; victim = victim->next )
+                {
+                        if (victim->in_room->vnum > pArea->low_r_vnum && victim->in_room->vnum < pArea->hi_r_vnum )
+                        {
+                                if ( IS_NPC( victim )
+                                && victim->in_room
+                                && ( rank_sn(victim) > 1 ) )
+                                {
+                                        sprintf( buf, "[%5d] %-28s at [%5d] %s\n\r",
+                                                
+                                                victim->pIndexData->vnum,
+                                                victim->short_descr,
+                                                victim->in_room->vnum,
+                                                rank_table[rank_sn(victim)].who_format );
+                                        send_to_char (buf, ch);
+                                }
+                        }
+
+                }
+                
+                sprintf( buf, "\n\r{W[Special Objects (Epic or Legendary)]{x-----------------------------\n\r");
+                send_to_char (buf, ch);
+                
+                for ( obj = object_list; obj; obj = obj->next )
+                {
+
+                        if (obj->pIndexData->vnum < pArea->low_o_vnum || obj->pIndexData->vnum > pArea->hi_o_vnum)
+                                continue;
+                        if (calc_item_score(obj) < ITEM_SCORE_EPIC)
+                                continue;
+
+                        for ( in_obj = obj; in_obj->in_obj; in_obj = in_obj->in_obj )
+                                ;
+
+                        
+                        if ( in_obj->carried_by )
+                        {
+                                if ( !can_see( ch, in_obj->carried_by ) )
+                                        continue;
+
+                                sprintf( buf, "[%-3d] {g%s{x carried by {c%s{x at [%5d] (Obj Score:%4d)\n\r",
+                                        obj_counter,
+                                        obj->short_descr,
+                                        PERS( in_obj->carried_by, ch ),
+                                        in_obj->carried_by->in_room->vnum, calc_item_score(obj)  );
+                        }
+                        else
+                        {
+                                sprintf( buf, "[%-3d] {g%s{x in {c%s{x at [%5d] (Obj Score:%4d)\n\r",
+                                        obj_counter,
+                                        obj->short_descr,
+                                        ( !in_obj->in_room ) ?
+                                        "somewhere" : in_obj->in_room->name,
+                                        ( !in_obj->in_room ) ?
+                                        0 : in_obj->in_room->vnum, calc_item_score(obj) );
+                        }
+
+                        obj_counter++;
+                        buf[0] = UPPER( buf[0] );
+                        send_to_char (buf, ch);
+                }
+                count++;
+              }
+        }
+
+        sprintf( buf, "Areas listed: %d\n\r", count );
+        send_to_char( buf, ch );
+        return;
+}
+
 
 /*
  * Display vnums currently assigned to areas            -Altrag & Thoric
@@ -4761,7 +5018,349 @@ void load_games( FILE *fp )
     return;
 }
 
+/* Randomiser - Brutus Oct 2022 */
+void randomise_object( OBJ_DATA *obj, int level, int rank)
+{
+        AFFECT_DATA *paf;
+        int random;
+        int mob_bonus=1;
+        int r1;
+        int r2;
+        int r3;
+        int r4;
+        int gain1;
+        int gain2;
+        int gain3;
+        int gain4;
+        int modifier1 = 1;
+        int modifier2 = 1;
+        int modifier3 = 1;
+        int modifier4 = 1;
+   /*     char buf2[256]; */
+        char mod1;
+        char mod2;
+        char mod3;
+        char mod4;
+       
+   /*     if (obj->item_type != ITEM_WEAPON)
+        {
+                return;
+        }
+*/
+    
+        /* Strip all affects from items over level 10*/    
+        if (level >= 10)
+        {
+                AFFECT_DATA *paf;
+                AFFECT_DATA *paf_next;
+                /* strip old effects*/
+                for ( paf = obj->pIndexData->affected; paf; paf = paf_next )
+                {
+                       paf_next = paf->next;
+                        paf->deleted = TRUE; 
+                     /*   unlink(paf);
+ */	               /* free_mem(paf); 
+                    */  paf->type               = 0;
+                        paf->duration           = 0;
+                        paf->location           = 0;
+                        paf->modifier           = 0;
+                        paf->bitvector          = 0;
+                        /* paf->next               = pObjIndex->affected;
+                        pObjIndex->affected     = paf;
+                        top_affect++;
+                        item_affects++;
+                        
+                        sprintf(buf2, "[*****] RANDOMS: In PAF loop %s %d", obj->name, paf->location);
+                        log_string (buf2);  */
+                }
+        }
 
+        /* Figure out the mob rank*/
+        if (rank >=4)
+                mob_bonus=50;
+        else if (rank ==3 )
+                mob_bonus=10;
+        else if (rank == 2)
+                mob_bonus=5;
+        else
+                mob_bonus=1;
+
+
+        /* Find some unique random buffs */
+        random = number_range ( 0,1000);
+
+        r1 = number_range ( 0, MAX_RANDOMS-1);
+
+        r2 = number_range ( 0, MAX_RANDOMS-1);
+        while (r1 == r2)
+        {
+                r2 = number_range ( 0, MAX_RANDOMS-1);
+        }
+
+        r3 = number_range ( 0, MAX_RANDOMS-1);
+        while ( r1 == r3 || r2 == r3)
+        {
+              r3 = number_range ( 0, MAX_RANDOMS-1);  
+        }
+
+        r4 = number_range ( 0, MAX_RANDOMS-1);
+        while ( r1 == r4 || r2 == r4 || r3 ==r4 )
+        {
+             r4 = number_range ( 0, MAX_RANDOMS-1);   
+        }
+
+        mod1 = random_list[r1].apply_buff;
+        mod2 = random_list[r2].apply_buff;
+        mod3 = random_list[r3].apply_buff;
+        mod4 = random_list[r4].apply_buff;
+        gain1 = random_list[r1].base_gain;
+        gain2 = random_list[r2].base_gain;
+        gain3 = random_list[r3].base_gain;
+        gain4 = random_list[r4].base_gain;
+        modifier1 = number_fuzzy(2500/gain1);      
+        modifier2 = number_fuzzy(2500/gain2);  
+        modifier3 = number_fuzzy(2500/gain3);  
+        modifier4 = number_fuzzy(2500/gain4);  
+
+     /*   sprintf(buf2, "[*****] RANDOMS: %d: 1:(%d %d %d) 2:(%d %d %d) 3:(%d %d %d) 4:(%d %d %d)", random, mod1, gain1, modifier1, mod2, gain2, modifier2, mod3, gain3, modifier3, mod4, gain4, modifier4);
+        log_string (buf2); 
+*/
+        if (random > (999-(LEGENDARY_CHANCE * mob_bonus)) && rank >= NPC_BOSS)/* 1 in 1000 chance to get a legendary */
+        {
+
+              /* try to randomise the gains for each mod */
+                while ( number_fuzzy(ITEM_SCORE_LEGENDARY) > ( (modifier1 * gain1)/level + (modifier2 * gain2)/level + (modifier3 * gain3)/level + (modifier4 * gain4)/level)) 
+                {
+                modifier1 += number_fuzzy(2500/gain1);      
+                modifier2 += number_fuzzy(2500/gain2);  
+                modifier3 += number_fuzzy(2500/gain3);  
+                modifier4 += number_fuzzy(2500/gain4);  
+                }
+                
+                if (!affect_free)
+                {
+                        paf = alloc_perm( sizeof( *paf ) );
+                }
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+
+                paf->type       = -1;
+                paf->duration   = -1;
+                paf->location   = mod1;
+                paf->modifier   = modifier1;
+                paf->bitvector  = 0;
+                paf->next       = obj->affected;
+                obj->affected   = paf;     
+
+                if (!affect_free)
+                {
+                        paf = alloc_perm( sizeof( *paf ) );
+                }
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+
+                paf->type       = -1;
+                paf->duration   = -1;
+                paf->location   = mod2;
+                paf->modifier   = modifier2;
+                paf->bitvector  = 0;
+                paf->next       = obj->affected;
+                obj->affected   = paf;   
+
+                if (!affect_free)
+                {
+                        paf = alloc_perm( sizeof( *paf ) );
+                }
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+
+                paf->type       = -1;
+                paf->duration   = -1;
+                paf->location   = mod3;
+                paf->modifier   = modifier3;
+                paf->bitvector  = 0;
+                paf->next       = obj->affected;
+                obj->affected   = paf;   
+
+                if (!affect_free)
+                {
+                        paf = alloc_perm( sizeof( *paf ) );
+                }
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+
+                paf->type       = -1;
+                paf->duration   = -1;
+                paf->location   = mod4;
+                paf->modifier   = modifier4;
+                paf->bitvector  = 0;
+                paf->next       = obj->affected;
+                obj->affected   = paf;   
+
+        }
+        else if (random > (999-(EPIC_CHANCE * mob_bonus)) && rank >= NPC_ELITE)
+        {
+                /* try to randomise the gains for each mod */
+                while ( number_fuzzy(ITEM_SCORE_EPIC) > 
+                ( (modifier1 * gain1)/level 
+                + (modifier2 * gain2)/level 
+                + (modifier3 * gain3)/level) )
+                {
+                modifier1 += number_fuzzy(2500/gain1);      
+                modifier2 += number_fuzzy(2500/gain2);  
+                modifier3 += number_fuzzy(2500/gain3);  
+                }
+                
+                if (!affect_free)
+                {
+                        paf = alloc_perm( sizeof( *paf ) );
+                }
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+
+                paf->type       = -1;
+                paf->duration   = -1;
+                paf->location   = mod1;
+                paf->modifier   = modifier1;
+                paf->bitvector  = 0;
+                paf->next       = obj->affected;
+                obj->affected   = paf;     
+
+                if (!affect_free)
+                {
+                        paf = alloc_perm( sizeof( *paf ) );
+                }
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+
+                paf->type       = -1;
+                paf->duration   = -1;
+                paf->location   = mod2;
+                paf->modifier   = modifier2;
+                paf->bitvector  = 0;
+                paf->next       = obj->affected;
+                obj->affected   = paf;   
+
+                if (!affect_free)
+                {
+                        paf = alloc_perm( sizeof( *paf ) );
+                }
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+
+                paf->type       = -1;
+                paf->duration   = -1;
+                paf->location   = mod3;
+                paf->modifier   = modifier3;
+                paf->bitvector  = 0;
+                paf->next       = obj->affected;
+                obj->affected   = paf;  
+        }
+        else if (random > (999-(RARE_CHANCE * mob_bonus)))
+        {
+                
+                /* try to randomise the gains for each mod */
+                while ( number_fuzzy(ITEM_SCORE_RARE) > 
+                ( (modifier1 * gain1)/level 
+                + (modifier2 * gain2)/level)) 
+                {
+                modifier1 += number_fuzzy(2500/gain1);      
+                modifier2 += number_fuzzy(2500/gain2);  
+                }
+
+                if (!affect_free)
+                {
+                        paf = alloc_perm( sizeof( *paf ) );
+                }
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+
+                paf->type       = -1;
+                paf->duration   = -1;
+                paf->location   = mod1;
+                paf->modifier   = modifier1;
+                paf->bitvector  = 0;
+                paf->next       = obj->affected;
+                obj->affected   = paf;     
+
+                if (!affect_free)
+                {
+                        paf = alloc_perm( sizeof( *paf ) );
+                }
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+
+                paf->type       = -1;
+                paf->duration   = -1;
+                paf->location   = mod2;
+                paf->modifier   = modifier2;
+                paf->bitvector  = 0;
+                paf->next       = obj->affected;
+                obj->affected   = paf;   
+
+
+        }
+        else if (random > (999-(UNCOMMON_CHANCE * mob_bonus) ))
+        {
+                
+                /* try to randomise the gains for each mod */
+                while ( number_fuzzy(ITEM_SCORE_UNCOMMON) > 
+                ( (modifier1 * gain1)/level )) 
+                {
+                modifier1 += number_fuzzy(2500/gain1);      
+                }
+
+                if (!affect_free)
+                {
+                        paf = alloc_perm( sizeof( *paf ) );
+                }
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+
+                paf->type       = -1;
+                paf->duration   = -1;
+                paf->location   = mod1;
+                paf->modifier   = modifier1;
+                paf->bitvector  = 0;
+                paf->next       = obj->affected;
+                obj->affected   = paf;   
+        }
+        else   
+                return;
+        
+        
+        SET_BIT(obj->extra_flags, ITEM_MAGIC);
+}
 
 /*
  * This function is here to aid in debugging.

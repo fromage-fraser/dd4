@@ -151,7 +151,7 @@ arrives.  It says 'Oh, human YOU woke me up ... Hsss', while
 it moves closer.  'Can one NEVER sleep in peace ... Hsss'.
 ~
 1|2|32|16384 520 -1000 S
-30 -10 -10 30d30+300 3d4+30
+30 -10 -10 30e30+300 3d4+30
 0 450000
 8 8 0
 #7041

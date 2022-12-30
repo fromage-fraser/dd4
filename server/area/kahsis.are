@@ -336,6 +336,7 @@ hand moves nearer to a large sheathed dagger.
 55 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< reserved~ elite~
 #25025
 brass robot machinery~
 a brass robot~
@@ -377,6 +378,7 @@ replaced his eyes, and for a second you feel you hear a horrible screaming.
 60 0 0 0d0+0 0d0+0
 96 0
 8 8 0
+< reserved~ elite~
 #25028
 kahsis queen~
 Kahsis~
@@ -395,6 +397,7 @@ they gathered the courage to do ssso.  Prepare..."
 70 0 0 0d0+0 0d0+0
 96 0
 8 8 2
+< reserved~ boss~
 #25029
 kahsis serpent snake~
 Kahsis~
@@ -409,6 +412,8 @@ incantations you now no longer understand, Kahsis rears for her final victory.
 60 0 0 0d0+0 0d0+0
 60|128 0
 8 8 0
+< reserved~ rare~
+
 #0
 
 

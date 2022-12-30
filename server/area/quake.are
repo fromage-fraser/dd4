@@ -473,7 +473,7 @@ A harmless little white mouse is running around here.
 A little and white mouse.  It can't harm you.
 ~
 3 0 0 S
-50 0 0 1d1+1 1d1+1
+50 0 0 1e1+1 1d1+1
 0 0
 0 0 0
 #12044
@@ -484,7 +484,7 @@ Albertus the healer is here.
 A tall and powerfull man.
 ~
 3 136 1000 S
-55 0 0 1d1+1 1d1+1
+55 0 0 1r1+1 1d1+1
 0 0
 0 0 1
 #0

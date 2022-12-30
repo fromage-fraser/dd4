@@ -61,6 +61,7 @@ even unto death.
 21 0 0 0d0+0 0d0+0
 0 38000
 0 0 1
+< reserved~ elite~
 #11505
 Highlander~
 a Highlander~
@@ -86,6 +87,7 @@ to a boar's tusks.
 25 0 0 0d0+0 0d0+0
 0 90000
 0 0 1
+< reserved~ boss~
 #11507
 Wife~
 the wife of the Lord~
@@ -111,6 +113,7 @@ for peace.
 35 0 0 0d0+0 0d0+0
 0 100000
 0 0 0
+< reserved~ rare~
 #11509
 sheep~
 a sheep~

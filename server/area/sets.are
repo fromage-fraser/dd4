@@ -20,6 +20,7 @@ no Desc.
 25 6 0 25d25+250 6d6+5
 12 0
 8 8 0
+< fire_elemental~ elite~
 
 #0
 
@@ -571,7 +572,20 @@ other worlds.<0>
 2714 2715 2716 2717 2718
 5 5 5 5 5
 A 19 21
-
+#2707
+uncommon dwarven goblin allenace~
+<14>The Dwarven and Goblin Alliance:<0>
+<152>An unlikely alliance was once observed many century ago between the Dwarven and 
+Goblin population of the realm. Children of the 2 races often played together
+and a sharing of knowledge and lore was passed down through the ages.
+Items between the two races seemed inexplitedly linked. 
+A ring of pinkish hue from the dwarven children just outside the east gates of 
+Midgaard, and a silvery circlet from the goblin foundry in the western parts of 
+Midgaard when brought together combine in something magical.<0>
+~
+108 6601 0 0 0
+2 2 0 0 0
+A 1 2
 #0
 
 #SPECIALS

@@ -23,6 +23,7 @@ accept the quest, and it will begin."
 25 0 0 0d0+0 0d0+0
 0 0
 0 0 2
+< reserved~ rare~
 & 15 'teacher base'
 & 75 'healing magiks'
 & 75 'curative magiks'

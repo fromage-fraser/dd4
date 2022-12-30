@@ -104,6 +104,7 @@ Prince Erich, second born to King Guntharson.
 85 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #24007
 dwarf king guntharson~
 Guntharson, King of Cobresh~
@@ -120,6 +121,7 @@ Try as you might to talk, he will not listen.
 80 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ boss~
 #24008
 ivan prince dwarf~
 Prince Ivan~
@@ -136,6 +138,7 @@ something about a dragon as he hastily packs.
 70 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ rare~
 #24009
 hanson white dwarf~
 Hanson~

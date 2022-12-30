@@ -183,6 +183,12 @@ void fwrite_char (CHAR_DATA *ch, FILE *fp)
         fprintf(fp, "Gag         %d\n",  ch->gag);
         fprintf(fp, "DamageMit   %d\n",  ch->damage_mitigation);
         fprintf(fp, "DamangeEnh  %d\n",  ch->damage_enhancement);
+        fprintf(fp, "Crit        %d\n",  ch->crit);
+        fprintf(fp, "Swiftness  %d\n",  ch->swiftness);
+        fprintf(fp, "ResistAcid  %d\n",  ch->resist_acid);
+        fprintf(fp, "ResistLightning  %d\n",  ch->resist_lightning);
+        fprintf(fp, "ResistHeat  %d\n",  ch->resist_heat);
+        fprintf(fp, "ResistCold  %d\n",  ch->resist_cold);
         fprintf(fp, "Quiet       %d\n",  ch->silent_mode);
         fprintf(fp, "AllowLook   %d\n",  ch->pcdata->allow_look);
         fprintf(fp, "XPLevel     %d\n",  ch->pcdata->level_xp_loss);
@@ -467,6 +473,12 @@ bool load_char_obj (DESCRIPTOR_DATA *d, char *name)
         ch->silent_mode = 0;
         ch->pcdata->allow_look = 0;
         ch->pcdata->level_xp_loss = 0;
+        ch->crit = 5;
+        ch->swiftness = 5;
+        ch->resist_acid = 0;
+        ch->resist_lightning = 0;
+        ch->resist_heat = 0;
+        ch->resist_cold = 0;
         ch->pcdata->air_supply = FULL_AIR_SUPPLY;
         ch->tournament_team = -1;
         ch->pcdata->deity_patron = -1;
@@ -727,6 +739,7 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         KEY("Clan", ch->clan, fread_number( fp, &stat ));
                         KEY("ClnLvl", ch->clan_level, fread_number( fp, &stat ));
                         KEY("Copper", ch->copper, fread_number( fp, &stat ));
+                        KEY("Crit", ch->crit, fread_number( fp, &stat ));
                         KEY("CurRecall", ch->pcdata->current_recall, fread_number( fp, &stat ));
 
                         if (!str_cmp(word, "Cond"))
@@ -899,6 +912,10 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                     case 'R':
                         KEY("Rce", ch->race, fread_number( fp, &stat ));
                         KEY("Rage", ch->rage, fread_number( fp, &stat ));
+                        KEY("ResistAcid", ch->resist_acid, fread_number( fp, &stat ));
+                        KEY("ResistLightning", ch->resist_lightning, fread_number( fp, &stat ));
+                        KEY("ResistHeat", ch->resist_heat, fread_number( fp, &stat ));
+                        KEY("ResistCold", ch->resist_cold, fread_number( fp, &stat ));
                         KEY("Rage_Max", ch->max_rage, fread_number( fp, &stat ));
 
                         if (!str_cmp(word, "Room"))
@@ -923,6 +940,7 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         break;
 
                     case 'S':
+                        KEY("Swiftness", ch->swiftness, fread_number( fp, &stat ));
                         KEY("SavThr", ch->saving_throw, fread_number( fp, &stat ));
                         KEY("Status", ch->status, fread_number( fp, &stat ));
                         KEY("Sx", ch->sex, fread_number( fp, &stat ));

@@ -1506,7 +1506,7 @@ bool spec_grail (CHAR_DATA *ch)
 
                     default:
                         do_say(ch, "Feel my wrath!");
-                        one_hit(ch, victim, gsn_thrust);
+                        one_hit(ch, victim, gsn_thrust, FALSE);
                 }
 
                 return TRUE;
@@ -2009,7 +2009,7 @@ bool spec_assassin( CHAR_DATA *ch )
 
                 do_say( ch, buf );
 
-                one_hit( ch, victim, gsn_backstab );
+                one_hit( ch, victim, gsn_backstab, FALSE );
 
                 return TRUE;
         }
@@ -2045,7 +2045,7 @@ bool spec_assassin( CHAR_DATA *ch )
 
                     default:
                         if ( CAN_SPEAK(ch) ) { do_say(ch, "Hey, look over there!"); }
-                        one_hit(ch, victim, gsn_circle);
+                        one_hit(ch, victim, gsn_circle, FALSE);
                 }
         }
 
@@ -2116,7 +2116,7 @@ bool spec_vampire( CHAR_DATA *ch )
                 act("$c lunges for your neck!  You feel a sharp pain.",
                     ch, NULL, NULL, TO_ROOM );
 
-                if (one_hit(ch, victim, gsn_suck))
+                if (one_hit(ch, victim, gsn_suck, FALSE))
                         aggro_damage(ch, victim, ch->level);
 
                 return TRUE;
@@ -2382,7 +2382,7 @@ bool spec_mast_vampire(CHAR_DATA *ch)
             case 1:
                 if ( CAN_SPEAK(ch) ) { act("$n screams, 'The streets will run red with your {Rblood{x!'",
                     ch, NULL, NULL, TO_ROOM); }
-                one_hit(ch, victim, gsn_suck);
+                one_hit(ch, victim, gsn_suck, FALSE);
                 break;
 
             case 2:
@@ -2428,7 +2428,7 @@ bool spec_bloodsucker( CHAR_DATA *ch )
         act( "$n lunges at $N's neck!", ch, NULL, victim, TO_NOTVICT );
         act( "$n lunges at your neck!", ch, NULL, victim, TO_VICT    );
 
-        if (one_hit( ch, victim,gsn_suck ))
+        if (one_hit( ch, victim,gsn_suck, FALSE ))
                 aggro_damage(ch, victim, ch->level);
 
         return TRUE;
@@ -3366,8 +3366,8 @@ bool spec_uzollru( CHAR_DATA *ch )
                         act( "$n's tentacles burrow into you...", ch, NULL, victim, TO_VICT  );
                         act( "$n's tentacles burrow into $N!",  ch, NULL, victim, TO_NOTVICT );
                         spell_poison( gsn_poison, ch->level, ch, victim );
-                        one_hit(ch, victim, gsn_suck);
-                        one_hit(ch, victim, gsn_suck);
+                        one_hit(ch, victim, gsn_suck, FALSE);
+                        one_hit(ch, victim, gsn_suck, FALSE);
                         return TRUE;
 
                     case  3:
@@ -3389,8 +3389,8 @@ bool spec_uzollru( CHAR_DATA *ch )
                         act( "$n's tentacles burrow into your flesh!", ch, NULL, victim, TO_VICT    );
                         act( "$n's tentacles burrow into $N's flesh!",  ch, NULL, victim, TO_NOTVICT );
                         spell_poison( gsn_poison, ch->level, ch, victim );
-                        one_hit(ch, victim, gsn_suck);
-                        one_hit(ch, victim, gsn_suck);
+                        one_hit(ch, victim, gsn_suck, FALSE);
+                        one_hit(ch, victim, gsn_suck, FALSE);
                         return TRUE;
 
                     case  5:

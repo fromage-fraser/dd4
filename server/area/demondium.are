@@ -790,6 +790,7 @@ happens or has happened here. Perhaps he may be able to help you.
 90 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ boss~
 #21560
 pharaoh undead~
 the undead pharaoh~
@@ -826,6 +827,7 @@ come through here will go next.  What will he decide about you?
 90 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ boss~
 #21563
 mummy~
 the mummy~
@@ -943,6 +945,7 @@ under Redferne, but came here after being bewitched by Primus.
 90 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #21573
 chaymi~
 Chaymi~
@@ -955,6 +958,7 @@ teach black magic to the followers of Thrasher.
 85 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< reserved~ rare~
 #21574
 jaguar~
 Jaguar~
@@ -967,6 +971,7 @@ fangs and claws.  Maybe it is a disguise.  Then again maybe not.
 87 0 0 0d0+0 0d0+0
 4|32 0
 8 8 1
+< reserved~ rare~
 #21575
 shadow master~
 the master of shadows~
@@ -1289,6 +1294,7 @@ if ispc($n)
    endif
 ~
 |
+< reserved~ boss~
 #21601
 dead tree~
 the dead tree~

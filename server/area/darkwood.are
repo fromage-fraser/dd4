@@ -78,6 +78,7 @@ mpecho the dragon opens his eye and looks at you.
      murder $n
 ~
 |
+< reserved~ boss~
 #11204
 _nothing~
 The crystal chamber~
@@ -207,6 +208,7 @@ yell At last I am free!
     mpecho .
 ~
 |
+< reserved~ elite~
 #11211
 vampire~
 the vampire~

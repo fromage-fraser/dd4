@@ -89,7 +89,7 @@ secrets and knowledge of the Earth.  You can't really tell where
 he begins and the rock wall ends.
 ~
 2 128 0 S
-30 -2 -13 30d30+1000 2d6+25
+30 -2 -13 30e30+1000 2d6+25
 256 400000
 8 8 0
 #9209
@@ -100,7 +100,7 @@ The Ruler of the fire elementals.
 As you look at him he seems to blend in with the fire in his throne.
 ~
 2 128 0 S
-30 -5 -10 30d30+1000 4d5+5
+30 -5 -10 30e30+1000 4d5+5
 96 300000
 8 8 0
 #9210
@@ -123,7 +123,7 @@ As you examine him there is a blinding flash of light and a deafening boom!
 You rub your eyes and look and the ruler is there grinning at you.
 ~
 2 128 0 S
-30 0 -6 30d30+1000 4d6+15
+30 0 -6 30e30+1000 4d6+15
 0 350000
 8 8 0
 #9212
@@ -135,7 +135,7 @@ As you look at him he changes to mist, which swirls around you.  Just
 as you get scared, it reforms in elemental form.
 ~
 2 128 0 S
-30 0 -10 30d30+1000 7d3+5
+30 0 -10 30e30+1000 7d3+5
 0 350000
 8 8 0
 #9214

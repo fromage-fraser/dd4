@@ -147,7 +147,7 @@ This is the biggest ogre you have ever seen. He is heavily equipped and looks
 quite formidable. He towers high above you and growls menacingly.
 ~
 230 136 -1000 S
-25 -4 0 550d1+50 5d5+5
+25 -4 0 550e1+50 5d5+5
 0 145000
 8 8 1
 #2312
@@ -315,7 +315,7 @@ Gorak is HUGE. His bulging muscles are confined beneath heavy armor. He is the
 master of the warrior guild of Mahn-Tor.
 ~
 34 136 -300 S
-30 -9 -10 2500d1+500 6d6+5
+30 -9 -10 2500e1+500 6d6+5
 0 800000
 8 8 1
 #2326
@@ -327,7 +327,7 @@ Darkoth is a living incarnation of evil. He radiates a dark aura, and a cold
 chill runs down your spine. He is the master of the Mahn-Tor anti-paladins.
 ~
 34 136 -1000 S
-30 -9 -10 2500d1+500 6d6+5
+30 -9 -10 2500e1+500 6d6+5
 0 800000
 8 8 1
 #2327
@@ -339,7 +339,7 @@ Tyrgoth is the minotaur incarnation of good. You feel safe and at ease in his
 presence. He is the leader of the Mahn-Tor paladins.
 ~
 2 136 1000 S
-30 -9 -10 2500d1+500 6d6+5
+30 -9 -10 2500e1+500 6d6+5
 0 800000
 8 8 1
 #2328
@@ -352,7 +352,7 @@ power. He appears quite dangerous, despite his size. He is the leader of the
 mages of Mahn-Tor.
 ~
 34 136 300 S
-30 -9 -10 2500d1+500 6d6+5
+30 -9 -10 2500e1+500 6d6+5
 0 800000
 8 8 1
 #2329
@@ -364,7 +364,7 @@ Sumaron is clad in white glowing robes. He is goodness incarnate. He is the
 master of all the clerics of Mahn-Tor.
 ~
 34 136 1000 S
-30 -9 -10 2500d1+500 6d6+5
+30 -9 -10 2500e1+500 6d6+5
 0 800000
 8 8 1
 #2330
@@ -376,7 +376,7 @@ Nasturn is quite a natural looking minotaur. He is dressed in leather and
 wears no metal of any type. He looks at you and smiles.
 ~
 2 136 500 S
-30 -9 -10 2500d1+500 6d6+5
+30 -9 -10 2500e1+500 6d6+5
 0 800000
 8 8 1
 #2331
@@ -388,7 +388,7 @@ Belrak is clad in green and brown leather. He looks quite agile and thin, when
 compared to the normal minotaur. He looks at you with a slight smirk.
 ~
 34 136 500 S
-30 -9 -10 2500d1+500 6d6+5
+30 -9 -10 2500e1+500 6d6+5
 0 800000
 8 8 1
 #2332
@@ -400,7 +400,7 @@ Dorgar is clad all in black. He is tall and slender, unlike most minotaurs. He
 appears to be quite a skilled thief.
 ~
 38 65536 -500 S
-30 -9 -10 2500d1+500 6d6+5
+30 -9 -10 2500e1+500 6d6+5
 0 800000
 8 8 1
 #2333
@@ -413,7 +413,7 @@ armor and robes. He wields the largest axe you have ever seen. You can see why
 Mahn-Tor is the leader of the minotaurs. He is awe-inspiring.
 ~
 6 1573002 -500 S
-33 -10 -10 3000d1+500 6d7+5
+33 -10 -10 3000b1+500 6d7+5
 0 900000
 8 8 1
 #0

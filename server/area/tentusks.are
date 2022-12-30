@@ -233,6 +233,7 @@ patrolling its waters and chasing off intruders.  He leers at you evilly.
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #25417
 smoke demon~
 a smoke demon~
@@ -292,6 +293,7 @@ The sleek white dragon curls like a snake through the air.
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< reserved~ rare~
 #25422
 weathermonger weather monger~
 the Weathermonger~
@@ -489,6 +491,7 @@ Clad in pale white robes, the High Druid conducts some obscene pagan rite.
 41 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ rare~
 #25438
 druid berserker~
 a druid berserker~
@@ -599,6 +602,7 @@ thick ram's horns curling from the sides of his head.
         kick
 ~
 |
+< reserved~ rare~
 #25446
 three tusks~
 Three Tusks~
@@ -615,6 +619,7 @@ you and roaring terribly.
         head
 ~
 |
+< reserved~ elite~
 #25447
 four tusks~
 Four Tusks~
@@ -643,6 +648,7 @@ presence fills you with complete terror.
         berserk
 ~
 |
+< reserved~ boss~
 #25448
 water elemental~
 a water elemental~

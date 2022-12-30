@@ -180,7 +180,7 @@ The guard is huge!  He is pure muscle, and is wearing the most exquisite
 armour you have ever seen.
 ~
 64 4|512 -1000 S
-55 2 0 50d10+7000 10d4+23
+55 2 0 50e10+7000 10d4+23
 0 0
 8 8 0
 #20315
@@ -263,7 +263,7 @@ The deformity looks as though it used to be a human, but now it's body
 has been ravaged by some evil thing.
 ~
 2|64 4|512 -1000 S
-56 3 0 50d10+7500 10d4+24
+56 3 0 50r10+7500 10d4+24
 0 0
 8 8 0
 #20322
@@ -276,7 +276,7 @@ have ever encountered.  His muscles look like steel, his body like concrete,
 and he has the stern look of a mighty king on his face.
 ~
 2|64 4|512 -1000 S
-60 10 0 50d10+9500 8d6+28
+60 10 0 50b10+9500 8d6+28
 0 0
 8 8 1
 #20323
@@ -288,7 +288,7 @@ The Queen of the goblins is almost beautiful!  If it wasn't for her
 distinct goblin features, you might have thought she is beautiful.
 ~
 2|64 4|512 -1000 S
-60 10 0 50d10+9500 8d6+28
+60 10 0 50r10+9500 8d6+28
 0 0
 8 8 2
 #20324
@@ -361,7 +361,7 @@ human to offer his services to the goblin kingdom.  He is about six feet
 tall, and looks to be pure muscle, perhaps weighing three hundred pounds.
 ~
 2 8|32 -1000 S
-58 5 0 50d10+8000 6d8+24
+58 5 0 50r10+8000 6d8+24
 0 0
 8 8 1
 #20330

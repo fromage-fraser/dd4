@@ -39,7 +39,7 @@ bool    check_acrobatics     args((CHAR_DATA *ch, CHAR_DATA *victim));
 bool    check_aura_of_fear   args((CHAR_DATA *ch, CHAR_DATA *victim));
 void    check_killer         args((CHAR_DATA *ch, CHAR_DATA *victim));
 bool    check_parry          args((CHAR_DATA *ch, CHAR_DATA *victim));
-void    dam_message          args((CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison));
+void    dam_message          args((CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison, bool crit));
 bool    check_shield_block   args((CHAR_DATA *ch, CHAR_DATA *victim));
 void    death_cry            args((CHAR_DATA *ch));
 void    group_gain           args((CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called));
@@ -391,6 +391,10 @@ void violence_update (void)
 void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 {
         int chance;
+        
+
+        if (!IS_NPC(ch))
+                ch->pcdata->rounds++;
 
 /*
  * These 2 functions are at the top, as Im about to put a check for dazed things
@@ -470,7 +474,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         /*
          * One attack (Even if Prone, everythign else is 50% less likely.)
          */
-        one_hit(ch, victim, dt);
+        one_hit(ch, victim, dt, FALSE);
 
         /*
          * Double backstab
@@ -493,7 +497,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                         chance /= 2;
 
                 if (number_percent() < chance)
-                        one_hit(ch, victim, dt);
+                        one_hit(ch, victim, dt, FALSE);
 
                 return;
         }
@@ -526,7 +530,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 
                         if (number_percent() < chance)
                         {
-                                one_hit(ch, victim, dt);
+                                one_hit(ch, victim, dt, FALSE);
 
                                 if (ch->fighting != victim)
                                         return;
@@ -537,10 +541,13 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         }
 
         /*
-         * Haste
+         * Haste Spell & Haste
          */
         if ((is_affected(ch, gsn_haste)) && !IS_AFFECTED(ch, AFF_PRONE))
-                one_hit(ch, victim, dt);
+                one_hit(ch, victim, dt, FALSE);
+        
+        if ( number_percent() < ch->swiftness)
+                one_hit(ch, victim, dt, TRUE);
 
         /* for counterbalance - adds another attack.*/
 
@@ -557,7 +564,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                         if ( paf->location == APPLY_BALANCE )
                         {
                                 if (number_percent() < paf->modifier)
-                                        one_hit(ch, victim, gsn_counterbalance);
+                                        one_hit(ch, victim, gsn_counterbalance, FALSE);
                         }
                 }
         }
@@ -574,9 +581,9 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
             || ch->form == FORM_GRIFFIN)
         {
                 if ((IS_AFFECTED(ch, AFF_PRONE)) && (number_percent() < 50) )
-                        one_hit(ch,victim,dt);
+                        one_hit(ch,victim,dt, FALSE);
                 else
-                        one_hit(ch,victim,dt);
+                        one_hit(ch,victim,dt, FALSE);
         }
 
         if (ch->form == FORM_HYDRA
@@ -584,9 +591,9 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
             || ch->form == FORM_GRIFFIN)
         {
                 if ((IS_AFFECTED(ch, AFF_PRONE)) && (number_percent() < 50) )
-                        one_hit(ch,victim,dt);
+                        one_hit(ch,victim,dt, FALSE);
                 else
-                        one_hit(ch,victim,dt);
+                        one_hit(ch,victim,dt, FALSE);
         }
 
         /*
@@ -603,7 +610,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 
         if (number_percent() < chance)
         {
-                one_hit(ch, victim, dt);
+                one_hit(ch, victim, dt, FALSE);
 
                 if (ch->fighting != victim)
                         return;
@@ -626,7 +633,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         /* If your PRONE, dont get this attack */
         if ((number_percent() < chance) && (!IS_AFFECTED(ch, AFF_PRONE)))
         {
-                one_hit(ch, victim, dt);
+                one_hit(ch, victim, dt, FALSE);
 
                 if (ch->fighting != victim)
                         return;
@@ -648,7 +655,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 
         /* If your PRONE, dont get this attack */
        if ((number_percent() < chance) && (!IS_AFFECTED(ch, AFF_PRONE)))        {
-                one_hit(ch, victim, dt);
+                one_hit(ch, victim, dt, FALSE);
 
                 if (ch->fighting != victim)
                         return;
@@ -671,7 +678,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         }
 
         if (number_percent() < chance)
-                one_hit(ch, victim, dt);
+                one_hit(ch, victim, dt, FALSE);
 
         return;
 }
@@ -680,7 +687,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 /*
  *  Attack with primary and/or secondary weapon.
  */
-bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
+bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
 {
         OBJ_DATA *wield;
         char      buf [ MAX_STRING_LENGTH ];
@@ -710,6 +717,8 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 if (ch->position == POS_DEAD)
                         break;
 
+                if (haste)
+                        send_to_char("{W*SWIFT ATTACK*{x ", ch);
                 /*
                  * Check for secondary attack
                  */
@@ -1174,10 +1183,14 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
         int no_defense = 0;
         OBJ_DATA *turret_unit;
         int reflected_dam = 0;
+        bool crit = FALSE;
 
 
         if (victim->position == POS_DEAD)
                 return;
+
+        if (!IS_NPC(ch))
+                ch->pcdata->dam_per_fight += dam;
 
         /*
          *  Damage inflicted to other
@@ -1266,6 +1279,12 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 if (IS_AFFECTED(victim, AFF_SANCTUARY))
                         dam /= 2;
 
+                if ( number_percent() < ch->crit)
+                {
+                        dam *= 2;
+                        crit = TRUE;
+                }
+                        
                 /* this is to support strengthen, but could be applied for other things - Brutus */
                 if (!IS_NPC(victim))
                 {
@@ -1380,7 +1399,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                                                 act ("While recovering from your attack, $N makes a quick strike.",
                                                      ch, NULL, victim, TO_CHAR);
 
-                                                one_hit (victim, ch, gsn_risposte);
+                                                one_hit (victim, ch, gsn_risposte, FALSE);
                                         }
 
                                         return;
@@ -1429,12 +1448,12 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
         }
 */
         if (dt != TYPE_UNDEFINED)
-                dam_message(ch, victim, dam, dt, poison);
+                dam_message(ch, victim, dam, dt, poison, crit);
 
         /* Reflector Unit (Smithy) */
         if ( (turret_unit) && (reflected_dam > 0) && (IS_SPELL(dt)) && (ch != victim) && (!IS_NPC(victim)))
         {
-                dam_message(victim, ch, reflected_dam, gsn_reflector_module, FALSE);
+                dam_message(victim, ch, reflected_dam, gsn_reflector_module, FALSE, FALSE);
                 ch->hit -= reflected_dam;
 
                 if (IS_NPC(ch) && IS_SET(ch->act, ACT_UNKILLABLE) && ch->hit < 1)
@@ -1461,7 +1480,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 if (is_affected(ch, gsn_resist_heat))
                         firedam *= 0.8;
 
-                dam_message(victim, ch, firedam, gsn_fireshield, FALSE);
+                dam_message(victim, ch, firedam, gsn_fireshield, FALSE, FALSE);
                 ch->hit -= firedam;
 
                 if (IS_NPC(ch) && IS_SET(ch->act, ACT_UNKILLABLE) && ch->hit < 1)
@@ -2500,6 +2519,12 @@ void stop_fighting (CHAR_DATA *ch, bool fBoth)
 {
         CHAR_DATA *fch;
 
+        if (!IS_NPC(ch))
+        {
+                ch->pcdata->rounds = 0;
+                ch->pcdata->dam_per_fight = 0;
+        }
+
         for (fch = char_list; fch; fch = fch->next)
         {
                 if (fch == ch || (fBoth && fch->fighting == ch))
@@ -2559,7 +2584,7 @@ void make_corpse (CHAR_DATA *ch)
                  * don't make corpses: all eq falls to the ground.  Gezhp 99.
                  */
 
-                corpse = create_object(get_obj_index( OBJ_VNUM_CORPSE_NPC), 0);
+                corpse = create_object(get_obj_index( OBJ_VNUM_CORPSE_NPC), 0, 1, FALSE);
                 corpse->timer = number_range(10, 20);
                 name = ch->short_descr;
                 corpse->level = ch->level;
@@ -2581,7 +2606,7 @@ void make_corpse (CHAR_DATA *ch)
         else
         {
                 name            = ch->name;
-                corpse          = create_object(get_obj_index(OBJ_VNUM_CORPSE_PC), 0);
+                corpse          = create_object(get_obj_index(OBJ_VNUM_CORPSE_PC), 0, 1, FALSE);
                 corpse->timer   = number_range(90, 100);
 
                 free_string(corpse->name);
@@ -2743,7 +2768,7 @@ void death_cry (CHAR_DATA *ch)
                 char      buf[MAX_STRING_LENGTH];
 
                 name = IS_NPC(ch) ? ch->short_descr : ch->name;
-                obj = create_object(get_obj_index(body_part_vnum), 0);
+                obj = create_object(get_obj_index(body_part_vnum), 0, 1, FALSE);
                 obj->timer = number_range(4, 7);
                 obj->timermax = obj->timer;
 
@@ -2941,6 +2966,20 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called)
 
                 level_dif = victim->level - gch->level;
                 fame = 0;
+                /* print out damage per round - Brutus*/
+                sprintf(buf, "Damage Per Round (DPR): %s", get_dpr(ch->pcdata->dam_per_fight/ch->pcdata->rounds));
+                send_to_char(buf, gch);
+                if (ch->level > 50)
+                {
+                sprintf(buf, "%d\n\r", ch->pcdata->dam_per_fight/ch->pcdata->rounds);
+                send_to_char(buf, gch);      
+                }
+                else {
+                sprintf(buf, "\n\r");
+                send_to_char(buf, gch);        
+                }
+                ch->pcdata->rounds = 0;
+                ch->pcdata->dam_per_fight = 0;
 
                 if (level_dif > -6 && gch->pcdata->dam_bonus)
                 {
@@ -3212,7 +3251,7 @@ int xp_compute (CHAR_DATA *gch, CHAR_DATA *victim)
 
 
 
-void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
+void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison, bool crit)
 {
         static char * const attack_table [] =
         {
@@ -3244,12 +3283,19 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
         char          buf3         [ 256 ];
         char          buf4         [ 256 ];
         char          buf5         [ 256 ];
+        char          buf9         [ 256 ];
         char          punct;
 
         vs = get_damage_string(dam, TRUE);
         vp = get_damage_string(dam, FALSE);
 
         punct = (dam <= 24) ? '.' : '!';
+
+        if ((crit) && (dam > 0))
+                sprintf(buf9, " {W*CRITICAL HIT*{x");
+        else {
+                *buf9 = '\0';  
+        }
 
         if (dt == TYPE_HIT)
         {
@@ -3272,6 +3318,8 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                        *buf1 = '\0';
                 }
 
+                strcat( buf1, buf9 );
+                
                 /*
                  * Shade 10.5.2022 - make you getting hit stand out more, help when a lot of room spam
                  */
@@ -3324,18 +3372,24 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                 else
                 {
                         sprintf(buf1, "Your %s %s $N%c",  attack, vp, punct);
-
+                        strcat( buf1, buf9 );
+                        
                         if (dam > 0)
                         {
                                 sprintf(buf2, "$c's %s %s you%c", attack, vp, punct);
+                                                strcat( buf2, buf9 );
                         }
                         else
                         {
                                 sprintf(buf2, "$c's %s %s you%c", attack, vp, punct);
+                                                strcat( buf2, buf9 );
                         }
                         sprintf(buf3, "$c's %s %s $N%c",  attack, vp, punct);
                         sprintf(buf4, "Your %s %s you%c", attack, vp, punct);
                         sprintf(buf5, "$c's %s %s $n%c",  attack, vp, punct);
+                        strcat( buf3, buf9 );
+                        strcat( buf4, buf9 );
+                        strcat( buf5, buf9 );
                 }
         }
 
@@ -3686,13 +3740,13 @@ void do_circle (CHAR_DATA *ch, char *argument)
                 arena_commentary("$n circles and backstabs $N.", ch, victim);
 
                 WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
-                one_hit(ch, victim, gsn_circle);
+                one_hit(ch, victim, gsn_circle, FALSE);
 
                 if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
                         return;
 
                 if (number_percent () < ch->pcdata->learned[gsn_second_circle])
-                        one_hit(ch, victim, gsn_second_circle);
+                        one_hit(ch, victim, gsn_second_circle, FALSE);
         }
         else
                 damage (ch, victim, 0, gsn_circle, FALSE);
@@ -3856,7 +3910,7 @@ void do_dive (CHAR_DATA *ch, char *argument)
         {
                 arena_commentary("$n dives on $N.", ch, victim);
                 victim->backstab = 5;
-                one_hit(ch, victim, gsn_dive);
+                one_hit(ch, victim, gsn_dive, FALSE);
         }
         else
                 damage(ch, victim, 0, gsn_dive, FALSE);
@@ -4239,7 +4293,7 @@ void do_joust (CHAR_DATA *ch, char *argument)
         {
                 arena_commentary("$n hits $N with a joust.", ch, victim);
                 victim->backstab = 5;
-                one_hit(ch, victim, gsn_joust);
+                one_hit(ch, victim, gsn_joust, FALSE);
         }
         else
                 damage(ch, victim, 0, gsn_joust, FALSE);
@@ -5633,7 +5687,7 @@ void do_decapitate (CHAR_DATA *ch, char *argument)
                         char      buf [ MAX_STRING_LENGTH ];
 
                         name = IS_NPC(victim) ? victim->short_descr : victim->name;
-                        obj = create_object(get_obj_index(vnum), 0);
+                        obj = create_object(get_obj_index(vnum), 0, 1, FALSE);
                         obj->timer = number_range(4, 7);
                         obj->timermax = obj->timer;
 
@@ -6269,7 +6323,7 @@ void do_flying_headbutt (CHAR_DATA *ch, char *argument)
                 if (!ch->fighting)
                     return;
 
-                one_hit(ch, victim, gsn_grapple); /* grapple so that msg is extra attack not flying headbutt */
+                one_hit(ch, victim, gsn_grapple, FALSE); /* grapple so that msg is extra attack not flying headbutt */
         }
         else
         {
@@ -6531,13 +6585,13 @@ void do_swoop (CHAR_DATA *ch, char *argument)
                 arena_commentary("$n swoops at $N in their phoenix form!", ch, victim);
 
                 WAIT_STATE(ch, 1.5 * PULSE_VIOLENCE);
-                one_hit(ch,victim,gsn_swoop);
+                one_hit(ch,victim,gsn_swoop, FALSE);
 
                 if (number_percent () < ( ch->pcdata->learned[gsn_swoop] / 3))
                 {
                         send_to_char("{WYou circle back to swoop your opponent a second time!{x\n\r", ch);
                         act ("$c attacks $N a second time with $s flaming wings!", ch, NULL, victim, TO_ROOM);
-                        one_hit(ch,victim,gsn_swoop);
+                        one_hit(ch,victim,gsn_swoop, FALSE);
                 }
 
                 if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
@@ -6611,7 +6665,7 @@ void do_whirlwind (CHAR_DATA *ch, char *argument)
 
                 act ("You attack $N in a frenzy of bloodlust!", ch, NULL, vch, TO_CHAR);
                 WAIT_STATE(ch, skill_table[gsn_whirlwind].beats);
-                one_hit(ch, vch, gsn_whirlwind);
+                one_hit(ch, vch, gsn_whirlwind, FALSE);
         }
 }
 
@@ -6850,7 +6904,7 @@ void do_shoot (CHAR_DATA *ch, char *argument)
 
                 for (i = 0; i < num; i++)
                 {
-                        one_hit(ch, victim, gsn_shoot);
+                        one_hit(ch, victim, gsn_shoot, FALSE);
 
                         if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
                                 break;
@@ -6929,7 +6983,7 @@ void do_snap_shot (CHAR_DATA *ch, char *argument)
         if (number_percent () < 50 + (ch->pcdata->learned[gsn_snap_shot] / 2))
         {
                 arena_commentary("$n shoots a quick snap shot at $N.", ch, victim);
-                one_hit(ch, victim, gsn_snap_shot);
+                one_hit(ch, victim, gsn_snap_shot, FALSE);
         }
         else
         {
@@ -7008,7 +7062,7 @@ void do_thrust (CHAR_DATA *ch, char *argument)
                 arena_commentary("$n thrusts a blade into $N.", ch, victim);
 
                 WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
-                one_hit(ch,victim,gsn_thrust);
+                one_hit(ch,victim,gsn_thrust, FALSE);
 
                 if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
                         return;
@@ -7576,6 +7630,8 @@ void reset_char_stats (CHAR_DATA *ch)
         ch->saving_throw = 0;
         ch->carry_weight = 0;
         ch->carry_number = 0;
+        ch->crit         = 5;
+        ch->swiftness    = 5;
         ch->pcdata->mod_str = 0;
         ch->pcdata->mod_int = 0;
         ch->pcdata->mod_wis = 0;
@@ -7858,6 +7914,36 @@ char *get_damage_string( int damage_value, bool is_singular )
         else {
                 return vp;
         }
+}
+
+
+char *get_dpr( int dam ) {
+  int i;
+  for (i = 0; i < MAX_DPR; i++) {
+    if (dam < dprs[i].dam ) {
+        return dprs[i].dpr_verb;
+        }
+  }
+    return "nothing";
+
+   /*   if (i > 0) {
+        *prev_dpr = dprs[i - 1].dpr_verb;
+      } else {
+        *prev_dpr = "nothing";
+      }
+      *current_dpr = records[i].dpr_verb;
+      if (i < MAX_DPR - 1) {
+        *next_dpr = records[i + 1].dpr_verb;
+      } else {
+        *next_dpr = "nothing";
+      }
+      return;
+    }
+  }
+  *prev_dpr = "nothing";
+  *current_dpr = "nothing";
+  *next_dpr = "nothing";
+  */
 }
 
 

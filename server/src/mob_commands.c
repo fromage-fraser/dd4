@@ -488,7 +488,7 @@ void do_mpoload( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    obj = create_object( pObjIndex, level );
+    obj = create_object( pObjIndex, level, 1, FALSE );
     if (IS_SET(obj->wear_flags, ITEM_TAKE) )
     {
         obj_to_char( obj, ch );

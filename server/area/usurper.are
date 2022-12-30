@@ -35,6 +35,7 @@ The captain of the guard is dressed up for something important.
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ rare~
 #29803
 merchant~
 the merchant~
@@ -466,6 +467,7 @@ say Yeah baby, you know quality when you see it
 emote stretches out on the bed and beckons $n.
 ~
 |
+< reserved~ elite~
 #29835
 Rutger warplanner~
 Rutger~
@@ -582,6 +584,7 @@ drum nervously on the arms of his throne.
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ boss~
 #29843
 guard~
 the gate guard~

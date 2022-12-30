@@ -115,6 +115,31 @@ const struct class_type class_table [ MAX_CLASS ] =
 
 };
 
+const struct dpr dprs [ MAX_DPR ] =
+{
+        /* description, minimum dpr*/
+        { "<0><241>Trifling<0>",             10     },
+        { "<0><242>Inconsequential<0>",      20},
+        { "<0><243>Paltry<0>",               30},
+        { "<0><244>Meager<0>",               50},
+        { "<0><245>Light<0>",                75},
+        { "<0><246>Moderate<0>",             100},
+        { "<0><247>Heavy<0>",                150},
+        { "<0><248>Serious<0>",              300},
+        { "<0><249>Critical<0>",             500},
+        { "<0><251>GRIEVOUS<0>",             750},
+        { "<0><253>DISASTEROUS<0>",          1000},
+        { "<0><255>* DEMOLISHING *<0>",      1250},
+        { "<0><255>** ANNIHILATING **<0>",   1500},
+        { "<0><124>-<**<160><558>CRUSHING<0><0><124>**-<0>",     2000},
+        { "<0><88>-+*>>##<558>Destructive<559><0><88>##<<<<*+-<0>",          3000},
+        { "<0><52>-+*###<88><558>Devastating<559><0><52>###*+-<0>",          4000},
+        { "<0><52>-=*<<|<556>[Wrecking<52>]<557>|>*=-<0>",             5000},
+        { "<0><52>--=<<#[|<556><460><52>Pulverizing<0><52>|]#>=--<0>",          7500},
+        { "<0><52>-=+*<<(|[ <556><388><196>Decimating<0><52> ]|)>*+=-<0>",           10000},       
+        { "<0><52>-+<<<<[[ <556><352><196>O B L I T E R A T I N G<0><52> ]]>>+-<0>",          20000}
+};
+
 
 /*
  *  SUB_CLASS TABLE - Brutus
@@ -191,9 +216,29 @@ const struct imbue_types imbue_list [ MAX_IMBUE ] =
         { "to_str", "More damage", APPLY_STR, 1 },
         { "to_dex", "More damage", APPLY_DEX, 1 },
         { "to_damage", "More damage", APPLY_DAMROLL, 8 },
-        { "to_ac", "More damage", APPLY_AC, -18 },
+        { "to_ac", "More damage", APPLY_AC, -22 },
+        { "to_crit", "Crit damage", APPLY_CRIT, 1},
+        { "to_swiftness", "Swiftness Gain", APPLY_SWIFTNESS, 1},
 };
 
+const struct random_types random_list [ MAX_RANDOMS ] =
+{
+        { APPLY_DAMROLL, SCORE_HIT_DAM},
+        { APPLY_HITROLL, SCORE_HIT_DAM},
+        { APPLY_AC, 22},
+        { APPLY_STR, SCORE_STATS},
+        { APPLY_DEX, SCORE_STATS},
+        { APPLY_WIS, SCORE_STATS },
+        { APPLY_CON, SCORE_STATS },
+        { APPLY_CRIT, SCORE_STATS },
+        { APPLY_MANA, SCORE_HP_MANA},
+        { APPLY_HIT, SCORE_HP_MANA},
+        { APPLY_RESIST_ACID, SCORE_RESISTS},
+        { APPLY_RESIST_LIGHTNING, SCORE_RESISTS},
+        { APPLY_RESIST_HEAT, SCORE_RESISTS},
+        { APPLY_RESIST_COLD, SCORE_RESISTS},
+        { APPLY_SWIFTNESS, SCORE_STATS},
+};
 
 const struct HERB herb_table [ MAX_HERBS ] =
 {
@@ -2537,21 +2582,21 @@ const struct skill_type skill_table [MAX_SKILL] =
          */
         {
                 "reserved", NULL,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 0, 0, 0,
                 "", ""
         },
 
         {
                 "acid blast", &gsn_acid_blast,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 128|16384,
                 spell_acid_blast, 20, 12,
                 "<28>a<106>c<178>i<229>d <15>b<229>l<178>a<106>s<28>t<0>", "!Acid Blast!"
         },
 
         {
                 "inner fire", &gsn_inner_fire,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 1|16384,
                 spell_inner_fire, 20, 12,
                 "<124>i<196>n<11>n<229>e<15>r <229>f<11>i<196>r<124>e<0>", "!Inner Fire!"
 
@@ -2559,70 +2604,70 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                  "synaptic blast", &gsn_synaptic_blast,
-                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384|65536,
                  spell_synaptic_blast, 30, 12,
                  "<12>s<27>y<14>n<123>a<159>p<195>t<231>i<195>c <159>b<123>l<14>a<27>s<12>t<0>", "!Synaptic Blast!"
         },
 
         {
                 "prismatic spray", &gsn_prismatic_spray,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 8|16384,
                 spell_prismatic_spray, 25, 12,
                 "<196>p<160>r<124>i<226>s<154>m<10>a<118>t<51>i<87>c <21>s<20>p<201>r<165>a<129>y<0>", "!Prismatic Spray!"
         },
 
         {
                 "holy word", &gsn_holy_word,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384|131072,
                 spell_holy_word, 20, 12,
                 "<556><196>+*(<15>holy word<196>)*+<557>", "!Holy Word!"
         },
 
         {
                 "unholy word", &gsn_unholy_word,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 512|262144,
                 spell_unholy_word, 20, 12,
                 "<556><55>un<56>ho<57>ly <56>wo<55>rd<0>", "!Unholy Word!"
         },
 
         {
                 "armor", &gsn_armor,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_armor, 5, 12,
                 "", "Your magical armour dissipates."
         },
 
         {
                 "astral vortex", &gsn_astral_vortex,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_astral_vortex, 200, 24,
                 "", "!Astral Vortex!"
         },
 
         {
                 "portal", 0,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 400, 24,
                 "", "!Portal!"
         },
 
         {
                 "pattern", &gsn_pattern,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!Pattern!"
         },
 
         {
                 "bless", &gsn_bless,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_bless, 5, 12,
                 "", "You feel less righteous."
         },
 
         {
                 "blindness", &gsn_blindness,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_blindness, 5, 12,
                 "spell", "You can see again."
         },
@@ -2630,953 +2675,953 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "burning hands", &gsn_burning_hands,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 1|16384,
                 spell_burning_hands, 15, 12,
                 "<196>bu<202>r<208>n<202>i<196>ng<0> hand", "!Burning Hands!"
         },
 
         {
                 "call lightning", &gsn_call_lightning,
-                TYPE_INT, TAR_IGNORE, POS_FIGHTING,
+                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 4|16384,
                 spell_call_lightning, 15, 12,
                 "<27>l<123>i<51>g<15>h<51>t<15>nin<51>g <15>b<51>o<123>l<27>t<0>", "!Call Lightning!"
         },
 
         {
                 "cause critical", &gsn_cause_critical,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384|131072,
                 spell_cause_critical, 20, 12,
                 "spell", "!Cause Critical!"
         },
 
         {
                 "cause light", &gsn_cause_light,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384|131072,
                 spell_cause_light, 15, 12,
                 "spell", "!Cause Light!"
         },
 
         {
                 "cause serious", &gsn_cause_serious,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384|131072,
                 spell_cause_serious, 17, 12,
                 "spell", "!Cause Serious!"
         },
 
         {
                 "change sex", &gsn_change_sex,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, 16384,
                 spell_change_sex, 15, 12,
                 "", "Your body feels familiar again."
         },
 
         {
                 "chain lightning", &gsn_chain_lightning,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 4|16384,
                 spell_chain_lightning, 15, 24,
                 "<27>l<123>i<51>g<15>h<51>t<15>nin<51>g <15>b<51>o<123>l<27>t<0>", "!Chain Lightning!"
         },
 
         {
                 "charm person", &gsn_charm_person,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, 2048|16384,
                 spell_charm_person, 5, 12,
                 "attempted charm", "You feel more self-confident."
         },
 
         {
                 "chill touch", &gsn_chill_touch,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 2|16384,
                 spell_chill_touch, 10, 12,
                 "<27>c<32>h<14>i<87>l<123>l<159>i<15>n<159>g <123>t<87>o<14>u<32>c<27>h<0>", "You feel less cold."
         },
 
         {
                 "colour spray", &gsn_colour_spray,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 8|16384,
                 spell_colour_spray, 15, 12,
                 "<198>c<201>o<12>l<33>o<14>u<49>r <34>s<106>p<11>r<202>a<196>y<0>", "!Colour Spray!"
         },
 
         {
                 "continual light", &gsn_continual_light,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 131072,
                 spell_continual_light, 7, 12,
                 "", "!Continual Light!"
         },
 
         {
                 "control weather", &gsn_control_weather,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_control_weather, 25, 12,
                 "", "!Control Weather!"
         },
 
         {
                 "create food", &gsn_create_food,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_create_food, 5, 12,
                 "", "!Create Food!"
         },
 
         {
                 "create spring", &gsn_create_spring,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_create_spring, 20, 12,
                 "", "!Create Spring!"
         },
 
         {
                 "create water", &gsn_create_water,
-                TYPE_INT, TAR_OBJ_INV, POS_STANDING,
+                TYPE_INT, TAR_OBJ_INV, POS_STANDING, 16384,
                 spell_create_water, 5, 12,
                 "", "!Create Water!"
         },
 
         {
                 "cure blindness", &gsn_cure_blindness,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, 16384|131072,
                 spell_cure_blindness, 5, 12,
                 "", "!Cure Blindness!"
         },
 
         {
                 "cure critical", &gsn_cure_critical,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, 16384|131072,
                 spell_cure_critical, 20, 12,
                 "", "!Cure Critical!"
         },
 
         {
                 "cure light", &gsn_cure_light,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, 16384|131072,
                 spell_cure_light, 10, 12,
                 "", "!Cure Light!"
         },
 
         {
                 "cure poison", &gsn_cure_poison,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384|131072,
                 spell_cure_poison, 5, 12,
                 "", "!Cure Poison!"
         },
 
         {
                 "cure serious", &gsn_cure_serious,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, 16384|131072,
                 spell_cure_serious, 15, 12,
                 "", "!Cure Serious!"
         },
 
         {
                 "curse", &gsn_curse,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 524288,
                 spell_curse, 20, 12,
                 "<199>c<200>u<201>r<200>s<199>e<0>", "The curse wears off."
         },
 
         {
                 "detect good", &gsn_detect_good,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384|131072,
                 spell_detect_good, 5, 12,
                 "", "<228>The yellow in your vision disappears.<0>"
         },
 
         {
                 "detect evil", &gsn_detect_evil,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384|131072,
                 spell_detect_evil, 5, 12,
                 "", "<124>The red in your vision disappears.<0>"
         },
 
         {
                 "detect hidden", &gsn_detect_hidden,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_detect_hidden, 5, 12,
                 "", "You feel less aware of your surroundings."
         },
 
         {
                 "detect invis", &gsn_detect_invis,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_detect_invis, 5, 12,
                 "", "You no longer see invisible objects."
         },
 
         {
                 "detect sneak", &gsn_detect_sneak,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_detect_sneak, 5, 20,
                 "", "You feel less observant."
         },
 
         {
                 "detect magic", &gsn_detect_magic,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_detect_magic, 5, 12,
                 "", "<27>The blue in your vision disappears.<0>"
         },
 
         {
                 "detect poison", &gsn_detect_poison,
-                TYPE_INT, TAR_OBJ_INV, POS_STANDING,
+                TYPE_INT, TAR_OBJ_INV, POS_STANDING, 16384,
                 spell_detect_poison, 5, 12,
                 "", "!Detect Poison!"
         },
 
         {
                 "dispel evil", &gsn_dispel_evil,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384|131072,
                 spell_dispel_evil, 15, 12,
                 "dispel evil", "!Dispel Evil!"
         },
 
         {
                 "dispel magic", &gsn_dispel_magic,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, 16384,
                 spell_dispel_magic, 15, 16,
                 "", "!Dispel Magic!"
         },
 
         {
                 "earthquake", &gsn_earthquake,
-                TYPE_INT, TAR_IGNORE, POS_FIGHTING,
+                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 16384,
                 spell_earthquake, 15, 12,
                 "earthquake", "!Earthquake!"
         },
 
         {
                 "enchant weapon", &gsn_enchant_weapon,
-                TYPE_INT, TAR_OBJ_INV, POS_STANDING,
+                TYPE_INT, TAR_OBJ_INV, POS_STANDING, 16384,
                 spell_enchant_weapon, 100, 24,
                 "", "!Enchant Weapon!"
         },
 
         {
                 "energy drain", &gsn_energy_drain,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 8|16384,
                 spell_energy_drain, 35, 12,
                 "<20>e<21>n<14>e<11>r<229>g<15>y <229>d<11>r<14>a<21>i<20>n<0>", "!Energy Drain!"
         },
 
         {
                 "entrapment", &gsn_entrapment,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, 4096|16384,
                 spell_entrapment, 100, 12,
                 "entrapment", "You break free from the stasis field."
         },
 
         {
                 "faerie fire", &gsn_faerie_fire,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 16384,
                 spell_faerie_fire, 5, 12,
                 "<54>f<90>a<126>e<162>r<198>ie <162>f<126>i<90>r<54>e<0>","The pink aura around you fades away."
         },
 
         {
                 "faerie fog", &gsn_faerie_fog,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_faerie_fog, 12, 12,
                 "faerie fog", "!Faerie Fog!"
         },
 
         {
                 "fireball", &gsn_fireball,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 1|16384,
                 spell_fireball, 15, 12,
                 "<556><196>fi<11>r<15>e<11>b<15>a<196>ll<0>", "!Fireball!"
         },
 
         {
                 "fireshield", &gsn_fireshield,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 1|16384,
                 spell_fireshield, 75, 18,
                 "<196>fi<202>r<11>e<15>sh<11>i<202>e<196>ld<0>", "<88>The flames around your body fizzle out.<0>"
         },
 
         {
                 "flamestrike", &gsn_flamestrike,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 1|16384,
                 spell_flamestrike, 20, 12,
                 "<196>fl<202>a<11>me<15>s<11>tr<202>i<196>ke<0>", "!Flamestrike!"
         },
 
         {
                 "fly", &gsn_fly,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_fly, 10, 18,
                 "", "You feel the pull of gravity slowly return."
         },
 
         {
-                "__EMPTY__", 0, 0, 0, 0, NULL, 0, 0, "", ""
+                "__EMPTY__", 0, 0, 0, 0, 0, NULL, 0, 0, "", ""
         },
 
         {
-                "__EMPTY__", 0, 0, 0, 0, NULL, 0, 0, "", ""
+                "__EMPTY__", 0, 0, 0, 0, 0, NULL, 0, 0, "", ""
         },
 
         {
                 "gate", &gsn_gate,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, 16384,
                 spell_gate, 50, 12,
                 "", "!Gate!"
         },
 
         {
                 "giant strength", &gsn_giant_strength,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_giant_strength, 20, 12,
                 "", "You feel weaker."
         },
 
         {
                 "harm", &gsn_harm,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384|131072,
                 spell_harm, 35, 12,
                 "harm spell", "!Harm!"
         },
 
         {
                 "haste", &gsn_haste,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_haste, 300, 12,
                 "", "You slow down."
         },
 
         {
                 "heal", &gsn_heal,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, 16384|131072,
                 spell_heal, 50, 12,
                 "", "!Heal!"
         },
 
         {
                 "knock", &gsn_knock,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_knock, 50, 12,
                 "", "!Knock!"
         },
 
         {
                 "power heal", &gsn_power_heal,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, 16384|131072,
                 spell_power_heal, 75, 24,
                 "", "!Power Heal!"
         },
 
         {
                 "identify", &gsn_identify,
-                TYPE_INT, TAR_OBJ_INV, POS_STANDING,
+                TYPE_INT, TAR_OBJ_INV, POS_STANDING, 16384,
                 spell_identify, 12, 12,
                 "", "!Identify!"
         },
 
         {
                 "infravision", &gsn_infravision,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_infravision, 5, 18,
                 "", "You no longer see in the dark."
         },
 
         {
                 "intimidate", &gsn_intimidate,
-                TYPE_STR, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_STR, TAR_CHAR_SELF, POS_STANDING, 0,
                 spell_null, 0, 0,
                 "", "You no longer feel invincible."
         },
 
         {
                 "extort", &gsn_extort,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 0,
                 "", "!Extort!"
         },
 
         {
                 "invis", &gsn_invis,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_invis, 5, 12,
                 "", "You are no longer invisible."
         },
 
         {
                 "know alignment", &gsn_know_alignment,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, 16384,
                 spell_know_alignment, 9, 12,
                 "", "!Know Alignment!"
         },
 
         {
                 "lightning bolt", &gsn_lightning_bolt,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 4|16384,
                 spell_lightning_bolt, 15, 12,
                 "<27>l<123>i<51>g<15>h<51>t<15>nin<51>g <15>b<51>o<123>l<27>t<0>", "!Lightning Bolt!"
         },
 
         {
                 "locate object", &gsn_locate_object,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_locate_object, 20, 18,
                 "", "!Locate Object!"
         },
 
         {
                 "magic missile", &gsn_magic_missile,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 8|16384,
                 spell_magic_missile, 5, 12,
                 "spell", "!Magic Missile!"
         },
 
         {
                 "mass invis", &gsn_mass_invis,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_mass_invis, 20, 24,
                 "", "Your party fades into existence."
         },
 
         {
                 "pass door", &gsn_pass_door,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_pass_door, 20, 12,
                 "", "You feel solid again."
         },
 
         {
                 "poison", &gsn_poison,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, 256|16384,
                 spell_poison, 10, 12,
                 "<201>p<200>o<199>i<198>s<197>o<198>n<199>e<200>d <201>b<200>l<199>o<198>o<197>d<0>", "You feel less sick."
         },
 
         {
                 "paralysis", &gsn_paralysis,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, 4096|16384,
                 spell_paralysis, 10, 12,
                 "", "You can move again!"
         },
 
         {
                 "project", 0,
-                TYPE_INT, TAR_IGNORE, POS_RESTING,
+                TYPE_INT, TAR_IGNORE, POS_RESTING, 16384,
                 spell_null, 0, 12,
                 "", "You return to your body."
         },
 
         {
                 "protection", &gsn_protection,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_protection, 5, 12,
                 "", "You feel less protected."
         },
 
         {
                 "refresh", &gsn_refresh,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_refresh, 12, 18,
                 "refresh", "!Refresh!"
         },
 
         {
                 "remove curse", &gsn_remove_curse,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_remove_curse, 5, 12,
                 "", "!Remove Curse!"
         },
 
         {
                 "sanctuary", &gsn_sanctuary,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_sanctuary, 75, 12,
                 "", "<250>The white aura around your body fades.<0>"
         },
 
         {
                 "sense traps", &gsn_sense_traps,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_sense_traps, 15, 12,
                 "", "You feel less perspicacious."
         },
 
         {
                 "shield", &gsn_shield,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_shield, 12, 18,
                 "", "Your force shield shimmers then fades away."
         },
 
         {
                 "dragon shield", &gsn_dragon_shield,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_dragon_shield, 12, 18,
                 "", "You feel vulnerable once again."
         },
 
         {
                 "shocking grasp", &gsn_shocking_grasp,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 8|16384,
                 spell_shocking_grasp, 15, 12,
                 "<21>s<27>h<14>o<226>c<228>k<15>ing <228>g<226>r<14>a<27>s<21>p<0>", "!Shocking Grasp!"
         },
 
         {
                 "sleep", &gsn_sleep,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, 1024|16384,
                 spell_sleep, 15, 12,
                 "spell", "You feel less tired."
         },
 
         {
                 "stone skin", &gsn_stone_skin,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_stone_skin, 12, 18,
                 "", "Your skin feels soft again."
         },
 
         {
                 "summon", &gsn_summon,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_summon, 50, 12,
                 "", "!Summon!"
         },
 
         {
                 "summon familiar", &gsn_summon_familiar,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_summon_familiar, 100, 12,
                 "", "!Summon Familiar!"
         },
 
         {
                 "teleport", &gsn_teleport,
-                TYPE_INT, TAR_CHAR_SELF, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_SELF, POS_FIGHTING, 16384,
                 spell_teleport, 35, 12,
                 "", "!Teleport!"
         },
 
         {
                 "ventriloquate", &gsn_ventriloquate,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_ventriloquate, 5, 12,
                 "", "!Ventriloquate!"
         },
 
         {
                 "weaken", &gsn_weaken,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 16384,
                 spell_weaken, 20, 12,
                 "spell", "You feel stronger."
         },
 
         {
                 "word of recall", &gsn_word_of_recall,
-                TYPE_INT, TAR_CHAR_SELF, POS_RESTING,
+                TYPE_INT, TAR_CHAR_SELF, POS_RESTING, 16384,
                 spell_word_of_recall, 5, 12,
                 "", "!Word of Recall!"
         },
 
         {
                 "brew", &gsn_brew,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 12,
                 "", "!Brew!"
         },
 
         {
                 "scribe", &gsn_scribe,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 12,
                 "", "!Scribe!"
         },
 
         {
                 "acid breath", &gsn_acid_breath,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 128|16384,
                 spell_acid_breath, 50, 12,
                 "<112>bl<76>as<40>t of <76>ac<112>id<0>", "!Acid Breath!"
         },
 
         {
                 "fire breath", &gsn_fire_breath,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 1|16384,
                 spell_fire_breath, 50, 12,
                 "<202>b<196>l<160>a<124>s<88>t<52> of <88>f<124>l<160>a<196>m<202>e<0>", "!Fire Breath!"
         },
 
         {
                 "frost breath", &gsn_frost_breath,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 2|16384,
                 spell_frost_breath, 50, 12,
                 "<14>bl<87>a<159>s<195>t <15>o<195>f<159> f<87>ro<14>st<0>", "!Frost Breath!"
         },
 
         {
                 "gas breath", &gsn_gas_breath,
-                TYPE_INT, TAR_IGNORE, POS_FIGHTING,
+                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 256|16384,
                 spell_gas_breath, 50, 12,
                 "<201>b<165>l<129>a<93>s<57>t o<93>f <129>g<165>a<201>s<0>", "!Gas Breath!"
         },
 
         {
                 "lightning breath", &gsn_lightning_breath,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 4|16384,
                 spell_lightning_breath, 50, 12,
                 "<21>b<27>l<51>a<159>s<51>t o<159>f l<51>i<195>g<15>htn<51>i<27>n<21>g<0>", "!Lightning Breath!"
         },
 
         {
                 "advance", &gsn_advance,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Advance!"
         },
 
         {
                 "at", &gsn_at,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!At!"
         },
 
         {
                 "advanced consider", &gsn_advanced_consider,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 0,
                 "", "!Advanced Consider!"
         },
 
         {
                 "assassinate", &gsn_assassinate,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 24,
                 "assassination attempt", "!Assassinate!"
         },
 
         {
                 "backstab", &gsn_backstab,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 24,
                 "backstab", "!Backstab!"
         },
 
         {
                 "joust", &gsn_joust,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 18,
                 "joust", "!Joust!"
         },
 
         {
                 "double backstab", &gsn_double_backstab,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 0,
                 "second backstab", "!Double Backstab!"
         },
 
         {
                 "circle", &gsn_circle,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 24,
                 "circle", "!Circle!"
         },
 
         {
                 "second circle", &gsn_second_circle,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 24,
                 "second circle", "!Second Circle!"
         },
 
         {
                 "climb", &gsn_climb,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 12,
                 "slip up", "!Climb!"
         },
 
         {
                 "bash door", &gsn_bash,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 24,
                 "bash", "!Bash Door!"
         },
 
         {
                 "berserk", &gsn_berserk,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 12,
                 "", "!Berserk!"
         },
 
         {
                 "decapitate", &gsn_decapitate,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 12,
                 "decapitation", "!Decapitate!"
         },
 
         {
                 "dirt kick", &gsn_dirt,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 24,
                 "dirt kick", "You wipe the dirt from your eyes."
         },
 
         {
                 "disable", &gsn_disable,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 12,
                 "slip up", "!Disable!"
         },
 
         {
                 "disarm", &gsn_disarm,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 24,
                 "", "!Disarm!"
         },
 
         {
                 "blink", &gsn_blink,
-                TYPE_INT, TAR_IGNORE, POS_FIGHTING,
+                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 16384,
                 spell_null, 10, 0,
                 "", "!Blink!"
         },
 
         {
                 "dodge", &gsn_dodge,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "", "!Dodge!"
         },
 
         {
                 "acrobatics", &gsn_acrobatics,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "", "!Acrobatics!"
         },
 
         {
                 "dual", &gsn_dual,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 0,
                 "", "!Dual!"
         },
 
         {
                 "enhanced damage", &gsn_enhanced_damage,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "", "!Enhanced Damage!"
         },
 
         {
                 "enhanced hit", &gsn_enhanced_hit,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "", "!Enhanced Hit!"
         },
 
         {
                 "fast healing", &gsn_fast_healing,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 0,
                 "", "!Fast Healing!"
         },
 
         {
                 "find traps", &gsn_find_traps,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 0,
                 "", "!Find Traps!"
         },
 
         {
                 "fourth attack", &gsn_fourth_attack,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "", "!Fourth Attack!"
         },
 
         {
                 "feint", &gsn_feint,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "", "!Feint!"
         },
 
         {
                 "focus", &gsn_focus,
-                TYPE_INT, TAR_IGNORE, POS_FIGHTING,
+                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 16384,
                 spell_null, 0, 12,
                 "", "!Focus!"
         },
 
         {
                 "second spell", &gsn_second_spell,
-                TYPE_INT, TAR_IGNORE, POS_FIGHTING,
+                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 16384,
                 spell_null, 0, 0,
                 "", "!Second Spell!"
         },
 
         {
                 "third spell", &gsn_third_spell,
-                TYPE_INT, TAR_IGNORE, POS_FIGHTING,
+                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 16384,
                 spell_null, 0, 0,
                 "", "!Third Spell!"
         },
 
         {
                 "fourth spell", &gsn_fourth_spell,
-                TYPE_INT, TAR_IGNORE, POS_FIGHTING,
+                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 16384,
                 spell_null, 0, 0,
                 "", "!Fourth Spell!"
         },
 
         {
                 "animate weapon", &gsn_animate_weapon,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 16384,
                 spell_animate_weapon, 20, 12,
                 "", "!Animate Weapon!"
         },
 
         {
                 "mass teleport", 0,
-                TYPE_WIZ, TAR_IGNORE, POS_FIGHTING,
+                TYPE_WIZ, TAR_IGNORE, POS_FIGHTING, 16384,
                 spell_null, 50, 0,
                 "", "!Mass Teleport!"
         },
 
         {
                 "transport", &gsn_transport,
-                TYPE_INT, TAR_OBJ_INV, POS_FIGHTING,
+                TYPE_INT, TAR_OBJ_INV, POS_FIGHTING, 16384,
                 spell_transport, 85, 0,
                 "", "!Transport!"
         },
 
         {
                 "grip", &gsn_grip,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "", "!Grip!"
         },
 
         {
                 "riposte", &gsn_risposte,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "riposte", "!Riposte!"
         },
 
         {
                 "destrier", &gsn_destrier,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "destrier", "!Destrier!"
         },
 
         {
                 "combo", &gsn_combo,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 4,
                 "combo of moves", "!Combo!"
         },
 
         {
                 "combo2", &gsn_combo2,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 4,
                 "combo of moves", "!Combo2!"
         },
 
         {
                 "combo3", &gsn_combo3,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 4,
                 "combo of moves", "!Combo3!"
         },
 
         {
                 "combo4", &gsn_combo4,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 4,
                 "combo of moves", "!Combo4!"
         },
 
         {
                 "atemi", &gsn_atemi,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 8,
                 "<15><556>strike<0>", "!Atemi!"
         },
 
         {
                 "kansetsu", &gsn_kansetsu,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 8,
                 "<15><556>arm lock<0>", "!Kansetsu!"
         },
 
         {
                 "tetsui", &gsn_tetsui,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 8,
                 "<15><556>hammer fist<0>", "!Tetsui!"
         },
 
         {
                 "shuto", &gsn_shuto,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 8,
                 "<15><556>knife hand strike<0>", "!Shuto!"
         },
 
         {
                 "yokogeri", &gsn_yokogeri,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 8,
                 "<11><556>side kick<0>", "!Yokogeri!"
         },
 
         {
                 "mawasigeri", &gsn_mawasigeri,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 8,
                 "<11><556>round house<0>", "!Mawasigeri!"
         },
 
         {
                 "headbutt", &gsn_headbutt,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 0, 24,
                 "headbutt", "!Headbutt!"
         },
 
         {
                 "second headbutt", &gsn_second_headbutt,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 0, 24,
                 "second headbutt", "!Headbutt!"
         },
 
         {
                 "hide", &gsn_hide,
-                TYPE_STR, TAR_IGNORE, POS_RESTING,
+                TYPE_STR, TAR_IGNORE, POS_RESTING, 16384,
                 spell_null, 0, 12,
                 "", "!Hide!"
         },
 
         {
                 "hunt", &gsn_hunt,
-                TYPE_STR, TAR_IGNORE, POS_RESTING,
+                TYPE_STR, TAR_IGNORE, POS_RESTING, 16384,
                 spell_null, 0, 12,
                 "", "!Hunt!"
         },
 
         {
                 "kick", &gsn_kick,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 0, 8,
                 "kick", "!Kick!"
 
@@ -3584,749 +3629,749 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "punch", &gsn_punch,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 0, 8,
                 "punch", "!Punch!"
         },
 
         {
                 "push", &gsn_push,
-                TYPE_STR, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_STR, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_null, 0, 8,
                 "push", "!Push!"
         },
 
         {
                 "choke", &gsn_choke,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_STANDING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_STANDING, 16384,
                 spell_null, 0, 8,
                 "choker hold", "You regain consciousness."
         },
 
         {
                 "break wrist", &gsn_break_wrist,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_STANDING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_STANDING, 16384,
                 spell_null, 0, 16,
                 "wrist break", "!Break Wrist!"
         },
 
         {
                 "snap_neck", &gsn_snap_neck,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 0, 16,
                 "wrench", "!Snap Neck!"
         },
 
         {
                 "grapple", &gsn_grapple,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 8,
                 "extra attack", "You recover from the grapple, and get back to your feet"
         },
 
         {
                 "fly", &gsn_flight,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 8,
                 "fly", "!Fly!"
         },
 
         {
                 "flying headbutt", &gsn_flying_headbutt,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 8,
                 "flying headbutt", "!Flying Headbutt!"
         },
 
         {
                 "gouge", &gsn_gouge,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_STANDING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_STANDING, 16384,
                 spell_null, 0, 12,
                 "gouge", "Your vision returns."
         },
 
         {
                 "pugilism", &gsn_pugalism,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "pugilism", "!Pugilism!"
         },
 
         {
                 "grab", &gsn_grab,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_STANDING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_STANDING, 16384,
                 spell_null, 0, 8,
                 "", "!Grab!"
         },
 
         {
                 "mount", &gsn_mount,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 12,
                 "mount", "!Mount!"
         },
 
         {
                 "dismount", &gsn_dismount,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 12,
                 "dismount", "!Dismount!"
         },
 
         {
                 "battle aura", &gsn_battle_aura,
-                TYPE_STR, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_STR, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_null, 0, 8,
                 "", "You feel less sure of yourself."
         },
 
         {
                 "second punch", &gsn_second_punch,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 0, 8,
                 "second punch", "!Second Punch!"
         },
 
         {
                 "meditate", &gsn_meditate,
-                TYPE_STR, TAR_IGNORE, POS_RESTING,
+                TYPE_STR, TAR_IGNORE, POS_RESTING, 16384,
                 spell_null, 0, 12,
                 "", "You awaken from your trance."
         },
 
         {
                 "parry", &gsn_parry,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "", "!Parry!"
         },
 
         {
                 "pre-empt", &gsn_pre_empt,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "", "!Pre-empt!"
         },
 
         {
                 "peek", &gsn_peek,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 0,
                 "", "!Peek!"
         },
 
         {
                 "pick lock", &gsn_pick_lock,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 12,
                 "", "!Pick!"
         },
 
         {
                 "bladethirst", &gsn_bladethirst,
-                TYPE_STR, TAR_OBJ_INV, POS_STANDING,
+                TYPE_STR, TAR_OBJ_INV, POS_STANDING, 16384,
                 spell_null, 0, 12,
                 "concoction", "!Bladethirst!"
         },
 
         {
                 "poison weapon", &gsn_poison_weapon,
-                TYPE_STR, TAR_OBJ_INV, POS_STANDING,
+                TYPE_STR, TAR_OBJ_INV, POS_STANDING, 16384,
                 spell_null, 0, 12,
                 "poisonous concoction", "!Poison Weapon!"
         },
 
         {
                 "forge", &gsn_forge,
-                TYPE_STR, TAR_OBJ_INV, POS_STANDING,
+                TYPE_STR, TAR_OBJ_INV, POS_STANDING, 16384,
                 spell_null, 0, 12,
                 "slip", "!Forge!"
         },
 
         {
                 "sharpen", &gsn_sharpen,
-                TYPE_STR, TAR_OBJ_INV, POS_STANDING,
+                TYPE_STR, TAR_OBJ_INV, POS_STANDING, 16384,
                 spell_null, 0, 12,
                 "sharp blade", "!Sharpen!"
         },
 
         {
                 "rescue", &gsn_rescue,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 12,
                 "", "!Rescue!"
         },
 
         {
                 "second attack", &gsn_second_attack,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "", "!Second Attack!"
         },
 
         {
                 "shield block", &gsn_shield_block,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "", "!Shield Block!"
         },
 
         {
                 "smash", &gsn_smash,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 24,
                 "extra attack", "!Smash!"
         },
 
         {
                 "sneak", &gsn_sneak,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 12,
                 "", NULL
         },
 
         {
                 "tail", &gsn_tail,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 12,
                 "", NULL
         },
 
         {
                 "stalk", &gsn_stalk,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 12,
                 "", NULL
         },
 
         {
                 "steal", &gsn_steal,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 24,
                 "", "!Steal!"
         },
 
         {
                 "stun", &gsn_stun,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 0,
                 "attempted stun", "Your head stops ringing."
         },
 
         {
                 "suck", &gsn_suck,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 24,
                 "suck", "!Suck!"
         },
 
         {
                 "third attack", &gsn_third_attack,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "", "!Third Attack!"
         },
 
         {
                 "transfix", &gsn_transfix,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 0,
                 "terrifying gaze", "You shake free from the trance."
         },
 
         {
                 "trap", &gsn_trap,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 0,
                 "slip up", "You finally break free from the trap!"
         },
 
         {
                 "trip", &gsn_trip,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 18,
                 "", "<15>You get back on your feet.<0>"
         },
 
         {
                 "unarmed combat", &gsn_unarmed_combat,
-                TYPE_STR, TAR_IGNORE, POS_DEAD,
+                TYPE_STR, TAR_IGNORE, POS_DEAD, 512,
                 spell_null, 0, 0,
                 "", "The kill satisfies your lust for combat."
         },
 
         {
                 "warcry", &gsn_warcry,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "You feel less enraged."
         },
 
         {
                 "rage", &gsn_rage,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "You feel less furious."
         },
 
         {
                 "howl", &gsn_howl,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 0,
                 "howl", "!Howl!"
         },
 
         {
                 "whirlwind", &gsn_whirlwind,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 18, 18,
                 "whirlwind", "You feel less angry."
         },
 
         {
                 "flight", &gsn_flight,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 18, 18,
                 "flight", "You fold your wings and settle on the ground."
         },
 
         {
                 "general purpose", NULL,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 8|16384,
                 spell_general_purpose, 0, 12,
                 "general purpose ammo", "!General Purpose Ammo!"
         },
 
         {
                 "high explosive", NULL,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 8|16384,
                 spell_high_explosive, 0, 12,
                 "high explosive ammo", "!High Explosive Ammo!"
         },
 
         {
                 "addfame", &gsn_addfame,
-                TYPE_STR, TAR_IGNORE, POS_DEAD,
+                TYPE_STR, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Addfame!"
         },
 
         {
                 "allow", &gsn_allow,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Allow!"
         },
 
         {
                 "bamfin", &gsn_bamfin,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Bamfin!"
         },
 
         {
                 "bamfout", &gsn_bamfout,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Bamfout!"
         },
 
         {
                 "ban", &gsn_ban,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Ban!"
         },
 
         {
                 "cando", &gsn_cando,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Cando!"
         },
 
         {
                 "deny", &gsn_deny,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Deny!"
         },
 
         {
                 "disconnect", &gsn_disconnect,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Disconnect!"
         },
 
         {
                 "echo", &gsn_echo,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Echo!"
         },
 
         {
                 "force", &gsn_force,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Force!"
         },
 
         {
                 "freeze", &gsn_freeze,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Freeze!"
         },
 
         {
                 "goto", &gsn_goto,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Goto!"
         },
 
         {
                 "holylight", &gsn_holylight,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Holylight!"
         },
 
         {
                 "immtalk", &gsn_immtalk,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Immtalk!"
         },
 
         {
                 "dirtalk", &gsn_dirtalk,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Dirtalk!"
         },
 
         {
                 "wizinvis", &gsn_wizinvis,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                     "", "!Wizinvis!"
         },
 
         {
                 "killsocket", &gsn_killsocket,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Killsocket!"
         },
 
         {
                 "log", &gsn_log,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Log!"
         },
 
         {
                 "memory", &gsn_memory,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Memory!"
         },
 
         {
                 "mfind", &gsn_mfind,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Mfind!"
         },
 
         {
                 "mload", &gsn_mload,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Mload!"
         },
 
         {
                 "oclanitem", &gsn_oclanitem,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!OclanItem!"
         },
 
         {
                 "mset", &gsn_mset,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Mset!"
         },
 
         {
                 "mstat", &gsn_mstat,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                     "", "!Mstat!"
         },
 
         {
                 "mwhere", &gsn_mwhere,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Mwhere!"
         },
 
         {
                 "newlock", &gsn_newlock,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Newlock!"
         },
 
         {
                 "noemote", &gsn_noemote,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Noemote!"
         },
 
         {
                 "notell", &gsn_notell,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Notell!"
         },
 
         {
                 "numlock", &gsn_numlock,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Numlock!"
         },
 
         {
                 "ofind", &gsn_ofind,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Ofind!"
         },
 
         {
                 "oload", &gsn_oload,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Oload!"
         },
 
         {
                 "oset", &gsn_oset,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Oset!"
         },
 
         {
                 "ostat", &gsn_ostat,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Ostat!"
         },
 
         {
                 "owhere", &gsn_owhere,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Owhere!"
         },
 
         {
                 "pardon", &gsn_pardon,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Pardon!"
         },
 
         {
                 "peace", &gsn_peace,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Peace!"
         },
 
         {
                 "purge", &gsn_purge,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Purge!"
         },
 
         {
                 "reboot", &gsn_reboot,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Reboot!"
         },
 
         {
                 "recho", &gsn_recho,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Recho!"
         },
 
         {
                 "rename", &gsn_rename,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Rename!"
         },
 
         {
                 "reset", &gsn_reset,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Reset!"
         },
 
         {
                 "restore", &gsn_restore,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Restore!"
         },
 
         {
                 "return", &gsn_return,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Return!"
         },
 
         {
                 "rset", &gsn_rset,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Rset!"
         },
 
         {
                 "rstat", &gsn_rstat,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Rstat!"
         },
 
         {
                 "shutdown", &gsn_shutdown,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Shutdown!"
         },
 
         {
                 "silence", &gsn_silence,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Silence!"
         },
 
         {
                 "slay", &gsn_slay,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Slay!"
         },
 
         {
                 "slookup", &gsn_slookup,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Slookup!"
         },
 
         {
                 "snoop", &gsn_snoop,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Snoop!"
         },
 
         {
                 "sset", &gsn_sset,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Sset!"
         },
 
         {
                 "sstime", &gsn_sstime,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Sstime!"
         },
 
         {
                 "switch", &gsn_switch,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Switch!"
         },
 
         {
                 "transfer", &gsn_transfer,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Transfer!"
         },
 
         {
                 "trust", &gsn_trust,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Trust!"
         },
 
         {
                 "users", &gsn_users,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Users!"
         },
 
         {
                 "wizhelp", &gsn_wizhelp,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Wizhelp!"
         },
 
         {
                 "wizify", &gsn_wizify,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Wizify!"
         },
 
         {
                 "wizlock", &gsn_wizlock,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Wizlock!"
         },
 
         {
                 "zones", &gsn_zones,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Zones!"
         },
 
         {
                 "adrenaline control", &gsn_adrenaline_control,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_adrenaline_control, 6, 12,
                 "", "The adrenaline rush wears off."
         },
@@ -4334,1554 +4379,1554 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
 
                 "agitation", &gsn_agitation,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384|65536,
                 spell_agitation, 10, 12,
                 "agitation", "!Agitation!"
         },
 
         {
                 "aura sight", &gsn_aura_sight,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_aura_sight, 9, 12,
                 "", "!Aura Sight!"
         },
 
         {
                 "awe", &gsn_awe,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, 16384,
                 spell_awe, 35, 12,
                 "", "!Awe!"
         },
 
         {
                 "ballistic attack", &gsn_ballistic_attack,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384|65536,
                 spell_ballistic_attack, 5, 12,
                 "ballistic attack", "!Ballistic Attack!"
         },
 
         {
                 "biofeedback", &gsn_biofeedback,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_biofeedback, 75, 12,
                 "", "<250>Your biofeedback is no longer effective.<0>"
         },
 
         {
                 "cell adjustment", &gsn_cell_adjustment,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_cell_adjustment, 8, 12,
                 "", "!Cell Adjustment!"
         },
 
         {
                 "chameleon power", &gsn_chameleon_power,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 12,
                 "", "!Chameleon Power!"
         },
 
         {
                 "combat mind", &gsn_combat_mind,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_combat_mind, 15, 12,
                 "", "Your battle sense has faded."
         },
 
         {
                 "recharge mana", &gsn_recharge_mana,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_recharge_mana, 100, 12,
                 "", "!Recharge mana!"
         },
 
         {
                 "vitalize", &gsn_vitalize,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_vitalize, 100, 12,
                 "", "!Vitalize!"
         },
 
         {
                 "complete healing", &gsn_complete_healing,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_complete_healing, 100, 12,
                 "", "!Complete Healing!"
         },
 
         {
                 "control flames", &gsn_control_flames,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 1|16384,
                 spell_control_flames, 15, 12,
                 "tongue of flame", "!Control Flames!"
         },
 
         {
                 "create sound", &gsn_create_sound,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_create_sound, 5, 12,
                 "", "!Create Sound!"
         },
 
         {
                 "death field", &gsn_death_field,
-                TYPE_INT, TAR_IGNORE, POS_FIGHTING,
+                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 16384|262144,
                 spell_death_field, 200, 18,
                 "field of death", "!Death Field!"
         },
 
         {
                 "decay", &gsn_decay,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384|262144,
                 spell_decay, 100, 12,
                 "slip up", "!Decay!"
         },
 
         {
                 "detonate", &gsn_detonate,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 65536,
                 spell_detonate, 25, 24,
                 "detonation", "!Detonate!"
         },
 
         {
                 "disintegrate", &gsn_disintergrate,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 65536,
                 spell_disintegrate, 150, 18,
                 "disintegration", "!Disintegrate!"
         },
 
         {
                 "displacement", &gsn_displacement,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_displacement, 10, 12,
                 "", "You are no longer displaced."
         },
 
         {
                 "domination", &gsn_domination,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, 16384,
                 spell_domination, 5, 12,
                 "", "You regain control of your body."
         },
 
         {
                 "ectoplasmic form", &gsn_ectoplasmic_form,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_ectoplasmic_form, 20, 12,
                 "", "You feel solid again."
         },
 
         {
                 "ego whip", &gsn_ego_whip,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 16384|65536,
                 spell_ego_whip, 20, 12,
                 "", "You feel more confident."
         },
 
         {
                 "energy containment", &gsn_energy_containment,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_energy_containment, 10, 12,
                 "", "You no longer absorb energy."
         },
 
         {
                 "enhance armor", &gsn_enhance_armor,
-                TYPE_INT, TAR_OBJ_INV, POS_STANDING,
+                TYPE_INT, TAR_OBJ_INV, POS_STANDING, 16384,
                 spell_enhance_armor, 100, 24,
                 "", "!Enhance Armor!"
         },
 
         {
                 "enhanced strength", &gsn_enhanced_strength,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_enhanced_strength, 20, 12,
                 "", "Your strength is no longer enhanced."
         },
 
         {
                 "flesh armor", &gsn_flesh_armor,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_flesh_armor, 15, 12,
                 "", "Your skin returns to normal."
         },
 
         {
                 "heighten senses", &gsn_heighten,
-                TYPE_STR, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_STR, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "Your senses return to normal."
         },
 
         {
                 "inertial barrier", &gsn_inertial_barrier,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_inertial_barrier, 40, 24,
                 "", "Your inertial barrier dissipates."
         },
 
         {
                 "inflict pain", &gsn_inflict_pain,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384|65536,
                 spell_inflict_pain, 10, 12,
                 "mindpower", "!Inflict Pain!"
         },
 
         {
                 "intellect fortress", &gsn_intellect_fortress,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_intellect_fortress, 25, 24,
                 "", "Your intellectual fortress crumbles."
         },
 
         {
                 "lend health", &gsn_lend_health,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_lend_health, 10, 12,
                 "", "!Lend Health!"
         },
 
         {
                 "levitation", &gsn_levitation,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_levitation, 10, 18,
                 "", "The sensation of gravity gently returns to your body."
         },
 
         {
                 "mental barrier", &gsn_mental_barrier,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_mental_barrier, 8, 12,
                 "", "Your mental barrier breaks down."
         },
 
         {
                 "mind thrust", &gsn_mind_thrust,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384|65536,
                 spell_mind_thrust, 8, 12,
                 "mind thrust", "!Mind Thrust!"
         },
 
         {
                 "project force", &gsn_project_force,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384|65536,
                 spell_project_force, 18, 12,
                 "projected force", "!Project Force!"
         },
 
         {
                 "psionic blast", &gsn_psionic_blast,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384|65536,
                 spell_psionic_blast, 15, 12,
                 "psionic blast", "!Psionic Blast!"
         },
 
         {
                 "psychic crush", &gsn_psychic_crush,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384|65536,
                 spell_psychic_crush, 15, 12,
                 "psychic crush", "!Psychic Crush!"
         },
 
         {
                 "psychic drain", &gsn_psychic_drain,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384|65536,
                 spell_psychic_drain, 20, 12,
                 "", "You no longer feel drained."
         },
 
         {
                 "psychic healing", &gsn_psychic_healing,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_psychic_healing, 20, 12,
                 "", "!Psychic Healing!"
         },
 
         {
                 "shadow form", &gsn_shadow_form,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 12,
                 "", "You no longer move in the shadows."
         },
 
         {
                 "share strength", &gsn_share_strength,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_share_strength, 8, 12,
                 "", "You no longer share strength with another."
         },
 
         {
                 "thought shield", &gsn_thought_shield,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_thought_shield, 5, 12,
                 "", "You no longer feel so protected."
         },
 
         {
                 "ultrablast", &gsn_ultrablast,
-                TYPE_INT, TAR_IGNORE, POS_FIGHTING,
+                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 16384|65536,
                 spell_ultrablast, 25, 12,
                 "<14>u<121>l<191>t<226>r<15>ab<226>l<191>a<121>s<14>t<0>", "!Ultrablast!"
         },
 
         {
                 "wrath of god", &gsn_wrath_of_god,
-                TYPE_INT, TAR_IGNORE, POS_FIGHTING,
+                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 16384|131072,
                 spell_wrath_of_god, 25, 12,
                 "god", "!Wrath Of God!"
         },
 
         {
                 "feeblemind", &gsn_feeblemind,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 16384|65536,
                 spell_feeblemind, 25, 12,
                 "", "You feel less dizzy."
         },
 
         {
                 "spiritwrack", &gsn_spiritwrack,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 16384|262144,
                 spell_spiritwrack, 25, 12,
                 "", "You feel more able."
         },
 
         {
                 "wither", &gsn_wither,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384|262144,
                 spell_wither, 20, 12,
                 "<112>w<76>i<40>t<11>h<227>e<254>r<15>in<254>g <227>g<11>r<40>a<76>s<112>p<0>", "You feel less brittle."
         },
 
         {
                 "lore", &gsn_lore,
-                TYPE_INT, TAR_OBJ_INV, POS_STANDING,
+                TYPE_INT, TAR_OBJ_INV, POS_STANDING, 16384,
                 spell_lore, 10, 24,
                 "", "!Lore!"
         },
 
         {
                 "hex", &gsn_hex,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 16384|524288,
                 spell_hex, 30, 12,
                 "hex", "You are no longer hexed."
         },
 
         {
                 "animate dead", &gsn_animate_dead,
-                TYPE_INT, TAR_OBJ_ROOM, POS_STANDING,
+                TYPE_INT, TAR_OBJ_ROOM, POS_STANDING, 16384,
                 spell_animate_dead, 100, 12,
                 "", "!Animate Dead!"
         },
 
         {
                 "dark ritual", &gsn_dark_ritual,
-                TYPE_INT, TAR_OBJ_ROOM, POS_STANDING,
+                TYPE_INT, TAR_OBJ_ROOM, POS_STANDING, 16384|262144,
                 spell_dark_ritual, 20, 10,
                 "", "!dark ritual!"
         },
 
         {
                 "bark skin", &gsn_bark_skin,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_bark_skin, 10, 12,
                 "", "You no longer feel like a tree."
         },
 
         {
                 "moonray", &gsn_moonray,
-                TYPE_INT, TAR_IGNORE, POS_FIGHTING,
+                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 8|16384,
                 spell_moonray, 20, 12,
                 "<230>m<229>o<228>on be<229>a<230>m<0>", "!moonray!"
         },
 
         {
                 "sunray", &gsn_sunray,
-                TYPE_INT, TAR_IGNORE, POS_FIGHTING,
+                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 1|8|16384,
                 spell_sunray, 25, 12,
                 "<214>s<220>u<11>n r<220>a<214>y<0>", "!sunray!"
         },
 
         {
                 "prayer", &gsn_prayer,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_prayer, 50, 12,
                 "", "You feel your prayer cease."
         },
 
         {
                 "frenzy", &gsn_frenzy,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_frenzy, 100, 24,
                 "", "Slowly you release the rage as it threatens to overwhelm you."
         },
 
         {
                 "mass heal", &gsn_mass_heal,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_mass_heal, 150, 20,
                 "", "!Mass Heal!"
         },
 
         {
                 "mass power heal", &gsn_mass_power_heal,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_mass_power_heal, 300, 32,
                 "", "!Mass Power Heal!"
         },
 
         {
                 "mass sanctuary", &gsn_mass_sanctuary,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_mass_sanctuary, 200, 36,
                 "", "<250>The white aura around your body fades.<0>"
         },
 
         {
                 "globe of invulnerability", &gsn_globe,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_globe, 120, 12,
                 "", "<208>The globe about you implodes.<0>"
         },
 
         {
                 "dark globe of invulnerability", &gsn_dark_globe,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_dark_globe, 120, 12,
                 "", "<208>The dark globe about you implodes.<0>"
         },
 
         {
                 "firestorm", &gsn_firestorm,
-                TYPE_INT, TAR_IGNORE, POS_FIGHTING,
+                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 1|16384,
                 spell_firestorm, 20, 6,
                 "{Rfi{Yre{Ws{Yto{Rrm{X", "!Firestorm!"
         },
 
         {
                 "meteor storm", &gsn_meteor_storm,
-                TYPE_INT, TAR_IGNORE, POS_FIGHTING,
+                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 1|16384,
                 spell_meteor_storm, 25, 18,
                 "<196>me<202>te<11>o<214>r <196>st<202>or<11>m<0>", "!Meteor storm!"
         },
 
         {
                 "bless weapon", &gsn_bless_weapon,
-                TYPE_INT, TAR_OBJ_INV, POS_STANDING,
+                TYPE_INT, TAR_OBJ_INV, POS_STANDING, 16384,
                 spell_bless_weapon, 100, 24,
                 "", "!Bless Weapon!"
         },
 
         {
                 "recharge item", &gsn_recharge_item,
-                TYPE_INT, TAR_OBJ_INV, POS_STANDING,
+                TYPE_INT, TAR_OBJ_INV, POS_STANDING, 16384,
                 spell_recharge_item, 100, 24,
                 "", "!Recharge Item!"
         },
 
         {
                 "kiai", &gsn_kiai,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 20, 12,
                 "<11>f<227>o<229>r<230>c<15>e-<230>b<229>a<227>l<11>l<0>", "!Kiai!"
         },
 
         {
                 "possession", &gsn_possession,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_possession, 25, 12,
                 "attempted possession", "You return to your own body."
         },
 
         {
                 "demon flames", &gsn_demon_flames,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 1|16384|262144,
                 spell_demon_flames, 25, 12,
                 "horde of demons", "You feel less tormented."
         },
 
         {
                 "steal strength", &gsn_steal_strength,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 16384,
                 spell_steal_strength, 25, 12,
                 "spell", "You feel less strong."
         },
 
         {
                 "infernal fury", &gsn_infernal_fury,
-                TYPE_INT, TAR_IGNORE, POS_FIGHTING,
+                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 16384,
                 spell_infernal_fury, 25, 12,
                 "summoned <124>d<160>e<196>v<160>i<124>l<0>", "!Infernal_Fury!"
         },
 
         {
                 "abyssal hand", &gsn_abyssal_hand,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, 4096|16384,
                 spell_abyssal_hand, 100, 12,
                 "abyssal hand", "You break free from the black hand that holds you."
         },
 
         {
                 "steal soul", &gsn_steal_soul,
-                TYPE_INT, TAR_OBJ_ROOM, POS_STANDING,
+                TYPE_INT, TAR_OBJ_ROOM, POS_STANDING, 16384|262144,
                 spell_steal_soul, 25, 12,
                 "", "!Steal Soul!"
         },
 
         {
                 "summon demon", &gsn_summon_demon,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_summon_demon, 100, 12,
                 "", "!Summon Demon!"
         },
 
         {
                 "evocation magiks", &gsn_group_evocation,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Evocation!"
         },
 
         {
                 "death magiks", &gsn_group_death,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Death!"
         },
 
         {
                 "dark magiks", &gsn_group_dark,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Dark!"
         },
 
         {
                 "lycanthropy skills", &gsn_group_lycanthropy,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Lycanthropy!"
         },
 
         {
                 "vampyre skills", &gsn_group_vampyre,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Vampyre!"
         },
 
         {
                 "draconian magiks", &gsn_group_breath,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Breath!"
         },
 
         {
                 "destructive magiks", &gsn_group_destruction,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Destruction!"
         },
 
         {
                 "major protective magiks", &gsn_group_majorp,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Major Protection!"
         },
 
         {
                 "mana craft", &gsn_group_craft,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Mana Craft!"
         },
 
         {
                 "divination magiks", &gsn_group_divination,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Divination!"
         },
 
         {
                 "alteration magiks", &gsn_group_alteration,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Alteration!"
         },
 
         {
                 "summoning magiks", &gsn_group_summoning,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Summoning!"
         },
 
         {
                 "illusion magiks", &gsn_group_illusion,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Illusion!"
         },
 
         {
                 "enchantment magiks", &gsn_group_enchant,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Enchantment!"
         },
 
         {
                 "conjuration magiks", &gsn_group_conjuration,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Conjuration!"
         },
 
         {
                 "protective magiks", &gsn_group_protection,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Protection!"
         },
 
         {
                 "divine magiks", &gsn_group_divine,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Divine!"
         },
 
         {
                 "harmful magiks", &gsn_group_harmful,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Harmful!"
         },
 
         {
                 "disease magiks", &gsn_group_disease,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Disase!"
         },
 
         {
                 "curative magiks", &gsn_group_curative,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Curative!"
         },
 
         {
                 "healing magiks", &gsn_group_healing,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Healing!"
         },
 
         {
                 "advanced healing magiks", &gsn_group_advanced_heal,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Advanced Healing!"
         },
 
         {
                 "mental defense disciplines", &gsn_group_mentald,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Mental Defense!"
         },
 
         {
                 "matter control disciplines", &gsn_group_matter,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Matter Control!"
         },
 
         {
                 "energy control disciplines", &gsn_group_energy,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Energy Control!"
         },
 
         {
                 "telepathy disciplines", &gsn_group_telepathy,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Telepathy!"
         },
 
         {
                 "advanced telepathy disciplines", &gsn_group_advtele,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Advanced Telepathy!"
         },
 
         {
                 "mana control disciplines", &gsn_group_mana,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Mana Control!"
         },
 
         {
                 "combat knowledge", &gsn_group_combat  ,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Combat!"
         },
 
         {
                 "poison arts", &gsn_group_poison  ,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Poison!"
         },
 
         {
                 "stealth techniques", &gsn_group_stealth  ,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Stealth!"
         },
 
         {
                 "hunting arts", &gsn_group_hunting  ,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Hunting!"
         },
 
         {
                 "martial arts", &gsn_group_arts,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Arts!"
         },
 
         {
                 "combination moves", &gsn_group_combos  ,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Combos!"
         },
 
         {
                 "riding techniques", &gsn_group_riding  ,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Riding!"
         },
 
         {
                 "thievery skills", &gsn_group_thievery  ,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Thievery!"
         },
 
         {
                 "armed combat knowledge", &gsn_group_armed  ,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Armed Combat!"
         },
 
         {
                 "body control disciplines", &gsn_group_body  ,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Body Control!"
         },
 
         {
                 "morph", &gsn_morph,
-                TYPE_STR, TAR_IGNORE, POS_DEAD,
+                TYPE_STR, TAR_IGNORE, POS_DEAD, 512,
                 spell_null, 20, 12,
                 "", "!Morph!"
         },
 
         {
                 "inner force", &gsn_group_inner  ,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Inner Force!"
         },
 
         {
                 "knowledge", &gsn_group_knowledge  ,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Knowledge!"
         },
 
         {
                 "nature skills", &gsn_group_nature,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group NAture!"
         },
 
         {
                 "unarmed combat knowledge", &gsn_group_unarmed,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Unarmed Combat!"
         },
 
         {
                 "defense knowledge", &gsn_group_defense ,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Defense!"
         },
 
         {
                 "advanced combat knowledge", &gsn_group_advcombat ,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Advanced Combat!"
         },
 
         {
                 "metal working techniques", &gsn_group_metal ,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Metal!"
         },
 
         {
                 "morphing knowledge", &gsn_group_forms   ,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Forms!"
         },
 
         {
                 "morphing abilities", &gsn_group_morph,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Morphing Abilities"
         },
 
         {
                 "pugilism knowledge", &gsn_group_pugalism,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Pugilism!"
         },
 
         {
                 "fear", &gsn_fear,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 16384|32768,
                 spell_fear, 5, 12,
                 "spell", "You feel less afraid."
         },
 
         {
                 "deter", &gsn_deter,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_deter, 5, 12,
                 "", "Monsters seem less intimidated by you..."
         },
 
         {
                 "astral sidestep", &gsn_astral_sidestep,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_astral_sidestep, 5, 12,
                 "", "You rematerialise in the physical plane."
         },
 
         {
                 "mist walk", &gsn_mist_walk,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 5, 12,
                 "", "Your body reverts to its normal state."
         },
 
         {
                 "gaias warning", &gsn_gaias_warning,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_gaias_warning, 5, 12,
                 "", "You feel less astute."
         },
 
         {
                 "resist toxin", &gsn_resist_toxin,
-                TYPE_INT, TAR_IGNORE, POS_FIGHTING,
+                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 16384,
                 spell_null, 0, 0,
                 "", "!Resist Toxin!"
         },
 
         {
                 "resist magic", &gsn_resist_magic,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_resist_magic, 5, 12,
                 "", "You feel more vulnerable to magic."
         },
 
         {
                 "summon avatar", &gsn_summon_avatar,
-                TYPE_INT, TAR_IGNORE, POS_FIGHTING,
+                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 16384,
                 spell_summon_avatar, 100, 18,
                 "", "!Summon Avatar!"
         },
 
         {
                 "feed", &gsn_feed,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 18,
                 "", "!Feed!"
         },
 
         {
                 "lunge", &gsn_lunge,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 18,
                 "blood-thirsty fangs", "!lunge!"
         },
 
         {
                 "aura of fear", &gsn_aura_of_fear,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 18,
                 "aura of fear", "!Aura Of Fear!"
         },
 
         {
                 "double lunge", &gsn_double_lunge,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 18,
                 "blood-thirsty fangs", "!Feed!"
         },
 
         {
                 "chameleon form", &gsn_form_chameleon,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 10, 0,
                 "", "!Form Chameleon!"
         },
 
         {
                 "hawk form", &gsn_form_hawk,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 15, 0,
                 "", "!Form Hawk!"
         },
 
         {
                 "cat form", &gsn_form_cat,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 15, 0,
                 "", "!Form Cat!"
         },
 
         {
                 "bat form", &gsn_form_bat,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 50, 0,
                 "", "!Form Bat!"
         },
 
         {
                 "snake form", &gsn_form_snake,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 20, 0,
                 "", "!Form Snake!"
         },
 
         {
                 "scorpion form", &gsn_form_scorpion,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 25, 0,
                 "", "!Form Scorpion"
         },
 
         {
                 "spider form", &gsn_form_spider,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 25, 0,
                 "", "!Form Spider!"
         },
 
         {
                 "bear form", &gsn_form_bear,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 30, 0,
                 "", "!Form Bear!"
         },
 
         {
                 "tiger form", &gsn_form_tiger,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 35, 0,
                 "", "!Form Tiger!"
         },
 
         {
                 "dragon form", &gsn_form_dragon,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 100, 0,
                 "", "!Form Dragon!"
         },
 
         {
                 "demon form", &gsn_form_demon,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 75, 0,
                 "", "!Form Demon!"
         },
 
         {
                 "phoenix form", &gsn_form_phoenix,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 120, 0,
                 "", "!Form Phoenix!"
         },
 
         {
                 "hydra form", &gsn_form_hydra,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 100, 0,
                 "", "!Form Hydra!"
         },
 
         {
                 "wolf form", &gsn_form_wolf,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 100, 0,
                 "", "!Form Wolf!"
         },
 
         {
                 "fly form", &gsn_form_fly,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 200, 0,
                 "", "!Form Phoenix!"
         },
 
         {
                 "griffin form", &gsn_form_griffin,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 100, 0,
                 "", "!Form Griffin!"
         },
 
         {
                 "wolf aura", &gsn_form_direwolf,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 150, 0,
                 "", "!Form Direwolf!"
         },
 
         {
                 "elemental air form", &gsn_form_elemental_air,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 100, 0,
                 "", "!Form Elemental Air!"
         },
 
         {
                 "elemental fire form", &gsn_form_elemental_fire,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 1,
                 spell_null, 100, 0,
                 "", "!Form Elemental Fire!"
         },
 
         {
                 "elemental water form", &gsn_form_elemental_water,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 100, 0,
                 "", "!Form Elemental Water!"
         },
 
         {
                 "elemental earth form", &gsn_form_elemental_earth,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 100, 0,
                 "", "!Form Elemental Earth!"
         },
 
         {
                 "coil", &gsn_coil,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 0, 24,
                 "coil", "!Coil!"
         },
 
         {
                 "constrict", &gsn_constrict,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 0, 10,
                 "constriction", "!Constrict!"
         },
 
         {
                 "strangle", &gsn_strangle,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 0, 30,
                 "strangle", "!Strangle!"
         },
 
         {
                 "swim", &gsn_swim,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 0,
                 "", "!Swim!"
         },
 
         {
                 "spy", &gsn_spy,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 0,
                 "", "!Spy!"
         },
 
         {
                 "forage", &gsn_forage,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 10,
                 "", "!Forage!"
         },
 
         {
                 "bite", &gsn_bite,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 0, 10,
                 "bite", "!Bite!"
         },
 
         {
                 "maul", &gsn_maul,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 0, 18,
                 "frenzied attack", "!Maul!"
         },
 
         {
                 "wolfbite", &gsn_wolfbite,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 0, 10,
                 "wolfbite", "!Wolfbite!"
         },
 
         {
                 "ravage", &gsn_ravage,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 0, 18,
                 "frenzied attack", "!Ravage!"
         },
 
         {
                 "web", &gsn_web,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 12,
                 "slip up", "You break free from the sticky webbing."
         },
 
         {
                 "venom", &gsn_venom,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 0, 12,
                 "poisoned bite", "!Venom!"
         },
 
         {
                 "breathe", &gsn_breathe,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 50, 12,
                 "breath", "!Breathe!"
         },
 
         {
                 "dive", &gsn_dive,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 18,
                 "airborne assault", "!Dive!"
         },
 
         {
                 "tailwhip", &gsn_tailwhip,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 24,
                 "tailwhip", "!Tailwhip!"
         },
 
         {
                 "dragon aura", &gsn_dragon_aura,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 24,
                 "", "Your dragon aura fades."
         },
 
         {
                 "spellcraft", &gsn_spellcraft,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!Spy!"
         },
 
         {
                 "dowse", &gsn_dowse,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "dowse", "!Dowse!"
         },
 
         {
                 "thrust", &gsn_thrust,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 0, 0,
                 "thrust", "!Thrust!"
         },
 
         {
                 "shoot", &gsn_shoot,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_STANDING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "shot", "!Shoot!"
         },
 
         {
                 "second shot", &gsn_second_shot,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 0,
                 "second shot", "!Second shot!"
         },
 
         {
                 "third shot", &gsn_third_shot,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 0,
                 "third shot", "!Third shot!"
         },
 
         {
                 "accuracy", &gsn_accuracy,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 0,
                 "accuracy", "!Accuracy!"
         },
 
         {
                 "snare", &gsn_snare,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 0,
                 "slip up", "You finally break free from the snare!"
         },
 
         {
                 "classify", &gsn_classify,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "classify", "!classify!"
         },
 
         {
                 "gather", &gsn_gather_herbs,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 0,
                 "gather", "!Gather!"
         },
 
         {
                 "archery knowledge", &gsn_group_archery,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "archery knowledge", "!Archery Knowledge!"
         },
 
         {
                 "musicianship", &gsn_group_music,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "musicianship", "!Musicianship!"
         },
 
         {
                 "herb lore", &gsn_group_herb_lore,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "herb lore", "!Herb Lore!"
         },
 
         {
                 "song of revelation", &gsn_song_of_revelation,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "song of revelation", "!Song of Revelation!"
         },
 
         {
                 "song of rejuvenation", &gsn_song_of_rejuvenation,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "song of rejuvenation", "!Song of Rejuvenation!"
         },
 
         {
                 "song of tranquility", &gsn_song_of_tranquility,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "song of tranquility", "!Song of Tranquility!"
         },
 
         {
                 "song of shadows", &gsn_song_of_shadows,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "song of shadows", "!Song of Shadows!"
         },
 
         {
                 "song of sustenance", &gsn_song_of_sustenance,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "song of sustenance", "!Song of Sustenance!"
         },
 
         {
                 "song of flight", &gsn_song_of_flight,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "song of flight", "!Song of Flight!"
         },
 
         {
                 "chant of protection", &gsn_chant_of_protection,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "chant of protection", "Your chant of protection ceases."
         },
 
         {
                 "chant of battle", &gsn_chant_of_battle,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "chant of battle", "Your battle chant ends."
         },
 
           {
                   "chant of vigour", &gsn_chant_of_vigour,
-                  TYPE_INT, TAR_IGNORE, POS_STANDING,
+                  TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                   spell_null, 0, 0,
                   "chant of vigour", "Your chant of vigour ends."
           },
 
           {
                   "chant of enfeeblement", &gsn_chant_of_enfeeblement,
-                  TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                  TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384|32768,
                   spell_null, 0, 0,
                   "chant of enfeeblement", "!Chant of Enfeeblement!"
           },
 
         {
                 "chant of pain", &gsn_chant_of_pain,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 8|16384,
                 spell_null, 0, 0,
                 "chant of pain", "!Chant of Pain!"
         },
 
         {
                 "wizbrew", &gsn_wizbrew,
-                TYPE_WIZ, TAR_IGNORE, POS_STANDING,
+                TYPE_WIZ, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "wizbrew", "!wizbrew!"
         },
 
         {
                 "breathe water", &gsn_breathe_water,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_breathe_water, 10, 12,
                 "", "Your lungs revert to normal."
         },
 
         {
                 "pantheoninfo", &gsn_pantheoninfo,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "pantheoninfo", "!pantheoninfo!"
         },
 
         {
                 "pantheonrank", &gsn_pantheonrank,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "pantheonrank", "!pantheonrank!"
         },
 
         {
                 "holy prayer of combat", &gsn_prayer_combat,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "holy prayer of combat", "Your holy prayer's power wavers and ends."
         },
 
         {
                 "holy prayer of protection", &gsn_prayer_protection,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "holy prayer of protection", "Your holy prayer's power wavers and ends."
         },
 
         {
                 "holy prayer of free passage", &gsn_prayer_passage,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "holy prayer of free passage", "Your holy prayer's power wavers and ends."
         },
 
         {
                 "divine curse", &gsn_prayer_weaken,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 524288,
                 spell_null, 0, 0,
                 "divine curse", "You are no longer cursed by the gods."
         },
 
         {
                 "resist heat", &gsn_resist_heat,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_resist_heat, 15, 12,
                 "resist heat", "You feel more vulnerable to heat and flame."
         },
 
         {
                 "resist cold", &gsn_resist_cold,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_resist_cold, 15, 12,
                 "resist cold", "You feel more vulnerable to cold and ice."
         },
 
         {
                 "resist lightning", &gsn_resist_lightning,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 4,
                 spell_resist_lightning, 15, 12,
                 "resist lightning", "You feel more vulnerable to electricity."
         },
 
         {
                 "resist acid", &gsn_resist_acid,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 128,
                 spell_resist_acid, 15, 12,
                 "resist acid", "You feel more vulnerable to acid."
         },
 
         {
                 "hellfire", &gsn_hells_fire,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 1|16384,
                 spell_hells_fire, 20, 12,
                 "<160>h<124>e<88>l<124>l<160>f<124>i<88>r<124>e<0>", "!Hellfire!"
         },
 
         {
                 "holy prayer of destruction", &gsn_prayer_destruction,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "<556><196>+*(<15>deity<196>)*+<557>", "!holy prayer of destruction"
         },
 
         {
                 "plague", &gsn_prayer_plague,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 524288,
                 spell_null, 0, 0,
                 "plague", "You have recovered from your illness."
         },
 
         {
                 "resistance magiks", &gsn_group_resistance,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "resistance magiks", "!Group Resistance!"
         },
 
         {
                 "fury of nature", &gsn_natures_fury,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_natures_fury, 25, 12,
                 "magical assault", ""
         },
 
         {
                 "dual parry", &gsn_dual_parry,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "", "!Parry!"
         },
 
         {
                 "addqp", &gsn_addqp,
-                TYPE_STR, TAR_IGNORE, POS_DEAD,
+                TYPE_STR, TAR_IGNORE, POS_DEAD, 512,
                 spell_null, 0, 0,
                 "", "!Addqp!"
         },
 
         {
                 "chaos blast", &gsn_chaos_blast,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, 8|16384,
                 spell_chaos_blast, 5, 12,
                 "<242>c<251>h<242>a<251>o<242>s<0> <242>b<251>l<242>a<251>s<242>t<0>", "!Chaos Blast!"
         },
 
         {
                 "detect curse", &gsn_detect_curse,
-                TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_detect_curse, 5, 12,
                 "", "You no longer feel an affinity for the accursed."
         },
 
         {
                 "knife toss", &gsn_knife_toss,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 0, 8,
                 "knife toss", "!Knife Toss!"
         },
 
         {
                 "soar", &gsn_soar,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 24,
                 "", "!Soar!"
         },
 
         {
                 "smoke bomb", &gsn_smoke_bomb,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 0, 8,
                 "smoke bomb", "!Smoke Bomb!"
         },
 
         {
                 "snap shot", &gsn_snap_shot,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 0, 24,
                 "snap shot", "!Snap Shot!"
         },
 
         {
                 "crush", &gsn_crush,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 0, 18,
                 "crush", "!Crush!"
         },
 
         {
                 "swoop", &gsn_swoop,
-                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 0, 18,
                 "swoop", "!Swoop!"
         },
 
         {
                 "smelt", &gsn_smelt,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 0,
                 "smelt", "!Smelt!"
 
@@ -5889,7 +5934,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "imbue", &gsn_imbue,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 0,
                 "imbue", "!Imbue!"
 
@@ -5897,28 +5942,28 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "counterbalance", &gsn_counterbalance,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 0,
                 "counterbalanced attack", "!Counterbalance!"
         },
 
         {
                 "trigger", &gsn_trigger,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "turret module", "!Trigger!"
         },
 
         {
                 "dart", &gsn_dart,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "dart module", "!Dart!"
         },
 
         {
                 "empower", &gsn_empower,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "empower", "!Empower!"
 
@@ -5926,21 +5971,21 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "osstat", &gsn_osstat,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Osstat!"
         },
 
         {
                 "osfind", &gsn_osfind,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!Ostat!"
         },
 
         {
                 "hurl", &gsn_hurl,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 24,
                 "hurled weapon", "!Hurl!"
                 /* is used for weapons and shields but 'hurled weapon' is not called by shield attack, so. */
@@ -5948,371 +5993,371 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "arrow module", &gsn_arrow,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "arrow module", "!Arrow!"
         },
 
         {
                 "turret", &gsn_turret,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "turret base", "!Turret!"
         },
 
         {
                 "uncommon set", &gsn_uncommon_set,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "uncommon set", "!Uncommon_set!"
         },
 
         {
                 "rare set", &gsn_rare_set,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "rare set", "!Rare_set!"
         },
 
         {
                 "bloodforged set", &gsn_bloodforged_set,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "bloodforged set", "!Bloodforged_set!"
         },
 
         {
                 "astral set", &gsn_astral_set,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "astral set", "!Astral_set!"
         },
 
         {
                 "weaponsmithing", &gsn_group_weaponsmith,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Weaponsmith!"
         },
 
         {
                 "armoursmithing", &gsn_group_armoursmith,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Armoursmith!"
         },
 
         {
                 "weaponchain", &gsn_weaponchain,
-                TYPE_STR, TAR_IGNORE, POS_DEAD,
+                TYPE_STR, TAR_IGNORE, POS_DEAD, 512,
                 spell_null, 0, 0,
                 "chained weapon", "!Weaponchain!"
         },
 
         {
                 "shieldchain", &gsn_shieldchain,
-                TYPE_STR, TAR_IGNORE, POS_DEAD,
+                TYPE_STR, TAR_IGNORE, POS_DEAD, 512,
                 spell_null, 0, 0,
                 "chained shield", "!Shieldchain!"
         },
 
         {
                 "strengthen", &gsn_strengthen,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
                 spell_null, 0, 0,
                 "strengthen", "!Strengthen!"
         },
 
         {
                 "steel broadsword", &gsn_steel_broadsword,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "steel broadsword", "!Steel_Broadsword!"
         },
 
         {
                 "titanium rapier", &gsn_titanium_rapier,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "titanium rapier", "!Titanium_rapier!"
         },
 
         {
                 "slow", &gsn_slow,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, 16384|32768,
                 spell_slow, 200, 18,
                 "spell", "You feel yourself speed up."
         },
 
         {
                 "stabilise", &gsn_stabilise,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, 16384,
                 spell_stabilise, 50, 12,
                 "spell", "Your body returns to its normal state."
         },
 
         {
                 "engrave", &gsn_engrave,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 24,
                 "engrave", "!Engrave!"
         },
 
         {
                 "discharge", &gsn_discharge,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 24,
                 "discharge", "!Discharge!"
         },
 
         {
                 "steel cache", &gsn_steel_cache,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "steel cache", "!Steel_cache!"
         },
 
         {
                 "flukeslap", &gsn_flukeslap,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 24,
                 "flukeslap", "!Flukeslap!"
         },
 
         {
                 "swallow", &gsn_swallow,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 24,
                 "<132>s<168>w<204>a<204>l<203>l<168>o<132>w<0>", "You escape from the insides of the creature."
         },
 
         {
                 "serrate", &gsn_serrate,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "<231>bl<225>ee<219>d e<213>ff<207>ec<201>t<0>", "!Serrate!"
         },
 
         {
                 "innate knowledge", &gsn_innate_knowledge,
-                TYPE_INT, TAR_IGNORE, POS_RESTING,
+                TYPE_INT, TAR_IGNORE, POS_RESTING, 16384,
                 spell_null, 0, 0,
                 "innate knowledge", "!Innate Knowledge!"
         },
 
         {
                 "spit mucus", &gsn_spit_mucus,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 24,
                 "<236>e<237>x<238>p<239>e<240>c<241>t<242>o<243>r<245>a<246>t<247>e<248>d <249>m<250>u<251>c<252>u<253>s<0>", "You regain autonomy over your body."
         },
 
         {
                 "steam breath", &gsn_steam_breath,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 1|16384,
                 spell_steam_breath, 50, 12,
                 "<51>j<87>e<123>t<159> o<195>f<253> s<254>t<255>e<15>a<556>m<0>", "!Steam Breath!"
         },
 
         {
                 "mech tech", &gsn_group_mech_tech,
-                TYPE_STR, TAR_IGNORE, POS_DEAD,
+                TYPE_STR, TAR_IGNORE, POS_DEAD, 512,
                 spell_null, 0, 0,
                 "", "!Group MechTech!"
         },
 
         {
                 "turret tech", &gsn_group_turret_tech,
-                TYPE_STR, TAR_IGNORE, POS_DEAD,
+                TYPE_STR, TAR_IGNORE, POS_DEAD, 512,
                 spell_null, 0, 0,
                 "", "!Group TurretTech!"
         },
 
         {
                 "runic arts", &gsn_group_runic_arts,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Runic Arts!"
         },
 
         {
                 "inscription", &gsn_group_inscription,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Inscription!"
         },
         
         {
                 "advanced smithing", &gsn_group_adv_smith,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Advanced Smithing!"
         },
           
         {
                 "weapon lore", &gsn_group_weaponlore,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Weapon Lore!"
         },
 
         {
                 "blade module", &gsn_blade_module,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "razor blade", "!Blade Module!"
         },
 
         {
                 "shuriken module", &gsn_shuriken_module,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "shuriken", "!Shuriken Module!"
         },
 
         {
                 "spear module", &gsn_spear_module,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "sharpened spear", "!Spear Module!"
         },
 
         {
                 "arrestor module", &gsn_arrestor_module,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "", "!Arrestor Module!"
         },
 
         {
                 "driver module", &gsn_driver_module,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "", "!DRiver Module!"
         },
 
         {
                 "reflector module", &gsn_reflector_module,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "reflected spell", "!DRiver Module!"
         },
 
         {
                 "shield module", &gsn_shield_module,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "", "!Shield Module!"
         },
 
         {
                 "adamantite katana", &gsn_adamantite_katana,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "", "!Titanium_rapier!"
         },
 
         {
                 "electrum sword", &gsn_electrum_sword,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "", "!Electrum sword!"
         },
 
         {
                 "starmetal dual blade", &gsn_starmetal_dual_blade,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "", "!Starmetal dual blade!"
         },
 
         {
                 "inscribe", &gsn_inscribe,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 24,
                 "inscribe", "!Inscribe!"
         },
 
         {
                 "adamantite runic blade", &gsn_adamantite_runic_blade,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "runic blade", "!Adamantite runic blade!"
         },
 
         {
                 "electrum runic blade", &gsn_electrum_runic_blade,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "runic blade", "!Electrum runic blade!"
         },
 
         {
                 "starmetal runic blade", &gsn_starmetal_runic_blade,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
                 spell_null, 0, 0,
                 "runic blade", "!Starmetal runic blade!"
         },
 
         {
                 "pyro rune", &gsn_pyro_rune,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 1,
                 spell_runic_flames, 0, 0,
                 "runic flames", "!Pyro rune!"
         },
 
         {
                 "cyro rune", &gsn_cyro_rune,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 2,
                 spell_runic_frost, 0, 0,
                 "runic frost", "!Cyro rune!"
         },
 
         {
                 "bolt rune", &gsn_bolt_rune,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 4,
                 spell_runic_bolts, 0, 0,
                 "runic bolts", "!Bolt rune!"
         },
 
         {
                 "stab rune", &gsn_stab_rune,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 32,
                 spell_runic_stab, 0, 0,
                 "runic stab", "!Pyro rune!"
         },
 
         {
                 "rend rune", &gsn_rend_rune,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 64,
                 spell_runic_rend, 0, 0,
                 "runic rend", "!Rend rune!"
         },
 
         {
                 "mending rune", &gsn_mend_rune,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, 16384,
                 spell_runic_mend, 0, 0,
                 "runic mend", "!Mending rune!"
         },
 
         {
                 "cure rune", &gsn_cure_rune,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, 16384,
                 spell_runic_cure, 0, 0,
                 "runic cure", "!Cure rune!"
         },
 
         {
                 "ward rune", &gsn_ward_rune,
-                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, 16384,
                 spell_runic_ward, 0, 0,
                 "runic cure", "!Ward rune!"
         },
 
         {
                 "rune casting", &gsn_group_rune_casting,
-                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Rune Casting!"
         },
@@ -6326,63 +6371,63 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "mage base", &gsn_mage_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-mage base-!"
         },
 
         {
                 "cleric base", &gsn_cleric_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-cleric base-!"
         },
 
         {
                 "thief base", &gsn_thief_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-thief base-!"
         },
 
         {
                 "warrior base", &gsn_warrior_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-warrior base-!"
         },
 
         {
                 "psionic base", &gsn_psionic_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-psionic base-!"
         },
 
         {
                 "shifter base", &gsn_shifter_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-shifter base-!"
         },
 
         {
                 "brawler base", &gsn_brawler_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-brawler base-!"
         },
 
         {
                 "ranger base", &gsn_ranger_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-ranger base-!"
         },
 
         {
                 "smithy base", &gsn_smithy_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-smithy base-!"
         },
@@ -6394,69 +6439,69 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "necro base", &gsn_necro_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-necro base-!"
         },
 
         {
                 "warlock base", &gsn_warlock_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-warlock base-!"
         },
 
         {
                 "templar base", &gsn_templar_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-templar base-!"
         },
 
         {
                 "druid base", &gsn_druid_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-druid base-!"
         },
 
         {
                 "ninja base", &gsn_ninja_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-ninja base-!"
         },
 
         {
                 "bounty base", &gsn_bounty_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-bounty base-!"
         },
 
         {
                 "thug base", &gsn_thug_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-thug base-!"
         },
 
         {
                 "knight base", &gsn_knight_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-knight base-!"
         },
 
         {
                 "infernalist base", &gsn_infernalist_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-infernalist base-!"
         },
         {
                 "witch base", &gsn_witch_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-witch base-!"
         },
@@ -6464,63 +6509,63 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "werewolf base", &gsn_werewolf_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-werewolf base-!"
         },
 
         {
                 "vampire base", &gsn_vampire_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-vampire base-!"
         },
 
         {
                 "monk base", &gsn_monk_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-monk base-!"
         },
 
         {
                 "artist base", &gsn_martist_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-martial artist base-!"
         },
 
         {
                 "barbarian base", &gsn_barbarian_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-barbarian base-!"
         },
 
         {
                 "bard base", &gsn_bard_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-bard base-!"
         },
 
         {
                 "engineer base", &gsn_engineer_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-engineer base-!"
         },
 
         {
                 "runesmith base", &gsn_runesmith_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-runesmith base-!"
         },
 
         {
                 "oscore", &gsn_oscore,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
                 spell_null, 0, 0,
                 "", "!OScore!"
         },
@@ -6537,7 +6582,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "teacher base", &gsn_teacher_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-teacher base-!"
         }

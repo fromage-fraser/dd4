@@ -13,7 +13,7 @@ with pride on his chestplate. The gold crest of two coins seems to match
 the wealth of this town.
 ~
 1|2|16384 4|8|32|128 900 S
-30 2 2 1d1+30000 1d8+32
+30 2 2 1e1+30000 1d8+32
 0 80000
 8 8 1
 #10202
@@ -216,7 +216,7 @@ These are like the biggest and meanest men you've every seen.
 They look more like trolls or ogres than men.
 ~
 2 4|8|32|128 800 S
-16 15 -2 1d1+999 2d10+20
+16 15 -2 1r1+999 2d10+20
 0 19000
 8 8 1
 #10219
@@ -512,7 +512,7 @@ Lord Doom is resting here from his long journeys.
 ~
 ~
 2 8 100 S
-18 20 9 2d6+10 1d5+0
+18 20 9 2r6+10 1d5+0
 0 100
 8 8 1
 #10245

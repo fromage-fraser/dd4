@@ -331,8 +331,15 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
             case APPLY_WEIGHT:
             case APPLY_GOLD:
             case APPLY_EXP:
+            case APPLY_DRAGON_AURA:
                 break;
 
+            case APPLY_SWIFTNESS:
+                ch->swiftness +=mod;
+
+            case APPLY_CRIT:
+                ch->crit +=mod;
+                
             case APPLY_MANA:
                 ch->max_mana += mod;
                 break;
@@ -689,9 +696,10 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         break;
                 }
 
-            case APPLY_RESIST_HEAT:
-                af.type = skill_lookup("resist heat");
-                if( fAdd )
+            case APPLY_RESIST_HEAT:             
+                ch->resist_heat += mod;
+              /*  af.type = skill_lookup("resist heat");
+              if( fAdd )
                 {
                         if( is_affected( ch, af.type ) )
                                 break;
@@ -708,10 +716,12 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 {
                         affect_strip( ch, af.type );
                         send_to_char("You feel vulnerable to heat and flame.\n\r", ch);
-                }
+                } */
                 break;
 
             case APPLY_RESIST_COLD:
+                ch->resist_cold += mod;
+ /*
                 af.type = skill_lookup("resist cold");
                 if( fAdd )
                 {
@@ -731,9 +741,11 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         affect_strip( ch, af.type );
                         send_to_char("You feel vulnerable to cold and ice.\n\r", ch);
                 }
-                break;
+                break; */
 
             case APPLY_RESIST_LIGHTNING:
+                ch->resist_lightning += mod;
+                /*
                 af.type = skill_lookup("resist lightning");
                 if( fAdd )
                 {
@@ -752,11 +764,12 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 {
                         affect_strip( ch, af.type );
                         send_to_char("You feel vulnerable to electricity.\n\r", ch);
-                }
+                } */
                 break;
-
+                
             case APPLY_RESIST_ACID:
-                af.type = skill_lookup("resist acid");
+                ch->resist_acid += mod;
+         /*     af.type = skill_lookup("resist acid");
                 if( fAdd )
                 {
                         if( is_affected( ch, af.type ) )
@@ -774,7 +787,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 {
                         affect_strip( ch, af.type );
                         send_to_char("You feel vulnerable to acid.\n\r", ch);
-                }
+                }*/
                 break;
 
             case APPLY_BREATHE_WATER:
@@ -2259,9 +2272,9 @@ OBJ_DATA *create_money( int plat, int gold, int silver, int copper )
         }
 
         if ( (plat + gold + silver + copper) == 1 )
-                obj = create_object( get_obj_index( OBJ_VNUM_MONEY_ONE  ), 0 );
+                obj = create_object( get_obj_index( OBJ_VNUM_MONEY_ONE  ), 0, 1, FALSE );
         else
-                obj = create_object( get_obj_index( OBJ_VNUM_MONEY_SOME ), 0 );
+                obj = create_object( get_obj_index( OBJ_VNUM_MONEY_SOME ), 0, 1, FALSE);
 
         obj->value[0]           = copper;
         obj->value[1]           = silver;
@@ -2723,6 +2736,9 @@ char *affect_loc_name( int location )
             case APPLY_ENGRAVED:                return "damage enhancement";
             case APPLY_SERRATED:                return "bleed over time";
             case APPLY_INSCRIBED:               return "rune focus";
+            case APPLY_CRIT:                    return "critical hit chance";
+            case APPLY_SWIFTNESS:                   return "attack speed";
+            case APPLY_DRAGON_AURA:             return "aura of the dragon";
         }
 
         bug( "Affect_location_name: unknown location %d.", location );
@@ -2963,6 +2979,66 @@ char* body_form_name (unsigned long int vector)
                 case BODY_HUGE:             return "huge";
                 case BODY_INORGANIC:        return "inorganic";
                 case BODY_HAS_TAIL:         return "has_tail";
+
+                case PART_HEAD:                 return "head";
+                case PART_MANY_HEAD:            return "many_heads";
+                case PART_ARMS:                 return "arms";
+                case PART_MANY_ARMS:            return "many_arms";
+                case PART_2_LEGS:               return "tail";
+                case PART_4_LEGS:               return "four_legs";
+                case PART_MANY_LEGS:            return "many_legs";
+                case PART_HEART:                return "heart";
+                case PART_BRAINS:               return "brains";
+                case PART_GUTS:                 return "guts";
+                case PART_FINGERS:              return "fingers";
+                case PART_EAR:                  return "ear";
+                case PART_EYE:                  return "eye";
+                case PART_LONG_TONGUE:          return "long_tounge";
+                case PART_EYESTALKS:            return "eyestalks";
+                case PART_TENTACLES:            return "tantacles";
+                case PART_FINS:                 return "fins";
+                case PART_WINGS:                return "wings";
+                case PART_TAIL:                 return "tail";
+                case PART_SCALES:               return "scales";
+
+                case PART_CLAWS:                return "claws";
+                case PART_FANGS:                return "fangs";
+                case PART_HORNS:                return "horns";
+                case PART_TUSKS:                return "tusks";
+                case PART_TAILATTACK:           return "tail";
+                case PART_SHARPSCALES:          return "sharp_scales";
+                case PART_BEAK:                 return "beak";
+                case PART_HAUNCH:               return "haunch";
+                case PART_HOOVES:               return "hooves";
+                case PART_PAWS:                 return "paws";
+                case PART_FORELEGS:             return "forelegs";
+                case PART_FEATHERS:             return "feathers";
+                case PART_HUSK_SHELL:           return "husk_shell";
+
+                default: return "none";
+        }
+}
+
+char* resist_name (unsigned long int vector)
+{
+        switch (vector)
+        {
+                case RES_FIRE:          return "fire";
+                case RES_COLD:          return "cold";
+                case RES_ELECTRICITY:   return "electricity";
+                case RES_ENERGY:        return "energy";
+                case RES_BLUNT:         return "blunt";
+                case RES_PIERCE:        return "piercing";
+                case RES_SLASH:         return "slash";
+                case RES_ACID:          return "acid";
+                case RES_POISON:        return "poison";
+                case RES_DRAIN:         return "drain";
+                case RES_SLEEP:         return "sleep";
+                case RES_CHARM:         return "charm";
+                case RES_HOLD:          return "hold";
+                case RES_NONMAGIC:      return "non_magic";
+                case RES_MAGIC:         return "magic";
+                case RES_PARALYSIS:     return "paralysis";
 
                 default: return "none";
         }
@@ -3324,6 +3400,7 @@ char *extra_bit_name (unsigned long int extra_flags)
             case ITEM_ANTI_SMITHY:          return "anti_smithy";
             case ITEM_CURSED:               return "cursed";
             case ITEM_RUNE:                 return "rune";
+            case ITEM_DONOT_RANDOMISE:      return "pure";
 
             default: return "(unknown)";
         }

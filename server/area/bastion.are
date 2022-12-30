@@ -314,6 +314,7 @@ golden halo is shining in the sun and long white robes billow out around it.
 100 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< reserved~ elite~
 #30620
 dark angel~
 the Dark Angel~
@@ -439,6 +440,7 @@ mpecho {wThe Shadow Lord turns towards you and shrieks, "You dare to disturb me!
 mpkill $n
 ~
 |
+< reserved~ boss~
 #30629
 giant crow~
 the Giant crow~

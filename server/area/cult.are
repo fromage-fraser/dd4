@@ -206,7 +206,7 @@ monstrocity.  He is a creature to be reckoned with, and unless the
 gods are in your favor he will probably kill you.
 ~
 2|32|64 8|16|32|128 -1000 S
-34 17 6 1d4+30 1d4+3
+34 17 6 1r4+30 1d4+3
 96 400
 0 0 1
 #9817

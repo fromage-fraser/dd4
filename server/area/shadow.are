@@ -157,6 +157,7 @@ The captain growls and asks your business in the castle.
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ elite~
 #16614
 Jailer~
 the jailer~
@@ -224,6 +225,7 @@ He is very regal looking.
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< reserved~ boss~
 #16620
 Bodyguard guard~
 the bodyguard~
