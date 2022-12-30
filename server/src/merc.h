@@ -3099,7 +3099,7 @@ struct skill_type
 #define RES_CURSE                 BIT_19
 
 #define MAX_MOB 3
-#define MAX_SPECIES 3
+#define MAX_SPECIES 4
 #define MAX_RANK 6
 
 /* mob_spec_data Brutus */
@@ -4674,9 +4674,10 @@ void  show_list_to_char                 args( ( OBJ_DATA *list, CHAR_DATA *ch, b
 char* format_obj_to_char                args( ( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort ) );
 void  show_char_to_char                 args( ( CHAR_DATA *list, CHAR_DATA *ch ) );
 void  set_title                         args( ( CHAR_DATA *ch, char *title ) );
-int   species_sn                        args( (CHAR_DATA *ch) );
-int   rank_sn                           args( (CHAR_DATA *ch) );
-int   rank_sn_index                     args( (MOB_INDEX_DATA *pMobIndex) );
+int   species_sn                        args( ( CHAR_DATA *ch) );
+int   mob_type_sn                       args( ( CHAR_DATA *ch) );
+int   rank_sn                           args( ( CHAR_DATA *ch) );
+int   rank_sn_index                     args( ( MOB_INDEX_DATA *pMobIndex) );
 bool  check_blind                       args( ( CHAR_DATA *ch ) );
 int   has_pre_req                             ( CHAR_DATA *ch, int sn );
 char* number_suffix                           ( int num );

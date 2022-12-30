@@ -968,39 +968,39 @@ int rank_sn_index ( MOB_INDEX_DATA *pMobIndex)
 
 }
 
+/* REturn the species index number for a character */
+int mob_type_sn ( CHAR_DATA *ch)
+{
+        if ( ch->mobspec )
+        {
+                int sn;
+                for ( sn = 0; sn < MAX_MOB; sn++ )
+                        {
+                                if ( !strcmp( ch->mobspec, mob_table[sn].name ) )
+                                return sn;
+                        }
+                return -1;
+        }
+        return -1;
+}
+
 
 /* REturn the species index number for a character */
 int species_sn ( CHAR_DATA *ch)
 {
-        /* char          buf          [ MAX_STRING_LENGTH ]; */
-        if ( ch->mobspec )
+        /* make sure the mob has a mob_type first*/
+        if (mob_type_sn(ch))
         {
                 int sn;
-                int ms;
-                char * mobspec_species;
-
-                mobspec_species = "NULL";
-                for ( ms = 0; ms < MAX_MOB; ms++ )
-                        {
-                                if ( !mob_table[ms].name )
-                                        break;
-
-                                mobspec_species = mob_table[ms].species;
-                        }
-                if (!mobspec_species)
-                        return -1;
-                
                 for ( sn = 0; sn < MAX_SPECIES; sn++ )
                 {
                  /*        sprintf(buf, "%s %s",species_table[sn].species, ch->mobspec );
                         bug(buf, 0);   */
-                       
-                        if ( !species_table[sn].species )
-                                break;
-
-                        if ( species_table[sn].species == mobspec_species)
-                                return sn;
+                        /* compare the mob_table species name and the species_table*/
+                        if ( !strcmp( mob_table[mob_type_sn(ch)].species, species_table[sn].species ) )
+                        return sn;
                 }
+                return -1;
         }
         return -1;
 }

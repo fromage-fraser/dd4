@@ -32,6 +32,12 @@ const struct species_type  species_table [ MAX_SPECIES ] =
         /* species, body parts, attack parts */
       
         {
+                "reserved", 
+                0,
+                0
+        },
+
+        {
                 "humanoid", 
                 1024|4096|32768|BIT_15|BIT_18|BIT_19|BIT_20|BIT_21|BIT_22|BIT_23|BIT_24|BIT_25,
                 0
