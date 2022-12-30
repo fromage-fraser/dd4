@@ -2966,20 +2966,23 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called)
 
                 level_dif = victim->level - gch->level;
                 fame = 0;
-                /* print out damage per round - Brutus*/
-                sprintf(buf, "Damage Per Round (DPR): %s", get_dpr(ch->pcdata->dam_per_fight/ch->pcdata->rounds));
+                if (gch->pcdata->rounds > 1)
+                        gch->pcdata->rounds = 1;
+
+                /* print out damage per round - Brutus
+                sprintf(buf, "Damage Per Round (DPR): %s", get_dpr(gch->pcdata->dam_per_fight/gch->pcdata->rounds));
                 send_to_char(buf, gch);
-                if (ch->level > 50)
+                if (gch->level > 50)
                 {
-                sprintf(buf, "%d\n\r", ch->pcdata->dam_per_fight/ch->pcdata->rounds);
+                sprintf(buf, "%d\n\r", gch->pcdata->dam_per_fight/gch->pcdata->rounds);
                 send_to_char(buf, gch);      
                 }
                 else {
                 sprintf(buf, "\n\r");
                 send_to_char(buf, gch);        
                 }
-                ch->pcdata->rounds = 0;
-                ch->pcdata->dam_per_fight = 0;
+                gch->pcdata->rounds = 0;
+                gch->pcdata->dam_per_fight = 0; */
 
                 if (level_dif > -6 && gch->pcdata->dam_bonus)
                 {
