@@ -2274,9 +2274,9 @@ OBJ_DATA *create_money( int plat, int gold, int silver, int copper )
         }
 
         if ( (plat + gold + silver + copper) == 1 )
-                obj = create_object( get_obj_index( OBJ_VNUM_MONEY_ONE  ), 0, 1, FALSE );
+                obj = create_object( get_obj_index( OBJ_VNUM_MONEY_ONE  ), 0,"common", FALSE );
         else
-                obj = create_object( get_obj_index( OBJ_VNUM_MONEY_SOME ), 0, 1, FALSE);
+                obj = create_object( get_obj_index( OBJ_VNUM_MONEY_SOME ), 0,"common", FALSE);
 
         obj->value[0]           = copper;
         obj->value[1]           = silver;

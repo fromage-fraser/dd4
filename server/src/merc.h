@@ -364,6 +364,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define SCORE_FLY               100
 #define SCORE_DETECTS           50
 #define SCORE_RESISTS           1500    /*Obj->level dependant*/
+#define SCORE_AC                5
 
 /*
  * Channel recall, 'review' command; Gezhp 2001
@@ -3145,6 +3146,7 @@ struct rank
 {
         char *name;
         int rank_bonus;
+        int hp_bonus;
         char *who_format;
 };
 
@@ -4677,6 +4679,8 @@ void  set_title                         args( ( CHAR_DATA *ch, char *title ) );
 int   species_sn                        args( ( CHAR_DATA *ch) );
 int   mob_type_sn                       args( ( CHAR_DATA *ch) );
 int   rank_sn                           args( ( CHAR_DATA *ch) );
+int   rank_bonus                        args( ( char *rank ) );
+char* rank_char                               ( CHAR_DATA *ch);
 int   rank_sn_index                     args( ( MOB_INDEX_DATA *pMobIndex) );
 bool  check_blind                       args( ( CHAR_DATA *ch ) );
 int   has_pre_req                             ( CHAR_DATA *ch, int sn );
@@ -4686,6 +4690,7 @@ void  print_who_data                          ( CHAR_DATA *ch, char *buf );
 void  print_smithy_data                       ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf );
 int   get_colour_index_by_code                ( int ccode );
 int   calc_item_score                         ( OBJ_DATA *obj);
+int   calc_aff_score                          (int apply, int level);
 
 /* act_move.c */
 void move_char                          args( ( CHAR_DATA *ch, int door ) );
@@ -4737,7 +4742,7 @@ void reverse_char_array                       ( char arr[], int n );
 void    boot_db                         args( ( void ) );
 void    area_update                     args( ( void ) );
 CD *    create_mobile                   args( ( MOB_INDEX_DATA *pMobIndex ) );
-OD *    create_object                   args( ( OBJ_INDEX_DATA *pObjIndex, int level, int rank, bool randomise ) );
+OD *    create_object                   args( ( OBJ_INDEX_DATA *pObjIndex, int level, char *rank, bool randomise ) );
 void    clear_char                      args( ( CHAR_DATA *ch ) );
 void    free_char                       args( ( CHAR_DATA *ch ) );
 char *  get_extra_descr                 args( ( const char *name, EXTRA_DESCR_DATA *ed ) );
@@ -4778,7 +4783,7 @@ void    bug                             args( ( const char *str, int param ) );
 void    log_string                      args( ( const char *str ) );
 void    tail_chain                      args( ( void ) );
 void    reset_area                      args( ( AREA_DATA * pArea ) );
-void    randomise_object                args( ( OBJ_DATA *obj, int level, int rank) );
+void    randomise_object                args( ( OBJ_DATA *obj, int level, char *rank) );
 
 /* fight.c */
 void    violence_update                 args( ( void ) );

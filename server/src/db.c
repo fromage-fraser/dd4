@@ -2917,7 +2917,7 @@ void reset_area( AREA_DATA *pArea )
                                 break;
                         }
 
-                        obj = create_object( pObjIndex, number_fuzzy( level ), 1, FALSE );
+                        obj = create_object( pObjIndex, number_fuzzy( level ), "common", FALSE );
                         obj->cost = 0;
                         obj_to_room( obj, pRoomIndex );
                         last = TRUE;
@@ -2959,7 +2959,7 @@ void reset_area( AREA_DATA *pArea )
                                 break;
                         }
 
-                        obj = create_object(pObjIndex, number_fuzzy(pReset->arg1), 1, FALSE);
+                        obj = create_object(pObjIndex, number_fuzzy(pReset->arg1), "common", FALSE);
                         obj->cost = 0;
                         obj_to_room(obj, pRoomIndex);
                         last = TRUE;
@@ -2992,7 +2992,7 @@ void reset_area( AREA_DATA *pArea )
                                 break;
                         }
 
-                        obj = create_object( pObjIndex, number_fuzzy( obj_to->level ), 1, FALSE );
+                        obj = create_object( pObjIndex, number_fuzzy( obj_to->level ), "common", FALSE );
                         obj_to_obj( obj, obj_to );
                         last = TRUE;
                         break;
@@ -3081,7 +3081,7 @@ void reset_area( AREA_DATA *pArea )
 
                                         
                                                 
-                                obj = create_object( pObjIndex, olevel, 1, FALSE );
+                                obj = create_object( pObjIndex, olevel, "common", FALSE );
 
                                 if ( pReset->command == 'G' )
                                         SET_BIT( obj->extra_flags, ITEM_INVENTORY );
@@ -3090,10 +3090,10 @@ void reset_area( AREA_DATA *pArea )
                         {
                                 /* Make sure MUD School loot is level 1 */
                                 if (IS_SET(pArea->area_flags, AREA_FLAG_SCHOOL) && level <= 5) {
-                                        obj = create_object(pObjIndex, 1, 1, FALSE);
+                                        obj = create_object(pObjIndex, 1, "common", FALSE);
                                 }
                                 else {
-                                        obj = create_object(pObjIndex, number_fuzzy(level), rank_sn(mob), TRUE);
+                                        obj = create_object(pObjIndex, number_fuzzy(level), rank_char(mob), TRUE);
                                 }
 
                                 if (obj->level > LEVEL_HERO) {
@@ -3258,7 +3258,7 @@ CHAR_DATA * create_mobile( MOB_INDEX_DATA *pMobIndex )
         mob->max_hit = mob->level * 8
                 + number_range( mob->level * mob->level / 4, mob->level * mob->level );
        /* mob->max_hit *= rank_bonus; */
-        mob->max_hit *= rank_table[rank_sn_index(pMobIndex)].rank_bonus; 
+        mob->max_hit *= rank_table[rank_sn_index(pMobIndex)].hp_bonus; 
 
         mob->hit                = mob->max_hit;
         mob->crit               = 5;
@@ -3277,7 +3277,7 @@ CHAR_DATA * create_mobile( MOB_INDEX_DATA *pMobIndex )
 /*
  * Create an instance of an object.
  */
-OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, int rank, bool randomise)
+OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, bool randomise)
 {
         static OBJ_DATA obj_zero;
         OBJ_DATA*       obj;
@@ -5028,7 +5028,7 @@ void load_games( FILE *fp )
 }
 
 /* Randomiser - Brutus Oct 2022 */
-void randomise_object( OBJ_DATA *obj, int level, int rank)
+void randomise_object( OBJ_DATA *obj, int level, char *rank)
 {
         AFFECT_DATA *paf;
         int random;
@@ -5085,6 +5085,10 @@ void randomise_object( OBJ_DATA *obj, int level, int rank)
         }
 
         /* Figure out the mob rank*/
+
+        mob_bonus = rank_bonus(rank);
+
+/*
         if (rank >=4)
                 mob_bonus=50;
         else if (rank ==3 )
@@ -5093,7 +5097,7 @@ void randomise_object( OBJ_DATA *obj, int level, int rank)
                 mob_bonus=5;
         else
                 mob_bonus=1;
-
+*/
 
         /* Find some unique random buffs */
         random = number_range ( 0,1000);
@@ -5126,26 +5130,37 @@ void randomise_object( OBJ_DATA *obj, int level, int rank)
         gain2 = random_list[r2].base_gain;
         gain3 = random_list[r3].base_gain;
         gain4 = random_list[r4].base_gain;
-        modifier1 = number_fuzzy(2500/gain1);      
-        modifier2 = number_fuzzy(2500/gain2);  
-        modifier3 = number_fuzzy(2500/gain3);  
-        modifier4 = number_fuzzy(2500/gain4);  
+        modifier1 = 1;      
+        modifier2 = 1;
+        modifier3 = 1;
+        modifier4 = 1;
 
      /*   sprintf(buf2, "[*****] RANDOMS: %d: 1:(%d %d %d) 2:(%d %d %d) 3:(%d %d %d) 4:(%d %d %d)", random, mod1, gain1, modifier1, mod2, gain2, modifier2, mod3, gain3, modifier3, mod4, gain4, modifier4);
         log_string (buf2); 
 */
-        if (random > (999-(LEGENDARY_CHANCE * mob_bonus)) && rank >= NPC_BOSS)/* 1 in 1000 chance to get a legendary */
+        if (random > (999-(LEGENDARY_CHANCE * mob_bonus)) && (!strcmp(rank, "boss")))/* 1 in 1000 chance to get a legendary */
         {
-
+                int target;
               /* try to randomise the gains for each mod */
-                while ( number_fuzzy(ITEM_SCORE_LEGENDARY) > ( (modifier1 * gain1)/level + (modifier2 * gain2)/level + (modifier3 * gain3)/level + (modifier4 * gain4)/level)) 
+              target = number_range( ITEM_SCORE_LEGENDARY, 1000);
+
+              modifier1 = target / 4 / calc_aff_score(mod1,level);
+              modifier2 = target / 4 / calc_aff_score(mod2,level);
+              modifier3 = target / 4 / calc_aff_score(mod3,level);
+              modifier4 = target / 4 / calc_aff_score(mod4,level);
+              
+        /*        while ( number_fuzzy(ITEM_SCORE_LEGENDARY) > 
+                        ( calc_aff_score(mod1,level)
+                        + calc_aff_score(mod2,level)
+                        + calc_aff_score(mod3,level)
+                        + calc_aff_score(mod4,level) )) 
                 {
-                modifier1 += number_fuzzy(2500/gain1);      
-                modifier2 += number_fuzzy(2500/gain2);  
-                modifier3 += number_fuzzy(2500/gain3);  
-                modifier4 += number_fuzzy(2500/gain4);  
+                        modifier1 += number_fuzzy(2500/gain1);      
+                        modifier2 += number_fuzzy(2500/gain2);  
+                        modifier3 += number_fuzzy(2500/gain3);  
+                        modifier4 += number_fuzzy(2500/gain4);  
                 }
-                
+          */      
                 if (!affect_free)
                 {
                         paf = alloc_perm( sizeof( *paf ) );
@@ -5219,7 +5234,7 @@ void randomise_object( OBJ_DATA *obj, int level, int rank)
                 obj->affected   = paf;   
 
         }
-        else if (random > (999-(EPIC_CHANCE * mob_bonus)) && rank >= NPC_ELITE)
+        else if (random > (999-(EPIC_CHANCE * mob_bonus)) && ( (!strcmp(rank, "elite")) ))
         {
                 /* try to randomise the gains for each mod */
                 while ( number_fuzzy(ITEM_SCORE_EPIC) > 

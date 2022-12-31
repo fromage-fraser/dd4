@@ -19,12 +19,13 @@
 
 const struct rank       rank_table [ MAX_RANK ] =
 {
-        { "none",       1,      "{WCommon.{x "},
-        { "common",     1,      "{WCommon.{x "},
-        { "rare",       2,      "<39>[Rare]<0> "},
-        { "elite",      3,      "<93>[Elite]<0> "},
-        { "boss",       5,      "<514><556><16>[<560>BOSS<561>]<0><557> "},
-        { "world",      30,     "<81>[WO<75>RL<69>D B<75>OS<81>S]<0> "}
+        /* name, rank_bonus, hp_bonus, who_format */
+        { "none",       1,      1,      "{WCommon.{x "},
+        { "common",     1,      1,      "{WCommon.{x "},
+        { "rare",       3,      2,      "<39>[Rare]<0> "},
+        { "elite",      3,      5,      "<93>[Elite]<0> "},
+        { "boss",       4,      7,      "<514><556><16>[<560>BOSS<561>]<0><557> "},
+        { "world",      5,     30,      "<81>[WO<75>RL<69>D B<75>OS<81>S]<0> "}
 };
 
 const struct species_type  species_table [ MAX_SPECIES ] =

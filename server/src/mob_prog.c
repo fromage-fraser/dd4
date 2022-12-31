@@ -1770,7 +1770,7 @@ void mprog_bribe_trigger( CHAR_DATA *mob, CHAR_DATA *ch, int amount )
   if ( IS_NPC( mob )
       && ( mob->pIndexData->progtypes & BRIBE_PROG ) )
     {
-      obj = create_object( get_obj_index( OBJ_VNUM_MONEY_SOME ), 0, 1, FALSE );
+      obj = create_object( get_obj_index( OBJ_VNUM_MONEY_SOME ), 0, "common", FALSE );
       sprintf( buf, obj->short_descr, amount );
       free_string( obj->short_descr );
       obj->short_descr = str_dup( buf );

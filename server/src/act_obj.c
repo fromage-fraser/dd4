@@ -3756,7 +3756,7 @@ void do_buy (CHAR_DATA *ch, char *argument)
                 {
                         for (; item_count > 0; item_count--)
                         {
-                                obj = create_object(obj->pIndexData, obj->level, 1, FALSE);
+                                obj = create_object(obj->pIndexData, obj->level, "common", FALSE);
                                 obj_to_char(obj, ch);
                         }
                 }
