@@ -987,7 +987,7 @@ void do_onstat( CHAR_DATA *ch, char *argument )
                         affect_loc_name( paf->location ), paf->modifier );
                 strcat( buf1, buf );
         }
-        
+
         send_to_char( buf1, ch );
         return;
 }
@@ -1492,11 +1492,11 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         victim->saving_throw,
                         victim->damage_mitigation);
                 strcat( buf1, buf );
-        
+
                 sprintf( buf, "Crit: {R%d{x  Swiftness: {R%d{x\n\r",
                         victim->crit,
                         victim->swiftness);
-                strcat( buf1, buf );                
+                strcat( buf1, buf );
 
                 sprintf( buf, "Align: {W%d{x  Exp: {W%d{x  Class: {W%d{x ({G%s{x)  SubCl: {W%d{x ({G%s{x)\n\rAge: {W%d{x  Fame: {W%d{x  Form: {W%s{x  Aggro_dam: {R%d{x  Rage: {R%d{x\n\r",
                         victim->alignment,
@@ -1726,7 +1726,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                 int temp = rank_sn(victim);
                 sprintf( buf, "Vnum: {R%d{x Rank: %s %d\n\r",
                         victim->pIndexData->vnum, rank_table[rank_sn(victim)].who_format, temp);
-                strcat( buf1, buf );                
+                strcat( buf1, buf );
 
                 if ( victim->short_descr[0] != '\0'
                 &&   victim->long_descr[0]  != '\0' )
@@ -1781,7 +1781,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                 sprintf( buf, "Crit: {R%d{x  Swiftness: {R%d{x\n\r",
                         victim->crit,
                         victim->swiftness);
-                strcat( buf1, buf );  
+                strcat( buf1, buf );
 
                 sprintf( buf, "Position: {G%d{x [{W%s{x]  Wimpy: {W%d{x  Exp modifier: {W%d{x\n\r",
                         victim->position,
@@ -1980,12 +1980,12 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         {
                                 if ( !mob_table[sn].name )
                                         break;
-                                        
+
                                 if ( !str_cmp(victim->mobspec, mob_table[sn].name))
                                 {
                                         strcat(buf, "\n\r{WThe Mobs Specification:{x\n\r");
                                         strcat( buf1, buf );
-                                
+
                                         sprintf( buf, "Name: %s Species: %s\n\r",
                                         mob_table[sn].name, mob_table[sn].species);
                                         strcat( buf1, buf );
@@ -2025,7 +2025,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                                                 }
                                         }
                                         strcat(buf1, "{x\n\r");
-                                        
+
                                         /*  Immune */
                                         sprintf( buf, "Immune to (num): {W");
                                         strcat( buf1, buf );
@@ -2058,7 +2058,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                                         strcat( buf1, buf );
                                         strcat(buf1, "{x\n\r");
                                         strcat(buf1, "Body Parts (txt):{R");
-                                        
+
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
                                                 if (IS_SET(species_table[species].body_parts, next))
@@ -2075,7 +2075,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                                         strcat( buf1, buf );
                                         bit_explode(ch, buf, species_table[species].attack_parts);
                                         strcat( buf1, buf );
-                                        strcat(buf1, "{x\n\r");            
+                                        strcat(buf1, "{x\n\r");
                                         strcat(buf1, "Attack Parts (txt):{R");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
@@ -4256,6 +4256,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
         char                    arg3 [ MAX_INPUT_LENGTH  ];
         unsigned long int       value;
         unsigned long int       bvalue;
+        int                     ivalue;
         char                    *bptr;
         int                     max;
 
@@ -4272,7 +4273,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
         if ( arg1[0] == '\0' || arg2[0] == '\0' || arg3[0] == '\0' )
         {
                 send_to_char("Syntax: mset <<victim> <<field>  <<value>\n\r"
-                             "or:     mset <<victim> <<string> <<>value>\n\r\n\r"
+                             "or:     mset <<victim> <<string> <<value>\n\r\n\r"
                              "Field being one of:\n\r"
                              "  str int wis dex con class level body_form\n\r"
                              "  hp mana move str_prac int_prac align\n\r"
@@ -4293,10 +4294,14 @@ void do_mset( CHAR_DATA *ch, char *argument )
         }
 
         /*
-         * Snarf the value (which need not be numeric).
+         * Snarf the mset value (which need not be numeric) and create necessary types for
+         * different applications (value for most, bvalue for bitflags, ivalue for applications
+         * that allow negative values like 'align' )
          */
+
         value = is_number( arg3 ) ? atoi( arg3 ) : -1;
         bvalue = strtoul(arg3, &bptr, 10);
+        ivalue = is_number( arg3 ) ? atoi( arg3 ) : -1;
 
         /*
          * Set something.
@@ -4602,7 +4607,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
         if ( !str_cmp( arg2, "hp" ) )
         {
-                if ( value < MIN_MSET_HP || value > MAX_MSET_HP )
+                if ( ivalue < MIN_MSET_HP || ivalue > MAX_MSET_HP )
                 {
                         sprintf( buf, "Hp range is %d to %d hit points.\n\r",
                                 MIN_MSET_HP,
@@ -4611,21 +4616,21 @@ void do_mset( CHAR_DATA *ch, char *argument )
                         return;
                 }
 
-                if ( victim->fighting && value < 0 )
+                if ( victim->fighting && ivalue < 0 )
                 {
                         send_to_char( "You cannot set a fighting person's hp below 0.\n\r", ch );
                         return;
                 }
-                victim->max_hit = value;
+                victim->max_hit = ivalue;
                 return;
         }
 
         if (!str_cmp(arg2, "rage"))
         {
-                if (value < 0)
+                if (ivalue < 0)
                         return;
 
-                victim->rage = value;
+                victim->rage = ivalue;
                 return;
         }
 
@@ -4767,13 +4772,14 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
         if ( !str_cmp( arg2, "align" ) )
         {
-                if ( value < -1000 || value > 1000 )
+                if ( ivalue < -1000 || ivalue > 1000 )
                 {
+
                         send_to_char( "Alignment range is -1000 to 1000.\n\r", ch );
                         return;
                 }
 
-                victim->alignment = value;
+                victim->alignment = ivalue;
                 return;
         }
 
@@ -4785,20 +4791,20 @@ void do_mset( CHAR_DATA *ch, char *argument )
                         return;
                 }
 
-                if ( ( value < 0 || value > 100 )
+                if ( ( ivalue < 0 || ivalue > 100 )
                     && get_trust( victim ) < LEVEL_IMMORTAL )
                 {
                         send_to_char( "Thirst range is 0 to 100.\n\r", ch );
                         return;
                 }
                 else
-                        if ( value < -1 || value > 100 )
+                        if ( ivalue < -1 || ivalue > 100 )
                         {
                                 send_to_char( "Thirst range is -1 to 100.\n\r", ch );
                                 return;
                         }
 
-                victim->pcdata->condition[COND_THIRST] = value;
+                victim->pcdata->condition[COND_THIRST] = ivalue;
                 return;
         }
 
@@ -4828,19 +4834,19 @@ void do_mset( CHAR_DATA *ch, char *argument )
                         return;
                 }
 
-                if ( ( value < 0 || value > 100 )
+                if ( ( ivalue < 0 || ivalue > 100 )
                     && get_trust( victim ) < LEVEL_IMMORTAL )
                 {
                         send_to_char( "Full range is 0 to 100.\n\r", ch );
                         return;
                 }
-                else if ( value < -1 || value > 100 )
+                else if ( ivalue < -1 || ivalue > 100 )
                 {
                         send_to_char( "Full range is -1 to 100.\n\r", ch );
                         return;
                 }
 
-                victim->pcdata->condition[COND_FULL] = value;
+                victim->pcdata->condition[COND_FULL] = ivalue;
                 return;
         }
 
@@ -4924,14 +4930,14 @@ void do_mset( CHAR_DATA *ch, char *argument )
                         return;
                 }
 
-                if (value < 0 || value >= NUMBER_DEITIES)
+                if (ivalue < 0 || ivalue >= NUMBER_DEITIES)
                 {
                         victim->pcdata->deity_patron = -1;
                         send_to_char ("Character now has no patron.\n\r", ch);
                 }
                 else
                 {
-                        victim->pcdata->deity_patron = value;
+                        victim->pcdata->deity_patron = ivalue;
                         send_to_char ("Ok.\n\r", ch);
                 }
                 return;
@@ -4981,13 +4987,13 @@ void do_mset( CHAR_DATA *ch, char *argument )
                         return;
                 }
 
-                if (value < 0)
+                if (ivalue < 0)
                 {
                         send_to_char ("Flag value must not be negative.\n\r", ch);
                 }
                 else
                 {
-                        victim->pcdata->deity_flags = value;
+                        victim->pcdata->deity_flags = ivalue;
                         send_to_char ("Ok.\n\r", ch);
                 }
                 return;
