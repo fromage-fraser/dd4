@@ -2871,7 +2871,7 @@ void do_oload( CHAR_DATA *ch, char *argument )
 
         for ( cc_def = 1; cc_def <= copies; cc_def++ )
         {
-                obj = create_object( pObjIndex, level, 1, TRUE );
+                obj = create_object( pObjIndex, level, 1, FALSE );
                 if ( IS_SET(obj->wear_flags, ITEM_TAKE) )
                 {
                         if ( (ch->carry_number + copies) > can_carry_n( ch ))

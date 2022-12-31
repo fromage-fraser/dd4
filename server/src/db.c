@@ -3283,6 +3283,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, int rank, bool ra
         OBJ_DATA*       obj;
         int             i;
         const int       complete_heal_sn = skill_lookup("complete heal");
+        /*        char buf [MAX_STRING_LENGTH]; */
 
         if ( !pObjIndex )
         {
@@ -3412,9 +3413,20 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, int rank, bool ra
                 break;
 
             case ITEM_WEAPON:
-                /* random stats  */
-                if (level >= 10 && randomise && (!IS_OBJ_STAT(obj,ITEM_DONOT_RANDOMISE)))
+                /* proceed if not constructed - as it will take damage fields from blueprint table */
+                if (IS_SET(obj->ego_flags, EGO_ITEM_CONSTRUCTED))
                 {
+                        break;
+                }
+                if ( (level < 10) || !randomise || (IS_OBJ_STAT(obj,ITEM_DONOT_RANDOMISE)))
+                {
+                        obj->value[1]   = number_fuzzy( number_fuzzy( 1 * level / 4 + 2 ) );
+                        obj->value[2]   = number_fuzzy( number_fuzzy( 3 * level / 4 + 6 ) );
+                        break;
+                }
+                else                 /* random stats  */ 
+                {
+
                         AFFECT_DATA *paf;
                         /* strip old effects then randomise stats */
                         for ( paf = obj->affected; paf; paf = paf->next )
@@ -3429,17 +3441,6 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, int rank, bool ra
                         }
                         randomise_object(obj, level, rank);
                 }
-                /* proceed if not constructed - as it will take damage fields from blueprint table */
-                if (IS_SET(obj->ego_flags, EGO_ITEM_CONSTRUCTED))
-                {
-                        break;
-                }
-                else
-                {
-                        obj->value[1]   = number_fuzzy( number_fuzzy( 1 * level / 4 + 2 ) );
-                        obj->value[2]   = number_fuzzy( number_fuzzy( 3 * level / 4 + 6 ) );
-                        break;
-                }
 
             /*
              * Although we can't wield armourer's hammers, area resets may
@@ -3452,9 +3453,17 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, int rank, bool ra
                 break;
 
             case ITEM_ARMOR:
-                /* random stats  */
-                obj->value[0]   = number_fuzzy( level / 5 + 2 );
-                if (level >= 10 && randomise && (!IS_OBJ_STAT(obj,ITEM_DONOT_RANDOMISE)))
+                /* proceed if not constructed - as it will take damage fields from blueprint table */
+                if (IS_SET(obj->ego_flags, EGO_ITEM_CONSTRUCTED))
+                {
+                        break;
+                }
+                if ( (level < 10) || !randomise || (IS_OBJ_STAT(obj,ITEM_DONOT_RANDOMISE)))
+                {
+                        obj->value[0]   = number_fuzzy( level / 5 + 2 );
+                        break;
+                }
+                else 
                 {
                         AFFECT_DATA *paf;
                         /* strip old effects then randomise stats */
@@ -3468,8 +3477,8 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, int rank, bool ra
                                 paf->deleted = TRUE;
                         }
                         randomise_object(obj, level, rank);
+                        break;
                 }
-                break;
 
             case ITEM_POTION:
             case ITEM_PILL:
