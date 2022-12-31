@@ -7309,5 +7309,17 @@ dimensions. Indeed, it is thought that this metal might provide pathways into
 other worlds.
 ~
 
+1 'CRIT' 'CRITICAL HIT'~
+
+This stat will provide a chance to obtain a CRITICAL HIT on a enemy with additional
+damage for that hit.
+~
+
+1 'SWIFT' 'SWIFTNESS' 'SWIFT ATTACK'~
+
+This stat will provide a chance to obtain an additional hit any time you attack.
+This applies for 2nd, 3rd, 4th etc attacks.
+~
+
 0 $~
 #$

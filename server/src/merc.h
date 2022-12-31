@@ -2317,7 +2317,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define APPLY_SERRATED                          48
 #define APPLY_INSCRIBED                         49
 #define APPLY_CRIT                              50
-#define APPLY_SWIFTNESS                             51
+#define APPLY_SWIFTNESS                         51
 
 /*
  * Values for containers (value[1]).
