@@ -315,6 +315,9 @@ int calc_item_score ( OBJ_DATA *obj )
         if (score > 1000)
                 score =1000;
 
+        if ( (score >= ITEM_SCORE_EPIC) & (obj->level < 10 ) )
+                score = 400;
+
         return score;
 }
 
