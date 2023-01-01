@@ -2880,11 +2880,12 @@ void do_oload( CHAR_DATA *ch, char *argument )
         for ( cc_def = 1; cc_def <= copies; cc_def++ )
         {
                 /*
-                        By default this creates a COMMON object with RANDOMISATION.  May want to add options
+                        At present, this will create an object that is not randomised (flag set to FALSE)
+                        Changing to TRUE will randomise the object created.  May want to add options
                         to turn randomisation on/off and to be able to create EPIC, LEGENDARY etc items
                         -- Owl 2/1/23
                 */
-                obj = create_object( pObjIndex, level, 1, TRUE );
+                obj = create_object( pObjIndex, level,"common", FALSE );
                 if ( IS_SET(obj->wear_flags, ITEM_TAKE) )
                 {
                         if ( (ch->carry_number + copies) > can_carry_n( ch ))
@@ -4248,7 +4249,7 @@ void do_oclanitem (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        clanobj = create_object(get_obj_index(itemvnum), level, 1, FALSE);
+        clanobj = create_object(get_obj_index(itemvnum), level,"common", FALSE);
         set_obj_owner(clanobj, victim->name);
         obj_to_char(clanobj, ch);
 
@@ -6198,7 +6199,7 @@ void do_wizbrew (CHAR_DATA *ch, char *argument)
          *      Okedoke, command's okay so let's make a potion
          */
 
-        potion = create_object (get_obj_index (ITEM_VNUM_WIZBREW_VIAL), 0, 1, FALSE);
+        potion = create_object (get_obj_index (ITEM_VNUM_WIZBREW_VIAL), 0, "common", FALSE);
         if (!potion)
         {
                 send_to_char ("Oops, couldn't create the potion object: abort!\n\r", ch);

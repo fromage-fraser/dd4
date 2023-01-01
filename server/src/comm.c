@@ -2320,15 +2320,15 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         free_string(ch->prompt);
                         ch->prompt = str_dup("<<{G%h/%H{x hits {C%m/%M{x mana {Y%v/%V{x move [{W%z{x]> ");
 
-                        obj = create_object(get_obj_index(OBJ_VNUM_SCHOOL_BANNER), 0, 1, FALSE);
+                        obj = create_object(get_obj_index(OBJ_VNUM_SCHOOL_BANNER), 0, "common", FALSE);
                         obj_to_char(obj, ch);
                         equip_char(ch, obj, WEAR_LIGHT);
 
-                        obj = create_object(get_obj_index(OBJ_VNUM_POUCH), 0, 1, FALSE);
+                        obj = create_object(get_obj_index(OBJ_VNUM_POUCH), 0, "common", FALSE);
                         obj_to_char(obj, ch);
                         equip_char(ch, obj, WEAR_POUCH);
 
-                        obj = create_object(get_obj_index(OBJ_VNUM_SCHOOL_VEST), 0, 1, FALSE);
+                        obj = create_object(get_obj_index(OBJ_VNUM_SCHOOL_VEST), 0, "common", FALSE);
                         obj_to_char(obj, ch);
                         equip_char(ch, obj, WEAR_BODY);
 
@@ -2336,14 +2336,14 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                             && ch->class != CLASS_BRAWLER
                             && ch->class != CLASS_MAGE)
                         {
-                                obj = create_object(get_obj_index(OBJ_VNUM_SCHOOL_SHIELD), 0, 1, FALSE);
+                                obj = create_object(get_obj_index(OBJ_VNUM_SCHOOL_SHIELD), 0, "common", FALSE);
                                 obj_to_char(obj, ch);
                                 equip_char(ch, obj, WEAR_SHIELD);
                         }
 
                         if (ch->class != CLASS_BRAWLER)
                         {
-                                obj = create_object( get_obj_index(class_table[ch->class].weapon), 0, 1, FALSE);
+                                obj = create_object( get_obj_index(class_table[ch->class].weapon), 0, "common", FALSE);
                                 obj_to_char(obj, ch);
                                 equip_char(ch, obj, WEAR_WIELD);
                                 SET_BIT(ch->act, PLR_AUTOWIELD);
@@ -2351,7 +2351,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
 
                         if (ch->class == CLASS_RANGER)
                         {
-                                obj = create_object (get_obj_index(OBJ_VNUM_SCHOOL_BOW), 0, 1, FALSE);
+                                obj = create_object (get_obj_index(OBJ_VNUM_SCHOOL_BOW), 0, "common", FALSE);
                                 obj_to_char(obj, ch);
                                 equip_char(ch, obj, WEAR_RANGED_WEAPON);
                         }

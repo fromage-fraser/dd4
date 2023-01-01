@@ -84,7 +84,7 @@ emote points to the sign on the wall.
 mpforce $n chat I can't read! Woe is me!
 ~
 |
-< reserved~ boss~
+< reserved~ world~
 #2
 darkside~
 The Mighty Darkside~
@@ -280,7 +280,7 @@ and alert, this man is more than a match for most mortals.
             mpecho CHAT Masters, I have been defeated!
 ~
 |
-< reserved~ boss~
+< reserved~ world~
 #76
 watcher~
 The Watcher~

@@ -225,7 +225,7 @@ const struct random_types random_list [ MAX_RANDOMS ] =
 {
         { APPLY_DAMROLL, SCORE_HIT_DAM},
         { APPLY_HITROLL, SCORE_HIT_DAM},
-        { APPLY_AC, 22},
+        { APPLY_AC, SCORE_AC},
         { APPLY_STR, SCORE_STATS},
         { APPLY_DEX, SCORE_STATS},
         { APPLY_WIS, SCORE_STATS },

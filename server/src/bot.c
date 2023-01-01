@@ -480,7 +480,7 @@ void do_bot_enter (CHAR_DATA *ch, char *argument)
                         continue;
                 }
 
-                if (!(obj = create_object(obj_index, bot->level, 1, FALSE)))
+                if (!(obj = create_object(obj_index, bot->level, "common", FALSE)))
                 {
                         sprintf(buf, "unable to create object (vnum %d)", vnum);
                         log_bot(bot_entry_count, buf);

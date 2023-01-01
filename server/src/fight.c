@@ -2582,7 +2582,7 @@ void make_corpse (CHAR_DATA *ch)
                  * don't make corpses: all eq falls to the ground.  Gezhp 99.
                  */
 
-                corpse = create_object(get_obj_index( OBJ_VNUM_CORPSE_NPC), 0, 1, FALSE);
+                corpse = create_object(get_obj_index( OBJ_VNUM_CORPSE_NPC), 0, "common", FALSE);
                 corpse->timer = number_range(10, 20);
                 name = ch->short_descr;
                 corpse->level = ch->level;
@@ -2604,7 +2604,7 @@ void make_corpse (CHAR_DATA *ch)
         else
         {
                 name            = ch->name;
-                corpse          = create_object(get_obj_index(OBJ_VNUM_CORPSE_PC), 0, 1, FALSE);
+                corpse          = create_object(get_obj_index(OBJ_VNUM_CORPSE_PC), 0, "common", FALSE);
                 corpse->timer   = number_range(90, 100);
 
                 free_string(corpse->name);
@@ -2766,7 +2766,7 @@ void death_cry (CHAR_DATA *ch)
                 char      buf[MAX_STRING_LENGTH];
 
                 name = IS_NPC(ch) ? ch->short_descr : ch->name;
-                obj = create_object(get_obj_index(body_part_vnum), 0, 1, FALSE);
+                obj = create_object(get_obj_index(body_part_vnum), 0,"common", FALSE);
                 obj->timer = number_range(4, 7);
                 obj->timermax = obj->timer;
 
@@ -5688,7 +5688,7 @@ void do_decapitate (CHAR_DATA *ch, char *argument)
                         char      buf [ MAX_STRING_LENGTH ];
 
                         name = IS_NPC(victim) ? victim->short_descr : victim->name;
-                        obj = create_object(get_obj_index(vnum), 0, 1, FALSE);
+                        obj = create_object(get_obj_index(vnum), 0, "common", FALSE);
                         obj->timer = number_range(4, 7);
                         obj->timermax = obj->timer;
 

@@ -645,7 +645,7 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
                         break;
                 }
 
-                questitem = create_object(get_obj_index(objvnum), ch->level, 1, FALSE);
+                questitem = create_object(get_obj_index(objvnum), ch->level, "common", FALSE);
                 questitem->timer = 240;
                 set_obj_owner(questitem, ch->name);
                 obj_to_room(questitem, room);

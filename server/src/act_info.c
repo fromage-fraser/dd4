@@ -108,11 +108,110 @@ int get_colour_index_by_code ( int ccode )
         return i;
 }
 
+
+int calc_aff_score (int apply, int level)
+{
+    /*    char       buf  [ MAX_STRING_LENGTH ]; */
+        int score = 0;
+        switch (apply)
+        {
+                case APPLY_FLAMING:
+                case APPLY_SANCTUARY:
+                case APPLY_DRAGON_AURA:
+                {
+                        score += SCORE_AURAS;
+                }
+                break;
+
+                case APPLY_BALANCE:
+                case APPLY_STRENGTHEN:
+                case APPLY_ENGRAVED:
+                case APPLY_SERRATED:
+                case APPLY_INSCRIBED:
+                {
+                        score += SCORE_SMITHY;
+                }
+                break;
+
+                case APPLY_AC:
+                        score += ( SCORE_AC / level );
+                break;
+
+                case APPLY_STR:
+                case APPLY_DEX:
+                case APPLY_INT:
+                case APPLY_WIS:
+                case APPLY_CON:
+                case APPLY_CRIT:
+                case APPLY_SWIFTNESS:
+                {
+                        if (level < 3 )
+                                score += (200 / level);
+                        else if (level < 6)
+                                score += (500 / level);
+                        else if (level < 16)
+                                score += ( 1000 / level);
+                        else
+                                score += (SCORE_STATS / level);
+                }
+                break;
+
+                case APPLY_MANA:
+                case APPLY_HIT:
+                {
+                        score += ( SCORE_HP_MANA / level);
+                }
+                break;
+
+                case APPLY_DAMROLL:
+                case APPLY_HITROLL:
+                {
+                        if (level < 10)
+                                score += ( 500 / level);
+                        else
+                                score += ( SCORE_HIT_DAM / level);
+                }
+                break;
+
+                case APPLY_FLY:
+                case APPLY_SNEAK:
+                case APPLY_INVIS:
+                {
+                        score += SCORE_FLY;
+                }
+                break;
+
+                case APPLY_DETECT_HIDDEN:
+                case APPLY_DETECT_INVIS:
+                {
+                        score += SCORE_DETECTS;
+                }
+                break;
+
+                case APPLY_RESIST_ACID:
+                case APPLY_RESIST_COLD:
+                case APPLY_RESIST_HEAT:
+                case APPLY_RESIST_LIGHTNING:
+                {
+                        score += ( SCORE_RESISTS / level);
+                }
+                break;
+
+                default:
+                        score +=1;
+        }
+            /*    sprintf(buf, "[*****] AFF_SCORE: I return %d, from a apply of %d and level %d)", score, apply, level);
+                log_string (buf); */
+        return score;
+}
+
+
 /* Idea is to return a score based on an object which is used to calculate rarity 
                 Scale is 0-1000  - Brutus*/
 int calc_item_score ( OBJ_DATA *obj )
 {
         AFFECT_DATA             *paf;
+     /*   char       buf  [ MAX_STRING_LENGTH ]; */
         int score = 0;
         
         for ( paf = obj->affected; paf; paf = paf->next )
@@ -124,92 +223,8 @@ int calc_item_score ( OBJ_DATA *obj )
                     && paf->modifier != 0
                     && strcmp (affect_loc_name (paf->location), "(unknown)"))
                 {
-                    /*    char          buf          [ MAX_STRING_LENGTH ];
-                        sprintf(buf, "calc_item_score %d %d", score, paf->location);
-                        bug(buf, 0); */ 
-                        switch (paf->location)
-                        {
-                                case APPLY_FLAMING:
-                                case APPLY_SANCTUARY:
-                                case APPLY_DRAGON_AURA:
-                                {
-                                        score += SCORE_AURAS;
-                                }
-                                break;
-
-                                case APPLY_BALANCE:
-                                case APPLY_STRENGTHEN:
-                                case APPLY_ENGRAVED:
-                                case APPLY_SERRATED:
-                                case APPLY_INSCRIBED:
-                                {
-                                        score += SCORE_SMITHY;
-                                }
-                                break;
-
-                                case APPLY_STR:
-                                case APPLY_DEX:
-                                case APPLY_INT:
-                                case APPLY_WIS:
-                                case APPLY_CON:
-                                case APPLY_CRIT:
-                                case APPLY_SWIFTNESS:
-                                {
-                                        if (obj->level < 3 )
-                                                score += ((paf->modifier * 200) / obj->level);
-                                        else if (obj->level < 6)
-                                                score += ((paf->modifier * 500) / obj->level);
-                                        else if (obj->level < 16)
-                                                score += ((paf->modifier * 1000) / obj->level);
-                                        else
-                                                score += ((paf->modifier * SCORE_STATS) / obj->level);
-                                }
-                                break;
-
-                                case APPLY_MANA:
-                                case APPLY_HIT:
-                                {
-                                        score += ((paf->modifier * SCORE_HP_MANA) / obj->level);
-                                }
-                                break;
-
-                                case APPLY_DAMROLL:
-                                case APPLY_HITROLL:
-                                {
-                                        if (obj->level < 10)
-                                                score += ((paf->modifier * 500) / obj->level);
-                                        else
-                                                score += ((paf->modifier * SCORE_HIT_DAM) / obj->level);
-                                }
-                                break;
-
-                                case APPLY_FLY:
-                                case APPLY_SNEAK:
-                                case APPLY_INVIS:
-                                {
-                                        score += SCORE_FLY;
-                                }
-                                break;
-
-                                case APPLY_DETECT_HIDDEN:
-                                case APPLY_DETECT_INVIS:
-                                {
-                                        score += SCORE_DETECTS;
-                                }
-                                break;
-
-                                case APPLY_RESIST_ACID:
-                                case APPLY_RESIST_COLD:
-                                case APPLY_RESIST_HEAT:
-                                case APPLY_RESIST_LIGHTNING:
-                                {
-                                        score += ((paf->modifier * SCORE_RESISTS) / obj->level);
-                                }
-                                break;
-
-                                default:
-                                        score +=0;
-                        }
+                        
+                        score += (( calc_aff_score ( paf->location, obj->level)) * paf->modifier);
                 }
         }
         
@@ -225,89 +240,7 @@ int calc_item_score ( OBJ_DATA *obj )
                       /*  char          buf          [ MAX_STRING_LENGTH ];
                         sprintf(buf, "calc_item_score %d %d", score, paf->location);
                         bug(buf, 0); */
-                        switch (paf->location)
-                        {
-                                 case APPLY_FLAMING:
-                                case APPLY_SANCTUARY:
-                                case APPLY_DRAGON_AURA:
-                                {
-                                        score += SCORE_AURAS;
-                                }
-                                break;
-
-                                case APPLY_BALANCE:
-                                case APPLY_STRENGTHEN:
-                                case APPLY_ENGRAVED:
-                                case APPLY_SERRATED:
-                                case APPLY_INSCRIBED:
-                                {
-                                        score += SCORE_SMITHY;
-                                }
-                                break;
-
-                                case APPLY_STR:
-                                case APPLY_DEX:
-                                case APPLY_INT:
-                                case APPLY_WIS:
-                                case APPLY_CON:
-                                case APPLY_CRIT:
-                                case APPLY_SWIFTNESS:
-                                {
-                                        if (obj->level < 3 )
-                                                score += ((paf->modifier * 200) / obj->level);
-                                        else if (obj->level < 6)
-                                                score += ((paf->modifier * 500) / obj->level);
-                                        else if (obj->level < 16)
-                                                score += ((paf->modifier * 1000) / obj->level);
-                                        else
-                                                score += ((paf->modifier * SCORE_STATS) / obj->level);
-                                }
-                                break;
-
-                                case APPLY_MANA:
-                                case APPLY_HIT:
-                                {
-                                        score += ((paf->modifier * SCORE_HP_MANA) / obj->level);
-                                }
-                                break;
-
-                                case APPLY_DAMROLL:
-                                case APPLY_HITROLL:
-                                {
-                                        if (obj->level < 10)
-                                                score += ((paf->modifier * 500) / obj->level);
-                                        else
-                                                score += ((paf->modifier * SCORE_HIT_DAM) / obj->level);
-                                }
-                                break;
-
-                                case APPLY_FLY:
-                                case APPLY_SNEAK:
-                                case APPLY_INVIS:
-                                {
-                                        score += SCORE_FLY;
-                                }
-                                break;
-
-                                case APPLY_DETECT_HIDDEN:
-                                case APPLY_DETECT_INVIS:
-                                {
-                                        score += SCORE_DETECTS;
-                                }
-                                break;
-
-                                case APPLY_RESIST_ACID:
-                                case APPLY_RESIST_COLD:
-                                case APPLY_RESIST_HEAT:
-                                case APPLY_RESIST_LIGHTNING:
-                                {
-                                        score += ((paf->modifier * SCORE_RESISTS) / obj->level);
-                                }
-                                break;
-
-                                default:
-                                        score +=0;
-                        }
+                        score += (( calc_aff_score ( paf->location, obj->level)) * paf->modifier);
                 }
         }
         if (score <0)
@@ -318,6 +251,8 @@ int calc_item_score ( OBJ_DATA *obj )
         if ( (score >= ITEM_SCORE_EPIC) & (obj->level < 10 ) )
                 score = 400;
 
+        /*                sprintf(buf, "calc_item_score %d ", score);
+                        bug(buf, 0);    */
         return score;
 }
 
@@ -939,6 +874,7 @@ void show_char_to_char (CHAR_DATA *list, CHAR_DATA *ch)
         }
 }
 
+/* returns the sn of the characters rank (from ch->rank)*/
 int rank_sn ( CHAR_DATA *ch)
 {
         if ( ch->rank )
@@ -953,6 +889,34 @@ int rank_sn ( CHAR_DATA *ch)
         }
         return 1;
 
+}
+
+/* returns the rank of the character*/
+char *rank_char ( CHAR_DATA *ch)
+{
+        if ( ch->rank )
+        {
+                int sn;
+                for ( sn = 0; sn < MAX_RANK; sn++ )
+                {
+                        if ( !strcmp( ch->rank, rank_table[sn].name ) )
+                                return rank_table[sn].name;
+                }
+                return "common";
+        }
+        return "common";
+}
+
+/* returns the rank_bonus of the rank (given from the actual rank)*/
+int rank_bonus ( char *rank )
+{
+        int sn;
+        for ( sn = 0; sn < MAX_RANK; sn++ )
+        {
+                if ( !strcmp( rank, rank_table[sn].name ) )
+                        return rank_table[sn].rank_bonus;
+        }
+        return 1;
 }
 
 int rank_sn_index ( MOB_INDEX_DATA *pMobIndex)
