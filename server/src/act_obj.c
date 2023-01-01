@@ -6174,7 +6174,7 @@ int random_qnd ( int ap_value, int rank, int ap_type )
                         log_string(buf);
                  }
         }
-        /* round and convert back to int before returning */
+        /* round and convert back to int before returning  etc*/
         /* should also do mob level stuff here, as currently assuming common */
         sprintf(buf,"Pre-rounding value of changed_ap_value is: %f",
                 changed_ap_value);
