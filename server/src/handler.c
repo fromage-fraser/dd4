@@ -341,7 +341,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
             case APPLY_CRIT:
                 ch->crit +=mod;
                 break;
-                
+
             case APPLY_MANA:
                 ch->max_mana += mod;
                 break;
@@ -596,7 +596,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
 
             case APPLY_BALANCE:
                 af.type = skill_lookup( "counterbalance" );
-                                if( fAdd )
+                if( fAdd )
                 {
                         send_to_char( "The counterbalanced weapon will improve your attack speed.\n\r", ch );
                         break;
@@ -606,7 +606,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         send_to_char( "You feel less prepared for battle.\n\r", ch );
                         break;
                 }
-                case APPLY_SERRATED:
+            case APPLY_SERRATED:
                 af.type = skill_lookup( "serrated" );
                                 if( fAdd )
                 {
@@ -698,7 +698,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         break;
                 }
 
-            case APPLY_RESIST_HEAT:             
+            case APPLY_RESIST_HEAT:
                 ch->resist_heat += mod;
               /*  af.type = skill_lookup("resist heat");
               if( fAdd )
@@ -768,7 +768,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         send_to_char("You feel vulnerable to electricity.\n\r", ch);
                 } */
                 break;
-                
+
             case APPLY_RESIST_ACID:
                 ch->resist_acid += mod;
          /*     af.type = skill_lookup("resist acid");
