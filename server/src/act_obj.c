@@ -5890,3 +5890,313 @@ int parsebet (const int currentbet, const char *argument)
         return newbet;
 }
 
+
+int random_qnd ( int ap_value, int rank, int ap_type )
+{
+        /*
+
+        Given an APPLY type from an item, this will transform it using a quasi-standard
+        normal (but 3 SD hard-bounded) distribution, affected by the mobrank of a mob if
+        it's loaded on a mob (assumes 'common' if not).  Used to randomise item statistics.
+
+        If item has the ITEM_DONOT_RANDOMISE flag on it its apply values shouldn't be
+        changed.  This should be checked by the calling function, not this one, which will
+        assume you've checked before calling it.
+
+        --Owl 1/1/23
+
+        */
+
+        /*
+                ap_type is from the APPLY_ types in merc.h
+                51 types as of 1/1/23.  Will hurl if over int max_apply, so increase it
+                if you add new types.
+        */
+
+        int max_apply = 51;
+
+        float changed_ap_value = ap_value;
+
+        float minus_3_lb;
+        float minus_3_ub;
+        float minus_2_lb;
+        float minus_2_ub;
+        float minus_1_lb;
+        float plus_1_ub;
+        float plus_2_lb;
+        float plus_2_ub;
+        float plus_3_lb;
+        float plus_3_ub;
+        float sd_divisor = 6.0;
+        float av_sd = ap_value / sd_divisor;
+        float rank_bonus = 0.0;
+        float r;
+
+        /* indicates whether a negative value for an APPLY is of benefit to a player or not */
+        bool negative_benefits = false;
+
+        char buf[MAX_STRING_LENGTH];
+
+        int r_100 = rand() % 100 + 1;
+
+        if (ap_type > max_apply)
+        {
+                sprintf(buf,"APPLY type (%d) supplied to random_qnd() function is > max_apply (%d). Edit function if APPLY type is valid.",
+                        ap_type,
+                        max_apply);
+                log_string(buf);
+                return ap_value;
+        }
+
+        /*
+           Set the upper and lower boundary values for our distribution.
+           See image at: http://dragons-domain.org/main/building/snd.png to understand
+           what is happening here.
+        */
+
+        /* 2% chance, r_100 = 1 or 2 */
+        minus_3_lb = ( ap_value - ( 3 * av_sd ) );
+        minus_3_ub = ( ap_value - ( 2 * av_sd ) );
+
+        /* 14% chance, r_100 = 3 to 16 */
+        minus_2_lb = ( ap_value - ( 2 * av_sd ) + 0.000001 );
+        minus_2_ub = ( ap_value - av_sd );
+
+        /* 68% chance, r_100 = 17 to 84 */
+        minus_1_lb = ( ap_value - av_sd + 0.000001 );
+        plus_1_ub  = ( ap_value + av_sd );
+
+        /* 14% chance, r_100 = 85 to 98 */
+        plus_2_lb  = (ap_value + av_sd + 0.000001 );
+        plus_2_ub  = (ap_value + ( 2 * av_sd ) );
+
+        /* 2% chance, r_100 = 99 or 100 */
+        plus_3_lb  = (ap_value + ( 2 * av_sd ) + 0.000001 );
+        plus_3_ub  = (ap_value + ( 3 * av_sd ) );
+
+        sprintf(buf,"r_100 is: %d", r_100);
+        log_string(buf);
+
+        if ( r_100 == 1 || r_100 == 2 )
+        {
+                r = (float)rand() / (float)RAND_MAX;
+                changed_ap_value = minus_3_lb + r * (minus_3_ub - minus_3_lb);
+                printf("return ap value for -3SD between %f and %f: %f\n", minus_3_lb, minus_3_ub, changed_ap_value);
+        }
+
+        if ( r_100 > 2 && r_100 < 17 )
+        {
+                r = (float)rand() / (float)RAND_MAX;
+                changed_ap_value = minus_2_lb + r * (minus_2_ub - minus_2_lb);
+                printf("return ap value for -2SD between %f and %f: %f\n", minus_2_lb, minus_2_ub, changed_ap_value);
+        }
+
+        if ( r_100 > 16 && r_100 < 85 )
+        {
+                r = (float)rand() / (float)RAND_MAX;
+                changed_ap_value = minus_1_lb + r * (plus_1_ub - minus_1_lb);
+                printf("return ap value for -1SD/+1SD between %f and %f: %f\n", minus_1_lb, plus_1_ub, changed_ap_value);
+        }
+
+        if ( r_100 > 84 && r_100 < 99 )
+        {
+                r = (float)rand() / (float)RAND_MAX;
+                changed_ap_value = plus_2_lb + r * (plus_2_ub - plus_2_lb);
+                printf("return ap value for +2SD between %f and %f: %f\n", plus_2_lb, plus_2_ub, changed_ap_value);
+        }
+
+        if ( r_100 == 99 || r_100 == 100 )
+        {
+                r = (float)rand() / (float)RAND_MAX;
+                changed_ap_value = plus_3_lb + r * (plus_3_ub - plus_3_lb);
+                printf("return ap value for +3SD between %f and %f: %f\n", plus_3_lb, plus_3_ub, changed_ap_value);
+        }
+
+        sprintf(buf,"ap_type: %d | ap_value: %d | changed_ap_value: %f | rank: %d | minus_3_lb: %f | minus_3_ub: %f | minus_2_lb: %f | minus_2_ub: %f | minus_1_lb: %f | plus_1_ub: %f | plus_2_lb: %f | plus_2_ub: %f | plus_3_lb: %f | plus_3_ub: %f |",
+                ap_type,
+                ap_value,
+                changed_ap_value,
+                rank,
+                minus_3_lb,
+                minus_3_ub,
+                minus_2_lb,
+                minus_2_ub,
+                minus_1_lb,
+                plus_1_ub,
+                plus_2_lb,
+                plus_2_ub,
+                plus_3_lb,
+                plus_3_ub
+        );
+        log_string(buf);
+
+        /* sprintf(buf, "Passed: ap_value: %d rank: %d ap_type: %d \n\r", ap_value, rank, ap_type);
+        send_to_char(buf, ch); */
+
+         /*
+                ap_value is the base apply value from the area file. So might be 3 for APPLY_STRENGTH
+                on an item or whatever.  May have to investigate types to see if some are prohibited
+                from being certain sizes or negative etc.
+        */
+
+        switch (ap_type)
+        {
+            case APPLY_STR:
+                break;
+
+            case APPLY_DEX:
+                break;
+
+            case APPLY_INT:
+                break;
+
+            case APPLY_WIS:
+                break;
+
+            case APPLY_CON:
+                break;
+
+            case APPLY_MANA:
+                break;
+
+            case APPLY_HIT:
+                break;
+
+            case APPLY_MOVE:
+                break;
+
+            case APPLY_AC:
+                negative_benefits = true;
+                break;
+
+            case APPLY_HITROLL:
+                break;
+
+            case APPLY_DAMROLL:
+                break;
+
+            case APPLY_SAVING_PARA:
+                negative_benefits = true;
+                break;
+
+            case APPLY_SAVING_ROD:
+                negative_benefits = true;
+                break;
+
+            case APPLY_SAVING_PETRI:
+                negative_benefits = true;
+                break;
+
+            case APPLY_SAVING_BREATH:
+                negative_benefits = true;
+                break;
+
+            case APPLY_SAVING_SPELL:
+                negative_benefits = true;
+                break;
+
+            case APPLY_NONE:
+            case APPLY_SANCTUARY:
+            case APPLY_SNEAK:
+            case APPLY_FLY:
+            case APPLY_INVIS:
+            case APPLY_DETECT_INVIS:
+            case APPLY_DETECT_HIDDEN:
+            case APPLY_FLAMING:
+            case APPLY_PROTECT:
+            case APPLY_PASS_DOOR:
+            case APPLY_GLOBE:
+            case APPLY_DRAGON_AURA:
+            case APPLY_BREATHE_WATER:
+            case APPLY_SET_UNCOMMON:
+            case APPLY_SET_RARE:
+            case APPLY_SET_EPIC:
+            case APPLY_SET_LEGENDARY:
+            case APPLY_INSCRIBED:
+            case APPLY_BALANCE:
+            case APPLY_ENGRAVED:
+            case APPLY_STRENGTHEN:
+            case APPLY_SERRATED:
+            case APPLY_SEX:
+            case APPLY_CLASS:
+            case APPLY_LEVEL:
+            case APPLY_AGE:
+            case APPLY_HEIGHT:
+            case APPLY_WEIGHT:
+            case APPLY_GOLD:
+            case APPLY_EXP:
+                return ap_value;
+
+            case APPLY_RESIST_HEAT:
+                break;
+
+            case APPLY_RESIST_COLD:
+                break;
+
+            case APPLY_RESIST_LIGHTNING:
+                break;
+
+            case APPLY_RESIST_ACID:
+                break;
+
+            case APPLY_CRIT:
+                break;
+
+            case APPLY_SWIFTNESS:
+                break;
+        }
+
+        /*
+                'rank' will be one of
+
+                #define NPC_COMMON      1
+                #define NPC_RARE        2
+                #define NPC_ELITE       3
+                #define NPC_BOSS        4
+                #define NPC_WORLD_BOSS  5
+
+                See merc.h. We assume '1' if 0 or less than 1 is passed, and > 5 will become 5.
+                Tweak this if you add more ranks.
+
+        */
+
+        if (rank > 1)
+        {
+                 if (negative_benefits)
+                 {
+                        rank_bonus = -(rank * fabs(av_sd));
+                        sprintf(buf,"Rank bonus is: %f with negative benefit YES and av_sd: %f",rank_bonus, av_sd);
+                        log_string(buf);
+                 }
+                 else {
+                        rank_bonus = (rank * fabs(av_sd));
+                        sprintf(buf,"Rank bonus is: %f with negative benefit NO and av_sd: %f",rank_bonus, av_sd);
+                        log_string(buf);
+                 }
+        }
+        /* round and convert back to int before returning */
+        /* should also do mob level stuff here, as currently assuming common */
+        sprintf(buf,"Pre-rounding value of changed_ap_value is: %f",
+                changed_ap_value);
+        log_string(buf);
+
+        sprintf(buf,"Rank bonus is: %f, based on a passed mob rank of %d, av_sd of %f, negative_benefits value of %d and apply type %d",
+                rank_bonus, rank, av_sd, negative_benefits, ap_type);
+        log_string(buf);
+
+        changed_ap_value = (changed_ap_value + rank_bonus);
+
+        sprintf(buf,"Pre-rounding value of changed_ap_value with rank bonus is: %f",
+                changed_ap_value);
+        log_string(buf);
+
+        ap_value = round(changed_ap_value);
+
+        sprintf(buf,"Post-rounding value of changed_ap_value is: %d",
+                ap_value);
+        log_string(buf);
+        return ap_value;
+
+
+}
+

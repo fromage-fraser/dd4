@@ -2600,7 +2600,7 @@ struct  mob_index_data
         MPROG_DATA *            mobprogs;
         LEARNED_DATA *          skills;         /* used by practisers only */
 
-      
+
         char *                  player_name;
         char *                  short_descr;
         char *                  long_descr;
@@ -3110,8 +3110,8 @@ struct  mob_spec_data
 
 struct mob_type
 {
-  
-    
+
+
   char *name;                           /* name of spec e.g. fire_elemental */
   char *species;                        /* species e.g. elemental */
   char *icon_m;                         /* Male Icon name */
@@ -3123,7 +3123,7 @@ struct mob_type
   int dam_mod;                          /* dam modifier ( in %) */
   int crit_mod;                         /* crit modifier ( in %) */
   int haste_mod;                        /* haste modifier ( in %) */
-  int height;   
+  int height;
   int weight;
   int size;
   unsigned long int body_parts;         /* body parts they have */
@@ -3138,7 +3138,7 @@ struct species_type
 {
         char *species;                        /* species e.g. elemental */
         unsigned long int body_parts;         /* body parts they have */
-        unsigned long int attack_parts;       /* body parts race attacks with */ 
+        unsigned long int attack_parts;       /* body parts race attacks with */
 };
 
 struct rank
@@ -4710,6 +4710,7 @@ bool  has_ego_item_effect                     ( CHAR_DATA *ch, int flag );
 void  player_leaves_clan                      ( CHAR_DATA *ch );
 int   get_craft_obj_bonus                     ( CHAR_DATA *ch );
 int   get_spellcraft_obj_bonus                ( CHAR_DATA *ch );
+int   random_qnd                        args( ( int ap_value, int rank, int ap_type ) );
 
 /* act_wiz.c */
 ROOM_INDEX_DATA *       find_location   args( ( CHAR_DATA *ch, char *arg ) );

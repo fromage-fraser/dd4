@@ -393,12 +393,12 @@ Dragons Domain version 4.2020
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
-    {WLARGE PATCH:{x
+    {WMEGA PATCH:{x
 
-    {WNew Stats, Crit, Haste, and Resists are in.{x
-    {WBOSS MOBS!! Area Boss mobs are now tougher! (CONSDER is your friend){x
+    {WNew Stats: Crit, Swiftness, and Resists are in.{x
+    {WBOSS MOBS!! Area Boss mobs are now tougher! (CONSIDER is your friend){x
     {WRandom stats on items above level 10!{x
-    {WEpic and LEGENDARY items are now in play (chance to drop only on
+    {WEPIC and LEGENDARY items are now in play (chance to drop only on
     boss & elite mobs){x
     {WSET Pieces are now part of the realm. The first starter set is available
     2 items in the foundry and dwarven daycare are now linked..{x
@@ -435,6 +435,9 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 ~
 
 0 CHANGES~
+
+{WDecember 2022{x
+-Mega patch in.  New stats, items, boss mobs and more.
 
 {WAugust 2022{x
 - New 30-60 area 'Ota'ar Canals' is in and linked

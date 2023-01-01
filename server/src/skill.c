@@ -4067,7 +4067,7 @@ void do_inscribe (CHAR_DATA *ch, char *argument)
 */
         if (arg[0] == '\0')
         {
-                send_to_char("Either inscribe equipment/weapon or inscibe your rune.\n\r", ch);
+                send_to_char("Either inscribe equipment/weapon or inscribe your rune.\n\r", ch);
                 return;
         }
 

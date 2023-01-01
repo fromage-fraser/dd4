@@ -2869,8 +2869,21 @@ void do_oload( CHAR_DATA *ch, char *argument )
                 return;
         }
 
+        /* testing random_qnd function, Owl 1/1/23
+        rand_value_test = random_qnd ( -3, 3, APPLY_STR );
+        sprintf( buf, "Rand value returned for rand item = %d.\n\r", rand_value_test );
+        send_to_char( buf, ch );
+        rand_value_test = random_qnd ( -10, 4, APPLY_AC );
+        sprintf( buf, "Rand value returned for rand item = %d.\n\r", rand_value_test );
+        send_to_char( buf, ch );
+        */
         for ( cc_def = 1; cc_def <= copies; cc_def++ )
         {
+                /*
+                        By default this creates a COMMON object with RANDOMISATION.  May want to add options
+                        to turn randomisation on/off and to be able to create EPIC, LEGENDARY etc items
+                        -- Owl 2/1/23
+                */
                 obj = create_object( pObjIndex, level, 1, TRUE );
                 if ( IS_SET(obj->wear_flags, ITEM_TAKE) )
                 {
