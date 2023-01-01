@@ -391,7 +391,7 @@ void violence_update (void)
 void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 {
         int chance;
-        
+
 
         if (!IS_NPC(ch))
                 ch->pcdata->rounds++;
@@ -545,7 +545,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
          */
         if ((is_affected(ch, gsn_haste)) && !IS_AFFECTED(ch, AFF_PRONE))
                 one_hit(ch, victim, dt, FALSE);
-        
+
         if ( number_percent() < ch->swiftness)
                 one_hit(ch, victim, dt, TRUE);
 
@@ -568,8 +568,6 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                         }
                 }
         }
-
-
 
         /*
          * Multiple attacks for shifter forms
@@ -1284,7 +1282,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                         dam *= 2;
                         crit = TRUE;
                 }
-                        
+
                 /* this is to support strengthen, but could be applied for other things - Brutus */
                 if (!IS_NPC(victim))
                 {
@@ -2975,11 +2973,11 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called)
                 if (gch->level > 50)
                 {
                 sprintf(buf, "%d\n\r", gch->pcdata->dam_per_fight/gch->pcdata->rounds);
-                send_to_char(buf, gch);      
+                send_to_char(buf, gch);
                 }
                 else {
                 sprintf(buf, "\n\r");
-                send_to_char(buf, gch);        
+                send_to_char(buf, gch);
                 }
                 gch->pcdata->rounds = 0;
                 gch->pcdata->dam_per_fight = 0; */
@@ -3297,7 +3295,7 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
         if ((crit) && (dam > 0))
                 sprintf(buf9, " {W*CRITICAL HIT*{x");
         else {
-                *buf9 = '\0';  
+                *buf9 = '\0';
         }
 
         if (dt == TYPE_HIT)
@@ -3322,7 +3320,7 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                 }
 
                 strcat( buf1, buf9 );
-                
+
                 /*
                  * Shade 10.5.2022 - make you getting hit stand out more, help when a lot of room spam
                  */
@@ -3376,7 +3374,7 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                 {
                         sprintf(buf1, "Your %s %s $N%c",  attack, vp, punct);
                         strcat( buf1, buf9 );
-                        
+
                         if (dam > 0)
                         {
                                 sprintf(buf2, "$c's %s %s you%c", attack, vp, punct);

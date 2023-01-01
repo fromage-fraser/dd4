@@ -587,7 +587,7 @@ int     gsn_rare_set;
 int     gsn_bloodforged_set;
 int     gsn_astral_set;
 int     gsn_steel_broadsword;
-int     gsn_titanium_rapier;   
+int     gsn_titanium_rapier;
 int     gsn_repelling;
 int     gsn_craft_weapon;
 int     gsn_counterbalance;
@@ -1635,13 +1635,13 @@ void load_mob_spec (FILE *fp, MOB_INDEX_DATA *pMobIndex)
         char *name;
         char *rank;
         char buf2[100];
-        buf2[0] = '\0';     
+        buf2[0] = '\0';
 
 
         letter = fread_letter( fp );
-        
+
         while (letter == '<')
-        {                
+        {
                 name = fread_string(fp);
                 rank = fread_string(fp);
                 ms = mob_lookup(name);
@@ -1652,14 +1652,14 @@ void load_mob_spec (FILE *fp, MOB_INDEX_DATA *pMobIndex)
                                 pMobIndex->vnum, name);
                         log_string (buf2);
                 }
-                else                     
+                else
                         pMobIndex->mobspec = name;
 
                 pMobIndex->rank = rank;
-                
-                letter = fread_letter( fp ); 
-        }               
-        ungetc( letter, fp ); 
+
+                letter = fread_letter( fp );
+        }
+        ungetc( letter, fp );
 }
 
 
@@ -1961,7 +1961,7 @@ void load_objects( FILE *fp )
                         bug( "Vnum %d : light source with ITEM_INVIS set", vnum );
                         REMOVE_BIT( pObjIndex->extra_flags, ITEM_INVIS );
                 }
-                   
+
                 for ( ; ; )
                 {
                         char letter;
@@ -1974,7 +1974,7 @@ void load_objects( FILE *fp )
                                 int modifier;
 
                                 location           = fread_number( fp, &stat );
-                                modifier           = fread_number( fp, &stat ); 
+                                modifier           = fread_number( fp, &stat );
                                 /* random affects - will conintue to honor objects set with the following flags*/
                                 /* I need to PASS IN THE LEVEL OF THE MOB THIS GOES TO */
                                                               /*  sprintf(buf, "Vnum %d Level %d", vnum, pObjIndex->level);
@@ -1986,10 +1986,10 @@ void load_objects( FILE *fp )
                                         || ( location == APPLY_SNEAK)
                                         || ( location == APPLY_GLOBE)
                                         || ( location == APPLY_BREATHE_WATER)
-                                        || ( location == APPLY_INVIS) 
+                                        || ( location == APPLY_INVIS)
                                          )
                                 { */
-                                       
+
 
                                         paf                     = alloc_perm( sizeof( *paf ) );
                                         paf->type               = -1;
@@ -2137,7 +2137,7 @@ void load_resets( FILE *fp )
                         /* random affects - get the mob rank, to determine random affects - Brutus Oct 2022*/
                         pMobIndex = get_mob_index( pReset->arg1 );
                         last_mob_level = pMobIndex->level;
-                        
+
                         break;
 
                     case 'O':
@@ -3362,9 +3362,9 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, bool 
             case ITEM_SPELLCRAFT:
             case ITEM_FORGE:
             case ITEM_ARRESTOR_UNIT:
-            case ITEM_REFLECTOR_UNIT: 
-            case ITEM_DEFENSIVE_TURRET_MODULE: 
-            case ITEM_TURRET_MODULE:    
+            case ITEM_REFLECTOR_UNIT:
+            case ITEM_DEFENSIVE_TURRET_MODULE:
+            case ITEM_TURRET_MODULE:
             case ITEM_TURRET:
                 break;
 
@@ -3375,7 +3375,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, bool 
             case ITEM_SCROLL:
                 obj->value[0]   = number_fuzzy( obj->value[0] );
                 break;
-        
+
             case ITEM_SHIELD_UNIT:
             case ITEM_DRIVER_UNIT:
                 obj->value[0]   = (level /7);
@@ -3431,8 +3431,8 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, bool 
                         /* strip old effects then randomise stats */
                         for ( paf = obj->affected; paf; paf = paf->next )
                         {
-                                if (paf->bitvector == AFF_SANCTUARY 
-                                        || paf->bitvector == AFF_FLYING 
+                                if (paf->bitvector == AFF_SANCTUARY
+                                        || paf->bitvector == AFF_FLYING
                                         || paf->bitvector == AFF_SWIM
                                         || paf->bitvector == AFF_INVISIBLE)
                                         continue;
@@ -3469,8 +3469,8 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, bool 
                         /* strip old effects then randomise stats */
                         for ( paf = obj->affected; paf; paf = paf->next )
                         {
-                                if (paf->bitvector == AFF_SANCTUARY 
-                                        || paf->bitvector == AFF_FLYING 
+                                if (paf->bitvector == AFF_SANCTUARY
+                                        || paf->bitvector == AFF_FLYING
                                         || paf->bitvector == AFF_SWIM
                                         || paf->bitvector == AFF_INVISIBLE)
                                 continue;
@@ -4772,7 +4772,7 @@ void do_mrank( CHAR_DATA *ch, char *argument )
                         pArea->low_m_vnum, pArea->hi_m_vnum);
 
                 send_to_char( buf, ch );
-                
+
                 sprintf( buf, "\n\r{W[Special Mobs]{x-----------------------------------------------------\n\r");
                 send_to_char (buf, ch);
 
@@ -4785,7 +4785,7 @@ void do_mrank( CHAR_DATA *ch, char *argument )
                                 && ( rank_sn(victim) > 1 ) )
                                 {
                                         sprintf( buf, "[%5d] %-28s at [%5d] %s\n\r",
-                                                
+
                                                 victim->pIndexData->vnum,
                                                 victim->short_descr,
                                                 victim->in_room->vnum,
@@ -4795,10 +4795,10 @@ void do_mrank( CHAR_DATA *ch, char *argument )
                         }
 
                 }
-                
+
                 sprintf( buf, "\n\r{W[Special Objects (Epic or Legendary)]{x-----------------------------\n\r");
                 send_to_char (buf, ch);
-                
+
                 for ( obj = object_list; obj; obj = obj->next )
                 {
 
@@ -4810,7 +4810,7 @@ void do_mrank( CHAR_DATA *ch, char *argument )
                         for ( in_obj = obj; in_obj->in_obj; in_obj = in_obj->in_obj )
                                 ;
 
-                        
+
                         if ( in_obj->carried_by )
                         {
                                 if ( !can_see( ch, in_obj->carried_by ) )
@@ -5046,14 +5046,14 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
         char mod2;
         char mod3;
         char mod4;
-       
+
    /*     if (obj->item_type != ITEM_WEAPON)
         {
                 return;
         }
 */
-    
-        /* Strip all affects from items over level 10*/    
+
+        /* Strip all affects from items over level 10*/
         if (level >= 10)
         {
                 AFFECT_DATA *paf;
@@ -5062,9 +5062,9 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
                 for ( paf = obj->pIndexData->affected; paf; paf = paf_next )
                 {
                        paf_next = paf->next;
-                        paf->deleted = TRUE; 
+                        paf->deleted = TRUE;
                      /*   unlink(paf);
- */	               /* free_mem(paf); 
+ */	               /* free_mem(paf);
                     */  paf->type               = 0;
                         paf->duration           = 0;
                         paf->location           = 0;
@@ -5074,7 +5074,7 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
                         pObjIndex->affected     = paf;
                         top_affect++;
                         item_affects++;
-                        
+
                         sprintf(buf2, "[*****] RANDOMS: In PAF loop %s %d", obj->name, paf->location);
                         log_string (buf2);  */
                 }
@@ -5098,13 +5098,13 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
         r3 = number_range ( 0, MAX_RANDOMS-1);
         while ( r1 == r3 || r2 == r3)
         {
-              r3 = number_range ( 0, MAX_RANDOMS-1);  
+              r3 = number_range ( 0, MAX_RANDOMS-1);
         }
 
         r4 = number_range ( 0, MAX_RANDOMS-1);
         while ( r1 == r4 || r2 == r4 || r3 ==r4 )
         {
-             r4 = number_range ( 0, MAX_RANDOMS-1);   
+             r4 = number_range ( 0, MAX_RANDOMS-1);
         }
 
         mod1 = random_list[r1].apply_buff;
@@ -5117,7 +5117,7 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
         modifier4 = 1;
 
      /*   sprintf(buf2, "[*****] RANDOMS: %d: 1:(%d %d %d) 2:(%d %d %d) 3:(%d %d %d) 4:(%d %d %d)", random, mod1, gain1, modifier1, mod2, gain2, modifier2, mod3, gain3, modifier3, mod4, gain4, modifier4);
-        log_string (buf2); 
+        log_string (buf2);
 */
         if (random > (999-(LEGENDARY_CHANCE * mob_bonus)) && (!strcmp(rank, "boss")))/* 1 in 1000 chance to get a legendary */
         {
@@ -5158,7 +5158,7 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
                 paf->modifier   = modifier1;
                 paf->bitvector  = 0;
                 paf->next       = obj->affected;
-                obj->affected   = paf;     
+                obj->affected   = paf;
 
                 if (!affect_free)
                 {
@@ -5176,7 +5176,7 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
                 paf->modifier   = modifier2;
                 paf->bitvector  = 0;
                 paf->next       = obj->affected;
-                obj->affected   = paf;   
+                obj->affected   = paf;
 
                 if (!affect_free)
                 {
@@ -5194,7 +5194,7 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
                 paf->modifier   = modifier3;
                 paf->bitvector  = 0;
                 paf->next       = obj->affected;
-                obj->affected   = paf;   
+                obj->affected   = paf;
 
                 if (!affect_free)
                 {
@@ -5212,7 +5212,7 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
                 paf->modifier   = modifier4;
                 paf->bitvector  = 0;
                 paf->next       = obj->affected;
-                obj->affected   = paf;   
+                obj->affected   = paf;
 
         }
         else if (random > (999-(EPIC_CHANCE * mob_bonus)) && ( (!strcmp(rank, "elite")) ))
@@ -5250,7 +5250,7 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
                 paf->modifier   = modifier1;
                 paf->bitvector  = 0;
                 paf->next       = obj->affected;
-                obj->affected   = paf;     
+                obj->affected   = paf;
 
                 if (!affect_free)
                 {
@@ -5268,7 +5268,7 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
                 paf->modifier   = modifier2;
                 paf->bitvector  = 0;
                 paf->next       = obj->affected;
-                obj->affected   = paf;   
+                obj->affected   = paf;
 
                 if (!affect_free)
                 {
@@ -5286,7 +5286,7 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
                 paf->modifier   = modifier3;
                 paf->bitvector  = 0;
                 paf->next       = obj->affected;
-                obj->affected   = paf;  
+                obj->affected   = paf;
         }
         else if (random > (999-(RARE_CHANCE * mob_bonus)))
         {
@@ -5318,7 +5318,7 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
                 paf->modifier   = modifier1;
                 paf->bitvector  = 0;
                 paf->next       = obj->affected;
-                obj->affected   = paf;     
+                obj->affected   = paf;
 
                 if (!affect_free)
                 {
@@ -5336,7 +5336,7 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
                 paf->modifier   = modifier2;
                 paf->bitvector  = 0;
                 paf->next       = obj->affected;
-                obj->affected   = paf;   
+                obj->affected   = paf;
 
 
         }
@@ -5367,12 +5367,12 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
                 paf->modifier   = modifier1;
                 paf->bitvector  = 0;
                 paf->next       = obj->affected;
-                obj->affected   = paf;   
+                obj->affected   = paf;
         }
-        else   
+        else
                 return;
-        
-        
+
+
         SET_BIT(obj->extra_flags, ITEM_MAGIC);
 }
 
