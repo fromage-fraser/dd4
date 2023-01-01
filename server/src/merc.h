@@ -359,12 +359,12 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define SCORE_SMITHY            150
 #define SCORE_STATS             2500    /*Obj->level dependant*/
 #define SCORE_CRIT_SWIFTNESS    2500    /*Obj->level dependant*/
-#define SCORE_HP_MANA           20      /*Obj->level dependant*/
+#define SCORE_HP_MANA           200      /*Obj->level dependant*/
 #define SCORE_HIT_DAM           1000
-#define SCORE_FLY               100
-#define SCORE_DETECTS           50
+#define SCORE_FLY               200
+#define SCORE_DETECTS           150
 #define SCORE_RESISTS           1500    /*Obj->level dependant*/
-#define SCORE_AC                5
+#define SCORE_AC                350      /*Obj->level dependant*/
 
 /*
  * Channel recall, 'review' command; Gezhp 2001
