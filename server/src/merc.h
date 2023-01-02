@@ -2173,7 +2173,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_ANTI_SMITHY                BIT_34
 #define ITEM_DEPLOYED                   BIT_35
 #define ITEM_RUNE                       BIT_36
-#define ITEM_DONOT_RANDOMISE            BIT_37
+#define ITEM_DONOT_RANDOMISE            BIT_37  /* Create item exactly as in area file */
+#define ITEM_WEAK_RANDOMISE             BIT_38  /* Item applies randomised gently by random_qnd() */
 #define ITEM_CURSED                     BIT_61  /* carrier attacked by mobs with DETECT_CURSE, magic travel nonfunctional if carried */
 
 

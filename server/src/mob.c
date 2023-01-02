@@ -2,8 +2,8 @@
  *  mob.c
  *
  *  Mob Specs & Species types go here.
- *  
- *  
+ *
+ *
  *
  * Brutus 2022.
  *
@@ -31,22 +31,22 @@ const struct rank       rank_table [ MAX_RANK ] =
 const struct species_type  species_table [ MAX_SPECIES ] =
 {
         /* species, body parts, attack parts */
-      
+
         {
-                "reserved", 
+                "reserved",
                 0,
                 0
         },
 
         {
-                "humanoid", 
+                "humanoid",
                 1024|4096|32768|BIT_15|BIT_18|BIT_19|BIT_20|BIT_21|BIT_22|BIT_23|BIT_24|BIT_25,
                 0
         },
 
-        {       
+        {
                 "elemental",
-                4|8|16|256|1024, /* body parts */ 
+                4|8|16|256|1024, /* body parts */
                 0                /* attack parts */
         },
 
@@ -64,24 +64,24 @@ const struct species_type  species_table [ MAX_SPECIES ] =
 const struct mob_type mob_table [MAX_MOB] =
 {
   /*
-    * name, species, male_icon, femail_icon
-    * resists, vulnerabilites, immunes,
+    * name, species, male_icon, female_icon
+    * resists, vulnerabilities, immunes,
     * hp %gain, dam % gain, crit % gain, haste % gain
     * height, weight, size
     * body_parts, attack_parts, language,
     * spec1, spec2, spec_boss
-    * 
-    * 
-    *     
+    *
+    *
+    *
     */
   {
           "reserved", "reserved", "icon1", "icon2",
-          0, 0, 0, 
-          0, 0, 0, 0, 
+          0, 0, 0,
+          0, 0, 0, 0,
           0, 0, 0,
           0, 0, 0,
-          "NULL", 
-          "NULL", 
+          "NULL",
+          "NULL",
           "NULL"
   },
 
@@ -91,8 +91,8 @@ const struct mob_type mob_table [MAX_MOB] =
           20, 20, -10, -2,      /*hp %gain, dam % gain, crit % gain, haste % gain*/
           1, 30, 100,           /*height, weight, size*/
           0, 0, 3,            /*body_parts, attack_parts, language,*/
-          "spec_fido", 
-          "NULL", 
+          "spec_fido",
+          "NULL",
           "NULL"
   },
 
@@ -102,10 +102,9 @@ const struct mob_type mob_table [MAX_MOB] =
           0, 0, 0, 20,          /*hp %gain, dam % gain, crit % gain, haste % gain*/
           2, 20, 3,             /*height, weight, size*/
           0, 0, 1,              /*body_parts, attack_parts, language,*/
-          "spec_breath_fire", 
-          "NULL", 
+          "spec_breath_fire",
+          "NULL",
           "NULL"
   }
 
 };
-  
