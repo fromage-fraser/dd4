@@ -205,22 +205,6 @@ const struct clan_items clan_item_list [ MAX_CLAN ] =
         {       "COB",  488,    489,    491,    490             }
 };
 
-const struct imbue_types imbue_list [ MAX_IMBUE ] =
-{
-        /* name, short_desc, apply_buff, base_gain */
-        { "to_damage", "More damage", APPLY_DAMROLL, 8 },
-        { "to_hit", "More damage", APPLY_HITROLL, 8 },
-        { "to_mana", "More damage", APPLY_MANA, 50 },
-        { "to_hps", "More damage", APPLY_HIT, 50 },
-        { "to_move", "More damage", APPLY_MOVE, 20 },
-        { "to_str", "More damage", APPLY_STR, 1 },
-        { "to_dex", "More damage", APPLY_DEX, 1 },
-        { "to_damage", "More damage", APPLY_DAMROLL, 8 },
-        { "to_ac", "More damage", APPLY_AC, -22 },
-        { "to_crit", "Crit damage", APPLY_CRIT, 1},
-        { "to_swiftness", "Swiftness Gain", APPLY_SWIFTNESS, 1},
-};
-
 const struct random_types random_list [ MAX_RANDOMS ] =
 {
         { APPLY_DAMROLL, SCORE_HIT_DAM},
