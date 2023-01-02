@@ -2870,10 +2870,10 @@ void do_oload( CHAR_DATA *ch, char *argument )
         }
 
         /* testing random_qnd function, Owl 1/1/23
-        rand_value_test = random_qnd ( -3, 3, APPLY_STR );
+        rand_value_test = random_qnd ( -3, "elite", APPLY_STR );
         sprintf( buf, "Rand value returned for rand item = %d.\n\r", rand_value_test );
         send_to_char( buf, ch );
-        rand_value_test = random_qnd ( -10, 4, APPLY_AC );
+        rand_value_test = random_qnd ( -10, "boss", APPLY_AC );
         sprintf( buf, "Rand value returned for rand item = %d.\n\r", rand_value_test );
         send_to_char( buf, ch );
         */

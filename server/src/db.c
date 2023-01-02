@@ -5084,9 +5084,10 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
 
         mob_bonus = rank_bonus(rank);
 
-        /* Find some unique random buffs */
+        /* find a random number between 1 - 1000*/
         random = number_range ( 0,1000);
 
+        /* Find some unique random buffs */
         r1 = number_range ( 0, MAX_RANDOMS-1);
 
         r2 = number_range ( 0, MAX_RANDOMS-1);

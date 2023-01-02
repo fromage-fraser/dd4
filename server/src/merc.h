@@ -4705,7 +4705,7 @@ bool  has_ego_item_effect                     ( CHAR_DATA *ch, int flag );
 void  player_leaves_clan                      ( CHAR_DATA *ch );
 int   get_craft_obj_bonus                     ( CHAR_DATA *ch );
 int   get_spellcraft_obj_bonus                ( CHAR_DATA *ch );
-int   random_qnd                        args( ( int ap_value, int rank, int ap_type ) );
+int   random_qnd                        args( ( int ap_value, char *rank, int ap_type ) );
 
 /* act_wiz.c */
 ROOM_INDEX_DATA *       find_location   args( ( CHAR_DATA *ch, char *arg ) );
