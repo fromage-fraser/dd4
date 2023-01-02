@@ -228,21 +228,12 @@ struct HERB
 
 #define MAX_HERBS 11
 
-struct imbue_types
-{
-        char    *name;
-        char    *short_desc;
-        char    apply_buff;
-        int     base_gain;
-};
-
 struct random_types
 {
         char    apply_buff;
         int     base_gain;
 };
 
-#define MAX_IMBUE 11
 #define MAX_RANDOMS 15
 #define BLUEPRINTS_MAX  43
 #define MAX_DPR 20
@@ -3934,7 +3925,6 @@ extern const    struct social_type              social_table                    
 extern const    struct pattern_points           pattern_list                    [ MAX_PATTERN ];
 extern const    struct soar_points              soar_list                       [ MAX_SOAR ];
 extern const    struct HERB                     herb_table                      [ MAX_HERBS ];
-extern const    struct imbue_types              imbue_list                      [ MAX_IMBUE ];
 extern const    struct random_types             random_list                     [ MAX_RANDOMS ];
 extern const    struct song                     song_table                      [ MAX_SONGS ];
 extern char *   const  color_list                                               [ MAX_COLOR_LIST ];

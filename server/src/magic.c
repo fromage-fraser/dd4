@@ -3690,7 +3690,10 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 if ( paf->location != APPLY_NONE && paf->modifier != 0
                     && strcmp (affect_loc_name (paf->location), "(unknown)"))
                 {
-                        if (paf->location < APPLY_SANCTUARY)
+                        if (paf->location == APPLY_CRIT || paf->location == APPLY_SWIFTNESS)
+                                sprintf( buf, "It improves {Y%s{x by {Y%d%%{x.\n\r",
+                                        affect_loc_name( paf->location ), paf->modifier );
+                        else if (paf->location < APPLY_SANCTUARY)
                                 sprintf( buf, "It modifies {Y%s{x by {Y%d{x.\n\r",
                                         affect_loc_name( paf->location ), paf->modifier );
                         else    sprintf (buf, "It gives the wearer {Y%s{x.\n\r",
@@ -3705,7 +3708,10 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                     && paf->modifier != 0
                     && strcmp (affect_loc_name (paf->location), "(unknown)"))
                 {
-                        if (paf->location < APPLY_SANCTUARY)
+                        if (paf->location == APPLY_CRIT || paf->location == APPLY_SWIFTNESS)
+                        sprintf( buf, "It improves {Y%s{x by {Y%d%%{x.\n\r",
+                                affect_loc_name( paf->location ), paf->modifier );
+                        else if (paf->location < APPLY_SANCTUARY)
                                 sprintf( buf, "It modifies {Y%s{x by {Y%d{x.\n\r",
                                         affect_loc_name( paf->location ), paf->modifier );
                         else

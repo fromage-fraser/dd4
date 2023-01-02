@@ -4356,14 +4356,11 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         char            arg[MAX_INPUT_LENGTH];
         char            modifier;
         int             random_buff;
-        int             random_buff2;
-        int             random_buff3;
+        int value = 1;
         AFFECT_DATA     *paf;
         bool found;
 
         random_buff = -1;
-        random_buff2 = -1;
-        random_buff3 = -1;
 
         if (IS_NPC(ch))
                 return;
@@ -4421,8 +4418,11 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-       random_buff = number_range( 0, MAX_IMBUE-1);
-       modifier = imbue_list[random_buff].apply_buff;
+        /* Now using hte random table for alignment with randomiser*/
+        random_buff = number_range( 0, MAX_RANDOMS-1);
+        modifier = random_list[random_buff].apply_buff;
+        value = 250 / (calc_aff_score(modifier,ch->level));
+        value = ((modifier == APPLY_AC) ? (-value) : value);
 
         if (!affect_free)
                 paf = alloc_perm(sizeof(*paf));
@@ -4435,7 +4435,8 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         paf->type           = gsn_imbue;
         paf->duration       = -1;
         paf->location       = modifier;
-        paf->modifier       = ch->level * imbue_list[random_buff].base_gain * ch->pcdata->learned[gsn_imbue] / 1000;
+       /* paf->modifier       = ch->level * imbue_list[random_buff].base_gain * ch->pcdata->learned[gsn_imbue] / 1000; */
+        paf->modifier       = value;
         paf->bitvector      = 0;
         paf->next           = obj->affected;
         obj->affected       = paf;
@@ -4443,8 +4444,10 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 
         if (ch->pcdata->learned[gsn_imbue] > 75)
         {
-                random_buff2 = number_range( 0, MAX_IMBUE-1);
-                modifier = imbue_list[random_buff2].apply_buff;
+                random_buff = number_range( 0, MAX_RANDOMS-1);
+                modifier = random_list[random_buff].apply_buff;
+                value = 250 / (calc_aff_score(modifier,ch->level));
+                value = ((modifier == APPLY_AC) ? (-value) : value);
 
                 if (!affect_free)
                         paf = alloc_perm(sizeof(*paf));
@@ -4456,7 +4459,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 paf->type           = gsn_imbue;
                 paf->duration       = -1;
                 paf->location       = modifier;
-                paf->modifier       = ch->level * imbue_list[random_buff].base_gain * ch->pcdata->learned[gsn_imbue] / 1000;
+                paf->modifier       = value;
                 paf->bitvector      = 0;
                 paf->next           = obj->affected;
                 obj->affected       = paf;
@@ -4465,8 +4468,10 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 
         if (ch->pcdata->learned[gsn_imbue] > 97)
         {
-                random_buff3 = number_range( 0, MAX_IMBUE-1);
-                modifier = imbue_list[random_buff3].apply_buff;
+                random_buff = number_range( 0, MAX_RANDOMS-1);
+                modifier = random_list[random_buff].apply_buff;
+                value = 250 / (calc_aff_score(modifier,ch->level));
+                value = ((modifier == APPLY_AC) ? (-value) : value);
 
                 if (!affect_free)
                         paf = alloc_perm(sizeof(*paf));
@@ -4478,7 +4483,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 paf->type           = gsn_imbue;
                 paf->duration       = -1;
                 paf->location       = modifier;
-                paf->modifier       = ch->level * imbue_list[random_buff].base_gain * ch->pcdata->learned[gsn_imbue] / 1000;
+                paf->modifier       = value;
                 paf->next           = obj->affected;
                 obj->affected       = paf;
                 random_buff = -1;
