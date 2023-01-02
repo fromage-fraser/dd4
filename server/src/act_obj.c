@@ -5891,7 +5891,7 @@ int parsebet (const int currentbet, const char *argument)
 }
 
 
-int random_qnd ( int ap_value, int rank, int ap_type )
+int random_qnd ( int ap_value, char *rank, int ap_type )
 {
         /*
 
@@ -5930,7 +5930,7 @@ int random_qnd ( int ap_value, int rank, int ap_type )
         float plus_3_ub;
         float sd_divisor = 6.0;
         float av_sd = ap_value / sd_divisor;
-        float rank_bonus = 0.0;
+        float bonus_from_rank = 0.0;
         float r;
 
         /* indicates whether a negative value for an APPLY is of benefit to a player or not */
@@ -6013,7 +6013,7 @@ int random_qnd ( int ap_value, int rank, int ap_type )
                 printf("return ap value for +3SD between %f and %f: %f\n", plus_3_lb, plus_3_ub, changed_ap_value);
         }
 
-        sprintf(buf,"ap_type: %d | ap_value: %d | changed_ap_value: %f | rank: %d | minus_3_lb: %f | minus_3_ub: %f | minus_2_lb: %f | minus_2_ub: %f | minus_1_lb: %f | plus_1_ub: %f | plus_2_lb: %f | plus_2_ub: %f | plus_3_lb: %f | plus_3_ub: %f |",
+        sprintf(buf,"ap_type: %d | ap_value: %d | changed_ap_value: %f | rank: %s | minus_3_lb: %f | minus_3_ub: %f | minus_2_lb: %f | minus_2_ub: %f | minus_1_lb: %f | plus_1_ub: %f | plus_2_lb: %f | plus_2_ub: %f | plus_3_lb: %f | plus_3_ub: %f |",
                 ap_type,
                 ap_value,
                 changed_ap_value,
@@ -6150,21 +6150,32 @@ int random_qnd ( int ap_value, int rank, int ap_type )
         /*
                 'ranks' possible are in rank_table in mob.c  Currently 5 is max.
 
-                We assume '1' (none/common) if a value less than 1 is passed.
+                         name, rank_bonus, hp_bonus, who_format 
+                        { "none",       1,      1,      "{WCommon.{x "},
+                        { "common",     1,      1,      "{WCommon.{x "},
+                        { "rare",       3,      2,      "<39>[Rare]<0> "},
+                        { "elite",      3,      5,      "<93>[Elite]<0> "},
+                        { "boss",       4,      7,      "<514><556><16>[<560>BOSS<561>]<0><557> "},
+                        { "world",      5,     30,      "<81>[WO<75>RL<69>D B<75>OS<81>S]<0> "}
+
+                See mob.c. 
+                We assume common  if something not here is passed.
+                Tweak this if you add more ranks.
 
         */
 
-        if (rank > 1)
+        if ( str_cmp(rank, "none") && str_cmp(rank, "common"))
         {
+
                  if (negative_benefits)
                  {
-                        rank_bonus = -(rank * fabs(av_sd));
-                        sprintf(buf,"Rank bonus is: %f with negative benefit YES and av_sd: %f",rank_bonus, av_sd);
+                        bonus_from_rank = -( rank_bonus(rank) * fabs(av_sd));
+                        sprintf(buf,"Rank bonus is: %f with negative benefit YES and av_sd: %f",bonus_from_rank, av_sd);
                         log_string(buf);
                  }
                  else {
-                        rank_bonus = (rank * fabs(av_sd));
-                        sprintf(buf,"Rank bonus is: %f with negative benefit NO and av_sd: %f",rank_bonus, av_sd);
+                        bonus_from_rank = ( rank_bonus(rank) * fabs(av_sd));
+                        sprintf(buf,"Rank bonus is: %f with negative benefit NO and av_sd: %f",bonus_from_rank, av_sd);
                         log_string(buf);
                  }
         }
@@ -6174,11 +6185,11 @@ int random_qnd ( int ap_value, int rank, int ap_type )
                 changed_ap_value);
         log_string(buf);
 
-        sprintf(buf,"Rank bonus is: %f, based on a passed mob rank of %d, av_sd of %f, negative_benefits value of %d and apply type %d",
-                rank_bonus, rank, av_sd, negative_benefits, ap_type);
+        sprintf(buf,"Rank bonus is: %f, based on a passed mob rank of %s, av_sd of %f, negative_benefits value of %d and apply type %d",
+                bonus_from_rank, rank, av_sd, negative_benefits, ap_type);
         log_string(buf);
 
-        changed_ap_value = (changed_ap_value + rank_bonus);
+        changed_ap_value = (changed_ap_value + bonus_from_rank);
 
         sprintf(buf,"Pre-rounding value of changed_ap_value with rank bonus is: %f",
                 changed_ap_value);

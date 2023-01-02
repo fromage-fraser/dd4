@@ -2134,7 +2134,10 @@ bool  gets_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DA
         worn=0;
         for ( objworn = ch->carrying; objworn; objworn = objworn->next_content )
         {
-                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) )
+                if ( obj->pIndexData->vnum == objworn->pIndexData->vnum) /* skip if we find the object to be worn is already worn*/
+                        continue;
+                
+                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) ) /* proceed if this object is part of an objset*/
                 {
 
                 if ( (objworn->wear_loc != WEAR_NONE) && (pObjSetIndex->vnum == pobjsetworn->vnum) )/*count worn items of set */
@@ -2146,7 +2149,7 @@ bool  gets_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DA
 
         if ( worn == 0 )
                 return FALSE;
-
+        /* we have found an object, which is part of an objset set - proceed */
        for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
         {
                 if ( worn >= objset_bonus_num_pos(pObjSetIndex->vnum, pos)  )
@@ -2154,7 +2157,7 @@ bool  gets_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DA
                         bug( "OBJSSET ADD FALSE: check if worn is great than current paf count %d", pos);
                         return FALSE;
                 }
-                if ( (worn+1) == ( objset_bonus_num_pos(pObjSetIndex->vnum, pos) ) )
+                if ( (worn+1) == ( objset_bonus_num_pos(pObjSetIndex->vnum, pos) ) ) /* if this item */
                 {
                         bug( "OBJSET ADD TRUE: Total worm items %d", worn);
                         return TRUE;
