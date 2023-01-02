@@ -3406,6 +3406,7 @@ char *extra_bit_name (unsigned long int extra_flags)
             case ITEM_CURSED:               return "cursed";
             case ITEM_RUNE:                 return "rune";
             case ITEM_DONOT_RANDOMISE:      return "pure";
+            case ITEM_WEAK_RANDOMISE:       return "steady";
 
             default: return "(unknown)";
         }

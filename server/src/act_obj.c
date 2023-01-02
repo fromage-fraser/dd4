@@ -5897,11 +5897,12 @@ int random_qnd ( int ap_value, char *rank, int ap_type )
 
         Given an APPLY type from an item, this will transform it using a quasi-standard
         normal (but 3 SD hard-bounded) distribution, affected by the mobrank of a mob if
-        it's loaded on a mob (assumes 'common' if not).  Used to randomise item statistics.
+        it's loaded on a mob (assumes 'common' if not).  Used to randomise item statistics
+        for items with the ITEM_WEAK_RANDOMISE/"steady" flag.
 
         If item has the ITEM_DONOT_RANDOMISE flag on it its apply values shouldn't be
-        changed.  This should be checked by the calling function, not this one, which will
-        assume you've checked before calling it.
+        changed at all.  This should be checked by the calling function, not this one, which
+        will assume you've checked before calling it.
 
         --Owl 1/1/23
 
@@ -6147,7 +6148,7 @@ int random_qnd ( int ap_value, char *rank, int ap_type )
         }
 
         /*
-                'rank' will be one of
+                'ranks' possible are in rank_table in mob.c  Currently 5 is max.
 
                          name, rank_bonus, hp_bonus, who_format 
                         { "none",       1,      1,      "{WCommon.{x "},
