@@ -111,7 +111,7 @@ int get_colour_index_by_code ( int ccode )
 
 int calc_aff_score (int apply, int level)
 {
-    /*    char       buf  [ MAX_STRING_LENGTH ]; */
+        char       buf  [ MAX_STRING_LENGTH ]; 
         int score = 0;
         switch (apply)
         {
@@ -148,9 +148,11 @@ int calc_aff_score (int apply, int level)
                         if (level < 3 )
                                 score += (200 / level);
                         else if (level < 6)
-                                score += (500 / level);
+                                score += (300 / level);
                         else if (level < 16)
-                                score += ( 1000 / level);
+                                score += ( 600 / level);
+                        else if (level < 26)
+                                score += ( 1600/ level);
                         else
                                 score += (SCORE_STATS / level);
                 }
@@ -193,15 +195,25 @@ int calc_aff_score (int apply, int level)
                 case APPLY_RESIST_HEAT:
                 case APPLY_RESIST_LIGHTNING:
                 {
-                        score += ( SCORE_RESISTS / level);
+                        if (level < 3 )
+                                score += (200 / level);
+                        else if (level < 6)
+                                score += (300 / level);
+                        else if (level < 16)
+                                score += ( 600 / level);
+                        else
+                                score += ( SCORE_RESISTS / level);
                 }
                 break;
 
                 default:
                         score +=1;
         }
-            /*    sprintf(buf, "[*****] AFF_SCORE: I return %d, from a apply of %d and level %d)", score, apply, level);
-                log_string (buf); */
+            
+            if (score == 0)
+            {    sprintf(buf, "[*****] BUG in calc_aff_score: I return ZERO score from a apply of %d and level %d)", apply, level);
+                log_string (buf); 
+            }
         return score;
 }
 

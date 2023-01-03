@@ -3440,8 +3440,9 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, bool 
                                 paf->deleted = TRUE;
                         }
                         randomise_object(obj, level, rank);
+                        break;
                 }
-
+                break;
             /*
              * Although we can't wield armourer's hammers, area resets may
              * equip them as weapons; let's prepare for wierdness; Gezhp 2001
