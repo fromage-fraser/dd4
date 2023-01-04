@@ -4489,6 +4489,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 random_buff = -1;
         }
 
+        obj->how_created    = CREATED_SKILL;
         SET_BIT(obj->extra_flags, ITEM_EGO);
         SET_BIT(obj->ego_flags, EGO_ITEM_IMBUED);
         set_obj_owner(obj, ch->name);
