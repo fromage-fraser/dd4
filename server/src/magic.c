@@ -3685,42 +3685,48 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 break;
         }
 
-        for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
+        if (obj->how_created < CREATED_NO_RANDOMISER )
         {
-                if ( paf->location != APPLY_NONE && paf->modifier != 0
-                    && strcmp (affect_loc_name (paf->location), "(unknown)"))
+                for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
                 {
-                        if (paf->location == APPLY_CRIT || paf->location == APPLY_SWIFTNESS)
+                        if ( paf->location != APPLY_NONE && paf->modifier != 0
+                        && strcmp (affect_loc_name (paf->location), "(unknown)"))
+                        {
+                                if (paf->location == APPLY_CRIT || paf->location == APPLY_SWIFTNESS)
+                                        sprintf( buf, "It improves {Y%s{x by {Y%d%%{x.\n\r",
+                                                affect_loc_name( paf->location ), paf->modifier );
+                                else if (paf->location < APPLY_SANCTUARY)
+                                        sprintf( buf, "It modifies {Y%s{x by {Y%d{x.\n\r",
+                                                affect_loc_name( paf->location ), paf->modifier );
+                                else    sprintf (buf, "It gives the wearer {Y%s{x.\n\r",
+                                                affect_loc_name (paf->location));
+                                send_to_char( buf, ch );
+                        }
+                }
+        }
+
+        if (obj->how_created >= CREATED_NO_RANDOMISER )
+        {
+                for ( paf = obj->affected; paf; paf = paf->next )
+                {
+                        if ( paf->location != APPLY_NONE
+                        && paf->modifier != 0
+                        && strcmp (affect_loc_name (paf->location), "(unknown)"))
+                        {
+                                if (paf->location == APPLY_CRIT || paf->location == APPLY_SWIFTNESS)
                                 sprintf( buf, "It improves {Y%s{x by {Y%d%%{x.\n\r",
                                         affect_loc_name( paf->location ), paf->modifier );
-                        else if (paf->location < APPLY_SANCTUARY)
-                                sprintf( buf, "It modifies {Y%s{x by {Y%d{x.\n\r",
-                                        affect_loc_name( paf->location ), paf->modifier );
-                        else    sprintf (buf, "It gives the wearer {Y%s{x.\n\r",
-                                         affect_loc_name (paf->location));
-                        send_to_char( buf, ch );
+                                else if (paf->location < APPLY_SANCTUARY)
+                                        sprintf( buf, "It modifies {Y%s{x by {Y%d{x.\n\r",
+                                                affect_loc_name( paf->location ), paf->modifier );
+                                else
+                                        sprintf (buf, "It gives the wearer {Y%s{x.\n\r",
+                                                affect_loc_name (paf->location));
+                                send_to_char( buf, ch );
+                        }
                 }
         }
-
-        for ( paf = obj->affected; paf; paf = paf->next )
-        {
-                if ( paf->location != APPLY_NONE
-                    && paf->modifier != 0
-                    && strcmp (affect_loc_name (paf->location), "(unknown)"))
-                {
-                        if (paf->location == APPLY_CRIT || paf->location == APPLY_SWIFTNESS)
-                        sprintf( buf, "It improves {Y%s{x by {Y%d%%{x.\n\r",
-                                affect_loc_name( paf->location ), paf->modifier );
-                        else if (paf->location < APPLY_SANCTUARY)
-                                sprintf( buf, "It modifies {Y%s{x by {Y%d{x.\n\r",
-                                        affect_loc_name( paf->location ), paf->modifier );
-                        else
-                                sprintf (buf, "It gives the wearer {Y%s{x.\n\r",
-                                         affect_loc_name (paf->location));
-                        send_to_char( buf, ch );
-                }
-        }
-
+        
 /* 2nd pass at sets - Brutus */
 
         if ( (pObjSetIndex = objects_objset(obj->pIndexData->vnum) ) )

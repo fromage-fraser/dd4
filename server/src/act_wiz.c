@@ -1027,9 +1027,10 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 return;
         }
 
-         sprintf( buf, "Vnum: {R%d{x\n\r",
-                obj->pIndexData->vnum );
+        sprintf( buf, "Vnum: {R%d{x How Created: {W%d{x\n\r",
+                obj->pIndexData->vnum, obj->how_created);
         strcat( buf1, buf );
+
 
         sprintf( buf, "Short description: {W%s{x\n\rKeywords: {W%s{x\n\rLong description: {W%s{x\n\r",
                 obj->short_descr,
@@ -1233,18 +1234,27 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 strcat( buf1, "{x'\n\r" );
         }
 
-        for ( paf = obj->affected; paf; paf = paf->next )
+        sprintf( buf, "These Affects were created with {W%s{x\n\r", created_name(obj->how_created));
+        strcat( buf1, buf );
+        
+        if (obj->how_created >= CREATED_NO_RANDOMISER )
         {
-                sprintf( buf, "Affects {Y%s{x by {Y%d{x\n\r",
-                        affect_loc_name( paf->location ), paf->modifier );
-                strcat( buf1, buf );
+                for ( paf = obj->affected; paf; paf = paf->next )
+                {
+                        sprintf( buf, "Affects {Y%s{x by {Y%d{x (Read from Obj)\n\r",
+                                affect_loc_name( paf->location ), paf->modifier );
+                        strcat( buf1, buf );
+                }
         }
 
-        for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
+        if (obj->how_created < CREATED_NO_RANDOMISER )
         {
-                sprintf( buf, "Affects {Y%s{x by {Y%d{x (Index)\n\r",
-                        affect_loc_name( paf->location ), paf->modifier );
-                strcat( buf1, buf );
+                for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
+                {
+                        sprintf( buf, "Affects {Y%s{x by {Y%d{x (Read from Index)\n\r",
+                                affect_loc_name( paf->location ), paf->modifier );
+                        strcat( buf1, buf );
+                }
         }
 
         if (obj->owner[0] != '\0')

@@ -349,7 +349,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define SCORE_AURAS             500
 #define SCORE_SMITHY            150
 #define SCORE_STATS             2500    /*Obj->level dependant*/
-#define SCORE_CRIT_SWIFTNESS    2500    /*Obj->level dependant*/
+#define SCORE_CRIT_SWIFTNESS    3500    /*Obj->level dependant*/
 #define SCORE_HP_MANA           200      /*Obj->level dependant*/
 #define SCORE_HIT_DAM           1000
 #define SCORE_FLY               200
@@ -2904,6 +2904,12 @@ struct obj_index_data
 #define TIMER_DAMAGED        20
 #define TIMER_ALERT          10
 
+#define         CREATED_PRE_DD5                 1
+#define         CREATED_NO_RANDOMISER           2
+#define         CREATED_STRONG_RANDOMISER       3
+#define         CREATED_WEAK_RANDOMISER         4
+#define         CREATED_SKILL                   5
+
 /*
  * One object.
  */
@@ -2939,6 +2945,7 @@ struct obj_data
         char                    owner [ 32 ];
         int                     ego_flags;
         bool                    identified;
+        int                     how_created;
 };
 
 
@@ -4877,6 +4884,7 @@ int     extra_form_int                        ( char *name );
 char *  extra_bit_name                  args( ( unsigned long int extra_flags ) );
 char *  body_form_name                  args( ( unsigned long int vector ) );
 char *  resist_name                     args( ( unsigned long int vector ) );
+char *  created_name                    args( ( int created) );
 char *  room_flag_name                  args( ( unsigned long int vector ) );
 char *  area_flag_name                  args( ( unsigned long int vector ) );
 char *  wear_flag_name                  args( ( int vector ) );

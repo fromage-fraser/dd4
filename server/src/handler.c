@@ -1228,8 +1228,11 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
         {
                 ch->armor -= apply_ac( obj, iWear );
 
+                if (!obj->how_created || obj->how_created == CREATED_PRE_DD5)
+                {
                 for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
                         affect_modify( ch, paf, TRUE, obj );
+                }
 
                 for ( paf = obj->affected; paf; paf = paf->next )
                         affect_modify( ch, paf, TRUE, obj );
@@ -1306,8 +1309,11 @@ void unequip_char( CHAR_DATA *ch, OBJ_DATA *obj )
         {
                 ch->armor += apply_ac( obj, obj->wear_loc );
 
-                for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
+                if (!obj->how_created || obj->how_created == CREATED_PRE_DD5)
+                {
+                        for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
                         affect_modify( ch, paf, FALSE, obj );
+                }
 
                 for ( paf = obj->affected; paf; paf = paf->next )
                         affect_modify( ch, paf, FALSE, obj );
@@ -3024,6 +3030,18 @@ char* body_form_name (unsigned long int vector)
         }
 }
 
+char* created_name( int created)
+{
+        switch (created)
+        {
+                case CREATED_PRE_DD5:           return "pre DD5 code";
+                case CREATED_NO_RANDOMISER:     return "no randomiser applied";
+                case CREATED_STRONG_RANDOMISER: return "the strong randomiser";
+                case CREATED_WEAK_RANDOMISER:   return "the _weak_ randomiser";
+                case CREATED_SKILL:             return "a skill (e.g. construct)";
+                default:                        return "pre dd5 code";
+        }
+}
 char* resist_name (unsigned long int vector)
 {
         switch (vector)
