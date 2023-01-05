@@ -351,12 +351,12 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define SCORE_AURAS             500
 #define SCORE_SMITHY            150
 #define SCORE_STATS             2500    /*Obj->level dependant*/
-#define SCORE_CRIT_SWIFTNESS    3500    /*Obj->level dependant*/
+#define SCORE_CRIT_SWIFTNESS    4000    /*Obj->level dependant*/
 #define SCORE_HP_MANA           200      /*Obj->level dependant*/
 #define SCORE_HIT_DAM           1000
 #define SCORE_FLY               200
 #define SCORE_DETECTS           150
-#define SCORE_RESISTS           1500    /*Obj->level dependant*/
+#define SCORE_RESISTS           2500    /*Obj->level dependant*/
 #define SCORE_AC                350      /*Obj->level dependant*/
 
 /*

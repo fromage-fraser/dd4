@@ -5129,6 +5129,15 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
                 modifier2 = target / 4 / calc_aff_score(mod2,level);
                 modifier3 = target / 4 / calc_aff_score(mod3,level);
                 modifier4 = target / 4 / calc_aff_score(mod4,level);
+
+                if (modifier1 < 1)
+                        modifier1 = 1;
+                if (modifier2 < 1)
+                        modifier2 = 1;
+                if (modifier3 < 1)
+                        modifier3 = 1;
+                if (modifier4 < 1)
+                        modifier4 = 1;       
                
                 modifier1 = ((mod1 == APPLY_AC) ? (-modifier1) : modifier1);
                 modifier2 = ((mod2 == APPLY_AC) ? (-modifier2) : modifier2);
@@ -5222,6 +5231,13 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
                 modifier1 = target / 3 / calc_aff_score(mod1,level);
                 modifier2 = target / 3 / calc_aff_score(mod2,level);
                 modifier3 = target / 3 / calc_aff_score(mod3,level);
+
+                if (modifier1 < 1)
+                        modifier1 = 1;
+                if (modifier2 < 1)
+                        modifier2 = 1;
+                if (modifier3 < 1)
+                        modifier3 = 1;
                
                 modifier1 = ((mod1 == APPLY_AC) ? (-modifier1) : modifier1);
                 modifier2 = ((mod2 == APPLY_AC) ? (-modifier2) : modifier2);
@@ -5295,6 +5311,11 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
                 modifier1 = target / 2 / calc_aff_score(mod1,level);
                 modifier2 = target / 2 / calc_aff_score(mod2,level);
 
+                if (modifier1 < 1)
+                        modifier1 = 1;
+                if (modifier2 < 1)
+                        modifier2 = 1;
+
                 modifier1 = ((mod1 == APPLY_AC) ? (-modifier1) : modifier1);
                 modifier2 = ((mod2 == APPLY_AC) ? (-modifier2) : modifier2);
 
@@ -5345,8 +5366,10 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
                 target = number_range( ITEM_SCORE_UNCOMMON, ITEM_SCORE_RARE);
 
                 modifier1 = target / calc_aff_score(mod1,level);
-
+                if (modifier1 < 1)
+                        modifier1 = 1;
                 modifier1 = ((mod1 == APPLY_AC) ? (-modifier1) : modifier1);
+
                 if (!affect_free)
                 {
                         paf = alloc_perm( sizeof( *paf ) );
