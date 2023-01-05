@@ -3703,6 +3703,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 SET_BIT(creation->ego_flags, blueprint_list[i].blueprint_ego);
         }
         set_obj_owner(creation, ch->name);
+        creation->how_created    = CREATED_SKILL;
 
         send_to_char( "You heat the forge and ready your materials.\n\r", ch );
         sprintf(buf, "Expertly you assemble your components to create {W%s{x.", blueprint_list[i].blueprint_desc);

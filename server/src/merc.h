@@ -333,10 +333,12 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define ITEM_SCORE_UNCOMMON     120
 
 /* these are chance in 1000 - Brutus */
-#define LEGENDARY_CHANCE        1
-#define EPIC_CHANCE             10
-#define RARE_CHANCE             25
-#define UNCOMMON_CHANCE         150
+#define LEGENDARY_CHANCE        1       /* 0.1% */
+#define EPIC_CHANCE             10      /* 1%   */
+#define RARE_CHANCE             25      /* 2.5% */
+#define UNCOMMON_CHANCE         150     /* 15%* */
+
+#define RANDOMISER_MIN_LEVEL    40
 
 /* define the types of mobs we have - Brutus */
 #define NPC_COMMON      1

@@ -1234,7 +1234,7 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 strcat( buf1, "{x'\n\r" );
         }
 
-        sprintf( buf, "These Affects were created with {W%s{x\n\r", created_name(obj->how_created));
+        sprintf( buf, "This item and effects were created with {W%s{x\n\r", created_name(obj->how_created));
         strcat( buf1, buf );
         
         if (obj->how_created >= CREATED_NO_RANDOMISER )

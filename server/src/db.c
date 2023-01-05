@@ -3449,7 +3449,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, bool 
                 {
                         break;
                 }
-                if ( (level < 40) || !randomise || (IS_OBJ_STAT(obj,ITEM_DONOT_RANDOMISE)))
+                if ( (level < RANDOMISER_MIN_LEVEL) || !randomise || (IS_OBJ_STAT(obj,ITEM_DONOT_RANDOMISE)))
                 {
                         obj->how_created    = CREATED_NO_RANDOMISER;
                         break;
