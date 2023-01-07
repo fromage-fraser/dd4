@@ -1504,8 +1504,8 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                 strcat( buf1, buf );
 
                 sprintf( buf, "Crit: {R%d{x  Swiftness: {R%d{x\n\r",
-                        victim->crit,
-                        victim->swiftness);
+                        GET_CRIT( victim ),
+                        GET_SWIFT( victim ));
                 strcat( buf1, buf );
 
                 sprintf( buf, "Align: {W%d{x  Exp: {W%d{x  Class: {W%d{x ({G%s{x)  SubCl: {W%d{x ({G%s{x)\n\rAge: {W%d{x  Fame: {W%d{x  Form: {W%s{x  Aggro_dam: {R%d{x  Rage: {R%d{x\n\r",
@@ -1789,8 +1789,8 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                 strcat( buf1, buf );
 
                 sprintf( buf, "Crit: {R%d{x  Swiftness: {R%d{x\n\r",
-                        victim->crit,
-                        victim->swiftness);
+                        GET_CRIT( victim ),
+                        GET_CRIT( victim ));
                 strcat( buf1, buf );
 
                 sprintf( buf, "Position: {G%d{x [{W%s{x]  Wimpy: {W%d{x  Exp modifier: {W%d{x\n\r",

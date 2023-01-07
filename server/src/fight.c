@@ -1277,7 +1277,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 if (IS_AFFECTED(victim, AFF_SANCTUARY))
                         dam /= 2;
 
-                if ( number_percent() < ch->crit)
+                if ( number_percent() < GET_CRIT( ch ))
                 {
                         dam *= 2;
                         crit = TRUE;
