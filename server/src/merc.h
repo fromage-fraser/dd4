@@ -889,6 +889,12 @@ struct dex_app_type
 {
         int     defensive;
         int     initiative;
+        int     toswift;
+};
+
+struct int_app_type
+{
+        int     tocrit;
 };
 
 struct con_app_type
@@ -3849,6 +3855,8 @@ extern int gsn_prayer_plague;
 #define GET_AC( ch )                    ( ( ch )->armor  + ( IS_AWAKE( ch )     ? dex_app[ get_curr_dex( ch )].defensive : 0 ) )
 #define GET_HITROLL( ch )               ( ( ch )->hitroll + str_app[ get_curr_str( ch ) ].tohit )
 #define GET_DAMROLL( ch )               ( ( ch )->damroll + str_app[ get_curr_str( ch ) ].todam )
+#define GET_CRIT( ch )                  ( ( ch )->crit + int_app[ get_curr_int( ch ) ].tocrit )
+#define GET_SWIFT( ch )                 ( ( ch )->swiftness + dex_app[ get_curr_dex( ch ) ].toswift )
 #define IS_OUTSIDE( ch )                ( !IS_SET( ch->in_room->room_flags, ROOM_INDOORS) && ch->in_room->sector_type != SECT_INSIDE )
 #define WAIT_STATE( ch, pulse )         ( ( ch )->wait = UMAX( ( ch )->wait, ( pulse ) ) )
 #define MANA_COST( ch, sn )             ( IS_NPC( ch ) ? 0 : UMAX ( skill_table [ sn ].min_mana, 60 - ch->pcdata->learned [ sn ]) )
@@ -3914,6 +3922,7 @@ struct social_type
 extern const    struct str_app_type             str_app                         [ MAX_STAT ];
 extern const    struct dex_app_type             dex_app                         [ MAX_STAT ];
 extern const    struct con_app_type             con_app                         [ MAX_STAT ];
+extern const    struct int_app_type             int_app                         [ MAX_STAT ];
 extern const    struct class_type               class_table                     [ MAX_CLASS ];
 extern const    struct sub_class_type           sub_class_table                 [ MAX_SUB_CLASS ];
 extern const    struct dpr                      dprs                            [ MAX_DPR ];

@@ -403,7 +403,7 @@ Dragons Domain version 4.2020
     {WSET Pieces are now part of the realm. The first starter set is available
     2 items in the foundry and dwarven daycare are now linked..{x
 
-    <UPDATE>: Random item stats have been reduced on average 30%.
+    {WUPDATE:{x Random item stats have been reduced on average 30%.
 
 To Enter the Dragons Domain press <<Return>.
 ~
@@ -7316,13 +7316,13 @@ other worlds.
 1 'CRIT' 'CRITICAL HIT'~
 
 This stat will provide a chance to obtain a CRITICAL HIT on a enemy with additional
-damage for that hit.
+damage for that hit. High INTELLIGENCE will improve this stat.
 ~
 
 1 'SWIFT' 'SWIFTNESS' 'SWIFT ATTACK'~
 
 This stat will provide a chance to obtain an additional hit any time you attack.
-This applies for 2nd, 3rd, 4th etc attacks.
+This applies for 2nd, 3rd, 4th etc attacks. High DEXTERITY will improve this stat.  
 ~
 
 0 $~
