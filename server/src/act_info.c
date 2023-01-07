@@ -242,8 +242,10 @@ int calc_item_score ( OBJ_DATA *obj )
                         && paf->modifier != 0
                         && strcmp (affect_loc_name (paf->location), "(unknown)"))
                         {
-                                
-                                score += (( calc_aff_score ( paf->location, obj->level)) * paf->modifier);
+                                if ( paf->location == APPLY_AC)
+                                        score -= (( calc_aff_score ( paf->location, obj->level)) * paf->modifier);
+                                else  
+                                        score += (( calc_aff_score ( paf->location, obj->level)) * paf->modifier);
                         }
                 }
         }
@@ -259,7 +261,10 @@ int calc_item_score ( OBJ_DATA *obj )
                         && paf->modifier != 0
                         && strcmp (affect_loc_name (paf->location), "(unknown)"))
                         {
-                                score += (( calc_aff_score ( paf->location, obj->level)) * paf->modifier);
+                                if ( paf->location == APPLY_AC)
+                                        score -= (( calc_aff_score ( paf->location, obj->level)) * paf->modifier);
+                                else
+                                        score += (( calc_aff_score ( paf->location, obj->level)) * paf->modifier);
                         }
                 }
         }

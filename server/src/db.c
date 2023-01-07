@@ -3329,14 +3329,14 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, bool 
         obj->ego_flags              = pObjIndex->ego_flags;
         obj->deleted                = FALSE;
         obj->identified             = FALSE;
-        if (!randomise)
+        if ( (level < RANDOMISER_MIN_LEVEL) || !randomise || (IS_OBJ_STAT(obj,ITEM_DONOT_RANDOMISE)) )
                 obj->how_created    = CREATED_NO_RANDOMISER;
         else
                 obj->how_created    = CREATED_STRONG_RANDOMISER;
 
         /* transfer the index affects to teh object
         If randomising DO NOT TRANSFER*/
-        if (obj->how_created <= CREATED_NO_RANDOMISER )
+        if (obj->how_created <= CREATED_NO_RANDOMISER)
         {
                 for (paf = obj->pIndexData->affected; paf; paf = paf->next)
                 {
