@@ -3282,6 +3282,8 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, bool 
         static OBJ_DATA obj_zero;
         OBJ_DATA*       obj;
         int             i;
+        AFFECT_DATA     *af;
+        AFFECT_DATA     *paf;
         const int       complete_heal_sn = skill_lookup("complete heal");
         /*        char buf [MAX_STRING_LENGTH]; */
 
@@ -3327,6 +3329,33 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, bool 
         obj->ego_flags              = pObjIndex->ego_flags;
         obj->deleted                = FALSE;
         obj->identified             = FALSE;
+        if ( (level < RANDOMISER_MIN_LEVEL) || !randomise || (IS_OBJ_STAT(obj,ITEM_DONOT_RANDOMISE)) )
+                obj->how_created    = CREATED_NO_RANDOMISER;
+        else
+                obj->how_created    = CREATED_STRONG_RANDOMISER;
+
+        /* transfer the index affects to teh object
+        If randomising DO NOT TRANSFER*/
+        if (obj->how_created <= CREATED_NO_RANDOMISER)
+        {
+                for (paf = obj->pIndexData->affected; paf; paf = paf->next)
+                {
+                        if (!affect_free)
+                        af = alloc_perm(sizeof(*af));
+                        else
+                        {
+                                af = affect_free;
+                                affect_free = affect_free->next;
+                        }
+                        af->type           = paf->type;
+                        af->duration       = paf->duration;
+                        af->location       = paf->location;
+                        af->modifier       = paf->modifier;
+                        af->bitvector      = paf->bitvector;
+                        af->next           = obj->affected;
+                        obj->affected       = af;
+                }
+        }
 
         /*
          * Mess with object properties.
@@ -3414,35 +3443,25 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, bool 
 
             case ITEM_WEAPON:
                 /* proceed if not constructed - as it will take damage fields from blueprint table */
+                obj->value[1]   = number_fuzzy( number_fuzzy( 1 * level / 4 + 2 ) );
+                obj->value[2]   = number_fuzzy( number_fuzzy( 3 * level / 4 + 6 ) );
                 if (IS_SET(obj->ego_flags, EGO_ITEM_CONSTRUCTED))
                 {
                         break;
                 }
-                if ( (level < 10) || !randomise || (IS_OBJ_STAT(obj,ITEM_DONOT_RANDOMISE)))
+                if ( (level < RANDOMISER_MIN_LEVEL) || !randomise || (IS_OBJ_STAT(obj,ITEM_DONOT_RANDOMISE)))
                 {
-                        obj->value[1]   = number_fuzzy( number_fuzzy( 1 * level / 4 + 2 ) );
-                        obj->value[2]   = number_fuzzy( number_fuzzy( 3 * level / 4 + 6 ) );
+                        obj->how_created    = CREATED_NO_RANDOMISER;
                         break;
                 }
                 else                 /* random stats  */ 
                 {
-
-                        AFFECT_DATA *paf;
-                        /* strip old effects then randomise stats */
-                        for ( paf = obj->affected; paf; paf = paf->next )
-                        {
-                                if (paf->bitvector == AFF_SANCTUARY
-                                        || paf->bitvector == AFF_FLYING
-                                        || paf->bitvector == AFF_SWIM
-                                        || paf->bitvector == AFF_INVISIBLE)
-                                        continue;
-
-                                paf->deleted = TRUE;
-                        }
+                        obj->how_created    = CREATED_STRONG_RANDOMISER;
                         randomise_object(obj, level, rank);
                         break;
                 }
-                break;
+                break;;
+
             /*
              * Although we can't wield armourer's hammers, area resets may
              * equip them as weapons; let's prepare for wierdness; Gezhp 2001
@@ -3454,32 +3473,24 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, bool 
                 break;
 
             case ITEM_ARMOR:
+                obj->value[0]   = number_fuzzy( level / 5 + 2 );
                 /* proceed if not constructed - as it will take damage fields from blueprint table */
                 if (IS_SET(obj->ego_flags, EGO_ITEM_CONSTRUCTED))
                 {
                         break;
                 }
-                if ( (level < 10) || !randomise || (IS_OBJ_STAT(obj,ITEM_DONOT_RANDOMISE))) /* do not strip & do normal stuff */
+                if ( (level < 40) || !randomise || (IS_OBJ_STAT(obj,ITEM_DONOT_RANDOMISE))) /* do not strip & do normal stuff */
                 {
-                        obj->value[0]   = number_fuzzy( level / 5 + 2 );
+                        obj->how_created    = CREATED_NO_RANDOMISER;
                         break;
                 }
                 else 
                 {
-                        AFFECT_DATA *paf;
-                        /* strip old effects then randomise stats */
-                        for ( paf = obj->affected; paf; paf = paf->next )
-                        {
-                                if (paf->bitvector == AFF_SANCTUARY
-                                        || paf->bitvector == AFF_FLYING
-                                        || paf->bitvector == AFF_SWIM
-                                        || paf->bitvector == AFF_INVISIBLE)
-                                continue;
-                                paf->deleted = TRUE;
-                        }
+                        obj->how_created    = CREATED_STRONG_RANDOMISER;
                         randomise_object(obj, level, rank);
                         break;
                 }
+                break;
 
             case ITEM_POTION:
             case ITEM_PILL:
@@ -5048,38 +5059,22 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
         char mod3;
         char mod4;
 
-   /*     if (obj->item_type != ITEM_WEAPON)
-        {
-                return;
-        }
-*/
-
-        /* Strip all affects from items over level 10*/
+        /* Strip all affects from items over level 10 this was for the Index data
         if (level >= 10)
         {
                 AFFECT_DATA *paf;
                 AFFECT_DATA *paf_next;
-                /* strip old effects*/
                 for ( paf = obj->pIndexData->affected; paf; paf = paf_next )
                 {
                        paf_next = paf->next;
                         paf->deleted = TRUE;
-                     /*   unlink(paf);
- */	               /* free_mem(paf);
-                    */  paf->type               = 0;
+                        paf->type               = 0;
                         paf->duration           = 0;
                         paf->location           = 0;
                         paf->modifier           = 0;
                         paf->bitvector          = 0;
-                        /* paf->next               = pObjIndex->affected;
-                        pObjIndex->affected     = paf;
-                        top_affect++;
-                        item_affects++;
-
-                        sprintf(buf2, "[*****] RANDOMS: In PAF loop %s %d", obj->name, paf->location);
-                        log_string (buf2);  */
                 }
-        }
+        } */
 
         /* Figure out the mob rank*/
 
@@ -5126,15 +5121,23 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
                 static char             buf2 [ MAX_STRING_LENGTH ];
                 int target;
 
-
-              /* try to randomise the gains for each mod */
-              target = number_range( ITEM_SCORE_LEGENDARY, 1000);
+                /* try to randomise the gains for each mod */
+                target = number_range( ITEM_SCORE_LEGENDARY, 1000);
 
 
                 modifier1 = target / 4 / calc_aff_score(mod1,level);
                 modifier2 = target / 4 / calc_aff_score(mod2,level);
                 modifier3 = target / 4 / calc_aff_score(mod3,level);
                 modifier4 = target / 4 / calc_aff_score(mod4,level);
+
+                if (modifier1 < 1)
+                        modifier1 = 1;
+                if (modifier2 < 1)
+                        modifier2 = 1;
+                if (modifier3 < 1)
+                        modifier3 = 1;
+                if (modifier4 < 1)
+                        modifier4 = 1;       
                
                 modifier1 = ((mod1 == APPLY_AC) ? (-modifier1) : modifier1);
                 modifier2 = ((mod2 == APPLY_AC) ? (-modifier2) : modifier2);
@@ -5228,6 +5231,13 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
                 modifier1 = target / 3 / calc_aff_score(mod1,level);
                 modifier2 = target / 3 / calc_aff_score(mod2,level);
                 modifier3 = target / 3 / calc_aff_score(mod3,level);
+
+                if (modifier1 < 1)
+                        modifier1 = 1;
+                if (modifier2 < 1)
+                        modifier2 = 1;
+                if (modifier3 < 1)
+                        modifier3 = 1;
                
                 modifier1 = ((mod1 == APPLY_AC) ? (-modifier1) : modifier1);
                 modifier2 = ((mod2 == APPLY_AC) ? (-modifier2) : modifier2);
@@ -5301,6 +5311,11 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
                 modifier1 = target / 2 / calc_aff_score(mod1,level);
                 modifier2 = target / 2 / calc_aff_score(mod2,level);
 
+                if (modifier1 < 1)
+                        modifier1 = 1;
+                if (modifier2 < 1)
+                        modifier2 = 1;
+
                 modifier1 = ((mod1 == APPLY_AC) ? (-modifier1) : modifier1);
                 modifier2 = ((mod2 == APPLY_AC) ? (-modifier2) : modifier2);
 
@@ -5351,8 +5366,10 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
                 target = number_range( ITEM_SCORE_UNCOMMON, ITEM_SCORE_RARE);
 
                 modifier1 = target / calc_aff_score(mod1,level);
-
+                if (modifier1 < 1)
+                        modifier1 = 1;
                 modifier1 = ((mod1 == APPLY_AC) ? (-modifier1) : modifier1);
+
                 if (!affect_free)
                 {
                         paf = alloc_perm( sizeof( *paf ) );

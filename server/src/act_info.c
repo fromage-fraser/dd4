@@ -142,19 +142,24 @@ int calc_aff_score (int apply, int level)
                 case APPLY_INT:
                 case APPLY_WIS:
                 case APPLY_CON:
-                case APPLY_CRIT:
-                case APPLY_SWIFTNESS:
                 {
                         if (level < 3 )
                                 score += (200 / level);
                         else if (level < 6)
                                 score += (300 / level);
                         else if (level < 16)
-                                score += ( 600 / level);
+                                score += ( 1500 / level);
                         else if (level < 26)
-                                score += ( 1600/ level);
+                                score += ( 2000/ level);
                         else
                                 score += (SCORE_STATS / level);
+                }
+                break;
+
+                case APPLY_CRIT:
+                case APPLY_SWIFTNESS:
+                {
+                        score += (SCORE_CRIT_SWIFTNESS / level);     
                 }
                 break;
 
@@ -226,35 +231,44 @@ int calc_item_score ( OBJ_DATA *obj )
      /*   char       buf  [ MAX_STRING_LENGTH ]; */
         int score = 0;
         
-        for ( paf = obj->affected; paf; paf = paf->next )
+        if (obj->how_created >= CREATED_NO_RANDOMISER )
         {
-                if (!obj->level)
-                        continue;
-                
-                if ( paf->location != APPLY_NONE
-                    && paf->modifier != 0
-                    && strcmp (affect_loc_name (paf->location), "(unknown)"))
+                for ( paf = obj->affected; paf; paf = paf->next )
                 {
+                        if (!obj->level)
+                                continue;
                         
-                        score += (( calc_aff_score ( paf->location, obj->level)) * paf->modifier);
+                        if ( paf->location != APPLY_NONE
+                        && paf->modifier != 0
+                        && strcmp (affect_loc_name (paf->location), "(unknown)"))
+                        {
+                                if ( paf->location == APPLY_AC)
+                                        score -= (( calc_aff_score ( paf->location, obj->level)) * paf->modifier);
+                                else  
+                                        score += (( calc_aff_score ( paf->location, obj->level)) * paf->modifier);
+                        }
                 }
         }
-        
-        for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
+
+        if (obj->how_created < CREATED_NO_RANDOMISER )
         {
-                if (!obj->level)
-                        continue;
-                
-                if ( paf->location != APPLY_NONE
-                    && paf->modifier != 0
-                    && strcmp (affect_loc_name (paf->location), "(unknown)"))
+                for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
                 {
-                      /*  char          buf          [ MAX_STRING_LENGTH ];
-                        sprintf(buf, "calc_item_score %d %d", score, paf->location);
-                        bug(buf, 0); */
-                        score += (( calc_aff_score ( paf->location, obj->level)) * paf->modifier);
+                        if (!obj->level)
+                                continue;
+                        
+                        if ( paf->location != APPLY_NONE
+                        && paf->modifier != 0
+                        && strcmp (affect_loc_name (paf->location), "(unknown)"))
+                        {
+                                if ( paf->location == APPLY_AC)
+                                        score -= (( calc_aff_score ( paf->location, obj->level)) * paf->modifier);
+                                else
+                                        score += (( calc_aff_score ( paf->location, obj->level)) * paf->modifier);
+                        }
                 }
         }
+
         if (score <0)
                 score =0;
         if (score > 1000)
@@ -1117,7 +1131,7 @@ void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
         }
 
 
-        for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
+   /*     for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
         {
                 if ( paf->location != APPLY_NONE && paf->modifier != 0
                 && strcmp (affect_loc_name (paf->location), "(unknown)")
@@ -1145,7 +1159,7 @@ void print_smithy_data ( CHAR_DATA *ch, OBJ_DATA *obj, char *buf )
                         }
                 }
         }
-
+*/
         for ( paf = obj->affected; paf; paf = paf->next )
         {
                 if ( paf->location != APPLY_NONE

@@ -357,6 +357,7 @@ void fwrite_obj (CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest)
         fprintf(fp, "Timer        %d\n",        obj->timer                  );
         fprintf(fp, "TimerMax     %d\n",        obj->timermax               );
         fprintf(fp, "Cost         %d\n",        obj->cost                   );
+        fprintf(fp, "HowCreated   %d\n",        obj->how_created            );
         fprintf(fp, "Values       %d %d %d %d\n",
                 obj->value[0], obj->value[1], obj->value[2], obj->value[3]  );
 
@@ -1187,6 +1188,10 @@ void fread_obj (CHAR_DATA *ch, FILE *fp)
                                         return;
                                 }
                         }
+                        break;
+
+                    case 'H':
+                        KEY("HowCreated", obj->how_created, fread_number( fp, &stat ));
                         break;
 
                     case 'I':

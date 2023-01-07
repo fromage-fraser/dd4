@@ -333,10 +333,12 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define ITEM_SCORE_UNCOMMON     120
 
 /* these are chance in 1000 - Brutus */
-#define LEGENDARY_CHANCE        1
-#define EPIC_CHANCE             10
-#define RARE_CHANCE             25
-#define UNCOMMON_CHANCE         150
+#define LEGENDARY_CHANCE        1       /* 0.1% */
+#define EPIC_CHANCE             10      /* 1%   */
+#define RARE_CHANCE             25      /* 2.5% */
+#define UNCOMMON_CHANCE         150     /* 15%* */
+
+#define RANDOMISER_MIN_LEVEL    40
 
 /* define the types of mobs we have - Brutus */
 #define NPC_COMMON      1
@@ -349,12 +351,12 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define SCORE_AURAS             500
 #define SCORE_SMITHY            150
 #define SCORE_STATS             2500    /*Obj->level dependant*/
-#define SCORE_CRIT_SWIFTNESS    2500    /*Obj->level dependant*/
+#define SCORE_CRIT_SWIFTNESS    4000    /*Obj->level dependant*/
 #define SCORE_HP_MANA           200      /*Obj->level dependant*/
 #define SCORE_HIT_DAM           1000
 #define SCORE_FLY               200
 #define SCORE_DETECTS           150
-#define SCORE_RESISTS           1500    /*Obj->level dependant*/
+#define SCORE_RESISTS           2500    /*Obj->level dependant*/
 #define SCORE_AC                350      /*Obj->level dependant*/
 
 /*
@@ -2904,6 +2906,12 @@ struct obj_index_data
 #define TIMER_DAMAGED        20
 #define TIMER_ALERT          10
 
+#define         CREATED_PRE_DD5                 1
+#define         CREATED_NO_RANDOMISER           2
+#define         CREATED_STRONG_RANDOMISER       3
+#define         CREATED_WEAK_RANDOMISER         4
+#define         CREATED_SKILL                   5
+
 /*
  * One object.
  */
@@ -2939,6 +2947,7 @@ struct obj_data
         char                    owner [ 32 ];
         int                     ego_flags;
         bool                    identified;
+        int                     how_created;
 };
 
 
@@ -4877,6 +4886,7 @@ int     extra_form_int                        ( char *name );
 char *  extra_bit_name                  args( ( unsigned long int extra_flags ) );
 char *  body_form_name                  args( ( unsigned long int vector ) );
 char *  resist_name                     args( ( unsigned long int vector ) );
+char *  created_name                    args( ( int created) );
 char *  room_flag_name                  args( ( unsigned long int vector ) );
 char *  area_flag_name                  args( ( unsigned long int vector ) );
 char *  wear_flag_name                  args( ( int vector ) );

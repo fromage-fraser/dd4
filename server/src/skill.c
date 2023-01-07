@@ -3703,6 +3703,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 SET_BIT(creation->ego_flags, blueprint_list[i].blueprint_ego);
         }
         set_obj_owner(creation, ch->name);
+        creation->how_created    = CREATED_SKILL;
 
         send_to_char( "You heat the forge and ready your materials.\n\r", ch );
         sprintf(buf, "Expertly you assemble your components to create {W%s{x.", blueprint_list[i].blueprint_desc);
@@ -4489,6 +4490,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 random_buff = -1;
         }
 
+        obj->how_created    = CREATED_SKILL;
         SET_BIT(obj->extra_flags, ITEM_EGO);
         SET_BIT(obj->ego_flags, EGO_ITEM_IMBUED);
         set_obj_owner(obj, ch->name);
