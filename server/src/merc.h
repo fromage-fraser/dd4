@@ -319,9 +319,9 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   569     /* +1 oscore  -Brutus 18/9/22 */
-#define MAX_PRE_REQ                 1397    /* 1 for runesmith  for smithy & engy post 30 - Brutus 27/8/22 */
-#define MAX_SPELL_GROUP             451    /* +3 - for post 30 engineer skills Brutus 27/8/22 */
+#define MAX_SKILL                   570     /* +1 reforge  -Brutus 1/1/23 */
+#define MAX_PRE_REQ                 1398    /* 1 reforge - Brutus 1/1/23 */
+#define MAX_SPELL_GROUP             452    /* +1 reforge Brutus 1/1/23 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
 #define MAX_VAMPIRE_GAG             27      /* 26 + 1 for 'swallow' | ugly vampire/werewolf hack */
@@ -3799,7 +3799,7 @@ extern int gsn_lightning_lunge;
 extern int gsn_fiery_strike;
 extern int gsn_death_strike;
 extern int gsn_conducting_blast;
-
+extern int gsn_reforge;
 /*
  *  Deity gsns
  */
@@ -4204,6 +4204,7 @@ DECLARE_DO_FUN( do_flukeslap                    );      /* Owl 13/8/22 for 'whal
 DECLARE_DO_FUN( do_swallow                      );      /* Owl 13/8/22 for 'whale' specials  & dragon form */
 DECLARE_DO_FUN( do_serrate                      );
 DECLARE_DO_FUN( do_spit_mucus                   );       /* Owl 18/8/22 'lag out' attack for aboleth and similar */
+DECLARE_DO_FUN( do_reforge                      );
 
 /* The following are for mob programs - Brutus */
 DECLARE_DO_FUN( do_mpasound                     );
