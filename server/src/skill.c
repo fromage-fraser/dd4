@@ -2187,7 +2187,7 @@ void do_reforge (CHAR_DATA *ch, char *argument)
         if (IS_NPC(ch))
                 return;
 
-        if (!CAN_DO(ch, gsn_strengthen))
+        if (!CAN_DO(ch, gsn_reforge))
         {
                 send_to_char("Huh?\n\r", ch);
                 return;
@@ -2215,11 +2215,11 @@ void do_reforge (CHAR_DATA *ch, char *argument)
 
         if (obj->item_type != ITEM_WEAPON)
         {
-                send_to_char("That item is not armour.\n\r", ch);
+                send_to_char("That item is not a weapon.\n\r", ch);
                 return;
         }
 
-        if (IS_SET(obj->extra_flags, ITEM_EGO) && !IS_SET(obj->ego_flags, EGO_ITEM_CONSTRUCTED))
+        if (!IS_SET(obj->ego_flags, EGO_ITEM_CONSTRUCTED))
         {
                 send_to_char("That is not something that is constructed.\n\r", ch);
                 return;
