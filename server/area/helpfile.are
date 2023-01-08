@@ -6940,6 +6940,18 @@ armour. Expert Smithys can create powerful armour sets, with extraordinary
 set bonuses.
 ~
 
+1 REFORGE~
+
+Syntax: reforge <<weapon>
+
+Reforging a weapon will tune the item based on your worldly experiance.
+Generally as you progress in capability, the knowledge that you gain
+will allow you to reforge your currently constructed weapon to ensure 
+you bring your best weapon to bear on your enemies.
+
+{WNOTE:{x You will need to find a FORGE for this. see HELP CRAFTING
+~
+
 1 SMELT~
 
 Syntax: smelt <<armour> or <<weapon>
@@ -6948,7 +6960,10 @@ Smithys can break down existing weapons and armour into their raw
 materials. They then use these materials as the basis for more
 powerfull weapons, armour and augments.
 
-NOTE: You will need to find a FORGE for this. see HELP CRAFTING
+{WItems of type RARE, EPIC or LEGENDARY will produce more raw materials
+if the smelting is successful.{x
+
+{WNOTE:{x You will need to find a FORGE for this. see HELP CRAFTING
 ~
 
 1 IMBUE~

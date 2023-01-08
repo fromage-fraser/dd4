@@ -25,6 +25,7 @@
 {&gsn_steel_broadsword, &gsn_group_weaponsmith,     52,     PRE_SMITHY},
 {&gsn_titanium_rapier,  &gsn_group_weaponsmith,     66,     PRE_SMITHY},
 {&gsn_shieldchain,		&gsn_group_weaponsmith,	    64, 	PRE_SMITHY},
+{&gsn_reforge,          &gsn_group_weaponsmith,     52,     PRE_SMITHY},
 
 
 /* 30+ skills */

@@ -2176,6 +2176,98 @@ void do_strengthen (CHAR_DATA *ch, char *argument)
 }
 
 
+void do_reforge (CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA *obj;
+        OBJ_DATA *anvil;
+        char arg [ MAX_INPUT_LENGTH ];
+        bool found;
+
+
+        if (IS_NPC(ch))
+                return;
+
+        if (!CAN_DO(ch, gsn_strengthen))
+        {
+                send_to_char("Huh?\n\r", ch);
+                return;
+        }
+
+        one_argument(argument, arg);
+
+        if (arg[0] == '\0')
+        {
+                send_to_char("What are you trying to reforge?\n\r", ch);
+                return;
+        }
+
+        if (ch->fighting)
+        {
+                send_to_char("While you're fighting?  Nice try.\n\r", ch);
+                return;
+        }
+
+        if (!(obj = get_obj_carry(ch, arg)))
+        {
+                send_to_char("You do not have that on your person.\n\r", ch);
+                return;
+        }
+
+        if (obj->item_type != ITEM_WEAPON)
+        {
+                send_to_char("That item is not armour.\n\r", ch);
+                return;
+        }
+
+        if (IS_SET(obj->extra_flags, ITEM_EGO) && !IS_SET(obj->ego_flags, EGO_ITEM_CONSTRUCTED))
+        {
+                send_to_char("That is not something that is constructed.\n\r", ch);
+                return;
+        }
+
+        if (!is_obj_owner (obj,ch))
+        {
+                send_to_char("That is not something you own.\n\r", ch);
+                return;
+        }
+
+        found = FALSE;
+
+        for (anvil = ch->in_room->contents; anvil; anvil = anvil->next_content)
+        {
+                if (anvil->item_type == ITEM_ANVIL)
+                {
+                        found = TRUE;
+                        break;
+                }
+        }
+
+        if (!found)
+        {
+                send_to_char("There is no anvil here!\n\r", ch);
+                return;
+        }
+
+        if (number_percent() > ch->pcdata->learned[gsn_strengthen])
+        {
+                send_to_char("You slip while reforging your weapon and pound yourself!\n\r", ch);
+                damage(ch, ch, ch->level, gsn_forge, FALSE);
+                act ("$n pounds $mself while forging $s armour!", ch, NULL, NULL, TO_ROOM);
+                return;
+        }
+
+        act ("You skilfully reforge $P!", ch, NULL, obj, TO_CHAR);
+        act ("$n skilfully reforge $P!", ch, NULL, obj, TO_ROOM);
+
+                obj->value[1]   = 2* (number_fuzzy( number_fuzzy( 1 * ch->level / 4 + 2 ) ));
+                obj->value[2]   = 2* (number_fuzzy( number_fuzzy( 3 * ch->level / 4 + 6 ) ));
+        set_obj_owner(obj, ch->name);
+        obj->level = ch->level;
+}
+
+
+
+
 void do_breathe (CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
@@ -3441,24 +3533,65 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 if (number_percent() >= 98)
                         starmetal = (obj->level/60);
                 if (number_percent() >= 94)
-                        electrum = (obj->level/45);
+                        electrum = (obj->level/40);
                 if (number_percent() >= 75)
-                        adamantite = (obj->level/30);
+                        adamantite = (obj->level/24);
                 if (number_percent() >= 50)
                         titanium = (obj->level/10);
                 if (number_percent() >= 1)
                         steel = (1 + obj->level/6);
 
+                /* If a magic item rare and over double the resources obtained*/
+                if (calc_item_score (obj)> ITEM_SCORE_UNCOMMON)
+                        titanium *=2;
+                if (calc_item_score (obj)> ITEM_SCORE_RARE)
+                        adamantite *=2;
+                if (calc_item_score (obj)> ITEM_SCORE_EPIC)
+                        electrum *= 2;
+                if (calc_item_score (obj)> ITEM_SCORE_LEGENDARY)
+                        starmetal *= 2;
+
+                act("$n smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
+                act("You place $p into the Forge.", ch, obj, NULL, TO_CHAR);
+                smelted_to_char( steel, titanium, adamantite, electrum, starmetal, ch, COINS_ADD);
+                /* sprintf(buf, "You recover the following raw materials: \nSteel: %d\nTitanium: %d\nAdamantite: %d\nElectrum: %d\nStarmetal: %d\n\r", steel, titanium, adamantite, electrum, starmetal); */
+                sprintf(buf, "You recover the following raw materials:\n");
+                send_to_char (buf, ch);
+                if (steel > 0)
+                { 
+                        steel = number_fuzzy (steel);
+                         sprintf(buf,"{wSteel %d{x\n",steel);
+                        send_to_char (buf, ch);
+                }
+                if (titanium > 0) 
+                {
+                        titanium = number_fuzzy (titanium);
+                        sprintf(buf,"{yTitanium %d{x\n", titanium);
+                        send_to_char (buf, ch);
+                }
+                if (adamantite > 0) 
+                {
+                        adamantite = number_fuzzy (adamantite);
+                        sprintf(buf,"{YAdamantite %d{x\n", adamantite);
+                        send_to_char (buf, ch);
+                }
+                if (electrum > 0)
+                { 
+                        electrum = number_fuzzy (electrum);
+                        sprintf(buf,"{WElectrum %d{x\n", electrum);
+                        send_to_char (buf, ch);
+                }
+                if (starmetal > 0) 
+                {
+                        starmetal = number_fuzzy (starmetal);
+                        sprintf(buf,"{RStarmetal %d{x\n", starmetal);
+                        send_to_char (buf, ch);
+                }
                 ch->smelted_steel += steel;
                 ch->smelted_titanium += titanium;
                 ch->smelted_adamantite += adamantite;
                 ch->smelted_electrum += electrum;
                 ch->smelted_starmetal += starmetal;
-                act("$n smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
-                act("You place $p into the Forge.", ch, obj, NULL, TO_CHAR);
-                smelted_to_char( steel, titanium, adamantite, electrum, starmetal, ch, COINS_ADD);
-                sprintf(buf, "You recover the following raw materials: \nSteel: %d\nTitanium: %d\nAdamantite: %d\nElectrum: %d\nStarmetal: %d\n\r", steel, titanium, adamantite, electrum, starmetal);
-                send_to_char (buf, ch);
                 extract_obj(obj);
                 return;
         }

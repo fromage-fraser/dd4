@@ -325,9 +325,9 @@ const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
         { "arrow",                "an arrow module",                    OBJ_VNUM_ARROW,         EGO_ITEM_TURRET_MODULE, { 25, 35, 0 },     { 1, 1, 0, 0, 0 },    "arrow" },
         { "wrench of the crow",   "Enchanted Wrench of the Crow",       OBJ_VNUM_UNCOMMON1,     -1,                     { 0, 0, 0 },       { 10, 1, 0, 0, 0 },     "uncommon set" },
         { "wings of the crow",    "Splayed Wings of the Crow",          OBJ_VNUM_UNCOMMON2,     -1,                     { 0, 0, 0 },       { 10, 1, 0, 0, 0 },     "uncommon set" },
-        { "huntsmith's gloves",   "Huntsmith's gloves of the flame",    OBJ_VNUM_RARE1,         -1,                     { 0, 0, 0 },       { 40, 10, 1, 0, 0 },    "rare set" },
-        { "huntsmith's belt",     "Huntsmith's belt of the flame",      OBJ_VNUM_RARE2,         -1,                     { 0, 0, 0 },       { 50, 20, 2, 0, 0 },    "rare set" },
-        { "huntsmith's boots",    "Huntsmith's boots of the flame",     OBJ_VNUM_RARE3,         -1,                     { 0, 0, 0 },       { 70, 30, 5, 0, 0 },    "rare set" },
+        { "huntsmith's gloves",   "Huntsmith's gloves of the flame",    OBJ_VNUM_RARE1,         -1,                     { 0, 0, 0 },       { 50, 10, 0, 0, 0 },    "rare set" },
+        { "huntsmith's belt",     "Huntsmith's belt of the flame",      OBJ_VNUM_RARE2,         -1,                     { 0, 0, 0 },       { 70, 20, 0, 0, 0 },    "rare set" },
+        { "huntsmith's boots",    "Huntsmith's boots of the flame",     OBJ_VNUM_RARE3,         -1,                     { 0, 0, 0 },       { 100, 30, 5, 0, 0 },    "rare set" },
         { "steel broadsword",     "Fierce steel broadsword",            OBJ_VNUM_ST_SWORD1,     -1,                     { 8, 18, 0 },      { 25, 0, 0, 0, 0 },     "steel broadsword" },
         { "titanium rapier",      "Titanium rapier of torment",         OBJ_VNUM_TI_SWORD1,     -1,                     { 14, 23, 0 },     { 40, 15, 0, 0, 0 },    "titanium rapier" },
         { "bloodforged helm",     "Bloodforged battlehelm",             OBJ_VNUM_BF_SET1,       -1,                     { 0, 0, 0 },       { 40, 20, 10, 5, 0 },   "bloodforged set" },
@@ -2527,6 +2527,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_adamantite_katana,                       0 },
         { &gsn_electrum_sword,                          0 },
         { &gsn_starmetal_dual_blade,	                0 },
+        { &gsn_reforge,                                 0 },
 
         { &gsn_group_turret_tech,	                0 },
         { &gsn_trigger,			                0 },
@@ -6382,6 +6383,20 @@ const struct skill_type skill_table [MAX_SKILL] =
                 spell_null, 0, 0,
                 "", "!Group Rune Casting!"
         },
+
+        {
+                "oscore", &gsn_oscore,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                spell_null, 0, 0,
+                "", "!OScore!"
+        },
+
+        {
+                "reforge", &gsn_reforge,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                spell_null, 0, 0,
+                "reforge", "!Reforge!"
+        },
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
          */
@@ -6584,12 +6599,6 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "", "!-runesmith base-!"
         },
 
-        {
-                "oscore", &gsn_oscore,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
-                spell_null, 0, 0,
-                "", "!OScore!"
-        },
         /*
          *  When adding base skills for new classes, put the base class base after the last base class above
          *  (smithy base as at 12/8/22) the order is critical.  Also set LAST_BASE_CLASS_INDEX in merc.h to its

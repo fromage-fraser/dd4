@@ -648,6 +648,7 @@ int     gsn_group_runic_arts;
 int     gsn_adamantite_runic_blade;
 int     gsn_electrum_runic_blade;
 int     gsn_starmetal_runic_blade;
+int     gsn_reforge;
 
 
 /*
