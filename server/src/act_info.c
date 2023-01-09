@@ -408,6 +408,88 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
         return buf;
 }
 
+/* Show Turret to char*/
+void show_turret_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort )
+{
+        OBJ_DATA  *obj;
+        char       buf [ MAX_STRING_LENGTH ];
+        char     **prgpstrShow;
+        char      *pstrShow;
+        int       *prgnShow;
+        int        nShow = 0;
+        int        iShow;
+        int        count = 0;
+        bool       fCombine;
+
+        if (!ch->desc)
+                return;
+
+        /*
+         * Allocate space for output lines.
+         */
+        for (obj = list; obj; obj = obj->next_content)
+        {
+                if (!obj->deleted)
+                        count++;
+        }
+
+        prgpstrShow = alloc_mem(count * sizeof(char *));
+        prgnShow = alloc_mem(count * sizeof(int));
+
+        /*
+         * Format the list of objects.
+         */
+        for (obj = list; obj; obj = obj->next_content)
+        {
+
+                if (can_see_obj(ch, obj))
+                {
+                        pstrShow = format_obj_to_char(obj, ch, fShort);
+                        fCombine = FALSE;
+                        prgpstrShow [nShow] = str_dup(pstrShow);
+                        prgnShow    [nShow] = 1;
+                        nShow++;
+                }
+        }
+
+        /*
+         * Output the formatted list.
+         */
+        for (iShow = 0; iShow < nShow; iShow++)
+        {
+                if (IS_NPC(ch) || IS_SET(ch->act, PLR_COMBINE))
+                {
+                        if (prgnShow[iShow] != 1)
+                        {
+                                sprintf(buf, "{d({x{w%2d{d){x ", prgnShow[iShow]);
+                                send_to_char(buf, ch);
+                        }
+                        else
+                        {
+                                send_to_char("     ", ch);
+                        }
+                }
+                send_to_char(prgpstrShow[iShow], ch);
+                send_to_char("\n\r", ch);
+                free_string(prgpstrShow[iShow]);
+        }
+
+        if ( nShow == 0)
+        {
+                if (IS_NPC(ch) || IS_SET(ch->act, PLR_COMBINE))
+                        send_to_char( "     ", ch );
+
+                send_to_char("Nothing.\n\r", ch);
+        }
+
+        /*
+         * Clean up.
+         */
+        free_mem(prgpstrShow, count * sizeof(char *));
+        free_mem(prgnShow, count * sizeof(int));
+}
+
+
 
 /*
  * Show a list to a character.
@@ -1558,6 +1640,8 @@ void do_examine (CHAR_DATA *ch, char *argument)
                         sprintf (buf, "in %s", arg);
                         do_look (ch, buf);
                         break;
+                
+                    case ITEM_TURRET:
 
                     case ITEM_MONEY:
                         found = FALSE;

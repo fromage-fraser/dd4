@@ -2133,8 +2133,8 @@ void do_strengthen (CHAR_DATA *ch, char *argument)
         ||  cost_sm > ch->smelted_starmetal)
         {
                 send_to_char( "You don't have enough raw materials, you need:\n\r", ch );
-                sprintf(buf, "%d Steel %d Titanium %d Adamantite %d Electrum %d Starmetal and %d",
-                cost_st, cost_ti, cost_ad, cost_el, cost_sm, obj->level);
+                sprintf(buf, "%d Steel %d Titanium %d Adamantite %d Electrum %d Starmetal",
+                cost_st, cost_ti, cost_ad, cost_el, cost_sm);
                 act(buf, ch, NULL, NULL, TO_CHAR);
                 return;
         }
@@ -3676,7 +3676,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         if (found == -1)
         {
-                send_to_char( "Unknown Blueprint\n\rTry wrapping your blueprint in '' if its more than one word.\n\r", ch);
+                send_to_char( "Unknown Blueprint\n\rTry wrapping your blueprint in "" if its more than one word.\n\r", ch);
                 send_to_char( "          Blueprints         Learned      Damage\n\r", ch);
                 send_to_char(bar, ch);
 
