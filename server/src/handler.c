@@ -1217,7 +1217,7 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                         {
                                 affect_modify( ch, paf, TRUE, obj );
                                 /* If the object your about to wear is NOT a set OR it is and you get a bonus then Apply effect */
-                                send_to_char ( "You obtain a Set Bonus.\n\r", ch);
+                                send_to_char ( "{WYou obtain a Set Bonus.{x\n\r", ch);
                                 break;
                         }
                 }
@@ -1299,7 +1299,7 @@ void unequip_char( CHAR_DATA *ch, OBJ_DATA *obj )
                         if ( rem_bonus_objset ( pObjSetIndex, ch, obj, count) )
                         {
                                 affect_modify( ch, paf, FALSE, obj );
-                                send_to_char ( "Your setbonus is removed.\n\r", ch);
+                                send_to_char ( "{WYour set bonus is removed.{x\n\r", ch);
                                 break;
                         }
                 }
@@ -2130,9 +2130,6 @@ char *objset_type( int vnum)
         return "BUG: Log this as a fault, Lookup type of set in objset_type\n\r";
 }
 
-
-
-
 #define TABLE_SIZE 6
 
 typedef struct {
@@ -2223,27 +2220,11 @@ void destroyTable(HashTable *table) {
   free(table);
 }
 
-/* remove an entry*/
-void removeFirst(HashTable *table, int key) {
-        int i;
-    for (i = 0; i < TABLE_SIZE; i++) {
-        if (table->entries[i].key == key) {
-            table->entries[i].key = 0;
-            table->entries[i].value = 0;
-            break;
-        }
-    }
-}
-
-
-
 /* Brutus says: CAREFUL IF COPYING THIS You want to make sure that you destroy the has table from mem BEFORE
-returning out of this function */
-/* returnes TRUE/FALSE when wearing an object. */
+returning out of this function returnes TRUE/FALSE when wearing an object. */
 bool  gets_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos )
 {
-        int worn;
-        
+        int worn;       
         OBJ_DATA *objworn;
         OBJSET_INDEX_DATA *pobjsetworn;
         AFFECT_DATA *paf;
@@ -2260,12 +2241,10 @@ bool  gets_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DA
                         destroyTable(table);
                         return FALSE; 
                 }
-
-                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) && (objworn->wear_loc != WEAR_NONE) ) /* proceed if this object is part of an objset*/
+                /* proceed if this object is part of an objset*/
+                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) && (objworn->wear_loc != WEAR_NONE) ) 
                 {
                         insert(table, objworn->pIndexData->vnum , index);
-                         bug( "I find worn %d.", objworn->pIndexData->vnum); 
-                        bug( "Index is %d.", index); 
                         index++;
                 }
                 
@@ -2273,16 +2252,10 @@ bool  gets_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DA
         /* Insert our object into the table to get a view of what things woudl look like AFTER WEARING*/
         insert(table, obj->pIndexData->vnum , index);
         index++;
-        printTable(table);
+        /* printTable(table); */
         worn =0;                  
+
         /* Count the number of entries in the hash table (OF WHAT THINGS WOULD LOOK LIKE IF WE DID WEAR THIS)*/
-        /*for (i = 0; i < TABLE_SIZE; i++) {
-                if (table->entries[i].key != 0) 
-                {
-                        worn++;
-                }
-        }*/
-        /* count unique objects in teh table*/
         worn = countTable(table);
         destroyTable(table);
 
@@ -2308,80 +2281,76 @@ bool  gets_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DA
 bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos )
 {
 
-        int worn;
-        int i;
-                 bool found;
-                
+        int worn, pre_remove;
+        bool found;        
         OBJ_DATA *objworn;
         OBJSET_INDEX_DATA *pobjsetworn;
         AFFECT_DATA *paf;
         HashTable *table = createTable();
+        HashTable *table2 = createTable();
         int index =1;
         found = FALSE;
         zeroTable(table);
-        bug( "Position passed is %d.", pos);
+        zeroTable(table2);
         worn=0;
+        pre_remove=0;
+
+        /* This is building a PRE REMOVAL view*/
         for ( objworn = ch->carrying; objworn; objworn = objworn->next_content )
         {
-
-                /* lets build an idea of what we would be wearing after removal we WONT insert the FIRST obj we are wearing*/
-                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) && (objworn->wear_loc != WEAR_NONE) ) /* proceed if this object is part of an objset*/
+                /* proceed if this object is part of an objset*/
+                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) && (objworn->wear_loc != WEAR_NONE) ) 
                 {
+                        insert(table2, objworn->pIndexData->vnum , index);
+                        index++;
+                }                      
+        }
+        pre_remove = countTable(table2);
+ /*       bug( "PRE count is %d.", pre_remove);  */
+        destroyTable(table2);
+        
+        /*This is forming a POST removal view*/
+        for ( objworn = ch->carrying; objworn; objworn = objworn->next_content )
+        {
+                /* proceed if this object is part of an objset*/
+                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) && (objworn->wear_loc != WEAR_NONE) ) 
+                {
+                        /* lets build an idea of what we would be wearing after removal we WONT insert the FIRST obj we are wearing */
                         if ( (obj->pIndexData->vnum == objworn->pIndexData->vnum) && !found)
                         {
                                 found = TRUE;
                                 continue;
-                        }
+                        } 
                         insert(table, objworn->pIndexData->vnum , index);
-                        bug( "I find worn %d.", objworn->pIndexData->vnum); 
-                        bug( "Index is %d.", index); 
                         index++;
-                }
-                      
-            /*   if ( obj->pIndexData->vnum == objworn->pIndexData->vnum && (objworn->wear_loc != WEAR_NONE))
-                        duplicates++;
-                
-                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) )
-                {
-                        if ( (pObjSetIndex->vnum != pobjsetworn->vnum))
-                                return FALSE;
-
-                        if ( (objworn->wear_loc != WEAR_NONE)  )
-                                worn++;
-                }
-                */
+                }                      
         }
 
-        printTable(table);
+        /* printTable(table); */
 
-        /* Count the number of entries in the hash table (OF WHAT THINGS WOULD LOOK LIKE IF WE DID WEAR THIS)*/
-        for (i = 0; i < TABLE_SIZE; i++) {
-                if (table->entries[i].key != 0) 
-                {
-                        worn++;
-                }
-        }
+        /* Count the number of entries in the hash table (OF WHAT THINGS WOULD LOOK LIKE IF WE DID REMOVETHIS)*/
+        worn = countTable(table);
         destroyTable(table);
-
-        bug( "OBJSET REM_BONUS DEBUG: Total worn items %d.", worn );
-     
+        
+        /* Comparing the pre remove table with the after remove table. If the unique items are the same, return False*/
+        if (pre_remove == worn)
+                return FALSE;
+        /* if no worn items after removal, return FALSE*/
         if ( worn == 0 )
                 return FALSE;
 
        for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
         {
-                if ( (worn <  objset_bonus_num_pos(pObjSetIndex->vnum, pos) ) )
+                if ( ( (worn) == objset_bonus_num_pos(pObjSetIndex->vnum, pos) ) )
                 {
-                        bug( "OBJSET REM TRUE: Total worm items %d", worn);
-                        return TRUE;
-                }
-                if ( worn >= objset_bonus_num_pos(pObjSetIndex->vnum, pos)  )
-                {
-                        bug( "OBJSSET REM FALSE: check if worn is great than current paf count %d", pos);
                         return FALSE;
                 }
-                /*if ( (worn) < ( objset_bonus_num_pos(pObjSetIndex->vnum, pos) ) )
-                      bug( "Bug in rem_objset_bonus, set bonus should already be removed. (worn items %d)", worn); */
+                if ( (worn) < objset_bonus_num_pos(pObjSetIndex->vnum, pos)  )
+                {
+                        return TRUE;
+                }
+                if ( (worn) > ( objset_bonus_num_pos(pObjSetIndex->vnum, pos) ) )
+                      bug( "Bug in rem_objset_bonus, set bonus should already be removed. (worn items %d)", worn); 
         }
         return FALSE;
 }
