@@ -2235,6 +2235,10 @@ bool  gets_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DA
         for ( objworn = ch->carrying; objworn; objworn = objworn->next_content )
         {
                 
+                /* Skip if the object we find thats already worn is not part of this objects objectset*/
+                if (objects_objset(obj->pIndexData->vnum) != objects_objset(objworn->pIndexData->vnum))
+                        continue;
+
                 /* return FALSE skip if we find the object to be worn is already worn */
                 if ( obj->pIndexData->vnum == objworn->pIndexData->vnum && (objworn->wear_loc != WEAR_NONE)) 
                 {
@@ -2298,6 +2302,10 @@ bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA
         /* This is building a PRE REMOVAL view*/
         for ( objworn = ch->carrying; objworn; objworn = objworn->next_content )
         {
+                /* Skip if the object we find thats already worn is not part of this objects objectset*/
+                if (objects_objset(obj->pIndexData->vnum) != objects_objset(objworn->pIndexData->vnum))
+                        continue;
+
                 /* proceed if this object is part of an objset*/
                 if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) && (objworn->wear_loc != WEAR_NONE) ) 
                 {
