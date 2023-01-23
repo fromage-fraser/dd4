@@ -187,8 +187,6 @@ typedef enum
    eMSDP_MONEY,
    eMSDP_MOVEMENT,
    eMSDP_MOVEMENT_MAX,
-   eMSDP_HITROLL,
-   eMSDP_DAMROLL,
    eMSDP_AC,
    eMSDP_STR,
    eMSDP_INT,
@@ -200,6 +198,8 @@ typedef enum
    eMSDP_WIS_PERM,
    eMSDP_DEX_PERM,
    eMSDP_CON_PERM,
+   eMSDP_HITROLL,
+   eMSDP_DAMROLL,
 
    /* Combat */
    eMSDP_OPPONENT_HEALTH,
@@ -211,6 +211,7 @@ typedef enum
    eMSDP_AREA_NAME,
    eMSDP_ROOM_EXITS,
    eMSDP_ROOM_NAME,
+   eMSDP_ROOM_SECT,
    eMSDP_ROOM_VNUM,
    eMSDP_WORLD_TIME,
 
@@ -382,14 +383,14 @@ typedef enum
 	/* Affected */
 	GMCP_AFFECT,
 
-        /* Inventory */
+   /* Inventory */
 	GMCP_INVENTORY,
 
 	/* Room */
 	GMCP_AREA,
 	GMCP_ROOM_NAME,
 	GMCP_ROOM_SECT,
-        GMCP_ROOM_FLAGS,
+   GMCP_ROOM_FLAGS,
 	GMCP_ROOM_VNUM,
 	GMCP_ROOM_EXITS,
 
