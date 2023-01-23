@@ -2189,7 +2189,7 @@ int countTable(HashTable *table) {
         int i;
         int count=0;
         for (i = 0; i < TABLE_SIZE; i++) {
-                if (table->entries[i].key != 0) 
+                if (table->entries[i].key != 0)
                         count++;
         }
         return count;
@@ -2224,7 +2224,7 @@ void destroyTable(HashTable *table) {
 returning out of this function returnes TRUE/FALSE when wearing an object. */
 bool  gets_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos )
 {
-        int worn;       
+        int worn;
         OBJ_DATA *objworn;
         OBJSET_INDEX_DATA *pobjsetworn;
         AFFECT_DATA *paf;
@@ -2234,30 +2234,30 @@ bool  gets_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DA
         zeroTable(table);
         for ( objworn = ch->carrying; objworn; objworn = objworn->next_content )
         {
-                
+
                 /* Skip if the object we find thats already worn is not part of this objects objectset*/
                 if (objects_objset(obj->pIndexData->vnum) != objects_objset(objworn->pIndexData->vnum))
                         continue;
 
                 /* return FALSE skip if we find the object to be worn is already worn */
-                if ( obj->pIndexData->vnum == objworn->pIndexData->vnum && (objworn->wear_loc != WEAR_NONE)) 
+                if ( obj->pIndexData->vnum == objworn->pIndexData->vnum && (objworn->wear_loc != WEAR_NONE))
                 {
                         destroyTable(table);
-                        return FALSE; 
+                        return FALSE;
                 }
                 /* proceed if this object is part of an objset*/
-                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) && (objworn->wear_loc != WEAR_NONE) ) 
+                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) && (objworn->wear_loc != WEAR_NONE) )
                 {
                         insert(table, objworn->pIndexData->vnum , index);
                         index++;
                 }
-                
+
         }
         /* Insert our object into the table to get a view of what things woudl look like AFTER WEARING*/
         insert(table, obj->pIndexData->vnum , index);
         index++;
         /* printTable(table); */
-        worn =0;                  
+        worn =0;
 
         /* Count the number of entries in the hash table (OF WHAT THINGS WOULD LOOK LIKE IF WE DID WEAR THIS)*/
         worn = countTable(table);
@@ -2286,7 +2286,7 @@ bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA
 {
 
         int worn, pre_remove;
-        bool found;        
+        bool found;
         OBJ_DATA *objworn;
         OBJSET_INDEX_DATA *pobjsetworn;
         AFFECT_DATA *paf;
@@ -2307,31 +2307,31 @@ bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA
                         continue;
 
                 /* proceed if this object is part of an objset*/
-                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) && (objworn->wear_loc != WEAR_NONE) ) 
+                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) && (objworn->wear_loc != WEAR_NONE) )
                 {
                         insert(table2, objworn->pIndexData->vnum , index);
                         index++;
-                }                      
+                }
         }
         pre_remove = countTable(table2);
  /*       bug( "PRE count is %d.", pre_remove);  */
         destroyTable(table2);
-        
+
         /*This is forming a POST removal view*/
         for ( objworn = ch->carrying; objworn; objworn = objworn->next_content )
         {
                 /* proceed if this object is part of an objset*/
-                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) && (objworn->wear_loc != WEAR_NONE) ) 
+                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) && (objworn->wear_loc != WEAR_NONE) )
                 {
                         /* lets build an idea of what we would be wearing after removal we WONT insert the FIRST obj we are wearing */
                         if ( (obj->pIndexData->vnum == objworn->pIndexData->vnum) && !found)
                         {
                                 found = TRUE;
                                 continue;
-                        } 
+                        }
                         insert(table, objworn->pIndexData->vnum , index);
                         index++;
-                }                      
+                }
         }
 
         /* printTable(table); */
@@ -2339,7 +2339,7 @@ bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA
         /* Count the number of entries in the hash table (OF WHAT THINGS WOULD LOOK LIKE IF WE DID REMOVETHIS)*/
         worn = countTable(table);
         destroyTable(table);
-        
+
         /* Comparing the pre remove table with the after remove table. If the unique items are the same, return False*/
         if (pre_remove == worn)
                 return FALSE;
@@ -2358,7 +2358,7 @@ bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA
                         return TRUE;
                 }
                 if ( (worn) > ( objset_bonus_num_pos(pObjSetIndex->vnum, pos) ) )
-                      bug( "Bug in rem_objset_bonus, set bonus should already be removed. (worn items %d)", worn); 
+                      bug( "Bug in rem_objset_bonus, set bonus should already be removed. (worn items %d)", worn);
         }
         return FALSE;
 }
@@ -3456,7 +3456,7 @@ char *full_sub_class_name (int sub_class)
         if (sub_class == SUB_CLASS_BARBARIAN)           return "Barbarian";
         if (sub_class == SUB_CLASS_BARD)                return "Bard";
         if (sub_class == SUB_CLASS_ENGINEER)            return "Engineer";
-        if (sub_class == SUB_CLASS_RUNESMITH)           return "Alchemist";
+        if (sub_class == SUB_CLASS_RUNESMITH)           return "Runesmith";
 
         return "none";
 }

@@ -2712,6 +2712,7 @@ void msdp_update( void )
             MSDPSetString( d, eMSDP_RACE, TBD );
 */
             MSDPSetString( d, eMSDP_CLASS, class_table[d->character->class].who_name );
+            MSDPSetString( d, eMSDP_SUBCLASS, sub_class_table[d->character->sub_class].who_name );
             MSDPSetNumber( d, eMSDP_MANA, d->character->mana );
             MSDPSetNumber( d, eMSDP_MANA_MAX, d->character->max_mana );
             MSDPSetNumber( d, eMSDP_WIMPY, d->character->wimpy );
@@ -2854,6 +2855,7 @@ void gmcp_update( void )
                         UpdateGMCPString( d, GMCP_NAME, d->character->name );
                         UpdateGMCPString( d, GMCP_RACE, race_table[d->character->race].race_name );
                         UpdateGMCPString( d, GMCP_CLASS, full_class_name( d->character->class ) );
+                        UpdateGMCPString( d, GMCP_SUBCLASS, full_sub_class_name( d->character->sub_class ) );
                         UpdateGMCPNumber( d, GMCP_SEX, d->character->sex );
 
                         UpdateGMCPNumber( d, GMCP_HP, d->character->hit );

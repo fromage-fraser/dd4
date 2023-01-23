@@ -151,6 +151,7 @@ static variable_name_t VariableNameTable[eMSDP_MAX+1] =
    { eMSDP_LEVEL,                "LEVEL",                NUMBER_READ_ONLY                          },
    { eMSDP_RACE,                 "RACE",                 STRING_READ_ONLY                          },
    { eMSDP_CLASS,                "CLASS",                STRING_READ_ONLY                          },
+   { eMSDP_SUBCLASS,             "SUBCLASS",             STRING_READ_ONLY                          },
    { eMSDP_MANA,                 "MANA",                 NUMBER_READ_ONLY                          },
    { eMSDP_MANA_MAX,             "MANA_MAX",             NUMBER_READ_ONLY                          },
    { eMSDP_WIMPY,                "WIMPY",                NUMBER_READ_ONLY                          },
@@ -3065,6 +3066,7 @@ const struct gmcp_variable_struct GMCPVariableTable[GMCP_MAX+1] =
         { GMCP_NAME,		         GMCP_BASE,		"name",			   GMCP_STRING	},
         { GMCP_RACE,		         GMCP_BASE,		"race",			   GMCP_STRING	},
         { GMCP_CLASS,		      GMCP_BASE,		"class",		      GMCP_STRING	},
+        { GMCP_SUBCLASS,		   GMCP_BASE,		"subclass",		   GMCP_STRING	},
         { GMCP_SEX,		         GMCP_BASE,		"sex",		      GMCP_STRING	},
 
         { GMCP_HP,		         GMCP_VITALS,	"hp",			      GMCP_NUMBER	},

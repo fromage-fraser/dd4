@@ -2587,8 +2587,7 @@ void do_change (CHAR_DATA *ch, char *argument)
         /* do the change */
 
         if ( ch->sub_class == SUB_CLASS_INFERNALIST
-        ||   ch->sub_class == SUB_CLASS_ENGINEER
-        ||   ch->sub_class == SUB_CLASS_RUNESMITH )
+        ||   ch->sub_class == SUB_CLASS_ENGINEER )
         {
                 /* Grammar! -- Owl 29/7/22 */
                 sprintf(buf, "A wise choice %s... may you fare well as an %s.", ch->name, full_sub_class_name(ch->sub_class));

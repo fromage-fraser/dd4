@@ -3558,30 +3558,30 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 sprintf(buf, "You recover the following raw materials:\n");
                 send_to_char (buf, ch);
                 if (steel > 0)
-                { 
+                {
                         steel = number_fuzzy (steel);
                          sprintf(buf,"{wSteel %d{x\n",steel);
                         send_to_char (buf, ch);
                 }
-                if (titanium > 0) 
+                if (titanium > 0)
                 {
                         titanium = number_fuzzy (titanium);
                         sprintf(buf,"{yTitanium %d{x\n", titanium);
                         send_to_char (buf, ch);
                 }
-                if (adamantite > 0) 
+                if (adamantite > 0)
                 {
                         adamantite = number_fuzzy (adamantite);
                         sprintf(buf,"{YAdamantite %d{x\n", adamantite);
                         send_to_char (buf, ch);
                 }
                 if (electrum > 0)
-                { 
+                {
                         electrum = number_fuzzy (electrum);
                         sprintf(buf,"{WElectrum %d{x\n", electrum);
                         send_to_char (buf, ch);
                 }
-                if (starmetal > 0) 
+                if (starmetal > 0)
                 {
                         starmetal = number_fuzzy (starmetal);
                         sprintf(buf,"{RStarmetal %d{x\n", starmetal);

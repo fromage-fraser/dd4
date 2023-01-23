@@ -553,7 +553,7 @@ void do_pantheon (CHAR_DATA *ch, char *argument)
                         "Templar", "Druid", "Ninja", "Bounty Hunter", "Thug",
                         "Knight", "Infernalist", "Witch", "Werewolf", "Vampire",
                         "Monk", "Martial Artist", "Barbarian", "Bard", "Engineer",
-                        "Alchemist"};
+                        "Runesmith"};
 
         if (!allow_deity_command (ch))
                 return;
