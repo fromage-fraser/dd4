@@ -208,10 +208,10 @@ bool is_immune_to (CHAR_DATA *victim, unsigned long int damtype)
                 {
                         if ( !mob_table[ms].name )
                                 break;
-                        
+
                         if ( !str_cmp(victim->mobspec, mob_table[ms].name))  /* our victim has a mob spec */
-                        {        
-                           
+                        {
+
                              switch (damtype)
                                 {
                                 case RES_FIRE:
@@ -246,7 +246,7 @@ bool is_immune_to (CHAR_DATA *victim, unsigned long int damtype)
                                         return TRUE;
                                 case RES_MAGIC:
                                 if (IS_SET (mob_table[ms].immunes, RES_MAGIC))
-                                        return TRUE;                             
+                                        return TRUE;
                                 case RES_PSYCHIC:
                                 if (IS_SET (mob_table[ms].immunes, RES_PSYCHIC))
                                         return TRUE;
@@ -261,7 +261,7 @@ bool is_immune_to (CHAR_DATA *victim, unsigned long int damtype)
                                         return TRUE;
                                 case RES_PARALYSIS:
                                 if (IS_SET (mob_table[ms].immunes, RES_PARALYSIS))
-                                        return TRUE;                                
+                                        return TRUE;
                                 return FALSE;
                                 }
                         }
@@ -561,7 +561,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
                 say_spell( ch, sn );
         }
 
-        WAIT_STATE( ch, skill_table[sn].beats );      
+        WAIT_STATE( ch, skill_table[sn].beats );
 
         if ( !IS_NPC(ch)
             && ch->level <= LEVEL_HERO
@@ -600,7 +600,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
                         {
                                 if (IS_SET(skill_table[sn].res_type, res))
                                 {
-                                       
+
                                         if (is_immune_to(victim, res))
                                         {
                                                 send_to_char("They are immune to this type of damage!\n\r", ch);
@@ -618,7 +618,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
                                 }
                         }
                 }
-                
+
                 (*skill_table[sn].spell_fun) (sn, URANGE(1, ch->level, MAX_LEVEL), ch, vo);
 
                 /*
@@ -3726,7 +3726,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         }
                 }
         }
-        
+
 /* 2nd pass at sets - Brutus */
 
         if ( (pObjSetIndex = objects_objset(obj->pIndexData->vnum) ) )
@@ -3740,7 +3740,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 send_to_char( buf,ch);
                 sprintf(buf, "%s", pObjSetIndex->description );
                 send_to_char( buf,ch);
-                sprintf(buf, "<560>Its Set Bonuses are:<0>\n\r");
+                sprintf(buf, "<560>Its set bonuses are:<0>\n\r");
 
                 for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
                 {

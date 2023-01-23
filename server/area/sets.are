@@ -320,7 +320,7 @@ A modular shield component for an Engineers turret.~
 0~ 0~ 3~ 3~
 3 0 0
 #2727
-adamantite katana~ 
+adamantite katana~
 <11>{}oo((X))ΞΞΞΞΞΞΞΞΞΞΞΞΞ><0>~
 An elegant katana lies here.~
 ~
@@ -350,7 +350,7 @@ A
 #2729
 starmetal dual blade sword~
 <1>₪₪₪₪§|(Ξ≥≤≥≤≥≤ΞΞΞΞΞΞΞΞ><0>~
-A dual blade startmetal sword draws your attention.~
+A dual blade starmetal sword draws your attention.~
 ~
 5 1|4 1024 8193
 0~ 69~ 169~ 1~
@@ -372,7 +372,7 @@ A metal pole with spider-web like branches has been driven into the ground.~
 #2731
 driver unit~
 driver unit~
-A driver unit with a clubed base.~
+A driver unit with a clubbed base.~
 ~
 45 1 0
 0~ 0~ 0~ 0~
@@ -426,12 +426,12 @@ A rune depicting fire is inscribed here.~
 30~ 10~ 10~ pyro rune~
 2 0 0
 #2738
-cyro rune~
-a cyro rune~
+cryo rune~
+a cryo rune~
 A rune depicting ice is inscribed here.~
 ~
 50 68719476736 1
-30~ 10~ 10~ cyro rune~
+30~ 10~ 10~ cryo rune~
 2 0 0
 #2739
 bolt rune~
@@ -494,7 +494,7 @@ A small black pulse object.~
 #2795
 pulse2 object2~
 a defensive object~
-A small black pulse object.~
+A small black pulsing object.~
 ~
 50 2 1|16384
 30~ 10~ 10~ heal~
@@ -533,10 +533,11 @@ S
 #2702
 uncommon crow~
 The Smithy's Set of the Crow.
-Crow were the pseudo-pets of the smiths, often seen perching across a smithy's
+Crows were the pseudo-pets of the smiths, often seen perching across a smithy's
 forge in winter months basking in its heat and scavenging any food scraps That
 were present. An ancient forging process imbues the essence of crow into the
-armour sets, allowing them to take on properties of the black-feathered denizens.
+armour sets, allowing wearers to take on properties of the black-feathered
+realm denizens.
 ~
 2704 2705 0 0 0
 2 2 0 0 0
@@ -554,8 +555,8 @@ A 51 7
 epic bloodforged~
 <97>The bloodforged set is infamous in smithy legend as the first set to
 be created and worn by Brudrouk Gravelforge. The set was forged in the
-blood of a red dragon to empower it with additional properties that led to
-many famous victories.<0>
+blood of a red dragon to empower it with additional properties that led him
+to enjoy many famous victories.<0>
 ~
 2710 2711 2712 2713 0
 4 4 4 4 0
@@ -563,25 +564,29 @@ A 19 20
 #2706
 legendary astral~
 <230>120 moons ago an unusual red metal was discovered beneath Zyklor's Tower.
-This metal was {RStarmetal.{x <230>Smithies started experimenting with this metal
-over the following years and found it had a number of inexplicable characteristics
-and properties. It would shimmer or turn translucent, or provide visions of other
-dimensions. Indeed, it is thought that this metal might provide pathways into
-other worlds.<0>
+This metal was {RStarmetal.{x <230>Smithies started experimenting with this
+metal over the following years and found it had a number of inexplicable
+characteristics and properties. It would shimmer or turn translucent, or
+provide visions of other dimensions. Indeed, it is thought that this metal
+might provide pathways into other worlds.<0>
 ~
 2714 2715 2716 2717 2718
 5 5 5 5 5
 A 19 21
 #2707
-uncommon dwarven goblin allenace~
+uncommon dwarven goblin alliance~
+
 <14>The Dwarven and Goblin Alliance:<0>
-<152>An unlikely alliance was once observed many century ago between the Dwarven and 
-Goblin population of the realm. Children of the 2 races often played together
-and a sharing of knowledge and lore was passed down through the ages.
-Items between the two races seemed inexplitedly linked. 
-A ring of pinkish hue from the dwarven children just outside the east gates of 
-Midgaard, and a silvery circlet from the goblin foundry in the western parts of 
-Midgaard when brought together combine in something magical.<0>
+
+<152>An unlikely alliance was once observed many centuries ago between the dwarven
+and goblin populations of the realm. Children of the 2 races often played
+together and a sharing of knowledge and lore was passed down through the ages.
+Some items between the two races seemed inextricably linked.
+
+Particularly, a ring of pinkish hue from the dwarven children just outside the
+east gates of Midgaard and a silvery circlet from the goblin foundry in the
+western parts of Midgaard, when brought together, combine to produce an extra
+magical effect.<0>
 ~
 108 6601 0 0 0
 2 2 0 0 0

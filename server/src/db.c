@@ -612,7 +612,7 @@ int     gsn_spyglass;
 int     gsn_base;
 int     gsn_miner;
 int     gsn_pyro_rune;
-int     gsn_cyro_rune;
+int     gsn_cryo_rune;
 int     gsn_bolt_rune;
 int     gsn_stab_rune;
 int     gsn_rend_rune;
@@ -2985,9 +2985,11 @@ void reset_area( AREA_DATA *pArea )
                                 continue;
                         }
 
-                        if ( pArea->nplayer > 0
-                            || !( obj_to = get_obj_type( pObjToIndex ) )
-                            || count_obj_list( pObjIndex, obj_to->contains ) > 0 )
+                        if (  (pArea->nplayer > 0 )
+                        ||   !( obj_to = get_obj_type( pObjToIndex ) ) /*
+                                Should fix multiple of the same object not being able to be loaded in
+                                containers, re-enable below if problems --Owl 24/1/23
+                        ||    ( count_obj_list( pObjIndex, obj_to->contains ) > 0 ) */  )
                         {
                                 last = FALSE;
                                 break;
@@ -3080,8 +3082,8 @@ void reset_area( AREA_DATA *pArea )
                                 }
                                 /* End of item level additions */
 
-                                        
-                                                
+
+
                                 obj = create_object( pObjIndex, olevel, "common", FALSE );
 
                                 if ( pReset->command == 'G' )
@@ -3259,7 +3261,7 @@ CHAR_DATA * create_mobile( MOB_INDEX_DATA *pMobIndex )
         mob->max_hit = mob->level * 8
                 + number_range( mob->level * mob->level / 4, mob->level * mob->level );
        /* mob->max_hit *= rank_bonus; */
-        mob->max_hit *= rank_table[rank_sn_index(pMobIndex)].hp_bonus; 
+        mob->max_hit *= rank_table[rank_sn_index(pMobIndex)].hp_bonus;
 
         mob->hit                = mob->max_hit;
         mob->crit               = 5;
@@ -3455,7 +3457,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, bool 
                         obj->how_created    = CREATED_NO_RANDOMISER;
                         break;
                 }
-                else                 /* random stats  */ 
+                else                 /* random stats  */
                 {
                         obj->how_created    = CREATED_STRONG_RANDOMISER;
                         randomise_object(obj, level, rank);
@@ -3485,7 +3487,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, bool 
                         obj->how_created    = CREATED_NO_RANDOMISER;
                         break;
                 }
-                else 
+                else
                 {
                         obj->how_created    = CREATED_STRONG_RANDOMISER;
                         randomise_object(obj, level, rank);
@@ -5109,7 +5111,7 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
         mod2 = random_list[r2].apply_buff;
         mod3 = random_list[r3].apply_buff;
         mod4 = random_list[r4].apply_buff;
-        modifier1 = 1;      
+        modifier1 = 1;
         modifier2 = 1;
         modifier3 = 1;
         modifier4 = 1;
@@ -5138,16 +5140,16 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
                 if (modifier3 < 1)
                         modifier3 = 1;
                 if (modifier4 < 1)
-                        modifier4 = 1;       
-               
+                        modifier4 = 1;
+
                 modifier1 = ((mod1 == APPLY_AC) ? (-modifier1) : modifier1);
                 modifier2 = ((mod2 == APPLY_AC) ? (-modifier2) : modifier2);
                 modifier3 = ((mod3 == APPLY_AC) ? (-modifier3) : modifier3);
                 modifier4 = ((mod4 == APPLY_AC) ? (-modifier4) : modifier4);
 
                 sprintf(buf2, "[*****] RANDOMS: Got a LEGENDARY target %d for vnum %d - lvl %d: 1:(%d %d) 2:(%d %d) 3:(%d %d) 4:(%d %d)", target, obj->pIndexData->vnum, level, mod1,  modifier1, mod2, modifier2, mod3,  modifier3, mod4,  modifier4);
-                log_string (buf2); 
-   
+                log_string (buf2);
+
                 if (!affect_free)
                 {
                         paf = alloc_perm( sizeof( *paf ) );
@@ -5239,13 +5241,13 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
                         modifier2 = 1;
                 if (modifier3 < 1)
                         modifier3 = 1;
-               
+
                 modifier1 = ((mod1 == APPLY_AC) ? (-modifier1) : modifier1);
                 modifier2 = ((mod2 == APPLY_AC) ? (-modifier2) : modifier2);
                 modifier3 = ((mod3 == APPLY_AC) ? (-modifier3) : modifier3);
-                
+
                 sprintf(buf2, "[*****] RANDOMS: Got a EPIC target %d for vnum %d: level %d:(%d %d %d) 2:(%d %d %d) 3:(%d %d %d)", target, obj->pIndexData->vnum, level, mod1, modifier1,calc_aff_score(mod1,level), mod2,  modifier2,calc_aff_score(mod2,level), mod3, modifier3, calc_aff_score(mod3,level));
-                log_string (buf2); 
+                log_string (buf2);
 
                 if (!affect_free)
                 {
@@ -5303,7 +5305,7 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
         }
         else if (random > (999-(RARE_CHANCE * mob_bonus)))
         {
-                
+
                 int target;
 
                 /* try to randomise the gains for each mod */
@@ -5360,7 +5362,7 @@ void randomise_object( OBJ_DATA *obj, int level, char *rank)
         }
         else if (random > (999-(UNCOMMON_CHANCE * mob_bonus) ))
         {
-                
+
                 int target;
 
                 /* try to randomise the gains for each mod */
