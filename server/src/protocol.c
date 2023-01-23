@@ -158,8 +158,6 @@ static variable_name_t VariableNameTable[eMSDP_MAX+1] =
    { eMSDP_MONEY,                "MONEY",                NUMBER_READ_ONLY                          },
    { eMSDP_MOVEMENT,             "MOVEMENT",             NUMBER_READ_ONLY                          },
    { eMSDP_MOVEMENT_MAX,         "MOVEMENT_MAX",         NUMBER_READ_ONLY                          },
-   { eMSDP_HITROLL,              "HITROLL",              NUMBER_READ_ONLY                          },
-   { eMSDP_DAMROLL,              "DAMROLL",              NUMBER_READ_ONLY                          },
    { eMSDP_AC,                   "AC",                   NUMBER_READ_ONLY                          },
    { eMSDP_STR,                  "STR",                  NUMBER_READ_ONLY                          },
    { eMSDP_INT,                  "INT",                  NUMBER_READ_ONLY                          },
@@ -171,6 +169,8 @@ static variable_name_t VariableNameTable[eMSDP_MAX+1] =
    { eMSDP_WIS_PERM,             "WIS_PERM",             NUMBER_READ_ONLY                          },
    { eMSDP_DEX_PERM,             "DEX_PERM",             NUMBER_READ_ONLY                          },
    { eMSDP_CON_PERM,             "CON_PERM",             NUMBER_READ_ONLY                          },
+   { eMSDP_HITROLL,              "HITROLL",              NUMBER_READ_ONLY                          },
+   { eMSDP_DAMROLL,              "DAMROLL",              NUMBER_READ_ONLY                          },
 
    /* Combat */
    { eMSDP_OPPONENT_HEALTH,      "OPPONENT_HEALTH",      NUMBER_READ_ONLY                          },
@@ -182,6 +182,7 @@ static variable_name_t VariableNameTable[eMSDP_MAX+1] =
    { eMSDP_AREA_NAME,            "AREA_NAME",            STRING_READ_ONLY                          },
    { eMSDP_ROOM_EXITS,           "ROOM_EXITS",           STRING_READ_ONLY                          },
    { eMSDP_ROOM_NAME,            "ROOM_NAME",            STRING_READ_ONLY                          },
+   { eMSDP_ROOM_SECT,            "ROOM_SECT",            STRING_READ_ONLY                          },
    { eMSDP_ROOM_VNUM,            "ROOM_VNUM",            NUMBER_READ_ONLY                          },
    { eMSDP_WORLD_TIME,           "WORLD_TIME",           NUMBER_READ_ONLY                          },
 
@@ -288,6 +289,7 @@ static const char s_BackWhite   [] = "\033[1;47m"; /* White background */
 protocol_t *ProtocolCreate( void )
 {
    int i; /* Loop counter */
+   char buf [ MAX_STRING_LENGTH ];
    protocol_t *pProtocol;
 
    /* Called the first time we enter - make sure the table is correct */
@@ -300,6 +302,8 @@ protocol_t *ProtocolCreate( void )
          if ( VariableNameTable[i].Variable != i )
          {
             ReportBug( "MSDP: Variable table does not match the enums in the header.\n" );
+            sprintf(buf, "[*****] variable: %d i: %d\n", VariableNameTable[i].Variable, i);
+            log_string(buf);
             break;
          }
       }
@@ -3076,13 +3080,13 @@ const struct gmcp_variable_struct GMCPVariableTable[GMCP_MAX+1] =
         { GMCP_WIS,		         GMCP_STATS,		"wis",			   GMCP_NUMBER	},
         { GMCP_DEX,		         GMCP_STATS,		"dex",			   GMCP_NUMBER	},
         { GMCP_CON,		         GMCP_STATS,		"con",			   GMCP_NUMBER	},
-        { GMCP_HITROLL,		      GMCP_STATS,		"hitroll",		   GMCP_NUMBER	},
-        { GMCP_DAMROLL,		      GMCP_STATS,		"damroll",		   GMCP_NUMBER	},
         { GMCP_STR_MOD, 	      GMCP_STATS,		"str_mod",		   GMCP_NUMBER	},
         { GMCP_INT_MOD,	         GMCP_STATS,		"int_mod",		   GMCP_NUMBER	},
         { GMCP_WIS_MOD,	         GMCP_STATS,		"wis_mod",		   GMCP_NUMBER	},
         { GMCP_DEX_MOD,	         GMCP_STATS,		"dex_mod",		   GMCP_NUMBER	},
         { GMCP_CON_MOD,	         GMCP_STATS,		"con_mod",		   GMCP_NUMBER	},
+        { GMCP_HITROLL,		      GMCP_STATS,		"hitroll",		   GMCP_NUMBER	},
+        { GMCP_DAMROLL,		      GMCP_STATS,		"damroll",		   GMCP_NUMBER	},
         { GMCP_WIMPY,		      GMCP_STATS,		"wimpy",		      GMCP_NUMBER	},
         { GMCP_CARRY_NUMBER,     GMCP_STATS,    "carry_num",      GMCP_NUMBER	},
         { GMCP_CARRY_MAXNUM,     GMCP_STATS,    "maxcarry_num",   GMCP_NUMBER	},
