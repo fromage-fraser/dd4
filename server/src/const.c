@@ -136,7 +136,7 @@ const struct dpr dprs [ MAX_DPR ] =
         { "<0><52>-+*###<88><558>Devastating<559><0><52>###*+-<0>",          4000},
         { "<0><52>-=*<<|<556>[Wrecking<52>]<557>|>*=-<0>",             5000},
         { "<0><52>--=<<#[|<556><460><52>Pulverizing<0><52>|]#>=--<0>",          7500},
-        { "<0><52>-=+*<<(|[ <556><388><196>Decimating<0><52> ]|)>*+=-<0>",           10000},       
+        { "<0><52>-=+*<<(|[ <556><388><196>Decimating<0><52> ]|)>*+=-<0>",           10000},
         { "<0><52>-+<<<<[[ <556><352><196>O B L I T E R A T I N G<0><52> ]]>>+-<0>",          20000}
 };
 
@@ -354,7 +354,7 @@ const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
         { "electrum runic blade", "Electrum Runic Blade",               OBJ_VNUM_EL_RB,     -1,                     { 69, 169, 0 },      { 25, 0, 0, 0, 0 },   "electrum runic blade" },
         { "starmetal runic blade", "Starmetal Runic Blade",             OBJ_VNUM_SM_RB,     -1,                     { 69, 169, 0 },      { 25, 0, 0, 0, 0 },   "starmetal runic blade" },
         { "pyro rune",          "Pyro Rune",                            OBJ_VNUM_PYRO_RUNE,     -1,         { 0, 0, 0 },      { 0, 0, 0, 0, 0 },   "pyro rune" },
-        { "cyro rune",          "Cyro Rune",                            OBJ_VNUM_CYRO_RUNE,     -1,         { 0, 0, 0 },      { 0, 0, 0, 0, 0 },   "cyro rune" },
+        { "cryo rune",          "Cyro Rune",                            OBJ_VNUM_CYRO_RUNE,     -1,         { 0, 0, 0 },      { 0, 0, 0, 0, 0 },   "cryo rune" },
         { "bolt rune",          "Bolt Rune",                            OBJ_VNUM_BOLT_RUNE,     -1,         { 0, 0, 0 },      { 0, 0, 0, 0, 0 },   "bolt rune" },
         { "stab rune",          "Stab Rune",                            OBJ_VNUM_STAB_RUNE,     -1,         { 0, 0, 0 },      { 0, 0, 0, 0, 0 },   "stab rune" },
         { "rend rune",          "Rend Rune",                            OBJ_VNUM_REND_RUNE,     -1,         { 0, 0, 0 },      { 0, 0, 0, 0, 0 },   "rend rune" },
@@ -2550,7 +2550,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
 
         { &gsn_group_runic_arts,          		        0 },
         { &gsn_pyro_rune,            		        0 },
-        { &gsn_cyro_rune,           		        0 },
+        { &gsn_cryo_rune,           		        0 },
         { &gsn_bolt_rune,                              0 },
         { &gsn_stab_rune,                   	        0 },
         { &gsn_rend_rune,           		        0 },
@@ -3055,7 +3055,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "extort", &gsn_extort,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 0,
                 "", "!Extort!"
         },
@@ -3293,112 +3293,112 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "advance", &gsn_advance,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Advance!"
         },
 
         {
                 "at", &gsn_at,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!At!"
         },
 
         {
                 "advanced consider", &gsn_advanced_consider,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 0,
                 "", "!Advanced Consider!"
         },
 
         {
                 "assassinate", &gsn_assassinate,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 24,
                 "assassination attempt", "!Assassinate!"
         },
 
         {
                 "backstab", &gsn_backstab,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 24,
                 "backstab", "!Backstab!"
         },
 
         {
                 "joust", &gsn_joust,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 18,
                 "joust", "!Joust!"
         },
 
         {
                 "double backstab", &gsn_double_backstab,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 0,
                 "second backstab", "!Double Backstab!"
         },
 
         {
                 "circle", &gsn_circle,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 24,
                 "circle", "!Circle!"
         },
 
         {
                 "second circle", &gsn_second_circle,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 24,
                 "second circle", "!Second Circle!"
         },
 
         {
                 "climb", &gsn_climb,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 12,
                 "slip up", "!Climb!"
         },
 
         {
                 "bash door", &gsn_bash,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 24,
                 "bash", "!Bash Door!"
         },
 
         {
                 "berserk", &gsn_berserk,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 12,
                 "", "!Berserk!"
         },
 
         {
                 "decapitate", &gsn_decapitate,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 12,
                 "decapitation", "!Decapitate!"
         },
 
         {
                 "dirt kick", &gsn_dirt,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 24,
                 "dirt kick", "You wipe the dirt from your eyes."
         },
 
         {
                 "disable", &gsn_disable,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 12,
                 "slip up", "!Disable!"
         },
 
         {
                 "disarm", &gsn_disarm,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 24,
                 "", "!Disarm!"
         },
@@ -3412,63 +3412,63 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "dodge", &gsn_dodge,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "", "!Dodge!"
         },
 
         {
                 "acrobatics", &gsn_acrobatics,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "", "!Acrobatics!"
         },
 
         {
                 "dual", &gsn_dual,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 0,
                 "", "!Dual!"
         },
 
         {
                 "enhanced damage", &gsn_enhanced_damage,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "", "!Enhanced Damage!"
         },
 
         {
                 "enhanced hit", &gsn_enhanced_hit,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "", "!Enhanced Hit!"
         },
 
         {
                 "fast healing", &gsn_fast_healing,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 0,
                 "", "!Fast Healing!"
         },
 
         {
                 "find traps", &gsn_find_traps,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 0,
                 "", "!Find Traps!"
         },
 
         {
                 "fourth attack", &gsn_fourth_attack,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "", "!Fourth Attack!"
         },
 
         {
                 "feint", &gsn_feint,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "", "!Feint!"
         },
@@ -3524,91 +3524,91 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "grip", &gsn_grip,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "", "!Grip!"
         },
 
         {
                 "riposte", &gsn_risposte,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "riposte", "!Riposte!"
         },
 
         {
                 "destrier", &gsn_destrier,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "destrier", "!Destrier!"
         },
 
         {
                 "combo", &gsn_combo,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 4,
                 "combo of moves", "!Combo!"
         },
 
         {
                 "combo2", &gsn_combo2,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 4,
                 "combo of moves", "!Combo2!"
         },
 
         {
                 "combo3", &gsn_combo3,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 4,
                 "combo of moves", "!Combo3!"
         },
 
         {
                 "combo4", &gsn_combo4,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 4,
                 "combo of moves", "!Combo4!"
         },
 
         {
                 "atemi", &gsn_atemi,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 8,
                 "<15><556>strike<0>", "!Atemi!"
         },
 
         {
                 "kansetsu", &gsn_kansetsu,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 8,
                 "<15><556>arm lock<0>", "!Kansetsu!"
         },
 
         {
                 "tetsui", &gsn_tetsui,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 8,
                 "<15><556>hammer fist<0>", "!Tetsui!"
         },
 
         {
                 "shuto", &gsn_shuto,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 8,
                 "<15><556>knife hand strike<0>", "!Shuto!"
         },
 
         {
                 "yokogeri", &gsn_yokogeri,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 8,
                 "<11><556>side kick<0>", "!Yokogeri!"
         },
 
         {
                 "mawasigeri", &gsn_mawasigeri,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 8,
                 "<11><556>round house<0>", "!Mawasigeri!"
         },
@@ -3686,21 +3686,21 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "grapple", &gsn_grapple,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 8,
                 "extra attack", "You recover from the grapple, and get back to your feet"
         },
 
         {
                 "fly", &gsn_flight,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 8,
                 "fly", "!Fly!"
         },
 
         {
                 "flying headbutt", &gsn_flying_headbutt,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 8,
                 "flying headbutt", "!Flying Headbutt!"
         },
@@ -3714,7 +3714,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "pugilism", &gsn_pugalism,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "pugilism", "!Pugilism!"
         },
@@ -3728,14 +3728,14 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "mount", &gsn_mount,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 12,
                 "mount", "!Mount!"
         },
 
         {
                 "dismount", &gsn_dismount,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 12,
                 "dismount", "!Dismount!"
         },
@@ -3763,28 +3763,28 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "parry", &gsn_parry,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "", "!Parry!"
         },
 
         {
                 "pre-empt", &gsn_pre_empt,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "", "!Pre-empt!"
         },
 
         {
                 "peek", &gsn_peek,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 0,
                 "", "!Peek!"
         },
 
         {
                 "pick lock", &gsn_pick_lock,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 12,
                 "", "!Pick!"
         },
@@ -3819,98 +3819,98 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "rescue", &gsn_rescue,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 12,
                 "", "!Rescue!"
         },
 
         {
                 "second attack", &gsn_second_attack,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "", "!Second Attack!"
         },
 
         {
                 "shield block", &gsn_shield_block,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "", "!Shield Block!"
         },
 
         {
                 "smash", &gsn_smash,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 24,
                 "extra attack", "!Smash!"
         },
 
         {
                 "sneak", &gsn_sneak,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 12,
                 "", NULL
         },
 
         {
                 "tail", &gsn_tail,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 12,
                 "", NULL
         },
 
         {
                 "stalk", &gsn_stalk,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 12,
                 "", NULL
         },
 
         {
                 "steal", &gsn_steal,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 24,
                 "", "!Steal!"
         },
 
         {
                 "stun", &gsn_stun,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 0,
                 "attempted stun", "Your head stops ringing."
         },
 
         {
                 "suck", &gsn_suck,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 24,
                 "suck", "!Suck!"
         },
 
         {
                 "third attack", &gsn_third_attack,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "", "!Third Attack!"
         },
 
         {
                 "transfix", &gsn_transfix,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 0,
                 "terrifying gaze", "You shake free from the trance."
         },
 
         {
                 "trap", &gsn_trap,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 0,
                 "slip up", "You finally break free from the trap!"
         },
 
         {
                 "trip", &gsn_trip,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 18,
                 "", "<15>You get back on your feet.<0>"
         },
@@ -3938,21 +3938,21 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "howl", &gsn_howl,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 0,
                 "howl", "!Howl!"
         },
 
         {
                 "whirlwind", &gsn_whirlwind,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 18, 18,
                 "whirlwind", "You feel less angry."
         },
 
         {
                 "flight", &gsn_flight,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 18, 18,
                 "flight", "You fold your wings and settle on the ground."
         },
@@ -3980,140 +3980,140 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "allow", &gsn_allow,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Allow!"
         },
 
         {
                 "bamfin", &gsn_bamfin,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Bamfin!"
         },
 
         {
                 "bamfout", &gsn_bamfout,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Bamfout!"
         },
 
         {
                 "ban", &gsn_ban,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Ban!"
         },
 
         {
                 "cando", &gsn_cando,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Cando!"
         },
 
         {
                 "deny", &gsn_deny,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Deny!"
         },
 
         {
                 "disconnect", &gsn_disconnect,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Disconnect!"
         },
 
         {
                 "echo", &gsn_echo,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Echo!"
         },
 
         {
                 "force", &gsn_force,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Force!"
         },
 
         {
                 "freeze", &gsn_freeze,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Freeze!"
         },
 
         {
                 "goto", &gsn_goto,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Goto!"
         },
 
         {
                 "holylight", &gsn_holylight,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Holylight!"
         },
 
         {
                 "immtalk", &gsn_immtalk,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Immtalk!"
         },
 
         {
                 "dirtalk", &gsn_dirtalk,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Dirtalk!"
         },
 
         {
                 "wizinvis", &gsn_wizinvis,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                     "", "!Wizinvis!"
         },
 
         {
                 "killsocket", &gsn_killsocket,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Killsocket!"
         },
 
         {
                 "log", &gsn_log,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Log!"
         },
 
         {
                 "memory", &gsn_memory,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Memory!"
         },
 
         {
                 "mfind", &gsn_mfind,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Mfind!"
         },
 
         {
                 "mload", &gsn_mload,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Mload!"
         },
@@ -4127,266 +4127,266 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "mset", &gsn_mset,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Mset!"
         },
 
         {
                 "mstat", &gsn_mstat,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                     "", "!Mstat!"
         },
 
         {
                 "mwhere", &gsn_mwhere,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Mwhere!"
         },
 
         {
                 "newlock", &gsn_newlock,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Newlock!"
         },
 
         {
                 "noemote", &gsn_noemote,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Noemote!"
         },
 
         {
                 "notell", &gsn_notell,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Notell!"
         },
 
         {
                 "numlock", &gsn_numlock,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Numlock!"
         },
 
         {
                 "ofind", &gsn_ofind,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Ofind!"
         },
 
         {
                 "oload", &gsn_oload,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Oload!"
         },
 
         {
                 "oset", &gsn_oset,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Oset!"
         },
 
         {
                 "ostat", &gsn_ostat,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Ostat!"
         },
 
         {
                 "owhere", &gsn_owhere,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Owhere!"
         },
 
         {
                 "pardon", &gsn_pardon,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Pardon!"
         },
 
         {
                 "peace", &gsn_peace,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Peace!"
         },
 
         {
                 "purge", &gsn_purge,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Purge!"
         },
 
         {
                 "reboot", &gsn_reboot,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Reboot!"
         },
 
         {
                 "recho", &gsn_recho,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Recho!"
         },
 
         {
                 "rename", &gsn_rename,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Rename!"
         },
 
         {
                 "reset", &gsn_reset,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Reset!"
         },
 
         {
                 "restore", &gsn_restore,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Restore!"
         },
 
         {
                 "return", &gsn_return,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Return!"
         },
 
         {
                 "rset", &gsn_rset,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Rset!"
         },
 
         {
                 "rstat", &gsn_rstat,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Rstat!"
         },
 
         {
                 "shutdown", &gsn_shutdown,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Shutdown!"
         },
 
         {
                 "silence", &gsn_silence,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Silence!"
         },
 
         {
                 "slay", &gsn_slay,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Slay!"
         },
 
         {
                 "slookup", &gsn_slookup,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Slookup!"
         },
 
         {
                 "snoop", &gsn_snoop,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Snoop!"
         },
 
         {
                 "sset", &gsn_sset,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Sset!"
         },
 
         {
                 "sstime", &gsn_sstime,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Sstime!"
         },
 
         {
                 "switch", &gsn_switch,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Switch!"
         },
 
         {
                 "transfer", &gsn_transfer,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Transfer!"
         },
 
         {
                 "trust", &gsn_trust,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Trust!"
         },
 
         {
                 "users", &gsn_users,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Users!"
         },
 
         {
                 "wizhelp", &gsn_wizhelp,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Wizhelp!"
         },
 
         {
                 "wizify", &gsn_wizify,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Wizify!"
         },
 
         {
                 "wizlock", &gsn_wizlock,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Wizlock!"
         },
 
         {
                 "zones", &gsn_zones,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Zones!"
         },
@@ -4443,7 +4443,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "chameleon power", &gsn_chameleon_power,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 12,
                 "", "!Chameleon Power!"
         },
@@ -4667,7 +4667,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "shadow form", &gsn_shadow_form,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 12,
                 "", "You no longer move in the shadows."
         },
@@ -4849,7 +4849,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "kiai", &gsn_kiai,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 20, 12,
                 "<11>f<227>o<229>r<230>c<15>e-<230>b<229>a<227>l<11>l<0>", "!Kiai!"
         },
@@ -5269,7 +5269,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "mist walk", &gsn_mist_walk,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 5, 12,
                 "", "Your body reverts to its normal state."
         },
@@ -5304,28 +5304,28 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "feed", &gsn_feed,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 18,
                 "", "!Feed!"
         },
 
         {
                 "lunge", &gsn_lunge,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 18,
                 "blood-thirsty fangs", "!lunge!"
         },
 
         {
                 "aura of fear", &gsn_aura_of_fear,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 18,
                 "aura of fear", "!Aura Of Fear!"
         },
 
         {
                 "double lunge", &gsn_double_lunge,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 18,
                 "blood-thirsty fangs", "!Feed!"
         },
@@ -5500,21 +5500,21 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "swim", &gsn_swim,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 0,
                 "", "!Swim!"
         },
 
         {
                 "spy", &gsn_spy,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 0,
                 "", "!Spy!"
         },
 
         {
                 "forage", &gsn_forage,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 10,
                 "", "!Forage!"
         },
@@ -5549,7 +5549,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "web", &gsn_web,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 12,
                 "slip up", "You break free from the sticky webbing."
         },
@@ -5570,21 +5570,21 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "dive", &gsn_dive,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 18,
                 "airborne assault", "!Dive!"
         },
 
         {
                 "tailwhip", &gsn_tailwhip,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 24,
                 "tailwhip", "!Tailwhip!"
         },
 
         {
                 "dragon aura", &gsn_dragon_aura,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 24,
                 "", "Your dragon aura fades."
         },
@@ -5619,28 +5619,28 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "second shot", &gsn_second_shot,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 0,
                 "second shot", "!Second shot!"
         },
 
         {
                 "third shot", &gsn_third_shot,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 0,
                 "third shot", "!Third shot!"
         },
 
         {
                 "accuracy", &gsn_accuracy,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 0,
                 "accuracy", "!Accuracy!"
         },
 
         {
                 "snare", &gsn_snare,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 0,
                 "slip up", "You finally break free from the snare!"
         },
@@ -5654,7 +5654,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "gather", &gsn_gather_herbs,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 0,
                 "gather", "!Gather!"
         },
@@ -5773,14 +5773,14 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "pantheoninfo", &gsn_pantheoninfo,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "pantheoninfo", "!pantheoninfo!"
         },
 
         {
                 "pantheonrank", &gsn_pantheonrank,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "pantheonrank", "!pantheonrank!"
         },
@@ -5878,7 +5878,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "dual parry", &gsn_dual_parry,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "", "!Parry!"
         },
@@ -5913,7 +5913,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "soar", &gsn_soar,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 24,
                 "", "!Soar!"
         },
@@ -5948,7 +5948,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "smelt", &gsn_smelt,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 0,
                 "smelt", "!Smelt!"
 
@@ -5956,7 +5956,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "imbue", &gsn_imbue,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 0,
                 "imbue", "!Imbue!"
 
@@ -5964,21 +5964,21 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "counterbalance", &gsn_counterbalance,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 0,
                 "counterbalanced attack", "!Counterbalance!"
         },
 
         {
                 "trigger", &gsn_trigger,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "turret module", "!Trigger!"
         },
 
         {
                 "dart", &gsn_dart,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "dart module", "!Dart!"
         },
@@ -5993,21 +5993,21 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "osstat", &gsn_osstat,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Osstat!"
         },
 
         {
                 "osfind", &gsn_osfind,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Ostat!"
         },
 
         {
                 "hurl", &gsn_hurl,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 24,
                 "hurled weapon", "!Hurl!"
                 /* is used for weapons and shields but 'hurled weapon' is not called by shield attack, so. */
@@ -6015,42 +6015,42 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "arrow module", &gsn_arrow,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "arrow module", "!Arrow!"
         },
 
         {
                 "turret", &gsn_turret,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "turret base", "!Turret!"
         },
 
         {
                 "uncommon set", &gsn_uncommon_set,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "uncommon set", "!Uncommon_set!"
         },
 
         {
                 "rare set", &gsn_rare_set,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "rare set", "!Rare_set!"
         },
 
         {
                 "bloodforged set", &gsn_bloodforged_set,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "bloodforged set", "!Bloodforged_set!"
         },
 
         {
                 "astral set", &gsn_astral_set,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "astral set", "!Astral_set!"
         },
@@ -6085,21 +6085,21 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "strengthen", &gsn_strengthen,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 0,
                 "strengthen", "!Strengthen!"
         },
 
         {
                 "steel broadsword", &gsn_steel_broadsword,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "steel broadsword", "!Steel_Broadsword!"
         },
 
         {
                 "titanium rapier", &gsn_titanium_rapier,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "titanium rapier", "!Titanium_rapier!"
         },
@@ -6120,42 +6120,42 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "engrave", &gsn_engrave,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 24,
                 "engrave", "!Engrave!"
         },
 
         {
                 "discharge", &gsn_discharge,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 24,
                 "discharge", "!Discharge!"
         },
 
         {
                 "steel cache", &gsn_steel_cache,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "steel cache", "!Steel_cache!"
         },
 
         {
                 "flukeslap", &gsn_flukeslap,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 24,
                 "flukeslap", "!Flukeslap!"
         },
 
         {
                 "swallow", &gsn_swallow,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 24,
                 "<132>s<168>w<204>a<204>l<203>l<168>o<132>w<0>", "You escape from the insides of the creature."
         },
 
         {
                 "serrate", &gsn_serrate,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "<231>bl<225>ee<219>d e<213>ff<207>ec<201>t<0>", "!Serrate!"
         },
@@ -6169,7 +6169,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "spit mucus", &gsn_spit_mucus,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 24,
                 "<236>e<237>x<238>p<239>e<240>c<241>t<242>o<243>r<245>a<246>t<247>e<248>d <249>m<250>u<251>c<252>u<253>s<0>", "You regain autonomy over your body."
         },
@@ -6208,14 +6208,14 @@ const struct skill_type skill_table [MAX_SKILL] =
                 spell_null, 0, 0,
                 "", "!Group Inscription!"
         },
-        
+
         {
                 "advanced smithing", &gsn_group_adv_smith,
                 TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Group Advanced Smithing!"
         },
-          
+
         {
                 "weapon lore", &gsn_group_weaponlore,
                 TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
@@ -6225,98 +6225,98 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "blade module", &gsn_blade_module,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "razor blade", "!Blade Module!"
         },
 
         {
                 "shuriken module", &gsn_shuriken_module,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "shuriken", "!Shuriken Module!"
         },
 
         {
                 "spear module", &gsn_spear_module,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "sharpened spear", "!Spear Module!"
         },
 
         {
                 "arrestor module", &gsn_arrestor_module,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "", "!Arrestor Module!"
         },
 
         {
                 "driver module", &gsn_driver_module,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "", "!DRiver Module!"
         },
 
         {
                 "reflector module", &gsn_reflector_module,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "reflected spell", "!DRiver Module!"
         },
 
         {
                 "shield module", &gsn_shield_module,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "", "!Shield Module!"
         },
 
         {
                 "adamantite katana", &gsn_adamantite_katana,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "", "!Titanium_rapier!"
         },
 
         {
                 "electrum sword", &gsn_electrum_sword,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "", "!Electrum sword!"
         },
 
         {
                 "starmetal dual blade", &gsn_starmetal_dual_blade,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "", "!Starmetal dual blade!"
         },
 
         {
                 "inscribe", &gsn_inscribe,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 24,
                 "inscribe", "!Inscribe!"
         },
 
         {
                 "adamantite runic blade", &gsn_adamantite_runic_blade,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "runic blade", "!Adamantite runic blade!"
         },
 
         {
                 "electrum runic blade", &gsn_electrum_runic_blade,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "runic blade", "!Electrum runic blade!"
         },
 
         {
                 "starmetal runic blade", &gsn_starmetal_runic_blade,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "runic blade", "!Starmetal runic blade!"
         },
@@ -6329,10 +6329,10 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
 
         {
-                "cyro rune", &gsn_cyro_rune,
+                "cryo rune", &gsn_cryo_rune,
                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 2,
                 spell_runic_frost, 0, 0,
-                "runic frost", "!Cyro rune!"
+                "runic frost", "!Cryo rune!"
         },
 
         {
@@ -6386,14 +6386,14 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "oscore", &gsn_oscore,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0, 
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!OScore!"
         },
 
         {
                 "reforge", &gsn_reforge,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192, 
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 0,
                 "reforge", "!Reforge!"
         },

@@ -2869,7 +2869,6 @@ void gmcp_update( void )
                         UpdateGMCPNumber( d, GMCP_WIS_MOD, (get_curr_wis(d->character)) );
                         UpdateGMCPNumber( d, GMCP_DEX_MOD, (get_curr_dex(d->character)) );
                         UpdateGMCPNumber( d, GMCP_CON_MOD, (get_curr_con(d->character)) );
-
                         UpdateGMCPNumber( d, GMCP_HITROLL, GET_HITROLL( d->character ) );
                         UpdateGMCPNumber( d, GMCP_DAMROLL, GET_DAMROLL( d->character ) );
                         UpdateGMCPNumber( d, GMCP_WIMPY, d->character->wimpy );

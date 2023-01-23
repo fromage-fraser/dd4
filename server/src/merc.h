@@ -3776,7 +3776,7 @@ extern int gsn_spyglass;
 extern int gsn_base;
 extern int gsn_miner;
 extern int gsn_pyro_rune;
-extern int gsn_cyro_rune;
+extern int gsn_cryo_rune;
 extern int gsn_bolt_rune;
 extern int gsn_stab_rune;
 extern int gsn_rend_rune;
