@@ -354,10 +354,11 @@ void gain_exp( CHAR_DATA *ch, int gain )
                         ch->exp = level_table[ch->level].exp_total - 1;
                         return;
                 }
+
                 /* Check to see if level lock is on */
                 if (!( IS_SET ( ch->act, PLR_AUTOLEVEL ) ) )
                 {
-                        ch->exp = level_table[ch->level].exp_total - 1;
+                        ch->exp = level_table[ch->level].exp_total - 10;
                         send_to_char("You cannot level while {WAUTOLEVEL{x is set to {RNO{x.\n\r", ch);
                         return;
                 }
@@ -2689,9 +2690,11 @@ void msdp_update( void )
         if ( d->character && d->connected == CON_PLAYING && !IS_NPC(d->character) )
         {
             char buf[MAX_STRING_LENGTH];
+            /*char buf2[MAX_STRING_LENGTH];*/
             CHAR_DATA *pOpponent = d->character->fighting;
             ROOM_INDEX_DATA *pRoom = d->character->in_room;
             AFFECT_DATA *paf;
+            /*int temphitroll;*/
 
             ++PlayerCount;
 
@@ -2717,6 +2720,9 @@ void msdp_update( void )
             MSDPSetNumber( d, eMSDP_MOVEMENT, d->character->move );
             MSDPSetNumber( d, eMSDP_MOVEMENT_MAX, d->character->max_move );
             MSDPSetNumber( d, eMSDP_HITROLL, GET_HITROLL(d->character) );
+            /*temphitroll =  GET_HITROLL(d->character);
+            sprintf(buf2, "Hitroll in update.c is %d \r\n", temphitroll);
+            log_string(buf2);*/
             MSDPSetNumber( d, eMSDP_DAMROLL, GET_DAMROLL(d->character) );
             MSDPSetNumber( d, eMSDP_AC, GET_AC(d->character) );
             MSDPSetNumber( d, eMSDP_STR, get_curr_str(d->character) );
