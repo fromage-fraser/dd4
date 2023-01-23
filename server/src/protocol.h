@@ -180,6 +180,7 @@ typedef enum
    eMSDP_LEVEL,
    eMSDP_RACE,
    eMSDP_CLASS,
+   eMSDP_SUBCLASS,
    eMSDP_MANA,
    eMSDP_MANA_MAX,
    eMSDP_WIMPY,
@@ -327,6 +328,7 @@ typedef enum
 	GMCP_NAME,
 	GMCP_RACE,
 	GMCP_CLASS,
+	GMCP_SUBCLASS,
 	GMCP_SEX,
 
 	/* Vitals */

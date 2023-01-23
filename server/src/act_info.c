@@ -111,7 +111,7 @@ int get_colour_index_by_code ( int ccode )
 
 int calc_aff_score (int apply, int level)
 {
-        char       buf  [ MAX_STRING_LENGTH ]; 
+        char       buf  [ MAX_STRING_LENGTH ];
         int score = 0;
         switch (apply)
         {
@@ -159,7 +159,7 @@ int calc_aff_score (int apply, int level)
                 case APPLY_CRIT:
                 case APPLY_SWIFTNESS:
                 {
-                        score += (SCORE_CRIT_SWIFTNESS / level);     
+                        score += (SCORE_CRIT_SWIFTNESS / level);
                 }
                 break;
 
@@ -214,37 +214,37 @@ int calc_aff_score (int apply, int level)
                 default:
                         score +=1;
         }
-            
+
             if (score == 0)
             {    sprintf(buf, "[*****] BUG in calc_aff_score: I return ZERO score from a apply of %d and level %d)", apply, level);
-                log_string (buf); 
+                log_string (buf);
             }
         return score;
 }
 
 
-/* Idea is to return a score based on an object which is used to calculate rarity 
+/* Idea is to return a score based on an object which is used to calculate rarity
                 Scale is 0-1000  - Brutus*/
 int calc_item_score ( OBJ_DATA *obj )
 {
         AFFECT_DATA             *paf;
      /*   char       buf  [ MAX_STRING_LENGTH ]; */
         int score = 0;
-        
+
         if (obj->how_created >= CREATED_NO_RANDOMISER )
         {
                 for ( paf = obj->affected; paf; paf = paf->next )
                 {
                         if (!obj->level)
                                 continue;
-                        
+
                         if ( paf->location != APPLY_NONE
                         && paf->modifier != 0
                         && strcmp (affect_loc_name (paf->location), "(unknown)"))
                         {
                                 if ( paf->location == APPLY_AC)
                                         score -= (( calc_aff_score ( paf->location, obj->level)) * paf->modifier);
-                                else  
+                                else
                                         score += (( calc_aff_score ( paf->location, obj->level)) * paf->modifier);
                         }
                 }
@@ -256,7 +256,7 @@ int calc_item_score ( OBJ_DATA *obj )
                 {
                         if (!obj->level)
                                 continue;
-                        
+
                         if ( paf->location != APPLY_NONE
                         && paf->modifier != 0
                         && strcmp (affect_loc_name (paf->location), "(unknown)"))
@@ -381,7 +381,7 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
                 else if (calc_item_score(obj) > ITEM_SCORE_UNCOMMON)
                         strcat( buf, "<34>(Uncommon)<0> ");
         }
-        
+
         if (calc_item_score(obj) > 100 && !obj->identified)
         {
                 if (calc_item_score(obj) > ITEM_SCORE_LEGENDARY)
@@ -393,7 +393,7 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
                 else if (calc_item_score(obj) > ITEM_SCORE_UNCOMMON)
                         strcat( buf, "<34>[_?_]<0> ");
         }
-        
+
         if ( fShort )
         {
                 if ( obj->short_descr )
@@ -622,13 +622,13 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
 
         if (IS_NPC(victim)
             && !IS_NPC(ch)
-            && IS_SET(victim->act, ACT_QUESTMASTER) 
+            && IS_SET(victim->act, ACT_QUESTMASTER)
             && (!IS_SET(ch->act, PLR_QUESTOR)))
                 strcat(buf, "<11>(!)<0> ");
 
         if (IS_NPC(victim)
             && !IS_NPC(ch)
-            && IS_SET(victim->act, ACT_QUESTMASTER) 
+            && IS_SET(victim->act, ACT_QUESTMASTER)
             && (IS_SET(ch->act, PLR_QUESTOR)))
                 strcat(buf, "<11>(?)<0> ");
 
@@ -649,7 +649,7 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
         if (!IS_NPC(victim ) && IS_SET(victim->act, PLR_AFK )  )
                 strcat(buf, "<22><<<40>AFK<0><22>><0> ");
 
-   
+
 /*           if (IS_NPC(victim) && !IS_NPC(ch) && ch->pcdata->learned[gsn_advanced_consider] > 1)
             switch ( rank_sn(victim) )
                 {
@@ -1396,7 +1396,7 @@ void do_look( CHAR_DATA *ch, char *argument )
                         {
                                 send_to_char( pdesc, ch );
                                 if (obj->identified)
-                                {        
+                                {
                                         spell_identify ( 1, 1, ch, obj);
                                 }
                         }
@@ -1413,7 +1413,7 @@ void do_look( CHAR_DATA *ch, char *argument )
                         send_to_char( obj->description, ch );
                         send_to_char( "\n\r", ch );
                         if (obj->identified)
-                        {        
+                        {
                               spell_identify ( 1, 1, ch, obj);
                         }
 
@@ -1538,8 +1538,8 @@ void do_examine (CHAR_DATA *ch, char *argument)
         /*if ((obj = get_obj_here (ch, arg))) */
         if (obj)
         {
-        
-                        
+
+
                 if (!IS_NPC(ch) && IS_SET(obj->extra_flags, ITEM_TRAP)
                     && number_percent() < ch->pcdata->learned[gsn_find_traps])
                 {
@@ -3829,8 +3829,8 @@ void show_slist (CHAR_DATA *ch, int number)
             case SUB_CLASS_MARTIAL_ARTIST: do_help(ch, "smartial"); break;
             case SUB_CLASS_BARBARIAN: do_help(ch, "sbarbarian"); break;
             case SUB_CLASS_BARD: do_help(ch, "sbard"); break;
-            case SUB_CLASS_ENGINEER: do_help(ch, "sbard"); break;
-            case SUB_CLASS_RUNESMITH: do_help(ch, "sbard"); break;
+            case SUB_CLASS_ENGINEER: do_help(ch, "sengineer"); break;
+            case SUB_CLASS_RUNESMITH: do_help(ch, "srunesmith"); break;
 
             default: break;
         }
@@ -5184,7 +5184,7 @@ void print_player_status (CHAR_DATA *ch, char* buf)
                 strcat( buf, tmp );
         }
         strcat (buf, "\n\r");
-        
+
         if( ch->level >= 15 )
         {
                 sprintf( tmp, "Crit: {C%3d%%{x        Swiftness: {C%3d%%{x\n\r",
@@ -5193,7 +5193,7 @@ void print_player_status (CHAR_DATA *ch, char* buf)
                 sprintf( tmp, "{WResistances:{x Acid:{C%3d%%{x Lightning:{C%3d%%{x Heat:{C%3d%%{x Cold:{C%3d%%{x ",
                         ch->resist_acid, ch->resist_lightning, ch->resist_heat, ch->resist_cold);
                 strcat( buf, tmp );
-                
+
         }
         strcat (buf, "\n\r");
 }
