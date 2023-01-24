@@ -101,6 +101,7 @@ void do_swim (CHAR_DATA *ch, char *argument)
 
         if ( ( ch->form != FORM_SNAKE )
         && ( ch->in_room->sector_type != SECT_UNDERWATER )
+        && ( ch->in_room->sector_type != SECT_UNDERWATER_GROUND )
         && ( ch->in_room->sector_type != SECT_WATER_SWIM )
         && ( ch->in_room->sector_type != SECT_WATER_NOSWIM ) )
         {

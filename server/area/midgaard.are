@@ -4765,7 +4765,7 @@ S
 #3172
 South Swim Room~
 This room is SECT_WATER_SWIM, as is the room to the north.  To the
-east is a SECT_UNDERWATER room.
+east is a SECT_UNDERWATER_GROUND room.
 ~
 0 1024 6
 D0
@@ -4778,11 +4778,10 @@ D1
 7 -1 3173
 S
 #3173
-South Underwater Room~
-This room is SECT_UNDERWATER, as is the room to the north.  To the
-west is a SECT_WATER_SWIM room.
+South Underwater Ground Room~
+This room is SECT_UNDERWATER_GROUND. To the west is a SECT_WATER_SWIM room.
 ~
-0 1024 8
+0 1024 12
 D0
 ~
 ~
@@ -4794,8 +4793,8 @@ D3
 S
 #3174
 Center Underwater Room~
-This room is SECT_UNDERWATER, as are the rooms to north and south.
-To the west is a SECT_WATER_SWIM room.
+This room is SECT_UNDERWATER, as is the room to the north.  To the south is a
+SECT_UNDERWATER_GROUND room. To the west is a SECT_WATER_SWIM room.
 ~
 0 1024 8
 D0

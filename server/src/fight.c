@@ -3694,7 +3694,7 @@ void do_circle (CHAR_DATA *ch, char *argument)
         if ( ch->in_room->sector_type == SECT_UNDERWATER
         && ( ch->race != RACE_SAHUAGIN && ch->race != RACE_GRUNG ) )
         {
-                send_to_char("You cannot circle underwater.\n\r", ch);
+                send_to_char("You cannot circle underwater without firm ground underneath.\n\r", ch);
                 return;
         }
 
@@ -3783,7 +3783,7 @@ void do_destrier (CHAR_DATA *ch, char *argument)
         if ( ch->in_room->sector_type == SECT_UNDERWATER
         && ( ch->race != RACE_SAHUAGIN && ch->race != RACE_GRUNG ) )
         {
-                send_to_char("You can't do that underwater.\n\r", ch);
+                send_to_char("You can't do that underwater without firm ground beneath you.\n\r", ch);
                 return;
         }
 
@@ -3869,7 +3869,8 @@ void do_dive (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (ch->in_room->sector_type == SECT_UNDERWATER)
+        if ( ( ch->in_room->sector_type == SECT_UNDERWATER )
+          || ( ch->in_room->sector_type == SECT_UNDERWATER_GROUND ) )
         {
                 send_to_char("You can't dive quickly enough through the water.\n\r", ch);
                 return;
@@ -4932,6 +4933,7 @@ void do_dirt_kick (CHAR_DATA *ch, char *argument)
             case(SECT_FIELD):               chance +=  5;   break;
             case(SECT_MOUNTAIN):            chance -= 10;   break;
             case(SECT_SWAMP):               chance -=  5;   break;
+            case(SECT_UNDERWATER_GROUND):   chance += 15;   break;
             case(SECT_DESERT):              chance += 10;   break;
         }
 
@@ -6071,7 +6073,7 @@ void do_trip (CHAR_DATA *ch, char *argument)
         ||   ch->in_room->sector_type == SECT_WATER_SWIM
         ||   ch->in_room->sector_type == SECT_WATER_NOSWIM )
         {
-                send_to_char ("You can't trip in the water.\n\r", ch);
+                send_to_char ("You can't trip in water without firm ground beneath you.\n\r", ch);
                 return;
         }
 

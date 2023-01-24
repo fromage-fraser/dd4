@@ -534,6 +534,7 @@ int hit_gain( CHAR_DATA *ch )
             && IS_OUTSIDE(ch)
             && !IS_SET(ch->in_room->room_flags, ROOM_DARK)
             && ch->in_room->sector_type != SECT_UNDERWATER
+            && ch->in_room->sector_type != SECT_UNDERWATER_GROUND
             && weather_info.sky < SKY_RAINING
             && (time_info.hour >= 6 && time_info.hour <= 18)
             && !is_affected(ch, gsn_mist_walk))
@@ -550,6 +551,7 @@ int hit_gain( CHAR_DATA *ch )
 
         if ( ( ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG )
         && (  ( ch->in_room->sector_type == SECT_UNDERWATER )
+           || ( ch->in_room->sector_type == SECT_UNDERWATER_GROUND )
            || ( ch->in_room->sector_type == SECT_WATER_SWIM )
            || ( ch->in_room->sector_type == SECT_SWAMP )
            || ( ch->in_room->sector_type == SECT_WATER_NOSWIM ) ) )
@@ -586,13 +588,15 @@ int hit_gain( CHAR_DATA *ch )
                  *  Anti-swim (?); Owl 14/7/22
                  *
                  *  Strip the swim skill and affect for PCs when they're not in 'deep water' rooms.  Leaves
-                 *  shifter snake form unaffected.
+                 *  shifter snake form unaffected. Imms can dispel their own swimming effect--better for
+                 *  testing etc.
                  */
 
                 if ( ( ( ( IS_AFFECTED( ch, AFF_SWIM ) )
                 ||       ( is_affected( ch, gsn_swim ) ) )
                 &&     ( ch->form != FORM_SNAKE ) )
                    && ( ch->in_room->sector_type != SECT_UNDERWATER )
+                   && ( ch->in_room->sector_type != SECT_UNDERWATER_GROUND )
                    && ( ch->in_room->sector_type != SECT_WATER_SWIM )
                    && ( ch->in_room->sector_type != SECT_WATER_NOSWIM ) )
                 {
@@ -740,6 +744,7 @@ int hit_gain( CHAR_DATA *ch )
                                         if ( ch->in_room->sector_type == SECT_WATER_NOSWIM
                                         ||   ch->in_room->sector_type == SECT_WATER_SWIM
                                         ||   ch->in_room->sector_type == SECT_SWAMP
+                                        ||   ch->in_room->sector_type == SECT_UNDERWATER_GROUND
                                         ||   ch->in_room->sector_type == SECT_UNDERWATER )
                                         {
                                                 send_to_char("{BYou splashdown into water!{x\n\r", ch);
@@ -1422,6 +1427,7 @@ void day_weather_update()
                 if (d->connected == CON_PLAYING
                     && IS_OUTSIDE(d->character)
                     && ( d->character->in_room->sector_type != SECT_UNDERWATER )
+                    && ( d->character->in_room->sector_type != SECT_UNDERWATER_GROUND )
                     && IS_AWAKE(d->character))
                         send_to_char(buf, d->character);
         }
@@ -1541,6 +1547,7 @@ void weather_update ()
                     && d->connected == CON_PLAYING
                     && IS_OUTSIDE(d->character)
                     && ( d->character->in_room->sector_type != SECT_UNDERWATER )
+                    && ( d->character->in_room->sector_type != SECT_UNDERWATER_GROUND )
                     && IS_AWAKE(d->character))
                         send_to_char(buf, d->character);
 
@@ -1771,7 +1778,8 @@ void char_update( void )
                             && ch->form != FORM_SNAKE
                             && ch->race != RACE_SAHUAGIN
                             && ch->race != RACE_GRUNG
-                            && ch->in_room->sector_type == SECT_UNDERWATER
+                            && ( ( ch->in_room->sector_type == SECT_UNDERWATER )
+                              || ( ch->in_room->sector_type == SECT_UNDERWATER_GROUND ) )
                             && !is_affected(ch, gsn_breathe_water))
                         {
                                 if (--ch->pcdata->air_supply > 0)

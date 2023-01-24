@@ -1034,14 +1034,19 @@ void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
         {
                 ++ch->in_room->area->nplayer;
 
-                if (ch->in_room->sector_type != SECT_UNDERWATER)
+                if ( ( ch->in_room->sector_type != SECT_UNDERWATER )
+                  || ( ch->in_room->sector_type != SECT_UNDERWATER_GROUND ) )
+                {
                         ch->pcdata->air_supply = FULL_AIR_SUPPLY;
+                }
         }
 
         if ((obj = get_eq_char(ch, WEAR_LIGHT))
             && obj->item_type == ITEM_LIGHT
             && obj->value[2] != 0 )
+        {
                 ++ch->in_room->light;
+        }
 
         return;
 }
@@ -3333,19 +3338,20 @@ char* wear_location_name (int wearloc_num)
 */
 char* sector_name (int sector_num)
 {
-        if (sector_num == SECT_INSIDE)          return "inside";
-        if (sector_num == SECT_CITY)            return "city";
-        if (sector_num == SECT_FIELD)           return "field";
-        if (sector_num == SECT_FOREST)          return "forest";
-        if (sector_num == SECT_HILLS)           return "hills";
-        if (sector_num == SECT_MOUNTAIN)        return "mountain";
-        if (sector_num == SECT_WATER_SWIM)      return "water_swim";
-        if (sector_num == SECT_WATER_NOSWIM)    return "water_noswim";
-        if (sector_num == SECT_UNDERWATER)      return "underwater";
-        if (sector_num == SECT_AIR)             return "air";
-        if (sector_num == SECT_DESERT)          return "desert";
-        if (sector_num == SECT_SWAMP)           return "swamp";
-        if (sector_num == SECT_MAX)             return "max";
+        if (sector_num == SECT_INSIDE)                  return "inside";
+        if (sector_num == SECT_CITY)                    return "city";
+        if (sector_num == SECT_FIELD)                   return "field";
+        if (sector_num == SECT_FOREST)                  return "forest";
+        if (sector_num == SECT_HILLS)                   return "hills";
+        if (sector_num == SECT_MOUNTAIN)                return "mountain";
+        if (sector_num == SECT_WATER_SWIM)              return "water_swim";
+        if (sector_num == SECT_WATER_NOSWIM)            return "water_noswim";
+        if (sector_num == SECT_UNDERWATER)              return "underwater";
+        if (sector_num == SECT_AIR)                     return "air";
+        if (sector_num == SECT_DESERT)                  return "desert";
+        if (sector_num == SECT_SWAMP)                   return "swamp";
+        if (sector_num == SECT_UNDERWATER_GROUND)       return "underwater_ground";
+        if (sector_num == SECT_MAX)                     return "max";
 
         return "NO SECTOR NUM";
 }
