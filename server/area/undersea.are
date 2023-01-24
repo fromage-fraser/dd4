@@ -1708,7 +1708,7 @@ S
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
-The murky water is  unobstructed in every direction as far as you can see; you
+The murky water is unobstructed in every direction as far as you can see; you
 may travel where you wish.{x
 ~
 0 0 8
@@ -1742,7 +1742,7 @@ S
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
-The murky water is  unobstructed in every direction as far as you can see; you
+The murky water is unobstructed in every direction as far as you can see; you
 may travel where you wish.{x
 ~
 0 0 8
@@ -1776,7 +1776,7 @@ S
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
-The murky water is  unobstructed in every direction as far as you can see; you
+The murky water is unobstructed in every direction as far as you can see; you
 may travel where you wish.{x
 ~
 0 0 8
@@ -1982,7 +1982,7 @@ S
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
-The murky water is  unobstructed in every direction as far as you can see; you
+The murky water is unobstructed in every direction as far as you can see; you
 may travel where you wish.{x
 ~
 0 0 8
@@ -2111,7 +2111,7 @@ S
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
-The murky water is  unobstructed in every direction as far as you can see;
+The murky water is unobstructed in every direction as far as you can see;
 you may travel where you wish.{x
 ~
 0 0 8
@@ -2171,7 +2171,7 @@ S
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
-The murky water is  unobstructed in every direction as far as you can see; you
+The murky water is unobstructed in every direction as far as you can see; you
 may travel where you wish.
 
 The water grows noticeably darker and more agitated to the east.{x
@@ -2233,7 +2233,7 @@ S
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
-The murky water is  unobstructed in every direction as far as you can see; you
+The murky water is unobstructed in every direction as far as you can see; you
 may travel where you wish.{x
 ~
 0 0 8
@@ -2267,7 +2267,7 @@ S
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
-The murky water is  unobstructed in every direction as far as you can see; you
+The murky water is unobstructed in every direction as far as you can see; you
 may travel where you wish.{x
 ~
 0 0 8
@@ -3216,7 +3216,7 @@ rocky walls, covered in deep-sea marine life.
 To the north, the cavern lets out into the open sea, while east seems to
 lead to a larger, more open cave chamber.{x
 ~
-0 8 8
+0 8 12
 D0
 ~
 ~
@@ -3235,7 +3235,7 @@ the northeast.
 To the west, the chamber narrows, while you can travel further into the
 chamber east and south of here.{x
 ~
-0 8 8
+0 8 12
 D1
 ~
 ~
@@ -3258,7 +3258,7 @@ the northeast.
 You can travel further into the chamber to the north, east, and south
 of here.{x
 ~
-0 8 8
+0 8 12
 D0
 ~
 ~
@@ -3280,7 +3280,7 @@ the northeast.
 
 You can travel further into the chamber to the north and east of here.{x
 ~
-0 8 8
+0 8 12
 D0
 ~
 ~
@@ -3299,7 +3299,7 @@ the northeast.
 You can travel further into the chamber to the north, west, and east
 of here.{x
 ~
-0 8 8
+0 8 12
 D0
 ~
 ~
@@ -3321,7 +3321,7 @@ from the north.
 
 You can travel further into the chamber to the north and east of here.{x
 ~
-0 8 8
+0 8 12
 D0
 ~
 ~
@@ -3339,7 +3339,7 @@ from the north.
 
 You can travel further into the chamber to the north, south, and west of here.{x
 ~
-0 8 8
+0 8 12
 D0
 ~
 ~
@@ -3360,7 +3360,7 @@ cave chamber. It is bathed in a blue light that issues directly from the north.
 
 You can travel further into the chamber to the north, south, and west of here.{x
 ~
-0 4|8|512 8
+0 4|8|512 12
 D0
 ~
 ~
@@ -3382,7 +3382,7 @@ It is bathed in a pale blue light that seems to issue from the northeast.
 You can travel further into the chamber to the north, south, west, and east
 of here.{x
 ~
-0 8 8
+0 8 12
 D0
 ~
 ~
@@ -3408,7 +3408,7 @@ the northeast.
 
 You can travel further into the chamber south, west, and east of here.{x
 ~
-0 8 8
+0 8 12
 D1
 ~
 ~
@@ -3429,7 +3429,7 @@ It is large enough to fit a couple of man-sized humanoids uncomfortably, and
 is bathed in a bright blue light that you suspect of being bioluminescent in
 origin.  It seems like the sort of place to have something nasty living in it.{x
 ~
-0 1|8|512|8192 8
+0 1|8|512|8192 12
 D2
 ~
 ~
@@ -3457,7 +3457,7 @@ S
 travel north from here, deeper into the cave system, or return to the
 entrance, to your east.{x
 ~
-0 1|8 8
+0 1|8 12
 D0
 ~
 ~
@@ -3473,7 +3473,7 @@ S
 north and south. North takes you deeper into the cave system, and going south
 will have you heading back outside it, to the open sea.{x
 ~
-0 1|8 8
+0 1|8 12
 D0
 ~
 ~
@@ -3488,7 +3488,7 @@ S
 {yYou are inside a very large, dark, rocky underwater cave tunnel that runs
 south and east.  It feels unnaturally quiet.{x
 ~
-0 1|8 8
+0 1|8 12
 D1
 ~
 ~
@@ -3503,7 +3503,7 @@ S
 {yYou are inside a very large, dark, rocky underwater cave tunnel that runs
 west and south.  It feels unnaturally quiet.{x
 ~
-0 1|8 8
+0 1|8 12
 D2
 ~
 ~
@@ -3520,7 +3520,7 @@ north and east.  An unearthly silence dominates the environment, broken only
 by heavy, slithering sounds coming from your immediate east, where the tunnel
 looks to open up into an even larger chamber.{x
 ~
-0 1|8 8
+0 1|8 12
 D0
 ~
 ~
@@ -3537,7 +3537,7 @@ mutilated corpses, picked-clean skeletons, and assorted body parts of large
 marine creatures.  What unholy deep-sea monster could have dragged them in
 here to feast upon?{x
 ~
-0 1|4|8 8
+0 1|4|8 12
 D3
 ~
 ~

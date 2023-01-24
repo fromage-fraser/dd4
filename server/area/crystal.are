@@ -1499,7 +1499,7 @@ It is very dim here. You can make out the faint surfaces of the lake floor
 and other rocks. You hope you can hold your breath long enough.
 It looks as if the surface of the lake is make of glass...
 ~
-100 7  8
+100 7 8
 D0
 It's too dark to see.
 ~
@@ -1533,7 +1533,7 @@ and other rocks. You hope you can hold your breath long enough.
 It looks as if the surface of the lake is make of glass...
 In fact you can't break the surface!
 ~
-100 7  8
+100 7 8
 D0
 It's too dark to see.
 ~
@@ -1562,7 +1562,7 @@ and other rocks. You hope you can hold your breath long enough.
 It looks as if the surface of the lake is make of glass...
 In fact you can't break the surface!
 ~
-100 7  8
+100 7 8
 D0
 It's too dark to see.
 ~
@@ -1591,7 +1591,7 @@ and other rocks. You hope you can hold your breath long enough.
 It looks as if the surface of the lake is make of glass...
 In fact you can't break the surface!
 ~
-100 7  8
+100 7 8
 D0
 It's too dark to see.
 ~
@@ -1620,7 +1620,7 @@ and other rocks. You hope you can hold your breath long enough.
 It looks as if the surface of the lake is make of glass...
 In fact you can't break the surface!
 ~
-100 7  8
+100 7 8
 D0
 It's too dark to see.
 ~
@@ -1649,7 +1649,7 @@ and other rocks. You hope you can hold your breath long enough.
 It looks as if the surface of the lake is make of glass...
 In fact you can't break the surface!
 ~
-100 7  8
+100 7 8
 D0
 It's too dark to see.
 ~
@@ -2217,7 +2217,7 @@ This is an underwater cave that seems to have trapped some air in it.
 It seems as if the cave continues deeper, but it is blocked by a rock
 slide.
 ~
-100 7  8
+100 7 12
 D3
 It's too dark to see.
 ~
@@ -2233,7 +2233,7 @@ Underwater Passageway~
 This passageway is almost completely filled with water. It seems to have
 trapped some air. Something doesn't feel right. Maybe you should leave.
 ~
-100 7  8
+100 7 12
 D1
 It's too dark to see.
 ~
@@ -2251,7 +2251,7 @@ This passageway is almost completely filled with air. This is REALLY strange.
 You wonder how this can be. Something is definitely wrong.
 The air here is very humid and it seem to be getting warmer to the south.
 ~
-100 7  8
+100 7 12
 D1
 Underwater Passageway.
 ~
@@ -2269,7 +2269,7 @@ This Cave is enormous. It is mostly flooded with water. The air is very
 humid and misty. Large piles of bones lay all over. The walls are covered
 with scratches and claw marks.
 ~
-100 7  8
+100 7 12
 D0
 Underwater Passageway.
 ~
@@ -2286,7 +2286,7 @@ Narrow Crack in the rock.~
 This seems to a crack caused by some earthquake or other natural event.
 The opening is large here, but seems to get smaller as it goes on.
 ~
-100 7  8
+100 7 12
 D1
 It's too dark to see.
 ~
@@ -2304,7 +2304,7 @@ This is a small tunnel that seems to go deeper into the mountains.
 It is completely filled with water.
 Some light filters in through the muck to the east.
 ~
-100 7  8
+100 7 12
 D0
 a very small tunnel.
 ~
@@ -2326,7 +2326,7 @@ Dead end~
 The tunnel seems to dead end here.
 There is nothing but mud and a small pocket of air.
 ~
-100 7  2
+100 7 2
 D0
 a very small tunnel.
 ~
@@ -2338,7 +2338,7 @@ Nest Entrance~
 This seems to be the entrance to a nest of some kind.
 The water here is very murky.
 ~
-100 7  2
+100 7 2
 D0
 Barracuda nest.
 ~
@@ -2355,7 +2355,7 @@ Barracuda Nest~
 You have disturbed a barracuda nest. They are none too pleased and
 now plan to use you for their next feeding....
 ~
-100 7  8
+100 7 12
 D2
 a small tunnel.
 ~

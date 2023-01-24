@@ -689,7 +689,7 @@ of mud.
 To the west a cliff face towers upwards for about 75 metres. However, there is a
 crack just large enough for you to walk through.
 ~
-0 8|8192 8
+0 8|8192 12
 D0
 ~
 ~
@@ -728,7 +728,7 @@ You feel awed at nature's power to be able to create such things far from man's
 reach. The sea bottom turns to a sandy yellow and you kick up clouds of it as
 you walk further between the cliffs.
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -747,7 +747,7 @@ If you like you could jump up into the stream of hot water and catch a ride to
 the surface.
 Or else you can continue following the trail.
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -767,7 +767,7 @@ The twisting path straightens out here.
 All sorts of underwater wildlife are swimming around you, wondering what you are
 doing down here.
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -882,7 +882,7 @@ see.
 A sudden updraught of warm water makes it possible to head to the surface from
 here.
 ~
-0 8 8
+0 8 12
 D1
 ~
 ~
@@ -1005,7 +1005,7 @@ The path comes to a dead end.
 There is a giant wall of rock in front of you that climbs up almost to the
 surface.
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~

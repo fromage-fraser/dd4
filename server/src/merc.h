@@ -2429,7 +2429,8 @@ extern DIR_DATA directions [ MAX_DIR ];
 #define SECT_AIR                9
 #define SECT_DESERT             10
 #define SECT_SWAMP              11
-#define SECT_MAX                12
+#define SECT_UNDERWATER_GROUND  12
+#define SECT_MAX                13
 
 
 /*

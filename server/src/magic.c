@@ -1190,7 +1190,8 @@ void spell_call_lightning (int sn, int level, CHAR_DATA *ch, void *vo)
         int        dam;
 
         if ( !IS_OUTSIDE( ch )
-        ||   ch->in_room->sector_type == SECT_UNDERWATER )
+        ||   ch->in_room->sector_type == SECT_UNDERWATER
+        ||   ch->in_room->sector_type == SECT_UNDERWATER_GROUND )
         {
                 send_to_char( "You can't be indoors or underwater.\n\r", ch );
                 return;
@@ -1229,6 +1230,7 @@ void spell_call_lightning (int sn, int level, CHAR_DATA *ch, void *vo)
 
                 if ( vch->in_room->area == ch->in_room->area
                     && ( vch->in_room->sector_type != SECT_UNDERWATER )
+                    && ( vch->in_room->sector_type != SECT_UNDERWATER_GROUND )
                     && IS_OUTSIDE( vch )
                     && IS_AWAKE( vch ) )
                         send_to_char( "{YLightning{x flashes in the sky.\n\r", vch );
@@ -2248,7 +2250,7 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                 {
                         for ( paf = victim->affected; paf; paf = paf->next )
                         {
-                                if (paf->duration < 0)
+                                if ( ( paf->duration < 0 ) && ( ch->level < LEVEL_IMMORTAL ) )
                                         continue;
 
                                 if (effect_is_prayer(paf) && ch->level < L_IMM)
@@ -2261,7 +2263,7 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                                         continue;
 
                                 if (skill_cannot_be_dispelled(paf->type)
-                                    && ch->level <= LEVEL_HERO)
+                                    && ch->level < LEVEL_IMMORTAL )
                                         continue;
 
                                 affect_remove( victim, paf );
@@ -4485,7 +4487,8 @@ void spell_summon_familiar( int sn, int level, CHAR_DATA *ch, void *vo )
         }
 
         if ( !IS_OUTSIDE( ch )
-        && ( ch->in_room->sector_type != SECT_UNDERWATER ) )
+        && ( ch->in_room->sector_type != SECT_UNDERWATER )
+        && ( ch->in_room->sector_type != SECT_UNDERWATER_GROUND ) )
         {
                 send_to_char( "You can't be indoors or underwater.\n\r", ch);
                 return;
@@ -6848,7 +6851,8 @@ void spell_moonray( int sn, int level, CHAR_DATA *ch, void *vo )
         int        dam;
 
         if ( !IS_OUTSIDE( ch )
-        && ( ch->in_room->sector_type != SECT_UNDERWATER ) )
+        && ( ch->in_room->sector_type != SECT_UNDERWATER )
+        && ( ch->in_room->sector_type != SECT_UNDERWATER_GROUND ) )
         {
                 send_to_char( "You can't be indoors or underwater.\n\r", ch );
                 return;
@@ -6893,6 +6897,7 @@ void spell_moonray( int sn, int level, CHAR_DATA *ch, void *vo )
                 if ( vch->in_room->area == ch->in_room->area
                     && IS_OUTSIDE( vch )
                     && ( vch->in_room->sector_type != SECT_UNDERWATER )
+                    && ( vch->in_room->sector_type != SECT_UNDERWATER_GROUND )
                     && IS_AWAKE( vch ) )
                         send_to_char( "The moon pulses in the sky.\n\r", vch );
         }
@@ -6906,7 +6911,8 @@ void spell_sunray( int sn, int level, CHAR_DATA *ch, void *vo )
         AFFECT_DATA af;
 
         if ( !IS_OUTSIDE( ch )
-        && ( ch->in_room->sector_type != SECT_UNDERWATER ) )
+        && ( ch->in_room->sector_type != SECT_UNDERWATER )
+        && ( ch->in_room->sector_type != SECT_UNDERWATER_GROUND ) )
         {
                 send_to_char( "You can't be indoors or underwater.\n\r", ch );
                 return;
@@ -6964,6 +6970,7 @@ void spell_sunray( int sn, int level, CHAR_DATA *ch, void *vo )
                 if ( vch->in_room->area == ch->in_room->area
                     && IS_OUTSIDE( vch )
                     && ( vch->in_room->sector_type != SECT_UNDERWATER )
+                    && ( vch->in_room->sector_type != SECT_UNDERWATER_GROUND )
                     && IS_AWAKE( vch ) )
                         send_to_char( "The sun pulses violently in the sky.\n\r", vch );
         }
@@ -6993,6 +7000,7 @@ void spell_natures_fury( int sn, int level, CHAR_DATA *ch, void *vo )
             case SECT_WATER_SWIM:
             case SECT_WATER_NOSWIM:
             case SECT_UNDERWATER:
+            case SECT_UNDERWATER_GROUND:
             case SECT_SWAMP:
                 msg = "{BA huge water spout erupts beneath $N!{x";
                 break;
