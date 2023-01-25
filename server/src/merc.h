@@ -1985,22 +1985,22 @@ extern  WANTED_DATA *wanted_list_last;
  * Well known object virtual numbers.
  * Defined in #OBJECTS.
  */
-#define OBJ_VNUM_MONEY_ONE                  2
-#define OBJ_VNUM_MONEY_SOME                 3
+#define OBJ_VNUM_MONEY_ONE                 2
+#define OBJ_VNUM_MONEY_SOME                3
 
-#define OBJ_VNUM_CORPSE_NPC                10
-#define OBJ_VNUM_CORPSE_PC                 11
-#define OBJ_VNUM_SEVERED_HEAD              12
-#define OBJ_VNUM_TORN_HEART                13
-#define OBJ_VNUM_SLICED_ARM                14
-#define OBJ_VNUM_SLICED_LEG                15
-#define OBJ_VNUM_SLICED_TAIL               502
+#define OBJ_VNUM_CORPSE_NPC               10
+#define OBJ_VNUM_CORPSE_PC                11
+#define OBJ_VNUM_SEVERED_HEAD             12
+#define OBJ_VNUM_TORN_HEART               13
+#define OBJ_VNUM_SLICED_ARM               14
+#define OBJ_VNUM_SLICED_LEG               15
+#define OBJ_VNUM_SLICED_TAIL             502
 
-#define OBJ_VNUM_MUSHROOM                  20
-#define OBJ_VNUM_LIGHT_BALL                21
-#define OBJ_VNUM_SPRING                    22
-#define OBJ_VNUM_PORTAL                    26
-#define OBJ_VNUM_LIGHT_BALL_CRAFT          64
+#define OBJ_VNUM_MUSHROOM                 20
+#define OBJ_VNUM_LIGHT_BALL               21
+#define OBJ_VNUM_SPRING                   22
+#define OBJ_VNUM_PORTAL                   26
+#define OBJ_VNUM_LIGHT_BALL_CRAFT         64
 
 /* these are for smithy blueprints (2700-2799*/
 #define OBJ_VNUM_ST_SWORD1              2700
@@ -2023,47 +2023,47 @@ extern  WANTED_DATA *wanted_list_last;
 #define OBJ_VNUM_AS_SET4                2717
 #define OBJ_VNUM_AS_SET5                2718
 #define OBJ_VNUM_STEEL_CACHE            2719
-#define OBJ_VNUM_BLADE                   2720
-#define OBJ_VNUM_SHURIKEN                   2721
-#define OBJ_VNUM_SPEAR                   2722
-#define OBJ_VNUM_ARRESTOR                   2723
-#define OBJ_VNUM_DRIVER                   2724
-#define OBJ_VNUM_REFLECTOR                   2725
+#define OBJ_VNUM_BLADE                  2720
+#define OBJ_VNUM_SHURIKEN               2721
+#define OBJ_VNUM_SPEAR                  2722
+#define OBJ_VNUM_ARRESTOR               2723
+#define OBJ_VNUM_DRIVER                 2724
+#define OBJ_VNUM_REFLECTOR              2725
 #define OBJ_VNUM_SHIELD                 2726
-#define OBJ_VNUM_AD_SWORD1                   2727
-#define OBJ_VNUM_EL_SWORD1                   2728
-#define OBJ_VNUM_SM_SWORD1                   2729
+#define OBJ_VNUM_AD_SWORD1              2727
+#define OBJ_VNUM_EL_SWORD1              2728
+#define OBJ_VNUM_SM_SWORD1              2729
 #define OBJ_VNUM_ARRESTOR_UNIT          2730
-#define OBJ_VNUM_DRIVER_UNIT          2731
-#define OBJ_VNUM_REFLECTOR_UNIT          2732
-#define OBJ_VNUM_SHIELD_UNIT          2733
+#define OBJ_VNUM_DRIVER_UNIT            2731
+#define OBJ_VNUM_REFLECTOR_UNIT         2732
+#define OBJ_VNUM_SHIELD_UNIT            2733
 #define OBJ_VNUM_AD_RB                  2734
 #define OBJ_VNUM_EL_RB                  2735
 #define OBJ_VNUM_SM_RB                  2736
-#define OBJ_VNUM_PYRO_RUNE                  2737
-#define OBJ_VNUM_CYRO_RUNE                  2738
-#define OBJ_VNUM_BOLT_RUNE                  2739
-#define OBJ_VNUM_STAB_RUNE                  2740
-#define OBJ_VNUM_REND_RUNE                  2741
-#define OBJ_VNUM_MEND_RUNE                  2742
-#define OBJ_VNUM_CURE_RUNE                  2743
-#define OBJ_VNUM_WARD_RUNE                  2744
+#define OBJ_VNUM_PYRO_RUNE              2737
+#define OBJ_VNUM_CRYO_RUNE              2738
+#define OBJ_VNUM_BOLT_RUNE              2739
+#define OBJ_VNUM_STAB_RUNE              2740
+#define OBJ_VNUM_REND_RUNE              2741
+#define OBJ_VNUM_MEND_RUNE              2742
+#define OBJ_VNUM_CURE_RUNE              2743
+#define OBJ_VNUM_WARD_RUNE              2744
 
-/* End SMithy Stuff */
+/* End Smithy Stuff */
 
-#define OBJ_VNUM_SCHOOL_MACE             3700
-#define OBJ_VNUM_SCHOOL_DAGGER           3701
-#define OBJ_VNUM_SCHOOL_SWORD            3702
-#define OBJ_VNUM_SCHOOL_VEST             3703
-#define OBJ_VNUM_SCHOOL_SHIELD           3704
-#define OBJ_VNUM_SCHOOL_BANNER           3716
-#define OBJ_VNUM_SCHOOL_CLUB             3717
-#define OBJ_VNUM_SCHOOL_NULL                2
-#define OBJ_VNUM_POUCH                   3370
-#define OBJ_VNUM_SCHOOL_BOW              3722
+#define OBJ_VNUM_SCHOOL_MACE            3700
+#define OBJ_VNUM_SCHOOL_DAGGER          3701
+#define OBJ_VNUM_SCHOOL_SWORD           3702
+#define OBJ_VNUM_SCHOOL_VEST            3703
+#define OBJ_VNUM_SCHOOL_SHIELD          3704
+#define OBJ_VNUM_SCHOOL_BANNER          3716
+#define OBJ_VNUM_SCHOOL_CLUB            3717
+#define OBJ_VNUM_SCHOOL_NULL               2
+#define OBJ_VNUM_POUCH                  3370
+#define OBJ_VNUM_SCHOOL_BOW             3722
 
-#define ITEM_VNUM_HERB                    100
-#define ITEM_VNUM_WIZBREW_VIAL             99
+#define ITEM_VNUM_HERB                   100
+#define ITEM_VNUM_WIZBREW_VIAL            99
 
 
 /*
