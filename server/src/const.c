@@ -361,6 +361,7 @@ const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
         { "mending rune",           "Mending Rune",                    OBJ_VNUM_MEND_RUNE,     -1,                     { 0, 0, 0 },         { 0, 0, 0, 0, 0 },    "mending rune" },
         { "cure rune",              "Cure Rune",                       OBJ_VNUM_CURE_RUNE,     -1,                     { 0, 0, 0 },         { 0, 0, 0, 0, 0 },    "cure rune" },
         { "ward rune",              "Ward Rune",                       OBJ_VNUM_WARD_RUNE,     -1,                     { 0, 0, 0 },         { 0, 0, 0, 0, 0 },    "ward rune" },
+
 };
 
 /* set_name, set_desc, set_ego, set_bonus1, set_bonus2, set_bonus3 */
