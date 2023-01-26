@@ -2985,11 +2985,12 @@ void reset_area( AREA_DATA *pArea )
                                 continue;
                         }
 
+                        /* Below prevents you from being able to load multiple copies of one item in a container.
+                           If you comment it out, you will have some containers filling up with items, wicker basket
+                           in gnome village for example. Needs to be fixed properly. */
                         if (  (pArea->nplayer > 0 )
-                        ||   !( obj_to = get_obj_type( pObjToIndex ) ) /*
-                                Should fix multiple of the same object not being able to be loaded in
-                                containers, re-enable below if problems --Owl 24/1/23
-                        ||    ( count_obj_list( pObjIndex, obj_to->contains ) > 0 ) */  )
+                        ||   !( obj_to = get_obj_type( pObjToIndex ) )
+                        ||    ( count_obj_list( pObjIndex, obj_to->contains ) > 0 ) )
                         {
                                 last = FALSE;
                                 break;
