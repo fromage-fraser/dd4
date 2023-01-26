@@ -2985,11 +2985,11 @@ void reset_area( AREA_DATA *pArea )
                                 continue;
                         }
 
-                        /* Below code must be fixed to enable multiple copies of items to be put in same
-                           container */
                         if (  (pArea->nplayer > 0 )
-                        ||   !( obj_to = get_obj_type( pObjToIndex ) )
-                        ||    ( count_obj_list( pObjIndex, obj_to->contains ) > 0 ) )
+                        ||   !( obj_to = get_obj_type( pObjToIndex ) ) /*
+                                Should fix multiple of the same object not being able to be loaded in
+                                containers, re-enable below if problems --Owl 24/1/23
+                        ||    ( count_obj_list( pObjIndex, obj_to->contains ) > 0 ) */  )
                         {
                                 last = FALSE;
                                 break;
