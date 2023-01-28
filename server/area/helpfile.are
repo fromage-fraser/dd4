@@ -590,6 +590,9 @@ you are famous enough.
 
 Being infamous, i.e. having negative fame, is a bad thing.  You will not
 be able to level and shopkeepers will not serve you.
+
+To see who the currently most famous characters in the domain are, just
+type FAME at your prompt.  See also HELP LEGEND.
 ~
 
 0 INFAMY~
