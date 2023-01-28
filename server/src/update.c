@@ -2885,18 +2885,56 @@ void gmcp_update( void )
                         UpdateGMCPNumber( d, GMCP_WIS_MOD, (get_curr_wis(d->character)) );
                         UpdateGMCPNumber( d, GMCP_DEX_MOD, (get_curr_dex(d->character)) );
                         UpdateGMCPNumber( d, GMCP_CON_MOD, (get_curr_con(d->character)) );
-                        UpdateGMCPNumber( d, GMCP_HITROLL, GET_HITROLL( d->character ) );
-                        UpdateGMCPNumber( d, GMCP_DAMROLL, GET_DAMROLL( d->character ) );
+
+                        if (d->character->level >= 15)
+                        {
+                                UpdateGMCPNumber( d, GMCP_HITROLL, GET_HITROLL( d->character ) );
+                        }
+                        else {
+                                /* Send a ridiculous false number so GUI knows to conceal it, same # for other lvl-restricted stats */
+                                UpdateGMCPNumber( d, GMCP_HITROLL, 50000 );
+                        }
+
+                        if (d->character->level >= 15)
+                        {
+                                UpdateGMCPNumber( d, GMCP_DAMROLL, GET_DAMROLL( d->character ) );
+                        }
+                        else {
+                                UpdateGMCPNumber( d, GMCP_DAMROLL, 50000 );
+                        }
+
                         UpdateGMCPNumber( d, GMCP_WIMPY, d->character->wimpy );
                         UpdateGMCPNumber( d, GMCP_CARRY_NUMBER, d->character->carry_number );
                         UpdateGMCPNumber( d, GMCP_CARRY_MAXNUM, ( can_carry_n( d->character ) ) );
                         UpdateGMCPNumber( d, GMCP_CARRY_WEIGHT, ( d->character->carry_weight + d->character->coin_weight ) );
                         UpdateGMCPNumber( d, GMCP_CARRY_MAXWEIGHT, ( can_carry_w( d->character ) ) );
-                        UpdateGMCPNumber( d, GMCP_AC, GET_AC( d->character) );
-                        UpdateGMCPNumber( d, GMCP_FAME, d->character->pcdata->fame );
-                        UpdateGMCPNumber( d, GMCP_SAVE_VS, d->character->saving_throw );
 
-                        UpdateGMCPNumber( d, GMCP_ALIGNMENT, d->character->alignment );
+                        if (d->character->level >= 20)
+                        {
+                                UpdateGMCPNumber( d, GMCP_AC, GET_AC( d->character) );
+                        }
+                        else {
+                                UpdateGMCPNumber( d, GMCP_AC, 50000 );
+                        }
+
+                        UpdateGMCPNumber( d, GMCP_FAME, d->character->pcdata->fame );
+
+                        if (d->character->level >= 20)
+                        {
+                                UpdateGMCPNumber( d, GMCP_SAVE_VS, d->character->saving_throw );
+                        }
+                        else {
+                                UpdateGMCPNumber( d, GMCP_SAVE_VS, 50000 );
+                        }
+
+                        if (d->character->level >= 10)
+                        {
+                                UpdateGMCPNumber( d, GMCP_ALIGNMENT, d->character->alignment );
+                        }
+                        else {
+                                UpdateGMCPNumber( d, GMCP_ALIGNMENT, 50000 );
+                        }
+
                         UpdateGMCPNumber( d, GMCP_LEVEL, d->character->level );
                         UpdateGMCPNumber( d, GMCP_XP, d->character->exp );
                         UpdateGMCPNumber( d, GMCP_XP_MAX, (level_table[ d->character->level].exp_total) );
