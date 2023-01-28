@@ -4486,11 +4486,19 @@ void spell_summon_familiar( int sn, int level, CHAR_DATA *ch, void *vo )
              in_sc_room = TRUE;
         }
 
-        if ( !IS_OUTSIDE( ch )
-        && ( ch->in_room->sector_type != SECT_UNDERWATER )
-        && ( ch->in_room->sector_type != SECT_UNDERWATER_GROUND ) )
+        if ( ( ( ch->in_room->sector_type == SECT_UNDERWATER )
+            || ( ch->in_room->sector_type == SECT_UNDERWATER_GROUND ) )
+        && ( ( ch->race != RACE_SAHUAGIN )
+          && ( ch->race != RACE_GRUNG )
+          && ( ch->form != FORM_SNAKE ) ) )
         {
-                send_to_char( "You can't be indoors or underwater.\n\r", ch);
+                send_to_char( "You can't summon a familiar underwater.\n\r", ch);
+                return;
+        }
+
+        if ( !IS_OUTSIDE( ch ) )
+        {
+                send_to_char( "You can't summon a familiar indoors.\n\r", ch);
                 return;
         }
 
