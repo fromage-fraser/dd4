@@ -321,7 +321,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
 
         if (IS_AFFECTED(ch, AFF_DAZED))
         {
-              send_to_char( "You see STARS. You are dazed at present.\n\r", ch );
+              send_to_char( "You see STARS. You are dazed.\n\r", ch );
               return;
         }
 

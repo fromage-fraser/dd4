@@ -2648,6 +2648,7 @@ void load_specials( FILE *fp )
                         ||   pMobIndex->spec_fun == spec_lookup("spec_cast_electric")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_assassin")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_aboleth")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_sahuagin_baron")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_cast_water_sprite") )
                                 bonus = 15;
 

@@ -3688,7 +3688,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "grapple", &gsn_grapple,
                 TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 8,
-                "extra attack", "You recover from the grapple, and get back to your feet"
+                "extra attack", "You recover from the grapple, and get back to your feet."
         },
 
         {

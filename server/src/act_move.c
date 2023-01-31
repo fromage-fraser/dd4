@@ -2848,10 +2848,11 @@ void do_warcry (CHAR_DATA *ch, char *argument)
         AFFECT_DATA af;
         int temp;
 
-        if (IS_NPC(ch))
+        if (IS_NPC(ch)
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
                 return;
 
-        if (!CAN_DO(ch, gsn_warcry))
+        if (!IS_NPC(ch) && !CAN_DO(ch, gsn_warcry))
         {
                 send_to_char("Huh!?\n\r", ch);
                 return;
@@ -2860,7 +2861,7 @@ void do_warcry (CHAR_DATA *ch, char *argument)
         if (is_affected (ch, gsn_warcry))
                 return;
 
-        if (get_curr_int (ch) < 16)
+        if (!IS_NPC(ch) && get_curr_int (ch) < 16)
         {
                 send_to_char ("You are unable to remember the complex warchant...\n\r", ch);
                 return;
