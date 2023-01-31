@@ -422,7 +422,7 @@ const struct cmd_type cmd_table [] =
         { "mfind",      do_mfind,       POS_DEAD,    L_APP,  LOG_NORMAL },
         { "mrank",      do_mrank,       POS_DEAD,    L_APP,  LOG_NORMAL },
         { "ofind",      do_ofind,       POS_DEAD,    L_APP,  LOG_NORMAL },
-        { "oscore",     do_oscore,      POS_DEAD,    L_APP,  LOG_NORMAL },    
+        { "oscore",     do_oscore,      POS_DEAD,    L_APP,  LOG_NORMAL },
         { "osfind",     do_osfind,      POS_DEAD,    L_APP,  LOG_NORMAL },
         { "return",     do_return,      POS_DEAD,    L_APP,  LOG_NORMAL },
         { "switch",     do_switch,      POS_DEAD,    L_APP,  LOG_NORMAL },
@@ -3218,22 +3218,22 @@ void interpret( CHAR_DATA *ch, char *argument )
                 }
         }
 
-        /* IF your Dazed cant do much.
-         * If your PRONE - cant do attack skills
+        /* IF you're DAZED you can't do much.
+         * If you're PRONE you can't do attack skills
          */
 
         if ((cmd_table[cmd].position >= POS_RESTING) && (IS_AFFECTED(ch, AFF_DAZED)))
         {
-                send_to_char( "You see STARS. You are dazed at present.\n\r", ch ); 
-                return; 
+                send_to_char( "You see STARS. You are dazed.\n\r", ch );
+                return;
         }
 
-        if ((cmd_table[cmd].position == POS_FIGHTING) 
-                && (IS_AFFECTED(ch, AFF_PRONE)) 
+        if ((cmd_table[cmd].position == POS_FIGHTING)
+                && (IS_AFFECTED(ch, AFF_PRONE))
                 && (str_cmp( "cast", cmd_table[cmd].name )))
         {
-                send_to_char( "You cant, you're lying PRONE on the ground.\n\r", ch ); 
-                return; 
+                send_to_char( "You cant, you're lying PRONE on the ground.\n\r", ch );
+                return;
         }
 
         /*

@@ -6137,7 +6137,8 @@ void do_grapple (CHAR_DATA *ch, char *argument)
 
         if (IS_NPC(ch)
         && !( ch->spec_fun == spec_lookup("spec_kappa") )
-        && !( ch->spec_fun == spec_lookup("spec_laghathti") ) )
+        && !( ch->spec_fun == spec_lookup("spec_laghathti") )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
                 return;
 
         one_argument(argument,arg);
@@ -6242,7 +6243,8 @@ void do_flying_headbutt (CHAR_DATA *ch, char *argument)
         int chance;
 
         if (IS_NPC(ch)
-        && !( ch->spec_fun == spec_lookup("spec_kappa") ) )
+        && !( ch->spec_fun == spec_lookup("spec_kappa") )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
                 return;
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_flying_headbutt))
@@ -6611,7 +6613,8 @@ void do_whirlwind (CHAR_DATA *ch, char *argument)
         CHAR_DATA *vch_next;
         int count = 0;
 
-        if (IS_NPC(ch))
+        if (IS_NPC(ch)
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
                 return;
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_whirlwind) && ch->form != FORM_HYDRA)
