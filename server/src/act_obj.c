@@ -1425,16 +1425,16 @@ void do_enter (CHAR_DATA *ch, char *argument)
 
         if (is_affected(ch,gsn_mist_walk))
         {
-                act( "A glowing mist drifts through the shimmering portal...",
+                act( "<87>A glowing mist drifts through the shimmering portal...<0>",
                     ch, NULL, NULL, TO_ROOM );
-                act( "You drift into the shimmering portal...\n\r",
+                act( "<87>You drift into the shimmering portal...<0>\n\r",
                     ch, NULL, NULL,TO_CHAR );
         }
         else
         {
-                act( "$n calmly steps through the shimmering portal...",
+                act( "<87>$n calmly steps through the shimmering portal...<0>",
                     ch, NULL, NULL, TO_ROOM );
-                act( "You step into the shimmering portal...\n\r",
+                act( "<87>You step into the shimmering portal...<0>\n\r",
                     ch, NULL, NULL, TO_CHAR );
         }
 
@@ -1442,9 +1442,9 @@ void do_enter (CHAR_DATA *ch, char *argument)
         char_to_room( ch, room );
 
         if (is_affected(ch,gsn_mist_walk))
-                act( "A glowing mist emerges from the portal.", ch, NULL, NULL,TO_ROOM);
+                act( "<87>A glowing mist emerges from the portal.<0>", ch, NULL, NULL,TO_ROOM);
         else
-                act( "$n emerges from the portal.", ch, NULL, NULL, TO_ROOM );
+                act( "<87>$n emerges from the portal.<0>", ch, NULL, NULL, TO_ROOM );
 
         do_look( ch, "auto" );
 
@@ -6150,7 +6150,7 @@ int random_qnd ( int ap_value, char *rank, int ap_type )
         /*
                 'ranks' possible are in rank_table in mob.c  Currently 5 is max.
 
-                         name, rank_bonus, hp_bonus, who_format 
+                         name, rank_bonus, hp_bonus, who_format
                         { "none",       1,      1,      "{WCommon.{x "},
                         { "common",     1,      1,      "{WCommon.{x "},
                         { "rare",       3,      2,      "<39>[Rare]<0> "},
@@ -6158,7 +6158,7 @@ int random_qnd ( int ap_value, char *rank, int ap_type )
                         { "boss",       4,      7,      "<514><556><16>[<560>BOSS<561>]<0><557> "},
                         { "world",      5,     30,      "<81>[WO<75>RL<69>D B<75>OS<81>S]<0> "}
 
-                See mob.c. 
+                See mob.c.
                 We assume common  if something not here is passed.
                 Tweak this if you add more ranks.
 

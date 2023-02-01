@@ -52,7 +52,7 @@ typedef struct descriptor_data descriptor_t;
  If you offer a Mudlet GUI for autoinstallation, put the path/filename here.
  ******************************************************************************/
 
-#define MUDLET_PACKAGE "0.0.4\nhttps://www.dragons-domain.org/main/gui/DD_GUI.mpackage"
+#define MUDLET_PACKAGE "0.0.5\nhttps://www.dragons-domain.org/main/gui/DD_GUI.mpackage"
 
 /*
 #define GMCP_GUI_VERSION        "0.0.2"

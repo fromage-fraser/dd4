@@ -1,0 +1,2500 @@
+#AREA Owl~ Ota'ar Dar Residential - South~
+35 40 20 100
+
+#RECALL
+27347
+
+#MOBILES
+#27327
+sawfish fish~
+a sawfish~
+<31>A large sawfish cruises through the water, swishing its saw to and fro.<0>
+~
+Sawfish, also known as carpenter sharks, are a family of rays characterized
+by a long, narrow, flattened rostrum, or nose extension, lined with sharp
+transverse teeth, arranged in a way that resembles a saw. They are among the
+largest fish with some species reaching lengths of about 7–7.6 m.  This one
+looks hungry, but not especially interested in you, unless you annoy him.
+~
+64 32768|67108864 0 S
+35 0 0 0d0+0 0d0+0
+4|8|32|128|512 0
+8 8 1
+#27328
+cownose ray~
+a cownose ray~
+<215>The cownose ray prowls the ocean deep.<0>
+~
+The ray has a wingspan of over 2 metres and is brown-backed with a yellowish
+belly. Although its coloration is not particularly distinctive, its shape is
+easily recognizable. It has a broad head with wide-set eyes, and a pair of
+distinctive lobes on its subrostral fin. It also has a set of dental plates
+designed for crushing clams and oyster shells. When threatened the cownose ray
+can use the barb at the base of its tail to defend itself from the threat.
+
+A cownose ray has a spine with 'teeth' lining its lateral edges, and is coated
+with a weak venom.
+~
+64 512|67108864 0 S
+36 0 0 0d0+0 0d0+0
+4|8|32|512 0
+8 8 2
+#27329
+frilled shark~
+a frilled shark~
+<94>The frilled shark swishes resolutely through the water.<0>
+~
+The frilled shark is considered a living fossil, because of its primitive,
+eel-like physical traits, such as a dark-brown color, amphistyly (the
+articulation of the jaws to the cranium), and its 2m–long body, which has
+dorsal, pelvic, and anal fins located towards the tail.
+
+Its common name, frilled shark, derives from the fringed appearance of the
+six pairs of gill slits at the shark's throat.
+~
+64 512|67108864 0 S
+37 0 0 0d0+0 0d0+0
+4|8|32|512 0
+8 8 1
+#27330
+lemon shark~
+a lemon shark~
+<187>A medium-sized, lemon-coloured shark hunts about for food.<0>
+~
+The shark's yellow colouring serves as an excellent camouflage when swimming
+over the sandy seafloor in its natural habitat. The lemon shark commonly
+attains a length of 2.4 to 3.1 m and a weight up to 90 kg (200 lb) by
+adulthood.  It has a flattened head with a short, broad snout, and the second
+dorsal fin is almost as large as the first. Lemon sharks have electroreceptors
+concentrated in their heads, which detect electrical pulses emitted by
+potential prey and allow these nocturnal feeders to sense their prey in the
+dark.
+~
+64 512|67108864 0 S
+38 0 0 0d0+0 0d0+0
+4|8|32|512 0
+8 8 2
+>greet_prog 10~
+mpecho A <187>lemon shark<0> lunges at you as you enter!
+mpkill $n
+~
+>entry_prog 10~
+mpecho A <187>lemon shark<0> wheels suddenly and attacks you!
+mpkill $n
+~
+|
+#27331
+fiddler ray~
+a fiddler ray~
+<156>A fiddler ray is looking for shellfish, crabs, and worms.<0>
+~
+Fiddler rays are a genus of guitarfish, whose fin discs are shorter and more
+rounded than those of other guitarfishes. Their tails are slender, with a
+well-developed caudal fin and two triangular dorsal fins. Their snouts are
+translucent.
+
+Fiddler rays feed on shellfish, crabs, and worms, which they crush between
+their jaws. The egg capsules of the fiddler ray are reported to be golden
+in colour, and the embryos they contain are rumoured to have unusual
+properties.
+
+Fiddler rays, while shy, are quite harmless and easily approached.
+~
+64|128 512|65536|67108864 0 S
+39 0 0 0d0+0 0d0+0
+4|8|32|512 0
+8 8 1
+#27332
+sahuagin gladiator~
+a sahuagin gladiator~
+A sahuagin gladiator is here, polishing his armour and arms.
+~
+This sahuagin is dressed in gladiator garb, and likely plies his trade in the
+great arena that lies in the southwestern canton of Ota'ar Dar.  He seems a
+rough customer, but doesn't seem interested in acting aggressively towards you
+without provocation, which would make sense if he's usually paid to fight.
+~
+2|64 32|4194304|67108864 -328 S
+38 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>rand_prog 1~
+if isfight($i)
+break
+else
+emote snorts and polishes his armour
+endif
+~
+>rand_prog 1~
+if isfight($i)
+break
+else
+emote scowls
+endif
+~
+>rand_prog 1~
+if isfight($i)
+break
+else
+emote stares askance at you
+endif
+~
+|
+#27333
+Maliya Kaipa bard~
+Maliya Kaipa~
+Maliya Kaipa is here, practising on a curious musical instrument.
+~
+Relatively slight for a sahuagin, Maliya Kaipa sits here practising on a
+strange musical instrument, presumably one peculiar to the sahuagin race.
+He looks up at you, unperturbed, but watchful.
+~
+2|64|1024 8|32|512|8388608|67108864 -120 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>all_greet_prog 100~
+if race($n) != 19
+    say Leave, please.  I only teach my musical arts to sahuagin.
+    mpecho {WMaliya escorts you calmly but firmly out of his quarters.{x
+    mptransfer $n 27386
+    mpgoto 27386
+    mpforce $n look
+    music You know, I've really got to leave you
+    music Oh, I can hear it callin' me
+    music I said don't you hear it callin' me the way it used to do?
+    mpecho {WMaliya swims back to his quarters to practise.{x
+    mpgoto 27686
+break
+endif
+if level($n) < 40
+    say I'm sorry if you're here to learn, $n, you're a little too inexperienced right now.
+break
+endif
+if subclass($n) == 16
+    say Greetings, $n. I can teach you music if you like?
+    break
+else
+    say Sorry, $n, I can only teach bards.
+    break
+endif
+~
+|
+& 40  'teacher base'
+& 97 'musicianship'
+& 30 'bard base'
+#27334
+Shael Iokua apprentice bard~
+Shael Iokua~
+Shael Iokua, bard apprentice, is here practising on his instrument.
+~
+A slender, youthful, sahuagin, Shael is an apprentice sahuagin bard, and sits
+here practising on a strange musical instrument. He looks at you with
+unapologetic curiosity.
+~
+2|64 32|512|67108864 -145 S
+37 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>all_greet_prog 100~
+if race($n) == 19
+	say Greetings, $n. Are you here to learn with my master?  Maliya is upstairs practising now, I think.
+else
+	say Maliya only teaches sahuagin. You should leave.
+endif
+~
+|
+#27335
+sahuagin warrior retired~
+a retired sahuagin warrior~
+A retired sahuagin warrior is here, snoozing.
+~
+This sahuagin was clearly once a warrior, to judge by his appearance and the
+objects surrounding him, but is now presumably retired, being quite long in
+the fin.
+~
+2|64 32|67108864|9223372036854775808 -371 S
+37 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>rand_prog 1~
+if isfight($i)
+break
+else
+emote lets a long, slow, wet one rip
+endif
+~
+>rand_prog 1~
+if isfight($i)
+break
+else
+emote snorts
+endif
+~
+>rand_prog 1~
+if isfight($i)
+break
+else
+emote grumbles and smacks his lips
+endif
+~
+>rand_prog 1~
+if isfight($i)
+break
+else
+snore
+endif
+~
+|
+#27336
+Rene Ama thief~
+Rene Ama~
+Rene Ama lurks here, attempting concealment.
+~
+This cloaked, surreptitious sahuagin doesn't remind you of any you've seen
+before, appearing to prefer stealth and shadows to brute force and invective.
+Perhaps there's something to be learned from her?
+~
+64|128|1024|8388608 2|8|32|512|32768|65536|2097152|8388608|67108864 -470 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+& 40 'teacher base'
+& 97 'armed combat knowledge'
+& 97 'unarmed combat knowledge'
+& 97 'defense knowledge'
+& 97 'stealth techniques'
+& 97 'thievery skills'
+& 97 'detect hidden'
+& 97 'detect sneak'
+& 97 'spellcraft'
+& 97 'inner force'
+& 97 'divination magiks'
+& 97 'poison arts'
+& 97 'advanced combat knowledge'
+& 97 'hunting arts'
+& 97 'knowledge'
+& 30 'thief base'
+& 30 'ninja base'
+& 30 'bounty base'
+#27337
+Ota'as Heremu loremaster~
+Ota'as Heremu~
+Ota'as Heremu is here, shaking singing bundles.
+~
+This middle-aged male sahuagin is shaking what you know are called 'singing
+bundles,' conchs and shells supported by sinew and bone, which are the way that
+sahuagin maintain their lore. As he shakes them they make the clicking and
+hissing sounds of the sahuagin language, thus relating the lore that they
+contain.  He seems to have a very wise demeanour, for a sahuagin--perhaps you
+can learn something from him?
+~
+2|64|1024|8388608 8|32|512|67108864 -139 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+& 40 'teacher base'
+& 97 'archery knowledge'
+& 97 'armed combat knowledge'
+& 97 'unarmed combat knowledge'
+& 97 'defense knowledge'
+& 97 'inner force'
+& 97 'advanced combat knowledge'
+& 97 'knowledge'
+& 97 'metal working techniques'
+& 97 'riding techniques'
+& 97 'dowse'
+& 97 'lore'
+& 30 'knight base'
+& 30 'barbarian base'
+& 30 'ranger base'
+& 30 'thug base'
+& 30 'warrior base'
+#27338
+sahuagin watcher~
+a sahuagin watcher~
+A sahuagin watcher is here, tending the hatchery.
+~
+This is a cleric of Sekolah, employed here to tend the eggs in this hatchery.
+He regards you with an uneasy suspicion.
+~
+2|64 32|512|67108864 -645 S
+38 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>rand_prog 15~
+mpasound {gYou hear strange squelching and wriggling sounds issue from nearby.{x
+~
+>all_greet_prog 100~
+if race($n) == 19
+	say Greetings, $n. Welcome to the hatchery.
+else
+	say Die, foreigner! Leave this hatchery!
+    mpkill $n
+endif
+~
+|
+#27339
+sahuagin watcher~
+a sahuagin watcher~
+A sahuagin watcher is here, tending the hatchery.
+~
+This is a cleric of Sekolah, employed here to tend the eggs in this hatchery.
+She regards you with an uneasy suspicion.
+~
+2|64 32|512|67108864 -519 S
+37 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+>rand_prog 15~
+mpasound {gYou hear strange squelching and wriggling sounds issue from nearby.{x
+~
+>all_greet_prog 100~
+if race($n) == 19
+	say Greetings, $n. Welcome to the hatchery.
+else
+	say Die, foreigner! Leave this hatchery!
+    mpkill $n
+endif
+~
+|
+#27340
+drunk sahuagin~
+a very drunk sahuagin~
+An extremely drunk sahuagin is here, in an absolute state.
+~
+This sahuagin is deep in his cups and generally insensate.
+~
+2|64 1|256|131072|67108864|9223372036854775808 -519 S
+37 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>all_greet_prog 100~
+mpecho A disheveled sahuagin falls to the floor, blind drunk.
+sleep
+~
+>rand_prog 1~
+if isfight($i)
+break
+else
+mparound ::snoooooore::
+endif
+~
+>rand_prog 1~
+if isfight($i)
+break
+else
+mpecho ::snoOOooOoore::
+endif
+~
+>rand_prog 1~
+if isfight($i)
+break
+else
+mpecho ::BuUUuRRRrrP::
+endif
+~
+>rand_prog 1~
+if isfight($i)
+break
+else
+mpecho The drunk sahuagin jerks and twitches in his sleep.
+endif
+~
+>rand_prog 1~
+if isfight($i)
+break
+else
+mpecho The drunk sahuagin lets a long, wet, stinky one rip.
+endif
+~
+|
+#27341
+sahuagin mother~
+a sahuagin mother~
+A sahuagin mother is here, caring for her latest brood of hatchlings.
+~
+This female sahuagin busies herself tending to the needs of her brood of
+hatchlings. She regards you with a suspicious eye.
+~
+2|64 32|512|8192|67108864 -519 S
+38 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27342
+sahuagin hatchling~
+a sahuagin hatchling~
+<155>A sahuagin hatchling swims about, getting into mischief.<0>
+~
+This young male sahuagin swims about madly, playing and fighting and generally
+looking to get himself into trouble.
+~
+64 512|67108864 -519 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>greet_prog 7~
+shout Growl! Take that stranger!
+mpkill $n
+~
+|
+#27343
+sahuagin hatchling~
+a sahuagin hatchling~
+<155>A sahuagin hatchling swims about, getting into mischief.<0>
+~
+This young female sahuagin swims about madly, playing and fighting and
+generally looking to get herself into trouble.
+~
+64 512|67108864 -519 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+>greet_prog 7~
+shout Rawr! I'm the biggest and toughest!
+mpkill $n
+~
+|
+#27344
+sahuagin hatchling~
+a sahuagin hatchling~
+<155>A sahuagin hatchling swims about in circles, getting into mischief.<0>
+~
+This young male sahuagin swims about on the spot madly, playing and fighting
+and generally looking to get himself into trouble.
+~
+2|64 512|67108864 -519 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>greet_prog 7~
+shout Growl! Take that stranger!
+mpkill $n
+~
+|
+#27345
+sahuagin hatchling~
+a sahuagin hatchling~
+<155>A sahuagin hatchling swims about in circles, getting into mischief.<0>
+~
+This young female sahuagin swims about on the spot madly, playing and fighting
+and generally looking to get herself into trouble.
+~
+2|64 512|67108864 -519 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+>greet_prog 7~
+shout Rawr! I'm the biggest and toughest!
+mpkill $n
+~
+|
+#27346
+Ota'ar Dar cityguard sahuagin guard~
+an Ota'ar Dar cityguard~
+An Ota'ar Dar cityguard is here, protecting the canton's baron.
+~
+Ota'ar Dar cityguards look very much like sahuagin soldiers, but their
+pauldrons are stamped with the city's mark.  They are selected for their
+strength, youth, and loyalty to the prince. This one has been assigned
+to protect this canton's baron.
+~
+2|64 8|32|512|8388608|67108864 -430 S
+38 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>all_greet_prog 100~
+if carrying ($n) == 27454
+	say I see you have an appointment with the baron, $n. Continue through.
+    salute $n
+else
+	say You have no business here!  Die!
+    mpforce $n kill guard
+    mpkill $n
+endif
+~
+|
+#27347
+Ota'ar Dar cityguard sahuagin guard~
+an Ota'ar Dar cityguard~
+An Ota'ar Dar cityguard is here, protecting the canton's baron.
+~
+Ota'ar Dar cityguards look very much like sahuagin soldiers, but their
+pauldrons are stamped with the city's mark.  They are selected for their
+strength, youth, and loyalty to the prince. This one has been assigned
+to protect this canton's baron.
+~
+2|64 8|32|512|8388608|67108864 -430 S
+38 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27348
+wife female baron wives~
+the baron's wife~
+One of the baron's wives reclines here, regarding you with interest.
+~
+Attractive for a sahuagin, this is one of the local baron's wives.  She has
+little to do but tend to the baron's young (who are fairly independent, once
+hatched) and await his call, and so spends most of her life in relative comfort
+and ease.
+~
+2|64 512|67108864 -370 S
+37 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+>greet_prog 4~
+emote raises her eyelids at you, sleepily
+~
+|
+#27349
+sahuagin broodling feisty female~
+a feisty sahuagin broodling~
+<156>A sahuagin broodling is here, looking cantankerous.<0>
+~
+This female sahuagin is a broodling, or young adult.  Not quite ready to leave
+the (relative) safety of her parents and clutchmates, she fights to assert her
+place in sahuagin society and within her home.
+~
+2|64 512|67108864 -603 S
+36 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+>greet_prog 7~
+shout You won't have my bed!  Have at you!
+mpkill $n
+~
+|
+#27350
+sahuagin broodling feisty male~
+a feisty sahuagin broodling~
+<156>A sahuagin broodling is here, bristling with aggression.<0>
+~
+This male sahuagin is a broodling, or young adult.  Not quite ready to leave
+the (relative) safety of his parents and clutchmates, he fights to assert his
+place in sahuagin society and within his home.
+~
+2|64 512|67108864 -603 S
+36 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>greet_prog 7~
+shout Get away from my bed!  Die!
+mpkill $n
+~
+|
+#27351
+baron sahuagin~
+the baron~
+<248>A sahuagin baron stands here, shaking with fury.<0>
+~
+Sahuagin barons are four-limbed mutant sahuagin.  Larger and more powerful
+than the regular breed, they are often promoted to positions of rank and power
+within the strict sahuagin hierarchy.  This baron is in charge of the southern
+residential canton in which you now find yourself.  He is not at ALL pleased
+to see you here.
+~
+2|64|2048 512|67108864 -603 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>all_greet_prog 100~
+if carrying ($n) == 27454
+	say I see you have an appointment tablet, but I know it does not belong to you. Come my guards!  See to this foul intruder!
+    mpat 27670 mpmload 27347
+    mpat 27670 mpforce cityguard mpoload 27364
+    mpat 27670 mpforce cityguard mpoload 27231
+    mpat 27670 mpforce cityguard mpoload 27242
+    mpat 27670 mpforce cityguard wear all
+    mpat 27670 mpforce cityguard south
+    mpforce cityguard mpkill $n
+    mpat 27670 mpmload 27347
+    mpat 27670 mpforce cityguard mpoload 27364
+    mpat 27670 mpforce cityguard mpoload 27231
+    mpat 27670 mpforce cityguard mpoload 27242
+    mpat 27670 mpforce cityguard wear all
+    mpat 27670 mpforce cityguard south
+    mpforce cityguard mpkill $n
+    mpat 27670 mpmload 27347
+    mpat 27670 mpforce cityguard mpoload 27364
+    mpat 27670 mpforce cityguard mpoload 27231
+    mpat 27670 mpforce cityguard mpoload 27242
+    mpat 27670 mpforce cityguard wear all
+    mpat 27670 mpforce cityguard south
+    mpforce cityguard mpkill $n
+    mpkill $n
+else
+	say How dare you enter my presence, you pathetic grubling!  Guards!  Deal with this OFFAL!
+    mpat 27670 mpmload 27347
+    mpat 27670 mpforce cityguard mpoload 27364
+    mpat 27670 mpforce cityguard mpoload 27231
+    mpat 27670 mpforce cityguard mpoload 27242
+    mpat 27670 mpforce cityguard wear all
+    mpat 27670 mpforce cityguard south
+    mpforce cityguard mpkill $n
+    mpat 27670 mpmload 27347
+    mpat 27670 mpforce cityguard mpoload 27364
+    mpat 27670 mpforce cityguard mpoload 27231
+    mpat 27670 mpforce cityguard mpoload 27242
+    mpat 27670 mpforce cityguard wear all
+    mpat 27670 mpforce cityguard south
+    mpforce cityguard mpkill $n
+    mpat 27670 mpmload 27347
+    mpat 27670 mpforce cityguard mpoload 27364
+    mpat 27670 mpforce cityguard mpoload 27231
+    mpat 27670 mpforce cityguard mpoload 27242
+    mpat 27670 mpforce cityguard wear all
+    mpat 27670 mpforce cityguard south
+    mpforce cityguard mpkill $n
+    mpkill $n
+endif
+~
+|
+#0
+
+
+#OBJECTS
+#27414
+sawlike rostrum~
+a sawlike rostrum~
+A long, narrow, flattened rostrum, or nose extension, lined with sharp
+transverse teeth, arranged in a way that makes it resemble a saw.~
+~
+5 67108864 0
+0~ 0~ 0~ 15~
+1 0 0
+#27415
+spiny barb~
+a spiny barb~
+This spine has teeth lining its lateral edges, and is coated with a weak
+venom.~
+~
+5 16384|67108864 0
+0~ 0~ 0~ 16~
+1 0 0
+#27416
+jaws teeth spiny sharp~
+jaws full of sharp, spiny teeth~
+Your sharp teeth protrude from your fearsome jaws.~
+~
+5 67108864 0
+0~ 0~ 0~ 10~
+1 0 0
+#27417
+egg capsule fiddler ray~
+<227>a fiddler ray's egg capsule<0>~
+<227>A golden-coloured egg capsule lies here.<0>~
+~
+15 0 16385
+20~ 0~ -1~ 0~
+2 1750 50
+#27418
+fiddler ray embryo~
+a fiddler ray embryo~
+The small, translucent embryo of a fiddler ray lies here.~
+~
+26 0 1
+40~ ectoplasmic form~ invis~ displacement~
+5 0 0
+#27419
+spiked pauldron~
+a spiked pauldron~
+A spiked pauldron is here.~
+~
+9 0 1|4
+0~ 1~ 6~ 11~
+8 0 0
+A
+17 -10
+#27420
+gleaming trident~
+a gleaming trident~
+A gleaming trident of excellent manufacture is here.~
+~
+5 16|64 1|8192
+0~ 1~ 6~ 2~
+10 0 30
+A
+18 8
+A
+19 3
+#27421
+weighted net~
+a weighted net~
+A weighted net lies here.~
+~
+5 16|64 1|8192
+0~ 1~ 6~ 9~
+10 0 30
+A
+18 8
+#27422
+helmet gladiator grated~
+a grated helmet~
+A gladiator's helmet with a face grate lies here.~
+~
+9 0 1|16
+8~ 1~ 6~ 11~
+5 0 0
+A
+17 -15
+E
+helmet gladiator grated~
+The helmet has a high crested plume and a hinged  grate that covers the eyes
+and much of the face.
+~
+#27423
+fasciae leather~
+leather fasciae~
+A pair of leather fasciae are here, for use as combat leg protection.~
+~
+9 0 1|32
+0~ 0~ 0~ 0~
+45 0 0
+A
+17 -8
+#27424
+wooden trunk~
+a wooden trunk~
+A long wooden trunk sits on the ground.  It looks very well-used.~
+~
+15 0 0
+120~ 1~ 0~ 0~
+10 0 0
+#27425
+purple loincloth tasselled~
+a purple loincloth~
+A tasselled purple loincloth is here.~
+~
+9 0 1|2048
+0~ 1~ 6~ 11~
+1 0 0
+#27426
+shell-covered sphere~
+a curious shell-covered sphere~
+This curious device is the size and rough shape of a watermelon with a large
+hole in its centre that goes half-way through it. It is covered by shells of
+many different shapes and sizes, all of which seem to have been modified to
+act as something like whistles, of different pitches, with the hole in the
+centre the channel by which the tones escape.  It seems sturdy enough that
+it might deflect a blow, in a pinch.~
+~
+36 0 1|16384
+0~ 0~ 0~ 0~
+5 0 0
+A
+17 -20
+#27427
+rusty pauldron~
+a rusty pauldron~
+A rusty pauldron is here.~
+~
+9 0 1|4
+0~ 1~ 6~ 11~
+8 0 0
+A
+17 -4
+#27428
+rusty trident~
+a rusty trident~
+A rusty trident of dilapidated appearance is here.~
+~
+5 16|64 1|8192
+0~ 1~ 6~ 2~
+10 0 30
+A
+18 5
+E
+rusty trident~
+It has seen much better days, and has not been well-cared for.
+~
+#27429
+purple loincloth stained torn~
+a stained and torn purple loincloth~
+A stained and torn purple loincloth is here.~
+~
+9 0 1|2048
+0~ 1~ 6~ 11~
+1 0 0
+#27430
+purple hooded cloak~
+a purple hooded cloak~
+A long, dark purple hooded cloak has been left in a pile here.~
+~
+9 64|32768|262144 1|1024
+0~ 0~ 0~ 0~
+3 0 0
+A
+17 -3
+A
+24 -10
+A
+28 -1
+A
+33 -1
+E
+purple hooded cloak~
+The cloak pulses with magic, and seems to offer benefits to those who wish to
+remain concealed.
+~
+#27431
+three-bladed dagger~
+a three-bladed dagger~
+A dagger with three blades is here.~
+~
+5 64 1|8192
+0~ 0~ 0~ 11~
+3 0 0
+A
+18 7
+A
+30 -1
+#27432
+note neatly folded~
+a note~
+A neatly-folded note sits on a rough stool.~
+~
+2 0 1
+0~ 0~ 0~ 0~
+0 0 0
+E
+note letter~
+
+{WThe note is from one Rene Ama to one Bri'hr Evin'r, informing the latter that
+the former has a number of matters to attend to today, and to help herself to the
+contents of the concealed pantry in the upper level while she awaited her return.{x
+
+~
+#27433
+pantry concealed~
+the concealed pantry~
+~
+~
+15 0 0
+150~ 0~ 0~ 0~
+0 0 0
+E
+pantry concealed~
+Tapping the wall you discover a hollow that can be accessed by means of a loose
+brick.
+~
+#27434
+goblin shark pie~
+a goblin shark pie~
+A pie made of goblin shark meat lies here.~
+~
+26 0 1|16384
+40~ infravision~ ~ ~
+1 0 30
+E
+goblin shark pie~
+Well, you've met a few goblin sharks and... yeah.  It doesn't look great.
+You do feel a bit... more perceptive, somehow?.. after eating it, though.
+~
+#27435
+sauteed thresher kebabs plate~
+sauteed thresher kebabs~
+A plate of sautéed thresher kebabs lies here.~
+~
+19 0 1|16384
+35~ 0~ 0~ 0~
+1 0 0
+E
+sauteed thresher kebabs plate~
+These really don't look bad.  Yum.
+~
+#27436
+ray wing pie manta~
+a ray wing pie~
+A pie made out of manta ray wings lies here.~
+~
+19 0 1|16384
+40~ 0~ 0~ 0~
+2 0 0
+E
+ray wing pie manta~
+Very filling, if a bit tough.
+~
+#27437
+singing bundle~
+a singing bundle~
+This odd item is made of conchs and shells supported by sinew and bone; when
+you rattle it it makes strange sounds reminiscent of the sahuagin language.~
+~
+36 0 1|16384
+0~ 0~ 0~ 0~
+5 0 0
+A
+2 4
+A
+17 -15
+A
+24 -5
+#27438
+loremaster cloak green dirty~
+cloak of the loremaster~
+A dirty green cloak has been left in a pile here.~
+~
+9 64|262144 1|1024
+0~ 0~ 0~ 0~
+3 0 0
+A
+4 4
+A
+3 3
+A
+24 -7
+#27439
+fiddler ray embryo~
+a fiddler ray embryo~
+The small, translucent embryo of a fiddler ray lies here.~
+~
+26 0 1
+40~ ectoplasmic form~ invis~ displacement~
+5 0 0
+#27440
+fiddler ray embryo~
+a fiddler ray embryo~
+The small, translucent embryo of a fiddler ray lies here.~
+~
+26 0 1
+40~ ectoplasmic form~ invis~ displacement~
+5 0 0
+#27441
+scroll wet sahuagin lore~
+a scroll of sahuagin lore~
+A wet scroll of sahuagin lore is here.~
+~
+9 0 1|16384
+0~ 0~ 0~ 0~
+5 0 0
+E
+scroll wet sahuagin lore~
+From what you can make out, it is a treatise on the subject of Malenti, rare
+mutant sahuagin that look like aquatic elves (the sahuagin's mortal enemies).
+
+While shunned by sahuagin at large, after extensive training they often serve
+sahuagin rulers directly as spies and assassins.  The treatise mentions a
+rumour of all-malenti tribes existing in isolated reaches of a distant sea.~
+#27442
+damaged singing bundle~
+a damaged singing bundle~
+This odd item is made of conchs and shells supported by sinew and bone; when
+you rattle it it makes strange sounds reminiscent of the sahuagin language.
+Some of the conchs and shells are cracked, and several connecting strands of
+sinew have perished.~
+~
+36 0 1|16384
+0~ 0~ 0~ 0~
+5 0 0
+A
+2 2
+A
+17 -7
+A
+24 -2
+#27443
+sahuagin incubator~
+sahuagin incubator~
+A sahuagin incubator sits here, glowing with heat.~
+~
+15 1|131072 16384
+0~ 0~ 0~ 0~
+1000 0 0
+E
+sahuagin incubator~
+The incubator houses a collection of sahuagin eggs, kept warm by hot water
+from a volcanic vent in the sea floor that has been artfully piped through it.
+~
+#27444
+sahuagin incubator~
+sahuagin incubator~
+A sahuagin incubator sits here, glowing with heat.~
+~
+15 1|131072 16384
+0~ 0~ 0~ 0~
+1000 0 0
+E
+sahuagin incubator~
+The incubator houses a collection of sahuagin eggs, kept warm by hot water
+from a volcanic vent in the sea floor that has been artfully piped through it.
+~
+#27445
+sahuagin incubator~
+sahuagin incubator~
+A sahuagin incubator sits here, glowing with heat.~
+~
+15 1|131072 16384
+0~ 0~ 0~ 0~
+1000 0 0
+E
+sahuagin incubator~
+The incubator houses a collection of sahuagin eggs, kept warm by hot water
+from a volcanic vent in the sea floor that has been artfully piped through it.
+~
+#27446
+green robes~
+green robes~
+Green robes lie here in a heap.~
+~
+9 16|64 1|1024
+0~ 0~ 0~ 0~
+2 0 0
+A
+12 30
+A
+4 2
+#27447
+sahuagin egg~
+a sahuagin egg~
+A sahuagin egg.~
+~
+19 0 1|16384
+40~ 0~ 0~ 0~
+2 0 0
+E
+sahuagin egg~
+There is a wriggling, eel-like creature within it.  Looks edible, if unappetising.
+~
+#27448
+sahuagin egg~
+a sahuagin egg~
+A sahuagin egg.~
+~
+19 0 1|16384
+40~ 0~ 0~ 1~
+2 0 0
+E
+sahuagin egg~
+There is a wriggling, eel-like creature within it.  the egg seems... off.
+Discoloured, and... damaged, perhaps?
+~
+#27449
+sahuagin egg~
+a sahuagin egg~
+A sahuagin egg.~
+~
+26 0 1|16384
+40~ refresh~ cure poison~ cure critical~
+2 0 0
+E
+sahuagin egg~
+The egg is clear, and pulses with some kind of energy.
+~
+#27450
+sahuagin egg~
+a sahuagin egg~
+A sahuagin egg.~
+~
+26 0 1|16384
+40~ sleep~ poison~ blindness~
+2 0 0
+E
+sahuagin egg~
+The egg is dark, and pulses with some kind of unpleasant energy.
+~
+#27451
+dun want it boiling cup liquid~
+a Dun Want It~
+A boiling cup of liquid lies here.~
+~
+17 0 1|16384
+6~ 5~ 7~ 0~
+1 0 0
+#27452
+child-sized trident~
+a child-sized trident~
+A child-sized trident is here.~
+~
+5 16|64 1|8192
+0~ 1~ 6~ 2~
+5 0 30
+#27453
+child-sized weighted net~
+a child-sized weighted net~
+A child-sized weighted net lies here.~
+~
+5 16|64 1|8192
+0~ 1~ 6~ 9~
+5 0 30
+#27454
+carved appointment tablet~
+an appointment tablet~
+A carved tablet indicating an appointment with a local baron lies here.~
+~
+2 0 1|16384
+0~ 0~ 0~ 0~
+2 0 0
+#27455
+purple robe luxurious~
+a luxurious purple robe~
+A luxurious purple robe lies here in a heap.~
+~
+9 64|262144 1|1024
+0~ 0~ 0~ 0~
+3 0 0
+A
+12 35
+#27456
+necklace diamond~
+a diamond necklace~
+You see a diamond necklace here.~
+~
+8 0 5
+0~ 0~ 0~ 0~
+1 0 30
+#27457
+necklace pearl~
+a pearl necklace~
+You see a pearl necklace here.~
+~
+8 0 5
+0~ 0~ 0~ 0~
+1 0 30
+#27458
+necklace gold~
+a gold necklace~
+You see a gold necklace here.~
+~
+8 0 5
+0~ 0~ 0~ 0~
+1 0 30
+#27459
+sturdy trident~
+a sturdy trident~
+A sturdy trident is here.~
+~
+5 16|64 1|8192
+0~ 1~ 6~ 2~
+7 0 30
+A
+18 5
+A
+19 2
+#27460
+sturdy weighted net~
+a sturdy weighted net~
+A sturdy weighted net lies here.~
+~
+5 16|64 1|8192
+0~ 1~ 6~ 9~
+10 0 30
+A
+18 4
+A
+19 4
+#27461
+shimmering oval portal~
+a shimmering portal~
+<51><306>A shimmering, oval portal covers the northern wall.<0>~
+~
+33 64 0
+27418~ -1~ 0~ 100~
+0 0 0
+#27462
+jewelled trident~
+a jewelled trident~
+A jewelled trident of superb manufacture is here.~
+~
+5 16|64 1|8192
+0~ 1~ 6~ 2~
+10 0 30
+A
+18 9
+A
+19 8
+#27463
+prince's token ornate~
+the Prince's token~
+An ornate token allowing access to the prince's canton lies here.~
+~
+2 0 1|16384
+0~ 0~ 0~ 0~
+1 0 0
+E
+prince's token ornate~
+An ornate token.  From its inscription you gather that if the Prince's canton
+is open at all, then this token will allow the bearer entrance into the Prince's
+palace, which lies within it.
+~
+#27464
+ornate pauldron~
+an ornate pauldron~
+A very ornate pauldron lies here.~
+~
+9 0 1|4
+0~ 1~ 6~ 11~
+8 0 0
+A
+17 -20
+E
+ornate pauldron~
+This is a very expensive and well-crafted pauldron, and has been acid-etched
+with the seal of the prince of Ota'ar Dar.
+~
+#27465
+velvet purple loinskirt~
+a velvet purple loinskirt~
+A richly-decorated purple loinskirt lies here.~
+~
+9 0 1|2048
+0~ 1~ 6~ 11~
+1 0 0
+A
+17 -5
+#27468
+baronic crown spiked~
+a baronic crown~
+A metal crown covered in sharpened spikes lies here.~
+~
+9 64|16777216 1|16
+8~ 0~ 0~ 0~
+10 0 0
+A
+2 2
+A
+19 5
+A
+17 -10
+E
+baronic crown~
+This crown belongs to a sahuagin baron.  This one bears the mark of the baron
+of the southern residential canton. It is a thing of spiked metal, with its
+spires filed to sharp points, that it might serve purpose in battle as well as
+to function as a symbol of rulership.
+~
+#0
+
+
+#ROOMS
+#27368
+Malana Bridge Road, Lower~
+{CYou stand at the western end of a short east-west road on the sandy ocean
+floor, amongst the inhabited ruins of a great, ancient city. Huge, locked gates
+loom to the east, sealing off this canton, which seems dominated by sahuagin
+dwellings of a purely residential nature. You may travel north to the eastern
+end of Ebberon Avenue, east through the great gates that lead out of this canton
+and into the Ota'ar Dar canals, or you can swim up, towards a huge, looming area
+of darkness in the water above. {x
+~
+0 0 12
+D0
+~
+~
+0 -1 27382
+D1
+~
+gate~
+8 -1 27353
+D4
+~
+~
+0 -1 27668
+S
+#27369
+Sahuagin Living Quarters, Ground Level~
+{GThis is a sahuagin residential dwelling, equipped with all the necessities
+of sahuagin life.  Looking about, you notice rough furniture made of scavenged
+stone pillars and deep-sea sponges, kelp mats, a few bioluminescent globes
+hung about for light, various scavenged decorative ornaments and treasures,
+and numerous species of seaweed growing from fissures in the ancient stone walls.
+
+This dwelling has something of a decayed martial air about it; rusty weapons and
+armour hang on hooks about its ancient and decayed walls. From here you can travel
+north, out to Ebberon Avenue, or up, to the top level of the dwelling.{x
+~
+0 8 12
+D0
+~
+~
+0 -1 27381
+D4
+~
+~
+0 -1 27669
+S
+#27370
+Southern Residential Canton's Baron's Hatchery~
+{GThis is the Baron's hatchery, well-equipped with all things required to
+support new sahuagin life.  Many bioluminescent globes have been hung about
+the hatchery for light, and numerous species of edible seaweed grow from
+glowing fissures in the ancient stone walls.  These fissures filter hot water
+through the incubators, designed to keep the Baron's wives' eggs at an ideal
+temperature for his hatchlings taking shape inside them.
+
+From here you can travel south, to the Baron's wives' quarters.{x
+~
+0 8|262144 12
+D2
+~
+~
+0 -1 27371
+S
+#27371
+Southern Residential Canton's Baron's Dwelling, Wives' Quarters~
+{GThis room in the Baron's dwelling is where he keeps his wives, in close
+proximity to a nursery for his young, which you can see to the north. Several
+large beds woven out of heavy kelp and fastened by the kelp's root structures
+to the floor dominate the space; they are of exceptional quality and
+craftsmanship. Large bioluminescent globes have been attached to the eastern
+and southern walls, providing light, and you notice that the other decorations
+and furnishings in the room are of generally high quality.
+
+From here you may travel north or west, to other rooms in the Baron's abode.{x
+~
+0 8 12
+D0
+~
+~
+0 -1 27370
+D3
+~
+~
+0 -1 27372
+S
+#27372
+Southern Residential Canton's Baron's Dwelling, Foyer~
+{GThis dwelling, rather grand for a sahuagin, is where the Baron of this
+canton lives, along with his wives, eggs, and spawn. You stand in its large
+and well-appointed foyer. Looking about, you notice fine carved-stone
+furniture, dozens of bright bioluminescent globes glowing brightly, various
+high-quality decorative ornaments and treasures, and numerous species of
+seaweed and brightly-coloured corals growing from fissures in the ancient
+stone walls. Two small alcoves have been cut into the stone walls for the
+Baron's permanent guard detail to stand in while on duty.
+
+From here you can travel east, to other rooms in the Baron's abode, north out
+to Ipheknisk Close, or up, towards the top level of the dwelling.{x
+~
+0 8 12
+D0
+~
+~
+0 -1 27373
+D1
+~
+~
+0 -1 27371
+D4
+~
+~
+0 -1 27672
+S
+#27373
+Ipheknisk Close South, Lower~
+{CYou stand at the end of a sandy street named Ipheknisk Close, amongst
+the inhabited ruins of a great, ancient underwater city. Ipheknisk Close
+continues to the north, while entrances to sahuagin residential dwellings
+lie west and south of here, with the entrance to the souther dwelling
+looking somewhat grander than others you can see in the area. You may also
+head upwards, towards a huge, looming area of darkness in the water above. {x
+~
+0 0 12
+D0
+~
+~
+0 -1 27375
+D2
+~
+~
+0 -1 27372
+D3
+~
+~
+0 -1 27374
+D4
+~
+~
+0 -1 27673
+S
+#27374
+Sahuagin Living Quarters, Ground Level~
+{GThis is a sahuagin residential dwelling, equipped with all the necessities
+of sahuagin life.  Looking about, you notice rough furniture made of scavenged
+stone pillars and deep-sea sponges, kelp mats, a few bioluminescent globes
+hung about for light, various scavenged decorative ornaments and treasures,
+and numerous species of seaweed growing from fissures in the ancient stone
+brickwork.
+
+The walls of the dwelling are covered in what you know are called 'singing
+bundles,' collections of conchs and other shells supported by sinew and bone.
+They are repositories of sahuagin lore, and when shaken, make the clicking and
+hissing sounds of sahuagin language. From here you can travel east, out to
+Ipheknisk Close, or up, towards the top level of the dwelling.{x
+~
+0 8 12
+D1
+~
+~
+0 -1 27373
+D4
+~
+~
+0 -1 27674
+S
+#27375
+Ipheknisk Close, Lower~
+{CYou stand in a sandy street on Ipheknisk Close, amongst the inhabited ruins
+of a great, ancient underwater city. Ipheknisk Close continues to the south,
+while the intersection of Ipheknisk Close and Ebberon Avenue lies north. The
+entrance to a sahuagin residential dwelling lies west of here. You may also
+head upwards, towards a huge, looming area of darkness in the water above. {x
+~
+0 0 12
+D0
+~
+~
+0 -1 27380
+D2
+~
+~
+0 -1 27373
+D3
+~
+~
+0 -1 27376
+D4
+~
+~
+0 -1 27675
+S
+#27376
+Sahuagin Living Quarters, Ground Level~
+{GThis is a sahuagin residential dwelling, equipped with all the necessities
+of sahuagin life.  Looking about, you notice rough furniture made of scavenged
+stone pillars and deep-sea sponges, kelp mats, a few bioluminescent globes
+hung about for light, various scavenged decorative ornaments and treasures,
+and numerous species of seaweed growing from fissures in the ancient stone
+walls.
+
+The dwelling seems unusually neat and orderly for one that belongs to a
+sahuagin, perhaps indicating something about the character of its inhabitant.
+From here you can travel east, out to Ipheknisk Close, or up, to the top level
+of the dwelling.{x
+~
+0 8 12
+D1
+~
+~
+0 -1 27375
+D4
+~
+~
+0 -1 27676
+S
+#27377
+Sahuagin Living Quarters, Ground Level~
+{GThis is a sahuagin residential dwelling, equipped with all the necessities
+of sahuagin life.  Looking about, you notice rough furniture made of scavenged
+stone pillars and deep-sea sponges, kelp mats, a few bioluminescent globes
+hung about for light, various scavenged decorative ornaments and treasures,
+and numerous species of seaweed growing from fissures in the ancient stone
+walls.
+
+The dwelling is an absolute state of disrepair, with objects strewn everywhere
+and strong (and pungent) evidence of abysmal housekeeping. From here you may
+travel north, out to Ebberon Avenue, or up, to the top level of the dwelling.{x
+~
+0 8 12
+D0
+~
+~
+0 -1 27378
+D4
+~
+~
+0 -1 27677
+S
+#27378
+Ebberon Avenue West, Lower~
+{CYou stand on a sandy street on Ebberon Avenue, amongst the inhabited ruins
+of a great, ancient underwater city. Massive, locked gates lie to your
+immediate west; you see no way of getting through them. The entrance to
+sahuagin residential dwellings lies north and south of here, while Ebberon
+Avenue continues east. You may also head upwards, towards a huge,
+looming area of darkness in the water above. {x
+~
+0 0 12
+D0
+~
+~
+0 -1 27383
+D1
+~
+~
+0 -1 27379
+D2
+~
+~
+0 -1 27377
+D4
+~
+~
+0 -1 27678
+S
+#27379
+Ebberon Avenue, Lower~
+{CYou stand on a sandy street on Ebberon Avenue, amongst the inhabited
+ruins of a great, ancient underwater city. To the east is the intersection
+of Ebberon Avenue and Ipheknisk Close, while massive, locked gates lie at
+the end of Ebberon Avenue, to the west. The entrance to a residential
+dwelling lies north of here. You may also head upwards, towards a huge,
+looming area of darkness in the water above. {x
+~
+0 0 12
+D0
+~
+~
+0 -1 27384
+D1
+~
+~
+0 -1 27380
+D3
+~
+~
+0 -1 27378
+D4
+~
+~
+0 -1 27679
+S
+#27380
+Intersection of Ebberon Avenue and Ipheknisk Close, Lower~
+{CYou stand on a sandy street at the intersection of Ebberon Avenue and
+Ipheknisk Close, amongst the inhabited ruins of a great, ancient underwater
+city. Ipheknisk Close continues to to the south, while Ebberon Avenue
+continues to the west and east. To the north lies the southern end of the
+bridge road to the northern residential canton. You may also head upwards,
+towards a huge, looming area of darkness in the water above. {x
+~
+0 0 12
+D0
+~
+~
+0 -1 27385
+D1
+~
+~
+0 -1 27381
+D2
+~
+~
+0 -1 27375
+D3
+~
+~
+0 -1 27379
+D4
+~
+~
+0 -1 27680
+S
+#27381
+Ebberon Avenue, Lower~
+{CYou stand on Ebberon Avenue, on a sandy street amongst the inhabited
+ruins of a great, ancient city, in Ota'ar Dar's southern residential canton.
+A sahuagin dwelling lies to the south, while Ebberon Avenue continues to the
+west and east.  You can also head upwards, towards a huge, looming area of
+darkness in the water above. {x
+~
+0 0 12
+D1
+~
+~
+0 -1 27382
+D2
+~
+~
+0 -1 27369
+D3
+~
+~
+0 -1 27380
+D4
+~
+~
+0 -1 27681
+S
+#27382
+Ebberon Avenue East, Lower~
+{CYou stand at the easternmost end of Ebberon Avenue, on a sandy street
+amongst the inhabited ruins of a great, ancient city, in Ota'ar Dar's
+southern residential canton.  A sahuagin dwelling lies to the north,
+Ebberon Avenue continues to the west, and the western end of Malana
+Bridge Road lies south. You can also head upwards, towards a huge,
+looming area of darkness in the water above. {x
+~
+0 0 12
+D0
+~
+~
+0 -1 27387
+D2
+~
+~
+0 -1 27368
+D3
+~
+~
+0 -1 27381
+D4
+~
+~
+0 -1 27682
+S
+#27383
+Sahuagin Hatchery, Ground Level~
+{GThis is a sahuagin hatchery, equipped with all the things required to
+support new sahuagin life.  Many bioluminescent globes have been hung about
+the hatchery for light, and numerous species of edible seaweed grow from
+glowing fissures in the ancient stone walls.  These fissures filter hot water
+through the incubators, designed to keep the sahuagin eggs at an ideal
+temperature for the hatchlings taking shape inside them.
+
+From here you can travel south, out to Ebberon Avenue, or up, to the top
+level of the hatchery.{x
+~
+0 8|262144 12
+D2
+~
+~
+0 -1 27378
+D4
+~
+~
+0 -1 27683
+S
+#27384
+Sahuagin Living Quarters, Ground Level~
+{GThis is a sahuagin residential dwelling, equipped with all the necessities
+of sahuagin life.  Looking about, you notice rough furniture made of scavenged
+stone pillars and deep-sea sponges, kelp mats, a few bioluminescent globes
+hung about for light, various scavenged decorative ornaments and treasures,
+and numerous species of seaweed growing from fissures in the ancient stone walls.
+
+You suspect a family brood of sahuagin live here, as you see many items that
+seem too small to be used by adult sahuagin, and there are a number of
+(currently unoccupied) egg incubators laying about. From here you can travel
+south, out to Ebberon Avenue, or up, to the top level of the dwelling.{x
+~
+0 8|262144 12
+D2
+~
+~
+0 -1 27379
+D4
+~
+~
+0 -1 27684
+S
+#27385
+Residential Bridge South Road, Lower~
+{CYou stand at the southern end of a long bridge road that connects Ota'ar Dar's
+northern residential canton to its southern one. The southern residential gates
+lie to your immediate north, the entrance to a sahuagin dwelling lies to your
+immediate east, while south the bridge road joins Ebberon Avenue, which runs
+east-west. You can also head upwards, towards the huge, looming area of darkness
+in the water above.{x
+~
+0 0 12
+D0
+~
+gate~
+8 -1 27388
+D1
+~
+~
+0 -1 27386
+D2
+~
+~
+0 -1 27380
+D4
+~
+~
+0 -1 27685
+S
+#27386
+Sahuagin Living Quarters, Ground Level~
+{GThis is a sahuagin residential dwelling, equipped with all the necessities
+of sahuagin life.  Looking about, you notice rough furniture made of scavenged
+stone pillars and deep-sea sponges, kelp mats, a few bioluminescent globes
+hung about for light, various scavenged decorative ornaments and treasures,
+and numerous species of seaweed growing from fissures in the ancient stone walls.
+
+You suspect the owner of the dwelling is some sort of musician, as a number of
+what you assume to be crude musical instruments hang on hooks about its ancient
+and decayed walls. From here you can travel west, out to the southern end of
+Residential Bridge Road, or up, to the top level of the dwelling.{x
+~
+0 8 12
+D3
+~
+~
+0 -1 27385
+D4
+~
+~
+0 -1 27686
+S
+#27387
+Sahuagin Living Quarters, Ground Level~
+{GThis is a sahuagin residential dwelling, equipped with all the necessities
+of sahuagin life.  Looking about, you notice rough furniture made of scavenged
+stone pillars and deep-sea sponges, kelp mats, a few bioluminescent globes
+hung about for light, various scavenged decorative ornaments and treasures,
+and numerous species of seaweed growing from fissures in the ancient stone walls.
+
+This dwelling has something of a martial air about it, and well-maintained
+weapons hang on hooks about its ancient and decayed walls. From here you can
+travel south, out to Ebberon Avenue, or up, to the top level of the dwelling.{x
+~
+0 8 12
+D2
+~
+~
+0 -1 27382
+D4
+~
+~
+0 -1 27687
+S
+#27668
+Malana Bridge Road, Upper~
+{cYou are at the western end of a short east-west road, about 4 metres above
+the ocean floor, amongst the inhabited ruins of a great, ancient city. Huge,
+locked gates loom to the east, sealing off this canton, which seems dominated
+by sahuagin residential dwellings.
+
+You may travel north to the upper eastern end of Ebberon Avenue, east through
+the great gates that lead out of this canton and into the Ota'ar Dar canal
+system, or you can swim up, towards a huge, looming area of darkness in the
+water above.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27682
+D1
+~
+gate~
+8 -1 27653
+D4
+~
+~
+0 -1 27135
+D5
+~
+~
+0 -1 27368
+S
+#27669
+Sahuagin Living Quarters, Upper Level~
+{gThis is the upper level of a sahuagin residential dwelling, and looks to be
+the sleeping quarters of its inhabitant; you notice a sprawling bed woven out
+of heavy kelp and fastened by the kelp's root structures to the floor.  One
+large bioluminescent globe has been attached to the centre of the western wall,
+providing light, and various crude decorations festoon the remaining walls.
+
+From here you can travel down, to the entrance of the dwelling, or up, towards
+a huge, looming area of darkness in the water above.{x
+~
+0 8 12
+D4
+~
+~
+0 -1 27135
+D5
+~
+~
+0 -1 27369
+S
+#27670
+Southern Residential Canton's Baron's Dwelling, Baron's Quarters~
+{gThis room is in the upper level of the Southern Residential Canton's Baron's
+home, and is where he lives and spends his private hours.  It is very richly
+decorated and appointed, and full of artifacts and treasures he has acquired
+over his years-long course of executing his office.
+
+From here you can travel south, to the Baron's reception room, or up, towards
+a huge, looming area of darkness in the water above.{x
+~
+0 4|8 12
+D2
+~
+~
+0 -1 27671
+D4
+~
+~
+0 -1 27134
+S
+#27671
+Southern Residential Canton's Baron's Dwelling, Reception Room~
+{gThis room is in the upper level of the Southern Residential Canton's Baron's
+home, and is where he meets visitors and does the business of the canton,
+such as it is.  It is richly decorated and appointed, as befits his status,
+and is dominated by a magnificent high-backed chair decorated with shells and
+corals surrounded by much smaller plain stone stools set around it at a lower
+level.
+
+From here you can travel north or west, to other rooms in the Baron's dwelling,
+or up, towards a huge, looming area of darkness in the water above.{x
+~
+0 8 12
+D0
+~
+~
+0 -1 27670
+D3
+~
+~
+0 -1 27672
+D4
+~
+~
+0 -1 27147
+S
+#27672
+Southern Residential Canton's Baron's Dwelling, Brood Quarters~
+{gThis room is in the upper level of the Southern Residential Canton's Baron's
+home, and looks to be where his broodlings live, while they learn how to
+function as sahuagin adults (and occasionally fight each other to the death).
+
+While there is a clear path through this room leading to the Baron's reception
+room, to the east, there are many small beds made of kelp to the sides of it
+for his broodlings to sleep in--a way of him boasting to visitors of his
+virility.  You notice too, that there are somewhat fewer beds than there are
+broodlings, and imagine they have to fight every night for a bed to sleep in.
+
+From here you can travel down, to the foyer, east, to the Baron's reception room,
+or up, towards a huge, looming area of darkness in the water above.{x
+~
+0 8 12
+D1
+~
+~
+0 -1 27671
+D4
+~
+~
+0 -1 27147
+D5
+~
+~
+0 -1 27372
+S
+#27673
+Ipheknisk Close South, Upper~
+{cYou find yourself at the southern end of Ipheknisk Close, about 4 metres
+above the ocean floor, amongst the inhabited ruins of a great, ancient city,
+in Ota'ar Dar's southern residential canton. Ipheknisk Close continues north,
+and may also head upwards from here, towards a huge, looming area of darkness
+in the water above.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27675
+D4
+~
+~
+0 -1 27134
+D5
+~
+~
+0 -1 27373
+S
+#27674
+Sahuagin Living Quarters, Upper Level~
+{gThis is the upper level of a sahuagin residential dwelling, and looks to be
+the sleeping quarters of its inhabitant; you notice a sprawling bed woven out
+of heavy kelp and fastened by the kelp's root structures to the floor.  One
+large bioluminescent globe has been attached to the centre of the western wall,
+providing light, and various 'singing bundles' of conchs and shells supported
+by bone and sinew festoon the remaining walls.
+
+From here you can travel down, to the entrance of the dwelling, or up, towards
+a huge, looming area of darkness in the water above.{x
+~
+0 8 12
+D4
+~
+~
+0 -1 27134
+D5
+~
+~
+0 -1 27374
+S
+#27675
+Ipheknisk Close, Upper~
+{cYou find yourself in Ipheknisk Close, about 4 metres above the ocean floor,
+amongst the inhabited ruins of a great, ancient city, in Ota'ar Dar's southern
+residential canton. To the north you see the intersection of Ebberon Avenue and
+Ipheknisk Close, while the Close itself continues to the south. You may also
+head upwards from here, towards a huge, looming area of darkness in the water
+above.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27680
+D2
+~
+~
+0 -1 27673
+D4
+~
+~
+0 -1 27135
+D5
+~
+~
+0 -1 27375
+S
+#27676
+Sahuagin Living Quarters, Upper Level~
+{gThis is the upper level of a sahuagin residential dwelling, and looks to be
+the sleeping quarters of its inhabitant; you notice a sprawling bed woven out
+of heavy kelp and fastened by the kelp's root structures to the floor. A large
+but rather dim bioluminescent globe has been attached to the centre of the
+western wall, providing a murky light; the walls are otherwise bare. You can
+also smell what you THINK is food, but can't see anywhere obvious it could be
+concealed.
+
+From here you can travel down, to the entrance of the dwelling, or up, towards
+a huge, looming area of darkness in the water above.{x
+~
+0 8 12
+D4
+~
+~
+0 -1 27135
+D5
+~
+~
+0 -1 27376
+S
+#27677
+Sahuagin Living Quarters, Upper Level~
+{gThis is the upper level of a sahuagin residential dwelling, and looks to be
+the sleeping quarters of its inhabitant; you notice a sprawling bed woven out
+of heavy kelp and fastened by the kelp's root structures to the floor. The bed
+is covered in unpleasant-looking stains. A large bioluminescent globe has been
+attached to the centre of the western wall, but has been broken and is
+non-functional; the walls are otherwise bare.
+
+From here you can travel down, to the entrance of the dwelling, or up, towards
+a huge, looming area of darkness in the water above.{x
+~
+0 8 12
+D4
+~
+~
+0 -1 27135
+D5
+~
+~
+0 -1 27377
+S
+#27678
+Ebberon Avenue West, Upper~
+{cYou find yourself on Ebberon Avenue, about 4 metres above the ocean floor,
+amongst the inhabited ruins of a great, ancient city, in Ota'ar Dar's southern
+residential canton. Massive, locked gates lie to your immediate west; you see
+no way of getting through them. Ebberon Avenue continues east, and you may also
+head upwards, towards a huge, looming area of darkness in the water above. {x
+~
+0 0 8
+D1
+~
+~
+0 -1 27679
+D4
+~
+~
+0 -1 27136
+D5
+~
+~
+0 -1 27378
+S
+#27679
+Ebberon Avenue, Upper~
+{cYou find yourself on Ebberon Avenue, about 4 metres above the ocean floor,
+amongst the inhabited ruins of a great, ancient city, in Ota'ar Dar's southern
+residential canton. Ebberon Avenue continues west and east, meeting Ipheknisk
+Close in an intersection just to the east of here. You may also head upwards,
+towards a huge, looming area of darkness in the water above.{x
+~
+0 0 8
+D1
+~
+~
+0 -1 27680
+D3
+~
+~
+0 -1 27678
+D4
+~
+~
+0 -1 27136
+D5
+~
+~
+0 -1 27379
+S
+#27680
+Intersection of Ebberon Avenue and Ipheknisk Close, Upper~
+{cYou are at the intersection of Ebberon Avenue and Ipheknisk Close, about 4
+metres above the ocean floor, amongst the inhabited ruins of a great, ancient
+city, in Ota'ar Dar's southern residential canton. Ebberon Avenue continues from
+here to the east and west, you can see gates leading out of the canton to the
+north, Ipheknisk Close continues to your south. You can also head upwards,
+towards a huge, looming area of darkness in the water above.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27685
+D1
+~
+~
+0 -1 27681
+D2
+~
+~
+0 -1 27675
+D3
+~
+~
+0 -1 27679
+D5
+~
+~
+0 -1 27380
+S
+#27681
+Ebberon Avenue, Upper~
+{cYou are in Ebberon Avenue, about 4 metres above the ocean floor, amongst
+the inhabited ruins of a great, ancient city, in Ota'ar Dar's southern
+residential canton. Ebberon Avenue continues from here to the east and west,
+and you can also head upwards, towards a huge, looming area of darkness in the
+water above.{x
+~
+0 0 8
+D1
+~
+~
+0 -1 27682
+D3
+~
+~
+0 -1 27680
+D4
+~
+~
+0 -1 27136
+D5
+~
+~
+0 -1 27381
+S
+#27682
+Ebberon Avenue East, Upper~
+{cYou find yourself at the easternmost end of Ebberon Avenue, about 4 metres
+above the ocean floor, amongst the inhabited ruins of a great, ancient city,
+in Ota'ar Dar's southern residential canton. Ebberon Avenue continues to the
+west, and the western end of Malana Bridge Road lies south. You can also
+head upwards, towards a huge, looming area of darkness in the water above.{x
+~
+0 0 8
+D2
+~
+~
+0 -1 27668
+D3
+~
+~
+0 -1 27681
+D4
+~
+~
+0 -1 27132
+D5
+~
+~
+0 -1 27382
+S
+#27683
+Sahuagin Hatchery, Upper Level~
+{gThis is the upper level of a sahuagin hatchery, equipped with all the things
+required to support new sahuagin life. Many bioluminescent globes have been
+hung about the hatchery for light, and hot water vents up from the room below,
+filtering through the incubators, which are designed to keep the sahuagin eggs
+at an ideal temperature for the hatchlings taking shape inside them.
+
+From here you can travel down, to the entrance of the hatchery, or up, towards
+a huge, looming area of darkness in the water above.{x
+~
+0 8|262144 12
+D4
+~
+~
+0 -1 27132
+D5
+~
+~
+0 -1 27383
+S
+#27684
+Sahuagin Living Quarters, Upper Level~
+{gThis is the upper level of a sahuagin residential dwelling, and looks to be
+the sleeping quarters of its inhabitants; you notice sprawling beds woven out
+of heavy kelp and fastened by the kelp's root structures to the floor. A few
+unused egg incubators lie about, as well as what looks like the rough driftwood
+and seaweed structure of a sahuagin nursery.  Several large bioluminescent
+globes have been attached to the centre of the western wall, providing light,
+and various crude decorations festoon the remaining walls.
+
+From here you can travel down, to the entrance of the dwelling, or up, towards
+a huge, looming area of darkness in the water above.{x
+~
+0 8|262144 12
+D4
+~
+~
+0 -1 27132
+D5
+~
+~
+0 -1 27384
+S
+#27685
+Residential Bridge South Road, Upper~
+{cYou are at the southern end of a long north-south bridge road, about 4 metres
+above the ocean floor, amongst the inhabited ruins of a great, ancient city.
+Huge gates loom to the north, sealing off this canton, which seems dominated
+by sahuagin residential dwellings.
+
+You may travel south to the intersection of Ebberon Avenue and Ipheknisk Close,
+north through the great gates that lead out of this canton and into the Ota'ar
+Dar canal system, or you can swim up, towards a huge, looming area of darkness
+in the water above.{x
+~
+0 0 8
+D0
+~
+gate~
+8 -1 27688
+D2
+~
+~
+0 -1 27680
+D4
+~
+~
+0 -1 27134
+D5
+~
+~
+0 -1 27385
+S
+#27686
+Sahuagin Living Quarters, Upper Level~
+{gThis is the upper level of a sahuagin residential dwelling, and looks to be
+the sleeping quarters of its inhabitant; you notice a sprawling bed woven out
+of heavy kelp and fastened by the kelp's root structures to the floor.  One
+large bioluminescent globe has been attached to the centre of the western wall,
+providing light, and various crude decorations festoon the remaining walls.
+
+From here you can travel down, to the entrance of the dwelling, or up, towards
+a huge, looming area of darkness in the water above.{x
+~
+0 8 12
+D4
+~
+~
+0 -1 27132
+D5
+~
+~
+0 -1 27386
+S
+#27687
+Sahuagin Living Quarters, Upper Level~
+{gThis is the upper level of a sahuagin residential dwelling, and looks to be
+the sleeping quarters of its inhabitant; you notice a sprawling bed woven out
+of heavy kelp and fastened by the kelp's root structures to the floor.  One
+large bioluminescent globe has been attached to the centre of the western wall,
+providing light, and various crude decorations festoon the remaining walls.
+
+From here you can travel down, to the entrance of the dwelling, or up, towards
+a huge, looming area of darkness in the water above.{x
+~
+0 8 12
+D4
+~
+~
+0 -1 27132
+D5
+~
+~
+0 -1 27387
+S
+#0
+
+#RESETS
+D 1 27368 1 1			; Malana Bridge Road, Lower Close East
+D 1 27668 1 1			; Malana Bridge Road, Upper Close East
+D 1 27385 0 1			; Residential Bridge South Road, Lower Close North
+D 1 27685 0 1			; Residential Bridge South Road, Upper Close North
+*
+M 1 27327 3 27378		; a sawfish to Ebberon Avenue West, Lower
+E 1 27414 100 16        ; equip sawfish saw on sawfish
+*
+M 1 27327 3 27380		; a sawfish to Intersection of Ebberon Avenue and Ipheknisk Close, Lower
+E 1 27414 100 16        ; equip sawfish saw on sawfish
+*
+M 1 27327 3 27382		; a sawfish to Ebberon Avenue East, Lower
+E 1 27414 100 16        ; equip sawfish saw on sawfish
+*
+M 1 27328 2 27373		; a cownose ray to Ipheknisk Close South, Lower
+E 1 27415 100 16        ; equip spiny barb on cownose ray
+*
+M 1 27328 2 27679		; a cownose ray to Ebberon Avenue, Upper
+E 1 27415 100 16        ; equip spiny barb on cownose ray
+*
+M 1 27329 2 27681       ; a frilled shark to Ebberon Avenue, Upper
+E 1 27416 100 16        ; equip sharp jaws on frilled shark
+*
+M 1 27329 2 27668       ; a frilled shark to Malana Bridge Road, Upper
+E 1 27416 100 16        ; equip sharp jaws on frilled shark
+*
+M 1 27330 2 27680       ; a lemon shark to Intersection of Ebberon Avenue and Ipheknisk Close, Upper
+E 1 27416 100 16        ; equip sharp jaws on lemon shark
+*
+M 1 27331 2 27685       ; a fiddler ray to Intersection of Ebberon Avenue and Ipheknisk Close, Upper
+G 1 27417 100           ; Give fiddler ray fiddler ray pouch
+P 1 27418 100 27417     ; Put fiddler ray embryo in pouch
+P 1 27439 100 27417     ; Put fiddler ray embryo in pouch
+P 1 27440 100 27417     ; Put fiddler ray embryo in pouch
+*
+M 1 27332 1 27387		; the sahuagin gladiator to Sahuagin Living Quarters, Ground Level
+E 1 27419 100 3         ; equip spiked pauldrons
+E 1 27423 100 7         ; equip fasciae
+E 1 27420 100 16        ; equip trident
+E 1 27421 100 18        ; equip net
+E 1 27422 100 6         ; equip helmet
+*
+O 1 27424 100 27687     ; a trunk to gladiator quarters upper
+P 1 27423 100 27424     ; put gladiator equipment in trunk
+P 1 27422 100 27424
+P 1 27420 100 27424
+P 1 27421 100 27424
+*
+M 1 27333 1 27686		; Maliya Kaipa (bard) to Sahuagin Living Quarters, Upper Level
+E 1 27425 100 13        ; equip purple loincloth
+E 1 27426 100 17        ; equip musical instrument
+*
+M 1 27334 1 27386       ; Shael Iokua to Sahuagin Living Quarters, Lower Level
+E 1 27425 100 13        ; equip purple loincloth
+E 1 27426 100 17        ; equip musical instrument
+*
+M 1 27335 1 27669       ; A retired sahuagin warrior to Sahuagin Living Quarters, Upper Level
+E 1 27429 100 13        ; equip stained and torn purple loincloth
+E 1 27428 100 16        ; equip rusty trident
+E 1 27427 100 3         ; equip rusty pauldrons
+*
+O 1 27424 100 27669     ; a trunk to to Sahuagin Living Quarters, Upper Level
+P 1 27428 100 27424     ; put retired warrior equipment in trunk
+P 1 27428 100 27424
+P 1 27427 100 27424
+*
+M 1 27336 1 27676       ; Rene Ama to her bedroom in Sahuagin Living Quarters, Upper Level.  Note: she wanders.
+E 1 27430 100 12        ; wear purple hooded cloak
+E 1 27431 100 16        ; wield 3-bladed dagger
+*
+I 27432 40 27376 1      ; note to Sahuagin Living Quarters, Lower Level (thief trainer home)
+*
+O 1 27433 0 27676        ; place concealed pantry
+P 1 27434 100 27433      ; put foodstuffs in pantry
+P 1 27435 100 27433
+P 1 27436 100 27433
+*
+M 1 27337 1 27374       ; Ota'as Heremu to Sahuagin Living Quarters, Lower Level
+E 1 27425 100 13        ; equip purple loincloth
+E 1 27437 100 17        ; equip singing bundle
+E 1 27438 100 12        ; equip loremaster cloak
+*
+O 1 27424 100 27674     ; a trunk to Sahuagin Living Quarters, Upper Level
+P 1 27442 100 27424     ; put damaged singing bundle in trunk
+P 1 27441 100 27424     ; put score of sahuagin lore in trunk
+*
+M 1 27338 1 27383       ; a sahuagin watcher to Sahuagin Hatchery, Lower Level
+E 1 27446 100 12        ; equip watcher with green robe
+*
+O 1 27443 100 27383     ; an incubator to Sahuagin Hatchery, Lower Level
+P 1 27447 100 27443      ; put egg in incubator
+P 1 27448 100 27443      ; put egg in incubator
+P 1 27449 100 27443      ; put egg in incubator
+*
+O 1 27444 100 27383     ; an incubator to Sahuagin Hatchery, Lower Level
+P 1 27448 100 27444     ; put egg in incubator
+P 1 27449 100 27444     ; put egg in incubator
+P 1 27450 100 27444     ; put egg in incubator
+*
+O 1 27445 100 27383     ; an incubator to Sahuagin Hatchery, Lower Level
+P 1 27449 100 27445     ; put egg in incubator
+P 1 27450 100 27445     ; put egg in incubator
+P 1 27447 100 27445     ; put egg in incubator
+*
+M 1 27339 2 27683       ; a sahuagin watcher to Sahuagin Hatchery, Upper Level
+E 1 27446 100 12        ; equip watcher with green robe
+*
+O 1 27443 100 27683     ; an incubator to Sahuagin Hatchery, Upper Level
+P 1 27450 100 27443     ; put egg in incubator
+P 1 27447 100 27443     ; put egg in incubator
+P 1 27448 100 27443     ; put egg in incubator
+*
+O 1 27444 100 27683     ; an incubator to Sahuagin Hatchery, Upper Level
+P 1 27447 100 27444     ; put egg in incubator
+P 1 27448 100 27444     ; put egg in incubator
+P 1 27449 100 27444     ; put egg in incubator
+*
+O 1 27445 100 27683     ; an incubator to Sahuagin Hatchery, Upper Level
+P 1 27448 100 27445     ; put egg in incubator
+P 1 27449 100 27445     ; put egg in incubator
+P 1 27450 100 27445     ; put egg in incubator
+*
+M 1 27340 1 27677       ; a drunk sahuagin to Sahuagin Living Quarters, Upper Level
+E 1 27425 100 13        ; equip purple loincloth
+G 1 27451 100           ; Give Dun wan It to drunk sahuagin
+G 1 27451 100           ; Give Dun wan It to drunk sahuagin
+*
+O 1 27454 100 27377     ; appointment tablet to Sahuagin Living Quarters, Lower Level
+*
+M 1 27341 1 27684       ; a sahuagin mother to Sahuagin Living Quarters, Upper Level
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27342 2 27684       ; a sahuagin hatchling to Sahuagin Living Quarters, Upper Level
+E 1 27425 100 13        ; equip purple loincloth
+E 1 27452 100 16        ; equip trident
+*
+M 1 27342 2 27384       ; a sahuagin hatchling to Sahuagin Living Quarters, Lower Level
+E 1 27425 100 13        ; equip purple loincloth
+E 1 27453 100 16        ; equip net
+*
+M 1 27343 2 27684       ; a sahuagin hatchling to Sahuagin Living Quarters, Upper Level
+E 1 27425 100 13        ; equip purple loincloth
+E 1 27452 100 16        ; equip trident
+*
+M 1 27344 1 27684       ; a sahuagin hatchling to Sahuagin Living Quarters, Upper Level
+E 1 27425 100 13        ; equip purple loincloth
+E 1 27452 100 16        ; equip trident
+*
+M 1 27345 1 27684       ; a sahuagin hatchling to Sahuagin Living Quarters, Upper Level
+E 1 27425 100 13        ; equip purple loincloth
+E 1 27453 100 16        ; equip net
+*
+M 1 27343 2 27384       ; a sahuagin hatchling to Sahuagin Living Quarters, Lower Level
+E 1 27425 100 13        ; equip purple loincloth
+E 1 27453 100 16        ; equip net
+*
+O 1 27445 100 27684     ; an incubator to Sahuagin Living Quarters, Upper Level
+*
+O 1 27443 100 27684     ; an incubator to Sahuagin Living Quarters, Upper Level
+*
+O 1 27445 100 27384     ; an incubator to Sahuagin Living Quarters, Lower Level
+*
+O 1 27443 100 27384     ; an incubator to Sahuagin Living Quarters, Lower Level
+*
+M 1 27346 1 27372		; an Ota'ar Dar cityguard to Southern Residential Canton's Baron's Dwelling, Foyer
+E 1 27364 100 3
+E 1 27231 100 13
+E 1 27242 100 16
+*
+M 1 27347 1 27372		; an Ota'ar Dar cityguard (no mobprog) to Southern Residential Canton's Baron's Dwelling, Foyer
+E 1 27364 100 3
+E 1 27231 100 13
+E 1 27242 100 16
+*
+M 1 27348 3 27371       ; a baron's wife to Southern Residential Canton's Baron's Dwelling, Wives' Quarters
+E 1 27455 100 12        ; equip purple robe
+E 1 27456 0 4           ; equip a diamond necklace
+*
+M 1 27348 3 27371       ; a baron's wife to Southern Residential Canton's Baron's Dwelling, Wives' Quarters
+E 1 27455 100 12        ; equip purple robe
+E 1 27457 0 4           ; equip a pearl necklace
+*
+M 1 27348 3 27371       ; a baron's wife to Southern Residential Canton's Baron's Dwelling, Wives' Quarters
+E 1 27455 100 12        ; equip purple robe
+E 1 27458 0 4           ; equip a gold necklace
+*
+O 1 27443 100 27370     ; an incubator to Southern Residential Canton's Baron's Hatchery
+P 1 27450 100 27443     ; put egg in incubator
+P 1 27447 100 27443     ; put egg in incubator
+P 1 27448 100 27443     ; put egg in incubator
+*
+O 1 27444 100 27370     ; an incubator to Southern Residential Canton's Baron's Hatchery
+P 1 27447 100 27444     ; put egg in incubator
+P 1 27448 100 27444     ; put egg in incubator
+P 1 27449 100 27444     ; put egg in incubator
+*
+O 1 27445 100 27370     ; an incubator to Southern Residential Canton's Baron's Hatchery
+P 1 27448 100 27445     ; put egg in incubator
+P 1 27449 100 27445     ; put egg in incubator
+P 1 27450 100 27445     ; put egg in incubator
+*
+M 1 27339 2 27370       ; a sahuagin watcher to Southern Residential Canton's Baron's Hatchery
+E 1 27446 100 12        ; equip watcher with green robe
+*
+M 1 27349 2 27672       ; a sahuagin broodling to Southern Residential Canton's Baron's Dwelling, Brood Quarters
+E 1 27425 100 13        ; equip purple loincloth
+E 1 27459 100 16        ; equip trident
+*
+M 1 27349 2 27672       ; a sahuagin broodling to Southern Residential Canton's Baron's Dwelling, Brood Quarters
+E 1 27425 100 13        ; equip purple loincloth
+E 1 27460 100 16        ; equip net
+*
+M 1 27350 2 27672       ; a sahuagin broodling to Southern Residential Canton's Baron's Dwelling, Brood Quarters
+E 1 27425 100 13        ; equip purple loincloth
+E 1 27459 100 16        ; equip trident
+*
+M 1 27350 2 27672       ; a sahuagin broodling to Southern Residential Canton's Baron's Dwelling, Brood Quarters
+E 1 27425 100 13        ; equip purple loincloth
+E 1 27460 100 16        ; equip net
+*
+O 1 27461 100 27670     ; Shimmering portal to Southern Residential Canton's Baron's Dwelling, Baron's Quarters
+*
+M 1 27351 1 27671       ; baron to Southern Residential Canton's Baron's Dwelling, Reception Room
+E 1 27462 100 16        ; equip jewelled trident
+E 1 27462 100 18        ; equip jewelled trident
+E 1 27464 100 3         ; equip ornate pauldrons
+E 1 27465 100 13        ; equip purple loinskirt
+E 1 27468 100 6         ; equip baronic crown
+E 1 27287 100 17        ; give purple potion
+G 1 27463 100           ; give Prince's token
+S
+
+#SPECIALS
+M  27327 spec_fido              a sawfish
+M  27332 spec_warrior           a sahuagin gladiator
+M  27335 spec_warrior           a retired sahuagin warrior
+M  27336 spec_superwimpy        Rene Ama
+M  27337 spec_cast_cleric       Ota'as Heremu
+M  27338 spec_cast_cleric       a sahuagin watcher
+M  27339 spec_cast_cleric       a sahuagin watcher
+M  27341 spec_sahuagin          a sahuagin mother
+M  27346 spec_guard             an Ota'ar Dar cityguard
+M  27347 spec_guard             an Ota'ar Dar cityguard
+M  27351 spec_sahuagin_baron    the sahuagin baron
+S
+
+#$

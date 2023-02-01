@@ -1,0 +1,6 @@
+Command 'mpasound {gYou hear strange squelching and wriggling sounds issue from nearby.{x'
+Issued by 'a sahuagin watcher' (NPC)
+Master is '(null)'
+*** Command was completed successfully ***
+Function: update_hander: calling mobile_update
+

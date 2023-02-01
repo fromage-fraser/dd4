@@ -2599,18 +2599,6 @@ D4
 ~
 0 -1 27667
 S
-#27368
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 0 8
-S
-#27385
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
-S
 #27388
 Residential Bridge South, Lower~
 <14>You stand on the long bridge that connects Ota'ar Dar's northern residential
@@ -5155,18 +5143,6 @@ D5
 ~
 0 -1 27367
 S
-#27668
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
-S
-#27685
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
-S
 #27688
 Residential Bridge South, Upper~
 <21>You float about 4 metres above the long bridge that connects Ota'ar Dar's
@@ -6495,6 +6471,10 @@ D1
 ~
 ~
 0 -1 27769
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
@@ -7626,7 +7606,7 @@ D 1 27607 2 2			; Arena Way Eastbridge, Upper Lock South
 D 1 27544 0 2			; Arena Way Westbridge, Upper Lock North
 D 1 27544 2 2			; Arena Way Westbridge, Upper Lock South
 D 1 27653 1 1			; Malana Bridge, Upper Close East
-D 1 27653 3 2			; Malana Bridge, Upper Lock West
+D 1 27653 3 1			; Malana Bridge, Upper Close West
 D 1 27845 2 1           ; Exit from dragon cave close south
 S
 

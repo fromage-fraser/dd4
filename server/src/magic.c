@@ -4063,7 +4063,7 @@ void spell_poison( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( ch != victim )
                 send_to_char( "You successfully poison your victim.\n\r", ch );
 
-        send_to_char( "You feel very sick.\n\r", victim );
+        send_to_char( "<154>You feel very sick.<0>\n\r", victim );
         return;
 
 

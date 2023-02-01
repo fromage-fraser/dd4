@@ -3519,7 +3519,9 @@ bool spec_sahuagin_baron (CHAR_DATA *ch)
                         return TRUE;
 
                     case  3:
-                        do_whirlwind( ch, victim->name);
+                        if (is_affected(ch, gsn_berserk))
+                                return FALSE;
+                        do_berserk(ch, "");
                         return TRUE;
 
                     case  4:
