@@ -4335,7 +4335,7 @@ void do_berserk (CHAR_DATA *ch, char *argument)
         if (is_affected(ch, gsn_berserk))
                 return;
 
-        send_to_char("A red mist comes over your vision!\n\r", ch);
+        send_to_char("<88>A red mist comes over your vision!<0>\n\r", ch);
         send_to_char("The thrill of combat begins to drive you crazy!\n\r", ch);
         arena_commentary("$n has gone berserk.", ch, ch);
 
@@ -4355,8 +4355,8 @@ void do_berserk (CHAR_DATA *ch, char *argument)
                 af.modifier  = ch->level;
                 affect_to_char(ch, &af);
 
-                send_to_char("You have gone BERSERK!\n\r", ch);
-                act ("$n has gone BERSERK!", ch, NULL, NULL, TO_ROOM);
+                send_to_char("You have gone {RBERSERK{x!\n\r", ch);
+                act ("$n has gone {RBERSERK{x!", ch, NULL, NULL, TO_ROOM);
 
                 return;
         }

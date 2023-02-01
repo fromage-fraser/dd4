@@ -3113,7 +3113,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "poison", &gsn_poison,
                 TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, 256|16384,
                 spell_poison, 10, 12,
-                "<201>p<200>o<199>i<198>s<197>o<198>n<199>e<200>d <201>b<200>l<199>o<198>o<197>d<0>", "You feel less sick."
+                "<201>p<200>o<199>i<198>s<197>o<198>n<199>e<200>d <201>b<200>l<199>o<198>o<197>d<0>", "<122>You feel less sick.<0>"
         },
 
         {
@@ -3688,7 +3688,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "grapple", &gsn_grapple,
                 TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 8,
-                "extra attack", "You recover from the grapple, and get back to your feet."
+                "extra attack", "{WYou recover from the grapple, and get back to your feet.{x"
         },
 
         {
