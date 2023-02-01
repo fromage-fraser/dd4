@@ -1945,6 +1945,8 @@ void do_meditate (CHAR_DATA *ch, char *argument)
  */
 void do_visible (CHAR_DATA *ch, char *argument)
 {
+        bool in_cham = FALSE;
+
         affect_strip (ch, gsn_astral_sidestep);
         affect_strip (ch, gsn_invis);
         affect_strip (ch, gsn_mass_invis);
@@ -1961,7 +1963,8 @@ void do_visible (CHAR_DATA *ch, char *argument)
                 REMOVE_BIT (ch->affected_by, AFF_HIDE);
         }
         else {
-                send_to_char("You will continue to hide as as long as you are in chameleon form.\n\r",ch);
+                send_to_char("You will continue to hide for as long as you are in chameleon form.\n\r",ch);
+                in_cham = TRUE;
         }
 
         if (is_affected(ch,gsn_mist_walk))
@@ -1973,7 +1976,10 @@ void do_visible (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        send_to_char("Ok.\n\r", ch);
+        if (!in_cham)
+        {
+            send_to_char("You make yourself evident.\n\r", ch);
+        }
 }
 
 
