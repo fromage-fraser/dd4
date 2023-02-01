@@ -3838,7 +3838,7 @@ area of darkness in the water above. You notice, however, that the canton wall t
 the west doesn't quite reach all the way to the dark region of water above.
 Perhaps you could climb or fly over it?{x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -3868,7 +3868,7 @@ maps.  Labelled scrolls line the battered shelves, protected from degradation
 by clerical magic and careful storage.  A north-south road can be seen to the
 west, or you may swim up to the second storey of the building.{x
 ~
-0 8 8
+0 8 12
 D3
 ~
 ~
@@ -3887,7 +3887,7 @@ buildings in Ota'ar Dar, but is relatively featureless save for the teller's
 desk that faces the entrance.  You can travel north out to Kaliah Alley, or
 straight up to the Broodcoin offices.{x
 ~
-0 8 8
+0 8 12
 D0
 ~
 ~
@@ -3908,7 +3908,7 @@ the city.  To the west you see the entrance to a shop.  The sign above it reads
 The road continues north and south, and you may also swim upwards, towards a
 huge, looming area of darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -3935,7 +3935,7 @@ various states of disrepair/repair fill the shelves and litter the surfaces
 around you. A north-south road can be seen to the east, or you may swim up from
 here to the second floor of the building.{x
 ~
-0 8 8
+0 8 12
 D1
 ~
 ~
@@ -3955,7 +3955,7 @@ the racks and hooks that cover the floorspace and walls. An alley running north
 can be seen to the east, or you may swim up from here to the second floor of the
 building.{x
 ~
-0 8 8
+0 8 12
 D1
 ~
 ~
@@ -3975,7 +3975,7 @@ To the south is the reception area of the Broodcoin bank.
 The alley continues north, and you may also swim upwards, towards a huge, looming
 area of darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4002,7 +4002,7 @@ Den," one of Ota'ar Dar's most notorious watering holes. To the east the close
 joins a road running north-south, and you can also swim straight upwards from
 here, towards a huge, looming area of darkness in the water above.{x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4031,7 +4031,7 @@ sahuagin warriors training with mock-weapons. The dead end of a close that
 runs east can be seen just outside the entrance, or you may swim up from here
 to the second floor of the building.{x
 ~
-0 8 8
+0 8 12
 D1
 ~
 ~
@@ -4050,7 +4050,7 @@ north and south. To the east you see the entrance to "Sharks'n'Rays," Ota'ar
 Dar's mount shop, and you can also swim straight upwards from here, towards a
 huge, looming area of darkness in the water above.{x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4080,7 +4080,7 @@ proprietor, who sells mountable underwater steeds of various kinds to local
 sahuagin and foreigners passing through the city. A wide, major throughfare
 running north and south can be seen to the west.{x
 ~
-0 8|4096 8
+0 8|4096 12
 D3
 ~
 ~
@@ -4094,7 +4094,7 @@ further to the north, where the alley meets Aquan Avenue, or to the south,
 where you see a couple of commercial buildings. You may also swim upwards,
 towards a huge, looming area of darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4116,7 +4116,7 @@ dedicated to exploration and plunder of the underwater and surface world
 outside of Ota'ar Dar. You can travel north from here, to the Reavers' guild
 reception area, or up, to the members' quarters.{x
 ~
-0 4|8 8
+0 4|8 12
 D0
 ~
 ~
@@ -4136,7 +4136,7 @@ to try them).  An exit south leads to Abyssal Close, or you can travel through
 the bar north, to an attached eating establishment. You also see an exit up,
 to the main drinking lounge area.{x
 ~
-0 8 8
+0 8 12
 D0
 ~
 ~
@@ -4159,7 +4159,7 @@ the entrance to "The Kraken's Den," Ota'ar Dar's Lootsmith, and you can also
 swim straight upwards from here, towards a huge, looming area of darkness in
 the water above.{x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4185,7 +4185,7 @@ Street continues to the north, and Aquan Avenue continues both west and east.
 You can also swim straight upwards from here, towards a huge, looming area
 of darkness in the water above.{x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4213,7 +4213,7 @@ market, while an entrance to the Reavers' Guild lies to your immediate east.
 You can also swim straight upwards from here, towards a huge, looming area
 of darkness in the water above.{x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4245,7 +4245,7 @@ There is a large sign on the wall behind the desk.
 From this reception room you can leave west to Aquan Avenue, south to the Reavers'
 members' quarters, or up, to the quarters of the Reaver guildmaster.{x
 ~
-0 8 8
+0 8 12
 D2
 ~
 ~
@@ -4277,7 +4277,7 @@ Palace," by Holo Orl'as, who sells various plates of unsavoury-looking food
 here to mostly local sahuagin. You can walk through the restaurant south, to
 the Drinking Den, or up, to Gorge Palace's lounge and bar.{x
 ~
-0 8 8
+0 8 12
 D2
 ~
 ~
@@ -4297,7 +4297,7 @@ greedy and usurious Ffeka. You may leave the shop south, and exit to the corner
 of Aquan Avenue and Sekolah Way, or you may swim up from here to the second
 floor of the building, to Ffeka's private quarters.{x
 ~
-0 8 8
+0 8 12
 D2
 ~
 ~
@@ -4315,7 +4315,7 @@ continue for some distance further along the street to either the north or
 south.  To the east you see Ota'ar Dar's notorious slave markets, and can
 also swim upwards, towards a huge, looming area of darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4376,7 +4376,7 @@ skills. You may leave the Brawlarium to the west, and enter Ota'ar Dar's
 slave markets, or you may swim up from here to the second floor of the
 building, where Luanar himself can usually be found.{x
 ~
-0 8 8
+0 8 12
 D3
 ~
 ~
@@ -4395,7 +4395,7 @@ and cheerful might be a good way of describing it?  Only... not that cheerful.
 Ahem. You can leave east, out to Dae'as Street, or swim up to the second floor
 of the building.{x
 ~
-0 8 8
+0 8 12
 D1
 ~
 ~
@@ -4415,7 +4415,7 @@ see the entrance to "The Fisher's Crust" bakery/eaterie, while to the east you
 a sign for 'Sekolah's Whim Casino'. You can also swim upwards, towards a huge,
 looming area of darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4444,7 +4444,7 @@ under the sea. It has been set up as a casino, and there are various mostly
 dice-based games of chance available here. You can leave west, out to Dae'as
 Street, or swim up from here to the second floor of the casino.{x
 ~
-0 8 8
+0 8 12
 D3
 ~
 ~
@@ -4462,7 +4462,7 @@ Arms" by the proprietor, Ahomar; the weapons that are for sale cover the
 walls and display areas within the shop. You can leave north, out to Ilr'ta
 Close, east to a large forge, or swim up to the second floor of the building.{x
 ~
-0 8 8
+0 8 12
 D0
 ~
 ~
@@ -4487,7 +4487,7 @@ in goods for surface-dwellers visiting or living in Ota'ar Dar.
 From this room you may travel west to the weaponsmith's shop, north to the
 "Surface-dwellers' Emporium," or up to the second level of the smithy.{x
 ~
-0 4|8|128 8
+0 4|8|128 12
 D0
 ~
 ~
@@ -4510,7 +4510,7 @@ to the west, sealing off this canton. You see Ota'ar Dar's large temple,
 of Malana Bridge Road and Dae'as Street to the east, or can swim up, towards
 a huge, looming area of darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4535,7 +4535,7 @@ the sandy ocean floor, amongst the inhabited ruins of a great, ancient city.
 From here you can travel further north or south, or up, towards a huge, looming
 area of darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4563,7 +4563,7 @@ associated paraphenalia that fill up the space.
 You can leave north, out to the intersection of Teth Avenue and Prince's
 Cross, or swim up to the second floor of the building.{x
 ~
-0 8 8
+0 8 12
 D0
 ~
 ~
@@ -4582,7 +4582,7 @@ inhabited ruins of a great, ancient city. To the south you see the entrance to
 city. You can also swim upwards, towards a huge, looming area of darkness in the
 water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4610,7 +4610,7 @@ An exit south leads to a forge, where some of the items in the shop are made,
 while you can also exit out west to Ilr'ta Close, or up to the second storey
 of the building.{x
 ~
-0 8 8
+0 8 12
 D2
 ~
 ~
@@ -4637,7 +4637,7 @@ From here you can head out to Malana Bridge road, to the south, visit the temple
 shop to the north, exit to Dae'as Street to the east, or swim up, above the
 temple's altar.{x
 ~
-0 4|8|65536 8
+0 4|8|65536 12
 D0
 ~
 ~
@@ -4665,7 +4665,7 @@ trained, to the north.  Teth Avenue continues to the east, and Dae'as Street
 to the south. You can also head upwards, towards a huge, looming area of
 darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4696,7 +4696,7 @@ loom to the north. To the south you can enter Bilani's Brews, Ota'ar Dar's
 clerical potion store, or you can head upwards, towards a huge, looming area
 of darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4727,7 +4727,7 @@ hosts lie just to the south.  To the north you can visit Mala't the Sage,
 Ota'ar Dar's chief identifier of artefacts, or you can head upwards, towards
 a huge, looming area of darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4758,7 +4758,7 @@ Delight" is open, and recall with a shudder sahuagin society's favourite
 collective pastime. Teth Avenue continues west, and you can also head
 upwards, towards a huge, looming area of darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4788,7 +4788,7 @@ torturer's craft. There's a large SIGN on the eastern wall.
 From here an exit west will deposit you in Teth Avenue, or you may swim up
 to the second storey of the building.{x
 ~
-0 8 8
+0 8 12
 D3
 ~
 ~
@@ -4831,7 +4831,7 @@ things, including finances.
 From here you can head east into Sekolah's Depths, where new acolytes are
 trained, up to the area above the shop, or south to the temple's altar.{x
 ~
-0 4|8 8
+0 4|8 12
 D1
 ~
 ~
@@ -4856,7 +4856,7 @@ the floor feels a little springy.
 You can leave west, out to the main Sekolah temple, south, to the corner of
 Dae'as Street and Teth Avenue, or swim up to the second floor of the building.{x
 ~
-0 8 8
+0 8 12
 D2
 ~
 ~
@@ -4885,7 +4885,7 @@ you may travel south from here to the intersection of Teth Avenue and
 Prince's Cross, or can head upwards, towards a huge, looming area of
 darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 gate~
@@ -4909,7 +4909,7 @@ ocean-floor domesticity everywhere you else you look.
 You can leave south, out to the intersection of Teth Avenue and Ilr'ta Close,
 or swim up to the second floor of the building.{x
 ~
-0 8 8
+0 8 12
 D2
 ~
 ~
@@ -4930,7 +4930,7 @@ such arts. This is why the owner, Mohmit, is a foreigner.
 You can travel east to investigate Mohmit's magical laboratory, south, out
 to Teth Avenue, or swim up to the second floor of the building.{x
 ~
-0 8 8
+0 8 12
 D1
 ~
 ~
@@ -4954,7 +4954,7 @@ he manufactures all the magical goods he sells in his shop to the west.
 You can travel west and visit Mohmit's shop, or swim up to the second floor
 of the building to see the rest of the laboratory.{x
 ~
-0 8|256 8
+0 8|256 12
 D3
 ~
 ~
@@ -4973,7 +4973,7 @@ Malana Bridge, Lower~
 from each other, or you can head upwards, towards the huge, looming area of
 darkness in the water above.<0>
 ~
-0 4 8
+0 4 12
 D0
 ~
 ~
@@ -5035,7 +5035,7 @@ amenities for sahuagin living, as well as a locked trunk that has been bolted
 into the stone floor.  You may travel down into Pheskak's shop, or up, into the
 huge, looming area of dark water above you.{x
 ~
-0 4 8
+0 4 12
 D4
 ~
 ~
@@ -5053,7 +5053,7 @@ are also typically a number of Broodcoin employees here, busy with paperwork.
 You may swim down, to the bank's reception area, or up, into the huge,
 looming area of dark water above you.{x
 ~
-0 4 8
+0 4 12
 D4
 ~
 ~
@@ -5099,7 +5099,7 @@ being-repaired goods from Fautap's downstairs business.  You may travel down
 into his shop, or directly up, into the huge, looming area of dark water
 above you.{x
 ~
-0 4 8
+0 4 12
 D4
 ~
 ~
@@ -5117,7 +5117,7 @@ amenities for sahuagin living, as well a considerable overflow of stock from
 Shauak's downstairs business.  You may travel down into his shop, or directly
 up, into the huge, looming area of dark water above you.{x
 ~
-0 4 8
+0 4 12
 D4
 ~
 ~
@@ -5180,7 +5180,7 @@ guildmaster rest and recuperation. You may travel down to the battle dojo
 reception floor, or directly up, into the huge, looming area of dark water
 directly above you.{x
 ~
-0 0 8
+0 0 12
 D4
 ~
 ~
@@ -5225,7 +5225,7 @@ S
 Sharks'n'Rays Storage~
 Put the pets for the pet store in here.
 ~
-0 4 8
+0 4 12
 S
 #27619
 Kaliah Alley, Upper~
@@ -5262,7 +5262,7 @@ and surface world outside of Ota'ar Dar.  You can travel north from here, to
 the Reavers' guild master's quarters, down, to the guild hall, or up, into the
 huge, looming area of darkness in the water just above your head.{x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -5284,7 +5284,7 @@ disrepair.  From here you may travel down into the main bar area, north to the
 eating area of the attached "restaurant," or directly up, into the huge, looming
 area of dark water above you.{x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -5392,7 +5392,7 @@ a strong  minimalist feel to it. From here you may travel down to the Reavers'
 guild reception area, south to the members' quarters, or directly up, into the
 huge, looming area of dark water above you.{x
 ~
-0 4 8
+0 4 12
 D2
 ~
 ~
@@ -5414,7 +5414,7 @@ and tables in varying states of disrepair.  From here you may travel down into
 the main restaurant area, head south to the Drinker's Lounge, or swim directly
 up, into the huge, looming area of dark water above you.{x
 ~
-0 0 8
+0 0 12
 D2
 ~
 ~
@@ -5437,7 +5437,7 @@ richly decorated with expensive pieces of art. You may travel down from here
 to "The Kraken's Den" shop, or directly up, into the huge, looming area of
 dark water above you.{x
 ~
-0 4 8
+0 4 12
 D4
 ~
 ~
@@ -5507,7 +5507,7 @@ sahuagin living, as well as a variety of martial training equipment.  You may
 travel down into the main Brawlarium, or directly up, into the huge, looming
 area of dark water above you.{x
 ~
-0 4 8
+0 4 12
 D4
 ~
 ~
@@ -5525,7 +5525,7 @@ equipment for the bakery/eaterie downstairs. You may travel down from
 here, to the shop, or directly up, into the huge, looming area of dark
 water above you.{x
 ~
-0 4 8
+0 4 12
 D4
 ~
 ~
@@ -5570,7 +5570,7 @@ dice-based games are being offered here. You may travel down, to the lower
 floor of the casino, or directly up, into the huge, looming area of dark water
 above you.{x
 ~
-0 0 8
+0 0 12
 D4
 ~
 ~
@@ -5588,7 +5588,7 @@ the standard amenities for sahuagin living, as well as a variety of martial
 training equipment.  You may travel down into the Pillager's Arms, or directly
 up, into the huge, looming area of dark water above you.{x
 ~
-0 4 8
+0 4 12
 D4
 ~
 ~
@@ -5610,7 +5610,7 @@ From this room you may travel north to Zigrysk's attached quarters, down
 to the lower level of the smithy, or up, into the huge, looming area of dark
 water above you.{x
 ~
-0 4|128 8
+0 4|128 12
 D0
 ~
 ~
@@ -5693,7 +5693,7 @@ potion-making paraphenalia of all kinds.. You may travel down from here
 to "Bilani's Brews" shop, or directly up, into the huge, looming area of
 dark water above you.{x
 ~
-0 4 8
+0 4 12
 D4
 ~
 ~
@@ -5737,7 +5737,7 @@ personally.
 You may travel down from here to the shop, or directly up, into the huge,
 looming area of dark water above you.{x
 ~
-0 4 8
+0 4 12
 D2
 ~
 ~
@@ -5903,7 +5903,7 @@ though it has been cursed by dark magiks.
 You may travel down from here to the main floor of the "Torturers' Delight"
 shop, or swim directly up, into the huge, looming area of dark water above you.{x
 ~
-0 1|4|8192|16384 8
+0 1|4|8192|16384 12
 D4
 ~
 ~
@@ -5961,7 +5961,7 @@ From here you can swim west, out to the main Sekolah temple, upwards into the
 huge, looming area of darkness in the water just above your head, or down to
 Sekolah's Depths' main living and study area.{x
 ~
-0 0 8
+0 0 12
 D3
 ~
 ~
@@ -6013,7 +6013,7 @@ you imagine Mala't must enjoy his 'creature' comforts.
 You may travel down from here to the first floor of Mala't's home, or
 directly up, into the huge, looming area of dark water above you.{x
 ~
-0 4 8
+0 4 12
 D4
 ~
 ~
@@ -6034,7 +6034,7 @@ You may travel down from here to the magical supplies shop, directly up,
 into the huge, looming area of dark water above you, or east to the top
 floor of Mohmit's magical laboratory.{x
 ~
-0 4 8
+0 4 12
 D1
 ~
 ~
@@ -6059,7 +6059,7 @@ You can travel west to Mohmit's living quarters, down to the first floor of
 the laboratory, or directly up, into the huge, looming area of dark water
 above you.{x
 ~
-0 256 8
+0 256 12
 D3
 ~
 ~
@@ -6079,7 +6079,7 @@ S
 covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
-0 1|4|8|512|8192 8
+0 1|4|8|512|8192 12
 D2
 ~
 ~
@@ -6095,7 +6095,7 @@ S
 covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
-0 1|8|512|8192 8
+0 1|8|512|8192 12
 D0
 ~
 ~
@@ -6115,7 +6115,7 @@ S
 covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
-0 1|8|8192 8
+0 1|8|8192 12
 D1
 ~
 ~
@@ -6131,7 +6131,7 @@ S
 covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
-0 1|8|8192 8
+0 1|8|8192 12
 D1
 ~
 ~
@@ -6147,7 +6147,7 @@ S
 covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
-0 1|8|8192 8
+0 1|8|8192 12
 D1
 ~
 ~
@@ -6163,7 +6163,7 @@ S
 covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
-0 1|8|8192 8
+0 1|8|8192 12
 D1
 ~
 ~
@@ -6179,7 +6179,7 @@ S
 covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
-0 1|8|8192 8
+0 1|8|8192 12
 D1
 ~
 ~
@@ -6195,7 +6195,7 @@ S
 covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
-0 1|8|8192 8
+0 1|8|8192 12
 D0
 ~
 ~
@@ -6211,7 +6211,7 @@ S
 covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
-0 1|8|8192 8
+0 1|8|8192 12
 D2
 ~
 ~
@@ -6228,7 +6228,7 @@ ritual area related to Sekolah, the sahuagin shark god, the walls are covered
 in strange glyphs and markings, and a large, blood-stained stone altar lies
 in the middle of the room. You probably shouldn't be here.{x
 ~
-0 4|8192 8
+0 4|8192 12
 D1
 ~
 chamber~
@@ -6255,7 +6255,7 @@ A Secret Side-chamber~
 animals have been slaughtered before being made blood sacrifices of in
 the ritual chamber to the west.{x
 ~
-0 1|4|8|512 8
+0 1|4|8|512 12
 D3
 ~
 door~
