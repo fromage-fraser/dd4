@@ -53,8 +53,8 @@ void    char_update     args( ( void ) );
 void    obj_update      args( ( void ) );
 void    aggr_update     args( ( void ) );
 void    quest_update    args( ( void ) ); /* Vassago - quest.c */
-void	msdp_update	args( ( void ) ); /* <--- GMCP */
-void	gmcp_update	args( ( void ) ); /* <--- GMCP */
+void	msdp_update	    args( ( void ) ); /* <--- GMCP */
+void	gmcp_update	    args( ( void ) ); /* <--- GMCP */
 
 
 /*
@@ -3191,9 +3191,9 @@ void gmcp_update( void )
                          * Create the JSON
                          */
 
-                        if (fShowNothing && nShow == 0)
+                        if ((fShowNothing == 1) && (nShow == 0))
                         {
-                               sprintf( buf, "[]");
+                               sprintf( buf, "[ []");
                                UpdateGMCPString( d, GMCP_INVENTORY, buf );
                                goto updated;
 
