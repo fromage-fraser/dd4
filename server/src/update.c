@@ -2987,6 +2987,7 @@ void gmcp_update( void )
                         UpdateGMCPNumber( d, GMCP_XP, d->character->exp );
                         UpdateGMCPNumber( d, GMCP_XP_MAX, (level_table[ d->character->level].exp_total) );
                         UpdateGMCPNumber( d, GMCP_XP_TNL, ( level_table[ d->character->level].exp_total) - d->character->exp );
+                        UpdateGMCPNumber( d, GMCP_XP_CURLEVEL, ( level_table[ d->character->level].exp_level ) );
                         UpdateGMCPNumber( d, GMCP_PRACTICE, d->character->pcdata->str_prac );
                         UpdateGMCPNumber( d, GMCP_PLATINUM, d->character->plat );
                         UpdateGMCPNumber( d, GMCP_GOLD, d->character->gold );
