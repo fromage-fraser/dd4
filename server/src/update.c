@@ -2927,6 +2927,54 @@ void gmcp_update( void )
                                 UpdateGMCPNumber( d, GMCP_SAVE_VS, 50000 );
                         }
 
+                        if (d->character->level >= 15)
+                        {
+                                UpdateGMCPNumber( d, GMCP_CRITICAL, GET_CRIT( d->character ) );
+                        }
+                        else {
+                                UpdateGMCPNumber( d, GMCP_CRITICAL, 50000 );
+                        }
+
+                        if (d->character->level >= 15)
+                        {
+                                UpdateGMCPNumber( d, GMCP_SWIFTNESS, GET_SWIFT( d->character ) );
+                        }
+                        else {
+                                UpdateGMCPNumber( d, GMCP_SWIFTNESS, 50000 );
+                        }
+
+                        if (d->character->level >= 15)
+                        {
+                                UpdateGMCPNumber( d, GMCP_RESIST_ACID, d->character->resist_acid );
+                        }
+                        else {
+                                UpdateGMCPNumber( d, GMCP_RESIST_ACID, 50000 );
+                        }
+
+                        if (d->character->level >= 15)
+                        {
+                                UpdateGMCPNumber( d, GMCP_RESIST_LIGHTNING, d->character->resist_lightning );
+                        }
+                        else {
+                                UpdateGMCPNumber( d, GMCP_RESIST_LIGHTNING, 50000 );
+                        }
+
+                        if (d->character->level >= 15)
+                        {
+                                UpdateGMCPNumber( d, GMCP_RESIST_HEAT, d->character->resist_heat );
+                        }
+                        else {
+                                UpdateGMCPNumber( d, GMCP_RESIST_HEAT, 50000 );
+                        }
+
+                        if (d->character->level >= 15)
+                        {
+                                UpdateGMCPNumber( d, GMCP_RESIST_COLD, d->character->resist_cold );
+                        }
+                        else {
+                                UpdateGMCPNumber( d, GMCP_RESIST_COLD, 50000 );
+                        }
+
                         if (d->character->level >= 10)
                         {
                                 UpdateGMCPNumber( d, GMCP_ALIGNMENT, d->character->alignment );
