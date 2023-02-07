@@ -3105,6 +3105,7 @@ const struct gmcp_variable_struct GMCPVariableTable[GMCP_MAX+1] =
         { GMCP_XP,               GMCP_WORTH,       "xp",              GMCP_NUMBER  },
         { GMCP_XP_MAX,           GMCP_WORTH,       "maxxp",           GMCP_NUMBER  },
         { GMCP_XP_TNL,           GMCP_WORTH,       "xptnl",           GMCP_NUMBER  },
+        { GMCP_XP_CURLEVEL,      GMCP_WORTH,       "xplvl",           GMCP_NUMBER  },
         { GMCP_PRACTICE,         GMCP_WORTH,       "practice",        GMCP_NUMBER  },
         { GMCP_PLATINUM,         GMCP_WORTH,       "platinum",        GMCP_NUMBER  },
         { GMCP_GOLD,             GMCP_WORTH,       "gold",            GMCP_NUMBER  },
