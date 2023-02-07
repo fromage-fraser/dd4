@@ -2926,7 +2926,6 @@ void gmcp_update( void )
                         else {
                                 UpdateGMCPNumber( d, GMCP_SAVE_VS, 50000 );
                         }
-
                         if (d->character->level >= 15)
                         {
                                 UpdateGMCPNumber( d, GMCP_CRITICAL, GET_CRIT( d->character ) );
@@ -2974,7 +2973,6 @@ void gmcp_update( void )
                         else {
                                 UpdateGMCPNumber( d, GMCP_RESIST_COLD, 50000 );
                         }
-
                         if (d->character->level >= 10)
                         {
                                 UpdateGMCPNumber( d, GMCP_ALIGNMENT, d->character->alignment );
