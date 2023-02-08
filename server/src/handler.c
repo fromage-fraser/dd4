@@ -480,7 +480,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         af.modifier = 0;
                         af.bitvector = AFF_INVISIBLE;
                         affect_to_char( ch, &af );
-                        send_to_char( "You fade out of existence.\n\r", ch );
+                        send_to_char( "<39>You fade out of existence.<0>\n\r", ch );
                         act( "$n fades out of existence.", ch, NULL, NULL, TO_ROOM );
                         break;
                 }
@@ -660,7 +660,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         af.modifier = 0;
                         af.bitvector = AFF_PASS_DOOR;
                         affect_to_char( ch, &af );
-                        send_to_char( "You fade out of existence.\n\r", ch );
+                        send_to_char( "<230>You become translucent.<0>\n\r", ch );
                         act( "$n turns translucent.", ch, NULL, NULL, TO_ROOM );
                         break;
                 }

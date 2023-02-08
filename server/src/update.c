@@ -1461,7 +1461,7 @@ void weather_update ()
 
             case 20:
                 weather_info.sunlight = SUN_DARK;
-                strcat( buf, "<19>The night has begun.<0>\n\r" );
+                strcat( buf, "<20>The night has begun.<0>\n\r" );
                 break;
 
             case 24:
