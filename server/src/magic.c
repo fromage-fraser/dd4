@@ -2094,7 +2094,7 @@ void spell_detect_good( int sn, int level, CHAR_DATA *ch, void *vo )
         af.bitvector = AFF_DETECT_GOOD;
         affect_to_char( victim, &af );
 
-        send_to_char( "You now detect the presence of good.\n\r", victim );
+        send_to_char( "<11>You now detect the presence of good.<0>\n\r", victim );
 
         return;
 }
@@ -2187,7 +2187,7 @@ void spell_detect_magic( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( ch != victim )
                 send_to_char( "They are now sensitive to magic.\n\r", ch );
 
-        send_to_char( "The magic around you arouses your senses.\n\r", victim);
+        send_to_char( "<33>The magic around you arouses your senses.<0>\n\r", victim);
         return;
 }
 
@@ -3787,7 +3787,7 @@ void spell_invis( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( IS_AFFECTED( victim, AFF_INVISIBLE ) )
                 return;
 
-        send_to_char( "You fade out of existence.\n\r", victim );
+        send_to_char( "<39>You fade out of existence.<0>\n\r", victim );
         act( "$n fades out of existence.", victim, NULL, NULL, TO_ROOM );
 
         af.type      = sn;

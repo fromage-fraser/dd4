@@ -352,7 +352,7 @@ A
 
 #ROOMS
 #5600
-Standing before the mists.~
+Standing before the mists~
 A strange grey mist glows with an unearthly light.  A
 foreboding sense of doom seems to seep out of the mist.
 You have a strange feeling that the end of the world is
@@ -370,7 +370,7 @@ D3
 0 -1 18846
 S
 #5601
-In the mists.~
+In the mists~
 You are completely surrounded by a strange grey mist.
 An eerie silence seems to have fallen over the world.
 From out of nowhere, a shadowy figure appears carrying
@@ -398,7 +398,7 @@ options to return!
 ~
 S
 #5602
-Before the brown door.~
+Before the brown door~
 A sturdy brown door rises to the east.  From behind it,
 you can only hear the cries of starving children.  Famine
 has struck the village that used to prosper where now
@@ -417,7 +417,7 @@ D3
 0 -1 5601
 S
 #5603
-The Famished Lands.~
+The Famished Lands~
 You are standing in an enormous field stretching as far
 as the eye can see.  But no grain grows in these fields.
 The barren land that lies beneath your feet is dry and
@@ -445,7 +445,7 @@ D3
 0 -1 5608
 S
 #5604
-The Famished Lands.~
+The Famished Lands~
 You are standing in an enormous field stretching as far
 as the eye can see.  But no grain grows in these fields.
 The barren land that lies beneath your feet is dry and
@@ -473,7 +473,7 @@ D3
 0 -1 5610
 S
 #5605
-The Famished Lands.~
+The Famished Lands~
 You are standing in an enormous field stretching as far
 as the eye can see.  But no grain grows in these fields.
 The barren land that lies beneath your feet is dry and
@@ -501,7 +501,7 @@ D3
 0 -1 5609
 S
 #5606
-The Famished Lands.~
+The Famished Lands~
 You are standing in an enormous field stretching as far
 as the eye can see.  But no grain grows in these fields.
 The barren land that lies beneath your feet is dry and
@@ -529,7 +529,7 @@ D3
 0 -1 5603
 S
 #5607
-The Famished Lands.~
+The Famished Lands~
 You are standing in an enormous field stretching as far
 as the eye can see.  But no grain grows in these fields.
 The barren land that lies beneath your feet is dry and
@@ -557,7 +557,7 @@ D3
 0 -1 5604
 S
 #5608
-The Famished Lands.~
+The Famished Lands~
 You are standing in an enormous field stretching as far
 as the eye can see.  But no grain grows in these fields.
 The barren land that lies beneath your feet is dry and
@@ -585,7 +585,7 @@ D3
 0 -1 5605
 S
 #5609
-The Famished Lands.~
+The Famished Lands~
 You are standing in an enormous field stretching as far
 as the eye can see.  But no grain grows in these fields.
 The barren land that lies beneath your feet is dry and
@@ -613,7 +613,7 @@ D3
 0 -1 5606
 S
 #5610
-The Famished Lands.~
+The Famished Lands~
 You are standing in an enormous field stretching as far
 as the eye can see.  But no grain grows in these fields.
 The barren land that lies beneath your feet is dry and
@@ -641,7 +641,7 @@ D3
 0 -1 5607
 S
 #5611
-The Famished Lands.~
+The Famished Lands~
 You are standing in an enormous field stretching as far
 as the eye can see.  But no grain grows in these fields.
 The barren land that lies beneath your feet is dry and
@@ -669,7 +669,7 @@ D3
 0 -1 5608
 S
 #5612
-The Famished Lands.~
+The Famished Lands~
 You are standing in an enormous field stretching as far
 as the eye can see.  But no grain grows in these fields.
 The barren land that lies beneath your feet is dry and
@@ -697,7 +697,7 @@ D3
 0 -1 5609
 S
 #5613
-The Famished Lands.~
+The Famished Lands~
 You are standing in an enormous field stretching as far
 as the eye can see.  But no grain grows in these fields.
 The barren land that lies beneath your feet is dry and
@@ -726,7 +726,7 @@ D3
 0 -1 5610
 S
 #5614
-The Famished Lands.~
+The Famished Lands~
 You are standing in an enormous field stretching as far
 as the eye can see.  But no grain grows in these fields.
 The barren land that lies beneath your feet is dry and
@@ -754,7 +754,7 @@ D3
 0 -1 5611
 S
 #5615
-Before the green mist.~
+Before the green mist~
 A putrid green mist lies east of here.  The smell of a
 disease filled city pours from the mist, and you hope
 that you do not catch anything.  Rest here for awhile
@@ -772,7 +772,7 @@ D3
 0 -1 -1
 S
 #5616
-The City of Pestilence.~
+The City of Pestilence~
 The streets of this city are mostly devoid of people.
 Disease and death have taken almost everyone.  The only
 sounds that you can hear are those of disease carrying
@@ -798,7 +798,7 @@ D3
 0 -1 5621
 S
 #5617
-The City of Pestilence.~
+The City of Pestilence~
 The streets of this city are mostly devoid of people.
 Disease and death have taken almost everyone.  The only
 sounds that you can hear are those of disease carrying
@@ -824,7 +824,7 @@ D3
 0 -1 5616
 S
 #5618
-The City of Pestilence.~
+The City of Pestilence~
 The streets of this city are mostly devoid of people.
 Disease and death have taken almost everyone.  The only
 sounds that you can hear are those of disease carrying
@@ -850,7 +850,7 @@ D3
 0 -1 5617
 S
 #5619
-The City of Pestilence.~
+The City of Pestilence~
 The streets of this city are mostly devoid of people.
 Disease and death have taken almost everyone.  The only
 sounds that you can hear are those of disease carrying
@@ -876,7 +876,7 @@ D3
 0 -1 5618
 S
 #5620
-The City of Pestilence.~
+The City of Pestilence~
 The streets of this city are mostly devoid of people.
 Disease and death have taken almost everyone.  The only
 sounds that you can hear are those of disease carrying
@@ -902,7 +902,7 @@ D3
 0 -1 5619
 S
 #5621
-The City of Pestilence.~
+The City of Pestilence~
 The streets of this city are mostly devoid of people.
 Disease and death have taken almost everyone.  The only
 sounds that you can hear are those of disease carrying
@@ -928,7 +928,7 @@ D3
 0 -1 5620
 S
 #5622
-The City of Pestilence.~
+The City of Pestilence~
 The streets of this city are mostly devoid of people.
 Disease and death have taken almost everyone.  The only
 sounds that you can hear are those of disease carrying
@@ -954,7 +954,7 @@ D3
 0 -1 5627
 S
 #5623
-The City of Pestilence.~
+The City of Pestilence~
 The streets of this city are mostly devoid of people.
 Disease and death have taken almost everyone.  The only
 sounds that you can hear are those of disease carrying
@@ -980,7 +980,7 @@ D3
 0 -1 5622
 S
 #5624
-The City of Pestilence.~
+The City of Pestilence~
 The streets of this city are mostly devoid of people.
 Disease and death have taken almost everyone.  The only
 sounds that you can hear are those of disease carrying
@@ -1006,7 +1006,7 @@ D3
 0 -1 5623
 S
 #5625
-The City of Pestilence.~
+The City of Pestilence~
 The streets of this city are mostly devoid of people.
 Disease and death have taken almost everyone.  The only
 sounds that you can hear are those of disease carrying
@@ -1032,7 +1032,7 @@ D3
 0 -1 5624
 S
 #5626
-The City of Pestilence.~
+The City of Pestilence~
 The streets of this city are mostly devoid of people.
 Disease and death have taken almost everyone.  The only
 sounds that you can hear are those of disease carrying
@@ -1059,7 +1059,7 @@ D3
 0 -1 5625
 S
 #5627
-The City of Pestilence.~
+The City of Pestilence~
 The streets of this city are mostly devoid of people.
 Disease and death have taken almost everyone.  The only
 sounds that you can hear are those of disease carrying
@@ -1085,7 +1085,7 @@ D3
 0 -1 5626
 S
 #5628
-Before the red mists.~
+Before the red mists~
 You have reached a safe spot in your journey.  A red mist
 blocks view of what lies to the east.  From deep within
 the mists, you hear the sounds of a raging battle.  Now
@@ -1099,7 +1099,7 @@ D1
 0 -1 5629
 S
 #5629
-The Plains of War.~
+The Plains of War~
 You are standing in what appears to be a huge field of
 battle.  The ground itself seems to bleed with the blood
 of many thousands.  Broken arrows, shattered swords, and
@@ -1127,7 +1127,7 @@ D3
 0 -1 5634
 S
 #5630
-The Plains of War.~
+The Plains of War~
 You are standing in what appears to be a huge field of
 battle.  The ground itself seems to bleed with the blood
 of many thousands.  Broken arrows, shattered swords, and
@@ -1155,7 +1155,7 @@ D3
 0 -1 5635
 S
 #5631
-The Plains of War.~
+The Plains of War~
 You are standing in what appears to be a huge field of
 battle.  The ground itself seems to bleed with the blood
 of many thousands.  Broken arrows, shattered swords, and
@@ -1183,7 +1183,7 @@ D3
 0 -1 5632
 S
 #5632
-The Plains of War.~
+The Plains of War~
 You are standing in what appears to be a huge field of
 battle.  The ground itself seems to bleed with the blood
 of many thousands.  Broken arrows, shattered swords, and
@@ -1211,7 +1211,7 @@ D3
 0 -1 5629
 S
 #5633
-The Plains of War.~
+The Plains of War~
 You are standing in what appears to be a huge field of
 battle.  The ground itself seems to bleed with the blood
 of many thousands.  Broken arrows, shattered swords, and
@@ -1239,7 +1239,7 @@ D3
 0 -1 5630
 S
 #5634
-The Plains of War.~
+The Plains of War~
 You are standing in what appears to be a huge field of
 battle.  The ground itself seems to bleed with the blood
 of many thousands.  Broken arrows, shattered swords, and
@@ -1267,7 +1267,7 @@ D3
 0 -1 5631
 S
 #5635
-The Plains of War.~
+The Plains of War~
 You are standing in what appears to be a huge field of
 battle.  The ground itself seems to bleed with the blood
 of many thousands.  Broken arrows, shattered swords, and
@@ -1295,7 +1295,7 @@ D3
 0 -1 5632
 S
 #5636
-The Plains of War.~
+The Plains of War~
 You are standing in what appears to be a huge field of
 battle.  The ground itself seems to bleed with the blood
 of many thousands.  Broken arrows, shattered swords, and
@@ -1323,7 +1323,7 @@ D3
 0 -1 5633
 S
 #5637
-The Plains of War.~
+The Plains of War~
 You are standing in what appears to be a huge field of
 battle.  The ground itself seems to bleed with the blood
 of many thousands.  Broken arrows, shattered swords, and
@@ -1351,7 +1351,7 @@ D3
 0 -1 5634
 S
 #5638
-The Plains of War.~
+The Plains of War~
 You are standing in what appears to be a huge field of
 battle.  The ground itself seems to bleed with the blood
 of many thousands.  Broken arrows, shattered swords, and
@@ -1379,7 +1379,7 @@ D3
 0 -1 5635
 S
 #5639
-The Plains of War.~
+The Plains of War~
 You are standing in what appears to be a huge field of
 battle.  The ground itself seems to bleed with the blood
 of many thousands.  Broken arrows, shattered swords, and
@@ -1408,7 +1408,7 @@ D3
 0 -1 5636
 S
 #5640
-The Plains of War.~
+The Plains of War~
 You are standing in what appears to be a huge field of
 battle.  The ground itself seems to bleed with the blood
 of many thousands.  Broken arrows, shattered swords, and
@@ -1436,7 +1436,7 @@ D3
 0 -1 5637
 S
 #5641
-Before the black mist.~
+Before the black mist~
 You have reached a safe spot in your journey.  A thick
 black mist blocks your view north.  The smell of death
 and decay emanates from the mist.  Rest here while you
@@ -1450,7 +1450,7 @@ D0
 0 -1 5642
 S
 #5642
-The Cemetery of Death.~
+The Cemetery of Death~
 Graves and mausoleums rise all around the landscape.  The
 names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
@@ -1479,7 +1479,7 @@ D3
 0 -1 5653
 S
 #5643
-The Cemetery of Death.~
+The Cemetery of Death~
 Graves and mausoleums rise all around the landscape.  The
 names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
@@ -1508,7 +1508,7 @@ D3
 0 -1 5642
 S
 #5644
-The Cemetery of Death.~
+The Cemetery of Death~
 Graves and mausoleums rise all around the landscape.  The
 names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
@@ -1537,7 +1537,7 @@ D3
 0 -1 5643
 S
 #5645
-The Cemetery of Death.~
+The Cemetery of Death~
 Graves and mausoleums rise all around the landscape.  The
 names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
@@ -1566,7 +1566,7 @@ D3
 0 -1 5650
 S
 #5646
-The Cemetery of Death.~
+The Cemetery of Death~
 Graves and mausoleums rise all around the landscape.  The
 names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
@@ -1595,7 +1595,7 @@ D3
 0 -1 5645
 S
 #5647
-The Cemetery of Death.~
+The Cemetery of Death~
 Graves and mausoleums rise all around the landscape.  The
 names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
@@ -1624,7 +1624,7 @@ D3
 0 -1 5646
 S
 #5648
-The Cemetery of Death.~
+The Cemetery of Death~
 Graves and mausoleums rise all around the landscape.  The
 names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
@@ -1653,7 +1653,7 @@ D3
 0 -1 5647
 S
 #5649
-The Cemetery of Death.~
+The Cemetery of Death~
 Graves and mausoleums rise all around the landscape.  The
 names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
@@ -1682,7 +1682,7 @@ D3
 0 -1 5648
 S
 #5650
-The Cemetery of Death.~
+The Cemetery of Death~
 Graves and mausoleums rise all around the landscape.  The
 names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
@@ -1711,7 +1711,7 @@ D3
 0 -1 5649
 S
 #5651
-The Cemetery of Death.~
+The Cemetery of Death~
 Graves and mausoleums rise all around the landscape.  The
 names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
@@ -1740,7 +1740,7 @@ D3
 0 -1 5644
 S
 #5652
-The Cemetery of Death.~
+The Cemetery of Death~
 Graves and mausoleums rise all around the landscape.  The
 names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
@@ -1770,7 +1770,7 @@ D3
 0 -1 5651
 S
 #5653
-The Cemetery of Death.~
+The Cemetery of Death~
 Graves and mausoleums rise all around the landscape.  The
 names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
@@ -1799,7 +1799,7 @@ D3
 0 -1 5652
 S
 #5654
-The End of it All.~
+The End of it All~
 This is the end.  Your fearless efforts have saved the day...for
 now.  The horseman shall return sometime, and with them, the
 destruction of the world.  Unless some brave adventurers like
@@ -1896,8 +1896,8 @@ S
 
 #SPECIALS
 M  5600 spec_breath_any            Famine
-M  5601 spec_cast_priestess           War
-M  5602 spec_cast_archmage             Death
+M  5601 spec_cast_priestess        War
+M  5602 spec_cast_archmage         Death
 M  5603 spec_cast_psionicist       Pestilence
 M  5605 spec_poison                the pestilence filled rats
 M  5608 spec_breath_any            The Horse of Death

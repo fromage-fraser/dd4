@@ -1625,7 +1625,13 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                     case POS_DEAD:
                         send_to_char("<196>You have been KILLED!!<0>\n\r\n\r", fighter);
                         send_to_char(purgatory_message, fighter);
-                        act ("$c is DEAD!!", fighter, NULL, NULL, TO_ROOM);
+                        if (IS_NPC(fighter) && IS_INORGANIC(fighter))
+                        {
+                            act ("$c has been DESTROYED!!", fighter, NULL, NULL, TO_ROOM);
+                        }
+                        else {
+                            act ("$c is DEAD!!", fighter, NULL, NULL, TO_ROOM);
+                        }
                         break;
 
                     default:
@@ -7707,7 +7713,13 @@ bool aggro_damage (CHAR_DATA *ch, CHAR_DATA *victim, int damage)
                 raw_kill(ch, victim, TRUE);
                 send_to_char("{RYou have been KILLED!!{x\n\r\n\r", victim);
                 send_to_char(purgatory_message, victim);
-                act ("$c is DEAD!!", victim, NULL, NULL, TO_ROOM);
+                if (IS_NPC(victim) && IS_INORGANIC(victim))
+                {
+                    act ("$c has been DESTROYED!!", victim, NULL, NULL, TO_ROOM);
+                }
+                else {
+                    act ("$c is DEAD!!", victim, NULL, NULL, TO_ROOM);
+                }
                 check_autoloot(ch, victim);
 
                 return TRUE;
