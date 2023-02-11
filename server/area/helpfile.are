@@ -6736,7 +6736,7 @@ including spells and breath weapons.  'Resist heat' and 'resist cold' also
 protect the caster from extremely hot and extremely cold environments.
 ~
 
-0 'HELLFIRE' 'HELL FIRE'~
+0 'HELLFIRE' 'HELL FIRE' 'HELLS FIRE' 'HELLSFIRE'~
 Syntax: cast 'hellfire' <<target>
 
 A powerful Infernalist may summon forth white-hot fires from the pits of

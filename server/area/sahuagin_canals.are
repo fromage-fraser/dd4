@@ -1178,7 +1178,7 @@ tough outer shell~
 a tough outer shell~
 The tough outer shell of some large aquatic creature lies here.~
 ~
-9 4096 1|8
+9 4096|274877906944 1|8
 0~ 0~ 0~ 0~
 20 0 0
 A
@@ -1309,7 +1309,7 @@ inky-black black inky stone~
 an inky-black stone~
 <17>An <21>inky-black stone<0> <17>has been left here.<0>~
 ~
-9 16|64 1|32768
+9 16|64|274877906944 1|32768
 0~ 0~ 0~ 0~
 1 0 0
 A
@@ -1319,7 +1319,7 @@ bulging red eye~
 a bulging red eye~
 The bulging red eye of some hideous sea-creature lies here.~
 ~
-9 16|64|512 1|16384
+9 16|64|512|137438953472 1|16384
 0~ 0~ 0~ 0~
 30 0 0
 A
@@ -1361,7 +1361,7 @@ large sabre~
 a large sabre~
 A very large sabre has been discarded here.~
 ~
-5 1|64|512|1024|16777216 1|8192
+5 1|64|512|1024|16777216|274877906944 1|8192
 0~ 0~ 0~ 1~
 14 0 0
 A
@@ -1390,7 +1390,7 @@ horns Arlauthra~
 horns of Arlauthra~
 The wicked, curved horns of a black dragon have been left here.~
 ~
-9 16|64|65536 1|16
+9 16|64|65536|274877906944 1|16
 0~ 0~ 0~ 0~
 12 0 0
 A

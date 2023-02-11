@@ -3756,7 +3756,7 @@ void do_buy (CHAR_DATA *ch, char *argument)
                 {
                         for (; item_count > 0; item_count--)
                         {
-                                obj = create_object(obj->pIndexData, obj->level, "common", FALSE);
+                                obj = create_object(obj->pIndexData, obj->level, "common",CREATED_NO_RANDOMISER);
                                 obj_to_char(obj, ch);
                         }
                 }
@@ -5908,14 +5908,6 @@ int random_qnd ( int ap_value, char *rank, int ap_type )
 
         */
 
-        /*
-                ap_type is from the APPLY_ types in merc.h
-                51 types as of 1/1/23.  Will hurl if over int max_apply, so increase it
-                if you add new types.
-        */
-
-        int max_apply = 51;
-
         float changed_ap_value = ap_value;
 
         float minus_3_lb;
@@ -5940,11 +5932,11 @@ int random_qnd ( int ap_value, char *rank, int ap_type )
 
         int r_100 = rand() % 100 + 1;
 
-        if (ap_type > max_apply)
+        if (ap_type > APPLY_LAST)
         {
-                sprintf(buf,"APPLY type (%d) supplied to random_qnd() function is > max_apply (%d). Edit function if APPLY type is valid.",
+                sprintf(buf,"APPLY type (%d) supplied to random_qnd() function is > APPLY_LAST (%d). Edit function if APPLY type is valid.",
                         ap_type,
-                        max_apply);
+                        APPLY_LAST);
                 log_string(buf);
                 return ap_value;
         }
@@ -5975,45 +5967,45 @@ int random_qnd ( int ap_value, char *rank, int ap_type )
         plus_3_lb  = (ap_value + ( 2 * av_sd ) + 0.000001 );
         plus_3_ub  = (ap_value + ( 3 * av_sd ) );
 
-        sprintf(buf,"r_100 is: %d", r_100);
-        log_string(buf);
+        /* sprintf(buf,"r_100 is: %d", r_100);
+        log_string(buf); */
 
         if ( r_100 == 1 || r_100 == 2 )
         {
                 r = (float)rand() / (float)RAND_MAX;
                 changed_ap_value = minus_3_lb + r * (minus_3_ub - minus_3_lb);
-                printf("return ap value for -3SD between %f and %f: %f\n", minus_3_lb, minus_3_ub, changed_ap_value);
+                /* printf("return ap value for -3SD between %f and %f: %f\n", minus_3_lb, minus_3_ub, changed_ap_value); */
         }
 
         if ( r_100 > 2 && r_100 < 17 )
         {
                 r = (float)rand() / (float)RAND_MAX;
                 changed_ap_value = minus_2_lb + r * (minus_2_ub - minus_2_lb);
-                printf("return ap value for -2SD between %f and %f: %f\n", minus_2_lb, minus_2_ub, changed_ap_value);
+                /* printf("return ap value for -2SD between %f and %f: %f\n", minus_2_lb, minus_2_ub, changed_ap_value); */
         }
 
         if ( r_100 > 16 && r_100 < 85 )
         {
                 r = (float)rand() / (float)RAND_MAX;
                 changed_ap_value = minus_1_lb + r * (plus_1_ub - minus_1_lb);
-                printf("return ap value for -1SD/+1SD between %f and %f: %f\n", minus_1_lb, plus_1_ub, changed_ap_value);
+                /* printf("return ap value for -1SD/+1SD between %f and %f: %f\n", minus_1_lb, plus_1_ub, changed_ap_value); */
         }
 
         if ( r_100 > 84 && r_100 < 99 )
         {
                 r = (float)rand() / (float)RAND_MAX;
                 changed_ap_value = plus_2_lb + r * (plus_2_ub - plus_2_lb);
-                printf("return ap value for +2SD between %f and %f: %f\n", plus_2_lb, plus_2_ub, changed_ap_value);
+                /* printf("return ap value for +2SD between %f and %f: %f\n", plus_2_lb, plus_2_ub, changed_ap_value); */
         }
 
         if ( r_100 == 99 || r_100 == 100 )
         {
                 r = (float)rand() / (float)RAND_MAX;
                 changed_ap_value = plus_3_lb + r * (plus_3_ub - plus_3_lb);
-                printf("return ap value for +3SD between %f and %f: %f\n", plus_3_lb, plus_3_ub, changed_ap_value);
+                /* printf("return ap value for +3SD between %f and %f: %f\n", plus_3_lb, plus_3_ub, changed_ap_value); */
         }
 
-        sprintf(buf,"ap_type: %d | ap_value: %d | changed_ap_value: %f | rank: %s | minus_3_lb: %f | minus_3_ub: %f | minus_2_lb: %f | minus_2_ub: %f | minus_1_lb: %f | plus_1_ub: %f | plus_2_lb: %f | plus_2_ub: %f | plus_3_lb: %f | plus_3_ub: %f |",
+        /* sprintf(buf,"ap_type: %d | ap_value: %d | changed_ap_value: %f | rank: %s | minus_3_lb: %f | minus_3_ub: %f | minus_2_lb: %f | minus_2_ub: %f | minus_1_lb: %f | plus_1_ub: %f | plus_2_lb: %f | plus_2_ub: %f | plus_3_lb: %f | plus_3_ub: %f |",
                 ap_type,
                 ap_value,
                 changed_ap_value,
@@ -6029,7 +6021,7 @@ int random_qnd ( int ap_value, char *rank, int ap_type )
                 plus_3_lb,
                 plus_3_ub
         );
-        log_string(buf);
+        log_string(buf); */
 
         /* sprintf(buf, "Passed: ap_value: %d rank: %d ap_type: %d \n\r", ap_value, rank, ap_type);
         send_to_char(buf, ch); */
@@ -6170,36 +6162,36 @@ int random_qnd ( int ap_value, char *rank, int ap_type )
                  if (negative_benefits)
                  {
                         bonus_from_rank = -( rank_bonus(rank) * fabs(av_sd));
-                        sprintf(buf,"Rank bonus is: %f with negative benefit YES and av_sd: %f",bonus_from_rank, av_sd);
-                        log_string(buf);
+                        /* sprintf(buf,"Rank bonus is: %f with negative benefit YES and av_sd: %f",bonus_from_rank, av_sd);
+                        log_string(buf); */
                  }
                  else {
                         bonus_from_rank = ( rank_bonus(rank) * fabs(av_sd));
-                        sprintf(buf,"Rank bonus is: %f with negative benefit NO and av_sd: %f",bonus_from_rank, av_sd);
-                        log_string(buf);
+                        /* sprintf(buf,"Rank bonus is: %f with negative benefit NO and av_sd: %f",bonus_from_rank, av_sd);
+                        log_string(buf); */
                  }
         }
         /* round and convert back to int before returning  etc*/
         /* should also do mob level stuff here, as currently assuming common */
-        sprintf(buf,"Pre-rounding value of changed_ap_value is: %f",
+        /* sprintf(buf,"Pre-rounding value of changed_ap_value is: %f",
                 changed_ap_value);
-        log_string(buf);
+        log_string(buf); */
 
-        sprintf(buf,"Rank bonus is: %f, based on a passed mob rank of %s, av_sd of %f, negative_benefits value of %d and apply type %d",
+        /* sprintf(buf,"Rank bonus is: %f, based on a passed mob rank of %s, av_sd of %f, negative_benefits value of %d and apply type %d",
                 bonus_from_rank, rank, av_sd, negative_benefits, ap_type);
-        log_string(buf);
+        log_string(buf); */
 
         changed_ap_value = (changed_ap_value + bonus_from_rank);
 
-        sprintf(buf,"Pre-rounding value of changed_ap_value with rank bonus is: %f",
+        /* sprintf(buf,"Pre-rounding value of changed_ap_value with rank bonus is: %f",
                 changed_ap_value);
-        log_string(buf);
+        log_string(buf); */
 
         ap_value = round(changed_ap_value);
 
-        sprintf(buf,"Post-rounding value of changed_ap_value is: %d",
+        /* sprintf(buf,"Post-rounding value of changed_ap_value is: %d",
                 ap_value);
-        log_string(buf);
+        log_string(buf); */
         return ap_value;
 
 

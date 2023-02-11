@@ -911,8 +911,16 @@ void spell_inner_fire (int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (spell_attack_number == 1)
         {
+            if (IS_INORGANIC( victim ))
+            {
+                act("$N begins to smoulder!", ch, NULL, victim, TO_CHAR);
+                act("$N begins to smoulder!", ch, NULL, victim, TO_ROOM);
+
+            }
+            else {
                 act("$N's flesh begins to smoulder!", ch, NULL, victim, TO_CHAR);
                 act("$N's flesh begins to smoulder!", ch, NULL, victim, TO_ROOM);
+            }
         }
 
         damage(ch,victim,dam,sn, FALSE);
@@ -1472,7 +1480,7 @@ void spell_continual_light (int sn, int level, CHAR_DATA *ch, void *vo)
                 send_to_char( "{MYour use of spellcrafting resources improves the light you create!{x\n\r", ch);
 
 
-        light = create_object( get_obj_index( (in_sc_room) ? OBJ_VNUM_LIGHT_BALL_CRAFT : OBJ_VNUM_LIGHT_BALL ), (in_sc_room) ? ch->level : 0, "common", FALSE );
+        light = create_object( get_obj_index( (in_sc_room) ? OBJ_VNUM_LIGHT_BALL_CRAFT : OBJ_VNUM_LIGHT_BALL ), (in_sc_room) ? ch->level : 0, "common", CREATED_NO_RANDOMISER );
 
         if ( in_sc_room )
         {
@@ -1526,7 +1534,7 @@ void spell_create_food ( int sn, int level, CHAR_DATA *ch, void *vo )
                 send_to_char( "{MYou use spellcrafting resources to make the food extra satiating!{x\n\r", ch);
 
 
-        mushroom = create_object( get_obj_index( OBJ_VNUM_MUSHROOM ), 0, "common", FALSE );
+        mushroom = create_object( get_obj_index( OBJ_VNUM_MUSHROOM ), 0, "common", CREATED_NO_RANDOMISER );
         mushroom->value[0] = (in_sc_room) ? 5 + ( level * mod_room_bonus ) / 100 : 5 + level;
         obj_to_room( mushroom, ch->in_room );
 
@@ -1555,7 +1563,7 @@ void spell_create_spring( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( in_sc_room )
                 send_to_char( "{MYou use spellcrafting resources to give your magical spring more longevity!{x\n\r", ch);
 
-        spring = create_object( get_obj_index( OBJ_VNUM_SPRING ), 0, "common", FALSE );
+        spring = create_object( get_obj_index( OBJ_VNUM_SPRING ), 0, "common", CREATED_NO_RANDOMISER );
         spring->timer = ( in_sc_room ) ? ( level * mod_room_bonus )  / 100 : level;
         spring->timermax = spring->timer;
         obj_to_room( spring, ch->in_room );

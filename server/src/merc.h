@@ -2319,6 +2319,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define APPLY_INSCRIBED                         49
 #define APPLY_CRIT                              50
 #define APPLY_SWIFTNESS                         51
+#define APPLY_LAST                              51 /* Update if you add a new APPLY_ */
 
 /*
  * Values for containers (value[1]).
@@ -2913,6 +2914,9 @@ struct obj_index_data
 #define TIMER_DAMAGED        20
 #define TIMER_ALERT          10
 
+
+/* Supply below as last argument to create_object() so it knows what kind of
+   randomisation to apply -- Owl 10/2/23 */
 #define         CREATED_PRE_DD5                 1
 #define         CREATED_NO_RANDOMISER           2
 #define         CREATED_STRONG_RANDOMISER       3
@@ -4754,7 +4758,7 @@ void reverse_char_array                       ( char arr[], int n );
 void    boot_db                         args( ( void ) );
 void    area_update                     args( ( void ) );
 CD *    create_mobile                   args( ( MOB_INDEX_DATA *pMobIndex ) );
-OD *    create_object                   args( ( OBJ_INDEX_DATA *pObjIndex, int level, char *rank, bool randomise ) );
+OD *    create_object                   args( ( OBJ_INDEX_DATA *pObjIndex, int level, char *rank, int randomise ) );
 void    clear_char                      args( ( CHAR_DATA *ch ) );
 void    free_char                       args( ( CHAR_DATA *ch ) );
 char *  get_extra_descr                 args( ( const char *name, EXTRA_DESCR_DATA *ed ) );
