@@ -479,7 +479,7 @@ void do_quest (CHAR_DATA *ch, char *argument)
                                                         send_to_char (buf, ch);
                                                         ch->pcdata->int_prac += pracreward;
                                                 }
-                                        }                                        
+                                        }
 
                                         REMOVE_BIT(ch->act, PLR_QUESTOR);
                                         ch->pcdata->questgiver = NULL;
@@ -530,7 +530,7 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
         long mcounter;
         int level_diff, mob_vnum, upper_limit;
 
-        for (mcounter = 0; mcounter < 100; mcounter ++) 
+        for (mcounter = 0; mcounter < 100; mcounter ++)
         {
                 do
                         mob_vnum = number_range(100, 32200);
@@ -565,18 +565,18 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
                     && !IS_SET(vsearch->act, ACT_LOSE_FAME)
                     && !IS_SET(vsearch->act, ACT_NO_EXPERIENCE)
                     && !IS_SET(vsearch->act, ACT_IS_HEALER))
-                
-                        /* Shade 31.3.22 - If we want to check area levels before continueing, need to move the room lookup to here */                    
+
+                        /* Shade 31.3.22 - If we want to check area levels before continueing, need to move the room lookup to here */
                 {
                         /* Shade 3.5.22 - moved test here */
                         victim = get_qchar_world(ch, vsearch->player_name, vsearch->vnum);
-                        if (victim) 
+                        if (victim)
                         {
                                 room = find_qlocation(ch, victim->name, victim->pIndexData->vnum);
 
                                 if (room && room->area->low_level <= ch->level && room->area->high_level >= ch->level)
                                         break;
-                        
+
                                 else
                                         vsearch = NULL;
                         }
@@ -597,15 +597,15 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
                 return;
         }
 
-        /* 
+        /*
          * Shade 31.3.22
          *
          * Changed from enforced levels to low/high levels, most areas don't enforce they just pop up the warning.
-         * 
+         *
          * Test was && not || - have adjusted
-         * 
+         *
          * And now moved test up as that was resulting in not enough quests
-         *          
+         *
          */
 
         if (number_percent() < 15)
@@ -645,7 +645,7 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
                         break;
                 }
 
-                questitem = create_object(get_obj_index(objvnum), ch->level, "common", FALSE);
+                questitem = create_object(get_obj_index(objvnum), ch->level, "common", CREATED_NO_RANDOMISER);
                 questitem->timer = 240;
                 set_obj_owner(questitem, ch->name);
                 obj_to_room(questitem, room);

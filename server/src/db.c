@@ -2919,8 +2919,29 @@ void reset_area( AREA_DATA *pArea )
                                 break;
                         }
 
-                        obj = create_object( pObjIndex, number_fuzzy( level ), "common", FALSE );
-                        obj->cost = 0;
+                        if (IS_SET(pObjIndex->extra_flags, ITEM_DONOT_RANDOMISE ))
+                        {
+                            obj = create_object( pObjIndex, number_fuzzy( level ), "common", CREATED_NO_RANDOMISER );
+                            obj->cost = 0;
+                        }
+                        else if((IS_SET(pObjIndex->extra_flags, ITEM_WEAK_RANDOMISE)
+                        ||      (level < RANDOMISER_MIN_LEVEL)))
+                        {
+                            obj = create_object( pObjIndex, number_fuzzy( level ), "common", CREATED_WEAK_RANDOMISER );
+                            obj->cost = 0;
+                        }
+                        else
+                        {
+                            obj = create_object( pObjIndex, number_fuzzy( level ), "common", CREATED_STRONG_RANDOMISER );
+                            obj->cost = 0;
+
+                        }
+
+                        if (obj->level > LEVEL_HERO)
+                        {
+                                obj->level = LEVEL_HERO;
+                        }
+
                         obj_to_room( obj, pRoomIndex );
                         last = TRUE;
                         break;
@@ -2961,8 +2982,28 @@ void reset_area( AREA_DATA *pArea )
                                 break;
                         }
 
-                        obj = create_object(pObjIndex, number_fuzzy(pReset->arg1), "common", FALSE);
-                        obj->cost = 0;
+                        if (IS_SET(pObjIndex->extra_flags, ITEM_DONOT_RANDOMISE ))
+                        {
+                            obj = create_object( pObjIndex, number_fuzzy(pReset->arg1), "common", CREATED_NO_RANDOMISER );
+                            obj->cost = 0;
+                        }
+                        else if((IS_SET(pObjIndex->extra_flags, ITEM_WEAK_RANDOMISE)
+                        ||      (level < RANDOMISER_MIN_LEVEL)))
+                        {
+                            obj = create_object( pObjIndex, number_fuzzy(pReset->arg1), "common", CREATED_WEAK_RANDOMISER );
+                            obj->cost = 0;
+                        }
+                        else
+                        {
+                            obj = create_object( pObjIndex, number_fuzzy(pReset->arg1), "common", CREATED_STRONG_RANDOMISER );
+                            obj->cost = 0;
+
+                        }
+
+                        if (obj->level > LEVEL_HERO) {
+                            obj->level = LEVEL_HERO;
+                        }
+
                         obj_to_room(obj, pRoomIndex);
                         last = TRUE;
                         break;
@@ -2997,8 +3038,27 @@ void reset_area( AREA_DATA *pArea )
                                 break;
                         }
 
-                        obj = create_object( pObjIndex, number_fuzzy( obj_to->level ), "common", FALSE );
-                        obj_to_obj( obj, obj_to );
+                        if (IS_SET(pObjIndex->extra_flags, ITEM_DONOT_RANDOMISE ))
+                        {
+                            obj = create_object( pObjIndex, number_fuzzy( obj_to->level ), "common", CREATED_NO_RANDOMISER );
+                            obj_to_obj( obj, obj_to );
+                        }
+                        else if((IS_SET(pObjIndex->extra_flags, ITEM_WEAK_RANDOMISE)
+                        ||      (level < RANDOMISER_MIN_LEVEL)))
+                        {
+                            obj = create_object( pObjIndex, number_fuzzy( obj_to->level ), "common", CREATED_WEAK_RANDOMISER );
+                            obj_to_obj( obj, obj_to );
+                        }
+                        else
+                        {
+                            obj = create_object( pObjIndex, number_fuzzy( obj_to->level ), "common", CREATED_STRONG_RANDOMISER );
+                            obj_to_obj( obj, obj_to );
+                        }
+
+                        if (obj->level > LEVEL_HERO) {
+                            obj->level = LEVEL_HERO;
+                        }
+
                         last = TRUE;
                         break;
 
@@ -3083,10 +3143,24 @@ void reset_area( AREA_DATA *pArea )
                                                 olevel = pObjIndex->level;
                                 }
                                 /* End of item level additions */
+                                if (IS_SET(pObjIndex->extra_flags, ITEM_DONOT_RANDOMISE ))
+                                {
+                                    obj = create_object( pObjIndex, olevel, "common", CREATED_NO_RANDOMISER );
+                                }
+                                else if((IS_SET(pObjIndex->extra_flags, ITEM_WEAK_RANDOMISE)
+                                ||      (olevel < RANDOMISER_MIN_LEVEL)))
+                                {
+                                    obj = create_object( pObjIndex, olevel, "common", CREATED_WEAK_RANDOMISER );
+                                }
+                                else
+                                {
+                                    obj = create_object( pObjIndex, olevel, "common", CREATED_STRONG_RANDOMISER );
+                                }
 
-
-
-                                obj = create_object( pObjIndex, olevel, "common", FALSE );
+                                if (obj->level > LEVEL_HERO)
+                                {
+                                        obj->level = LEVEL_HERO;
+                                }
 
                                 if ( pReset->command == 'G' )
                                         SET_BIT( obj->extra_flags, ITEM_INVENTORY );
@@ -3094,11 +3168,18 @@ void reset_area( AREA_DATA *pArea )
                         else
                         {
                                 /* Make sure MUD School loot is level 1 */
-                                if (IS_SET(pArea->area_flags, AREA_FLAG_SCHOOL) && level <= 5) {
-                                        obj = create_object(pObjIndex, 1, "common", FALSE);
+                                if ( ( IS_SET(pArea->area_flags, AREA_FLAG_SCHOOL) && level <= 5 )
+                                ||   ( IS_SET(pObjIndex->extra_flags, ITEM_DONOT_RANDOMISE) ) )
+                                {
+                                        obj = create_object(pObjIndex, 1, "common", CREATED_NO_RANDOMISER);
+                                }
+                                else if ( ( IS_SET(pObjIndex->extra_flags, ITEM_WEAK_RANDOMISE ) )
+                                ||          ( level < RANDOMISER_MIN_LEVEL) )
+                                {
+                                        obj = create_object(pObjIndex, number_fuzzy(level), rank_char(mob), CREATED_WEAK_RANDOMISER );
                                 }
                                 else {
-                                        obj = create_object(pObjIndex, number_fuzzy(level), rank_char(mob), TRUE);
+                                        obj = create_object(pObjIndex, number_fuzzy(level), rank_char(mob), CREATED_STRONG_RANDOMISER );
                                 }
 
                                 if (obj->level > LEVEL_HERO) {
@@ -3282,13 +3363,14 @@ CHAR_DATA * create_mobile( MOB_INDEX_DATA *pMobIndex )
 /*
  * Create an instance of an object.
  */
-OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, bool randomise)
+OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, int randomise)
 {
         static OBJ_DATA obj_zero;
         OBJ_DATA*       obj;
         int             i;
         AFFECT_DATA     *af;
         AFFECT_DATA     *paf;
+        AFFECT_DATA     *waf;
         const int       complete_heal_sn = skill_lookup("complete heal");
         /*        char buf [MAX_STRING_LENGTH]; */
 
@@ -3334,12 +3416,18 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, bool 
         obj->ego_flags              = pObjIndex->ego_flags;
         obj->deleted                = FALSE;
         obj->identified             = FALSE;
-        if ( (level < RANDOMISER_MIN_LEVEL) || !randomise || (IS_OBJ_STAT(obj,ITEM_DONOT_RANDOMISE)) )
-                obj->how_created    = CREATED_NO_RANDOMISER;
-        else
-                obj->how_created    = CREATED_STRONG_RANDOMISER;
 
-        /* transfer the index affects to teh object
+        /*
+            Should set obj->how_created as below from merc.h:
+            CREATED_PRE_DD5                 1
+            CREATED_NO_RANDOMISER           2
+            CREATED_STRONG_RANDOMISER       3
+            CREATED_WEAK_RANDOMISER         4
+            CREATED_SKILL                   5
+        */
+        obj->how_created = randomise;
+
+        /* transfer the index affects to the object
         If randomising DO NOT TRANSFER*/
         if (obj->how_created <= CREATED_NO_RANDOMISER)
         {
@@ -3454,18 +3542,57 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, bool 
                 {
                         break;
                 }
-                if ( (level < RANDOMISER_MIN_LEVEL) || !randomise || (IS_OBJ_STAT(obj,ITEM_DONOT_RANDOMISE)))
+                if ( ( obj->how_created <= CREATED_NO_RANDOMISER)
+                ||     IS_OBJ_STAT(obj, ITEM_DONOT_RANDOMISE) )
                 {
+                        /* sprintf(log_buf,"VNUM of NR obj: %d \n", obj->pIndexData->vnum);
+                        log_string(log_buf); */
                         obj->how_created    = CREATED_NO_RANDOMISER;
                         break;
                 }
-                else                 /* random stats  */
+                else if (obj->how_created == CREATED_STRONG_RANDOMISER )
                 {
-                        obj->how_created    = CREATED_STRONG_RANDOMISER;
+                        /* sprintf(log_buf,"VNUM of SR obj: %d \n", obj->pIndexData->vnum);
+                        log_string(log_buf); */
                         randomise_object(obj, level, rank);
                         break;
                 }
-                break;;
+                else if ( ( obj->how_created == CREATED_WEAK_RANDOMISER)
+                ||     IS_OBJ_STAT(obj, ITEM_WEAK_RANDOMISE) )
+                {
+                    /* sprintf(log_buf,"VNUM of WR obj: %d \n", obj->pIndexData->vnum);
+                    log_string(log_buf); */
+
+                    for (paf = obj->pIndexData->affected; paf; paf = paf->next)
+                    {
+                        if (!affect_free)
+                        waf = alloc_perm(sizeof(*waf));
+                        else
+                        {
+                                waf = affect_free;
+                                affect_free = affect_free->next;
+                        }
+                        waf->type           = paf->type;
+                        waf->duration       = paf->duration;
+                        waf->location       = paf->location;
+                        if ( waf->location != APPLY_NONE
+                        &&   paf->modifier != 0
+                        &&   strcmp (affect_loc_name (paf->location), "(unknown)") )
+                        {
+                            waf->modifier   = random_qnd ( paf->modifier, rank, paf->type );
+                        }
+                        else {
+                            waf->modifier   = paf->modifier;
+                        }
+                        waf->bitvector      = paf->bitvector;
+                        waf->next           = obj->affected;
+                        obj->affected       = waf;
+                    }
+
+                }
+                else {
+                    break;
+                }
 
             /*
              * Although we can't wield armourer's hammers, area resets may
@@ -3484,18 +3611,57 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, bool 
                 {
                         break;
                 }
-                if ( (level < 40) || !randomise || (IS_OBJ_STAT(obj,ITEM_DONOT_RANDOMISE))) /* do not strip & do normal stuff */
+
+                if ( ( obj->how_created <= CREATED_NO_RANDOMISER)
+                ||     IS_OBJ_STAT(obj, ITEM_DONOT_RANDOMISE) )
                 {
+                        /* sprintf(log_buf,"VNUM of NR obj: %d \n", obj->pIndexData->vnum);
+                        log_string(log_buf); */
                         obj->how_created    = CREATED_NO_RANDOMISER;
                         break;
                 }
-                else
+                else if (obj->how_created == CREATED_STRONG_RANDOMISER )
                 {
-                        obj->how_created    = CREATED_STRONG_RANDOMISER;
+                        /* sprintf(log_buf,"VNUM of SR obj: %d \n", obj->pIndexData->vnum);
+                        log_string(log_buf); */
                         randomise_object(obj, level, rank);
                         break;
                 }
-                break;
+                else if ( ( obj->how_created == CREATED_WEAK_RANDOMISER)
+                ||     IS_OBJ_STAT(obj, ITEM_WEAK_RANDOMISE) )
+                {
+                    /* sprintf(log_buf,"VNUM of WR obj: %d \n", obj->pIndexData->vnum);
+                    log_string(log_buf); */
+                    for (paf = obj->pIndexData->affected; paf; paf = paf->next)
+                    {
+                        if (!affect_free)
+                        waf = alloc_perm(sizeof(*waf));
+                        else
+                        {
+                                waf = affect_free;
+                                affect_free = affect_free->next;
+                        }
+                        waf->type           = paf->type;
+                        waf->duration       = paf->duration;
+                        waf->location       = paf->location;
+                        if ( waf->location != APPLY_NONE
+                        &&   paf->modifier != 0
+                        &&   strcmp (affect_loc_name (paf->location), "(unknown)") )
+                        {
+                            waf->modifier   = random_qnd ( paf->modifier, rank, paf->type );
+                        }
+                        else {
+                            waf->modifier   = paf->modifier;
+                        }
+                        waf->bitvector      = paf->bitvector;
+                        waf->next           = obj->affected;
+                        obj->affected       = waf;
+                    }
+
+                }
+                else {
+                    break;
+                }
 
             case ITEM_POTION:
             case ITEM_PILL:
