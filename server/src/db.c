@@ -3168,10 +3168,13 @@ void reset_area( AREA_DATA *pArea )
                         else
                         {
                                 /* Make sure MUD School loot is level 1 */
-                                if ( ( IS_SET(pArea->area_flags, AREA_FLAG_SCHOOL) && level <= 5 )
-                                ||   ( IS_SET(pObjIndex->extra_flags, ITEM_DONOT_RANDOMISE) ) )
+                                if ( ( IS_SET(pArea->area_flags, AREA_FLAG_SCHOOL) && level <= 5 ))
                                 {
                                         obj = create_object(pObjIndex, 1, "common", CREATED_NO_RANDOMISER);
+                                }
+                                else if (( IS_SET(pObjIndex->extra_flags, ITEM_DONOT_RANDOMISE) ) )
+                                {
+                                    obj = create_object(pObjIndex, number_fuzzy(level), rank_char(mob), CREATED_NO_RANDOMISER );
                                 }
                                 else if ( ( IS_SET(pObjIndex->extra_flags, ITEM_WEAK_RANDOMISE ) )
                                 ||          ( level < RANDOMISER_MIN_LEVEL) )
