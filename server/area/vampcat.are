@@ -1400,7 +1400,7 @@ table large bloodstained~
 a large wooden table~
 A huge bloodstained wooden table occupies the center of the room.~
 ~
-12 16|64 16384
+12 16|64|274877906944 16384
 0~ 0~ 0~ 0~
 150 0 0
 A
@@ -1435,7 +1435,7 @@ bondage cuffs~
 bondage cuffs~
 Black leather bondage cuffs sit on the floor.~
 ~
-9 16|64 1|4096
+9 16|64|274877906944 1|4096
 0~ 1~ 6~ 11~
 5 0 0
 A
@@ -1470,7 +1470,7 @@ spectacles glasses horn-rimmed~
 horn-rimmed spectacles~
 A smart pair of horn rimmed glasses has been carelessly left here.~
 ~
-9 2|16|64|512|2048 1|16
+9 2|16|64|512|2048|274877906944 1|16
 0~ 1~ 6~ 11~
 5 0 0
 A
@@ -1490,7 +1490,7 @@ black leather bondage harness~
 a leather bondage harness~
 On the ground you see a black leather bondage harness.~
 ~
-9 16|512|2048 1|8
+9 16|512|2048|274877906944 1|8
 0~ 1~ 6~ 11~
 10 0 0
 A
@@ -1509,7 +1509,7 @@ bondage collar studded~
 a studded leather bondage collar~
 A heavily studded bondage collar sits here.~
 ~
-9 16|512 1|4
+9 16|512|274877906944 1|4
 0~ 1~ 6~ 11~
 5 0 0
 A
@@ -1528,7 +1528,7 @@ black leather whip~
 a black leather whip~
 A wicked-looking whip lies here.~
 ~
-5 1|16|64|512|2048 1|8192
+5 1|16|64|512|2048|274877906944 1|8192
 0~ 1~ 6~ 4~
 5 0 0
 A
@@ -1540,7 +1540,7 @@ leather black studded girdle~
 a studded leather girdle~
 A studded black leather girdle occupies a space on the floor here.~
 ~
-9 16 1|2048
+9 16|274877906944 1|2048
 0~ 1~ 6~ 11~
 2 0 0
 A
@@ -1569,7 +1569,7 @@ toilet~
 a toilet~
 A toilet stands in the corner of the room.~
 ~
-17 2 1|16384
+17 2|274877906944 1|16384
 30~ 20~ 0~ 1~
 80 0 0
 A
@@ -1603,7 +1603,7 @@ oven~
 an oven~
 A large oven stands upright here, humming and radiating warmth.~
 ~
-15 1|2 1|16384
+15 1|2|274877906944 1|16384
 60~ 0~ -1~ 11~
 400 0 0
 A
@@ -1946,7 +1946,7 @@ sword brainbiter~
 brainbiter~
 A huge two-handed sword is propped against the wall here.~
 ~
-5 2|16|64|512|4096 1|8192
+5 2|16|64|512|4096|274877906944 1|8192
 0~ 1~ 6~ 13~
 20 0 0
 A
@@ -2043,7 +2043,7 @@ warrior gauntlets black steel~
 gauntlets of the warrior~
 Black steel gauntlets lies here, radiating evil.~
 ~
-9 16|64|4096 1|128
+9 16|64|4096|274877906944 1|128
 0~ 1~ 6~ 11~
 5 0 0
 A
@@ -2091,7 +2091,7 @@ Grok belt~
 the belt of Grok~
 A belt with `Grok' inscribed in the buckle sits here.~
 ~
-9 2|64 1|2048
+9 2|64|274877906944 1|2048
 0~ 1~ 6~ 11~
 5 0 0
 A
@@ -2122,7 +2122,7 @@ large black box ~
 a large black box~
 A large black box sits here emitting hideous noises.~
 ~
-12 1|2|16|64|2048 1|16384
+12 1|2|16|64|2048|274877906944 1|16384
 0~ 1~ 6~ 11~
 60 0 0
 A
@@ -2144,7 +2144,7 @@ bed four-poster black~
 a four-postered bed~
 A black four-postered bed stands here.~
 ~
-12 0 1|16384
+12 274877906944 1|16384
 0~ 1~ 6~ 11~
 400 0 0
 A
@@ -2164,7 +2164,7 @@ torture rack~
 a torture rack~
 A torturer's rack sits against the wall.~
 ~
-12 1|2|16|64|128|4096 1|16384
+12 1|2|16|64|128|4096|274877906944 1|16384
 0~ 1~ 6~ 11~
 150 0 0
 A
@@ -2202,7 +2202,7 @@ dreadlocks Herne Horned God~
 herne's dreadlocks~
 The dreadlocks of the Horned God lie here in a heap.~
 ~
-9 16|64 1|16
+9 16|64|274877906944 1|16
 0~ 1~ 6~ 11~
 5 0 0
 A
@@ -2220,7 +2220,7 @@ leather braces black~
 black leather braces~
 Leather braces are coiled here.~
 ~
-9 16|64 1|1024
+9 16|64|274877906944 1|1024
 0~ 1~ 6~ 11~
 2 0 0
 A
@@ -2279,7 +2279,7 @@ ring lucifuge~
 ring of the lucifuge~
 A lucifuge ring lies here.~
 ~
-9 1|16|64|512|4096 1|2
+9 1|16|64|512|4096|274877906944 1|2
 0~ 1~ 6~ 11~
 1 0 0
 A
@@ -2327,7 +2327,7 @@ necklace chaos star~
 the Chaos star~
 A necklace with a curious star-shaped pendant attached to it lies here.~
 ~
-9 1|16|64 1|4
+9 1|16|64|274877906944 1|4
 0~ 1~ 6~ 11~
 1 0 0
 A
@@ -2344,7 +2344,7 @@ manacles Herne~
 manacles of Herne~
 The manacles of Herne lies here, pulsing.~
 ~
-9 1|2|16|64|128|512|2048|4096 1|4096
+9 1|2|16|64|128|512|2048|4096|274877906944 1|4096
 0~ 1~ 6~ 11~
 3 0 0
 A
@@ -2366,7 +2366,7 @@ sleeves Pagan white~
 sleeves of the Pagan~
 White sleeves decorated with obscure symbols lie here.~
 ~
-9 1|64|2048 1|256
+9 1|64|2048|274877906944 1|256
 0~ 1~ 6~ 11~
 5 0 0
 A
@@ -2382,7 +2382,7 @@ harness master~
 the Master's harness~
 The Master's harness lies here.~
 ~
-9 16|64|2048 1|8
+9 16|64|2048|274877906944 1|8
 0~ 1~ 6~ 11~
 5 0 0
 A
@@ -2400,7 +2400,7 @@ hunter belt ancient~
 belt of the Hunter~
 An ancient belt lies here.~
 ~
-9 64 1|2048
+9 64|274877906944 1|2048
 0~ 1~ 6~ 11~
 5 0 0
 A
@@ -2426,7 +2426,7 @@ sword Herne ancient blade~
 the sword of Herne~
 An ancient blade lies here, radiating dark magik.~
 ~
-5 1|2|16|64|128|4096 1|8192
+5 1|2|16|64|128|4096|274877906944 1|8192
 0~ 1~ 6~ 1~
 15 0 0
 A
@@ -2445,7 +2445,7 @@ shield hunter~
 shield of the Hunter~
 The shield of the Hunter has been propped against a wall here.~
 ~
-9 1|2|16|64|2048 1|512
+9 1|2|16|64|2048|274877906944 1|512
 0~ 1~ 6~ 11~
 10 0 0
 A
@@ -2464,7 +2464,7 @@ herne lantern eternal~
 the lantern of Herne~
 The eternal lantern of Herne lights this room.~
 ~
-1 1|16|64|2048 1|8192
+1 1|16|64|2048|274877906944 1|8192
 0~ 1~ -1~ 11~
 5 0 0
 A
@@ -2753,7 +2753,7 @@ siphoneer proboscis nose giant insect~
 a siphoneer's proboscis~
 The nose of a giant insect lies here.~
 ~
-5 16|512|4096 1|8192
+5 16|512|4096|274877906944 1|8192
 0~ 1~ 6~ 12~
 5 0 0
 A
@@ -2827,7 +2827,7 @@ distillery pipes gas burners tangled mass~
 a distillery~
 A mass of tangled pipes and gas burners dominates the room.~
 ~
-12 1|2|64 1|16384
+12 1|2|64|274877906944 1|16384
 0~ 1~ 6~ 11~
 800 0 0
 A
@@ -2851,7 +2851,7 @@ coal range antique~
 a coal range~
 A kiln-burnt coal range sits against the northern wall, radiating warmth.~
 ~
-15 1 1|16384
+15 1|274877906944 1|16384
 100~ 1|4~ -1~ 11~
 2000 0 0
 A
@@ -2889,7 +2889,7 @@ ring xundus  psionic~
 ring of Xundus~
 A pale white ring lies on the floor, radiating magic.~
 ~
-9 1|32|64|2048 1|2
+9 1|32|64|2048|274877906944 1|2
 0~ 1~ 6~ 11~
 1 0 0
 A
@@ -2982,7 +2982,7 @@ purple velvet robes crushed~
 a crushed-velvet robe~
 A beautiful purple crushed-velvet robe lies in a pile here.~
 ~
-9 0 1|8
+9 274877906944 1|8
 0~ 1~ 6~ 11~
 4 0 0
 A
@@ -3028,7 +3028,7 @@ pipe organ antique~
 a pipe organ~
 An impressive antique pipe organ fills the room.~
 ~
-12 2 1|16384
+12 2|274877906944 1|16384
 0~ 1~ 6~ 11~
 2000 0 0
 A
@@ -3048,7 +3048,7 @@ boots hunter robust leather~
 boots of the Hunter~
 A robust pair of leather-thonged boots have been propped against the wall here.~
 ~
-9 2|16|64 1|64
+9 2|16|64|274877906944 1|64
 0~ 1~ 6~ 11~
 5 0 0
 A
@@ -3088,7 +3088,7 @@ ring glass cheap~
 a glass ring~
 A cheap glass ring has been dropped here in the dust, it's probably worthless.~
 ~
-9 16|64|128|4096 1|2
+9 16|64|128|4096|274877906944 1|2
 0~ 1~ 6~ 11~
 1 0 0
 A
@@ -3133,8 +3133,6 @@ A
 18 -3
 A
 19 3
-A
-19 0
 E
 chisel~
 The chisel's tip is covered in a fine layer of marble dust.~
@@ -3190,7 +3188,7 @@ pearl earring~
 a pearl earring~
 An earring set with a pearl sits at your feet.~
 ~
-9 64 1|16|8192
+9 64|274877906944 1|16|8192
 0~ 1~ 6~ 11~
 1 0 0
 A
@@ -3207,7 +3205,7 @@ violin~
 an antique violin~
 An antique violin lies in a half-open case at your feet.~
 ~
-5 1|2|16|64|512|2048 1|8192
+5 1|2|16|64|512|2048|274877906944 1|8192
 35~ 1~ 6~ 9~
 5 0 0
 A
@@ -3227,7 +3225,7 @@ lute battered~
 a lute~
 A battered lute has been propped against the wall.~
 ~
-36 2 1|16384
+36 2|274877906944 1|16384
 0~ 1~ 6~ 11~
 5 0 0
 A
@@ -3275,7 +3273,7 @@ cane elegant~
 an elegant cane~
 A very elegant cane leans against a wall here.~
 ~
-5 16|512 1|8192
+5 16|512|274877906944 1|8192
 0~ 1~ 6~ 4~
 3 0 0
 A
@@ -3313,7 +3311,7 @@ obsidian ring black~
 an obsidian ring~
 A ring sits here, set with a black stone.~
 ~
-9 16|64|512 1|2
+9 16|64|512|274877906944 1|2
 0~ 1~ 6~ 11~
 5 0 0
 A
@@ -3339,7 +3337,7 @@ ruffle silk~
 a silk ruffle~
 An elegant silk ruffle sits here at your feet.~
 ~
-9 64 1|4
+9 64|274877906944 1|4
 0~ 1~ 6~ 11~
 5 0 0
 A
@@ -3540,7 +3538,7 @@ painting canvas easel~
 a painting~
 A canvas propped on an easel stands in the center of the room.~
 ~
-12 16 1|16384
+12 16|274877906944 1|16384
 0~ 1~ 6~ 11~
 8 0 0
 A
@@ -3760,7 +3758,7 @@ gloves vampyre vampire~
 gloves of the vampyre~
 Some blood-stained gloves lie at your feet.~
 ~
-9 1|2|16|32|64|2048 1|128
+9 1|2|16|32|64|2048|274877906944 1|128
 0~ 1~ 6~ 11~
 3 0 0
 A
@@ -3806,7 +3804,7 @@ saul mace~
 the mace of Saul~
 Some fool has abandoned the mace of Saul here.~
 ~
-5 8|16|64|2048|4096|16384|32768|65536|131072|262144|536870912 1|8192
+5 8|16|64|2048|4096|16384|32768|65536|131072|262144|536870912|274877906944 1|8192
 0~ 0~ 0~ 7~
 20 0 0
 A
@@ -3826,7 +3824,7 @@ teeth poisoned~
 poisoned teeth~
 Poisoned teeth have been hacked from the mouth of some enormous monster.~
 ~
-5 16|64|128|512|1024|4096|16384 0
+5 16|64|128|512|1024|4096|16384|274877906944 0
 0~ 0~ 0~ 10~
 5 0 0
 A
@@ -3845,7 +3843,7 @@ book despair ancient tome~
 the book of Despair~
 An ancient tome lies open here.~
 ~
-5 16|64|512|2048 1|8192
+5 16|64|512|2048|274877906944 1|8192
 0~ 0~ 0~ 7~
 10 0 0
 A
@@ -3863,7 +3861,7 @@ robes dark truth religious vestments~
 robes of the dark truth~
 Some dark-coloured religious vestments lie here in a pile.~
 ~
-9 16|512|2048 1|1024
+9 16|512|2048|274877906944 1|1024
 0~ 0~ 0~ 0~
 5 0 0
 A
@@ -3896,11 +3894,9 @@ blood ring~
 {rthe blood ring{x~
 {rThe ring of blood lies here.{x~
 ~
-9 16|64|512 1|2|8192
+9 16|64|512|274877906944 1|2|8192
 0~ 0~ 0~ 0~
 1 0 0
-A
-4 0
 A
 19 6
 E
@@ -3911,7 +3907,7 @@ death ring~
 {bthe death ring{x~
 {bThe ring of death lies here.{x~
 ~
-9 16|64|512 1|2
+9 16|64|512|274877906944 1|2
 0~ 0~ 0~ 0~
 1 0 0
 A
@@ -4344,7 +4340,7 @@ cloak shadows~
 the cloak of shadows~
 A shadowy patch of light swims before your eyes.~
 ~
-9 16|32|64|128 1|8
+9 16|32|64|128|274877906944 1|8
 0~ 0~ 0~ 0~
 5 0 0
 A
@@ -4364,7 +4360,7 @@ dagger shadowthief~
 dagger of the shadowthief~
 The legendary dagger of the shadowthief lies humming on the ground.~
 ~
-5 1|2|16|32|64|2048|262144|1048576 1|8192
+5 1|2|16|32|64|2048|262144|1048576|274877906944 1|8192
 0~ 0~ 0~ 11~
 10 0 0
 A

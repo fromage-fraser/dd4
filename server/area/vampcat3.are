@@ -1625,27 +1625,28 @@ A curled roll of parchment lies here.~
 ~
 2 0 1
 0~ ~ ~ ~
-1 0 0
+1 0 30
 E
 map forest parchment scroll~
-You unfurl the map to
-examine it:
+You unfurl the map to examine it:
 
-XXXXXXXXXXXXXXX.XXXX
-XXXXXXXXXXXXXXX.XXXX
-XXXXXXXXXXX.....XXXX
-XXXXXXXX0...0.0.XXXX
-XXXXXXX....00...XXXX
-XXXXXX0.00.....XXXXX
-XXXXXXX.0....0.XXXXX
-XXXXXX......00.XXXXX
-XXXXXX..0......XXXXX
-XXXXXX0.00..0.XXXXXX
-XXXXXX..0..00.XXXXXX
-XXXXXX........XXXXXX
-XXXXXXX....0XXXXXXXX
-XXXXXXXX..XXXXXXXXXX
-XXXXXXXX.XXXXXXXXXXX~
+    <29>XXXXXXXXXXXXXXX<0><46>.<0><29>XXXX
+    XXXXXXXXXXXXXXX<0><46>.<29>XXXX
+    XXXXXXXXXXX<46>.....<29>XXXX
+    XXXXXXXX<248>0<46>...<248>0<46>.<248>0<46>.<29>XXXX
+    XXXXXXX<46>....<248>00<46>...<29>XXXX
+    XXXXXX<248>0<46>.<248>00<46>.....<29>XXXXX
+    XXXXXXX<46>.<248>0<46>....<248>0<46>.<29>XXXXX
+    XXXXXX<46>......<248>00<46>.<29>XXXXX
+    XXXXXX<46>..<248>0<46>......<29>XXXXX
+    XXXXXX<248>0<46>.<248>00<46>..<248>0<46>.<29>XXXXXX
+    XXXXXX<46>..<248>0<46>..<248>00<46>.<29>XXXXXX
+    XXXXXX<46>........<29>XXXXXX
+    XXXXXXX<46>....<248>0<29>XXXXXXXX
+    XXXXXXXX<46>..<29>XXXXXXXXXX
+    XXXXXXXX<46>.<29>XXXXXXXXXXX<0>
+
+~
 #20671
 velvet cape black~
 a black velvet cape~
@@ -1678,7 +1679,7 @@ demonscale leggings~
 demonscale leggings~
 Black leggings made from the scales of some sort of demon lie here.~
 ~
-9 16|64|512|4096 1|32
+9 16|64|512|4096|274877906944 1|32
 0~ 0~ 0~ 0~
 7 0 0
 A
@@ -1706,7 +1707,7 @@ orb darkness~
 orb of darkness~
 A black orb hangs in the air, sucking light into itself.~
 ~
-1 2|16|128|512|4096|16384 1|16384
+1 2|16|128|512|4096|16384|274877906944 1|16384
 0~ 0~ -1~ 0~
 5 0 0
 A
@@ -1720,7 +1721,7 @@ horned codpiece~
 a horned codpiece~
 A large horned codpiece lies on the ground.~
 ~
-9 16|64|512 1|2048
+9 16|64|512|274877906944 1|2048
 0~ 0~ 0~ 0~
 9 0 0
 A
@@ -1738,7 +1739,7 @@ demon vambraces~
 vambraces of the demon~
 Black metallic vambraces radiate evil.~
 ~
-9 16|64|512 1|4096
+9 16|64|512|274877906944 1|4096
 0~ 0~ 0~ 0~
 5 0 0
 A
@@ -1772,7 +1773,7 @@ aura darkness~
 an aura of darkness~
 You feel uncomfortable for some reason.~
 ~
-9 16|64|512|131072 1|32768
+9 16|64|512|131072|137438953472 1|32768
 0~ 0~ 0~ 0~
 0 0 0
 A
@@ -1810,7 +1811,7 @@ girdle righteousness~
 the girdle of righteousness~
 A shining girdle shimmers on the ground, radiating holiness.~
 ~
-9 1|64|1024|2048 1|2048
+9 1|64|1024|2048|274877906944 1|2048
 0~ 0~ 0~ 0~
 8 0 0
 A
@@ -1851,7 +1852,7 @@ blood orb red~
 {rthe blood orb{x~
 {rA blood-red orb fastened to a wooden pole leans against the wall.{x~
 ~
-1 16|64|512|16384 1
+1 16|64|512|16384|274877906944 1
 0~ 0~ -1~ 0~
 1 0 0
 A

@@ -1267,7 +1267,7 @@ claws~
 dark claws~
 The hacked-off paws of a great cat lie on the floor.~
 ~
-5 32|67108864 8192
+5 32|67108864|274877906944 8192
 0~ 0~ 0~ 5~
 5 0 0
 A
@@ -1399,7 +1399,7 @@ dagger hunters~
 the head hunter's dagger~
 A wicked looking dagger with a black shiny blade is covered in blood.~
 ~
-5 1|2|32|64|512 1|8192
+5 1|2|32|64|512|274877906944 1|8192
 0~ 0~ 0~ 11~
 5 0 0
 A
@@ -1429,7 +1429,7 @@ sword hunters~
 the head hunters sword~
 A heavy bladed sword of immense proportions rests here.~
 ~
-5 1|2|1024 1|8192
+5 1|2|1024|274877906944 1|8192
 0~ 0~ 0~ 3~
 5 0 0
 A
@@ -1483,7 +1483,7 @@ platinum bracer~
 a platinum bracer~
 A platinum bracer lies on the ground.~
 ~
-9 16|64|512 1|4096
+9 16|64|512|274877906944 1|4096
 0~ 0~ 0~ 0~
 5 0 0
 A
@@ -1510,8 +1510,6 @@ The Headsman's mask is here.~
 9 16|512 1|16|8192
 0~ 0~ 0~ 0~
 75 0 0
-A
-13 0
 #25621
 chains nehdru~
 the chains of Nehdru~
@@ -1555,7 +1553,7 @@ A blood-red pendant hangs from a heavy gold chain.~
 ~
 9 1|2|16|32|64|512|2048 1|4
 0~ 0~ 0~ 0~
-5 0 0
+5 274877906944 0
 A
 12 200
 A
@@ -1580,7 +1578,7 @@ golden spear~
 a golden spear~
 A spear made of gold leans against the wall.~
 ~
-5 1|134217728 1|8192
+5 1|134217728|274877906944 1|8192
 0~ 0~ 0~ 11~
 30 0 0
 A
@@ -1619,7 +1617,7 @@ A dagger carved from obsidian stone lies at your feet.~
 ~
 5 16|32|64|4096 1|8192
 0~ 0~ 0~ 11~
-10 0 0
+10 274877906944 0
 A
 2 4
 A
@@ -1783,7 +1781,7 @@ A small red stone hovers in the air above the ground.~
 ~
 18 1|2|64 1|32768
 0~ 0~ 0~ 0~
-1 0 0
+1 274877906944 0
 A
 19 7
 E
@@ -1797,7 +1795,7 @@ A small purple stone hovers in the air above the ground.~
 ~
 18 1|2|64 1|32768
 0~ 0~ 0~ 0~
-1 0 0
+1 274877906944 0
 A
 12 80
 E
@@ -1811,7 +1809,7 @@ A dark blue stone hovers in the air above the ground.~
 ~
 18 1|2|64 1|32768
 0~ 0~ 0~ 0~
-1 0 0
+1 274877906944 0
 A
 13 60
 #25645
@@ -1930,7 +1928,7 @@ A large suit of black leather armour lies on the ground.~
 ~
 9 16|64 1|8
 0~ 0~ 0~ 0~
-7 0 0
+7 274877906944 0
 A
 17 -25
 A
@@ -2022,7 +2020,7 @@ A large dumbbell lies here.~
 ~
 9 0 1|16384
 0~ 0~ 0~ 0~
-200 0 0
+200 274877906944 0
 A
 2 -10
 A
@@ -2104,7 +2102,7 @@ A suit of padded chainmail lies here.~
 ~
 9 64 1|8
 0~ 0~ 0~ 0~
-20 0 0
+20 274877906944 0
 A
 23 -10
 A
@@ -2155,7 +2153,7 @@ A long dagger with a blade fashioned from diamond lies here.~
 ~
 5 1|64|2048|16384|1048576|262144|8 1|8192
 0~ 0~ 0~ 11~
-4 0 0
+4 274877906944 0
 A
 24 -5
 A
@@ -2219,7 +2217,7 @@ An onyx ring inlaid with a purple stone almost escapes your notice.~
 ~
 9 64|128 1|2
 0~ 0~ 0~ 0~
-0 0 0
+0 274877906944 0
 A
 14 200
 A
@@ -2279,7 +2277,7 @@ A black bodysuit of some sort lies here.~
 ~
 9 0 1|8
 0~ 0~ 0~ 0~
-2 0 0
+2 274877906944 0
 A
 2 2
 A
@@ -2366,7 +2364,7 @@ A breastplate of hardened leather lies against the wall.~
 ~
 9 64|4096 1|8
 0~ 0~ 0~ 0~
-20 0 0
+20 274877906944 0
 A
 13 60
 A
@@ -2463,7 +2461,7 @@ rod dominion~
 the Rod of Dominion~
 A short black rod lies here, radiating powerful magic.~
 ~
-4 2|16|64|2048 1|16384
+4 2|16|64|2048|274877906944 1|16384
 55~ 8~ 8~ ultrablast~
 30 0 0
 A

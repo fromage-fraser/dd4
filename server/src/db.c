@@ -3463,7 +3463,6 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, int r
                 break;
 
             case ITEM_CONTAINER:
-            case ITEM_LIGHT:
             case ITEM_FURNITURE:
             case ITEM_TRASH:
             case ITEM_DRINK_CON:
@@ -3492,6 +3491,58 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, int r
             case ITEM_TURRET_MODULE:
             case ITEM_TURRET:
                 break;
+
+            case ITEM_LIGHT:
+                if ( ( obj->how_created <= CREATED_NO_RANDOMISER)
+                ||     IS_OBJ_STAT(obj, ITEM_DONOT_RANDOMISE) )
+                {
+                        /* sprintf(log_buf,"VNUM of NR obj: %d \n", obj->pIndexData->vnum);
+                        log_string(log_buf); */
+                        obj->how_created    = CREATED_NO_RANDOMISER;
+                        break;
+                }
+                else if (obj->how_created == CREATED_STRONG_RANDOMISER )
+                {
+                        /* sprintf(log_buf,"VNUM of SR obj: %d \n", obj->pIndexData->vnum);
+                        log_string(log_buf); */
+                        randomise_object(obj, level, rank);
+                        break;
+                }
+                else if ( ( obj->how_created == CREATED_WEAK_RANDOMISER)
+                ||     IS_OBJ_STAT(obj, ITEM_WEAK_RANDOMISE) )
+                {
+                    /* sprintf(log_buf,"VNUM of WR obj: %d \n", obj->pIndexData->vnum);
+                    log_string(log_buf); */
+                    for (paf = obj->pIndexData->affected; paf; paf = paf->next)
+                    {
+                        if (!affect_free)
+                        waf = alloc_perm(sizeof(*waf));
+                        else
+                        {
+                                waf = affect_free;
+                                affect_free = affect_free->next;
+                        }
+                        waf->type           = paf->type;
+                        waf->duration       = paf->duration;
+                        waf->location       = paf->location;
+                        if ( waf->location != APPLY_NONE
+                        &&   paf->modifier != 0
+                        &&   strcmp (affect_loc_name (paf->location), "(unknown)") )
+                        {
+                            waf->modifier   = random_qnd ( paf->modifier, rank, paf->type );
+                        }
+                        else {
+                            waf->modifier   = paf->modifier;
+                        }
+                        waf->bitvector      = paf->bitvector;
+                        waf->next           = obj->affected;
+                        obj->affected       = waf;
+                    }
+
+                }
+                else {
+                    break;
+                }
 
             case ITEM_TREASURE:
                 obj->cost *= (number_range(3, 6) / 2);
@@ -3535,6 +3586,62 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, int r
 
                 obj->value[0]   = number_fuzzy( obj->value[0] );
                 obj->value[2]   = obj->value[1];
+
+                if (IS_SET(obj->ego_flags, EGO_ITEM_CONSTRUCTED))
+                {
+                        break;
+                }
+                if ( ( obj->how_created <= CREATED_NO_RANDOMISER)
+                ||     IS_OBJ_STAT(obj, ITEM_DONOT_RANDOMISE) )
+                {
+                        /* sprintf(log_buf,"VNUM of NR obj: %d \n", obj->pIndexData->vnum);
+                        log_string(log_buf); */
+                        obj->how_created    = CREATED_NO_RANDOMISER;
+                        break;
+                }
+                else if (obj->how_created == CREATED_STRONG_RANDOMISER )
+                {
+                        /* sprintf(log_buf,"VNUM of SR obj: %d \n", obj->pIndexData->vnum);
+                        log_string(log_buf); */
+                        randomise_object(obj, level, rank);
+                        break;
+                }
+                else if ( ( obj->how_created == CREATED_WEAK_RANDOMISER)
+                ||     IS_OBJ_STAT(obj, ITEM_WEAK_RANDOMISE) )
+                {
+                    /* sprintf(log_buf,"VNUM of WR obj: %d \n", obj->pIndexData->vnum);
+                    log_string(log_buf); */
+
+                    for (paf = obj->pIndexData->affected; paf; paf = paf->next)
+                    {
+                        if (!affect_free)
+                        waf = alloc_perm(sizeof(*waf));
+                        else
+                        {
+                                waf = affect_free;
+                                affect_free = affect_free->next;
+                        }
+                        waf->type           = paf->type;
+                        waf->duration       = paf->duration;
+                        waf->location       = paf->location;
+                        if ( waf->location != APPLY_NONE
+                        &&   paf->modifier != 0
+                        &&   strcmp (affect_loc_name (paf->location), "(unknown)") )
+                        {
+                            waf->modifier   = random_qnd ( paf->modifier, rank, paf->type );
+                        }
+                        else {
+                            waf->modifier   = paf->modifier;
+                        }
+                        waf->bitvector      = paf->bitvector;
+                        waf->next           = obj->affected;
+                        obj->affected       = waf;
+                    }
+
+                }
+                else {
+                    break;
+                }
                 break;
 
             case ITEM_WEAPON:

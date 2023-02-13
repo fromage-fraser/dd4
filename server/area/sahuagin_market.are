@@ -6288,6 +6288,7 @@ G 1 27410 100
 G 1 27411 100
 G 1 27466 100
 G 1 27467 100
+G 1 20670 100
 *
 O 1 27263 100 27625			a heavy trunk to Reavers' Guild Master's Quarters
 P 1 27265 100 27263			a Reaver's heavy crossbow to container trunk heavy
@@ -6641,6 +6642,7 @@ P 1 27467 100 27206			a map of the Ota'ar Dar southern residential canton - uppe
 P 1 27409 100 27206         a map of the Ota'ar Dar canals - lower to container a metal sea chest trunk
 P 1 27410 100 27206         a map of the Ota'ar Dar canals - upper to container a metal sea chest trunk
 P 1 27411 100 27206         a map of the dragon caves to container a metal sea chest trunk
+P 1 20670 100 27206         a map of the Vampyre Vale to container a metal sea chest trunk
 *
 M 1 27202 3 27610			a Broodcoin clerk to Broodcoin Office
 E 1 27237 100 17
