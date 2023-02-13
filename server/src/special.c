@@ -356,7 +356,10 @@ bool spec_cast_adept( CHAR_DATA *ch )
 {
         CHAR_DATA *victim;
 
-        if ( !IS_AWAKE( ch ) || ch->fighting )
+        if ( !IS_AWAKE( ch ) )
+                return FALSE;
+
+        if ( ch->position == POS_FIGHTING )
                 return FALSE;
 
         for ( victim = ch->in_room->people; victim; victim = victim->next_in_room )

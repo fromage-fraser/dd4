@@ -5920,7 +5920,7 @@ int random_qnd ( int ap_value, char *rank, int ap_type )
         float plus_2_ub;
         float plus_3_lb;
         float plus_3_ub;
-        float sd_divisor = 6.0;
+        float sd_divisor = 12.0;
         float av_sd = ap_value / sd_divisor;
         float bonus_from_rank = 0.0;
         float r;
