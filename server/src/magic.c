@@ -5675,7 +5675,7 @@ void spell_displacement ( int sn, int level, CHAR_DATA *ch, void *vo )
         af.bitvector = 0;
         affect_to_char( victim, &af );
 
-        send_to_char( "Your form shimmers, and you appear displaced.\n\r", victim );
+        send_to_char( "<251>Y<250>o<249>u<248>r <247>f<246>o<245>r<244>m <243>s<242>h<243>i<244>m<245>m<246>e<247>r<248>s<249>, <250>a<251>n<250>d <249>y<248>o<247>u <246>a<245>p<244>p<243>e<242>a<243>r <244>d<245>i<246>s<247>p<248>l<249>a<250>c<251>e<250>d<249>.<0>\n\r", victim );
         act( "$N shimmers and appears in a different location.",
             ch, NULL, victim, TO_NOTVICT );
         return;
@@ -5930,7 +5930,7 @@ void spell_flesh_armor ( int sn, int level, CHAR_DATA *ch, void *vo )
         af.bitvector = 0;
         affect_to_char( victim, &af );
 
-        send_to_char( "Your flesh turns to steel.\n\r", victim );
+        send_to_char( "<75>Your flesh turns to steel.<0>\n\r", victim );
         act( "$N's flesh turns to steel.", ch, NULL, victim, TO_NOTVICT);
         return;
 

@@ -4571,7 +4571,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "flesh armor", &gsn_flesh_armor,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_flesh_armor, 15, 12,
-                "", "Your skin returns to normal."
+                "", "<81>Your skin returns to normal.<0>"
         },
 
         {

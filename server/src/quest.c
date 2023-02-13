@@ -234,7 +234,7 @@ void do_quest (CHAR_DATA *ch, char *argument)
                                  quest_recall_info[next].name,
                                  quest_recall_info[next].cost,
                                  (ch->pcdata->recall_points[quest_recall_info[next].slot] >= 0)
-                                 ? "{chave{x" : "{RNEED{x");
+                                 ? "{cHAVE{x" : "{RNEED{x");
                         send_to_char (buf, ch);
                 }
 
@@ -566,7 +566,7 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
                     && !IS_SET(vsearch->act, ACT_NO_EXPERIENCE)
                     && !IS_SET(vsearch->act, ACT_IS_HEALER))
 
-                        /* Shade 31.3.22 - If we want to check area levels before continueing, need to move the room lookup to here */
+                        /* Shade 31.3.22 - If we want to check area levels before continuing, need to move the room lookup to here */
                 {
                         /* Shade 3.5.22 - moved test here */
                         victim = get_qchar_world(ch, vsearch->player_name, vsearch->vnum);
