@@ -2418,6 +2418,8 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         ch->pcdata->countdown  = 0;
                         ch->pcdata->questmob   = 0;
                         ch->pcdata->questobj   = 0;
+                        ch->pcdata->questroom  = NULL;
+                        ch->pcdata->questarea  = NULL;
                 }
 
                 if (ch->level > 1)

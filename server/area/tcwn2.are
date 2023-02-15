@@ -260,7 +260,7 @@ The dock master is far too busy to speak to you.
 
 #OBJECTS
 #31200
-sword longsword~
+sword longsword ornate~
 an ornate Longsword~
 An ornate Longsword is lying here.~
 ~
@@ -296,7 +296,7 @@ A
 A
 18 5
 #31203
-cloak black~
+cloak black gold~
 a black cloak with gold trim~
 A black cloak with Gold Trim is lying here.~
 ~
@@ -332,7 +332,7 @@ A shield bearing the crest of the City of Anon lies here.~
 A
 17 -20
 #31206
-spear~
+spear throwing~
 a throwing spear~
 A sturdy throwing spear has been thrust into the ground here.~
 ~
@@ -372,7 +372,7 @@ A
 A
 17 -45
 #31209
-broadsword knights~
+broadsword knights finely-made~
 a finely-made broadsword~
 A knight's broadsword lies here.~
 ~
@@ -561,7 +561,7 @@ The scroll reads-
 "Use the power of this scroll to help send the foul sergeant's spectre
 to the oblivion it deserves. Unlock the tower and enter. Be not weak of
 heart nor of sinew- the spectre is ancient and very powerful. Only the
-strongest shall pervail! You will find a key to break the mystic portal,
+strongest shall prevail! You will find a key to break the mystic portal,
 use it well"
 ~
 #31226
@@ -577,7 +577,7 @@ footlocker~
 It is bolted to the floor. Perhaps its contents are easier to take.
 ~
 #31227
-tapestry~
+tapestry ancient~
 an ancient tapestry~
 An ancient tapestry depicting the construction of these walls hangs here.~
 ~
@@ -585,7 +585,7 @@ An ancient tapestry depicting the construction of these walls hangs here.~
 0~ 0~ 0~ 0~
 25 50000 0
 #31228
-tapestry~
+tapestry ancient~
 an ancient tapestry~
 An ancient tapestry depicting the construction of Midgaard hangs here.~
 ~
@@ -593,7 +593,7 @@ An ancient tapestry depicting the construction of Midgaard hangs here.~
 0~ 0~ 0~ 0~
 25 50000 0
 #31229
-tapestry~
+tapestry ancient~
 an ancient tapestry~
 An ancient tapestry depicting the construction of Solace hangs here.~
 ~
@@ -601,7 +601,7 @@ An ancient tapestry depicting the construction of Solace hangs here.~
 0~ 0~ 0~ 0~
 25 50000 0
 #31230
-tapestry~
+tapestry ancient~
 an ancient tapestry~
 An ancient tapestry depicting the construction of Freeport hangs here.~
 ~
@@ -641,7 +641,7 @@ A lantern sits here.~
 0~ 0~ 200~ 0~
 2 25 0
 #31235
-rope~
+rope coiled~
 a coiled rope~
 A coil of rope lies here.~
 ~
@@ -651,7 +651,7 @@ A coil of rope lies here.~
 A
 5 1
 #31236
-backpack~
+backpack leather~
 a leather backpack~
 A leather backpack sits here.~
 ~
@@ -659,7 +659,7 @@ A leather backpack sits here.~
 100~ 1~ 0~ 0~
 2 0 0
 #31237
-cloth~
+cloth bolt~
 a bolt of cloth~
 A bolt of cloth lies on the floor here.~
 ~
@@ -667,7 +667,7 @@ A bolt of cloth lies on the floor here.~
 0~ 0~ 0~ 0~
 5 250 0
 #31238
-key~
+key warehouse~
 a warehouse key~
 A warehouse key is here.~
 ~
@@ -715,7 +715,7 @@ A
 A
 17 -20
 #31243
-robe magi~
+robe magi white~
 a white robe of the magi~
 A white robe of the magi lies here.~
 ~
@@ -759,7 +759,7 @@ A
 A
 17 -25
 #31246
-hammer~
+hammer forging~
 a forging hammer~
 A large hammer rests on the ground.~
 ~
