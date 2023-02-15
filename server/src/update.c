@@ -3002,7 +3002,7 @@ void gmcp_update( void )
                         UpdateGMCPString( d, GMCP_AREA, d->character->in_room->area->name );
                         UpdateGMCPString( d, GMCP_ROOM_NAME, d->character->in_room->name );
                         UpdateGMCPNumber( d, GMCP_ROOM_SECT, d->character->in_room->sector_type );
-                        /*UpdateGMCPNumber( d, GMCP_ROOM_FLAGS, d->character->in_room->room_flags );*/
+                        UpdateGMCPNumber( d, GMCP_ROOM_FLAGS, d->character->in_room->room_flags );
                         UpdateGMCPNumber( d, GMCP_ROOM_VNUM, d->character->in_room->vnum );
 
                         buf4[0] = '\0';
