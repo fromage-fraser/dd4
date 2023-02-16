@@ -2667,7 +2667,7 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                         return;
                 }
 
-                send_to_char( "They don't seem to be affected by anything.\n\r", ch );
+                send_to_char( "Your spell was ineffective.\n\r", ch );
                 return;
         }
 }

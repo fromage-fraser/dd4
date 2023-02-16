@@ -437,7 +437,7 @@ warhammer hammer~
 a Keeper's warhammer~
 A colossal warhammer rests on the floor, glowing faintly.~
 ~
-5 1|64 1|8192
+5 1|64|274877906944 1|8192
 45~ 25~ 40~ 8~
 40 0 0
 A
@@ -471,7 +471,7 @@ scimitar sword~
 a Kahsis scimitar~
 A long curved scimitar ending in a snake's head lies here.~
 ~
-5 0 1|8192
+5 274877906944 1|8192
 40~ 25~ 35~ 3~
 10 0 0
 A
@@ -518,7 +518,7 @@ mace~
 a Kahsis mace~
 A long handled mace rests here.~
 ~
-5 0 1|8192
+5 274877906944 1|8192
 0~ 25~ 40~ 8~
 25 0 0
 A
@@ -535,7 +535,7 @@ skin serpent~
 a serpent skin~
 A skin of the serpent lies on the floor.~
 ~
-9 0 1|1024
+9 274877906944 1|1024
 14~ 1~ 6~ 11~
 5 0 0
 A
@@ -569,7 +569,7 @@ axe spiked~
 pain's spiked axe~
 A gigantic double headed and spiked axe hovers in the air before you.~
 ~
-5 1|64|512|1024 1|8192
+5 1|64|512|1024|274877906944 1|8192
 0~ 40~ 50~ 1~
 50 0 0
 A
@@ -586,7 +586,7 @@ symbol pain neckchain~
 a symbol of pain~
 A throbbing steel symbol hangs from a neckchain.~
 ~
-9 2|64 1|4
+9 2|64|274877906944 1|4
 15~ 1~ 6~ 11~
 5 0 0
 A
@@ -604,7 +604,7 @@ totem blood stone~
 a totem of blood seeking~
 A brilliant red stone is set on an ivory handle.~
 ~
-4 2|64|4096 1|16384
+4 2|64|4096|274877906944 1|16384
 50~ 2~ 2~ fire breath~
 15 0 0
 A
@@ -622,7 +622,7 @@ robes robe~
 some flowing robes~
 Luxuriant robes lay on the floor.~
 ~
-9 0 1|8
+9 274877906944 1|8
 14~ 1~ 6~ 11~
 10 0 0
 A
@@ -639,7 +639,7 @@ ring snake~
 a ring of the snake~
 A snake biting its own tail forms a silver ring.~
 ~
-9 0 1|2
+9 274877906944 1|2
 12~ 1~ 6~ 11~
 5 0 0
 A
@@ -656,7 +656,7 @@ staff granite~
 a granite staff~
 A length of granite has been fashioned into a weighty staff.~
 ~
-4 0 1|16384
+4 274877906944 1|16384
 45~ 3~ 3~ lightning bolt~
 25 0 0
 A
@@ -840,7 +840,7 @@ idol snake~
 an idol of the snake~
 A golden idol shaped as a rearing cobra stands here.~
 ~
-4 64 1|16384
+4 64|274877906944 1|16384
 45~ 5~ 5~ intellect fortress~
 15 0 0
 A
@@ -912,7 +912,7 @@ dagger~
 a curved dagger~
 A curved dagger is serrated on both edges.~
 ~
-5 64 1|8192
+5 64|274877906944 1|8192
 0~ 25~ 45~ 11~
 20 0 0
 A
@@ -929,7 +929,7 @@ ring copper~
 a ring of protection~
 A copper ring gleams from the floor.~
 ~
-9 64 1|2
+9 64|274877906944 1|2
 10~ 1~ 6~ 11~
 5 0 0
 A
@@ -945,7 +945,7 @@ leggings snakescale~
 some snakescale leggings~
 On the floor lays a pair of green snakescale leggings.~
 ~
-9 0 1|32
+9 274877906944 1|32
 14~ 1~ 6~ 11~
 25 0 0
 A
@@ -966,7 +966,7 @@ plate kahsis amour~
 some Kahsis plate armour~
 Robust plate armour stands here.~
 ~
-9 0 1|8
+9 274877906944 1|8
 15~ 1~ 6~ 11~
 40 0 0
 A
@@ -983,7 +983,7 @@ sabre golden~
 a golden sabre~
 A sleek golden sabre lays here.~
 ~
-5 64 1|8192
+5 64|274877906944 1|8192
 0~ 30~ 50~ 11~
 35 0 0
 A
@@ -1024,7 +1024,7 @@ hammer~
 an engineer's hammer~
 A solid iron engineer's hammer rests here.~
 ~
-5 64 1|8192
+5 64|274877906944 1|8192
 0~ 30~ 60~ 7~
 50 0 0
 A
@@ -1044,7 +1044,7 @@ skullcap cap green~
 a green skullcap~
 An emerald green skullcap lays here.~
 ~
-9 0 1|16
+9 274877906944 1|16
 20~ 1~ 6~ 11~
 5 0 0
 A
@@ -1066,7 +1066,7 @@ leggings emerald~
 some emerald leggings~
 A pair of sturdy, emerald leggings sit here.~
 ~
-9 0 1|32
+9 274877906944 1|32
 16~ 1~ 6~ 11~
 30 0 0
 A
@@ -1097,7 +1097,7 @@ spear bone~
 anguish's bone spear~
 You spy a large, bone handled spear.~
 ~
-5 64|128|134217728 1|8192
+5 64|128|134217728|274877906944 1|8192
 0~ 35~ 60~ 11~
 45 0 0
 A
@@ -1132,7 +1132,7 @@ skulls snake~
 some snake skulls~
 Snake skulls are threaded on a metal chain.~
 ~
-9 0 1|2048
+9 274877906944 1|2048
 18~ 1~ 6~ 11~
 15 0 0
 A
@@ -1151,7 +1151,7 @@ totem bone ivory~
 a totem of bone seeking~
 An ivory rod lays here.~
 ~
-3 2 1|16384
+3 2|274877906944 1|16384
 50~ 3~ 3~ high explosive~
 15 0 0
 A
@@ -1166,7 +1166,7 @@ lance~
 a Kahsis lance~
 A long, bulky lance stands here.~
 ~
-5 134217728 1|8192
+5 134217728|274877906944 1|8192
 0~ 25~ 45~ 11~
 35 0 0
 A
@@ -1183,7 +1183,7 @@ cleaver~
 a cleaver~
 A vicious cleaver lays on the floor.~
 ~
-5 0 1|8192
+5 274877906944 1|8192
 0~ 30~ 50~ 1~
 40 0 0
 A
@@ -1240,7 +1240,7 @@ brass claws~
 some brass claws~
 A pair of brass hydraulic claws lay here.~
 ~
-9 0 1|128
+9 274877906944 1|128
 18~ 1~ 6~ 11~
 40 0 0
 A
@@ -1269,7 +1269,7 @@ bracelet snake~
 a bracelet of the snake~
 On the ground lays a tarnished silver bracelet.~
 ~
-9 0 1|4096
+9 274877906944 1|4096
 20~ 1~ 6~ 11~
 10 0 0
 A
@@ -1329,7 +1329,7 @@ sword bastard~
 Agony's bastard sword~
 A glowing bastard sword hovers in the air before your eyes.~
 ~
-5 1|2|64 1|8192
+5 1|2|64|274877906944 1|8192
 0~ 40~ 60~ 3~
 35 0 0
 A
@@ -1350,7 +1350,7 @@ totem green jewel spider~
 a totem of soul seeking~
 A brilliant green jewel has been carved into a rearing spider.~
 ~
-4 1 1|16384
+4 1|274877906944 1|16384
 50~ 3~ 3~ frost breath~
 10 0 0
 A
@@ -1367,7 +1367,7 @@ amulet dwarven~
 a dwarven amulet~
 A small amulet lays on the flagstones.~
 ~
-9 0 1|4
+9 274877906944 1|4
 22~ 1~ 6~ 11~
 5 0 0
 A
@@ -1409,7 +1409,7 @@ rod destructor~
 the Rod of the Destructor~
 You spot a magnificent rod, inlaid with gems and gold, upon the floor.~
 ~
-4 64 1|16384
+4 64|274877906944 1|16384
 55~ 10~ 10~ earthquake~
 30 0 0
 A
@@ -1448,7 +1448,7 @@ axe dwarven~
 a dwarven axe~
 A doubled headed dwarven axe stands here.~
 ~
-5 2|64 1|8192
+5 2|64|274877906944 1|8192
 50~ 40~ 60~ 1~
 45 0 0
 A
