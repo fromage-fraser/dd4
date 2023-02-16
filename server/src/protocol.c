@@ -1999,6 +1999,7 @@ static void PerformHandshake( descriptor_t *apDescriptor, char aCmd, char aProto
          {
                 SendATCP( apDescriptor, "Client.GUI", MUDLET_PACKAGE );
          }
+
          #endif /*MUDLET_PACKAGE*/
          if ( aCmd == (char)WILL )
          {

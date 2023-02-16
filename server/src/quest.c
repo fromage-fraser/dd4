@@ -135,7 +135,7 @@ void do_quest (CHAR_DATA *ch, char *argument)
 
                 if (ch->pcdata->questobj > 0 && (questinfoobj = get_obj_index(ch->pcdata->questobj)))
                 {
-                        sprintf(buf, "{cYou are on a quest to recover {C%s{x{c, to be found in {C%s{x{c,\n\rwhich is in the general area of {C%s{x{c!{x\n\r",
+                        sprintf(buf, "{cYou are on a quest to recover {C%s{x{c, last seen in {C%s{x{c,\n\rwhich is in the general area of {C%s{x{c!{x\n\r",
                             questinfoobj->short_descr,
                             ch->pcdata->questroom->name,
                             ch->pcdata->questarea->name
@@ -146,7 +146,7 @@ void do_quest (CHAR_DATA *ch, char *argument)
 
                 if (ch->pcdata->questmob > 0 && (questinfo = get_mob_index(ch->pcdata->questmob)))
                 {
-                        sprintf(buf, "{cYou are on a quest to slay {C%s{x{c, who dwells in {C%s{x{c,\n\rin the general area of {C%s{x{c!{x\n\r",
+                        sprintf(buf, "{cYou are on a quest to slay {C%s{x{c, last seen in {C%s{x{c,\n\rin the general area of {C%s{x{c!{x\n\r",
                             questinfo->short_descr,
                             ch->pcdata->questroom->name,
                             ch->pcdata->questarea->name);
@@ -310,7 +310,7 @@ void do_quest (CHAR_DATA *ch, char *argument)
         {
                 if (ch->position < POS_RESTING)
                 {
-                        send_to_char ("Want to quest in your dreams, do you?\n\r", ch);
+                        send_to_char ("Dream quests are not materially rewarded.\n\r", ch);
                         return;
                 }
 
@@ -741,7 +741,7 @@ void quest_update ()
 
                         if (ch->pcdata->nextquest == 0)
                         {
-                                send_to_char ("You may now quest again.\n\r", ch);
+                                send_to_char ("{CYou may now quest again.{x\n\r", ch);
                                 continue;
                         }
                 }
