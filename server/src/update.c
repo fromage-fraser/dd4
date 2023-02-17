@@ -2873,6 +2873,9 @@ void gmcp_update( void )
                         UpdateGMCPNumber( d, GMCP_MAX_MANA, d->character->max_mana );
                         UpdateGMCPNumber( d, GMCP_MAX_MOVE, d->character->max_move );
                         UpdateGMCPNumber( d, GMCP_POSITION, d->character->position );
+                        UpdateGMCPString( d, GMCP_FORM, extra_form_name(d->character->form) );
+                        UpdateGMCPNumber( d, GMCP_RAGE, d->character->rage );
+                        UpdateGMCPNumber( d, GMCP_MAX_RAGE, d->character->max_rage );
 
                         UpdateGMCPNumber( d, GMCP_STR, d->character->pcdata->perm_str );
                         UpdateGMCPNumber( d, GMCP_INT, d->character->pcdata->perm_int );

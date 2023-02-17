@@ -4,7 +4,7 @@
 #MOBILES
 #26700
 wolf~
-A wolf~
+a wolf~
 A wolf is here bearing his teeth.
 ~
 He is about two foot and a half foot long and has dingy white fur. He does
@@ -16,7 +16,7 @@ not look look to happy to see you, maybe it is time to go.
 8 8 1
 #26701
 bat~
-A bat~
+a bat~
 A bat is flapping around here.
 ~
 It looks like a rat with wings. What more can I say?
@@ -27,7 +27,7 @@ It looks like a rat with wings. What more can I say?
 8 8 0
 #26702
 gypsie~
-A gypsie~
+a gypsie~
 A gypsie is here trying to figure out how to scam you.
 ~
 This woman is filthy. She has obviously not bathed in a while, if ever. She
@@ -51,7 +51,7 @@ staring at her, so you quickly turn away before she discovers your gawking.
 8 8 2
 #26704
 zombie~
-A zombie~
+a zombie~
 A zombie is roaming around here.
 ~
 He looks human, a mutated human, but human just the same.
@@ -62,7 +62,7 @@ He looks human, a mutated human, but human just the same.
 8 8 0
 #26705
 ghost~
-A ghost~
+a ghost~
 A ghost is floating around here.
 ~
 It looks exactly like the ghosts you have seen in books and on tv.
@@ -73,7 +73,7 @@ It looks exactly like the ghosts you have seen in books and on tv.
 8 8 0
 #26706
 ghoul~
-A ghoul~
+a ghoul~
 A ghoul is floating around here.
 ~
 It looks to have once been human, but now his flesh is falling off his bones.
@@ -85,7 +85,7 @@ His nails and teeth seem to have grown quite a bit too.
 8 8 0
 #26707
 wight~
-A wight~
+a wight~
 A wight is here looking for someone to eat.
 ~
 It looks exactly like a zombie. Perhaps they are related in some way.
@@ -96,7 +96,7 @@ It looks exactly like a zombie. Perhaps they are related in some way.
 8 8 0
 #26708
 wraith~
-A wraith~
+a wraith~
 A wraith is here waiting for someone to eat.
 ~
 He looks like a skeleton. Unfortunately is not quite as dead as a skeleton
@@ -108,7 +108,7 @@ should be.
 8 8 1
 #26709
 maiden vampire~
-A maiden vampire~
+a maiden vampire~
 A maiden vampire is here looking for someone to bite.
 ~
 She is a beautiful woman, very beautiful indeed. You better not get to close,
@@ -214,7 +214,7 @@ into the ball with her.
 8 8 2
 #26718
 horse~
-A horse~
+a horse~
 A horse is trotting along here.
 ~
 He is quite a large horse, standing about six foot at the shoulders. He is
@@ -226,7 +226,7 @@ jet black. What a beautiful specimen.
 8 8 1
 #26719
 green slime~
-A green slime~
+a green slime~
 Some green slime is here oozing down the walls.
 ~
 It looks like slime. What more can I say?
@@ -237,7 +237,7 @@ It looks like slime. What more can I say?
 8 8 0
 #26720
 giant spider~
-A giant spider~
+a giant spider~
 A giant spider is here weaving a web.
 ~
 It looks like a regular, just quite a bit larger than you are familiar with.
@@ -248,7 +248,7 @@ It looks like a regular, just quite a bit larger than you are familiar with.
 8 8 0
 #26721
 gargoyle~
-A gargoyle~
+a gargoyle~
 A gargoyle is here gaurding against evil.
 ~
 It is a stone creature with wings, sharp teeth and claws, and pointy ears. It
@@ -260,7 +260,7 @@ looks quite evil itself.
 8 8 0
 #26722
 vampire~
-A vampire~
+a vampire~
 A vampire is here looking for someone to bite.
 ~
 He is a handsome man with golden hair and deep blue eyes. Obviously his looks
@@ -272,7 +272,7 @@ help him capture his victims.
 8 8 1
 #26723
 rust monster~
-A rust monster~
+a rust monster~
 A rust monster is here.
 ~
 It is a tall creature with a bony back, a long tail and pointed ears.
@@ -283,7 +283,7 @@ It is a tall creature with a bony back, a long tail and pointed ears.
 8 8 0
 #26724
 spectre~
-A spectre~
+a spectre~
 A spectre is floating around here.
 ~
 It looks exactly like a ghost. After all, a spectre is a ghost.
@@ -306,10 +306,10 @@ you for looking at him too long.
 8 8 1
 #26726
 red dragon~
-A red dragon~
+a red dragon~
 A red dragon is here looking for someone to eat.
 ~
-He stands about twelve foot tall and three foot wide, He is the color of fire,
+He stands about twelve foot tall and three foot wide; he is the color of fire,
 and appears hungry as hell. Maybe it is time to go.
 ~
 2 8|32 -1000 S
@@ -317,11 +317,11 @@ and appears hungry as hell. Maybe it is time to go.
 0 0
 8 8 1
 #26727
-gaurdian of sorrow~
-A gaurdian of sorrow~
-The gaurdian of sorrow is here making you sad.
+guardian of sorrow~
+a guardian of sorrow~
+The guardian of sorrow is here making you sad.
 ~
-He stands about twenty foot tall. He does not look to happy about you waking
+He stands about twenty foot tall. He does not look too happy about you waking
 him from his nap. I would get out of here.
 ~
 2 8|32 -1000 S
@@ -365,8 +365,8 @@ she is going to dies soon anyway.
 0 0
 8 8 1
 #26731
-gaurdian portrait~
-A gaurdian portrait~
+guardian portrait~
+a guardian portrait~
 A portrait is here hanging on the wall.
 ~
 As you look at it, its eyes start to move. Perhaps it is not a portrait at
@@ -402,7 +402,7 @@ too long.
 8 8 1
 #26734
 shadow demon~
-A shadow demon~
+a shadow demon~
 A demon is standing here in the shadows.
 ~
 He looks like your typical, everyday, run of the mill demon; complete with
@@ -414,7 +414,7 @@ sharp teeth and claws.
 8 8 1
 #26735
 werewolf~
-A werewolf~
+a werewolf~
 A werewolf is here howling at the moon.
 ~
 He looks exactly like a dog. He has sharp fangs and dingy white fur.
@@ -425,7 +425,7 @@ He looks exactly like a dog. He has sharp fangs and dingy white fur.
 8 8 1
 #26736
 iron golem~
-An iron golem~
+an iron golem~
 An iron golem is solemly standing here.
 ~
 He looks like a man, an iron man. He appears to be gaurding against
@@ -437,7 +437,7 @@ something.
 8 8 1
 #26737
 hellhound~
-A hellhound~
+a hellhound~
 A hellhound is here waiting to bite you.
 ~
 He looks like a dog, a very small but very vicious dog. He begins to bare his
@@ -449,7 +449,7 @@ teeth.
 8 8 1
 #26738
 nightmare~
-A nightmare~
+a nightmare~
 Your worst nightmare is here.
 ~
 It looks like the worst nightmare you have ever had. Too bad this time you
@@ -461,7 +461,7 @@ can't wake up.
 8 8 0
 #26739
 zombie~
-A zombie~
+a zombie~
 A zombie is roaming around here.
 ~
 He looks human, a mutated human, but human just the same.
@@ -485,7 +485,7 @@ It looks exactly like the ghosts you have seen in books and on tv.
 8 8 0
 #26741
 ghoul~
-A ghoul~
+a ghoul~
 A ghoul is roaming here.
 ~
 It looks to have once been human, but now its skin seems to be falling off
@@ -497,7 +497,7 @@ its bones. Its teeth and nails seem to have grown quite a bit also.
 8 8 0
 #26742
 wight~
-A wight~
+a wight~
 A wight is here looking for someone to eat.
 ~
 It looks exactly like a zombie. Perhaps they are related in some way.
@@ -508,7 +508,7 @@ It looks exactly like a zombie. Perhaps they are related in some way.
 8 8 0
 #26743
 wraith~
-A wraith~
+a wraith~
 A wraith is here waiting for someone to eat.
 ~
 He looks like a skeleton. Unfortunately is not quite as dead as a skeleton
@@ -520,7 +520,7 @@ should be.
 8 8 1
 #26744
 maiden vampire~
-A maiden vampire~
+a maiden vampire~
 A maiden vampire is here looking for someone to bite.
 ~
 She is a beautiful woman, very beautiful indeed. You better not get to close,
@@ -532,7 +532,7 @@ remember, she bites. Hmm, maybe living for eternity wouldn't be all that bad.
 8 8 2
 #26745
 vampire~
-A vampire~
+a vampire~
 A vampire is here looking for someone to bite.
 ~
 He is a handsome man with golden hair and deep blue eyes. Obviously his looks
@@ -1024,7 +1024,7 @@ D2
 S
 #26701
 Gates of Thoran~
-Jutting from the inpenetrable woods on both sides of the road, high stone
+Jutting from the impenetrable woods on both sides of the road, high stone
 buttresses look up gray in the fog. Huge iron gates hang on the stonework.
 To the north and south Syrus Road continues.
 ~
@@ -1203,7 +1203,7 @@ S
 #26712
 Cemetary~
 This is the city's graveyard. For a town as large as this one there are
-surpisingly few graves. To the west you see Syrus Road.
+surprisingly few graves. To the west you see Syrus Road.
 ~
 0 0 1
 D3
@@ -1383,7 +1383,7 @@ S
 Courtyard~
 This is a very beautiful courtyard. It is line with pretty red and blue
 flowers and in the center there is a large granite fountain. To the south
-you see Syrus Road, to the east you see a beutiful garden, and to the
+you see Syrus Road, to the east you see a beautiful garden, and to the
 north you see the entry to the castle.
 ~
 0 0 1
@@ -1526,7 +1526,7 @@ D5
 S
 #26732
 Grand Landing~
-This is quite a large landing, about twenty foot long and fourty foot wide.
+This is quite a large landing, about twenty foot long and forty foot wide.
 To the north you see the servant's quarters, to the south you see the stairs,
 and to the west you see the tower hall.
 ~
@@ -1641,7 +1641,7 @@ S
 #26739
 Study~
 Three of the walls are lined with ancient books and the fourth wall contains
-a large firplace. To the north you see a bedchamber and to the south you
+a large fireplace. To the north you see a bedchamber and to the south you
 see the maid's hall.
 ~
 0 8 0
@@ -1703,7 +1703,7 @@ Guest Room~
 A huge bed sits in the center of this room, its four corner posts rising to a
 black canopy trimmed with gold tassels. Several comfortable divans are placed
 about the room. To the north you see a hallway, to the south you see the
-lounge, and up you seea creepy room.
+lounge, and up you see a creepy room.
 ~
 0 8 0
 D0
@@ -1733,7 +1733,7 @@ D5
 S
 #26745
 Hallway~
-This hallway leads to the rooms of the servnats. To the north the hallway
+This hallway leads to the rooms of the servants. To the north the hallway
 continues, to the east you see the servant's hall, to the west you see the
 wine cellar, and to the south you see the guest room.
 ~
@@ -2522,7 +2522,7 @@ M  26716 spec_cast_cleric           Donovan
 M  26717 spec_cast_psionicist       Ave
 M  26724 spec_cast_undead           A spectre
 M  26726 spec_breath_fire           A red dragon
-M  26727 spec_cast_undead           A gaurdian of sorrow
+M  26727 spec_cast_undead           A guardian of sorrow
 M  26731 spec_cast_archmage         Guardian Portrait
 M  26732 spec_cast_archmage         witch
 M  26734 spec_demon                 A shadow demon
