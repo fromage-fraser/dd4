@@ -5362,12 +5362,13 @@ can learn these skills after level 30:
 
 hydra form              phoenix form            demon form
   breathe                 fireshield {Y*{x            summon lesser demon
-  whirlwind               globe {Y*{x
-                          fly {Y*{x                 dragon form
-griffin form              resist heat {Y*{x           dive
-  maul                                            tailwhip
-                        fly form                  swallow
-                                                  dragon aura {Y*{x
+  whirlwind               globe {Y*{x                 fly
+                          fly {Y*{x
+griffin form              resist heat {Y*{x         dragon form
+  maul                    swoop                       dive
+                                                      tailwhip
+                        fly form                      swallow
+                                                      dragon aura {Y*{x
 
 {Y*{x These skills are automatically gained at 100% by morphing to the
   appropriate form.

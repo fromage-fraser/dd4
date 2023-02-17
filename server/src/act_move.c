@@ -661,8 +661,13 @@ void move_char(CHAR_DATA *ch, int door)
 
                 if (!IS_IMMORTAL( ch ))
                 {
-                        WAIT_STATE(ch, 1);
-
+                        if (IS_AFFECTED(ch, AFF_SLOW))
+                        {
+                            WAIT_STATE(ch, 3);
+                        }
+                        else {
+                            WAIT_STATE(ch, 1);
+                        }
                         if (is_affected(ch, gsn_mount))
                                 ch->move -= 1;
                         else

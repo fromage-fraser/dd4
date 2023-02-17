@@ -390,7 +390,7 @@ if ispc($n)
  endif
 ~
 >bribe_prog 100~
-say thanks! Seach the Demon Bird for a magic potion!
+say Thanks! Find the demon bird to acquire a magic potion!
 ~
 |
 #17719
@@ -478,7 +478,7 @@ as it attacks, remembering how tough this beast is rumored to be.
 8 8 0
 >greet_prog 100~
 if ispc($n)
-        emote rolls its tremendoud bulk over and moved to attack.
+        emote rolls its tremendous bulk over and moves to attack.
  endif
 ~
 >death_prog 100~
@@ -968,7 +968,7 @@ The note is addressed to you, and it reads-
 
 "Well done. At least you had the sense to stop and take advantage of the
 token aid given to you. Now I can advise you that you will need to find and
-use several items if you hope to pass trimumphantly through my Deathtrap
+use several items if you hope to pass triumphantly through my Deathtrap
 Dungeon. Signed Sukumvit."
 ~
 #17703
@@ -1020,7 +1020,7 @@ leather wristband~
 a leather wristband from which 4 small rat skulls hang~
 A leather wristband decorated with small rat skulls lies here.~
 ~
-13 16|128|4096 1|4096
+13 16|128|4096|274877906944 1|4096
 0~ 0~ 0~ 0~
 1 0 0
 A
@@ -1080,7 +1080,7 @@ morning star~
 a morning star~
 A spiked ball attached to a long chain with a wooden handle lies here.~
 ~
-5 16 1|8192
+5 16|274877906944 1|8192
 0~ 0~ 0~ 7~
 12 0 0
 A
@@ -1289,7 +1289,7 @@ bloodstealer sword~
 a bloodstained sword~
 A sword smeared with dried blood lies here.~
 ~
-5 16|64|512|4096 1|8192
+5 16|64|512|4096|274877906944 1|8192
 0~ 0~ 0~ 0~
 15 0 0
 A
@@ -1354,7 +1354,7 @@ ring~
 the ring of Yaegar~
 This ring is granted by Yaegar to his trusted agents.~
 ~
-9 16|64|512|4096 1|2
+9 16|64|512|4096|274877906944 1|2
 0~ 0~ 0~ 0~
 1 0 0
 A
@@ -1642,7 +1642,7 @@ bone ring talisman~
 a bone ring~
 A bone ring has been dropped here.~
 ~
-9 2|64|1024 1|2
+9 2|64|1024|274877906944 1|2
 0~ 0~ 0~ 0~
 1 0 0
 A
@@ -1707,15 +1707,15 @@ dwarven mail armor~
 It affords excellent protection to its wearer.
 ~
 #17762
-guiness~
-a pint of guiness~
-A pint of guiness foams away here.~
+guinness pint~
+a pint of guinness~
+A pint of guinness foams away here.~
 ~
 17 0 1|16384
 2~ 2~ 0~ 0~
 1 0 0
 E
-guiness stout~
+guinness stout~
 It's fockin' good!
 ~
 #17763
@@ -1833,7 +1833,7 @@ helm~
 a magnificent winged helm~
 A magnificent winged helm rests on a stick here.~
 ~
-9 1|2|64|1024|2048 1|16
+9 1|2|64|1024|2048|274877906944 1|16
 0~ 0~ 0~ 0~
 5 0 0
 A
@@ -2044,7 +2044,7 @@ green tunic~
 a bright green tunic~
 A homespun bright green tunic has been hung from a hook here.~
 ~
-9 64|1024 1|8
+9 64|1024|274877906944 1|8
 0~ 0~ 0~ 0~
 4 0 0
 A
@@ -2174,7 +2174,7 @@ black robes~
 black ninja robes~
 Black ninja robes lie here.~
 ~
-9 0 1|8
+9 274877906944 1|8
 0~ 0~ 0~ 0~
 5 0 0
 A
@@ -2272,7 +2272,7 @@ shield~
 a magnificent shield~
 A maginificent shield lies here, gleaming.~
 ~
-9 1|64 1|512
+9 1|64|274877906944 1|512
 10~ 0~ 0~ 0~
 5 0 0
 A
@@ -2318,7 +2318,7 @@ animal hides~
 animal hides~
 Some uncured animal hides are stinking up the room here.~
 ~
-9 0 1|8
+9 274877906944 1|8
 0~ 0~ 0~ 0~
 12 0 0
 A
@@ -2336,7 +2336,7 @@ gold ring~
 a gold ring~
 A gold ring gleams here.~
 ~
-9 2|16|512|4096 1|2
+9 2|16|512|4096|274877906944 1|2
 0~ 0~ 0~ 0~
 1 0 0
 A
@@ -2757,7 +2757,7 @@ D2
 S
 #17714
 A Cave~
-The passage widens sufficently here to form a small cave, in which you spy
+The passage widens sufficiently here to form a small cave, in which you spy
 the remains of a campfire and the bones of someone's recent meal. It
 suddenly occurs to you that the occupant may not be too far away...
 ~
@@ -3173,7 +3173,7 @@ Ok. So you decided to head up here anyway. Well you proceed for several
 hundred meters along a totally featureless passageway, with neither door nor
 monster to relieve the tedium. Presently, you detect a faint rumbling sound
 from the north that grows steadily louder, and you think you can see something
-large and solid moving down the passageway toward you. Perhpas you'd better
+large and solid moving down the passageway toward you. Perhaps you'd better
 turn back...
 ~
 0 1|8|8192 0
@@ -4031,7 +4031,7 @@ S
 #17789
 A Mysterious Corner~
 Rounding the bend here, you can here high pitched whispering and sniggering
-coming from the north. Wondering what sort of subterfugal skullduggery is
+coming from the north. Wondering what sort of subterfuge or skullduggery is
 being perpetrated, you hesitate before continuing.
 ~
 0 1|8 0

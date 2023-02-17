@@ -3156,7 +3156,7 @@ void do_consider( CHAR_DATA *ch, char *argument )
                      NULL, victim, TO_CHAR );
 
         if ( IS_NPC( victim ) && rank_sn(victim) > 1 )
-                act ("$N is {Wstronger{x than what you have been used to.", ch, NULL, victim, TO_CHAR );
+                act ("$N seems {Wmore powerful{x than your usual adversaries.", ch, NULL, victim, TO_CHAR );
 
 }
 

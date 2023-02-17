@@ -339,6 +339,9 @@ typedef enum
 	GMCP_MAX_MANA,
 	GMCP_MAX_MOVE,
 	GMCP_POSITION,
+	GMCP_FORM,
+	GMCP_RAGE,
+	GMCP_MAX_RAGE,
 
 	/* Stats */
 	GMCP_STR,
