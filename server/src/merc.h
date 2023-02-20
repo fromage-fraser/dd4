@@ -2609,7 +2609,7 @@ struct  mob_index_data
         char *                  long_descr;
         char *                  description;
         char *                  mobspec;        /* MB SPEC data */
-        char *                  rank;           /* Rank of a mob (eliete, boss, rare) */
+        char *                  rank;           /* Rank of a mob (elite, boss, rare) */
         int                     vnum;
         int                     count;
         int                     killed;

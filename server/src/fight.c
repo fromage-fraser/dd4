@@ -2171,8 +2171,10 @@ bool check_shield_unit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         if ((number_percent() < 50) && (!IS_NPC(victim)))
         {
                 if(!IS_NPC(victim) && !victim->gag)
+                {
                         act ("<51>$n's attack is blocked by $p.<0>",  ch, turret_unit, victim, TO_VICT);
                         act ("<87>Your attack is blocked by $p.<0>", ch, turret_unit, victim, TO_CHAR);
+                }
 
                 if (--turret_unit->value[0] <= 0)
                 {
@@ -3231,9 +3233,9 @@ int xp_compute (CHAR_DATA *gch, CHAR_DATA *victim)
                         xp *= 5 / 4;
                 }
         }
-        else
+        else {
                 align_mod = - gch->alignment / 8;
-
+        }
         gch->alignment = URANGE(-1000, gch->alignment + align_mod, 1000);
 
         /*
