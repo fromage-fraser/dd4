@@ -1450,14 +1450,14 @@ When one character attacks another, the severity of the damage is shown in the
 verb used in the damage message.  Here are all the damage verbs listed from
 least damage to most damage:
 
-       <235>miss<0>           <245>mangle<0>          <196>ANNIHILATE<0>     <88><558>EXTERMINATE<559><0>
-       <236>scratch<0>        <247>maim<0>            <160><558>OBLITERATE<0>     <52><558>UTTERLY DESTROY<559>
-       <237>graze<0>          <249>MUTILATE<0>        <160><558>RAVAGE<0>         <52><556>NULLIFY<557>
-       <239>hit<0>            <251>DISEMBOWEL<0>      <160><558>CRIPPLE<559><0>        <52><556>B U T C H E R<0>
-       <240>injure<0>         <253>EVISCERATE<0>      <124><558>BRUTALISE<559><0>      <556><460><52>L I Q U I D A T E<0>
-       <241>wound<0>          <255>MASSACRE<0>        <124><558>VAPOURISE<559><0>      <556><424><52>S L A U G H T E R<0>
-       <242>maul<0>           <196>DEMOLISH<0>        <124><558>ATOMIZE<559><0>        <556><388><196>E X T I R P A T E<0>
-       <243>decimate<0>       <196>DEVASTATE<0>       <88><558>ELIMINATE<559><0>      <556><352><196>P A R T I C L I Z E<0>
+       <240>miss<0>           <248>mangle<0>          <196>ANNIHILATE<0>     <88><558>EXTERMINATE<559><0>
+       <241>scratch<0>        <249>maim<0>            <160><558>OBLITERATE<0>     <52><558>UTTERLY DESTROY<559>
+       <242>graze<0>          <250>MUTILATE<0>        <160><558>RAVAGE<0>         <52><556>NULLIFY<557>
+       <243>hit<0>            <251>DISEMBOWEL<0>      <160><558>CRIPPLE<559><0>        <52><556>B U T C H E R<0>
+       <244>injure<0>         <253>EVISCERATE<0>      <124><558>BRUTALISE<559><0>      <556><460><52>L I Q U I D A T E<0>
+       <245>wound<0>          <255>MASSACRE<0>        <124><558>VAPOURISE<559><0>      <556><424><52>S L A U G H T E R<0>
+       <246>maul<0>           <196>DEMOLISH<0>        <124><558>ATOMIZE<559><0>        <556><388><196>E X T I R P A T E<0>
+       <247>decimate<0>       <196>DEVASTATE<0>       <88><558>ELIMINATE<559><0>      <556><352><196>P A R T I C L I Z E<0>
 ~
 
 0 DEATH~
