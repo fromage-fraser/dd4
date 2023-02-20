@@ -7768,58 +7768,58 @@ char *get_damage_string( int damage_value, bool is_singular )
         if (damage_value == 0)
 
         {
-                vs = "<0><235>miss<0>";
-                vp = "<0><235>misses<0>";
+                vs = "<0><240>miss<0>";
+                vp = "<0><240>misses<0>";
         }
         else if (damage_value <= 8)
         {
-                vs = "<0><236>scratch<0>";
-                vp = "<0><236>scratches<0>";
+                vs = "<0><241>scratch<0>";
+                vp = "<0><241>scratches<0>";
         }
         else if (damage_value <= 16)
         {
-                vs = "<0><237>graze<0>";
-                vp = "<0><237>grazes<0>";
+                vs = "<0><242>graze<0>";
+                vp = "<0><242>grazes<0>";
         }
         else if (damage_value <= 24)
         {
-                vs = "<0><239>hit<0>";
-                vp = "<0><239>hits<0>";
+                vs = "<0><243>hit<0>";
+                vp = "<0><243>hits<0>";
         }
         else if (damage_value <= 32)
         {
-                vs = "<0><240>injure<0>";
-                vp = "<0><240>injures<0>";
+                vs = "<0><244>injure<0>";
+                vp = "<0><244>injures<0>";
         }
         else if (damage_value <= 40)
         {
-                vs = "<0><241>wound<0>";
-                vp = "<0><241>wounds<0>";
+                vs = "<0><245>wound<0>";
+                vp = "<0><245>wounds<0>";
         }
         else if (damage_value <= 48)
         {
-                vs = "<0><242>maul<0>";
-                vp = "<0><242>mauls<0>";
+                vs = "<0><246>maul<0>";
+                vp = "<0><246>mauls<0>";
         }
         else if (damage_value <= 56)
         {
-                vs = "<0><243>decimate<0>";
-                vp = "<0><243>decimates<0>";
+                vs = "<0><247>decimate<0>";
+                vp = "<0><247>decimates<0>";
         }
         else if (damage_value <= 64)
         {
-                vs = "<0><245>mangle<0>";
-                vp = "<0><245>mangles<0>";
+                vs = "<0><248>mangle<0>";
+                vp = "<0><248>mangles<0>";
         }
         else if (damage_value <= 72)
         {
-                vs = "<0><247>maim<0>";
-                vp = "<0><247>maims<0>";
+                vs = "<0><249>maim<0>";
+                vp = "<0><249>maims<0>";
         }
         else if (damage_value <= 80)
         {
-                vs = "<0><249>MUTILATE<0>";
-                vp = "<0><249>MUTILATES<0>";
+                vs = "<0><250>MUTILATE<0>";
+                vp = "<0><250>MUTILATES<0>";
         }
         else if (damage_value <= 88)
         {

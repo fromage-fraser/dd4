@@ -335,8 +335,8 @@ bool    has_tranquility ( CHAR_DATA *ch );
 /* these are chance in 1000 - Brutus */
 #define LEGENDARY_CHANCE        1       /* 0.1% */
 #define EPIC_CHANCE             10      /* 1%   */
-#define RARE_CHANCE             25      /* 2.5% */
-#define UNCOMMON_CHANCE         150     /* 15%* */
+#define RARE_CHANCE             50      /* 5% */
+#define UNCOMMON_CHANCE         300     /* 30%* */
 
 #define RANDOMISER_MIN_LEVEL    40
 
