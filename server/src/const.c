@@ -5172,7 +5172,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "morph", &gsn_morph,
                 TYPE_STR, TAR_IGNORE, POS_DEAD, 512,
-                spell_null, 20, 12,
+                spell_null, 20, 8,
                 "", "!Morph!"
         },
 

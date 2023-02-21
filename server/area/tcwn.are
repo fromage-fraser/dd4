@@ -45,7 +45,7 @@ Gath, High Priest and Healer of Anon, greets you politely.
  To see how I may help thee, type HEAL, which will also
  show you the cost of each service".
 ~
-2|64|4096|8192|32768|16777216 8|128|2048|4194304|8388608|16777216 1000 S
+2|64|4096|8192|32768|16777216 8|128|8388608|16777216 1000 S
 60 0 0 0d0+0 0d0+0
 0 0
 8 8 1

@@ -5365,10 +5365,10 @@ hydra form              phoenix form            demon form
   whirlwind               globe {Y*{x                 fly
                           fly {Y*{x
 griffin form              resist heat {Y*{x         dragon form
-  maul                    swoop                       dive
-                                                      tailwhip
-                        fly form                      swallow
-                                                      dragon aura {Y*{x
+  maul                    swoop                   dive
+                                                  tailwhip
+                        fly form                  swallow
+                                                  dragon aura {Y*{x
 
 {Y*{x These skills are automatically gained at 100% by morphing to the
   appropriate form.

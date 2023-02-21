@@ -122,7 +122,7 @@ rip any opponent in half.
 #14808
 statue medusa~
 the medusa~
-The medusa hisses violonetly as you approach
+The medusa hisses violently as you approach
 ~
 The twining mass of snakes on this beasts head seems to hypnotise
 you. However the pain inflicted by this witch soon brings you to
@@ -505,8 +505,8 @@ A huge statue of a three-headed dragon stands in the centre of the corridor.~
 E
 statue three headed dragon~
 You are awestruck at the size of the statue and by how
-skilfully it has been constructed. Many mortals have run in 
-fear at the sight of it. To stand so close to such a 
+skilfully it has been constructed. Many mortals have run in
+fear at the sight of it. To stand so close to such a
 magnificent work of art sets your heart racing.~
 #14813
 bridge~
@@ -3242,7 +3242,7 @@ M 1 14816 1 14913           the acid-worm to The steamy tunnel
 M 1 14817 1 14907           the acid-worm to Before the chasm
 *
 M 1 14818 1 14911           the acid-worm to Fiery Cavern
-O 1 14828 100 14803         a rottig skeleton to Large Rough Cavern.
+O 1 14828 100 14803         a rotting skeleton to Large Rough Cavern.
 O 1 14829 100 14855         a green portal to The PORTAL
 D 1 14860 0 2           ; Smooth Tunnel Lock North
 D 1 14859 2 2           ; A Way Down Lock South
