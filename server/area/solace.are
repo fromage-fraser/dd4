@@ -644,6 +644,18 @@ you have the coin handy to pay for it.
 25 15 -2 1d1+999 2d10+20
 0 19000
 8 8 1
+#10256
+enthusiastic dragonhoard teller~
+an enthusiastic Dragonhoard teller~
+An enthusiastic Dragonhoard teller is eager to help you with your business.
+~
+She looks like she really enjoys her job, and is very eager to help you with
+anything she can.
+~
+2|4|64|524288 128 100 S
+8 20 9 2d6+10 1d5+0
+0 100
+8 8 2
 #0
 
 
@@ -1870,7 +1882,8 @@ S
 #10203
 Main Road~
 This is the main road in Solace. Down the street you can see various
-shops and houses.
+shops and houses. Cookie's Cookie Cookery is to the west, while the
+Solace branch of Dragonhoard Bank lies east.
 ~
 102 0 1
 D0
@@ -1878,6 +1891,11 @@ You see the main road of Solace.
 ~
 ~
 0 -1 10204
+D1
+You see the Solace branch of Dragonhoard Bank.
+~
+~
+0 -1 10319
 D2
 You see the main road of Solace.
 ~
@@ -4236,12 +4254,26 @@ You see the Solace markets.
 ~
 0 -1 10233
 S
+#10319
+Dragonhoard Bank, Solace Branch~
+This tidy and bustling office is the Solace branch of Dragonhoard Bank. An able
+and enthusiastic young teller is here to attend to any of your financial
+business or help you with the storage of your valuables.
+~
+102 8|16 1
+D3
+You see the main road.
+~
+~
+0 -1 10203
+S
 #0
 
 
 
 #RESETS
 *
+M 0 10256 1 10319       Dragonhoard teller to Dragonhoard branch
 M 0 10201 1 10292       The Captain of the Guard
 E 1 10201 1 6                wear obsidian helm
 E 1 10298 1 5                wear obsidian plate armor

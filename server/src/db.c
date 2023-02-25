@@ -3891,6 +3891,14 @@ void free_char( CHAR_DATA *ch )
 
         if ( ch->pcdata )
         {
+                for ( obj = ch->pcdata->vault; obj; obj = obj_next )
+                {
+                        obj_next = obj->next_content;
+                        if ( obj->deleted )
+                                continue;
+                        extract_obj( obj );
+                }
+
                 free_string( ch->pcdata->pwd            );
                 free_string( ch->pcdata->bamfin         );
                 free_string( ch->pcdata->bamfout        );

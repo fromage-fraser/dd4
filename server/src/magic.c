@@ -7931,7 +7931,7 @@ void spell_transport( int sn, int level, CHAR_DATA *ch, void *vo)
             || victim->carry_weight + victim->coin_weight + get_obj_weight(obj)
                > can_carry_w(victim))
         {
-                act("$p begins to fade... then becomes soild once more.", ch, obj, NULL, TO_CHAR);
+                act("$p begins to fade... then becomes solid once more.", ch, obj, NULL, TO_CHAR);
                 return;
         }
 

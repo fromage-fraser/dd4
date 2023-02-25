@@ -36,11 +36,11 @@ endif
 ~
 |
 #27201
-teller broodcoin~
-a Broodcoin teller~
-A Broodcoin teller waits for you to make a request.
+teller dragonhoard~
+a Dragonhoard teller~
+A Dragonhoard teller waits for you to make a request.
 ~
-The Broodcoin teller waits impatiently for you to make a financial request of
+The Dragonhoard teller waits impatiently for you to make a financial request of
 some sort.  She doesn't seem the friendly or polite type, even for a sahuagin.
 ~
 2|64|512|4096|32768|524288|8388608|16777216 32|512|67108864 -360 S
@@ -66,11 +66,11 @@ endif
 ~
 |
 #27202
-broodcoin clerk~
-a Broodcoin clerk~
-A Broodcoin clerk is here, hard at work.
+dragonhoard clerk~
+a Dragonhoard clerk~
+A Dragonhoard clerk is here, hard at work.
 ~
-One sahuagin Broodcoin clerk looks very much like another: hardworking,
+One sahuagin Dragonhoard clerk looks very much like another: hardworking,
 irritable, and sour-faced.
 ~
 2|64|67108864 32|512|67108864 -410 S
@@ -2078,15 +2078,15 @@ The venomous tail spine of a stingray lies here.~
 #27237
 ledger~
 a ledger~
-A Broodcoin bank ledger sits here.~
+A Dragonhoard Bank ledger sits here.~
 ~
 2 64 1|16384
 30~ weaken~ ~ ~
 1 0 0
 E
 ledger~
-This ledger records transactions made at Ota'ar Dar's branch of the Broodcoin
-bank.  It has been clerically enchanted to be able to be used underwater.
+This ledger records transactions made at Ota'ar Dar's branch of Dragonhoard
+Bank.  It has been clerically enchanted to be able to be used underwater.
 It's also unbelievably boring; trying to read it is a positively painful
 experience.
 ~
@@ -3879,15 +3879,15 @@ D4
 0 -1 27609
 S
 #27310
-Broodcoin Reception~
+Dragonhoard Bank, Ota'ar Dar Branch Reception~
 {GYou stand inside the lower floor of a large, two-storey ruined building, deep
-under the sea.  It has been converted into a reception area for the Ota'ar Dar
-bank, 'Broodcoin'.  It is clean and tidy, and less dilapidated than many of the
+under the sea.  It has been converted into a reception area for Dragonhoard Bank's
+Ota'ar Dar branch.  It is clean and tidy, and less dilapidated than many of the
 buildings in Ota'ar Dar, but is relatively featureless save for the teller's
 desk that faces the entrance.  You can travel north out to Kaliah Alley, or
-straight up to the Broodcoin offices.{x
+straight up to the branch's offices.{x
 ~
-0 8 12
+0 8|16 12
 D0
 ~
 ~
@@ -3970,10 +3970,10 @@ Kaliah Alley South, Lower~
 {CYou stand at the southern end of a narrow alley on the sandy ocean floor,
 amongst the inhabited ruins of a great, ancient city.  To the west you see
 the entrance to a shop, with a sign above it reading "Shauak's Leathers".
-To the south is the reception area of the Broodcoin bank.
+To the south is the reception area of Dragonhoard Bank's local branch.
 
-The alley continues north, and you may also swim upwards, towards a huge, looming
-area of darkness in the water above. {x
+The alley continues north, and you may also swim upwards, towards a huge,
+looming area of darkness in the water above. {x
 ~
 0 0 12
 D0
@@ -5046,12 +5046,12 @@ D5
 0 -1 27309
 S
 #27610
-Broodcoin Office~
-{gYou are in the second-storey offices of Broodcoin, Ota'ar Dar's bank.
-Various chairs, desks and collections of files fill the room, and there
-are also typically a number of Broodcoin employees here, busy with paperwork.
-You may swim down, to the bank's reception area, or up, into the huge,
-looming area of dark water above you.{x
+Dragonhoard Bank Branch Office~
+{gYou are in the second-storey offices of the local branch of Dragonhoard Bank.
+Various chairs, desks and collections of files fill the room, and there are also
+typically a number of bank employees here, busy with paperwork. You may swim
+down, to the bank's reception area, or up, into the huge, looming area of dark
+water above you.{x
 ~
 0 4 12
 D4
@@ -6294,7 +6294,7 @@ O 1 27263 100 27625			a heavy trunk to Reavers' Guild Master's Quarters
 P 1 27265 100 27263			a Reaver's heavy crossbow to container trunk heavy
 P 1 27266 100 27263			a Reaver's scimitar to container trunk heavy
 *
-M 1 27201 1 27310			a Broodcoin teller to Broodcoin Reception
+M 1 27201 1 27310			a Dragonhoard teller to Dragonhoard Reception
 E 1 27231 100 13
 *
 M 1 27203 1 27312			Fautap to Fautap's Fixit
@@ -6644,15 +6644,15 @@ P 1 27410 100 27206         a map of the Ota'ar Dar canals - upper to container 
 P 1 27411 100 27206         a map of the dragon caves to container a metal sea chest trunk
 P 1 20670 100 27206         a map of the Vampyre Vale to container a metal sea chest trunk
 *
-M 1 27202 3 27610			a Broodcoin clerk to Broodcoin Office
+M 1 27202 3 27610			a Dragonhoard clerk to Dragonhoard Office
 E 1 27237 100 17
 E 1 27231 100 13
 *
-M 1 27202 3 27610			a Broodcoin clerk to Broodcoin Office
+M 1 27202 3 27610			a Dragonhoard clerk to Dragonhoard Office
 E 1 27238 100 16
 E 1 27231 100 13
 *
-M 1 27202 3 27610			a Broodcoin clerk to Broodcoin Office
+M 1 27202 3 27610			a Dragonhoard clerk to Dragonhoard Office
 E 1 27239 100 16
 E 1 27231 100 13
 O 1 27208 100 27612			a beat-up leather trunk to Fautap's Quarters

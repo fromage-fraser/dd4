@@ -143,6 +143,20 @@ int can_carry_n( CHAR_DATA *ch )
         return MAX_WEAR + 2 * get_curr_dex( ch ) / 2;
 }
 
+/*
+ * Retrieve a character's vault item-number capacity.
+ */
+int can_vault_n( CHAR_DATA *ch )
+{
+        if ( !IS_NPC( ch ) && ch->level >= LEVEL_IMMORTAL )
+                return 1000;
+
+        if ( IS_NPC( ch ) && IS_SET( ch->act, ACT_PET ) )
+                return 0;
+
+        return (UMAX(20, (ch->level * 2)));
+}
+
 
 /*
  * Retrieve a character's carry capacity.
@@ -156,6 +170,20 @@ int can_carry_w( CHAR_DATA *ch )
                 return 0;
 
         return str_app[get_curr_str( ch )].carry;
+}
+
+/*
+ * Retrieve a character's vault weight capacity.
+ */
+int can_vault_w( CHAR_DATA *ch )
+{
+        if ( !IS_NPC( ch ) && ch->level >= LEVEL_IMMORTAL )
+                return 1000000;
+
+        if ( IS_NPC( ch ) && IS_SET( ch->act, ACT_PET ) )
+                return 0;
+
+        return (UMAX(100, (ch->level * 10)));
 }
 
 /*
@@ -1066,6 +1094,42 @@ void obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch )
         ch->carry_weight += get_obj_weight( obj );
 }
 
+/*
+ * Place an obj in a char's vault.
+ */
+void obj_to_charvault( OBJ_DATA *obj, CHAR_DATA *ch )
+{
+        obj->next_content = ch->pcdata->vault;
+        ch->pcdata->vault = obj;
+        obj->vaulted_by = ch;
+        obj->in_room = NULL;
+        obj->in_obj = NULL;
+        ch->pcdata->vault_number += get_obj_number( obj );
+        ch->pcdata->vault_weight += get_obj_weight( obj );
+/*         sprintf(log_buf, "Vault weight is: %d\r\n", ch->pcdata->vault_weight);
+        log_string(log_buf);
+        sprintf(log_buf, "Vault number is: %d\r\n", ch->pcdata->vault_number);
+        log_string(log_buf); */
+        return;
+}
+
+/*
+ * Give obj to char from a char's vault.
+ */
+void obj_to_charfromvault( OBJ_DATA *obj, CHAR_DATA *ch )
+{
+        obj->next_content = ch->carrying;
+        ch->carrying = obj;
+        obj->vaulted_by = NULL;
+        obj->carried_by = ch;
+        obj->in_room = NULL;
+        obj->in_obj = NULL;
+        ch->carry_number += get_obj_number( obj );
+        ch->carry_weight += get_obj_weight( obj );
+        ch->pcdata->vault_number -= get_obj_number( obj );
+        ch->pcdata->vault_weight -= get_obj_weight( obj );
+}
+
 
 /*
  * Take an obj from its character.
@@ -1122,6 +1186,47 @@ void obj_from_char( OBJ_DATA *obj )
         obj->next_content = NULL;
         ch->carry_number -= get_obj_number( obj );
         ch->carry_weight -= get_obj_weight( obj );
+}
+
+/*
+ * Take an obj from a pc's vault
+ */
+void obj_from_charvault( OBJ_DATA *obj )
+{
+        CHAR_DATA *ch;
+
+        if ( !( ch = obj->vaulted_by ) )
+        {
+                bug( "Obj_from_char: null ch.", 0 );
+                return;
+        }
+
+        if ( ch->pcdata->vault == obj )
+        {
+                ch->pcdata->vault = obj->next_content;
+        }
+        else
+        {
+                OBJ_DATA *prev;
+
+                for ( prev = ch->pcdata->vault; prev; prev = prev->next_content )
+                {
+                        if ( prev->next_content == obj )
+                        {
+                                prev->next_content = obj->next_content;
+                                break;
+                        }
+                }
+
+                if ( !prev )
+                        bug( "Obj_from_char VAULT: obj not in VAULT list.", 0 );
+        }
+
+
+        obj->vaulted_by = NULL;
+        obj->next_content = NULL;
+        /* ch->pcdata->vault_number -= get_obj_number( obj );
+        ch->pcdata->vault_weight -= get_obj_weight( obj ); */
 }
 
 
@@ -1402,7 +1507,6 @@ void obj_from_room( OBJ_DATA *obj )
         return;
 }
 
-
 /*
  * Move an obj into a room.
  */
@@ -1444,6 +1548,36 @@ void obj_to_obj( OBJ_DATA *obj, OBJ_DATA *obj_to )
                         /* Strider - Comment out line below - Container code fix  */
                         /* obj_to->carried_by->carry_number += get_obj_number( obj ); */
                         obj_to->carried_by->carry_weight += get_obj_weight( obj );
+                }
+        }
+
+        return;
+}
+
+void obj_to_objvault( OBJ_DATA *obj, OBJ_DATA *obj_to )
+{
+        if ( obj_to->deleted )
+        {
+                bug( "Obj_to_obj:  Obj_to already deleted", 0 );
+                return;
+        }
+
+        obj->next_content = obj_to->contains;
+        obj_to->contains = obj;
+        obj->in_obj = obj_to;
+        obj->in_room = NULL;
+        obj->vaulted_by = NULL;
+
+        for ( ; obj_to; obj_to = obj_to->in_obj )
+        {
+                if ( obj_to->deleted )
+                        continue;
+
+                if ( obj_to->vaulted_by )
+                {
+                        /* Strider - Comment out line below - Container code fix  */
+                        /* obj_to->carried_by->carry_number += get_obj_number( obj ); */
+                        obj_to->vaulted_by->pcdata->vault_weight += get_obj_weight( obj );
                 }
         }
 
@@ -1500,6 +1634,61 @@ void obj_from_obj( OBJ_DATA *obj )
                         /* Strider - Comment out line below - Container code fix  */
                         /*obj_from->carried_by->carry_number -= get_obj_number( obj ); */
                         obj_from->carried_by->carry_weight -= get_obj_weight( obj );
+                }
+        }
+
+        return;
+}
+
+/*
+ * Move an object out of an object that is in a vault. --Owl 23/2/23
+ */
+void obj_from_objvault( OBJ_DATA *obj )
+{
+        OBJ_DATA *obj_from;
+
+        if ( !( obj_from = obj->in_obj ) )
+        {
+                bug( "Obj_from_obj: null obj_from.", 0 );
+                return;
+        }
+
+        if ( obj == obj_from->contains )
+        {
+                obj_from->contains = obj->next_content;
+        }
+        else
+        {
+                OBJ_DATA *prev;
+
+                for ( prev = obj_from->contains; prev; prev = prev->next_content )
+                {
+                        if ( prev->next_content == obj )
+                        {
+                                prev->next_content = obj->next_content;
+                                break;
+                        }
+                }
+
+                if ( !prev )
+                {
+                        bug( "Obj_from_obj VAULT: obj not found.", 0 );
+                        return;
+                }
+        }
+
+        obj->next_content = NULL;
+        obj->in_obj       = NULL;
+
+        for ( ; obj_from; obj_from = obj_from->in_obj )
+        {
+                if ( obj_from->deleted )
+                        continue;
+                if ( obj_from->vaulted_by )
+                {
+                        /* Strider - Comment out line below - Container code fix  */
+                        /*obj_from->carried_by->carry_number -= get_obj_number( obj ); */
+                        /*obj_from->vaulted_by->pcdata->vault_weight -= get_obj_weight( obj );*/
                 }
         }
 
@@ -1790,6 +1979,34 @@ OBJ_DATA *get_obj_carry( CHAR_DATA *ch, char *argument )
         return NULL;
 }
 
+/*
+ * Find an obj in player's vault.
+ */
+OBJ_DATA *get_obj_vaulted( CHAR_DATA *ch, char *argument )
+{
+        OBJ_DATA *obj;
+        char      arg [ MAX_INPUT_LENGTH ];
+        int       number;
+        int       count;
+
+        number = number_argument( argument, arg );
+        count  = 0;
+
+        for ( obj = ch->pcdata->vault; obj; obj = obj->next_content )
+        {
+                if ( obj->wear_loc == WEAR_NONE
+                    && can_see_obj( ch, obj )
+                    && is_name( arg, obj->name ) )
+                {
+                        if ( ++count == number )
+                                return obj;
+                }
+        }
+
+        return NULL;
+}
+
+
 
 /*
  * Find an obj in player's equipment.
@@ -1922,6 +2139,18 @@ OBJ_DATA *get_obj_here( CHAR_DATA *ch, char *argument )
                 return obj;
 
         if ( ( obj = get_obj_wear( ch, argument ) ) )
+                return obj;
+
+        return NULL;
+}
+/*
+ * Find an object in a player's vault
+ */
+OBJ_DATA *get_obj_herevault( CHAR_DATA *ch, char *argument )
+{
+        OBJ_DATA *obj;
+
+        if ( ( obj = get_obj_vaulted( ch, argument ) ) )
                 return obj;
 
         return NULL;
@@ -2737,10 +2966,6 @@ bool can_drop_obj( CHAR_DATA *ch, OBJ_DATA *obj )
 {
         if ( !IS_SET( obj->extra_flags, ITEM_NODROP ) )
                 return TRUE;
-
-        if ( !IS_NPC( ch ) && ch->level >= LEVEL_IMMORTAL )
-                return TRUE;
-
         return FALSE;
 }
 
@@ -3232,6 +3457,7 @@ char* room_flag_name (unsigned long int vector)
                 case ROOM_DARK:             return "dark";
                 case ROOM_NO_MOB:           return "no_mob";
                 case ROOM_INDOORS:          return "indoors";
+                case ROOM_VAULT:            return "vault";
                 case ROOM_CRAFT:            return "craft";
                 case ROOM_SPELLCRAFT:       return "spellcraft";
                 case ROOM_PRIVATE:          return "private";

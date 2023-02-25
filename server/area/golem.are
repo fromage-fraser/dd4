@@ -13,7 +13,7 @@ A golem child stands here staring at you.
 ~
 The golem child is made of earth and is quite large compared to human children.
 ~
-64|524288 0 -500 S
+64 0 -500 S
 80 0 0 100d12+15150 9d10+25
 304 0
 8 8 0
@@ -36,7 +36,7 @@ A golem worker is headed to his work.
 ~
 The worker is quite dirty and looks as though he's been working long and hard.
 ~
-64|524288 8|32 1000 S
+64 8|32 1000 S
 90 1 0 100d12+18100 10d10+43
 304 0
 8 8 1
@@ -47,7 +47,7 @@ A golem eyes you warily.
 ~
 The golem is quite large and stares at you warily, ready for a fight.
 ~
-2|64|524288 8|32 -1000 S
+2|64 8|32 -1000 S
 92 1 0 100d12+18400 10d10+46
 304 0
 8 8 1
@@ -58,7 +58,7 @@ A female golem is here preparing a meal.
 ~
 The golem is preparing a meal for her family.
 ~
-2|64|524288 8|32 1000 S
+2|64 8|32 1000 S
 92 1 0 100d12+18400 10d10+46
 304 0
 8 8 2
@@ -94,7 +94,7 @@ The golem warrior has been through many adventures; you can tell by its many
 wounds.  It is wearing a full suit of armor, just in case it runs into a good
 fight.
 ~
-64|524288 8|32|2097152|16777216 -700 S
+64 8|32|2097152|16777216 -700 S
 100 1 0 100d12+19500 10d10+56
 304 0
 8 8 0
@@ -141,7 +141,7 @@ The master warrior stands here, smirking at you.
 The master warrior is the only known golem to be trained in all arts of warfare.
 He has saved the settlement on many occasions, without a scratch upon his body.
 ~
-2|32|64|524288 8|32|512|8192|67108864 -1000 S
+2|32|64 8|32|512|8192|67108864 -1000 S
 110 2 0 100e12+20300 10d10+66
 304 0
 8 8 1
@@ -166,7 +166,7 @@ Dorak is a rather large human, the only human in this settlement.  He wears a
 leather tunic, boasting his large muscles.  He eyes you warily, making sure that
 you steal none of his wares.
 ~
-2|64|524288 8|32|512|8192|67108864 -1000 S
+2|64 8|32|512|8192|67108864 -1000 S
 110 0 0 1d1+999 1d1+999
 0 0
 8 8 1

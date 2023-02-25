@@ -931,6 +931,44 @@ void do_open(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        /* For opening items while they are in vaults --Owl 26/2/23 */
+        if ( ( obj = get_obj_herevault(ch, arg) )
+        &&     IS_SET(ch->in_room->room_flags, ROOM_VAULT ) )
+        {
+                if (obj->item_type != ITEM_CONTAINER)
+                {
+                        send_to_char("That's not a container.\n\r", ch);
+                        return;
+                }
+
+                if (!IS_SET(obj->value[1], CONT_CLOSED))
+                {
+                        send_to_char("It's already open.\n\r", ch);
+                        return;
+                }
+
+                if (!IS_SET(obj->value[1], CONT_CLOSEABLE))
+                {
+                        send_to_char("You can't do that.\n\r", ch);
+                        return;
+                }
+
+                if (IS_SET(obj->value[1], CONT_LOCKED))
+                {
+                        send_to_char("It's locked.\n\r", ch);
+                        return;
+                }
+
+                /* for traps */
+                if (checkopen(ch, obj))
+                        return;
+
+                REMOVE_BIT(obj->value[1], CONT_CLOSED);
+                send_to_char("You open it.\n\r", ch);
+                act ("$n opens $p in $S vault.", ch, obj, ch, TO_ROOM);
+                return;
+        }
+
         if ((door = find_door(ch, arg)) >= 0)
         {
                 /* 'open door' */
@@ -1151,6 +1189,35 @@ void do_close(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        /* For closing items in vaults -- Owl 26/2/23 */
+        if ( ( obj = get_obj_herevault(ch, arg) )
+        &&     IS_SET(ch->in_room->room_flags, ROOM_VAULT ) )
+        {
+                /* 'close object' */
+                if (obj->item_type != ITEM_CONTAINER)
+                {
+                        send_to_char("That's not a container.\n\r", ch);
+                        return;
+                }
+
+                if (IS_SET(obj->value[1], CONT_CLOSED))
+                {
+                        send_to_char("It's already closed.\n\r", ch);
+                        return;
+                }
+
+                if (!IS_SET(obj->value[1], CONT_CLOSEABLE))
+                {
+                        send_to_char("You can't do that.\n\r", ch);
+                        return;
+                }
+
+                SET_BIT(obj->value[1], CONT_CLOSED);
+                send_to_char("You close it.\n\r", ch);
+                act ("$n closes $p in $S vault.", ch, obj, ch, TO_ROOM);
+                return;
+        }
+
         if ((door = find_door(ch, arg)) >= 0)
         {
                 /* 'close door' */
@@ -1258,6 +1325,41 @@ void do_lock(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        /* Lock containers in vaults --Owl 26/2/23 */
+        if ( ( obj = get_obj_herevault(ch, arg) )
+        &&     IS_SET(ch->in_room->room_flags, ROOM_VAULT ) )
+        {
+                /* 'lock object' */
+                if (obj->item_type != ITEM_CONTAINER)
+                {
+                        send_to_char("That's not a container.\n\r", ch);
+                        return;
+                }
+
+                if (!IS_SET(obj->value[1], CONT_CLOSED))
+                {
+                        send_to_char("It's not closed.\n\r", ch);
+                        return;
+                }
+
+                if (obj->value[2] < 0 || !has_key(ch, obj->value[2]))
+                {
+                        send_to_char("You lack the key.\n\r", ch);
+                        return;
+                }
+
+                if (IS_SET(obj->value[1], CONT_LOCKED))
+                {
+                        send_to_char("It's already locked.\n\r", ch);
+                        return;
+                }
+
+                SET_BIT(obj->value[1], CONT_LOCKED);
+                send_to_char("*Click*\n\r", ch);
+                act ("$n locks $p in $S vault.", ch, obj, ch, TO_ROOM);
+                return;
+        }
+
         if ((door = find_door(ch, arg)) >= 0)
         {
                 /* 'lock door' */
@@ -1346,6 +1448,41 @@ void do_unlock(CHAR_DATA *ch, char *argument)
                 REMOVE_BIT(obj->value[1], CONT_LOCKED);
                 send_to_char("*Click*\n\r", ch);
                 act ("$n unlocks $p.", ch, obj, NULL, TO_ROOM);
+                return;
+        }
+
+         /* Unlock containers in vaults --Owl 26/2/23 */
+        if ( ( obj = get_obj_herevault(ch, arg) )
+        &&     IS_SET(ch->in_room->room_flags, ROOM_VAULT ) )
+        {
+                /* 'unlock object' */
+                if (obj->item_type != ITEM_CONTAINER)
+                {
+                        send_to_char("That's not a container.\n\r", ch);
+                        return;
+                }
+
+                if (!IS_SET(obj->value[1], CONT_CLOSED))
+                {
+                        send_to_char("It's not closed.\n\r", ch);
+                        return;
+                }
+
+                if (obj->value[2] < 0  || !has_key(ch, obj->value[2]))
+                {
+                        send_to_char("You lack the key.\n\r", ch);
+                        return;
+                }
+
+                if (!IS_SET(obj->value[1], CONT_LOCKED))
+                {
+                        send_to_char("It's already unlocked.\n\r", ch);
+                        return;
+                }
+
+                REMOVE_BIT(obj->value[1], CONT_LOCKED);
+                send_to_char("*Click*\n\r", ch);
+                act ("$n unlocks $p in $S vault.", ch, obj, ch, TO_ROOM);
                 return;
         }
 

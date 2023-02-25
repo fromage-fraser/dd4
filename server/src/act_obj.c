@@ -34,11 +34,11 @@
 /*
  * Local functions.
  */
-void        get_obj     args((CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container));
-bool        remove_obj  args((CHAR_DATA *ch, int iWear, bool fReplace));
-void        wear_obj    args((CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace));
-CHAR_DATA * find_keeper args((CHAR_DATA *ch));
-int         get_cost    args((CHAR_DATA *keeper, OBJ_DATA *obj, bool fBuy));
+void        get_obj         args((CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container));
+bool        remove_obj      args((CHAR_DATA *ch, int iWear, bool fReplace));
+void        wear_obj        args((CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace));
+CHAR_DATA * find_keeper     args((CHAR_DATA *ch));
+int         get_cost        args((CHAR_DATA *keeper, OBJ_DATA *obj, bool fBuy));
 
 
 void get_obj (CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
@@ -174,6 +174,62 @@ void get_obj (CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
         }
         else
                 obj_to_char(obj, ch);
+
+        return;
+}
+
+/* Retrieve objects from a player's vault */
+
+void get_obj_vault (CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
+{
+        char buf [MAX_STRING_LENGTH];
+
+        if (!IS_SET(obj->wear_flags, ITEM_TAKE) || obj->item_type == ITEM_PORTAL)
+        {
+                send_to_char("You can't claim that.\n\r", ch);
+                return;
+        }
+
+        if (!is_obj_owner(obj, ch))
+        {
+                sprintf(buf, "You can't claim %s: it belongs to %s.\n\r",
+                        obj->short_descr,
+                        capitalize(get_obj_owner(obj)));
+                send_to_char(buf, ch);
+                return;
+        }
+
+        /* for traps */
+        if (checkgetput(ch, obj))
+                return;
+
+        if (ch->carry_number + get_obj_number(obj) > can_carry_n(ch))
+        {
+                act("$d: you can't carry that many items.", ch, NULL, obj->name, TO_CHAR);
+                return;
+        }
+
+        if ( (ch->carry_weight + ch->coin_weight) + get_obj_weight(obj) > can_carry_w(ch))
+        {
+                act("$d: you can't carry that much weight.", ch, NULL, obj->name, TO_CHAR);
+                return;
+        }
+
+        if (container)
+        {
+                act("You get $p from $P in your vault.", ch, obj, container, TO_CHAR);
+                act("$n gets $p from $P in your vault.", ch, obj, container, TO_ROOM);
+                obj_from_objvault(obj);
+                ch->pcdata->vault_number++;
+        }
+        else
+        {
+                act("You get $p from your vault.", ch, obj, container, TO_CHAR);
+                act("$n gets $p from your vault.", ch, obj, container, TO_ROOM);
+                obj_from_charvault(obj);
+        }
+
+        obj_to_charfromvault(obj, ch);
 
         return;
 }
@@ -420,6 +476,194 @@ void do_get (CHAR_DATA *ch, char *argument)
         return;
 }
 
+/* Get objects from vault into inventory.  --Owl 23/2/23 */
+
+void do_claim (CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA *obj;
+        OBJ_DATA *pobj;
+        OBJ_DATA *container;
+        char      arg1 [ MAX_INPUT_LENGTH ];
+        char      arg2 [ MAX_INPUT_LENGTH ];
+        char      buf  [ MAX_STRING_LENGTH ];
+        bool      found;
+
+        argument = one_argument(argument, arg1);
+        argument = one_argument(argument, arg2);
+
+        if (!IS_SET(ch->in_room->room_flags, ROOM_VAULT))
+        {
+            send_to_char( "You cannot access your vault from this location.\n\r", ch );
+            return;
+        }
+
+        if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
+        {
+                send_to_char("You can't claim items from your vault in your current form.\n\r", ch);
+                return;
+        }
+
+        if (arg1[0] == '\0')
+        {
+                send_to_char("Claim what?\n\r", ch);
+                return;
+        }
+
+        if (arg2[0] == '\0')
+        {
+                if (str_cmp(arg1, "all") && str_prefix("all.", arg1))
+                {
+                        /* 'claim obj' */
+                        obj = get_obj_list(ch, arg1, ch->pcdata->vault);
+                        if (!obj)
+                        {
+                                act("There is no \"$T\" in your vault.", ch, NULL, arg1, TO_CHAR);
+                                return;
+                        }
+                        get_obj_vault(ch, obj, NULL);
+
+                        /* Do we claim the object?? */
+                        for (pobj = ch->pcdata->vault; pobj; pobj = pobj->next_content)
+                        {
+                                if (pobj == obj)
+                                        break;
+                        }
+
+                        if (!pobj)
+                                return;
+                }
+                else
+                {
+                        /* 'claim all' or 'claim all.obj' */
+                        OBJ_DATA *obj_next;
+                        found = FALSE;
+
+                        for (obj = ch->pcdata->vault; obj; obj = obj_next)
+                        {
+                                obj_next = obj->next_content;
+
+                                if ((arg1[3] == '\0' || is_name(&arg1[4], obj->name))
+                                    && can_see_obj(ch, obj))
+                                {
+                                        found = TRUE;
+                                        get_obj_vault(ch, obj, NULL);
+                                }
+                        }
+
+                        if (!found)
+                        {
+                                if (arg1[3] == '\0')
+                                        send_to_char("You don't see that in your vault.\n\r", ch);
+                                else
+                                        act("There is no \"$T\" in your vault.", ch, NULL, &arg1[4], TO_CHAR);
+                        }
+                }
+        }
+        else
+        {
+                /* 'claim ... container' */
+                if (ch->position == POS_FIGHTING)
+                {
+                        send_to_char( "You can't claim items from your vault while fighting.\n\r", ch );
+                        return;
+                }
+
+                if (!str_cmp(arg2, "all") || !str_prefix("all.", arg2))
+                {
+                        send_to_char("You can't do that.\n\r", ch);
+                        return;
+                }
+
+                if (!(container = get_obj_herevault(ch, arg2)))
+                {
+                        act("There is no \"$T\" in your vault.", ch, NULL, arg2, TO_CHAR);
+                        return;
+                }
+
+                switch (container->item_type)
+                {
+                    default:
+                        send_to_char("That's not a container.\n\r", ch);
+                        return;
+
+                    case ITEM_CONTAINER:
+                    case ITEM_TURRET:
+                    case ITEM_CORPSE_NPC:
+                        break;
+
+                    case ITEM_CORPSE_PC:
+                        {
+                                char      *pd;
+                                char       name[ MAX_INPUT_LENGTH ];
+
+                                if (IS_NPC(ch))
+                                {
+                                        send_to_char("You can't do that.\n\r", ch);
+                                        return;
+                                }
+
+                                pd = container->short_descr;
+                                pd = one_argument(pd, name);
+                                pd = one_argument(pd, name);
+                                pd = one_argument(pd, name);
+
+                                if (!str_cmp(name, ch->name) && ch->level <= LEVEL_HERO)
+                                {
+                                        send_to_char("You can't do that.\n\r", ch);
+                                        return;
+                                }
+                        }
+                }
+
+                if (IS_SET(container->value[1], CONT_CLOSED))
+                {
+                        act("The $d is closed.", ch, NULL, container->name, TO_CHAR);
+                        return;
+                }
+
+                if (str_cmp(arg1, "all") && str_prefix("all.", arg1))
+                {
+                        /* 'claim obj container' */
+                        obj = get_obj_list(ch, arg1, container->contains);
+                        if (!obj)
+                        {
+                                act("You see nothing like that in the $T.",
+                                    ch, NULL, arg2, TO_CHAR);
+                                return;
+                        }
+                        get_obj_vault(ch, obj, container);
+                }
+                else
+                {
+                        /* 'claim all container' or 'claim all.obj container' */
+                        OBJ_DATA *obj_next;
+
+                        found = FALSE;
+                        for (obj = container->contains; obj; obj = obj_next)
+                        {
+                                obj_next = obj->next_content;
+
+                                if ((arg1[3] == '\0' || is_name(&arg1[4], obj->name))
+                                    && can_see_obj(ch, obj))
+                                {
+                                        found = TRUE;
+                                        get_obj_vault(ch, obj, container);
+                                }
+                        }
+
+                        if (!found)
+                        {
+                            sprintf(buf, "You don't see anything like that in %s.\r\n", container->short_descr );
+                            send_to_char(buf, ch);
+                            return;
+                        }
+
+                }
+        }
+
+        return;
+}
+
 
 void do_put (CHAR_DATA *ch, char *argument)
 {
@@ -567,6 +811,270 @@ void do_put (CHAR_DATA *ch, char *argument)
                                 obj_to_obj(obj, container);
                                 act("You put $p in $P.", ch, obj, container, TO_CHAR);
                                 act("$n puts $p in $P.", ch, obj, container, TO_ROOM);
+                        }
+                }
+        }
+
+        return;
+}
+
+void do_lodge (CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA *container;
+        OBJ_DATA *obj;
+        char      arg1 [ MAX_INPUT_LENGTH ];
+        char      arg2 [ MAX_INPUT_LENGTH ];
+        bool      found;
+
+        argument = one_argument(argument, arg1);
+        argument = one_argument(argument, arg2);
+        container = get_obj_vaulted(ch, arg2);
+
+        if (!IS_SET(ch->in_room->room_flags, ROOM_VAULT))
+        {
+                send_to_char( "You cannot access your vault from this location.\n\r", ch );
+                return;
+        }
+
+        if (ch->position == POS_FIGHTING)
+        {
+                send_to_char( "You can't lodge items in your vault while fighting.\n\r", ch );
+                return;
+        }
+
+        if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
+        {
+                send_to_char("You can't lodge items in your vault in your current form.\n\r",ch);
+                return;
+        }
+
+        if (arg1[0] == '\0')
+        {
+                send_to_char("Which item do you wish to lodge in your vault?\n\r", ch);
+                return;
+        }
+
+        if (container == NULL && arg2[0] != '\0')
+        {
+                act("I see no \"$T\" in your vault.", ch, NULL, arg2, TO_CHAR);
+                return;
+        }
+
+        /* If you're not trying to put an item in a container and not an "all command" */
+        if ( ( arg2[0] == '\0')
+        &&     str_cmp(arg1, "all")
+        &&     str_prefix("all.", arg1))
+        {
+                if (!(obj = get_obj_carry(ch, arg1)))
+                {
+                        send_to_char("You do not have that item.\n\r", ch);
+                        return;
+                }
+
+                if (!can_drop_obj(ch, obj))
+                {
+                        send_to_char("You can't let go of it.\n\r", ch);
+                        return;
+                }
+
+                if ( ( get_obj_weight(obj) + ch->pcdata->vault_weight ) > can_vault_w( ch ) )
+                {
+                        send_to_char("You can't put that much weight into your vault.\n\r", ch);
+                        return;
+                }
+
+                if ( ( ( ch->pcdata->vault_number + get_obj_number(obj) ) > can_vault_n( ch ) ) )
+                {
+                        send_to_char("You can't fit that many items into your vault.\n\r", ch);
+                        return;
+                }
+
+                if (obj->level > ch->level)
+                {
+                        act("$p is too high level to be put in your vault.", ch, obj, NULL, TO_CHAR);
+                        return;
+                }
+
+                obj_from_char(obj);
+                obj_to_charvault(obj, ch);
+                act("You lodge $p in your vault.", ch, obj, NULL, TO_CHAR);
+                act("$n lodges $p in $S vault.", ch, obj, ch, TO_ROOM);
+                return;
+        }
+
+        /* If you are trying to put an item in a container and not an "all command" */
+        if ( ( arg2[0] != '\0')
+        &&     str_cmp(arg1, "all")
+        &&     str_prefix("all.", arg1)
+        &&     ( container != NULL ) )
+        {
+                if (IS_SET(container->value[1], CONT_CLOSED))
+                {
+                        act("The $d is closed.", ch, NULL, container->name, TO_CHAR);
+                        return;
+                }
+
+                /* 'put obj container' */
+                if (!(container = get_obj_vaulted(ch, arg2)))
+                {
+                        send_to_char("You don't have that item in your vault.\n\r", ch);
+                        return;
+                }
+
+                /* 'put obj container' */
+                if (!(obj = get_obj_carry(ch, arg1)))
+                {
+                        send_to_char("You don't have that item on you.\n\r", ch);
+                        return;
+                }
+
+                if (!can_drop_obj(ch, obj))
+                {
+                        send_to_char("You can't let go of it.\n\r", ch);
+                        return;
+                }
+
+                if ( (IS_SET(container->wear_flags, ITEM_WEAR_POUCH ) )
+                    && ( obj->item_type != ITEM_POTION)
+                    && ( obj->item_type != ITEM_PILL)
+                    && ( obj->item_type != ITEM_PAINT) )
+                {
+                        send_to_char("You can only put potions, pills and paints into your pouch.\n\r", ch);
+                        return;
+                }
+
+                if ( (IS_SET(container->ego_flags, EGO_ITEM_TURRET )) && (!IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE)))
+                {
+                        send_to_char("You can only put modules into the turret slots.\n\r", ch);
+                        return;
+                };
+
+                if (IS_SET(container->ego_flags, EGO_ITEM_TURRET ))
+                {
+                      if ( ( (ch->pcdata->learned[gsn_turret] < 60 ) && (get_container_count(container) >=1 ) )
+                      || ((ch->pcdata->learned[gsn_turret] < 85 ) && (get_container_count(container) >= 2 ) )
+                      || ((ch->pcdata->learned[gsn_turret] < 95 ) && (get_container_count(container) >= 3 ) ) )
+                      {
+                                send_to_char("You will need to improve your knowledge of turrets.\n\r", ch);
+                                return;
+                      }
+                }
+
+                if (get_obj_weight(obj) + get_obj_weight(container)
+                    > container->value[0])
+                {
+                        send_to_char("It won't fit.\n\r", ch);
+                        return;
+                }
+
+                if (obj->level > ch->level)
+                {
+                        act("$p is too high level to be put in there.", ch, obj, NULL, TO_CHAR);
+                        return;
+                }
+
+                obj_from_char(obj);
+                obj_to_objvault(obj, container);
+                act("You put $p in $P in your vault.", ch, obj, container, TO_CHAR);
+                act("$n puts $p in $P in $S vault.", ch, obj, container, TO_ROOM);
+
+                return;
+        }
+
+        /* lodge all or lodge all.object */
+        if ( ( !str_cmp(arg1, "all")
+          ||   !str_prefix("all.", arg1) )
+        &&   ( arg2[0] == '\0' ) )
+        {
+                OBJ_DATA *obj_next;
+                container = NULL;
+                found = FALSE;
+                for (obj = ch->carrying; obj; obj = obj_next)
+                {
+                        obj_next = obj->next_content;
+
+                        if ( ( arg1[3] == '\0' || is_name(&arg1[4], obj->name ) )
+                        &&     can_see_obj(ch, obj)
+                        &&     obj->wear_loc == WEAR_NONE
+                        &&     can_drop_obj(ch, obj)
+                        &&     ch->level >= obj->level
+                        &&     (!obj->deleted)
+                        &&     ( ( get_obj_number(obj) + ch->pcdata->vault_number) <= can_vault_n( ch ) )
+                        &&     ( ( get_obj_weight(obj) + ch->pcdata->vault_weight) <= can_vault_w( ch ) ) )
+                        {
+                                found = TRUE;
+                                obj_from_char(obj);
+                                obj_to_charvault(obj, ch);
+                                act("You lodge $p in your vault.", ch, obj, NULL, TO_CHAR);
+                                act("$n lodges $p in $S vault.", ch, obj, ch, TO_ROOM);
+
+                        }
+                }
+
+                if (!found)
+                {
+                        if (!ch->carrying)
+                        {
+                            send_to_char("You don't have anything to put in your vault.", ch);
+                            return;
+
+                        }
+                        else {
+                            send_to_char("You can't do that.", ch);
+                            return;
+                        }
+                }
+        }
+        /* sprintf(log_buf,"value of container weight is %d\r\n", container->value[0]);
+        log_string(log_buf); */
+        /* lodge all container or lodge all.object container */
+        if ( ( !str_cmp(arg1, "all")
+          ||   !str_prefix("all.", arg1) )
+        &&   ( container != NULL ) )
+        {
+                OBJ_DATA *obj_next;
+
+                found = FALSE;
+
+                if (IS_SET(container->value[1], CONT_CLOSED))
+                {
+                        act("The $d is closed.", ch, NULL, container->name, TO_CHAR);
+                        return;
+                }
+
+                for (obj = ch->carrying; obj; obj = obj_next)
+                {
+                        obj_next = obj->next_content;
+
+                        if ( ( arg1[3] == '\0' || is_name(&arg1[4], obj->name ) )
+                        &&     can_see_obj(ch, obj)
+                        &&     obj->wear_loc == WEAR_NONE
+                        &&     can_drop_obj(ch, obj)
+                        &&     (!obj->deleted)
+                        &&     ch->level >= obj->level
+                        &&     ( ( get_obj_weight(obj) + get_obj_weight(container)) <= container->value[0] )
+                        &&     ( ( get_obj_weight(obj) + ch->pcdata->vault_weight) <= can_vault_w( ch ) ) )
+                        {
+                                found = TRUE;
+                                obj_from_char(obj);
+                                obj_to_objvault(obj, container);
+                                act("You lodge $p in $P in your vault.", ch, obj, container, TO_CHAR);
+                                act("$n lodges $p in $P in $S vault.", ch, obj, container, TO_ROOM);
+
+                        }
+                }
+
+                if (!found)
+                {
+                        if (!ch->carrying)
+                        {
+                            send_to_char("You don't have anything to put in your vault.", ch);
+                            return;
+
+                        }
+                        else {
+                            send_to_char("You can't do that.", ch);
+                            return;
                         }
                 }
         }

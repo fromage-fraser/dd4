@@ -866,6 +866,19 @@ welcoming abode for those who wish to use his tools or simply converse.
 & 80 'weaponsmithing'
 & 80 'armoursmithing'
 & 80 'defense knowledge'
+#30260
+dragonhoard clerk banker~
+the Dragonhoard clerk~
+The Dragonhoard clerk smiles warmly as you enter.
+~
+A kindly-looking man, he peers cheerfully at you over the brims of his half-moon
+spectacles.  He will be happy to assist you with any of your vault or bank account
+related inquiries.
+~
+2|32768|524288|16777216 0 800 S
+49 0 20 6d10+390 1d8+12
+0 0
+8 8 1
 
 #0
 
@@ -1995,7 +2008,8 @@ Business Road, North~
 A lovely smell wafts across the street here, coming from the open
 doors of the herbalist's shop to your east.  A variety of plants are
 arrayed outside its doors under heavy lamplight, and a sign proclaims
-assorted types of herbs on special today.
+assorted types of herbs on special today. To the west you see the
+splendid entrance to the Kerofk branch of Dragonhoard Bank.
    Business Road continues north and south.
 ~
 0 8 1
@@ -2011,6 +2025,10 @@ D2
 ~
 ~
 0 -1 30224
+D3
+~
+~
+0 -1 30356
 S
 #30224
 Intersection~
@@ -4399,6 +4417,18 @@ D3
 ~
 0 0 30230
 S
+#30356
+Dragonhoard Bank, Kerofk Branch~
+Not overly-large, but very tastefully decorated, the Kerofk branch of
+Dragonhoard Bank is a cosy though businesslike place to conduct your financial
+and valuables-related transactions.
+~
+0 4|8|16|1024 0
+D1
+~
+~
+0 0 30223
+S
 #0
 
 
@@ -4585,6 +4615,7 @@ M 1 30253 1 30245               /*receptionist*/
 M 1 30255 1 30353       /* brawler teacher*/
 M 1 30256 1 30297       /* Psi teacher */
 M 1 30257 1 30250       /* sft teacher - wanders */
+M 1 30260 1 30356       /* Dragonhoard clerk */
 D 1 30202 2 2
 D 1 30203 0 2
 D 1 30239 1 1

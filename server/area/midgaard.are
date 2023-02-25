@@ -319,7 +319,7 @@ teller~
 the teller~
 A bank teller watches you with a keen eye.
 ~
-This teller is a Giant of a man. I would not mess with him.
+This teller is a giant of a man. I would not mess with him.
 ~
 2|524288|16777216 0 900 S
 500 2 2 1d1+30000 1d8+18
@@ -2530,10 +2530,10 @@ You see the air.
 0 -1 3057
 S
 #3006
-Entrance to the Midgaard Bank & Adventurers Guild~
-You are standing in the entrance of the Bank of Midgaard. To the east you spy
-a Teller ready to take your money. A stairway leads up to the Adventurer's
-Guild where hardy souls are able to take quests.
+Entrance to Dragonhoard Bank & Adventurers Guild~
+You are standing in the entrance of Midgaard's branch of the Dragonhoard Bank.
+To the east you spy a teller ready to take your money and items. A stairway
+leads up to the Adventurer's Guild where hardy souls are able to take quests.
 ~
 0 8|1024 0
 D1
@@ -2552,14 +2552,14 @@ The entrance to the Adventurer's Guild is up from here.
 0 -1 25300
 S
 #3007
-The Midgaard Bank~
+Dragonhoard Bank, Midgaard Branch~
 
-You are standing in the Bank of Midgaard. A single Teller waits to take your
-deposit or to help you make a withdrawl.
+You are standing in the Midgaard branch of Dragonhoard Bank. A single teller
+waits to help you with your financial and item storage concerns.
 
-There is a large Sign on the wall.
+There is a large SIGN on the wall.
 ~
-0 4|8|1024 0
+0 4|8|16|1024 0
 D3
 You see the exit to the entrance hall.
 ~
@@ -2568,12 +2568,16 @@ You see the exit to the entrance hall.
 E
 sign~
 The sign reads:
-Free instructions provided by the Bank of Midgaard.
+Services provided by Dragonhoard Bank, Midgaard Branch.
 
-   Balance      Will find your current Balance, from anywhere.
-   Withdraw <<x> Will withdraw x coins from your account.
-   Deposit <<x>  Will Deposit x amount of coins to your account.
-   Borrow <<x>   Will borrow x amount from the bank.
+   Balance       Will display your current balance, from anywhere.
+   Withdraw <<x>  Will withdraw x coins from your account.
+   Deposit <<x>   Will deposit x amount of coins to your account.
+   Borrow <<x>    Will borrow x amount from the bank.
+   Vault         Will display contents of your bank vault, from anywhere.
+   Claim <<x>     Will remove item x from your bank vault.
+   Lodge <<x>     Will lodge item x in your bank vault.
+   Inspect <<x>   Will inspect item x in your bank vault.
 ~
 E
 writing carving carvings symbols symbol~

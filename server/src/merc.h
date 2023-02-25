@@ -2368,6 +2368,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define ROOM_DARK                       BIT_0
 #define ROOM_NO_MOB                     BIT_2
 #define ROOM_INDOORS                    BIT_3
+#define ROOM_VAULT                      BIT_4 /* Room in which a player's "vault" can be manipulated --Owl 22/2/23 */
 #define ROOM_CRAFT                      BIT_7 /* Improve outcomes of crafting skills and spells */
 #define ROOM_SPELLCRAFT                 BIT_8 /* --Owl 2/5/22 */
 #define ROOM_PRIVATE                    BIT_9
@@ -2806,6 +2807,9 @@ struct  pc_data
         int                 current_recall;
         int                 recall_points [ MAX_RECALL_POINTS ];
         OBJ_DATA *          morph_list [ MAX_WEAR ];
+        OBJ_DATA *          vault;                          /* Vault contents Owl 23/2/23*/
+        int                 vault_weight;
+        int                 vault_number;
         int                 blink;
         int                 deity_patron;
         int                 deity_favour [ NUMBER_DEITIES ];
@@ -2935,6 +2939,7 @@ struct obj_data
         OBJ_DATA *             contains;
         OBJ_DATA *             in_obj;
         CHAR_DATA *            carried_by;
+        CHAR_DATA *            vaulted_by;
         EXTRA_DESCR_DATA *     extra_descr;
         AFFECT_DATA *          affected;
         OBJ_INDEX_DATA *       pIndexData;
@@ -4081,6 +4086,7 @@ DECLARE_DO_FUN( do_choke                        );      /* choke for brawlers - 
 DECLARE_DO_FUN( do_clantalk                     );      /* clan talking - brutus */
 DECLARE_DO_FUN( do_climb                        );      /* climb skill - Brutus */
 DECLARE_DO_FUN( do_close                        );
+DECLARE_DO_FUN( do_claim                        );      /* remove items from vault */
 DECLARE_DO_FUN( do_coil                         );      /* coil - for snakes */
 DECLARE_DO_FUN( do_constrict                    );      /* constrict - for snakes */
 DECLARE_DO_FUN( do_combine                      );
@@ -4171,6 +4177,7 @@ DECLARE_DO_FUN( do_intimidate                   );      /* intimidate - thugs */
 DECLARE_DO_FUN( do_extort                       );
 DECLARE_DO_FUN( do_inventory                    );
 DECLARE_DO_FUN( do_invis                        );
+DECLARE_DO_FUN( do_inspect                      );     /* 'examine' for items in vault */
 DECLARE_DO_FUN( do_joust                        );      /* joust for knight */
 DECLARE_DO_FUN( do_kansetsu                     );      /* Martial artist - brutus */
 DECLARE_DO_FUN( do_kiai                         );      /* monk skill */
@@ -4188,6 +4195,7 @@ DECLARE_DO_FUN( do_list                         );
 DECLARE_DO_FUN( do_lock                         );
 DECLARE_DO_FUN( do_log                          );
 DECLARE_DO_FUN( do_look                         );
+DECLARE_DO_FUN( do_lodge                        );      /* put items into vault */
 DECLARE_DO_FUN( do_lunge                        );      /* for VAMPS - Brutus */
 DECLARE_DO_FUN( do_map                          );      /* Main mapping func - Tavolir */
 DECLARE_DO_FUN( do_maul                         );      /* tiger skill */
@@ -4212,6 +4220,7 @@ DECLARE_DO_FUN( do_swallow                      );      /* Owl 13/8/22 for 'whal
 DECLARE_DO_FUN( do_serrate                      );
 DECLARE_DO_FUN( do_spit_mucus                   );       /* Owl 18/8/22 'lag out' attack for aboleth and similar */
 DECLARE_DO_FUN( do_reforge                      );
+DECLARE_DO_FUN( do_vault                        );      /* Owl 22/2/23 allows players to see contents of their vault in a ROOM_VAULT */
 
 /* The following are for mob programs - Brutus */
 DECLARE_DO_FUN( do_mpasound                     );
@@ -4689,7 +4698,7 @@ void    colourconv                      args( ( char *buffer, const char *txt, C
 void    send_to_char_bw                 args( ( const char *txt, CHAR_DATA *ch ) );
 
 /* act_info.c */
-void  show_list_to_char                 args( ( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNothing ) );
+void  show_list_to_char                 args( ( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNothing, bool vaulted ) );
 char* format_obj_to_char                args( ( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort ) );
 void  show_char_to_char                 args( ( CHAR_DATA *list, CHAR_DATA *ch ) );
 void  set_title                         args( ( CHAR_DATA *ch, char *title ) );
@@ -4836,7 +4845,9 @@ int     get_curr_wis                    args( ( CHAR_DATA *ch ) );
 int     get_curr_dex                    args( ( CHAR_DATA *ch ) );
 int     get_curr_con                    args( ( CHAR_DATA *ch ) );
 int     can_carry_n                     args( ( CHAR_DATA *ch ) );
+int     can_vault_n                     args( ( CHAR_DATA *ch ) );
 int     can_carry_w                     args( ( CHAR_DATA *ch ) );
+int     can_vault_w                     args( ( CHAR_DATA *ch ) );
 bool    is_name                         args( ( const char *str, char *namelist ) );
 bool    multi_keyword_match             args( ( char *keys, char *namelist ) );
 bool    is_full_name                    args( ( const char *str, char *namelist ) );
@@ -4850,7 +4861,10 @@ void    affect_join                     args( ( CHAR_DATA *ch, AFFECT_DATA *paf 
 void    char_from_room                  args( ( CHAR_DATA *ch ) );
 void    char_to_room                    args( ( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex ) );
 void    obj_to_char                     args( ( OBJ_DATA *obj, CHAR_DATA *ch ) );
+void    obj_to_charvault                args( ( OBJ_DATA *obj, CHAR_DATA *ch ) );
+void    obj_to_charfromvault            args( ( OBJ_DATA *obj, CHAR_DATA *ch ) );
 void    obj_from_char                   args( ( OBJ_DATA *obj ) );
+void    obj_from_charvault              args( ( OBJ_DATA *obj ) );
 int     apply_ac                        args( ( OBJ_DATA *obj, int iWear ) );
 OD *    get_eq_char                     args( ( CHAR_DATA *ch, int iWear ) );
 void    equip_char                      args( ( CHAR_DATA *ch, OBJ_DATA *obj, int iWear ) );
@@ -4860,7 +4874,9 @@ int     count_obj_list                  args( ( OBJ_INDEX_DATA *obj, OBJ_DATA *l
 void    obj_from_room                   args( ( OBJ_DATA *obj ) );
 void    obj_to_room                     args( ( OBJ_DATA *obj, ROOM_INDEX_DATA *pRoomIndex ) );
 void    obj_to_obj                      args( ( OBJ_DATA *obj, OBJ_DATA *obj_to ) );
+void    obj_to_objvault                 args( ( OBJ_DATA *obj, OBJ_DATA *obj_to ) );
 void    obj_from_obj                    args( ( OBJ_DATA *obj ) );
+void    obj_from_objvault               args( ( OBJ_DATA *obj ) );
 void    extract_obj                     args( ( OBJ_DATA *obj ) );
 void    extract_char                    args( ( CHAR_DATA *ch, bool fPull ) );
 CD *    get_char_room                   args( ( CHAR_DATA *ch, char *argument ) );
@@ -4869,8 +4885,10 @@ CD *    get_qchar_world                 args( ( CHAR_DATA *ch, char *argument, i
 OD *    get_obj_type                    args( ( OBJ_INDEX_DATA *pObjIndexData ) );
 OD *    get_obj_list                    args( ( CHAR_DATA *ch, char *argument, OBJ_DATA *list ) );
 OD *    get_obj_carry                   args( ( CHAR_DATA *ch, char *argument ) );
+OD *    get_obj_vaulted                 args( ( CHAR_DATA *ch, char *argument ) );
 OD *    get_obj_wear                    args( ( CHAR_DATA *ch, char *argument ) );
 OD *    get_obj_here                    args( ( CHAR_DATA *ch, char *argument ) );
+OD *    get_obj_herevault               args( ( CHAR_DATA *ch, char *argument ) );
 OD *    get_obj_world                   args( ( CHAR_DATA *ch, char *argument ) );
 OD *    create_money                    args( ( int plat, int gold, int silver, int copper ) );
 OD *    create_smelted_materials        args( ( int smelted_steel, int smelted_titanium, int smelted_adamantite, int smelted_electrum, int smelted_starmetal ) );

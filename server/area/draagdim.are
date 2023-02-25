@@ -3319,7 +3319,7 @@ S
 The Square~
 You are standing in a large square whose centre is dominated by a
 large statue. To the west is a heavy, iron-bound door, while a tinker'S
-shop lies to the east.  To the north and south the square continues. 
+shop lies to the east.  To the north and south the square continues.
 A sign hangs here.
 ~
 0 0 1
@@ -4870,7 +4870,8 @@ This expansive room, filled with tasteful works of art, both modern and
 contemporary, is where the rich and famous mix and socialize.  Small tables
 and quiet booths section off the room.  To the north is the kitchen, to the
 east are the bathrooms, and to the west is the massage room.  Stairs lead up
-to the private rooms on the second floor and down to the Depository.
+to the private rooms on the second floor and down to Draagdim's branch of
+Dragonhoard Bank.
 ~
 0 8 0
 D 0
@@ -6258,13 +6259,13 @@ D 5
 S
 
 #28180
-The Depository~
+Dragonhoard Bank, Draagdim Branch~
 You follow the stairs down and then you almost fall off the final step as you
-spot a platinum dragon! After a moment the dragon asks you if you would like
+encounter a platinum dragon! After a moment the dragon asks you if you would like
 to deposit anything. Apparently this dragon enjoys hoarding other peoples gold
-as well as its own.
+and valuables as well as its own.
 ~
-0 8|8192 0
+0 8|16|8192 0
 D 4
 ~
 ~
@@ -6424,7 +6425,7 @@ M 0 28055 1 28150               add A lake Gate Guard to The City Park
 M 0 28051 1 28154               add Charybdis to Bottom of the lake
 M 0 28059 1 28169               add Xedd's Vorc to {rXeddicus'{W Chamber{x
 M 0 28054 1 28089               add The Royal Door Guard to The Entrance to the Magus's Tower
-M 0 28045 1 28180               add Rak'ben to The Depository
+M 0 28045 1 28180               add Rak'ben to Dragonhoard Bank, Draagdim Branch
 E 0 28077 0 5                       equip platinum scales (body)
 E 0 28076 0 16                      equip a massive platinum claw (wield)
 E 0 28078 0 17                      equip a platinum coin (hold)

@@ -1273,6 +1273,18 @@ in the thousands of gruelling, lonely hours required ot master such a craft.
 0 0
 8 8 1
 
+#30079
+female teller dragonhoard~
+a Dragonhoard teller~
+A Dragonhoard teller sits quietly behind a counter, awaiting your business.
+~
+She is polite, composed, calm, and sanguine in demeanour and temperament.
+~
+2|64|524288 8|32|128 0 S
+50 0 0 0d0+0 0d0+0
+36 0
+8 8 2
+
 #0
 
 
@@ -3601,7 +3613,8 @@ S
 #30051
 Antioch Road~
 A narrow street leads east to a wider street and west to one of
-the city watchtowers.
+the city watchtowers. You see the open entrance to Krondor's branch
+of Dragonhoard bank to the south.
 ~
 0 0 1
 D1
@@ -3609,6 +3622,11 @@ A tall watchtower stands a silent vigil over the city.
 ~
 ~
 0 0 30052
+D2
+You see the open entrance to Krondor's branch of Dragonhoard Bank.
+~
+~
+0 0 30127
 D3
 A small side street greets you.
 ~
@@ -5414,6 +5432,34 @@ You see the centre of the inner city market square.
 ~
 0 -1 30008
 S
+#30127
+Dragonhoard Bank, Krondor Branch~
+You stand in the richly-decorated and well-appointed Krondor branch of the
+the Domain's infamous Dragonhoard Bank.  A polite, composed teller waits
+behind a counter for you to state your business in the bank, tapping a large
+SIGN behind her.
+~
+0 4|16 1
+D0
+You see the bustling thoroughfare of Antioch Road.
+~
+~
+0 -1 30051
+E
+sign~
+The sign reads:
+Services provided by Dragonhoard Bank, Krondor Branch.
+
+   Balance       Will display your current balance, from anywhere.
+   Withdraw <<x>  Will withdraw x coins from your account.
+   Deposit <<x>   Will deposit x amount of coins to your account.
+   Borrow <<x>    Will borrow x amount from the bank.
+   Vault         Will display contents of your bank vault, from anywhere.
+   Claim <<x>     Will remove item x from your bank vault.
+   Lodge <<x>     Will lodge item x in your bank vault.
+   Inspect <<x>   Will inspect item x in your bank vault.
+~
+S
 #0
 
 
@@ -5921,7 +5967,9 @@ E 1 30086 100 7
 E 1 30085 100 12
 *
 M 1 30078 1 30126           Master tinker to Krondor's Tinkery
-
+*
+M 1 30079 1 30127           Dragonhooard Teller to Dragonhoard branch
+*
 D 0 30121 0 1               close the altar
 O 0 30089 0 30125           portal to room behind altar
 O 0 30090 0 30065           portal to the portal to draagdim
