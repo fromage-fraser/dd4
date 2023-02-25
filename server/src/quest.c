@@ -93,7 +93,7 @@ void do_quest (CHAR_DATA *ch, char *argument)
         char arg2 [MAX_INPUT_LENGTH];
         int next;
 
-        const int NUMBER_RECALL_POINTS = 13;
+        const int NUMBER_RECALL_POINTS = 14;
         const struct quest_recall quest_recall_info [] =
         {
             /*  Pfile slot, quest point cost, room vnum, name  */
@@ -106,6 +106,7 @@ void do_quest (CHAR_DATA *ch, char *argument)
                 {  6,   500,  18835,  "Dahij"           },
                 { 13,   400,   1313,  "HighTower"       },
                 { 14,   400,  27347,  "Ota'ar Dar"      },
+                { 15,   400,  16084,  "Underdark"       },
                 {  7,   300,  30234,  "Kerofk"          },
                 { 11,   250,  12167,  "Westreen"        },
                 {  8,   200,  10201,  "Solace"          },

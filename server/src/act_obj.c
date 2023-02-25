@@ -491,6 +491,11 @@ void do_claim (CHAR_DATA *ch, char *argument)
         argument = one_argument(argument, arg1);
         argument = one_argument(argument, arg2);
 
+        if (IS_NPC(ch))
+        {
+            return;
+        }
+
         if (!IS_SET(ch->in_room->room_flags, ROOM_VAULT))
         {
             send_to_char( "You cannot access your vault from this location.\n\r", ch );
@@ -829,6 +834,11 @@ void do_lodge (CHAR_DATA *ch, char *argument)
         argument = one_argument(argument, arg1);
         argument = one_argument(argument, arg2);
         container = get_obj_vaulted(ch, arg2);
+
+        if (IS_NPC(ch))
+        {
+            return;
+        }
 
         if (!IS_SET(ch->in_room->room_flags, ROOM_VAULT))
         {

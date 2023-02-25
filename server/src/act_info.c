@@ -1615,6 +1615,11 @@ void do_inspect (CHAR_DATA *ch, char *argument)
 
         one_argument( argument, arg );
 
+        if (IS_NPC(ch))
+        {
+            return;
+        }
+
         if (!IS_SET(ch->in_room->room_flags, ROOM_VAULT))
         {
             send_to_char( "You cannot inspect items in your vault from here.\n\r", ch );
@@ -2919,6 +2924,11 @@ void do_inventory( CHAR_DATA *ch, char *argument )
 void do_vault( CHAR_DATA *ch, char *argument )
 {
         char buf        [ MAX_STRING_LENGTH ];
+
+        if (IS_NPC(ch))
+        {
+            return;
+        }
 
         if (ch->fighting)
         {
