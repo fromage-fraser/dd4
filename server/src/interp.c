@@ -70,6 +70,7 @@ const struct cmd_type cmd_table [] =
         { "exits",              do_exits,           POS_RESTING,    0,  LOG_NORMAL      },
         { "get",                do_get,             POS_RESTING,    0,  LOG_NORMAL      },
         { "inventory",          do_inventory,       POS_DEAD,       0,  LOG_NORMAL      },
+        { "vault",              do_vault,           POS_DEAD,       0,  LOG_NORMAL      },
         { "kill",               do_kill,            POS_FIGHTING,   0,  LOG_NORMAL      },
         { "look",               do_look,            POS_RESTING,    0,  LOG_NORMAL      },
         { "order",              do_order,           POS_RESTING,    0,  LOG_ALWAYS      },
@@ -80,6 +81,8 @@ const struct cmd_type cmd_table [] =
         { "stand",              do_stand,           POS_SLEEPING,   0,  LOG_NORMAL      },
         { "tell",               do_tell,            POS_DEAD,       0,  LOG_NORMAL      },
         { "wield",              do_wear,            POS_RESTING,    0,  LOG_NORMAL      },
+        { "lodge",              do_lodge,           POS_RESTING,    0,  LOG_NORMAL      },
+        { "claim",              do_claim,           POS_RESTING,    0,  LOG_NORMAL      },
         /*{ "map",              do_map,         POS_STANDING,    0,  LOG_NORMAL },*/
 
         /*
@@ -100,6 +103,7 @@ const struct cmd_type cmd_table [] =
         { "help",               do_help,        POS_DEAD,        0,  LOG_NORMAL },
         { "hero",               do_hero,        POS_DEAD,        0,  LOG_NORMAL },
         { "infamy",             do_infamy,      POS_DEAD,        0,  LOG_NORMAL },
+        { "inspect",            do_inspect,     POS_RESTING,     0,  LOG_NORMAL },
         { "legends",            do_legend,      POS_DEAD,        0,  LOG_NORMAL },
         { "levels",             do_levels,      POS_DEAD,        0,  LOG_NORMAL },
         { "pkillers",           do_pkillers,    POS_DEAD,        0,  LOG_NORMAL },

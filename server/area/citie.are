@@ -577,7 +577,19 @@ He snarls at you.
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-
+#23553
+surly Dragonhoard clerk~
+a surly Dragonhoard clerk~
+A surly clerk regards you with disquieted trepidation.
+~
+A thin, fierce-looking man, you'd guess him to be a local employee of
+Dragonhoard's.  By the suspicion he regards you with, you'd imagine he
+has to contend with a fair amount of attempted robberies and the like.
+~
+2|32|64|524288 8 0 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
 #0
 
 
@@ -2535,8 +2547,9 @@ S
 #23567
 Clog Street~
 Clog street is very narrow and lined with terraced cottages and the
-occasional shop. To the north lies a shop with its door closed.A silver
-sign hanging outside reads "Ben Borryman, Silversmith."
+occasional shop. To the north lies a shop with its door closed. A silver
+sign hanging outside reads "Ben Borryman, Silversmith." Southwards is the
+City of Thieves' branch of Dragonhoard Bank.
 ~
 0 0 1
 D0
@@ -2547,6 +2560,10 @@ D1
 ~
 ~
 0 -1 23570
+D2
+~
+~
+0 -1 23615
 D3
 ~
 ~
@@ -2925,7 +2942,7 @@ S
 'Jimmy Quicktint', Best Tattooist In Town~
 The room is dimly lit and is taken up by a large table and an even larger
  man standing in the middle of the room. His arms, hands, feet and even
-his face are completely covered in tattoo's of horrific beasts and battles.
+his face are completely covered in tattoos of horrific beasts and battles.
 He looks at you and screams, 'GET OUT NOW!'
 ~
 0 8 0
@@ -3277,6 +3294,18 @@ D1
 ~
 0 -1 23556
 S
+#23615
+Dragonhoard Bank, City of Thieves Branch~
+You stand in the somewhat grimy and run-down City of Thieves branch of
+Dragonhoard bank. A surly man, clad in black, whom you presume to be
+the clerk sits at a counter here, regarding you with mild suspicion.
+~
+0 1|8|16|8192 0
+D0
+~
+~
+0 -1 23567
+S
 #0
 
 
@@ -3323,6 +3352,7 @@ D 1 23539 1 1           ; Town markets Close East
 D 1 23540 3 1           ; Madam Star Clairvoyant. Close West
 D 1 23528 3 2           ; Front Lawn Lock West
 D 1 23529 1 2           ; Entranceway. Lock East
+M 1 23553 1 23615       ; Clerk to Dragonhoard bank
 M 1 23507 1 23528           the wolf to Front Lawn
 G 1 23537 100
 O 1 23539 100 23531         a chest to A Landing

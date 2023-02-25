@@ -487,6 +487,18 @@ A tall and powerfull man.
 55 0 0 1r1+1 1d1+1
 0 0
 0 0 1
+#12045
+teller dragonhoard sullen~
+a Dragonhoard teller~
+A sullen Dragonhoard teller stares at you expectantly.
+~
+He has a long-suffering expression on his face.  You doubt he enjoys his job
+much.
+~
+2|524288|16777216 0 0 S
+32 0 0 1d1+1 1d1+1
+0 0
+0 0 1
 #0
 
 
@@ -4201,6 +4213,11 @@ You see Merchant Road.
 ~
 ~
 0 -1 12176
+D2
+You see the Westreen branch of Dragonhoard Bank.
+~
+~
+1 -1 12200
 S
 #12178
 Thrush Street~
@@ -4551,6 +4568,19 @@ You see Thrush Street.
 door~
 1 -1 12179
 S
+#12200
+Dragonhoard Bank, Westreen Branch~
+   You are inside a the tastefully but sparsely-decorated Westreen branch of
+Dragonhoard Bank. Inside an imposing cashier's cage, a sullen teller waits for
+you to state your business.
+~
+121 8|16 0
+D0
+You see the Western end of Merchant Road.
+~
+door~
+1 -1 12177
+S
 #0
 
 
@@ -4570,6 +4600,9 @@ D 0 12147 3 1           Close door from the other side
 *
 D 0 12165 0 1           Close gate of Westreen
 D 0 12166 2 1           Close gate from the other side
+*
+D 0 12200 0 1           Close door of Bank from inside
+D 0 12177 2 1           Close door of Bank from outside
 *
 M 0 12008 1 12005               A shark
 M 0 12009 1 12045               A whale
@@ -4754,6 +4787,7 @@ M 0 12042 4 12193               A citizen of Westreen
 G 1 12005 0                Give some coins
 M 0 12043 1 12159               A little white mouse alias the great sorcerer
 O 0 12046 0 12167               A purple fountain
+M 0 12045 1 12200               A Dragonhoard teller to Dragonhoard Bank
 S
 
 

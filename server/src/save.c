@@ -49,9 +49,9 @@ static  OBJ_DATA *      rgObjNest       [ MAX_NEST ];
  * Local functions.
  */
 void    fwrite_char     args((CHAR_DATA *ch,  FILE *fp));
-void    fwrite_obj      args((CHAR_DATA *ch,  OBJ_DATA  *obj,  FILE *fp, int iNest));
+void    fwrite_obj      args((CHAR_DATA *ch,  OBJ_DATA  *obj,  FILE *fp, int iNest, bool vault));
 void    fread_char      args((CHAR_DATA *ch,  FILE *fp));
-void    fread_obj       args((CHAR_DATA *ch,  FILE *fp));
+void    fread_obj       args((CHAR_DATA *ch,  FILE *fp, bool vault));
 
 /*
  * Save a character and inventory.
@@ -61,8 +61,10 @@ void    fread_obj       args((CHAR_DATA *ch,  FILE *fp));
 void save_char_obj (CHAR_DATA *ch)
 {
         FILE *fp;
-        char  buf     [ MAX_STRING_LENGTH ];
-        char  strsave [ MAX_INPUT_LENGTH  ];
+        FILE *vp;
+        char  buf           [ MAX_STRING_LENGTH ];
+        char  strsave       [ MAX_INPUT_LENGTH  ];
+        char  strvaultsave  [ MAX_INPUT_LENGTH  ];
 
         if (IS_NPC(ch) || ch->level < 2)
                 return;
@@ -80,6 +82,13 @@ void save_char_obj (CHAR_DATA *ch)
         sprintf(strsave, "%s%s", PLAYER_DIR, capitalize(ch->name));
 #endif
 
+    /* For .vault files */
+#if !defined(macintosh) && !defined(MSDOS)
+        sprintf(strvaultsave, "%s%s%s%s.vault", PLAYER_DIR, initial(ch->name),"/", capitalize(ch->name));
+#else
+        sprintf(strvaultsave, "%s%s.vault", PLAYER_DIR, capitalize(ch->name));
+#endif
+
         if (!(fp = fopen(strsave, "w")))
         {
                 sprintf(buf, "Save_char_obj: fopen %s: ", ch->name);
@@ -91,10 +100,29 @@ void save_char_obj (CHAR_DATA *ch)
                 fwrite_char(ch, fp);
 
                 if (ch->carrying)
-                        fwrite_obj(ch, ch->carrying, fp, 0);
+                        fwrite_obj(ch, ch->carrying, fp, 0, FALSE);
 
                 fprintf(fp, "#END\n");
                 fclose(fp);
+        }
+
+        /* For vault file - Owl 23/2/22 */
+
+        if (!(vp = fopen(strvaultsave, "w")))
+        {
+                sprintf(buf, "Save_char_obj: fopen %s.vault: ", ch->name);
+                bug(buf, 0);
+                perror(strvaultsave);
+        }
+        else
+        {
+                if (ch->pcdata->vault)
+                {
+                        fwrite_obj(ch, ch->pcdata->vault, vp, 0, TRUE);
+                }
+
+                fprintf(vp, "#END\n");
+                fclose(vp);
         }
 
         fpReserve = fopen(NULL_FILE, "r");
@@ -316,7 +344,7 @@ void fwrite_char (CHAR_DATA *ch, FILE *fp)
 /*
  * Write an object and its contents.
  */
-void fwrite_obj (CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest)
+void fwrite_obj (CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest, bool vault)
 {
         AFFECT_DATA      *paf;
         EXTRA_DESCR_DATA *ed;
@@ -326,13 +354,18 @@ void fwrite_obj (CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest)
          *   so loading them will load in forwards order.
          */
         if (obj->next_content)
-                fwrite_obj(ch, obj->next_content, fp, iNest);
+                fwrite_obj(ch, obj->next_content, fp, iNest, vault);
 
         /*
          * Castrate storage characters.
          */
         if (obj->item_type == ITEM_KEY || obj->deleted)
                 return;
+
+        /* Don't put worn gear in vault */
+
+        if( obj->wear_loc >= 0 && vault)
+            return;
 
         /*
          * Prevent eq stealing and loss of clan healing items
@@ -421,7 +454,7 @@ void fwrite_obj (CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest)
         fprintf(fp, "End\n\n");
 
         if (obj->contains)
-                fwrite_obj(ch, obj->contains, fp, iNest + 1);
+                fwrite_obj(ch, obj->contains, fp, iNest + 1, vault);
 
         tail_chain();
 }
@@ -433,12 +466,14 @@ void fwrite_obj (CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest)
 bool load_char_obj (DESCRIPTOR_DATA *d, char *name)
 {
         FILE      *fp;
+        FILE      *vp;
         static PC_DATA    pcdata_zero;
         CHAR_DATA *ch;
 #if !defined(MSDOS)
-        char       buf     [ MAX_STRING_LENGTH ];
+        char       buf          [ MAX_STRING_LENGTH ];
 #endif
-        char       strsave [ MAX_INPUT_LENGTH ];
+        char       strsave      [ MAX_INPUT_LENGTH ];
+        char       strvaultsave [ MAX_INPUT_LENGTH ];
         bool       found;
         int        next;
 
@@ -588,7 +623,7 @@ bool load_char_obj (DESCRIPTOR_DATA *d, char *name)
                         if (!str_cmp(word, "PLAYER"))
                                 fread_char(ch, fp);
                         else if (!str_cmp(word, "OBJECT"))
-                                fread_obj(ch, fp);
+                                fread_obj(ch, fp, FALSE);
                         else if (!str_cmp(word, "END"))
                                 break;
                         else
@@ -599,6 +634,71 @@ bool load_char_obj (DESCRIPTOR_DATA *d, char *name)
                 }
 
                 fclose(fp);
+        }
+
+ /* parsed player file directories by Yaz of 4th Realm */
+        /* decompress if .gz file exists - Thx Alander */
+        /* Modified for vault files - Owl 23/2/23 */
+#if !defined(macintosh) && !defined(MSDOS)
+        sprintf(strvaultsave, "%s%s%s%s%s.vault", PLAYER_DIR, initial(ch->name),
+                "/", capitalize(name), ".gz");
+        if ((vp = fopen(strvaultsave, "r")))
+        {
+                fclose(vp);
+                sprintf(buf, "gzip -dfq %s", strvaultsave);
+                system(buf);
+        }
+#endif
+
+#if !defined(macintosh) && !defined(MSDOS)
+        sprintf(strvaultsave, "%s%s%s%s.vault", PLAYER_DIR, initial(ch->name),
+                "/", capitalize(name));
+#else
+        sprintf(strvaultsave, "%s%s.vault", PLAYER_DIR, capitalize(name));
+#endif
+
+        if ((vp = fopen(strvaultsave, "r")))
+        {
+                int iNest;
+
+                for (iNest = 0; iNest < MAX_NEST; iNest++)
+                        rgObjNest[iNest] = NULL;
+
+                found = TRUE;
+
+                while (1)
+                {
+                        char letter;
+                        char *word;
+
+                        letter = fread_letter(vp);
+
+                        if (letter == '*')
+                        {
+                                fread_to_eol(vp);
+                                continue;
+                        }
+
+                        if (letter != '#')
+                        {
+                                bug("Load_char_obj VAULT: # not found.", 0);
+                                break;
+                        }
+
+                        word = fread_word(vp);
+
+                        if (!str_cmp(word, "OBJECT"))
+                                fread_obj(ch, vp, TRUE);
+                        else if (!str_cmp(word, "END"))
+                                break;
+                        else
+                        {
+                                bug("Load_char_obj VAULT: bad section.", 0);
+                                break;
+                        }
+                }
+
+                fclose(vp);
         }
 
         fpReserve = fopen(NULL_FILE, "r");
@@ -1064,7 +1164,7 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
 }
 
 
-void fread_obj (CHAR_DATA *ch, FILE *fp)
+void fread_obj (CHAR_DATA *ch, FILE *fp, bool vault)
 {
         static OBJ_DATA obj_zero;
         OBJ_DATA        *obj;
@@ -1182,9 +1282,22 @@ void fread_obj (CHAR_DATA *ch, FILE *fp)
                                         object_list     = obj;
                                         obj->pIndexData->count++;
                                         if (iNest == 0 || !rgObjNest[iNest])
-                                                obj_to_char(obj, ch);
-                                        else
-                                                obj_to_obj(obj, rgObjNest[iNest-1]);
+                                        {
+                                                if (vault) {
+                                                    obj_to_charvault(obj, ch);
+                                                }
+                                                else {
+                                                    obj_to_char(obj, ch);
+                                                }
+                                        }
+                                        else {
+                                                if (vault) {
+                                                    obj_to_objvault(obj, rgObjNest[iNest-1]);
+                                                }
+                                                else {
+                                                    obj_to_obj(obj, rgObjNest[iNest-1]);
+                                                }
+                                        }
                                         return;
                                 }
                         }

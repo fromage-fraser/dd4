@@ -463,6 +463,18 @@ Ofcol.
 19 6 -4 18d18+180 1d4+12
 0 29000
 8 8 1
+#635
+teller sluggish dragonhoard~
+a sluggish Dragonhoard teller~
+A sluggish Dragonhoard teller reclines here in a chair.
+~
+He acknowledges your presence with a lazy raise of his eyebrows, and looks
+about 30 seconds away from falling fast asleep.
+~
+2|64|524288 8|128|8192 1000 S
+20 0 -10 20d20+200 1d4+15
+0 50000
+8 8 1
 #0
 
 
@@ -2375,7 +2387,7 @@ Raff Way~
      You are on Raff Way.  To the west, you can see a big intersection.  To
 the east, you see Raff Way continue toward the Golden Citadel.  There are
 beautiful flowers growing along the rode here, making this more of a garden
-than a road.
+than a road. To the south, you see the local office of Dragonhoard Bank.
 ~
 6 0 1
 D1
@@ -2383,6 +2395,11 @@ Raff Way continues east.
 ~
 ~
 0 0 667
+D2
+the Ofcol branch of Dragonhoard Bank.
+~
+~
+0 0 800
 D3
 You see the big intersection.
 ~
@@ -3028,6 +3045,19 @@ D3
 ~
 0 0 667
 S
+#800
+Dragonhoard Bank, Ofcol Branch~
+     You stand in the large and imposing structure of the Ofcol branch of
+Dragonhoard Bank.  High, domed, richly decorated ceilings and polished wooden
+furniture of exceptional quality testify to the success of this branch and
+the wealth of its clients.
+~
+6 8|16 2
+D0
+~
+~
+0 0 666
+S
 #0
 
 
@@ -3293,6 +3323,7 @@ E 1 620 99 1            Signet Ring
 E 1 654 99 5            Gold Plate
 E 1 660 99 11           Gold Shield
 E 1 662 99 16           Gold Claw
+M 0 635 1 800           Dragonhoard clerk
 S
 
 

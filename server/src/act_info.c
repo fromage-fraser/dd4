@@ -413,7 +413,7 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
  * Show a list to a character.
  * Can coalesce duplicated items.
  */
-void show_list_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNothing )
+void show_list_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNothing, bool vaulted )
 {
         OBJ_DATA  *obj;
         char       buf [ MAX_STRING_LENGTH ];
@@ -460,9 +460,9 @@ void show_list_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNo
                         if (IS_NPC(ch) || IS_SET(ch->act, PLR_COMBINE))
                         {
                                 /*
-                                 * Look for duplicates, case sensitive.
-                                 * Matches tend to be near end so run loop backwards.
-                                 */
+                                * Look for duplicates, case sensitive.
+                                * Matches tend to be near end so run loop backwards.
+                                */
                                 for (iShow = nShow - 1; iShow >= 0; iShow--)
                                 {
                                         if (!strcmp(prgpstrShow[iShow], pstrShow))
@@ -475,8 +475,8 @@ void show_list_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNo
                         }
 
                         /*
-                         * Couldn't combine, or didn't want to.
-                         */
+                        * Couldn't combine, or didn't want to.
+                        */
                         if (!fCombine)
                         {
                                 prgpstrShow [nShow] = str_dup(pstrShow);
@@ -521,6 +521,7 @@ void show_list_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNo
          */
         free_mem(prgpstrShow, count * sizeof(char *));
         free_mem(prgnShow, count * sizeof(int));
+
 }
 
 
@@ -860,7 +861,7 @@ void show_char_to_char_1( CHAR_DATA *victim, CHAR_DATA *ch )
                     && number_percent( ) < ch->pcdata->learned[gsn_peek] )
                 {
                         send_to_char( "\n\rYou peek at the inventory:\n\r", ch );
-                        show_list_to_char( victim->carrying, ch, TRUE, TRUE );
+                        show_list_to_char( victim->carrying, ch, TRUE, TRUE, FALSE );
                 }
         }
 
@@ -1318,7 +1319,7 @@ void do_look( CHAR_DATA *ch, char *argument )
                         send_to_char(buf, ch);
                 }
 
-                show_list_to_char( ch->in_room->contents, ch, FALSE, FALSE );
+                show_list_to_char( ch->in_room->contents, ch, FALSE, FALSE, FALSE );
                 show_char_to_char( ch->in_room->people,   ch );
 
                 ansi_color( NTEXT, ch );
@@ -1375,7 +1376,7 @@ void do_look( CHAR_DATA *ch, char *argument )
                         }
 
                         act( "$p contains:", ch, obj, NULL, TO_CHAR );
-                        show_list_to_char( obj->contains, ch, TRUE, TRUE );
+                        show_list_to_char( obj->contains, ch, TRUE, TRUE, FALSE );
                         break;
                 }
                 return;
@@ -1603,6 +1604,120 @@ void do_examine (CHAR_DATA *ch, char *argument)
                         break;
                 }
         }
+}
+
+/* Look at an object in your vault*/
+void do_inspect (CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA *obj;
+        char arg [MAX_INPUT_LENGTH];
+        char *pdesc;
+
+        one_argument( argument, arg );
+
+        if (!IS_SET(ch->in_room->room_flags, ROOM_VAULT))
+        {
+            send_to_char( "You cannot inspect items in your vault from here.\n\r", ch );
+            return;
+        }
+
+        if (arg[0] == '\0')
+        {
+                send_to_char ("Inspect what?\n\r", ch);
+                return;
+        }
+
+        obj = get_obj_herevault (ch, arg);
+        if ( (ch->class == CLASS_SMITHY) &&  (ch->pcdata->learned[gsn_innate_knowledge] > obj->level ) &&
+                (obj->item_type == ITEM_WEAPON
+                || obj->item_type == ITEM_ARMOR
+                || obj->item_type == ITEM_TURRET_MODULE
+                || obj->item_type == ITEM_TURRET
+                || obj->item_type == ITEM_DEFENSIVE_TURRET_MODULE) )
+        {
+                send_to_char ("You cast your expert eye over the item.\n\r", ch);
+                obj->identified = TRUE;
+        }
+
+        for ( obj = ch->pcdata->vault; obj; obj = obj->next_content )
+        {
+                if ( can_see_obj( ch, obj ))
+                {
+                        pdesc = get_extra_descr( arg, obj->extra_descr );
+                        if ( pdesc )
+                        {
+                                send_to_char( pdesc, ch );
+                                send_to_char( "\n\r", ch );
+                                if (obj->identified)
+                                {
+                                        spell_identify ( 1, 1, ch, obj);
+                                }
+                        }
+
+                        pdesc = get_extra_descr( arg, obj->pIndexData->extra_descr );
+                        if ( pdesc )
+                        {
+                                send_to_char( pdesc, ch );
+                                send_to_char( "\n\r", ch );
+                        }
+                }
+                if ( is_name( arg, obj->name ))
+                {
+                        send_to_char( obj->description, ch );
+                        send_to_char( "\n\r", ch );
+                        if (obj->identified)
+                        {
+                              spell_identify ( 1, 1, ch, obj);
+                        }
+                        break;
+                }
+        }
+
+        obj = get_obj_herevault (ch, arg);
+
+        if (!IS_NPC(ch) && IS_SET(obj->extra_flags, ITEM_TRAP)
+                    && number_percent() < ch->pcdata->learned[gsn_find_traps])
+        {
+                send_to_char( "\n\r{RYou believe that it is trapped.{x\n\r", ch );
+                return;
+        }
+
+        switch (obj->item_type)
+        {
+            case ITEM_DRINK_CON:
+            case ITEM_CONTAINER:
+            case ITEM_TURRET:
+            case ITEM_CORPSE_NPC:
+            case ITEM_CORPSE_PC:
+                if ( IS_SET( obj->value[1], CONT_CLOSED ) )
+                {
+                        send_to_char( "It is closed.\n\r", ch );
+                        break;
+                }
+
+                act( "$p contains:", ch, obj, NULL, TO_CHAR );
+                show_list_to_char( obj->contains, ch, TRUE, TRUE, FALSE );
+                break;
+
+            case ITEM_WEAPON:
+                if (obj->timer > 0 && obj->timer <= TIMER_ALERT)
+                {
+                        if (IS_SET(obj->extra_flags, ITEM_POISONED))
+                                send_to_char("Poison is beginning to seriously corrode the blade.\n\r", ch);
+
+                        else if (IS_SET(obj->extra_flags, ITEM_SHARP)
+                                    || IS_SET(obj->extra_flags, ITEM_BLADE_THIRST))
+                                send_to_char("The blade's condition is deteriorating badly.\n\r", ch);
+                }
+                break;
+
+            case ITEM_ARMOR:
+                if (obj->timer > 0 && obj->timer <= TIMER_ALERT
+                    && IS_SET(obj->extra_flags, ITEM_FORGED))
+                        send_to_char("The forged metal looks to be in poor condition.\n\r", ch);
+                break;
+        }
+        return;
 }
 
 
@@ -2793,11 +2908,43 @@ void do_inventory( CHAR_DATA *ch, char *argument )
         }
 
         send_to_char( "Your backpack contains:\n\r", ch );
-        show_list_to_char( ch->carrying, ch, TRUE, TRUE );
+        show_list_to_char( ch->carrying, ch, TRUE, TRUE, FALSE );
         sprintf( buf, "You are carrying %d/%d items.\n\r",
                 ch->carry_number, can_carry_n( ch ) );
         send_to_char( buf, ch );
 
+        return;
+}
+
+void do_vault( CHAR_DATA *ch, char *argument )
+{
+        char buf        [ MAX_STRING_LENGTH ];
+
+        if (ch->fighting)
+        {
+                send_to_char("You're a bit busy to try to look in your vault!\n\r", ch);
+                return;
+        }
+
+        if (!IS_SET(ch->in_room->room_flags, ROOM_VAULT))
+        {
+            send_to_char( "{CYou consult your Dragonhoard Bank ledger...{x\n\r\n\r", ch );
+        }
+
+        send_to_char( "{cYour vault contains:{x\n\r", ch );
+        show_list_to_char( ch->pcdata->vault, ch, TRUE, TRUE, TRUE );
+
+        if (ch->pcdata->vault_number)
+        {
+            sprintf( buf, "You have <14>%d<0>/<6>%d<0> items lodged, weighing ",
+                ch->pcdata->vault_number, can_vault_n( ch ) );
+            send_to_char( buf, ch );
+
+            sprintf( buf, "<14>%d<0>/<6>%d<0> lbs.\n\r",
+                ch->pcdata->vault_weight,
+                can_vault_w( ch ) );
+            send_to_char( buf, ch );
+        }
         return;
 }
 

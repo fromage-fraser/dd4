@@ -542,13 +542,13 @@ heralt tinker~
 Heralt, tinker of Freeport~
 Heralt, tinker of Freeport stands here.
 ~
-A somewhat surly older man, Heralt has a beaten-down look about him; you 
-suspect he doesn't really love his job.  The orderliness of the store, and 
-the quality of the repairs you can see he's done, however, suggest he's 
-a more than competent tinker, able to repair any degrading items you might 
+A somewhat surly older man, Heralt has a beaten-down look about him; you
+suspect he doesn't really love his job.  The orderliness of the store, and
+the quality of the repairs you can see he's done, however, suggest he's
+a more than competent tinker, able to repair any degrading items you might
 have on you.
 ~
-2|262144|524288 0 100 S
+2|262144 0 100 S
 48 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -2034,13 +2034,13 @@ Naval Street~
 0 -1 29154
 S
 #29158
-The Bank of Freeport~
-You stand inside the stout walls of the bank of Freeport. There is a
-continual stream of customers entering and depositing vast sums of money in
-the well guarded vault. The bank is faring well, as you can judge by
-the amount of gilding inside the building.
+Dragonhoard Bank, Freeport Branch~
+You stand inside the stout walls of Dragonhoard Bank's Freeport branch.
+There is a continual stream of customers entering and depositing vast sums
+of money and valuable items into its well-guarded vaults. The bank is doing
+good business, to judge by the amount of gilding inside the building.
 ~
-0 8|16384 0
+0 8|16|16384 0
 D0
 Shipper's lane~
 ~
@@ -2399,7 +2399,7 @@ S
 The Freeport Tinkery~
 This large tinkery is very efficiently organised for the repair of items, with
 tools, current, and finished orders neatly arranged around the room.  It has the
-look of a place that could be quickly scaled up or down to accomodate more or less
+look of a place that could be quickly scaled up or down to accommodate more or less
 work, as might be demanded by the vagaries of demand in a port city.
 ~
 0 8 0

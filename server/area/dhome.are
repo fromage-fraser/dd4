@@ -10,7 +10,7 @@ A small dwarf eyes you with curiosity.
 The dwarven child looks at you with baby blue eyes, and trails his eyes down
 your body in awe of your equipment.
 ~
-2|4|64|524288 8|8192 750 S
+2|4|64 8|8192 750 S
 1 0 0 2d6+10 1d4+0
 0 0
 8 8 1
@@ -22,7 +22,7 @@ A dwarven teen eyes you warily.
 The dwarf is only a teen, yet he looks at you with an air of snobbiness, as
 though he thinks that he is better than you.
 ~
-2|64|524288 8|512|8192 500 S
+2|64 8|512|8192 500 S
 5 0 0 2d6+75 1d6+20
 0 0
 8 8 1
@@ -34,7 +34,7 @@ A blonde dwarf stands here.
 The dwarf has very long, dirty blonde hair.  He stares at you with wary eyes,
 watching your every move.
 ~
-2|64|524288 8|512|8192 500 S
+2|64 8|512|8192 500 S
 8 10 0 2d7+96 1d7+10
 0 0
 8 8 1
@@ -46,7 +46,7 @@ The caretaker of the children eyes you with suspicion.
 The dwarf has been watching these young dwarves for many a moon.  There are
 scars on her arms from when the children have played too roughly.
 ~
-2|64|524288 8|512|8192|268435456 500 S
+2|64 8|512|8192|268435456 500 S
 10 15 0 2d7+130 2d4+2
 0 0
 8 8 2
@@ -57,7 +57,7 @@ A dwarven nobleman watches you.
 ~
 This dwarf is wearing a nice suit, looking his best for the party.
 ~
-2|64|524288 8|512|8192 0 S
+2|64 8|512|8192 0 S
 13 15 0 2d10+170 2d5+5
 0 0
 8 8 1
@@ -69,7 +69,7 @@ A dwarven servant is gathering the food which is to be served at the party.
 The servant looks tired and overworked as he carries tray after tray from the
 kitchen to be served to the guests of the grand party.
 ~
-2|64|1024|524288 8|512|8192|268435456 750 S
+2|64|1024 8|512|8192|268435456 750 S
 17 0 0 3d9+258 3d4+5
 0 0
 8 8 1
@@ -93,7 +93,7 @@ The host of the party grins at you.
 The host of the party grins at you, for he knows that he is becoming more
 popular as he holds parties such as these.
 ~
-2|64|524288 8|512|8192 300 S
+2|64 8|512|8192 300 S
 23 0 0 5d10+450 4d6+10
 0 0
 8 8 1
@@ -102,10 +102,10 @@ dwarf singer~
 a dwarven singer~
 A dwarf sings you a ballad.
 ~
-The dwarf looks at you with wonderous eyes and begins to sing an enchanting
+The dwarf looks at you with wondering eyes and begins to sing an enchanting
 tune.
 ~
-2|64|524288 8|512|8192 750 S
+2|64 8|512|8192 750 S
 25 0 0 5d10+600 2d10+7
 0 0
 8 8 1
@@ -117,7 +117,7 @@ A bard plays her lute and sings a wondrous tune.
 The bard is playing her little lute and singing a tune about a young,
 brave adventurer and his many great adventures in the Fortress of Goblins.
 ~
-2|64|512|1024|524288 8|8192 700 S
+2|64|512|1024 8|8192 700 S
 28 0 0 6d12+778 2d12+8
 0 0
 8 8 2
@@ -131,7 +131,7 @@ A dwarven musician is playing a happy piece.
 The dwarven musician is using some sort of string instrument, and is playing
 a merry piece.
 ~
-2|64|524288 8|512|8192 500 S
+2|64 8|512|8192 500 S
 33 0 0 10d10+1200 6d4+10
 0 0
 8 8 1
@@ -143,7 +143,7 @@ A dancer is here, dancing a lively jig.
 The dancer moves with the grace of a butterfly, and dances over to you where
 she says 'Would you care to dance?'
 ~
-2|64|524288 8|512|8192 300 S
+2|64 8|512|8192 300 S
 36 0 0 10d10+1500 3d10+11
 0 0
 8 8 2
@@ -155,7 +155,7 @@ A dwarf is here setting up a chessboard.
 The dwarf looks quite intelligent, and he looks at you with keen, intelligent
 eyes.  He is holding a bishop for the chessboard which he is setting up.
 ~
-2|64|524288 8|512|8192 -750 S
+2|64 8|512|8192 -750 S
 40 0 0 25d10+2000 4d8+13
 0 0
 8 8 1
@@ -167,7 +167,7 @@ A dwarf is playing handball against the wall.
 The dwarf is hitting a small blue ball against the far wall in a game of
 handball.
 ~
-2|64|524288 8|512|8192 0 S
+2|64 8|512|8192 0 S
 43 0 0 25d10+2750 3d12+15
 0 0
 8 8 1
@@ -179,7 +179,7 @@ A dwarf sits here, putting a puzzle together.
 This dwarf has a very serious, concentrated look in his eyes as he tries to
 put together the pieces of this puzzle.
 ~
-2|64|524288 8|512|8192 -1000 S
+2|64 8|512|8192 -1000 S
 46 0 0 25d10+3500 6d6+16
 0 0
 8 8 1
@@ -192,7 +192,7 @@ The dwarf is standing before a game table, and he has a pile of chips in front
 of him.  Everybody around the table has more chips than he does, and he
 doesn't seem to be very happy about losing so much money.
 ~
-2|64|524288 8|512|8192 -750 S
+2|64 8|512|8192 -750 S
 49 0 0 50d10+4500 4d10+18
 0 0
 8 8 1
@@ -205,7 +205,7 @@ The mistress of the house is the person who runs most of the household
 functions, including the parties and the gaming.  She is a large dwarf, with
 long brown hair and a large stomach.
 ~
-2|64|524288 8|512|8192 -1000 S
+2|64 8|512|8192 -1000 S
 53 0 0 50d10+6500 6d7+21
 0 0
 8 8 2
@@ -218,7 +218,7 @@ The master of the house leaves most of the work up to the mistress, he only
 watches over the house to makes sure that everything is ok.  He is a very
 large, muscular dwarf, with graying black hair and a long grey beard.
 ~
-2|64|524288 8|512|8192 0 S
+2|64 8|512|8192 0 S
 55 0 0 50d10+7500 10d4+23
 0 0
 8 8 1
@@ -230,7 +230,7 @@ A guest of the house is here.
 The guest is wandering about the house, looking for anything interesting to
 do.
 ~
-64|524288 1048576 0 S
+64 1048576 0 S
 20 0 0 4d10+360 4d4+5
 0 0
 8 8 0
@@ -242,7 +242,7 @@ A maid cleans here.
 The maid is cleaning every part of the house, if the entire house isn't
 perfect, the master of the house will not be happy.
 ~
-64|524288 1048576 100 S
+64 1048576 100 S
 45 3 0 25d10+3250 8d4+16
 0 0
 8 8 2
@@ -1018,7 +1018,9 @@ S
 The Gambling Room~
 This is where the guests of the house come to spend their money.  There
 are many different games here to gamble on, from card games to roulette
-machines.  West leads back to the game room.
+machines.  You can join in playing dice, if you like.
+
+West leads back to the game room.
 ~
 0 8 0
 D3
@@ -1199,6 +1201,12 @@ E 1 20519 0 16
 E 1 20520 0 17
 M 1 20517 1 20537
 E 1 20509 0 16
+S
+
+#GAMES
+*
+M 20515 game_high_dice		1000000   8	0	/* dwarven gambler     */
+*
 S
 
 #SPECIALS

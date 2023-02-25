@@ -668,7 +668,7 @@ Staring hard at the eyes you think you distinguish a bat-like form in the
 darkness, the difference being that this bat is as tall as a man and probably
 rather hungry, let's hope you're not on its menu.
 ~
-2|4|64|512|524288 8|32|512|524288 -600 S
+2|4|64|512 8|32|512|524288 -600 S
 38 0 0 0d0+0 0d0+0
 36 0
 8 8 1
@@ -680,7 +680,7 @@ A large bat-like figure scuffles about in front of you.
 Peering at the giant bat you discern from its shape that it's female, though you
 doubt its gender implies it'll go any easier on you should you come to blows.
 ~
-2|4|64|512|524288 8|32|512|524288 -600 S
+2|4|64|512 8|32|512|524288 -600 S
 35 0 0 0d0+0 0d0+0
 36 0
 8 8 2

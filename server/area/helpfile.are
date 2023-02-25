@@ -291,6 +291,27 @@ using the ATTACK command.  Enter 'ATTACK <<1-4>'.  Non-combat spells are
 not cast multiple times.
 ~
 
+0 'VAULT' 'VAULTS' 'CLAIM' 'LODGE' INSPECT'~
+Syntax: vault
+Syntax: claim <<item>
+Syntax: claim <<item> <<container>
+Syntax: lodge <<item>
+Syntax: lodge <<item> <<container>
+Syntax: inspect <<item>
+
+Player characters have a VAULT available for permanent storage of items
+separate from their inventories and worn equipment.  The contents of your VAULT
+may be checked from anywhere in the Domain, but can only be manipulated at a
+branch of the DRAGONHOARD BANK using the commands CLAIM, LODGE, and INSPECT
+(analogous to the inventory commands GET, PUT and EXAMINE).
+
+Contents of your vault are permanent, and safe from danger of destruction via
+breath weapons, theft, DISINTEGRATE and the like.
+
+DRAGONHOARD BANK has branches in every city of the Domain; Midgaard's is one
+SOUTH and two EAST of its RECALL point.
+~
+
 
 0 'CLAN COMMANDS' CLANTALK CSCORE GUILD PROMOTE LEAVE~
 CLANTALK <<text>
@@ -374,13 +395,13 @@ Enter thy Name: ~
 
 101 IMOTD~
 {x
-Dragons Domain version 4.2020
+Dragons Domain version 4.2023
 
 ~
 
 -1 MOTD~
 {x
-    [27 August 2022]
+    [25 February 2023]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -392,8 +413,6 @@ Dragons Domain version 4.2020
     our website which has a FAQ at {Yhttps://www.dragons-domain.org/{x or look
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
-
-    {WUPDATE:{x Random item stats have been reduced on average 30%.
 
     {WNEW AREA:{x "Ota'ar Dar Residential - South" is in for levels 35-40,
     access west of Ota'ar Dar Market. 25 new mobs, 40 new rooms, 50 new items!
@@ -434,6 +453,8 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 -New area in, Ota'ar Dar Residential Area - South for levels
  35-40. New special spec_sahuagin_baron added. GUI has a 0.0.X
  version update.
+-Vaults added. Permanent storage for characters separate from
+ inventory.
 
 {WDecember 2022{x
 -Mega patch in.  New stats, items, boss mobs and more.
@@ -943,8 +964,8 @@ poison weapon
 smelt
 construct
 
-(If your looking for a FORGE or ANVIL try the
-Eastern end of Alley in Midgaard see HELP MIDGAARD)
+(If you're looking for a FORGE or ANVIL try the
+Eastern end of Alley in Midgaard. See HELP MIDGAARD)
 
 Current spells that benefit from spellcrafting locations:
 
@@ -1040,6 +1061,18 @@ Syntax: smash <<target>
 
 Smash an opponent to the ground, and gain a free attack as they try to
 recover.  You must be wearing a shield to smash your opponent with.
+~
+
+0 TINKER TINKERS REPAIR REPAIRS~
+Syntax: repair <<target>
+
+TINKERs are special mobs able to repair damaged and degrading equipment
+(for a fee, based on how damaged the item is).  Most major cities should
+have one.  To make use of a TINKER's services, simply type "repair ITEMNAME"
+in one's presence.
+
+Tinkers are particularly useful for keeping crafted poisoned and sharpened
+items from falling prey to the vicissitudes of time.
 ~
 
 0 ASSASSINATE ASSASSINATION~
@@ -3892,8 +3925,16 @@ Syntax: deposit  <<amount> <<coin type>
 Syntax: deposit  all      <<coin type>
 Syntax: deposit  all
 Syntax: withdraw <<amount> <<coin type>
+Syntax: borrow <<amount> <<coin type>
+Syntax: vault
+Syntax: claim <<item>
+Syntax: claim <<item> <<container>
+Syntax: lodge <<item>
+Syntax: lodge <<item> <<container>
+Syntax: inspect <<item>
 
-These commands are used at banks to deposit and withdraw cash.
+These commands are used at DRAGONHOARD BANKs to deposit, borrow and withdraw
+funds, and to manipulate the contents of players' VAULTS.
 
 BALANCE displays your current bank balance, broken down into the different
 available coin types.
@@ -3906,6 +3947,10 @@ BANK.  When you DEPOSIT money, it will be converted into the different coin
 types automatically, enabling you to convert large amounts of lesser value
 coins into smaller numbers of larger amount coins.
 
+You may also be able to BORROW money from the bank if you find yourself
+short on funds.  The money you borrow will be automatically paid back to
+the bank from the proceeds of items you sell.
+
 All prices of items and other amounts in DD are based on the copper coin
 (e.g. if the baker sells a pie for 9 coins, it is worth 9 coppers).
 
@@ -3914,6 +3959,8 @@ The available coin types and their values are:
     silver     =    10 copper
     gold       =   100 copper
     platinum   =  1000 copper
+
+For information on the VAULT-related commands, please see HELP VAULT.
 ~
 
 0 POUCH BELTPOUCH~
@@ -3987,7 +4034,7 @@ HOLYLIGHT acts as a permanent detect invis and detect hidden for heroes.
 HERO ROOM
 Heroes can choose, for a fee of 1000 platinum, to create a room in the
 Millionaire's Club in Draagdim.  If you would like to use this service, take a
-look at the other hero rooms in the Club, then speak to Hestia.  You will need
+look at the other hero rooms in the Club, then speak to an Imm.  You will need
 to provide a description of the room and a room name.
 
 HERO DESCRIPTION
@@ -5760,6 +5807,23 @@ Assassin, Hunter, Stalker, Brigand, and Coward. Killing people your level will
 give you a rating of Stalker.
 ~
 
+0 'DRAGONHOARD' 'DRAGONHOARD BANK'~
+Over the last several decades, Dragonhoard Bank has risen from one amongst many
+minor private banks to enjoying an absolute monopoly on the financial systems
+of the entire Domain, with branches in every major city.  It has achieved this
+expansion by ruthlessly driving its competitors to ruin via savage
+undercutting, backed by seemingly limitless resources and the ability to suffer
+huge losses without apparent consequence.
+
+It is known to employ a number of wizards of considerable talent in its storage
+operations, allowing it to magically offer clients rapid access to their
+valuables from any of the bank's branches; a competitive advantage that its
+previous rivals struggled vainly to overcome.
+
+Rumours persist that a sinister cabal with opaque and insalubrious motivations
+is behind the institution's tyrannous dominance, but as yet no hard evidence
+to back such an assertion has been brought to light.
+~
 
 0 'RECHARGE ITEM'~
 Syntax: cast 'recharge item' <<stave or wand>
@@ -6887,7 +6951,7 @@ See individual HELP entries for the above games.
 
 -1 HIGH-DICE 'HIGH DICE' HIGH DICE~
 HIGH DICE is a simple dice game. The croupier rolls 2 dice for the player,
-then rolls 2 dicefor himself. If the player's total is higher he wins double
+then rolls 2 dice for himself. If the player's total is higher he wins double
 his money back, and if the player's total is equal to or lower than the
 croupier's the bank wins and the player loses his money.
 ~
