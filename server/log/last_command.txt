@@ -1,14 +1,6 @@
-Command 'open pou'
-Issued by 'Owl' (player) at room 3007
+Command 'mpasound {gYou hear strange squelching and wriggling sounds issue from nearby.{x'
+Issued by 'a sahuagin watcher' (NPC)
 Master is '(null)'
-Function: leaving update_handler
-
-e_handler
-
-
-mcp_update
-
-er is '(null)'
 *** Command was completed successfully ***
 Function: update_hander: calling mobile_update
 
