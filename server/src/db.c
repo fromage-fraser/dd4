@@ -3703,6 +3703,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, int r
                 else {
                     break;
                 }
+                break;
 
             /*
              * Although we can't wield armourer's hammers, area resets may
