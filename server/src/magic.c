@@ -3795,7 +3795,7 @@ void spell_invis( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( IS_AFFECTED( victim, AFF_INVISIBLE ) )
                 return;
 
-        send_to_char( "<39>You fade out of existence.<0>\n\r", victim );
+        send_to_char( "<51>Yo<45>u f<39>ad<33>e o<27>ut <21>of <20>ex<19>is<18>te<17>nce.<0>\n\r", victim );
         act( "$n fades out of existence.", victim, NULL, NULL, TO_ROOM );
 
         af.type      = sn;
