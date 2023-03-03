@@ -4865,6 +4865,7 @@ void    obj_to_charvault                args( ( OBJ_DATA *obj, CHAR_DATA *ch ) )
 void    obj_to_charfromvault            args( ( OBJ_DATA *obj, CHAR_DATA *ch ) );
 void    obj_from_char                   args( ( OBJ_DATA *obj ) );
 void    obj_from_charvault              args( ( OBJ_DATA *obj ) );
+int     max_obj_in_obj_level            args( ( OBJ_DATA *obj ) );
 int     apply_ac                        args( ( OBJ_DATA *obj, int iWear ) );
 OD *    get_eq_char                     args( ( CHAR_DATA *ch, int iWear ) );
 void    equip_char                      args( ( CHAR_DATA *ch, OBJ_DATA *obj, int iWear ) );

@@ -214,7 +214,6 @@ yet something about him that you cannot put your finger on strikes you as odd.
 80 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ elite~
 #25609
 fido dog spy~
 the spy recruit~
@@ -395,7 +394,6 @@ say You dare intrude on me unannounced? Perish!
 mpkill $n
 ~
 |
-< reserved~ rare~
 #25624
 vagabond spy recruit~
 the spy recruit~
@@ -1551,7 +1549,7 @@ blood amulet~
 {rthe blood amulet{x~
 A blood-red pendant hangs from a heavy gold chain.~
 ~
-9 1|2|16|32|64|512|2048 1|4
+9 1|2|16|32|64|512|2048|274877906944 1|4
 0~ 0~ 0~ 0~
 5 274877906944 0
 A
@@ -1615,7 +1613,7 @@ obsidian dagger~
 an obsidian dagger~
 A dagger carved from obsidian stone lies at your feet.~
 ~
-5 16|32|64|4096 1|8192
+5 16|32|64|4096|274877906944 1|8192
 0~ 0~ 0~ 11~
 10 274877906944 0
 A
@@ -1779,7 +1777,7 @@ red stone~
 {ra red stone{x~
 A small red stone hovers in the air above the ground.~
 ~
-18 1|2|64 1|32768
+18 1|2|64|274877906944 1|32768
 0~ 0~ 0~ 0~
 1 274877906944 0
 A
@@ -1793,7 +1791,7 @@ purple stone~
 {ma purple stone{x~
 A small purple stone hovers in the air above the ground.~
 ~
-18 1|2|64 1|32768
+18 1|2|64|274877906944 1|32768
 0~ 0~ 0~ 0~
 1 274877906944 0
 A
@@ -1807,7 +1805,7 @@ dark blue stone~
 {ba dark blue stone{x~
 A dark blue stone hovers in the air above the ground.~
 ~
-18 1|2|64 1|32768
+18 1|2|64|274877906944 1|32768
 0~ 0~ 0~ 0~
 1 274877906944 0
 A
@@ -1926,7 +1924,7 @@ black leather armour~
 black leather armour~
 A large suit of black leather armour lies on the ground.~
 ~
-9 16|64 1|8
+9 16|64|274877906944 1|8
 0~ 0~ 0~ 0~
 7 274877906944 0
 A
@@ -2018,7 +2016,7 @@ dumbbell weights~
 a dumbbell~
 A large dumbbell lies here.~
 ~
-9 0 1|16384
+9 274877906944 1|16384
 0~ 0~ 0~ 0~
 200 274877906944 0
 A
@@ -2100,7 +2098,7 @@ padded chainmail~
 padded chainmail~
 A suit of padded chainmail lies here.~
 ~
-9 64 1|8
+9 64|274877906944 1|8
 0~ 0~ 0~ 0~
 20 274877906944 0
 A
@@ -2151,7 +2149,7 @@ diamond dagger~
 a diamond dagger~
 A long dagger with a blade fashioned from diamond lies here.~
 ~
-5 1|64|2048|16384|1048576|262144|8 1|8192
+5 1|64|2048|16384|1048576|262144|8|274877906944 1|8192
 0~ 0~ 0~ 11~
 4 274877906944 0
 A
@@ -2215,7 +2213,7 @@ onyx ring purple stone~
 an onyx ring with a purple stone~
 An onyx ring inlaid with a purple stone almost escapes your notice.~
 ~
-9 64|128 1|2
+9 64|128|274877906944 1|2
 0~ 0~ 0~ 0~
 0 274877906944 0
 A
@@ -2275,7 +2273,7 @@ suit stealth bodysuit~
 a suit of stealth~
 A black bodysuit of some sort lies here.~
 ~
-9 0 1|8
+9 274877906944 1|8
 0~ 0~ 0~ 0~
 2 274877906944 0
 A
@@ -2362,7 +2360,7 @@ black leather breastplate~
 a black leather breastplate~
 A breastplate of hardened leather lies against the wall.~
 ~
-9 64|4096 1|8
+9 64|4096|274877906944 1|8
 0~ 0~ 0~ 0~
 20 274877906944 0
 A
