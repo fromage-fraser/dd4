@@ -830,10 +830,12 @@ void do_lodge (CHAR_DATA *ch, char *argument)
         char      arg1 [ MAX_INPUT_LENGTH ];
         char      arg2 [ MAX_INPUT_LENGTH ];
         bool      found;
+        int       maxlevel;
 
         argument = one_argument(argument, arg1);
         argument = one_argument(argument, arg2);
         container = get_obj_vaulted(ch, arg2);
+
 
         if (IS_NPC(ch))
         {
@@ -902,6 +904,14 @@ void do_lodge (CHAR_DATA *ch, char *argument)
                 if (obj->level > ch->level)
                 {
                         act("$p is too high level to be put in your vault.", ch, obj, NULL, TO_CHAR);
+                        return;
+                }
+
+                maxlevel = max_obj_in_obj_level(obj);
+
+                if (maxlevel > ch->level)
+                {
+                        act("$p contains an item or items too high level to go in your vault.", ch, obj, NULL, TO_CHAR);
                         return;
                 }
 
@@ -980,6 +990,14 @@ void do_lodge (CHAR_DATA *ch, char *argument)
                 if (obj->level > ch->level)
                 {
                         act("$p is too high level to be put in there.", ch, obj, NULL, TO_CHAR);
+                        return;
+                }
+
+                maxlevel = max_obj_in_obj_level(obj);
+
+                if (maxlevel > ch->level)
+                {
+                        act("$p contains an item or items too high level to go in your vault.", ch, obj, NULL, TO_CHAR);
                         return;
                 }
 

@@ -1229,6 +1229,30 @@ void obj_from_charvault( OBJ_DATA *obj )
         ch->pcdata->vault_weight -= get_obj_weight( obj ); */
 }
 
+/* Determine the highest level object in a container. Deals with deep nesting. */
+int max_obj_in_obj_level(OBJ_DATA *obj)
+{
+    int max_level;
+    int sub_max_level;
+    OBJ_DATA *sub_obj;
+
+    max_level = obj->level;
+
+    for (sub_obj = obj->contains; sub_obj != NULL; sub_obj = sub_obj->next_content)
+    {
+        if (sub_obj->deleted)
+        {
+            continue;
+        }
+
+        sub_max_level = max_obj_in_obj_level(sub_obj);
+        if (sub_max_level > max_level)
+        {
+            max_level = sub_max_level;
+        }
+    }
+    return max_level;
+}
 
 /*
  * Find the ac value of an obj, including position effect.
