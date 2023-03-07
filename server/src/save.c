@@ -370,7 +370,9 @@ void fwrite_obj (CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest, bool vault)
         /*
          * Prevent eq stealing and loss of clan healing items
          */
-        if (ch->level < obj->level || obj->item_type == ITEM_CLAN_OBJECT)
+        if ( ( vault && ( ( ( ch->level + VAULT_LEVEL_BUFFER ) < obj->level ) ) )
+          || (!vault && ( ch->level < obj->level ) )
+          || ( obj->item_type == ITEM_CLAN_OBJECT ) )
                 return;
 
         fprintf(fp, "#OBJECT\n");

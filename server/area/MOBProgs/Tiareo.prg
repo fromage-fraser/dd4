@@ -1,28 +1,28 @@
 >greet_prog 100~
-        say Welcome, I am Tiareo, the receptionist for the Reaver guildhall.  Are you interested in a 'quest'?
+        mpecho {WReaver Tiareo says 'Welcome, I am Tiareo, the receptionist for the Reaver guildhall.  Are you interested in a 'quest'?'{x
 ~
 >speech_prog help quest task~
         if level($n) < 30
                 frown $n
-                say You are too inexperienced for us to contemplate you becoming a Reaver.  Try again when you're more experienced.
+                mpecho {WReaver Tiareo says 'You are too inexperienced for us to contemplate you becoming a Reaver.  Try again when you're more experienced.'{x
         break
         else
-        if level($n) > 40
-                say $n, you're far too experienced for our current missions.  Keep checking back, though!
+        if level($n) > 45
+                mpecho {WReaver Tiareo says '$n, you're far too experienced for our current missions.  Keep checking back, though!'{x
         break
         else
-                say Which mission are you interested in?'
+                mpecho {WReaver Tiareo says 'Which mission are you interested in?'{x
                 emote points to the sign on the wall.
         endif
         endif
 ~
 >speech_prog one 1~
         if level($n) < 30
-                say I'm sorry, that mission is too dangerous for someone of your limited experience.
+                mpecho {WReaver Tiareo says 'I'm sorry, that mission is too dangerous for someone of your limited experience.'{x
         break
         else
         if level($n) > 40
-                say You're far too experienced to undertake that mission.
+                mpecho {WReaver Tiareo says 'You're far too experienced to undertake that mission.'{x
         break
         else
                 mpecho {W'The demon lord Kostchtchie has stolen a valuable hammer from Ota'a Dar's forge'{x
@@ -37,11 +37,11 @@
 ~
 >speech_prog two 2~
         if level($n) < 30
-                say I'm sorry, that mission is too dangerous for someone of your limited experience.
+                mpecho {WReaver Tiareo says 'I'm sorry, that mission is too dangerous for someone of your limited experience.'{x
         break
         else
         if level($n) > 40
-                say You're far too experienced to undertake that mission.
+                mpecho {WReaver Tiareo says 'You're far too experienced to undertake that mission.'{x
         break
         else
                 mpecho {W'One of the notorious pirate lords of the Domain, Mizzenmast, has stolen the'{x
@@ -54,11 +54,11 @@
 ~
 >speech_prog three 3~
         if level($n) < 30
-                say I'm sorry, that mission is too dangerous for someone of your limited experience.
+                mpecho {WReaver Tiareo says 'I'm sorry, that mission is too dangerous for someone of your limited experience.'{x
         break
         else
         if level($n) > 40
-                say You're far too experienced to undertake that mission.
+                mpecho {WReaver Tiareo says 'You're far too experienced to undertake that mission.'{x
         break
         else
                 mpecho {W'The regional Reaver leader is going to visit Ota'ar Dar's branch soon. We would'{x
@@ -71,11 +71,11 @@
 ~
 >speech_prog four 4~
         if level($n) < 40
-                say I'm sorry, that mission is too dangerous for someone of your limited experience.
+                mpecho {WReaver Tiareo says 'I'm sorry, that mission is too dangerous for someone of your limited experience.'{x
         break
         else
         if level($n) > 45
-                say You're far too experienced to undertake that mission.
+                mpecho {WReaver Tiareo says 'You're far too experienced to undertake that mission.'{x
         break
         else
                 mpecho {W'A bullywug associate of ours set out some time ago to locate a froghemoth, in'{x
@@ -87,34 +87,53 @@
         endif
         endif
 ~
+>speech_prog five 5~
+        if level($n) < 40
+                mpecho {WReaver Tiareo says 'I'm sorry, that mission is too dangerous for someone of your limited experience.'{x
+        break
+        else
+        if level($n) > 45
+                mpecho {WReaver Tiareo says 'You're far too experienced to undertake that mission.'{x
+        break
+        else
+                mpecho {W'We have received a letter from one of the residents of the Vale who wishes us'{x
+                mpecho {W'to locate a servant of his--a gypsy man--who was last seen in the vicinity of'{x
+                mpecho {W'the Yeats Sea. As he is unable to 'sense his presence' but also knows he is'{x
+                mpecho {W'not dead, he believes him to have been abducted by the sahuagin. Prisoners'{x
+                mpecho {W'are usually taken to the arena, so I would try there first. Here is the letter.'{x
+                mpoload 27504
+                give letter $n
+        endif
+        endif
+~
 >give_prog hammer iron~
         if level($n) > 40
-                say That mission was for someone a less experienced.
+                mpecho {WReaver Tiareo says 'That mission was for someone less experienced.'{x
                 give iron $n
         break
         else
         if number($o) == 9901
                 mpjunk iron
-                say Good work, $n, Ahomar will be delighted!
+                mpecho {WReaver Tiareo says 'Good work, $n, Ahomar will be delighted!'{x
                 mpoload 27365 30
                 give master $n
-                say This crossbow is an excellent choice for an individual of your experience.
+                mpecho {WReaver Tiareo says 'This crossbow is an excellent choice for an individual of your experience.'{x
                 mpoload 27287 30
                 mpoload 27287 30
                 give purple $n
                 give purple $n
-                say And a couple of these for the road!
+                mpecho {WReaver Tiareo says 'And a couple of these for the road!'{x
         break
         else
                 mpecho $I examines $O closely.
-                say Sorry $n we want the genuine hammer, not a forgery.
+                mpecho {WReaver Tiareo says 'Sorry $n we want the genuine hammer, not a forgery.'{x
                 give hammer $n
         endif
         endif
 ~
 >give_prog crossbow poison~
         if level($n) > 40
-                say That mission was for someone a less experienced.
+                mpecho {WReaver Tiareo says 'That mission was for someone less experienced.'{x
                 give poison $n
         break
         else
@@ -133,53 +152,73 @@
         break
         else
                 mpecho $I examines $O closely.
-                say Sorry $n, I only accept the genuine article.
+                mpecho {WReaver Tiareo says 'Sorry $n, I only accept the genuine article.'{x
                 give poison $n
         endif
         endif
 ~
 >give_prog pink skate's clasper~
         if level($n) > 40
-                say That mission was for someone a less experienced.
+                mpecho {WReaver Tiareo says 'That mission was for someone less experienced.'{x
                 give clasper $n
         break
         else
         if number($o) == 27319
                 mpjunk clasper
-                say Good work, $n, the leader will be delighted!
+                mpecho {WReaver Tiareo says 'Good work, $n, the leader will be delighted!'{x
                 mpoload 27369 30
-                say We had our clerics enchant these with their most powerful spells.
+                mpecho {WReaver Tiareo says 'We had our clerics enchant these with their most powerful spells.'{x
                 give divine $n
                 mpoload 27368 30
-                say You should find this very useful in your travels, too.
+                mpecho {WReaver Tiareo says 'You should find this very useful in your travels, too.'{x
                 give holding $n
         break
         else
                 mpecho $I examines $O closely.
-                say Sorry $n, this isn't quite the item we're after.
+                mpecho {WReaver Tiareo says 'Sorry $n, this isn't quite the item we're after.'{x
                 give clasper $n
         endif
         endif
 ~
 >give_prog froghemoth tentacle~
         if level($n) > 45
-                say That mission was for someone less experienced.
+                mpecho {WReaver Tiareo says 'That mission was for someone less experienced.'{x
                 give tentacle $n
         break
         else
         if number($o) == 27412
                 mpjunk tentacle
-                say Great work, $n, the clerics will be overjoyed!
+                mpecho {WReaver Tiareo says 'Great work, $n, the clerics will be overjoyed!'{x
                 mpoload 27413 40
                 mpoload 27413 40
-                say We had the clerics whip you up something special by way of reward.
+                mpecho {WReaver Tiareo says 'We had the clerics whip you up something special by way of reward.'{x
                 give vial $n
                 give vial $n
         break
         else
                 mpecho $I examines $O closely.
-                say Sorry $n, this isn't quite the item we're after.
+                mpecho {WReaver Tiareo says 'Sorry $n, this isn't quite the item we're after.'{x
                 give clasper $n
+        endif
+        endif
+~
+>give_prog letter shaky~
+        if level($n) > 45
+                mpecho {WReaver Tiareo says 'That mission was for someone less experienced.'{x
+                give shaky $n
+        break
+        else
+        if number($o) == 27505
+                mpjunk shaky
+                mpecho {WReaver Tiareo says 'Excellent, $n, I will ensure this letter finds its addressee.'{x
+                mpoload 27506 40
+                mpecho {WReaver Tiareo says 'Have one of these excellent stunning weapons by way of reward.'{x
+                give ironwood $n
+        break
+        else
+                mpecho $I examines $O closely.
+                mpecho {WReaver Tiareo says 'Sorry $n, this isn't an authentic item.'{x
+                give shaky $n
         endif
         endif
 ~

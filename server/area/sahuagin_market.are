@@ -2877,7 +2877,7 @@ A nondescript potion lies here.~
 #27308
 staff detect curse~
 a staff of detect curse~
-A sword rests here.~
+A staff rests here.~
 ~
 4 64 1|16384
 30~ 5~ 5~ detect curse~
@@ -3822,6 +3822,87 @@ You examine a map of the Ota'ar Dar southern residential area's upper level...
           {g[{W*{x{g][{W*{x{g]
 {x
 ~
+#27504
+letter cursive~
+a letter, written in flowing cursive script~
+A letter written in a flowing cursive script lies here.~
+~
+13 0 1|16384
+0~ ~ ~ ~
+1 0 25
+E
+letter cursive~
+
+Thrall.
+
+You may imagine that by being abducted by the foul sahuagin and taken below
+the ocean to suffer whatever trifling indiginities ending in your death and
+dismemberment they might see fit to inflict upon your pathetic body that you
+thereby will escape your service to me: your lord, master, and rightful owner.
+
+Such an imagining is woefully misguided.
+
+I hold prisoner every member of your worthless family, and will execute them
+as slowly and painfully as it is possible to do so should you not return to my
+service within the month. It is of no interest or consequence to me how you
+manage this feat.
+
+Return now or die tormented by the knowledge of their destruction.
+
+--Rayke
+
+~
+#27505
+letter shaky~
+a letter, written in a shaky hand~
+A letter written in a very shaky hand lies here.~
+~
+13 0 1|16384
+0~ ~ ~ ~
+1 0 25
+E
+letter shaky~
+
+Master.
+
+It is as you imagine; I have been abducted by the cruel sahuagin, who plan to
+kill me as a form of mass entertainment in their underwater arena. I have no
+hope of escape, and have accepted my fate.
+
+Having long anticipated your threat to my family should I ever be torn from
+your service, however, I have made arrangements with a trusted party in one
+of the Domain's cities to offer a very large bounty to the town's adventurers
+should any unnatural harm ever come to my family; a bounty made up of the
+wealth I have secreted from you over long years as you lay asleep during
+the day.
+
+I have provided him with details of your whereabouts and every method that
+might be used to locate you, should you not remain in your current lair in
+the Vale.
+
+I would urge you strongly to consider this certain consequence should you
+choose to harm my family.  You know how troublesome the Domain's adventurers
+are, and how definite your destruction will be should you continue on your
+asserted course.
+
+Your faithful servant,
+
+
+--Giuseppe
+
+~
+#27506
+ironwood cudgel~
+an ironwood cudgel~
+A cudgel made of a very hard wood lies here.~
+~
+5 0 8193
+0~ 0~ 0~ 7~
+5 0 0
+A
+19 7
+A
+18 15
 #0
 
 
@@ -3833,7 +3914,7 @@ amongst the inhabited ruins of a great, ancient city.  To the south a huge gate
 looms, cutting off access to this canton from the rest of the city.  To the east
 you see the entrance to a shop.  The sign above it reads "Phesak's Maps".
 
-The road continues north, and you may also swim upwards, towards a huge, looming
+The road continues north, and you may also swim upwards, towards a huge, ominous
 area of darkness in the water above. You notice, however, that the canton wall to
 the west doesn't quite reach all the way to the dark region of water above.
 Perhaps you could climb or fly over it?{x
@@ -4266,6 +4347,7 @@ Currently available quests for prospective Reavers to undertake:
 <15>2.   Poisonous Secrets<0>            (<123>30-40<0>)
 <15>3.   An Out of Body Experience<0>    (<123>30-40<0>)
 <15>4.   Every Frog Has His Day<0>       (<123>40-45<0>)
+<15>5.   From Master to Servant<0>       (<123>40-45<0>)
 
 ~
 S

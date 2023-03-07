@@ -3009,6 +3009,7 @@ void do_warcry (CHAR_DATA *ch, char *argument)
         int temp;
 
         if (IS_NPC(ch)
+        && !( ch->spec_fun == spec_lookup("spec_green_grung") )
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
                 return;
 

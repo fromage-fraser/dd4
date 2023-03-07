@@ -715,7 +715,7 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                 if (ch->position == POS_DEAD)
                         break;
 
-                if (haste)
+                if (haste && !ch->gag)
                         send_to_char("{W*SWIFT ATTACK*{x ", ch);
                 /*
                  * Check for secondary attack
@@ -6146,6 +6146,7 @@ void do_grapple (CHAR_DATA *ch, char *argument)
         if (IS_NPC(ch)
         && !( ch->spec_fun == spec_lookup("spec_kappa") )
         && !( ch->spec_fun == spec_lookup("spec_laghathti") )
+        && !( ch->spec_fun == spec_lookup("spec_green_grung") )
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
                 return;
 
@@ -6252,6 +6253,7 @@ void do_flying_headbutt (CHAR_DATA *ch, char *argument)
 
         if (IS_NPC(ch)
         && !( ch->spec_fun == spec_lookup("spec_kappa") )
+        && !( ch->spec_fun == spec_lookup("spec_green_grung") )
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
                 return;
 
