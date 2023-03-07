@@ -1859,7 +1859,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define ACT_CLAN_GUARD                  BIT_22  /* Protects from some combat skills; Gezhp */
 #define ACT_NO_SUMMON                   BIT_23  /* Mob may not be summoned; Gezhp */
 #define ACT_NO_EXPERIENCE               BIT_24  /* No exp rewarded for kill; Gezhp */
-#define ACT_UNKILLABLE                  BIT_63  /* Can't be killed. 'slay' still works.  --Owl */
+#define ACT_NO_HEAL                     BIT_25  /* Will not heal HP from damage, will supercede ACT_REGENERATOR - Owl */
+#define ACT_UNKILLABLE                  BIT_63  /* Can't be killed. 'slay' still works. - Owl */
 
 
 /*

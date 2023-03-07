@@ -437,6 +437,11 @@ int hit_gain( CHAR_DATA *ch )
                 if (IS_AFFECTED(ch, AFF_SLOW))
                         gain /= 2;
 
+                if (IS_SET(ch->act, ACT_NO_HEAL))
+                {
+                      gain = 0;
+                }
+
                 return UMIN( gain, ch->max_hit - ch->hit );
         }
 
