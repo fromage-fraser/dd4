@@ -3369,6 +3369,7 @@ char *act_bit_name (unsigned long int vector)
         if ( vector & ACT_CLAN_GUARD            ) return "clan_guard";
         if ( vector & ACT_NO_SUMMON             ) return "no_summon";
         if ( vector & ACT_NO_EXPERIENCE         ) return "no_experience";
+        if ( vector & ACT_NO_HEAL               ) return "no_heal";
         if ( vector & ACT_UNKILLABLE            ) return "unkillable";
 
         return "none";
