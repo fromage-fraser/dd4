@@ -154,6 +154,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_sahuagin_baron"))       return spec_sahuagin_baron;
         if (!str_cmp(name, "spec_green_grung"))          return spec_green_grung;
 
+
         return 0;
 
 }

@@ -836,6 +836,7 @@ void do_lodge (CHAR_DATA *ch, char *argument)
         argument        = one_argument(argument, arg2);
         container       = get_obj_vaulted(ch, arg2);
 
+
         if (IS_NPC(ch))
         {
             return;
