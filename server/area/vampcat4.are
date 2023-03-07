@@ -1551,7 +1551,7 @@ A blood-red pendant hangs from a heavy gold chain.~
 ~
 9 1|2|16|32|64|512|2048|274877906944 1|4
 0~ 0~ 0~ 0~
-5 0 0
+5 274877906944 0
 A
 12 200
 A
@@ -1615,7 +1615,7 @@ A dagger carved from obsidian stone lies at your feet.~
 ~
 5 16|32|64|4096|274877906944 1|8192
 0~ 0~ 0~ 11~
-10 0 0
+10 274877906944 0
 A
 2 4
 A
@@ -1779,7 +1779,7 @@ A small red stone hovers in the air above the ground.~
 ~
 18 1|2|64|274877906944 1|32768
 0~ 0~ 0~ 0~
-1 0 0
+1 274877906944 0
 A
 19 7
 E
@@ -1793,7 +1793,7 @@ A small purple stone hovers in the air above the ground.~
 ~
 18 1|2|64|274877906944 1|32768
 0~ 0~ 0~ 0~
-1 0 0
+1 274877906944 0
 A
 12 80
 E
@@ -1807,7 +1807,7 @@ A dark blue stone hovers in the air above the ground.~
 ~
 18 1|2|64|274877906944 1|32768
 0~ 0~ 0~ 0~
-1 0 0
+1 274877906944 0
 A
 13 60
 #25645
@@ -1926,7 +1926,7 @@ A large suit of black leather armour lies on the ground.~
 ~
 9 16|64|274877906944 1|8
 0~ 0~ 0~ 0~
-7 0 0
+7 274877906944 0
 A
 17 -25
 A
@@ -2018,7 +2018,7 @@ A large dumbbell lies here.~
 ~
 9 274877906944 1|16384
 0~ 0~ 0~ 0~
-200 0 0
+200 274877906944 0
 A
 2 -10
 A
@@ -2100,7 +2100,7 @@ A suit of padded chainmail lies here.~
 ~
 9 64|274877906944 1|8
 0~ 0~ 0~ 0~
-20 0 0
+20 274877906944 0
 A
 23 -10
 A
@@ -2151,7 +2151,7 @@ A long dagger with a blade fashioned from diamond lies here.~
 ~
 5 1|64|2048|16384|1048576|262144|8|274877906944 1|8192
 0~ 0~ 0~ 11~
-4 0 0
+4 274877906944 0
 A
 24 -5
 A
@@ -2215,7 +2215,7 @@ An onyx ring inlaid with a purple stone almost escapes your notice.~
 ~
 9 64|128|274877906944 1|2
 0~ 0~ 0~ 0~
-0 0 0
+0 274877906944 0
 A
 14 200
 A
@@ -2275,7 +2275,7 @@ A black bodysuit of some sort lies here.~
 ~
 9 274877906944 1|8
 0~ 0~ 0~ 0~
-2 0 0
+2 274877906944 0
 A
 2 2
 A
@@ -2362,7 +2362,7 @@ A breastplate of hardened leather lies against the wall.~
 ~
 9 64|4096|274877906944 1|8
 0~ 0~ 0~ 0~
-20 0 0
+20 274877906944 0
 A
 13 60
 A
