@@ -308,6 +308,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define MAX_PROMPT_LENGTH                200    /* Was defined locally, thought better as global -- Owl 24/7/22 */
 #define MAX_TITLE_LENGTH                 150    /* Was defined locally, thought better as global -- Owl 29/7/22 */
 #define FULL_AIR_SUPPLY                    2    /* ticks before drowning; Gez */
+#define VAULT_LEVEL_BUFFER                 5    /* Can save items up to this many levels above your own in your vault */
 
 #define L_IMM                       MAX_LEVEL
 #define L_DIR                     ( L_IMM - 1 )

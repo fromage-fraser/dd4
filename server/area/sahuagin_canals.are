@@ -611,8 +611,8 @@ a vodyanoi~
 <58>A large, lumbering creature grumps about irritably.<0>
 ~
 This is a vodyanoi, a creature related to the umber hulk but somewhat larger
-and water-dwelling. It has slimy green skin, webbed hands and feed, and
-powerful manibles.  They have a reputation as an evil and violent creature,
+and water-dwelling. It has slimy green skin, webbed hands and feet, and
+powerful mandibles.  They have a reputation as an evil and violent creature,
 but this one's attention doesn't seem to have turned to you... yet.
 
 ~
@@ -1453,25 +1453,15 @@ A bright green vial has been left here.~
 
 
 #ROOMS
-#27235
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
-S
-#27243
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
-S
 #27244
 Arena Way Westbridge, Lower~
 <14>You stand on the bridge that connects Ota'ar Dar's arena canton to its military
 <87>canton. The arena canton gates lie to the south, while the imposing military
 <123>canton gates loom northward. To the east and west you may venture into the
 <159>deep canal system which separates Ota'ar Dar's cantons from each other, or you
-can head upwards, towards the huge, looming area of darkness in the water above.<0>
+can head upwards, towards the huge, looming area of darkness in the water above.
+
+A large SIGN has been nailed to the arena canton gates.<0>
 ~
 0 0 12
 D0
@@ -1494,6 +1484,20 @@ D4
 ~
 ~
 0 -1 27544
+E
+note sign letter writing notice~
+O===============================O
+| Be it known the Arena is for  |
+| the enjoyment of Ota'ar Dar   |
+| CITIZENS only. Visitors are   |
+| likely to find themselves     |
+| unwilling participants in the |
+| games, should they fail to    |
+| heed this generous warning.   |
+|                               |
+| --The Prince                  |
+O===============================O
+~
 S
 #27246
 Ota'ar Dar Military/Arena Canton Canal, Lower~
@@ -1501,8 +1505,8 @@ Ota'ar Dar Military/Arena Canton Canal, Lower~
 <250>military canton, to the north, and its arena canton, to the south. The high canal
 <252>walls prevent access from here to either canton, but you may travel west, further
 <254>along the canal system, upwards, towards the huge, looming area of darkness in the
-water above, or to the east, where you can see the bridge that connects the
-cantons to each other.<0>
+water above, or to the east, where you can see the bridge that connects the cantons
+to each other. You see a large crack in the canal floor at your feet.<0>
 ~
 0 0 12
 D1
@@ -1517,6 +1521,14 @@ D4
 ~
 ~
 0 -1 27546
+D5
+~
+crack~
+10 -1 27851
+E
+crack floor feet~
+The crack looks like it might just be wide enough for you to squeeze yourself through.
+~
 S
 #27247
 Ota'ar Dar Military/Arena Canton Canal, Lower~
@@ -2221,7 +2233,9 @@ Arena Way Eastbridge, Lower~
 <123>rise to the north. To the east you may venture into the deep canal system
 <159>which separates Ota'ar Dar's cantons from each other, or you can head upwards,
 towards the huge, looming area of darkness in the water above.  To the east a huge
-iron grate prevents travel out into the open ocean.<0>
+iron grate prevents travel out into the open ocean.
+
+A large SIGN has been nailed to the arena canton gates.<0>
 ~
 0 0 12
 D0
@@ -2240,6 +2254,20 @@ D4
 ~
 ~
 0 -1 27607
+E
+note sign letter writing notice~
+O===============================O
+| Be it known the Arena is for  |
+| the enjoyment of Ota'ar Dar   |
+| CITIZENS only. Visitors are   |
+| likely to find themselves     |
+| unwilling participants in the |
+| games, should they fail to    |
+| heed this generous warning.   |
+|                               |
+| --The Prince                  |
+O===============================O
+~
 S
 #27354
 Ota'ar Dar Market/Southern Residential Canton Canal, Lower~
@@ -3766,18 +3794,6 @@ D4
 ~
 0 -1 27770
 S
-#27535
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
-S
-#27543
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
-S
 #27544
 Arena Way Westbridge, Upper~
 <21>You float about 4 metres above the bridge that connects Ota'ar Dar's arena
@@ -3785,7 +3801,9 @@ Arena Way Westbridge, Upper~
 <33>while the imposing military canton gates loom northward. To the east and west
 <39>you may venture into the upper part of the deep canal system which separates
 <45>Ota'ar Dar's cantons from each other, the ocean floor lies downwards, or you
-can swim up, directly into the huge, looming area of dark water above your head.<0>
+can swim up, directly into the huge, looming area of dark water above your head.
+
+A large SIGN has been nailed to the arena canton gates.<0>
 ~
 0 0 8
 D0
@@ -3812,6 +3830,20 @@ D5
 ~
 ~
 0 -1 27244
+E
+note sign letter writing notice~
+O===============================O
+| Be it known the Arena is for  |
+| the enjoyment of Ota'ar Dar   |
+| CITIZENS only. Visitors are   |
+| likely to find themselves     |
+| unwilling participants in the |
+| games, should they fail to    |
+| heed this generous warning.   |
+|                               |
+| --The Prince                  |
+O===============================O
+~
 S
 #27546
 <252>Ota'ar Dar Military/Arena Canton Canal, Upper<0>~
@@ -4661,7 +4693,9 @@ Arena Way Eastbridge, Upper~
 <39>into the upper part of the deep canal system which separates Ota'ar Dar's
 <45>cantons from each other, you can swim upwards, directly into the huge, looming
 area of dark water above you, or head downwards, towards the ocean floor.
-To the east a huge iron grate prevents travel out into the open ocean.<0>
+To the east a huge iron grate prevents travel out into the open ocean.
+
+A large SIGN has been nailed to the arena canton gates.<0><0>
 ~
 0 0 8
 D0
@@ -4684,6 +4718,20 @@ D5
 ~
 ~
 0 -1 27307
+E
+note sign letter writing notice~
+O===============================O
+| Be it known the Arena is for  |
+| the enjoyment of Ota'ar Dar   |
+| CITIZENS only. Visitors are   |
+| likely to find themselves     |
+| unwilling participants in the |
+| games, should they fail to    |
+| heed this generous warning.   |
+|                               |
+| --The Prince                  |
+O===============================O
+~
 S
 #27653
 Malana Bridge, Upper~
@@ -7227,6 +7275,93 @@ D2
 ~
 0 -1 27849
 S
+#27851
+<93><556>Under the Ota'ar Dar Canal<557><0>~
+<63>You stand in a narrow underwater tunnel cut out of the ocean bedrock;
+the walls are rough, close, and slimy. Your way is lit by pale bioluminescent
+globes affixed to the sides of the tunnel at regular intervals. The tunnel heads
+south from here, or you can squeeze through a narrow gap up, into the Ota'ar
+Dar canal system.<0>
+~
+0 4|8|512 12
+D2
+~
+~
+0 -1 27852
+D4
+~
+~
+0 -1 27246
+S
+#27852
+<93><556>Under the Ota'ar Dar Arena<557><0>~
+<63>You stand in a narrow underwater tunnel cut out of the ocean bedrock;
+the walls are rough, close, and slimy. Your way is lit by pale bioluminescent
+globes affixed to the sides of the tunnel at regular intervals. The tunnel heads
+north and south from here.<0>
+~
+0 8|512 12
+D0
+~
+~
+0 -1 27851
+D2
+~
+~
+0 -1 27853
+S
+#27853
+<93><556>Under the Ota'ar Dar Arena<557><0>~
+<63>You stand in a narrow underwater tunnel cut out of the ocean bedrock;
+the walls are rough, close, and slimy. Your way is lit by pale bioluminescent
+globes affixed to the sides of the tunnel at regular intervals. The tunnel heads
+north and south from here.<0>
+~
+0 8|512 12
+D0
+~
+~
+0 -1 27852
+D2
+~
+~
+0 -1 27854
+S
+#27854
+<93><556>Under the Ota'ar Dar Arena<557><0>~
+<63>You stand in a narrow underwater tunnel cut out of the ocean bedrock;
+the walls are rough, close, and slimy. Your way is lit by pale bioluminescent
+globes affixed to the sides of the tunnel at regular intervals. The tunnel heads
+north and west from here.<0>
+~
+0 8|512 12
+D0
+~
+~
+0 -1 27853
+D3
+~
+~
+0 -1 27855
+S
+#27855
+<93><556>Under the Ota'ar Dar Arena<557><0>~
+<63>You stand in a narrow underwater tunnel cut out of the ocean bedrock;
+the walls are rough, close, and slimy. Your way is lit by pale bioluminescent
+globes affixed to the sides of the tunnel at regular intervals. The tunnel heads
+east from here, and you can also push your way up through a tight crack above
+your head.<0>
+~
+0 8|512 12
+D1
+~
+~
+0 -1 27854
+D4
+~
+~
+0 -1 27214
+S
 #0
 
 
@@ -7586,9 +7721,9 @@ G 1 27396 100
 
 
 D 1 27244 0 2			; Arena Way Westbridge, Lower Lock North
-D 1 27244 2 2			; Arena Way Westbridge, Lower Lock South
+D 1 27244 2 1			; Arena Way Westbridge, Lower Close South
 D 1 27307 0 1			; Arena Way Eastbridge, Lower Close North
-D 1 27307 2 2			; Arena Way Eastbridge, Lower Lock South
+D 1 27307 2 1			; Arena Way Eastbridge, Lower Close South
 D 1 27419 2 1           ; Prince's Cross Bridge South, Close South
 D 1 27420 0 2           ; Prince's Cross Bridge North, Lock North
 D 1 27719 2 1           ; Prince's Cross Bridge South, Close South
@@ -7602,9 +7737,9 @@ D 1 27418 3 2           ; Stately Way, Lock West
 D 1 27718 1 2           ; Stately Way, Lock East
 D 1 27718 3 2           ; Stately Way, Lock West
 D 1 27607 0 1			; Arena Way Eastbridge, Upper Close North
-D 1 27607 2 2			; Arena Way Eastbridge, Upper Lock South
+D 1 27607 2 1			; Arena Way Eastbridge, Upper Close South
 D 1 27544 0 2			; Arena Way Westbridge, Upper Lock North
-D 1 27544 2 2			; Arena Way Westbridge, Upper Lock South
+D 1 27544 2 1			; Arena Way Westbridge, Upper Close South
 D 1 27653 1 1			; Malana Bridge, Upper Close East
 D 1 27653 3 1			; Malana Bridge, Upper Close West
 D 1 27845 2 1           ; Exit from dragon cave close south

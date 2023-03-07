@@ -306,7 +306,8 @@ branch of the DRAGONHOARD BANK using the commands CLAIM, LODGE, and INSPECT
 (analogous to the inventory commands GET, PUT and EXAMINE).
 
 Contents of your vault are permanent, and safe from danger of destruction via
-breath weapons, theft, DISINTEGRATE and the like.
+breath weapons, theft, DISINTEGRATE and the like. Additionally, you may store
+items up to 5 levels greater than your own in your VAULT.
 
 DRAGONHOARD BANK has branches in every city of the Domain; Midgaard's is one
 SOUTH and two EAST of its RECALL point.
@@ -414,8 +415,18 @@ Dragons Domain version 4.2023
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
+
+    {WNEW AREA:{x "Ota'ar Dar Arena/Jail" is in for levels 40-45, access
+    southwest of Ota'ar Dar Market, and south of Ota'ar Dar Residential
+    - South. 42 new mobs, 100 new rooms, 35 new items, and a new quest!
+
+    {WVAULTS ARE IN:{x You can now permanently store items in vaults, separate
+    from your inventory.  Read HELP VAULTS.
+
     {WNEW AREA:{x "Ota'ar Dar Residential - South" is in for levels 35-40,
     access west of Ota'ar Dar Market. 25 new mobs, 40 new rooms, 50 new items!
+
+
 
 
 To Enter the Dragons Domain press <<Return>.
@@ -449,6 +460,10 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 ~
 
 0 CHANGES~
+
+{W March 2023{x
+-New area in, Ota'ar Dar Arena/Jail, levels 40-45. New special
+ spec_green_grung
 
 {WFebruary 2023{x
 -New area in, Ota'ar Dar Residential Area - South for levels

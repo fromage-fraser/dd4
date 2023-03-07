@@ -832,9 +832,9 @@ void do_lodge (CHAR_DATA *ch, char *argument)
         bool      found;
         int       maxlevel;
 
-        argument = one_argument(argument, arg1);
-        argument = one_argument(argument, arg2);
-        container = get_obj_vaulted(ch, arg2);
+        argument        = one_argument(argument, arg1);
+        argument        = one_argument(argument, arg2);
+        container       = get_obj_vaulted(ch, arg2);
 
 
         if (IS_NPC(ch))
@@ -901,7 +901,7 @@ void do_lodge (CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                if (obj->level > ch->level)
+                if (obj->level > ( ch->level + VAULT_LEVEL_BUFFER) )
                 {
                         act("$p is too high level to be put in your vault.", ch, obj, NULL, TO_CHAR);
                         return;
@@ -909,7 +909,7 @@ void do_lodge (CHAR_DATA *ch, char *argument)
 
                 maxlevel = max_obj_in_obj_level(obj);
 
-                if (maxlevel > ch->level)
+                if (maxlevel > ( ch->level + VAULT_LEVEL_BUFFER ) )
                 {
                         act("$p contains an item or items too high level to go in your vault.", ch, obj, NULL, TO_CHAR);
                         return;
@@ -987,7 +987,7 @@ void do_lodge (CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                if (obj->level > ch->level)
+                if (obj->level > ( ch->level + VAULT_LEVEL_BUFFER ) )
                 {
                         act("$p is too high level to be put in there.", ch, obj, NULL, TO_CHAR);
                         return;
@@ -995,7 +995,7 @@ void do_lodge (CHAR_DATA *ch, char *argument)
 
                 maxlevel = max_obj_in_obj_level(obj);
 
-                if (maxlevel > ch->level)
+                if (maxlevel > ( ch->level + VAULT_LEVEL_BUFFER ) )
                 {
                         act("$p contains an item or items too high level to go in your vault.", ch, obj, NULL, TO_CHAR);
                         return;
@@ -1025,7 +1025,7 @@ void do_lodge (CHAR_DATA *ch, char *argument)
                         &&     can_see_obj(ch, obj)
                         &&     obj->wear_loc == WEAR_NONE
                         &&     can_drop_obj(ch, obj)
-                        &&     ch->level >= obj->level
+                        &&     ( ch->level + VAULT_LEVEL_BUFFER ) >= obj->level
                         &&     (!obj->deleted)
                         &&     ( ( get_obj_number(obj) + ch->pcdata->vault_number) <= can_vault_n( ch ) )
                         &&     ( ( get_obj_weight(obj) + ch->pcdata->vault_weight) <= can_vault_w( ch ) ) )
@@ -1079,7 +1079,7 @@ void do_lodge (CHAR_DATA *ch, char *argument)
                         &&     obj->wear_loc == WEAR_NONE
                         &&     can_drop_obj(ch, obj)
                         &&     (!obj->deleted)
-                        &&     ch->level >= obj->level
+                        &&     ( ch->level + VAULT_LEVEL_BUFFER ) >= obj->level
                         &&     ( ( get_obj_weight(obj) + get_obj_weight(container)) <= container->value[0] )
                         &&     ( ( get_obj_weight(obj) + ch->pcdata->vault_weight) <= can_vault_w( ch ) ) )
                         {
