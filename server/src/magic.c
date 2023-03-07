@@ -1675,6 +1675,14 @@ void spell_cure_critical( int sn, int level, CHAR_DATA *ch, void *vo )
         if (heal > 75)
                 heal = 75;
 
+        if (IS_NPC(victim))
+        {
+            if (IS_SET(victim->act, ACT_NO_HEAL))
+            {
+                return;
+            }
+        }
+
         if( victim->hit > victim->max_hit )
                 return;
 
@@ -1758,6 +1766,14 @@ void spell_cure_light( int sn, int level, CHAR_DATA *ch, void *vo )
         int heal;
 
         heal = 4 + dice( 1, 8 ) + level / 2;
+
+        if (IS_NPC(victim))
+        {
+            if (IS_SET(victim->act, ACT_NO_HEAL))
+            {
+                return;
+            }
+        }
 
         if (heal > 35)
                 heal = 35;
@@ -1960,6 +1976,14 @@ void spell_cure_serious( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if (heal > 50)
                 heal = 50;
+
+        if (IS_NPC(victim))
+        {
+            if (IS_SET(victim->act, ACT_NO_HEAL))
+            {
+                return;
+            }
+        }
 
         if( victim->hit > victim->max_hit )
                 return;
@@ -3165,6 +3189,14 @@ void spell_heal( int sn, int level, CHAR_DATA *ch, void *vo )
 
         CHAR_DATA *victim = (CHAR_DATA *) vo;
 
+        if (IS_NPC(victim))
+        {
+            if (IS_SET(victim->act, ACT_NO_HEAL))
+            {
+                return;
+            }
+        }
+
         if (victim == ch->fighting)
                 return;
 
@@ -3246,6 +3278,14 @@ void spell_power_heal (int sn, int level, CHAR_DATA *ch, void *vo)
         int percent;
 
         CHAR_DATA *victim = (CHAR_DATA *) vo;
+
+        if (IS_NPC(victim))
+        {
+            if (IS_SET(victim->act, ACT_NO_HEAL))
+            {
+                return;
+            }
+        }
 
         if (victim == ch->fighting)
                 return;
@@ -5407,6 +5447,14 @@ void spell_complete_healing (int sn, int level, CHAR_DATA *ch, void *vo)
         if (victim->hit > victim->max_hit)
                 return;
 
+        if (IS_NPC(victim))
+        {
+            if (IS_SET(victim->act, ACT_NO_HEAL))
+            {
+                return;
+            }
+        }
+
         victim->hit = victim->max_hit - victim->aggro_dam;
         update_pos(victim);
 
@@ -6138,6 +6186,14 @@ void spell_psychic_healing ( int sn, int level, CHAR_DATA *ch, void *vo )
         int heal;
 
         heal = dice( 3, 6 ) + 2 * level / 3 ;
+
+        if (IS_NPC(victim))
+        {
+            if (IS_SET(victim->act, ACT_NO_HEAL))
+            {
+                return;
+            }
+        }
 
         if( victim->hit > victim->max_hit )
                 return;
