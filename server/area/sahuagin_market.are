@@ -3903,6 +3903,52 @@ A
 19 7
 A
 18 15
+#27507
+map Ota'ar Dar arena jail lower~
+a map of the Ota'ar Dar arena/jail - lower level~
+A map of the Ota'ar Dar arena/jail's lower level lies here.~
+~
+2 0 1|16384
+0~ ~ ~ ~
+1 0 30
+E
+map Ota'ar Dar arena jail lower~
+You examine a map of the Ota'ar Dar arena/jail's lower level...
+
+                      <67>[<0><15>*<0><67>][<0><15>*<0><67>]<0>
+                <10>[ ]<0><81>[ ][<0><15>*<81>][ ][ ]<0>
+    <10>[<0><15>*<0><10>][ ][<0><15>*<0><10>][ ][ ]<0><190>[ ][ ][ ]<0><81>[ ]<0><10>[<0><15>*<0><10>][<0><15>*<0><10>]<0>
+    <129>[ ]<0><190>[ ][ ][ ][ ][ ][ ][ ]<0><10>[ ][<0><15>*<0><10>]<0>
+    <129>[<15>?<0><129>]<0><190>[ ][ ][ ][ ][ ]<10>[ ][ ][ ]<0>
+    <10>[<0><15>*<0><10>][ ][ ][ ][ ][ ][ ]<0>
+    <158>[ ][ ][ ]<0><10>[ ]<0>
+    <10>[<0><15>*<0><10>][<0><15>*<0><10>]<0>
+
+{x
+~
+#27508
+map Ota'ar Dar arena jail upper~
+a map of the Ota'ar Dar arena/jail - upper level~
+A map of the Ota'ar Dar arena/jail's upper level lies here.~
+~
+2 0 1|16384
+0~ ~ ~ ~
+1 0 30
+E
+map Ota'ar Dar arena jail upper~
+You examine a map of the Ota'ar Dar arena/jail's upper level...
+
+                      <67>[<0><15>*<0><67>][<0><15>*<0><67>]<0>
+                <2>[ ]<0><67>[ ]<0><81>[ ][ ]<0><67>[ ]<0>
+    <2>[ ][ ][<0><15>*<0><2>][ ][ ]<0><187>[ ][ ][ ]<0><67>[<0><15>*<0><67>]<0><2>[ ][<0><15>*<0><2>]<0>
+    <141>[<0><15>*<0><141>]<0><187>[ ][ ][ ][ ][ ][ ][ ]<0><2>[ ][ ]<0>
+    <141>[<0><15>*<0><141>]<0><187>[ ][ ][ ][ ][ ]<0><2>[ ][ ][ ]<0>
+    <2>[ ][ ][ ][ ][ ][ ][ ]<0>
+    <10>[ ][ ][<0><15>*<0><10>][ ]<0>
+    <10>[ ][ ]<0>
+
+{x
+~
 #0
 
 
@@ -6371,6 +6417,8 @@ G 1 27411 100
 G 1 27466 100
 G 1 27467 100
 G 1 20670 100
+G 1 27507 100
+G 1 27508 100
 *
 O 1 27263 100 27625			a heavy trunk to Reavers' Guild Master's Quarters
 P 1 27265 100 27263			a Reaver's heavy crossbow to container trunk heavy
@@ -6725,6 +6773,8 @@ P 1 27409 100 27206         a map of the Ota'ar Dar canals - lower to container 
 P 1 27410 100 27206         a map of the Ota'ar Dar canals - upper to container a metal sea chest trunk
 P 1 27411 100 27206         a map of the dragon caves to container a metal sea chest trunk
 P 1 20670 100 27206         a map of the Vampyre Vale to container a metal sea chest trunk
+P 1 27507 100 27206         a map of the Ota'ar Dar arena/jail - lower to container a metal sea chest trunk
+P 1 27508 100 27206         a map of the Ota'ar Dar arena/jail - upper to container a metal sea chest trunk
 *
 M 1 27202 3 27610			a Dragonhoard clerk to Dragonhoard Office
 E 1 27237 100 17
