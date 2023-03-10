@@ -1236,7 +1236,7 @@ void do_ostat( CHAR_DATA *ch, char *argument )
 
         sprintf( buf, "This item and effects were created with {W%s{x\n\r", created_name(obj->how_created));
         strcat( buf1, buf );
-        
+
         if (obj->how_created >= CREATED_NO_RANDOMISER )
         {
                 for ( paf = obj->affected; paf; paf = paf->next )
@@ -2895,7 +2895,7 @@ void do_oload( CHAR_DATA *ch, char *argument )
                         to turn randomisation on/off and to be able to create EPIC, LEGENDARY etc items
                         -- Owl 2/1/23
                 */
-                obj = create_object( pObjIndex, level,"common", FALSE );
+                obj = create_object( pObjIndex, level,"common", CREATED_NO_RANDOMISER );
                 if ( IS_SET(obj->wear_flags, ITEM_TAKE) )
                 {
                         if ( (ch->carry_number + copies) > can_carry_n( ch ))
@@ -4259,7 +4259,7 @@ void do_oclanitem (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        clanobj = create_object(get_obj_index(itemvnum), level,"common", FALSE);
+        clanobj = create_object(get_obj_index(itemvnum), level,"common", CREATED_NO_RANDOMISER);
         set_obj_owner(clanobj, victim->name);
         obj_to_char(clanobj, ch);
 
@@ -6209,7 +6209,7 @@ void do_wizbrew (CHAR_DATA *ch, char *argument)
          *      Okedoke, command's okay so let's make a potion
          */
 
-        potion = create_object (get_obj_index (ITEM_VNUM_WIZBREW_VIAL), 0, "common", FALSE);
+        potion = create_object (get_obj_index (ITEM_VNUM_WIZBREW_VIAL), 0, "common", CREATED_NO_RANDOMISER);
         if (!potion)
         {
                 send_to_char ("Oops, couldn't create the potion object: abort!\n\r", ch);

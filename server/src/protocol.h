@@ -52,7 +52,7 @@ typedef struct descriptor_data descriptor_t;
  If you offer a Mudlet GUI for autoinstallation, put the path/filename here.
  ******************************************************************************/
 
-#define MUDLET_PACKAGE "0.0.4\nhttps://www.dragons-domain.org/main/gui/DD_GUI.mpackage"
+#define MUDLET_PACKAGE "0.0.5\nhttps://www.dragons-domain.org/main/gui/DD_GUI.mpackage"
 
 /*
 #define GMCP_GUI_VERSION        "0.0.2"
@@ -180,6 +180,7 @@ typedef enum
    eMSDP_LEVEL,
    eMSDP_RACE,
    eMSDP_CLASS,
+   eMSDP_SUBCLASS,
    eMSDP_MANA,
    eMSDP_MANA_MAX,
    eMSDP_WIMPY,
@@ -187,8 +188,6 @@ typedef enum
    eMSDP_MONEY,
    eMSDP_MOVEMENT,
    eMSDP_MOVEMENT_MAX,
-   eMSDP_HITROLL,
-   eMSDP_DAMROLL,
    eMSDP_AC,
    eMSDP_STR,
    eMSDP_INT,
@@ -200,6 +199,8 @@ typedef enum
    eMSDP_WIS_PERM,
    eMSDP_DEX_PERM,
    eMSDP_CON_PERM,
+   eMSDP_HITROLL,
+   eMSDP_DAMROLL,
 
    /* Combat */
    eMSDP_OPPONENT_HEALTH,
@@ -211,6 +212,7 @@ typedef enum
    eMSDP_AREA_NAME,
    eMSDP_ROOM_EXITS,
    eMSDP_ROOM_NAME,
+   eMSDP_ROOM_SECT,
    eMSDP_ROOM_VNUM,
    eMSDP_WORLD_TIME,
 
@@ -308,7 +310,7 @@ typedef enum
 	GMCP_STATS,
 	GMCP_WORTH,
 	GMCP_AFFECTED,
-        GMCP_ITEMS,
+    GMCP_ITEMS,
 	GMCP_ENEMIES,
 	GMCP_ROOM,
 	GMCP_PACKAGE_MAX
@@ -326,6 +328,7 @@ typedef enum
 	GMCP_NAME,
 	GMCP_RACE,
 	GMCP_CLASS,
+	GMCP_SUBCLASS,
 	GMCP_SEX,
 
 	/* Vitals */
@@ -336,6 +339,9 @@ typedef enum
 	GMCP_MAX_MANA,
 	GMCP_MAX_MOVE,
 	GMCP_POSITION,
+	GMCP_FORM,
+	GMCP_RAGE,
+	GMCP_MAX_RAGE,
 
 	/* Stats */
 	GMCP_STR,
@@ -351,13 +357,19 @@ typedef enum
 	GMCP_HITROLL,
 	GMCP_DAMROLL,
 	GMCP_WIMPY,
-        GMCP_CARRY_NUMBER,
-        GMCP_CARRY_MAXNUM,
-        GMCP_CARRY_WEIGHT,
-        GMCP_CARRY_MAXWEIGHT,
-        GMCP_AC,
-        GMCP_FAME,
-        GMCP_SAVE_VS,
+    GMCP_CARRY_NUMBER,
+    GMCP_CARRY_MAXNUM,
+    GMCP_CARRY_WEIGHT,
+    GMCP_CARRY_MAXWEIGHT,
+    GMCP_AC,
+    GMCP_FAME,
+    GMCP_SAVE_VS,
+    GMCP_CRITICAL,
+    GMCP_SWIFTNESS,
+    GMCP_RESIST_ACID,
+    GMCP_RESIST_LIGHTNING,
+    GMCP_RESIST_HEAT,
+    GMCP_RESIST_COLD,
 
 	/* Worth */
 	GMCP_ALIGNMENT,
@@ -365,6 +377,7 @@ typedef enum
 	GMCP_XP,
 	GMCP_XP_MAX,
 	GMCP_XP_TNL,
+    GMCP_XP_CURLEVEL,
 	GMCP_PRACTICE,
 	GMCP_PLATINUM,
 	GMCP_GOLD,
@@ -382,14 +395,14 @@ typedef enum
 	/* Affected */
 	GMCP_AFFECT,
 
-        /* Inventory */
+   /* Inventory */
 	GMCP_INVENTORY,
 
 	/* Room */
 	GMCP_AREA,
 	GMCP_ROOM_NAME,
 	GMCP_ROOM_SECT,
-        GMCP_ROOM_FLAGS,
+    GMCP_ROOM_FLAGS,
 	GMCP_ROOM_VNUM,
 	GMCP_ROOM_EXITS,
 

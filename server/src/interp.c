@@ -70,6 +70,7 @@ const struct cmd_type cmd_table [] =
         { "exits",              do_exits,           POS_RESTING,    0,  LOG_NORMAL      },
         { "get",                do_get,             POS_RESTING,    0,  LOG_NORMAL      },
         { "inventory",          do_inventory,       POS_DEAD,       0,  LOG_NORMAL      },
+        { "vault",              do_vault,           POS_DEAD,       0,  LOG_NORMAL      },
         { "kill",               do_kill,            POS_FIGHTING,   0,  LOG_NORMAL      },
         { "look",               do_look,            POS_RESTING,    0,  LOG_NORMAL      },
         { "order",              do_order,           POS_RESTING,    0,  LOG_ALWAYS      },
@@ -80,6 +81,8 @@ const struct cmd_type cmd_table [] =
         { "stand",              do_stand,           POS_SLEEPING,   0,  LOG_NORMAL      },
         { "tell",               do_tell,            POS_DEAD,       0,  LOG_NORMAL      },
         { "wield",              do_wear,            POS_RESTING,    0,  LOG_NORMAL      },
+        { "lodge",              do_lodge,           POS_RESTING,    0,  LOG_NORMAL      },
+        { "claim",              do_claim,           POS_RESTING,    0,  LOG_NORMAL      },
         /*{ "map",              do_map,         POS_STANDING,    0,  LOG_NORMAL },*/
 
         /*
@@ -100,6 +103,7 @@ const struct cmd_type cmd_table [] =
         { "help",               do_help,        POS_DEAD,        0,  LOG_NORMAL },
         { "hero",               do_hero,        POS_DEAD,        0,  LOG_NORMAL },
         { "infamy",             do_infamy,      POS_DEAD,        0,  LOG_NORMAL },
+        { "inspect",            do_inspect,     POS_RESTING,     0,  LOG_NORMAL },
         { "legends",            do_legend,      POS_DEAD,        0,  LOG_NORMAL },
         { "levels",             do_levels,      POS_DEAD,        0,  LOG_NORMAL },
         { "pkillers",           do_pkillers,    POS_DEAD,        0,  LOG_NORMAL },
@@ -423,7 +427,7 @@ const struct cmd_type cmd_table [] =
         { "mfind",      do_mfind,       POS_DEAD,    L_APP,  LOG_NORMAL },
         { "mrank",      do_mrank,       POS_DEAD,    L_APP,  LOG_NORMAL },
         { "ofind",      do_ofind,       POS_DEAD,    L_APP,  LOG_NORMAL },
-        { "oscore",     do_oscore,      POS_DEAD,    L_APP,  LOG_NORMAL },    
+        { "oscore",     do_oscore,      POS_DEAD,    L_APP,  LOG_NORMAL },
         { "osfind",     do_osfind,      POS_DEAD,    L_APP,  LOG_NORMAL },
         { "return",     do_return,      POS_DEAD,    L_APP,  LOG_NORMAL },
         { "switch",     do_switch,      POS_DEAD,    L_APP,  LOG_NORMAL },
@@ -3219,22 +3223,22 @@ void interpret( CHAR_DATA *ch, char *argument )
                 }
         }
 
-        /* IF your Dazed cant do much.
-         * If your PRONE - cant do attack skills
+        /* IF you're DAZED you can't do much.
+         * If you're PRONE you can't do attack skills
          */
 
         if ((cmd_table[cmd].position >= POS_RESTING) && (IS_AFFECTED(ch, AFF_DAZED)))
         {
-                send_to_char( "You see STARS. You are dazed at present.\n\r", ch ); 
-                return; 
+                send_to_char( "You see STARS. You are dazed.\n\r", ch );
+                return;
         }
 
-        if ((cmd_table[cmd].position == POS_FIGHTING) 
-                && (IS_AFFECTED(ch, AFF_PRONE)) 
+        if ((cmd_table[cmd].position == POS_FIGHTING)
+                && (IS_AFFECTED(ch, AFF_PRONE))
                 && (str_cmp( "cast", cmd_table[cmd].name )))
         {
-                send_to_char( "You cant, you're lying PRONE on the ground.\n\r", ch ); 
-                return; 
+                send_to_char( "You cant, you're lying PRONE on the ground.\n\r", ch );
+                return;
         }
 
         /*

@@ -696,7 +696,7 @@ void do_morph_snake (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
-                bite = create_object(get_obj_index(OBJ_SNAKE_BITE), ch->level, "common", FALSE);
+                bite = create_object(get_obj_index(OBJ_SNAKE_BITE), ch->level, "common", CREATED_NO_RANDOMISER);
                 obj_to_char(bite, ch);
                 form_equip_char(ch, bite, WEAR_WIELD);
 
@@ -747,7 +747,7 @@ void do_morph_scorpion (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
-                sting = create_object(get_obj_index(OBJ_SCORPION_STING), ch->level, "common", FALSE);
+                sting = create_object(get_obj_index(OBJ_SCORPION_STING), ch->level, "common", CREATED_NO_RANDOMISER);
 
                 if (!affect_free)
                         paf = alloc_perm(sizeof(*paf));
@@ -976,7 +976,7 @@ void do_morph_spider (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
-                mandibles = create_object(get_obj_index(OBJ_SPIDER_MANDIBLES), ch->level, "common", FALSE);
+                mandibles = create_object(get_obj_index(OBJ_SPIDER_MANDIBLES), ch->level, "common", CREATED_NO_RANDOMISER);
                 if (mandibles)
                 {
                         obj_to_char(mandibles, ch);
@@ -1042,7 +1042,7 @@ void do_morph_bear (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
-                claws = create_object(get_obj_index(OBJ_BEAR_CLAWS), ch->level, "common", FALSE);
+                claws = create_object(get_obj_index(OBJ_BEAR_CLAWS), ch->level, "common", CREATED_NO_RANDOMISER);
                 if (claws)
                 {
                         claws->value[1] *= 1.5;
@@ -1074,16 +1074,19 @@ void do_bite (CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
 
-        if (IS_NPC(ch))
+        if (IS_NPC(ch)
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
                 return;
 
-        if (!CAN_DO(ch, gsn_bite))
+        if (!CAN_DO(ch, gsn_bite)
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
         {
                 send_to_char("What do you think you are, a tiger?\n\r", ch);
                 return;
         }
 
-        if (!(ch->form == FORM_TIGER))
+        if (!(ch->form == FORM_TIGER)
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
         {
                 send_to_char("You are not in the correct form.\n\r", ch);
                 return;
@@ -1214,16 +1217,19 @@ void do_maul (CHAR_DATA *ch, char *argument)
         int percent;
         int count;
 
-        if (IS_NPC(ch))
+        if (IS_NPC(ch)
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
                 return;
 
-        if (!CAN_DO(ch, gsn_maul))
+        if (!CAN_DO(ch, gsn_maul)
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
         {
                 send_to_char("What do you think you are, a tiger?\n\r", ch);
                 return;
         }
 
-        if (!(ch->form == FORM_TIGER || ch->form == FORM_GRIFFIN))
+        if ( (!(ch->form == FORM_TIGER || ch->form == FORM_GRIFFIN) )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
         {
                 send_to_char("You are not in the correct form.\n\r",ch);
                 return;
@@ -1311,8 +1317,8 @@ void do_morph_tiger (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
-                claws = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level, "common", FALSE);
-                fangs = create_object(get_obj_index(OBJ_TIGER_FANGS), ch->level, "common", FALSE);
+                claws = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level, "common", CREATED_NO_RANDOMISER);
+                fangs = create_object(get_obj_index(OBJ_TIGER_FANGS), ch->level, "common", CREATED_NO_RANDOMISER);
 
                 if (!affect_free)
                         paf = alloc_perm(sizeof(*paf));
@@ -1396,8 +1402,8 @@ void do_morph_wolf (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
-                claws = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level, "common", FALSE);
-                fangs = create_object(get_obj_index(OBJ_TIGER_FANGS), ch->level, "common", FALSE);
+                claws = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level, "common", CREATED_NO_RANDOMISER);
+                fangs = create_object(get_obj_index(OBJ_TIGER_FANGS), ch->level, "common", CREATED_NO_RANDOMISER);
 
                 if (!affect_free)
                         paf = alloc_perm(sizeof(*paf));
@@ -1529,8 +1535,8 @@ void do_morph_direwolf (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
-                claws = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level, "common", FALSE);
-                fangs = create_object(get_obj_index(OBJ_TIGER_FANGS), ch->level, "common", FALSE);
+                claws = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level, "common", CREATED_NO_RANDOMISER);
+                fangs = create_object(get_obj_index(OBJ_TIGER_FANGS), ch->level, "common", CREATED_NO_RANDOMISER);
 
                 if (!affect_free)
                         paf = alloc_perm(sizeof(*paf));
@@ -1658,7 +1664,7 @@ void do_morph_hydra (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
-                teeth = create_object(get_obj_index(OBJ_HYDRA_TEETH), ch->level, "common", FALSE);
+                teeth = create_object(get_obj_index(OBJ_HYDRA_TEETH), ch->level, "common", CREATED_NO_RANDOMISER);
                 teeth->value[1] *= 2;
                 teeth->value[2] *= 2;
 
@@ -1756,8 +1762,8 @@ void do_morph_dragon (CHAR_DATA *ch, bool to_form)
                         affect_to_char (ch, &af);
                 }
 
-                claws = create_object(get_obj_index(OBJ_DRAGON_CLAWS), ch->level, "common", FALSE);
-                fangs = create_object(get_obj_index(OBJ_DRAGON_CLAWS), ch->level, "common", FALSE);
+                claws = create_object(get_obj_index(OBJ_DRAGON_CLAWS), ch->level, "common", CREATED_NO_RANDOMISER);
+                fangs = create_object(get_obj_index(OBJ_DRAGON_CLAWS), ch->level, "common", CREATED_NO_RANDOMISER);
 
                 if (!affect_free)
                         paf = alloc_perm(sizeof(*paf));
@@ -1845,7 +1851,7 @@ void do_morph_phoenix (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
-                beak = create_object(get_obj_index(OBJ_PHOENIX_BEAK), ch->level, "common", FALSE);
+                beak = create_object(get_obj_index(OBJ_PHOENIX_BEAK), ch->level, "common", CREATED_NO_RANDOMISER);
                 if (beak)
                 {
                         beak->value[1] *= 1.5;
@@ -2029,8 +2035,8 @@ void do_morph_griffin (CHAR_DATA *ch, bool to_form)
                         affect_to_char(ch, &af);
                 }
 
-                claws = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level, "common", FALSE);
-                claw = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level, "common", FALSE);
+                claws = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level, "common", CREATED_NO_RANDOMISER);
+                claw = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level, "common", CREATED_NO_RANDOMISER);
 
                 if (!affect_free)
                         paf = alloc_perm(sizeof(*paf));

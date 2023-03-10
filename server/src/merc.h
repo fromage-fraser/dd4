@@ -308,6 +308,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define MAX_PROMPT_LENGTH                200    /* Was defined locally, thought better as global -- Owl 24/7/22 */
 #define MAX_TITLE_LENGTH                 150    /* Was defined locally, thought better as global -- Owl 29/7/22 */
 #define FULL_AIR_SUPPLY                    2    /* ticks before drowning; Gez */
+#define VAULT_LEVEL_BUFFER                 5    /* Can save items up to this many levels above your own in your vault */
 
 #define L_IMM                       MAX_LEVEL
 #define L_DIR                     ( L_IMM - 1 )
@@ -335,8 +336,8 @@ bool    has_tranquility ( CHAR_DATA *ch );
 /* these are chance in 1000 - Brutus */
 #define LEGENDARY_CHANCE        1       /* 0.1% */
 #define EPIC_CHANCE             10      /* 1%   */
-#define RARE_CHANCE             25      /* 2.5% */
-#define UNCOMMON_CHANCE         150     /* 15%* */
+#define RARE_CHANCE             50      /* 5% */
+#define UNCOMMON_CHANCE         300     /* 30%* */
 
 #define RANDOMISER_MIN_LEVEL    40
 
@@ -821,42 +822,42 @@ struct descriptor_data
 #define BODY_HUGE               BIT_7
 #define BODY_INORGANIC          BIT_8
 #define BODY_HAS_TAIL           BIT_9
-#define PART_HEAD		  BIT_10
-#define PART_MANY_HEAD            BIT_11
-#define PART_ARMS		  BIT_12
-#define PART_MANY_ARMS		  BIT_13
-#define PART_2_LEGS		  BIT_15
-#define PART_4_LEGS		  BIT_16
-#define PART_MANY_LEGS		  BIT_17
-#define PART_HEART		  BIT_18
-#define PART_BRAINS		  BIT_19
-#define PART_GUTS		  BIT_20
-#define PART_HANDS		  BIT_21
-#define PART_FEET		  BIT_22
-#define PART_FINGERS		  BIT_23
-#define PART_EAR		  BIT_24
-#define PART_EYE		  BIT_25
-#define PART_LONG_TONGUE	  BIT_26
-#define PART_EYESTALKS		  BIT_27
-#define PART_TENTACLES		  BIT_28
-#define PART_FINS		  BIT_29
-#define PART_WINGS		  BIT_30
-#define PART_TAIL		  BIT_31
-#define PART_SCALES		  BIT_32
+#define PART_HEAD		        BIT_10
+#define PART_MANY_HEAD          BIT_11
+#define PART_ARMS		        BIT_12
+#define PART_MANY_ARMS		    BIT_13
+#define PART_2_LEGS		        BIT_15
+#define PART_4_LEGS		        BIT_16
+#define PART_MANY_LEGS		    BIT_17
+#define PART_HEART		        BIT_18
+#define PART_BRAINS		        BIT_19
+#define PART_GUTS		        BIT_20
+#define PART_HANDS		        BIT_21
+#define PART_FEET		        BIT_22
+#define PART_FINGERS		    BIT_23
+#define PART_EAR		        BIT_24
+#define PART_EYE		        BIT_25
+#define PART_LONG_TONGUE	    BIT_26
+#define PART_EYESTALKS		    BIT_27
+#define PART_TENTACLES		    BIT_28
+#define PART_FINS		        BIT_29
+#define PART_WINGS		        BIT_30
+#define PART_TAIL		        BIT_31
+#define PART_SCALES		        BIT_32
 /* for combat */
-#define PART_CLAWS		  BIT_33
-#define PART_FANGS		  BIT_34
-#define PART_HORNS		  BIT_35
-#define PART_TUSKS		  BIT_36
-#define PART_TAILATTACK		  BIT_37
-#define PART_SHARPSCALES	  BIT_38
-#define PART_BEAK		  BIT_39
-#define PART_HAUNCH		  BIT_40
-#define PART_HOOVES		  BIT_41
-#define PART_PAWS		  BIT_42
-#define PART_FORELEGS		  BIT_43
-#define PART_FEATHERS		  BIT_44
-#define PART_HUSK_SHELL		  BIT_45
+#define PART_CLAWS		        BIT_33
+#define PART_FANGS		        BIT_34
+#define PART_HORNS		        BIT_35
+#define PART_TUSKS		        BIT_36
+#define PART_TAILATTACK		    BIT_37
+#define PART_SHARPSCALES	    BIT_38
+#define PART_BEAK		        BIT_39
+#define PART_HAUNCH		        BIT_40
+#define PART_HOOVES		        BIT_41
+#define PART_PAWS		        BIT_42
+#define PART_FORELEGS		    BIT_43
+#define PART_FEATHERS		    BIT_44
+#define PART_HUSK_SHELL		    BIT_45
 
 
 
@@ -1858,7 +1859,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define ACT_CLAN_GUARD                  BIT_22  /* Protects from some combat skills; Gezhp */
 #define ACT_NO_SUMMON                   BIT_23  /* Mob may not be summoned; Gezhp */
 #define ACT_NO_EXPERIENCE               BIT_24  /* No exp rewarded for kill; Gezhp */
-#define ACT_UNKILLABLE                  BIT_63  /* Can't be killed. 'slay' still works.  --Owl */
+#define ACT_NO_HEAL                     BIT_25  /* Will not heal HP from damage, will supercede ACT_REGENERATOR - Owl */
+#define ACT_UNKILLABLE                  BIT_63  /* Can't be killed. 'slay' still works. - Owl */
 
 
 /*
@@ -1985,22 +1987,22 @@ extern  WANTED_DATA *wanted_list_last;
  * Well known object virtual numbers.
  * Defined in #OBJECTS.
  */
-#define OBJ_VNUM_MONEY_ONE                  2
-#define OBJ_VNUM_MONEY_SOME                 3
+#define OBJ_VNUM_MONEY_ONE                 2
+#define OBJ_VNUM_MONEY_SOME                3
 
-#define OBJ_VNUM_CORPSE_NPC                10
-#define OBJ_VNUM_CORPSE_PC                 11
-#define OBJ_VNUM_SEVERED_HEAD              12
-#define OBJ_VNUM_TORN_HEART                13
-#define OBJ_VNUM_SLICED_ARM                14
-#define OBJ_VNUM_SLICED_LEG                15
-#define OBJ_VNUM_SLICED_TAIL               502
+#define OBJ_VNUM_CORPSE_NPC               10
+#define OBJ_VNUM_CORPSE_PC                11
+#define OBJ_VNUM_SEVERED_HEAD             12
+#define OBJ_VNUM_TORN_HEART               13
+#define OBJ_VNUM_SLICED_ARM               14
+#define OBJ_VNUM_SLICED_LEG               15
+#define OBJ_VNUM_SLICED_TAIL             502
 
-#define OBJ_VNUM_MUSHROOM                  20
-#define OBJ_VNUM_LIGHT_BALL                21
-#define OBJ_VNUM_SPRING                    22
-#define OBJ_VNUM_PORTAL                    26
-#define OBJ_VNUM_LIGHT_BALL_CRAFT          64
+#define OBJ_VNUM_MUSHROOM                 20
+#define OBJ_VNUM_LIGHT_BALL               21
+#define OBJ_VNUM_SPRING                   22
+#define OBJ_VNUM_PORTAL                   26
+#define OBJ_VNUM_LIGHT_BALL_CRAFT         64
 
 /* these are for smithy blueprints (2700-2799*/
 #define OBJ_VNUM_ST_SWORD1              2700
@@ -2023,47 +2025,47 @@ extern  WANTED_DATA *wanted_list_last;
 #define OBJ_VNUM_AS_SET4                2717
 #define OBJ_VNUM_AS_SET5                2718
 #define OBJ_VNUM_STEEL_CACHE            2719
-#define OBJ_VNUM_BLADE                   2720
-#define OBJ_VNUM_SHURIKEN                   2721
-#define OBJ_VNUM_SPEAR                   2722
-#define OBJ_VNUM_ARRESTOR                   2723
-#define OBJ_VNUM_DRIVER                   2724
-#define OBJ_VNUM_REFLECTOR                   2725
+#define OBJ_VNUM_BLADE                  2720
+#define OBJ_VNUM_SHURIKEN               2721
+#define OBJ_VNUM_SPEAR                  2722
+#define OBJ_VNUM_ARRESTOR               2723
+#define OBJ_VNUM_DRIVER                 2724
+#define OBJ_VNUM_REFLECTOR              2725
 #define OBJ_VNUM_SHIELD                 2726
-#define OBJ_VNUM_AD_SWORD1                   2727
-#define OBJ_VNUM_EL_SWORD1                   2728
-#define OBJ_VNUM_SM_SWORD1                   2729
+#define OBJ_VNUM_AD_SWORD1              2727
+#define OBJ_VNUM_EL_SWORD1              2728
+#define OBJ_VNUM_SM_SWORD1              2729
 #define OBJ_VNUM_ARRESTOR_UNIT          2730
-#define OBJ_VNUM_DRIVER_UNIT          2731
-#define OBJ_VNUM_REFLECTOR_UNIT          2732
-#define OBJ_VNUM_SHIELD_UNIT          2733
+#define OBJ_VNUM_DRIVER_UNIT            2731
+#define OBJ_VNUM_REFLECTOR_UNIT         2732
+#define OBJ_VNUM_SHIELD_UNIT            2733
 #define OBJ_VNUM_AD_RB                  2734
 #define OBJ_VNUM_EL_RB                  2735
 #define OBJ_VNUM_SM_RB                  2736
-#define OBJ_VNUM_PYRO_RUNE                  2737
-#define OBJ_VNUM_CYRO_RUNE                  2738
-#define OBJ_VNUM_BOLT_RUNE                  2739
-#define OBJ_VNUM_STAB_RUNE                  2740
-#define OBJ_VNUM_REND_RUNE                  2741
-#define OBJ_VNUM_MEND_RUNE                  2742
-#define OBJ_VNUM_CURE_RUNE                  2743
-#define OBJ_VNUM_WARD_RUNE                  2744
+#define OBJ_VNUM_PYRO_RUNE              2737
+#define OBJ_VNUM_CRYO_RUNE              2738
+#define OBJ_VNUM_BOLT_RUNE              2739
+#define OBJ_VNUM_STAB_RUNE              2740
+#define OBJ_VNUM_REND_RUNE              2741
+#define OBJ_VNUM_MEND_RUNE              2742
+#define OBJ_VNUM_CURE_RUNE              2743
+#define OBJ_VNUM_WARD_RUNE              2744
 
-/* End SMithy Stuff */
+/* End Smithy Stuff */
 
-#define OBJ_VNUM_SCHOOL_MACE             3700
-#define OBJ_VNUM_SCHOOL_DAGGER           3701
-#define OBJ_VNUM_SCHOOL_SWORD            3702
-#define OBJ_VNUM_SCHOOL_VEST             3703
-#define OBJ_VNUM_SCHOOL_SHIELD           3704
-#define OBJ_VNUM_SCHOOL_BANNER           3716
-#define OBJ_VNUM_SCHOOL_CLUB             3717
-#define OBJ_VNUM_SCHOOL_NULL                2
-#define OBJ_VNUM_POUCH                   3370
-#define OBJ_VNUM_SCHOOL_BOW              3722
+#define OBJ_VNUM_SCHOOL_MACE            3700
+#define OBJ_VNUM_SCHOOL_DAGGER          3701
+#define OBJ_VNUM_SCHOOL_SWORD           3702
+#define OBJ_VNUM_SCHOOL_VEST            3703
+#define OBJ_VNUM_SCHOOL_SHIELD          3704
+#define OBJ_VNUM_SCHOOL_BANNER          3716
+#define OBJ_VNUM_SCHOOL_CLUB            3717
+#define OBJ_VNUM_SCHOOL_NULL               2
+#define OBJ_VNUM_POUCH                  3370
+#define OBJ_VNUM_SCHOOL_BOW             3722
 
-#define ITEM_VNUM_HERB                    100
-#define ITEM_VNUM_WIZBREW_VIAL             99
+#define ITEM_VNUM_HERB                   100
+#define ITEM_VNUM_WIZBREW_VIAL            99
 
 
 /*
@@ -2319,6 +2321,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define APPLY_INSCRIBED                         49
 #define APPLY_CRIT                              50
 #define APPLY_SWIFTNESS                         51
+#define APPLY_LAST                              51 /* Update if you add a new APPLY_ */
 
 /*
  * Values for containers (value[1]).
@@ -2367,6 +2370,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define ROOM_DARK                       BIT_0
 #define ROOM_NO_MOB                     BIT_2
 #define ROOM_INDOORS                    BIT_3
+#define ROOM_VAULT                      BIT_4 /* Room in which a player's "vault" can be manipulated --Owl 22/2/23 */
 #define ROOM_CRAFT                      BIT_7 /* Improve outcomes of crafting skills and spells */
 #define ROOM_SPELLCRAFT                 BIT_8 /* --Owl 2/5/22 */
 #define ROOM_PRIVATE                    BIT_9
@@ -2429,7 +2433,8 @@ extern DIR_DATA directions [ MAX_DIR ];
 #define SECT_AIR                9
 #define SECT_DESERT             10
 #define SECT_SWAMP              11
-#define SECT_MAX                12
+#define SECT_UNDERWATER_GROUND  12
+#define SECT_MAX                13
 
 
 /*
@@ -2607,7 +2612,7 @@ struct  mob_index_data
         char *                  long_descr;
         char *                  description;
         char *                  mobspec;        /* MB SPEC data */
-        char *                  rank;           /* Rank of a mob (eliete, boss, rare) */
+        char *                  rank;           /* Rank of a mob (elite, boss, rare) */
         int                     vnum;
         int                     count;
         int                     killed;
@@ -2769,75 +2774,80 @@ bool    MOBtrigger;
 
 struct  pc_data
 {
-        PC_DATA *       next;
-        char *          pwd;
-        char *          bamfin;
-        char *          bamfout;
-        char *          title;
-        char *          tailing;
-        CHAR_DATA *     group_leader;
-        int             perm_str;
-        int             perm_int;
-        int             perm_wis;
-        int             perm_dex;
-        int             perm_con;
-        int             mod_str;
-        int             mod_int;
-        int             mod_wis;
-        int             mod_dex;
-        int             mod_con;
-        int             stat_train;
-        int             condition [ 3 ];
-        int             pagelen;
-        int             learned [ MAX_SKILL ];
-        bool            switched;
-        bool            confirm_delete;
-        bool            confirm_leave;
-        bool            choose_subclass;
-        int             spell_attacks;
-        int             dam_bonus;
-        int             fame;
-        int             pkscore;                        /* Used to track pkill points for individuals */
-        BOARD_DATA *    board;                          /* The current board */
-        time_t          last_note [ MAX_BOARD ];        /* last note for the boards */
-        NOTE_DATA *     in_progress;
-        int             current_recall;
-        int             recall_points [ MAX_RECALL_POINTS ];
-        OBJ_DATA *      morph_list [ MAX_WEAR ];
-        int             blink;
-        int             deity_patron;
-        int             deity_favour [ NUMBER_DEITIES ];
-        int             deity_type_timer [ DEITY_NUMBER_TYPES ];
-        int             deity_personality_timer [ DEITY_NUMBER_PERSONALITIES ];
-        int             deity_timer;
-        int             deity_flags;
-        int             suicide_code;
-        int             kills;
-        int             killed;
-        int             pdeaths;
-        int             pkills;
-        int             str_prac;
-        int             int_prac;
-        int             air_supply;
-        int             level_xp_loss;
-        CHAR_DATA *     questgiver;
-        int             questpoints;
-        int             nextquest;
-        int             countdown;
-        int             questobj;
-        int             questmob;
-        int             totalqp;
-        int             bank;
-        int             bounty;
-        int             allow_look;
-        time_t          review_stamp;
-        int             pattern;
-        int             soar;
-        int             group_support_bonus;
-        int             meter;
-        int             dam_meter;
-        int             rounds;
-        int             dam_per_fight;
+        PC_DATA *           next;
+        char *              pwd;
+        char *              bamfin;
+        char *              bamfout;
+        char *              title;
+        char *              tailing;
+        CHAR_DATA *         group_leader;
+        int                 perm_str;
+        int                 perm_int;
+        int                 perm_wis;
+        int                 perm_dex;
+        int                 perm_con;
+        int                 mod_str;
+        int                 mod_int;
+        int                 mod_wis;
+        int                 mod_dex;
+        int                 mod_con;
+        int                 stat_train;
+        int                 condition [ 3 ];
+        int                 pagelen;
+        int                 learned [ MAX_SKILL ];
+        bool                switched;
+        bool                confirm_delete;
+        bool                confirm_leave;
+        bool                choose_subclass;
+        int                 spell_attacks;
+        int                 dam_bonus;
+        int                 fame;
+        int                 pkscore;                        /* Used to track pkill points for individuals */
+        BOARD_DATA *        board;                          /* The current board */
+        time_t              last_note [ MAX_BOARD ];        /* last note for the boards */
+        NOTE_DATA *         in_progress;
+        int                 current_recall;
+        int                 recall_points [ MAX_RECALL_POINTS ];
+        OBJ_DATA *          morph_list [ MAX_WEAR ];
+        OBJ_DATA *          vault;                          /* Vault contents Owl 23/2/23*/
+        int                 vault_weight;
+        int                 vault_number;
+        int                 blink;
+        int                 deity_patron;
+        int                 deity_favour [ NUMBER_DEITIES ];
+        int                 deity_type_timer [ DEITY_NUMBER_TYPES ];
+        int                 deity_personality_timer [ DEITY_NUMBER_PERSONALITIES ];
+        int                 deity_timer;
+        int                 deity_flags;
+        int                 suicide_code;
+        int                 kills;
+        int                 killed;
+        int                 pdeaths;
+        int                 pkills;
+        int                 str_prac;
+        int                 int_prac;
+        int                 air_supply;
+        int                 level_xp_loss;
+        CHAR_DATA *         questgiver;
+        int                 questpoints;
+        int                 nextquest;
+        int                 countdown;
+        int                 questobj;
+        int                 questmob;
+        ROOM_INDEX_DATA *   questroom;
+        AREA_DATA *         questarea;
+        int                 totalqp;
+        int                 bank;
+        int                 bounty;
+        int                 allow_look;
+        time_t              review_stamp;
+        int                 pattern;
+        int                 soar;
+        int                 group_support_bonus;
+        int                 meter;
+        int                 dam_meter;
+        int                 rounds;
+        int                 dam_per_fight;
 };
 
 
@@ -2912,6 +2922,9 @@ struct obj_index_data
 #define TIMER_DAMAGED        20
 #define TIMER_ALERT          10
 
+
+/* Supply below as last argument to create_object() so it knows what kind of
+   randomisation to apply -- Owl 10/2/23 */
 #define         CREATED_PRE_DD5                 1
 #define         CREATED_NO_RANDOMISER           2
 #define         CREATED_STRONG_RANDOMISER       3
@@ -2928,6 +2941,7 @@ struct obj_data
         OBJ_DATA *             contains;
         OBJ_DATA *             in_obj;
         CHAR_DATA *            carried_by;
+        CHAR_DATA *            vaulted_by;
         EXTRA_DESCR_DATA *     extra_descr;
         AFFECT_DATA *          affected;
         OBJ_INDEX_DATA *       pIndexData;
@@ -3776,7 +3790,7 @@ extern int gsn_spyglass;
 extern int gsn_base;
 extern int gsn_miner;
 extern int gsn_pyro_rune;
-extern int gsn_cyro_rune;
+extern int gsn_cryo_rune;
 extern int gsn_bolt_rune;
 extern int gsn_stab_rune;
 extern int gsn_rend_rune;
@@ -4074,6 +4088,7 @@ DECLARE_DO_FUN( do_choke                        );      /* choke for brawlers - 
 DECLARE_DO_FUN( do_clantalk                     );      /* clan talking - brutus */
 DECLARE_DO_FUN( do_climb                        );      /* climb skill - Brutus */
 DECLARE_DO_FUN( do_close                        );
+DECLARE_DO_FUN( do_claim                        );      /* remove items from vault */
 DECLARE_DO_FUN( do_coil                         );      /* coil - for snakes */
 DECLARE_DO_FUN( do_constrict                    );      /* constrict - for snakes */
 DECLARE_DO_FUN( do_combine                      );
@@ -4164,6 +4179,7 @@ DECLARE_DO_FUN( do_intimidate                   );      /* intimidate - thugs */
 DECLARE_DO_FUN( do_extort                       );
 DECLARE_DO_FUN( do_inventory                    );
 DECLARE_DO_FUN( do_invis                        );
+DECLARE_DO_FUN( do_inspect                      );     /* 'examine' for items in vault */
 DECLARE_DO_FUN( do_joust                        );      /* joust for knight */
 DECLARE_DO_FUN( do_kansetsu                     );      /* Martial artist - brutus */
 DECLARE_DO_FUN( do_kiai                         );      /* monk skill */
@@ -4181,6 +4197,7 @@ DECLARE_DO_FUN( do_list                         );
 DECLARE_DO_FUN( do_lock                         );
 DECLARE_DO_FUN( do_log                          );
 DECLARE_DO_FUN( do_look                         );
+DECLARE_DO_FUN( do_lodge                        );      /* put items into vault */
 DECLARE_DO_FUN( do_lunge                        );      /* for VAMPS - Brutus */
 DECLARE_DO_FUN( do_map                          );      /* Main mapping func - Tavolir */
 DECLARE_DO_FUN( do_maul                         );      /* tiger skill */
@@ -4205,6 +4222,7 @@ DECLARE_DO_FUN( do_swallow                      );      /* Owl 13/8/22 for 'whal
 DECLARE_DO_FUN( do_serrate                      );
 DECLARE_DO_FUN( do_spit_mucus                   );       /* Owl 18/8/22 'lag out' attack for aboleth and similar */
 DECLARE_DO_FUN( do_reforge                      );
+DECLARE_DO_FUN( do_vault                        );      /* Owl 22/2/23 allows players to see contents of their vault in a ROOM_VAULT */
 
 /* The following are for mob programs - Brutus */
 DECLARE_DO_FUN( do_mpasound                     );
@@ -4682,7 +4700,7 @@ void    colourconv                      args( ( char *buffer, const char *txt, C
 void    send_to_char_bw                 args( ( const char *txt, CHAR_DATA *ch ) );
 
 /* act_info.c */
-void  show_list_to_char                 args( ( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNothing ) );
+void  show_list_to_char                 args( ( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNothing, bool vaulted ) );
 char* format_obj_to_char                args( ( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort ) );
 void  show_char_to_char                 args( ( CHAR_DATA *list, CHAR_DATA *ch ) );
 void  set_title                         args( ( CHAR_DATA *ch, char *title ) );
@@ -4753,7 +4771,7 @@ void reverse_char_array                       ( char arr[], int n );
 void    boot_db                         args( ( void ) );
 void    area_update                     args( ( void ) );
 CD *    create_mobile                   args( ( MOB_INDEX_DATA *pMobIndex ) );
-OD *    create_object                   args( ( OBJ_INDEX_DATA *pObjIndex, int level, char *rank, bool randomise ) );
+OD *    create_object                   args( ( OBJ_INDEX_DATA *pObjIndex, int level, char *rank, int randomise ) );
 void    clear_char                      args( ( CHAR_DATA *ch ) );
 void    free_char                       args( ( CHAR_DATA *ch ) );
 char *  get_extra_descr                 args( ( const char *name, EXTRA_DESCR_DATA *ed ) );
@@ -4829,7 +4847,9 @@ int     get_curr_wis                    args( ( CHAR_DATA *ch ) );
 int     get_curr_dex                    args( ( CHAR_DATA *ch ) );
 int     get_curr_con                    args( ( CHAR_DATA *ch ) );
 int     can_carry_n                     args( ( CHAR_DATA *ch ) );
+int     can_vault_n                     args( ( CHAR_DATA *ch ) );
 int     can_carry_w                     args( ( CHAR_DATA *ch ) );
+int     can_vault_w                     args( ( CHAR_DATA *ch ) );
 bool    is_name                         args( ( const char *str, char *namelist ) );
 bool    multi_keyword_match             args( ( char *keys, char *namelist ) );
 bool    is_full_name                    args( ( const char *str, char *namelist ) );
@@ -4843,7 +4863,11 @@ void    affect_join                     args( ( CHAR_DATA *ch, AFFECT_DATA *paf 
 void    char_from_room                  args( ( CHAR_DATA *ch ) );
 void    char_to_room                    args( ( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex ) );
 void    obj_to_char                     args( ( OBJ_DATA *obj, CHAR_DATA *ch ) );
+void    obj_to_charvault                args( ( OBJ_DATA *obj, CHAR_DATA *ch ) );
+void    obj_to_charfromvault            args( ( OBJ_DATA *obj, CHAR_DATA *ch ) );
 void    obj_from_char                   args( ( OBJ_DATA *obj ) );
+void    obj_from_charvault              args( ( OBJ_DATA *obj ) );
+int     max_obj_in_obj_level            args( ( OBJ_DATA *obj ) );
 int     apply_ac                        args( ( OBJ_DATA *obj, int iWear ) );
 OD *    get_eq_char                     args( ( CHAR_DATA *ch, int iWear ) );
 void    equip_char                      args( ( CHAR_DATA *ch, OBJ_DATA *obj, int iWear ) );
@@ -4853,7 +4877,9 @@ int     count_obj_list                  args( ( OBJ_INDEX_DATA *obj, OBJ_DATA *l
 void    obj_from_room                   args( ( OBJ_DATA *obj ) );
 void    obj_to_room                     args( ( OBJ_DATA *obj, ROOM_INDEX_DATA *pRoomIndex ) );
 void    obj_to_obj                      args( ( OBJ_DATA *obj, OBJ_DATA *obj_to ) );
+void    obj_to_objvault                 args( ( OBJ_DATA *obj, OBJ_DATA *obj_to ) );
 void    obj_from_obj                    args( ( OBJ_DATA *obj ) );
+void    obj_from_objvault               args( ( OBJ_DATA *obj ) );
 void    extract_obj                     args( ( OBJ_DATA *obj ) );
 void    extract_char                    args( ( CHAR_DATA *ch, bool fPull ) );
 CD *    get_char_room                   args( ( CHAR_DATA *ch, char *argument ) );
@@ -4862,8 +4888,10 @@ CD *    get_qchar_world                 args( ( CHAR_DATA *ch, char *argument, i
 OD *    get_obj_type                    args( ( OBJ_INDEX_DATA *pObjIndexData ) );
 OD *    get_obj_list                    args( ( CHAR_DATA *ch, char *argument, OBJ_DATA *list ) );
 OD *    get_obj_carry                   args( ( CHAR_DATA *ch, char *argument ) );
+OD *    get_obj_vaulted                 args( ( CHAR_DATA *ch, char *argument ) );
 OD *    get_obj_wear                    args( ( CHAR_DATA *ch, char *argument ) );
 OD *    get_obj_here                    args( ( CHAR_DATA *ch, char *argument ) );
+OD *    get_obj_herevault               args( ( CHAR_DATA *ch, char *argument ) );
 OD *    get_obj_world                   args( ( CHAR_DATA *ch, char *argument ) );
 OD *    create_money                    args( ( int plat, int gold, int silver, int copper ) );
 OD *    create_smelted_materials        args( ( int smelted_steel, int smelted_titanium, int smelted_adamantite, int smelted_electrum, int smelted_starmetal ) );

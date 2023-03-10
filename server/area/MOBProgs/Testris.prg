@@ -25,7 +25,7 @@ endif
 	mpgoto 27646
 	mpforce $n look
 	mpecho {wTestris stomps on the floor and his long-suffering assistant, Sogesk, traipses wearily into the room.{x
-	say Today I shall demonstrate my absolutely favourite the device - the rack!
+	say Today I shall demonstrate my absolutely favourite device - the rack!
 	mpecho Sogesk regards his battered body with weary resignation.
 	say This rack consists of a rectangular wooden frame, raised from the ground, with a roller at both ends. The victim's ankles are fastened to one roller and their wrists chained to the other.
 	say When used as a torture device in its own right, the handle and ratchet mechanism are used to gradually retract the chains, slowly increasing the strain on the victim's shoulders, hips, knees, and elbows and causing excruciating pain.
@@ -220,7 +220,7 @@ endif
 	lick
 	say The fun never ends, does it, Sogesk?
 	mpecho {wTestris starts to turn the key.  As he does, the shape of the segments becomes increasingly outlined on Sogesk's bulging cheeks.{x
-	mpecho {wAfter several minutes Sogesk grunts thickly, and there is a sudden explosion of flesh and blood as the strain of the pear segments exceeds the eleastic limit of his skin.{x
+	mpecho {wAfter several minutes Sogesk grunts thickly, and there is a sudden explosion of flesh and blood as the strain of the pear segments exceeds the elastic limit of his skin.{x
 	mpecho {wSogesk gurgles and sobs from his destroyed mouth as the chunky, ruined ribbons of his face float about him and clouds of dark blood fill the water about his head.{x
 	emote shivers with pleasure and stops turning the key.
 	say Nothing old Nirlisk can't take care of, Sogesk!  Cheer up!

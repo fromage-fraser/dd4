@@ -377,10 +377,11 @@ void move_char(CHAR_DATA *ch, int door)
                 return;
         }
 
-        if ( to_room->sector_type == SECT_UNDERWATER
-          && is_affected(ch, gsn_mist_walk)
-          && ( ( ch->race != RACE_SAHUAGIN )
-            && ( ch->race != RACE_GRUNG ) ) )
+        if ( ( ( to_room->sector_type == SECT_UNDERWATER )
+            || ( to_room->sector_type == SECT_UNDERWATER_GROUND ) )
+        && is_affected(ch, gsn_mist_walk)
+        && ( ( ch->race != RACE_SAHUAGIN )
+          && ( ch->race != RACE_GRUNG ) ) )
         {
                 send_to_char("You may not dive underwater in mist form.\n\r", ch);
                 return;
@@ -438,10 +439,11 @@ void move_char(CHAR_DATA *ch, int door)
                             || ch->mount
                             || IS_AFFECTED( ch, AFF_SWIM )
                             || ( ( ch->in_room->sector_type != SECT_UNDERWATER )
+                              && ( ch->in_room->sector_type != SECT_UNDERWATER_GROUND )
                               && ( ch->in_room->sector_type != SECT_WATER_SWIM )
                               && ( ch->in_room->sector_type != SECT_WATER_NOSWIM ) )
-                            || is_affected(ch,gsn_mist_walk)
-                            || is_affected(ch,gsn_astral_sidestep)
+                            || is_affected(ch, gsn_mist_walk)
+                            || is_affected(ch, gsn_astral_sidestep)
                             || ch->form == FORM_FLY)
                         {
                                 found = TRUE;
@@ -480,6 +482,7 @@ void move_char(CHAR_DATA *ch, int door)
                             || ( ch->race == RACE_GRUNG )
                             || ch->mount
                             || ( ch->in_room->sector_type == SECT_UNDERWATER )
+                            || ( ch->in_room->sector_type == SECT_UNDERWATER_GROUND )
                             || is_affected(ch,gsn_mist_walk)
                             || is_affected(ch,gsn_astral_sidestep)
                             || ch->form == FORM_FLY)
@@ -616,10 +619,11 @@ void move_char(CHAR_DATA *ch, int door)
                         + movement_loss[UMIN(SECT_MAX-1, to_room->sector_type)];
 
 
-                if ((IS_AFFECTED(ch, AFF_NON_CORPOREAL)
-                     || IS_AFFECTED(ch, AFF_FLYING))
-                    && (to_room->sector_type != SECT_UNDERWATER
-                        || ch->form == FORM_SNAKE))
+                if ( ( IS_AFFECTED(ch, AFF_NON_CORPOREAL)
+                    || IS_AFFECTED(ch, AFF_FLYING) )
+                && ( ( ( to_room->sector_type != SECT_UNDERWATER )
+                    || ( to_room->sector_type !=  SECT_UNDERWATER_GROUND ) )
+                    || ch->form == FORM_SNAKE) )
                 {
                         move /= 3;
                         move = UMAX(move, 1);
@@ -628,7 +632,8 @@ void move_char(CHAR_DATA *ch, int door)
                 if ( ( ( to_room->sector_type == SECT_WATER_NOSWIM )
                 ||     ( to_room->sector_type == SECT_WATER_SWIM )
                 ||     ( to_room->sector_type == SECT_SWAMP )
-                ||     ( to_room->sector_type == SECT_UNDERWATER ) )
+                ||     ( to_room->sector_type == SECT_UNDERWATER )
+                ||     ( to_room->sector_type == SECT_UNDERWATER_GROUND ) )
                 && ( ( ch->race == RACE_SAHUAGIN )
                   || ( ch->race == RACE_GRUNG )
                   || ( IS_AFFECTED(ch, AFF_SWIM) ) ) )
@@ -656,8 +661,13 @@ void move_char(CHAR_DATA *ch, int door)
 
                 if (!IS_IMMORTAL( ch ))
                 {
-                        WAIT_STATE(ch, 1);
-
+                        if (IS_AFFECTED(ch, AFF_SLOW))
+                        {
+                            WAIT_STATE(ch, 3);
+                        }
+                        else {
+                            WAIT_STATE(ch, 1);
+                        }
                         if (is_affected(ch, gsn_mount))
                                 ch->move -= 1;
                         else
@@ -688,7 +698,8 @@ void move_char(CHAR_DATA *ch, int door)
                         }
                         else if ( ( ( to_room->sector_type == SECT_WATER_NOSWIM )
                              ||     ( to_room->sector_type == SECT_WATER_SWIM )
-                             ||     ( to_room->sector_type == SECT_UNDERWATER ) )
+                             ||     ( to_room->sector_type == SECT_UNDERWATER )
+                             ||     ( to_room->sector_type == SECT_UNDERWATER_GROUND ) )
                              &&   (  ( !IS_AFFECTED(ch, AFF_FLYING) )
                                   || ( ch->race == RACE_SAHUAGIN )
                                   || ( ch->race == RACE_GRUNG ) ) )
@@ -715,7 +726,8 @@ void move_char(CHAR_DATA *ch, int door)
         }
         else if ( ( ( to_room->sector_type == SECT_WATER_NOSWIM )
                 ||  ( to_room->sector_type == SECT_WATER_SWIM )
-                ||  ( to_room->sector_type == SECT_UNDERWATER ) )
+                ||  ( to_room->sector_type == SECT_UNDERWATER )
+                ||  ( to_room->sector_type == SECT_UNDERWATER_GROUND ) )
                 &&  ( !IS_AFFECTED(ch, AFF_FLYING)
                    || ch->race == RACE_SAHUAGIN
                    || ch->race == RACE_GRUNG ) )
@@ -766,6 +778,7 @@ void move_char(CHAR_DATA *ch, int door)
         &&       ( ch->form != FORM_SNAKE )
         &&       ( ch->level <= LEVEL_HERO ) )
             && ( ch->in_room->sector_type != SECT_UNDERWATER )
+            && ( ch->in_room->sector_type != SECT_UNDERWATER_GROUND )
             && ( ch->in_room->sector_type != SECT_WATER_SWIM )
             && ( ch->in_room->sector_type != SECT_SWAMP )
             && ( ch->in_room->sector_type != SECT_WATER_NOSWIM ) )
@@ -916,6 +929,47 @@ void do_open(CHAR_DATA *ch, char *argument)
                 send_to_char("Ok.\n\r", ch);
                 act ("$n opens $p.", ch, obj, NULL, TO_ROOM);
                 return;
+        }
+
+        /* For opening items while they are in vaults --Owl 26/2/23 */
+        if (!IS_NPC(ch))
+        {
+            if ( ( obj = get_obj_herevault(ch, arg) )
+            &&     IS_SET(ch->in_room->room_flags, ROOM_VAULT ) )
+            {
+                    if (obj->item_type != ITEM_CONTAINER)
+                    {
+                            send_to_char("That's not a container.\n\r", ch);
+                            return;
+                    }
+
+                    if (!IS_SET(obj->value[1], CONT_CLOSED))
+                    {
+                            send_to_char("It's already open.\n\r", ch);
+                            return;
+                    }
+
+                    if (!IS_SET(obj->value[1], CONT_CLOSEABLE))
+                    {
+                            send_to_char("You can't do that.\n\r", ch);
+                            return;
+                    }
+
+                    if (IS_SET(obj->value[1], CONT_LOCKED))
+                    {
+                            send_to_char("It's locked.\n\r", ch);
+                            return;
+                    }
+
+                    /* for traps */
+                    if (checkopen(ch, obj))
+                            return;
+
+                    REMOVE_BIT(obj->value[1], CONT_CLOSED);
+                    send_to_char("You open it.\n\r", ch);
+                    act ("$n opens $p in $S vault.", ch, obj, ch, TO_ROOM);
+                    return;
+            }
         }
 
         if ((door = find_door(ch, arg)) >= 0)
@@ -1138,6 +1192,38 @@ void do_close(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        /* For closing items in vaults -- Owl 26/2/23 */
+        if (!IS_NPC(ch))
+        {
+            if ( ( obj = get_obj_herevault(ch, arg) )
+            &&     IS_SET(ch->in_room->room_flags, ROOM_VAULT ) )
+            {
+                    /* 'close object' */
+                    if (obj->item_type != ITEM_CONTAINER)
+                    {
+                            send_to_char("That's not a container.\n\r", ch);
+                            return;
+                    }
+
+                    if (IS_SET(obj->value[1], CONT_CLOSED))
+                    {
+                            send_to_char("It's already closed.\n\r", ch);
+                            return;
+                    }
+
+                    if (!IS_SET(obj->value[1], CONT_CLOSEABLE))
+                    {
+                            send_to_char("You can't do that.\n\r", ch);
+                            return;
+                    }
+
+                    SET_BIT(obj->value[1], CONT_CLOSED);
+                    send_to_char("You close it.\n\r", ch);
+                    act ("$n closes $p in $S vault.", ch, obj, ch, TO_ROOM);
+                    return;
+            }
+        }
+
         if ((door = find_door(ch, arg)) >= 0)
         {
                 /* 'close door' */
@@ -1245,6 +1331,44 @@ void do_lock(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        /* Lock containers in vaults --Owl 26/2/23 */
+        if (!IS_NPC(ch))
+        {
+            if ( ( obj = get_obj_herevault(ch, arg) )
+            &&     IS_SET(ch->in_room->room_flags, ROOM_VAULT ) )
+            {
+                    /* 'lock object' */
+                    if (obj->item_type != ITEM_CONTAINER)
+                    {
+                            send_to_char("That's not a container.\n\r", ch);
+                            return;
+                    }
+
+                    if (!IS_SET(obj->value[1], CONT_CLOSED))
+                    {
+                            send_to_char("It's not closed.\n\r", ch);
+                            return;
+                    }
+
+                    if (obj->value[2] < 0 || !has_key(ch, obj->value[2]))
+                    {
+                            send_to_char("You lack the key.\n\r", ch);
+                            return;
+                    }
+
+                    if (IS_SET(obj->value[1], CONT_LOCKED))
+                    {
+                            send_to_char("It's already locked.\n\r", ch);
+                            return;
+                    }
+
+                    SET_BIT(obj->value[1], CONT_LOCKED);
+                    send_to_char("*Click*\n\r", ch);
+                    act ("$n locks $p in $S vault.", ch, obj, ch, TO_ROOM);
+                    return;
+            }
+        }
+
         if ((door = find_door(ch, arg)) >= 0)
         {
                 /* 'lock door' */
@@ -1334,6 +1458,44 @@ void do_unlock(CHAR_DATA *ch, char *argument)
                 send_to_char("*Click*\n\r", ch);
                 act ("$n unlocks $p.", ch, obj, NULL, TO_ROOM);
                 return;
+        }
+
+         /* Unlock containers in vaults --Owl 26/2/23 */
+        if (!IS_NPC(ch))
+        {
+            if ( ( obj = get_obj_herevault(ch, arg) )
+            &&     IS_SET(ch->in_room->room_flags, ROOM_VAULT ) )
+            {
+                    /* 'unlock object' */
+                    if (obj->item_type != ITEM_CONTAINER)
+                    {
+                            send_to_char("That's not a container.\n\r", ch);
+                            return;
+                    }
+
+                    if (!IS_SET(obj->value[1], CONT_CLOSED))
+                    {
+                            send_to_char("It's not closed.\n\r", ch);
+                            return;
+                    }
+
+                    if (obj->value[2] < 0  || !has_key(ch, obj->value[2]))
+                    {
+                            send_to_char("You lack the key.\n\r", ch);
+                            return;
+                    }
+
+                    if (!IS_SET(obj->value[1], CONT_LOCKED))
+                    {
+                            send_to_char("It's already unlocked.\n\r", ch);
+                            return;
+                    }
+
+                    REMOVE_BIT(obj->value[1], CONT_LOCKED);
+                    send_to_char("*Click*\n\r", ch);
+                    act ("$n unlocks $p in $S vault.", ch, obj, ch, TO_ROOM);
+                    return;
+            }
         }
 
         if ((door = find_door(ch, arg)) >= 0)
@@ -1557,15 +1719,17 @@ void do_stand(CHAR_DATA *ch, char *argument)
         {
             case POS_SLEEPING:
                 if ( IS_AFFECTED(ch, AFF_SLEEP)
-                && ( (ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG ) )
-                && ( ch->in_room->sector_type == SECT_UNDERWATER) )
+                && ( ( ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG ) )
+                && ( ( ch->in_room->sector_type == SECT_UNDERWATER )
+                  || ( ch->in_room->sector_type == SECT_UNDERWATER_GROUND) ) )
                 {
                         send_to_char("You can't wake up!\n\r", ch);
                         return;
                 }
 
                 if ( IS_AFFECTED( ch, AFF_SLEEP )
-                && ( ch->in_room->sector_type == SECT_UNDERWATER)
+                && (  ( ch->in_room->sector_type == SECT_UNDERWATER )
+                   || ( ch->in_room->sector_type == SECT_UNDERWATER_GROUND ) )
                 && !is_affected( ch, gsn_breathe_water ) )
                 {
                         REMOVE_BIT(ch->affected_by, AFF_SLEEP);
@@ -1772,9 +1936,10 @@ void do_mist_walk(CHAR_DATA *ch, char *argument )
                 return;
         }
 
-        if ( ch->in_room->sector_type == SECT_UNDERWATER
-        && ( ch->race != RACE_SAHUAGIN
-          && ch->race != RACE_GRUNG ) )
+        if ( ( ( ch->in_room->sector_type == SECT_UNDERWATER)
+            || ( ch->in_room->sector_type == SECT_UNDERWATER_GROUND ) )
+        && ( ( ch->race != RACE_SAHUAGIN )
+          && ( ch->race != RACE_GRUNG ) ) )
         {
                 send_to_char("Not while you're underwater.\n\r", ch);
                 return;
@@ -1901,7 +2066,8 @@ void do_meditate (CHAR_DATA *ch, char *argument)
         }
 
         if ( (!IS_NPC(ch))
-        && ch->in_room->sector_type == SECT_UNDERWATER
+        && ( ( ch->in_room->sector_type == SECT_UNDERWATER )
+          || ( ch->in_room->sector_type == SECT_UNDERWATER_GROUND ) )
         && ( ( ch->race != RACE_SAHUAGIN && ch->race != RACE_GRUNG )
           && ( !is_affected(ch, gsn_breathe_water) ) ) )
         {
@@ -1933,6 +2099,8 @@ void do_meditate (CHAR_DATA *ch, char *argument)
  */
 void do_visible (CHAR_DATA *ch, char *argument)
 {
+        bool in_cham = FALSE;
+
         affect_strip (ch, gsn_astral_sidestep);
         affect_strip (ch, gsn_invis);
         affect_strip (ch, gsn_mass_invis);
@@ -1949,7 +2117,8 @@ void do_visible (CHAR_DATA *ch, char *argument)
                 REMOVE_BIT (ch->affected_by, AFF_HIDE);
         }
         else {
-                send_to_char("You will continue to hide as as long as you are in chameleon form.\n\r",ch);
+                send_to_char("You will continue to hide for as long as you are in chameleon form.\n\r",ch);
+                in_cham = TRUE;
         }
 
         if (is_affected(ch,gsn_mist_walk))
@@ -1961,7 +2130,10 @@ void do_visible (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        send_to_char("Ok.\n\r", ch);
+        if (!in_cham)
+        {
+            send_to_char("You make yourself evident.\n\r", ch);
+        }
 }
 
 
@@ -2587,8 +2759,7 @@ void do_change (CHAR_DATA *ch, char *argument)
         /* do the change */
 
         if ( ch->sub_class == SUB_CLASS_INFERNALIST
-        ||   ch->sub_class == SUB_CLASS_ENGINEER
-        ||   ch->sub_class == SUB_CLASS_RUNESMITH )
+        ||   ch->sub_class == SUB_CLASS_ENGINEER )
         {
                 /* Grammar! -- Owl 29/7/22 */
                 sprintf(buf, "A wise choice %s... may you fare well as an %s.", ch->name, full_sub_class_name(ch->sub_class));
@@ -2837,10 +3008,12 @@ void do_warcry (CHAR_DATA *ch, char *argument)
         AFFECT_DATA af;
         int temp;
 
-        if (IS_NPC(ch))
+        if (IS_NPC(ch)
+        && !( ch->spec_fun == spec_lookup("spec_green_grung") )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
                 return;
 
-        if (!CAN_DO(ch, gsn_warcry))
+        if (!IS_NPC(ch) && !CAN_DO(ch, gsn_warcry))
         {
                 send_to_char("Huh!?\n\r", ch);
                 return;
@@ -2849,7 +3022,7 @@ void do_warcry (CHAR_DATA *ch, char *argument)
         if (is_affected (ch, gsn_warcry))
                 return;
 
-        if (get_curr_int (ch) < 16)
+        if (!IS_NPC(ch) && get_curr_int (ch) < 16)
         {
                 send_to_char ("You are unable to remember the complex warchant...\n\r", ch);
                 return;

@@ -53,8 +53,8 @@ void    char_update     args( ( void ) );
 void    obj_update      args( ( void ) );
 void    aggr_update     args( ( void ) );
 void    quest_update    args( ( void ) ); /* Vassago - quest.c */
-void	msdp_update	args( ( void ) ); /* <--- GMCP */
-void	gmcp_update	args( ( void ) ); /* <--- GMCP */
+void	msdp_update	    args( ( void ) ); /* <--- GMCP */
+void	gmcp_update	    args( ( void ) ); /* <--- GMCP */
 
 
 /*
@@ -354,10 +354,11 @@ void gain_exp( CHAR_DATA *ch, int gain )
                         ch->exp = level_table[ch->level].exp_total - 1;
                         return;
                 }
+
                 /* Check to see if level lock is on */
                 if (!( IS_SET ( ch->act, PLR_AUTOLEVEL ) ) )
                 {
-                        ch->exp = level_table[ch->level].exp_total - 1;
+                        ch->exp = level_table[ch->level].exp_total - 10;
                         send_to_char("You cannot level while {WAUTOLEVEL{x is set to {RNO{x.\n\r", ch);
                         return;
                 }
@@ -435,6 +436,11 @@ int hit_gain( CHAR_DATA *ch )
 
                 if (IS_AFFECTED(ch, AFF_SLOW))
                         gain /= 2;
+
+                if (IS_SET(ch->act, ACT_NO_HEAL))
+                {
+                      gain = 0;
+                }
 
                 return UMIN( gain, ch->max_hit - ch->hit );
         }
@@ -533,6 +539,7 @@ int hit_gain( CHAR_DATA *ch )
             && IS_OUTSIDE(ch)
             && !IS_SET(ch->in_room->room_flags, ROOM_DARK)
             && ch->in_room->sector_type != SECT_UNDERWATER
+            && ch->in_room->sector_type != SECT_UNDERWATER_GROUND
             && weather_info.sky < SKY_RAINING
             && (time_info.hour >= 6 && time_info.hour <= 18)
             && !is_affected(ch, gsn_mist_walk))
@@ -549,6 +556,7 @@ int hit_gain( CHAR_DATA *ch )
 
         if ( ( ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG )
         && (  ( ch->in_room->sector_type == SECT_UNDERWATER )
+           || ( ch->in_room->sector_type == SECT_UNDERWATER_GROUND )
            || ( ch->in_room->sector_type == SECT_WATER_SWIM )
            || ( ch->in_room->sector_type == SECT_SWAMP )
            || ( ch->in_room->sector_type == SECT_WATER_NOSWIM ) ) )
@@ -585,13 +593,15 @@ int hit_gain( CHAR_DATA *ch )
                  *  Anti-swim (?); Owl 14/7/22
                  *
                  *  Strip the swim skill and affect for PCs when they're not in 'deep water' rooms.  Leaves
-                 *  shifter snake form unaffected.
+                 *  shifter snake form unaffected. Imms can dispel their own swimming effect--better for
+                 *  testing etc.
                  */
 
                 if ( ( ( ( IS_AFFECTED( ch, AFF_SWIM ) )
                 ||       ( is_affected( ch, gsn_swim ) ) )
                 &&     ( ch->form != FORM_SNAKE ) )
                    && ( ch->in_room->sector_type != SECT_UNDERWATER )
+                   && ( ch->in_room->sector_type != SECT_UNDERWATER_GROUND )
                    && ( ch->in_room->sector_type != SECT_WATER_SWIM )
                    && ( ch->in_room->sector_type != SECT_WATER_NOSWIM ) )
                 {
@@ -739,6 +749,7 @@ int hit_gain( CHAR_DATA *ch )
                                         if ( ch->in_room->sector_type == SECT_WATER_NOSWIM
                                         ||   ch->in_room->sector_type == SECT_WATER_SWIM
                                         ||   ch->in_room->sector_type == SECT_SWAMP
+                                        ||   ch->in_room->sector_type == SECT_UNDERWATER_GROUND
                                         ||   ch->in_room->sector_type == SECT_UNDERWATER )
                                         {
                                                 send_to_char("{BYou splashdown into water!{x\n\r", ch);
@@ -1421,6 +1432,7 @@ void day_weather_update()
                 if (d->connected == CON_PLAYING
                     && IS_OUTSIDE(d->character)
                     && ( d->character->in_room->sector_type != SECT_UNDERWATER )
+                    && ( d->character->in_room->sector_type != SECT_UNDERWATER_GROUND )
                     && IS_AWAKE(d->character))
                         send_to_char(buf, d->character);
         }
@@ -1454,7 +1466,7 @@ void weather_update ()
 
             case 20:
                 weather_info.sunlight = SUN_DARK;
-                strcat( buf, "<19>The night has begun.<0>\n\r" );
+                strcat( buf, "<20>The night has begun.<0>\n\r" );
                 break;
 
             case 24:
@@ -1540,6 +1552,7 @@ void weather_update ()
                     && d->connected == CON_PLAYING
                     && IS_OUTSIDE(d->character)
                     && ( d->character->in_room->sector_type != SECT_UNDERWATER )
+                    && ( d->character->in_room->sector_type != SECT_UNDERWATER_GROUND )
                     && IS_AWAKE(d->character))
                         send_to_char(buf, d->character);
 
@@ -1770,7 +1783,8 @@ void char_update( void )
                             && ch->form != FORM_SNAKE
                             && ch->race != RACE_SAHUAGIN
                             && ch->race != RACE_GRUNG
-                            && ch->in_room->sector_type == SECT_UNDERWATER
+                            && ( ( ch->in_room->sector_type == SECT_UNDERWATER )
+                              || ( ch->in_room->sector_type == SECT_UNDERWATER_GROUND ) )
                             && !is_affected(ch, gsn_breathe_water))
                         {
                                 if (--ch->pcdata->air_supply > 0)
@@ -2689,9 +2703,11 @@ void msdp_update( void )
         if ( d->character && d->connected == CON_PLAYING && !IS_NPC(d->character) )
         {
             char buf[MAX_STRING_LENGTH];
+            /*char buf2[MAX_STRING_LENGTH];*/
             CHAR_DATA *pOpponent = d->character->fighting;
             ROOM_INDEX_DATA *pRoom = d->character->in_room;
             AFFECT_DATA *paf;
+            /*int temphitroll;*/
 
             ++PlayerCount;
 
@@ -2709,6 +2725,7 @@ void msdp_update( void )
             MSDPSetString( d, eMSDP_RACE, TBD );
 */
             MSDPSetString( d, eMSDP_CLASS, class_table[d->character->class].who_name );
+            MSDPSetString( d, eMSDP_SUBCLASS, sub_class_table[d->character->sub_class].who_name );
             MSDPSetNumber( d, eMSDP_MANA, d->character->mana );
             MSDPSetNumber( d, eMSDP_MANA_MAX, d->character->max_mana );
             MSDPSetNumber( d, eMSDP_WIMPY, d->character->wimpy );
@@ -2717,6 +2734,9 @@ void msdp_update( void )
             MSDPSetNumber( d, eMSDP_MOVEMENT, d->character->move );
             MSDPSetNumber( d, eMSDP_MOVEMENT_MAX, d->character->max_move );
             MSDPSetNumber( d, eMSDP_HITROLL, GET_HITROLL(d->character) );
+            /*temphitroll =  GET_HITROLL(d->character);
+            sprintf(buf2, "Hitroll in update.c is %d \r\n", temphitroll);
+            log_string(buf2);*/
             MSDPSetNumber( d, eMSDP_DAMROLL, GET_DAMROLL(d->character) );
             MSDPSetNumber( d, eMSDP_AC, GET_AC(d->character) );
             MSDPSetNumber( d, eMSDP_STR, get_curr_str(d->character) );
@@ -2848,6 +2868,7 @@ void gmcp_update( void )
                         UpdateGMCPString( d, GMCP_NAME, d->character->name );
                         UpdateGMCPString( d, GMCP_RACE, race_table[d->character->race].race_name );
                         UpdateGMCPString( d, GMCP_CLASS, full_class_name( d->character->class ) );
+                        UpdateGMCPString( d, GMCP_SUBCLASS, full_sub_class_name( d->character->sub_class ) );
                         UpdateGMCPNumber( d, GMCP_SEX, d->character->sex );
 
                         UpdateGMCPNumber( d, GMCP_HP, d->character->hit );
@@ -2857,6 +2878,9 @@ void gmcp_update( void )
                         UpdateGMCPNumber( d, GMCP_MAX_MANA, d->character->max_mana );
                         UpdateGMCPNumber( d, GMCP_MAX_MOVE, d->character->max_move );
                         UpdateGMCPNumber( d, GMCP_POSITION, d->character->position );
+                        UpdateGMCPString( d, GMCP_FORM, extra_form_name(d->character->form) );
+                        UpdateGMCPNumber( d, GMCP_RAGE, d->character->rage );
+                        UpdateGMCPNumber( d, GMCP_MAX_RAGE, d->character->max_rage );
 
                         UpdateGMCPNumber( d, GMCP_STR, d->character->pcdata->perm_str );
                         UpdateGMCPNumber( d, GMCP_INT, d->character->pcdata->perm_int );
@@ -2870,22 +2894,108 @@ void gmcp_update( void )
                         UpdateGMCPNumber( d, GMCP_DEX_MOD, (get_curr_dex(d->character)) );
                         UpdateGMCPNumber( d, GMCP_CON_MOD, (get_curr_con(d->character)) );
 
-                        UpdateGMCPNumber( d, GMCP_HITROLL, GET_HITROLL( d->character ) );
-                        UpdateGMCPNumber( d, GMCP_DAMROLL, GET_DAMROLL( d->character ) );
+                        if (d->character->level >= 15)
+                        {
+                                UpdateGMCPNumber( d, GMCP_HITROLL, GET_HITROLL( d->character ) );
+                        }
+                        else {
+                                /* Send a ridiculous false number so GUI knows to conceal it, same # for other lvl-restricted stats */
+                                UpdateGMCPNumber( d, GMCP_HITROLL, 50000 );
+                        }
+
+                        if (d->character->level >= 15)
+                        {
+                                UpdateGMCPNumber( d, GMCP_DAMROLL, GET_DAMROLL( d->character ) );
+                        }
+                        else {
+                                UpdateGMCPNumber( d, GMCP_DAMROLL, 50000 );
+                        }
+
                         UpdateGMCPNumber( d, GMCP_WIMPY, d->character->wimpy );
                         UpdateGMCPNumber( d, GMCP_CARRY_NUMBER, d->character->carry_number );
                         UpdateGMCPNumber( d, GMCP_CARRY_MAXNUM, ( can_carry_n( d->character ) ) );
                         UpdateGMCPNumber( d, GMCP_CARRY_WEIGHT, ( d->character->carry_weight + d->character->coin_weight ) );
                         UpdateGMCPNumber( d, GMCP_CARRY_MAXWEIGHT, ( can_carry_w( d->character ) ) );
-                        UpdateGMCPNumber( d, GMCP_AC, GET_AC( d->character) );
-                        UpdateGMCPNumber( d, GMCP_FAME, d->character->pcdata->fame );
-                        UpdateGMCPNumber( d, GMCP_SAVE_VS, d->character->saving_throw );
 
-                        UpdateGMCPNumber( d, GMCP_ALIGNMENT, d->character->alignment );
+                        if (d->character->level >= 20)
+                        {
+                                UpdateGMCPNumber( d, GMCP_AC, GET_AC( d->character) );
+                        }
+                        else {
+                                UpdateGMCPNumber( d, GMCP_AC, 50000 );
+                        }
+
+                        UpdateGMCPNumber( d, GMCP_FAME, d->character->pcdata->fame );
+
+                        if (d->character->level >= 20)
+                        {
+                                UpdateGMCPNumber( d, GMCP_SAVE_VS, d->character->saving_throw );
+                        }
+                        else {
+                                UpdateGMCPNumber( d, GMCP_SAVE_VS, 50000 );
+                        }
+
+                        if (d->character->level >= 15)
+                        {
+                                UpdateGMCPNumber( d, GMCP_CRITICAL, GET_CRIT( d->character ) );
+                        }
+                        else {
+                                UpdateGMCPNumber( d, GMCP_CRITICAL, 50000 );
+                        }
+
+                        if (d->character->level >= 15)
+                        {
+                                UpdateGMCPNumber( d, GMCP_SWIFTNESS, GET_SWIFT( d->character ) );
+                        }
+                        else {
+                                UpdateGMCPNumber( d, GMCP_SWIFTNESS, 50000 );
+                        }
+
+                        if (d->character->level >= 15)
+                        {
+                                UpdateGMCPNumber( d, GMCP_RESIST_ACID, d->character->resist_acid );
+                        }
+                        else {
+                                UpdateGMCPNumber( d, GMCP_RESIST_ACID, 50000 );
+                        }
+
+                        if (d->character->level >= 15)
+                        {
+                                UpdateGMCPNumber( d, GMCP_RESIST_LIGHTNING, d->character->resist_lightning );
+                        }
+                        else {
+                                UpdateGMCPNumber( d, GMCP_RESIST_LIGHTNING, 50000 );
+                        }
+
+                        if (d->character->level >= 15)
+                        {
+                                UpdateGMCPNumber( d, GMCP_RESIST_HEAT, d->character->resist_heat );
+                        }
+                        else {
+                                UpdateGMCPNumber( d, GMCP_RESIST_HEAT, 50000 );
+                        }
+
+                        if (d->character->level >= 15)
+                        {
+                                UpdateGMCPNumber( d, GMCP_RESIST_COLD, d->character->resist_cold );
+                        }
+                        else {
+                                UpdateGMCPNumber( d, GMCP_RESIST_COLD, 50000 );
+                        }
+
+                        if (d->character->level >= 10)
+                        {
+                                UpdateGMCPNumber( d, GMCP_ALIGNMENT, d->character->alignment );
+                        }
+                        else {
+                                UpdateGMCPNumber( d, GMCP_ALIGNMENT, 50000 );
+                        }
+
                         UpdateGMCPNumber( d, GMCP_LEVEL, d->character->level );
                         UpdateGMCPNumber( d, GMCP_XP, d->character->exp );
                         UpdateGMCPNumber( d, GMCP_XP_MAX, (level_table[ d->character->level].exp_total) );
                         UpdateGMCPNumber( d, GMCP_XP_TNL, ( level_table[ d->character->level].exp_total) - d->character->exp );
+                        UpdateGMCPNumber( d, GMCP_XP_CURLEVEL, ( level_table[ d->character->level].exp_level ) );
                         UpdateGMCPNumber( d, GMCP_PRACTICE, d->character->pcdata->str_prac );
                         UpdateGMCPNumber( d, GMCP_PLATINUM, d->character->plat );
                         UpdateGMCPNumber( d, GMCP_GOLD, d->character->gold );
@@ -2900,8 +3010,8 @@ void gmcp_update( void )
                         UpdateGMCPString( d, GMCP_AREA, d->character->in_room->area->name );
                         UpdateGMCPString( d, GMCP_ROOM_NAME, d->character->in_room->name );
                         UpdateGMCPNumber( d, GMCP_ROOM_SECT, d->character->in_room->sector_type );
+                        UpdateGMCPNumber( d, GMCP_ROOM_FLAGS, d->character->in_room->room_flags );
                         UpdateGMCPNumber( d, GMCP_ROOM_VNUM, d->character->in_room->vnum );
-                        /* UpdateGMCPNumber( d, GMCP_ROOM_FLAGS, d->character->in_room->room_flags ); */
 
                         buf4[0] = '\0';
                         if (d->character->in_room->room_flags)
@@ -3138,9 +3248,9 @@ void gmcp_update( void )
                          * Create the JSON
                          */
 
-                        if (fShowNothing && nShow == 0)
+                        if ((fShowNothing == 1) && (nShow == 0))
                         {
-                               sprintf( buf, "[]");
+                               sprintf( buf, "[ []");
                                UpdateGMCPString( d, GMCP_INVENTORY, buf );
                                goto updated;
 

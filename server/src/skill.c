@@ -101,6 +101,7 @@ void do_swim (CHAR_DATA *ch, char *argument)
 
         if ( ( ch->form != FORM_SNAKE )
         && ( ch->in_room->sector_type != SECT_UNDERWATER )
+        && ( ch->in_room->sector_type != SECT_UNDERWATER_GROUND )
         && ( ch->in_room->sector_type != SECT_WATER_SWIM )
         && ( ch->in_room->sector_type != SECT_WATER_NOSWIM ) )
         {
@@ -3261,7 +3262,7 @@ void do_dowse(CHAR_DATA *ch, char *arg)
         }
         else
         {
-                spring = create_object( get_obj_index( OBJ_VNUM_SPRING ), 0,"common", FALSE );
+                spring = create_object( get_obj_index( OBJ_VNUM_SPRING ), 0,"common", CREATED_NO_RANDOMISER );
                 spring->timer    = ch->level;
                 spring->timermax = spring->timer;
                 obj_to_room( spring, ch->in_room );
@@ -3391,7 +3392,7 @@ void do_gather (CHAR_DATA *ch, char *arg)
 
         for( i=0; i<herb_dose; i++ )
         {
-                herb = create_object( get_obj_index( ITEM_VNUM_HERB ), 0, "common", FALSE );
+                herb = create_object( get_obj_index( ITEM_VNUM_HERB ), 0, "common", CREATED_NO_RANDOMISER );
                 free_string(herb->name);
                 free_string(herb->short_descr);
                 free_string(herb->description);
@@ -3558,30 +3559,30 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 sprintf(buf, "You recover the following raw materials:\n");
                 send_to_char (buf, ch);
                 if (steel > 0)
-                { 
+                {
                         steel = number_fuzzy (steel);
                          sprintf(buf,"{wSteel %d{x\n",steel);
                         send_to_char (buf, ch);
                 }
-                if (titanium > 0) 
+                if (titanium > 0)
                 {
                         titanium = number_fuzzy (titanium);
                         sprintf(buf,"{yTitanium %d{x\n", titanium);
                         send_to_char (buf, ch);
                 }
-                if (adamantite > 0) 
+                if (adamantite > 0)
                 {
                         adamantite = number_fuzzy (adamantite);
                         sprintf(buf,"{YAdamantite %d{x\n", adamantite);
                         send_to_char (buf, ch);
                 }
                 if (electrum > 0)
-                { 
+                {
                         electrum = number_fuzzy (electrum);
                         sprintf(buf,"{WElectrum %d{x\n", electrum);
                         send_to_char (buf, ch);
                 }
-                if (starmetal > 0) 
+                if (starmetal > 0)
                 {
                         starmetal = number_fuzzy (starmetal);
                         sprintf(buf,"{RStarmetal %d{x\n", starmetal);
@@ -3828,7 +3829,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 return;
         }
 
-        creation = create_object( get_obj_index( blueprint_list[i].blueprint_ref ), ch->level, "common", FALSE );
+        creation = create_object( get_obj_index( blueprint_list[i].blueprint_ref ), ch->level, "common", CREATED_NO_RANDOMISER );
         obj_to_char( creation, ch );
         if (blueprint_list[i].blueprint_ego >= 1 )
         {
@@ -4242,7 +4243,7 @@ void do_inscribe (CHAR_DATA *ch, char *argument)
         if (found_rune)
         {
                 OBJ_DATA        *creation;
-                creation = create_object( get_obj_index( blueprint_list[i].blueprint_ref ), ch->level, "common", FALSE );
+                creation = create_object( get_obj_index( blueprint_list[i].blueprint_ref ), ch->level, "common", CREATED_NO_RANDOMISER );
                 obj_to_room( creation, ch->in_room );
                 if (blueprint_list[i].blueprint_ego >= 1 )
                 {
@@ -4850,7 +4851,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                         {
                                 OBJ_DATA *deployed;
 
-                                deployed = create_object( get_obj_index( unit ), ch->level, "common", FALSE );
+                                deployed = create_object( get_obj_index( unit ), ch->level, "common", CREATED_NO_RANDOMISER );
                                 obj_to_room(deployed, ch->in_room);
                                 act("Your turret deploys $p.", ch, deployed, NULL ,TO_CHAR);
                                 act("$n deploys $p from their turret.", ch, deployed, NULL, TO_ROOM);
@@ -4995,7 +4996,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                                         {
                                                 OBJ_DATA *deployed;
 
-                                                deployed = create_object( get_obj_index( unit ), ch->level, "common", FALSE );
+                                                deployed = create_object( get_obj_index( unit ), ch->level, "common", CREATED_NO_RANDOMISER );
                                                 obj_to_room(deployed, ch->in_room);
                                                 act("Your turret deploys $p.", ch, deployed, NULL ,TO_CHAR);
                                                 act("$n deploys $p from their turret.", ch, deployed, NULL, TO_ROOM);

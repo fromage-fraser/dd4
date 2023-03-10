@@ -1,4 +1,4 @@
-/* Alchemist SubClass 30+ 
+/* Alchemist SubClass 30+
 
   22 Skills
  */
@@ -23,7 +23,7 @@
 {&gsn_group_runic_arts,                &gsn_runesmith_base,      30,     PRE_RUNESMITH},
 
 {&gsn_pyro_rune,                 	&gsn_group_runic_arts,       30,     PRE_RUNESMITH},
-{&gsn_cyro_rune,                 	&gsn_group_runic_arts,       60,     PRE_RUNESMITH},
+{&gsn_cryo_rune,                 	&gsn_group_runic_arts,       60,     PRE_RUNESMITH},
 {&gsn_bolt_rune,                 	&gsn_group_runic_arts,       70,     PRE_RUNESMITH},
 {&gsn_stab_rune,                 	&gsn_group_runic_arts,       80,     PRE_RUNESMITH},
 {&gsn_rend_rune,           	      &gsn_group_runic_arts,       80,     PRE_RUNESMITH},

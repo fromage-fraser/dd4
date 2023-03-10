@@ -111,7 +111,7 @@ int get_colour_index_by_code ( int ccode )
 
 int calc_aff_score (int apply, int level)
 {
-        char       buf  [ MAX_STRING_LENGTH ]; 
+        char       buf  [ MAX_STRING_LENGTH ];
         int score = 0;
         switch (apply)
         {
@@ -159,7 +159,7 @@ int calc_aff_score (int apply, int level)
                 case APPLY_CRIT:
                 case APPLY_SWIFTNESS:
                 {
-                        score += (SCORE_CRIT_SWIFTNESS / level);     
+                        score += (SCORE_CRIT_SWIFTNESS / level);
                 }
                 break;
 
@@ -214,37 +214,37 @@ int calc_aff_score (int apply, int level)
                 default:
                         score +=1;
         }
-            
+
             if (score == 0)
             {    sprintf(buf, "[*****] BUG in calc_aff_score: I return ZERO score from a apply of %d and level %d)", apply, level);
-                log_string (buf); 
+                log_string (buf);
             }
         return score;
 }
 
 
-/* Idea is to return a score based on an object which is used to calculate rarity 
+/* Idea is to return a score based on an object which is used to calculate rarity
                 Scale is 0-1000  - Brutus*/
 int calc_item_score ( OBJ_DATA *obj )
 {
         AFFECT_DATA             *paf;
      /*   char       buf  [ MAX_STRING_LENGTH ]; */
         int score = 0;
-        
+
         if (obj->how_created >= CREATED_NO_RANDOMISER )
         {
                 for ( paf = obj->affected; paf; paf = paf->next )
                 {
                         if (!obj->level)
                                 continue;
-                        
+
                         if ( paf->location != APPLY_NONE
                         && paf->modifier != 0
                         && strcmp (affect_loc_name (paf->location), "(unknown)"))
                         {
                                 if ( paf->location == APPLY_AC)
                                         score -= (( calc_aff_score ( paf->location, obj->level)) * paf->modifier);
-                                else  
+                                else
                                         score += (( calc_aff_score ( paf->location, obj->level)) * paf->modifier);
                         }
                 }
@@ -256,7 +256,7 @@ int calc_item_score ( OBJ_DATA *obj )
                 {
                         if (!obj->level)
                                 continue;
-                        
+
                         if ( paf->location != APPLY_NONE
                         && paf->modifier != 0
                         && strcmp (affect_loc_name (paf->location), "(unknown)"))
@@ -381,7 +381,7 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
                 else if (calc_item_score(obj) > ITEM_SCORE_UNCOMMON)
                         strcat( buf, "<34>(Uncommon)<0> ");
         }
-        
+
         if (calc_item_score(obj) > 100 && !obj->identified)
         {
                 if (calc_item_score(obj) > ITEM_SCORE_LEGENDARY)
@@ -393,7 +393,7 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
                 else if (calc_item_score(obj) > ITEM_SCORE_UNCOMMON)
                         strcat( buf, "<34>[_?_]<0> ");
         }
-        
+
         if ( fShort )
         {
                 if ( obj->short_descr )
@@ -495,7 +495,7 @@ void show_turret_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort )
  * Show a list to a character.
  * Can coalesce duplicated items.
  */
-void show_list_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNothing )
+void show_list_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNothing, bool vaulted )
 {
         OBJ_DATA  *obj;
         char       buf [ MAX_STRING_LENGTH ];
@@ -542,9 +542,9 @@ void show_list_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNo
                         if (IS_NPC(ch) || IS_SET(ch->act, PLR_COMBINE))
                         {
                                 /*
-                                 * Look for duplicates, case sensitive.
-                                 * Matches tend to be near end so run loop backwards.
-                                 */
+                                * Look for duplicates, case sensitive.
+                                * Matches tend to be near end so run loop backwards.
+                                */
                                 for (iShow = nShow - 1; iShow >= 0; iShow--)
                                 {
                                         if (!strcmp(prgpstrShow[iShow], pstrShow))
@@ -557,8 +557,8 @@ void show_list_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNo
                         }
 
                         /*
-                         * Couldn't combine, or didn't want to.
-                         */
+                        * Couldn't combine, or didn't want to.
+                        */
                         if (!fCombine)
                         {
                                 prgpstrShow [nShow] = str_dup(pstrShow);
@@ -603,6 +603,7 @@ void show_list_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNo
          */
         free_mem(prgpstrShow, count * sizeof(char *));
         free_mem(prgnShow, count * sizeof(int));
+
 }
 
 
@@ -704,13 +705,13 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
 
         if (IS_NPC(victim)
             && !IS_NPC(ch)
-            && IS_SET(victim->act, ACT_QUESTMASTER) 
+            && IS_SET(victim->act, ACT_QUESTMASTER)
             && (!IS_SET(ch->act, PLR_QUESTOR)))
                 strcat(buf, "<11>(!)<0> ");
 
         if (IS_NPC(victim)
             && !IS_NPC(ch)
-            && IS_SET(victim->act, ACT_QUESTMASTER) 
+            && IS_SET(victim->act, ACT_QUESTMASTER)
             && (IS_SET(ch->act, PLR_QUESTOR)))
                 strcat(buf, "<11>(?)<0> ");
 
@@ -731,7 +732,7 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
         if (!IS_NPC(victim ) && IS_SET(victim->act, PLR_AFK )  )
                 strcat(buf, "<22><<<40>AFK<0><22>><0> ");
 
-   
+
 /*           if (IS_NPC(victim) && !IS_NPC(ch) && ch->pcdata->learned[gsn_advanced_consider] > 1)
             switch ( rank_sn(victim) )
                 {
@@ -942,7 +943,7 @@ void show_char_to_char_1( CHAR_DATA *victim, CHAR_DATA *ch )
                     && number_percent( ) < ch->pcdata->learned[gsn_peek] )
                 {
                         send_to_char( "\n\rYou peek at the inventory:\n\r", ch );
-                        show_list_to_char( victim->carrying, ch, TRUE, TRUE );
+                        show_list_to_char( victim->carrying, ch, TRUE, TRUE, FALSE );
                 }
         }
 
@@ -1400,7 +1401,7 @@ void do_look( CHAR_DATA *ch, char *argument )
                         send_to_char(buf, ch);
                 }
 
-                show_list_to_char( ch->in_room->contents, ch, FALSE, FALSE );
+                show_list_to_char( ch->in_room->contents, ch, FALSE, FALSE, FALSE );
                 show_char_to_char( ch->in_room->people,   ch );
 
                 ansi_color( NTEXT, ch );
@@ -1495,7 +1496,7 @@ void do_look( CHAR_DATA *ch, char *argument )
                         }
 
                         act( "$p contains:", ch, obj, NULL, TO_CHAR );
-                        show_list_to_char( obj->contains, ch, TRUE, TRUE );
+                        show_list_to_char( obj->contains, ch, TRUE, TRUE, FALSE );
                         break;
                 }
                 return;
@@ -1516,7 +1517,7 @@ void do_look( CHAR_DATA *ch, char *argument )
                         {
                                 send_to_char( pdesc, ch );
                                 if (obj->identified)
-                                {        
+                                {
                                         spell_identify ( 1, 1, ch, obj);
                                 }
                         }
@@ -1533,7 +1534,7 @@ void do_look( CHAR_DATA *ch, char *argument )
                         send_to_char( obj->description, ch );
                         send_to_char( "\n\r", ch );
                         if (obj->identified)
-                        {        
+                        {
                               spell_identify ( 1, 1, ch, obj);
                         }
 
@@ -1658,8 +1659,8 @@ void do_examine (CHAR_DATA *ch, char *argument)
         /*if ((obj = get_obj_here (ch, arg))) */
         if (obj)
         {
-        
-                        
+
+
                 if (!IS_NPC(ch) && IS_SET(obj->extra_flags, ITEM_TRAP)
                     && number_percent() < ch->pcdata->learned[gsn_find_traps])
                 {
@@ -1724,6 +1725,125 @@ void do_examine (CHAR_DATA *ch, char *argument)
                         break;
                 }
         }
+}
+
+/* Look at an object in your vault*/
+void do_inspect (CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA *obj;
+        char arg [MAX_INPUT_LENGTH];
+        char *pdesc;
+
+        one_argument( argument, arg );
+
+        if (IS_NPC(ch))
+        {
+            return;
+        }
+
+        if (!IS_SET(ch->in_room->room_flags, ROOM_VAULT))
+        {
+            send_to_char( "You cannot inspect items in your vault from here.\n\r", ch );
+            return;
+        }
+
+        if (arg[0] == '\0')
+        {
+                send_to_char ("Inspect what?\n\r", ch);
+                return;
+        }
+
+        obj = get_obj_herevault (ch, arg);
+        if ( (ch->class == CLASS_SMITHY) &&  (ch->pcdata->learned[gsn_innate_knowledge] > obj->level ) &&
+                (obj->item_type == ITEM_WEAPON
+                || obj->item_type == ITEM_ARMOR
+                || obj->item_type == ITEM_TURRET_MODULE
+                || obj->item_type == ITEM_TURRET
+                || obj->item_type == ITEM_DEFENSIVE_TURRET_MODULE) )
+        {
+                send_to_char ("You cast your expert eye over the item.\n\r", ch);
+                obj->identified = TRUE;
+        }
+
+        for ( obj = ch->pcdata->vault; obj; obj = obj->next_content )
+        {
+                if ( can_see_obj( ch, obj ))
+                {
+                        pdesc = get_extra_descr( arg, obj->extra_descr );
+                        if ( pdesc )
+                        {
+                                send_to_char( pdesc, ch );
+                                send_to_char( "\n\r", ch );
+                                if (obj->identified)
+                                {
+                                        spell_identify ( 1, 1, ch, obj);
+                                }
+                        }
+
+                        pdesc = get_extra_descr( arg, obj->pIndexData->extra_descr );
+                        if ( pdesc )
+                        {
+                                send_to_char( pdesc, ch );
+                                send_to_char( "\n\r", ch );
+                        }
+                }
+                if ( is_name( arg, obj->name ))
+                {
+                        send_to_char( obj->description, ch );
+                        send_to_char( "\n\r", ch );
+                        if (obj->identified)
+                        {
+                              spell_identify ( 1, 1, ch, obj);
+                        }
+                        break;
+                }
+        }
+
+        obj = get_obj_herevault (ch, arg);
+
+        if (!IS_NPC(ch) && IS_SET(obj->extra_flags, ITEM_TRAP)
+                    && number_percent() < ch->pcdata->learned[gsn_find_traps])
+        {
+                send_to_char( "\n\r{RYou believe that it is trapped.{x\n\r", ch );
+                return;
+        }
+
+        switch (obj->item_type)
+        {
+            case ITEM_DRINK_CON:
+            case ITEM_CONTAINER:
+            case ITEM_TURRET:
+            case ITEM_CORPSE_NPC:
+            case ITEM_CORPSE_PC:
+                if ( IS_SET( obj->value[1], CONT_CLOSED ) )
+                {
+                        send_to_char( "It is closed.\n\r", ch );
+                        break;
+                }
+
+                act( "$p contains:", ch, obj, NULL, TO_CHAR );
+                show_list_to_char( obj->contains, ch, TRUE, TRUE, FALSE );
+                break;
+
+            case ITEM_WEAPON:
+                if (obj->timer > 0 && obj->timer <= TIMER_ALERT)
+                {
+                        if (IS_SET(obj->extra_flags, ITEM_POISONED))
+                                send_to_char("Poison is beginning to seriously corrode the blade.\n\r", ch);
+
+                        else if (IS_SET(obj->extra_flags, ITEM_SHARP)
+                                    || IS_SET(obj->extra_flags, ITEM_BLADE_THIRST))
+                                send_to_char("The blade's condition is deteriorating badly.\n\r", ch);
+                }
+                break;
+
+            case ITEM_ARMOR:
+                if (obj->timer > 0 && obj->timer <= TIMER_ALERT
+                    && IS_SET(obj->extra_flags, ITEM_FORGED))
+                        send_to_char("The forged metal looks to be in poor condition.\n\r", ch);
+                break;
+        }
+        return;
 }
 
 
@@ -2536,7 +2656,8 @@ void do_weather( CHAR_DATA *ch, char *argument )
                 return;
         }
 
-        if ( ch->in_room->sector_type == SECT_UNDERWATER )
+        if ( ( ch->in_room->sector_type == SECT_UNDERWATER )
+        ||   ( ch->in_room->sector_type == SECT_UNDERWATER_GROUND ) )
         {
                 send_to_char( "You can't see the weather underwater.\n\r", ch );
                 return;
@@ -2913,11 +3034,48 @@ void do_inventory( CHAR_DATA *ch, char *argument )
         }
 
         send_to_char( "Your backpack contains:\n\r", ch );
-        show_list_to_char( ch->carrying, ch, TRUE, TRUE );
+        show_list_to_char( ch->carrying, ch, TRUE, TRUE, FALSE );
         sprintf( buf, "You are carrying %d/%d items.\n\r",
                 ch->carry_number, can_carry_n( ch ) );
         send_to_char( buf, ch );
 
+        return;
+}
+
+void do_vault( CHAR_DATA *ch, char *argument )
+{
+        char buf        [ MAX_STRING_LENGTH ];
+
+        if (IS_NPC(ch))
+        {
+            return;
+        }
+
+        if (ch->fighting)
+        {
+                send_to_char("You're a bit busy to try to look in your vault!\n\r", ch);
+                return;
+        }
+
+        if (!IS_SET(ch->in_room->room_flags, ROOM_VAULT))
+        {
+            send_to_char( "{CYou consult your Dragonhoard Bank ledger...{x\n\r\n\r", ch );
+        }
+
+        send_to_char( "{cYour vault contains:{x\n\r", ch );
+        show_list_to_char( ch->pcdata->vault, ch, TRUE, TRUE, TRUE );
+
+        if (ch->pcdata->vault_number)
+        {
+            sprintf( buf, "You have <14>%d<0>/<6>%d<0> items lodged, weighing ",
+                ch->pcdata->vault_number, can_vault_n( ch ) );
+            send_to_char( buf, ch );
+
+            sprintf( buf, "<14>%d<0>/<6>%d<0> lbs.\n\r",
+                ch->pcdata->vault_weight,
+                can_vault_w( ch ) );
+            send_to_char( buf, ch );
+        }
         return;
 }
 
@@ -3276,7 +3434,7 @@ void do_consider( CHAR_DATA *ch, char *argument )
                      NULL, victim, TO_CHAR );
 
         if ( IS_NPC( victim ) && rank_sn(victim) > 1 )
-                act ("$N is {Wstronger{x than what you have been used to.", ch, NULL, victim, TO_CHAR );
+                act ("$N seems {Wmore powerful{x than your usual adversaries.", ch, NULL, victim, TO_CHAR );
 
 
         if ( victim->mobspec )
@@ -4054,8 +4212,8 @@ void show_slist (CHAR_DATA *ch, int number)
             case SUB_CLASS_MARTIAL_ARTIST: do_help(ch, "smartial"); break;
             case SUB_CLASS_BARBARIAN: do_help(ch, "sbarbarian"); break;
             case SUB_CLASS_BARD: do_help(ch, "sbard"); break;
-            case SUB_CLASS_ENGINEER: do_help(ch, "sbard"); break;
-            case SUB_CLASS_RUNESMITH: do_help(ch, "sbard"); break;
+            case SUB_CLASS_ENGINEER: do_help(ch, "sengineer"); break;
+            case SUB_CLASS_RUNESMITH: do_help(ch, "srunesmith"); break;
 
             default: break;
         }
@@ -5409,7 +5567,7 @@ void print_player_status (CHAR_DATA *ch, char* buf)
                 strcat( buf, tmp );
         }
         strcat (buf, "\n\r");
-        
+
         if( ch->level >= 15 )
         {
                 sprintf( tmp, "Crit: {C%3d%%{x        Swiftness: {C%3d%%{x\n\r",
@@ -5418,7 +5576,7 @@ void print_player_status (CHAR_DATA *ch, char* buf)
                 sprintf( tmp, "{WResistances:{x Acid:{C%3d%%{x Lightning:{C%3d%%{x Heat:{C%3d%%{x Cold:{C%3d%%{x ",
                         ch->resist_acid, ch->resist_lightning, ch->resist_heat, ch->resist_cold);
                 strcat( buf, tmp );
-                
+
         }
         strcat (buf, "\n\r");
 }

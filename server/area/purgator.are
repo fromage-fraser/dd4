@@ -13,11 +13,11 @@ $
 #401
 dead reaper~
 The Reaper of the Dead~
-The Reaper of the Dead awaits here to decide your fate.
+The Reaper of the Dead is here to decide your fate.
 ~
-Ever smiling, he doesn't seems to mind being stuck here for eternity.
+Ever-smiling, he doesn't seems to mind being stuck here for eternity.
 ~
-2|512 8|128|8192 -1000 S
+2|512|9223372036854775808 8|32|128|8192|8388608 -1000 S
 50 0 0 0d0+0 0d0+0
 96 0
 8 8 0
@@ -26,6 +26,9 @@ c 'giant strength' $n
 mpoload 401 1
 give tear $n
 mpforce $n quaff tear
+~
+>fight_prog 5~
+   shout You cannot kill me! I AM DEATH!
 ~
 |
 #402
@@ -984,7 +987,6 @@ S
 #SPECIALS
 
 M 401  spec_cast_adept      Death Reaper double as healer
-M 401  spec_cast_mage       Death Reaper
 S
 
 

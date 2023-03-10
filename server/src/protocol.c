@@ -135,79 +135,81 @@ static const char s_Gauge5[]  = "\005\002Opponent\002darkred\002OPPONENT_HEALTH\
 static variable_name_t VariableNameTable[eMSDP_MAX+1] =
 {
    /* General */
-   { eMSDP_CHARACTER_NAME,   "CHARACTER_NAME",   STRING_READ_ONLY },
-   { eMSDP_SERVER_ID,        "SERVER_ID",        STRING_READ_ONLY },
-   { eMSDP_SERVER_TIME,      "SERVER_TIME",      NUMBER_READ_ONLY },
-   { eMSDP_SNIPPET_VERSION,  "SNIPPET_VERSION",  NUMBER_READ_ONLY_SET_TO(SNIPPET_VERSION) },
+   { eMSDP_CHARACTER_NAME,       "CHARACTER_NAME",       STRING_READ_ONLY                          },
+   { eMSDP_SERVER_ID,            "SERVER_ID",            STRING_READ_ONLY                          },
+   { eMSDP_SERVER_TIME,          "SERVER_TIME",          NUMBER_READ_ONLY                          },
+   { eMSDP_SNIPPET_VERSION,      "SNIPPET_VERSION",      NUMBER_READ_ONLY_SET_TO(SNIPPET_VERSION)  },
 
    /* Character */
-   { eMSDP_AFFECTS,          "AFFECTS",          STRING_READ_ONLY },
-   { eMSDP_ALIGNMENT,        "ALIGNMENT",        NUMBER_READ_ONLY },
-   { eMSDP_EXPERIENCE,       "EXPERIENCE",       NUMBER_READ_ONLY },
-   { eMSDP_EXPERIENCE_MAX,   "EXPERIENCE_MAX",   NUMBER_READ_ONLY },
-   { eMSDP_EXPERIENCE_TNL,   "EXPERIENCE_TNL",   NUMBER_READ_ONLY },
-   { eMSDP_HEALTH,           "HEALTH",           NUMBER_READ_ONLY },
-   { eMSDP_HEALTH_MAX,       "HEALTH_MAX",       NUMBER_READ_ONLY },
-   { eMSDP_LEVEL,            "LEVEL",            NUMBER_READ_ONLY },
-   { eMSDP_RACE,             "RACE",             STRING_READ_ONLY },
-   { eMSDP_CLASS,            "CLASS",            STRING_READ_ONLY },
-   { eMSDP_MANA,             "MANA",             NUMBER_READ_ONLY },
-   { eMSDP_MANA_MAX,         "MANA_MAX",         NUMBER_READ_ONLY },
-   { eMSDP_WIMPY,            "WIMPY",            NUMBER_READ_ONLY },
-   { eMSDP_PRACTICE,         "PRACTICE",         NUMBER_READ_ONLY },
-   { eMSDP_MONEY,            "MONEY",            NUMBER_READ_ONLY },
-   { eMSDP_MOVEMENT,         "MOVEMENT",         NUMBER_READ_ONLY },
-   { eMSDP_MOVEMENT_MAX,     "MOVEMENT_MAX",     NUMBER_READ_ONLY },
-   { eMSDP_HITROLL,          "HITROLL",          NUMBER_READ_ONLY },
-   { eMSDP_DAMROLL,          "DAMROLL",          NUMBER_READ_ONLY },
-   { eMSDP_AC,               "AC",               NUMBER_READ_ONLY },
-   { eMSDP_STR,              "STR",              NUMBER_READ_ONLY },
-   { eMSDP_INT,              "INT",              NUMBER_READ_ONLY },
-   { eMSDP_WIS,              "WIS",              NUMBER_READ_ONLY },
-   { eMSDP_DEX,              "DEX",              NUMBER_READ_ONLY },
-   { eMSDP_CON,              "CON",              NUMBER_READ_ONLY },
-   { eMSDP_STR_PERM,         "STR_PERM",         NUMBER_READ_ONLY },
-   { eMSDP_INT_PERM,         "INT_PERM",         NUMBER_READ_ONLY },
-   { eMSDP_WIS_PERM,         "WIS_PERM",         NUMBER_READ_ONLY },
-   { eMSDP_DEX_PERM,         "DEX_PERM",         NUMBER_READ_ONLY },
-   { eMSDP_CON_PERM,         "CON_PERM",         NUMBER_READ_ONLY },
+   { eMSDP_AFFECTS,              "AFFECTS",              STRING_READ_ONLY                          },
+   { eMSDP_ALIGNMENT,            "ALIGNMENT",            NUMBER_READ_ONLY                          },
+   { eMSDP_EXPERIENCE,           "EXPERIENCE",           NUMBER_READ_ONLY                          },
+   { eMSDP_EXPERIENCE_MAX,       "EXPERIENCE_MAX",       NUMBER_READ_ONLY                          },
+   { eMSDP_EXPERIENCE_TNL,       "EXPERIENCE_TNL",       NUMBER_READ_ONLY                          },
+   { eMSDP_HEALTH,               "HEALTH",               NUMBER_READ_ONLY                          },
+   { eMSDP_HEALTH_MAX,           "HEALTH_MAX",           NUMBER_READ_ONLY                          },
+   { eMSDP_LEVEL,                "LEVEL",                NUMBER_READ_ONLY                          },
+   { eMSDP_RACE,                 "RACE",                 STRING_READ_ONLY                          },
+   { eMSDP_CLASS,                "CLASS",                STRING_READ_ONLY                          },
+   { eMSDP_SUBCLASS,             "SUBCLASS",             STRING_READ_ONLY                          },
+   { eMSDP_MANA,                 "MANA",                 NUMBER_READ_ONLY                          },
+   { eMSDP_MANA_MAX,             "MANA_MAX",             NUMBER_READ_ONLY                          },
+   { eMSDP_WIMPY,                "WIMPY",                NUMBER_READ_ONLY                          },
+   { eMSDP_PRACTICE,             "PRACTICE",             NUMBER_READ_ONLY                          },
+   { eMSDP_MONEY,                "MONEY",                NUMBER_READ_ONLY                          },
+   { eMSDP_MOVEMENT,             "MOVEMENT",             NUMBER_READ_ONLY                          },
+   { eMSDP_MOVEMENT_MAX,         "MOVEMENT_MAX",         NUMBER_READ_ONLY                          },
+   { eMSDP_AC,                   "AC",                   NUMBER_READ_ONLY                          },
+   { eMSDP_STR,                  "STR",                  NUMBER_READ_ONLY                          },
+   { eMSDP_INT,                  "INT",                  NUMBER_READ_ONLY                          },
+   { eMSDP_WIS,                  "WIS",                  NUMBER_READ_ONLY                          },
+   { eMSDP_DEX,                  "DEX",                  NUMBER_READ_ONLY                          },
+   { eMSDP_CON,                  "CON",                  NUMBER_READ_ONLY                          },
+   { eMSDP_STR_PERM,             "STR_PERM",             NUMBER_READ_ONLY                          },
+   { eMSDP_INT_PERM,             "INT_PERM",             NUMBER_READ_ONLY                          },
+   { eMSDP_WIS_PERM,             "WIS_PERM",             NUMBER_READ_ONLY                          },
+   { eMSDP_DEX_PERM,             "DEX_PERM",             NUMBER_READ_ONLY                          },
+   { eMSDP_CON_PERM,             "CON_PERM",             NUMBER_READ_ONLY                          },
+   { eMSDP_HITROLL,              "HITROLL",              NUMBER_READ_ONLY                          },
+   { eMSDP_DAMROLL,              "DAMROLL",              NUMBER_READ_ONLY                          },
 
    /* Combat */
-   { eMSDP_OPPONENT_HEALTH,  "OPPONENT_HEALTH",  NUMBER_READ_ONLY },
-   { eMSDP_OPPONENT_HEALTH_MAX,"OPPONENT_HEALTH_MAX",NUMBER_READ_ONLY },
-   { eMSDP_OPPONENT_LEVEL,   "OPPONENT_LEVEL",   NUMBER_READ_ONLY },
-   { eMSDP_OPPONENT_NAME,    "OPPONENT_NAME",    STRING_READ_ONLY },
+   { eMSDP_OPPONENT_HEALTH,      "OPPONENT_HEALTH",      NUMBER_READ_ONLY                          },
+   { eMSDP_OPPONENT_HEALTH_MAX,  "OPPONENT_HEALTH_MAX",  NUMBER_READ_ONLY                          },
+   { eMSDP_OPPONENT_LEVEL,       "OPPONENT_LEVEL",       NUMBER_READ_ONLY                          },
+   { eMSDP_OPPONENT_NAME,        "OPPONENT_NAME",        STRING_READ_ONLY                          },
 
    /* World */
-   { eMSDP_AREA_NAME,        "AREA_NAME",        STRING_READ_ONLY },
-   { eMSDP_ROOM_EXITS,       "ROOM_EXITS",       STRING_READ_ONLY },
-   { eMSDP_ROOM_NAME,        "ROOM_NAME",        STRING_READ_ONLY },
-   { eMSDP_ROOM_VNUM,        "ROOM_VNUM",        NUMBER_READ_ONLY },
-   { eMSDP_WORLD_TIME,       "WORLD_TIME",       NUMBER_READ_ONLY },
+   { eMSDP_AREA_NAME,            "AREA_NAME",            STRING_READ_ONLY                          },
+   { eMSDP_ROOM_EXITS,           "ROOM_EXITS",           STRING_READ_ONLY                          },
+   { eMSDP_ROOM_NAME,            "ROOM_NAME",            STRING_READ_ONLY                          },
+   { eMSDP_ROOM_SECT,            "ROOM_SECT",            STRING_READ_ONLY                          },
+   { eMSDP_ROOM_VNUM,            "ROOM_VNUM",            NUMBER_READ_ONLY                          },
+   { eMSDP_WORLD_TIME,           "WORLD_TIME",           NUMBER_READ_ONLY                          },
 
    /* Configurable variables */
-   { eMSDP_CLIENT_ID,        "CLIENT_ID",        STRING_WRITE_ONCE(1,40) },
-   { eMSDP_CLIENT_VERSION,   "CLIENT_VERSION",   STRING_WRITE_ONCE(1,40) },
-   { eMSDP_PLUGIN_ID,        "PLUGIN_ID",        STRING_WITH_LENGTH_OF(1,40) },
-   { eMSDP_ANSI_COLORS,      "ANSI_COLORS",      BOOLEAN_SET_TO(1) },
-   { eMSDP_XTERM_256_COLORS, "XTERM_256_COLORS", BOOLEAN_SET_TO(0) },
-   { eMSDP_UTF_8,            "UTF_8",            BOOLEAN_SET_TO(0) },
-   { eMSDP_SOUND,            "SOUND",            BOOLEAN_SET_TO(0) },
-   { eMSDP_MXP,              "MXP",              BOOLEAN_SET_TO(0) },
+   { eMSDP_CLIENT_ID,            "CLIENT_ID",            STRING_WRITE_ONCE(1,40)                   },
+   { eMSDP_CLIENT_VERSION,       "CLIENT_VERSION",       STRING_WRITE_ONCE(1,40)                   },
+   { eMSDP_PLUGIN_ID,            "PLUGIN_ID",            STRING_WITH_LENGTH_OF(1,40)               },
+   { eMSDP_ANSI_COLORS,          "ANSI_COLORS",          BOOLEAN_SET_TO(1)                         },
+   { eMSDP_XTERM_256_COLORS,     "XTERM_256_COLORS",     BOOLEAN_SET_TO(0)                         },
+   { eMSDP_UTF_8,                "UTF_8",                BOOLEAN_SET_TO(0)                         },
+   { eMSDP_SOUND,                "SOUND",                BOOLEAN_SET_TO(0)                         },
+   { eMSDP_MXP,                  "MXP",                  BOOLEAN_SET_TO(0)                         },
 
    /* GUI variables */
-   { eMSDP_BUTTON_1,         "BUTTON_1",         STRING_GUI(s_Button1) },
-   { eMSDP_BUTTON_2,         "BUTTON_2",         STRING_GUI(s_Button2) },
-   { eMSDP_BUTTON_3,         "BUTTON_3",         STRING_GUI(s_Button3) },
-   { eMSDP_BUTTON_4,         "BUTTON_4",         STRING_GUI(s_Button4) },
-   { eMSDP_BUTTON_5,         "BUTTON_5",         STRING_GUI(s_Button5) },
-   { eMSDP_GAUGE_1,          "GAUGE_1",          STRING_GUI(s_Gauge1) },
-   { eMSDP_GAUGE_2,          "GAUGE_2",          STRING_GUI(s_Gauge2) },
-   { eMSDP_GAUGE_3,          "GAUGE_3",          STRING_GUI(s_Gauge3) },
-   { eMSDP_GAUGE_4,          "GAUGE_4",          STRING_GUI(s_Gauge4) },
-   { eMSDP_GAUGE_5,          "GAUGE_5",          STRING_GUI(s_Gauge5) },
+   { eMSDP_BUTTON_1,             "BUTTON_1",             STRING_GUI(s_Button1)                     },
+   { eMSDP_BUTTON_2,             "BUTTON_2",             STRING_GUI(s_Button2)                     },
+   { eMSDP_BUTTON_3,             "BUTTON_3",             STRING_GUI(s_Button3)                     },
+   { eMSDP_BUTTON_4,             "BUTTON_4",             STRING_GUI(s_Button4)                     },
+   { eMSDP_BUTTON_5,             "BUTTON_5",             STRING_GUI(s_Button5)                     },
+   { eMSDP_GAUGE_1,              "GAUGE_1",              STRING_GUI(s_Gauge1)                      },
+   { eMSDP_GAUGE_2,              "GAUGE_2",              STRING_GUI(s_Gauge2)                      },
+   { eMSDP_GAUGE_3,              "GAUGE_3",              STRING_GUI(s_Gauge3)                      },
+   { eMSDP_GAUGE_4,              "GAUGE_4",              STRING_GUI(s_Gauge4)                      },
+   { eMSDP_GAUGE_5,              "GAUGE_5",              STRING_GUI(s_Gauge5)                      },
 
-   { eMSDP_MAX,              "", 0 } /* This must always be last. */
+   { eMSDP_MAX,                  "",                     0                                         } /* This must always be last. */
 };
 
 /******************************************************************************
@@ -288,6 +290,7 @@ static const char s_BackWhite   [] = "\033[1;47m"; /* White background */
 protocol_t *ProtocolCreate( void )
 {
    int i; /* Loop counter */
+   char buf [ MAX_STRING_LENGTH ];
    protocol_t *pProtocol;
 
    /* Called the first time we enter - make sure the table is correct */
@@ -300,6 +303,8 @@ protocol_t *ProtocolCreate( void )
          if ( VariableNameTable[i].Variable != i )
          {
             ReportBug( "MSDP: Variable table does not match the enums in the header.\n" );
+            sprintf(buf, "[*****] variable: %d i: %d\n", VariableNameTable[i].Variable, i);
+            log_string(buf);
             break;
          }
       }
@@ -1994,6 +1999,7 @@ static void PerformHandshake( descriptor_t *apDescriptor, char aCmd, char aProto
          {
                 SendATCP( apDescriptor, "Client.GUI", MUDLET_PACKAGE );
          }
+
          #endif /*MUDLET_PACKAGE*/
          if ( aCmd == (char)WILL )
          {
@@ -3021,107 +3027,109 @@ const char iac_se[] = { IAC, SE, '\0' };
 
 const struct gmcp_receive_struct GMCPReceiveTable[GMCP_RECEIVE_MAX+1] =
 {
-        { GMCP_CORE_HELLO,			"Core.Hello"					},
-        { GMCP_CORE_SUPPORTS_SET,		"Core.Supports.Set"				},
-        { GMCP_CORE_SUPPORTS_ADD,		"Core.Supports.Add"				},
-        { GMCP_CORE_SUPPORTS_REMOVE,		"Core.Supports.Remove"				},
-        { GMCP_EXTERNAL_DISCORD_HELLO,		"External.Discord.Hello"			},
-        { GMCP_EXTERNAL_DISCORD_GET,		"External.Discord.Get"				},
-        { GMCP_RECEIVE_MAX,			"",						}
+        { GMCP_CORE_HELLO,                 "Core.Hello"                },
+        { GMCP_CORE_SUPPORTS_SET,          "Core.Supports.Set"         },
+        { GMCP_CORE_SUPPORTS_ADD,          "Core.Supports.Add"         },
+        { GMCP_CORE_SUPPORTS_REMOVE,       "Core.Supports.Remove"      },
+        { GMCP_EXTERNAL_DISCORD_HELLO,     "External.Discord.Hello"    },
+        { GMCP_EXTERNAL_DISCORD_GET,       "External.Discord.Get"      },
+        { GMCP_RECEIVE_MAX,                 "",                        }
 };
 
 const struct gmcp_package_struct GMCPPackageTable[GMCP_PACKAGE_MAX+1] =
 {
 
-        { GMCP_BASE,					GMCP_SUPPORT_CHAR,			"Char",			"Base"		},
-        { GMCP_VITALS,					GMCP_SUPPORT_CHAR,			"Char",			"Vitals"	},
-        { GMCP_STATS,					GMCP_SUPPORT_CHAR,			"Char",			"Stats"		},
-        { GMCP_WORTH,					GMCP_SUPPORT_CHAR,			"Char",			"Worth"		},
-        { GMCP_AFFECTED,				GMCP_SUPPORT_CHAR,			"Char",			"Affect"	},
-        { GMCP_ITEMS,				        GMCP_SUPPORT_CHAR,			"Char",			"Items"	        },
-        { GMCP_ENEMIES,					GMCP_SUPPORT_CHAR,			"Char",			"Enemies"	},
-        { GMCP_ROOM,					GMCP_SUPPORT_ROOM,			"Room",			"Info"		},
-        { GMCP_PACKAGE_MAX,				-1,					    "",			""		}
+        { GMCP_BASE,                GMCP_SUPPORT_CHAR,          "Char",         "Base"      },
+        { GMCP_VITALS,              GMCP_SUPPORT_CHAR,          "Char",         "Vitals"    },
+        { GMCP_STATS,               GMCP_SUPPORT_CHAR,          "Char",         "Stats"     },
+        { GMCP_WORTH,               GMCP_SUPPORT_CHAR,          "Char",         "Worth"     },
+        { GMCP_AFFECTED,            GMCP_SUPPORT_CHAR,          "Char",         "Affect"    },
+        { GMCP_ITEMS,               GMCP_SUPPORT_CHAR,          "Char",         "Items"     },
+        { GMCP_ENEMIES,             GMCP_SUPPORT_CHAR,          "Char",         "Enemies"   },
+        { GMCP_ROOM,                GMCP_SUPPORT_ROOM,          "Room",         "Info"      },
+        { GMCP_PACKAGE_MAX,         -1,                         "",             ""          }
 
 };
 
 const struct gmcp_support_struct bGMCPSupportTable[GMCP_SUPPORT_MAX+1] =
 {
-        { GMCP_SUPPORT_CHAR,			"Char"						},
-        { GMCP_SUPPORT_ROOM,			"Room"						},
-        { GMCP_SUPPORT_MAX,			NULL						}
+        { GMCP_SUPPORT_CHAR,            "Char"                      },
+        { GMCP_SUPPORT_ROOM,            "Room"                      },
+        { GMCP_SUPPORT_MAX,             NULL                        }
 
 };
 
 const struct gmcp_variable_struct GMCPVariableTable[GMCP_MAX+1] =
 {
-        { GMCP_CLIENT,		-1,			"client",		GMCP_STRING	},
-        { GMCP_VERSION,		-1,			"version",		GMCP_STRING	},
-
-        { GMCP_NAME,		GMCP_BASE,		"name",			GMCP_STRING	},
-        { GMCP_RACE,		GMCP_BASE,		"race",			GMCP_STRING	},
-        { GMCP_CLASS,		GMCP_BASE,		"class",		GMCP_STRING	},
-        { GMCP_SEX,		GMCP_BASE,		"sex",		        GMCP_STRING	},
-
-        { GMCP_HP,		GMCP_VITALS,		"hp",			GMCP_NUMBER	},
-        { GMCP_MANA,		GMCP_VITALS,		"mana",			GMCP_NUMBER	},
-        { GMCP_MOVE,		GMCP_VITALS,		"move",			GMCP_NUMBER	},
-        { GMCP_MAX_HP,		GMCP_VITALS,		"maxhp",		GMCP_NUMBER	},
-        { GMCP_MAX_MANA,	GMCP_VITALS,		"maxmana",		GMCP_NUMBER	},
-        { GMCP_MAX_MOVE,	GMCP_VITALS,		"maxmove",		GMCP_NUMBER	},
-        { GMCP_POSITION,	GMCP_VITALS,		"position",		GMCP_NUMBER	},
-
-        { GMCP_STR,		GMCP_STATS,		"str",			GMCP_NUMBER	},
-        { GMCP_INT,		GMCP_STATS,		"int",			GMCP_NUMBER	},
-        { GMCP_WIS,		GMCP_STATS,		"wis",			GMCP_NUMBER	},
-        { GMCP_DEX,		GMCP_STATS,		"dex",			GMCP_NUMBER	},
-        { GMCP_CON,		GMCP_STATS,		"con",			GMCP_NUMBER	},
-        { GMCP_HITROLL,		GMCP_STATS,		"hitroll",		GMCP_NUMBER	},
-        { GMCP_DAMROLL,		GMCP_STATS,		"damroll",		GMCP_NUMBER	},
-        { GMCP_STR_MOD, 	GMCP_STATS,		"str_mod",		GMCP_NUMBER	},
-        { GMCP_INT_MOD,	        GMCP_STATS,		"int_mod",		GMCP_NUMBER	},
-        { GMCP_WIS_MOD,	        GMCP_STATS,		"wis_mod",		GMCP_NUMBER	},
-        { GMCP_DEX_MOD,	        GMCP_STATS,		"dex_mod",		GMCP_NUMBER	},
-        { GMCP_CON_MOD,	        GMCP_STATS,		"con_mod",		GMCP_NUMBER	},
-        { GMCP_WIMPY,		GMCP_STATS,		"wimpy",		GMCP_NUMBER	},
-        { GMCP_CARRY_NUMBER,    GMCP_STATS,             "carry_num",            GMCP_NUMBER	},
-        { GMCP_CARRY_MAXNUM,    GMCP_STATS,             "maxcarry_num",         GMCP_NUMBER	},
-        { GMCP_CARRY_WEIGHT,    GMCP_STATS,             "carry_wt",             GMCP_NUMBER	},
-        { GMCP_CARRY_MAXWEIGHT, GMCP_STATS,             "maxcarry_wt",	        GMCP_NUMBER	},
-        { GMCP_AC,	        GMCP_STATS,		"ac",		        GMCP_NUMBER	},
-        { GMCP_FAME,	        GMCP_STATS,		"fame",		        GMCP_NUMBER	},
-        { GMCP_SAVE_VS,	        GMCP_STATS,		"save_vs",		GMCP_NUMBER	},
-
-        { GMCP_ALIGNMENT,	GMCP_WORTH,		"alignment",	        GMCP_NUMBER	},
-        { GMCP_LEVEL,	        GMCP_WORTH,		"level",	        GMCP_NUMBER	},
-        { GMCP_XP,		GMCP_WORTH,		"xp",			GMCP_NUMBER	},
-        { GMCP_XP_MAX,		GMCP_WORTH,		"maxxp",		GMCP_NUMBER	},
-        { GMCP_XP_TNL,		GMCP_WORTH,		"xptnl",		GMCP_NUMBER	},
-        { GMCP_PRACTICE,	GMCP_WORTH,		"practice",		GMCP_NUMBER	},
-        { GMCP_PLATINUM,	GMCP_WORTH,		"platinum",		GMCP_NUMBER	},
-        { GMCP_GOLD,		GMCP_WORTH,		"gold",		        GMCP_NUMBER	},
-        { GMCP_SILVER,		GMCP_WORTH,		"silver",		GMCP_NUMBER	},
-        { GMCP_COPPER,		GMCP_WORTH,		"copper",		GMCP_NUMBER	},
-        { GMCP_STEEL,           GMCP_WORTH,		"steel",		GMCP_NUMBER	},
-        { GMCP_TITANIUM,        GMCP_WORTH,		"titanium",		GMCP_NUMBER	},
-        { GMCP_ADAMANTITE,      GMCP_WORTH,		"adamantite",		GMCP_NUMBER	},
-        { GMCP_ELECTRUM,        GMCP_WORTH,		"electrum",		GMCP_NUMBER	},
-        { GMCP_STARMETAL,       GMCP_WORTH,		"starmetal",		GMCP_NUMBER	},
-
-        { GMCP_ENEMY,		GMCP_ENEMIES,		NULL,			GMCP_ARRAY	},
-
-        { GMCP_AFFECT,		GMCP_AFFECTED,		NULL,			GMCP_ARRAY	},
-
-        { GMCP_INVENTORY,	GMCP_ITEMS,		NULL,			GMCP_ARRAY	},
-
-        { GMCP_AREA,		GMCP_ROOM,		"area",			GMCP_STRING	},
-        { GMCP_ROOM_NAME,	GMCP_ROOM,		"name",			GMCP_STRING	},
-        { GMCP_ROOM_SECT,	GMCP_ROOM,		"sector",		GMCP_NUMBER	},
-        { GMCP_ROOM_FLAGS,	GMCP_ROOM,		"flags",		GMCP_STRING	},
-        { GMCP_ROOM_VNUM,	GMCP_ROOM,		"vnum",			GMCP_NUMBER	},
-        { GMCP_ROOM_EXITS,	GMCP_ROOM,		"exits",		GMCP_OBJECT	},
-
-        { GMCP_MAX,			-1,		"",			GMCP_NUMBER	}
+        { GMCP_CLIENT,           -1,               "client",          GMCP_STRING  },
+        { GMCP_VERSION,          -1,               "version",         GMCP_STRING  },
+        { GMCP_NAME,             GMCP_BASE,        "name",            GMCP_STRING  },
+        { GMCP_RACE,             GMCP_BASE,        "race",            GMCP_STRING  },
+        { GMCP_CLASS,            GMCP_BASE,        "class",           GMCP_STRING  },
+        { GMCP_SUBCLASS,         GMCP_BASE,        "subclass",        GMCP_STRING  },
+        { GMCP_SEX,              GMCP_BASE,        "sex",             GMCP_STRING  },
+        { GMCP_HP,               GMCP_VITALS,      "hp",              GMCP_NUMBER  },
+        { GMCP_MANA,             GMCP_VITALS,      "mana",            GMCP_NUMBER  },
+        { GMCP_MOVE,             GMCP_VITALS,      "move",            GMCP_NUMBER  },
+        { GMCP_MAX_HP,           GMCP_VITALS,      "maxhp",           GMCP_NUMBER  },
+        { GMCP_MAX_MANA,         GMCP_VITALS,      "maxmana",         GMCP_NUMBER  },
+        { GMCP_MAX_MOVE,         GMCP_VITALS,      "maxmove",         GMCP_NUMBER  },
+        { GMCP_POSITION,         GMCP_VITALS,      "position",        GMCP_NUMBER  },
+        { GMCP_FORM,             GMCP_VITALS,      "form",            GMCP_STRING  },
+        { GMCP_RAGE,             GMCP_VITALS,      "rage",            GMCP_NUMBER  },
+        { GMCP_MAX_RAGE,         GMCP_VITALS,      "maxrage",         GMCP_NUMBER  },
+        { GMCP_STR,              GMCP_STATS,       "str",             GMCP_NUMBER  },
+        { GMCP_INT,              GMCP_STATS,       "int",             GMCP_NUMBER  },
+        { GMCP_WIS,              GMCP_STATS,       "wis",             GMCP_NUMBER  },
+        { GMCP_DEX,              GMCP_STATS,       "dex",             GMCP_NUMBER  },
+        { GMCP_CON,              GMCP_STATS,       "con",             GMCP_NUMBER  },
+        { GMCP_STR_MOD,          GMCP_STATS,       "str_mod",         GMCP_NUMBER  },
+        { GMCP_INT_MOD,          GMCP_STATS,       "int_mod",         GMCP_NUMBER  },
+        { GMCP_WIS_MOD,          GMCP_STATS,       "wis_mod",         GMCP_NUMBER  },
+        { GMCP_DEX_MOD,          GMCP_STATS,       "dex_mod",         GMCP_NUMBER  },
+        { GMCP_CON_MOD,          GMCP_STATS,       "con_mod",         GMCP_NUMBER  },
+        { GMCP_HITROLL,          GMCP_STATS,       "hitroll",         GMCP_NUMBER  },
+        { GMCP_DAMROLL,          GMCP_STATS,       "damroll",         GMCP_NUMBER  },
+        { GMCP_WIMPY,            GMCP_STATS,       "wimpy",           GMCP_NUMBER  },
+        { GMCP_CARRY_NUMBER,     GMCP_STATS,       "carry_num",       GMCP_NUMBER  },
+        { GMCP_CARRY_MAXNUM,     GMCP_STATS,       "maxcarry_num",    GMCP_NUMBER  },
+        { GMCP_CARRY_WEIGHT,     GMCP_STATS,       "carry_wt",        GMCP_NUMBER  },
+        { GMCP_CARRY_MAXWEIGHT,  GMCP_STATS,       "maxcarry_wt",     GMCP_NUMBER  },
+        { GMCP_AC,               GMCP_STATS,       "ac",              GMCP_NUMBER  },
+        { GMCP_FAME,             GMCP_STATS,       "fame",            GMCP_NUMBER  },
+        { GMCP_SAVE_VS,          GMCP_STATS,       "save_vs",         GMCP_NUMBER  },
+        { GMCP_CRITICAL,         GMCP_STATS,       "crit",            GMCP_NUMBER  },
+        { GMCP_SWIFTNESS,        GMCP_STATS,       "swift",           GMCP_NUMBER  },
+        { GMCP_RESIST_ACID,      GMCP_STATS,       "r_acid",          GMCP_NUMBER  },
+        { GMCP_RESIST_LIGHTNING, GMCP_STATS,       "r_lightning",     GMCP_NUMBER  },
+        { GMCP_RESIST_HEAT,      GMCP_STATS,       "r_heat",          GMCP_NUMBER  },
+        { GMCP_RESIST_COLD,      GMCP_STATS,       "r_cold",          GMCP_NUMBER  },
+        { GMCP_ALIGNMENT,        GMCP_WORTH,       "alignment",       GMCP_NUMBER  },
+        { GMCP_LEVEL,            GMCP_WORTH,       "level",           GMCP_NUMBER  },
+        { GMCP_XP,               GMCP_WORTH,       "xp",              GMCP_NUMBER  },
+        { GMCP_XP_MAX,           GMCP_WORTH,       "maxxp",           GMCP_NUMBER  },
+        { GMCP_XP_TNL,           GMCP_WORTH,       "xptnl",           GMCP_NUMBER  },
+        { GMCP_XP_CURLEVEL,      GMCP_WORTH,       "xplvl",           GMCP_NUMBER  },
+        { GMCP_PRACTICE,         GMCP_WORTH,       "practice",        GMCP_NUMBER  },
+        { GMCP_PLATINUM,         GMCP_WORTH,       "platinum",        GMCP_NUMBER  },
+        { GMCP_GOLD,             GMCP_WORTH,       "gold",            GMCP_NUMBER  },
+        { GMCP_SILVER,           GMCP_WORTH,       "silver",          GMCP_NUMBER  },
+        { GMCP_COPPER,           GMCP_WORTH,       "copper",          GMCP_NUMBER  },
+        { GMCP_STEEL,            GMCP_WORTH,       "steel",           GMCP_NUMBER  },
+        { GMCP_TITANIUM,         GMCP_WORTH,       "titanium",        GMCP_NUMBER  },
+        { GMCP_ADAMANTITE,       GMCP_WORTH,       "adamantite",      GMCP_NUMBER  },
+        { GMCP_ELECTRUM,         GMCP_WORTH,       "electrum",        GMCP_NUMBER  },
+        { GMCP_STARMETAL,        GMCP_WORTH,       "starmetal",       GMCP_NUMBER  },
+        { GMCP_ENEMY,            GMCP_ENEMIES,     NULL,              GMCP_ARRAY   },
+        { GMCP_AFFECT,           GMCP_AFFECTED,    NULL,              GMCP_ARRAY   },
+        { GMCP_INVENTORY,        GMCP_ITEMS,       NULL,              GMCP_ARRAY   },
+        { GMCP_AREA,             GMCP_ROOM,        "area",            GMCP_STRING  },
+        { GMCP_ROOM_NAME,        GMCP_ROOM,        "name",            GMCP_STRING  },
+        { GMCP_ROOM_SECT,        GMCP_ROOM,        "sector",          GMCP_NUMBER  },
+        { GMCP_ROOM_FLAGS,       GMCP_ROOM,        "flags",           GMCP_STRING  },
+        { GMCP_ROOM_VNUM,        GMCP_ROOM,        "vnum",            GMCP_NUMBER  },
+        { GMCP_ROOM_EXITS,       GMCP_ROOM,        "exits",           GMCP_OBJECT  },
+        { GMCP_MAX,              -1,                "",               GMCP_NUMBER  }
 
 };
 
@@ -3265,7 +3273,7 @@ static int jsmn_parse_string( jsmn_parser *parser, const char *js, const size_t 
                                         {
                                                 /* If it isn't a hex character we have an error */
                                                 if ( !( ( js[parser->pos] >= 48 && js[parser->pos] <= 57 ) ||   /* 0-9 */
-                                                                ( js[parser->pos] >= 65 && js[parser->pos] <= 70 ) ||	/* A-F */
+                                                                ( js[parser->pos] >= 65 && js[parser->pos] <= 70 ) ||   /* A-F */
                                                                 ( js[parser->pos] >= 97 && js[parser->pos] <= 102 ) ) ) /* a-f */
                                                 {
                                                         parser->pos = start;

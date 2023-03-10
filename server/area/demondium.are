@@ -2317,7 +2317,7 @@ A
 19 5
 #21592
 cursed spike~
-a old cursed spike~
+an old cursed spike~
 An old, but not ancient cursed spike waits to possess someone.~
 ~
 5 16|64|128|512|2048|4096|2305843009213693952 1|8192
@@ -2330,7 +2330,7 @@ emeter e-meter~
 (Cursed) an e-meter~
 The favourite weapon of cult recruiters all around the universe, the e-meter, sits here.~
 ~
-5 1|2|16|64|128|512|2048|4096 1|8192
+5 1|2|16|64|128|512|2048|4096|2305843009213693952 1|8192
 0~ 1~ 1~ 12~
 5 0 0
 A

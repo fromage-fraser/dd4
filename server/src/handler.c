@@ -143,6 +143,20 @@ int can_carry_n( CHAR_DATA *ch )
         return MAX_WEAR + 2 * get_curr_dex( ch ) / 2;
 }
 
+/*
+ * Retrieve a character's vault item-number capacity.
+ */
+int can_vault_n( CHAR_DATA *ch )
+{
+        if ( !IS_NPC( ch ) && ch->level >= LEVEL_IMMORTAL )
+                return 1000;
+
+        if ( IS_NPC( ch ) && IS_SET( ch->act, ACT_PET ) )
+                return 0;
+
+        return (UMAX(20, (ch->level * 2)));
+}
+
 
 /*
  * Retrieve a character's carry capacity.
@@ -156,6 +170,20 @@ int can_carry_w( CHAR_DATA *ch )
                 return 0;
 
         return str_app[get_curr_str( ch )].carry;
+}
+
+/*
+ * Retrieve a character's vault weight capacity.
+ */
+int can_vault_w( CHAR_DATA *ch )
+{
+        if ( !IS_NPC( ch ) && ch->level >= LEVEL_IMMORTAL )
+                return 1000000;
+
+        if ( IS_NPC( ch ) && IS_SET( ch->act, ACT_PET ) )
+                return 0;
+
+        return (UMAX(100, (ch->level * 10)));
 }
 
 /*
@@ -480,7 +508,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         af.modifier = 0;
                         af.bitvector = AFF_INVISIBLE;
                         affect_to_char( ch, &af );
-                        send_to_char( "You fade out of existence.\n\r", ch );
+                        send_to_char( "<39>You fade out of existence.<0>\n\r", ch );
                         act( "$n fades out of existence.", ch, NULL, NULL, TO_ROOM );
                         break;
                 }
@@ -660,7 +688,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         af.modifier = 0;
                         af.bitvector = AFF_PASS_DOOR;
                         affect_to_char( ch, &af );
-                        send_to_char( "You fade out of existence.\n\r", ch );
+                        send_to_char( "<230>You become translucent.<0>\n\r", ch );
                         act( "$n turns translucent.", ch, NULL, NULL, TO_ROOM );
                         break;
                 }
@@ -1034,14 +1062,19 @@ void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
         {
                 ++ch->in_room->area->nplayer;
 
-                if (ch->in_room->sector_type != SECT_UNDERWATER)
+                if ( ( ch->in_room->sector_type != SECT_UNDERWATER )
+                  || ( ch->in_room->sector_type != SECT_UNDERWATER_GROUND ) )
+                {
                         ch->pcdata->air_supply = FULL_AIR_SUPPLY;
+                }
         }
 
         if ((obj = get_eq_char(ch, WEAR_LIGHT))
             && obj->item_type == ITEM_LIGHT
             && obj->value[2] != 0 )
+        {
                 ++ch->in_room->light;
+        }
 
         return;
 }
@@ -1059,6 +1092,42 @@ void obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch )
         obj->in_obj = NULL;
         ch->carry_number += get_obj_number( obj );
         ch->carry_weight += get_obj_weight( obj );
+}
+
+/*
+ * Place an obj in a char's vault.
+ */
+void obj_to_charvault( OBJ_DATA *obj, CHAR_DATA *ch )
+{
+        obj->next_content = ch->pcdata->vault;
+        ch->pcdata->vault = obj;
+        obj->vaulted_by = ch;
+        obj->in_room = NULL;
+        obj->in_obj = NULL;
+        ch->pcdata->vault_number += get_obj_number( obj );
+        ch->pcdata->vault_weight += get_obj_weight( obj );
+/*         sprintf(log_buf, "Vault weight is: %d\r\n", ch->pcdata->vault_weight);
+        log_string(log_buf);
+        sprintf(log_buf, "Vault number is: %d\r\n", ch->pcdata->vault_number);
+        log_string(log_buf); */
+        return;
+}
+
+/*
+ * Give obj to char from a char's vault.
+ */
+void obj_to_charfromvault( OBJ_DATA *obj, CHAR_DATA *ch )
+{
+        obj->next_content = ch->carrying;
+        ch->carrying = obj;
+        obj->vaulted_by = NULL;
+        obj->carried_by = ch;
+        obj->in_room = NULL;
+        obj->in_obj = NULL;
+        ch->carry_number += get_obj_number( obj );
+        ch->carry_weight += get_obj_weight( obj );
+        ch->pcdata->vault_number -= get_obj_number( obj );
+        ch->pcdata->vault_weight -= get_obj_weight( obj );
 }
 
 
@@ -1119,6 +1188,71 @@ void obj_from_char( OBJ_DATA *obj )
         ch->carry_weight -= get_obj_weight( obj );
 }
 
+/*
+ * Take an obj from a pc's vault
+ */
+void obj_from_charvault( OBJ_DATA *obj )
+{
+        CHAR_DATA *ch;
+
+        if ( !( ch = obj->vaulted_by ) )
+        {
+                bug( "Obj_from_char: null ch.", 0 );
+                return;
+        }
+
+        if ( ch->pcdata->vault == obj )
+        {
+                ch->pcdata->vault = obj->next_content;
+        }
+        else
+        {
+                OBJ_DATA *prev;
+
+                for ( prev = ch->pcdata->vault; prev; prev = prev->next_content )
+                {
+                        if ( prev->next_content == obj )
+                        {
+                                prev->next_content = obj->next_content;
+                                break;
+                        }
+                }
+
+                if ( !prev )
+                        bug( "Obj_from_char VAULT: obj not in VAULT list.", 0 );
+        }
+
+
+        obj->vaulted_by = NULL;
+        obj->next_content = NULL;
+        /* ch->pcdata->vault_number -= get_obj_number( obj );
+        ch->pcdata->vault_weight -= get_obj_weight( obj ); */
+}
+
+/* Determine the highest level object in a container. Deals with deep nesting. */
+int max_obj_in_obj_level(OBJ_DATA *obj)
+{
+    int max_level;
+    int sub_max_level;
+    OBJ_DATA *sub_obj;
+
+    max_level = obj->level;
+
+    for (sub_obj = obj->contains; sub_obj != NULL; sub_obj = sub_obj->next_content)
+    {
+        if (sub_obj->deleted)
+        {
+            continue;
+        }
+
+        sub_max_level = max_obj_in_obj_level(sub_obj);
+        if (sub_max_level > max_level)
+        {
+            max_level = sub_max_level;
+        }
+    }
+    return max_level;
+}
 
 /*
  * Find the ac value of an obj, including position effect.
@@ -1397,7 +1531,6 @@ void obj_from_room( OBJ_DATA *obj )
         return;
 }
 
-
 /*
  * Move an obj into a room.
  */
@@ -1439,6 +1572,36 @@ void obj_to_obj( OBJ_DATA *obj, OBJ_DATA *obj_to )
                         /* Strider - Comment out line below - Container code fix  */
                         /* obj_to->carried_by->carry_number += get_obj_number( obj ); */
                         obj_to->carried_by->carry_weight += get_obj_weight( obj );
+                }
+        }
+
+        return;
+}
+
+void obj_to_objvault( OBJ_DATA *obj, OBJ_DATA *obj_to )
+{
+        if ( obj_to->deleted )
+        {
+                bug( "Obj_to_obj:  Obj_to already deleted", 0 );
+                return;
+        }
+
+        obj->next_content = obj_to->contains;
+        obj_to->contains = obj;
+        obj->in_obj = obj_to;
+        obj->in_room = NULL;
+        obj->vaulted_by = NULL;
+
+        for ( ; obj_to; obj_to = obj_to->in_obj )
+        {
+                if ( obj_to->deleted )
+                        continue;
+
+                if ( obj_to->vaulted_by )
+                {
+                        /* Strider - Comment out line below - Container code fix  */
+                        /* obj_to->carried_by->carry_number += get_obj_number( obj ); */
+                        obj_to->vaulted_by->pcdata->vault_weight += get_obj_weight( obj );
                 }
         }
 
@@ -1495,6 +1658,61 @@ void obj_from_obj( OBJ_DATA *obj )
                         /* Strider - Comment out line below - Container code fix  */
                         /*obj_from->carried_by->carry_number -= get_obj_number( obj ); */
                         obj_from->carried_by->carry_weight -= get_obj_weight( obj );
+                }
+        }
+
+        return;
+}
+
+/*
+ * Move an object out of an object that is in a vault. --Owl 23/2/23
+ */
+void obj_from_objvault( OBJ_DATA *obj )
+{
+        OBJ_DATA *obj_from;
+
+        if ( !( obj_from = obj->in_obj ) )
+        {
+                bug( "Obj_from_obj: null obj_from.", 0 );
+                return;
+        }
+
+        if ( obj == obj_from->contains )
+        {
+                obj_from->contains = obj->next_content;
+        }
+        else
+        {
+                OBJ_DATA *prev;
+
+                for ( prev = obj_from->contains; prev; prev = prev->next_content )
+                {
+                        if ( prev->next_content == obj )
+                        {
+                                prev->next_content = obj->next_content;
+                                break;
+                        }
+                }
+
+                if ( !prev )
+                {
+                        bug( "Obj_from_obj VAULT: obj not found.", 0 );
+                        return;
+                }
+        }
+
+        obj->next_content = NULL;
+        obj->in_obj       = NULL;
+
+        for ( ; obj_from; obj_from = obj_from->in_obj )
+        {
+                if ( obj_from->deleted )
+                        continue;
+                if ( obj_from->vaulted_by )
+                {
+                        /* Strider - Comment out line below - Container code fix  */
+                        /*obj_from->carried_by->carry_number -= get_obj_number( obj ); */
+                        /*obj_from->vaulted_by->pcdata->vault_weight -= get_obj_weight( obj );*/
                 }
         }
 
@@ -1785,6 +2003,34 @@ OBJ_DATA *get_obj_carry( CHAR_DATA *ch, char *argument )
         return NULL;
 }
 
+/*
+ * Find an obj in player's vault.
+ */
+OBJ_DATA *get_obj_vaulted( CHAR_DATA *ch, char *argument )
+{
+        OBJ_DATA *obj;
+        char      arg [ MAX_INPUT_LENGTH ];
+        int       number;
+        int       count;
+
+        number = number_argument( argument, arg );
+        count  = 0;
+
+        for ( obj = ch->pcdata->vault; obj; obj = obj->next_content )
+        {
+                if ( obj->wear_loc == WEAR_NONE
+                    && can_see_obj( ch, obj )
+                    && is_name( arg, obj->name ) )
+                {
+                        if ( ++count == number )
+                                return obj;
+                }
+        }
+
+        return NULL;
+}
+
+
 
 /*
  * Find an obj in player's equipment.
@@ -1917,6 +2163,18 @@ OBJ_DATA *get_obj_here( CHAR_DATA *ch, char *argument )
                 return obj;
 
         if ( ( obj = get_obj_wear( ch, argument ) ) )
+                return obj;
+
+        return NULL;
+}
+/*
+ * Find an object in a player's vault
+ */
+OBJ_DATA *get_obj_herevault( CHAR_DATA *ch, char *argument )
+{
+        OBJ_DATA *obj;
+
+        if ( ( obj = get_obj_vaulted( ch, argument ) ) )
                 return obj;
 
         return NULL;
@@ -2189,7 +2447,7 @@ int countTable(HashTable *table) {
         int i;
         int count=0;
         for (i = 0; i < TABLE_SIZE; i++) {
-                if (table->entries[i].key != 0) 
+                if (table->entries[i].key != 0)
                         count++;
         }
         return count;
@@ -2224,7 +2482,7 @@ void destroyTable(HashTable *table) {
 returning out of this function returnes TRUE/FALSE when wearing an object. */
 bool  gets_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos )
 {
-        int worn;       
+        int worn;
         OBJ_DATA *objworn;
         OBJSET_INDEX_DATA *pobjsetworn;
         AFFECT_DATA *paf;
@@ -2234,30 +2492,30 @@ bool  gets_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DA
         zeroTable(table);
         for ( objworn = ch->carrying; objworn; objworn = objworn->next_content )
         {
-                
+
                 /* Skip if the object we find thats already worn is not part of this objects objectset*/
                 if (objects_objset(obj->pIndexData->vnum) != objects_objset(objworn->pIndexData->vnum))
                         continue;
 
                 /* return FALSE skip if we find the object to be worn is already worn */
-                if ( obj->pIndexData->vnum == objworn->pIndexData->vnum && (objworn->wear_loc != WEAR_NONE)) 
+                if ( obj->pIndexData->vnum == objworn->pIndexData->vnum && (objworn->wear_loc != WEAR_NONE))
                 {
                         destroyTable(table);
-                        return FALSE; 
+                        return FALSE;
                 }
                 /* proceed if this object is part of an objset*/
-                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) && (objworn->wear_loc != WEAR_NONE) ) 
+                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) && (objworn->wear_loc != WEAR_NONE) )
                 {
                         insert(table, objworn->pIndexData->vnum , index);
                         index++;
                 }
-                
+
         }
         /* Insert our object into the table to get a view of what things woudl look like AFTER WEARING*/
         insert(table, obj->pIndexData->vnum , index);
         index++;
         /* printTable(table); */
-        worn =0;                  
+        worn =0;
 
         /* Count the number of entries in the hash table (OF WHAT THINGS WOULD LOOK LIKE IF WE DID WEAR THIS)*/
         worn = countTable(table);
@@ -2286,7 +2544,7 @@ bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA
 {
 
         int worn, pre_remove;
-        bool found;        
+        bool found;
         OBJ_DATA *objworn;
         OBJSET_INDEX_DATA *pobjsetworn;
         AFFECT_DATA *paf;
@@ -2307,31 +2565,31 @@ bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA
                         continue;
 
                 /* proceed if this object is part of an objset*/
-                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) && (objworn->wear_loc != WEAR_NONE) ) 
+                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) && (objworn->wear_loc != WEAR_NONE) )
                 {
                         insert(table2, objworn->pIndexData->vnum , index);
                         index++;
-                }                      
+                }
         }
         pre_remove = countTable(table2);
  /*       bug( "PRE count is %d.", pre_remove);  */
         destroyTable(table2);
-        
+
         /*This is forming a POST removal view*/
         for ( objworn = ch->carrying; objworn; objworn = objworn->next_content )
         {
                 /* proceed if this object is part of an objset*/
-                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) && (objworn->wear_loc != WEAR_NONE) ) 
+                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) && (objworn->wear_loc != WEAR_NONE) )
                 {
                         /* lets build an idea of what we would be wearing after removal we WONT insert the FIRST obj we are wearing */
                         if ( (obj->pIndexData->vnum == objworn->pIndexData->vnum) && !found)
                         {
                                 found = TRUE;
                                 continue;
-                        } 
+                        }
                         insert(table, objworn->pIndexData->vnum , index);
                         index++;
-                }                      
+                }
         }
 
         /* printTable(table); */
@@ -2339,7 +2597,7 @@ bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA
         /* Count the number of entries in the hash table (OF WHAT THINGS WOULD LOOK LIKE IF WE DID REMOVETHIS)*/
         worn = countTable(table);
         destroyTable(table);
-        
+
         /* Comparing the pre remove table with the after remove table. If the unique items are the same, return False*/
         if (pre_remove == worn)
                 return FALSE;
@@ -2358,7 +2616,7 @@ bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA
                         return TRUE;
                 }
                 if ( (worn) > ( objset_bonus_num_pos(pObjSetIndex->vnum, pos) ) )
-                      bug( "Bug in rem_objset_bonus, set bonus should already be removed. (worn items %d)", worn); 
+                      bug( "Bug in rem_objset_bonus, set bonus should already be removed. (worn items %d)", worn);
         }
         return FALSE;
 }
@@ -2431,9 +2689,9 @@ OBJ_DATA *create_money( int plat, int gold, int silver, int copper )
         }
 
         if ( (plat + gold + silver + copper) == 1 )
-                obj = create_object( get_obj_index( OBJ_VNUM_MONEY_ONE  ), 0,"common", FALSE );
+                obj = create_object( get_obj_index( OBJ_VNUM_MONEY_ONE  ), 0,"common", CREATED_NO_RANDOMISER );
         else
-                obj = create_object( get_obj_index( OBJ_VNUM_MONEY_SOME ), 0,"common", FALSE);
+                obj = create_object( get_obj_index( OBJ_VNUM_MONEY_SOME ), 0,"common", CREATED_NO_RANDOMISER);
 
         obj->value[0]           = copper;
         obj->value[1]           = silver;
@@ -2732,10 +2990,6 @@ bool can_drop_obj( CHAR_DATA *ch, OBJ_DATA *obj )
 {
         if ( !IS_SET( obj->extra_flags, ITEM_NODROP ) )
                 return TRUE;
-
-        if ( !IS_NPC( ch ) && ch->level >= LEVEL_IMMORTAL )
-                return TRUE;
-
         return FALSE;
 }
 
@@ -3115,6 +3369,7 @@ char *act_bit_name (unsigned long int vector)
         if ( vector & ACT_CLAN_GUARD            ) return "clan_guard";
         if ( vector & ACT_NO_SUMMON             ) return "no_summon";
         if ( vector & ACT_NO_EXPERIENCE         ) return "no_experience";
+        if ( vector & ACT_NO_HEAL               ) return "no_heal";
         if ( vector & ACT_UNKILLABLE            ) return "unkillable";
 
         return "none";
@@ -3227,6 +3482,7 @@ char* room_flag_name (unsigned long int vector)
                 case ROOM_DARK:             return "dark";
                 case ROOM_NO_MOB:           return "no_mob";
                 case ROOM_INDOORS:          return "indoors";
+                case ROOM_VAULT:            return "vault";
                 case ROOM_CRAFT:            return "craft";
                 case ROOM_SPELLCRAFT:       return "spellcraft";
                 case ROOM_PRIVATE:          return "private";
@@ -3333,19 +3589,20 @@ char* wear_location_name (int wearloc_num)
 */
 char* sector_name (int sector_num)
 {
-        if (sector_num == SECT_INSIDE)          return "inside";
-        if (sector_num == SECT_CITY)            return "city";
-        if (sector_num == SECT_FIELD)           return "field";
-        if (sector_num == SECT_FOREST)          return "forest";
-        if (sector_num == SECT_HILLS)           return "hills";
-        if (sector_num == SECT_MOUNTAIN)        return "mountain";
-        if (sector_num == SECT_WATER_SWIM)      return "water_swim";
-        if (sector_num == SECT_WATER_NOSWIM)    return "water_noswim";
-        if (sector_num == SECT_UNDERWATER)      return "underwater";
-        if (sector_num == SECT_AIR)             return "air";
-        if (sector_num == SECT_DESERT)          return "desert";
-        if (sector_num == SECT_SWAMP)           return "swamp";
-        if (sector_num == SECT_MAX)             return "max";
+        if (sector_num == SECT_INSIDE)                  return "inside";
+        if (sector_num == SECT_CITY)                    return "city";
+        if (sector_num == SECT_FIELD)                   return "field";
+        if (sector_num == SECT_FOREST)                  return "forest";
+        if (sector_num == SECT_HILLS)                   return "hills";
+        if (sector_num == SECT_MOUNTAIN)                return "mountain";
+        if (sector_num == SECT_WATER_SWIM)              return "water_swim";
+        if (sector_num == SECT_WATER_NOSWIM)            return "water_noswim";
+        if (sector_num == SECT_UNDERWATER)              return "underwater";
+        if (sector_num == SECT_AIR)                     return "air";
+        if (sector_num == SECT_DESERT)                  return "desert";
+        if (sector_num == SECT_SWAMP)                   return "swamp";
+        if (sector_num == SECT_UNDERWATER_GROUND)       return "underwater_ground";
+        if (sector_num == SECT_MAX)                     return "max";
 
         return "NO SECTOR NUM";
 }
@@ -3456,7 +3713,7 @@ char *full_sub_class_name (int sub_class)
         if (sub_class == SUB_CLASS_BARBARIAN)           return "Barbarian";
         if (sub_class == SUB_CLASS_BARD)                return "Bard";
         if (sub_class == SUB_CLASS_ENGINEER)            return "Engineer";
-        if (sub_class == SUB_CLASS_RUNESMITH)           return "Alchemist";
+        if (sub_class == SUB_CLASS_RUNESMITH)           return "Runesmith";
 
         return "none";
 }

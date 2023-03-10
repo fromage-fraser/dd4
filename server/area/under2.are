@@ -1749,6 +1749,18 @@ she could beat you to a pulp.
 150 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+#16131
+svirfneblin clerk~
+a svirfneblin clerk~
+A svirfneblin clerk sits at a desk.
+~
+This svirfneblin clerk has the unenviable job of running the Underdark branch
+of Dragonhoard bank. He appears melancholy and resigned.
+~
+1|2|64|524288 0 -500 S
+34 0 2 0d0+0 0d0+0
+0 0
+8 8 1
 #0
 
 
@@ -4861,7 +4873,7 @@ market, dead centre of Underdark.
 East and west is the slaver's route.  North is Moonlight Avenue, to the south
 is the Slave's Square and beyond that the market area.
 ~
-0 1|8|8192 1
+0 1|8 1
 D0
 Moonlight avenue
 ~
@@ -5841,9 +5853,15 @@ wall to the north, the orbs here glow blue.  A sense of complete despair
 and oppression fills your being.  The true might of the gods dawns upon
 you.
 
-East and west the street continues, south is the Dented Shield
+East and west the street continues, south is the Dented Shield, north is
+Dragonhoard Bank
 ~
 0 1|8|8192 1
+D0
+Dragonhoard Bank, Underdark Branch
+~
+~
+0 -1 16500
 D1
 The street of the gods
 ~
@@ -6385,7 +6403,8 @@ Road of Shadows~
 This is the Road of Shadows, a place where thieves walk unmolested.  You
 carefully peer around you hoping to pierce the shadows with your gaze, but
 you fail miserably.  The road of shadows allows straight passage from the
-east side of the city to the west.  Very little lives along this street, but from all around you, you feel you are being sized up and inspected...
+east side of the city to the west.  Very little lives along this street,
+but from all around you, you feel you are being sized up and inspected...
 
 The road of shadows continues east and west
 ~
@@ -14905,10 +14924,26 @@ E
 door~
 The door is made of a dark oak with all the normal door stuff~
 S
+#16500
+Dragonhoard Bank, Underdark~
+This gloomy room is the Underdark outpost of Dragonhoard Bank. Furnishings are
+sparse and a few blue globes supply what little light there is. A rough table
+with a couple of battered chairs occupies the centre of the room.
+
+The exit out is to the south
+~
+0 1|8|16|8192 1
+D2
+Street of the Gods, Jhaele
+~
+~
+0 -1 16113
+S
 #0
 
 
 #RESETS
+M 1 16131 1 16500           ; clerk to Dragonhoard Bank
 O 1 16096 100 16437         ; magic workbench to Experimentation room
 M 1 16001 35 16001          ; enforcer eyes, the guards of the city
 E 1 16001 0 5           ; wears eye plate

@@ -208,10 +208,10 @@ bool is_immune_to (CHAR_DATA *victim, unsigned long int damtype)
                 {
                         if ( !mob_table[ms].name )
                                 break;
-                        
+
                         if ( !str_cmp(victim->mobspec, mob_table[ms].name))  /* our victim has a mob spec */
-                        {        
-                           
+                        {
+
                              switch (damtype)
                                 {
                                 case RES_FIRE:
@@ -246,7 +246,7 @@ bool is_immune_to (CHAR_DATA *victim, unsigned long int damtype)
                                         return TRUE;
                                 case RES_MAGIC:
                                 if (IS_SET (mob_table[ms].immunes, RES_MAGIC))
-                                        return TRUE;                             
+                                        return TRUE;
                                 case RES_PSYCHIC:
                                 if (IS_SET (mob_table[ms].immunes, RES_PSYCHIC))
                                         return TRUE;
@@ -261,7 +261,7 @@ bool is_immune_to (CHAR_DATA *victim, unsigned long int damtype)
                                         return TRUE;
                                 case RES_PARALYSIS:
                                 if (IS_SET (mob_table[ms].immunes, RES_PARALYSIS))
-                                        return TRUE;                                
+                                        return TRUE;
                                 return FALSE;
                                 }
                         }
@@ -321,7 +321,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
 
         if (IS_AFFECTED(ch, AFF_DAZED))
         {
-              send_to_char( "You see STARS. You are dazed at present.\n\r", ch );
+              send_to_char( "You see STARS. You are dazed.\n\r", ch );
               return;
         }
 
@@ -561,7 +561,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
                 say_spell( ch, sn );
         }
 
-        WAIT_STATE( ch, skill_table[sn].beats );      
+        WAIT_STATE( ch, skill_table[sn].beats );
 
         if ( !IS_NPC(ch)
             && ch->level <= LEVEL_HERO
@@ -600,7 +600,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
                         {
                                 if (IS_SET(skill_table[sn].res_type, res))
                                 {
-                                       
+
                                         if (is_immune_to(victim, res))
                                         {
                                                 send_to_char("They are immune to this type of damage!\n\r", ch);
@@ -618,7 +618,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
                                 }
                         }
                 }
-                
+
                 (*skill_table[sn].spell_fun) (sn, URANGE(1, ch->level, MAX_LEVEL), ch, vo);
 
                 /*
@@ -911,8 +911,16 @@ void spell_inner_fire (int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (spell_attack_number == 1)
         {
+            if (IS_INORGANIC( victim ))
+            {
+                act("$N begins to smoulder!", ch, NULL, victim, TO_CHAR);
+                act("$N begins to smoulder!", ch, NULL, victim, TO_ROOM);
+
+            }
+            else {
                 act("$N's flesh begins to smoulder!", ch, NULL, victim, TO_CHAR);
                 act("$N's flesh begins to smoulder!", ch, NULL, victim, TO_ROOM);
+            }
         }
 
         damage(ch,victim,dam,sn, FALSE);
@@ -1190,7 +1198,8 @@ void spell_call_lightning (int sn, int level, CHAR_DATA *ch, void *vo)
         int        dam;
 
         if ( !IS_OUTSIDE( ch )
-        ||   ch->in_room->sector_type == SECT_UNDERWATER )
+        ||   ch->in_room->sector_type == SECT_UNDERWATER
+        ||   ch->in_room->sector_type == SECT_UNDERWATER_GROUND )
         {
                 send_to_char( "You can't be indoors or underwater.\n\r", ch );
                 return;
@@ -1229,6 +1238,7 @@ void spell_call_lightning (int sn, int level, CHAR_DATA *ch, void *vo)
 
                 if ( vch->in_room->area == ch->in_room->area
                     && ( vch->in_room->sector_type != SECT_UNDERWATER )
+                    && ( vch->in_room->sector_type != SECT_UNDERWATER_GROUND )
                     && IS_OUTSIDE( vch )
                     && IS_AWAKE( vch ) )
                         send_to_char( "{YLightning{x flashes in the sky.\n\r", vch );
@@ -1470,7 +1480,7 @@ void spell_continual_light (int sn, int level, CHAR_DATA *ch, void *vo)
                 send_to_char( "{MYour use of spellcrafting resources improves the light you create!{x\n\r", ch);
 
 
-        light = create_object( get_obj_index( (in_sc_room) ? OBJ_VNUM_LIGHT_BALL_CRAFT : OBJ_VNUM_LIGHT_BALL ), (in_sc_room) ? ch->level : 0, "common", FALSE );
+        light = create_object( get_obj_index( (in_sc_room) ? OBJ_VNUM_LIGHT_BALL_CRAFT : OBJ_VNUM_LIGHT_BALL ), (in_sc_room) ? ch->level : 0, "common", CREATED_NO_RANDOMISER );
 
         if ( in_sc_room )
         {
@@ -1524,7 +1534,7 @@ void spell_create_food ( int sn, int level, CHAR_DATA *ch, void *vo )
                 send_to_char( "{MYou use spellcrafting resources to make the food extra satiating!{x\n\r", ch);
 
 
-        mushroom = create_object( get_obj_index( OBJ_VNUM_MUSHROOM ), 0, "common", FALSE );
+        mushroom = create_object( get_obj_index( OBJ_VNUM_MUSHROOM ), 0, "common", CREATED_NO_RANDOMISER );
         mushroom->value[0] = (in_sc_room) ? 5 + ( level * mod_room_bonus ) / 100 : 5 + level;
         obj_to_room( mushroom, ch->in_room );
 
@@ -1553,7 +1563,7 @@ void spell_create_spring( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( in_sc_room )
                 send_to_char( "{MYou use spellcrafting resources to give your magical spring more longevity!{x\n\r", ch);
 
-        spring = create_object( get_obj_index( OBJ_VNUM_SPRING ), 0, "common", FALSE );
+        spring = create_object( get_obj_index( OBJ_VNUM_SPRING ), 0, "common", CREATED_NO_RANDOMISER );
         spring->timer = ( in_sc_room ) ? ( level * mod_room_bonus )  / 100 : level;
         spring->timermax = spring->timer;
         obj_to_room( spring, ch->in_room );
@@ -1665,6 +1675,14 @@ void spell_cure_critical( int sn, int level, CHAR_DATA *ch, void *vo )
         if (heal > 75)
                 heal = 75;
 
+        if (IS_NPC(victim))
+        {
+            if (IS_SET(victim->act, ACT_NO_HEAL))
+            {
+                return;
+            }
+        }
+
         if( victim->hit > victim->max_hit )
                 return;
 
@@ -1748,6 +1766,14 @@ void spell_cure_light( int sn, int level, CHAR_DATA *ch, void *vo )
         int heal;
 
         heal = 4 + dice( 1, 8 ) + level / 2;
+
+        if (IS_NPC(victim))
+        {
+            if (IS_SET(victim->act, ACT_NO_HEAL))
+            {
+                return;
+            }
+        }
 
         if (heal > 35)
                 heal = 35;
@@ -1951,6 +1977,14 @@ void spell_cure_serious( int sn, int level, CHAR_DATA *ch, void *vo )
         if (heal > 50)
                 heal = 50;
 
+        if (IS_NPC(victim))
+        {
+            if (IS_SET(victim->act, ACT_NO_HEAL))
+            {
+                return;
+            }
+        }
+
         if( victim->hit > victim->max_hit )
                 return;
 
@@ -2092,7 +2126,7 @@ void spell_detect_good( int sn, int level, CHAR_DATA *ch, void *vo )
         af.bitvector = AFF_DETECT_GOOD;
         affect_to_char( victim, &af );
 
-        send_to_char( "You now detect the presence of good.\n\r", victim );
+        send_to_char( "<11>You now detect the presence of good.<0>\n\r", victim );
 
         return;
 }
@@ -2185,7 +2219,7 @@ void spell_detect_magic( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( ch != victim )
                 send_to_char( "They are now sensitive to magic.\n\r", ch );
 
-        send_to_char( "The magic around you arouses your senses.\n\r", victim);
+        send_to_char( "<33>The magic around you arouses your senses.<0>\n\r", victim);
         return;
 }
 
@@ -2248,7 +2282,7 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                 {
                         for ( paf = victim->affected; paf; paf = paf->next )
                         {
-                                if (paf->duration < 0)
+                                if ( ( paf->duration < 0 ) && ( ch->level < LEVEL_IMMORTAL ) )
                                         continue;
 
                                 if (effect_is_prayer(paf) && ch->level < L_IMM)
@@ -2261,7 +2295,7 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                                         continue;
 
                                 if (skill_cannot_be_dispelled(paf->type)
-                                    && ch->level <= LEVEL_HERO)
+                                    && ch->level < LEVEL_IMMORTAL )
                                         continue;
 
                                 affect_remove( victim, paf );
@@ -2657,7 +2691,7 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                         return;
                 }
 
-                send_to_char( "They don't seem to be affected by anything.\n\r", ch );
+                send_to_char( "Your spell was ineffective.\n\r", ch );
                 return;
         }
 }
@@ -3155,6 +3189,14 @@ void spell_heal( int sn, int level, CHAR_DATA *ch, void *vo )
 
         CHAR_DATA *victim = (CHAR_DATA *) vo;
 
+        if (IS_NPC(victim))
+        {
+            if (IS_SET(victim->act, ACT_NO_HEAL))
+            {
+                return;
+            }
+        }
+
         if (victim == ch->fighting)
                 return;
 
@@ -3236,6 +3278,14 @@ void spell_power_heal (int sn, int level, CHAR_DATA *ch, void *vo)
         int percent;
 
         CHAR_DATA *victim = (CHAR_DATA *) vo;
+
+        if (IS_NPC(victim))
+        {
+            if (IS_SET(victim->act, ACT_NO_HEAL))
+            {
+                return;
+            }
+        }
 
         if (victim == ch->fighting)
                 return;
@@ -3726,7 +3776,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         }
                 }
         }
-        
+
 /* 2nd pass at sets - Brutus */
 
         if ( (pObjSetIndex = objects_objset(obj->pIndexData->vnum) ) )
@@ -3740,7 +3790,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 send_to_char( buf,ch);
                 sprintf(buf, "%s", pObjSetIndex->description );
                 send_to_char( buf,ch);
-                sprintf(buf, "<560>Its Set Bonuses are:<0>\n\r");
+                sprintf(buf, "<560>Its set bonuses are:<0>\n\r");
 
                 for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
                 {
@@ -3785,7 +3835,7 @@ void spell_invis( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( IS_AFFECTED( victim, AFF_INVISIBLE ) )
                 return;
 
-        send_to_char( "You fade out of existence.\n\r", victim );
+        send_to_char( "<51>Yo<45>u f<39>ad<33>e o<27>ut <21>of <20>ex<19>is<18>te<17>nce.<0>\n\r", victim );
         act( "$n fades out of existence.", victim, NULL, NULL, TO_ROOM );
 
         af.type      = sn;
@@ -4061,7 +4111,7 @@ void spell_poison( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( ch != victim )
                 send_to_char( "You successfully poison your victim.\n\r", ch );
 
-        send_to_char( "You feel very sick.\n\r", victim );
+        send_to_char( "<154>You feel very sick.<0>\n\r", victim );
         return;
 
 
@@ -4484,10 +4534,19 @@ void spell_summon_familiar( int sn, int level, CHAR_DATA *ch, void *vo )
              in_sc_room = TRUE;
         }
 
-        if ( !IS_OUTSIDE( ch )
-        && ( ch->in_room->sector_type != SECT_UNDERWATER ) )
+        if ( ( ( ch->in_room->sector_type == SECT_UNDERWATER )
+            || ( ch->in_room->sector_type == SECT_UNDERWATER_GROUND ) )
+        && ( ( ch->race != RACE_SAHUAGIN )
+          && ( ch->race != RACE_GRUNG )
+          && ( ch->form != FORM_SNAKE ) ) )
         {
-                send_to_char( "You can't be indoors or underwater.\n\r", ch);
+                send_to_char( "You can't summon a familiar underwater.\n\r", ch);
+                return;
+        }
+
+        if ( !IS_OUTSIDE( ch ) )
+        {
+                send_to_char( "You can't summon a familiar indoors.\n\r", ch);
                 return;
         }
 
@@ -5388,6 +5447,14 @@ void spell_complete_healing (int sn, int level, CHAR_DATA *ch, void *vo)
         if (victim->hit > victim->max_hit)
                 return;
 
+        if (IS_NPC(victim))
+        {
+            if (IS_SET(victim->act, ACT_NO_HEAL))
+            {
+                return;
+            }
+        }
+
         victim->hit = victim->max_hit - victim->aggro_dam;
         update_pos(victim);
 
@@ -5656,7 +5723,7 @@ void spell_displacement ( int sn, int level, CHAR_DATA *ch, void *vo )
         af.bitvector = 0;
         affect_to_char( victim, &af );
 
-        send_to_char( "Your form shimmers, and you appear displaced.\n\r", victim );
+        send_to_char( "<251>Y<250>o<249>u<248>r <247>f<246>o<245>r<244>m <243>s<242>h<243>i<244>m<245>m<246>e<247>r<248>s<249>, <250>a<251>n<250>d <249>y<248>o<247>u <246>a<245>p<244>p<243>e<242>a<243>r <244>d<245>i<246>s<247>p<248>l<249>a<250>c<251>e<250>d<249>.<0>\n\r", victim );
         act( "$N shimmers and appears in a different location.",
             ch, NULL, victim, TO_NOTVICT );
         return;
@@ -5911,7 +5978,7 @@ void spell_flesh_armor ( int sn, int level, CHAR_DATA *ch, void *vo )
         af.bitvector = 0;
         affect_to_char( victim, &af );
 
-        send_to_char( "Your flesh turns to steel.\n\r", victim );
+        send_to_char( "<75>Your flesh turns to steel.<0>\n\r", victim );
         act( "$N's flesh turns to steel.", ch, NULL, victim, TO_NOTVICT);
         return;
 
@@ -6119,6 +6186,14 @@ void spell_psychic_healing ( int sn, int level, CHAR_DATA *ch, void *vo )
         int heal;
 
         heal = dice( 3, 6 ) + 2 * level / 3 ;
+
+        if (IS_NPC(victim))
+        {
+            if (IS_SET(victim->act, ACT_NO_HEAL))
+            {
+                return;
+            }
+        }
 
         if( victim->hit > victim->max_hit )
                 return;
@@ -6848,7 +6923,8 @@ void spell_moonray( int sn, int level, CHAR_DATA *ch, void *vo )
         int        dam;
 
         if ( !IS_OUTSIDE( ch )
-        && ( ch->in_room->sector_type != SECT_UNDERWATER ) )
+        && ( ch->in_room->sector_type != SECT_UNDERWATER )
+        && ( ch->in_room->sector_type != SECT_UNDERWATER_GROUND ) )
         {
                 send_to_char( "You can't be indoors or underwater.\n\r", ch );
                 return;
@@ -6893,6 +6969,7 @@ void spell_moonray( int sn, int level, CHAR_DATA *ch, void *vo )
                 if ( vch->in_room->area == ch->in_room->area
                     && IS_OUTSIDE( vch )
                     && ( vch->in_room->sector_type != SECT_UNDERWATER )
+                    && ( vch->in_room->sector_type != SECT_UNDERWATER_GROUND )
                     && IS_AWAKE( vch ) )
                         send_to_char( "The moon pulses in the sky.\n\r", vch );
         }
@@ -6906,7 +6983,8 @@ void spell_sunray( int sn, int level, CHAR_DATA *ch, void *vo )
         AFFECT_DATA af;
 
         if ( !IS_OUTSIDE( ch )
-        && ( ch->in_room->sector_type != SECT_UNDERWATER ) )
+        && ( ch->in_room->sector_type != SECT_UNDERWATER )
+        && ( ch->in_room->sector_type != SECT_UNDERWATER_GROUND ) )
         {
                 send_to_char( "You can't be indoors or underwater.\n\r", ch );
                 return;
@@ -6964,6 +7042,7 @@ void spell_sunray( int sn, int level, CHAR_DATA *ch, void *vo )
                 if ( vch->in_room->area == ch->in_room->area
                     && IS_OUTSIDE( vch )
                     && ( vch->in_room->sector_type != SECT_UNDERWATER )
+                    && ( vch->in_room->sector_type != SECT_UNDERWATER_GROUND )
                     && IS_AWAKE( vch ) )
                         send_to_char( "The sun pulses violently in the sky.\n\r", vch );
         }
@@ -6993,6 +7072,7 @@ void spell_natures_fury( int sn, int level, CHAR_DATA *ch, void *vo )
             case SECT_WATER_SWIM:
             case SECT_WATER_NOSWIM:
             case SECT_UNDERWATER:
+            case SECT_UNDERWATER_GROUND:
             case SECT_SWAMP:
                 msg = "{BA huge water spout erupts beneath $N!{x";
                 break;
@@ -7907,7 +7987,7 @@ void spell_transport( int sn, int level, CHAR_DATA *ch, void *vo)
             || victim->carry_weight + victim->coin_weight + get_obj_weight(obj)
                > can_carry_w(victim))
         {
-                act("$p begins to fade... then becomes soild once more.", ch, obj, NULL, TO_CHAR);
+                act("$p begins to fade... then becomes solid once more.", ch, obj, NULL, TO_CHAR);
                 return;
         }
 

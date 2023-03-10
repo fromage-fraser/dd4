@@ -117,7 +117,7 @@ TRV transfer guy~
 ~
 >speech_prog foe~
     mpecho The Gypsy looks angry and utters a harsh-sounding chant!
-    mpecho Your head spins and you feel disoriented.
+    mpecho Your head spins and you feel disorientated.
     mptransfer $n 506
 ~
 |

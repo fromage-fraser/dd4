@@ -387,14 +387,14 @@ There is a piping-hot cup of coffee here.~
 #9841
 dragon candy~
 Dragon Candy <<tm>~
-A piece of Dragon Candy~
+A piece of Dragon Candy lies here.~
 ~
 26 0 1
 1~ blindness~ harm~ harm~
 1 0 0
 #9842
 dragon candy~
-Dragon Candy <<tm>~
+Dragon Candy <<tm> lies here.~
 A piece of Dragon Candy~
 ~
 26 0 1
@@ -402,7 +402,7 @@ A piece of Dragon Candy~
 1 0 0
 #9843
 dragon candy~
-Dragon Candy <<tm>~
+Dragon Candy <<tm> lies here.~
 A piece of Dragon Candy~
 ~
 26 0 1
@@ -410,7 +410,7 @@ A piece of Dragon Candy~
 1 0 0
 #9844
 dragon candy~
-Dragon Candy <<tm>~
+Dragon Candy <<tm> lies here.~
 A piece of Dragon Candy~
 ~
 26 0 1
@@ -418,7 +418,7 @@ A piece of Dragon Candy~
 1 0 0
 #9845
 dragon candy~
-Dragon Candy <<tm>~
+Dragon Candy <<tm> lies here.~
 A piece of Dragon Candy~
 ~
 26 0 1
@@ -427,7 +427,7 @@ A piece of Dragon Candy~
 #9846
 dragon candy~
 Dragon Candy <<tm>~
-A piece of Dragon Candy~
+A piece of Dragon Candy lies here.~
 ~
 26 0 1
 17~ curse~ harm~ poison~
@@ -435,7 +435,7 @@ A piece of Dragon Candy~
 #9847
 dragon candy~
 Dragon Candy <<tm>~
-A piece of Dragon Candy~
+A piece of Dragon Candy lies here.~
 ~
 26 0 1
 23~ refresh~ cure blindness~ cure poison~
@@ -451,14 +451,14 @@ A piece of Dragon Candy~
 #9850
 brochure~
 a brochure~
-A sharp looking brochure is lying here~
+A sharp looking brochure is lying here.~
 ~
 8 128|4096 1|16384
 0~ 0~ 0~ 0~
 1 0 0
 E
 brochure~
-the brochure reads:
+The brochure reads:
       ____________________________________
       | C U L T  O F  T H E  D R A G O N |
       |                                  |

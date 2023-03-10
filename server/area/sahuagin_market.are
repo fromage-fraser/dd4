@@ -36,11 +36,11 @@ endif
 ~
 |
 #27201
-teller broodcoin~
-a Broodcoin teller~
-A Broodcoin teller waits for you to make a request.
+teller dragonhoard~
+a Dragonhoard teller~
+A Dragonhoard teller waits for you to make a request.
 ~
-The Broodcoin teller waits impatiently for you to make a financial request of
+The Dragonhoard teller waits impatiently for you to make a financial request of
 some sort.  She doesn't seem the friendly or polite type, even for a sahuagin.
 ~
 2|64|512|4096|32768|524288|8388608|16777216 32|512|67108864 -360 S
@@ -66,11 +66,11 @@ endif
 ~
 |
 #27202
-broodcoin clerk~
-a Broodcoin clerk~
-A Broodcoin clerk is here, hard at work.
+dragonhoard clerk~
+a Dragonhoard clerk~
+A Dragonhoard clerk is here, hard at work.
 ~
-One sahuagin Broodcoin clerk looks very much like another: hardworking,
+One sahuagin Dragonhoard clerk looks very much like another: hardworking,
 irritable, and sour-faced.
 ~
 2|64|67108864 32|512|67108864 -410 S
@@ -1054,7 +1054,7 @@ it clear she is an important figure in the Sekolah-worshipping hierarchy.
 She has little time for foreigners, but may be of some use to sahuagin,
 especially fellow clerics of Sekolah.
 ~
-2|64|1024 8|32|128|512|8192|524288|67108864 -840 S
+2|64|1024 8|32|128|512|8192|524288|67108864|536870912 -840 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -1067,12 +1067,28 @@ endif
 ~
 |
 & 30 'teacher base'
-& 87 'healing magiks'
-& 87 'advanced healing magiks'
-& 87 'divine magiks'
-& 87 'harmful magiks'
-& 87 'protective magiks'
-& 87 'disease magiks'
+& 90 'healing magiks'
+& 90 'harmful magiks'
+& 90 'protective magiks'
+& 90 'divination magiks'
+& 90 'curative magiks'
+& 90 'disease magiks'
+& 90 'summoning magiks'
+& 90 'divine magiks'
+& 90 'conjuration magiks'
+& 90 'enchantment magiks'
+& 90 'alteration magiks'
+& 90 'defense knowledge'
+& 90 'armed combat knowledge'
+& 90 'mana control'
+& 90 'advanced healing magiks'
+& 90 'inner force'
+& 90 'mana craft'
+& 90 'resistance magiks'
+& 90 'nature skills'
+& 30 'templar base'
+& 30 'cleric base'
+& 30 'druid base'
 #27240
 Acolyte Sekolah sahuagin~
 an acolyte of Sekolah~
@@ -2062,15 +2078,15 @@ The venomous tail spine of a stingray lies here.~
 #27237
 ledger~
 a ledger~
-A Broodcoin bank ledger sits here.~
+A Dragonhoard Bank ledger sits here.~
 ~
 2 64 1|16384
 30~ weaken~ ~ ~
 1 0 0
 E
 ledger~
-This ledger records transactions made at Ota'ar Dar's branch of the Broodcoin
-bank.  It has been clerically enchanted to be able to be used underwater.
+This ledger records transactions made at Ota'ar Dar's branch of Dragonhoard
+Bank.  It has been clerically enchanted to be able to be used underwater.
 It's also unbelievably boring; trying to read it is a positively painful
 experience.
 ~
@@ -2613,7 +2629,7 @@ shackles~
 shackles~
 A pair of prisoner's shackles lie here.~
 ~
-9 128|4096 1|4096
+9 128|4096|274877906944 1|4096
 0~ 0~ 0~ 0~
 10 0 0
 A
@@ -2629,7 +2645,7 @@ ball and chain~
 a ball and chain~
 A ball and chain lies here.~
 ~
-9 128|4096 1|32
+9 128|4096|274877906944 1|32
 0~ 0~ 0~ 0~
 15 0 0
 A
@@ -2718,7 +2734,7 @@ A pie made of goblin shark meat lies here.~
 E
 goblin shark pie~
 Well, you've met a few goblin sharks and... yeah.  It doesn't look great.
-You do feel a bit... more perceptive,  somehow?.. after eating it, though.
+You do feel a bit... more perceptive, somehow?.. after eating it, though.
 ~
 #27293
 sauteed thresher kebabs plate~
@@ -2861,7 +2877,7 @@ A nondescript potion lies here.~
 #27308
 staff detect curse~
 a staff of detect curse~
-A sword rests here.~
+A staff rests here.~
 ~
 4 64 1|16384
 30~ 5~ 5~ detect curse~
@@ -2999,7 +3015,7 @@ turquoise stone~
 a turquoise stone~
 A  turquoise stone floats here.~
 ~
-9 1|32|64 1|32768
+9 1|32|64|274877906944 1|32768
 0~ 0~ 0~ 0~
 1 0 0
 A
@@ -3194,7 +3210,7 @@ mechanical suit~
 a mechanical suit~
 A very strange mechanical contraption is here.  Some sort of... armoured suit?~
 ~
-22 1|2|64 1|1024
+22 1|2|64|137438953472 1|1024
 0~ 0~ 0~ 0~
 100 0 0
 A
@@ -3375,7 +3391,7 @@ thumbscrew simple vice~
 a thumbscrew~
 A simple vice lies here.~
 ~
-9 512|2048|4096 1|2
+9 512|2048|4096|274877906944 1|2
 0~ 0~ 0~ 0~
 3 0 30
 A
@@ -3400,7 +3416,7 @@ tongue tearer~
 a tongue tearer~
 A device for tearing out tongues is here.~
 ~
-5 512|2048 1|8192
+5 512|2048|274877906944 1|8192
 0~ 0~ 0~ 5~
 3 0 30
 A
@@ -3422,7 +3438,7 @@ instep borer iron boot~
 an instep borer~
 What looks like a large iron boot is here.~
 ~
-9 512|2048|4096 1|64
+9 512|2048|4096|274877906944 1|64
 0~ 0~ 0~ 0~
 18 0 35
 A
@@ -3451,7 +3467,7 @@ pear anguish metal object~
 a pear of anguish~
 A pear-shaped metal object lies here.~
 ~
-5 512|2048 1|8192
+5 512|2048|274877906944 1|8192
 0~ 0~ 0~ 8~
 4 0 30
 A
@@ -3473,7 +3489,7 @@ breast ripper clawed iron~
 a breast ripper~
 A clawed iron weapon of some sort lies here.~
 ~
-5 0 1|8192
+5 274877906944 1|8192
 0~ 0~ 0~ 5~
 10 0 35
 A
@@ -3505,7 +3521,7 @@ birch rod bundle leafless twigs~
 a birch rod~
 A bundle of leafless twigs bound together lies here.~
 ~
-5 0 1|8192
+5 274877906944 1|8192
 0~ 0~ 0~ 0~
 4 0 35
 A
@@ -3768,6 +3784,171 @@ You examine a map of the dragon's caves...
   -[ ][ ][ ]
 {x
 ~
+#27466
+map Ota'ar Dar southern residential area lower~
+a map of the Ota'ar Dar southern residential area - lower level~
+A map of the Ota'ar Dar southern residential area's lower level lies here.~
+~
+2 0 1|16384
+0~ ~ ~ ~
+1 0 25
+E
+map Ota'ar Dar southern residential area lower~
+You examine a map of the Ota'ar Dar southern residential area's lower level...
+{W
+    {G[{W*{G][ ]{C[ ]{G[{W*{G][{W*{G]
+    {C[ ][ ][ ][ ][ ]
+    {G[ ][ ]{C[ ]{G[ ]{C[ ]
+       {G[{W*{G]{C[ ]{G[{W*{G]
+          {G[{W*{G][{W*{G]
+{x
+~
+#27467
+map Ota'ar Dar southern residential area upper~
+a map of the Ota'ar Dar southern residential area - upper level~
+A map of the Ota'ar Dar southern residential area's upper level lies here.~
+~
+2 0 1|16384
+0~ ~ ~ ~
+1 0 25
+E
+map Ota'ar Dar southern residential area upper~
+You examine a map of the Ota'ar Dar southern residential area's upper level...
+
+    {g[{W*{x{g][{W*{x{g]{c[ ]{g[{W*{x{g][ {g]
+    {c[ ][ ][ ][ ][ ]
+    {g[{W*{x{g][ ]{c[ ]{g[{W*{x{g]{c[ ]
+       {g[ ]{c[ ]{g[ {g]
+          {g[{W*{x{g][{W*{x{g]
+{x
+~
+#27504
+letter cursive~
+a letter, written in flowing cursive script~
+A letter written in a flowing cursive script lies here.~
+~
+13 0 1|16384
+0~ ~ ~ ~
+1 0 25
+E
+letter cursive~
+
+Thrall.
+
+You may imagine that by being abducted by the foul sahuagin and taken below
+the ocean to suffer whatever trifling indiginities ending in your death and
+dismemberment they might see fit to inflict upon your pathetic body that you
+thereby will escape your service to me: your lord, master, and rightful owner.
+
+Such an imagining is woefully misguided.
+
+I hold prisoner every member of your worthless family, and will execute them
+as slowly and painfully as it is possible to do so should you not return to my
+service within the month. It is of no interest or consequence to me how you
+manage this feat.
+
+Return now or die tormented by the knowledge of their destruction.
+
+--Rayke
+
+~
+#27505
+letter shaky~
+a letter, written in a shaky hand~
+A letter written in a very shaky hand lies here.~
+~
+13 0 1|16384
+0~ ~ ~ ~
+1 0 25
+E
+letter shaky~
+
+Master.
+
+It is as you imagine; I have been abducted by the cruel sahuagin, who plan to
+kill me as a form of mass entertainment in their underwater arena. I have no
+hope of escape, and have accepted my fate.
+
+Having long anticipated your threat to my family should I ever be torn from
+your service, however, I have made arrangements with a trusted party in one
+of the Domain's cities to offer a very large bounty to the town's adventurers
+should any unnatural harm ever come to my family; a bounty made up of the
+wealth I have secreted from you over long years as you lay asleep during
+the day.
+
+I have provided him with details of your whereabouts and every method that
+might be used to locate you, should you not remain in your current lair in
+the Vale.
+
+I would urge you strongly to consider this certain consequence should you
+choose to harm my family.  You know how troublesome the Domain's adventurers
+are, and how definite your destruction will be should you continue on your
+asserted course.
+
+Your faithful servant,
+
+
+--Giuseppe
+
+~
+#27506
+ironwood cudgel~
+an ironwood cudgel~
+A cudgel made of a very hard wood lies here.~
+~
+5 0 8193
+0~ 0~ 0~ 7~
+5 0 0
+A
+19 7
+A
+18 15
+#27507
+map Ota'ar Dar arena jail lower~
+a map of the Ota'ar Dar arena/jail - lower level~
+A map of the Ota'ar Dar arena/jail's lower level lies here.~
+~
+2 0 1|16384
+0~ ~ ~ ~
+1 0 30
+E
+map Ota'ar Dar arena jail lower~
+You examine a map of the Ota'ar Dar arena/jail's lower level...
+
+                      <67>[<0><15>*<0><67>][<0><15>*<0><67>]<0>
+                <10>[ ]<0><81>[ ][<0><15>*<81>][ ][ ]<0>
+    <10>[<0><15>*<0><10>][ ][<0><15>*<0><10>][ ][ ]<0><190>[ ][ ][ ]<0><81>[ ]<0><10>[<0><15>*<0><10>][<0><15>*<0><10>]<0>
+    <129>[ ]<0><190>[ ][ ][ ][ ][ ][ ][ ]<0><10>[ ][<0><15>*<0><10>]<0>
+    <129>[<15>?<0><129>]<0><190>[ ][ ][ ][ ][ ]<10>[ ][ ][ ]<0>
+    <10>[<0><15>*<0><10>][ ][ ][ ][ ][ ][ ]<0>
+    <158>[ ][ ][ ]<0><10>[ ]<0>
+    <10>[<0><15>*<0><10>][<0><15>*<0><10>]<0>
+
+{x
+~
+#27508
+map Ota'ar Dar arena jail upper~
+a map of the Ota'ar Dar arena/jail - upper level~
+A map of the Ota'ar Dar arena/jail's upper level lies here.~
+~
+2 0 1|16384
+0~ ~ ~ ~
+1 0 30
+E
+map Ota'ar Dar arena jail upper~
+You examine a map of the Ota'ar Dar arena/jail's upper level...
+
+                      <67>[<0><15>*<0><67>][<0><15>*<0><67>]<0>
+                <2>[ ]<0><67>[ ]<0><81>[ ][ ]<0><67>[ ]<0>
+    <2>[ ][ ][<0><15>*<0><2>][ ][ ]<0><187>[ ][ ][ ]<0><67>[<0><15>*<0><67>]<0><2>[ ][<0><15>*<0><2>]<0>
+    <141>[<0><15>*<0><141>]<0><187>[ ][ ][ ][ ][ ][ ][ ]<0><2>[ ][ ]<0>
+    <141>[<0><15>*<0><141>]<0><187>[ ][ ][ ][ ][ ]<0><2>[ ][ ][ ]<0>
+    <2>[ ][ ][ ][ ][ ][ ][ ]<0>
+    <10>[ ][ ][<0><15>*<0><10>][ ]<0>
+    <10>[ ][ ]<0>
+
+{x
+~
 #0
 
 
@@ -3779,12 +3960,12 @@ amongst the inhabited ruins of a great, ancient city.  To the south a huge gate
 looms, cutting off access to this canton from the rest of the city.  To the east
 you see the entrance to a shop.  The sign above it reads "Phesak's Maps".
 
-The road continues north, and you may also swim upwards, towards a huge, looming
+The road continues north, and you may also swim upwards, towards a huge, ominous
 area of darkness in the water above. You notice, however, that the canton wall to
 the west doesn't quite reach all the way to the dark region of water above.
 Perhaps you could climb or fly over it?{x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -3814,7 +3995,7 @@ maps.  Labelled scrolls line the battered shelves, protected from degradation
 by clerical magic and careful storage.  A north-south road can be seen to the
 west, or you may swim up to the second storey of the building.{x
 ~
-0 8 8
+0 8 12
 D3
 ~
 ~
@@ -3825,15 +4006,15 @@ D4
 0 -1 27609
 S
 #27310
-Broodcoin Reception~
+Dragonhoard Bank, Ota'ar Dar Branch Reception~
 {GYou stand inside the lower floor of a large, two-storey ruined building, deep
-under the sea.  It has been converted into a reception area for the Ota'ar Dar
-bank, 'Broodcoin'.  It is clean and tidy, and less dilapidated than many of the
+under the sea.  It has been converted into a reception area for Dragonhoard Bank's
+Ota'ar Dar branch.  It is clean and tidy, and less dilapidated than many of the
 buildings in Ota'ar Dar, but is relatively featureless save for the teller's
 desk that faces the entrance.  You can travel north out to Kaliah Alley, or
-straight up to the Broodcoin offices.{x
+straight up to the branch's offices.{x
 ~
-0 8 8
+0 8|16 12
 D0
 ~
 ~
@@ -3854,7 +4035,7 @@ the city.  To the west you see the entrance to a shop.  The sign above it reads
 The road continues north and south, and you may also swim upwards, towards a
 huge, looming area of darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -3881,7 +4062,7 @@ various states of disrepair/repair fill the shelves and litter the surfaces
 around you. A north-south road can be seen to the east, or you may swim up from
 here to the second floor of the building.{x
 ~
-0 8 8
+0 8 12
 D1
 ~
 ~
@@ -3901,7 +4082,7 @@ the racks and hooks that cover the floorspace and walls. An alley running north
 can be seen to the east, or you may swim up from here to the second floor of the
 building.{x
 ~
-0 8 8
+0 8 12
 D1
 ~
 ~
@@ -3916,12 +4097,12 @@ Kaliah Alley South, Lower~
 {CYou stand at the southern end of a narrow alley on the sandy ocean floor,
 amongst the inhabited ruins of a great, ancient city.  To the west you see
 the entrance to a shop, with a sign above it reading "Shauak's Leathers".
-To the south is the reception area of the Broodcoin bank.
+To the south is the reception area of Dragonhoard Bank's local branch.
 
-The alley continues north, and you may also swim upwards, towards a huge, looming
-area of darkness in the water above. {x
+The alley continues north, and you may also swim upwards, towards a huge,
+looming area of darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -3948,7 +4129,7 @@ Den," one of Ota'ar Dar's most notorious watering holes. To the east the close
 joins a road running north-south, and you can also swim straight upwards from
 here, towards a huge, looming area of darkness in the water above.{x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -3977,7 +4158,7 @@ sahuagin warriors training with mock-weapons. The dead end of a close that
 runs east can be seen just outside the entrance, or you may swim up from here
 to the second floor of the building.{x
 ~
-0 8 8
+0 8 12
 D1
 ~
 ~
@@ -3996,7 +4177,7 @@ north and south. To the east you see the entrance to "Sharks'n'Rays," Ota'ar
 Dar's mount shop, and you can also swim straight upwards from here, towards a
 huge, looming area of darkness in the water above.{x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4026,7 +4207,7 @@ proprietor, who sells mountable underwater steeds of various kinds to local
 sahuagin and foreigners passing through the city. A wide, major throughfare
 running north and south can be seen to the west.{x
 ~
-0 8|4096 8
+0 8|4096 12
 D3
 ~
 ~
@@ -4040,7 +4221,7 @@ further to the north, where the alley meets Aquan Avenue, or to the south,
 where you see a couple of commercial buildings. You may also swim upwards,
 towards a huge, looming area of darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4062,7 +4243,7 @@ dedicated to exploration and plunder of the underwater and surface world
 outside of Ota'ar Dar. You can travel north from here, to the Reavers' guild
 reception area, or up, to the members' quarters.{x
 ~
-0 4|8 8
+0 4|8 12
 D0
 ~
 ~
@@ -4082,7 +4263,7 @@ to try them).  An exit south leads to Abyssal Close, or you can travel through
 the bar north, to an attached eating establishment. You also see an exit up,
 to the main drinking lounge area.{x
 ~
-0 8 8
+0 8 12
 D0
 ~
 ~
@@ -4105,7 +4286,7 @@ the entrance to "The Kraken's Den," Ota'ar Dar's Lootsmith, and you can also
 swim straight upwards from here, towards a huge, looming area of darkness in
 the water above.{x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4131,7 +4312,7 @@ Street continues to the north, and Aquan Avenue continues both west and east.
 You can also swim straight upwards from here, towards a huge, looming area
 of darkness in the water above.{x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4159,7 +4340,7 @@ market, while an entrance to the Reavers' Guild lies to your immediate east.
 You can also swim straight upwards from here, towards a huge, looming area
 of darkness in the water above.{x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4191,7 +4372,7 @@ There is a large sign on the wall behind the desk.
 From this reception room you can leave west to Aquan Avenue, south to the Reavers'
 members' quarters, or up, to the quarters of the Reaver guildmaster.{x
 ~
-0 8 8
+0 8 12
 D2
 ~
 ~
@@ -4208,10 +4389,11 @@ E
 sign~
 Currently available quests for prospective Reavers to undertake:
 
-{W1.{w 	{w"The Demon Thief"{x               (<123>30-40<0>)
-{W2.{w 	{w"Poisonous Secrets"{x             (<123>30-40<0>)
-{W3.{w 	{w"An Out of Body Experience"{x     (<123>30-40<0>)
-{W4.{w 	{w"Every Frog Has His Day"{x        (<123>40-45<0>)
+<15>1.   The Demon Thief<0>              (<123>30-40<0>)
+<15>2.   Poisonous Secrets<0>            (<123>30-40<0>)
+<15>3.   An Out of Body Experience<0>    (<123>30-40<0>)
+<15>4.   Every Frog Has His Day<0>       (<123>40-45<0>)
+<15>5.   From Master to Servant<0>       (<123>40-45<0>)
 
 ~
 S
@@ -4223,7 +4405,7 @@ Palace," by Holo Orl'as, who sells various plates of unsavoury-looking food
 here to mostly local sahuagin. You can walk through the restaurant south, to
 the Drinking Den, or up, to Gorge Palace's lounge and bar.{x
 ~
-0 8 8
+0 8 12
 D2
 ~
 ~
@@ -4243,7 +4425,7 @@ greedy and usurious Ffeka. You may leave the shop south, and exit to the corner
 of Aquan Avenue and Sekolah Way, or you may swim up from here to the second
 floor of the building, to Ffeka's private quarters.{x
 ~
-0 8 8
+0 8 12
 D2
 ~
 ~
@@ -4261,7 +4443,7 @@ continue for some distance further along the street to either the north or
 south.  To the east you see Ota'ar Dar's notorious slave markets, and can
 also swim upwards, towards a huge, looming area of darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4322,7 +4504,7 @@ skills. You may leave the Brawlarium to the west, and enter Ota'ar Dar's
 slave markets, or you may swim up from here to the second floor of the
 building, where Luanar himself can usually be found.{x
 ~
-0 8 8
+0 8 12
 D3
 ~
 ~
@@ -4341,7 +4523,7 @@ and cheerful might be a good way of describing it?  Only... not that cheerful.
 Ahem. You can leave east, out to Dae'as Street, or swim up to the second floor
 of the building.{x
 ~
-0 8 8
+0 8 12
 D1
 ~
 ~
@@ -4361,7 +4543,7 @@ see the entrance to "The Fisher's Crust" bakery/eaterie, while to the east you
 a sign for 'Sekolah's Whim Casino'. You can also swim upwards, towards a huge,
 looming area of darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4390,7 +4572,7 @@ under the sea. It has been set up as a casino, and there are various mostly
 dice-based games of chance available here. You can leave west, out to Dae'as
 Street, or swim up from here to the second floor of the casino.{x
 ~
-0 8 8
+0 8 12
 D3
 ~
 ~
@@ -4408,7 +4590,7 @@ Arms" by the proprietor, Ahomar; the weapons that are for sale cover the
 walls and display areas within the shop. You can leave north, out to Ilr'ta
 Close, east to a large forge, or swim up to the second floor of the building.{x
 ~
-0 8 8
+0 8 12
 D0
 ~
 ~
@@ -4433,7 +4615,7 @@ in goods for surface-dwellers visiting or living in Ota'ar Dar.
 From this room you may travel west to the weaponsmith's shop, north to the
 "Surface-dwellers' Emporium," or up to the second level of the smithy.{x
 ~
-0 4|8|128 8
+0 4|8|128 12
 D0
 ~
 ~
@@ -4456,7 +4638,7 @@ to the west, sealing off this canton. You see Ota'ar Dar's large temple,
 of Malana Bridge Road and Dae'as Street to the east, or can swim up, towards
 a huge, looming area of darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4481,7 +4663,7 @@ the sandy ocean floor, amongst the inhabited ruins of a great, ancient city.
 From here you can travel further north or south, or up, towards a huge, looming
 area of darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4509,7 +4691,7 @@ associated paraphenalia that fill up the space.
 You can leave north, out to the intersection of Teth Avenue and Prince's
 Cross, or swim up to the second floor of the building.{x
 ~
-0 8 8
+0 8 12
 D0
 ~
 ~
@@ -4528,7 +4710,7 @@ inhabited ruins of a great, ancient city. To the south you see the entrance to
 city. You can also swim upwards, towards a huge, looming area of darkness in the
 water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4556,7 +4738,7 @@ An exit south leads to a forge, where some of the items in the shop are made,
 while you can also exit out west to Ilr'ta Close, or up to the second storey
 of the building.{x
 ~
-0 8 8
+0 8 12
 D2
 ~
 ~
@@ -4583,7 +4765,7 @@ From here you can head out to Malana Bridge road, to the south, visit the temple
 shop to the north, exit to Dae'as Street to the east, or swim up, above the
 temple's altar.{x
 ~
-0 4|8|65536 8
+0 4|8|65536 12
 D0
 ~
 ~
@@ -4611,7 +4793,7 @@ trained, to the north.  Teth Avenue continues to the east, and Dae'as Street
 to the south. You can also head upwards, towards a huge, looming area of
 darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4642,7 +4824,7 @@ loom to the north. To the south you can enter Bilani's Brews, Ota'ar Dar's
 clerical potion store, or you can head upwards, towards a huge, looming area
 of darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4673,7 +4855,7 @@ hosts lie just to the south.  To the north you can visit Mala't the Sage,
 Ota'ar Dar's chief identifier of artefacts, or you can head upwards, towards
 a huge, looming area of darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4704,7 +4886,7 @@ Delight" is open, and recall with a shudder sahuagin society's favourite
 collective pastime. Teth Avenue continues west, and you can also head
 upwards, towards a huge, looming area of darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -4734,7 +4916,7 @@ torturer's craft. There's a large SIGN on the eastern wall.
 From here an exit west will deposit you in Teth Avenue, or you may swim up
 to the second storey of the building.{x
 ~
-0 8 8
+0 8 12
 D3
 ~
 ~
@@ -4777,7 +4959,7 @@ things, including finances.
 From here you can head east into Sekolah's Depths, where new acolytes are
 trained, up to the area above the shop, or south to the temple's altar.{x
 ~
-0 4|8 8
+0 4|8 12
 D1
 ~
 ~
@@ -4802,7 +4984,7 @@ the floor feels a little springy.
 You can leave west, out to the main Sekolah temple, south, to the corner of
 Dae'as Street and Teth Avenue, or swim up to the second floor of the building.{x
 ~
-0 8 8
+0 8 12
 D2
 ~
 ~
@@ -4831,7 +5013,7 @@ you may travel south from here to the intersection of Teth Avenue and
 Prince's Cross, or can head upwards, towards a huge, looming area of
 darkness in the water above. {x
 ~
-0 0 8
+0 0 12
 D0
 ~
 gate~
@@ -4855,7 +5037,7 @@ ocean-floor domesticity everywhere you else you look.
 You can leave south, out to the intersection of Teth Avenue and Ilr'ta Close,
 or swim up to the second floor of the building.{x
 ~
-0 8 8
+0 8 12
 D2
 ~
 ~
@@ -4876,7 +5058,7 @@ such arts. This is why the owner, Mohmit, is a foreigner.
 You can travel east to investigate Mohmit's magical laboratory, south, out
 to Teth Avenue, or swim up to the second floor of the building.{x
 ~
-0 8 8
+0 8 12
 D1
 ~
 ~
@@ -4900,7 +5082,7 @@ he manufactures all the magical goods he sells in his shop to the west.
 You can travel west and visit Mohmit's shop, or swim up to the second floor
 of the building to see the rest of the laboratory.{x
 ~
-0 8|256 8
+0 8|256 12
 D3
 ~
 ~
@@ -4919,7 +5101,7 @@ Malana Bridge, Lower~
 from each other, or you can head upwards, towards the huge, looming area of
 darkness in the water above.<0>
 ~
-0 4 8
+0 4 12
 D0
 ~
 ~
@@ -4981,7 +5163,7 @@ amenities for sahuagin living, as well as a locked trunk that has been bolted
 into the stone floor.  You may travel down into Pheskak's shop, or up, into the
 huge, looming area of dark water above you.{x
 ~
-0 4 8
+0 4 12
 D4
 ~
 ~
@@ -4992,14 +5174,14 @@ D5
 0 -1 27309
 S
 #27610
-Broodcoin Office~
-{gYou are in the second-storey offices of Broodcoin, Ota'ar Dar's bank.
-Various chairs, desks and collections of files fill the room, and there
-are also typically a number of Broodcoin employees here, busy with paperwork.
-You may swim down, to the bank's reception area, or up, into the huge,
-looming area of dark water above you.{x
+Dragonhoard Bank Branch Office~
+{gYou are in the second-storey offices of the local branch of Dragonhoard Bank.
+Various chairs, desks and collections of files fill the room, and there are also
+typically a number of bank employees here, busy with paperwork. You may swim
+down, to the bank's reception area, or up, into the huge, looming area of dark
+water above you.{x
 ~
-0 4 8
+0 4 12
 D4
 ~
 ~
@@ -5045,7 +5227,7 @@ being-repaired goods from Fautap's downstairs business.  You may travel down
 into his shop, or directly up, into the huge, looming area of dark water
 above you.{x
 ~
-0 4 8
+0 4 12
 D4
 ~
 ~
@@ -5063,7 +5245,7 @@ amenities for sahuagin living, as well a considerable overflow of stock from
 Shauak's downstairs business.  You may travel down into his shop, or directly
 up, into the huge, looming area of dark water above you.{x
 ~
-0 4 8
+0 4 12
 D4
 ~
 ~
@@ -5126,7 +5308,7 @@ guildmaster rest and recuperation. You may travel down to the battle dojo
 reception floor, or directly up, into the huge, looming area of dark water
 directly above you.{x
 ~
-0 0 8
+0 0 12
 D4
 ~
 ~
@@ -5171,7 +5353,7 @@ S
 Sharks'n'Rays Storage~
 Put the pets for the pet store in here.
 ~
-0 4 8
+0 4 12
 S
 #27619
 Kaliah Alley, Upper~
@@ -5208,7 +5390,7 @@ and surface world outside of Ota'ar Dar.  You can travel north from here, to
 the Reavers' guild master's quarters, down, to the guild hall, or up, into the
 huge, looming area of darkness in the water just above your head.{x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -5230,7 +5412,7 @@ disrepair.  From here you may travel down into the main bar area, north to the
 eating area of the attached "restaurant," or directly up, into the huge, looming
 area of dark water above you.{x
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -5338,7 +5520,7 @@ a strong  minimalist feel to it. From here you may travel down to the Reavers'
 guild reception area, south to the members' quarters, or directly up, into the
 huge, looming area of dark water above you.{x
 ~
-0 4 8
+0 4 12
 D2
 ~
 ~
@@ -5360,7 +5542,7 @@ and tables in varying states of disrepair.  From here you may travel down into
 the main restaurant area, head south to the Drinker's Lounge, or swim directly
 up, into the huge, looming area of dark water above you.{x
 ~
-0 0 8
+0 0 12
 D2
 ~
 ~
@@ -5383,7 +5565,7 @@ richly decorated with expensive pieces of art. You may travel down from here
 to "The Kraken's Den" shop, or directly up, into the huge, looming area of
 dark water above you.{x
 ~
-0 4 8
+0 4 12
 D4
 ~
 ~
@@ -5453,7 +5635,7 @@ sahuagin living, as well as a variety of martial training equipment.  You may
 travel down into the main Brawlarium, or directly up, into the huge, looming
 area of dark water above you.{x
 ~
-0 4 8
+0 4 12
 D4
 ~
 ~
@@ -5471,7 +5653,7 @@ equipment for the bakery/eaterie downstairs. You may travel down from
 here, to the shop, or directly up, into the huge, looming area of dark
 water above you.{x
 ~
-0 4 8
+0 4 12
 D4
 ~
 ~
@@ -5516,7 +5698,7 @@ dice-based games are being offered here. You may travel down, to the lower
 floor of the casino, or directly up, into the huge, looming area of dark water
 above you.{x
 ~
-0 0 8
+0 0 12
 D4
 ~
 ~
@@ -5534,7 +5716,7 @@ the standard amenities for sahuagin living, as well as a variety of martial
 training equipment.  You may travel down into the Pillager's Arms, or directly
 up, into the huge, looming area of dark water above you.{x
 ~
-0 4 8
+0 4 12
 D4
 ~
 ~
@@ -5556,7 +5738,7 @@ From this room you may travel north to Zigrysk's attached quarters, down
 to the lower level of the smithy, or up, into the huge, looming area of dark
 water above you.{x
 ~
-0 4|128 8
+0 4|128 12
 D0
 ~
 ~
@@ -5639,7 +5821,7 @@ potion-making paraphenalia of all kinds.. You may travel down from here
 to "Bilani's Brews" shop, or directly up, into the huge, looming area of
 dark water above you.{x
 ~
-0 4 8
+0 4 12
 D4
 ~
 ~
@@ -5683,7 +5865,7 @@ personally.
 You may travel down from here to the shop, or directly up, into the huge,
 looming area of dark water above you.{x
 ~
-0 4 8
+0 4 12
 D2
 ~
 ~
@@ -5849,7 +6031,7 @@ though it has been cursed by dark magiks.
 You may travel down from here to the main floor of the "Torturers' Delight"
 shop, or swim directly up, into the huge, looming area of dark water above you.{x
 ~
-0 1|4|8192|16384 8
+0 1|4|8192|16384 12
 D4
 ~
 ~
@@ -5907,7 +6089,7 @@ From here you can swim west, out to the main Sekolah temple, upwards into the
 huge, looming area of darkness in the water just above your head, or down to
 Sekolah's Depths' main living and study area.{x
 ~
-0 0 8
+0 0 12
 D3
 ~
 ~
@@ -5959,7 +6141,7 @@ you imagine Mala't must enjoy his 'creature' comforts.
 You may travel down from here to the first floor of Mala't's home, or
 directly up, into the huge, looming area of dark water above you.{x
 ~
-0 4 8
+0 4 12
 D4
 ~
 ~
@@ -5980,7 +6162,7 @@ You may travel down from here to the magical supplies shop, directly up,
 into the huge, looming area of dark water above you, or east to the top
 floor of Mohmit's magical laboratory.{x
 ~
-0 4 8
+0 4 12
 D1
 ~
 ~
@@ -6005,7 +6187,7 @@ You can travel west to Mohmit's living quarters, down to the first floor of
 the laboratory, or directly up, into the huge, looming area of dark water
 above you.{x
 ~
-0 256 8
+0 256 12
 D3
 ~
 ~
@@ -6025,7 +6207,7 @@ S
 covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
-0 1|4|8|512|8192 8
+0 1|4|8|512|8192 12
 D2
 ~
 ~
@@ -6041,7 +6223,7 @@ S
 covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
-0 1|8|512|8192 8
+0 1|8|512|8192 12
 D0
 ~
 ~
@@ -6061,7 +6243,7 @@ S
 covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
-0 1|8|8192 8
+0 1|8|8192 12
 D1
 ~
 ~
@@ -6077,7 +6259,7 @@ S
 covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
-0 1|8|8192 8
+0 1|8|8192 12
 D1
 ~
 ~
@@ -6093,7 +6275,7 @@ S
 covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
-0 1|8|8192 8
+0 1|8|8192 12
 D1
 ~
 ~
@@ -6109,7 +6291,7 @@ S
 covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
-0 1|8|8192 8
+0 1|8|8192 12
 D1
 ~
 ~
@@ -6125,7 +6307,7 @@ S
 covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
-0 1|8|8192 8
+0 1|8|8192 12
 D1
 ~
 ~
@@ -6141,7 +6323,7 @@ S
 covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
-0 1|8|8192 8
+0 1|8|8192 12
 D0
 ~
 ~
@@ -6157,7 +6339,7 @@ S
 covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
-0 1|8|8192 8
+0 1|8|8192 12
 D2
 ~
 ~
@@ -6174,7 +6356,7 @@ ritual area related to Sekolah, the sahuagin shark god, the walls are covered
 in strange glyphs and markings, and a large, blood-stained stone altar lies
 in the middle of the room. You probably shouldn't be here.{x
 ~
-0 4|8192 8
+0 4|8192 12
 D1
 ~
 chamber~
@@ -6201,7 +6383,7 @@ A Secret Side-chamber~
 animals have been slaughtered before being made blood sacrifices of in
 the ritual chamber to the west.{x
 ~
-0 1|4|8|512 8
+0 1|4|8|512 12
 D3
 ~
 door~
@@ -6211,7 +6393,7 @@ S
 
 
 #RESETS
-D 1 27353 3 2			; Malana Bridge, Lower Lock West
+D 1 27353 3 1			; Malana Bridge, Lower Lock West
 D 1 27353 1 1			; Malana Bridge, Lower Close East
 D 1 27349 0 1			; Prince's Cross, Lower Close North
 D 1 27649 0 1			; Prince's Cross, Upper Close North
@@ -6232,12 +6414,17 @@ G 1 27205 100
 G 1 27409 100
 G 1 27410 100
 G 1 27411 100
+G 1 27466 100
+G 1 27467 100
+G 1 20670 100
+G 1 27507 100
+G 1 27508 100
 *
 O 1 27263 100 27625			a heavy trunk to Reavers' Guild Master's Quarters
 P 1 27265 100 27263			a Reaver's heavy crossbow to container trunk heavy
 P 1 27266 100 27263			a Reaver's scimitar to container trunk heavy
 *
-M 1 27201 1 27310			a Broodcoin teller to Broodcoin Reception
+M 1 27201 1 27310			a Dragonhoard teller to Dragonhoard Reception
 E 1 27231 100 13
 *
 M 1 27203 1 27312			Fautap to Fautap's Fixit
@@ -6580,16 +6767,24 @@ P 1 27202 100 27206			a map of the Ota'ar Dar market canton - upper to container
 P 1 27203 100 27206			a map of Undersea - below the surface to container a metal sea chest trunk
 P 1 27204 100 27206			a map of Undersea - deeper down to container a metal sea chest trunk
 P 1 27205 100 27206			a map of Undersea - the ocean deep to container a metal sea chest trunk
+P 1 27466 100 27206			a map of the Ota'ar Dar southern residential canton - lower to container a metal sea chest trunk
+P 1 27467 100 27206			a map of the Ota'ar Dar southern residential canton - upper to container a metal sea chest trunk
+P 1 27409 100 27206         a map of the Ota'ar Dar canals - lower to container a metal sea chest trunk
+P 1 27410 100 27206         a map of the Ota'ar Dar canals - upper to container a metal sea chest trunk
+P 1 27411 100 27206         a map of the dragon caves to container a metal sea chest trunk
+P 1 20670 100 27206         a map of the Vampyre Vale to container a metal sea chest trunk
+P 1 27507 100 27206         a map of the Ota'ar Dar arena/jail - lower to container a metal sea chest trunk
+P 1 27508 100 27206         a map of the Ota'ar Dar arena/jail - upper to container a metal sea chest trunk
 *
-M 1 27202 3 27610			a Broodcoin clerk to Broodcoin Office
+M 1 27202 3 27610			a Dragonhoard clerk to Dragonhoard Office
 E 1 27237 100 17
 E 1 27231 100 13
 *
-M 1 27202 3 27610			a Broodcoin clerk to Broodcoin Office
+M 1 27202 3 27610			a Dragonhoard clerk to Dragonhoard Office
 E 1 27238 100 16
 E 1 27231 100 13
 *
-M 1 27202 3 27610			a Broodcoin clerk to Broodcoin Office
+M 1 27202 3 27610			a Dragonhoard clerk to Dragonhoard Office
 E 1 27239 100 16
 E 1 27231 100 13
 O 1 27208 100 27612			a beat-up leather trunk to Fautap's Quarters

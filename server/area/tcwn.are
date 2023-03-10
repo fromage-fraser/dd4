@@ -45,7 +45,7 @@ Gath, High Priest and Healer of Anon, greets you politely.
  To see how I may help thee, type HEAL, which will also
  show you the cost of each service".
 ~
-2|64|4096|8192|32768|16777216 8|128|2048|4194304|8388608|16777216 1000 S
+2|64|4096|8192|32768|16777216 8|128|8388608|16777216 1000 S
 60 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -965,9 +965,9 @@ Pharlas is a stout, well-dressed merchant in his mid-fifties.
 0 0
 8 8 1
 #31063
-banker~
+banker dragonhoard~
 the banker~
-The Anon Banker waits patiently.
+The Dragonhoard Banker waits patiently.
 ~
 The banker clears his throat and points to the sign on the wall.
 ~
@@ -3681,7 +3681,7 @@ S
 The Corner of Liberty Lane and Valiant Street~
 You are standing at a tree-lined intersection in the southwest quarter of
 town. Liberty Lane runs north from here past shops toward Justice Street.
-There is a Bank to the south.
+There is a Dragonhoard Bank branch to the south.
 ~
 0 1024 1
 D0
@@ -3695,7 +3695,7 @@ Valiant Street
 ~
 0 -1 31065
 D2
-The Bank
+Dragonhoard Bank, Anon Branch, Reception Area
 ~
 ~
 0 -1 31063
@@ -3706,7 +3706,7 @@ Valiant Street
 0 -1 31072
 S
 #31063
-The Bank~
+Dragonhoard Bank, Anon Branch, Reception Area~
 You have entered a building obviously built by someone who is fabulously
 wealthy. From the gold handles in the doors to the obsidian service counter
 and platinum wall fittings, everything is expensive and luxurious. There is
@@ -3720,21 +3720,21 @@ Corner of Valiant Street and Liberty Lane
 ~
 0 -1 31062
 D4
-The Bankers Room
+Dragonhoard Bank, Anon Branch
 ~
 ~
 0 -1 31064
 S
 #31064
-The Bankers Room~
+Dragonhoard Bank, Anon Branch~
 You ascend the stairs into the service area. You see that there is a long queue
 and curse loudly. A few heads turn to stare at you but most people who come here
-are used to such outbursts. Eventually its your turn. If you don't know what to
-do, look at the sign behind you.
+are used to such outbursts. Eventually it's your turn. If you don't know what to
+do, look at the SIGN behind you.
 ~
-0 8|1024|16384 0
+0 8|16|1024|16384 0
 D5
-The Bank
+Dragonhoard Bank, Anon Branch, Reception Area
 ~
 ~
 0 -1 31063
@@ -3742,15 +3742,17 @@ E
 sign~
 A sign says-
 
-"Hello! Welcome to the Anon Bank! You may:
+"Hello! Welcome to the Anon branch of Dragonhoard Bank!
 
  1.To withdraw cash, type WITHDRAW <<amount> <<coin>, and your account
    will be automatically debited while the money is transferred to you.
  2.To deposit cash, type DEPOSIT <<amount> <<coin>, and your account
    will be automatically credited.
  3.To simply check your balance, type BALANCE.
+ 4.Use the VAULT, CLAIM, LODGE, and INSPECT commands to view and
+   manipulate the contents of your vault.
 
- Thank You and have a good day."
+ Thank you and have a good day!"
 
 ~
 S

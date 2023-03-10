@@ -1,0 +1,4362 @@
+#AREA Owl~ Ota'ar Dar Arena/Jail~
+40 45 30 100
+
+#AREA_SPECIAL
+$
+
+#RECALL
+27347
+
+#MOBILES
+#27352
+gladiator kaer'l kaerl~
+a Kaer'l gladiator~
+A Kaer'l gladiator stalks about purposefully, sword in hand.
+~
+Heavily armed for a sahuagin gladiator, a Kaer'l fighter is equipped with
+sword, shield, belt, pauldrons, helmet, and shin guards. Usually tall and
+muscular to bear the weight of their equipment, Kaer'ls depend on their
+strength and endurance to survive combat against foes better suited to
+the attack.  Their shields give them an edge in defence, and their short
+swords can thrust and swing at enemies in short range.  They are also
+trained to kick opponents, protected by the thick padding and shin guards
+they wear.
+~
+64 67108864 -480 S
+40 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27353
+gladiator Luv'ht Luvht~
+a Luv'ht gladiator~
+A Luv'ht gladiator bristles at your observation.
+~
+Lightly armoured and heavily armed, a Luv'ht fighter dual wields short swords,
+but is protected only by a belt or a loincloth. Preferring close-combat
+fighting, Luv'ht tend to be the most skilled and experienced of gladiators,
+and by far the most popular with the crowds of sahuagin who come to the arena
+to watch them ply their bloody trade.
+~
+64 67108864 -480 S
+40 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27354
+gladiator Maland~
+a Maland gladiator~
+A Maland gladiator rattles his spear and small buckler at you.
+~
+The Maland gladiator is armed with a small buckler and a spear, making him
+quite competent at middle-distance combat.  The buckler is as useful for
+offense as defense, often being used to ram and smash his opponent in his
+charges, and to discourage fighters trying to close range on him.  Usually
+he is matched against Kaer'l, as their strengths and weaknesses line up
+well to create interesting matches.
+~
+64 67108864 -420 S
+40 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27355
+gladiator Heiral~
+a Heiral gladiator~
+A Heiral gladiator grasps his trident and net menacingly.
+~
+The Heiral gladiator's arms are (apparently humorously) styled on those of a
+human fisherman.  He carries a weighted net for entangling his opponents, and
+a sharp trident for finishing them off once they are so entangled. having
+nearly no armour, he is reliant on using his speed and agility to avoid his
+opponent's attacks and wait for the perfect opportunity to strike.
+~
+64 67108864 -560 S
+40 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27356
+gladiator Urm'da Urmda~
+a Urm'da gladiator~
+A Urm'da gladiator gestures at you terribly with his bladed hand.
+~
+The Urm'da gladiator fights with one hand encased in a hardened metal tube
+that has the "hand" end capped off with a semicircular blade.  This blade
+can be used both to tear away his opponents' shields and block their blows
+and to quick counterattack with either the bladed end, or the short sword
+he carries in his other hand.
+~
+64 67108864 -560 S
+40 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27357
+wizinvischap~
+wisinvizchap~
+~
+This guy is responsible for opening the arena gate once the player has all
+5 gladiator tokens on him.
+
+~
+2|64|512|4096|65536 4|8|16|32|512|32768|524288|8388608|1073741824 1000 S
+104 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>all_greet_prog 100~
+if carrying($n) == 27481
+    if carrying($n) == 27482
+        if carrying($n) == 27483
+            if carrying($n) == 27484
+                if carrying($n) == 27485
+                    mpecho A loud sahuagin voice booms out from beyond the arena gate:
+                    mpecho {W"Very impressive, $n. You have triumphed over every kind of our warriors.{x
+                    mpecho {W Exit now, and give the baron his token to receive your just reward!"{x
+                    mpoload 27472
+                    unlock north
+                    open north
+                    mpecho A large, sturdy sahuagin enters through the arena gates and escorts you out.
+                    mptransfer $n 27278
+                    mpat $n mpforce $n look
+                    close north
+                    lock north
+                    mpjunk 27472
+                    if carrying($n) != 27486
+                        mpat sikritarenim mpforce sikritarenim mpoload 27486
+                        mpat sikritarenim mpforce sikritarenim give baron $n
+                        mpat sikritarenim mpforce sikritarenim say I suppose congratulations are in order. Take this to the baron.
+                        mpat sikritarenim mpforce sikritarenim emote gestures west
+                    endif
+                endif
+            endif
+        endif
+    endif
+endif
+~
+|
+#27358
+sahuagin large sturdy arenamaster sikritarenim~
+the Arenamaster~
+A large, sturdy sahuagin regards you grimly.
+~
+This large, sturdy sahuagin is the Arenamaster, whose responsibility it is to
+manage the fighters and beasts of the arena.  He regards you with a cool and
+evident suspicion.
+~
+2|64 67108864 -375 S
+41 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27359
+vodyanoi creature large lumbering~
+a vodyanoi~
+<58>A large, lumbering creature grumps about his cage irritably.<0>
+~
+This is a vodyanoi, a creature related to the umber hulk but usually somewhat
+larger and water-dwelling. It has slimy green skin, webbed hands and feed, and
+powerful manibles.  They have a reputation as an evil and violent creature,
+but this one's attention doesn't seem to have turned to you... yet.
+
+~
+64 512|67108864 -1000 S
+41 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>greet_prog 10~
+mpecho A <58>vodyanoi<0> lunges for you with its powerful mandibles!
+mpkill $n
+~
+>entry_prog 10~
+mpecho A <58>vodyanoi<0> lunges at you suddenly!
+mpkill $n
+~
+>death_prog 70~
+	mpecho {RWhen the vodyanoi dies, a swarm of electric eels rush to its corpse!{x
+	mpmload 27252
+	mpmload 27252
+	mpmload 27252
+	mpmload 27252
+~
+|
+#27360
+eel-like creature aboleth~
+an aboleth~
+<20>A huge, eel-like creature whips its body to and fro.<0>
+~
+It resembles a bizarre eel, with a long, tubular body, a tail at one end, two
+fins near the head, and another along the back. Its mouth is lamprey-like, and
+filled with serrated, jawless teeth. You feel afraid just being in its presence,
+and have a strong intuition that it might be best to leave it alone.
+
+~
+64|2048|16384|8388608 4|8|16|32|512|524288|2097152|8388608|67108864|1073741824 -730 S
+41 0 0 0d0+0 0d0+0
+648 0
+8 8 0
+#27361
+laghathti~
+a laghathti~
+<21>A spherical mass of writhing tentacles radiates pure evil.<0>
+~
+This is a laghathti,a kind of cephalopodan obyrith demon.  It has a loose
+resemblance to octopuses, but that comparison in no way captures its alien
+appearance. For one, it seemingly has no core; what passes for a body is
+really just a spherical mass of writhing tendrils, roughly 8 feet in diameter.
+Aside from that, its form consists of twelve, midnight-blue tentacles. Five
+of them have a pale underside riddled with hundreds of tiny mouths, another
+five are slimmer and ended in wide, paddle-like fins, and the other two are
+shorter, stronger, and end in long, crocodilian jaws from which the creature's
+high-pitched wails emanate.
+~
+64|2048|8388608 1|4|8|16|32|512|524288|67108864|1073741824 -1000 S
+41 0 0 0d0+0 0d0+0
+27 0
+8 8 0
+>rand_prog 3~
+mpasound A high-pitched wail echoes through the deep water.
+~
+>rand_prog 3~
+mpasound You hear a hideous high-pitched wailing in the distance.
+~
+|
+#27362
+giant gar alligator~
+a giant gar~
+<65>A massive, sleek alligator gar circles her cage frantically.<0>
+~
+The body of this alligator gar is torpedo-shaped and olive in colour (fading
+to a lighter gray on the ventral surface). Her scales are ganoid, which are
+bone-like, rhomboidal-shaped scales with serrated edges, which are covered
+by an enamel-like substance making them nearly impenetrable and excellent
+protection against predation. Unlike other gar species, the upper jaw of an
+alligator gar like this has a dual row of large, sharp teeth that are used
+to impale and hold prey. This is a stalking, ambush predator, primarily
+a piscivore, but they also prepared to ambush and eat waterfowl and small
+mammals found floating on the water's surface.
+~
+4|32|64 32|512|32768|67108864 0 S
+41 0 0 0d0+0 0d0+0
+4|8|512 0
+8 8 2
+#27363
+giant sea leech~
+a giant sea leech~
+<53>A giant sea leech pulses and wiggles about.<0>
+~
+It similar in all morphological respects to a regular sea leech--wormlike with
+large suckers at both ends--but huge.  You'd hate to have it feasting on you.
+~
+4|64 1|512|67108864 -147 S
+41 0 0 0d0+0 0d0+0
+686 0
+8 8 0
+#27364
+training dummy~
+a training dummy~
+A training dummy is in the corner of the room, taking terrible punishment.
+~
+This training dummy has been bolted to the floor and is used by the gladiators
+of the arena to warm up on.  It has taken a terrible beating over the years,
+but it is very robustly constructed, and regularly maintained.
+~
+2|64|16777216|33554432|9223372036854775808 1|64|9223372036854775808 0 S
+41 0 0 0d0+0 0d0+0
+290 0
+8 8 0
+#27365
+Ota'ar Dar cityguard sahuagin guard~
+an Ota'ar Dar cityguard~
+An Ota'ar Dar cityguard is here, guarding the arena entrance.
+~
+Ota'ar Dar cityguards look very much like sahuagin soldiers, but their
+pauldrons are stamped with the city's mark.  They are selected for their
+strength, youth, and loyalty to the prince. This one has been assigned
+to protect the entrance to the arena.
+~
+2|64 8|32|512|8388608|67108864 -430 S
+43 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>all_greet_prog 100~
+if carrying($n) != 27481
+    if carrying($n) != 27482
+        if carrying($n) != 27483
+            if carrying($n) != 27484
+                if carrying($n) != 27485
+                    if carrying($n) != 27486
+                        mpecho {WThe cityguard challenges you, "Halt, outsider!  All who cannot prove they have{x
+                        mpecho {Wfought in the arena must do so.  This way!"{x
+                        mpecho The guard seizes you roughly and frogmarches you to the centre of the Ota'ar Dar arena.
+                        mptransfer $n 27227
+                        mpat $n mpforce $n look
+                        mpat $n mpecho The guard nods at you curtly.
+                        mpat $n mpecho {W"You may gain your freedom by collecting a favour from every kind of our{x
+                        mpat $n mpecho {W gladiators and taking them to the area exit." He makes a noise that might{x
+                        mpat $n mpecho {Wbe laughter. "Good luck."{x
+                        mpat $n mpecho The guard turns rapidly on his heels and leaves through the arena gate to the
+                        mpat $n mpecho {xnortheast, which slams shut behind him.
+                    endif
+                endif
+            endif
+        endif
+    endif
+else
+    eyebrow $n
+endif
+~
+|
+#27366
+adult male sahuagin spectator~
+the sahuagin male~
+An adult male sahuagin watches the arena combat.
+~
+This sahuagin is here to enjoy the gory spectacle of lethal arena combat, a
+favourite pastime of the sahuagin people.
+~
+64 67108864 -415 S
+43 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27367
+adult female sahuagin spectator~
+the sahuagin female~
+An adult female sahuagin cruises about the spectator seating.
+~
+This sahuagin is here to enjoy the gory spectacle of lethal arena combat, a
+favourite pastime of the sahuagin people.
+~
+64 67108864 -385 S
+43 0 0 0d0+0 0d0+0
+512 0
+8 8 2
+#27368
+male broodling spectator sahuagin~
+the broodling male~
+A sahuagin broodling thrills to the arena spectacle.
+~
+This male sahuagin is a broodling, or young adult.  Not quite ready to leave
+the (relative) safety of his parents and clutchmates, he fights to assert her
+place in sahuagin society and within her home.  He's here to enjoy the gore
+and glory of the arena, and dreams of one day participating in it.
+~
+64 67108864 -415 S
+42 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27369
+female broodling spectator sahuagin~
+the broodling female~
+A sahuagin broodling watches the carnage with rapt enjoyment.
+~
+This female sahuagin is a broodling, or young adult.  Not quite ready to leave
+the (relative) safety of her parents and clutchmates, she fights to assert her
+place in sahuagin society and within her home.  She's here to enjoy the gore
+and glory of the arena.
+~
+64 67108864 -405 S
+42 0 0 0d0+0 0d0+0
+512 0
+8 8 2
+#27370
+male hatchling spectator sahuagin~
+the hatchling male~
+The sahuagin hatchling can barely contain his excitement.
+~
+This young male sahuagin swims about madly, overcome with excitement to see
+his heroes fighting to the death in the arena.
+~
+64 67108864 -215 S
+42 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27371
+female hatchling spectator sahuagin~
+the hatchling female~
+The sahuagin hatchling squirms with joy and terror.
+~
+This young female sahuagin swims about madly, overcome with excitement to see
+her heroes fighting to the death in the arena.
+~
+64 67108864 -215 S
+42 0 0 0d0+0 0d0+0
+512 0
+8 8 2
+#27372
+Garyl Kai~
+Garyl Kai~
+Garyl Kai roams the spectator seating area, selling fast... "food".
+~
+Garyl Kai is a tubby and shabbily-dressed sahuagin who you're sure enjoys
+consuming his wares as much as he does selling them.
+~
+64|512|4096|8388608 32|512|67108864 -220 S
+42 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>greet_prog 35~
+if rand(25)
+	say Hungry, $n?  Explore my mobile Arena menu!
+else
+	if rand (25)
+		say I highly recommend the blubber, $n.  It's very filling.
+	else
+		if rand(25)
+			emote looks at you steadily
+			say Just view my menu!  Deliciousness abounds!
+		else
+			say We can't have you watching gore and death on an empty stomach, can we $n?
+		endif
+	endif
+endif
+~
+|
+#27373
+Lani Siate~
+Lani Siate~
+Lani Siate wanders through the spectator seating, hawking her wares.
+~
+Lani Siate is a shortish and matronly sahuagin who is enthusiastic about her
+"delicious" products.
+~
+64|512|4096|8388608 32|512|67108864 -220 S
+42 0 0 0d0+0 0d0+0
+512 0
+8 8 2
+>greet_prog 35~
+if rand(25)
+	say Hungry, $n?  Take a look at my delicious offerings!
+else
+	if rand (25)
+		say I highly recommend the goblin shark pie, $n.  It has some very... special properties.
+	else
+		if rand(25)
+			emote looks at you cheerfully
+			say Behold my offerings! Get in before I sell out!
+		else
+			say We can't have you watching gore and death on an empty stomach, can we $n?
+		endif
+	endif
+endif
+~
+|
+#27374
+gypsy man pale~
+the gypsy man~
+A pale man sits here, in miserable captivity.
+~
+The man pays you no attention as he sits in his cell glumly. His glazed eyes
+bespeak unimaginable horrors experienced and there are deep puncture wounds
+in his neck.
+~
+4|64 512 0 S
+43 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27375
+gypsy woman pale~
+the gypsy woman~
+A pale woman sits here, in miserable captivity.
+~
+The woman pays you no attention as she sits in his cell glumly. Her glazed
+eyes bespeak unimaginable horrors experienced and there are deep puncture
+wounds in her neck.
+~
+4|64 512 0 S
+43 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27376
+tritoness green-skinned woman~
+a Tritoness~
+A {Ggreen-skinned{x woman with webbed hands and feet swims about the cell.
+~
+You recognise this green-skinned, fairly-attractive-if-vaguely-fishy-looking
+woman as a Tritoness, a member of a very distinctive race of undersea-dwelling
+folk. You know that Triton dedicate themselves to protecting magical portals
+from sahuagin, kraken, and other monstrous beings of the sea and so tend towards
+being of lawful and good alignment, but that this also means they're likely to
+be extremely haughty and arrogant.
+~
+64 8|32|512|8192|4194304|67108864|536870912|1073741824 425 S
+43 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27377
+triton man blue-skinned~
+a Triton~
+A {Bblue-skinned{x man with webbed hands is furious at his imprisonment.
+~
+You recognise this blue-skinned, fairly-handsome-if-vaguely-fishy-looking
+man as a Triton, a member of a very distinctive race of undersea-dwelling
+folk. You know that Triton dedicate themselves to protecting magical portals
+from sahuagin, kraken, and other monstrous beings of the sea and so tend towards
+being of lawful and good alignment, but that this also means they're likely to
+be extremely haughty and arrogant.
+~
+64 8|32|512|8192|4194304|67108864|1073741824 600 S
+43 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27378
+female sahuagin heretic~
+a sahuagin heretic~
+A sahuagin female sits here, looking forlorn but resolute.
+~
+The female sahuagin has been imprisoned here (and will ultimately be thrown to
+the beasts of the arena) due to her heresy in rejecting Sekolah as the
+paramount god, a sin punished by the sahuagin of this colony with painful and
+protracted death.
+~
+64 67108864 -265 S
+43 0 0 0d0+0 0d0+0
+512 0
+8 8 2
+#27379
+Ota'ar Dar cityguard sahuagin guard~
+an Ota'ar Dar cityguard~
+An Ota'ar Dar cityguard is here, guarding the jail cells.
+~
+Ota'ar Dar cityguards look very much like sahuagin soldiers, but their
+pauldrons are stamped with the city's mark.  They are selected for their
+strength, youth, and loyalty to the prince. This one has been assigned
+to protect the jail cells adjoining the arena.
+~
+64 8|32|512|8388608|67108864 -430 S
+43 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27380
+green grung~
+a green grung~
+<118>A green grung stalks his cell, furious at having been captured.<0>
+~
+Grung are a race of small, froglike humanoids.  They are fiercely territorial,
+and see themselves as superior to all other creatures.  Their society is
+caste-based, with the grung's colour denoting his role.  This is a green grung,
+indicating that he is a warrior, hunter, or labourer.  He seems absolutely
+furious at having been captured by the sahuagin, and not at all amenable to
+mollification.
+~
+32|64 8|32|512|8388608|67108864 -595 S
+43 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27381
+male sea elf~
+a male sea elf~
+<80>A strikingly handsome, turquoise-coloured male sea elf is meditating here.<0>
+~
+Sea elves are of elven ancestry, though with enough differences to qualify as
+a distinct ancestry. They resemble elves with bluish or greenish tinted skin,
+with long, webbed fingers and toes, and visible gills on their ribs.  This
+sea elf is a tall and elegant male who looks quite out of place in his
+squalid surroundings.
+~
+2|64 4|8|16|32|512|8192|16384|2097152|8388608|67108864|536870912|1073741824 875 S
+43 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27382
+female sea elf~
+a female sea elf~
+<86>A smooth-skinned, teal-coloured sea elf female floats in the water here.<0>
+~
+Sea elves are of elven ancestry, though with enough differences to qualify as
+a distinct ancestry. They resemble elves with bluish or greenish tinted skin,
+with long, webbed fingers and toes, and visible gills on their ribs.  This
+sea elf is a tall and elegant female who looks quite out of place in her
+squalid surroundings.
+~
+64 4|8|16|32|512|8192|2097152|8388608|67108864|536870912|1073741824 880 S
+43 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27383
+male sahuagin coward~
+a sahuagin coward~
+A sahuagin male sits here, cringing in fear.
+~
+The male sahuagin has been imprisoned here (and will ultimately be thrown to
+the beasts of the arena) due to his cowardice in battle; few crimes are
+regarded in sahuagin society as as loathsome as his.
+~
+64 67108864 -77 S
+43 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27384
+Ota'ar Dar cityguard sahuagin guard~
+an Ota'ar Dar cityguard~
+An Ota'ar Dar cityguard is here, guarding the baron's cubiculum.
+~
+Ota'ar Dar cityguards look very much like sahuagin soldiers, but their
+pauldrons are stamped with the city's mark.  They are selected for their
+strength, youth, and loyalty to the prince. This one has been assigned
+to guard the entrance to the cubiculum where the baron, his wives, and
+a representative from Sekolah's temple preside over the arena's activities.
+~
+2|64 8|32|512|8388608|67108864 -430 S
+43 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>all_greet_prog 100~
+if carrying($n) == 27486
+    say Ah, I see you have defeated the gladiators in the arena!
+    say Head through to the north if you'd like to claim your reward from the baron.
+    mpoload 27471
+    unlock north
+    open north
+    mpjunk 27471
+    salute $n
+else
+    eyebrow $n
+    say Looking for something, $n?
+endif
+~
+|
+#27385
+Ota'ar Dar cityguard sahuagin guard~
+an Ota'ar Dar cityguard~
+An Ota'ar Dar cityguard is here, guarding the baron's cubiculum.
+~
+Ota'ar Dar cityguards look very much like sahuagin soldiers, but their
+pauldrons are stamped with the city's mark.  They are selected for their
+strength, youth, and loyalty to the prince. This one has been assigned
+to guard the entrance to the cubiculum where the baron, his wives, and
+a representative from Sekolah's temple preside over the arena's activities.
+~
+2|64 8|32|512|8388608|67108864 -430 S
+43 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>all_greet_prog 100~
+if carrying($n) == 27486
+    say Ah, I see you have defeated the gladiators in the arena!
+    say Head through to the south if you'd like to claim your reward from the baron.
+    mpoload 27471
+    unlock south
+    open south
+    mpjunk 27471
+    salute $n
+else
+    eyebrow $n
+    say Are you lost, $n?
+endif
+~
+|
+#27386
+wife female baron wives~
+the baron's wife~
+One of the baron's wives swims about, watching the arena with interest.
+~
+Attractive for a sahuagin, this is one of the baron's wives.  She has little
+to do but tend to the baron's young and await his call, and so spends most of
+her life in relative comfort and ease.
+~
+64 512|67108864 -370 S
+44 0 0 0d0+0 0d0+0
+512 0
+8 8 2
+>greet_prog 3~
+emote raises her eyelids at you seductively
+~
+|
+#27387
+baron sahuagin~
+the baron~
+<248>A scowling sahuagin baron sits in a throne here, watching the arena intently.<0>
+~
+Sahuagin barons are four-limbed mutant sahuagin.  Larger and more powerful
+than the regular breed, they are often promoted to positions of rank and power
+within the strict sahuagin hierarchy.  This baron presides over the sahuagin
+who live and work in the arena canton in which you now find yourself.
+~
+2|64|2048 512|67108864 -511 S
+45 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>all_greet_prog 100~
+if carrying($n) == 27486
+    say I see you have my token. Give it to me.
+    emote gestures towards you with a hideous outstretched hand
+endif
+~
+>give_prog baron token disk bronze~
+    if number($o) == 27486
+        mpoload 27501 45
+        give crossbow $n
+        say Use it to destroy your enemies utterly.  Now leave me.
+        mpjunk bronze
+    else
+        mpecho The baron peers at the token closely.
+        say You would DARE try to cheat me? DIE!
+        mpjunk bronze
+        mpkill $n
+    endif
+~
+|
+#27388
+Sekolic Nuncio~
+a Sekolic Nuncio~
+A Sekolic Nuncio stands here, eyes closed and concentrating hard.
+~
+The Sekolic Nuncio is a diplomatic envoy from the temple of Sekolah.  His job
+here is to create and maintain the magical field around the arena that prevents
+combatants from leaving it (save with the permission of the local baron), and
+spectators from getting overly-excited and storming the arena.  It also
+prevents escape of the combatants upwards, into the Shadowsea.
+
+While the field can largely be maintained without his active involvement (and
+would continue to exist even if he were to die, at least for a while) the
+stress that is constantly put on it by the spectators and combatants means he
+does have to do a fair amount of regular arcane 'maintenance'.
+~
+2|64 8|32|128|512|8192|16384|67108864|536870912 -710 S
+44 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>hitprcnt_prog 60~
+    mpecho {WThe Nuncio gasps, "Be-be-GONE!..."{x
+    mpecho The Nuncio traces an arcane sigil in the air and the room flashes {CBLUE{x...
+    mptransfer $n group 27239
+    mpgoto 27523
+    mpat 27239 mpecho {GYou suddenly find yourself in the arena!{x
+    mpat 27239 mpforce $n look
+    mpat 27239 mpecho {WThe room flashes {CBLUE{x {Wagain and the Nuncio disappears!{x
+~
+>death_prog 100~
+    mpecho {WAs the Nuncio dies something flashes, as if suddenly being revealed...{x
+    mpoload 27502
+~
+|
+#27389
+Elio Natafe~
+Elio Natafe~
+Elio Natafe stands in the arena antechamber, selling her wares.
+~
+Elio Natafe is a tall, graceful sahuagin, who is most unusually courteous
+and obliging for one of her odious breed.
+~
+2|64|512|4096|8388608 32|512|67108864 -200 S
+41 0 0 0d0+0 0d0+0
+512 0
+8 8 2
+>greet_prog 35~
+if rand(25)
+	say Greetings, good $n!  I hope to offer something to your tastes!
+else
+	if rand (25)
+		say I highly recommend the blubber, $n.  It's very filling.
+	else
+		if rand(25)
+			emote looks at you steadily
+			say Pray $n, behold my offerings!  I aim to delight!
+		else
+			say Here to enjoy the combats, I trust?  Not on an empty stomach, surely!
+		endif
+	endif
+endif
+~
+|
+#27390
+Fo Aere diceboss~
+Fo Aere~
+Fo Aere sits here, juggling a handful of dice.
+~
+Fo Aere is a langy, obsequious-looking sahuagin who is here to offer gambling
+to arena patrons.  To see what game he's offering, try to 'bet' or 'wager' some
+gold coins.
+~
+2|64|512|4096|32768|8388608|16777216 32|512|67108864 -630 S
+41 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>greet_prog 35~
+if rand(25)
+	say Can I interest you in a game of chance, $n?
+else
+	if rand (25)
+		say 'Seven' is my game, $n.
+		else
+		if rand(25)
+			say Gold only, I'm terrifically sorry.
+		else
+			say Roll up, roll up!  Fortunes to be made!
+			grin
+		endif
+	endif
+endif
+~
+|
+#27391
+adult male sahuagin spectator~
+the sahuagin male~
+An adult male sahuagin idly mills about the arena antechamber.
+~
+This sahuagin is here to enjoy the gory spectacle of lethal arena combat, a
+favourite pastime of the sahuagin people.
+~
+64 67108864 -415 S
+41 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27392
+adult female sahuagin gambler~
+the sahuagin gambler~
+An adult female sahuagin is gambling and cursing her luck.
+~
+This rough-looking sahuagin female is here, apparently, to throw away all her
+gold and impoverish herself and her family.
+~
+2|64 67108864 -715 S
+41 0 0 0d0+0 0d0+0
+512 0
+8 8 2
+#27393
+adult female sahuagin young~
+the young sahuagin~
+An young female sahuagin is purchasing refreshments here.
+~
+This youngish sahuagin female is here buying the most unappetising slop from
+the vendor.
+~
+2|64 67108864 -715 S
+41 0 0 0d0+0 0d0+0
+512 0
+8 8 2
+#27394
+gypsy man pale~
+the gypsy man~
+A pale man sits here, looking even more miserable than his cellmates.
+~
+The man pays you no attention as he sits in his cell glumly. His glazed eyes
+bespeak unimaginable horrors experienced and there are deep puncture wounds
+in his neck. He repeatedly breaks into spasms of sobbing.
+~
+4|64 512 127 S
+43 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>give_prog letter cursive~
+        if number($o) == 27504
+                cry
+                mpecho {WThe gypsy man says 'What can I do?  How can I escape from here and return to my family... unless...'{x
+                mpecho {WThe gypsy man says 'No... there is no way... and yet... will you perform a service for me, $n?'{x
+                mpjunk cursive
+        break
+        else
+                mpecho $I examines $O.
+                mpecho {WThe gypsy man says 'This is not of my master's hand.  Why do you torment me so?'{x
+                give letter $n
+        endif
+~
+>speech_prog yes yeah yea yup yo yip~
+	mpecho {WThe gypsy man says 'Good. Take this letter back to the Reaver for my master.{x
+    mpecho {WIt is the only hope that remains to me. Go!'{x
+    mpoload 27505
+    give shaky $n
+~
+>speech_prog no nah nay na~
+	say Cruel fiend! Depart from me!  Leave me to my misery!
+    break
+~
+|
+#0
+
+#OBJECTS
+#27469
+calcite key~
+a calcite key~
+A calcite key has been left here.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+#27470
+spiny key~
+a spiny key~
+A key carved from the spine of a ray has been left here.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+#27471
+pearl key~
+a pearl key~
+A lustrous pearl key stamped with the prince's seal has been left here.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+#27472
+arena key~
+an arena key~
+A key giving access to the arena floor is here.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+#27473
+arenamaster key~
+the Arenamaster's key~
+A key belonging to the Arenamaster has been left here.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+#27474
+short sword~
+a short sword~
+A short sword designed for thrusting and stabbing at close quarters is here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 2~
+2 0 0
+A
+18 7
+#27475
+ocrea long greaves~
+ocrea~
+Long metal greaves that cover the shins and feet have been placed here.~
+~
+9 0 1|64
+2~ 0~ 0~ 0~
+3 50 30
+A
+17 -12
+#27476
+shield rectangular wooden~
+a rectangular wooden shield~
+A rectangular wooden shield with a bronze boss is here.~
+~
+9 0 1|512
+0~ 0~ 0~ 0~
+35 0 0
+A
+17 -20
+#27477
+belt leather balteus~
+a leather balteus~
+A thick, leather belt adorned with metal decorations sits here.~
+~
+9 0 2049
+5~ 0~ 0~ 0~
+5 0 500
+A
+1 2
+A
+2 -2
+A
+17 -8
+#27478
+long spear~
+a long spear~
+A well-used and maintained long spear rests here.~
+~
+5 16|64|134217728 1|8192
+0~ 0~ 0~ 11~
+6 0 0
+A
+18 5
+A
+19 5
+#27479
+round iron buckler~
+a small round iron buckler~
+A round iron buckler lies here.~
+~
+9 0 1|512
+0~ 0~ 0~ 0~
+35 0 0
+A
+17 -10
+A
+19 2
+#27480
+scissore tube blade semicircular~
+a scissore~
+A metal tube with a t-shaped semicircular blade at the end lies here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 1~
+2 0 0
+A
+17 -12
+A
+18 3
+A
+19 4
+#27481
+favour Kaer'l disk clay~
+favour of the Kaer'l~
+A clay disk with the image of a Kaer'l gladiator stamped on it is here.~
+~
+8 0 1|16384
+2~ 0~ 0~ 0~
+3 50 30
+#27482
+favour Luv'ht disk clay~
+favour of the Luv'ht~
+A clay disk with the image of a Luv'ht gladiator stamped on it is here.~
+~
+8 0 1|16384
+2~ 0~ 0~ 0~
+3 50 30
+#27483
+favour Maland disk clay~
+favour of the Maland~
+A clay disk with the image of a Maland gladiator stamped on it is here.~
+~
+8 0 1|16384
+2~ 0~ 0~ 0~
+3 50 30
+#27484
+favour Heiral disk clay~
+favour of the Heiral~
+A clay disk with the image of a Heiral gladiator stamped on it is here.~
+~
+8 0 1|16384
+2~ 0~ 0~ 0~
+3 50 30
+#27485
+favour Urm'da disk clay~
+favour of the Urm'da~
+A clay disk with the image of a Urm'da gladiator stamped on it is here.~
+~
+8 0 1|16384
+2~ 0~ 0~ 0~
+3 50 30
+#27486
+baron token disk bronze~
+the baron's token~
+A bronze token with the image of a sahuagin baron stamped on it is here.~
+~
+8 0 1|16384
+2~ 0~ 0~ 0~
+3 50 30
+#27487
+leather whip~
+a leather whip~
+A leather whip lies here.~
+~
+5 16|128|512|2048 1|8192
+0~ 0~ 0~ 4~
+2 0 0
+A
+19 3
+A
+18 2
+E
+leather whip~
+A cruel and unsavoury weapon, this whip is keep control over the beasts (and
+sometimes fighters) of the arena.
+~
+#27488
+bladder laghathti blood~
+a bladder of laghathti blood~
+The bloody bladder of some large sea creature lies here.~
+~
+10 16|64 1|16384
+41~ stabilise~ intellect fortress~ mental barrier~
+1 0 0
+#27489
+leech egg~
+a giant leech egg~
+<98>A huge purple egg sac lies here.<0>~
+~
+26 0 1|16384
+41~ cell adjustment~ heal~ heal~
+3 0 0
+#27490
+rock armour suit~
+a small suit of rock armour~
+A small suit of armour carved out of rock lies here.~
+~
+9 0 1|8
+5~ 1~ 6~ 11~
+5 0 0
+A
+17 -15
+E
+rock armour suit~
+The armour has been crafted quite artfully from carved and plated rock.
+~
+#27491
+exquisite spear~
+an exquisite spear~
+An exquisite spear has been placed here.~
+~
+5 16|64|134217728|274877906944 1|8192
+0~ 0~ 0~ 11~
+4 0 0
+A
+18 8
+A
+19 8
+E
+exquisite spear~
+The long spear evidences remarkable workmanship.  It shimmers with emerald
+and aquamarine detailing, and its bladed tip looks sharp enough to cut through
+flesh effortlessly.
+~
+#27492
+shell wristshield~
+a shell wristshield~
+A wristshield made of shell is here.~
+~
+9 64 1|4096
+~ ~ ~ ~
+1 0 0
+A
+17 -15
+A
+18 4
+#27493
+skirt leather shells~
+a skirt of leather and shells~
+A skirt made of leather and shells lies on the ground.~
+~
+9 1024 1|2048
+0~ 0~ 0~ 0~
+2 1450 0
+A
+17 -10
+A
+51 3
+#27494
+bark boots flexible~
+flexible bark boots~
+Flexible boots made from the bark of a young tree have been placed here.~
+~
+9 1024 1|64
+15~ 1~ 6~ 11~
+3 0 0
+A
+18 10
+A
+17 -5
+#27495
+green scaled leggings~
+green scaled leggings~
+A pair of shining green scaled leggings have been left here.~
+~
+9 0 1|32
+0~ 0~ 0~ 0~
+45 0 0
+A
+17 -8
+#27496
+green leather jerkin~
+green leather jerkin~
+A green leather jerkin of very fine workmanship lies here.~
+~
+9 0 1|8
+5~ 1~ 6~ 11~
+5 0 0
+A
+17 -18
+A
+2 3
+#27497
+fine trident~
+a fine trident~
+A very fine trident of superb manufacture is here.~
+~
+5 16|64|274877906944 1|8192
+0~ 1~ 6~ 2~
+10 0 30
+A
+18 8
+A
+19 7
+#27498
+shimmering oval portal~
+a shimmering portal~
+<51><306>A shimmering, oval portal covers the western wall.<0>~
+~
+33 64 0
+27418~ -1~ 0~ 100~
+0 0 0
+#27499
+prince's token ornate arena~
+the Arena Prince's token~
+An ornate token allowing access to the prince's palace lies here.~
+~
+2 0 1|16384
+0~ 0~ 0~ 0~
+1 0 0
+E
+prince's token ornate~
+An ornate token.  From its inscription you gather that if the Prince's canton
+is open at all, then this token will allow the bearer entrance into the Prince's
+palace, which lies within it.
+~
+#27500
+weighted barbed net~
+a weighted barbed net~
+A weighted barbed net of very high quality lies here.~
+~
+5 16|64 1|8192
+0~ 1~ 6~ 9~
+10 0 30
+A
+18 8
+A
+19 9
+#27501
+baron crossbow heavy~
+the baron's crossbow~
+A heavy crossbow of remarkably robust construction sits here.~
+~
+5 64|1073741824 1|8192
+0~ 0~ 0~ 0~
+20 0 0
+A
+19 12
+A
+18 14
+E
+baron crossbow heavy~
+This heavy crossbow has a draw weight of over 400 pounds, and does incredible
+amounts of damage.  It must have originally been built for someone of
+considerable strength, or perhaps someone who had more than the usual number
+of arms? Or both?
+~
+#27502
+seal sekolah~
+Sekolah's seal~
+A seal in the shape of a giant shark lies here.~
+~
+9 256|32768 1|16384
+0~ 0~ 0~ 0~
+3 2500 1900
+A
+12 60
+#27503
+baronic crest spiked~
+a baronic crest~
+A metal crest covered in sharpened spikes lies here.~
+~
+9 64|16777216|274877906944 1|16
+8~ 0~ 0~ 0~
+10 0 0
+A
+2 2
+A
+19 5
+A
+17 -10
+E
+baronic crest~
+This crest belongs to a sahuagin baron.  This one bears the mark of the baron
+of the arena canton. It is a thing of spiked metal, with its spikes filed to
+sharp points, that it might serve purpose in battle as well as to function as
+a symbol of rulership.
+~
+#0
+
+
+#ROOMS
+#27200
+Ota'ar Dar Jail Cell~
+{GYou are standing inside a small prison cell in Ota'ar Dar's jail, deep
+underwater. The walls are crumbling and filthy, and its bars rusty, but it is
+robust and intact, and quite capable of containing and restraining anyone
+unfortunate enough to find themselves locked in it.  The only exit is north.{x
+~
+0 4|8 12
+D0
+~
+~
+8 27469 27203
+S
+#27201
+Ota'ar Dar Jail Cell~
+{GYou are standing inside a small prison cell in Ota'ar Dar's jail, deep
+underwater. The walls are crumbling and filthy, and its bars rusty, but it is
+robust and intact, and quite capable of containing and restraining anyone
+unfortunate enough to find themselves locked in it.  The only exit is north.{x
+~
+0 4|8 12
+D0
+~
+~
+8 27469 27204
+S
+#27203
+Ota'ar Dar Jail Administration Area~
+<158>You stand in a wide corridor in Ota'ar Dar's jail that serves as its
+administration area. Guards wander to and fro keeping an eye on the prisoners,
+and an atmosphere of cruel efficiency permeates the space. Cells lie south and
+up from here, and a door to the north leads out of the jail and to the arena's
+southern seating area. The administration area continues east.<0>
+~
+0 0 12
+D0
+~
+~
+8 27470 27207
+D1
+~
+~
+0 -1 27204
+D2
+You see a green froglike humanoid in the prison cell.
+~
+~
+8 27469 27200
+D4
+You see a male and female with webbed hands and feet in the prison cell.
+~
+~
+8 27469 27503
+S
+#27204
+Ota'ar Dar Jail Administration Area~
+<158>You stand in a wide corridor in Ota'ar Dar's jail that serves as its
+administration area. Guards wander to and fro keeping an eye on the prisoners,
+and an atmosphere of cruel efficiency permeates the space. Cells lie south and
+up from here. The administration area continues east and west.<0>
+~
+0 0 12
+D1
+~
+~
+0 -1 27205
+D2
+A timid-looking sahuagin cringes in a prison cell.
+~
+~
+8 27469 27201
+D3
+~
+~
+0 -1 27203
+D4
+You see beautiful male and female sea elves in the cell.
+~
+~
+8 27469 27504
+S
+#27205
+Ota'ar Dar Jail Administration Area~
+<158>You stand in a wide corridor in Ota'ar Dar's jail that serves as its
+administration area. Guards wander to and fro keeping an eye on the prisoners,
+and an atmosphere of cruel efficiency permeates the space. Cells lie east and
+up from here. The administration area continues west.<0>
+~
+0 0 12
+D1
+You see an air-filled cell containing miserable-looking humans.
+~
+~
+8 27469 27206
+D3
+~
+~
+0 -1 27204
+D4
+You see a sad but defiant female sahuagin in a prison cell.
+~
+~
+8 27469 27505
+S
+#27206
+Ota'ar Dar Air-Breather Jail Cell, Lower~
+{GYou are standing inside a medium-sized prison cell in Ota'ar Dar's jail.
+Curiously, this cell has been filled with air, to enable the sahuagin to hold
+surface-dwelling prisoners. The walls are crumbling and filthy, and the bars
+of the cell are rusty, but it is robust and intact, and quite capable of
+containing and restraining its inhabitants.  The cell continues upwards, and
+its exit west.{x
+~
+0 8 0
+D3
+~
+~
+8 27469 27205
+D4
+~
+~
+0 -1 27506
+S
+#27207
+Ota'ar Dar Arena Southern Spectator Seating, Lower~
+{GYou are on the bottom level of the spectator seating in the southern part
+of the Ota'ar Dar arena. In this far westerly portion of the southern arena your
+view of the action is poor, as it is blocked out by the cubiculum, where the
+canton's baron and his entourage sit whilst games are being held.  The entrance
+to the cubiculum is just north, while the entrance to Ota'ar Dar's jail
+(conveniently located as to grease the prisoner-to-arena-death pipeline) lies
+just to your south. You can also ascend, to the upper tier of spectator seating
+above you.{x
+~
+0 8 12
+D0
+~
+~
+8 27471 27214
+D1
+~
+~
+0 -1 27208
+D2
+~
+~
+8 27470 27203
+D4
+~
+~
+0 -1 27507
+E
+northeast~
+With some effort you can make out a large, sandy arena in which heavily-armed
+gladiators are hacking each other to pieces. Fun!
+~
+S
+#27208
+Ota'ar Dar Arena Southern Spectator Seating, Lower~
+{GYou are on the bottom level of the spectator seating in the southern part
+of the Ota'ar Dar arena. The arena lies to your immediate north, though there
+seems to be some peculiar invisible force that stops you from proceeding far in
+that direction. From here you can wander through the lower seating area to the
+east and west, and you can also ascend, to the tier of spectator seating above.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27209
+D3
+~
+~
+0 -1 27207
+D4
+~
+~
+0 -1 27508
+E
+north~
+You see a large, sandy arena in which heavily-armed gladiators are hacking
+each other to pieces. Fun!
+~
+S
+#27209
+Ota'ar Dar Arena Southern Spectator Seating, Lower~
+{GYou are on the bottom level of the spectator seating in the southern part
+of the Ota'ar Dar arena. The arena lies to your immediate north, though there
+seems to be some peculiar invisible force that stops you from proceeding far in
+that direction. From here you can wander through the lower seating area to the
+east and west, and you can also ascend, to the tier of spectator seating above.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27210
+D3
+~
+~
+0 -1 27208
+D4
+~
+~
+0 -1 27509
+E
+north~
+You see a large, sandy arena in which heavily-armed gladiators are hacking
+each other to pieces. Fun!
+~
+S
+#27210
+Ota'ar Dar Arena Southern Spectator Seating, Lower~
+{GYou are on the bottom level of the spectator seating in the southern part
+of the Ota'ar Dar arena. The arena lies to your immediate north, though there
+seems to be some peculiar invisible force that stops you from proceeding far in
+that direction. From here you can wander through the lower seating area to the
+east and west, and you can also ascend, to the tier of spectator seating above.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27211
+D3
+~
+~
+0 -1 27209
+D4
+~
+~
+0 -1 27510
+E
+north~
+You see a large, sandy arena in which heavily-armed gladiators are hacking
+each other to pieces. Fun!
+~
+S
+#27211
+Ota'ar Dar Arena Southern Spectator Seating, Lower~
+{GYou are on the bottom level of the spectator seating in the southern part
+of the Ota'ar Dar arena. The arena lies to your immediate north, though there
+seems to be some peculiar invisible force that stops you from proceeding far in
+that direction. From here you can wander through the lower seating area to the
+east and west, and you can also ascend, to the tier of spectator seating above.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27212
+D3
+~
+~
+0 -1 27210
+D4
+~
+~
+0 -1 27511
+E
+north~
+You see a large, sandy arena in which heavily-armed gladiators are hacking
+each other to pieces. Fun!
+~
+S
+#27212
+Ota'ar Dar Arena Southern Spectator Seating, Lower~
+{GYou are on the bottom level of the spectator seating in the southern part
+of the Ota'ar Dar arena. The arena lies to your immediate north, though there
+seems to be some peculiar invisible force that stops you from proceeding far in
+that direction. From here you can wander through the lower seating area to the
+east and west, and you can also ascend, to the tier of spectator seating above.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27213
+D3
+~
+~
+0 -1 27211
+D4
+~
+~
+0 -1 27512
+E
+north~
+You see a large, sandy arena in which heavily-armed gladiators are hacking
+each other to pieces. Fun!
+~
+S
+#27213
+Ota'ar Dar Arena Southern Spectator Seating, Lower~
+{GYou are on the bottom level of the spectator seating in the southern part
+of the Ota'ar Dar arena. The arena lies directly to the northwest, though there
+seems to be some peculiar invisible force that stops you from proceeding far in
+that direction. From here you can wander through the lower seating area to the
+east and north, and you can also ascend, to the tier of spectator seating above.{x
+~
+0 0 12
+D0
+~
+~
+0 -1 27220
+D3
+~
+~
+0 -1 27212
+D4
+~
+~
+0 -1 27513
+E
+northwest~
+You see a large, sandy arena in which heavily-armed gladiators are hacking
+each other to pieces. Fun!
+~
+S
+#27214
+Ota'ar Dar Arena, Baron's Cubiculum, Lower~
+<129>You are standing in the lower section of seating in the baron's cubiculum, an
+area of the arena set aside for the use of the baron and his entourage, which
+is lavishly decorated and commands a premium view of the arena spectacle. When
+present, the baron usually attends with some of his wives and at least one
+representative of the Sekolah temple, in order to maintain the barrier around
+the arena that prevents combatants from escaping and spectators from entering.
+
+The baron's throne lies in the tier of seating above you, while you can also
+head north to investigate more of the seating in the cubiculum, or exit through
+the usually-guarded door to the south.
+
+There is a large, but mostly-obscured crack in the flooring here.<0>
+~
+0 0 12
+D0
+~
+~
+0 -1 27223
+D2
+~
+~
+8 27471 27207
+D4
+~
+~
+0 -1 27514
+D5
+You see a large crack in the floor.  Perhaps wide enough to squeeze through?
+~
+crack~
+10 -1 27855
+E
+east~
+You have a glorious view of a large, sandy arena in which heavily-armed gladiators
+are hacking each other to pieces. Fun!
+~
+S
+#27215
+Ota'ar Dar Arena Floor, Lower~
+<190>You are standing on the floor of a vast undersea arena, of the sort built for
+the enjoyment of hideous spectacles of violence and carnage. Huge tiers of
+seating lie to the north and south, and you can see a large "royal" box of
+some sort just to the west.  Invisible barriers of force (presumably magical)
+prevent your exit west or south into the seated areas, but you can move north,
+east or directly up from your current location.<0>
+~
+0 8192 12
+D0
+~
+~
+0 -1 27224
+D1
+~
+~
+0 -1 27216
+D4
+~
+~
+0 -1 27515
+S
+#27216
+Ota'ar Dar Arena Floor, Lower~
+<190>You are standing on the floor of a vast undersea arena, of the sort built for
+the enjoyment of hideous spectacles of violence and carnage. Huge tiers of
+seating lie to the north and south, and you can see a large "royal" box of
+some sort somewhat to the west.  Invisible barriers of force (presumably
+magical) prevent your exit south into the seated areas, but you can move
+north, west, east or directly up from your current location.<0>
+~
+0 8192 12
+D0
+~
+~
+0 -1 27225
+D1
+~
+~
+0 -1 27217
+D3
+~
+~
+0 -1 27215
+D4
+~
+~
+0 -1 27516
+S
+#27217
+Ota'ar Dar Arena Floor, Lower~
+<190>You are standing on the floor of a vast undersea arena, of the sort built for
+the enjoyment of hideous spectacles of violence and carnage. Huge tiers of
+seating lie to the north and south, and you can see a large "royal" box of
+some sort some ways to the west.  Invisible barriers of force (presumably
+magical) prevent your exit south into the seated areas, but you can move
+north, west, east or directly up from your current location.<0>
+~
+0 8192 12
+D0
+~
+~
+0 -1 27226
+D1
+~
+~
+0 -1 27218
+D3
+~
+~
+0 -1 27216
+D4
+~
+~
+0 -1 27517
+S
+#27218
+Ota'ar Dar Arena Floor, Lower~
+<190>You are standing on the floor of a vast undersea arena, of the sort built for
+the enjoyment of hideous spectacles of violence and carnage. Huge tiers of
+seating lie to the north and south, and you can see a large "royal" box of
+some sort a way off to the west.  Invisible barriers of force (presumably
+magical) prevent your exit south into the seated areas, but you can move
+north, west, east or directly up from your current location.<0>
+~
+0 8192 12
+D0
+~
+~
+0 -1 27227
+D1
+~
+~
+0 -1 27219
+D3
+~
+~
+0 -1 27217
+D4
+~
+~
+0 -1 27518
+S
+#27219
+Ota'ar Dar Arena Floor, Lower~
+<190>You are standing on the floor of a vast undersea arena, of the sort built for
+the enjoyment of hideous spectacles of violence and carnage. Huge tiers of
+seating lie to the north and south, and you can see a large "royal" box of
+some sort some distance off to the west.  Invisible barriers of force (presumably
+magical) prevent your exit south or east into the seated areas, but you can move
+north, west, or directly up from your current location.<0>
+~
+0 8192 12
+D0
+~
+~
+0 -1 27228
+D3
+~
+~
+0 -1 27218
+D4
+~
+~
+0 -1 27519
+S
+#27220
+Ota'ar Dar Arena Southern Spectator Seating, Lower~
+{GYou are on the bottom level of the spectator seating in the southern part
+of the Ota'ar Dar arena. The arena lies immediately to the north and west,
+though there seems to be some peculiar invisible force that stops you from
+proceeding far in those directions. From here you can wander through the lower
+seating area to the east and south, and you can also ascend, to the tier of
+spectator seating above.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27221
+D2
+~
+~
+0 -1 27213
+D4
+~
+~
+0 -1 27520
+E
+north~
+You see a large, sandy arena in which heavily-armed gladiators are hacking
+each other to pieces. Fun!
+~
+E
+west~
+You see a large, sandy arena in which heavily-armed gladiators are hacking
+each other to pieces. Fun!
+~
+S
+#27221
+Ota'ar Dar Arena Southern Spectator Seating, Lower~
+{GYou are on the bottom level of the spectator seating in the southern part
+of the Ota'ar Dar arena. The arena lies immediately to the north, though there
+seems to be some peculiar invisible force that stops you from proceeding far in
+that direction. From here you can wander through the lower seating area to the
+east and west, and you can also ascend, to the tier of spectator seating above.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27222
+D3
+~
+~
+0 -1 27220
+D4
+~
+~
+0 -1 27521
+E
+north~
+You see a large, sandy arena in which heavily-armed gladiators are hacking
+each other to pieces. Fun!
+~
+S
+#27222
+Ota'ar Dar Arena Southern Spectator Seating, Lower~
+{GYou are on the bottom level of the spectator seating in the southern part
+of the Ota'ar Dar arena. The arena lies somewhat to the northwest, though there
+seems to be some peculiar invisible force that stops you from proceeding far in
+that direction. From here you can wander through the lower seating area to the
+north and west, and you can also ascend, to the tier of spectator seating above.{x
+~
+0 0 12
+D0
+~
+~
+0 -1 27231
+D3
+~
+~
+0 -1 27221
+D4
+~
+~
+0 -1 27522
+E
+northwest~
+You see a large, sandy arena in which heavily-armed gladiators are hacking
+each other to pieces. Fun!
+~
+S
+#27223
+Ota'ar Dar Arena, Baron's Cubiculum, Lower~
+<129>You are standing in the lower section of seating in the baron's cubiculum, an
+area of the arena set aside for the use of the baron and his entourage, which
+is lavishly decorated and commands a premium view of the arena spectacle. When
+present, the baron usually attends with some of his wives and at least one
+representative of the Sekolah temple, in order to maintain the barrier around
+the arena that prevents combatants from escaping and spectators from entering.
+
+A tier of seating lies above you, and you can also head south to investigate
+more of the seating in the cubiculum, or exit north through the usually-guarded
+door that lies in that direction.  You also can't help but notice a large portal
+covering the western wall.  Wonder where it goes?<0>
+~
+0 0 12
+D0
+~
+~
+8 27471 27233
+D2
+~
+~
+0 -1 27214
+D4
+~
+~
+0 -1 27523
+E
+east~
+You have a glorious view of a large, sandy arena in which heavily-armed gladiators
+are hacking each other to pieces. Fun!
+~
+S
+#27224
+Ota'ar Dar Arena Floor, Lower~
+<190>You are standing on the floor of a vast undersea arena, of the sort built
+for the enjoyment of hideous spectacles of violence and carnage. Huge tiers of
+seating lie to the north and south, and you can see a large "royal" box of some
+sort immediately to your west.  Invisible barriers of force (presumably magical)
+prevent your exit north or west into the seated areas, but you can move south,
+east, or directly up from your current location.<0>
+~
+0 8192 12
+D1
+~
+~
+0 -1 27225
+D2
+~
+~
+0 -1 27215
+D4
+~
+~
+0 -1 27524
+S
+#27225
+Ota'ar Dar Arena Floor, Lower~
+<190>You are standing on the floor of a vast undersea arena, of the sort built
+for the enjoyment of hideous spectacles of violence and carnage. Huge tiers of
+seating lie to the north and south, and you can see a large "royal" box of some
+sort close by to your west.  Invisible barriers of force (presumably magical)
+prevent your exit north into the seated areas, but you can move south, west,
+east, or directly up from your current location.<0>
+~
+0 8192 12
+D1
+~
+~
+0 -1 27226
+D2
+~
+~
+0 -1 27216
+D3
+~
+~
+0 -1 27224
+D4
+~
+~
+0 -1 27525
+S
+#27226
+Ota'ar Dar Arena Floor, Lower~
+<190>You are standing on the floor of a vast undersea arena, of the sort built for
+the enjoyment of hideous spectacles of violence and carnage. Huge tiers of
+seating lie to the north and south, and you can see a large "royal" box of some
+sort some distance to your west.  Invisible barriers of force (presumably magical)
+prevent your exit north into the seated areas, but you can move south, west, east,
+or directly up from your current location.<0>
+~
+0 8192 12
+D1
+~
+~
+0 -1 27227
+D2
+~
+~
+0 -1 27217
+D3
+~
+~
+0 -1 27225
+D4
+~
+~
+0 -1 27526
+S
+#27227
+Ota'ar Dar Arena Floor, Lower~
+<190>You are standing on the floor of a vast undersea arena, of the sort built for
+the enjoyment of hideous spectacles of violence and carnage. Huge tiers of
+seating lie to the north and south, and you can see a large "royal" box of some
+sort a distance to your west.  Invisible barriers of force (presumably magical)
+prevent your exit north into the seated areas, but you can move south, west, east,
+or directly up from your current location.<0>
+~
+0 8192 12
+D1
+~
+~
+0 -1 27228
+D2
+~
+~
+0 -1 27218
+D3
+~
+~
+0 -1 27226
+D4
+~
+~
+0 -1 27527
+S
+#27228
+Ota'ar Dar Arena Floor, Lower~
+<190>You are standing on the floor of a vast undersea arena, of the sort built
+for the enjoyment of hideous spectacles of violence and carnage. Huge tiers of
+seating lie to the north and south, and you can see a large "royal" box of some
+sort a quite some distance to the west.  You can move north, south, west, east,
+or directly up from your current location.<0>
+~
+0 8192 12
+D0
+~
+~
+0 -1 27238
+D1
+~
+~
+0 -1 27229
+D2
+~
+~
+0 -1 27219
+D3
+~
+~
+0 -1 27227
+D4
+~
+~
+0 -1 27528
+S
+#27229
+Ota'ar Dar Arena Floor, Lower~
+<190>You are standing on the floor of a vast undersea arena, of the sort built
+for the enjoyment of hideous spectacles of violence and carnage. Huge tiers of
+seating lie to the north and south, and you can see a large "royal" box of some
+sort a considerable distance to the west. Invisible barriers of force (presumably
+magical) prevent your exit south into the seated areas, but you can move north,
+west, east, or directly up from your current location.<0>
+~
+0 8192 12
+D0
+~
+~
+0 -1 27239
+D1
+~
+~
+0 -1 27230
+D3
+~
+~
+0 -1 27228
+D4
+~
+~
+0 -1 27529
+S
+#27230
+Ota'ar Dar Arena Floor, Lower~
+<190>You are standing on the floor of a vast undersea arena, of the sort built
+for the enjoyment of hideous spectacles of violence and carnage. Huge tiers of
+seating lie to the north and south, and you can see a large "royal" box of some
+sort a considerable distance to the west. Invisible barriers of force (presumably
+magical) prevent your exit south and east into the seated areas, but you can move
+north, west, or directly up from your current location.<0>
+~
+0 8192 12
+D0
+~
+~
+0 -1 27240
+D3
+~
+~
+0 -1 27229
+D4
+~
+~
+0 -1 27530
+S
+#27231
+Ota'ar Dar Arena Southern Spectator Seating, Lower~
+{GYou are on the bottom level of the spectator seating in the southern part
+of the Ota'ar Dar arena. The arena lies immediately to the west, though there
+seems to be some peculiar invisible force that stops you from proceeding far in
+that direction. From here you can wander through the lower seating area to the
+south, the antechamber to the arena lies east, a high wall blocks travel north,
+and you can also ascend, to the tier of spectator seating above.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27232
+D2
+~
+~
+0 -1 27222
+D4
+~
+~
+0 -1 27531
+E
+west~
+You see a large, sandy arena in which heavily-armed gladiators are hacking
+each other to pieces. Fun!
+~
+S
+#27232
+Ota'ar Dar Arena, Antechamber, Lower~
+{GYou are on the bottom level of the Ota'ar Dar arena's antechamber, where
+spectators queue, mingle, and purchase refreshments before the games begin. It
+has a voluminous area, and is a popular place for sahuagin to socialise even
+when games are not in session.  From here you can travel west, to the southern
+seating area, or north and up, to other parts of the antechamber.{x
+~
+0 4 12
+D0
+~
+~
+0 -1 27242
+D3
+~
+~
+0 -1 27231
+D4
+~
+~
+0 -1 27532
+S
+#27233
+Ota'ar Dar Arena Northern Spectator Seating, Lower~
+{GYou are on the bottom level of the spectator seating in the northern part
+of the Ota'ar Dar arena. In this far westerly portion of the southern arena your
+view of the action is poor, as it is blocked out by the cubiculum, where the
+canton's baron and his entourage sit whilst games are being held.  The entrance
+to the cubiculum is just south, while you can also travel farther east, through
+the lower tier of the spectator seating, or ascend, to the upper tier of seating
+above you.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27234
+D2
+~
+~
+8 27471 27223
+D4
+~
+~
+0 -1 27533
+E
+southeast~
+With some effort, you can make out a large, sandy arena in which heavily-armed
+gladiators are hacking each other to pieces. Fun!
+~
+S
+#27234
+Ota'ar Dar Arena Northern Spectator Seating, Lower~
+{GYou are on the bottom level of the spectator seating in the northern part
+of the Ota'ar Dar arena. The arena lies to your immediate south, though there
+seems to be some peculiar invisible force that stops you from proceeding far in
+that direction. From here you can wander through the lower seating area to the
+east and west, and you can also ascend, to the tier of spectator seating above.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27235
+D3
+~
+~
+0 -1 27233
+D4
+~
+~
+0 -1 27534
+E
+south~
+You see a large, sandy arena in which heavily-armed gladiators are hacking
+each other to pieces. Fun!
+~
+S
+#27235
+Ota'ar Dar Arena Northern Spectator Entrance, Lower~
+{GYou are on the bottom level of the spectator seating in the northern part
+of the Ota'ar Dar arena, just before the northern entrance gates that lead out
+of the canton. The arena lies to your immediate south, though there seems to be
+some peculiar invisible force that stops you from proceeding far in that
+direction. From here you can wander through the lower seating area to the
+east and west, try the gates out to the north, or ascend, to the tier of
+spectator seating above.{x
+~
+0 0 12
+D0
+~
+~
+8 -1 27244
+D1
+~
+~
+0 -1 27236
+D3
+~
+~
+0 -1 27234
+D4
+~
+~
+0 -1 27535
+E
+south~
+You see a large, sandy arena in which heavily-armed gladiators are hacking
+each other to pieces. Fun!
+~
+S
+#27236
+Ota'ar Dar Arena Northern Spectator Seating, Lower~
+{GYou are on the bottom level of the spectator seating in the northern part
+of the Ota'ar Dar arena. The arena lies to your immediate south, though there
+seems to be some peculiar invisible force that stops you from proceeding far in
+that direction. From here you can wander through the lower seating area to the
+east and west, and you can also ascend, to the tier of spectator seating above.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27237
+D3
+~
+~
+0 -1 27235
+D4
+~
+~
+0 -1 27536
+E
+south~
+You see a large, sandy arena in which heavily-armed gladiators are hacking
+each other to pieces. Fun!
+~
+S
+#27237
+Ota'ar Dar Arena Northern Spectator Seating, Lower~
+{GYou are on the bottom level of the spectator seating in the northern part
+of the Ota'ar Dar arena. The arena lies to your immediate south, though there
+seems to be some peculiar invisible force that stops you from proceeding far in
+that direction. From here you can wander through the lower seating area to the
+north and west, and you can also ascend, to the tier of spectator seating above.{x
+~
+0 0 12
+D0
+~
+~
+0 -1 27276
+D3
+~
+~
+0 -1 27236
+D4
+~
+~
+0 -1 27537
+E
+south~
+You see a large, sandy arena in which heavily-armed gladiators are hacking
+each other to pieces. Fun!
+~
+S
+#27238
+Ota'ar Dar Arena Floor, Lower~
+<190>You are standing on the floor of a vast undersea arena, of the sort built
+for the enjoyment of hideous spectacles of violence and carnage. Huge tiers of
+seating lie to the north and south. Invisible barriers of force (presumably
+magical) prevent your exit northa nd west into the seated areas, but you can move
+south, east, or directly up from your current location.<0>
+~
+0 8192 12
+D1
+~
+~
+0 -1 27239
+D2
+~
+~
+0 -1 27228
+D4
+~
+~
+0 -1 27538
+S
+#27239
+Ota'ar Dar Arena Floor Entrance/Exit~
+<190>You are standing on the floor of a vast undersea arena, of the sort built
+for the enjoyment of hideous spectacles of violence and carnage. Immediately to
+your north lies the huge, heavy doors of the arena, through which combatants and
+beasts pass in and out. It is, so far as you can see, the only entry and exit to
+the arena floor. A large brass SIGN has been placed above it that you should
+probably familiarise yourself with.
+
+You can travel west, east, south, and up from this spot.
+~
+0 8192 12
+D0
+~
+~
+8 27472 27278
+D1
+~
+~
+0 -1 27240
+D2
+~
+~
+0 -1 27229
+D3
+~
+~
+0 -1 27238
+D4
+~
+~
+0 -1 27539
+E
+sign~
+{W ----------------------------------------
+| Those who would exit this arena alive, |
+| bring to this gate the favour of every |
+| kind of warrior, as proof of their     |
+| valour. --the Baron                    |
+ ========================================{x
+~
+S
+#27240
+Ota'ar Dar Arena Floor, Lower~
+<190>You are standing on the floor of a vast undersea arena, of the sort built
+for the enjoyment of hideous spectacles of violence and carnage. Huge tiers of
+seating lie to the north and south. Invisible barriers of force (presumably
+magical) prevent your exit north into the seated areas, and a high wall
+prevents any movement east.  You can move south, west, or directly up from your
+current location.<0>
+~
+0 8192 12
+D2
+~
+~
+0 -1 27230
+D3
+~
+~
+0 -1 27239
+D4
+~
+~
+0 -1 27540
+S
+#27241
+Ota'ar Dar Arena, Eastern Entrance to Staging Zone~
+<81>You stand before the eastern entrance to Ota'ar Dar arena's staging zone,
+where combatants and beasts are made ready before entering the arena itself.
+A wide corridor leads north from here, deeper into the staging zone itself,
+while a heavy door opens east, into the arena antechamber.<0>
+~
+0 4 12
+D0
+~
+~
+0 -1 27280
+D1
+~
+~
+8 -1 27242
+S
+#27242
+Ota'ar Dar Arena, Antechamber, Lower~
+{GYou are on the bottom level of the Ota'ar Dar arena's antechamber, where
+spectators queue, mingle, and purchase refreshments before the games begin. It
+has a voluminous area, and is a popular place for sahuagin to socialise even
+when games are not in session.  From here you can travel west, in the direction
+of the arena's staging and northern seating areas, or either south or up, to
+other parts of the antechamber.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27243
+D2
+~
+~
+0 -1 27232
+D3
+~
+~
+8 -1 27241
+D4
+~
+~
+0 -1 27542
+S
+#27243
+Ota'ar Dar Arena, Eastern Entrance, Lower~
+{GYou stand before the eastern entrance to the Ota'ar Dar arena canton, in the
+ruins of a great underwater city. The enormous gates leading out to to Ota'ar
+Dar's canal system loom to the north, while you can also travel west, into
+the arena's antechamber, or up, to the top part of the gates.{x
+~
+0 4 12
+D0
+~
+~
+8 -1 27307
+D3
+~
+~
+0 -1 27242
+D4
+~
+~
+0 -1 27543
+S
+#27276
+Ota'ar Dar Arena Northern Spectator Seating, Lower~
+{GYou are on the bottom level of the spectator seating in the northern part
+of the Ota'ar Dar arena. The arena lies to the immediate southeast, though there
+seems to be some peculiar invisible force that stops you from proceeding far in
+that direction. To the east you see the entrance to the arena's staging zone,
+where the beasts and combatants of the arena are made ready before entering it.
+From here you can wander through the lower seating area to the south, head into
+the staging zone to the east, or ascend, to the tier of spectator seating above.{x
+~
+0 0 12
+D1
+~
+~
+8 -1 27277
+D2
+~
+~
+0 -1 27237
+D4
+~
+~
+0 -1 27576
+E
+southeast~
+You see a large, sandy arena in which heavily-armed gladiators are hacking
+each other to pieces. Fun!
+~
+S
+#27277
+Ota'ar Dar Arena, Western Entrance to Staging Zone~
+<81>You stand inside the western entrance to the Ota'ar Dar arena's staging zone,
+where combatants and beasts are made ready before entering the arena itself.
+You see a variety of cages full of exotic creatures and areas for the
+combatants to warm up get ready before venturing in. Exits lead west to the
+northern seating area, up to one of the beast cages, and east further into
+the staging zone complex.<0>
+~
+0 0 12
+D1
+~
+~
+0 -1 27278
+D3
+~
+~
+8 -1 27276
+D4
+You see a giant sea leech swimming in the cage above you.
+~
+~
+8 27473 27577
+S
+#27278
+Ota'ar Dar Arena, Staging Zone~
+<81>You stand in the middle of the Ota'ar Dar arena's staging zone, where
+combatants and beasts are made ready before entering the arena itself.
+You see a wall of cages full of exotic creatures to the north and upwards,
+while the western entrance to the staging zone lies not far to the west.
+A wide corridor leads east, heading in the direction of the arena's eastern
+entrance. The huge gate to the arena itself lies south.<0>
+~
+0 4 12
+D0
+You see a huge vodyanoi stomping about in the cage to the north.
+~
+~
+8 27473 27281
+D1
+~
+~
+0 -1 27279
+D2
+~
+~
+8 27472 27239
+D3
+~
+~
+0 -1 27277
+D4
+~
+~
+0 -1 27578
+S
+#27279
+Ota'ar Dar Arena, Staging Zone~
+<81>You stand towards the east of the Ota'ar Dar arena's staging zone, where
+combatants and beasts are made ready before entering the arena itself.
+You see a wall of cages full of exotic creatures to the north and upwards,
+while the western entrance to the staging zone lies off a distance to the west.
+A wide corridor leads east, heading in the direction of the arena's eastern
+entrance.<0>
+~
+0 0 12
+D0
+You see a huge, eel-like creature whipping its tail to and fro in the cage.
+~
+~
+8 27473 27282
+D1
+~
+~
+0 -1 27280
+D3
+~
+~
+0 -1 27278
+D4
+~
+~
+0 -1 27579
+S
+#27280
+Ota'ar Dar Arena, Staging Zone~
+<81>You stand in the far east of the Ota'ar Dar arena's staging zone, where
+combatants and beasts are made ready before entering the arena itself.
+Beast cages and the western exit lie to the west, while a wide corridor leads
+south, heading in the direction of the arena's eastern entrance. Above you you
+see the rooms where the gladiators prepare before entering the arena.<0>
+~
+0 4 12
+D2
+~
+~
+0 -1 27241
+D3
+~
+~
+0 -1 27279
+D4
+~
+~
+8 -1 27580
+S
+#27281
+Ota'ar Dar Arena, Beast Cage~
+<67>You stand inside a bare iron cage, build with very thick bars to hold
+dangerous beasts of every kind that have been captured to be fought by
+gladiators (and sometimes unfortunate prisoners) in the arena. The only
+possible exit lies south.<0>
+~
+0 0 12
+D2
+~
+~
+8 27473 27278
+S
+#27282
+Ota'ar Dar Arena, Beast Cage~
+<67>You stand inside a bare iron cage, build with very thick bars to hold
+dangerous beasts of every kind that have been captured to be fought by
+gladiators (and sometimes unfortunate prisoners) in the arena. The only
+possible exit lies south.<0>
+~
+0 0 12
+D2
+~
+~
+8 27473 27279
+S
+#27500
+Ota'ar Dar Jail Cell~
+{GYou are standing inside a medium-sized prison cell in Ota'ar Dar's jail, deep
+underwater. The walls are crumbling and filthy, and its bars rusty, but it is
+robust and intact, and quite capable of containing and restraining anyone
+unfortunate enough to find themselves locked in it. The cell continues to the
+north, and the only exit also appears to be in that direction also.{x
+~
+0 8 12
+D0
+~
+~
+0 -1 27503
+S
+#27501
+Ota'ar Dar Jail Cell~
+{GYou are standing inside a medium-sized prison cell in Ota'ar Dar's jail, deep
+underwater. The walls are crumbling and filthy, and its bars rusty, but it is
+robust and intact, and quite capable of containing and restraining anyone
+unfortunate enough to find themselves locked in it. The cell continues to the
+north, and the only exit also appears to be in that direction also.{x
+~
+0 8 12
+D0
+~
+~
+0 -1 27504
+S
+#27503
+Ota'ar Dar Jail Cell~
+{GYou are standing inside a medium-sized prison cell in Ota'ar Dar's jail, deep
+underwater. The walls are crumbling and filthy, and its bars rusty, but it is
+robust and intact, and quite capable of containing and restraining anyone
+unfortunate enough to find themselves locked in it. The cell continues south,
+but the only exit is north.{x
+~
+0 4|8 12
+D2
+~
+~
+0 -1 27500
+D5
+~
+~
+8 27469 27203
+S
+#27504
+Ota'ar Dar Jail Cell~
+{GYou are standing inside a medium-sized prison cell in Ota'ar Dar's jail, deep
+underwater. The walls are crumbling and filthy, and its bars rusty, but it is
+robust and intact, and quite capable of containing and restraining anyone
+unfortunate enough to find themselves locked in it. The cell continues south,
+but the only exit is north.{x
+~
+0 4|8 12
+D2
+~
+~
+0 -1 27501
+D5
+~
+~
+8 27469 27204
+S
+#27505
+Ota'ar Dar Jail Cell~
+{GYou are standing inside a small prison cell in Ota'ar Dar's jail, deep
+underwater. The walls are crumbling and filthy, and its bars rusty, but it is
+robust and intact, and quite capable of containing and restraining anyone
+unfortunate enough to find themselves locked in it.  The only exit is down.{x
+~
+0 4|8 12
+D5
+~
+~
+8 27469 27205
+S
+#27506
+Ota'ar Dar Air-Breather Jail Cell, Upper~
+{GYou are standing inside a medium-sized prison cell in Ota'ar Dar's jail.
+Curiously, this cell has been filled with air, to enable the sahuagin to hold
+surface-dwelling prisoners. The walls are crumbling and filthy, and the bars
+of the cell are rusty, but it is robust and intact, and quite capable of
+containing and restraining its inhabitants.  The cell continues downwards; you
+can see an exit west at the bottom.{x
+~
+0 8 0
+D5
+~
+~
+0 -1 27206
+S
+#27507
+Ota'ar Dar Arena Southern Spectator Seating, Upper~
+{gYou are in the upper tier of spectator seating in the southern part of the
+Ota'ar Dar arena. In this far westerly portion of the southern arena your
+view of the action is poor, as it is blocked out by the cubiculum, where the
+canton's baron and his entourage sit whilst games are being held.  The entrance
+to the cubiculum and the entrance to Ota'ar Dar's jail (conveniently located
+as to grease the prisoner-to-arena-death pipeline) lies just down from here.
+
+You may also swim east, continuing through the spectator seating, or directly
+up, into the huge, looming area of dark water above you.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27508
+D4
+~
+~
+0 -1 27149
+D5
+~
+~
+0 -1 27207
+E
+northeast~
+With some effort, you can make out a large, sandy arena in which heavily-armed
+gladiators are hacking each other to pieces. Fun!
+~
+S
+#27508
+Ota'ar Dar Arena Southern Spectator Seating, Upper~
+{gYou are in the upper tier of spectator seating in the southern part of the
+Ota'ar Dar arena.  The arena lies to your immediate north, though there
+seems to be some peculiar invisible force that stops you from proceeding far in
+that direction.
+
+From here you can wander through the upper seating area to the east and west,
+head downwards to the lower seating tier, or swim directly up, into the huge,
+looming area of dark water above you.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27509
+D3
+~
+~
+0 -1 27507
+D4
+~
+~
+0 -1 27149
+D5
+~
+~
+0 -1 27208
+E
+north~
+You see a large, sandy arena in which heavily-armed gladiators are hacking each
+other to pieces. Fun!
+~
+S
+#27509
+Ota'ar Dar Arena Southern Spectator Seating, Upper~
+{gYou are in the upper tier of spectator seating in the southern part of the
+Ota'ar Dar arena.  The arena lies to your immediate north, though there
+seems to be some peculiar invisible force that stops you from proceeding far in
+that direction.
+
+From here you can wander through the upper seating area to the east and west,
+head downwards to the lower seating tier, or swim directly up, into the huge,
+looming area of dark water above you.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27510
+D3
+~
+~
+0 -1 27508
+D4
+~
+~
+0 -1 27149
+D5
+~
+~
+0 -1 27209
+E
+north~
+You see a large, sandy arena in which heavily-armed gladiators are hacking each
+other to pieces. Fun!
+~
+S
+#27510
+Ota'ar Dar Arena Southern Spectator Seating, Upper~
+{gYou are in the upper tier of spectator seating in the southern part of the
+Ota'ar Dar arena.  The arena lies to your immediate north, though there
+seems to be some peculiar invisible force that stops you from proceeding far in
+that direction.
+
+From here you can wander through the upper seating area to the east and west,
+head downwards to the lower seating tier, or swim directly up, into the huge,
+looming area of dark water above you.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27511
+D3
+~
+~
+0 -1 27509
+D4
+~
+~
+0 -1 27149
+D5
+~
+~
+0 -1 27210
+E
+north~
+You see a large, sandy arena in which heavily-armed gladiators are hacking each
+other to pieces. Fun!
+~
+S
+#27511
+Ota'ar Dar Arena Southern Spectator Seating, Upper~
+{gYou are in the upper tier of spectator seating in the southern part of the
+Ota'ar Dar arena.  The arena lies to your immediate north, though there
+seems to be some peculiar invisible force that stops you from proceeding far in
+that direction.
+
+From here you can wander through the upper seating area to the east and west,
+head downwards to the lower seating tier, or swim directly up, into the huge,
+looming area of dark water above you.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27512
+D3
+~
+~
+0 -1 27510
+D4
+~
+~
+0 -1 27148
+D5
+~
+~
+0 -1 27211
+E
+north~
+You see a large, sandy arena in which heavily-armed gladiators are hacking each
+other to pieces. Fun!
+~
+S
+#27512
+Ota'ar Dar Arena Southern Spectator Seating, Upper~
+{gYou are in the upper tier of spectator seating in the southern part of the
+Ota'ar Dar arena.  The arena lies to your immediate north, though there
+seems to be some peculiar invisible force that stops you from proceeding far in
+that direction.
+
+From here you can wander through the upper seating area to the east and west,
+head downwards to the lower seating tier, or swim directly up, into the huge,
+looming area of dark water above you.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27513
+D3
+~
+~
+0 -1 27511
+D4
+~
+~
+0 -1 27148
+D5
+~
+~
+0 -1 27212
+E
+north~
+You see a large, sandy arena in which heavily-armed gladiators are hacking each
+other to pieces. Fun!
+~
+S
+#27513
+Ota'ar Dar Arena Southern Spectator Seating, Upper~
+{gYou are in the upper tier of spectator seating in the southern part of the
+Ota'ar Dar arena.  The arena lies to your immediate northwest, though there
+seems to be some peculiar invisible force that stops you from proceeding far in
+that direction.
+
+From here you can wander through the upper seating area to the north and west,
+head downwards to the lower seating tier, or swim directly up, into the huge,
+looming area of dark water above you.{x
+~
+0 0 12
+D0
+~
+~
+0 -1 27520
+D3
+~
+~
+0 -1 27512
+D4
+~
+~
+0 -1 27139
+D5
+~
+~
+0 -1 27213
+E
+northwest~
+You see a large, sandy arena in which heavily-armed gladiators are hacking each
+other to pieces. Fun!
+~
+S
+#27514
+Ota'ar Dar Arena, Baron's Cubiculum, the Bisellium~
+<141>You are standing in the upper section of seating in the baron's cubiculum, an
+area of the arena set aside for the use of the baron and his entourage, which
+is lavishly decorated and commands a premium view of the arena spectacle. This
+section is called the bisellium, and it is where the baron himself sits, when he
+is present.  It is resplendently decorated, and dominated by a huge, ornate throne
+in the center.
+
+A tier of seating lies below you, and more seating lies in the upper seating
+section to the north.<0>
+~
+0 0 12
+D0
+~
+~
+0 -1 27523
+D4
+~
+~
+0 -1 27149
+D5
+~
+~
+0 -1 27214
+E
+east~
+you have a perfect view of a large, sandy arena in which heavily-armed
+gladiators are hacking each other to pieces. Fun!
+~
+S
+#27515
+Ota'ar Dar Arena Floor, Upper~
+<187>You are about 4 metres above the floor of a vast undersea arena, of the sort
+built for the enjoyment of hideous spectacles of violence and carnage. Huge
+tiers of seating lie to the north and south, and you can see a large "royal"
+box of some sort immediately to the west.  Invisible barriers of force
+(presumably magical) prevent your exit west, south, or up, but you can move
+north, east or directly down from your current location.<0>
+~
+0 8192 8
+D0
+~
+~
+0 -1 27524
+D1
+~
+~
+0 -1 27516
+D5
+~
+~
+0 -1 27215
+S
+#27516
+Ota'ar Dar Arena Floor, Upper~
+<187>You are about 4 metres above the floor of a vast undersea arena, of the sort
+built for the enjoyment of hideous spectacles of violence and carnage. Huge
+tiers of seating lie to the north and south, and you can see a large "royal"
+box of some sort just to the west.  Invisible barriers of force (presumably
+magical) prevent your exit south or up, but you can move north, east, west or
+directly down from your current location.<0>
+~
+0 8192 8
+D0
+~
+~
+0 -1 27525
+D1
+~
+~
+0 -1 27517
+D3
+~
+~
+0 -1 27515
+D5
+~
+~
+0 -1 27216
+S
+#27517
+Ota'ar Dar Arena Floor, Upper~
+<187>You are about 4 metres above the floor of a vast undersea arena, of the sort
+built for the enjoyment of hideous spectacles of violence and carnage. Huge
+tiers of seating lie to the north and south, and you can see a large "royal"
+box of some sort a way to the west.  Invisible barriers of force (presumably
+magical) prevent your exit south or up, but you can move north, east, west or
+directly down from your current location.<0>
+~
+0 8192 8
+D0
+~
+~
+0 -1 27526
+D1
+~
+~
+0 -1 27518
+D3
+~
+~
+0 -1 27516
+D5
+~
+~
+0 -1 27217
+S
+#27518
+Ota'ar Dar Arena Floor, Upper~
+<187>You are about 4 metres above the floor of a vast undersea arena, of the sort
+built for the enjoyment of hideous spectacles of violence and carnage. Huge
+tiers of seating lie to the north and south, and you can see a large "royal"
+box of some sort some way to the west.  Invisible barriers of force (presumably
+magical) prevent your exit south or up, but you can move north, east, west or
+directly down from your current location.<0>
+~
+0 8192 8
+D0
+~
+~
+0 -1 27527
+D1
+~
+~
+0 -1 27519
+D3
+~
+~
+0 -1 27517
+D5
+~
+~
+0 -1 27218
+S
+#27519
+Ota'ar Dar Arena Floor, Upper~
+<187>You are about 4 metres above the floor of a vast undersea arena, of the sort
+built for the enjoyment of hideous spectacles of violence and carnage. Huge
+tiers of seating lie to the north and south, and you can see a large "royal"
+box of some sort a distance to the west.  Invisible barriers of force (presumably
+magical) prevent your exit south, east or up, but you can move north, west or
+directly down from your current location.<0>
+~
+0 0 8
+D0
+~
+~
+0 -1 27528
+D3
+~
+~
+0 -1 27518
+D5
+~
+~
+0 -1 27219
+S
+#27520
+Ota'ar Dar Arena Southern Spectator Seating, Upper~
+{gYou are in the upper tier of spectator seating in the southern part of the
+Ota'ar Dar arena.  The arena lies to your immediate north and west, though there
+seems to be some peculiar invisible force that stops you from proceeding far in
+those directions.
+
+From here you can wander through the upper seating area to the south and east,
+head downwards to the lower seating tier, or swim directly up, into the huge,
+looming area of dark water above you.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27521
+D2
+~
+~
+0 -1 27513
+D4
+~
+~
+0 -1 27148
+D5
+~
+~
+0 -1 27220
+E
+north~
+You see a large, sandy arena in which heavily-armed gladiators are hacking each
+other to pieces. Fun!
+~
+E
+west~
+You see a large, sandy arena in which heavily-armed gladiators are hacking each
+other to pieces. Fun!
+~
+S
+#27521
+Ota'ar Dar Arena Southern Spectator Seating, Upper~
+{gYou are in the upper tier of spectator seating in the southern part of the
+Ota'ar Dar arena.  The arena lies to your immediate north, though there seems
+to be some peculiar invisible force that stops you from proceeding far in
+that direction.
+
+From here you can wander through the upper seating area to the west and east,
+head downwards to the lower seating tier, or swim directly up, into the huge,
+looming area of dark water above you.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27522
+D3
+~
+~
+0 -1 27520
+D4
+~
+~
+0 -1 27139
+D5
+~
+~
+0 -1 27221
+E
+north~
+You see a large, sandy arena in which heavily-armed gladiators are hacking each
+other to pieces. Fun!
+~
+S
+#27522
+Ota'ar Dar Arena Southern Spectator Seating, Upper~
+{gYou are in the upper tier of spectator seating in the southern part of the
+Ota'ar Dar arena.  The arena lies to your immediate northwest, though there seems
+to be some peculiar invisible force that stops you from proceeding far in
+that direction.
+
+From here you can wander through the upper seating area to the west and north,
+head downwards to the lower seating tier, or swim directly up, into the huge,
+looming area of dark water above you.{x
+~
+0 0 12
+D0
+~
+~
+0 -1 27531
+D3
+~
+~
+0 -1 27521
+D4
+~
+~
+0 -1 27139
+D5
+~
+~
+0 -1 27222
+E
+north~
+You see a large, sandy arena in which heavily-armed gladiators are hacking each
+other to pieces. Fun!
+~
+S
+#27523
+Ota'ar Dar Arena, Baron's Cubiculum, Upper~
+<141>You are standing in the upper section of seating in the baron's cubiculum, an
+area of the arena set aside for the use of the baron and his entourage, which
+is lavishly decorated and commands a premium view of the arena spectacle. When
+present, the baron usually attends with some of his wives and at least one
+representative of the Sekolah temple, in order to maintain the barrier around
+the arena that prevents combatants from escaping and spectators from entering.
+
+A tier of seating lies below you, and the baron's throne lies in the section to
+the south.<0>
+~
+0 0 12
+D2
+~
+~
+0 -1 27514
+D4
+~
+~
+0 -1 27145
+D5
+~
+~
+0 -1 27223
+E
+east~
+You have a glorious view of a large, sandy arena in which heavily-armed
+gladiators are hacking each other to pieces. Fun!
+~
+S
+#27524
+Ota'ar Dar Arena Floor, Upper~
+<187>You are about 4 metres above the floor of a vast undersea arena, of the sort
+built for the enjoyment of hideous spectacles of violence and carnage. Huge
+tiers of seating lie to the north and south, and you can see a large "royal"
+box of some sort immediately to your west.  Invisible barriers of force
+(presumably magical) prevent your exit north, west or up, but you can move
+south, east or directly down from your current location.<0>
+~
+0 8192 8
+D1
+~
+~
+0 -1 27525
+D2
+~
+~
+0 -1 27515
+D5
+~
+~
+0 -1 27224
+S
+#27525
+Ota'ar Dar Arena Floor, Upper~
+<187>You are about 4 metres above the floor of a vast undersea arena, of the sort
+built for the enjoyment of hideous spectacles of violence and carnage. Huge
+tiers of seating lie to the north and south, and you can see a large "royal"
+box of some sort close by to your west.  Invisible barriers of force (presumably
+magical) prevent your exit north or up, but you can move south, west, east or
+directly down from your current location.<0>
+~
+0 8192 8
+D1
+~
+~
+0 -1 27526
+D2
+~
+~
+0 -1 27516
+D3
+~
+~
+0 -1 27524
+D5
+~
+~
+0 -1 27225
+S
+#27526
+Ota'ar Dar Arena Floor, Upper~
+<187>You are about 4 metres above the floor of a vast undersea arena, of the sort
+built for the enjoyment of hideous spectacles of violence and carnage. Huge
+tiers of seating lie to the north and south, and you can see a large "royal"
+box of some sort a distance to your west.  Invisible barriers of force
+(presumably magical) prevent your exit north or up, but you can move south,
+west, east or directly down from your current location.<0>
+~
+0 8192 8
+D1
+~
+~
+0 -1 27527
+D2
+~
+~
+0 -1 27517
+D3
+~
+~
+0 -1 27525
+D5
+~
+~
+0 -1 27226
+S
+#27527
+Ota'ar Dar Arena Floor, Upper~
+<187>You are about 4 metres above the floor of a vast undersea arena, of the sort
+built for the enjoyment of hideous spectacles of violence and carnage. Huge
+tiers of seating lie to the north and south, and you can see a large "royal"
+box of some sort some distance to your west.  Invisible barriers of force
+(presumably magical) prevent your exit north or up, but you can move south,
+west, east or directly down from your current location.<0>
+~
+0 8192 8
+D1
+~
+~
+0 -1 27528
+D2
+~
+~
+0 -1 27518
+D3
+~
+~
+0 -1 27526
+D5
+~
+~
+0 -1 27227
+S
+#27528
+Ota'ar Dar Arena Floor, Upper~
+<187>You are about 4 metres above the floor of a vast undersea arena, of the sort
+built for the enjoyment of hideous spectacles of violence and carnage. Huge
+tiers of seating lie to the north and south, and you can see a large "royal"
+box of some sort a considerable distance to your west.  Invisible barriers of
+force (presumably magical) prevent your exit up, but you can move north, south,
+west, east or directly down from your current location.<0>
+~
+0 8192 8
+D0
+~
+~
+0 -1 27538
+D1
+~
+~
+0 -1 27529
+D2
+~
+~
+0 -1 27519
+D3
+~
+~
+0 -1 27527
+D5
+~
+~
+0 -1 27228
+S
+#27529
+Ota'ar Dar Arena Floor, Upper~
+<187>You are about 4 metres above the floor of a vast undersea arena, of the sort
+built for the enjoyment of hideous spectacles of violence and carnage. Huge
+tiers of seating lie to the north and south, and you can see a large "royal"
+box of some sort a great distance to your west.  Invisible barriers of force
+(presumably magical) prevent your exit south or up, but you can move north,
+west, east or directly down from your current location.<0>
+~
+0 8192 8
+D0
+~
+~
+0 -1 27539
+D1
+~
+~
+0 -1 27530
+D3
+~
+~
+0 -1 27528
+D5
+~
+~
+0 -1 27229
+S
+#27530
+Ota'ar Dar Arena Floor, Upper~
+<187>You are about 4 metres above the floor of a vast undersea arena, of the sort
+built for the enjoyment of hideous spectacles of violence and carnage. Huge
+tiers of seating lie to the north and south, and you can see a large "royal"
+box of some sort a very great distance to your west.  Invisible barriers of force
+(presumably magical) prevent your exit east, south or up, but you can move north,
+west, or directly down from your current location.<0>
+~
+0 8192 8
+D0
+~
+~
+0 -1 27540
+D3
+~
+~
+0 -1 27529
+D5
+~
+~
+0 -1 27230
+S
+#27531
+Ota'ar Dar Arena Southern Spectator Seating, Upper~
+{gYou are in the upper tier of spectator seating in the southern part of the
+Ota'ar Dar arena.  The arena lies to your immediate west, though there seems
+to be some peculiar invisible force that stops you from proceeding far in
+that direction. A high wall rises to your north, preventing travel in that
+direction also.
+
+From here you can wander through the upper seating area to the south, head to
+the arena's antechamber to the east, head downwards to the lower seating tier,
+or swim directly up, into the huge, looming area of dark water above you.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27532
+D2
+~
+~
+0 -1 27522
+D4
+~
+~
+0 -1 27139
+D5
+~
+~
+0 -1 27231
+E
+west~
+You see a large, sandy arena in which heavily-armed gladiators are hacking each
+other to pieces. Fun!
+~
+S
+#27532
+Ota'ar Dar Arena, Antechamber, Upper~
+{gYou are on the upper level of the Ota'ar Dar arena's antechamber, where
+spectators queue, mingle, and purchase refreshments before the games begin. It
+has a voluminous area, and is a popular place for sahuagin to socialise even when
+games are not in session.  From here you can travel west, to the upper tier of
+the southern seating area, north or down, to other parts of the antechamber, or
+directly up, into the dark, ominous area of water above your head.{x
+~
+0 4 8
+D0
+~
+~
+0 -1 27542
+D3
+~
+~
+0 -1 27531
+D4
+~
+~
+0 -1 27139
+D5
+~
+~
+0 -1 27232
+S
+#27533
+Ota'ar Dar Arena Northern Spectator Seating, Upper~
+{gYou are in the upper tier of spectator seating in the northern part of the
+Ota'ar Dar arena. In this far westerly portion of the northern arena your
+view of the action is poor, as it is blocked out by the cubiculum, where the
+canton's baron and his entourage sit whilst games are being held.  The entrance
+to the cubiculum lies just down from here.
+
+You may also swim east, continuing through the upper tier of spectator seating,
+or directly up, into the huge, looming area of dark water above you.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27534
+D4
+~
+~
+0 -1 27145
+D5
+~
+~
+0 -1 27233
+E
+southeast~
+With some effort, you can make out a large, sandy arena in which heavily-armed
+gladiators are hacking each other to pieces. Fun!
+~
+S
+#27534
+Ota'ar Dar Arena Northern Spectator Seating, Upper~
+{gYou are on the upper tier of the spectator seating in the northern part of the
+Ota'ar Dar arena. The arena lies to your immediate south, though there seems to be
+some peculiar invisible force that stops you from proceeding far in that direction.
+From here you can wander through the upper seating area to the east and west, go
+down to the lower seating tier, and ascend, into the huge, looming area of dark
+water above you.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27535
+D3
+~
+~
+0 -1 27533
+D5
+~
+~
+0 -1 27234
+E
+south~
+You can make out a large, sandy arena in which heavily-armed gladiators are
+hacking each other to pieces. Fun!
+~
+S
+#27535
+Ota'ar Dar Arena Northern Spectator Entrance, Upper~
+{gYou are on the upper level of the spectator seating in the northern part
+of the Ota'ar Dar arena, just before the northern entrance gates that lead out
+of the canton. The arena lies to your immediate south, though there seems to be
+some peculiar invisible force that stops you from proceeding far in that
+direction. From here you can wander through the upper seating area to the
+east and west, try the gates out to the north, go down to the lower part of the
+gates, or ascend, into the huge, looming area of dark water above you.{x
+~
+0 0 12
+D0
+~
+~
+8 -1 27544
+D1
+~
+~
+0 -1 27536
+D3
+~
+~
+0 -1 27534
+D4
+~
+~
+0 -1 27145
+D5
+~
+~
+0 -1 27235
+E
+south~
+You can make out a large, sandy arena in which heavily-armed gladiators are
+hacking each other to pieces. Fun!
+~
+S
+#27536
+Ota'ar Dar Arena Northern Spectator Seating, Upper~
+{gYou are on the upper tier of the spectator seating in the northern part of the
+Ota'ar Dar arena. The arena lies to your immediate south, though there seems to be
+some peculiar invisible force that stops you from proceeding far in that direction.
+From here you can wander through the upper seating area to the east and west, go
+down to the lower seating tier, and ascend, into the huge, looming area of dark
+water above you.{x
+~
+0 0 12
+D1
+~
+~
+0 -1 27537
+D3
+~
+~
+0 -1 27535
+D4
+~
+~
+0 -1 27145
+D5
+~
+~
+0 -1 27236
+E
+south~
+You can make out a large, sandy arena in which heavily-armed gladiators are
+hacking each other to pieces. Fun!
+~
+S
+#27537
+Ota'ar Dar Arena Northern Spectator Seating, Upper~
+{gYou are on the upper tier of the spectator seating in the northern part of the
+Ota'ar Dar arena. The arena lies to your immediate south and east, though there seems
+to be some peculiar invisible force that stops you from proceeding far in those
+directions. From here you can wander through the upper seating area to the north
+and west, go down to the lower seating tier, and ascend, into the huge, looming
+area of dark water above you.{x
+~
+0 0 12
+D0
+~
+~
+0 -1 27576
+D3
+~
+~
+0 -1 27536
+D4
+~
+~
+0 -1 27149
+D5
+~
+~
+0 -1 27237
+E
+south~
+You can make out a large, sandy arena in which heavily-armed gladiators are
+hacking each other to pieces. Fun!
+~
+S
+#27538
+Ota'ar Dar Arena Floor, Upper~
+<187>You are about 4 metres above the floor of a vast undersea arena, of the sort
+built for the enjoyment of hideous spectacles of violence and carnage. Huge
+tiers of seating lie to the north and south.  Invisible barriers of force
+(presumably magical) prevent your exit north, west or up, but you can move south,
+east, or directly down from your current location.<0>
+~
+0 8192 12
+D1
+~
+~
+0 -1 27539
+D2
+~
+~
+0 -1 27528
+D5
+~
+~
+0 -1 27238
+S
+#27539
+Ota'ar Dar Arena Floor, Upper~
+<187>You are about 4 metres above the floor of a vast undersea arena, of the sort
+built for the enjoyment of hideous spectacles of violence and carnage. Huge
+tiers of seating lie to the north and south.  Invisible barriers of force
+(presumably magical) prevent your exit north, or up, but you can move south,
+west, east, or directly down from your current location. Below you you see
+the mighty arena gates, the only obvious way into or out of the arena.<0>
+~
+0 8192 8
+D1
+~
+~
+0 -1 27540
+D2
+~
+~
+0 -1 27529
+D3
+~
+~
+0 -1 27538
+D5
+~
+~
+0 -1 27239
+S
+#27540
+Ota'ar Dar Arena Floor, Upper~
+<187>You are about 4 metres above the floor of a vast undersea arena, of the sort
+built for the enjoyment of hideous spectacles of violence and carnage. Huge
+tiers of seating lie to the north and south.  Invisible barriers of force
+(presumably magical) prevent your exit north, east or up, but you can move south,
+west, or directly down from your current location.<0>
+~
+0 8192 8
+D2
+~
+~
+0 -1 27530
+D3
+~
+~
+0 -1 27539
+D5
+~
+~
+0 -1 27240
+S
+#27541
+Ota'ar Dar Arena, Combatant Training Room~
+<67>You stand inside a relatively comfortable and well-appointed (if roughly
+constructed) room built to allow gladiators who are awaiting their summons to
+the arena to practice their skills against each other and the various pieces
+of training equipment that are here. You can also ascend upwards, into the
+dark, ominous body of water that lies above your head.<0>
+~
+0 0 12
+D0
+~
+~
+0 -1 27580
+D4
+~
+~
+0 -1 27148
+S
+#27542
+Ota'ar Dar Arena, Antechamber, Upper~
+{gYou are on the upper level of the Ota'ar Dar arena's antechamber, where
+spectators queue, mingle, and purchase refreshments before the games begin. It
+has a voluminous area, and is a popular place for sahuagin to socialise even
+when games are not being held. From here you can travel east, to the eastern
+arena entrance, south or down, to other parts of the antechamber, or directly
+up, into the dark, ominous area of water above your head.{x
+~
+0 0 8
+D1
+~
+~
+0 -1 27543
+D2
+~
+~
+0 -1 27532
+D4
+~
+~
+0 -1 27139
+D5
+~
+~
+0 -1 27242
+S
+#27543
+Ota'ar Dar Arena, Eastern Entrance, Upper~
+{gYou are at the eastern entrance to the Ota'ar Dar arena canton, about 4 metres
+above the ground, in the ruins of a great underwater city. The enormous gates to
+Ota'ar Dar's canal system loom to the north, while you can also travel west, into
+the arena's antechamber, down to the lower part of the gates or directly up, into
+the dark, ominous area of water above your head.{x
+~
+0 4 8
+D0
+~
+~
+8 -1 27607
+D3
+~
+~
+0 -1 27542
+D4
+~
+~
+0 -1 27139
+D5
+~
+~
+0 -1 27243
+S
+#27576
+Ota'ar Dar Arena Northern Spectator Seating, Upper~
+{gYou are on the upper tier of the spectator seating in the northern part of the
+Ota'ar Dar arena. The arena lies to your immediate southeast, though there seems
+to be some peculiar invisible force that stops you from proceeding far in that
+direction. From here you can wander through the upper seating area to the south,
+go down to the lower seating tier, and ascend, into the huge, looming area of dark
+water above you.{x
+~
+0 0 12
+D2
+~
+~
+0 -1 27537
+D4
+~
+~
+0 -1 27145
+D5
+~
+~
+0 -1 27276
+E
+south~
+You can make out a large, sandy arena in which heavily-armed gladiators are
+hacking each other to pieces. Fun!
+~
+S
+#27577
+Ota'ar Dar Arena, Beast Cage~
+<67>You stand inside a bare iron cage, build with very thick bars to hold
+dangerous beasts of every kind that have been captured to be fought by
+gladiators (and sometimes unfortunate prisoners) in the arena. The only
+possible exit lies downwards.<0>
+~
+0 0 12
+D5
+~
+~
+8 27473 27277
+S
+#27578
+Ota'ar Dar Arena, Staging Zone, Upper~
+<81>You stand in the upper part of the middle of the Ota'ar Dar arena's staging
+zone, where combatants and beasts are made ready before entering the arena
+itself. You see a wall of cages full of exotic creatures to the north, while the
+lower central part of the staging zone is a short way down from here. You may also
+ascend, into the huge, looming area of dark water that lies above you.<0>
+~
+0 0 8
+D0
+You see a spherical mass of writhing tentacles radiating pure evil in the cage.
+~
+~
+8 27473 27581
+D1
+~
+~
+0 -1 27579
+D4
+~
+~
+0 -1 27149
+D5
+~
+~
+0 -1 27278
+S
+#27579
+Ota'ar Dar Arena, Staging Zone, Upper~
+<81>You stand in the upper part of the middle of the Ota'ar Dar arena's staging
+zone, where combatants and beasts are made ready before entering the arena
+itself. You see a wall of cages full of exotic creatures to the north, while the
+lower eastern part of the staging zone is a short way down from here. You may also
+ascend, into the huge, looming area of dark water that lies above you.<0>
+~
+0 0 8
+D0
+You see a massive, sleek alligator-like creature in the cage.
+~
+~
+8 27473 27582
+D3
+~
+~
+0 -1 27578
+D4
+~
+~
+0 -1 27149
+D5
+~
+~
+0 -1 27279
+S
+#27580
+Ota'ar Dar Arena, Combatant Waiting Room~
+<67>You stand inside a relatively comfortable and well-appointed (if roughly
+constructed) room built to hold gladiators who await their call to enter the
+arena and do battle. A door opens downward into the staging zone, while this
+room continues to the south, leading into an area where the gladiators can
+practice their skills while waiting.  You can also ascend upwards, into the
+dark, ominous body of water that lies above your head.<0>
+~
+0 0 12
+D2
+~
+~
+0 -1 27541
+D4
+~
+~
+0 -1 27149
+D5
+~
+~
+8 -1 27280
+S
+#27581
+Ota'ar Dar Arena, Beast Cage~
+<67>You stand inside a bare iron cage, build with very thick bars to hold
+dangerous beasts of every kind that have been captured to be fought by
+gladiators (and sometimes unfortunate prisoners) in the arena. The only
+possible exit lies south.<0>
+~
+0 0 12
+D2
+~
+~
+8 27473 27578
+S
+#27582
+Ota'ar Dar Arena, Beast Cage~
+<67>You stand inside a bare iron cage, build with very thick bars to hold
+dangerous beasts of every kind that have been captured to be fought by
+gladiators (and sometimes unfortunate prisoners) in the arena. The only
+possible exit lies south.<0>
+~
+0 0 12
+D2
+~
+~
+8 27473 27579
+S
+#0
+
+#RESETS
+
+* Exits
+
+D 1 27200 0 2   ; Prison Cell Lock North
+D 1 27201 0 2   ; Prison Cell Lock North
+D 1 27203 2 2   ; Jail Administration Area Lock South
+D 1 27203 0 2   ; Jail Administration Area Lock North
+D 1 27203 4 2   ; Jail Administration Area Lock Up
+D 1 27204 2 2   ; Jail Administration Area Lock South
+D 1 27204 4 2   ; Jail Administration Area Lock Up
+D 1 27205 4 2   ; Jail Administration Area Lock Up
+D 1 27205 1 2   ; Jail Administration Area Lock East
+D 1 27206 3 2   ; Ota'ar Dar Air-Breather Jail Cell Lock West
+D 1 27207 2 2   ; Southern Spectator Seating Lock South
+D 1 27207 0 2   ; Southern Spectator Seating Lock North
+D 1 27214 2 2   ; Baron's Private Box Lock South
+D 1 27223 0 2   ; Baron's Private Box Lock North
+D 1 27233 2 2   ; Northern Spectator Seating Lock South
+D 1 27235 0 1   ; Northern Arena Seating Close North
+D 1 27239 0 2   ; Arena Floor Lock North
+D 1 27241 1 1   ; Eastern Entrance to Staging Zone, Close East
+D 1 27242 3 1   ; Antechamber, Close West
+D 1 27243 0 1   ; Eastern Entrance, Close North
+D 1 27276 1 1   ; Northern Arena Seating Close East
+D 1 27277 3 1   ; Western Entrance to Staging Zone, Close West
+D 1 27277 4 2   ; Western Entrance to Staging Zone, Lock Up
+D 1 27278 0 2   ; Staging Zone Lock North
+D 1 27278 2 2   ; Staging Zone Lock South
+D 1 27279 0 2   ; Staging Zone Lock North
+D 1 27280 4 1   ; Staging Zone Close Up
+D 1 27281 2 2   ; Beast Cage Lock South
+D 1 27282 2 2   ; Beast Cage Lock South
+D 1 27503 5 2   ; Prison Cell Lock Down
+D 1 27504 5 2   ; Prison Cell Lock Down
+D 1 27505 5 2   ; Prison Cell Lock Down
+D 1 27535 0 1   ; Northern Arena Seating, Upper Close North
+D 1 27243 0 1   ; Main Arena Entrance Close North
+D 1 27543 0 1   ; Main Arena Entrance, Upper Close North
+D 1 27577 5 2   ; Beast Cage Lock Down
+D 1 27578 0 2   ; Staging Zone Lock North
+D 1 27579 0 2   ; Staging Zone Lock North
+D 1 27580 5 1   ; Staging Zone Close Down
+D 1 27581 2 2   ; Beast Cage Lock South
+D 1 27582 2 2   ; Beast Cage Lock South
+
+* Mobiles
+
+M 1 27352 4 27224		; Kaer'l gladiator to Ota'ar Dar Arena Floor, Lower
+E 1 27419 100 3         ; equip spiked pauldrons
+E 1 27422 100 6         ; equip helmet
+E 1 27423 100 7         ; equip fasciae
+E 1 27475 100 8         ; equip ocrea
+E 1 27476 100 11        ; equip shield
+E 1 27477 100 13        ; equip balteus
+E 1 27474 100 16        ; equip a short sword
+G 1 27481 100           ; give Kaer'l favour
+*
+M 1 27352 4 27228		; Kaer'l gladiator to Ota'ar Dar Arena Floor, Lower
+E 1 27419 100 3         ; equip spiked pauldrons
+E 1 27422 100 6         ; equip helmet
+E 1 27423 100 7         ; equip fasciae
+E 1 27475 100 8         ; equip ocrea
+E 1 27476 100 11        ; equip shield
+E 1 27477 100 13        ; equip balteus
+E 1 27474 100 16        ; equip a short sword
+G 1 27481 100           ; give Kaer'l favour
+*
+M 1 27352 4 27530		; Kaer'l gladiator to Ota'ar Dar Arena Floor, Upper
+E 1 27419 100 3         ; equip spiked pauldrons
+E 1 27422 100 6         ; equip helmet
+E 1 27423 100 7         ; equip fasciae
+E 1 27475 100 8         ; equip ocrea
+E 1 27476 100 11        ; equip shield
+E 1 27477 100 13        ; equip balteus
+E 1 27474 100 16        ; equip a short sword
+G 1 27481 100           ; give Kaer'l favour
+*
+M 1 27353 4 27215       ; a Luv'ht gladiator to Ota'ar Dar Arena Floor, Lower
+E 1 27477 100 13        ; equip balteus
+E 1 27474 100 16        ; equip a short sword
+E 1 27474 100 18        ; equip a short sword
+G 1 27482 100           ; give Luv'ht favour
+*
+M 1 27353 4 27540       ; a Luv'ht gladiator to Ota'ar Dar Arena Floor, Upper
+E 1 27425 100 13        ; equip purple loincloth
+E 1 27474 100 16        ; equip a short sword
+E 1 27474 100 18        ; equip a short sword
+G 1 27482 100           ; give Luv'ht favour
+*
+M 1 27353 4 27219       ; a Luv'ht gladiator to Ota'ar Dar Arena Floor, Lower
+E 1 27477 100 13        ; equip balteus
+E 1 27474 100 16        ; equip a short sword
+E 1 27474 100 18        ; equip a short sword
+G 1 27482 100           ; give Luv'ht favour
+*
+M 1 27354 4 27216		; Maland gladiator to Ota'ar Dar Arena Floor, Lower
+E 1 27419 100 3         ; equip spiked pauldrons
+E 1 27422 100 6         ; equip helmet
+E 1 27423 100 7         ; equip fasciae
+E 1 27475 100 8         ; equip ocrea
+E 1 27479 100 11        ; equip buckler
+E 1 27477 100 13        ; equip balteus
+E 1 27478 100 16        ; equip a long spear
+G 1 27483 100           ; give Maland favour
+*
+M 1 27354 4 27218		; Maland gladiator to Ota'ar Dar Arena Floor, Lower
+E 1 27419 100 3         ; equip spiked pauldrons
+E 1 27422 100 6         ; equip helmet
+E 1 27423 100 7         ; equip fasciae
+E 1 27475 100 8         ; equip ocrea
+E 1 27479 100 11        ; equip buckler
+E 1 27477 100 13        ; equip balteus
+E 1 27478 100 16        ; equip a long spear
+G 1 27483 100           ; give Maland favour
+*
+M 1 27354 4 27229		; Maland gladiator to Ota'ar Dar Arena Floor, Lower
+E 1 27419 100 3         ; equip spiked pauldrons
+E 1 27422 100 6         ; equip helmet
+E 1 27423 100 7         ; equip fasciae
+E 1 27475 100 8         ; equip ocrea
+E 1 27479 100 11        ; equip buckler
+E 1 27477 100 13        ; equip balteus
+E 1 27478 100 16        ; equip a long spear
+G 1 27483 100           ; give Maland favour
+*
+M 1 27355 4 27526       ; Heiral gladiator to Ota'ar Dar Arena Floor, Upper
+E 1 27425 100 13        ; equip purple loincloth
+E 1 27459 100 16        ; equip trident
+E 1 27243 100 18        ; equip net
+G 1 27484 100           ; give Heiral favour
+*
+M 1 27355 4 27519       ; Heiral gladiator to Ota'ar Dar Arena Floor, Upper
+E 1 27425 100 13        ; equip purple loincloth
+E 1 27459 100 16        ; equip trident
+E 1 27243 100 18        ; equip net
+G 1 27484 100           ; give Heiral favour
+*
+M 1 27355 4 27539       ; Heiral gladiator to Ota'ar Dar Arena Floor, Upper
+E 1 27425 100 13        ; equip purple loincloth
+E 1 27459 100 16        ; equip trident
+E 1 27243 100 18        ; equip net
+G 1 27484 100           ; give Heiral favour
+*
+M 1 27356 4 27216       ; Urm'da gladiator to Ota'ar Dar Arena Floor, Lower
+E 1 27419 100 3         ; equip spiked pauldrons
+E 1 27422 100 6         ; equip helmet
+E 1 27423 100 7         ; equip fasciae
+E 1 27475 100 8         ; equip ocrea
+E 1 27477 100 13        ; equip balteus
+E 1 27474 100 16        ; equip a short sword
+E 1 27480 100 18        ; equip scissore
+G 1 27485 100           ; give Urm'da favour
+*
+M 1 27356 4 27219      ; Urm'da gladiator to Ota'ar Dar Arena Floor, Lower
+E 1 27419 100 3         ; equip spiked pauldrons
+E 1 27422 100 6         ; equip helmet
+E 1 27423 100 7         ; equip fasciae
+E 1 27475 100 8         ; equip ocrea
+E 1 27477 100 13        ; equip balteus
+E 1 27474 100 16        ; equip a short sword
+E 1 27480 100 18        ; equip scissore
+G 1 27485 100           ; give Urm'da favour
+*
+M 1 27356 4 27529       ; Urm'da gladiator to Ota'ar Dar Arena Floor, Upper
+E 1 27419 100 3         ; equip spiked pauldrons
+E 1 27422 100 6         ; equip helmet
+E 1 27423 100 7         ; equip fasciae
+E 1 27475 100 8         ; equip ocrea
+E 1 27477 100 13        ; equip balteus
+E 1 27474 100 16        ; equip a short sword
+E 1 27480 100 18        ; equip scissore
+G 1 27485 100           ; give Urm'da favour
+*
+M 1 27357 1 27239       ; Wizinvischap to outside the arena exit
+*
+M 1 27358 1 27278       ; Arenamaster to staging zone
+E 1 27425 100 13        ; equip purple loincloth
+E 1 27487 100 16        ; equip whip
+G 1 27473 100           ; give arenamaster key
+*
+M 1 27359 1 27281       ; vodyanoi to Beast cage
+E 1 27390 100 16        ; equip mandibles vodyanoi
+*
+M 1 27360 1 27282       ; an aboleth to Beast cage
+E 1 27234 100 16        ; equip sharp teeth
+E 1 27380 100 18        ; equip smooth tentacles
+*
+M 1 27361 1 27581		; a laghathti to Beast cage
+E 1 27397 100 16        ; equip tentacles
+G 1 27488 100           ; give bladder of blood
+*
+M 1 27362 1 27582		; a giant gar to Beast cage
+E 1 27234 100 16        ; equip sharp teeth
+*
+M 1 27363 1 27577		; a giant sea leech to Beast cage
+G 1 27489 100           ; give leech egg
+*
+M 1 27355 4 27539       ; Heiral gladiator to Ota'ar Dar Arena, Combatant Waiting Room
+E 1 27425 100 13        ; equip purple loincloth
+E 1 27459 100 16        ; equip trident
+E 1 27243 100 18        ; equip net
+*
+M 1 27356 4 27580       ; Urm'da gladiator to Ota'ar Dar Arena, Combatant Waiting Room
+E 1 27419 100 3         ; equip spiked pauldrons
+E 1 27422 100 6         ; equip helmet
+E 1 27423 100 7         ; equip fasciae
+E 1 27475 100 8         ; equip ocrea
+E 1 27477 100 13        ; equip balteus
+E 1 27474 100 16        ; equip a short sword
+E 1 27480 100 18        ; equip scissore
+*
+M 1 27354 4 27580		; Maland gladiator to Ota'ar Dar Arena, Combatant Waiting Room
+E 1 27419 100 3         ; equip spiked pauldrons
+E 1 27422 100 6         ; equip helmet
+E 1 27423 100 7         ; equip fasciae
+E 1 27475 100 8         ; equip ocrea
+E 1 27479 100 11        ; equip buckler
+E 1 27477 100 13        ; equip balteus
+E 1 27478 100 16        ; equip a long spear
+*
+M 1 27352 4 27541		; Kaer'l gladiator to Ota'ar Dar Arena Floor, Upper
+E 1 27419 100 3         ; equip spiked pauldrons
+E 1 27422 100 6         ; equip helmet
+E 1 27423 100 7         ; equip fasciae
+E 1 27475 100 8         ; equip ocrea
+E 1 27476 100 11        ; equip shield
+E 1 27477 100 13        ; equip balteus
+E 1 27474 100 16        ; equip a short sword
+*
+M 1 27353 4 27541       ; a Luv'ht gladiator to Ota'ar Dar Arena Floor, Lower
+E 1 27477 100 13        ; equip balteus
+E 1 27474 100 16        ; equip a short sword
+E 1 27474 100 18        ; equip a short sword
+*
+M 1 27364 1 27541       ; a training dummy to Combatant Training Room
+*
+M 1 27365 4 27235		; an Ota'ar Dar cityguard to Ota'ar Dar Arena Northern Spectator Entrance, Lower
+E 1 27364 100 3         ; equip a cityguard's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27242 100 16        ; equip a crude trident
+*
+M 1 27365 4 27535		; an Ota'ar Dar cityguard to Ota'ar Dar Arena Northern Spectator Entrance, Upper
+E 1 27364 100 3         ; equip a cityguard's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27242 100 16        ; equip a crude trident
+*
+M 1 27365 4 27243		; an Ota'ar Dar cityguard to Ota'ar Dar Arena Eastern Entrance, Lower
+E 1 27364 100 3         ; equip a cityguard's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27242 100 16        ; equip a crude trident
+*
+M 1 27365 4 27543		; an Ota'ar Dar cityguard to Ota'ar Dar Arena Eastern Entrance, Upper
+E 1 27364 100 3         ; equip a cityguard's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27242 100 16        ; equip a crude trident
+*
+M 1 27366 6 27233       ; a male sahuagin spectator to Ota'ar Dar Arena Northern Spectator Seating, Lower
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27366 6 27236       ; a male sahuagin spectator to Ota'ar Dar Arena Northern Spectator Seating, Lower
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27366 6 27209       ; a male sahuagin spectator to Ota'ar Dar Arena Southern Spectator Seating, Lower
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27366 6 27211       ; a male sahuagin spectator to Ota'ar Dar Arena Southern Spectator Seating, Lower
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27366 6 27511       ; a male sahuagin spectator to Ota'ar Dar Arena Southern Spectator Seating, Lower
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27366 6 27207       ; a male sahuagin spectator to Ota'ar Dar Arena Southern Spectator Seating, Lower
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27367 6 27235       ; a female sahuagin spectator to Ota'ar Dar Arena Northern Entrance, Lower
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27367 6 27237       ; a female sahuagin spectator to Ota'ar Dar Arena Northern Entrance, Lower
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27367 6 27208       ; a female sahuagin spectator to Ota'ar Dar Arena Southern Spectator Seating, Lower
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27367 6 27210       ; a female sahuagin spectator to Ota'ar Dar Arena Southern Spectator Seating, Lower
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27367 6 27522       ; a female sahuagin spectator to Ota'ar Dar Arena Southern Spectator Seating, Upper
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27367 6 27531       ; a female sahuagin spectator to Ota'ar Dar Arena Southern Spectator Seating, Upper
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27368 5 27237       ; a male sahuagin broodling to Ota'ar Dar Arena Northern Spectator Seating, Lower
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27368 5 27537       ; a male sahuagin broodling to Ota'ar Dar Arena Northern Spectator Seating, Lower
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27368 5 27231       ; a male sahuagin broodling to Ota'ar Dar Arena Northern Spectator Seating, Lower
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27368 5 27221       ; a male sahuagin broodling to Ota'ar Dar Arena Southern Spectator Seating, Lower
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27368 5 27521       ; a male sahuagin broodling to Ota'ar Dar Arena Southern Spectator Seating, Lower
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27369 5 27534       ; a female sahuagin broodling to Ota'ar Dar Arena Northern Spectator Seating, Upper
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27369 5 27234       ; a female sahuagin broodling to Ota'ar Dar Arena Northern Spectator Seating, Upper
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27369 5 27222       ; a female sahuagin broodling to Ota'ar Dar Arena Southern Spectator Seating, Lower
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27369 5 27220       ; a female sahuagin broodling to Ota'ar Dar Arena Southern Spectator Seating, Lower
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27369 5 27513       ; a female sahuagin broodling to Ota'ar Dar Arena Southern Spectator Seating, Lower
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27371 3 27576       ; a female sahuagin hatchling to Ota'ar Dar Arena Northern Spectator Seating, Upper
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27371 3 27511       ; a female sahuagin hatchling to Ota'ar Dar Arena Southern Spectator Seating, Upper
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27371 3 27509       ; a female sahuagin hatchling to Ota'ar Dar Arena Southern Spectator Seating, Upper
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27370 3 27212       ; a male sahuagin hatchling to Ota'ar Dar Arena Southern Spectator Seating, Lower
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27370 3 27536      ; a male sahuagin hatchling to Ota'ar Dar Arena Northern Spectator Seating, Upper
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27370 3 27520      ; a male sahuagin hatchling to Ota'ar Dar Arena Northern Spectator Seating, Upper
+E 1 27425 100 13        ; equip purple loincloth
+*
+M 1 27372 1 27537       ; Garyl Kai to Ota'ar Dar Arena Northern Spectator Seating, Upper
+E 1 27425 100 13        ; equip purple loincloth
+G 1 27272 100           ; give sea urchin
+G 1 27273 100           ; give fried whale blubber
+G 1 27254 100           ; give gutrot
+G 1 27294 100           ; give ray wing pie
+*
+M 1 27373 1 27520       ; Lani Siate to Ota'ar Dar Arena Southern Spectator Seating, Upper
+E 1 27425 100 13        ; equip purple loincloth
+G 1 27269 100           ; give conch worm surprise
+G 1 27292 100           ; give goblin shark pie
+G 1 27247 100           ; give Mother's Milk
+G 1 27293 100           ; give thresher kebabs
+*
+M 1 27374 1 27206       ; a gypsy man to Ota'ar Dar Air-Breather Jail Cell, Lower
+*
+M 1 27394 1 27506       ; a gypsy man to Ota'ar Dar Air-Breather Jail Cell, Upper
+*
+M 1 27375 1 27506       ; a gypsy woman to Ota'ar Dar Air-Breather Jail Cell, Upper
+*
+M 1 27376 1 27503		; a Tritoness to Ota'ar Dar Jail Cell
+E 1 27107 100 6         ; equip seaweed tiara
+E 1 27109 100 12        ; equip seaweed robe
+*
+M 1 27377 1 27500		; a Triton to Ota'ar Dar Jail Cell
+E 1 27111 100 5         ; equip scale male
+E 1 27112 100 13        ; equip belt of shark's teeth
+*
+M 1 27378 1 27505		; a sahuagin heretic to Ota'ar Dar Jail Cell
+E 1 27231 100 13        ; equip a purple loincloth
+*
+M 1 27379 2 27203       ; an Ota'ar Dar cityguard to Ota'ar Dar Jail Administration area
+E 1 27364 100 3         ; equip a cityguard's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27242 100 16        ; equip a crude trident
+G 1 27469 100           ; give calcite key
+G 1 27470 100           ; give spiny key
+G 1 27497 100           ; give sea elf's trident
+*
+M 1 27379 2 27205       ; an Ota'ar Dar cityguard to Ota'ar Dar Jail Administration area
+E 1 27364 100 3         ; equip a cityguard's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27242 100 16        ; equip a crude trident
+G 1 27469 100           ; give calcite key
+G 1 27470 100           ; give spiny key
+G 1 27491 100           ; give sea elf's spear
+*
+M 1 27380 1 27200       ; a green grung to Ota'ar Dar Jail Cell
+E 1 27490 100 5         ; equip rock armour
+*
+M 1 27381 1 27501       ; a male sea elf to Ota'ar Dar Jail Cell
+E 1 27492 100 15        ; equip wristshield
+E 1 27493 100 13        ; equip skirt
+E 1 27494 100 8         ; equip boots
+*
+M 1 27382 1 27504       ; a female sea elf to Ota'ar Dar Jail Cell
+E 1 27495 100 7         ; equip green scaled leggings
+E 1 27496 100 5         ; equip green leather jerkin
+*
+M 1 27383 1 27201       ; sahuagin coward to Ota'ar Dar Jail Cell
+E 1 27231 100 13        ; equip a purple loincloth
+*
+M 1 27384 1 27207       ; City guard to Ota'ar Dar Arena Southern Spectator Seating, Lower
+E 1 27364 100 3         ; equip a cityguard's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27242 100 16        ; equip a crude trident
+G 1 27471 100           ; give pearl key
+G 1 27470 100           ; give spiny key
+*
+M 1 27385 1 27233       ; City guard to Ota'ar Dar Arena Northern Spectator Seating, Lower
+E 1 27364 100 3         ; equip a cityguard's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27242 100 16        ; equip a crude trident
+G 1 27471 100           ; give pearl key
+*
+O 1 27498 100 27223     ; Shimmering portal to Baron's Cubiculum, the Bisellium
+*
+M 1 27386 3 27214       ; a baron's wife to Ota'ar Dar Arena, Baron's Cubiculum, Lower
+E 1 27455 100 12        ; equip purple robe
+E 1 27456 0 4           ; equip a diamond necklace
+*
+M 1 27386 3 27223       ; a baron's wife to Ota'ar Dar Arena, Baron's Cubiculum, Lower
+E 1 27455 100 12        ; equip purple robe
+E 1 27457 0 4           ; equip a pearl necklace
+*
+M 1 27386 3 27523       ; a baron's wife to Ota'ar Dar Arena, Baron's Cubiculum, Lower
+E 1 27455 100 12        ; equip purple robe
+E 1 27458 0 4           ; equip a gold necklace
+*
+M 1 27387 1 27514       ; the baron to the Bisellium
+E 1 27462 100 16        ; equip jewelled trident
+E 1 27500 100 18        ; equip barbed net
+E 1 27464 100 3         ; equip ornate pauldrons
+E 1 27465 100 13        ; equip purple loinskirt
+E 1 27503 100 6         ; equip baronic crest
+E 1 27287 100 17        ; give purple potion
+G 1 27499 100           ; give Prince's token
+*
+M 1 27388 1 27523       ; Sekolic Nuncio to Ota'ar Dar Arena, Baron's Cubiculum, Upper
+E 1 27310 100 12        ; equip green robes
+E 1 27231 100 13        ; equip loin cloth
+*
+M 1 27390 1 27242       ; Fo to Arena Anteroom, Lower
+E 1 27231 100 13        ; equip a purple loincloth
+*
+M 1 27389 1 27232       ; Elio Natafe to Arena Anteroom, Lower
+E 1 27231 100 13        ; equip a purple loincloth
+G 1 27268 100           ; give octopus scramble
+G 1 27270 100           ; give steamed cod sperm
+G 1 27271 100           ; give jellyfish jelly
+G 1 27267 100           ; give mermaid purse platter
+G 1 27249 100           ; give Salmon's spleen
+*
+M 1 27391 2 27242       ; adult male sahuagin to Antechamber, Lower
+E 1 27231 100 13        ; equip a purple loincloth
+*
+M 1 27391 2 27542       ; adult male sahuagin to Antechamber, Upper
+E 1 27231 100 13        ; equip a purple loincloth
+*
+M 1 27392 1 27242       ; sahuagin gambler to Antechamber, Lower
+E 1 27231 100 13        ; equip a purple loincloth
+*
+M 1 27393 1 27232       ; young sahuagin female to Antechamber, Lower
+E 1 27231 100 13        ; equip a purple loincloth
+S
+
+#GAMES
+*
+M 27390 game_seven			1000000   8	0	/* Fo */
+*
+S
+
+#SHOPS
+27372 19 0 0 0 0 200 10 0 23    Garyl Kai
+27373 19 0 0 0 0 200 10 0 23    Lani Siate
+27389 19 0 0 0 0 200 10 0 23    Elio Natafe
+0
+
+#SPECIALS
+M  27352 spec_warrior               a Kaer'l
+M  27354 spec_warrior               a Maland
+M  27360 spec_aboleth               an aboleth
+M  27361 spec_laghathti             a laghathti
+M  27363 spec_bloodsucker           a giant sea leech
+M  27378 spec_guard				    an Ota'ar Dar cityguard
+M  27365 spec_guard				    an Ota'ar Dar cityguard
+M  27380 spec_green_grung           a green grung
+M  27384 spec_guard				    an Ota'ar Dar cityguard
+M  27385 spec_guard				    an Ota'ar Dar cityguard
+M  27387 spec_sahuagin_baron        the sahuagin baron
+M  27388 spec_cast_cleric           the Sekolic Nuncio
+S
+
+#$

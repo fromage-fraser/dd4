@@ -715,7 +715,7 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                 if (ch->position == POS_DEAD)
                         break;
 
-                if (haste)
+                if (haste && !ch->gag)
                         send_to_char("{W*SWIFT ATTACK*{x ", ch);
                 /*
                  * Check for secondary attack
@@ -1625,7 +1625,13 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                     case POS_DEAD:
                         send_to_char("<196>You have been KILLED!!<0>\n\r\n\r", fighter);
                         send_to_char(purgatory_message, fighter);
-                        act ("$c is DEAD!!", fighter, NULL, NULL, TO_ROOM);
+                        if (IS_NPC(fighter) && IS_INORGANIC(fighter))
+                        {
+                            act ("$c has been DESTROYED!!", fighter, NULL, NULL, TO_ROOM);
+                        }
+                        else {
+                            act ("$c is DEAD!!", fighter, NULL, NULL, TO_ROOM);
+                        }
                         break;
 
                     default:
@@ -2165,8 +2171,10 @@ bool check_shield_unit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         if ((number_percent() < 50) && (!IS_NPC(victim)))
         {
                 if(!IS_NPC(victim) && !victim->gag)
+                {
                         act ("<51>$n's attack is blocked by $p.<0>",  ch, turret_unit, victim, TO_VICT);
                         act ("<87>Your attack is blocked by $p.<0>", ch, turret_unit, victim, TO_CHAR);
+                }
 
                 if (--turret_unit->value[0] <= 0)
                 {
@@ -2582,7 +2590,7 @@ void make_corpse (CHAR_DATA *ch)
                  * don't make corpses: all eq falls to the ground.  Gezhp 99.
                  */
 
-                corpse = create_object(get_obj_index( OBJ_VNUM_CORPSE_NPC), 0, "common", FALSE);
+                corpse = create_object(get_obj_index( OBJ_VNUM_CORPSE_NPC), 0, "common", CREATED_NO_RANDOMISER);
                 corpse->timer = number_range(10, 20);
                 name = ch->short_descr;
                 corpse->level = ch->level;
@@ -2604,7 +2612,7 @@ void make_corpse (CHAR_DATA *ch)
         else
         {
                 name            = ch->name;
-                corpse          = create_object(get_obj_index(OBJ_VNUM_CORPSE_PC), 0, "common", FALSE);
+                corpse          = create_object(get_obj_index(OBJ_VNUM_CORPSE_PC), 0, "common", CREATED_NO_RANDOMISER);
                 corpse->timer   = number_range(90, 100);
 
                 free_string(corpse->name);
@@ -2766,7 +2774,7 @@ void death_cry (CHAR_DATA *ch)
                 char      buf[MAX_STRING_LENGTH];
 
                 name = IS_NPC(ch) ? ch->short_descr : ch->name;
-                obj = create_object(get_obj_index(body_part_vnum), 0,"common", FALSE);
+                obj = create_object(get_obj_index(body_part_vnum), 0,"common", CREATED_NO_RANDOMISER);
                 obj->timer = number_range(4, 7);
                 obj->timermax = obj->timer;
 
@@ -3225,9 +3233,9 @@ int xp_compute (CHAR_DATA *gch, CHAR_DATA *victim)
                         xp *= 5 / 4;
                 }
         }
-        else
+        else {
                 align_mod = - gch->alignment / 8;
-
+        }
         gch->alignment = URANGE(-1000, gch->alignment + align_mod, 1000);
 
         /*
@@ -3694,7 +3702,7 @@ void do_circle (CHAR_DATA *ch, char *argument)
         if ( ch->in_room->sector_type == SECT_UNDERWATER
         && ( ch->race != RACE_SAHUAGIN && ch->race != RACE_GRUNG ) )
         {
-                send_to_char("You cannot circle underwater.\n\r", ch);
+                send_to_char("You cannot circle underwater without firm ground underneath.\n\r", ch);
                 return;
         }
 
@@ -3783,7 +3791,7 @@ void do_destrier (CHAR_DATA *ch, char *argument)
         if ( ch->in_room->sector_type == SECT_UNDERWATER
         && ( ch->race != RACE_SAHUAGIN && ch->race != RACE_GRUNG ) )
         {
-                send_to_char("You can't do that underwater.\n\r", ch);
+                send_to_char("You can't do that underwater without firm ground beneath you.\n\r", ch);
                 return;
         }
 
@@ -3869,7 +3877,8 @@ void do_dive (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (ch->in_room->sector_type == SECT_UNDERWATER)
+        if ( ( ch->in_room->sector_type == SECT_UNDERWATER )
+          || ( ch->in_room->sector_type == SECT_UNDERWATER_GROUND ) )
         {
                 send_to_char("You can't dive quickly enough through the water.\n\r", ch);
                 return;
@@ -4334,7 +4343,7 @@ void do_berserk (CHAR_DATA *ch, char *argument)
         if (is_affected(ch, gsn_berserk))
                 return;
 
-        send_to_char("A red mist comes over your vision!\n\r", ch);
+        send_to_char("<88>A red mist comes over your vision!<0>\n\r", ch);
         send_to_char("The thrill of combat begins to drive you crazy!\n\r", ch);
         arena_commentary("$n has gone berserk.", ch, ch);
 
@@ -4354,8 +4363,8 @@ void do_berserk (CHAR_DATA *ch, char *argument)
                 af.modifier  = ch->level;
                 affect_to_char(ch, &af);
 
-                send_to_char("You have gone BERSERK!\n\r", ch);
-                act ("$n has gone BERSERK!", ch, NULL, NULL, TO_ROOM);
+                send_to_char("You have gone {RBERSERK{x!\n\r", ch);
+                act ("$n has gone {RBERSERK{x!", ch, NULL, NULL, TO_ROOM);
 
                 return;
         }
@@ -4932,6 +4941,7 @@ void do_dirt_kick (CHAR_DATA *ch, char *argument)
             case(SECT_FIELD):               chance +=  5;   break;
             case(SECT_MOUNTAIN):            chance -= 10;   break;
             case(SECT_SWAMP):               chance -=  5;   break;
+            case(SECT_UNDERWATER_GROUND):   chance += 15;   break;
             case(SECT_DESERT):              chance += 10;   break;
         }
 
@@ -5688,7 +5698,7 @@ void do_decapitate (CHAR_DATA *ch, char *argument)
                         char      buf [ MAX_STRING_LENGTH ];
 
                         name = IS_NPC(victim) ? victim->short_descr : victim->name;
-                        obj = create_object(get_obj_index(vnum), 0, "common", FALSE);
+                        obj = create_object(get_obj_index(vnum), 0, "common", CREATED_NO_RANDOMISER);
                         obj->timer = number_range(4, 7);
                         obj->timermax = obj->timer;
 
@@ -6071,7 +6081,7 @@ void do_trip (CHAR_DATA *ch, char *argument)
         ||   ch->in_room->sector_type == SECT_WATER_SWIM
         ||   ch->in_room->sector_type == SECT_WATER_NOSWIM )
         {
-                send_to_char ("You can't trip in the water.\n\r", ch);
+                send_to_char ("You can't trip in water without firm ground beneath you.\n\r", ch);
                 return;
         }
 
@@ -6135,7 +6145,9 @@ void do_grapple (CHAR_DATA *ch, char *argument)
 
         if (IS_NPC(ch)
         && !( ch->spec_fun == spec_lookup("spec_kappa") )
-        && !( ch->spec_fun == spec_lookup("spec_laghathti") ) )
+        && !( ch->spec_fun == spec_lookup("spec_laghathti") )
+        && !( ch->spec_fun == spec_lookup("spec_green_grung") )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
                 return;
 
         one_argument(argument,arg);
@@ -6240,7 +6252,9 @@ void do_flying_headbutt (CHAR_DATA *ch, char *argument)
         int chance;
 
         if (IS_NPC(ch)
-        && !( ch->spec_fun == spec_lookup("spec_kappa") ) )
+        && !( ch->spec_fun == spec_lookup("spec_kappa") )
+        && !( ch->spec_fun == spec_lookup("spec_green_grung") )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
                 return;
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_flying_headbutt))
@@ -6609,7 +6623,8 @@ void do_whirlwind (CHAR_DATA *ch, char *argument)
         CHAR_DATA *vch_next;
         int count = 0;
 
-        if (IS_NPC(ch))
+        if (IS_NPC(ch)
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
                 return;
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_whirlwind) && ch->form != FORM_HYDRA)
@@ -7702,7 +7717,13 @@ bool aggro_damage (CHAR_DATA *ch, CHAR_DATA *victim, int damage)
                 raw_kill(ch, victim, TRUE);
                 send_to_char("{RYou have been KILLED!!{x\n\r\n\r", victim);
                 send_to_char(purgatory_message, victim);
-                act ("$c is DEAD!!", victim, NULL, NULL, TO_ROOM);
+                if (IS_NPC(victim) && IS_INORGANIC(victim))
+                {
+                    act ("$c has been DESTROYED!!", victim, NULL, NULL, TO_ROOM);
+                }
+                else {
+                    act ("$c is DEAD!!", victim, NULL, NULL, TO_ROOM);
+                }
                 check_autoloot(ch, victim);
 
                 return TRUE;
@@ -7749,58 +7770,58 @@ char *get_damage_string( int damage_value, bool is_singular )
         if (damage_value == 0)
 
         {
-                vs = "<0><235>miss<0>";
-                vp = "<0><235>misses<0>";
+                vs = "<0><240>miss<0>";
+                vp = "<0><240>misses<0>";
         }
         else if (damage_value <= 8)
         {
-                vs = "<0><236>scratch<0>";
-                vp = "<0><236>scratches<0>";
+                vs = "<0><241>scratch<0>";
+                vp = "<0><241>scratches<0>";
         }
         else if (damage_value <= 16)
         {
-                vs = "<0><237>graze<0>";
-                vp = "<0><237>grazes<0>";
+                vs = "<0><242>graze<0>";
+                vp = "<0><242>grazes<0>";
         }
         else if (damage_value <= 24)
         {
-                vs = "<0><239>hit<0>";
-                vp = "<0><239>hits<0>";
+                vs = "<0><243>hit<0>";
+                vp = "<0><243>hits<0>";
         }
         else if (damage_value <= 32)
         {
-                vs = "<0><240>injure<0>";
-                vp = "<0><240>injures<0>";
+                vs = "<0><244>injure<0>";
+                vp = "<0><244>injures<0>";
         }
         else if (damage_value <= 40)
         {
-                vs = "<0><241>wound<0>";
-                vp = "<0><241>wounds<0>";
+                vs = "<0><245>wound<0>";
+                vp = "<0><245>wounds<0>";
         }
         else if (damage_value <= 48)
         {
-                vs = "<0><242>maul<0>";
-                vp = "<0><242>mauls<0>";
+                vs = "<0><246>maul<0>";
+                vp = "<0><246>mauls<0>";
         }
         else if (damage_value <= 56)
         {
-                vs = "<0><243>decimate<0>";
-                vp = "<0><243>decimates<0>";
+                vs = "<0><247>decimate<0>";
+                vp = "<0><247>decimates<0>";
         }
         else if (damage_value <= 64)
         {
-                vs = "<0><245>mangle<0>";
-                vp = "<0><245>mangles<0>";
+                vs = "<0><248>mangle<0>";
+                vp = "<0><248>mangles<0>";
         }
         else if (damage_value <= 72)
         {
-                vs = "<0><247>maim<0>";
-                vp = "<0><247>maims<0>";
+                vs = "<0><249>maim<0>";
+                vp = "<0><249>maims<0>";
         }
         else if (damage_value <= 80)
         {
-                vs = "<0><249>MUTILATE<0>";
-                vp = "<0><249>MUTILATES<0>";
+                vs = "<0><250>MUTILATE<0>";
+                vp = "<0><250>MUTILATES<0>";
         }
         else if (damage_value <= 88)
         {

@@ -93,7 +93,7 @@ void do_quest (CHAR_DATA *ch, char *argument)
         char arg2 [MAX_INPUT_LENGTH];
         int next;
 
-        const int NUMBER_RECALL_POINTS = 13;
+        const int NUMBER_RECALL_POINTS = 14;
         const struct quest_recall quest_recall_info [] =
         {
             /*  Pfile slot, quest point cost, room vnum, name  */
@@ -106,6 +106,7 @@ void do_quest (CHAR_DATA *ch, char *argument)
                 {  6,   500,  18835,  "Dahij"           },
                 { 13,   400,   1313,  "HighTower"       },
                 { 14,   400,  27347,  "Ota'ar Dar"      },
+                { 15,   400,  16084,  "Underdark"       },
                 {  7,   300,  30234,  "Kerofk"          },
                 { 11,   250,  12167,  "Westreen"        },
                 {  8,   200,  10201,  "Solace"          },
@@ -135,14 +136,21 @@ void do_quest (CHAR_DATA *ch, char *argument)
 
                 if (ch->pcdata->questobj > 0 && (questinfoobj = get_obj_index(ch->pcdata->questobj)))
                 {
-                        sprintf(buf, "You are on a quest to recover %s!\n\r", questinfoobj->short_descr);
+                        sprintf(buf, "{cYou are on a quest to recover {C%s{x{c, last seen in {C%s{x{c,\n\rwhich is in the general area of {C%s{x{c!{x\n\r",
+                            questinfoobj->short_descr,
+                            ch->pcdata->questroom->name,
+                            ch->pcdata->questarea->name
+                        );
                         send_to_char(buf, ch);
                         return;
                 }
 
                 if (ch->pcdata->questmob > 0 && (questinfo = get_mob_index(ch->pcdata->questmob)))
                 {
-                        sprintf(buf, "You are on a quest to slay %s!\n\r",questinfo->short_descr);
+                        sprintf(buf, "{cYou are on a quest to slay {C%s{x{c, last seen in {C%s{x{c,\n\rin the general area of {C%s{x{c!{x\n\r",
+                            questinfo->short_descr,
+                            ch->pcdata->questroom->name,
+                            ch->pcdata->questarea->name);
                         send_to_char(buf, ch);
                         return;
                 }
@@ -172,6 +180,8 @@ void do_quest (CHAR_DATA *ch, char *argument)
                 ch->pcdata->countdown = 0;
                 ch->pcdata->questmob = 0;
                 ch->pcdata->questobj = 0;
+                ch->pcdata->questroom = NULL;
+                ch->pcdata->questarea = NULL;
                 ch->pcdata->nextquest = QUEST_ABORT_DELAY;
                 send_to_char ("You abandon your quest.\n\r", ch);
                 return;
@@ -234,7 +244,7 @@ void do_quest (CHAR_DATA *ch, char *argument)
                                  quest_recall_info[next].name,
                                  quest_recall_info[next].cost,
                                  (ch->pcdata->recall_points[quest_recall_info[next].slot] >= 0)
-                                 ? "{chave{x" : "{RNEED{x");
+                                 ? "{cHAVE{x" : "{RNEED{x");
                         send_to_char (buf, ch);
                 }
 
@@ -301,7 +311,7 @@ void do_quest (CHAR_DATA *ch, char *argument)
         {
                 if (ch->position < POS_RESTING)
                 {
-                        send_to_char ("Want to quest in your dreams, do you?\n\r", ch);
+                        send_to_char ("Dream quests are not materially rewarded.\n\r", ch);
                         return;
                 }
 
@@ -417,6 +427,8 @@ void do_quest (CHAR_DATA *ch, char *argument)
                                 ch->pcdata->countdown = 0;
                                 ch->pcdata->questmob = 0;
                                 ch->pcdata->questobj = 0;
+                                ch->pcdata->questroom = NULL;
+                                ch->pcdata->questarea = NULL;
                                 ch->pcdata->nextquest = QUEST_MAX_DELAY;
                                 ch->pcdata->bank += reward * 100;
                                 ch->pcdata->questpoints += pointreward;
@@ -479,13 +491,15 @@ void do_quest (CHAR_DATA *ch, char *argument)
                                                         send_to_char (buf, ch);
                                                         ch->pcdata->int_prac += pracreward;
                                                 }
-                                        }                                        
+                                        }
 
                                         REMOVE_BIT(ch->act, PLR_QUESTOR);
                                         ch->pcdata->questgiver = NULL;
                                         ch->pcdata->countdown = 0;
                                         ch->pcdata->questmob = 0;
                                         ch->pcdata->questobj = 0;
+                                        ch->pcdata->questroom = NULL;
+                                        ch->pcdata->questarea = NULL;
                                         ch->pcdata->nextquest = QUEST_MAX_DELAY;
                                         ch->pcdata->bank += reward * 100;
                                         ch->pcdata->questpoints += pointreward;
@@ -530,7 +544,7 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
         long mcounter;
         int level_diff, mob_vnum, upper_limit;
 
-        for (mcounter = 0; mcounter < 100; mcounter ++) 
+        for (mcounter = 0; mcounter < 100; mcounter ++)
         {
                 do
                         mob_vnum = number_range(100, 32200);
@@ -565,18 +579,20 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
                     && !IS_SET(vsearch->act, ACT_LOSE_FAME)
                     && !IS_SET(vsearch->act, ACT_NO_EXPERIENCE)
                     && !IS_SET(vsearch->act, ACT_IS_HEALER))
-                
-                        /* Shade 31.3.22 - If we want to check area levels before continueing, need to move the room lookup to here */                    
+
+                        /* Shade 31.3.22 - If we want to check area levels before continuing, need to move the room lookup to here */
                 {
                         /* Shade 3.5.22 - moved test here */
                         victim = get_qchar_world(ch, vsearch->player_name, vsearch->vnum);
-                        if (victim) 
+                        if (victim)
                         {
                                 room = find_qlocation(ch, victim->name, victim->pIndexData->vnum);
+                                ch->pcdata->questroom = room;
+                                ch->pcdata->questarea = room->area;
 
                                 if (room && room->area->low_level <= ch->level && room->area->high_level >= ch->level)
                                         break;
-                        
+
                                 else
                                         vsearch = NULL;
                         }
@@ -597,15 +613,15 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
                 return;
         }
 
-        /* 
+        /*
          * Shade 31.3.22
          *
          * Changed from enforced levels to low/high levels, most areas don't enforce they just pop up the warning.
-         * 
+         *
          * Test was && not || - have adjusted
-         * 
+         *
          * And now moved test up as that was resulting in not enough quests
-         *          
+         *
          */
 
         if (number_percent() < 15)
@@ -645,11 +661,13 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
                         break;
                 }
 
-                questitem = create_object(get_obj_index(objvnum), ch->level, "common", FALSE);
+                questitem = create_object(get_obj_index(objvnum), ch->level, "common", CREATED_NO_RANDOMISER);
                 questitem->timer = 240;
                 set_obj_owner(questitem, ch->name);
                 obj_to_room(questitem, room);
                 ch->pcdata->questobj = questitem->pIndexData->vnum;
+                ch->pcdata->questroom = room;
+                ch->pcdata->questarea = room->area;
 
                 sprintf (buf, "\n\r{c%s says, 'Vile pilferers have stolen {C%s{x{c from the royal "
                          "treasury!  My court wizardess, with her magic mirror, has pinpointed its "
@@ -657,7 +675,8 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
                          "Look in the general area of {C%s{x{c for {C%s{x{c!'{x\n\r\n\r",
                          capitalize (questman->short_descr),
                          questitem->short_descr,
-                         room->area->name, room->name);
+                         ch->pcdata->questarea->name,
+                         ch->pcdata->questroom->name);
 
                 send_paragraph_to_char(buf, ch, 0);
                 return;
@@ -674,8 +693,8 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
                         victim->short_descr,
                         capitalize (questman->short_descr),
                         victim->short_descr,
-                        room->name,
-                        room->area->name);
+                        ch->pcdata->questroom->name,
+                        ch->pcdata->questarea->name);
                 break;
 
             case 1:
@@ -690,8 +709,8 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
                          victim->short_descr,
                          number_range (2, 20),
                          capitalize (questman->short_descr),
-                         room->area->name,
-                         room->name);
+                         ch->pcdata->questarea->name,
+                         ch->pcdata->questroom->name);
                 break;
         }
 
@@ -723,7 +742,7 @@ void quest_update ()
 
                         if (ch->pcdata->nextquest == 0)
                         {
-                                send_to_char ("You may now quest again.\n\r", ch);
+                                send_to_char ("{CYou may now quest again.{x\n\r", ch);
                                 continue;
                         }
                 }

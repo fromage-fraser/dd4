@@ -34,11 +34,11 @@
 /*
  * Local functions.
  */
-void        get_obj     args((CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container));
-bool        remove_obj  args((CHAR_DATA *ch, int iWear, bool fReplace));
-void        wear_obj    args((CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace));
-CHAR_DATA * find_keeper args((CHAR_DATA *ch));
-int         get_cost    args((CHAR_DATA *keeper, OBJ_DATA *obj, bool fBuy));
+void        get_obj         args((CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container));
+bool        remove_obj      args((CHAR_DATA *ch, int iWear, bool fReplace));
+void        wear_obj        args((CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace));
+CHAR_DATA * find_keeper     args((CHAR_DATA *ch));
+int         get_cost        args((CHAR_DATA *keeper, OBJ_DATA *obj, bool fBuy));
 
 
 void get_obj (CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
@@ -174,6 +174,62 @@ void get_obj (CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
         }
         else
                 obj_to_char(obj, ch);
+
+        return;
+}
+
+/* Retrieve objects from a player's vault */
+
+void get_obj_vault (CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
+{
+        char buf [MAX_STRING_LENGTH];
+
+        if (!IS_SET(obj->wear_flags, ITEM_TAKE) || obj->item_type == ITEM_PORTAL)
+        {
+                send_to_char("You can't claim that.\n\r", ch);
+                return;
+        }
+
+        if (!is_obj_owner(obj, ch))
+        {
+                sprintf(buf, "You can't claim %s: it belongs to %s.\n\r",
+                        obj->short_descr,
+                        capitalize(get_obj_owner(obj)));
+                send_to_char(buf, ch);
+                return;
+        }
+
+        /* for traps */
+        if (checkgetput(ch, obj))
+                return;
+
+        if (ch->carry_number + get_obj_number(obj) > can_carry_n(ch))
+        {
+                act("$d: you can't carry that many items.", ch, NULL, obj->name, TO_CHAR);
+                return;
+        }
+
+        if ( (ch->carry_weight + ch->coin_weight) + get_obj_weight(obj) > can_carry_w(ch))
+        {
+                act("$d: you can't carry that much weight.", ch, NULL, obj->name, TO_CHAR);
+                return;
+        }
+
+        if (container)
+        {
+                act("You get $p from $P in your vault.", ch, obj, container, TO_CHAR);
+                act("$n gets $p from $P in your vault.", ch, obj, container, TO_ROOM);
+                obj_from_objvault(obj);
+                ch->pcdata->vault_number++;
+        }
+        else
+        {
+                act("You get $p from your vault.", ch, obj, container, TO_CHAR);
+                act("$n gets $p from your vault.", ch, obj, container, TO_ROOM);
+                obj_from_charvault(obj);
+        }
+
+        obj_to_charfromvault(obj, ch);
 
         return;
 }
@@ -420,6 +476,199 @@ void do_get (CHAR_DATA *ch, char *argument)
         return;
 }
 
+/* Get objects from vault into inventory.  --Owl 23/2/23 */
+
+void do_claim (CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA *obj;
+        OBJ_DATA *pobj;
+        OBJ_DATA *container;
+        char      arg1 [ MAX_INPUT_LENGTH ];
+        char      arg2 [ MAX_INPUT_LENGTH ];
+        char      buf  [ MAX_STRING_LENGTH ];
+        bool      found;
+
+        argument = one_argument(argument, arg1);
+        argument = one_argument(argument, arg2);
+
+        if (IS_NPC(ch))
+        {
+            return;
+        }
+
+        if (!IS_SET(ch->in_room->room_flags, ROOM_VAULT))
+        {
+            send_to_char( "You cannot access your vault from this location.\n\r", ch );
+            return;
+        }
+
+        if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
+        {
+                send_to_char("You can't claim items from your vault in your current form.\n\r", ch);
+                return;
+        }
+
+        if (arg1[0] == '\0')
+        {
+                send_to_char("Claim what?\n\r", ch);
+                return;
+        }
+
+        if (arg2[0] == '\0')
+        {
+                if (str_cmp(arg1, "all") && str_prefix("all.", arg1))
+                {
+                        /* 'claim obj' */
+                        obj = get_obj_list(ch, arg1, ch->pcdata->vault);
+                        if (!obj)
+                        {
+                                act("There is no \"$T\" in your vault.", ch, NULL, arg1, TO_CHAR);
+                                return;
+                        }
+                        get_obj_vault(ch, obj, NULL);
+
+                        /* Do we claim the object?? */
+                        for (pobj = ch->pcdata->vault; pobj; pobj = pobj->next_content)
+                        {
+                                if (pobj == obj)
+                                        break;
+                        }
+
+                        if (!pobj)
+                                return;
+                }
+                else
+                {
+                        /* 'claim all' or 'claim all.obj' */
+                        OBJ_DATA *obj_next;
+                        found = FALSE;
+
+                        for (obj = ch->pcdata->vault; obj; obj = obj_next)
+                        {
+                                obj_next = obj->next_content;
+
+                                if ((arg1[3] == '\0' || is_name(&arg1[4], obj->name))
+                                    && can_see_obj(ch, obj))
+                                {
+                                        found = TRUE;
+                                        get_obj_vault(ch, obj, NULL);
+                                }
+                        }
+
+                        if (!found)
+                        {
+                                if (arg1[3] == '\0')
+                                        send_to_char("You don't see that in your vault.\n\r", ch);
+                                else
+                                        act("There is no \"$T\" in your vault.", ch, NULL, &arg1[4], TO_CHAR);
+                        }
+                }
+        }
+        else
+        {
+                /* 'claim ... container' */
+                if (ch->position == POS_FIGHTING)
+                {
+                        send_to_char( "You can't claim items from your vault while fighting.\n\r", ch );
+                        return;
+                }
+
+                if (!str_cmp(arg2, "all") || !str_prefix("all.", arg2))
+                {
+                        send_to_char("You can't do that.\n\r", ch);
+                        return;
+                }
+
+                if (!(container = get_obj_herevault(ch, arg2)))
+                {
+                        act("There is no \"$T\" in your vault.", ch, NULL, arg2, TO_CHAR);
+                        return;
+                }
+
+                switch (container->item_type)
+                {
+                    default:
+                        send_to_char("That's not a container.\n\r", ch);
+                        return;
+
+                    case ITEM_CONTAINER:
+                    case ITEM_TURRET:
+                    case ITEM_CORPSE_NPC:
+                        break;
+
+                    case ITEM_CORPSE_PC:
+                        {
+                                char      *pd;
+                                char       name[ MAX_INPUT_LENGTH ];
+
+                                if (IS_NPC(ch))
+                                {
+                                        send_to_char("You can't do that.\n\r", ch);
+                                        return;
+                                }
+
+                                pd = container->short_descr;
+                                pd = one_argument(pd, name);
+                                pd = one_argument(pd, name);
+                                pd = one_argument(pd, name);
+
+                                if (!str_cmp(name, ch->name) && ch->level <= LEVEL_HERO)
+                                {
+                                        send_to_char("You can't do that.\n\r", ch);
+                                        return;
+                                }
+                        }
+                }
+
+                if (IS_SET(container->value[1], CONT_CLOSED))
+                {
+                        act("The $d is closed.", ch, NULL, container->name, TO_CHAR);
+                        return;
+                }
+
+                if (str_cmp(arg1, "all") && str_prefix("all.", arg1))
+                {
+                        /* 'claim obj container' */
+                        obj = get_obj_list(ch, arg1, container->contains);
+                        if (!obj)
+                        {
+                                act("You see nothing like that in the $T.",
+                                    ch, NULL, arg2, TO_CHAR);
+                                return;
+                        }
+                        get_obj_vault(ch, obj, container);
+                }
+                else
+                {
+                        /* 'claim all container' or 'claim all.obj container' */
+                        OBJ_DATA *obj_next;
+
+                        found = FALSE;
+                        for (obj = container->contains; obj; obj = obj_next)
+                        {
+                                obj_next = obj->next_content;
+
+                                if ((arg1[3] == '\0' || is_name(&arg1[4], obj->name))
+                                    && can_see_obj(ch, obj))
+                                {
+                                        found = TRUE;
+                                        get_obj_vault(ch, obj, container);
+                                }
+                        }
+
+                        if (!found)
+                        {
+                            sprintf(buf, "You don't see anything like that in %s.\r\n", container->short_descr );
+                            send_to_char(buf, ch);
+                            return;
+                        }
+
+                }
+        }
+
+        return;
+}
+
 
 void do_put (CHAR_DATA *ch, char *argument)
 {
@@ -567,6 +816,293 @@ void do_put (CHAR_DATA *ch, char *argument)
                                 obj_to_obj(obj, container);
                                 act("You put $p in $P.", ch, obj, container, TO_CHAR);
                                 act("$n puts $p in $P.", ch, obj, container, TO_ROOM);
+                        }
+                }
+        }
+
+        return;
+}
+
+void do_lodge (CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA *container;
+        OBJ_DATA *obj;
+        char      arg1 [ MAX_INPUT_LENGTH ];
+        char      arg2 [ MAX_INPUT_LENGTH ];
+        bool      found;
+        int       maxlevel;
+
+        argument        = one_argument(argument, arg1);
+        argument        = one_argument(argument, arg2);
+        container       = get_obj_vaulted(ch, arg2);
+
+
+        if (IS_NPC(ch))
+        {
+            return;
+        }
+
+        if (!IS_SET(ch->in_room->room_flags, ROOM_VAULT))
+        {
+                send_to_char( "You cannot access your vault from this location.\n\r", ch );
+                return;
+        }
+
+        if (ch->position == POS_FIGHTING)
+        {
+                send_to_char( "You can't lodge items in your vault while fighting.\n\r", ch );
+                return;
+        }
+
+        if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
+        {
+                send_to_char("You can't lodge items in your vault in your current form.\n\r",ch);
+                return;
+        }
+
+        if (arg1[0] == '\0')
+        {
+                send_to_char("Which item do you wish to lodge in your vault?\n\r", ch);
+                return;
+        }
+
+        if (container == NULL && arg2[0] != '\0')
+        {
+                act("I see no \"$T\" in your vault.", ch, NULL, arg2, TO_CHAR);
+                return;
+        }
+
+        /* If you're not trying to put an item in a container and not an "all command" */
+        if ( ( arg2[0] == '\0')
+        &&     str_cmp(arg1, "all")
+        &&     str_prefix("all.", arg1))
+        {
+                if (!(obj = get_obj_carry(ch, arg1)))
+                {
+                        send_to_char("You do not have that item.\n\r", ch);
+                        return;
+                }
+
+                if (!can_drop_obj(ch, obj))
+                {
+                        send_to_char("You can't let go of it.\n\r", ch);
+                        return;
+                }
+
+                if ( ( get_obj_weight(obj) + ch->pcdata->vault_weight ) > can_vault_w( ch ) )
+                {
+                        send_to_char("You can't put that much weight into your vault.\n\r", ch);
+                        return;
+                }
+
+                if ( ( ( ch->pcdata->vault_number + get_obj_number(obj) ) > can_vault_n( ch ) ) )
+                {
+                        send_to_char("You can't fit that many items into your vault.\n\r", ch);
+                        return;
+                }
+
+                if (obj->level > ( ch->level + VAULT_LEVEL_BUFFER) )
+                {
+                        act("$p is too high level to be put in your vault.", ch, obj, NULL, TO_CHAR);
+                        return;
+                }
+
+                maxlevel = max_obj_in_obj_level(obj);
+
+                if (maxlevel > ( ch->level + VAULT_LEVEL_BUFFER ) )
+                {
+                        act("$p contains an item or items too high level to go in your vault.", ch, obj, NULL, TO_CHAR);
+                        return;
+                }
+
+                obj_from_char(obj);
+                obj_to_charvault(obj, ch);
+                act("You lodge $p in your vault.", ch, obj, NULL, TO_CHAR);
+                act("$n lodges $p in $S vault.", ch, obj, ch, TO_ROOM);
+                return;
+        }
+
+        /* If you are trying to put an item in a container and not an "all command" */
+        if ( ( arg2[0] != '\0')
+        &&     str_cmp(arg1, "all")
+        &&     str_prefix("all.", arg1)
+        &&     ( container != NULL ) )
+        {
+                if (IS_SET(container->value[1], CONT_CLOSED))
+                {
+                        act("The $d is closed.", ch, NULL, container->name, TO_CHAR);
+                        return;
+                }
+
+                /* 'put obj container' */
+                if (!(container = get_obj_vaulted(ch, arg2)))
+                {
+                        send_to_char("You don't have that item in your vault.\n\r", ch);
+                        return;
+                }
+
+                /* 'put obj container' */
+                if (!(obj = get_obj_carry(ch, arg1)))
+                {
+                        send_to_char("You don't have that item on you.\n\r", ch);
+                        return;
+                }
+
+                if (!can_drop_obj(ch, obj))
+                {
+                        send_to_char("You can't let go of it.\n\r", ch);
+                        return;
+                }
+
+                if ( (IS_SET(container->wear_flags, ITEM_WEAR_POUCH ) )
+                    && ( obj->item_type != ITEM_POTION)
+                    && ( obj->item_type != ITEM_PILL)
+                    && ( obj->item_type != ITEM_PAINT) )
+                {
+                        send_to_char("You can only put potions, pills and paints into your pouch.\n\r", ch);
+                        return;
+                }
+
+                if ( (IS_SET(container->ego_flags, EGO_ITEM_TURRET )) && (!IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE)))
+                {
+                        send_to_char("You can only put modules into the turret slots.\n\r", ch);
+                        return;
+                };
+
+                if (IS_SET(container->ego_flags, EGO_ITEM_TURRET ))
+                {
+                      if ( ( (ch->pcdata->learned[gsn_turret] < 60 ) && (get_container_count(container) >=1 ) )
+                      || ((ch->pcdata->learned[gsn_turret] < 85 ) && (get_container_count(container) >= 2 ) )
+                      || ((ch->pcdata->learned[gsn_turret] < 95 ) && (get_container_count(container) >= 3 ) ) )
+                      {
+                                send_to_char("You will need to improve your knowledge of turrets.\n\r", ch);
+                                return;
+                      }
+                }
+
+                if (get_obj_weight(obj) + get_obj_weight(container)
+                    > container->value[0])
+                {
+                        send_to_char("It won't fit.\n\r", ch);
+                        return;
+                }
+
+                if (obj->level > ( ch->level + VAULT_LEVEL_BUFFER ) )
+                {
+                        act("$p is too high level to be put in there.", ch, obj, NULL, TO_CHAR);
+                        return;
+                }
+
+                maxlevel = max_obj_in_obj_level(obj);
+
+                if (maxlevel > ( ch->level + VAULT_LEVEL_BUFFER ) )
+                {
+                        act("$p contains an item or items too high level to go in your vault.", ch, obj, NULL, TO_CHAR);
+                        return;
+                }
+
+                obj_from_char(obj);
+                obj_to_objvault(obj, container);
+                act("You put $p in $P in your vault.", ch, obj, container, TO_CHAR);
+                act("$n puts $p in $P in $S vault.", ch, obj, container, TO_ROOM);
+
+                return;
+        }
+
+        /* lodge all or lodge all.object */
+        if ( ( !str_cmp(arg1, "all")
+          ||   !str_prefix("all.", arg1) )
+        &&   ( arg2[0] == '\0' ) )
+        {
+                OBJ_DATA *obj_next;
+                container = NULL;
+                found = FALSE;
+                for (obj = ch->carrying; obj; obj = obj_next)
+                {
+                        obj_next = obj->next_content;
+
+                        if ( ( arg1[3] == '\0' || is_name(&arg1[4], obj->name ) )
+                        &&     can_see_obj(ch, obj)
+                        &&     obj->wear_loc == WEAR_NONE
+                        &&     can_drop_obj(ch, obj)
+                        &&     ( ch->level + VAULT_LEVEL_BUFFER ) >= obj->level
+                        &&     (!obj->deleted)
+                        &&     ( ( get_obj_number(obj) + ch->pcdata->vault_number) <= can_vault_n( ch ) )
+                        &&     ( ( get_obj_weight(obj) + ch->pcdata->vault_weight) <= can_vault_w( ch ) ) )
+                        {
+                                found = TRUE;
+                                obj_from_char(obj);
+                                obj_to_charvault(obj, ch);
+                                act("You lodge $p in your vault.", ch, obj, NULL, TO_CHAR);
+                                act("$n lodges $p in $S vault.", ch, obj, ch, TO_ROOM);
+
+                        }
+                }
+
+                if (!found)
+                {
+                        if (!ch->carrying)
+                        {
+                            send_to_char("You don't have anything to put in your vault.", ch);
+                            return;
+
+                        }
+                        else {
+                            send_to_char("You can't do that.", ch);
+                            return;
+                        }
+                }
+        }
+        /* sprintf(log_buf,"value of container weight is %d\r\n", container->value[0]);
+        log_string(log_buf); */
+        /* lodge all container or lodge all.object container */
+        if ( ( !str_cmp(arg1, "all")
+          ||   !str_prefix("all.", arg1) )
+        &&   ( container != NULL ) )
+        {
+                OBJ_DATA *obj_next;
+
+                found = FALSE;
+
+                if (IS_SET(container->value[1], CONT_CLOSED))
+                {
+                        act("The $d is closed.", ch, NULL, container->name, TO_CHAR);
+                        return;
+                }
+
+                for (obj = ch->carrying; obj; obj = obj_next)
+                {
+                        obj_next = obj->next_content;
+
+                        if ( ( arg1[3] == '\0' || is_name(&arg1[4], obj->name ) )
+                        &&     can_see_obj(ch, obj)
+                        &&     obj->wear_loc == WEAR_NONE
+                        &&     can_drop_obj(ch, obj)
+                        &&     (!obj->deleted)
+                        &&     ( ch->level + VAULT_LEVEL_BUFFER ) >= obj->level
+                        &&     ( ( get_obj_weight(obj) + get_obj_weight(container)) <= container->value[0] )
+                        &&     ( ( get_obj_weight(obj) + ch->pcdata->vault_weight) <= can_vault_w( ch ) ) )
+                        {
+                                found = TRUE;
+                                obj_from_char(obj);
+                                obj_to_objvault(obj, container);
+                                act("You lodge $p in $P in your vault.", ch, obj, container, TO_CHAR);
+                                act("$n lodges $p in $P in $S vault.", ch, obj, container, TO_ROOM);
+
+                        }
+                }
+
+                if (!found)
+                {
+                        if (!ch->carrying)
+                        {
+                            send_to_char("You don't have anything to put in your vault.", ch);
+                            return;
+
+                        }
+                        else {
+                            send_to_char("You can't do that.", ch);
+                            return;
                         }
                 }
         }
@@ -1425,16 +1961,16 @@ void do_enter (CHAR_DATA *ch, char *argument)
 
         if (is_affected(ch,gsn_mist_walk))
         {
-                act( "A glowing mist drifts through the shimmering portal...",
+                act( "<87>A glowing mist drifts through the shimmering portal...<0>",
                     ch, NULL, NULL, TO_ROOM );
-                act( "You drift into the shimmering portal...\n\r",
+                act( "<87>You drift into the shimmering portal...<0>\n\r",
                     ch, NULL, NULL,TO_CHAR );
         }
         else
         {
-                act( "$n calmly steps through the shimmering portal...",
+                act( "<87>$n calmly steps through the shimmering portal...<0>",
                     ch, NULL, NULL, TO_ROOM );
-                act( "You step into the shimmering portal...\n\r",
+                act( "<87>You step into the shimmering portal...<0>\n\r",
                     ch, NULL, NULL, TO_CHAR );
         }
 
@@ -1442,9 +1978,9 @@ void do_enter (CHAR_DATA *ch, char *argument)
         char_to_room( ch, room );
 
         if (is_affected(ch,gsn_mist_walk))
-                act( "A glowing mist emerges from the portal.", ch, NULL, NULL,TO_ROOM);
+                act( "<87>A glowing mist emerges from the portal.<0>", ch, NULL, NULL,TO_ROOM);
         else
-                act( "$n emerges from the portal.", ch, NULL, NULL, TO_ROOM );
+                act( "<87>$n emerges from the portal.<0>", ch, NULL, NULL, TO_ROOM );
 
         do_look( ch, "auto" );
 
@@ -3756,7 +4292,7 @@ void do_buy (CHAR_DATA *ch, char *argument)
                 {
                         for (; item_count > 0; item_count--)
                         {
-                                obj = create_object(obj->pIndexData, obj->level, "common", FALSE);
+                                obj = create_object(obj->pIndexData, obj->level, "common",CREATED_NO_RANDOMISER);
                                 obj_to_char(obj, ch);
                         }
                 }
@@ -5908,14 +6444,6 @@ int random_qnd ( int ap_value, char *rank, int ap_type )
 
         */
 
-        /*
-                ap_type is from the APPLY_ types in merc.h
-                51 types as of 1/1/23.  Will hurl if over int max_apply, so increase it
-                if you add new types.
-        */
-
-        int max_apply = 51;
-
         float changed_ap_value = ap_value;
 
         float minus_3_lb;
@@ -5928,7 +6456,7 @@ int random_qnd ( int ap_value, char *rank, int ap_type )
         float plus_2_ub;
         float plus_3_lb;
         float plus_3_ub;
-        float sd_divisor = 6.0;
+        float sd_divisor = 12.0;
         float av_sd = ap_value / sd_divisor;
         float bonus_from_rank = 0.0;
         float r;
@@ -5940,11 +6468,11 @@ int random_qnd ( int ap_value, char *rank, int ap_type )
 
         int r_100 = rand() % 100 + 1;
 
-        if (ap_type > max_apply)
+        if (ap_type > APPLY_LAST)
         {
-                sprintf(buf,"APPLY type (%d) supplied to random_qnd() function is > max_apply (%d). Edit function if APPLY type is valid.",
+                sprintf(buf,"APPLY type (%d) supplied to random_qnd() function is > APPLY_LAST (%d). Edit function if APPLY type is valid.",
                         ap_type,
-                        max_apply);
+                        APPLY_LAST);
                 log_string(buf);
                 return ap_value;
         }
@@ -5975,45 +6503,45 @@ int random_qnd ( int ap_value, char *rank, int ap_type )
         plus_3_lb  = (ap_value + ( 2 * av_sd ) + 0.000001 );
         plus_3_ub  = (ap_value + ( 3 * av_sd ) );
 
-        sprintf(buf,"r_100 is: %d", r_100);
-        log_string(buf);
+        /* sprintf(buf,"r_100 is: %d", r_100);
+        log_string(buf); */
 
         if ( r_100 == 1 || r_100 == 2 )
         {
                 r = (float)rand() / (float)RAND_MAX;
                 changed_ap_value = minus_3_lb + r * (minus_3_ub - minus_3_lb);
-                printf("return ap value for -3SD between %f and %f: %f\n", minus_3_lb, minus_3_ub, changed_ap_value);
+                /* printf("return ap value for -3SD between %f and %f: %f\n", minus_3_lb, minus_3_ub, changed_ap_value); */
         }
 
         if ( r_100 > 2 && r_100 < 17 )
         {
                 r = (float)rand() / (float)RAND_MAX;
                 changed_ap_value = minus_2_lb + r * (minus_2_ub - minus_2_lb);
-                printf("return ap value for -2SD between %f and %f: %f\n", minus_2_lb, minus_2_ub, changed_ap_value);
+                /* printf("return ap value for -2SD between %f and %f: %f\n", minus_2_lb, minus_2_ub, changed_ap_value); */
         }
 
         if ( r_100 > 16 && r_100 < 85 )
         {
                 r = (float)rand() / (float)RAND_MAX;
                 changed_ap_value = minus_1_lb + r * (plus_1_ub - minus_1_lb);
-                printf("return ap value for -1SD/+1SD between %f and %f: %f\n", minus_1_lb, plus_1_ub, changed_ap_value);
+                /* printf("return ap value for -1SD/+1SD between %f and %f: %f\n", minus_1_lb, plus_1_ub, changed_ap_value); */
         }
 
         if ( r_100 > 84 && r_100 < 99 )
         {
                 r = (float)rand() / (float)RAND_MAX;
                 changed_ap_value = plus_2_lb + r * (plus_2_ub - plus_2_lb);
-                printf("return ap value for +2SD between %f and %f: %f\n", plus_2_lb, plus_2_ub, changed_ap_value);
+                /* printf("return ap value for +2SD between %f and %f: %f\n", plus_2_lb, plus_2_ub, changed_ap_value); */
         }
 
         if ( r_100 == 99 || r_100 == 100 )
         {
                 r = (float)rand() / (float)RAND_MAX;
                 changed_ap_value = plus_3_lb + r * (plus_3_ub - plus_3_lb);
-                printf("return ap value for +3SD between %f and %f: %f\n", plus_3_lb, plus_3_ub, changed_ap_value);
+                /* printf("return ap value for +3SD between %f and %f: %f\n", plus_3_lb, plus_3_ub, changed_ap_value); */
         }
 
-        sprintf(buf,"ap_type: %d | ap_value: %d | changed_ap_value: %f | rank: %s | minus_3_lb: %f | minus_3_ub: %f | minus_2_lb: %f | minus_2_ub: %f | minus_1_lb: %f | plus_1_ub: %f | plus_2_lb: %f | plus_2_ub: %f | plus_3_lb: %f | plus_3_ub: %f |",
+        /* sprintf(buf,"ap_type: %d | ap_value: %d | changed_ap_value: %f | rank: %s | minus_3_lb: %f | minus_3_ub: %f | minus_2_lb: %f | minus_2_ub: %f | minus_1_lb: %f | plus_1_ub: %f | plus_2_lb: %f | plus_2_ub: %f | plus_3_lb: %f | plus_3_ub: %f |",
                 ap_type,
                 ap_value,
                 changed_ap_value,
@@ -6029,7 +6557,7 @@ int random_qnd ( int ap_value, char *rank, int ap_type )
                 plus_3_lb,
                 plus_3_ub
         );
-        log_string(buf);
+        log_string(buf); */
 
         /* sprintf(buf, "Passed: ap_value: %d rank: %d ap_type: %d \n\r", ap_value, rank, ap_type);
         send_to_char(buf, ch); */
@@ -6150,7 +6678,7 @@ int random_qnd ( int ap_value, char *rank, int ap_type )
         /*
                 'ranks' possible are in rank_table in mob.c  Currently 5 is max.
 
-                         name, rank_bonus, hp_bonus, who_format 
+                         name, rank_bonus, hp_bonus, who_format
                         { "none",       1,      1,      "{WCommon.{x "},
                         { "common",     1,      1,      "{WCommon.{x "},
                         { "rare",       3,      2,      "<39>[Rare]<0> "},
@@ -6158,7 +6686,7 @@ int random_qnd ( int ap_value, char *rank, int ap_type )
                         { "boss",       4,      7,      "<514><556><16>[<560>BOSS<561>]<0><557> "},
                         { "world",      5,     30,      "<81>[WO<75>RL<69>D B<75>OS<81>S]<0> "}
 
-                See mob.c. 
+                See mob.c.
                 We assume common  if something not here is passed.
                 Tweak this if you add more ranks.
 
@@ -6170,36 +6698,36 @@ int random_qnd ( int ap_value, char *rank, int ap_type )
                  if (negative_benefits)
                  {
                         bonus_from_rank = -( rank_bonus(rank) * fabs(av_sd));
-                        sprintf(buf,"Rank bonus is: %f with negative benefit YES and av_sd: %f",bonus_from_rank, av_sd);
-                        log_string(buf);
+                        /* sprintf(buf,"Rank bonus is: %f with negative benefit YES and av_sd: %f",bonus_from_rank, av_sd);
+                        log_string(buf); */
                  }
                  else {
                         bonus_from_rank = ( rank_bonus(rank) * fabs(av_sd));
-                        sprintf(buf,"Rank bonus is: %f with negative benefit NO and av_sd: %f",bonus_from_rank, av_sd);
-                        log_string(buf);
+                        /* sprintf(buf,"Rank bonus is: %f with negative benefit NO and av_sd: %f",bonus_from_rank, av_sd);
+                        log_string(buf); */
                  }
         }
         /* round and convert back to int before returning  etc*/
         /* should also do mob level stuff here, as currently assuming common */
-        sprintf(buf,"Pre-rounding value of changed_ap_value is: %f",
+        /* sprintf(buf,"Pre-rounding value of changed_ap_value is: %f",
                 changed_ap_value);
-        log_string(buf);
+        log_string(buf); */
 
-        sprintf(buf,"Rank bonus is: %f, based on a passed mob rank of %s, av_sd of %f, negative_benefits value of %d and apply type %d",
+        /* sprintf(buf,"Rank bonus is: %f, based on a passed mob rank of %s, av_sd of %f, negative_benefits value of %d and apply type %d",
                 bonus_from_rank, rank, av_sd, negative_benefits, ap_type);
-        log_string(buf);
+        log_string(buf); */
 
         changed_ap_value = (changed_ap_value + bonus_from_rank);
 
-        sprintf(buf,"Pre-rounding value of changed_ap_value with rank bonus is: %f",
+        /* sprintf(buf,"Pre-rounding value of changed_ap_value with rank bonus is: %f",
                 changed_ap_value);
-        log_string(buf);
+        log_string(buf); */
 
         ap_value = round(changed_ap_value);
 
-        sprintf(buf,"Post-rounding value of changed_ap_value is: %d",
+        /* sprintf(buf,"Post-rounding value of changed_ap_value is: %d",
                 ap_value);
-        log_string(buf);
+        log_string(buf); */
         return ap_value;
 
 

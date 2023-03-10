@@ -611,8 +611,8 @@ a vodyanoi~
 <58>A large, lumbering creature grumps about irritably.<0>
 ~
 This is a vodyanoi, a creature related to the umber hulk but somewhat larger
-and water-dwelling. It has slimy green skin, webbed hands and feed, and
-powerful manibles.  They have a reputation as an evil and violent creature,
+and water-dwelling. It has slimy green skin, webbed hands and feet, and
+powerful mandibles.  They have a reputation as an evil and violent creature,
 but this one's attention doesn't seem to have turned to you... yet.
 
 ~
@@ -1178,7 +1178,7 @@ tough outer shell~
 a tough outer shell~
 The tough outer shell of some large aquatic creature lies here.~
 ~
-9 4096 1|8
+9 4096|274877906944 1|8
 0~ 0~ 0~ 0~
 20 0 0
 A
@@ -1309,7 +1309,7 @@ inky-black black inky stone~
 an inky-black stone~
 <17>An <21>inky-black stone<0> <17>has been left here.<0>~
 ~
-9 16|64 1|32768
+9 16|64|274877906944 1|32768
 0~ 0~ 0~ 0~
 1 0 0
 A
@@ -1319,7 +1319,7 @@ bulging red eye~
 a bulging red eye~
 The bulging red eye of some hideous sea-creature lies here.~
 ~
-9 16|64|512 1|16384
+9 16|64|512|137438953472 1|16384
 0~ 0~ 0~ 0~
 30 0 0
 A
@@ -1361,7 +1361,7 @@ large sabre~
 a large sabre~
 A very large sabre has been discarded here.~
 ~
-5 1|64|512|1024|16777216 1|8192
+5 1|64|512|1024|16777216|274877906944 1|8192
 0~ 0~ 0~ 1~
 14 0 0
 A
@@ -1390,7 +1390,7 @@ horns Arlauthra~
 horns of Arlauthra~
 The wicked, curved horns of a black dragon have been left here.~
 ~
-9 16|64|65536 1|16
+9 16|64|65536|274877906944 1|16
 0~ 0~ 0~ 0~
 12 0 0
 A
@@ -1453,27 +1453,17 @@ A bright green vial has been left here.~
 
 
 #ROOMS
-#27235
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
-S
-#27243
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
-S
 #27244
 Arena Way Westbridge, Lower~
 <14>You stand on the bridge that connects Ota'ar Dar's arena canton to its military
 <87>canton. The arena canton gates lie to the south, while the imposing military
 <123>canton gates loom northward. To the east and west you may venture into the
 <159>deep canal system which separates Ota'ar Dar's cantons from each other, or you
-can head upwards, towards the huge, looming area of darkness in the water above.<0>
+can head upwards, towards the huge, looming area of darkness in the water above.
+
+A large SIGN has been nailed to the arena canton gates.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 gate~
@@ -1494,6 +1484,20 @@ D4
 ~
 ~
 0 -1 27544
+E
+note sign letter writing notice~
+O===============================O
+| Be it known the Arena is for  |
+| the enjoyment of Ota'ar Dar   |
+| CITIZENS only. Visitors are   |
+| likely to find themselves     |
+| unwilling participants in the |
+| games, should they fail to    |
+| heed this generous warning.   |
+|                               |
+| --The Prince                  |
+O===============================O
+~
 S
 #27246
 Ota'ar Dar Military/Arena Canton Canal, Lower~
@@ -1501,10 +1505,10 @@ Ota'ar Dar Military/Arena Canton Canal, Lower~
 <250>military canton, to the north, and its arena canton, to the south. The high canal
 <252>walls prevent access from here to either canton, but you may travel west, further
 <254>along the canal system, upwards, towards the huge, looming area of darkness in the
-water above, or to the east, where you can see the bridge that connects the
-cantons to each other.<0>
+water above, or to the east, where you can see the bridge that connects the cantons
+to each other. You see a large crack in the canal floor at your feet.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -1517,6 +1521,14 @@ D4
 ~
 ~
 0 -1 27546
+D5
+~
+crack~
+10 -1 27851
+E
+crack floor feet~
+The crack looks like it might just be wide enough for you to squeeze yourself through.
+~
 S
 #27247
 Ota'ar Dar Military/Arena Canton Canal, Lower~
@@ -1529,7 +1541,7 @@ in the water above. You also notice what looks like the entrance to an
 underground cave to the south--a large opening has been carved through the canal
 walls and into the sea bedrock.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -1552,7 +1564,7 @@ Ota'ar Dar Military/Arena Canton Canal, Lower~
 darkness in the water above, or to the west, where you see the bridge that connects the
 cantons to each other.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -1574,7 +1586,7 @@ Ota'ar Dar Military/Arena Canton Canal, Lower~
 <254>east or south, further along the canal system, or upwards, towards the huge, looming
 area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -1596,7 +1608,7 @@ Ota'ar Dar Military/Arena Canton Canal, Lower~
 <254>or west, further along the canal system, or upwards, towards the huge, looming
 area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -1618,7 +1630,7 @@ Ota'ar Dar Military/Arena Canton Canal, Lower~
 <254>travel north or west, further along the canal system, or upwards, towards the
 huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -1640,7 +1652,7 @@ Ota'ar Dar Military/Arena Canton Canal, Lower~
 <254>travel south or east, further along the canal system, or upwards, towards the
 huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -1662,7 +1674,7 @@ Ota'ar Dar Canals South Junction, Lower~
 <254>but you can still travel north, west, or east, further along the canal system,
 or upwards, towards the  huge, looming area of darkness in the water above.<0>
 ~
-0 4|65536 8
+0 4|65536 12
 D0
 ~
 ~
@@ -1688,7 +1700,7 @@ Ota'ar Dar Canals South Junction, Lower~
 <254>but you can still travel north, west, or east, further along the canal system,
 or upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -1714,7 +1726,7 @@ Ota'ar Dar Market/Arena Canton Canal, Lower~
 <254>travel south or west, further along the canal system, or upwards, towards the
 huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D2
 ~
 ~
@@ -1736,7 +1748,7 @@ Ota'ar Dar Market/Arena Canton Canal, Lower~
 <254>travel north or east, further along the canal system, or upwards, towards the
 huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -1760,7 +1772,7 @@ to the market canton from here? You may also travel south or west, further along
 the canal system, or upwards, towards the huge, looming area of darkness in the
 water above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 wall~
@@ -1787,7 +1799,7 @@ Ota'ar Dar Market/Arena Canton Canal, Lower~
 bridge linking the market and arena cantons, or upwards, towards the huge, looming
 area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -1809,7 +1821,7 @@ Ota'ar Dar Canals South Junction, Lower~
 <254>but you can still travel north, south, or east, further along the canal system,
 or upwards, towards the  huge, looming area of darkness in the water above.<0>
 ~
-0 4|65536 8
+0 4|65536 12
 D0
 ~
 ~
@@ -1835,7 +1847,7 @@ Ota'ar Dar Canals South Junction, Lower~
 <254>but you can still travel north, south, or west, further along the canal system,
 or upwards, towards the  huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -1861,7 +1873,7 @@ Ota'ar Dar Canals South Junction, Lower~
 <254>but you can still travel west, east, or south further along the canal system,
 or upwards, towards the  huge, looming area of darkness in the water above.<0>
 ~
-0 4|65536 8
+0 4|65536 12
 D1
 ~
 ~
@@ -1887,7 +1899,7 @@ Ota'ar Dar Canals South Junction, Lower~
 <254>but you can still travel west, east, or south, further along the canal system,
 or upwards, towards the  huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -1913,7 +1925,7 @@ Ota'ar Dar Market/Southern Residential Canton Canal, Lower~
 <254>but you may travel north or west, further along the canal system, or upwards,
 towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -1936,7 +1948,7 @@ Ota'ar Dar Market/Southern Residential Canton Canal, Lower~
 huge, looming area of darkness in the water above. You notice a narrow grate
 choked with seaweed in the eastern wall of the canal.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -1969,7 +1981,7 @@ Ota'ar Dar Market/Southern Residential Canton Canal, Lower~
 <254>but you may travel east or south, further along the canal system, or upwards,
 towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -1992,7 +2004,7 @@ Ota'ar Dar Market/Southern Residential Canton Canal, Lower~
 direction of the bridge linking the market and southern residential cantons, or
 upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -2014,7 +2026,7 @@ Ota'ar Dar Military/Southern Residential Canton Canal, Lower~
 <254>canton, but you may travel east or north, further along the canal system, or
 upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -2036,7 +2048,7 @@ Ota'ar Dar Military/Southern Residential Canton Canal, Lower~
 <254>but you may travel south and west, further along the canal system, or upwards,
 towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D2
 ~
 ~
@@ -2058,7 +2070,7 @@ Ota'ar Dar Military/Southern Residential Canton Canal, Lower~
 <254>but you may travel north and east, further along the canal system, or upwards,
 towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -2080,7 +2092,7 @@ Ota'ar Dar Military/Southern Residential Canton Canal, Lower~
 <254>but you may travel south and west, further along the canal system, or upwards,
 towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D2
 ~
 ~
@@ -2102,7 +2114,7 @@ Ota'ar Dar Military/Southern Residential Canton Canal, Lower~
 <254>but you may travel north and east, further along the canal system, or upwards,
 towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -2127,7 +2139,7 @@ upwards, towards the huge, looming area of darkness in the water above. To the
 north you see the bridge that connects Ota'ar Dar's southern residential canton
 to the old city centre, but a large iron grate prevents access to it from here.<0>
 ~
-0 0 8
+0 0 12
 D2
 ~
 ~
@@ -2150,7 +2162,7 @@ Ota'ar Dar Military/Old City Centre Canton Canal, Lower~
 further along the canal system, or upwards, towards the huge, looming area of
 darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -2173,7 +2185,7 @@ Ota'ar Dar Military/Old City Centre Canton Canal, Lower~
 east and south, further along the canal system, or upwards, towards the huge,
 looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -2198,7 +2210,7 @@ darkness in the water above. To the west you see the bridge that connects
 Ota'ar Dar's military canton to the old city centre, but a large iron grate
 prevents access to it from here.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -2221,9 +2233,11 @@ Arena Way Eastbridge, Lower~
 <123>rise to the north. To the east you may venture into the deep canal system
 <159>which separates Ota'ar Dar's cantons from each other, or you can head upwards,
 towards the huge, looming area of darkness in the water above.  To the east a huge
-iron grate prevents travel out into the open ocean.<0>
+iron grate prevents travel out into the open ocean.
+
+A large SIGN has been nailed to the arena canton gates.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 gate~
@@ -2240,6 +2254,20 @@ D4
 ~
 ~
 0 -1 27607
+E
+note sign letter writing notice~
+O===============================O
+| Be it known the Arena is for  |
+| the enjoyment of Ota'ar Dar   |
+| CITIZENS only. Visitors are   |
+| likely to find themselves     |
+| unwilling participants in the |
+| games, should they fail to    |
+| heed this generous warning.   |
+|                               |
+| --The Prince                  |
+O===============================O
+~
 S
 #27354
 Ota'ar Dar Market/Southern Residential Canton Canal, Lower~
@@ -2250,7 +2278,7 @@ Ota'ar Dar Market/Southern Residential Canton Canal, Lower~
 bridge linking the market and southern residential cantons, or upwards, towards
 the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -2272,7 +2300,7 @@ Ota'ar Dar Market/Southern Residential Canton Canal, Lower~
 <254>travel north or south, further along the canal system, or upwards, towards the
 huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -2294,7 +2322,7 @@ Ota'ar Dar Canals Central Junction, Lower~
 <254>the cantons, but you can still travel north, south, east, or west further along
 the canal system, or upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
-0 4|65536 8
+0 4|65536 12
 D0
 ~
 ~
@@ -2324,7 +2352,7 @@ Ota'ar Dar Northern/Southern Residential Canton Canal, Lower~
 <254>along the canal system, or upwards, towards the huge, looming area of darkness
 in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -2350,7 +2378,7 @@ Ota'ar Dar Northern/Southern Residential Canton Canal, Lower~
 <254>canal system, west towards the bridge connecting the two cantons, or upwards,
 towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -2376,7 +2404,7 @@ Ota'ar Dar Market/Prince's Canton Canal, Lower~
 <254>system, or upwards, towards the huge, looming area of darkness in the water
 above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -2402,7 +2430,7 @@ Ota'ar Dar Market/Prince's Canton Canal, Lower~
 <254>system, east, towards the bridge that connects the two cantons, or upwards,
 towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -2428,7 +2456,7 @@ Ota'ar Dar Northern/Southern Residential Canton Canal, Lower~
 <254>canal system, west towards the bridge connecting the two cantons, or upwards,
 towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -2454,7 +2482,7 @@ Ota'ar Dar Northern/Southern Residential Canton Canal, Lower~
 <254>along the canal system, or upwards, towards the huge, looming area of darkness
 in the water above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -2481,7 +2509,7 @@ Ota'ar Dar Canals Central Junction, Lower~
 the canal system, or upwards, towards the huge, looming area of darkness in the
 water above.<0>
 ~
-0 4|65536 8
+0 4|65536 12
 D0
 ~
 ~
@@ -2511,7 +2539,7 @@ Ota'ar Dar Market/Prince's Canton Canal, Lower~
 <254>system, or upwards, towards the huge, looming area of darkness in the water
 above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -2537,7 +2565,7 @@ Ota'ar Dar Market/Prince's Canton Canal, Lower~
 <254>system, east, towards the bridge that connects the two cantons, or upwards,
 towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -2563,7 +2591,7 @@ Ota'ar Dar Northern Residential/Prince's Canton Canal, Lower~
 <254>the canal system, or upwards, towards the huge, looming area of darkness in
 the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -2585,7 +2613,7 @@ Ota'ar Dar Northern Residential/Prince's Canton Canal, Lower~
 <254>system, north, towards the bridge that connects the two cantons, or upwards,
 towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -2599,18 +2627,6 @@ D4
 ~
 0 -1 27667
 S
-#27368
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 0 8
-S
-#27385
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
-S
 #27388
 Residential Bridge South, Lower~
 <14>You stand on the long bridge that connects Ota'ar Dar's northern residential
@@ -2620,7 +2636,7 @@ Residential Bridge South, Lower~
 cantons from each other, or you can head upwards, towards the huge, looming area of
 darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -2651,7 +2667,7 @@ Residential Bridge North, Lower~
 cantons from each other, or you can head upwards, towards the huge, looming area of
 darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 gate~
@@ -2681,7 +2697,7 @@ Ota'ar Dar Northern/Southern Residential Canton Canal, Lower~
 <254>canal system, east towards the bridge connecting the two cantons, or upwards,
 towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -2707,7 +2723,7 @@ Ota'ar Dar Northern/Southern Residential Canton Canal, Lower~
 <254>along the canal system, or upwards, towards the huge, looming area of darkness
 in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -2733,7 +2749,7 @@ Ota'ar Dar Old City Centre/Southern Residential Canton Canal, Lower~
 <254>city centre, but you may travel north, south or east, further along the canal
 system, or upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -2761,7 +2777,7 @@ upwards, towards the huge, looming area of darkness in the water above.  To the
 south you see the bridge that connects the southern residential canton to the
 old city centre, but a large iron grate prevents access to it from here.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -2779,7 +2795,7 @@ Ota'ar Dar Old City Centre/Northern Residential Canton Canal, Lower~
 <254>city centre, but you may travel north, south or east, further along the canal
 system, or upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -2807,7 +2823,7 @@ upwards, towards the huge, looming area of darkness in the water above.  To the
 north you see the bridge that connects Ota'ar Dar's northern residential canton
 to the old city centre, but a large iron grate prevents access to it from here.<0>
 ~
-0 0 8
+0 0 12
 D2
 ~
 ~
@@ -2825,7 +2841,7 @@ Ota'ar Dar Northern/Southern Residential Canton Canal, Lower~
 <254>along the canal system, or upwards, towards the huge, looming area of darkness
 in the water above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -2851,7 +2867,7 @@ Ota'ar Dar Northern/Southern Residential Canton Canal, Lower~
 <254>canal system, east towards the bridge connecting the two cantons, or upwards,
 towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -2890,7 +2906,7 @@ Stately Way Bridge, Lower~
 Dar's cantons from each other, or you can head upwards, towards the huge,
 looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -2921,7 +2937,7 @@ Prince's Cross Bridge South, Lower~
 Dar's cantons from each other, or you can head upwards, towards the huge,
 looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -2952,7 +2968,7 @@ Prince's Cross Bridge North, Lower~
 deep canal system which separates Ota'ar Dar's cantons from each other, or you
 can head upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 gate~
@@ -2982,7 +2998,7 @@ Ota'ar Dar Market/Prince's Canton Canal, Lower~
 <254>system, west, towards the bridge that connects the two cantons, or upwards,
 towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -3008,7 +3024,7 @@ Ota'ar Dar Market/Prince's Canton Canal, Lower~
 <254>system, or upwards, towards the huge, looming area of darkness in the water
 above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -3035,7 +3051,7 @@ Ota'ar Dar Market/Prince's Canton Canal, Lower~
 the immediate east a huge iron grate has been installed to block access to the open
 ocean.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -3057,7 +3073,7 @@ Ota'ar Dar Market/Prince's Canton Canal, Lower~
 <254>system, west, towards the bridge that connects the two cantons, or upwards,
 towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -3083,7 +3099,7 @@ Ota'ar Dar Market/Prince's Canton Canal, Lower~
 <254>system, or upwards, towards the huge, looming area of darkness in the water
 above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -3111,7 +3127,7 @@ the immediate east a huge iron grate has been installed to block access to
 the open ocean, and there is a very large and filthy puddle of mud at your
 feet that looks to have been recently disturbed.<0>
 ~
-0 0 8
+0 0 12
 D2
 ~
 ~
@@ -3158,7 +3174,7 @@ Ota'ar Dar Northern Residential/Prince's Canton Canal, Lower~
 <254>system, south, towards the bridge that connects the two cantons, or upwards,
 towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D2
 ~
 ~
@@ -3180,7 +3196,7 @@ Ota'ar Dar Northern Residential/Prince's Canton Canal, Lower~
 <254>the canal system, or upwards, towards the huge, looming area of darkness in
 the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -3202,7 +3218,7 @@ Ota'ar Dar Northern Residential/Prince's Canton Canal, Lower~
 <254>the canal system, or upwards, towards the huge, looming area of darkness in
 the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -3224,7 +3240,7 @@ Ota'ar Dar Northern Residential/Prince's Canton Canal, Lower~
 <254>the canal system, or upwards, towards the huge, looming area of darkness in
 the water above.<0>
 ~
-0 0 8
+0 0 12
 D2
 ~
 ~
@@ -3247,7 +3263,7 @@ Ota'ar Dar/Omu Canals North Junction, Lower~
 the canal system, or upwards, towards the huge, looming area of darkness in the
 water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -3274,7 +3290,7 @@ Ota'ar Dar/Omu Canals North Junction, Lower~
 the canal system, or upwards, towards the huge, looming area of darkness in the
 water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -3300,7 +3316,7 @@ Ota'ar Dar Northern Residential/Omu Canal, Lower~
 <254>further along the canal system, or upwards, towards the huge, looming area of
 darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -3322,7 +3338,7 @@ Ota'ar Dar Northern Residential/Omu Canal, Lower~
 <254>further along the canal system, or upwards, towards the huge, looming area of
 darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -3344,7 +3360,7 @@ Ota'ar Dar Northern Residential/Omu Canal, Lower~
 <254>further along the canal system, or upwards, towards the huge, looming area of
 darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -3366,7 +3382,7 @@ Ota'ar Dar Northern Residential/Omu Canal, Lower~
 <254>further along the canal system, or upwards, towards the huge, looming area of
 darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -3388,7 +3404,7 @@ Ota'ar Dar Northern Residential/Omu Canal, Lower~
 <254>further along the canal system, or upwards, towards the huge, looming area of
 darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -3413,7 +3429,7 @@ looming area of darkness in the water above.  To the south you see the bridge
 that connects the old city centre to Ota'ar Dar's northern residential canton,
 but a large iron grate prevents access to it from here.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -3435,7 +3451,7 @@ Omu/Old City Centre Canal, Lower~
 <254>itself, but you may travel west or east, further along the canal system, or
 upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -3457,7 +3473,7 @@ Omu/Old City Centre Canal, Lower~
 <254>itself, but you may travel north or east, further along the canal system, or
 upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -3481,7 +3497,7 @@ towards the huge, looming area of darkness in the water above.  To the west you
 see the bridge that connects Omu to the old city centre, but a large iron grate
 seals off access to it from here.<0>
 ~
-0 0 8
+0 0 12
 D2
 ~
 ~
@@ -3500,7 +3516,7 @@ Ota'ar Dar/Omu Canals North Junction, Lower~
 the canal system, or upwards, towards the huge, looming area of darkness in the
 water above.<0>
 ~
-0 65536 8
+0 65536 12
 D0
 ~
 ~
@@ -3527,7 +3543,7 @@ Ota'ar Dar/Omu Canals North Junction, Lower~
 the canal system, or upwards, towards the huge, looming area of darkness in the
 water above.<0>
 ~
-0 65536 8
+0 65536 12
 D0
 ~
 ~
@@ -3554,7 +3570,7 @@ Ota'ar Dar/Omu Canals North Junction, Lower~
 the canal system, or upwards, towards the huge, looming area of darkness in the
 water above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -3580,7 +3596,7 @@ Ota'ar Dar Prince's Canton/Omu Canal, Lower~
 <254>the canal system, or upwards, towards the huge, looming area of darkness in
 the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -3602,7 +3618,7 @@ Ota'ar Dar Prince's Canton/Omu Canal, Lower~
 <254>the canal system, or upwards, towards the huge, looming area of darkness in
 the water above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -3624,7 +3640,7 @@ Ota'ar Dar Prince's Canton/Omu Canal, Lower~
 <254>the canal system, or upwards, towards the huge, looming area of darkness in
 the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -3651,7 +3667,7 @@ canton to Omu, but a large iron grate seals it off from the canal. You also
 notice, covering the bottom of the eastern bridge support structure, a large
 quantity of seaweed that seems to have been recently disturbed.<0>
 ~
-0 0 8
+0 0 12
 D1
 The mass of seaweed covers a huge cavemouth at the bottom of the bridge.
 ~
@@ -3680,7 +3696,7 @@ Ota'ar Dar/Omu Canals North Junction, Lower~
 the canal system, or upwards, towards the huge, looming area of darkness in the
 water above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -3705,7 +3721,7 @@ Omu Canal, Lower~
 <252>to Omu, but you may travel north or east, further along the canal system, or
 <254>upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D0
 ~
 ~
@@ -3726,7 +3742,7 @@ Omu Canal, Lower~
 <252>to Omu, but you may travel south or west further along the canal system, or
 <254>upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D2
 ~
 ~
@@ -3747,7 +3763,7 @@ Omu Canal, Lower~
 <252>to Omu, but you may travel east or west, further along the canal system, or
 <254>upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -3768,7 +3784,7 @@ Omu Canal, Lower~
 <252>to Omu, but you may travel east, further along the canal system, or upwards,
 <254>towards the huge, looming area of darkness in the water above.<0>
 ~
-0 0 8
+0 0 12
 D1
 ~
 ~
@@ -3778,18 +3794,6 @@ D4
 ~
 0 -1 27770
 S
-#27535
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
-S
-#27543
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
-S
 #27544
 Arena Way Westbridge, Upper~
 <21>You float about 4 metres above the bridge that connects Ota'ar Dar's arena
@@ -3797,7 +3801,9 @@ Arena Way Westbridge, Upper~
 <33>while the imposing military canton gates loom northward. To the east and west
 <39>you may venture into the upper part of the deep canal system which separates
 <45>Ota'ar Dar's cantons from each other, the ocean floor lies downwards, or you
-can swim up, directly into the huge, looming area of dark water above your head.<0>
+can swim up, directly into the huge, looming area of dark water above your head.
+
+A large SIGN has been nailed to the arena canton gates.<0>
 ~
 0 0 8
 D0
@@ -3824,6 +3830,20 @@ D5
 ~
 ~
 0 -1 27244
+E
+note sign letter writing notice~
+O===============================O
+| Be it known the Arena is for  |
+| the enjoyment of Ota'ar Dar   |
+| CITIZENS only. Visitors are   |
+| likely to find themselves     |
+| unwilling participants in the |
+| games, should they fail to    |
+| heed this generous warning.   |
+|                               |
+| --The Prince                  |
+O===============================O
+~
 S
 #27546
 <252>Ota'ar Dar Military/Arena Canton Canal, Upper<0>~
@@ -4673,7 +4693,9 @@ Arena Way Eastbridge, Upper~
 <39>into the upper part of the deep canal system which separates Ota'ar Dar's
 <45>cantons from each other, you can swim upwards, directly into the huge, looming
 area of dark water above you, or head downwards, towards the ocean floor.
-To the east a huge iron grate prevents travel out into the open ocean.<0>
+To the east a huge iron grate prevents travel out into the open ocean.
+
+A large SIGN has been nailed to the arena canton gates.<0><0>
 ~
 0 0 8
 D0
@@ -4696,6 +4718,20 @@ D5
 ~
 ~
 0 -1 27307
+E
+note sign letter writing notice~
+O===============================O
+| Be it known the Arena is for  |
+| the enjoyment of Ota'ar Dar   |
+| CITIZENS only. Visitors are   |
+| likely to find themselves     |
+| unwilling participants in the |
+| games, should they fail to    |
+| heed this generous warning.   |
+|                               |
+| --The Prince                  |
+O===============================O
+~
 S
 #27653
 Malana Bridge, Upper~
@@ -5154,18 +5190,6 @@ D5
 ~
 ~
 0 -1 27367
-S
-#27668
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
-S
-#27685
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
 S
 #27688
 Residential Bridge South, Upper~
@@ -6495,6 +6519,10 @@ D1
 ~
 ~
 0 -1 27769
+D4
+~
+~
+0 -1 27128
 D5
 ~
 ~
@@ -6506,7 +6534,7 @@ S
 <94>through the very cramped and uncomfortable tunnel.  You wonder idly what could
 have stirred up this much sediment--and be keeping it stirred-up?<0>
 ~
-0 1|4|8|2048 8
+0 1|4|8|2048 12
 D1
 ~
 ~
@@ -6521,7 +6549,7 @@ S
 <130>The water is thick with mud down here, and you have to feel your way carefully
 <94>through the narrow tunnel. You step on something... crunchy.<0>
 ~
-0 1|4|8|512 8
+0 1|4|8|512 12
 D0
 ~
 ~
@@ -6542,7 +6570,7 @@ S
 <94>animal and humanoid remains litter the ground and evidence of the feeding
 habits of some large carnivorous beast are everywhere.<0>
 ~
-0 8 8
+0 8 12
 D2
 ~
 ~
@@ -6588,7 +6616,7 @@ S
 of the sea bedrock. You can swim west or north from this point.  A faint glow comes
 from the west.<0>
 ~
-0 1|8 8
+0 1|8 12
 D0
 ~
 ~
@@ -6621,7 +6649,7 @@ S
 through it if you'd like to leave. You can also head east, deeper into the cave
 system.<0>
 ~
-0 1|4|8 8
+0 1|4|8 12
 D1
 ~
 ~
@@ -6639,7 +6667,7 @@ S
 <56>west, towards what looks like an exit, or head deeper into the cave system, to
 <57>your east.<0>
 ~
-0 1|8 8
+0 1|8 12
 D1
 ~
 ~
@@ -6656,7 +6684,7 @@ S
 <55>bedrock; all of the cave walls look heavily scorched and scarred. You can head
 <56>west and north from here.<0>
 ~
-0 1|8 8
+0 1|8 12
 D0
 ~
 ~
@@ -6673,7 +6701,7 @@ S
 <55>bedrock; all of the cave walls look heavily scorched and scarred. You can head
 <56>south and east from here.<0>
 ~
-0 1|8 8
+0 1|8 12
 D1
 ~
 ~
@@ -6690,7 +6718,7 @@ S
 <55>bedrock; all of the cave walls look heavily scorched and scarred. You can head
 <56>west and east from here.<0>
 ~
-0 1|8 8
+0 1|8 12
 D1
 ~
 ~
@@ -6707,7 +6735,7 @@ S
 <55>bedrock; all of the cave walls look heavily scorched and scarred. You can head
 <56>west and east from here.<0>
 ~
-0 1|8 8
+0 1|8 12
 D1
 ~
 ~
@@ -6724,7 +6752,7 @@ S
 <55>bedrock; all of the cave walls look heavily scorched and scarred. You can head
 <56>west and north from here. It seems to be a little less dark to the north.<0>
 ~
-0 1|8 8
+0 1|8 12
 D0
 ~
 ~
@@ -6743,7 +6771,7 @@ S
 <93>filled chamber, while south the tunnel is completely submerged, like this part
 is, and much darker.<0>
 ~
-0 4|8 8
+0 4|8 12
 D0
 ~
 ~
@@ -7173,7 +7201,7 @@ S
 cut out of the ocean bedrock; the walls are covered in slime. It's dark here,
 and you'll have to feel around to figure out where you can go.{x
 ~
-0 1|4|8|512|8192 8
+0 1|4|8|512|8192 12
 D1
 ~
 ~
@@ -7189,7 +7217,7 @@ S
 covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
-0 1|8|8192 8
+0 1|8|8192 12
 D0
 ~
 ~
@@ -7205,7 +7233,7 @@ S
 covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
-0 1|8|8192 8
+0 1|8|8192 12
 D0
 ~
 ~
@@ -7221,7 +7249,7 @@ S
 covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
-0 1|8|8192 8
+0 1|8|8192 12
 D0
 ~
 ~
@@ -7237,7 +7265,7 @@ S
 covered in slime. It's dark here, and you'll have to feel around to figure out
 where you can go.{x
 ~
-0 1|4|8|8192 8
+0 1|4|8|8192 12
 D1
 ~
 ~
@@ -7246,6 +7274,93 @@ D2
 ~
 ~
 0 -1 27849
+S
+#27851
+<93><556>Under the Ota'ar Dar Canal<557><0>~
+<63>You stand in a narrow underwater tunnel cut out of the ocean bedrock;
+the walls are rough, close, and slimy. Your way is lit by pale bioluminescent
+globes affixed to the sides of the tunnel at regular intervals. The tunnel heads
+south from here, or you can squeeze through a narrow gap up, into the Ota'ar
+Dar canal system.<0>
+~
+0 4|8|512 12
+D2
+~
+~
+0 -1 27852
+D4
+~
+~
+0 -1 27246
+S
+#27852
+<93><556>Under the Ota'ar Dar Arena<557><0>~
+<63>You stand in a narrow underwater tunnel cut out of the ocean bedrock;
+the walls are rough, close, and slimy. Your way is lit by pale bioluminescent
+globes affixed to the sides of the tunnel at regular intervals. The tunnel heads
+north and south from here.<0>
+~
+0 8|512 12
+D0
+~
+~
+0 -1 27851
+D2
+~
+~
+0 -1 27853
+S
+#27853
+<93><556>Under the Ota'ar Dar Arena<557><0>~
+<63>You stand in a narrow underwater tunnel cut out of the ocean bedrock;
+the walls are rough, close, and slimy. Your way is lit by pale bioluminescent
+globes affixed to the sides of the tunnel at regular intervals. The tunnel heads
+north and south from here.<0>
+~
+0 8|512 12
+D0
+~
+~
+0 -1 27852
+D2
+~
+~
+0 -1 27854
+S
+#27854
+<93><556>Under the Ota'ar Dar Arena<557><0>~
+<63>You stand in a narrow underwater tunnel cut out of the ocean bedrock;
+the walls are rough, close, and slimy. Your way is lit by pale bioluminescent
+globes affixed to the sides of the tunnel at regular intervals. The tunnel heads
+north and west from here.<0>
+~
+0 8|512 12
+D0
+~
+~
+0 -1 27853
+D3
+~
+~
+0 -1 27855
+S
+#27855
+<93><556>Under the Ota'ar Dar Arena<557><0>~
+<63>You stand in a narrow underwater tunnel cut out of the ocean bedrock;
+the walls are rough, close, and slimy. Your way is lit by pale bioluminescent
+globes affixed to the sides of the tunnel at regular intervals. The tunnel heads
+east from here, and you can also push your way up through a tight crack above
+your head.<0>
+~
+0 8|512 12
+D1
+~
+~
+0 -1 27854
+D4
+~
+~
+0 -1 27214
 S
 #0
 
@@ -7606,9 +7721,9 @@ G 1 27396 100
 
 
 D 1 27244 0 2			; Arena Way Westbridge, Lower Lock North
-D 1 27244 2 2			; Arena Way Westbridge, Lower Lock South
+D 1 27244 2 1			; Arena Way Westbridge, Lower Close South
 D 1 27307 0 1			; Arena Way Eastbridge, Lower Close North
-D 1 27307 2 2			; Arena Way Eastbridge, Lower Lock South
+D 1 27307 2 1			; Arena Way Eastbridge, Lower Close South
 D 1 27419 2 1           ; Prince's Cross Bridge South, Close South
 D 1 27420 0 2           ; Prince's Cross Bridge North, Lock North
 D 1 27719 2 1           ; Prince's Cross Bridge South, Close South
@@ -7622,11 +7737,11 @@ D 1 27418 3 2           ; Stately Way, Lock West
 D 1 27718 1 2           ; Stately Way, Lock East
 D 1 27718 3 2           ; Stately Way, Lock West
 D 1 27607 0 1			; Arena Way Eastbridge, Upper Close North
-D 1 27607 2 2			; Arena Way Eastbridge, Upper Lock South
+D 1 27607 2 1			; Arena Way Eastbridge, Upper Close South
 D 1 27544 0 2			; Arena Way Westbridge, Upper Lock North
-D 1 27544 2 2			; Arena Way Westbridge, Upper Lock South
+D 1 27544 2 1			; Arena Way Westbridge, Upper Close South
 D 1 27653 1 1			; Malana Bridge, Upper Close East
-D 1 27653 3 2			; Malana Bridge, Upper Lock West
+D 1 27653 3 1			; Malana Bridge, Upper Close West
 D 1 27845 2 1           ; Exit from dragon cave close south
 S
 

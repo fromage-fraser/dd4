@@ -186,7 +186,7 @@ A marsh giant stomps towards you.
 ~
 This huge monster of a man has green gnarly teeth and a BIG stick.
 ~
-110 40 -100 S
+2|4|32|64 40 -100 S
 15 8 5 6d6+300 2d4+10
 0 18000
 8 8 1
