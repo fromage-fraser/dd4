@@ -4305,7 +4305,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
                              "  bounty fame questpoints totalqp questtime\n\r"
                              "  patron deity_timer deity_flags affected_by\n\r"
                              "  bank plat gold silver copper age\n\r"
-                             "  rage spec act\n\r"
+                             "  rage spec act crit swiftness\n\r"
                              "String being one of:\n\r"
                              "  name short long title spec\n\r", ch);
                 return;
@@ -4451,6 +4451,34 @@ void do_mset( CHAR_DATA *ch, char *argument )
                         return;
                 }
                 victim->class = value;
+                return;
+        }
+
+        if ( !str_cmp( arg2, "crit" ) )
+        {
+                if ( value < 0 || value >= 100 )
+                {
+                        char buf [ MAX_STRING_LENGTH ];
+
+                        sprintf( buf, "Crit range is 0 to 100.\n" );
+                        send_to_char( buf, ch );
+                        return;
+                }
+                victim->crit = value;
+                return;
+        }
+
+        if ( !str_cmp( arg2, "swiftness" ) )
+        {
+                if ( value < 0 || value >= 100 )
+                {
+                        char buf [ MAX_STRING_LENGTH ];
+
+                        sprintf( buf, "Swiftness range is 0 to 100.\n" );
+                        send_to_char( buf, ch );
+                        return;
+                }
+                victim->swiftness = value;
                 return;
         }
 

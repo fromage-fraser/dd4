@@ -408,6 +408,86 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
         return buf;
 }
 
+/* Show Turret to char*/
+void show_turret_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort )
+{
+        OBJ_DATA  *obj;
+        char       buf [ MAX_STRING_LENGTH ];
+        char     **prgpstrShow;
+        char      *pstrShow;
+        int       *prgnShow;
+        int        nShow = 0;
+        int        iShow;
+        int        count = 0;
+
+        if (!ch->desc)
+                return;
+
+        /*
+         * Allocate space for output lines.
+         */
+        for (obj = list; obj; obj = obj->next_content)
+        {
+                if (!obj->deleted)
+                        count++;
+        }
+
+        prgpstrShow = alloc_mem(count * sizeof(char *));
+        prgnShow = alloc_mem(count * sizeof(int));
+
+        /*
+         * Format the list of objects.
+         */
+        for (obj = list; obj; obj = obj->next_content)
+        {
+
+                if (can_see_obj(ch, obj))
+                {
+                        pstrShow = format_obj_to_char(obj, ch, fShort);
+                        prgpstrShow [nShow] = str_dup(pstrShow);
+                        prgnShow    [nShow] = 1;
+                        nShow++;
+                }
+        }
+
+        /*
+         * Output the formatted list.
+         */
+        for (iShow = 0; iShow < nShow; iShow++)
+        {
+                if (IS_NPC(ch) || IS_SET(ch->act, PLR_COMBINE))
+                {
+                        if (prgnShow[iShow] != 1)
+                        {
+                                sprintf(buf, "{d({x{w%2d{d){x ", prgnShow[iShow]);
+                                send_to_char(buf, ch);
+                        }
+                        else
+                        {
+                                send_to_char("     ", ch);
+                        }
+                }
+                send_to_char(prgpstrShow[iShow], ch);
+                send_to_char("\n\r", ch);
+                free_string(prgpstrShow[iShow]);
+        }
+
+        if ( nShow == 0)
+        {
+                if (IS_NPC(ch) || IS_SET(ch->act, PLR_COMBINE))
+                        send_to_char( "     ", ch );
+
+                send_to_char("Nothing.\n\r", ch);
+        }
+
+        /*
+         * Clean up.
+         */
+        free_mem(prgpstrShow, count * sizeof(char *));
+        free_mem(prgnShow, count * sizeof(int));
+}
+
+
 
 /*
  * Show a list to a character.
@@ -1365,8 +1445,46 @@ void do_look( CHAR_DATA *ch, char *argument )
                         send_to_char( buf, ch );
                         break;
 
-                    case ITEM_CONTAINER:
                     case ITEM_TURRET:
+                        if (obj)
+                        {
+                                int count;
+                                int i;
+                                count=0;
+
+                                for ( obj = obj->contains; obj; obj = obj->next_content )
+                                {
+                                        if (!obj)
+                                                continue;
+                                        sprintf(buf, "<97>============================={x\n\r");
+                                        send_to_char(buf, ch);
+                                        sprintf(buf, "<97>|<0><15> %-20s %3d%%  <0>\n\r",obj->name, ((obj->value[2]*100)/obj->value[3]));
+                                        send_to_char(buf, ch);
+
+                                        count++;
+                                }
+                                for ( i = count; i < 4; i++ )
+                                {
+                                        
+                                        sprintf(buf, "<97>============================={x\n\r");
+                                        send_to_char(buf, ch);  
+                                        sprintf(buf, "<97>|<0><8>------------EMPTY-----------<0>\n\r");
+                                        send_to_char(buf, ch);
+
+                                }
+                                
+                                sprintf(buf, "<97>============================={x\n\r");
+                                send_to_char(buf, ch);
+                                sprintf(buf, "<97>   <565>/  /              \\  \\<564>   {x\n\r");
+                                send_to_char(buf, ch);
+                                sprintf(buf, "<97>  /  /                \\  \\  {x\n\r");
+                                send_to_char(buf, ch);
+                                sprintf(buf, "<97> /__/                  \\__\\ {x\n\r");
+                                send_to_char(buf, ch);
+                        }
+                        break;
+
+                    case ITEM_CONTAINER:
                     case ITEM_CORPSE_NPC:
                     case ITEM_CORPSE_PC:
                         if ( IS_SET( obj->value[1], CONT_CLOSED ) )
@@ -1559,6 +1677,7 @@ void do_examine (CHAR_DATA *ch, char *argument)
                         sprintf (buf, "in %s", arg);
                         do_look (ch, buf);
                         break;
+
 
                     case ITEM_MONEY:
                         found = FALSE;
@@ -3315,6 +3434,110 @@ void do_consider( CHAR_DATA *ch, char *argument )
         if ( IS_NPC( victim ) && rank_sn(victim) > 1 )
                 act ("$N seems {Wmore powerful{x than your usual adversaries.", ch, NULL, victim, TO_CHAR );
 
+
+        if ( victim->mobspec )
+        {
+                int sn;
+                int species;
+                char buf [MAX_STRING_LENGTH];
+                char buf1 [MAX_STRING_LENGTH];
+                unsigned long int       next;
+                species = species_sn(victim);
+                buf1[0] = '\0';
+                buf[0] = '\0';
+
+                for ( sn = 0; sn < MAX_MOB; sn++ )
+                        {
+                                if ( !mob_table[sn].name )
+                                        break;
+
+                                if ( !str_cmp(victim->mobspec, mob_table[sn].name))
+                                {
+                                        strcat(buf, "<74>Your experiance and insights provide additional detail:<0>\n\r");
+                                        strcat( buf1, buf );
+                                        sprintf( buf, "Species: {W%s{x\n\r",
+                                        mob_table[sn].species);
+                                        strcat( buf1, buf );
+
+                                         /* Vulnerable */
+                                        
+                                        strcat(buf1, "<556>Vulnerable To:<0><15>");
+                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                                        {
+                                                if (IS_SET(mob_table[sn].vulnerabilities, next))
+                                                {
+                                                        
+                                                        strcat(buf1, " ");
+                                                        strcat(buf1, resist_name(next));
+                                                        buf1[0] = UPPER( buf1[0] );
+                                                }
+                                        }
+                                        strcat(buf1, "<0>\n\r");
+
+                                        /* resists */
+                                
+                                        strcat(buf1, "Resistant To:{W");
+                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                                        {
+                                                if (IS_SET(mob_table[sn].resists, next))
+                                                {
+                                                        strcat(buf1, " ");
+                                                        strcat(buf1, resist_name(next));
+
+                                                }
+                                        }
+                                        strcat(buf1, "{x\n\r");
+
+                                       
+
+                                        /*  Immune */
+                                        
+                                        strcat(buf1, "Immune To:{W");
+                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                                        {
+                                                if (IS_SET(mob_table[sn].immunes, next))
+                                                {
+                                                        strcat(buf1, " ");
+                                                        strcat(buf1, resist_name(next));
+
+                                                }
+                                        }
+                                        strcat(buf1, "{x\n\r");
+
+                                        
+                                        /* body parts from Species Table */
+                                        strcat(buf1, "Body Parts:{W");
+
+                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                                        {
+                                                if (IS_SET(species_table[species].body_parts, next))
+                                                {
+                                                        strcat(buf1, " ");
+                                                        strcat(buf1, body_form_name(next));
+
+                                                }
+                                        }
+                                        strcat(buf1, "{x\n\r");
+
+                                        /* Attack Parts  from Species Table*/
+                                        
+                                        strcat(buf1, "Attack Parts:{W");
+                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                                        {
+                                                if (IS_SET(species_table[species].attack_parts, next))
+                                                {
+                                                        strcat(buf1, " ");
+                                                        strcat(buf1, body_form_name(next));
+
+                                                }
+                                        }
+                                        strcat(buf1, "{x\n\r");
+                                send_to_char( buf1, ch );
+                                }
+                        }
+                
+                return;
+        }
 }
 
 
