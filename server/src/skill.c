@@ -4786,7 +4786,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
 
         for (turret = ch->in_room->contents; turret; turret = turret->next_content)
         {
-                if (IS_SET(turret->ego_flags, EGO_ITEM_TURRET))
+                if (turret->item_type == ITEM_TURRET)
                         break;
         }
 

@@ -172,6 +172,7 @@ const struct cmd_type cmd_table [] =
         { "construct",  do_construct,   POS_STANDING,    0,  LOG_NORMAL },
         { "drink",      do_drink,       POS_RESTING,     0,  LOG_NORMAL },
         { "drop",       do_drop,        POS_RESTING,     0,  LOG_NORMAL },
+        { "deploy",     do_deploy,      POS_RESTING,     0,  LOG_NORMAL },
         { "eat",        do_eat,         POS_RESTING,     0,  LOG_NORMAL },
         { "enter",      do_enter,       POS_STANDING,    0,  LOG_NORMAL },
         { "feed",       do_feed,        POS_FIGHTING,    0,  LOG_NORMAL },
