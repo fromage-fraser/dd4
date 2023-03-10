@@ -191,6 +191,7 @@ const struct cmd_type cmd_table [] =
         { "quaff",      do_quaff,       POS_RESTING,     0,  LOG_NORMAL },
         { "smear",      do_smear,       POS_RESTING,     0,  LOG_NORMAL },
         { "recite",     do_recite,      POS_RESTING,     0,  LOG_NORMAL },
+        { "retract",    do_retract,     POS_RESTING,     0,  LOG_NORMAL },
         { "remove",     do_remove,      POS_RESTING,     0,  LOG_NORMAL },
         { "sell",       do_sell,        POS_STANDING,    0,  LOG_NORMAL },
         { "take",       do_get,         POS_RESTING,     0,  LOG_NORMAL },

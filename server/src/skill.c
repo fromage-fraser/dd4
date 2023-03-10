@@ -4955,7 +4955,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                                         send_to_char("That module is not in your turret.\n\r", ch);
                                         return;
                                 }
-
+                                
                                 if (module->item_type == ITEM_DEFENSIVE_TURRET_MODULE)
                                         return;
 

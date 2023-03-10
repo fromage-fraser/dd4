@@ -419,7 +419,6 @@ void show_turret_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort )
         int        nShow = 0;
         int        iShow;
         int        count = 0;
-        bool       fCombine;
 
         if (!ch->desc)
                 return;
@@ -445,7 +444,6 @@ void show_turret_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort )
                 if (can_see_obj(ch, obj))
                 {
                         pstrShow = format_obj_to_char(obj, ch, fShort);
-                        fCombine = FALSE;
                         prgpstrShow [nShow] = str_dup(pstrShow);
                         prgnShow    [nShow] = 1;
                         nShow++;
@@ -3455,7 +3453,7 @@ void do_consider( CHAR_DATA *ch, char *argument )
 
                                 if ( !str_cmp(victim->mobspec, mob_table[sn].name))
                                 {
-                                        strcat(buf, "<74><560>Your experiance and insights provide additional detail:<0>\n\r");
+                                        strcat(buf, "<74>Your experiance and insights provide additional detail:<0>\n\r");
                                         strcat( buf1, buf );
                                         sprintf( buf, "Species: {W%s{x\n\r",
                                         mob_table[sn].species);
