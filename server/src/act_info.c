@@ -2560,14 +2560,22 @@ void do_time( CHAR_DATA *ch, char *argument )
         else
                 suf = "th";
 
-        if ( weather_info.moonlight == MOON_NONE )
+        if ( weather_info.moonlight      == MOON_NEW )
                 moon = "new";
-        else if ( weather_info.moonlight == MOON_WAXING )
-                moon = "waxing";
+        else if ( weather_info.moonlight == MOON_WAXING_CRESCENT )
+                moon = "waxing crescent";
+        else if ( weather_info.moonlight == MOON_FIRST_QUARTER )
+                moon = "in its first quarter";
+        else if ( weather_info.moonlight == MOON_WAXING_GIBBOUS )
+                moon = "waxing gibbous";
         else if ( weather_info.moonlight == MOON_FULL )
                 moon = "full";
+        else if ( weather_info.moonlight == MOON_WANING_GIBBOUS )
+                moon = "waning gibbous";
+        else if ( weather_info.moonlight == MOON_LAST_QUARTER )
+                moon = "in its last quarter";
         else
-                moon = "waning";
+                moon = "waning crescent";
 
         sprintf( buf, "It is %d o'clock %s, Day of %s, %d%s of the Month of %s.\n\r",
                 ( time_info.hour % 12 == 0 ) ? 12 : time_info.hour % 12,

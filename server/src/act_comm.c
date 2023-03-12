@@ -399,8 +399,10 @@ void do_say( CHAR_DATA *ch, char *argument )
 
         sprintf( buf, "%sYou %s '$t'$R", color_table_8bit[get_colour_index_by_code(ch->colors[COLOR_SAY])].act_code, verb );
 
-        if (ch->desc)
+        if (ch->desc) {
                 act( buf, ch, argument, NULL, TO_CHAR );
+                MOBtrigger = FALSE;
+        }
 
         for ( mob = ch->in_room->people; mob !=NULL; mob = mob->next_in_room )
         {
@@ -408,9 +410,10 @@ void do_say( CHAR_DATA *ch, char *argument )
                         color_table_8bit[get_colour_index_by_code(mob->colors[COLOR_SAY])].act_code,
                         capitalize_initial(PERS(ch, mob)), verb );
 
-                if ( mob != ch && mob->desc != NULL )
+                if ( mob != ch && mob->desc != NULL ) {
                         act( buf, mob, argument, NULL, TO_CHAR );
-
+                        MOBtrigger = FALSE;
+                }
                 if ( IS_NPC( ch ) && IS_NPC( mob )
                     && mob->pIndexData->vnum ==  ch->pIndexData->vnum )
                         continue;
@@ -582,6 +585,7 @@ void do_emote( CHAR_DATA *ch, char *argument )
                 strcat( buf, "." );
 
         act( "$n $T", ch, NULL, buf, TO_ROOM );
+        MOBtrigger = FALSE;
         act( "$n $T", ch, NULL, buf, TO_CHAR );
 
         return;

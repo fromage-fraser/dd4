@@ -3418,6 +3418,8 @@ bool check_social( CHAR_DATA *ch, char *command, char *argument )
                 return TRUE;
 
         }
+        sprintf(log_buf, "NO ARGUMENT\r\n");
+	            log_string(log_buf);
 
         one_argument( argument, arg );
         victim = NULL;
@@ -3473,6 +3475,80 @@ bool check_social( CHAR_DATA *ch, char *command, char *argument )
                         }
                 }
         }
+        /*
+        one_argument( argument, arg );
+        victim = NULL;
+
+        if ( arg[0] == '\0' )
+        {
+                sprintf(log_buf, "NO ARGUMENT\r\n");
+	            log_string(log_buf);
+                act( social_table[cmd].char_no_arg,   ch, NULL, victim, TO_CHAR    );
+                act( social_table[cmd].others_no_arg, ch, NULL, victim, TO_ROOM    );
+        }
+        else if ( !( victim = get_char_room( ch, arg ) ) )
+        {
+                sprintf(log_buf, "NO VICTIM FOUND\r\n");
+	            log_string(log_buf);
+                send_to_char( "They aren't here.\n\r",                    ch );
+        }
+        else if ( victim == ch )
+        {
+                sprintf(log_buf, "VICTIM IS CHAR\r\n");
+	            log_string(log_buf);
+                act( social_table[cmd].char_auto,     ch, NULL, victim, TO_CHAR    );
+                act( social_table[cmd].others_auto,   ch, NULL, victim, TO_ROOM    );
+        }
+        else if ( !IS_NPC( ch ) && !IS_NPC( victim ))
+        {
+                sprintf(log_buf, "VICTIM IS PRESENT AND BOTH PCS\r\n");
+	            log_string(log_buf);
+                act( social_table[cmd].char_found,    ch, NULL, victim, TO_CHAR    );
+                act( social_table[cmd].vict_found,    ch, NULL, victim, TO_VICT    );
+                act( social_table[cmd].others_found,  ch, NULL, victim, TO_NOTVICT );
+        }
+        else if ( !IS_NPC( ch ) && IS_NPC( victim ))
+        {
+                sprintf(log_buf, "VICTIM IS PRESENT EITHER CH/VICTIM NOT PC: %s %s\r\n", ch->name, victim->short_descr);
+	            log_string(log_buf);
+                act( social_table[cmd].char_found,    ch, NULL, victim, TO_CHAR    );
+                act( social_table[cmd].vict_found,    ch, NULL, victim, TO_VICT    );
+                act( social_table[cmd].others_found,  ch, NULL, victim, TO_NOTVICT );
+                act( social_table[cmd].vict_found,   ch, NULL, victim, TO_ROOM    );
+
+                if ( !IS_NPC( ch )
+                    && IS_NPC( victim )
+                    && !IS_AFFECTED( victim, AFF_CHARM )
+                    && IS_AWAKE( victim ) )
+                {
+                        sprintf(log_buf, "VICTIM IS PRESENT PASSED IFCHECK\r\n");
+	                    log_string(log_buf);
+                        switch ( number_bits( 4 ) )
+                        {
+                            case 0:
+                                if ( ( victim->level < ch->level )
+                                    && !( victim->fighting ) )
+                                        multi_hit( victim, ch, TYPE_UNDEFINED );
+                                break;
+
+                            case 1: case 2: case 3: case 4:
+                            case 5: case 6: case 7: case 8:
+                                act( social_table[cmd].char_found,
+                                    victim, NULL, ch, TO_CHAR    );
+                                act( social_table[cmd].vict_found,
+                                    victim, NULL, ch, TO_VICT    );
+                                act( social_table[cmd].others_found,
+                                    victim, NULL, ch, TO_NOTVICT );
+                                break;
+
+                            case 9: case 10: case 11: case 12:
+                                act( "You slap $N.",  victim, NULL, ch, TO_CHAR    );
+                                act( "$n slaps you.", victim, NULL, ch, TO_VICT    );
+                                act( "$n slaps $N.",  victim, NULL, ch, TO_NOTVICT );
+                                break;
+                        }
+                }*/
+
 
         return TRUE;
 }

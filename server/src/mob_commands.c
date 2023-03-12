@@ -59,6 +59,7 @@ char *mprog_type_to_name( int type )
     case ALL_GREET_PROG:        return "all_greet_prog";
     case GIVE_PROG:             return "give_prog";
     case BRIBE_PROG:            return "bribe_prog";
+    case MOVE_PROG:             return "move_prog";
     default:                    return "ERROR_PROG";
     }
 }

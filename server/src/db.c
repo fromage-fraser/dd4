@@ -891,14 +891,23 @@ void boot_db( void )
                 else
                         weather_info.sunlight = SUN_DARK;
 
-                if ( time_info.day <  8 )
-                        weather_info.moonlight = MOON_NONE;
-                else if ( time_info.day < 17 )
-                        weather_info.moonlight = MOON_WAXING;
-                else if ( time_info.day < 26 )
+
+                if ( time_info.day <  5 )
+                        weather_info.moonlight = MOON_NEW;
+                else if ( time_info.day < 9 )
+                        weather_info.moonlight = MOON_WAXING_CRESCENT;
+                else if ( time_info.day < 12 )
+                        weather_info.moonlight = MOON_FIRST_QUARTER;
+                else if ( time_info.day < 16 )
+                        weather_info.moonlight = MOON_WAXING_GIBBOUS;
+                else if ( time_info.day < 21 )
                         weather_info.moonlight = MOON_FULL;
+                else if ( time_info.day < 25 )
+                        weather_info.moonlight = MOON_WANING_GIBBOUS;
+                else if ( time_info.day < 30 )
+                        weather_info.moonlight = MOON_LAST_QUARTER;
                 else
-                        weather_info.moonlight  = MOON_WANING;
+                        weather_info.moonlight  = MOON_WANING_CRESCENT;
 
                 weather_info.change     = 0;
                 weather_info.mmhg       = 960;
@@ -1195,7 +1204,7 @@ void boot_db( void )
 int mprog_name_to_type ( char *name )
 {
         if ( !str_cmp( name, "in_file_prog"   ) )       return IN_FILE_PROG;
-        if ( !str_cmp( name, "act_prog"       ) )   return ACT_PROG;
+        if ( !str_cmp( name, "act_prog"       ) )       return ACT_PROG;
         if ( !str_cmp( name, "speech_prog"    ) )       return SPEECH_PROG;
         if ( !str_cmp( name, "rand_prog"      ) )       return RAND_PROG;
         if ( !str_cmp( name, "fight_prog"     ) )       return FIGHT_PROG;
@@ -1206,6 +1215,7 @@ int mprog_name_to_type ( char *name )
         if ( !str_cmp( name, "all_greet_prog" ) )       return ALL_GREET_PROG;
         if ( !str_cmp( name, "give_prog"      ) )       return GIVE_PROG;
         if ( !str_cmp( name, "bribe_prog"     ) )       return BRIBE_PROG;
+        if ( !str_cmp( name, "move_prog"      ) )       return MOVE_PROG;
 
         return( ERROR_PROG );
 }

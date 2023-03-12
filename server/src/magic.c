@@ -6950,8 +6950,22 @@ void spell_moonray( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( weather_info.sky == SKY_CLOUDY )
                 dam /= 2;
 
+        if ( weather_info.moonlight == MOON_WAXING_CRESCENT
+        ||   weather_info.moonlight == MOON_WANING_CRESCENT )
+                dam *= 1.1;
 
-        send_to_char( "A powerful moonbeam strikes your foes!\n\r", ch );
+        if ( weather_info.moonlight == MOON_FIRST_QUARTER
+        ||   weather_info.moonlight == MOON_LAST_QUARTER)
+                dam *= 1.2;
+
+        if ( weather_info.moonlight == MOON_WAXING_GIBBOUS
+        ||   weather_info.moonlight == MOON_WANING_GIBBOUS )
+                dam *= 1.3;
+
+        if ( weather_info.moonlight == MOON_FULL )
+                dam *= 1.4;
+
+        send_to_char( "A powerful moonbeam blasts the area!\n\r", ch );
         act( "$n calls a moonbeam to strike $s foes!", ch, NULL, NULL, TO_ROOM );
 
         for ( vch = char_list; vch; vch = vch->next )
