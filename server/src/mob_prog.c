@@ -34,6 +34,11 @@
 #include "merc.h"
 
 /*
+ *  Mudprogram additions
+ */
+ACT_PROG_DATA *	mob_act_list;
+
+/*
  * Local function prototypes
  */
 
@@ -152,7 +157,7 @@ bool mprog_veval( int lhs, char *opr, int rhs )
  * optional but if one is there then both must be. The spaces are all
  * optional. The evaluation of the opr expressions is farmed out
  * to reduce the redundancy of the mammoth if statement list.
- * If there are errors, then return -1 otherwise return boolean 1,0
+ * If there are errors, then return FALSE otherwise return boolean 1,0
  */
 bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                      OBJ_DATA *obj, void *vo, CHAR_DATA *rndm)
@@ -175,7 +180,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
   if ( *point == '\0' )
     {
       bug ( "Mob: %d null ifchck", mob->pIndexData->vnum );
-      return -1;
+      return FALSE;
     }
   /* skip leading spaces */
   while ( *point == ' ' )
@@ -186,7 +191,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
     if ( *point == '\0' )
       {
         bug ( "Mob: %d ifchck syntax error", mob->pIndexData->vnum );
-        return -1;
+        return FALSE;
       }
     else
       if ( *point == ' ' )
@@ -202,7 +207,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
     if ( *point == '\0' )
       {
         bug ( "Mob: %d ifchck syntax error", mob->pIndexData->vnum );
-        return -1;
+        return FALSE;
       }
     else
       if ( *point == ' ' )
@@ -228,7 +233,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
           {
             bug ( "Mob: %d ifchck operator without value",
                  mob->pIndexData->vnum );
-            return -1;
+            return FALSE;
           }
         else
           *oprpt++ = *point++;
@@ -273,16 +278,16 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
         case 'i': return 0;
         case 'n': if ( actor )
                      return ( !IS_NPC( actor ) );
-                  else return -1;
+                  else return FALSE;
         case 't': if ( vict )
                      return ( !IS_NPC( vict ) );
-                  else return -1;
+                  else return FALSE;
         case 'r': if ( rndm )
                      return ( !IS_NPC( rndm ) );
-                  else return -1;
+                  else return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'ispc'", mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -293,16 +298,16 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
         case 'i': return 1;
         case 'n': if ( actor )
                      return IS_NPC( actor );
-                  else return -1;
+                  else return FALSE;
         case 't': if ( vict )
                      return IS_NPC( vict );
-                  else return -1;
+                  else return FALSE;
         case 'r': if ( rndm )
                      return IS_NPC( rndm );
-                  else return -1;
+                  else return FALSE;
         default:
           bug ("Mob: %d bad argument to 'isnpc'", mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -313,16 +318,16 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
         case 'i': return IS_GOOD( mob );
         case 'n': if ( actor )
                      return IS_GOOD( actor );
-                  else return -1;
+                  else return FALSE;
         case 't': if ( vict )
                      return IS_GOOD( vict );
-                  else return -1;
+                  else return FALSE;
         case 'r': if ( rndm )
                      return IS_GOOD( rndm );
-                  else return -1;
+                  else return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'isgood'", mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -333,16 +338,16 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
         case 'i': return IS_EVIL( mob );
         case 'n': if ( actor )
                      return IS_EVIL( actor );
-                  else return -1;
+                  else return FALSE;
         case 't': if ( vict )
                      return IS_EVIL( vict );
-                  else return -1;
+                  else return FALSE;
         case 'r': if ( rndm )
                      return IS_EVIL( rndm );
-                  else return -1;
+                  else return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'isevil'", mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -353,16 +358,16 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
         case 'i': return ( mob->fighting ) ? 1 : 0;
         case 'n': if ( actor )
                      return ( actor->fighting ) ? 1 : 0;
-                  else return -1;
+                  else return FALSE;
         case 't': if ( vict )
                      return ( vict->fighting ) ? 1 : 0;
-                  else return -1;
+                  else return FALSE;
         case 'r': if ( rndm )
                      return ( rndm->fighting ) ? 1 : 0;
-                  else return -1;
+                  else return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'isfight'", mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -378,7 +383,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                         else
                                 return 0;
                 }
-                return -1;
+                return FALSE;
 
         case 'n':
                 if (actor)
@@ -388,7 +393,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                         else
                                 return FALSE;
                 }
-                return -1;
+                return FALSE;
 
         case 't':
                 if (vict)
@@ -398,7 +403,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                         else
                                 return FALSE;
                 }
-                return -1;
+                return FALSE;
 
         case 'r':
                 if (rndm)
@@ -408,11 +413,11 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                         else
                                 return FALSE;
                 }
-                return -1;
+                return FALSE;
 
         default:
           bug ( "Mob: %d bad argument to 'isimmort'", mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -423,17 +428,17 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
         case 'i': return (IS_AFFECTED( mob, AFF_CHARM ) != 0);
         case 'n': if ( actor )
                      return (IS_AFFECTED( actor, AFF_CHARM ) != 0);
-                  else return -1;
+                  else return FALSE;
         case 't': if ( vict )
                      return (IS_AFFECTED( vict, AFF_CHARM ) != 0);
-                  else return -1;
+                  else return FALSE;
         case 'r': if ( rndm )
                      return (IS_AFFECTED( rndm, AFF_CHARM ) != 0);
-                  else return -1;
+                  else return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'ischarmed'",
                mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -446,18 +451,18 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
         case 'n': if ( actor )
                      return ( actor->master != NULL
                              && actor->master->in_room == actor->in_room );
-                  else return -1;
+                  else return FALSE;
         case 't': if ( vict )
                      return ( vict->master != NULL
                              && vict->master->in_room == vict->in_room );
-                  else return -1;
+                  else return FALSE;
         case 'r': if ( rndm )
                      return ( rndm->master != NULL
                              && rndm->master->in_room == rndm->in_room );
-                  else return -1;
+                  else return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'isfollow'", mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -468,17 +473,17 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
         case 'i': return ( mob->affected_by & atoi( arg ) );
         case 'n': if ( actor )
                      return ( actor->affected_by & atoi( arg ) );
-                  else return -1;
+                  else return FALSE;
         case 't': if ( vict )
                      return ( vict->affected_by & atoi( arg ) );
-                  else return -1;
+                  else return FALSE;
         case 'r': if ( rndm )
                      return ( rndm->affected_by & atoi( arg ) );
-                  else return -1;
+                  else return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'isaffected'",
                mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -496,7 +501,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 't': if ( vict )
                   {
                     lhsvl = vict->hit / vict->max_hit;
@@ -504,7 +509,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 'r': if ( rndm )
                   {
                     lhsvl = rndm->hit / rndm->max_hit;
@@ -512,10 +517,10 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'hitprcnt'", mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -533,7 +538,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 't': if ( vict )
                   {
                     lhsvl = vict->in_room->vnum;
@@ -541,7 +546,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 'r': if ( rndm )
                   {
                     lhsvl = rndm->in_room->vnum;
@@ -549,10 +554,10 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'inroom'", mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -570,7 +575,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 't': if ( vict )
                   {
                     lhsvl = vict->sex;
@@ -578,7 +583,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 'r': if ( rndm )
                   {
                     lhsvl = rndm->sex;
@@ -586,10 +591,10 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'sex'", mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -607,7 +612,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 't': if ( vict )
                   {
                     lhsvl = vict->position;
@@ -615,7 +620,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 'r': if ( rndm )
                   {
                     lhsvl = rndm->position;
@@ -623,10 +628,10 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'position'", mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -647,7 +652,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 't': if ( vict )
                   {
                     /* lhsvl = get_trust( vict ); */
@@ -656,7 +661,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 'r': if ( rndm )
                   {
                     /* lhsvl = get_trust( rndm ); */
@@ -665,10 +670,10 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'level'", mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -688,7 +693,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 't': if ( vict )
                   {
                     lhsvl = vict->race;
@@ -696,7 +701,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 'r': if ( rndm )
                   {
                     lhsvl = rndm->race;
@@ -704,10 +709,10 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'race'", mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -727,7 +732,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 't': if ( vict )
                   {
                     lhsvl = vict->sub_class;
@@ -735,7 +740,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 'r': if ( rndm )
                   {
                     lhsvl = rndm->sub_class;
@@ -743,10 +748,10 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'subclass'", mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -764,7 +769,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 't': if ( vict )
                   {
                     lhsvl = vict->class;
@@ -772,7 +777,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 'r': if ( rndm )
                   {
                     lhsvl = rndm->class;
@@ -780,10 +785,10 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'class'", mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -801,7 +806,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 't': if ( vict )
                   {
                     lhsvl = vict->gold;
@@ -809,7 +814,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 'r': if ( rndm )
                   {
                     lhsvl = rndm->gold;
@@ -817,10 +822,10 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'goldamt'", mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -835,7 +840,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                  else
-                   return -1;
+                   return FALSE;
         case 'p': if ( v_obj )
                   {
                     lhsvl = v_obj->item_type;
@@ -843,10 +848,10 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'objtype'", mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -861,7 +866,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 'p': if ( v_obj )
                   {
                     lhsvl = v_obj->value[0];
@@ -869,10 +874,10 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'objval0'", mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -887,7 +892,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 'p': if ( v_obj )
                   {
                     lhsvl = v_obj->value[1];
@@ -895,10 +900,10 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'objval1'", mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -913,7 +918,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 'p': if ( v_obj )
                   {
                     lhsvl = v_obj->value[2];
@@ -921,10 +926,10 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'objval2'", mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -939,7 +944,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 'p': if ( v_obj )
                   {
                     lhsvl = v_obj->value[3];
@@ -947,10 +952,10 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'objval3'", mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -971,7 +976,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     }
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 't': if ( vict )
                   {
                     if IS_NPC( actor )
@@ -982,7 +987,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     }
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 'r': if ( rndm )
                   {
                     if IS_NPC( actor )
@@ -992,7 +997,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                       return mprog_veval( lhsvl, opr, rhsvl );
                     }
                   }
-                 else return -1;
+                 else return FALSE;
         case 'o': if ( obj )
                   {
                     lhsvl = obj->pIndexData->vnum;
@@ -1000,7 +1005,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         case 'p': if ( v_obj )
                   {
                     lhsvl = v_obj->pIndexData->vnum;
@@ -1008,10 +1013,10 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
                   else
-                    return -1;
+                    return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'number'", mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -1023,26 +1028,26 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
         case 'n': if ( actor )
                     return mprog_seval( actor->name, opr, val );
                   else
-                    return -1;
+                    return FALSE;
         case 't': if ( vict )
                     return mprog_seval( vict->name, opr, val );
                   else
-                    return -1;
+                    return FALSE;
         case 'r': if ( rndm )
                     return mprog_seval( rndm->name, opr, val );
                   else
-                    return -1;
+                    return FALSE;
         case 'o': if ( obj )
                     return mprog_seval( obj->name, opr, val );
                   else
-                    return -1;
+                    return FALSE;
         case 'p': if ( v_obj )
                     return mprog_seval( v_obj->name, opr, val );
                   else
-                    return -1;
+                    return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'name'", mob->pIndexData->vnum );
-          return -1;
+          return FALSE;
         }
     }
 
@@ -1056,33 +1061,33 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                 switch (arg[1])
                 {
                     case 'i':
-                        return -1;
+                        return FALSE;
 
                     case 'n':
                         if (actor && !IS_NPC(actor))
                             return mprog_veval(actor->clan, opr, clan);
                         else
-                            return -1;
+                            return FALSE;
 
                     case 't':
                         if (vict)
                             return mprog_veval(vict->clan, opr, clan);
                         else
-                            return -1;
+                            return FALSE;
 
                     case 'r':
-                        return -1;
+                        return FALSE;
 
                     case 'o':
-                        return -1;
+                        return FALSE;
 
                     case 'p':
-                        return -1;
+                        return FALSE;
 
                     default:
                         bug("Mob: %d bad argument to 'clan'",
                             mob->pIndexData->vnum);
-                        return -1;
+                        return FALSE;
                 }
         }
 
@@ -1112,7 +1117,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                             return mprog_veval(0, opr, vnum);
                         }
                         else
-                            return -1;
+                            return FALSE;
 
                     case 'n':
                         if (actor)
@@ -1128,7 +1133,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                             return mprog_veval(0, opr, vnum);
                         }
                         else
-                            return -1;
+                            return FALSE;
 
                     case 't':
                         if (vict)
@@ -1141,24 +1146,24 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                                    return mprog_veval(pobj->pIndexData->vnum, opr, vnum);
                             }
 
-                            return -1;
+                            return FALSE;
                         }
                         else
-                            return -1;
+                            return FALSE;
 
                     case 'r':
-                        return -1;
+                        return FALSE;
 
                     case 'o':
-                        return -1;
+                        return FALSE;
 
                     case 'p':
-                        return -1;
+                        return FALSE;
 
                     default:
                         bug("Mob: %d bad argument to 'clan'",
                             mob->pIndexData->vnum);
-                        return -1;
+                        return FALSE;
                 }
         }
 
@@ -1166,7 +1171,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
    * odd happened.  So report the bug and abort the MOBprogram (return error)
    */
   bug ( "Mob: %d unknown ifchck", mob->pIndexData->vnum );
-  return -1;
+  return FALSE;
 
 }
 
@@ -1685,15 +1690,15 @@ void mprog_wordlist_check( char *arg, CHAR_DATA *mob, CHAR_DATA *actor,
                           OBJ_DATA *obj, void *vo, int type )
 {
 
-  char        temp1[ MAX_STRING_LENGTH ];
-  char        temp2[ MAX_INPUT_LENGTH ];
-  char        word[ MAX_INPUT_LENGTH ];
-  MPROG_DATA *mprg;
-  char       *list;
-  char       *start;
-  char       *dupl;
-  char       *end;
-  int         i;
+  char          temp1[ MAX_STRING_LENGTH ];
+  char          temp2[ MAX_INPUT_LENGTH ];
+  char          word[ MAX_INPUT_LENGTH ];
+  MPROG_DATA    *mprg;
+  char          *list;
+  char          *start;
+  char          *dupl;
+  char          *end;
+  unsigned int  i;
 
   for ( mprg = mob->pIndexData->mobprogs; mprg != NULL; mprg = mprg->next )
     if ( mprg->type & type )
@@ -1701,9 +1706,17 @@ void mprog_wordlist_check( char *arg, CHAR_DATA *mob, CHAR_DATA *actor,
         strcpy( temp1, mprg->arglist );
         list = temp1;
         for ( i = 0; i < strlen( list ); i++ )
-          list[i] = LOWER( list[i] );
-        strcpy( temp2, arg );
+        list[i] = LOWER( list[i] );
+         /*
+	     * BUGFIX: Copy AT MOST sizeof( temp2) characters.  Walker
+	     */
+	    strncpy( temp2, arg, sizeof( temp2 ) );
+	    /*
+	     * Add a NULL char at end of temp2.  Walker
+	     */
+	    temp2[ MAX_INPUT_LENGTH - 1 ] = '\0';
         dupl = temp2;
+
         for ( i = 0; i < strlen( dupl ); i++ )
           dupl[i] = LOWER( dupl[i] );
         if ( ( list[0] == 'p' ) && ( list[1] == ' ' ) )
@@ -1763,6 +1776,20 @@ void mprog_percent_check( CHAR_DATA *mob, CHAR_DATA *actor, OBJ_DATA *obj,
 
 }
 
+void mob_act_add( CHAR_DATA *mob )
+{
+    ACT_PROG_DATA * runner;
+
+    for ( runner = mob_act_list; runner; runner = runner->next )
+	if ( runner->vo == mob )
+	    return;
+
+    runner		= alloc_mem( sizeof( ACT_PROG_DATA ) );
+    runner->vo		= mob;
+    runner->next	= mob_act_list;
+    mob_act_list	= runner;
+}
+
 /* The triggers.. These are really basic, and since most appear only
  * once in the code (hmm. i think they all do) it would be more efficient
  * to substitute the code in and make the mprog_xxx_check routines global.
@@ -1771,31 +1798,37 @@ void mprog_percent_check( CHAR_DATA *mob, CHAR_DATA *actor, OBJ_DATA *obj,
  * make sure you remember to modify the variable names to the ones in the
  * trigger calls.
  */
-void mprog_act_trigger( char *buf, CHAR_DATA *mob, CHAR_DATA *ch,
-                       OBJ_DATA *obj, void *vo)
+
+void mprog_act_trigger( char *buf, CHAR_DATA * mob, CHAR_DATA * ch,
+		       OBJ_DATA * obj, void *vo )
 {
+    MPROG_ACT_LIST *tmp_act;
 
-  MPROG_ACT_LIST * tmp_act;
-
-  if ( IS_NPC( mob )
-      && ( mob->pIndexData->progtypes & ACT_PROG ) )
+    if ( IS_NPC( mob )
+	&& IS_SET( mob->pIndexData->progtypes, ACT_PROG ) )
     {
-      tmp_act = alloc_mem( sizeof( MPROG_ACT_LIST ) );
-      if ( mob->mpactnum > 0 )
-        tmp_act->next = mob->mpact->next;
-      else
-        tmp_act->next = NULL;
+        /*
+         * Don't let a mob trigger itself, nor one instance of a mob
+         * trigger another instance.
+         */
+	if ( IS_NPC( ch ) && ch->pIndexData == mob->pIndexData )
+	    return;
+	tmp_act = alloc_mem( sizeof( MPROG_ACT_LIST ) );
+	if ( mob->mpactnum > 0 )
+	    tmp_act->next = mob->mpact->next;
+	else
+	    tmp_act->next = NULL;
 
-      mob->mpact      = tmp_act;
-      mob->mpact->buf = str_dup( buf );
-      mob->mpact->ch  = ch;
-      mob->mpact->obj = obj;
-      mob->mpact->vo  = vo;
-      mob->mpactnum++;
-
+	mob->mpact = tmp_act;
+	mob->mpact->buf = str_dup( buf );
+	mob->mpact->ch = ch;
+	mob->mpact->obj = obj;
+	mob->mpact->vo = vo;
+	mob->mpactnum++;
+	mob_act_add( mob );
     }
 
-  return;
+    return;
 }
 
 void mprog_bribe_trigger( CHAR_DATA *mob, CHAR_DATA *ch, int amount )

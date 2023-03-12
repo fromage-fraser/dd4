@@ -169,8 +169,9 @@ typedef struct time_info_data                   TIME_INFO_DATA;
 typedef struct weather_data                     WEATHER_DATA;
 typedef struct mob_prog_data                    MPROG_DATA;
 typedef struct mob_prog_act_list                MPROG_ACT_LIST;
+typedef struct act_prog_data		            ACT_PROG_DATA;
 typedef struct auction_data                     AUCTION_DATA;
-typedef struct game_data		        GAME_DATA;
+typedef struct game_data		                GAME_DATA;
 typedef struct coin_data                        COIN_DATA;
 typedef struct smelting_data                    SMELTING_DATA;
 typedef struct blueprint_data                   BLUEPRINT_DATA;
@@ -705,10 +706,14 @@ struct ban_data
 #define SKY_RAINING             2
 #define SKY_LIGHTNING           3
 
-#define MOON_FULL               0
-#define MOON_WAXING             1
-#define MOON_WANING             2
-#define MOON_NONE               3
+#define MOON_NEW                0
+#define MOON_WAXING_CRESCENT    1
+#define MOON_FIRST_QUARTER      2
+#define MOON_WAXING_GIBBOUS     3
+#define MOON_FULL               4
+#define MOON_WANING_GIBBOUS     5
+#define MOON_LAST_QUARTER       6
+#define MOON_WANING_CRESCENT    7
 
 struct time_info_data
 {
@@ -2735,6 +2740,14 @@ struct char_data
 
 
 /* FOR mob progs */
+
+/* Mob program structures */
+struct	act_prog_data
+{
+        ACT_PROG_DATA *  next;
+        void *           vo;
+};
+
 struct mob_prog_act_list
 {
         MPROG_ACT_LIST *        next;
@@ -2766,6 +2779,7 @@ bool    MOBtrigger;
 #define ALL_GREET_PROG           256
 #define GIVE_PROG                512
 #define BRIBE_PROG              1024
+#define MOVE_PROG               2048
 
 
 /*
@@ -4011,6 +4025,7 @@ extern char                     * down_time;
 extern char                     * warning1;
 extern char                     * warning2;
 extern AUCTION_DATA             * auction;
+extern ACT_PROG_DATA            * mob_act_list;
 
 /* geoff's tables */
 extern FAME_TABLE               fame_table              [ FAME_TABLE_LENGTH ];

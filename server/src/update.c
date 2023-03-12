@@ -1395,24 +1395,44 @@ void day_weather_update()
 
         switch (time_info.day)
         {
-            case 8:
-                weather_info.moonlight = MOON_WAXING;
-                strcpy( buf, "The {Wmoon{x enters its waxing period.\n\r" );
+            case 5:
+                weather_info.moonlight = MOON_WAXING_CRESCENT;
+                strcpy( buf, "The waxing crescent {Wmoon{x appears in the sky.\n\r" );
                 break;
 
-            case  17:
+            case  9:
+                weather_info.moonlight = MOON_FIRST_QUARTER;
+                strcpy( buf, "The {Wmoon{x enters its first quarter.\n\r" );
+                break;
+
+            case 12:
+                weather_info.moonlight = MOON_WAXING_GIBBOUS;
+                strcpy( buf, "The {Wmoon{x enters its waxing gibbous phase.\n\r" );
+                break;
+
+            case 16:
                 weather_info.moonlight = MOON_FULL;
-                strcpy( buf, "There is a {Wfull moon{x in the sky.\n\r" );
+                strcpy( buf, "A {Wfull moon{x rises in the sky.\n\r" );
                 break;
 
-            case 26:
-                weather_info.moonlight = MOON_WANING;
-                strcpy( buf, "The {Wmoon{x enters its waning quarter.\n\r" );
+            case  21:
+                weather_info.moonlight = MOON_WANING_GIBBOUS;
+                strcpy( buf, "The {Wmoon{x enters its waning gibbous phase.\n\r" );
+                break;
+
+            case 25:
+                weather_info.moonlight = MOON_LAST_QUARTER;
+                strcpy( buf, "The {Wmoon{x enters its last quarter.\n\r" );
+                break;
+
+            case 30:
+                weather_info.moonlight = MOON_WANING_CRESCENT;
+                strcpy( buf, "The waning crescent {Wmoon{x rises in the sky.\n\r" );
                 break;
 
             case 35:
-                weather_info.moonlight = MOON_NONE;
-                strcpy( buf, "The {Wmoon{x enters its dim quarter.\n\r" );
+                weather_info.moonlight = MOON_NEW;
+                strcpy( buf, "The {Wmoon{x has disappeared from view.\n\r" );
                 time_info.day = 0;
                 time_info.month++;
 
@@ -1948,11 +1968,39 @@ void aggr_update()
         CHAR_DATA *vch;
         CHAR_DATA *victim;
         DESCRIPTOR_DATA *d;
+        ACT_PROG_DATA   *apdtmp;
+
         static int bloodlust_count = 0;
         int cursed_utterance = 0;
         int tmp;
 
         /* char buf [MAX_STRING_LENGTH]; */
+
+        while ( ( apdtmp = mob_act_list ) )
+        {
+            mch = mob_act_list->vo;
+            if ( !mch->deleted && mch->mpactnum > 0 )
+        {
+            MPROG_ACT_LIST *tmp_act;
+
+            while ( ( tmp_act = mch->mpact ) )
+                {
+            if ( tmp_act->obj && tmp_act->obj->deleted )
+            tmp_act->obj = NULL;
+            if ( tmp_act->ch && !tmp_act->ch->deleted )
+            mprog_wordlist_check( tmp_act->buf, mch, tmp_act->ch,
+                        tmp_act->obj, tmp_act->vo, ACT_PROG );
+            mch->mpact = tmp_act->next;
+            free_string( tmp_act->buf );
+            tmp_act->buf = NULL;
+            free_mem( tmp_act, sizeof( MPROG_ACT_LIST ) );
+            }
+            mch->mpactnum = 0;
+            mch->mpact    = NULL;
+        }
+            mob_act_list = apdtmp->next;
+            free_mem( apdtmp, sizeof( ACT_PROG_DATA ) );
+        }
 
         for (d = descriptor_list; d; d = d->next)
         {
@@ -1997,37 +2045,6 @@ void aggr_update()
                 for (mch = ch->in_room->people; mch; mch = mch->next_in_room)
                 {
                         int count;
-
-                        /*
-                         * MOBProgs ACT_PROG trigger.  Walker.
-                         * Modified to free the mpact list w/o regard to nplayer.  Walker
-                         *
-                         * This was disabled and I re-enabled it 8/3/22.  Don't @ me -- Owl
-                         * Re-disabled 10/3/22 because I think the MUD was crashing. @ me. --Owl
-
-                        if (IS_NPC(mch) && mch->mpactnum > 0)
-                        {
-                                MPROG_ACT_LIST * tmp_act, *tmp2_act;
-
-                                if (mch->in_room->area->nplayer > 0)
-                                {
-                                        for (tmp_act = mch->mpact; tmp_act; tmp_act = tmp_act->next)
-                                        {
-                                                mprog_wordlist_check(tmp_act->buf, mch, tmp_act->ch,
-                                                                     tmp_act->obj, tmp_act->vo, ACT_PROG);
-                                                free_string(tmp_act->buf);
-                                        }
-                                }
-
-                                for (tmp_act = mch->mpact; tmp_act; tmp_act = tmp2_act)
-                                {
-                                        tmp2_act = tmp_act->next;
-                                        free_mem(tmp_act, sizeof(MPROG_ACT_LIST));
-                                }
-                                mch->mpactnum = 0;
-                                mch->mpact    = NULL;
-                        }
-                        */
 
                         /*
                          * Mobs with DETECT_CURSE will aggro PCs who are cursed by a spell or who are carrying a cursed

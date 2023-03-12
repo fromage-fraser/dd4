@@ -1695,6 +1695,7 @@ void write_to_buffer (DESCRIPTOR_DATA *d, const char *txt, int length)
          */
         strncpy(d->outbuf + d->outtop, txt, length);
         d->outtop += length;
+        d->outbuf[d->outtop] = '\0';
         return;
 }
 
@@ -3279,11 +3280,16 @@ void act (const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2,
         char             buf1    [ 2*  MAX_STRING_LENGTH ];
         char             fname   [ MAX_INPUT_LENGTH  ];
 
+        /* sprintf(log_buf,"Type is: %d \r\n", type);
+        log_string(log_buf); */
         /*
          * Discard null and zero-length messages.
          */
         if (!format || format[0] == '\0')
                 return;
+
+        if ( ch->deleted )
+	        return;
 
         to = ch->in_room->people;
         if (type == TO_VICT)
@@ -3298,21 +3304,22 @@ void act (const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2,
                 to = vch->in_room->people;
         }
 
-        for (; to; to = to->next_in_room)
+        for ( ; to; to = to->next_in_room )
         {
-                if ((to->deleted)
-                    || (!to->desc && IS_NPC(to))
-                    || !IS_AWAKE(to))
-                        continue;
+            if ( to->deleted
+                || ( !to->desc && IS_NPC( to ) &&
+                        !IS_SET( to->pIndexData->progtypes, ACT_PROG ) )
+                || !IS_AWAKE( to ) )
+                continue;
 
-                if (type == TO_CHAR    && to != ch)
-                        continue;
-                if (type == TO_VICT    && (to != vch || to == ch))
-                        continue;
-                if (type == TO_ROOM    && to == ch)
-                        continue;
-                if (type == TO_NOTVICT && (to == ch || to == vch))
-                        continue;
+            if ( type == TO_CHAR    && to != ch )
+                continue;
+            if ( type == TO_VICT    && ( to != vch || to == ch ) )
+                continue;
+            if ( type == TO_ROOM    && to == ch )
+                continue;
+            if ( type == TO_NOTVICT && (to == ch || to == vch) )
+                continue;
 
                 point   = buf;
                 str     = format;
@@ -3326,7 +3333,7 @@ void act (const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2,
                         }
                         ++str;
 
-                        if (!arg2 && *str >= 'A' && *str <= 'Z'  && *str >= '0' && *str <= '9')
+                         if (!arg2 && *str >= 'A' && *str <= 'Z'  && *str >= '0' && *str <= '9')
                         {
                                 bug("Act: missing arg2 for code %d.", *str);
                                 sprintf(buf1, "Bad act string:  %s", format);
@@ -3511,12 +3518,24 @@ void act (const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2,
                 buf[0]         = UPPER(buf[0]);
 
                 pbuff           = buffer;
-                colourconv_8bit(pbuff, buf, to);
 
-                if (to->desc && (to->desc->connected == CON_PLAYING))
-                        write_to_buffer(to->desc, buffer, 0);
+                colourconv_8bit(pbuff, buf, to);
+                /* sprintf(log_buf, "buffer is: %s\r\n", pbuff);
+	            log_string(log_buf); */
+                /* if (to->desc && (to->desc->connected == CON_PLAYING))
+                        write_to_buffer(to->desc, buffer, 0); */
+                /*  sprintf(log_buf,"MOBtrigger value is: %d\r\n", MOBtrigger); */
+                /* log_string(log_buf); */
+                if (to->desc) {
+                    /*  sprintf(log_buf,"I AM WRITING TO BUFFER\r\n"); */
+                    /* log_string(log_buf); */
+                    write_to_buffer(to->desc, buffer, 0);
+                }
+                if ( MOBtrigger )
+	                mprog_act_trigger( buffer, to, ch, obj1, vch );
         }
 
+        MOBtrigger = TRUE;
         return;
 }
 
