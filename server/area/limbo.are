@@ -1317,6 +1317,11 @@ doubt the room's owner is a gardener. An air of despondency and gloom
 permeates the room.
 ~
 0 8 0
+D1
+You see Owl's Testing room.
+~
+~
+0 -1 83
 E
 candles~
 Blood red, dripping with hot wax.
@@ -1467,17 +1472,44 @@ occasionally asking you if you have any crackers.
 ~
 0 4|1024|8192 0
 S
+#83
+Owl's Arena~
+This is an outdoors testing room belonging to Owl.
+~
+0 0 2
+D1
+You see Owl's underwater testing room.
+~
+~
+0 -1 84
+D3
+You see Owl's Dungeon.
+~
+~
+0 -1 78
+S
+#84
+Owl's Arena~
+This is an underwater testing room belonging to Owl.
+~
+0 0 8
+D3
+You see Owl's outdoors testing room.
+~
+~
+0 -1 83
+S
 
 #0
 
 
 #RESETS
-O 1 70 100 70               Jammer's Guitar to Jammer's Studio
-O 1 72 100 71                 Madboy's Crayons to Madboy's Cell
-M 1 1 1 2                     Puff
-O 1 73 100 72                 a desk to Geshp's Study
-O 1 74 100 72                 a pile of books to Geshp's Study
-M 1 75 1 75                   the Hunter to Lair of the Hunter
+O 1 70 100 70                   Jammer's Guitar to Jammer's Studio
+O 1 72 100 71                   Madboy's Crayons to Madboy's Cell
+M 1 1 1 2                       Puff
+O 1 73 100 72                   a desk to Geshp's Study
+O 1 74 100 72                   a pile of books to Geshp's Study
+M 1 75 1 75                     the Hunter to Lair of the Hunter
 E 1 80 100 0
 E 1 84 100 1
 E 1 84 100 2
@@ -1516,13 +1548,15 @@ O 1 98 100 73                   Sulfuric pool to Torment's lair
 M 1 6 2 75                      Monkeys to Grail's lair (2 now, were 3)
 
 
-M 0 79 1 78                     aHootfiend to Owl's dungeon
+M 0 79 3 78                     a Hootfiend to Owl's dungeon
+M 0 79 3 83                     a Hootfiend to Owl's Testing room
+M 0 79 3 84                     a Hootfiend to Owl's Testing room
 
 M 0 78 1 82                     add Ducky the duck to Samxin's Reality
-E 0 62 0 3                       equip a duck collar (neck1)
-I 61 1 82 1               Samxins desk to Samxin's Reality
-I 60 1 82 1               a {rred{x psychiatrist's couch to Samxin's reality
-P 0 63 0 61               put a note to Samxin inside Samxins desk
+E 0 62 0 3                      equip a duck collar (neck1)
+I 61 1 82 1                     Samxins desk to Samxin's Reality
+I 60 1 82 1                     a {rred{x psychiatrist's couch to Samxin's reality
+P 0 63 0 61                     put a note to Samxin inside Samxins desk
 S
 
 #OBJECT_SETS

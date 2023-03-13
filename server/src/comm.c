@@ -3280,8 +3280,9 @@ void act (const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2,
         char             buf1    [ 2*  MAX_STRING_LENGTH ];
         char             fname   [ MAX_INPUT_LENGTH  ];
 
-        /* sprintf(log_buf,"Type is: %d \r\n", type);
-        log_string(log_buf); */
+        sprintf(log_buf,"Entering act()...");
+        log_string(log_buf);
+
         /*
          * Discard null and zero-length messages.
          */
@@ -3306,229 +3307,232 @@ void act (const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2,
 
         for ( ; to; to = to->next_in_room )
         {
+            buffer[0]      = '\0';
+            buf[0]         = '\0';
+
             if ( to->deleted
                 || ( !to->desc && IS_NPC( to ) &&
                         !IS_SET( to->pIndexData->progtypes, ACT_PROG ) )
                 || !IS_AWAKE( to ) )
+            {
                 continue;
-
+            }
             if ( type == TO_CHAR    && to != ch )
+            {
                 continue;
+            }
             if ( type == TO_VICT    && ( to != vch || to == ch ) )
+            {
                 continue;
+            }
             if ( type == TO_ROOM    && to == ch )
+            {
                 continue;
+            }
             if ( type == TO_NOTVICT && (to == ch || to == vch) )
+            {
                 continue;
+            }
 
-                point   = buf;
-                str     = format;
+            point   = buf;
+            str     = format;
 
-                while (*str != '\0')
-                {
-                        if (*str != '$')
-                        {
-                                *point++ = *str++;
-                                continue;
-                        }
-                        ++str;
+            while (*str != '\0')
+            {
+                    if (*str != '$')
+                    {
+                            *point++ = *str++;
+                            continue;
+                    }
+                    ++str;
 
-                         if (!arg2 && *str >= 'A' && *str <= 'Z'  && *str >= '0' && *str <= '9')
-                        {
-                                bug("Act: missing arg2 for code %d.", *str);
-                                sprintf(buf1, "Bad act string:  %s", format);
-                                bug(buf1, 0);
-                                i = " <???> ";
-                        }
-                        else
-                        {
-                                switch (*str)
-                                {
-                                    default:  bug("Act: bad code %d.", *str);
-                                        sprintf(buf1, "Bad act string:  %s", format);
-                                        bug(buf1, 0);
-                                        i = " <???> ";
-                                        break;
+                    if (!arg2 && *str >= 'A' && *str <= 'Z'  && *str >= '0' && *str <= '9')
+                    {
+                            bug("Act: missing arg2 for code %d.", *str);
+                            sprintf(buf1, "Bad act string:  %s", format);
+                            bug(buf1, 0);
+                            i = " <???> ";
+                    }
+                    else
+                    {
+                            switch (*str)
+                            {
+                                default:  bug("Act: bad code %d.", *str);
+                                    sprintf(buf1, "Bad act string:  %s", format);
+                                    bug(buf1, 0);
+                                    i = " <???> ";
+                                    break;
 
-                                    case '1':
-                                        i = "";
-                                        if (IS_SET(to->act, PLR_ANSI))
-                                                i = BLUE;
-                                        break;
+                                case '1':
+                                    i = "";
+                                    if (IS_SET(to->act, PLR_ANSI))
+                                            i = BLUE;
+                                    break;
 
-                                    case '2':
-                                        i = "";
-                                        if (IS_SET(to->act, PLR_ANSI))
-                                                i = GREEN;
-                                        break;
+                                case '2':
+                                    i = "";
+                                    if (IS_SET(to->act, PLR_ANSI))
+                                            i = GREEN;
+                                    break;
 
-                                    case '3':
-                                        i = "";
-                                        if (IS_SET(to->act, PLR_ANSI))
-                                                i = CYAN;
-                                        break;
+                                case '3':
+                                    i = "";
+                                    if (IS_SET(to->act, PLR_ANSI))
+                                            i = CYAN;
+                                    break;
 
-                                    case '4':
-                                        i = "";
-                                        if (IS_SET(to->act, PLR_ANSI))
-                                                i = RED;
-                                        break;
+                                case '4':
+                                    i = "";
+                                    if (IS_SET(to->act, PLR_ANSI))
+                                            i = RED;
+                                    break;
 
-                                    case '5':
-                                        i = "";
-                                        if (IS_SET(to->act, PLR_ANSI))
-                                                i = PURPLE;
-                                        break;
+                                case '5':
+                                    i = "";
+                                    if (IS_SET(to->act, PLR_ANSI))
+                                            i = PURPLE;
+                                    break;
 
-                                    case '6':
-                                        i = "";
-                                        if (IS_SET(to->act, PLR_ANSI))
-                                                i = YELLOW;
-                                        break;
+                                case '6':
+                                    i = "";
+                                    if (IS_SET(to->act, PLR_ANSI))
+                                            i = YELLOW;
+                                    break;
 
-                                    case '7':
-                                        i = "";
-                                        if (IS_SET(to->act, PLR_ANSI))
-                                                i = GREY;
-                                        break;
+                                case '7':
+                                    i = "";
+                                    if (IS_SET(to->act, PLR_ANSI))
+                                            i = GREY;
+                                    break;
 
-                                    case '0':
-                                        i = "";
-                                        if (IS_SET(to->act, PLR_ANSI))
-                                                i = BLACK;
-                                        break;
+                                case '0':
+                                    i = "";
+                                    if (IS_SET(to->act, PLR_ANSI))
+                                            i = BLACK;
+                                    break;
 
-                                    case 'B':
-                                        i = "";
-                                        if (IS_SET(to->act, PLR_ANSI)
-                                            || IS_SET(to->act, PLR_VT100))
-                                                i = BOLD;
-                                        break;
+                                case 'B':
+                                    i = "";
+                                    if (IS_SET(to->act, PLR_ANSI)
+                                        || IS_SET(to->act, PLR_VT100))
+                                            i = BOLD;
+                                    break;
 
-                                    case 'I':
-                                        i = "";
-                                        if (IS_SET(to->act, PLR_ANSI)
-                                            ||  IS_SET(to->act, PLR_VT100))
-                                                i = INVERSE;
-                                        break;
+                                case 'I':
+                                    i = "";
+                                    if (IS_SET(to->act, PLR_ANSI)
+                                        ||  IS_SET(to->act, PLR_VT100))
+                                            i = INVERSE;
+                                    break;
 
-                                    case 'F':
-                                        i = "";
-                                        if (IS_SET(to->act, PLR_ANSI)
-                                            ||  IS_SET(to->act, PLR_VT100))
-                                                i = FLASH;
-                                        break;
+                                case 'F':
+                                    i = "";
+                                    if (IS_SET(to->act, PLR_ANSI)
+                                        ||  IS_SET(to->act, PLR_VT100))
+                                            i = FLASH;
+                                    break;
 
-                                    case 'R':
-                                        i = "";
-                                        if (IS_SET(to->act, PLR_ANSI)
-                                            ||  IS_SET(to->act, PLR_VT100))
-                                                i = NTEXT;
-                                        break;
+                                case 'R':
+                                    i = "";
+                                    if (IS_SET(to->act, PLR_ANSI)
+                                        ||  IS_SET(to->act, PLR_VT100))
+                                            i = NTEXT;
+                                    break;
 
-                                    case 't':
-                                        i = (char *) arg1;
-                                        break;
+                                case 't':
+                                    i = (char *) arg1;
+                                    break;
 
-                                    case 'T':
-                                        i = (char *) arg2;
-                                        break;
+                                case 'T':
+                                    i = (char *) arg2;
+                                    break;
 
-                                    case 'n': i = PERS(ch,  to);
-                                        break;
+                                case 'n': i = PERS(ch,  to);
+                                    break;
 
-                                    case 'N': i = PERS(vch, to);
-                                        break;
+                                case 'N': i = PERS(vch, to);
+                                    break;
 
-                                    case 'c':
-                                        i = capitalize_initial(PERS(ch, to));
-                                        break;
+                                case 'c':
+                                    i = capitalize_initial(PERS(ch, to));
+                                    break;
 
-                                    case 'C':
-                                        i = capitalize_initial(PERS(vch, to));
-                                        break;
+                                case 'C':
+                                    i = capitalize_initial(PERS(vch, to));
+                                    break;
 
-                                    case 'e':
-                                        i = he_she  [URANGE(0, ch  ->sex, 2)];
-                                        break;
+                                case 'e':
+                                    i = he_she  [URANGE(0, ch  ->sex, 2)];
+                                    break;
 
-                                    case 'E':
-                                        i = he_she  [URANGE(0, vch ->sex, 2)];
-                                        break;
+                                case 'E':
+                                    i = he_she  [URANGE(0, vch ->sex, 2)];
+                                    break;
 
-                                    case 'm':
-                                        i = him_her [URANGE(0, ch  ->sex, 2)];
-                                        break;
+                                case 'm':
+                                    i = him_her [URANGE(0, ch  ->sex, 2)];
+                                    break;
 
-                                    case 'M':
-                                        i = him_her [URANGE(0, vch ->sex, 2)];
-                                        break;
+                                case 'M':
+                                    i = him_her [URANGE(0, vch ->sex, 2)];
+                                    break;
 
-                                    case 's':
-                                        i = his_her [URANGE(0, ch  ->sex, 2)];
-                                        break;
+                                case 's':
+                                    i = his_her [URANGE(0, ch  ->sex, 2)];
+                                    break;
 
-                                    case 'S':
-                                        i = his_her [URANGE(0, vch ->sex, 2)];
-                                        break;
+                                case 'S':
+                                    i = his_her [URANGE(0, vch ->sex, 2)];
+                                    break;
 
-                                    case 'p':
-                                        i = can_see_obj(to, obj1)
-                                                ? obj1->short_descr
-                                                : "something";
-                                        break;
+                                case 'p':
+                                    i = can_see_obj(to, obj1)
+                                            ? obj1->short_descr
+                                            : "something";
+                                    break;
 
-                                    case 'P':
-                                        i = can_see_obj(to, obj2)
-                                                ? obj2->short_descr
-                                                : "something";
-                                        break;
+                                case 'P':
+                                    i = can_see_obj(to, obj2)
+                                            ? obj2->short_descr
+                                            : "something";
+                                    break;
 
-                                    case 'd':
-                                        if (!arg2 || ((char *) arg2)[0] == '\0')
-                                                i = "door";
-                                        else
-                                        {
-                                                one_argument((char *) arg2, fname);
-                                                i = fname;
-                                        }
-                                        break;
+                                case 'd':
+                                    if (!arg2 || ((char *) arg2)[0] == '\0')
+                                            i = "door";
+                                    else
+                                    {
+                                            one_argument((char *) arg2, fname);
+                                            i = fname;
+                                    }
+                                    break;
 
-                                    case 'D':
-                                        if (!IS_NPC(ch)
-                                            && ch->pcdata->deity_patron > -1
-                                            && ch->pcdata->deity_patron < NUMBER_DEITIES)
-                                                i = deity_info_table[ch->pcdata->deity_patron].name;
-                                        else if (ch->sub_class == SUB_CLASS_INFERNALIST)
-                                                i = "demonic entities";
-                                        else
-                                                i = "God";
-                                        break;
-                                }
-                        }
-
-                        ++str;
-                        while ((*point = *i) != '\0')
-                                ++point, ++i;
+                                case 'D':
+                                    if (!IS_NPC(ch)
+                                        && ch->pcdata->deity_patron > -1
+                                        && ch->pcdata->deity_patron < NUMBER_DEITIES)
+                                            i = deity_info_table[ch->pcdata->deity_patron].name;
+                                    else if (ch->sub_class == SUB_CLASS_INFERNALIST)
+                                            i = "demonic entities";
+                                    else
+                                            i = "God";
+                                    break;
+                            }
+                    }
+                    ++str;
+                    while ((*point = *i) != '\0')
+                            ++point, ++i;
                 }
 
                 *point++        = '\n';
                 *point++        = '\r';
                 *point          = '\0';
                 buf[0]         = UPPER(buf[0]);
-
                 pbuff           = buffer;
 
                 colourconv_8bit(pbuff, buf, to);
-                /* sprintf(log_buf, "buffer is: %s\r\n", pbuff);
-	            log_string(log_buf); */
-                /* if (to->desc && (to->desc->connected == CON_PLAYING))
-                        write_to_buffer(to->desc, buffer, 0); */
-                /*  sprintf(log_buf,"MOBtrigger value is: %d\r\n", MOBtrigger); */
-                /* log_string(log_buf); */
+
                 if (to->desc) {
-                    /*  sprintf(log_buf,"I AM WRITING TO BUFFER\r\n"); */
-                    /* log_string(log_buf); */
                     write_to_buffer(to->desc, buffer, 0);
                 }
                 if ( MOBtrigger )
@@ -3536,6 +3540,8 @@ void act (const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2,
         }
 
         MOBtrigger = TRUE;
+        sprintf(log_buf, "Exiting act()...\n\r");
+	    log_string(log_buf);
         return;
 }
 
@@ -4117,7 +4123,8 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
         open_token   = '<';
         close_token  = '>';
 
-        if (ch->desc && txt)
+        if ( ( ch->desc && txt)
+        ||   ( (IS_NPC( ch ) && IS_SET( ch->pIndexData->progtypes, ACT_PROG ) ) && txt ) )
         {
                 if (IS_SET(ch->act, PLR_ANSI))
                 {
