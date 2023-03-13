@@ -4431,6 +4431,7 @@ DECLARE_DO_FUN( do_smoke_bomb                   );
 DECLARE_DO_FUN( do_snap_shot                    );
 DECLARE_DO_FUN( do_swoop                        );      /* swoop for shifter phoenix form - Owl */
 DECLARE_DO_FUN( do_deploy                       );
+DECLARE_DO_FUN( do_retract                      );
 
 /*
  * Spell functions.

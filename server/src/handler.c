@@ -324,10 +324,10 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
             case APPLY_NONE:
                 break;
 
-            case APPLY_STR:
-                if ( !IS_NPC( ch ) )
-                        ch->pcdata->mod_str += mod;
-                break;
+                case APPLY_STR:
+                        if ( !IS_NPC( ch ) )
+                                ch->pcdata->mod_str += mod;
+                        break;
 
             case APPLY_DEX:
                 if ( !IS_NPC( ch ) )
@@ -3830,6 +3830,7 @@ char *extra_bit_name (unsigned long int extra_flags)
             case ITEM_RUNE:                 return "rune";
             case ITEM_DONOT_RANDOMISE:      return "pure";
             case ITEM_WEAK_RANDOMISE:       return "steady";
+            case ITEM_DEPLOYED:             return "deployed";
 
             default: return "(unknown)";
         }

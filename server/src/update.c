@@ -1331,6 +1331,7 @@ void mobile_update( void )
                                     && obj->item_type != ITEM_ANVIL
                                     && obj->item_type != ITEM_CLAN_OBJECT
                                     && obj->item_type != ITEM_PORTAL
+                                    && obj->item_type != ITEM_TURRET
                                     && obj->cost > max
                                     && obj->owner[0] == '\0'
                                     && can_see_obj(ch, obj))
