@@ -428,6 +428,11 @@ The janitor goes about his business.
 1 20 9 2d6+10 1d5+0
 0 0
 8 8 1
+>act_prog p drops~
+    say Why you gotta make my life difficult?
+    growl $n
+~
+|
 #3062
 fido dog~
 the beastly fido~
