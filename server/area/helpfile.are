@@ -7283,6 +7283,8 @@ You can see these by typing 'construct'
 
 Syntax: construct turret (to make)
 Syntax: look turret (to inspect)
+Syntax: deploy turret (to prime for combat)
+Syntax: retract turret (to retract ready for transport)
 
 Turrets are an engineers support. They can provide additional
 damage or if you so choose, a means to defend yourself. Turrets can

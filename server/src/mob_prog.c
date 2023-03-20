@@ -1820,6 +1820,20 @@ void mob_act_add( CHAR_DATA *mob )
     mob_act_list	= runner;
 }
 
+void mob_act_add( CHAR_DATA *mob )
+{
+    ACT_PROG_DATA * runner;
+
+    for ( runner = mob_act_list; runner; runner = runner->next )
+	if ( runner->vo == mob )
+	    return;
+
+    runner		= alloc_mem( sizeof( ACT_PROG_DATA ) );
+    runner->vo		= mob;
+    runner->next	= mob_act_list;
+    mob_act_list	= runner;
+}
+
 /* The triggers.. These are really basic, and since most appear only
  * once in the code (hmm. i think they all do) it would be more efficient
  * to substitute the code in and make the mprog_xxx_check routines global.

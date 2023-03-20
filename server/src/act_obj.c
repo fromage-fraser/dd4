@@ -60,6 +60,12 @@ void get_obj (CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
                 return;
         }
 
+        if (IS_SET( obj->extra_flags, ITEM_DEPLOYED) )
+        {
+                send_to_char("The turret is deployed, try RETRACTING it.\n\r", ch);
+                return;     
+        }
+
         if (obj->item_type == ITEM_CLAN_OBJECT)
         {
                 ROOM_INDEX_DATA *room, *home;
@@ -1158,6 +1164,60 @@ void do_deploy (CHAR_DATA *ch, char *argument)
         }
 }
 
+void do_retract (CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA *obj;
+        char      arg [ MAX_INPUT_LENGTH ];
+
+        if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
+        {
+                send_to_char("Not in your current form.\n\r", ch);
+                return;
+        }
+
+        argument = one_argument(argument, arg);
+
+        if (arg[0] == '\0')
+        {
+                send_to_char("Retract what?\n\r", ch);
+                return;
+        }
+
+
+        if (str_cmp(arg, "all") && str_prefix("all.", arg))
+        {
+        
+        
+           /* 'get obj' */
+                        obj = get_obj_list(ch, arg, ch->in_room->contents);
+                        if (!obj)
+                        {
+                                act("I see no $T here.", ch, NULL, arg, TO_CHAR);
+                                return;
+                        }
+
+                        REMOVE_BIT(obj->extra_flags, ITEM_DEPLOYED);
+                        act("You retract your $p.", ch, obj, NULL, TO_CHAR);
+                        act("$n retracts their $p.", ch, obj, NULL, TO_ROOM);
+                        get_obj(ch, obj, NULL);
+
+                        /* Do we get the object?? 
+                        for (obj = ch->carrying; obj; obj = obj->next_content)
+                        {
+                                if (pobj == obj)
+                                        break;
+                        }
+
+                        if (!pobj)
+                                return; */
+             
+        }
+        else
+        {
+                act("One object at a time please.", ch, NULL, NULL, TO_CHAR);
+                return;
+        }
+}
 
 void do_drop (CHAR_DATA *ch, char *argument)
 {
