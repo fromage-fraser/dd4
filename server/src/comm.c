@@ -3540,8 +3540,10 @@ void act (const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2,
         }
 
         MOBtrigger = TRUE;
+
         /* sprintf(log_buf, "Exiting act()...\n\r");
 	    log_string(log_buf); */
+
         return;
 }
 

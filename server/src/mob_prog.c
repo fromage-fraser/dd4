@@ -1806,6 +1806,7 @@ void mprog_percent_check( CHAR_DATA *mob, CHAR_DATA *actor, OBJ_DATA *obj,
 
 }
 
+
 void mob_act_add( CHAR_DATA *mob )
 {
     ACT_PROG_DATA * runner;
