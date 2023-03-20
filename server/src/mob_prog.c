@@ -1820,7 +1820,7 @@ void mob_act_add( CHAR_DATA *mob )
     mob_act_list	= runner;
 }
 
-/* The triggers.. These are really basic, and since most appear only
+/* The triggers.. These are really very basic, and since most appear only
  * once in the code (hmm. i think they all do) it would be more efficient
  * to substitute the code in and make the mprog_xxx_check routines global.
  * However, they are all here in one nice place at the moment to make it
