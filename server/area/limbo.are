@@ -349,10 +349,6 @@ curiosity tinged with contempt.
 105 0 0 0d0+0 0d0+0
 0 0
 0 0 1
->speech_prog p hoot?~
-   emote hoots back at you.
-~
-|
 
 #0
 
@@ -1548,9 +1544,7 @@ O 1 98 100 73                   Sulfuric pool to Torment's lair
 M 1 6 2 75                      Monkeys to Grail's lair (2 now, were 3)
 
 
-M 0 79 3 78                     a Hootfiend to Owl's dungeon
-M 0 79 3 83                     a Hootfiend to Owl's Testing room
-M 0 79 3 84                     a Hootfiend to Owl's Testing room
+M 0 79 1 83                     a Hootfiend to Owl's Testing room
 
 M 0 78 1 82                     add Ducky the duck to Samxin's Reality
 E 0 62 0 3                      equip a duck collar (neck1)

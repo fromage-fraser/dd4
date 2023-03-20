@@ -1758,22 +1758,66 @@ void mprog_wordlist_check( char *arg, CHAR_DATA *mob, CHAR_DATA *actor,
 
 }
 
+bool moveprog_percent_check( CHAR_DATA *mob )
+{
+    MPROG_DATA * mprg;
+    bool fired;
+    int percent;
+
+    fired = FALSE;
+
+    for ( mprg = mob->pIndexData->mobprogs; mprg != NULL; mprg = mprg->next )
+    {
+        if ( mprg->type & MOVE_PROG )
+        {
+            percent = number_percent( );
+
+            if ( percent <= atoi( mprg->arglist ) )
+            {
+                fired = TRUE;
+                return fired;
+            }
+        }
+    }
+    return fired;
+
+}
+
 void mprog_percent_check( CHAR_DATA *mob, CHAR_DATA *actor, OBJ_DATA *obj,
                          void *vo, int type)
 {
- MPROG_DATA * mprg;
+    MPROG_DATA * mprg;
 
- for ( mprg = mob->pIndexData->mobprogs; mprg != NULL; mprg = mprg->next )
-   if ( ( mprg->type & type )
-       && ( number_percent( ) <= atoi( mprg->arglist ) ) )
-     {
-       mprog_driver( mprg->comlist, mob, actor, obj, vo );
-       if ( type != GREET_PROG && type != ALL_GREET_PROG )
-         break;
-     }
+    for ( mprg = mob->pIndexData->mobprogs; mprg != NULL; mprg = mprg->next )
+    {
 
- return;
+        if ( mprg->type & type )
+        {
+            if ( number_percent( ) <= atoi( mprg->arglist ) )
+            {
+                mprog_driver( mprg->comlist, mob, actor, obj, vo );
 
+                if ( type != GREET_PROG && type != ALL_GREET_PROG )
+                    break;
+            }
+        }
+    }
+    return;
+
+}
+
+void mob_act_add( CHAR_DATA *mob )
+{
+    ACT_PROG_DATA * runner;
+
+    for ( runner = mob_act_list; runner; runner = runner->next )
+	if ( runner->vo == mob )
+	    return;
+
+    runner		= alloc_mem( sizeof( ACT_PROG_DATA ) );
+    runner->vo		= mob;
+    runner->next	= mob_act_list;
+    mob_act_list	= runner;
 }
 
 void mob_act_add( CHAR_DATA *mob )
@@ -1859,6 +1903,39 @@ void mprog_bribe_trigger( CHAR_DATA *mob, CHAR_DATA *ch, int amount )
     }
 
   return;
+
+}
+
+/* If this fires movement in the direction will not automatically happen, so do an mptransfer
+ and mpforce look at the new location to 'fake' a successful move --Owl */
+
+bool mprog_move_trigger( CHAR_DATA *ch, int door )
+{
+
+    CHAR_DATA *vmob;
+    bool fired;
+
+    char *dirs[6]   = {"north", "east", "south", "west", "up", "down"};
+    char *txt       = dirs[door];
+
+    fired = FALSE;
+
+    for ( vmob = ch->in_room->people; vmob != NULL; vmob = vmob->next_in_room )
+    {
+        fired = FALSE;
+
+        if ( IS_NPC( vmob ) && ( vmob->pIndexData->progtypes & MOVE_PROG ) )
+        {
+            fired = moveprog_percent_check( vmob );
+
+            if (fired)
+            {
+                mprog_wordlist_check( txt, vmob, ch, NULL, NULL, MOVE_PROG );
+            }
+        }
+    }
+
+    return fired;
 
 }
 

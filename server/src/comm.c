@@ -3280,8 +3280,8 @@ void act (const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2,
         char             buf1    [ 2*  MAX_STRING_LENGTH ];
         char             fname   [ MAX_INPUT_LENGTH  ];
 
-        sprintf(log_buf,"Entering act()...");
-        log_string(log_buf);
+        /* sprintf(log_buf,"Entering act()...");
+        log_string(log_buf); */
 
         /*
          * Discard null and zero-length messages.
@@ -3540,8 +3540,10 @@ void act (const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2,
         }
 
         MOBtrigger = TRUE;
-        sprintf(log_buf, "Exiting act()...\n\r");
-	    log_string(log_buf);
+        
+        /* sprintf(log_buf, "Exiting act()...\n\r");
+	    log_string(log_buf); */
+
         return;
 }
 
@@ -3558,6 +3560,8 @@ void act_move (const char *format, CHAR_DATA *ch, const void *arg1, const void *
         const  char            *str;
         const  char            *i;
         char            *point;
+        char            *pbuff;
+        char             buffer  [ MAX_STRING_LENGTH * 2 ];
         char             buf     [ MAX_STRING_LENGTH ];
         char             buf1    [ MAX_STRING_LENGTH ];
         char             fname   [ MAX_INPUT_LENGTH  ];
@@ -3584,6 +3588,9 @@ void act_move (const char *format, CHAR_DATA *ch, const void *arg1, const void *
 
         for (; to; to = to->next_in_room)
         {
+                buffer[0]      = '\0';
+                buf[0]         = '\0';
+
                 if ((to->deleted)
                     || (!to->desc && IS_NPC(to))
                     || !IS_AWAKE(to))
@@ -3777,12 +3784,19 @@ void act_move (const char *format, CHAR_DATA *ch, const void *arg1, const void *
 
                 *point++ = '\n';
                 *point++ = '\r';
-                buf[0]   = UPPER(buf[0]);
+                buf[0]         = UPPER(buf[0]);
+                pbuff           = buffer;
+
+                colourconv_8bit(pbuff, buf, to);
 
                 if (to->desc)
                         write_to_buffer(to->desc, buf, point - buf);
+
+                if ( MOBtrigger )
+	                mprog_act_trigger( buffer, to, ch, obj1, vch );
         }
 
+        MOBtrigger = TRUE;
         return;
 }
 
