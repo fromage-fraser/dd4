@@ -17,8 +17,8 @@ services:
     # restart: always
 
   # Development environment
+  # Use the native platform, otherwise gdb can have problems tracing on some archs
   dev:
-    platform: linux/amd64
     image: dd4-dev
     build:
       context: .

@@ -8,9 +8,9 @@
 #
 # See 'dev' and 'buid-dev' targets in the main Makefile.
 
-FROM gcc:4.9
+FROM gcc:9.5
 RUN apt-get update && \
-    apt-get -y install gdb vim less screen
+    DEBIAN_FRONTEND=noninteractive apt-get -y install gdb vim less screen
 COPY ./docker/dev_content/.screenrc /root/
 COPY ./docker/dev_content/.gdbinit /root/
 EXPOSE 8888
