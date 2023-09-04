@@ -220,7 +220,7 @@ judgement on who can form a clan.
 
 To join a clan, see the leader of that clan and read the help file for
 that clan.  Note that if you wish to join a clan, you must do so before
-level {Y40{x, and after level {Y20{x.
+you exceed level {Y40{x, and after you achieve level {Y20{x.
 
 Belonging to a Clan can have the following advantages:
 
@@ -325,7 +325,7 @@ GUILD <<character> [remove]
         Clan leaders may add people to their clan by typing `GUILD
         <<character>'.  They may remove clan members by typing `GUILD
         <<character> REMOVE'; leaders may not remove other leaders. The
-        character must be between below level 40 and above level 20.
+        character must be between level 20 and 40, inclusive.
 
 PROMOTE <<character> <<level>
         Leaders may promote clan members from levels 0 through 3.
