@@ -53,7 +53,7 @@ char * const where_name [] =
     "{d[{x{wheld{d]{x              ",
     "{d[{x{wsecond weapon{d]{x     ",
     "{d<<{x{wfloating nearby{d>{x   ",
-    "{d<<>{x{wsecured to belt{d>{x   ",
+    "{d<<{x{wsecured to belt{d>{x   ",
     "{d[{x{wranged weapon{d]{x     "
 };
 
@@ -1465,14 +1465,14 @@ void do_look( CHAR_DATA *ch, char *argument )
                                 }
                                 for ( i = count; i < 4; i++ )
                                 {
-                                        
+
                                         sprintf(buf, "<97>============================={x\n\r");
-                                        send_to_char(buf, ch);  
+                                        send_to_char(buf, ch);
                                         sprintf(buf, "<97>|<0><8>------------EMPTY-----------<0>\n\r");
                                         send_to_char(buf, ch);
 
                                 }
-                                
+
                                 sprintf(buf, "<97>============================={x\n\r");
                                 send_to_char(buf, ch);
                                 sprintf(buf, "<97>   <565>/  /              \\  \\<564>   {x\n\r");
@@ -3468,13 +3468,13 @@ void do_consider( CHAR_DATA *ch, char *argument )
                                         strcat( buf1, buf );
 
                                          /* Vulnerable */
-                                        
+
                                         strcat(buf1, "<556>Vulnerable To:<0><15>");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
                                                 if (IS_SET(mob_table[sn].vulnerabilities, next))
                                                 {
-                                                        
+
                                                         strcat(buf1, " ");
                                                         strcat(buf1, resist_name(next));
                                                         buf1[0] = UPPER( buf1[0] );
@@ -3483,7 +3483,7 @@ void do_consider( CHAR_DATA *ch, char *argument )
                                         strcat(buf1, "<0>\n\r");
 
                                         /* resists */
-                                
+
                                         strcat(buf1, "Resistant To:{W");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
@@ -3496,10 +3496,10 @@ void do_consider( CHAR_DATA *ch, char *argument )
                                         }
                                         strcat(buf1, "{x\n\r");
 
-                                       
+
 
                                         /*  Immune */
-                                        
+
                                         strcat(buf1, "Immune To:{W");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
@@ -3512,7 +3512,7 @@ void do_consider( CHAR_DATA *ch, char *argument )
                                         }
                                         strcat(buf1, "{x\n\r");
 
-                                        
+
                                         /* body parts from Species Table */
                                         strcat(buf1, "Body Parts:{W");
 
@@ -3528,7 +3528,7 @@ void do_consider( CHAR_DATA *ch, char *argument )
                                         strcat(buf1, "{x\n\r");
 
                                         /* Attack Parts  from Species Table*/
-                                        
+
                                         strcat(buf1, "Attack Parts:{W");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
@@ -3543,7 +3543,7 @@ void do_consider( CHAR_DATA *ch, char *argument )
                                 send_to_char( buf1, ch );
                                 }
                         }
-                
+
                 return;
         }
 }
