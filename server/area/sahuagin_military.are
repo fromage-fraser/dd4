@@ -1,0 +1,2539 @@
+#AREA Owl~ Ota'ar Dar Military Fortress~
+45 50 35 100
+
+#AREA_SPECIAL
+exp_mod 110
+$
+
+#MOBILES
+#27395
+Ota'ar Dar infantry soldier member~
+an Ota'ar Dar soldier~
+A member of Ota'ar Dar's infantry is here, patrolling the fortress walls.
+~
+Ota'ar Dar soldiers are selected at an early age for their strength and aggression.
+This one has been tasked with patrolling the fortress walls, looking for
+intruders and disturbances.
+~
+64 512|67108864 -430 S
+45 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>greet_prog 4~
+shout What are you doing here?  Trespasser!
+mpkill $n
+~
+|
+#27396
+blue shark~
+a blue shark~
+A blue shark glides about hungrily.
+~
+The blue shark, is a species of requiem shark that inhabits deep waters in the
+world's temperate and tropical oceans. This one has been magically enchanted to
+serve as a mount for sahuagin cavalry, and can operate on land, under the sea,
+and in the air.
+~
+64|131072 32|512|524288|67108864 0 S
+45 0 0 0d0+0 0d0+0
+44 0
+8 8 1
+#27397
+stingray~
+a stingray~
+A stingray glares at you, bristling with menace.
+~
+The stingray is a kind of ray that is common in coastal tropical and
+subtropical marine waters throughout the world. They have up to three sharp
+spinal blades in their tails that may be poisoned and are used in self-defense.
+
+This one has been magically enchanted to serve as a mount for sahuagin cavalry,
+and can operate on land, under the sea, and in the air.
+~
+64|131072 32|512|524288|67108864 0 S
+45 0 0 0d0+0 0d0+0
+44 0
+8 8 1
+#27398
+hammerhead shark~
+a hammerhead shark~
+A hammerhead shark glides about here, moving non-stop.
+~
+Hammerhead sharks are a group of sharks that form the family Sphyrnidae, and are
+so-named for the unusual and distinctive structure of their heads, which are
+flattened and laterally extended into a "hammer" shape called a cephalofoil.
+
+This one has been magically enchanted to serve as a mount for sahuagin cavalry,
+and can operate on land, under the sea, and in the air.
+~
+64|131072 32|128|512|524288|67108864 0 S
+45 0 0 0d0+0 0d0+0
+44 0
+8 8 2
+#27399
+Ota'ar Dar cavalry cavalryman~
+an Ota'ar Dar cavalryman~
+An Ota'ar Dar cavalryman is on patrol, looking for suspicious activity.
+~
+Ota'ar Dar cavalrymen are highly trained troops, and ride into battle on a
+variety of aquatic mounts especially enchanted for the purpose. They usually
+fight with long spears or crossbows, to take advantage of their mounts' speed
+and agility.
+
+This one has been tasked with patrolling the fortress walls, looking for
+intruders and disturbances.
+~
+64 32|512|67108864 -440 S
+46 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>greet_prog 4~
+shout Enemies!  Enemies on the wall!
+mpkill $n
+~
+|
+#27400
+Ota'ar Dar elite soldier member~
+an elite Ota'ar Dar soldier~
+A elite member of Ota'ar Dar's soldiery is here, guarding the fortress gate.
+~
+Ota'ar Dar elite soldiers are selected at an early age for their loyalty, size,
+strength and aggression.  This one has been tasked with guarding the gates to
+fortress interior.
+~
+2|64 8|32|512|8388608|67108864 -470 S
+47 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27401
+Ota'ar Dar lieutenant~
+the wall lieutenant~
+The lieutenant responsible for the walls marches about, inspecting the troops.
+~
+The lieutenant is responsible for all the troops guarding the fortress walls,
+and for the general security of the area. He looks at you with suspicion and
+distrust.
+~
+2|64 8|32|512|8388608|67108864 -530 S
+48 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>greet_prog 5~
+shout The wall has been breached! To me!
+mpkill $n
+~
+|
+#27402
+Ota'ar Dar elite soldier~
+an elite Ota'ar Dar soldier~
+A elite member of Ota'ar Dar's soldiery is here, guarding the fortress gate.
+~
+Ota'ar Dar elite soldiers are selected at an early age for their loyalty, size,
+strength and aggression.  This one has been tasked with guarding the gates to
+fortress interior.
+~
+2|64 8|32|512|8388608|67108864 -470 S
+47 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>all_greet_prog 100~
+if carrying($n) == 27515
+    mpecho One of the elite soldiers, seeing your pass, nods his head at you slightly.
+    mpoload 27516
+    unlock east
+    mpjunk steel
+endif
+~
+|
+#27403
+Ota'ar Dar infantry soldier member~
+an Ota'ar Dar soldier~
+A member of Ota'ar Dar's infantry is here, drilling combat manoeuvres.
+~
+Ota'ar Dar soldiers are selected at an early age for their strength and aggression.
+This one is busy drilling combat manoeuvres with his squadron.
+~
+2|64 512|67108864 -430 S
+45 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27404
+Ota'ar Dar cavalry cavalryman~
+an Ota'ar Dar cavalryman~
+An Ota'ar Dar cavalryman is here, drilling combat manoeuvres.
+~
+Ota'ar Dar cavalrymen are highly trained troops, and ride into battle on a
+variety of aquatic mounts especially enchanted for the purpose. They usually
+fight with long spears or crossbows, to take advantage of their mounts' speed
+and agility.
+
+This one is busy drilling combat manoeuvres with his squadron.
+~
+2|64 32|512|67108864 -440 S
+46 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27405
+Ota'ar Dar infantry soldier member~
+an Ota'ar Dar soldier~
+A member of Ota'ar Dar's infantry is here, wandering about the canton.
+~
+This Ota'ar Dar soldier seems to be milling about with no particular purpose in
+mind.  He shoots you a suspicious look.
+~
+64 512|67108864 -430 S
+46 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>greet_prog 6~
+shout A trespasser in the canton! Die!
+mpkill $n
+~
+|
+#27406
+Ota'ar Dar cavalry cavalryman~
+an Ota'ar Dar cavalryman~
+An Ota'ar Dar cavalryman is here, strolling about confidently.
+~
+The cavalryman strides about somewhat officiously.  He regards you with a keen
+mixture of contempt and suspicion.
+~
+64 32|512|67108864 -440 S
+46 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>greet_prog 6~
+shout An intruder!  PERISH!
+mpkill $n
+~
+|
+#27407
+Ota'ar Dar infantry soldier member~
+an Ota'ar Dar soldier~
+A member of Ota'ar Dar's infantry is here, guarding the food stores.
+~
+The Ota'ar Dar soldier stands at attention, guarding the fortress's food stores
+as though his life depended on it (which it does).
+~
+2|32|64 8|32|512|8388608|67108864 -410 S
+45 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>all_greet_prog 100~
+shout A thief in the food store!  Attack!
+mpkill $n
+~
+|
+#27408
+wounded cavalryman~
+a wounded cavalryman~
+A wounded cavalryman is here, being tended to by the clerics of Sekolah.
+~
+This cavalryman has been badly injured in battle, but has been thought highly
+enough to be treated here for his wounds, rather than left to die. He regards
+with a mixture of confusion and alarm.
+~
+2|64|128|33554432 32|512|67108864|17179869184|34359738368 -445 S
+46 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27409
+wounded soldier infantry~
+a wounded sahuagin soldier~
+A wounded sahuagin soldier lies here, groaning in agony.
+~
+This sahuagin soldier has been badly injured in battle, but has been thought
+highly enough to be treated here for his wounds, rather than left to die. He
+seems delirious and confused, and possibly not even aware you're here.
+~
+2|64|128|33554432 1|32|256|512|67108864|9223372036854775808 -445 S
+45 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27410
+elite soldier infantry~
+a sick elite soldier~
+A sick soldier is here, resting peacefully.
+~
+This elite sahuagin soldier looks fairly well-recovered from whatever landed
+him in here, and likely only needs a few more weeks' rest to be back with his
+squadron.
+~
+2|64 32|512|67108864 -482 S
+47 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>all_greet_prog 100~
+sleep
+mpecho The sound of someone blowing a trumpet underwater reverberates through the room.
+~
+|
+#27411
+cleric sahuagin Sekolah~
+a cleric of Sekolah~
+A cleric of Sekolah tends to the sick and wounded.
+~
+A young female sahuagin of relatively peaceable disposition is quietly going
+about tending to the sick and wounded sahuagin in the infirmary.
+~
+64 8|32|128|512|8192|524288|67108864 -550 S
+46 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27412
+cleric sahuagin Sekolah~
+a cleric of Sekolah~
+A cleric of Sekolah tends to the sick and wounded.
+~
+A young male sahuagin of relatively peaceable disposition is quietly going
+about tending to the sick and wounded sahuagin in the infirmary.
+~
+64 8|32|128|512|8192|524288|67108864 -560 S
+46 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27413
+skate ray~
+a skate~
+A large skate is munching on some shrimp.
+~
+The skate is a kind of flattened, cartilaginous fish, similar in appearance to
+a ray.
+
+This one has been magically enchanted to serve as a mount for sahuagin cavalry,
+underwater, on land, and in the air.
+~
+2|256|131072 32|512|524288|67108864 0 S
+45 0 0 0d0+0 0d0+0
+44 0
+8 8 2
+#27414
+blue shark~
+a blue shark~
+A blue shark is having its teeth cleaned.
+~
+The blue shark, is a species of requiem shark that inhabits deep waters in the
+world's temperate and tropical oceans. This one has been magically enchanted to
+serve as a mount for sahuagin cavalry, and can operate on land, under the sea,
+and in the air.
+~
+2|64|131072 32|512|524288|67108864 0 S
+45 0 0 0d0+0 0d0+0
+44 0
+8 8 1
+#27415
+stingray~
+a stingray~
+A stingray is dozing peacefully.
+~
+The stingray is a kind of ray that is common in coastal tropical and
+subtropical marine waters throughout the world. They have up to three sharp
+spinal blades in their tails that may be poisoned and are used in self-defense.
+
+This one has been magically enchanted to serve as a mount for sahuagin cavalry,
+and can operate on land, under the sea, and in the air.
+~
+2|64|131072 32|512|524288|67108864 0 S
+45 0 0 0d0+0 0d0+0
+44 0
+8 8 1
+#27416
+hammerhead shark~
+a hammerhead shark~
+A hammerhead shark swims rapidly in a circle.
+~
+Hammerhead sharks are a group of sharks that form the family Sphyrnidae, and are
+so-named for the unusual and distinctive structure of their heads, which are
+flattened and laterally extended into a "hammer" shape called a cephalofoil.
+
+This one has been magically enchanted to serve as a mount for sahuagin cavalry,
+and can operate on land, under the sea, and in the air.
+~
+2|64|131072 32|128|512|524288|67108864 0 S
+45 0 0 0d0+0 0d0+0
+44 0
+8 8 2
+#27417
+sahuagin mount attendant~
+a sahuagin mount attendant~
+A sahuagin attendant looks after the mounts in the stable.
+~
+This sahuagin's job is to keep the mounts battle-ready and healthy, which he
+does without complaint or fuss.  He might even enjoy it.
+~
+2|64 512|67108864 -310 S
+46 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27418
+sahuagin blacksmith~
+a sahuagin blacksmith~
+A sahuagin blacksmith is here, pounding on a piece of metal.
+~
+The blacksmith is large and powerfully-built, and seems preoccupied by his work.
+He barely looks up at you as you enter.
+~
+2|64|512 32|512|67108864 -345 S
+46 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27419
+training dummy isdfughsdifgh~
+a training dummy~
+A training dummy has been set up here for soldiers to test weapons on.
+~
+This training dummy has been bolted to the floor and is used by the fortress's
+soldiers to test weapons on.  It has taken terrible punishment over the years,
+but it is very robustly constructed, and well-maintained.
+~
+2|64|16777216|33554432|9223372036854775808 1|64|9223372036854775808 0 S
+41 0 0 0d0+0 0d0+0
+290 0
+8 8 0
+#27420
+Ota'ar Dar elite soldier member~
+an elite Ota'ar Dar soldier~
+A elite member of Ota'ar Dar's soldiery is here, practising his combat skills.
+~
+Ota'ar Dar elite soldiers are selected at an early age for their loyalty, size,
+strength and aggression.  This one is busy practising his combat skills.
+~
+2|64 8|32|512|8388608|67108864 -470 S
+46 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>rand_prog 50~
+if isfight($i)
+break
+else
+say Have at you, mindless fool!
+mpkill isdfughsdifgh
+endif
+~
+|
+#27421
+Ota'ar Dar infantry soldier member~
+an Ota'ar Dar soldier~
+A off-duty sahuagin soldier is here, resting and relaxing.
+~
+This sahuagin soldier is off-duty and seemingly in no hurry to get back to his
+duties.
+~
+2|64 512|67108864 -430 S
+46 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27422
+Ota'ar Dar cavalry cavalryman~
+an Ota'ar Dar cavalryman~
+An Ota'ar Dar cavalryman is playing cards at a small table.
+~
+This sahuagin cavalryman is off-duty and playing some sort of gambling 'card'
+game (the 'cards' are made from seashells). He's focused pretty intently on the
+game and doesn't seem interested in you.
+~
+2|64 32|512|67108864 -440 S
+47 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27423
+Ota'ar Dar infantry soldier member~
+an Ota'ar Dar soldier~
+A sahuagin infantryman is here, eating something repulsive-looking.
+~
+This sahuagin soldier is wolfing down a plate of... you're not sure what
+exactly.
+~
+2|64 512|67108864 -390 S
+46 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27424
+Ota'ar Dar cavalry cavalryman~
+an Ota'ar Dar cavalryman~
+An Ota'ar Dar cavalryman is eating his dinner quietly here.
+~
+This sahuagin cavalryman is eating a plate of something strange-looking. As
+bad as the food looks, you do note he has immaculate table manners.
+~
+2|64 32|512|67108864 -411 S
+47 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27425
+Ota'ar Dar infantry soldier member~
+an Ota'ar Dar soldier~
+A sahuagin infantryman is here, trying to get some sleep.
+~
+This sahuagin soldier is trying to get some sleep.
+~
+2|64 512|131072|67108864 -390 S
+46 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27426
+Ota'ar Dar cavalry cavalryman~
+an Ota'ar Dar cavalryman~
+An Ota'ar Dar cavalryman is attempting to get some sleep here.
+~
+This sahuagin cavalryman is trying his best to get some sleep between shifts
+here.
+~
+2|64 32|512|131072|67108864 -411 S
+47 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+#27427
+matronly receptionist sahuagin~
+a matronly receptionist~
+A matronly sahuagin regards you frostily.
+~
+This middle-aged female sahuagin has the job of vetting prospective visitors
+to the baron.  You doubt much gets past her.
+~
+2|64|2048 8|32|128|512|8192|8388608|67108864 -438 S
+47 0 0 0d0+0 0d0+0
+512 0
+8 8 2
+>move_prog 100 west~
+if carrying($n) == 27531
+    mptransfer $n 27593
+    mpat $n mpforce $n look
+    mpat $n say Welcome to the Baron's Quarters.
+    mpat $n mpecho {WThe matronly sahuagin returns huffily to the reception area.{x
+    break
+else
+    mpecho {YThe matronly sahuagin makes a gesture and you are instantly frozen to the spot!{x
+    mpforce $n look
+    say You may proceed no farther into the Baron's quarters without an appointment.
+endif
+~
+>move_prog 100 south~
+if carrying($n) == 27531
+    mptransfer $n 27589
+    mpat $n mpforce $n look
+    mpat $n say Welcome to the Baron's Quarters.
+    mpat $n mpecho {WThe matronly sahuagin returns huffily to the reception area.{x
+    break
+else
+    mpecho {YThe matronly sahuagin makes a gesture and you are instantly frozen to the spot!{x
+    mpforce $n look
+    say You may proceed no farther into the Baron's quarters without an appointment.
+endif
+~
+>move_prog 100 east~
+mpecho {WThe matronly sahuagin escorts you huffily through the eastern doorway.{x
+mptransfer $n 27595
+mpgoto 27594
+mpat $n mpforce $n look
+mpat $n mpecho {WThe matronly sahuagin bustles away through the western doorway.{x
+~
+|
+#27428
+Ota'ar Dar elite soldier sahuagin guard~
+an Ota'ar Dar elite guard~
+An Ota'ar Dar elite guard is here, guarding the baron's quarters.
+~
+Only the finest sahuagin soldiers are chosen to be elite guards; this one has
+been assigned as a personal guard to the fortress's baron--to guard the
+entrance to his quarters where he and his wives dwell and receive visitors.
+~
+2|64|512 8|32|512|4194304|8388608|67108864 -430 S
+49 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>all_greet_prog 100~
+if carrying($n) == 27531
+    emote nods at you approvingly.
+    break
+else
+    shout Intruders! Intruders in the Baron's quarters!
+    mpkill $n
+endif
+~
+|
+#27429
+triton man blue-skinned~
+a Triton~
+A {Bblue-skinned{x man waits here impatiently.
+~
+You recognise this blue-skinned, fairly-handsome-if-vaguely-fishy-looking
+man as a Triton, a member of a very distinctive race of undersea-dwelling
+folk. You know that Triton dedicate themselves to protecting magical portals
+from sahuagin, kraken, and other monstrous beings of the sea and so tend towards
+being of lawful and good alignment, but that this also means they're likely to
+be extremely haughty and arrogant. The Triton looks at you irritably, with
+pursed lips.
+~
+2|64|512 8|32|512|8192|4194304|67108864|1073741824 630 S
+49 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27430
+green grung~
+a green grung~
+<118>A green grung paces the room angrily.<0>
+~
+Grung are a race of small, froglike humanoids.  They are fiercely territorial,
+and see themselves as superior to all other creatures.  Their society is
+caste-based, with the grung's colour denoting his role.  This is a green grung,
+indicating that he is a warrior, hunter, or labourer.  He seems deeply annoyed
+to be here.
+~
+2|64|512 8|32|512|8388608|67108864 -600 S
+49 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27431
+great white shark~
+a great white shark~
+A great white shark grins at you toothily.
+~
+This terrifying apex predator grins at you with a huge maw full of teeth. It
+might be 6 metres from snout to tailfin. Best not to annoy it.
+
+The terrifying beast has been magically enchanted to serve as a mount for
+sahuagin warriors, and can operate on land, under the sea, and in the air.
+~
+256|131072 32|512|524288|67108864 0 S
+49 0 0 0d0+0 0d0+0
+172 0
+8 8 1
+#27432
+baron sahuagin~
+the baron~
+<248>A powerfully-built sahuagin baron studies a map on his desk intently.<0>
+~
+Sahuagin barons are four-limbed mutant sahuagin.  Larger and more powerful
+than the regular breed, they are often promoted to positions of rank and power
+within the strict sahuagin hierarchy.  This baron presides over all the
+soldiers and other military personnel who inhabit this fortress.
+~
+2|64|512|2048 512|67108864 -470 S
+50 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>all_greet_prog 100~
+if carrying($n) == 27531
+    say Yes?  What? I am very busy, as you can see.
+    emote gestures at the map laid out on his desk.
+    break
+else
+    say Very foolish to waltz in here without my leave.  Very foolish indeed.
+    mpkill $n
+endif
+~
+|
+#27433
+high priestess sekolah female sahuagin~
+A high priestess of Sekolah~
+A female sahuagin dressed in long, flowing robes regards you imperiously.
+~
+This older female sahuagin acts as counsellor and guide to the fortress's baron
+and her clothing and demeanour make it clear she is an important figure in the
+Sekolah-worshipping theocratic hierarchy.
+~
+2|64|512 8|32|128|512|8192|524288|67108864|536870912 -840 S
+49 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+>fight_prog 5~
+    mpecho {/}B{CA high priestess of Sekolah gestures directly at you! Everything goes blue...{x{/{x
+    mptransfer $n 27595
+    mpat $n mpforce $n look
+    mpat $n mpecho {/}B{CThe high priestess unleashes a high-pitched cackle then slowly dematerialises...{x
+~
+|
+#27434
+wife female baron wives~
+the baron's wife~
+One of the baron's wives relaxes in his chambers.
+~
+Attractive for a sahuagin, this is one of the baron's wives.  She has little
+to do but tend to the baron's young and await his call, and so spends most of
+her life in relative comfort and ease.
+~
+64 512|67108864 -370 S
+49 0 0 0d0+0 0d0+0
+512 0
+8 8 2
+>greet_prog 3~
+emote raises her eyelids at you seductively
+~
+|
+#27435
+Ota'ar Dar lieutenant~
+the barracks lieutenant~
+The lieutenant responsible for the barracks marches about, inspecting the troops.
+~
+The lieutenant is responsible for all the troops in the fortress interior, and
+for the general security of that area. He looks at you with suspicion and
+distrust.
+~
+2|64 8|32|512|8388608|67108864 -530 S
+48 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>greet_prog 5~
+shout The wall has been breached! To me!
+mpkill $n
+~
+|
+#0
+
+
+#OBJECTS
+#27509
+spiked pauldron infantry~
+an infantryman's spiked pauldron~
+A infantryman's spiked pauldron is here.~
+~
+9 0 1|4
+0~ 1~ 6~ 11~
+8 0 0
+A
+17 -15
+#27510
+cavalryman's spear~
+a cavalryman's spear~
+The spear of an Ota'ar Dar cavalryman has been left here.~
+~
+5 16|64|134217728|274877906944 1|8192
+0~ 0~ 0~ 11~
+4 0 0
+A
+18 4
+A
+19 5
+E
+cavalryman spear~
+The long spear evidences quality workmanship.
+~
+#27511
+spiked pauldron cavalry~
+an cavalryman's spiked pauldron~
+A cavalryman's spiked pauldron is here.~
+~
+9 0 1|4
+0~ 1~ 6~ 11~
+8 0 0
+A
+17 -18
+#27512
+spiked pauldron elite~
+an elite soldier's spiked pauldron~
+A elite soldier's spiked pauldron is here.~
+~
+9 0 1|4
+0~ 1~ 6~ 11~
+8 0 0
+A
+17 -20
+#27513
+elite trident~
+an elite soldier's trident~
+A very fine-looking trident has been left here.~
+~
+5 16|64|274877906944 1|8192
+0~ 0~ 0~ 11~
+4 0 0
+A
+17 -10
+A
+18 6
+A
+19 7
+E
+elite trident~
+The trident exhibits unusually high-quality workmanship.
+~
+#27514
+lieutenant spiked pauldron~
+a lieutenant's spiked pauldron~
+A spiked pauldron carrying lieutenant insignia is here.~
+~
+9 0 1|4
+0~ 1~ 6~ 11~
+8 0 0
+A
+17 -24
+#27515
+fortress pass paper seal~
+a piece of paper stamped with the Prince's seal~
+A piece of paper stamped with the Prince's seal lies here.~
+~
+13 0 1|8192
+0~ 1~ 6~ 11~
+8 0 0
+E
+fortress pass paper seal~
+The paper, stamped with the baron's seal, entitles its bearer to access to the
+inner fortress.
+~
+#27516
+steel key~
+a steel key~
+A steel key has been left here.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+#27517
+lieutenant crest spiked~
+a lieutenant's crest~
+A metal crest covered in sharpened spikes lies here.~
+~
+9 64|16777216|274877906944 1|16
+8~ 0~ 0~ 0~
+10 0 0
+A
+2 1
+A
+19 4
+A
+17 -5
+E
+lieutenant crest~
+This crest belongs to a sahuagin lieutenant.  This one bears the mark of one
+who commands the fortress walls in Ota'ar Dar's military canton. It is a thing
+of spiked metal, with spikes filed to sharp points, that it might serve in battle
+as well as functioning as a symbol of authority.
+~
+#27518
+huge steel locker~
+a huge steel locker~
+A huge steel food locker stands against the wall.~
+~
+15 0 0
+200~ 13~ 27521~ 0~
+25 0 0
+E
+huge steel locker~
+The massive locker is used to store food for Ota'ar Dar's military.
+~
+#27519
+huge steel locker~
+a huge steel locker~
+A huge steel food locker stands against the wall.~
+~
+15 0 0
+200~ 13~ 27521~ 0~
+25 0 0
+E
+huge steel locker~
+The massive locker is used to store food for Ota'ar Dar's military.
+~
+#27520
+huge steel locker~
+a huge steel locker~
+A huge steel food locker stands against the wall.~
+~
+15 0 0
+200~ 13~ 27521~ 0~
+25 0 0
+E
+huge steel locker~
+The massive locker is used to store food for Ota'ar Dar's military.
+~
+#27521
+black coral key~
+a black coral key~
+A key made from black coral lies here.~
+~
+18 0 1|16384
+0~ 0~ 0~ 0~
+1 0 0
+#27522
+seahorse scramble plate~
+a plate of seahorse scramble~
+A plate covered in scrambled seahorses has been left here.~
+~
+19 0 1|16384
+42~ 0~ 0~ 0~
+3 0 0
+E
+seahorse scramble plate~
+A rare delicacy. You're unsure about the taste.
+~
+#27523
+starry leggings~
+starry leggings~
+A pair of leggings covered in silver stars lie here in a heap.~
+~
+9 64 1|32
+3~ ~ ~ ~
+5 0 0
+A
+12 30
+A
+13 20
+#27524
+silvery robes~
+silvery robes~
+Silvery robes lie here in a heap.~
+~
+9 16|64 1|1024
+0~ 0~ 0~ 0~
+2 0 0
+A
+12 35
+A
+4 3
+#27525
+wire brush~
+a wire brush~
+A wire brush used to clean parasites from the skin of sea creatures is here.~
+~
+5 0 1|8192
+0~ 8~ 18~ 11~
+5 0 0
+A
+18 7
+#27526
+forge magical~
+a magical forge~
+A forge burns with a magical green flame.~
+~
+40 1 0
+10~ 0~ 0~ 0~
+1000 0 0
+#27527
+blacksmith apron~
+a blacksmith's apron~
+A thick, waterproofed leather apron lies in a heap here.~
+~
+9 1 1|2048
+8~ 0~ 0~ 0~
+20 0 0
+A
+5 3
+A
+17 -20
+A
+24 -5
+#27528
+smithing heavy hammer~
+a heavy smithing hammer~
+A heavy smithing hammer stands here.~
+~
+37 0 1|8192
+0~ 0~ 0~ 7~
+20 0 0
+#27529
+iron tongs~
+iron tongs~
+A pair of iron tongs.~
+~
+5 0 1|8192
+0~ 10~ 15~ 8~
+20 0 0
+A
+2 -4
+A
+5 2
+A
+19 6
+#27530
+seashell playing cards~
+a set of seashell playing cards~
+A set of playing cards made from seashells are here.~
+~
+13 0 1|8192
+0~ 1~ 6~ 11~
+8 0 0
+E
+seashell playing cards~
+The 'cards' consist of seashells marked with the following symbols:
+
+8C, 8S, AC, AS, and one whose markings you can't quite make out.
+~
+#27531
+tablet notes scribbled~
+a tablet with some notes scribbled on it~
+A tablet with some notes scribbled on it lies here.~
+~
+13 0 1|8192
+0~ 1~ 6~ 11~
+8 0 0
+E
+tablet notes scribbled~
+The notes mention an appointment that has been made with the baron of the
+military canton.
+~
+#27532
+ring matron green glowing~
+the matron's ring~
+A glowing green ring lies here.~
+~
+9 1|8|64|32768|131072|262144|524288|268435456|536870912|17179869184|274877906944 1|2
+6~ 0~ 0~ 0~
+5 0 0
+A
+12 115
+A
+4 2
+A
+3 2
+A
+24 -5
+#27533
+glittering scroll~
+a glittering scroll~
+A glittering scroll lies here.~
+~
+13 0 1|8192
+0~ 1~ 6~ 11~
+8 0 0
+E
+glittering scroll~
+
+The scroll is a military communique.  It reads:
+{W
+"Baron.
+
+ You know as well as I do that the truce between Eakos and Ota'ar Dar is
+ fragile. It behooves us both to act responsibly in the best interests of our
+ respective people.  Provocations of the sort offered to us last week serve no
+ one and risk serious disruption to the status quo.  If any issues need to be
+ addressed, send word back with my emissary and I will respond to them
+ promptly.
+
+ Regards,
+
+
+ Valas Duhnenath, Lord Commander of Eakos"{x
+
+~
+#27534
+meat scraps pile~
+meat scraps~
+Meat scraps cover the floor.~
+~
+19 0 1|16384
+6~ 0~ 0~ 0~
+2 0 0
+E
+meat scraps pile~
+They smell strongly.  You take a bite.  What delicious-tasting flesh!  Almost
+like pork, and yet..~
+#27535
+battle trident~
+a battle trident~
+A battle trident of meticulous craftsmanship is here.~
+~
+5 16|64|274877906944 1|8192
+0~ 1~ 6~ 2~
+10 0 30
+A
+18 10
+A
+19 7
+#27536
+prince's token ornate fortress~
+the Fortress Prince's token~
+An ornate token allowing access to the prince's palace lies here.~
+~
+2 0 1|16384
+0~ 0~ 0~ 0~
+1 0 0
+E
+prince's token ornate~
+An ornate token.  From its inscription you gather that if the Prince's canton
+is open at all, then this token will allow the bearer entrance into the Prince's
+palace, which lies within it.
+~
+#27537
+baronic crest polished~
+a baronic crest~
+A heavily-polished metal crest lies here.~
+~
+9 64|274877906944 1|16
+8~ 0~ 0~ 0~
+10 0 0
+A
+2 24
+A
+19 3
+A
+17 -15
+E
+baronic crest~
+This crest belongs to a sahuagin baron.  This one bears the mark of the baron
+of the military canton. It is a thing of polished metal, build for practical
+use in battle, and providing good offensive and defensive benefit.
+~
+#27538
+golden robes~
+golden robes~
+Golden robes lie here in a heap.~
+~
+9 16|64 1|1024
+0~ 0~ 0~ 0~
+2 0 0
+A
+12 30
+A
+4 4
+#27539
+shimmering arched portal~
+a shimmering portal~
+<51><306>A shimmering, arched portal covers the southern wall.<0>~
+~
+33 64 0
+27418~ -1~ 0~ 100~
+0 0 0
+#27540
+tower shield~
+a tower shield~
+A tall tower shield stamped with the sigil of Ota'ar Dar lies here.~
+~
+9 0 1|512
+10~ 10~ 10~ 10~
+10 1300 0
+A
+17 -20
+#0
+
+
+#ROOMS
+#27283
+Ota'ar Dar Military Fortress, Food Store~
+<46>You see a variety of foodstuffs (or what at least you PRESUME to be foodstuffs)
+<82>stacked, arranged, and stored securely about this large, open-plan warehouse.
+<118>All of the fortress food is stored here, and as a consequence the room has been
+<154>placed under constant guard. The only exit is north, to the fortress infirmary.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 27288
+S
+#27284
+<498>Inside the Fortress Walls<0>~
+<209>You stand in a long, brick-walled corridor within the Ota'ar Dar military
+<210>canton's fortified walls.  While much of Ota'ar Dar is inhabited ruins, this
+<211>canton has been extensively rebuilt and reinforced.  The corridor is completely
+<212>enclosed; from here you may travel west and east further along the corridor,
+<213>or through the massive gate to the south, which leads out into Ota'ar Dar's
+<213>extended canal system. Not far to the west you see that the corridor opens out
+<213>into a turret, leading up to the top level of the fortress walls.<0>
+~
+0 8 12
+D1
+~
+~
+0 -1 27290
+D2
+~
+gate~
+8 -1 27244
+D3
+~
+~
+0 -1 27285
+S
+#27285
+<501>Southwestern Turret Lower, Fortress Walls<0>~
+<57>You stand at the bottom of a tall turret, in the southwesternmost reach of Ota'ar
+<93>Dar's military canton. You can head north and east into the brick corridors
+<129>linking the canton's turrets, or swim up to the top of the turret, where you
+<165>can see exits north and east leading out to the top of the fortress walls.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 27286
+D1
+~
+~
+0 -1 27284
+D4
+~
+~
+0 -1 27585
+S
+#27286
+<498>Inside the Fortress Walls<0>~
+<209>You stand in a long, brick-walled corridor within the Ota'ar Dar military
+<210>canton's fortified walls.  While much of Ota'ar Dar is inhabited ruins, this
+<211>canton has been extensively rebuilt and reinforced.  The corridor is completely
+<212>enclosed; from here you may travel south and north further along the corridor.
+<213>Not far to the south you see that the corridor opens out into a turret, leading
+<213>up to the top level of the fortress walls. To the north you think you can
+<213>see several sets of large gates set into the east and west walls.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 27291
+D2
+~
+~
+0 -1 27285
+S
+#27287
+The Infirmary, West Wing~
+<46>You stand in the west wing of the fortress's infirmary. Typically there aren't
+<82>many patients here, as sahuagin prefer to let their weak and injured perish and
+<118>nature take its course, but some warriors are considered to be of sufficient
+<154>military value to justify their treatment by the clerics of Sekolah.
+
+<154>You can travel only east from here, towards the infirmary's central hub.<0>
+~
+0 8 12
+D1
+~
+~
+0 -1 27288
+S
+#27288
+The Infirmary, Central Hub~
+<46>You stand in the central hub of the fortress's infirmary. Typically there aren't
+<82>many patients here, as sahuagin prefer to let their weak and injured perish and
+<118>nature take its course, but some warriors are considered to be of sufficient
+<154>military value to justify their treatment by the clerics of Sekolah.
+
+<154>You can travel west from here, to the infirmary's west wing, east, to its east
+<154>wing, or south, to where the fortress's food stores are kept (and closely
+<154>guarded!)<0>
+~
+0 8 12
+D1
+~
+~
+0 -1 27289
+D2
+~
+~
+0 -1 27283
+D3
+~
+~
+0 -1 27287
+S
+#27289
+The Infirmary, East Wing~
+<46>You stand in the east wing of the fortress's infirmary. Typically there aren't
+<82>many patients here, as sahuagin prefer to let their weak and injured perish and
+<118>nature take its course, but some warriors are considered to be of sufficient
+<154>military value to justify their treatment by the clerics of Sekolah.
+
+<154>You can travel north from here out to the parade grounds, or west, into the
+<154>infirmary's central hub.<0>
+~
+0 8 12
+D0
+~
+door~
+8 -1 27294
+D3
+~
+~
+0 -1 27288
+S
+#27290
+<498>Inside the Fortress Walls<0>~
+<209>You stand in a long, brick-walled corridor within the Ota'ar Dar military
+<210>canton's fortified walls.  While much of Ota'ar Dar is inhabited ruins, this
+<211>canton has been extensively rebuilt and reinforced.  The corridor is completely
+<212>enclosed; from here you may travel west and north further along the corridor.
+<213>Not far to the north you see that the corridor opens out into a turret, leading
+<213>up to the top level of the fortress walls.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 27296
+D3
+~
+~
+0 -1 27284
+S
+#27291
+<498>Inside the Fortress Walls<0>~
+<209>You stand in a long, brick-walled corridor within the Ota'ar Dar military
+<210>canton's fortified walls.  While much of Ota'ar Dar is inhabited ruins, this
+<211>canton has been extensively rebuilt and reinforced.  The corridor is completely
+<212>enclosed; from here you may travel north and south further along the corridor.
+<213>To your east lie the heavy wooden gates that permit access into the fortress
+<213>itself.
+<213>
+<213>A huge, imposing steel gate bars your way west.  There is no way of getting
+<213>through it that you can see from here.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 27297
+D1
+~
+gate~
+8 27516 27292
+D2
+~
+~
+0 -1 27286
+D3
+~
+gate~
+8 -1 27291
+S
+#27292
+Fortress Grounds, Near Entrance~
+<51>You stand in the grounds of a large military complex, deep underwater.  Great
+<87>wooden gates lie to the west, controlling access to the fortress walls, while
+<123>parade grounds lie to the east.  Fortified military buildings lie to your north
+<159>and south, but there is no entrance to them from here.  You may continue east
+<159>or head through the gates into the fortress walls, to your west.<0>
+~
+0 4 12
+D1
+~
+~
+0 -1 27293
+D3
+~
+gate~
+8 -1 27291
+S
+#27293
+Fortress Interior, Infantry Parade Grounds~
+<51>You stand in the spacious grounds of a large military complex, deep underwater.
+<87>This area is where the infantrymen drill their combat manoeuvres.  The cavalry
+<123>drill immediately east of here, while west leads to the gate that affords entry
+<159>to the fortress walls. Fortified military buildings lie north and south, but
+<159>there is no way of getting into them from here.<0>
+~
+0 0 12
+D1
+~
+~
+0 -1 27294
+D3
+~
+~
+0 -1 27292
+S
+#27294
+Fortress Interior, Cavalry Parade Grounds~
+<51>You stand in the spacious grounds of a large military complex, deep underwater.
+<87>This area is where the cavalrymen drill their combat manoeuvres.  The infantry
+<123>drill immediately west of here, and large oaken doors lead north, east, and
+<159>south, permitting access to the fortress's interior buildings.<0>
+~
+0 0 12
+D0
+~
+door~
+8 -1 27300
+D1
+~
+door~
+8 -1 27295
+D2
+~
+door~
+8 -1 27289
+D3
+~
+~
+0 -1 27293
+S
+#27295
+Lower Entrance, Leader's Quarters~
+<46>This tall, cuboid room looks very much like a stairwell, sans stairs. You can
+<82>swim straight up to a landing on the second level, or exit out to the fortress
+<118>parade grounds, which lie west.
+~
+0 0 12
+D3
+~
+door~
+8 -1 27294
+D4
+~
+~
+0 -1 27595
+S
+#27296
+<501>Eastern Turret Lower, Fortress Walls<0>~
+<57>You stand at the bottom of a tall turret, at the easternmost reach of Ota'ar
+<93>Dar's military canton. You can head south and west into the brick corridors
+<129>linking the canton's turrets, or swim up to the top of the turret, where you
+<165>can see exits west and south leading out to the top of the fortress walls.<0>
+~
+0 8 12
+D2
+~
+~
+0 -1 27290
+D3
+~
+~
+0 -1 27301
+D4
+~
+~
+0 -1 27596
+S
+#27297
+<498>Inside the Fortress Walls<0>~
+<209>You stand in a long, brick-walled corridor within the Ota'ar Dar military
+<210>canton's fortified walls.  While much of Ota'ar Dar is inhabited ruins, this
+<211>canton has been extensively rebuilt and reinforced.  The corridor is completely
+<212>enclosed; from here you may travel north and south further along the corridor.
+<213>Not far to the north you see that the corridor opens out into a turret, leading
+<213>up to the top level of the fortress walls.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 27302
+D2
+~
+~
+0 -1 27291
+S
+#27298
+The Fortress Armoury~
+<46>This is the fortress armoury, where all the arms and armour are forged and
+<82>stored to supply the troops.  It is a large room, full of steel and iron
+<118>tools and other trappings of the soldiery and blacksmithing trades in their
+<154>various stages of use and completion. It is dominated by a large, smouldering
+<154>forge, responsible for smelting ore and helping to shape the metal used to
+<154>create the items produced here. The only exit is east.
+~
+0 8|128 12
+D1
+~
+~
+0 -1 27299
+S
+#27299
+Weapons Training Area~
+<46>This area adjacent to the fortress's armoury has been set up with everything
+<82>required for the soldiers of the fortress to train in combat and to test out
+<118>their armour and weaponry.
+<154><0>
+~
+0 8 12
+D0
+~
+~
+0 -1 27304
+D1
+~
+~
+0 -1 27300
+D3
+~
+~
+0 -1 27298
+S
+#27300
+The Fortress Stables~
+<46>You stand in the fortress's stables, where the cavalry keep their mounts and
+<82>have them tended to by those assigned that duty.  There are a variety of alcoves
+<118>and designated areas for the different treatments and activities the mounts
+<154>require.  You can head south from here, out to the parade and assembly grounds,
+<154>or west, deeper into the compound.<0>
+~
+0 8 12
+D2
+~
+door~
+8 -1 27294
+D3
+~
+~
+0 -1 27299
+S
+#27301
+<498>Inside the Fortress Walls<0>~
+<209>You stand in a long, brick-walled corridor within the Ota'ar Dar military
+<210>canton's fortified walls.  While much of Ota'ar Dar is inhabited ruins, this
+<211>canton has been extensively rebuilt and reinforced.  The corridor is completely
+<212>enclosed; from here you may travel west and east further along the corridor.
+<213>Not far to the east you see that the corridor opens out into a turret, leading
+<213>up to the top level of the fortress walls.<0>
+~
+0 8 12
+D1
+~
+~
+0 -1 27296
+D3
+~
+~
+0 -1 27305
+S
+#27302
+<501>Northwestern Turret Lower, Fortress Walls<0>~
+<57>You stand at the bottom of a tall turret, at the northwesternmost reach of
+<93> Ota'ar Dar's military canton. You can head east and south into the brick
+<129>corridors linking the canton's turrets, or swim up to the top of the turret,
+<165>where you can see exits south and east leading out to the top of the fortress
+<165>walls.
+<165>
+<165>A huge, imposing steel gate bars the way north.  There is no way of getting
+<165>through it that you can see.<0>
+~
+0 8 12
+D0
+~
+gate~
+8 -1 27302
+D1
+~
+~
+0 -1 27303
+D2
+~
+~
+0 -1 27297
+D4
+~
+~
+0 -1 27602
+S
+#27303
+<498>Inside the Fortress Walls<0>~
+<209>You stand in a long, brick-walled corridor within the Ota'ar Dar military
+<210>canton's fortified walls.  While much of Ota'ar Dar is inhabited ruins, this
+<211>canton has been extensively rebuilt and reinforced.  The corridor is completely
+<212>enclosed; from here you may travel west and east further along the corridor.
+<213>Not far to both the west and east you see that the corridor opens out into
+<213>turrets, which lead up to the top level of the fortress walls.<0>
+~
+0 8 12
+D1
+~
+~
+0 -1 27306
+D3
+~
+~
+0 -1 27302
+S
+#27304
+Lower Entrance, Barracks~
+<46>The lower part of this tall, cuboid room looks very much like a stairwell,
+<82>sans stairs. You can swim straight up through a large hole in the ceiling
+<118>to the troop rec room on the second level, or exit out to the fortress
+<154>weaponry training area, forge, and stables, which lie south.<0>
+~
+0 8 12
+D2
+~
+~
+0 -1 27299
+D4
+~
+~
+0 -1 27604
+S
+#27305
+<498>Inside the Fortress Walls<0>~
+<209>You stand in a long, brick-walled corridor within the Ota'ar Dar military
+<210>canton's fortified walls.  While much of Ota'ar Dar is inhabited ruins, this
+<211>canton has been extensively rebuilt and reinforced.  The corridor is completely
+<212>enclosed; from here you may travel west and east further along the corridor.
+<213>Not far to the west you see that the corridor opens out into a turret, leading
+<213>up to the top level of the fortress walls.<0>
+~
+0 8 12
+D1
+~
+~
+0 -1 27301
+D3
+~
+~
+0 -1 27306
+S
+#27306
+<501>Northern Turret Lower, Fortress Walls<0>~
+<57>You stand at the bottom of a tall turret, at the northernmost reach of Ota'ar
+<93>Dar's military canton. You can head east and west into the brick corridors
+<129>linking the canton's turrets, or swim up to the top of the turret, where you
+<165>can see exits west and east leading out to the top of the fortress walls.<0>
+~
+0 8 12
+D1
+~
+~
+0 -1 27305
+D3
+~
+~
+0 -1 27303
+D4
+~
+~
+0 -1 27606
+S
+#27583
+Baron's Portal Room~
+<34>This room contains little aside from a large, shimmering blue portal that
+<35>covers the southern wall.  The baron uses it to quickly travel to the Prince's
+<36>canton, should he be summoned, or some sort of baron's quorum be required.
+<37>Looking through the portal you see the impressive steel gates of the Prince's
+<37>canton looming high before you.<0>
+~
+0 8 12
+D0
+~
+door~
+8 -1 27588
+S
+#27584
+<320>On the Fortress Wall Walk<0>~
+<20>You are walking on the wall walk of a military fortress. Massive wooden gates
+<26>lead out of the canton to the south.  You can take a look over the <69>parapet<0>
+<33>to the <69>south<0>, <33>enter one of the fortress turrets to the west, continue east
+<33>along the walk, or swim up, into the huge, looming area of darkness in the
+<33>water above you.<0>
+~
+0 0 12
+D1
+~
+~
+0 -1 27590
+D2
+~
+gate~
+8 -1 27544
+D3
+~
+~
+0 -1 27585
+D4
+~
+~
+0 -1 27148
+E
+south parapet~
+{/{x<69>Looking south over the parapet you can see down into Ota'ar Dar's extensive
+canal system.  Further south, just across the canal, lie gates that offer access
+to Ota'ar Dar's arena and jail.<0>
+~
+S
+#27585
+<465>Southwestern Turret Upper, Fortress Walls<0>~
+<92>You are treading water at the top of a tall turret, in the southwesternmost
+<91>reach of Ota'ar Dar's military canton. You can head back down to the bottom of
+<90>the turret, where you can see exits north and east into the fortress wall
+<89>corridors, or head north and east from here, towards the fortress's wall walk
+<89>and parapet.<0>
+~
+0 8 8
+D0
+~
+~
+0 -1 27586
+D1
+~
+~
+0 -1 27584
+D5
+~
+~
+0 -1 27285
+S
+#27586
+<320>On the Fortress Wall Walk<0>~
+<20>You are walking on the wall walk of a military fortress. You can look over the
+<26><69>parapet<26> to the <69>west<26>, enter a turret to the south, continue north along the walk,
+<33>or swim up, into the huge, looming area of darkness in the water above you.<0>
+~
+0 0 12
+D0
+~
+~
+0 -1 27591
+D2
+~
+~
+0 -1 27585
+D4
+~
+~
+0 -1 27149
+E
+west parapet~
+{/{x<69>Looking west over the parapet you can see down into an extensive underwater
+canal system.  Some distance across the canal you make out the glittering
+fortifications of Eakos, city of the Triton.<0>
+~
+S
+#27587
+The Baron's Private Chambers~
+<34>This luxurious room is where the fortress's baron relaxes with his wives. It
+<35>contains a large bed, and many rich decorations.  It also contains everything
+<36>necessary for his wives to see to their comfort and wellbeing.  The only exit
+<37>is east, out to the baron's war room.
+~
+0 8 12
+D1
+~
+door~
+8 -1 27588
+S
+#27588
+The Baron's War Room~
+<34>This richly-decorated but functional room is the Baron's War Room, where the
+<35>Baron of the military canton performs his official duties, attending to military
+<36>and diplomatic matters--usually with the assistance of a religious advisor.
+<37>
+<37>Exits lead west to his private quarters, south to his portal room (which
+<37>permits quick transport to the Prince's canton), and east to the
+<37>heavily-guarded entrance to this chamber.<0>
+~
+0 8 12
+D1
+~
+door~
+8 -1 27589
+D2
+~
+door~
+8 -1 27583
+D3
+~
+door~
+8 -1 27587
+S
+#27589
+The Baron's Antechamber~
+<34>You stand in a large, ornately decorated room wth a large wood and iron door set
+<35>into the west wall.  This is the Baron's antechamber, usually guarded, where
+<36>people with permission to visit him come through for a final inspection before
+<37>being ushered into his presence.  If you have a right to be here, you can enter
+<37>through the door to the west, otherwise you can travel to the reception are,
+<37>to the north.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 27594
+D3
+~
+door~
+8 -1 27588
+S
+#27590
+<320>On the Fortress Wall Walk<0>~
+<20>You are walking on the wall walk of a military fortress. You can take a look over
+<26>the <69>parapet<26> to the <69>south<0>, <33>enter one of the fortress turrets to the north,
+<33>continue west along the walk, or swim up, into the huge, looming area of darkness
+<33>in the water above you.<0>
+~
+0 0 12
+D0
+~
+~
+0 -1 27596
+D3
+~
+~
+0 -1 27584
+D4
+~
+~
+0 -1 27149
+E
+south parapet~
+{/{x<69>Looking south over the parapet you can see down into Ota'ar Dar's extensive
+canal system.  Across the canal are the walls of Ota'ar Dar's arena and
+jail canton.<0>
+~
+S
+#27591
+<320>On the Fortress Wall Walk<0>~
+<20>You are walking on the wall walk of a military fortress. Massive locked gates
+<26>lead out of the canton to the west.  You can take a look over the <69>parapet<0>
+<33>to the <69>west<0>, <33>continue north and south along the walk, or swim up, into the
+<33>huge, looming area of darkness in the water above you.<0>
+~
+0 0 12
+D0
+~
+~
+0 -1 27597
+D2
+~
+~
+0 -1 27586
+D3
+~
+gate~
+8 -1 27591
+D4
+~
+~
+0 -1 27145
+E
+west parapet~
+{/{x<69>Looking west over the parapet you can see down into an extensive underwater
+canal system.  Across the canal to the west runs a long bridge terminating
+at a great gate affording entrance to Eakos, city of the Triton.<0>
+~
+S
+#27592
+Elite Stables~
+<34>This area houses the mounts of the elite guards who serve the Baron.  It smells
+<35>rather strongly, but is clean and well-maintained. The only exit is through a
+<36>large wooden door to the east, leading out into the western section of the
+<37>Baron's reception area.<0>
+~
+0 8 12
+D1
+~
+gate~
+8 -1 27593
+S
+#27593
+Leader's Quarters Reception area, West~
+<34>This room holds the overflow from the main reception area that is off to the
+<35>east.  Individuals who have been vetted and approved for introduction to the
+<36>Baron are permitted to wait here in somewhat more ease and comfort before
+<37>being ushered in to attend him. You can move to the main reception area to
+<37>the east, or travel through a doorway to the west. A rather strong smell
+<37>emanates from the west.<0>
+~
+0 8 12
+D1
+~
+~
+0 -1 27594
+D3
+~
+gate~
+8 -1 27592
+S
+#27594
+Leader's Quarters, Reception Area~
+<34>Visitors to the canton's baron must wait here to be vetted before being given a
+<35>visitation token and being shown into his presence.  The room is large, but not
+<36>imposing, with moderate quantities of seating and a large desk usually staffed
+<37>by his secretary. Exits lead south, west, and east from here.<0>
+~
+0 8 12
+D1
+~
+~
+0 -1 27595
+D2
+~
+~
+0 -1 27589
+D3
+~
+~
+0 -1 27593
+S
+#27595
+Upper Entrance, Leader's Quarters~
+<34>You stand on a platform jutting out from a large stone entrance to the leader's
+<35>quarters of the fortress, where the canton baron, his wives, and his elite
+<36>troops spend much of their time.  You can head east into the reception area, or
+<37>swim down, to the fortress's lower level.<0>
+~
+0 4|8 8
+D3
+~
+~
+0 -1 27594
+D5
+~
+~
+0 -1 27295
+S
+#27596
+<465>Eastern Turret Upper, Fortress Walls<0>~
+<92>You are treading water at the top of a tall turret, in the easternmost
+<91>reach of Ota'ar Dar's military canton. You can head back down to the bottom of
+<90>the turret, where you can see exits west and south into the fortress wall
+<89>corridors, or head west and south from here, towards the fortress's wall walk
+<89>and parapet.<0>
+~
+0 8 8
+D2
+~
+~
+0 -1 27590
+D3
+~
+~
+0 -1 27601
+D5
+~
+~
+0 -1 27296
+S
+#27597
+<320>On the Fortress Wall Walk<0>~
+<20>You are walking on the wall walk of a military fortress. You can look over the
+<26><69>parapet<26> to the <69>west<26>, enter a turret to the north, continue south along the walk,
+<33>or swim up, into the huge, looming area of darkness in the water above you.<0>
+~
+0 0 12
+D0
+~
+~
+0 -1 27602
+D2
+~
+~
+0 -1 27591
+D4
+~
+~
+0 -1 27144
+E
+west parapet~
+{/{x<69>Looking west over the parapet you can see down into an extensive underwater
+canal system.  Some distance across the canal you make out the glittering
+fortifications of Eakos, city of the Triton.<0>
+~
+S
+#27598
+Infantry Barracks~
+<34>This long, narrow room is full of bunk beds, personal lockers, and the
+<35>unmistakable stench of sahuagin males. It looks worn and well-trafficked.
+<36>The only exit is through the door east, out to the fortress's mess hall.<0>
+~
+0 8 12
+D1
+~
+door~
+8 -1 27599
+S
+#27599
+The Mess Hall~
+<34>This large hall is where the fortress's soldiers prepare and eat their meals.
+<35>It contains long benches covered with all kinds of low-grade comestibles, and
+<36>plenty of seating and preparation space for the canton's inhabitants.  From
+<37>here you can head north to the rec room, west to the infantry barracks, and
+<37>east to the cavalry barracks.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 27604
+D1
+~
+door ~
+8 -1 27600
+D3
+~
+door ~
+8 -1 27598
+S
+#27600
+Cavalry Barracks~
+<34>This long, narrow room is full of bunk beds, personal lockers, and a
+<35>variety of well-maintained armour and weaponry. It looks smart and well-kept.
+<36>The only exit is through the door west, out to the fortress's mess hall.<0>
+~
+0 8 12
+D3
+~
+door~
+8 -1 27599
+S
+#27601
+<320>On the Fortress Wall Walk<0>~
+<20>You are walking on the wall walk of a military fortress. You can look over the
+<26><69>parapet<26> to the <69>north<26>, enter a turret to the east, continue west along the walk,
+<33>or swim up, into the huge, looming area of darkness in the water above you.<0>
+~
+0 0 12
+D1
+~
+~
+0 -1 27596
+D3
+~
+~
+0 -1 27605
+D4
+~
+~
+0 -1 27144
+E
+north parapet~
+{/{x<69>Looking north over the parapet you can see down into Ota'ar Dar's extensive
+canal system.  Across the canal to the northeast lies the southern residential
+canton.<0>
+~
+S
+#27602
+<465>Northwestern Turret Upper, Fortress Walls<0>~
+<92>You are treading water at the top of a tall turret, in the northwesternmost
+<91>reach of Ota'ar Dar's military canton. You can head back down to the bottom of
+<90>the turret, where you can see exits south and east into the fortress wall
+<89>corridors, or head south and east from here, towards the fortress's wall walk
+<89>and parapet.
+<89>
+<89>Huge steel gates bar your passage to the north.  There seems no obvious way of
+<89>getting through them from here.<0>
+~
+0 8 8
+D0
+~
+gate~
+8 -1 27603
+D1
+~
+~
+0 -1 27603
+D2
+~
+~
+0 -1 27597
+D5
+~
+~
+0 -1 27302
+S
+#27603
+<320>On the Fortress Wall Walk<0>~
+<20>You are walking on the wall walk of a military fortress, deep underwater. You
+<26>can look over the <69>parapet<26> to the <69>north<26>, enter turrets to the east and west,
+<33>continue east along the walk, or swim up, into the huge, looming area of
+<33>darkness in the water above you.<0>
+~
+0 0 12
+D1
+~
+~
+0 -1 27606
+D3
+~
+~
+0 -1 27602
+D4
+~
+~
+0 -1 27147
+E
+north parapet~
+{/{x<69>Looking north over the parapet you can see down into Ota'ar Dar's extensive
+canal system.  Across the canal to the north you can make out the heavily-fortified
+central market and old temple complex.<0>
+~
+S
+#27604
+Troop Rec Room~
+<34>A large part of this recreation room is given over to a hole in the floor that
+<35>leads straight down to the lower level of the fortress, while the remainder is
+<36>occupied by the sorts of things sahuagin soldiers find comforting to have
+<37>around them--trophies, food, weapons, et cetera.  As well as being able to
+<37>swim down to the lower level of the fortress from here, you can also head
+<37>south, to the mess hall.<0>
+~
+0 8 8
+D2
+~
+~
+0 -1 27599
+D5
+~
+~
+0 -1 27304
+S
+#27605
+<320>On the Fortress Wall Walk<0>~
+<20>You are walking on the wall walk of a military fortress. You can look over the
+<26><69>parapet<26> to the <69>north<26>, enter a turret to the west, continue east along the walk,
+<33>or swim up, into the huge, looming area of darkness in the water above you.<0>
+~
+0 0 12
+D1
+~
+~
+0 -1 27601
+D3
+~
+~
+0 -1 27606
+D4
+~
+~
+0 -1 27147
+E
+north parapet~
+{/{x<69>Looking north over the parapet you can see down into Ota'ar Dar's extensive
+canal system.  Across the canal to the northeast lies the southern residential
+canton, while directly north you can make out the heavily-fortified central
+market and old temple complex.<0>
+~
+S
+#27606
+<465>Northern Turret Upper, Fortress Walls<0>~
+<92>You are treading water at the top of a tall turret, in the northernmost
+<91>reach of Ota'ar Dar's military canton. You can head back down to the bottom of
+<90>the turret, where you can see exits west and east into the fortress wall
+<89>corridors, or head west and east from here, towards the fortress's wall walk
+<89>and parapet.<0>
+~
+0 8 8
+D1
+~
+~
+0 -1 27605
+D3
+~
+~
+0 -1 27603
+D5
+~
+~
+0 -1 27306
+S
+#0
+
+#RESETS
+D 1 27284 2 1			; Barracks Walls South Entrance Lower Close South
+D 1 27584 2 1			; Barracks Walls South Entrance Upper Close South
+D 1 27291 3 2			; Barracks Walls West Entrance Lower Lock West
+D 1 27591 3 2			; Barracks Walls West Entrance Upper Lock West
+D 1 27291 1 2			; Barracks Walls Camp Entrance Lower Lock East
+D 1 27302 0 2			; Barracks Walls North Entrance Lower Lock North
+D 1 27602 0 2			; Barracks Walls North Entrance Upper Lock North
+D 1 27292 3 1           ; Barracks Interior Lower West Entrance Close West
+D 1 27294 0 1           ; Barracks Interior Lower East End Close North
+D 1 27294 1 2           ; Barracks Interior Lower East End Lock East
+D 1 27294 2 1           ; Barracks Interior Lower East End Close South
+D 1 27295 3 2           ; Barracks Interior Baron's Staircase Lock West
+D 1 27300 2 1           ; Barracks Interior Lower East End Close South
+D 1 27289 0 1           ; Barracks Interior Lower East End Close North
+D 1 27598 1 1           ; Barracks Interior Upper Infantry Barracks Close East
+D 1 27599 3 1           ; Barracks Interior Upper Mess Hall Close West
+D 1 27599 1 1           ; Barracks Interior Upper Mess Hall Close East
+D 1 27600 3 1           ; Barracks Interior Upper Mess Hall Close West
+D 1 27592 1 1           ; Elite Mount Stable Close East
+D 1 27593 3 1           ; Baron Reception Area Close West
+D 1 27587 1 1           ; Baron Wives' Quarters Close East
+D 1 27588 3 1           ; Baron Quarters Close West
+D 1 27588 1 2           ; Baron Quarters Lock East
+D 1 27588 2 2           ; Baron Quarters Lock South
+D 1 27589 3 2           ; Elite Guard Barons Lock West
+D 1 27583 0 2           ; Portal Room Lock North
+
+* MOBILES
+
+M 1 27395 5 27284       ; Infantry soldier to Inside the Fortress Walls
+E 1 27509 100 3         ; equip an infantryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27242 100 16        ; equip a crude trident
+*
+M 1 27395 5 27291       ; Infantry soldier to Inside the Fortress Walls
+E 1 27509 100 3         ; equip an infantryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27242 100 16        ; equip a crude trident
+*
+M 1 27395 5 27303       ; Infantry soldier to Inside the Fortress Walls
+E 1 27509 100 3         ; equip an infantryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27242 100 16        ; equip a crude trident
+G 1 27515 100           ; fortress pass to soldier
+*
+M 1 27395 5 27301       ; Infantry soldier to Inside the Fortress Walls
+E 1 27509 100 3         ; equip an infantryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27242 100 16        ; equip a crude trident
+*
+M 1 27395 5 27590       ; Infantry soldier to On the Fortress Wall Walk
+E 1 27509 100 3         ; equip an infantryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27242 100 16        ; equip a crude trident
+*
+M 1 27396 1 27297		; a blue shark to Inside the Fortress Walls
+E 1 27234 100 16
+*
+M 1 27397 1 27305		; a stingray to Inside the Fortress Walls
+E 1 27236 100 16
+G 1 27515 100           ; fortress pass to stingray
+*
+M 1 27398 1 27603		; a hammerhead shark to On the Fortress Wall Walk
+E 1 27234 100 16
+*
+M 1 27399 3 27597       ; Cavalryman to On the Fortress Wall Walk
+E 1 27511 100 3         ; equip an cavalryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27510 100 16        ; equip a long spear
+*
+M 1 27399 3 27601       ; Cavalryman to On the Fortress Wall Walk
+E 1 27511 100 3         ; equip an cavalryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27510 100 16        ; equip a long spear
+*
+M 1 27399 3 27584       ; Cavalryman to On the Fortress Wall Walk
+E 1 27511 100 3         ; equip an cavalryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27510 100 16        ; equip a long spear
+*
+M 1 27400 1 27291       ; Elite soldier to On the Fortress Wall Walk
+E 1 27512 100 3         ; equip an elite soldier's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27513 100 16        ; equip an elite trident
+*
+M 1 27402 1 27291       ; Elite soldier to On the Fortress Wall Walk
+E 1 27512 100 3         ; equip an elite soldier's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27513 100 16        ; equip an elite trident
+*
+M 1 27401 1 27606       ; Lieutenant to Northern Turret
+E 1 27512 100 3         ; equip a lieutenant's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27513 100 16        ; equip an elite trident
+E 1 27510 100 18        ; equip a long spear
+E 1 27517 100 6         ; equip lieutenant's crest
+G 1 27515 100           ; fortress pass to Lieutenant
+G 1 27531 100           ; baron appointment to Lieutenant
+*
+M 1 27403 4 27293       ; Drilling infantryman to Infantry Drilling Grounds
+E 1 27509 100 3         ; equip an infantryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27242 100 16        ; equip a crude trident
+*
+M 1 27403 4 27293       ; Drilling infantryman to Infantry Drilling Grounds
+E 1 27509 100 3         ; equip an infantryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27242 100 16        ; equip a crude trident
+*
+M 1 27403 4 27293       ; Drilling infantryman to Infantry Drilling Grounds
+E 1 27509 100 3         ; equip an infantryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27242 100 16        ; equip a crude trident
+*
+M 1 27403 4 27293       ; Drilling infantryman to Infantry Drilling Grounds
+E 1 27509 100 3         ; equip an infantryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27242 100 16        ; equip a crude trident
+*
+M 1 27404 4 27294       ; Cavalryman to Cavalry Parade Grounds
+E 1 27511 100 3         ; equip an cavalryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27510 100 16        ; equip a long spear
+*
+M 1 27404 4 27294       ; Cavalryman to Cavalry Parade Grounds
+E 1 27511 100 3         ; equip an cavalryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27510 100 16        ; equip a long spear
+*
+M 1 27404 4 27294       ; Cavalryman to Cavalry Parade Grounds
+E 1 27511 100 3         ; equip an cavalryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27510 100 16        ; equip a long spear
+*
+M 1 27404 4 27294       ; Cavalryman to Cavalry Parade Grounds
+E 1 27511 100 3         ; equip an cavalryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27510 100 16        ; equip a long spear
+*
+M 1 27405 3 27288       ; a wandering soldier to the Infirmary
+E 1 27509 100 3         ; equip an infantryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27242 100 16        ; equip a crude trident
+*
+M 1 27406 3 27299       ; a wandering cavalryman to Lower Barracks
+E 1 27511 100 3         ; equip an cavalryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27510 100 16        ; equip a long spear
+*
+M 1 27407 2 27283       ; an Ota'ar Dar soldier to the Food Store
+E 1 27509 100 3         ; equip an infantryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27242 100 16        ; equip a crude trident
+E 1 27540 100 11        ; tower shield
+G 1 27521 100           ; black coral key to Food store soldier
+*
+M 1 27407 2 27283       ; an Ota'ar Dar soldier to the Food Store
+E 1 27509 100 3         ; equip an infantryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27242 100 16        ; equip a crude trident
+E 1 27540 100 11        ; tower shield
+G 1 27521 100           ; black coral key to Food store soldier
+*
+O 1 27518 100 27283		; a huge steel locker to Food Stores
+P 1 27260 100 27518
+P 1 27290 100 27518
+P 1 27271 100 27518
+P 1 27273 100 27518
+P 1 27267 100 27518
+P 1 27293 100 27518
+*
+O 1 27519 100 27283		; a huge steel locker to Food stores
+P 1 27261 100 27519
+P 1 27262 100 27519
+P 1 27246 100 27519
+P 1 27291 100 27519
+P 1 27272 100 27519
+P 1 27249 100 27519
+*
+O 1 27520 100 27283		; a huge steel locker to Food Stores
+P 1 27250 100 27520
+P 1 27289 100 27520
+P 1 27294 100 27520
+P 1 27522 100 27520
+P 1 27251 100 27520
+P 1 27252 100 27520
+*
+M 1 27408 1 27287       ; Wounded cavalryman to west wing of infirmary
+E 1 27231 100 13        ; equip a purple loincloth
+*
+M 1 27409 1 27289       ; Wounded soldier to east wing of infirmary
+E 1 27231 100 13        ; equip a purple loincloth
+*
+M 1 27410 1 27288       ; Wounded elite soldier to central hub of infirmary
+E 1 27231 100 13        ; equip a purple loincloth
+*
+M 1 27411 1 27287     ; Cleric of Sekolah to west wing of infirmary
+E 1 27524 100 12
+*
+M 1 27412 1 27289    ; Cleric of Sekolah to west wing of infirmary
+E 1 27524 100 12
+*
+M 1 27413 1 27300		; a skate to fortress stables
+E 1 27234 100 16
+*
+M 1 27414 1 27300		; a blue shark to fortress stables
+E 1 27234 100 16
+*
+M 1 27415 1 27300		; a stingray to stables
+E 1 27236 100 16
+*
+M 1 27416 1 27300		; a hammerhead shark to stables
+E 1 27234 100 16
+*
+M 1 27417 1 27300       ; mount attendant to stables
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27525 100 16        ; equip a wire brush
+*
+M 1 27418 1 27298       ; blacksmith to the armoury
+E 1 27527 100 13        ; equip a blacksmith's apron
+E 1 27528 100 16        ; wield smithing hammer
+E 1 27529 100 18        ; wield tongs
+*
+O 1 27526 100 27298		; a forge to The Fortress Armoury
+*
+M 1 27419 1 27299       ; a training dummy to Weapons testing area
+*
+M 1 27420 1 27299       ; an Ota'ar Dar soldier to Weapons Training area
+E 1 27509 100 3         ; equip an infantryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27242 100 16        ; equip a crude trident
+*
+M 1 27405 3 27299       ; a wandering soldier to Weapons Training Area
+E 1 27509 100 3         ; equip an infantryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27242 100 16        ; equip a crude trident
+*
+M 1 27406 3 27604      ; a wandering cavalryman to Stables
+E 1 27511 100 3         ; equip an cavalryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27510 100 16        ; equip a long spear
+*
+M 1 27405 3 27599       ; a wandering soldier
+E 1 27509 100 3         ; equip an infantryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27242 100 16        ; equip a crude trident
+*
+M 1 27406 3 27298       ; a wandering cavalryman to Forge
+E 1 27511 100 3         ; equip an cavalryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27510 100 16        ; equip a long spear
+*
+M 1 27421 2 27604       ; infantry to rec room
+E 1 27509 100 3         ; equip an infantryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+*
+M 1 27421 2 27604       ; infantry to rec room
+E 1 27509 100 3         ; equip an infantryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+*
+M 1 27422 1 27604       ; cavalry to rec room
+E 1 27511 100 3         ; equip an cavalryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+G 1 27530 100           ; seashell playing cards to cavalryman
+*
+M 1 27423 2 27599       ; infantry to mess
+E 1 27509 100 3         ; equip an infantryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+G 1 27291 100
+*
+M 1 27423 2 27599      ; infantry to mess
+E 1 27509 100 3         ; equip an infantryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+G 1 27292 100
+*
+M 1 27424 2 27599       ; cavalry to mess
+E 1 27511 100 3         ; equip an cavalryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+G 1 27290 100
+*
+M 1 27424 2 27599       ; cavalry to mess
+E 1 27511 100 3         ; equip an cavalryman's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+G 1 27289 100
+*
+O 1 27520 100 27599		; a huge steel locker to mess
+P 1 27294 100 27520
+P 1 27293 100 27520
+P 1 27292 100 27520
+P 1 27291 100 27520
+*
+M 1 27425 6 27598       ; infantry to barracks
+E 1 27231 100 13        ; equip a purple loincloth
+*
+M 1 27425 6 27598       ; infantry to barracks
+E 1 27231 100 13        ; equip a purple loincloth
+*
+M 1 27425 6 27598       ; infantry to barracks
+E 1 27231 100 13        ; equip a purple loincloth
+*
+M 1 27425 6 27598       ; infantry to barracks
+E 1 27231 100 13        ; equip a purple loincloth
+*
+M 1 27425 6 27598       ; infantry to barracks
+E 1 27231 100 13        ; equip a purple loincloth
+*
+M 1 27425 6 27598       ; infantry to barracks
+E 1 27231 100 13        ; equip a purple loincloth
+*
+M 1 27426 6 27600       ; cavalry to barracks
+E 1 27231 100 13        ; equip a purple loincloth
+*
+M 1 27426 6 27600       ; cavalry to barracks
+E 1 27231 100 13        ; equip a purple loincloth
+*
+M 1 27426 6 27600       ; cavalry to barracks
+E 1 27231 100 13        ; equip a purple loincloth
+*
+M 1 27426 6 27600       ; cavalry to barracks
+E 1 27231 100 13        ; equip a purple loincloth
+*
+M 1 27426 6 27600       ; cavalry to barracks
+E 1 27231 100 13        ; equip a purple loincloth
+*
+M 1 27426 6 27600       ; cavalry to barracks
+E 1 27231 100 13        ; equip a purple loincloth
+*
+M 1 27435 1 27600       ; lieutenant to cavalry barracks
+E 1 27512 100 3         ; equip a lieutenant's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27513 100 16        ; equip an elite trident
+E 1 27510 100 18        ; equip a long spear
+E 1 27517 100 6         ; equip lieutenant's crest
+G 1 27515 100           ; fortress pass to Lieutenant
+G 1 27531 100           ; baron appointment to Lieutenant
+*
+M 1 27427 1 27594       ; matron to reception area
+E 1 27310 100 12
+E 1 27532 100 1
+G 1 27110 100           ; Give her the Triton's weapon
+*
+M 1 27428 2 27589       ; elite guard to Baron's Antechamber
+E 1 27512 100 3         ; equip an elite soldier's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27513 100 16        ; equip an elite trident
+E 1 27540 100 11        ; tower shield
+*
+M 1 27428 2 27589       ; elite guard to Baron's Antechamber
+E 1 27512 100 3         ; equip an elite soldier's spiked pauldron
+E 1 27231 100 13        ; equip a purple loincloth
+E 1 27513 100 16        ; equip an elite trident
+E 1 27540 100 11        ; tower shield
+*
+M 1 27429 1 27593       ; a Triton to the western reception area
+E 1 27111 100 5         ; equip scale male
+E 1 27112 100 13        ; equip belt of shark's teeth
+G 1 27533 100           ; give sealed scroll
+*
+M 1 27430 1 27593       ; a Grung to the western reception area
+E 1 27490 100 5         ; equip rock armour
+*
+M 1 27431 4 27592       ; White shark to elite stables
+E 1 27234 100 16        ; shark equip teeth
+*
+M 1 27431 4 27592       ; White shark to elite stables
+E 1 27234 100 16        ; shark equip teeth
+*
+M 1 27431 4 27592       ; White shark to elite stables
+E 1 27234 100 16        ; shark equip teeth
+*
+M 1 27431 4 27592       ; White shark to elite stables
+O 1 27534 100 27592     ; meat scraps to elite stables
+E 1 27234 100 16        ; shark equip teeth
+*
+M 1 27432 1 27588       ; the baron to the Baron's War Room
+E 1 27535 100 16        ; equip battle trident
+E 1 27535 100 18        ; equip battle trident
+E 1 27464 100 3         ; equip ornate pauldrons
+E 1 27465 100 13        ; equip purple loinskirt
+E 1 27537 100 6         ; equip baronic crest
+E 1 27287 100 17        ; give purple potion
+G 1 27536 100           ; give Prince's token
+*
+M 1 27433 1 27588       ; a high priestess of Sekolah to the war room
+E 1 27538 100 12        ; golden robes
+*
+O 1 27539 100 27583     ; shimmering portal to Baron's Portal Room
+*
+M 1 27434 3 27587       ; baron's wife to baron's private quarters
+E 1 27455 100 12        ; equip purple robe
+E 1 27456 0 4           ; equip a diamond necklace
+*
+M 1 27434 3 27587       ; baron's wife to baron's private quarters
+E 1 27455 100 12        ; equip purple robe
+E 1 27457 0 4           ; equip a pearl necklace
+*
+M 1 27434 3 27587       ; baron's wife to baron's private quarters
+E 1 27455 100 12        ; equip purple robe
+E 1 27458 0 4           ; equip a gold necklace
+*
+S
+
+#SPECIALS
+M  27395 spec_sahuagin_infantry
+M  27400 spec_sahuagin_infantry
+M  27402 spec_sahuagin_infantry
+M  27403 spec_sahuagin_infantry
+M  27405 spec_sahuagin_infantry
+M  27409 spec_sahuagin_infantry
+M  27420 spec_sahuagin_infantry
+M  27421 spec_sahuagin_infantry
+M  27423 spec_sahuagin_infantry
+M  27425 spec_sahuagin_infantry
+M  27399 spec_sahuagin_cavalry
+M  27404 spec_sahuagin_cavalry
+M  27406 spec_sahuagin_cavalry
+M  27408 spec_sahuagin_cavalry
+M  27422 spec_sahuagin_cavalry
+M  27424 spec_sahuagin_cavalry
+M  27426 spec_sahuagin_cavalry
+M  27401 spec_sahuagin_lieutenant   Lieutenant of the walls
+M  27435 spec_sahuagin_lieutenant   Lieutenant of the fortress
+M  27411 spec_sahuagin_cleric	    a cleric of Sekolah
+M  27412 spec_sahuagin_cleric	    a cleric of Sekolah
+M  27427 spec_sahuagin_high_cleric  receptionist
+M  27407 spec_sahuagin_guard        Food store guys
+M  27428 spec_sahuagin_guard	    Baron's elite guard
+M  27428 spec_sahuagin_guard	    Baron's elite guard
+M  27430 spec_green_grung           Green grung
+M  27432 spec_sahuagin_baron        the sahuagin baron
+M  27433 spec_sahuagin_high_cleric  high priestess of Sekolah
+S
+
+#$

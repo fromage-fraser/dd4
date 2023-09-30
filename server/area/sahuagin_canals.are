@@ -1467,7 +1467,7 @@ A large SIGN has been nailed to the arena canton gates.<0>
 D0
 ~
 gate~
-8 -1 27283
+8 -1 27284
 D1
 ~
 ~
@@ -2219,12 +2219,6 @@ D4
 ~
 ~
 0 -1 27575
-S
-#27283
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
 S
 #27307
 Arena Way Eastbridge, Lower~
@@ -3808,8 +3802,8 @@ A large SIGN has been nailed to the arena canton gates.<0>
 0 0 8
 D0
 ~
-~
-8 -1 27583
+gate~
+8 -1 27584
 D1
 ~
 ~
@@ -4678,12 +4672,6 @@ D5
 ~
 ~
 0 -1 27275
-S
-#27583
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
 S
 #27607
 Arena Way Eastbridge, Upper~
@@ -7720,7 +7708,7 @@ G 1 27396 100
 
 
 
-D 1 27244 0 2			; Arena Way Westbridge, Lower Lock North
+D 1 27244 0 1			; Arena Way Westbridge, Lower Close North
 D 1 27244 2 1			; Arena Way Westbridge, Lower Close South
 D 1 27307 0 1			; Arena Way Eastbridge, Lower Close North
 D 1 27307 2 1			; Arena Way Eastbridge, Lower Close South
@@ -7738,7 +7726,7 @@ D 1 27718 1 2           ; Stately Way, Lock East
 D 1 27718 3 2           ; Stately Way, Lock West
 D 1 27607 0 1			; Arena Way Eastbridge, Upper Close North
 D 1 27607 2 1			; Arena Way Eastbridge, Upper Close South
-D 1 27544 0 2			; Arena Way Westbridge, Upper Lock North
+D 1 27544 0 1			; Arena Way Westbridge, Upper Close North
 D 1 27544 2 1			; Arena Way Westbridge, Upper Close South
 D 1 27653 1 1			; Malana Bridge, Upper Close East
 D 1 27653 3 1			; Malana Bridge, Upper Close West

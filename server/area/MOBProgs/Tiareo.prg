@@ -7,7 +7,7 @@
                 mpecho {WReaver Tiareo says 'You are too inexperienced for us to contemplate you becoming a Reaver.  Try again when you're more experienced.'{x
         break
         else
-        if level($n) > 45
+        if level($n) > 50
                 mpecho {WReaver Tiareo says '$n, you're far too experienced for our current missions.  Keep checking back, though!'{x
         break
         else
@@ -103,6 +103,42 @@
                 mpecho {W'are usually taken to the arena, so I would try there first. Here is the letter.'{x
                 mpoload 27504
                 give letter $n
+        endif
+        endif
+~
+>speech_prog six 6~
+        if level($n) < 45
+                mpecho {WReaver Tiareo says 'I'm sorry, that mission is too dangerous for someone of your limited experience.'{x
+        break
+        else
+        if level($n) > 50
+                mpecho {WReaver Tiareo says 'You're far too experienced to undertake that mission.'{x
+        break
+        else
+                mpecho {W'One of the elder Reavers is near death, and his dying wish is that we serve'{x
+                mpecho {W'him a plate of seahorse scramble 'just like his mother used to make'. The dish'{x
+                mpecho {W'he describes we believe only to be made by one of the army cooks in the military'{x
+                mpecho {W'canton. Please track it down and bring it here; we will make it worth your while.'{x
+        endif
+        endif
+~
+>give_prog seahorse scramble plate~
+        if level($n) > 50
+                mpecho {WReaver Tiareo says 'That mission was for someone less experienced.'{x
+                give seahorse $n
+        break
+        else
+        if number($o) == 27522
+                mpjunk seahorse
+                mpecho {WReaver Tiareo says 'Excellent $n, the elder will die happy!'{x
+                mpoload 27523 45
+                give starry $n
+                mpecho {WReaver Tiareo says 'These leggings will bolster your endurance and magical power.'{x
+        break
+        else
+                mpecho $I examines $O closely.
+                mpecho {WReaver Tiareo says 'Sorry $n we want the real dish, not some amateur approximation.'{x
+                give seahorse $n
         endif
         endif
 ~

@@ -2889,7 +2889,11 @@ void do_heighten (CHAR_DATA *ch, char *argument)
 
 void do_smash (CHAR_DATA *ch, char *argument)
 {
-        if (IS_NPC(ch) && !(ch->spec_fun == spec_lookup("spec_warrior") || ch->spec_fun == spec_lookup("spec_guard")))
+        if ( IS_NPC(ch)
+        &&  !( ch->spec_fun == spec_lookup("spec_warrior")
+        ||     ch->spec_fun == spec_lookup("spec_guard")
+        ||     ch->spec_fun == spec_lookup("spec_sahuagin_guard")
+        ||     ch->spec_fun == spec_lookup("spec_sahuagin_infantry") ) )
                 return;
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_smash))

@@ -5408,7 +5408,7 @@ Shape shifter forms and skills{x
 
 chameleon form          cat form                hawk form
   hide {Y*{x                  detect invis {Y*{x          fly {Y*{x
-  sneak {Y*{x                 detect hidden {Y*{x
+  sneak {Y*{x                 detect hidden {Y*{x         soar
                           detect sneak {Y*{x
 snake form                infravision {Y*{x         bear form
   swim {Y*{x                                          enhanced damage {Y*{x
@@ -6650,34 +6650,34 @@ able to wear.
 #define BIT_33   /*           8589934592  */
 #define BIT_34   /*          17179869184  */
 #define BIT_35   /*          34359738368  */
-#define BIT_36	 /*          68719476736  */
-#define BIT_37	 /*         137438953472  */
-#define BIT_38	 /*         274877906944  */
-#define BIT_39	 /*         549755813888  */
-#define BIT_40	 /*        1099511627776  */
-#define BIT_41	 /*        2199023255552  */
-#define BIT_42	 /*        4398046511104  */
-#define BIT_43	 /*        8796093022208  */
-#define BIT_44	 /*       17592186044416  */
-#define BIT_45	 /*       35184372088832  */
-#define BIT_46	 /*       70368744177664  */
-#define BIT_47	 /*      140737488355328  */
-#define BIT_48	 /*      281474976710656  */
-#define BIT_49	 /*      562949953421312  */
-#define BIT_50	 /*     1125899906842624  */
-#define BIT_51	 /*     2251799813685248  */
-#define BIT_52	 /*     4503599627370496  */
-#define BIT_53	 /*     9007199254740992  */
-#define BIT_54	 /*    18014398509481984  */
-#define BIT_55	 /*    36028797018963968  */
-#define BIT_56	 /*    72057594037927936  */
-#define BIT_57	 /*   144115188075855872  */
-#define BIT_58	 /*   288230376151711744  */
-#define BIT_59	 /*   576460752303423488  */
-#define BIT_60	 /*  1152921504606846976  */
-#define BIT_61	 /*  2305843009213693952  */
-#define BIT_62	 /*  4611686018427387904  */
-#define BIT_63	 /*  9223372036854775808  */
+#define BIT_36   /*          68719476736  */
+#define BIT_37   /*         137438953472  */
+#define BIT_38   /*         274877906944  */
+#define BIT_39   /*         549755813888  */
+#define BIT_40   /*        1099511627776  */
+#define BIT_41   /*        2199023255552  */
+#define BIT_42   /*        4398046511104  */
+#define BIT_43   /*        8796093022208  */
+#define BIT_44   /*       17592186044416  */
+#define BIT_45   /*       35184372088832  */
+#define BIT_46   /*       70368744177664  */
+#define BIT_47   /*      140737488355328  */
+#define BIT_48   /*      281474976710656  */
+#define BIT_49   /*      562949953421312  */
+#define BIT_50   /*     1125899906842624  */
+#define BIT_51   /*     2251799813685248  */
+#define BIT_52   /*     4503599627370496  */
+#define BIT_53   /*     9007199254740992  */
+#define BIT_54   /*    18014398509481984  */
+#define BIT_55   /*    36028797018963968  */
+#define BIT_56   /*    72057594037927936  */
+#define BIT_57   /*   144115188075855872  */
+#define BIT_58   /*   288230376151711744  */
+#define BIT_59   /*   576460752303423488  */
+#define BIT_60   /*  1152921504606846976  */
+#define BIT_61   /*  2305843009213693952  */
+#define BIT_62   /*  4611686018427387904  */
+#define BIT_63   /*  9223372036854775808  */
 ~
 
 1 SAFE~

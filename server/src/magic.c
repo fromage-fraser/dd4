@@ -3021,7 +3021,7 @@ void spell_faerie_fire( int sn, int level, CHAR_DATA *ch, void *vo )
         af.bitvector = AFF_FAERIE_FIRE;
         affect_to_char( victim, &af );
 
-        send_to_char( "You are surrounded by a pink outline.\n\r", victim );
+        send_to_char( "<168>You are surrounded by a pink outline.<0>\n\r", victim );
         act( "$n is surrounded by a pink outline.", victim, NULL, NULL, TO_ROOM );
 
         check_group_bonus(ch);
