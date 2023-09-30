@@ -2634,6 +2634,7 @@ void load_specials( FILE *fp )
                         ||   pMobIndex->spec_fun == spec_lookup("spec_spectral_minion")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_kungfu_poison")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_guard")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_sahuagin_guard")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_judge") )
                                 bonus = 5;
 
@@ -2647,6 +2648,9 @@ void load_specials( FILE *fp )
                         ||   pMobIndex->spec_fun == spec_lookup("spec_laghathti")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_uzollru")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_warrior")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_sahuagin_infantry")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_sahuagin_cavalry")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_sahuagin_cleric")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_green_grung") )
                                 bonus = 10;
 
@@ -2660,6 +2664,7 @@ void load_specials( FILE *fp )
                         ||   pMobIndex->spec_fun == spec_lookup("spec_assassin")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_aboleth")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_sahuagin_baron")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_sahuagin_lieutenant")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_cast_water_sprite") )
                                 bonus = 15;
 
@@ -2668,6 +2673,7 @@ void load_specials( FILE *fp )
                          */
 
                         if ( pMobIndex->spec_fun == spec_lookup("spec_priestess")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_high_cleric")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_mast_vampire")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_evil_evil_gezhp")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_grail")

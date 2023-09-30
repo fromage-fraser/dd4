@@ -2662,7 +2662,7 @@ void do_extort (CHAR_DATA *extortionist, char *targetList)
                                 continue;
                         if( IS_NPC( guardian_mob)
                            && IS_AWAKE( guardian_mob)
-                           && guardian_mob->spec_fun == spec_lookup("spec_guard"))
+                           &&  ( guardian_mob->spec_fun == spec_lookup("spec_guard") ||  guardian_mob->spec_fun == spec_lookup("spec_sahuagin_guard") ) )
                         {
                                 act("You commend $N on their staunch vigil against crime, and decide to return when they are not around.\n\r ", extortionist, NULL, guardian_mob, TO_CHAR);
                                 return;
@@ -4955,7 +4955,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                                         send_to_char("That module is not in your turret.\n\r", ch);
                                         return;
                                 }
-                                
+
                                 if (module->item_type == ITEM_DEFENSIVE_TURRET_MODULE)
                                         return;
 

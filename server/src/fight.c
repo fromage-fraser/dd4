@@ -5527,8 +5527,11 @@ void do_headbutt (CHAR_DATA *ch, char *argument)
 
         if (IS_NPC(ch)
         && !( ch->spec_fun == spec_lookup("spec_warrior")
+           || ch->spec_fun == spec_lookup("spec_sahuagin_infantry")
+           || ch->spec_fun == spec_lookup("spec_sahuagin_cavalry")
            || ch->spec_fun == spec_lookup("spec_grail")
            || ch->spec_fun == spec_lookup("spec_kappa")
+           || ch->spec_fun == spec_lookup("spec_sahuagin_guard")
            || ch->spec_fun == spec_lookup("spec_guard") ) )
                 return;
 
@@ -6147,6 +6150,9 @@ void do_grapple (CHAR_DATA *ch, char *argument)
         && !( ch->spec_fun == spec_lookup("spec_kappa") )
         && !( ch->spec_fun == spec_lookup("spec_laghathti") )
         && !( ch->spec_fun == spec_lookup("spec_green_grung") )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_infantry") )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_cavalry") )
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
                 return;
 
@@ -6254,6 +6260,9 @@ void do_flying_headbutt (CHAR_DATA *ch, char *argument)
         if (IS_NPC(ch)
         && !( ch->spec_fun == spec_lookup("spec_kappa") )
         && !( ch->spec_fun == spec_lookup("spec_green_grung") )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_infantry") )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_cavalry") )
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
                 return;
 
@@ -6624,6 +6633,7 @@ void do_whirlwind (CHAR_DATA *ch, char *argument)
         int count = 0;
 
         if (IS_NPC(ch)
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
                 return;
 

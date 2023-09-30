@@ -3418,8 +3418,8 @@ bool check_social( CHAR_DATA *ch, char *command, char *argument )
                 return TRUE;
 
         }
-        sprintf(log_buf, "NO ARGUMENT\r\n");
-	            log_string(log_buf);
+        /* sprintf(log_buf, "NO ARGUMENT\r\n");
+	            log_string(log_buf); */
 
         one_argument( argument, arg );
         victim = NULL;

@@ -43,57 +43,63 @@ void wear_obj           args( ( CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace ) );
  * REMEMBER: check xp bonus in load_specials in db.c and update spec_fun_name() and spec_lookup() if you add a special
  */
 
-DECLARE_SPEC_FUN( spec_breath_any          );
-DECLARE_SPEC_FUN( spec_breath_acid         );
-DECLARE_SPEC_FUN( spec_breath_fire         );
-DECLARE_SPEC_FUN( spec_breath_frost        );
-DECLARE_SPEC_FUN( spec_breath_gas          );
-DECLARE_SPEC_FUN( spec_breath_lightning    );
-DECLARE_SPEC_FUN( spec_breath_steam        );
-DECLARE_SPEC_FUN( spec_cast_adept          );
-DECLARE_SPEC_FUN( spec_cast_hooker         );
-DECLARE_SPEC_FUN( spec_buddha              );
-DECLARE_SPEC_FUN( spec_kungfu_poison       );
-DECLARE_SPEC_FUN( spec_clan_guard          );
-DECLARE_SPEC_FUN( spec_cast_cleric         );
-DECLARE_SPEC_FUN( spec_cast_judge          );
-DECLARE_SPEC_FUN( spec_cast_mage           );
-DECLARE_SPEC_FUN( spec_cast_druid          );
-DECLARE_SPEC_FUN( spec_cast_water_sprite   );
-DECLARE_SPEC_FUN( spec_cast_psionicist     );
-DECLARE_SPEC_FUN( spec_cast_undead         );
-DECLARE_SPEC_FUN( spec_executioner         );
-DECLARE_SPEC_FUN( spec_fido                );
-DECLARE_SPEC_FUN( spec_guard               );
-DECLARE_SPEC_FUN( spec_janitor             );
-DECLARE_SPEC_FUN( spec_poison              );
-DECLARE_SPEC_FUN( spec_repairman           );
-DECLARE_SPEC_FUN( spec_thief               );
-DECLARE_SPEC_FUN( spec_bounty              );
-DECLARE_SPEC_FUN( spec_grail               );
-DECLARE_SPEC_FUN( spec_cast_orb            );
-DECLARE_SPEC_FUN( spec_assassin            );
-DECLARE_SPEC_FUN( spec_warrior             );
-DECLARE_SPEC_FUN( spec_vampire             );
-DECLARE_SPEC_FUN( spec_cast_archmage       );
-DECLARE_SPEC_FUN( spec_cast_priestess      );
-DECLARE_SPEC_FUN( spec_mast_vampire        );
-DECLARE_SPEC_FUN( spec_bloodsucker         );
-DECLARE_SPEC_FUN( spec_spectral_minion     );
-DECLARE_SPEC_FUN( spec_celestial_repairman );
-DECLARE_SPEC_FUN( spec_sahuagin            );
-DECLARE_SPEC_FUN( spec_evil_evil_gezhp     );
-DECLARE_SPEC_FUN( spec_demon               );
-DECLARE_SPEC_FUN( spec_cast_electric       );
-DECLARE_SPEC_FUN( spec_small_whale         );
-DECLARE_SPEC_FUN( spec_large_whale         );
-DECLARE_SPEC_FUN( spec_kappa               );
-DECLARE_SPEC_FUN( spec_aboleth             );
-DECLARE_SPEC_FUN( spec_laghathti           );
-DECLARE_SPEC_FUN( spec_superwimpy          );
-DECLARE_SPEC_FUN( spec_uzollru             );
-DECLARE_SPEC_FUN( spec_sahuagin_baron      );
-DECLARE_SPEC_FUN( spec_green_grung         );
+DECLARE_SPEC_FUN( spec_breath_any           );
+DECLARE_SPEC_FUN( spec_breath_acid          );
+DECLARE_SPEC_FUN( spec_breath_fire          );
+DECLARE_SPEC_FUN( spec_breath_frost         );
+DECLARE_SPEC_FUN( spec_breath_gas           );
+DECLARE_SPEC_FUN( spec_breath_lightning     );
+DECLARE_SPEC_FUN( spec_breath_steam         );
+DECLARE_SPEC_FUN( spec_cast_adept           );
+DECLARE_SPEC_FUN( spec_cast_hooker          );
+DECLARE_SPEC_FUN( spec_buddha               );
+DECLARE_SPEC_FUN( spec_kungfu_poison        );
+DECLARE_SPEC_FUN( spec_clan_guard           );
+DECLARE_SPEC_FUN( spec_cast_cleric          );
+DECLARE_SPEC_FUN( spec_cast_judge           );
+DECLARE_SPEC_FUN( spec_cast_mage            );
+DECLARE_SPEC_FUN( spec_cast_druid           );
+DECLARE_SPEC_FUN( spec_cast_water_sprite    );
+DECLARE_SPEC_FUN( spec_cast_psionicist      );
+DECLARE_SPEC_FUN( spec_cast_undead          );
+DECLARE_SPEC_FUN( spec_executioner          );
+DECLARE_SPEC_FUN( spec_fido                 );
+DECLARE_SPEC_FUN( spec_guard                );
+DECLARE_SPEC_FUN( spec_janitor              );
+DECLARE_SPEC_FUN( spec_poison               );
+DECLARE_SPEC_FUN( spec_repairman            );
+DECLARE_SPEC_FUN( spec_thief                );
+DECLARE_SPEC_FUN( spec_bounty               );
+DECLARE_SPEC_FUN( spec_grail                );
+DECLARE_SPEC_FUN( spec_cast_orb             );
+DECLARE_SPEC_FUN( spec_assassin             );
+DECLARE_SPEC_FUN( spec_warrior              );
+DECLARE_SPEC_FUN( spec_vampire              );
+DECLARE_SPEC_FUN( spec_cast_archmage        );
+DECLARE_SPEC_FUN( spec_cast_priestess       );
+DECLARE_SPEC_FUN( spec_mast_vampire         );
+DECLARE_SPEC_FUN( spec_bloodsucker          );
+DECLARE_SPEC_FUN( spec_spectral_minion      );
+DECLARE_SPEC_FUN( spec_celestial_repairman  );
+DECLARE_SPEC_FUN( spec_sahuagin             );
+DECLARE_SPEC_FUN( spec_evil_evil_gezhp      );
+DECLARE_SPEC_FUN( spec_demon                );
+DECLARE_SPEC_FUN( spec_cast_electric        );
+DECLARE_SPEC_FUN( spec_small_whale          );
+DECLARE_SPEC_FUN( spec_large_whale          );
+DECLARE_SPEC_FUN( spec_kappa                );
+DECLARE_SPEC_FUN( spec_aboleth              );
+DECLARE_SPEC_FUN( spec_laghathti            );
+DECLARE_SPEC_FUN( spec_superwimpy           );
+DECLARE_SPEC_FUN( spec_uzollru              );
+DECLARE_SPEC_FUN( spec_sahuagin_baron       );
+DECLARE_SPEC_FUN( spec_green_grung          );
+DECLARE_SPEC_FUN( spec_sahuagin_infantry    );
+DECLARE_SPEC_FUN( spec_sahuagin_cavalry     );
+DECLARE_SPEC_FUN( spec_sahuagin_guard       );
+DECLARE_SPEC_FUN( spec_sahuagin_lieutenant  );
+DECLARE_SPEC_FUN( spec_sahuagin_cleric      );
+DECLARE_SPEC_FUN( spec_sahuagin_high_cleric );
 
 
 /*
@@ -153,6 +159,12 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_uzollru"))              return spec_uzollru;
         if (!str_cmp(name, "spec_sahuagin_baron"))       return spec_sahuagin_baron;
         if (!str_cmp(name, "spec_green_grung"))          return spec_green_grung;
+        if (!str_cmp(name, "spec_sahuagin_infantry"))    return spec_sahuagin_infantry;
+        if (!str_cmp(name, "spec_sahuagin_cavalry"))     return spec_sahuagin_cavalry;
+        if (!str_cmp(name, "spec_sahuagin_guard"))       return spec_sahuagin_guard;
+        if (!str_cmp(name, "spec_sahuagin_lieutenant"))  return spec_sahuagin_lieutenant;
+        if (!str_cmp(name, "spec_sahuagin_cleric"))      return spec_sahuagin_cleric;
+        if (!str_cmp(name, "spec_sahuagin_high_cleric")) return spec_sahuagin_high_cleric;
 
 
         return 0;
@@ -171,57 +183,63 @@ char* spec_fun_name (CHAR_DATA *ch)
     if ( IS_NPC(ch)
          &&   ch->spec_fun )
     {
-        if (ch->spec_fun == spec_lookup("spec_breath_any"))         return "spec_breath_any";
-        if (ch->spec_fun == spec_lookup("spec_breath_acid"))        return "spec_breath_acid";
-        if (ch->spec_fun == spec_lookup("spec_breath_fire"))        return "spec_breath_fire";
-        if (ch->spec_fun == spec_lookup("spec_breath_frost"))       return "spec_breath_frost";
-        if (ch->spec_fun == spec_lookup("spec_breath_gas"))         return "spec_breath_gas";
-        if (ch->spec_fun == spec_lookup("spec_breath_lightning"))   return "spec_breath_lightning";
-        if (ch->spec_fun == spec_lookup("spec_breath_steam"))       return "spec_breath_steam";
-        if (ch->spec_fun == spec_lookup("spec_cast_adept"))         return "spec_cast_adept";
-        if (ch->spec_fun == spec_lookup("spec_cast_hooker"))        return "spec_cast_hooker";
-        if (ch->spec_fun == spec_lookup("spec_buddha"))             return "spec_buddha";
-        if (ch->spec_fun == spec_lookup("spec_kungfu_poison"))      return "spec_kungfu_poison";
-        if (ch->spec_fun == spec_lookup("spec_cast_cleric"))        return "spec_cast_cleric";
-        if (ch->spec_fun == spec_lookup("spec_cast_judge"))         return "spec_cast_judge";
-        if (ch->spec_fun == spec_lookup("spec_cast_mage"))          return "spec_cast_mage";
-        if (ch->spec_fun == spec_lookup("spec_cast_druid"))         return "spec_cast_druid";
-        if (ch->spec_fun == spec_lookup("spec_cast_water_sprite"))  return "spec_cast_water_sprite";
-        if (ch->spec_fun == spec_lookup("spec_cast_psionicist"))    return "spec_cast_psionicist";
-        if (ch->spec_fun == spec_lookup("spec_cast_undead"))        return "spec_cast_undead";
-        if (ch->spec_fun == spec_lookup("spec_executioner"))        return "spec_executioner";
-        if (ch->spec_fun == spec_lookup("spec_fido"))               return "spec_fido";
-        if (ch->spec_fun == spec_lookup("spec_clan_guard"))         return "spec_clan_guard";
-        if (ch->spec_fun == spec_lookup("spec_guard"))              return "spec_guard";
-        if (ch->spec_fun == spec_lookup("spec_janitor"))            return "spec_janitor";
-        if (ch->spec_fun == spec_lookup("spec_poison"))             return "spec_poison";
-        if (ch->spec_fun == spec_lookup("spec_repairman"))          return "spec_repairman";
-        if (ch->spec_fun == spec_lookup("spec_thief"))              return "spec_thief";
-        if (ch->spec_fun == spec_lookup("spec_bounty"))             return "spec_bounty";
-        if (ch->spec_fun == spec_lookup("spec_grail"))              return "spec_grail";
-        if (ch->spec_fun == spec_lookup("spec_cast_orb"))           return "spec_cast_orb";
-        if (ch->spec_fun == spec_lookup("spec_assassin"))           return "spec_assassin";
-        if (ch->spec_fun == spec_lookup("spec_warrior"))            return "spec_warrior";
-        if (ch->spec_fun == spec_lookup("spec_vampire"))            return "spec_vampire";
-        if (ch->spec_fun == spec_lookup("spec_cast_archmage"))      return "spec_cast_archmage";
-        if (ch->spec_fun == spec_lookup("spec_cast_priestess"))     return "spec_cast_priestess";
-        if (ch->spec_fun == spec_lookup("spec_mast_vampire"))       return "spec_mast_vampire";
-        if (ch->spec_fun == spec_lookup("spec_bloodsucker"))        return "spec_bloodsucker";
-        if (ch->spec_fun == spec_lookup("spec_spectral_minion"))    return "spec_spectral_minion";
-        if (ch->spec_fun == spec_lookup("spec_celestial_repairman"))return "spec_celestial_repairman";
-        if (ch->spec_fun == spec_lookup("spec_sahuagin"))           return "spec_sahuagin";
-        if (ch->spec_fun == spec_lookup("spec_evil_evil_gezhp"))    return "spec_evil_evil_gezhp";
-        if (ch->spec_fun == spec_lookup("spec_demon"))              return "spec_demon";
-        if (ch->spec_fun == spec_lookup("spec_cast_electric"))      return "spec_cast_electric";
-        if (ch->spec_fun == spec_lookup("spec_small_whale"))        return "spec_small_whale";
-        if (ch->spec_fun == spec_lookup("spec_large_whale"))        return "spec_large_whale";
-        if (ch->spec_fun == spec_lookup("spec_kappa"))              return "spec_kappa";
-        if (ch->spec_fun == spec_lookup("spec_aboleth"))            return "spec_aboleth";
-        if (ch->spec_fun == spec_lookup("spec_laghathti"))          return "spec_laghathti";
-        if (ch->spec_fun == spec_lookup("spec_superwimpy"))         return "spec_superwimpy";
-        if (ch->spec_fun == spec_lookup("spec_uzollru"))            return "spec_uzollru";
-        if (ch->spec_fun == spec_lookup("spec_sahuagin_baron"))     return "spec_sahuagin_baron";
-        if (ch->spec_fun == spec_lookup("spec_green_grung"))              return "spec_green_grung";
+        if (ch->spec_fun == spec_lookup("spec_breath_any"))           return "spec_breath_any";
+        if (ch->spec_fun == spec_lookup("spec_breath_acid"))          return "spec_breath_acid";
+        if (ch->spec_fun == spec_lookup("spec_breath_fire"))          return "spec_breath_fire";
+        if (ch->spec_fun == spec_lookup("spec_breath_frost"))         return "spec_breath_frost";
+        if (ch->spec_fun == spec_lookup("spec_breath_gas"))           return "spec_breath_gas";
+        if (ch->spec_fun == spec_lookup("spec_breath_lightning"))     return "spec_breath_lightning";
+        if (ch->spec_fun == spec_lookup("spec_breath_steam"))         return "spec_breath_steam";
+        if (ch->spec_fun == spec_lookup("spec_cast_adept"))           return "spec_cast_adept";
+        if (ch->spec_fun == spec_lookup("spec_cast_hooker"))          return "spec_cast_hooker";
+        if (ch->spec_fun == spec_lookup("spec_buddha"))               return "spec_buddha";
+        if (ch->spec_fun == spec_lookup("spec_kungfu_poison"))        return "spec_kungfu_poison";
+        if (ch->spec_fun == spec_lookup("spec_cast_cleric"))          return "spec_cast_cleric";
+        if (ch->spec_fun == spec_lookup("spec_cast_judge"))           return "spec_cast_judge";
+        if (ch->spec_fun == spec_lookup("spec_cast_mage"))            return "spec_cast_mage";
+        if (ch->spec_fun == spec_lookup("spec_cast_druid"))           return "spec_cast_druid";
+        if (ch->spec_fun == spec_lookup("spec_cast_water_sprite"))    return "spec_cast_water_sprite";
+        if (ch->spec_fun == spec_lookup("spec_cast_psionicist"))      return "spec_cast_psionicist";
+        if (ch->spec_fun == spec_lookup("spec_cast_undead"))          return "spec_cast_undead";
+        if (ch->spec_fun == spec_lookup("spec_executioner"))          return "spec_executioner";
+        if (ch->spec_fun == spec_lookup("spec_fido"))                 return "spec_fido";
+        if (ch->spec_fun == spec_lookup("spec_clan_guard"))           return "spec_clan_guard";
+        if (ch->spec_fun == spec_lookup("spec_guard"))                return "spec_guard";
+        if (ch->spec_fun == spec_lookup("spec_janitor"))              return "spec_janitor";
+        if (ch->spec_fun == spec_lookup("spec_poison"))               return "spec_poison";
+        if (ch->spec_fun == spec_lookup("spec_repairman"))            return "spec_repairman";
+        if (ch->spec_fun == spec_lookup("spec_thief"))                return "spec_thief";
+        if (ch->spec_fun == spec_lookup("spec_bounty"))               return "spec_bounty";
+        if (ch->spec_fun == spec_lookup("spec_grail"))                return "spec_grail";
+        if (ch->spec_fun == spec_lookup("spec_cast_orb"))             return "spec_cast_orb";
+        if (ch->spec_fun == spec_lookup("spec_assassin"))             return "spec_assassin";
+        if (ch->spec_fun == spec_lookup("spec_warrior"))              return "spec_warrior";
+        if (ch->spec_fun == spec_lookup("spec_vampire"))              return "spec_vampire";
+        if (ch->spec_fun == spec_lookup("spec_cast_archmage"))        return "spec_cast_archmage";
+        if (ch->spec_fun == spec_lookup("spec_cast_priestess"))       return "spec_cast_priestess";
+        if (ch->spec_fun == spec_lookup("spec_mast_vampire"))         return "spec_mast_vampire";
+        if (ch->spec_fun == spec_lookup("spec_bloodsucker"))          return "spec_bloodsucker";
+        if (ch->spec_fun == spec_lookup("spec_spectral_minion"))      return "spec_spectral_minion";
+        if (ch->spec_fun == spec_lookup("spec_celestial_repairman"))  return "spec_celestial_repairman";
+        if (ch->spec_fun == spec_lookup("spec_sahuagin"))             return "spec_sahuagin";
+        if (ch->spec_fun == spec_lookup("spec_evil_evil_gezhp"))      return "spec_evil_evil_gezhp";
+        if (ch->spec_fun == spec_lookup("spec_demon"))                return "spec_demon";
+        if (ch->spec_fun == spec_lookup("spec_cast_electric"))        return "spec_cast_electric";
+        if (ch->spec_fun == spec_lookup("spec_small_whale"))          return "spec_small_whale";
+        if (ch->spec_fun == spec_lookup("spec_large_whale"))          return "spec_large_whale";
+        if (ch->spec_fun == spec_lookup("spec_kappa"))                return "spec_kappa";
+        if (ch->spec_fun == spec_lookup("spec_aboleth"))              return "spec_aboleth";
+        if (ch->spec_fun == spec_lookup("spec_laghathti"))            return "spec_laghathti";
+        if (ch->spec_fun == spec_lookup("spec_superwimpy"))           return "spec_superwimpy";
+        if (ch->spec_fun == spec_lookup("spec_uzollru"))              return "spec_uzollru";
+        if (ch->spec_fun == spec_lookup("spec_sahuagin_baron"))       return "spec_sahuagin_baron";
+        if (ch->spec_fun == spec_lookup("spec_green_grung"))          return "spec_green_grung";
+        if (ch->spec_fun == spec_lookup("spec_sahuagin_infantry"))    return "spec_sahuagin_infantry";
+        if (ch->spec_fun == spec_lookup("spec_sahuagin_cavalry"))     return "spec_sahuagin_cavalry";
+        if (ch->spec_fun == spec_lookup("spec_sahuagin_guard"))       return "spec_sahuagin_guard";
+        if (ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant"))  return "spec_sahuagin_lieutenant";
+        if (ch->spec_fun == spec_lookup("spec_sahuagin_cleric"))      return "spec_sahuagin_cleric";
+        if (ch->spec_fun == spec_lookup("spec_sahuagin_high_cleric")) return "spec_sahuagin_high_cleric";
     }
     else {
         return "none";
@@ -3515,9 +3533,9 @@ bool spec_sahuagin_baron (CHAR_DATA *ch)
                     case  1:
                         if (!is_affected(ch, gsn_warcry))
                         {
-                                if ( CAN_SPEAK(ch) ) { sprintf(buf,"Give me strength!"); }
-                                do_warcry( ch, "");
-                                return TRUE;
+                            if ( CAN_SPEAK(ch) ) { sprintf(buf,"Give me strength!"); }
+                            do_warcry( ch, "");
+                            return TRUE;
                         }
 
                     case  2:
@@ -3545,7 +3563,7 @@ bool spec_sahuagin_baron (CHAR_DATA *ch)
 
                     case  5:
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
-                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
+                        act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
                         spell_poison( gsn_poison, ch->level, ch, victim );
                         return TRUE;
@@ -3732,5 +3750,498 @@ bool spec_green_grung (CHAR_DATA *ch)
 
         return TRUE;
 
+}
+
+/* Added all 6 specials below at same time for Ota'ar Dar -- Owl 30/9/23 */
+
+bool spec_sahuagin_infantry (CHAR_DATA *ch)
+{
+    CHAR_DATA *victim;
+
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim->deleted)
+                        continue;
+
+                if (victim->fighting == ch && number_bits(1))
+                        break;
+        }
+
+        if (!victim)
+                return FALSE;
+
+        switch( number_bits(3) )
+        {
+            case 0:
+                if ( CAN_SPEAK(ch) ) { do_say(ch,"Down with ssssurface dwellers!"); }
+                do_headbutt(ch, victim->name);
+                return TRUE;
+
+            case 1:
+                if ( CAN_SPEAK(ch) ) { do_say(ch,"ArrrrrrRrr!"); }
+                do_headbutt(ch, victim->name);
+                return TRUE;
+
+            case  2:
+                if ( CAN_SPEAK(ch) ) { do_say(ch, "Headsss up!"); }
+                do_flying_headbutt( ch, victim->name);
+                return TRUE;
+
+            case  3:
+                if ( CAN_SPEAK(ch) ) { do_say(ch, "Foul land dog!"); }
+                do_kick( ch, "");
+                return TRUE;
+
+            case  4:
+                if ( CAN_SPEAK(ch) ) { do_say(ch, "Time to visit the sea bed!"); }
+                do_grapple( ch, victim->name);
+                return TRUE;
+
+            default:
+                if ( CAN_SPEAK(ch) ) { do_say(ch, "Death to all meatlings!"); }
+                do_kick( ch, "");
+                return TRUE;
+
+        }
+
+        return FALSE;
+}
+
+bool spec_sahuagin_cavalry (CHAR_DATA *ch)
+{
+        /* warriorlike with some knight stuff */
+        CHAR_DATA *victim;
+        char      *spell;
+        int        sn;
+        bool       target_self;
+        char buf[MAX_STRING_LENGTH];
+
+        spell = "flamestrike";
+        if ( CAN_SPEAK(ch) ) { sprintf(buf,"You dare enter our city?"); }
+
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim->deleted)
+                        continue;
+
+                if (victim->fighting == ch && !number_bits(1))
+                        break;
+        }
+
+        if (!victim)
+                return FALSE;
+
+        while (1)
+        {
+            int min_level;
+            target_self = FALSE;
+
+                switch ( number_range (0, 11) )
+                {
+                    case  0:
+                    case  1:
+
+                    case  2:
+
+                    case  3:
+                        min_level = 10;
+                        if ( CAN_SPEAK(ch) ) { do_say(ch,"Down with ssssurface dwellers!"); }
+                        do_headbutt(ch, victim->name);
+                        return TRUE;
+
+                    case  4:
+                        min_level = 11;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Let's even up the oddsss..."); }
+                        spell = "faerie fire";
+                        break;
+
+                    case  5:
+                        min_level = 15;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"By Sekolah's strength!"); }
+                        spell = "flamestrike";
+                        break;
+
+                    case  6:
+                        if ( CAN_SPEAK(ch) ) { do_say(ch, "Headsss up!"); }
+                        do_flying_headbutt( ch, victim->name);
+                        return TRUE;
+
+                    case  7:
+                        if ( CAN_SPEAK(ch) ) { do_say(ch, "Foul land dog!"); }
+                        do_kick( ch, "");
+                        return TRUE;
+
+                    case  8:
+                        if ( CAN_SPEAK(ch) ) { do_say(ch, "Time to visit the sea bed!"); }
+                        do_grapple( ch, victim->name);
+                        return TRUE;
+
+                    case  9:
+                        min_level = 25;
+                        if (is_affected(ch, gsn_inertial_barrier))
+                        {
+                                break;
+                        }
+                        else {
+                                if ( CAN_SPEAK(ch) ) { sprintf(buf,"Your blowsss are feeble!"); }
+                                spell = "inertial barrier";
+                                target_self = TRUE;
+                                break;
+                        }
+
+                    case  10:
+
+                    default:
+                        min_level = 35;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"By Sekolah's strength!"); }
+                        spell = "flamestrike";
+                        break;
+                }
+
+                if ( ch->level >= min_level )
+                        break;
+        }
+
+        if ( ( sn = skill_lookup( spell ) ) < 0 )
+                return FALSE;
+
+        do_say(ch,buf);
+
+        if (target_self)
+                act ("$c punches repeatedly at $s chest.", ch, NULL, NULL, TO_ROOM);
+        else
+        {
+                act ("$c clatters $s spear at $N.", ch, NULL, victim, TO_NOTVICT);
+                act ("$c clatters $s spear at you.", ch, NULL, victim, TO_VICT);
+        }
+
+        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+
+        return TRUE;
+}
+
+bool spec_sahuagin_guard (CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        CHAR_DATA *ech;
+        char      *crime;
+        char       buf [ MAX_STRING_LENGTH ];
+        int        max_evil;
+
+        if (!IS_AWAKE(ch))
+                return FALSE;
+
+        max_evil = 300;
+        ech      = NULL;
+        crime    = "";
+
+        if (!ch->fighting)
+        {
+
+                for ( victim = ch->in_room->people; victim; victim = victim->next_in_room )
+                {
+                        if ( victim->deleted )
+                                continue;
+
+                        if ( !IS_NPC( victim ) && IS_SET( victim->status, PLR_KILLER ) )
+                        {
+                                crime = "KILLER";
+                                break;
+                        }
+
+                        if ( !IS_NPC( victim ) && IS_SET( victim->status, PLR_THIEF))
+                        {
+                                crime = "THIEF";
+                                break;
+                        }
+
+                        if ( victim->fighting
+                        && victim->fighting != ch
+                        && IS_NPC(victim->fighting)
+                        && victim->alignment < max_evil
+                        && (!IS_NPC(victim) ||
+                                (IS_NPC(victim) && victim->pIndexData->vnum != ch->pIndexData->vnum)))
+                        {
+                                max_evil = victim->alignment;
+                                ech      = victim;
+                        }
+                }
+
+                if ( victim )
+                {
+                        sprintf( buf, "%s is a %s!  %s must be put to DEATH!",
+                                victim->name, crime, victim->name );
+                        do_shout( ch, buf );
+                        multi_hit( ch, victim, TYPE_UNDEFINED );
+                        return TRUE;
+                }
+
+                if ( ech )
+                {
+                        if( CAN_SPEAK(ch))
+                        {
+                                act( "{Y$c screams, '$C must DIE!'{x", ch, NULL, ech, TO_NOTVICT );
+                                act( "{Y$c screams, 'You must DIE!'{x", ch, NULL, ech, TO_VICT );
+                        }
+                        else
+                        {
+                                act( "{Y$c suddenly attacks $C!{x", ch, NULL, ech, TO_NOTVICT );
+                                act( "{Y$c suddenly attacks you!{x", ch, NULL, ech, TO_VICT );
+                        }
+
+                        multi_hit( ch, ech, TYPE_UNDEFINED );
+                        return TRUE;
+                }
+        }
+        else
+        {
+                victim = ch->fighting;
+
+                if (!victim || number_bits(1))
+                        return FALSE;
+
+                switch( number_bits(2) )
+                {
+                    case 0:
+                        if ( CAN_SPEAK(ch) ) { do_say(ch,"Down with ssssurface dwellers!"); }
+                        do_headbutt(ch, victim->name);
+                        return TRUE;
+
+                    case 1:
+                        if ( CAN_SPEAK(ch) ) { do_say(ch, "I will end you, landwalker!!"); }
+                        do_smash( ch, victim->name);
+                        return TRUE;
+
+                    default:
+                        if ( CAN_SPEAK(ch) ) { do_say(ch, "Death to all meatlings!"); }
+                        do_kick( ch, "");
+                        return TRUE;
+
+                }
+
+        }
+
+        return FALSE;
+}
+
+bool spec_sahuagin_cleric (CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        char      *spell;
+        int        sn;
+
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim->deleted)
+                        continue;
+
+                if (victim->fighting == ch && !number_bits(1))
+                        break;
+        }
+
+        if (!victim)
+                return FALSE;
+
+        while (1)
+        {
+            int min_level;
+
+                switch ( number_bits( 4 ) )
+                {
+                    case  0: min_level =  0; spell = "blindness";      break;
+                    case  1: min_level = 10; spell = "cause serious";  break;
+                    case  2: min_level = 20; spell = "earthquake";     break;
+                    case  3: min_level = 25; spell = "cause critical"; break;
+                    case  4: min_level = 26; spell = "poison";         break;
+                    case  5: min_level = 28; spell = "faerie fire";    break;
+                    case  6: min_level = 30; spell = "curse";          break;
+                    case  7: min_level = 32; spell = "flamestrike";    break;
+                    case  8: min_level = 34; spell = "unholy word";    break;
+                    case  9: min_level = 36; spell = "wrath of god";   break;
+                    case 10: min_level = 38; spell = "harm";           break;
+                    default: min_level = 40; spell = "dispel magic";   break;
+                }
+
+                if ( ch->level >= min_level )
+                        break;
+        }
+
+        if ( ( sn = skill_lookup( spell ) ) < 0 )
+                return FALSE;
+
+        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
+
+        return TRUE;
+}
+
+bool spec_sahuagin_high_cleric (CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        char *spell;
+        int sn;
+        int min_level;
+        int random;
+        char buf[MAX_STRING_LENGTH];
+
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim->deleted)
+                        continue;
+
+                if (victim->fighting == ch && !number_bits(1))
+                        break;
+        }
+
+        if (!victim)
+                return FALSE;
+
+        while (1)
+        {
+                random = number_range(0,7);
+
+                switch (random)
+                {
+                    case 0:
+                        min_level = 1;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "Ssssuffer!"); }
+                        spell = "curse";
+                        break;
+
+                    case 1:
+                        min_level = 25;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "May Sekolah take your eyesss!"); }
+                        spell = "blindness";
+                        break;
+
+                    case 2:
+                        min_level = 30;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "Give me your ssstrength!"); }
+                        spell = "dispel magic";
+                        break;
+
+                    case 3:
+                    case 4:
+                        min_level = 40;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "Sekolah! RAIN DOWN!"); }
+                        spell = "unholy word";
+                        break;
+
+                    case 5:
+                        min_level = 60;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "I ssssentence you to damnation!"); }
+                        spell = "hex";
+                        break;
+
+                    default: min_level = 20;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "Die, surfacer!"); }
+                        spell = "meteor storm";
+                }
+
+                if (ch->level >= min_level)
+                        break;
+        }
+
+        if ((sn = skill_lookup(spell)) < 0)
+                return FALSE;
+
+        do_say(ch,buf);
+        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
+
+        return TRUE;
+}
+
+bool spec_sahuagin_lieutenant (CHAR_DATA *ch)
+{
+    CHAR_DATA *victim;
+        char      *spell;
+        int        sn;
+        bool       target_self;
+        char buf[MAX_STRING_LENGTH];
+
+        spell = "haste";
+        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Dare you threaten me?"); }
+
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim->deleted)
+                        continue;
+
+                if (victim->fighting == ch && !number_bits(1))
+                        break;
+        }
+
+        if (!victim)
+                return FALSE;
+
+        while (1)
+        {
+            int min_level;
+            target_self = TRUE;
+
+                switch ( number_range (0, 8) )
+                {
+                    case  0:
+                    case  1:
+                    case  2:
+                        min_level = 15;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Feel Sekolah's fire!"); }
+                        spell = "flamestrike";
+                        break;
+
+                    case  3:
+                        if (is_affected(ch, gsn_berserk))
+                                return FALSE;
+                        do_berserk(ch, "");
+                        return TRUE;
+
+                    case  4:
+                        act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
+                        act( "$n bites you!", ch, NULL, victim, TO_VICT    );
+                        act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
+                        spell_poison( gsn_poison, ch->level, ch, victim );
+                        return TRUE;
+
+                    case  5:
+                        do_flying_headbutt( ch, victim->name);
+                        return TRUE;
+
+                    case  6:
+                        do_grapple( ch, victim->name);
+                        return TRUE;
+
+                    case  7:
+
+                    default:
+                        min_level = 35;
+                        if (is_affected(ch, gsn_haste))
+                        {
+                                break;
+                        }
+                        else {
+                                if ( CAN_SPEAK(ch) ) { sprintf(buf,"You will bow to me!"); }
+                                spell = "haste";
+                                target_self = TRUE;
+                                break;
+                        }
+                }
+
+                if ( ch->level >= min_level )
+                        break;
+        }
+
+        if ( ( sn = skill_lookup( spell ) ) < 0 )
+                return FALSE;
+
+        do_say(ch,buf);
+
+        if (!target_self)
+        {
+                act ("$c waves $s hideous clawed hands at $N.", ch, NULL, victim, TO_NOTVICT);
+                act ("$c waves $s hideous clawed hands at you.", ch, NULL, victim, TO_VICT);
+        }
+
+        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+
+        return TRUE;
 }
 

@@ -1049,7 +1049,7 @@ Mafite Kilim Sekolah matron~
 Mafite Kilim, Sekolah matron~
 Mafite Kilim the Sekolah Matron is here, awaiting supplicants.
 ~
-Mafite Kilim is an older female sahuagin, and her clothing and demanour make
+Mafite Kilim is an older female sahuagin, and her clothing and demeanour make
 it clear she is an important figure in the Sekolah-worshipping hierarchy.
 She has little time for foreigners, but may be of some use to sahuagin,
 especially fellow clerics of Sekolah.
@@ -2394,17 +2394,17 @@ purses do, which have been boiled and then fried.  Not exactly... appetising
 to non-sahuagin.
 ~
 #27268
-octopus scramble bowl~
-octopus scramble~
-A bowl of scrambled octopus parts is here.~
+octopus mash bowl~
+octopus mash~
+A bowl of mashed octopus parts is here.~
 ~
 19 0 1|16384
 7~ 0~ 0~ 0~
 1 0 0
 E
-octopus scramble bowl~
-Various octopus parts have been blended and scrambled together into this...
-soup?  Chowder?  Stew?  Ech.
+octopus mash bowl~
+Various octopus parts have been blended and mashed together into this...
+Puree?  Chowder?  Stew?  Ech.
 ~
 #27269
 conch worm surprise plate~
@@ -4394,6 +4394,7 @@ Currently available quests for prospective Reavers to undertake:
 <15>3.   An Out of Body Experience<0>    (<123>30-40<0>)
 <15>4.   Every Frog Has His Day<0>       (<123>40-45<0>)
 <15>5.   From Master to Servant<0>       (<123>40-45<0>)
+<15>6.   Mother May I?<0>                (<123>45-50<0>)
 
 ~
 S

@@ -1075,10 +1075,12 @@ void do_bite (CHAR_DATA *ch, char *argument)
         CHAR_DATA *victim;
 
         if (IS_NPC(ch)
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
                 return;
 
         if (!CAN_DO(ch, gsn_bite)
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
         {
                 send_to_char("What do you think you are, a tiger?\n\r", ch);
@@ -1086,6 +1088,7 @@ void do_bite (CHAR_DATA *ch, char *argument)
         }
 
         if (!(ch->form == FORM_TIGER)
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
         {
                 send_to_char("You are not in the correct form.\n\r", ch);
@@ -1218,10 +1221,12 @@ void do_maul (CHAR_DATA *ch, char *argument)
         int count;
 
         if (IS_NPC(ch)
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
                 return;
 
         if (!CAN_DO(ch, gsn_maul)
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
         {
                 send_to_char("What do you think you are, a tiger?\n\r", ch);
@@ -1229,6 +1234,7 @@ void do_maul (CHAR_DATA *ch, char *argument)
         }
 
         if ( (!(ch->form == FORM_TIGER || ch->form == FORM_GRIFFIN) )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
         {
                 send_to_char("You are not in the correct form.\n\r",ch);
