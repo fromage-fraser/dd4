@@ -1533,7 +1533,8 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                         victim->hit = 1;
 
         /* this is for exp (damage bonus) */
-        if (!IS_NPC(ch) && (ch->level - victim->level < 6))
+        if ((!IS_NPC(ch) && (ch->level - victim->level < 6))
+        &&  (!IS_SET(victim->act, ACT_UNKILLABLE)) )
                 ch->pcdata->dam_bonus += dam;
 
         if (is_affected(victim, gsn_berserk) && (victim->position <= POS_STUNNED))
@@ -2990,7 +2991,13 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called)
                 gch->pcdata->rounds = 0;
                 gch->pcdata->dam_per_fight = 0; */
 
-                if (level_dif > -6 && gch->pcdata->dam_bonus)
+                /*
+                  Test below to stop people exploiting flee when fighting unkillable mobs.
+                   -- Owl 1/10/23
+                */
+
+                if ( (level_dif > -6 && gch->pcdata->dam_bonus)
+                &&    (!IS_SET(victim->act, ACT_UNKILLABLE)) )
                 {
                         sprintf(buf, "The damage you caused gains you %d experience.\n\r",
                                 gch->pcdata->dam_bonus);
