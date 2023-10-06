@@ -3860,12 +3860,17 @@ bool longstring( CHAR_DATA *ch, char *argument )
 
 bool authorized (CHAR_DATA *ch, int gsn)
 {
+        /* Thought Wizinvis mobs should have access to imm commands etc. Change if problem --Owl 06.10.23 */
+        if (IS_SET(ch->act, ACT_WIZINVIS_MOB))
+                return TRUE;
+
         if (IS_NPC(ch))
         {
                 send_to_char( "You are not authorized to use this command.\n\r", ch );
                 return FALSE;
         }
-        else if (ch->pcdata->learned[gsn] < 100)
+        else
+        if (ch->pcdata->learned[gsn] < 100)
         {
                 send_to_char( "You are not authorized to use this command.\n\r", ch );
                 return FALSE;

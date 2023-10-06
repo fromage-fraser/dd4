@@ -1129,7 +1129,7 @@ void death_penalty (CHAR_DATA *ch, CHAR_DATA *victim)
                  * Shade Apr 2022
                  */
 
-                if (IS_NPC(ch))
+                if (IS_NPC(ch) && (!IS_SET(ch->act, ACT_WIZINVIS_MOB)))
                 {
                         check_infamy_table(ch);
                 }

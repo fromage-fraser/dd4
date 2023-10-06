@@ -1257,14 +1257,14 @@ endif
 if isfight($i)
 break
 else
-say Hear ye all!  The market canton has been opened to canal traffic, but the other cantons remain inaccesible!
+say Hear ye all!  The market canton in open to canal traffic, but some other cantons remain inaccesible!
 endif
 ~
 >rand_prog 1~
 if isfight($i)
 break
 else
-say Sages ask: will we ever live in peace with the Triton?  Or are they just TOO different?
+say Sages ask: will we ever live in peace with the Triton?  Are they just TOO different?
 endif
 ~
 >rand_prog 1~
@@ -1278,7 +1278,7 @@ endif
 if isfight($i)
 break
 else
-say The greatest arena combat spectacle EVER, coming SOON!  More news next month!
+say The greatest arena combat spectacle EVER, here NOW!  Visit the arena canton for details!
 endif
 ~
 >rand_prog 1~
@@ -1299,7 +1299,7 @@ endif
 if isfight($i)
 break
 else
-say Military canton manoeuvres increase in frequency! Just how secure IS the Tritonic border?
+say Military canton manoeuvres increase in frequency! Just how secure IS the border with Eakos?
 endif
 ~
 >rand_prog 1~
@@ -1313,7 +1313,7 @@ endif
 if isfight($i)
 break
 else
-say Central markets closed for months, what will it take to get them back open?
+say Central markets closed for months--can diplomacy ever get them back open?
 endif
 ~
 >rand_prog 1~
@@ -1321,6 +1321,13 @@ if isfight($i)
 break
 else
 say Should non-clerical magic be permitted in Ota'ar Dar at ALL?  How does it benefit US?
+endif
+~
+>rand_prog 1~
+if isfight($i)
+break
+else
+say Is the Danger Zone a reasonable way to test our best and brightest?  Have we set the bar too high?
 endif
 ~
 >rand_prog 1~

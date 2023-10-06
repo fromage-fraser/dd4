@@ -1979,7 +1979,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         }
                 }
 
-                /* Pull out the Species specifc info for this mob - Brutus Sept 2022 */
+                /* Pull out the species specific info for this mob - Brutus Sept 2022 */
                 if ( victim->mobspec )
                 {
                         int sn;
