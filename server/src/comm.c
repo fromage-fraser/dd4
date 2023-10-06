@@ -1259,10 +1259,13 @@ bool process_output (DESCRIPTOR_DATA *d, bool fPrompt)
                                                 sprintf(wound,"is beyond saving.");
                                 }
 
-                                sprintf (buf, "%s %s\n\r",
-                                         capitalize_initial (PERS(victim, ch)),
-                                         wound);
-                                write_to_buffer(d, buf, 0);
+                                if (!IS_SET(victim->act, ACT_WIZINVIS_MOB) || IS_IMMORTAL(ch))
+                                {
+                                    sprintf (buf, "%s %s\n\r",
+                                            capitalize_initial (PERS(victim, ch)),
+                                            wound);
+                                    write_to_buffer(d, buf, 0);
+                                }
                         }
 
                         if (IS_SET(ch->act, PLR_BLANK))

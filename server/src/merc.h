@@ -1906,8 +1906,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define AFF_SWALLOWED                   BIT_31  /* Has been swallowed by a large creature */
 #define AFF_NO_RECALL                   BIT_32  /* Use to prevent recall without baggage of AFF_CURSE */
 #define AFF_DOT                         BIT_33  /* Damage Over Time - Brutus */
-#define AFF_PRONE                       BIT_34  /* Prone - cant do skills, can cast - Brutus*/
-#define AFF_DAZED                       BIT_35  /*dazed - cant do anytrhing - Brutus */
+#define AFF_PRONE                       BIT_34  /* Prone - can't do skills, can cast - Brutus*/
+#define AFF_DAZED                       BIT_35  /* Dazed - can't do anything - Brutus */
 #define AFF_SLOW                        BIT_63  /* last */
 
 /* forms - Brutus */

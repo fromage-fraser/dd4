@@ -796,12 +796,12 @@ const int               rgSizeList              [ MAX_MEM_LIST       ]  =
 
 #else
 # define                        MAX_PERM_BLOCK  131072 /* was 131072 */
-# define                        MAX_MEM_LIST    12 /* was 12 */
+# define                        MAX_MEM_LIST    13 /* was 12 */
 
 void *                  rgFreeList              [ MAX_MEM_LIST       ];
 const int               rgSizeList              [ MAX_MEM_LIST       ]  =
 {
-        16, 32, 64, 128, 256, 1024, 2048, 4096, 8192, 16384, 32768, 65536
+        16, 32, 64, 128, 256, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072
         /* was 16, 32, 64, 128, 256, 1024, 2048, 4096, 8192, 16384, 32768, 65536 */
 };
 #endif

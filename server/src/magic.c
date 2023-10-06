@@ -185,10 +185,13 @@ void say_spell( CHAR_DATA *ch, int sn )
         sprintf( buf2, "$n utters the words, '%s'.", buf );
         sprintf( buf,  "$n utters the words, '%s'.", skill_table[sn].name );
 
-        for ( rch = ch->in_room->people; rch; rch = rch->next_in_room )
-        {
-                if ( rch != ch )
-                        act( ch->class == rch->class ? buf : buf2, ch, NULL, rch, TO_VICT );
+        /* Wisinvis mobs shouldn't audibly cast --Owl 6/10/23 */
+        if (!IS_SET(ch->act, ACT_WIZINVIS_MOB)) {
+            for ( rch = ch->in_room->people; rch; rch = rch->next_in_room )
+            {
+                    if (rch != ch )
+                            act( ch->class == rch->class ? buf : buf2, ch, NULL, rch, TO_VICT );
+            }
         }
 }
 
