@@ -5577,7 +5577,7 @@ void do_headbutt (CHAR_DATA *ch, char *argument)
 
         if (IS_NPC(ch) || number_percent() < ch->pcdata->learned[gsn_headbutt])
         {
-                act ("Your {Cheadbutt{x causes $N to fall.", ch, NULL, victim, TO_CHAR);
+                act ("Your {Cheadbutt{x causes $N to lose $S balance!", ch, NULL, victim, TO_CHAR);
                 act ("$n {Cheadbutts{x you - you see red!", ch, NULL, victim, TO_VICT);
                 act ("$n {Cheadbutts{x $N!", ch, NULL, victim, TO_NOTVICT);
 

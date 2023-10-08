@@ -846,3 +846,21 @@ void do_mpforce( CHAR_DATA *ch, char *argument )
 
     return;
 }
+
+void do_mppeace( CHAR_DATA *ch, char *argument )
+{
+        CHAR_DATA *gch;
+
+        if ( !IS_NPC( ch ) )
+                return;
+
+        for ( gch = ch->in_room->people; gch; gch = gch->next_in_room  )
+        {
+                if ( gch->fighting )
+                        stop_fighting( gch, TRUE );
+        }
+
+        send_to_char( "Ok.\n\r", ch );
+        return;
+
+}

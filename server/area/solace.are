@@ -1454,6 +1454,8 @@ A scuba tank is here.~
 22 0 1|1024
 0~ 0~ 0~ 0~
 30 15 15
+A
+40 -1
 #10276
 Scuba flippers~
 scuba flippers~
@@ -1472,6 +1474,8 @@ A scuba snorkel is on the ground.~
 9 0 1|16
 5~ 0~ 0~ 0~
 2 15 15
+A
+40 -1
 #10278
 dive belt~
 dive belt~

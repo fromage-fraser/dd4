@@ -290,6 +290,10 @@ Syntax:  move_prog <NUMBER> <DIRECTION>
     trigger in (or potentially in) the same room.  It may lead to commands
     trying to operate on absent players.
 
+    As of 8/10/23 this command should be considered experimental.  It can
+    be tricky to use it to get the exact effects you want (though it should
+    generally be possible).
+
 Syntax:  bribe_prog <NUMBER>
 
     The argument is any positive integer number.
@@ -540,8 +544,8 @@ Syntax:  MPJUNK <object>
     the 'full inventory')
 
 Syntax:  MPECHO                 <text_string>
-     MPECHOAT      <victim> <text_string>
-     MPECHOAROUND  <victim> <text_string>
+         MPECHOAT      <victim> <text_string>
+         MPECHOAROUND  <victim> <text_string>
 
     Prints the text message to the room of the mobile. The three options
     let you tailor the message to goto victims or to do things sneaky
@@ -602,6 +606,11 @@ Syntax:  MPFORCE <victim> <command>
     them to you, etc.  The player sees the normal command messages (such as
     removing the item and giving it away in the above example)  Again, if
     the victim is "all" then everyone in the mobile's room does the command.
+
+
+Syntax:  MPPEACE
+
+    Causes all characters and mobiles in a room to stop fighting.
 
 
 --------------------------Regarding CPU Slowdown-------------------------------
@@ -769,6 +778,7 @@ MPOLOAD		<object> <level>	MPECHOAROUND	<victim> <text_string>
 MPKILL		<victim>		    MPPURGE		    [argument]
 MPGOTO		<dest>			    MPAT		    <dest> <command>
 MPTRANSFER	<dest> [location]	MPFORCE		    <victim> <command>
+                                MPPEACE
 
 ======================END OF QUICK REFERENCE SHEET===========================
 
