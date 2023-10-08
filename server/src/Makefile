@@ -1,6 +1,6 @@
 CC      = gcc
 PROF    =
-DEBUG   = -g
+DEBUG   = -gdwarf-2
 NOCRYPT =
 LINK    =
 O_FLAGS = -O2
