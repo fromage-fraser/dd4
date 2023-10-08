@@ -2,13 +2,3 @@ Command 'mppeace'
 Issued by 'a vampire squid' (NPC) at room 27075
 Master is '(null)'
 Function: entering violence_update
-
-ler
-
-
-mcp_update
-
-er is '(null)'
-*** Command was completed successfully ***
-Function: update_hander: calling mobile_update
-
