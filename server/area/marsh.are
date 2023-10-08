@@ -4,7 +4,7 @@
 
 #MOBILES
 #8301
-troll~
+swamp troll~
 a swamp troll~
 A swamp troll charges towards you.
 ~
@@ -18,11 +18,10 @@ as he approaches and raises two black taloned claws to strike you.
 #8302
 troll green~
 a green troll~
-A green troll attempts to get a hold on you.
+A green troll tries to grab hold of you.
 ~
-This big troll towers several feet over you.  He has a large spear
-which he seems to ply with utmost prowess.  He jabs his spear at you
-and cackles with glee.
+This big troll towers several feet over you.  He cackles with glee
+as he barrels towards you.
 ~
 4|32|64 0 -400 S
 14 7 3 3d20+150 2d4+6
@@ -42,7 +41,7 @@ This mean bastard looks like he could tear you limb from limb.
 #8304
 swamp thing~
 the Swamp Thing~
-the Swamp Thing shambles about here.  It seems hungry.
+The Swamp Thing shambles about here.  It looks hungry.
 ~
 The Swamp Thing has huge fists, which look like they could pound you flat.
 ~
@@ -74,7 +73,7 @@ appendages.
 32|128 40000
 8 8 1
 #8307
-beast~
+small beast~
 a rather small beast~
 A rather small beast cringes in terror as it notices you.
 ~
@@ -88,11 +87,11 @@ sword blow.
 #8308
 will wisp will-o-wisp~
 the Will-O-Wisp~
-A Will-O-Wisp darts hear and there, making fun of you.
+A Will-O-Wisp darts here and there, making fun of you.
 ~
-This strange little creature seems very hard to keep your eyes on.
-You stare as hard as you can at the glowing ball of floating light and
-are just able to notice a small pair of glowing eyes.
+This strange little flitting creature is very hard to keep your eyes on.
+Staring as hard as you can at the glowing ball of light you eventually
+make out a small pair of eyes at its centre.
 ~
 4|64|128 32768 0 S
 10 11 -5 5d5+100 3d3+3
@@ -133,7 +132,7 @@ because she thinks you stink too, and she's about to do something about it.
 0 6000
 8 8 2
 #8313
-slaad~
+death slaad~
 a Death Slaad~
 A Death Slaad is standing here distraught.  He seems lost.
 ~
@@ -145,7 +144,7 @@ swamp light, the blade of his scythe gleams.
 96 40000
 8 8 1
 #8314
-wolf~
+marsh wolf~
 a marsh wolf~
 A marsh wolf sniffs the ground has followed your scent.
 ~
@@ -193,7 +192,7 @@ This huge monster of a man has green gnarly teeth and a BIG stick.
 #8321
 gargoyle large~
 a gargoyle~
-A large gargoyle lands next to you, baring his fangs at you.
+A large gargoyle lands next to you, baring his fangs.
 ~
 This creepy fellow looks like he could use you as a meal.
 ~

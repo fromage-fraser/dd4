@@ -39,7 +39,7 @@ his lack of wrinkles.
 ~
 64|128 8192 1000 S
 13 7 0 13d13+130 1d4+7
-50 15000
+0 15000
 8 8 1
 #8903
 elder druidess~
@@ -107,7 +107,7 @@ Upon careful inspection, you are sure it is NOT a cobra!
 ~
 32|64|128 32768 0 S
 4 16 4 4d4+44 1d8+4
-60|512 500
+44|512 500
 8 8 0
 #8909
 druid~

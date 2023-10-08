@@ -321,7 +321,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   570     /* +1 reforge  -Brutus 1/1/23 */
+#define MAX_SKILL                   571     /* +1 mppeace 8/10/23 */
 #define MAX_PRE_REQ                 1398    /* 1 reforge - Brutus 1/1/23 */
 #define MAX_SPELL_GROUP             452    /* +1 reforge Brutus 1/1/23 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
@@ -4254,6 +4254,7 @@ DECLARE_DO_FUN( do_mpoload                      );
 DECLARE_DO_FUN( do_mppurge                      );
 DECLARE_DO_FUN( do_mpstat                       );
 DECLARE_DO_FUN( do_mptransfer                   );
+DECLARE_DO_FUN( do_mppeace                      );
 
 DECLARE_DO_FUN( do_mset                         );
 DECLARE_DO_FUN( do_oclanitem                    );

@@ -36,36 +36,42 @@ into its clutches.
 8 8 2
 >rand_prog 2~
 mpecho {bA cloud of black ink forms in the water.{x
+mppeace
 sneak
 north
 hide
 ~
 >rand_prog 2~
 mpecho {bA cloud of black ink forms in the water.{x
+mppeace
 sneak
 south
 hide
 ~
 >rand_prog 2~
 mpecho {bA cloud of black ink forms in the water.{x
+mppeace
 sneak
 east
 hide
 ~
 >rand_prog 2~
 mpecho {bA cloud of black ink forms in the water.{x
+mppeace
 sneak
 west
 hide
 ~
 >rand_prog 2~
 mpecho {bA cloud of black ink forms in the water.{x
+mppeace
 sneak
 up
 hide
 ~
 >rand_prog 2~
 mpecho {bA cloud of black ink forms in the water.{x
+mppeace
 sneak
 down
 hide

@@ -389,7 +389,7 @@ A pile of coins.~
 #10
 corpse~
 the corpse of %s~
-The corpse of %s is lying here.~
+The corpse of %s is here.~
 ~
 23 0 1
 0~ 0~ 0~ 1~
@@ -397,7 +397,7 @@ The corpse of %s is lying here.~
 #11
 corpse~
 the corpse of %s~
-The corpse of %s is lying here.~
+The corpse of %s is here.~
 ~
 24 0 0
 0~ 0~ 0~ 1~
@@ -405,7 +405,7 @@ The corpse of %s is lying here.~
 #12
 head~
 the head of %s~
-The severed head of %s is lying here.~
+The severed head of %s is here.~
 ~
 19 0 1
 10~ 0~ 0~ 0~
@@ -413,7 +413,7 @@ The severed head of %s is lying here.~
 #13
 heart~
 the heart of %s~
-The torn-out heart of %s is lying here.~
+The torn-out heart of %s is here.~
 ~
 19 0 1
 16~ 0~ 0~ 0~
@@ -421,7 +421,7 @@ The torn-out heart of %s is lying here.~
 #14
 arm~
 the arm of %s~
-The sliced-off arm of %s is lying here.~
+The sliced-off arm of %s is here.~
 ~
 19 0 1
 20~ 0~ 0~ 0~
@@ -429,7 +429,7 @@ The sliced-off arm of %s is lying here.~
 #15
 leg~
 the leg of %s~
-The sliced-off leg of %s is lying here.~
+The sliced-off leg of %s is here.~
 ~
 19 0 1
 20~ 0~ 0~ 0~
@@ -1192,7 +1192,7 @@ Trying to add extended BVs, this item is a test.~
 #502
 tail~
 the tail of %s~
-The sliced-off tail of %s is lying here.~
+The sliced-off tail of %s is here.~
 ~
 19 0 1
 20~ 0~ 0~ 0~

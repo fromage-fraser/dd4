@@ -1,9 +1,9 @@
-Command 'open pou'
-Issued by 'Owl' (player) at room 3007
+Command 'mppeace'
+Issued by 'a vampire squid' (NPC) at room 27075
 Master is '(null)'
-Function: leaving update_handler
+Function: entering violence_update
 
-e_handler
+ler
 
 
 mcp_update

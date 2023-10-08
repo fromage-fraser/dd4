@@ -1,0 +1,1418 @@
+#AREA Owl~ Ota'ar Dar Danger Zone~
+0 100 0 100
+
+#AREA_SPECIAL
+$
+
+#MOBILES
+#28400
+triggermob28400~
+triggermob28400~
+triggermob28400
+~
+This mob is used to move players and trigger exit traps etc.
+~
+2|64|512|4096|65536|8388608|16777216|9223372036854775808 8|32|512 0 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>move_prog 100 north~
+    mptransfer $n 28410
+    mpat $n mpechoat $n {/<16><315>Lightning crackles all around!<0>{/
+    mpat $n c 'lightning breath' $n
+    mpat $n mpechoat $n <0>
+    mpat $n mpforce $n look
+    peace
+~
+>move_prog 100 east~
+    mptransfer $n 28401
+    mpat $n mpforce $n look
+~
+>move_prog 100 south~
+    mptransfer $n 28490
+    mpat $n mpechoat $n {/<227><388>Flames erupt from the floor!<0>{/
+    mpat $n c 'fire breath' $n
+    mpat $n mpechoat $n <0>
+    mpat $n mpforce $n look
+    peace
+
+~
+>move_prog 100 west~
+    mptransfer $n 28409
+    mpat $n mpechoat $n {/<15><308>You are blasted by scalding steam!<0>{/
+    mpat $n c 'steam breath' $n
+    mpat $n mpechoat $n <0>
+    mpat $n mpforce $n look
+    peace
+~
+>speech_prog p your breath~
+    mpecho {WA mechanism under the stone grinds and whirrs. The slab points east.{x
+~
+>speech_prog breath~
+    mpecho {WA mechanism under the stone grinds and whirrs. The slab points east.{x
+~
+|
+#28401
+triggermob28401~
+triggermob28401~
+triggermob28401
+~
+This mob is used to move players and trigger exit traps etc.
+~
+2|64|512|4096|65536|8388608|16777216|9223372036854775808 8|32|512 0 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>move_prog 100 north~
+    mptransfer $n 28411
+    mpat $n mpforce $n look
+~
+>move_prog 100 east~
+    mptransfer $n 28402
+    mpat $n mpechoat $n {/<233><454>A cloud of burning acid envelops you!<0>{/
+    mpat $n c 'acid breath' $n
+    mpat $n mpechoat $n <0>
+    mpat $n mpforce $n look
+    peace
+~
+>move_prog 100 south~
+    mptransfer $n 28491
+    mpat $n mpechoat $n {/<195><345>Dozens of icicles impale you!<0>{/
+    mpat $n c 'frost breath' $n
+    mpat $n mpechoat $n <0>
+    mpat $n mpforce $n look
+    peace
+~
+>move_prog 100 west~
+    mptransfer $n 28400
+    mpat $n mpechoat $n {/<226><502>A storm of fiery debris rains down on you!<0>{/
+    mpat $n c 'firestorm' $n
+    mpat $n mpechoat $n <0>
+    mpat $n mpforce $n look
+    peace
+~
+>speech_prog p a cloud~
+    mpecho {WA mechanism under the stone grinds and whirrs. The slab points north.{x
+~
+>speech_prog clouds~
+    mpecho {WA mechanism under the stone grinds and whirrs. The slab points north.{x
+~
+|
+#28402
+triggermob28402~
+triggermob28402~
+triggermob28402
+~
+This mob is used to move players and trigger exit traps etc.
+~
+2|64|512|4096|65536|8388608|16777216|9223372036854775808 8|32|512 0 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>move_prog 100 north~
+    mptransfer $n 28412
+    mpat $n mpechoat $n {/<214><353>A horrible feeling of foulness descends upon you.<0>{/
+    mpat $n c hex $n
+    mpat $n mpechoat $n <0>
+    peace
+~
+>move_prog 100 east~
+    mptransfer $n 28403
+    mpat $n mpforce $n look
+~
+>move_prog 100 south~
+    mptransfer $n 28492
+    mpat $n mpechoat $n {/<52><482>You are assaulted by powerful magiks!<0>{/
+    mpat $n c 'prismatic spray' $n
+    mpat $n mpechoat $n {x
+    mpat $n mpforce $n look
+    peace
+~
+>move_prog 100 west~
+    mptransfer $n 28401
+    mpat $n mpechoat $n {/<226><466>Meteors hail down from the ceiling!<0>{/
+    mpat $n c 'meteor storm' $n
+    mpat $n mpechoat $n <0>
+    peace
+~
+>speech_prog nothing~
+    mpecho {WA mechanism under the stone grinds and whirrs. The slab points east.{x
+~
+|
+#28403
+triggermob28403~
+triggermob28403~
+triggermob28403
+~
+This mob is used to move players and trigger exit traps etc.
+~
+2|64|512|4096|65536|8388608|16777216|9223372036854775808 8|32|512 0 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>move_prog 100 east~
+    mptransfer $n 28404
+    mpat $n mpechoat $n {/<190><364>Noxious fumes fill the water!<0>{/
+    mpat $n c 'gas breath' $n
+    mpat $n mpechoat $n {x
+    mpat $n mpforce $n look
+    peace
+~
+>move_prog 100 north~
+    mptransfer $n 28413
+    mpat $n mpforce $n look
+~
+>move_prog 100 south~
+    mptransfer $n 28493
+    mpat $n mpechoat $n {/<53><528>You feel the wrath of supernatural powers!<0>{/
+    mpat $n c 'wrath of god' $n
+    mpat $n mpechoat $n {x
+    mpat $n mpforce $n look
+    peace
+~
+>move_prog 100 west~
+    mptransfer $n 28402
+    mpat $n mpechoat $n {/<15><534>You feel your life force drain from your body!<0>{/
+    mpat $n c 'wither' $n
+    mpat $n mpechoat $n {x
+    peace
+~
+>speech_prog p night and day~
+    mpecho {WA mechanism under the stone grinds and whirrs. The slab points north.{x
+~
+|
+
+#0
+
+
+#OBJECTS
+#28400
+spiked pauldron infantry~
+an infantryman's spiked pauldron~
+A infantryman's spiked pauldron is here.~
+~
+9 0 1|4
+0~ 1~ 6~ 11~
+8 0 0
+A
+17 -15
+#0
+
+
+#ROOMS
+#28400
+In The Danger Zone~
+You stand in the middle of a cold stone floor in a vast underground, underwater
+room that stretches out in every direction as far as you can see. The low
+ceiling, whose stonework mirrors that of the floor, contributes to the almost
+tangible feeling of menace and oppression which permeates the environment.
+
+Some <555><16>writing<0> is carved into a stone slab on the floor.
+
+You can travel in any horizontal direction.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 28410
+D1
+~
+~
+0 -1 28401
+D2
+~
+~
+0 -1 28490
+D3
+~
+~
+0 -1 28409
+E
+writing~
+
+The writing on the slab reads:
+
+{W"Almost weightless, yet no man can hold me for long. What am I?"{x
+~
+S
+#28401
+In The Danger Zone~
+You stand in the middle of a cold stone floor in a vast underground, underwater
+room that stretches out in every direction as far as you can see. The low
+ceiling, whose stonework mirrors that of the floor, contributes to the almost
+tangible feeling of menace and oppression which permeates the environment.
+
+Some <555><16>writing<0> is carved into a stone slab on the floor.
+
+You can travel in any horizontal direction.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 28411
+D1
+~
+~
+0 -1 28402
+D2
+~
+~
+0 -1 28491
+D3
+~
+~
+0 -1 28400
+E
+writing~
+
+The writing on the slab reads:
+
+{W"I fly without wings; I cry without eyes. Darkness follows me wherever I go. What am I?"{x
+~
+S
+#28402
+In The Danger Zone~
+You stand in the middle of a cold stone floor in a vast underground, underwater
+room that stretches out in every direction as far as you can see. The low
+ceiling, whose stonework mirrors that of the floor, contributes to the almost
+tangible feeling of menace and oppression which permeates the environment.
+
+Some <555><16>writing<0> is carved into a stone slab on the floor.
+
+You can travel in any horizontal direction.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 28412
+D1
+~
+~
+0 -1 28403
+D2
+~
+~
+0 -1 28492
+D3
+~
+~
+0 -1 28401
+E
+writing~
+
+The writing on the slab reads:
+
+{W"The wealthy desire it, the poor have it already, and both die if they consume it. What am I?"{x
+~
+S
+#28403
+In The Danger Zone~
+You stand in the middle of a cold stone floor in a vast underground, underwater
+room that stretches out in every direction as far as you can see. The low
+ceiling, whose stonework mirrors that of the floor, contributes to the almost
+tangible feeling of menace and oppression which permeates the environment.
+
+Some <555><16>writing<0> is carved into a stone slab on the floor.
+
+You can travel in any horizontal direction.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 28413
+D1
+~
+~
+0 -1 28404
+D2
+~
+~
+0 -1 28493
+D3
+~
+~
+0 -1 28402
+E
+writing~
+
+The writing on the slab reads:
+
+{W"The first falls but never breaks, the second breaks but never falls.  What are they? "{x
+~
+S
+#28404
+In The Danger ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D0
+~
+~
+0 -1 28414
+D1
+~
+~
+0 -1 28405
+D2
+~
+~
+0 -1 28494
+D3
+~
+~
+0 -1 28403
+S
+#28405
+In The Danger ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D0
+~
+~
+0 -1 28415
+D1
+~
+~
+0 -1 28406
+D2
+~
+~
+0 -1 28495
+D3
+~
+~
+0 -1 28404
+S
+#28406
+In The Danger ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D0
+~
+~
+0 -1 28416
+D1
+~
+~
+0 -1 28407
+D2
+~
+~
+0 -1 28496
+D3
+~
+~
+0 -1 28405
+S
+#28407
+In The Danger ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D0
+~
+~
+0 -1 28417
+D1
+~
+~
+0 -1 28408
+D2
+~
+~
+0 -1 28497
+D3
+~
+~
+0 -1 28406
+S
+#28408
+In The Danger ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D0
+~
+~
+0 -1 28418
+D1
+~
+~
+0 -1 28409
+D2
+~
+~
+0 -1 28498
+D3
+~
+~
+0 -1 28407
+S
+#28409
+In The Danger ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D0
+~
+~
+0 -1 28419
+D1
+~
+~
+0 -1 28408
+D2
+~
+~
+0 -1 28499
+D3
+~
+~
+0 -1 28400
+E
+writing~
+
+The writing on the slab reads:
+
+{W"I fly without wings; I cry without eyes. Darkness follows me wherever I go. What am I?"{x
+~
+S
+#28410
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D1
+~
+~
+0 -1 28400
+S
+#28411
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28401
+S
+#28412
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28413
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28414
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28415
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28416
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28417
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28418
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28419
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28420
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28421
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28422
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28423
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28424
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28425
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28426
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28427
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28428
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28429
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28430
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28431
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28432
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28433
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28434
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28435
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28436
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28437
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28438
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28439
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28440
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28441
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28442
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28443
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28444
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28445
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28446
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28447
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28448
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28449
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28450
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28451
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28452
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28453
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28454
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28455
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28456
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28457
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28458
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28459
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28460
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28461
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28462
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28463
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28464
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28465
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28466
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28467
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28468
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28469
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28470
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28471
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28472
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28473
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28474
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28475
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28476
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28477
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28478
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28479
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28480
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28481
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28482
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28483
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28484
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28485
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28486
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28487
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28488
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28489
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28490
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D2
+~
+~
+0 -1 28400
+S
+#28491
+In The Danger ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D0
+~
+~
+0 -1 28401
+D1
+~
+~
+0 -1 28492
+D2
+~
+~
+0 -1 28481
+D3
+~
+~
+0 -1 28490
+E
+writing~
+
+The writing on the slab reads:
+
+{W"I fly without wings; I cry without eyes. Darkness follows me wherever I go. What am I?"{x
+~
+S
+#28492
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D0
+~
+~
+0 -1 28400
+S
+#28493
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D0
+~
+~
+0 -1 28400
+S
+#28494
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D0
+~
+~
+0 -1 28400
+S
+#28495
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D0
+~
+~
+0 -1 28400
+S
+#28496
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D0
+~
+~
+0 -1 28400
+S
+#28497
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D0
+~
+~
+0 -1 28400
+S
+#28498
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D0
+~
+~
+0 -1 28400
+S
+#28499
+In The ZoneUNDONE~
+Room untouched.
+~
+0 8 12
+D0
+~
+~
+0 -1 28400
+S
+#0
+
+#RESETS
+* MOBILES
+M 1 28400 1 28400      ; triggermob28400 to Room 28400
+M 1 28401 1 28401      ; triggermob28401 to Room 28401
+M 1 28402 1 28402      ; triggermob28402 to Room 28402
+M 1 28403 1 28403      ; triggermob28402 to Room 28403
+S
+
+#SPECIALS
+S
+
+#$

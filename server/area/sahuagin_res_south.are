@@ -377,7 +377,7 @@ sleep
 if isfight($i)
 break
 else
-mparound ::snoooooore::
+mpasound ::snoooooore::
 endif
 ~
 >rand_prog 1~
