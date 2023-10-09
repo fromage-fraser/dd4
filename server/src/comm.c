@@ -51,6 +51,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <execinfo.h>
 #include "merc.h"
 #include "protocol.h"
 
@@ -3968,38 +3969,47 @@ void wizPort_handler (int wizPort)
 
 /*
  *  Write player and server activity at point of crash to file.
- *  Gezhp 2000
  */
 void write_last_command()
 {
-        int fd;
+        const static int max_frames = 20;
         static int calls = 0;
+        void *frames[max_frames];
+        int frame_count;
+        int fd;
+        time_t rawtime;
+        char *time_str;
 
-        if ((calls++) > 1)
-        {
-                log_string ("Ack! write_last_command SIGSEGV handler has spewed!");
+        if (calls++ > 1) {
+                log_string("Ack! write_last_command SIGSEGV handler has spewed!");
                 abort();
         }
 
         if (last_command[0] == '\0')
                 return;
 
-        fd = open ("../log/last_command.txt", O_WRONLY|O_CREAT, S_IRUSR|S_IWUSR);
+        fd = open("../log/last_command.txt", O_WRONLY|O_CREAT, S_IRUSR|S_IWUSR);
 
         if (fd < 0)
                 return;
 
-        write (fd, last_command, strlen (last_command));
+        time(&rawtime);
+        time_str = asctime(localtime(&rawtime));
+        write(fd, time_str, strlen(time_str));
 
-        if (last_function[0] != '\0')
-        {
-                write (fd, "Function: ", 10);
-                write (fd, last_function, strlen (last_function));
-                write (fd, "\n", 1);
+        write(fd, last_command, strlen(last_command));
+
+        if (last_function[0] != '\0') {
+                write(fd, "Function: ", 10);
+                write(fd, last_function, strlen(last_function));
+                write(fd, "\n", 1);
         }
 
-        write (fd, "\n", 1);
-        close (fd);
+        write(fd, "Backtrace:\n", 11);
+        frame_count = backtrace(frames, max_frames);
+        backtrace_symbols_fd(frames, frame_count, fd);
+        write(fd, "\n", 1);
+        close(fd);
         abort();
 }
 
