@@ -140,9 +140,13 @@ as though he's desperately looking for someone or something.
 >rand_prog 5~
 mpasound ::ickickiiiick!::
 ~
+>act_prog p kisses you.~
+    mpecho The {cbaby dolphin{x swims about in circles excitedly, delighted.
+    follow kjhsdf
+~
 |
 #27006
-dolphin female~
+dolphin female kjhsdf~
 the female dolphin~
 A {cfemale dolphin{x swims frantically about.
 ~

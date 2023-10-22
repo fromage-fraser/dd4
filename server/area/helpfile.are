@@ -2527,43 +2527,45 @@ Crafting and spellcrafting locations:
 
 {CCRAFTING{x
 --------
-{WVNUM    ROOM                        AREA                         LEVEL       FILENAME{x
-29966   [The lemming smithy]        [The Lemming Caves]          [5 15]      [lemmings2.are]
-2503    [The Armourer]              [Ultima]                     [5 30]      [ultima.are] {R*{x
-5321    [The smithy]                [Old Thalos]                 [10 25]     [mirror.are] {R*{x
-5221    [The smithy]                [Thalos]                     [10 25]     [thalos.are]
-1381    [A very hot room]           [Tower of Sorcery]           [10 30]     [hitower.are]
-937     [Smithy]                    [Olympus]                    [20 35]     [olympus.are]
-29868   [The smithy]                [Prince's Fortress]          [20 40]     [usurper.are]
-27335,27635 [Metalworkers' Forge]   [Ota'ar Dar - Market Canton] [30 35]     [sahuagin_market.are] {R*{x
-23586   [A Stable.]                 [City Of Thieves]            [30 50]     [citie.are] {R*{x
-14053   [The smithy's cave]         [Cyclops Caves]              [35 55]     [cyclops.are] {R*{x
-31254   [Base of Southwest Tower]   [The Walls of Anon]          [45 60]     [tcwn2.are]
-4752    [Blacksmith's Home]         [Kingdom of Juargan]         [45 65]     [juargan.are] {R*{x
-24023   [The Cobresh Smithy.]       [The Yitrite Mines]          [50 75]     [yitrite.are] {R*{x
-30021   [Gryphon Smithy]            [Krondor]                    [0 100]     [krondor.are]
-28096   [Jasmir's Armory]           [Draagdim]                   [0 100]     [draagdim.are]
-29151   [The Bronze Scabbard]       [Freeport]                   [0 100]     [freeport.are] {R*{x
-30803   [The workshop]              [Bastion of Shadows]         [80 100]    [bastion.are] {R*{x
-5321    [The smithy]                [Old Thalos]                 [10 25]     [mirror.are] {R*{x
-603     [The Blacksmith]            [New Ofcol]                  [0 100]     [ofcol2.are]
-31041   [The Smithy]                [The City of Anon]           [0 100]     [tcwn.are]
+{WVNUM    ROOM                        AREA                           LEVEL       FILENAME{x
+29966   [The lemming smithy]        [The Lemming Caves]            [5 15]      [lemmings2.are]
+2503    [The Armourer]              [Ultima]                       [5 30]      [ultima.are] {R*{x
+5321    [The smithy]                [Old Thalos]                   [10 25]     [mirror.are] {R*{x
+5221    [The smithy]                [Thalos]                       [10 25]     [thalos.are]
+1381    [A very hot room]           [Tower of Sorcery]             [10 30]     [hitower.are]
+937     [Smithy]                    [Olympus]                      [20 35]     [olympus.are]
+29868   [The smithy]                [Prince's Fortress]            [20 40]     [usurper.are]
+27335,27635 [Metalworkers' Forge]   [Ota'ar Dar - Market Canton]   [30 35]     [sahuagin_market.are] {R*{x
+23586   [A Stable.]                 [City Of Thieves]              [30 50]     [citie.are] {R*{x
+14053   [The smithy's cave]         [Cyclops Caves]                [35 55]     [cyclops.are] {R*{x
+31254   [Base of Southwest Tower]   [The Walls of Anon]            [45 60]     [tcwn2.are]
+4752    [Blacksmith's Home]         [Kingdom of Juargan]           [45 65]     [juargan.are] {R*{x
+24023   [The Cobresh Smithy.]       [The Yitrite Mines]            [50 75]     [yitrite.are] {R*{x
+30021   [Gryphon Smithy]            [Krondor]                      [0 100]     [krondor.are]
+27298   [The Fortress Armoury]      [Ota'ar Dar Military Fortress] [45 50]     [sahuagin_miltary.are] {R*{x
+28096   [Jasmir's Armory]           [Draagdim]                     [0 100]     [draagdim.are]
+29151   [The Bronze Scabbard]       [Freeport]                     [0 100]     [freeport.are] {R*{x
+30803   [The workshop]              [Bastion of Shadows]           [80 100]    [bastion.are] {R*{x
+5321    [The smithy]                [Old Thalos]                   [10 25]     [mirror.are] {R*{x
+603     [The Blacksmith]            [New Ofcol]                    [0 100]     [ofcol2.are]
+31041   [The Smithy]                [The City of Anon]             [0 100]     [tcwn.are]
 
 {MSPELLCRAFTING{x
 -------------
-3019    [Mage's Laboratory]         [Midgaard]                   [0 100]     [midgaard.are]
-9419    [The Laboratory]            [Fleshmonger's Tower]        [5 15]      [fleshmonger.are]
-1386    [A laboratory]              [Tower of Sorcery]           [10 30]     [hitower.are]
-16437   [Experimentation Room]      [Underdark]                  [20 60]     [under2.are] {R*{x
-9533    [Velkyn's laboratory]       [Vampire Catacombs]          [25 35]     [vampcat.are] {R*{x
-10148   [A Laboratory]              [Witch's Tower]              [25 35]     [witch.are] {R*{x
-27352,27652 [Mohmit's Laboratory]   [Ota'ar Dar - Market Canton] [30 35]     [sahuagin_market.are] {R*{x
-25107   [Transformation Laboratory] [Kahsis]                     [35 60]     [kahsis.are] {R*{x
-20387   [The Laboratory]            [The Fortress of Goblins]    [40 60]     [fortress.are]
-13639   [A small laboratory]        [The Valley of Dreams]       [45 60]     [deserts.are] {R*{x
-13407   [The Laboratory]            [The Catacombs]              [0 100]     [dungeons.are] {R*{x
-15782-15786  [Various]              [Mount Doom]                 [60 85]     [mtdoom2.are]
-14644   [The Laboratory]            [Zyklor's Tower]             [60 100]    [tower.are] {R*{x
+3019    [Mage's Laboratory]         [Midgaard]                     [0 100]     [midgaard.are]
+9419    [The Laboratory]            [Fleshmonger's Tower]          [5 15]      [fleshmonger.are]
+1386    [A laboratory]              [Tower of Sorcery]             [10 30]     [hitower.are]
+16437   [Experimentation Room]      [Underdark]                    [20 60]     [under2.are] {R*{x
+9533    [Velkyn's laboratory]       [Vampire Catacombs]            [25 35]     [vampcat.are] {R*{x
+10148   [A Laboratory]              [Witch's Tower]                [25 35]     [witch.are] {R*{x
+27352,27652 [Mohmit's Laboratory]   [Ota'ar Dar - Market Canton]   [30 35]     [sahuagin_market.are] {R*{x
+25484   [Laboratory]                [TenTusks]                     [20 40]     [tentusks.are]
+25107   [Transformation Laboratory] [Kahsis]                       [35 60]     [kahsis.are] {R*{x
+20387   [The Laboratory]            [The Fortress of Goblins]      [40 60]     [fortress.are]
+13639   [A small laboratory]        [The Valley of Dreams]         [45 60]     [deserts.are] {R*{x
+13407   [The Laboratory]            [The Catacombs]                [0 100]     [dungeons.are] {R*{x
+15782-15786  [Various]              [Mount Doom]                   [60 85]     [mtdoom2.are]
+14644   [The Laboratory]            [Zyklor's Tower]               [60 100]    [tower.are] {R*{x
 
 {R*{x Contain crafting bonus objects
 ~

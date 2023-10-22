@@ -299,7 +299,7 @@ weathermonger weather monger~
 the Weathermonger~
 Crackling electricity surrounds the Weathermonger.
 ~
-The powerful wizard is surrounded in an expansive robe that hides his
+The powerful wizard is dressed in an expansive, flowing robe that hides his
 tungsten armour.  His hair is pure white and his skin pale; blue lightning
 crackles about his body as he floats through the corridors.
 ~
@@ -377,9 +377,9 @@ geyser water boiling~
 boiling water~
 The geyser is filled with scalding hot water.
 ~
-The superhot waters of the geyser quickly overcome you.
+The super-hot waters of the geyser quickly overcome you.
 ~
-2|32|64 8|32|512 0 S
+2|32|64|33554432 8|32|512 0 S
 100 0 0 0d0+0 0d0+0
 511 0
 8 8 0
@@ -1592,7 +1592,7 @@ organised into a rough circle jut from the grass; they are very weathered
 and stand covered with lichen.  You can head down the northern and southern
 faces of the hill.
 ~
-0 0 1
+0 0 4
 D0
 ~
 ~
@@ -3027,7 +3027,7 @@ Metal junk and glassware clutters a large bench that spreads about the
 west, north and east sides of the room.  Many books and pamphlets lay
 stacked in piles, and many charts have been plastered to the walls.
 ~
-0 1|8 0
+0 1|8|256 0
 D2
 ~
 ~

@@ -656,6 +656,35 @@ anything she can.
 8 20 9 2d6+10 1d5+0
 0 100
 8 8 2
+#10257
+ghost diceboss~
+the ghost of a diceboss~
+The ghost of a former diceboss is floating here, eager to take bets.
+~
+Even in death this sad spirit is looking to take bets.  Interested?
+~
+2|64|512|4096|32768|8388608|16777216 32|512|67108864 -430 S
+15 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>greet_prog 35~
+if rand(25)
+	say Can I... interest you in a game?
+else
+	if rand (25)
+		say We play 'High Dice' here.
+		else
+		if rand(25)
+			emote smiles faintly.
+			say We deal in gold only, alas.
+		else
+			say Good luck to you, friend.
+			smirk
+		endif
+	endif
+endif
+~
+|
 #0
 
 
@@ -4740,6 +4769,8 @@ O 0 10304 1 10269       Load fountain
 *
 M 0 10237 3 10247      ghost of gambler
 *
+M 0 10257 1 10247      ghost of diceboss
+*
 M 0 10239 3 10254      rat
 *
 M 0 10240 3 10254      bat
@@ -4867,6 +4898,12 @@ D 0 10313 3 1              close Captain's Waiting room door outside
 D 0 10312 1 1              close Captain's Waiting room door inside
 *
 O 0 10310 1 10258      Load Skull chair
+*
+S
+
+#GAMES
+*
+M 10257 game_high_dice		1000000   8	0	/* Huckster     */
 *
 S
 
