@@ -6237,7 +6237,7 @@ void do_grapple (CHAR_DATA *ch, char *argument)
         if ((IS_NPC(ch) || number_percent() < chance)
             && (victim->position == POS_FIGHTING) && (ch->dazed < 3))
         {
-                act ("You {Wgrapple{x $N down, winding them.", ch, NULL, victim, TO_CHAR);
+                act ("You {Wgrapple{x $N down, winding $M.", ch, NULL, victim, TO_CHAR);
                 act ("$n {Wgrapples{x you down!", ch, NULL, victim, TO_VICT);
                 act ("$n {Wgrapples{x $N down!", ch, NULL, victim, TO_NOTVICT);
                 arena_commentary("$n grapples $N to the ground.", ch, victim);
