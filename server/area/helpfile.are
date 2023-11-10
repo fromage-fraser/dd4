@@ -3345,7 +3345,9 @@ Syntax: cast 'summon familiar'
 This spell summons a character from anywhere else in your zone into your
 room.  Characters who are cursed or fighting may not be summoned.
 
-SUMMON FAMILIAR will summon a beast to aid you in battles.
+SUMMON FAMILIAR will summon a beast to aid you in battles (you must be
+outdoors and not underwater--unless you are an aquatic race or a shifter
+in an aquatic form).
 ~
 
 0 TELEPORT~
