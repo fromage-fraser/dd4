@@ -145,7 +145,7 @@ void advance_stat (CHAR_DATA *ch)
                 send_to_char("{WYou feel stronger", ch);
 
                 if (!check_stat_advance(ch, APPLY_STR))
-                        send_to_char("; your strength is at maximum.", ch);
+                        send_to_char("; your strength is at maximum", ch);
 
                 send_to_char(".{x\n\r", ch);
 
@@ -156,7 +156,7 @@ void advance_stat (CHAR_DATA *ch)
                 send_to_char("{WYou feel smarter", ch);
 
                 if (!check_stat_advance(ch, APPLY_INT))
-                        send_to_char("; your intelligence is at maximum.", ch);
+                        send_to_char("; your intelligence is at maximum", ch);
 
                 send_to_char(".{x\n\r", ch);
 
@@ -167,7 +167,7 @@ void advance_stat (CHAR_DATA *ch)
                 send_to_char("{WYou feel wiser", ch);
 
                 if (!check_stat_advance(ch, APPLY_WIS))
-                        send_to_char("; your wisdom is at maximum.", ch);
+                        send_to_char("; your wisdom is at maximum", ch);
 
                 send_to_char(".{x\n\r", ch);
 
@@ -178,7 +178,7 @@ void advance_stat (CHAR_DATA *ch)
                 send_to_char("{WYou feel more dexterous", ch);
 
                 if (!check_stat_advance(ch, APPLY_DEX))
-                        send_to_char("; your dexterity is at maximum.", ch);
+                        send_to_char("; your dexterity is at maximum", ch);
 
                 send_to_char(".{x\n\r", ch);
 
@@ -189,7 +189,7 @@ void advance_stat (CHAR_DATA *ch)
                 send_to_char("{WYou feel fitter", ch);
 
                 if (!check_stat_advance(ch, APPLY_CON))
-                        send_to_char("; your constitution is at maximum.", ch);
+                        send_to_char("; your constitution is at maximum", ch);
 
                 send_to_char(".{x\n\r", ch);
 

@@ -4376,6 +4376,7 @@ void *alloc_mem( int sMem )
 
         if ( iList == MAX_MEM_LIST )
         {
+                write_last_command();
                 bug( "Alloc_mem: size %d too large.", sMem );
                 abort();
         }

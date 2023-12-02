@@ -53,7 +53,7 @@ char * const where_name [] =
     "{d[{x{wheld{d]{x              ",
     "{d[{x{wsecond weapon{d]{x     ",
     "{d<<{x{wfloating nearby{d>{x   ",
-    "{d<<>{x{wsecured to belt{d>{x   ",
+    "{d<<{x{wsecured to belt{d>{x   ",
     "{d[{x{wranged weapon{d]{x     "
 };
 
