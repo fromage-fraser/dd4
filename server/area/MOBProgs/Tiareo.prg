@@ -7,7 +7,7 @@
                 mpecho {WReaver Tiareo says 'You are too inexperienced for us to contemplate you becoming a Reaver.  Try again when you're more experienced.'{x
         break
         else
-        if level($n) > 50
+        if level($n) > 55
                 mpecho {WReaver Tiareo says '$n, you're far too experienced for our current missions.  Keep checking back, though!'{x
         break
         else
