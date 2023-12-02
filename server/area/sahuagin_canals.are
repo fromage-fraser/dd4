@@ -563,7 +563,7 @@ evading the larger toothed-whale predators it has down here.
 168 0
 8 8 2
 >hitprcnt_prog 10~
-    mpecho {bA huge cloud of black ink forms in the water.{x
+    mpecho <317><7>A huge cloud of black ink forms in the water.<0>
     flee
     flee
     flee
@@ -595,7 +595,7 @@ This 22-foot monster crustacean has a long body with a muscular tail and a
 pair of huge, frightening-looking claws.  It seems particularly confident for
 a lobster, and you surmise it is a male who has been frequently successful in
 combat with other lobsters, and has thus risen to the top of the lobster
-dominance heierarchy on the back of the bucketfuls of serotonin flowing through
+dominance hierarchy on the back of the bucketfuls of serotonin flowing through
 its (relatively) tiny brain.
 
 It doesn't seem interested in your presence, though, and will probably leave
@@ -2878,18 +2878,6 @@ D4
 ~
 ~
 0 -1 27697
-S
-#27398
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
-S
-#27412
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
 S
 #27418
 Stately Way Bridge, Lower~
@@ -5485,18 +5473,6 @@ D5
 ~
 0 -1 27397
 S
-#27698
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
-S
-#27712
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
-S
 #27718
 Stately Way Bridge, Upper~
 <21>You float about 4 metres above the bridge that connects the prince's canton to
@@ -7717,13 +7693,13 @@ D 1 27420 0 2           ; Prince's Cross Bridge North, Lock North
 D 1 27719 2 1           ; Prince's Cross Bridge South, Close South
 D 1 27720 0 2           ; Prince's Cross Bridge North, Lock North
 D 1 27388 2 2           ; Residential Bridge South, Lock South
-D 1 27389 0 2           ; Residential Bridge North, Lock North
+D 1 27389 0 1           ; Residential Bridge North, Close North
 D 1 27688 2 2           ; Residential Bridge South, Lock South
-D 1 27689 0 2           ; Residential Bridge North, Lock North
+D 1 27689 0 1           ; Residential Bridge North, Close North
 D 1 27418 1 2           ; Stately Way, Lock East
-D 1 27418 3 2           ; Stately Way, Lock West
+D 1 27418 3 1           ; Stately Way, Close West
 D 1 27718 1 2           ; Stately Way, Lock East
-D 1 27718 3 2           ; Stately Way, Lock West
+D 1 27718 3 1           ; Stately Way, Close West
 D 1 27607 0 1			; Arena Way Eastbridge, Upper Close North
 D 1 27607 2 1			; Arena Way Eastbridge, Upper Close South
 D 1 27544 0 1			; Arena Way Westbridge, Upper Close North

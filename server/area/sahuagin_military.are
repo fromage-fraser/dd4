@@ -1,6 +1,9 @@
 #AREA Owl~ Ota'ar Dar Military Fortress~
 45 50 35 100
 
+#RECALL
+27347
+
 #AREA_SPECIAL
 exp_mod 110
 $
@@ -138,7 +141,7 @@ fortress interior.
 8 8 1
 >all_greet_prog 100~
 if carrying($n) == 27515
-    mpecho One of the elite soldiers, seeing your pass, nods his head at you slightly.
+    mpecho {WOne of the elite soldiers, seeing your pass, nods his head at you slightly.{x
     mpoload 27516
     unlock east
     mpjunk steel

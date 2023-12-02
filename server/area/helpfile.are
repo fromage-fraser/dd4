@@ -402,7 +402,7 @@ Dragons Domain version 4.2023
 
 -1 MOTD~
 {x
-    [1 October 2023]
+    [3 December 2023]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -415,17 +415,10 @@ Dragons Domain version 4.2023
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
-    {WNEW AREA:{x "Ota'ar Dar Military Fortress" is in for levels 45-50, access
-    northwest bridge from the Ota'ar Dar Arena/Jail. 40 new mobs, 48 new rooms,
-    30 new items, and a new quest!
-
-    {WNEW AREA:{x "Ota'ar Dar Arena/Jail" is in for levels 40-45, access
-    southwest of Ota'ar Dar Market, and south of Ota'ar Dar Residential
-    - South. 42 new mobs, 100 new rooms, 35 new items, and a new quest!
-
-    {WVAULTS ARE IN:{x You can now permanently store items in vaults, separate
-    from your inventory.  Read HELP VAULTS.
-
+    {WNEW AREA:{x "Ota'ar Dar Residential - North" is in for levels 50-55,
+    access via west bridge from the Prince's canton or north bridge from the
+    southern residential canton. 26 new mobs, 42 new rooms,
+    28 new items, new teachers, and a new quest!
 
 
 
@@ -460,6 +453,9 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 ~
 
 0 CHANGES~
+
+{W December 2023{x
+-New area in, Ota'ar Dar Residential Area - North, levels 50-55.
 
 {W October 2023{x
 -New area in, Ota'ar Dar Military Fortress, levels 45-50.
@@ -5696,9 +5692,14 @@ Bard  .   .   .   Seek out the Dwarven Bard.
 Level 40
 Witch .   .   .   A forest witch, in a cursed vale.
 Bard  .   .   .   Practising on a curious instrument, far below (Sahuagin only).
+Smith .   .   .   A burly reader, near an undersea forge (Sahuagin only).
+Thief .   .   .   Lurking in a shady suburb in an ancient undersea city.
 
 Level 50
 Seek your trainers in Krondor.
+
+Level 55
+Thief .   .   .   Roaming about an upmarket suburb in an ancient undersea city.
 
 Level 60
 Seek the black figure in Midgaard's reverse.

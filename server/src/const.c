@@ -3926,14 +3926,14 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "warcry", &gsn_warcry,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_null, 0, 0,
-                "", "You feel less enraged."
+                "", "You are no longer enraged."
         },
 
         {
                 "rage", &gsn_rage,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_null, 0, 0,
-                "", "You feel less furious."
+                "", "You are no longer furious."
         },
 
         {

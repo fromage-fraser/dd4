@@ -1197,7 +1197,7 @@ void kansetsu (CHAR_DATA *ch, CHAR_DATA *victim)
 
         if (!HAS_ARMS (victim))
         {
-                act ("$N has no wrists for you to break.", ch, NULL, victim, TO_CHAR);
+                act ("<105>$N has no wrists for you to break.<0>", ch, NULL, victim, TO_CHAR);
                 return;
         }
 
@@ -1207,13 +1207,13 @@ void kansetsu (CHAR_DATA *ch, CHAR_DATA *victim)
 
         if (!obj)
         {
-                act ("$N has no weapon.", ch, NULL, victim, TO_CHAR);
+                act ("<99>$N has no weapon.<0>", ch, NULL, victim, TO_CHAR);
                 return;
         }
 
         if (IS_SET (obj->extra_flags, ITEM_BODY_PART))
         {
-                send_to_char ("You can't disarm your opponent's body parts!\n\r", ch);
+                send_to_char ("<111>You can't disarm your opponent's body parts!<0>\n\r", ch);
                 return;
         }
 

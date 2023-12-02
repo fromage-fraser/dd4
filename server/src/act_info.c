@@ -607,9 +607,8 @@ void show_list_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNo
 
 void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
 {
-        char buf [ MAX_STRING_LENGTH ];
-        char tmp [ MAX_STRING_LENGTH ];
-
+        char buf            [ MAX_STRING_LENGTH ];
+        char tmp            [ MAX_STRING_LENGTH ];
         buf[0] = '\0';
 
         if (is_affected(victim,gsn_mist_walk) )
@@ -1350,7 +1349,7 @@ void do_look( CHAR_DATA *ch, char *argument )
             && ch->form != FORM_FLY
             && room_is_dark( ch->in_room ) )
         {
-                send_to_char( "It is pitch black ... \n\r", ch );
+                send_to_char( "It is pitch black... \n\r", ch );
                 show_char_to_char( ch->in_room->people, ch );
                 return;
         }
@@ -1518,12 +1517,14 @@ void do_look( CHAR_DATA *ch, char *argument )
                                 {
                                         spell_identify ( 1, 1, ch, obj);
                                 }
+                                return;
                         }
 
                         pdesc = get_extra_descr( arg1, obj->pIndexData->extra_descr );
                         if ( pdesc )
                         {
                                 send_to_char( pdesc, ch );
+                                return;
                         }
                 }
 
@@ -1654,7 +1655,7 @@ void do_examine (CHAR_DATA *ch, char *argument)
 
         do_look (ch, arg);
 
-        /*if ((obj = get_obj_here (ch, arg))) */
+        /*if ((obj = get_obj_here (ch, arg)))*/
         if (obj)
         {
 

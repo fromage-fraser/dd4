@@ -358,7 +358,7 @@ and can operate on land, under the sea, and in the air.
 #27211
 giant manta ray~
 a giant manta ray~
-The mob stands here, completely clueless.
+A giant manta ray flaps majestically by.
 ~
 Over 9 metres long and 7 metres across, this giant manta ray is a fearsome
 sight. Though generally docile, giant mantas' sheer size makes them fearsome in
@@ -392,8 +392,8 @@ Reaver Maeril~
 Reaver Maeril stands here, sizing you up.
 ~
 Reaver Maeril is the quest master of the Reaver guildhalls, sending reavers and
-prospective reavers out on quests across the domain to prove their worth. He is
-a sahuagin of the four-armed baron type, and looks like he's lived a long and
+prospective reavers out on quests across the domain to prove their worth. He has
+a rough, muscular appearance, and looks like he's lived a long and
 violent life.
 
 Type 'HELP QUEST' to see how you can interact with him.
@@ -443,7 +443,7 @@ Reaver Tiareo~
 Reaver Tiareo sits here placidly, waiting for you to explain yourself.
 ~
 Reaver Tiareo is the receptionist and first point of contact for entrants into
-the Reaver guildhall. She often sets new initiates taks to test their mettle
+the Reaver guildhall. She often sets new initiates tasks to test their mettle
 and suitability as Reavers. If you're interested, ask her about a 'quest'.
 ~
 2|64|512|4096|32768|8388608|16777216 32|512|67108864 -670 S
@@ -745,7 +745,7 @@ A Wandering Crewman~
 A crewman wanders aimlessly here.
 ~
 He looks fit and healthy from climbing the riggings in high seas and
-strong winds. However, he may be wishing he'd done a llittle less
+strong winds. However, he may be wishing he'd done a little less
 wandering and a little more looking out for sahuagin raiders right now.
 ~
 2|64 0 -300 S
@@ -757,10 +757,11 @@ Aernth slavemaster~
 Aernth the Slavemaster~
 Aernth the Slavemaster is here, sneering at you.
 ~
-Particularly vile, even for a sahuagin, Aernth on of Ota'ar Dar's slavemasters.
-He is responsible for purchasing slaves from sahuagin raiders and selling them
-profitably here, at the slavemarket. He takes a deeply unwholesome pleasure in
-his business and it makes your skin crawl to even share a space with him.
+Particularly vile, even for a sahuagin, Aernth is one of Ota'ar Dar's
+slavemasters. He is responsible for purchasing slaves from sahuagin raiders
+and selling them profitably here, at the slavemarket. He takes a deeply
+unwholesome pleasure in his business and it makes your skin crawl to even
+share a space with him.
 ~
 2|64 32|512|67108864 -1000 S
 35 0 0 0d0+0 0d0+0
@@ -839,7 +840,7 @@ Kaumav the baker is here, toiling over her comestibles.
 ~
 Kaumav is an older female sahuagin and owns 'The Fisher's Crust,' the Ota'ar
 Dar bakery/eaterie. She seems to work very hard, which seems a pity given how
-unappetising her wares typically are.
+unappetising her wares are.
 ~
 2|64|512|4096|32768|8388608|16777216 32|512|67108864 -200 S
 35 0 0 0d0+0 0d0+0
@@ -929,7 +930,7 @@ Bilani~
 Bilani~
 Bilani stands behind her wares, waiting to be of service.
 ~
-Bilani is a young, slender, and unusually well-spoken female sahuagin.
+Bilani is a young, slender, and peculiarly well-spoken female sahuagin.
 Quite unusually for one of her people, she is interested in magics,
 specifically how they may be used to infuse potions with divine (and
 other) effects. She sells a variety of such potions here, and invites
@@ -1118,8 +1119,8 @@ Mala't Sage identifier~
 Mala't the Sage~
 Mala't the Sage is here, happy to help you identify your artefacts.
 ~
-A wise and sagacious older sahuagin, Mala't has set up shop here identifying
-artefacts for those lacking the skill to.
+A knowledgeable and sagacious older sahuagin, Mala't has set up shop here
+identifying artefacts for those lacking the skill to.
 ~
 2|64|512|4096|32768|1048576|8388608|16777216 8|32|512|8192|524288|67108864 -125 S
 35 0 0 0d0+0 0d0+0
@@ -1154,9 +1155,9 @@ will at best view them as a necessary evil, and for a sahuagin to directly
 trade in such goods would be regarded as scandalous.  So it is that Mohmit saw
 an opportunity and seized it.
 
-He is a swarthy-skinned, reasonably cheerful, somewhat rotund, and rather
-short gentleman, who is eager to sell you his wares.  Perhaps a little TOO
-eager, as he talks to you incessantly as you browse the shelves in the shop.
+He is a swarthy, reasonably cheerful, somewhat rotund, and rather short
+gentleman, who is eager to sell you his wares.  Perhaps a little TOO eager,
+as he talks to you incessantly as you browse the shelves in the shop.
 ~
 2|64|512|4096|32768|8388608|16777216 8|32|128|512|8192|524288|67108864 -30 S
 35 0 0 0d0+0 0d0+0
@@ -1182,6 +1183,16 @@ else
     endif
 endif
 ~
+>speech_prog details fish~
+    mpecho {W'Ah yes, hmm.  That dratted fish.  Marvellous eyes.  A stargazer they call it,'{x
+    mpecho {W'as its eyes are on top of its head and so always face the sky.  Likes to hide'{x
+    mpecho {W'in the sand and jump out at people.  Tends to live where there's a lot of'{x
+    mpecho {W'unsuspecting foot traffic, as it were.  Perhaps search the suburban cantons?'{x
+~
+>give_prog hideous upturned eyes~
+    say I can't verify these myself.  Take them to Tiareo.
+    give hideous $n
+~
 >rand_prog 1~
 say So many great specials today, all for you.  Need a levitation potion?
 ~
@@ -1199,7 +1210,7 @@ say I wouldn't wipe my ARSE with Midgaardian brewing supplies!  We only deal wit
 ~
 |
 #27244
-citizen Ota'ar Dar sahuagin~
+citizen Ota'ar Dar sahuagin female~
 a citizen of Ota'ar Dar~
 A female citizen of Ota'ar Dar goes about her business here.
 ~
@@ -1211,7 +1222,7 @@ running errands and the like.
 0 0
 8 8 2
 #27245
-citizen Ota'ar Dar sahuagin~
+citizen Ota'ar Dar sahuagin male~
 a citizen of Ota'ar Dar~
 A male citizen of Ota'ar Dar goes about his business here.
 ~
@@ -4402,6 +4413,7 @@ Currently available quests for prospective Reavers to undertake:
 <15>4.   Every Frog Has His Day<0>       (<123>40-45<0>)
 <15>5.   From Master to Servant<0>       (<123>40-45<0>)
 <15>6.   Mother May I?<0>                (<123>45-50<0>)
+<15>7.   Eyes Up Here<0>                 (<123>50-55<0>)
 
 ~
 S

@@ -861,7 +861,7 @@ note letter~
 
 {WThe note is from one Rene Ama to one Bri'hr Evin'r, informing the latter that
 the former has a number of matters to attend to today, and to help herself to the
-contents of the concealed pantry in the upper level while she awaited her return.{x
+contents of the concealed pantry in the upper level while she awaits her return.{x
 
 ~
 #27433
@@ -974,14 +974,12 @@ mutant sahuagin that look like aquatic elves (the sahuagin's mortal enemies).
 
 While shunned by sahuagin at large, after extensive training they often serve
 sahuagin rulers directly as spies and assassins.  The treatise mentions a
-rumour of all-malenti tribes existing in isolated reaches of a distant sea.~
+rumour of all-malenti tribes existing in isolated reaches of a distant sea.
+~
 #27442
 damaged singing bundle~
 a damaged singing bundle~
-This odd item is made of conchs and shells supported by sinew and bone; when
-you rattle it it makes strange sounds reminiscent of the sahuagin language.
-Some of the conchs and shells are cracked, and several connecting strands of
-sinew have perished.~
+An odd item made of conchs and shells supported by sinew and bone is here.~
 ~
 36 0 1|16384
 0~ 0~ 0~ 0~
@@ -992,6 +990,13 @@ A
 17 -7
 A
 24 -2
+E
+damaged singing bundle~
+This odd item is made of conchs and shells supported by sinew and bone; when
+you rattle it it makes strange sounds reminiscent of the sahuagin language.
+Some of the conchs and shells are cracked, and several connecting strands of
+sinew have perished.
+~
 #27443
 sahuagin incubator~
 sahuagin incubator~
@@ -1384,7 +1389,7 @@ Ipheknisk Close South, Lower~
 {CYou stand at the end of a sandy street named Ipheknisk Close, amongst
 the inhabited ruins of a great, ancient underwater city. Ipheknisk Close
 continues to the north, while entrances to sahuagin residential dwellings
-lie west and south of here, with the entrance to the souther dwelling
+lie west and south of here, with the entrance to the southern dwelling
 looking somewhat grander than others you can see in the area. You may also
 head upwards, towards a huge, looming area of darkness in the water above. {x
 ~
@@ -1890,8 +1895,8 @@ Ipheknisk Close South, Upper~
 {cYou find yourself at the southern end of Ipheknisk Close, about 4 metres
 above the ocean floor, amongst the inhabited ruins of a great, ancient city,
 in Ota'ar Dar's southern residential canton. Ipheknisk Close continues north,
-and may also head upwards from here, towards a huge, looming area of darkness
-in the water above.{x
+and you may also head upwards from here, towards a huge, looming area of
+darkness in the water above.{x
 ~
 0 0 8
 D0
@@ -2492,8 +2497,8 @@ M  27337 spec_cast_cleric       Ota'as Heremu
 M  27338 spec_cast_cleric       a sahuagin watcher
 M  27339 spec_cast_cleric       a sahuagin watcher
 M  27341 spec_sahuagin          a sahuagin mother
-M  27346 spec_guard             an Ota'ar Dar cityguard
-M  27347 spec_guard             an Ota'ar Dar cityguard
+M  27346 spec_sahuagin_guard    an Ota'ar Dar cityguard
+M  27347 spec_sahuagin_guard    an Ota'ar Dar cityguard
 M  27351 spec_sahuagin_baron    the sahuagin baron
 S
 

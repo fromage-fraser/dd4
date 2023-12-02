@@ -2673,7 +2673,7 @@ void load_specials( FILE *fp )
                          */
 
                         if ( pMobIndex->spec_fun == spec_lookup("spec_priestess")
-                        ||   pMobIndex->spec_fun == spec_lookup("spec_high_cleric")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_sahuagin_high_cleric")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_mast_vampire")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_evil_evil_gezhp")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_grail")

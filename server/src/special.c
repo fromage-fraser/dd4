@@ -2844,13 +2844,13 @@ bool spec_cast_electric (CHAR_DATA *ch)
                         break;
 
                     case 4:
-                        min_level = 30;
+                        min_level = 40;
                         if ( CAN_SPEAK(ch) ) { sprintf(buf, "Let's charge your BRAIN!"); }
                         spell = "synaptic blast";
                         break;
 
                     case 5:
-                        min_level = 40;
+                        min_level = 30;
                         if ( CAN_SPEAK(ch) ) { sprintf(buf,"Let's share the love around..."); }
                         spell = "chain lightning";
                         break;
