@@ -1496,9 +1496,10 @@ void prayer_death                       ( CHAR_DATA *ch, char *text );
 /*
  * Log last command before crash
  */
-extern char     last_command    [ MAX_STRING_LENGTH ];
-extern char     last_function   [ MAX_STRING_LENGTH ];
-void            install_crash_handler ( );
+extern char     last_command[MAX_STRING_LENGTH];
+extern char     last_function[MAX_STRING_LENGTH];
+void            write_last_command();
+void            install_crash_handler();
 
 
 /*

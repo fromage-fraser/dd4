@@ -851,7 +851,7 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                                     && (number_percent() < 2))
                                 {
                                         ch->pcdata->learned[gsn_second_attack] += 1;
-                                        send_to_char("You sense your skill in second attack increasing..\n\r", ch);
+                                        send_to_char("You sense your skill in second attack increasing...\n\r", ch);
                                 }
                         }
                         continue;

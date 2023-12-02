@@ -1,8 +1,8 @@
 CC      = gcc
 PROF    =
-DEBUG   = -g
+DEBUG   = -gdwarf-2
 NOCRYPT =
-LINK    =
+LINK    = -rdynamic
 O_FLAGS = -O2
 C_FLAGS = $(O_FLAGS) -pedantic-errors -Wall  \
           -Wno-trigraphs -Wno-unused-result -Wno-overlength-strings -Wno-overflow \
