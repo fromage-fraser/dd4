@@ -607,9 +607,8 @@ void show_list_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNo
 
 void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
 {
-        char buf [ MAX_STRING_LENGTH ];
-        char tmp [ MAX_STRING_LENGTH ];
-
+        char buf            [ MAX_STRING_LENGTH ];
+        char tmp            [ MAX_STRING_LENGTH ];
         buf[0] = '\0';
 
         if (is_affected(victim,gsn_mist_walk) )
@@ -1350,7 +1349,7 @@ void do_look( CHAR_DATA *ch, char *argument )
             && ch->form != FORM_FLY
             && room_is_dark( ch->in_room ) )
         {
-                send_to_char( "It is pitch black ... \n\r", ch );
+                send_to_char( "It is pitch black... \n\r", ch );
                 show_char_to_char( ch->in_room->people, ch );
                 return;
         }
@@ -1465,14 +1464,14 @@ void do_look( CHAR_DATA *ch, char *argument )
                                 }
                                 for ( i = count; i < 4; i++ )
                                 {
-                                        
+
                                         sprintf(buf, "<97>============================={x\n\r");
-                                        send_to_char(buf, ch);  
+                                        send_to_char(buf, ch);
                                         sprintf(buf, "<97>|<0><8>------------EMPTY-----------<0>\n\r");
                                         send_to_char(buf, ch);
 
                                 }
-                                
+
                                 sprintf(buf, "<97>============================={x\n\r");
                                 send_to_char(buf, ch);
                                 sprintf(buf, "<97>   <565>/  /              \\  \\<564>   {x\n\r");
@@ -1518,12 +1517,14 @@ void do_look( CHAR_DATA *ch, char *argument )
                                 {
                                         spell_identify ( 1, 1, ch, obj);
                                 }
+                                return;
                         }
 
                         pdesc = get_extra_descr( arg1, obj->pIndexData->extra_descr );
                         if ( pdesc )
                         {
                                 send_to_char( pdesc, ch );
+                                return;
                         }
                 }
 
@@ -1654,7 +1655,7 @@ void do_examine (CHAR_DATA *ch, char *argument)
 
         do_look (ch, arg);
 
-        /*if ((obj = get_obj_here (ch, arg))) */
+        /*if ((obj = get_obj_here (ch, arg)))*/
         if (obj)
         {
 
@@ -3468,13 +3469,13 @@ void do_consider( CHAR_DATA *ch, char *argument )
                                         strcat( buf1, buf );
 
                                          /* Vulnerable */
-                                        
+
                                         strcat(buf1, "<556>Vulnerable To:<0><15>");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
                                                 if (IS_SET(mob_table[sn].vulnerabilities, next))
                                                 {
-                                                        
+
                                                         strcat(buf1, " ");
                                                         strcat(buf1, resist_name(next));
                                                         buf1[0] = UPPER( buf1[0] );
@@ -3483,7 +3484,7 @@ void do_consider( CHAR_DATA *ch, char *argument )
                                         strcat(buf1, "<0>\n\r");
 
                                         /* resists */
-                                
+
                                         strcat(buf1, "Resistant To:{W");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
@@ -3496,10 +3497,10 @@ void do_consider( CHAR_DATA *ch, char *argument )
                                         }
                                         strcat(buf1, "{x\n\r");
 
-                                       
+
 
                                         /*  Immune */
-                                        
+
                                         strcat(buf1, "Immune To:{W");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
@@ -3512,7 +3513,7 @@ void do_consider( CHAR_DATA *ch, char *argument )
                                         }
                                         strcat(buf1, "{x\n\r");
 
-                                        
+
                                         /* body parts from Species Table */
                                         strcat(buf1, "Body Parts:{W");
 
@@ -3528,7 +3529,7 @@ void do_consider( CHAR_DATA *ch, char *argument )
                                         strcat(buf1, "{x\n\r");
 
                                         /* Attack Parts  from Species Table*/
-                                        
+
                                         strcat(buf1, "Attack Parts:{W");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
@@ -3543,7 +3544,7 @@ void do_consider( CHAR_DATA *ch, char *argument )
                                 send_to_char( buf1, ch );
                                 }
                         }
-                
+
                 return;
         }
 }

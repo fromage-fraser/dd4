@@ -3409,7 +3409,7 @@ char* body_form_name (unsigned long int vector)
                 case PART_EYE:                  return "eye";
                 case PART_LONG_TONGUE:          return "long_tounge";
                 case PART_EYESTALKS:            return "eyestalks";
-                case PART_TENTACLES:            return "tantacles";
+                case PART_TENTACLES:            return "tentacles";
                 case PART_FINS:                 return "fins";
                 case PART_WINGS:                return "wings";
                 case PART_TAIL:                 return "tail";

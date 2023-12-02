@@ -122,6 +122,43 @@
         endif
         endif
 ~
+>speech_prog seven 7~
+        if level($n) < 50
+                mpecho {WReaver Tiareo says 'I'm sorry, that mission is too dangerous for someone of your limited experience.'{x
+        break
+        else
+        if level($n) > 55
+                mpecho {WReaver Tiareo says 'You're far too experienced to undertake that mission.'{x
+        break
+        else
+                mpecho {W'We have a request from Mohmit for the eyes of a rare and elusive deep sea fish,'{x
+                mpecho {W'for use in one of his magical concoctions. Usefully, he hasn't given us any'{x
+                mpecho {W'information about it, so you may wish to go and ask him for more details before'{x
+                mpecho {W'you go looking. Bring the eyes back here for us to inspect before we pass them on,'{x
+                mpecho {W'and you shall be well-rewarded.'{x
+        endif
+        endif
+~
+>give_prog hideous upturned eyes~
+        if level($n) > 55
+                mpecho {WReaver Tiareo says 'That mission was for someone less experienced.'{x
+                give hideous $n
+        break
+        else
+        if number($o) == 27566
+                mpjunk hideous
+                mpecho {WReaver Tiareo says 'Excellent $n, Mohmit will reward us richly!'{x
+                mpoload 27567 50
+                give silver $n
+                mpecho {WReaver Tiareo says 'Take this magically-enhanced beltpouch as a token of our gratitude.'{x
+        break
+        else
+                mpecho $I examines $O closely.
+                mpecho {WReaver Tiareo says 'Wrong eyes.  Sorry $n.'{x
+                give hideous $n
+        endif
+        endif
+~
 >give_prog seahorse scramble plate~
         if level($n) > 50
                 mpecho {WReaver Tiareo says 'That mission was for someone less experienced.'{x
