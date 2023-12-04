@@ -3437,9 +3437,10 @@ void do_consider( CHAR_DATA *ch, char *argument )
 
         /*  A "sizing up" ability for thugs?  Re-enabled and edited for sanity 5/3/22 -- Owl */
         if ( IS_NPC( victim ) && ch->sub_class == 7 && victim->spec_fun != 0 )
-                act ("You suspect $N of having unusual capabilities.", ch,
+                act ("{WYou suspect $N of having unusual capabilities.{x", ch,
                      NULL, victim, TO_CHAR );
 
+        /* Commenting out below until it is working --Owl 3/12/23
         if ( IS_NPC( victim ) && rank_sn(victim) > 1 )
                 act ("$N seems {Wmore powerful{x than your usual adversaries.", ch, NULL, victim, TO_CHAR );
 
@@ -3468,8 +3469,6 @@ void do_consider( CHAR_DATA *ch, char *argument )
                                         mob_table[sn].species);
                                         strcat( buf1, buf );
 
-                                         /* Vulnerable */
-
                                         strcat(buf1, "<556>Vulnerable To:<0><15>");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
@@ -3483,8 +3482,6 @@ void do_consider( CHAR_DATA *ch, char *argument )
                                         }
                                         strcat(buf1, "<0>\n\r");
 
-                                        /* resists */
-
                                         strcat(buf1, "Resistant To:{W");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
@@ -3496,10 +3493,6 @@ void do_consider( CHAR_DATA *ch, char *argument )
                                                 }
                                         }
                                         strcat(buf1, "{x\n\r");
-
-
-
-                                        /*  Immune */
 
                                         strcat(buf1, "Immune To:{W");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
@@ -3513,8 +3506,6 @@ void do_consider( CHAR_DATA *ch, char *argument )
                                         }
                                         strcat(buf1, "{x\n\r");
 
-
-                                        /* body parts from Species Table */
                                         strcat(buf1, "Body Parts:{W");
 
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
@@ -3527,8 +3518,6 @@ void do_consider( CHAR_DATA *ch, char *argument )
                                                 }
                                         }
                                         strcat(buf1, "{x\n\r");
-
-                                        /* Attack Parts  from Species Table*/
 
                                         strcat(buf1, "Attack Parts:{W");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
@@ -3547,6 +3536,7 @@ void do_consider( CHAR_DATA *ch, char *argument )
 
                 return;
         }
+        */
 }
 
 
