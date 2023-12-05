@@ -745,6 +745,7 @@ Each base class has two subclasses:
         BRAWLER:             Monk           Martial Artist
         SHAPE SHIFTER:       Werewolf       Vampire
         RANGER:              Barbarian      Bard
+        SMITHY (beta):       Engineer {Y*{x     Runesmith {Y*{x
 
 See 'HELP <<subclass name>' for information on each subclass.
 
@@ -752,6 +753,8 @@ See 'HELP S<<subclass name>' (e.g. 'HELP STEMPLAR') for a list of skills
 available to each subclass.
 
 See 'HELP CHANGE' for how to change to choose a subclass.
+
+{Y*{x Not yet implemented.
 ~
 
 -1 NECROMANCER~

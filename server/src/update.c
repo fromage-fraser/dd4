@@ -1804,8 +1804,13 @@ void char_update( void )
                             && ch->level <= LEVEL_HERO
                             && ch->position > POS_INCAP
                             && ch->form != FORM_SNAKE
+                            && ch->form != FORM_HYDRA
+                            && ch->form != FORM_DEMON
                             && ch->race != RACE_SAHUAGIN
                             && ch->race != RACE_GRUNG
+                            && ch->sub_class != SUB_CLASS_VAMPIRE
+                            && !is_affected(ch,gsn_mist_walk)
+                            && !is_affected(ch,gsn_astral_sidestep)
                             && ( ( ch->in_room->sector_type == SECT_UNDERWATER )
                               || ( ch->in_room->sector_type == SECT_UNDERWATER_GROUND ) )
                             && !is_affected(ch, gsn_breathe_water))
