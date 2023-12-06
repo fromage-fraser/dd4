@@ -2301,7 +2301,7 @@ P 1 27450 100 27445     ; put egg in incubator
 *
 O 1 27550 100 27408     ; appointment scroll to Sahuagin Living Quarters, Lower Level
 *
-M 1 27445 1 27708       ; a drunk sahuagin to Sahuagin Living Quarters, Upper Level
+M 1 27445 1 27709       ; a drunk sahuagin to Sahuagin Living Quarters, Upper Level
 E 1 27546 100 13        ; equip embroidered purple loincloth
 G 1 27250 100           ; Give Pale fail to drunk sahuagin
 G 1 27250 100           ; Give Pale fail to drunk sahuagin
