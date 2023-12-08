@@ -484,7 +484,7 @@ can wiggle to attract prey's attention.
 54 0 0 0d0+0 0d0+0
 4|8|32|512 0
 8 8 1
->all_greet_prog 10~
+>all_greet_prog 5~
 mpecho {RSharp teeth erupt from the ocean floor!{x
 mpkill $n
 ~
@@ -654,6 +654,7 @@ else
 endif
 ~
 |
+< reserved~ boss~
 #27461
 stargazer fish~
 a stargazer~

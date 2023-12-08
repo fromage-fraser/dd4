@@ -609,6 +609,7 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
 {
         char buf            [ MAX_STRING_LENGTH ];
         char tmp            [ MAX_STRING_LENGTH ];
+        char tmp2           [ MAX_STRING_LENGTH ];
         buf[0] = '\0';
 
         if (is_affected(victim,gsn_mist_walk) )
@@ -813,7 +814,11 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
                 return;
         }
 
-        strcat( buf, PERS( victim, ch ) );
+        /* Fix for capitalisation flakiness. --Owl 8/12/23 */
+
+        sprintf (tmp2, "%s", PERS( victim, ch ));
+        tmp2[0] = UPPER( tmp2[0] );
+        strcat( buf, tmp2);
 
         if ( !IS_NPC( victim ) && !IS_SET( ch->act, PLR_BRIEF ) )
                 strcat( buf, victim->pcdata->title );
