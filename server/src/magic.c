@@ -4196,6 +4196,12 @@ void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
         if (IS_AFFECTED(victim, AFF_NON_CORPOREAL))
                 return;
 
+        if (IS_SET(victim->in_room->room_flags, ROOM_NO_DROP))
+        {
+                send_to_char ("<39>A powerful enchantment stops you attempting to remove cursed items here.<0>\n\r", victim);
+                return;
+        }
+
         if (victim->fighting)
                 return;
 
@@ -4228,12 +4234,6 @@ void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
                 if ( (IS_SET(obj->extra_flags, ITEM_NOREMOVE))
                     || (IS_SET(obj->extra_flags, ITEM_NODROP)))
                 {
-                        if (IS_SET(victim->in_room->room_flags, ROOM_NO_DROP))
-	                      {
-	                            send_to_char ("A powerful enchantment stops you attempting to remove cursed items here.\n\r", victim);
-	                            continue;
-	                      }
-
                         unequip_char( victim, obj );
                         obj_from_char( obj );
                         obj_to_room( obj, victim->in_room );
@@ -4257,11 +4257,6 @@ void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
                 if ( (IS_SET(obj->extra_flags, ITEM_NOREMOVE))
                     || (IS_SET(obj->extra_flags, ITEM_NODROP)))
                 {
-                        if (IS_SET(victim->in_room->room_flags, ROOM_NO_DROP))
-	                {
-	                        send_to_char ("A powerful enchantment stops you attempting to remove cursed items here.\n\r", victim);
-	                        continue;
-	                }
                         obj_from_char(obj);
                         obj_to_room(obj, victim->in_room);
                         act("You toss $p away.", victim, obj, NULL, TO_CHAR);
@@ -7895,6 +7890,12 @@ void spell_animate_weapon (int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *) vo;
         OBJ_DATA  *obj;
+
+        if (IS_SET(ch->in_room->room_flags, ROOM_NO_DROP))
+        {
+            send_to_char ("<39>A powerful enchantment prevents you from magically disarming anyone here.<0>\n\r", ch);
+            return;
+        }
 
         if ((obj = get_eq_char(victim,WEAR_DUAL))
             && !IS_SET(obj->extra_flags, ITEM_BODY_PART))

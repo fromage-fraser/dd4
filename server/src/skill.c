@@ -1201,6 +1201,12 @@ void kansetsu (CHAR_DATA *ch, CHAR_DATA *victim)
                 return;
         }
 
+        if (IS_SET(ch->in_room->room_flags, ROOM_NO_DROP))
+        {
+                send_to_char ("<39>A powerful enchantment prevents you from disarming anyone here.<0>\n\r", ch);
+                return;
+        }
+
         obj = get_eq_char(victim, WEAR_WIELD);
         if (!obj)
                 obj = get_eq_char(victim, WEAR_DUAL);
@@ -1651,6 +1657,12 @@ void do_break_wrist (CHAR_DATA *ch, char *argument)
         if (!CAN_DO(ch, gsn_break_wrist))
         {
                 send_to_char("You aren't skilled enough.\n\r", ch);
+                return;
+        }
+
+        if (IS_SET(ch->in_room->room_flags, ROOM_NO_DROP))
+        {
+                send_to_char ("<39>A powerful enchantment prevents you from disarming anyone here.<0>\n\r", ch);
                 return;
         }
 
@@ -3101,9 +3113,7 @@ bool is_cursed(CHAR_DATA *ch)
                 if (pobj->deleted)
                         continue;
 
-                if ( ( IS_SET(pobj->extra_flags, ITEM_CURSED) )
-                ||   ( IS_SET(pobj->extra_flags, ITEM_NOREMOVE) )
-                ||   ( IS_SET(pobj->extra_flags, ITEM_NODROP) ) )
+                if ( IS_SET(pobj->extra_flags, ITEM_CURSED) )
                 {
                         return TRUE;
                 }
@@ -4708,13 +4718,14 @@ void do_counterbalance (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-  /* always suceed - but percentage based on skill      if (number_percent() > ch->pcdata->learned[gsn_counterbalance])
-        {
-                send_to_char("You slip while balancing your weapon!!\n\r", ch);
-                act ("$n cuts $mself while balancing $m weapon!", ch, NULL, NULL, TO_ROOM);
-                return;
-        }
-*/
+        /*
+                always succeed - but percentage based on skill      if (number_percent() > ch->pcdata->learned[gsn_counterbalance])
+                {
+                        send_to_char("You slip while balancing your weapon!!\n\r", ch);
+                        act ("$n cuts $mself while balancing $m weapon!", ch, NULL, NULL, TO_ROOM);
+                        return;
+                }
+        */
 
         sprintf( buf, "You counterbalance %s.\n\r", obj->short_descr );
         send_to_char( buf, ch );

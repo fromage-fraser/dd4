@@ -1341,7 +1341,10 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                                                    : UMAX(10, leveldiff))
                             && dam == 0)
                         {
+                            if (!IS_SET(ch->in_room->room_flags, ROOM_NO_DROP))
+                            {
                                 disarm(ch, victim);
+                            }
                         }
 
                         /* mob: trip  */
@@ -3439,6 +3442,12 @@ void disarm (CHAR_DATA *ch, CHAR_DATA *victim)
 
         if (!check_blind(ch))
                 return;
+
+        if (IS_SET(ch->in_room->room_flags, ROOM_NO_DROP))
+        {
+                send_to_char ("<39>A powerful enchantment prevents you from disarming anyone here.<0>\n\r", ch);
+                return;
+        }
 
         if (IS_SET(obj->extra_flags, ITEM_BODY_PART))
         {
@@ -5966,6 +5975,13 @@ void do_disarm (CHAR_DATA *ch, char *argument)
         CHAR_DATA *victim;
         char       arg [ MAX_INPUT_LENGTH ];
         int        percent;
+
+
+        if (IS_SET(ch->in_room->room_flags, ROOM_NO_DROP))
+        {
+                send_to_char ("<39>A powerful enchantment prevents you from disarming anyone here.<0>\n\r", ch);
+                return;
+        }
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_disarm))
         {

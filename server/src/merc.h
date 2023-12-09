@@ -2390,7 +2390,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define ROOM_FREEZING                   BIT_17
 #define ROOM_BURNING                    BIT_18
 #define ROOM_NO_MOUNT                   BIT_19
-#define ROOM_NO_DROP                    BIT_63 /* Can't drop items in room, really just testing extended bitflags -- Owl 6/8/22 */
+#define ROOM_NO_DROP                    BIT_63 /* Can't drop items in room, will prevents disarming in room too -- Owl 6/8/22 */
 
 
 /*
