@@ -220,12 +220,12 @@ road to waylay travellers who stray too far east.
 
 #OBJECTS
 #700
-stone well~
+stone well murky~
 a stone well~
 Murky water can be seen within a small stone well.~
 ~
 25 0 0
-~ ~ ~ ~
+0~ 0~ 0~ 1~
 10000 0 0
 
 #701

@@ -373,7 +373,7 @@ A
 #2
 coin~
 a coin~
-One miserable coin.~
+One miserable coin is here.~
 ~
 20 0 1
 1~ ~ ~ ~
@@ -381,7 +381,7 @@ One miserable coin.~
 #3
 coins~
 some coins~
-A pile of coins.~
+A pile of coins is here.~
 ~
 20 0 1
 0~ 0~ 0~ 0~

@@ -1185,6 +1185,18 @@ AUTOEXIT set, you will automatically see the visible exits whenever you
 walk into a room.
 ~
 
+0 EMPTY~
+Syntax: empty <<object>
+
+EMPTY allows you to empty the contents of various sorts of objects, usually
+into the room you are standing in.  You may attempt to EMPTY item storage
+objects, drink containers, and corpses (player or NPC).
+
+You can't EMPTY a container's contents if you can't see them, and you must
+have at least one inventory slot free to work with the item or items you're
+pulling out.
+~
+
 0 DROP GET GIVE PUT TAKE~
 Syntax: drop <<object>
 Syntax: drop <<amount> <<coin type>
