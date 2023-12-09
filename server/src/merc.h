@@ -321,7 +321,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   572     /* +1 do_empty 9/12/23 */
+#define MAX_SKILL                   573     /* +1 tfind 9/12/23 */
 #define MAX_PRE_REQ                 1398    /* +1 reforge - Brutus 1/1/23 */
 #define MAX_SPELL_GROUP             452     /* +1 reforge Brutus 1/1/23 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
@@ -3829,6 +3829,7 @@ extern int gsn_fiery_strike;
 extern int gsn_death_strike;
 extern int gsn_conducting_blast;
 extern int gsn_reforge;
+extern int gsn_tfind;
 /*
  *  Deity gsns
  */
@@ -4226,6 +4227,7 @@ DECLARE_DO_FUN( do_mfind                        );
 DECLARE_DO_FUN( do_mrank                        );
 DECLARE_DO_FUN( do_mload                        );
 DECLARE_DO_FUN( do_mnstat                       );
+DECLARE_DO_FUN( do_tfind                        );
 DECLARE_DO_FUN( do_morph                        );      /* for changing forms - geoff */
 DECLARE_DO_FUN( do_mount                        );      /* mounting mobs for riding */
 DECLARE_DO_FUN( do_dismount                     );

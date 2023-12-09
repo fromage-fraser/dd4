@@ -1486,7 +1486,7 @@ A corn field.
 0 -1 14004
 S
 #14007
-The small shed.~
+The small shed~
 You step inside a very large smelly dark shed. You notice a variety of tools
 and one very large chair which is taken.
 ~
@@ -1534,7 +1534,7 @@ D3
 0 -1 14136
 S
 #14010
-Path through the forest.~
+Path through the forest~
 The tracks continue to the south where you can see hills rise from the
 horizon. To the north is a large clearing.
 ~
@@ -1551,7 +1551,7 @@ Before the hills.
 0 -1 14011
 S
 #14011
-Before the great cave.~
+Before the great cave~
 You can see what looks like a large cave opening to the south. To the east
 stands a guard house from which you can hear snoring emanate.
 ~
@@ -1573,7 +1573,7 @@ A large cave.
 0 -1 14013
 S
 #14012
-Guardhouse.~
+Guardhouse~
 If you were 10 foot tall then this would be a cramped guard house. The
 inhabitant of this post does seem a little cramped. Thank god for you he is
 fast asleep.
@@ -1586,7 +1586,7 @@ Before the Great Cave.
 0 -1 14011
 S
 #14013
-Entrance to the cave.~
+Entrance to the cave~
 You stand at the entrance to a HUGE cave, the footprints and cart tracks
 disappear into the darkness. You get an eerie, evil feeling standing
 here and it seems to be coming from the mouth of the cave. You wonder to
@@ -1604,7 +1604,7 @@ D2
 0 -1 14014
 S
 #14014
-Inside the Great Cave.~
+Inside the Great Cave~
 You stand in a HUGE cave that extends to the west and south. As you look
 around you notice the odd bat fly past your nose. On the wall at regular 10
 foot intervals are large torches that light the cave. The cart tracks you saw
@@ -1633,7 +1633,7 @@ The Great Cave.
 0 -1 14022
 S
 #14015
-Storeroom.~
+Storeroom~
 You stumble into a storage cave. Numerous items are collected into piles
 around the cave which extends to the east and south. Here you find many saws
 and axes used for chopping trees.
@@ -1656,7 +1656,7 @@ The Great Cave
 0 -1 14014
 S
 #14016
-Storeroom.~
+Storeroom~
 In this part of the cave you find many building tools including great hammers,
 axes, saws and rope. All of it is oversized for your puny hands. There is a
 lack of lighting in this part of the cave.
@@ -1674,7 +1674,7 @@ Storeroom
 0 -1 14015
 S
 #14017
-Storeroom.~
+Storeroom~
 More items of construction are held here. The cyclops MUST be building
 something - but what?
 ~
@@ -1691,7 +1691,7 @@ Storeroom
 0 -1 14018
 S
 #14018
-Storeroom.~
+Storeroom~
 Here lie the obviously useless weapons of the cyclops guard. Broken spiked
 Maces and rusted armour litter the floor of the cave.
 ~
@@ -1708,7 +1708,7 @@ Storeroom
 0 -1 14017
 S
 #14019
-The Great Cave.~
+The Great Cave~
 The Massive cavern seems to taper off to the south even though the tracks
 extend in that direction. This mighty Cavern extends to the north and the
 west.
@@ -1731,7 +1731,7 @@ The Great Cave.
 0 -1 14023
 S
 #14020
-Entrance to the Barracks.~
+Entrance to the Barracks~
 You stand before a smaller cave to the east. The entrance is covered by a
 simple cloth. from which can hear the laughter of many voices - Deep , booming
 voices , at least 3 of them. A newly dug tunnel is carved from the rock to the
@@ -1753,7 +1753,7 @@ D2
 0 -1 14052
 S
 #14021
-Barracks.~
+Barracks~
 Here is the resting place of the Cyclops guard. about 20 bunks line the cave
 walls and tables and chairs stand in the middle. You notice a chest in the
 corner of the room. It may be a little hard to reach with the cyclops guards
@@ -1767,7 +1767,7 @@ Cloth~
 1 -1 14020
 S
 #14022
-The Great Cave.~
+The Great Cave~
 The Massive Cavern extends to the west, east and south. Large bats continue
 to fly around your head, alarmed at your intrusion.
 ~
@@ -1786,7 +1786,7 @@ D3
 0 -1 14025
 S
 #14023
-The Great Cave.~
+The Great Cave~
 As you shout you hear you echo continue down the huge cavern for a couple of
 seconds. Then you realise that the noise may bring extra attention to your
 presence. The massive cavern extends to the north, west and east.
@@ -1806,7 +1806,7 @@ D3
 0 -1 14024
 S
 #14024
-The Great Cave.~
+The Great Cave~
 The Great Cavern seems to taper off to the west. However you can see access
 tunnels to the south and further to the north.
 ~
@@ -1825,7 +1825,7 @@ D2
 0 -1 14032
 S
 #14025
-The Great Cave.~
+The Great Cave~
 You stand at an apparent intersection. Extending to the south and east is the
 large cavern that leads to the exit, however, tunnels lead of the the north
 and west. You notice movement in the tunnel to the west.
@@ -1877,7 +1877,7 @@ Cloth~
 1 -1 14031
 S
 #14027
-Cave Dwelling.~
+Cave Dwelling~
 You burst in upon an unsuspecting family about to eat tea. The young child
 screams seeing you in full battle gear while the farther reaches for a knife
 to try and defend his family. The cave has a primitive fireplace in the corner
@@ -1934,7 +1934,7 @@ Cloth~
 1 -1 14030
 S
 #14030
-Cave Dwelling.~
+Cave Dwelling~
 You can see just one mat in this cave and the usual fireplace and table.
 Sitting at the table you see an old cyclops male staring into space.
 ~
@@ -1949,7 +1949,7 @@ The crude fireplace is made from stones and is currently smoldering.
 ~
 S
 #14031
-Abandoned Dwelling.~
+Abandoned Dwelling~
 There is an over turned table laying in the middle of the room and the
 fireplace has long since been destroyed. Debris litters the floor and the
 smell here is quite foul. There is nothing of interest here.
@@ -1983,7 +1983,7 @@ D3
 0 -1 14042
 S
 #14033
-Arena Entrance.~
+Arena Entrance~
 You stand at the entrance to a circular 2-tier cave. To the south you can see
 a 20 foot drop into a pit. It would be unadvisable to enter this pit as the
 walls are very smooth which could make climbing out very hard. To the the west
@@ -2011,7 +2011,7 @@ D3
 0 -1 14035
 S
 #14034
-The Lair.~
+The Lair~
 This Lair is inhabited by a VERY nasty creature judging by the claw and
 scorch marks on the side of the wall. To the north you can enter the pit or
 see if there is any way out to the south.
@@ -2054,7 +2054,7 @@ D2
 0 -1 14039
 S
 #14036
-The Lair.~
+The Lair~
 This part of the Lair is a mixture of shit, bones and decaying meat, and
 the only exit is 20 feet above you. By using the great corpse of the Chimera
 you can climb to safety above you.
@@ -2070,7 +2070,7 @@ D4
 0 -1 14041
 S
 #14037
-The Pit.~
+The Pit~
 You land with a crash on the pits floor. As you raise your head, a rat
 jumps out of a smashed open skull and scampers away to the south. You
 cannot possibly scale the 20 foot walls that surround you. The only
@@ -2083,7 +2083,7 @@ Grate~
 1 -1 14034
 S
 #14038
-Eastern side of the Arena.~
+Eastern side of the Arena~
 Looking to the west you see still more half-bodies and various limbs lying
 on the ground of the pit. Something very nasty must have done that much
 damage. To the north and south, you can continue around the edge of the pit,
@@ -2104,7 +2104,7 @@ D3
 0 -1 14037
 S
 #14039
-Southern part of the Arena.~
+Southern part of the Arena~
 You stand at the southern part of the arena. This place must be able to hold
 about 100 cyclops. You feel disgusted at all the lives that have been lost in
 this place and at the laughter and cheering the the cyclops gave while this
@@ -2147,7 +2147,7 @@ D2
 0 -1 14041
 S
 #14041
-Beastmaster Lair.~
+Beastmaster Lair~
 This room stinks like shit! Thats probably because of the HUGE 3-headed beast
 25 feet below you. The sole inhabitant of the room is not happy to see you.
 ~
@@ -2359,7 +2359,7 @@ door iron~
 1 -1 14058
 S
 #14062
-The damp cave.~
+The damp cave~
 You stand in a blue cave in which the walls are coated with water - like it was
 sweating, although the walls feel cool to the touch and you notice a drop in
 the temperature. Your magical items seem too glow with less vigour and hum
@@ -2401,7 +2401,7 @@ blue iron door~
 1 -1 14062
 S
 #14064
-The damp prison cave.~
+The damp prison cave~
 You are stand in a small, damp, blue cave, that the cyclops apparently use
 to hold there prisoners. You hear a faint cry from the corner and see a
 prisoner chained to the wall. To the south you can exit this prison.
@@ -2441,7 +2441,7 @@ You see the tunnel open up to the south.
 0 -1 14067
 S
 #14067
-Before the bridge.~
+Before the bridge~
 The tunnel opens up to reveal an underground river running in an east-west
 direction 100 feet below you. The tunnel end abruptly here as you look over
 the cliffs edge to the running water 100 feet below. A half constructed wooden
@@ -2538,7 +2538,7 @@ D5
 0 -1 14072
 S
 #14072
-Base of the cliff.~
+Base of the cliff~
 You stand at the base of the cliff. To your south you see the river run past
 you at a gentle pace. Looking across the river you see another path leading up
 the cliff. You cannot enter the river here as there are large rocks
@@ -2558,7 +2558,7 @@ The top of the cliff
 0 -1 14071
 S
 #14073
-Next to the underground river.~
+Next to the underground river~
 You are able to get across this river by boat as it does not run very fast at
 this point. Looking up you can see the bridge half-finished. To the east is
 the base of the trail leading up the cliff.
@@ -2596,7 +2596,7 @@ D2
 0 -1 14075
 S
 #14075
-On the underground river.~
+On the underground river~
 The river runs in a west-east direction. The current is too strong to head up
 river to the west and you decided not to head east. The other side of the
 river is to the north or you can get back to dry land just to your south.
@@ -2773,7 +2773,7 @@ The palace~
 0 -1 14084
 S
 #14084
-The palace corridor.~
+The palace corridor~
 You stand in another part of the palace. The many torches affixed to the wall
 light the corridor well. To the north and south you can see elegant doors.
 This main corridor in the palace extends west and east.
@@ -2813,7 +2813,7 @@ door~
 1 -1 14084
 S
 #14086
-Mage quarters.~
+Mage quarters~
 This room belongs to the cyclops mage judging by the scrolls and wands upon
 the desk. There is a 15 foot bed on the west side of the room and a large
 table next to it. The mage is however is not currently here.
@@ -2877,7 +2877,7 @@ door elegant~
 1 -1 14087
 S
 #14090
-The palace corridor.~
+The palace corridor~
 You stand in another part of the corridor. The many torches affixed to the wall
 light the corridor well. This main corridor in the palace extends west and
 east. To the west the corridor appears to end.
@@ -2912,7 +2912,7 @@ stone door~
 1 -1 14092
 S
 #14092
-Top of the stairwell.~
+Top of the stairwell~
 The elite guard didn't do his job very well and you stand above a large spiral
 stairway which circles downwards.
 ~
@@ -3184,7 +3184,7 @@ The inner palace
 1 -1 14097
 S
 #14105
-The conference room.~
+The conference room~
 You are standing in a large circular room with a very large round table in
 the middle of it. Decorations are affixed to the walls and you notice a large
 desk on the east side of the room. There are 3 figures in this room a
@@ -3238,7 +3238,7 @@ secret door~
 1 -1 14109
 S
 #14108
-Before the throne room.~
+Before the throne room~
 Two large doors similar to the ones at the entrance to the palace block your
 way to the west. Not only do the doors block your way but also an elite guard
 currently charging toward you. The throne room you believe lies beyond the
@@ -3628,7 +3628,7 @@ D3
 0 -1 14130
 S
 #14132
-Before the Magical Barrier.~
+Before the Magical Barrier~
 The statue opens up onto a glowing void. Before you a magical Green barrier
 pulsates then dies as the Cyclops Cleric in front of it completes the last of
 his chants and jesters, revealing a white void like tunnel to the south. This
@@ -3746,7 +3746,7 @@ D3
 0 -1 14138
 S
 #14138
-Beside the river.~
+Beside the river~
 The path leads to a great river that runs north-south. There is a huge net
 that extends into half of the river, obviously for catching fish. Far to the
 north and west extends a great mountain range - the source of the river you
@@ -3769,7 +3769,7 @@ The river runs to the south and emanates from the mountain range to the north.
 ~
 S
 #14139
-End of the path.~
+End of the path~
 The great river disappears into a rather large cave just to the south. The
 path also stops here as hills rise from the ground to the south. Another net
 is set here.

@@ -1,20 +1,21 @@
-Fri Dec  8 22:51:06 2023
-Command 'empty sack'
-Issued by 'Owl' (player) at room 78
+Sat Dec  9 08:19:17 2023
+Command 'tfind 'penis magiks' 60'
+Issued by 'Owl' (player) at room 31041
 Master is '(null)'
 Function: leaving update_handler
 Backtrace:
-../src/dd4(write_last_command+0xe7)[0x451477]
-/lib/x86_64-linux-gnu/libc.so.6(+0x38d60)[0x7fd941b75d60]
-../src/dd4(can_see_obj+0x0)[0x4739d0]
-../src/dd4[0x4550f1]
-../src/dd4(do_empty+0x18d)[0x4374bd]
-../src/dd4(interpret+0x371)[0x4772f1]
-../src/dd4(game_loop_unix+0x619)[0x457289]
+../src/dd4(write_last_command+0xe7)[0x451c57]
+/lib/x86_64-linux-gnu/libc.so.6(+0x38d60)[0x7f63a6151d60]
+/lib/x86_64-linux-gnu/libc.so.6(+0x15d319)[0x7f63a6276319]
+/lib/x86_64-linux-gnu/libc.so.6(+0x68b78)[0x7f63a6181b78]
+/lib/x86_64-linux-gnu/libc.so.6(+0x72d10)[0x7f63a618bd10]
+/lib/x86_64-linux-gnu/libc.so.6(sprintf+0xa4)[0x7f63a616cf14]
+../src/dd4(do_tfind+0x201)[0x448dd1]
+../src/dd4(interpret+0x371)[0x477b21]
+../src/dd4(game_loop_unix+0x619)[0x457a69]
 ../src/dd4(main+0xe0)[0x41f5f0]
-/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xea)[0x7fd941b60d0a]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xea)[0x7f63a613cd0a]
 ../src/dd4(_start+0x2a)[0x41f69a]
 
-62d0a]
-/dd4-dev/src/dd4(_start+0x2a)[0x41f69a]
+9a]
 

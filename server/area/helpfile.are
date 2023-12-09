@@ -461,7 +461,9 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 {W December 2023{x
 -New area in, Ota'ar Dar Residential Area - North, levels 50-55.
 -do_empty command added, fountains can now contain any liquid and
- be poisoned.  Ostat and area files updated to reflect changes.
+ be poisoned.  ostat and area files updated to reflect changes.
+-do_tfind added, to make finding teachers with particular skills
+and proficiency levels easier in-game.
 
 {W October 2023{x
 -New area in, Ota'ar Dar Military Fortress, levels 45-50.
@@ -2852,13 +2854,18 @@ The 'Perms' line shows permanently allocated memory blocks.  There is no
 limit on the number and size of these blocks.
 ~
 
-102 MFIND OFIND~
+102 MFIND OFIND TFIND~
 Syntax: mfind <<name>
 Syntax: ofind <<name>
+Syntax: tfind 'spell/skill group name' <<optional percentage>
 
 MFIND finds all mobile types with a particular name.
 
 OFIND finds all object types with a particular name.
+
+TFIND finds teachers in the domain who know particular spell or skill
+groups at or above a given percentage level. If no percentage is given,
+search defaults to 1.
 ~
 
 102 MSTAT OSTAT RSTAT~
