@@ -1410,11 +1410,13 @@ void do_empty (CHAR_DATA *ch, char *argument)
                     return;
 
                 }
-
                 return;
-                /* obj_from_char(obj);
-                obj_to_room(obj, ch->in_room);*/
 
+        }
+        else
+        {
+            send_to_char("What are you, a juggler?  One thing at a time.\n\r", ch);
+            return;
         }
 
 }
