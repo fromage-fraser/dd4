@@ -321,9 +321,9 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   571     /* +1 mppeace 8/10/23 */
-#define MAX_PRE_REQ                 1398    /* 1 reforge - Brutus 1/1/23 */
-#define MAX_SPELL_GROUP             452    /* +1 reforge Brutus 1/1/23 */
+#define MAX_SKILL                   572     /* +1 do_empty 9/12/23 */
+#define MAX_PRE_REQ                 1398    /* +1 reforge - Brutus 1/1/23 */
+#define MAX_SPELL_GROUP             452     /* +1 reforge Brutus 1/1/23 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
 #define MAX_VAMPIRE_GAG             27      /* 26 + 1 for 'swallow' | ugly vampire/werewolf hack */
@@ -4042,6 +4042,7 @@ extern PKSCORE_DATA             pkscore_table [ PKSCORE_TABLE_LENGTH ];
 extern INFAMY_TABLE             infamy_table [ INFAMY_TABLE_LENGTH ];
 
 
+
 /*
  * Command functions.
  * Defined in act_*.c (mostly).
@@ -4139,6 +4140,7 @@ DECLARE_DO_FUN( do_east                         );
 DECLARE_DO_FUN( do_eat                          );
 DECLARE_DO_FUN( do_echo                         );
 DECLARE_DO_FUN( do_emote                        );
+DECLARE_DO_FUN( do_empty                        );
 DECLARE_DO_FUN( do_enter                        );      /* enter for portal.. - Brutus */
 DECLARE_DO_FUN( do_engrave                      );
 DECLARE_DO_FUN( do_empower                      );      /* smithy Brutus Jul 2022 */

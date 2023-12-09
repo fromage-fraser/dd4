@@ -2828,6 +2828,20 @@ A shapeless grey garment lies on the floor at your feet.~
 9 0 1|8
 0~ 0~ 0~ 0~
 2 0 0
+#25724
+golden fountain blood~
+a small golden fountain~
+<227>A small golden fountain brims with what appears to be blood.<0>~
+~
+25 16|64|2305843009213693952 0
+0~ 0~ 13~ 0~
+150 0 0
+E
+golden fountain blood~
+The thick pool of blood burbles gently with what, on closer inspection, is
+definitely blood.  You can't see where the blood is coming from or draining to.
+You suspect magic.  Black magic.
+~
 
 #0
 
@@ -7740,6 +7754,8 @@ G 1 25716 100
 G 1 25719 100
 O 1 25718 100 25783         a crystal coffin to Overseer's Living Quarters
 P 1 25720 100 25718         a pile of gold and gems to container casket coffin crystal
+*
+O 1 25724 100 25784         blood fountain to Overseer's Living Quarters
 *
 O 1 25721 100 25771
 O 1 25722 100 25772

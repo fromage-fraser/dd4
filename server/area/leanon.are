@@ -105,7 +105,7 @@ a creek~
 A creek trickles quietly.~
 ~
 25 0 8192
-0~ 1~ 6~ 11~
+0~ 1~ 0~ 0~
 5 0 0
 #18201
 billy~
@@ -113,7 +113,7 @@ a billy~
 There is a fire crackling with a billy boiling away.~
 ~
 25 0 8192
-0~ 1~ 6~ 11~
+0~ 1~ 11~ 0~
 5 0 0
 #18202
 pitch fork pitchfork~

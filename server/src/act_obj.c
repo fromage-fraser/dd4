@@ -63,7 +63,7 @@ void get_obj (CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
         if (IS_SET( obj->extra_flags, ITEM_DEPLOYED) )
         {
                 send_to_char("The turret is deployed, try RETRACTING it.\n\r", ch);
-                return;     
+                return;
         }
 
         if (obj->item_type == ITEM_CLAN_OBJECT)
@@ -1137,10 +1137,10 @@ void do_deploy (CHAR_DATA *ch, char *argument)
         }
 
         if (IS_SET(ch->in_room->room_flags, ROOM_NO_DROP))
-	{
-	      send_to_char ("A powerful enchantment prevents you from deploying anything here.\n\r", ch);
-	      return;
-	}
+	    {
+                send_to_char ("A powerful enchantment prevents you from deploying anything here.\n\r", ch);
+                return;
+	    }
 
         if (str_cmp(arg, "all") && str_prefix("all.", arg))
         {
@@ -1186,8 +1186,8 @@ void do_retract (CHAR_DATA *ch, char *argument)
 
         if (str_cmp(arg, "all") && str_prefix("all.", arg))
         {
-        
-        
+
+
            /* 'get obj' */
                         obj = get_obj_list(ch, arg, ch->in_room->contents);
                         if (!obj)
@@ -1201,7 +1201,7 @@ void do_retract (CHAR_DATA *ch, char *argument)
                         act("$n retracts their $p.", ch, obj, NULL, TO_ROOM);
                         get_obj(ch, obj, NULL);
 
-                        /* Do we get the object?? 
+                        /* Do we get the object??
                         for (obj = ch->carrying; obj; obj = obj->next_content)
                         {
                                 if (pobj == obj)
@@ -1210,13 +1210,213 @@ void do_retract (CHAR_DATA *ch, char *argument)
 
                         if (!pobj)
                                 return; */
-             
+
         }
         else
         {
                 act("One object at a time please.", ch, NULL, NULL, TO_CHAR);
                 return;
         }
+}
+
+/* Empty contents of containers in rooms. --Owl 9/12/23 */
+
+void do_empty (CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA *obj;
+        OBJ_DATA *container;
+        char      arg [ MAX_INPUT_LENGTH ];
+        bool      found;
+        bool      first;
+
+        argument = one_argument(argument, arg);
+
+        if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
+        {
+                send_to_char("Not in your current form.\n\r", ch);
+                return;
+        }
+
+        if (ch->position == POS_FIGHTING)
+        {
+                send_to_char( "Not while you're fighting!\n\r", ch );
+                return;
+        }
+
+        if (arg[0] == '\0')
+        {
+                send_to_char("Empty what?\n\r", ch);
+                return;
+        }
+
+        if (IS_SET(ch->in_room->room_flags, ROOM_NO_DROP))
+        {
+                send_to_char ("A powerful enchantment prevents you from emptying anything here.\n\r", ch);
+                return;
+        }
+
+        if (str_cmp(arg, "all") && str_prefix("all.", arg))
+        {
+                /* 'empty obj' */
+
+                if (!(container = get_obj_here(ch, arg)))
+                {
+                        act("I see no $T here.", ch, NULL, arg, TO_CHAR);
+                        return;
+                }
+
+                switch (container->item_type)
+                {
+                    default:
+                        send_to_char("You can't empty that.\n\r", ch);
+                        return;
+
+                    case ITEM_CONTAINER:
+                    case ITEM_CORPSE_NPC:
+                        break;
+
+                    case ITEM_DRINK_CON:
+                        {
+                            if ( container->value[1] == 0)
+                            {
+                                send_to_char("It's already empty.\n\r", ch);
+                                return;
+                            }
+
+                            act("You empty $p.", ch, container, NULL, TO_CHAR);
+                            act("$n empties $p.", ch, container, NULL, TO_ROOM);
+                            container->value[1] = 0;
+                            return;
+                        }
+
+                    case ITEM_FOUNTAIN:
+                        send_to_char("You can't empty that--its contents are inexhaustible!\n\r", ch);
+                        return;
+
+                    case ITEM_CORPSE_PC:
+                        {
+                                char      *pd;
+                                char       name[ MAX_INPUT_LENGTH ];
+
+                                if (IS_NPC(ch))
+                                {
+                                        send_to_char("You can't do that.\n\r", ch);
+                                        return;
+                                }
+
+                                pd = container->short_descr;
+                                pd = one_argument(pd, name);
+                                pd = one_argument(pd, name);
+                                pd = one_argument(pd, name);
+
+                                if (!str_cmp(name, ch->name) && ch->level <= LEVEL_HERO)
+                                {
+                                        send_to_char("You can't do that.\n\r", ch);
+                                        return;
+                                }
+                                else {
+                                    /* Be an Imm looting a player corpse or a player emptying their own corpse? */
+                                    OBJ_DATA *obj_next;
+                                    found = FALSE;
+                                    first = FALSE;
+
+                                    for (obj = container->contains; obj; obj = obj_next)
+                                    {
+                                        obj_next = obj->next_content;
+
+                                        if ((arg[3] == '\0' || is_name(&arg[4], obj->name))
+                                        &&   can_see_obj(ch, obj))
+                                        {
+                                                found = TRUE;
+
+                                                if (ch->carry_number + get_obj_number(obj) > can_carry_n(ch))
+                                                {
+                                                        act("Your hands are too full to get items from $p.", ch, container, NULL, TO_CHAR);
+                                                        return;
+                                                }
+
+                                                if (first == FALSE)
+                                                {
+                                                    first = TRUE;
+                                                    act("{WYou remove all the items from $p.{x", ch, container, NULL, TO_CHAR);
+                                                    act("{W$n removes all the items from $p.{x", ch, container, NULL, TO_ROOM);
+                                                }
+                                                get_obj(ch, obj, container);
+                                                obj_from_char(obj);
+                                                obj_to_room(obj, ch->in_room);
+                                                act("You drop $p.", ch, obj, NULL, TO_CHAR);
+                                                act("$n drops $p.", ch, obj, NULL, TO_ROOM);
+                                        }
+
+                                    }
+
+                                    if (!found)
+                                    {
+                                        /* Means there was nothing in the corpse */
+                                        send_to_char("You can't see anything in it.\n\r", ch);
+                                        return;
+
+                                    }
+
+                                    return;
+                                }
+                        }
+                }
+
+                if (IS_SET(container->value[1], CONT_CLOSED))
+                {
+                        act("$P is closed.", ch, NULL, container, TO_CHAR);
+                        return;
+                }
+
+                OBJ_DATA *obj_next;
+                found = FALSE;
+                first = FALSE;
+
+                for (obj = container->contains; obj; obj = obj_next)
+                {
+                    obj_next = obj->next_content;
+
+                    if ((arg[3] == '\0' || is_name(&arg[4], obj->name))
+                    &&   can_see_obj(ch, obj))
+                    {
+                            found = TRUE;
+
+                            if (ch->carry_number + get_obj_number(obj) > can_carry_n(ch))
+                            {
+                                    act("Your hands are too full to empty $p.", ch, container, NULL, TO_CHAR);
+                                    return;
+                            }
+
+                            if (first == FALSE)
+                            {
+                                first = TRUE;
+                                act("{WYou empty $p.{x", ch, container, NULL, TO_CHAR);
+                                act("{W$n empties $p.{x", ch, container, NULL, TO_ROOM);
+                            }
+                            get_obj(ch, obj, container);
+                            obj_from_char(obj);
+                            obj_to_room(obj, ch->in_room);
+                            act("You drop $p.", ch, obj, NULL, TO_CHAR);
+                            act("$n drops $p.", ch, obj, NULL, TO_ROOM);
+                    }
+
+                }
+
+                if (!found)
+                {
+                    /* Means there was nothing in the container */
+                    send_to_char("It's already empty.\n\r", ch);
+                    return;
+
+                }
+
+                return;
+                /* obj_from_char(obj);
+                obj_to_room(obj, ch->in_room);*/
+
+        }
+
 }
 
 void do_drop (CHAR_DATA *ch, char *argument)
@@ -1240,10 +1440,10 @@ void do_drop (CHAR_DATA *ch, char *argument)
         }
 
         if (IS_SET(ch->in_room->room_flags, ROOM_NO_DROP))
-	{
-	      send_to_char ("A powerful enchantment prevents you from dropping anything here.\n\r", ch);
-	      return;
-	}
+        {
+                send_to_char ("A powerful enchantment prevents you from dropping anything here.\n\r", ch);
+                return;
+        }
 
         if (is_number(arg))
         {
@@ -1739,7 +1939,7 @@ void do_fill (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (obj->value[1] != 0 && obj->value[2] != 0)
+        if (obj->value[1] != 0 && obj->value[2] != fountain->value[2])
         {
                 send_to_char("There is already another liquid in it.\n\r", ch);
                 return;
@@ -1751,8 +1951,10 @@ void do_fill (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        act("You fill $p.", ch, obj, NULL, TO_CHAR);
-        obj->value[2] = 0;
+        act("You fill $p with $T.", ch, obj, liq_table[fountain->value[2]].liq_name, TO_CHAR);
+        act("$n fills $p with $T.", ch, obj, liq_table[fountain->value[2]].liq_name, TO_ROOM);
+
+        obj->value[2] = fountain->value[2];
         obj->value[1] = obj->value[0];
         return;
 }
@@ -1785,7 +1987,7 @@ void do_drink (CHAR_DATA *ch, char *argument)
                 {
                         if ( ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG )
                         {
-                                send_to_char("Get water from what?\n\r", ch);
+                                send_to_char("Get moisture from what?\n\r", ch);
                         }
                         else {
                                 send_to_char("Drink what?\n\r", ch);
@@ -1819,7 +2021,7 @@ void do_drink (CHAR_DATA *ch, char *argument)
             default:
                 if ( ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG )
                 {
-                        send_to_char("You can't get water from that.\n\r", ch);
+                        send_to_char("You can't get moisture from that.\n\r", ch);
                 }
                 else {
                         send_to_char("You can't drink from that.\n\r", ch);
@@ -1827,20 +2029,71 @@ void do_drink (CHAR_DATA *ch, char *argument)
                 break;
 
             case ITEM_FOUNTAIN:
-                if (!IS_NPC(ch))
-                        ch->pcdata->condition[COND_THIRST] = 48;
+
+                liquid = obj->value[2];
 
                 if ( ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG )
                 {
-                        act("You bathe yourself in $p.",ch,obj,NULL,TO_CHAR);
-                        send_to_char("You are no longer dehydrated.\n\r",ch);
-                        act("$n bathes $mself in $p.", ch, obj, NULL, TO_ROOM);
+                        /* Bathing in any liquid restores body moisture for sahuagin and grung */
+                        if (!IS_NPC(ch))
+                        {
+                            ch->pcdata->condition[COND_THIRST] = 48;
+                        }
+                        act("You bathe yourself in $T from $p.",ch,obj,liq_table[obj->value[2]].liq_name,TO_CHAR);
+                        send_to_char("You are fully hydrated.\n\r",ch);
+                        act("$n bathes $mself in $T from $p.", ch, obj, liq_table[obj->value[2]].liq_name, TO_ROOM);
                 }
                 else {
-                        act("You drink from $p.",ch,obj,NULL,TO_CHAR);
-                        send_to_char("You are not thirsty.\n\r",ch);
-                        act("$n drinks from $p.", ch, obj, NULL, TO_ROOM);
+                        act("You drink $T from $p.", ch, obj, liq_table[obj->value[2]].liq_name, TO_CHAR);
+                        act("$n drinks $T from $p.", ch, obj, liq_table[obj->value[2]].liq_name, TO_ROOM);
+
+                        amount = 48;
+
+                        gain_condition(ch, COND_DRUNK, amount * liq_table[liquid].liq_effect[COND_DRUNK  ]);
+                        gain_condition(ch, COND_FULL, amount * liq_table[liquid].liq_effect[COND_FULL   ]);
+                        gain_condition(ch, COND_THIRST, amount * liq_table[liquid].liq_effect[COND_THIRST ]);
+
+                        if (!IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK ] > 10)
+                                send_to_char("You feel drunk.\n\r", ch);
+
+                        if (!IS_NPC(ch) && ch->pcdata->condition[COND_THIRST] > 46)
+                        {
+                                send_to_char("You do not feel thirsty.\n\r", ch);
+                        }
+
+                        if ( ch->race != RACE_SAHUAGIN && ch->race != RACE_GRUNG )
+                        {
+                                if (!IS_NPC(ch) && ch->pcdata->condition[COND_FULL  ] > 46)
+                                {
+                                        send_to_char("You are full.\n\r", ch);
+                                }
+                        }
+
+                        /* Fountain has been poisoned */
+                        if ( obj->value[3] != 0 )
+                        {
+                                AFFECT_DATA af;
+
+                                send_to_char("You choke and gag.\n\r", ch);
+                                act("$n chokes and gags.", ch, NULL, NULL, TO_ROOM);
+                                af.type      = gsn_poison;
+                                af.duration  = 3 * amount;
+                                af.location  = APPLY_STR;
+                                af.modifier  = -5;
+                                af.bitvector = AFF_POISON;
+                                affect_join(ch, &af);
+                        }
+
                 }
+
+                /* Vampires can't just drink blood from containers/fountains */
+                if ( ( ch->sub_class == SUB_CLASS_VAMPIRE)
+                &&   ( liquid == 13 )
+                &&   ( obj->value[3] == 0) )
+                {
+                    send_to_char("{RWhile delicious to drink, blood must be from a fresh corpse to satisfy bloodlust.{x\n\r", ch);
+                }
+
                 break;
 
             case ITEM_DRINK_CON:
@@ -1872,9 +2125,9 @@ void do_drink (CHAR_DATA *ch, char *argument)
                 amount = number_range(3, 10);
                 amount = UMIN(amount, obj->value[1]);
 
-                /* Salt water has the same effect as regular water for sahuagin */
+                /* Salt water has the same effect as regular water for sahuagin & grung */
 
-                if ( ( ch->race == RACE_SAHUAGIN )
+                if ( ( ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG )
                 &&   ( liquid == 14 ) )
                         liquid = 0;
 
@@ -1890,13 +2143,10 @@ void do_drink (CHAR_DATA *ch, char *argument)
 
                 if ( ch->race != RACE_SAHUAGIN && ch->race != RACE_GRUNG )
                 {
-                        if (!IS_NPC(ch) && ch->pcdata->condition[COND_FULL  ] > 40)
-                                send_to_char("You are full.\n\r", ch);
+                    if (!IS_NPC(ch) && ch->pcdata->condition[COND_FULL  ] > 46)
+                            send_to_char("You are full.\n\r", ch);
                 }
-                else{
-                        if (!IS_NPC(ch) && ch->pcdata->condition[COND_FULL  ] > 40)
-                                send_to_char("You are fully hydrated.\n\r", ch);
-                }
+
                 if ( ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG )
                 {
                         if (!IS_NPC(ch) && ch->pcdata->condition[COND_THIRST] > 40)
@@ -1905,6 +2155,14 @@ void do_drink (CHAR_DATA *ch, char *argument)
                 else {
                         if (!IS_NPC(ch) && ch->pcdata->condition[COND_THIRST] > 40)
                                 send_to_char("You do not feel thirsty.\n\r", ch);
+                }
+
+                /* Vampires can't just drink blood from containers/fountains */
+                if ( (ch->sub_class == SUB_CLASS_VAMPIRE)
+                    && ( liquid == 13 )
+                    && (obj->value[3] == 0) )
+                {
+                    send_to_char("{RWhile delicious to drink, blood must be from a fresh corpse to satisfy bloodlust.{x\n\r", ch);
                 }
 
                 if ( obj->value[3] != 0 )
