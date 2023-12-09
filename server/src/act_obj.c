@@ -427,7 +427,7 @@ void do_get (CHAR_DATA *ch, char *argument)
                         for (obj = container->contains; obj; obj = obj_next)
                         {
                                 obj_next = obj->next_content;
-                                /* detect curse prevents autolooting of cursed items */
+                                /* detect curse prevents autolooting of cursed and noremove/nodrop items */
                                 /* Fix this so it checks spell num AND name at some point -- Owl 7/3/22 */
                                 if ( ( ( IS_OBJ_STAT( obj, ITEM_NODROP )
                                         || IS_OBJ_STAT( obj, ITEM_NOREMOVE )
@@ -1138,7 +1138,7 @@ void do_deploy (CHAR_DATA *ch, char *argument)
 
         if (IS_SET(ch->in_room->room_flags, ROOM_NO_DROP))
 	    {
-                send_to_char ("A powerful enchantment prevents you from deploying anything here.\n\r", ch);
+                send_to_char ("<39>A powerful enchantment prevents you from deploying anything here.<0>\n\r", ch);
                 return;
 	    }
 
@@ -1251,7 +1251,7 @@ void do_empty (CHAR_DATA *ch, char *argument)
 
         if (IS_SET(ch->in_room->room_flags, ROOM_NO_DROP))
         {
-                send_to_char ("A powerful enchantment prevents you from emptying anything here.\n\r", ch);
+                send_to_char ("<39>A powerful enchantment prevents you from emptying anything here.<0>\n\r", ch);
                 return;
         }
 
@@ -1443,7 +1443,7 @@ void do_drop (CHAR_DATA *ch, char *argument)
 
         if (IS_SET(ch->in_room->room_flags, ROOM_NO_DROP))
         {
-                send_to_char ("A powerful enchantment prevents you from dropping anything here.\n\r", ch);
+                send_to_char ("<39>A powerful enchantment prevents you from dropping anything here.<0>\n\r", ch);
                 return;
         }
 
