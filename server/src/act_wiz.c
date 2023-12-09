@@ -1027,8 +1027,8 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 return;
         }
 
-        sprintf( buf, "Vnum: {R%d{x How Created: {W%d{x\n\r",
-                obj->pIndexData->vnum, obj->how_created);
+        sprintf( buf, "Vnum: {G%d{x\n\r",
+                obj->pIndexData->vnum);
         strcat( buf1, buf );
 
 
@@ -1235,7 +1235,10 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 strcat( buf1, "{x'\n\r" );
         }
 
-        sprintf( buf, "This item and effects were created with {W%s{x\n\r", created_name(obj->how_created));
+        sprintf( buf, "Creation method: {G%d{x [ {W%s{x ]\n\r",
+            obj->how_created,
+            created_name(obj->how_created)
+        );
         strcat( buf1, buf );
 
         if (obj->how_created >= CREATED_NO_RANDOMISER )
@@ -1308,7 +1311,7 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 strcat(buf1, buf);
         }
 
-        sprintf(buf, "Object Score: %d Identified: %s\n\r", calc_item_score(obj), obj->identified ? "true" : "false");
+        sprintf(buf, "Object score: {W%d{x  Identified: %s\n\r", calc_item_score(obj), obj->identified ? "{Gtrue{x" : "{Rfalse{x");
         strcat(buf1, buf);
 
         if ( (pObjSetIndex = objects_objset(obj->pIndexData->vnum) ) )
@@ -2127,6 +2130,7 @@ void do_mfind( CHAR_DATA *ch, char *argument )
         extern int      top_mob_index;
         int             vnum;
         int             nMatch;
+        int             listnum = 1;
         bool            fAll;
         bool            found;
 
@@ -2167,8 +2171,9 @@ void do_mfind( CHAR_DATA *ch, char *argument )
                         if ( fAll || multi_keyword_match( arg, pMobIndex->player_name ) )
                         {
                                 found = TRUE;
-                                sprintf( buf, "[%5d] %s\n\r",
-                                        pMobIndex->vnum, pMobIndex->short_descr );
+                                sprintf( buf, "{Y%3d{x. [{W%5d{x] {c%s{x\n\r",
+                                        listnum, pMobIndex->vnum, pMobIndex->short_descr );
+                                listnum++;
                                 if ( !fAll )
                                         strcat( buf1, buf );
                                 else
@@ -2188,6 +2193,112 @@ void do_mfind( CHAR_DATA *ch, char *argument )
         return;
 }
 
+/* Find teachers based on the skills they teach and beyond what % level -- Owl 9/12/23 */
+
+void do_tfind( CHAR_DATA *ch, char *argument )
+{
+        CHAR_DATA      *rch;
+        MOB_INDEX_DATA *pMobIndex;
+        char            *target_skill;
+        char            buf     [ MAX_STRING_LENGTH   ];
+        char            buf1    [ MAX_STRING_LENGTH*2 ];
+        char            headbuf [ MAX_STRING_LENGTH   ];
+        char            arg1    [ MAX_INPUT_LENGTH    ];
+        char            arg2    [ MAX_INPUT_LENGTH    ];
+        extern int      top_mob_index;
+        int             vnum;
+        int             nMatch;
+        int             listnum = 1;
+        int             sn;
+        int             skill_value;
+        bool            fAll;
+        bool            found;
+        bool            first_result;
+
+        rch = get_char( ch );
+
+        if ( !authorized( rch, gsn_tfind ) )
+                return;
+
+        target_skill = one_argument( argument, arg1 );
+        one_argument( target_skill, arg2 );
+
+        if ( arg1[0] == '\0' )
+        {
+                send_to_char( "Tfind for which skill/spell?\n\r", ch );
+                return;
+        }
+
+        sn = skill_lookup(arg1);
+
+        if (sn == -1)
+        {
+                send_to_char( "No such skill/spell.\n\r", ch );
+                return;
+        }
+
+        skill_value = atoi(arg2);
+
+        if (skill_value == 0)
+        {
+            skill_value = 1;
+        }
+
+        buf1[0]         = '\0';
+        fAll            = FALSE;
+        found           = FALSE;
+        first_result    = FALSE;
+        nMatch          = 0;
+
+        for ( vnum = 0; nMatch < top_mob_index; vnum++ )
+        {
+                if ( ( pMobIndex = get_mob_index( vnum ) ) )
+                {
+                        nMatch++;
+
+                        if ( fAll
+                        ||   ( IS_SET(pMobIndex->act, ACT_PRACTICE ) && ( pMobIndex->skills ) ) )
+                        {
+                                if ( (pMobIndex->skills->learned[sn] >= skill_value ) )
+                                {
+                                    found = TRUE;
+                                    if (first_result == FALSE)
+                                    {
+                                        /* print stuff, set it to false */
+                                        sprintf (headbuf, "{W========================================================================{x\r\n{WThe following teachers know '{G%s{x' at or above {G%d{x\r\n{W========================================================================{x\r\n",
+                                            skill_table[sn].name,
+                                            skill_value
+                                        );
+                                        send_to_char( headbuf, ch );
+                                        first_result = TRUE;
+                                    }
+                                    sprintf( buf, "{Y%3d{x. [{W%5d{x] ({G%3d{x) {c%s{x\n\r",
+                                            listnum,
+                                            pMobIndex->vnum,
+                                            pMobIndex->skills->learned[sn],
+                                            pMobIndex->short_descr);
+                                    listnum++;
+                                    if ( !fAll )
+                                        strcat( buf1, buf );
+                                    else
+                                        send_to_char( buf, ch );
+                                }
+                        }
+                }
+        }
+
+        if ( !found )
+        {
+                send_to_char( "No one teaches that specifically. Try the spell or skill group it belongs to.\n\r", ch);
+                return;
+        }
+
+        if ( !fAll )
+                send_to_char( buf1, ch );
+        return;
+}
+
+
 void do_ofind( CHAR_DATA *ch, char *argument )
 {
         CHAR_DATA      *rch;
@@ -2197,6 +2308,7 @@ void do_ofind( CHAR_DATA *ch, char *argument )
         char            arg  [ MAX_INPUT_LENGTH    ];
         extern int      top_obj_index;
         int             vnum;
+        int             listnum = 1;
         int             nMatch;
         bool            fAll;
         bool            found;
@@ -2232,8 +2344,9 @@ void do_ofind( CHAR_DATA *ch, char *argument )
                         if ( fAll || multi_keyword_match( arg, pObjIndex->name ) )
                         {
                                 found = TRUE;
-                                sprintf( buf, "[%5d] %s\n\r",
-                                        pObjIndex->vnum, pObjIndex->short_descr );
+                                sprintf( buf, "{Y%3d{x. [{W%5d{x] {g%s{w\n\r",
+                                        listnum, pObjIndex->vnum, pObjIndex->short_descr );
+                                listnum++;
                                 if ( !fAll )
                                         strcat( buf1, buf );
                                 else
@@ -2477,12 +2590,12 @@ void do_mwhere( CHAR_DATA *ch, char *argument )
                     && multi_keyword_match( arg, victim->name ) )
                 {
                         found = TRUE;
-                        sprintf( buf, "%-3d [%5d] %-28s [%5d] %s\n\r",
+                        sprintf( buf, "{Y%3d{x. {c%s{x [{W%d{x] at {m%s{x [{W%d{x] \n\r",
                                 ++count,
-                                victim->pIndexData->vnum,
                                 victim->short_descr,
-                                victim->in_room->vnum,
-                                victim->in_room->name );
+                                victim->pIndexData->vnum,
+                                victim->in_room->name,
+                                victim->in_room->vnum );
                         send_to_char (buf, ch);
                 }
         }
@@ -2728,8 +2841,8 @@ void do_mnstat( CHAR_DATA *ch, char *argument )
 {
         CHAR_DATA      *rch;
         MOB_INDEX_DATA *pMobIndex;
-                char       buf  [ MAX_STRING_LENGTH ];
-        char       buf1 [ MAX_STRING_LENGTH ];
+        char            buf  [ MAX_STRING_LENGTH ];
+        char            buf1 [ MAX_STRING_LENGTH ];
         char            arg [ MAX_INPUT_LENGTH ];
 
         rch = get_char( ch );
@@ -5758,17 +5871,19 @@ void do_owhere( CHAR_DATA *ch, char *argument )
                                 if ( !can_see( ch, in_obj->carried_by ) )
                                         continue;
 
-                                sprintf( buf, "[%-3d] {g%s{x carried by {c%s{x at [%5d]\n\r",
+                                sprintf( buf, "{Y%3d{x. {g%s{x [{W%d{x] carried by {c%s{x at [{W%d{x]\n\r",
                                         obj_counter,
                                         obj->short_descr,
+                                        obj->pIndexData->vnum,
                                         PERS( in_obj->carried_by, ch ),
                                         in_obj->carried_by->in_room->vnum );
                         }
                         else
                         {
-                                sprintf( buf, "[%-3d] {g%s{x in {c%s{x at [%5d]\n\r",
+                                sprintf( buf, "{Y%3d{x. {g%s{x [{W%d{x] in {m%s{x at [{W%d{x]\n\r",
                                         obj_counter,
                                         obj->short_descr,
+                                        obj->pIndexData->vnum,
                                         ( !in_obj->in_room ) ?
                                         "somewhere" : in_obj->in_room->name,
                                         ( !in_obj->in_room ) ?
