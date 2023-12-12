@@ -3967,6 +3967,84 @@ You examine a map of the Ota'ar Dar arena/jail's upper level...
 
 {x
 ~
+#27568
+map Ota'ar Dar military fortress lower~
+a map of the Ota'ar Dar military fortress - lower level~
+A map of the Ota'ar Dar military fortress's lower level lies here.~
+~
+2 0 1|16384
+0~ ~ ~ ~
+1 0 35
+E
+map Ota'ar Dar military fortress lower~
+You examine a map of the Ota'ar Dar military fortress's lower level...
+
+          {m[ ]{x
+    {m[ ]{M[ ]{x{G[ ]{M[ ]{x
+    {M[ ]{G[{W*{x{G][{W*{x{G][{W*{x{G]{M[ ]{x
+    {M[{W*{x{M]{C[ ][{W*{x{C][{W*{x{C]{G[ ]{x{m[ ]{x
+    {M[ ]{G[{W*{x{G][{W*{x{G][{W*{x{G]{M[ ]{x
+    {m[ ]{M[ ]{G[{W*{x{G]{x
+{x
+~
+#27569
+map Ota'ar Dar military fortress upper~
+a map of the Ota'ar Dar military fortress - upper level~
+A map of the Ota'ar Dar military fortress's upper level lies here.~
+~
+2 0 1|16384
+0~ ~ ~ ~
+1 0 35
+E
+map Ota'ar Dar military fortress upper~
+You examine a map of the Ota'ar Dar military fortress's upper level...
+
+          {m[{W*{x{m]{x
+    {m[ ]{B[ ]{x{g[{W*{x{g]{B[ ]{x
+    {B[ ]{x{g[{W*{x{g][{W*{x{g][{W*{x{g]{B[ ]{x
+    {B[ ]{x{g[{W*{x{g][{W*{x{g][{W*{x{g]{g[ ]{x{m[ ]{x
+    {B[ ]{x{g[{W*{x{g][{R*{x{g][{W*{x{g]{B[ ]{x
+    {m[ ]{B[ ]{x{g[ ]{x
+{x
+~
+#27570
+map Ota'ar Dar northern residential area lower level~
+a map of the Ota'ar Dar northern residential area - lower level~
+A map of the Ota'ar Dar northern residential area's lower level lies here.~
+~
+2 0 1|16384
+0~ ~ ~ ~
+1 0 40
+E
+map Ota'ar Dar northern residential area lower~
+You examine a map of the Ota'ar Dar northern residential area's lower level...
+
+          {G[{W*{x{G][{W*{x{G]{x
+       {G[{W*{x{G]{C[ ]{x{G[{W*{x{G]
+    {G[ ][ ]{C[ ]{G[ ]{C[ ]{x
+    {C[{W?{x{C][ ][{W?{x{C][ ][ ]{x
+    {G[{W*{x{G][ ]{C[ ]{x{G[{W*{x{G][{W*{x{G]{x
+{x
+~
+#27571
+map Ota'ar Dar northern residential area upper level~
+a map of the Ota'ar Dar northern residential area - upper level~
+A map of the Ota'ar Dar northern residential area's upper level lies here.~
+~
+2 0 1|16384
+0~ ~ ~ ~
+1 0 40
+E
+map Ota'ar Dar northern residential area upper~
+You examine a map of the Ota'ar Dar northern residential area's upper level...
+
+          {c[{W*{x{c][{R*{x{c]{x
+       {c[ ]{g[ ]{c[{W?{x{c]{x
+    {c[{W*{x{c][ ]{g[ ]{c[{W*{x{c]{g[ ]{x
+    {g[ ][ ][ ][ ][ ]{x
+    {c[{W*{x{c][{W*{x{c]{g[ ]{c[{W*{x{c][ ]{x
+{x
+~
 #0
 
 
@@ -6439,6 +6517,10 @@ G 1 27467 100
 G 1 20670 100
 G 1 27507 100
 G 1 27508 100
+G 1 27568 100
+G 1 27569 100
+G 1 27570 100
+G 1 27571 100
 *
 O 1 27263 100 27625			a heavy trunk to Reavers' Guild Master's Quarters
 P 1 27265 100 27263			a Reaver's heavy crossbow to container trunk heavy
@@ -6795,6 +6877,10 @@ P 1 27411 100 27206         a map of the dragon caves to container a metal sea c
 P 1 20670 100 27206         a map of the Vampyre Vale to container a metal sea chest trunk
 P 1 27507 100 27206         a map of the Ota'ar Dar arena/jail - lower to container a metal sea chest trunk
 P 1 27508 100 27206         a map of the Ota'ar Dar arena/jail - upper to container a metal sea chest trunk
+P 1 27568 100 27206         a map of the Ota'ar Dar Military Fortress - lower to container a metal sea chest trunk
+P 1 27569 100 27206         a map of the Ota'ar Dar Military Fortress - upper to container a metal sea chest trunk
+P 1 27570 100 27206         a map of the Ota'ar Dar Northern Residential Area - lower to container a metal sea chest trunk
+P 1 27571 100 27206         a map of the Ota'ar Dar Northern Residential Area - upper to container a metal sea chest trunk
 *
 M 1 27202 3 27610			a Dragonhoard clerk to Dragonhoard Office
 E 1 27237 100 17

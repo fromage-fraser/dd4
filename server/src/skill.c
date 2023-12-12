@@ -1197,7 +1197,7 @@ void kansetsu (CHAR_DATA *ch, CHAR_DATA *victim)
 
         if (!HAS_ARMS (victim))
         {
-                act ("<105>$N has no wrists for you to break.<0>", ch, NULL, victim, TO_CHAR);
+                act ("<105>Alas, $N has no wrists for you to break.<0>", ch, NULL, victim, TO_CHAR);
                 return;
         }
 
@@ -1213,7 +1213,7 @@ void kansetsu (CHAR_DATA *ch, CHAR_DATA *victim)
 
         if (!obj)
         {
-                act ("<99>$N has no weapon.<0>", ch, NULL, victim, TO_CHAR);
+                act ("<99>Alas, $N has no weapon.<0>", ch, NULL, victim, TO_CHAR);
                 return;
         }
 
