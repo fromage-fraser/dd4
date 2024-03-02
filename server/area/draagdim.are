@@ -585,6 +585,16 @@ mpecho {dWhispered promises of power and wisdom enter your mind.{x
 ~
 |
 & 60 'teacher base'
+& 105 'weaponsmithing'
+& 105 'armoursmithing'
+& 105 'mech tech'
+& 105 'turret tech'
+& 105 'runic arts'
+& 105 'rune casting'
+& 105 'inscription'
+& 30 'smithy base'
+& 30 'engineer base'
+& 30 'runesmith base'
 & 105 'joust'
 & 105 'death magiks'
 & 105 'martial arts'
@@ -1004,7 +1014,7 @@ her little shop as she continually pores over her latest stock.
 0 0 2
 >all_greet_prog 100~
 if carrying($n) == 28087
-mpecho Alvn suddenly flinches back.
+mpecho Alvyn suddenly flinches back.
 say That sword...that's...Dear Goddess....Thasei protect me....
 say Please, leave. Please! Go!
 mpecho {YThasei's voice enters your mind:{x
@@ -1311,6 +1321,22 @@ he will!
 45 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+
+#28061
+Helian man~
+Helian~
+A purple-suited man smiles at you, stroking his pencil moustache.
+~
+Helian is a tall, thin, very dapper-looking man with a thin pencil moustache
+and slicked-back jet-black hair.  He's wearing a sharp-looking purple suit
+and regards you in an oily and predatory manner.  There's something quite
+"off" about him that's hard to put your finger on.
+~
+2|64|262144 8|32|8192 -375 S
+45 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
 #0
 
 #OBJECTS
@@ -3288,8 +3314,8 @@ S
 #28038
 The Square~
 You stand in a large square whose centre is dominated by a large
-statue. To the south you espy a shop sign and to the east you see the
-North Gate road.
+statue. To the south and west you espy shop signs and to the east
+you see the North Gate road.
 ~
 0 0 1
 D 2
@@ -3300,6 +3326,10 @@ D 1
 ~
 ~
 0 -1 28037
+D 3
+~
+~
+0 -1 28201
 E
 statue~
 The statue depicts two figures, one a massive, half-dragon
@@ -6302,6 +6332,20 @@ D 3
 0 -1 28039
 S
 
+#28201
+The Purple Pipe~
+You stand in one of the most magnificent magical tobacconist stores you have
+ever seen.  Magical pipes and smokeables of all kinds festoon the walls and
+no expense has been spared in their acquisition and display.  It's hard to
+know where to start.
+~
+0 8|8192 0
+D 1
+~
+~
+0 -1 28038
+S
+
 #0
 
 #RESETS
@@ -6756,7 +6800,7 @@ M 0 28047 7 28189               add The Royal Guardsman to The Throne Room
 M 0 28047 7 28189               add The Royal Guardsman to The Throne Room
 M 0 28047 7 28188               add The Royal Guardsman to The palace hall
 M 0 28048 2 28181               add a city guard to The gates
-M 0 28060 2 28200               add Gyrne to the tinkery
+M 0 28060 1 28200               add Gyrne to the tinkery
 E 0 28086 0 5                       equip a chain shirt (body)
 E 0 28085 0 11                      equip a shield (shield)
 E 0 28084 0 16                      equip a sword (wield)
@@ -6781,6 +6825,13 @@ I 28047 100 28176 1             a broken longsword to Firetongue's Room
 I 28048 100 28176 1             pitted full plate armor to Firetongue's Room
 I 28049 100 28176 1             a burnt kite shield to Firetongue's Room
 I 28056 48 28075 1              crysomer to The Fane of the Crysomer
+M 1 28061 1 28201               ; Helian to the Purple Pipe
+G 1 566 100
+G 1 567 100
+G 1 568 100
+G 1 569 100
+G 1 570 100
+
 S
 
 #SHOPS
@@ -6796,6 +6847,7 @@ S
 28010 19 10 0 0 0 200 100 0 23  shop run by the Barkeep
 28016 5 9 0 0 0 200 100 0 23    shop run by Jasmir the Armourer
 28012 19 10 0 0 0 200 100 0 23  shop run by the waiter
+28061 52 53 54 0 0 200 100 0 23  shop run by Helian
 0
 
 #SPECIALS

@@ -913,7 +913,8 @@ void spell_inner_fire (int sn, int level, CHAR_DATA *ch, void *vo)
         if (saves_spell(level,victim))
                 dam /= 2;
 
-        if (spell_attack_number == 1)
+        if ( spell_attack_number == 1
+        &&  ( ch != victim ) )
         {
             if (IS_INORGANIC( victim ))
             {
@@ -946,7 +947,13 @@ void spell_synaptic_blast (int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (spell_attack_number == 1)
         {
-                act("$N clutches $S head in agony!", ch, NULL, victim, TO_CHAR);
+                if (ch == victim) {
+                    send_to_char("You clutch your head in agony!\n\r", ch);
+                }
+                else
+                {
+                    act("$N clutches $S head in agony!", ch, NULL, victim, TO_CHAR);
+                }
                 act("$N clutches $S head in agony!", ch, NULL, victim, TO_NOTVICT);
         }
 
@@ -969,7 +976,7 @@ void spell_prismatic_spray (int sn, int level, CHAR_DATA *ch, void *vo)
         if (spell_attack_number == 1)
         {
                 act("A spray of multi-coloured light shoots from $n's hand!", ch, NULL, NULL, TO_ROOM);
-                act("You send forth a stream of {Yelemental{x death!", ch, NULL, NULL, TO_CHAR);
+                act("You send forth a stream of <11>elemental<0> death!", ch, NULL, NULL, TO_CHAR);
         }
 
         damage(ch, victim, dam, sn, FALSE);
@@ -993,7 +1000,8 @@ void spell_holy_word (int sn, int level, CHAR_DATA *ch, void *vo)
         if (IS_EVIL(victim))
                 dam *= 2;
 
-        if (spell_attack_number == 1)
+        if (spell_attack_number == 1
+        && (ch != victim ))
         {
                 act("You call upon the power of $D to smite $N!", ch, NULL, victim, TO_CHAR);
                 act("$c calls upon the power of their god to smite $N!", ch, NULL, victim, TO_NOTVICT);
@@ -1020,7 +1028,8 @@ void spell_unholy_word (int sn, int level, CHAR_DATA *ch, void *vo)
         if (IS_GOOD(victim))
                 dam *= 2;
 
-        if (spell_attack_number == 1)
+        if (spell_attack_number == 1
+        && (ch != victim ))
         {
                 act("You call upon the power of $D to smite $N!", ch, NULL, victim, TO_CHAR);
                 act("$c calls upon the power of their god to smite $N!", ch, NULL, victim, TO_NOTVICT);
@@ -1040,7 +1049,7 @@ void spell_armor (int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
 
         af.type      = sn;
-        af.duration  = UMAX(24, ch->level);
+        af.duration  = UMAX(24, level);
         af.location  = APPLY_AC;
         af.modifier  = -20;
         af.bitvector = 0;
@@ -1157,7 +1166,13 @@ void spell_blindness (int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (saves_spell(level, victim))
         {
-                send_to_char( "They resist your spell!\n\r", ch );
+                if( ch != victim )
+                {
+                    send_to_char( "They resist your spell!\n\r", ch );
+                }
+                else {
+                    send_to_char( "You resist a blindness spell!\n\r", ch );
+                }
                 /* Shade 12.2.22 */
                 /* Make a save initiate combat and do a minor amount of damage */
                 damage(ch, victim, number_range(1, ch->level/2), gsn_blindness, FALSE);
@@ -1352,6 +1367,12 @@ void spell_change_sex ( int sn, int level, CHAR_DATA *ch, void *vo )
         af.duration  = 10 * level;
         af.location  = APPLY_SEX;
 
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("Objects do not have a sex.\n\r", ch);
+                return;
+        }
+
         do
         {
                 af.modifier  = number_range( 0, 2 ) - victim->sex;
@@ -1385,6 +1406,13 @@ void spell_charm_person( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( !IS_NPC( victim ) )
         {
                 send_to_char( "You cannot charm other players.\n\r", ch );
+                return;
+        }
+
+        if ( IS_NPC( victim )
+        &&  (IS_SET(victim->act, ACT_OBJECT)) )
+        {
+                send_to_char( "You cannot charm objects.\n\r", ch );
                 return;
         }
 
@@ -1441,8 +1469,15 @@ void spell_chill_touch (int sn, int level, CHAR_DATA *ch, void *vo)
                 af.bitvector = 0;
                 affect_join(victim, &af);
 
-                act("You drain strength from $N!", ch, NULL, victim, TO_CHAR);
-                act("$c drains strength from $N!", ch, NULL, victim, TO_NOTVICT);
+                if (ch != victim)
+                {
+                    act("You drain strength from $N!", ch, NULL, victim, TO_CHAR);
+                    act("$c drains strength from $N!", ch, NULL, victim, TO_NOTVICT);
+                }
+                else {
+                    act("You feel strength drain from you!", ch, NULL, victim, TO_CHAR);
+                    act("$c looks suddenly weaker!", ch, NULL, victim, TO_NOTVICT);
+                }
         }
 
         damage( ch, victim, dam, sn, FALSE );
@@ -1641,7 +1676,12 @@ void spell_cure_blindness( int sn, int level, CHAR_DATA *ch, void *vo )
         if (!IS_AFFECTED(victim, AFF_BLIND)
         && ( victim == ch ) )
         {
-                send_to_char( "You can see just fine.\n\r", ch );
+                return;
+        }
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("Objects do not have sight to restore.\n\r", ch);
                 return;
         }
 
@@ -1660,9 +1700,11 @@ void spell_cure_blindness( int sn, int level, CHAR_DATA *ch, void *vo )
         {
                 send_to_char( "You restore their vision.\n\r", ch );
                 check_group_bonus(ch);
+                return;
         }
 
         send_to_char( "Your vision returns!\n\r", victim );
+        return;
 }
 
 
@@ -1879,6 +1921,12 @@ void spell_cure_poison( int sn, int level, CHAR_DATA *ch, void *vo )
         if (!is_affected(victim, gsn_poison))
                 return;
 
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("Objects cannot be poisoned.\n\r", ch);
+                return;
+        }
+
         affect_strip(victim, gsn_poison);
 
         if (ch != victim)
@@ -1886,6 +1934,7 @@ void spell_cure_poison( int sn, int level, CHAR_DATA *ch, void *vo )
                 act( "You purge the poison from $M.", ch, NULL, victim, TO_CHAR );
                 check_group_bonus(ch);
         }
+
 
         send_to_char("A warm feeling runs through your body.\n\r", victim);
         act("$N looks better.", ch, NULL, victim, TO_NOTVICT);
@@ -1958,8 +2007,14 @@ void spell_stabilise( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if (ch != victim)
         {
+            if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+            {
+                act( "You magically stabilise $N's structure.", ch, NULL, victim, TO_CHAR );
+            }
+            else {
                 act( "You magically stabilise $N's body.", ch, NULL, victim, TO_CHAR );
-                check_group_bonus(ch);
+            }
+            check_group_bonus(ch);
         }
 
         send_to_char("Your body returns to its normal state.\n\r", victim);
@@ -2086,7 +2141,7 @@ void spell_curse( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if ( ch != victim )
         {
-                send_to_char( "You curse their existence.\n\r", ch );
+                send_to_char( "You curse your target's existence.\n\r", ch );
         }
 
         send_to_char( "You feel unclean.\n\r", victim );
@@ -2878,6 +2933,12 @@ void spell_energy_drain( int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
         }
 
+        if (IS_NPC(victim) && (IS_SET(victim->act, ACT_OBJECT)))
+        {
+            send_to_char( "Objects have no life force to drain.\n\r", ch);
+            return;
+        }
+
         send_to_char("{RYou drain life force from your victim!\n\r{x",ch);
 
         ch->alignment = UMAX(-1000, ch->alignment - 200);
@@ -3012,9 +3073,14 @@ void spell_faerie_fire( int sn, int level, CHAR_DATA *ch, void *vo )
         CHAR_DATA  *victim = (CHAR_DATA *) vo;
         AFFECT_DATA af;
 
-        if ( IS_AFFECTED( victim, AFF_FAERIE_FIRE ) )
+        if ( IS_AFFECTED( victim, AFF_FAERIE_FIRE ) && ( ch != victim ) )
         {
                 send_to_char("They are already surrounded by a pink outline.\n\r", ch);
+                return;
+        }
+
+        if ( IS_AFFECTED( victim, AFF_FAERIE_FIRE ) && ( ch == victim ) )
+        {
                 return;
         }
 
@@ -3148,6 +3214,12 @@ void spell_giant_strength( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA  *victim = (CHAR_DATA *) vo;
         AFFECT_DATA af;
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+            send_to_char( "An object has no strength for you to increase.\n\r", ch );
+            return;
+        }
 
         if (is_affected(victim, gsn_giant_strength)
             || is_affected(victim, gsn_enhanced_strength))
@@ -3446,6 +3518,9 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
         char                    buf [MAX_STRING_LENGTH];
         char                    tmp [MAX_STRING_LENGTH];
         OBJSET_INDEX_DATA       *pObjSetIndex;
+        int                     p_qu;
+        int                     p_ab;
+        int                     p_sp;
 
         const char* type [MAX_ITEM_TYPE+1] =
         {
@@ -3464,7 +3539,11 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 "some poison powder",      "a lockpick",                 "a musical instrument",
                 "an armourer's hammer",    "some mithril",               "a whetstone",
                 "a crafting tool",         "a magical crafting tool",    "a turret module",
-                "a forge"
+                "a forge",                 "something strange",          "something strange",
+                "an arrestor unit",        "a reflector unit",
+                "a shield unit",           "a defensive turret module",  "a combat pulse",
+                "a defensive pulse",       "a pipe",                     "a pipe cleaner",
+                "a smokeable substance",   "remains"
         };
 
         const char* extras [MAX_BITS] =
@@ -3511,6 +3590,26 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 "good",                 "neutral",              "evil"
         };
 
+        const char* pipe_quality_description [8] =
+        {
+                "appalling",            "very poor",            "subpar",
+                "mediocre",             "decent",               "superior",
+                "exceptional",          "absolute masterwork"
+        };
+
+        const char* pipe_abrasiveness_description [7] =
+        {
+                "silken",               "mellow",               "balanced",
+                "hearty",               "gritty",               "coarse",
+                "very abrasive"
+        };
+
+        const char* pipe_speed_description [5] =
+        {
+                "speedy",               "rapid",                "brisk",
+                "deliberate",           "languid"
+        };
+
         const char* wear_slots [18] =
         {
                 "?",                            "is worn on the fingers",
@@ -3528,6 +3627,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
         /*
          *  Name and type
          */
+
         sprintf (buf, "You determine that {W%s{x is %s.\n\r",
                  obj->short_descr,
                  (obj->item_type < 0 || obj->item_type >= MAX_ITEM_TYPE+1)
@@ -3689,6 +3789,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                                 (i == 1) ? "a " : "",
                                 obj->value[0],
                                 (i == 1) ? "" : "s");
+
                         for (j = 0; j < i; j++)
                         {
                                 if (j == i-1 && j)
@@ -3701,6 +3802,63 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         strcat (buf, ".\n\r");
                         send_paragraph_to_char (buf, ch, 4);
                 }
+                break;
+
+            case ITEM_SMOKEABLE:
+                i = 0;
+                for (j = 1; j < 4; j++)
+                {
+                        if ( obj->value[j] >= 0 && obj->value[j] < MAX_SKILL )
+                                list[i++] = obj->value[j];
+                }
+                if (i)
+                {
+
+                    sprintf( buf, "It contains %sspell%s of",
+                            (i == 1) ? "a " : "",
+                            (i == 1) ? "" : "s");
+
+                    for (j = 0; j < i; j++)
+                    {
+                            if (j == i-1 && j)
+                                    strcat (buf, " and");
+                            else if (j)
+                                    strcat (buf, ",");
+                            sprintf (tmp, " '{C%s{x'", skill_table[list[j]].name);
+                            strcat (buf, tmp);
+                    }
+                    strcat (buf, ".\n\r");
+                    send_paragraph_to_char (buf, ch, 4);
+
+                    sprintf( buf, "You estimate it has {W%d{x use%s left",
+                            obj->value[0],
+                            (obj->value[0] > 1) ? "s" : "");
+
+                    strcat (buf, ".\n\r");
+                    send_paragraph_to_char (buf, ch, 0);
+                }
+                break;
+
+            case ITEM_PIPE_CLEANER:
+
+                if ( (obj->value[0] <= 0) ||
+                     (obj->value[2] <= 0) )
+                {
+                        sprintf( buf, "It is currently {Wuseless{x, and {Wneeds to be repaired{x by a tinker.");
+                }
+                else if (((obj->value[2] * 100) / obj->value[3] ) < 86 )
+                {
+                        sprintf( buf, "You estimate it has {W%d{x use%s remaining. It would {Wbenefit{x from a tinker's attention.",
+                            obj->value[0],
+                            (obj->value[0] > 1) ? "s" : "");
+                }
+                else {
+                        sprintf( buf, "You estimate it has {W%d{x use%s remaining. It is in {Wgood working order{x.",
+                            obj->value[0],
+                            (obj->value[0] > 1) ? "s" : "");
+                }
+                strcat (buf, "\n\r");
+                send_paragraph_to_char (buf, ch, 0);
                 break;
 
             case ITEM_WAND:
@@ -3731,6 +3889,136 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         obj->value[1],
                         obj->value[2]);
                 send_paragraph_to_char( buf, ch, 4 );
+                break;
+
+            case ITEM_PIPE:
+
+                /* max_benefit / quality */
+
+                if (obj->value[1] < 31 ) {
+                    p_qu = 0;
+                }
+                else if (obj->value[1] < 66 ) {
+                    p_qu = 1;
+
+                }
+                else if (obj->value[1] < 96 ) {
+                    p_qu = 2;
+
+                }
+                else if (obj->value[1] < 111 ) {
+                    p_qu = 3;
+
+                }
+                else if (obj->value[1] < 136 ) {
+                    p_qu = 4;
+
+                }
+                else if (obj->value[1] < 161 ) {
+                    p_qu = 5;
+
+                }
+                else if (obj->value[1] < 200 ) {
+                    p_qu = 6;
+
+                }
+                else {
+                    p_qu = 7;
+                }
+
+
+                /* abrasiveness / thirst effect */
+
+                if (obj->value[2] < 31 ) {
+                    p_ab = 0;
+                }
+                else if (obj->value[2] < 56 ) {
+                    p_ab = 1;
+
+                }
+                else if (obj->value[2] < 86 ) {
+                    p_ab = 2;
+
+                }
+                else if (obj->value[2] < 116 ) {
+                    p_ab = 3;
+
+                }
+                else if (obj->value[2] < 151 ) {
+                    p_ab = 4;
+
+                }
+                else if (obj->value[2] < 186 ) {
+                    p_ab = 5;
+
+                }
+                else {
+                    p_ab = 6;
+                }
+
+
+                /* speed / wait state using pipe applies */
+
+                if (obj->value[3] < 9 ) {
+                    p_sp = 0;
+                }
+                else if (obj->value[3] < 13 ) {
+                    p_sp = 1;
+
+                }
+                else if (obj->value[3] < 19 ) {
+                    p_sp = 2;
+
+                }
+                else if (obj->value[3] < 25 ) {
+                    p_sp = 3;
+
+                }
+                else {
+                    p_sp = 4;
+
+                }
+
+                sprintf( buf, "It is of {W%s{x quality, and provides a {W%s{x, {W%s{x smoking experience.\n\r",
+                        pipe_quality_description[p_qu],
+                        pipe_abrasiveness_description[p_ab],
+                        pipe_speed_description[p_sp]);
+                send_paragraph_to_char( buf, ch, 0 );
+
+                if (obj->value[0] <= 0){
+                    sprintf( buf, "It is {Yuseless{x in its current condition, and {Yrequires cleaning or repair{x.\n\r");
+                    send_paragraph_to_char( buf, ch, 0 );
+                }
+                else if ( (obj->value[0] == obj->value[1] )
+                 || (( (obj->value[0] * 100) / obj->value[1] ) >= 99 )) {
+                    sprintf( buf, "It is in {Yperfect working order{x.\n\r");
+                    send_paragraph_to_char( buf, ch, 0 );
+                }
+                else if ( ( (obj->value[0] * 100) / obj->value[1] ) < 11 ) {
+                    sprintf( buf, "It would {Ystrongly benefit{x from cleaning or repair.\n\r");
+                    send_paragraph_to_char( buf, ch, 0 );
+                }
+                else if ( ( (obj->value[0] * 100) / obj->value[1] ) < 26 ) {
+                    sprintf( buf, "It would {Ysubstantially benefit{x from cleaning or repair.\n\r");
+                    send_paragraph_to_char( buf, ch, 0 );
+                }
+                else if ( ( (obj->value[0] * 100) / obj->value[1] ) < 51 ) {
+                    sprintf( buf, "It would {Ydefinitely benefit{x from cleaning or repair.\n\r");
+                    send_paragraph_to_char( buf, ch, 0 );
+                }
+                else if ( ( (obj->value[0] * 100) / obj->value[1] ) < 76 ) {
+                    sprintf( buf, "It would {Ybenefit{x from cleaning or repair.\n\r");
+                    send_paragraph_to_char( buf, ch, 0 );
+                }
+                else if ( ( (obj->value[0] * 100) / obj->value[1] ) < 86 ) {
+                    sprintf( buf, "It would {Ybenefit somewhat{x from cleaning or repair.\n\r");
+                    send_paragraph_to_char( buf, ch, 0 );
+                }
+                else if ( ( (obj->value[0] * 100) / obj->value[1] ) < 98 ) {
+                    sprintf( buf, "It would {Ybarely benefit{x from cleaning or repair.\n\r");
+                    send_paragraph_to_char( buf, ch, 0 );
+                }
+
                 break;
 
             case ITEM_ARMOR:
@@ -3862,6 +4150,12 @@ void spell_know_alignment( int sn, int level, CHAR_DATA *ch, void *vo )
         char      *msg;
         int        ap;
 
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+            send_to_char( "Objects don't have a moral character.\n\r", ch );
+            return;
+        }
+
         ap = victim->alignment;
 
         if ( ap >  700 ) msg = "$N has an aura as white as the driven snow.";
@@ -3941,6 +4235,7 @@ void spell_locate_object( int sn, int level, CHAR_DATA *ch, void *vo )
                 if (!multi_keyword_match( arg2, obj->name )
                     || !can_see_obj( ch, obj )
                     || obj->item_type == ITEM_CORPSE_NPC
+                    || obj->item_type == ITEM_REMAINS
                     || IS_SET(obj->extra_flags, ITEM_BODY_PART))
                         continue;
 
@@ -3995,15 +4290,15 @@ void spell_magic_missile( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if (missiles == 1)
         {
-                act("You launch a magic missile at $N", ch, NULL, victim, TO_CHAR);
-                act("$c launches a magic missile at $N", ch, NULL, victim, TO_NOTVICT);
+                act("You launch a magic missile at $N!", ch, NULL, victim, TO_CHAR);
+                act("$c launches a magic missile at $N!", ch, NULL, victim, TO_NOTVICT);
         }
         else
         {
-                sprintf(buf, "You launch a volley of %d magic missiles at $N", missiles);
+                sprintf(buf, "You launch a volley of %d magic missiles at $N!", missiles);
                 act(buf, ch, NULL, victim, TO_CHAR);
 
-                sprintf(buf, "$c launches a volley of %d magic missiles at $N", missiles);
+                sprintf(buf, "$c launches a volley of %d magic missiles at $N!", missiles);
                 act(buf, ch, NULL, victim, TO_NOTVICT);
         }
 
@@ -4076,6 +4371,12 @@ void spell_poison( int sn, int level, CHAR_DATA *ch, void *vo )
         if (is_affected(victim, gsn_prayer_plague))
                 return;
 
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("You can't poison an object.\n\r", ch);
+                return;
+        }
+
         /* next bit for resist poison */
         if (!IS_NPC(victim) && number_percent() <
             victim->pcdata->learned[gsn_resist_toxin] && victim->gag < 2)
@@ -4127,6 +4428,9 @@ void spell_paralysis( int sn, int level, CHAR_DATA *ch, void *vo )
         CHAR_DATA  *victim = (CHAR_DATA *) vo;
         AFFECT_DATA af;
 
+        if ( IS_AFFECTED( victim, AFF_HOLD ) )
+                return;
+
         af.type      = sn;
         af.duration  = 1 + level / 10;
         af.location  = APPLY_DEX;
@@ -4174,6 +4478,12 @@ void spell_refresh( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if (victim->move > victim->max_move)
                 return;
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("Objects do not tire.\n\r", ch);
+                return;
+        }
 
         victim->move = UMIN( victim->move + number_range(level * 3/2, level * 5/2),
                             victim->max_move );
@@ -4278,9 +4588,16 @@ void spell_sanctuary( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( IS_AFFECTED( victim, AFF_SANCTUARY )
         && ( ch != victim ) )
         {
-                sprintf( buf, "%s is already affected by that spell.\n\r",
-                        IS_NPC(victim) ? victim->short_descr : victim->name);
-                send_to_char( buf, ch );
+                if (victim == ch) {
+                    sprintf( buf, "You are already affected by that spell.\n\r");
+                    send_to_char( buf, ch );
+                }
+                else {
+                    sprintf( buf, "%s is already affected by that spell.\n\r",
+                        IS_NPC(victim) ? victim->short_descr : victim->name
+                    );
+                    send_to_char( buf, ch );
+                }
                 return;
         }
 
@@ -4318,8 +4635,15 @@ void spell_sense_traps( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if ( IS_AFFECTED( victim, AFF_DETECT_TRAPS ) )
         {
-                sprintf( buf, "%s is already affected by that spell.\n\r", victim->name);
-                send_to_char( buf, ch );
+                if (victim == ch) {
+                    sprintf( buf, "You are already affected by 'sense traps'.\n\r");
+                    send_to_char( buf, ch );
+                }
+                else {
+                    sprintf( buf, "%s is already affected by that spell.\n\r",
+                        IS_NPC(victim) ? victim->short_descr : victim->name
+                    );
+                }
                 return;
         }
 
@@ -4346,8 +4670,15 @@ void spell_shield( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if ( is_affected( victim, sn ) )
         {
-                sprintf( buf, "%s is already affected by a force shield.\n\r", victim->name);
-                send_to_char( buf, ch );
+                if (victim == ch) {
+                    sprintf( buf, "You are already affected by a force shield.\n\r");
+                    send_to_char( buf, ch );
+                }
+                else {
+                    sprintf( buf, "%s is already affected by a force shield.\n\r",
+                        IS_NPC(victim) ? victim->short_descr : victim->name
+                    );
+                }
                 return;
         }
 
@@ -4395,7 +4726,7 @@ void spell_sleep( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if (saves_spell(level, victim))
         {
-                send_to_char( "They resist your spell!\n\r", ch );
+                send_to_char( "The sleep spell is resisted!\n\r", ch );
                 /* Shade 12.2.22 */
                 /* Make a save initiate combat and do a minor amount of damage */
                 damage(ch, victim, number_range(1, ch->level/4), gsn_sleep, FALSE);
@@ -4859,7 +5190,6 @@ void spell_weaken( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if ( is_affected( victim, sn ) || saves_spell( level, victim ) )
         {
-                send_to_char( "You fail to weaken them.\n\r", ch );
                 return;
         }
 
@@ -5261,6 +5591,12 @@ void spell_aura_sight ( int sn, int level, CHAR_DATA *ch, void *vo )
         char  *msg;
         int ap = victim->alignment;
 
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+            send_to_char( "Objects don't have a moral character.\n\r", ch );
+            return;
+        }
+
         if ( ap >  700 ) msg = "$N has an aura as white as the driven snow.";
         else if ( ap >  350 ) msg = "$N is of excellent moral character.";
         else if ( ap >  100 ) msg = "$N is often kind and thoughtful.";
@@ -5282,6 +5618,13 @@ void spell_awe ( int sn, int level, CHAR_DATA *ch, void *vo )
                 send_to_char("You are awestruck by your own brilliance!\n\r", ch);
                 return;
         }
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("Objects cannot be awed.\n\r", ch);
+                return;
+        }
+
 
         if ( victim->fighting == ch && !saves_spell( level, victim ) )
         {
@@ -5382,6 +5725,12 @@ void spell_combat_mind ( int sn, int level, CHAR_DATA *ch, void *vo )
                         act( "$N already understands battle tactics.",
                             ch, NULL, victim, TO_CHAR );
                 return;
+        }
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+            send_to_char( "Objects cannot understand battle tactics.\n\r", ch );
+            return;
         }
 
         af.type = sn;
@@ -5578,6 +5927,13 @@ void spell_death_field ( int sn, int level, CHAR_DATA *ch, void *vo )
 void spell_decay ( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         /* Who, what, where? */
+
+        /*
+            This needs to be implemented for psionics, see notes/ideas
+            on Discord.
+
+            --Owl 21/12/23
+        */
         return;
 }
 
@@ -5748,6 +6104,13 @@ void spell_domination ( int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
         }
 
+        if ( IS_NPC( victim )
+        &&  (IS_SET(victim->act, ACT_OBJECT)) )
+        {
+                send_to_char( "You cannot dominate objects.\n\r", ch );
+                return;
+        }
+
         if (IS_AFFECTED(victim, AFF_CHARM)
             || IS_SET(victim->act, ACT_NOCHARM)
             || IS_AFFECTED(ch, AFF_CHARM)
@@ -5829,7 +6192,9 @@ void spell_ego_whip ( int sn, int level, CHAR_DATA *ch, void *vo )
         af.modifier = level / 2;
         affect_to_char( victim, &af );
 
-        act( "You ridicule $N about $S childhood.", ch, NULL, victim, TO_CHAR    );
+        if (ch != victim)
+            act( "You ridicule $N about $S childhood.", ch, NULL, victim, TO_CHAR    );
+
         send_to_char( "Your ego takes a beating.\n\r", victim );
         act( "$N's ego is crushed by $n!", ch, NULL, victim, TO_NOTVICT );
 
@@ -6083,7 +6448,6 @@ void spell_levitation ( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if ( IS_AFFECTED( victim, AFF_FLYING ) )
         {
-                send_to_char( "You are already floating in mid-air!\n\r", victim );
                 return;
         }
         af.type = sn;
@@ -6166,6 +6530,12 @@ void spell_psychic_drain ( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( is_affected( victim, sn ) || saves_spell( level, victim ) )
                 return;
 
+        if (IS_NPC(victim) && (IS_SET(victim->act, ACT_OBJECT)))
+        {
+            send_to_char( "Objects have no strength to drain.\n\r", ch);
+            return;
+        }
+
         af.type = sn;
         af.duration = level / 2;
         af.location = APPLY_STR;
@@ -6212,6 +6582,12 @@ void spell_share_strength ( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( victim == ch )
         {
                 send_to_char( "You can't share strength with yourself.\n\r", ch );
+                return;
+        }
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("You can't share strength with an object.\n\r", ch);
                 return;
         }
 
@@ -6338,9 +6714,23 @@ void spell_spiritwrack ( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( is_affected( victim, sn ) )
                 return;
 
-        if ( saves_spell( level, victim ) )
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("Objects cannot be tormented by spirits.\n\r", ch);
+                return;
+        }
+
+        if ( saves_spell( level, victim )
+        &&  ( ch != victim ) )
         {
                 send_to_char("Your victim resists your spirits!\n\r", ch);
+                return;
+        }
+
+        if ( saves_spell( level, victim )
+        &&  ( ch == victim ) )
+        {
+                send_to_char("You resist the torment of hateful spirits!\n\r", ch);
                 return;
         }
 
@@ -6359,8 +6749,14 @@ void spell_spiritwrack ( int sn, int level, CHAR_DATA *ch, void *vo )
         af.modifier  = - (level/3 - 5);
         affect_to_char( victim, &af );
 
-        send_to_char( "You summon a horde of spirits to torment your victim.\n\r", ch );
-        send_to_char( "You are disoriented by the spiritual torment inflicted on you.\n\r", victim );
+        if ( ch != victim )
+        {
+            send_to_char( "You summon a horde of spirits to torment your victim.\n\r", ch );
+            send_to_char( "You are disoriented by the spiritual torment inflicted on you.\n\r", victim );
+        }
+        else {
+            send_to_char( "A horde of spirits inflict spiritual torment on you!\n\r", ch );
+        }
 
         return;
 }
@@ -6370,6 +6766,12 @@ void spell_feeblemind( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA  *victim = (CHAR_DATA *) vo;
         AFFECT_DATA af;
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+            send_to_char("Objects have no mind for you to enfeeble.\n\r", ch);
+            return;
+        }
 
         if ( is_affected( victim, sn ) )
                 return;
@@ -6389,7 +6791,10 @@ void spell_feeblemind( int sn, int level, CHAR_DATA *ch, void *vo )
         af.modifier  = - level;
         affect_to_char( victim, &af );
 
-        send_to_char( "Your victim turns into a simpleton.\n\r", ch );
+        if (ch != victim)
+        {
+            send_to_char( "Your victim turns into a simpleton.\n\r", ch );
+        }
         send_to_char( "Huh... What?... Where?... You are dazed!\n\r", victim);
         return;
 }
@@ -6407,7 +6812,8 @@ void spell_wither( int sn, int level, CHAR_DATA *ch, void *vo)
         if ( saves_spell( level, victim ) )
                 dam /= 1.5;
 
-        if (spell_attack_number == 1)
+        if ( spell_attack_number == 1
+        && ( ch != victim) )
         {
                 act("You drain the life essence from your victim!", ch, NULL, NULL, TO_CHAR);
                 act("$c drains $N's life essence away!", ch, NULL, victim, TO_NOTVICT);
@@ -6895,6 +7301,12 @@ void spell_bark_skin( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( is_affected( victim, sn ) )
                 return;
 
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("Objects do not have skin to transform into bark.\n\r", ch);
+                return;
+        }
+
         if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
         {
              in_sc_room = TRUE;
@@ -7315,7 +7727,7 @@ void spell_hex( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if ( is_affected( victim, sn ) )
         {
-                send_to_char( "They are already defiled.\n\r", ch );
+                send_to_char( "Your target is already defiled.\n\r", ch );
                 return;
         }
 
@@ -7364,7 +7776,15 @@ void spell_hex( int sn, int level, CHAR_DATA *ch, void *vo )
         affect_to_char( victim, &af );
 
         if ( ch != victim )
+        {
+            if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+            {
+                send_to_char( "You lay a powerful curse upon the object.\n\r", ch );
+            }
+            else  {
                 send_to_char( "You defile their soul.\n\r", ch );
+            }
+        }
 
         send_to_char( "You feel unbelievably dirty.\n\r", victim );
 }
@@ -7454,7 +7874,10 @@ void spell_lore( int sn, int level, CHAR_DATA *ch, void *vo )
         &&   obj->item_type != ITEM_CRAFT
         &&   obj->item_type != ITEM_TURRET_MODULE
         &&   obj->item_type != ITEM_TURRET
-        &&   obj->item_type != ITEM_FORGE )
+        &&   obj->item_type != ITEM_FORGE
+        &&   obj->item_type != ITEM_PIPE
+        &&   obj->item_type != ITEM_PIPE_CLEANER
+        &&   obj->item_type != ITEM_REMAINS )
         {
                 send_to_char ( "You can't determine this item's properties.\n\r", ch );
                 return;
@@ -7478,6 +7901,13 @@ void spell_possession( int sn, int level, CHAR_DATA *ch, void *vo  )
                 send_to_char( "You already possess another.\n\r", ch );
                 return;
         }
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("You can't possess an object.\n\r", ch);
+                return;
+        }
+
 
         if ( !IS_AFFECTED( victim, AFF_CHARM ) || victim->master != ch )
         {
@@ -7557,6 +7987,12 @@ void spell_steal_strength( int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
         }
 
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("Objects have no strength to steal.\n\r", ch);
+                return;
+        }
+
         af.type      = sn;
         af.duration  = level / 2;
         af.location  = APPLY_STR;
@@ -7572,7 +8008,7 @@ void spell_steal_strength( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( ch != victim )
                 send_to_char( "You leech the strength from your enemy; you feel stronger.\n\r", ch );
 
-        send_to_char( "You feel weaker.\n\r", victim );
+        send_to_char( "You feel the strength leave your body.\n\r", victim );
 }
 
 
@@ -7687,6 +8123,12 @@ void spell_fear( int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
         }
 
+        if ( IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT) )
+        {
+            send_to_char( "You cannot instill fear in an object.\n\r", ch );
+            return;
+        }
+
         if (saves_spell(ch->level, victim))
         {
                 send_to_char( "You failed.\n\r", ch );
@@ -7793,8 +8235,18 @@ void spell_haste(  int sn, int level, CHAR_DATA *ch, void *vo )
 
         if ( is_affected( victim, sn ) )
         {
+            if (ch != victim)
+            {
                 send_to_char("They are already hastened.\n\r",ch);
                 return;
+            }
+            return;
+        }
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+            send_to_char( "An object cannot be hastened.\n\r", ch );
+            return;
         }
 
         if ( is_affected( victim, gsn_slow ))

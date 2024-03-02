@@ -708,10 +708,22 @@ void move_char(CHAR_DATA *ch, int door)
                                   || ( ch->race == RACE_SAHUAGIN )
                                   || ( ch->race == RACE_GRUNG ) ) )
                         {
+                            if (IS_NPC(ch) && (IS_SET(ch->act, ACT_OBJECT)))
+                            {
+                                act_move ("$n drifts $T.", ch, NULL, directions[door].name, TO_ROOM);
+                            }
+                            else {
                                 act_move ("$n swims $T.", ch, NULL, directions[door].name, TO_ROOM);
+                            }
                         }
                         else {
+                            if (IS_NPC(ch) && (IS_SET(ch->act, ACT_OBJECT)))
+                            {
+                                act_move ("$n moves $T.", ch, NULL, directions[door].name, TO_ROOM);
+                            }
+                            else {
                                 act_move ("$n leaves $T.", ch, NULL, directions[door].name, TO_ROOM);
+                            }
                         }
                 }
         }
@@ -2889,12 +2901,19 @@ void do_heighten (CHAR_DATA *ch, char *argument)
 
 void do_smash (CHAR_DATA *ch, char *argument)
 {
-        if ( IS_NPC(ch)
+        /* if ( IS_NPC(ch)
         &&  !( ch->spec_fun == spec_lookup("spec_warrior")
         ||     ch->spec_fun == spec_lookup("spec_guard")
         ||     ch->spec_fun == spec_lookup("spec_sahuagin_guard")
         ||     ch->spec_fun == spec_lookup("spec_sahuagin_infantry") ) )
                 return;
+        */
+
+        if ( IS_NPC(ch)
+        &&  ( ch->master ) )
+        {
+            return;
+        }
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_smash))
         {
@@ -2916,7 +2935,7 @@ void do_smash (CHAR_DATA *ch, char *argument)
 
         if (IS_HUGE(ch->fighting))
         {
-                send_to_char("They are too big for you to knock over!\n\r", ch);
+                send_to_char("Much too big for you to knock over!\n\r", ch);
                 return;
         }
 
@@ -2927,7 +2946,20 @@ void do_smash (CHAR_DATA *ch, char *argument)
 
         if (IS_NPC(ch) || number_percent() < ch->pcdata->learned[gsn_smash])
         {
-                act("Your powerful {Bsmash{x stuns $N!", ch, NULL, ch->fighting, TO_CHAR);
+                if (IS_NPC(ch->fighting))
+                {
+                    if(!IS_SET(ch->fighting->act, ACT_OBJECT))
+                    {
+                        act("Your powerful {Bsmash{x stuns $N!", ch, NULL, ch->fighting, TO_CHAR);
+                    }
+                    else {
+                        act("Your powerful {Bsmash{x damages $N!", ch, NULL, ch->fighting, TO_CHAR);
+                    }
+                }
+                else {
+                        act("Your powerful {Bsmash{x stuns $N!", ch, NULL, ch->fighting, TO_CHAR);
+                }
+
                 act("$n's {Bsmash{x stuns you!  You see nothing but stars.", ch, NULL, ch->fighting, TO_VICT);
                 act ("$n {Bsmashes{x $N with $s shield!", ch, NULL, ch->fighting, TO_NOTVICT);
                 arena_commentary("$n smashes $N to the ground.", ch, ch->fighting);
@@ -3018,7 +3050,8 @@ void do_warcry (CHAR_DATA *ch, char *argument)
 
         if (IS_NPC(ch)
         && !( ch->spec_fun == spec_lookup("spec_green_grung") )
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_prince") ) )
                 return;
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_warcry))

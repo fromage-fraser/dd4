@@ -1844,19 +1844,19 @@ map~
        o  Goblin   Magic            |     General  Weapon  Psionicist
          Foundry   Shop   Bakery    |      Store    Shop     Guild
             |        |       |      |        |       |       |
-    To  -- West -- Main -- Main - Market -- Main -- Main -- East --    To
+    To  -- West -- Main -- Main - Market -- Main -- Main -- East --  To
   Forest   Gate   Street  Street  Square   Street  Street   Gate   Crossroads
             |        |       |      |        |       |       |
           Wall     Mage   Armoury   |     Jeweler   Warrior  Wall
           Road     Guild            |                Guild   Road
             |                       |                        |
-            |                       |            To Dangerous Neighborhood
+            | -- Tobacconist        |            To Dangerous Neighborhood
             |                       |                       and the Circus
-            |   Leather  Drago      |       Map      Pet
+            |   Leather  Dragon     |       Map      Pet
             |     Shop    Cult      |      Store     Shop  Shifter Guild
             |      |       |        |        |        |        |
-          Wall -- End --  Poor -- Common -- Dark -- Alley --   End   --  Mob
-          Road   Alley   Alley    Square    Alley  At Levee  of Alley  Factory
+          Wall -- End --  Poor -- Common -- Dark -- Alley --  End  -- Tinker
+          Road   Alley   Alley    Square    Alley  At Levee  of Alley
             |      |       |        |        |        |        |
             |   Brawler  Lusty      |      Thief    Levee   Midgaard
           Wall   Guild   Ogres      |      Guild      |      Forge
@@ -2352,8 +2352,8 @@ Supplied by Minks Cartography co.
            |     |         |                    |         |
            |   Edahs       |                    |         |
            |        Bungle |                    |  Casino-|
-           |       Fleecem-|          Fortress  |         |
-           |               |               |    |         |
+           |       Fleecem-|-Tim      Fortress  | Tobacco |
+           |               |               |    |    |    |
     Moon---+---------------+--Moon-Gate-Road----+---------+
     Gate         |              |      |             |
                Jenks       Graveyard  Foundry      Bobs Armory
@@ -3366,7 +3366,8 @@ S
 #3042
 Wall Road~
 You are walking next to the western city wall.  The road continues further
-south and the city gate is just north of here.
+south and the city gate is just north of here.  Just to the east you see a
+small, grubby little tobacconist shop.
 ~
 0 1024 1
 D0
@@ -3374,6 +3375,11 @@ You see the city gate.
 ~
 ~
 0 -1 3040
+D1
+You see the entrance to a grubby-looking tobacconist shop.
+~
+~
+0 -1 3223
 D2
 The road continues further south.
 ~
@@ -5133,6 +5139,20 @@ You can use this command to repair items here:
 ~
 S
 
+#3223
+The Tobacconist~
+This rather run-down little tobacconist shop has little to recommend it. A few
+of the more commonplace smokeable substances are available for sale, along with
+basic smoking-related paraphernalia.  To the west, outside, is Midgaard's Wall Road.
+~
+0 8|1024 0
+D3
+You see the western Wall road, running north and south.
+~
+~
+0 -1 3046
+S
+
 #0
 
 
@@ -5194,6 +5214,13 @@ G 1 3068 100
 G 1 3069 100
 G 1 3070 100
 G 1 3071 100
+*
+M 1 80 1 3223      The tobacconist
+G 1 503 100
+G 1 504 100
+G 1 505 100
+G 1 506 100
+G 1 507 100
 *
 M 1 3006 1 3049      A Captain (selling boats) at Levee
 G 1 3050 20                                  Give a raft to the captain
@@ -5494,12 +5521,13 @@ S
 3043 0 0 0 0 0 110 100 0 23                             ; The Waiter (cleric)
 3044 0 0 0 0 0 170 100 0 23                             ; The Waiter (thief)
 3045 0 0 0 0 0 150 100 0 23                             ; The Waiter (fighter)
-3152 0 0 0 0 0 150 100 0 23                       ; The Waiter (psionicist)
+3152 0 0 0 0 0 150 100 0 23                             ; The Waiter (psionicist)
 3046 0 0 0 0 0 100 90 0 23                              ; Filthy
 3050 5 13 8 0 0 120 50 0 23                             ; Dave the Dealer
 3100 0 0 0 0 0 110 90 6 23                              ; The Maid
-3153 0 0 0 0 0 150 100 0 23                       ; The Map Maker
-3156 17 0 0 0 0 100 100 0 23                      ;waiter (brawler?)
+3153 0 0 0 0 0 150 100 0 23                             ; The Map Maker
+3156 17 0 0 0 0 100 100 0 23                            ; waiter (brawler?)
+80 52 53 54 0 0 150 70 0 23                             ; The tobacconist
 0
 
 

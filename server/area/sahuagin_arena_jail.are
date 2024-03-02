@@ -673,7 +673,7 @@ who live and work in the arena canton in which you now find yourself.
 8 8 1
 >all_greet_prog 100~
 if carrying($n) == 27486
-    say I see you have my token. Give it to me.
+    say I see you have my victory token. Give it to me.
     emote gestures towards you with a hideous outstretched hand
 endif
 ~
@@ -1025,12 +1025,18 @@ A clay disk with the image of a Urm'da gladiator stamped on it is here.~
 3 50 30
 #27486
 baron token disk bronze~
-the baron's token~
+the baron's victory token~
 A bronze token with the image of a sahuagin baron stamped on it is here.~
 ~
 8 0 1|16384
 2~ 0~ 0~ 0~
 3 50 30
+E
+baron token disk bronze victory~
+On one side of the bronze token is the embossed relief of the four-armed baron
+of the arena, his trident raised in victory, standing proudly atop a pile of
+dead gladiator bodies.  Inspiring stuff.
+~
 #27487
 leather whip~
 a leather whip~
@@ -4232,7 +4238,7 @@ E 1 27107 100 6         ; equip seaweed tiara
 E 1 27109 100 12        ; equip seaweed robe
 *
 M 1 27377 1 27500		; a Triton to Ota'ar Dar Jail Cell
-E 1 27111 100 5         ; equip scale male
+E 1 27111 100 5         ; equip scale mail
 E 1 27112 100 13        ; equip belt of shark's teeth
 *
 M 1 27378 1 27505		; a sahuagin heretic to Ota'ar Dar Jail Cell

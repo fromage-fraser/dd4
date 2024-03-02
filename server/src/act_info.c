@@ -304,7 +304,7 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
                 strcat( buf, "[DEPLOYED] ");
 
         if ( IS_OBJ_STAT( obj, ITEM_RUNE))
-                strcat( buf, "[Channeling] ");
+                strcat( buf, "[Channelling] ");
 
         if ( IS_OBJ_STAT( obj, ITEM_INVIS) )
                 strcat( buf, "<39>(Invis)<0> " );
@@ -612,6 +612,11 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
         char tmp2           [ MAX_STRING_LENGTH ];
         buf[0] = '\0';
 
+        if (IS_SET(victim->act, ACT_OBJECT))
+        {
+            strcat(buf, "     ");
+        }
+
         if (is_affected(victim,gsn_mist_walk) )
         {
                 if ( CAN_SEE_MIST(ch) )
@@ -674,6 +679,7 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
                 strcat(buf, "<132>(Swallowed)<0> "  );
 
         if (IS_EVIL(victim )
+            && !IS_SET(victim->act, ACT_OBJECT)
             && (IS_AFFECTED(ch, AFF_DETECT_EVIL) || is_affected(ch, gsn_song_of_revelation)))
                 strcat(buf, "<88>(Red Aura)<0> "   );
 
@@ -686,6 +692,7 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
                 strcat(buf, "<19>(Cursed)<0> "   );
 
         if (IS_GOOD(victim )
+            && !IS_SET(victim->act, ACT_OBJECT)
             && (IS_AFFECTED(ch, AFF_DETECT_GOOD) || is_affected(ch, gsn_song_of_revelation)))
                 strcat(buf, "<190>(Yellow Aura)<0> "   );
 
@@ -834,7 +841,13 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
             case POS_STANDING: strcat( buf, " is here."               ); break;
 
             case POS_FIGHTING:
-                strcat( buf, " is here, fighting " );
+                if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+                {
+                    strcat( buf, " is here, being attacked by " );
+                }
+                else {
+                    strcat( buf, " is here, fighting " );
+                }
                 if ( !victim->fighting )
                         strcat( buf, "thin air??" );
                 else if ( victim->fighting == ch )
@@ -888,7 +901,7 @@ void show_char_to_char_1( CHAR_DATA *victim, CHAR_DATA *ch )
 
         strcpy(buf , PERS( victim, ch ) );
 
-        if (!IS_INORGANIC( ch ) ) {
+        if (!IS_INORGANIC( victim ) ) {
                 if ( percent >= 100 ) strcat( buf, " is in perfect health.\n\r"  );
                 else if ( percent >=  90 ) strcat( buf, " is slightly scratched.\n\r" );
                 else if ( percent >=  80 ) strcat( buf, " has a few bruises.\n\r"     );
@@ -974,7 +987,7 @@ void show_char_to_char (CHAR_DATA *list, CHAR_DATA *ch)
                         show_char_to_char_0(rch, ch);
 
                 /*
-                 * Shade - 10.5.22 - Vampires shouldn't see hidden mobs in teh dark
+                 * Shade - 10.5.22 - Vampires shouldn't see hidden mobs in the dark
                  */
 
                 else if (room_is_dark(ch->in_room)
@@ -1491,13 +1504,20 @@ void do_look( CHAR_DATA *ch, char *argument )
                     case ITEM_CONTAINER:
                     case ITEM_CORPSE_NPC:
                     case ITEM_CORPSE_PC:
+                    case ITEM_REMAINS:
                         if ( IS_SET( obj->value[1], CONT_CLOSED ) )
                         {
                                 send_to_char( "It is closed.\n\r", ch );
                                 break;
                         }
 
-                        act( "$p contains:", ch, obj, NULL, TO_CHAR );
+                        if (obj->item_type == ITEM_REMAINS)
+                        {
+                            act( "$p contain:", ch, obj, NULL, TO_CHAR );
+                        }
+                        else {
+                            act( "$p contains:", ch, obj, NULL, TO_CHAR );
+                        }
                         show_list_to_char( obj->contains, ch, TRUE, TRUE, FALSE );
                         break;
                 }
@@ -1679,7 +1699,14 @@ void do_examine (CHAR_DATA *ch, char *argument)
                     case ITEM_TURRET:
                     case ITEM_CORPSE_NPC:
                     case ITEM_CORPSE_PC:
-                        send_to_char ("When you look inside, you see:\n\r", ch);
+                    case ITEM_REMAINS:
+                        if (obj->item_type == ITEM_REMAINS)
+                        {
+                            send_to_char ("When you examine the remains, you see:\n\r", ch);
+                        }
+                        else {
+                            send_to_char ("When you look inside, you see:\n\r", ch);
+                        }
                         sprintf (buf, "in %s", arg);
                         do_look (ch, buf);
                         break;
@@ -1819,13 +1846,21 @@ void do_inspect (CHAR_DATA *ch, char *argument)
             case ITEM_TURRET:
             case ITEM_CORPSE_NPC:
             case ITEM_CORPSE_PC:
+            case ITEM_REMAINS:
                 if ( IS_SET( obj->value[1], CONT_CLOSED ) )
                 {
                         send_to_char( "It is closed.\n\r", ch );
                         break;
                 }
 
-                act( "$p contains:", ch, obj, NULL, TO_CHAR );
+                if (obj->item_type == ITEM_REMAINS)
+                {
+                    act( "$p contain", ch, obj, NULL, TO_CHAR );
+                }
+                else {
+                    act( "$p contains", ch, obj, NULL, TO_CHAR );
+                }
+
                 show_list_to_char( obj->contains, ch, TRUE, TRUE, FALSE );
                 break;
 
@@ -1880,11 +1915,20 @@ void do_exits( CHAR_DATA *ch, char *argument )
                         found = TRUE;
                         if ( fAuto )
                         {
-                                if (IS_SET( pexit->exit_info, EX_CLOSED ))
+                                if ((IS_SET( pexit->exit_info, EX_CLOSED ))
+                                && (!IS_SET( pexit->exit_info, EX_LOCKED )))
                                 {
                                         strcat( buf, " (" );
                                         strcat( buf, directions[door].name );
                                         strcat( buf, ")" );
+
+                                }
+                                else if ((IS_SET( pexit->exit_info, EX_CLOSED ))
+                                && (IS_SET( pexit->exit_info, EX_LOCKED )))
+                                {
+                                        strcat( buf, " [" );
+                                        strcat( buf, directions[door].name );
+                                        strcat( buf, "]" );
 
                                 }
                                 else {
@@ -3364,17 +3408,32 @@ void do_consider( CHAR_DATA *ch, char *argument )
         act("$n starts to consider $N as a possible target.", ch, NULL, victim, TO_ROOM);
         diff = victim->level - ch->level;
 
-        if ( diff <= -10 ) msg = "You can kill $N naked and weaponless.";
-        else if ( diff <=  -5 ) msg = "$N is no match for you.";
-        else if ( diff <=  -2 ) msg = "$N looks like an easy kill.";
-        else if ( diff <=   1 ) msg = "The perfect match!";
-        else if ( diff <=   5 ) msg = "$N says 'Do you feel lucky, punk?'.";
-        else if ( diff <=   9 ) msg = "$N laughs at you mercilessly.";
-        else if ( diff <=  14 ) msg = "Death will thank you for your gift.";
-        else if ( diff <=  25 ) msg = "$N says 'I could crush you with my little finger!'";
-        else if ( diff <=  99 ) msg = "$N says 'You puny insect... I will destroy you!'";
-        else msg = "$N is unimaginably more powerful than you.";
+        if (IS_SET(victim->act, ACT_OBJECT))
+        {
+            if ( diff <= -10 ) msg = "You can destroy $N naked and weaponless.";
+            else if ( diff <=  -5 ) msg = "$N is no match for your offensive capabilities.";
+            else if ( diff <=  -2 ) msg = "$N looks like it would be easy to destroy.";
+            else if ( diff <=   1 ) msg = "The perfect match for your destructive inclinations!";
+            else if ( diff <=   5 ) msg = "You don't think you could easily destroy $E.";
+            else if ( diff <=   9 ) msg = "$N looks like it would be tough to destroy.";
+            else if ( diff <=  14 ) msg = "It would be a huge effort to destroy $E.";
+            else if ( diff <=  25 ) msg = "If $E has any way of defending itself you are toast";
+            else if ( diff <=  99 ) msg = "You think you'd exhaust yourself trying to destroy $E.";
+            else msg = "It would take you FOREVER to destroy $E.";
 
+        }
+        else {
+            if ( diff <= -10 ) msg = "You can kill $N naked and weaponless.";
+            else if ( diff <=  -5 ) msg = "$N is no match for you.";
+            else if ( diff <=  -2 ) msg = "$N looks like an easy kill.";
+            else if ( diff <=   1 ) msg = "The perfect match!";
+            else if ( diff <=   5 ) msg = "$N says 'Do you feel lucky, punk?'.";
+            else if ( diff <=   9 ) msg = "$N laughs at you mercilessly.";
+            else if ( diff <=  14 ) msg = "Death will thank you for your gift.";
+            else if ( diff <=  25 ) msg = "$N says 'I could crush you with my little finger!'";
+            else if ( diff <=  99 ) msg = "$N says 'You puny insect... I will destroy you!'";
+            else msg = "$N is unimaginably more powerful than you.";
+        }
         act( msg, ch, NULL, victim, TO_CHAR );
 
         if ( !IS_NPC(ch) && number_percent( ) < ch->pcdata->learned[gsn_advanced_consider] )
@@ -3408,25 +3467,47 @@ void do_consider( CHAR_DATA *ch, char *argument )
                 send_to_char( "However,", ch );
         }
 
-        if ( hpdiff >= 101 )
-                buf = " you are currently much healthier than $E.";
-        if ( hpdiff <= 100 )
-                buf = " you are currently healthier than $E.";
-        if ( hpdiff <= 50 )
-                buf = " you are currently slightly healthier than $E.";
-        if ( hpdiff <= 25 )
-                buf = " you are a teensy bit healthier than $E.";
-        if ( hpdiff <= 0 )
-                buf = " $E is a teensy bit healthier than you.";
-        if ( hpdiff <= -25 )
-                buf = " $E is slightly healthier than you.";
-        if ( hpdiff <= -50 )
-                buf = " $E is healthier than you.";
-        if ( hpdiff <= -100 )
-                buf = " $E is much healthier than you.";
-        if ( hpdiff <= -500 )
-                buf = " $E is built like a tank!";
-
+        if (IS_SET(victim->act, ACT_OBJECT))
+        {
+            if ( hpdiff >= 101 )
+                    buf = " you can take a lot more damage than $E can.";
+            if ( hpdiff <= 100 )
+                    buf = " you can take more damage than $E can.";
+            if ( hpdiff <= 50 )
+                    buf = " you can take a bit more damage than $E can.";
+            if ( hpdiff <= 25 )
+                    buf = " you can take a tiny bit more damage than $E can.";
+            if ( hpdiff <= 0 )
+                    buf = " $E can take a tiny bit more damagethan you can.";
+            if ( hpdiff <= -25 )
+                    buf = " $E can take a bit more damage than you can.";
+            if ( hpdiff <= -50 )
+                    buf = " $E can take more damage than you can.";
+            if ( hpdiff <= -100 )
+                    buf = " $E can endure a lot more damage than you can.";
+            if ( hpdiff <= -500 )
+                    buf = " $E looks like it could weather huge amounts of damage.";
+        }
+        else {
+            if ( hpdiff >= 101 )
+                    buf = " you are currently much healthier than $E.";
+            if ( hpdiff <= 100 )
+                    buf = " you are currently healthier than $E.";
+            if ( hpdiff <= 50 )
+                    buf = " you are currently slightly healthier than $E.";
+            if ( hpdiff <= 25 )
+                    buf = " you are a teensy bit healthier than $E.";
+            if ( hpdiff <= 0 )
+                    buf = " $E is a teensy bit healthier than you.";
+            if ( hpdiff <= -25 )
+                    buf = " $E is slightly healthier than you.";
+            if ( hpdiff <= -50 )
+                    buf = " $E is healthier than you.";
+            if ( hpdiff <= -100 )
+                    buf = " $E is much healthier than you.";
+            if ( hpdiff <= -500 )
+                    buf = " $E is built like a tank!";
+        }
         act( buf, ch, NULL, victim, TO_CHAR );
 
         if ( !IS_NPC( ch ) && number_percent( ) < ch->pcdata->learned[gsn_advanced_consider] )
@@ -3435,8 +3516,16 @@ void do_consider( CHAR_DATA *ch, char *argument )
                 char buf1 [MAX_STRING_LENGTH];
 
                 hps = ( victim->hit /100 ) * 100;
-                sprintf ( buf1, "You estimate %s to have %d hit points.\n\r",
-                         victim->short_descr, hps );
+
+                if (IS_SET(victim->act, ACT_OBJECT))
+                {
+                    sprintf ( buf1, "You'd have to do %d hit points of damage to %s to destroy it.\n\r",
+                        hps, victim->short_descr);
+                }
+                else {
+                    sprintf ( buf1, "You estimate %s to have %d hit points.\n\r",
+                        victim->short_descr, hps );
+                }
                 send_to_char ( buf1, ch );
         }
 
@@ -4835,8 +4924,8 @@ void do_config( CHAR_DATA *ch, char *argument )
                              , ch );
 
                 send_to_char(  IS_SET( ch->act, PLR_AUTOCOIN  )
-                             ? "<6>[<40>+<0><556>AUTOCOIN<0> <6>]<0> You automatically take coin from corpses.\n\r"
-                             : "<6>[<196>-<0><246>autocoin<0> <6>]<0> You don't automatically take coin from corpses.\n\r"
+                             ? "<6>[<40>+<0><556>AUTOCOIN<0> <6>]<0> You automatically take money from corpses.\n\r"
+                             : "<6>[<196>-<0><246>autocoin<0> <6>]<0> You don't automatically take money from corpses.\n\r"
                              , ch );
 
                 send_to_char(  IS_SET( ch->act, PLR_AUTOSAC   )
@@ -5343,7 +5432,7 @@ void do_repair( CHAR_DATA *ch, char *argument )
 
         if (!(obj = get_obj_carry(ch, argument)))
         {
-                send_to_char("You don't have that item.\n\r", ch);
+                send_to_char("You don't have that item in your inventory.\n\r", ch);
                 return;
         }
 
@@ -5352,9 +5441,11 @@ void do_repair( CHAR_DATA *ch, char *argument )
         ||   ( obj->item_type == ITEM_FOOD )
         ||   ( obj->item_type == ITEM_PILL )
         ||   ( obj->item_type == ITEM_PAINT )
+        ||   ( obj->item_type == ITEM_SMOKEABLE )
         ||   ( obj->item_type == ITEM_POISON_POWDER )
         ||   ( obj->item_type == ITEM_MOB )
         ||   ( obj->item_type == ITEM_CORPSE_NPC )
+        ||   ( obj->item_type == ITEM_REMAINS )
         ||   ( obj->item_type == ITEM_CORPSE_PC ) )
         {
                 act("$C says, 'I'm sorry, $n, I can't fix that kind of thing.'",
@@ -5362,29 +5453,111 @@ void do_repair( CHAR_DATA *ch, char *argument )
                 return;
         }
 
-        if (total_coins_char(ch) < ( ( obj->timermax - obj->timer ) * obj->level ) )
+        /* have enough cash for repair? */
+
+        if ( ( ( obj->item_type != ITEM_PIPE )
+            && ( obj->item_type != ITEM_PIPE_CLEANER ) )
+        &&   ( total_coins_char(ch) < ( ( obj->timermax - obj->timer ) * obj->level ) ) )
         {
                 act( "$C decides you do not have enough money for $s services.",
                     ch, obj, rch, TO_CHAR );
                 return;
         }
 
-        if ( ( obj->timer <= 0 )
-        ||   ( obj->timer == obj->timermax )
-        ||   ( obj->timermax <= 0 ) )
+        if ( obj->item_type == ITEM_PIPE )
+        {
+            if ( total_coins_char(ch) < ( ( obj->value[1] - obj->value[0]) * obj->level) )
+            {
+                act( "$C decides you do not have enough money for $s services.",
+                    ch, obj, rch, TO_CHAR );
+                return;
+            }
+        }
+
+        if ( obj->item_type == ITEM_PIPE_CLEANER )
+        {
+            if ( total_coins_char(ch) < ( ( (obj->value[1] - obj->value[0]) + (obj->value[3] - obj->value[2]) ) * obj->level ) )
+            {
+                act( "$C decides you do not have enough money for $s services.",
+                    ch, obj, rch, TO_CHAR );
+                return;
+            }
+        }
+
+        /* Reject if nothing wrong with repairable item */
+
+        if ( ( ( obj->timer <= 0 )
+        ||     ( obj->timer == obj->timermax )
+        ||     ( obj->timermax <= 0 ) )
+        &&   ( (obj->item_type != ITEM_PIPE )
+            && (obj->item_type != ITEM_PIPE_CLEANER ) ) )
         {
                 act( "$C rejects your item.  It is not a suitable candidate for $s services.",
                     ch, obj, rch, TO_CHAR );
                 return;
         }
 
-        cost = (obj->timermax - obj->timer) * obj->level;
+        if ( ( obj->item_type == ITEM_PIPE )
+        &&   ( obj->value[0] == obj->value[1] ) )
+        {
+                act( "$C rejects your pipe for repair. There's nothing wrong with it.",
+                    ch, obj, rch, TO_CHAR );
+                return;
+        }
+
+        if ( ( obj->item_type == ITEM_PIPE_CLEANER )
+        &&   ( obj->value[0] == obj->value[1] )
+        &&   ( obj->value[2] == obj->value[3] ) )
+        {
+                act( "$C rejects your pipe cleaner for repair. There's nothing wrong with it.",
+                    ch, obj, rch, TO_CHAR );
+                return;
+        }
+
+        /* Item can be fixed, determine costs */
+
+        if ( ( obj->item_type != ITEM_PIPE )
+            && (obj->item_type != ITEM_PIPE_CLEANER ) )
+        {
+            cost = (obj->timermax - obj->timer) * obj->level;
+        }
+
+        if ( obj->item_type == ITEM_PIPE )
+        {
+            cost = ( obj->value[1] - obj->value[0]) * obj->level;
+        }
+
+        if ( obj->item_type == ITEM_PIPE_CLEANER )
+        {
+            cost = ( ( (obj->value[1] - obj->value[0])
+                     + (obj->value[3] - obj->value[2]) ) * obj->level );
+        }
 
         sprintf( buf, "{WYou pay %d coppers for the repair.{x\n\r", cost);
         send_to_char( buf, ch );
         coins_from_char(cost, ch);
         act("$C goes to work on $p and soon has it looking as good as new!", ch, obj, rch, TO_CHAR);
-        obj->timer = obj->timermax;
+
+        /* fix item */
+
+        if ( ( obj->item_type != ITEM_PIPE )
+            && (obj->item_type != ITEM_PIPE_CLEANER ) )
+        {
+            obj->timer = obj->timermax;
+        }
+
+        if ( obj->item_type == ITEM_PIPE )
+        {
+            obj->value[0] = obj->value[1];
+        }
+
+        if ( obj->item_type == ITEM_PIPE_CLEANER )
+        {
+            obj->value[0] = obj->value[1];
+            obj->value[2] = obj->value[3];
+        }
+
+        return;
 }
 
 

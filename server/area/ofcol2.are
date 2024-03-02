@@ -475,6 +475,20 @@ about 30 seconds away from falling fast asleep.
 20 0 -10 20d20+200 1d4+15
 0 50000
 8 8 1
+#636
+Martha~
+Martha~
+A bustling woman beams at you expectantly.
+~
+A large, red-cheeked, bustling woman, Martha has been the proprietor of this
+store since her husband Alistair died three years ago.  While not much of a
+smoker herself, she has extensive product knowledge, and a keen eye for a
+bargain.
+~
+2 8192 1000 S
+20 1 -10 1d1+1000 1d4+15
+0 20000
+8 8 2
 #0
 
 
@@ -2387,9 +2401,15 @@ Raff Way~
      You are on Raff Way.  To the west, you can see a big intersection.  To
 the east, you see Raff Way continue toward the Golden Citadel.  There are
 beautiful flowers growing along the rode here, making this more of a garden
-than a road. To the south, you see the local office of Dragonhoard Bank.
+than a road. To the south, you see the local office of Dragonhoard Bank, while
+a tidy "Pipes and Smokeables" store lies north.
 ~
 6 0 1
+D0
+A "Pipes and Smokeables" store.
+~
+~
+0 0 801
 D1
 Raff Way continues east.
 ~
@@ -3035,7 +3055,7 @@ Outside the Entrance to the Golden Citadel~
 to the east, marking the entranceway into the citadel.  The road also leads
 back west to Raff Way.
 ~
-6 1024 2
+6 1024 1
 D1
 ~
 ~
@@ -3052,8 +3072,20 @@ Dragonhoard Bank.  High, domed, richly decorated ceilings and polished wooden
 furniture of exceptional quality testify to the success of this branch and
 the wealth of its clients.
 ~
-6 8|16 2
+6 8|16 1
 D0
+~
+~
+0 0 666
+S
+#801
+Pipes and Smokeables~
+     This tidy little shop sells an assortment of pipes, pipe-cleaning
+products, and smokeable substances.  While not showy, it feels comfortable,
+inviting, and well-cared for.
+~
+8 8 1
+D2
 ~
 ~
 0 0 666
@@ -3324,6 +3356,14 @@ E 1 654 99 5            Gold Plate
 E 1 660 99 11           Gold Shield
 E 1 662 99 16           Gold Claw
 M 0 635 1 800           Dragonhoard clerk
+*
+M 1 636 1 801           Martha
+G 1 513 100
+G 1 514 100
+G 1 515 100
+G 1 516 100
+G 1 517 100
+*
 S
 
 
@@ -3335,6 +3375,7 @@ S
   607   0 19  0  0  0   120  10  0 23; Marty the Butcher
   608   0 17 19  0  0   120  10  0 23; Elizabeth the Grocer
   622   0 17  0  0  0   120  10  0 23; Nyles the Bartender
+  636  52 53 54  0  0   120  80  0 23; Martha Tobacconist
 0
 
 

@@ -2088,7 +2088,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_steal,                                   0 },
         { &gsn_assassinate,                             0 },
         { &gsn_double_backstab,                         0 },
-        { &gsn_smoke_bomb,                              0 },
+        { &gsn_bomb,                                    0 },
 
         { &gsn_group_hunting,                           0 },
         { &gsn_trap,                                    0 },
@@ -2923,7 +2923,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "energy drain", &gsn_energy_drain,
                 TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 8|16384,
                 spell_energy_drain, 35, 12,
-                "<20>e<21>n<14>e<11>r<229>g<15>y <229>d<11>r<14>a<21>i<20>n<0>", "!Energy Drain!"
+                "<20>e<27>n<14>e<11>r<229>g<15>y <229>d<11>r<14>a<27>i<20>n<0>", "!Energy Drain!"
         },
 
         {
@@ -2937,7 +2937,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "faerie fire", &gsn_faerie_fire,
                 TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 16384,
                 spell_faerie_fire, 5, 12,
-                "<54>f<90>a<126>e<162>r<198>ie <162>f<126>i<90>r<54>e<0>","The pink aura around you fades away."
+                "<54>f<90>a<126>e<162>r<198>ie <162>f<126>i<90>r<54>e<0>","<225>The pink aura around you fades away.<0>"
         },
 
         {
@@ -2994,7 +2994,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "giant strength", &gsn_giant_strength,
                 TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_giant_strength, 20, 12,
-                "", "You feel weaker."
+                "", "You feel suddenly somewhat weaker."
         },
 
         {
@@ -5919,10 +5919,10 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
 
         {
-                "smoke bomb", &gsn_smoke_bomb,
+                "bomb", &gsn_bomb,
                 TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 0, 8,
-                "smoke bomb", "!Smoke Bomb!"
+                "bomb", "!Bomb!"
         },
 
         {

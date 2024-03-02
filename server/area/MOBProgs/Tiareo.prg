@@ -7,7 +7,7 @@
                 mpecho {WReaver Tiareo says 'You are too inexperienced for us to contemplate you becoming a Reaver.  Try again when you're more experienced.'{x
         break
         else
-        if level($n) > 55
+        if level($n) > 70
                 mpecho {WReaver Tiareo says '$n, you're far too experienced for our current missions.  Keep checking back, though!'{x
         break
         else
@@ -136,6 +136,44 @@
                 mpecho {W'information about it, so you may wish to go and ask him for more details before'{x
                 mpecho {W'you go looking. Bring the eyes back here for us to inspect before we pass them on,'{x
                 mpecho {W'and you shall be well-rewarded.'{x
+        endif
+        endif
+~
+>speech_prog eight 8~
+        if level($n) < 50
+                mpecho {WReaver Tiareo says 'I'm sorry, that mission is too dangerous for someone of your limited experience.'{x
+        break
+        else
+        if level($n) > 70
+                mpecho {WReaver Tiareo says 'You're far too experienced to undertake that mission.'{x
+        break
+        else
+                mpecho {W'There's nothing Reaver Maeril loves more than a trip to the surface (or the'{x
+                mpecho {W'slave market) for a relaxing smoke, but he's inordinately fussy about what'{x
+                mpecho {W'he'll consume.  He's a big fan of spongeweed, but it's become almost impossible'{x
+                mpecho {W'to get hold of.  The rumour is that someone in the Prince's palace has a supply,'{x
+                mpecho {W'but it'll be no easy task to get in there and acquire it.  Maeril has given me'{x
+                mpecho {W'permission to reward you very handsomely if you manage to, though.'{x
+        endif
+        endif
+~
+>give_prog spongeweed tobacco~
+        if level($n) > 70
+                mpecho {WReaver Tiareo says 'That mission was for someone less experienced.'{x
+                give spongeweed $n
+        break
+        else
+        if number($o) == 27606
+                mpjunk spongeweed
+                mpecho {WReaver Tiareo says 'Excellent $n, Maeril will be delighted!'{x
+                mpoload 27627 70
+                give magical $n
+                mpecho {WReaver Tiareo says 'Have this magical bag of holding; it's worth a fortune!'{x
+        break
+        else
+                mpecho $I examines $O closely.
+                mpecho {WReaver Tiareo says 'It's not the genuine article.  Sorry $n.'{x
+                give spongeweed $n
         endif
         endif
 ~

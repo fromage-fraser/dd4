@@ -573,7 +573,7 @@ int     gsn_chaos_blast;
 int     gsn_detect_curse;
 int     gsn_knife_toss;
 int     gsn_soar;
-int     gsn_smoke_bomb;
+int     gsn_bomb;
 int     gsn_snap_shot;
 int     gsn_crush;
 int     gsn_swoop;
@@ -2047,11 +2047,19 @@ void load_objects( FILE *fp )
                         pObjIndex->value[3] = atoi( value[3] );
                         break;
 
-                    case ITEM_PILL:
-                    case ITEM_PAINT:
                     case ITEM_POTION:
-                    case ITEM_SCROLL:
                         pObjIndex->weight = 2;
+                        pObjIndex->value[0] = atoi( value[0] );
+                        pObjIndex->value[1] = skill_lookup( value[1] );
+                        pObjIndex->value[2] = skill_lookup( value[2] );
+                        pObjIndex->value[3] = skill_lookup( value[3] );
+                        break;
+
+                    case ITEM_PILL:
+                    case ITEM_SCROLL:
+                    case ITEM_PAINT:
+                    case ITEM_SMOKEABLE:
+                        pObjIndex->weight = 1;
                         pObjIndex->value[0] = atoi( value[0] );
                         pObjIndex->value[1] = skill_lookup( value[1] );
                         pObjIndex->value[2] = skill_lookup( value[2] );
@@ -2678,7 +2686,9 @@ void load_specials( FILE *fp )
                         ||   pMobIndex->spec_fun == spec_lookup("spec_mast_vampire")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_evil_evil_gezhp")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_grail")
-                        ||   pMobIndex->spec_fun == spec_lookup("spec_cast_archmage") )
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_cast_archmage")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_red_grung")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_sahuagin_prince") )
                                 bonus = 20;
 
                         pMobIndex->spec_fun_exp_modifier = bonus;
@@ -3155,12 +3165,25 @@ void reset_area( AREA_DATA *pArea )
                                 }
                                 else
                                 {
-                                        if( pObjIndex->level >= LEVEL_HERO)
-                                                olevel = LEVEL_HERO - 1;
-                                        else
+                                        /* Bit of wobble on item levels hard-set for stores, unless the objects
+                                         also have the donot_randomise flag on them -- Owl 30/12/23 */
+
+                                        if (IS_SET(pObjIndex->extra_flags, ITEM_DONOT_RANDOMISE ))
+                                        {
                                                 olevel = pObjIndex->level;
+                                        }
+                                        else {
+                                                olevel = number_fuzzy(pObjIndex->level);
+                                        }
+
+                                        if( pObjIndex->level >= LEVEL_HERO)
+                                        {
+                                                olevel = LEVEL_HERO;
+                                        }
                                 }
+
                                 /* End of item level additions */
+
                                 if (IS_SET(pObjIndex->extra_flags, ITEM_DONOT_RANDOMISE ))
                                 {
                                     obj = create_object( pObjIndex, olevel, "common", CREATED_NO_RANDOMISER );
@@ -3508,6 +3531,22 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, int r
             case ITEM_DEFENSIVE_TURRET_MODULE:
             case ITEM_TURRET_MODULE:
             case ITEM_TURRET:
+            case ITEM_SMOKEABLE:
+            case ITEM_REMAINS:
+                break;
+
+            case ITEM_PIPE_CLEANER:
+                obj->value[1]   = number_fuzzy( number_fuzzy( obj->value[1] ) );
+                obj->value[0]   = obj->value[1];
+                obj->value[3]   = number_fuzzy( number_fuzzy( obj->value[3] ) );
+                obj->value[2]   = obj->value[3];
+                break;
+
+            case ITEM_PIPE:
+                obj->value[1]   = number_fuzzy( number_fuzzy( obj->value[1] ) );
+                obj->value[0]   = obj->value[1];
+                obj->value[2]   = number_fuzzy( number_fuzzy( obj->value[2] ) );
+                obj->value[3]   = number_fuzzy( number_fuzzy( obj->value[3] ) );
                 break;
 
             case ITEM_LIGHT:
@@ -3563,7 +3602,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, int r
                 }
 
             case ITEM_TREASURE:
-                obj->cost *= (number_range(3, 6) / 2);
+                obj->cost *= ( number_range( 3, 6 ) / 2 );
                 break;
 
             case ITEM_SCROLL:
@@ -3572,7 +3611,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, int r
 
             case ITEM_SHIELD_UNIT:
             case ITEM_DRIVER_UNIT:
-                obj->value[0]   = (level /7);
+                obj->value[0]   = (level / 7);
 
             case ITEM_WAND:
             case ITEM_COMBAT_PULSE:

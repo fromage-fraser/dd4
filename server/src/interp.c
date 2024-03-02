@@ -171,6 +171,7 @@ const struct cmd_type cmd_table [] =
          * Object manipulation commands.
          */
         { "brandish",   do_brandish,    POS_RESTING,     0,  LOG_NORMAL },
+        { "clean",      do_clean,       POS_RESTING,     0,  LOG_NORMAL },
         { "close",      do_close,       POS_RESTING,     0,  LOG_NORMAL },
         { "climb",      do_climb,       POS_STANDING,    0,  LOG_NORMAL },
         { "construct",  do_construct,   POS_STANDING,    0,  LOG_NORMAL },
@@ -198,6 +199,7 @@ const struct cmd_type cmd_table [] =
         { "take",       do_get,         POS_RESTING,     0,  LOG_NORMAL },
         { "sacrifice",  do_sacrifice,   POS_RESTING,     0,  LOG_NORMAL },
         { "smelt",      do_smelt,       POS_STANDING,    0,  LOG_NORMAL },
+        { "smoke",      do_smoke,       POS_RESTING,     0,  LOG_NORMAL },
         { "unlock",     do_unlock,      POS_RESTING,     0,  LOG_NORMAL },
         { "value",      do_value,       POS_STANDING,    0,  LOG_NORMAL },
         { "wear",       do_wear,        POS_RESTING,     0,  LOG_NORMAL },
@@ -261,7 +263,7 @@ const struct cmd_type cmd_table [] =
         { "whirlwind",          do_whirlwind,   POS_FIGHTING,    0,  LOG_NORMAL },
         { "wolfbite",           do_wolfbite,    POS_FIGHTING,    0,  LOG_NORMAL },
         { "knife toss",         do_knife_toss,  POS_FIGHTING,    0,  LOG_NORMAL },
-        { "smoke bomb",         do_smoke_bomb,  POS_FIGHTING,    0,  LOG_NORMAL },
+        { "bomb",               do_bomb,        POS_FIGHTING,    0,  LOG_NORMAL },
         { "snapshot",           do_snap_shot,   POS_FIGHTING,    0,  LOG_NORMAL },
         { "trigger",            do_trigger,     POS_FIGHTING,    0,  LOG_NORMAL },
         { "hurl",               do_hurl,        POS_FIGHTING,    0,  LOG_NORMAL },
@@ -3436,6 +3438,10 @@ bool check_social( CHAR_DATA *ch, char *command, char *argument )
         {
                 send_to_char( "They aren't here.\n\r",                    ch );
         }
+        else if (IS_SET( victim->act, ACT_OBJECT ))
+        {
+                send_to_char( "You can't socialise with an object.\n\r",  ch );
+        }
         else if ( victim == ch )
         {
                 act( social_table[cmd].char_auto,     ch, NULL, victim, TO_CHAR    );
@@ -3450,7 +3456,7 @@ bool check_social( CHAR_DATA *ch, char *command, char *argument )
                 if ( !IS_NPC( ch )
                     && IS_NPC( victim )
                     && !IS_AFFECTED( victim, AFF_CHARM )
-                    && IS_AWAKE( victim ) )
+                    && IS_AWAKE( victim ))
                 {
                         switch ( number_bits( 4 ) )
                         {

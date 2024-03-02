@@ -1761,6 +1761,18 @@ of Dragonhoard bank. He appears melancholy and resigned.
 34 0 2 0d0+0 0d0+0
 0 0
 8 8 1
+#16132
+fidgety drow~
+a fidgety drow~
+A fidgety drow peers at you expectantly.
+~
+This drow twitches involuntarily and looks like he can't wait for you to hurry
+up and buy something or leave.
+~
+1|2|64|524288 0 -610 S
+34 0 2 0d0+0 0d0+0
+0 0
+8 8 1
 #0
 
 
@@ -5886,9 +5898,15 @@ illuminates objects of sheer beauty.  The beauty of Reflection comes out in
 all the objects along this road.  You feel the need to stop and just let all
 this beauty into your soul.
 
-The street of the gods goes east and west, south is the Cracked Sword
+The street of the gods goes east and west, south is the Cracked Sword, north
+is the Puffer's Emporium.
 ~
 0 1|8|8192 1
+D0
+The Puffer's Emporium
+~
+~
+0 -1 16501
 D1
 The street of the gods
 ~
@@ -14939,6 +14957,23 @@ Street of the Gods, Jhaele
 ~
 0 -1 16113
 S
+#16501
+The Puffer's Emporium~
+You are standing in the pipes and smokeables shop of the Underdark.  The shop
+is about twenty feet by thirty.  The walls are lined with assorted pipes and
+bags of smokeable substances hanging by pins, a few counters provide space
+for pipe cleaners and other assorted small paraphernalia.  The shopkeeper
+walks around the shop watching you and is ready to buy and sell merchandise.
+
+The sole way out is south.
+~
+0 1|8|8192 1
+D2
+The street of the gods
+~
+~
+0 -1 16114
+S
 #0
 
 
@@ -15944,6 +15979,14 @@ O 1 16095 100 16000         the mirror flashes scenes of the world to Chamber of
 *
 M 1 16130 1 16000           ; loads woman
 D 1 16219 5 1           ; Dark Tunnel Close Down
+*
+M 1 16132 1 16501       ; fidgety drow to Puffer's Emporium
+G 1 545 100
+G 1 546 100
+G 1 547 100
+G 1 548 100
+G 1 549 100
+
 S
 
 
@@ -15958,6 +16001,7 @@ S
 16076 8 20 0 0 0 150 90 0 23            ; Satori, jeweller
 16077 19 26 0 0 0 150 60 0 23           ; Jiestis, food
 16118 0 0 0 0 0 150 75 0 23         ; inn keep
+16132 52 53 54 0 0 150 70 0 23      ; The fidgety drow
 0
 
 

@@ -1006,6 +1006,61 @@ your head. You recoil in horror.
 56 0 0 0d0+0 0d0+0
 32 0
 8 8 1
+
+#27515
+statelywayguardian~
+statelywayguardian~
+~
+This guy will unlock the west bridge to the prince's canton if a player enters
+his square with a baron token or amulet.
+
+~
+2|64|512|4096|65536 4|8|16|32|512|32768|524288|8388608|1073741824 1000 S
+104 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>all_greet_prog 100~
+if carrying($n) == 27499
+or carrying($n) == 27016
+or carrying($n) == 27536
+or carrying($n) == 27564
+or carrying($n) == 27463
+or carrying($n) == 27584
+    mpecho {WThe great gates flash as you approach them.{x
+    mpoload 27624
+    unlock gate
+    mpjunk princescantonkey
+endif
+~
+|
+
+#27516
+princescrossguardian~
+princescrossguardian~
+~
+This guy will unlock the south bridge to the prince's canton if a player enters
+his square with a baron token or amulet.
+
+~
+2|64|512|4096|65536 4|8|16|32|512|32768|524288|8388608|1073741824 1000 S
+104 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>all_greet_prog 100~
+if carrying($n) == 27499
+or carrying($n) == 27016
+or carrying($n) == 27536
+or carrying($n) == 27564
+or carrying($n) == 27463
+or carrying($n) == 27584
+    mpecho {WThe great gates flash as you approach them.{x
+    mpoload 27624
+    unlock gate
+    mpjunk princescantonkey
+endif
+~
+|
+
 #0
 
 
@@ -1449,6 +1504,15 @@ A bright green vial has been left here.~
 10 0 1|16384
 40~ power heal~ inertial barrier~ combat mind~
 1 500 0
+
+#27624
+princescantonkey~
+princescantonkey~
+princescantonkey.~
+~
+18 0 1|16384
+0~ 0~ 0~ 0~
+1 0 0
 #0
 
 
@@ -2896,7 +2960,7 @@ D0
 D1
 ~
 gate~
-8 -1 27439
+8 27624 27439
 D2
 ~
 ~
@@ -2954,7 +3018,7 @@ can head upwards, towards the huge, looming area of darkness in the water above.
 D0
 ~
 gate~
-8 -1 27427
+8 27624 27427
 D1
 ~
 ~
@@ -3135,18 +3199,6 @@ What looked like a filthy puddle of mud turns out to be an obscured narrow
 entrance to some sort of underwater cavern.  You could squeeze down there,
 you think.
 ~
-S
-#27427
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
-S
-#27439
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
 S
 #27444
 Ota'ar Dar Northern Residential/Prince's Canton Canal, Lower~
@@ -5757,18 +5809,6 @@ D5
 ~
 0 -1 27426
 S
-#27727
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
-S
-#27739
-Dummy Connecting Room~
-PLACEHOLDER UNTIL CONNECTED AREA IN.
-~
-0 4 8
-S
 #27744
 <252>Ota'ar Dar Northern Residential/Prince's Canton Canal, Upper<0>~
 <237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
@@ -7680,6 +7720,10 @@ G 1 27396 100
 *
 M 1 27311 6 27823			a giant sea leech to A Large Underwater Tunnel
 G 1 27396 100
+*
+M 1 27515 1 27418           wizinvis mob to stately way bridge
+*
+M 1 27516 1 27420           wizinvis mob to prince's cross bridge
 *
 
 

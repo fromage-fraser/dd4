@@ -93,6 +93,7 @@ DECLARE_SPEC_FUN( spec_laghathti            );
 DECLARE_SPEC_FUN( spec_superwimpy           );
 DECLARE_SPEC_FUN( spec_uzollru              );
 DECLARE_SPEC_FUN( spec_sahuagin_baron       );
+DECLARE_SPEC_FUN( spec_sahuagin_prince      );
 DECLARE_SPEC_FUN( spec_green_grung          );
 DECLARE_SPEC_FUN( spec_sahuagin_infantry    );
 DECLARE_SPEC_FUN( spec_sahuagin_cavalry     );
@@ -100,6 +101,7 @@ DECLARE_SPEC_FUN( spec_sahuagin_guard       );
 DECLARE_SPEC_FUN( spec_sahuagin_lieutenant  );
 DECLARE_SPEC_FUN( spec_sahuagin_cleric      );
 DECLARE_SPEC_FUN( spec_sahuagin_high_cleric );
+DECLARE_SPEC_FUN( spec_red_grung            );
 
 
 /*
@@ -158,6 +160,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_superwimpy"))           return spec_superwimpy;
         if (!str_cmp(name, "spec_uzollru"))              return spec_uzollru;
         if (!str_cmp(name, "spec_sahuagin_baron"))       return spec_sahuagin_baron;
+        if (!str_cmp(name, "spec_sahuagin_prince"))      return spec_sahuagin_prince;
         if (!str_cmp(name, "spec_green_grung"))          return spec_green_grung;
         if (!str_cmp(name, "spec_sahuagin_infantry"))    return spec_sahuagin_infantry;
         if (!str_cmp(name, "spec_sahuagin_cavalry"))     return spec_sahuagin_cavalry;
@@ -165,6 +168,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_sahuagin_lieutenant"))  return spec_sahuagin_lieutenant;
         if (!str_cmp(name, "spec_sahuagin_cleric"))      return spec_sahuagin_cleric;
         if (!str_cmp(name, "spec_sahuagin_high_cleric")) return spec_sahuagin_high_cleric;
+        if (!str_cmp(name, "spec_red_grung"))            return spec_red_grung;
 
 
         return 0;
@@ -233,6 +237,7 @@ char* spec_fun_name (CHAR_DATA *ch)
         if (ch->spec_fun == spec_lookup("spec_superwimpy"))           return "spec_superwimpy";
         if (ch->spec_fun == spec_lookup("spec_uzollru"))              return "spec_uzollru";
         if (ch->spec_fun == spec_lookup("spec_sahuagin_baron"))       return "spec_sahuagin_baron";
+        if (ch->spec_fun == spec_lookup("spec_sahuagin_prince"))      return "spec_sahuagin_prince";
         if (ch->spec_fun == spec_lookup("spec_green_grung"))          return "spec_green_grung";
         if (ch->spec_fun == spec_lookup("spec_sahuagin_infantry"))    return "spec_sahuagin_infantry";
         if (ch->spec_fun == spec_lookup("spec_sahuagin_cavalry"))     return "spec_sahuagin_cavalry";
@@ -240,6 +245,7 @@ char* spec_fun_name (CHAR_DATA *ch)
         if (ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant"))  return "spec_sahuagin_lieutenant";
         if (ch->spec_fun == spec_lookup("spec_sahuagin_cleric"))      return "spec_sahuagin_cleric";
         if (ch->spec_fun == spec_lookup("spec_sahuagin_high_cleric")) return "spec_sahuagin_high_cleric";
+        if (ch->spec_fun == spec_lookup("spec_red_grung"))            return "spec_red_grung";
     }
     else {
         return "none";
@@ -3304,7 +3310,7 @@ bool spec_superwimpy( CHAR_DATA *ch )
 
                     case  4:
                         if ( CAN_SPEAK(ch) ) { do_say(ch, "You can't hurt what you can't see!"); }
-                        do_smoke_bomb( ch, victim->name);
+                        do_bomb( ch, victim->name);
                         return TRUE;
 
                     case  5:
@@ -3624,6 +3630,145 @@ bool spec_sahuagin_baron (CHAR_DATA *ch)
         return TRUE;
 
 }
+
+/*
+ * Owl 1/2/23, for Ota'ar Dar
+ */
+bool spec_sahuagin_prince (CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        char      *spell;
+        int        sn;
+        bool       target_self;
+        char buf[MAX_STRING_LENGTH];
+
+        spell = "haste";
+        if ( CAN_SPEAK(ch) ) { sprintf(buf,"You cannot defeat me!"); }
+
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim->deleted)
+                        continue;
+
+                if (victim->fighting == ch && !number_bits(1))
+                        break;
+        }
+
+        if (!victim)
+                return FALSE;
+
+        while (1)
+        {
+            int min_level;
+            target_self = TRUE;
+
+                switch ( number_range (0, 11) )
+                {
+                    case  0:
+                        min_level = 25;
+                        spell = "power heal";
+                        target_self = TRUE;
+                        break;
+
+                    case  1:
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Arrrrrrrrrgh!"); }
+                        multi_hit(ch, victim, gsn_lunge);
+                        return TRUE;
+
+                    case  2:
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"You DARE look upon me?"); }
+                        do_dirt_kick(ch, victim->name);
+                        return TRUE;
+
+                    case  3:
+                        if (is_affected(ch, gsn_berserk))
+                                return FALSE;
+                        do_berserk(ch, "");
+                        return TRUE;
+
+                    case  4:
+                        min_level = 11;
+                        if (is_affected(ch, gsn_inertial_barrier))
+                        {
+                                break;
+                        }
+                        else {
+                                if ( CAN_SPEAK(ch) ) { sprintf(buf,"I laugh at your feeble blowssss!"); }
+                                spell = "inertial barrier";
+                                target_self = TRUE;
+                                break;
+                        }
+
+                    case  5:
+                        act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
+                        act( "$n bites you!", ch, NULL, victim, TO_VICT    );
+                        act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
+                        spell_poison( gsn_poison, ch->level, ch, victim );
+                        return TRUE;
+
+                    case  6:
+                        do_flying_headbutt( ch, victim->name);
+                        return TRUE;
+
+                    case  7:
+                        do_grapple( ch, victim->name);
+                        return TRUE;
+
+                    case  8:
+                        do_grapple( ch, victim->name);
+                        return TRUE;
+
+                    case  9:
+                        min_level = 25;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Fool! I am invulnerable!"); }
+                        spell = "power heal";
+                        target_self = TRUE;
+                        break;
+
+                    case  10:
+                        min_level = 25;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"You cannot harm me!"); }
+                        spell = "power heal";
+                        target_self = TRUE;
+                        break;
+
+                    default:
+                        min_level = 35;
+                        if (is_affected(ch, gsn_haste))
+                        {
+                                break;
+                        }
+                        else {
+                            if ( CAN_SPEAK(ch) ) { sprintf(buf,"Too slow, fleshling!"); }
+                            spell = "haste";
+                            target_self = TRUE;
+                            break;
+                        }
+                }
+
+                if ( ch->level >= min_level )
+                        break;
+        }
+
+        if ( ( sn = skill_lookup( spell ) ) < 0 )
+                return FALSE;
+
+        do_say(ch,buf);
+
+        if (target_self)
+                act ("$c beats $s massive chest with $s clawed hands.", ch, NULL, NULL, TO_ROOM);
+        else
+        {
+                act ("$c waves $s huge clawed hands at $N.", ch, NULL, victim, TO_NOTVICT);
+                act ("$c waves $s huge clawed hands at you.", ch, NULL, victim, TO_VICT);
+        }
+
+        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+
+        return TRUE;
+
+}
+
 
 /*
  * Owl 6/3/23, for Ota'ar Dar / Omu
@@ -4242,6 +4387,92 @@ bool spec_sahuagin_lieutenant (CHAR_DATA *ch)
 
         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
 
+        return TRUE;
+}
+
+bool spec_red_grung (CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        char *spell;
+        int sn;
+        char buf[MAX_STRING_LENGTH];
+
+        if (ch->level < 26)
+                return FALSE;
+
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim->deleted)
+                        continue;
+
+                if (victim->fighting == ch && !number_bits(1))
+                        break;
+        }
+
+        if (!victim)
+                return FALSE;
+
+        while (1)
+        {
+                int min_level;
+                int random = number_range(0,9);
+
+                switch (random)
+                {
+                    case 0:
+                    case 1:
+                        min_level = 25;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "Smyth shafaer nomeno..."); }
+                        spell = "fireball";
+                        break;
+
+                    case 2:
+                        min_level = 30;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Virednith!"); }
+                        spell = "firestorm";
+                        break;
+
+                    case 3:
+                        min_level = 35;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Nomeno geou ti ouith sva shio..."); }
+                        spell = "dispel magic";
+                        break;
+
+                    case 4:
+                        min_level = 40;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "Kiwieg dout tobor jedark aurach mojka!"); }
+                        spell = "energy drain";
+                        break;
+
+                    case 5: min_level = 40;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Si mi keltahk!!"); }
+                        spell = "blindness";
+                        break;
+
+                    case 6:
+                        min_level = 45;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Confn kagh itrewic creol..."); }
+                        spell = "acid blast";
+                        break;
+
+                    default:
+                        min_level = 15;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Xsio, wux re vorkin..."); }
+                        spell = "prismatic spray";
+                }
+
+                if (ch->level >= min_level)
+                        break;
+        }
+
+        sn = skill_lookup(spell);
+
+        if (!sn)
+                return FALSE;
+
+        do_say(ch,buf);
+
+        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
         return TRUE;
 }
 

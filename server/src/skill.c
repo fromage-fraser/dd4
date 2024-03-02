@@ -169,6 +169,12 @@ void do_gouge (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("You can't gouge an object.\n\r", ch);
+                return;
+        }
+
         if (victim == ch)
         {
                 send_to_char("You want to rip your own eyes out?\n\r", ch);
@@ -267,6 +273,12 @@ void do_choke (CHAR_DATA *ch, char *argument)
         if (victim == ch)
         {
                 send_to_char("You want to choke yourself?\n\r", ch);
+                return;
+        }
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("You can't choke an object.\n\r", ch);
                 return;
         }
 
@@ -1186,7 +1198,19 @@ void atemi (CHAR_DATA *ch, CHAR_DATA *victim)
         if (combo_count > 2 )
                 dam *= -1.5 + combo_count;
 
-        arena_commentary("$n strikes $N in the torso.", ch, victim);
+        if (IS_NPC(victim))
+        {
+                if (IS_SET(victim->act, ACT_OBJECT))
+                {
+                    arena_commentary("$n strikes $N in its centre mass.", ch, victim);
+                }
+                else {
+                    arena_commentary("$n strikes $N in the torso.", ch, victim);
+                }
+        }
+        else {
+                arena_commentary("$n strikes $N in the torso.", ch, victim);
+        }
         damage(ch, victim, dam, gsn_atemi, FALSE);
 }
 
@@ -1200,6 +1224,13 @@ void kansetsu (CHAR_DATA *ch, CHAR_DATA *victim)
                 act ("<105>Alas, $N has no wrists for you to break.<0>", ch, NULL, victim, TO_CHAR);
                 return;
         }
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("You can't break the wrists of an object.\n\r", ch);
+                return;
+        }
+
 
         if (IS_SET(ch->in_room->room_flags, ROOM_NO_DROP))
         {
@@ -1385,7 +1416,7 @@ void do_push (CHAR_DATA *ch, char *argument)
 
         if (ch->in_room->area != to_room->area)
         {
-                send_to_char("That character cannot enter that area.\n\r", ch);
+                send_to_char("Your target cannot be pushed into that area.\n\r", ch);
                 victim->position = POS_STANDING;
                 return;
         }
@@ -1615,6 +1646,12 @@ void do_suck (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("You can't suck blood from an object.\n\r", ch);
+                return;
+        }
+
         if (IS_NPC(victim) && IS_INORGANIC(victim))
         {
                 send_to_char("They have no blood for you to suck!\n\r", ch);
@@ -1693,6 +1730,12 @@ void do_break_wrist (CHAR_DATA *ch, char *argument)
         if (victim->fighting != ch && ch->fighting != victim)
         {
                 act ("$E is not fighting you!", ch, NULL, victim, TO_CHAR);
+                return;
+        }
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("You can't break the wrists of an object.\n\r", ch);
                 return;
         }
 
@@ -1959,7 +2002,7 @@ void do_forge (CHAR_DATA *ch, char *argument)
         }
         if (!wobj)
         {
-                send_to_char("You need a armourer's hammer to forge your armour.\n\r", ch);
+                send_to_char("You need an armourer's hammer to forge your armour.\n\r", ch);
                 return;
         }
 
@@ -2656,6 +2699,12 @@ void do_extort (CHAR_DATA *extortionist, char *targetList)
                 return;
         }
 
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("You can't extort an object.\n\r", extortionist);
+                return;
+        }
+
         store = victim->pIndexData->pShop;
 
         if( store
@@ -3016,6 +3065,12 @@ void do_chant(CHAR_DATA *ch, char *arg)
                         return;
                 }
 
+                if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+                {
+                        send_to_char("Your chant can't affect objects.\n\r", ch);
+                        return;
+                }
+
                 act( "Your chant of enfeeblement weakens $N!", ch, NULL, victim, TO_CHAR );
                 act( "$n's chant of enfeeblement weakens $N!", ch, NULL, victim, TO_ROOM );
                 arena_commentary("$N is enfeebled by $n's chant.", ch, victim);
@@ -3053,6 +3108,12 @@ void do_chant(CHAR_DATA *ch, char *arg)
                 if( number_percent() > chance )
                 {
                         send_to_char( "Your chant of pain has no effect.\n\r", ch );
+                        return;
+                }
+
+                if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+                {
+                        send_to_char("Your chant can't affect objects.\n\r", ch);
                         return;
                 }
 
@@ -4854,7 +4915,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                         }
                 }
 
-                /* Deploy a defenseive module unit */
+                /* Deploy a defensive module unit */
                 if ((module->item_type == ITEM_DEFENSIVE_TURRET_MODULE) && (unit >= 1))
                 {
 
@@ -4999,7 +5060,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                                         }
                                 }
 
-                                /* Deploy a defenseive module unit */
+                                /* Deploy a defensive module unit */
                                 if ((module->item_type == ITEM_DEFENSIVE_TURRET_MODULE) && (unit >= 1))
                                 {
 

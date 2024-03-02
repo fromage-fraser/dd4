@@ -1,1 +1,16 @@
-
+Tue Feb  6 06:44:09 2024
+Command 'c 'charm person' sol'
+Issued by 'Owl' (player) at room 27473
+Master is '(null)'
+Function: leaving update_handler
+Backtrace:
+../src/dd4(write_last_command+0xe7)[0x452d97]
+/lib/x86_64-linux-gnu/libc.so.6(+0x38d60)[0x7fdeef4b3d60]
+../src/dd4(mob_is_quest_target+0x37)[0x4a3ad7]
+../src/dd4(spell_charm_person+0xb3)[0x4880b3]
+../src/dd4(do_cast+0x6d2)[0x47a372]
+../src/dd4(interpret+0x371)[0x479131]
+../src/dd4(game_loop_unix+0x619)[0x458ba9]
+../src/dd4(main+0xe0)[0x41f5f0]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xea)[0x7fdeef49ed0a]
+../src/dd4(_start+0x2a)[0x41f69a]

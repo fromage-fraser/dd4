@@ -1,0 +1,4807 @@
+#AREA Owl~ Ota'ar Dar Prince's Canton~
+55 60 40 100
+
+#RECALL
+27347
+
+#AREA_SPECIAL
+exp_mod 120
+no_teleport
+no_quest
+$
+
+#MOBILES
+
+#27462
+death hawk~
+the death hawk~
+A death hawk dives from above at you.
+~
+The feathers glow evilly.
+~
+32|64 524288 0 S
+55 0 0 0d0+0 0d0+0
+548 0
+8 8 1
+#27463
+fairy dragon~
+A fairy dragon~
+A fairy dragon is fluttering around here looking for something to do...
+~
+It's a cute little multi-coloured dragon... about 2 foot long.
+It gracefully dances around your head.
+~
+65 2|4|16|524288 500 S
+55 0 0 0d0+0 0d0+0
+544 900
+8 8 0
+#27464
+griffin~
+A griffin~
+A large black winged griffin swoops into an attack.
+~
+Golden-maned and black all over.  It's quite a beautiful creature if not
+for the fact it is hungry and is attacking you!
+~
+96 524288 300 S
+55 14 4 1d1+104 2d5+2
+548 3750
+8 8 1
+#27465
+giant vampire bat~
+a giant vampire bat~
+<58>A giant vampire bat swoops through the air.<0>
+~
+You catch a glimpse of the huge bat's hideous leering visage as it swoops past
+your head. You recoil in horror.
+~
+64 8|32|512|524288 0 S
+55 0 0 0d0+0 0d0+0
+32 0
+8 8 1
+#27466
+wamphyri flyer enormous stingray mutated~
+a Wamphyri Flyer~
+What looks like an enormous mutated stingray floats here.
+~
+A Wamphyri Flyer resembles nothing so much as a giant stingray, although its
+bulk, being assembled from the flesh of the dead, is gray and mottled with
+shards of bone and cartilage.
+~
+64 524288 0 S
+55 0 0 0d0+0 0d0+0
+61|256 0
+8 8 0
+#27467
+chasme fly demon~
+a chasme~
+A chasme is flying around here.
+~
+The chasme or fly demon is half-human and half-fly.  They
+don't like anyone, not even other demons.
+~
+68 8|32|524288 -900 S
+56 0 -120 4d10+310 3d10+7
+0 70000
+8 8 1
+#27468
+fury~
+a fury~
+A fury floats before you.
+~
+The sight of this beast fills you with terror.  The fury floats in the air
+above you, her dirty robes blood stained and covered with nameless filth.
+Her tortured face moans as you step into the cave, her eyes jet black, her
+mouth lined with teeth like needles.  She curses you, and tightens her grip
+about her brilliant, gleaming sword.
+~
+64 524288 -200 S
+56 0 0 0d0+0 0d0+0
+96 0
+8 8 2
+#27469
+grell~
+a grell~
+A grell gropes at you with its tentacles.
+~
+This looks like a huge brain with green tentacles and a huge squid-like
+beak. It hovers in the air, glaring at you menacingly.
+~
+32|64 8|32|128|512|8192|524288|1048576 -800 S
+56 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#27470
+akshashi devil horned warrior~
+an Akshashi Devil~
+A horned warrior flies with a spear in hand.
+~
+Spawned in some foul netherworld, the Akshashi travel the elemental realms
+performing the perverse tasks of their masters.  This warrior is clad in
+strange armour and dress, terrible points of light burning in the sockets
+of its dark fleshy skull.
+~
+64 524288 -250 S
+56 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27471
+ghostly nymph~
+a ghostly nymph~
+The ghostly form of a nymph wails quietly here.
+~
+The ghostly form looks very sad.  She drifts about the air reaching out as
+if to try and touch something.  She looks despairingly at you.
+~
+64 524288 250 S
+56 0 0 0d0+0 0d0+0
+32|64|256 0
+0 0 2
+>rand_prog 15~
+    mpasound A despairing wail echoes through the moat.
+~
+>rand_prog 15~
+    mpecho The nymph lets out a despairing wail.
+~
+|
+#27472
+efreeti~
+an efreeti~
+An efreeti hovers here.
+~
+This evil genie-like being, summoned from the Elemental Plane of Fire, does not
+appear to be happy.
+~
+32|64 4|512|8192|524288 -1000 S
+57 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27473
+hawkman hawk man~
+the hawkman~
+A hawkman dives at you for the attack!
+~
+The hawkman, like all of his kind wears a beaked helm, chain leggings,
+and is naked from the waist up. He wears the talons of the hawkpeople,
+a glove fitted with spikes on the fingers. Huge grey wings grow from his
+back, which when extended span 12' from tip to tip.
+~
+32|64 524288 0 S
+57 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#27474
+seagull gull~
+a seagull~
+A seagull swoops down towards you for a closer look.
+~
+Duck !
+Hmm, a seagull on a mission.
+~
+64 524288 0 S
+57 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#27475
+mosquitoes mosquitos swarm~
+a swarm of mosquitoes~
+A swarm of mosquitoes is hungrily looking at you.
+~
+The mosquitoes look lean and in need of blood--YOURS!
+~
+32|64 524288 -500 S
+57 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|64 0
+8 8 0
+>death_prog 100~
+    mpecho {cWhat remains of the swarm quickly disperses.{x
+~
+|
+#27476
+mist dragon~
+a mist dragon~
+A mist dragon hangs in the vapour.
+~
+The sleek white dragon curls like a snake through the air.
+~
+64 8192|524288 100 S
+57 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+< reserved~ rare~
+
+#27478
+Ota'ar Dar infantry soldier member royal~
+a royal Ota'ar Dar soldier~
+A member of Ota'ar Dar's royal infantry is here, on patrol duty.
+~
+Royal Ota'ar Dar soldiers are the cream of the Ota'ar Dar infantry.  This one
+has been tasked with patrolling the grounds of the Prince's Canton.  He stares
+at you coldly.
+~
+64 512|67108864 -630 S
+56 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>all_greet_prog 100~
+if carrying($n)!= 27499
+    if carrying($n) != 27536
+        if carrying($n) != 27564
+            if carrying($n) != 27463
+                if carrying($n) != 27584
+                    yell Intruders! Intruders in the Prince's canton!  Attack!
+                    mpkill $n
+                endif
+            endif
+        endif
+    endif
+endif
+~
+>entry_prog 100~
+if carrying($n)!= 27499
+    if carrying($n) != 27536
+        if carrying($n) != 27564
+            if carrying($n) != 27463
+                if carrying($n) != 27584
+                    yell Have at you! Save the Prince!
+                    mpkill $n
+                endif
+            endif
+        endif
+    endif
+endif
+~
+|
+#27479
+Ota'ar Dar cavalry cavalryman royal~
+a royal Ota'ar Dar cavalryman~
+A royal Ota'ar Dar cavalryman is here, patrolling the canton.
+~
+Royal Ota'ar Dar cavalrymen are the cream of the Ota'ar Dar cavalry.  This one
+has been tasked with patrolling the grounds and castle of the Prince's Canton,
+which he does diligently, if somewhat disdainfully.
+~
+64 32|512|67108864 -640 S
+57 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>all_greet_prog 100~
+if carrying($n)!= 27499
+    if carrying($n) != 27536
+        if carrying($n) != 27564
+            if carrying($n) != 27463
+                if carrying($n) != 27584
+                    yell To me, broodmates!  Intruders!  Protect the Prince!
+                    mpkill $n
+                endif
+            endif
+        endif
+    endif
+endif
+~
+>entry_prog 100~
+if carrying($n)!= 27499
+    if carrying($n) != 27536
+        if carrying($n) != 27564
+            if carrying($n) != 27463
+                if carrying($n) != 27584
+                    yell No one threatens the Prince on my watch!  Perish!
+                    mpkill $n
+                endif
+            endif
+        endif
+    endif
+endif
+~
+|
+
+#27480
+yfavos smith blacksmith royal~
+Yfavos the royal smith~
+Yfavos the royal smith is here, focused on his work.
+~
+This lanky sahuagin is the royal smith, responsible for the armour and weapons
+of the Prince's troops.  He's very good at what he does, and takes it
+seriously, though it's said he's less stingy and xenophobic about sharing his
+expertise than most sahuagin.
+~
+2|64|1024 8 -125 S
+58 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+& 55 'teacher base'
+& 102 'weaponsmithing'
+& 103 'armoursmithing'
+& 102 'mech tech'
+& 103 'turret tech'
+& 102 'rune casting'
+& 103 'runic arts'
+& 102 'inscription'
+& 103 'advanced smithing'
+& 102 'weapon lore'
+& 30 'smithy base'
+& 30 'engineer base'
+& 30 'runesmith base'
+
+#27481
+Giknyn apprentice royal~
+Giknyn the apprentice~
+Giknyn the royal smith's apprentice is busy smelting here.
+~
+This youngish, short sahuagin is the royal smith's apprentice, responsible for
+all the smithing grunt work that needs to be done while he learns the finer
+points of the craft.  Right now he's busy smelting metals for use in the
+lower part of the foundry.
+~
+2|64|1024 8 -225 S
+57 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+
+#27482
+Rani Matenn Sekolah cleric~
+Rani Matenn~
+Rani Matenn is here, tending the chapel.
+~
+Rani Matenn is a middle-aged female sahuagin, and evidently a fairly important
+cleric in the Sekolah-worshipping hierarchy, as she tends the royal temple.
+
+She leads the prayers here, perhaps ironically as Sekolah so rarely pays any
+attention to them, despising those weak enough to ask him for help. Still,
+can't hurt to ask.
+~
+2|64|1024 8|32|128|512|8192|524288|67108864|536870912 -840 S
+58 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+>speech_prog pray prayer prays prayers~
+if race($n) == 19
+	say By the grace of Sekolah I will add my voice to yours, friend.
+    c bless $n
+else
+	say Sekolah despises the prayers of non-sahuagin.  You will pay for your insolence.
+    mpkill $n
+endif
+~
+|
+
+#27483
+great white shark~
+a great white shark~
+A great white shark is here, ready to be saddled and ridden into battle.
+~
+This terrifying apex predator grins at you with a huge maw full of teeth. It
+might be 6 metres from snout to tail fin. Best not to annoy it.
+
+The terrifying beast has been magically enchanted to serve as a mount for
+sahuagin warriors, and can operate on land, under the sea, and in the air.
+~
+2|64|256|131072 32|512|524288|67108864 0 S
+58 0 0 0d0+0 0d0+0
+172|512 0
+8 8 1
+
+#27484
+megalodon shark giant~
+the megalodon~
+A {Wgigantic shark{x swims here, perhaps the largest you've ever seen.
+~
+You are face to face with one of the largest and most powerful predators to
+have ever lived; he must be 20 metres long!  His jaws are full of gigantic
+serrated teeth, and open wide enough for a full-grown man to walk around
+inside them. Best hope he's not hungry.
+~
+2|64|131072 8|32|128|512|33554432|67108864 -250 S
+60 0 0 0d0+0 0d0+0
+172|512 0
+8 8 1
+
+#27485
+seahorse giant~
+a giant sea horse~
+A giant seahorse floats here, saddled and ready for battle.
+~
+This giant sea horse is used as a mount by sahuagin nobility. It is probably
+three metres high, and swims in a vertical posture, using its back fin to
+manoeuvre.  Seahorses of this size are magical creations, and may have
+unusual abilities.
+~
+2|64|256|131072 32|512|524288|67108864 0 S
+58 0 0 0d0+0 0d0+0
+172|512 0
+8 8 1
+
+#27486
+giant manta ray~
+a giant manta ray~
+A giant manta ray flaps majestically.
+~
+Over 9 metres long and 7 metres across, this giant manta ray is a fearsome
+sight. Though generally docile, giant mantas' sheer size makes them fearsome in
+combat, especially when ridden and controlled by an experienced warrior.
+
+This manta has been magically enchanted to serve as a mount for sahuagin
+warriors, and can operate on land, under the sea, and in the air.
+~
+2|64|256|131072 32|128|512|524288|67108864 0 S
+58 0 0 0d0+0 0d0+0
+172 0
+8 8 2
+
+#27487
+Ota'ar Dar lieutenant royal~
+a royal Ota'ar Dar lieutenant~
+A royal Ota'ar Dar lieutenant is here, keeping an eye on his troops.
+~
+Ota'ar Dar lieutenants lead contingents of mixed infantry and cavalry.  This one
+has been tasked with administrating the guard patrolling the courtyward of the
+Prince's Canton, which he does diligently and efficiently.
+~
+64 32|512|67108864 -340 S
+58 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>all_greet_prog 100~
+if carrying($n)!= 27499
+    if carrying($n) != 27536
+        if carrying($n) != 27564
+            if carrying($n) != 27463
+                if carrying($n) != 27584
+                    yell To me, squad!  Intruders in the courtyard!  Protect the Prince!
+                    mpkill $n
+                endif
+            endif
+        endif
+    endif
+endif
+~
+>entry_prog 100~
+if carrying($n)!= 27499
+    if carrying($n) != 27536
+        if carrying($n) != 27564
+            if carrying($n) != 27463
+                if carrying($n) != 27584
+                    yell None shall harm the Prince on my watch!  Perish, interloper!
+                    mpkill $n
+                endif
+            endif
+        endif
+    endif
+endif
+~
+|
+
+#27488
+stable master royal~
+the royal stable master~
+The royal stable master is here, diligently going about his business.
+~
+The Prince's stable master is a middle-aged, rather grim-looking sahuagin.  He
+takes pride in his office and ensures the mounts are kept in absolute prime
+condition.
+~
+64 32|512|67108864 -340 S
+58 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+
+#27489
+statue Elb'kl Ala prince golden~
+a statue of Elb'kl Ala~
+<178>A golden statue of Elb'kl Ala, Prince of Ota'ar Dar stands here.<0>
+~
+This towering golden statue of Ota'ar Dar's current prince, Elb'kl Ala, portrays
+him as powerful, shrewd, and commanding.  The workmanship of it rivals that of
+the dwarves or elves, and you suspect it has been sourced outside of Ota'ar Dar.
+~
+2|64|8388608|16777216|33554432|67108864|134217728 1|4294967296 0 S
+60 0 0 0d0+0 0d0+0
+316 0
+8 8 0
+
+#27490
+statue Tane Xha'do prince silver~
+a statue of Tane Xha'do~
+<242>A silver statue of Tane Xha'do, former Prince of Ota'ar Dar stands here.<0>
+~
+This towering silver statue of Ota'ar Dar's last prince, Tane Xha'do, portrays
+him as energetic, inspiring, and sneaky.  The workmanship of it rivals that of
+the dwarves or elves, and you suspect it has been sourced outside of Ota'ar Dar.
+~
+2|64|8388608|16777216|33554432|67108864|134217728 1|4294967296 0 S
+60 0 0 0d0+0 0d0+0
+447 0
+8 8 0
+
+#27491
+statue Imd'ri Kaiman prince ruby~
+a statue of Imd'ri Kaiman~
+<160>A ruby statue of Imd'ri Kaiman, former Prince of Ota'ar Dar stands here.<0>
+~
+This towering ruby statue of one of Ota'ar Dar's former princes, Imd'ri Kaiman,
+portrays him as creative, bright, and particularly evil.  The workmanship of it
+rivals that of the dwarves or elves, and you suspect it has been sourced
+outside of Ota'ar Dar.
+~
+2|64|8388608|16777216|33554432|67108864|134217728 1|4294967296 0 S
+60 0 0 0d0+0 0d0+0
+447 0
+8 8 0
+
+#27492
+statue Molo Paer'e prince emerald~
+a statue of Molo Paer'e~
+<46>An emerald statue of Molo Paer'e, former Prince of Ota'ar Dar stands here.<0>
+~
+This towering emerald statue of one of Ota'ar Dar's former princes, Molo Paer'e,
+portrays him as sadistic, sneaky, and unstable.  The workmanship of it rivals
+that of the dwarves or elves, and you suspect it has been sourced outside of
+Ota'ar Dar.
+~
+2|64|8388608|16777216|33554432|67108864|134217728 1|4294967296 0 S
+60 0 0 0d0+0 0d0+0
+447 0
+8 8 0
+
+#27493
+statue Keoki Mia prince sapphire~
+a statue of Keoki Mia~
+<33>A sapphire statue of Keoki Mia, former Prince of Ota'ar Dar stands here.<0>
+~
+This towering sapphire statue of one of Ota'ar Dar's former princes, Keoki Mia,
+portrays him as brave, stingy, and disloyal.  The workmanship of it rivals that of
+the dwarves or elves, and you suspect it has been sourced outside of Ota'ar Dar.
+~
+2|64|8388608|16777216|33554432|67108864|134217728 1|4294967296 0 S
+60 0 0 0d0+0 0d0+0
+447 0
+8 8 0
+
+#27494
+statue Jha'aa Tra'en diamond~
+a statue of Jha'aa Tra'en~
+<15>A diamond statue of Jha'aa Tra'en, former Prince of Ota'ar Dar stands here.<0>
+~
+This towering diamond statue of one of Ota'ar Dar's former princes, Jha'aa Tra'en,
+portrays him as violent, lazy, and stable.  The workmanship of it rivals that of
+the dwarves or elves, and you suspect it has been sourced outside of Ota'ar Dar.
+~
+2|64|8388608|16777216|33554432|67108864|134217728 1|4294967296 0 S
+60 0 0 0d0+0 0d0+0
+447 0
+8 8 0
+
+#27495
+attire sahuagin battle gladiator~
+the battle attire~
+<27>(Magical)<0> The battle attire of a sahuagin gladiator is on display here.
+~
+These items belonged to a famous sahuagin gladiator, and have been put on
+display here by the Ota'ar Dar prince.  You could have sworn you saw them move
+out of the corner of your eye, but it was probably your imagination.
+~
+2|64|33554432|134217728 0 0 S
+60 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|256 0
+8 8 0
+>all_greet_prog 100~
+if carrying($n)!= 27499
+    if carrying($n) != 27536
+        if carrying($n) != 27564
+            if carrying($n) != 27463
+                if carrying($n) != 27584
+                    mpechoat $n {WThe battle attire lunges suddenly at you!{x
+                    mpkill $n
+                endif
+            endif
+        endif
+    endif
+endif
+~
+>hitprcnt_prog 30~
+    dirt
+~
+|
+
+#27496
+attire sahuagin battle gladiator~
+the battle attire~
+<27>(Magical)<0> The battle attire of a sahuagin gladiator is on display here.
+~
+These items belonged to a famous sahuagin gladiator, and have been put on
+display here by the Ota'ar Dar prince.  You could have sworn you saw them move
+out of the corner of your eye, but it was probably your imagination.
+~
+2|64|33554432|134217728 0 0 S
+60 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|256 0
+8 8 0
+>all_greet_prog 100~
+if carrying($n)!= 27499
+    if carrying($n) != 27536
+        if carrying($n) != 27564
+            if carrying($n) != 27463
+                if carrying($n) != 27584
+                    mpechoat $n {WThe battle attire lunges suddenly at you!{x
+                    mpkill $n
+                endif
+            endif
+        endif
+    endif
+endif
+~
+>hitprcnt_prog 30~
+    head
+~
+|
+
+#27497
+attire sahuagin battle gladiator~
+the battle attire~
+<27>(Magical)<0> The battle attire of a sahuagin gladiator is on display here.
+~
+These items belonged to a famous sahuagin gladiator, and have been put on
+display here by the Ota'ar Dar prince.  You could have sworn you saw them move
+out of the corner of your eye, but it was probably your imagination.
+~
+2|64|33554432|134217728 0 0 S
+60 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|256 0
+8 8 0
+>all_greet_prog 100~
+if carrying($n)!= 27499
+    if carrying($n) != 27536
+        if carrying($n) != 27564
+            if carrying($n) != 27463
+                if carrying($n) != 27584
+                    mpechoat $n {WThe battle attire lunges suddenly at you!{x
+                    mpkill $n
+                endif
+            endif
+        endif
+    endif
+endif
+~
+>hitprcnt_prog 30~
+    smash $n
+~
+|
+
+#27498
+attire sahuagin battle gladiator~
+the battle attire~
+<27>(Magical)<0> The battle attire of a sahuagin gladiator is on display here.
+~
+These items belonged to a famous sahuagin gladiator, and have been put on
+display here by the Ota'ar Dar prince.  You could have sworn you saw them move
+out of the corner of your eye, but it was probably your imagination.
+~
+2|64|33554432|134217728 0 0 S
+60 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|256 0
+8 8 0
+>all_greet_prog 100~
+if carrying($n)!= 27499
+    if carrying($n) != 27536
+        if carrying($n) != 27564
+            if carrying($n) != 27463
+                if carrying($n) != 27584
+                    mpechoat $n {WThe battle attire lunges suddenly at you!{x
+                    mpkill $n
+                endif
+            endif
+        endif
+    endif
+endif
+~
+>hitprcnt_prog 30~
+    kick
+~
+|
+
+#27499
+sahuagin royal servant~
+a royal servant~
+A sahuagin servant rushes to and fro, juggling plates of food and drink.
+~
+This sahuagin is one of the king's servants.  He rushes to and fro about the
+dining hall, carrying food and drink to be placed on or collected from the
+long tables in the room.
+~
+64 0 -238 S
+57 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+
+#27500
+Belena Mailee~
+Belena Mailee~
+Belena Mailee is here, running the bakehouse.
+~
+Belena Mailee runs the prince's bakehouse, and is responsible for all the food
+and drink making it to the prince's tables on time and in perfect order.
+Considering the treatment doled out for less than perfect service and food, her
+job is a very stressful one, and she brooks no interruption to her work.
+~
+2|32 0 -218 S
+57 0 0 0d0+0 0d0+0
+512 0
+8 8 2
+>all_greet_prog 100~
+if carrying($n)!= 27499
+    if carrying($n) != 27536
+        if carrying($n) != 27564
+            if carrying($n) != 27463
+                if carrying($n) != 27584
+                    yell Get out of the bakehouse!  No tourists in my kitchen!
+                    mpkill $n
+                endif
+            endif
+        endif
+    endif
+endif
+~
+|
+
+#27501
+Keer'u Xha'ga cook~
+Keer'u Xha'ga~
+Keer'u Xha'ga, the prince's cook, is here working.
+~
+Keer'u Xha'ga is the prince's cook, responsible for the design and creation of
+all the dishes fed to the prince and his guests in the dining hall.  He does NOT
+like to be disturbed while working.
+~
+64 0 -438 S
+57 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>all_greet_prog 100~
+if carrying($n)!= 27499
+    if carrying($n) != 27536
+        if carrying($n) != 27564
+            if carrying($n) != 27463
+                if carrying($n) != 27584
+                    yell I am working for the prince!  LEAVE IMMEDIATELY!
+                    mpkill $n
+                endif
+            endif
+        endif
+    endif
+endif
+~
+|
+
+#27502
+waitingroomguardian~
+waitingroomguardian~
+~
+This guy will unlock the door to the waiting room if a player enters the square
+with all the baron tokens.
+
+~
+2|64|512|4096|65536 4|8|16|32|512|32768|524288|8388608|1073741824 1000 S
+104 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>all_greet_prog 100~
+if carrying($n)== 27499
+    if carrying($n) == 27536
+        if carrying($n) == 27564
+            if carrying($n) == 27463
+                if carrying($n) == 27584
+                    mpecho {WThe doors to the south flash as you approach them.{x
+                    mpoload 27602
+                    unlock south
+                    mpjunk waitingroomkey
+                endif
+            endif
+        endif
+    endif
+endif
+~
+|
+
+#27503
+wife female prince wives~
+the prince's wife~
+One of the prince's wives reclines on golden sponges, regarding you thoughtfully.
+~
+Beautiful for a sahuagin, this is one of the prince's wives.  She has little
+to do but await his call, and so spends most of her life being attended-to in
+the harem quarters in relative comfort and ease. She is reclining on a large
+golden sponge, and regards you thoughtfully.
+~
+2|64 128|512|67108864 -370 S
+58 0 0 0d0+0 0d0+0
+512 0
+8 8 2
+>greet_prog 3~
+emote regards you with seductive curiosity
+~
+|
+
+#27504
+wife female prince wives~
+the prince's wife~
+One of the prince's wives stares at you, furious at your intrusion!
+~
+Beautiful for a sahuagin, this is one of the prince's wives.  She has little
+to do but await his call, and so spends most of her life being attended-to in
+the harem quarters in relative comfort and ease.  She is furious at your
+intrusion into the harem quarters.
+~
+32|64 512|67108864 -370 S
+59 0 0 0d0+0 0d0+0
+512 0
+8 8 2
+>greet_prog 3~
+emote glares at you with cold fury
+~
+|
+#27505
+wife female prince wives~
+the prince's wife~
+A beautiful sahuagin female gestures and bursts into magical flame!
+~
+Beautiful for a sahuagin, this is one of the prince's wives.  She has little
+to do but await his call, and so spends most of her life being attended-to in
+the harem quarters in relative comfort and ease.
+~
+32|64 512|2048|67108864 -370 S
+58 0 0 0d0+0 0d0+0
+512 0
+8 8 2
+>greet_prog 3~
+emote eyes you with malevolent intent
+~
+|
+#27506
+wife female prince wives~
+the prince's wife~
+One of the prince's wives smiles lasciviously at you.
+~
+Beautiful for a sahuagin, this is one of the prince's wives.  She has little
+to do but await his call, and so spends most of her life being attended-to in
+the harem quarters in relative comfort and ease.
+~
+64 512|8192|67108864 -370 S
+59 0 0 0d0+0 0d0+0
+512 0
+8 8 2
+>greet_prog 3~
+emote licks her lips and holds your gaze intently
+~
+|
+#27507
+wife female prince wives~
+the prince's wife~
+One of the prince's wives drifts about distractedly.
+~
+Beautiful for a sahuagin, this is one of the prince's wives.  She has little
+to do but await his call, and so spends most of her life being attended-to in
+the harem quarters in relative comfort and ease.
+~
+64 512|67108864 -370 S
+58 0 0 0d0+0 0d0+0
+512 0
+8 8 2
+>greet_prog 3~
+emote regards you with aloof indifference
+~
+|
+#27508
+wife female prince wives~
+the prince's wife~
+One of the prince's wives sits on a plush cushion, concentrating intensely.
+~
+Beautiful for a sahuagin, this is one of the prince's wives.  She has little
+to do but await his call, and so spends most of her life being attended-to in
+the harem quarters in relative comfort and ease.
+~
+64 512|16777216|67108864 -370 S
+60 0 0 0d0+0 0d0+0
+512 0
+8 8 2
+
+#27509
+eunuch royal~
+the royal eunuch~
+The royal eunuch tends assiduously to the prince's wives.
+~
+
+In the opulent harem of the underwater palace, a figure of quiet authority and
+unwavering loyalty serves with unmatched dedication. This is the royal sahuagin
+eunuch, a guardian and confidant to the sahuagin prince's wives. With a
+countenance that is both serene and inscrutable, he moves through the harem with
+a grace that belies his formidable presence. His scales shimmer in hues of deep
+blue and green, a testament to his distinguished status within the palace.
+
+Tasked with attending to the needs of the prince's wives, he oversees their
+well-being, ensuring that their quarters are maintained with the highest
+standards of comfort and luxury. His voice, when he speaks, carries the weight
+of his responsibility, yet it is always measured, reflecting the respect and
+reverence he holds for those under his care.
+
+Despite his powerful position, he carries himself with a humility that endears
+him to the inhabitants of the harem. In a world of intrigue and opulence, the
+royal sahuagin eunuch stands as a pillar of stability, his loyalty to the prince
+and his duty to the prince's wives unwavering.
+~
+64 32|128|512|67108864 -340 S
+60 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>all_greet_prog 100~
+if carrying($n)!= 27499
+    if carrying($n) != 27536
+        if carrying($n) != 27564
+            if carrying($n) != 27463
+                if carrying($n) != 27584
+                    yell Intruders!  Intruders in the harem!
+                    mpkill $n
+                endif
+            endif
+        endif
+    endif
+endif
+~
+>entry_prog 100~
+if carrying($n)!= 27499
+    if carrying($n) != 27536
+        if carrying($n) != 27564
+            if carrying($n) != 27463
+                if carrying($n) != 27584
+                    yell None shall harm the Prince's wives!  Perish!
+                    mpkill $n
+                endif
+            endif
+        endif
+    endif
+endif
+~
+>hitprcnt_prog 40~
+    grin
+    c 'power heal'
+    c 'power heal'
+~
+|
+
+#27510
+red grung~
+a red grung~
+<160>A red grung is here, waiting impatiently for an audience with the prince.<0>
+~
+Grung are a race of small, froglike humanoids.  They are fiercely territorial,
+and see themselves as superior to all other creatures.  Their society is
+caste-based, with the grung's colour denoting his role.  This is a red grung,
+indicating that he is a scholar and/or magic-user.  He regards you coldly, with
+forced politeness.
+~
+64 8|32|512|8388608|67108864 -490 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+
+#27511
+triton man blue-skinned~
+a Triton~
+A {Bblue-skinned{x man waits here impatiently.
+~
+You recognise this blue-skinned, fairly-handsome-if-vaguely-fishy-looking
+man as a Triton, a member of a very distinctive race of undersea-dwelling
+folk. You know that Triton dedicate themselves to protecting magical portals
+from sahuagin, kraken, and other monstrous beings of the sea and so tend towards
+being of lawful and good alignment, but that this also means they're likely to
+be extremely haughty and arrogant. The Triton looks at you irritably, with
+pursed lips.
+~
+64|512 8|32|512|8192|4194304|67108864|1073741824 630 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+
+#27512
+princeguard cavalryman~
+a princeguard cavalryman~
+A princeguard cavalryman is here, guarding the prince.
+~
+A handful of the greatest royal cavalrymen in Ota'ar Dar are honoured with the
+duty of guarding the prince, joining his princeguard.  They are the finest
+troops in the city.
+~
+2|64 32|128|512|2048|16777216|67108864 -750 S
+60 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>all_greet_prog 100~
+if carrying($n)!= 27499
+    if carrying($n) != 27536
+        if carrying($n) != 27564
+            if carrying($n) != 27463
+                if carrying($n) != 27584
+                    yell Intruder! Protect the prince!
+                    mpkill $n
+                endif
+            endif
+        endif
+    endif
+endif
+~
+>entry_prog 100~
+if carrying($n)!= 27499
+    if carrying($n) != 27536
+        if carrying($n) != 27564
+            if carrying($n) != 27463
+                if carrying($n) != 27584
+                    yell Death to the prince's enemies!
+                    mpkill $n
+                endif
+            endif
+        endif
+    endif
+endif
+~
+|
+
+#27513
+Elb'kl Ala prince sahuagin~
+Elb'kl Ala, the Prince of Ota'ar Dar~
+<248>The largest and most powerful sahuagin you have ever seen stands before you.<0>
+~
+Prince Elb'kl Ala of Ota'ar Dar stands as a commanding presence, embodying the
+fierce majesty and indomitable will of the sahuagin people. His four-armed
+baronic physique is a testament to his prowess, with muscular contours and
+scales that shimmer in shades of deep blue and emerald green, reflecting the
+opulence of the ocean's depths. His eyes, sharp and penetrating, glint with a
+refined cunning and shrewdness and the unyielding strength of his lineage.
+
+Adorned in regalia befitting his royal status, Prince Elb'kl Ala wears armor
+forged from the rarest undersea metals, embellished with coral and precious gems
+sourced from the darkest crevices of the sea. His crown, a masterwork of
+craftsmanship, is made of intertwined strands of gold and pearls, symbolizing
+his dominion over all sea life and his connection to the ancient magic that
+pulses through the waters.
+
+A tactician and warrior, Elb'kl Ala wields a trident of unparalleled power,
+said to be starmetal crafted in the fires of underwater volcanoes and cooled in
+the deepest trenches. The trident serves not only as a weapon but as a symbol of
+his rule, capable of imbuing the wielder with a portion of the ocean's power.
+
+Cruel and cunning, yet formidable in battle, Prince Elb'kl Ala is feared by his
+subjects and enemies alike. His voice commands the obedience of the city's
+denizens, and his actions shape the fate of the underwater world.
+
+You can't help but notice Elb'kl Ala's face looks somewhat paler than any other
+sahuagin you've seen, but given he is so extraordinary in other ways, perhaps
+it's nothing to be concerned about.
+~
+2|64|2048 4|8|16|32|128|512|2048|8192|524288|4194304|8388608|16777216|67108864|536870912|1073741824 -1000 S
+65 0 0 0d0+0 0d0+0
+512 0
+8 8 1
+>hitprcnt_prog 8~
+    mpecho {WThe prince looks furious, and waves his arms about rapidly...{X
+    c 'power heal'
+    c 'power heal'
+~
+|
+< reserved~ world~
+
+#27514
+advisor sahuagin~
+The prince's advisor~
+The prince's most trusted advisor regards you imperiously.
+~
+This older female sahuagin acts as counsellor and guide to the prince.  Her
+clothing and demeanour make it clear she is an important figure in the
+Sekolah-worshipping theocratic hierarchy.
+~
+2|64|512 8|32|128|512|8192|524288|67108864|536870912 -840 S
+62 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+>hitprcnt_prog 10~
+    mpecho {/}B{CThe prince's advisor gestures directly at you! Everything goes blue...{x{/{x
+    mptransfer $n 27784
+    mpat $n mpforce $n look
+    mpat $n mpecho {/}B{CThe advisor grins evilly before slowly dematerialising...{x
+~
+|
+
+#0
+
+#OBJECTS
+#27572
+sword xerces~
+the sword of Xerces~
+A gleaming sword floats in the air before you.~
+~
+5 1|64|1024|274877906944 1|8192
+0~ 20~ 30~ 11~
+10 0 0
+A
+18 12
+A
+19 12
+A
+2 5
+A
+1 5
+E
+sword xerces~
+Carried by the ancient hero Xerces, this blade has many powerful enchantments.
+The sword's workmanship is faultless, made of solid steel with a silver handle
+and pommel.  Legend has it that Xerces won the sword after defeating the
+chimera that guarded the king Hagian's tomb, who had become a powerful lich.
+Although gaining favour with several gods, the immortal Ares became jealous
+of Xerces' increasing popularity as a great warrior, and sent the Furies to
+slaughter him in his sleep.
+~
+#27573
+small pewter jug~
+a small pewter jug~
+A small jug made from pewter is here.~
+~
+10 0 1|16384
+56~ heal~ sanctuary~ heal~
+1 500 0
+E
+small pewter jug~
+It looks like it used to have a lid that was sealed with wax.  The seal has
+been broken, and the lid has been lost, however.  The smell of its contents
+make your nostrils tingle.
+~
+#27574
+beaked helm~
+a beaked helm~
+A beaked helm lies here.~
+~
+9 0 1|16
+8~ 1~ 6~ 11~
+5 0 0
+A
+19 4
+E
+beaked helm~
+The helm is sturdy and fashioned with a beak, giving the impression that the
+wearer has the head of a giant, terrifying bird.
+~
+#27575
+leggings chain~
+a pair of chain leggings~
+A pair of chain leggings are piled here.~
+~
+9 0 1|32
+5~ 0~ 0~ 0~
+20 600 0
+A
+17 -15
+#27576
+talons hawkpeople~
+talons of the hawkpeople~
+The sharp talons of the hawkpeople lie here.~
+~
+9 64|274877906944 1|128
+0~ 1~ 6~ 11~
+3 0 0
+A
+2 4
+A
+5 2
+A
+50 5
+A
+51 5
+E
+talons hawkpeople~
+These sharp talons are used as weapons by the shape-shifting hawkpeople of the
+pirate isles.
+~
+#27577
+paper fried tubers~
+a paper bag full of fried tubers~
+A paper bag full of fried tubers has been left here.~
+~
+19 0 1|16384
+10~ 0~ 0~ 0~
+2 0 0
+E
+paper fried tubers~
+Some sort of tuber/root vegetable has been cut up and fried in the oil of
+various other vegetables (or seeds?) to produce this... food?  Quite tasty,
+actually, though you find you feel hungry again pretty quickly after eating
+them.
+~
+#27578
+egg misty~
+a misty egg~
+A egg that seems made of mist is here.~
+~
+26 0 1|16384
+57~ heal~ heal~ protection~
+5 0 0
+E
+egg misty~
+This egg looks like it is made (impossibly!) of mist.
+~
+#27579
+statue sekolah~
+a huge statue of the shark god Sekolah~
+{YA huge golden statue of the shark god Sekolah dominates the chapel.{x~
+~
+25 0 0
+0~ 0~ 2~ 0~
+10000 0 0
+E
+statue sekolah~
+On close inspection, you notice there's a small bowl of a rose-coloured liquid
+at the base of the statue.  You scoop some up and the bowl instantly
+replenishes itself. It tastes strongly alcoholic, but not unpleasant.
+~
+
+#27580
+statue sekolah head~
+the head of the Sekolah statue~
+{YThe massive head of the Sekolah statue fills the ceiling of the chapel.{x~
+~
+15 0 0
+30~ 0~ 0~ 0~
+5000 0 0
+E
+statue sekolah head~
+You realise one of the teeth in the head is hollow, and could be used to
+conceal a medium-sized object.
+~
+
+#27581
+chalice consecrated sharkblood~
+a chalice of consecrated sharkblood~
+A chalice of blood has been left here.~
+~
+10 1 16385
+55~ bless~ sanctuary~ ~
+55 5000 10
+
+#27582
+anvil~
+a large anvil~
+A large anvil sits in the corner of the room, ready for use.~
+~
+30 1 0
+0~ 0~ 0~ 0~
+5000 5000 0
+
+#27583
+forge~
+a forge~
+A large forge dominates the room.~
+~
+40 1 0
+15~ 0~ 0~ 0~
+1000 0 0
+
+#27588
+royal trident~
+a royal soldier's trident~
+A very fine-looking trident stamped with the Ota'ar Dar Prince's seal has been left here.~
+~
+5 16|64|274877906944 1|8192
+0~ 0~ 0~ 11~
+4 0 0
+A
+17 -12
+A
+18 7
+A
+19 8
+E
+royal trident~
+The trident exhibits unusually high-quality workmanship.
+~
+#27585
+royal guard spiked pauldron~
+a royal guard's spiked pauldron~
+A spiked pauldron carrying the Prince of Ota'ar Dar's insignia is here.~
+~
+9 0 1|4
+0~ 1~ 6~ 11~
+8 0 0
+A
+17 -30
+
+#27586
+scaled purple loincloth~
+a scaled purple loincloth~
+A purple loincloth  covered in metal scales is here.~
+~
+9 0 1|2048
+0~ 1~ 6~ 11~
+1 0 0
+A
+17 -20
+
+#27587
+royal cavalryman's spear~
+a royal cavalryman's spear~
+The spear of a royal Ota'ar Dar cavalryman has been left here.~
+~
+5 16|64|134217728|274877906944 1|8192
+0~ 0~ 0~ 11~
+4 0 0
+A
+18 8
+A
+19 10
+E
+cavalryman royal spear~
+The long spear evidences extremely high-quality workmanship.
+~
+
+#27589
+blacksmith apron~
+a blacksmith's apron~
+A thick leather apron with a royal seal lies in a heap here.~
+~
+9 1|274877906944 1|2048
+8~ 0~ 0~ 0~
+20 0 0
+A
+5 4
+A
+17 -25
+A
+24 -7
+
+#27590
+smithing heavy hammer~
+a heavy smithing hammer~
+A heavy smithing hammer stands here.~
+~
+37 0 1|8192
+0~ 0~ 0~ 7~
+20 0 0
+
+#27591
+iron tongs~
+iron tongs~
+A pair of iron tongs.~
+~
+5 274877906944 1|8192
+0~ 10~ 15~ 8~
+20 0 0
+A
+2 -6
+A
+5 3
+A
+19 8
+
+#27592
+iron tongs~
+iron tongs~
+A pair of iron tongs.~
+~
+5 0 1|8192
+0~ 10~ 15~ 8~
+20 0 0
+A
+2 -4
+A
+5 2
+A
+19 6
+
+#27593
+brilliant white diamond~
+a brilliant white diamond~
+A brilliant white diamond lies here.~
+~
+8 0 1|16384
+0~ 0~ 0~ 0~
+1 0 60
+E
+brilliant white diamond~
+The presence of sub-microscopic inclusions scatter light passing through
+this diamond, giving it a translucent “milky” white face-up appearance.
+It is of breathtaking, flawless quality.
+~
+
+#27594
+sapphire deep blue~
+a deep-blue sapphire~
+A large, deep-blue sapphire lies here.~
+~
+8 0 1|16384
+0~ 0~ 0~ 0~
+1 0 60
+E
+deep-blue blue sapphire~
+This exquisite deep-blue sapphire gemstone is a marvel of nature, captivating
+the eye with its rich, velvety azure hue that seems to hold the essence of the
+deepest oceans. The gem's surface is polished to a mirror-like finish,
+highlighting its natural beauty and the skilled craftsmanship that has enhanced
+its splendor.
+~
+
+#27595
+emerald gemstone beautiful~
+a beautiful emerald~
+A beautiful emerald gemstone lies here.~
+~
+8 0 1|16384
+0~ 0~ 0~ 0~
+1 0 60
+E
+emerald gemstone beautiful~
+Nestled within its setting, this exquisite emerald gemstone is a testament to
+the beauty of nature. Its vibrant green hue is reminiscent of a lush forest at
+the heart of spring, brimming with vitality and life. The gem's clarity is
+interspersed with subtle inclusions, often referred to as jardin, which only
+add to its unique charm, telling tales of its earthly origins.
+~
+
+#27596
+golden pendant~
+a golden pendant~
+A golden pendant lies here.~
+~
+8 0 1|16384
+0~ 0~ 0~ 0~
+1 0 60
+E
+golden pendant~
+This golden pendant exudes elegance and timeless beauty, crafted from the
+finest gold to catch and reflect the light with every movement. Its design is
+both intricate and classic, featuring delicate filigree work that adds depth
+and texture. The pendant hangs gracefully from a slender gold chain, making it
+a versatile accessory for any occasion. Whether worn as a statement piece or
+a subtle accent, this golden pendant is a testament to exquisite craftsmanship
+and refined taste.
+~
+
+#27597
+silver ring~
+a silver ring~
+A silver ring has been left here.~
+~
+8 0 1|16384
+0~ 0~ 0~ 0~
+1 0 60
+E
+silver ring~
+This sleek silver ring marries simplicity with elegance. Its polished band
+curves smoothly around the finger, offering a comfortable fit. The quality of
+its silver and flawless construction draws attention, making this ring a subtle
+yet striking symbol of grace and sophistication.
+~
+
+#27598
+rich red ruby~
+a rich red ruby~
+A rich, red ruby lies here.~
+~
+8 0 1|16384
+0~ 0~ 0~ 0~
+1 0 60
+E
+rich red ruby~
+This rich red ruby gemstone is a breathtaking marvel, boasting a deep,
+vibrant hue that whispers tales of passion and royalty. Its surface glimmers
+with an inner fire, reflecting light with every facet, making it a truly
+valuable and captivating treasure.
+~
+
+#27599
+table elegant long~
+an elegant table~
+A long, elegant table runs the length of the room.~
+~
+12 0 1|8192
+0~ 1~ 6~ 11~
+250 0 0
+
+#27600
+poisoned blade~
+a poisoned blade~
+A poisoned blade lies at your feet.~
+~
+5 128|16384 1|8192
+0~ 0~ 0~ 1~
+1 0 0
+A
+2 -15
+A
+18 -15
+A
+17 10
+E
+poisoned blade~
+This blade has traces of poison on it, due to being used to prepare fish that
+are venomous to (particularly) non-sahuagin.
+~
+
+#27601
+steel serving spoon~
+a steel serving spoon~
+A large steel serving spoon is here.~
+~
+5 0 1|8192
+0~ 30~ 40~ 17~
+1 0 0
+
+#27602
+waitingroomkey~
+waitingroomkey~
+waitingroomkey.~
+~
+18 0 1|16384
+0~ 0~ 0~ 0~
+1 0 0
+
+#27603
+purple robe luxurious gold~
+a luxurious purple robe, trimmed with gold~
+A luxurious purple robe with gold trim lies here in a heap.~
+~
+9 64|262144 1|1024
+0~ 0~ 0~ 0~
+3 0 0
+A
+12 50
+E
+purple robe luxurious gold~
+The robe is trimmed and embroidered with thick gold thread--it must be worth a
+small fortune.
+~
+
+#27604
+dagger pearl small~
+a small, pearl-handled dagger~
+A pearl-handed dagger of exquisite craftsmanship lies here.~
+~
+5 64|274877906944 1|8192
+0~ 0~ 0~ 11~
+3 0 0
+A
+12 30
+A
+18 8
+A
+19 8
+E
+dagger pearl small~
+It really is a beautiful piece of work.  And that's real pearl inlay.
+~
+
+#27605
+robes royal eunuch~
+robes of the royal eunuch~
+The elaborate robes of a top-ranking royal functionary lie here.~
+~
+9 64|274877906944 1|1024
+0~ 0~ 0~ 0~
+3 0 0
+A
+12 260
+E
+robes royal eunuch~
+
+The robes worn by the royal eunuch are a blend of functionality and ceremonial
+grandeur, reflecting his esteemed position within the underwater court. Crafted
+from the finest silk seaweed, these garments flow around him like the currents
+of the sea, dyed in shades of deep cerulean and emerald green that complement
+his aquatic nature. The fabric is light, allowing him to move with ease and
+grace, yet it is resilient, woven with enchantments to resist the wear of water
+and time.
+
+Adorning the edges of his robe are intricate patterns of coral and pearl,
+meticulously embroidered to signify his royal duties and his close association
+with the sahuagin prince's household. The sleeves are long and slightly flared,
+designed to billow elegantly as he moves through the water, while a sash of
+golden kelp cinches at the waist, a symbol of his rank and service.
+
+At his throat, a clasp in the shape of a sea creature, crafted from precious
+metals and studded with jewels, secures the robe. This clasp is not just
+decorative; it serves as a badge of his office, denoting his authority and his
+role as the guardian of the harem's tranquility. Despite the opulence of his
+attire, the robes are devoid of ostentation, embodying the dignity and the
+solemn responsibility that the royal eunuch carries in his service to the palace.
+~
+
+#27606
+spongeweed tobacco~
+spongeweed~
+A small bag of spongeweed tobacco has been left here.~
+~
+54 0 1
+2~ armor~ flesh armor~ faerie fire~
+1 10 1
+
+#27607
+ornate pipe~
+an ornate pipe~
+An ornate golden pipe has been left here.~
+~
+52 0 1|16384
+82~ 82~ 187~ 34~
+1 0 10
+
+#27608
+rock armour suit~
+a small suit of red rock armour~
+A small suit of armour carved out of red rock lies here.~
+~
+9 0 1|8
+5~ 1~ 6~ 11~
+5 0 0
+A
+17 -35
+E
+rock armour suit~
+The armour has been crafted artfully from some kind of red-hued rock.
+~
+
+#27609
+red rock staff~
+a red rock staff~
+A staff made from red rock lies here.~
+~
+4 1|64 1|16384
+60~ 20~ 20~ meteor storm~
+1 0 0
+A
+3 4
+A
+4 4
+A
+17 -15
+
+#27610
+rock tablet words~
+a rock tablet~
+A rock tablet with words carved into it lies here.~
+~
+13 0 1|8192
+0~ 1~ 6~ 11~
+8 0 0
+E
+rock tablet words~
+It reads:
+
+"Yth huven ekess nif wer tlarnax taoul ekess drielk. Yth tepoha esajic kagh
+arcaniktok edroki. Majak sia sthyr dout charric."
+~
+
+#27611
+glittering scroll~
+a glittering scroll~
+A glittering scroll lies here.~
+~
+13 0 1|8192
+0~ 1~ 6~ 11~
+8 0 0
+E
+glittering scroll~
+
+The scroll is a military communique.  It reads:
+{W
+"Prince.
+
+ In the interests of preserving the truce between Eakos and Ota'ar Dar I suggest
+ you attend with urgency to the behaviour of the baron installed in your
+ military canton. He is endlessly provocative, and under such conditions our
+ truce certainly can not be preserved indefinitely. We should arrange a face to
+ face meeting.  Send details back with my emmisary.
+
+ Regards,
+
+
+ Valas Duhnenath, Lord Commander of Eakos"{x
+
+~
+
+#27612
+princeguard spiked pauldron~
+a princeguard's spiked pauldron~
+A spiked pauldron carrying the Prince of Ota'ar Dar's insignia is here.~
+~
+9 0 1|4
+0~ 1~ 6~ 11~
+8 0 0
+A
+17 -50
+
+#27613
+plated purple loincloth~
+a plated purple loincloth~
+A purple loincloth  covered in metal plates is here.~
+~
+9 0 1|2048
+0~ 1~ 6~ 11~
+1 0 0
+A
+17 -40
+
+#27614
+princeguard spear~
+a princeguard spear~
+The spear of a princeguard has been left here.~
+~
+5 16|64|134217728|274877906944 1|8192
+0~ 0~ 0~ 11~
+4 0 0
+A
+18 15
+A
+19 15
+E
+princeguard spear~
+The long spear evidences absolutely masterful workmanship.
+~
+
+#27615
+throne pearl~
+the prince's throne~
+<230>A massive throne carved entirely from pearl is here.<0>~
+~
+12 0 0
+1~ 10000~ 0~ 150~
+0 0 0
+E
+throne pearl~
+In the heart of the vast underwater throne room lies the prince's pearl throne,
+a symbol of the realm's majesty and the ruler's sovereign authority. Crafted
+from a huge, luminous pearl harvested from the deepest ocean trenches, the
+throne radiates an ethereal light, its surface smooth yet iridescent, reflecting
+the colors of the sea in a mesmerizing dance.
+
+The pearl has been meticulously carved to form the majestic seat, with the
+backrest rising in elegant curves, reminiscent of the ocean's waves, culminating
+in a splendid crest that mirrors the regal stature of the prince.
+~
+
+#27616
+Trident Sovereignty~
+the Trident of Sovereignty~
+The legendary Trident of Sovereignty sits here, radiating magic.~
+~
+5 16|64|274877906944 1|8192
+0~ 1~ 6~ 2~
+10 0 30
+A
+4 6
+A
+12 100
+A
+18 15
+A
+19 20
+A
+24 -15
+A
+40 -1
+A
+50 5
+E
+rulership gold trident~
+The Trident of Sovereignty is a legendary artifact, forged from the heart of a
+fallen star and bathed in the golden light of the dawn. Its three prongs, each
+inscribed with ancient runes of power and wisdom, gleam with a radiant light
+that seems to pierce through the veil of doubt and fear. The shaft of the
+trident is adorned with precious gems. When held, the trident feels surprisingly
+light, as if it is an extension of one's own will, resonating with the heartbeat
+of its wielder.
+~
+
+#27617
+prince crown spiked~
+the prince's crown~
+A shining golden crown covered in lethal spikes lies here.~
+~
+9 64|16777216|274877906944 1|16
+8~ 0~ 0~ 0~
+10 0 0
+A
+2 4
+A
+19 9
+A
+17 -15
+E
+prince crown spiked~
+This golden crown belongs to Ota'ar Dar's prince.  Aside from its gold and pearl
+decoraiont it is a lethal thing, with its spikes filed to sharp points, that it
+might serve purpose in battle as well as to function as a symbol of the great
+prince's authority.
+~
+
+#27618
+shimmering golden potion~
+a golden potion~
+A shimmering golden potion is here.~
+~
+10 0 16385
+65~ cure blindness~ complete heal~ cell adjustment~
+1 500 200
+E
+shimmering golden potion~
+This elixir is a marvel of alchemical genius, contained within a slender vial
+that radiates a warm, golden glow. This shimmering potion appears to hold the
+very essence of sunlight, captured and condensed into liquid form. Tiny,
+luminescent particles float within, giving the elixir a mesmerizing depth and
+vitality that seems almost alive.
+
+Crafted from rare and precious ingredients, each carefully selected for their
+healing properties, the elixir possesses the miraculous power to mend wounds,
+cure ailments, and rejuvenate the weary spirit. Upon consumption, the drinker
+feels a gentle warmth spreading through their body, as if basking in the first
+light of dawn. This warmth grows, knitting together flesh and bone, purging
+disease, and restoring vigor with an efficiency that borders on the divine.
+
+The potion's effects are instantaneous and complete, leaving no scar or trace
+of prior injury. It is said that even those on the brink of death can be brought
+back to full health with but a single sip of this golden liquid.
+~
+
+#27619
+clerical mace~
+a clerical mace~
+A cleric's mace has been left here.~
+~
+5 64 1|8192
+0~ 0~ 0~ 8~
+5 0 0
+A
+17 -30
+A
+18 10
+A
+19 10
+E
+clerical mace~
+The mace is bulky and of very fine craftsmanship.  It looks intended for
+ceremonial purposes, yet has also been designed to function as a very effective
+weapon.
+~
+
+#27620
+shimmering oval portal~
+a shimmering portal~
+<51><306>A shimmering, oval portal covers the northern wall.<0>~
+~
+33 64 0
+235~ -1~ 0~ 100~
+0 0 0
+
+#27621
+chest small silver~
+a small silver chest~
+A small silver chest sits on a shelf against the wall.~
+~
+15 0 1
+100~ 15~ 27622~ 0~
+400 100 30000
+E
+chest small silver~
+Crafted from the purest silver, the chest's surface is intricately etched with
+patterns of waves and sea creatures, hinting at its origin from the depths of
+the ocean. The chest is secured with a clasp fashioned in the likeness of a
+mermaid, her eyes set with tiny sapphires that sparkle in the light.
+~
+
+#27622
+silver key~
+a small silver key~
+A small silver key lies here.~
+~
+18 0 1
+27621~ 0~ 0~ 0~
+1 10 4
+E
+silver key~
+It is a small, simple silver key.
+~
+
+#27623
+treasure coins~
+a pile of treasure~
+A huge pile treasure is lying here.~
+~
+20 0 1
+200~ 85~ 15~ 5~
+0 0 0
+E
+treasure coins~
+Looks like a lot of coins.
+~
+
+#27627
+magical bag holding~
+a magical bag of holding~
+A medium-sized bag shimmers with magical energy.~
+~
+15 64|262144 1
+1250~ 1~ 0~ 0~
+25 1250 40
+
+#27628
+pile coins gold glittering~
+a pile of coins~
+A glittering pile of coins lies on a table.~
+~
+20 0 1
+15~ 25~ 200~ 80~
+5 0 0
+
+#0
+
+
+#ROOMS
+#27427
+<184>Prince's Drawbridge - South, Lower<0>~
+<179>You are standing on the southern drawbridge leading to the interior courtyard
+of the Prince's canton in Ota'ar Dar.  Great gates lie south, leading to the
+canal complex, and north, affording entrance to the courtyard itself.
+Curiously, you find yourself encased in seawater on the drawbridge, while up
+and to the east and west some magical force holds the seawater at bay, and
+it gives way to breathable air.<0>
+~
+0 4 12
+D0
+~
+gate~
+8 -1 27435
+D1
+~
+~
+0 -1 27430
+D2
+~
+gate~
+8 -1 27420
+D3
+~
+~
+0 -1 27428
+D4
+~
+~
+0 -1 27727
+S
+#27428
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions.<0>
+~
+0 0 9
+D1
+~
+~
+0 -1 27427
+D3
+~
+~
+0 -1 27429
+D4
+~
+~
+0 -1 27728
+D5
+~
+~
+0 -1 27728
+S
+#27429
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer wall
+<87>of the canals, it seems to stretch impossibly into infinity in both up and
+down directions. The air moat also seems to continue west and south from here.<0>
+~
+0 0 9
+D0
+~
+~
+0 -1 27433
+D1
+~
+~
+0 -1 27428
+D2
+~
+~
+0 -1 27492
+D3
+~
+~
+0 -1 27432
+D4
+~
+~
+0 -1 27729
+D5
+~
+~
+0 -1 27729
+S
+#27430
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions.<0>
+~
+0 0 9
+D1
+~
+~
+0 -1 27431
+D3
+~
+~
+0 -1 27427
+D4
+~
+~
+0 -1 27730
+D5
+~
+~
+0 -1 27730
+S
+#27431
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions.<0>
+~
+0 0 9
+D1
+~
+~
+0 -1 27432
+D3
+~
+~
+0 -1 27430
+D4
+~
+~
+0 -1 27731
+D5
+~
+~
+0 -1 27731
+S
+#27432
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions. The air moat also seems to continue east from here.<0>
+~
+0 0 9
+D1
+~
+~
+0 -1 27429
+D3
+~
+~
+0 -1 27431
+D4
+~
+~
+0 -1 27732
+D5
+~
+~
+0 -1 27732
+S
+#27433
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions.<0>
+~
+0 0 9
+D0
+~
+~
+0 -1 27439
+D2
+~
+~
+0 -1 27429
+D4
+~
+~
+0 -1 27733
+D5
+~
+~
+0 -1 27733
+S
+#27434
+The Royal Foundry, Lower~
+<153>You stand in the Royal Foundry belonging to the Ota'ar Dar Prince.  Weapons
+and armour for his personal guard are made here, to the most exacting standards
+of craftsmanship.  It is a split-level structure, with this lower level being
+where most of the smithing work is done, while metal is smelted in the upper
+level, and the heat and toxic fumes produced are removed from the area by an
+elaborate venting system.
+
+From here you may travel north or east to explore the courtyard further, or
+head up to the upper level of the foundry, where the forge is.<0>
+~
+0 8|128 12
+D0
+~
+~
+0 -1 27440
+D1
+~
+~
+0 -1 27435
+D4
+~
+~
+0 -1 27734
+S
+#27435
+Prince's Courtyard, Lower~
+<130>You stand on sandy ground in the courtyard of an ancient castle, deep
+underwater. To the south you see the great gate leading out to the drawbridge
+which traverses the air moat, separating the courtyard from the Ota'ar Dar
+canal system. To the north are the walls of the Prince's castle, but no entrance
+can been seen into them from here.  The courtyard continues east, while the
+steady chime of hammer on anvil can be heard coming from the west.
+
+From here, you can explore the courtyard farther east, head south through the
+drawbridge gates, west to the Royal Foundry, or up, towards the huge, looming
+area of darkness in the water above.<0>
+~
+0 0 12
+D1
+~
+~
+0 -1 27436
+D2
+~
+gate~
+8 -1 27427
+D3
+~
+~
+0 -1 27434
+D4
+~
+~
+0 -1 27735
+S
+#27436
+Prince's Courtyard, Lower~
+<130>You stand on sandy ground in the courtyard of an ancient castle, deep
+underwater. To the south you see the high walls separating the courtyard from
+the air moat that surrounds it, while the castle walls lie directly north.
+The courtyard continues west, and a wide gate leading to the Prince's Stables
+lies directly east.
+
+From here, you can explore the courtyard farther west, head east through the
+stable gates, or swim directly up, towards the huge, looming area of darkness
+in the water above.<0>
+~
+0 0 12
+D1
+~
+gate~
+8 -1 27437
+D3
+~
+~
+0 -1 27435
+D4
+~
+~
+0 -1 27736
+S
+#27437
+Prince's Stables, Lower~
+<222>You stand in the lower level of the Prince's stables.  A variety of equipment
+used for the care and training of mounts is affixed to the walls of the stables
+while various platforms and cages are used to house the plethora of sea beasts
+that serve as mounts to the sahuagin.
+
+From here you may exit west, through the stable gates, or explore the stables
+further east and upwards.<0>
+~
+0 8 12
+D1
+~
+~
+0 -1 27438
+D3
+~
+gate~
+8 -1 27436
+D4
+~
+~
+0 -1 27737
+S
+#27438
+Prince's Stables, Lower~
+<222>You stand in the lower level of the Prince's stables.  A variety of equipment
+used for the care and training of mounts is affixed to the walls of the stables
+while various platforms and cages are used to house the plethora of sea beasts
+that serve as mounts to the sahuagin.
+
+From here you may explore the stables further west and upwards.<0>
+~
+0 8 12
+D3
+~
+~
+0 -1 27437
+D4
+~
+~
+0 -1 27738
+S
+#27439
+<184>Prince's Drawbridge - West, Lower<0>~
+<179>You are standing on the western drawbridge leading to the interior courtyard
+of the Prince's canton in Ota'ar Dar.  Great gates lie west, leading to the
+canal complex, and east, affording entrance to the courtyard itself.
+Curiously, you find yourself encased in seawater on the drawbridge, while up
+and to the north and south some magical force holds the seawater at bay, and
+it gives way to breathable air.<0>
+~
+0 4 12
+D0
+~
+~
+0 -1 27471
+D1
+~
+gate~
+8 -1 27440
+D2
+~
+~
+0 -1 27433
+D3
+~
+gate~
+8 -1 27418
+D4
+~
+~
+0 -1 27739
+S
+#27440
+Prince's Courtyard, Lower~
+<130>You stand on sandy ground in the courtyard of an ancient castle, deep
+underwater. To the west you see the great gate leading out to the drawbridge
+which traverses the air moat, separating the courtyard from the Ota'ar Dar
+canal system. To the east are the walls of the Prince's castle, but no entrance
+can been seen into them from here.  The courtyard continues north, while the
+steady chime of hammer on anvil can be heard coming from the south.
+
+From here, you can explore the courtyard farther north, head west through the
+drawbridge gates, south to the Royal Foundry, or up, towards the huge, looming
+area of darkness in the water above.<0>
+~
+0 0 12
+D0
+~
+~
+0 -1 27472
+D2
+~
+~
+0 -1 27434
+D3
+~
+gate~
+8 -1 27439
+D4
+~
+~
+0 -1 27740
+S
+#27441
+The Great Hall~
+<98>You stand inside the great hall of the Ota'ar Prince, in its south-western
+corner.  The hall has been constructed to give visitors to the palace the
+impression of great wealth, power, and opulence.  Large statues evidencing
+exquisite workmanship are placed about the hall, and no expense has been spared
+generally on its interior decoration. You'd imagine the prince could entertain
+several thousand individuals in here, easily.
+
+You can continue to explore the hall to the north and east.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 27473
+D1
+~
+~
+0 -1 27442
+S
+#27442
+The Great Hall~
+<98>You stand inside the great hall of the Ota'ar Prince. The hall has been
+constructed to give visitors to the palace the impression of great wealth,
+power, and opulence.  Large statues evidencing exquisite workmanship are placed
+about the hall, and no expense has been spared generally on its interior
+decoration. You'd imagine the prince could entertain several thousand
+individuals in here, easily.
+
+You can continue to explore the hall to the , north, west, and east.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 27474
+D1
+~
+~
+0 -1 27443
+D3
+~
+~
+0 -1 27441
+S
+#27443
+The Great Hall~
+<98>You stand inside the great hall of the Ota'ar Prince, in its south-eastern
+corner.  The hall has been constructed to give visitors to the palace the
+impression of great wealth, power, and opulence.  Large statues evidencing
+exquisite workmanship are placed about the hall, and no expense has been spared
+generally on its interior decoration. You'd imagine the prince could entertain
+several thousand individuals in here, easily.
+
+You can continue to explore the hall to the north and west.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 27475
+D3
+~
+~
+0 -1 27442
+S
+#27471
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions.<0>
+~
+0 0 9
+D0
+~
+~
+0 -1 27476
+D2
+~
+~
+0 -1 27439
+D4
+~
+~
+0 -1 27771
+D5
+~
+~
+0 -1 27771
+S
+#27472
+Prince's Courtyard, Lower~
+<130>You stand on sandy ground in the courtyard of an ancient castle, deep
+underwater. To the west you see high stone walls, separating the courtyard from
+the air moat that surrounds it. To the east is a huge door that affords
+entrance to the Prince's castle through the Great Hall.
+
+You can head north or south to explore more of the courtyard, or up, towards
+the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D0
+~
+~
+0 -1 27478
+D1
+~
+door~
+8 -1 27473
+D2
+~
+~
+0 -1 27440
+D4
+~
+~
+0 -1 27772
+S
+#27473
+The Great Hall~
+<98>You stand inside the great hall of the Ota'ar Prince, just to the east of the
+entrance to his vast undersea palace.  Visitors typically enter the palace
+here, and the hall has consequently been constructed to give the impression of
+great wealth, power, and opulence.  Large statues evidencing exquisite
+workmanship are placed about the hall, and no expense has been spared generally
+on its interior decoration.  You'd imagine the prince could entertain several
+thousand individuals in here, easily.
+
+You can continue to explore the hall to the south and east, or return to the
+courtyard via the large double doors leading west.<0>
+~
+0 4|8 12
+D1
+~
+~
+0 -1 27474
+D2
+~
+~
+0 -1 27441
+D3
+~
+door~
+8 -1 27472
+S
+#27474
+The Great Hall~
+<98>You stand inside the great hall of the Ota'ar Prince, just south of large
+double doors leading north, to the Lesser Hall.  This hall has been constructed
+to give visitors to the palace the impression of great wealth, power, and
+opulence.  Large statues evidencing exquisite workmanship are placed about the
+hall, and no expense has been spared generally on its interior decoration.
+You'd imagine the prince could entertain several thousand individuals in here,
+easily.
+
+You can continue to explore the hall to the south, west, and east, or enter the
+Lesser Hall through the double doors to your north.<0>
+~
+0 4|8 12
+D0
+~
+door~
+8 -1 27480
+D1
+~
+~
+0 -1 27475
+D2
+~
+~
+0 -1 27442
+D3
+~
+~
+0 -1 27473
+S
+#27475
+The Great Hall~
+<98>You stand inside the great hall of the Ota'ar Prince, in its north-eastern
+corner.  The hall has been constructed to give visitors to the palace the
+impression of great wealth, power, and opulence.  Large statues evidencing
+exquisite workmanship are placed about the hall, and no expense has been spared
+generally on its interior decoration. You'd imagine the prince could entertain
+several thousand individuals in here, easily.
+
+You can continue to explore the hall to the south and west.<0>
+~
+0 8 12
+D2
+~
+~
+0 -1 27443
+D3
+~
+~
+0 -1 27474
+S
+#27476
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions.<0>
+~
+0 0 9
+D2
+~
+~
+0 -1 27471
+D3
+~
+~
+0 -1 27477
+D4
+~
+~
+0 -1 27776
+D5
+~
+~
+0 -1 27776
+S
+#27477
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions.<0>
+~
+0 0 9
+D0
+~
+~
+0 -1 27481
+D1
+~
+~
+0 -1 27476
+D4
+~
+~
+0 -1 27777
+D5
+~
+~
+0 -1 27777
+S
+#27478
+Prince's Courtyard, Lower~
+<130>You stand on sandy ground in the courtyard of an ancient castle, deep
+underwater. To the west you see high stone walls, separating the courtyard from
+the air moat that surrounds it. To the east are the walls of the castle itself;
+they afford no entrance from here.
+
+You can head north or south to explore more of the courtyard, or up, towards
+the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D0
+~
+~
+0 -1 27483
+D2
+~
+~
+0 -1 27472
+D4
+~
+~
+0 -1 27778
+S
+#27479
+The Auxiliary Hall~
+<98>You stand in a large, richly-decorated hall in the Ota'ar Dar Prince's Castle,
+deep underwater. There are many martial displays and trophies set about the
+space; the Prince is clearly eager to impress upon visitors his martial
+prowess, and to convey more generally a sense of where his interests and
+capabilities lie.
+
+The hall continues to the north and east of here.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 27484
+D1
+~
+~
+0 -1 27480
+S
+#27480
+The Auxiliary Hall~
+<98>You stand in a large, richly-decorated hall in the Ota'ar Dar Prince's Castle,
+deep underwater. There are many martial displays and trophies set about the
+space; the Prince is clearly eager to impress upon visitors his martial
+prowess, and to convey more generally a sense of where his interests and
+capabilities lie.
+
+This hall continues to the north and west of here, and you can enter the
+castle's Great Hall through the imposing double doors to the south.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 27485
+D2
+~
+door~
+8 -1 27474
+D3
+~
+~
+0 -1 27479
+S
+#27481
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions.<0>
+~
+0 0 9
+D0
+~
+~
+0 -1 27486
+D2
+~
+~
+0 -1 27477
+D4
+~
+~
+0 -1 27781
+D5
+~
+~
+0 -1 27781
+S
+#27482
+The Royal Chapel of Sekolah~
+<129>You stand inside a small but lavishly appointed chapel built in honour of the
+terrifying shark-god Sekolah. Nearly everything in here is covered in gold or
+some other precious metal or stone--no expense has been spared.  Your gaze is
+drawn to the massive gold-plated statue of Sekolah in the centre of the chapel.
+It must be 30 feet tall!
+
+Double doors lead out of the chapel into the castle courtyard to the north and
+south.<0>
+~
+0 8 12
+D0
+~
+doors~
+8 -1 27488
+D1
+~
+doors~
+8 -1 27483
+D4
+~
+~
+0 -1 27782
+S
+#27483
+Prince's Courtyard, Lower~
+<130>You stand on sandy ground in the courtyard of an ancient castle, deep
+underwater. To the north and east are the walls of the castle itself; they
+afford no entrance from here. Just west you see the doors to a small but
+rather impressive-looking building. From the ornamentation you suspect it has
+some sort of religious function.
+
+You can head south to explore more of the courtyard, attempt to enter the
+building to the west, or head straight up, towards the huge, looming area of
+darkness in the water above.<0>
+~
+0 0 12
+D2
+~
+~
+0 -1 27478
+D3
+~
+door~
+8 -1 27482
+D4
+~
+~
+0 -1 27783
+S
+#27484
+The Auxiliary Hall~
+<98>You stand in a large, richly-decorated hall in the Ota'ar Dar Prince's Castle,
+deep underwater. There are many martial displays and trophies set about the
+space; the Prince is clearly eager to impress upon visitors his martial
+prowess, and to convey more generally a sense of where his interests and
+capabilities lie.
+
+The hall continues to the south and east of here.<0>
+~
+0 8 12
+D1
+~
+~
+0 -1 27485
+D2
+~
+~
+0 -1 27479
+S
+#27485
+The Auxiliary Hall~
+<98>You stand in a large, richly-decorated hall in the Ota'ar Dar Prince's Castle,
+deep underwater. There are many martial displays and trophies set about the
+space; the Prince is clearly eager to impress upon visitors his martial
+prowess, and to convey more generally a sense of where his interests and
+capabilities lie.
+
+The hall continues to the south and west of here, and a relatively
+modest-looking door leads north from here, exiting the hall.<0>
+~
+0 8 12
+D0
+~
+door~
+8 -1 27491
+D2
+~
+~
+0 -1 27480
+D3
+~
+~
+0 -1 27484
+S
+#27486
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions.<0>
+~
+0 0 9
+D0
+~
+~
+0 -1 27492
+D2
+~
+~
+0 -1 27481
+D3
+~
+~
+0 -1 27487
+D4
+~
+~
+0 -1 27786
+D5
+~
+~
+0 -1 27786
+S
+#27487
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions.<0>
+~
+0 0 9
+D1
+~
+~
+0 -1 27486
+D4
+~
+~
+0 -1 27787
+D5
+~
+~
+0 -1 27787
+S
+#27488
+Prince's Courtyard, Lower~
+<130>You stand on sandy ground in the courtyard of an ancient castle, deep
+underwater. To the west you see high stone walls, separating the courtyard from
+the air moat that surrounds it. To the east are the walls of the castle itself;
+they afford no entrance from here. Just south you see the doors to a small but
+rather impressive-looking building. From the ornamentation you suspect it has
+some sort of religious function.
+
+You can head north to explore more of the courtyard, attempt to enter the
+building to the south, or head straight up, towards the huge, looming area of
+darkness in the water above.<0>
+~
+0 0 12
+D0
+~
+~
+0 -1 27493
+D2
+~
+doors~
+8 -1 27482
+D4
+~
+~
+0 -1 27788
+S
+#27489
+The Dining Hall~
+<98>The prince's dining hall is a marvel of architectural ingenuity and aquatic
+beauty. Elegant tables are set with iridescent tableware that gleams under the
+soft, bioluminescent light filtering through the water, casting a serene glow
+across the room. Majestic coral structures and swaying sea plants adorn the
+space, seamlessly blending the hall's opulence with the natural beauty of the
+ocean.
+
+The hall continues north and east from here.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 27494
+D1
+~
+~
+0 -1 27490
+S
+#27490
+The Dining Hall~
+<98>The prince's dining hall is a marvel of architectural ingenuity and aquatic
+beauty. Elegant tables are set with iridescent tableware that gleams under the
+soft, bioluminescent light filtering through the water, casting a serene glow
+across the room. Majestic coral structures and swaying sea plants adorn the
+space, seamlessly blending the hall's opulence with the natural beauty of the
+ocean.
+
+The hall continues north and west from here.  A small door opens east.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 27495
+D1
+~
+door~
+8 -1 27491
+D3
+~
+~
+0 -1 27489
+S
+#27491
+The Prince's Column~
+<98>This tall, pillar-like room is richly-decorated, but not large.  It is the
+means by which the throneroom and prince's quarters may be reached from the
+lower level of the castle, and you surmise it is deliberately constrained in
+size to make it difficult for large numbers to pass through quickly and easily,
+giving the prince plenty of notice in case of attack.
+
+Doors lead south and west, or you can swim up to the castle's upper level from
+here.<0>
+~
+0 4|8|512 12
+D2
+~
+door~
+8 -1 27485
+D3
+~
+door~
+8 -1 27490
+D4
+~
+~
+0 -1 27791
+S
+#27492
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions. The air moat also seems to continue north from here.<0>
+~
+0 0 9
+D0
+~
+~
+0 -1 27429
+D2
+~
+~
+0 -1 27486
+D4
+~
+~
+0 -1 27792
+D5
+~
+~
+0 -1 27792
+S
+#27493
+Prince's Courtyard, Lower~
+<130>You stand on sandy ground in the courtyard of an ancient castle, deep
+underwater. To the west you see high stone walls, separating the courtyard from
+the air moat that surrounds it. To the east are the walls of the castle itself;
+they afford no entrance from here.
+
+You can head north or south to explore more of the courtyard, or up, towards
+the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D0
+~
+~
+0 -1 27496
+D2
+~
+~
+0 -1 27488
+D4
+~
+~
+0 -1 27793
+S
+#27494
+The Dining Hall~
+<98>The prince's dining hall is a marvel of architectural ingenuity and aquatic
+beauty. Elegant tables are set with iridescent tableware that gleams under the
+soft, bioluminescent light filtering through the water, casting a serene glow
+across the room. Majestic coral structures and swaying sea plants adorn the
+space, seamlessly blending the hall's opulence with the natural beauty of the
+ocean.
+
+The hall continues south and east from here.  A large swing door opens north,
+to the bakehouse.<0>
+~
+0 8 12
+D0
+~
+door~
+8 -1 27497
+D1
+~
+~
+0 -1 27495
+D2
+~
+~
+0 -1 27489
+S
+#27495
+The Dining Hall~
+<98>The prince's dining hall is a marvel of architectural ingenuity and aquatic
+beauty. Elegant tables are set with iridescent tableware that gleams under the
+soft, bioluminescent light filtering through the water, casting a serene glow
+across the room. Majestic coral structures and swaying sea plants adorn the
+space, seamlessly blending the hall's opulence with the natural beauty of the
+ocean.
+
+The hall continues south and west from here.<0>
+~
+0 8 12
+D2
+~
+~
+0 -1 27490
+D3
+~
+~
+0 -1 27494
+S
+#27496
+Prince's Courtyard, Lower~
+<130>You stand on sandy ground in the courtyard of an ancient castle, deep
+underwater. To the west and north you see high stone walls, separating the
+courtyard from the air moat that surrounds it. To the east are the walls of
+the castle itself; they afford no entrance from here.
+
+You can head south to explore more of the courtyard, or up, towards the huge,
+looming area of darkness in the water above.<0>
+~
+0 0 12
+D2
+~
+~
+0 -1 27493
+D4
+~
+~
+0 -1 27796
+S
+#27497
+The Bakehouse~
+<98>You stand in an underwater kitchen/bakehouse, a marvel of aquatic architecture
+and culinary innovation. It offers a breathtaking view of the surrounding
+oceanic life, where schools of colorful fish glide past and curious sea
+creatures occasionally pause to observe. The kitchen itself is a blend of
+natural beauty and no-expense-spared design, with counters carved from luminous
+coral and shelves laden with exotic sea ingredients. Bioluminescent plants
+provide a natural, soft lighting, creating an otherworldly ambiance.
+
+Large swing doors lead south into the dining hall, or you can head to the food
+preparation area, to the east.<0>
+~
+0 4|8 12
+D1
+~
+~
+0 -1 27498
+D2
+~
+door~
+8 -1 27494
+S
+#27498
+The Bakehouse~
+<98>You stand in an underwater kitchen/bakehouse, a marvel of aquatic architecture
+and culinary innovation. It offers a breathtaking view of the surrounding
+oceanic life, where schools of colorful fish glide past and curious sea
+creatures occasionally pause to observe. The kitchen itself is a blend of
+natural beauty and no-expense-spared design, with counters carved from luminous
+coral and shelves laden with exotic sea ingredients. Bioluminescent plants
+provide a natural, soft lighting, creating an otherworldly ambiance.
+
+You can travel only west from here.<0>
+~
+0 8 12
+D3
+~
+~
+0 -1 27497
+S
+#27727
+Prince's Drawbridge - South, Upper~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, when you look up you see this same spot, repeating into
+infinity. If you look downwards, however, you see the lower part of the drawbridge,
+encased magically in a large, cuboid block of seawater. Great gates lie north and
+south, affording entrance into the Prince's courtyard and the Ota'ar Dar canal
+system, respectively.<0>
+~
+0 0 9
+D0
+~
+gate~
+8 -1 27735
+D1
+~
+~
+0 -1 27730
+D2
+~
+gate~
+8 -1 27720
+D3
+~
+~
+0 -1 27728
+D4
+~
+~
+0 -1 27727
+D5
+~
+~
+0 -1 27427
+S
+#27728
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions.<0>
+~
+0 0 9
+D1
+~
+~
+0 -1 27727
+D3
+~
+~
+0 -1 27729
+D4
+~
+~
+0 -1 27428
+D5
+~
+~
+0 -1 27428
+S
+#27729
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer wall
+<87>of the canals, it seems to stretch impossibly into infinity in both up and
+down directions. The air moat also seems to continue west and south from here.<0>
+~
+0 0 9
+D0
+~
+~
+0 -1 27733
+D1
+~
+~
+0 -1 27728
+D2
+~
+~
+0 -1 27792
+D3
+~
+~
+0 -1 27732
+D4
+~
+~
+0 -1 27429
+D5
+~
+~
+0 -1 27429
+S
+#27730
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions.<0>
+~
+0 0 9
+D1
+~
+~
+0 -1 27731
+D3
+~
+~
+0 -1 27727
+D4
+~
+~
+0 -1 27430
+D5
+~
+~
+0 -1 27430
+S
+#27731
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions.<0>
+~
+0 0 9
+D1
+~
+~
+0 -1 27732
+D3
+~
+~
+0 -1 27730
+D4
+~
+~
+0 -1 27431
+D5
+~
+~
+0 -1 27431
+S
+#27732
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions. The air moat also seems to continue east from here.<0>
+~
+0 0 9
+D1
+~
+~
+0 -1 27729
+D3
+~
+~
+0 -1 27731
+D4
+~
+~
+0 -1 27432
+D5
+~
+~
+0 -1 27432
+S
+#27733
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions.<0>
+~
+0 0 9
+D0
+~
+~
+0 -1 27739
+D2
+~
+~
+0 -1 27729
+D4
+~
+~
+0 -1 27433
+D5
+~
+~
+0 -1 27433
+S
+#27734
+The Royal Foundry, Upper~
+<147>You stand in the upper level of the Royal Foundry belonging to the Ota'ar
+Dar Prince.  Weapons and armour for his personal guard are made here, to the
+most exacting standards of craftsmanship.  It is a split-level structure, with
+this upper level being where most of the metal is smelted and roughly shaped,
+before being finished and detailed in the lower level.
+
+Above the forge, you see a large <153>flue<0><147>, whereby the heat and toxic fumes
+produced by the forge are removed from the area by an elaborate venting system.
+
+The only obvious exit from here is down, to the lower level of the Foundry.<0>
+~
+0 8|128 12
+D4
+The flue is probably wide enough to fit yourself into, if you're that crazy!
+~
+flue~
+10 -1 27858
+E
+flue~
+The flue is quite broad and wide, to accommodate all the fumes from the forge.
+If you were really crazy, you could probably fit your body (and not much else!)
+into it.
+~
+D5
+~
+~
+0 -1 27434
+S
+#27735
+Prince's Courtyard, Upper~
+<136>You are swimming about 4 metres above sandy ground in the courtyard of an
+ancient castle, deep underwater. To the south you see the great gate that lets
+out into the air moat that surrounds the courtyard walls, above the drawbridge.
+
+To the north are the walls of the castle itself; no entrance can be seen into
+them from here. The east wall of the royal foundry lies immediately west; you
+can see an entrance into the foundry somewhat below you. More courtyard lies to
+the east and downwards.
+
+Head east or down from here to explore more of the courtyard, open the southern
+gates to head out to the air moat, or swim straight up, towards the huge,
+looming area of darkness in the water directly above you.<0>
+~
+0 4 8
+D1
+~
+~
+0 -1 27736
+D2
+~
+gate~
+8 -1 27727
+D4
+~
+~
+0 -1 27128
+D5
+~
+~
+0 -1 27435
+S
+#27736
+Prince's Courtyard, Upper~
+<136>You are swimming about 4 metres above sandy ground in the courtyard of an
+ancient castle, deep underwater. To the south lie the walls separating the
+courtyard from the air moat that surrounds it, while to the north are the walls
+of the castle itself, which afford no entrance from here.
+
+East you see the upper gate leading into the Prince's stables; you can also
+head west or down to further explore the courtyard, or straight up, towards the
+huge, looming area of darkness in the water directly above you.<0>
+~
+0 0 8
+D1
+~
+gate~
+8 -1 27737
+D3
+~
+~
+0 -1 27735
+D4
+~
+~
+0 -1 27130
+D5
+~
+~
+0 -1 27436
+S
+#27737
+Prince's Stables, Upper~
+<228>You stand in the upper level of the Prince's stables.  A variety of equipment
+used for the care and training of mounts is affixed to the walls of the stables
+while various platforms and cages are used to house the plethora of sea beasts
+that serve as mounts to the sahuagin.
+
+From here you may exit west, through the stable gates, or explore the stables
+further east and downwards.<0>
+~
+0 8 12
+D1
+~
+~
+0 -1 27738
+D3
+~
+gate~
+8 -1 27736
+D5
+~
+~
+0 -1 27437
+S
+#27738
+Prince's Stables, Upper~
+<228>You stand in the upper level of the Prince's stables.  A variety of equipment
+used for the care and training of mounts is affixed to the walls of the stables
+while various platforms and cages are used to house the plethora of sea beasts
+that serve as mounts to the sahuagin.
+
+From here you may explore the stables further west and downwards.<0>
+~
+0 8 12
+D3
+~
+~
+0 -1 27737
+D5
+~
+~
+0 -1 27438
+S
+#27739
+Prince's Drawbridge - West, Upper~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, when you look up you see this same spot, repeating into
+infinity. If you look downwards, however, you see the lower part of the drawbridge,
+encased magically in a large, cuboid block of seawater. Great gates lie east and
+west, affording entrance into the Prince's courtyard and the Ota'ar Dar canal
+system, respectively.<0>
+~
+0 0 9
+D0
+~
+~
+0 -1 27771
+D1
+~
+gate~
+8 -1 27740
+D2
+~
+~
+0 -1 27733
+D3
+~
+gate~
+8 -1 27718
+D4
+~
+~
+0 -1 27739
+D5
+~
+~
+0 -1 27439
+S
+#27740
+Prince's Courtyard, Upper~
+<136>You are swimming about 4 metres above sandy ground in the courtyard of an
+ancient castle, deep underwater. To the west you see the great gate that lets
+out into the air moat that surrounds the courtyard walls, above the drawbridge.
+
+To the east are the walls of the castle itself; no entrance can be seen into
+them from here. The north wall of the royal foundry lies immediately south; you
+can see an entrance into the foundry somewhat below you. More courtyard lies to
+the north and downwards.
+
+Head north or down from here to explore more of the courtyard, open the western
+gates to head out to the air moat, or swim straight up, towards the huge,
+looming area of darkness in the water directly above you.<0>
+~
+0 0 8
+D0
+~
+~
+0 -1 27772
+D3
+~
+gate~
+8 -1 27739
+D4
+~
+~
+0 -1 27132
+D5
+~
+~
+0 -1 27440
+S
+#27741
+The Advisor's Quarters~
+<129>You are in the room of the sahuagin prince's advisor. The walls of this secluded
+chamber are lined with shelves carved directly into the living coral, each filled
+with scrolls and tomes bound in seaweed and fish skin, containing knowledge
+accumulated over centuries.
+
+In the center stands a large, obsidian desk, its surface polished to a mirror
+finish, upon which rest various artifacts of power and tools for divination,
+including crystal orbs filled with bioluminescent plankton and maps of the
+oceanic currents. The room is illuminated by a soft, ambient glow emanating from
+strategically placed luminescent corals.<0>
+~
+0 8 12
+D1
+~
+door~
+8 -1 27742
+S
+#27742
+The Prince's Dayroom~
+<129>You stand in a room illuminated only by the faint, unsettling glow of deep-sea
+lanterns, casting long, sinister shadows across its confines. The walls, adorned
+with trophies of the prince's vanquished foes and relics of dark magic, speak to
+the lord of Ota'ar Dar's ruthless pursuit of power and dominion.
+
+At the room's center stands a throne made from the bones of a leviathan, its
+presence imposing and chilling. Surrounding the throne, various instruments of
+torture and enchantment lie scattered, ready to be wielded in the prince's hands.
+
+The water here is cold, as if the warmth of life itself recoils from this place.
+
+Doors lead north, east, and west from here.<0>
+~
+0 8 12
+D0
+~
+door~
+8 -1 27774
+D1
+~
+door~
+8 -1 27743
+D3
+~
+door~
+8 -1 27741
+S
+#27743
+The Prince's Quarters~
+<129>The spacious chamber is adorned with exquisite coral sculptures and walls inlaid
+with mother-of-pearl, reflecting the shimmering light from bioluminescent
+fixtures above. Luxurious seaweed drapes partition the room, offering privacy
+and a touch of elegance, while an opulent bed of soft sea sponges promises rest
+fit for royalty.
+
+Among the treasures and artifacts that speak of the prince's power and heritage,
+one peculiar coral <141>statue<0><129> stands out, positioned conspicuously against the
+southern wall.
+
+A door leads west, or you may travel north, farther into the prince's quarters.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 27775
+D2
+~
+statue~
+10 -1 27737
+E
+statue~
+Shifting the statue aside you see a curtain hiding a narrow exit to the south,
+just wide enough to squeeze through.  You're not sure you could get back through
+it the other way, though.
+~
+D3
+~
+door~
+8 -1 27742
+S
+#27771
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions.<0>
+~
+0 0 9
+D0
+~
+~
+0 -1 27776
+D2
+~
+~
+0 -1 27739
+D4
+~
+~
+0 -1 27471
+D5
+~
+~
+0 -1 27471
+S
+#27772
+Prince's Courtyard, Upper~
+<136>You are swimming about 4 metres above sandy ground in the courtyard of an
+ancient castle, deep underwater. To the west you see high stone walls,
+separating the courtyard from the air moat that surrounds it. To the east are
+the walls of the castle itself; you can see lower down that great doors afford
+entrance into them, east.
+
+You can head north, south or down from here to explore more of the courtyard,
+or straight up, towards the huge, looming area of darkness in the water
+directly above you.<0>
+~
+0 0 8
+D0
+~
+~
+0 -1 27778
+D2
+~
+~
+0 -1 27740
+D4
+~
+~
+0 -1 27132
+D5
+~
+~
+0 -1 27472
+S
+#27773
+The Throne Room~
+<129>You stand in a vast throne room within an underwater palace, a breathtaking
+vision of majesty and splendor. Towering coral pillars rise to meet a vaulted
+ceiling, from which bioluminescent organisms cast a soft, otherworldly glow,
+illuminating the grand space with ethereal light.
+
+At the heart of the room, a magnificent throne carved from a massive pearl
+dominates the scene, its opulence unmatched, flanked by statuesque
+representations of sea creatures that stand as silent guardians. The floor is a
+masterpiece of intricate mosaics made from shell and precious stones, leading
+visitors' gazes toward the regal seat of power.
+
+You may travel north or east from here.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 27779
+D1
+~
+~
+0 -1 27774
+S
+#27774
+The Throne Room~
+<129>You stand in a vast throne room within an underwater palace, a breathtaking
+vision of majesty and splendor. Towering coral pillars rise to meet a vaulted
+ceiling, from which bioluminescent organisms cast a soft, otherworldly glow,
+illuminating the grand space with ethereal light.
+
+At the heart of the room, a magnificent throne carved from a massive pearl
+dominates the scene, its opulence unmatched, flanked by statuesque
+representations of sea creatures that stand as silent guardians. The floor is a
+masterpiece of intricate mosaics made from shell and precious stones, leading
+visitors' gazes toward the regal seat of power.
+
+You may travel north or west from here. A gilded door is also set into the
+southern wall.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 27780
+D2
+~
+door~
+8 -1 27742
+D3
+~
+~
+0 -1 27773
+S
+#27775
+The Prince's Quarters~
+<129>Within the heart of the underwater palace, the quarters of the sahuagin prince
+unfold in a spectacle of undersea grandeur. The spacious chamber is adorned with
+exquisite coral sculptures and fine silk seaweed tapestries depicting legendary
+battles and mythical sea creatures. The centerpiece of the room is a grand,
+pearl-encrusted bed, its linens woven from the finest mermaid's hair, promising
+rest fit for oceanic royalty.
+
+Against the northern wall, a shimmering blue portal pulsates gently, its surface
+rippling like the surface of the sea under a moonlit sky.
+
+You can head south from here, or enter the portal to parts unknown.<0>
+~
+0 8 12
+D2
+~
+~
+0 -1 27743
+S
+#27776
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions.<0>
+~
+0 0 9
+D2
+~
+~
+0 -1 27771
+D3
+~
+~
+0 -1 27777
+D4
+~
+~
+0 -1 27476
+D5
+~
+~
+0 -1 27476
+S
+#27777
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions.<0>
+~
+0 0 9
+D0
+~
+~
+0 -1 27781
+D1
+~
+~
+0 -1 27776
+D4
+~
+~
+0 -1 27477
+D5
+~
+~
+0 -1 27477
+S
+#27778
+Prince's Courtyard, Upper~
+<136>You are swimming about 4 metres above sandy ground in the courtyard of an
+ancient castle, deep underwater. To the north and east are the walls of the
+castle itself; they afford no entrance from here. West lies the
+richly-decorated walls of a building that seems like it serves some sort of
+religious function; its entrance lies downwards and west from here.
+
+You can head south or down from here to explore more of the courtyard, or
+straight up, towards the huge, looming area of darkness in the water directly
+above you.<0>
+~
+0 0 8
+D0
+~
+~
+0 -1 27783
+D2
+~
+~
+0 -1 27772
+D4
+~
+~
+0 -1 27132
+D5
+~
+~
+0 -1 27478
+S
+#27779
+The Throne Room~
+<129>You stand in a vast throne room within an underwater palace, a breathtaking
+vision of majesty and splendor. Towering coral pillars rise to meet a vaulted
+ceiling, from which bioluminescent organisms cast a soft, otherworldly glow,
+illuminating the grand space with ethereal light.
+
+At the heart of the room, a magnificent throne carved from a massive pearl
+dominates the scene, its opulence unmatched, flanked by statuesque
+representations of sea creatures that stand as silent guardians. The floor is a
+masterpiece of intricate mosaics made from shell and precious stones, leading
+visitors' gazes toward the regal seat of power.
+
+You may travel south or east from here. A large door is also set into the
+northern wall, leading to the waiting room.<0>
+~
+0 8 12
+D0
+~
+door~
+8 -1 27784
+D1
+~
+~
+0 -1 27780
+D2
+~
+~
+0 -1 27773
+S
+#27780
+The Throne Room~
+<129>You stand in a vast throne room within an underwater palace, a breathtaking
+vision of majesty and splendor. Towering coral pillars rise to meet a vaulted
+ceiling, from which bioluminescent organisms cast a soft, otherworldly glow,
+illuminating the grand space with ethereal light.
+
+At the heart of the room, a magnificent throne carved from a massive pearl
+dominates the scene, its opulence unmatched, flanked by statuesque
+representations of sea creatures that stand as silent guardians. The floor is a
+masterpiece of intricate mosaics made from shell and precious stones, leading
+visitors' gazes toward the regal seat of power.
+
+You may travel south or west from here. A large door is also set into the
+northern wall, leading to the waiting room.<0>
+~
+0 8 12
+D0
+~
+door~
+8 -1 27785
+D2
+~
+~
+0 -1 27774
+D3
+~
+~
+0 -1 27779
+S
+#27781
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions.<0>
+~
+0 0 9
+D0
+~
+~
+0 -1 27786
+D2
+~
+~
+0 -1 27777
+D4
+~
+~
+0 -1 27481
+D5
+~
+~
+0 -1 27481
+S
+#27782
+The Royal Chapel of Sekolah, Ceiling~
+<126>You swim near the ceiling of a richly-decorated chapel dedicated to the
+shark god Sekolah.  So massive is the golden statue that the head of the god
+fills a good chunk of the space up here.  The ceiling is covered with images
+detailing Sekolah's mythical adventures with Iakhovas, the ancient megalodon
+known "He Who Swims With Sekolah".
+
+Down below you, double doors lead out of the chapel and into the castle
+courtyard to the north and south.<0>
+~
+0 8 8
+D5
+~
+~
+0 -1 27482
+S
+#27783
+Prince's Courtyard, Upper~
+<136>You are swimming about 4 metres above sandy ground in the courtyard of an
+ancient castle, deep underwater. To the north and east are the walls of the
+castle itself; they afford no entrance from here. West lies the
+richly-decorated walls of a building that seems like it serves some sort of
+religious function; its entrance lies downwards and west from here.
+
+You can head south or down from here to explore more of the courtyard, or
+straight up, towards the huge, looming area of darkness in the water directly
+above you.<0>
+~
+0 0 8
+D2
+~
+~
+0 -1 27778
+D4
+~
+~
+0 -1 27132
+D5
+~
+~
+0 -1 27483
+S
+#27784
+The Waiting Room~
+<129>You stand in the exquisite waiting room of the palace, just outside the throne
+room, which lies through doors to the south. It has been designed to awe those
+awaiting audience with the prince. A marvel of underwater architecture, its
+walls are crafted from smooth, polished coral that glows softly in the ambient
+light.
+
+Elegant furnishings made from intricately woven seaweed and plush sea sponges
+offer places to rest, while tall, slender columns of pearlescent material rise
+to support the vaulted ceiling, from which hangs delicate, bioluminescent
+jellyfish, providing gentle illumination.
+
+From here, you may travel north to the corridor, south to the throne room, or
+east to another part of the waiting room.<0>
+~
+0 8 12
+D0
+~
+door~
+8 -1 27790
+D1
+~
+~
+0 -1 27785
+D2
+~
+door~
+8 -1 27779
+S
+#27785
+The Waiting Room~
+<129>You stand in the exquisite waiting room of the palace, just outside the throne
+room, which lies through doors to the south. It has been designed to awe those
+awaiting audience with the prince. A marvel of underwater architecture, its
+walls are crafted from smooth, polished coral that glows softly in the ambient
+light.
+
+Elegant furnishings made from intricately woven seaweed and plush sea sponges
+offer places to rest, while tall, slender columns of pearlescent material rise
+to support the vaulted ceiling, from which hangs delicate, bioluminescent
+jellyfish, providing gentle illumination.
+
+From here, you may travel south to the throne room, or west to another part of
+the waiting room.<0>
+~
+0 8 12
+D2
+~
+door~
+8 -1 27780
+D3
+~
+~
+0 -1 27784
+S
+#27786
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions.<0>
+~
+0 0 9
+D0
+~
+~
+0 -1 27792
+D2
+~
+~
+0 -1 27781
+D3
+~
+~
+0 -1 27787
+D4
+~
+~
+0 -1 27486
+D5
+~
+~
+0 -1 27486
+S
+#27787
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions.<0>
+~
+0 0 9
+D1
+~
+~
+0 -1 27786
+D4
+~
+~
+0 -1 27487
+D5
+~
+~
+0 -1 27487
+S
+#27788
+Prince's Courtyard, Upper~
+<136>You are swimming about 4 metres above sandy ground in the courtyard of an
+ancient castle, deep underwater. To the west you see high stone walls,
+separating the courtyard from the air moat that surrounds it. To the east are
+the walls of the castle itself; they afford no entrance from here. South lies
+the richly-decorated walls of a building that seems like it serves some sort of
+religious function; its entrance lies downwards from here.
+
+You can head north or down from here to explore more of the courtyard, or
+straight up, towards the huge, looming area of darkness in the water directly
+above you.<0>
+~
+0 0 8
+D0
+~
+~
+0 -1 27793
+D4
+~
+~
+0 -1 27136
+D5
+~
+~
+0 -1 27488
+S
+#27789
+Corridor in the Prince's Castle~
+<129>You stand in the middle of a corridor in the upper level of an ancient castle,
+deep underwater.  An ornate golden door adorned with precious jewels is set in
+the northern wall, and you can also head down the corridor to the east.<0>
+~
+0 4|8 12
+D0
+~
+door~
+8 -1 27794
+D1
+~
+~
+0 -1 27790
+S
+#27790
+Corridor in the Prince's Castle~
+<129>You stand in the middle of a corridor in the upper level of an ancient castle,
+deep underwater.  Powerfully-constructed, ornate steel doors are set in the
+southern wall, and you can also continue travelling the length of the corridor
+to the east or west. A small <141>sign<0><129> hangs above the doors.<0>
+~
+0 4|8 12
+D1
+~
+~
+0 -1 27791
+D2
+~
+door~
+8 27602 27784
+E
+sign~
+The sign reads:
+
+"The Prince is not currently available for individual appointments, and will
+only attend upon the regular consultations held with all canton barons (or their
+tokenised emissaries) simultaneously."
+~
+D3
+~
+~
+0 -1 27789
+S
+#27791
+Top of the Prince's Column~
+<129>You stand at the eastern end of an upper-storey corridor in an ancient castle,
+deep underwater.  Beneath you is a large circular hole leading down to the
+castle's lower storey.  You can travel west, farther down the corridor, or
+directly down from here.<0>
+~
+0 4|8 8
+D3
+~
+~
+0 -1 27790
+D5
+~
+~
+0 -1 27491
+S
+#27792
+The Air Moat~
+<74>You are in mid-air in the magical air moat that surrounds the Prince's canton
+in Ota'ar Dar, deep underwater.  Long ago, the Prince commissioned mages from
+<75>the surface realms to build it and fill it with air-dwelling creatures captured
+from across the domain, as he wanted to create a hostile barrier between his
+<81>home and the water-breathing races sworn to enmity with the sahuagin. While
+clearly sandwiched between the walls of the Prince's courtyard and the outer
+<87>wall of the canals, it seems to stretch impossibly into infinity in both up
+and down directions. The air moat also seems to continue north from here.<0>
+~
+0 0 9
+D0
+~
+~
+0 -1 27729
+D2
+~
+~
+0 -1 27786
+D4
+~
+~
+0 -1 27492
+D5
+~
+~
+0 -1 27492
+S
+#27793
+Prince's Courtyard, Upper~
+<136>You are swimming about 4 metres above sandy ground in the courtyard of an
+ancient castle, deep underwater. To the west you see high stone walls,
+separating the courtyard from the air moat that surrounds it. To the east are
+the walls of the castle itself; they afford no entrance from here.
+
+You can head north, south or down from here to explore more of the courtyard,
+or straight up, towards the huge, looming area of darkness in the water
+directly above you.<0>
+~
+0 0 8
+D0
+~
+~
+0 -1 27796
+D2
+~
+~
+0 -1 27788
+D4
+~
+~
+0 -1 27136
+D5
+~
+~
+0 -1 27493
+S
+#27794
+The Prince's Harem~
+<129>You stand in a breathtaking room in an underwater palace, designed to house the
+sahuagin prince's harem. The space radiates a serene and majestic beauty,
+tailored to the refined tastes of its royal inhabitants. The walls are adorned
+with intricate mosaics of pearl and coral, and shimmer with the soft glow of
+bioluminescent flora.  You can explore the room to the north and east from
+here, while imposing gold and jewel-encrusted doors lead out to a corridor
+southward.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 27797
+D1
+~
+~
+0 -1 27795
+D2
+~
+door~
+8 -1 27789
+S
+#27795
+The Prince's Harem~
+<129>You stand in a breathtaking room in an underwater palace, designed to house the
+sahuagin prince's harem. The space radiates a serene and majestic beauty,
+tailored to the refined tastes of its royal inhabitants. The walls are adorned
+with intricate mosaics of pearl and coral, and shimmer with the soft glow of
+bioluminescent flora.  You can explore the room to the north and west from
+here.<0>
+~
+0 8 12
+D0
+~
+~
+0 -1 27798
+D3
+~
+~
+0 -1 27794
+S
+#27796
+Prince's Courtyard, Upper~
+<136>You are swimming about 4 metres above sandy ground in the courtyard of an
+ancient castle, deep underwater. To the west and north you see high stone
+walls, separating the courtyard from the air moat that surrounds it. To the
+east are the walls of the castle itself; they afford no entrance from here.
+
+You can head south or down from here to explore more of the courtyard, or up,
+towards the huge, looming area of darkness in the water directly above you.<0>
+~
+0 0 8
+D2
+~
+~
+0 -1 27793
+D4
+~
+~
+0 -1 27136
+D5
+~
+~
+0 -1 27496
+S
+#27797
+The Prince's Harem~
+<129>You stand in a breathtaking room in an underwater palace, designed to house the
+sahuagin prince's harem. The space radiates a serene and majestic beauty,
+tailored to the refined tastes of its royal inhabitants. The walls are adorned
+with intricate mosaics of pearl and coral, and shimmer with the soft glow of
+bioluminescent flora.  You can explore the room to the south and east from
+here.<0>
+~
+0 8 12
+D1
+~
+~
+0 -1 27798
+D2
+~
+~
+0 -1 27794
+S
+#27798
+The Prince's Harem~
+<129>You stand in a breathtaking room in an underwater palace, designed to house the
+sahuagin prince's harem. The space radiates a serene and majestic beauty,
+tailored to the refined tastes of its royal inhabitants. The walls are adorned
+with intricate mosaics of pearl and coral, and shimmer with the soft glow of
+bioluminescent flora.  You can explore the room to the south and west from
+here.<0>
+~
+0 8 12
+D2
+~
+~
+0 -1 27795
+D3
+~
+~
+0 -1 27797
+S
+#27858
+<11>Inside the Flue<0>~
+<161>It's very hot inside the flue, and a tight fit, but here you are.
+
+You can go down from here, back to the upper level of the foundry, or
+travel up higher into the flue.<0>
+~
+0 4|8|512|262144 8
+D4
+~
+~
+0 -1 27859
+D5
+~
+~
+0 -1 27734
+S
+#27859
+<11>Inside the Flue<0>~
+<161>It's very hot inside the flue, and a tight fit, but here you are.
+
+You can travel up or down the flue from here, but you really can't see
+much in either direction; the fumes are too thick.<0>
+~
+0 8|512|262144 8
+D4
+~
+~
+0 -1 27860
+D5
+~
+~
+0 -1 27858
+S
+#27860
+<11>Inside the Flue<0>~
+<161>It's very hot inside the flue, and a tight fit, but here you are.
+
+You can travel up or down the flue from here, but you really can't see
+much in either direction; the fumes are too thick.<0>
+~
+0 8|512|262144 8
+D4
+~
+~
+0 -1 27861
+D5
+~
+~
+0 -1 27859
+S
+#27861
+<11>Inside the Flue<0>~
+<161>It's very hot inside the flue, and a tight fit, but here you are.
+
+You can travel up or down the flue from here; you can't see much below
+you, but there's some sort of light shining through a... fissure above
+you?  You could probably force your way through it, but you doubt you
+could get back in the same way.<0>
+~
+0 4|8|512|262144 8
+D4
+~
+~
+0 -1 27400
+D5
+~
+~
+0 -1 27860
+S
+#0
+
+#RESETS
+* Doors
+D 1 27427 2 1			; Prince's Drawbridge - South, Lower Close South
+D 1 27427 0 1			; Prince's Drawbridge - South, Lower Close North
+D 1 27727 2 1			; Prince's Drawbridge - South, Upper Close South
+D 1 27727 0 1			; Prince's Drawbridge -South, Upper Close North
+D 1 27439 1 1			; Prince's Drawbridge - West, Lower Close East
+D 1 27439 3 1			; Prince's Drawbridge - West, Lower Close West
+D 1 27739 1 1			; Prince's Drawbridge - West, Upper Close East
+D 1 27739 3 1			; Prince's Drawbridge - West, Upper Close West
+D 1 27435 2 1			; Prince's Canton, Courtyard, Lower Close South
+D 1 27735 2 1			; Prince's Canton, Courtyard, Upper Close South
+D 1 27436 1 1			; Prince's Canton, Courtyard, Lower Close East
+D 1 27736 1 1			; Prince's Canton, Courtyard, Upper Close East
+D 1 27437 3 1			; Prince's Canton, Stables, Lower Close West
+D 1 27737 3 1			; Prince's Canton, Stables, Upper Close West
+D 1 27472 1 1			; Prince's Canton, Courtyard, Lower Close East
+D 1 27483 3 1			; Prince's Canton, Courtyard, Lower Close West
+D 1 27482 1 1			; Prince's Canton, Royal Chapel, Lower Close East
+D 1 27482 0 1			; Prince's Canton, Royal Chapel, Lower Close North
+D 1 27488 2 1			; Prince's Canton, Courtyard, Lower Close South
+D 1 27440 3 1			; Prince's Canton, Courtyard, Lower Close West
+D 1 27740 3 1			; Prince's Canton, Courtyard, Upper Close West
+D 1 27473 3 1           ; The Great Hall, Close West
+D 1 27474 0 1           ; The Great Hall, Close North
+D 1 27480 2 1           ; The Auxiliary Hall, Close South
+D 1 27485 0 1           ; The Auxiliary Hall, Close North
+D 1 27490 1 1           ; The Dining Hall, Close East
+D 1 27491 2 1           ; The Prince's Column, Close South
+D 1 27491 3 1           ; The Prince's Column, Close West
+D 1 27494 0 1           ; The Dining Hall, Close North
+D 1 27497 2 1           ; The Bakehouse, Close South
+D 1 27741 1 1           ; The Advisor's Quarters, Close East
+D 1 27742 3 1           ; The Prince's Dayroom, Close West
+D 1 27742 0 1           ; The Prince's Dayroom, Close North
+D 1 27742 1 1           ; The Prince's Dayroom, Close East
+D 1 27743 3 1           ; The Prince's Quarters, Close West
+D 1 27774 2 1           ; The Throne Room, Close South
+D 1 27779 0 1           ; The Throne Room, Close North
+D 1 27780 0 1           ; The Throne Room, Close North
+D 1 27784 0 1           ; The Waiting Room, Close North
+D 1 27784 2 1           ; The Waiting Room, Close South
+D 1 27785 2 1           ; The Waiting Room, Close South
+D 1 27789 0 1           ; Corridor in the Prince's Castle, Close North
+D 1 27790 2 2           ; Corridor in the Prince's Castle, Lock South
+D 1 27794 2 1           ; Prince's Harem, Close South
+*
+M 1 27462 1 27492		; a death hawk to The Air Moat
+*
+M 1 27463 1 27786		; a fairy dragon to The Air Moat
+*
+M 1 27464 1 27487		; a black winged griffin to The Air Moat
+*
+M 1 27465 1 27781		; a vampire bat to The Air Moat
+E 1 25604 100 16
+*
+M 1 27466 1 27477       ; a Wamphyri Flyer to The Air Moat
+E 1 9596 100 16
+E 1 9595 100 18
+*
+M 1 27467 1 27776       ; a chasme to The Air Moat
+*
+M 1 27468 1 27471       ; a fury to The Air Moat
+E 1 27572 100 16
+*
+M 1 27469 1 27739       ; a grell to Prince's Drawbridge - West, Upper
+*
+M 1 27470 1 27433       ; an Akshashi Devil to The Air Moat
+E 1 25432 100 0
+E 1 25433 100 16
+G 1 25431 100
+*
+M 1 27471 1 27729       ; a spectral nymph to The Air Moat
+*
+M 1 27472 1 27428       ; an efreeti to The Air Moat
+G 1 27573 100           ; give small pewter jug
+G 1 27573 100           ; give small pewter jug
+*
+M 1 27473 1 27727       ; a hawkman to Prince's Drawbridge - South, Upper
+E 1 27574 100 6         ; equip a beaked helm
+E 1 27575 100 7         ; equip chain leggings
+E 1 27576 100 9         ; equip talons of the hawkpeople
+*
+M 1 27474 1 27430       ; a seagull to The Air Moat
+G 1 27577 100           ; give paper bag of fried tubers
+*
+M 1 27475 1 27731       ; a swarm of mosquitoes to The Air Moat
+*
+M 1 27476 1 27432       ; A mist dragon to The Air Moat
+G 1 27578 100           ; give misty egg
+*
+O 1 27579 100 27482      ; Statue of Sekolah to Sekolah Chapel
+O 1 27580 100 27782      ; Head of the Statue of Sekolah to Sekolah Chapel
+P 1 27581 1 27580        ; chalice into head of statue
+*
+O 1 27582 1 27434        ; Anvil into lower level of Foundry
+O 1 27583 1 27734        ; Forge into upper level of Foundry
+*
+M 1 27478 6 27496        ; Royal infantry guard to Prince's Courtyard
+E 1 27585 100 3          ; equip a royal infantryman's spiked pauldron
+E 1 27586 100 13         ; equip a scaled purple loincloth
+E 1 27588 100 16         ; equip a royal trident
+*
+M 1 27479 6 27793        ; Royal cavalry guard to Prince's Courtyard
+E 1 27585 100 3          ; equip a royal infantryman's spiked pauldron
+E 1 27586 100 13         ; equip a scaled purple loincloth
+E 1 27587 100 16         ; equip a royal spear
+*
+M 1 27478 6 27488        ; Royal infantry guard to Prince's Courtyard
+E 1 27585 100 3          ; equip a royal infantryman's spiked pauldron
+E 1 27586 100 13         ; equip a scaled purple loincloth
+E 1 27588 100 16         ; equip a royal trident
+*
+M 1 27479 6 27783        ; Royal cavalry guard to Prince's Courtyard
+E 1 27585 100 3          ; equip a royal infantryman's spiked pauldron
+E 1 27586 100 13         ; equip a scaled purple loincloth
+E 1 27587 100 16         ; equip a royal spear
+*
+M 1 27478 6 27478        ; Royal infantry guard to Prince's Courtyard
+E 1 27585 100 3          ; equip a royal infantryman's spiked pauldron
+E 1 27586 100 13         ; equip a scaled purple loincloth
+E 1 27588 100 16         ; equip a royal trident
+*
+M 1 27479 6 27772        ; Royal cavalry guard to Prince's Courtyard
+E 1 27585 100 3          ; equip a royal infantryman's spiked pauldron
+E 1 27586 100 13         ; equip a scaled purple loincloth
+E 1 27587 100 16         ; equip a royal spear
+*
+M 1 27478 6 27440        ; Royal infantry guard to Prince's Courtyard
+E 1 27585 100 3          ; equip a royal infantryman's spiked pauldron
+E 1 27586 100 13         ; equip a scaled purple loincloth
+E 1 27588 100 16         ; equip a royal trident
+*
+M 1 27479 6 27735        ; Royal cavalry guard to Prince's Courtyard
+E 1 27585 100 3          ; equip a royal infantryman's spiked pauldron
+E 1 27586 100 13         ; equip a scaled purple loincloth
+E 1 27587 100 16         ; equip a royal spear
+*
+M 1 27478 6 27475        ; Royal infantry guard to great Hall
+E 1 27585 100 3          ; equip a royal infantryman's spiked pauldron
+E 1 27586 100 13         ; equip a scaled purple loincloth
+E 1 27588 100 16         ; equip a royal trident
+*
+M 1 27478 6 27436        ; Royal infantry guard to Prince's Courtyard
+E 1 27585 100 3          ; equip a royal infantryman's spiked pauldron
+E 1 27586 100 13         ; equip a scaled purple loincloth
+E 1 27588 100 16         ; equip a royal trident
+*
+M 1 27479 6 27736        ; Royal cavalry guard to Prince's Courtyard
+E 1 27585 100 3          ; equip a royal infantryman's spiked pauldron
+E 1 27586 100 13         ; equip a scaled purple loincloth
+E 1 27587 100 16         ; equip a royal spear
+*
+M 1 27480 1 27434       ; Yfavos the royal smith to Royal Foundry
+E 1 27589 100 13        ; equip a blacksmith's apron
+E 1 27590 100 16        ; wield smithing hammer
+E 1 27591 100 18        ; wield tongs
+*
+M 1 27481 1 27734       ; Smith's apprentice to Royal Foundry
+E 1 27589 100 13        ; equip a blacksmith's apron
+E 1 27592 100 18        ; wield tongs
+*
+M 1 27482 1 27482         ; Rani Matenn to Royal Chapel
+E 1 27310 100 12
+E 1 27231 100 13
+*
+M 1 27483 1 27437       ; A great white shark to the stables
+E 1 27234 100 16
+*
+M 1 27484 1 27738       ; A megalodon to the stables
+E 1 27234 100 16
+*
+M 1 27485 1 27438       ; A sea horse to the stables
+*
+M 1 27486 1 27737       ; A giant manta ray to the stables
+*
+M 1 27487 1 27736       ; Royal lieutenant to Prince's Courtyard
+E 1 27512 100 3         ; equip a lieutenant's spiked pauldron
+E 1 27586 100 13        ; equip a scaled purple loincloth
+E 1 27588 100 16        ; equip a royal trident
+E 1 27587 100 18        ; equip a royal spear
+E 1 27517 100 6         ; equip lieutenant's crest
+*
+M 1 27488 1 27738       ; The stable master to the stables
+E 1 27586 100 13        ; equip a scaled purple loincloth
+*
+M 1 27489 1 27473       ; golden statue of Prince to the Great Hall
+E 1 27596 100 17
+*
+M 1 27490 1 27474       ; silver statue of Prince to the Great Hall
+E 1 27597 100 17
+*
+M 1 27491 1 27475       ; ruby statue of Prince to the Great Hall
+E 1 27598 100 17
+*
+M 1 27492 1 27441       ; emerald statue of Prince to the Great Hall
+E 1 27595 100 17
+*
+M 1 27493 1 27442       ; sapphire statue of Prince to the Great Hall
+E 1 27594 100 17
+*
+M 1 27494 1 27443       ; diamond statue of Prince to the Great Hall
+E 1 27593 100 17
+*
+M 1 27495 1 27479       ; enchanted gladiator armour to Auxilary Hall
+E 1 27419 100 3         ; equip spiked pauldrons
+E 1 27423 100 7         ; equip fasciae
+E 1 27475 100 8         ; equip ocrea
+E 1 27477 100 13        ; equip balteus
+E 1 27474 100 16        ; equip a short sword
+E 1 27480 100 18        ; equip scissore
+*
+M 1 27496 1 27480       ; enchanted gladiator armour to Auxilary Hall
+E 1 27422 100 6         ; equip helmet
+E 1 27419 100 3         ; equip spiked pauldrons
+E 1 27423 100 7         ; equip fasciae
+E 1 27475 100 8         ; equip ocrea
+E 1 27459 100 16        ; equip trident
+E 1 27243 100 18        ; equip net
+*
+M 1 27497 1 27484       ; enchanted gladiator armour to Auxilary Hall
+E 1 27419 100 3         ; equip spiked pauldrons
+E 1 27423 100 7         ; equip fasciae
+E 1 27422 100 6         ; equip helmet
+E 1 27475 100 8         ; equip ocrea
+E 1 27479 100 11        ; equip buckler
+E 1 27477 100 13        ; equip balteus
+E 1 27478 100 16        ; equip a long spear
+*
+M 1 27498 1 27485       ; enchanted gladiator armour to Auxilary Hall
+E 1 27477 100 13        ; equip balteus
+E 1 27474 100 16        ; equip a short sword
+E 1 27474 100 18        ; equip a short sword
+*
+M 1 27479 6 27485        ; Royal cavalry guard to Auxilary Hall
+E 1 27585 100 3          ; equip a royal infantryman's spiked pauldron
+E 1 27586 100 13         ; equip a scaled purple loincloth
+E 1 27587 100 16         ; equip a royal spear
+*
+O 1 27599 1 27490       ; Table to dining room
+O 1 27599 1 27489       ; Table to dining room
+O 1 27599 1 27494       ; Table to dining room
+O 1 27599 1 27495       ; Table to dining room
+*
+M 1 27499 4 27494       ; Sahuagin servant to the Dining hall
+E 1 27586 100 13        ; equip a scaled purple loincloth
+G 1 27247 100
+G 1 27249 100
+G 1 27254 100
+G 1 27256 100
+*
+M 1 27499 4 27495       ; Sahuagin servant to the Dining hall
+E 1 27586 100 13        ; equip a scaled purple loincloth
+G 1 27292 100
+G 1 27250 100
+G 1 27251 100
+G 1 27252 100
+G 1 27248 100
+*
+M 1 27499 4 27489       ; Sahuagin servant to the Dining hall
+E 1 27586 100 13        ; equip a scaled purple loincloth
+G 1 27294 100
+G 1 27293 100
+G 1 27261 100
+G 1 27267 100
+G 1 27268 100
+*
+M 1 27499 4 27490       ; Sahuagin servant to the Dining hall
+E 1 27586 100 13        ; equip a scaled purple loincloth
+G 1 27246 100
+G 1 27258 100
+G 1 27259 100
+G 1 27272 100
+*
+M 1 27500 1 27497       ; Belena to the Bakehouse
+E 1 27465 100 13        ; equip purple loinskirt
+E 1 27601 100 16        ; equip wooden spoon
+*
+M 1 27501 1 27498       ; Cook to the Bakehouse
+E 1 27586 100 13        ; equip a scaled purple loincloth
+E 1 27600 100 16        ; equip poisoned blade
+*
+M 1 27502 1 27790       ; wizinvis door guard to corridor north of waiting room doors
+*
+M 1 27503 1 27797       ; Baron's wife to the harem
+E 1 27603 100 12        ; equip luxurious purple robe
+*
+M 1 27504 1 27798       ; Baron's wife to the harem
+E 1 27603 100 12        ; equip luxurious purple robe
+*
+M 1 27505 1 27795       ; Baron's wife to the harem
+E 1 27603 100 12        ; equip luxurious purple robe
+*
+M 1 27506 1 27794       ; Baron's wife to the harem
+E 1 27603 100 12        ; equip luxurious purple robe
+*
+M 1 27507 1 27797       ; Baron's wife to the harem
+E 1 27604 100 16        ; equip pearl dagger
+E 1 27603 100 12        ; equip luxurious purple robe
+*
+M 1 27508 1 27798       ; Baron's wife to the harem
+E 1 27603 100 12        ; equip luxurious purple robe
+*
+M 1 27509 1 27798       ; Royal eunuch to the prince's harem
+E 1 27605 100 5         ; equip eunuch robes
+G 1 27606 100           ; give spongemoss tobacco
+G 1 27607 100           ; give ornate pipe
+*
+M 1 27510 1 27784       ; a red grung to Waiting Room
+E 1 27608 100 5         ; equip red rock armour
+E 1 27609 100 17        ; equip red rock staff
+G 1 27610 100           ; give rock tablet
+
+M 1 27511 1 27785       ; Triton to waiting room
+E 1 27111 100 5         ; equip scale mail
+E 1 27112 100 13        ; equip belt of shark's teeth
+G 1 27611 100           ; give glittering scroll
+*
+M 1 27512 4 27779       ; princeguard to the throneroom
+E 1 27612 100 3         ; equip a princeguard's spiked pauldron
+E 1 27613 100 13        ; equip a plated purple loincloth
+E 1 27614 100 16        ; equip a princeguard spear
+E 1 27614 100 18        ; equip a princeguard spear
+*
+M 1 27512 4 27780       ; princeguard to the throneroom
+E 1 27612 100 3         ; equip a princeguard's spiked pauldron
+E 1 27613 100 13        ; equip a plated purple loincloth
+E 1 27614 100 16        ; equip a princeguard spear
+E 1 27614 100 18        ; equip a princeguard spear
+*
+M 1 27512 4 27773       ; princeguard to the throneroom
+E 1 27612 100 3         ; equip a princeguard's spiked pauldron
+E 1 27613 100 13        ; equip a plated purple loincloth
+E 1 27614 100 16        ; equip a princeguard spear
+E 1 27614 100 18        ; equip a princeguard spear
+*
+M 1 27512 4 27774       ; princeguard to the throneroom
+E 1 27612 100 3         ; equip a princeguard's spiked pauldron
+E 1 27613 100 13        ; equip a plated purple loincloth
+E 1 27614 100 16        ; equip a princeguard spear
+E 1 27614 100 18        ; equip a princeguard spear
+*
+O 1 27615 100 27773     ; Throne to the throneroom
+*
+M 1 27513 1 27773       ; prince to the throneroom
+E 1 27616 100 16        ; equip Trident of Sovereignty
+E 1 27535 100 18        ; equip battle trident
+E 1 27464 100 3         ; equip ornate pauldrons
+E 1 27465 100 13        ; equip purple loinskirt
+E 1 27617 100 6         ; equip princely crown
+E 1 27618 100 17        ; give shimmering golden potion
+*
+M 1 27514 1 27773       ; prince's advisor to the throneroom
+E 1 27538 100 12        ; golden robes
+E 1 27619 100 16        ; equip clerical mace
+G 1 27622 100           ; give silver key to advisor
+*
+O 1 27620 100 27775     ; portal to Prince's quarters
+*
+O 0 27621 1 27741       ; Load silver chest to advisor's room
+P 1 27623 1 27621       ; put money in chest
+*
+O 1 25724 100 27742     ; blood fountain to prince's dayroom
+O 1 27628 100 27743     ; treasure to Prince's Quarters
+S
+
+#SPECIALS
+M  27463 spec_cast_mage             a fairy dragon
+M  27467 spec_demon                 a chasme
+M  27468 spec_cast_undead           a fury
+M  27469 spec_poison                a grell
+M  27471 spec_cast_druid            a ghostly nymph
+M  27472 spec_cast_mage             an efreeti
+M  27475 spec_poison                a swarm of mosquitoes
+M  27476 spec_breath_steam          a mist dragon
+M  27479 spec_sahuagin_cavalry      a royal cavalryman
+M  27478 spec_sahuagin_infantry     a royal infantryman
+M  27482 spec_sahuagin_cleric       Rani Matenn
+M  27485 spec_breath_steam          A sea horse
+M  27487 spec_sahuagin_lieutenant   a royal lieutenant
+M  27505 spec_sahuagin_cleric       a prince's wife
+M  27508 spec_sahuagin_high_cleric  a prince's wife
+M  27509 spec_sahuagin_high_cleric  the royal eunuch
+M  27510 spec_red_grung             a red grung
+M  27512 spec_sahuagin_cavalry      a princeguard
+M  27513 spec_sahuagin_prince       the prince
+M  27514 spec_sahuagin_high_cleric  the prince's advisor
+S
+
+#$

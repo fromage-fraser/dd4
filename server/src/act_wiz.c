@@ -1141,9 +1141,43 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 strcat( buf1, buf );
         }
 
-        sprintf( buf, "Values: {W%d %d %d %d{x\n\r",
-                obj->value[0], obj->value[1], obj->value[2], obj->value[3] );
-        strcat( buf1, buf );
+        if (obj->item_type == 52)
+        {
+                sprintf( buf, "Benefit:       {W%3d%%{x ( value{W[{G0{W]{x ){x\n\r",
+                        obj->value[0]);
+                strcat( buf1, buf );
+                sprintf( buf, "Max benefit:   {W%3d%%{x ( value{W[{G1{W]{x ){x\n\r",
+                        obj->value[1]);
+                strcat( buf1, buf );
+                sprintf( buf, "Thirst mod:    {W%3d%%{x ( value{W[{G2{W]{x ){x\n\r",
+                        obj->value[2]);
+                strcat( buf1, buf );
+                sprintf( buf, "Speed:         {W%3d{x  ( value{W[{G3{W]{x ){x\n\r",
+                        obj->value[3]);
+                strcat( buf1, buf );
+
+        }
+        else if (obj->item_type == 53)
+        {
+                sprintf( buf, "Uses remain:   {W%3d{x ( value{W[{G0{W]{x ){x\n\r",
+                        obj->value[0]);
+                strcat( buf1, buf );
+                sprintf( buf, "Max uses:      {W%3d{x ( value{W[{G1{W]{x ){x\n\r",
+                        obj->value[1]);
+                strcat( buf1, buf );
+                sprintf( buf, "Clean:         {W%3d{x ( value{W[{G2{W]{x ){x\n\r",
+                        obj->value[2]);
+                strcat( buf1, buf );
+                sprintf( buf, "Clean max:     {W%3d{x ( value{W[{G3{W]{x ){x\n\r",
+                        obj->value[3]);
+                strcat( buf1, buf );
+
+        }
+        else {
+                sprintf( buf, "Values: {W%d %d %d %d{x\n\r",
+                        obj->value[0], obj->value[1], obj->value[2], obj->value[3] );
+                strcat( buf1, buf );
+        }
 
         switch ( obj->item_type )
         {
@@ -1152,6 +1186,39 @@ void do_ostat( CHAR_DATA *ch, char *argument )
             case ITEM_SCROLL:
             case ITEM_POTION:
                 sprintf( buf, "Level {G%d{x spells of:", obj->value[0] );
+                strcat( buf1, buf );
+
+                if ( obj->value[1] >= 0 && obj->value[1] < MAX_SKILL )
+                {
+                        strcat(buf1, " '{G");
+                        strcat(buf1, skill_table[obj->value[1]].name);
+                        strcat(buf1, "{x'");
+                }
+
+                if ( obj->value[2] >= 0 && obj->value[2] < MAX_SKILL )
+                {
+                        strcat(buf1, " '{G");
+                        strcat(buf1, skill_table[obj->value[2]].name);
+                        strcat(buf1, "{x'");
+                }
+
+                if ( obj->value[3] >= 0 && obj->value[3] < MAX_SKILL )
+                {
+                        strcat(buf1, " '{G");
+                        strcat(buf1, skill_table[obj->value[3]].name);
+                        strcat(buf1, "{x'");
+                }
+
+                strcat(buf1, "\n\r");
+                break;
+
+            case ITEM_SMOKEABLE:
+
+                sprintf( buf, "Uses remaining: {W%d{x\n\r",
+                    obj->value[0] );
+                strcat( buf1, buf );
+
+                sprintf( buf, "Spells of: ");
                 strcat( buf1, buf );
 
                 if ( obj->value[1] >= 0 && obj->value[1] < MAX_SKILL )

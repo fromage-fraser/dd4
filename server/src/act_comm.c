@@ -711,7 +711,7 @@ const   struct  pose_table_type pose_table [] =
             "... 98, 99, 100 ... $n does push-ups.",
             "The spoons flee as you begin to concentrate.",
             "The spoons flee as $n begins to concentrate.",
-            "You pull a rabbit out of you pants.",
+            "You pull a rabbit out of your pants.",
             "$n pulls a rabbit from $s pants.",
             "You swiftly move around the room and sweep them off their feet",
             "$n knocks you off your feet!"
