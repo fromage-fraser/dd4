@@ -457,6 +457,17 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 
 0 CHANGES~
 
+
+{W March 2024{x
+-New area: Ota'ar Dar Prince's Canton - finishes the Ota'ar Dar area
+-Smokeables are in, can be purchased at all major cities. Add commands 'smoke'
+and 'clean' and item types pipes, pipe cleaners, and smokeable substance.
+-Locked doors now display in "Exits" differently
+-ACT_OBJECT for mobs that you want to act more like objects (destructible
+bridges, walls, enchanted armour, etc). Other flags to support concept include
+ACT_NO_FIGHT and ITEM_REMAINS. Relevant affected skills and interactions updated.
+-Specials spec_sahuagin_prince and spec_red_grung added
+
 {W December 2023{x
 -New area in, Ota'ar Dar Residential Area - North, levels 50-55.
 -do_empty command added, fountains can now contain any liquid and
