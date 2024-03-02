@@ -1174,7 +1174,7 @@ say {dIt was pitifully easy to beguile you.{x
 mpecho {RAdonis shivers for a moment and his appearance changes.{x
 say {dNow that I have Adonis' sword{x
 say {dI can free myself from this prison{x
-say {dand destoy them! But first, you must die.{x
+say {dand destroy them! But first, you must die.{x
 mpecho {RWith his powers fully unlocked Tynan is unstoppable.{x
 mptransfer $n 55097
 mpgoto 55084
@@ -1248,7 +1248,7 @@ say {dIt was pitifully easy to beguile you.{x
 mpecho {RAdonis shivers for a moment and his appearance changes.{x
 say {dNow that I have Adonis' sword{x
 say {dI can free myself from this prison{x
-say {dand destoy them! But first, you must die.{x
+say {dand destroy them! But first, you must die.{x
 mpecho {RWith his powers fully unlocked Tynan is unstoppable.{x
 mptransfer $n 55097
 mpgoto 55084
@@ -1606,7 +1606,7 @@ say {dIt was pitifully easy to beguile you.{x
 mpecho {RAdonis shivers for a moment and his appearance changes.{x
 say {dNow that I have Adonis' sword{x
 say {dI can free myself from this prison{x
-say {dand destoy them! But first, you must die.{x
+say {dand destroy them! But first, you must die.{x
 mpecho {RWith his powers fully unlocked Tynan is unstoppable.{x
 mptransfer $n 55097
 mpgoto 55084

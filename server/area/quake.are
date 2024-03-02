@@ -481,7 +481,7 @@ healer albertus~
 Albertus the healer~
 Albertus the healer is here.
 ~
-A tall and powerfull man.
+A tall and powerful man.
 ~
 3 136 1000 S
 55 0 0 1r1+1 1d1+1
@@ -494,6 +494,18 @@ A sullen Dragonhoard teller stares at you expectantly.
 ~
 He has a long-suffering expression on his face.  You doubt he enjoys his job
 much.
+~
+2|524288|16777216 0 0 S
+32 0 0 1d1+1 1d1+1
+0 0
+0 0 1
+#12046
+Samuel tobacconist~
+Samuel the tobacconist~
+Samuel looks at you hopefully.
+~
+Samuel looks anxious and a bit distant.  Perhaps he has consumed too much of
+his own product.
 ~
 2|524288|16777216 0 0 S
 32 0 0 1d1+1 1d1+1
@@ -4095,8 +4107,8 @@ You see the Road Crossing.
 S
 #12173
 Merchant Road~
-   You are on Merchant Road.  To the north you see the druggist's shop.  Merchant
-Road continues east and west.
+   You are on Merchant Road.  To the north you see the druggist's shop, while a
+tobacconist lies south.  Merchant Road continues east and west.
 ~
 121 0 1
 D0
@@ -4447,8 +4459,9 @@ The note reads:
 ~
 S
 #12190
-Inside a house~
-   You are inside a little house.  To the north you see Merchant Road.
+Samuel's Smokeables~
+   You are inside a small tobacconist shop.  To the north you see Merchant Road.
+On the counter is a small note.
 ~
 121 8 0
 D0
@@ -4456,6 +4469,13 @@ You see Merchant Road.
 ~
 door~
 1 -1 12173
+E
+note~
+The note reads:
+
+  List  - Show which various items are in the store.
+  Buy   - Buy an item.
+~
 S
 #12191
 The tailoring~
@@ -4788,6 +4808,12 @@ G 1 12005 0                Give some coins
 M 0 12043 1 12159               A little white mouse alias the great sorcerer
 O 0 12046 0 12167               A purple fountain
 M 0 12045 1 12200               A Dragonhoard teller to Dragonhoard Bank
+M 0 12046 1 12190               Samuel to the tobacconist
+G 1 540 100
+G 1 541 100
+G 1 542 100
+G 1 543 100
+G 1 544 100
 S
 
 
@@ -4800,6 +4826,7 @@ S
  12032   8   0   0  0  0         100 10   0 23  Yves the tavern-keeper
  12034   8   9   0  0  0         125 50   6 22  Julian the armourer
  12035   8   5   0  0  0         125 50   6 22  Steve the weaponsmith
+ 12046  52  53  54  0  0         125 50   6 22  Samuel the tobacconist
 0
 
 

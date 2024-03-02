@@ -909,6 +909,13 @@ endif
 ~
 |
 & 50 'teacher base'
+& 100 'weaponsmithing'
+& 100 'armoursmithing'
+& 100 'mech tech'
+& 100 'turret tech'
+& 100 'runic arts'
+& 100 'rune casting'
+& 100 'inscription'
 & 100 'spellcraft'
 & 100 'armed combat knowledge'
 & 100 'combat knowledge'
@@ -945,6 +952,9 @@ endif
 & 30 'vampire base'
 & 30 'shifter base'
 & 30 'werewolf base'
+& 30 'smithy base'
+& 30 'engineer base'
+& 30 'runesmith base'
 #30068
 slayer evil attendant~
 the slayer~
@@ -1285,6 +1295,19 @@ She is polite, composed, calm, and sanguine in demeanour and temperament.
 36 0
 8 8 2
 
+#30080
+Gillian blench elderly woman~
+Gillian Blench~
+An elderly woman with bright, twinkling eyes enthuses over her products.
+~
+This diminutive elderly lady doesn't look much like any long-term smoker you've
+encountered before.  She sits cheerfully behind her cart, happy for you to
+browse and ask any questions as they might occur to you.
+~
+2 8|512 600 S
+81 0 -10 30d30+30 3d6+40
+0 0
+8 8 2
 #0
 
 
@@ -2644,6 +2667,11 @@ The Jewellers' Guild is here, laden with fine jewellery and gems.
 ~
 ~
 0 0 30025
+D1
+A small tobacconist cart, pushed up against a wall.
+~
+~
+0 0 30128
 D2
 Fruits and vegetables are piled on boxes waiting to be sold and eaten.
 ~
@@ -5460,6 +5488,20 @@ Services provided by Dragonhoard Bank, Krondor Branch.
    Inspect <<x>   Will inspect item x in your bank vault.
 ~
 S
+#30128
+A Tobacconist Cart~
+This small tobacconist cart is laden with a variety of smokeable substances
+and other related paraphernalia.  Its humble appearance belies the quality of
+the goods for sale; you haven't seen wares this impressive in many other
+places.  You can head back west to the main market area from here.
+~
+0 4 1
+D3
+You see the centre of the inner city market square.
+~
+~
+0 -1 30007
+S
 #0
 
 
@@ -5973,6 +6015,13 @@ M 1 30079 1 30127           Dragonhooard Teller to Dragonhoard branch
 D 0 30121 0 1               close the altar
 O 0 30089 0 30125           portal to room behind altar
 O 0 30090 0 30065           portal to the portal to draagdim
+*
+M 1 30080 01 30128          Gillian to Tobacconist cart
+G 1 561 100
+G 1 562 100
+G 1 563 100
+G 1 564 100
+G 1 565 100
 
 S
 
@@ -5986,6 +6035,7 @@ S
 30056 33 8 32 0 0 100 100 0 23          the Jeweller
 30065 2 3 0 0 0 100 100 0 23            (mobile is from another zone)
 30066 0 0 0 0 0 100 100 0 23            the cobbler
+30080 52 53 54 0 0 100 85 0 23          Gillian the tobacconist
 0
 
 

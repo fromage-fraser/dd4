@@ -454,6 +454,16 @@ him.
 0 0
 8 8 1
 & 70 'teacher base'
+& 110 'weaponsmithing'
+& 110 'armoursmithing'
+& 110 'mech tech'
+& 110 'turret tech'
+& 110 'runic arts'
+& 110 'rune casting'
+& 110 'inscription'
+& 30 'smithy base'
+& 30 'engineer base'
+& 30 'runesmith base'
 & 110 'joust'
 & 110 'death magiks'
 & 110 'martial arts'
@@ -526,7 +536,7 @@ him.
 & 110 'mana control disciplines'
 & 110 'advanced telepathy disciplines'
 & 30 'psionic base'
-& 0 'astral vortex'
+& 110 'astral vortex'
 & 110 'nature skills'
 & 110 'animate weapon'
 & 110 'kiai'
@@ -549,6 +559,22 @@ a more than competent tinker, able to repair any degrading items you might
 have on you.
 ~
 2|262144 0 100 S
+48 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+
+#29136
+grindle greytooth~
+Grindle Greytooth~
+A grey-bearded man puffs on a pipe, his eyes twinkling.
+~
+This cheerful, grey-bearded man is Grindle Greytooth, something of a local
+legend in these parts for his decades of seafaring adventure.  He has retired
+now, though, and is spending his golden years peddling quality tobaccos and
+well-crafted pipes, as well as other smoking accessories.  He smiles at you
+warmly.
+~
+2 0 700 S
 48 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -1974,9 +2000,13 @@ S
 Shipper's Lane~
 You walk Shippers lane. Two story houses press closely to the to the
 street and people bustle back and forth. To the south is the bank of
-Freeport.
+Freeport, while a sign above a shop north reads 'Seadog's Smokeables'.
 ~
 0 0 1
+D0
+Seadog's Smokeables~
+~
+0 -1 29178
 D1
 Town square~
 ~
@@ -2408,6 +2438,20 @@ Naval Street~
 ~
 0 -1 29154
 S
+
+#29178
+Seadog's Smokeables~
+This salty, marine-themed smokeables store carries many kinds of tobacco and pipes.
+Polished wooden display cabinets vie with brass-gilded tables and faux-port holes
+for your eyes' attention.  Somewhere out in a back room someone is humming what
+sounds like a sea shanty.
+~
+0 8 0
+D2
+Shipper's Lane~
+~
+0 -1 29155
+S
 #0
 
 
@@ -2529,6 +2573,13 @@ D 1 29175 4 1             ; On the Hidden Harbor Close South
 D 1 29169 0 1              ; In the Hidden Cavern Close North
 M 1 29134 1 29153           Stathog
 M 1 29135 1 29177           Heralt to Tinkery
+M 1 29136 1 29178           Grindle to Seadog's Smokeables
+G 1 550 100
+G 1 551 100
+G 1 552 100
+G 1 553 100
+G 1 554 100
+G 1 555 100
 S
 
 
@@ -2539,6 +2590,7 @@ S
 29118 5 9 29 30 0 125 85 6 18               Raedner sells arms & armor
 29119 9 2 3 4 28 140 60 17 23               Samanthia sells magic at night
 29127 17 19 0 0 0 110 90 0 23               Midge sells food and drink
+29136 52 53 54 28 0 135 85 0 23              Grindle sells smokeables, pipes, pipe cleaners
 0
 
 

@@ -187,13 +187,6 @@ mpecho {WA voice calls out from behind the door, "Correct, you may enter."{x
 open west
 mpjunk inviskey
 ~
->speech_prog p i hunt, therefore i am~
-mpoload 25607
-unlock west
-mpecho {WA voice calls out from behind the door, "Correct, you may enter."{x
-open west
-mpjunk inviskey
-~
 >speech_prog p I hunt, therefore I am~
 mpoload 25607
 unlock west
@@ -313,7 +306,7 @@ rid of, as he normally would.
 #25617
 guardian statue golden naked adonis~
 the treasure guardian~
-A beautiful golden statue of a naked Adonis stands in the corner.
+<178>A beautiful golden statue of a naked Adonis stands in the corner.<0>
 ~
 The golden statue seems most lifelike.
 ~
@@ -3824,11 +3817,13 @@ chairs set about the room and the small room lying to the south into which you
 can see courtesy of a hole (window?) that has been dug into it. The small room
 can be walked into via a opening to the southwest, while a door has been set into
 the far western wall, presumably leading farther into the complex.
-
-The door through which you entered to the east has mysteriously disappeared, leaving
-only a handle in the wall which seems to do nothing. There is magic at work here.
 ~
 0 8|8192 0
+D1
+You notice the door's locking mechanism is quite different on this side of the
+door to the other side.~
+door~
+8 25609 25651
 D3
 ~
 ~
@@ -7121,6 +7116,7 @@ S
 
 #RESETS
 D 1 25603 3 2           ; At the filter grill Lock West
+D 1 25652 1 2           ; reception room lock east
 D 1 25604 1 2           ; Western end of the sewer drain Lock East
 *
 *

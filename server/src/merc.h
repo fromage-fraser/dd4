@@ -321,7 +321,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   573     /* +1 tfind 9/12/23 */
+#define MAX_SKILL                   575     /* +2 do_smoke and do_clean 17/12/23 - Owl */
 #define MAX_PRE_REQ                 1398    /* +1 reforge - Brutus 1/1/23 */
 #define MAX_SPELL_GROUP             452     /* +1 reforge Brutus 1/1/23 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
@@ -528,7 +528,7 @@ DECLARE_DO_FUN ( do_board );
 #define TYPE_STR                          2
 #define TYPE_WIZ                          3
 #define TYPE_NULL                         4
-#define MAX_ITEM_TYPE                    51
+#define MAX_ITEM_TYPE                    55 /* Added ITEM_REMAINS 6/2/24 --Owl */
 #define MAX_WEAR                         22
 #define MAX_COLOR_LIST                   18
 
@@ -1865,7 +1865,9 @@ extern  WANTED_DATA *wanted_list_last;
 #define ACT_CLAN_GUARD                  BIT_22  /* Protects from some combat skills; Gezhp */
 #define ACT_NO_SUMMON                   BIT_23  /* Mob may not be summoned; Gezhp */
 #define ACT_NO_EXPERIENCE               BIT_24  /* No exp rewarded for kill; Gezhp */
-#define ACT_NO_HEAL                     BIT_25  /* Will not heal HP from damage, will supercede ACT_REGENERATOR - Owl */
+#define ACT_NO_HEAL                     BIT_25  /* Will not heal HP from damage, supercedes ACT_REGENERATOR - Owl */
+#define ACT_NO_FIGHT                    BIT_26  /* No active attacks in fights (fireshield still works) - Owl */
+#define ACT_OBJECT                      BIT_27  /* Use to create attackable objects... bridges, walls, magic swords etc - Owl */
 #define ACT_UNKILLABLE                  BIT_63  /* Can't be killed. 'slay' still works. - Owl */
 
 
@@ -2003,6 +2005,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define OBJ_VNUM_SLICED_ARM               14
 #define OBJ_VNUM_SLICED_LEG               15
 #define OBJ_VNUM_SLICED_TAIL             502
+#define OBJ_VNUM_REMAINS                 571
 
 #define OBJ_VNUM_MUSHROOM                 20
 #define OBJ_VNUM_LIGHT_BALL               21
@@ -2149,7 +2152,10 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_TURRET                             49
 #define ITEM_COMBAT_PULSE                       50
 #define ITEM_DEFENSIVE_PULSE                    51
-
+#define ITEM_PIPE                               52
+#define ITEM_PIPE_CLEANER                       53
+#define ITEM_SMOKEABLE                          54
+#define ITEM_REMAINS                            55 /* What a mob who is ACT_OBJECT leaves behind instead of a corpse */
 
 /*
  * Extra flags.
@@ -2390,7 +2396,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define ROOM_FREEZING                   BIT_17
 #define ROOM_BURNING                    BIT_18
 #define ROOM_NO_MOUNT                   BIT_19
-#define ROOM_NO_DROP                    BIT_63 /* Can't drop items in room, will prevents disarming in room too -- Owl 6/8/22 */
+#define ROOM_NO_DROP                    BIT_63 /* Can't drop items in room, will prevent disarming in room too -- Owl 6/8/22 */
 
 
 /*
@@ -3757,7 +3763,7 @@ extern int gsn_chaos_blast;
 extern int gsn_detect_curse;
 extern int gsn_knife_toss;
 extern int gsn_soar;
-extern int gsn_smoke_bomb;
+extern int gsn_bomb;
 extern int gsn_snap_shot;
 extern int gsn_crush;
 extern int gsn_swoop;
@@ -3999,7 +4005,7 @@ extern struct           vampire_gag             vampire_gag_table               
  */
 extern HELP_DATA                * help_first;
 extern SHOP_DATA                * shop_first;
-extern GAME_DATA	        * game_first;
+extern GAME_DATA                * game_first;
 extern BAN_DATA                 * ban_list;
 extern CHAR_DATA                * char_list;
 extern DESCRIPTOR_DATA          * descriptor_list;
@@ -4014,7 +4020,7 @@ extern EXTRA_DESCR_DATA         * extra_descr_free;
 extern NOTE_DATA                * note_free;
 extern OBJ_DATA                 * obj_free;
 extern PC_DATA                  * pcdata_free;
-extern char     bug_buf         [ ];
+extern char                     bug_buf         [ ];
 extern time_t                   current_time;
 extern time_t                   boot_time;
 extern bool                     fLogAll;
@@ -4040,7 +4046,7 @@ extern HERO_DATA                * hero_first;
 extern HERO_DATA                * hero_last;
 extern LEGEND_DATA              legend_table  [ LEGEND_TABLE_LENGTH ];
 extern PKSCORE_DATA             pkscore_table [ PKSCORE_TABLE_LENGTH ];
-extern INFAMY_TABLE             infamy_table [ INFAMY_TABLE_LENGTH ];
+extern INFAMY_TABLE             infamy_table  [ INFAMY_TABLE_LENGTH ];
 
 
 
@@ -4103,7 +4109,8 @@ DECLARE_DO_FUN( do_change                       );      /* sub-class changing sh
 DECLARE_DO_FUN( do_channels                     );
 DECLARE_DO_FUN( do_chat                         );
 DECLARE_DO_FUN( do_choke                        );      /* choke for brawlers - Brutus */
-DECLARE_DO_FUN( do_clantalk                     );      /* clan talking - brutus */
+DECLARE_DO_FUN( do_clantalk                     );      /* clan talking - Brutus */
+DECLARE_DO_FUN( do_clean                        );      /* for cleaning pipes - Owl 17/12/23 */
 DECLARE_DO_FUN( do_climb                        );      /* climb skill - Brutus */
 DECLARE_DO_FUN( do_close                        );
 DECLARE_DO_FUN( do_claim                        );      /* remove items from vault */
@@ -4233,6 +4240,7 @@ DECLARE_DO_FUN( do_mount                        );      /* mounting mobs for rid
 DECLARE_DO_FUN( do_dismount                     );
 DECLARE_DO_FUN( do_destrier                     );
 DECLARE_DO_FUN( do_pattern                      );
+DECLARE_DO_FUN( do_smoke                        );      /* for smokeables - Owl 17/12/23 */
 DECLARE_DO_FUN( do_soar                         );
 DECLARE_DO_FUN( do_infamy                       );       /* Shade Apr 22 */
 DECLARE_DO_FUN( do_repair                       );      /* Owl 16/6/22 */
@@ -4433,7 +4441,7 @@ DECLARE_DO_FUN( do_wizbrew                      );      /* Gezhp goes crazy with
 DECLARE_DO_FUN( do_suicid                       );
 DECLARE_DO_FUN( do_suicide                      );
 DECLARE_DO_FUN( do_knife_toss                   );
-DECLARE_DO_FUN( do_smoke_bomb                   );
+DECLARE_DO_FUN( do_bomb                         );      /* was smoke_bomb, renamed for do_smoke */
 DECLARE_DO_FUN( do_snap_shot                    );
 DECLARE_DO_FUN( do_swoop                        );      /* swoop for shifter phoenix form - Owl */
 DECLARE_DO_FUN( do_deploy                       );

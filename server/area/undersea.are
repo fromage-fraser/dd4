@@ -15,7 +15,7 @@ inside them. Best hope he's not hungry.
 4|32|64 8|32|512|33554432|67108864 -250 S
 20 0 0 0d0+0 0d0+0
 172|512 0
-8 8 2
+8 8 1
 >all_greet_prog 1~
 mpecho The megalodon lunges suddenly at you!
 mpkill $n
@@ -610,8 +610,8 @@ E
 ink sac organ gelatinous~
 The ink sac is a muscular bag which originated as an extension of the
 hind gut; it is a modified hypobranchial gland.  It lies beneath the
-gut and opens into the anus, into which its contents � almost pure
-melanin � can be squirted; its proximity to the base of the funnel
+gut and opens into the anus, into which its contents (almost pure
+melanin) can be squirted; its proximity to the base of the funnel
 means that the ink can be distributed by ejected water as the cephalopod
 uses its jet propulsion. The ejected cloud of melanin is bound by mucus
 particles, so it forms a lump approximately the size and shape of the

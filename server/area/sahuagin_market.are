@@ -34,6 +34,10 @@ else
 	endif
 endif
 ~
+>rand_prog 1~
+   sigh
+   say I wish could get map of prince's palace, but too hard.  Much danger.
+~
 |
 #27201
 teller dragonhoard~
@@ -242,14 +246,7 @@ He regards you coldly, waiting for you to make the first move.
 if race($n) == 19
 	say Welcome, $n. Are you here to train?
 else
-	say Begone, intruder! This dojo is only for sahuagin!
-	mpecho {WCluh'g Mani escorts you forcefully out of the hall.{x
-	mptransfer $n 27316
-	mpgoto 27316
-	mpforce $n look
-	yell And STAY out!
-	mpecho {WCluh'g Mani swims back to the training hall.{x
-	mpgoto 27616
+	say You should leave. This dojo is only for sahuagin.
 endif
 ~
 |
@@ -377,14 +374,14 @@ a great white shark~
 A great white shark grins at you toothily.
 ~
 This terrifying apex predator grins at you with a huge maw full of teeth. It
-might be 6 metres from snout to tailfin. Best not to annoy it.
+might be 6 metres from snout to tail fin. Best not to annoy it.
 
 The terrifying beast has been magically enchanted to serve as a mount for
 sahuagin warriors, and can operate on land, under the sea, and in the air.
 ~
 256|131072 32|128|512|524288|67108864 0 S
 100 0 0 0d0+0 0d0+0
-172 0
+172|512 0
 8 8 1
 #27213
 Reaver Maeril questmaster~
@@ -1660,6 +1657,36 @@ else
 endif
 ~
 |
+#27477
+Gresnyk~
+Gresnyk the Tobacconist~
+Gresnyk puffs on a pipe, ready to be of service.
+~
+Gresnyk almost seems cheerful for a sahuagin.  Certainly quite relaxed. He
+wear a jaunty brown cap and smokes something through a long, reedy brown
+pipe.  He regards you with evident amusement.
+~
+2|64|512|4096|32768|8388608|16777216 32|512|67108864 -150 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>greet_prog 35~
+if rand(25)
+	say Heeeeeey... how's it goin'?
+else
+	if rand (25)
+		say Yeah, smokeables, pipes, cleaners.  I gottem all.
+	else
+		if rand(25)
+			emote gestures at his selection of smokeables and paraphernalia
+			say Anything tickle your fancy, $n?
+		else
+			emote bursts into giggles suddenly, for no apparent reason
+		endif
+	endif
+endif
+~
+|
 #0
 
 #MOBPROGS
@@ -2531,7 +2558,7 @@ blue diamond~
 A blue diamond is a type of diamond which exhibits all of the mineral's
 inherent properties with the additional element of blue colour. They are
 colored blue by trace amounts of boron which contaminate the structure
-of the crystalline lattice. This one is of brathtaking, flawless quality.
+of the crystalline lattice. This one is of breathtaking, flawless quality.
 ~
 #27278
 black opal~
@@ -4045,6 +4072,20 @@ You examine a map of the Ota'ar Dar northern residential area's upper level...
     {c[{W*{x{c][{W*{x{c]{g[ ]{c[{W*{x{c][ ]{x
 {x
 ~
+#27584
+prince's token ornate market~
+the Market Prince's token~
+An ornate token allowing access to the prince's palace lies here.~
+~
+2 0 1|16384
+0~ 0~ 0~ 0~
+1 0 0
+E
+prince's token ornate market~
+An ornate token.  From its inscription you gather that if the Prince's canton
+is open at all, then this token will allow the bearer entrance into the Prince's
+palace, which lies within it.
+~
 #0
 
 
@@ -4126,7 +4167,8 @@ Sekolah Way, Lower~
 amongst the inhabited ruins of a great, ancient city.  Some distance to the
 south you see a huge gate, cutting off access to this canton from the rest of
 the city.  To the west you see the entrance to a shop.  The sign above it reads
-"Fautaps's Fixit".
+"Fautap's Fixit".  There's also a tobacconist(!) to the east.  The sign above
+the tobacconist reads "Gresnyk's".
 
 The road continues north and south, and you may also swim upwards, towards a
 huge, looming area of darkness in the water above. {x
@@ -4136,6 +4178,10 @@ D0
 ~
 ~
 0 -1 27317
+D1
+~
+~
+0 -1 27856
 D2
 ~
 ~
@@ -4492,6 +4538,7 @@ Currently available quests for prospective Reavers to undertake:
 <15>5.   From Master to Servant<0>       (<123>40-45<0>)
 <15>6.   Mother May I?<0>                (<123>45-50<0>)
 <15>7.   Eyes Up Here<0>                 (<123>50-55<0>)
+<15>8.   Weedful things<0>               (<123>50-70<0>)
 
 ~
 S
@@ -4784,7 +4831,7 @@ Bilani's Brews~
 {GYou stand inside the lower floor of a small two-storey building, deep under
 the sea. It has been converted into a potion store named "Bilani's Brews" by
 the proprietor... Bilani. You can hardly move for all the potions and
-associated paraphenalia that fill up the space.
+associated paraphernalia that fill up the space.
 
 You can leave north, out to the intersection of Teth Avenue and Prince's
 Cross, or swim up to the second floor of the building.{x
@@ -5915,7 +5962,7 @@ Bilani's Quarters~
 {gYou stand in Ota'ar Dar's potionmaker  quarters on the second storey of a
 building deep underwater in the ruins of an ancient city.  The room contains
 modest living amenities for a sahuagin, but is filled with reagents and
-potion-making paraphenalia of all kinds.. You may travel down from here
+potion-making paraphernalia of all kinds.. You may travel down from here
 to "Bilani's Brews" shop, or directly up, into the huge, looming area of
 dark water above you.{x
 ~
@@ -6487,6 +6534,49 @@ D3
 door~
 8 27317 27808
 S
+#27856
+Gresnyk's Pipes and Smokeables~
+{GMost peculiarly for an undersea merchant, Gresnyk sells pipes, smokeables, and
+associated paraphernalia.  When asked how he can possibly stay in business
+selling pipes (which obviously won't light underwater) in Ota'ar Dar, he
+replies that there's a strong tourist trade, and anyway, sahuagin don't spend
+ALL their time underwater.  He mentions if you want to try any of his
+smokeables, you can go upstairs, to an "air" room he has had specially-created
+for the purpose.
+
+Form here you can exit the store west, to Sekolah Way, or head up to the second
+floor of the building.{x
+~
+0 8 12
+D3
+~
+~
+0 -1 27311
+D4
+~
+~
+0 -1 27857
+S
+
+#27857
+Gresnyk's Smokeroom~
+{gYou stand in the private quarters of Gresnyk the tobacconist, in the underwater
+ruins of an ancient city.  Through the haze of smoking fumes that fill the room
+you can make out that it contains many large cushions, a variety of hookah-style
+pipes and a variety of bioluminescent "mood lighting". You may travel down
+into his shop, or directly up, into the huge, looming area of dark water
+above you.{x
+~
+0 0 0
+D4
+~
+~
+0 -1 27139
+D5
+~
+~
+0 -1 27856
+S
 #0
 
 
@@ -6555,6 +6645,7 @@ E 1 27231 100 13
 E 1 27233 100 16
 E 1 27243 100 18
 E 1 27244 100 21
+G 1 27584 100
 *
 M 1 27206 1 27318			Kianar to Sharks'n'Rays
 *
@@ -7019,6 +7110,13 @@ E 1 27231 100 13
 *
 M 1 27266 1 27633			Dae'yn to Sekolah's Whim Upper
 E 1 27231 100 13
+*
+M 1 27477 1 27856			Gresnyk the Tobacconist to Gresnyk's Pipes and Smokeables
+G 1 523 100
+G 1 524 100
+G 1 525 100
+G 1 526 100
+G 1 527 100
 S
 
 #GAMES
@@ -7043,31 +7141,32 @@ S
 27251 5 9 12 13 15 100 60 0 23			a shady sahuagin
 27200 2 0 0 0 0 100 40 0 23				Pheskak
 27216 19 0 0 0 0 200 10 0 23			Holo Orl'as
+27477 52 53 54 0 0 100 60 0 23          Gresnyk the Tobacconist
 0
 
 
 #SPECIALS
-M  27205 spec_sahuagin_baron	Cluh'g Mani
-M  27233 spec_warrior 			Ahomar
-M  27217 spec_warrior 			A surly sahuagin warrior
-M  27218 spec_cast_hooker	    A lecherous sahuagin
-M  27222 spec_cast_druid        a dryad
-M  27229 spec_warrior			Luanar 'Barehands' Teha
-M  27236 spec_cast_adept		Nirlisk the Healer
-M  27239 spec_cast_cleric		Mafite Kilim, Sekolah Guildmaster
-M  27240 spec_sahuagin			an acolyte of Sekolah
-M  27241 spec_sahuagin			an acolyte of Sekolah
-M  27242 spec_cast_mage			Mala't the Sage
-M  27243 spec_cast_archmage		Mohmit
-M  27234 spec_cast_cleric		Bilani
-M  27246 spec_thief				a sahuagin thief
-M  27250 spec_guard				an Ota'ar Dar cityguard
-M  27262 spec_poison			a giant sea-worm
-M  27263 spec_sahuagin			an acolyte of Sekolah
-M  27264 spec_sahuagin			an acolyte of Sekolah
-M  27252 spec_cast_electric		an electric eel
-M  27262 spec_cast_electric	    giant sea worm
-M  27225 spec_cast_cleric       criosphinx
+M  27205 spec_sahuagin_baron	        Cluh'g Mani
+M  27233 spec_warrior 			        Ahomar
+M  27217 spec_warrior 			        A surly sahuagin warrior
+M  27218 spec_cast_hooker	            A lecherous sahuagin
+M  27222 spec_cast_druid                a dryad
+M  27229 spec_warrior			        Luanar 'Barehands' Teha
+M  27236 spec_cast_adept		        Nirlisk the Healer
+M  27239 spec_sahuagin_high_cleric		Mafite Kilim, Sekolah Guildmaster
+M  27240 spec_sahuagin_cleric		    an acolyte of Sekolah
+M  27241 spec_sahuagin_cleric			an acolyte of Sekolah
+M  27242 spec_cast_mage			        Mala't the Sage
+M  27243 spec_cast_archmage		        Mohmit
+M  27234 spec_cast_cleric		        Bilani
+M  27246 spec_thief				        a sahuagin thief
+M  27250 spec_sahuagin_guard			an Ota'ar Dar cityguard
+M  27262 spec_poison			        a giant sea-worm
+M  27263 spec_sahuagin_cleric	        an acolyte of Sekolah
+M  27264 spec_sahuagin_cleric	        an acolyte of Sekolah
+M  27252 spec_cast_electric		        an electric eel
+M  27262 spec_cast_electric	            giant sea worm
+M  27225 spec_cast_cleric               criosphinx
 S
 
 

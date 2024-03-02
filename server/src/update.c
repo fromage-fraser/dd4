@@ -696,7 +696,17 @@ int hit_gain( CHAR_DATA *ch )
                                         WAIT_STATE(ch, 1);
                                 }
 
-                                send_to_char("{CUnable to stay aloft, you fall through the air!{x\n\r", ch);
+                                send_to_char("{CUnable to stay aloft, you fall through the air!{x\n\r\n\r", ch);
+
+                                if (ch->mount && !IS_NPC(ch) && !IS_SET(ch->act, PLR_WIZINVIS))
+                                {
+                                        act_move ("$n and $N freefall downwards, quickly vanishing from sight.", ch, NULL, ch->mount, TO_ROOM);
+                                }
+                                else if (!ch->rider && (IS_NPC(ch) || !IS_SET(ch->act, PLR_WIZINVIS)))
+                                {
+                                        act ("$n freefalls downwards, quickly vanishing from sight.", ch, NULL, NULL, TO_ROOM);
+                                }
+
 
                                 char_from_room(ch);
                                 char_to_room(ch, to_room);
@@ -1326,6 +1336,7 @@ void mobile_update( void )
                                     && obj->item_type != ITEM_FURNITURE
                                     && obj->item_type != ITEM_CORPSE_PC
                                     && obj->item_type != ITEM_CORPSE_NPC
+                                    && obj->item_type != ITEM_REMAINS
                                     && obj->item_type != ITEM_FOUNTAIN
                                     && obj->item_type != ITEM_MOB
                                     && obj->item_type != ITEM_ANVIL
@@ -1897,9 +1908,12 @@ void obj_update()
                             case ITEM_PORTAL:
                                 message = "$p shimmers out of existence.";
                                 break;
-                           case ITEM_CORPSE_NPC:
-                           case ITEM_CORPSE_PC:
+                            case ITEM_CORPSE_NPC:
+                            case ITEM_CORPSE_PC:
                                 message = "$p decays into dust.";
+                                break;
+                            case ITEM_REMAINS:
+                                message = "$p crumble into dust.";
                                 break;
 
                             case ITEM_FOOD:

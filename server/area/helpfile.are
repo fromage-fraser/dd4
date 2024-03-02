@@ -28,7 +28,7 @@ but be warned it's a long list; you may want to increase your PAGELENGTH first.
 NOTE: Your prompt can be similarly colourised, see 'HELP PROMPT'.
 ~
 
-0 COLOURCODES COLORCODES~
+0 COLOURCODES COLORCODES 'COLOR CODES' 'COLOUR CODES'~
 
 Text and Numerical Codes for 8-Bit Colours on DD
 ================================================
@@ -402,7 +402,7 @@ Dragons Domain version 4.2023
 
 -1 MOTD~
 {x
-    [9 December 2023]
+    [03 March 2024]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -415,14 +415,13 @@ Dragons Domain version 4.2023
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
-    {WNEW COMMAND:{x "empty". Dump the entire contents of your storage items,
-    drink containers, or corpses(!) in one fell swoop.  Also some fun changes
-    to fountains!
+    {WNEW AREA:{x Ota'ar Dar Prince's Canton is in, finishing the city of Ota'ar
+    Dar! 53 new mobs (including a [WORLD BOSS)], 54 new objects, 90 new rooms,
+    and a new Reaver quest.
 
-    {WNEW AREA:{x "Ota'ar Dar Residential - North" is in for levels 50-55,
-    access via west bridge from the Prince's canton or north bridge from the
-    southern residential canton. 26 new mobs, 42 new rooms,
-    28 new items, new teachers, and a new quest!
+    {WNEW ITEM TYPES:{x Pipes, pipe cleaners, and smokeable substances are in.
+    Check the relevant HELP entries, and look for pipe/smokeable merchants in
+    all the major cities!
 
 
 
@@ -464,6 +463,8 @@ See 'HELP SUBCLASSES' for more information on subclasses.
  be poisoned.  ostat and area files updated to reflect changes.
 -do_tfind added, to make finding teachers with particular skills
 and proficiency levels easier in-game.
+-Pipes, smokeables, and smokeable substances added.  Can be purchased
+in all major cities. See relevant HELP file entries for details.
 
 {W October 2023{x
 -New area in, Ota'ar Dar Military Fortress, levels 45-50.
@@ -515,7 +516,7 @@ and proficiency levels easier in-game.
 - Crafting and Spellcrafting have been added
 - Crafting and Spellcrafting items have been added
 - Total XP message added
-- Thief skill 'smoke bomb' added
+- Thief skill 'bomb' added
 - Vampires and Werewolfs will gain bonus pracs at 30
 - Lunge and suck damage modified by current blood status
 - Ranger skill Snap Shot added
@@ -589,8 +590,8 @@ to be using a 'vorpal' weapon.
 Syntax: repair <<target>
 
 Certain mobs marked as "tinkers" can repair items that degrade, such as
-sharpened, forged, and poisoned items.  The higher level and more damaged
-an item is, the more it will cost to repair.
+sharpened, forged, and poisoned items, or pipes and pipe cleaners.  The higher
+level and more damaged an item is, the more it will cost to repair.
 ~
 
 0 MOONRAY SUNRAY~
@@ -1098,8 +1099,9 @@ TINKERs are special mobs able to repair damaged and degrading equipment
 have one.  To make use of a TINKER's services, simply type "repair ITEMNAME"
 in one's presence.
 
-Tinkers are particularly useful for keeping crafted poisoned and sharpened
-items from falling prey to the vicissitudes of time.
+Tinkers are particularly useful for keeping crafted, poisoned, and sharpened
+items from falling prey to the vicissitudes of time, as well as restoring
+worn-out pipes and pipe-cleaners.
 ~
 
 0 ASSASSINATE ASSASSINATION~
@@ -1205,6 +1207,16 @@ have at least one inventory slot free to work with the item or items you're
 pulling out.
 ~
 
+0 CLEAN CLEANING~
+Syntax: clean <<pipe> <<pipe cleaner>
+
+CLEAN will allow you to use a pipe cleaner in your inventory to clean a pipe
+you are currently holding.  Cleaning a pipe will help restore it to its
+original condition, maximizing its effectiveness.  Be aware that pipe cleaners
+have a limited number of uses, and their efficacy will also degrade with use.
+Pipe cleaners can be REPAIRED at a TINKER.
+~
+
 0 DROP GET GIVE PUT TAKE~
 Syntax: drop <<object>
 Syntax: drop <<amount> <<coin type>
@@ -1257,15 +1269,15 @@ Syntax: kick <<target>
 Kick an opponent during battle, causing some damage.
 ~
 
-0 'KNIFE TOSS'~
-Syntax: KNIFE <<target>
+0 'KNIFE TOSS' KNIFE~
+Syntax: knife <<target>
 
 Thieves are good with small throwing knives and can toss them at enemies during combat doing
 some damage.
 ~
 
-0 'SMOKE BOMB'~
-Syntax: SMOKE
+0 'BOMB'~
+Syntax: bomb
 
 Thieves are good at escaping from dangerous situations and can drop smoke bombs to cause enough
 confusion to escape from combat.
@@ -1291,7 +1303,7 @@ you may attempt to strike twice.
 ~
 
 0 DISARM~
-Syntax: disarm [target]
+Syntax: disarm <<target>
 
 Attempt to disarm your opponent's weapon.  You must be wielding a weapon
 in order to disarm.
@@ -2305,6 +2317,49 @@ lockpick must be in your inventory when you make the attempt to have a
 chance of success.
 
 Also see 'HELP BASH'.
+~
+
+0 SMOKE SMOKING~
+Syntax: smoke <<smokeable substance>
+
+You can use a held PIPE to SMOKE any kind of SMOKEABLE substance you are
+carrying in your inventory.  Be warned that smokeable substances usually have
+a combination of positive and negative effects, and that the strength of
+the smokeable substance's effects is determined by the quality and current
+condition of your PIPE and your own experience, not the substance itself.
+~
+
+0 SMOKEABLE SMOKABLE SMOKEABLES SMOKABLES~
+SMOKEABLE substances require a pipe to be held and for the smokeable substance
+to be in your inventory to be used.  The strength of the smokeable substance's
+effects is determined by the quality and current condition of your PIPE and
+your own experience, not the substance itself.  Smokeable substances are
+usually distributed in such a way that a single "unit" can be used multiple
+times before it is used up.
+
+Additionally, smokeable substances commonly have both beneficial and negative
+effects; get them identified if you're uncertain about their effects.
+
+Smokeable substances and their associated paraphernalia can be purchased in
+most of the Domain's cities.
+~
+
+0 PIPE PIPES PIPECLEANERS PIPECLEANER CLEANERS~
+PIPES are used to ingest SMOKEABLE substances.  They may be purchased in most
+of the Domain's cities, along with PIPE CLEANERS and SMOKEABLES.
+
+Pipes partially determine the strength of the effect of smoking substances with
+them--the substance itself only determines the kind or kinds of effect.  Using
+a pipe will increase your thirst, and will also degrade the efficacy of the
+pipe; you should use a PIPE CLEANER to restore the pipe's benefit to maximum,
+or have it REPAIRED at a TINKER.
+
+PIPES also differ in terms of how quickly they allow you to smoke substances
+with them; cheaper pipes tend to have narrow bores, which force you to smoke
+slowly.
+
+PIPE CLEANERS can be used to CLEAN pipes when they become degraded or useless.
+Pipe cleaners themselves degrade, and may also be repaired at a TINKER.
 ~
 
 0 DRINK EAT FILL~
@@ -5238,7 +5293,7 @@ climb                   disarm                  third attack
 parry                   disable                 circle
 find traps              fast healing            tail
 feint                   dirt kick               knife toss
-smoke bomb              swim
+bomb                    swim
 
 True thieves (those who don't change to bounty hunters or ninjas) may
 also learn these skills above level 30:

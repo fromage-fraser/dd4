@@ -653,7 +653,6 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 {
                         if( is_affected( ch, af.type ) )
                         {
-                                send_to_char( "You are already flying.\n\r", ch );
                                 break;
                         }
                         af.duration = -1;
@@ -3018,6 +3017,7 @@ char* weapon_damage_type_name (int dt_num)
         if (dt_num == 14)       return "rake";
         if (dt_num == 15)       return "swipe";
         if (dt_num == 16)       return "sting";
+        if (dt_num == 17)       return "scoop";
 
         return "(unknown)";
 }
@@ -3078,7 +3078,11 @@ char *item_type_name( OBJ_DATA *obj  )
             case ITEM_TURRET:           return "turret";
             case ITEM_DEFENSIVE_TURRET_MODULE: return "turret module";
             case ITEM_COMBAT_PULSE:     return "combat pulse";
-            case ITEM_DEFENSIVE_PULSE:  return "defenseive pulse";
+            case ITEM_DEFENSIVE_PULSE:  return "defensive pulse";
+            case ITEM_PIPE:             return "pipe";
+            case ITEM_PIPE_CLEANER:     return "pipe cleaner";
+            case ITEM_SMOKEABLE:        return "smokeable";
+            case ITEM_REMAINS:          return "remains";
         }
 
         for ( in_obj = obj; in_obj->in_obj; in_obj = in_obj->in_obj )
@@ -3202,6 +3206,10 @@ int item_name_type( char *name )
         if ( !str_cmp( name, "turret module"        ) ) return ITEM_DEFENSIVE_TURRET_MODULE;
         if ( !str_cmp( name, "combat pulse"         ) ) return ITEM_COMBAT_PULSE;
         if ( !str_cmp( name, "defensive pulse"      ) ) return ITEM_DEFENSIVE_PULSE;
+        if ( !str_cmp( name, "pipe"                 ) ) return ITEM_PIPE;
+        if ( !str_cmp( name, "pipe cleaner"         ) ) return ITEM_PIPE_CLEANER;
+        if ( !str_cmp( name, "smokeable"            ) ) return ITEM_SMOKEABLE;
+        if ( !str_cmp( name, "remains"              ) ) return ITEM_REMAINS;
         return 0;
 
 }
@@ -3371,6 +3379,8 @@ char *act_bit_name (unsigned long int vector)
         if ( vector & ACT_NO_EXPERIENCE         ) return "no_experience";
         if ( vector & ACT_NO_HEAL               ) return "no_heal";
         if ( vector & ACT_UNKILLABLE            ) return "unkillable";
+        if ( vector & ACT_NO_FIGHT              ) return "cannot_fight";
+        if ( vector & ACT_OBJECT                ) return "objectlike";
 
         return "none";
 }

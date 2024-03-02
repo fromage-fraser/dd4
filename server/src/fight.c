@@ -396,6 +396,15 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         if (!IS_NPC(ch))
                 ch->pcdata->rounds++;
 
+        /* For ACT_NO_FIGHT mobs -- Owl 3/2/24 */
+
+        if ( IS_NPC(ch)
+        &&   IS_SET(ch->act, ACT_NO_FIGHT ) )
+        {
+                return;
+        }
+
+
 /*
  * These 2 functions are at the top, as Im about to put a check for dazed things
  * If you are dazed you cant attack, BUT things you have in the room can still go off
@@ -462,7 +471,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 /*
  *
  * Everything below here is for players -- Brutus
- * If your DAZED you cant attack.
+ * If you're DAZED you cant attack.
  */
         if (IS_AFFECTED(ch, AFF_DAZED))
         {
@@ -470,6 +479,8 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 act("$n is DAZED, unable to attack or defend themselves.", ch, NULL, NULL, TO_ROOM);
                 return;
         }
+
+
 
         /*
          * One attack (Even if Prone, everythign else is 50% less likely.)
@@ -701,10 +712,18 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
         bool      poison;
         bool      hit = FALSE;
 
+
         for (weapon_pos = WEAR_WIELD, count = 0;
              count < 2;
              weapon_pos = WEAR_DUAL, count++)
         {
+
+                /* For ACT_NO_FIGHT mobs -- Owl 3/2/24 */
+
+                if (IS_NPC(ch) && (IS_SET(ch->act, ACT_NO_FIGHT)))
+                {
+                        break;
+                }
                 /*
                  * Can't beat a dead char!
                  * Guard against weird room-leavings.
@@ -1629,7 +1648,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                     case POS_DEAD:
                         send_to_char("<196>You have been KILLED!!<0>\n\r\n\r", fighter);
                         send_to_char(purgatory_message, fighter);
-                        if (IS_NPC(fighter) && IS_INORGANIC(fighter))
+                        if (IS_NPC(fighter) && ( IS_INORGANIC(fighter) || IS_SET(fighter->act, ACT_OBJECT) ) )
                         {
                             act ("$c has been DESTROYED!!", fighter, NULL, NULL, TO_ROOM);
                         }
@@ -2330,6 +2349,11 @@ bool check_aura_of_fear (CHAR_DATA *ch, CHAR_DATA *victim)
         if (!chance)
                 return FALSE;
 
+        if (IS_NPC(ch) && IS_SET(ch->act, ACT_OBJECT))
+        {
+                return FALSE;
+        }
+
         chance += (victim->level - ch->level) * 3;
 
         if (chance > 66)
@@ -2593,8 +2617,13 @@ void make_corpse (CHAR_DATA *ch)
                  * Further altered so that mobs with the BODY_NO_CORPSE form bit set
                  * don't make corpses: all eq falls to the ground.  Gezhp 99.
                  */
-
-                corpse = create_object(get_obj_index( OBJ_VNUM_CORPSE_NPC), 0, "common", CREATED_NO_RANDOMISER);
+                if (IS_SET(ch->act, ACT_OBJECT))
+                {
+                    corpse = create_object(get_obj_index( OBJ_VNUM_REMAINS ), 0, "common", CREATED_NO_RANDOMISER);
+                }
+                else {
+                    corpse = create_object(get_obj_index( OBJ_VNUM_CORPSE_NPC ), 0, "common", CREATED_NO_RANDOMISER);
+                }
                 corpse->timer = number_range(10, 20);
                 name = ch->short_descr;
                 corpse->level = ch->level;
@@ -2697,13 +2726,26 @@ void death_cry (CHAR_DATA *ch)
         int              door;
 
         /* Default messages */
-        if (!MAKES_CORPSE(ch))
-                strcpy(msg, "$c's form withers and dissolves into nothing.");
-        else if (IS_HUGE(ch))
-                strcpy(msg, "$c's huge body collapses before you... DEAD.");
-        else
-                strcpy(msg, "$c slumps before you... DEAD.");
+        if (!IS_INORGANIC(ch) && !IS_SET(ch->act, ACT_OBJECT))
+        {
+            if (!MAKES_CORPSE(ch))
+                    strcpy(msg, "$c's form withers and dissolves into nothing.");
+            else if (IS_HUGE(ch))
+                    strcpy(msg, "$c's huge body collapses before you... DEAD.");
+            else
+                    strcpy(msg, "$c slumps before you... DEAD.");
+        }
 
+        /* Default messages */
+        if (IS_INORGANIC(ch) || IS_SET(ch->act, ACT_OBJECT))
+        {
+            if (!MAKES_CORPSE(ch))
+                    strcpy(msg, "$c withers and dissolves into nothing.");
+            else if (IS_HUGE(ch))
+                    strcpy(msg, "The huge structure of $n crashes down around you... SHATTERED.");
+            else
+                    strcpy(msg, "$c falls to pieces in front of you... RUINED.");
+        }
         /* Random variations, including bits of bodies being dropped */
         switch (number_bits(4))
         {
@@ -3018,7 +3060,14 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called)
 
                 log_string(ch->name);
                 log_string(gch->name);
-                sprintf(buf, "You receive %d experience points for the kill.\n\r", xp);
+
+                if (IS_SET(victim->act, ACT_OBJECT))
+                {
+                    sprintf(buf, "You receive %d experience points for its destruction.\n\r", xp);
+                }
+                else {
+                    sprintf(buf, "You receive %d experience points for the kill.\n\r", xp);
+                }
                 send_to_char(buf, gch);
                 gch->pcdata->kills++;
                 gain_exp(gch, xp);
@@ -3110,7 +3159,7 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called)
                 if (total_message)
                 {
 
-                        sprintf(buf, "{WYou gained a total of %d experience points for the kill!{x\n\r", total_xp);
+                        sprintf(buf, "{WYou gained a total of %d experience points!{x\n\r", total_xp);
                         send_to_char(buf, gch);
                         total_xp = 0;
                         total_message = 0;
@@ -3290,7 +3339,8 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                 "chop",
                 "rake",
                 "swipe",        /* 15 */
-                "sting"
+                "sting",
+                "scoop"
         };
 
         const  char         *vs;
@@ -3902,11 +3952,11 @@ void do_dive (CHAR_DATA *ch, char *argument)
 
         if (victim->fighting)
         {
-                send_to_char("You can't dive upon a fighting person.\n\r", ch);
+                send_to_char("You can't dive upon a combatant.\n\r", ch);
                 return;
         }
 
-        if ((victim->hit < victim->max_hit) && IS_NPC(victim))
+        if ((victim->hit < victim->max_hit) && IS_NPC(victim) && !IS_SET(victim->act, ACT_OBJECT))
         {
                 send_to_char("They seem too alert for you to successfully surprise them.\n\r", ch);
                 return;
@@ -4004,7 +4054,7 @@ void do_backstab (CHAR_DATA *ch, char *argument)
 
         if (victim->fighting)
         {
-                send_to_char("You can't backstab a fighting person.\n\r", ch);
+                send_to_char("You can't backstab a combatant.\n\r", ch);
                 return;
         }
 
@@ -4013,6 +4063,7 @@ void do_backstab (CHAR_DATA *ch, char *argument)
 
         if (victim->hit < victim->max_hit
             && IS_NPC(victim)
+            && !IS_SET(victim->act, ACT_OBJECT)
             && victim->pIndexData->vnum != BOT_VNUM)
         {
                 act ("$C is hurt and suspicious... you can't sneak up on $m.",
@@ -4053,6 +4104,7 @@ void do_backstab (CHAR_DATA *ch, char *argument)
                     && number_percent() < ch->pcdata->learned[gsn_assassinate]
                     && number_percent() < assas_chance
                     && HAS_HEAD(victim)
+                    && !IS_SET(victim->act, ACT_OBJECT)
                     && !IS_INORGANIC(victim)
                     && !(is_entered_in_tournament(victim)
                          && is_still_alive_in_tournament(victim)
@@ -4266,7 +4318,7 @@ void do_joust (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if ((victim->hit < victim->max_hit) && IS_NPC(victim))
+        if ((victim->hit < victim->max_hit) && IS_NPC(victim) && !IS_SET(victim->act, ACT_OBJECT))
         {
                 send_to_char("They won't fall for that twice!\n\r", ch);
                 return;
@@ -4274,7 +4326,7 @@ void do_joust (CHAR_DATA *ch, char *argument)
 
         if (victim->fighting)
         {
-                send_to_char("You can't joust at a fighting person.\n\r", ch);
+                send_to_char("You can't joust at a combatant.\n\r", ch);
                 return;
         }
 
@@ -4417,6 +4469,12 @@ void do_flee (CHAR_DATA *ch, char *argument)
         {
                 send_to_char("You must not flee: your enemy must die!\n\r", ch);
                 WAIT_STATE(ch, PULSE_VIOLENCE);
+                return;
+        }
+
+        if ( IS_NPC(ch) && IS_SET(ch->act, ACT_OBJECT) )
+        {
+                send_to_char( "An object cannot be made to flee.\n\r", ch );
                 return;
         }
 
@@ -4579,7 +4637,7 @@ void do_flee (CHAR_DATA *ch, char *argument)
         WAIT_STATE(ch, PULSE_VIOLENCE);
 }
 
-void do_smoke_bomb (CHAR_DATA *ch, char *argument)
+void do_bomb (CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA       *victim;
         ROOM_INDEX_DATA *was_in;
@@ -4636,7 +4694,7 @@ void do_smoke_bomb (CHAR_DATA *ch, char *argument)
         }
 
         if ( !IS_NPC(ch)
-        && (number_percent() > (50 + (ch->pcdata->learned[gsn_smoke_bomb] / 2))))
+        && (number_percent() > (50 + (ch->pcdata->learned[gsn_bomb] / 2))))
         {
                 act ("You throw a smoke bomb but your enemies aren't confused!", ch, NULL, NULL, TO_CHAR);
                 act ("$n drops a smoke bomb but fails to escape!", ch, NULL, NULL, TO_ROOM);
@@ -5362,6 +5420,12 @@ void do_transfix (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("You can't transfix an object.\n\r", ch);
+                return;
+        }
+
         if (IS_AFFECTED(victim, AFF_HOLD))
         {
                 act ("$N is already held.", ch, NULL, victim, TO_CHAR);
@@ -5491,6 +5555,12 @@ void do_howl (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("Objects are not affected by your howl.\n\r", ch);
+                return;
+        }
+
         if (is_safe(ch, victim))
                 return;
 
@@ -5541,7 +5611,7 @@ void do_headbutt (CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
 
-        if (IS_NPC(ch)
+        /* if (IS_NPC(ch)
         && !( ch->spec_fun == spec_lookup("spec_warrior")
            || ch->spec_fun == spec_lookup("spec_sahuagin_infantry")
            || ch->spec_fun == spec_lookup("spec_sahuagin_cavalry")
@@ -5550,6 +5620,13 @@ void do_headbutt (CHAR_DATA *ch, char *argument)
            || ch->spec_fun == spec_lookup("spec_sahuagin_guard")
            || ch->spec_fun == spec_lookup("spec_guard") ) )
                 return;
+        */
+
+        if ( IS_NPC(ch)
+        &&  ( ch->master ) )
+        {
+            return;
+        }
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_headbutt))
         {
@@ -5586,7 +5663,20 @@ void do_headbutt (CHAR_DATA *ch, char *argument)
 
         if (IS_NPC(ch) || number_percent() < ch->pcdata->learned[gsn_headbutt])
         {
-                act ("Your {Cheadbutt{x causes $N to lose $S balance!", ch, NULL, victim, TO_CHAR);
+                if (IS_NPC(victim))
+                {
+                    if(!IS_SET(victim->act, ACT_OBJECT))
+                    {
+                        act ("Your {Cheadbutt{x causes $N to lose $S balance!", ch, NULL, victim, TO_CHAR);
+                    }
+                    else{
+                        act ("{CYou smash your head into $N!{x", ch, NULL, victim, TO_CHAR);
+                    }
+                }
+                else {
+                        act ("Your {Cheadbutt{x causes $N to lose $S balance!", ch, NULL, victim, TO_CHAR);
+                }
+
                 act ("$n {Cheadbutts{x you - you see red!", ch, NULL, victim, TO_VICT);
                 act ("$n {Cheadbutts{x $N!", ch, NULL, victim, TO_NOTVICT);
 
@@ -5659,6 +5749,12 @@ void do_decapitate (CHAR_DATA *ch, char *argument)
         if (arg[0] != '\0' && !(victim = get_char_room(ch, arg)))
         {
                 send_to_char("They aren't here.\n\r", ch);
+                return;
+        }
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("You can't decapitate an object.\n\r", ch);
                 return;
         }
 
@@ -5774,6 +5870,12 @@ void do_snap_neck (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("You can't snap the neck of an object.\n\r", ch);
+                return;
+        }
+
         if( IS_NPC(victim) && !HAS_HEAD(victim) )
         {
                 act( "$N has no neck for you to break!\n\r", ch, NULL, victim, TO_CHAR );
@@ -5839,7 +5941,7 @@ void do_stun (CHAR_DATA *ch, char *argument)
 
         if (ch->fighting)
         {
-                send_to_char("You cannot stun a person while fighting!\n\r", ch);
+                send_to_char("You can't try to stun anything while fighting!\n\r", ch);
                 return;
         }
 
@@ -5878,6 +5980,12 @@ void do_stun (CHAR_DATA *ch, char *argument)
         if (victim == ch)
         {
                 send_to_char("How can you knock yourself out?\n\r", ch);
+                return;
+        }
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("You can't stun an object.\n\r", ch);
                 return;
         }
 
@@ -6085,6 +6193,13 @@ void do_trip (CHAR_DATA *ch, char *argument)
         if (is_safe(ch,victim))
                 return;
 
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("You can't trip up an OBJECT, weirdo.\n\r", ch);
+                return;
+        }
+
         if( IS_NPC(victim) && !HAS_LEGS(victim) )
         {
                 act( "$N has no legs for you to trip up!", ch, NULL, victim, TO_CHAR );
@@ -6176,7 +6291,8 @@ void do_grapple (CHAR_DATA *ch, char *argument)
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_infantry") )
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_cavalry") )
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_prince") ))
                 return;
 
         one_argument(argument,arg);
@@ -6207,6 +6323,12 @@ void do_grapple (CHAR_DATA *ch, char *argument)
 
         if (is_safe(ch,victim))
                 return;
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("Wrestling moves don't work on objects.\n\r", ch);
+                return;
+        }
 
         if (IS_HUGE (victim))
         {
@@ -6286,7 +6408,8 @@ void do_flying_headbutt (CHAR_DATA *ch, char *argument)
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_infantry") )
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_cavalry") )
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_prince") ))
                 return;
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_flying_headbutt))
@@ -6657,7 +6780,8 @@ void do_whirlwind (CHAR_DATA *ch, char *argument)
 
         if (IS_NPC(ch)
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_prince") ) )
                 return;
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_whirlwind) && ch->form != FORM_HYDRA)
@@ -7696,7 +7820,7 @@ void reset_char_stats (CHAR_DATA *ch)
 
 
 /*
- *  Inflict identical amounts of regular and aggrovated damage on ch;
+ *  Inflict identical amounts of regular and aggravated damage on ch;
  *  update position and check for death.  Return TRUE on death.
  *  Gezhp 2000
  */
@@ -7750,7 +7874,8 @@ bool aggro_damage (CHAR_DATA *ch, CHAR_DATA *victim, int damage)
                 raw_kill(ch, victim, TRUE);
                 send_to_char("{RYou have been KILLED!!{x\n\r\n\r", victim);
                 send_to_char(purgatory_message, victim);
-                if (IS_NPC(victim) && IS_INORGANIC(victim))
+                if ( IS_NPC(victim)
+                    && ( IS_INORGANIC(victim) || IS_SET(victim->act, ACT_OBJECT) ) )
                 {
                     act ("$c has been DESTROYED!!", victim, NULL, NULL, TO_ROOM);
                 }
@@ -7773,17 +7898,46 @@ void check_autoloot (CHAR_DATA *ch, CHAR_DATA *victim)
             && MAKES_CORPSE(victim))
         {
                 if (IS_SET(ch->act, PLR_AUTOLOOT))
+                {
+                    if (IS_SET(victim->act, ACT_OBJECT))
+                    {
+                        do_get (ch, "all remains");
+                    }
+                    else {
                         do_get (ch, "all corpse");
+                    }
+                }
                 else
                 {
-                        if (IS_SET(ch->act, PLR_AUTOCOIN))
-                                do_get_coins (ch, "corpse");
-
-                        do_look (ch, "in corpse");
+                    if (IS_SET(ch->act, PLR_AUTOCOIN))
+                    {
+                        if (IS_SET(victim->act, ACT_OBJECT))
+                        {
+                            do_get_coins (ch, "remains");
+                        }
+                        else {
+                            do_get_coins (ch, "corpse");
+                        }
+                        if (IS_SET(victim->act, ACT_OBJECT))
+                        {
+                            do_look (ch, "in remains");
+                        }
+                        else {
+                            do_look (ch, "in corpse");
+                        }
+                    }
                 }
 
                 if (IS_SET(ch->act, PLR_AUTOSAC))
+                {
+                    if (IS_SET(victim->act, ACT_OBJECT))
+                    {
+                        do_sacrifice (ch, "remains");
+                    }
+                    else {
                         do_sacrifice (ch, "corpse");
+                    }
+                }
         }
 }
 

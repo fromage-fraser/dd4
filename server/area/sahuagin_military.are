@@ -2461,7 +2461,7 @@ E 1 27513 100 16        ; equip an elite trident
 E 1 27540 100 11        ; tower shield
 *
 M 1 27429 1 27593       ; a Triton to the western reception area
-E 1 27111 100 5         ; equip scale male
+E 1 27111 100 5         ; equip scale mail
 E 1 27112 100 13        ; equip belt of shark's teeth
 G 1 27533 100           ; give sealed scroll
 *
@@ -2497,15 +2497,15 @@ O 1 27539 100 27583     ; shimmering portal to Baron's Portal Room
 *
 M 1 27434 3 27587       ; baron's wife to baron's private quarters
 E 1 27455 100 12        ; equip purple robe
-E 1 27456 0 4           ; equip a diamond necklace
+E 1 27456 100 4         ; equip a diamond necklace
 *
 M 1 27434 3 27587       ; baron's wife to baron's private quarters
 E 1 27455 100 12        ; equip purple robe
-E 1 27457 0 4           ; equip a pearl necklace
+E 1 27457 100 4         ; equip a pearl necklace
 *
 M 1 27434 3 27587       ; baron's wife to baron's private quarters
 E 1 27455 100 12        ; equip purple robe
-E 1 27458 0 4           ; equip a gold necklace
+E 1 27458 100 4         ; equip a gold necklace
 *
 S
 

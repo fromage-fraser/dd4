@@ -350,6 +350,48 @@ curiosity tinged with contempt.
 0 0
 0 0 1
 
+
+#80
+tobacconist~
+the tobacconist~
+A grubby-looking tobacconist regards you hazily.
+~
+Short, round, and bearded, this slothful middle-aged man has seen better days.
+You notice his fingers are stained brown, and what teeth he has remaining are
+either black or heavily-yellowed. At least he's knowledgeable about his products?
+~
+2|32768|16777216 0 85 S
+55 2 2 1d1+30000 1d8+32
+0 0
+8 8 1
+
+#81
+Ghelt~
+Ghelt~
+Ghelt is here, selling tobacco and related supplies.
+~
+A cheerful and friendly-natured man, he likes nothing better than chatting over
+a good smoke. He grins at you, thumbs behind his overall straps.
+~
+2|32768 128 900 S
+30 2 2 1d1+30000 1d8+32
+0 0
+8 8 1
+
+#82
+man elderly grinning~
+an elderly man~
+A grinning elderly man tends the store.
+~
+This elderly gentleman grins and mutters as he tends the store.  While wizened
+and stopped, his blue eyes sparkle mischievously.
+~
+2|32768 0 900 S
+31 2 2 1d1+30000 1d8+32
+0 0
+8 8 1
+
+
 #0
 
 #OBJECTS
@@ -1197,6 +1239,565 @@ The sliced-off tail of %s is here.~
 19 0 1
 20~ 0~ 0~ 0~
 5 0 0
+
+#503
+pipe~
+a standard-issue pipe~
+A standard-issue pipe is here.~
+~
+52 0 1|16384
+65~ 65~ 200~ 36~
+1 0 1
+
+#504
+cleaner~
+a standard-issue pipe cleaner~
+A very ordinary-looking pipe cleaner has been left here.~
+~
+53 0 1
+4~ 4~ 10~ 10~
+1 0 1
+
+#505
+goldleaf tobacco~
+goldleaf~
+A small pile of goldleaf tobacco has been left here.~
+~
+54 0 1
+2~ armor~ mental barrier~ poison~
+1 10 1
+
+#506
+stonefern tobacco~
+stonefern~
+A small pile of stonefern tobacco has been left here.~
+~
+54 0 1
+4~ detect hidden~ stone skin~ psychic drain~
+1 10 1
+
+#507
+spiritsong tobacco~
+spiritsong~
+A small pile of spiritsong tobacco has been left here.~
+~
+54 0 1
+2~ bless~ bark skin~ faerie fire~
+1 10 1
+
+#508
+emberhorn pipe~
+an emberhorn pipe~
+A pipe carved out of emberhorn is here.~
+~
+52 0 1|16384
+80~ 80~ 185~ 33~
+1 0 10
+
+#509
+whiskwood cleaner~
+a whiskwood pipe cleaner~
+A pipe cleaner made out of sprigs of whiskwood lies here.~
+~
+53 0 1
+6~ 6~ 17~ 17~
+1 0 10
+
+#510
+dreamvine tobacco~
+dreamvine~
+A modest heap of dreamvine tobacco has been left here.~
+~
+54 0 1
+3~ shield~ pass door~ change sex~
+1 10 10
+
+#511
+flamedew tobacco~
+flamedew~
+A twinkling pile of flamedew tobacco has been left here.~
+~
+54 0 1
+3~ sense traps~ refresh~ burning hands~
+1 10 10
+
+#512
+starfern pile~
+starfern~
+A pile of chopped-up starfern fronds lies here..~
+~
+54 0 1
+4~ infravision~	detect evil~ colour spray~
+1 10 10
+
+#513
+moonwood pipe~
+a <230>moonwood<0> pipe~
+An attractive pipe made of yellow moonwood lies here.~
+~
+52 0 1|16384
+95~ 95~ 170~ 30~
+1 0 20
+
+#514
+plumed cleaner~
+a plumed pipe cleaner~
+A pipe cleaner with a fetching plume at one end lies here.~
+~
+53 0 1
+9~ 9~ 24~ 24~
+1 0 20
+
+#515
+soulmoss~
+soulmoss~
+Clumps of smokeable soulmoss have been left here.~
+~
+54 0 1
+4~ cure serious~ detect invis~ psychic crush~
+1 10 20
+
+#516
+rumblebalm~
+rumblebalm~
+A pile of powdered rumblebalm lies here.~
+~
+54 0 1
+2~ thought shield~ displacement~ earthquake~
+1 10 20
+
+#517
+strongspike~
+strongspike~
+A collection of sharp little spiked leaves has been left here.~
+~
+54 0 1
+3~ energy containment~ giant strength~ cause critical~
+1 10 20
+
+#518
+silverstem pipe~
+a silverstem pipe~
+A well-crafted pipe made of silverstem vines lies here.~
+~
+52 0 1|16384
+110~ 110~ 155~ 27~
+1 0 30
+
+#519
+mirkwood scrubber~
+a mirkwood scrubber~
+A mirkwood scrubber for cleaning pipes is here.~
+~
+53 0 1
+12~ 12~ 31~ 31~
+1 0 30
+
+#520
+gryphongust~
+gryphongust~
+The powdered leavings of a gryphon lie here.~
+~
+54 0 1
+5~ intellect fortress~ flesh armor~ teleport~
+1 10 30
+
+#521
+greenblossom petals~
+greenblossom~
+The petals of a green flower are here in a pile.~
+~
+54 0 1
+7~ cure poison~ detect curse~ word of recall~
+1 10 30
+
+#522
+oceanbud seaweed~
+oceanbud~
+Some dried-out seaweed has been left here.~
+~
+54 0 1
+7~ breathe water~ fly~ detonate~
+1 10 30
+
+#523
+narghile pipe~
+a narghile pipe~
+A pipe made from the wood of the narghile tree is here.~
+~
+52 0 1|16384
+125~ 125~ 140~ 24~
+1 0 40
+
+#524
+drakebrush cleaner~
+a drakebrush cleaner~
+A pipe cleaner made of drakebrush has been left here.~
+~
+53 0 1
+15~ 15~ 38~ 38~
+1 0 40
+
+#525
+spirespice spice dark-brown pile~
+spirespice~
+A small packet of dark-brown spice lies here.~
+~
+54 0 1
+6~ cure poison~ enhanced strength~ magic missile~
+1 10 40
+
+#526
+firebark glittering flakes bark~
+firebark~
+Glittering flakes of some sort of bark have been left here.~
+~
+54 0 1
+6~ bark skin~ heal~ flamestrike~
+1 10 40
+
+#527
+shockchaff blue crackling substance~
+shockchaff~
+Some blue, crackling substance is here.~
+~
+54 0 1
+5~ detect hidden~ detect magic~ energy drain~
+1 10 40
+
+#528
+celestial stem pipe sliver~
+a <45>celestial<0> stem~
+What looks like a thin sliver of the night sky lies here.~
+~
+52 64 1|16384
+140~ 140~ 125~ 20~
+1 0 50
+
+#529
+faefloss cleaner~
+a faefloss cleaner~
+A pipe cleaner made of faefloss has been left here.~
+~
+53 0 1
+17~ 17~ 45~ 45~
+1 0 50
+
+#537
+nightblend tobacco wad~
+nightblend~
+A wad of jet-black tobacco lies here.~
+~
+54 0 1
+7~ detect good~ cure blindness~ chill touch~
+1 10 50
+
+#538
+titan's teardrop damp blue glassy~
+Titan's teardrop~
+A rather damp, blue, glassy substance has been left here.~
+~
+54 0 1
+5~ adrenaline control~ remove curse~ weaken~
+1 10 50
+
+#539
+orc lichen grey rough-textured~
+Orc lichen~
+Some very dark grey, rough-textured lichen lies here.~
+~
+54 0 1
+6~ protection~ levitation~ synaptic blast~
+1 10 50
+
+#540
+runic fumer pipe~
+a runic fumer~
+An impressive-looking pipe covered in etched runes lies here.~
+~
+52 64 1|16384
+155~ 155~ 110~ 16~
+1 0 60
+
+#541
+pigtuft brush~
+a pigtuft brush~
+A very small brush made of refined pig bristles has been left here.~
+~
+53 137438953472 1
+19~ 19~ 52~ 52~
+1 0 60
+
+#542
+trollshred skin scabs pile shred troll~
+trollshred~
+A small pile of what looks like green skin-scabs lies here.~
+~
+54 0 1
+8~ flesh armor~ heal~ curse~
+1 10 60
+
+#543
+midnight lankweed dark-blue weedy substance~
+midnight lankweed~
+A dark-blue weedy substance lies here.~
+~
+54 0 1
+10~ detect curse~ ectoplasmic form~ chill touch~
+1 10 60
+
+#544
+demonstalk dark-red powder material~
+demonstalk~
+Some dark-red powdery material has been left here.~
+~
+54 0 1
+9~ cell adjustment~ detect sneak~ unholy word~
+1 10 60
+
+#545
+wraithwood pipe translucent peculiar~
+a <108>wraithwood<0> pipe~
+A peculiar pipe made of translucent wood lies here.~
+~
+52 64 1|16384
+170~ 170~ 95~ 12~
+1 0 70
+
+#546
+elfloom whisk sprig~
+an elfloom whisk~
+A whisk made from a sprig of elfloom lies here.~
+~
+53 0 1
+22~ 22~ 59~ 59~
+1 0 70
+
+#547
+necrochaff black fluffy substance~
+necrochaff~
+A black, fluffy substance has been left here.~
+~
+54 0 1
+9~ inertial barrier~ psychic healing~ spiritwrack~
+1 10 70
+
+#548
+featherblend mixed herbs~
+featherblend~
+Some mixed herbs have been scattered here.~
+~
+54 0 1
+9~ prayer~ cure critical~ feeblemind~
+1 10 70
+
+#549
+frostfire heap flakes~
+frostfire~
+A small heap of red and white flakes lies here.~
+~
+54 0 1
+10~ combat mind~ shield~ ego whip~
+1 10 70
+
+#550
+starforged antler shimmering~
+a starforged antler~
+A shimmering pipe carved from a deer's antler lies here.~
+~
+52 1|64 1|16384
+185~ 185~ 80~ 9~
+1 0 80
+
+#551
+goblingrit rod~
+a goblingrit rod~
+A short rod made from the goblingrit weed is here.~
+~
+53 0 1
+24~ 24~ 66~ 66~
+1 0 80
+
+#552
+stormroot shavings tuber grey~
+stormroot~
+The grey, gnarled shavings of a tuber lie here.~
+~
+54 0 1
+10~ biofeedback~ cure light~ poison~
+1 10 80
+
+#553
+dragonpetal~
+dragonpetal~
+The rare flowers of a dragonpetal shrub have been collected here.~
+~
+54 0 1
+8~ dragon shield~ stabilise~ hex~
+1 10 80
+
+#554
+mirthrash~
+mirthrash~
+The green, square leaves of the mirthrash bush have been piled up here.~
+~
+54 0 1
+8~ power heal~ enhanced strength~ paralysis~
+1 10 80
+
+#555
+chewing tobacco pottle~
+chewing tobacco~
+A pottle of chewing tobacco has been left here.~
+~
+28 0 1|16384
+80~ psychic healing~ bless~ poison~
+1 0 80
+
+#556
+hookah sylvan~
+a sylvan hookah~
+A hookah pipe of high-quality sylvan manufacture has been abandoned here.~
+~
+52 64 1|16384
+200~ 200~ 65~ 7~
+1 0 90
+
+#557
+sage swab~
+a sage swab~
+A swab made from the leaves of a sage bush lies here.~
+~
+53 0 1
+26~ 26~ 73~ 73~
+1 0 90
+
+#558
+vapourleaf~
+vapourleaf~
+The insubstantial foliage of the vapour tree is here.~
+~
+54 0 1
+11~ dispel magic~ sanctuary~ wither~
+1 10 90
+
+#559
+meadowgrass~
+meadowgrass~
+Sweet-smelling grass has been left in a pile here.~
+~
+54 0 1
+12~ haste~ blindness~ paralysis~
+1 10 90
+
+#560
+Banshee's lament~
+Banshee's lament~
+Bright green and black leaves have been piled up here.~
+~
+54 0 1
+15~ power heal~ slow~ sleep~
+1 10 90
+
+#561
+odinsbane pipe statuette~
+Odinsbane~
+A hollow statuette of the god Odin has been left here.~
+~
+52 64|256 1|16384
+215~ 215~ 50~ 5~
+1 0 95
+
+#562
+wizgroom fibre bundle~
+wizgroom fibre~
+A bundle of wizgroom fibres have been fastened together and left here.~
+~
+53 0 1
+26~ 26~ 73~ 73~
+1 0 95
+
+#563
+ashglow fibres pile~
+ashglow~
+Black and gold fibres have been left in a pile here.~
+~
+54 0 1
+13~ inertial barrier~ faerie fog~ holy word~
+1 10 95
+
+#564
+nightbark flakes bark~
+nightbark~
+Flakes of a dark-grey bark have been chipped from a tree and left here.~
+~
+54 0 1
+15~ sanctuary~ displacement~ fire breath~
+1 10 95
+
+#565
+dreamflower flower~
+dreamflower~
+A brightly-coloured flower has been mashed up and left here.~
+~
+54 0 1
+12~ protection~ heal~ inner fire~
+1 10 95
+
+#566
+shadowvine~
+Shadowvine~
+A magical pipe carved from shadowvine pulsates here.~
+~
+52 2|64 1|16384
+230~ 230~ 30~ 4~
+1 0 100
+
+#567
+dustdancer dust particles heap~
+dustdancer~
+A heap of magically-enchanted dust particles lies here.~
+~
+53 64 1
+30~ 30~ 80~ 80~
+1 0 100
+
+#568
+flickersprout leaves sprout flickering~
+flickersprout~
+A flickering, red pile of sprout leaves lies here.~
+~
+54 0 1
+15~ fireshield~ hex~ energy drain~
+1 10 100
+
+#569
+madglobe globes iridescent~
+madglobe~
+Small, iridescent globes have been piled up here.~
+~
+54 0 1
+14~ globe of invulnerability~ prismatic spray~ teleport~
+1 10 100
+
+#570
+motherlode pile white powder~
+motherlode~
+A glowing white pile of powder lies here.~
+~
+54 1 1
+11~ complete heal~ paralysis~ curse~
+1 10 100
+
+#571
+remains~
+the remains of %s~
+The remains of %s are here.~
+~
+55 0 0
+0~ 0~ 0~ 1~
+100 0 0
+
 #0
 
 

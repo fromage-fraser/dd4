@@ -590,6 +590,19 @@ has to contend with a fair amount of attempted robberies and the like.
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+#23554
+Grub Hayden man thin swarthy~
+Grub Hayden~
+A thin, swarthy man grins toothlessly at you.
+~
+Grub Hayden is a dark-complexioned and unhygienic-looking man, all bone, dirt
+and sinew.  While quick to smile, this does not improve his aspect, as he
+has lost most of his teeth, and the few that remain are blackened and rotten.
+~
+2|64 0 0 S
+50 0 0 0d0+0 0d0+0
+0 0
+8 8 1
 #0
 
 
@@ -2048,9 +2061,10 @@ D2
 S
 #23539
 Town markets~
-The stalls start to thin out here, but a brightly coloured tent catches
-your eye. On the door to the east is a sign which reads 'Madame Star,
-Clairvoyant'.
+The stalls start to thin out here, but a brightly coloured tent to the
+east catches your eye. On its door is a sign which reads 'Madame Star,
+Clairvoyant'. There is also a miserable-looking shack to your west,
+but you'll have to move closer to learn anything about it.
 Market street continues to the north.
 ~
 0 0 1
@@ -2066,6 +2080,10 @@ D2
 ~
 ~
 0 -1 23538
+D3
+~
+~
+0 -1 23616
 S
 #23540
 Madam Star Clairvoyant~
@@ -3306,6 +3324,20 @@ D0
 ~
 0 -1 23567
 S
+
+#23616
+Grub Hayden's Quality Smokeables~
+More of a makeshift lean-to than anything else, this "dwelling" is the
+business place of "Grub" Hayden, the local purveyor of smokeable substances
+and their associated paraphernalia.  While the shopfront is quite shabby,
+the goods on sale, at least, do appear to be of respectable quality.
+~
+0 8 0
+D1
+~
+~
+0 -1 23539
+S
 #0
 
 
@@ -3861,6 +3893,14 @@ E 1 23528 100 3
 E 1 23528 100 4
 E 1 23510 100 5
 O 1 23586 100 23613         a large stone to Before The City
+*
+M 1 23554 1 23616         Grub Hayden to his Smokeables shop
+G 1 528 100
+G 1 529 100
+G 1 537 100
+G 1 538 100
+G 1 539 100
+*
 S
 
 
@@ -3872,6 +3912,7 @@ S
 23546 8 0 0 0 0 80 350 0 23             (mobile is from another zone)
 23549 0 0 0 0 0 100 350 0 23            (mobile is from another zone)
 23550 0 0 0 0 0 100 300 0 23            (mobile is from another zone)
+23554 52 53 54 0 0 90 350 0 23          Grub Hayden
 0
 
 

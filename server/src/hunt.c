@@ -462,7 +462,7 @@ void do_hunt( CHAR_DATA *ch, char *argument )
 
         victim = get_char_world( ch, arg );
 
-        if( victim == NULL || !can_see(ch,victim))
+        if( victim == NULL || !can_see(ch,victim) || ( IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT) ))
         {
                 send_to_char("No-one around by that name.\n\r", ch );
                 return;

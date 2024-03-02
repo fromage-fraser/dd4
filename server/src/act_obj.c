@@ -374,6 +374,7 @@ void do_get (CHAR_DATA *ch, char *argument)
                     case ITEM_CONTAINER:
                     case ITEM_TURRET:
                     case ITEM_CORPSE_NPC:
+                    case ITEM_REMAINS:
                         break;
 
                     case ITEM_CORPSE_PC:
@@ -600,6 +601,7 @@ void do_claim (CHAR_DATA *ch, char *argument)
                     case ITEM_CONTAINER:
                     case ITEM_TURRET:
                     case ITEM_CORPSE_NPC:
+                    case ITEM_REMAINS:
                         break;
 
                     case ITEM_CORPSE_PC:
@@ -1273,6 +1275,7 @@ void do_empty (CHAR_DATA *ch, char *argument)
 
                     case ITEM_CONTAINER:
                     case ITEM_CORPSE_NPC:
+                    case ITEM_REMAINS:
                         break;
 
                     case ITEM_DRINK_CON:
@@ -2923,7 +2926,7 @@ void wear_obj (CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace)
                 }
         }
 
-        if (((obj->item_type == ITEM_WAND || obj->item_type == ITEM_STAFF)
+        if (((obj->item_type == ITEM_WAND || obj->item_type == ITEM_STAFF || obj->item_type == ITEM_PIPE)
              && (!ch->form || form_wear_table[ch->form].can_wear[WEAR_HOLD]))
             || CAN_WEAR(eff_class, ch->form, obj, ITEM_HOLD, BIT_HOLD))
         {
@@ -2947,7 +2950,7 @@ void wear_obj (CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace)
                       return;
         }
 
-        if ((obj->item_type != ITEM_WAND && obj->item_type != ITEM_STAFF)
+        if ((obj->item_type != ITEM_WAND && obj->item_type != ITEM_STAFF && obj->item_type != ITEM_PIPE )
             && !wear_table[eff_class].can_wear[obj->item_type])
         {
                 if (ch->sub_class)
@@ -3506,7 +3509,7 @@ void do_sacrifice (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if ((!IS_SET(obj->wear_flags, ITEM_TAKE) && obj->item_type != ITEM_CORPSE_NPC)
+        if ((!IS_SET(obj->wear_flags, ITEM_TAKE) && obj->item_type != ITEM_CORPSE_NPC && obj->item_type != ITEM_REMAINS )
             || obj->item_type == ITEM_CLAN_OBJECT
             || obj->item_type == ITEM_PORTAL
             || obj->item_type == ITEM_FOUNTAIN
@@ -3923,6 +3926,336 @@ void do_brandish (CHAR_DATA *ch, char *argument)
 
         return;
 }
+
+void do_smoke (CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA *pipe;
+        OBJ_DATA *smokeable;
+        char      arg [ MAX_INPUT_LENGTH ];
+        int       base_thirst_inc   = 4;
+        int       r_5;
+        int       r_20;
+        int       benefit_reduction;
+        int       power_level;
+        /* char      buf [ MAX_STRING_LENGTH ]; */
+
+        one_argument(argument, arg);
+
+        if ( ( ch->in_room->sector_type == SECT_UNDERWATER )
+        ||   ( ch->in_room->sector_type == SECT_UNDERWATER_GROUND ) )
+        {
+                send_to_char( "You can't smoke a pipe underwater.\n\r", ch );
+                return;
+        }
+
+        if (ch->position < POS_RESTING)
+        {
+                send_to_char("You're really in no state to do that.\n\r", ch);
+                return;
+        }
+
+        if (arg[0] == '\0')
+        {
+                send_to_char("Smoke what?\n\r", ch);
+                return;
+        }
+
+        if (!(pipe = get_eq_char(ch, WEAR_HOLD)))
+        {
+                send_to_char("You need to be holding a pipe to smoke.\n\r", ch);
+                return;
+        }
+
+        if (pipe->item_type != ITEM_PIPE)
+        {
+                send_to_char("What were you planning to smoke <558>with<559>, exactly?\n\r", ch);
+                return;
+        }
+
+        if (ch->position == POS_FIGHTING)
+        {
+                send_to_char( "No way! You are fighting.\n\r", ch );
+                return;
+        }
+
+        if (!(smokeable = get_obj_carry(ch, arg)))
+        {
+            send_to_char("You don't have any of that handy.\n\r", ch);
+            return;
+        }
+
+        if (smokeable->item_type != ITEM_SMOKEABLE)
+        {
+                send_to_char("You can't smoke that, you goofball!\n\r", ch);
+                return;
+        }
+
+        if (pipe->value[0] == 0)
+        {
+                send_to_char("Your pipe is completely blocked by resin.  It needs a clean.\n\r", ch);
+                return;
+        }
+
+        /* Okay, smoking time.  Apply the effects of the smokeable substance, modified by the pipe. Decrease
+        the pipe's benefit % and remove a use from the smokeable substance--destroying ("extracting") it if final use */
+
+        if (pipe->level > ch->level)
+        {
+                act("The pipe is too sophisticated for you to use effectively.", ch, smokeable, NULL, TO_CHAR);
+                return;
+        }
+
+        if (smokeable->level > ch->level)
+                act("You're not ready to try smoking $p just yet.", ch, smokeable, NULL, TO_CHAR);
+        else
+        {
+                act("You pack your pipe and smoke some {W$p{x.", ch, smokeable, NULL, TO_CHAR);
+                act("$n packs $s pipe and smokes some $p.", ch, smokeable, NULL, TO_ROOM);
+
+                /* Some random 'colour' effects */
+
+                r_20 = rand() % 20 + 1;
+
+                switch ( r_20 )
+                {
+                    default:
+                        break;
+
+                    case 11:
+                        act("<111>You blow a perfect smoke ring, which wafts away and slowly loses its shape.<0>", ch, smokeable, NULL, TO_CHAR);
+                        act("<111>$n blows a perfect smoke ring, which wafts away and slowly loses its shape.<0>", ch, smokeable, NULL, TO_ROOM);
+                        break;
+
+                    case 12:
+                        act("Delightful.  Some of the best $p you've ever smoked.", ch, smokeable, NULL, TO_CHAR);
+                        act("$n smiles contently as $e puffs on $s pipe.", ch, smokeable, NULL, TO_ROOM);
+                        break;
+
+                    case 13:
+                        act("As you inhale, the rich, smoky flavour of the $p fills your mouth.  You sigh.", ch, smokeable, NULL, TO_CHAR);
+                        act("$n sighs contentedly as $e smokes $s pipe.", ch, smokeable, NULL, TO_ROOM);
+                        break;
+
+                    case 14:
+                        act("You savour the complex flavours swirling in your mouth with each puff.", ch, smokeable, NULL, TO_CHAR);
+                        act("$n smiles, savouring the flavours of $s $p as he smokes it.", ch, smokeable, NULL, TO_ROOM);
+                        break;
+
+                    case 15:
+                        act("The ritual of tamping and relighting the $p is meditative and grounding.", ch, smokeable, NULL, TO_CHAR);
+                        act("$n looks relaxed and content as $e tamps and relights $s pipe.", ch, smokeable, NULL, TO_ROOM);
+                        break;
+
+                    case 16:
+                        act("As the bowl of the pipe glows, you are drawn into the moment; the world around you fades.", ch, smokeable, NULL, TO_CHAR);
+                        act("$n stares into the distance as $e smokes, seeming barely aware of your presence.", ch, smokeable, NULL, TO_ROOM);
+                        break;
+
+                    case 17:
+                        act("You hold the pipe with an air of elegance, puffing thoughtfully.", ch, smokeable, NULL, TO_CHAR);
+                        act("$n holds $s pipe with an air of elegance, puffing thoughtfully.", ch, smokeable, NULL, TO_ROOM);
+                        break;
+
+                    case 18:
+                        act("You expertly manipulate the pipe, tamping the $p with practised movements.", ch, smokeable, NULL, TO_CHAR);
+                        act("$n expertly manipulates $s pipe, tamping the $p with practised movements.", ch, smokeable, NULL, TO_ROOM);
+                        break;
+
+                    case 19:
+                        act("The warmth of the pipe in your hand is comforting and familiar.", ch, smokeable, NULL, TO_CHAR);
+                        act("The rich scent of $n's pipe fills the space, distinct and aromatic.", ch, smokeable, NULL, TO_ROOM);
+                        break;
+
+                    case 20:
+                        act("As you finish you gently knock out the ash, ending your relaxing session.", ch, smokeable, NULL, TO_CHAR);
+                        act("$n gently knocks the ash out of $s pipe as $e finishes smoking.", ch, smokeable, NULL, TO_ROOM);
+                        break;
+                }
+
+                power_level = ( ( ( (ch->level * 100) / 2 ) * ( pipe->value[0] * 100 ) ) / 1000000 );
+
+                if (power_level <= 0 )
+                {
+                    /* We know by here that the pipe benefit is at least 1% and ch-> level is at least 1, so this is legit */
+                    power_level = 1;
+                }
+
+                obj_cast_spell(smokeable->value[1], power_level, ch, ch, smokeable);
+                obj_cast_spell(smokeable->value[2], power_level, ch, ch, smokeable);
+                obj_cast_spell(smokeable->value[3], power_level, ch, ch, smokeable);
+        }
+
+        /* apply thirst */
+
+        if (ch->level < LEVEL_HERO )
+        {
+            ch->pcdata->condition[COND_THIRST] -= ( ( pipe->value[2]/100 ) * base_thirst_inc );
+        }
+
+        /* pipe benefit reduction  (1-5% randomly of max_benefit (pipe->value[1]) )*/
+
+        r_5 = rand() % 5 + 1;
+
+        benefit_reduction = rintf( ( (float)pipe->value[1] * (float)100 ) * (float)r_5 / (float)10000 );
+
+        pipe->value[0] = (pipe->value[0] - benefit_reduction);
+
+        if (pipe->value[0] < 0)
+        {
+            send_to_char("When you finish smoking, you notice your pipe is completely blocked by resin.\n\r", ch);
+            pipe->value[0] = 0;
+        }
+
+        /* smokeable quantity reduction */
+
+        smokeable->value[0] -= 1;
+
+        if (smokeable->value[0] <= 0)
+        {
+            act("You smoke the last of the $p.", ch, smokeable, NULL, TO_CHAR);
+            extract_obj(smokeable);
+        }
+
+        if (ch->level < LEVEL_IMMORTAL)
+        {
+            WAIT_STATE(ch, pipe->value[3]);
+        }
+
+        return;
+}
+
+/* clean <pipe keyword> <pipe cleaner keyword> */
+
+void do_clean (CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA *cleaner;
+        OBJ_DATA *pipe;
+        char      arg1 [ MAX_INPUT_LENGTH ];
+        char      arg2 [ MAX_INPUT_LENGTH ];
+        int       r_2;
+        int       r_10_20;
+        int       clean_reduction;
+
+        argument = one_argument(argument, arg1);
+        argument = one_argument(argument, arg2);
+
+        if (arg1[0] == '\0')
+        {
+                send_to_char("Clean which pipe?\n\r", ch);
+                return;
+        }
+
+        if (arg2[0] == '\0')
+        {
+                send_to_char("Clean your pipe with what?\n\r", ch);
+                return;
+        }
+
+        if (ch->position < POS_RESTING)
+        {
+                send_to_char("You're really in no state to do that.\n\r", ch);
+                return;
+        }
+
+        if (!(pipe = get_eq_char(ch, WEAR_HOLD)))
+        {
+                send_to_char("You need to be holding a pipe to clean it.\n\r", ch);
+                return;
+        }
+
+        if (pipe->item_type != ITEM_PIPE)
+        {
+                send_to_char("That's not a pipe you're holding, unfortunately.\n\r", ch);
+                return;
+        }
+
+        if (ch->position == POS_FIGHTING)
+        {
+                send_to_char( "No way! You are fighting.\n\r", ch );
+                return;
+        }
+
+        /* need to check inventory for a pipe cleaner */
+
+        if (!(cleaner = get_obj_carry(ch, arg2)))
+        {
+                send_to_char("You do not have that item.\n\r", ch);
+                return;
+        }
+
+        if (cleaner->item_type != ITEM_PIPE_CLEANER)
+        {
+                send_to_char("That's not a pipe cleaner.\n\r", ch);
+                return;
+        }
+
+        /* increase pipe benefit by up to pipe_cleaner->value[2] */
+
+        if ( cleaner->value[0] == 0 )
+        {
+            send_to_char("Your pipe cleaner is in terrible shape.  You'd probably just make the pipe dirtier.\n\r", ch);
+            return;
+        }
+
+        if ( ( pipe->value[0] < pipe->value[1] )
+        &&   ( cleaner->value[0] > 0 ))
+        {
+            if ( ( pipe->value[0] + cleaner->value[2] ) >= pipe->value[1] )
+            {
+                pipe->value[0] = pipe->value[1];
+                send_to_char("You give your pipe a thorough cleaning--it is as good as new!\n\r", ch);
+            }
+            else if ( cleaner->value[2] == 0)
+            {
+                send_to_char("Your pipe cleaner is too dirty to improve your pipe's condition.\n\r", ch);
+                cleaner->value[0]--;
+                return;
+            }
+            else
+            {
+                pipe->value[0] = (pipe->value[0] + cleaner->value[2]);
+                send_to_char("You clean your pipe for a while--it is much improved!\n\r", ch);
+            }
+
+            /* remove a use from pipe cleaner, 50% chance of decreasing its clean value by 10-20% */
+
+            if ( cleaner->value[0] > 0)
+            {
+                cleaner->value[0]--;
+
+            }
+
+            if ( cleaner->value[0] == 0)
+            {
+                send_to_char("Your pipe cleaner looks to have just about had it, though.\n\r", ch);
+                return;
+            }
+
+            r_2 = rand() % 2 + 1;
+
+            if (r_2 == 2)
+            {
+                r_10_20 = rand() % 10 + 10;
+                clean_reduction = rintf( ( (float)cleaner->value[2] * (float)100 ) * (float)r_10_20 / (float)10000 );
+
+                if ((cleaner->value[2] - clean_reduction ) >= 0)
+                {
+                    cleaner->value[2] = (cleaner->value[2] - clean_reduction);
+                    send_to_char("Your pipe cleaner seems a little the worse for wear.\n\r", ch);
+                }
+            }
+
+        }
+        else {
+                send_to_char("Nothing to do here--your pipe is already clean!\n\r", ch);
+                return;
+        }
+
+        WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+
+        return;
+}
+
 
 
 void do_zap(CHAR_DATA *ch, char *argument)
@@ -5212,7 +5545,8 @@ void do_donate (CHAR_DATA *ch, char *argument)
 
                 else if (obj->item_type == ITEM_TRASH
                          || obj->item_type == ITEM_FURNITURE
-                         || obj->item_type == ITEM_CORPSE_NPC)
+                         || obj->item_type == ITEM_CORPSE_NPC
+                         || obj->item_type == ITEM_REMAINS)
                 {
                         pRoomIndex = get_room_index(ROOM_VNUM_DONATION_4);
                 }
@@ -5278,7 +5612,8 @@ void do_donate (CHAR_DATA *ch, char *argument)
 
                                 else if (obj->item_type == ITEM_TRASH
                                          || obj->item_type == ITEM_FURNITURE
-                                         || obj->item_type == ITEM_CORPSE_NPC)
+                                         || obj->item_type == ITEM_CORPSE_NPC
+                                         || obj->item_type == ITEM_REMAINS)
                                 {
                                         pRoomIndex = get_room_index(ROOM_VNUM_DONATION_4);
                                 }
@@ -6452,7 +6787,8 @@ void do_get_coins(CHAR_DATA *ch, char *argument)
         /* Check we have a valid open container */
         if (!(container = get_obj_here(ch, arg))
             || (container->item_type != ITEM_CONTAINER
-                && container->item_type != ITEM_CORPSE_NPC)
+                && container->item_type != ITEM_CORPSE_NPC
+                && container->item_type != ITEM_REMAINS)
             || IS_SET(container->value[1], CONT_CLOSED))
                 return;
 

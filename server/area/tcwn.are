@@ -1012,7 +1012,7 @@ informs you that if you'd like him to repair an item simply to let him
 know and he'll get to work on it straight away.
 ~
 2|64|262144|16777216 0 0 S
-6 0 0 0d0+0 0d0+0
+53 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #31067
@@ -1020,9 +1020,9 @@ Fragsteed blacksmith smithy~
 Fragsteed the Blacksmith~
 Fragsteed the Blacksmith leans against a wall.
 ~
-Fragsteed is Anon's blacksmith. Hes a bit messed up. A long scar on his right
-cheek, and left ear appears to be burnt off. Nonetheless he appears interested
-in your presense. He has knowldege to obtain.
+Fragsteed is Anon's blacksmith. He's a bit messed up, with a long scar on his
+right cheek, and a left ear that has been nearly completely burned off.
+Nonetheless he appears interested in your presence. He has knowledge to share.
 ~
 2|64|512|1024|32768|16777216 8 200 S
 53 0 -40 6d10+490 4d6+4
@@ -1039,6 +1039,20 @@ in your presense. He has knowldege to obtain.
 & 30 'engineer base'
 & 30 'runesmith base'
 
+#31068
+Tolstif young man~
+Tolstif~
+A young man with a scraggly blonde beard smiles as you enter.
+~
+Tolstif is a cheerful, friendly sort, who you suspect has partaken in more
+than a little of his own supply.  He seems more relaxed that seems humanly
+possible, but within the limits of his sloth, is quite willing to help out
+with recommendations and demonstrations of his goods.
+~
+2|64|262144|16777216 0 0 S
+53 0 0 0d0+0 0d0+0
+0 0
+8 8 1
 #0
 
 
@@ -3207,7 +3221,8 @@ S
 Liberty Lane~
 You are heading along the northern half of Liberty Lane. To the south runs
 Victory Parade, while to the north lies Justice Street. The Castellan's
-office is to the west.
+office is to the west, while 'Delectable Drags' (Anon's smokeables supply
+shop) lies east.
 ~
 0 1024 1
 D0
@@ -3215,6 +3230,11 @@ Justice Street
 ~
 ~
 0 -1 31046
+D1
+Delectable Drags
+~
+~
+0 -1 31325
 D2
 Victory Parade
 ~
@@ -4582,6 +4602,21 @@ Stalwart Lane
 ~
 0 -1 31042
 S
+
+#31325
+Delectable Drags~
+You stand in 'Delectable Drags,' Anon's pipe and smokeables store.  The shop is
+orderly-looking and fairly comprehensive in its selection; there are a wide
+variety of substances and paraphernalia available for sale.  Feel free to
+browse, and ask the storekeeper if you see something that tickles your fancy.
+~
+0 8|1024 0
+D3
+Liberty Lane
+~
+~
+0 -1 31038
+S
 #0
 
 
@@ -4897,6 +4932,14 @@ M 1 31063 1 31064      loads ATM machine
 M 1 31064 1 31086      loads bard trainer
 *
 M 1 31066 1 31324      loads Simeon to Tinkery
+*
+M 1 31068 1 31325      loads Tolstif to Smokeables store
+G 1 556 100
+G 1 557 100
+G 1 558 100
+G 1 559 100
+G 1 560 100
+
 S
 
 
@@ -4921,6 +4964,7 @@ S
 31055  0  0  0  0  0 180 20 0 23
 31059  2  3  4 13 18 150 50 0 23
 31060 18  0  0  0  0 150 50 0 23
+31068 52 53 54 28  0 175 80 0 23
 0
 
 

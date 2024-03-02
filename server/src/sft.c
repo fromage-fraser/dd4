@@ -823,6 +823,12 @@ void do_venom (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("Objects are not affected by venom.\n\r", ch);
+                return;
+        }
+
         WAIT_STATE(ch, skill_table[gsn_venom].beats);
         act ("You bite $N!",  ch, NULL, victim, TO_CHAR);
         act ("$n bites you!", ch, NULL, victim, TO_VICT);
@@ -1076,12 +1082,14 @@ void do_bite (CHAR_DATA *ch, char *argument)
 
         if (IS_NPC(ch)
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_prince") ) )
                 return;
 
         if (!CAN_DO(ch, gsn_bite)
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_prince") ) )
         {
                 send_to_char("What do you think you are, a tiger?\n\r", ch);
                 return;
@@ -1089,7 +1097,8 @@ void do_bite (CHAR_DATA *ch, char *argument)
 
         if (!(ch->form == FORM_TIGER)
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_prince") ) )
         {
                 send_to_char("You are not in the correct form.\n\r", ch);
                 return;
@@ -1222,12 +1231,14 @@ void do_maul (CHAR_DATA *ch, char *argument)
 
         if (IS_NPC(ch)
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_prince") ) )
                 return;
 
         if (!CAN_DO(ch, gsn_maul)
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_prince") ))
         {
                 send_to_char("What do you think you are, a tiger?\n\r", ch);
                 return;
@@ -1235,7 +1246,8 @@ void do_maul (CHAR_DATA *ch, char *argument)
 
         if ( (!(ch->form == FORM_TIGER || ch->form == FORM_GRIFFIN) )
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") ) )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") )
+        && !( ch->spec_fun == spec_lookup("spec_sahuagin_prince") ) )
         {
                 send_to_char("You are not in the correct form.\n\r",ch);
                 return;
@@ -1310,7 +1322,7 @@ void do_ravage(CHAR_DATA *ch, char *argument)
                 if (++count == 8)
                         return;
 
-                percent -= 7;
+                percent-= 7;
         }
 }
 

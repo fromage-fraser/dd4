@@ -2041,6 +2041,11 @@ You see the Corner Of East Gullen and Ketra Road.
 ~
 ~
 0 -1 10209
+D2
+You see the entrance to Ghelt's Smokeables.
+~
+~
+0 -1 10320
 D3
 You see East Gullen Way.
 ~
@@ -4277,7 +4282,7 @@ S
 #10318
 Alex's Tinkery~
 This is Solace's tinkery, a great place to get your damaged gear fixed up.
-Metal and wooden objects are everywehre, along with the various tools the
+Metal and wooden objects are everywhere, along with the various tools the
 shop's craftsman uses to restore them.
 ~
 102 8 1
@@ -4299,6 +4304,19 @@ You see the main road.
 ~
 ~
 0 -1 10203
+S
+#10320
+Ghelt's Smokeables~
+This is a smokeables shop belonging to Ghelt. There is a collection of tobaccos
+and other smokeable substances displayed behind Ghelt's tidy glass counters,
+along with other paraphernalia associated with smoking.
+~
+102 8|16 1
+D0
+You see East Gullen Way.
+~
+~
+0 -1 10208
 S
 #0
 
@@ -4899,6 +4917,13 @@ D 0 10312 1 1              close Captain's Waiting room door inside
 *
 O 0 10310 1 10258      Load Skull chair
 *
+M 1 81 1 10320             Ghelt
+G 1 508 100
+G 1 509 100
+G 1 510 100
+G 1 511 100
+G 1 512 100
+*
 S
 
 #GAMES
@@ -4922,8 +4947,9 @@ S
  10224   0  0  0  0  0   125 75     4 20   ; Rashan
  10225   22  0  0  0  0  125 75     4 20   ; Lexie
  10226   15  0  0  0  0  125 75     4 20   ; Croben
- 10227   0  0  0  0  0   105  15    0 23   ; Otik barkeep
- 10227   0  0  0  0  0   105  15    0 23   ; Tika Barmaid
+ 10227   0  0  0  0  0   105 15     0 23   ; Otik barkeep
+ 10227   0  0  0  0  0   105 15     0 23   ; Tika Barmaid
+ 81      52 53 54 0  0   115 75     8 21   ; Ghelt Tobacconist
 0
 
 #SPECIALS

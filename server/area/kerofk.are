@@ -1750,9 +1750,15 @@ You near the end of Moon Gate Road, and ahead you spot a sharp
 dropoff aways to the east.  A large building to the south has a
 picture of a trout in full plate hanging out front.  'Bob's Armoury
 and Tackle' it proclaims.  Armoury? Tackle Shop?!?  How curious!
+You also notice a cheerful-looking and well-stocked tobacconist
+store lies to the north.
    Moon Gate Road continues to the east and west.
 ~
 0 8 1
+D0
+~
+~
+0 -1 30357
 D1
 ~
 ~
@@ -2105,7 +2111,7 @@ S
 #30227
 Moon Gate Road~
 Here's something you weren't expecting in a city this size: a
-Foundry belows smoke to the south.  Also, Moon Gate Road continues
+Foundry bellows smoke to the south.  Also, Moon Gate Road continues
 east-west. The air seems to crackle with energy here, but you can
 find no source for such power.
 ~
@@ -4429,6 +4435,18 @@ D1
 ~
 0 0 30223
 S
+#30357
+Fire'n'Smoke Tobacconist~
+You stand in a brightly-lit and cheerfully-decorated tobacconist store. Shelves
+and displays heave with different pipes, pipe cleaners, smokeable substances,
+and related paraphernalia.  The exit south returns you to Moon Gate Road.
+~
+0 4|8|16|1024 0
+D2
+~
+~
+0 0 30211
+S
 #0
 
 
@@ -4662,6 +4680,14 @@ D 1 30332 0 1
 M 1 30259 1 30273        blacksmith to the foundry.
 O 1 30256 10 30273         forge to the foundry
 O 1 30257 10 30273           anvil to the foundry
+M 1 82 1 30357            Elderly man to tobacconist
+G 1 518 100
+G 1 519 100
+G 1 520 100
+G 1 521 100
+G 1 522 100
+*
+
 S
 
 #GAMES
@@ -4675,6 +4701,7 @@ S
 30247 19 0 0 0 0 150 50 0 23                    (mobile is from another zone)
 30252 19 0 0 0 0 150 50 0 23                    (mobile is from another zone)
 30224 9 0 0 0 0 150 50 0 23                     (mobile is from another zone)
+82    52 53 54 0 0 150 75 0 23                  (mobile is from another zone)
 0
 
 #SPECIALS
