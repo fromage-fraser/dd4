@@ -4060,7 +4060,8 @@ void do_practice (CHAR_DATA *ch, char *argument)
         if (IS_NPC(ch))
                 return;
 
-        if (ch->position < POS_STANDING)
+        if ( ( ch->position < POS_STANDING ) &&
+             ( argument[0] != '\0' ) )
         {
             send_to_char("You're in no position to learn anything right now.\n\r", ch);
             return;
