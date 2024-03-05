@@ -8352,7 +8352,7 @@ void spell_animate_weapon (int sn, int level, CHAR_DATA *ch, void *vo)
         if ((obj = get_eq_char(victim,WEAR_DUAL))
             && !IS_SET(obj->extra_flags, ITEM_BODY_PART))
         {
-                act("You focus on $N's other weapon.", ch, NULL, victim, TO_CHAR);
+                act("You focus on $N's off-hand weapon.", ch, NULL, victim, TO_CHAR);
 
                 if ( saves_spell( level, victim ) )
                 {

@@ -1109,6 +1109,19 @@ Sekolah-worshipping theocratic hierarchy.
 ~
 |
 
+#27517
+pale green orb~
+a pale green orb~
+<27>(Magical)<0> <159>A pale green orb floats in the centre of the room.<0>
+~
+The pale orb hums and pulsates with magical power.  It floats in the centre of
+the room with no evident means of support or propulsion.
+~
+2|64|8388608|16777216|33554432|67108864|134217728 524288 -1000 S
+80 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|256 0
+8 8 0
+
 #0
 
 #OBJECTS
@@ -3554,7 +3567,7 @@ including crystal orbs filled with bioluminescent plankton and maps of the
 oceanic currents. The room is illuminated by a soft, ambient glow emanating from
 strategically placed luminescent corals.<0>
 ~
-0 8 12
+0 8|256|65536 12
 D1
 ~
 door~
@@ -3751,7 +3764,7 @@ rippling like the surface of the sea under a moonlit sky.
 
 You can head south from here, or enter the portal to parts unknown.<0>
 ~
-0 8 12
+0 8|65536 12
 D2
 ~
 ~
@@ -3993,7 +4006,7 @@ jellyfish, providing gentle illumination.
 From here, you may travel north to the corridor, south to the throne room, or
 east to another part of the waiting room.<0>
 ~
-0 8 12
+0 8|65536 12
 D0
 ~
 door~
@@ -4023,7 +4036,7 @@ jellyfish, providing gentle illumination.
 From here, you may travel south to the throne room, or west to another part of
 the waiting room.<0>
 ~
-0 8 12
+0 8|65536 12
 D2
 ~
 door~
@@ -4584,12 +4597,12 @@ E 1 27231 100 13
 M 1 27483 1 27437       ; A great white shark to the stables
 E 1 27234 100 16
 *
-M 1 27484 1 27738       ; A megalodon to the stables
+M 1 27484 1 27737       ; A megalodon to the stables
 E 1 27234 100 16
 *
 M 1 27485 1 27438       ; A sea horse to the stables
 *
-M 1 27486 1 27737       ; A giant manta ray to the stables
+M 1 27486 1 27738       ; A giant manta ray to the stables
 *
 M 1 27487 1 27736       ; Royal lieutenant to Prince's Courtyard
 E 1 27512 100 3         ; equip a lieutenant's spiked pauldron
@@ -4779,6 +4792,8 @@ P 1 27623 1 27621       ; put money in chest
 *
 O 1 25724 100 27742     ; blood fountain to prince's dayroom
 O 1 27628 100 27743     ; treasure to Prince's Quarters
+*
+M 1 27517 1 27775       ; pale orb to prince's quarters
 S
 
 #SPECIALS
@@ -4802,6 +4817,7 @@ M  27510 spec_red_grung             a red grung
 M  27512 spec_sahuagin_cavalry      a princeguard
 M  27513 spec_sahuagin_prince       the prince
 M  27514 spec_sahuagin_high_cleric  the prince's advisor
+M  27517 spec_cast_orb              pale green orb
 S
 
 #$
