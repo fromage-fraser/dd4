@@ -4040,6 +4040,7 @@ bool spec_sahuagin_cavalry (CHAR_DATA *ch)
                         min_level = 35;
                         if ( CAN_SPEAK(ch) ) { sprintf(buf,"By Sekolah's strength!"); }
                         spell = "flamestrike";
+                        target_self = FALSE;
                         break;
                 }
 
@@ -4331,6 +4332,7 @@ bool spec_sahuagin_lieutenant (CHAR_DATA *ch)
                         min_level = 15;
                         if ( CAN_SPEAK(ch) ) { sprintf(buf,"Feel Sekolah's fire!"); }
                         spell = "flamestrike";
+                        target_self = FALSE;
                         break;
 
                     case  3:
