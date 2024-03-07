@@ -705,7 +705,12 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
         if (IS_AFFECTED(victim, AFF_FLAMING )   )
                 strcat(buf, "<196>(Flaming)<0> "    );
 
-        if (IS_AFFECTED (victim, AFF_GLOBE ))
+        if ( IS_AFFECTED (victim, AFF_GLOBE )
+        && (victim->sub_class == SUB_CLASS_INFERNALIST))
+                strcat(buf, "<166>(Globed)<0> " );
+
+        if (IS_AFFECTED (victim, AFF_GLOBE )
+        && (victim->sub_class != SUB_CLASS_INFERNALIST))
                 strcat(buf, "<220>(Globed)<0> " );
 
         if (IS_NPC(victim)
@@ -5038,14 +5043,14 @@ void do_config( CHAR_DATA *ch, char *argument )
                 if ( fSet )
                 {
                         SET_BIT    ( ch->act, bit );
-                        sprintf( buf, "%s is now ON.\n\r", arg+1 );
+                        sprintf( buf, "%s is now {GON{x.\n\r", arg+1 );
                         buf[0] = UPPER( buf[0] );
                         send_to_char( buf, ch );
                 }
                 else
                 {
                         REMOVE_BIT ( ch->act, bit );
-                        sprintf( buf, "%s is now OFF.\n\r", arg+1 );
+                        sprintf( buf, "%s is now {ROFF{x.\n\r", arg+1 );
                         buf[0] = UPPER( buf[0] );
                         send_to_char( buf, ch );
                 }

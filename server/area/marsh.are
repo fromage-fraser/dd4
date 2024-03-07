@@ -156,7 +156,7 @@ into the marsh.
 36 2000
 8 8 2
 #8318
-mound shambling~
+mound shambling garbage heap~
 a shambling mound~
 A heap of garbage shambles towards you.
 ~
@@ -614,9 +614,10 @@ Northern Lake Side.~
 Floating on this boiling lake is not what you would consider an enjoyable
 experience.  Many a creature bumps the bottom of your boat, and glares
 at you through unblinking eyes from the waters below.  The southern
-portion of the lake looks calm and serene compared to this wild place.
+portion of the lake looks calm and serene compared to this wild and
+steaming place.
 ~
-83 1 7
+83 1|262144 7
 D2
 The southern portion of the lake lies to the south.
 ~

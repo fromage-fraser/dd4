@@ -491,7 +491,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
 
                 if (ch == victim && is_affected(ch, sn))
                 {
-                        sprintf(buf, "You are already affected by '%s'.\n\r",
+                        sprintf(buf, "<193>You are already affected by '%s'.<0>\n\r",
                                 skill_table[sn].name);
                         send_to_char(buf, ch);
                         return;
@@ -509,7 +509,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
 
                 if (is_affected(ch, sn))
                 {
-                        sprintf(buf, "You are already affected by '%s'.\n\r",
+                        sprintf(buf, "<193>You are already affected by '%s'.<0>\n\r",
                                 skill_table[sn].name);
                         send_to_char(buf, ch);
                         return;
@@ -2164,7 +2164,7 @@ void spell_detect_evil( int sn, int level, CHAR_DATA *ch, void *vo )
         af.bitvector = AFF_DETECT_EVIL;
         affect_to_char( victim, &af );
 
-        send_to_char( "You are now aware of the presence of evil.\n\r", victim );
+        send_to_char( "<124>You are now aware of the presence of evil.<0>\n\r", victim );
 
         return;
 }
@@ -2362,14 +2362,14 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
 
                         if (ch == victim)
                         {
-                                act ("You have removed all magic effects from yourself.",
+                                act ("<15>You have removed all magic effects from yourself.<0>",
                                      ch, NULL, NULL, TO_CHAR );
                                 act ("$c has removed all magic effects from $mself.",
                                      ch, NULL, NULL, TO_ROOM );
                         }
                         else
                         {
-                                act ("You have removed all magic effects from $N.",
+                                act ("<15>You have removed all magic effects from $N.<0>",
                                      ch, NULL, victim, TO_CHAR);
                                 act ("$c has removed all magic effects from you.",
                                      ch, NULL, victim, TO_VICT);
@@ -4589,11 +4589,11 @@ void spell_sanctuary( int sn, int level, CHAR_DATA *ch, void *vo )
         && ( ch != victim ) )
         {
                 if (victim == ch) {
-                    sprintf( buf, "You are already affected by that spell.\n\r");
+                    sprintf( buf, "<193>You are already affected by that spell.<0>\n\r");
                     send_to_char( buf, ch );
                 }
                 else {
-                    sprintf( buf, "%s is already affected by that spell.\n\r",
+                    sprintf( buf, "<193>%s is already affected by that spell.<0>\n\r",
                         IS_NPC(victim) ? victim->short_descr : victim->name
                     );
                     send_to_char( buf, ch );
@@ -4604,7 +4604,7 @@ void spell_sanctuary( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( IS_AFFECTED( victim, AFF_SANCTUARY )
         && ( ch == victim ) )
         {
-                sprintf( buf, "You are already affected by that spell.\n\r");
+                sprintf( buf, "<193>You are already affected by that spell.<0>\n\r");
                 send_to_char( buf, ch );
                 return;
         }
@@ -4636,11 +4636,11 @@ void spell_sense_traps( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( IS_AFFECTED( victim, AFF_DETECT_TRAPS ) )
         {
                 if (victim == ch) {
-                    sprintf( buf, "You are already affected by 'sense traps'.\n\r");
+                    sprintf( buf, "<193>You are already affected by 'sense traps'.<0>\n\r");
                     send_to_char( buf, ch );
                 }
                 else {
-                    sprintf( buf, "%s is already affected by that spell.\n\r",
+                    sprintf( buf, "<193>%s is already affected by that spell.<0>\n\r",
                         IS_NPC(victim) ? victim->short_descr : victim->name
                     );
                 }
@@ -4671,11 +4671,11 @@ void spell_shield( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( is_affected( victim, sn ) )
         {
                 if (victim == ch) {
-                    sprintf( buf, "You are already affected by a force shield.\n\r");
+                    sprintf( buf, "<193>You are already affected by a force shield.<0>\n\r");
                     send_to_char( buf, ch );
                 }
                 else {
-                    sprintf( buf, "%s is already affected by a force shield.\n\r",
+                    sprintf( buf, "<193>%s is already affected by a force shield.<0>\n\r",
                         IS_NPC(victim) ? victim->short_descr : victim->name
                     );
                 }
@@ -7633,12 +7633,12 @@ void spell_globe( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if (ch->sub_class == SUB_CLASS_INFERNALIST)
         {
-                send_to_char( "You are surrounded by a globe of dark energy.\n\r",victim );
+                send_to_char( "<130>You are surrounded by a globe of dark energy.<0>\n\r",victim );
                 act( "$n is surrounded by a ominous-looking globe.", victim, NULL, NULL, TO_ROOM );
         }
         else
         {
-                send_to_char( "You are surrounded by an invulnerable globe.\n\r",victim );
+                send_to_char( "<208>You are surrounded by an invulnerable globe.<0>\n\r",victim );
                 act( "$n is surrounded by a scintillating globe.", victim, NULL, NULL, TO_ROOM );
         }
 }

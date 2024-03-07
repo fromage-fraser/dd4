@@ -1284,13 +1284,33 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 }
                  */
 
-                if (IS_AFFECTED (victim, AFF_GLOBE))
+                if ( ( IS_AFFECTED (victim, AFF_GLOBE) )
+                &&   ( victim->sub_class != SUB_CLASS_INFERNALIST) )
                 {
                         if (((ch->alignment - victim->alignment) > 750)
                             || ((ch->alignment - victim->alignment) < -750))
                         {
                                 dam -= victim->level;
                         }
+                }
+
+                /* Make dark globe work a little differently for Infernalists.  Basically better if
+                   you're very evil fighting someone very good, and less good if you're very good fighting
+                   someone very evil.  -- Owl 7/3/24 */
+
+                if ( ( IS_AFFECTED (victim, AFF_GLOBE) )
+                &&   ( victim->sub_class == SUB_CLASS_INFERNALIST) )
+                {
+                        if ((ch->alignment - victim->alignment) > 750)
+                        {
+                            dam -= (victim->level + (victim->level/4));
+                        }
+
+                        if ((ch->alignment - victim->alignment) < -750)
+                        {
+                            dam -= (victim->level - (victim->level/4));
+                        }
+
                 }
 
                 if (IS_AFFECTED(victim, AFF_SANCTUARY))
