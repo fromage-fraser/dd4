@@ -4816,7 +4816,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "dark globe of invulnerability", &gsn_dark_globe,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_dark_globe, 120, 12,
-                "", "<208>The dark globe about you implodes.<0>"
+                "", "<58>The dark globe about you implodes.<0>"
         },
 
         {
