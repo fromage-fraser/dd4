@@ -3103,7 +3103,7 @@ Pits of Demondium~
 Mist swirls around you, obscuring your
 vision.  The air is foul and rank and hard to breathe in.
 ~
-0 1|8 5
+0 1|8|1048576 5
 D0
 ~
 ~
@@ -3127,7 +3127,7 @@ Pits of Demondium~
 Mist swirls around you, obscuring your
 vision.  The air is foul and rank and hard to breathe in.
 ~
-0 1|8 5
+0 1|8|1048576 5
 D1
 ~
 ~
@@ -3147,7 +3147,7 @@ Mist swirls around you, obscuring your vision.  The
 air is foul and rank and hard to breathe in. To the
 north a dark cave entrance beckons.
 ~
-0 1|8 5
+0 1|8|1048576 5
 D0
 ~
 ~
@@ -3174,7 +3174,7 @@ Pits of Demondium~
 Mist swirls around you, obscuring your
 vision.  The air is foul and rank and hard to breathe in.
 ~
-0 1|8 5
+0 1|8|1048576 5
 D1
 ~
 ~
@@ -3194,7 +3194,7 @@ Mist swirls around you, obscuring you vision.
 The air is foul and rank and hard to breathe in.
 To the north a cave beckons.
 ~
-0 1|8 5
+0 1|8|1048576 5
 D0
 ~
 ~
@@ -3221,7 +3221,7 @@ Pits of Demondium~
 Mist swirls around you, obscuring you vision.  The air
 is foul and rank and hard to breathe in.
 ~
-0 1|8 5
+0 1|8|1048576 5
 D0
 ~
 ~
@@ -3238,7 +3238,7 @@ vision.  The air is foul and rank and hard to breathe in.
 
 The only way south is through a huge pit, seething with activity.
 ~
-0 1|8 5
+0 1|8|1048576 5
 D0
 ~
 ~
@@ -3253,7 +3253,7 @@ Pits of Demondium~
 Mist swirls around you, obscuring your
 vision.  The air is foul and rank and hard to breathe in.
 ~
-0 1|8 5
+0 1|8|1048576 5
 D0
 ~
 ~
@@ -3270,7 +3270,7 @@ vision.  The air is foul and rank and hard to breathe in.
 
 The only way west is through a huge pit, seething with activity.
 ~
-0 1|8 5
+0 1|8|1048576 5
 D0
 ~
 ~
@@ -3310,7 +3310,7 @@ Pits of Demondium~
 Mist swirls around you, obscuring your
 vision.  The air is foul and rank and hard to breathe in.
 ~
-0 1|8 5
+0 1|8|1048576 5
 D1
 ~
 ~
@@ -3325,7 +3325,7 @@ Pits of Demondium~
 Mist swirls around you, obscuring your
 vision.  The air is foul and rank and hard to breathe in.
 ~
-0 1|8 5
+0 1|8|1048576 5
 D0
 ~
 ~
@@ -3340,7 +3340,7 @@ Pits of Demondium~
 Mist swirls around you, obscuring your
 vision.  The air is foul and rank and hard to breathe in.
 ~
-0 1|8 5
+0 1|8|1048576 5
 D0
 ~
 ~
@@ -3359,7 +3359,7 @@ Pits of Demondium~
 Mist swirls around you, obscuring your
 vision.  The air is foul and rank and hard to breathe in.
 ~
-0 1|8 5
+0 1|8|1048576 5
 D0
 ~
 ~
@@ -3374,7 +3374,7 @@ Pits of Demondium~
 Mist swirls around you, obscuring your
 vision.  The air is foul and rank and hard to breathe in.
 ~
-0 1|8 5
+0 1|8|1048576 5
 D0
 ~
 ~
@@ -3389,7 +3389,7 @@ Pits of Demondium~
 Mist swirls around you, obscuring your
 vision.  The air is foul and rank and hard to breathe in.
 ~
-0 1|8 5
+0 1|8|1048576 5
 D0
 ~
 ~
@@ -3410,7 +3410,7 @@ vision.  The air is foul and rank and hard to breathe in.
 
 To the south a dark cave entrance beckons.
 ~
-0 1|8 5
+0 1|8|1048576 5
 D2
 ~
 ~
@@ -3439,7 +3439,7 @@ vision.  The air is foul and rank and hard to breathe in.
 
 To the south a dark cave entrance beckons.
 ~
-0 1|8 5
+0 1|8|1048576 5
 D1
 ~
 ~
@@ -3466,7 +3466,7 @@ Pits of Demondium~
 Mist swirls around you, obscuring your
 vision.  The air is foul and rank and hard to breathe in.
 ~
-0 1|8 5
+0 1|8|1048576 5
 D1
 ~
 ~

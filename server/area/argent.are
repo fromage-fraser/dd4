@@ -1689,7 +1689,7 @@ layers the floor.  The room is filthy and smells absolutely disgusting.  A tiny
 grilled window near the ceiling lets sunlight penetrate the gloom, as well as
 allowing storm water pour into the cell when it rains in the streets above.
 ~
-0 1 0
+0 1|1048576 0
 D3
 ~
 ~
@@ -1700,7 +1700,7 @@ Prison Cell~
 The cell is grubby and wet.  Dirty straw covers the ground and disgusting slime
 oozes down the stone walls.
 ~
-0 1 0
+0 1|1048576 0
 D3
 ~
 ~
@@ -1711,7 +1711,7 @@ Prison Cell~
 The cell is grubby and wet.  Dirty straw covers the ground and disgusting slime
 oozes down the stone walls.
 ~
-0 1 0
+0 1|1048576 0
 D3
 ~
 ~
@@ -1722,7 +1722,7 @@ Prison Cell~
 The cell is grubby and wet.  Dirty straw covers the ground and disgusting slime
 oozes down the stone walls.
 ~
-0 1 0
+0 1|1048576 0
 D2
 ~
 ~

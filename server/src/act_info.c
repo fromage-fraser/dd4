@@ -3413,31 +3413,38 @@ void do_consider( CHAR_DATA *ch, char *argument )
         act("$n starts to consider $N as a possible target.", ch, NULL, victim, TO_ROOM);
         diff = victim->level - ch->level;
 
-        if (IS_SET(victim->act, ACT_OBJECT))
+        if ( IS_SET(victim->act, ACT_INVULNERABLE) )
         {
-            if ( diff <= -10 ) msg = "You can destroy $N naked and weaponless.";
-            else if ( diff <=  -5 ) msg = "$N is no match for your offensive capabilities.";
-            else if ( diff <=  -2 ) msg = "$N looks like it would be easy to destroy.";
-            else if ( diff <=   1 ) msg = "The perfect match for your destructive inclinations!";
-            else if ( diff <=   5 ) msg = "You don't think you could easily destroy $E.";
-            else if ( diff <=   9 ) msg = "$N looks like it would be tough to destroy.";
-            else if ( diff <=  14 ) msg = "It would be a huge effort to destroy $E.";
-            else if ( diff <=  25 ) msg = "If $E has any way of defending itself you are toast";
-            else if ( diff <=  99 ) msg = "You think you'd exhaust yourself trying to destroy $E.";
-            else msg = "It would take you FOREVER to destroy $E.";
-
+            msg = "$N cannot be physically harmed.";
         }
-        else {
-            if ( diff <= -10 ) msg = "You can kill $N naked and weaponless.";
-            else if ( diff <=  -5 ) msg = "$N is no match for you.";
-            else if ( diff <=  -2 ) msg = "$N looks like an easy kill.";
-            else if ( diff <=   1 ) msg = "The perfect match!";
-            else if ( diff <=   5 ) msg = "$N says 'Do you feel lucky, punk?'.";
-            else if ( diff <=   9 ) msg = "$N laughs at you mercilessly.";
-            else if ( diff <=  14 ) msg = "Death will thank you for your gift.";
-            else if ( diff <=  25 ) msg = "$N says 'I could crush you with my little finger!'";
-            else if ( diff <=  99 ) msg = "$N says 'You puny insect... I will destroy you!'";
-            else msg = "$N is unimaginably more powerful than you.";
+        else
+        {
+            if (IS_SET(victim->act, ACT_OBJECT))
+            {
+                if ( diff <= -10 ) msg = "You can destroy $N naked and weaponless.";
+                else if ( diff <=  -5 ) msg = "$N is no match for your offensive capabilities.";
+                else if ( diff <=  -2 ) msg = "$N looks like it would be easy to destroy.";
+                else if ( diff <=   1 ) msg = "The perfect match for your destructive inclinations!";
+                else if ( diff <=   5 ) msg = "You don't think you could easily destroy $E.";
+                else if ( diff <=   9 ) msg = "$N looks like it would be tough to destroy.";
+                else if ( diff <=  14 ) msg = "It would be a huge effort to destroy $E.";
+                else if ( diff <=  25 ) msg = "If $E has any way of defending itself you are toast";
+                else if ( diff <=  99 ) msg = "You think you'd exhaust yourself trying to destroy $E.";
+                else msg = "It would take you FOREVER to destroy $E.";
+
+            }
+            else {
+                if ( diff <= -10 ) msg = "You can kill $N naked and weaponless.";
+                else if ( diff <=  -5 ) msg = "$N is no match for you.";
+                else if ( diff <=  -2 ) msg = "$N looks like an easy kill.";
+                else if ( diff <=   1 ) msg = "The perfect match!";
+                else if ( diff <=   5 ) msg = "$N says 'Do you feel lucky, punk?'.";
+                else if ( diff <=   9 ) msg = "$N laughs at you mercilessly.";
+                else if ( diff <=  14 ) msg = "Death will thank you for your gift.";
+                else if ( diff <=  25 ) msg = "$N says 'I could crush you with my little finger!'";
+                else if ( diff <=  99 ) msg = "$N says 'You puny insect... I will destroy you!'";
+                else msg = "$N is unimaginably more powerful than you.";
+            }
         }
         act( msg, ch, NULL, victim, TO_CHAR );
 
@@ -3458,6 +3465,11 @@ void do_consider( CHAR_DATA *ch, char *argument )
                                 capitalize(victim->short_descr) );
 
                 send_to_char( buf2, ch );
+        }
+
+        if ( IS_SET(victim->act, ACT_INVULNERABLE) )
+        {
+            return;
         }
 
         hpdiff = ( ch->hit - victim->hit );

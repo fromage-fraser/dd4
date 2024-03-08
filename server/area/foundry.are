@@ -562,7 +562,7 @@ smell lurks about its edge.
      You can jump down into the pit, or head out of the western door
 into the tunnel.
 ~
-0 1 11
+0 1|1048576 11
 D3
 A wooden door opens west into the tunnel.
 ~
@@ -630,7 +630,7 @@ that you breathe in gasps and begin to reel.
      From here you can head west through an archway into the well, or
 travel east or south through the complex of goblin holes.
 ~
-0 1 0
+0 1|1048576 0
 D1
 The goblin holes spread east.
 ~
@@ -659,7 +659,7 @@ goblins and their terrible habits.  The air is so stale and wretched
 that you breathe in gasps and begin to reel.
      The holes continue north and west from here.
 ~
-0 1 0
+0 1|1048576 0
 D0
 More goblin holes lie north.
 ~
@@ -684,7 +684,7 @@ that you breathe in gasps and begin to reel.
      An archway to the north takes you to the well, while the network
 of goblin holes worms its way east.
 ~
-0 1 0
+0 1|1048576 0
 D0
 An archway heads north into the well.
 ~
@@ -708,7 +708,7 @@ goblins and their terrible habits.  The air is so stale and wretched
 that you breathe in gasps and begin to reel.
      More holes lay west from here.
 ~
-0 1 0
+0 1|1048576 0
 D3
 Goblin holes lie to the west.
 ~

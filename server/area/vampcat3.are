@@ -3470,7 +3470,7 @@ outlet pumping a steady stream of effluent into the bog in which you now float.
 The stoney hill ranges join together far above you, barring movement in all
 directions but south.
 ~
-0 1|8|8192 11
+0 1|8|8192|1048576 11
 D2
 ~
 ~

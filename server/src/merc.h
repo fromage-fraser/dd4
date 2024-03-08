@@ -1868,6 +1868,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define ACT_NO_HEAL                     BIT_25  /* Will not heal HP from damage, supercedes ACT_REGENERATOR - Owl */
 #define ACT_NO_FIGHT                    BIT_26  /* No active attacks in fights (fireshield still works) - Owl */
 #define ACT_OBJECT                      BIT_27  /* Use to create attackable objects... bridges, walls, magic swords etc - Owl */
+#define ACT_INVULNERABLE                BIT_28  /* Cannot be physically damaged -- Owl */
 #define ACT_UNKILLABLE                  BIT_63  /* Can't be killed. 'slay' still works. - Owl */
 
 
@@ -2396,6 +2397,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define ROOM_FREEZING                   BIT_17
 #define ROOM_BURNING                    BIT_18
 #define ROOM_NO_MOUNT                   BIT_19
+#define ROOM_TOXIC                      BIT_20
 #define ROOM_NO_DROP                    BIT_63 /* Can't drop items in room, will prevent disarming in room too -- Owl 6/8/22 */
 
 

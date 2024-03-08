@@ -490,6 +490,19 @@ int hit_gain( CHAR_DATA *ch )
         if ( IS_SET(ch->in_room->room_flags, ROOM_HEALING) )
                 gain *= 2;
 
+        if ( IS_SET(ch->in_room->room_flags, ROOM_TOXIC) )
+        {
+                int random;
+                random = number_range(0,100);
+
+                if (random <= 3)
+                {
+                    send_to_char("<165>This environment is toxic. You should not linger here.<0>\n\r", ch);
+                    spell_poison( gsn_poison, ch->level, ch, ch );
+                }
+                gain /= 2;
+        }
+
         if ( ch->in_room->vnum == clan_table[ch->clan].heal_room )
         {
                 count = 1;
@@ -913,6 +926,9 @@ int mana_gain( CHAR_DATA *ch )
         if (IS_SET(ch->in_room->room_flags, ROOM_HEALING))
                 gain *= 2;
 
+        if (IS_SET(ch->in_room->room_flags, ROOM_TOXIC))
+                gain /= 2;
+
         if (ch->in_room->vnum == clan_table[ch->clan].heal_room)
         {
                 count = 1;
@@ -1033,6 +1049,9 @@ int move_gain( CHAR_DATA *ch )
 
         if (IS_SET(ch->in_room->room_flags, ROOM_HEALING))
                 gain *= 2;
+
+        if (IS_SET(ch->in_room->room_flags, ROOM_TOXIC))
+                gain /= 2;
 
         if (ch->in_room->vnum == clan_table[ch->clan].heal_room)
         {

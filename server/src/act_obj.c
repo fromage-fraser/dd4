@@ -2096,7 +2096,7 @@ void do_drink (CHAR_DATA *ch, char *argument)
                 &&   ( liquid == 13 )
                 &&   ( obj->value[3] == 0) )
                 {
-                    send_to_char("{RWhile delicious to drink, blood must be from a fresh corpse to satisfy bloodlust.{x\n\r", ch);
+                    send_to_char("{RDelicious, but blood must be from a fresh corpse to satisfy your bloodlust.{x\n\r", ch);
                 }
 
                 break;
@@ -2167,7 +2167,7 @@ void do_drink (CHAR_DATA *ch, char *argument)
                     && ( liquid == 13 )
                     && (obj->value[3] == 0) )
                 {
-                    send_to_char("{RWhile delicious to drink, blood must be from a fresh corpse to satisfy bloodlust.{x\n\r", ch);
+                    send_to_char("{RDelicious, but blood must be from a fresh corpse to satisfy your bloodlust.{x\n\r", ch);
                 }
 
                 if ( obj->value[3] != 0 )

@@ -3044,7 +3044,7 @@ This narrow tunnel has been clawed from the bedrock: the air is foul and very
 hot, and you soon begin to sweat, your clothing clinging unbearably to your
 skin.  Dull noises echo through the passage, that wanders roughly eastwards.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 A door opens north.
 ~
@@ -3223,7 +3223,7 @@ slime and filth floating on its surface in several places.  A ripe smell issues
 from the west, and you notice a few insects whining through the humid
 atmosphere.
 ~
-0 1|8 11
+0 1|8|1048576 11
 D1
 The corridor continues east.
 ~

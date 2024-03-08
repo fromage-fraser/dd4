@@ -2578,7 +2578,7 @@ void do_osfind( CHAR_DATA *ch, char *argument )
         one_argument( argument, arg );
         if ( arg[0] == '\0' )
         {
-                send_to_char( "Ofind what?\n\r", ch );
+                send_to_char( "Osfind what?\n\r", ch );
                 return;
         }
 

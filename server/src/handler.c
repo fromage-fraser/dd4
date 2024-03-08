@@ -3380,6 +3380,7 @@ char *act_bit_name (unsigned long int vector)
         if ( vector & ACT_NO_HEAL               ) return "no_heal";
         if ( vector & ACT_UNKILLABLE            ) return "unkillable";
         if ( vector & ACT_NO_FIGHT              ) return "cannot_fight";
+        if ( vector & ACT_INVULNERABLE          ) return "invulnerable";
         if ( vector & ACT_OBJECT                ) return "objectlike";
 
         return "none";
@@ -3506,6 +3507,7 @@ char* room_flag_name (unsigned long int vector)
                 case ROOM_FREEZING:         return "freezing";
                 case ROOM_BURNING:          return "burning";
                 case ROOM_NO_MOUNT:         return "no_mount";
+                case ROOM_TOXIC:            return "toxic";
                 case ROOM_NO_DROP:          return "no_drop";
 
                 default: return "(unknown)";

@@ -648,7 +648,7 @@ This cell is rather dirty.  There is a small, lumpy sleeping pallet in one
 corner, but the floor is bare.  There are no other furnishings.  Excrement is
 smeared on the floor and walls, and even the ceiling.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D 1
 Through the doorway, you see a dimly-lit hallway.
 ~
@@ -745,7 +745,7 @@ nothing compared to this.  You have never seen anything so bad, and you feel
 your gorge rising.  You cannot believe that any creature could live in such
 filth.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D 2
 Through the cell bars you see a spiral staircase.
 ~
@@ -764,7 +764,7 @@ You cannot believe that anything could live in such filth as this.  You hold
 your nose and try to restrain yourself from running back out and bringing up
 your last meal.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D 1
 Through the cell bars you see a spiral staircase.
 ~

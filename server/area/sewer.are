@@ -1076,7 +1076,7 @@ inappropriate, as the smell would keep any intelligent creature from even
 thinking of anything but getting away from this foul end of the WORLD.
 The bend goes from north to west.
 ~
-70 9 5
+70 9|1048576 5
 D0
 North. Filled with mud, that place looks like an impassable intersection
 with pipes leading north and east.
@@ -2137,7 +2137,7 @@ foul stench of the slimy sediment as you try not to get covered by the
 falling sludge. To the east there is an entryway leading out from here and
 it seems absolutely impossible to force the muddy decent.
 ~
-71 13 5
+71 13|1048576 5
 D1
 East. You see nothing of interest.
 ~
@@ -3563,11 +3563,11 @@ S
 #7286
 The hells yard~
 You are standing in a lot of mud. A disgusting smell surrounds
-the place, and makes you fell sick. Small flames sometimes shoot
+the place, and makes you feel sick. Small flames sometimes shoot
 up from the hot mud. To the west there is a small door. To the
 north you can see an iron door.
 ~
-72 12 5
+72 12|1048576 5
 D0
 To dark to tell.
 ~

@@ -24,7 +24,7 @@ The screaming harpy leader tries to scratch your eyes out!
 ~
 The harpy leader looks at you and grins menacingly.  She stretches
 her wings and you see insects crawling around in them.  Her hair is
-matted and greasy and you are sickened by the miasma of stench that 
+matted and greasy and you are sickened by the miasma of stench that
 surrounds her.
 ~
 2|4|32 8|32|32768|524288 -750 S
@@ -85,7 +85,7 @@ The ugly, wicked witch cackles maniacally.
 ~
 The witch has jet-black hair and sickly green skin.  She is covered
 in warts and boils.  Her nails are long and sharp and look like
-they would be quite painful against your flesh.  Her dark eyes 
+they would be quite painful against your flesh.  Her dark eyes
 turn towards you, feeling as though they pierce your very soul.
 ~
 2|4|32 4|8|16|128|1073741824 -600 S
@@ -168,9 +168,9 @@ You have heard that roc eggs have remarkable healing powers.  Wonder if it's tru
 #9101
 A fluffy white cloud~
 You find yourself standing on a small cloud.  The cloud feels kind
-of spongy beneath your feet.  Below you you see a huge pile of rocks 
-at the end of a mountainous trail.  Above you you see another small 
-cloud, with a similarly odd texture. 
+of spongy beneath your feet.  Below you you see a huge pile of rocks
+at the end of a mountainous trail.  Above you you see another small
+cloud, with a similarly odd texture.
 ~
 91 4 5
 D4
@@ -364,7 +364,7 @@ S
 High and perilous cliff~
 You are on a high and rocky cliff.  To the west you see a huge
 ominous storm cloud moving this way.  You might want to take cover
-before the storm hits.  You think you see a narrow trail leading 
+before the storm hits.  You think you see a narrow trail leading
 to the south.
 ~
 91 0 5
@@ -544,7 +544,7 @@ This hole must have been used as a lair or nest.  There are
 feathers and bones everywhere and the floor is covered with
 something disgusting.
 ~
-91 9 5
+91 9|1048576 5
 D3
 ~
 ~
@@ -576,7 +576,7 @@ The stench in here is beyond foul.  There are feathers, bones and
 rotting carcasses everywhere.  This place is absolutely gross and
 you have to strain yourself not to lose your lunch.
 ~
-91 9 5
+91 9|1048576 5
 D1
 Your only hope to keep your lunch down is to head this way...
 ~
@@ -589,7 +589,7 @@ The stench in here is beyond foul.  There are feathers, bones and
 rotting carcasses everywhere.  This place is absolutely gross and
 you have to strain yourself not to lose your lunch.
 ~
-91 9 5
+91 9|1048576 5
 D2
 Your only hope to keep your lunch down is to head this way...
 ~
@@ -937,7 +937,7 @@ picture~
 E
 picture~
 The picture is in on the east wall.  It is highly detailed, and you
-see some people you think you recognise walking around the temple in the 
+see some people you think you recognise walking around the temple in the
 picture.
 ~
 D5

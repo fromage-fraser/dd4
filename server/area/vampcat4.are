@@ -2849,7 +2849,7 @@ to bring you to your knees. You may travel east into the bog or continue further
 into the pipe westward, hanging around here doesn't seem an attractive
 proposition.
 ~
-0 4|8|512 0
+0 4|8|512|1048576 0
 D1
 ~
 ~
@@ -2866,7 +2866,7 @@ effluent. The stench threatens to overpower your senses, but you manage to fight
 back the nausea and keep your footing. In both directions the tunnel recedes
 into darkness and either way seems as good as the other.
 ~
-0 1|4|8|512 0
+0 1|4|8|512|1048576 0
 D1
 ~
 ~
@@ -2882,7 +2882,7 @@ You crouch inside a dark east-west concrete sewerage drain, knee deep in
 effluent. To the east you can make out nothing but more drain, to the west lies
 a steel filter grill.
 ~
-0 1|4|8|512 0
+0 1|4|8|512|1048576 0
 D1
 ~
 ~
@@ -2899,7 +2899,7 @@ To your immediate west an iron filter grill has been installed, presumably to
 prevent passage further along the drain in this direction. Eastward you see
 nothing but more drain and darkness.
 ~
-0 1|4|8|512 6
+0 1|4|8|512|1048576 6
 D1
 ~
 ~
@@ -2923,7 +2923,7 @@ in sewage. To your east lies a filter grill, preventing the flow of solid
 waste matter in that direction while southward lies the sewer tunnel that
 lets out into this drain.
 ~
-0 1|4|8|512 6
+0 1|4|8|512|1048576 6
 D1
 The grill is heavy, iron and choked with filth.
 Brute force or magic would seem to be the answer
@@ -2943,7 +2943,7 @@ filth and decay is overpowering. There is a small opening at the base of
 the northern wall leading to a run-off pipe and westwards the sewer tunnel
 disappears into blackness.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -2959,7 +2959,7 @@ You stand inside a dank concrete sewer tunnel that runs east-west. Untreated
 sewage congeals about your feet and the stench of filth and decay is overpowering.
 You can make out nothing of interest in either direction.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D1
 ~
 ~
@@ -2975,7 +2975,7 @@ You stand inside a dank concrete sewer tunnel that runs east-west. Untreated
 sewage congeals about your feet and the stench of filth and decay is overpowering.
 You can make out nothing of interest in either direction.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D1
 ~
 ~
@@ -2993,7 +2993,7 @@ To the west you can make out a junction in the sewer tunnel, while eastwards
 it disappears into impenetrable darkness. A feeling of terror and dread hangs
 in the foul black air.
 ~
-0 1|4|8 0
+0 1|4|8|1048576 0
 D1
 ~
 ~
@@ -3010,7 +3010,7 @@ sewage congeals about your feet and the stench of filth and decay is overpowerin
 The air is heavy with a feeling of malevolent evil and menace and a part of
 your mind is screaming at you to flee madly into the darkness.
 ~
-0 1|4|8|8192 0
+0 1|4|8|8192|1048576 0
 D0
 ~
 ~
@@ -3039,7 +3039,7 @@ sewage congeals about your feet and the stench of filth and decay is overpowerin
 Further along to both the east and the west you see four-way junctions in the
 tunnel network. A feeling of terror and dread hangs in the foul air.
 ~
-0 1|4|8 0
+0 1|4|8|1048576 0
 D1
 ~
 ~
@@ -3059,7 +3059,7 @@ You stand at a four-way junction in a dank concrete sewer tunnel. Untreated
 sewage congeals about your feet and the stench of filth and decay is overpowering.
 A feeling of terror and dread hangs in the foul air.
 ~
-0 1|4|8 0
+0 1|4|8|1048576 0
 D0
 ~
 ~
@@ -3084,7 +3084,7 @@ Untreated sewage congeals about your feet and the stench of filth and decay
 is overpowering. A four-way sewer junction lies to your immediate east while
 a manhole cover opens down from here into one of the sewer's service ducts.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D1
 ~
 ~
@@ -3122,7 +3122,7 @@ concentration difficult. Further along to the south you see a four-way junction
 in the tunnel network while a sharp turn to the west is just visible in the
 gloom to your north. A feeling of terror and dread hangs in the foul air.
 ~
-0 1|4|8 0
+0 1|4|8|1048576 0
 D0
 ~
 ~
@@ -3139,7 +3139,7 @@ sewage congeals about your feet and the stench of filth and decay is overpowerin
 A short distance away to the north you make out a four-way junction, there
 appears to be a turn southwards too, but it is hard to be sure in this gloom.
 ~
-0 1|4|8 0
+0 1|4|8|1048576 0
 D0
 ~
 ~
@@ -3173,7 +3173,7 @@ sewage congeals about your feet and the stench of filth and decay is overpowerin
 To the east the tunnel curves around to the south yet west it grows unusually
 dark and you cannot make out anything.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D1
 ~
 ~
@@ -3190,7 +3190,7 @@ your ankles in raw effluent. The darkness here is absolute and your light
 provide illumination sufficient only for your immediate area. Strange splashing
 sounds issue from the gloom.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -3211,7 +3211,7 @@ is slick with filth and slime and the stench of it is enough to make concentrati
 difficult. Further along to the south you see a four-way junction in the tunnel
 network, north it grows too dark to discern anything of the tunnel's course.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -3249,7 +3249,7 @@ is slick with filth and slime and the stench of it is enough to make concentrati
 difficult. A short distance to the south lies a three-way junction in the tunnel
 network while northwards it grows too dark to discern anything in the oppressive gloom.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -3263,7 +3263,7 @@ S
 Junction in the sewer tunnels~
 You stand at a three-way junction in a dank concrete sewer tunnel, deep underground.
 Splashing sounds issue forth from the gloom and a chill wind blows through the
-tunnel, sending a shiver of apprehension down your spine. To the south  the
+tunnel, sending a shiver of apprehension down your spine. To the south the
 gloom is impenetrable while to the north and west the tunnel dives into a
 shallow decline and the water level rises sharply above your waist.
 ~
@@ -3287,7 +3287,7 @@ You stand waist-deep in the filth and bog of an underground sewer, the stench
 is revolting and nausea threatens to overwhelm you. You can wade north
 further into the muck or head south where it appears to be only shin-deep.
 ~
-0 1|8 6
+0 1|8|1048576 6
 D0
 ~
 ~
@@ -3306,7 +3306,7 @@ tunnel network.
 
 You are a long way from home.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D1
 ~
 ~
@@ -3323,7 +3323,7 @@ Untreated effluent congeals about your ankles and the stench of filth and decay
 is overpowering. To the north the sewer becomes even damper and less inviting,
 while some distance to the east you can make out a junction in the network.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -3379,7 +3379,7 @@ rises to higher than your head and you will be forced to swim to stay afloat
 in the sucking mire, while to the south the river of effluent continues,
 becoming only slightly more shallow.
 ~
-0 1|8 6
+0 1|8|1048576 6
 D0
 ~
 ~
@@ -3398,7 +3398,7 @@ To the south and east the tunnel inclines and the mire becomes more shallow,
 permitting you to wade. If you get out of here alive you might consider having
 your adventuring equipment professionally cleaned.
 ~
-0 1|4|8 8
+0 1|4|8|1048576 8
 D1
 ~
 ~
@@ -3415,7 +3415,7 @@ is revolting and nausea threatens to overwhelm you. You can wade west towards
 a junction further along in the muck or head to the east where it appears to
 become only shin-deep.
 ~
-0 1|8 6
+0 1|8|1048576 6
 D1
 ~
 ~
@@ -3433,7 +3433,7 @@ rises to higher than your head and you will be forced to swim to stay afloat in
 the sucking mire, while east the water level is a little shallower and should
 allow to you move more freely.
 ~
-0 1|8 6
+0 1|8|1048576 6
 D1
 ~
 ~
@@ -3449,7 +3449,7 @@ You stand waist-deep in the filth and bog of an underground sewer, the stench
 is revolting and nausea threatens to overpower you. You can wade west, where the
 muck grows deeper or head south towards shallower passages.
 ~
-0 1|8 6
+0 1|8|1048576 6
 D2
 ~
 ~
@@ -3465,7 +3465,7 @@ You stand at a three-way junction in a dank concrete sewer tunnel deep undergrou
 Untreated sewage congeals about your feet and the stench of filth and decay is
 overpowering. The tunnel continues in all the cardinal directions save east.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -3485,7 +3485,7 @@ You stand at a bend in a dank concrete sewer tunnel, deep underground. Untreated
 sewage congeals about your feet and the stench of filth and decay is overpowering.
 The tunnel continues north and east from here.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -3502,7 +3502,7 @@ congeals about your feet and the stench of filth and decay is overpowering. To t
 north lies a four-way junction in the tunnel while to your south the path turns to
 the east and disappears into darkness.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -3520,7 +3520,7 @@ overpowering. A short distance away to the north you can make out another three-
 junction, but to the south and east the tunnel grows too dark to make out further
 details.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -3541,7 +3541,7 @@ Untreated effluent laps against your ankles and the stench of filth and decay is
 overpowering. The tunnel continues in all the cardinal directions save east, with
 further junctions apparent to both the north and south.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -3562,7 +3562,7 @@ ankles in raw effluent. The darkness here is absolute and your light provide
 illumination sufficient only for your immediate area. Strange splashing sounds
 issue from the gloom.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -3582,7 +3582,7 @@ You stand waist-deep in the filth and bog of an underground sewer, the stench is
 revolting and nausea threatens to overwhelm you. You can wade south further into
 the muck or head north where it appears to be only shin-deep.
 ~
-0 1|8 6
+0 1|8|1048576 6
 D0
 ~
 ~
@@ -3598,7 +3598,7 @@ You stand waist-deep in the filth and bog of an underground sewer, the stench is
 revolting and nausea threatens to overpower you. You can wade east, where the muck
 grows deeper or strike out north towards shallower passages.
 ~
-0 1|8 6
+0 1|8|1048576 6
 D0
 ~
 ~
@@ -3616,7 +3616,7 @@ rises to higher than your head and you will be forced to swim to stay afloat in
 the sucking mire, while to the west the sewer passage curves around north, though
 the bog appears to become no more shallow.
 ~
-0 1|8 6
+0 1|8|1048576 6
 D1
 ~
 ~
@@ -3634,7 +3634,7 @@ evil filth. To the north and west the tunnel inclines and the mire becomes somew
 more shallow, permitting you to wade. Your mother never told you there would be
 days like this.
 ~
-0 1|4|8 8
+0 1|4|8|1048576 8
 D0
 ~
 ~
@@ -3652,7 +3652,7 @@ rises to higher than your head and you will be forced to swim to stay afloat
 in the sucking mire, while to the north the bog is of a similar depth and the
 tunnel looks to branch off to the west.
 ~
-0 1|8 6
+0 1|8|1048576 6
 D0
 ~
 ~
@@ -3668,7 +3668,7 @@ You stand waist-deep in the filth and bog of an underground sewer, at a three-wa
 junction in the sewer tunnel network.  You can wade south, where the muck grows
 deeper or head north or west towards shallower passages.
 ~
-0 1|8 6
+0 1|8|1048576 6
 D0
 ~
 ~
@@ -3690,7 +3690,7 @@ concentration difficult. Further along to the south you see a three-way junction
 in the tunnel network which appears to be wholly submerged in effluent, while a
 sharp westward turn is just visible in the gloom to your north.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -3707,7 +3707,7 @@ west. Untreated effluent congeals about your ankles and the stench of filth and
 decay is overpowering. To the south the sewer becomes even damper and less inviting,
 while some distance to the west you can make out a junction in the tunnel network.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D2
 ~
 ~
@@ -3724,7 +3724,7 @@ sewage congeals about your feet and the stench of filth and decay is overpowerin
 To the east the tunnel curves around to the south while to the west the tunnel
 lets out into a three-way junction permitting passage to the north and south.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D1
 ~
 ~
@@ -3741,7 +3741,7 @@ is revolting and nausea threatens to overwhelm you. You can wade east towards
 a junction further along in the muck or head to the west where it appears to
 become only shin-deep.
 ~
-0 1|8 6
+0 1|8|1048576 6
 D1
 ~
 ~
@@ -3758,7 +3758,7 @@ sewage congeals about your feet and the stench of filth and decay is overpowerin
 A north-south junction lies east, while westwards the tunnel curves around to the
 north, into darkness.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D1
 ~
 ~
@@ -3864,7 +3864,7 @@ You stand inside a dank concrete sewer tunnel that runs east-west. Untreated
 sewage congeals about your feet and the stench of filth and decay is overpowering.
 A north-south junction lies east, while westwards the becomes darker and more narrow.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D1
 ~
 ~
