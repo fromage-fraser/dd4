@@ -3755,7 +3755,7 @@ stench causes bile to flood your mouth and your gorge to rise. The
 hideous stream winds for what seems like miles before coming to
 a lit area.
 ~
-0 8 0
+0 8|1048576 0
 D 0
 ~
 ~

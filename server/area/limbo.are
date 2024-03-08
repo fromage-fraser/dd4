@@ -345,7 +345,7 @@ A sleepy-looking owl regards you lazily.
 This large horned owl has bright orange eyes and regards you with a mix of mild
 curiosity tinged with contempt.
 ~
-2|2048|9223372036854775808 524288 1000 S
+2|2048|268435456|9223372036854775808 524288 1000 S
 105 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -2089,7 +2089,7 @@ S
 Owl's Arena~
 This is an underwater testing room belonging to Owl.
 ~
-0 9223372036854775808 8
+0 1048576|9223372036854775808 8
 D3
 You see Owl's outdoors testing room.
 ~

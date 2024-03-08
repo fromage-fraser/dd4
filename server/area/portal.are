@@ -1138,7 +1138,7 @@ The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -1162,7 +1162,7 @@ The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -1186,7 +1186,7 @@ The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -1210,7 +1210,7 @@ The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -1234,7 +1234,7 @@ The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -1258,7 +1258,7 @@ The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -1282,7 +1282,7 @@ The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -1306,7 +1306,7 @@ The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -1330,7 +1330,7 @@ The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -1354,7 +1354,7 @@ The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -1378,7 +1378,7 @@ The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -1402,7 +1402,7 @@ The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -1426,7 +1426,7 @@ The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -1450,7 +1450,7 @@ The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -3073,7 +3073,7 @@ The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~
@@ -3097,7 +3097,7 @@ The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D0
 ~
 ~

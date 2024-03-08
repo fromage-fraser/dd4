@@ -2609,7 +2609,7 @@ What a STINK!!. You are perched precariously on a small outlet pipe, the flow
 of murky liquid batters your body, as you cling to the edge of an outlet pipe.
 From here you can reach inside the outlet pipe if you want.
 ~
-0 1|2048 4
+0 1|2048|1048576 4
 D5
 On the Lake~
 ~
@@ -7485,7 +7485,7 @@ smell resides here - rotting flesh, you spy the reason for this, a decomposed
 body just before you. Many bones and various bit of furniture lie heaped in the
 corner of the room. The only exit is to the west.
 ~
-0 1|8 0
+0 1|8|1048576 0
 D3
 ~
 ~

@@ -1206,6 +1206,13 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
         if (victim->position == POS_DEAD)
                 return;
 
+        if ( IS_NPC(victim)
+        &&   IS_SET(victim->act, ACT_INVULNERABLE) )
+        {
+            act ("$C is {WINVULNERABLE{x and cannot be physically harmed.", ch, NULL, victim, TO_CHAR );
+            return;
+        }
+
         if (!IS_NPC(ch))
                 ch->pcdata->dam_per_fight += dam;
 

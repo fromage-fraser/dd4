@@ -10796,7 +10796,7 @@ threatens to release your last meal.
 
 The cages continues west, a door in the bars is to the south
 ~
-0 1|8|8192 1
+0 1|8|8192|1048576 1
 D2
 The bars wait to allow you to leave
 ~
@@ -11699,7 +11699,7 @@ northern wall.
 
 The sole exit is the door to the east.
 ~
-0 1|8|2048|8192 1
+0 1|8|2048|8192|1048576 1
 D1
 A door stands ready
 ~
