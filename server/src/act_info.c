@@ -5880,7 +5880,7 @@ void print_who_data (CHAR_DATA *ch, char *buf)
 
         if (ch->level < LEVEL_HERO)
         {
-                sprintf (buf, "{x[{w%s{x {W%2d{x %s%-9s{x {%c%s{x] %s%s%s%s%s%s%s%s%s%s%s%s%s\n\r",
+                sprintf (buf, "{x[{w%s{x {W%2d{x %s%-11s{x {%c%s{x] %s%s%s%s%s%s%s%s%s%s%s%s%s\n\r",
                          race_table[ch->race].who_name,
                          ch->level,
                          class_colours[ch->class],

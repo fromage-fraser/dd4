@@ -468,6 +468,7 @@ bridges, walls, enchanted armour, etc). Other flags to support concept include
 ACT_NO_FIGHT and ITEM_REMAINS. Relevant affected skills and interactions updated.
 -Specials spec_sahuagin_prince and spec_red_grung added
 -ACT_INVULNERABLE and ROOM_TOXIC added
+-Can read more full class names in WHO information
 
 {W December 2023{x
 -New area in, Ota'ar Dar Residential Area - North, levels 50-55.
@@ -475,8 +476,6 @@ ACT_NO_FIGHT and ITEM_REMAINS. Relevant affected skills and interactions updated
  be poisoned.  ostat and area files updated to reflect changes.
 -do_tfind added, to make finding teachers with particular skills
 and proficiency levels easier in-game.
--Pipes, smokeables, and smokeable substances added.  Can be purchased
-in all major cities. See relevant HELP file entries for details.
 
 {W October 2023{x
 -New area in, Ota'ar Dar Military Fortress, levels 45-50.

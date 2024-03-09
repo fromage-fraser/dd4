@@ -1935,8 +1935,7 @@ void spell_cure_poison( int sn, int level, CHAR_DATA *ch, void *vo )
                 check_group_bonus(ch);
         }
 
-
-        send_to_char("A warm feeling runs through your body.\n\r", victim);
+        send_to_char("<227>A warm feeling runs through your body.<0>\n\r", victim);
         act("$N looks better.", ch, NULL, victim, TO_NOTVICT);
 
 }
@@ -3342,7 +3341,7 @@ void spell_heal( int sn, int level, CHAR_DATA *ch, void *vo )
 
         }
 
-        send_to_char( "A warm feeling fills your body.\n\r", victim );
+        send_to_char( "<227>A warm feeling fills your body.<0>\n\r", victim );
         return;
 }
 
@@ -5700,7 +5699,7 @@ void spell_cell_adjustment ( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( is_affected( victim, gsn_poison ) )
         {
                 affect_strip( victim, gsn_poison );
-                send_to_char( "A warm feeling runs through your body.\n\r", victim );
+                send_to_char( "<227>A warm feeling runs through your body.<0>\n\r", victim );
                 act( "$N looks better.", ch, NULL, victim, TO_NOTVICT );
         }
 
@@ -7165,7 +7164,7 @@ void spell_mass_heal( int sn, int level, CHAR_DATA *ch, void *vo )
 
                 gch->hit = UMIN( gch->hit + 100, gch->max_hit - gch->aggro_dam);
                 update_pos( gch );
-                send_to_char( "A warm feeling fills your body.\n\r", gch );
+                send_to_char( "<227>A warm feeling fills your body.<0>\n\r", gch );
         }
 
         send_to_char( "Ok.\n\r", ch );
@@ -8858,7 +8857,7 @@ void spell_runic_cure( int sn, int level, CHAR_DATA *ch, void *vo )
                 check_group_bonus(ch);
         }
 
-        send_to_char("A warm feeling runs through your body.\n\r", victim);
+        send_to_char("<227>A warm feeling runs through your body.<0>\n\r", victim);
         act("$N looks better.", ch, NULL, victim, TO_NOTVICT);
 
 }
@@ -8878,7 +8877,7 @@ void spell_runic_ward( int sn, int level, CHAR_DATA *ch, void *vo )
                 check_group_bonus(ch);
         }
 
-        send_to_char("A warm feeling runs through your body.\n\r", victim);
+        send_to_char("<227>A warm feeling runs through your body.<0>\n\r", victim);
         act("$N looks better.", ch, NULL, victim, TO_NOTVICT);
 
 }

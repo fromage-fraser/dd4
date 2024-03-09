@@ -2016,7 +2016,7 @@ void do_sneak (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        send_to_char("You attempt to move amongst the shadows.\n\r", ch);
+        send_to_char("<255>Y<254>o<253>u <252>a<251>t<250>t<249>e<248>m<247>p<246>t <245>t<243>o <242>m<241>o<240>v<239>e <238>a<237>m<236>o<235>n<234>gst the shadows.<0>\n\r", ch);
         affect_strip(ch, gsn_sneak);
         affect_strip(ch, gsn_shadow_form);
 
@@ -3160,7 +3160,7 @@ void do_shadow_form (CHAR_DATA *ch, char *argument)
         if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
                 return;
 
-        send_to_char("You attempt to move in the shadows.\n\r", ch);
+        send_to_char("<255>Y<254>o<253>u <252>a<251>t<250>t<249>e<248>m<247>p<246>t <245>t<244>o <243>m<242>o<241>v<240>e <239>i<238>n <237>t<236>h<235>e <234>shadows.<0>\n\r", ch);
         affect_strip(ch, gsn_sneak);
         affect_strip(ch, gsn_shadow_form);
 

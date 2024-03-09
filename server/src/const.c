@@ -45,7 +45,7 @@ const struct class_type class_table [ MAX_CLASS ] =
                 "Mag",  "Mage",
                 APPLY_INT,  OBJ_VNUM_SCHOOL_DAGGER,
                 3018,  95,  18,  6,  6,  9,  TRUE,
-                "Necromncr",  "Warlock",  "Nec",  "Wlk",
+                "Necromancer",  "Warlock",  "Nec",  "Wlk",
                 { -1, 3, 1, 1, -1 }
         },
 
@@ -77,7 +77,7 @@ const struct class_type class_table [ MAX_CLASS ] =
                 "Psi",  "Psionic",
                 APPLY_WIS,  OBJ_VNUM_SCHOOL_DAGGER,
                 3151,  95,  18,  9,  7,  10,  TRUE,
-                "Infernlst",  "Witch",  "Inf",  "Wit",
+                "Infernalist",  "Witch",  "Inf",  "Wit",
                 { -1, 2, 2, 0, 0 }
         },
 
@@ -149,7 +149,7 @@ const struct sub_class_type sub_class_table [ MAX_SUB_CLASS ] =
         /*  who name, show name, attribute bonus, mana bonus  */
 
         {       "Non",  "None",                 APPLY_STR,      FALSE   },
-        {       "Nec",  "Necromncr",            APPLY_WIS,      TRUE    },
+        {       "Nec",  "Necromancer",          APPLY_WIS,      TRUE    },
         {       "Wlk",  "Warlock",              APPLY_STR,      TRUE    },
         {       "Tem",  "Templar",              APPLY_STR,      TRUE    },
         {       "Dru",  "Druid",                APPLY_INT,      TRUE    },
@@ -157,7 +157,7 @@ const struct sub_class_type sub_class_table [ MAX_SUB_CLASS ] =
         {       "Bou",  "B. Hunter",            APPLY_STR,      FALSE   },
         {       "Thg",  "Thug",                 APPLY_CON,      FALSE   },
         {       "Kni",  "Knight",               APPLY_WIS,      TRUE    },
-        {       "Inf",  "Infernlst",            APPLY_STR,      TRUE    },
+        {       "Inf",  "Infernalist",          APPLY_STR,      TRUE    },
         {       "Wit",  "Witch",                APPLY_INT,      TRUE    },
         {       "Wer",  "Werewolf",             APPLY_STR,      FALSE   },
         {       "Vam",  "Vampire",              APPLY_STR,      FALSE   },
@@ -4813,7 +4813,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
 
         {
-                "dark globe of invulnerability", &gsn_dark_globe,
+                "dark globe", &gsn_dark_globe,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_dark_globe, 120, 12,
                 "", "<58>The dark globe about you implodes.<0>"
