@@ -985,7 +985,7 @@ struct smelting_data
 struct class_type
 {
         char    who_name [ 4 ];         /* Three-letter name for 'who' */
-        char    show_name [ 9 ];        /* Full name of class for 'who' */
+        char    show_name [ 11 ];        /* Full name of class for 'who' */
         int     attr_prime;             /* Prime attribute */
         int     weapon;                 /* First weapon */
         int     guild;                  /* Vnum of guild room */
@@ -995,8 +995,8 @@ struct class_type
         int     hp_min;                 /* Min hp gained on leveling */
         int     hp_max;                 /* Max hp gained on leveling */
         bool    fMana;                  /* Class gains mana on level */
-        char    sub1 [ 9 ];             /* First sub-class-name */
-        char    sub2 [ 9 ];             /* Second sub-class-name */
+        char    sub1 [ 11 ];             /* First sub-class-name */
+        char    sub2 [ 11 ];             /* Second sub-class-name */
         char    sub_who1 [ 4 ];         /* Had to add for do_change     */
         char    sub_who2 [ 4 ];         /* Had to change for do_change */
         int     class_stats [ 5 ];      /* class stat modifier on startup */
@@ -1040,7 +1040,7 @@ struct soar_points
 struct sub_class_type
 {
         char    who_name [ 4 ];         /* Three-letter name */
-        char    show_name [ 9 ];        /* Full class name for who */
+        char    show_name [ 11 ];        /* Full class name for who */
         int     attr_bonus;             /* Attribute bonus */
         bool    bMana;                  /* Mana bonus for new class? */
 };
