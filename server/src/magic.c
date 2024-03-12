@@ -1935,7 +1935,6 @@ void spell_cure_poison( int sn, int level, CHAR_DATA *ch, void *vo )
                 check_group_bonus(ch);
         }
 
-
         send_to_char("<227>A warm feeling runs through your body.<0>\n\r", victim);
         act("$N looks better.", ch, NULL, victim, TO_NOTVICT);
 
