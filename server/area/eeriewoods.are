@@ -236,9 +236,9 @@ pipe~
 a pipe~
 A pipe smokes away here.~
 ~
-1 1 1
-0~ 0~ -1~ 0~
-1 0 0
+52 0 1|16384
+220~ 220~ 40~ 5~
+1 0 30
 A
 5 -4
 #29001
@@ -2244,7 +2244,6 @@ E 1 11304 100 17
 E 1 11342 100 5
 *
 M 1 29008 1 29008           the leprechaun to Wandering in the woods
-E 1 29000 100 0
 E 1 29004 100 5
 E 1 29003 100 6
 E 1 29002 100 7
@@ -2252,6 +2251,7 @@ E 1 29001 100 13
 E 1 29005 100 8
 G 1 29006 100
 G 1 29020 100
+E 1 29000 100 17
 *
 M 1 29009 1 29028           the enchanted horse to Wandering in the woods
 E 1 29007 100 6

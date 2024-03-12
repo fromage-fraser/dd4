@@ -1350,7 +1350,7 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                         {
                                 affect_modify( ch, paf, TRUE, obj );
                                 /* If the object your about to wear is NOT a set OR it is and you get a bonus then Apply effect */
-                                send_to_char ( "{WYou obtain a Set Bonus.{x\n\r", ch);
+                                send_to_char ( "{WYou obtain a set bonus.{x\n\r", ch);
                                 break;
                         }
                 }

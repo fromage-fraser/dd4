@@ -5109,14 +5109,14 @@ void spell_teleport (int sn, int level, CHAR_DATA *ch, void *vo)
         }
 
         send_to_char( "{cYou slowly fade out of existence.{x\n\r", victim );
-        act( "{c$n slowly fades out of existence.{x", victim, NULL, NULL, TO_ROOM );
-        arena_commentary("$n teleports away.", ch, NULL);
+        act( "{c$c slowly fades out of existence.{x", victim, NULL, NULL, TO_ROOM );
+        arena_commentary("$c teleports away.", ch, NULL);
 
         if (is_affected(ch, gsn_mount) )
         {
                 CHAR_DATA *mount;
                 mount = ch->mount;
-                act_move( "$n fades out of existence.\n\r", mount, NULL, NULL, TO_ROOM );
+                act_move( "$c fades out of existence.\n\r", mount, NULL, NULL, TO_ROOM );
         }
         else {
              send_to_char( "\n\r", victim );
@@ -5134,7 +5134,7 @@ void spell_teleport (int sn, int level, CHAR_DATA *ch, void *vo)
         }
 
         char_to_room( victim, pRoomIndex );
-        act( "{c$n slowly fades into existence.{x", victim, NULL, NULL, TO_ROOM );
+        act( "{c$c slowly fades into existence.{x", victim, NULL, NULL, TO_ROOM );
 
         do_look( victim, "auto" );
 
@@ -5146,7 +5146,7 @@ void spell_teleport (int sn, int level, CHAR_DATA *ch, void *vo)
                 mount = ch->mount;
                 char_from_room( mount );
                 char_to_room( mount, pRoomIndex );
-                act_move( "$n fades into existence.\n\r", mount, NULL, NULL, TO_ROOM );
+                act_move( "$c fades into existence.\n\r", mount, NULL, NULL, TO_ROOM );
         }
 
         return;
