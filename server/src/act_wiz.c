@@ -2332,18 +2332,19 @@ void do_tfind( CHAR_DATA *ch, char *argument )
                                     if (first_result == FALSE)
                                     {
                                         /* print stuff, set it to false */
-                                        sprintf (headbuf, "{W========================================================================{x\r\n{WThe following teachers know '{G%s{x' at or above {G%d{x\r\n{W========================================================================{x\r\n",
+                                        sprintf (headbuf, "{W================================================================================{x\r\n{WThe following teachers know '{G%s{x'{W at or above {G%d{W%%\r\n{W================================================================================{x\r\n",
                                             skill_table[sn].name,
                                             skill_value
                                         );
                                         send_to_char( headbuf, ch );
                                         first_result = TRUE;
                                     }
-                                    sprintf( buf, "{Y%3d{x. [{W%5d{x] ({G%3d{x) {c%s{x\n\r",
+                                    sprintf( buf, "{Y%3d{x. [{W%5d{x] ({G%3d{x) {c%s{x {w({W%s{w){x\n\r",
                                             listnum,
                                             pMobIndex->vnum,
                                             pMobIndex->skills->learned[sn],
-                                            pMobIndex->short_descr);
+                                            pMobIndex->short_descr,
+                                            pMobIndex->player_name );
                                     listnum++;
                                     if ( !fAll )
                                         strcat( buf1, buf );

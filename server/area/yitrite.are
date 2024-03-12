@@ -714,11 +714,11 @@ A
 #24032
 emerald pipe~
 an emerald pipe~
-A jewel encrusted pipe made of emerald lies here.~
+A jewel-encrusted pipe made of emerald lies here.~
 ~
-5 1|1024 1|8192
-0~ 60~ 60~ 11~
-12 0 0
+52 0 1|16384
+162~ 162~ 102~ 14~
+1 0 65
 A
 2 5
 #24033
@@ -4305,7 +4305,7 @@ M 1 24011 1 24022               Bjorn the Dwarf to The peaceful
 *                                  field.
 *
 M 1 24020 1 24049               Stain, master thief to Stain's House.
-E 1 24032 100 16               An Emerald Pipe
+G 1 24032 100                  An Emerald Pipe
 E 1 24035 100 0                A Glowsteel
 E 1 24036 100 17               A Shot of Whiskey
 *
