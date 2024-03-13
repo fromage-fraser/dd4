@@ -10,6 +10,7 @@
 /server/src/shutdown.txt
 /server/area/bugs.txt
 /server/player/
+/server/log/
 
 .vscode/targets.log
 .vscode/configurationCache.log
