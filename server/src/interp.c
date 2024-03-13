@@ -449,6 +449,7 @@ const struct cmd_type cmd_table [] =
         { "rstat",      do_rstat,       POS_DEAD,    L_BUI,  LOG_NORMAL },
         { "tfind",      do_tfind,       POS_DEAD,    L_APP,  LOG_NORMAL },
         { "rfind",      do_rfind,       POS_DEAD,    L_APP,  LOG_NORMAL },
+
         { "holylight",  do_holylight,   POS_DEAD,    L_HER,  LOG_NORMAL },
         { "immtalk",    do_immtalk,     POS_DEAD,    L_HER,  LOG_NORMAL },
         { ":",          do_immtalk,     POS_DEAD,    L_HER,  LOG_NORMAL },

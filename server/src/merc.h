@@ -3839,6 +3839,7 @@ extern int gsn_conducting_blast;
 extern int gsn_reforge;
 extern int gsn_tfind;
 extern int gsn_rfind;
+
 /*
  *  Deity gsns
  */
