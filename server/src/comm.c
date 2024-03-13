@@ -1707,8 +1707,8 @@ void write_to_buffer (DESCRIPTOR_DATA *d, const char *txt, int length)
 /*
  * Lowest level output function.
  * Write a block of text to the file descriptor.
- * If this gives errors on very long blocks (like 'ofind all'),
- *   try lowering the max block size.
+ * If this gives errors on very long blocks
+ * try lowering the max block size.
  */
 bool write_to_descriptor (int desc, char *txt, int length)
 {
