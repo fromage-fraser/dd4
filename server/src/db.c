@@ -650,6 +650,7 @@ int     gsn_electrum_runic_blade;
 int     gsn_starmetal_runic_blade;
 int     gsn_reforge;
 int     gsn_tfind;
+int     gsn_rfind;
 
 
 /*

@@ -321,7 +321,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   575     /* +2 do_smoke and do_clean 17/12/23 - Owl */
+#define MAX_SKILL                   576     /* +1 rfind 13/3/24 - Owl */
 #define MAX_PRE_REQ                 1398    /* +1 reforge - Brutus 1/1/23 */
 #define MAX_SPELL_GROUP             452     /* +1 reforge Brutus 1/1/23 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
@@ -3838,6 +3838,7 @@ extern int gsn_death_strike;
 extern int gsn_conducting_blast;
 extern int gsn_reforge;
 extern int gsn_tfind;
+extern int gsn_rfind;
 /*
  *  Deity gsns
  */
@@ -4448,6 +4449,7 @@ DECLARE_DO_FUN( do_snap_shot                    );
 DECLARE_DO_FUN( do_swoop                        );      /* swoop for shifter phoenix form - Owl */
 DECLARE_DO_FUN( do_deploy                       );
 DECLARE_DO_FUN( do_retract                      );
+DECLARE_DO_FUN( do_rfind                        );
 
 /*
  * Spell functions.

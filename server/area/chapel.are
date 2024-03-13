@@ -9,7 +9,7 @@ the bony skeleton~
 A bony skeleton is here.
 ~
 Brown bones with tufts of clothing still hanging from them.  This
-skeleton looks very mindless but still dangerous ...
+skeleton looks mindless but still dangerous ..
 ~
 32 0 0 S
 1 20 9 1d1+19 1d6+0
@@ -18,9 +18,9 @@ skeleton looks very mindless but still dangerous ...
 #3401
 undead zombie~
 the undead zombie~
-An undead zombie sits here munching on something ...
+An undead zombie sits here munching on something.
 ~
-His body is totally white and slowly rotting away.  Each Zombie looks
+His body is totally white and slowly rotting away.  Each zombie looks
 quite different from the next because they were, of course, once alive and
 human.
 ~
@@ -71,8 +71,8 @@ the priest~
 A priest of God stands here solemnly speaking words of praise.
 ~
 Obviously a goodly man, you feel closer to God just by gazing upon this man.
-Dressed in white, fine white hair, and a soft slightly wrinkled face ...
-this man has a sacred beauty.  You see a halo around his head.
+Dressed in white, with fine white hair and a soft slightly wrinkled face this
+man has a sacred beauty.  You see a halo around his head.
 ~
 2050 168 1000 S
 15 5 -5 15d15+150 1d4+8
@@ -95,10 +95,10 @@ beings sometimes walk on all their legs and sometimes on the hind pair only.
 8 8 0
 #3407
 nightgaunt~
-The nightgaunt~
-A nightgaunt is standing here
+the nightgaunt~
+A nightgaunt is standing here.
 ~
-... shocking and uncouth black thing with smooth, oily, skin, unpleasant horns
+A shocking and uncouth black thing with smooth, oily, skin, unpleasant horns
 that curve inward toward each other, bat wings whose beating make no sound,
 ugly prehensile paws, and a barbed tail that lashes disquietingly.  And worst
 of all, it makes absolutely no sound or speech and smiles not at all because
@@ -110,7 +110,7 @@ it has no face, only a suggestive blackness where a face ought to be ...
 8 8 0
 #3408
 hunting horror~
-The hunting horror~
+the hunting horror~
 The hunting horror is here in wait of an unwary traveler.
 ~
 Serving Nyarlathotep and Roch'tar, these beings are hunting for victims.
@@ -121,7 +121,7 @@ voices.  A hunting horror is HUGE, normally around 40 feet long.
 ~
 32 40 -1000 S
 60 1 -5 20d20+200 3d6+12
-2000 60000
+128 60000
 8 8 0
 #3409
 weeds~
@@ -139,7 +139,7 @@ snapper joe~
 Snapper Joe~
 Snapper Joe is standing here leering at you chillingly.
 ~
-What an ugly fiend! He is about 6'6'' and has mostly greenish skin with
+What an ugly fiend! He is about 6'6" and has mostly greenish skin with
 bright red hair. Half his face is burnt off and he has a perpetual smile.
 He is called up from his service in hell in order to aid the Undying One.
 ~
@@ -149,8 +149,8 @@ He is called up from his service in hell in order to aid the Undying One.
 8 8 1
 #3411
 X-ist eater~
-The X-ist flesh eater~
-An X-ist flesh eater is sitting here munching on some coffin remains
+the X-ist flesh eater~
+An X-ist flesh eater is sitting here munching on some coffin remains.
 ~
 A large hairy monstrous beast, the only LIVE thing you have seen down here.
 It stands approximately 8 feet tall and hunches over to fit in this
@@ -184,7 +184,7 @@ rock slug~
 the rock slug~
 A rock slug is slowly creeping along, leaving a slime trail behind it.
 ~
-It is a large brownish slug.  Got any salt?  Didn't think so ...
+It is a large brownish slug.  Got any salt?  Didn't think so...
 ~
 4 0 0 S
 3 18 7 1d1+42 1d7+0
@@ -212,15 +212,15 @@ And on he babbles ...
 0 900
 6 6 1
 #3415
-wife ghost specter~
+wife ghost spectre~
 The spectral etcher's wife~
 The spectral wife of the etcher is very faintly floating here.
 ~
-You can barely make her out ... though it almost makes you vomit.
-She is missing half her head.  The remaining half is smashed in horribly like
-she took a nasty fall.  Her one damaged eye hangs on its own.  She smiles
-insanely at you thru a broken jaw and missing teeth.  One hand of hers is
-resting on the shoulder of the etcher ... her husband.
+You can barely make her out... though it almost makes you vomit.  She is missing
+half her head.  The remaining half is smashed in horribly like she took a nasty
+fall.  Her one damaged eye hangs on its own.  She smiles insanely at you thru a
+broken jaw and missing teeth.  One hand of hers is resting on the shoulder of
+the etcher... her husband.
 ~
 2 65536 1000 S
 7 14 4 1d1+86 2d4+3
@@ -231,7 +231,7 @@ body~
 The half-decomposed body~
 A half-decomposed body is lying in the corner here.
 ~
-YUK! It's ugly, disgusting ... it smells ... it also moves a bit!
+YUK! It's ugly, disgusting... it smells... it also moves a bit!
 ~
 36 0 -350 S
 6 15 4 1d1+80 2d5+1
@@ -299,7 +299,7 @@ A
 #3403
 plasma webbing~
 disgusting pinkish plasma webbing~
-A pile of pink material is lying here~
+A pile of pink material is lying here.~
 ~
 9 512|2048 1|8
 7~ 0~ 0~ 0~
@@ -324,7 +324,7 @@ recognize that it will probably fit the lock at the entrance of the tombs.
 #3411
 large black dirty key~
 a large black dirty key~
-a large black dirty key is lying here~
+a large black dirty key is lying here.~
 ~
 18 0 1
 0~ 0~ 0~ 0~
@@ -357,8 +357,7 @@ A black marble ring is lying here on the ground.~
 2 4000 2750
 E
 black marble ring~
-It is pitch black and has beautiful swirls characteristic of marble all
-through it.
+It is pitch black and has beautiful swirls characteristic of marble all through it.
 ~
 A
 14 10
@@ -421,7 +420,7 @@ The wine should be nicely aged.
 #3418
 coins~
 a mound of coins fit for a dead king~
-you see a mound of coins fit for a dead king here~
+You see a mound of coins fit for a dead king here.~
 ~
 20 0 1
 116~ 50~ 36~ 3~
@@ -429,7 +428,7 @@ you see a mound of coins fit for a dead king here~
 #3419
 key~
 key to the coffin~
-The key to the coffin is lying here~
+The key to the coffin is lying here.~
 ~
 18 0 1
 0~ 0~ 0~ 0~
@@ -454,7 +453,7 @@ Ah HA!  A hidden compartment!
 #3421
 rusty sword curved scimitar~
 a rusty curved scimitar~
-a sword has been left lying here~
+A sword has been left lying here.~
 ~
 5 0 8193
 0~ 2~ 3~ 3~
@@ -467,7 +466,7 @@ its cutting edge.
 #3422
 piece slime~
 a piece of slime~
-You step on a piece of slime...your foot squishes a bit~
+You step on a piece of slime...your foot squishes a bit.~
 ~
 19 0 1
 15~ 0~ 0~ 0~
@@ -495,15 +494,15 @@ A
 #3424
 scroll tightly rolled~
 a tightly rolled scroll~
-a yellowing tightly rolled scroll is here~
+A yellowing tightly rolled scroll is here.~
 ~
 2 64 16385
 15~ colour spray~ create food~ magic missile~
 5 5000 1429
 E
 scroll tightly rolled~
-  It is tightly wound. The writing on the inside when opened up is very
-unreadable but the scroll has a seal on it with a grey :
+  It is tightly wound. The writing on the inside when opened up is unreadable
+but the scroll has a seal on it with a grey :
 
     88
     88
@@ -515,7 +514,7 @@ unreadable but the scroll has a seal on it with a grey :
 #3425
 auburn orb~
 an auburn-colored orb~
-An orb is here~
+An orb is here.~
 ~
 4 66 16385
 10~ 2~ 2~ charm person~
@@ -528,7 +527,7 @@ inside of this rare and beautiful object.
 #3426
 bar gold~
 a bar of gold~
-A bar of gold is lying here~
+A bar of gold is lying here.~
 ~
 8 0 1
 0~ 0~ 0~ 0~
@@ -541,7 +540,7 @@ on it...The emblem is a large 'J'
 #3427
 cape dark black~
 a dark black cape~
-A dark black cape is lying here~
+A dark black cape is lying here.~
 ~
 9 64 1025
 5~ 0~ 0~ 0~
@@ -557,8 +556,8 @@ A
 17 10
 #3428
 flaming sword long longsword~
-a pitch-black longsword that flames brightly...~
-a sword lies here~
+a pitch-black longsword that flames brightly~
+A sword lies here.~
 ~
 5 64 8193
 0~ 3~ 6~ 3~

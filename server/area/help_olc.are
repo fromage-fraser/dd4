@@ -1481,13 +1481,16 @@ The 'Perms' line shows permanently allocated memory blocks.  There is no limit
 on the number and size of these blocks.
 ~
 
-52 MFIND OFIND~
+52 MFIND OFIND RFIND~
 Syntax: mfind <name>
 Syntax: ofind <name>
+Syntax: rfind <name>
 
 MFIND finds all mobile types with a particular name.
 
 OFIND finds all object types with a particular name.
+
+RFIND finds all rooms with a particular name.
 ~
 
 52 MSTAT OSTAT RSTAT~

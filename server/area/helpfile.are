@@ -469,6 +469,7 @@ ACT_NO_FIGHT and ITEM_REMAINS. Relevant affected skills and interactions updated
 -Specials spec_sahuagin_prince and spec_red_grung added
 -ACT_INVULNERABLE and ROOM_TOXIC added
 -Can read more full class names in WHO information
+-Imm skill 'rfind' added to search for rooms by title substring
 
 {W December 2023{x
 -New area in, Ota'ar Dar Residential Area - North, levels 50-55.
@@ -2920,14 +2921,17 @@ The 'Perms' line shows permanently allocated memory blocks.  There is no
 limit on the number and size of these blocks.
 ~
 
-102 MFIND OFIND TFIND~
-Syntax: mfind <<name>
-Syntax: ofind <<name>
+102 MFIND OFIND TFIND RFIND~
+Syntax: mfind <<name> (put multiple words in single quotes)
+Syntax: ofind <<name> (put multiple words in single quotes)
+Syntax: rfind <<name> (put multiple words in single quotes)
 Syntax: tfind 'spell/skill group name' <<optional percentage>
 
 MFIND finds all mobile types with a particular name.
 
 OFIND finds all object types with a particular name.
+
+RFIND finds all rooms with a particular name.
 
 TFIND finds teachers in the domain who know particular spell or skill
 groups at or above a given percentage level. If no percentage is given,

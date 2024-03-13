@@ -1,17 +1,25 @@
-Tue Feb  6 06:44:09 2024
-Command 'c 'charm person' sol'
-Issued by 'Owl' (player) at room 27473
+Wed Mar 13 07:49:08 2024
+Command 'rfind the'
+Issued by 'Owl' (player) at room 78
 Master is '(null)'
 Function: leaving update_handler
 Backtrace:
-../src/dd4(write_last_command+0xe7)[0x452d97]
-/lib/x86_64-linux-gnu/libc.so.6(+0x38d60)[0x7fdeef4b3d60]
-../src/dd4(mob_is_quest_target+0x37)[0x4a3ad7]
-../src/dd4(spell_charm_person+0xb3)[0x4880b3]
-../src/dd4(do_cast+0x6d2)[0x47a372]
-../src/dd4(interpret+0x371)[0x479131]
-../src/dd4(game_loop_unix+0x619)[0x458ba9]
+../src/dd4(write_last_command+0xe7)[0x452f17]
+/lib/x86_64-linux-gnu/libc.so.6(+0x38d60)[0x7fdb4fc76d60]
+../src/dd4(do_rfind+0xc2)[0x44a082]
+../src/dd4(interpret+0x371)[0x4791f1]
+../src/dd4(game_loop_unix+0x619)[0x458d29]
 ../src/dd4(main+0xe0)[0x41f5f0]
-/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xea)[0x7fdeef49ed0a]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xea)[0x7fdb4fc61d0a]
+../src/dd4(_start+0x2a)[0x41f69a]
+
+dev/src/dd4(_start+0x2a)[0x41f69a]
+
+58d29]
+../src/dd4(main+0xe0)[0x41f5f0]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xea)[0x7f7badfacd0a]
+../src/dd4(_start+0x2a)[0x41f69a]
+
+_main+0xea)[0x7fea0e3a1d0a]
 ../src/dd4(_start+0x2a)[0x41f69a]
 

@@ -2366,6 +2366,97 @@ void do_tfind( CHAR_DATA *ch, char *argument )
         return;
 }
 
+/* Find room vnums by searching room title strings.  --Owl 13/3/24 */
+
+void do_rfind(CHAR_DATA *ch, char *argument )
+{
+        CHAR_DATA      *rch;
+        ROOM_INDEX_DATA *pRoomIndex;
+        char            buf  [ MAX_STRING_LENGTH   ];
+        char            buf1 [ MAX_STRING_LENGTH*2 ];
+        char            arg  [ MAX_INPUT_LENGTH    ];
+        extern int      top_room;
+        int             vnum;
+        int             nMatch;
+        int             listnum = 1;
+        int             listmax = 400; /* Increase at your peril, will probably cause segfault --Owl */
+        bool            fAll;
+        bool            found;
+
+        rch = get_char( ch );
+
+        if ( !authorized( rch, gsn_mfind ) )
+                return;
+
+        one_argument( argument, arg );
+        if ( arg[0] == '\0' )
+        {
+                send_to_char( "Rfind which room?\n\r", ch );
+                return;
+        }
+
+        if (strlen (arg) < 3)
+        {
+                send_to_char ("Search string must be at least three letters long.\n\r", ch);
+                return;
+        }
+
+        buf1[0] = '\0';
+        fAll    = FALSE;
+        found   = FALSE;
+        nMatch  = 0;
+
+        for ( vnum = 0; nMatch < top_room && listnum <= listmax; vnum++ )
+        {
+            if ( ( pRoomIndex = get_room_index( vnum ) ) )
+            {
+                nMatch++;
+                if ( fAll || multi_keyword_match( arg, pRoomIndex->name ) )
+                {
+                    found = TRUE;
+                    sprintf( buf, "{Y%3d{x. [{W%5d{x] {c%s{x\n\r",
+                            listnum, pRoomIndex->vnum, pRoomIndex->name );
+
+                    if (listnum <= listmax)
+                    {
+                        if (!fAll)
+                        {
+                            if (strlen(buf1) + strlen(buf) < sizeof(buf1) - 1)
+                            {
+                                strcat(buf1, buf);
+                            }
+                            else
+                            {
+                                // Buffer full
+                                send_to_char("Too many results.  Try a more targetted search.\n\r", ch);
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            send_to_char(buf, ch);
+                        }
+                        listnum++;
+                    }
+
+                    if (listnum > listmax) // Check after increment if we should break
+                    {
+                        break; // Exit the loop if we've reached the limit
+                    }
+                }
+            }
+        }
+
+        if ( !found )
+        {
+                send_to_char( "Nowhere like that in the domain.\n\r", ch);
+                return;
+        }
+
+        if ( !fAll )
+                send_to_char( buf1, ch );
+        return;
+}
 
 void do_ofind( CHAR_DATA *ch, char *argument )
 {
@@ -2389,7 +2480,7 @@ void do_ofind( CHAR_DATA *ch, char *argument )
         one_argument( argument, arg );
         if ( arg[0] == '\0' )
         {
-                send_to_char( "Ofind what?\n\r", ch );
+                send_to_char( "ofind what?\n\r", ch );
                 return;
         }
 
