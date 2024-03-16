@@ -4499,7 +4499,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "decay", &gsn_decay,
-                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384|262144,
+                TYPE_INT, TAR_OBJ_ROOM, POS_STANDING, 16384|262144,
                 spell_decay, 100, 12,
                 "slip up", "!Decay!"
         },
@@ -6408,6 +6408,18 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Rfind!"
+        },
+        {
+                "enhanced swiftness", &gsn_enhanced_swiftness,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
+                spell_null, 0, 0,
+                "", "!Enhanced Swiftness!"
+        },
+        {
+                "enhanced critical", &gsn_enhanced_critical,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
+                spell_null, 0, 0,
+                "", "!Enhanced Critical!"
         },
 
         /*

@@ -469,9 +469,8 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         }
 
 /*
- *
  * Everything below here is for players -- Brutus
- * If you're DAZED you cant attack.
+ * If you're DAZED you can't attack.
  */
         if (IS_AFFECTED(ch, AFF_DAZED))
         {
@@ -557,8 +556,33 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         if ((is_affected(ch, gsn_haste)) && !IS_AFFECTED(ch, AFF_PRONE))
                 one_hit(ch, victim, dt, FALSE);
 
-        if ( number_percent() < ch->swiftness)
+        /*
+         * Swiftness check & calculations
+         */
+        if ( !IS_NPC(ch)
+        &&   ch->pcdata->learned[gsn_enhanced_swiftness])
+        {
+            if ( number_percent() < ( ch->swiftness + ( ch->pcdata->learned[gsn_enhanced_swiftness] / 4 ) + dex_app[ get_curr_dex( ch ) ].toswift ) )
+            {
                 one_hit(ch, victim, dt, TRUE);
+              /*   log_string("This fired for PC w/ES!");
+                bug("Swiftness: %d", ( ch->swiftness + ( ch->pcdata->learned[gsn_enhanced_swiftness] / 4 ) )  + dex_app[ get_curr_dex( ch ) ].toswift ); */
+            }
+        }
+        else if ( !IS_NPC(ch)
+        &&        ( number_percent() < ( ch->swiftness + dex_app[ get_curr_dex( ch ) ].toswift ) ) )
+        {
+                one_hit(ch, victim, dt, TRUE);
+                /* log_string("This fired for PC w/out ES!!");
+                bug("Swiftness: %d", ( ch->swiftness + dex_app[ get_curr_dex( ch ) ].toswift ) ); */
+        }
+        else if ( IS_NPC(ch)
+        &&        ( number_percent() < ch->swiftness ) )
+        {
+            one_hit(ch, victim, dt, TRUE);
+            /* log_string("This fired for NPC!");
+            bug("Swiftness: %d", ch->swiftness ); */
+        }
 
         /* for counterbalance - adds another attack.*/
 
@@ -1323,10 +1347,33 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 if (IS_AFFECTED(victim, AFF_SANCTUARY))
                         dam /= 2;
 
-                if ( number_percent() < GET_CRIT( ch ))
+                /* Figure out (painfully) critical hit stuff */
+                if ( !IS_NPC(ch)
+                &&    ch->pcdata->learned[gsn_enhanced_critical] )
                 {
-                        dam *= 2;
-                        crit = TRUE;
+                        if ( number_percent() < ( ch->crit + ( ch->pcdata->learned[gsn_enhanced_critical] / 4 ) + int_app[ get_curr_int( ch ) ].tocrit ) )
+                        {
+                            dam *= 2;
+                            crit = TRUE;
+                            /* log_string("This fired for PC w/EC!");
+                            bug("Crit: %d", ( ch->crit + ( ch->pcdata->learned[gsn_enhanced_critical] / 4 ) + int_app[ get_curr_int( ch ) ].tocrit ) ); */
+                        }
+                }
+                else if ( !IS_NPC(ch)
+                &&        ( number_percent() < ( ch->crit + int_app[ get_curr_int( ch ) ].tocrit  ) ) )
+                {
+                    dam *= 2;
+                    crit = TRUE;
+                    /* log_string("This fired for PC w/out EC!!");
+                    bug("Crit: %d", ( ch->crit + int_app[ get_curr_int( ch ) ].tocrit ) ); */
+                }
+                else if ( IS_NPC(ch)
+                &&        ( number_percent() < ch->crit ) )
+                {
+                    dam *= 2;
+                    crit = TRUE;
+                    /* log_string("Crit fired for NPC!");
+                    bug("Crit: %d", ch->crit ); */
                 }
 
                 /* this is to support strengthen, but could be applied for other things - Brutus */
