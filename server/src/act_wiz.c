@@ -1869,8 +1869,8 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                 strcat( buf1, buf );
 
                 sprintf( buf, "Crit: {R%d{x  Swiftness: {R%d{x\n\r",
-                        GET_CRIT( victim ),
-                        GET_CRIT( victim ));
+                        victim->crit,
+                        victim->swiftness);
                 strcat( buf1, buf );
 
                 sprintf( buf, "Position: {G%d{x [{W%s{x]  Wimpy: {W%d{x  Exp modifier: {W%d{x\n\r",
