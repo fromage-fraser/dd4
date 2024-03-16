@@ -321,7 +321,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   576     /* +1 rfind 13/3/24 - Owl */
+#define MAX_SKILL                   578     /* +2 enhanced swiftness & enhanced critical 15/3/24 - Owl */
 #define MAX_PRE_REQ                 1398    /* +1 reforge - Brutus 1/1/23 */
 #define MAX_SPELL_GROUP             452     /* +1 reforge Brutus 1/1/23 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
@@ -3839,6 +3839,8 @@ extern int gsn_conducting_blast;
 extern int gsn_reforge;
 extern int gsn_tfind;
 extern int gsn_rfind;
+extern int gsn_enhanced_swiftness;
+extern int gsn_enhanced_critical;
 
 /*
  *  Deity gsns
@@ -3895,8 +3897,8 @@ extern int gsn_prayer_plague;
 #define GET_AC( ch )                    ( ( ch )->armor  + ( IS_AWAKE( ch )     ? dex_app[ get_curr_dex( ch )].defensive : 0 ) )
 #define GET_HITROLL( ch )               ( ( ch )->hitroll + str_app[ get_curr_str( ch ) ].tohit )
 #define GET_DAMROLL( ch )               ( ( ch )->damroll + str_app[ get_curr_str( ch ) ].todam )
-#define GET_CRIT( ch )                  ( ( ch )->crit + int_app[ get_curr_int( ch ) ].tocrit )
-#define GET_SWIFT( ch )                 ( ( ch )->swiftness + dex_app[ get_curr_dex( ch ) ].toswift )
+#define GET_CRIT( ch )                  ( ( ch )->pcdata->learned[gsn_enhanced_critical] ? ( ch )->crit + int_app[ get_curr_int( ch ) ].tocrit + ( ( ch )->pcdata->learned[gsn_enhanced_critical] / 4 ) : ( ch )->crit + int_app[ get_curr_int( ch ) ].tocrit )
+#define GET_SWIFT( ch )                 ( ( ch )->pcdata->learned[gsn_enhanced_swiftness] ?  ( ch )->swiftness + dex_app[ get_curr_dex( ch ) ].toswift + ( ( ch )->pcdata->learned[gsn_enhanced_swiftness] / 4 ) : ( ch )->swiftness + dex_app[ get_curr_dex( ch ) ].toswift )
 #define IS_OUTSIDE( ch )                ( !IS_SET( ch->in_room->room_flags, ROOM_INDOORS) && ch->in_room->sector_type != SECT_INSIDE )
 #define WAIT_STATE( ch, pulse )         ( ( ch )->wait = UMAX( ( ch )->wait, ( pulse ) ) )
 #define MANA_COST( ch, sn )             ( IS_NPC( ch ) ? 0 : UMAX ( skill_table [ sn ].min_mana, 60 - ch->pcdata->learned [ sn ]) )

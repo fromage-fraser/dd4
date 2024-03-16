@@ -1049,7 +1049,7 @@ void do_ostat( CHAR_DATA *ch, char *argument )
         /* Show liquid type if drink container or fountain. -- Owl 1/7/22 & 9/12/23 */
         if (obj->item_type == 17 || obj->item_type == 25)
         {
-                sprintf( buf, "\n\rLiquid: {G%s{x [{W%d{x]  Colour: {G%s{x  Poisoned: {G%s{x",
+                sprintf( buf, "\n\rLiquid: {G%s{x [{W%d{x]  Appearance: {G%s{x  Poisoned: {G%s{x",
                         liq_table[obj->value[2]].liq_name,
                         obj->value[2],
                         liq_table[obj->value[2]].liq_color,
@@ -1243,6 +1243,14 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 }
 
                 strcat(buf1, "\n\r");
+                break;
+
+            case ITEM_FOOD:
+                if (obj->value[3] != 0)
+                {
+                    sprintf( buf, "This food is {Mpoisoned{x\n\r");
+                    strcat( buf1, buf );
+                }
                 break;
 
             case ITEM_WAND:
@@ -1578,6 +1586,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         GET_CRIT( victim ),
                         GET_SWIFT( victim ));
                 strcat( buf1, buf );
+
 
                 sprintf( buf, "Align: {W%d{x  Exp: {W%d{x  Class: {W%d{x ({G%s{x)  SubCl: {W%d{x ({G%s{x)\n\rAge: {W%d{x  Fame: {W%d{x  Form: {W%s{x  Aggro_dam: {R%d{x  Rage: {R%d{x\n\r",
                         victim->alignment,

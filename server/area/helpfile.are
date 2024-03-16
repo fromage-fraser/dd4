@@ -470,6 +470,8 @@ ACT_NO_FIGHT and ITEM_REMAINS. Relevant affected skills and interactions updated
 -ACT_INVULNERABLE and ROOM_TOXIC added
 -Can read more full class names in WHO information
 -Imm skill 'rfind' added to search for rooms by title substring
+-enhanced crit, enhanced swiftness, and decay added and tested for post-60
+ skills dev
 
 {W December 2023{x
 -New area in, Ota'ar Dar Residential Area - North, levels 50-55.
@@ -619,6 +621,14 @@ Syntax: cast 'fury of nature' <<victim>
 
 This spells summons the power of the surrounding environment to assault your
 victim.  This spell is less effective when not in natural surrounds.
+~
+
+0 'DECAY'~
+Syntax: cast 'decay' <<trapped object in room>
+
+This spell creates a time distortion field around a trapped object in the room
+you are standing in.  If successful, the trap will age thousands of years in an
+instant, crumbling to dust after it does so.
 ~
 
 0 FAME~
@@ -3518,6 +3528,18 @@ These skills increase the damage you inflict when attacking.  Use of the
 skill is automatic once you have practised it.
 ~
 
+0 'ENHANCED SWIFTNESS'~
+
+This skill increases your chance of landing a bonus attack.  Use of the skill is
+automatic once you have practised it.
+~
+
+0 'ENHANCED CRITICAL'~
+
+This skill increases your chances of landing a critical strike.  Use of the skill
+is automatic once you have practiced it.
+~
+
 0 PARRY 'DUAL PARRY'~
 These skills ward off incoming attacks.  Use of the skill is automatic
 once you have practised it.  You must be wielding a weapon in order to
@@ -5504,7 +5526,7 @@ pugilism                advanced consider       break wrist
 focus                   flying headbutt         enhanced hit
 ~
 
--1 'SSHAPE SHIFTER' SSHIFTER~
+-1 'SSHAPE SHIFTER' SSHIFTER SSHAPESHIFTER~
 {W
 Shape shifter forms and skills{x
 

@@ -498,7 +498,14 @@ int hit_gain( CHAR_DATA *ch )
                 if (random <= 4)
                 {
                     send_to_char("<165>This environment is toxic. You should not linger here.<0>\n\r", ch);
-                    spell_poison( gsn_poison, ch->level, ch, ch );
+
+                    if (number_percent() < ch->pcdata->learned[gsn_resist_toxin] )
+                    {
+                        send_to_char( "<46>Yo<47>u r<48>es<49>is<48>t t<47>he <46>po<47>is<48>on <49>su<48>rg<47>in<46>g t<47>hr<48>ou<49>gh <48>yo<47>ur <46>ve<47>in<48>s.<0>\n\r",ch );
+                    }
+                    else {
+                        spell_poison( gsn_poison, ch->level, ch, ch );
+                    }
                 }
                 gain /= 2;
         }

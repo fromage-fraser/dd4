@@ -651,6 +651,8 @@ int     gsn_starmetal_runic_blade;
 int     gsn_reforge;
 int     gsn_tfind;
 int     gsn_rfind;
+int     gsn_enhanced_swiftness;
+int     gsn_enhanced_critical;
 
 
 /*
@@ -3393,7 +3395,7 @@ CHAR_DATA * create_mobile( MOB_INDEX_DATA *pMobIndex )
 
         mob->hit                = mob->max_hit;
         mob->crit               = 5;
-        mob->swiftness              = 5;
+        mob->swiftness          = 5;
 
         if (IS_SET(mob->act, ACT_CLAN_GUARD))
                 REMOVE_BIT(mob->affected_by, AFF_HIDE);

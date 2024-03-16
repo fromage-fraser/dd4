@@ -171,60 +171,58 @@ void fwrite_char (CHAR_DATA *ch, FILE *fp)
                 ch->move,
                 ch->max_move);
 
-        fprintf(fp, "Rage        %d\n",  ch->rage);
-        fprintf(fp, "Rage_Max    %d\n",  ch->max_rage);
-        fprintf(fp, "Aggro_Dam   %d\n",  ch->aggro_dam);
-        fprintf(fp, "Platinum    %d\n",  ch->plat);
-        fprintf(fp, "Gold        %d\n",  ch->gold);
-        fprintf(fp, "Silver      %d\n",  ch->silver);
-        fprintf(fp, "Copper      %d\n",  ch->copper);
-        fprintf(fp, "Steel       %d\n",  ch->smelted_steel);
-        fprintf(fp, "Titanium    %d\n",  ch->smelted_titanium);
-        fprintf(fp, "Adamantite  %d\n",  ch->smelted_adamantite);
-        fprintf(fp, "Electrum    %d\n",  ch->smelted_electrum);
-        fprintf(fp, "Starmetal   %d\n",  ch->smelted_starmetal);
-        fprintf(fp, "Bank        %d\n",  ch->pcdata->bank);
-        fprintf(fp, "Bounty      %d\n",  ch->pcdata->bounty);
-        fprintf(fp, "Exp         %d\n",  ch->exp);
-        fprintf(fp, "Act         %lu\n", ch->act);
-        fprintf(fp, "Status      %d\n",  ch->status);
-        fprintf(fp, "AffdBy      %lu\n", ch->affected_by);
-        fprintf(fp, "Pos         %d\n",
-                ch->position == POS_FIGHTING ? POS_STANDING : ch->position);
-
-        fprintf(fp, "Prac        %d\n",  ch->pcdata->str_prac);
-        fprintf(fp, "SplPrac     %d\n",  ch->pcdata->int_prac);
-        fprintf(fp, "StatTrain   %d\n",  ch->pcdata->stat_train);
-        fprintf(fp, "SavThr      %d\n",  ch->saving_throw);
-        fprintf(fp, "Align       %d\n",  ch->alignment);
-        fprintf(fp, "Hit         %d\n",  ch->hitroll);
-        fprintf(fp, "Dam         %d\n",  ch->damroll);
-        fprintf(fp, "Armr        %d\n",  ch->armor);
-        fprintf(fp, "Wimp        %d\n",  ch->wimpy);
-        fprintf(fp, "Deaf        %d\n",  ch->deaf);
-        fprintf(fp, "Kills       %d\n",  ch->pcdata->kills);
-        fprintf(fp, "Killed      %d\n",  ch->pcdata->killed);
-        fprintf(fp, "Pdeaths     %d\n",  ch->pcdata->pdeaths);
-        fprintf(fp, "Pkills      %d\n",  ch->pcdata->pkills);
-        fprintf(fp, "Pkscore     %d\n",  ch->pcdata->pkscore);
-        fprintf(fp, "Form        %d\n",  ch->form);
-        fprintf(fp, "Gag         %d\n",  ch->gag);
-        fprintf(fp, "DamageMit   %d\n",  ch->damage_mitigation);
-        fprintf(fp, "DamangeEnh  %d\n",  ch->damage_enhancement);
-        fprintf(fp, "Crit        %d\n",  ch->crit);
-        fprintf(fp, "Swiftness  %d\n",  ch->swiftness);
-        fprintf(fp, "ResistAcid  %d\n",  ch->resist_acid);
-        fprintf(fp, "ResistLightning  %d\n",  ch->resist_lightning);
-        fprintf(fp, "ResistHeat  %d\n",  ch->resist_heat);
-        fprintf(fp, "ResistCold  %d\n",  ch->resist_cold);
-        fprintf(fp, "Quiet       %d\n",  ch->silent_mode);
-        fprintf(fp, "AllowLook   %d\n",  ch->pcdata->allow_look);
-        fprintf(fp, "XPLevel     %d\n",  ch->pcdata->level_xp_loss);
-        fprintf(fp, "AirSupply   %d\n",  ch->pcdata->air_supply);
-        fprintf(fp, "Paswd       %s~\n", ch->pcdata->pwd);
-        fprintf(fp, "Bmfin       %s~\n", ch->pcdata->bamfin);
-        fprintf(fp, "Bmfout      %s~\n", ch->pcdata->bamfout);
-        fprintf(fp, "Ttle        %s~\n", ch->pcdata->title);
+        fprintf(fp, "Rage        %d\n",         ch->rage);
+        fprintf(fp, "Rage_Max    %d\n",         ch->max_rage);
+        fprintf(fp, "Aggro_Dam   %d\n",         ch->aggro_dam);
+        fprintf(fp, "Platinum    %d\n",         ch->plat);
+        fprintf(fp, "Gold        %d\n",         ch->gold);
+        fprintf(fp, "Silver      %d\n",         ch->silver);
+        fprintf(fp, "Copper      %d\n",         ch->copper);
+        fprintf(fp, "Steel       %d\n",         ch->smelted_steel);
+        fprintf(fp, "Titanium    %d\n",         ch->smelted_titanium);
+        fprintf(fp, "Adamantite  %d\n",         ch->smelted_adamantite);
+        fprintf(fp, "Electrum    %d\n",         ch->smelted_electrum);
+        fprintf(fp, "Starmetal   %d\n",         ch->smelted_starmetal);
+        fprintf(fp, "Bank        %d\n",         ch->pcdata->bank);
+        fprintf(fp, "Bounty      %d\n",         ch->pcdata->bounty);
+        fprintf(fp, "Exp         %d\n",         ch->exp);
+        fprintf(fp, "Act         %lu\n",        ch->act);
+        fprintf(fp, "Status      %d\n",         ch->status);
+        fprintf(fp, "AffdBy      %lu\n",        ch->affected_by);
+        fprintf(fp, "Pos         %d\n",         ch->position == POS_FIGHTING ? POS_STANDING : ch->position);
+        fprintf(fp, "Prac        %d\n",         ch->pcdata->str_prac);
+        fprintf(fp, "SplPrac     %d\n",         ch->pcdata->int_prac);
+        fprintf(fp, "StatTrain   %d\n",         ch->pcdata->stat_train);
+        fprintf(fp, "SavThr      %d\n",         ch->saving_throw);
+        fprintf(fp, "Align       %d\n",         ch->alignment);
+        fprintf(fp, "Hit         %d\n",         ch->hitroll);
+        fprintf(fp, "Dam         %d\n",         ch->damroll);
+        fprintf(fp, "Armr        %d\n",         ch->armor);
+        fprintf(fp, "Wimp        %d\n",         ch->wimpy);
+        fprintf(fp, "Deaf        %d\n",         ch->deaf);
+        fprintf(fp, "Kills       %d\n",         ch->pcdata->kills);
+        fprintf(fp, "Killed      %d\n",         ch->pcdata->killed);
+        fprintf(fp, "Pdeaths     %d\n",         ch->pcdata->pdeaths);
+        fprintf(fp, "Pkills      %d\n",         ch->pcdata->pkills);
+        fprintf(fp, "Pkscore     %d\n",         ch->pcdata->pkscore);
+        fprintf(fp, "Form        %d\n",         ch->form);
+        fprintf(fp, "Gag         %d\n",         ch->gag);
+        fprintf(fp, "DamageMit   %d\n",         ch->damage_mitigation);
+        fprintf(fp, "DamangeEnh  %d\n",         ch->damage_enhancement);
+        fprintf(fp, "Crit        %d\n",         ch->crit);
+        fprintf(fp, "Swiftness  %d\n",          ch->swiftness);
+        fprintf(fp, "ResistAcid  %d\n",         ch->resist_acid);
+        fprintf(fp, "ResistLightning  %d\n",    ch->resist_lightning);
+        fprintf(fp, "ResistHeat  %d\n",         ch->resist_heat);
+        fprintf(fp, "ResistCold  %d\n",         ch->resist_cold);
+        fprintf(fp, "Quiet       %d\n",         ch->silent_mode);
+        fprintf(fp, "AllowLook   %d\n",         ch->pcdata->allow_look);
+        fprintf(fp, "XPLevel     %d\n",         ch->pcdata->level_xp_loss);
+        fprintf(fp, "AirSupply   %d\n",         ch->pcdata->air_supply);
+        fprintf(fp, "Paswd       %s~\n",        ch->pcdata->pwd);
+        fprintf(fp, "Bmfin       %s~\n",        ch->pcdata->bamfin);
+        fprintf(fp, "Bmfout      %s~\n",        ch->pcdata->bamfout);
+        fprintf(fp, "Ttle        %s~\n",        ch->pcdata->title);
 
         fprintf(fp, "AtrPrm      %d %d %d %d %d\n",
                 ch->pcdata->perm_str,
@@ -268,10 +266,10 @@ void fwrite_char (CHAR_DATA *ch, FILE *fp)
                 fprintf(fp, "\n");
         }
 
-        fprintf(fp, "Pglen       %d\n", ch->pcdata->pagelen);
-        fprintf(fp, "ChSub       %d\n", ch->pcdata->choose_subclass);
-        fprintf(fp, "Fame        %d\n", ch->pcdata->fame);
-        fprintf(fp, "Saved       %ld\n", ch->save_time);
+        fprintf(fp, "Pglen       %d\n",     ch->pcdata->pagelen);
+        fprintf(fp, "ChSub       %d\n",     ch->pcdata->choose_subclass);
+        fprintf(fp, "Fame        %d\n",     ch->pcdata->fame);
+        fprintf(fp, "Saved       %ld\n",    ch->save_time);
 
         if (ch->pcdata->totalqp)
                 fprintf(fp, "QPTotal     %d\n",  ch->pcdata->totalqp);

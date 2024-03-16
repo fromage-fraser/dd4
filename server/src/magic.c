@@ -521,7 +521,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
             case TAR_OBJ_INV:
                 if ( arg2[0] == '\0' )
                 {
-                        send_to_char( "What should the spell be cast upon?\n\r", ch );
+                        send_to_char( "What inventory item should the spell be cast upon?\n\r", ch );
                         return;
                 }
 
@@ -537,14 +537,14 @@ void do_cast( CHAR_DATA *ch, char *argument )
             case TAR_OBJ_ROOM:
                 if ( arg2[0] == '\0'  )
                 {
-                        send_to_char( "What should the spell be cast upon?\n\r", ch );
+                        send_to_char( "What object in the room should the spell be cast upon?\n\r", ch );
                         return;
                 }
 
                 obj = get_obj_list( ch, arg2, ch->in_room->contents );
                 if ( !obj )
                 {
-                        act( "I see no $T here.", ch, NULL, arg2, TO_CHAR );
+                        act( "I see no object '$T' in this room.", ch, NULL, arg2, TO_CHAR );
                         return;
                 }
 
@@ -1935,7 +1935,7 @@ void spell_cure_poison( int sn, int level, CHAR_DATA *ch, void *vo )
                 check_group_bonus(ch);
         }
 
-        send_to_char("<227>A warm feeling runs through your body.<0>\n\r", victim);
+        send_to_char("<229>A w<228>ar<227>m f<226>ee<220>li<226>ng <227>ru<228>ns <229>th<228>ro<227>ug<226>h y<220>ou<226>r b<227>od<228>y.<0>\n\r", victim);
         act("$N looks better.", ch, NULL, victim, TO_NOTVICT);
 
 }
@@ -3341,7 +3341,7 @@ void spell_heal( int sn, int level, CHAR_DATA *ch, void *vo )
 
         }
 
-        send_to_char( "<227>A warm feeling fills your body.<0>\n\r", victim );
+        send_to_char("<229>A w<228>ar<227>m f<226>ee<220>li<226>ng <227>fi<228>ll<229>s y<228>ou<227>r b<226>od<220>y.<0>\n\r", victim );
         return;
 }
 
@@ -5699,7 +5699,7 @@ void spell_cell_adjustment ( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( is_affected( victim, gsn_poison ) )
         {
                 affect_strip( victim, gsn_poison );
-                send_to_char( "<227>A warm feeling runs through your body.<0>\n\r", victim );
+                send_to_char( "<229>A w<228>ar<227>m f<226>ee<220>li<226>ng <227>ru<228>ns <229>th<228>ro<227>ug<226>h y<220>ou<226>r b<227>od<228>y.<0>\n\r", victim );
                 act( "$N looks better.", ch, NULL, victim, TO_NOTVICT );
         }
 
@@ -5922,17 +5922,43 @@ void spell_death_field ( int sn, int level, CHAR_DATA *ch, void *vo )
         }
 }
 
-
 void spell_decay ( int sn, int level, CHAR_DATA *ch, void *vo )
 {
-        /* Who, what, where? */
+        OBJ_DATA *obj = (OBJ_DATA *) vo;
+        int chance;
 
-        /*
-            This needs to be implemented for psionics, see notes/ideas
-            on Discord.
+        if ( obj == NULL) {
+                send_to_char("You don't see anything like that here.\n\r", ch);
+                return;
+        }
 
-            --Owl 21/12/23
-        */
+        if ( ch->fighting ) {
+                send_to_char( "Not while you're fighting!\n\r", ch );
+                return;
+        }
+
+        if (!IS_SET(obj->extra_flags, ITEM_TRAP))
+        {
+                send_to_char("It doesn't appear to be trapped.\n\r", ch);
+                return;
+        }
+
+        chance = ( ch->pcdata->learned[gsn_decay] * 2 ) / 3;
+
+        if ( !IS_NPC( ch ) && get_curr_int( ch ) > 22 )
+                chance += 10;
+
+        if ( number_percent( ) > chance ) {
+                send_to_char("Your spell has no discernible effect on the trap.\n\r",ch);
+                return;
+        }
+
+        REMOVE_BIT(obj->extra_flags, ITEM_TRAP);
+
+        obj->trap_dam = 0;
+        obj->trap_eff = 0;
+        obj->trap_charge = 0;
+        send_to_char("<173>The trap mechanism ages thousands of years in an instant--it crumbles into dust!<0>\n\r", ch);
         return;
 }
 
@@ -7164,7 +7190,7 @@ void spell_mass_heal( int sn, int level, CHAR_DATA *ch, void *vo )
 
                 gch->hit = UMIN( gch->hit + 100, gch->max_hit - gch->aggro_dam);
                 update_pos( gch );
-                send_to_char( "<227>A warm feeling fills your body.<0>\n\r", gch );
+                send_to_char( "<229>A w<228>ar<227>m f<226>ee<220>li<226>ng <227>fi<228>ll<229>s y<228>ou<227>r b<226>od<220>y.<0>\n\r", gch );
         }
 
         send_to_char( "Ok.\n\r", ch );
@@ -8857,7 +8883,7 @@ void spell_runic_cure( int sn, int level, CHAR_DATA *ch, void *vo )
                 check_group_bonus(ch);
         }
 
-        send_to_char("<227>A warm feeling runs through your body.<0>\n\r", victim);
+        send_to_char("<229>A w<228>ar<227>m f<226>ee<220>li<226>ng <227>ru<228>ns <229>th<228>ro<227>ug<226>h y<220>ou<226>r b<227>od<228>y.<0>\n\r", victim);
         act("$N looks better.", ch, NULL, victim, TO_NOTVICT);
 
 }
@@ -8877,7 +8903,7 @@ void spell_runic_ward( int sn, int level, CHAR_DATA *ch, void *vo )
                 check_group_bonus(ch);
         }
 
-        send_to_char("<227>A warm feeling runs through your body.<0>\n\r", victim);
+        send_to_char("<229>A w<228>ar<227>m f<226>ee<220>li<226>ng <227>ru<228>ns <229>th<228>ro<227>ug<226>h y<220>ou<226>r b<227>od<228>y.<0>\n\r", victim);
         act("$N looks better.", ch, NULL, victim, TO_NOTVICT);
 
 }
