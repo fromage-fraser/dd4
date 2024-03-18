@@ -23,6 +23,10 @@ LOCAL_STARTUP_SCRIPT=/home/ddsrc/dd4/server/scripts/start_dd4
 SERVER_STARTUP_SCRIPT=/home/ddhost/dd4/scripts/start_dd4
 LOCAL_EXECUTABLE=/home/ddsrc/dd4/server/src/dd4
 SERVER_EXECUTABLE=/home/ddhost/dd4/src/dd4.new
+LOCAL_WEBSITE_BUILDER_DIR=/var/www/smihilist.com/dd4/web/main/building/
+SERVER_BUILDER_DIR=/home/ddsrc/dd4/builder/
+LOCAL_MERCH_FILE=/home/ddsrc/dd4/server/src/merc.h
+
 
 if [[ $EUID -ne 0 ]]; then
    $ECHO_PATH -e "\r\n\e[38;5;0;48;5;196mThis script must be run as root, exiting without doing anything...\e[0m\r\n"
@@ -39,6 +43,13 @@ $CHOWN_PATH -R ${SERVER_USER}:${SERVER_USER} $SERVER_AREA_FILE_DIR
 $ECHO_PATH -e "\r\n\e[38;5;0;48;5;196mCopying docs to $SERVER_DOC_DIR...\e[0m\r\n"
 $CP_PATH $CP_VERBOSE -R ${LOCAL_DOC_DIR}* ${SERVER_DOC_DIR}
 $CHOWN_PATH ${SERVER_USER}:${SERVER_USER} ${SERVER_DOC_DIR}*
+
+# Copy all builder information to the website's "building" directory
+
+$ECHO_PATH -e "\r\n\e[38;5;0;48;5;196mCopying builder stuff to $LOCAL_WEBSITE_BUILDER_DIR...\e[0m\r\n"
+$CP_PATH $CP_VERBOSE -R ${SERVER_BUILDER_DIR}* ${LOCAL_WEBSITE_BUILDER_DIR}
+$CP_PATH $CP_VERBOSE ${LOCAL_MERCH_FILE} ${LOCAL_WEBSITE_BUILDER_DIR}
+$CHOWN_PATH ${SERVER_USER}:${SERVER_USER} ${LOCAL_WEBSITE_BUILDER_DIR}*
 
 # Copy startup script to server directory
 

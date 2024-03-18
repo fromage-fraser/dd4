@@ -1521,6 +1521,59 @@ Any line (except an 'S' line) may have a comment at the end.
 
 
 
+=== The #GAMES section
+
+#GAMES section in area files
+
+To allow mobs to host gambling games.
+
+The syntax is:
+
+ #GAMES
+    {
+     * <comment_to_eol>
+    }
+    {
+     M <mob-vnum:number> <game-fun:string> <bankroll:number>
+       <max_wait:number> <cheat:number>
+       <comment:to_eol>
+    }
+    S
+
+The #GAMES section has one command per line.
+
+The 'M' command assigns game-fun to all mobiles with mob-vnum.
+
+bankroll is the amount of gold that the croupier (the mob running the game) has
+when it is loaded.  When the bankroll goes below zero, the mob shuts down its
+game.  Currently games can only be conducted with gold pieces, though it is
+planned that this will be changed eventually to allow all denominations.
+
+The max_wait value is the number of PULSE_MOBILEs the croupier will wait for
+each person to make a decision for interactive games (currently unimplemented).
+PULSE_MOBILE is defined in merc.h.  The wait between rounds should depend upon
+the number of players playing.
+
+If cheat is non-zero ("true") this mobile will cheat at the given game (assuming
+cheat code is implemented in the game).
+
+An 'M' line may have a comment at the end.
+
+The following simple games are currently available for mobiles:
+
+game_u_l_t                Upper-Lower-Triple, a dice game
+game_high_dice            High dice, a dice game
+game_seven                Seven, a dice game
+
+An example of a #GAMES section:
+*
+M  3160 game_u_l_t            100000    4    1    /* Croupier, cheats    */
+M  3161 game_blackjack        1000000   8    0    /* Dealer, doesn't cheat */
+*
+S
+
+
+
 === The #SHOPS section
 
 The syntax of this section is:
