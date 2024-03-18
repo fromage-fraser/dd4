@@ -3697,7 +3697,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         if (ch->class != CLASS_SMITHY)
         {
-                send_to_char("You are unable to construct anything. Try asking a Smithy.\n\r", ch);
+                send_to_char("You are unable to construct anything. Try asking a smithy.\n\r", ch);
                 return;
         }
 
@@ -3748,7 +3748,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         if (found == -1)
         {
-                send_to_char( "Unknown Blueprint\n\rTry wrapping your blueprint in "" if its more than one word.\n\r", ch);
+                send_to_char( "Unknown Blueprint\n\rTry wrapping your blueprint in "" if it's more than one word.\n\r", ch);
                 send_to_char( "          Blueprints         Learned      Damage\n\r", ch);
                 send_to_char(bar, ch);
 
@@ -3814,7 +3814,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 return;
         }
 
-        /* go through a loop if your adding a chain */
+        /* go through a loop if you're adding a chain */
         if  ( !strcmp( blueprint_list[i].blueprint_name, "weaponchain")
                 ||  !strcmp(  blueprint_list[i].blueprint_name, "shieldchain") )
         {
@@ -3843,7 +3843,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
                 if ((!strcmp(blueprint_list[i].blueprint_name, "weaponchain") && number_percent() > ch->pcdata->learned[gsn_weaponchain]) )
                 {
-                        send_to_char("You heat the forge, and ready your materials.\n\r", ch);
+                        send_to_char("You heat the forge and ready your materials.\n\r", ch);
                         send_to_char("You fumble... your materials slip into the forge and are lost to the infernal heat.\n\r", ch);
                         act ("$n pounds $mself while creating $s armour!", ch, NULL, NULL, TO_ROOM);
                         smelted_to_char( blueprint_list[i].blueprint_cost[0],

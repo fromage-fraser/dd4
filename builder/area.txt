@@ -1,0 +1,1937 @@
+Dragons Domain MUD  4.2024
+Last update of this document 18/3/24
+
+
+=== Preface
+
+This document describes features available to the area builder for Dragons
+Domain MUD.  We endeavour to keep it up to date to reflect stable changes in the
+MUD.  It should not be used to document features that are not fully implemented
+and tested.
+
+
+=== Advice to builders
+
+Plan your area on paper or using something like https://virtual-graph-paper.com/.
+Check the MUD to make sure there's not already something similar in place. Map
+out your area and place mobs and items BEFORE you start writing.  Think before
+you write.  If you have questions, read through this document and try and figure
+it out.  If you still have questions feel free to ask one of the imms. Let
+your imagination run wild, but keep on theme (medieval fantasy hack and slash,
+for the most part).
+
+
+=== Overview of Areas:
+
+An area is one piece of the world.  Each area is defined in a separate file.
+All area files have the extension '.are'. Remember the Dragons Domain is a
+magical, medieval fantasy-based world, where technology is not particularly
+advanced.
+
+                                else if ( !str_cmp( word, "MOBPROGS" ) )
+
+
+=== Sections of an Area
+
+An area file contains the following sections:
+
+    #AREA
+    #AREA_SPECIAL
+    #HELPS
+    #RECALL
+    #MOBILES
+    #MOBPROGS
+    #OBJECTS
+    #OBJECT_SETS
+    #ROOMS
+    #RESETS
+    #GAMES
+    #SHOPS
+    #SPECIALS
+    #$
+
+An area is a collection of sections starting with #AREA until the next #AREA.
+All of our area files (except 'help.are') contain just one #AREA section,
+which is at the top of the file.
+
+
+=== Data Types
+
+All of the data in an area file (even the section headers) consists of a
+series of values.  Each value has a specific type.  The server parses the
+file by reading in data values one at a time according to the types it
+expects.
+
+Blank characters (spaces, tabs, new lines, carriage returns) at the beginning
+of a data value are always ignored (this includes strings).  Thus, you can
+format the area files whatever way suits your taste and your needs.
+
+The individual types are: 'letter', 'word', 'string', 'number', and 'to_eol'.
+
+A 'letter' is a single non-blank character.
+
+A 'word' is a sequence of non-blank characters terminated by a blank.
+
+A 'string' is a sequence of non-tilde characters terminated by a tilde.  A
+tilde is this character: '~'.  Thus, strings may contain blanks, and may be
+multiple lines long.  There is no limit on the length of an individual
+string; however, all strings go into a common memory pool whose size is fixed
+when the server is compiled.
+
+A 'number' is a decimal number with an optional leading '-' or '+'.  The '|'
+character may be used in any number: '1|64|1048576' has the value 1048641.
+The individual values separated by '|' are added together, so '5|6' is 11,
+not 7. The components need not be powers of 2.  This feature is extremely
+useful for defining bit vectors, such as the ACT_* and AFF_* bits for
+mobiles, but is not restricted to bit vectors: any number may use the '|'
+construction. ie, when putting affects together, all you need to do is the
+following (example is a mob who is aggressive and stays in one room) 1|2|32.
+
+A 'to_eol' is all the characters from the current position to the end of the
+current input line.  It is used for parsing comments at the ends of lines.
+
+In the syntax description below, <value:type> indicates a value to be read of
+the indicated type.  A backslash '\' indicates that the file format itself
+has only one line, but several lines are used in this description to fit
+within 80 columns.
+
+Braces '{ ... }' are used to enclose elements.  They are NOT literal parts of
+the file format, but a way of indicating that the enclosed elements may be
+repeated zero or more times.  Braces at the same level of indentation
+indicate that the parallel elements may be present in any order.
+
+All other characters in the syntax description are literal characters.
+
+Mobiles, objects, and rooms are identified by vnum (virtual number).  The
+range of vnum's is 1 to 65534.  Vnums must be unique (for that particular
+kind of vnum).  Vnums do not have to be in increasing order.
+
+Typically an area uses the same range of vnums for mobile vnum', object
+vnum', and room vnums, starting with a multiple of 100.  This facilitates
+adding the area into an existing set of areas.
+
+At DD4, we typically preassign room vnums.  Let us know the size of your area
+to the nearest 100 rooms and we'll give you an available "block" of vnums to use.
+
+
+
+=== The #AREA section
+
+The syntax of this section is:
+
+    #AREA <area-writer:string>~ <area-name:string>~
+    <lower-level-recommended:number> <upper-level-recommended:number>  \
+    <lower-level-hard-limit:number> <upper-level-hard-limit:number>
+
+The 'area-writer' is the name of author of the area.  The 'area-name' is the
+name of the area and can be any string.  The next line contains 4 numbers.  The
+first two are the recommended level range of the area, and the second two are
+the game-enforced limits on character levels who may enter the area.
+
+The 'areas' command uses the first four of the these values.  An example #AREA
+section follows:
+
+    #AREA Owl~ Ota'ar Dar Prince's Canton~
+    55 60 40 100
+
+
+
+=== The #AREA_SPECIAL section
+
+The syntax of this section is:
+
+    #AREA_SPECIAL
+    <area-flag:word>
+    {
+    <flag-modifier:number>
+    }
+    $
+
+The 'area-flag' is a usually-standalone word put on a line by itself to indicate
+a special effect and/or flag that should be applied to the entire area.
+Currently one of these, 'exp_mod' also has an associated 'flag-modifier' number
+that should follow it.
+
+The current #AREA_SPECIAL flags are:
+
+school              Area is a MUD SCHOOL (new character beginning area)
+no_quest            No mobs in this area may be auto-quest targets.
+hidden              "areas" command will not show this area and the mapmaker
+                    will not generate maps of it.
+safe                Pkilling cannot happen in this area.
+no_teleport         A player cannot teleport into this area.
+no_magic            Magic cannot be used in this area.
+exp_mod NUMBER      An experience point modifier will be applied to all mobs
+                    killed in this area.  100 == no change, 50 == halved, 200 ==
+                    doubled, etc.
+
+An example #AREA_SPECIAL section follows:
+
+#AREA_SPECIAL
+exp_mod 120
+no_teleport
+no_quest
+$
+
+
+
+=== The #HELPS section
+
+Help sections are usually placed in their own file (helpfile.are) but may be
+included in individual area files, too.  It will be included in the pool of all
+entries accessible via the 'help' command. Conflicting helps are resolved by
+displaying only the first instance of a help entry.
+
+One quite good use of the #HELPS section in an area file is to give imms private
+information about the area and how it works by restricting the help to
+characters of level 101 or higher.
+
+The syntax of a help entry is as follows:
+
+    #HELPS
+    {
+	<level:number> <keywords:string>~
+	<help-text:string>~
+    }
+    0 $~
+
+The 'level' number is the minimum level necessary to read the help for the
+given topic.  For example:
+
+100 IMMTALK :~
+
+would mean that only characters of level 100 or higher could read the helps
+for the 'immtalk' command.
+
+The 'keywords' are the text strings that must be matched in order to see
+this particular help entry.  Case is unimportant, though typically the
+keywords are capitalized.  For two-word entries, single quotes must be
+placed around each phrase.  For example:
+
+0 'CURE POISON'~
+
+The 'help-text' of the help is completely at the discretion of the builder.
+Spells usually give a syntax example, followed by a summary:
+
+0 'CURE POISON'~
+Syntax: cast 'cure poison' <victim>
+
+This spell will remove the effects of poison from the victim's body.
+~
+
+Normally when a player uses 'help', both the keywords and the help-text are
+shown.  If the 'level' is negative, however, the keywords are suppressed.  This
+allows the help file mechanism to be used for certain other commands, such as
+the initial 'greetings' text.
+
+If a 'help-text' begins with a leading '.', the leading '.' is stripped off.
+This provides for an escape mechanism from the usual leading-blank stripping of
+strings, so that entries with complex ASCII art etc may be used.
+
+
+
+=== The #RECALL section
+
+The syntax of this section is:
+
+    #RECALL <recall-point:number>
+
+The 'recall-point' gives the vnum of the room to which a player will
+recall if they attempt to do so anywhere within the area.  If this section is
+omitted, the recall point will be the standard ROOM_VNUM_TEMPLE defined in
+merc.h (currently vnum 3001), or your clan headquarters if your character is
+clanned.  If the 'recall-point' is invalid, the player is unable to recall
+within the area.
+
+
+
+=== The #MOBILES section
+
+Mobs are where a lot of the character of your area comes out.  This will be the
+most important section for players who walk around with 'brief' on.
+The syntax of this section is:
+
+    #MOBILES
+    {
+     #<vnum:number>
+     <keywords:string>
+     <short-description:string>
+     <long-description:string>
+     <description:string>
+     <act-flags:number> <affected-flags:number> <alignment:number> S
+     <level:number> <hitroll:number> <armor:number>			\
+     <hitnodice:number> d <hitsizedice:number> + <hitplus:number>	\
+     <damnodice:number> d <damsizedice:number> + <damroll:number>
+     <body_form:number> <exp:number>
+     <position:number> <position:number> <sex:number>
+     {
+        ">" {mobprog_trigger_type} " " {argument_list} "~"
+        {program_command_1}
+        {program_command_2}
+        {program_command_3}
+            .   .   .
+        {program_command_N}
+        "~" NL
+        "|"
+     }
+     {
+        < <species:word>~ <rank:word>~
+     }
+    }
+    #0
+
+The 'vnum' is the virtual number of the mobile.
+
+The 'keywords' are words which can be used in commands to identify the
+mobile.
+
+The 'short-description' is the description used by the 'act' function and
+other functions (notably in combat) to identify the mobile.
+
+The 'long-description' is the description seen when a character walks into a
+room in which the mobile is visible.
+
+The 'description' is the longest description.  It is used when a character
+explicitly looks at the mobile.
+
+The 'act-flags' define how the mobile acts.  See 'HELP BITZ' in game to see what
+numbers the BIT_ values resolve to.
+
+ACT_ flags:
+    ACT_IS_NPC              BIT_0      Auto set for mobs
+    ACT_SENTINEL            BIT_1      Stays in one room
+    ACT_SCAVENGER           BIT_2      Picks up objects
+    ACT_QUESTMASTER         BIT_3      Runs automated quests
+    ACT_AGGRESSIVE          BIT_5      Attacks PC's
+    ACT_STAY_AREA           BIT_6      Won't leave area
+    ACT_WIMPY               BIT_7      Flees when hurt
+    ACT_PET                 BIT_8      Auto set for pets
+    ACT_NO_QUEST            BIT_9      Cannot be selected as quest target
+    ACT_PRACTICE            BIT_10     Can teach PCs skills/spells
+    ACT_REGENERATOR         BIT_11     Heals at an accelerated rate
+    ACT_NOCHARM             BIT_12     Not charmable
+    ACT_IS_HEALER           BIT_13     Can use the healer special
+    ACT_IS_FAMOUS           BIT_14     Award fame for killing
+    ACT_LOSE_FAME           BIT_15     Lose fame for killing
+    ACT_WIZINVIS_MOB        BIT_16     Can't be seen by players
+    ACT_MOUNTABLE           BIT_17     Can be ridden
+    ACT_TINKER              BIT_18     Can repair equipment
+    ACT_BANKER              BIT_19     Is a banker/vault master
+    ACT_IDENTIFY            BIT_20     Mob can identify objects
+    ACT_DIE_IF_MASTER_GONE  BIT_21     Is destroyed if its master is not in room
+    ACT_CLAN_GUARD          BIT_22     A clan guard, has some combat resistances
+    ACT_NO_SUMMON           BIT_23     Mob may not be summoned
+    ACT_NO_EXPERIENCE       BIT_24     No exp rewarded for killing this mob
+    ACT_NO_HEAL             BIT_25     Will not heal HP from damage, supercedes
+                                       ACT_REGENERATOR
+    ACT_NO_FIGHT            BIT_26     No active attacks in fights (passive
+                                       damaging like fireshield still works)
+    ACT_OBJECT              BIT_27     Acts as an attackable object
+    ACT_INVULNERABLE        BIT_28     Cannot be physically damaged
+    ACT_UNKILLABLE          BIT_63     Cannot be killed. 'slay' still works
+
+The 'affected-flags' define more attributes of the mobile.
+
+AFF_ flags:
+    AFF_BLIND               BIT_0      Can't see
+    AFF_INVISIBLE           BIT_1      Can't be seen without detect invis
+    AFF_DETECT_EVIL         BIT_2      Can detect evil
+    AFF_DETECT_INVIS        BIT_3      Can see invisible things
+    AFF_DETECT_MAGIC        BIT_4      Can detect magic
+    AFF_DETECT_HIDDEN       BIT_5      Can detect hidden players/mobs
+    AFF_HOLD                BIT_6      Is held/trapped
+    AFF_SANCTUARY           BIT_7      Is affected by the sanctuary spell
+    AFF_FAERIE_FIRE         BIT_8      Is affected by faerie fire
+    AFF_INFRARED            BIT_9      Can see in the dark
+    AFF_CURSE               BIT_10     Is cursed
+    AFF_FLAMING             BIT_11     Has fireshield on
+    AFF_POISON              BIT_12     Is poisoned
+    AFF_PROTECT             BIT_13     Is affected by the protection spell
+    AFF_MEDITATE            BIT_14     Is meditating
+    AFF_SNEAK               BIT_15     Is sneaking
+    AFF_HIDE                BIT_16     Is hiding
+    AFF_SLEEP               BIT_17     Is asleep
+    AFF_CHARM               BIT_18     Has been charmed
+    AFF_FLYING              BIT_19     Is flying
+    AFF_PASS_DOOR           BIT_20     Can pass through non-passproof doors
+    AFF_DETECT_TRAPS        BIT_21     Can detect trapped items
+    AFF_BATTLE_AURA         BIT_22     Affected by battle aura (dam reduction)
+    AFF_DETECT_SNEAK        BIT_23     Can detect sneaking PCs/NPCs
+    AFF_GLOBE               BIT_24     Has globe spell on
+    AFF_DETER               BIT_25     Deters hostile creatures
+    AFF_SWIM                BIT_26     Is swimming
+    AFF_PRAYER_PLAGUE       BIT_27     Is very sick indeed
+    AFF_NON_CORPOREAL       BIT_28     Doesn't interact with the world much
+    AFF_DETECT_CURSE        BIT_29     Will attack the cursed
+    AFF_DETECT_GOOD         BIT_30     Can detect good-aligned
+    AFF_SWALLOWED           BIT_31     Has been swallowed by a large creature
+    AFF_NO_RECALL           BIT_32     Cannot recall
+    AFF_DOT                 BIT_33     Takes damage over time
+    AFF_PRONE               BIT_34     Can't do skills, can cast
+    AFF_DAZED               BIT_35     Can't do anything
+    AFF_SLOW                BIT_63     Slowed down. Many negative consequences.
+
+The 'alignment' of the mobile ranges from -1000 to +1000.  Keep in mind that
+certain spells give characters fighting oppositely-aligned monsters an
+advantage, and that experience gained is influenced by the relative alignments
+of a character and their victims.
+
+The literal letter 'S' must be present after the alignment.  In the original
+Diku mob format, 'S' stands for simple.  DD4 supports only 'simple' mobs, so
+the 'S' is actually redundant, but is retained for compatibility.
+
+The 'level' is a number from 1 to (probably?) 2147483647.  Mobs power scale up
+to INT_MAX, but it's unlikely you'd make mobs much higher level than 120 or so,
+given that a player maxes at 100--assuming you actually want them to be killed
+by players (which you may not).
+
+The 'body-form' is a value that describes the morphology of mobiles, to improve
+corpse and carnage production upon death, and prevent some rather silly
+player/mobile interactions (tripping up snakes, for example). It contains flags
+that describe the physical characteristics of mobiles that are checked by
+many functions during the game.
+
+A body_form value of 0 specifies a normal-sized humanoid capable of speech.
+
+The following bit values are used to specify mob form:
+
+        Flag              Bit   Description
+        --------------    ---   --------------------------------
+        BODY_NO_HEAD        1   No head
+        BODY_NO_EYES        2   No eyes
+        BODY_NO_ARMS        4   No arms
+        BODY_NO_LEGS        8   No legs
+        BODY_NO_HEART      16   No heart
+        BODY_NO_SPEECH     32   Cannot speak the common language
+        BODY_NO_CORPSE     64   Won't leave a corpse when killed
+        BODY_HUGE         128   Massive size
+        BODY_INORGANIC    256   Not made of living tissue
+        BODY_HAS_TAIL     512   Has a tail
+
+Example:
+        #101
+        wild dog^
+        a wild dog^
+        A half starved, wild dog wanders the abandoned street.
+        ~
+        This wild-eyed and starving mongrel patrols the piles of rubbish.
+        ~
+        1|32|128 0 0 S
+        1 0 0 0d0+0 0d0+0
+Here -> 4|32 0
+        8 8 1
+
+In this example, the mob 'wild dog' has a body_form value of 36 (no arms
+and no speech).  Pipes can be used for easy calculation.
+
+Mobs with 'BODY_NO_CORPSE' set do not form corpses or produce carnage; they
+wither and disappear. Any coins or equipment that would normally be in a corpse
+falls to the floor of the room.  If equipment or money falls a message is printed
+when the mob is killed.
+
+Corpse forming mobiles may produce body parts when killed or spray blood.
+Relevant checks for heads, arms etc are made to prevent wrong body parts from
+being produced.  Body parts from mobiles with 'BODY_INORGANIC' set are made type
+'trash' and are inedible (but still have a timer set to prevent clutter).
+
+The "mobprog_trigger_type" and associated information describe the format of
+mobprogs, simple mobile-specific programs written in the MUD's pseudo-scripting
+Mobprog language.  Their description is out of scope of this document, but read
+mobprogs.txt for full details.
+
+"species" and "rank" values (if present) will mark the species type of the mob
+(currently not fully implemented, use "reserved" as a dummy value) and the rank,
+which will affect the strength/power of the mob, and improve the likelihood of
+them dropping high-quality items at higher ranks.
+
+Options for "rank" values (in increasing order of power) are "common", "rare",
+"elite", "boss" and "world".
+
+The 'hitroll', 'armor', 'hitnodice', 'hitsizeddice', 'hitplus', 'damnnodice',
+'damsizedice', 'damroll', 'exp', 'position', and 'position' fields are
+present for compatibility with original Diku mud, but their values are ignored
+by the server--DD4 generates these values internally based on the level of the
+mobile.
+
+'sex':
+    NEUTRAL           0
+    MALE              1
+    FEMALE            2
+
+An example mob, demonstrating many of the features outlined above:
+
+#27318
+large black dragon Arlauthra~
+Arlauthra~
+Arlauthra the black dragon regards you with simmering fury.
+~
+Arlauthra the black dragon has been a bane upon the domain for decades now,
+and now you stand before him, ready to mete out justice at long last.  He
+appears abnormally slender in comparison to other chromatic dragons--wiry,
+but not gaunt. His wicked horns protrude from the sides of his head and wrap
+around, projecting forward. A large frill adorns the upper part of its neck.
+He smells like nothing so much as rotting vegetation and foul water. He must
+be 5 metres tall and 25 metres long. He is not at all pleased to see you here.
+~
+2|32|64|16384 4|8|16|32|512|8192|524288|4194304|8388608|1073741824 -1000 S
+60 0 0 0d0+0 0d0+0
+640 0
+8 8 1
+>rand_prog 3~
+    mpasound A hideous reptilian screeching comes from the rocky island.
+~
+>rand_prog 3~
+    mpasound You hear the sound of some huge beast moving around.
+~
+>rand_prog 3~
+    mpasound The acidic burbling of some huge creature fills the air.
+~
+>fight_prog 10~
+    swallow $n
+~
+|
+< reserved~ boss~
+
+
+
+=== The #OBJECTS section
+
+These are the items the people who journey through your area will keep and use,
+so it's a good idea to provide detailed, quality descriptions for them.
+Remember to balance them with/against that already exist in the game;
+https://fromagefraser.com/dd4-query/items is an excellent tool to research
+currently-existing items and their properties to see how yours might slot in.
+
+The syntax of this section is:
+
+    #OBJECTS
+    {
+     #<vnum:number>
+     <keywords:string>~
+     <short-description:string>~
+     <long-description:string>~
+     <action-description:string>~
+     <item-type:number> <extra-flags:number> <wear-flags:number>
+     <value-0:string>~ <value-1:string>~ <value-2:string>~ <value-3:string>~
+     <weight:number> <cost:number> <item-shop-level:number>
+     {
+         E
+         <keyword:string>
+         <description:string>
+     }
+     {
+         A
+         <apply-type:number> <apply-value:number>
+     }
+    }
+    #0
+
+
+The 'vnum' is the virtual number of the object.
+
+The 'keywords' are words which can be used in commands to identify the
+object.
+
+The 'short-description' is the description used by the 'act' function and
+other functions to identify the object.  The first character of the short-
+description should be lower case, because this description is used in the
+middle of sentences.
+
+The 'long-description' is the description used when a character walks in the
+room and the object is visible.
+
+The 'action-description' is not used, which why you just put a ~ there.
+
+The 'item-type' is the type of the item.
+
+ITEM_ types:
+    ITEM_LIGHT                               1
+    ITEM_SCROLL                              2
+    ITEM_WAND                                3
+    ITEM_STAFF                               4
+    ITEM_WEAPON                              5
+    ITEM_TREASURE                            8
+    ITEM_ARMOR                               9
+    ITEM_POTION                             10
+    ITEM_FURNITURE                          12
+    ITEM_TRASH                              13
+    ITEM_CONTAINER                          15
+    ITEM_DRINK_CON                          17
+    ITEM_KEY                                18
+    ITEM_FOOD                               19
+    ITEM_MONEY                              20
+    ITEM_BOAT                               22
+    ITEM_CORPSE_NPC                         23
+    ITEM_CORPSE_PC                          24
+    ITEM_FOUNTAIN                           25
+    ITEM_PILL                               26
+    ITEM_CLIMBING_EQ                        27
+    ITEM_PAINT                              28
+    ITEM_MOB                                29
+    ITEM_ANVIL                              30
+    ITEM_AUCTION_TICKET                     31
+    ITEM_CLAN_OBJECT                        32
+    ITEM_PORTAL                             33
+    ITEM_POISON_POWDER                      34
+    ITEM_LOCK_PICK                          35
+    ITEM_INSTRUMENT                         36
+    ITEM_ARMOURERS_HAMMER                   37
+    ITEM_MITHRIL                            38
+    ITEM_WHETSTONE                          39
+    ITEM_CRAFT                              40
+    ITEM_SPELLCRAFT                         41
+    ITEM_TURRET_MODULE                      42
+    ITEM_FORGE                              43
+    ITEM_ARRESTOR_UNIT                      44
+    ITEM_DRIVER_UNIT                        45
+    ITEM_REFLECTOR_UNIT                     46
+    ITEM_SHIELD_UNIT                        47
+    ITEM_DEFENSIVE_TURRET_MODULE            48
+    ITEM_TURRET                             49
+    ITEM_COMBAT_PULSE                       50
+    ITEM_DEFENSIVE_PULSE                    51
+    ITEM_PIPE                               52
+    ITEM_PIPE_CLEANER                       53
+    ITEM_SMOKEABLE                          54
+    ITEM_REMAINS                            55
+
+The 'extra-flags' describe more attributes of the object.  The 'wear-flags'
+describe whether the item can be picked up, and if so, what bodily locations
+it can be "worn" in/on.
+
+Extra ITEM_ flags:
+    ITEM_GLOW                       BIT_0
+    ITEM_HUM                        BIT_1
+    ITEM_EGO                        BIT_2
+    ITEM_ANTI_RANGER                BIT_3
+    ITEM_EVIL                       BIT_4
+    ITEM_INVIS                      BIT_5
+    ITEM_MAGIC                      BIT_6
+    ITEM_NODROP                     BIT_7
+    ITEM_BLESS                      BIT_8
+    ITEM_ANTI_GOOD                  BIT_9
+    ITEM_ANTI_EVIL                  BIT_10
+    ITEM_ANTI_NEUTRAL               BIT_11
+    ITEM_NOREMOVE                   BIT_12
+    ITEM_INVENTORY                  BIT_13
+    ITEM_POISONED                   BIT_14
+    ITEM_ANTI_MAGE                  BIT_15
+    ITEM_ANTI_CLERIC                BIT_16
+    ITEM_ANTI_THIEF                 BIT_17
+    ITEM_ANTI_WARRIOR               BIT_18
+    ITEM_ANTI_PSIONIC               BIT_19
+    ITEM_VORPAL                     BIT_20
+    ITEM_TRAP                       BIT_21
+    ITEM_DONATED                    BIT_22
+    ITEM_BLADE_THIRST               BIT_23
+    ITEM_SHARP                      BIT_24
+    ITEM_FORGED                     BIT_25
+    ITEM_BODY_PART                  BIT_26
+    ITEM_LANCE                      BIT_27
+    ITEM_ANTI_BRAWLER               BIT_28
+    ITEM_ANTI_SHAPE_SHIFTER         BIT_29
+    ITEM_BOW                        BIT_30
+    ITEM_ANTI_SMITHY                BIT_34
+    ITEM_DEPLOYED                   BIT_35
+    ITEM_RUNE                       BIT_36
+    ITEM_DONOT_RANDOMISE            BIT_37
+    ITEM_WEAK_RANDOMISE             BIT_38
+    ITEM_CURSED                     BIT_61
+
+WEAR_ flags:
+    ITEM_TAKE                       BIT_0
+    ITEM_WEAR_FINGER                BIT_1
+    ITEM_WEAR_NECK                  BIT_2
+    ITEM_WEAR_BODY                  BIT_3
+    ITEM_WEAR_HEAD                  BIT_4
+    ITEM_WEAR_LEGS                  BIT_5
+    ITEM_WEAR_FEET                  BIT_6
+    ITEM_WEAR_HANDS                 BIT_7
+    ITEM_WEAR_ARMS                  BIT_8
+    ITEM_WEAR_SHIELD                BIT_9
+    ITEM_WEAR_ABOUT                 BIT_10
+    ITEM_WEAR_WAIST                 BIT_11
+    ITEM_WEAR_WRIST                 BIT_12
+    ITEM_WIELD                      BIT_13
+    ITEM_HOLD                       BIT_14
+    ITEM_FLOAT                      BIT_15
+    ITEM_WEAR_POUCH                 BIT_16
+    ITEM_RANGED_WEAPON              BIT_17
+    ITEM_LAST_WEAR_BIT              BIT_17
+
+The interpretation of the four 'values' depends upon the type of the object.
+These values are entered as strings and MUST be terminated by a tilde (~), but
+will be changed to integers depending on the type of the object and the form
+of the input.  Server interpretations of their values are given at the end of
+this section.
+
+The 'weight' of the object is just that.
+
+'Cost' is ignored.  An item's 'cost' is generated internally based on the level
+of the object. 'item-shop-level' is the level the item will be sold for if it is
+reset in a shopkeeper's inventory.  This number will be fuzzy unless you also
+add the ITEM_DONOT_RANDOMISE flag to the item.
+
+The optional 'E' sections and 'A' sections come after the main data.  An 'E'
+section ('extra description') contains a keyword-list and a string associated
+with those keywords.  This description string is used when a character looks
+at a word on the keyword list, ie a gem on a sceptre would be:
+
+E
+gem~
+A glowing red gem pulsates silently on the tip of the sceptre.
+~
+
+it is a generally good idea to put extra descriptions on important objects,
+particularly ones that players might want to keep. It might even be desirable
+to chain your extra descriptions, giving partial information each time, with
+each extra description suggesting the keyword or keywords you should use to
+access the next.
+
+An 'A' section ('apply') contains an apply-type and an apply-value.  When a
+character uses this object as equipment (holds, wields, or wears it), then
+the value of 'apply-value' is added to the character attribute identified by
+'apply-type'.  Note some of these are not implemented or 'collapse' into other
+values; these are marked below.  They may still be used for colour/flavour.
+
+
+APPLY_ types:
+    APPLY_NONE               0
+    APPLY_STR                1
+    APPLY_DEX                2
+    APPLY_INT                3
+    APPLY_WIS                4
+    APPLY_CON                5
+    APPLY_SEX                6
+    APPLY_CLASS              7      Not implemented
+    APPLY_LEVEL              8      Not implemented
+    APPLY_AGE                9      Not implemented
+    APPLY_HEIGHT            10      Not implemented
+    APPLY_WEIGHT            11      Not implemented
+    APPLY_MANA              12
+    APPLY_HIT               13
+    APPLY_MOVE              14
+    APPLY_GOLD              15      Not implemented
+    APPLY_EXP               16      Not implemented
+    APPLY_AC                17
+    APPLY_HITROLL           18
+    APPLY_DAMROLL           19
+    APPLY_SAVING_PARA       20      Collapses to save vs spell
+    APPLY_SAVING_ROD        21      Collapses to save vs spell
+    APPLY_SAVING_PETRI      22      Collapses to save vs spell
+    APPLY_SAVING_BREATH     23      Collapses to save vs spell
+    APPLY_SAVING_SPELL      24
+    APPLY_SANCTUARY         25
+    APPLY_SNEAK             26
+    APPLY_FLY               27
+    APPLY_INVIS             28
+    APPLY_DETECT_INVIS      29
+    APPLY_DETECT_HIDDEN     30
+    APPLY_FLAMING           31
+    APPLY_PROTECT           32
+    APPLY_PASS_DOOR         33
+    APPLY_GLOBE             34
+    APPLY_DRAGON_AURA       35      Only affects item "score" currently
+    APPLY_RESIST_HEAT       36
+    APPLY_RESIST_COLD       37
+    APPLY_RESIST_LIGHTNING  38
+    APPLY_RESIST_ACID       39
+    APPLY_BREATHE_WATER     40
+    APPLY_BALANCE           41
+    APPLY_SET_UNCOMMON      42
+    APPLY_SET_RARE          43
+    APPLY_SET_EPIC          44
+    APPLY_SET_LEGENDARY     45
+    APPLY_STRENGTHEN        46
+    APPLY_ENGRAVED          47
+    APPLY_SERRATED          48
+    APPLY_INSCRIBED         49
+    APPLY_CRIT              50
+    APPLY_SWIFTNESS         51
+
+An object may have an unlimited number of 'E' and 'A' sections.
+
+--- Notes on use of trapped items
+
+Example of a trapped object:
+
+nice chest~
+a nice chest~
+A nice chest is here.  It is nice.~
+~
+15 2097152 1|512 5 20 0
+150~ 13~ 27207~ 0~
+105 0 0
+
+
+The 2097152 (BIT_21) is the 'this is a trap' flag.  Any item can be trapped,
+just by sticking this flag on it.
+
+The 1|512 flags are TRAP_EFFs, which are basically "what does the trap trigger
+on?"  They reference the following, and may be stacked. They will overwrite the
+take/wear bits (meaning you can't take/wear a trap).
+
+TRAP_EFF_MOVE           BIT_0 (1)    /* trigger on movement */
+TRAP_EFF_OBJECT         BIT_1 (2)    /* trigger on get or put */
+TRAP_EFF_ROOM           BIT_2 (4)    /* affect all in room */
+TRAP_EFF_NORTH          BIT_3 (8)    /* movement in this direction */
+TRAP_EFF_EAST           BIT_4 (16)
+TRAP_EFF_SOUTH          BIT_5 (32)
+TRAP_EFF_WEST           BIT_6 (64)
+TRAP_EFF_UP             BIT_7 (128)
+TRAP_EFF_DOWN           BIT_8 (256)
+TRAP_EFF_OPEN           BIT_9 (512)  /* trigger on open */
+
+
+5 is the damage type.  Options are:
+
+TRAP_DAM_SLEEP          -1
+TRAP_DAM_TELEPORT        0
+TRAP_DAM_FIRE            1
+TRAP_DAM_COLD            2
+TRAP_DAM_ACID            3
+TRAP_DAM_ENERGY          4
+TRAP_DAM_BLUNT           5
+TRAP_DAM_PIERCE          6
+TRAP_DAM_SLASH           7
+TRAP_DAM_POISON          8
+
+
+20 in the example item is the number of charges the trap has before it is
+exhausted.  The '0' is probably important.
+
+150~ 13~ 27207~ 0~ are capacity, pickable etc flags, and key vnum for the
+container here, but could be anything depending on what you trap. The '13' must
+be the combined value of bit value flags on containers--because it is consumed
+as a string, 1|4|8 will not work.
+
+The imm commands trapstat, trapremove, traplist, and trapset exist but are not
+in wizhelp and don't have helpfile entries (to be implemented).  They do what
+they look like they should.
+
+
+--- Meaning of Value Numbers by Item Type
+
+As mentioned earlier, the 'value' fields are entered by the builder as TEXT
+strings, even though they will be converted to and stored as integer values.
+This is so that spell names, rather than slot numbers, could be used for items
+that can have spells placed on them.  For these types of items, the text string
+containing the spell name (for example, cure critical) is translated to an
+internal skill/spell number or 'sn'.  For the other item types, the strings are
+converted directly to integer values.  If an item only has one spell, the other
+strings must still be terminated by a ~, but need not have any content.  A
+complete list of spells at the time of the last update of this document is given
+at the end of this file.
+
+NOTE:  Because these are read in as strings, the '|' pipe format cannot be used
+for the flags; i.e. 1|4|8~ is an invalid entry, but 13~ is valid. (cf.
+ITEM_CONTAINER, value[1]).  If you try to add a piped value the server will grab
+the first value and discard the rest.
+
+1  ITEM_LIGHT
+   value[0]    unused
+   value[1]    unused
+   value[2]    hours of light available, 0 is dead, -1 is infinite
+   value[3]    unused
+
+2  ITEM_SCROLL
+   value[0]    level
+   value[1]    spell name 1
+   value[2]    spell name 2
+   value[3]    spell name 3
+
+3  ITEM_WAND
+   value[0]    level
+   value[1]    max charges
+   value[2]    current charges
+   value[3]    spell name
+
+4  ITEM_STAFF
+   value[0]    level
+   value[1]    max charges
+   value[2]    current charges
+   value[3]    spell name
+
+5  ITEM_WEAPON
+   value[0]    unused
+   value[1]    unused (formerly min damage)
+   value[2]    unused (formerly max damage)
+   value[3]    weapon type:
+       0     hit
+       1     slice
+       2     stab
+       3     slash
+       4     whip
+       5     claw
+       6     blast
+       7     pound
+       8     crush
+       9     grep
+      10     bite
+      11     pierce
+      12     suction
+      13     chop
+      14     rake
+      15     swipe
+      16     sting
+      17     scoop
+
+8  ITEM_TREASURE
+   value[0]    unused
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+09 ITEM_ARMOR
+   value[0]    unused
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+10 ITEM_POTION
+   value[0]    level
+   value[1]    spell name 1
+   value[2]    spell name 2
+   value[3]    spell name 3
+
+12 ITEM_FURNITURE
+   value[0]    unused
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+13 ITEM_TRASH
+   value[0]    unused
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+15 ITEM_CONTAINER
+   value[0]    weight capacity
+   value[1]    flags: 1 closeable, 2 pickproof, 4 closed, 8 locked
+   value[2]    key vnum
+   value[3]    unused
+
+17 ITEM_DRINK_CON
+   value[0]    capacity
+   value[1]    current quantity
+   value[2]    liquid number (see 'liq_table' in const.c)
+   value[3]    if non-zero, drink is poisoned
+
+18 ITEM_KEY
+   value[0]    unused (often vnum of room/container it unlocks)
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+19 ITEM_FOOD
+   value[0]    hours of food value
+   value[1]    unused
+   value[2]    unused
+   value[3]    if non-zero, food is poisoned
+
+20 ITEM_MONEY
+   value[0]    value in copper pieces (all coin values are fuzzy unless item is
+               flagged with ITEM_DONOT_RANDOMISE)
+   value[1]    value in silver pieces
+   value[2]    value in gold pieces
+   value[3]    value in platinum pieces
+
+22 ITEM_BOAT
+   value[0]    unused
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+23 ITEM_CORPSE_NPC
+   value[0]    unused
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+24 ITEM_CORPSE_PC
+   value[0]    unused
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+25 ITEM_FOUNTAIN
+   value[0]    unused
+   value[1]    unused
+   value[2]    liquid number (see 'liq_table' in const.c)
+   value[3]    if non-zero, fountain is poisoned
+
+26 ITEM_PILL
+   value[0]    level
+   value[1]    spell name 1
+   value[2]    spell name 2
+   value[3]    spell name 3
+
+27 ITEM_CLIMBING_EQ
+   value[0]    unused
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+28 ITEM_PAINT
+   value[0]    level
+   value[1]    spell name 1
+   value[2]    spell name 2
+   value[3]    spell name 3
+
+29 ITEM_MOB
+   value[0]    unused
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+30 ITEM_ANVIL
+   value[0]    unused
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+31 ITEM_AUCTION_TICKET
+   value[0]    Set to cost of ticket in db.c
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+32 ITEM_CLAN_OBJECT
+   value[0]    unused
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+33 ITEM_PORTAL
+   value[0]    room vnum low (if < 1 portal is dead)
+   value[1]    room vnum high (if > 0 portal goes to random room between
+               value[0] and value[1])
+   value[2]    lower level limit for use
+   value[3]    upper level limit for use
+
+34 ITEM_POISON_POWDER
+   value[0]    unused
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+35 ITEM_LOCK_PICK
+   value[0]    unused
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+36 ITEM_INSTRUMENT
+   value[0]    unused
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+37 ITEM_ARMOURERS_HAMMER
+   value[0]    unused
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+38 ITEM_MITHRIL
+   value[0]    unused
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+39 ITEM_WHETSTONE
+   value[0]    unused
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+40 ITEM_CRAFT
+   value[0]    crafting bonus (percentage bonus, so if '5' == +5%)
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+41 ITEM_SPELLCRAFT
+   value[0]    crafting bonus (percentage bonus, so if '5' == +5%)
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+42 ITEM_TURRET_MODULE
+    value[0]    lower damage range
+    value[1]    upper damage range
+    value[2]    current charges
+    value[3]    maximum charges
+
+43 ITEM_FORGE
+   value[0]    unused
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+44 ITEM_ARRESTOR_UNIT
+   value[0]    unused
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+45 ITEM_DRIVER_UNIT
+   value[0]    number of uses (automatically determined by object level)
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+46 ITEM_REFLECTOR_UNIT
+   value[0]    unused
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+47 ITEM_SHIELD_UNIT
+   value[0]    number of uses (automatically determined by object level)
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+48 ITEM_DEFENSIVE_TURRET_MODULE
+   value[0]    unused
+   value[1]    unused
+   value[2]    module capacity (server determined)
+   value[3]    unused
+
+49 ITEM_TURRET
+   value[0]    unused
+   value[1]    unused
+   value[2]    unused
+   value[3]    unused
+
+50 ITEM_COMBAT_PULSE
+   value[0]    current charges
+   value[1]    max charges
+   value[2]    spell level
+   value[3]    spell
+
+51 ITEM_DEFENSIVE_PULSE
+   value[0]    current charges
+   value[1]    max charges
+   value[2]    spell level
+   value[3]    spell
+
+52 ITEM_PIPE
+   value[0]    current benefit
+   value[1]    maximum benefit
+   value[2]    effect on thirst
+   value[3]    speed (waitstate)
+
+53 ITEM_PIPE_CLEANER
+   value[0]    current uses
+   value[1]    maximum uses
+   value[2]    current effectiveness
+   value[3]    maximum effectiveness
+
+54 ITEM_SMOKEABLE
+   value[0]    uses remaining
+   value[1]    spell
+   value[2]    spell
+   value[3]    spell (harmful by convention, not server-enforced)
+
+55 ITEM_REMAINS
+   value[0]    weight capacity
+   value[1]    flags: 1 closeable, 4 closed
+   value[2]    unused
+   value[3]    unused
+
+Examples:
+ITEM_ARMOR:
+0~ 0~ 0~ 0~
+(all values are set automatically by the server)
+
+ITEM_WEAPON:
+0~ 0~ 0~ 11~
+(damage range value[1]-value[2] is set internally; this is a piercing weapon)
+
+ITEM_POTION:
+25~ teleport~ cure critical~ ~
+(note that only two spells are used; the third is left blank)
+
+ITEM_STAFF:
+15~ 3~ 3~ ultrablast~
+
+And a complete item:
+
+#27288
+slaver's whip~
+a slaver's whip~
+A cruel-looking whip lies here.~
+~
+5 16|128|512|2048 1|8192
+0~ 0~ 0~ 4~
+2 0 0
+A
+2 -2
+A
+19 4
+A
+18 3
+A
+4 -2
+E
+slaver's whip~
+A cruel and unsavoury weapon, the whip has had sharp metal pieces woven into
+it to increase the damage it inflicts on its victims.
+~
+
+Remember, you can use previously-defined items in your area.  So if you don't
+want to make a bunch of boring stock items, use ones that have been declared
+earlier (must use an earlier vnum than the block your area is using).
+
+
+
+=== The #ROOMS section
+
+The rooms in your area are what really make it, setting the atmosphere and tone.
+Try to make an effort with their descriptions.
+
+The syntax of this section is:
+
+    #ROOMS
+    {
+     #<vnum:number>
+     <name:string>
+     <description:string>
+     <area:number> <room-flags:number> <sector-type:number>
+     {
+         D <door:number>
+         <description:string>
+         <keywords:string>
+         <locks:number> <key:number> <to_room:number>
+     }
+     {
+         E
+         <keywords:string>
+         <description:string>
+     }
+     S
+    }
+    #0
+
+The 'vnum' is the virtual number of the room.
+
+The 'name' is the name of the room.
+
+The 'description' is the long multi-line description of the room.
+
+The 'area' is obsolete and unused.  Rooms belong to whatever area was most
+recently defined with #AREA.
+
+The 'room-flags' describe more attributes of the room.
+ROOM_ flags:
+    ROOM_DARK               BIT_0       Room is dark
+    ROOM_NO_MOB             BIT_2       Mobiles will not wander into
+    ROOM_INDOORS            BIT_3       Is indoors
+    ROOM_VAULT              BIT_4       Player vault may be interacted with here
+    ROOM_CRAFT              BIT_7       Room gives physical crafting bonus
+    ROOM_SPELLCRAFT         BIT_8       Room gives magical crafting bonus
+    ROOM_PRIVATE            BIT_9       Room only fits two characters
+    ROOM_SAFE               BIT_10      No pkilling in room
+    ROOM_SOLITARY           BIT_11      Room only fits one character
+    ROOM_PET_SHOP           BIT_12      Room stores pets to be sold at pet store
+    ROOM_NO_RECALL          BIT_13      Cannot recall from room
+    ROOM_CONE_OF_SILENCE    BIT_14      No magic in room
+    ROOM_PLAYER_KILLER      BIT_15      Can recall from here despite other flags
+    ROOM_HEALING            BIT_16      Healing rate accelerated here
+    ROOM_FREEZING           BIT_17      Room does freezing damage
+    ROOM_BURNING            BIT_18      Room does burning damage
+    ROOM_NO_MOUNT           BIT_19      Mounts cannot access room
+    ROOM_TOXIC              BIT_20      Healing slowed, chance of being poisoned
+    ROOM_NO_DROP            BIT_63      Cannot drop items in room
+
+
+The 'sector-type' identifies the type of terrain.  This primarily affects
+movement cost through the room, but may have various other effects--for example,
+water races don't have to drink in "wet" terrain types, and rangers get a small
+healing bonus when they sleep in HILL and FOREST terrain types.
+
+SECT_ types:
+    SECT_INSIDE             0
+    SECT_CITY               1
+    SECT_FIELD              2
+    SECT_FOREST             3
+    SECT_HILLS              4
+    SECT_MOUNTAIN           5
+    SECT_WATER_SWIM         6
+    SECT_WATER_NOSWIM       7
+    SECT_UNDERWATER         8
+    SECT_AIR                9
+    SECT_DESERT             10
+    SECT_SWAMP              11
+    SECT_UNDERWATER_GROUND  12
+    SECT_MAX                13
+
+Unlike mobiles and objects, rooms don't have any keywords associated with
+them. One may not manipulate a room in the same way one manipulates a mobile
+or object.
+
+The optional 'D' sections and 'E' sections come after the main data.  A 'D'
+section contains a 'door' in the range from 0 to 5:
+
+     0    north
+     1    east
+     2    south
+     3    west
+     4    up
+     5    down
+
+A 'D' command also contains a 'description' for that direction, and
+'keywords' for manipulating the door.  'Doors' include not just a real door,
+but any kind of exit from the room.  The 'locks' value specifies special
+features about a door, and there are multiple combinations.  Doors can be
+not-doors, bashproof, pickproof, passproof, walls (can be climbed), or secret
+(cannot be seen on "exits" information).  The following table gives the 'locks'
+value and how the door will be set for each acceptable value:
+
+      value    door    pickproof  bashproof  passproof   wall    secret
+        1      yes        no         no         no        no       no
+        2      yes       yes         no         no        no       no
+        3      yes        no        yes         no        no       no
+        4      yes       yes        yes         no        no       no
+        5      yes        no         no        yes        no       no
+        6      yes       yes         no        yes        no       no
+        7      yes        no        yes        yes        no       no
+        8      yes       yes        yes        yes        no       no
+        9       no        no         no         no       yes       no
+        10     yes        no         no         no        no      yes
+        11     yes       yes        yes        yes        no      yes
+        12      no        no         no         no        no      yes
+
+
+The 'key' value is the vnum of an object which locks and unlocks the door.
+
+Lastly, 'to_room' is the vnum of the room to which this door leads.
+
+You must specify two 'D' sections, one for each side of the door.  If you
+specify just one then you'll get a one-way exit.  As well as one-way exits,
+doors can open into the same room they exit from, providing some interesting
+creative opportunities.
+
+An 'E' section (extended description) contains a 'keywords' string and a
+'description' string.  Looking at one of the words in 'keywords' yields the
+'description' string.
+
+The 'S' at the end marks the end of the room.  It is not optional.
+
+An example room from the MUD, demonstrating various features:
+
+#27465
+Ota'ar Dar Prince's Canton/Omu Canal, Lower~
+You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+prince's canton and the Grung city of Omu. The high canal walls prevent access
+from here to the canton or to Omu, but you may travel south, further along the
+canal system, or upwards, towards the huge, looming area of darkness in the
+water above.
+
+To your immediate east you see the bridge that connects the prince's
+canton to Omu, but a large iron grate seals it off from the canal. You also
+notice, covering the bottom of the eastern bridge support structure, a large
+quantity of seaweed that seems to have been recently disturbed.
+~
+0 0 12
+D1
+The mass of seaweed covers a huge cavemouth at the bottom of the bridge.
+~
+seaweed disturbed structure support east~
+10 -1 27817
+D2
+~
+~
+0 -1 27464
+D4
+~
+~
+0 -1 27765
+E
+seaweed disturbed structure support east~
+The mass of seaweed covers a huge cavemouth at the bottom of the bridge. It
+would be easy enough to clear it away and enter the cave.
+~
+S
+
+
+
+=== The #RESETS section
+
+The most important section of the area, and the easiest to mess up.  It is
+here that you place your mobs and equip them, and place any ground objects that
+might exist.  Make sure you use the proper location flags.
+
+The syntax of this section is:
+
+    #RESETS
+    {
+     * <comment:to_eol>
+    }
+    {
+     M 0 <mob-vnum:number> <limit:number> <room-vnum:number> \
+    <comment:to_eol>
+    }
+    {
+     O 0 <obj-vnum:number> <:number> <room-vnum:number>      \
+     <comment:to_eol>
+    }
+    {
+     I <obj-vnum:number> <obj-level:number> <room-vnum:number>  \
+     <limit:number> <comment:to_eol>
+    }
+    {
+     P 0 <obj-vnum:number> <:number> <obj-vnum:number>       \
+     <comment:to_eol>
+    }
+    {
+     G 0 <obj-vnum:number> 0  <comment:to_eol>
+    }
+    {
+     E 0 <obj-vnum:number> 0 <wear_loc:number> <comment:to_eol>
+    }
+    {
+     D 0 <room-vnum:number> <door:number> <state:number>     \
+     <comment:to_eol>
+    }
+    {
+     R 0 <room-vnum:number> <last-door:number> <comment:to_eol>
+    }
+    S
+
+The 'resets' section contains a series of single lines.  The backslashes and
+line splitting above are for readability; they are not part of the file
+format. Because of the end-of-line comments, this section is not as free-
+format as other sections.
+
+The reset commands are:
+    *     comment
+    M     read a mobile
+    O     read an object
+    I     place object on ground and set level
+    P     put object in object
+    G     give object to mobile
+    E     equip object to mobile
+    D     set state of door
+    R     randomize room exits
+    S     stop (end of list)
+
+The '*' lines contain comments.  The 'S' line is the last line of the
+section.
+
+Every command aside from 'G' is followed by four numbers (three for the 'G'
+command). The first number is ignored except in the case of 'I'.
+
+For the 'M' command, the second number is the vnum of a mobile to load.  The
+third number is the limit of how many of this mobile may be present in the
+world.  NOTE: WORLD (not room). The fourth number is the vnum of the room
+where the mobile is loaded.
+
+For the 'I' command, the first number is the vnum of the object to load.  The
+second is the level to set the item to.  The third is the vnum of the location
+to place it.  The last number is meant to be the object load limit, but is
+currently unimplemented and thus ignored.
+
+For the 'O', 'P', 'G', and 'E' commands, the second number is the vnum of an
+object to load.  The third number is ignored.
+
+For the 'O' command, the fourth number is the vnum of the room where the
+object is loaded.  The object is not loaded if the target room already
+contains any objects with this vnum.  The object is also not loaded if any
+players are present in the area.  The object's level will be related to that of
+the mob most recently loaded in the area before it.
+
+For the 'P' command, the fourth number is the vnum of a container object
+where the object will be loaded.  The actual container used is the most
+recently loaded object with the right vnum; for best results, there should be
+only one such container in the world.  The object is not loaded if no
+container object exists, or if someone is carrying it, or if it already
+contains one of the to-be-loaded object.
+
+For the 'G' command, there is no fourth number.  If the most recent 'M'
+command succeeded (e.g. the mobile limit wasn't exceeded), the object is
+given to that mobile.  If the most recent 'M' command failed (due to hitting
+mobile limit), then the object is not loaded.
+
+For the 'E' command, the fourth number is an equipment wear location (see
+following).  Be careful where you equip the mobile or you might end up with a
+breast plate used as a weapon--the server will not prevent you from doing this.
+
+If the most recent 'M' command succeeded, that mobile is equipped with the
+object.  If the most recent 'M' command failed, then the object is not loaded.
+
+Equipment wear locations:
+    WEAR_NONE               -1
+    WEAR_LIGHT               0
+    WEAR_FINGER_L            1
+    WEAR_FINGER_R            2
+    WEAR_NECK_1              3
+    WEAR_NECK_2              4
+    WEAR_BODY                5
+    WEAR_HEAD                6
+    WEAR_LEGS                7
+    WEAR_FEET                8
+    WEAR_HANDS               9
+    WEAR_ARMS               10
+    WEAR_SHIELD             11
+    WEAR_ABOUT              12
+    WEAR_WAIST              13
+    WEAR_WRIST_L            14
+    WEAR_WRIST_R            15
+    WEAR_WIELD              16
+    WEAR_HOLD               17
+    WEAR_DUAL               18
+    WEAR_FLOAT              19
+    WEAR_POUCH              20
+    WEAR_RANGED_WEAPON      21
+
+
+All objects have a level limit, which is computed by inheritance from the
+most recently read 'M' command (whether it succeeded or not) in 'area_update'
+in 'db.c'.  A worn/equipped object's level equals the carrying mobile's level
+minus a few levels, clipped to the range 0 to 100.  There is also a bit of fuzz
+on the mobile's loaded level based on their set level in their #MOBILES entry,
+with the consequence that it should be possible (if unlikely) to obtain an item
+up to 4 levels lower than the set-level of the mobile who carries it.
+
+For the 'D' command, the second number is the vnum of a room.  The third
+number is a door number from 0 to 5.  The fourth number indicates how to set
+the door: 0 for open and unlocked; 1 for closed and unlocked; 2 for closed
+and locked.
+
+Room exits should be coherent: if room 1 has an exit to room 2, and room 2
+has an exit in the reverse direction, that exit should go back to room 1.
+This doesn't prevent one-way exits; room 2 doesn't HAVE to have an exit in
+the reverse direction.
+
+For the 'R' command, the second number is the vnum of a room.  The third
+number is a door number.  When this command, the doors from 0 to the
+indicated door number are shuffled.  The room will still have the same exits
+leading to the same other rooms as before, but the directions will be
+different.  Thus, a door number of 4 makes a two-dimensional maze room; a
+door number of 6 makes a three-dimensional maze room.
+
+Use of both the 'D' and 'R' commands on the same room will yield
+unpredictable results.
+
+Any line (except an 'S' line) may have a comment at the end.
+
+
+
+=== The #SHOPS section
+
+The syntax of this section is:
+
+    #SHOPS
+    {
+     <keeper:number>                                        \
+     <trade-0:number> <trade-1:number> <trade-2:number>     \
+     <trade-3:number> <trade-4:number>                      \
+     <profit-buy:number> <profit-sell:number>               \
+     <open-hour:number> <close-hour:number>                 \
+     <comment:to_eol>
+    }
+    0
+
+Like the #RESETS section, the #SHOPS section has one command per line.
+
+The 'keeper' is the vnum of the mobile who is the shopkeeper.  All mobiles
+with that vnum will be shopkeepers.
+
+The 'trade-0' through 'trade-4' numbers are item types which the shopkeeper
+will buy.  Unused slots should have a '0' in them; for instance, a shopkeeper
+who doesn't buy anything would have five zeroes.
+
+The 'profit-buy' number is a markup for players buying items from the keeper, in
+percentage points.  50 is 50% markup, 100 would be double the item raw "value"
+and so on.  The 'profit-sell' number is a markdown for players selling the
+keeper items, in percentage points. 100 is nominal price; 75 is a 25% markdown,
+and so on. The buying markup should be at least 100, and the selling markdown
+should be at most 100.
+
+The 'open-hour' and 'close-hour' numbers define the hours when the shopkeeper
+will do business.  For a 24-hour shop, these numbers would be 0 and 23.
+Everything beyond 'close-hour' to the end of the line is taken to be a
+comment.
+
+Note that there is no room number for a shop.  Just load the shopkeeper
+mobile into the room of your choice, and make it ACT_SENTINEL.  Or, for a
+roving shopkeeper, leave it as non-sentinel.
+
+The objects a shopkeeper sells are exactly those loaded by 'G' reset commands
+for that shopkeeper.  These items replenish automatically.  If a player sells
+an object to a shopkeeper, the shopkeeper will keep it for resale if he, she,
+or it doesn't already have an identical object.  These items do not
+replenish.
+
+See the #SHOPS section in midgaard.are or sahuagin_market.are for good examples.
+
+
+
+=== The #SPECIALS section
+
+Use this section to give mobs more personality and capability via spec_funs.
+There's literally no limit to what you can accomplish using them, but they're
+typically used to have e.g. cleric mobs fight like clerics, warrior mobs fight
+like warriors, etc.
+
+The syntax of this section is:
+
+#SPECIALS
+    {
+     * <comment_to_eol>
+    }
+    {
+     M <mob-vnum:number> <spec-fun:word> <comment:to_eol>
+    }
+    S
+
+Like the #RESETS section, the #SPECIALS section has one command per line.
+
+The 'M' command assigns 'spec-fun' to all mobiles of with virtual number
+'mob-vnum'.  All spec-funs are assigned by name.  An 'M' line may have a
+comment at the end.
+
+Certain special functions make mobiles much more challenging to fight, and an
+experience bonus is added to reflect this. They currently range from no bonus
+(not a combat special) to +20% for the really tough specials like
+spec_evil_evil_gezhp (!) and spec_sahuagin_prince.
+
+The following special functions are available for mobiles; their names generally
+give you some idea of their effects:
+
+    spec_breath_any
+    spec_breath_acid
+    spec_breath_fire
+    spec_breath_frost
+    spec_breath_gas
+    spec_breath_lightning
+    spec_breath_steam
+    spec_cast_adept
+    spec_cast_hooker
+    spec_buddha
+    spec_kungfu_poison
+    spec_cast_cleric
+    spec_cast_judge
+    spec_cast_mage
+    spec_cast_druid
+    spec_cast_water_sprite
+    spec_cast_psionicist
+    spec_cast_undead
+    spec_executioner
+    spec_fido
+    spec_clan_guard
+    spec_guard
+    spec_janitor
+    spec_poison
+    spec_repairman
+    spec_thief
+    spec_bounty
+    spec_grail
+    spec_cast_orb
+    spec_assassin
+    spec_warrior
+    spec_vampire
+    spec_cast_archmage
+    spec_cast_priestess
+    spec_mast_vampire
+    spec_bloodsucker
+    spec_spectral_minion
+    spec_celestial_repairman
+    spec_sahuagin
+    spec_evil_evil_gezhp
+    spec_demon
+    spec_cast_electric
+    spec_small_whale
+    spec_large_whale
+    spec_kappa
+    spec_aboleth
+    spec_laghathti
+    spec_superwimpy
+    spec_uzollru
+    spec_sahuagin_baron
+    spec_sahuagin_prince
+    spec_green_grung
+    spec_sahuagin_infantry
+    spec_sahuagin_cavalry
+    spec_sahuagin_guard
+    spec_sahuagin_lieutenant
+    spec_sahuagin_cleric
+    spec_sahuagin_high_cleric
+    spec_red_grung
+
+An example spec_fun entry from plains2.are is:
+
+M  18405 spec_fido                      The carnivorous grass
+
+Note that the comment giving the short description of the mob is not required,
+but is nice convention to observe.
+
+
+
+=== The #$ section
+
+The syntax of this section is:
+
+    #$
+
+This section marks the end of an area file.  If you concatenate several area
+files into one, remember to delete the terminating '#$' from all but the last
+file.  Conversely, if you split area files, remember to terminate each new
+file with a '#$'.
+
+
+
+=== Colour
+
+This MUD supports 8-bit (256) terminal colours.  You will see 8-bit colour used
+throughout the MUD's text and may use it yourself in your areas, with virtually
+any text string.
+
+The format for a colour tag is <NUMBER>.  Similar to using standard colours, you
+add 8-bit colour to text by enclosing it in tags.
+
+To print a literal '<' character, just type it twice: '<<'.
+
+Close your tags with <0> to stop your colours from bleeding.
+
+Example: <196>This text would be turned bright red.<0>
+
+For a list of all the colours available and their corresponding tag numbers, see
+the table at: https://tinyurl.com/dd4colours or type 'HELP COLOURCODES' while
+online.
+
+The numbers for foreground colours run from 1-255; you can also colour the
+background--just add 300 to the foreground colour number, so that e.g. to colour
+the background BrightCyan (14) you would use the tag <314>, producing this effect.
+
+The following tags are available for text decoration:
+
+<556> Bold ON                   <557> Bold OFF
+<558> Italics ON                <559> Italics OFF
+<560> Underline ON              <561> Underline OFF
+<562> Strikethrough ON          <563> Strikethrough OFF
+<564> Default foreground ON     <565> Default background ON
+
+
+=== Spells
+
+The following is a list of spells which can be used on DD4.  These names
+would appear in the appropriate locations for wands, scrolls, staves, potions,
+paints, smokeables, and pills.
+
+               inner fire              synaptic blast
+          prismatic spray                   holy word
+              unholy word                       armor
+            astral vortex                       bless
+                blindness               burning hands
+           call lightning              cause critical
+              cause light               cause serious
+               change sex             chain lightning
+             charm person                 chill touch
+             colour spray             continual light
+          control weather                 create food
+            create spring                create water
+           cure blindness               cure critical
+               cure light                 cure poison
+             cure serious                       curse
+              detect good                 detect evil
+            detect hidden                detect invis
+             detect sneak                detect magic
+            detect poison                 dispel evil
+             dispel magic                  earthquake
+           enchant weapon                energy drain
+               entrapment                 faerie fire
+               faerie fog                    fireball
+               fireshield                 flamestrike
+                     gate              giant strength
+                     harm                       haste
+                     heal                       knock
+               power heal                    identify
+              infravision                       invis
+           know alignment              lightning bolt
+            locate object               magic missile
+               mass invis                   pass door
+                   poison                   paralysis
+               protection                     refresh
+             remove curse                   sanctuary
+              sense traps                      shield
+            dragon shield              shocking grasp
+                    sleep                  stone skin
+                   summon             summon familiar
+                 teleport               ventriloquate
+                   weaken              word of recall
+              acid breath                 fire breath
+             frost breath                  gas breath
+         lightning breath              animate weapon
+                transport             general purpose
+           high explosive          adrenaline control
+                agitation                  aura sight
+                      awe            ballistic attack
+              biofeedback             cell adjustment
+              combat mind               recharge mana
+                 vitalize            complete healing
+           control flames                create sound
+              death field                       decay
+                 detonate                disintegrate
+             displacement                  domination
+         ectoplasmic form                    ego whip
+       energy containment               enhance armor
+        enhanced strength                 flesh armor
+         inertial barrier                inflict pain
+       intellect fortress                 lend health
+               levitation              mental barrier
+              mind thrust               project force
+            psionic blast               psychic crush
+            psychic drain             psychic healing
+           share strength              thought shield
+               ultrablast                wrath of god
+               feeblemind                 spiritwrack
+                   wither                        lore
+                      hex                animate dead
+              dark ritual                   bark skin
+                  moonray                      sunray
+                   prayer                      frenzy
+                mass heal             mass power heal
+           mass sanctuary    globe of invulnerability
+                firestorm                meteor storm
+             bless weapon               recharge item
+               possession                demon flames
+           steal strength               infernal fury
+             abyssal hand                  steal soul
+             summon demon                        fear
+                    deter             astral sidestep
+            gaias warning                resist magic
+            summon avatar               breathe water
+              resist heat                 resist cold
+         resist lightning                 resist acid
+                 hellfire              fury of nature
+              chaos blast                detect curse
+                     slow                   stabilise
+             steam breath                   pyro rune
+                cryo rune                   bolt rune
+                stab rune                   rend rune
+             mending rune                   cure rune
+                ward rune                  acid blast
+                      fly
+
+If you have any questions about area writing, please contact any of the
+immortals on the DD4 Discord server at https://discord.gg/aGzmAWmXYb (preferred)
+or email the team at dragonsdomainteam@gmail.com
+
+For area-building itself, we recommend the resources listed on our website
+under the "BUILDING" heading, which is kept current:
+
+https://dragons-domain.org/
+
+
+
+----------------------------DD4 Administrator Section-----------------------
+
+=== Booting and Testing Areas
+
+When the DD4 server starts, it reads a file named 'area.lst' in the current
+directory.  This file contains a list of all the area files to read in.  To add
+or delete areas, simply edit area.lst.
+
+The server reads all of the area files into memory once at load time and then
+closes them.  Thus you can edit area files while the server is running.
+Changes will take effect the next time the server boots.  Because the server is
+completely memory-based, zone resets are fast.
+
+You can test areas by running a local install of the MUD, which can be obtained
+from https://github.com/fromage-fraser/dd4
+
+Instructions on how to do this can be obtained from that location.
+
+The server reports syntax errors, including the area file name and a line
+number.  Take the line number with a grain of salt; some kinds of errors cause
+the server to run on for quite a few lines before ultimately detecting the
+error.
+
+The server also reports semantic errors, such as references to non-existent
+mobiles, objects, or rooms.
+
+The server exits after reporting any error.  DD4 takes only a few seconds
+to load, however, so it's quite practical to use the whole server as a syntax
+checker.
+
+
+
+=== Compressing the Area Files
+
+It is possible to run DD4 with a single combined, compressed area file. I mean,
+don't?  But you COULD.
+
+Here's how to do this on a *nix system:
+
+(1) In 'area.lst', remove the last line (the '$' line).
+
+(2) Execute the command:
+
+	cat `cat area.lst` | compress > all_area.Z
+
+(3) Edit 'area.lst' again.  Insert a '-' at the beginning of every line.
+    Do not put any spaces between the '-' and the file name.  Put the last
+    '$' line back at the end of the file.
+
+(4) Edit 'start_dd4'.  Change the line:
+
+	../src/dd4 $port >&! $logfile
+
+    to:
+
+	zcat all_area.Z | ../src/dd4 $port >&! $logfile
+
+(5) Test the changes so far.  DD4 should start up normally, although it
+    may take a few seconds longer to zcat everything.
+
+Now you can remove all the original *.are files.
+
+Notice that all of the compression and decompression takes place outside of the
+DD4 server.  Thus, you can substitute any archiving program of your choice, as
+long as it can write its output to standard output.
+
+You can recover the original areas simply by running 'uncompress all_area.Z'
+and dissecting them out of all_area.
+
+From the server's point of view, when an area file name starts with '-', it
+simply reads standard input for the area, terminating at '#$' as usual (but
+without closing standard input).  Diagnostic messages are given with the full
+name (e.g. '-arachnos.are'), but the line number will be reported as zero.
+
+You can freely mix areas from standard input with ordinary area files.  Thus,
+you could compress all the DD4 standard zones into a file such as dd4_area.Z,
+prefixing them with '-' in 'area.lst'.  Then you could add your own areas
+anywhere in the file (beginning, middle, end, wherever your areas need to go),
+and omit the '-' on the lines for your areas.
+
+The server will take a little longer to load with compressed area files,
+because 'zcat' needs time to run.  This is offset by a reduction in time spent
+opening disk files.  After loading, the server has all of the area database in
+memory and never rereads the files.  Thus, there is zero performance impact
+on server operation after loading.
+
+
+
+=== Memory Usage
+
+In order to simplify the code, the EnvyMud server has a fixed maximum size on
+strings in the area database.  This size is defined at the beginning of 'db.c'
+'db.c' with a '#define' statement.  As of the last update of this document, the
+size is:
+
+    #define  MAX_STRING 6000000
+
+Right now we're using about 5400000 bytes, so you couldadd a few more areas
+without touching the server at all.  The server will tell you when the string
+table overflows, and you can simply increase the maximum limit and recompile.
+The immortal 'memory' command will show you memory usage from within the game.
+
+There is no other limit on area sizes or memory usage.
+
+We decided to use a fixed size because it simplifies our job.  It also allows
+significant performance improvements.

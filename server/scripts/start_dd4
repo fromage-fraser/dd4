@@ -43,7 +43,7 @@ while ( 1 )
 	\rm ../log/last_command.txt
     endif
 
-    # Run envy.
+    # Run DD4
     ../src/dd4 $port >&! $logfile
 
     if ( -e core ) then

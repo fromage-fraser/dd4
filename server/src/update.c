@@ -581,7 +581,7 @@ int hit_gain( CHAR_DATA *ch )
            || ( ch->in_room->sector_type == SECT_SWAMP )
            || ( ch->in_room->sector_type == SECT_WATER_NOSWIM ) ) )
         {
-                ch->pcdata->condition[COND_THIRST] = 48;
+                ch->pcdata->condition[COND_THIRST] = MAX_DRINK;
                 gain += ( get_curr_con(ch) / 4 );
         }
 
@@ -1760,9 +1760,9 @@ void char_update( void )
                                 {
                                         send_to_char("{BThe song of sustenance restores you.\n\r{x", ch);
                                         ch->pcdata->condition[COND_FULL] =
-                                                UMIN(ch->pcdata->condition[COND_FULL] + 4, 36);
+                                                UMIN(ch->pcdata->condition[COND_FULL] + 4, MAX_FOOD);
                                         ch->pcdata->condition[COND_THIRST] =
-                                                UMIN(ch->pcdata->condition[COND_THIRST] + 4, 36);
+                                                UMIN(ch->pcdata->condition[COND_THIRST] + 4, MAX_DRINK);
                                 }
                         }
 

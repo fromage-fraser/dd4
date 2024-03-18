@@ -3588,8 +3588,8 @@ void do_restore( CHAR_DATA *ch, char *argument )
                                 victim->mana = victim->max_mana;
 
                         victim->move = victim->max_move;
-                        victim->pcdata->condition[COND_FULL] = 20;
-                        victim->pcdata->condition[COND_THIRST] = 24;
+                        victim->pcdata->condition[COND_FULL] = ( MAX_FOOD - 10);
+                        victim->pcdata->condition[COND_THIRST] = MAX_DRINK;
                         update_pos( victim );
                         act( "$n has restored you.", ch, NULL, victim, TO_VICT );
                 }
@@ -3626,8 +3626,8 @@ void do_restore( CHAR_DATA *ch, char *argument )
                                 victim->mana = victim->max_mana;
 
                         victim->move = victim->max_move;
-                        victim->pcdata->condition[COND_FULL] = 20;
-                        victim->pcdata->condition[COND_THIRST] = 24;
+                        victim->pcdata->condition[COND_FULL] = MAX_FOOD;
+                        victim->pcdata->condition[COND_THIRST] = MAX_DRINK;
                         update_pos( victim );
                         act( "$n has restored you.", ch, NULL, victim, TO_VICT );
                 }

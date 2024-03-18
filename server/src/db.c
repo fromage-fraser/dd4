@@ -3061,6 +3061,7 @@ void reset_area( AREA_DATA *pArea )
                         /* Below prevents you from being able to load multiple copies of one item in a container.
                            If you comment it out, you will have some containers filling up with items, wicker basket
                            in gnome village for example. Needs to be fixed properly. */
+
                         if (  (pArea->nplayer > 0 )
                         ||   !( obj_to = get_obj_type( pObjToIndex ) )
                         ||    ( count_obj_list( pObjIndex, obj_to->contains ) > 0 ) )
@@ -3841,13 +3842,16 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, int r
                 break;
 
             case ITEM_MONEY:
-                /* Make coin amounts fuzzy; Gezhp */
+                /* Make coin amounts fuzzy if not "pure"; Gezhp */
                 for (i = 0; i < 4; i++)
                 {
                         if (obj->value[i] > 10)
                         {
+                            if (!IS_OBJ_STAT(obj, ITEM_DONOT_RANDOMISE))
+                            {
                                 obj->value[i] = number_range (obj->value[i] * 0.9,
                                                               obj->value[i] * 1.1);
+                            }
                         }
 
                         if (obj->value[i] < 0)

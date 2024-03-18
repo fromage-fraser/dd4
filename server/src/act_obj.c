@@ -733,7 +733,7 @@ void do_put (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        /* fopr traps */
+        /* for traps */
         if (checkgetput(ch, container))
                 return;
 
@@ -2042,7 +2042,7 @@ void do_drink (CHAR_DATA *ch, char *argument)
                         /* Bathing in any liquid restores body moisture for sahuagin and grung */
                         if (!IS_NPC(ch))
                         {
-                            ch->pcdata->condition[COND_THIRST] = 48;
+                            ch->pcdata->condition[COND_THIRST] = MAX_DRINK;
                         }
                         act("You bathe yourself in $T from $p.",ch,obj,liq_table[obj->value[2]].liq_name,TO_CHAR);
                         send_to_char("You are fully hydrated.\n\r",ch);
@@ -2052,7 +2052,7 @@ void do_drink (CHAR_DATA *ch, char *argument)
                         act("You drink $T from $p.", ch, obj, liq_table[obj->value[2]].liq_name, TO_CHAR);
                         act("$n drinks $T from $p.", ch, obj, liq_table[obj->value[2]].liq_name, TO_ROOM);
 
-                        amount = 48;
+                        amount = MAX_DRINK;
 
                         gain_condition(ch, COND_DRUNK, amount * liq_table[liquid].liq_effect[COND_DRUNK  ]);
                         gain_condition(ch, COND_FULL, amount * liq_table[liquid].liq_effect[COND_FULL   ]);
@@ -2061,14 +2061,14 @@ void do_drink (CHAR_DATA *ch, char *argument)
                         if (!IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK ] > 10)
                                 send_to_char("You feel drunk.\n\r", ch);
 
-                        if (!IS_NPC(ch) && ch->pcdata->condition[COND_THIRST] > 46)
+                        if (!IS_NPC(ch) && ch->pcdata->condition[COND_THIRST] > (MAX_DRINK - 5))
                         {
                                 send_to_char("You do not feel thirsty.\n\r", ch);
                         }
 
                         if ( ch->race != RACE_SAHUAGIN && ch->race != RACE_GRUNG )
                         {
-                                if (!IS_NPC(ch) && ch->pcdata->condition[COND_FULL  ] > 46)
+                                if (!IS_NPC(ch) && ch->pcdata->condition[COND_FULL] > ( MAX_FOOD - 5))
                                 {
                                         send_to_char("You are full.\n\r", ch);
                                 }
@@ -2148,17 +2148,17 @@ void do_drink (CHAR_DATA *ch, char *argument)
 
                 if ( ch->race != RACE_SAHUAGIN && ch->race != RACE_GRUNG )
                 {
-                    if (!IS_NPC(ch) && ch->pcdata->condition[COND_FULL  ] > 46)
+                    if (!IS_NPC(ch) && ch->pcdata->condition[COND_FULL  ] > ( MAX_FOOD - 5))
                             send_to_char("You are full.\n\r", ch);
                 }
 
                 if ( ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG )
                 {
-                        if (!IS_NPC(ch) && ch->pcdata->condition[COND_THIRST] > 40)
+                        if (!IS_NPC(ch) && ch->pcdata->condition[COND_THIRST] > ( MAX_DRINK - 5))
                                 send_to_char("Your body's moisture is completely restored.\n\r", ch);
                 }
                 else {
-                        if (!IS_NPC(ch) && ch->pcdata->condition[COND_THIRST] > 40)
+                        if (!IS_NPC(ch) && ch->pcdata->condition[COND_THIRST] > ( MAX_DRINK - 5))
                                 send_to_char("You do not feel thirsty.\n\r", ch);
                 }
 
@@ -2418,7 +2418,7 @@ void do_eat (CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                if (!IS_NPC(ch) && ch->pcdata->condition[COND_FULL] > 40)
+                if (!IS_NPC(ch) && ch->pcdata->condition[COND_FULL] > ( MAX_FOOD - 5))
                 {
                         send_to_char("You are too full to eat more.\n\r", ch);
                         return;
@@ -2444,7 +2444,7 @@ void do_eat (CHAR_DATA *ch, char *argument)
 
                         condition = ch->pcdata->condition[COND_FULL];
                         gain_condition(ch, COND_FULL, obj->value[0]);
-                        if (ch->pcdata->condition[COND_FULL] > 40)
+                        if (ch->pcdata->condition[COND_FULL] > (MAX_FOOD - 5))
                                 send_to_char("You are full.\n\r", ch);
                         else if (condition == 0 && ch->pcdata->condition[COND_FULL] > 0)
                                 send_to_char("You are no longer hungry.\n\r", ch);
@@ -6032,7 +6032,17 @@ void do_auction (CHAR_DATA *ch, char *argument)
                     && obj->item_type != ITEM_STAFF
                     && obj->item_type != ITEM_LIGHT
                     && obj->item_type != ITEM_WAND
+                    && obj->item_type != ITEM_TREASURE
+                    && obj->item_type != ITEM_FURNITURE
+                    && obj->item_type != ITEM_CONTAINER
+                    && obj->item_type != ITEM_DRINK_CON
                     && obj->item_type != ITEM_SCROLL
+                    && obj->item_type != ITEM_POTION
+                    && obj->item_type != ITEM_PAINT
+                    && obj->item_type != ITEM_PILL
+                    && obj->item_type != ITEM_INSTRUMENT
+                    && obj->item_type != ITEM_SMOKEABLE
+                    && obj->item_type != ITEM_PIPE
                     && obj->item_type != ITEM_COMBAT_PULSE
                     && obj->item_type != ITEM_DEFENSIVE_PULSE)
                 {
