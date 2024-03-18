@@ -309,6 +309,8 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define MAX_PROMPT_LENGTH                200    /* Was defined locally, thought better as global -- Owl 24/7/22 */
 #define MAX_TITLE_LENGTH                 150    /* Was defined locally, thought better as global -- Owl 29/7/22 */
 #define FULL_AIR_SUPPLY                    2    /* ticks before drowning; Gez */
+#define MAX_FOOD                          48    /* As full of food as you can be */
+#define MAX_DRINK                         48    /* As not-thirsty as you can be */
 #define VAULT_LEVEL_BUFFER                 5    /* Can save items up to this many levels above your own in your vault */
 
 #define L_IMM                       MAX_LEVEL
@@ -1845,18 +1847,18 @@ extern  WANTED_DATA *wanted_list_last;
 #define ACT_SENTINEL                    BIT_1   /* Stays in one room */
 #define ACT_SCAVENGER                   BIT_2   /* Picks up objects */
 #define ACT_QUESTMASTER                 BIT_3   /* For quests */
-#define ACT_AGGRESSIVE                  BIT_5   /* Attacks PC's */
+#define ACT_AGGRESSIVE                  BIT_5   /* Attacks PCs */
 #define ACT_STAY_AREA                   BIT_6   /* Won't leave area */
 #define ACT_WIMPY                       BIT_7   /* Flees when hurt */
 #define ACT_PET                         BIT_8   /* Auto set for pets */
 #define ACT_NO_QUEST                    BIT_9   /* Cannot be selected as quest target */
-#define ACT_PRACTICE                    BIT_10  /* Can practice PC's */
+#define ACT_PRACTICE                    BIT_10  /* Can train PCs in skills & spells */
 #define ACT_REGENERATOR                 BIT_11  /* Mob heals at an accelerated rate.  Was ACT_GAMBLE. - Owl */
 #define ACT_NOCHARM                     BIT_12  /* Not charmable - Brutus */
 #define ACT_IS_HEALER                   BIT_13  /* For healer spec */
 #define ACT_IS_FAMOUS                   BIT_14  /* Award fame for kill */
 #define ACT_LOSE_FAME                   BIT_15  /* Lose fame for kill */
-#define ACT_WIZINVIS_MOB                BIT_16  /* Mob cant be seen by players */
+#define ACT_WIZINVIS_MOB                BIT_16  /* Mob can't be seen by players */
 #define ACT_MOUNTABLE                   BIT_17  /* Mob can be ridden */
 #define ACT_TINKER                      BIT_18  /* Mob can repair equipment  - Owl */
 #define ACT_BANKER                      BIT_19  /* Banker Mobs  - Brutus */
@@ -2196,7 +2198,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_ANTI_SMITHY                BIT_34
 #define ITEM_DEPLOYED                   BIT_35
 #define ITEM_RUNE                       BIT_36
-#define ITEM_DONOT_RANDOMISE            BIT_37  /* Create item exactly as in area file */
+#define ITEM_DONOT_RANDOMISE            BIT_37  /* Create item exactly as in area file, also prevents some general number fuzziness */
 #define ITEM_WEAK_RANDOMISE             BIT_38  /* Item applies randomised gently by random_qnd() */
 #define ITEM_CURSED                     BIT_61  /* carrier attacked by mobs with DETECT_CURSE, magic travel nonfunctional if carried */
 
@@ -2274,8 +2276,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define EGO_ITEM_CONSTRUCTED            BIT_10 /* for any constructed weapon */
 #define EGO_ITEM_EMPOWERED              BIT_11 /*Empowered weapon */
 #define EGO_ITEM_ENGRAVED               BIT_12 /* ENGRAVED armour */
-#define EGO_ITEM_SERRATED                BIT_13 /*Serated weapon */
-#define EGO_ITEM_INSCRIBED             BIT_14
+#define EGO_ITEM_SERRATED               BIT_13 /*Serated weapon */
+#define EGO_ITEM_INSCRIBED              BIT_14
 
 
 /*
@@ -3160,7 +3162,7 @@ struct mob_type
   char *name;                           /* name of spec e.g. fire_elemental */
   char *species;                        /* species e.g. elemental */
   char *icon_m;                         /* Male Icon name */
-  char *icon_f;                         /* Femail icon name */
+  char *icon_f;                         /* Female icon name */
   unsigned long int resists;            /* lists of resists */
   unsigned long int vulnerabilities;    /* vulberable to */
   unsigned long int immunes;            /* immune to */

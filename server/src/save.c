@@ -551,8 +551,8 @@ bool load_char_obj (DESCRIPTOR_DATA *d, char *name)
         ch->pcdata->perm_wis = 10;
         ch->pcdata->perm_dex = 10;
         ch->pcdata->perm_con = 10;
-        ch->pcdata->condition[COND_THIRST] = 48;
-        ch->pcdata->condition[COND_FULL] = 48;
+        ch->pcdata->condition[COND_THIRST] = MAX_DRINK;
+        ch->pcdata->condition[COND_FULL] = MAX_FOOD;
         ch->pcdata->stat_train = APPLY_STR;
         ch->pcdata->pagelen = 100;
         ch->pcdata->switched = FALSE;

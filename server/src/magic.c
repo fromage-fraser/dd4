@@ -204,7 +204,7 @@ bool is_immune_to (CHAR_DATA *victim, unsigned long int damtype)
                 return FALSE;
         }
 
-        /* This part to check the mobs spec - WIll need another seciton for character */
+        /* This part to check the mobs spec - WIll need another section for character */
         if ( victim->mobspec && IS_NPC(victim))
         {
                 int ms;
@@ -4217,7 +4217,7 @@ void spell_locate_object( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if ( arg2[0] == '\0'  )
         {
-                send_to_char( "What are you attempting to locate??\n\r", ch );
+                send_to_char( "What are you attempting to locate?\n\r", ch );
                 return;
         }
 
@@ -5329,6 +5329,7 @@ void spell_fire_breath( int sn, int level, CHAR_DATA *ch, void *vo )
                             case ITEM_WAND:      msg = "{Y$p sparks and sputters!{x"; break;
                             case ITEM_FOOD:      msg = "{Y$p blackens and crisps!{x"; break;
                             case ITEM_PILL:      msg = "{Y$p melts and drips!{x";     break;
+                            case ITEM_PIPE:      msg = "{Y$p chars and blackens!{x";  break;
                         }
 
                         act( msg, victim, obj_lose, NULL, TO_CHAR );
@@ -5389,6 +5390,8 @@ void spell_steam_breath( int sn, int level, CHAR_DATA *ch, void *vo )
                             case ITEM_CLIMBING_EQ:      msg = "{Y$p is soused and frays!{x";            break;
                             case ITEM_PAINT:            msg = "{Y$p is drenched and diluted!{x";        break;
                             case ITEM_AUCTION_TICKET:   msg = "{Y$p is soaked right through!{x";        break;
+                            case ITEM_SMOKEABLE:        msg = "{Y$p becomes waterlogged pulp!{x";     break;
+                            case ITEM_PIPE_CLEANER:     msg = "{Y$p is drenched and dripping!{x";       break;
                         }
 
                         act( msg, victim, obj_lose, NULL, TO_CHAR );

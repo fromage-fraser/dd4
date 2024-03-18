@@ -1321,7 +1321,7 @@ endif
 if isfight($i)
 break
 else
-say Central markets closed for months--can diplomacy ever get them back open?
+say Central markets closed for months--can diplomacy get them open again?
 endif
 ~
 >rand_prog 1~
@@ -1335,14 +1335,14 @@ endif
 if isfight($i)
 break
 else
-say Is the Danger Zone a reasonable way to test our best and brightest?  Have we set the bar too high?
+say These messages sponsored by The Kraken's Den.  Quality treasures that are really more affordable.  Finance available to selected buyers.
 endif
 ~
 >rand_prog 1~
 if isfight($i)
 break
 else
-say These messages sponsored by The Kraken's Den.  Quality treasures that are really more affordable.  Finance available to selected buyers.
+say Canton barons grumble that getting an audience with the prince is 'too hard'.  Community leaders counter that 'too hard' beats 'impossible'.
 endif
 ~
 |
@@ -3625,7 +3625,7 @@ A very strong-smelling tin of black powder has been left here.~
 ~
 34 0 1
 -2~ 0~ 0~ 0~
-1 300 10
+1 300 35
 E
 powder black tin~
 Definitely toxic.  Perhaps the expensive and rare liquid sahuagin use on their finest weapons?
@@ -6928,7 +6928,8 @@ E 1 27242 100 16
 M 1 27251 1 27649			a shady sahuagin to Prince's Cross, Upper
 E 1 27231 100 13
 G 1 38 100
-G 1 8903 100
+G 1 1312 100
+G 1 27366 100
 *
 M 1 27252 2 27315			an electric eel to Abyssal Close, Lower
 *
