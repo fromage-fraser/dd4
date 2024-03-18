@@ -2,12 +2,14 @@ Dragons Domain MUD  4.2024
 Last update of this document 18/3/24
 
 
+
 === Preface
 
 This document describes features available to the area builder for Dragons
 Domain MUD.  We endeavour to keep it up to date to reflect stable changes in the
 MUD.  It should not be used to document features that are not fully implemented
 and tested.
+
 
 
 === Advice to builders
@@ -21,6 +23,7 @@ your imagination run wild, but keep on theme (medieval fantasy hack and slash,
 for the most part).
 
 
+
 === Overview of Areas:
 
 An area is one piece of the world.  Each area is defined in a separate file.
@@ -28,7 +31,6 @@ All area files have the extension '.are'. Remember the Dragons Domain is a
 magical, medieval fantasy-based world, where technology is not particularly
 advanced.
 
-                                else if ( !str_cmp( word, "MOBPROGS" ) )
 
 
 === Sections of an Area
@@ -1185,6 +1187,68 @@ it to increase the damage it inflicts on its victims.
 Remember, you can use previously-defined items in your area.  So if you don't
 want to make a bunch of boring stock items, use ones that have been declared
 earlier (must use an earlier vnum than the block your area is using).
+
+
+
+=== The #OBJECT_SETS section
+
+DD4 supports having "sets" of 2-5 objects, such that bonuses can be applied
+to a player when varying combinations/quantities of them are worn.
+
+To add such a set, the items can be created as usual in an #OBJECTS section, but
+the set must be described/detailed in a separate "#OBJECT_SETS" section of the
+area file. Currently the set objects and set descriptions are in the "sets.are"
+area file for ease of centralisation, but this is only a convention.
+
+The syntax of this section is:
+
+    #OBJECT_SETS
+    {
+     #<vnum:number>
+     <keywords:string>~
+     <set-description:string>~
+     <set-member0:number> <set-member1:number> <set-member2:number> \
+     <set-member3:number> <set-member4:number>
+     <bonus-tier0:number> <bonus-tier1:number> <bonus-tier2:number> \
+     <bonus-tier3:number> <bonus-tier4:number>
+     {
+         A
+         <apply-type:number> <apply-value:number>
+     }
+    }
+    #0
+
+The "set-member" values are the vnums of the items that belong to the set. A 0
+indicates there is no set member in that slot.
+
+Sets are considered to belong to the categories "uncommon" (2 items), "rare"
+(3 items), "epic" (4 items), and "legendary" (5 items).
+
+The "bonus-tier" values indicate how many items need to be worn to trigger the
+various set bonuses available.
+
+For example, values 5 5 5 5 5 would mean all 5 would need to be worn to get the
+bonus, whereas 2 2 4 4 5 would mean 2 items would need to be worn for the first
+bonus, 4 items for next bonus, and all 5 for the third.
+
+Note that you cannot, for example, wear 2 items and get 3 bonuses--each increase
+in number represents only 1 bonus. Bonuses are also applied in reverse order, so
+put your best bonus first!
+
+An example #OBJECT_SETS entry that applies a "fly" bonus when 2 items are worn:
+
+#2702
+uncommon crow~
+The Smithy's Set of the Crow.
+Crow were the pseudo-pets of the smiths, often seen perching across a smithy's
+forge in winter months basking in its heat and scavenging any food scraps that
+were present. An ancient forging process imbues the essence of crow into this
+armour set, allowing its wearer to manifest properties of the black-feathered
+avians.
+~
+2704 2705 0 0 0
+2 2 0 0 0
+A 27 -1
 
 
 
