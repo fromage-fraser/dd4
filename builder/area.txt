@@ -877,6 +877,8 @@ the first value and discard the rest.
       15     swipe
       16     sting
       17     scoop
+      18     mash
+      19     hack
 
 8  ITEM_TREASURE
    value[0]    unused
