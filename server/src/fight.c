@@ -3414,7 +3414,9 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                 "rake",
                 "swipe",        /* 15 */
                 "sting",
-                "scoop"
+                "scoop",
+                "mash",
+                "hack"
         };
 
         const  char         *vs;

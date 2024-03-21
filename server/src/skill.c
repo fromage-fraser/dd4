@@ -5250,7 +5250,8 @@ bool is_bladed_weapon (OBJ_DATA *obj)
             || obj->value[3] == 3
             || obj->value[3] == 11
             || obj->value[3] == 13
-            || obj->value[3] == 16)
+            || obj->value[3] == 16
+            || obj->value[3] == 19)
                 return TRUE;
 
         return FALSE;

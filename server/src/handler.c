@@ -3018,6 +3018,8 @@ char* weapon_damage_type_name (int dt_num)
         if (dt_num == 15)   return "swipe";
         if (dt_num == 16)   return "sting";
         if (dt_num == 17)   return "scoop";
+        if (dt_num == 18)   return "mash";
+        if (dt_num == 19)   return "hack";
 
         return "(unknown)";
 }
@@ -3040,7 +3042,7 @@ char *item_type_name( OBJ_DATA *obj  )
             case ITEM_STAFF:                    return "staff";
             case ITEM_WEAPON:                   return "weapon";
             case ITEM_TREASURE:                 return "treasure";
-            case ITEM_ARMOR:                    return "armor";
+            case ITEM_ARMOR:                    return "armour";
             case ITEM_POTION:                   return "potion";
             case ITEM_FURNITURE:                return "furniture";
             case ITEM_TRASH:                    return "trash";
@@ -3063,7 +3065,7 @@ char *item_type_name( OBJ_DATA *obj  )
             case ITEM_PORTAL:                   return "portal";
             case ITEM_POISON_POWDER:            return "poison powder";
             case ITEM_LOCK_PICK:                return "lock pick";
-            case ITEM_INSTRUMENT:               return "musical instrument";
+            case ITEM_INSTRUMENT:               return "instrument";
             case ITEM_ARMOURERS_HAMMER:         return "armourer's hammer";
             case ITEM_MITHRIL:                  return "mithril";
             case ITEM_WHETSTONE:                return "whetstone";
@@ -3076,7 +3078,7 @@ char *item_type_name( OBJ_DATA *obj  )
             case ITEM_REFLECTOR_UNIT:           return "reflector unit";
             case ITEM_SHIELD_UNIT:              return "shield unit";
             case ITEM_TURRET:                   return "turret";
-            case ITEM_DEFENSIVE_TURRET_MODULE:  return "turret module";
+            case ITEM_DEFENSIVE_TURRET_MODULE:  return "defensive turret module";
             case ITEM_COMBAT_PULSE:             return "combat pulse";
             case ITEM_DEFENSIVE_PULSE:          return "defensive pulse";
             case ITEM_PIPE:                     return "pipe";
@@ -3233,8 +3235,8 @@ char *affect_bit_name (unsigned long int vector)
         if ( vector & AFF_INFRARED      ) return "infrared";
         if ( vector & AFF_CURSE         ) return "curse";
         if ( vector & AFF_FLAMING       ) return "flaming";
-        if ( vector & AFF_POISON        ) return "poison";
-        if ( vector & AFF_PROTECT       ) return "protect";
+        if ( vector & AFF_POISON        ) return "poisoned";
+        if ( vector & AFF_PROTECT       ) return "protection";
         if ( vector & AFF_MEDITATE      ) return "meditating";
         if ( vector & AFF_SNEAK         ) return "sneak";
         if ( vector & AFF_HIDE          ) return "hide";
@@ -3365,11 +3367,11 @@ char *act_bit_name (unsigned long int vector)
         if ( vector & ACT_PRACTICE              ) return "practice";
         if ( vector & ACT_REGENERATOR           ) return "regenerator";
         if ( vector & ACT_NOCHARM               ) return "no_charm";
-        if ( vector & ACT_IS_HEALER             ) return "is_healer";
-        if ( vector & ACT_IS_FAMOUS             ) return "is_famous";
+        if ( vector & ACT_IS_HEALER             ) return "healer";
+        if ( vector & ACT_IS_FAMOUS             ) return "famous";
         if ( vector & ACT_LOSE_FAME             ) return "lose_fame";
-        if ( vector & ACT_WIZINVIS_MOB          ) return "wizinvis_mob";
-        if ( vector & ACT_MOUNTABLE             ) return "mountable";
+        if ( vector & ACT_WIZINVIS_MOB          ) return "wizinvis";
+        if ( vector & ACT_MOUNTABLE             ) return "mount";
         if ( vector & ACT_TINKER                ) return "tinker";
         if ( vector & ACT_BANKER                ) return "banker";
         if ( vector & ACT_IDENTIFY              ) return "identify";
@@ -3808,7 +3810,7 @@ char *extra_bit_name (unsigned long int extra_flags)
         {
             case ITEM_GLOW:                 return "glow";
             case ITEM_HUM:                  return "hum";
-            case ITEM_EGO:                  return "ego_item";
+            case ITEM_EGO:                  return "ego";
             case ITEM_ANTI_RANGER:          return "anti_ranger";
             case ITEM_EVIL:                 return "evil";
             case ITEM_INVIS:                return "invis";
@@ -3830,7 +3832,7 @@ char *extra_bit_name (unsigned long int extra_flags)
             case ITEM_TRAP:                 return "trapped";
             case ITEM_DONATED:              return "donated";
             case ITEM_BLADE_THIRST:         return "blade_thirst";
-            case ITEM_SHARP:                return "sharpened";
+            case ITEM_SHARP:                return "sharp";
             case ITEM_FORGED:               return "forged";
             case ITEM_BODY_PART:            return "body_part";
             case ITEM_LANCE:                return "lance";

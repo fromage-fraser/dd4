@@ -44,55 +44,72 @@ my %mob_act = (
         sentinel           => 2,
         scavenger          => 4,
         questmaster        => 8,
-        aggro              => 32,
+        aggressive         => 32,
         stay_area          => 64,
         wimpy              => 128,
         no_quest           => 512,
         practice           => 1024,
-        gamble             => 2048,
+        regenerator        => 2048,
         no_charm           => 4096,
         healer             => 8192,
         famous             => 16384,
         lose_fame          => 32768,
         wizinvis           => 65536,
         mount              => 131072,
+        tinker             => 262144,
         banker             => 524288,
         identify           => 1048756,
         die_if_master_gone => 2097152,
         clan_guard         => 4194304,
         no_summon          => 8388608,
-        no_exp             => 16777216,
+        no_experience      => 16777216,
+        no_heal            => 33554432,
+        cannot_fight       => 67108864,
+        objectlike         => 134217728,
+        invulnerable       => 268435456,
+        unkillable         => 9223372036854775808,
 );
 
 my %mob_aff = (
-        none        => 0,
-        zero        => 0,
-        blind       => 1,
-        invis       => 2,
-        det_evil    => 4,
-        det_invis   => 8,
-        det_magic   => 16,
-        det_hidden  => 32,
-        hold        => 64,
-        sanctuary   => 128,
-        sanc        => 128,
-        faerie_fire => 256,
-        infrared    => 512,
-        flaming     => 2048,
-        fs          => 2048,
-        fireshield  => 2048,
-        protection  => 8192,
-        meditate    => 16384,
-        sneak       => 32768,
-        hide        => 65536,
-        fly         => 524288,
-        passdoor    => 1048756,
-        det_traps   => 2097152,
-        battle_aura => 4194304,
-        det_sneak   => 8388608,
-        globe       => 16777216,
-        det_curse   => 536870912,
-        det_good    => 1073741824,
+        none            => 0,
+        zero            => 0,
+        blind           => 1,
+        invisible       => 2,
+        detect_evil     => 4,
+        detect_invis    => 8,
+        detect_magic    => 16,
+        detect_hidden   => 32,
+        hold            => 64,
+        sanctuary       => 128,
+        faerie_fire     => 256,
+        infrared        => 512,
+        cursed          => 1024,
+        fireshield      => 2048,
+        poisoned        => 4096,
+        protection      => 8192,
+        meditating      => 16384,
+        sneak           => 32768,
+        hide            => 65536,
+        sleep           => 131072,
+        charmed         => 262144,
+        flying          => 524288,
+        pass_door       => 1048756,
+        detect_traps    => 2097152,
+        battle_aura     => 4194304,
+        detect_sneak    => 8388608,
+        globed          => 16777216,
+        deter           => 33554432,
+        swim            => 67108864,
+        plague          => 134217728,
+        non_corporeal   => 268435456,
+        detect_curse    => 536870912,
+        detect_good     => 1073741824,
+        swallowed       => 2147483648,
+        no_recall       => 4294967296,
+        DOT             => 8589934592,
+        prone           => 17179869184,
+        dazed           => 34359738368,
+        slow            => 9223372036854775808,
 );
 
 my %mob_bf = (
@@ -107,20 +124,26 @@ my %mob_bf = (
         no_corpse => 64,
         huge      => 128,
         inorganic => 256,
+        has_tail  => 512,
 );
 
 my @mob_spec = qw/
-        spec_breath_any         spec_breath_acid        spec_breath_fire        spec_breath_frost
-        spec_breath_gas         spec_breath_lightning   spec_cast_adept         spec_cast_hooker
-        spec_buddha             spec_guard_white        spec_kungfu_poison      spec_cast_chill
-        spec_clan_guard         spec_cast_cleric        spec_cast_ghost         spec_cast_judge
-        spec_cast_mage          spec_cast_psionicist    spec_cast_undead        spec_executioner
-        spec_fido               spec_guard              spec_janitor            spec_cast_orb
-        spec_poison             spec_repairman          spec_thief              spec_scavenger
-        spec_cleaner            spec_warrior            spec_vampire            spec_cast_archmage
-        spec_cast_priestess     spec_bloodsucker        spec_cast_druid         spec_sahuagin
-        spec_mast_vampire       spec_assassin           spec_brawler            spec_cast_necromancer
-        spec_demon
+
+    spec_breath_any	        spec_cast_druid	        spec_warrior	          spec_aboleth
+    spec_breath_acid	    spec_cast_water_sprite	spec_vampire	          spec_laghathti
+    spec_breath_fire	    spec_cast_psionicist	spec_cast_archmage	      spec_superwimpy
+    spec_breath_frost	    spec_cast_undead	    spec_cast_priestess	      spec_uzollru
+    spec_breath_gas	        spec_executioner	    spec_mast_vampire	      spec_sahuagin_baron
+    spec_breath_lightning	spec_fido	            spec_bloodsucker	      spec_sahuagin_prince
+    spec_breath_steam	    spec_guard	            spec_spectral_minion	  spec_green_grung
+    spec_cast_adept	        spec_janitor	        spec_celestial_repairman  spec_sahuagin_infantry
+    spec_cast_hooker	    spec_poison	            spec_sahuagin	          spec_sahuagin_cavalry
+    spec_buddha	            spec_repairman	        spec_evil_evil_gezhp	  spec_sahuagin_guard
+    spec_kungfu_poison	    spec_thief	            spec_demon	              spec_sahuagin_lieutenant
+    spec_clan_guard	        spec_bounty	            spec_cast_electric	      spec_sahuagin_cleric
+    spec_cast_cleric	    spec_grail	            spec_small_whale	      spec_sahuagin_high_cleric
+    spec_cast_judge	        spec_cast_orb	        spec_large_whale	      spec_red_grung
+    spec_cast_mage	        spec_assassin	        spec_kappa
 /;
 
 my %obj_ex = (
@@ -134,20 +157,22 @@ my %obj_ex = (
         invis        => 32,
         magic        => 64,
         no_drop      => 128,
-        'bless'      => 256,
+        blessed      => 256,
         anti_good    => 512,
         anti_evil    => 1024,
         anti_neutral => 2048,
         no_remove    => 4096,
-        poison       => 16384,
+        inventory    => 8192,
+        poisoned     => 16384,
         anti_mage    => 32768,
         anti_cleric  => 65536,
         anti_thief   => 131072,
         anti_warrior => 262144,
         anti_psionic => 524288,
         vorpal       => 1048576,
-        trap         => 2097152,
-        bladethirst  => 8388608,
+        trapped      => 2097152,
+        donated      => 4194304,
+        blade_thirst => 8388608,
         sharp        => 16777216,
         forged       => 33554432,
         body_part    => 67108864,
@@ -155,7 +180,14 @@ my %obj_ex = (
         anti_brawler => 268435456,
         anti_shifter => 536870912,
         bow          => 1073741824,
+        anti_smithy  => 17179869184,
+        deployed     => 34359738368,
+        rune         => 68719476736,
+        pure         => 137438953472,
+        steady       => 274877906944,
+        cursed       => 2305843009213693952,
 );
+
 
 my %obj_we = (
         none       => 0,
@@ -190,37 +222,44 @@ my %obj_container = (
 
 my @obj_app = qw/
         none            str             dex                 int
-        wis             con             ?                   ?
-        ?               ?               ?                   ?
-        mana            hp              move                ?
-        ?               ac              hitroll             damroll
+        wis             con             sex                 class
+        level           age             height              weight
+        mana            hp              move                gold
+        exp             ac              hitroll             damroll
         save_para       save_rod        save_petri          save_breath
         save_spell      sanc            sneak               fly
         invis           det_invis       det_hidden          flaming
         protect         pass_door       globe               dragon_aura
         resist_heat     resist_cold     resist_lightning    resist_acid
-        breathe_water
+        breathe_water   balance         set_uncommon        set_rare
+        set_epic        set_legendary   strengthen          engraved
+        serrated        inscribed       crit                swiftness
 /;
 
 my @obj_ty = qw/
-        ?               light               scroll      wand
-        staff           weapon              ?           ?
-        treasure        armour              potion      ?
-        furniture       trash               ?           container
-        ?               drink_container     key         food
-        money           ?                   boat        corpse
-        ?               fountain            pill        climbing_eq
-        paint           ?                   anvil       auction_ticket
-        clan            portal              powder      lockpick
-        instrument
+        ?               light                   scroll          wand
+        staff           weapon                  ?               ?
+        treasure        armour                  potion          ?
+        furniture       trash                   ?               container
+        ?               drink_container         key             food
+        money           ?                       boat            npc_corpse
+        pc_corpse       fountain                pill            climbing_eq
+        paint           ?                       anvil           auction_ticket
+        clan            portal                  poison_powder   lockpick
+        instrument      armourers_hammer        mithril         whetstone
+        crafting        spellcrafting           turret_module   forge
+        arrestor_unit   driver_unit             reflector_unit  shield_unit
+        turret          defensive_turret_module compbat_pulse   defensive_pulse
+        pipe            pipe_cleaner            smokeable       remains
 /;
+
 
 my @obj_weapon = qw/
         hit         slice       stab        slash
         whip        claw        blast       pound
         crush       grep        bite        pierce
         suction     chop        rake        swipe
-        sting       mash        hack
+        sting       scoop       mash        hack
 /;
 
 my @mob_sx = qw/
@@ -228,16 +267,17 @@ my @mob_sx = qw/
 /;
 
 my @obj_liquids = qw/
-        water       beer        wine        ale
-        dark_ale    whiskey     lemonade    firebreather
-        local       slime_mold  milk        tea
-        coffee      blood       salt_water  cola
+        water               beer                wine        ale
+        dark_ale            whisky              lemonade    firebreather
+        local_speciality    slime_mould_juice   milk        tea
+        coffee              blood               salt_water  cola
 /;
 
 my @room_st = qw/
-        inside      city        field       forest
-        hills       mountain    water_swim  water_no_swim
-        underwater  air         desert
+        inside              city        field       forest
+        hills               mountain    water_swim  water_no_swim
+        underwater          air         desert      swamp
+        underwater_ground
 /;
 
 my @exit_ds = qw/
@@ -256,22 +296,28 @@ my %exit_lookup = (
 );
 
 my %room_rf = (
-        none      => 0,
-        zero      => 0,
-        dark      => 1,
-        no_mob    => 4,
-        indoors   => 8,
-        private   => 512,
-        safe      => 1024,
-        solitary  => 2048,
-        pet_shop  => 4096,
-        no_recall => 8192,
-        silence   => 16384,
-        arena     => 32768,
-        healing   => 65536,
-        freezing  => 131072,
-        burning   => 262144,
-        no_mount  => 524288,
+        none        => 0,
+        zero        => 0,
+        dark        => 1,
+        no_mob      => 4,
+        indoors     => 8,
+        vault       => 16,
+        craft       => 128,
+        spellcraft  => 256,
+        private     => 512,
+        safe        => 1024,
+        solitary    => 2048,
+        pet_shop    => 4096,
+        no_recall   => 8192,
+        silence     => 16384,
+        arena       => 32768,
+        healing     => 65536,
+        freezing    => 131072,
+        burning     => 262144,
+        no_mount    => 524288,
+        toxic       => 1048576,
+        no_drop     => 9223372036854775808,
+
 );
 
 my @wear_loc = qw/
