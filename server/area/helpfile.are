@@ -591,6 +591,56 @@ think it might be dodgy, don't do it or you'll probably regret it.
 The DD Team
 ~
 
+101 ZONE ZONES~
+Syntax: zones <<low_vnum> <<high_vnum>
+
+Shows you the vnum ranges of room, objects, and mobs by area with optional
+low-vnum and high-vnum bounding.
+~
+
+101 TRAPSTAT~
+Syntax: trapstat <<target>
+
+Provides trap-related information about an object.
+~
+
+101 TRAPSET~
+Syntax: trapset <<object> <<field> <<value>
+
+Set a trap on an object.
+
+<<field> options: move, object (get and put), room, open, damage, charge
+
+<<value> options:
+for 'move':   north, south, east, west, up, down, and all.
+for 'damage': sleep, teleport, fire, cold, acid, energy, blunt, pierce, slash.
+for 'object': no argument, will trap on 'get' and 'put'
+for 'open':   no argument, will trap object on it being opened
+for 'room':   no argument, will mean trap hits all characters in room
+
+Example: to put a north-move sleep trap on an axe with 10 charges, you would
+execute the follow commands:
+
+trapset axe move north
+trapset axe damage sleep
+trapset axe charge 10
+
+This would mean someone moving north from the room the object is in would be hit
+by the trap and put to sleep.
+~
+
+101 TRAPLIST~
+Syntax: traplist
+
+Lists all traps in the MUD and their locations.
+~
+
+101 TRAPREMOVE~
+Syntax: trapremove <<target>
+
+Removes a trap from a trapped object.
+~
+
 
 0 DECAPITATE DECAPITATION~
 Syntax: decapitate

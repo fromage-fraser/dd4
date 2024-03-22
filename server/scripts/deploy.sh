@@ -25,6 +25,8 @@ LOCAL_EXECUTABLE=/home/ddsrc/dd4/server/src/dd4
 SERVER_EXECUTABLE=/home/ddhost/dd4/src/dd4.new
 LOCAL_WEBSITE_BUILDER_DIR=/var/www/smihilist.com/dd4/web/main/building/
 SERVER_BUILDER_DIR=/home/ddsrc/dd4/builder/
+LOCAL_WEBSITE_MAPS_DIR=/var/www/smihilist.com/dd4/web/main/maps/
+SERVER_MAPS_DIR=/home/ddsrc/dd4/maps/area/
 LOCAL_MERCH_FILE=/home/ddsrc/dd4/server/src/merc.h
 
 
@@ -50,6 +52,12 @@ $ECHO_PATH -e "\r\n\e[38;5;0;48;5;196mCopying builder stuff to $LOCAL_WEBSITE_BU
 $CP_PATH $CP_VERBOSE -R ${SERVER_BUILDER_DIR}* ${LOCAL_WEBSITE_BUILDER_DIR}
 $CP_PATH $CP_VERBOSE ${LOCAL_MERCH_FILE} ${LOCAL_WEBSITE_BUILDER_DIR}
 $CHOWN_PATH ${SERVER_USER}:${SERVER_USER} ${LOCAL_WEBSITE_BUILDER_DIR}*
+
+# Copy all maps to the website's "maps" directory
+
+$ECHO_PATH -e "\r\n\e[38;5;0;48;5;196mCopying maps to $LOCAL_WEBSITE_MAPS_DIR...\e[0m\r\n"
+$CP_PATH $CP_VERBOSE -R ${SERVER_MAPS_DIR}* ${LOCAL_WEBSITE_MAPS_DIR}
+$CHOWN_PATH ${SERVER_USER}:${SERVER_USER} ${LOCAL_WEBSITE_MAPS_DIR}*
 
 # Copy startup script to server directory
 

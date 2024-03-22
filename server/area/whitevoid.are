@@ -1,6 +1,9 @@
 #AREA   Owl~   The White Void~
 -2 -2 70 100
 
+#AREA_SPECIAL
+hidden
+$
 
 #ROOMS
 #25900
