@@ -6,11 +6,11 @@
 #include "merc.h"
 
 /*
- *  trap.c 
- * 
+ *  trap.c
+ *
  *  Written by Helix of Twilight and Vego Mud
- * 
- *  Tidied by Gezhp 2000 
+ *
+ *  Tidied by Gezhp 2000
  */
 
 
@@ -62,13 +62,13 @@ void do_disable(CHAR_DATA *ch, char *argument)
                 send_to_char( "You can't break off your fight.\n\r", ch );
                 return;
         }
-        
+
         if (!IS_SET(obj->extra_flags, ITEM_TRAP))
         {
                 send_to_char("That doesn't appear to be trapped.\n\r", ch);
                 return;
         }
-        
+
         chance = ch->pcdata->learned[gsn_disable]/2;
 
         if ( !IS_NPC( ch ) && get_curr_dex( ch ) > 22 )
@@ -105,43 +105,43 @@ void do_trapstat(CHAR_DATA *ch, char *argument)
         }
 
         if (IS_SET(obj->extra_flags, ITEM_TRAP) ) {
-                send_to_char("That object is registered as a trap.\n\r", ch);
+                send_to_char("Object status: {Rtrapped{x\n\r", ch);
         }
         else {
-                send_to_char("That object is not registered as a trap.\n\r", ch);
+                send_to_char("Object status: {Rnot trapped{x\n\r", ch);
                 return;
         }
 
         switch (obj->trap_dam) {
             case TRAP_DAM_SLEEP:
-                send_to_char("Damage type is sleep.\n\r", ch);
+                send_to_char("Damage type: {Gsleep{x\n\r", ch);
                 break;
             case TRAP_DAM_TELEPORT:
-                send_to_char("Damage type is teleport.\n\r", ch);
+                send_to_char("Damage type: {Gteleport{x\n\r", ch);
                 break;
             case TRAP_DAM_FIRE:
-                send_to_char("Damage type is fire.\n\r", ch);
+                send_to_char("Damage type: {Gfire{x\n\r", ch);
                 break;
             case TRAP_DAM_COLD:
-                send_to_char("Damage type is frost.\n\r", ch);
+                send_to_char("Damage type: {Gfrost{x\n\r", ch);
                 break;
             case TRAP_DAM_ACID:
-                send_to_char("Damage type is acid.\n\r", ch);
+                send_to_char("Damage type: {Gacid{x\n\r", ch);
                 break;
             case TRAP_DAM_ENERGY:
-                send_to_char("Damage type is energy.\n\r", ch);
+                send_to_char("Damage type: {Genergy{x\n\r", ch);
                 break;
             case TRAP_DAM_BLUNT:
-                send_to_char("Damage type is blunt.\n\r", ch);
+                send_to_char("Damage type: {Gblunt{x\n\r", ch);
                 break;
             case TRAP_DAM_PIERCE:
-                send_to_char("Damage type is pierce.\n\r", ch);
+                send_to_char("Damage type: {Gpierce{x\n\r", ch);
                 break;
             case TRAP_DAM_SLASH:
-                send_to_char("Damage type is slash.\n\r", ch);
+                send_to_char("Damage type: {Gslash{x\n\r", ch);
                 break;
             case TRAP_DAM_POISON:
-                send_to_char("Damage type is poison.\n\r", ch );
+                send_to_char("Damage type: {Gpoison{x\n\r", ch );
                 break;
         }
 
@@ -151,30 +151,30 @@ void do_trapstat(CHAR_DATA *ch, char *argument)
         else {
                 if (IS_SET(obj->trap_eff, TRAP_EFF_MOVE) ) {
                         if (IS_SET(obj->trap_eff, TRAP_EFF_NORTH) )
-                                send_to_char("The trap affects movement to the north.\n\r", ch);
+                                send_to_char("Trap affects movement {Rnorth{x\n\r", ch);
                         if (IS_SET(obj->trap_eff, TRAP_EFF_SOUTH) )
-                                send_to_char("The trap affects movement to the south.\n\r", ch);
+                                send_to_char("Trap affects movement {Rsouth{x\n\r", ch);
                         if (IS_SET(obj->trap_eff, TRAP_EFF_EAST) )
-                                send_to_char("The trap affects movement to the east.\n\r", ch);
+                                send_to_char("Trap affects movement {Reast{x\n\r", ch);
                         if (IS_SET(obj->trap_eff, TRAP_EFF_WEST) )
-                                send_to_char("The trap affects movement to the west.\n\r", ch);
+                                send_to_char("Trap affects movement {Rwest{x\n\r", ch);
                         if (IS_SET(obj->trap_eff, TRAP_EFF_UP) )
-                                send_to_char("The trap affects movement up.\n\r", ch);
+                                send_to_char("Trap affects movement {Rup{x\n\r", ch);
                         if (IS_SET(obj->trap_eff, TRAP_EFF_DOWN) )
-                                send_to_char("The trap affects movement down.\n\r", ch);
+                                send_to_char("Trap affects movement {Rdown{x\n\r", ch);
                 }
-                
+
                 if (IS_SET(obj->trap_eff, TRAP_EFF_OBJECT) )
-                        send_to_char("The trap is set off by get or put.\n\r", ch);
+                        send_to_char("Trigger: {Gget / put{x\n\r", ch);
 
                 if (IS_SET(obj->trap_eff, TRAP_EFF_OPEN) )
-                        send_to_char("The trap is set off when opened.\n\r", ch);
+                        send_to_char("Trigger: {Gopen{x\n\r", ch);
 
                 if (IS_SET(obj->trap_eff, TRAP_EFF_ROOM) )
-                        send_to_char("The trap affects the whole room.\n\r", ch);
+                        send_to_char("Trap effect: {Groom{x\n\r", ch);
         }
-        
-        sprintf (buf, "Trap Charges left: %d.\n\r", obj->trap_charge);
+
+        sprintf (buf, "Charges remaining: {R%d{x\n\r", obj->trap_charge);
         send_to_char(buf, ch);
         return;
 }
@@ -186,15 +186,15 @@ void do_traplist(CHAR_DATA *ch, char *argument)
         OBJ_DATA *obj;
         OBJ_DATA *in_obj;
         bool found;
-        
+
         found = FALSE;
-        
+
         for ( obj = object_list; obj != NULL; obj = obj->next ) {
                 if ( !can_see_obj( ch, obj ) || !IS_SET(obj->extra_flags, ITEM_TRAP) )
                         continue;
 
                 found = TRUE;
-                
+
                 for ( in_obj = obj; in_obj->in_obj != NULL; in_obj = in_obj->in_obj )
                         ;
 
@@ -246,7 +246,7 @@ void do_trapset(CHAR_DATA *ch, char *argument)
                 send_to_char("Nothing like that here!\n\r", ch);
                 return;
         }
-        
+
         if (!IS_SET(obj->extra_flags, ITEM_TRAP) )
                 SET_BIT(obj->extra_flags, ITEM_TRAP);
 
@@ -305,7 +305,7 @@ void do_trapset(CHAR_DATA *ch, char *argument)
                         send_to_char("You set a trap for upward movement!\n\r", ch);
                         return;
                 }
-      
+
                 if (!str_cmp(arg3, "down") ) {
                         if (!IS_SET(obj->trap_eff, TRAP_EFF_MOVE) )
                                 SET_BIT(obj->trap_eff, TRAP_EFF_MOVE);
@@ -314,7 +314,7 @@ void do_trapset(CHAR_DATA *ch, char *argument)
                         send_to_char("You set a trap for downward movement!\n\r", ch);
                         return;
                 }
-                
+
                 if (!str_cmp(arg3, "all") ) {
                         if (!IS_SET(obj->trap_eff, TRAP_EFF_MOVE) )
                                 SET_BIT(obj->trap_eff, TRAP_EFF_MOVE);
@@ -333,11 +333,11 @@ void do_trapset(CHAR_DATA *ch, char *argument)
                         send_to_char("You set a trap for all movement!\n\r", ch);
                               return;
                 }
-                
+
                 send_to_char("Value specified was not a valid option for move.\n\r", ch);
                 return;
         }
-        
+
         if (!str_cmp(arg2, "object") ) {
                 if (!IS_SET(obj->trap_eff, TRAP_EFF_OBJECT) )
                         SET_BIT(obj->trap_eff, TRAP_EFF_OBJECT);
@@ -392,13 +392,13 @@ void do_trapset(CHAR_DATA *ch, char *argument)
                         send_to_char("You carefully fill the trap with acid!\n\r", ch);
                         return;
                 }
-                
+
                 if (!str_cmp(arg3, "energy") ) {
                         obj->trap_dam = TRAP_DAM_ENERGY;
                         send_to_char("The trap will now zap people with energy!\n\r", ch);
                         return;
                 }
-                
+
                 if (!str_cmp(arg3, "blunt") ) {
                         obj->trap_dam = TRAP_DAM_BLUNT;
                         send_to_char("The trap will now bludgeon its victims!\n\r", ch);
@@ -450,7 +450,7 @@ bool checkmovetrap(CHAR_DATA *ch, int dir)
 {
         OBJ_DATA *obj;
         OBJ_DATA *obj_next;
-        bool found;  
+        bool found;
 
         if ( IS_NPC(ch) )
                 return FALSE;
@@ -470,12 +470,12 @@ bool checkmovetrap(CHAR_DATA *ch, int dir)
                                 trapdamage(ch, obj);
                                 return FALSE;
                         }
-                        
+
                         if (IS_SET(obj->trap_eff, TRAP_EFF_EAST) && dir == 1) {
                                 trapdamage(ch, obj);
                                 return FALSE;
                         }
-        
+
                         if (IS_SET(obj->trap_eff, TRAP_EFF_SOUTH) && dir == 2) {
                                 trapdamage(ch, obj);
                                 return FALSE;
@@ -498,13 +498,13 @@ bool checkmovetrap(CHAR_DATA *ch, int dir)
                 }
         }
         return FALSE;
-} 
+}
 
 
 bool checkgetput(CHAR_DATA *ch, OBJ_DATA *obj)
 {
         if (IS_NPC(ch) )
-                return FALSE; 
+                return FALSE;
 
         if (!IS_SET(obj->extra_flags, ITEM_TRAP) )
                 return FALSE;
@@ -548,10 +548,10 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
         obj->trap_charge--;
 
         switch(obj->trap_dam) {
-                
+
             case TRAP_DAM_SLEEP:
                 if (!IS_SET(obj->trap_eff, TRAP_EFF_ROOM) ) {
-                        
+
                         if ( IS_AFFECTED(ch, AFF_SLEEP) )
                                 return;
 
@@ -570,7 +570,7 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                 }
                 else {
                         for (wch = ch->in_room->people; wch != NULL; wch = wch->next_in_room) {
-                                
+
                                 if ( IS_AFFECTED(wch, AFF_SLEEP) )
                                         continue;
 
@@ -601,7 +601,7 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                         af.modifier  = -4;
                         af.bitvector = AFF_POISON;
                         affect_join( ch, &af );
-                        
+
                         if ( IS_AWAKE(ch) ) {
                                 send_to_char( "You are struck by a small dart... your blood begins to burn!\n\r", ch );
                                 act( "$n is struck by a small dart!", ch, NULL, NULL, TO_ROOM );
@@ -619,7 +619,7 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                                 af.modifier  = -4;
                                 af.bitvector = AFF_POISON;
                                 affect_join( wch, &af );
- 
+
                                 if ( IS_AWAKE(wch) ) {
                                         send_to_char( "You are struck by a small dart... your blood begins to burn!\n\r", ch );
                                         act( "$n is struck by a small dart!", ch, NULL, NULL, TO_ROOM );
@@ -732,7 +732,7 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
             case TRAP_DAM_BLUNT:
                 dam = (10* number_range(obj->level/2, obj->level)) + (GET_AC(ch) / 4);
                 break;
- 
+
             case TRAP_DAM_PIERCE:
                 dam = (10* number_range(obj->level/2, obj->level)) + (GET_AC(ch) / 4);
                 break;
@@ -741,7 +741,7 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                 dam = (10* number_range(obj->level/2, obj->level)) + (GET_AC(ch) / 4);
                 break;
         }
-        
+
         if (obj->trap_dam == TRAP_DAM_BLUNT) {
                 if (!IS_SET(obj->trap_eff, TRAP_EFF_ROOM) ) {
                         act("$n sets off a trap on $p and is hit by a blunt object!", ch, obj, NULL, TO_ROOM);
@@ -775,12 +775,12 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                         act("One of the blades slashes you in the chest!", ch, obj, NULL, TO_CHAR);
                 }
         }
-        
+
 
         /*
          * Do the damage
          */
-        
+
         if (!IS_SET(obj->trap_eff, TRAP_EFF_ROOM)) {
                 if ( ch->position == POS_DEAD )
                         return;
@@ -804,7 +804,7 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                 /*
                  * Damage modifiers
                  */
-                
+
                 if ( IS_AFFECTED(ch, AFF_SANCTUARY) )
                         dam /= 2;
 
@@ -814,16 +814,16 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                 trap_damage_message (ch, dam);
 
                 ch->hit -= dam;
-                
+
                 if ( !IS_NPC(ch)
                     && ch->level >= LEVEL_IMMORTAL
                     && ch->hit < 1 )
                         ch->hit = 1;
-                
+
                 update_pos( ch );
-                
+
                 switch( ch->position ) {
-                    
+
                     case POS_MORTAL:
                         act( "$n is mortally wounded, and will die soon, if not aided.",
                             ch, NULL, NULL, TO_ROOM );
@@ -860,7 +860,7 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                                         ch->name,
                                         ch->in_room->vnum );
                                 log_string( log_buf );
-                                
+
                                 sprintf( log_buf, "ACK! %s has been killed by a trap at %s!",
                                         ch->name,
                                         ch->in_room->name );
@@ -871,14 +871,14 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
         }
         else {
                 CHAR_DATA *wch_next;
-                
+
                 for (wch = ch->in_room->people; wch; wch = wch_next) {
-                        
+
                         wch_next = wch->next_in_room;
-                        
+
                         if (wch->deleted || wch->position == POS_DEAD)
                                 continue;
-                        
+
                         if (obj->trap_dam == TRAP_DAM_BLUNT
                             || obj->trap_dam == TRAP_DAM_PIERCE
                             || obj->trap_dam == TRAP_DAM_SLASH)
@@ -903,13 +903,13 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                         /*
                          * Damage modifiers
                          */
-                        
+
                         if ( IS_AFFECTED(wch, AFF_SANCTUARY) )
                                 dam /= 2;
 
                         if ( dam < 0 )
                                 dam = 0;
-                        
+
                         trap_damage_message (wch, dam);
 
                         wch->hit -= dam;
@@ -917,11 +917,11 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                             && wch->level >= LEVEL_IMMORTAL
                             && wch->hit < 1 )
                                 wch->hit = 1;
-                        
+
                         update_pos( wch );
 
                         switch( wch->position ) {
-                            
+
                             case POS_MORTAL:
                                 act( "$n is mortally wounded, and will die soon, if not aided.",
                                     wch, NULL, NULL, TO_ROOM );
@@ -938,7 +938,7 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                                 act( "$n is stunned, but will probably recover.",wch, NULL, NULL, TO_ROOM);
                                 send_to_char("You are stunned, but will probably recover.\n\r", wch);
                                 break;
-                                
+
                             case POS_DEAD:
                                 act( "$n is DEAD!!", wch, 0, 0, TO_ROOM );
                                 send_to_char( "{RYou have been KILLED!!{x\n\r\n\r", wch );
@@ -951,14 +951,14 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                                         send_to_char( "{WYou sure are {x{RBLEEDING!{x\n\r", wch );
                                 break;
                         }
-                        
+
                         if (wch->position == POS_DEAD) {
                                 if (!IS_NPC(wch)) {
                                         sprintf( log_buf, "%s killed by a trap at %d",
                                                 wch->name,
                                                 wch->in_room->vnum );
                                         log_string( log_buf );
-                                
+
                                         sprintf( log_buf, "ACK! %s has been killed by a trap at %s!",
                                                 wch->name,
                                                 wch->in_room->name );
@@ -975,11 +975,11 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
 /*
  *  Let's print a damage message; verbs taken from fight.c
  *  Gezhp 2000
- * 
+ *
  *  Updated with new helper function by Owl 12/7/22
  */
 void trap_damage_message (CHAR_DATA *ch, int dam) {
-        
+
         char buf [MAX_STRING_LENGTH];
         char* verb;
 
@@ -988,7 +988,7 @@ void trap_damage_message (CHAR_DATA *ch, int dam) {
                 return;
         }
         else
-        { 
+        {
                 verb = get_damage_string(dam, FALSE);
         }
 

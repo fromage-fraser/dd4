@@ -653,6 +653,10 @@ int     gsn_tfind;
 int     gsn_rfind;
 int     gsn_enhanced_swiftness;
 int     gsn_enhanced_critical;
+int     gsn_traplist;
+int     gsn_trapset;
+int     gsn_trapstat;
+int     gsn_trapremove;
 
 
 /*

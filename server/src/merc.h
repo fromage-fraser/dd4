@@ -323,7 +323,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   578     /* +2 enhanced swiftness & enhanced critical 15/3/24 - Owl */
+#define MAX_SKILL                   582     /* +3 trapset, trapstat, trapremove 22/3/24 - Owl */
 #define MAX_PRE_REQ                 1398    /* +1 reforge - Brutus 1/1/23 */
 #define MAX_SPELL_GROUP             452     /* +1 reforge Brutus 1/1/23 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
@@ -3843,6 +3843,10 @@ extern int gsn_tfind;
 extern int gsn_rfind;
 extern int gsn_enhanced_swiftness;
 extern int gsn_enhanced_critical;
+extern int gsn_traplist;
+extern int gsn_trapset;
+extern int gsn_trapstat;
+extern int gsn_trapremove;
 
 /*
  *  Deity gsns

@@ -6421,6 +6421,30 @@ const struct skill_type skill_table [MAX_SKILL] =
                 spell_null, 0, 0,
                 "", "!Enhanced Critical!"
         },
+        {
+                "traplist", &gsn_traplist,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
+                spell_null, 0, 0,
+                "", "!Traplist!"
+        },
+        {
+                "trapset", &gsn_trapset,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
+                spell_null, 0, 0,
+                "", "!Trapset!"
+        },
+        {
+                "trapstat", &gsn_trapstat,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
+                spell_null, 0, 0,
+                "", "!Trapstat!"
+        },
+        {
+                "trapremove", &gsn_trapremove,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
+                spell_null, 0, 0,
+                "", "!Trapremove!"
+        },
 
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
