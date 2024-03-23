@@ -10,8 +10,11 @@
 
 FROM gcc:9.5
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get -y install gdb vim less screen
+    DEBIAN_FRONTEND=noninteractive apt-get -y install gdb vim less screen perl
 COPY ./docker/dev_content/.screenrc /root/
 COPY ./docker/dev_content/.gdbinit /root/
+ADD ./builder /dd4-builder
+RUN ln -s /dd4-builder/scribe/scribe.pl /usr/local/bin/scribe.pl && \
+    chmod 755 /dd4-builder/scribe/scribe.pl
 EXPOSE 8888
 CMD ["/bin/bash"]
