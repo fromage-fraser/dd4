@@ -348,6 +348,11 @@ my %trap_trig = (
         'open' => 512,
 );
 
+my @area_specials = qw /
+        school      no_quest    hidden      safe
+        no_teleport no_magic    exp_mod
+/;
+
 
 #############################################################################
 #
@@ -363,7 +368,7 @@ close $fh;
 
 print "Reading source...\n";
 
-my ($fatal, $line, $msg, %area, @mobs, @objs, @rooms, @addmobs, @helps, @addobjs, @shops);
+my ($fatal, $line, $msg, %area, @recall, @special, @mobs, @objs, @rooms, @addmobs, @helps, @addobjs, @shops);
 
 while (1) {
     my $next = shift @source;
@@ -389,6 +394,52 @@ while (1) {
             next if &add_field_data(\%area, $field, $data, 'bv au ti ls us le ue');
             print "    line $line: area: unknown field '$field'\n";
         }
+    }
+
+
+    #  Recall information
+
+    elsif ($header eq 'recall') {
+        my %recall;
+        $recall{'line'} = $line;
+
+        while (@source) {
+            my ($field, $data) = &get_field_data(\@source);
+
+            if (!$field) {
+                last if $data eq 'BREAK';
+                print "    line $line: recall: $data\n" if $data;
+                next;
+            }
+
+            next if &add_field_data(\%recall, $field, $data, 'rl');
+            print "    line $line: recall: unknown field '$field'\n";
+        }
+
+        push @recall, [ %recall ];
+    }
+
+
+    # Area special information
+
+    elsif ($header eq 'special') {
+        my %special;
+        $special{'line'} = $line;
+
+        while (@source) {
+            my ($field, $data) = &get_field_data(\@source);
+
+            if (!$field) {
+                last if $data eq 'BREAK';
+                print "    line $line: special: $data\n" if $data;
+                next;
+            }
+
+            next if &add_field_data(\%special, $field, $data, 'af xp');
+            print "    line $line: special: unknown field '$field'\n";
+        }
+
+        push @special, [ %special ];
     }
 
 
@@ -805,7 +856,7 @@ sub get_text_block(\@) {
 
 print "Verifying data...\n";
 
-my ($area_errors, %mob_errors, %mob_vnums, %obj_errors, %obj_vnums, @specials,
+my ($area_errors, %recall_errors, %special_errors, %mob_errors, %mob_vnums, %obj_errors, %obj_vnums, @specials,
         %room_errors, %room_vnums, @resets, %addmob_errors, %room_names,
         %mob_names, %obj_names, %help_errors, %addobj_errors, %shop_errors);
 
@@ -835,6 +886,47 @@ my ($area_errors, %mob_errors, %mob_vnums, %obj_errors, %obj_vnums, @specials,
     }
 
     $area{'bv'} = 0 unless exists $area{'bv'};
+}
+
+
+#  Recall header
+
+foreach (0 .. $#recall) {
+    my %recall = @{$recall[$_]};
+    my $err = "    recall, line $recall{'line'}:";
+
+    foreach (qw/rl/) {
+        if ($msg = &check_field_number_range(\%recall, $_, 0, 'none')) {
+            print "$err $msg\n";
+            $recall_errors{$recall{'line'}}++;
+        }
+    }
+    $recall[$_] = [ %recall ];
+}
+
+
+
+#  Area special header
+
+foreach (0 .. $#special) {
+    my %special = @{$special[$_]};
+    my $err = "    special, line $special{'line'}:";
+
+    if (exists($special{'af'})) {
+        if ($msg = &check_keyword_list(\%special, 'af', \@area_specials)) {
+               print "$err $msg\n";
+               $special_errors{$special{'line'}}++;
+        }
+    }
+
+    if (exists($special{'xp'})) {
+        if ($msg = &check_field_number_range(\%special, 'xp', 0, 'none')) {
+            print "$err $msg\n";
+            $special_errors{$special{'line'}}++;
+        }
+    }
+
+    $special[$_] = [ %special ];
 }
 
 
@@ -1809,7 +1901,6 @@ sub get_multiple_flags(\%$\%$) {
 
 sub get_single_flag(\%$\@) {
     my ($var, $field, $list) = @_;
-
     return $msg if ($msg = &check_field_defined($var, $field));
 
     foreach my $i (0 .. $#$list) {
@@ -1820,6 +1911,41 @@ sub get_single_flag(\%$\@) {
     }
 
     return "field '$field' has invalid value: $$var{$field}";
+}
+
+#############################################################################
+#
+#   Subroutine:   Validate a list of text keywords against an array
+#
+
+sub check_keyword_list(\%$) {
+    my ($var, $field, $checklist) = @_;
+    my $msg;
+
+     # Check if the key exists in the hash.
+    if (exists $var->{$field}) {
+        # Split the string into an array of words.
+        my @words = split(' ', $var->{$field});
+        my $word_len = @words;
+
+        if ($word_len < 1) {
+            $msg = "Error: key '$field' exists, but has no value";
+            return $msg;
+        }
+
+
+        foreach my $word (@words) {
+            unless (grep { $_ eq $word } @$checklist) {
+                # If the word is not found in the checklist, set the error message.
+                $msg = "Error: '$word' is not a valid flag";
+                last; # Exit the loop after finding the first unmatched word.
+            }
+        }
+    } else {
+        $msg = "Error: The field '$field' does not exist in the hash.";
+    }
+
+    return $msg;
 }
 
 
@@ -1844,6 +1970,7 @@ sub check_field_defined(\%$) {
 sub check_field_number(\%$) {
     return &check_field_number_range(shift, shift, 'none', 'none');
 }
+
 
 sub check_field_number_range {
     my ($var, $field, $lower, $upper) = @_;
@@ -1873,9 +2000,9 @@ sub is_number($) {
 #  Report any errors
 #
 
-if ($area_errors || keys %mob_errors || keys %obj_errors || keys %room_errors
-        || keys %addmob_errors || keys %addobj_errors || keys %help_errors
-        || keys %shop_errors) {
+if ($area_errors || keys %recall_errors || keys %special_errors || keys %mob_errors
+        || keys %obj_errors || keys %room_errors || keys %addmob_errors
+        || keys %addobj_errors || keys %help_errors || keys %shop_errors) {
     sub errors($) {
         my $num = shift;
         my $text = "$num error";
@@ -1887,6 +2014,12 @@ if ($area_errors || keys %mob_errors || keys %obj_errors || keys %room_errors
 
     if ($area_errors) {
         print "    area: ", errors($area_errors);
+    }
+    foreach (keys %recall_errors) {
+        print "    recall, line $_: ", errors($recall_errors{$_});
+    }
+    foreach (keys %special_errors) {
+        print "    special, line $_: ", errors($special_errors{$_});
     }
     foreach (keys %help_errors) {
         print "    help, line $_: ", errors($help_errors{$_});
@@ -1946,6 +2079,42 @@ open(AREA, ">$destination_file")
 
 print AREA "#AREA $area{'au'}~ $area{'ti'}~\n"
         . "$area{'ls'} $area{'us'} $area{'le'} $area{'ue'}\n\n";
+
+
+#  Print recall
+
+if (@recall) {
+    print AREA "#RECALL\n";
+
+    foreach (@recall) {
+        my %recall= @{$_};
+        print AREA "$recall{'rl'}\n\n";
+    }
+}
+
+
+#  Print area special
+
+if (@special) {
+    print AREA "#AREA_SPECIAL\n";
+
+    foreach (@special) {
+        my %special= @{$_};
+        if ($special{'af'})
+        {
+            foreach (split / /, $special{'af'}) {
+                print AREA "$_\n";
+            }
+        }
+
+        if ($special{'xp'})
+        {
+            print AREA "exp_mod $special{'xp'}\n";
+        }
+    }
+
+    print AREA "\$\n\n";
+}
 
 
 #  Print helps
@@ -2032,7 +2201,7 @@ if (@rooms) {
         print AREA "\n#" . ($room{'vn'} + $area{'bv'})
                 . "\n$room{'nm'}~\n$room{'de'}~\n0 $room{'rf'} $room{'st'}\n";
 
-        foreach my $exit (qw/n s e w u d/) {
+        foreach my $exit (qw/n e s w u d/) {
             if (exists $room{$exit}) {
                 print AREA "D $exit_lookup{$exit}\n$room{$exit . 'de'}~\n"
                         . "$room{$exit . 'nm'}~\n$room{$exit . 'lo'} "
