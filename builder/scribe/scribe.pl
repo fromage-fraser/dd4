@@ -58,6 +58,7 @@ my %mob_act = (
         wizinvis           => 65536,
         mount              => 131072,
         tinker             => 262144,
+        tinker             => 262144,
         banker             => 524288,
         identify           => 1048756,
         die_if_master_gone => 2097152,
@@ -145,9 +146,26 @@ my %mob_bf = (
         huge      => 128,
         inorganic => 256,
         has_tail  => 512,
+        has_tail  => 512,
 );
 
 my @mob_spec = qw/
+
+    spec_breath_any	        spec_cast_druid	        spec_warrior	          spec_aboleth
+    spec_breath_acid	    spec_cast_water_sprite	spec_vampire	          spec_laghathti
+    spec_breath_fire	    spec_cast_psionicist	spec_cast_archmage	      spec_superwimpy
+    spec_breath_frost	    spec_cast_undead	    spec_cast_priestess	      spec_uzollru
+    spec_breath_gas	        spec_executioner	    spec_mast_vampire	      spec_sahuagin_baron
+    spec_breath_lightning	spec_fido	            spec_bloodsucker	      spec_sahuagin_prince
+    spec_breath_steam	    spec_guard	            spec_spectral_minion	  spec_green_grung
+    spec_cast_adept	        spec_janitor	        spec_celestial_repairman  spec_sahuagin_infantry
+    spec_cast_hooker	    spec_poison	            spec_sahuagin	          spec_sahuagin_cavalry
+    spec_buddha	            spec_repairman	        spec_evil_evil_gezhp	  spec_sahuagin_guard
+    spec_kungfu_poison	    spec_thief	            spec_demon	              spec_sahuagin_lieutenant
+    spec_clan_guard	        spec_bounty	            spec_cast_electric	      spec_sahuagin_cleric
+    spec_cast_cleric	    spec_grail	            spec_small_whale	      spec_sahuagin_high_cleric
+    spec_cast_judge	        spec_cast_orb	        spec_large_whale	      spec_red_grung
+    spec_cast_mage	        spec_assassin	        spec_kappa
 
     spec_breath_any	        spec_cast_druid	        spec_warrior	          spec_aboleth
     spec_breath_acid	    spec_cast_water_sprite	spec_vampire	          spec_laghathti
@@ -210,7 +228,14 @@ my %obj_ex = (
         pure         => 137438953472,
         steady       => 274877906944,
         cursed       => 2305843009213693952,
+        anti_smithy  => 17179869184,
+        deployed     => 34359738368,
+        rune         => 68719476736,
+        pure         => 137438953472,
+        steady       => 274877906944,
+        cursed       => 2305843009213693952,
 );
+
 
 
 my %obj_we = (
@@ -250,11 +275,18 @@ my @obj_app = qw/
         level           age             height              weight
         mana            hp              move                gold
         exp             ac              hitroll             damroll
+        wis             con             sex                 class
+        level           age             height              weight
+        mana            hp              move                gold
+        exp             ac              hitroll             damroll
         save_para       save_rod        save_petri          save_breath
         save_spell      sanc            sneak               fly
         invis           det_invis       det_hidden          flaming
         protect         pass_door       globe               dragon_aura
         resist_heat     resist_cold     resist_lightning    resist_acid
+        breathe_water   balance         set_uncommon        set_rare
+        set_epic        set_legendary   strengthen          engraved
+        serrated        inscribed       crit                swiftness
         breathe_water   balance         set_uncommon        set_rare
         set_epic        set_legendary   strengthen          engraved
         serrated        inscribed       crit                swiftness
@@ -278,11 +310,13 @@ my @obj_ty = qw/
 /;
 
 
+
 my @obj_weapon = qw/
         hit         slice       stab        slash
         whip        claw        blast       pound
         crush       grep        bite        pierce
         suction     chop        rake        swipe
+        sting       scoop       mash        hack
         sting       scoop       mash        hack
 /;
 
@@ -298,6 +332,10 @@ my @obj_liquids = qw/
 /;
 
 my @room_st = qw/
+        inside              city        field       forest
+        hills               mountain    water_swim  water_no_swim
+        underwater          air         desert      swamp
+        underwater_ground
         inside              city        field       forest
         hills               mountain    water_swim  water_no_swim
         underwater          air         desert      swamp
@@ -320,6 +358,28 @@ my %exit_lookup = (
 );
 
 my %room_rf = (
+        none        => 0,
+        zero        => 0,
+        dark        => 1,
+        no_mob      => 4,
+        indoors     => 8,
+        vault       => 16,
+        craft       => 128,
+        spellcraft  => 256,
+        private     => 512,
+        safe        => 1024,
+        solitary    => 2048,
+        pet_shop    => 4096,
+        no_recall   => 8192,
+        silence     => 16384,
+        arena       => 32768,
+        healing     => 65536,
+        freezing    => 131072,
+        burning     => 262144,
+        no_mount    => 524288,
+        toxic       => 1048576,
+        no_drop     => 9223372036854775808,
+
         none        => 0,
         zero        => 0,
         dark        => 1,
@@ -377,6 +437,11 @@ my @area_specials = qw /
         no_teleport no_magic    exp_mod
 /;
 
+my @area_specials = qw /
+        school      no_quest    hidden      safe
+        no_teleport no_magic    exp_mod
+/;
+
 
 #############################################################################
 #
@@ -392,6 +457,7 @@ close $fh;
 
 print "Reading source...\n";
 
+my ($fatal, $line, $msg, %area, @recall, @special, @mobs, @objs, @rooms, @addmobs, @helps, @addobjs, @shops);
 my ($fatal, $line, $msg, %area, @recall, @special, @mobs, @objs, @rooms, @addmobs, @helps, @addobjs, @shops);
 
 while (1) {
@@ -418,6 +484,52 @@ while (1) {
             next if &add_field_data(\%area, $field, $data, 'bv au ti ls us le ue');
             print "    line $line: area: unknown field '$field'\n";
         }
+    }
+
+
+    #  Recall information
+
+    elsif ($header eq 'recall') {
+        my %recall;
+        $recall{'line'} = $line;
+
+        while (@source) {
+            my ($field, $data) = &get_field_data(\@source);
+
+            if (!$field) {
+                last if $data eq 'BREAK';
+                print "    line $line: recall: $data\n" if $data;
+                next;
+            }
+
+            next if &add_field_data(\%recall, $field, $data, 'rl');
+            print "    line $line: recall: unknown field '$field'\n";
+        }
+
+        push @recall, [ %recall ];
+    }
+
+
+    # Area special information
+
+    elsif ($header eq 'special') {
+        my %special;
+        $special{'line'} = $line;
+
+        while (@source) {
+            my ($field, $data) = &get_field_data(\@source);
+
+            if (!$field) {
+                last if $data eq 'BREAK';
+                print "    line $line: special: $data\n" if $data;
+                next;
+            }
+
+            next if &add_field_data(\%special, $field, $data, 'af xp');
+            print "    line $line: special: unknown field '$field'\n";
+        }
+
+        push @special, [ %special ];
     }
 
 
@@ -881,6 +993,7 @@ sub get_text_block(\@) {
 print "Verifying data...\n";
 
 my ($area_errors, %recall_errors, %special_errors, %mob_errors, %mob_vnums, %obj_errors, %obj_vnums, @specials,
+my ($area_errors, %recall_errors, %special_errors, %mob_errors, %mob_vnums, %obj_errors, %obj_vnums, @specials,
         %room_errors, %room_vnums, @resets, %addmob_errors, %room_names,
         %mob_names, %obj_names, %help_errors, %addobj_errors, %shop_errors);
 
@@ -910,6 +1023,47 @@ my ($area_errors, %recall_errors, %special_errors, %mob_errors, %mob_vnums, %obj
     }
 
     $area{'bv'} = 0 unless exists $area{'bv'};
+}
+
+
+#  Recall header
+
+foreach (0 .. $#recall) {
+    my %recall = @{$recall[$_]};
+    my $err = "    recall, line $recall{'line'}:";
+
+    foreach (qw/rl/) {
+        if ($msg = &check_field_number_range(\%recall, $_, 0, 'none')) {
+            print "$err $msg\n";
+            $recall_errors{$recall{'line'}}++;
+        }
+    }
+    $recall[$_] = [ %recall ];
+}
+
+
+
+#  Area special header
+
+foreach (0 .. $#special) {
+    my %special = @{$special[$_]};
+    my $err = "    special, line $special{'line'}:";
+
+    if (exists($special{'af'})) {
+        if ($msg = &check_keyword_list(\%special, 'af', \@area_specials)) {
+               print "$err $msg\n";
+               $special_errors{$special{'line'}}++;
+        }
+    }
+
+    if (exists($special{'xp'})) {
+        if ($msg = &check_field_number_range(\%special, 'xp', 0, 'none')) {
+            print "$err $msg\n";
+            $special_errors{$special{'line'}}++;
+        }
+    }
+
+    $special[$_] = [ %special ];
 }
 
 
@@ -1972,6 +2126,41 @@ sub check_keyword_list(\%$) {
     return $msg;
 }
 
+#############################################################################
+#
+#   Subroutine:   Validate a list of text keywords against an array
+#
+
+sub check_keyword_list(\%$) {
+    my ($var, $field, $checklist) = @_;
+    my $msg;
+
+     # Check if the key exists in the hash.
+    if (exists $var->{$field}) {
+        # Split the string into an array of words.
+        my @words = split(' ', $var->{$field});
+        my $word_len = @words;
+
+        if ($word_len < 1) {
+            $msg = "Error: key '$field' exists, but has no value";
+            return $msg;
+        }
+
+
+        foreach my $word (@words) {
+            unless (grep { $_ eq $word } @$checklist) {
+                # If the word is not found in the checklist, set the error message.
+                $msg = "Error: '$word' is not a valid flag";
+                last; # Exit the loop after finding the first unmatched word.
+            }
+        }
+    } else {
+        $msg = "Error: The field '$field' does not exist in the hash.";
+    }
+
+    return $msg;
+}
+
 
 #############################################################################
 #
@@ -1994,6 +2183,7 @@ sub check_field_defined(\%$) {
 sub check_field_number(\%$) {
     return &check_field_number_range(shift, shift, 'none', 'none');
 }
+
 
 
 sub check_field_number_range {
@@ -2027,6 +2217,9 @@ sub is_number($) {
 if ($area_errors || keys %recall_errors || keys %special_errors || keys %mob_errors
         || keys %obj_errors || keys %room_errors || keys %addmob_errors
         || keys %addobj_errors || keys %help_errors || keys %shop_errors) {
+if ($area_errors || keys %recall_errors || keys %special_errors || keys %mob_errors
+        || keys %obj_errors || keys %room_errors || keys %addmob_errors
+        || keys %addobj_errors || keys %help_errors || keys %shop_errors) {
     sub errors($) {
         my $num = shift;
         my $text = "$num error";
@@ -2038,6 +2231,12 @@ if ($area_errors || keys %recall_errors || keys %special_errors || keys %mob_err
 
     if ($area_errors) {
         print "    area: ", errors($area_errors);
+    }
+    foreach (keys %recall_errors) {
+        print "    recall, line $_: ", errors($recall_errors{$_});
+    }
+    foreach (keys %special_errors) {
+        print "    special, line $_: ", errors($special_errors{$_});
     }
     foreach (keys %recall_errors) {
         print "    recall, line $_: ", errors($recall_errors{$_});
@@ -2103,6 +2302,42 @@ open(AREA, ">$destination_file")
 
 print AREA "#AREA $area{'au'}~ $area{'ti'}~\n"
         . "$area{'ls'} $area{'us'} $area{'le'} $area{'ue'}\n\n";
+
+
+#  Print recall
+
+if (@recall) {
+    print AREA "#RECALL\n";
+
+    foreach (@recall) {
+        my %recall= @{$_};
+        print AREA "$recall{'rl'}\n\n";
+    }
+}
+
+
+#  Print area special
+
+if (@special) {
+    print AREA "#AREA_SPECIAL\n";
+
+    foreach (@special) {
+        my %special= @{$_};
+        if ($special{'af'})
+        {
+            foreach (split / /, $special{'af'}) {
+                print AREA "$_\n";
+            }
+        }
+
+        if ($special{'xp'})
+        {
+            print AREA "exp_mod $special{'xp'}\n";
+        }
+    }
+
+    print AREA "\$\n\n";
+}
 
 
 #  Print recall
@@ -2225,6 +2460,7 @@ if (@rooms) {
         print AREA "\n#" . ($room{'vn'} + $area{'bv'})
                 . "\n$room{'nm'}~\n$room{'de'}~\n0 $room{'rf'} $room{'st'}\n";
 
+        foreach my $exit (qw/n e s w u d/) {
         foreach my $exit (qw/n e s w u d/) {
             if (exists $room{$exit}) {
                 print AREA "D $exit_lookup{$exit}\n$room{$exit . 'de'}~\n"

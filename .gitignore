@@ -4,14 +4,10 @@
 *.are~
 *.bak
 .idea/
+.vscode/
 
 /server/src/envy
 /server/src/dd4
 /server/src/shutdown.txt
 /server/area/bugs.txt
 /server/player/
-
-.vscode/targets.log
-.vscode/configurationCache.log
-.vscode/dryrun.log
-.vscode/settings.json

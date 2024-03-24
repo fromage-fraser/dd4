@@ -184,11 +184,11 @@ Three original immortals are provided. Log in as one of the following; passwords
 
 If you want to create your own immortal:
 
-1.  Create a new character.
-1.  Reach level 2 (complete the training area).
-1.  Save your character: `save`.
-1.  Quit the game: `quit`.
-1.  Edit the new character's pfile. It will be the file `server/player/<initial letter>/<name>`.
+1. Create a new character.
+2. Reach level 2 (complete the training area).
+3. Save your character: `save`.
+4. Quit the game: `quit`.
+5. Edit the new character's pfile. It will be the file `server/player/<initial letter>/<name>`.
     Make the following changes:
 
     Set the characters level to 106 by altering the value of the existing _Lvl_ key:
@@ -199,13 +199,13 @@ If you want to create your own immortal:
     ```
     Skll        100 'sset'
     ```
-1.  Log back into the game. The character is now level 106, the highest rank of immortal in the game.
-1.  Set all skills to 100%. This grants access to every mortal skill and all immortal ("wiz") commands.
+6. Log back into the game. The character is now level 106, the highest rank of immortal in the game.
+7. Set all skills to 100%. This grants access to every mortal skill and all immortal ("wiz") commands.
     ```
     sset <name> all 100
     ```
-1.  Save your character.
-1.  The `wizhelp` command should work if these steps were completed successfully.
+8. Save your character.
+9. The `wizhelp` command should work if these steps were completed successfully.
 
 
 ## Development
@@ -229,6 +229,16 @@ This command will mount the MUD server files under `/dd4-dev` in a `dd4-dev` con
 Port 8888 within the container will be mapped to host port 18888.
 
 Note that the working directory for the running MUD server is the `area` directory, so execution must occur from there.
+
+
+### Builder tools
+
+The dev image has the contents of the `builder` directory under `/dd4-builder`.
+The area building tool _Scribe_ is available as the command `scribe.pl`.
+
+    root@container:/dd4-dev# scribe.pl
+    DD4 Area File Scribe version 0.5
+    Usage: scribe.pl <source file> <destination file>
 
 
 ### Building and running the server in the dev shell
