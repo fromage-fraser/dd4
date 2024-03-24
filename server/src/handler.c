@@ -3658,6 +3658,20 @@ char* race_name (int race_num)
 }
 
 /*
+* ASCII name for character size, used in mstat --Owl 25/3/24
+*
+*/
+
+char* race_size_name (int ch_size)
+{
+        if (ch_size == 0)   return "small";
+        if (ch_size == 1)   return "medium";
+        if (ch_size == 2)   return "large";
+
+        return "unknown";
+}
+
+/*
  * Return ascii name of anti-class vector - brutus
  */
 char *extra_class_name (unsigned long int extra_flags)
