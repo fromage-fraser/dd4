@@ -35,6 +35,7 @@
 
 /* Inscription */
 {&gsn_group_inscription, 	        &gsn_runesmith_base,	        30,	    PRE_RUNESMITH},
+
 {&gsn_inscribe,                     &gsn_runesmith_base,            30,     PRE_RUNESMITH},
 {&gsn_adamantite_runic_blade,       &gsn_group_inscription,         95,     PRE_RUNESMITH},
 {&gsn_electrum_runic_blade,         &gsn_group_inscription,         95,     PRE_RUNESMITH},

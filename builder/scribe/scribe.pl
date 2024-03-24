@@ -166,6 +166,22 @@ my @mob_spec = qw/
     spec_cast_cleric	    spec_grail	            spec_small_whale	      spec_sahuagin_high_cleric
     spec_cast_judge	        spec_cast_orb	        spec_large_whale	      spec_red_grung
     spec_cast_mage	        spec_assassin	        spec_kappa
+
+    spec_breath_any	        spec_cast_druid	        spec_warrior	          spec_aboleth
+    spec_breath_acid	    spec_cast_water_sprite	spec_vampire	          spec_laghathti
+    spec_breath_fire	    spec_cast_psionicist	spec_cast_archmage	      spec_superwimpy
+    spec_breath_frost	    spec_cast_undead	    spec_cast_priestess	      spec_uzollru
+    spec_breath_gas	        spec_executioner	    spec_mast_vampire	      spec_sahuagin_baron
+    spec_breath_lightning	spec_fido	            spec_bloodsucker	      spec_sahuagin_prince
+    spec_breath_steam	    spec_guard	            spec_spectral_minion	  spec_green_grung
+    spec_cast_adept	        spec_janitor	        spec_celestial_repairman  spec_sahuagin_infantry
+    spec_cast_hooker	    spec_poison	            spec_sahuagin	          spec_sahuagin_cavalry
+    spec_buddha	            spec_repairman	        spec_evil_evil_gezhp	  spec_sahuagin_guard
+    spec_kungfu_poison	    spec_thief	            spec_demon	              spec_sahuagin_lieutenant
+    spec_clan_guard	        spec_bounty	            spec_cast_electric	      spec_sahuagin_cleric
+    spec_cast_cleric	    spec_grail	            spec_small_whale	      spec_sahuagin_high_cleric
+    spec_cast_judge	        spec_cast_orb	        spec_large_whale	      spec_red_grung
+    spec_cast_mage	        spec_assassin	        spec_kappa
 /;
 
 my %obj_ex = (
@@ -212,6 +228,12 @@ my %obj_ex = (
         pure         => 137438953472,
         steady       => 274877906944,
         cursed       => 2305843009213693952,
+        anti_smithy  => 17179869184,
+        deployed     => 34359738368,
+        rune         => 68719476736,
+        pure         => 137438953472,
+        steady       => 274877906944,
+        cursed       => 2305843009213693952,
 );
 
 
@@ -249,6 +271,10 @@ my %obj_container = (
 
 my @obj_app = qw/
         none            str             dex                 int
+        wis             con             sex                 class
+        level           age             height              weight
+        mana            hp              move                gold
+        exp             ac              hitroll             damroll
         wis             con             sex                 class
         level           age             height              weight
         mana            hp              move                gold
@@ -310,6 +336,10 @@ my @room_st = qw/
         hills               mountain    water_swim  water_no_swim
         underwater          air         desert      swamp
         underwater_ground
+        inside              city        field       forest
+        hills               mountain    water_swim  water_no_swim
+        underwater          air         desert      swamp
+        underwater_ground
 /;
 
 my @exit_ds = qw/
@@ -328,6 +358,28 @@ my %exit_lookup = (
 );
 
 my %room_rf = (
+        none        => 0,
+        zero        => 0,
+        dark        => 1,
+        no_mob      => 4,
+        indoors     => 8,
+        vault       => 16,
+        craft       => 128,
+        spellcraft  => 256,
+        private     => 512,
+        safe        => 1024,
+        solitary    => 2048,
+        pet_shop    => 4096,
+        no_recall   => 8192,
+        silence     => 16384,
+        arena       => 32768,
+        healing     => 65536,
+        freezing    => 131072,
+        burning     => 262144,
+        no_mount    => 524288,
+        toxic       => 1048576,
+        no_drop     => 9223372036854775808,
+
         none        => 0,
         zero        => 0,
         dark        => 1,
@@ -385,6 +437,11 @@ my @area_specials = qw /
         no_teleport no_magic    exp_mod
 /;
 
+my @area_specials = qw /
+        school      no_quest    hidden      safe
+        no_teleport no_magic    exp_mod
+/;
+
 
 #############################################################################
 #
@@ -400,6 +457,7 @@ close $fh;
 
 print "Reading source...\n";
 
+my ($fatal, $line, $msg, %area, @recall, @special, @mobs, @objs, @rooms, @addmobs, @helps, @addobjs, @shops);
 my ($fatal, $line, $msg, %area, @recall, @special, @mobs, @objs, @rooms, @addmobs, @helps, @addobjs, @shops);
 
 while (1) {
@@ -934,6 +992,7 @@ sub get_text_block(\@) {
 
 print "Verifying data...\n";
 
+my ($area_errors, %recall_errors, %special_errors, %mob_errors, %mob_vnums, %obj_errors, %obj_vnums, @specials,
 my ($area_errors, %recall_errors, %special_errors, %mob_errors, %mob_vnums, %obj_errors, %obj_vnums, @specials,
         %room_errors, %room_vnums, @resets, %addmob_errors, %room_names,
         %mob_names, %obj_names, %help_errors, %addobj_errors, %shop_errors);
@@ -2067,6 +2126,41 @@ sub check_keyword_list(\%$) {
     return $msg;
 }
 
+#############################################################################
+#
+#   Subroutine:   Validate a list of text keywords against an array
+#
+
+sub check_keyword_list(\%$) {
+    my ($var, $field, $checklist) = @_;
+    my $msg;
+
+     # Check if the key exists in the hash.
+    if (exists $var->{$field}) {
+        # Split the string into an array of words.
+        my @words = split(' ', $var->{$field});
+        my $word_len = @words;
+
+        if ($word_len < 1) {
+            $msg = "Error: key '$field' exists, but has no value";
+            return $msg;
+        }
+
+
+        foreach my $word (@words) {
+            unless (grep { $_ eq $word } @$checklist) {
+                # If the word is not found in the checklist, set the error message.
+                $msg = "Error: '$word' is not a valid flag";
+                last; # Exit the loop after finding the first unmatched word.
+            }
+        }
+    } else {
+        $msg = "Error: The field '$field' does not exist in the hash.";
+    }
+
+    return $msg;
+}
+
 
 #############################################################################
 #
@@ -2120,6 +2214,9 @@ sub is_number($) {
 #  Report any errors
 #
 
+if ($area_errors || keys %recall_errors || keys %special_errors || keys %mob_errors
+        || keys %obj_errors || keys %room_errors || keys %addmob_errors
+        || keys %addobj_errors || keys %help_errors || keys %shop_errors) {
 if ($area_errors || keys %recall_errors || keys %special_errors || keys %mob_errors
         || keys %obj_errors || keys %room_errors || keys %addmob_errors
         || keys %addobj_errors || keys %help_errors || keys %shop_errors) {
@@ -2363,6 +2460,7 @@ if (@rooms) {
         print AREA "\n#" . ($room{'vn'} + $area{'bv'})
                 . "\n$room{'nm'}~\n$room{'de'}~\n0 $room{'rf'} $room{'st'}\n";
 
+        foreach my $exit (qw/n e s w u d/) {
         foreach my $exit (qw/n e s w u d/) {
             if (exists $room{$exit}) {
                 print AREA "D $exit_lookup{$exit}\n$room{$exit . 'de'}~\n"
