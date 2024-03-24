@@ -1550,11 +1550,12 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         strcat( buf1, buf );
                 }
 
-                sprintf( buf, "Sex: {W%s{x  Race: {W%d{x ({G%s{x)  Level: {W%d{x  Room: {R%d{x\n\r",
+                sprintf( buf, "Sex: {W%s{x  Race: {W%d{x ({G%s{x)  Size: {G%s{x  Level: {W%d{x  Room: {R%d{x\n\r",
                         victim->sex == SEX_MALE    ? "male"   :
                         victim->sex == SEX_FEMALE  ? "female" : "neutral",
                         victim->race,
                         race_name(victim->race),
+                        race_size_name(race_table[victim->race].size),
                         victim->level,
                         !victim->in_room           ?        0 : victim->in_room->vnum );
                 strcat( buf1, buf );
