@@ -427,7 +427,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 }
         }
 
-        /* Pulse objects go off every round (mainly runsmiths) */
+        /* Pulse objects go off every round (mainly runesmiths) */
         if ( !IS_NPC(ch) )
         {
                 OBJ_DATA *pulse;

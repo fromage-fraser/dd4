@@ -53,7 +53,7 @@ An area file contains the following sections:
     #$
 
 An area is a collection of sections starting with #AREA until the next #AREA.
-All of our area files (except 'help.are') contain just one #AREA section,
+All of our area files (except 'helpfile.are') contain just one #AREA section,
 which is at the top of the file.
 
 
@@ -913,7 +913,7 @@ the first value and discard the rest.
 15 ITEM_CONTAINER
    value[0]    weight capacity
    value[1]    flags: 1 closeable, 2 pickproof, 4 closed, 8 locked
-   value[2]    key vnum
+   value[2]    key vnum (use -1 to indicate there is no key)
    value[3]    unused
 
 17 ITEM_DRINK_CON
