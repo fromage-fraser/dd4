@@ -303,7 +303,7 @@ my @obj_ty = qw/
         paint           ?                       anvil           auction_ticket
         clan            portal                  poison_powder   lockpick
         instrument      armourers_hammer        mithril         whetstone
-        craft           spellcraft           turret_module   forge
+        craft           spellcraft              turret_module   forge
         arrestor_unit   driver_unit             reflector_unit  shield_unit
         turret          defensive_turret_module combat_pulse    defensive_pulse
         pipe            pipe_cleaner            smokeable       remains
@@ -2475,7 +2475,6 @@ if (@rooms) {
         }
         print AREA "S\n";
     }
-
     print AREA "#0\n\n";
 }
 
