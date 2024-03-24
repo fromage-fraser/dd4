@@ -349,6 +349,20 @@ curiosity tinged with contempt.
 105 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+>speech_prog p Hello~
+    if size ($n) == 0
+        say Whatup shorty
+    else
+    if size ($n) == 1
+        say Medium face
+    else
+    if size ($n) == 2
+        say yo fats
+    endif
+  endif
+endif
+~
+|
 
 
 #80
