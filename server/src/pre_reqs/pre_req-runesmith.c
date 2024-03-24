@@ -12,8 +12,8 @@
 {&gsn_fiery_strike,                 &gsn_group_rune_casting,        80,     PRE_RUNESMITH},
 {&gsn_fiery_strike,                 &gsn_lightning_lunge,           80,     PRE_RUNESMITH},
 
-{&gsn_death_strike,                 gsn_group_rune_casting,         80,     PRE_RUNESMITH},
-{&gsn_death_strike,                 gsn_fiery_strike,               80,     PRE_RUNESMITH},
+{&gsn_death_strike,                 &gsn_group_rune_casting,        80,     PRE_RUNESMITH},
+{&gsn_death_strike,                 &gsn_fiery_strike,              80,     PRE_RUNESMITH},
 
 {&gsn_conducting_blast,             &gsn_group_rune_casting,        80,     PRE_RUNESMITH},
 {&gsn_conducting_blast,             &gsn_death_strike,              80,     PRE_RUNESMITH},

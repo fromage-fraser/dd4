@@ -677,6 +677,48 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
         }
     }
 
+  if ( !str_cmp( buf, "size" ) )
+    {
+      switch ( arg[1] )  /* arg should be "$*" so just get the letter */
+        {
+        case 'i':
+                  /* lhsvl = get_trust( mob ); */
+                  lhsvl = race_table[mob->race].size;
+                  rhsvl = atoi( val );
+                  return mprog_veval( lhsvl, opr, rhsvl );
+        case 'n': if ( actor )
+                  {
+                    /* lhsvl = get_trust( actor ); */
+                    lhsvl = race_table[actor->race].size;
+                    rhsvl = atoi( val );
+                    return mprog_veval( lhsvl, opr, rhsvl );
+                  }
+                  else
+                    return FALSE;
+        case 't': if ( vict )
+                  {
+                    /* lhsvl = get_trust( vict ); */
+                    lhsvl = race_table[vict->race].size;
+                    rhsvl = atoi( val );
+                    return mprog_veval( lhsvl, opr, rhsvl );
+                  }
+                  else
+                    return FALSE;
+        case 'r': if ( rndm )
+                  {
+                    /* lhsvl = get_trust( rndm ); */
+                    lhsvl = race_table[rndm->race].size;
+                    rhsvl = atoi( val );
+                    return mprog_veval( lhsvl, opr, rhsvl );
+                  }
+                  else
+                    return FALSE;
+        default:
+          bug ( "Mob: %d bad argument to 'size'", mob->pIndexData->vnum );
+          return FALSE;
+        }
+    }
+
   /* Add testing based on race, Owl 5/4/22 */
 
   if ( !str_cmp( buf, "race" ) )

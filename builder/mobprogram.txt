@@ -502,6 +502,8 @@ inroom	  ($*)  == integer  Is the room of $* equal to integer
 sex       ($*)  == integer  Is the sex of $* equal to integer
 position  ($*)  == integer  Is the position of $* equal to integer
 level     ($*)  == integer  Is the level of $* equal to integer
+size      ($*)  == integer  Is the size of $* equal to integer
+                            (0 = small, 1 = medium, 2 = large, PC target only)
 class     ($*)  == integer  Is the class of $* equal to integer
 goldamt   ($*)  == integer  Does $* have a gold total equal to integer
 objtype   ($*)  == integer  Is the type of $* equal to integer
@@ -758,6 +760,7 @@ inroom($*)    == integer    Is the room of $* equal to integer (person only)
 sex($*)       == integer    Is the sex of $* equal to integer
 position($*)  == integer    Is the position of $* equal to integer
 level($*)     == integer    Is the level of $* equal to integer
+size ($*)     == integer    Is the size of $* equal to integer (PC target only)
 class($*)     == integer    Is the class of $* equal to integer
 subclass($*)  == integer    Is the subclass of $* equal to integer
 race($*)      == integer    Is the race of $* equal to integer
