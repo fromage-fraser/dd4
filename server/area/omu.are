@@ -1,0 +1,4152 @@
+#AREA Owl~ Omu~
+60 70 40 100
+
+#RECALL
+27347
+
+#AREA_SPECIAL
+hidden
+exp_mod 120
+$
+
+#MOBILES
+#28400
+giant sea python~
+a giant sea python~
+<150>A huge sea python propels itself through the water.<0>
+~
+This colossal serpent, with its muscular, scaled body, glides silently through
+the cold, pressurized waters, navigating the sea floor with an eerie grace.
+
+It seems hungry, but particular.  Let's hope you're not on the menu.
+~
+64 512|32768|33554432|67108864 0 S
+65 0 0 0d0+0 0d0+0
+4|8|32|128|512 0
+0 0 1
+>fight_prog 15~
+if size ($n) == 0
+    mpecho {WA giant sea python thinks you'll make a tasty snack!{x
+    swallow $n
+endif
+~
+|
+
+#28401
+giant sea python~
+a giant sea python~
+<150>A huge sea python navigates the ocean depths.<0>
+~
+This colossal serpent, with its muscular, scaled body, glides silently through
+the cold, pressurized waters, gliding over the sea floor with an eerie grace.
+
+It seems hungry, but particular.  Let's hope you're not on the menu.
+~
+64 512|32768|33554432|67108864 0 S
+65 0 0 0d0+0 0d0+0
+4|8|32|128|512 0
+0 0 2
+>fight_prog 15~
+if size ($n) == 0
+    mpecho {WA giant sea python thinks you'll make a tasty snack!{x
+    swallow $n
+endif
+~
+|
+
+#28402
+plesiosaurus~
+a plesiosaurus~
+<153>An ancient plesiosaurus paddles about gracefully.<0>
+~
+A plesiosaurus, with its long neck and four strong flippers, moves efficiently
+through the deep sea. Its head, small compared to its body, but full of
+razor-sharp teeth, scans its surroundings, alert for any signs of prey.
+~
+32|64 512|8192|67108864 0 S
+70 0 0 0d0+0 0d0+0
+4|32|512 0
+0 0 2
+
+#28403
+sea hag~
+a hideous sea hag~
+<63>A hideous sea hag is searching for victims to eat.<0>
+~
+The hideous sea hag patrols the waters, her presence a warning to all who
+venture so deep. With skin as rough as barnacles and eyes that gleam with malice,
+she moves with purpose, searching for victims. Her rank, matted hair flows like
+dead seaweed in the current, and her gnarled hands clutch at the empty space
+before her, ready to clutch, stab, and strangle.
+~
+64|2048 4|8|16|512|32768|8388608|33554432|67108864|1073741824 -876 S
+64 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>all_greet_prog 15~
+if isgood ($n)
+    yell I cannot endure your wretched goodness!
+    c paralysis $n
+    backstab $n
+endif
+~
+>fight_prog 15~
+    yell Fear me, fleshling filth!
+    c fear $n
+~
+>fight_prog 15~
+    say Enjoy this, my pretty!
+    kick
+~
+>fight_prog 5~
+    say DESIST!
+    c paralysis $n
+~
+>rand_prog 1~
+    c invis
+~
+>rand_prog 1~
+    vis
+~
+|
+
+#28404
+kua-toa fish-like humanoid male~
+a male Kua-toa~
+<135>A smallish fish-like humanoid looks suspiciously about.<0>
+~
+A smallish, paunchy humanoid male with the head of a fish and slender, webbed
+hands and feet, this Kua-toa is frowning at you, obviously suspicious.  Kua-toa
+are notoriously duplicitous, willing to turn on anyone if they suspect it will
+be to their advantage, or simply out of peer pressure or fear of maltreatment.
+
+He looks well-equipped for combat, no doubt expecting to find trouble in these
+underwater canals.
+~
+64 8|512|67108864 -375 S
+62 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>fight_prog 5~
+    say Blibdoolpoolp judges us all!
+    c 'wrath of god'
+~
+>fight_prog 10~
+    say Demogorgon protect me!
+    c 'holy word' $n
+~
+>fight_prog 10~
+    say Blibdoolpool save me from this unbeliever!
+    c 'flamestrike' $n
+~
+|
+
+#28405
+kua-toa fish-like humanoid female~
+a female Kua-toa~
+<135>A fish-like female humanoid casts you a withering glance.<0>
+~
+A lithe, slender humanoid female with the head of a fish and slender, webbed
+hands and feet, this Kua-toa is frowning at you, obviously suspicious.  Kua-toa
+are notoriously duplicitous, willing to turn on anyone if they suspect it will
+be to their advantage, or simply out of peer pressure or fear of maltreatment.
+
+She looks well-equipped for combat, no doubt expecting to find trouble in these
+underwater canals.
+~
+64 8|512|67108864 -391 S
+62 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>fight_prog 5~
+    Visit your judgment upon this villain, great BOOOAL!
+    c 'wrath of god'
+~
+>fight_prog 10~
+    say Smite the infidel!
+    c 'holy word' $n
+~
+>fight_prog 10~
+    say BOOOAL deliver me from this unbeliever!
+    c 'flamestrike' $n
+~
+|
+
+#28406
+bullywug squat frog-like humanoid~
+peaceful~
+<149>A squat, frog-like humanoid lumbers about.<0>
+~
+This male frog-like humanoid stands about 6' tall and has a tough, olive-coloured
+hide.  His head is huge compared to his body, with big, bulbous eyes and a wide
+mouth from which regularly erupts a long, flicking tongue. He stinks like a bog.
+~
+64 65536|4194304|67108864 -650 S
+63 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>fight_prog 10~
+    headbutt
+~
+>fight_prog 10~
+    kick
+~
+>rand_prog 5~
+    cham
+~
+|
+
+#28407
+bullywug squat frog-like humanoid~
+a bullywug~
+<10>A squat, frog-like humanoid lumbers about.<0>
+~
+This female frog-like humanoid stands about 5'6" tall and has a bright,
+emerald-coloured hide.  Her head is huge compared to her body, with big, bulbous
+eyes and a wide mouth from which regularly erupts a long, flicking tongue.
+She stinks like a terrestrial bog.
+~
+64 65536|4194304|67108864 -650 S
+63 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>fight_prog 5~
+    headbutt
+~
+>fight_prog 15~
+    kick
+~
+>rand_prog 5~
+    cham
+~
+|
+
+#28408
+bullywug frog-like flabby humanoid~
+a bullywug~
+<76>A flabby, frog-like humanoid lumbers about.<0>
+~
+This male frog-like humanoid looks unlike others you've seen, with a weak, rather
+flabby body.  His head is huge compared to his body, with big, bulbous eyes and
+a very wide mouth from which regularly erupts a long, flicking tongue. He stinks
+like a bog.
+~
+64 65536|4194304|67108864 -700 S
+63 0 0 0d0+0 0d0+0
+32 0
+0 0 1
+>fight_prog 15~
+    mpecho {MA bullywug croaks deeply, belching out a stream of putrid gas!{x
+    mpasound {M::croOOOoOOOOoOOAAAaak::{x
+    c 'gas breath' $n
+~
+>rand_prog 5~
+    cham
+~
+|
+
+#28409
+kopru eel grotesque creature~
+a kopru~
+<173>A grotesque eel-like creature with a humanoid torso slithers about.<0>
+~
+This creature has a humanoid upper body, but a smooth, eel-like head and three
+tails tipped with stingers.  Its mouth contains fangs surrounded by a number of
+small, prehensile tentacles, and its muscular arms end in webbed hands with
+clawed fingers.
+~
+64 512|67108864 -1000 S
+63 0 0 0d0+0 0d0+0
+8|32|512 0
+0 0 1
+>fight_prog 10~
+    c 'ultrablast' $n
+~
+>fight_prog 1~
+    c 'synaptic blast' $n
+~
+|
+
+#28410
+kopru eel grotesque creature~
+a kopru~
+<173>A fearsome eel-like creature with a humanoid torso slithers about.<0>
+~
+This creature has a humanoid upper body, but a smooth, eel-like head and three
+tails tipped with stingers.  Its mouth contains fangs surrounded by a number of
+small, prehensile tentacles, and its muscular arms end in webbed hands with
+clawed fingers.
+~
+64 512|67108864 -1000 S
+64 0 0 0d0+0 0d0+0
+8|32|512 0
+0 0 2
+>fight_prog 1~
+    c 'ultrablast' $n
+~
+|
+
+#28411
+ixzan manta ray fanged~
+an ixzan~
+<92>What looks like a giant, fanged manta ray swoops through the deep sea.<0>
+~
+Ixzan are similar in appearance to manta rays, but dusky in appearance, fanged,
+sentient, and live only in the darkest and deepest waters.  They tend to avoid
+conflict with humanoids, but are more than ready to defend themselves if attack.
+This looks like an ixzan of the rare 'vampiric' subtype.
+~
+64|131072 512|67108864 -890 S
+66 0 0 0d0+0 0d0+0
+4|8|512 0
+0 0 1
+
+#28412
+ixzan manta ray fanged~
+an ixzan~
+<91>What looks like a giant, fanged manta ray swoops about in the deep.<0>
+~
+Ixzan are similar in appearance to manta rays, but dusky in appearance, fanged,
+sentient, and live only in the darkest and deepest waters.  They tend to avoid
+conflict with humanoids, but are more than ready to defend themselves if attack.
+This looks like an ixzan of the rare 'vampiric' subtype.
+~
+64|131072 512|67108864 -899 S
+66 0 0 0d0+0 0d0+0
+4|8|512 0
+0 0 2
+#0
+
+#OBJECTS
+#28400
+fangs~
+a large pair of fangs~
+The huge fangs of some undersea creature lie here.~
+~
+5 16777216|67108864 1
+~ ~ ~ 10~
+30 0 0
+A
+19 10
+A
+66 10
+
+#28401
+egg leathery~
+a large leathery egg~
+A large leathery egg lies here.~
+~
+26 0 1|16384
+65~ heal~ heal~ cure poison~
+5 0 0
+
+#28402
+teeth razor~
+razor-sharp teeth~
+The razor-sharp teeth of an aquatic predator lie here.~
+~
+5 16777216|67108864 1
+~ ~ ~ 10~
+2 0 0
+A
+19 15
+A
+66 15
+
+#28403
+dagger cowrie~
+a cowrie dagger~
+A wicked dagger carved from a cowrie shell is here.~
+~
+5 64|16777216 1|8192
+~ ~ ~ 2~
+2 0 0
+A
+19 8
+A
+67 5
+
+#28404
+slimy hide~
+slimy hide~
+The slime-covered hide of some fish-like creature has been dumped here.~
+~
+9 67108864|137438953472 1|8
+~ ~ ~ ~
+8 0 0
+A
+17 -10
+A
+53 50
+A
+54 50
+
+#28405
+turtle shell shield large~
+a large turtle shell~
+A large, somewhat slimy turtle shell has been abandoned here.~
+~
+9 0 1|512
+~ ~ ~ ~
+6 0 0
+A
+17 -15
+
+#28406
+crude spear~
+a crude spear~
+A crude spear has been placed here.~
+~
+5 16777216|134217728|274877906944 1|8192
+~ ~ ~ 11~
+8 0 0
+A
+19 10
+A
+18 8
+
+#28407
+thick leather jerkin~
+a thick leather jerkin~
+A wet, thick leather jerkin rests here.~
+~
+9 0 1|8
+~ ~ ~ ~
+12 0 0
+A
+17 -15
+A
+5 2
+A
+14 -50
+A
+40 -3
+
+#28408
+oily hide~
+oily hide~
+The oily hide of some large, eel-like creature has been dumped here.~
+~
+9 67108864|137438953472 1|8
+~ ~ ~ ~
+25 0 0
+A
+17 -15
+A
+52 50
+A
+66 10
+
+#28409
+tail barbed~
+a long tail with a barbed tip~
+A long, eel-like tail with a stinger at its tip lies here.~
+~
+5 67108864 1
+~ ~ ~ 16~
+15 0 0
+
+#28410
+fangs~
+a pair of sharp fangs~
+The fangs of some undersea creature lie here.~
+~
+5 67108864 1
+~ ~ ~ 10~
+5 0 0
+A
+19 12
+A
+66 5
+
+#28411
+bag coins~
+a bag of coins~
+A fat bag of coins lies here.~
+~
+20 0 1
+15~ 28~ 30~ 2~
+1 0 0
+
+#28412
+bone earring~
+a bone earring~
+An earring carved from whalebone lies here.~
+~
+9 0 1|16
+~ ~ ~ ~
+1 0 0
+E
+bone earring~
+A remarkable piece of craftmanship.  The earring features a number of intricate
+carvings that sensitively follow the delicate natural curves of the bone.  They
+resemble writing, or at least symbols, but what they might mean you have no idea.
+~
+A
+4 4
+#0
+
+#ROOMS
+#28402
+Omu / Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Omu's
+<250>sovereign quarter, the eastern fortifications of Yrythelmyn, and the old city
+<252>centre. The old city's fortifications prevent travel south, but you may travel
+<254>north or east through the canal system, or upwards, towards the huge, looming
+area of darkness in the water above.  To the west lies the bridge that connects
+Yrythelmyn to the old city centre, but a large iron grate prevents access to it
+from here.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28405
+D 1
+~
+~
+0 -1 28403
+D 4
+~
+~
+0 -1 28702
+S
+
+#28702
+<252>Omu / Yrythelmyn Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Omu's
+<238>sovereign quarter, the eastern fortifications of Yrythelmyn, and the old city
+<241>centre.  The old city's fortifications prevent travel south, but you may travel
+<244>north or east through the canal system, downwards, towards the ocean floor, or
+<246>upwards, directly into the huge, looming area of dark water above your head.
+To the west lies the region above the bridge that connects Yrythelmyn to the old
+city centre, but a large iron grate prevents access to it from here.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28705
+D 1
+~
+~
+0 -1 28703
+D 4
+~
+~
+0 -1 27144
+D 5
+~
+~
+0 -1 28402
+S
+
+#28403
+Omu / Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Omu's
+<250>sovereign quarter, the eastern fortifications of Yrythelmyn, and the old city
+<252>centre. The old city's fortifications prevent travel south, but you may travel
+<254>north or west through the canal system, or upwards, towards the huge, looming
+area of darkness in the water above.  To the east lies the bridge that connects Omu's
+sovereign quarter to the old city centre, but a large iron grate prevents access to
+it from here.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28406
+D 3
+~
+~
+0 -1 28402
+D 4
+~
+~
+0 -1 28703
+S
+
+#28703
+<252>Omu / Yrythelmyn Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Omu's
+<238>sovereign quarter, the eastern fortifications of Yrythelmyn, and the old city
+<241>centre.  The old city's fortifications prevent travel south, but you may travel
+<244>north or west through the canal system, downwards, towards the ocean floor, or
+<246>upwards, directly into the huge, looming area of dark water above your head.
+To the east lies the region above the bridge that connects Omu's sovereign quarter
+to the old city centre, but a large iron grate prevents access to it from here.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28706
+D 3
+~
+~
+0 -1 28702
+D 4
+~
+~
+0 -1 27147
+D 5
+~
+~
+0 -1 28403
+S
+
+#28405
+Omu / Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Omu's
+<250>sovereign quarter and the eastern fortifications of Yrythelmyn.  Yrythelmyn's
+<252>walls prevent travel west, but you may travel north, south, or east through the
+<254>canal system, or upwards, towards the huge, looming area of darkness in the
+water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28411
+D 1
+~
+~
+0 -1 28406
+D 2
+~
+~
+0 -1 28402
+D 4
+~
+~
+0 -1 28705
+S
+
+#28705
+<252>Omu / Yrythelmyn Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Omu's
+<238>sovereign quarter and the eastern fortifications of Yrythelmyn.  From here,
+<241>you may travel north, south, or east through the canal system, downwards,
+<244>towards the ocean floor, or upwards, directly into the huge, looming area of
+<246>dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28711
+D 1
+~
+~
+0 -1 28706
+D 2
+~
+~
+0 -1 28702
+D 4
+~
+~
+0 -1 27146
+D 5
+~
+~
+0 -1 28405
+S
+
+#28406
+Omu / Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Omu's
+<250>sovereign quarter and the eastern fortifications of Yrythelmyn.  Omu's
+<252>walls prevent travel east, but you may travel north, south, or west through the
+<254>canal system, or upwards, towards the huge, looming area of darkness in the
+water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28412
+D 2
+~
+~
+0 -1 28403
+D 3
+~
+~
+0 -1 28405
+D 4
+~
+~
+0 -1 28706
+S
+
+#28706
+<252>Omu / Yrythelmyn Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Omu's
+<238>sovereign quarter and the eastern fortifications of Yrythelmyn.  From here,
+<241>you may travel north, south, or west through the canal system, downwards,
+<244>towards the ocean floor, or upwards, directly into the huge, looming area of
+<246>dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28712
+D 2
+~
+~
+0 -1 28703
+D 3
+~
+~
+0 -1 28705
+D 4
+~
+~
+0 -1 27134
+D 5
+~
+~
+0 -1 28406
+S
+
+#28411
+Omu / Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Omu's
+<250>sovereign quarter and the eastern fortifications of Yrythelmyn.   Yrythelmyn's
+<252>walls prevent travel west, but you may travel north, towards the southern
+<254>bridge linking Omu and Yrythelmyn, south or east through the canal system, or
+upwards, towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28418
+D 1
+~
+~
+0 -1 28412
+D 2
+~
+~
+0 -1 28405
+D 4
+~
+~
+0 -1 28711
+S
+
+#28711
+<252>Omu / Yrythelmyn Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Omu's
+<238>sovereign quarter and the eastern fortifications of Yrythelmyn.  From here,
+<241>you may travel north, towards the area above the southern bridge linking Omu and
+<244>Yrythelmyn, south or east through the canal system, downwards, towards the ocean
+<246> floor, or upwards, directly into the huge, looming area of dark water above
+<246>your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28718
+D 1
+~
+~
+0 -1 28712
+D 2
+~
+~
+0 -1 28705
+D 4
+~
+~
+0 -1 27134
+D 5
+~
+~
+0 -1 28411
+S
+
+#28412
+Omu / Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Omu's
+<250>sovereign quarter and the eastern fortifications of Yrythelmyn.   Omu's walls
+<252>prevent travel east, but you may travel north, towards the southern bridge
+<254>linking Omu and Yrythelmyn, south or west through the canal system, or upwards,
+towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28419
+D 2
+~
+~
+0 -1 28406
+D 3
+~
+~
+0 -1 28411
+D 4
+~
+~
+0 -1 28712
+S
+
+#28712
+<252>Omu / Yrythelmyn Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Omu's
+<238>sovereign quarter and the eastern fortifications of Yrythelmyn.  From here,
+<241>you may travel north, towards the area above the southern bridge linking Omu and
+<244>Yrythelmyn, south or west through the canal system, downwards, towards the ocean
+<246> floor, or upwards, directly into the huge, looming area of dark water above
+<246>your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28719
+D 2
+~
+~
+0 -1 28706
+D 3
+~
+~
+0 -1 28711
+D 4
+~
+~
+0 -1 27135
+D 5
+~
+~
+0 -1 28412
+S
+
+#28418
+Omu / Yrythelmyn Southern Bridge, Lower~
+<14>You stand at the western end of the southern bridge connecting Omu's sovereign
+<87>quarter to Yrythelmyn. Yythelmyn's gleaming, majestic gates lie to the west,
+<123>while Omu's crude hardwood gates can be seen in the distance to the east. To
+<159>the north and south you can venture into the deep canal system which separates
+Omu and Yrythelmyn from each other, or you can head upwards, towards the huge,
+looming area of darkness in the water above.
+
+A large <14>SIGN<159> has been fastened to Yrythelmyn's locked and barred gates.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28426
+D 1
+~
+~
+0 -1 28419
+D 2
+~
+~
+0 -1 28411
+D 3
+~
+gates~
+8 -1 28509
+D 4
+~
+~
+0 -1 28718
+E
+sign~
+
+{W
+o--------------------------------------------------------------o
+| No entrance permitted to non-Alu'Tel'Quessir.  Indefinitely. |
+o--------------------------------------------------------------o
+{x
+~
+S
+
+#28718
+Omu / Yrythelmyn Southern Bridge, Upper~
+<21>You float about 4 metres above the western end of the southern bridge connecting
+<27>Omu's sovereign quarter to Yrythelmyn.  The upper portion of Yythelmyn's
+<33>gleaming, majestic gates lie to the west, while the corresponding portions of
+<39>Omu's crude hardwood gates can be seen in the distance to the east. To the north
+<45>and south you may venture into the deep canal system which separates Omu and
+Yrythelmyn from each other, you may travel downwards, towards the ocean floor, or
+you can swim upwards, directly into the huge, looming area of dark water above
+your head.
+
+A large <21>SIGN<45> has been fastened to Yrythelmyn's locked and barred gates.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28726
+D 1
+~
+~
+0 -1 28719
+D 2
+~
+~
+0 -1 28711
+D 3
+~
+gates~
+8 -1 28809
+D 4
+~
+~
+0 -1 27134
+D 5
+~
+~
+0 -1 28418
+E
+sign~
+
+{W
+o--------------------------------------------------------------o
+| No entrance permitted to non-Alu'Tel'Quessir.  Indefinitely. |
+o--------------------------------------------------------------o
+{x
+~
+S
+
+#28509
+Dummy room~
+Dummy room to link to 28418 until sea elf area is in.
+~
+0 4|512 9
+D 1
+~
+~
+0 -1 28418
+S
+
+#28809
+Dummy room~
+Dummy room to link to 28718 until sea elf area is in.
+~
+0 4|512 9
+D 1
+~
+~
+0 -1 28718
+S
+
+#28510
+Dummy room~
+Dummy room to link to 28479 until sea elf area is in.
+~
+0 4|512 9
+D 1
+~
+~
+0 -1 28479
+S
+
+#28810
+Dummy room~
+Dummy room to link to 28779 until sea elf area is in.
+~
+0 4|512 9
+D 1
+~
+~
+0 -1 28779
+S
+
+#28419
+Omu / Yrythelmyn Southern Bridge, Lower~
+<14>You stand at the eastern end of the southern bridge connecting Omu's sovereign
+<87>quarter to Yrythelmyn. Omu sovereign quarter's crude hardwood gates lie just
+<123>east, while Yythelmyn's gleaming, majestic gates can be seen in the distance to
+<159>the west. To the north and south you can venture into the deep canal system
+which separates Omu and Yrythelmyn from each other, or you can head upwards, towards
+the huge, looming area of darkness in the water above.
+~
+0 0 12
+D 0
+~
+~
+0 -1 28427
+D 1
+~
+gates~
+8 -1 28420
+D 2
+~
+~
+0 -1 28412
+D 3
+~
+~
+0 -1 28418
+D 4
+~
+~
+0 -1 28719
+S
+
+#28719
+Omu / Yrythelmyn Southern Bridge, Upper~
+<21>You float about 4 metres above the eastern end of the southern bridge connecting
+<27>Omu's sovereign quarter to Yrythelmyn.  The upper portion of Omu's crude,
+<33>hardwood gates lie to the east, while the corresponding portion of Yrythelmyn's
+<39>gleaming, majestic gates can be seen in the distance to the west. To the north
+<45>and south you may venture into the deep canal system which separates Omu and
+Yrythelmyn from each other, you may travel downwards, towards the ocean floor, or
+you can swim upwards, directly into the huge, looming area of dark water above
+your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28727
+D 1
+~
+gates~
+8 -1 28720
+D 2
+~
+~
+0 -1 28712
+D 3
+~
+~
+0 -1 28718
+D 4
+~
+~
+0 -1 27135
+D 5
+~
+~
+0 -1 28419
+E
+sign~
+
+{W
+o--------------------------------------------------------------o
+| No entrance permitted to non-Alu'Tel'Quessir.  Indefinitely. |
+o--------------------------------------------------------------o
+{x
+~
+S
+
+#28426
+Omu / Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Omu's
+<250>sovereign quarter and the eastern fortifications of Yrythelmyn.   Yrythelmyn's
+<252>walls prevent travel west, but you may travel south, towards the southern
+<254>bridge linking Omu and Yrythelmyn, north or east through the canal system,
+or upwards, towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28433
+D 1
+~
+~
+0 -1 28427
+D 2
+~
+~
+0 -1 28418
+D 4
+~
+~
+0 -1 28726
+S
+
+#28726
+<252>Omu / Yrythelmyn Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Omu's
+<238>sovereign quarter and the eastern fortifications of Yrythelmyn.  From here,
+<241>you may travel south towards the area above the southern bridge linking Omu and
+<244>Yrythelmyn, north or east through the canal system, downwards, towards the ocean
+<246>floor, or upwards, directly into the huge, looming area of dark water above
+<246>your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28733
+D 1
+~
+~
+0 -1 28727
+D 2
+~
+~
+0 -1 28718
+D 4
+~
+~
+0 -1 27135
+D 5
+~
+~
+0 -1 28426
+S
+
+#28427
+Omu / Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Omu's
+<250>sovereign quarter and the eastern fortifications of Yrythelmyn.   Omu's walls
+<252>prevent travel east, but you may travel south, towards the southern bridge
+<254>linking Omu and Yrythelmyn, north or west through the canal system, or upwards,
+towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28434
+D 2
+~
+~
+0 -1 28419
+D 3
+~
+~
+0 -1 28426
+D 4
+~
+~
+0 -1 28727
+S
+
+#28727
+<252>Omu / Yrythelmyn Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Omu's
+<238>sovereign quarter and the eastern fortifications of Yrythelmyn.  From here,
+<241>you may travel south towards the area above the southern bridge linking Omu and
+<244>Yrythelmyn, north or west through the canal system, downwards, towards the ocean
+<246>floor, or upwards, directly into the huge, looming area of dark water above
+<246>your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28734
+D 2
+~
+~
+0 -1 28719
+D 3
+~
+~
+0 -1 28726
+D 4
+~
+~
+0 -1 27136
+D 5
+~
+~
+0 -1 28427
+S
+
+#28433
+Omu / Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Omu's
+<250>sovereign quarter and the eastern fortifications of Yrythelmyn.   Yrythelmyn's
+<252>walls prevent travel west, but you may travel south, north or east through
+<254>the canal system, or upwards, towards the huge, looming area of darkness
+in the water above.  Northward lies a large junction in the canal network.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28442
+D 1
+~
+~
+0 -1 28434
+D 2
+~
+~
+0 -1 28426
+D 4
+~
+~
+0 -1 28733
+S
+
+#28733
+<252>Omu / Yrythelmyn Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Omu's
+<238>sovereign quarter and the eastern fortifications of Yrythelmyn.  From here,
+<241>you may travel north, south or east through the canal system, downwards,
+<244>towards the ocean floor, or upwards, directly into the huge, looming area of
+<246>dark water above your head.  Directly north you see a large junction in the
+<246>canal network.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28742
+D 1
+~
+~
+0 -1 28734
+D 2
+~
+~
+0 -1 28726
+D 4
+~
+~
+0 -1 27135
+D 5
+~
+~
+0 -1 28433
+S
+
+#28434
+Omu / Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Omu's
+<250>sovereign quarter and the eastern fortifications of Yrythelmyn.   Omu's walls
+<252>prevent travel east, but you may travel south, north or west through the
+<254>canal system, or upwards, towards the huge, looming area of darkness in the
+water above.  Northward lies a large junction in the canal network.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28443
+D 2
+~
+~
+0 -1 28427
+D 3
+~
+~
+0 -1 28433
+D 4
+~
+~
+0 -1 28734
+S
+
+#28734
+<252>Omu / Yrythelmyn Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Omu's
+<238>sovereign quarter and the eastern fortifications of Yrythelmyn.  From here,
+<241>you may travel north, south or west through the canal system, downwards,
+<244>towards the ocean floor, or upwards, directly into the huge, looming area of
+<246>dark water above your head.  Directly north you see a large junction in the
+<246>canal network.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28743
+D 2
+~
+~
+0 -1 28727
+D 3
+~
+~
+0 -1 28733
+D 4
+~
+~
+0 -1 27136
+D 5
+~
+~
+0 -1 28434
+S
+
+#28440
+Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between two large
+<250>cantons of Yrythelmyn, the city of the sea elves.  The cantons' strong walls
+<252>prevent travel north or south, and a gleaming steel grate has been erected to
+<254>the west that prevents movement in that direction, but you may continue east
+through the canal system, or upwards, towards the huge, looming area of darkness
+in the water above.<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 28441
+D 4
+~
+~
+0 -1 28740
+S
+
+#28740
+<252>Yrythelmyn Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between two
+<238>large cantons of Yrythelmyn, the city of the sea elves.  The cantons' strong
+<241>walls prevent travel north or south, and a gleaming steel grate has been erected
+<244>to the west that prevents movement in that direction, but you may travel east
+<246>through the canal system, down towards the ocean floor, or upwards, directly
+<246>into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 1
+~
+~
+0 -1 28741
+D 4
+~
+~
+0 -1 27134
+D 5
+~
+~
+0 -1 28440
+S
+
+#28441
+Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between two large
+<250>cantons of Yrythelmyn, the city of the sea elves.  The cantons' strong walls
+<252>prevent travel north or south, but you may continue east or west through the
+<254>canal system, or upwards, towards the huge, looming area of darkness in the
+water above.  Eastward lies a large junction in the canal network.<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 28442
+D 3
+~
+~
+0 -1 28440
+D 4
+~
+~
+0 -1 28741
+S
+
+#28741
+<252>Yrythelmyn Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between two
+<238>large cantons of Yrythelmyn, the city of the sea elves.  The cantons' strong
+<241>walls prevent travel north or south, but you may travel west and east through
+<244>the canal system, down towards the ocean floor, or upwards, directly into the
+<246>huge, looming area of dark water above your head. Eastward lies a large junction
+<246>in the canal network.<0>
+~
+0 0 8
+D 1
+~
+~
+0 -1 28742
+D 3
+~
+~
+0 -1 28740
+D 4
+~
+~
+0 -1 27134
+D 5
+~
+~
+0 -1 28441
+S
+
+#28442
+Omu / Yrythelmyn Canal Junction, Lower~
+<248>You are at the bottom of the ocean floor, in the four-way junction of a deep
+<250>canal network between Omu and the east-facing fortifications of Yrythelmyn.
+<252>You may travel north, south, east, or west from here through the canal system,
+<254>or upwards, towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28453
+D 1
+~
+~
+0 -1 28443
+D 2
+~
+~
+0 -1 28433
+D 3
+~
+~
+0 -1 28441
+D 4
+~
+~
+0 -1 28742
+S
+
+#28742
+<252>Omu / Yrythelmyn Canal Junction, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in the four-way junction of a
+<238>deep canal network between Omu and the east-facing fortifications of Yrythelmyn.
+<241>You may travel north, south, east or west from here through the canal system,
+<244>downwards, towards the ocean floor, or upwards, directly into the huge, looming
+<246>area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28753
+D 1
+~
+~
+0 -1 28743
+D 2
+~
+~
+0 -1 28733
+D 3
+~
+~
+0 -1 28741
+D 4
+~
+~
+0 -1 27135
+D 5
+~
+~
+0 -1 28442
+S
+
+#28443
+Omu / Yrythelmyn Canal Junction, Lower~
+<248>You are at the bottom of the ocean floor, in the four-way junction of a deep
+<250>canal network between Omu and the east-facing fortifications of Yrythelmyn.
+<252>You may travel north, south, east, or west from here through the canal system,
+<254>or upwards, towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28454
+D 1
+~
+~
+0 -1 28444
+D 2
+~
+~
+0 -1 28434
+D 3
+~
+~
+0 -1 28442
+D 4
+~
+~
+0 -1 28743
+S
+
+#28743
+<252>Omu / Yrythelmyn Canal Junction, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in the four-way junction of a
+<238>deep canal network between Omu and the east-facing fortifications of Yrythelmyn.
+<241>You may travel north, south, east or west from here through the canal system,
+<244>downwards, towards the ocean floor, or upwards, directly into the huge, looming
+<246>area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28754
+D 1
+~
+~
+0 -1 28744
+D 2
+~
+~
+0 -1 28734
+D 3
+~
+~
+0 -1 28742
+D 4
+~
+~
+0 -1 27136
+D 5
+~
+~
+0 -1 28443
+S
+
+#28444
+Omu Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between central
+<250>Omu and its sovereign quarter.  Omu's rough hardwood fortifications prevent
+<252>access north or south, but you may continue east, farther into the canal system,
+<254>west towards a large junction in the canal, or upwards, towards the huge,
+looming area of darkness in the water above.<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 28445
+D 3
+~
+~
+0 -1 28443
+D 4
+~
+~
+0 -1 28744
+S
+
+#28744
+<252>Omu Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between central
+<238>Omu and its sovereign quarter.  Omu's crude hardwood fortifications prevent
+<241>travel north or south, but you may continue east, farther into the canal system,
+<244>west towards a large junction in the canal, down towards the ocean floor, or
+<246>upwards, directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 1
+~
+~
+0 -1 28745
+D 3
+~
+~
+0 -1 28743
+D 4
+~
+~
+0 -1 27136
+D 5
+~
+~
+0 -1 28444
+S
+
+#28445
+Omu Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between central
+<250>Omu and its sovereign quarter.  Omu's rough hardwood fortifications prevent
+<252>access north or south, but you may continue east, towards a bridge connecting
+<254>the two areas of Omu, west, farther into the canal system or upwards, towards
+the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 28446
+D 3
+~
+~
+0 -1 28444
+D 4
+~
+~
+0 -1 28745
+S
+
+#28745
+<252>Omu Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between central
+<238>Omu and its sovereign quarter.  Omu's crude hardwood fortifications prevent
+<241>travel north or south, but you may continue east, towards a bridge connecting
+<244>the two areas of Omu, west, farther into the canal system, down towards the
+<246>ocean floor, or upwards, directly into the huge, looming area of dark water
+above your head.<0>
+~
+0 0 8
+D 1
+~
+~
+0 -1 28746
+D 3
+~
+~
+0 -1 28744
+D 4
+~
+~
+0 -1 27136
+D 5
+~
+~
+0 -1 28445
+S
+
+#28446
+Omu Sovereign Bridge, Lower~
+<14>You stand on a wide wooden bridge connecting Omu's sovereign quarter to central
+<87>Omu. Omu sovereign quarter's crude hardwood gates lie just south, while Omu
+<123>central's even cruder ones lie immediately north.  To the east and west you can
+<159>venture into the deep canal system which separates Omu's two areas from each
+other, or you can head upwards, towards the huge, looming area of darkness in the
+water above.
+~
+0 0 12
+D 0
+~
+gates~
+8 -1 28457
+D 1
+~
+~
+0 -1 28447
+D 2
+~
+gates~
+8 -1 28437
+D 3
+~
+~
+0 -1 28445
+D 4
+~
+~
+0 -1 28746
+S
+
+#28746
+Omu Sovereign Bridge, Upper~
+<21>You float about 4 metres above the bridge that connects Omu's sovereign quarter
+<27>to central Omu. The upper central Omu gates lie to the north, while the somewhat
+<33>more imposing upper gates of the sovereign quarter lie southward. To the east
+<39>and west you may venture into the upper part of the deep canal system which
+<45>separates Omu's two areas from each other, the ocean floor lies downwards, or
+you can swim up, directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+gates~
+8 -1 28757
+D 1
+~
+~
+0 -1 28747
+D 2
+~
+gates~
+8 -1 28737
+D 3
+~
+~
+0 -1 28745
+D 4
+~
+~
+0 -1 27132
+D 5
+~
+~
+0 -1 28446
+S
+
+#28447
+Omu Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between central
+<250>Omu and its sovereign quarter.  Omu's rough hardwood fortifications prevent
+<252>access north or east, but you may continue west, towards a bridge connecting
+<254>the two areas of Omu, south, farther into the canal system or upwards, towards
+the huge, looming area of darkness in the water above.<0>
+~
+0 4 12
+D 2
+~
+~
+0 -1 27470
+D 3
+~
+~
+0 -1 28446
+D 4
+~
+~
+0 -1 28747
+S
+
+#28747
+<252>Omu Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between central
+<238>Omu and its sovereign quarter.  Omu's crude hardwood fortifications prevent
+<241>travel north or east, but you may continue west, towards a bridge connecting
+<244>the two areas of Omu, south, farther into the canal system, down towards the
+<246>ocean floor, or upwards, directly into the huge, looming area of dark water
+above your head.<0>
+~
+0 4 8
+D 2
+~
+~
+0 -1 27770
+D 3
+~
+~
+0 -1 28746
+D 4
+~
+~
+0 -1 27105
+D 5
+~
+~
+0 -1 28447
+S
+
+#28453
+Omu / Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between central
+<250>Omu and the eastern fortifications of Yrythelmyn.  Yrythelmyn's walls prevent
+<252>travel west, but you may travel south, north or east through the canal system,
+<254>or upwards, towards the huge, looming area of darkness in the water above.
+Southward you see a large junction in the canal network.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28467
+D 1
+~
+~
+0 -1 28454
+D 2
+~
+~
+0 -1 28442
+D 4
+~
+~
+0 -1 28753
+S
+
+#28753
+<252>Omu / Yrythelmyn Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between central
+<238>Omu and the eastern fortifications of Yrythelmyn.  From here, you may travel
+<241>north, south or east through the canal system, downwards, towards the ocean
+<244>floor, or upwards, directly into the huge, looming area of dark water above your
+<246>head.  Directly south lies a large junction in the canal network.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28767
+D 1
+~
+~
+0 -1 28754
+D 2
+~
+~
+0 -1 28742
+D 4
+~
+~
+0 -1 27136
+D 5
+~
+~
+0 -1 28453
+S
+
+#28454
+Omu / Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between central
+<250>Omu and the eastern fortifications of Yrythelmyn.  Omu's walls prevent travel
+<252>east, but you may travel south, north or west through the canal system, or
+<254>upwards, towards the huge, looming area of darkness in the water above.
+Southward you see a large junction in the canal network.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28468
+D 2
+~
+~
+0 -1 28443
+D 3
+~
+~
+0 -1 28453
+D 4
+~
+~
+0 -1 28754
+S
+
+#28754
+<252>Omu / Yrythelmyn Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between central
+<238>Omu and the eastern fortifications of Yrythelmyn.  From here, you may travel
+<241>north, south or west through the canal system, downwards, towards the ocean
+<244>floor, or upwards, directly into the huge, looming area of dark water above your
+<246>head.  Directly south lies a large junction in the canal network.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28768
+D 2
+~
+~
+0 -1 28743
+D 3
+~
+~
+0 -1 28753
+D 4
+~
+~
+0 -1 27132
+D 5
+~
+~
+0 -1 28454
+S
+
+#28467
+Omu / Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between central
+<250>Omu and the eastern fortifications of Yrythelmyn.  Yrythelmyn's walls prevent
+<252>travel west, but you may travel south, north or east through the canal system,
+<254>or upwards, towards the huge, looming area of darkness in the water above.
+A large bridge reaching from central Omu to Yrythelmyn lies just to the north.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28479
+D 1
+~
+~
+0 -1 28468
+D 2
+~
+~
+0 -1 28453
+D 4
+~
+~
+0 -1 28767
+S
+
+#28767
+<252>Omu / Yrythelmyn Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between central
+<238>Omu and the eastern fortifications of Yrythelmyn.  From here, you may travel
+<241>north, towards the area above the northern bridge linking Omu and Yrythelmyn,
+<244>south or east through the canal system, downwards, towards the ocean floor,
+<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28779
+D 1
+~
+~
+0 -1 28768
+D 2
+~
+~
+0 -1 28753
+D 4
+~
+~
+0 -1 27132
+D 5
+~
+~
+0 -1 28467
+S
+
+#28468
+Omu / Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between central
+<250>Omu and the eastern fortifications of Yrythelmyn.  Omu's walls prevent travel
+<252>east, but you may travel south, north or west through the canal system, or
+<254>upwards, towards the huge, looming area of darkness in the water above.
+A large bridge reaching from central Omu to Yrythelmyn lies just to the north.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28480
+D 2
+~
+~
+0 -1 28454
+D 3
+~
+~
+0 -1 28467
+D 4
+~
+~
+0 -1 28768
+S
+
+#28768
+<252>Omu / Yrythelmyn Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between central
+<238>Omu and the eastern fortifications of Yrythelmyn.  From here, you may travel
+<241>north, towards the area above the northern bridge linking Omu and Yrythelmyn,
+<244>south or west through the canal system, downwards, towards the ocean floor,
+<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28780
+D 2
+~
+~
+0 -1 28754
+D 3
+~
+~
+0 -1 28767
+D 4
+~
+~
+0 -1 27128
+D 5
+~
+~
+0 -1 28468
+S
+
+#28479
+Omu / Yrythelmyn Northern Bridge, Lower~
+<14>You stand at the western end of the northern bridge connecting central Omu to
+<87>Yrythelmyn. Yythelmyn's gleaming, majestic gates lie to the west, while Omu's
+<123>crude hardwood gates can be seen in the distance to the east. To the north and
+<159>south you can venture into the deep canal system which separates Omu and
+Yrythelmyn from each other, or you can head upwards, towards the huge, looming area
+of darkness in the water above.
+
+A large <14>SIGN<159> has been fastened to Yrythelmyn's locked and barred gates.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28490
+D 1
+~
+~
+0 -1 28480
+D 2
+~
+~
+0 -1 28467
+D 3
+~
+gates~
+8 -1 28510
+D 4
+~
+~
+0 -1 28779
+E
+sign~
+
+{W
+o--------------------------------------------------------------o
+| No entrance permitted to non-Alu'Tel'Quessir.  Indefinitely. |
+o--------------------------------------------------------------o
+{x
+~
+S
+
+#28779
+Omu / Yrythelmyn Northern Bridge, Upper~
+<21>You float about 4 metres above the western end of the northern bridge connecting
+<27>Omu's central area to Yrythelmyn.  The upper portion of Yythelmyn's gleaming,
+<33>majestic gates lie to the west, while the corresponding portions of Omu's crude
+<39>hardwood gates can be seen in the distance to the east. To the north and south
+<45>you may venture into the deep canal system which separates Omu and Yrythelmyn
+from each other, you may travel downwards, towards the ocean floor, or you can swim
+upwards, directly into the huge, looming area of dark water above your head.
+
+A large <21>SIGN<45> has been fastened to Yrythelmyn's locked and barred gates.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28790
+D 1
+~
+~
+0 -1 28780
+D 2
+~
+~
+0 -1 28767
+D 3
+~
+gates~
+8 -1 28810
+D 4
+~
+~
+0 -1 27132
+D 5
+~
+~
+0 -1 28479
+E
+sign~
+
+{W
+o--------------------------------------------------------------o
+| No entrance permitted to non-Alu'Tel'Quessir.  Indefinitely. |
+o--------------------------------------------------------------o
+{x
+~
+S
+
+#28480
+Omu / Yrythelmyn Northern Bridge, Lower~
+<14>You stand at the eastern end of the northern bridge connecting Omu's sovereign
+<87>quarter to Yrythelmyn. Central Omu's crude hardwood gates lie just east, while
+<123>Yythelmyn's gleaming, majestic gates can be seen in the distance to the west.
+<159>To the north and south you can venture into the deep canal system which
+separates Omu and Yrythelmyn from each other, or you can head upwards, towards the
+huge, looming area of darkness in the water above.
+~
+0 0 12
+D 0
+~
+~
+0 -1 28491
+D 1
+~
+gates~
+8 -1 28481
+D 2
+~
+~
+0 -1 28468
+D 3
+~
+~
+0 -1 28479
+D 4
+~
+~
+0 -1 28780
+S
+
+#28780
+Omu / Yrythelmyn Northern Bridge, Upper~
+<21>You float about 4 metres above the eastern end of the northern bridge connecting
+<27>Omu's central area to Yrythelmyn.  The upper portion of Omu's crude, hardwood
+<33>gates lie to the east, while the corresponding portion of Yrythelmyn's gleaming,
+<39>majestic gates can be seen in the distance to the west. To the north and south
+<45>you may venture into the deep canal system which separates Omu and Yrythelmyn
+from each other, you may travel downwards, towards the ocean floor, or you can swim
+upwards, directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28791
+D 1
+~
+gates~
+8 -1 28781
+D 2
+~
+~
+0 -1 28768
+D 3
+~
+~
+0 -1 28779
+D 4
+~
+~
+0 -1 27128
+D 5
+~
+~
+0 -1 28480
+E
+sign~
+
+{W
+o--------------------------------------------------------------o
+| No entrance permitted to non-Alu'Tel'Quessir.  Indefinitely. |
+o--------------------------------------------------------------o
+{x
+~
+S
+
+#28490
+Omu / Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between central
+<250>Omu and the eastern fortifications of Yrythelmyn.  Yrythelmyn's walls prevent
+<252>travel west, but you may travel south, north or east through the canal system,
+<254>or upwards, towards the huge, looming area of darkness in the water above.
+A large bridge reaching from central Omu to Yrythelmyn lies just to the south.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28499
+D 1
+~
+~
+0 -1 28491
+D 2
+~
+~
+0 -1 28479
+D 4
+~
+~
+0 -1 28790
+S
+
+#28790
+<252>Omu / Yrythelmyn Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between central
+<238>Omu and the eastern fortifications of Yrythelmyn.  From here, you may travel
+<241>south, towards the area above the northern bridge linking Omu and Yrythelmyn,
+<244>north or east through the canal system, downwards, towards the ocean floor,
+<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28799
+D 1
+~
+~
+0 -1 28791
+D 2
+~
+~
+0 -1 28779
+D 4
+~
+~
+0 -1 27132
+D 5
+~
+~
+0 -1 28490
+S
+
+#28491
+Omu / Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between central
+<250>Omu and the eastern fortifications of Yrythelmyn.  Omu's walls prevent travel
+<252>east, but you may travel south, north or west through the canal system, or
+<254>upwards, towards the huge, looming area of darkness in the water above.
+A large bridge reaching from central Omu to Yrythelmyn lies just to the south.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28500
+D 2
+~
+~
+0 -1 28480
+D 3
+~
+~
+0 -1 28490
+D 4
+~
+~
+0 -1 28791
+S
+
+#28791
+<252>Omu / Yrythelmyn Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between central
+<238>Omu and the eastern fortifications of Yrythelmyn.  From here, you may travel
+<241>south, towards the area above the northern bridge linking Omu and Yrythelmyn,
+<244>north or west through the canal system, downwards, towards the ocean floor,
+<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28800
+D 2
+~
+~
+0 -1 28780
+D 3
+~
+~
+0 -1 28790
+D 4
+~
+~
+0 -1 27128
+D 5
+~
+~
+0 -1 28491
+S
+
+#28499
+Omu / Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between central
+<250>Omu and the eastern fortifications of Yrythelmyn.  Yrythelmyn's walls prevent
+<252>travel west, but you may travel south, north or east through the canal system,
+<254>or upwards, towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28505
+D 1
+~
+~
+0 -1 28500
+D 2
+~
+~
+0 -1 28490
+D 4
+~
+~
+0 -1 28799
+S
+
+#28799
+<252>Omu / Yrythelmyn Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between central
+<238>Omu and the eastern fortifications of Yrythelmyn.  From here, you may travel
+<241>south, north or east through the canal system, downwards, towards the ocean floor,
+<244>or upwards, directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28805
+D 1
+~
+~
+0 -1 28800
+D 2
+~
+~
+0 -1 28790
+D 4
+~
+~
+0 -1 27128
+D 5
+~
+~
+0 -1 28499
+S
+
+#28500
+Omu / Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between central
+<250>Omu and the eastern fortifications of Yrythelmyn.  Omu's walls prevent travel
+<252>east, but you may travel south, north or west through the canal system, or
+<254>upwards, towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28506
+D 2
+~
+~
+0 -1 28491
+D 3
+~
+~
+0 -1 28499
+D 4
+~
+~
+0 -1 28800
+S
+
+#28800
+<252>Omu / Yrythelmyn Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between central
+<238>Omu and the eastern fortifications of Yrythelmyn.  From here, you may travel
+<241>south, north or west through the canal system, downwards, towards the ocean floor,
+<244>or upwards, directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28806
+D 2
+~
+~
+0 -1 28791
+D 3
+~
+~
+0 -1 28799
+D 4
+~
+~
+0 -1 27130
+D 5
+~
+~
+0 -1 28500
+S
+
+#28505
+Omu / Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between central
+<250>Omu and the eastern fortifications of Yrythelmyn.  Yrythelmyn's walls prevent
+<252>travel west, but you may travel south or east through the canal system, or
+<254>upwards, towards the huge, looming area of darkness in the water above. To the
+immediate north a huge iron grate has been installed to block access to the open
+ocean.<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 28506
+D 2
+~
+~
+0 -1 28499
+D 4
+~
+~
+0 -1 28805
+S
+
+#28805
+<252>Omu / Yrythelmyn Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between central
+<238>Omu and the eastern fortifications of Yrythelmyn. The high canal walls prevent
+<241>access from here to either area, but you may travel south or east, further along
+<244>the canal system, down to the ocean floor, or upwards, directly into the huge,
+<246>looming area of dark water above your head. To the immediate north a huge iron
+grate has been installed to block access to the open ocean.<0>
+~
+0 0 8
+D 1
+~
+~
+0 -1 28806
+D 2
+~
+~
+0 -1 28799
+D 4
+~
+~
+0 -1 27128
+D 5
+~
+~
+0 -1 28505
+S
+
+#28506
+Omu / Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between central
+<250>Omu and the eastern fortifications of Yrythelmyn.  Omu's walls prevent travel
+<252>east, but you may travel south or west through the canal system, or upwards,
+<254>towards the huge, looming area of darkness in the water above.  To the immediate
+north a huge iron grate has been installed to block access to the open ocean.
+~
+0 0 12
+D 2
+~
+~
+0 -1 28500
+D 3
+~
+~
+0 -1 28505
+D 4
+~
+~
+0 -1 28806
+S
+
+#28806
+<252>Omu / Yrythelmyn Canal, Upper<0>~
+<237>You float about 4 metres above the ocean floor, in a deep canal between central
+<238>Omu and the eastern fortifications of Yrythelmyn. The high canal walls prevent
+<241>access from here to either area, but you may travel south or east, further along
+<244>the canal system, down to the ocean floor, or upwards, directly into the huge,
+<246>looming area of dark water above your head. To the immediate north a huge iron
+grate has been installed to block access to the open ocean.<0>
+~
+0 0 8
+D 2
+~
+~
+0 -1 28800
+D 3
+~
+~
+0 -1 28805
+D 4
+~
+~
+0 -1 27132
+D 5
+~
+~
+0 -1 28506
+S
+
+#28404
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28409
+S
+
+#28407
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28413
+D 1
+~
+~
+0 -1 28408
+S
+
+#28408
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28414
+D 1
+~
+~
+0 -1 28409
+D 3
+~
+~
+0 -1 28407
+S
+
+#28409
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28415
+D 1
+~
+~
+0 -1 28410
+D 2
+~
+~
+0 -1 28404
+D 3
+~
+~
+0 -1 28408
+S
+
+#28410
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28416
+D 3
+~
+~
+0 -1 28409
+S
+
+#28413
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 28414
+D 2
+~
+~
+0 -1 28407
+S
+
+#28414
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 28415
+D 2
+~
+~
+0 -1 28408
+D 3
+~
+~
+0 -1 28413
+S
+
+#28415
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28422
+D 1
+~
+~
+0 -1 28416
+D 2
+~
+~
+0 -1 28409
+D 3
+~
+~
+0 -1 28414
+S
+
+#28416
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28423
+D 1
+~
+~
+0 -1 28417
+D 2
+~
+~
+0 -1 28410
+D 3
+~
+~
+0 -1 28415
+S
+
+#28417
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28424
+D 3
+~
+~
+0 -1 28416
+S
+
+#28422
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 28423
+D 2
+~
+~
+0 -1 28415
+S
+
+#28423
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28431
+D 1
+~
+~
+0 -1 28424
+D 2
+~
+~
+0 -1 28416
+D 3
+~
+~
+0 -1 28422
+S
+
+#28424
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28432
+D 1
+~
+~
+0 -1 28425
+D 2
+~
+~
+0 -1 28417
+D 3
+~
+~
+0 -1 28423
+S
+
+#28425
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 3
+~
+~
+0 -1 28424
+S
+
+#28431
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 28432
+D 2
+~
+~
+0 -1 28423
+S
+
+#28432
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 2
+~
+~
+0 -1 28424
+D 3
+~
+~
+0 -1 28431
+S
+
+#28420
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 28421
+D 3
+~
+~
+0 -1 28419
+S
+
+#28720
+Sovereign Quarter, Upper~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 28421
+D 3
+~
+~
+0 -1 28719
+S
+
+#28421
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28429
+D 3
+~
+~
+0 -1 28420
+S
+
+#28429
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 28430
+D 2
+~
+~
+0 -1 28421
+S
+
+#28430
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28437
+D 3
+~
+~
+0 -1 28429
+S
+
+#28428
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28435
+S
+
+#28435
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 28436
+D 2
+~
+~
+0 -1 28428
+S
+
+#28436
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 3
+~
+~
+0 -1 28435
+S
+
+#28437
+Sovereign Quarter, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28446
+D 2
+~
+~
+0 -1 28430
+S
+
+#28737
+Sovereign Quarter, Upper~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 28746
+D 2
+~
+~
+0 -1 28430
+S
+
+#28438
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28450
+D 1
+~
+~
+0 -1 28439
+S
+
+#28439
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28451
+D 3
+~
+~
+0 -1 28438
+S
+
+#28448
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+S
+
+#28449
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28460
+D 1
+~
+~
+0 -1 28450
+S
+
+#28450
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 28451
+D 2
+~
+~
+0 -1 28438
+D 3
+~
+~
+0 -1 28449
+S
+
+#28451
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28462
+D 2
+~
+~
+0 -1 28439
+D 3
+~
+~
+0 -1 28450
+S
+
+#28452
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+S
+
+#28466
+Ota'ar Dar / Omu Bridge South, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28465
+S
+
+#28455
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+S
+
+#28456
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28470
+D 1
+~
+~
+0 -1 28457
+S
+
+#28457
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28471
+D 2
+~
+~
+0 -1 28446
+S
+
+#28757
+Central Omu, Upper~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28471
+D 2
+~
+~
+0 -1 28746
+S
+
+#28458
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+S
+
+#28459
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28473
+D 1
+~
+~
+0 -1 28460
+S
+
+#28460
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28474
+D 2
+~
+~
+0 -1 28449
+D 3
+~
+~
+0 -1 28459
+S
+
+#28461
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+S
+
+#28462
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28476
+D 1
+~
+~
+0 -1 28463
+D 2
+~
+~
+0 -1 28451
+S
+
+#28463
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28477
+D 1
+~
+~
+0 -1 28464
+D 3
+~
+~
+0 -1 28462
+S
+
+#28464
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28478
+D 1
+~
+~
+0 -1 28465
+D 3
+~
+~
+0 -1 28463
+S
+
+#28465
+Ota'ar Dar / Omu Bridge North, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 2
+~
+~
+0 -1 28466
+D 3
+~
+~
+0 -1 28464
+S
+
+#28469
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28481
+D 1
+~
+~
+0 -1 28470
+S
+
+#28470
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28482
+D 1
+~
+~
+0 -1 28471
+D 2
+~
+~
+0 -1 28456
+D 3
+~
+~
+0 -1 28469
+S
+
+#28471
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28483
+D 1
+~
+~
+0 -1 28472
+D 2
+~
+~
+0 -1 28457
+D 3
+~
+~
+0 -1 28470
+S
+
+#28472
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28484
+D 1
+~
+~
+0 -1 28473
+D 3
+~
+~
+0 -1 28471
+S
+
+#28473
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28485
+D 1
+~
+~
+0 -1 28474
+D 2
+~
+~
+0 -1 28459
+D 3
+~
+~
+0 -1 28472
+S
+
+#28474
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28486
+D 1
+~
+~
+0 -1 28475
+D 2
+~
+~
+0 -1 28460
+D 3
+~
+~
+0 -1 28473
+S
+
+#28475
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28487
+D 1
+~
+~
+0 -1 28476
+D 3
+~
+~
+0 -1 28474
+S
+
+#28476
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 28477
+D 2
+~
+~
+0 -1 28462
+D 3
+~
+~
+0 -1 28475
+S
+
+#28477
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28489
+D 1
+~
+~
+0 -1 28478
+D 2
+~
+~
+0 -1 28463
+D 3
+~
+~
+0 -1 28476
+S
+
+#28478
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 2
+~
+~
+0 -1 28464
+D 3
+~
+~
+0 -1 28477
+S
+
+#28481
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28492
+D 1
+~
+~
+0 -1 28482
+D 2
+~
+~
+0 -1 28469
+D 3
+~
+~
+0 -1 28480
+S
+
+#28781
+Central Omu, Upper~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28492
+D 1
+~
+~
+0 -1 28482
+D 2
+~
+~
+0 -1 28469
+D 3
+~
+~
+0 -1 28780
+S
+
+#28482
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28493
+D 1
+~
+~
+0 -1 28483
+D 2
+~
+~
+0 -1 28470
+D 3
+~
+~
+0 -1 28481
+S
+
+#28483
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28494
+D 1
+~
+~
+0 -1 28484
+D 2
+~
+~
+0 -1 28471
+D 3
+~
+~
+0 -1 28482
+S
+
+#28484
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28495
+D 1
+~
+~
+0 -1 28485
+D 2
+~
+~
+0 -1 28472
+D 3
+~
+~
+0 -1 28483
+S
+
+#28485
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28496
+D 1
+~
+~
+0 -1 28486
+D 2
+~
+~
+0 -1 28473
+D 3
+~
+~
+0 -1 28484
+S
+
+#28486
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28497
+D 1
+~
+~
+0 -1 28487
+D 2
+~
+~
+0 -1 28474
+D 3
+~
+~
+0 -1 28485
+S
+
+#28487
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 2
+~
+~
+0 -1 28475
+D 3
+~
+~
+0 -1 28486
+S
+
+#28488
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+S
+
+#28489
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 2
+~
+~
+0 -1 28477
+S
+
+#28492
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 28493
+D 2
+~
+~
+0 -1 28481
+S
+
+#28493
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28502
+D 1
+~
+~
+0 -1 28494
+D 2
+~
+~
+0 -1 28482
+D 3
+~
+~
+0 -1 28492
+S
+
+#28494
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28503
+D 1
+~
+~
+0 -1 28495
+D 2
+~
+~
+0 -1 28483
+D 3
+~
+~
+0 -1 28493
+S
+
+#28495
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 28496
+D 2
+~
+~
+0 -1 28484
+D 3
+~
+~
+0 -1 28494
+S
+
+#28496
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 28497
+D 2
+~
+~
+0 -1 28485
+D 3
+~
+~
+0 -1 28495
+S
+
+#28497
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 2
+~
+~
+0 -1 28486
+D 3
+~
+~
+0 -1 28496
+S
+
+#28498
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+S
+
+#28501
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28507
+S
+
+#28502
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 28503
+D 2
+~
+~
+0 -1 28493
+S
+
+#28503
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 2
+~
+~
+0 -1 28494
+D 3
+~
+~
+0 -1 28502
+S
+
+#28504
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+S
+
+#28507
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 28508
+D 2
+~
+~
+0 -1 28501
+S
+
+#28508
+Central Omu, Lower~
+<248>
+<250>
+<252>
+<254>
+<0>
+~
+0 0 12
+D 3
+~
+~
+0 -1 28507
+S
+#0
+
+#RESETS
+D 0 28418 3 2                   lock west in Omu / Yrythelmyn Southern Bridge, Lower
+D 0 28718 3 2                   lock west in Omu / Yrythelmyn Southern Bridge, Upper
+D 0 28419 1 1                   close east in Omu / Yrythelmyn Southern Bridge, Lower
+D 0 28719 1 1                   close east in Omu / Yrythelmyn Southern Bridge, Upper
+D 0 28446 0 1                   close north in Omu Sovereign Bridge, Lower
+D 0 28446 2 1                   close south in Omu Sovereign Bridge, Lower
+D 0 28746 0 1                   close north in Omu Sovereign Bridge, Upper
+D 0 28746 2 1                   close south in Omu Sovereign Bridge, Upper
+D 0 28479 3 2                   lock west in Omu / Yrythelmyn Northern Bridge, Lower
+D 0 28779 3 2                   lock west in Omu / Yrythelmyn Northern Bridge, Upper
+D 0 28480 1 1                   close east in Omu / Yrythelmyn Northern Bridge, Lower
+D 0 28780 1 1                   close east in Omu / Yrythelmyn Northern Bridge, Upper
+M 0 28400 6 28403               add a giant sea python to Omu / Yrythelmyn Canal, Lower
+M 0 28400 6 28711               add a giant sea python to Omu / Yrythelmyn Canal, Upper
+E 0 28400 0 16                      equip a large pair of fangs (wield)
+M 0 28400 6 28403               add a giant sea python to Omu / Yrythelmyn Canal, Lower
+E 0 28400 0 16                      equip a large pair of fangs (wield)
+M 0 28401 6 28742               add a giant sea python to Omu / Yrythelmyn Canal Junction, Upper
+E 0 28400 0 16                      equip a large pair of fangs (wield)
+M 0 28401 6 28468               add a giant sea python to Omu / Yrythelmyn Canal, Lower
+E 0 28400 0 16                      equip a large pair of fangs (wield)
+G 0 28401 0                         carry a large leathery egg
+M 0 28401 6 28799               add a giant sea python to Omu / Yrythelmyn Canal, Upper
+E 0 28400 0 16                      equip a large pair of fangs (wield)
+G 0 28401 0                         carry a large leathery egg
+M 0 28402 1 28440               add a plesiosaurus to Yrythelmyn Canal, Lower
+E 0 28402 0 16                      equip razor-sharp teeth (wield)
+M 0 28403 2 28744               add a hideous sea hag to Omu Canal, Upper
+E 0 28403 0 16                      equip a cowrie dagger (wield)
+M 0 28403 2 28799               add a hideous sea hag to Omu / Yrythelmyn Canal, Upper
+E 0 28403 0 16                      equip a cowrie dagger (wield)
+M 0 28404 2 28467               add a male Kua-toa to Omu / Yrythelmyn Canal, Lower
+E 0 28404 0 5                       equip slimy hide (body)
+E 0 28405 0 11                      equip a large turtle shell (shield)
+E 0 28406 0 16                      equip a crude spear (wield)
+M 0 28404 2 28705               add a male Kua-toa to Omu / Yrythelmyn Canal, Upper
+E 0 28404 0 5                       equip slimy hide (body)
+E 0 28405 0 11                      equip a large turtle shell (shield)
+E 0 28406 0 16                      equip a crude spear (wield)
+M 0 28405 2 28705               add a female Kua-toa to Omu / Yrythelmyn Canal, Upper
+E 0 28404 0 5                       equip slimy hide (body)
+E 0 28405 0 11                      equip a large turtle shell (shield)
+E 0 28406 0 16                      equip a crude spear (wield)
+M 0 28405 2 28805               add a female Kua-toa to Omu / Yrythelmyn Canal, Upper
+E 0 28404 0 5                       equip slimy hide (body)
+E 0 28405 0 11                      equip a large turtle shell (shield)
+E 0 28406 0 16                      equip a crude spear (wield)
+M 0 28406 2 28791               add peaceful to Omu / Yrythelmyn Canal, Upper
+E 0 28407 0 5                       equip a thick leather jerkin (body)
+E 0 28406 0 16                      equip a crude spear (wield)
+G 0 28411 0                         carry a bag of coins
+M 0 28407 2 28741               add a bullywug to Yrythelmyn Canal, Upper
+E 0 28407 0 5                       equip a thick leather jerkin (body)
+E 0 28406 0 16                      equip a crude spear (wield)
+G 0 27282 0                         carry [out-of-area item]
+M 0 28408 2 28727               add a bullywug to Omu / Yrythelmyn Canal, Upper
+E 0 28407 0 5                       equip a thick leather jerkin (body)
+E 0 28406 0 16                      equip a crude spear (wield)
+G 0 27283 0                         carry [out-of-area item]
+M 0 28409 1 28442               add a kopru to Omu / Yrythelmyn Canal Junction, Lower
+E 0 28408 0 5                       equip oily hide (body)
+E 0 28410 0 16                      equip a pair of sharp fangs (wield)
+E 0 28409 0 18                      equip a long tail with a barbed tip (dual)
+M 0 28410 1 28467               add a kopru to Omu / Yrythelmyn Canal, Lower
+E 0 28408 0 5                       equip oily hide (body)
+E 0 28412 0 6                       equip a bone earring (head)
+E 0 28410 0 16                      equip a pair of sharp fangs (wield)
+E 0 28409 0 18                      equip a long tail with a barbed tip (dual)
+M 0 28411 1 28740               add an ixzan to Yrythelmyn Canal, Upper
+E 0 28410 0 16                      equip a pair of sharp fangs (wield)
+M 0 28412 1 28747               add an ixzan to Omu Canal, Upper
+E 0 28410 0 16                      equip a pair of sharp fangs (wield)
+S
+
+#SPECIALS
+M 28402 spec_small_whale        a plesiosaurus
+M 28410 spec_cast_mage          a kopru
+M 28411 spec_cast_archmage      an ixzan
+M 28412 spec_cast_priestess     an ixzan
+S
+
+#$
