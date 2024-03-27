@@ -147,7 +147,6 @@ my %mob_bf = (
         huge      => 128,
         inorganic => 256,
         has_tail  => 512,
-        has_tail  => 512,
 );
 
 my @mob_spec = qw/
@@ -250,10 +249,6 @@ my %obj_container = (
 
 my @obj_app = qw/
         none            str             dex                 int
-        wis             con             sex                 class
-        level           age             height              weight
-        mana            hp              move                gold
-        exp             ac              hitroll             damroll
         wis             con             sex                 class
         level           age             height              weight
         mana            hp              move                gold

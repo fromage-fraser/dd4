@@ -6075,7 +6075,7 @@ This spell will remove spells and effects from a mob or player that
 represent a magical transformation of their bodies from a normal, resting
 state; for example: HASTE, SLOW, BLINK, ECTOPLASMIC FORM, ADRENALINE CONTROL,
 etc.  It will not affect a SHAPESHIFTER's forms, as, once transformed, a
-Shapeshifter IS in their 'normal state'.
+shapeshifter IS in their 'normal state'.
 ~
 
 
