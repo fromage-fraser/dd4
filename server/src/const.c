@@ -3120,21 +3120,21 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "paralysis", &gsn_paralysis,
                 TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, 4096|16384,
                 spell_paralysis, 10, 12,
-                "", "You can move again!"
+                "", "<15>You can move again!<0>"
         },
 
         {
                 "project", 0,
                 TYPE_INT, TAR_IGNORE, POS_RESTING, 16384,
                 spell_null, 0, 12,
-                "", "You return to your body."
+                "", "<173>You return to your body.<0>"
         },
 
         {
                 "protection", &gsn_protection,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_protection, 5, 12,
-                "", "You feel less protected."
+                "", "<214>You feel less protected.<0>"
         },
 
         {

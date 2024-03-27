@@ -105,6 +105,7 @@ my %mob_aff = (
         meditate        => 16384,
         sneak           => 32768,
         hide            => 65536,
+        hidden          => 65536,
         sleep           => 131072,
         charmed         => 262144,
         flying          => 524288,
@@ -289,7 +290,7 @@ my @obj_app = qw/
         serrated        inscribed       crit                swiftness
         breathe_water   balance         set_uncommon        set_rare
         set_epic        set_legendary   strengthen          engraved
-        serrated        inscribed       crit                swiftness
+        serrated        inscribed       crit                swift
 /;
 
 my @obj_ty = qw/
@@ -1427,6 +1428,8 @@ foreach (0 .. $#rooms) {
                             w => 'west', u => 'up', d => 'down'
                     );
 
+                    $room{'nm'} = &strip_colour_tags($room{'nm'});
+
                     push @resets, "D 0 " . ($room{'vn'} + $area{'bv'})
                             . " $exit_lookup{$exit} $room{$exit . 'ds'}\t"
                             . "$exit_ds[$room{$exit . 'ds'}] "
@@ -1521,9 +1524,15 @@ foreach (0 .. $#addmobs) {
             next;
         }
 
-        if (!exists $obj_vnums{$next}) {
-            print "$err field 'inv': object with vnum '$next' not defined\n";
-            $addmob_errors{$mob{'line'}}++;
+        #if (!exists $obj_vnums{$next}) {
+        #    print "$err field 'inv': object with vnum '$next' not defined\n";
+        #    $addmob_errors{$mob{'line'}}++;
+        #}
+
+        # So adding objects from other loaded areas is tolerated
+        if (!$obj_names{$next})
+        {
+            $obj_names{$next} = "[out-of-area item]";
         }
 
         push @eq, "G 0 " . ($next + $area{'bv'}) . " 0\t    carry $obj_names{$next}\n"
@@ -1556,6 +1565,8 @@ foreach (0 .. $#addmobs) {
                 $addmob_errors{$mob{'line'}}++;
                 next;
             }
+
+            $room_names{$next} = &strip_colour_tags($room_names{$next});
 
             push @resets, ("M 0 " . ($mob{'mb'} + $area{'bv'}) . ' '
                     . $mob{'num'} . ' ' . ($next + $area{'bv'}) . "\tadd "
@@ -1661,7 +1672,7 @@ foreach (0 .. $#addobjs) {
                     && $obj_names{$obj{'ob'}}) {
                 push @resets, "P 0 " . ($obj{'ob'} + $area{'bv'}) . " 0 "
                         . ($next + $area{'bv'}) . "\tput $obj_names{$obj{'ob'}} "
-                        . "inside $obj_names{$next}\n"
+                        . "inside $obj_names{$next}\n";
             }
         }
     }
@@ -1719,6 +1730,14 @@ foreach (0 .. $#shops) {
 #
 #  Subroutine:  Condense extended number format
 #
+
+sub strip_colour_tags {
+    my ($input_str) = @_;
+
+    $input_str =~ s/<\d{1,3}>//g;
+
+    return $input_str;
+}
 
 sub add_bits($) {
     my @bits = split /\|/, shift;

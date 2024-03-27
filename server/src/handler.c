@@ -456,7 +456,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         af.bitvector = AFF_SANCTUARY;
                         affect_to_char( ch, &af );
                         send_to_char( "<15>You are surrounded by a white aura.<0>\n\r", ch );
-                        act( "<15>$n is surrounded by a white aura.<0>", ch, NULL, NULL, TO_ROOM );
+                        act( "<15>$c is surrounded by a white aura.<0>", ch, NULL, NULL, TO_ROOM );
                         break;
                 }
                 else
@@ -619,7 +619,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 else
                 {
                         affect_strip( ch, af.type );
-                        send_to_char( "You feel less protected.\n\r", ch );
+                        send_to_char( "<214>You feel less protected.<0>\n\r", ch );
                         break;
                 }
 

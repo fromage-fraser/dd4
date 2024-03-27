@@ -4975,7 +4975,7 @@ char *  wear_location_name              args( ( int wearloc_num ) );
 char *  weapon_damage_type_name         args( ( int dt_num) );
 char *  sector_name                     args( ( int sector_num ) );
 char *  race_name                       args( ( int race_num ) );
-char *  race_size_name                 args( ( int ch_size ) );
+char *  race_size_name                  args( ( int ch_size ) );
 char *  spec_fun_name                         ( CHAR_DATA *ch );
 char *  extra_class_name                args( ( unsigned long int extra_flags ) );
 char *  position_name                   args( ( int position) );

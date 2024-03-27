@@ -2495,7 +2495,7 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                 if (IS_AFFECTED(victim, AFF_PROTECT) && (!saves_spell(level, victim ) || (IS_IMMORTAL( ch ))))
                 {
                         REMOVE_BIT(victim->affected_by, AFF_PROTECT);
-                        send_to_char( "You feel less protected.\n\r", victim );
+                        send_to_char( "<214>You feel less protected.<0>\n\r", victim );
                         act( "$n looks more vulnerable.", victim, NULL, NULL, TO_ROOM );
                         return;
                 }
@@ -4616,7 +4616,7 @@ void spell_sanctuary( int sn, int level, CHAR_DATA *ch, void *vo )
         affect_to_char( victim, &af );
 
         send_to_char( "<15>You are surrounded by a white aura.<0>\n\r", victim );
-        act( "<15>$n is surrounded by a white aura.<0>", victim, NULL, NULL, TO_ROOM );
+        act( "<15>$c is surrounded by a white aura.<0>", victim, NULL, NULL, TO_ROOM );
 
         if (ch != victim)
                 check_group_bonus(ch);
@@ -5690,7 +5690,7 @@ void spell_biofeedback ( int sn, int level, CHAR_DATA *ch, void *vo )
         affect_to_char( victim, &af );
 
         send_to_char( "<15>A white aura surrounds you.<0>\n\r", victim );
-        act( "<15>$n is surrounded by a white aura.<0>", victim, NULL, NULL, TO_ROOM );
+        act( "<15>$c is surrounded by a white aura.<0>", victim, NULL, NULL, TO_ROOM );
         return;
 }
 
@@ -7171,7 +7171,7 @@ void spell_mass_sanctuary( int sn, int level, CHAR_DATA *ch, void *vo )
                 affect_to_char( gch, &af );
 
                 send_to_char( "<15>You are surrounded by a white aura.<0>\n\r", gch );
-                act( "<15>$n is surrounded by a white aura.<0>", gch, NULL, NULL, TO_ROOM );
+                act( "<15>$c is surrounded by a white aura.<0>", gch, NULL, NULL, TO_ROOM );
         }
 
         send_to_char( "Ok.\n\r", ch );
