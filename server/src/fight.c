@@ -1487,7 +1487,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                                             && number_percent() < victim->pcdata->learned[gsn_risposte] / 2)
                                         {
                                                 if (victim->gag < 2)
-                                                        act ("You strike quickly while $n recovers from his attack.",
+                                                        act ("You strike quickly while $n recovers from $s attack.",
                                                              ch, NULL, victim, TO_VICT);
 
                                                 act ("While recovering from your attack, $N makes a quick strike.",

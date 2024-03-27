@@ -652,9 +652,8 @@ int hit_gain( CHAR_DATA *ch )
 
                         in_room = ch->in_room;
 
-
-                         if ( ch->in_room->exit[5] )
-                         {
+                        if ( ch->in_room->exit[5] )
+                        {
                                 to_room = in_room->exit[5]->to_room;
                                 /* Can we fall into it tho? headache coming */
 
@@ -822,11 +821,11 @@ int hit_gain( CHAR_DATA *ch )
                                         mprog_greet_trigger(ch);
                                 }
 
-                         }
-                         else {
-                               /* No down exit */
-                               return 0;
-                         }
+                        }
+                        else {
+                                /* No down exit */
+                                return 0;
+                        }
                 }
         }
 
