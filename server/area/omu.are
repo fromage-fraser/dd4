@@ -298,7 +298,7 @@ This looks like an ixzan of the rare 'vampiric' subtype.
 ~
 64|131072 512|67108864 -890 S
 66 0 0 0d0+0 0d0+0
-4|8|512 0
+4|8|32|512 0
 0 0 1
 
 #28412
@@ -313,7 +313,7 @@ This looks like an ixzan of the rare 'vampiric' subtype.
 ~
 64|131072 512|67108864 -899 S
 66 0 0 0d0+0 0d0+0
-4|8|512 0
+4|8|32|512 0
 0 0 2
 #0
 
@@ -329,7 +329,7 @@ The huge fangs of some undersea creature lie here.~
 A
 19 10
 A
-66 10
+50 10
 
 #28401
 egg leathery~
@@ -351,7 +351,7 @@ The razor-sharp teeth of an aquatic predator lie here.~
 A
 19 15
 A
-66 15
+50 15
 
 #28403
 dagger cowrie~
@@ -364,7 +364,7 @@ A wicked dagger carved from a cowrie shell is here.~
 A
 19 8
 A
-67 5
+51 5
 
 #28404
 slimy hide~
@@ -377,9 +377,9 @@ The slime-covered hide of some fish-like creature has been dumped here.~
 A
 17 -10
 A
-53 50
+37 50
 A
-54 50
+38 50
 
 #28405
 turtle shell shield large~
@@ -420,7 +420,7 @@ A
 A
 14 -50
 A
-40 -3
+24 -3
 
 #28408
 oily hide~
@@ -433,9 +433,9 @@ The oily hide of some large, eel-like creature has been dumped here.~
 A
 17 -15
 A
-52 50
+36 50
 A
-66 10
+50 10
 
 #28409
 tail barbed~
@@ -457,7 +457,7 @@ The fangs of some undersea creature lie here.~
 A
 19 12
 A
-66 5
+50 5
 
 #28411
 bag coins~
@@ -484,6 +484,16 @@ resemble writing, or at least symbols, but what they might mean you have no idea
 ~
 A
 4 4
+
+#28413
+bladder ixzan ichor~
+a bladder of ixzan ichor~
+The dark, squishy bladder of an undersea fiend lies here.~
+~
+10 16|64 1|16384
+66~ combat mind~ stabilise~ remove curse~
+8 0 0
+
 #0
 
 #ROOMS
@@ -4138,6 +4148,7 @@ E 0 28410 0 16                      equip a pair of sharp fangs (wield)
 E 0 28409 0 18                      equip a long tail with a barbed tip (dual)
 M 0 28411 1 28740               add an ixzan to Yrythelmyn Canal, Upper
 E 0 28410 0 16                      equip a pair of sharp fangs (wield)
+G 0 28413 0                         carry a bladder of ixzan ichor
 M 0 28412 1 28747               add an ixzan to Omu Canal, Upper
 E 0 28410 0 16                      equip a pair of sharp fangs (wield)
 S

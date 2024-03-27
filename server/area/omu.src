@@ -2842,7 +2842,7 @@ vn  28411
 lv  66
 al -890
 sx male
-bf  has_tail no_legs no_arms
+bf  has_tail no_legs no_arms no_speech
 act stay_area mount
 aff swim infrared
 sp spec_cast_archmage
@@ -2861,7 +2861,7 @@ vn  28412
 lv  66
 al -899
 sx female
-bf  has_tail no_legs no_arms
+bf  has_tail no_legs no_arms no_speech
 act stay_area mount
 aff swim infrared
 sp spec_cast_priestess
@@ -3038,6 +3038,20 @@ resemble writing, or at least symbols, but what they might mean you have no idea
 ~
 ap  wis 4
 
+$obj
+nm  bladder ixzan ichor
+sh  a bladder of ixzan ichor
+lo  The dark, squishy bladder of an undersea fiend lies here.
+vn  28413
+ty  potion
+v0  66
+v1  combat mind
+v2  stabilise
+v3  remove curse
+wg  8
+ex  evil magic
+we  take hold
+
 
 # MOB RESETS
 
@@ -3193,6 +3207,7 @@ mb      28411
 rm      28740
 num     1
 wield   28410
+inv     28413
 
 # an ixzan (female)
 $addmob
