@@ -39,7 +39,7 @@
 #define DECLARE_DO_FUN( fun )           DO_FUN          fun
 #define DECLARE_SPEC_FUN( fun )         SPEC_FUN        fun
 #define DECLARE_SPELL_FUN( fun )        SPELL_FUN       fun
-#define DECLARE_GAME_FUN( fun )		GAME_FUN        fun
+#define DECLARE_GAME_FUN( fun )         GAME_FUN        fun
 #define DECLARE_CONSTRUCT_FUN( fun )    CONSTRUCT_FUN   fun
 #endif
 
@@ -110,34 +110,34 @@ typedef short int sh_int;
 #define BIT_33  0x200000000           /*           8589934592  */
 #define BIT_34  0x400000000           /*          17179869184  */
 #define BIT_35  0x800000000           /*          34359738368  */
-#define BIT_36	0x1000000000          /*          68719476736  */
-#define BIT_37	0x2000000000          /*         137438953472  */
-#define BIT_38	0x4000000000          /*         274877906944  */
-#define BIT_39	0x8000000000          /*         549755813888  */
-#define BIT_40	0x10000000000         /*        1099511627776  */
-#define BIT_41	0x20000000000         /*        2199023255552  */
-#define BIT_42	0x40000000000         /*        4398046511104  */
-#define BIT_43	0x80000000000         /*        8796093022208  */
-#define BIT_44	0x100000000000        /*       17592186044416  */
-#define BIT_45	0x200000000000        /*       35184372088832  */
-#define BIT_46	0x400000000000        /*       70368744177664  */
-#define BIT_47	0x800000000000        /*      140737488355328  */
-#define BIT_48	0x1000000000000       /*      281474976710656  */
-#define BIT_49	0x2000000000000       /*      562949953421312  */
-#define BIT_50	0x4000000000000       /*     1125899906842624  */
-#define BIT_51	0x8000000000000       /*     2251799813685248  */
-#define BIT_52	0x10000000000000      /*     4503599627370496  */
-#define BIT_53	0x20000000000000      /*     9007199254740992  */
-#define BIT_54	0x40000000000000      /*    18014398509481984  */
-#define BIT_55	0x80000000000000      /*    36028797018963968  */
-#define BIT_56	0x100000000000000     /*    72057594037927936  */
-#define BIT_57	0x200000000000000     /*   144115188075855872  */
-#define BIT_58	0x400000000000000     /*   288230376151711744  */
-#define BIT_59	0x800000000000000     /*   576460752303423488  */
-#define BIT_60	0x1000000000000000    /*  1152921504606846976  */
-#define BIT_61	0x2000000000000000    /*  2305843009213693952  */
-#define BIT_62	0x4000000000000000    /*  4611686018427387904  */
-#define BIT_63	0x8000000000000000    /*  9223372036854775808  */
+#define BIT_36  0x1000000000          /*          68719476736  */
+#define BIT_37  0x2000000000          /*         137438953472  */
+#define BIT_38  0x4000000000          /*         274877906944  */
+#define BIT_39  0x8000000000          /*         549755813888  */
+#define BIT_40  0x10000000000         /*        1099511627776  */
+#define BIT_41  0x20000000000         /*        2199023255552  */
+#define BIT_42  0x40000000000         /*        4398046511104  */
+#define BIT_43  0x80000000000         /*        8796093022208  */
+#define BIT_44  0x100000000000        /*       17592186044416  */
+#define BIT_45  0x200000000000        /*       35184372088832  */
+#define BIT_46  0x400000000000        /*       70368744177664  */
+#define BIT_47  0x800000000000        /*      140737488355328  */
+#define BIT_48  0x1000000000000       /*      281474976710656  */
+#define BIT_49  0x2000000000000       /*      562949953421312  */
+#define BIT_50  0x4000000000000       /*     1125899906842624  */
+#define BIT_51  0x8000000000000       /*     2251799813685248  */
+#define BIT_52  0x10000000000000      /*     4503599627370496  */
+#define BIT_53  0x20000000000000      /*     9007199254740992  */
+#define BIT_54  0x40000000000000      /*    18014398509481984  */
+#define BIT_55  0x80000000000000      /*    36028797018963968  */
+#define BIT_56  0x100000000000000     /*    72057594037927936  */
+#define BIT_57  0x200000000000000     /*   144115188075855872  */
+#define BIT_58  0x400000000000000     /*   288230376151711744  */
+#define BIT_59  0x800000000000000     /*   576460752303423488  */
+#define BIT_60  0x1000000000000000    /*  1152921504606846976  */
+#define BIT_61  0x2000000000000000    /*  2305843009213693952  */
+#define BIT_62  0x4000000000000000    /*  4611686018427387904  */
+#define BIT_63  0x8000000000000000    /*  9223372036854775808  */
 #define BIT_MAX 0x8000000000000000    /*  9223372036854775808  */
 
 /*
@@ -169,9 +169,9 @@ typedef struct time_info_data                   TIME_INFO_DATA;
 typedef struct weather_data                     WEATHER_DATA;
 typedef struct mob_prog_data                    MPROG_DATA;
 typedef struct mob_prog_act_list                MPROG_ACT_LIST;
-typedef struct act_prog_data		            ACT_PROG_DATA;
+typedef struct act_prog_data                    ACT_PROG_DATA;
 typedef struct auction_data                     AUCTION_DATA;
-typedef struct game_data		                GAME_DATA;
+typedef struct game_data                        GAME_DATA;
 typedef struct coin_data                        COIN_DATA;
 typedef struct smelting_data                    SMELTING_DATA;
 typedef struct blueprint_data                   BLUEPRINT_DATA;
@@ -951,14 +951,14 @@ struct shop_data
 /*
  * Game stuff
  */
-struct	game_data
+struct    game_data
 {
-    GAME_DATA *	next;			/* Next game in list		*/
-    int 	croupier;		/* Vnum of croupier mob		*/
-    GAME_FUN *	game_fun;		/* Game fun run by mob		*/
-    int		bankroll;		/* Amount of gold in the bank	*/
-    int		max_wait;		/* Number of pulse to decision	*/
-    bool	cheat;			/* True if mob cheats		*/
+    GAME_DATA * next;            /* Next game in list */
+    int         croupier;        /* Vnum of croupier mob */
+    GAME_FUN *  game_fun;        /* Game fun run by mob */
+    int         bankroll;        /* Amount of gold in the bank */
+    int         max_wait;        /* Number of pulse to decision */
+    bool        cheat;           /* True if mob cheats */
 };
 
 
@@ -1878,68 +1878,68 @@ extern  WANTED_DATA *wanted_list_last;
  *  Bits for 'affected_by'.
  *  Used in #MOBILES.
  */
-#define AFF_BLIND                       BIT_0
-#define AFF_INVISIBLE                   BIT_1
-#define AFF_DETECT_EVIL                 BIT_2
-#define AFF_DETECT_INVIS                BIT_3
-#define AFF_DETECT_MAGIC                BIT_4
-#define AFF_DETECT_HIDDEN               BIT_5
-#define AFF_HOLD                        BIT_6   /*  mob is trapped  */
-#define AFF_SANCTUARY                   BIT_7
-#define AFF_FAERIE_FIRE                 BIT_8
-#define AFF_INFRARED                    BIT_9
-#define AFF_CURSE                       BIT_10
-#define AFF_FLAMING                     BIT_11
-#define AFF_POISON                      BIT_12
-#define AFF_PROTECT                     BIT_13
-#define AFF_MEDITATE                    BIT_14
-#define AFF_SNEAK                       BIT_15
-#define AFF_HIDE                        BIT_16
-#define AFF_SLEEP                       BIT_17
-#define AFF_CHARM                       BIT_18
-#define AFF_FLYING                      BIT_19
-#define AFF_PASS_DOOR                   BIT_20
-#define AFF_DETECT_TRAPS                BIT_21
-#define AFF_BATTLE_AURA                 BIT_22
-#define AFF_DETECT_SNEAK                BIT_23
-#define AFF_GLOBE                       BIT_24
-#define AFF_DETER                       BIT_25
-#define AFF_SWIM                        BIT_26
-#define AFF_PRAYER_PLAGUE               BIT_27
-#define AFF_NON_CORPOREAL               BIT_28  /* Mist Walk, Astral Sidestep, Fly form */
-#define AFF_DETECT_CURSE                BIT_29  /* Mob will attack cursed players, see is_cursed() --Owl */
-#define AFF_DETECT_GOOD                 BIT_30
-#define AFF_SWALLOWED                   BIT_31  /* Has been swallowed by a large creature */
-#define AFF_NO_RECALL                   BIT_32  /* Use to prevent recall without baggage of AFF_CURSE */
-#define AFF_DOT                         BIT_33  /* Damage Over Time - Brutus */
-#define AFF_PRONE                       BIT_34  /* Prone - can't do skills, can cast - Brutus*/
-#define AFF_DAZED                       BIT_35  /* Dazed - can't do anything - Brutus */
-#define AFF_SLOW                        BIT_63  /* last */
+#define AFF_BLIND                  BIT_0
+#define AFF_INVISIBLE              BIT_1
+#define AFF_DETECT_EVIL            BIT_2
+#define AFF_DETECT_INVIS           BIT_3
+#define AFF_DETECT_MAGIC           BIT_4
+#define AFF_DETECT_HIDDEN          BIT_5
+#define AFF_HOLD                   BIT_6   /*  mob is trapped  */
+#define AFF_SANCTUARY              BIT_7
+#define AFF_FAERIE_FIRE            BIT_8
+#define AFF_INFRARED               BIT_9
+#define AFF_CURSE                  BIT_10
+#define AFF_FLAMING                BIT_11
+#define AFF_POISON                 BIT_12
+#define AFF_PROTECT                BIT_13
+#define AFF_MEDITATE               BIT_14
+#define AFF_SNEAK                  BIT_15
+#define AFF_HIDE                   BIT_16
+#define AFF_SLEEP                  BIT_17
+#define AFF_CHARM                  BIT_18
+#define AFF_FLYING                 BIT_19
+#define AFF_PASS_DOOR              BIT_20
+#define AFF_DETECT_TRAPS           BIT_21
+#define AFF_BATTLE_AURA            BIT_22
+#define AFF_DETECT_SNEAK           BIT_23
+#define AFF_GLOBE                  BIT_24
+#define AFF_DETER                  BIT_25
+#define AFF_SWIM                   BIT_26
+#define AFF_PRAYER_PLAGUE          BIT_27
+#define AFF_NON_CORPOREAL          BIT_28  /* Mist Walk, Astral Sidestep, Fly form */
+#define AFF_DETECT_CURSE           BIT_29  /* Mob will attack cursed players, see is_cursed() --Owl */
+#define AFF_DETECT_GOOD            BIT_30
+#define AFF_SWALLOWED              BIT_31  /* Has been swallowed by a large creature */
+#define AFF_NO_RECALL              BIT_32  /* Use to prevent recall without baggage of AFF_CURSE */
+#define AFF_DOT                    BIT_33  /* Damage Over Time - Brutus */
+#define AFF_PRONE                  BIT_34  /* Prone - can't do skills, can cast - Brutus*/
+#define AFF_DAZED                  BIT_35  /* Dazed - can't do anything - Brutus */
+#define AFF_SLOW                   BIT_63  /* last */
 
 /* forms - Brutus */
-#define FORM_NORMAL                     0
-#define FORM_CHAMELEON                  1
-#define FORM_HAWK                       2
-#define FORM_CAT                        3
-#define FORM_SNAKE                      4
-#define FORM_SCORPION                   5
-#define FORM_SPIDER                     6
-#define FORM_BEAR                       7
-#define FORM_TIGER                      8
+#define FORM_NORMAL                0
+#define FORM_CHAMELEON             1
+#define FORM_HAWK                  2
+#define FORM_CAT                   3
+#define FORM_SNAKE                 4
+#define FORM_SCORPION              5
+#define FORM_SPIDER                6
+#define FORM_BEAR                  7
+#define FORM_TIGER                 8
 
 /* level 30 sft */
-#define FORM_GHOST                      9
-#define FORM_HYDRA                      10
-#define FORM_PHOENIX                    11
-#define FORM_DEMON                      12
-#define FORM_DRAGON                     13
+#define FORM_GHOST                 9
+#define FORM_HYDRA                 10
+#define FORM_PHOENIX               11
+#define FORM_DEMON                 12
+#define FORM_DRAGON                13
 
-#define FORM_FLY                        17
-#define FORM_GRIFFIN                    18
-#define FORM_WOLF                       19
-#define FORM_DIREWOLF                   14
-#define FORM_NONE                       MAX_FORM + 1
-#define FORM_ALL                        MAX_FORM + 2
+#define FORM_FLY                   17
+#define FORM_GRIFFIN               18
+#define FORM_WOLF                  19
+#define FORM_DIREWOLF              14
+#define FORM_NONE                  MAX_FORM + 1
+#define FORM_ALL                   MAX_FORM + 2
 
 /* form weapons */
 #define OBJ_HAWK_TALONS            50
@@ -1978,21 +1978,21 @@ extern  WANTED_DATA *wanted_list_last;
 /*
  * Money is now defined
  */
-#define COINS_ADD                       0       /* This is for function coins_to_char */
-#define COINS_REPLACE                   1       /* This is for function coins_to_char */
-#define COIN_PLAT                    1000
-#define COIN_GOLD                     100
-#define COIN_SILVER                    10
-#define COIN_COPPER                     1
+#define COINS_ADD                   0       /* This is for function coins_to_char */
+#define COINS_REPLACE               1       /* This is for function coins_to_char */
+#define COIN_PLAT                   1000
+#define COIN_GOLD                   100
+#define COIN_SILVER                 10
+#define COIN_COPPER                 1
 
 /*
  * Smelted MAterials - Brutus
  */
-#define SMELTED_STEEL                   1
-#define SMELTED_TITANIUM                2
-#define SMELTED_ADAMANTITE              3
-#define SMELTED_ELECTRUM                4
-#define SMELTED_STARMETAL               5
+#define SMELTED_STEEL               1
+#define SMELTED_TITANIUM            2
+#define SMELTED_ADAMANTITE          3
+#define SMELTED_ELECTRUM            4
+#define SMELTED_STARMETAL           5
 
 /*
  * Well known object virtual numbers.
@@ -2110,55 +2110,55 @@ extern  WANTED_DATA *wanted_list_last;
  * Item types.
  * Used in #OBJECTS.
  */
-#define ITEM_LIGHT                               1
-#define ITEM_SCROLL                              2
-#define ITEM_WAND                                3
-#define ITEM_STAFF                               4
-#define ITEM_WEAPON                              5
-#define ITEM_TREASURE                            8
-#define ITEM_ARMOR                               9
-#define ITEM_POTION                             10
-#define ITEM_FURNITURE                          12
-#define ITEM_TRASH                              13
-#define ITEM_CONTAINER                          15
-#define ITEM_DRINK_CON                          17
-#define ITEM_KEY                                18
-#define ITEM_FOOD                               19
-#define ITEM_MONEY                              20
-#define ITEM_BOAT                               22
-#define ITEM_CORPSE_NPC                         23
-#define ITEM_CORPSE_PC                          24
-#define ITEM_FOUNTAIN                           25
-#define ITEM_PILL                               26
-#define ITEM_CLIMBING_EQ                        27
-#define ITEM_PAINT                              28
-#define ITEM_MOB                                29
-#define ITEM_ANVIL                              30
-#define ITEM_AUCTION_TICKET                     31
-#define ITEM_CLAN_OBJECT                        32
-#define ITEM_PORTAL                             33
-#define ITEM_POISON_POWDER                      34
-#define ITEM_LOCK_PICK                          35
-#define ITEM_INSTRUMENT                         36
-#define ITEM_ARMOURERS_HAMMER                   37
-#define ITEM_MITHRIL                            38
-#define ITEM_WHETSTONE                          39
-#define ITEM_CRAFT                              40 /* Increase bonus to crafting that takes place in ROOM_CRAFT */
-#define ITEM_SPELLCRAFT                         41 /* Increase bonus to spellcrafting that takes place in ROOM_SPELLCRAFT */
-#define ITEM_TURRET_MODULE                      42
-#define ITEM_FORGE                              43
-#define ITEM_ARRESTOR_UNIT                      44
-#define ITEM_DRIVER_UNIT                        45
-#define ITEM_REFLECTOR_UNIT                     46
-#define ITEM_SHIELD_UNIT                        47
-#define ITEM_DEFENSIVE_TURRET_MODULE            48
-#define ITEM_TURRET                             49
-#define ITEM_COMBAT_PULSE                       50
-#define ITEM_DEFENSIVE_PULSE                    51
-#define ITEM_PIPE                               52
-#define ITEM_PIPE_CLEANER                       53
-#define ITEM_SMOKEABLE                          54
-#define ITEM_REMAINS                            55 /* What a mob who is ACT_OBJECT leaves behind instead of a corpse */
+#define ITEM_LIGHT                       1
+#define ITEM_SCROLL                      2
+#define ITEM_WAND                        3
+#define ITEM_STAFF                       4
+#define ITEM_WEAPON                      5
+#define ITEM_TREASURE                    8
+#define ITEM_ARMOR                       9
+#define ITEM_POTION                     10
+#define ITEM_FURNITURE                  12
+#define ITEM_TRASH                      13
+#define ITEM_CONTAINER                  15
+#define ITEM_DRINK_CON                  17
+#define ITEM_KEY                        18
+#define ITEM_FOOD                       19
+#define ITEM_MONEY                      20
+#define ITEM_BOAT                       22
+#define ITEM_CORPSE_NPC                 23
+#define ITEM_CORPSE_PC                  24
+#define ITEM_FOUNTAIN                   25
+#define ITEM_PILL                       26
+#define ITEM_CLIMBING_EQ                27
+#define ITEM_PAINT                      28
+#define ITEM_MOB                        29
+#define ITEM_ANVIL                      30
+#define ITEM_AUCTION_TICKET             31
+#define ITEM_CLAN_OBJECT                32
+#define ITEM_PORTAL                     33
+#define ITEM_POISON_POWDER              34
+#define ITEM_LOCK_PICK                  35
+#define ITEM_INSTRUMENT                 36
+#define ITEM_ARMOURERS_HAMMER           37
+#define ITEM_MITHRIL                    38
+#define ITEM_WHETSTONE                  39
+#define ITEM_CRAFT                      40 /* Increase bonus to crafting that takes place in ROOM_CRAFT */
+#define ITEM_SPELLCRAFT                 41 /* Increase bonus to spellcrafting that takes place in ROOM_SPELLCRAFT */
+#define ITEM_TURRET_MODULE              42
+#define ITEM_FORGE                      43
+#define ITEM_ARRESTOR_UNIT              44
+#define ITEM_DRIVER_UNIT                45
+#define ITEM_REFLECTOR_UNIT             46
+#define ITEM_SHIELD_UNIT                47
+#define ITEM_DEFENSIVE_TURRET_MODULE    48
+#define ITEM_TURRET                     49
+#define ITEM_COMBAT_PULSE               50
+#define ITEM_DEFENSIVE_PULSE            51
+#define ITEM_PIPE                       52
+#define ITEM_PIPE_CLEANER               53
+#define ITEM_SMOKEABLE                  54
+#define ITEM_REMAINS                    55 /* What a mob who is ACT_OBJECT leaves behind instead of a corpse */
 
 /*
  * Extra flags.
@@ -2284,68 +2284,68 @@ extern  WANTED_DATA *wanted_list_last;
  * Apply types (for affects).
  * Used in #OBJECTS.
  */
-#define APPLY_NONE                               0
-#define APPLY_STR                                1
-#define APPLY_DEX                                2
-#define APPLY_INT                                3
-#define APPLY_WIS                                4
-#define APPLY_CON                                5
-#define APPLY_SEX                                6
-#define APPLY_CLASS                              7
-#define APPLY_LEVEL                              8
-#define APPLY_AGE                                9
-#define APPLY_HEIGHT                            10
-#define APPLY_WEIGHT                            11
-#define APPLY_MANA                              12
-#define APPLY_HIT                               13
-#define APPLY_MOVE                              14
-#define APPLY_GOLD                              15
-#define APPLY_EXP                               16
-#define APPLY_AC                                17
-#define APPLY_HITROLL                           18
-#define APPLY_DAMROLL                           19
-#define APPLY_SAVING_PARA                       20
-#define APPLY_SAVING_ROD                        21
-#define APPLY_SAVING_PETRI                      22
-#define APPLY_SAVING_BREATH                     23
-#define APPLY_SAVING_SPELL                      24
-#define APPLY_SANCTUARY                         25
-#define APPLY_SNEAK                             26
-#define APPLY_FLY                               27
-#define APPLY_INVIS                             28
-#define APPLY_DETECT_INVIS                      29
-#define APPLY_DETECT_HIDDEN                     30
-#define APPLY_FLAMING                           31
-#define APPLY_PROTECT                           32
-#define APPLY_PASS_DOOR                         33
-#define APPLY_GLOBE                             34
-#define APPLY_DRAGON_AURA                       35
-#define APPLY_RESIST_HEAT                       36
-#define APPLY_RESIST_COLD                       37
-#define APPLY_RESIST_LIGHTNING                  38
-#define APPLY_RESIST_ACID                       39
-#define APPLY_BREATHE_WATER                     40      /* So we can sell aqualungs -- Owl 11/4/22 */
-#define APPLY_BALANCE                           41      /* for Balance Skill - Brutus Jul 2022 */
-#define APPLY_SET_UNCOMMON                      42
-#define APPLY_SET_RARE                          43
-#define APPLY_SET_EPIC                          44
-#define APPLY_SET_LEGENDARY                     45
-#define APPLY_STRENGTHEN                        46
-#define APPLY_ENGRAVED                          47
-#define APPLY_SERRATED                          48
-#define APPLY_INSCRIBED                         49
-#define APPLY_CRIT                              50
-#define APPLY_SWIFTNESS                         51
-#define APPLY_LAST                              51 /* Update if you add a new APPLY_ */
+#define APPLY_NONE                      0
+#define APPLY_STR                       1
+#define APPLY_DEX                       2
+#define APPLY_INT                       3
+#define APPLY_WIS                       4
+#define APPLY_CON                       5
+#define APPLY_SEX                       6
+#define APPLY_CLASS                     7
+#define APPLY_LEVEL                     8
+#define APPLY_AGE                       9
+#define APPLY_HEIGHT                    10
+#define APPLY_WEIGHT                    11
+#define APPLY_MANA                      12
+#define APPLY_HIT                       13
+#define APPLY_MOVE                      14
+#define APPLY_GOLD                      15
+#define APPLY_EXP                       16
+#define APPLY_AC                        17
+#define APPLY_HITROLL                   18
+#define APPLY_DAMROLL                   19
+#define APPLY_SAVING_PARA               20
+#define APPLY_SAVING_ROD                21
+#define APPLY_SAVING_PETRI              22
+#define APPLY_SAVING_BREATH             23
+#define APPLY_SAVING_SPELL              24
+#define APPLY_SANCTUARY                 25
+#define APPLY_SNEAK                     26
+#define APPLY_FLY                       27
+#define APPLY_INVIS                     28
+#define APPLY_DETECT_INVIS              29
+#define APPLY_DETECT_HIDDEN             30
+#define APPLY_FLAMING                   31
+#define APPLY_PROTECT                   32
+#define APPLY_PASS_DOOR                 33
+#define APPLY_GLOBE                     34
+#define APPLY_DRAGON_AURA               35
+#define APPLY_RESIST_HEAT               36
+#define APPLY_RESIST_COLD               37
+#define APPLY_RESIST_LIGHTNING          38
+#define APPLY_RESIST_ACID               39
+#define APPLY_BREATHE_WATER             40      /* So we can sell aqualungs -- Owl 11/4/22 */
+#define APPLY_BALANCE                   41      /* for Balance Skill - Brutus Jul 2022 */
+#define APPLY_SET_UNCOMMON              42
+#define APPLY_SET_RARE                  43
+#define APPLY_SET_EPIC                  44
+#define APPLY_SET_LEGENDARY             45
+#define APPLY_STRENGTHEN                46
+#define APPLY_ENGRAVED                  47
+#define APPLY_SERRATED                  48
+#define APPLY_INSCRIBED                 49
+#define APPLY_CRIT                      50
+#define APPLY_SWIFTNESS                 51
+#define APPLY_LAST                      51 /* Update if you add a new APPLY_ */
 
 /*
  * Values for containers (value[1]).
  * Used in #OBJECTS.
  */
-#define CONT_CLOSEABLE                          1
-#define CONT_PICKPROOF                          2
-#define CONT_CLOSED                             4
-#define CONT_LOCKED                             8
+#define CONT_CLOSEABLE                  1
+#define CONT_PICKPROOF                  2
+#define CONT_CLOSED                     4
+#define CONT_LOCKED                     8
 
 
 /*
@@ -2617,7 +2617,7 @@ struct  mob_index_data
 {
         MOB_INDEX_DATA *        next;
         SPEC_FUN *              spec_fun;
-        GAME_DATA *		pGame;
+        GAME_DATA *             pGame;
         SHOP_DATA *             pShop;
         MPROG_DATA *            mobprogs;
         LEARNED_DATA *          skills;         /* used by practisers only */
@@ -2753,7 +2753,7 @@ struct char_data
 /* FOR mob progs */
 
 /* Mob program structures */
-struct	act_prog_data
+struct act_prog_data
 {
         ACT_PROG_DATA *  next;
         void *           vo;
@@ -2923,22 +2923,22 @@ struct obj_index_data
         EXTRA_DESCR_DATA *      extra_descr;
         AFFECT_DATA *           affected;
 
-        char *          name;
-        char *          short_descr;
-        char *          description;
-        int             vnum;
-        int             item_type;
-        unsigned long int             extra_flags;
-        int             wear_flags;
-        int             count;
-        int             weight;
-        int             level;
-        int             cost;
-        int             value   [ 4 ];
-        int             trap_eff;
-        int             trap_dam;
-        int             trap_charge;
-        int             ego_flags;
+        char *                  name;
+        char *                  short_descr;
+        char *                  description;
+        int                     vnum;
+        int                     item_type;
+        unsigned long int       extra_flags;
+        int                     wear_flags;
+        int                     count;
+        int                     weight;
+        int                     level;
+        int                     cost;
+        int                     value   [ 4 ];
+        int                     trap_eff;
+        int                     trap_dam;
+        int                     trap_charge;
+        int                     ego_flags;
 };
 
 /*
@@ -2950,11 +2950,11 @@ struct obj_index_data
 
 /* Supply below as last argument to create_object() so it knows what kind of
    randomisation to apply -- Owl 10/2/23 */
-#define         CREATED_PRE_DD5                 1
-#define         CREATED_NO_RANDOMISER           2
-#define         CREATED_STRONG_RANDOMISER       3
-#define         CREATED_WEAK_RANDOMISER         4
-#define         CREATED_SKILL                   5
+#define CREATED_PRE_DD5                 1
+#define CREATED_NO_RANDOMISER           2
+#define CREATED_STRONG_RANDOMISER       3
+#define CREATED_WEAK_RANDOMISER         4
+#define CREATED_SKILL                   5
 
 /*
  * One object.
@@ -3087,7 +3087,7 @@ struct room_index_data
  * Must be non-overlapping with spell/skill types,
  * but may be arbitrary beyond that.
  */
-#define TYPE_UNDEFINED                    -1
+#define TYPE_UNDEFINED                  -1
 #define TYPE_HIT                        1000
 
 
@@ -3108,46 +3108,46 @@ struct room_index_data
  */
 struct skill_type
 {
-        char *          name;                           /* Name of skill */
-        int *           pgsn;                           /* Pointer to associated gsn */
-        int             prac_type;                      /* for praccing */
-        int             target;                         /* Legal targets */
-        int             minimum_position;               /* Position for caster / user */
-        unsigned long int res_type;                     /* resistance type e.g. fireball will have res_fire */
-        SPELL_FUN *     spell_fun;                      /* Spell pointer (for spells) */
-        int             min_mana;                       /* Minimum mana used */
-        int             beats;                          /* Waiting time after use */
-        char *          noun_damage;                    /* Damage message */
-        char *          msg_off;                        /* Wear off message */
+        char *              name;                           /* Name of skill */
+        int *               pgsn;                           /* Pointer to associated gsn */
+        int                 prac_type;                      /* for praccing */
+        int                 target;                         /* Legal targets */
+        int                 minimum_position;               /* Position for caster / user */
+        unsigned long int   res_type;                     /* resistance type e.g. fireball will have res_fire */
+        SPELL_FUN *         spell_fun;                      /* Spell pointer (for spells) */
+        int                 min_mana;                       /* Minimum mana used */
+        int                 beats;                          /* Waiting time after use */
+        char *              noun_damage;                    /* Damage message */
+        char *              msg_off;                        /* Wear off message */
 };
 
 /*
  * Resistant Immune Susceptible flags
  */
-#define RES_FIRE		  BIT_0
-#define RES_COLD		  BIT_1
-#define RES_ELECTRICITY		  BIT_2
-#define RES_ENERGY		  BIT_3
-#define RES_BLUNT		  BIT_4
-#define RES_PIERCE		  BIT_5
-#define RES_SLASH		  BIT_6
-#define RES_ACID		  BIT_7
-#define RES_POISON		  BIT_8
-#define RES_DRAIN		  BIT_9
-#define RES_SLEEP		  BIT_10
-#define RES_CHARM		  BIT_11
-#define RES_HOLD		  BIT_12
-#define RES_NONMAGIC		  BIT_13
-#define RES_MAGIC		  BIT_14
-#define RES_PARALYSIS		  BIT_15
-#define RES_PSYCHIC               BIT_16
-#define RES_HOLY                  BIT_17
-#define RES_DARK                  BIT_18
-#define RES_CURSE                 BIT_19
+#define RES_FIRE            BIT_0
+#define RES_COLD            BIT_1
+#define RES_ELECTRICITY     BIT_2
+#define RES_ENERGY          BIT_3
+#define RES_BLUNT           BIT_4
+#define RES_PIERCE          BIT_5
+#define RES_SLASH           BIT_6
+#define RES_ACID            BIT_7
+#define RES_POISON          BIT_8
+#define RES_DRAIN           BIT_9
+#define RES_SLEEP           BIT_10
+#define RES_CHARM           BIT_11
+#define RES_HOLD            BIT_12
+#define RES_NONMAGIC        BIT_13
+#define RES_MAGIC           BIT_14
+#define RES_PARALYSIS       BIT_15
+#define RES_PSYCHIC         BIT_16
+#define RES_HOLY            BIT_17
+#define RES_DARK            BIT_18
+#define RES_CURSE           BIT_19
 
-#define MAX_MOB 3
-#define MAX_SPECIES 4
-#define MAX_RANK 6
+#define MAX_MOB             3
+#define MAX_SPECIES         4
+#define MAX_RANK            6
 
 /* mob_spec_data Brutus */
 struct  mob_spec_data
@@ -3159,26 +3159,26 @@ struct mob_type
 {
 
 
-  char *name;                           /* name of spec e.g. fire_elemental */
-  char *species;                        /* species e.g. elemental */
-  char *icon_m;                         /* Male Icon name */
-  char *icon_f;                         /* Female icon name */
-  unsigned long int resists;            /* lists of resists */
-  unsigned long int vulnerabilities;    /* vulberable to */
-  unsigned long int immunes;            /* immune to */
-  int hp_mod;                           /* hp modifier ( in %) */
-  int dam_mod;                          /* dam modifier ( in %) */
-  int crit_mod;                         /* crit modifier ( in %) */
-  int haste_mod;                        /* haste modifier ( in %) */
-  int height;
-  int weight;
-  int size;
-  unsigned long int body_parts;         /* body parts they have */
-  unsigned long int attack_parts;       /* body parts race attacks with */
-  int language;                         /* future use */
-  char   *spec_fun1;                    /* a attack spec */
-  char   *spec_fun2;                    /* a 2nd attack spec */
-  char   *spec_boss;                    /* a 3rd/boss attack spec */
+  char                  *name;              /* name of spec e.g. fire_elemental */
+  char                  *species;           /* species e.g. elemental */
+  char                  *icon_m;            /* Male Icon name */
+  char                  *icon_f;            /* Female icon name */
+  unsigned long int     resists;            /* lists of resists */
+  unsigned long int     vulnerabilities;    /* vulberable to */
+  unsigned long int     immunes;            /* immune to */
+  int                   hp_mod;             /* hp modifier ( in %) */
+  int                   dam_mod;            /* dam modifier ( in %) */
+  int                   crit_mod;           /* crit modifier ( in %) */
+  int                   haste_mod;          /* haste modifier ( in %) */
+  int                   height;
+  int                   weight;
+  int                   size;
+  unsigned long int     body_parts;         /* body parts they have */
+  unsigned long int     attack_parts;       /* body parts race attacks with */
+  int                   language;           /* future use */
+  char                  *spec_fun1;         /* a attack spec */
+  char                  *spec_fun2;         /* a 2nd attack spec */
+  char                  *spec_boss;         /* a 3rd/boss attack spec */
 };
 
 struct species_type
@@ -3190,10 +3190,10 @@ struct species_type
 
 struct rank
 {
-        char *name;
-        int rank_bonus;
-        int hp_bonus;
-        char *who_format;
+        char    *name;
+        int     rank_bonus;
+        int     hp_bonus;
+        char    *who_format;
 };
 
 /* class basic gsn's */
@@ -3940,11 +3940,11 @@ extern int gsn_prayer_plague;
  */
 struct cmd_type
 {
-        char * const            name;
-        DO_FUN *                do_fun;
-        int                     position;
-        int                     level;
-        int                     log;
+        char * const    name;
+        DO_FUN *        do_fun;
+        int             position;
+        int             level;
+        int             log;
 };
 
 
@@ -3967,48 +3967,48 @@ struct social_type
 /*
  * Global constants.
  */
-extern const    struct str_app_type             str_app                         [ MAX_STAT ];
-extern const    struct dex_app_type             dex_app                         [ MAX_STAT ];
-extern const    struct con_app_type             con_app                         [ MAX_STAT ];
-extern const    struct int_app_type             int_app                         [ MAX_STAT ];
-extern const    struct class_type               class_table                     [ MAX_CLASS ];
-extern const    struct sub_class_type           sub_class_table                 [ MAX_SUB_CLASS ];
-extern const    struct dpr                      dprs                            [ MAX_DPR ];
-extern const    struct clan_items               clan_item_list                  [ MAX_CLAN ];
-extern const    struct clan_type                clan_table                      [ MAX_CLAN ];
-extern const    struct color_data               color_table                     [ ];
-extern char *   const  channel_names                                               [ MAX_CHANNELS ];
-extern const    struct color_data_8bit          color_table_8bit                [ ];
-extern const    struct cmd_type                 cmd_table                       [ ];
-extern const    struct liq_type                 liq_table                       [ LIQ_MAX  ];
-extern const    struct blueprint_type           blueprint_list                  [ BLUEPRINTS_MAX ];
-extern const    struct set_type                 set_list                        [ MAX_SETS ];
-/* extern const    struct raw_mats_data            raw_mats_table                  [ RAW_MATS_MAX ]; */
-extern const    struct skill_type               skill_table                     [ MAX_SKILL ];
-extern const    struct mob_type                 mob_table                       [ MAX_MOB ];
-extern const    struct species_type             species_table                   [ MAX_SPECIES ];
-extern const    struct rank                     rank_table                      [ MAX_RANK ];
-extern const    struct social_type              social_table                    [ ];
-extern const    struct pattern_points           pattern_list                    [ MAX_PATTERN ];
-extern const    struct soar_points              soar_list                       [ MAX_SOAR ];
-extern const    struct HERB                     herb_table                      [ MAX_HERBS ];
-extern const    struct random_types             random_list                     [ MAX_RANDOMS ];
-extern const    struct song                     song_table                      [ MAX_SONGS ];
-extern char *   const  color_list                                               [ MAX_COLOR_LIST ];
-extern char *   const  clan_title               [ MAX_CLAN ]                    [ MAX_CLAN_LEVEL + 1 ];
-extern const    struct race_struct              race_table                      [ MAX_RACE ];
-extern const    struct level_struct             level_table                     [ MAX_LEVEL - 6 ];
-extern const    struct level_struct             old_level_table                 [ MAX_LEVEL - 6 ];
-extern const    struct soar_struct              soar_access                     [ MAX_SOAR ];
-extern const    struct loc_wear_struct          form_wear_table                 [ MAX_FORM ];
-extern const    struct wear_struct              wear_table                      [ MAX_CLASS + MAX_SUB_CLASS - 1 ];
-extern const    struct loc_wear_struct          loc_wear_table                  [ MAX_CLASS + MAX_SUB_CLASS - 1 ];
+extern const    struct str_app_type             str_app                 [ MAX_STAT ];
+extern const    struct dex_app_type             dex_app                 [ MAX_STAT ];
+extern const    struct con_app_type             con_app                 [ MAX_STAT ];
+extern const    struct int_app_type             int_app                 [ MAX_STAT ];
+extern const    struct class_type               class_table             [ MAX_CLASS ];
+extern const    struct sub_class_type           sub_class_table         [ MAX_SUB_CLASS ];
+extern const    struct dpr                      dprs                    [ MAX_DPR ];
+extern const    struct clan_items               clan_item_list          [ MAX_CLAN ];
+extern const    struct clan_type                clan_table              [ MAX_CLAN ];
+extern const    struct color_data               color_table             [ ];
+extern char *   const  channel_names                                       [ MAX_CHANNELS ];
+extern const    struct color_data_8bit          color_table_8bit        [ ];
+extern const    struct cmd_type                 cmd_table               [ ];
+extern const    struct liq_type                 liq_table               [ LIQ_MAX  ];
+extern const    struct blueprint_type           blueprint_list          [ BLUEPRINTS_MAX ];
+extern const    struct set_type                 set_list                [ MAX_SETS ];
+/* extern const    struct raw_mats_data            raw_mats_table          [ RAW_MATS_MAX ]; */
+extern const    struct skill_type               skill_table             [ MAX_SKILL ];
+extern const    struct mob_type                 mob_table               [ MAX_MOB ];
+extern const    struct species_type             species_table           [ MAX_SPECIES ];
+extern const    struct rank                     rank_table              [ MAX_RANK ];
+extern const    struct social_type              social_table            [ ];
+extern const    struct pattern_points           pattern_list            [ MAX_PATTERN ];
+extern const    struct soar_points              soar_list               [ MAX_SOAR ];
+extern const    struct HERB                     herb_table              [ MAX_HERBS ];
+extern const    struct random_types             random_list             [ MAX_RANDOMS ];
+extern const    struct song                     song_table              [ MAX_SONGS ];
+extern char *   const  color_list                                       [ MAX_COLOR_LIST ];
+extern char *   const  clan_title               [ MAX_CLAN ]            [ MAX_CLAN_LEVEL + 1 ];
+extern const    struct race_struct              race_table              [ MAX_RACE ];
+extern const    struct level_struct             level_table             [ MAX_LEVEL - 6 ];
+extern const    struct level_struct             old_level_table         [ MAX_LEVEL - 6 ];
+extern const    struct soar_struct              soar_access             [ MAX_SOAR ];
+extern const    struct loc_wear_struct          form_wear_table         [ MAX_FORM ];
+extern const    struct wear_struct              wear_table              [ MAX_CLASS + MAX_SUB_CLASS - 1 ];
+extern const    struct loc_wear_struct          loc_wear_table          [ MAX_CLASS + MAX_SUB_CLASS - 1 ];
 
-extern struct           pre_req_struct          pre_req_table                   [ MAX_PRE_REQ ];
-extern struct           spell_group_struct      spell_group_table               [ MAX_SPELL_GROUP ];
-extern const int        *spell_groups                                           [ MAX_GROUPS ];
-extern struct           form_skill_struct       form_skill_table                [ MAX_FORM_SKILL ];
-extern struct           vampire_gag             vampire_gag_table               [ MAX_VAMPIRE_GAG ];
+extern struct          pre_req_struct           pre_req_table           [ MAX_PRE_REQ ];
+extern struct          spell_group_struct       spell_group_table       [ MAX_SPELL_GROUP ];
+extern const int       *spell_groups                                    [ MAX_GROUPS ];
+extern struct          form_skill_struct        form_skill_table        [ MAX_FORM_SKILL ];
+extern struct          vampire_gag              vampire_gag_table       [ MAX_VAMPIRE_GAG ];
 
 
 
@@ -4824,7 +4824,7 @@ RID *   get_room_index                  args( ( int vnum ) );
 OSID *  get_objset_index                args( ( int vnum ) );
 void    obj_strings                     args( ( OBJ_DATA *obj ) );
 char    fread_letter                    args( ( FILE *fp ) );
-int     fread_number	                args( ( FILE *fp, int *status ) );
+int     fread_number                    args( ( FILE *fp, int *status ) );
 unsigned long int fread_number64        args( ( FILE *fp, int *status ) );
 char *  fread_string                    args( ( FILE *fp ) );
 void    fread_to_eol                    args( ( FILE *fp ) );
@@ -4987,7 +4987,7 @@ bool    longstring                      args( ( CHAR_DATA *ch, char *argument ) 
 bool    authorized                      args( ( CHAR_DATA *ch, int gsn ) );
 void    end_of_game                     args( ( void ) );
 int     form_skill_allow                args( ( CHAR_DATA *ch, int sn ) );
-int	advatoi		                args( ( const char *s ) );
+int    advatoi                          args( ( const char *s ) );
 void    generate_stats                        ( CHAR_DATA *ch );
 int     mana_cost                             ( CHAR_DATA *ch, int sn );
 int     get_phys_penalty                      ( CHAR_DATA *ch );
@@ -5068,7 +5068,7 @@ void load_infamy_table                       ( );
 void save_infamy_table                       ( );
 
 /* gamble.c */
-GF *    game_lookup                    args( ( const char *name ) );
+GF * game_lookup                       args( ( const char *name ) );
 
 /* special.c */
 SF * spec_lookup                       args( ( const char *name ) );

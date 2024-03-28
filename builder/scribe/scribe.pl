@@ -1434,11 +1434,19 @@ foreach (0 .. $#addmobs) {
             print "$err $msg\n";
             $addmob_errors{$mob{'line'}}++;
         }
-        if (!exists $obj_vnums{$mob{$wear_loc[$pos]}}) {
-            print "$err field '$wear_loc[$pos]': object with vnum "
-                    . "'$mob{$wear_loc[$pos]}' not defined\n";
-            $addmob_errors{$mob{'line'}}++;
+
+        #if (!exists $obj_vnums{$mob{$wear_loc[$pos]}}) {
+        #    print "$err field '$wear_loc[$pos]': object with vnum "
+        #            . "'$mob{$wear_loc[$pos]}' not defined\n";
+        #    $addmob_errors{$mob{'line'}}++;
+        #}
+
+        # So equipping objects from other loaded areas is tolerated
+        if (!$obj_names{$mob{$wear_loc[$pos]}})
+        {
+            $obj_names{$mob{$wear_loc[$pos]}} = "[out-of-area item]";
         }
+
         push @eq, "E 0 " . ($mob{$wear_loc[$pos]} + $area{'bv'})
                 . " 0 $pos\t    equip $obj_names{$mob{$wear_loc[$pos]}}"
                 . " ($wear_loc[$pos])\n"
