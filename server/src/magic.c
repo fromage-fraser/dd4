@@ -4421,7 +4421,11 @@ void spell_poison( int sn, int level, CHAR_DATA *ch, void *vo )
 
 }
 
-
+/*
+ * Similar to trap, abyssal hand  etc, but short-lived and useable during combat.
+ * Mostly intended for mob use.
+ * --Owl 29/3/24
+ */
 void spell_paralysis( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA  *victim = (CHAR_DATA *) vo;
@@ -4445,7 +4449,7 @@ void spell_paralysis( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( ch != victim )
                 send_to_char( "You successfully paralyse your victim.\n\r", ch );
 
-        send_to_char( "You cannot move, you are paralysed!\n\r", victim );
+        send_to_char( "<14>You cannot move, you are paralysed!<0>\n\r", victim );
 }
 
 

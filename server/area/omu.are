@@ -25,10 +25,10 @@ It seems hungry, but particular.  Let's hope you're not on the menu.
 4|8|32|128|512 0
 0 0 1
 >fight_prog 15~
-if size ($n) == 0
-    mpecho {WA giant sea python thinks you'll make a tasty snack!{x
-    swallow $n
-endif
+    if size ($n) == 0
+        mpecho {WA giant sea python thinks you'll make a tasty snack!{x
+        swallow $n
+    endif
 ~
 |
 
@@ -47,10 +47,10 @@ It seems hungry, but particular.  Let's hope you're not on the menu.
 4|8|32|128|512 0
 0 0 2
 >fight_prog 15~
-if size ($n) == 0
-    mpecho {WA giant sea python thinks you'll make a tasty snack!{x
-    swallow $n
-endif
+    if size ($n) == 0
+        mpecho {WA giant sea python thinks you'll make a tasty snack!{x
+        swallow $n
+    endif
 ~
 |
 
@@ -84,11 +84,11 @@ before her, ready to clutch, stab, and strangle.
 0 0
 0 0 2
 >all_greet_prog 15~
-if isgood ($n)
-    yell I cannot endure your wretched goodness!
-    c paralysis $n
-    backstab $n
-endif
+    if isgood ($n)
+        yell I cannot endure your wretched goodness!
+        c paralysis $n
+        backstab $n
+    endif
 ~
 >fight_prog 15~
     yell Fear me, fleshling filth!
@@ -315,6 +315,125 @@ This looks like an ixzan of the rare 'vampiric' subtype.
 66 0 0 0d0+0 0d0+0
 4|8|32|512 0
 0 0 2
+
+#28413
+water naga~
+a water naga~
+<80>A large, snakelike water naga regards you with curiosity.<0>
+~
+The water naga moves with a grace that belies his considerable size. His long,
+serpent-like body undulates through the water, scales shimmering with subtle
+hues of blue and green. The naga's face, surprisingly humanlike in his aspect,
+manifests a gaze that is both penetrating and calm.
+~
+64 4|8|16|512|8192|67108864|1073741824 -75 S
+67 0 0 0d0+0 0d0+0
+4|8|512 0
+0 0 1
+>fight_prog 5~
+    c 'dispel magic' $n
+~
+>fight_prog 5~
+    c 'blindness' $n
+~
+>fight_prog 5~
+    c 'curse' $n
+~
+>fight_prog 5~
+    c 'slow' $n
+~
+>fight_prog 5~
+    c 'acid blast' $n
+~
+|
+
+#28414
+water naga~
+a water naga~
+<82>A snakelike water naga glides soundlessly through the murky water.<0>
+~
+The water naga moves with a grace that belies her considerable size. Her long,
+serpent-like body undulates through the water, scales shimmering with subtle
+hues of blue and green. The naga's face, surprisingly humanlike in her aspect,
+manifests a gaze that is both penetrating and calm.
+~
+64 4|8|16|512|8192|32768|67108864|1073741824 -83 S
+67 0 0 0d0+0 0d0+0
+4|8|512 0
+0 0 2
+>fight_prog 5~
+    c 'lightning bolt' $n
+~
+>fight_prog 5~
+    c 'feeblemind' $n
+~
+>fight_prog 5~
+    c 'curse' $n
+~
+>fight_prog 5~
+    c 'chill touch' $n
+~
+>fight_prog 5~
+    c 'paralysis' $n
+~
+|
+
+#28415
+uchuulon chuul~
+an uchuulon~
+<128>What looks like a translucent chuul covered in mucus lurks here.<0>
+~
+Uchuulons resembled ordinary chuuls in size and shape: a hideous combination of
+crustacean, insect, and serpent some 8 ft long and weighing approximately 290 kg,
+with a mass of tentacles in front of the mouth, two large claws, and a fanned
+tail. They differ in that their carapace is softer, translucent, and coated in a
+thick mucus.
+
+Ambush predators, they tend to hide in mud and darkness and lunge at their prey
+when the opportunity arises.
+~
+2|64 2|8|32|512|65536|8388608|67108864 -837 S
+68 0 0 0d0+0 0d0+0
+32|512 0
+0 0 1
+>all_greet_prog 20~
+    murder $n
+~
+>fight_prog 10~
+    mpechoat $n <171>The uchuulon attempts to grab you with his hideous tentacles!<0>
+    c 'paralysis' $n
+~
+|
+
+#28416
+uchuulon chuul~
+an uchuulon~
+<128>What looks like a translucent chuul covered in mucus lurks here.<0>
+~
+Uchuulons resembled ordinary chuuls in size and shape: a hideous combination of
+crustacean, insect, and serpent some 8 ft long and weighing approximately 290 kg,
+with a mass of tentacles in front of the mouth, two large claws, and a fanned
+tail. They differ in that their carapace is softer, translucent, and coated in a
+thick mucus.
+
+Ambush predators, they tend to hide in mud and darkness and lunge at their prey
+when the opportunity arises.
+~
+2|64 2|8|32|512|65536|8388608|67108864 -891 S
+68 0 0 0d0+0 0d0+0
+32|512 0
+0 0 2
+>all_greet_prog 20~
+    murder $n
+~
+>fight_prog 5~
+    mpechoat $n <171>The uchuulon attempts to grab you with her hideous tentacles!<0>
+    c 'paralysis' $n
+~
+>fight_prog 5~
+    headbutt
+~
+|
 #0
 
 #OBJECTS
@@ -494,6 +613,42 @@ The dark, squishy bladder of an undersea fiend lies here.~
 66~ combat mind~ stabilise~ remove curse~
 8 0 0
 
+#28414
+kopru tattoo~
+a kopru tattoo~
+A tattoo cut from the flesh of some monstrous sea creature lies here.~
+~
+9 16|64|274877906944 1|256
+~ ~ ~ ~
+1 0 0
+E
+kopru tattoo~
+The tattoo, meticulously cut from the skin of a kopru, is more than a tattoo;
+it's a talisman, believed to bestow upon its bearer some of the kopru's feared
+combat ability.
+~
+A
+18 6
+A
+19 6
+
+#28415
+egg naga~
+a water naga's egg~
+A large, white egg lies here.~
+~
+26 1 1|16384
+65~ heal~ dispel magic~ ~
+7 0 0
+
+#28416
+transparent mucus blob~
+<181>a handful of transparent mucus<0>~
+A blob of transparent mucus has been left here.~
+~
+10 32|64 1|16384
+65~ dispel magic~ ~ ~
+2 0 0
 #0
 
 #ROOMS
@@ -4090,17 +4245,17 @@ D 0 28479 3 2                   lock west in Omu / Yrythelmyn Northern Bridge, L
 D 0 28779 3 2                   lock west in Omu / Yrythelmyn Northern Bridge, Upper
 D 0 28480 1 1                   close east in Omu / Yrythelmyn Northern Bridge, Lower
 D 0 28780 1 1                   close east in Omu / Yrythelmyn Northern Bridge, Upper
-M 0 28400 6 28403               add a giant sea python to Omu / Yrythelmyn Canal, Lower
-M 0 28400 6 28711               add a giant sea python to Omu / Yrythelmyn Canal, Upper
+M 0 28400 3 28403               add a giant sea python to Omu / Yrythelmyn Canal, Lower
+M 0 28400 3 28711               add a giant sea python to Omu / Yrythelmyn Canal, Upper
 E 0 28400 0 16                      equip a large pair of fangs (wield)
-M 0 28400 6 28403               add a giant sea python to Omu / Yrythelmyn Canal, Lower
+M 0 28400 3 28403               add a giant sea python to Omu / Yrythelmyn Canal, Lower
 E 0 28400 0 16                      equip a large pair of fangs (wield)
-M 0 28401 6 28742               add a giant sea python to Omu / Yrythelmyn Canal Junction, Upper
+M 0 28401 3 28742               add a giant sea python to Omu / Yrythelmyn Canal Junction, Upper
 E 0 28400 0 16                      equip a large pair of fangs (wield)
-M 0 28401 6 28468               add a giant sea python to Omu / Yrythelmyn Canal, Lower
+M 0 28401 3 28468               add a giant sea python to Omu / Yrythelmyn Canal, Lower
 E 0 28400 0 16                      equip a large pair of fangs (wield)
 G 0 28401 0                         carry a large leathery egg
-M 0 28401 6 28799               add a giant sea python to Omu / Yrythelmyn Canal, Upper
+M 0 28401 3 28799               add a giant sea python to Omu / Yrythelmyn Canal, Upper
 E 0 28400 0 16                      equip a large pair of fangs (wield)
 G 0 28401 0                         carry a large leathery egg
 M 0 28402 1 28440               add a plesiosaurus to Yrythelmyn Canal, Lower
@@ -4125,20 +4280,21 @@ M 0 28405 2 28805               add a female Kua-toa to Omu / Yrythelmyn Canal, 
 E 0 28404 0 5                       equip slimy hide (body)
 E 0 28405 0 11                      equip a large turtle shell (shield)
 E 0 28406 0 16                      equip a crude spear (wield)
-M 0 28406 2 28791               add peaceful to Omu / Yrythelmyn Canal, Upper
+M 0 28406 1 28791               add peaceful to Omu / Yrythelmyn Canal, Upper
 E 0 28407 0 5                       equip a thick leather jerkin (body)
 E 0 28406 0 16                      equip a crude spear (wield)
 G 0 28411 0                         carry a bag of coins
-M 0 28407 2 28741               add a bullywug to Yrythelmyn Canal, Upper
+M 0 28407 1 28741               add a bullywug to Yrythelmyn Canal, Upper
 E 0 28407 0 5                       equip a thick leather jerkin (body)
 E 0 28406 0 16                      equip a crude spear (wield)
 G 0 27282 0                         carry [out-of-area item]
-M 0 28408 2 28727               add a bullywug to Omu / Yrythelmyn Canal, Upper
+M 0 28408 1 28727               add a bullywug to Omu / Yrythelmyn Canal, Upper
 E 0 28407 0 5                       equip a thick leather jerkin (body)
 E 0 28406 0 16                      equip a crude spear (wield)
 G 0 27283 0                         carry [out-of-area item]
 M 0 28409 1 28442               add a kopru to Omu / Yrythelmyn Canal Junction, Lower
 E 0 28408 0 5                       equip oily hide (body)
+E 0 28414 0 10                      equip a kopru tattoo (arms)
 E 0 28410 0 16                      equip a pair of sharp fangs (wield)
 E 0 28409 0 18                      equip a long tail with a barbed tip (dual)
 M 0 28410 1 28467               add a kopru to Omu / Yrythelmyn Canal, Lower
@@ -4151,6 +4307,18 @@ E 0 28410 0 16                      equip a pair of sharp fangs (wield)
 G 0 28413 0                         carry a bladder of ixzan ichor
 M 0 28412 1 28747               add an ixzan to Omu Canal, Upper
 E 0 28410 0 16                      equip a pair of sharp fangs (wield)
+M 0 28413 1 28500               add a water naga to Omu / Yrythelmyn Canal, Lower
+E 0 28410 0 16                      equip a pair of sharp fangs (wield)
+M 0 28414 1 28405               add a water naga to Omu / Yrythelmyn Canal, Lower
+E 0 28410 0 16                      equip a pair of sharp fangs (wield)
+G 0 28415 0                         carry a water naga's egg
+G 0 28415 0                         carry a water naga's egg
+M 0 28415 1 28402               add an uchuulon to Omu / Yrythelmyn Canal, Lower
+E 0 27395 0 16                      equip [out-of-area item] (wield)
+G 0 28416 0                         carry <181>a handful of transparent mucus<0>
+M 0 28416 1 28506               add an uchuulon to Omu / Yrythelmyn Canal, Lower
+E 0 27395 0 16                      equip [out-of-area item] (wield)
+G 0 28416 0                         carry <181>a handful of transparent mucus<0>
 S
 
 #SPECIALS
@@ -4158,6 +4326,10 @@ M 28402 spec_small_whale        a plesiosaurus
 M 28410 spec_cast_mage          a kopru
 M 28411 spec_cast_archmage      an ixzan
 M 28412 spec_cast_priestess     an ixzan
+M 28413 spec_poison             a water naga
+M 28414 spec_poison             a water naga
+M 28415 spec_poison             an uchuulon
+M 28416 spec_poison             an uchuulon
 S
 
 #$

@@ -2545,10 +2545,10 @@ bf  no_arms no_legs no_speech huge has_tail
 act stay_area
 aff sneak infrared deter swim
 mp	fight_prog 15
-if size ($n) == 0
-    mpecho {WA giant sea python thinks you'll make a tasty snack!{x
-    swallow $n
-endif
+    if size ($n) == 0
+        mpecho {WA giant sea python thinks you'll make a tasty snack!{x
+        swallow $n
+    endif
 ~
 
 $mob
@@ -2569,10 +2569,10 @@ bf  no_arms no_legs no_speech huge has_tail
 act stay_area
 aff sneak infrared deter swim
 mp	fight_prog 15
-if size ($n) == 0
-    mpecho {WA giant sea python thinks you'll make a tasty snack!{x
-    swallow $n
-endif
+    if size ($n) == 0
+        mpecho {WA giant sea python thinks you'll make a tasty snack!{x
+        swallow $n
+    endif
 ~
 
 $mob
@@ -2612,11 +2612,11 @@ bf  none
 act stay_area regenerator
 aff swim infrared sneak det_good det_magic det_evil det_invis det_sneak deter
 mp	all_greet_prog 15
-if isgood ($n)
-    yell I cannot endure your wretched goodness!
-    c paralysis $n
-    backstab $n
-endif
+    if isgood ($n)
+        yell I cannot endure your wretched goodness!
+        c paralysis $n
+        backstab $n
+    endif
 ~
 mp	fight_prog 15
     yell Fear me, fleshling filth!
@@ -2626,14 +2626,14 @@ mp	fight_prog 15
     say Enjoy this, my pretty!
     kick
 ~
-mp fight_prog 5
+mp  fight_prog 5
     say DESIST!
     c paralysis $n
 ~
-mp rand_prog 1
+mp  rand_prog 1
     c invis
 ~
-mp rand_prog 1
+mp  rand_prog 1
     vis
 ~
 
@@ -2657,15 +2657,15 @@ sx  male
 bf  none
 act stay_area
 aff swim infrared det_invis
-mp fight_prog 5
+mp  fight_prog 5
     say Blibdoolpoolp judges us all!
     c 'wrath of god'
 ~
-mp fight_prog 10
+mp  fight_prog 10
     say Demogorgon protect me!
     c 'holy word' $n
 ~
-mp fight_prog 10
+mp  fight_prog 10
     say Blibdoolpool save me from this unbeliever!
     c 'flamestrike' $n
 ~
@@ -2690,15 +2690,15 @@ sx  female
 bf  none
 act stay_area
 aff swim infrared det_invis
-mp fight_prog 5
+mp  fight_prog 5
     Visit your judgment upon this villain, great BOOOAL!
     c 'wrath of god'
 ~
-mp fight_prog 10
+mp  fight_prog 10
     say Smite the infidel!
     c 'holy word' $n
 ~
-mp fight_prog 10
+mp  fight_prog 10
     say BOOOAL deliver me from this unbeliever!
     c 'flamestrike' $n
 ~
@@ -2719,13 +2719,13 @@ sx  male
 bf  none
 act stay_area
 aff swim hidden battle_aura
-mp fight_prog 10
+mp  fight_prog 10
     headbutt
 ~
-mp fight_prog 10
+mp  fight_prog 10
     kick
 ~
-mp rand_prog 5
+mp  rand_prog 5
     cham
 ~
 
@@ -2746,13 +2746,13 @@ sx  female
 bf  none
 act stay_area
 aff swim hidden battle_aura
-mp fight_prog 5
+mp  fight_prog 5
     headbutt
 ~
-mp fight_prog 15
+mp  fight_prog 15
     kick
 ~
-mp rand_prog 5
+mp  rand_prog 5
     cham
 ~
 
@@ -2773,12 +2773,12 @@ sx  male
 bf  no_speech
 act stay_area
 aff swim hidden battle_aura
-mp fight_prog 15
+mp  fight_prog 15
     mpecho {MA bullywug croaks deeply, belching out a stream of putrid gas!{x
     mpasound {M::croOOOoOOOOoOOAAAaak::{x
     c 'gas breath' $n
 ~
-mp rand_prog 5
+mp  rand_prog 5
     cham
 ~
 
@@ -2799,10 +2799,10 @@ sx  male
 bf  has_tail no_legs no_speech
 act stay_area
 aff swim infrared
-mp fight_prog 10
+mp  fight_prog 10
     c 'ultrablast' $n
 ~
-mp fight_prog 1
+mp  fight_prog 1
     c 'synaptic blast' $n
 ~
 
@@ -2823,8 +2823,8 @@ sx  female
 bf  has_tail no_legs no_speech
 act stay_area
 aff swim infrared
-sp spec_cast_mage
-mp fight_prog 1
+sp  spec_cast_mage
+mp  fight_prog 1
     c 'ultrablast' $n
 ~
 
@@ -2840,12 +2840,12 @@ This looks like an ixzan of the rare 'vampiric' subtype.
 ~
 vn  28411
 lv  66
-al -890
-sx male
+al  -890
+sx  male
 bf  has_tail no_legs no_arms no_speech
 act stay_area mount
 aff swim infrared
-sp spec_cast_archmage
+sp  spec_cast_archmage
 
 $mob
 nm ixzan manta ray fanged
@@ -2859,12 +2859,144 @@ This looks like an ixzan of the rare 'vampiric' subtype.
 ~
 vn  28412
 lv  66
-al -899
-sx female
+al  -899
+sx  female
 bf  has_tail no_legs no_arms no_speech
 act stay_area mount
 aff swim infrared
-sp spec_cast_priestess
+sp  spec_cast_priestess
+
+$mob
+nm water naga
+sh a water naga
+lo <80>A large, snakelike water naga regards you with curiosity.<0>
+de
+The water naga moves with a grace that belies his considerable size. His long,
+serpent-like body undulates through the water, scales shimmering with subtle
+hues of blue and green. The naga's face, surprisingly humanlike in his aspect,
+manifests a gaze that is both penetrating and calm.
+~
+vn  28413
+lv  67
+al  -75
+sx  male
+bf  has_tail no_legs no_arms
+act stay_area
+aff swim infrared det_evil det_invis det_magic det_good protection
+sp  spec_poison
+mp  fight_prog 5
+    c 'dispel magic' $n
+~
+mp  fight_prog 5
+    c 'blindness' $n
+~
+mp  fight_prog 5
+    c 'curse' $n
+~
+mp  fight_prog 5
+    c 'slow' $n
+~
+mp  fight_prog 5
+    c 'acid blast' $n
+~
+
+$mob
+nm water naga
+sh a water naga
+lo <82>A snakelike water naga glides soundlessly through the murky water.<0>
+de
+The water naga moves with a grace that belies her considerable size. Her long,
+serpent-like body undulates through the water, scales shimmering with subtle
+hues of blue and green. The naga's face, surprisingly humanlike in her aspect,
+manifests a gaze that is both penetrating and calm.
+~
+vn  28414
+lv  67
+al  -83
+sx  female
+bf  has_tail no_legs no_arms
+act stay_area
+aff swim infrared det_evil det_invis det_magic det_good protection sneak
+sp  spec_poison
+mp  fight_prog 5
+    c 'lightning bolt' $n
+~
+mp  fight_prog 5
+    c 'feeblemind' $n
+~
+mp  fight_prog 5
+    c 'curse' $n
+~
+mp  fight_prog 5
+    c 'chill touch' $n
+~
+mp  fight_prog 5
+    c 'paralysis' $n
+~
+
+$mob
+nm uchuulon chuul
+sh an uchuulon
+lo <128>What looks like a translucent chuul covered in mucus lurks here.<0>
+de
+Uchuulons resembled ordinary chuuls in size and shape: a hideous combination of
+crustacean, insect, and serpent some 8 ft long and weighing approximately 290 kg,
+with a mass of tentacles in front of the mouth, two large claws, and a fanned
+tail. They differ in that their carapace is softer, translucent, and coated in a
+thick mucus.
+
+Ambush predators, they tend to hide in mud and darkness and lunge at their prey
+when the opportunity arises.
+~
+vn  28415
+lv  68
+al  -837
+sx  male
+bf  has_tail no_speech
+act stay_area sentinel
+aff swim infrared invis hide det_hidden det_sneak det_invis
+sp  spec_poison
+mp all_greet_prog 20
+    murder $n
+~
+mp  fight_prog 10
+    mpechoat $n <171>The uchuulon tries to grab you with his hideous tentacles!<0>
+    c 'paralysis' $n
+~
+
+$mob
+nm uchuulon chuul
+sh an uchuulon
+lo <128>What looks like a translucent chuul covered in mucus lurks here.<0>
+de
+Uchuulons resembled ordinary chuuls in size and shape: a hideous combination of
+crustacean, insect, and serpent some 8 ft long and weighing approximately 290 kg,
+with a mass of tentacles in front of the mouth, two large claws, and a fanned
+tail. They differ in that their carapace is softer, translucent, and coated in a
+thick mucus.
+
+Ambush predators, they tend to hide in mud and darkness and lunge at their prey
+when the opportunity arises.
+~
+vn  28416
+lv  68
+al  -891
+sx  female
+bf  has_tail no_speech
+act stay_area sentinel
+aff swim infrared invis hide det_hidden det_sneak det_invis
+sp  spec_poison
+mp all_greet_prog 20
+    murder $n
+~
+mp  fight_prog 5
+    mpechoat $n <171>The uchuulon tries to grab you with her hideous tentacles!<0>
+    c 'paralysis' $n
+~
+
+mp  fight_prog 5
+    headbutt
+~
 
 # OBJECTS
 
@@ -3052,6 +3184,47 @@ wg  8
 ex  evil magic
 we  take hold
 
+$obj
+nm  kopru tattoo
+sh  a kopru tattoo
+lo  A tattoo cut from the flesh of some monstrous sea creature lies here.
+vn  28414
+ty  armour
+wg  1
+ex  evil magic steady
+we  take arms
+ed  kopru tattoo
+The tattoo, meticulously cut from the skin of a kopru, is more than a tattoo;
+it's a talisman, believed to bestow upon its bearer some of the kopru's feared
+combat ability.
+~
+ap  hitroll 6
+ap  damroll 6
+
+$obj
+nm  egg naga
+sh  a water naga's egg
+lo  A large, white egg lies here.
+vn  28415
+ty  pill
+v0  65
+v1  heal
+v2  dispel magic
+wg  7
+ex  glow
+we  take hold
+
+$obj
+nm  transparent mucus blob
+sh  <181>a handful of transparent mucus<0>
+lo  A blob of transparent mucus has been left here.
+vn  28416
+ty  potion
+v0  65
+v1  dispel magic
+wg  2
+ex  magic invis
+we  take hold
 
 # MOB RESETS
 
@@ -3059,34 +3232,34 @@ we  take hold
 $addmob
 mb      28400
 rm      28403
-num     6
+num     3
 
 # giant sea python - male
 $addmob
 mb      28400
 rm      28711
-num     6
+num     3
 wield   28400
 
 # giant sea python - male
 $addmob
 mb      28400
 rm      28403
-num     6
+num     3
 wield   28400
 
 # giant sea python - female
 $addmob
 mb      28401
 rm      28742
-num     6
+num     3
 wield   28400
 
 # giant sea python - female
 $addmob
 mb      28401
 rm      28468
-num     6
+num     3
 wield   28400
 inv     28401
 
@@ -3094,7 +3267,7 @@ inv     28401
 $addmob
 mb      28401
 rm      28799
-num     6
+num     3
 wield   28400
 inv     28401
 
@@ -3159,7 +3332,7 @@ body    28404
 $addmob
 mb      28406
 rm      28791
-num     2
+num     1
 wield   28406
 body    28407
 inv     28411
@@ -3168,7 +3341,7 @@ inv     28411
 $addmob
 mb      28407
 rm      28741
-num     2
+num     1
 wield   28406
 body    28407
 inv     27282
@@ -3177,7 +3350,7 @@ inv     27282
 $addmob
 mb      28408
 rm      28727
-num     2
+num     1
 wield   28406
 body    28407
 inv     27283
@@ -3190,6 +3363,7 @@ num     1
 wield   28410
 dual    28409
 body    28408
+arms    28414
 
 # a kopru (female)
 $addmob
@@ -3215,5 +3389,37 @@ mb      28412
 rm      28747
 num     1
 wield   28410
+
+# a water naga (male)
+$addmob
+mb      28413
+rm      28500
+num     1
+wield   28410
+
+# a water naga (female)
+$addmob
+mb      28414
+rm      28405
+num     1
+wield   28410
+inv     28415
+inv     28415
+
+#an uchuulon (male)
+$addmob
+mb      28415
+rm      28402
+num     1
+wield   27395
+inv     28416
+
+#an uchuulon (female)
+$addmob
+mb      28416
+rm      28506
+num     1
+wield   27395
+inv     28416
 
 # OBJECT RESETS

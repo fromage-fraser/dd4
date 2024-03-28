@@ -3118,7 +3118,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "paralysis", &gsn_paralysis,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, 4096|16384,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 4096|16384,
                 spell_paralysis, 10, 12,
                 "", "<15>You can move again!<0>"
         },
