@@ -766,6 +766,7 @@ subclass($*)  == integer    Is the subclass of $* equal to integer
 race($*)      == integer    Is the race of $* equal to integer
 clan($*)      == integer    Is the clan of $* equal to integer
 carrying($*)  == integer    Is $* carrying item with vnum integer
+objroom($*)   == integer    Is there an object in $*'s room with vnum integer
 goldamt($*)   == integer    Does $* have a gold total equal to integer
 objtype($*)   == integer    Is the type of $* equal to integer (armor,boat,etc)
 objval#($*)   == integer    Is $*->value[#] equal to integer (# from 0-3)

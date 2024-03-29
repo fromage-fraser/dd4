@@ -11,7 +11,7 @@
 
 use strict;
 use warnings;
-print "DD4 Area File Scribe version 0.5\n";
+print "DD4 Area File Scribe version 0.6\n";
 
 
 #############################################################################

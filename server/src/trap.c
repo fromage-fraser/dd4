@@ -744,30 +744,30 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
 
         if (obj->trap_dam == TRAP_DAM_BLUNT) {
                 if (!IS_SET(obj->trap_eff, TRAP_EFF_ROOM) ) {
-                        act("$n sets off a trap on $p and is hit by a blunt object!", ch, obj, NULL, TO_ROOM);
+                        act("$n sets off a trap and is hit by a blunt object!", ch, obj, NULL, TO_ROOM);
                         act("You are hit by a blunt object from $p!", ch, obj, NULL, TO_CHAR);
                 }
                 else {
-                        act("$n sets off a trap on $p and you are hit by a blunt object!", ch, obj, NULL, TO_ROOM);
+                        act("$n sets off a trap and you are hit by a blunt object!", ch, obj, NULL, TO_ROOM);
                         act("You are hit by a blunt object from $p!", ch, obj, NULL, TO_CHAR);
                 }
         }
 
         if (obj->trap_dam == TRAP_DAM_PIERCE) {
                 if (!IS_SET( obj->trap_eff, TRAP_EFF_ROOM) ) {
-                        act("$n sets off a trap on $p and is pierced in the chest!", ch, obj, NULL, TO_ROOM);
-                        act("You set off a trap on $p and are pierced through the chest!", ch, obj, NULL, TO_CHAR);
+                        act("$n sets off a trap and is pierced in the chest!", ch, obj, NULL, TO_ROOM);
+                        act("You set off a trap and are pierced through the chest!", ch, obj, NULL, TO_CHAR);
                 }
                 else {
-                        act("$n sets off a trap on $p and you are hit by a piercing object!", ch, obj, NULL, TO_ROOM);
-                        act("You set off a trap on $p and are pierced through the chest!", ch, obj, NULL, TO_CHAR);
+                        act("$n sets off a trap and you are hit by a piercing object!", ch, obj, NULL, TO_ROOM);
+                        act("You set off a trap and are pierced through the chest!", ch, obj, NULL, TO_CHAR);
                 }
         }
 
         if (obj->trap_dam == TRAP_DAM_SLASH) {
                 if (!IS_SET(obj->trap_eff, TRAP_EFF_ROOM) ) {
-                        act("$n just got slashed by a trap on $p.", ch, obj, NULL, TO_ROOM);
-                        act("You just got slashed by a trap on $p!", ch, obj, NULL, TO_CHAR);
+                        act("$n just got slashed by a trap.", ch, obj, NULL, TO_ROOM);
+                        act("You just got slashed by a trap!", ch, obj, NULL, TO_CHAR);
                 }
                 else {
                         act("$n set off a trap releasing a blade that slashes you!", ch, obj, NULL, TO_ROOM);
