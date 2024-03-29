@@ -2093,6 +2093,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define TRAP_DAM_PIERCE          6
 #define TRAP_DAM_SLASH           7
 #define TRAP_DAM_POISON          8
+#define TRAP_DAM_SNARE           9
 
 #define TRAP_EFF_MOVE            BIT_0   /* trigger on movement */
 #define TRAP_EFF_OBJECT          BIT_1   /* trigger on get or put */

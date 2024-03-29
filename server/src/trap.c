@@ -143,6 +143,9 @@ void do_trapstat(CHAR_DATA *ch, char *argument)
             case TRAP_DAM_POISON:
                 send_to_char("Damage type: {Gpoison{x\n\r", ch );
                 break;
+            case TRAP_DAM_SNARE:
+                send_to_char("Damage type: {Gsnare{x\n\r", ch );
+                break;
         }
 
         if (obj->trap_eff == 0) {
@@ -237,7 +240,7 @@ void do_trapset(CHAR_DATA *ch, char *argument)
                 send_to_char("Field: move, object(get and put), room, open, damage, charge\n\r\n\r", ch);
                 send_to_char("Values: Move> north, south, east, west, up, down, and all.\n\r\n\r", ch);
                 send_to_char("        Damage> sleep, teleport, fire, cold, acid, energy,\n\r", ch);
-                send_to_char("                blunt, pierce, slash.\n\r\n\r", ch);
+                send_to_char("                blunt, pierce, slash, poison, snare.\n\r\n\r", ch);
                 send_to_char("        Object, open, room> no values\n\r", ch);
                 return;
         }
@@ -256,7 +259,7 @@ void do_trapset(CHAR_DATA *ch, char *argument)
                         send_to_char("Field: move, object(get and put), room, open, damage\n\r\n\r", ch);
                         send_to_char("Values: Move> north, south, east, west, up, down, and all.\n\r", ch);
                         send_to_char("        Damage> sleep, teleport, fire, cold, acid, energy,\n\r", ch);
-                        send_to_char("                blunt, pierce, slash.\n\r\n\r", ch);
+                        send_to_char("                blunt, pierce, slash, poison, snare.\n\r\n\r", ch);
                         send_to_char("        Object, open, room> no values\n\r", ch);
                         return;
                 }
@@ -420,6 +423,12 @@ void do_trapset(CHAR_DATA *ch, char *argument)
                 if ( !str_cmp(arg3, "poison") ) {
                         obj->trap_dam = TRAP_DAM_POISON;
                         send_to_char("The trap will now poison its victims!\n\r", ch );
+                        return;
+                }
+
+                if ( !str_cmp(arg3, "snare") ) {
+                        obj->trap_dam = TRAP_DAM_SNARE;
+                        send_to_char("The trap will now ensnare its victims!\n\r", ch );
                         return;
                 }
 
@@ -623,6 +632,44 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                                 if ( IS_AWAKE(wch) ) {
                                         send_to_char( "You are struck by a small dart... your blood begins to burn!\n\r", ch );
                                         act( "$n is struck by a small dart!", ch, NULL, NULL, TO_ROOM );
+                                }
+                        }
+                }
+                break;
+
+            case TRAP_DAM_SNARE:
+                if (!IS_SET(obj->trap_eff, TRAP_EFF_ROOM) ) {
+                        if ( IS_AFFECTED(ch, AFF_SLEEP) )
+                                return;
+
+                        af.type         = gsn_snare;
+                        af.duration     = 6;
+                        af.location     = APPLY_HITROLL;
+                        af.modifier     = -10;
+                        af.bitvector    = AFF_HOLD;
+                        affect_join( ch, &af );
+
+                        if ( IS_AWAKE(ch) ) {
+                                send_to_char( "You are entangled in a snare--you cannot move!\n\r", ch );
+                                act( "$c becomes entangled in a snare!", ch, NULL, NULL, TO_ROOM );
+                        }
+                }
+                else {
+                        for (wch = ch->in_room->people; wch != NULL; wch = wch->next_in_room) {
+
+                                if ( IS_AFFECTED(wch, AFF_HOLD) )
+                                        continue;
+
+                                af.type         = gsn_snare;
+                                af.duration     = 6;
+                                af.location     = APPLY_HITROLL;
+                                af.modifier     = -10;
+                                af.bitvector    = AFF_HOLD;
+                                affect_join( wch, &af );
+
+                                if ( IS_AWAKE(wch) ) {
+                                        send_to_char( "You are entangled in a snare--you cannot move!\n\r", ch );
+                                        act( "$c becomes entangled in a snare!", ch, NULL, NULL, TO_ROOM );
                                 }
                         }
                 }
