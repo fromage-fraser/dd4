@@ -797,6 +797,7 @@ TRAP_DAM_BLUNT           5
 TRAP_DAM_PIERCE          6
 TRAP_DAM_SLASH           7
 TRAP_DAM_POISON          8
+TRAP_DAM_SNARE           9
 
 
 20 in the example item is the number of charges the trap has before it is
@@ -807,9 +808,8 @@ container here, but could be anything depending on what you trap. The '13' must
 be the combined value of bit value flags on containers--because it is consumed
 as a string, 1|4|8 will not work.
 
-The imm commands trapstat, trapremove, traplist, and trapset exist but are not
-in wizhelp and don't have helpfile entries (to be implemented).  They do what
-they look like they should.
+Imm commands trapstat, trapremove, traplist, and trapset are in wizhelp and have
+helpfile entries with more detail. They do what they sound like they should.
 
 
 --- Meaning of Value Numbers by Item Type

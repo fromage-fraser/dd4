@@ -459,6 +459,7 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 
 {W March 2024{x
 -New area: Omu Canals, first area of new grung sector
+-new trap type "snare" added
 -shoot skill available to mobs with bows
 -Mobprog triggers added to check char size and if an object is in the room
 -areas.txt, mobprogram.txt, scribe.pl, and scribe.docx updated
