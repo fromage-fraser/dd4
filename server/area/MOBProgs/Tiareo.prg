@@ -157,6 +157,46 @@
         endif
         endif
 ~
+>speech_prog nine 9~
+        if level($n) < 50
+                mpecho {WReaver Tiareo says 'I'm sorry, that mission is too dangerous for someone of your limited experience.'{x
+        break
+        else
+        if level($n) > 70
+                mpecho {WReaver Tiareo says 'You're far too experienced to undertake that mission.'{x
+        break
+        else
+                mpecho {W'The son of one of our senior reavers set off some weeks ago to explore the'{x
+                mpecho {W'northwest reaches of the canal network, near Omu.  There has been no word from'{x
+                mpecho {W'him in that time, and his father is concerned for his safety.  Additionally,'{x
+                mpecho {W'he has taken with him a family heirloom of considerable sentimental value.'{x
+                mpecho {W'Try to discover his fate, and bring back both the son and the artefact if at'{x
+                mpecho {W'all possible.'{x
+        endif
+        endif
+~
+
+>give_prog ornate silver platter~
+        if level($n) > 70
+                mpecho {WReaver Tiareo says 'That mission was for someone less experienced.'{x
+                give platter $n
+        break
+        else
+        if number($o) == 28426
+                mpjunk platter
+                mpecho {WReaver Tiareo sighs. 'A bitter end, but at least his father has closure.'{x
+                mpoload 27631 70
+                give crystal $n
+                mpecho {WReaver Tiareo says 'Please accept this small token of his father's gratitude.'{x
+        break
+        else
+                mpecho $I examines $O closely.
+                mpecho {WReaver Tiareo says 'A cheap forgery, I'm afraid.  Commiserations, $n.'{x
+                give platter $n
+        endif
+        endif
+~
+
 >give_prog spongeweed tobacco~
         if level($n) > 70
                 mpecho {WReaver Tiareo says 'That mission was for someone less experienced.'{x

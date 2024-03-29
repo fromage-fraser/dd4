@@ -4086,6 +4086,73 @@ An ornate token.  From its inscription you gather that if the Prince's canton
 is open at all, then this token will allow the bearer entrance into the Prince's
 palace, which lies within it.
 ~
+
+#27629
+map Omu canal lower level~
+a map of the Omu canal - lower level~
+A map of the Omu canal's lower level lies here.~
+~
+2 0 1|16384
+0~ ~ ~ ~
+1 0 50
+E
+map Omu canal lower level~
+You examine a map of the Omu canal's lower level...
+
+          {W[ ][{G*{x]{W
+          [ ][ ]
+          [ ][ ]
+         -{C[ ][ ]{W-
+          [ ][ ]
+          [ ][ ]       |
+    [ ][ ][ ][ ][ ][ ]{C[ ]{W[ ]
+          [ ][ ]       |
+          [ ][ ]
+         -{C[ ][ ]{W-
+          [ ][ ]
+          [ ][ ]
+          [{G*{W][ ]
+{x
+~
+
+#27630
+map Omu canal upper level~
+a map of the Omu canal - upper level~
+A map of the Omu canal's upper level lies here.~
+~
+2 0 1|16384
+0~ ~ ~ ~
+1 0 50
+E
+map Omu canal upper level~
+You examine a map of the Omu canal's upper level...
+
+          [ ][ ]
+          [ ][ ]
+          [ ][ ]
+         -{B[ ][ ]{x-
+          [ ][ ]
+          [ ][ ]       |
+    [ ][ ][ ][ ][ ][ ]{B[ ]{x[ ]
+          [ ][ ]       |
+          [ ][ ]
+         -{B[ ][ ]{x-
+          [ ][ ]
+          [ ][ ]
+          [ ][ ]
+{x
+~
+
+#27631
+brilliant crystal~
+a brilliant red crystal~
+<160>A brilliant red crystal sparkles at your feet.<0>~
+~
+9 64|274877906944 1|32768
+0~ 0~ 0~ 0~
+1 0 0
+A
+13 60
 #0
 
 
@@ -4539,6 +4606,7 @@ Currently available quests for prospective Reavers to undertake:
 <15>6.   Mother May I?<0>                (<123>45-50<0>)
 <15>7.   Eyes Up Here<0>                 (<123>50-55<0>)
 <15>8.   Weedful things<0>               (<123>50-70<0>)
+<15>9.   The Heart of the Platter<0>     (<123>50-70<0>)
 
 ~
 S
@@ -6611,6 +6679,8 @@ G 1 27568 100
 G 1 27569 100
 G 1 27570 100
 G 1 27571 100
+G 1 27629 100
+G 1 27630 100
 *
 O 1 27263 100 27625			a heavy trunk to Reavers' Guild Master's Quarters
 P 1 27265 100 27263			a Reaver's heavy crossbow to container trunk heavy
@@ -6973,6 +7043,8 @@ P 1 27568 100 27206         a map of the Ota'ar Dar Military Fortress - lower to
 P 1 27569 100 27206         a map of the Ota'ar Dar Military Fortress - upper to container a metal sea chest trunk
 P 1 27570 100 27206         a map of the Ota'ar Dar Northern Residential Area - lower to container a metal sea chest trunk
 P 1 27571 100 27206         a map of the Ota'ar Dar Northern Residential Area - upper to container a metal sea chest trunk
+P 1 27629 100 27206         a map of Omu's canal system - lower to container a metal sea chest trunk
+P 1 27630 100 27206         a map of Omu's canal system - upper to container a metal sea chest trunk
 *
 M 1 27202 3 27610			a Dragonhoard clerk to Dragonhoard Office
 E 1 27237 100 17

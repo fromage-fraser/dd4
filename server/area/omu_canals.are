@@ -1,4 +1,4 @@
-#AREA Owl~ Omu~
+#AREA Owl~ Omu Canals~
 60 70 40 100
 
 #RECALL
@@ -174,7 +174,7 @@ underwater canals.
 
 #28406
 bullywug squat frog-like humanoid~
-peaceful~
+a bullywug~
 <149>A squat, frog-like humanoid lumbers about.<0>
 ~
 This male frog-like humanoid stands about 6' tall and has a tough, olive-coloured
@@ -400,7 +400,7 @@ when the opportunity arises.
     murder $n
 ~
 >fight_prog 10~
-    mpechoat $n <171>The uchuulon attempts to grab you with his hideous tentacles!<0>
+    mpechoat $n <171>The uchuulon tries to grab you with his hideous tentacles!<0>
     c 'paralysis' $n
 ~
 |
@@ -427,11 +427,210 @@ when the opportunity arises.
     murder $n
 ~
 >fight_prog 5~
-    mpechoat $n <171>The uchuulon attempts to grab you with her hideous tentacles!<0>
+    mpechoat $n <171>The uchuulon tries to grab you with her hideous tentacles!<0>
     c 'paralysis' $n
 ~
 >fight_prog 5~
     headbutt
+~
+|
+
+#28417
+grung hunter~
+a grung hunter~
+<118>A green grung is on the hunt for edible creatures.<0>
+~
+Grung are a race of small, froglike humanoids.  They are fiercely territorial,
+and see themselves as superior to all other creatures.  Their society is
+caste-based, with the grung's colour denoting his role.  By his attire you would
+assume this green grung is a hunter, busy going about and setting and checking
+traps.
+~
+64 8|32|512|2097152|8388608|67108864 -625 S
+60 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>rand_prog 1~
+    if isfight($i)
+        break
+    else
+        if objroom($i) == 28417
+        or objroom($i) == 28418
+        or objroom($i) == 28419
+        or objroom($i) == 28420
+            mpecho A grung hunter inspects the trap and grumbles.
+        else
+            mpoload 28417
+            drop iuysdfghkskls
+            mpecho A grung hunter busies himself setting up a crude trap.
+        endif
+    endif
+~
+>rand_prog 1~
+    if isfight($i)
+        break
+    else
+        get iuysdfghkskls
+        if carrying($i) == 28417
+            mpecho A grung hunter examines the empty trap with evident frustration.
+            mpjunk iuysdfghkskls
+        endif
+    endif
+~
+|
+
+#28418
+grung hunter~
+a grung hunter~
+<118>A green grung is on the hunt for edible creatures.<0>
+~
+Grung are a race of small, froglike humanoids.  They are fiercely territorial,
+and see themselves as superior to all other creatures.  Their society is
+caste-based, with the grung's colour denoting his role.  By his attire you would
+assume this green grung is a hunter, busy going about and setting and checking
+traps.
+~
+64 8|32|512|2097152|8388608|67108864 -592 S
+60 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>rand_prog 1~
+    if isfight($i)
+        break
+    else
+        if objroom($i) == 28417
+        or objroom($i) == 28418
+        or objroom($i) == 28419
+        or objroom($i) == 28420
+            mpecho A grung hunter inspects the trap and grumbles.
+        else
+            mpoload 28418
+            drop sdfgsdfthsd
+            mpecho A grung hunter busies himself setting up a crude trap.
+        endif
+    endif
+~
+>rand_prog 1~
+    if isfight($i)
+        break
+    else
+        get sdfgsdfthsd
+        if carrying($i) == 28418
+            mpecho A grung hunter examines the empty trap with evident frustration.
+            mpjunk sdfgsdfthsd
+        endif
+    endif
+~
+|
+
+#28419
+grung hunter~
+a grung hunter~
+<118>A green grung is on the hunt for edible creatures.<0>
+~
+Grung are a race of small, froglike humanoids.  They are fiercely territorial,
+and see themselves as superior to all other creatures.  Their society is
+caste-based, with the grung's colour denoting his role.  By his attire you would
+assume this green grung is a hunter, busy going about and setting and checking
+traps.
+~
+64 8|32|512|2097152|8388608|67108864 -670 S
+60 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>rand_prog 1~
+    if isfight($i)
+        break
+    else
+        if objroom($i) == 28417
+        or objroom($i) == 28418
+        or objroom($i) == 28419
+        or objroom($i) == 28420
+            mpecho A grung hunter inspects the trap and grumbles.
+        else
+            mpoload 28419
+            drop jtejerthddfgh
+            mpecho A grung hunter busies himself setting up a crude trap.
+        endif
+    endif
+~
+>rand_prog 1~
+    if isfight($i)
+        break
+    else
+        get jtejerthddfgh
+        if carrying($i) == 28419
+            mpecho A grung hunter examines the empty trap with evident frustration.
+            mpjunk jtejerthddfgh
+        endif
+    endif
+~
+|
+
+#28420
+grung hunter~
+a grung hunter~
+<118>A green grung is on the hunt for edible creatures.<0>
+~
+Grung are a race of small, froglike humanoids.  They are fiercely territorial,
+and see themselves as superior to all other creatures.  Their society is
+caste-based, with the grung's colour denoting his role.  By his attire you would
+assume this green grung is a hunter, busy going about and setting and checking
+traps.
+~
+64 8|32|512|2097152|8388608|67108864 -615 S
+60 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>rand_prog 1~
+    if isfight($i)
+        break
+    else
+        if objroom($i) == 28417
+        or objroom($i) == 28418
+        or objroom($i) == 28419
+        or objroom($i) == 28420
+            mpecho A grung hunter inspects the trap and grumbles.
+        else
+            mpoload 28420
+            drop pyuiopyuirwevg
+            mpecho A grung hunter busies himself setting up a crude trap.
+        endif
+    endif
+~
+>rand_prog 1~
+    if isfight($i)
+        break
+    else
+        get pyuiopyuirwevg
+        if carrying($i) == 28420
+            mpecho A grung hunter examines the empty trap with evident frustration.
+            mpjunk jpyuiopyuirwevg
+        endif
+    endif
+~
+|
+
+#28421
+grung warrior~
+a grung warrior~
+<118>A green grung warrior patrols the Omu canal.<0>
+~
+Grung are a race of small, froglike humanoids.  They are fiercely territorial,
+and see themselves as superior to all other creatures.  Their society is
+caste-based, with the grung's colour denoting his role.  By his attire you would
+assume this green grung is a warrior, looking for intruders on grung territory.
+~
+64 8|32|512|4194304|67108864 -700 S
+60 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>fight_prog 25~
+    headbutt
+~
+>all_greet_prog 10~
+    yell Ekess jirai! Rotinivokari persvek hesi kenal!
+    shoot $n
 ~
 |
 #0
@@ -649,6 +848,130 @@ A blob of transparent mucus has been left here.~
 10 32|64 1|16384
 65~ dispel magic~ ~ ~
 2 0 0
+
+#28417
+trap crude iuysdfghkskls~
+a crude trap~
+<94>A crude trap has been left here to bludgeon unwary creatures.<0>~
+~
+12 2097152 2 5 1 1
+~ ~ ~ ~
+10 0 0
+
+#28418
+trap crude sdfgsdfthsd~
+a crude trap~
+<94>A crude trap has been left here to impale unwary creatures.<0>~
+~
+12 2097152 2 6 1 1
+~ ~ ~ ~
+10 0 0
+
+#28419
+trap crude jtejerthddfgh~
+a crude trap~
+<94>A crude trap has been left here to lacerate unwary creatures.<0>~
+~
+12 2097152 2 7 1 1
+~ ~ ~ ~
+10 0 0
+
+#28420
+trap crude pyuiopyuirwevg~
+a crude trap~
+<94>A crude trap has been left here to poison unwary creatures.<0>~
+~
+12 16384|2097152 2 8 1 1
+~ ~ ~ ~
+10 0 0
+
+#28421
+wooden bow~
+a crude wooden bow~
+A crude wooden bow has been abandoned here.~
+~
+5 1073741824|274877906944 1|131072
+~ ~ ~ 11~
+8 0 0
+A
+19 8
+A
+50 5
+
+#28422
+triton corpse~
+a Triton's corpse~
+The corpse of a crucified Triton is here.~
+~
+23 2097152 2 7 1 1
+~ ~ ~ ~
+80 0 0
+E
+triton corpse~
+You've heard the grung like to make such grotesque examples of those who enter
+their territory without permission. He looks not to have died well. You shudder.
+~
+
+#28423
+gibbet sea elf corpse~
+a swinging gibbet~
+The decomposed corpse of a sea elf swings in a gibbet.~
+~
+12 2097152 2 6 1 1
+~ ~ ~ ~
+100 0 0
+E
+gibbet sea elf corpse~
+You've heard the grung like to make such grotesque examples of those who enter
+their territory without permission. The sea elf is heavily decomposed, and
+smells so strongly you gag.
+~
+
+#28424
+sahuagin impaled staked dead stake~
+a staked sahuagin~
+A dead sahuagin has been impaled on a stake and left here.~
+~
+23 2097152 2 5 1 1
+~ ~ ~ ~
+150 0 0
+E
+sahuagin impaled staked dead stake~
+The sahuagin has had a stake inserted into his rectum and has been left, while
+probably still alive, to slowly die as the stake worked his way right through
+his central mass, eventually erupting fom his mouth in a shower of blood and
+gore.  Grung sure do like to send a message.
+~
+
+#28425
+midgaardian adventurer headless decapitated~
+a headless adventurer~
+A midgaardian adventurer has been decapitated and propped up here.~
+~
+23 64|2097152 2 -1 1 1
+~ ~ ~ ~
+200 0 0
+E
+midgaardian adventurer headless decapitated~
+How easily this could have been you, you think.  Your spine tingles and you feel
+a sudden revulsion, strong enough that you suspect it may have a magical origin.
+You probably shouldn't risk interfering with this body.
+~
+
+#28426
+ornate silver platter~
+an ornate silver platter~
+An ornate silver serving platter lies here.~
+~
+12 1 1
+~ ~ ~ ~
+1 0 0
+E
+ornate silver platter~
+The platter looks quite sophisticated for a sahuagin artifact, with recognisable
+figures and moderately intricate filigree decorating its underside.  You imagine
+it might be highly prized by their species.
+~
 #0
 
 #ROOMS
@@ -1128,6 +1451,94 @@ D 1
 ~
 ~
 0 -1 28779
+S
+
+#28481
+Dummy room~
+Dummy room to link to 28480 until Omu central complete.
+~
+0 4|512 9
+D 3
+~
+~
+0 -1 28480
+S
+
+#28781
+Dummy room~
+Dummy room to link to 28780 until Omu central complete.
+~
+0 4|512 9
+D 3
+~
+~
+0 -1 28780
+S
+
+#28420
+Dummy room~
+Dummy room to link to 28419 until Omu sovereign quarter complete.
+~
+0 4|512 9
+D 3
+~
+~
+0 -1 28419
+S
+
+#28720
+Dummy room~
+Dummy room to link to 28719 until Omu sovereign quarter complete.
+~
+0 4|512 9
+D 3
+~
+~
+0 -1 28719
+S
+
+#28457
+Dummy room~
+Dummy room to link to 28446 until Omu central complete.
+~
+0 4|512 9
+D 2
+~
+~
+0 -1 28446
+S
+
+#28757
+Dummy room~
+Dummy room to link to 28746 until Omu central complete.
+~
+0 4|512 9
+D 2
+~
+~
+0 -1 28746
+S
+
+#28437
+Dummy room~
+Dummy room to link to 28446 until Omu sovereign quarter complete.
+~
+0 4|512 9
+D 0
+~
+~
+0 -1 28446
+S
+
+#28737
+Dummy room~
+Dummy room to link to 28746 until Omu sovereign quarter complete.
+~
+0 4|512 9
+D 0
+~
+~
+0 -1 28746
 S
 
 #28419
@@ -2621,1630 +3032,21 @@ D 5
 ~
 0 -1 28506
 S
-
-#28404
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28409
-S
-
-#28407
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28413
-D 1
-~
-~
-0 -1 28408
-S
-
-#28408
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28414
-D 1
-~
-~
-0 -1 28409
-D 3
-~
-~
-0 -1 28407
-S
-
-#28409
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28415
-D 1
-~
-~
-0 -1 28410
-D 2
-~
-~
-0 -1 28404
-D 3
-~
-~
-0 -1 28408
-S
-
-#28410
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28416
-D 3
-~
-~
-0 -1 28409
-S
-
-#28413
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28414
-D 2
-~
-~
-0 -1 28407
-S
-
-#28414
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28415
-D 2
-~
-~
-0 -1 28408
-D 3
-~
-~
-0 -1 28413
-S
-
-#28415
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28422
-D 1
-~
-~
-0 -1 28416
-D 2
-~
-~
-0 -1 28409
-D 3
-~
-~
-0 -1 28414
-S
-
-#28416
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28423
-D 1
-~
-~
-0 -1 28417
-D 2
-~
-~
-0 -1 28410
-D 3
-~
-~
-0 -1 28415
-S
-
-#28417
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28424
-D 3
-~
-~
-0 -1 28416
-S
-
-#28422
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28423
-D 2
-~
-~
-0 -1 28415
-S
-
-#28423
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28431
-D 1
-~
-~
-0 -1 28424
-D 2
-~
-~
-0 -1 28416
-D 3
-~
-~
-0 -1 28422
-S
-
-#28424
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28432
-D 1
-~
-~
-0 -1 28425
-D 2
-~
-~
-0 -1 28417
-D 3
-~
-~
-0 -1 28423
-S
-
-#28425
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 3
-~
-~
-0 -1 28424
-S
-
-#28431
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28432
-D 2
-~
-~
-0 -1 28423
-S
-
-#28432
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 2
-~
-~
-0 -1 28424
-D 3
-~
-~
-0 -1 28431
-S
-
-#28420
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28421
-D 3
-~
-~
-0 -1 28419
-S
-
-#28720
-Sovereign Quarter, Upper~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28421
-D 3
-~
-~
-0 -1 28719
-S
-
-#28421
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28429
-D 3
-~
-~
-0 -1 28420
-S
-
-#28429
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28430
-D 2
-~
-~
-0 -1 28421
-S
-
-#28430
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28437
-D 3
-~
-~
-0 -1 28429
-S
-
-#28428
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28435
-S
-
-#28435
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28436
-D 2
-~
-~
-0 -1 28428
-S
-
-#28436
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 3
-~
-~
-0 -1 28435
-S
-
-#28437
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28446
-D 2
-~
-~
-0 -1 28430
-S
-
-#28737
-Sovereign Quarter, Upper~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28746
-D 2
-~
-~
-0 -1 28430
-S
-
-#28438
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28450
-D 1
-~
-~
-0 -1 28439
-S
-
-#28439
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28451
-D 3
-~
-~
-0 -1 28438
-S
-
-#28448
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-S
-
-#28449
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28460
-D 1
-~
-~
-0 -1 28450
-S
-
-#28450
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28451
-D 2
-~
-~
-0 -1 28438
-D 3
-~
-~
-0 -1 28449
-S
-
-#28451
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28462
-D 2
-~
-~
-0 -1 28439
-D 3
-~
-~
-0 -1 28450
-S
-
-#28452
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-S
-
-#28466
-Ota'ar Dar / Omu Bridge South, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28465
-S
-
-#28455
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-S
-
-#28456
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28470
-D 1
-~
-~
-0 -1 28457
-S
-
-#28457
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28471
-D 2
-~
-~
-0 -1 28446
-S
-
-#28757
-Central Omu, Upper~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28471
-D 2
-~
-~
-0 -1 28746
-S
-
-#28458
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-S
-
-#28459
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28473
-D 1
-~
-~
-0 -1 28460
-S
-
-#28460
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28474
-D 2
-~
-~
-0 -1 28449
-D 3
-~
-~
-0 -1 28459
-S
-
-#28461
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-S
-
-#28462
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28476
-D 1
-~
-~
-0 -1 28463
-D 2
-~
-~
-0 -1 28451
-S
-
-#28463
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28477
-D 1
-~
-~
-0 -1 28464
-D 3
-~
-~
-0 -1 28462
-S
-
-#28464
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28478
-D 1
-~
-~
-0 -1 28465
-D 3
-~
-~
-0 -1 28463
-S
-
-#28465
-Ota'ar Dar / Omu Bridge North, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 2
-~
-~
-0 -1 28466
-D 3
-~
-~
-0 -1 28464
-S
-
-#28469
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28481
-D 1
-~
-~
-0 -1 28470
-S
-
-#28470
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28482
-D 1
-~
-~
-0 -1 28471
-D 2
-~
-~
-0 -1 28456
-D 3
-~
-~
-0 -1 28469
-S
-
-#28471
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28483
-D 1
-~
-~
-0 -1 28472
-D 2
-~
-~
-0 -1 28457
-D 3
-~
-~
-0 -1 28470
-S
-
-#28472
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28484
-D 1
-~
-~
-0 -1 28473
-D 3
-~
-~
-0 -1 28471
-S
-
-#28473
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28485
-D 1
-~
-~
-0 -1 28474
-D 2
-~
-~
-0 -1 28459
-D 3
-~
-~
-0 -1 28472
-S
-
-#28474
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28486
-D 1
-~
-~
-0 -1 28475
-D 2
-~
-~
-0 -1 28460
-D 3
-~
-~
-0 -1 28473
-S
-
-#28475
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28487
-D 1
-~
-~
-0 -1 28476
-D 3
-~
-~
-0 -1 28474
-S
-
-#28476
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28477
-D 2
-~
-~
-0 -1 28462
-D 3
-~
-~
-0 -1 28475
-S
-
-#28477
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28489
-D 1
-~
-~
-0 -1 28478
-D 2
-~
-~
-0 -1 28463
-D 3
-~
-~
-0 -1 28476
-S
-
-#28478
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 2
-~
-~
-0 -1 28464
-D 3
-~
-~
-0 -1 28477
-S
-
-#28481
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28492
-D 1
-~
-~
-0 -1 28482
-D 2
-~
-~
-0 -1 28469
-D 3
-~
-~
-0 -1 28480
-S
-
-#28781
-Central Omu, Upper~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28492
-D 1
-~
-~
-0 -1 28482
-D 2
-~
-~
-0 -1 28469
-D 3
-~
-~
-0 -1 28780
-S
-
-#28482
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28493
-D 1
-~
-~
-0 -1 28483
-D 2
-~
-~
-0 -1 28470
-D 3
-~
-~
-0 -1 28481
-S
-
-#28483
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28494
-D 1
-~
-~
-0 -1 28484
-D 2
-~
-~
-0 -1 28471
-D 3
-~
-~
-0 -1 28482
-S
-
-#28484
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28495
-D 1
-~
-~
-0 -1 28485
-D 2
-~
-~
-0 -1 28472
-D 3
-~
-~
-0 -1 28483
-S
-
-#28485
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28496
-D 1
-~
-~
-0 -1 28486
-D 2
-~
-~
-0 -1 28473
-D 3
-~
-~
-0 -1 28484
-S
-
-#28486
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28497
-D 1
-~
-~
-0 -1 28487
-D 2
-~
-~
-0 -1 28474
-D 3
-~
-~
-0 -1 28485
-S
-
-#28487
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 2
-~
-~
-0 -1 28475
-D 3
-~
-~
-0 -1 28486
-S
-
-#28488
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-S
-
-#28489
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 2
-~
-~
-0 -1 28477
-S
-
-#28492
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28493
-D 2
-~
-~
-0 -1 28481
-S
-
-#28493
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28502
-D 1
-~
-~
-0 -1 28494
-D 2
-~
-~
-0 -1 28482
-D 3
-~
-~
-0 -1 28492
-S
-
-#28494
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28503
-D 1
-~
-~
-0 -1 28495
-D 2
-~
-~
-0 -1 28483
-D 3
-~
-~
-0 -1 28493
-S
-
-#28495
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28496
-D 2
-~
-~
-0 -1 28484
-D 3
-~
-~
-0 -1 28494
-S
-
-#28496
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28497
-D 2
-~
-~
-0 -1 28485
-D 3
-~
-~
-0 -1 28495
-S
-
-#28497
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 2
-~
-~
-0 -1 28486
-D 3
-~
-~
-0 -1 28496
-S
-
-#28498
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-S
-
-#28501
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28507
-S
-
-#28502
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28503
-D 2
-~
-~
-0 -1 28493
-S
-
-#28503
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 2
-~
-~
-0 -1 28494
-D 3
-~
-~
-0 -1 28502
-S
-
-#28504
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-S
-
-#28507
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28508
-D 2
-~
-~
-0 -1 28501
-S
-
-#28508
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 3
-~
-~
-0 -1 28507
-S
 #0
 
 #RESETS
 D 0 28418 3 2                   lock west in Omu / Yrythelmyn Southern Bridge, Lower
 D 0 28718 3 2                   lock west in Omu / Yrythelmyn Southern Bridge, Upper
-D 0 28419 1 1                   close east in Omu / Yrythelmyn Southern Bridge, Lower
-D 0 28719 1 1                   close east in Omu / Yrythelmyn Southern Bridge, Upper
-D 0 28446 0 1                   close north in Omu Sovereign Bridge, Lower
-D 0 28446 2 1                   close south in Omu Sovereign Bridge, Lower
-D 0 28746 0 1                   close north in Omu Sovereign Bridge, Upper
-D 0 28746 2 1                   close south in Omu Sovereign Bridge, Upper
+D 0 28419 1 2                   lock east in Omu / Yrythelmyn Southern Bridge, Lower
+D 0 28719 1 2                   lock east in Omu / Yrythelmyn Southern Bridge, Upper
+D 0 28446 0 2                   lock north in Omu Sovereign Bridge, Lower
+D 0 28446 2 2                   lock south in Omu Sovereign Bridge, Lower
+D 0 28746 0 2                   lock north in Omu Sovereign Bridge, Upper
+D 0 28746 2 2                   lock south in Omu Sovereign Bridge, Upper
 D 0 28479 3 2                   lock west in Omu / Yrythelmyn Northern Bridge, Lower
 D 0 28779 3 2                   lock west in Omu / Yrythelmyn Northern Bridge, Upper
-D 0 28480 1 1                   close east in Omu / Yrythelmyn Northern Bridge, Lower
-D 0 28780 1 1                   close east in Omu / Yrythelmyn Northern Bridge, Upper
+D 0 28480 1 2                   lock east in Omu / Yrythelmyn Northern Bridge, Lower
+D 0 28780 1 2                   lock east in Omu / Yrythelmyn Northern Bridge, Upper
 M 0 28400 3 28403               add a giant sea python to Omu / Yrythelmyn Canal, Lower
 M 0 28400 3 28711               add a giant sea python to Omu / Yrythelmyn Canal, Upper
 E 0 28400 0 16                      equip a large pair of fangs (wield)
@@ -4280,7 +3082,7 @@ M 0 28405 2 28805               add a female Kua-toa to Omu / Yrythelmyn Canal, 
 E 0 28404 0 5                       equip slimy hide (body)
 E 0 28405 0 11                      equip a large turtle shell (shield)
 E 0 28406 0 16                      equip a crude spear (wield)
-M 0 28406 1 28791               add peaceful to Omu / Yrythelmyn Canal, Upper
+M 0 28406 1 28791               add a bullywug to Omu / Yrythelmyn Canal, Upper
 E 0 28407 0 5                       equip a thick leather jerkin (body)
 E 0 28406 0 16                      equip a crude spear (wield)
 G 0 28411 0                         carry a bag of coins
@@ -4319,6 +3121,43 @@ G 0 28416 0                         carry <181>a handful of transparent mucus<0>
 M 0 28416 1 28506               add an uchuulon to Omu / Yrythelmyn Canal, Lower
 E 0 27395 0 16                      equip [out-of-area item] (wield)
 G 0 28416 0                         carry <181>a handful of transparent mucus<0>
+M 0 28417 1 28741               add a grung hunter to Yrythelmyn Canal, Upper
+E 0 27490 0 5                       equip [out-of-area item] (body)
+E 0 28406 0 16                      equip a crude spear (wield)
+M 0 28418 1 28747               add a grung hunter to Omu Canal, Upper
+E 0 27490 0 5                       equip [out-of-area item] (body)
+E 0 28406 0 16                      equip a crude spear (wield)
+M 0 28419 1 28800               add a grung hunter to Omu / Yrythelmyn Canal, Upper
+E 0 27490 0 5                       equip [out-of-area item] (body)
+E 0 28406 0 16                      equip a crude spear (wield)
+M 0 28420 1 28718               add a grung hunter to Omu / Yrythelmyn Southern Bridge, Upper
+E 0 27490 0 5                       equip [out-of-area item] (body)
+E 0 28406 0 16                      equip a crude spear (wield)
+M 0 28421 4 28441               add a grung warrior to Yrythelmyn Canal, Lower
+E 0 27490 0 5                       equip [out-of-area item] (body)
+E 0 28405 0 11                      equip a large turtle shell (shield)
+E 0 28406 0 16                      equip a crude spear (wield)
+E 0 28421 0 21                      equip a crude wooden bow (ranged)
+M 0 28421 4 28447               add a grung warrior to Omu Canal, Lower
+E 0 27490 0 5                       equip [out-of-area item] (body)
+E 0 28405 0 11                      equip a large turtle shell (shield)
+E 0 28406 0 16                      equip a crude spear (wield)
+E 0 28421 0 21                      equip a crude wooden bow (ranged)
+M 0 28421 4 28500               add a grung warrior to Omu / Yrythelmyn Canal, Lower
+E 0 27490 0 5                       equip [out-of-area item] (body)
+E 0 28405 0 11                      equip a large turtle shell (shield)
+E 0 28406 0 16                      equip a crude spear (wield)
+E 0 28421 0 21                      equip a crude wooden bow (ranged)
+M 0 28421 4 28418               add a grung warrior to Omu / Yrythelmyn Southern Bridge, Lower
+E 0 27490 0 5                       equip [out-of-area item] (body)
+E 0 28405 0 11                      equip a large turtle shell (shield)
+E 0 28406 0 16                      equip a crude spear (wield)
+E 0 28421 0 21                      equip a crude wooden bow (ranged)
+I 28422 75 28447 1              a Triton's corpse to Omu Canal, Lower
+I 28423 90 28440 1              a swinging gibbet to Yrythelmyn Canal, Lower
+I 28424 90 28499 1              a staked sahuagin to Omu / Yrythelmyn Canal, Lower
+I 28425 60 28406 1              a headless adventurer to Omu / Yrythelmyn Canal, Lower
+P 0 28426 0 28424               put an ornate silver platter inside a staked sahuagin
 S
 
 #SPECIALS
@@ -4330,6 +3169,11 @@ M 28413 spec_poison             a water naga
 M 28414 spec_poison             a water naga
 M 28415 spec_poison             an uchuulon
 M 28416 spec_poison             an uchuulon
+M 28417 spec_green_grung        a grung hunter
+M 28418 spec_green_grung        a grung hunter
+M 28419 spec_green_grung        a grung hunter
+M 28420 spec_green_grung        a grung hunter
+M 28421 spec_green_grung        a grung warrior
 S
 
 #$

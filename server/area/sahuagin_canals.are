@@ -3716,7 +3716,7 @@ D4
 ~
 0 -1 27765
 E
-seaweed disturbed structure support east~
+seaweed disturbed structure support eas~
 The mass of seaweed covers a huge cavemouth at the bottom of the bridge. It
 would be easy enough to clear it away and enter the cave.
 ~
@@ -3815,10 +3815,14 @@ S
 Omu Canal, Lower~
 <248>You are at the bottom of the ocean floor, in a deep canal between the two
 <250>major cantons of the Grung city of Omu. The high canal walls prevent access
-<252>to Omu, but you may travel east, further along the canal system, or upwards,
-<254>towards the huge, looming area of darkness in the water above.<0>
+<252>to Omu, but you may travel north and east, further along the canal system, or
+<254>upwards, towards the huge, looming area of darkness in the water above.<0>
 ~
 0 0 12
+D0
+~
+~
+0 -1 28447
 D1
 ~
 ~
@@ -6514,11 +6518,15 @@ S
 <252>Omu Canal, Upper<0>~
 <237>You float about 4 metres above the ocean floor, in a deep canal between the two
 <238>major cantons of the Grung city of Omu. The high canal walls prevent access to
-<241>Omu from here, but you may travel east, further along the canal system,
+<241>Omu from here, but you may travel north and east, further along the canal system,
 <244>downwards, towards the ocean floor, or upwards, directly into the huge, looming
 <246>area of darkness in the water above.<0>
 ~
 0 0 8
+D0
+~
+~
+0 -1 28747
 D1
 ~
 ~

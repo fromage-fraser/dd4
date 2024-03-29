@@ -1203,7 +1203,84 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                         return FALSE;
 
                     default:
-                        bug("Mob: %d bad argument to 'clan'",
+                        bug("Mob: %d bad argument to 'carrying'",
+                            mob->pIndexData->vnum);
+                        return FALSE;
+                }
+        }
+
+        /*
+         * Is an object in the room? Made so mobs dropping traps can check
+         * to ensure one isn't already present. --Owl 29/3/24
+         *
+         * objroom($n) == obj
+         */
+
+        if (!str_cmp(buf, "objroom"))
+        {
+                int vnum = atoi(val);
+
+                switch (arg[1])
+                {
+                    case 'i':
+                        if (mob)
+                        {
+                            OBJ_DATA* pobj;
+
+                            for (pobj = mob->in_room->contents; pobj; pobj = pobj->next_content)
+                            {
+                                    if (pobj->pIndexData->vnum == vnum )
+                                        return mprog_veval(pobj->pIndexData->vnum, opr, vnum);
+                            }
+
+                            return mprog_veval(0, opr, vnum);
+                        }
+                        else
+                            return FALSE;
+
+                    case 'n':
+                        if (actor)
+                        {
+                            OBJ_DATA* pobj;
+
+                            for (pobj = actor->in_room->contents; pobj; pobj = pobj->next_content)
+                            {
+                                if (pobj->pIndexData->vnum == vnum)
+                                   return mprog_veval(pobj->pIndexData->vnum, opr, vnum);
+                            }
+
+                            return mprog_veval(0, opr, vnum);
+                        }
+                        else
+                            return FALSE;
+
+                    case 't':
+                        if (vict)
+                        {
+                            OBJ_DATA* pobj;
+
+                            for (pobj = vict->in_room->contents; pobj; pobj = pobj->next_content)
+                            {
+                                if (pobj->pIndexData->vnum == vnum)
+                                   return mprog_veval(pobj->pIndexData->vnum, opr, vnum);
+                            }
+
+                            return FALSE;
+                        }
+                        else
+                            return FALSE;
+
+                    case 'r':
+                        return FALSE;
+
+                    case 'o':
+                        return FALSE;
+
+                    case 'p':
+                        return FALSE;
+
+                    default:
+                        bug("Mob: %d bad argument to 'objroom'",
                             mob->pIndexData->vnum);
                         return FALSE;
                 }

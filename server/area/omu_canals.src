@@ -2,7 +2,7 @@
 
 $area
 au  Owl
-ti  Omu
+ti  Omu Canals
 ls  60
 us  70
 le  40
@@ -349,6 +349,86 @@ rf  no_mob private
 e   28779
 
 $room
+vn  28481
+nm  Dummy room
+de
+Dummy room to link to 28480 until Omu central complete.
+~
+st  air
+rf  no_mob private
+w   28480
+
+$room
+vn  28781
+nm  Dummy room
+de
+Dummy room to link to 28780 until Omu central complete.
+~
+st  air
+rf  no_mob private
+w   28780
+
+$room
+vn  28420
+nm  Dummy room
+de
+Dummy room to link to 28419 until Omu sovereign quarter complete.
+~
+st  air
+rf  no_mob private
+w   28419
+
+$room
+vn  28720
+nm  Dummy room
+de
+Dummy room to link to 28719 until Omu sovereign quarter complete.
+~
+st  air
+rf  no_mob private
+w   28719
+
+$room
+vn  28457
+nm  Dummy room
+de
+Dummy room to link to 28446 until Omu central complete.
+~
+st  air
+rf  no_mob private
+s   28446
+
+$room
+vn  28757
+nm  Dummy room
+de
+Dummy room to link to 28746 until Omu central complete.
+~
+st  air
+rf  no_mob private
+s   28746
+
+$room
+vn  28437
+nm  Dummy room
+de
+Dummy room to link to 28446 until Omu sovereign quarter complete.
+~
+st  air
+rf  no_mob private
+n   28446
+
+$room
+vn  28737
+nm  Dummy room
+de
+Dummy room to link to 28746 until Omu sovereign quarter complete.
+~
+st  air
+rf  no_mob private
+n   28746
+
+$room
 vn  28419
 nm  Omu / Yrythelmyn Southern Bridge, Lower
 de
@@ -368,7 +448,7 @@ e   28420
 enm gates
 elo 8
 eke -1
-eds close
+eds lock
 u   28719
 
 $room
@@ -401,7 +481,7 @@ e   28720
 enm gates
 elo 8
 eke -1
-eds close
+eds lock
 d   28419
 u   27135
 
@@ -767,12 +847,12 @@ n   28457
 nnm gates
 nlo 8
 nke -1
-nds close
+nds lock
 s   28437
 snm gates
 slo 8
 ske -1
-sds close
+sds lock
 w   28445
 e   28447
 u   28746
@@ -794,12 +874,12 @@ n   28757
 nnm gates
 nlo 8
 nke -1
-nds close
+nds lock
 s   28737
 snm gates
 slo 8
 ske -1
-sds close
+sds lock
 w   28745
 e   28747
 d   28446
@@ -1069,7 +1149,7 @@ e   28481
 enm gates
 elo 8
 eke -1
-eds close
+eds lock
 u   28780
 
 $room
@@ -1101,7 +1181,7 @@ e   28781
 enm gates
 elo 8
 eke -1
-eds close
+eds lock
 d   28480
 u   27128
 
@@ -1311,1220 +1391,6 @@ s   28800
 d   28506
 u   27132
 
-$room
-vn  28404
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28409
-
-$room
-vn  28407
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28413
-e   28408
-
-$room
-vn  28408
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28414
-w   28407
-e   28409
-
-$room
-vn  28409
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28415
-w   28408
-e   28410
-s   28404
-
-$room
-vn  28410
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28416
-w   28409
-
-$room
-vn  28413
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-e   28414
-s   28407
-
-$room
-vn  28414
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28413
-s   28408
-e   28415
-
-$room
-vn  28415
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28422
-w   28414
-s   28409
-e   28416
-
-$room
-vn  28416
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28423
-w   28415
-s   28410
-e   28417
-
-$room
-vn  28417
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28424
-w   28416
-
-$room
-vn  28422
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-s   28415
-e   28423
-
-$room
-vn  28423
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28431
-w   28422
-s   28416
-e   28424
-
-$room
-vn  28424
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28432
-w   28423
-s   28417
-e   28425
-
-$room
-vn  28425
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28424
-
-$room
-vn  28431
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-s   28423
-e   28432
-
-$room
-vn  28432
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28431
-s   28424
-
-$room
-vn  28420
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28419
-e   28421
-
-$room
-vn  28720
-nm  Sovereign Quarter, Upper
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28719
-e   28421
-
-$room
-vn  28421
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28420
-n   28429
-
-$room
-vn  28429
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-s   28421
-e   28430
-
-$room
-vn  28430
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28429
-n   28437
-
-$room
-vn  28428
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28435
-
-$room
-vn  28435
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-e   28436
-s   28428
-
-$room
-vn  28436
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28435
-
-$room
-vn  28437
-nm  Sovereign Quarter, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28446
-s   28430
-
-$room
-vn  28737
-nm  Sovereign Quarter, Upper
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater
-rf  none
-n   28746
-s   28430
-
-$room
-vn  28438
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28450
-e   28439
-
-$room
-vn  28439
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28451
-w   28438
-
-$room
-vn  28448
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-
-$room
-vn  28449
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28460
-e   28450
-
-$room
-vn  28450
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28449
-s   28438
-e   28451
-
-$room
-vn  28451
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28462
-w   28450
-s   28439
-
-$room
-vn  28452
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-
-$room
-vn  28466
-nm  Ota'ar Dar / Omu Bridge South, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28465
-
-$room
-vn  28455
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-
-$room
-vn  28456
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28470
-e   28457
-
-$room
-vn  28457
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28471
-s   28446
-
-$room
-vn  28757
-nm  Central Omu, Upper
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28471
-s   28746
-
-$room
-vn  28458
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-
-$room
-vn  28459
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28473
-e   28460
-
-$room
-vn  28460
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28474
-w   28459
-s   28449
-
-$room
-vn  28461
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-
-$room
-vn  28462
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28476
-e   28463
-s   28451
-
-$room
-vn  28463
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28462
-n   28477
-e   28464
-
-$room
-vn  28464
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28463
-n   28478
-e   28465
-
-$room
-vn  28465
-nm  Ota'ar Dar / Omu Bridge North, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28464
-s   28466
-
-$room
-vn  28469
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28481
-e   28470
-
-$room
-vn  28470
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28482
-w   28469
-e   28471
-s   28456
-
-$room
-vn  28471
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28483
-w   28470
-e   28472
-s   28457
-
-$room
-vn  28472
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28484
-w   28471
-e   28473
-
-$room
-vn  28473
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28485
-w   28472
-e   28474
-s   28459
-
-$room
-vn  28474
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28486
-w   28473
-e   28475
-s   28460
-
-$room
-vn  28475
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28487
-w   28474
-e   28476
-
-$room
-vn  28476
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28475
-e   28477
-s   28462
-
-$room
-vn  28477
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28489
-w   28476
-e   28478
-s   28463
-
-$room
-vn  28478
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28477
-s   28464
-
-$room
-vn  28481
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28480
-e   28482
-n   28492
-s   28469
-
-
-$room
-vn  28781
-nm  Central Omu, Upper
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28780
-e   28482
-n   28492
-s   28469
-
-$room
-vn  28482
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28481
-e   28483
-n   28493
-s   28470
-
-$room
-vn  28483
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28482
-e   28484
-n   28494
-s   28471
-
-$room
-vn  28484
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28483
-e   28485
-n   28495
-s   28472
-
-$room
-vn  28485
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28484
-e   28486
-n   28496
-s   28473
-
-$room
-vn  28486
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28485
-e   28487
-n   28497
-s   28474
-
-$room
-vn  28487
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28486
-s   28475
-
-$room
-vn  28488
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-
-$room
-vn  28489
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-s   28477
-
-$room
-vn  28492
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-s   28481
-e   28493
-
-$room
-vn  28493
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-s   28482
-e   28494
-n   28502
-w   28492
-
-$room
-vn  28494
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-s   28483
-e   28495
-n   28503
-w   28493
-
-$room
-vn  28495
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-s   28484
-e   28496
-w   28494
-
-$room
-vn  28496
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-s   28485
-e   28497
-w   28495
-
-$room
-vn  28497
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-s   28486
-w   28496
-
-$room
-vn  28498
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-
-$room
-vn  28501
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-n   28507
-
-$room
-vn  28502
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-e   28503
-s   28493
-
-$room
-vn  28503
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28502
-s   28494
-
-$room
-vn  28504
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-
-$room
-vn  28507
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-s   28501
-e   28508
-
-$room
-vn  28508
-nm  Central Omu, Lower
-de
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-st  underwater_ground
-rf  none
-w   28507
-
-
 # MOBS
 
 $mob
@@ -2705,7 +1571,7 @@ mp  fight_prog 10
 
 $mob
 nm  bullywug squat frog-like humanoid
-sh  peaceful
+sh  a bullywug
 lo  <149>A squat, frog-like humanoid lumbers about.<0>
 de
 This male frog-like humanoid stands about 6' tall and has a tough, olive-coloured
@@ -2998,6 +1864,220 @@ mp  fight_prog 5
     headbutt
 ~
 
+$mob
+nm grung hunter
+sh a grung hunter
+lo <118>A green grung is on the hunt for edible creatures.<0>
+de
+Grung are a race of small, froglike humanoids.  They are fiercely territorial,
+and see themselves as superior to all other creatures.  Their society is
+caste-based, with the grung's colour denoting his role.  By his attire you would
+assume this green grung is a hunter, busy going about and setting and checking
+traps.
+~
+vn  28417
+lv  60
+al  -625
+sx  male
+bf  none
+act stay_area
+aff swim infrared det_hidden det_invis det_sneak det_traps
+sp  spec_green_grung
+mp  rand_prog 1
+    if isfight($i)
+        break
+    else
+        if objroom($i) == 28417
+        or objroom($i) == 28418
+        or objroom($i) == 28419
+        or objroom($i) == 28420
+            mpecho A grung hunter inspects the trap and grumbles.
+        else
+            mpoload 28417
+            drop iuysdfghkskls
+            mpecho A grung hunter busies himself setting up a crude trap.
+        endif
+    endif
+~
+mp  rand_prog 1
+    if isfight($i)
+        break
+    else
+        get iuysdfghkskls
+        if carrying($i) == 28417
+            mpecho A grung hunter examines the empty trap with evident frustration.
+            mpjunk iuysdfghkskls
+        endif
+    endif
+~
+
+$mob
+nm grung hunter
+sh a grung hunter
+lo <118>A green grung is on the hunt for edible creatures.<0>
+de
+Grung are a race of small, froglike humanoids.  They are fiercely territorial,
+and see themselves as superior to all other creatures.  Their society is
+caste-based, with the grung's colour denoting his role.  By his attire you would
+assume this green grung is a hunter, busy going about and setting and checking
+traps.
+~
+vn  28418
+lv  60
+al  -592
+sx  male
+bf  none
+act stay_area
+aff swim infrared det_hidden det_invis det_sneak det_traps
+sp  spec_green_grung
+mp  rand_prog 1
+    if isfight($i)
+        break
+    else
+        if objroom($i) == 28417
+        or objroom($i) == 28418
+        or objroom($i) == 28419
+        or objroom($i) == 28420
+            mpecho A grung hunter inspects the trap and grumbles.
+        else
+            mpoload 28418
+            drop sdfgsdfthsd
+            mpecho A grung hunter busies himself setting up a crude trap.
+        endif
+    endif
+~
+mp  rand_prog 1
+    if isfight($i)
+        break
+    else
+        get sdfgsdfthsd
+        if carrying($i) == 28418
+            mpecho A grung hunter examines the empty trap with evident frustration.
+            mpjunk sdfgsdfthsd
+        endif
+    endif
+~
+
+$mob
+nm grung hunter
+sh a grung hunter
+lo <118>A green grung is on the hunt for edible creatures.<0>
+de
+Grung are a race of small, froglike humanoids.  They are fiercely territorial,
+and see themselves as superior to all other creatures.  Their society is
+caste-based, with the grung's colour denoting his role.  By his attire you would
+assume this green grung is a hunter, busy going about and setting and checking
+traps.
+~
+vn  28419
+lv  60
+al  -670
+sx  male
+bf  none
+act stay_area
+aff swim infrared det_hidden det_invis det_sneak det_traps
+sp  spec_green_grung
+mp  rand_prog 1
+    if isfight($i)
+        break
+    else
+        if objroom($i) == 28417
+        or objroom($i) == 28418
+        or objroom($i) == 28419
+        or objroom($i) == 28420
+            mpecho A grung hunter inspects the trap and grumbles.
+        else
+            mpoload 28419
+            drop jtejerthddfgh
+            mpecho A grung hunter busies himself setting up a crude trap.
+        endif
+    endif
+~
+mp  rand_prog 1
+    if isfight($i)
+        break
+    else
+        get jtejerthddfgh
+        if carrying($i) == 28419
+            mpecho A grung hunter examines the empty trap with evident frustration.
+            mpjunk jtejerthddfgh
+        endif
+    endif
+~
+
+$mob
+nm grung hunter
+sh a grung hunter
+lo <118>A green grung is on the hunt for edible creatures.<0>
+de
+Grung are a race of small, froglike humanoids.  They are fiercely territorial,
+and see themselves as superior to all other creatures.  Their society is
+caste-based, with the grung's colour denoting his role.  By his attire you would
+assume this green grung is a hunter, busy going about and setting and checking
+traps.
+~
+vn  28420
+lv  60
+al  -615
+sx  male
+bf  none
+act stay_area
+aff swim infrared det_hidden det_invis det_sneak det_traps
+sp  spec_green_grung
+mp  rand_prog 1
+    if isfight($i)
+        break
+    else
+        if objroom($i) == 28417
+        or objroom($i) == 28418
+        or objroom($i) == 28419
+        or objroom($i) == 28420
+            mpecho A grung hunter inspects the trap and grumbles.
+        else
+            mpoload 28420
+            drop pyuiopyuirwevg
+            mpecho A grung hunter busies himself setting up a crude trap.
+        endif
+    endif
+~
+mp  rand_prog 1
+    if isfight($i)
+        break
+    else
+        get pyuiopyuirwevg
+        if carrying($i) == 28420
+            mpecho A grung hunter examines the empty trap with evident frustration.
+            mpjunk jpyuiopyuirwevg
+        endif
+    endif
+~
+
+$mob
+nm grung warrior
+sh a grung warrior
+lo <118>A green grung warrior patrols the Omu canal.<0>
+de
+Grung are a race of small, froglike humanoids.  They are fiercely territorial,
+and see themselves as superior to all other creatures.  Their society is
+caste-based, with the grung's colour denoting his role.  By his attire you would
+assume this green grung is a warrior, looking for intruders on grung territory.
+~
+vn  28421
+lv  60
+al  -700
+sx  male
+bf  none
+act stay_area
+aff swim infrared det_hidden det_invis battle_aura
+sp  spec_green_grung
+mp  fight_prog 25
+    headbutt
+~
+mp  all_greet_prog 10
+    yell Ekess jirai! Rotinivokari persvek hesi kenal!
+    shoot $n
+~
+
 # OBJECTS
 
 $obj
@@ -3226,6 +2306,159 @@ wg  2
 ex  magic invis
 we  take hold
 
+$obj
+nm  trap crude iuysdfghkskls
+sh  a crude trap
+lo  <94>A crude trap has been left here to bludgeon unwary creatures.<0>
+vn  28417
+ty  furniture
+wg  10
+ex  trapped
+we  take
+trt object
+trd blunt
+trc 1
+
+$obj
+nm  trap crude sdfgsdfthsd
+sh  a crude trap
+lo  <94>A crude trap has been left here to impale unwary creatures.<0>
+vn  28418
+ty  furniture
+wg  10
+ex  trapped
+we  take
+trt object
+trd pierce
+trc 1
+
+$obj
+nm  trap crude jtejerthddfgh
+sh  a crude trap
+lo  <94>A crude trap has been left here to lacerate unwary creatures.<0>
+vn  28419
+ty  furniture
+wg  10
+ex  trapped
+we  take
+trt object
+trd slash
+trc 1
+
+$obj
+nm  trap crude pyuiopyuirwevg
+sh  a crude trap
+lo  <94>A crude trap has been left here to poison unwary creatures.<0>
+vn  28420
+ty  furniture
+wg  10
+ex  trapped poison
+we  take
+trt object
+trd poison
+trc 1
+
+$obj
+nm  wooden bow
+sh  a crude wooden bow
+lo  A crude wooden bow has been abandoned here.
+vn  28421
+ty  weapon
+v3  pierce
+wg  8
+ex  bow steady
+we  take ranged
+ap  damroll 8
+ap  crit    5
+
+
+$obj
+nm  triton corpse
+sh  a Triton's corpse
+lo  The corpse of a crucified Triton is here.
+vn  28422
+ty  npc_corpse
+wg  80
+ex  trapped
+we  take
+ed  triton corpse
+You've heard the grung like to make such grotesque examples of those who enter
+their territory without permission. He looks not to have died well. You shudder.
+~
+trt object
+trd slash
+trc 1
+
+$obj
+nm  gibbet sea elf corpse
+sh  a swinging gibbet
+lo  The decomposed corpse of a sea elf swings in a gibbet.
+vn  28423
+ty  furniture
+wg  100
+ex  trapped
+we  take
+ed  gibbet sea elf corpse
+You've heard the grung like to make such grotesque examples of those who enter
+their territory without permission. The sea elf is heavily decomposed, and
+smells so strongly you gag.
+~
+trt object
+trd pierce
+trc 1
+
+$obj
+nm  sahuagin impaled staked dead stake
+sh  a staked sahuagin
+lo  A dead sahuagin has been impaled on a stake and left here.
+vn  28424
+ty  npc_corpse
+wg  150
+ex  trapped
+we  take
+ed  sahuagin impaled staked dead stake
+The sahuagin has had a stake inserted into his rectum and has been left, while
+probably still alive, to slowly die as the stake worked his way right through
+his central mass, eventually erupting fom his mouth in a shower of blood and
+gore.  Grung sure do like to send a message.
+~
+trt object
+trd blunt
+trc 1
+
+$obj
+nm  midgaardian adventurer headless decapitated
+sh  a headless adventurer
+lo  A midgaardian adventurer has been decapitated and propped up here.
+vn  28425
+ty  npc_corpse
+wg  200
+ex  trapped magic
+we  take
+ed  midgaardian adventurer headless decapitated
+How easily this could have been you, you think.  Your spine tingles and you feel
+a sudden revulsion, strong enough that you suspect it may have a magical origin.
+You probably shouldn't risk interfering with this body.
+~
+trt object
+trd sleep
+trc 1
+
+$obj
+nm  ornate silver platter
+sh  an ornate silver platter
+lo  An ornate silver serving platter lies here.
+vn  28426
+ty  furniture
+wg  1
+ex  glow
+we  take
+ed  ornate silver platter
+The platter looks quite sophisticated for a sahuagin artifact, with recognisable
+figures and moderately intricate filigree decorating its underside.  You imagine
+it might be highly prized by their species.
+~
+
 # MOB RESETS
 
 # giant sea python - male
@@ -3406,7 +2639,7 @@ wield   28410
 inv     28415
 inv     28415
 
-#an uchuulon (male)
+# an uchuulon (male)
 $addmob
 mb      28415
 rm      28402
@@ -3414,7 +2647,7 @@ num     1
 wield   27395
 inv     28416
 
-#an uchuulon (female)
+# an uchuulon (female)
 $addmob
 mb      28416
 rm      28506
@@ -3422,4 +2655,106 @@ num     1
 wield   27395
 inv     28416
 
+# a green grung hunter
+$addmob
+mb      28417
+rm      28741
+num     1
+wield   28406
+body    27490
+
+# a green grung hunter
+$addmob
+mb      28418
+rm      28747
+num     1
+wield   28406
+body    27490
+
+# a green grung hunter
+$addmob
+mb      28419
+rm      28800
+num     1
+wield   28406
+body    27490
+
+# a green grung hunter
+$addmob
+mb      28420
+rm      28718
+num     1
+wield   28406
+body    27490
+
+# a green grung warrior
+$addmob
+mb      28421
+rm      28441
+num     4
+wield   28406
+shield  28405
+ranged  28421
+body    27490
+
+# a green grung warrior
+$addmob
+mb      28421
+rm      28447
+num     4
+wield   28406
+shield  28405
+ranged  28421
+body    27490
+
+# a green grung warrior
+$addmob
+mb      28421
+rm      28500
+num     4
+wield   28406
+shield  28405
+ranged  28421
+body    27490
+
+# a green grung warrior
+$addmob
+mb      28421
+rm      28418
+num     4
+wield   28406
+shield  28405
+ranged  28421
+body    27490
+
 # OBJECT RESETS
+
+# triton corpse
+$addobj
+ob      28422
+rm      28447
+lv      75
+
+# sea elf corpse in gibbet
+$addobj
+ob      28423
+rm      28440
+lv      90
+
+# staked sahuagin
+$addobj
+ob      28424
+rm      28499
+lv      90
+
+# decapitated adventurer
+$addobj
+ob      28425
+rm      28406
+lv      60
+
+# silver platter in sahuagin corpse
+$addobj
+ob      28426
+lv      50
+con     28424

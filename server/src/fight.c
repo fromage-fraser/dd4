@@ -1054,7 +1054,13 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                         else if (dt == gsn_shoot)
                         {
                                 dam *= 2;
-                                dam += dam * ch->pcdata->learned[gsn_accuracy] / 300;
+                                if (IS_NPC(ch))
+                                {
+                                    dam += dam * ch->level / 300;
+                                }
+                                else {
+                                    dam += dam * ch->pcdata->learned[gsn_accuracy] / 300;
+                                }
                         }
 
                         else if (dt == gsn_circle || dt == gsn_constrict || dt == gsn_thrust)
@@ -7057,8 +7063,7 @@ void do_shoot (CHAR_DATA *ch, char *argument)
         char arg[MAX_INPUT_LENGTH];
         int num, i;
 
-        if (IS_NPC(ch))
-                return;
+        /* Made this available to NPCs --Owl 29/3/24 */
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_shoot))
         {
@@ -7128,7 +7133,18 @@ void do_shoot (CHAR_DATA *ch, char *argument)
         WAIT_STATE(ch, PULSE_VIOLENCE);
         send_to_char("{WYou take aim and let loose!{x\n\r", ch);
 
-        if ( ( number_percent () < ch->pcdata->learned[gsn_shoot] )
+        if (IS_NPC(ch))
+        {
+            for (i = 0; i < (ch->level / 30); i++)
+                {
+                        one_hit(ch, victim, gsn_shoot, FALSE);
+
+                        if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                                break;
+                }
+
+        }
+        else if ( ( number_percent () < ch->pcdata->learned[gsn_shoot] )
         ||   ( IS_AFFECTED(victim, AFF_HOLD) ) )
         {
                 /* Shot check won't fail if victim is trapped/snared - Owl 11/6/22 */

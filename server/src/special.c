@@ -3769,134 +3769,6 @@ bool spec_sahuagin_prince (CHAR_DATA *ch)
 
 }
 
-
-/*
- * Owl 6/3/23, for Ota'ar Dar / Omu
- */
-bool spec_green_grung (CHAR_DATA *ch)
-{
-        CHAR_DATA *victim;
-        char      *spell;
-        int        sn;
-        bool       target_self;
-        char buf[MAX_STRING_LENGTH];
-
-        spell = "haste";
-        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Ghi iviah! tshiss iss nnash dlike!"); }
-
-        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
-        {
-                if (victim->deleted)
-                        continue;
-
-                if (victim->fighting == ch && !number_bits(1))
-                        break;
-        }
-
-        if (!victim)
-                return FALSE;
-
-        while (1)
-        {
-            int min_level;
-            target_self = TRUE;
-
-                switch ( number_range (0, 11) )
-                {
-                    case  0:
-                    case  1:
-                        if (!is_affected(ch, gsn_warcry))
-                        {
-                                if ( CAN_SPEAK(ch) ) { sprintf(buf,"I inn sstrrhang!"); }
-                                do_warcry( ch, "");
-                                return TRUE;
-                        }
-
-                    case  2:
-                        min_level = 1;
-                        spell = "poison";
-                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Sshai vill dekhannh ssikk int tie!"); }
-                        target_self = FALSE;
-                        break;
-
-                    case  3:
-                        if ( CAN_SPEAK(ch) ) { do_say(ch, "Nnash fhahat vill sharrt ihhai titlah!"); }
-                        do_kick( ch, "");
-                        return TRUE;
-
-                    case  4:
-                        min_level = 1;
-                        spell = "poison";
-                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Eit nnash dhaisshan!"); }
-                        target_self = FALSE;
-                        break;
-
-                    case  5:
-                        act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
-                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
-                        act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison( gsn_poison, ch->level, ch, victim );
-                        return TRUE;
-
-                    case  6:
-                        do_flying_headbutt( ch, victim->name);
-                        return TRUE;
-
-                    case  7:
-                        do_grapple( ch, victim->name);
-                        return TRUE;
-
-                    case  8:
-                        do_grapple( ch, victim->name);
-                        return TRUE;
-
-                    case  9:
-                        act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
-                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
-                        act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison( gsn_poison, ch->level, ch, victim );
-                        return TRUE;
-
-                    case  10:
-                        min_level = 35;
-                        if (is_affected(ch, gsn_haste))
-                                return FALSE;
-                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Grrang irrh fisst!"); }
-                        spell = "haste";
-                        target_self = TRUE;
-                        break;
-
-                    default:
-                        min_level = 1;
-                        spell = "poison";
-                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Sshai vill feel niasseitet!"); }
-                        target_self = FALSE;
-                        break;
-                }
-
-                if ( ch->level >= min_level )
-                        break;
-        }
-
-        if ( ( sn = skill_lookup( spell ) ) < 0 )
-                return FALSE;
-
-        do_say(ch,buf);
-
-        if (target_self)
-                act ("$c slaps at $s chest with $s webbed hands.", ch, NULL, NULL, TO_ROOM);
-        else
-        {
-                act ("$c claws at $N with $s green, webbed hands.", ch, NULL, victim, TO_NOTVICT);
-                act ("$c claws at you with $s green, webbed hands.", ch, NULL, victim, TO_VICT);
-        }
-
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
-
-        return TRUE;
-
-}
-
 /* Added all 6 specials below at same time for Ota'ar Dar -- Owl 30/9/23 */
 
 bool spec_sahuagin_infantry (CHAR_DATA *ch)
@@ -4392,6 +4264,123 @@ bool spec_sahuagin_lieutenant (CHAR_DATA *ch)
         return TRUE;
 }
 
+/*
+ * Owl 6/3/23, for Ota'ar Dar / Omu
+ */
+bool spec_green_grung (CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        char      *spell;
+        int        sn;
+        bool       target_self;
+        char buf[MAX_STRING_LENGTH];
+
+        spell = "haste";
+        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Ghi iviah! tshiss iss nnash dlike!"); }
+
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim->deleted)
+                        continue;
+
+                if (victim->fighting == ch && !number_bits(1))
+                        break;
+        }
+
+        if (!victim)
+                return FALSE;
+
+        while (1)
+        {
+            int min_level;
+            target_self = TRUE;
+
+                switch ( number_range (0, 11) )
+                {
+                    case  0:
+                    case  1:
+                        if (!is_affected(ch, gsn_warcry))
+                        {
+                                if ( CAN_SPEAK(ch) ) { sprintf(buf,"I inn sstrrhang!"); }
+                                do_warcry( ch, "");
+                                return TRUE;
+                        }
+
+                    case  2:
+                    case  3:
+                        if ( CAN_SPEAK(ch) ) { do_say(ch, "Nnash fhahat vill sharrt ihhai titlah!"); }
+                        do_kick( ch, "");
+                        return TRUE;
+
+                    case  4:
+                    case  5:
+                        act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
+                        act( "$n bites you!", ch, NULL, victim, TO_VICT    );
+                        act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
+                        spell_poison( gsn_poison, ch->level, ch, victim );
+                        spell_paralysis( gsn_paralysis, ch->level, ch, victim );
+                        return TRUE;
+
+                    case  6:
+                        do_flying_headbutt( ch, victim->name);
+                        return TRUE;
+
+                    case  7:
+                        do_grapple( ch, victim->name);
+                        return TRUE;
+
+                    case  8:
+                        do_grapple( ch, victim->name);
+                        return TRUE;
+
+                    case  9:
+                        act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
+                        act( "$n bites you!", ch, NULL, victim, TO_VICT    );
+                        act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
+                        spell_poison( gsn_poison, ch->level, ch, victim );
+                        spell_paralysis( gsn_paralysis, ch->level, ch, victim );
+                        return TRUE;
+
+                    case  10:
+                        min_level = 35;
+                        if (is_affected(ch, gsn_haste))
+                                return FALSE;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Grrang irrh fisst!"); }
+                        spell = "haste";
+                        target_self = TRUE;
+                        break;
+
+                    default:
+                        min_level = 1;
+                        spell = "paralysis";
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Sshai vill feel niasseitet!"); }
+                        target_self = FALSE;
+                        break;
+                }
+
+                if ( ch->level >= min_level )
+                        break;
+        }
+
+        if ( ( sn = skill_lookup( spell ) ) < 0 )
+                return FALSE;
+
+        do_say(ch,buf);
+
+        if (target_self)
+                act ("$c slaps at $s chest with $s webbed hands.", ch, NULL, NULL, TO_ROOM);
+        else
+        {
+                act ("$c claws at $N with $s green, webbed hands.", ch, NULL, victim, TO_NOTVICT);
+                act ("$c claws at you with $s green, webbed hands.", ch, NULL, victim, TO_VICT);
+        }
+
+        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+
+        return TRUE;
+
+}
+
 bool spec_red_grung (CHAR_DATA *ch)
 {
         CHAR_DATA *victim;
@@ -4457,6 +4446,21 @@ bool spec_red_grung (CHAR_DATA *ch)
                         spell = "acid blast";
                         break;
 
+                    case 7:
+                        min_level = 30;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Origato sia weyog banri wux pazien mrith nugri!"); }
+                        spell = "poison";
+                        if (!IS_NPC(victim)) {
+                            if ( ( victim->pcdata->condition[COND_FULL] > 0 )
+                            &&   ( victim->level < LEVEL_HERO ) ) {
+                                /* Red grung poison inflicts hunger on opponent*/
+                                act ("<173>You feel a sudden pang of hunger...<0>", ch, NULL, victim, TO_VICT);
+                                victim->pcdata->condition[COND_FULL] = 0;
+                            }
+                        }
+
+                        break;
+
                     default:
                         min_level = 15;
                         if ( CAN_SPEAK(ch) ) { sprintf(buf,"Xsio, wux re vorkin..."); }
@@ -4475,6 +4479,9 @@ bool spec_red_grung (CHAR_DATA *ch)
         do_say(ch,buf);
 
         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
+
+
+
         return TRUE;
 }
 
