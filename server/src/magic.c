@@ -9142,6 +9142,107 @@ void spell_nausea( int sn, int level, CHAR_DATA *ch, void *vo )
         return;
 }
 
+void spell_psychometry( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+        OBJ_DATA        *obj = (OBJ_DATA *) vo;
+        OBJ_INDEX_DATA  *container;
+        ROOM_INDEX_DATA *location;
+        int             door;
+        int             success = 0;
+
+        if ( ( obj->item_type != ITEM_KEY )
+        ||   ( ( obj->item_type = ITEM_KEY )
+            && ( obj->value[0] == 0 ) ) )
+        {
+                send_to_char( "You concentrate intensely while handling the item... nothing.\n\r", ch );
+                return;
+        }
+        else {
+            /* Note if value[0] references a container AND a room this will just return the container.
+               If it opens doors in multiple rooms, it will only check the one value[0] references. */
+
+            if ( ( container = get_obj_index( obj->value[0] ) ) )
+            {
+                if (container->value[2] == obj->pIndexData->vnum )
+                {
+                    success = 1;
+                }
+
+                if (success)
+                {
+                    send_to_char( "\n\r<6>You focus intensely on the object you are touching...\n\r\n\r<0>You see <14>", ch );
+
+                    send_to_char( container->short_descr, ch );
+
+                    act(" <0>in your mind's eye... you concentrate on making the image clearer...<558>\n\r", ch , container, NULL, TO_CHAR);
+
+                    if (!is_only_whitespace(container->description))
+                    {
+                        send_to_char( container->description, ch );
+                    }
+                    else {
+                        send_to_char( "You struggle to visualise the object more clearly--it is well-concealed.<559>", ch );
+                    }
+
+                    send_to_char( "\n\r\n\r<559><0><6>... the vision fades, and you return to your surroundings.<0>\n\r\n\r", ch );
+
+                    return;
+
+                }
+
+            }
+
+            /* If it got past container check, check if it is the vnum of a room with a door the key unlocks */
+
+            if ( ( location = get_room_index( obj->value[0] ) ) )
+            {
+                for ( door = 0; door <= 5; door++ )
+                {
+                    EXIT_DATA *pexit;
+
+                    if ( ( pexit = location->exit[door] ))
+                    {
+                        if ( pexit->key == obj->pIndexData->vnum )
+                        {
+                                success = 1;
+                        }
+                    }
+                }
+
+                if (success)
+                {
+                    send_to_char( "\n\r<6>You concentrate on the object as you touch it, and visualise a location...<0><558>\n\r\n\r", ch );
+
+                    ansi_color( GREY, ch );
+                    ansi_color( BOLD, ch );
+
+                    send_to_char( location->name, ch );
+                    send_to_char( "\n\r<558>", ch );
+
+                    ansi_color( NTEXT, ch );
+                    ansi_color( GREY, ch );
+
+                    send_to_char( "<558>", ch );
+                    send_to_char( location->description, ch );
+
+                    ansi_color( NTEXT, ch );
+                    ansi_color( NTEXT, ch );
+
+                    send_to_char( "\n\r<559><6>... the vision fades, and you return to your surroundings.<0>\n\r\n\r", ch );
+
+                    return;
+
+                }
+            }
+        }
+
+        if (!success) {
+            send_to_char( "You can't get any useful information from the object.\n\r", ch );
+            return;
+        }
+
+}
+
 /*
  * Some affect types cannot be dispelled
  */
