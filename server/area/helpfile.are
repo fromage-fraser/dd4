@@ -458,8 +458,12 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 
 
 {W March 2024{x
+-Nausea spell added (mostly for mobs)
+-Gravity functions at a more sensible speed
+-Psychometry spell added (post-60 roadmap)
+-Waitstates slashed on all minor buff spells
 -New area: Omu Canals, first area of new grung sector
--new trap type "snare" added
+-New trap type "snare" added
 -shoot skill available to mobs with bows
 -Mobprog triggers added to check char size and if an object is in the room
 -areas.txt, mobprogram.txt, scribe.pl, and scribe.docx updated
@@ -2566,6 +2570,14 @@ This spell reduces the strength of the victim, as well as reducing their
 regeneration rate.
 ~
 
+0 NAUSEA~
+Syntax: cast nausea <<victim>
+
+This spell has a random negative effect on its target's physical statistics,
+which is of cumulative duration and intensity.  Can be cured in the same way
+that poison can (the 'cure poison' spell, 'cell adjustment,' etc).
+~
+
 0 'POISON WEAPON'~
 Syntax: poison <<weapon>
 
@@ -3415,6 +3427,18 @@ these spells.  Type 'IDENTIFY <<object>' to receive their services.  The
 Sage in Anon, Magnus in Solace and the Loremaster in the Mud School will
 identify items, for 1 Gold.
 ~
+
+0 PSYCHOMETRY~
+Syntax: cast psychometry <<object>
+
+This spell is cast by the psionically-gifted individual on keys (or objects that
+function as keys in some way) to glean information about the object or door they
+unlock.
+
+If successful, the caster will receive a vision of the object the key opens, or
+the room containing the locked door the key unlocks.
+~
+
 
 0 INFRAVISION~
 Syntax: cast infravision

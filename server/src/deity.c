@@ -3090,6 +3090,7 @@ void prayer_healing (CHAR_DATA *ch)
                 affect_strip(ch, gsn_gouge);
                 affect_strip(ch, gsn_dirt);
                 affect_strip(ch, gsn_poison);
+                affect_strip(ch, gsn_nausea);
 
                 if (get_deity_stature(ch->pcdata->deity_patron) > DEITY_STATURE_MODERATE)
                 {

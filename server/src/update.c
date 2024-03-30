@@ -500,7 +500,7 @@ int hit_gain( CHAR_DATA *ch )
                         send_to_char( "<46>Yo<47>u r<48>es<49>is<48>t t<47>he <46>po<47>is<48>on <49>su<48>rg<47>in<46>g t<47>hr<48>ou<49>gh <48>yo<47>ur <46>ve<47>in<48>s.<0>\n\r",ch );
                     }
                     else {
-                        spell_poison( gsn_poison, ch->level, ch, ch );
+                        spell_nausea( gsn_nausea, ch->level, ch, ch );
                     }
                 }
                 gain /= 2;
@@ -962,7 +962,7 @@ void gain_condition( CHAR_DATA *ch, int iCond, int value )
                 return;
 
         condition = ch->pcdata->condition[iCond];
-        ch->pcdata->condition[iCond] = URANGE(-10, condition + value, 48);
+        ch->pcdata->condition[iCond] = URANGE(-10, condition + value, MAX_FOOD);
 
         if (ch->pcdata->condition[iCond] <= -8)
         {
@@ -1612,7 +1612,36 @@ void char_update( void )
                 }
                 else
                 {
-                        if (IS_AFFECTED(ch, AFF_POISON) || IS_AFFECTED(ch, AFF_PRAYER_PLAGUE))
+                        if (is_affected(ch, gsn_nausea) && IS_AFFECTED(ch, AFF_POISON))
+                        {
+                                send_to_char("You sweat and retch.\n\r", ch);
+                                act("$n sweats and retches.", ch, NULL, NULL, TO_ROOM);
+                                damage(ch, ch, number_range(3, 5), gsn_nausea, FALSE);
+
+                                /* dehydrating and hunger-making effect */
+
+                                if (!IS_NPC(ch)
+                                && ch->level < LEVEL_HERO
+                                && ch->level > 2
+                                && ch->sub_class != SUB_CLASS_VAMPIRE
+                                && !IS_AFFECTED(ch, AFF_NON_CORPOREAL) )
+                                {
+                                    if (ch->pcdata->condition[COND_FULL] > 0)
+                                    {
+                                        ch->pcdata->condition[COND_FULL]--;
+                                    }
+                                    if (ch->pcdata->condition[COND_THIRST] > 0)
+                                    {
+                                        ch->pcdata->condition[COND_THIRST]--;
+                                    }
+                                }
+
+                                if (IS_AFFECTED(ch, AFF_MEDITATE))
+                                        REMOVE_BIT(ch->affected_by, AFF_MEDITATE);
+                        }
+
+                        if ( (is_affected(ch, gsn_poison) && IS_AFFECTED(ch, AFF_POISON) )
+                        || IS_AFFECTED(ch, AFF_PRAYER_PLAGUE))
                         {
                                 send_to_char("You shiver and suffer.\n\r", ch);
                                 act("$n shivers and suffers.", ch, NULL, NULL, TO_ROOM);

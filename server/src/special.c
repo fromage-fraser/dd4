@@ -3571,7 +3571,7 @@ bool spec_sahuagin_baron (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison( gsn_poison, ch->level, ch, victim );
+                        spell_nausea( gsn_nausea, ch->level, ch, victim );
                         return TRUE;
 
                     case  6:

@@ -658,6 +658,7 @@ int     gsn_trapset;
 int     gsn_trapstat;
 int     gsn_trapremove;
 int     gsn_psychometry;
+int     gsn_nausea;
 
 
 /*
