@@ -1927,20 +1927,25 @@ void spell_cure_poison( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA *victim = (CHAR_DATA *) vo;
 
-        if (!is_affected(victim, gsn_poison))
+        if ( ( !is_affected(victim, gsn_poison) )
+        &&   ( !is_affected(victim, gsn_nausea) ) )
                 return;
 
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
         {
-                send_to_char("Objects cannot be poisoned.\n\r", ch);
+                send_to_char("Objects cannot be poisoned or nauseated.\n\r", ch);
                 return;
         }
 
-        affect_strip(victim, gsn_poison);
+        if (is_affected(victim, gsn_poison))
+            affect_strip(victim, gsn_poison);
+
+        if (is_affected(victim, gsn_nausea))
+            affect_strip(victim, gsn_nausea);
 
         if (ch != victim)
         {
-                act( "You purge the poison from $M.", ch, NULL, victim, TO_CHAR );
+                act( "You purge the illness from $M.", ch, NULL, victim, TO_CHAR );
                 check_group_bonus(ch);
         }
 
@@ -5519,7 +5524,7 @@ void spell_gas_breath( int sn, int level, CHAR_DATA *ch, void *vo )
                         if (is_affected(vch,gsn_dragon_shield))
                                 dam /= 2;
                         else
-                                spell_poison( gsn_poison, level, ch, vch );
+                                spell_nausea( gsn_nausea, level, ch, vch );
 
                         damage( ch, vch, dam, sn, FALSE );
                 }
@@ -5711,12 +5716,24 @@ void spell_biofeedback ( int sn, int level, CHAR_DATA *ch, void *vo )
 void spell_cell_adjustment ( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA *victim = (CHAR_DATA *) vo;
+        int well_count = 0;
 
         if ( is_affected( victim, gsn_poison ) )
         {
                 affect_strip( victim, gsn_poison );
                 send_to_char( "<229>A w<228>ar<227>m f<226>ee<220>li<226>ng <227>ru<228>ns <229>th<228>ro<227>ug<226>h y<220>ou<226>r b<227>od<228>y.<0>\n\r", victim );
                 act( "$N looks better.", ch, NULL, victim, TO_NOTVICT );
+                well_count = 1;
+        }
+
+        if ( is_affected( victim, gsn_nausea ) )
+        {
+                affect_strip( victim, gsn_nausea );
+                if (well_count == 0)
+                {
+                    send_to_char( "<229>A w<228>ar<227>m f<226>ee<220>li<226>ng <227>ru<228>ns <229>th<228>ro<227>ug<226>h y<220>ou<226>r b<227>od<228>y.<0>\n\r", victim );
+                    act( "$N looks better.", ch, NULL, victim, TO_NOTVICT );
+                }
         }
 
         if ( is_affected( victim, gsn_curse  ) )
@@ -8888,14 +8905,25 @@ void spell_runic_cure( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA *victim = (CHAR_DATA *) vo;
 
-        if (!is_affected(victim, gsn_poison))
+        if ( ( !is_affected(victim, gsn_poison) )
+        &&   ( !is_affected(victim, gsn_nausea) ) )
                 return;
 
-        affect_strip(victim, gsn_poison);
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("Objects cannot be poisoned or nauseated.\n\r", ch);
+                return;
+        }
+
+        if (is_affected(victim, gsn_poison))
+            affect_strip(victim, gsn_poison);
+
+        if (is_affected(victim, gsn_nausea))
+            affect_strip(victim, gsn_nausea);
 
         if (ch != victim)
         {
-                act( "You purge the poison from $M.", ch, NULL, victim, TO_CHAR );
+                act( "You purge the illness from $M.", ch, NULL, victim, TO_CHAR );
                 check_group_bonus(ch);
         }
 
@@ -8908,20 +8936,210 @@ void spell_runic_ward( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA *victim = (CHAR_DATA *) vo;
 
-        if (!is_affected(victim, gsn_poison))
+        if ( ( !is_affected(victim, gsn_poison) )
+        &&   ( !is_affected(victim, gsn_nausea) ) )
                 return;
 
-        affect_strip(victim, gsn_poison);
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("Objects cannot be poisoned or nauseated.\n\r", ch);
+                return;
+        }
+
+        if (is_affected(victim, gsn_poison))
+            affect_strip(victim, gsn_poison);
+
+        if (is_affected(victim, gsn_nausea))
+            affect_strip(victim, gsn_nausea);
 
         if (ch != victim)
         {
-                act( "You purge the poison from $M.", ch, NULL, victim, TO_CHAR );
+                act( "You purge the illness from $M.", ch, NULL, victim, TO_CHAR );
                 check_group_bonus(ch);
         }
 
         send_to_char("<229>A w<228>ar<227>m f<226>ee<220>li<226>ng <227>ru<228>ns <229>th<228>ro<227>ug<226>h y<220>ou<226>r b<227>od<228>y.<0>\n\r", victim);
         act("$N looks better.", ch, NULL, victim, TO_NOTVICT);
+}
 
+/*
+ * Psionic skill for getting keys to give players information about what they unlock.
+ * -- Owl 30/3/24
+ */
+
+void spell_psychometry( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+        OBJ_DATA        *obj = (OBJ_DATA *) vo;
+        OBJ_INDEX_DATA  *container;
+        ROOM_INDEX_DATA *location;
+        int             door;
+        int             success = 0;
+
+        if ( ( obj->item_type != ITEM_KEY )
+        ||   ( ( obj->item_type = ITEM_KEY )
+            && ( obj->value[0] == 0 ) ) )
+        {
+                send_to_char( "You concentrate intensely while handling the item... nothing.\n\r", ch );
+                return;
+        }
+        else {
+            /* Note if value[0] references a container AND a room this will just return the container.
+               If it opens doors in multiple rooms, it will only check the one value[0] references. */
+
+            if ( ( container = get_obj_index( obj->value[0] ) ) )
+            {
+                if (container->value[2] == obj->pIndexData->vnum )
+                {
+                    success = 1;
+                }
+
+                if (success)
+                {
+                    send_to_char( "\n\r<6>You focus intensely on the object you are touching...\n\r\n\r<0>You see <14>", ch );
+
+                    send_to_char( container->short_descr, ch );
+
+                    act(" <0>in your mind's eye... you concentrate on making the image clearer...<558>\n\r", ch , container, NULL, TO_CHAR);
+
+                    if (!is_only_whitespace(container->description))
+                    {
+                        send_to_char( container->description, ch );
+                    }
+                    else {
+                        send_to_char( "You struggle to visualise the object more clearly--it is well-concealed.<559>", ch );
+                    }
+
+                    send_to_char( "\n\r\n\r<559><0><6>... the vision fades, and you return to your surroundings.<0>\n\r\n\r", ch );
+
+                    return;
+
+                }
+
+            }
+
+            /* If it got past container check, check if it is the vnum of a room with a door the key unlocks */
+
+            if ( ( location = get_room_index( obj->value[0] ) ) )
+            {
+                for ( door = 0; door <= 5; door++ )
+                {
+                    EXIT_DATA *pexit;
+
+                    if ( ( pexit = location->exit[door] ))
+                    {
+                        if ( pexit->key == obj->pIndexData->vnum )
+                        {
+                                success = 1;
+                        }
+                    }
+                }
+
+                if (success)
+                {
+                    send_to_char( "\n\r<6>You concentrate on the object as you touch it, and visualise a location...<0><558>\n\r\n\r", ch );
+
+                    ansi_color( GREY, ch );
+                    ansi_color( BOLD, ch );
+
+                    send_to_char( location->name, ch );
+                    send_to_char( "\n\r<558>", ch );
+
+                    ansi_color( NTEXT, ch );
+                    ansi_color( GREY, ch );
+
+                    send_to_char( "<558>", ch );
+                    send_to_char( location->description, ch );
+
+                    ansi_color( NTEXT, ch );
+                    ansi_color( NTEXT, ch );
+
+                    send_to_char( "\n\r<559><6>... the vision fades, and you return to your surroundings.<0>\n\r\n\r", ch );
+
+                    return;
+
+                }
+            }
+        }
+
+        if (!success) {
+            send_to_char( "You can't get any useful information from the object.\n\r", ch );
+            return;
+        }
+
+}
+
+void spell_nausea( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+        CHAR_DATA  *victim = (CHAR_DATA *) vo;
+        AFFECT_DATA af;
+        AFFECT_DATA *paf;
+        int target_stat = (rand() % 5) + 1;
+
+        if (is_affected(victim, gsn_prayer_plague))
+                return;
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("You can't nauseate an object.\n\r", ch);
+                return;
+        }
+
+        if (!IS_NPC(victim) && number_percent() <
+            victim->pcdata->learned[gsn_resist_toxin] && victim->gag < 2)
+        {
+            send_to_char("<46>Yo<47>u r<48>es<49>is<48>t t<47>he <46>wa<47>ve <48>of <49>na<48>us<47>ea <46>th<47>re<48>at<49>en<48>in<47>g t<46>o o<47>ve<48>rw<49>he<48>lm <47>yo<46>u.<0>\n\r",victim );
+            return;
+        }
+
+        af.type      = sn;
+        af.duration = number_range(2, (2 + (level/10)));
+        af.bitvector = AFF_POISON;
+
+        af.location  = target_stat;
+        af.modifier  = -1;
+
+        for (paf = victim->affected; paf; paf = paf->next)
+        {
+                if (paf->type == sn)
+                {
+                        af.duration = number_range(2, (2 + (level/10)));
+                        if (paf->modifier <= -30)
+                        {
+                                af.modifier = 0;
+                                af.duration = 0;
+                        }
+                        break;
+                }
+        }
+
+        affect_join( victim, &af );
+
+        if ( ch != victim )
+                send_to_char( "You successfully nauseate your victim.\n\r", ch );
+
+        switch (target_stat)
+        {
+            case APPLY_STR:
+                send_to_char( "<154>You feel extremely weak.<0>\n\r", victim );
+                break;
+
+            case APPLY_WIS:
+                send_to_char( "<154>You regret every decision you have ever made.<0>\n\r", victim );
+                break;
+
+            case APPLY_CON:
+                send_to_char( "<154>You hope there's a bathroom nearby.<0>\n\r", victim );
+                break;
+
+            case APPLY_INT:
+                send_to_char( "<154>Your head feels stuffed with wool.<0>\n\r", victim );
+                break;
+
+            case APPLY_DEX:
+                send_to_char( "<154>You trip over your own feet.<0>\n\r", victim );
+                break;
+        }
+        return;
 }
 
 void spell_psychometry( int sn, int level, CHAR_DATA *ch, void *vo )

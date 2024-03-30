@@ -1038,7 +1038,7 @@ void do_forage(CHAR_DATA *ch,  char *argument)
         }
 
         send_to_char("You forage about and find some food to eat.\n\r", ch);
-        ch->pcdata->condition[COND_FULL] += UMIN(30, 48 - ch->pcdata->condition[COND_FULL]);
+        ch->pcdata->condition[COND_FULL] += UMIN(30, MAX_FOOD - ch->pcdata->condition[COND_FULL]);
 }
 
 
