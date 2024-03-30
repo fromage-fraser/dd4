@@ -2655,7 +2655,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "armor", &gsn_armor,
                 TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
-                spell_armor, 5, 12,
+                spell_armor, 5, 1,
                 "", "Your magical armour dissipates."
         },
 
@@ -2683,7 +2683,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "bless", &gsn_bless,
                 TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
-                spell_bless, 5, 12,
+                spell_bless, 5, 1,
                 "", "You feel less righteous."
         },
 
@@ -2824,7 +2824,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "cure poison", &gsn_cure_poison,
                 TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384|131072,
-                spell_cure_poison, 5, 12,
+                spell_cure_poison, 5, 1,
                 "", "!Cure Poison!"
         },
 
@@ -2845,42 +2845,42 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "detect good", &gsn_detect_good,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384|131072,
-                spell_detect_good, 5, 12,
+                spell_detect_good, 5, 1,
                 "", "<228>The yellow in your vision disappears.<0>"
         },
 
         {
                 "detect evil", &gsn_detect_evil,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384|131072,
-                spell_detect_evil, 5, 12,
+                spell_detect_evil, 5, 1,
                 "", "<124>The red in your vision disappears.<0>"
         },
 
         {
                 "detect hidden", &gsn_detect_hidden,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_detect_hidden, 5, 12,
+                spell_detect_hidden, 5, 1,
                 "", "You feel less aware of your surroundings."
         },
 
         {
                 "detect invis", &gsn_detect_invis,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_detect_invis, 5, 12,
+                spell_detect_invis, 5, 1,
                 "", "You no longer see invisible objects."
         },
 
         {
                 "detect sneak", &gsn_detect_sneak,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_detect_sneak, 5, 20,
+                spell_detect_sneak, 5, 1,
                 "", "You feel less observant."
         },
 
         {
                 "detect magic", &gsn_detect_magic,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_detect_magic, 5, 12,
+                spell_detect_magic, 5, 1,
                 "", "<27>The blue in your vision disappears.<0>"
         },
 
@@ -2971,7 +2971,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "fly", &gsn_fly,
                 TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
-                spell_fly, 10, 18,
+                spell_fly, 10, 1,
                 "", "You feel the pull of gravity slowly return."
         },
 
@@ -2993,7 +2993,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "giant strength", &gsn_giant_strength,
                 TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
-                spell_giant_strength, 20, 12,
+                spell_giant_strength, 20, 1,
                 "", "You feel suddenly somewhat weaker."
         },
 
@@ -3042,7 +3042,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "infravision", &gsn_infravision,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_infravision, 5, 18,
+                spell_infravision, 5, 1,
                 "", "You no longer see in the dark."
         },
 
@@ -3063,7 +3063,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "invis", &gsn_invis,
                 TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
-                spell_invis, 5, 12,
+                spell_invis, 5, 1,
                 "", "You are no longer invisible."
         },
 
@@ -3105,7 +3105,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "pass door", &gsn_pass_door,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_pass_door, 20, 12,
+                spell_pass_door, 20, 1,
                 "", "You feel solid again."
         },
 
@@ -3140,14 +3140,14 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "refresh", &gsn_refresh,
                 TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
-                spell_refresh, 12, 18,
+                spell_refresh, 12, 1,
                 "refresh", "!Refresh!"
         },
 
         {
                 "remove curse", &gsn_remove_curse,
                 TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
-                spell_remove_curse, 5, 12,
+                spell_remove_curse, 5, 1,
                 "", "!Remove Curse!"
         },
 
@@ -3161,21 +3161,21 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "sense traps", &gsn_sense_traps,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_sense_traps, 15, 12,
+                spell_sense_traps, 15, 1,
                 "", "You feel less perspicacious."
         },
 
         {
                 "shield", &gsn_shield,
                 TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
-                spell_shield, 12, 18,
+                spell_shield, 12, 1,
                 "", "Your force shield shimmers then fades away."
         },
 
         {
                 "dragon shield", &gsn_dragon_shield,
                 TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
-                spell_dragon_shield, 12, 18,
+                spell_dragon_shield, 12, 1,
                 "", "You feel vulnerable once again."
         },
 
@@ -3196,7 +3196,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "stone skin", &gsn_stone_skin,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_stone_skin, 12, 18,
+                spell_stone_skin, 12, 1,
                 "", "Your skin feels soft again."
         },
 
@@ -3210,7 +3210,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "summon familiar", &gsn_summon_familiar,
                 TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
-                spell_summon_familiar, 100, 12,
+                spell_summon_familiar, 100, 1,
                 "", "!Summon Familiar!"
         },
 
@@ -3224,7 +3224,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "ventriloquate", &gsn_ventriloquate,
                 TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
-                spell_ventriloquate, 5, 12,
+                spell_ventriloquate, 5, 1,
                 "", "!Ventriloquate!"
         },
 
@@ -3743,7 +3743,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "battle aura", &gsn_battle_aura,
                 TYPE_STR, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_null, 0, 8,
+                spell_null, 0, 1,
                 "", "You feel less sure of yourself."
         },
 
@@ -3757,7 +3757,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "meditate", &gsn_meditate,
                 TYPE_STR, TAR_IGNORE, POS_RESTING, 16384,
-                spell_null, 0, 12,
+                spell_null, 0, 1,
                 "", "You awaken from your trance."
         },
 
@@ -3848,7 +3848,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "sneak", &gsn_sneak,
                 TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
-                spell_null, 0, 12,
+                spell_null, 0, 1,
                 "", NULL
         },
 
@@ -4394,7 +4394,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "adrenaline control", &gsn_adrenaline_control,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_adrenaline_control, 6, 12,
+                spell_adrenaline_control, 6, 1,
                 "", "The adrenaline rush wears off."
         },
 
@@ -4437,21 +4437,21 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "cell adjustment", &gsn_cell_adjustment,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_cell_adjustment, 8, 12,
+                spell_cell_adjustment, 8, 1,
                 "", "!Cell Adjustment!"
         },
 
         {
                 "chameleon power", &gsn_chameleon_power,
                 TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
-                spell_null, 0, 12,
+                spell_null, 0, 1,
                 "", "!Chameleon Power!"
         },
 
         {
                 "combat mind", &gsn_combat_mind,
                 TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
-                spell_combat_mind, 15, 12,
+                spell_combat_mind, 15, 1,
                 "", "Your battle sense has faded."
         },
 
@@ -4472,7 +4472,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "complete healing", &gsn_complete_healing,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_complete_healing, 100, 12,
+                spell_complete_healing, 100, 1,
                 "", "!Complete Healing!"
         },
 
@@ -4521,7 +4521,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "displacement", &gsn_displacement,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_displacement, 10, 12,
+                spell_displacement, 10, 1,
                 "", "You are no longer displaced."
         },
 
@@ -4535,7 +4535,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "ectoplasmic form", &gsn_ectoplasmic_form,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_ectoplasmic_form, 20, 12,
+                spell_ectoplasmic_form, 20, 1,
                 "", "You feel solid again."
         },
 
@@ -4549,7 +4549,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "energy containment", &gsn_energy_containment,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_energy_containment, 10, 12,
+                spell_energy_containment, 10, 1,
                 "", "You no longer absorb energy."
         },
 
@@ -4563,14 +4563,14 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "enhanced strength", &gsn_enhanced_strength,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_enhanced_strength, 20, 12,
+                spell_enhanced_strength, 20, 1,
                 "", "Your strength is no longer enhanced."
         },
 
         {
                 "flesh armor", &gsn_flesh_armor,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_flesh_armor, 15, 12,
+                spell_flesh_armor, 15, 1,
                 "", "<81>Your skin returns to normal.<0>"
         },
 
@@ -4584,7 +4584,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "inertial barrier", &gsn_inertial_barrier,
                 TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
-                spell_inertial_barrier, 40, 24,
+                spell_inertial_barrier, 40, 18,
                 "", "Your inertial barrier dissipates."
         },
 
@@ -4598,28 +4598,28 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "intellect fortress", &gsn_intellect_fortress,
                 TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
-                spell_intellect_fortress, 25, 24,
+                spell_intellect_fortress, 25, 1,
                 "", "Your intellectual fortress crumbles."
         },
 
         {
                 "lend health", &gsn_lend_health,
                 TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
-                spell_lend_health, 10, 12,
+                spell_lend_health, 10, 1,
                 "", "!Lend Health!"
         },
 
         {
                 "levitation", &gsn_levitation,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_levitation, 10, 18,
+                spell_levitation, 10, 1,
                 "", "The sensation of gravity gently returns to your body."
         },
 
         {
                 "mental barrier", &gsn_mental_barrier,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_mental_barrier, 8, 12,
+                spell_mental_barrier, 8, 1,
                 "", "Your mental barrier breaks down."
         },
 
@@ -4661,28 +4661,28 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "psychic healing", &gsn_psychic_healing,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_psychic_healing, 20, 12,
+                spell_psychic_healing, 20, 1,
                 "", "!Psychic Healing!"
         },
 
         {
                 "shadow form", &gsn_shadow_form,
                 TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
-                spell_null, 0, 12,
+                spell_null, 0, 1,
                 "", "You no longer move in the shadows."
         },
 
         {
                 "share strength", &gsn_share_strength,
                 TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
-                spell_share_strength, 8, 12,
+                spell_share_strength, 8, 1,
                 "", "You no longer share strength with another."
         },
 
         {
                 "thought shield", &gsn_thought_shield,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_thought_shield, 5, 12,
+                spell_thought_shield, 5, 1,
                 "", "You no longer feel so protected."
         },
 
@@ -4752,7 +4752,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "bark skin", &gsn_bark_skin,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_bark_skin, 10, 12,
+                spell_bark_skin, 10, 1,
                 "", "You no longer feel like a tree."
         },
 
@@ -4801,7 +4801,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "mass sanctuary", &gsn_mass_sanctuary,
                 TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
-                spell_mass_sanctuary, 200, 36,
+                spell_mass_sanctuary, 200, 24,
                 "", "<250>The white aura around your body fades.<0>"
         },
 
@@ -4899,7 +4899,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "summon demon", &gsn_summon_demon,
                 TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
-                spell_summon_demon, 100, 12,
+                spell_summon_demon, 100, 4,
                 "", "!Summon Demon!"
         },
 
@@ -5256,28 +5256,28 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "deter", &gsn_deter,
                 TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
-                spell_deter, 5, 12,
+                spell_deter, 5, 1,
                 "", "Monsters seem less intimidated by you..."
         },
 
         {
                 "astral sidestep", &gsn_astral_sidestep,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_astral_sidestep, 5, 12,
+                spell_astral_sidestep, 5, 1,
                 "", "You rematerialise in the physical plane."
         },
 
         {
                 "mist walk", &gsn_mist_walk,
                 TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
-                spell_null, 5, 12,
+                spell_null, 5, 1,
                 "", "Your body reverts to its normal state."
         },
 
         {
                 "gaias warning", &gsn_gaias_warning,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_gaias_warning, 5, 12,
+                spell_gaias_warning, 5, 1,
                 "", "You feel less astute."
         },
 
@@ -5291,21 +5291,21 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "resist magic", &gsn_resist_magic,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_resist_magic, 5, 12,
+                spell_resist_magic, 5, 1,
                 "", "You feel more vulnerable to magic."
         },
 
         {
                 "summon avatar", &gsn_summon_avatar,
                 TYPE_INT, TAR_IGNORE, POS_FIGHTING, 16384,
-                spell_summon_avatar, 100, 18,
+                spell_summon_avatar, 100, 4,
                 "", "!Summon Avatar!"
         },
 
         {
                 "feed", &gsn_feed,
                 TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
-                spell_null, 0, 18,
+                spell_null, 0, 12,
                 "", "!Feed!"
         },
 
@@ -5319,7 +5319,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "aura of fear", &gsn_aura_of_fear,
                 TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
-                spell_null, 0, 18,
+                spell_null, 0, 1,
                 "aura of fear", "!Aura Of Fear!"
         },
 
@@ -5736,19 +5736,19 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "chant of battle", "Your battle chant ends."
         },
 
-          {
-                  "chant of vigour", &gsn_chant_of_vigour,
-                  TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
-                  spell_null, 0, 0,
-                  "chant of vigour", "Your chant of vigour ends."
-          },
+        {
+                "chant of vigour", &gsn_chant_of_vigour,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
+                spell_null, 0, 0,
+                "chant of vigour", "Your chant of vigour ends."
+        },
 
-          {
-                  "chant of enfeeblement", &gsn_chant_of_enfeeblement,
-                  TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384|32768,
-                  spell_null, 0, 0,
-                  "chant of enfeeblement", "!Chant of Enfeeblement!"
-          },
+        {
+                "chant of enfeeblement", &gsn_chant_of_enfeeblement,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384|32768,
+                spell_null, 0, 0,
+                "chant of enfeeblement", "!Chant of Enfeeblement!"
+        },
 
         {
                 "chant of pain", &gsn_chant_of_pain,
@@ -5767,7 +5767,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "breathe water", &gsn_breathe_water,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_breathe_water, 10, 12,
+                spell_breathe_water, 10, 1,
                 "", "Your lungs revert to normal."
         },
 
@@ -5816,28 +5816,28 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "resist heat", &gsn_resist_heat,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_resist_heat, 15, 12,
+                spell_resist_heat, 15, 1,
                 "resist heat", "You feel more vulnerable to heat and flame."
         },
 
         {
                 "resist cold", &gsn_resist_cold,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_resist_cold, 15, 12,
+                spell_resist_cold, 15, 1,
                 "resist cold", "You feel more vulnerable to cold and ice."
         },
 
         {
                 "resist lightning", &gsn_resist_lightning,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 4,
-                spell_resist_lightning, 15, 12,
+                spell_resist_lightning, 15, 1,
                 "resist lightning", "You feel more vulnerable to electricity."
         },
 
         {
                 "resist acid", &gsn_resist_acid,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 128,
-                spell_resist_acid, 15, 12,
+                spell_resist_acid, 15, 1,
                 "resist acid", "You feel more vulnerable to acid."
         },
 
@@ -5900,7 +5900,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "detect curse", &gsn_detect_curse,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
-                spell_detect_curse, 5, 12,
+                spell_detect_curse, 5, 1,
                 "", "You no longer feel an affinity for the accursed."
         },
 
@@ -5914,7 +5914,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "soar", &gsn_soar,
                 TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
-                spell_null, 0, 24,
+                spell_null, 0, 18,
                 "", "!Soar!"
         },
 

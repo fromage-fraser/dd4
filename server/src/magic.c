@@ -4171,7 +4171,7 @@ void spell_know_alignment( int sn, int level, CHAR_DATA *ch, void *vo )
         else if ( ap >  100 ) msg = "$N is often kind and thoughtful.";
         else if ( ap > -100 ) msg = "$N doesn't have a firm moral commitment.";
         else if ( ap > -350 ) msg = "$N lies to $S friends.";
-        else if ( ap > -700 ) msg = "$N's slash tears out your heart!";
+        else if ( ap > -700 ) msg = "$N shows no remorse for $S actions, regardless of whom $E hurts.";
         else msg = "I'd rather just not say anything at all about $N.";
 
         act( msg, ch, NULL, victim, TO_CHAR );

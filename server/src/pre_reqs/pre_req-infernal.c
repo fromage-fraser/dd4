@@ -1,6 +1,6 @@
 /* Last modified 17/7/22 - Owl */
 
-/* Total Pre_Reqs == 27  */
+/* Total Pre_Reqs == 29  */
 
 {&gsn_second_attack,            &gsn_infernalist_base,          40,     PRE_INFERNALIST},
 
@@ -24,6 +24,9 @@
 
 {&gsn_detect_good,              &gsn_group_divination,          85,     PRE_INFERNALIST},
 {&gsn_detect_good,              &gsn_infernalist_base,          30,     PRE_INFERNALIST},
+
+{&gsn_detect_evil,              &gsn_group_divination,          85,     PRE_INFERNALIST},
+{&gsn_detect_evil,              &gsn_infernalist_base,          30,     PRE_INFERNALIST},
 
 {&gsn_fireshield,               &gsn_group_mentald,             80,     PRE_INFERNALIST},
 {&gsn_fireshield,               &gsn_control_flames,            75,     PRE_INFERNALIST},
