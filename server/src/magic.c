@@ -9170,15 +9170,14 @@ bool skill_cannot_be_dispelled (int sn)
 }
 
 bool is_only_whitespace(const char* str) {
-    while (*str) { // Loop until the end of the string
-        if (!isspace((unsigned char)*str)) { // Check if the current char is not a whitespace
-            return 0; // Return 0 if a non-whitespace character is found
+    while (*str) {
+        if (!isspace((unsigned char)*str)) {
+            return 0;
         }
-        str++; // Move to the next character
+        str++;
     }
-    return 1; // Return 1 if only whitespace characters were found
+    return 1;
 }
-
 
 /* EOF magic.c */
 
