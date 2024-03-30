@@ -269,7 +269,7 @@ void violence_update (void)
                                 {
                                         if (tmp < 33)
                                         {
-                                                act( "{Y$c shrieks '$N must be DESTROYED!'{x", ch, NULL, victim, TO_NOTVICT );
+                                                act( "{Y$c shrieks '$C must be DESTROYED!'{x", ch, NULL, victim, TO_NOTVICT );
                                                 act( "{Y$c shrieks 'You must be DESTROYED!'{x", ch, NULL, victim, TO_VICT );
                                         }
                                         else if (tmp < 66)
@@ -279,7 +279,7 @@ void violence_update (void)
                                         }
                                         else
                                         {
-                                                act( "{Y$c screams 'Unhand my comrade, $N!'{x", ch, NULL, victim, TO_NOTVICT );
+                                                act( "{Y$c screams 'I demand that $N unhand my comrade!'{x", ch, NULL, victim, TO_NOTVICT );
                                                 act( "{Y$c screams 'Unhand my comrade, fiend!'{x", ch, NULL, victim, TO_VICT );
                                         }
                                 }
@@ -287,12 +287,12 @@ void violence_update (void)
                                 {
                                         if (tmp < 50)
                                         {
-                                                act( "{Y$c suddenly lunges at $C!{x", ch, NULL, victim, TO_NOTVICT );
+                                                act( "{Y$c suddenly lunges at $N!{x", ch, NULL, victim, TO_NOTVICT );
                                                 act( "{Y$c suddenly lunges at you!{x", ch, NULL, victim, TO_VICT );
                                         }
                                         else
                                         {
-                                                act( "{Y$c rears and leaps at $C!{x", ch, NULL, victim, TO_NOTVICT );
+                                                act( "{Y$c rears and leaps at $N!{x", ch, NULL, victim, TO_NOTVICT );
                                                 act( "{Y$c rears and leaps at you!{x", ch, NULL, victim, TO_VICT );
                                         }
                                 }
