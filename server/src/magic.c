@@ -9179,6 +9179,7 @@ bool is_only_whitespace(const char* str) {
     return 1;
 }
 
+
 /* EOF magic.c */
 
 
