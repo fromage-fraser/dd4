@@ -12,7 +12,7 @@ v2.0, March 2024.
 
 DD Area Scribe or Scribe is a tool for producing formatted area files for the Dragons Domain Envy-style MUD. DD area files retain the Envy MUD format, with changes to the `#AREA` header information and the addition of new variables and flag values to other sections.
 
-Scribe is a script that reads a simplified text source file containing all area information, validates the information, and if no serious errors are found, outputs a formatted area file. Scribe is written in Perl and is run from the command line (see Section 2).
+Scribe is a script that reads a simplified text source file containing all area information, validates the information, and if no serious errors are found, outputs a formatted area file. Scribe is written in Perl and is run from the command line (see the <<Usage>> section for more information).
 
 Scribe was written as an alternative to writing area files by hand or by using the existing Windows tool _MZF_. The advantages and disadvantages of each of these systems might be summarised:
 
@@ -114,24 +114,39 @@ lv	5
 act	scavenger wimpy stay_area
 ----
 
-(Field/value pairs for each type of block are discussed in detail in Section 5 onwards.)
-Field/value pairs can be arranged in any order within the block. Multiple definition of the same field can be made, although only the last instance will be used. The dollar sign $ at the beginning of a line indicates the beginning of a new block, so should be avoided.
-Your source file will consist of a series of blocks of any type in any order. Use your favourite text editor to produce the source file. All text before the first block header is ignored, so you can add comments if you wish. Your source file must contain an $area block in order to be compiled without error.
+(Field/value pairs for each type of block are discussed in detail in <<Area header and base vnum definition>> onwards.)
+
+Field/value pairs can be arranged in any order within the block. Multiple definition of the same field can be made, although only the last instance will be used. The dollar sign (`$`) at the beginning of a line indicates the beginning of a new block, so should be avoided.
+
+Your source file will consist of a series of blocks of any type in any order. Use your favourite text editor to produce the source file. All text before the first block header is ignored, so you can add comments if you wish.
+
+Your source file must contain an `$area` block in order to be compiled without error.
+
 Source file format:
-Any number of comments at the start of the file.
-$area	<area header information>
-$...	<mobile, room, object, etc blocks as desired>
-You may add comments at any point in your area file by prefixing them with a non-alphanumeric symbol that is not a dollar sign $, e.g. #, ; or whatever symbol you prefer.
+
+[subs="quotes"]
+----
+_Any number of comments at the start of the file._
+$area	_&lt;area header information>_
+$...	_&lt;mobile, room, object, etc blocks as desired>_
+----
+
+You may add comments at any point in your area file by prefixing them with a non-alphanumeric symbol that is not a dollar sign (`$`).
+For example, `#`, `;`, or whatever symbol you prefer.
+
+----
 . This is a comment
 # So is this
 ; The line below is a header
 $mob
 . This is a comment within a $mob block
+----
 
 Note
 Make sure that you hard-wrap lines of text in multi-line text blocks to under 80 columns, i.e. supply a carriage-return at the end of every line. Make sure your text editor isn't soft-wrapping your text!
 
-5. Area header and base vnum definition
+=== Area header and base vnum definition
+
 The area header block defines the #AREA section of the final area file. It describes the name and author of the area, and character access information. One definition is required, or your source file will produce errors.
 Note on Vnums
 Vnums, or virtual numbers, are the unique identification numbers for the mobiles, rooms and objects in your area. No blocks of the same type (mobs versus rooms versus objects) may share the same vnum; blocks of different types may share a particular vnum. Vnums are indicated as relative numbers in the area source file (usually beginning at zero).
