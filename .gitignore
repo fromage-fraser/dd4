@@ -3,8 +3,10 @@
 *.iml
 *.are~
 *.bak
+*.are.old
 .idea/
 .vscode/
+~$*
 
 /server/src/envy
 /server/src/dd4
