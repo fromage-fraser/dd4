@@ -144,16 +144,24 @@ $mob
 
 NOTE: Make sure that you hard-wrap lines of text in multi-line text blocks to under 80 columns, i.e. supply a carriage-return at the end of every line. Make sure your text editor isn't soft-wrapping your text!
 
+
 === Area header and base vnum definition
 
-The area header block defines the #AREA section of the final area file. It describes the name and author of the area, and character access information. One definition is required, or your source file will produce errors.
-Note on Vnums
-Vnums, or virtual numbers, are the unique identification numbers for the mobiles, rooms and objects in your area. No blocks of the same type (mobs versus rooms versus objects) may share the same vnum; blocks of different types may share a particular vnum. Vnums are indicated as relative numbers in the area source file (usually beginning at zero).
-Scribe uses relative vnums: the vnums used in the source file are numbered from 0 upwards. A base vnum is defined in the area header block and is used to calculate absolute vnums from the relative values:
+The area header block defines the `#AREA` section of the final area file. It describes the name and author of the area, and character access information. One definition is required, or your source file will produce errors.
 
-	Final vnum in area file = base vnum + relative vnum
+*Vnums*, or *virtual numbers*, are the unique identification numbers for the mobiles, rooms and objects in your area. No blocks of the same type (mobs versus rooms versus objects) may share the same vnum. Blocks of different types may share a particular vnum. Vnums are indicated as relative numbers in the area source file (usually beginning at zero).
+
+Scribe uses *relative vnums*: the vnums used in the source file are numbered from zero upwards. A *base vnum* is defined in the area header block and is used to calculate absolute vnums from the relative values:
+
+----
+final vnum in area file = base vnum + relative vnum
+----
+
 If you have been allocated a range of vnums from the DD Immortals for use in your area (e.g. 2600-2799), use the lowest vnum as your base (2600), and number your mobs, rooms and objects from zero upwards. If you haven't been given a range of vnums, you should still number mobs, rooms and objects from zero up, and just use any value for your base value. The use of a base value allows you to easily renumber your area if necessary, e.g. when you are finally given some to use by those lazy Imms.
+
 If you need to use vnums for rooms, mobiles or objects that are not defined in the same source file (i.e. are defined in other areas), you need to use temporary holding values and manually edit the formatted area file produced by Scribe.
+
+==== `$area` format
 
 Header		$area
 Fields		Field	Description		Type
@@ -180,6 +188,7 @@ Note: only the lower level limit is currently	enforced.
 bv	Base vnum
 Number: 0 or higher
 The base value used to calculate absolute vnums from relative vnums. Note that if your area links to other areas in the MUD and you want to be able to have these links active while you build, it may be best to set this to 0 and use absolute vnums in your .src file, for convenience’s sake.
+
 Example
 
 $area
