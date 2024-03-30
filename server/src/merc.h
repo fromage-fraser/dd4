@@ -323,7 +323,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   582     /* +3 trapset, trapstat, trapremove 22/3/24 - Owl */
+#define MAX_SKILL                   583     /* +1 psychometry 30/3/24 - Owl */
 #define MAX_PRE_REQ                 1398    /* +1 reforge - Brutus 1/1/23 */
 #define MAX_SPELL_GROUP             452     /* +1 reforge Brutus 1/1/23 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
@@ -3848,6 +3848,7 @@ extern int gsn_traplist;
 extern int gsn_trapset;
 extern int gsn_trapstat;
 extern int gsn_trapremove;
+extern int gsn_psychometry;
 
 /*
  *  Deity gsns
@@ -4657,6 +4658,7 @@ DECLARE_SPELL_FUN( spell_runic_rend             );
 DECLARE_SPELL_FUN( spell_runic_mend             );
 DECLARE_SPELL_FUN( spell_runic_cure             );
 DECLARE_SPELL_FUN( spell_runic_ward             );
+DECLARE_SPELL_FUN( spell_psychometry            );
 
 
 #define MOB_VNUM_SKELETON  3404

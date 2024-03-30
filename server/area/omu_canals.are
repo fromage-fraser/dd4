@@ -26,7 +26,7 @@ It seems hungry, but particular.  Let's hope you're not on the menu.
 0 0 1
 >fight_prog 15~
     if size ($n) == 0
-        mpecho {WA giant sea python thinks you'll make a tasty snack!{x
+        mpecho {WA giant sea python looks at you and licks his lips!{x
         swallow $n
     endif
 ~
@@ -48,7 +48,7 @@ It seems hungry, but particular.  Let's hope you're not on the menu.
 0 0 2
 >fight_prog 15~
     if size ($n) == 0
-        mpecho {WA giant sea python thinks you'll make a tasty snack!{x
+        mpecho {WA giant sea python looks at you and licks her lips!{x
         swallow $n
     endif
 ~

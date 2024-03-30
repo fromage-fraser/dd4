@@ -923,7 +923,7 @@ the first value and discard the rest.
    value[3]    if non-zero, drink is poisoned
 
 18 ITEM_KEY
-   value[0]    unused (often vnum of room/container it unlocks)
+   value[0]    The vnum of room/container it unlocks
    value[1]    unused
    value[2]    unused
    value[3]    unused

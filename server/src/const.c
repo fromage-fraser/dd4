@@ -6445,6 +6445,12 @@ const struct skill_type skill_table [MAX_SKILL] =
                 spell_null, 0, 0,
                 "", "!Trapremove!"
         },
+        {
+                "psychometry", &gsn_psychometry,
+                TYPE_INT, TAR_OBJ_INV, POS_STANDING, 16384,
+                spell_psychometry, 12, 12,
+                "", "!Psychometry!"
+        },
 
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.

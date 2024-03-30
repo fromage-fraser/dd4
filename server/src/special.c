@@ -2166,7 +2166,7 @@ bool spec_vampire( CHAR_DATA *ch )
                 if ((sn = skill_lookup("acid blast")) < 0)
                         return FALSE;
 
-                act("Acid streams from $n's fingertips!", ch, NULL, NULL, TO_ROOM);
+                act("Acid streams from $n!", ch, NULL, NULL, TO_ROOM);
                 (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
                 return TRUE;
         }
@@ -2718,7 +2718,7 @@ bool spec_evil_evil_gezhp (CHAR_DATA *ch)
                 if (number_bits(1) && sn_disintegrate >= 0)
                 {
                         do_say(ch, "Die...");
-                        act("White beams streak from $n's fingertips!",
+                        act("White beams streak from $n!",
                             ch, NULL, NULL, TO_ROOM);
                         (*skill_table[sn_disintegrate].spell_fun)
                                 (sn_disintegrate, ch->level, ch, victim);

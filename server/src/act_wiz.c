@@ -2395,7 +2395,7 @@ void do_rfind(CHAR_DATA *ch, char *argument )
 
         rch = get_char( ch );
 
-        if ( !authorized( rch, gsn_mfind ) )
+        if ( !authorized( rch, gsn_rfind ) )
                 return;
 
         one_argument( argument, arg );
