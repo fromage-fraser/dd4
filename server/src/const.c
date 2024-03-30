@@ -6457,7 +6457,6 @@ const struct skill_type skill_table [MAX_SKILL] =
                 spell_nausea, 10, 12,
                 "<190>ro<191>il<192>in<193>g h<194>ea<195>d a<194>nd <193>st<192>om<191>ac<190>h<0>", "<80>You are no longer nauseated.<0>"
         },
-  
 
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
