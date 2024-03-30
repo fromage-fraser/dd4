@@ -1,12 +1,11 @@
+= Dragons Domain Area Scribe Users Manual
 :sectanchors:
 :toc:
+:toclevels: 3
 :numbered:
+:pdf-page-size: A4
 
-= Dragons Domain Area Scribe Users Manual
-XXXX
-v1, 2000.
-v2.0, March 2024.
-
+_Version 2.0, March 2024._
 
 == Introduction
 
@@ -87,27 +86,27 @@ Blocks have the following format:
 [subs="quotes"]
 ----
 $header
-field1			value1
+field1          value1
 multiple_line_field
 _&lt;lines of text>_
 ~
-field2			value2
+field2          value2
 ...
-fieldN			valueN
+fieldN          valueN
 ----
 
 For example, the following block defines the name, short name, long name, description, sex, affect flags, vnum, level and act flags variables for a mobile:
 
 ----
 $mob
-nm	octopus
-sh	an octopus
-lo	An octopus crawls along the coral.
+nm  octopus
+sh  an octopus
+lo  An octopus crawls along the coral.
 de
 The octopus's slimy body is purple with bright red blotches.
 It crawls over the coral, its tentacles writhing horribly.
 ~
-sx	female
+sx  female
 aff	hide sneak
 vn	1
 lv	5
@@ -149,6 +148,8 @@ NOTE: Make sure that you hard-wrap lines of text in multi-line text blocks to un
 
 The area header block defines the `#AREA` section of the final area file. It describes the name and author of the area, and character access information. One definition is required, or your source file will produce errors.
 
+==== Vnums
+
 *Vnums*, or *virtual numbers*, are the unique identification numbers for the mobiles, rooms and objects in your area. No blocks of the same type (mobs versus rooms versus objects) may share the same vnum. Blocks of different types may share a particular vnum. Vnums are indicated as relative numbers in the area source file (usually beginning at zero).
 
 Scribe uses *relative vnums*: the vnums used in the source file are numbered from zero upwards. A *base vnum* is defined in the area header block and is used to calculate absolute vnums from the relative values:
@@ -161,17 +162,57 @@ If you have been allocated a range of vnums from the DD Immortals for use in you
 
 If you need to use vnums for rooms, mobiles or objects that are not defined in the same source file (i.e. are defined in other areas), you need to use temporary holding values and manually edit the formatted area file produced by Scribe.
 
-==== `$area` format
+==== Area format
 
-Header		$area
-Fields		Field	Description		Type
-au	author			text
-ti	title			text
-ls	lower level suggested	number
-us	upper level suggested	number
-le	lower level enforced	number
-ue	upper level enforced	number
-bv	base vnum		number
+Header: `$area`
+
+Fields:
+
+[cols="1,1,1,3"]
+|===
+|Keyword|Description|Type|Notes
+
+|`au`
+|Author
+|Text
+|The person or people responsible for writing the area.
+
+|`ti`
+|Title
+|Text
+|The name of the area. Don't make it too long (25 characters maximum).
+
+|`ls`
+|Lower level -- suggested
+|Number
+|
+_0 or higher_
++
+asd
+
+
+
+|`us`
+|Upper level -- suggested
+|number
+
+|`le`
+|lower level enforced
+|number
+
+|`ue`
+|upper level enforced
+|number
+
+bv
+|base vnum
+|
+|number
+
+|===
+
+
+
 Description	au	Author
 Line of text
 The person or people responsible for writing the area.
@@ -243,7 +284,7 @@ safe 	pkilling cannot happen in this area
 no_teleport	a player cannot teleport into this area
 no_magic	magic cannot be used in this area
 
-			E.g.	af	hidden no_teleport safe
+            E.g.	af	hidden no_teleport safe
 
 
 xp	experience modifier
@@ -368,9 +409,9 @@ invulnerable	cannot be physically damaged
 unkillable	will not die, no matter how much damage is
 done to it
 
-	E.g.	act	aggro scavenger
-				act	no_charm no_quest lose_fame
-				act	mount
+    E.g.	act	aggro scavenger
+                act	no_charm no_quest lose_fame
+                act	mount
 aff	Affect flags
 Keyword list
 Default: none
@@ -413,9 +454,9 @@ prone	can’t use skills, can still cast
 dazed	can’t do anything
 slow	has been slowed (many negative effects)
 
-			E.g.	aff	sneak hide invis infrared
-				aff	globe sanctuary flaming fly
-				aff	poison
+            E.g.	aff	sneak hide invis infrared
+                aff	globe sanctuary flaming fly
+                aff	poison
 sp	Special function
 Keyword
 Special functions give extra behaviours to mobs either during combat or outside of combat. If you don't wish to give your mob a special function, do not include the sp field at all; if you include an sp field and leave it blank you will produce an error.
@@ -507,7 +548,7 @@ skills/spells [combat]
 spec_red_grung 	red grung (mage) skills/spells
 [combat]
 
-			E.g.	sp	spec_cast_adept
+            E.g.	sp	spec_cast_adept
 mp	Mob program
 Multi-line text block
 Mob programs (mob progs, mprogs) are scripts that add special functionality to mobs. What mob progs are available and what syntax they use is not discussed here, but up to date documentation is distributed with the MUD’s source, and can be read online here.
@@ -662,116 +703,116 @@ they are destroyed (similar function to
 NPC corpse)
 
                                            E.g.	ty	potion
-		v0-v3	Values
+        v0-v3	Values
 Numbers or text
 The four value fields v0, v1, v2 and v3 are used by some types of object. Some object types do not use any value fields, and you will not have to include them in the $object block. Other types expect certain value definitions and Scribe will report errors if they are absent or invalid. You must supply the relevant value fields for the following objects:
 Lights
-	v2	Hours of light provided
-		Number
-		A value below zero indicates infinite hours of light.
-	E.g.	ty	light
-		v2	-1
+    v2	Hours of light provided
+        Number
+        A value below zero indicates infinite hours of light.
+    E.g.	ty	light
+        v2	-1
 Scrolls, potions, paints and pills
-	v0	Level of spell(s)
-		Number: 1 or higher
-	v1-v3	Name of spell(s)
-		Text
-		You should indicate between 1 and 3 spells.
-	E.g.	ty	potion
-		v0	10
-		v1	heal
-		v2	cure poison
+    v0	Level of spell(s)
+        Number: 1 or higher
+    v1-v3	Name of spell(s)
+        Text
+        You should indicate between 1 and 3 spells.
+    E.g.	ty	potion
+        v0	10
+        v1	heal
+        v2	cure poison
 Wands and staves
-	v0	Level of spell
-		Number: 1 or higher
-	v1	Maximum charges
-		Number: 0 or higher
-	v2	Current charges
-		Number: 0 or higher
-	v3	Name of spell
-		Text
-	E.g.	ty	wand
-		v0	30
-		v1	5
-		v2	3
-		v3	combat mind
+    v0	Level of spell
+        Number: 1 or higher
+    v1	Maximum charges
+        Number: 0 or higher
+    v2	Current charges
+        Number: 0 or higher
+    v3	Name of spell
+        Text
+    E.g.	ty	wand
+        v0	30
+        v1	5
+        v2	3
+        v3	combat mind
 Weapons
-	v3	Attack type
-		Keyword
-		One of the following:
-		hit		slice		stab
-		slash		whip		claw
-		blast		pound		crush
-		grep		bite		pierce
-		suction	chop		rake
-		swipe		sting		scoop
+    v3	Attack type
+        Keyword
+        One of the following:
+        hit		slice		stab
+        slash		whip		claw
+        blast		pound		crush
+        grep		bite		pierce
+        suction	chop		rake
+        swipe		sting		scoop
 mash         hack
-	E.g.	ty	weapon
-		v3	pound
+    E.g.	ty	weapon
+        v3	pound
 Containers
-	v0	Capacity
-		Number: 0 or higher
-		How much weight (in pounds) the container can hold.
-	v1	Lid flags
-		Keyword list
-		Whether the container has a lid, and whether the lid is closed or locked:
-		none		open, no lid
-		closeable	has a lid
-		pickproof	lock can't be picked
-		closed	lid is closed
-		locked	lid is locked
-		Weirdness can result if the flags are incorrectly set (e.g. locked but with no lid).
-	v2	Key
-		Number: 1 or higher
-		The relative vnum of any key. Use 1 to indicate no key exists.
-	E.g.	ty	container
-		v0	50
-		v1	closeable closed locked
-		v2	4
+    v0	Capacity
+        Number: 0 or higher
+        How much weight (in pounds) the container can hold.
+    v1	Lid flags
+        Keyword list
+        Whether the container has a lid, and whether the lid is closed or locked:
+        none		open, no lid
+        closeable	has a lid
+        pickproof	lock can't be picked
+        closed	lid is closed
+        locked	lid is locked
+        Weirdness can result if the flags are incorrectly set (e.g. locked but with no lid).
+    v2	Key
+        Number: 1 or higher
+        The relative vnum of any key. Use 1 to indicate no key exists.
+    E.g.	ty	container
+        v0	50
+        v1	closeable closed locked
+        v2	4
 Drink containers
-	v0	Capacity
-		Number: 0 or higher
-		The maximum number of draughts the container can hold.
-	v1	Current capacity
-		Number: 0 or higher
-		Current number of draughts in the container.
-	v2	Liquid type
-		Keyword
-		One of the following:
-		water		beer		wine
-		ale		dark_ale	whisky
-		lemonade	firebreather	local
-		slime_mould	milk		tea
-		coffee	blood		salt_water
-		cola
-	v3	Poison
-		Number
-		zero		not poisoned
-		non-zero	poisoned
-	E.g.	ty	drink_container
-		v0	5
-		v1	4
-		v2	blood
-		      v3	0
+    v0	Capacity
+        Number: 0 or higher
+        The maximum number of draughts the container can hold.
+    v1	Current capacity
+        Number: 0 or higher
+        Current number of draughts in the container.
+    v2	Liquid type
+        Keyword
+        One of the following:
+        water		beer		wine
+        ale		dark_ale	whisky
+        lemonade	firebreather	local
+        slime_mould	milk		tea
+        coffee	blood		salt_water
+        cola
+    v3	Poison
+        Number
+        zero		not poisoned
+        non-zero	poisoned
+    E.g.	ty	drink_container
+        v0	5
+        v1	4
+        v2	blood
+              v3	0
 
 Fountains
 
-	v2	Liquid type
-		Keyword
-		One of the following:
-		water		beer		wine
-		ale		dark_ale	whisky
-		lemonade	firebreather	local
-		slime_mould	milk		tea
-		coffee	blood		salt_water
-		cola
-	v3	Poison
-		Number
-		zero		not poisoned
-		non-zero	poisoned
-	E.g.	ty	fountain
-		v2	milk
-		      v3	1
+    v2	Liquid type
+        Keyword
+        One of the following:
+        water		beer		wine
+        ale		dark_ale	whisky
+        lemonade	firebreather	local
+        slime_mould	milk		tea
+        coffee	blood		salt_water
+        cola
+    v3	Poison
+        Number
+        zero		not poisoned
+        non-zero	poisoned
+    E.g.	ty	fountain
+        v2	milk
+              v3	1
 
 Key
 v0	   Vnum of room/container unlocked
@@ -795,8 +836,8 @@ v0	Crafting bonus
 Number: 0 or higher
 Will be the percentage bonus giving to crafting that takes place in the same room, i.e. “5” == +5% bonus.
 
-	E.g.	ty	craft
-		v0	15
+    E.g.	ty	craft
+        v0	15
 
 
 
@@ -810,41 +851,41 @@ v0	25
 
 Money
 
-	All coin amounts are fuzzy unless the pure flag is also applied to the money item.
-	v0	Copper coins
-		Number: 0 or higher
-		Default: 0
-	v1	Silver coins
-		Number: 0 or higher
-		Default: 0
-	v2	Gold coins
-		Number: 0 or higher
-		Default: 0
-	v3	Platinum coins
-		Number: 0 or higher
-		Default: 0
-	E.g.	ty	money
-		v2	50
-		v1	200
+    All coin amounts are fuzzy unless the pure flag is also applied to the money item.
+    v0	Copper coins
+        Number: 0 or higher
+        Default: 0
+    v1	Silver coins
+        Number: 0 or higher
+        Default: 0
+    v2	Gold coins
+        Number: 0 or higher
+        Default: 0
+    v3	Platinum coins
+        Number: 0 or higher
+        Default: 0
+    E.g.	ty	money
+        v2	50
+        v1	200
 
 Turret Module
 v0	Lower damage range
 Number: 0 or higher
 
-	v1	Upper damage range
-		Number: 0 or higher
+    v1	Upper damage range
+        Number: 0 or higher
 
-	v2	Current charges
-		Number: 0 or higher
+    v2	Current charges
+        Number: 0 or higher
 
-	v3	Maximum charges
-		Number: 0 or higher
+    v3	Maximum charges
+        Number: 0 or higher
 
-	E.g.	ty	turret_module
-		V0	50
-		v1	200
-		v2	7
-		v3	9
+    E.g.	ty	turret_module
+        V0	50
+        v1	200
+        v2	7
+        v3	9
 
 Driver unit
 v0	Number of uses
@@ -863,8 +904,8 @@ Defensive turret module
 v2	Module capacity
 Number: 0 or higher
 
-	E.g.	ty	defensive_turret_module
-		v2	7
+    E.g.	ty	defensive_turret_module
+        v2	7
 
 
 
@@ -874,15 +915,15 @@ Number: 0 or higher
 v1	Max charges
 Number: 0 or higher
 
-	v2	Spell level
-		Number: 0 or higher
+    v2	Spell level
+        Number: 0 or higher
 
-	v3	Spell
-		Text
+    v3	Spell
+        Text
 
-	E.g.	ty	combat_pulse
-		v0	5
-		v1	7
+    E.g.	ty	combat_pulse
+        v0	5
+        v1	7
 v2	40
 v3	fireball
 
@@ -893,15 +934,15 @@ Number: 0 or higher
 v1	Max charges
 Number: 0 or higher
 
-	v2	Spell level
-		Number: 0 or higher
+    v2	Spell level
+        Number: 0 or higher
 
-	v3	Spell
-		Text
+    v3	Spell
+        Text
 
-	E.g.	ty	defensive_pulse
-		v0	5
-		v1	7
+    E.g.	ty	defensive_pulse
+        v0	5
+        v1	7
 v2	40
 v3	protection
 
@@ -913,17 +954,17 @@ v1	Max benefit
 Number: 0 or higher
 The maximum positive or negative benefit your pipe can apply to the smokeable (if in top condition).
 
-	v2	Effect on thirst
-		Number: 0 or higher
+    v2	Effect on thirst
+        Number: 0 or higher
 How thirsty smoking the pipe makes you. Lower number is better.
 
-	v3	Speed
-		Number: 0 or higher
+    v3	Speed
+        Number: 0 or higher
 The speed of the pipe—how fast you can smoke with it. Lower is better.
 
-	E.g.	ty	pipe
-		v0	90
-		v1	95
+    E.g.	ty	pipe
+        v0	90
+        v1	95
 v2	170
 v3	30
 
@@ -933,17 +974,17 @@ Number: 0 or higher
 v1	Maximum uses
 Number: 0 or higher
 
-	v2	Current effectiveness
-		Number: 0 or higher
+    v2	Current effectiveness
+        Number: 0 or higher
 How good the cleaner is at cleaning pipes.
 
-	v3	Maximum effectiveness
-		Number: 0 or higher
+    v3	Maximum effectiveness
+        Number: 0 or higher
 The best the pipe cleaner can be at cleaning pipes.
 
-	E.g.	ty	pipe
-		v0	17
-		v1	18
+    E.g.	ty	pipe
+        v0	17
+        v1	18
 v2	41
 v3	52
 
@@ -976,15 +1017,15 @@ Number: 0 or higher
 v1	Spell
 Text
 
-	v2	Spell
-		Text
+    v2	Spell
+        Text
 
-	v3	Spell
-		Text
+    v3	Spell
+        Text
 
-	E.g.	ty	smokeable
-		v0	7
-		v1	armor
+    E.g.	ty	smokeable
+        v0	7
+        v1	armor
 v2	mental barrier
 v3	poison
 
@@ -1000,9 +1041,9 @@ closeable	can be closed
 closed	are closed
 
 
-	E.g.	ty	remains
-		v0	5
-		v1	closeable
+    E.g.	ty	remains
+        v0	5
+        v1	closeable
 
 All types not listed above do not require any values to be defined; all relevant variables are calculated by the DD server based on the item’s level.
 wg	Weight
@@ -1303,7 +1344,7 @@ swamp
 underwater_ground As underwater, but some attacks possible
 that are not in regular underwater sectors
 
-		rf	Room flags
+        rf	Room flags
 Keyword list
 Default: none
 Defines any special properties of the room. Use a list of any of the following keywords:
@@ -1327,23 +1368,23 @@ freezing	players take cold damage per tick
                    no_mount          room may not be entered while mounted
                    toxic             healing slowed, chance of being poisoned
 no_drop           objects may not be dropped in room
-			E.g.	rf	safe healing no_mob
-		ed	Extra description
-		Multi-line text block
+            E.g.	rf	safe healing no_mob
+        ed	Extra description
+        Multi-line text block
 Extra descriptions are descriptive text seen by characters who examine the room. Extra descriptions consist of a list of keywords and a text block. The text block is printed when a character enters LOOK <keyword> within the room. They have the following format:
-			ed	<keyword list>
-			<lines of text>
-			~
-			E.g.	ed	writing wall
-				You read the writing on the wall:
-				"Dwarves do it standing up."
-				~
-		rnd	Random exits
-		Keyword
+            ed	<keyword list>
+            <lines of text>
+            ~
+            E.g.	ed	writing wall
+                You read the writing on the wall:
+                "Dwarves do it standing up."
+                ~
+        rnd	Random exits
+        Keyword
 Randomise the exits in the room, so that the room becomes a maze. Use one of the following 	keywords:
 2d	two-dimensional maze (north, south, east and west exist scrambled)
 3d	three-dimensional maze (north, south, east, west, up and down exits)
-			E.g.	rnd	2d
+            E.g.	rnd	2d
 This field will also accept numbers from 0 to 6 if you require (although it is recommended you use the 2d or 3d keywords). You should avoid using random exits if you are going to include 	door resets (see below); these resets may produce unexpected results.
 Exits	There are six possible exits from each room; each room may contain between 0 and 6 exits.
 Exit code	Exit direction
@@ -1357,29 +1398,29 @@ To create an exit simply add the following to your $room block:
 <exit code>	<destination room relative vnum>
 E.g.
 n	0
-	u	23
+    u	23
 If you don't want a room to have an exit in a particular direction, just leave out the relevant field. If you do not add any further information for your exit it will be valid; however, it won't have a door or any form of description.
 The following fields can be used to further define exits. They should be used in the following manner:
 <exit code><field>	<data>
 There is no space between exit code and field.
-		?nm	Exit name (keywords)
-		Line of text
+        ?nm	Exit name (keywords)
+        Line of text
 A list of keywords that describe the exit. Usually used to indicate a door. The first name on the list will be used for generating messages by the MUD server.
-			E.g.	wnm	door iron reinforced
-				unm	reinforced iron door
-				dnm	path overgrown
+            E.g.	wnm	door iron reinforced
+                unm	reinforced iron door
+                dnm	path overgrown
 Regarding the first two examples above, the first is preferred to the second, as any messages from the MUD look more natural:
-			Cf.	"Crash!  You bash open the door!"
-				"Crash!  You bash open the reinforced!"
-		?de	Exit description
-		Multi-line text block
+            Cf.	"Crash!  You bash open the door!"
+                "Crash!  You bash open the reinforced!"
+        ?de	Exit description
+        Multi-line text block
 The description of the exit given after the LOOK <direction> or LOOK <exit keyword> is given.
-			E.g.	wde
-				The small trail wanders west into the
-				heavy forest.
-				~
-		?lo	Exit locks
-		Keyword
+            E.g.	wde
+                The small trail wanders west into the
+                heavy forest.
+                ~
+        ?lo	Exit locks
+        Keyword
 This value is used to indicate whether an exit is a door, and whether the door can be forced open if locked or passed through if closed. It can also be used to indicate whether an exit is a wall or if it is secret (doesn't show up on SCAN etc). Due to the way the locks value is read by the server, the keywords used by this field are rather awkward. You may enter one of the following keywords; you can also use the relevant number between 0 and 12.
 0   none	 	no door
 1   door	 	door
@@ -1395,73 +1436,73 @@ This value is used to indicate whether an exit is a door, and whether the door c
 11  door_secret_pbp	pick-, bash-, pass-proof hidden door
 12  secret		hidden exit (not a door)
 Door resets will be ignored if you fail to indicate that the exit is a door with one of these flags (all are doors except for none, wall and secret).
-		?ke	Exit key
-		Number: -1 or higher
-		Default: -1
+        ?ke	Exit key
+        Number: -1 or higher
+        Default: -1
 The relative vnum of the object that can be used to unlock the door. Use –1 if you wish there to be no key in existence. Any value above –1 indicates a relative vnum (including 0).
-			E.g.	eke	-1
-				nke	4
-		?ds	Door state
-		Keyword
+            E.g.	eke	-1
+                nke	4
+        ?ds	Door state
+        Keyword
 This field produces a door reset, i.e. will update the position of the door every time your area is reset. Indicate one of the following actions:
 open	open and unlocked
 close	closed and unlocked
 lock	closed and locked
 The reset will only be used if the relevant exit has been defined and that exit is a door.
-			E.g.	e	2
-				elo	door
-				eds	close
+            E.g.	e	2
+                elo	door
+                eds	close
 Unless otherwise desired (e.g. one-way doors), use the same door reset in both rooms sharing a door for consistency.
 Examples
 
-	$room
-	vn	1
-	nm	The Void
-	de
-	You float in the inky darkness of the Void.
-	~
+    $room
+    vn	1
+    nm	The Void
+    de
+    You float in the inky darkness of the Void.
+    ~
 
-	$room
-	vn	10
-	nm	A small, empty room
-	de
-	This tiny room is entirely empty except for a few pieces
-	of litter against the walls. You may return to the main
-	corridor through the southern archway.
-	~
-	st	inside
-	rf	indoors private dark
-	s	9
+    $room
+    vn	10
+    nm	A small, empty room
+    de
+    This tiny room is entirely empty except for a few pieces
+    of litter against the walls. You may return to the main
+    corridor through the southern archway.
+    ~
+    st	inside
+    rf	indoors private dark
+    s	9
 
-	$room
-	vn	11
-	nm	At the base of the Outpost Tower
-	de
-	You cross the courtyard to the base of the northern wall.
-	The lean stone tower rises above you; a sturdy wooden door
-	in the centre of the wall leads into its heart.
-	     You may head north through the door into the tower,
-	or head west, south or east back across the courtyard.
-	~
-	ed	tower outpost
-	The tower rises high into the air; it is at least half
-	a dozen stories high. Flashes of light flicker from its
-	peak every now and then.
-	~
-	st	city
-	n	12
-	nlo	pick_bash
-	nke	23
-	nds	lock
-	nnm	door sturdy wooden
-	nde
-	The door leading into the tower is reinforced with heavy
-	iron bands. It looks very solid, and is covered in sharp
-	studs. You see a large keyhole in its centre.
-	~
-	w	9
-	e	8
-	s	6
+    $room
+    vn	11
+    nm	At the base of the Outpost Tower
+    de
+    You cross the courtyard to the base of the northern wall.
+    The lean stone tower rises above you; a sturdy wooden door
+    in the centre of the wall leads into its heart.
+         You may head north through the door into the tower,
+    or head west, south or east back across the courtyard.
+    ~
+    ed	tower outpost
+    The tower rises high into the air; it is at least half
+    a dozen stories high. Flashes of light flicker from its
+    peak every now and then.
+    ~
+    st	city
+    n	12
+    nlo	pick_bash
+    nke	23
+    nds	lock
+    nnm	door sturdy wooden
+    nde
+    The door leading into the tower is reinforced with heavy
+    iron bands. It looks very solid, and is covered in sharp
+    studs. You see a large keyhole in its centre.
+    ~
+    w	9
+    e	8
+    s	6
 
 
 12. Mobile resets
@@ -1521,30 +1562,30 @@ Examples
 
 Load a single naked mob to a room:
 
-	$addmob
-	mb	1
-	rm	3
+    $addmob
+    mb	1
+    rm	3
 
 Load a naked mob to rooms 30, 32 and 33 (relative vnums); keep adding a mobile to these rooms every time the area resets until there are 6 mobs in the MUD:
 
-	$addmob
-	mb	4
-	rm	30
-	rm	32
-	rm	33
-	num	6
+    $addmob
+    mb	4
+    rm	30
+    rm	32
+    rm	33
+    num	6
 
 Load and equip a mob:
 
-	$addmob
-	rm	3
-	mb	3
-	wield	7
-	inv	6
-	shield	9
-	body	8
-	inv	5
-	inv	5
+    $addmob
+    rm	3
+    mb	3
+    wield	7
+    inv	6
+    shield	9
+    body	8
+    inv	5
+    inv	5
 
 
 13. Object resets
@@ -1565,22 +1606,22 @@ lv	Level of object
 Number: 0 or higher
 The level you wish the object to be. Only applies if the object is reset to the ground and NOT to a mob or container.
 
-		con	Container vnum
+        con	Container vnum
 Number: 0 or higher
 The relative number of a container object you wish to place the item in. A container object with this vnum must be defined for the reset to be valid.
 Only one of each kind of object may occupy any single container. The object is loaded to the most recently loaded container with the specified vnum. For best results, only load one of each container object into your area.
 You need to have at least one rm or one con fields for the $addobj block to be valid.
 Examples
 
-	$addobj
-	ob	4
-	rm	12
+    $addobj
+    ob	4
+    rm	12
 
-	$addobj
-	ob	2
-	rm	6
-	rm	7
-	con	12
+    $addobj
+    ob	2
+    rm	6
+    rm	7
+    con	12
 
 14. Games
 Games stuff here.
@@ -1604,11 +1645,11 @@ commands HELP FLY or HELP LEVITATE
 are entered.
 ~
 
-				he	'aura of fear'
-				This is the text displayed whenever the
-				command HELP 'AURA OF FEAR' is issued.
-				~
-		lv	Level restriction
+                he	'aura of fear'
+                This is the text displayed whenever the
+                command HELP 'AURA OF FEAR' is issued.
+                ~
+        lv	Level restriction
 Number: -1 or higher
 The minimum level a character has to be in order to access the help entry. 0 is used for general help entries. Use –1 if you want the help entry keyword header to be hidden.
 
@@ -1646,13 +1687,13 @@ Number: 0  23
 The times when the store opens and closes (0 = midnight).
 Example
 
-	$shop
-	vn	0
-	t1	wand
-	t2	staff
-	t3	potion
-	t4	scroll
-	oh	7
-	ch	18
-	ps	85
-	pb	120
+    $shop
+    vn	0
+    t1	wand
+    t2	staff
+    t3	potion
+    t4	scroll
+    oh	7
+    ch	18
+    ps	85
+    pb	120
