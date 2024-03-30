@@ -2,7 +2,7 @@
 :toc:
 :numbered:
 
-= DD Area Scribe Users Manual
+= Dragons Domain Area Scribe Users Manual
 XXXX
 v1, 2000.
 v2.0, March 2024.
@@ -10,7 +10,7 @@ v2.0, March 2024.
 
 == Introduction
 
-DD Area Scribe or Scribe is a tool for producing formatted area files for the Dragons Domain Envy-style MUD. DD area files retain the Envy MUD format, with changes to the `#AREA` header information and the addition of new variables and flag values to other sections.
+Dragons Domain Area Scribe or Scribe is a tool for producing formatted area files for the Dragons Domain ("DD") Envy-style MUD. DD area files retain the Envy MUD format, with changes to the `#AREA` header information and the addition of new variables and flag values to other sections.
 
 Scribe is a script that reads a simplified text source file containing all area information, validates the information, and if no serious errors are found, outputs a formatted area file. Scribe is written in Perl and is run from the command line (see the <<Usage>> section for more information).
 
@@ -142,8 +142,7 @@ $mob
 . This is a comment within a $mob block
 ----
 
-Note
-Make sure that you hard-wrap lines of text in multi-line text blocks to under 80 columns, i.e. supply a carriage-return at the end of every line. Make sure your text editor isn't soft-wrapping your text!
+NOTE: Make sure that you hard-wrap lines of text in multi-line text blocks to under 80 columns, i.e. supply a carriage-return at the end of every line. Make sure your text editor isn't soft-wrapping your text!
 
 === Area header and base vnum definition
 
