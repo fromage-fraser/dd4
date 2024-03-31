@@ -2295,8 +2295,17 @@ void do_score (CHAR_DATA *ch, char *argument)
         else if ( ch->alignment > -900 ) strcat( buf1, "demonic.\n\r" );
         else strcat( buf1, "diabolical.\n\r" );
 
-        if (ch->pcdata->condition[COND_DRUNK] > 1)
-                strcat(buf1, "You are drunk.\n\r");
+        if (ch->pcdata->condition[COND_DRUNK] >= 1 && ch->pcdata->condition[COND_DRUNK] <= 13)
+                strcat(buf1, "You are a bit tipsy.\n\r");
+
+        if (ch->pcdata->condition[COND_DRUNK] > 13 && ch->pcdata->condition[COND_DRUNK] <= 26)
+                strcat(buf1, "You are inebriated.\n\r");
+
+        if (ch->pcdata->condition[COND_DRUNK] > 26 && ch->pcdata->condition[COND_DRUNK] <= 39)
+                strcat(buf1, "You are quite drunk.\n\r");
+
+        if (ch->pcdata->condition[COND_DRUNK] > 39)
+                strcat(buf1, "You are blind roaring drunk.\n\r");
 
         if (ch->pcdata->condition[COND_THIRST] < 1 && ch->level < LEVEL_HERO)
                 strcat(buf1, "You are thirsty.\n\r");

@@ -2806,7 +2806,7 @@ void death_cry (CHAR_DATA *ch)
         int              door;
 
         /* Default messages */
-        if (!IS_INORGANIC(ch) && !IS_SET(ch->act, ACT_OBJECT))
+        if ((!IS_INORGANIC(ch) && !IS_SET(ch->act, ACT_OBJECT)) || (!IS_NPC(ch)))
         {
             if (!MAKES_CORPSE(ch))
                     strcpy(msg, "$c's form withers and dissolves into nothing.");
@@ -2817,7 +2817,7 @@ void death_cry (CHAR_DATA *ch)
         }
 
         /* Default messages */
-        if (IS_INORGANIC(ch) || IS_SET(ch->act, ACT_OBJECT))
+        if (( IS_INORGANIC(ch) || IS_SET(ch->act, ACT_OBJECT) ) && (IS_NPC(ch)))
         {
             if (!MAKES_CORPSE(ch))
                     strcpy(msg, "$c withers and dissolves into nothing.");

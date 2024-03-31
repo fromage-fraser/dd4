@@ -398,6 +398,7 @@ const struct pattern_points pattern_list [ MAX_PATTERN ] =
         { 30249 },
         {  1390 },
         { 31061 },
+        { 27352 },
         { 30038 },
         { 28003 },
 };
@@ -2593,7 +2594,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 {
         /*
          * name, pointer to gsn
-         * practice type, target, minimum position,
+         * practice type, target, minimum position, res_type ()
          * pointer to spell function, minimum mana, beats
          * damage noun, wear off message
          *
@@ -6447,7 +6448,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
         {
                 "psychometry", &gsn_psychometry,
-                TYPE_INT, TAR_OBJ_INV, POS_STANDING, 16384,
+                TYPE_INT, TAR_OBJ_INV, POS_STANDING, 0,
                 spell_psychometry, 12, 12,
                 "", "!Psychometry!"
         },
@@ -6456,6 +6457,48 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 256|16384,
                 spell_nausea, 10, 12,
                 "<190>ro<191>il<192>in<193>g h<194>ea<195>d a<194>nd <193>st<192>om<191>ac<190>h<0>", "<80>You are no longer nauseated.<0>"
+        },
+        {
+                "starve", &gsn_starve,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 0,
+                spell_starve, 10, 12,
+                "withering curse", "!Starve!"
+        },
+        {
+                "parch", &gsn_parch,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 0,
+                spell_parch, 10, 12,
+                "dessicating hex", "!Parch!"
+        },
+        {
+                "inebriate", &gsn_inebriate,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 256|16384,
+                spell_inebriate, 10, 12,
+                "inebriating charm", "!Inebriate!"
+        },
+        {
+                "glaciation", &gsn_glaciation,
+                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 16384,
+                spell_glaciation, 15, 12,
+                "summoned glacier", "!Glaciation!"
+        },
+        {
+                "conflagration", &gsn_conflagration,
+                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 16384,
+                spell_conflagration, 15, 12,
+                "blazing inferno", "!Conflagration!"
+        },
+        {
+                "flood", &gsn_flood,
+                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 16384,
+                spell_flood, 15, 12,
+                "flood", "!Flood!"
+        },
+        {
+                "confusion", &gsn_confusion,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 256|16384,
+                spell_confusion, 10, 12,
+                "disorienting curse", "You feel less confused."
         },
 
         /*

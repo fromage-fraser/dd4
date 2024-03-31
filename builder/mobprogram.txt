@@ -218,7 +218,7 @@ NOTE:  Useful for giving mobiles combat attitude.  It is checked every
     spells, curse at the opponent, or whatever. Only the first successful
     one will be processed to save time.  Also, this means that the
     mobile wont get lucky and 1. curse, cast a fireball and 2. spit on the
-        player, cast another fireball in the same pulse.
+    player, cast another fireball in the same pulse.
 
 Syntax:  hitprcnt_prog <NUMBER>
 

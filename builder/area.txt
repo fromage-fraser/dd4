@@ -371,6 +371,7 @@ AFF_ flags:
     AFF_DOT                 BIT_33     Takes damage over time
     AFF_PRONE               BIT_34     Can't do skills, can cast
     AFF_DAZED               BIT_35     Can't do anything
+    AFF_CONFUSION           BIT_36     Wanders
     AFF_SLOW                BIT_63     Slowed down. Many negative consequences.
 
 The 'alignment' of the mobile ranges from -1000 to +1000.  Keep in mind that
@@ -1935,7 +1936,12 @@ paints, smokeables, and pills.
                 stab rune                   rend rune
              mending rune                   cure rune
                 ward rune                  acid blast
-                      fly
+                      fly                      starve
+                    parch                   inebriate
+               glaciation               conflagration
+                    flood                   confusion
+              psychometry                      nausea
+
 
 If you have any questions about area writing, please contact any of the
 immortals on the DD4 Discord server at https://discord.gg/aGzmAWmXYb (preferred)

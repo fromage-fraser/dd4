@@ -458,6 +458,10 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 
 
 {W March 2024{x
+-mob spells starve, parch, inebriate, glaciation, conflagration, flood, and
+ confusion added
+-Ota'ar Dar added to 'pattern'
+-supporting code changes for new mob spells
 -Nausea spell added (mostly for mobs)
 -Gravity functions at a more sensible speed
 -Psychometry spell added (post-60 roadmap)
@@ -2570,13 +2574,76 @@ This spell reduces the strength of the victim, as well as reducing their
 regeneration rate.
 ~
 
+
+
 0 NAUSEA~
 Syntax: cast nausea <<victim>
 
 This spell has a random negative effect on its target's physical statistics,
 which is of cumulative duration and intensity.  Can be cured in the same way
-that poison can (the 'cure poison' spell, 'cell adjustment,' etc).
+that poison can ('cure poison' spell, 'cell adjustment,' etc).
 ~
+
+
+0 STARVE~
+Syntax: cast starve <<victim>
+
+This spell causes a ravenous hunger to come suddenly over its target.
+~
+
+
+0 PARCH~
+Syntax: cast parch <<victim>
+
+This spell causes a terrible thirst to come suddenly over its target.
+~
+
+
+0 INEBRIATE~
+Syntax: cast inebriate <<victim>
+
+This spell makes its target immediately very drunk, with implications for
+spellcasting success and various other fine-motor-based manual skills. As
+alcohol is a poison, 'cure poison' spells and the like are effective remedies to
+the state.
+~
+
+
+0 GLACIATION~
+Syntax: cast glaciation
+
+This spell summons a blizzard into the location it is cast in, making the
+environment freezing.  Will last an entire game session.  Cannot be cast in
+a desert environment, or a room that is on fire.
+~
+
+
+0 CONFLAGRATION~
+Syntax: cast conflagration
+
+This spell summons a blazing inferno into the location it is cast in, making
+the environment burn.  Will last an entire game session.  Cannot be cast in an
+underwater location, or one that is freezing.
+~
+
+
+0 FLOOD~
+Syntax: cast flood
+
+This spell floods the place it is cast in, submerging the entire immediate area.
+Will last an entire game session.  Cannot be cast in a location that is already
+underwater.
+~
+
+
+0 CONFUSION~
+Syntax: cast confusion <<victim>
+
+This spell makes its target terribly confused, and imposes penalties to wisdom,
+intelligence, and fighting ability, as well causing random wandering.  It can
+be cured by the application of upper mid- to high level healing spells.
+~
+
 
 0 'POISON WEAPON'~
 Syntax: poison <<weapon>

@@ -1461,7 +1461,10 @@ void char_update( void )
         CHAR_DATA *ch;
         CHAR_DATA *ch_save = NULL;
         CHAR_DATA *ch_quit = NULL;
+        EXIT_DATA *pexit;
         time_t save_time = current_time;
+        int pre_gain_drunk;
+        int door;
 
         for (ch = char_list; ch; ch = ch->next)
         {
@@ -1550,7 +1553,21 @@ void char_update( void )
                         if (ch->timer > 20 && !IS_SWITCHED(ch))
                                 ch_quit = ch;
 
+                        pre_gain_drunk = ch->pcdata->condition[COND_DRUNK];
                         gain_condition(ch, COND_DRUNK, -1);
+
+                        if ((ch->pcdata->condition[COND_DRUNK] == 0) && (pre_gain_drunk > 0 ))
+                            send_to_char("You sober up.\n\r", ch);
+
+                        if (ch->pcdata->condition[COND_DRUNK] == 13)
+                            send_to_char("You are no longer inebriated.\n\r", ch);
+
+                        if (ch->pcdata->condition[COND_DRUNK] == 26)
+                            send_to_char("You are no longer dangerously drunk.\n\r", ch);
+
+                        if (ch->pcdata->condition[COND_DRUNK] == 39)
+                            send_to_char("You are no longer completely blind drunk.\n\r", ch);
+
 
                         for (gch = ch->in_room->people; gch; gch = gch->next_in_room)
                         {
@@ -1612,12 +1629,40 @@ void char_update( void )
                 }
                 else
                 {
+                        if ( (IS_AFFECTED(ch, AFF_CONFUSION))
+                        && (!is_affected(ch, gsn_confusion)))
+                        {
+                            REMOVE_BIT(ch->affected_by, AFF_CONFUSION);
+                        }
+
+                        if ( (IS_AFFECTED(ch, AFF_SLOW))
+                        && (!is_affected(ch, gsn_slow)))
+                        {
+                            REMOVE_BIT(ch->affected_by, AFF_SLOW);
+                        }
+
+                        if ( IS_AFFECTED(ch, AFF_CONFUSION)
+                        && ( door = number_bits(5)) <= 5
+                        && ( pexit = ch->in_room->exit[door])
+                        &&   pexit->to_room
+                        &&  !IS_SET(pexit->exit_info, EX_CLOSED ) )
+                        {
+                            if ( ch->position == POS_SLEEPING )
+                            {
+                                    send_to_char("Your mind swirls in a fog of confusion and disorientation.\n\r", ch);
+                                    do_wake( ch, "" );
+                            }
+                            send_to_char("You stumble about clumsily.\n\r\n\r", ch);
+                            act("$c staggers about in confusion.", ch, NULL, NULL, TO_ROOM);
+                            move_char(ch, door);
+                            act("$c looks very confused and uncertain.", ch, NULL, NULL, TO_ROOM);
+
+                            /*if (ch->position < POS_STANDING)
+                                    continue;*/
+                        }
+
                         if (is_affected(ch, gsn_nausea) && IS_AFFECTED(ch, AFF_POISON))
                         {
-                                send_to_char("You sweat and retch.\n\r", ch);
-                                act("$n sweats and retches.", ch, NULL, NULL, TO_ROOM);
-                                damage(ch, ch, number_range(3, 5), gsn_nausea, FALSE);
-
                                 /* dehydrating and hunger-making effect */
 
                                 if (!IS_NPC(ch)
@@ -1638,17 +1683,23 @@ void char_update( void )
 
                                 if (IS_AFFECTED(ch, AFF_MEDITATE))
                                         REMOVE_BIT(ch->affected_by, AFF_MEDITATE);
+
+                                send_to_char("You sweat and retch.\n\r", ch);
+                                act("$n sweats and retches.", ch, NULL, NULL, TO_ROOM);
+                                damage(ch, ch, number_range(3, 5), gsn_nausea, FALSE);
+
                         }
 
                         if ( (is_affected(ch, gsn_poison) && IS_AFFECTED(ch, AFF_POISON) )
                         || IS_AFFECTED(ch, AFF_PRAYER_PLAGUE))
                         {
+                                if (IS_AFFECTED(ch, AFF_MEDITATE))
+                                        REMOVE_BIT(ch->affected_by, AFF_MEDITATE);
+
                                 send_to_char("You shiver and suffer.\n\r", ch);
                                 act("$n shivers and suffers.", ch, NULL, NULL, TO_ROOM);
                                 damage(ch, ch, number_range(2, 4), gsn_poison, FALSE);
 
-                                if (IS_AFFECTED(ch, AFF_MEDITATE))
-                                        REMOVE_BIT(ch->affected_by, AFF_MEDITATE);
                         }
 
                         if (IS_AFFECTED(ch, AFF_DOT) )
