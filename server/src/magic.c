@@ -9008,6 +9008,7 @@ void spell_runic_cure( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( ( !is_affected(victim, gsn_poison) )
         &&   ( !is_affected(victim, gsn_nausea) ) )
                 return;
+        }
 
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
         {
@@ -9048,6 +9049,10 @@ void spell_runic_ward( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( ( !is_affected(victim, gsn_poison) )
         &&   ( !is_affected(victim, gsn_nausea) ) )
                 return;
+        }
+
+        if (is_affected(victim, gsn_poison))
+            affect_strip(victim, gsn_poison);
 
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
         {
@@ -9533,6 +9538,80 @@ void spell_confusion( int sn, int level, CHAR_DATA *ch, void *vo )
 
 }
 
+void spell_nausea( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+        CHAR_DATA  *victim = (CHAR_DATA *) vo;
+        AFFECT_DATA af;
+        AFFECT_DATA *paf;
+        int target_stat = (rand() % 5) + 1;
+
+        if (is_affected(victim, gsn_prayer_plague))
+                return;
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("You can't nauseate an object.\n\r", ch);
+                return;
+        }
+
+        if (!IS_NPC(victim) && number_percent() <
+            victim->pcdata->learned[gsn_resist_toxin] && victim->gag < 2)
+        {
+            send_to_char("<46>Yo<47>u r<48>es<49>is<48>t t<47>he <46>wa<47>ve <48>of <49>na<48>us<47>ea <46>th<47>re<48>at<49>en<48>in<47>g t<46>o o<47>ve<48>rw<49>he<48>lm <47>yo<46>u.<0>\n\r",victim );
+            return;
+        }
+
+        af.type      = sn;
+        af.duration = number_range(2, (2 + (level/10)));
+        af.bitvector = AFF_POISON;
+
+        af.location  = target_stat;
+        af.modifier  = -1;
+
+        for (paf = victim->affected; paf; paf = paf->next)
+        {
+                if (paf->type == sn)
+                {
+                        af.duration = number_range(2, (2 + (level/10)));
+                        if (paf->modifier <= -30)
+                        {
+                                af.modifier = 0;
+                                af.duration = 0;
+                        }
+                        break;
+                }
+        }
+
+        affect_join( victim, &af );
+
+        if ( ch != victim )
+                send_to_char( "You successfully nauseate your victim.\n\r", ch );
+
+        switch (target_stat)
+        {
+            case APPLY_STR:
+                send_to_char( "<154>You feel extremely weak.<0>\n\r", victim );
+                break;
+
+            case APPLY_WIS:
+                send_to_char( "<154>You regret every decision you have ever made.<0>\n\r", victim );
+                break;
+
+            case APPLY_CON:
+                send_to_char( "<154>You hope there's a bathroom nearby.<0>\n\r", victim );
+                break;
+
+            case APPLY_INT:
+                send_to_char( "<154>Your head feels stuffed with wool.<0>\n\r", victim );
+                break;
+
+            case APPLY_DEX:
+                send_to_char( "<154>You trip over your own feet.<0>\n\r", victim );
+                break;
+        }
+        return;
+}
+
 /*
  * Some affect types cannot be dispelled
  */
@@ -9569,6 +9648,7 @@ bool is_only_whitespace(const char* str) {
     }
     return 1;
 }
+
 
 /* EOF magic.c */
 
