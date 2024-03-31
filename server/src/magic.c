@@ -9524,7 +9524,7 @@ void spell_confusion( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if ( ch != victim )
         {
-            send_to_char( "You confuse them utterly.\n\r", ch );
+            send_to_char("You confuse them utterly.\n\r", ch );
         }
 
         send_to_char( "You are extremely confused.\n\r", victim );
