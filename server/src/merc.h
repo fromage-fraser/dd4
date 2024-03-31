@@ -311,6 +311,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define FULL_AIR_SUPPLY                    2    /* ticks before drowning; Gez */
 #define MAX_FOOD                          48    /* As full of food as you can be */
 #define MAX_DRINK                         48    /* As not-thirsty as you can be */
+#define MAX_DRUNK                         48    /* As drunk as you can be */
 #define VAULT_LEVEL_BUFFER                 5    /* Can save items up to this many levels above your own in your vault */
 
 #define L_IMM                       MAX_LEVEL
@@ -323,8 +324,8 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   584     /* +1 nausea 30/3/24 - Owl */
-#define MAX_PRE_REQ                 1400    /* +2 detect evil Infernalist 30/3/24 */
+#define MAX_SKILL                   591     /* +7 starve, parch, inebriate, glaciation, conflagration, flood, confusion 31/3/24 - Owl */
+#define MAX_PRE_REQ                 1400    /* +2 detect evil for infernalists 30/3/24 */
 #define MAX_SPELL_GROUP             452     /* +1 reforge Brutus 1/1/23 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
@@ -467,7 +468,7 @@ DECLARE_DO_FUN ( do_board );
 #define CLAN_RECALL                 1
 
 /* Patterns - note they start from 1 */
-#define MAX_PATTERN                 9
+#define MAX_PATTERN                 10
 
 /* Soar - as above.  Pattern-like ability for straight shifters, used in hawk form */
 #define MAX_SOAR                   10
@@ -1914,6 +1915,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define AFF_DOT                    BIT_33  /* Damage Over Time - Brutus */
 #define AFF_PRONE                  BIT_34  /* Prone - can't do skills, can cast - Brutus*/
 #define AFF_DAZED                  BIT_35  /* Dazed - can't do anything - Brutus */
+#define AFF_CONFUSION              BIT_36  /* Causes random wandering, overrides ACT_SENTINEL */
 #define AFF_SLOW                   BIT_63  /* last */
 
 /* forms - Brutus */
@@ -3114,7 +3116,7 @@ struct skill_type
         int                 prac_type;                      /* for praccing */
         int                 target;                         /* Legal targets */
         int                 minimum_position;               /* Position for caster / user */
-        unsigned long int   res_type;                     /* resistance type e.g. fireball will have res_fire */
+        unsigned long int   res_type;                       /* resistance type e.g. fireball will have res_fire */
         SPELL_FUN *         spell_fun;                      /* Spell pointer (for spells) */
         int                 min_mana;                       /* Minimum mana used */
         int                 beats;                          /* Waiting time after use */
@@ -3850,6 +3852,13 @@ extern int gsn_trapstat;
 extern int gsn_trapremove;
 extern int gsn_psychometry;
 extern int gsn_nausea;
+extern int gsn_starve;
+extern int gsn_parch;
+extern int gsn_inebriate;
+extern int gsn_glaciation;
+extern int gsn_conflagration;
+extern int gsn_flood;
+extern int gsn_confusion;
 
 /*
  *  Deity gsns
@@ -4661,6 +4670,13 @@ DECLARE_SPELL_FUN( spell_runic_cure             );
 DECLARE_SPELL_FUN( spell_runic_ward             );
 DECLARE_SPELL_FUN( spell_psychometry            );
 DECLARE_SPELL_FUN( spell_nausea                 );
+DECLARE_SPELL_FUN( spell_starve                 );
+DECLARE_SPELL_FUN( spell_parch                  );
+DECLARE_SPELL_FUN( spell_inebriate              );
+DECLARE_SPELL_FUN( spell_glaciation             );
+DECLARE_SPELL_FUN( spell_conflagration          );
+DECLARE_SPELL_FUN( spell_flood                  );
+DECLARE_SPELL_FUN( spell_confusion              );
 
 
 #define MOB_VNUM_SKELETON  3404

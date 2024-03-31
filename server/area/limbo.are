@@ -346,11 +346,11 @@ This large horned owl has bright orange eyes and regards you with a mix of mild
 curiosity tinged with contempt.
 ~
 2|2048|9223372036854775808 524288 1000 S
-105 0 0 0d0+0 0d0+0
+75 0 0 0d0+0 0d0+0
 0 0
 0 0 1
->fight_prog 80~
-    c nausea $n
+>fight_prog 100~
+    c confusion $n
 ~
 |
 

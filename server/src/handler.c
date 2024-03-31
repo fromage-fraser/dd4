@@ -324,10 +324,10 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
             case APPLY_NONE:
                 break;
 
-                case APPLY_STR:
-                        if ( !IS_NPC( ch ) )
-                                ch->pcdata->mod_str += mod;
-                        break;
+            case APPLY_STR:
+                    if ( !IS_NPC( ch ) )
+                            ch->pcdata->mod_str += mod;
+                    break;
 
             case APPLY_DEX:
                 if ( !IS_NPC( ch ) )
@@ -3260,6 +3260,7 @@ char *affect_bit_name (unsigned long int vector)
         if ( vector & AFF_DOT           ) return "DOT";
         if ( vector & AFF_DAZED         ) return "dazed";
         if ( vector & AFF_PRONE         ) return "prone";
+        if ( vector & AFF_CONFUSION     ) return "confused";
 
 
         return "none";
@@ -3307,6 +3308,7 @@ char* affect_bit_name_nice (unsigned long int vector)
         if ( vector & AFF_DOT           ) return "DOT";
         if ( vector & AFF_DAZED         ) return "dazed";
         if ( vector & AFF_PRONE         ) return "prone";
+        if ( vector & AFF_CONFUSION     ) return "confused";
 
         return "some unknown effect";
 }

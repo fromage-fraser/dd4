@@ -2009,7 +2009,7 @@ void do_drink (CHAR_DATA *ch, char *argument)
                 }
         }
 
-        if (!IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK] > 10)
+        if (!IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK] >= MAX_DRUNK)
         {
                 if ( ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG )
                 {
@@ -2058,8 +2058,17 @@ void do_drink (CHAR_DATA *ch, char *argument)
                         gain_condition(ch, COND_FULL, amount * liq_table[liquid].liq_effect[COND_FULL   ]);
                         gain_condition(ch, COND_THIRST, amount * liq_table[liquid].liq_effect[COND_THIRST ]);
 
-                        if (!IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK ] > 10)
-                                send_to_char("You feel drunk.\n\r", ch);
+                        if (!IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK ] >= 1 && ch->pcdata->condition[COND_DRUNK] <= 13)
+                                send_to_char("You feel a bit tipsy.\n\r", ch);
+
+                        if (!IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK ] > 13 && ch->pcdata->condition[COND_DRUNK] <= 26)
+                                send_to_char("You are inebriated.\n\r", ch);
+
+                        if (!IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK ] > 26 && ch->pcdata->condition[COND_DRUNK] <= 39)
+                                send_to_char("You are really quite drunk.\n\r", ch);
+
+                        if (!IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK ] > 39)
+                                send_to_char("You are absolutely blind roaring drunk.\n\r", ch);
 
                         if (!IS_NPC(ch) && ch->pcdata->condition[COND_THIRST] > (MAX_DRINK - 5))
                         {
@@ -2143,8 +2152,19 @@ void do_drink (CHAR_DATA *ch, char *argument)
                 gain_condition(ch, COND_THIRST,
                                amount * liq_table[liquid].liq_effect[COND_THIRST ]);
 
-                if (!IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK ] > 10)
-                        send_to_char("You feel drunk.\n\r", ch);
+
+                if (!IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK ] >= 1 && ch->pcdata->condition[COND_DRUNK] <= 13)
+                        send_to_char("You feel a bit tipsy.\n\r", ch);
+
+                if (!IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK ] > 13 && ch->pcdata->condition[COND_DRUNK] <= 26)
+                        send_to_char("You are inebriated.\n\r", ch);
+
+                if (!IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK ] > 26 && ch->pcdata->condition[COND_DRUNK] <= 39)
+                        send_to_char("You are really quite drunk.\n\r", ch);
+
+                if (!IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK ] > 39)
+                        send_to_char("You are absolutely blind roaring drunk.\n\r", ch);
+
 
                 if ( ch->race != RACE_SAHUAGIN && ch->race != RACE_GRUNG )
                 {

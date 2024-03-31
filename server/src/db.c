@@ -659,6 +659,13 @@ int     gsn_trapstat;
 int     gsn_trapremove;
 int     gsn_psychometry;
 int     gsn_nausea;
+int     gsn_starve;
+int     gsn_parch;
+int     gsn_inebriate;
+int     gsn_glaciation;
+int     gsn_conflagration;
+int     gsn_flood;
+int     gsn_confusion;
 
 
 /*

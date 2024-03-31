@@ -5126,16 +5126,18 @@ void do_mset( CHAR_DATA *ch, char *argument )
                         return;
                 }
 
-                if ( ( ivalue < 0 || ivalue > 100 )
+                if ( ( ivalue < 0 || ivalue > MAX_DRINK )
                     && get_trust( victim ) < LEVEL_IMMORTAL )
                 {
-                        send_to_char( "Thirst range is 0 to 100.\n\r", ch );
+                        sprintf( buf, "Thirst range is 0 to %d.\n\r", MAX_DRINK);
+                        send_to_char( buf, ch );
                         return;
                 }
                 else
-                        if ( ivalue < -1 || ivalue > 100 )
+                        if ( ivalue < -1 || ivalue > MAX_DRINK )
                         {
-                                send_to_char( "Thirst range is -1 to 100.\n\r", ch );
+                                sprintf( buf, "Thirst range is -1 to %d.\n\r", MAX_DRINK);
+                                send_to_char( buf, ch );
                                 return;
                         }
 
@@ -5151,9 +5153,10 @@ void do_mset( CHAR_DATA *ch, char *argument )
                         return;
                 }
 
-                if ( value < 0 || value > 100 )
+                if ( value < 0 || value > MAX_DRUNK )
                 {
-                        send_to_char( "Drunk range is 0 to 100.\n\r", ch );
+                        sprintf( buf, "Drunk range is 0 to %d.\n\r", MAX_DRUNK);
+                        send_to_char( buf, ch );
                         return;
                 }
 
@@ -5169,15 +5172,17 @@ void do_mset( CHAR_DATA *ch, char *argument )
                         return;
                 }
 
-                if ( ( ivalue < 0 || ivalue > 100 )
+                if ( ( ivalue < 0 || ivalue > MAX_FOOD )
                     && get_trust( victim ) < LEVEL_IMMORTAL )
                 {
-                        send_to_char( "Full range is 0 to 100.\n\r", ch );
+                        sprintf( buf, "Full range is 0 to %d.\n\r", MAX_FOOD);
+                        send_to_char( buf, ch );
                         return;
                 }
-                else if ( ivalue < -1 || ivalue > 100 )
+                else if ( ivalue < -1 || ivalue > MAX_FOOD )
                 {
-                        send_to_char( "Full range is -1 to 100.\n\r", ch );
+                        sprintf( buf, "Full range is -1 to %d.\n\r", MAX_FOOD);
+                        send_to_char( buf, ch );
                         return;
                 }
 
