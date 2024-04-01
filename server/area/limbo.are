@@ -350,7 +350,11 @@ curiosity tinged with contempt.
 0 0
 0 0 1
 >fight_prog 100~
-    c confusion $n
+    if affspell($n) == 7
+        say You have armor on!
+    else
+        say No armor for you!
+    endif
 ~
 |
 

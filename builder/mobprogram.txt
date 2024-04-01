@@ -494,11 +494,15 @@ isfight   ($*)              Is $* fighting
 isimmort  ($*)              Is the level of $* greater than max_mortal
 ischarmed ($*)              Is $* affected by charm
 isfollow  ($*)              Is $* a follower with their master in the room
-isaffected($*)  & integer   Is ($*->affected_by & integer) true
-                            (person only)
+isaffected($*)  == integer  Is it true that $*->affected_by contains integer
+                            (a bit_value)
+affspell  ($*)  == integer  Is $* affected by spell <integer> (sn value)
 hitprcnt  ($*)  == percent  Is the hit/max_hit of $* equal to percent
 inroom	  ($*)  == integer  Is the room of $* equal to integer
                             (person only)
+insect    ($*)  == integer  Is $*->in_room->sector_type equal to integer
+inrflag   ($*)  == integer  Is it true that $*->in_room->room_flags contains
+                            integer (a bit_value)
 sex       ($*)  == integer  Is the sex of $* equal to integer
 position  ($*)  == integer  Is the position of $* equal to integer
 level     ($*)  == integer  Is the level of $* equal to integer
