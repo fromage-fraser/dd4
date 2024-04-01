@@ -965,6 +965,17 @@ you will be the only one who can use it.  Potions will also respond to the
 names of the spells that are on them.
 ~
 
+0 DRUNK DRUNKENNESS ALCOHOL~
+It is possible to drink to excess in the domain.  Effects include losing the
+ability to use some physical skills, and having a chance of forgetting or
+slurring the words to spells when you go to cast them (the drunker you are, the
+greater the chance of this).
+
+As alcohol is functioning as a poison when you are intoxicated, the effects of
+drunkenness may be remedied in the same fashion as other poisons ('cure poison'
+spells and the like).
+~
+
 0 DONATE DONATION~
 Syntax: donate <<object>
 
@@ -990,6 +1001,13 @@ Syntax: cast 'chain lightning' <<target>
 
 Release a bolt of lightning that will arc between multiple targets in the
 room.  Be careful: the bolt may hit you in the process!
+~
+
+0 'FREEDOM'~
+Syntax: cast freedom <<optional_target>
+
+Will dispel any movement-affecting effects, e.g paralysis, trap, slow and the
+like. May be cast on oneself or others, in and out of combat.
 ~
 
 0 TRIP~
@@ -2458,7 +2476,7 @@ the Temple Square in Midgaard, as well as others throughout the Domain.
 When you are hungry, EAT something. The baker in Midgaard sells pies,
 and other vendors are located throughout the Domain.
 
-FILL fills a drink container with water.
+FILL fills a drink container with liquid from a fountain.
 ~
 
 0 SACRIFICE~

@@ -9533,6 +9533,54 @@ void spell_confusion( int sn, int level, CHAR_DATA *ch, void *vo )
 
 }
 
+void spell_freedom( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+        CHAR_DATA *victim = (CHAR_DATA *) vo;
+
+        if ( IS_AFFECTED(victim, AFF_HOLD) )
+        {
+            REMOVE_BIT(victim->affected_by, AFF_HOLD);
+            send_to_char( "You are free to move again.\n\r", victim );
+        }
+
+        if ( IS_AFFECTED(victim, AFF_SLOW) )
+        {
+            REMOVE_BIT(victim->affected_by, AFF_SLOW);
+            send_to_char( "You feel yourself speed up.\n\r", victim );
+        }
+
+        /* Add any new spells that apply AFF_HOLD or AFF_SLOW below */
+
+        affect_strip(victim, gsn_snare);
+        affect_strip(victim, gsn_entrapment);
+        affect_strip(victim, gsn_trap);
+        affect_strip(victim, gsn_paralysis);
+        affect_strip(victim, gsn_coil);
+        affect_strip(victim, gsn_web);
+        affect_strip(victim, gsn_crush);
+        affect_strip(victim, gsn_abyssal_hand);
+        affect_strip(victim, gsn_transfix);
+        affect_strip(victim, gsn_howl);
+        strip_swallow(victim);
+        affect_strip(victim, gsn_swallow);
+        affect_strip(victim, gsn_slow);
+
+        /* restore movement to level / 100 of max  if not at max */
+
+        if (victim->move < victim->max_move)
+        {
+            victim->move = victim->max_move;
+            send_to_char( "You feel fresh as a daisy.\n\r", victim );
+        }
+
+        if ( ch != victim )
+        {
+            send_to_char("You free them from their bondage.\n\r", ch );
+        }
+
+        return;
+}
+
 /*
  * Some affect types cannot be dispelled
  */

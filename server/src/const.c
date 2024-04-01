@@ -3506,7 +3506,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "animate weapon", &gsn_animate_weapon,
                 TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 16384,
                 spell_animate_weapon, 20, 12,
-                "", "!Animate Weapon!"
+                "magical disarm", "!Animate Weapon!"
         },
 
         {
@@ -6480,7 +6480,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "glaciation", &gsn_glaciation,
                 TYPE_INT, TAR_IGNORE, POS_FIGHTING, 16384,
                 spell_glaciation, 15, 12,
-                "summoned glacier", "!Glaciation!"
+                "summoned blizzard", "!Glaciation!"
         },
         {
                 "conflagration", &gsn_conflagration,
@@ -6492,13 +6492,19 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "flood", &gsn_flood,
                 TYPE_INT, TAR_IGNORE, POS_FIGHTING, 16384,
                 spell_flood, 15, 12,
-                "flood", "!Flood!"
+                "tsunami", "!Flood!"
         },
         {
                 "confusion", &gsn_confusion,
                 TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 256|16384,
                 spell_confusion, 10, 12,
                 "disorienting curse", "You feel less confused."
+        },
+        {
+                "freedom", &gsn_freedom,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, 16384|131072,
+                spell_freedom, 50, 12,
+                "emancipating incantation", "!Freedom!"
         },
 
         /*

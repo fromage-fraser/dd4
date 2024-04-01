@@ -666,6 +666,7 @@ int     gsn_glaciation;
 int     gsn_conflagration;
 int     gsn_flood;
 int     gsn_confusion;
+int     gsn_freedom;
 
 
 /*
