@@ -470,15 +470,19 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
     {
       switch ( arg[1] )  /* arg should be "$*" so just get the letter */
         {
-        case 'i': return ( mob->affected_by & atoi( arg ) );
-        case 'n': if ( actor )
-                     return ( actor->affected_by & atoi( arg ) );
+        case 'i': rhsvl = atoi( val );
+                  return (IS_AFFECTED( mob, rhsvl ));
+        case 'n': if ( actor ) {
+                     rhsvl = atoi( val );
+                     return (IS_AFFECTED( actor, rhsvl ) != 0); }
                   else return FALSE;
-        case 't': if ( vict )
-                     return ( vict->affected_by & atoi( arg ) );
+        case 't': if ( vict ) {
+                     rhsvl = atoi( val );
+                     return (IS_AFFECTED( vict, rhsvl ) != 0); }
                   else return FALSE;
-        case 'r': if ( rndm )
-                     return ( rndm->affected_by & atoi( arg ) );
+        case 'r': if ( rndm ) {
+                     rhsvl = atoi( val );
+                     return (IS_AFFECTED( rndm, rhsvl ) != 0); }
                   else return FALSE;
         default:
           bug ( "Mob: %d bad argument to 'isaffected'",
@@ -1285,6 +1289,94 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                         return FALSE;
                 }
         }
+
+        if ( !str_cmp( buf, "insect" ) )
+        {
+        switch ( arg[1] )  /* arg should be "$*" so just get the letter */
+            {
+            case 'i': lhsvl = mob->in_room->sector_type;
+                    rhsvl = atoi(val);
+                    return mprog_veval( lhsvl, opr, rhsvl );
+            case 'n': if ( actor )
+                    {
+                        lhsvl = actor->in_room->sector_type;
+                        rhsvl = atoi( val );
+                        return mprog_veval( lhsvl, opr, rhsvl );
+                    }
+                    else
+                        return FALSE;
+            case 't': if ( vict )
+                    {
+                        lhsvl = vict->in_room->sector_type;
+                        rhsvl = atoi( val );
+                        return mprog_veval( lhsvl, opr, rhsvl );
+                    }
+                    else
+                        return FALSE;
+            case 'r': if ( rndm )
+                    {
+                        lhsvl = rndm->in_room->sector_type;
+                        rhsvl = atoi( val );
+                        return mprog_veval( lhsvl, opr, rhsvl );
+                    }
+                    else
+                        return FALSE;
+            default:
+            bug ( "Mob: %d bad argument to 'insect'", mob->pIndexData->vnum );
+            return FALSE;
+            }
+        }
+
+        if ( !str_cmp( buf, "inrflag" ) )
+        {
+        switch ( arg[1] )  /* arg should be "$*" so just get the letter */
+            {
+            case 'i': rhsvl = atoi( val );
+                    return (IS_SET( mob->in_room->room_flags, rhsvl ));
+            case 'n': if ( actor ) {
+                        rhsvl = atoi( val );
+                        return (IS_SET( actor->in_room->room_flags, rhsvl ) != 0); }
+                    else return FALSE;
+            case 't': if ( vict ) {
+                        rhsvl = atoi( val );
+                        return (IS_SET( vict->in_room->room_flags, rhsvl ) != 0); }
+                    else return FALSE;
+            case 'r': if ( rndm ) {
+                        rhsvl = atoi( val );
+                        return (IS_SET( rndm->in_room->room_flags, rhsvl ) != 0); }
+                    else return FALSE;
+            default:
+            bug ( "Mob: %d bad argument to 'inrflag'",
+                mob->pIndexData->vnum );
+            return FALSE;
+            }
+        }
+
+        if ( !str_cmp( buf, "affspell" ) )
+        {
+        switch ( arg[1] )  /* arg should be "$*" so just get the letter */
+            {
+            case 'i': rhsvl = atoi( val );
+                    return (is_affected( mob, rhsvl ));
+            case 'n': if ( actor ) {
+                        rhsvl = atoi( val );
+                        return ((is_affected( actor, rhsvl )) != 0); }
+                    else return FALSE;
+            case 't': if ( vict ) {
+                        rhsvl = atoi( val );
+                        return ((is_affected( vict, rhsvl )) != 0); }
+                    else return FALSE;
+            case 'r': if ( rndm ) {
+                        rhsvl = atoi( val );
+                        return ((is_affected( rndm, rhsvl )) != 0); }
+                    else return FALSE;
+            default:
+            bug ( "Mob: %d bad argument to 'affspell'",
+                mob->pIndexData->vnum );
+            return FALSE;
+            }
+        }
+
 
   /* Ok... all the ifchcks are done, so if we didnt find ours then something
    * odd happened.  So report the bug and abort the MOBprogram (return error)
