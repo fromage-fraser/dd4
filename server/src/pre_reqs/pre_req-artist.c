@@ -1,8 +1,8 @@
 /* Martial Artist Pre_Req.c */
 
-/* Last modified 24/3 - Mat */
+/* Last modified 1/4/24 - Owl */
 
-/* Total Pre_Reqs == 38  */
+/* Total Pre_Reqs == 40  */
 
 /* Starting Skills - have decided what worldly is going to be yet?*/
 {&gsn_group_arts,               &gsn_martist_base,      31,     PRE_ARTIST},

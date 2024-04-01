@@ -1941,7 +1941,7 @@ paints, smokeables, and pills.
                glaciation               conflagration
                     flood                   confusion
               psychometry                      nausea
-
+                  freedom
 
 If you have any questions about area writing, please contact any of the
 immortals on the DD4 Discord server at https://discord.gg/aGzmAWmXYb (preferred)

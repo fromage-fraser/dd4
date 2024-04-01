@@ -499,7 +499,7 @@ void strip_swallow (CHAR_DATA* ch)
 
         if (!ch->inside)
         {
-                bug("strip_swallow: 'ch->inside' is null", 0);
+                /* bug("strip_swallow: 'ch->inside' is null", 0); */
                 return;
         }
 

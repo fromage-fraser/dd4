@@ -324,7 +324,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   591     /* +7 starve, parch, inebriate, glaciation, conflagration, flood, confusion 31/3/24 - Owl */
+#define MAX_SKILL                   592     /* +1 freedom 1/4/24 - Owl */
 #define MAX_PRE_REQ                 1400    /* +2 detect evil for infernalists 30/3/24 */
 #define MAX_SPELL_GROUP             452     /* +1 reforge Brutus 1/1/23 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
@@ -3859,6 +3859,7 @@ extern int gsn_glaciation;
 extern int gsn_conflagration;
 extern int gsn_flood;
 extern int gsn_confusion;
+extern int gsn_freedom;
 
 /*
  *  Deity gsns
@@ -4677,6 +4678,7 @@ DECLARE_SPELL_FUN( spell_glaciation             );
 DECLARE_SPELL_FUN( spell_conflagration          );
 DECLARE_SPELL_FUN( spell_flood                  );
 DECLARE_SPELL_FUN( spell_confusion              );
+DECLARE_SPELL_FUN( spell_freedom                );
 
 
 #define MOB_VNUM_SKELETON  3404

@@ -5537,7 +5537,14 @@ void do_transfix (CHAR_DATA *ch, char *argument)
 
         WAIT_STATE(ch, skill_table[gsn_transfix].beats);
 
-        chance = ch->pcdata->learned[gsn_transfix];
+        if ( IS_NPC(ch) )
+        {
+            chance = 100;
+        }
+        else {
+            chance = ch->pcdata->learned[gsn_transfix];
+        }
+
         chance += (ch->level - victim->level) * 2;
 
         if (chance < 5)
@@ -5555,9 +5562,9 @@ void do_transfix (CHAR_DATA *ch, char *argument)
                 arena_commentary("$n transfixes $N.", ch, victim);
 
                 af.type         = gsn_transfix;
-                af.duration             = 3;
-                af.location             = APPLY_HITROLL;
-                af.modifier             = -8;
+                af.duration     = 3;
+                af.location     = APPLY_HITROLL;
+                af.modifier     = -8;
                 af.bitvector    = AFF_HOLD;
 
                 affect_to_char(victim, &af);
