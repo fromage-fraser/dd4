@@ -1,0 +1,1201 @@
+:data-uri:
+:imagesdir: ascd_img
+
+== Preamble
+
+We have collected here a number of the brief "howto" guides/chunks of information +
+from the Discord.  As these are under version control, we have tried to include +
+only ones that might be generally useful to people working with the codebase. +
+
+Unapologetically haphazard, as befits the nature of their composition and +
+collection. ;)
+
+== How do I...
+
+* <<The-pre-req-system>>?
+* <<using-github>>?
+* <<act-string-pronouns>>?
+* <<mudlet-autoroller>>?
+* <<making-global-function>>?
+* <<adding-new-race>>?
+* <<ban-ips-from-server>>?
+* <<check-disk-use>>?
+* <<craftloc>>?
+* <<run-docker-windows>>?
+* <<np-items-imm-toys>>?
+* <<build-pet-stores>>?
+* <<mud-visualisation>>?
+* <<run-a-shop>>?
+* <<trapped-objects>>?
+* <<mobprog-control-flow>>?
+* <<create-test-chars>>?
+* <<use-GMCP>>?
+* <<dot-effects>>?
+* <<prone-and-daze>>?
+* <<create-portal>>?
+* <<mudlet-mapper>>?
+* <<mudlet-automapper-gui>>?
+* <<mob-ranks>>?
+* <<vaults>>?
+* <<move-prog>>
+* <<player-name-text-file>>
+* <<upgraded-fountain>>
+* <<fake-objects>>
+* <<tfind>>
+* <<add-new-skill>>
+* <<new-skill-to-class>>
+
+{nbsp} +
+{nbsp} +
+
+== Work with the pre-req system [[The-pre-req-system]]
+
+* When deciding on pre-reqs for a skill/spell remember to increase `MAX_PRE_REQ` +
+in `merc.h` appropriately (by 1 for each pre-req you add).  Also remember the +
+pre-req files are `#included` in `const.c`. +
+`touch const.c` to get `make` to build with them. +
+
+* A player starts with a "base" value of 30.  In the pfile you can see it like +
+this:
+
+(A lvl 2 Shifter) +
+[source, c]
+Skll        20 'chameleon form'
+Skll        99 'forage'
+Skll        31 'shifter base'     <-- Here
+A
+
+If you want a skill to be available to learn automatically when the character +
+starts, you want something like this in their pre-req file: +
+
+`{&gsn_group_forms,              &gsn_shifter_base,      30,    PRE_SHIFTER},`
+
+If you want them to get it at 31 (once they're a new subclass, or have committed +
+to their root class) you want something like:
+
+`{ &gsn_form_hydra,        &gsn_shifter_base,    60,    PRE_SHIFTER},`
+
+{nbsp} +
+{nbsp} +
+
+== Use github [[using-github]]
+
+Once you have your ssh keys and access sorted (!)
+
+Test your key with `ssh -T git@github.com`, then
+
+`git remote set-url origin git@github.com:fromage-fraser/dd4.git`
+
+Then to work on your new changes/features (starting from local master root)
+
+`git checkout -b new-cool-feature-branch``
+
+See branches: `git branch`
+
+Reset local master to the origin: `git checkout master`
+
+`git reset --hard origin/master`
+
+rebase new branch: `git checkout new-cool-feature-branch`
+
+`git rebase master`
+
+Make your hacks/changes locally
+`git add` all the changed files (stage them) then
+`git commit``
+
+When you are happy: `git push -u origin new-cool-feature-branch`
+
+Go to https://github.com/fromage-fraser/dd4/branches and create a pull request
+
+Once your PR is approved and merged:
+[source,bash]
+git checkout master
+git reset --hard origin/master
+git pull
+
+If you wish to then delete your local branch use +
+`git branch -d new-cool-feature-branch`
+
+If you want to overwrite local changes with a pull: +
+`git fetch --all`
+`git reset --hard origin/master`
+
+If you want to check out (and locally name) a remote branch for local testings: +
+`git checkout -b infamy-table origin/infamy-table` +
+then to delete it after testing (may need to switch to another branch first): +
+`git branch –-delete infamy-table`
+
+=== other git notes
+
+- After you make enough changes in a branch, github will sometimes stop asking +
+you if you want to make a PR with future changes.  Sometimes you just have to +
+create a PR the long way (via code > branches).
+
+- Sometimes you can make things work by merging master/main into your branch if +
+stuff has been merged in the meantime.
+
+- While working in a feature branch, if you want to switch to another (say, +
+master) while saving current uncommitted changes, use git stash before swapping +
+branches.
+
+- When returning to the branch you stashed from, use git stash pop to reapply +
+the changes (and remove them from stash) or git stash apply to reapply changes +
+and leave them in stash (in case you then want to go and apply them to other +
+branches).
+
+- git tries hard to stop you losing work. Some useful commands are `stash` +
+(e.g. you quickly want to stash changes and switch branches or do something) +
+and `reflog` (shows you all of the intermediate commits after merges, rebases, +
+etc)
+
+- You can just commit all the time, even if things don't work. rebase will let +
+you tidy up the changes later (e.g. squashing them all together). If you commit, +
+then you can always get your changes back and see all these commits via `reflog`. +
+
+
+[source, "bash]
+git reflog -n 10
+2103f90 (HEAD -> master, origin/master, origin/HEAD) HEAD@{0}: pull: Fast-forward
+0a01750 HEAD@{1}: rebase (finish): returning to refs/heads/master
+0a01750 HEAD@{2}: rebase (start): checkout origin/master
+d5a01d1 HEAD@{3}: checkout: moving from scribe to master
+8c784fe (scribe) HEAD@{4}: commit: Scribe building tool
+b364f28 HEAD@{5}: rebase (finish): returning to refs/heads/scribe
+b364f28 HEAD@{6}: rebase (fixup): Scribe building tool
+ea066ba HEAD@{7}: rebase (start): checkout d5a01d1f843356d9c804800448fab72695401a25
+60e1009 HEAD@{8}: commit: Scribe building tool
+ea066ba HEAD@{9}: rebase (finish): returning to refs/heads/scribe
+
+You can then do things like `git reset --hard d5a01d1` or +
+`git reset --hard HEAD@{3}` to reset to older versions. Though `reset --hard` +
+is the nuclear option as you will lost uncommitted changes.
+
+`git remote show origin` shows you what git thinks about things
+
+Prefacing branch names with the date is a good way to avoid re-using names.
+
+{nbsp} +
+{nbsp} +
+
+== Find act() string pronouns quickly [[act-string-pronouns]]
+These are in `comm.c` (and can be seen a lot in use in `interp.c`) but this is +
+a quick reference.
+
+``$s = his/her (ch) +
+$S = his/her (vict) +
+$m = him/her (ch) +
+$M = him/her (vict) +
+$e = he/she (ch) +
+$E = he/she (vict) +
+$n = name (ch) +
+$N = name (vict) +
+$c = capitalised name (ch) +
+$C = capitalised name (vict)`` +
+
+{nbsp} +
+{nbsp} +
+
+== Make a Mudlet autoroller [[mudlet-autoroller]]
+
+Make a trigger called "Autoroller".  You want to set the trigger to be a perl +
+regex and use this as the regex: +
+`^Str:\s+(\d+)\s+Int:\s+(\d+)\s+Wis:\s+(\d+)\s+Dex:\s+(\d+)\s+Con:\s+(\d+)`
+
+Use this as the script your trigger, uh, triggers:
+[source, lua]
+----
+str = matches[2]
+inte = matches[3]
+wis = matches[4]
+dex = matches[5]
+con = matches[6]
+total = str + inte + wis + dex + con
+
+function isMax(total)
+  max = 79
+  echo "  Total: "
+  display(total)
+  if (total < max) then send("n") end
+end
+
+isMax(total)
+----
+
+Don't forget to activate the trigger!
+
+{nbsp} +
+{nbsp} +
+
+== Make a global function [[making-global-function]]
+
+To make a global function someplace - need to define it in `merc.h` +
+`void    check_group_bonus                     (CHAR_DATA *ch) ;`
+
+{nbsp} +
+{nbsp} +
+
+== Add a new race to the MUD [[adding-new-race]]
+
+- Increase `MAX_RACE` in `merc.h` by the number of new races you are adding. +
+
+- Add race to
+[source, "c"]
+#define RACE_NONE        0
+#define RACE_HUMAN       1...
+
+etc in `merc.h`
+
+- Extend `race_table` in `const.c`
+
+- Update `deity_info_table` in `deity.c` with new races.  Also add to  +
+`do_pantheon`.
+
+- Check `do_push` skill as it has racial bonuses/penalties for most of the races.
+
+- Make any code changes to support special tests or abilities for new races +
+   (example: Sahuagin/Grung dehydration meter and swimming/diving abilities).
+
+- Make sure PC creation works (add race to `comm.c`, test creation of ALL +
+new races, particularly that their racial skills operate correctly)
+
+- Add helpfile entries (`helpfile.are`, `RACES` entry, entry for +
+`YOURNEWRACESNAME`)
+
+- Update website (or at least send imm responsible for it information to do so).
+
+{nbsp} +
+{nbsp} +
+
+== Ban IPs from the server [[ban-ips-from-server]]
+
+From the shell +
+`sudo ufw deny from xxx.xxx.xxx.xxx` +
+Where `xxx.` etc is the IP to ban.
+
+You can also ban a subnet with for example: +
+`sudo ufw deny from 203.0.113.0/24` but I wouldn't do this unless we were +
+really getting problems.
+
+More commands for ufw https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands[here] +
+
+If you're experiencing  weirdness generally it can be a good idea to turn it +
+off temporarily with `sudo ufw disable` to check it's not blocking a port/ports +
+you need open.
+
+{nbsp} +
+{nbsp} +
+
+== Check disk use on the server [[check-disk-use]]
+
+From the root directory you're interested in, execute +
+`sudo du -hs * | sort -rh | head -20` +
+where head value is the top X number of files/directories by disk space use.
+
+Check available space with `df`, the relevant line in its output is +
+`/dev/vda1       81120644 34688584  46415676  43% /`
+
+{nbsp} +
+{nbsp} +
+
+== Get a list of all the craftling locations in-game [[craftloc]]
+Use "help craftloc" in-game to get a list of all the spell- and physical +
+crafting locations.  See below:
+
+image:craftloc.webp[Capture.PNG,600,,]
+
+{nbsp} +
+{nbsp} +
+
+== Get docker running on Windows 10/11 [[run-docker-windows]]
+
+- Need Docker for Windows Desktop, Windows Subsystem for Linux (2, with a distro +
+ also installed--Ubuntu is good), VM enabled in BIOS, and Hyper-V activated
+
+- With distro installed, install `make`, `docker`, and `docker-compose`
+
+- use Powershell terminal in Visual Studio Code
+
+`docker-compose build --no-cache server` +
+`docker-compose up -d server`
+
+MUD will be on local port 8888
+
+Also for dev build: +
+`docker-compose run --rm --service-ports dev`
+
+On 127.0.0.1 port 18888
+
+{nbsp} +
+{nbsp} +
+
+== Add new non-player items and imm toys [[np-items-imm-toys]]
+
+Usually these have been created in `limbo.are`, which has the VNUMs 0-100 +
+assigned.  We've filled them up now though, so start new ones from VNUM 500. +
+
+Still create them in the same file, just be aware that you probably don't want +
+to assign 500-600 to a new area or whatever.
+
+{nbsp} +
+{nbsp} +
+
+== Build pet stores [[build-pet-stores]]
+
+- Flag the room the shopkeeper is in `ROOM_PET_SHOP` (4096)
+- Make the pet store owner a shopkeeper that doesn't buy/sell any kind +of item; +
+their entry in `#SHOPS` might look like this: +
+`27206 0 0 0 0 0 100 100 0 23            Kianar`
+- Make a noexit room to store the pets you want to sell that is ONE VNUM HIGHER +
+than the pet store (very important).
+- Reset all your pets in that room.  Make sure they're flagged `ACT_PET`.
+
+{nbsp} +
+{nbsp} +
+
+== Visualise the MUD's area coverage [[mud-visualisation]]
+
+Visualisation of all the MUD areas and the level ranges they cover.  Best to +
+view zoomed out at 50%.
+
+https://docs.google.com/spreadsheets/d/1Cq9jkegjZ5bVX6m-mypVLnw0j6xMvlgsRgE_nySDNTI/edit#gid=0[MUD level visualiser]
+
+{nbsp} +
+{nbsp} +
+
+== Run a `SHOP` [[run-a-shop]]
+
+To set the level of an item sold in a shop, use the `<cost-per-day:number>` field. +
+[source, "bash"]
+map Undersea ocean deep~
+a map of Undersea - the ocean deep~
+A map of the 'ocean deep' area of Undersea lies here.~
+~
+2 0 1|16384
+5~ ~ ~ ~
+1 0 5 <--- This value here.
+
+If using MZF this value gets overwritten by 0 when you save, so must be edited +
+manually.
+
+There will be a little bit of wobble on this item level (`number_fuzzy()`) +
+unless you also add the `ITEM_DONOT_RANDOMISE` flag to the item.
+
+Notes on `#SHOPS` values +
+`27214 10 17 0 0 0 100 10 0 23      Dude the Dudemeister`
+
+- First number is the VNUM of the mob.
+- 2nd through 6th numbers are the ITEM_TYPEs the mob will buy/sell
+- 7th number is the markup (vs "item value") the shopkeeper will sell at. +
+100 == sell_price is double the value.
+- 8th number is the percentage of the value shopkeeper will pay players for items. +
+- 9th and 10th numbers are the shop's opening hours.  If you want them to be +
+always open these hours should be 0 and 23.
+
+Note: If a shopkeeper already has one of the items you try to sell them, the +
+value they will pay is reduced by 50% for each copy.  So if they had a 40% buy +
+discount, what you'd get from selling them a third copy of something would be +
+base_value * 0.4 * 0.5 * 0.5. +
+
+{nbsp} +
+{nbsp} +
+
+== Use a trapped object [[trapped-objects]]
+
+`trap.c` has more details if you're looking for them.
+
+Example trapped object:
+[source, "bash"]
+nice chest~
+a nice chest~
+A nice chest is here.  It is nice.~
+~
+15 2097152 1|512 5 20 0
+150~ 13~ 27207~ 0~
+105 0 0
+
+The 2097152 (`BIT_21`) is the 'this is a trap' flag.  Any item (I think?) can +
+be trapped, just by sticking this flag on it.
+
+The 1|512 flags are `TRAP_EFF`s, which are basically "what does the trap trigger +
+on?"  They reference the following, and may be stacked. They will overwrite the +
+take/wear bits (meaning you can't take/wear a trap?)
+
+[source, "c"]
+TRAP_EFF_MOVE           BIT_0 (1)    /* trigger on movement */
+TRAP_EFF_OBJECT         BIT_1 (2)    /* trigger on get or put */
+TRAP_EFF_ROOM           BIT_2 (4)    /* affect all in room */
+TRAP_EFF_NORTH          BIT_3 (8)    /* movement in this direction */
+TRAP_EFF_EAST           BIT_4 (16)
+TRAP_EFF_SOUTH          BIT_5 (32)
+TRAP_EFF_WEST           BIT_6 (64)
+TRAP_EFF_UP             BIT_7 (128)
+TRAP_EFF_DOWN           BIT_8 (256)
+TRAP_EFF_OPEN           BIT_9 (512)  /* trigger on open */
+
+
+5 is the damage type.  Options are:
+
+[source, "c"]
+TRAP_DAM_SLEEP          -1
+TRAP_DAM_TELEPORT        0
+TRAP_DAM_FIRE            1
+TRAP_DAM_COLD            2
+TRAP_DAM_ACID            3
+TRAP_DAM_ENERGY          4
+TRAP_DAM_BLUNT           5
+TRAP_DAM_PIERCE          6
+TRAP_DAM_SLASH           7
+TRAP_DAM_POISON          8
+TRAP_DAM_SNARE           9
+
+20 is the number of charges the trap has before it is exhausted.  I don't think +
+0 is important.
+
+`150~ 13~ 27207~ 0~` are capacity, pickable etc flags, and key vnum for the +
+container, but could be anything depending on what you trap. The 13 must be the +
+combined flags on containers--1|4|8 will not work. +
+
+MZF (spit) will delete trap settings you add when it saves to Envy 1.0 format. +
+
+The imm commands `trapstat`, `trapremove`, `traplist`, and `trapset` exist and +
+have been tidied up. You can view them in `wizhelp`.
+
+{nbsp} +
+{nbsp} +
+
+== Use mobprog control flow syntax [[mobprog-control-flow]]
+
+Example control flow for MOBProgs:
+[source, "bash"]
+>speech_prog p I like poking people~
+if isnpc($n)
+   chuckle
+   poke $n
+else
+   if level($n) <= 5
+   or isgood($n)
+      tell $n I would rather you did not poke me.
+   else
+      if level($n)>15
+         scream
+         say Ya know $n. I hate being poked.
+         kill $n
+         break
+      endif
+      slap $n
+      shout MOMMY!!! $N is poking me.
+   endif
+endif
+~
+
+{nbsp} +
+{nbsp} +
+
+== Create test characters with Mudlet [[create-test-chars]]
+
+To make new test characters quickly on Mudlet; pretty straightforward if you want to add optional race/gender etc too.
+[source, "lua"]
+Alias name: nc
+Pattern: ^nc (.+)$
+Script:
+target_class = matches[2]
+send ("t".. target_class)
+send("yes")
+send("1q2w3e4r")
+send("1q2w3e4r")
+send("y")
+send("y")
+send("a")
+send("y")
+send("m")
+send("y")
+if (target_class == "necromancer") then
+  target_class = "mage"
+end
+if (target_class == "warlock") then
+  target_class = "mage"
+end
+if (target_class == "templar") then
+  target_class = "cleric"
+end
+if (target_class == "druid") then
+  target_class = "cleric"
+end
+if (target_class == "ninja") then
+  target_class = "thief"
+end
+if (target_class == "bounty") then
+  target_class = "thief"
+end
+if (target_class == "thug") then
+  target_class = "warrior"
+end
+if (target_class == "knight") then
+  target_class = "warrior"
+end
+if (target_class == "infernalist") then
+  target_class = "psionic"
+end
+if (target_class == "witch") then
+  target_class = "psionic"
+end
+if (target_class == "werewolf") then
+  target_class = "shifter"
+end
+if (target_class == "vampire") then
+  target_class = "shifter"
+end
+if (target_class == "monk") then
+  target_class = "brawler"
+end
+if (target_class == "martist") then
+  target_class = "brawler"
+end
+if (target_class == "barbarian") then
+  target_class = "ranger"
+end
+if (target_class == "bard") then
+  target_class = "ranger"
+end
+if (target_class == "engineer") then
+  target_class = "smithy"
+end
+if (target_class == "alchemist") then
+  target_class = "smithy"
+end
+send (target_class)
+send("y")
+send("y")
+send("y")
+send("y")
+
+Note that 'martialartist' -> 'martist' and 'bountyhunter' -> 'bounty' above.
+
+I find it's good to have a separate Mudlet account just for test characters  +
+that you can put food/drink triggers on.  I have also created this alias on my +
+imm to light/pie/drink/sack/aqualung the characters up once they're in (I +
+usually do it with a bunch of expandAlias() and loops but here're the raw +
+commands):
+
+[source, "lua"]
+Alias name: nb
+Pattern: ^nb (.+)$
+Script:
+target = matches[2]
+send("oload 21 1")
+send("give light " .. target)
+send("force " .. target .. " wear light")
+send("oload 97 1")
+send("give stat " .. target)
+send("force " .. target .. " wear stat")
+send("oload 23571 1")
+send("give skin " ..target)
+send("oload 4529 1")
+send("give sack " .. target)
+send("oload 3009 1 15")
+send("give pie " .. target)
+send("give pie " .. target)
+send("give pie " .. target)
+send("give pie " .. target)
+send("give pie " .. target)
+send("give pie " .. target)
+send("give pie " .. target)
+send("give pie " .. target)
+send("give pie " .. target)
+send("give pie " .. target)
+send("give pie " .. target)
+send("give pie " .. target)
+send("give pie " .. target)
+send("give pie " .. target)
+send("give pie " .. target)
+send("oload 27334 1")
+send("give box " .. target)
+send("force " .. target .. " wear box")
+send("force " .. target .. " put all.pie sack")
+send("restore " .. target)
+
+{nbsp} +
+{nbsp} +
+
+== Use GMCP [[use-GMCP]]
+
+Have added the following patch to the mud https://github.com/g7138580/protocol_gmcp[here]. This enables +
+https://www.zuggsoft.com/zmud/mxp.htm[MXP] and GMCP--the later is used by Mudlet.
+Mudlet will handle +
+the information sent out of bounds, and will via the LUA scripting +
+language render it within the interface as you want.
+
+==== Key things to know
+
+`void gmcp_update( void )` in `update.c` +
+This contains all the information we send to the client. It has basic +
+information at present. All of which is defined in detail in the structures in +
+`protocol.c` and `protocol.h`
+
+If we want to add something say like smithy empowerment, these are the places +
+to do it.
+
+`protocol.c:` +
+[source, "c"]
+const struct gmcp_package_struct GMCPPackageTable[GMCP_PACKAGE_MAX+1] =
+const struct gmcp_support_struct bGMCPSupportTable[GMCP_SUPPORT_MAX+1] =
+const struct gmcp_variable_struct GMCPVariableTable[GMCP_MAX+1] =
+
+`protocol.h` (the typedef enums) +
+https://github.com/g7138580/protocol_gmcp[GitHub link]
+
+
+`GMCP: Mudlet`
+
+What happens in Mudlet?
+
+Nothing at all if you dont tell it anything.
+
+You can type
+
+`lua gmcp`
+
+This is important to understand what the client is actually getting, it will +
+show you something like: +
+
+[source, "lua"]
+{
+  Char = {
+    Affect = { {} },
+    Base = {
+      class = "Smithy",
+      name = "Brutus",
+      race = "Human"
+    },
+    Stats = {
+      con = "23",
+      damroll = "204",
+      dex = "22",
+      ...
+
+
+You can only show in the GUI information sent over the GMCP pipe, or that can +
+be derived from it.
+
+Generally with the GUI, the process is:
+
+. Tell Mudlet where to put shit, and
+. Update it.
+
+If you would like to work on our Mudlet gui, the repo is https://github.com/fromage-fraser/dd-gui[here].
+
+The following is a script that adds some gauges - note we set the value with +
+the last line.
+
+NOTE - this IS case sensitive!!
+
+[source, "lua"]
+GUI.Health = Geyser.Gauge:new({
+  name = "GUI.Health",
+},GUI.LeftColumn)
+GUI.Health.back:setStyleSheet(GUI.GaugeBackCSS:getCSS())
+GUI.GaugeFrontCSS:set("background-color","red")
+GUI.Health.front:setStyleSheet(GUI.GaugeFrontCSS:getCSS())
+GUI.Health.front:echo("GUI.Health")
+GUI.Health:setValue((100/tonumber(gmcp.Char.Vitals.maxhp))*tonumber(gmcp.Char.Vitals.hp),100,tonumber(gmcp.Char.Vitals.hp))
+
+The following is a box and it adds stats to the box:
+
+[source, "lua"]
+GUI.Box1 = Geyser.Label:new({
+  name = "GUI.Box1",
+  x = 0, y = 0,
+  width = "100%",
+  height = "50%",
+},GUI.Right)
+GUI.Box1:setStyleSheet(GUI.BoxCSS:getCSS())
+GUI.Box1:echo(gmcp.Char.Stats.str.. [[<br/>]]
+                              ..gmcp.Char.Stats.dex.. [[<br/>]]
+                                ..gmcp.Char.Stats.int.. [[<br/>]]
+                                ..gmcp.Char.Stats.con.. [[<br/>]]
+                                ..gmcp.Char.Stats.wis.. [[<br/>]]
+                                ..gmcp.Char.Stats.dex,"white","10")
+
+{nbsp} +
+{nbsp} +
+
+== Use DOT Affects [[dot-effects]]
+
+You can add Damage Over Time (DOT) effects now as a side effect of spells/skills.
+
+Apply this to victim as part of your spell/skill:
+[source, "c"]
+af.type      = gsn_serrate;
+af.duration  = 1;
+af.location  = APPLY_NONE;
+af.modifier  = 15;
+af.bitvector = AFF_DOT;
+
+`af.modifier` will be the damage you get every tick in combat. +
+change `af.type` to your spell.
+
+in `const.c` the spell damage description will be what you see in combat. +
+
+[source, "c"]
+{
+        "serrate", &gsn_serrate,
+        TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+        spell_null, 0, 0,
+        "<231>bl<225>ee<219>d e<213>ff<207>ec<201>t<0>", "!Serrate!"
+},
+
+image:bleed_effect.png[Capture.PNG,400,,]
+
+{nbsp} +
+{nbsp} +
+
+== Use PRONE & DAZE [[prone-and-daze]]
+
+Ive created a new handler that will update `PRONE` & `DAZED` conditions outside +
+of the fight loop, and away from the `WAIT_STATE`. Additionally there are 2 new +
+commands in `fight.c` you can use - similar to the old trip command.
+
+To use, it - very simple!
+
+In your skill, add a call to either prone or daze, with 4 fields:
+
+- 1 & 2 fields: ch and victim
+- 3rd field is the gsn of the skill (important as it adds to the affect list +
+AND the recovery message)
+- 4th field is the rounds
+
+Please also add the act info lines (or similar) in your skill before calling the +
+prone or daze function
+
+e.g. for prone:
+[source, "c"]
+    act ("You trip $N and $E goes down!", ch, NULL, victim, TO_CHAR);
+    act ("$n trips you and you go down!", ch, NULL, victim, TO_VICT);
+    act ("$n trips $N and $E goes down!", ch, NULL, victim, TO_NOTVICT);
+    arena_commentary("$n trips up $N.", ch, victim);
+    /* trip(ch, victim); */
+    prone(ch,victim, gsn_trip, 1);
+
+for daze:
+[source, "c"]
+    act ("You {Wgrapple{x $N down, winding them.", ch, NULL, victim, TO_CHAR);
+    act ("$n {Wgrapples{x you down!", ch, NULL, victim, TO_VICT);
+    act ("$n {Wgrapples{x $N down!", ch, NULL, victim, TO_NOTVICT);
+    arena_commentary("$n grapples $N to the ground.", ch, victim);
+
+    WAIT_STATE (ch,        2 * PULSE_VIOLENCE);
+    WAIT_STATE (victim,    2 * PULSE_VIOLENCE);
+    /*  one_hit (ch, victim, gsn_grapple); */
+    daze(ch,victim, gsn_grapple, 1);
+
+Note - change the recovery message for your skill in `const.c`!
+e.g. for trip:
+[source, "c"]
+        {
+                "trip", &gsn_trip,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 18,
+                "", "You get back on your feet."
+        },
+
+
+{nbsp} +
+{nbsp} +
+
+== Create a portal exit in the Mudlet mapper [[create-portal]]
+
+Assuming the exit room already exists--while in the room with the portal:
+
+`start mapping`
+
+`set exit -p enter portal NUMBER`
+
+Where NUMBER is the (Mudlet mapper) ID of the room you want the portal to go to.
+
+`stop mapping`
+
+The "enter portal" string should be whatever you type to enter the portal, in +
+case it has a different keyword etc.
+
+{nbsp} +
+{nbsp} +
+
+== Use the Mudlet mapper [[mudlet-mapper]]
+
+The Mudlet automapper script is very capable but NOT friendly, intuitive or +
+forgiving.  If you try to wing your way through using it there will probably be +
+tears.  I strongly suggest spending some time learning it before you try mapping +
+anything.  Thank me later.  Also, use a recent build of the codebase because I +
+have added showing closed doors in autoexits which will help you a LOT.
+
+You can get help on the Mudlet Discord or on demonnic's Discord if you get stuck. +
+
+https://www.youtube.com/watch?v=m6nqwbvEJXc&ab_channel=Chezni[Good intro and advice on dealing with some of the mapper's 'quirkier' behaviour]. +
+Watch the whole thing.  Particularly useful in information on how to see rooms +
+that have accidentally gotten stacked and how to merge and separate them. Also +
+read https://wiki.mudlet.org/w/Manual:Technical_Manual?pk_vid=00b0b3709cacb9b4166392738718be44#Mapper[this].
+
+To get started with the mapper:
+
+- Log in with the character you want to map with.  Go to the area you want to map.
+- Make sure you are getting a TELNETGA sequence (check config)
+- Click the "Map" icon on Mudlet to bring up the map.
+- Type `find prompt` and hopefully it does
+- Type map basics and read it.  It should show your room name and exits.  You +
+cannot proceed if this is not working.
+- If there are portals in your area I suggest typing
+
+`map ignore You step into the shimmering portal...`
+
+so it doesn't mistake you going through one for a new room.
+
+- Toggle on map debug
+
+- Hit `start mapping Name Of New Area You Want To Map`
+
+- Walk around; it'll make a map.
+
+- If something fucks up (or you've finished) type `stop mapping`
+
+You can use commands viewable with map help to save/load/delete your map, or +
+use the buttons etc under the Mapper in Mudlet Settings. See my earlier post +
+for dealing with portals.
+
+{nbsp} +
+{nbsp} +
+
+== Use the Mudlet automapper GUI [[mudlet-automapper-gui]]
+
+Tips:
+
+- You can be in either 'viewing' or 'editing' mode.  Mode changing is accessible +
+by right click contextual menu, like most things in the GUI.
+
+- Hold down ALT + mouse left click (off the room boxes) to scroll stuff around +
+without messing with it
+
+- A lot of the mouse menu stuff works by left clicking to SELECT a room then +
+HOLDING down the right click and RELEASING it on the menu option you want. This +
+is quite irritating until you get used to it.
+
+- Tick the ID box so you can see the room numbers.  Particularly useful if you +
+ need to manually fix exits (and you will). +
+
+- You can move rooms through 'z-levels' (basically layers) by selecting them, +
+selecting 'Move' with right-click and then clicking the + and - buttons to go +
+up or down (respectively) through the levels
+
+- Use colour to mark things (access via right click)..  I was using green for +
+portals and blue for rooms with important mobs in them
+
+- If things looks screwy or you make an obvious mistake STOP THE MAPPER and try +
+and fix it.  The mapper loves to compound errors.
+
+- Move things around and use the exit lines creatively if you run into problems +
+with areas not being grids.
+
+- Try and make it so rooms on separate layers ("z-levels") line up as much as +
+possible.
+
+- I don't know how to deal with mazes with the mapper yet.
+
+We have Mud School, and should add at least the following I think before +
+submitting the MUD to Mudlet listings:
+
+- Midgaard
+- The Foundry
+- Gremlin Lair
+- The Circus
+- Dangerous Neighbourhood
+- Dwarven Day Care
+
+Other levels suitable for characters up to level 10
+
+The initial linking areas characters are likely to encounter too, perhaps?
+
+{nbsp} +
+{nbsp} +
+
+== Use mob ranks [[mob-ranks]]
+
+Ive refactored Mob Ranks, such that they live in a new field, along side the +
+species:
+
+They live in their own table now, which contains the name, the multiplier to +
+hp & loot chance, and the who-name in `mob.c`
+
+In the above example, reserved is used, as I havent added a cyclops species +
+yet.
+
+Ranks are:
+
+- rare
+- elite
+- boss
+- common
+- world
+
+image:ranks.png[ranks.png,500,,]
+
+{nbsp} +
+{nbsp} +
+
+== Use vaults [[vaults]]
+
+Vaults are in!  Vault contents may be checked from anywhere with the vault +
+command, but may only be manipulated at banks (i.e. rooms flagged ROOM_VAULT), +
+which have been added to every city.
+
+Manipulation commands are `claim`, `lodge`, and `inspect` (analogous to `get`, +
+`put`, and `examine`, respectively). `claim` and `lodge` should support +
+transporting items in and out of containers in the vault, as well as `all`, +
+`all.item`, and `NUM.item` notation.
+
+Closable and lockable containers in your vault should be able to be +
+opened/closed and locked/unlocked while they are in there.
+
+`HELP` entries for `VAULT` and `DRAGONHOARD` have been added.
+
+Vault contents are saved as `Charname.vault` files in the player directories.
+
+Current vault item number limits are char level * 2 (minimum 20) and weight +
+limits are ch->level * 10 (minimum 100), but easy enough to tweak if that ends +
+up being too generous or too stingy.
+
+{nbsp} +
+{nbsp} +
+
+== Use the move trigger [[move-prog]]
+New mobprog trigger added:
+
+[source, "bash"]
+Syntax: >move_prog <PERCENTAGE> <DIRECTION/S>~
+... commands...
+~
+|
+
+The first argument is the percentage likelihood of the trigger firing when a +
+character tries to move in `<DIRECTION>` (being a word such as "north",  "south" +
+etc) out of the room. It's better to have a separate trigger for each direction, +
+ though you can combine all directions in a single trigger, like: +
+ `>move_prog 75 north south up~`.  However, if you have multiple directions in +
+ a single trigger you won't know which one the player triggered it on and can't +
+ pass that information/knowledge on to your commands.
+
+If the trigger fires, the player will NOT automatically move in the direction +
+they entered, so you will have to `mptransfer` them if you want them to move +
+(and probably then do something like `mpat $n mpforce $n look`). +
+
+ It's probably not a great idea to have multiple mobs with this trigger in (or +
+ potentially in) the same room.
+
+Have tested it with grouped characters, single chars, and imms.  Have also +
+updated the mobprog doc on the website & added it to the repo.  Combined with +
+wisinvis mobs it should be fun for doing traps and mazes and who know what +
+other horrors.  Perhaps you could even use it to fake some kind of randomised +
+wilderness type area?
+
+{nbsp} +
+{nbsp} +
+
+== Create a text file with all player names [[player-name-text-file]]
+To create a text file containing all the player file names:
+[source, "bash"]
+ find /home/ddhost/dd4/player -type f -printf '%p\n' > /home/ddhost/dd4/player/playerlist.txt
+
+{nbsp} +
+{nbsp} +
+
+== Use an upgraded fountain [[upgraded-fountain]]
+
+Fountains may now have any kind of liquid in them that is in `liq_table` in +
+`const.c`.  Just set `obj->value[2]` in the area file entry for the fountain to +
+the index of the liquid you want the fountain to supply.
+
+Containers may be "filled" with the fountain liquid so long as they don't +
+already have a different liquid in them.  If they do, you can just empty the +
+container first.
+
+A non-zero value for `obj->value[3]` means the fountain is poisoned.
+
+image:fountain.png[fountain.png,500,,]
+
+{nbsp} +
+{nbsp} +
+
+== Use faux objects [[fake-objects]]
+
+Have created `ACT_OBJECT` and `ACT_NOFIGHT` as NPC act types and `ITEM_REMAINS` +
+as an item type (basically a "corpse" for mobs that are flagged `ACT_OBJECT`).
+
+Along with the `BODY_FORM` flags, flags such as `ACT_NO_HEAL`, `ACT_NO_EXPERIENCE`, +
+`ACT_UNKILLABLE`, `ACT_INVULNERABLE`, using wizinvis mobs ad/or various mob_prog +
+triggers, marking `ACT_OBJECT` mobs as neutral gender and alignment we can now +
+do a pretty good job of faking destructible (or indestructible!) objects +
+(bridges, walls, doors, statues), magical fighting swords, and the like.
+
+Current effects of the `ACT_OBJECT` flag include:
+
+* A "remains" object rather than an NPC corpse is created when the `ACT_OBJECT` +
+mob is destroyed (vs "killed")
+
+* Autoloot/autocoin/autosac will correctly interact with remains.
+
+* Messages for "death" etc are sensible and reflect the mob's status as a +
+pseudo-object rather than a creature
+
+* `ACT_OBJECT` mobs cannot be targeted by social commands.
+
+* Long descriptions of `ACT_OBJECT` mobs will have spaces inserted at the +
+beginning of them when players see them in rooms, so they look like objects.
+
+* `consider` and `advanced consider` give sensible messages.
+
+* Movement verbs do not imply volition
+
+* `charm`/`dominate` cannot affect `ACT_OBJECT` mobs
+
+* Alignment spells won't give readings for `ACT_OBJECT` mobs.
+
+Generally spells that shouldn't target `ACT_OBJECT` mobs won't, or will give +
+different text.  Doubtless I've missed some, but will fix any I see as I go.
+
+{nbsp} +
+{nbsp} +
+
+== Use the `tfind` command [[tfind]]
+
+`Syntax: tfind 'spell/skill group name' <optional percentage>`
+
+Finds teachers in the domain who know particular spell or skill groups at or +
+above a given percentage level. If no percentage is given, search defaults to 1. +
+Imms will have to `sset` it on themselves to gain access to it.  Will give the +
+teacher's keywords so they can easily be found with mwhere subsequently.
+
+Example output: +
+
+image:tfind.png[tfind.png,500,,]
+
+{nbsp} +
+{nbsp} +
+
+== Use the `rfind` command [[rfind]]]]
+
+`Syntax: rfind 'substring'`
+
+Returns a list of room titles and associated vnums matching the search string, +
+which can be multiple words if enclosed in single quotes.  Limited to 400 +
+results per query to avoid segfaults. Case insensitive.
+
+Example output: +
+image:rfind.png[rfind.png,500,,]
+
+{nbsp} +
+{nbsp} +
+
+== Add a new spell or skill to the MUD [[add-new-skill]]
+
+Assuming we want to add the new spell `example`.
+
+`const.c`
+
+Format here is:
+
+_spell/skill name, pointer to gsn, practice type, target, minimum position, +
+resistance type spell falls under (see mob.c), pointer to spell function, +
+minimum mana cost, beats (how fast it can be cast/performed), damage noun, wear +
+off message_
+
+If there is no damage noun text, leave it blank.  If no wear-off message, use +
+"!Example!" as a convention.
+[source, "c"]
+{
+      "example", &gsn_example,
+      TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384|131072,
+      spell_example, 5, 1,
+      "spell cast message", "spell wear-off message"
+},
+
+
+`db.c` :
+[source, "c"]
+int     gsn_example;
+
+`merc.h`
+[source, "c"]
+extern int gsn_example
+
+and
+[source, "c"]
+DECLARE_SPELL_FUN( spell_example           );
+
+Add actual function definition to `magic.c` if a spell, likely `fight.c` if a +
+skill
+
+[source, "c"]
+void spell_example( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+    # code
+}
+
+skills (not spells!) will also need an entry in `interp.c` like
+[source, "c"]
+{ "example",               do_example,        POS_STANDING,    0,  LOG_NORMAL },
+
+
+`MAX_SKILL` will need to be increased, and possibly some of the others below:
+[source, "c"]
+#define MAX_SKILL              592     /* +1 freedom 1/4/24 - Owl */
+#define MAX_PRE_REQ            1400    /* +2 detect evil for infernalists 30/3/24 */
+#define MAX_SPELL_GROUP        452     /* +1 reforge Brutus 1/1/23 */
+#define MAX_GROUPS             61      /* +1 for runecaster - Brutus Aug 2022 */
+#define MAX_FORM_SKILL         74      /* 73 + 1 for 'swallow' | for form skill table */
+#define MAX_VAMPIRE_GAG        27      /* 26 + 1 for 'swallow' | ugly vampire/werewolf hack */
+
+`area.txt` will need to be updated with any new spells (not skills) under the +
+`=== Spells` section.
+
+`helpfile.are` will need a help entry for your spell, and an entry under `CHANGES`
+
+{nbsp} +
+{nbsp} +
+
+== Give a new spell or skill to a class [[new-skill-to-class]]
+
+So assuming we want to give the `cure poison` spell we have just created using +
+the process above to our cleric class.
+
+Decide what group of spells (or skills) it should be included in, and what other +
+spell and possible level requirements it should have. To add it to a spell +
+group, put it under the appropriate spell group in +
+`struct spell_group_struct spell_group_table [MAX_SPELL_GROUP]` and increase +
+the `MAX_SPELL_GROUP` number by 1 in `merc.h`.
+
+[source, "c"]
+        { &gsn_group_curative,                          0 },
+        { &gsn_refresh,                                 0 },
+        { &gsn_cure_blindness,                          0 },
+        { &gsn_remove_curse,                            0 },
+        { &gsn_cure_poison,                             0 },
+
+`#define MAX_SPELL_GROUP             451     /* +1 cure poison You 1/1/23 */`
+
+Add the pre-req lines to the pre-req file for the class, example adding +
+`cure_poison` with pre-reqs having `group curative` at 40% and `poison` at 30% +
+to `pre_req-cleric.c`
+
+[source, "c"]
+{&gsn_cure_poison,              &gsn_group_curative,    40,     PRE_CLERIC},
+{&gsn_cure_poison,              &gsn_poison,            30,     PRE_CLERIC},
+
+Then increase `MAX_PRE_REQ` in `merc.h` by the number of lines you just added to +
+`pre_req-cleric.c`
+
+`#define MAX_PRE_REQ       1400    /* +2 for cure poison for clerics 30/3/24 */`
+
+You then need to update `helpfile.are` for the skills help for the class... will +
+be the entry looking like `SCLERIC` here.
+
+The skills listed for the class on the website should also be updated, but this +
+is less important... the intention is that the skills will propagate there + automatically eventually.
