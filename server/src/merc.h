@@ -324,7 +324,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   592     /* +1 freedom 1/4/24 - Owl */
+#define MAX_SKILL                   591     /* -1 map 5/4/24 - Owl */
 #define MAX_PRE_REQ                 1400    /* +2 detect evil for infernalists 30/3/24 */
 #define MAX_SPELL_GROUP             452     /* +1 reforge Brutus 1/1/23 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
@@ -4250,7 +4250,7 @@ DECLARE_DO_FUN( do_log                          );
 DECLARE_DO_FUN( do_look                         );
 DECLARE_DO_FUN( do_lodge                        );      /* put items into vault */
 DECLARE_DO_FUN( do_lunge                        );      /* for VAMPS - Brutus */
-DECLARE_DO_FUN( do_map                          );      /* Main mapping func - Tavolir */
+/* DECLARE_DO_FUN( do_map                          ); */      /* Main mapping func - Tavolir */
 DECLARE_DO_FUN( do_maul                         );      /* tiger skill */
 DECLARE_DO_FUN( do_mawasigeri                   );      /* Martial artist - brutus */
 DECLARE_DO_FUN( do_meditate                     );
