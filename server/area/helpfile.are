@@ -403,7 +403,6 @@ Enter thy Name: ~
 -1 MOTD~
 {x
     [1 April 2024]
-    [1 April 2024]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -415,17 +414,11 @@ Enter thy Name: ~
     at {Yhttps://www.dragons-domain.org/{x, which has a lot of information.
     We're also active on a Discord server at {Yhttps://discord.gg/aGzmAWmXYb{x
     if you'd like to jump in and say hi!
-    New players, a big hello!  If you need any help please check out our website
-    at {Yhttps://www.dragons-domain.org/{x, which has a lot of information.
-    We're also active on a Discord server at {Yhttps://discord.gg/aGzmAWmXYb{x
-    if you'd like to jump in and say hi!
 
     {WNEW AREA:{x Omu Canals, the first area of the grung sector is complete!
     20 new mobs, 27 new objects, 64 new rooms, and a new Reaver quest.
 
     {WNEW AREA:{x Ota'ar Dar Prince's Canton is in, finishing the city of Ota'ar
-    Dar! 53 new mobs (including a <81>[WO<75>RL<69>D B<75>OS<81>S]<0>), 54 new
-    objects, 90 new rooms, and a new Reaver quest.
     Dar! 53 new mobs (including a <81>[WO<75>RL<69>D B<75>OS<81>S]<0>), 54 new
     objects, 90 new rooms, and a new Reaver quest.
 
@@ -463,8 +456,8 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 
 0 CHANGES~
 {W April 2024{x
--affspell($*), insect($*), inrflag($*) added for mobprogs. isaffected($*) fixed
-{W April 2024{x
+-lock vnums added to all keys
+-keys now "remember" the last thing they were used to lock or unlock
 -affspell($*), insect($*), inrflag($*) added for mobprogs. isaffected($*) fixed
 
 {W March 2024{x
@@ -476,16 +469,7 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 -Gravity functions at a more sensible speed
 -Psychometry spell added (post-60 roadmap)
 -Waitstates slashed on all minor buff spells
--mob spells starve, parch, inebriate, glaciation, conflagration, flood, and
- confusion added
--Ota'ar Dar added to 'pattern'
--supporting code changes for new mob spells
--Nausea spell added (mostly for mobs)
--Gravity functions at a more sensible speed
--Psychometry spell added (post-60 roadmap)
--Waitstates slashed on all minor buff spells
 -New area: Omu Canals, first area of new grung sector
--New trap type "snare" added
 -New trap type "snare" added
 -shoot skill available to mobs with bows
 -Mobprog triggers added to check char size and if an object is in the room
