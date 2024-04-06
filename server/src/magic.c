@@ -330,7 +330,6 @@ void do_cast( CHAR_DATA *ch, char *argument )
         int        mana;
         int        sn;
         int        drunk_random;
-        int        drunk_random;
 
         if (IS_AFFECTED(ch, AFF_DAZED))
         {
@@ -388,21 +387,6 @@ void do_cast( CHAR_DATA *ch, char *argument )
         {
                 send_to_char( "You can't concentrate enough.\n\r", ch );
                 return;
-        }
-
-        if (!IS_NPC(ch))
-        {
-            if ( ch->pcdata->condition[COND_DRUNK ] > 0 )
-            {
-                drunk_random = (rand() % MAX_DRUNK) + 1;
-
-                if (drunk_random < ch->pcdata->condition[COND_DRUNK ] )
-                {
-                    send_to_char( "You slur the words to the spell.  It fizzles out.\n\r", ch );
-                    act("$n slurs the words to a spell and it fizzles out.",ch,NULL,NULL,TO_ROOM);
-                    return;
-                }
-            }
         }
 
         if (!IS_NPC(ch))
@@ -933,16 +917,8 @@ void spell_acid_blast (int sn, int level, CHAR_DATA *ch, void *vo)
         {
             if (!IS_NPC(ch))
             {
-        {
-            if (!IS_NPC(ch))
-            {
                 act("Hot acid streams from your fingertips towards $N!", ch, NULL, victim, TO_CHAR);
                 act("Hot acid streams from $n's fingertips towards $N!", ch, NULL, victim, TO_NOTVICT);
-            }
-            else {
-                act("Hot acid streams from you towards $N!", ch, NULL, victim, TO_CHAR);
-                act("Hot acid streams from $n towards $N!", ch, NULL, victim, TO_NOTVICT);
-            }
             }
             else {
                 act("Hot acid streams from you towards $N!", ch, NULL, victim, TO_CHAR);
@@ -5679,7 +5655,6 @@ void spell_gas_breath( int sn, int level, CHAR_DATA *ch, void *vo )
                                 dam /= 2;
                         else
                                 spell_nausea( gsn_nausea, level, ch, vch );
-                                spell_nausea( gsn_nausea, level, ch, vch );
 
                         damage( ch, vch, dam, sn, FALSE );
                 }
@@ -5871,7 +5846,6 @@ void spell_biofeedback ( int sn, int level, CHAR_DATA *ch, void *vo )
 void spell_cell_adjustment ( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA *victim = (CHAR_DATA *) vo;
-        int well_count = 0;
         int well_count = 0;
 
         if ( is_affected( victim, gsn_poison ) )
@@ -8668,7 +8642,6 @@ void spell_animate_weapon (int sn, int level, CHAR_DATA *ch, void *vo)
 
                 if (ch != victim)
                         send_to_char("<15>Success!<0>\n\r",ch);
-                        send_to_char("<15>Success!<0>\n\r",ch);
 
                 return;
         }
@@ -8700,8 +8673,8 @@ void spell_animate_weapon (int sn, int level, CHAR_DATA *ch, void *vo)
                 act("Your weapon slips from your hands!", ch, NULL, victim, TO_VICT);
                 act("$N's weapon slips from $s hands.", ch, NULL, victim, TO_NOTVICT);
                 check_group_bonus(ch);
+
                 if (ch != victim)
-                        send_to_char("<15>Success!<0>\n\r",ch);
                         send_to_char("<15>Success!<0>\n\r",ch);
                 return;
         }
@@ -9793,15 +9766,6 @@ bool skill_cannot_be_dispelled (int sn)
         return FALSE;
 }
 
-bool is_only_whitespace(const char* str) {
-    while (*str) {
-        if (!isspace((unsigned char)*str)) {
-            return 0;
-        }
-        str++;
-    }
-    return 1;
-}
 bool is_only_whitespace(const char* str) {
     while (*str) {
         if (!isspace((unsigned char)*str)) {
