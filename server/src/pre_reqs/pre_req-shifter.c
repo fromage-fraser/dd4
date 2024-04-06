@@ -40,6 +40,7 @@
 {&gsn_dodge,                    &gsn_shifter_base,      60,     PRE_SHIFTER},
 {&gsn_second_attack,            &gsn_shifter_base,      60,     PRE_SHIFTER},
 {&gsn_fast_healing,             &gsn_shifter_base,      60,     PRE_SHIFTER},
+{&gsn_meditate,                 &gsn_shifter_base,      60,     PRE_SHIFTER},
 
 { &gsn_form_hydra,              &gsn_form_tiger,        70,     PRE_SHIFTER},
 { &gsn_form_hydra,              &gsn_shifter_base,      60,     PRE_SHIFTER},
