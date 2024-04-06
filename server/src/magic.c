@@ -40,9 +40,6 @@ void say_spell                  ( CHAR_DATA *ch, int sn             );
 bool is_safe                    ( CHAR_DATA *ch, CHAR_DATA *victim  );
 bool skill_cannot_be_dispelled  ( int sn                            );
 bool is_only_whitespace         ( const char* str                   );
-void say_spell                  ( CHAR_DATA *ch, int sn             );
-bool is_safe                    ( CHAR_DATA *ch, CHAR_DATA *victim  );
-bool skill_cannot_be_dispelled  ( int sn                            );
 
 
 /*
@@ -329,7 +326,6 @@ void do_cast( CHAR_DATA *ch, char *argument )
         int        mana;
         int        sn;
         int        drunk_random;
-        int        drunk_random;
 
         if (IS_AFFECTED(ch, AFF_DAZED))
         {
@@ -387,21 +383,6 @@ void do_cast( CHAR_DATA *ch, char *argument )
         {
                 send_to_char( "You can't concentrate enough.\n\r", ch );
                 return;
-        }
-
-        if (!IS_NPC(ch))
-        {
-            if ( ch->pcdata->condition[COND_DRUNK ] > 0 )
-            {
-                drunk_random = (rand() % MAX_DRUNK) + 1;
-
-                if (drunk_random < ch->pcdata->condition[COND_DRUNK ] )
-                {
-                    send_to_char( "You slur the words to the spell.  It fizzles out.\n\r", ch );
-                    act("$n slurs the words to a spell and it fizzles out.",ch,NULL,NULL,TO_ROOM);
-                    return;
-                }
-            }
         }
 
         if (!IS_NPC(ch))
@@ -932,16 +913,8 @@ void spell_acid_blast (int sn, int level, CHAR_DATA *ch, void *vo)
         {
             if (!IS_NPC(ch))
             {
-        {
-            if (!IS_NPC(ch))
-            {
                 act("Hot acid streams from your fingertips towards $N!", ch, NULL, victim, TO_CHAR);
                 act("Hot acid streams from $n's fingertips towards $N!", ch, NULL, victim, TO_NOTVICT);
-            }
-            else {
-                act("Hot acid streams from you towards $N!", ch, NULL, victim, TO_CHAR);
-                act("Hot acid streams from $n towards $N!", ch, NULL, victim, TO_NOTVICT);
-            }
             }
             else {
                 act("Hot acid streams from you towards $N!", ch, NULL, victim, TO_CHAR);
@@ -5678,7 +5651,6 @@ void spell_gas_breath( int sn, int level, CHAR_DATA *ch, void *vo )
                                 dam /= 2;
                         else
                                 spell_nausea( gsn_nausea, level, ch, vch );
-                                spell_nausea( gsn_nausea, level, ch, vch );
 
                         damage( ch, vch, dam, sn, FALSE );
                 }
@@ -5871,7 +5843,6 @@ void spell_cell_adjustment ( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA *victim = (CHAR_DATA *) vo;
         int well_count = 0;
-        int well_count = 0;
 
         if ( is_affected( victim, gsn_poison ) )
         {
@@ -5899,25 +5870,6 @@ void spell_cell_adjustment ( int sn, int level, CHAR_DATA *ch, void *vo )
                 send_to_char( "You sober up.\n\r", victim );
             }
                 well_count = 1;
-        }
-
-        if ( is_affected( victim, gsn_nausea ) )
-        {
-                affect_strip( victim, gsn_nausea );
-                if (well_count == 0)
-                {
-                    send_to_char( "<229>A w<228>ar<227>m f<226>ee<220>li<226>ng <227>ru<228>ns <229>th<228>ro<227>ug<226>h y<220>ou<226>r b<227>od<228>y.<0>\n\r", victim );
-                    act( "$N looks better.", ch, NULL, victim, TO_NOTVICT );
-                }
-        }
-
-        if (!IS_NPC(victim))
-        {
-            if (victim->pcdata->condition[COND_DRUNK] > 0)
-            {
-                victim->pcdata->condition[COND_DRUNK] = 0;
-                send_to_char( "You sober up.\n\r", victim );
-            }
         }
 
         if ( is_affected( victim, gsn_curse  ) )
@@ -8667,7 +8619,6 @@ void spell_animate_weapon (int sn, int level, CHAR_DATA *ch, void *vo)
 
                 if (ch != victim)
                         send_to_char("<15>Success!<0>\n\r",ch);
-                        send_to_char("<15>Success!<0>\n\r",ch);
 
                 return;
         }
@@ -8701,7 +8652,6 @@ void spell_animate_weapon (int sn, int level, CHAR_DATA *ch, void *vo)
                 check_group_bonus(ch);
 
                 if (ch != victim)
-                        send_to_char("<15>Success!<0>\n\r",ch);
                         send_to_char("<15>Success!<0>\n\r",ch);
                 return;
         }
@@ -9146,24 +9096,12 @@ void spell_runic_cure( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if ( ( !is_affected(victim, gsn_poison) )
         &&   ( !is_affected(victim, gsn_nausea) ) )
-        if ( ( !is_affected(victim, gsn_poison) )
-        &&   ( !is_affected(victim, gsn_nausea) ) )
-                return;
 
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
         {
                 send_to_char("Objects cannot be poisoned or nauseated.\n\r", ch);
                 return;
         }
-
-        if (is_affected(victim, gsn_poison))
-            affect_strip(victim, gsn_poison);
-        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
-        {
-                send_to_char("Objects cannot be poisoned or nauseated.\n\r", ch);
-                return;
-        }
-
 
         if (is_affected(victim, gsn_poison))
             affect_strip(victim, gsn_poison);
@@ -9179,7 +9117,6 @@ void spell_runic_cure( int sn, int level, CHAR_DATA *ch, void *vo )
                 send_to_char("You sober up.\n\r", victim);
             }
         }
-
 
         if (ch != victim)
         {
@@ -9198,8 +9135,6 @@ void spell_runic_ward( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if ( ( !is_affected(victim, gsn_poison) )
         &&   ( !is_affected(victim, gsn_nausea) ) )
-        if ( ( !is_affected(victim, gsn_poison) )
-        &&   ( !is_affected(victim, gsn_nausea) ) )
                 return;
 
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
@@ -9225,7 +9160,6 @@ void spell_runic_ward( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if (ch != victim)
         {
-                act( "You purge the illness from $M.", ch, NULL, victim, TO_CHAR );
                 act( "You purge the illness from $M.", ch, NULL, victim, TO_CHAR );
                 check_group_bonus(ch);
         }
