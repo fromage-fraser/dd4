@@ -1328,7 +1328,7 @@ a small iron key~
 A small iron key is lying here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+30641~ 0~ 0~ 0~
 1 0 0
 #30653
 large iron key~
@@ -1336,7 +1336,7 @@ a large iron key~
 A large iron key has been left here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+30659~ 0~ 0~ 0~
 1 0 0
 #30654
 black key~
@@ -1344,7 +1344,7 @@ a black key~
 A black key has been left here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+30646~ 0~ 0~ 0~
 5 0 0
 #30655
 wardrobe~

@@ -1284,7 +1284,7 @@ a citadel key~
 A citadel key is here.~
 ~
 18 0 1
-~ ~ ~ ~
+56052~ ~ ~ ~
 1 0 0
 
 #56066
@@ -1317,7 +1317,7 @@ a flare of light~
 {Y.{x~
 ~
 18 0 1
-~ ~ ~ ~
+56055~ ~ ~ ~
 1 0 0
 
 #56053
@@ -1326,7 +1326,7 @@ a sparkle of light~
 {Y.{x~
 ~
 18 0 1
-~ ~ ~ ~
+56065~ ~ ~ ~
 1 0 0
 
 #56068
@@ -1380,7 +1380,7 @@ a solid piece of {Ylight{x~
 A solid piece of {Ylight{x shines here.~
 ~
 18 1 1
-~ ~ ~ ~
+56064~ ~ ~ ~
 1 0 0
 
 #56079
@@ -1413,7 +1413,7 @@ a spot of darkness~
 {d.{x~
 ~
 18 0 1
-~ ~ ~ ~
+56077~ ~ ~ ~
 1 0 0
 
 #56055
@@ -1422,7 +1422,7 @@ a spot of darkness~
 {d.{x~
 ~
 18 0 1
-~ ~ ~ ~
+56079~ ~ ~ ~
 1 0 0
 
 #56081
@@ -1457,7 +1457,7 @@ a spot of darkness~
 {d.{x~
 ~
 18 0 1
-~ ~ ~ ~
+56080~ ~ ~ ~
 1 0 0
 
 #56083
@@ -1533,7 +1533,7 @@ a rod of {ddarkness{X~
 A rod of {ddarkness{x spins slowly in the air.~
 ~
 18 2 1
-~ ~ ~ ~
+56099~ ~ ~ ~
 1 0 0
 
 #56088
@@ -1649,7 +1649,7 @@ a shaft of fog~
 A shaft of fog drifts here.~
 ~
 18 16777216 1
-~ ~ ~ ~
+56095~ ~ ~ ~
 1 0 0
 
 #56099

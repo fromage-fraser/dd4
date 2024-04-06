@@ -305,7 +305,7 @@ a bloody key~
 A bloody key is stuck to the floor.~
 ~
 18 0 1
-2~ 0~ 0~ 0~
+1536~ 0~ 0~ 0~
 1 1000 400
 #1501
 key dirty~
@@ -313,7 +313,7 @@ a dirty key~
 A dirty key lies here.~
 ~
 18 0 1
-2~ 0~ 0~ 0~
+1545~ 0~ 0~ 0~
 1 1050 405
 #1502
 toy boomerang~

@@ -232,7 +232,7 @@ a granite key~
 The key to the Goblin Caves lies here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+20006~ 0~ 0~ 0~
 1 0 0
 
 #20001
@@ -241,7 +241,7 @@ a stone key~
 A strange stone key is here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+20010~ 0~ 0~ 0~
 1 0 0
 
 #20002
@@ -250,7 +250,7 @@ the jailor's key~
 The key to some horrible place of torture is here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+20014~ 0~ 0~ 0~
 1 0 0
 
 #20003
@@ -259,7 +259,7 @@ a secret looking key~
 There is some dust on the ground here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+20018~ 0~ 0~ 0~
 1 0 0
 
 #20004

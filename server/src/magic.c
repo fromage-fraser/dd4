@@ -25,6 +25,7 @@
 #endif
 #include <stdio.h>
 #include <ctype.h>
+#include <ctype.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
@@ -35,6 +36,10 @@
 /*
  * Local functions.
  */
+void say_spell                  ( CHAR_DATA *ch, int sn             );
+bool is_safe                    ( CHAR_DATA *ch, CHAR_DATA *victim  );
+bool skill_cannot_be_dispelled  ( int sn                            );
+bool is_only_whitespace         ( const char* str                   );
 void say_spell                  ( CHAR_DATA *ch, int sn             );
 bool is_safe                    ( CHAR_DATA *ch, CHAR_DATA *victim  );
 bool skill_cannot_be_dispelled  ( int sn                            );
@@ -325,6 +330,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
         int        mana;
         int        sn;
         int        drunk_random;
+        int        drunk_random;
 
         if (IS_AFFECTED(ch, AFF_DAZED))
         {
@@ -382,6 +388,21 @@ void do_cast( CHAR_DATA *ch, char *argument )
         {
                 send_to_char( "You can't concentrate enough.\n\r", ch );
                 return;
+        }
+
+        if (!IS_NPC(ch))
+        {
+            if ( ch->pcdata->condition[COND_DRUNK ] > 0 )
+            {
+                drunk_random = (rand() % MAX_DRUNK) + 1;
+
+                if (drunk_random < ch->pcdata->condition[COND_DRUNK ] )
+                {
+                    send_to_char( "You slur the words to the spell.  It fizzles out.\n\r", ch );
+                    act("$n slurs the words to a spell and it fizzles out.",ch,NULL,NULL,TO_ROOM);
+                    return;
+                }
+            }
         }
 
         if (!IS_NPC(ch))
@@ -912,8 +933,16 @@ void spell_acid_blast (int sn, int level, CHAR_DATA *ch, void *vo)
         {
             if (!IS_NPC(ch))
             {
+        {
+            if (!IS_NPC(ch))
+            {
                 act("Hot acid streams from your fingertips towards $N!", ch, NULL, victim, TO_CHAR);
                 act("Hot acid streams from $n's fingertips towards $N!", ch, NULL, victim, TO_NOTVICT);
+            }
+            else {
+                act("Hot acid streams from you towards $N!", ch, NULL, victim, TO_CHAR);
+                act("Hot acid streams from $n towards $N!", ch, NULL, victim, TO_NOTVICT);
+            }
             }
             else {
                 act("Hot acid streams from you towards $N!", ch, NULL, victim, TO_CHAR);
@@ -1720,6 +1749,7 @@ void spell_cure_blindness( int sn, int level, CHAR_DATA *ch, void *vo )
         affect_strip(victim, gsn_gouge);
         affect_strip(victim, gsn_dirt);
         REMOVE_BIT(victim->affected_by, AFF_BLIND);
+        REMOVE_BIT(victim->affected_by, AFF_BLIND);
 
         if (ch != victim)
         {
@@ -1759,6 +1789,14 @@ void spell_cure_critical( int sn, int level, CHAR_DATA *ch, void *vo )
 
         victim->hit = UMIN( victim->hit + heal, victim->max_hit - victim->aggro_dam );
         update_pos( victim );
+
+        if ( ( IS_AFFECTED(victim, AFF_CONFUSION) )
+        &&   ( is_affected(victim, gsn_confusion) ) )
+        {
+            REMOVE_BIT(victim->affected_by, AFF_CONFUSION);
+            affect_strip(victim, gsn_confusion);
+            send_to_char( "You feel less confused.\n\r", victim );
+        }
 
         if ( ( IS_AFFECTED(victim, AFF_CONFUSION) )
         &&   ( is_affected(victim, gsn_confusion) ) )
@@ -1956,7 +1994,20 @@ void spell_cure_poison( int sn, int level, CHAR_DATA *ch, void *vo )
             if ( ( ( !is_affected(victim, gsn_poison) )
             &&     ( !is_affected(victim, gsn_nausea) ) )
             &&   ( victim->pcdata->condition[COND_DRUNK] <= 0 ) )
+        if (!IS_NPC(victim))
+        {
+            if ( ( ( !is_affected(victim, gsn_poison) )
+            &&     ( !is_affected(victim, gsn_nausea) ) )
+            &&   ( victim->pcdata->condition[COND_DRUNK] <= 0 ) )
                 return;
+        }
+
+        if (IS_NPC(victim))
+        {
+            if ( ( ( !is_affected(victim, gsn_poison) )
+            &&     ( !is_affected(victim, gsn_nausea) ) ) )
+                return;
+        }
         }
 
         if (IS_NPC(victim))
@@ -1969,9 +2020,12 @@ void spell_cure_poison( int sn, int level, CHAR_DATA *ch, void *vo )
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
         {
                 send_to_char("Objects cannot be poisoned or nauseated.\n\r", ch);
+                send_to_char("Objects cannot be poisoned or nauseated.\n\r", ch);
                 return;
         }
 
+        if (is_affected(victim, gsn_poison))
+            affect_strip(victim, gsn_poison);
         if (is_affected(victim, gsn_poison))
             affect_strip(victim, gsn_poison);
 
@@ -1984,8 +2038,18 @@ void spell_cure_poison( int sn, int level, CHAR_DATA *ch, void *vo )
             send_to_char("You sober up.\n\r", victim);
         }
 
+        if (is_affected(victim, gsn_nausea))
+            affect_strip(victim, gsn_nausea);
+
+        if (!IS_NPC(victim))
+        {
+            victim->pcdata->condition[COND_DRUNK] = 0;
+            send_to_char("You sober up.\n\r", victim);
+        }
+
         if (ch != victim)
         {
+                act( "You purge the illness from $M.", ch, NULL, victim, TO_CHAR );
                 act( "You purge the illness from $M.", ch, NULL, victim, TO_CHAR );
                 check_group_bonus(ch);
         }
@@ -2812,6 +2876,14 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                         return;
                 }
 
+                if (IS_AFFECTED(victim, AFF_CONFUSION) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_CONFUSION);
+                        send_to_char( "You feel less confused.\n\r", victim );
+                        act( "$n no longer looks quite so confused.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
                 send_to_char( "Your spell was ineffective.\n\r", ch );
                 return;
         }
@@ -3352,6 +3424,14 @@ void spell_heal( int sn, int level, CHAR_DATA *ch, void *vo )
             send_to_char( "You feel less confused.\n\r", victim );
         }
 
+        if ( ( IS_AFFECTED(victim, AFF_CONFUSION) )
+        &&   ( is_affected(victim, gsn_confusion) ) )
+        {
+            REMOVE_BIT(victim->affected_by, AFF_CONFUSION);
+            affect_strip(victim, gsn_confusion);
+            send_to_char( "You feel less confused.\n\r", victim );
+        }
+
         if ( ch != victim )
         {
                 if (victim->max_hit > 0)
@@ -3441,6 +3521,14 @@ void spell_power_heal (int sn, int level, CHAR_DATA *ch, void *vo)
 
         victim->hit = UMIN(victim->hit + 300, victim->max_hit - victim->aggro_dam );
         update_pos(victim);
+
+        if ( ( IS_AFFECTED(victim, AFF_CONFUSION) )
+        &&   ( is_affected(victim, gsn_confusion) ) )
+        {
+            REMOVE_BIT(victim->affected_by, AFF_CONFUSION);
+            affect_strip(victim, gsn_confusion);
+            send_to_char( "You feel less confused.\n\r", victim );
+        }
 
         if ( ( IS_AFFECTED(victim, AFF_CONFUSION) )
         &&   ( is_affected(victim, gsn_confusion) ) )
@@ -4241,6 +4329,7 @@ void spell_know_alignment( int sn, int level, CHAR_DATA *ch, void *vo )
         else if ( ap >  100 ) msg = "$N is often kind and thoughtful.";
         else if ( ap > -100 ) msg = "$N doesn't have a firm moral commitment.";
         else if ( ap > -350 ) msg = "$N lies to $S friends.";
+        else if ( ap > -700 ) msg = "$N shows no remorse for $S actions, regardless of whom $E hurts.";
         else if ( ap > -700 ) msg = "$N shows no remorse for $S actions, regardless of whom $E hurts.";
         else msg = "I'd rather just not say anything at all about $N.";
 
@@ -5590,6 +5679,7 @@ void spell_gas_breath( int sn, int level, CHAR_DATA *ch, void *vo )
                                 dam /= 2;
                         else
                                 spell_nausea( gsn_nausea, level, ch, vch );
+                                spell_nausea( gsn_nausea, level, ch, vch );
 
                         damage( ch, vch, dam, sn, FALSE );
                 }
@@ -5782,12 +5872,33 @@ void spell_cell_adjustment ( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA *victim = (CHAR_DATA *) vo;
         int well_count = 0;
+        int well_count = 0;
 
         if ( is_affected( victim, gsn_poison ) )
         {
                 affect_strip( victim, gsn_poison );
                 send_to_char( "<229>A w<228>ar<227>m f<226>ee<220>li<226>ng <227>ru<228>ns <229>th<228>ro<227>ug<226>h y<220>ou<226>r b<227>od<228>y.<0>\n\r", victim );
                 act( "$N looks better.", ch, NULL, victim, TO_NOTVICT );
+                well_count = 1;
+        }
+
+        if ( is_affected( victim, gsn_nausea ) )
+        {
+                affect_strip( victim, gsn_nausea );
+                if (well_count == 0)
+                {
+                    send_to_char( "<229>A w<228>ar<227>m f<226>ee<220>li<226>ng <227>ru<228>ns <229>th<228>ro<227>ug<226>h y<220>ou<226>r b<227>od<228>y.<0>\n\r", victim );
+                    act( "$N looks better.", ch, NULL, victim, TO_NOTVICT );
+                }
+        }
+
+        if (!IS_NPC(victim))
+        {
+            if (victim->pcdata->condition[COND_DRUNK] > 0)
+            {
+                victim->pcdata->condition[COND_DRUNK] = 0;
+                send_to_char( "You sober up.\n\r", victim );
+            }
                 well_count = 1;
         }
 
@@ -5911,6 +6022,14 @@ void spell_complete_healing (int sn, int level, CHAR_DATA *ch, void *vo)
 
         victim->hit = victim->max_hit - victim->aggro_dam;
         update_pos(victim);
+
+        if ( ( IS_AFFECTED(victim, AFF_CONFUSION) )
+        &&   ( is_affected(victim, gsn_confusion) ) )
+        {
+            REMOVE_BIT(victim->affected_by, AFF_CONFUSION);
+            affect_strip(victim, gsn_confusion);
+            send_to_char( "You feel less confused.\n\r", victim );
+        }
 
         if ( ( IS_AFFECTED(victim, AFF_CONFUSION) )
         &&   ( is_affected(victim, gsn_confusion) ) )
@@ -7314,6 +7433,15 @@ void spell_mass_heal( int sn, int level, CHAR_DATA *ch, void *vo )
                     send_to_char( "You feel less confused.\n\r", gch );
                 }
 
+
+                if ( ( IS_AFFECTED(gch, AFF_CONFUSION) )
+                &&   ( is_affected(gch, gsn_confusion) ) )
+                {
+                    REMOVE_BIT(gch->affected_by, AFF_CONFUSION);
+                    affect_strip(gch, gsn_confusion);
+                    send_to_char( "You feel less confused.\n\r", gch );
+                }
+
                 send_to_char( "<229>A w<228>ar<227>m f<226>ee<220>li<226>ng <227>fi<228>ll<229>s y<228>ou<227>r b<226>od<220>y.<0>\n\r", gch );
         }
 
@@ -7336,6 +7464,15 @@ void spell_mass_power_heal( int sn, int level, CHAR_DATA *ch, void *vo )
 
                 gch->hit = UMIN( gch->hit + 300, gch->max_hit - gch->aggro_dam);
                 update_pos( gch );
+
+                if ( ( IS_AFFECTED(gch, AFF_CONFUSION) )
+                &&   ( is_affected(gch, gsn_confusion) ) )
+                {
+                    REMOVE_BIT(gch->affected_by, AFF_CONFUSION);
+                    affect_strip(gch, gsn_confusion);
+                    send_to_char( "You feel less confused.\n\r", gch );
+                }
+
 
                 if ( ( IS_AFFECTED(gch, AFF_CONFUSION) )
                 &&   ( is_affected(gch, gsn_confusion) ) )
@@ -8531,6 +8668,7 @@ void spell_animate_weapon (int sn, int level, CHAR_DATA *ch, void *vo)
 
                 if (ch != victim)
                         send_to_char("<15>Success!<0>\n\r",ch);
+                        send_to_char("<15>Success!<0>\n\r",ch);
 
                 return;
         }
@@ -8563,6 +8701,7 @@ void spell_animate_weapon (int sn, int level, CHAR_DATA *ch, void *vo)
                 act("$N's weapon slips from $s hands.", ch, NULL, victim, TO_NOTVICT);
                 check_group_bonus(ch);
                 if (ch != victim)
+                        send_to_char("<15>Success!<0>\n\r",ch);
                         send_to_char("<15>Success!<0>\n\r",ch);
                 return;
         }
@@ -9007,6 +9146,8 @@ void spell_runic_cure( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if ( ( !is_affected(victim, gsn_poison) )
         &&   ( !is_affected(victim, gsn_nausea) ) )
+        if ( ( !is_affected(victim, gsn_poison) )
+        &&   ( !is_affected(victim, gsn_nausea) ) )
                 return;
 
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
@@ -9017,6 +9158,26 @@ void spell_runic_cure( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if (is_affected(victim, gsn_poison))
             affect_strip(victim, gsn_poison);
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("Objects cannot be poisoned or nauseated.\n\r", ch);
+                return;
+        }
+
+        if (is_affected(victim, gsn_poison))
+            affect_strip(victim, gsn_poison);
+
+        if (is_affected(victim, gsn_nausea))
+            affect_strip(victim, gsn_nausea);
+
+        if (!IS_NPC(victim))
+        {
+            if (victim->pcdata->condition[COND_DRUNK] > 0 )
+            {
+                victim->pcdata->condition[COND_DRUNK] = 0;
+                send_to_char("You sober up.\n\r", victim);
+            }
+        }
 
         if (is_affected(victim, gsn_nausea))
             affect_strip(victim, gsn_nausea);
@@ -9033,6 +9194,7 @@ void spell_runic_cure( int sn, int level, CHAR_DATA *ch, void *vo )
         if (ch != victim)
         {
                 act( "You purge the illness from $M.", ch, NULL, victim, TO_CHAR );
+                act( "You purge the illness from $M.", ch, NULL, victim, TO_CHAR );
                 check_group_bonus(ch);
         }
 
@@ -9047,8 +9209,18 @@ void spell_runic_ward( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if ( ( !is_affected(victim, gsn_poison) )
         &&   ( !is_affected(victim, gsn_nausea) ) )
+        if ( ( !is_affected(victim, gsn_poison) )
+        &&   ( !is_affected(victim, gsn_nausea) ) )
                 return;
 
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("Objects cannot be poisoned or nauseated.\n\r", ch);
+                return;
+        }
+
+        if (is_affected(victim, gsn_poison))
+            affect_strip(victim, gsn_poison);
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
         {
                 send_to_char("Objects cannot be poisoned or nauseated.\n\r", ch);
@@ -9070,8 +9242,21 @@ void spell_runic_ward( int sn, int level, CHAR_DATA *ch, void *vo )
             }
         }
 
+        if (is_affected(victim, gsn_nausea))
+            affect_strip(victim, gsn_nausea);
+
+        if (!IS_NPC(victim))
+        {
+            if (victim->pcdata->condition[COND_DRUNK] > 0 )
+            {
+                victim->pcdata->condition[COND_DRUNK] = 0;
+                send_to_char("You sober up.\n\r", victim);
+            }
+        }
+
         if (ch != victim)
         {
+                act( "You purge the illness from $M.", ch, NULL, victim, TO_CHAR );
                 act( "You purge the illness from $M.", ch, NULL, victim, TO_CHAR );
                 check_group_bonus(ch);
         }
@@ -9154,7 +9339,7 @@ void spell_psychometry( int sn, int level, CHAR_DATA *ch, void *vo )
 
                 if (success)
                 {
-                    send_to_char( "\n\r<6>You concentrate on the object as you touch it, and visualise a location...<0><558>\n\r\n\r", ch );
+                    send_to_char( "\n\r<6>You concentrate as you touch the object, and a location swims into view...<0><558>\n\r\n\r", ch );
 
                     ansi_color( GREY, ch );
                     ansi_color( BOLD, ch );
@@ -9608,6 +9793,15 @@ bool skill_cannot_be_dispelled (int sn)
         return FALSE;
 }
 
+bool is_only_whitespace(const char* str) {
+    while (*str) {
+        if (!isspace((unsigned char)*str)) {
+            return 0;
+        }
+        str++;
+    }
+    return 1;
+}
 bool is_only_whitespace(const char* str) {
     while (*str) {
         if (!isspace((unsigned char)*str)) {

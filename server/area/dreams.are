@@ -245,7 +245,7 @@ a weird looking key~
 A really weird looking key lies here.~
 ~
 18 128 1|16384
-0~ 1~ 6~ 11~
+13636~ 1~ 6~ 11~
 1 0 0
 #13603
 Finger bone~
@@ -253,7 +253,7 @@ a fingerbone~
 A human's finger bone lies here~
 ~
 18 0 1
-0~ 1~ 6~ 11~
+13639~ 1~ 6~ 11~
 1 0 0
 #13604
 polished wooden key~
@@ -261,7 +261,7 @@ a polished wooden key~
 A polished wooden key lies here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+13618~ 1~ 6~ 11~
 1 0 0
 #13605
 desk~
@@ -613,7 +613,7 @@ a small key~
 A small key half hidden, lies here.~
 ~
 18 128 1|16384
-0~ 1~ 6~ 11~
+13605~ 1~ 6~ 11~
 1 0 0
 #13635
 bench workbench~

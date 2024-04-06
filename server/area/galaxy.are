@@ -723,7 +723,7 @@ a spring shoot~
 A shoot grows here, covered with dew.~
 ~
 18 3 1
-0~ 0~ 0~ 0~
+9339~ 0~ 0~ 0~
 2 0 100000
 #9325
 summer flower~
@@ -731,7 +731,7 @@ a summer flower~
 A flower grows here, waiting to be picked up.~
 ~
 18 3 1
-0~ 0~ 0~ 0~
+9354~ 0~ 0~ 0~
 2 0 100000
 #9326
 autumn leaf~
@@ -739,7 +739,7 @@ an autumn leaf~
 A leaf lies here, as if just fallen from a tree.~
 ~
 18 3 1
-0~ 0~ 0~ 0~
+9359~ 0~ 0~ 0~
 2 0 100000
 #9327
 winter branch~
@@ -747,7 +747,7 @@ a winter branch~
 A branch lies here, still covered with snow.~
 ~
 18 3 1
-0~ 0~ 0~ 0~
+9363~ 0~ 0~ 0~
 2 0 100000
 #9328
 chains andromeda~

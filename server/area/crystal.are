@@ -280,7 +280,7 @@ house key~
 There is a house key on the ground.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+10039~ 0~ 0~ 0~
 2 0 0
 E
 house key~
@@ -292,7 +292,7 @@ coathanger~
 There is a coathanger on the ground.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+10044~ 0~ 0~ 0~
 2 0 0
 E
 coathanger~

@@ -440,7 +440,7 @@ a ticket~
 An unwanted scrap of paper lies here.~
 ~
 18 0 1
-1~ 0~ 0~ 0~
+4415~ 0~ 0~ 0~
 1 0 0
 #4401
 candy~
@@ -464,7 +464,7 @@ a huge key~
 A humongous, heavy key lies here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+4424~ 0~ 0~ 0~
 1 0 0
 #4404
 key small~
@@ -472,7 +472,7 @@ a small key~
 A small key lies here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+4425~ 0~ 0~ 0~
 1 0 0
 #4405
 key shimmering~
@@ -480,7 +480,7 @@ a shimmering key~
 An object lies here, shimmering, so that you aren't sure what it is.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+4423~ 0~ 0~ 0~
 1 0 0
 #4406
 key slender~
@@ -488,7 +488,7 @@ a slender key~
 A very thin key lies here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+4426~ 0~ 0~ 0~
 1 0 0
 #4407
 bracers strongman~
@@ -716,7 +716,7 @@ a paper~
 A piece of wadded-up paper has been left on the ground.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+4428~ 0~ 0~ 0~
 1 0 0
 #4428
 safe~
@@ -849,7 +849,7 @@ a key~
 A small key lies in the dirt.~
 ~
 18 0 1
-1~ 0~ 0~ 0~
+4440~ 0~ 0~ 0~
 1 0 0
 #4442
 clear potion~

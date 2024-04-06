@@ -1531,7 +1531,7 @@ binding one~
 #14544
 blade one~
 the blade of the one~
-Light reflects of a long metallic blade, mystifying you.~
+Light reflects off a long, metallic blade, mystifying you.~
 ~
 5 1|2|64|1024|2048|16384 1|8192
 0~ 70~ 120~ 6~
@@ -1546,7 +1546,7 @@ a wooden key~
 A plain key made from wood.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+14520~ 0~ 0~ 0~
 5 0 0
 #14547
 key iron~
@@ -1554,7 +1554,7 @@ an iron key~
 A dull, slightly rusting iron key lies on the ground~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+14519~ 0~ 0~ 0~
 5 0 0
 #14548
 door handle~
@@ -1562,7 +1562,7 @@ a door handle~
 A handle, broken from a door catches your eye.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+14597~ 0~ 0~ 0~
 5 0 0
 #14549
 arm~
@@ -1848,7 +1848,7 @@ a marble key~
 A key made from marble lies on the ground.~
 ~
 18 2 1|16384
-0~ 0~ 0~ 0~
+14677~ 0~ 0~ 0~
 5 0 0
 #14575
 key glowing~
@@ -1856,7 +1856,7 @@ a glowing key~
 A key radiates light from the centre of the room.~
 ~
 18 1 1|16384
-0~ 0~ 0~ 0~
+14680~ 0~ 0~ 0~
 5 0 0
 #14576
 platinum key~
@@ -1864,7 +1864,7 @@ a platinum key~
 A key made from platinum, looks very important.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+14538~ 0~ 0~ 0~
 5 0 0
 E
 key platinum~
@@ -1876,7 +1876,7 @@ a plain key~
 An ordinary metal key.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+14660~ 0~ 0~ 0~
 5 0 0
 #14578
 ivory key~
@@ -1884,7 +1884,7 @@ an ivory key~
 A key shaped like a dragons head, gleams in the dirt.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+14679~ 0~ 0~ 0~
 1 0 0
 #14579
 belt dungeon cell~
@@ -1892,7 +1892,7 @@ a Belt~
 A rather large belt, with a key dangling from it lies here.~
 ~
 18 0 1|2048
-0~ 0~ 0~ 0~
+14618~ 0~ 0~ 0~
 5 0 0
 E
 belt key~
@@ -1916,7 +1916,7 @@ the earth key~
 A large chunk of dirt lies on the ground.~
 ~
 18 2 1|16384
-0~ 0~ 0~ 0~
+14732~ 0~ 0~ 0~
 5 0 0
 #14582
 water key~
@@ -1924,7 +1924,7 @@ the water key~
 (Shimmering) A drop of water forms before your eyes.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+14706~ 0~ 0~ 0~
 5 0 0
 #14583
 fire key~
@@ -1932,7 +1932,7 @@ the fire key~
 A tongue of fire burns in mid-air.~
 ~
 18 1 1|16384
-0~ 0~ 0~ 0~
+14603~ 0~ 0~ 0~
 5 0 0
 #14584
 air key~
@@ -1940,7 +1940,7 @@ the air key~
 (Translucent) A pocket of air floats before you.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+14719~ 0~ 0~ 0~
 5 0 0
 #14585
 copper key~
@@ -1948,7 +1948,7 @@ a copper key~
 A small copper key is here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+14536~ 0~ 0~ 0~
 5 0 0
 E
 key copper small~
@@ -2280,7 +2280,7 @@ an ornate key~
 An ornate key lies on the ground.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+14639~ 0~ 0~ 0~
 5 0 0
 #14618
 angel angels amulet~
@@ -3661,7 +3661,7 @@ D3
 0 -1 14577
 S
 #14575
-The oven.~
+The oven~
 You stand in a kitchen which extend to the west and north. In the south-
 eastern wall there is a HUGE oven. You could almost fit inside if you wanted
 to. Various pots and pans hang from the east wall. You can head either north

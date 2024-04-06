@@ -744,7 +744,7 @@ a stone key~
 A stone key lays here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+25429~ 1~ 6~ 11~
 5 0 0
 E
 key stone~
@@ -1017,7 +1017,7 @@ a gold tusk~
 A gold tusk lays here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+25557~ 1~ 6~ 11~
 5 0 0
 E
 gold tusk~
@@ -1029,7 +1029,7 @@ a silver tusk~
 A silver tusk stands on the ground.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+25556~ 1~ 6~ 11~
 5 0 0
 E
 silver tusk~
@@ -1041,7 +1041,7 @@ a copper tusk~
 You spot a polished copper tusk.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+25432~ 1~ 6~ 11~
 5 0 0
 E
 copper tusk~
@@ -1284,7 +1284,7 @@ a platinum tusk~
 A platinum tusk rests here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+25558~ 1~ 6~ 11~
 5 0 0
 E
 platinum tusk~

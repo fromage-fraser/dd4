@@ -742,7 +742,7 @@ a large black key~
 A large black key is on the ground here.~
 ~
 18 16777216 1|16384
-0~ 0~ 0~ 0~
+20375~ 0~ 0~ 0~
 5 0 0
 #20334
 iron shackles~
@@ -832,7 +832,7 @@ a bunch of cell keys~
 A bunch of keys on a keyring lie on the ground before you.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+20340~ 0~ 0~ 0~
 5 0 0
 E
 bunch cell keys keyring~

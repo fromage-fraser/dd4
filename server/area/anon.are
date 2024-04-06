@@ -1063,7 +1063,7 @@ a tasselled key~
 The key to the city gates.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+31016~ 0~ 0~ 0~
 1 0 0
 #31001
 key bronze~
@@ -1826,7 +1826,7 @@ a key to the portal chambers~
 A key to the portal chambers has been dropped here.~
 ~
 18 1|2 1|16384
-0~ 0~ 0~ 0~
+31013~ 0~ 0~ 0~
 1 200 0
 #31086
 tome political history~

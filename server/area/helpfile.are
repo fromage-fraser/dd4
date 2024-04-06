@@ -403,6 +403,7 @@ Enter thy Name: ~
 -1 MOTD~
 {x
     [1 April 2024]
+    [1 April 2024]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -414,11 +415,17 @@ Enter thy Name: ~
     at {Yhttps://www.dragons-domain.org/{x, which has a lot of information.
     We're also active on a Discord server at {Yhttps://discord.gg/aGzmAWmXYb{x
     if you'd like to jump in and say hi!
+    New players, a big hello!  If you need any help please check out our website
+    at {Yhttps://www.dragons-domain.org/{x, which has a lot of information.
+    We're also active on a Discord server at {Yhttps://discord.gg/aGzmAWmXYb{x
+    if you'd like to jump in and say hi!
 
     {WNEW AREA:{x Omu Canals, the first area of the grung sector is complete!
     20 new mobs, 27 new objects, 64 new rooms, and a new Reaver quest.
 
     {WNEW AREA:{x Ota'ar Dar Prince's Canton is in, finishing the city of Ota'ar
+    Dar! 53 new mobs (including a <81>[WO<75>RL<69>D B<75>OS<81>S]<0>), 54 new
+    objects, 90 new rooms, and a new Reaver quest.
     Dar! 53 new mobs (including a <81>[WO<75>RL<69>D B<75>OS<81>S]<0>), 54 new
     objects, 90 new rooms, and a new Reaver quest.
 
@@ -457,6 +464,8 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 0 CHANGES~
 {W April 2024{x
 -affspell($*), insect($*), inrflag($*) added for mobprogs. isaffected($*) fixed
+{W April 2024{x
+-affspell($*), insect($*), inrflag($*) added for mobprogs. isaffected($*) fixed
 
 {W March 2024{x
 -mob spells starve, parch, inebriate, glaciation, conflagration, flood, and
@@ -467,7 +476,16 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 -Gravity functions at a more sensible speed
 -Psychometry spell added (post-60 roadmap)
 -Waitstates slashed on all minor buff spells
+-mob spells starve, parch, inebriate, glaciation, conflagration, flood, and
+ confusion added
+-Ota'ar Dar added to 'pattern'
+-supporting code changes for new mob spells
+-Nausea spell added (mostly for mobs)
+-Gravity functions at a more sensible speed
+-Psychometry spell added (post-60 roadmap)
+-Waitstates slashed on all minor buff spells
 -New area: Omu Canals, first area of new grung sector
+-New trap type "snare" added
 -New trap type "snare" added
 -shoot skill available to mobs with bows
 -Mobprog triggers added to check char size and if an object is in the room
@@ -976,6 +994,17 @@ drunkenness may be remedied in the same fashion as other poisons ('cure poison'
 spells and the like).
 ~
 
+0 DRUNK DRUNKENNESS ALCOHOL~
+It is possible to drink to excess in the domain.  Effects include losing the
+ability to use some physical skills, and having a chance of forgetting or
+slurring the words to spells when you go to cast them (the drunker you are, the
+greater the chance of this).
+
+As alcohol is functioning as a poison when you are intoxicated, the effects of
+drunkenness may be remedied in the same fashion as other poisons ('cure poison'
+spells and the like).
+~
+
 0 DONATE DONATION~
 Syntax: donate <<object>
 
@@ -1001,6 +1030,13 @@ Syntax: cast 'chain lightning' <<target>
 
 Release a bolt of lightning that will arc between multiple targets in the
 room.  Be careful: the bolt may hit you in the process!
+~
+
+0 'FREEDOM'~
+Syntax: cast freedom <<optional_target>
+
+Will dispel any movement-affecting effects, e.g paralysis, trap, slow and the
+like. May be cast on oneself or others, in and out of combat.
 ~
 
 0 'FREEDOM'~
@@ -2477,6 +2513,7 @@ When you are hungry, EAT something. The baker in Midgaard sells pies,
 and other vendors are located throughout the Domain.
 
 FILL fills a drink container with liquid from a fountain.
+FILL fills a drink container with liquid from a fountain.
 ~
 
 0 SACRIFICE~
@@ -2592,6 +2629,76 @@ Syntax: cast poison <<victim>
 This spell reduces the strength of the victim, as well as reducing their
 regeneration rate.
 ~
+
+
+0 NAUSEA~
+Syntax: cast nausea <<victim>
+
+This spell has a random negative effect on its target's physical statistics,
+which is of cumulative duration and intensity.  Can be cured in the same way
+that poison can ('cure poison' spell, 'cell adjustment,' etc).
+~
+
+
+0 STARVE~
+Syntax: cast starve <<victim>
+
+This spell causes a ravenous hunger to come suddenly over its target.
+~
+
+
+0 PARCH~
+Syntax: cast parch <<victim>
+
+This spell causes a terrible thirst to come suddenly over its target.
+~
+
+
+0 INEBRIATE~
+Syntax: cast inebriate <<victim>
+
+This spell makes its target immediately very drunk, with implications for
+spellcasting success and various other fine-motor-based manual skills. As
+alcohol is a poison, 'cure poison' spells and the like are effective remedies to
+the state.
+~
+
+
+0 GLACIATION~
+Syntax: cast glaciation
+
+This spell summons a blizzard into the location it is cast in, making the
+environment freezing.  Will last an entire game session.  Cannot be cast in
+a desert environment, or a room that is on fire.
+~
+
+
+0 CONFLAGRATION~
+Syntax: cast conflagration
+
+This spell summons a blazing inferno into the location it is cast in, making
+the environment burn.  Will last an entire game session.  Cannot be cast in an
+underwater location, or one that is freezing.
+~
+
+
+0 FLOOD~
+Syntax: cast flood
+
+This spell floods the place it is cast in, submerging the entire immediate area.
+Will last an entire game session.  Cannot be cast in a location that is already
+underwater.
+~
+
+
+0 CONFUSION~
+Syntax: cast confusion <<victim>
+
+This spell makes its target terribly confused, and imposes penalties to wisdom,
+intelligence, and fighting ability, as well causing random wandering.  It can
+be cured by the application of upper mid- to high level healing spells.
+~
+
 
 
 0 NAUSEA~
@@ -3516,12 +3623,14 @@ identify items, for 1 Gold.
 0 PSYCHOMETRY~
 Syntax: cast psychometry <<object>
 
-This spell is cast by the psionically-gifted individual on keys (or objects that
-function as keys in some way) to glean information about the object or door they
-unlock.
+This spell is cast by the psionically-gifted individual on keys in their
+inventory to glean information about the container or door the key unlocks.
 
 If successful, the caster will receive a vision of the object the key opens, or
 the room containing the locked door the key unlocks.
+
+Where a key opens multiple locks, only the lock it was most recently used on
+will be seen.
 ~
 
 
@@ -5816,6 +5925,7 @@ steal soul              demon flames            infernal fury
 fireshield              detect good             summon demon
 dark ritual             second attack           third spell
 hellfire                chaos blast             detect evil
+hellfire                chaos blast             detect evil
 ~
 
 -1 STEMPLAR~
@@ -7238,6 +7348,8 @@ Temple mountain.
           Wall  {W}r Guild {x  Ogres      |      {W}rGuild{x       |       & Forge
           Road           Tavern     |                  |
             |                       |                River
+            |                       |
+            |-- {W}bTobacconist{x         |
             |                       |
             |-- {W}bTobacconist{x         |
             |                       |

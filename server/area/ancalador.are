@@ -295,7 +295,7 @@ a skeleton key~
 An old skeleton key lies on the floor.~
 ~
 18 0 1|16384
-16805~ 0~ 0~ 0~
+16853~ 0~ 0~ 0~
 2 500 0
 E
 key skeleton~
@@ -491,7 +491,7 @@ a granite key~
 A key fashioned of stone has been left here.~
 ~
 18 0 1|16384
-16818~ 0~ 0~ 0~
+16826~ 0~ 0~ 0~
 2 1500 0
 E
 key granite~

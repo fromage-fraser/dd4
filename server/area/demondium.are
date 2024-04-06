@@ -1314,7 +1314,7 @@ slowly decompose.
 #21500
 goblin sword~
 a goblin's short sword~
-A short sword, well suited for a goblin lies here~
+A short sword, well-suited for a goblin lies here.~
 ~
 5 16|512 1|8192
 0~ 2~ 10~ 3~
@@ -1322,7 +1322,7 @@ A short sword, well suited for a goblin lies here~
 #21501
 goblin leather vest~
 a goblin's leather vest~
-A leather vest, well suited to a goblin lies here~
+A leather vest, well-suited to a goblin lies here.~
 ~
 9 16 1|8
 0~ 1~ 6~ 11~
@@ -1330,36 +1330,36 @@ A leather vest, well suited to a goblin lies here~
 #21502
 silver bullet~
 a silver bullet~
-A silver bullet glistens on the floor~
+A silver bullet glistens on the floor.~
 ~
 18 0 1
-0~ 1~ 6~ 11~
+21548~ 1~ 6~ 11~
 5 0 0
 A
 9 99
 #21503
 burnt wand~
 a burnt wand~
-A burnt out wand lies here~
+A burnt-out wand lies here.~
 ~
 18 0 1
-0~ 1~ 6~ 11~
+21549~ 1~ 6~ 11~
 5 0 0
 #21504
 rock~
 a rock~
-A rock trips you up~
+A rock trips you up.~
 ~
 18 0 1
-0~ 1~ 6~ 11~
+21550~ 1~ 6~ 11~
 5 0 0
 #21505
 feather~
 a feather~
-A feather floats on the air currents~
+A feather floats on the air currents.~
 ~
 18 0 1
-0~ 1~ 6~ 11~
+21551~ 1~ 6~ 11~
 5 0 0
 #21506
 emerald gem~
@@ -1425,7 +1425,7 @@ the key~
 A shiny key~
 ~
 18 0 1
-0~ 1~ 6~ 11~
+21725~ 1~ 6~ 11~
 5 0 0
 #21512
 amarth stone fragment~
@@ -1569,7 +1569,7 @@ a swamp key~
 A key made of swamp materials lies here.~
 ~
 18 16 1
-0~ 1~ 6~ 11~
+21665~ 1~ 6~ 11~
 5 0 0
 #21525
 golden cup~
@@ -1585,7 +1585,7 @@ a sandy key~
 A key made of sand lies here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+21703~ 1~ 6~ 11~
 5 0 0
 #21527
 silver spoon~
@@ -2490,18 +2490,18 @@ A pile of old bones have been discarded here.~
 #21605
 key~
 a key~
-A key with a small symbol on it~
+A key with a small symbol on it.~
 ~
 18 0 1
-0~ 1~ 6~ 11~
+21814~ 1~ 6~ 11~
 5 0 0
 #21606
 key wood~
 a wooden key~
-A small, plain wooden key~
+A small, plain wooden key.~
 ~
 18 0 1
-0~ 1~ 6~ 11~
+21893~ 1~ 6~ 11~
 1 0 0
 #21607
 key bronze~
@@ -2509,7 +2509,7 @@ a bronze key~
 A small bronzed key lies here.~
 ~
 18 0 1
-0~ 1~ 6~ 11~
+21894~ 1~ 6~ 11~
 1 0 0
 #21608
 key iron~
@@ -2517,7 +2517,7 @@ an iron key~
 A small iron key lies here.~
 ~
 18 0 1
-0~ 1~ 6~ 11~
+21838~ 1~ 6~ 11~
 5 0 0
 #21609
 key silver~
@@ -2525,7 +2525,7 @@ a silver key~
 A small silver key lies here.~
 ~
 18 0 1
-0~ 1~ 6~ 11~
+21895~ 1~ 6~ 11~
 1 0 0
 #21610
 key gold~
@@ -2533,7 +2533,7 @@ a golden key~
 A golden key shines brightly!~
 ~
 18 1|2 1
-0~ 1~ 6~ 11~
+21896~ 1~ 6~ 11~
 5 0 0
 #21611
 key mithril~
@@ -2541,7 +2541,7 @@ a mithril key~
 A shiny mithril key lies here.~
 ~
 18 1|2|32|64 1
-0~ 1~ 6~ 11~
+21897~ 1~ 6~ 11~
 1 0 0
 #21612
 key adamantium~
@@ -2549,7 +2549,7 @@ an adamantium key~
 A key made of valuable adamantium lies here.~
 ~
 18 1|2|64|1024 1
-0~ 1~ 6~ 11~
+21898~ 1~ 6~ 11~
 5 0 0
 #21613
 key platinum~
@@ -2557,7 +2557,7 @@ a platinum key~
 A platinum key sits here.~
 ~
 18 1|2|32|64|1024|2048 1
-0~ 1~ 6~ 11~
+21899~ 1~ 6~ 11~
 1 0 0
 #0
 

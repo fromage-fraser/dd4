@@ -956,7 +956,7 @@ Mu~
 Mu, the Mantra of Compassion is here.~
 ~
 18 2 1
-0~ 0~ 0~ 0~
+2570~ 0~ 0~ 0~
 1 0 0
 #2401
 mantra humility lum~
@@ -964,7 +964,7 @@ Lum~
 Lum, the Mantra of Humility is here.~
 ~
 18 2 1
-0~ 0~ 0~ 0~
+2576~ 0~ 0~ 0~
 1 0 0
 #2402
 mantra justice beh~
@@ -972,7 +972,7 @@ Beh~
 Beh, the Mantra of Justice is here.~
 ~
 18 2 1
-0~ 0~ 0~ 0~
+2572~ 0~ 0~ 0~
 1 0 0
 #2403
 mantra spirituality ohm~
@@ -980,7 +980,7 @@ Ohm~
 Ohm, the Mantra of Spirituality is here.~
 ~
 18 2 1
-0~ 0~ 0~ 0~
+2575~ 0~ 0~ 0~
 1 0 0
 #2404
 mantra honesty ahm~
@@ -988,7 +988,7 @@ Ahm~
 ahm, the Mantra of Honesty is here.~
 ~
 18 2 1
-0~ 0~ 0~ 0~
+2569~ 0~ 0~ 0~
 1 0 0
 #2405
 mantra sacrifice cah~
@@ -996,7 +996,7 @@ Cah~
 Cah, the Mantra of Sacrifice is here.~
 ~
 18 2 1
-0~ 0~ 0~ 0~
+2573~ 0~ 0~ 0~
 1 0 0
 #2406
 mantra valor ra~
@@ -1004,7 +1004,7 @@ Ra~
 Ra, the Mantra of Valor is here.~
 ~
 18 2 1
-0~ 0~ 0~ 0~
+2571~ 0~ 0~ 0~
 1 0 0
 #2407
 mantra honor summ~
@@ -1012,7 +1012,7 @@ Summ~
 Summ, the Mantra of Honor is here.~
 ~
 18 2 1
-0~ 0~ 0~ 0~
+2574~ 0~ 0~ 0~
 1 0 0
 #2408
 moonstone~
@@ -1020,7 +1020,7 @@ Moonstone~
 A totally featureless Moonstone is here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+2403~ 0~ 0~ 0~
 1 0 0
 #2409
 moonstone~
@@ -1028,7 +1028,7 @@ Moonstone~
 A totally featureless Moonstone is here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+2428~ 0~ 0~ 0~
 1 0 0
 #2410
 moonstone~
@@ -1036,7 +1036,7 @@ Moonstone~
 A totally featureless Moonstone is here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+2450~ 0~ 0~ 0~
 1 0 0
 #2411
 moonstone~
@@ -1044,7 +1044,7 @@ Moonstone~
 A totally featureless Moonstone is here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+2484~ 0~ 0~ 0~
 1 0 0
 #2412
 moonstone~
@@ -1052,7 +1052,7 @@ Moonstone~
 A totally featureless Moonstone is here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+2501~ 0~ 0~ 0~
 1 0 0
 #2413
 moonstone~
@@ -1060,7 +1060,7 @@ Moonstone~
 A totally featureless Moonstone is here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+2527~ 0~ 0~ 0~
 1 0 0
 #2414
 moonstone~
@@ -1068,7 +1068,7 @@ Moonstone~
 A totally featureless Moonstone is here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+2543~ 0~ 0~ 0~
 1 0 0
 #2415
 moonstone~
@@ -1076,7 +1076,7 @@ Moonstone~
 A totally featureless Moonstone is here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+2549~ 0~ 0~ 0~
 1 0 0
 #2416
 hourglass~
@@ -1084,7 +1084,7 @@ the Hourglass~
 You feel an aura of power emanating from the Hourglass.~
 ~
 18 1 1|16384
-0~ 0~ 0~ 0~
+2577~ 0~ 0~ 0~
 1 0 0
 A
 9 -50
@@ -1755,7 +1755,7 @@ A
 A
 18 5
 A
-19 5
+19 7
 #2466
 silver amulet~
 British's amulet~

@@ -168,7 +168,7 @@ a Shiny key~
 A shiny key lies here, seemingly untarnished by the ages.~
 ~
 18 0 1
-~ ~ ~ ~
+13011~ ~ ~ ~
 1 0 0
 #13002
 Temple Guard Breastplate ~
@@ -602,7 +602,7 @@ a featureless key~
 This key appears to be nothing more than a short, featureless rod.~
 ~
 18 64 1
-~ ~ ~ ~
+13065~ ~ ~ ~
 2 0 0
 #13036
 scroll~
@@ -618,7 +618,7 @@ a small golden key~
 A small, golden key rests here.~
 ~
 18 1024 1|16384
-~ ~ ~ ~
+13072~ ~ ~ ~
 1 0 0
 A
 12 50
@@ -1848,7 +1848,7 @@ Archway~
 D4
 ~
 ~
-2  13037 13074
+2 13037 13074
 D5
 ~
 ~

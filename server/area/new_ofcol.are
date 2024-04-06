@@ -1034,7 +1034,7 @@ the citadel key~
 A key is on the floor.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+698~ 0~ 0~ 0~
 1 0 100
 #652
 symbol holy~
@@ -1194,7 +1194,7 @@ a house key~
 A house key is on the floor.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+625~ 0~ 0~ 0~
 1 0 0
 #666
 broom~

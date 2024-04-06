@@ -1183,7 +1183,7 @@ a large emerald~
 A large green jewel lies here, forgotten.~
 ~
 18 1 1|16384
-0~ 0~ 0~ 0~
+17819~ 0~ 0~ 0~
 1 10000 0
 E
 emerald jewel gem~
@@ -1497,7 +1497,7 @@ an iron key~
 An iron key lies here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+17804~ 0~ 0~ 0~
 1 0 0
 E
 iron key~
@@ -1510,7 +1510,7 @@ a sapphire~
 A large gem lies forgotten here.~
 ~
 18 1 1|16384
-0~ 0~ 0~ 0~
+17820~ 0~ 0~ 0~
 1 6000 0
 E
 sapphire gem~
@@ -2225,7 +2225,7 @@ a beautiful diamond~
 A beautiful diamond has been tossed aside here.~
 ~
 18 1 1|16384
-0~ 0~ 0~ 0~
+17811~ 0~ 0~ 0~
 1 8000 0
 E
 diamond~
@@ -2429,7 +2429,7 @@ a test chamber key~
 This key will allow you to open the door leading north from the chambers.~
 ~
 18 2 1|16384
-0~ 0~ 0~ 0~
+17764~ 0~ 0~ 0~
 1 0 0
 #17827
 dungeon key~
@@ -2437,7 +2437,7 @@ a dungeon key~
 This key will allow you to proceed into the next stage of the dungeon.~
 ~
 18 2 1|16384
-0~ 0~ 0~ 0~
+17767~ 0~ 0~ 0~
 1 0 0
 #17828
 brooch garnet~
@@ -2453,7 +2453,7 @@ a basket shell~
 This shell allows you to travel up in the basket. Unlock it now!~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+17808~ 0~ 0~ 0~
 1 0 0
 E
 shell~

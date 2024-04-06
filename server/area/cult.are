@@ -230,7 +230,7 @@ a black key~
 You see a very important key here!~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+9850~ 0~ 0~ 0~
 1 0 0
 #9826
 primitive key~
@@ -238,7 +238,7 @@ a primitive key~
 You see a primitive key here!~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+9865~ 0~ 0~ 0~
 1 0 0
 #9827
 skull key~
@@ -246,7 +246,7 @@ a skull key~
 You see a skull key here!~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+9869~ 0~ 0~ 0~
 1 0 0
 #9828
 bone sword~
@@ -358,7 +358,7 @@ a rusty key~
 A hunk of metal is on the ground.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+9884~ 0~ 0~ 0~
 1 0 0
 #9838
 cheap plaid pants pair~

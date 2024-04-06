@@ -1230,7 +1230,7 @@ key of the horned god~
 A humming black key with curious inscriptions lies here.~
 ~
 18 2|16 1|16384
-0~ 0~ 0~ 0~
+9502~ 0~ 0~ 0~
 1 0 0
 E
 humming black key inscriptions horned god~
@@ -1423,7 +1423,7 @@ a black jewelled key~
 A black jewelled key sits here.~
 ~
 18 16 1|16384
-0~ 0~ 0~ 0~
+9509~ 0~ 0~ 0~
 1 0 0
 A
 9 0
@@ -1876,7 +1876,7 @@ a fiery key~
 A key sits here radiating a fiery aura.~
 ~
 18 1|16 1|16384
-0~ 1~ 6~ 11~
+9520~ 1~ 6~ 11~
 1 0 0
 E
 key fiery~
@@ -2231,12 +2231,12 @@ E
 leather braces~
 These black leather braces seem far more decorative than functional.~
 #9565
-spiked  key~
+spiked key~
 a spiked key~
 A key with sharp spikes protruding from it lies here.~
 ~
 18 1|16 1|16384
-0~ 1~ 6~ 11~
+9523~ 1~ 6~ 11~
 1 0 0
 E
 spiked key~
@@ -3116,7 +3116,7 @@ a marble key~
 A marble key rests on the floor.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+9537~ 1~ 6~ 11~
 1 0 0
 E
 marble key~
@@ -3595,7 +3595,7 @@ stable key~
 A small metallic key with the word `stables' embossed on it lies here.~
 ~
 18 0 1
-0~ 1~ 6~ 11~
+9511~ 1~ 6~ 11~
 1 0 0
 E
 key small metallic stable stables ~
@@ -3662,7 +3662,7 @@ a ticket to the exhibition~
 A ticket stub lies here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+9548~ 0~ 0~ 0~
 1 0 0
 E
 ticket~
@@ -3793,7 +3793,7 @@ a black gem on a chain~
 A black gem on a chain lies here, radiating evil.~
 ~
 18 16|64|512|4096|2305843009213693952 1|4
-0~ 1~ 6~ 11~
+9539~ 1~ 6~ 11~
 1 0 0
 E
 black gem chain~
@@ -3962,7 +3962,7 @@ a tiny jewelled key~
 A tiny jewelled key almost escapes your notice.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+9669~ 0~ 0~ 0~
 1 0 0
 E
 tiny jewelled key~
@@ -4063,7 +4063,7 @@ an onyx band~
 ~
 ~
 18 512|2048 1
-0~ 0~ 0~ 0~
+9546~ 0~ 0~ 0~
 1 0 0
 E
 onyx band~
@@ -4285,7 +4285,7 @@ a simple black key~
 A small black key almost escapes your notice.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+9552~ 0~ 0~ 0~
 1 0 0
 E
 small black key~
@@ -4380,7 +4380,7 @@ a piece of paper~
 A piece of paper flutters to the ground.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+9592~ 0~ 0~ 0~
 1 0 0
 E
 paper piece~

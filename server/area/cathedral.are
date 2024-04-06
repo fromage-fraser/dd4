@@ -284,7 +284,7 @@ an ivory key~
 An ivory key has been left here.~
 ~
 18 0 1|16384
-4309~ 0~ 0~ 0~
+4310~ 0~ 0~ 0~
 10 5 0
 E
 key ivory bone~
@@ -378,7 +378,7 @@ a beautiful golden key~
 A key made of gold seems to have been forgotten on the ground here.~
 ~
 18 0 1|16384
-4310~ 0~ 0~ 0~
+4311~ 0~ 0~ 0~
 3 0 0
 E
 key gold golden~
@@ -391,7 +391,7 @@ a strange blood key~
 A sinister key of blood beckons...~
 ~
 18 64|128 1|16384
-4311~ 0~ 0~ 0~
+4310~ 0~ 0~ 0~
 1 0 0
 E
 key blood~

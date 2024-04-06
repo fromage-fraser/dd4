@@ -206,7 +206,7 @@ a deep green key~
 A deep green key is on the floor.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+6505~ 0~ 0~ 0~
 1 0 0
 #6504
 dwarven hammer~
@@ -311,7 +311,7 @@ a castle key~
 There is a key to Strangelove Castle here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+6512~ 0~ 0~ 0~
 0 10 1000000
 #6516
 key mine~
@@ -898,13 +898,14 @@ door~
 S
 #6532
 Bedroom~
-This is the Queen's bedroom.  The bed is all ruffled, and there
-is a stack of dirty sheets piled in the corner.
+This is the Queen's bedroom.  The bed is all ruffled, and there is a stack of
+dirty sheets piled in the corner.
 
 A note has been scrawled in lipstick on the mirror:
 
-    I'm out looking for my birth control pills.
-    Why don't you sleep into something comfortable while you're waiting?
+    <558>"I'm out looking for my birth control pills.
+    Why don't you slip into something comfortable while you're waiting?"<559>
+
 ~
 65 8 0
 D2
