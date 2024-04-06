@@ -1339,7 +1339,7 @@ an invisible key~
 ~
 ~
 18 32|64 1|16384
-0~ 0~ 0~ 0~
+25651~ 0~ 0~ 0~
 5 0 0
 #25608
 axe blade~
@@ -1360,7 +1360,7 @@ the hive master key~
 A small black key with a curious insignia lies at your feet.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+25652~ 0~ 0~ 0~
 0 0 0
 E
 insignia~
@@ -1379,7 +1379,7 @@ a translucent key~
 A key might be here.~
 ~
 18 32|64 1
-0~ 0~ 0~ 0~
+25696~ 0~ 0~ 0~
 0 0 0
 E
 translucent key~
@@ -1771,7 +1771,7 @@ red stone~
 A small red stone hovers in the air above the ground.~
 ~
 18 1|2|64|274877906944 1|32768
-0~ 0~ 0~ 0~
+25698~ 0~ 0~ 0~
 1 0 0
 A
 19 7
@@ -1785,7 +1785,7 @@ purple stone~
 A small purple stone hovers in the air above the ground.~
 ~
 18 1|2|64|274877906944 1|32768
-0~ 0~ 0~ 0~
+25773~ 0~ 0~ 0~
 1 0 0
 A
 12 80
@@ -1799,7 +1799,7 @@ dark blue stone~
 A dark blue stone hovers in the air above the ground.~
 ~
 18 1|2|64|274877906944 1|32768
-0~ 0~ 0~ 0~
+25774~ 0~ 0~ 0~
 1 0 0
 A
 13 60
@@ -2026,7 +2026,7 @@ a small golden key~
 A small key made of gold lies here at your feet.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+25678~ 0~ 0~ 0~
 0 0 0
 E
 small key gold~
@@ -2423,7 +2423,7 @@ a small handcrank~
 A small handcrank of a type used in opening vaults lies here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+25678~ 0~ 0~ 0~
 12 0 0
 #25693
 ear goblin~
@@ -2584,7 +2584,7 @@ a small cast-iron key~
 A cast-iron key labeled 'desk' lies here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+25704~ 0~ 0~ 0~
 0 0 0
 #25706
 large cast-iron key~
@@ -2592,7 +2592,7 @@ a large cast-iron key~
 A cast-iron key labeled 'archives' lies here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+25719~ 0~ 0~ 0~
 0 0 0
 #25707
 corpse dryad~
@@ -2635,7 +2635,7 @@ a small golden key~
 A small golden key lies here.~
 ~
 18 1 1
-0~ 0~ 0~ 0~
+25775~ 0~ 0~ 0~
 0 0 0
 E
 small golden key~
@@ -2778,7 +2778,7 @@ a crystal key~
 A key wrought of fine crystal lies here twinkling.~
 ~
 18 1|32 1
-0~ 0~ 0~ 0~
+25718~ 0~ 0~ 0~
 0 0 0
 E
 crystal key~

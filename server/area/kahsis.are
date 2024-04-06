@@ -739,7 +739,7 @@ a rusty spanner~
 You spot a rusty spanner here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+25014~ 1~ 6~ 11~
 5 0 0
 E
 spanner~
@@ -792,7 +792,7 @@ an iron key~
 An iron key sits attached to a short chain.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+25046~ 1~ 6~ 11~
 5 0 0
 E
 key iron~
@@ -804,7 +804,7 @@ an amulet of passing~
 A brass amulet lays here.~
 ~
 18 1 1|4
-0~ 1~ 6~ 11~
+25033~ 1~ 6~ 11~
 5 0 0
 E
 amulet passing~
@@ -816,7 +816,7 @@ the Seal of Pain~
 You spy a curiously shaped piece of silvery metal.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+25031~ 1~ 6~ 11~
 5 0 0
 E
 seal pain~
@@ -1120,7 +1120,7 @@ the Seal of Anguish~
 A bronze template lays on the ground.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+25059~ 1~ 6~ 11~
 5 0 0
 E
 seal anguish~
@@ -1216,7 +1216,7 @@ a cast iron key~
 A cast iron key is on the ground near your feet.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+25074~ 1~ 6~ 11~
 5 0 0
 E
 key cast iron~
@@ -1303,7 +1303,7 @@ an ivory key~
 There is a tiny ivory key here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+25117~ 1~ 6~ 11~
 5 0 0
 E
 key ivory~
@@ -1385,7 +1385,7 @@ the Seal of Agony~
 A golden tablet gleams from below.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+25099~ 1~ 6~ 11~
 5 0 0
 E
 seal agony~
@@ -1398,7 +1398,7 @@ a ruby key~
 A ruby and gold key sits here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+25121~ 1~ 6~ 11~
 5 0 0
 E
 key ruby~
@@ -1437,7 +1437,7 @@ a snakes tooth~
 A huge snake tooth lays on the ground.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+25126~ 1~ 6~ 11~
 5 0 0
 E
 tooth snake~

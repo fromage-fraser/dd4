@@ -380,7 +380,7 @@ a stone key~
 A stone key has been dropped here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+2610~ 0~ 0~ 0~
 15 10 50
 E
 stone key~
@@ -423,7 +423,7 @@ a small emerald scarab~
 A small emerald scarab lies here on the ground.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+2626~ 0~ 0~ 0~
 5 4500 500
 E
 scarab~
@@ -504,7 +504,7 @@ the answer~
 A small piece of parchment covered in hieroglyphics lies here.~
 ~
 18 0 16385
-0~ 0~ 0~ 0~
+2658~ 0~ 0~ 0~
 1 1 1
 E
 answer hieroglyphics~

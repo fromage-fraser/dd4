@@ -1363,7 +1363,7 @@ a key~
 An iron key has been left here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+3110~ 0~ 0~ 0~
 1 0 0
 E
 key iron~
@@ -1375,7 +1375,7 @@ a key~
 A rusty key has been left here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+3129~ 0~ 0~ 0~
 1 0 0
 E
 key rusty~
@@ -1387,7 +1387,7 @@ a key~
 A wooden key has been left here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+3130~ 0~ 0~ 0~
 1 0 0
 E
 key wooden~
@@ -1399,7 +1399,7 @@ a key~
 A brass key has been left here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+3131~ 0~ 0~ 0~
 1 0 0
 E
 key brass~
@@ -1463,7 +1463,7 @@ the City Key~
 The very big City Key is lying here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+3040~ 0~ 0~ 0~
 10 10000 0
 #3134
 bench~
@@ -1505,7 +1505,7 @@ a steel key~
 A large steel key has been left here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+3142~ 0~ 0~ 0~
 1 0 0
 E
 key steel~

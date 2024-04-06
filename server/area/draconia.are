@@ -368,7 +368,7 @@ a steel key~
 A steel key.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+2201~ 0~ 0~ 0~
 1 500 1000
 #2232
 key ruby~
@@ -376,7 +376,7 @@ a ruby key~
 A ruby key.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+2218~ 0~ 0~ 0~
 1 500 1000
 #2233
 key white~
@@ -384,7 +384,7 @@ a white key~
 A white key.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+2213~ 0~ 0~ 0~
 1 500 1000
 #2234
 key grey~
@@ -392,7 +392,7 @@ a grey key~
 A grey key is resting on the ground here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+2208~ 0~ 0~ 0~
 1 500 1000
 #2237
 key stone~
@@ -408,7 +408,7 @@ a black key~
 A black key.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+2213~ 0~ 0~ 0~
 1 500 1000
 #2241
 key platinum~
@@ -416,7 +416,7 @@ a platinum key~
 A platinum key.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+2231~ 0~ 0~ 0~
 1 500 1000
 #2242
 shield crested~
@@ -608,7 +608,7 @@ a tarnished gold key~
 A tarnished gold key lies here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+2229~ 0~ 0~ 0~
 1 500 1000
 #0
 

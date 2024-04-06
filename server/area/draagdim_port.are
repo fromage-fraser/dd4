@@ -193,10 +193,10 @@ and led the forces of darkness against Midgaard and it's heroes.~
 #28201
 ring~
 a thieves ring~
-A small steel ring lies here~
+A small steel ring lies here.~
 ~
 18 512 1|2
-0~ 1~ 6~ 11~
+28231~ 1~ 6~ 11~
 1 0 0
 #28202
 scale~
@@ -221,7 +221,7 @@ A
 #28204
 Dagger~
 a dagger~
-A blunt dagger rests here~
+A blunt dagger rests here.~
 ~
 5 0 1|8192
 0~ 1~ 6~ 11~
@@ -239,7 +239,7 @@ A sword rests here.~
 #28206
 flamberge sword~
 a flamberge~
-A long, wavy-bladed sword lies here~
+A long, wavy-bladed sword lies here.~
 ~
 5 64 1|8192
 0~ 1~ 6~ 1~
@@ -285,7 +285,7 @@ A steel helm rests here.~
 #28210
 gauntlets leather~
 leather gauntlets~
-A pair of leather gauntlets lie here~
+A pair of leather gauntlets lie here.~
 ~
 9 0 1|128
 0~ 1~ 6~ 11~
@@ -313,7 +313,7 @@ A pair of leather greaves rest here.~
 #28213
 beer~
 a pint of beer~
-A pint of flat, stale beer sits here~
+A pint of flat, stale beer sits here.~
 ~
 17 0 1
 0~ 1~ 1~ 0~
@@ -337,7 +337,7 @@ A pint of extra-strong cider rests here.~
 #28216
 talisman~
 a talisman of enlightenment~
-A small silver talisman lies here~
+A small silver talisman lies here.~
 ~
 1 0 1
 0~ 1~ -1~ 11~
@@ -365,7 +365,7 @@ A
 #28218
 nildaeth ~
 a nildaeth~
-A nildaeth rests here~
+A nildaeth rests here.~
 ~
 5 1 1|8192
 0~ 1~ 6~ 11~
@@ -376,7 +376,9 @@ A
 19 4
 E
 nildaeth~
-A nildaeth is a small charm that is worn around the waists of Alaghi to give them strength in combat~
+A nildaeth is a small charm that is worn around the waists of Alaghi to give
+them strength in combat.
+~
 #0
 
 

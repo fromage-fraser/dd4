@@ -1701,7 +1701,7 @@ a {rglowing{x stone~
 A {rglowing{x stone sits here.~
 ~
 18 1 1
-~ ~ ~ ~
+55048~ ~ ~ ~
 1 0 0
 
 #55075
@@ -1710,7 +1710,7 @@ a {dglowing{x stone~
 A {dglowing{x stone sits here.~
 ~
 18 1 1
-~ ~ ~ ~
+55049~ ~ ~ ~
 1 0 0
 
 #55017
@@ -1786,7 +1786,7 @@ a {yflashing{x key~
 An oddly {yflashing{x key draws your attention.~
 ~
 18 0 1
-~ ~ ~ ~
+55052~ ~ ~ ~
 1 0 0
 
 #55048

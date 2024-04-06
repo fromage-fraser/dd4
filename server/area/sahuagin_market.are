@@ -1857,7 +1857,7 @@ an ornate brass key~
 An ornate brass key is here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+27206~ 0~ 0~ 0~
 1 0 0
 E
 ornate brass key~
@@ -1881,7 +1881,7 @@ a crude iron key~
 A crude iron key lies on the ground here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+27208~ 0~ 0~ 0~
 1 0 0
 #27210
 whetstone granite~
@@ -1930,7 +1930,7 @@ a small tin key~
 A small tin key lies here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+27213~ 0~ 0~ 0~
 1 0 0
 #27215
 jerkin leather tough~
@@ -2391,7 +2391,7 @@ a nacre key~
 A key made of polished nacre lies here.~
 ~
 18 1 1|16384
-0~ 0~ 0~ 0~
+27263~ 0~ 0~ 0~
 1 0 0
 E
 nacre key~
@@ -2535,7 +2535,7 @@ a jewelled key~
 A small jewelled key lies here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+27274~ 0~ 0~ 0~
 1 0 0
 #27276
 coins pile large~
@@ -2819,7 +2819,7 @@ a greasy wooden key~
 A wooden key covered in grease lies here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+27295~ 0~ 0~ 0~
 1 0 0
 #27297
 steel key~
@@ -2827,7 +2827,7 @@ a steel key~
 An unremarkable steel key lies here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+27298~ 0~ 0~ 0~
 1 0 0
 #27298
 heavy steel chest~
@@ -2933,7 +2933,7 @@ a slimy key~
 A slimy key lies here.~
 ~
 18 16|64 1|16384
-0~ 0~ 0~ 0~
+27348~ 0~ 0~ 0~
 1 0 0
 E
 slimy key~
@@ -3009,7 +3009,7 @@ a scrap of paper~
 A scrap of paper with writing on it lies here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+27808~ 0~ 0~ 0~
 1 0 0
 E
 scrap paper writing~
@@ -3088,7 +3088,7 @@ a tempered glass key~
 A small key made of tempered glass lies here.~
 ~
 18 32 1|16384
-0~ 0~ 0~ 0~
+27323~ 0~ 0~ 0~
 1 0 0
 #27325
 tincture squid's essence~
@@ -3248,7 +3248,7 @@ a rusty key~
 A rusty key has been left here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+27338~ 0~ 0~ 0~
 1 0 0
 #27340
 mechanical suit~
@@ -3311,7 +3311,7 @@ a driftwood key~
 A key made from driftwood lies here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+27342~ 0~ 0~ 0~
 1 0 0
 #27344
 bench workbench~
@@ -3341,7 +3341,7 @@ a glowing black stone~
 A black stone lies here, crackling with magical energy.~
 ~
 18 1|2|16|64 1|16384
-0~ 0~ 0~ 0~
+27345~ 0~ 0~ 0~
 20 0 0
 E
 glowing black stone~

@@ -935,7 +935,7 @@ an iron key~
 An iron key is here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+17212~ 0~ 0~ 0~
 1 0 0
 #17022
 pool lava~
@@ -1102,7 +1102,7 @@ a metal key~
 A metal key lies here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+17034~ 0~ 0~ 0~
 1 0 0
 E
 key metal~
@@ -1178,7 +1178,7 @@ a golden hawk key~
 A golden hawk key lies here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+17266~ 1~ 6~ 11~
 5 0 0
 E
 key golden hawk~

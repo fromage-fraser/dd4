@@ -52,10 +52,11 @@ const int movement_loss [SECT_MAX] =
 /*
  * Local functions.
  */
-int     find_door       args((CHAR_DATA *ch, char *arg));
-bool    has_key         args((CHAR_DATA *ch, int key));
-int     find_wall       args((CHAR_DATA *ch, char *arg));
-void    scan            args((CHAR_DATA *ch, int door));
+int         find_door       args((CHAR_DATA *ch, char *arg));
+bool        has_key         args((CHAR_DATA *ch, int key));
+int         find_wall       args((CHAR_DATA *ch, char *arg));
+void        scan            args((CHAR_DATA *ch, int door));
+OBJ_DATA    *get_haskey_obj args((CHAR_DATA *ch, int key));
 
 
 /*
@@ -1299,10 +1300,24 @@ bool has_key(CHAR_DATA *ch, int key)
         return FALSE;
 }
 
+OBJ_DATA *get_haskey_obj(CHAR_DATA *ch, int key)
+{
+        OBJ_DATA *obj;
+
+        for (obj = ch->carrying; obj; obj = obj->next_content)
+        {
+                if (obj->pIndexData->vnum == key)
+                        return obj;
+        }
+
+        return NULL;
+}
+
 
 void do_lock(CHAR_DATA *ch, char *argument)
 {
-        OBJ_DATA *obj;
+        OBJ_DATA  *obj;
+        OBJ_DATA  *key_obj;
         char      arg [ MAX_INPUT_LENGTH ];
         int       door;
 
@@ -1341,6 +1356,12 @@ void do_lock(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
+                /* For spell_psychometry, sets value[0] on key to vnum of
+                container it was last used to unlock.  --Owl 7/4/23 */
+
+                key_obj             = get_haskey_obj( ch, obj->value[2] );
+                key_obj->value[0]   = obj->pIndexData->vnum;
+
                 SET_BIT(obj->value[1], CONT_LOCKED);
                 send_to_char("*Click*\n\r", ch);
                 act ("$n locks $p.", ch, obj, NULL, TO_ROOM);
@@ -1378,6 +1399,12 @@ void do_lock(CHAR_DATA *ch, char *argument)
                             return;
                     }
 
+                    /* For spell_psychometry, sets value[0] on key to vnum of
+                    container it was last used to unlock.  --Owl 7/4/23 */
+
+                    key_obj             = get_haskey_obj( ch, obj->value[2] );
+                    key_obj->value[0]   = obj->pIndexData->vnum;
+
                     SET_BIT(obj->value[1], CONT_LOCKED);
                     send_to_char("*Click*\n\r", ch);
                     act ("$n locks $p in $S vault.", ch, obj, ch, TO_ROOM);
@@ -1412,6 +1439,12 @@ void do_lock(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
+                /* For spell_psychometry, sets value[0] on key to vnum of room it was
+                last used in.  --Owl 7/4/23 */
+
+                key_obj             = get_haskey_obj( ch, pexit->key );
+                key_obj->value[0]   = ch->in_room->vnum;
+
                 SET_BIT(pexit->exit_info, EX_LOCKED);
                 send_to_char("*Click*\n\r", ch);
                 act ("$n locks the $d.", ch, NULL, pexit->keyword, TO_ROOM);
@@ -1431,7 +1464,8 @@ void do_lock(CHAR_DATA *ch, char *argument)
 
 void do_unlock(CHAR_DATA *ch, char *argument)
 {
-        OBJ_DATA *obj;
+        OBJ_DATA  *obj;
+        OBJ_DATA  *key_obj;
         char      arg [ MAX_INPUT_LENGTH ];
         int       door;
 
@@ -1470,6 +1504,12 @@ void do_unlock(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
+                /* For spell_psychometry, sets value[0] on key to vnum of
+                container it was last used to unlock.  --Owl 7/4/23 */
+
+                key_obj             = get_haskey_obj( ch, obj->value[2] );
+                key_obj->value[0]   = obj->pIndexData->vnum;
+
                 REMOVE_BIT(obj->value[1], CONT_LOCKED);
                 send_to_char("*Click*\n\r", ch);
                 act ("$n unlocks $p.", ch, obj, NULL, TO_ROOM);
@@ -1507,6 +1547,12 @@ void do_unlock(CHAR_DATA *ch, char *argument)
                             return;
                     }
 
+                    /* For spell_psychometry, sets value[0] on key to vnum of
+                    container it was last used to unlock.  --Owl 7/4/23 */
+
+                    key_obj             = get_haskey_obj( ch, obj->value[2] );
+                    key_obj->value[0]   = obj->pIndexData->vnum;
+
                     REMOVE_BIT(obj->value[1], CONT_LOCKED);
                     send_to_char("*Click*\n\r", ch);
                     act ("$n unlocks $p in $S vault.", ch, obj, ch, TO_ROOM);
@@ -1540,6 +1586,12 @@ void do_unlock(CHAR_DATA *ch, char *argument)
                         send_to_char("It's already unlocked.\n\r", ch);
                         return;
                 }
+
+                /* For spell_psychometry, sets value[0] on key to vnum of room it was
+                last used in.  --Owl 7/4/23 */
+
+                key_obj             = get_haskey_obj( ch, pexit->key );
+                key_obj->value[0]   = ch->in_room->vnum;
 
                 REMOVE_BIT(pexit->exit_info, EX_LOCKED);
                 send_to_char("*Click*\n\r", ch);

@@ -314,7 +314,7 @@ a queerly shaped rod~
 A queerly shaped rod is lying here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+3421~ 0~ 0~ 0~
 5 0 20000
 E
 rod key~
@@ -327,7 +327,7 @@ a large black dirty key~
 a large black dirty key is lying here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+3408~ 0~ 0~ 0~
 3 0 20000
 E
 large black dirty key~
@@ -398,7 +398,7 @@ a heavy iron key~
 A heavy iron key is lying here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+3415~ 0~ 0~ 0~
 4 0 30000
 E
 key iron heavy~
@@ -431,7 +431,7 @@ key to the coffin~
 The key to the coffin is lying here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+3460~ 0~ 0~ 0~
 3 0 50000
 E
 key~
@@ -588,7 +588,7 @@ a silver key~
 You see a silver key here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+3405~ 0~ 0~ 0~
 1 0 0
 E
 key silver~

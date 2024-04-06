@@ -258,7 +258,7 @@ a bronze key~
 A bronze key lies half buried in the ground.~
 ~
 18 1 1
-0~ 0~ 0~ 0~
+20115~ 0~ 0~ 0~
 5 0 0
 
 #20131
@@ -267,7 +267,7 @@ a chain of keys~
 A chain of keys hang on the wall.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+20131~ 0~ 0~ 0~
 15 0 0
 
 #20105
@@ -276,7 +276,7 @@ a Shelizi~
 A bright crystal is here waiting to be picked up.~
 ~
 18 1|2 1
-0~ 0~ 0~ 0~
+20137~ 0~ 0~ 0~
 20 0 0
 
 #20106
@@ -549,7 +549,7 @@ a lock of nun's hair~
 A few strands of long hair lies on the floor.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+20124~ 0~ 0~ 0~
 5 0 0
 
 #20136
@@ -558,7 +558,7 @@ a lighted candle~
 A lighted candle stands here, providing little light and warm.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+20136~ 0~ 0~ 0~
 10 0 0
 
 #20137

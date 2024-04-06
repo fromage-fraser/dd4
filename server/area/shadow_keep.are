@@ -339,7 +339,7 @@ a iron key~
 A iron key lies here.~
 ~
 18 0 1|8192
-0~ 1~ 6~ 11~
+16619~ 1~ 6~ 11~
 5 0 0
 #16604
 Tattered rags~
@@ -467,7 +467,7 @@ a gold key~
 A gold key rests here.~
 ~
 18 0 1
-0~ 1~ 6~ 11~
+16630~ 1~ 6~ 11~
 5 0 0
 #16618
 Jail Key~
@@ -475,7 +475,7 @@ a jailers key~
 A jailers key lies here.~
 ~
 18 0 1
-0~ 1~ 6~ 11~
+16655~ 1~ 6~ 11~
 5 0 0
 #16619
 Kings Key~
@@ -483,7 +483,7 @@ a Kings key~
 A Kings key lies here.~
 ~
 18 0 1|8192
-0~ 1~ 6~ 11~
+16662~ 1~ 6~ 11~
 5 0 0
 #16620
 Throneroom silver key~
@@ -491,7 +491,7 @@ a silver key~
 A silver key rests here.~
 ~
 18 0 1|8192
-0~ 1~ 6~ 11~
+16644~ 1~ 6~ 11~
 5 0 0
 #16621
 Flail~

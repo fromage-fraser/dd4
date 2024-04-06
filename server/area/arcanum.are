@@ -1312,7 +1312,7 @@ a {Yyellow{x key~
 A {Yyellow{x key sits here.~
 ~
 18 0 1
-~ ~ ~ ~
+26019~ ~ ~ ~
 1 0 0
 
 #26011
@@ -1321,7 +1321,7 @@ a {Mpurple{x key~
 A {Mpurple{x key sits here.~
 ~
 18 0 1
-~ ~ ~ ~
+26018~ ~ ~ ~
 1 0 0
 
 #26012
@@ -1330,7 +1330,7 @@ a {Ccyan{x key~
 A {Ccyan{x key sits here.~
 ~
 18 0 1
-~ ~ ~ ~
+26017~ ~ ~ ~
 1 0 0
 
 #26013
@@ -1339,7 +1339,7 @@ a {yorange{x key~
 An {yorange{x key sits here.~
 ~
 18 0 1
-~ ~ ~ ~
+26020~ ~ ~ ~
 1 0 0
 
 #26014
@@ -1348,7 +1348,7 @@ a {Ggreen{x key~
 A {Ggreen{x key sits here.~
 ~
 18 0 1
-~ ~ ~ ~
+26014~ ~ ~ ~
 1 0 0
 
 #26015
@@ -1375,7 +1375,7 @@ castle key~
 The castle key.~
 ~
 18 32 1
-~ ~ ~ ~
+26001~ ~ ~ ~
 0 0 0
 
 #26018
@@ -1384,7 +1384,7 @@ Key to the king and queens room~
 The key to the king and queens throne room.~
 ~
 18 0 1
-~ ~ ~ ~
+26017~ ~ ~ ~
 1 0 0
 
 #26019
@@ -1393,7 +1393,7 @@ a small corroded key~
 a small-corroded key has been lost here.~
 ~
 18 0 1
-~ ~ ~ ~
+26018~ ~ ~ ~
 1 0 0
 
 #26020
@@ -1484,7 +1484,7 @@ a stone with an "X" marked on it~
 ~
 ~
 18 0 1
-~ ~ ~ ~
+26122~ ~ ~ ~
 1 0 0
 
 #26025
@@ -1493,7 +1493,7 @@ a stone with an "e" marked on it~
 ~
 ~
 18 0 1
-~ ~ ~ ~
+26143~ ~ ~ ~
 1 0 0
 
 #26026
@@ -1502,7 +1502,7 @@ a stone with a "d" marked on it~
 ~
 ~
 18 0 1
-~ ~ ~ ~
+26144~ ~ ~ ~
 1 0 0
 
 #26027
@@ -1511,7 +1511,7 @@ a stone with a "d" marked on it~
 ~
 ~
 18 0 1
-~ ~ ~ ~
+26145~ ~ ~ ~
 1 0 0
 
 #26028
@@ -1520,7 +1520,7 @@ a stone with an "i" marked on it~
 ~
 ~
 18 0 1
-~ ~ ~ ~
+26146~ ~ ~ ~
 1 0 0
 
 #26029
@@ -1529,7 +1529,7 @@ a stone with a "c" marked on it~
 ~
 ~
 18 0 1
-~ ~ ~ ~
+26147~ ~ ~ ~
 1 0 0
 
 #26030
@@ -1538,7 +1538,7 @@ a stone with a "u" marked on it~
 ~
 ~
 18 0 1
-~ ~ ~ ~
+26148~ ~ ~ ~
 1 0 0
 
 #26031
@@ -1547,7 +1547,7 @@ a stone with an "s" marked on it~
 ~
 ~
 18 0 1
-~ ~ ~ ~
+26149~ ~ ~ ~
 1 0 0
 
 #26032
@@ -1622,7 +1622,7 @@ key to the next test~
 The key to the next test.~
 ~
 18 0 1
-~ ~ ~ ~
+26088~ ~ ~ ~
 1 0 0
 
 #26037
@@ -1631,7 +1631,7 @@ key to the next test~
 The key to the next test.~
 ~
 18 0 1
-~ ~ ~ ~
+26089~ ~ ~ ~
 1 0 0
 
 #26038
@@ -1640,7 +1640,7 @@ key to the next test~
 The key to the next test.~
 ~
 18 0 1
-~ ~ ~ ~
+26091~ ~ ~ ~
 1 0 0
 
 #26039
@@ -1649,7 +1649,7 @@ key to the next test~
 The key to the next test.~
 ~
 18 0 1
-~ ~ ~ ~
+26092~ ~ ~ ~
 1 0 0
 
 #26040
@@ -1658,7 +1658,7 @@ key to the next test~
 The key to the next test.~
 ~
 18 0 1
-~ ~ ~ ~
+26093~ ~ ~ ~
 1 0 0
 
 #26041
@@ -1667,7 +1667,7 @@ key to the next test~
 The key to the next test.~
 ~
 18 0 1
-~ ~ ~ ~
+26094~ ~ ~ ~
 1 0 0
 
 #26042
@@ -1676,7 +1676,7 @@ key to the next test~
 The key to the next test.~
 ~
 18 0 1
-~ ~ ~ ~
+26097~ ~ ~ ~
 1 0 0
 
 #26043
@@ -1685,7 +1685,7 @@ key to the next test~
 The key to the next test.~
 ~
 18 0 1
-~ ~ ~ ~
+26098~ ~ ~ ~
 1 0 0
 
 #26044
@@ -1694,7 +1694,7 @@ key to the next test~
 The key to the next test.~
 ~
 18 0 1
-~ ~ ~ ~
+26099~ ~ ~ ~
 1 0 0
 
 #26045

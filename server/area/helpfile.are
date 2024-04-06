@@ -3516,12 +3516,14 @@ identify items, for 1 Gold.
 0 PSYCHOMETRY~
 Syntax: cast psychometry <<object>
 
-This spell is cast by the psionically-gifted individual on keys (or objects that
-function as keys in some way) to glean information about the object or door they
-unlock.
+This spell is cast by the psionically-gifted individual on keys in their
+inventory to glean information about the container or door the key unlocks.
 
 If successful, the caster will receive a vision of the object the key opens, or
 the room containing the locked door the key unlocks.
+
+Where a key opens multiple locks, only the lock it was most recently used on
+will be seen.
 ~
 
 

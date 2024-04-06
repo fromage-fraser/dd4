@@ -1148,7 +1148,7 @@ a guild key~
 There is a small green key on the floor.~
 ~
 18 0 1|16384
-30152~ 0~ 0~ 0~
+30249~ 0~ 0~ 0~
 0 0 0
 #30224
 blank key~
@@ -1156,7 +1156,7 @@ a blank key~
 There is a blank key here.~
 ~
 18 0 1|16384
-30148~ 0~ 0~ 0~
+30247~ 0~ 0~ 0~
 0 0 0
 #30225
 odd scroll~
@@ -1164,7 +1164,7 @@ an odd scroll~
 There is an odd-looking scroll here.~
 ~
 18 1|64 1|16384
-30103~ 0~ 0~ 0~
+30202~ 0~ 0~ 0~
 0 0 0
 #30226
 jailer's key~
@@ -1172,7 +1172,7 @@ a jailer's key~
 There is a jailer's key here.~
 ~
 18 0 1|16384
-30162~ 0~ 0~ 0~
+30239~ 0~ 0~ 0~
 0 0 0
 #30227
 flaming sword~

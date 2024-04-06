@@ -817,7 +817,7 @@ a rough wooden key~
 A crudely fashioned wooden key lies here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+20625~ 0~ 0~ 0~
 1 0 0
 E
 rough wooden key crude~
@@ -840,7 +840,7 @@ a padlock key~
 A small key lies here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+20609~ 0~ 0~ 0~
 5 0 0
 E
 small padlock key~
@@ -1092,7 +1092,7 @@ a carved wooden key~
 A carven wooden key sits in the dust at your feet.~
 ~
 18 0 1|8192
-0~ 0~ 0~ 0~
+20698~ 0~ 0~ 0~
 1 0 0
 E
 carved wooden key~
@@ -1144,7 +1144,7 @@ an emerald key~
 A tiny green key lies in the dust.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+20702~ 0~ 0~ 0~
 1 0 0
 E
 emerald key~
@@ -1208,7 +1208,7 @@ a small stone key~
 A small stone key lies on the ground.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+20661~ 0~ 0~ 0~
 1 0 0
 E
 small stone key~
@@ -1511,12 +1511,12 @@ A large mutilated carcass lies here.~
 100~ 0~ 0~ 0~
 500 0 0
 #20662
-balck iron key~
+black iron key~
 a black iron key~
 A black iron key is on the ground.~
 ~
 18 16 1
-0~ 0~ 0~ 0~
+20652~ 0~ 0~ 0~
 0 0 0
 E
 black iron key~
@@ -1601,7 +1601,7 @@ key to Faraq's Chamber~
 The key to Faraq's room is here.~
 ~
 18 32 1
-0~ 0~ 0~ 0~
+20740~ 0~ 0~ 0~
 50 0 0
 E
 key chamber faraq~

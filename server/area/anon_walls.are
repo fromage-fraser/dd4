@@ -538,7 +538,7 @@ an old key~
 An old key lies here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+31257~ 0~ 0~ 0~
 1 0 0
 E
 key~
@@ -672,7 +672,7 @@ a warehouse key~
 A warehouse key is here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~
+31281~ 0~ 0~ 0~
 1 250 0
 #31239
 scow~

@@ -535,7 +535,7 @@ a stone rune~
 A small runestone lies here...~
 ~
 18 0 1
-0~ 1~ 6~ 11~
+28009~ 1~ 6~ 11~
 1 0 0
 #28005
 jade key~
@@ -543,7 +543,7 @@ a jade key~
 A small key made of jade lies here...~
 ~
 18 0 1
-0~ 1~ 6~ 11~
+28006~ 1~ 6~ 11~
 1 0 0
 #28006
 tasty bun~
@@ -649,7 +649,7 @@ a red key~
 A red key lies here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+28040~ 1~ 6~ 11~
 1 0 0
 #28016
 blue key~
@@ -657,7 +657,7 @@ a blue key~
 A blue key lies here.~
 ~
 18 0 1
-0~ 1~ 6~ 11~
+28042~ 1~ 6~ 11~
 1 0 0
 #28017
 green key~
@@ -665,12 +665,12 @@ a green key~
 A green key  lies here.~
 ~
 18 0 1
-0~ 1~ 6~ 11~
+28043~ 1~ 6~ 11~
 1 0 0
 #28018
 sword high~
 a high quarter sword~
-A sword rests here.  It's inscriptions tell you it belongs to the high quarter
+A sword rests here.  Its inscriptions tell you it belongs to the high quarter
 watch...~
 ~
 5 64|1024 1|8192
@@ -838,7 +838,7 @@ a key~
 A key lies here.~
 ~
 18 0 1
-0~ 1~ 6~ 11~
+28057~ 1~ 6~ 11~
 1 0 0
 #28032
 key~
@@ -846,7 +846,7 @@ a key~
 A key lies here.~
 ~
 18 0 1
-0~ 1~ 6~ 11~
+28029~ 1~ 6~ 11~
 1 0 0
 #28033
 key~
@@ -854,7 +854,7 @@ a small copper key~
 A small copper key lies here.~
 ~
 18 0 1
-0~ 1~ 6~ 11~
+28085~ 1~ 6~ 11~
 1 0 0
 #28034
 key ~
@@ -862,7 +862,7 @@ a shiny metal key~
 A shiny metal key lies here.~
 ~
 18 0 1
-0~ 1~ 6~ 11~
+28087~ 1~ 6~ 11~
 1 0 0
 #28035
 robes silk robe rich~
@@ -880,7 +880,7 @@ a plain key~
 A plain key lies here.~
 ~
 18 0 1
-0~ 1~ 6~ 11~
+28024~ 1~ 6~ 11~
 1 0 0
 #28037
 bed~

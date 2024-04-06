@@ -9154,7 +9154,7 @@ void spell_psychometry( int sn, int level, CHAR_DATA *ch, void *vo )
 
                 if (success)
                 {
-                    send_to_char( "\n\r<6>You concentrate on the object as you touch it, and visualise a location...<0><558>\n\r\n\r", ch );
+                    send_to_char( "\n\r<6>You concentrate as you touch the object, and a location swims into view...<0><558>\n\r\n\r", ch );
 
                     ansi_color( GREY, ch );
                     ansi_color( BOLD, ch );

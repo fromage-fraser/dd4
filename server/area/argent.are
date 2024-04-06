@@ -562,7 +562,7 @@ a city pass~
 You notice a small square of parchment here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+25207~ 1~ 6~ 11~
 5 0 0
 E
 pass key city parchment~
@@ -693,7 +693,7 @@ the jailer's key~
 A small iron key lays here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+25227~ 1~ 6~ 11~
 5 0 0
 E
 key jailer's~
@@ -879,7 +879,7 @@ a house key~
 A small key rests on the floor here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+25258~ 1~ 6~ 11~
 5 0 0
 E
 key house~
@@ -892,7 +892,7 @@ a steel key~
 There is a small steel key here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+25232~ 1~ 6~ 11~
 5 0 0
 E
 key steel~
@@ -1002,7 +1002,7 @@ a red ticket~
 A small red ticket has been cast here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~
+25276~ 1~ 6~ 11~
 5 0 0
 E
 ticket small red~
