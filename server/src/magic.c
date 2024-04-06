@@ -40,9 +40,6 @@ void say_spell                  ( CHAR_DATA *ch, int sn             );
 bool is_safe                    ( CHAR_DATA *ch, CHAR_DATA *victim  );
 bool skill_cannot_be_dispelled  ( int sn                            );
 bool is_only_whitespace         ( const char* str                   );
-void say_spell                  ( CHAR_DATA *ch, int sn             );
-bool is_safe                    ( CHAR_DATA *ch, CHAR_DATA *victim  );
-bool skill_cannot_be_dispelled  ( int sn                            );
 
 
 /*
@@ -9118,8 +9115,6 @@ void spell_runic_cure( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if ( ( !is_affected(victim, gsn_poison) )
         &&   ( !is_affected(victim, gsn_nausea) ) )
-        if ( ( !is_affected(victim, gsn_poison) )
-        &&   ( !is_affected(victim, gsn_nausea) ) )
                 return;
 
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
@@ -9130,26 +9125,6 @@ void spell_runic_cure( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if (is_affected(victim, gsn_poison))
             affect_strip(victim, gsn_poison);
-        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
-        {
-                send_to_char("Objects cannot be poisoned or nauseated.\n\r", ch);
-                return;
-        }
-
-        if (is_affected(victim, gsn_poison))
-            affect_strip(victim, gsn_poison);
-
-        if (is_affected(victim, gsn_nausea))
-            affect_strip(victim, gsn_nausea);
-
-        if (!IS_NPC(victim))
-        {
-            if (victim->pcdata->condition[COND_DRUNK] > 0 )
-            {
-                victim->pcdata->condition[COND_DRUNK] = 0;
-                send_to_char("You sober up.\n\r", victim);
-            }
-        }
 
         if (is_affected(victim, gsn_nausea))
             affect_strip(victim, gsn_nausea);
@@ -9165,7 +9140,6 @@ void spell_runic_cure( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if (ch != victim)
         {
-                act( "You purge the illness from $M.", ch, NULL, victim, TO_CHAR );
                 act( "You purge the illness from $M.", ch, NULL, victim, TO_CHAR );
                 check_group_bonus(ch);
         }
@@ -9181,8 +9155,6 @@ void spell_runic_ward( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if ( ( !is_affected(victim, gsn_poison) )
         &&   ( !is_affected(victim, gsn_nausea) ) )
-        if ( ( !is_affected(victim, gsn_poison) )
-        &&   ( !is_affected(victim, gsn_nausea) ) )
                 return;
 
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
@@ -9193,26 +9165,6 @@ void spell_runic_ward( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if (is_affected(victim, gsn_poison))
             affect_strip(victim, gsn_poison);
-        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
-        {
-                send_to_char("Objects cannot be poisoned or nauseated.\n\r", ch);
-                return;
-        }
-
-        if (is_affected(victim, gsn_poison))
-            affect_strip(victim, gsn_poison);
-
-        if (is_affected(victim, gsn_nausea))
-            affect_strip(victim, gsn_nausea);
-
-        if (!IS_NPC(victim))
-        {
-            if (victim->pcdata->condition[COND_DRUNK] > 0 )
-            {
-                victim->pcdata->condition[COND_DRUNK] = 0;
-                send_to_char("You sober up.\n\r", victim);
-            }
-        }
 
         if (is_affected(victim, gsn_nausea))
             affect_strip(victim, gsn_nausea);
@@ -9228,7 +9180,6 @@ void spell_runic_ward( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if (ch != victim)
         {
-                act( "You purge the illness from $M.", ch, NULL, victim, TO_CHAR );
                 act( "You purge the illness from $M.", ch, NULL, victim, TO_CHAR );
                 check_group_bonus(ch);
         }
