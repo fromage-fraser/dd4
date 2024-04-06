@@ -722,6 +722,12 @@ int mana_gain( CHAR_DATA *ch )
         if (IS_AFFECTED(ch, AFF_MEDITATE))
                 gain *= 2;
 
+        /* To help pure shifters with all the mana-draining stuff they have to do */
+
+        if ( ( ch->class == CLASS_SHAPE_SHIFTER )
+        &&   ( ch->sub_class == SUB_CLASS_NONE ) )
+                gain *= 2;
+
         if (IS_AFFECTED(ch, AFF_POISON) || IS_AFFECTED(ch, AFF_PRAYER_PLAGUE))
                 gain /= 4;
 
@@ -756,7 +762,7 @@ int mana_gain( CHAR_DATA *ch )
                 gain += ( ( get_curr_int(ch) / 6 )  +  ( get_curr_wis(ch) / 6 ));
         }
 
-        if ( ch->sub_class == CLASS_RANGER
+        if ( ( (ch->class == CLASS_RANGER ) && ( ch->sub_class == SUB_CLASS_NONE ) )
         &&   ( ch->in_room->sector_type == SECT_HILLS
           ||   ch->in_room->sector_type == SECT_FOREST ) )
         {
