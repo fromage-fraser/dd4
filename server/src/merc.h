@@ -325,7 +325,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
 #define MAX_SKILL                   591     /* -1 map 5/4/24 - Owl */
-#define MAX_PRE_REQ                 1400    /* +2 detect evil for infernalists 30/3/24 */
+#define MAX_PRE_REQ                 1401    /* +1 meditate for shifters 7/4/24 */
 #define MAX_SPELL_GROUP             452     /* +1 reforge Brutus 1/1/23 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
