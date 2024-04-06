@@ -8700,6 +8700,7 @@ void spell_animate_weapon (int sn, int level, CHAR_DATA *ch, void *vo)
                 act("Your weapon slips from your hands!", ch, NULL, victim, TO_VICT);
                 act("$N's weapon slips from $s hands.", ch, NULL, victim, TO_NOTVICT);
                 check_group_bonus(ch);
+
                 if (ch != victim)
                         send_to_char("<15>Success!<0>\n\r",ch);
                         send_to_char("<15>Success!<0>\n\r",ch);
