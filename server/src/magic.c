@@ -43,7 +43,6 @@ bool is_only_whitespace         ( const char* str                   );
 void say_spell                  ( CHAR_DATA *ch, int sn             );
 bool is_safe                    ( CHAR_DATA *ch, CHAR_DATA *victim  );
 bool skill_cannot_be_dispelled  ( int sn                            );
-bool is_only_whitespace         ( const char* str                   );
 
 
 /*
