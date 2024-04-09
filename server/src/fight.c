@@ -2958,6 +2958,15 @@ void raw_kill (CHAR_DATA *ch, CHAR_DATA *victim, bool corpse)
 
         stop_fighting(victim, TRUE);
 
+        /* if the victim has been swallowed and the ch makes no corpse, strip
+         victim swallow effects */
+
+        if ( ( IS_AFFECTED(victim, AFF_SWALLOWED) )
+        &&   ( !MAKES_CORPSE(ch) ) )
+        {
+                strip_swallow(victim);
+        }
+
         if (ch != victim)
                 mprog_death_trigger(victim);
 
@@ -7428,6 +7437,12 @@ void do_flukeslap (CHAR_DATA *ch, char *argument)
 
         one_argument (argument, arg);
         victim = ch->fighting;
+
+        if (IS_AFFECTED(victim, AFF_SWALLOWED))
+        {
+                send_to_char ("You can't use your flukes to slap someone inside your body!\n\r", ch);
+                return;
+        }
 
         if (arg[0] != '\0' && !(victim = get_char_room (ch, arg)))
         {
