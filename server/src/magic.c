@@ -1966,20 +1966,7 @@ void spell_cure_poison( int sn, int level, CHAR_DATA *ch, void *vo )
             if ( ( ( !is_affected(victim, gsn_poison) )
             &&     ( !is_affected(victim, gsn_nausea) ) )
             &&   ( victim->pcdata->condition[COND_DRUNK] <= 0 ) )
-        if (!IS_NPC(victim))
-        {
-            if ( ( ( !is_affected(victim, gsn_poison) )
-            &&     ( !is_affected(victim, gsn_nausea) ) )
-            &&   ( victim->pcdata->condition[COND_DRUNK] <= 0 ) )
                 return;
-        }
-
-        if (IS_NPC(victim))
-        {
-            if ( ( ( !is_affected(victim, gsn_poison) )
-            &&     ( !is_affected(victim, gsn_nausea) ) ) )
-                return;
-        }
         }
 
         if (IS_NPC(victim))
@@ -1992,36 +1979,34 @@ void spell_cure_poison( int sn, int level, CHAR_DATA *ch, void *vo )
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
         {
                 send_to_char("Objects cannot be poisoned or nauseated.\n\r", ch);
-                send_to_char("Objects cannot be poisoned or nauseated.\n\r", ch);
                 return;
         }
 
         if (is_affected(victim, gsn_poison))
             affect_strip(victim, gsn_poison);
-        if (is_affected(victim, gsn_poison))
-            affect_strip(victim, gsn_poison);
 
         if (is_affected(victim, gsn_nausea))
             affect_strip(victim, gsn_nausea);
 
-        if (!IS_NPC(victim))
+        if (is_affected(victim, gsn_fleshrot))
         {
-            victim->pcdata->condition[COND_DRUNK] = 0;
-            send_to_char("You sober up.\n\r", victim);
+                affect_strip(victim, gsn_fleshrot);
+                affect_strip(victim, gsn_blindness);
+                REMOVE_BIT(victim->affected_by, AFF_DOT);
+                REMOVE_BIT(victim->affected_by, AFF_BLIND);
         }
 
-        if (is_affected(victim, gsn_nausea))
-            affect_strip(victim, gsn_nausea);
-
         if (!IS_NPC(victim))
         {
+            if (victim->pcdata->condition[COND_DRUNK] > 0)
+            {
+                send_to_char("You sober up.\n\r", victim);
+            }
             victim->pcdata->condition[COND_DRUNK] = 0;
-            send_to_char("You sober up.\n\r", victim);
         }
 
         if (ch != victim)
         {
-                act( "You purge the illness from $M.", ch, NULL, victim, TO_CHAR );
                 act( "You purge the illness from $M.", ch, NULL, victim, TO_CHAR );
                 check_group_bonus(ch);
         }
@@ -2084,6 +2069,14 @@ void spell_stabilise( int sn, int level, CHAR_DATA *ch, void *vo )
         {
                 affect_strip(victim, gsn_astral_sidestep);
                 REMOVE_BIT(victim->affected_by, AFF_NON_CORPOREAL);
+        }
+
+        if (is_affected(victim, gsn_fleshrot))
+        {
+                affect_strip(victim, gsn_fleshrot);
+                affect_strip(victim, gsn_blindness);
+                REMOVE_BIT(victim->affected_by, AFF_DOT);
+                REMOVE_BIT(victim->affected_by, AFF_BLIND);
         }
 
         /*
@@ -5849,7 +5842,7 @@ void spell_cell_adjustment ( int sn, int level, CHAR_DATA *ch, void *vo )
                 affect_strip( victim, gsn_poison );
                 send_to_char( "<229>A w<228>ar<227>m f<226>ee<220>li<226>ng <227>ru<228>ns <229>th<228>ro<227>ug<226>h y<220>ou<226>r b<227>od<228>y.<0>\n\r", victim );
                 act( "$N looks better.", ch, NULL, victim, TO_NOTVICT );
-                well_count = 1;
+                well_count++;
         }
 
         if ( is_affected( victim, gsn_nausea ) )
@@ -5860,6 +5853,22 @@ void spell_cell_adjustment ( int sn, int level, CHAR_DATA *ch, void *vo )
                     send_to_char( "<229>A w<228>ar<227>m f<226>ee<220>li<226>ng <227>ru<228>ns <229>th<228>ro<227>ug<226>h y<220>ou<226>r b<227>od<228>y.<0>\n\r", victim );
                     act( "$N looks better.", ch, NULL, victim, TO_NOTVICT );
                 }
+                well_count++;
+        }
+
+        if (is_affected(victim, gsn_fleshrot))
+        {
+                affect_strip(victim, gsn_fleshrot);
+                affect_strip(victim, gsn_blindness);
+                REMOVE_BIT(victim->affected_by, AFF_DOT);
+                REMOVE_BIT(victim->affected_by, AFF_BLIND);
+
+                if (well_count == 0)
+                {
+                    send_to_char( "<229>A w<228>ar<227>m f<226>ee<220>li<226>ng <227>ru<228>ns <229>th<228>ro<227>ug<226>h y<220>ou<226>r b<227>od<228>y.<0>\n\r", victim );
+                    act( "$N looks better.", ch, NULL, victim, TO_NOTVICT );
+                }
+                well_count++;
         }
 
         if (!IS_NPC(victim))
@@ -5869,14 +5878,17 @@ void spell_cell_adjustment ( int sn, int level, CHAR_DATA *ch, void *vo )
                 victim->pcdata->condition[COND_DRUNK] = 0;
                 send_to_char( "You sober up.\n\r", victim );
             }
-                well_count = 1;
+                well_count++;
         }
 
         if ( is_affected( victim, gsn_curse  ) )
         {
                 affect_strip( victim, gsn_curse  );
                 send_to_char( "Your curse is lifted.\n\r", victim );
+                well_count++;
         }
+
+        return;
 }
 
 
@@ -9109,6 +9121,14 @@ void spell_runic_cure( int sn, int level, CHAR_DATA *ch, void *vo )
         if (is_affected(victim, gsn_nausea))
             affect_strip(victim, gsn_nausea);
 
+        if (is_affected(victim, gsn_fleshrot))
+        {
+                affect_strip(victim, gsn_fleshrot);
+                affect_strip(victim, gsn_blindness);
+                REMOVE_BIT(victim->affected_by, AFF_DOT);
+                REMOVE_BIT(victim->affected_by, AFF_BLIND);
+        }
+
         if (!IS_NPC(victim))
         {
             if (victim->pcdata->condition[COND_DRUNK] > 0 )
@@ -9148,6 +9168,14 @@ void spell_runic_ward( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if (is_affected(victim, gsn_nausea))
             affect_strip(victim, gsn_nausea);
+
+        if (is_affected(victim, gsn_fleshrot))
+        {
+                affect_strip(victim, gsn_fleshrot);
+                affect_strip(victim, gsn_blindness);
+                REMOVE_BIT(victim->affected_by, AFF_DOT);
+                REMOVE_BIT(victim->affected_by, AFF_BLIND);
+        }
 
         if (!IS_NPC(victim))
         {
@@ -9666,6 +9694,112 @@ void spell_freedom( int sn, int level, CHAR_DATA *ch, void *vo )
             send_to_char("You free them from their bondage.\n\r", ch );
         }
 
+        return;
+}
+
+void spell_fleshrot (int sn, int level, CHAR_DATA *ch, void *vo)
+{
+
+        CHAR_DATA  *victim = (CHAR_DATA *) vo;
+        AFFECT_DATA af;
+        int blind_chance;
+        int blind_ceiling;
+        bool add_blind = FALSE;
+        int duration = (number_fuzzy(level)/5);
+        blind_chance = number_range(1, 100);
+
+        if (!IS_NPC(ch))
+        {
+            blind_ceiling = (((ch->level/10)+1) + ((ch->pcdata->learned[gsn_fleshrot]/10)+1));
+        }
+        else {
+            blind_ceiling = (((ch->level/10) * 2) + 1);
+        }
+
+        if (blind_chance < blind_ceiling)
+        {
+            add_blind = TRUE;
+        }
+
+        if ( IS_NPC(victim)
+        &&  ( IS_SET(victim->act, ACT_OBJECT) || IS_INORGANIC(victim) ) )
+        {
+                send_to_char("Your target has no flesh to rot.\n\r", ch);
+                return;
+        }
+
+        if ( IS_NPC(victim)
+        &&  !HAS_EYES(victim) )
+        {
+            add_blind = FALSE;
+        }
+
+        if ( ( is_affected( victim, gsn_poison ) )
+        ||   ( is_affected( victim, gsn_nausea ) )
+        ||   ( is_affected( victim, sn ) )
+        ||   ( is_affected( victim, gsn_prayer_plague ) ) )
+        {
+                send_to_char( "Your target must be in good health for your spell to be effective.\n\r", ch );
+                return;
+        }
+
+        if ( victim->hit < victim->max_hit
+        &&   IS_NPC(victim)
+        &&   victim->pIndexData->vnum != BOT_VNUM )
+        {
+                send_to_char( "Your target must be in good health for your spell to be effective.\n\r", ch );
+                return;
+        }
+
+        if (!IS_NPC(victim)
+        && number_percent() < victim->pcdata->learned[gsn_resist_toxin]
+        && victim->gag < 2)
+        {
+            send_to_char( "<46>Yo<47>u r<48>es<49>is<48>t t<47>he <46>di<47>se<48>as<49>e t<48>ha<47>t a<46>ss<47>ai<48>ls <49>yo<48>ur <47>sy<46>st<47>em<48>.<0>\n\r", victim );
+            return;
+        }
+
+        if ( saves_spell( level, victim ) )
+        {
+                if( ch != victim )
+                {
+                    send_to_char("Your rotting curse is resisted.\n\r", ch );
+                }
+                else {
+                    send_to_char( "You resist a rotting curse!\n\r", ch );
+                }
+
+                /* Make a save initiate combat and do a minor amount of damage */
+                damage(ch, victim, number_range(1, ch->level/4), gsn_fleshrot, FALSE);
+                return;
+        }
+
+        af.type      = sn;
+        af.duration  = duration;
+
+        af.bitvector = AFF_DOT;
+
+        af.location  = APPLY_NONE;
+        af.modifier  = UMIN((victim->hit / 8), MAX_DAMAGE);
+        affect_to_char( victim, &af );
+
+        act("<49>Malodorous ropes of putrid smoke stream from $n's hands!<0>", ch, NULL, NULL, TO_ROOM);
+        act("You inflict a hideous disease upon $N!", ch, NULL, victim, TO_CHAR);
+        send_to_char( "<107>Your flesh begins to crack and blister!<0>\n\r", victim );
+        damage(ch, victim, number_range(1, ch->level/2), gsn_fleshrot, FALSE);
+
+        if (add_blind)
+        {
+            af.type      = gsn_blindness;
+            af.duration  = duration;
+            af.location  = APPLY_HITROLL;
+            af.modifier  = -4;
+            af.bitvector = AFF_BLIND;
+            affect_to_char( victim, &af );
+
+            send_to_char( "<49>Your eyes rot--you are blind!<0>\n\r", victim );
+            act( "{W$C is blinded!{x", ch, NULL, victim, TO_NOTVICT );
+        }
         return;
 }
 

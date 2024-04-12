@@ -6506,6 +6506,12 @@ const struct skill_type skill_table [MAX_SKILL] =
                 spell_freedom, 50, 12,
                 "emancipating incantation", "!Freedom!"
         },
+        {
+                "fleshrot", &gsn_fleshrot,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, 8|16384,
+                spell_fleshrot, 5, 12,
+                "<0><22>ro<28>tt<35>in<49>g m<35>al<28>ed<22>ic<28>ti<35>on<0>", "<79>Your flesh stops rotting.<0>"
+        },
 
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.

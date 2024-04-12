@@ -456,6 +456,7 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 
 0 CHANGES~
 {W April 2024{x
+-added DOT spell 'fleshrot'
 -lock vnums added to all keys
 -keys now "remember" the last thing they were used to lock or unlock
 -affspell($*), insect($*), inrflag($*) added for mobprogs. isaffected($*) fixed
@@ -5909,7 +5910,6 @@ steal soul              demon flames            infernal fury
 fireshield              detect good             summon demon
 dark ritual             second attack           third spell
 hellfire                chaos blast             detect evil
-hellfire                chaos blast             detect evil
 ~
 
 -1 STEMPLAR~
@@ -7218,6 +7218,16 @@ of damage on their foe.  As it requires ignorance on the part of the
 victim to be successful, this spell may not be cast on alert or
 suspicious opponents.  Additionally, enemies who are trapped or
 otherwise rendered immobile are more vulnerable to its depredations.
+~
+
+0 'FLESHROT' 'FLESH ROT'~
+Syntax: cast 'fleshrot' <<target>
+
+This spell may be used to initiate combat with a healthy creature by inflicting
+a horrible rotting curse on them.  Their flesh will begin to peel from their
+bones, inflicting terrible damage over time unless they quickly remediate their
+condition via application of standard treatments for poison and toxins, or ones
+that stabilise magically-altered body states.
 ~
 
 0 REVIEW~

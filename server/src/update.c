@@ -1655,7 +1655,7 @@ void char_update( void )
                         {
                             if ( ch->position == POS_SLEEPING )
                             {
-                                    send_to_char("Your mind swirls in a fog of confusion and disorientation.\n\r", ch);
+                                    send_to_char("Your mind swirls in a fog of confusion.\n\r", ch);
                                     do_wake( ch, "" );
                             }
                             send_to_char("You stumble about clumsily.\n\r\n\r", ch);

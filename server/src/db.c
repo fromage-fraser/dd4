@@ -667,6 +667,7 @@ int     gsn_conflagration;
 int     gsn_flood;
 int     gsn_confusion;
 int     gsn_freedom;
+int     gsn_fleshrot;
 
 
 /*
