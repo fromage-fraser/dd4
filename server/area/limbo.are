@@ -346,26 +346,11 @@ This large horned owl has bright orange eyes and regards you with a mix of mild
 curiosity tinged with contempt.
 ~
 2|2048|9223372036854775808 524288 1000 S
-110 0 0 0d0+0 0d0+0
+100 0 0 0d0+0 0d0+0
 0 0
 0 0 1
->all_greet_prog 20~
-    snare $n
-~
->all_greet_prog 20~
-    trap $n
-~
->all_greet_prog 20~
-    web $n
-~
->fight_prog 20~
-    crush $n
-~
->all_greet_prog 20~
-    transfix $n
-~
->all_greet_prog 20~
-    howl $n
+>all_greet_prog 100~
+    c fleshrot $n
 ~
 |
 
