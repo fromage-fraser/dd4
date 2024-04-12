@@ -37,13 +37,14 @@ collection. ;)
 * <<mudlet-automapper-gui>>?
 * <<mob-ranks>>?
 * <<vaults>>?
-* <<move-prog>>
-* <<player-name-text-file>>
-* <<upgraded-fountain>>
-* <<fake-objects>>
-* <<tfind>>
-* <<add-new-skill>>
-* <<new-skill-to-class>>
+* <<move-prog>>?
+* <<player-name-text-file>>?
+* <<upgraded-fountain>>?
+* <<fake-objects>>?
+* <<tfind>>?
+* <<add-new-skill>>?
+* <<new-skill-to-class>>?
+* <<calculate-trig-values>>?
 
 {nbsp} +
 {nbsp} +
@@ -919,13 +920,13 @@ The initial linking areas characters are likely to encounter too, perhaps?
 
 == Use mob ranks [[mob-ranks]]
 
-Ive refactored Mob Ranks, such that they live in a new field, along side the +
+I've refactored Mob Ranks, such that they live in a new field, alongside the +
 species:
 
 They live in their own table now, which contains the name, the multiplier to +
 hp & loot chance, and the who-name in `mob.c`
 
-In the above example, reserved is used, as I havent added a cyclops species +
+In the above example, `reserved` is used, as I havent added a cyclops species +
 yet.
 
 Ranks are:
@@ -1080,7 +1081,7 @@ image:tfind.png[tfind.png,500,,]
 {nbsp} +
 {nbsp} +
 
-== Use the `rfind` command [[rfind]]]]
+== Use the `rfind` command [[rfind]]
 
 `Syntax: rfind 'substring'`
 
@@ -1173,11 +1174,11 @@ group, put it under the appropriate spell group in +
 the `MAX_SPELL_GROUP` number by 1 in `merc.h`.
 
 [source, "c"]
-        { &gsn_group_curative,                          0 },
-        { &gsn_refresh,                                 0 },
-        { &gsn_cure_blindness,                          0 },
-        { &gsn_remove_curse,                            0 },
-        { &gsn_cure_poison,                             0 },
+{ &gsn_group_curative,                          0 },
+{ &gsn_refresh,                                 0 },
+{ &gsn_cure_blindness,                          0 },
+{ &gsn_remove_curse,                            0 },
+{ &gsn_cure_poison,                             0 },
 
 `#define MAX_SPELL_GROUP             451     /* +1 cure poison You 1/1/23 */`
 
@@ -1186,8 +1187,8 @@ Add the pre-req lines to the pre-req file for the class, example adding +
 to `pre_req-cleric.c`
 
 [source, "c"]
-{&gsn_cure_poison,              &gsn_group_curative,    40,     PRE_CLERIC},
-{&gsn_cure_poison,              &gsn_poison,            30,     PRE_CLERIC},
+{&gsn_cure_poison,        &gsn_group_curative,    40,     PRE_CLERIC},
+{&gsn_cure_poison,        &gsn_poison,            30,     PRE_CLERIC},
 
 Then increase `MAX_PRE_REQ` in `merc.h` by the number of lines you just added to +
 `pre_req-cleric.c`
@@ -1198,4 +1199,39 @@ You then need to update `helpfile.are` for the skills help for the class... will
 be the entry looking like `SCLERIC` here.
 
 The skills listed for the class on the website should also be updated, but this +
-is less important... the intention is that the skills will propagate there + automatically eventually.
+is less important... the intention is that the skills will propagate there +
+automatically eventually.
+
+{nbsp} +
+{nbsp} +
+
+== Calculate values for cascading mobprog triggers [[calculate-trig-values]]
+
+Mob prog triggers for the same trigger type work by:
+
+* Checking the percentage chance of the first trigger firing, if +
+* It fires, stop checking any more triggers of that type, otherwise +
+* Check the percentage chance of the next one firing, etc. +
+
+The issue this creates is if, say, you wanted to have 5 fight_prog triggers that +
+each had a 20% chance of firing, you need to figure out the percentage value for +
+each one GIVEN the previous one has been checked and the routine may have been +
+escaped.
+
+While the maths isn't complicated it is no fun to try to do in your head, so +
+I've made a calculator, https://docs.google.com/spreadsheets/d/1ctdFq9vHXOltzV3LZv8SbL9_bl4aeFyfRgkx9EqO8-k/edit#gid=0[here].
+
+The number to adjust first is the first value in "Cumulative non-fire +
+probability", which will be the percentage chance of ANY trigger in your trigger +
+type sequence firing at all.
+
+Then add values for "Desired percentage" for each trigger in order. The final +
+column will give you the value you should use in your actual mobprog trigger. +
+
+The below image is showing values for 20 consecutive triggers, each of which we +
+want to have an absolute chance of 5% of firing.
+
+Clear out "Desired percentage" values for any triggers that are surplus to your +
+requirements.
+
+image:trig_calc.png[trig_calc.png,500,,]
