@@ -402,7 +402,7 @@ Enter thy Name: ~
 
 -1 MOTD~
 {x
-    [1 April 2024]
+    [22 September 2024]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -415,12 +415,11 @@ Enter thy Name: ~
     We're also active on a Discord server at {Yhttps://discord.gg/aGzmAWmXYb{x
     if you'd like to jump in and say hi!
 
+    {WNEW AREA:{x Omu Central is in, the second of 3 areas comprising Omu city.
+    86 new mobs, 90 new objects, 244(!) new rooms, and a new Reaver quest.
+
     {WNEW AREA:{x Omu Canals, the first area of the grung sector is complete!
     20 new mobs, 27 new objects, 64 new rooms, and a new Reaver quest.
-
-    {WNEW AREA:{x Ota'ar Dar Prince's Canton is in, finishing the city of Ota'ar
-    Dar! 53 new mobs (including a <81>[WO<75>RL<69>D B<75>OS<81>S]<0>), 54 new
-    objects, 90 new rooms, and a new Reaver quest.
 
 
 
@@ -455,6 +454,9 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 ~
 
 0 CHANGES~
+{W September 3024{X
+-New area: Omu Central is in, with many supporting code and text changes.
+
 {W April 2024{x
 -added DOT spell 'fleshrot'
 -lock vnums added to all keys
