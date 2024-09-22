@@ -346,13 +346,9 @@ This large horned owl has bright orange eyes and regards you with a mix of mild
 curiosity tinged with contempt.
 ~
 2|2048|9223372036854775808 524288 1000 S
-70 0 0 0d0+0 0d0+0
+40 0 0 0d0+0 0d0+0
 0 0
 0 0 1
->all_greet_prog 100~
-    c fleshrot $n
-~
-|
 
 
 #80
@@ -2205,7 +2201,8 @@ M  75 spec_grail                the Hunter
 M   1 spec_warrior              puff
 M   6 spec_celestial_repairman  monkey squadron
 M   5 spec_poison               gulgorthil
-M  79 spec_gold_grung         hootfiend
+M  79 spec_bloodsucker          hootfiend
+
 S
 
 

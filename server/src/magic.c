@@ -4568,7 +4568,7 @@ void spell_paralysis( int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
 
         af.type      = sn;
-        af.duration  = 1 + level / 10;
+        af.duration  = 1 + level / 15;
         af.location  = APPLY_DEX;
         af.modifier  = -5;
         af.bitvector = AFF_HOLD;

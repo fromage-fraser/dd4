@@ -325,11 +325,23 @@ void move_char(CHAR_DATA *ch, int door)
         /*  Let Immortals pass through all doors  */
         if (IS_SET(pexit->exit_info, EX_CLOSED) && ch->level <= LEVEL_HERO)
         {
+
                 if (!IS_AFFECTED(ch, AFF_PASS_DOOR)
                     && !IS_AFFECTED(ch, AFF_NON_CORPOREAL))
                 {
-                        act ("The $d is closed.", ch, NULL, pexit->keyword, TO_CHAR);
-                        return;
+                    /* Check if the last character of pexit->keyword is 's' or 'S'
+                       60% of the time, it works every time --Owl 23/9/24 */
+
+                    size_t len = strlen(pexit->keyword);
+                    if (len > 0 && (pexit->keyword[len - 1] == 's' || pexit->keyword[len - 1] == 'S'))
+                    {
+                        act("The $d are closed.", ch, NULL, pexit->keyword, TO_CHAR);
+                    }
+                    else
+                    {
+                        act("The $d is closed.", ch, NULL, pexit->keyword, TO_CHAR);
+                    }
+                    return;
                 }
 
                 if (IS_SET(pexit->exit_info, EX_PASSPROOF))
