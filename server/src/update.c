@@ -1641,10 +1641,17 @@ void char_update( void )
                             REMOVE_BIT(ch->affected_by, AFF_CONFUSION);
                         }
 
-                        if ( (IS_AFFECTED(ch, AFF_SLOW))
-                        && (!is_affected(ch, gsn_slow)))
-                        {
-                            REMOVE_BIT(ch->affected_by, AFF_SLOW);
+                        /*
+                            Allows for permanently "slowed" mobiles.  Tortoises, slugs, who knows?
+                           --Owl 18/8/24
+                        */
+
+                        if (!IS_NPC(ch)) {
+                            if ( (IS_AFFECTED(ch, AFF_SLOW))
+                            && (!is_affected(ch, gsn_slow)))
+                            {
+                                REMOVE_BIT(ch->affected_by, AFF_SLOW);
+                            }
                         }
 
                         if ( IS_AFFECTED(ch, AFF_CONFUSION)

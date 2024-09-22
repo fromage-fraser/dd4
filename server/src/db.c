@@ -397,7 +397,7 @@ int     gsn_bladethirst;
 int     gsn_hex;
 int     gsn_death_field;
 int     gsn_decay;
-int     gsn_disintergrate;
+int     gsn_disintegrate;
 int     gsn_imflict_pain;
 int     gsn_psychic_drain;
 int     gsn_acid_blast;
@@ -510,7 +510,7 @@ int     gsn_create_sound;
 int     gsn_death_field;
 int     gsn_decay;
 int     gsn_detonate;
-int     gsn_disintergrate;
+int     gsn_disintegrate;
 int     gsn_displacement;
 int     gsn_ectoplasmic_form;
 int     gsn_ego_whip;
@@ -2678,7 +2678,8 @@ void load_specials( FILE *fp )
                         ||   pMobIndex->spec_fun == spec_lookup("spec_sahuagin_infantry")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_sahuagin_cavalry")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_sahuagin_cleric")
-                        ||   pMobIndex->spec_fun == spec_lookup("spec_green_grung") )
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_green_grung")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_blue_grung")  )
                                 bonus = 10;
 
                         /*
@@ -2692,6 +2693,9 @@ void load_specials( FILE *fp )
                         ||   pMobIndex->spec_fun == spec_lookup("spec_aboleth")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_sahuagin_baron")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_sahuagin_lieutenant")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_red_grung")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_purple_grung")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_orange_grung")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_cast_water_sprite") )
                                 bonus = 15;
 
@@ -2704,8 +2708,8 @@ void load_specials( FILE *fp )
                         ||   pMobIndex->spec_fun == spec_lookup("spec_mast_vampire")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_evil_evil_gezhp")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_grail")
+                        ||   pMobIndex->spec_fun == spec_lookup("spec_gold_grung")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_cast_archmage")
-                        ||   pMobIndex->spec_fun == spec_lookup("spec_red_grung")
                         ||   pMobIndex->spec_fun == spec_lookup("spec_sahuagin_prince") )
                                 bonus = 20;
 

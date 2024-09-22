@@ -2457,7 +2457,7 @@ extern DIR_DATA directions [ MAX_DIR ];
 
 
 /*
- * Equpiment wear locations.
+ * Equipment wear locations.
  * Used in #RESETS.
  */
 #define WEAR_NONE                       -1
@@ -3573,7 +3573,7 @@ extern int gsn_wither;
 extern int gsn_hex;
 extern int gsn_death_field;
 extern int gsn_decay;
-extern int gsn_disintergrate;
+extern int gsn_disintegrate;
 extern int gsn_inflict_pain;
 extern int gsn_psychic_drain;
 extern int gsn_acid_blast;
@@ -3928,10 +3928,16 @@ extern int gsn_prayer_plague;
 /*
  * Object macros.
  */
-#define CAN_WEAR( class, cur_form, obj, part, loc ) ( IS_SET( obj->wear_flags, part ) \
-                && form_wear_table      [ cur_form ].can_wear   [ loc ] \
-                && wear_table           [ class ].can_wear              [ obj->item_type ] \
-                && loc_wear_table       [ class ].can_wear              [ loc ] )
+
+/* Changed below 12/8/24 so NPCs are not class-restricted on item-wearing... their default class
+   is "Mage" (0) which was stopping them from re-wearing shields or anti-mage items, for example,
+   once removed  --Owl */
+
+#define CAN_WEAR( class, cur_form, obj, part, loc ) \
+    ( IS_SET( obj->wear_flags, part ) \
+      && ( IS_NPC( ch ) || ( loc_wear_table       [ class ].can_wear      [ loc ] \
+      && form_wear_table[cur_form].can_wear[loc] \
+      && wear_table           [ class ].can_wear      [ obj->item_type ])) )
 
 #define IS_OBJ_STAT( obj, stat )( IS_SET( ( obj )->extra_flags, ( stat ) ) )
 #define IS_SPELL( skill )               ( skill_table [ skill ].spell_fun != spell_null )

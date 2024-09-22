@@ -2375,6 +2375,12 @@ void do_eat (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (!(obj = get_obj_here(ch, arg)))
+        {
+                send_to_char("You can't find it.\n\r", ch);
+                return;
+        }
+
         /* Pouch code follows... */
 
         pouch = get_eq_char(ch, WEAR_POUCH);
@@ -2564,19 +2570,21 @@ void wear_obj (CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace)
                 return;
         }
 
-        if (   (ch->class == CLASS_MAGE          && IS_OBJ_STAT(obj, ITEM_ANTI_MAGE))
-            || (ch->class == CLASS_CLERIC        && IS_OBJ_STAT(obj, ITEM_ANTI_CLERIC))
-            || (ch->class == CLASS_THIEF         && IS_OBJ_STAT(obj, ITEM_ANTI_THIEF))
-            || (ch->class == CLASS_WARRIOR       && IS_OBJ_STAT(obj, ITEM_ANTI_WARRIOR))
-            || (ch->class == CLASS_PSIONICIST    && IS_OBJ_STAT(obj, ITEM_ANTI_PSIONIC))
-            || (ch->class == CLASS_BRAWLER       && IS_OBJ_STAT(obj, ITEM_ANTI_BRAWLER))
-            || (ch->class == CLASS_RANGER        && IS_OBJ_STAT(obj, ITEM_ANTI_RANGER))
-            || (ch->class == CLASS_SMITHY        && IS_OBJ_STAT(obj, ITEM_ANTI_SMITHY))
-            || (ch->class == CLASS_SHAPE_SHIFTER && IS_OBJ_STAT(obj, ITEM_ANTI_SHAPE_SHIFTER)))
-        {
-                act("Your class cannot use $p.",ch,obj,NULL,TO_CHAR);
-                act("$n tries to use $p, but $s class cannot use it.", ch, obj, NULL, TO_ROOM);
-                return;
+        if (!IS_NPC(ch)) {
+            if (   (ch->class == CLASS_MAGE          && IS_OBJ_STAT(obj, ITEM_ANTI_MAGE))
+                || (ch->class == CLASS_CLERIC        && IS_OBJ_STAT(obj, ITEM_ANTI_CLERIC))
+                || (ch->class == CLASS_THIEF         && IS_OBJ_STAT(obj, ITEM_ANTI_THIEF))
+                || (ch->class == CLASS_WARRIOR       && IS_OBJ_STAT(obj, ITEM_ANTI_WARRIOR))
+                || (ch->class == CLASS_PSIONICIST    && IS_OBJ_STAT(obj, ITEM_ANTI_PSIONIC))
+                || (ch->class == CLASS_BRAWLER       && IS_OBJ_STAT(obj, ITEM_ANTI_BRAWLER))
+                || (ch->class == CLASS_RANGER        && IS_OBJ_STAT(obj, ITEM_ANTI_RANGER))
+                || (ch->class == CLASS_SMITHY        && IS_OBJ_STAT(obj, ITEM_ANTI_SMITHY))
+                || (ch->class == CLASS_SHAPE_SHIFTER && IS_OBJ_STAT(obj, ITEM_ANTI_SHAPE_SHIFTER)))
+            {
+                    act("Your class cannot use $p.",ch,obj,NULL,TO_CHAR);
+                    act("$n tries to use $p, but $s class cannot use it.", ch, obj, NULL, TO_ROOM);
+                    return;
+            }
         }
 
         if (!is_obj_owner(obj, ch))
@@ -2987,16 +2995,18 @@ void wear_obj (CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace)
                 {
                         if (IS_SET(obj->wear_flags, j))
                         {
-                                if (!loc_wear_table[eff_class].can_wear[i])
-                                {
-                                        send_to_char("You profession prohibits wearing anything in that location.\n\r", ch);
-                                        return;
-                                }
+                                if (!IS_NPC(ch) && !IS_IMMORTAL(ch)){
+                                    if (!loc_wear_table[eff_class].can_wear[i])
+                                    {
+                                            send_to_char("Your profession prohibits wearing anything in that location.\n\r", ch);
+                                            return;
+                                    }
 
-                                if (!form_wear_table[ch->form].can_wear[i])
-                                {
-                                        send_to_char("You cannot wear that in your current form.\n\r", ch);
-                                        return;
+                                    if (!form_wear_table[ch->form].can_wear[i])
+                                    {
+                                            send_to_char("You cannot wear that in your current form.\n\r", ch);
+                                            return;
+                                    }
                                 }
                         }
                 }
@@ -5009,9 +5019,10 @@ void do_list (CHAR_DATA *ch, char *argument)
                                 if (!found)
                                 {
                                         found = TRUE;
-                                        strcat(buf1, "Pets for sale:\n\r");
+                                        strcat(buf1, "{d[{WLvl  Price{d]{W  Creature for sale{x\n\r");
+                                        /*strcat(buf1, "Pets for sale:\n\r");*/
                                 }
-                                sprintf(buf, "[%2d] %8d - %s\n\r",
+                                sprintf(buf, "{d[{x{w%3d %6d{d]{x  %s\n\r",
                                         pet->level,
                                         10 * pet->level * pet->level,
                                         pet->short_descr);

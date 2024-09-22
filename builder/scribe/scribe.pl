@@ -11,7 +11,7 @@
 
 use strict;
 use warnings;
-print "DD4 Area File Scribe version 0.6\n";
+print "DD4 Area File Scribe version 0.7\n";
 
 
 #############################################################################
@@ -108,6 +108,7 @@ my %mob_aff = (
         hidden          => 65536,
         sleep           => 131072,
         charmed         => 262144,
+        fly             => 524288,
         flying          => 524288,
         pass_door       => 1048756,
         passdoor        => 1048756,
@@ -166,7 +167,8 @@ my @mob_spec = qw/
     spec_clan_guard	        spec_bounty	            spec_cast_electric	      spec_sahuagin_cleric
     spec_cast_cleric	    spec_grail	            spec_small_whale	      spec_sahuagin_high_cleric
     spec_cast_judge	        spec_cast_orb	        spec_large_whale	      spec_red_grung
-    spec_cast_mage	        spec_assassin	        spec_kappa
+    spec_cast_mage	        spec_assassin	        spec_kappa                spec_blue_grung
+    spec_purple_grung	    spec_orange_grung	    spec_gold_grung
 /;
 
 my %obj_ex = (
@@ -323,27 +325,32 @@ my %exit_lookup = (
 );
 
 my %room_rf = (
-        none        => 0,
-        zero        => 0,
-        dark        => 1,
-        no_mob      => 4,
-        indoors     => 8,
-        vault       => 16,
-        craft       => 128,
-        spellcraft  => 256,
-        private     => 512,
-        safe        => 1024,
-        solitary    => 2048,
-        pet_shop    => 4096,
-        no_recall   => 8192,
-        silence     => 16384,
-        arena       => 32768,
-        healing     => 65536,
-        freezing    => 131072,
-        burning     => 262144,
-        no_mount    => 524288,
-        toxic       => 1048576,
-        no_drop     => 9223372036854775808,
+        none            => 0,
+        zero            => 0,
+        dark            => 1,
+        no_mob          => 4,
+        indoors         => 8,
+        inside          => 8,
+        vault           => 16,
+        craft           => 128,
+        crafting        => 128,
+        spellcraft      => 256,
+        spellcrafting   => 256,
+        private         => 512,
+        safe            => 1024,
+        solitary        => 2048,
+        pet_shop        => 4096,
+        no_recall       => 8192,
+        norecall        => 8192,
+        silence         => 16384,
+        arena           => 32768,
+        healing         => 65536,
+        freezing        => 131072,
+        burning         => 262144,
+        no_mount        => 524288,
+        toxic           => 1048576,
+        no_drop         => 9223372036854775808,
+        nodrop          => 9223372036854775808,
 
 );
 
@@ -375,6 +382,12 @@ my %trap_trig = (
         'open' => 512,
 );
 
+my %game_str = (
+        ult         => 'game_u_l_t',
+        highdice    => 'game_high_dice',
+        seven       => 'game_seven',
+);
+
 my @area_specials = qw /
         school      no_quest    hidden      safe
         no_teleport no_magic    exp_mod
@@ -396,7 +409,7 @@ close $fh;
 
 print "Reading source...\n";
 
-my ($fatal, $line, $msg, %area, @recall, @special, @mobs, @objs, @rooms, @addmobs, @helps, @addobjs, @shops);
+my ($fatal, $line, $msg, %area, @recall, @special, @mobs, @objs, @rooms, @addmobs, @helps, @addobjs, @shops, @games);
 
 while (1) {
     my $next = shift @source;
@@ -701,7 +714,7 @@ while (1) {
                 next;
             }
 
-            next if &add_field_data(\%obj, $field, $data, 'vn nm sh lo ty ex we wg v0 v1 v2 v3 trd trt trc');
+            next if &add_field_data(\%obj, $field, $data, 'vn nm sh lo ty ex we wg osl v0 v1 v2 v3 trd trt trc');
             print "    line $line: obj: unknown field '$field'\n";
         }
 
@@ -825,6 +838,28 @@ while (1) {
         push @shops, [ %shop ];
     }
 
+    #  One game
+
+    elsif ($header eq 'game') {
+        my %game;
+        $game{'line'} = $line;
+
+        while (@source) {
+            my ($field, $data) = &get_field_data(\@source);
+
+            if (!$field) {
+                last if $data eq 'BREAK';
+                print "    line $line: game: $data\n" if $data;
+                next;
+            }
+
+            next if &add_field_data(\%game, $field, $data, 'mb gm br mw ch');
+            print "    line $line: game: unknown field '$field'\n";
+        }
+
+        push @games, [ %game ];
+    }
+
 
     #  Unknown header
 
@@ -932,7 +967,7 @@ print "Verifying data...\n";
 
 my ($area_errors, %recall_errors, %special_errors, %mob_errors, %mob_vnums, %obj_errors, %obj_vnums, @specials,
         %room_errors, %room_vnums, @resets, %addmob_errors, %room_names,
-        %mob_names, %obj_names, %help_errors, %addobj_errors, %shop_errors);
+        %mob_names, %obj_names, %help_errors, %addobj_errors, %game_errors, %shop_errors);
 
 
 #  Area header
@@ -1184,7 +1219,7 @@ foreach (0 .. $#objs) {
     my %obj = @{$objs[$_]};
     my $err = "    obj, line $obj{'line'}:";
 
-    foreach (qw/we ex/) {
+    foreach (qw/we ex osl/) {
         $obj{$_} = 0 if (!exists $obj{$_} || $obj{$_} eq '');
     }
 
@@ -1622,6 +1657,42 @@ foreach (0 .. $#addobjs) {
     }
 }
 
+#  Games
+
+foreach (0 .. $#games) {
+    my %game = @{$games[$_]};
+    my $err = "    game, line $game{'line'}:";
+
+    # foreach (qw/t1 t2 t3 t4 t5/) {
+    #     $shop{$_} = 0 if (!exists $shop{$_} || $shop{$_} eq '');
+    # }
+
+    if ($msg = &check_field_number_range(\%game, 'mb', 0, 'none')) {
+        print "$err $msg\n";
+        $game_errors{$game{'line'}}++;
+    }
+    elsif (!$mob_vnums{$game{'mb'}}) {
+        print "$err mob with vnum '$game{'mb'}' is undefined\n";
+        $game_errors{$game{'line'}}++;
+    }
+
+    foreach (qw/br mw ch/) {
+        if ($msg = &check_field_number_range(\%game, $_, 0, 'none')) {
+            print "$err $msg\n";
+            $game_errors{$game{'line'}}++;
+        }
+    }
+
+    if ($msg = &get_multiple_flags(\%game, 'gm', \%game_str, '')) {
+        print "$err $msg\n";
+        $game_errors{$game{'line'}}++;
+    }
+
+    $games[$_] = "M $game{'mb'} $game{'gm'} \t\t $game{'br'}\t$game{'mw'} $game{'ch'}\n"
+            unless $game_errors{$game{'line'}};
+
+    # M 27232 game_seven			1000000   8	0	/* Slymah */
+}
 
 #  Shops
 
@@ -1668,7 +1739,6 @@ foreach (0 .. $#shops) {
             . "$shop{'ch'}\tshop run by $mob_names{$shop{'vn'}}\n"
             unless $shop_errors{$shop{'line'}};
 }
-
 
 #############################################################################
 #
@@ -1780,9 +1850,9 @@ sub check_object_values(\%) {
     }
 
 
-    #  Scrolls, potions, paints, pills
+    #  Scrolls, potions, paints, pills, smokeables
 
-    elsif ($type == 2 || $type == 10 || $type == 28 || $type == 26) {
+    elsif ($type == 2 || $type == 10 || $type == 28 || $type == 26 || $type == 54) {
         print "$err warning: values 'v1', 'v2' and 'v3' all undefined\n"
                 if (!$$obj{'v1'} && !$$obj{'v2'} && !$$obj{'v3'});
 
@@ -1934,6 +2004,29 @@ sub check_object_values(\%) {
         }
     }
 
+    #  Fountains
+
+    elsif ($type == 25) {
+
+        foreach (qw/v0 v1 v2 v3/) {
+            if (!$$obj{$_}) {
+                $$obj{$_} = 0;
+            }
+        }
+
+        # Which liquid?
+
+        if ($msg = &get_single_flag($obj, 'v2', \@obj_liquids)) {
+            print "$err $msg\n";
+            $errors++;
+        }
+        # Is it poisoned?
+
+        if ($msg = &check_field_number($obj, 'v3')) {
+            print "$err $msg\n";
+            $errors++;
+        }
+    }
 
     #  Portals
 
@@ -1962,6 +2055,39 @@ sub check_object_values(\%) {
         if ($msg = &check_field_number_range($obj, 'v3', 0, 'none')) {
             print "$err $msg\n";
             $errors++;
+        }
+    }
+
+    # Key
+
+    elsif ($type == 18) {
+
+        foreach (qw/v0 v1 v2 v3/) {
+            if (!$$obj{$_}) {
+                $$obj{$_} = 0;
+            }
+        }
+    }
+
+    # Crafting item
+
+    elsif ($type == 40) {
+
+        foreach (qw/v0 v1 v2 v3/) {
+            if (!$$obj{$_}) {
+                $$obj{$_} = 0;
+            }
+        }
+    }
+
+    # Spellcrafting item
+
+    elsif ($type == 41) {
+
+        foreach (qw/v0 v1 v2 v3/) {
+            if (!$$obj{$_}) {
+                $$obj{$_} = 0;
+            }
         }
     }
 
@@ -2321,7 +2447,7 @@ if (@objs) {
         }
 
         print AREA "$obj{'we'}\n$obj{'v0'}~ $obj{'v1'}~ $obj{'v2'}~ "
-                . "$obj{'v3'}~\n$obj{'wg'} 0 0\n";
+                . "$obj{'v3'}~\n$obj{'wg'} 0 $obj{'osl'}\n";
 
         while ($obj{'ed'} && @{$obj{'ed'}}) {
             print AREA "E\n", shift @{$obj{'ed'}};
@@ -2371,6 +2497,17 @@ if (@resets) {
     print AREA "#RESETS\n";
 
     foreach (@resets) {
+        &nice_tab(\$_);
+        print AREA;
+    }
+    print AREA "S\n\n";
+}
+
+#  Print games
+
+if (@games) {
+    print AREA "#GAMES\n";
+    foreach (@games) {
         &nice_tab(\$_);
         print AREA;
     }

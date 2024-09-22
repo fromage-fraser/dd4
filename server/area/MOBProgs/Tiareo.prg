@@ -176,6 +176,45 @@
         endif
 ~
 
+>speech_prog ten 10~
+        if level($n) < 50
+                mpecho {WReaver Tiareo says 'I'm sorry, that mission is too dangerous for someone of your limited experience.'{x
+        break
+        else
+        if level($n) > 70
+                mpecho {WReaver Tiareo says 'You're far too experienced to undertake that mission.'{x
+        break
+        else
+                mpecho {W'Some years ago, Matron Laetim Kolit was travelling Omu city as an envoy   '{x
+                mpecho {W'when she was set upon by a school of unusually large black-tipped sharks. '{x
+                mpecho {W'Despite her best efforts we believe her slain, but are interested in hard '{x
+                mpecho {W'evidence to support this belief, as some in Ota'ar Dar believe her to be  '{x
+                mpecho {W'held as a prisoner or (more likely) slave of the Omu grung.'{x
+        endif
+        endif
+~
+
+>give_prog partially dissolved ring partially-dissolved~
+        if level($n) > 70
+                mpecho {WReaver Tiareo says 'That mission was for someone less experienced.'{x
+                give dissolved $n
+        break
+        else
+        if number($o) == 28509
+                mpjunk dissolved
+                mpecho {WReaver Tiareo nods. 'Well, at least we know.  The rumours can be put to rest.'{x
+                mpoload 28510 70
+                give destruction $n
+                mpecho {WReaver Tiareo says 'Please accept this powerful staff as a token of the city's gratitude.'{x
+        break
+        else
+                mpecho $I examines $O closely.
+                mpecho {WReaver Tiareo says 'Not what we're after.'{x
+                give dissolved $n
+        endif
+        endif
+~
+
 >give_prog ornate silver platter~
         if level($n) > 70
                 mpecho {WReaver Tiareo says 'That mission was for someone less experienced.'{x
@@ -197,6 +236,7 @@
         endif
 ~
 
+
 >give_prog spongeweed tobacco~
         if level($n) > 70
                 mpecho {WReaver Tiareo says 'That mission was for someone less experienced.'{x
@@ -217,6 +257,7 @@
         endif
         endif
 ~
+
 >give_prog hideous upturned eyes~
         if level($n) > 55
                 mpecho {WReaver Tiareo says 'That mission was for someone less experienced.'{x

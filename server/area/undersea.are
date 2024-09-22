@@ -273,6 +273,10 @@ underneath it.
 15 0 0 0d0+0 0d0+0
 59 0
 8 8 1
+>fight_prog 5~
+    c paralysis $n
+~
+|
 #27013
 goblin shark~
 a goblin shark~

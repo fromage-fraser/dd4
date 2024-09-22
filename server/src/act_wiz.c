@@ -1258,7 +1258,7 @@ void do_ostat( CHAR_DATA *ch, char *argument )
             case ITEM_COMBAT_PULSE:
             case ITEM_DEFENSIVE_PULSE:
                 sprintf( buf, "Has {c%d{x/{C%d{x charges of level {G%d{x '{G",
-                        obj->value[1], obj->value[2], obj->value[0] );
+                        obj->value[2], obj->value[1], obj->value[0] );
                 strcat( buf1, buf );
 
                 if ( obj->value[3] >= 0 && obj->value[3] < MAX_SKILL )
@@ -4170,7 +4170,8 @@ void do_peace( CHAR_DATA *ch, char *argument )
 
         rch = get_char( ch );
 
-        if ( !authorized( rch, gsn_peace ) )
+        if ( !authorized( rch, gsn_peace )
+        && !( ch->spec_fun == spec_lookup("spec_gold_grung") ) )
                 return;
 
         /* Yes, we are reusing rch.  -Kahn */
@@ -4180,7 +4181,7 @@ void do_peace( CHAR_DATA *ch, char *argument )
                         stop_fighting( rch, TRUE );
         }
 
-        send_to_char( "Ok.\n\r", ch );
+        send_to_char( "All hostilities cease.\n\r", ch );
         return;
 }
 

@@ -137,8 +137,8 @@ int can_carry_n( CHAR_DATA *ch )
         if ( !IS_NPC( ch ) && ch->level >= LEVEL_IMMORTAL )
                 return 1000;
 
-        if ( IS_NPC( ch ) && IS_SET( ch->act, ACT_PET ) )
-                return 0;
+        /*if ( IS_NPC( ch ) && IS_SET( ch->act, ACT_PET ) )
+                return 0;*/
 
         return MAX_WEAR + 2 * get_curr_dex( ch ) / 2;
 }
@@ -151,8 +151,8 @@ int can_vault_n( CHAR_DATA *ch )
         if ( !IS_NPC( ch ) && ch->level >= LEVEL_IMMORTAL )
                 return 1000;
 
-        if ( IS_NPC( ch ) && IS_SET( ch->act, ACT_PET ) )
-                return 0;
+        /*if ( IS_NPC( ch ) && IS_SET( ch->act, ACT_PET ) )
+                return 0;*/
 
         return (UMAX(20, (ch->level * 2)));
 }
@@ -166,8 +166,8 @@ int can_carry_w( CHAR_DATA *ch )
         if ( !IS_NPC( ch ) && ch->level >= LEVEL_IMMORTAL )
                 return 1000000;
 
-        if ( IS_NPC( ch ) && IS_SET( ch->act, ACT_PET ) )
-                return 0;
+        /*if ( IS_NPC( ch ) && IS_SET( ch->act, ACT_PET ) )
+                return 0;*/
 
         return str_app[get_curr_str( ch )].carry;
 }
@@ -180,8 +180,8 @@ int can_vault_w( CHAR_DATA *ch )
         if ( !IS_NPC( ch ) && ch->level >= LEVEL_IMMORTAL )
                 return 1000000;
 
-        if ( IS_NPC( ch ) && IS_SET( ch->act, ACT_PET ) )
-                return 0;
+        /*if ( IS_NPC( ch ) && IS_SET( ch->act, ACT_PET ) )
+                return 0;*/
 
         return (UMAX(100, (ch->level * 10)));
 }

@@ -2461,7 +2461,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_ultrablast,                              0 },
         { &gsn_awe,                                     0 },
         { &gsn_death_field,                             0 },
-        { &gsn_disintergrate,                           0 },
+        { &gsn_disintegrate,                           0 },
 
         { &gsn_group_body,                              0 },
         { &gsn_levitation,                              0 },
@@ -2685,7 +2685,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "bless", &gsn_bless,
                 TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_bless, 5, 1,
-                "", "You feel less righteous."
+                "", "<136>You feel less righteous.<0>"
         },
 
         {
@@ -2735,7 +2735,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "change sex", &gsn_change_sex,
                 TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, 16384,
                 spell_change_sex, 15, 12,
-                "", "Your body feels familiar again."
+                "", "<472><16>Your body feels<315> familiar again.<0>"
         },
 
         {
@@ -4513,7 +4513,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
 
         {
-                "disintegrate", &gsn_disintergrate,
+                "disintegrate", &gsn_disintegrate,
                 TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 65536,
                 spell_disintegrate, 150, 18,
                 "disintegration", "!Disintegrate!"

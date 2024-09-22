@@ -127,6 +127,9 @@ vamp_hive.are
 whitevoid.are
 arcanum.are
 thoran.are
+anon_walls.are
+bastion.are
+anon.are
 undersea.are
 shadowsea.are
 sahuagin_market.are
@@ -139,6 +142,7 @@ sahuagin_prince.are
 draagdim.are
 arikasbab.are
 omu_canals.are
+omu_central.are
 eeriewoods.are
 freeport.are
 prince_fortress.are
@@ -146,9 +150,6 @@ lemmings.are
 krondor.are
 kerofk.are
 theswampofdespair.are
-bastion.are
-anon.are
-anon_walls.are
 swamp_conn.are
 herolist.are
 tabernacle.are

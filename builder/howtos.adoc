@@ -7,8 +7,7 @@ We have collected here a number of the brief "howto" guides/chunks of informatio
 from the Discord.  As these are under version control, we have tried to include +
 only ones that might be generally useful to people working with the codebase. +
 
-Unapologetically haphazard, as befits the nature of their composition and +
-collection. ;)
+// Unapologetically haphazard, as befits the nature of their composition and collection. ;)
 
 == How do I...
 
