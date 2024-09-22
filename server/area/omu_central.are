@@ -10626,9 +10626,10 @@ S
 #28943
 Muddy Tunnel~
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
-under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
+under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.
+The walls are coated with an unwholesome slime.<0>
 ~
-0 1|4|8|2048 12
+0 1|4|8|2048|1048576 12
 D 1
 ~
 ~
@@ -10642,9 +10643,10 @@ S
 #28944
 Muddy Tunnel~
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
-under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
+under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.
+The walls are coated with an unwholesome slime.<0>
 ~
-0 1|4|8|2048 12
+0 1|4|8|2048|1048576 12
 D 1
 ~
 ~
@@ -10658,9 +10660,10 @@ S
 #28945
 Muddy Tunnel~
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
-under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
+under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.
+The walls are coated with an unwholesome slime.<0>
 ~
-0 1|4|8|2048 12
+0 1|4|8|2048|1048576 12
 D 0
 ~
 ~
@@ -10676,9 +10679,9 @@ Muddy Tunnel~
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
 under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.
 The tunnel here is a three-way junction, branching off to the north, west, and
-east.<0>
+east. The walls are coated with an unwholesome slime.<0>
 ~
-0 1|4|8|2048 12
+0 1|4|8|2048|1048576 12
 D 0
 ~
 ~
@@ -10696,9 +10699,10 @@ S
 #28947
 Muddy Tunnel~
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
-under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
+under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.
+The walls are coated with an unwholesome slime.<0>
 ~
-0 1|4|8|2048 12
+0 1|4|8|2048|1048576 12
 D 1
 ~
 ~
@@ -10712,9 +10716,10 @@ S
 #28948
 Muddy Tunnel~
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
-under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
+under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.
+The walls are coated with an unwholesome slime.<0>
 ~
-0 1|4|8|2048 12
+0 1|4|8|2048|1048576 12
 D 2
 ~
 ~
@@ -10730,9 +10735,9 @@ Muddy Tunnel~
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
 under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.
 The tunnel here is a three-way junction, branching off to the south, west, and
-east.<0>
+east. The walls are coated with an unwholesome slime.<0>
 ~
-0 1|4|8|2048 12
+0 1|4|8|2048|1048576 12
 D 1
 ~
 ~
@@ -10750,9 +10755,10 @@ S
 #28950
 Muddy Tunnel~
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
-under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
+under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.
+The walls are coated with an unwholesome slime.<0>
 ~
-0 1|4|8|2048 12
+0 1|4|8|2048|1048576 12
 D 0
 ~
 ~
@@ -10766,9 +10772,10 @@ S
 #28951
 Muddy Tunnel~
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
-under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
+under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.
+The walls are coated with an unwholesome slime.<0>
 ~
-0 1|4|8|2048 12
+0 1|4|8|2048|1048576 12
 D 1
 ~
 ~
@@ -10782,9 +10789,10 @@ S
 #28952
 Muddy Tunnel~
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
-under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
+under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.
+The walls are coated with an unwholesome slime.<0>
 ~
-0 1|4|8|2048 12
+0 1|4|8|2048|1048576 12
 D 0
 ~
 ~

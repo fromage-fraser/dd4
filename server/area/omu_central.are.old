@@ -10628,7 +10628,7 @@ Muddy Tunnel~
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
 under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
 ~
-0 1|4|8|2048 12
+0 1|4|8|2048|1048576 12
 D 1
 ~
 ~
@@ -10644,7 +10644,7 @@ Muddy Tunnel~
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
 under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
 ~
-0 1|4|8|2048 12
+0 1|4|8|2048|1048576 12
 D 1
 ~
 ~
@@ -10660,7 +10660,7 @@ Muddy Tunnel~
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
 under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
 ~
-0 1|4|8|2048 12
+0 1|4|8|2048|1048576 12
 D 0
 ~
 ~
@@ -10678,7 +10678,7 @@ under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.
 The tunnel here is a three-way junction, branching off to the north, west, and
 east.<0>
 ~
-0 1|4|8|2048 12
+0 1|4|8|2048|1048576 12
 D 0
 ~
 ~
@@ -10698,7 +10698,7 @@ Muddy Tunnel~
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
 under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
 ~
-0 1|4|8|2048 12
+0 1|4|8|2048|1048576 12
 D 1
 ~
 ~
@@ -10714,7 +10714,7 @@ Muddy Tunnel~
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
 under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
 ~
-0 1|4|8|2048 12
+0 1|4|8|2048|1048576 12
 D 2
 ~
 ~
@@ -10732,7 +10732,7 @@ under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.
 The tunnel here is a three-way junction, branching off to the south, west, and
 east.<0>
 ~
-0 1|4|8|2048 12
+0 1|4|8|2048|1048576 12
 D 1
 ~
 ~
@@ -10752,7 +10752,7 @@ Muddy Tunnel~
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
 under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
 ~
-0 1|4|8|2048 12
+0 1|4|8|2048|1048576 12
 D 0
 ~
 ~
@@ -10768,7 +10768,7 @@ Muddy Tunnel~
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
 under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
 ~
-0 1|4|8|2048 12
+0 1|4|8|2048|1048576 12
 D 1
 ~
 ~
@@ -10784,7 +10784,7 @@ Muddy Tunnel~
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
 under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
 ~
-0 1|4|8|2048 12
+0 1|4|8|2048|1048576 12
 D 0
 ~
 ~
@@ -10970,6 +10970,8 @@ G 0 28453 0                         carry an algae lamp
 G 0 28454 0                         carry a netting bag
 G 0 28455 0                         carry a freshwater bladder
 G 0 28456 0                         carry a rough whetstone
+G 0 28527 0                         carry a map of Omu Central - Lower
+G 0 28528 0                         carry a map of Omu Central - Upper
 M 0 28455 1 28752               add Drobe to Drobe's Dive
 G 0 16615 0                         carry [out-of-area item]
 M 0 28456 1 28788               add Glimmer to Glimmer's Tinktorium
