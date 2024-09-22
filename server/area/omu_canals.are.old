@@ -909,7 +909,7 @@ wooden bow~
 a crude wooden bow~
 A crude wooden bow has been abandoned here.~
 ~
-5 1073741824|274877906944 1|8192
+5 1073741824|274877906944 1|131072
 ~ ~ ~ 11~
 8 0 60
 A
@@ -929,8 +929,6 @@ E
 triton corpse~
 You've heard the grung like to make such grotesque examples of those who enter
 their territory without permission. He looks not to have died well. You shudder.
-
-The sea floor under the corpse seems to have been disturbed recently.
 ~
 
 #28423
@@ -2266,10 +2264,6 @@ D 4
 ~
 ~
 0 -1 28747
-D 5
-~
-hatch~
-10 -1 28942
 S
 
 #28747
@@ -3042,7 +3036,6 @@ D 0 28446 0 1                   close north in Omu Sovereign Bridge, Lower
 D 0 28446 2 2                   lock south in Omu Sovereign Bridge, Lower
 D 0 28746 0 1                   close north in Omu Sovereign Bridge, Upper
 D 0 28746 2 2                   lock south in Omu Sovereign Bridge, Upper
-D 0 28447 5 1                   close down in Omu Canal, Lower
 D 0 28479 3 2                   lock west in Omu / Yrythelmyn Northern Bridge, Lower
 D 0 28779 3 2                   lock west in Omu / Yrythelmyn Northern Bridge, Upper
 D 0 28480 1 1                   close east in Omu / Yrythelmyn Northern Bridge, Lower
@@ -3185,3 +3178,4 @@ M 28422 spec_green_grung        a grung traitor
 S
 
 #$
+

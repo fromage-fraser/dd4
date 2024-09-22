@@ -82,7 +82,7 @@ void do_heal(CHAR_DATA *ch, char *argument)
                                 spell_list[i].price);
                         send_to_char(buf, ch);
                 }
-                send_to_char("\n\rType '{WHEAL <spell>{x' to receive healing.\n\r", ch);
+                send_to_char("\n\rType '{WHEAL <<spell>{x' to receive healing.\n\r", ch);
                 return;
         }
 

@@ -2303,10 +2303,10 @@ E 1 27231 100 13        ; equip a purple loincloth
 M 1 27410 1 27288       ; Wounded elite soldier to central hub of infirmary
 E 1 27231 100 13        ; equip a purple loincloth
 *
-M 1 27411 1 27287     ; Cleric of Sekolah to west wing of infirmary
+M 1 27411 1 27287       ; Cleric of Sekolah to west wing of infirmary
 E 1 27524 100 12
 *
-M 1 27412 1 27289    ; Cleric of Sekolah to west wing of infirmary
+M 1 27412 1 27289       ; Cleric of Sekolah to west wing of infirmary
 E 1 27524 100 12
 *
 M 1 27413 1 27300		; a skate to fortress stables
@@ -2344,7 +2344,7 @@ E 1 27509 100 3         ; equip an infantryman's spiked pauldron
 E 1 27231 100 13        ; equip a purple loincloth
 E 1 27242 100 16        ; equip a crude trident
 *
-M 1 27406 3 27604      ; a wandering cavalryman to Stables
+M 1 27406 3 27604       ; a wandering cavalryman to Stables
 E 1 27511 100 3         ; equip an cavalryman's spiked pauldron
 E 1 27231 100 13        ; equip a purple loincloth
 E 1 27510 100 16        ; equip a long spear
@@ -2377,7 +2377,7 @@ E 1 27509 100 3         ; equip an infantryman's spiked pauldron
 E 1 27231 100 13        ; equip a purple loincloth
 G 1 27291 100
 *
-M 1 27423 2 27599      ; infantry to mess
+M 1 27423 2 27599       ; infantry to mess
 E 1 27509 100 3         ; equip an infantryman's spiked pauldron
 E 1 27231 100 13        ; equip a purple loincloth
 G 1 27292 100

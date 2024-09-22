@@ -5192,11 +5192,11 @@ G 1 3097 100
 G 1 25 100
 *
 M 1 3002 1 3010      The grocer
-E 1 3022 900 16                            wields a longsword
-G 1 3030 900
-G 1 3031 900
-G 1 3138 999
-G 1 3385 500                            Give auction ticket
+E 1 3022 100 16                            wields a longsword
+G 1 3030 100
+G 1 3031 100
+G 1 3138 100
+G 1 3385 100                            Give auction ticket
 *
 M 1 3001 1 3009      The baker
 E 1 3022 100 16                            wields a longsword

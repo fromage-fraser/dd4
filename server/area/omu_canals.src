@@ -318,7 +318,7 @@ rf  no_mob private
 e   28418
 
 $room
-vn  28809
+vn  28813
 nm  Dummy room
 de
 Dummy room to link to 28718 until sea elf area is in.
@@ -338,7 +338,7 @@ rf  no_mob private
 e   28479
 
 $room
-vn  28810
+vn  28814
 nm  Dummy room
 de
 Dummy room to link to 28779 until sea elf area is in.
@@ -346,26 +346,6 @@ Dummy room to link to 28779 until sea elf area is in.
 st  air
 rf  no_mob private
 e   28779
-
-$room
-vn  28481
-nm  Dummy room
-de
-Dummy room to link to 28480 until Omu central complete.
-~
-st  air
-rf  no_mob private
-w   28480
-
-$room
-vn  28781
-nm  Dummy room
-de
-Dummy room to link to 28780 until Omu central complete.
-~
-st  air
-rf  no_mob private
-w   28780
 
 $room
 vn  28420
@@ -386,26 +366,6 @@ Dummy room to link to 28719 until Omu sovereign quarter complete.
 st  air
 rf  no_mob private
 w   28719
-
-$room
-vn  28457
-nm  Dummy room
-de
-Dummy room to link to 28446 until Omu central complete.
-~
-st  air
-rf  no_mob private
-s   28446
-
-$room
-vn  28757
-nm  Dummy room
-de
-Dummy room to link to 28746 until Omu central complete.
-~
-st  air
-rf  no_mob private
-s   28746
 
 $room
 vn  28437
@@ -846,7 +806,7 @@ n   28457
 nnm gates
 nlo 8
 nke -1
-nds lock
+nds close
 s   28437
 snm gates
 slo 8
@@ -873,7 +833,7 @@ n   28757
 nnm gates
 nlo 8
 nke -1
-nds lock
+nds close
 s   28737
 snm gates
 slo 8
@@ -899,6 +859,10 @@ rf  no_mob
 w   28446
 s   27470
 u   28747
+d   28942
+dnm hatch
+dlo 10
+dds close
 
 $room
 vn  28747
@@ -1148,7 +1112,7 @@ e   28481
 enm gates
 elo 8
 eke -1
-eds lock
+eds close
 u   28780
 
 $room
@@ -1180,7 +1144,7 @@ e   28781
 enm gates
 elo 8
 eke -1
-eds lock
+eds close
 d   28480
 u   27128
 
@@ -2077,6 +2041,30 @@ mp  all_greet_prog 10
     shoot $n
 ~
 
+$mob
+nm grung traitor shifty
+sh a grung traitor
+lo <118>A very shifty-looking green grung tries to avoid attention.<0>
+de
+Grung are a race of small, froglike humanoids.  They are fiercely territorial,
+and see themselves as superior to all other creatures.  Their society is
+caste-based, with the grung's colour denoting his role.  This green grung looks
+nervous and skittish, and is avoiding your gaze.  Curious.
+~
+vn  28422
+lv  60
+al  -75
+sx  male
+bf  none
+act stay_area
+aff swim infrared det_hidden det_invis det_sneak det_traps sneak hide
+sp  spec_green_grung
+mp  rand_prog 5
+    say ..Omu? Passpass? Want?
+    hide
+~
+
+
 # OBJECTS
 
 $obj
@@ -2366,9 +2354,10 @@ ty  weapon
 v3  pierce
 wg  8
 ex  bow steady
-we  take ranged
+we  take wield
 ap  damroll 8
 ap  crit    5
+osl 60
 
 
 $obj
@@ -2383,6 +2372,8 @@ we  take
 ed  triton corpse
 You've heard the grung like to make such grotesque examples of those who enter
 their territory without permission. He looks not to have died well. You shudder.
+
+The sea floor under the corpse seems to have been disturbed recently.
 ~
 trt object
 trd slash
@@ -2457,6 +2448,35 @@ The platter looks quite sophisticated for a sahuagin artifact, with recognisable
 figures and moderately intricate filigree decorating its underside.  You imagine
 it might be highly prized by their species.
 ~
+
+$obj
+nm  citypass pass Omu tablet writing
+sh  an Omu citypass
+lo  A tablet with writing on it lies here.
+vn  28427
+ty  trash
+wg  1
+osl 45
+we  take hold
+ed  citypass pass Omu tablet writing
+The script is Draconic, you're pretty sure, but you can't read it.
+
+<558>"Nomeno taoul dolruth shalaic duulo ossalur irsa omu taoul, tangis ekess lpuul
+vekikari."<559>
+
+An elaborate seal has been inscribed in it that suggests authority.
+~
+
+
+# SHOPS
+
+$shop
+vn	28422
+t1	trash
+oh	0
+ch	23
+ps	50
+pb	300
 
 # MOB RESETS
 
@@ -2725,6 +2745,14 @@ wield   28406
 shield  28405
 ranged  28421
 body    27490
+
+# shifty green grung, sells citypass
+$addmob
+mb      28422
+rm      28441
+num     1
+wield   25201
+inv     28427
 
 # OBJECT RESETS
 

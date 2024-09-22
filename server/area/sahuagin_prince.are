@@ -3066,7 +3066,7 @@ S
 #27496
 Prince's Courtyard, Lower~
 <130>You stand on sandy ground in the courtyard of an ancient castle, deep
-underwater. To the west and north you see high stone walls, separating the
+underwater. To the west and north you see <131>high stone walls<0><130>, separating the
 courtyard from the air moat that surrounds it. To the east are the walls of
 the castle itself; they afford no entrance from here.
 
@@ -3074,6 +3074,10 @@ You can head south to explore more of the courtyard, or up, towards the huge,
 looming area of darkness in the water above.<0>
 ~
 0 0 12
+D0
+gates~
+~
+10 -1 28466
 D2
 ~
 ~
@@ -3082,6 +3086,11 @@ D4
 ~
 ~
 0 -1 27796
+E
+high stone walls~
+Investigating the walls closely, you find a pair of rusted, overgrown gates
+beneath the flora covering the wall.  You could probably prise them open.
+~
 S
 #27497
 The Bakehouse~
@@ -4297,14 +4306,18 @@ S
 #27796
 Prince's Courtyard, Upper~
 <136>You are swimming about 4 metres above sandy ground in the courtyard of an
-ancient castle, deep underwater. To the west and north you see high stone
-walls, separating the courtyard from the air moat that surrounds it. To the
+ancient castle, deep underwater. To the west and north you see <137>high stone
+walls<0><136>, separating the courtyard from the air moat that surrounds it. To the
 east are the walls of the castle itself; they afford no entrance from here.
 
 You can head south or down from here to explore more of the courtyard, or up,
 towards the huge, looming area of darkness in the water directly above you.<0>
 ~
 0 0 8
+D0
+gates~
+~
+10 -1 28766
 D2
 ~
 ~
@@ -4317,6 +4330,11 @@ D5
 ~
 ~
 0 -1 27496
+E
+high stone walls~
+Investigating the walls closely, you find a pair of rusted, overgrown gates
+beneath the flora covering the wall.  You could probably prise them open.
+~
 S
 #27797
 The Prince's Harem~
@@ -4474,6 +4492,8 @@ D 1 27785 2 1           ; The Waiting Room, Close South
 D 1 27789 0 1           ; Corridor in the Prince's Castle, Close North
 D 1 27790 2 2           ; Corridor in the Prince's Castle, Lock South
 D 1 27794 2 1           ; Prince's Harem, Close South
+D 1 27496 0 1           ; Close secret door north (lower), Prince's canton
+D 1 27796 0 1           ; Close secret door north (upper), Prince's canton
 *
 M 1 27462 1 27492		; a death hawk to The Air Moat
 *

@@ -1167,7 +1167,7 @@ void spell_bless (int sn, int level, CHAR_DATA *ch, void *vo)
                 check_group_bonus(ch);
         }
 
-        send_to_char( "You feel righteous.\n\r", victim );
+        send_to_char( "<229>You feel righteous.<0>\n\r", victim );
 
         return;
 }
@@ -1410,7 +1410,7 @@ void spell_change_sex ( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( ch != victim )
                 send_to_char( "Ok.\n\r", ch );
 
-        send_to_char( "You feel different.\n\r", victim );
+        send_to_char( "<81>You <217>fee<15>l dif<217>fer<81>ent<0>.\n\r", victim );
         return;
 }
 
@@ -4448,7 +4448,7 @@ void spell_mass_invis( int sn, int level, CHAR_DATA *ch, void *vo )
                 if ( !is_same_group( gch, ch ) || IS_AFFECTED( gch, AFF_INVISIBLE ) )
                         continue;
 
-                send_to_char( "You slowly fade out of existence.\n\r", gch );
+                send_to_char( "{cYou slowly fade out of existence.{x\n\r", gch );
                 act( "$n slowly fades out of existence.", gch, NULL, NULL, TO_ROOM );
 
                 af.type      = sn;
@@ -4921,8 +4921,8 @@ void spell_stone_skin( int sn, int level, CHAR_DATA *ch, void *vo )
         af.bitvector = 0;
         affect_to_char( victim, &af );
 
-        send_to_char( "Your skin turns to stone.\n\r", victim );
-        act( "$n's skin turns to stone.", victim, NULL, NULL, TO_ROOM );
+        send_to_char( "<240>Your skin turns to stone.<0>\n\r", victim );
+        act( "$n's skin turns to <240>stone<0>.", victim, NULL, NULL, TO_ROOM );
         return;
 }
 
@@ -7581,8 +7581,8 @@ void spell_bark_skin( int sn, int level, CHAR_DATA *ch, void *vo )
 
         affect_to_char( victim, &af );
 
-        send_to_char( "Your skin turns to bark.\n\r", victim );
-        act( "$c's skin is transformed into tough tree bark!", victim, NULL, NULL, TO_ROOM );
+        send_to_char( "<58>Your skin turns to bark.<0>\n\r", victim );
+        act( "$c's skin is transformed into <58>tough tree bark<0>!", victim, NULL, NULL, TO_ROOM );
 }
 
 
@@ -8300,7 +8300,8 @@ void spell_infernal_fury (int sn, int level, CHAR_DATA *ch, void *vo )
         int dam;
         int hpch;
 
-        if (IS_NPC(ch))
+        if (IS_NPC(ch)
+        && !( ch->spec_fun == spec_lookup("spec_orange_grung") ) )
                 return;
 
         if ( !IS_EVIL( ch ) )
@@ -9272,20 +9273,27 @@ void spell_psychometry( int sn, int level, CHAR_DATA *ch, void *vo )
                 {
                     send_to_char( "\n\r<6>You concentrate as you touch the object, and a location swims into view...<0><558>\n\r\n\r", ch );
 
-                    ansi_color( GREY, ch );
-                    ansi_color( BOLD, ch );
+                    if (ch->in_room->vnum == obj->value[0])
+                    {
+                        send_to_char( "<9><556>It's right here!<557><0>\n\r", ch );
+                    }
+                    else {
+                        ansi_color( GREY, ch );
+                        ansi_color( BOLD, ch );
 
-                    send_to_char( location->name, ch );
-                    send_to_char( "\n\r<558>", ch );
+                        send_to_char( location->name, ch );
+                        send_to_char( "\n\r<558>", ch );
 
-                    ansi_color( NTEXT, ch );
-                    ansi_color( GREY, ch );
+                        ansi_color( NTEXT, ch );
+                        ansi_color( GREY, ch );
 
-                    send_to_char( "<558>", ch );
-                    send_to_char( location->description, ch );
+                        send_to_char( "<558>", ch );
+                        send_to_char( location->description, ch );
 
-                    ansi_color( NTEXT, ch );
-                    ansi_color( NTEXT, ch );
+                        ansi_color( NTEXT, ch );
+                        ansi_color( NTEXT, ch );
+
+                    }
 
                     send_to_char( "\n\r<559><6>... the vision fades, and you return to your surroundings.<0>\n\r\n\r", ch );
 
@@ -9643,7 +9651,7 @@ void spell_confusion( int sn, int level, CHAR_DATA *ch, void *vo )
             send_to_char("You confuse them utterly.\n\r", ch );
         }
 
-        send_to_char( "You are extremely confused.\n\r", victim );
+        send_to_char( "<558>You are extremely confused.<559>\n\r", victim );
 
         return;
 

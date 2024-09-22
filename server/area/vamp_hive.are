@@ -366,9 +366,9 @@ the Sphere~
 ~
 The sphere hums and pulsates with magical power.
 ~
-2|64|4096 524288 -1000 S
+2|64|4096|16777216|33554432|67108864|134217728 524288 -1000 S
 80 0 0 0d0+0 0d0+0
-63 0
+319 0
 8 8 0
 #25623
 thief master thiefmaster~

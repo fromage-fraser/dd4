@@ -346,7 +346,7 @@ This large horned owl has bright orange eyes and regards you with a mix of mild
 curiosity tinged with contempt.
 ~
 2|2048|9223372036854775808 524288 1000 S
-100 0 0 0d0+0 0d0+0
+70 0 0 0d0+0 0d0+0
 0 0
 0 0 1
 >all_greet_prog 100~
@@ -489,7 +489,7 @@ The steaming turds of %s assail your nostrils.~
 5~ 0~ 0~ 1~
 1 0 0
 #20
-mushroom~
+mushroom magic~
 a Magic Mushroom~
 A delicious magic mushroom is here.~
 ~
@@ -507,7 +507,7 @@ A bright ball of light shimmers in the air.~
 #22
 spring~
 a magical spring~
-A magical spring flows from the ground here.~
+<117>A magical spring flows here.<0>~
 ~
 25 64 0
 100000~ 100000~ 0~ 0~
@@ -2181,7 +2181,7 @@ A 14 100
 uncommon crow~
 The Smithys Set of the Crow.
 Crow were the pseudo pets of the Smiths, often seen perching across the Smithys
-Forge in Winter months basking in teh heat of the Forge, and scavenging any
+Forge in Winter months basking in the heat of the forge, and scavenging any
 food scraps. An Ancient Forgeing process embues the essense of Crow into the
 armour sets allowing it to take on properties of the black feathered denizens.
 ~
@@ -2205,7 +2205,7 @@ M  75 spec_grail                the Hunter
 M   1 spec_warrior              puff
 M   6 spec_celestial_repairman  monkey squadron
 M   5 spec_poison               gulgorthil
-M  79 spec_laghathti            hootfiend
+M  79 spec_gold_grung         hootfiend
 S
 
 

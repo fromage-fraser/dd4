@@ -1774,14 +1774,18 @@ give you some idea of their effects:
     spec_uzollru
     spec_sahuagin_baron
     spec_sahuagin_prince
-    spec_green_grung
     spec_sahuagin_infantry
     spec_sahuagin_cavalry
     spec_sahuagin_guard
     spec_sahuagin_lieutenant
     spec_sahuagin_cleric
     spec_sahuagin_high_cleric
+    spec_green_grung
     spec_red_grung
+    spec_blue_grung
+    spec_purple_grung
+    spec_orange_grung
+    spec_gold_grung
 
 An example spec_fun entry from plains2.are is:
 

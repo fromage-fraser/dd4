@@ -38,6 +38,14 @@ endif
    sigh
    say I wish could get map of prince's palace, but too hard.  Much danger.
 ~
+>rand_prog 1~
+   sigh
+   say Used to sell Omu city pass, but not seen one outside Omu canal in month!
+~
+>rand_prog 1~
+   sigh
+   say I try get Omu city map, but grung very secret people.
+~
 |
 #27201
 teller dragonhoard~
@@ -1345,6 +1353,13 @@ else
 say Canton barons grumble that getting an audience with the prince is 'too hard'.  Community leaders counter that 'too hard' beats 'impossible'.
 endif
 ~
+>rand_prog 1~
+if isfight($i)
+break
+else
+say Omu city passes increasingly hard to come by--citizens who need to travel there resorting to black marketeers in the Omu canals!
+endif
+~
 |
 #27248
 manta ray~
@@ -2091,7 +2106,7 @@ A well-used and superbly-maintained spear rests here.~
 ~
 5 16|64|134217728 1|8192
 0~ 0~ 0~ 11~
-6 0 0
+6 0 60
 A
 18 6
 A
@@ -4607,6 +4622,7 @@ Currently available quests for prospective Reavers to undertake:
 <15>7.   Eyes Up Here<0>                 (<123>50-55<0>)
 <15>8.   Weedful things<0>               (<123>50-70<0>)
 <15>9.   The Heart of the Platter<0>     (<123>50-70<0>)
+<15>10.  One Ring to School<0>           (<123>50-70<0>)
 
 ~
 S

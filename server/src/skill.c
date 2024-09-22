@@ -3624,9 +3624,8 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                         starmetal *= 2;
 
                 act("$n smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
-                act("You place $p into the Forge.", ch, obj, NULL, TO_CHAR);
+                act("You place $p into the forge.", ch, obj, NULL, TO_CHAR);
                 smelted_to_char( steel, titanium, adamantite, electrum, starmetal, ch, COINS_ADD);
-                /* sprintf(buf, "You recover the following raw materials: \nSteel: %d\nTitanium: %d\nAdamantite: %d\nElectrum: %d\nStarmetal: %d\n\r", steel, titanium, adamantite, electrum, starmetal); */
                 sprintf(buf, "You recover the following raw materials:\n");
                 send_to_char (buf, ch);
                 if (steel > 0)
@@ -3971,7 +3970,7 @@ void do_empower (CHAR_DATA *ch, char *argument)
 
         if (!check_blind(ch))
         {
-                send_to_char("you can't see anything.\n\r", ch);
+                send_to_char("You can't see anything.\n\r", ch);
                 return;
         }
 
@@ -4624,7 +4623,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        /* Now using hte random table for alignment with randomiser*/
+        /* Now using the random table for alignment with randomiser*/
         random_buff = number_range( 0, MAX_RANDOMS-1);
         modifier = random_list[random_buff].apply_buff;
         value = 250 / (calc_aff_score(modifier,ch->level));
