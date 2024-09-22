@@ -4871,10 +4871,11 @@ vn  28943
 nm  Muddy Tunnel
 de
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
-under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
+under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.
+The walls are coated with an unwholesome slime.<0>
 ~
 st  underwater_ground
-rf  inside dark solitary no_mob
+rf  inside dark solitary no_mob toxic
 w   28815
 e   28944
 
@@ -4883,10 +4884,11 @@ vn  28944
 nm  Muddy Tunnel
 de
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
-under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
+under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.
+The walls are coated with an unwholesome slime.<0>
 ~
 st  underwater_ground
-rf  inside dark solitary no_mob
+rf  inside dark solitary no_mob toxic
 w   28943
 e   28817
 
@@ -4895,10 +4897,11 @@ vn  28945
 nm  Muddy Tunnel
 de
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
-under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
+under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.
+The walls are coated with an unwholesome slime.<0>
 ~
 st  underwater_ground
-rf  inside dark solitary no_mob
+rf  inside dark solitary no_mob toxic
 n   28817
 s   28946
 
@@ -4909,10 +4912,10 @@ de
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
 under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.
 The tunnel here is a three-way junction, branching off to the north, west, and
-east.<0>
+east. The walls are coated with an unwholesome slime.<0>
 ~
 st  underwater_ground
-rf  inside dark solitary no_mob
+rf  inside dark solitary no_mob toxic
 n   28945
 w   28947
 e   28948
@@ -4922,10 +4925,11 @@ vn  28947
 nm  Muddy Tunnel
 de
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
-under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
+under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.
+The walls are coated with an unwholesome slime.<0>
 ~
 st  underwater_ground
-rf  inside dark solitary no_mob
+rf  inside dark solitary no_mob toxic
 e   28946
 w   28816
 
@@ -4934,10 +4938,11 @@ vn  28948
 nm  Muddy Tunnel
 de
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
-under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
+under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.
+The walls are coated with an unwholesome slime.<0>
 ~
 st  underwater_ground
-rf  inside dark solitary no_mob
+rf  inside dark solitary no_mob toxic
 w   28946
 s   28818
 
@@ -4948,10 +4953,10 @@ de
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
 under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.
 The tunnel here is a three-way junction, branching off to the south, west, and
-east.<0>
+east. The walls are coated with an unwholesome slime.<0>
 ~
 st  underwater_ground
-rf  inside dark solitary no_mob
+rf  inside dark solitary no_mob toxic
 w   28818
 e   28951
 s   28950
@@ -4961,10 +4966,11 @@ vn  28950
 nm  Muddy Tunnel
 de
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
-under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
+under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.
+The walls are coated with an unwholesome slime.<0>
 ~
 st  underwater_ground
-rf  inside dark solitary no_mob
+rf  inside dark solitary no_mob toxic
 n   28949
 s   28819
 
@@ -4973,10 +4979,11 @@ vn  28951
 nm  Muddy Tunnel
 de
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
-under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
+under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.
+The walls are coated with an unwholesome slime.<0>
 ~
 st  underwater_ground
-rf  inside dark solitary no_mob
+rf  inside dark solitary no_mob toxic
 w   28949
 e   28952
 
@@ -4985,10 +4992,11 @@ vn  28952
 nm  Muddy Tunnel
 de
 <94>You are squeezing through a very tight, uncomfortable, dark, muddy tunnel, deep
-under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.<0>
+under the sea bedrock. It is intensely claustrophobic and, frankly, disgusting.
+The walls are coated with an unwholesome slime.<0>
 ~
 st  underwater_ground
-rf  inside dark solitary no_mob
+rf  inside dark solitary no_mob toxic
 n   28820
 w   28951
 
