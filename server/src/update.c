@@ -316,7 +316,7 @@ void advance_level( CHAR_DATA *ch )
         if (!IS_NPC(ch))
                 REMOVE_BIT(ch->act, PLR_BOUGHT_PET);
 
-        sprintf (buf, "You gain {G%d hits{x, {C%d mana{x and {Y%d moves{x.\n\r"
+        sprintf (buf, "You gain {G%d hitpoints{x, {C%d mana{x and {Y%d movement{x.\n\r"
                  "You gain {W%d{x physical and {W%d{x intellectual practice points.\n\r\n\r",
                  add_hp + ch->pcdata->str_prac,
                  add_mana + ch->pcdata->int_prac,

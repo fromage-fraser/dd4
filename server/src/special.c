@@ -2162,7 +2162,19 @@ bool spec_vampire( CHAR_DATA *ch )
                     ch, NULL, NULL, TO_ROOM );
 
                 if (one_hit(ch, victim, gsn_suck, FALSE))
+                {
                         aggro_damage(ch, victim, ch->level);
+                        /* Suck some bloodpoints if victim is a vampire --Owl 23/9/24 */
+
+                        if ( !IS_NPC( victim )
+                        && ( victim->sub_class == SUB_CLASS_VAMPIRE ) )
+                        {
+                            if ( ( victim->rage / 10 ) > 0 )
+                            {
+                                victim->rage -= ( victim->rage / 10 );
+                            }
+                        }
+                }
 
                 return TRUE;
 
@@ -2425,9 +2437,23 @@ bool spec_mast_vampire(CHAR_DATA *ch)
         {
             case 0:
             case 1:
-                if ( CAN_SPEAK(ch) ) { act("$n screams, 'The streets will run red with your {Rblood{x!'",
-                    ch, NULL, NULL, TO_ROOM); }
-                one_hit(ch, victim, gsn_suck, FALSE);
+                if ( CAN_SPEAK(ch) ) {
+                    act("$n screams, 'The streets will run red with your {Rblood{x!'",
+                    ch, NULL, NULL, TO_ROOM);
+                    }
+
+                    one_hit(ch, victim, gsn_suck, FALSE);
+
+                    /* Suck some bloodpoints if victim is a vampire --Owl 23/9/24 */
+
+                    if ( !IS_NPC( victim )
+                    && ( victim->sub_class == SUB_CLASS_VAMPIRE ) )
+                    {
+                        if ( ( victim->rage / 10 ) > 0 )
+                        {
+                            victim->rage -= ( victim->rage / 10 );
+                        }
+                    }
                 break;
 
             case 2:
@@ -2474,7 +2500,20 @@ bool spec_bloodsucker( CHAR_DATA *ch )
         act( "$n lunges at your neck!", ch, NULL, victim, TO_VICT    );
 
         if (one_hit( ch, victim,gsn_suck, FALSE ))
+        {
                 aggro_damage(ch, victim, ch->level);
+
+                /* Suck some bloodpoints if victim is a vampire --Owl 23/9/24 */
+
+                if ( !IS_NPC( victim )
+                && ( victim->sub_class == SUB_CLASS_VAMPIRE ) )
+                {
+                    if ( ( victim->rage / 10 ) > 0 )
+                    {
+                        victim->rage -= ( victim->rage / 10 );
+                    }
+                }
+        }
 
         return TRUE;
 }

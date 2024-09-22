@@ -1633,13 +1633,47 @@ void do_look( CHAR_DATA *ch, char *argument )
             && pexit->keyword[0] != '\0'
             && pexit->keyword[0] != ' ' )
         {
+                int plural = 0;
+
+                size_t len = strlen(pexit->keyword);
+
+                if (len > 0 && (pexit->keyword[len - 1] == 's' || pexit->keyword[len - 1] == 'S'))
+                {
+                    plural = 1;
+                }
+
                 if ( IS_SET( pexit->exit_info, EX_BASHED ) )
-                        act( "The $d has been bashed from its hinges.",
+                {
+                    if (plural == 0)
+                    {
+                        act( "The $d has been bashed in.",
                             ch, NULL, pexit->keyword, TO_CHAR );
+                    }
+                    else {
+                        act( "The $d have been bashed in.",
+                            ch, NULL, pexit->keyword, TO_CHAR );
+                    }
+                }
                 else if ( IS_SET( pexit->exit_info, EX_CLOSED ) )
+                {
+                    if (plural == 0)
+                    {
                         act( "The $d is closed.", ch, NULL, pexit->keyword, TO_CHAR );
+                    }
+                    else {
+                        act( "The $d are closed.", ch, NULL, pexit->keyword, TO_CHAR );
+                    }
+                }
                 else if ( IS_SET( pexit->exit_info, EX_ISDOOR ) )
+                {
+                    if (plural == 0)
+                    {
                         act( "The $d is open.",   ch, NULL, pexit->keyword, TO_CHAR );
+                    }
+                    else {
+                        act( "The $d are open.",   ch, NULL, pexit->keyword, TO_CHAR );
+                    }
+                }
         }
 
         return;
