@@ -5979,7 +5979,7 @@ aff swim infrared det_hidden det_sneak poisoned
 sp  spec_green_grung
 
 $mob
-nm  elf miserable female sea
+nm  elf miserable female sear
 sh  a miserable female sea elf
 lo  <86>A smooth-skinned, teal-coloured sea elf female wails miserably.<0>
 de
