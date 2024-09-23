@@ -866,7 +866,7 @@ exception for authorised visitors to Omu.
 |
 
 #28464
-small sad sahuagin Gersk~
+sahuagin small sad Gersk~
 a small, sad sahuagin~
 A small, sad sahuagin male cowers here.
 ~
@@ -879,7 +879,7 @@ covered in scars and bruises, and he wears an expression of resigned misery.
 0 0 1
 
 #28465
-gloomy triton~
+triton gloomy~
 a gloomy triton~
 A {Bblue-skinned{x man shuffles about gloomily.
 ~
@@ -912,7 +912,7 @@ him.
 0 0 1
 
 #28467
-miserable female sea elf~
+elf miserable female sea~
 a miserable female sea elf~
 <86>A smooth-skinned, teal-coloured sea elf female wails miserably.<0>
 ~
@@ -929,7 +929,7 @@ uncomfortable.
 0 0 2
 
 #28468
-sullen kappa~
+kappa sullen~
 a sullen kappa~
 <28>A sullen, po-faced kappa is here.<0>
 ~
@@ -943,7 +943,7 @@ and pudgy, and his webbed hands end in sharp claws. He looks sullen.
 0 0 1
 
 #28469
-female nixie~
+nixie female~
 a female nixie~
 <121>A female nixie frowns and grumbles.<0>
 ~
@@ -4386,9 +4386,9 @@ S
 #28842
 The Slave Cell~
 <130>You stand inside the slave cell, where slaves are kept before being sold in
-Omu's slavemarket.  It is dark, cold, quiet, and stinks of despair.<0>
+Omu's slavemarket.  It is dimly-lit, cold, quiet, and stinks of despair.<0>
 ~
-0 1|8|1024|8192|16384|9223372036854775808 12
+0 8|1024|8192|16384|9223372036854775808 12
 S
 
 #28459

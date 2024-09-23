@@ -583,10 +583,10 @@ vn  28842
 nm  The Slave Cell
 de
 <130>You stand inside the slave cell, where slaves are kept before being sold in
-Omu's slavemarket.  It is dark, cold, quiet, and stinks of despair.<0>
+Omu's slavemarket.  It is dimly-lit, cold, quiet, and stinks of despair.<0>
 ~
 st  underwater_ground
-rf  inside silence no_recall dark safe no_drop
+rf  inside silence no_recall safe no_drop
 
 $room
 vn  28459
@@ -5927,7 +5927,7 @@ mp  greet_prog 100
 ~
 
 $mob
-nm  small sad sahuagin Gersk
+nm  sahuagin small sad Gersk
 sh  a small, sad sahuagin
 lo  A small, sad sahuagin male cowers here.
 de
@@ -5943,7 +5943,7 @@ act wimpy
 aff swim infrared poison
 
 $mob
-nm  gloomy triton
+nm  triton gloomy
 sh  a gloomy triton
 lo A {Bblue-skinned{x man shuffles about gloomily.
 de
@@ -5979,7 +5979,7 @@ aff swim infrared det_hidden det_sneak poisoned
 sp  spec_green_grung
 
 $mob
-nm  miserable female sea elf
+nm  elf miserable female sear
 sh  a miserable female sea elf
 lo  <86>A smooth-skinned, teal-coloured sea elf female wails miserably.<0>
 de
@@ -5998,7 +5998,7 @@ aff swim infrared det_hidden det_sneak poisoned det_evil det_invis det_magic det
 
 
 $mob
-nm  sullen kappa
+nm  kappa sullen
 sh  a sullen kappa
 lo  <28>A sullen, po-faced kappa is here.<0>
 de
@@ -6014,7 +6014,7 @@ sp  spec_kappa
 aff swim infrared
 
 $mob
-nm  female nixie
+nm  nixie female
 sh  a female nixie
 lo  <121>A female nixie frowns and grumbles.<0>
 de

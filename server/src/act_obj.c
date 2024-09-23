@@ -4747,11 +4747,14 @@ void do_buy (CHAR_DATA *ch, char *argument)
 
                 if (!pet || !IS_SET(pet->act, ACT_PET))
                 {
+                        sprintf(log_buf, "Pet: %s Pet->act: %lu", pet ? "Created" : "Not Created", pet ? pet->act : 0);
+                        log_string(log_buf);
                         send_to_char("Sorry, you can't buy that here.\n\r", ch);
                         return;
                 }
 
-                if (IS_SET(ch->act, PLR_BOUGHT_PET))
+                if ( IS_SET(ch->act, PLR_BOUGHT_PET)
+                &&  !IS_IMMORTAL(ch) )
                 {
                         send_to_char("You already bought one pet this level.\n\r", ch);
                         return;
