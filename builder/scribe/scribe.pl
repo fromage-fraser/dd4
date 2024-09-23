@@ -47,6 +47,7 @@ my %mob_act = (
         aggro              => 32,
         stay_area          => 64,
         wimpy              => 128,
+        pet                => 256,
         no_quest           => 512,
         practice           => 1024,
         regenerator        => 2048,

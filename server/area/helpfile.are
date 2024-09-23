@@ -3262,6 +3262,20 @@ command, and then moving you back (if the command didn't change your
 location).  Thus, AT will not work to private locations.
 ~
 
+101 CANDO 'CAN DO'~
+Syntax: cando <<target> <<skill>
+
+Will tell you if <<target> character can perform a particular skill, and, if so,
+to what percentage level. If "skill" is present, it will also give you the
+spell/skill number (used internally).  If no "skill" argument is present, it
+will give you a complete list for the character (without the skill/spell
+numbers).  If no target or skill argument is provided, you will just get
+abbreviated help for the command.
+
+While most NPCs don't have skills, teachers, for example, do, so it will work
+on them similarly to a PC.
+~
+
 101 BAMFIN BAMFOUT~
 Syntax: bamfin
 Syntax: bamfin  <<message>
@@ -4381,6 +4395,65 @@ it can carry.
 To use items in combat, you must PUT them into your pouch BEFORE you enter
 combat.  You will not be able to add items to your pouch after combat has
 started.
+~
+
+101 'PANTHEONRANK'~
+Syntax: pantheonrank
+
+Display the current rankings of the PANTHEON of gods.
+~
+
+101 'RESET'~
+Syntax: reset
+
+Reset the area that you are in.
+~
+
+100 'RENAME'~
+Syntax: rename <<object> <<string> <<value>
+Syntax: rename <<object> ed <<keyword> <<value>
+
+String being one of:
+  name short long ed (see separate syntax for 'ed,' above)
+
+Use this command to change the keywords, short and long descriptions, and extra
+descriptions of objects.
+~
+
+101 'PANTHEONINFO'~
+Syntax: pantheoninfo
+
+Display qualities of the various deities in the PANTHEON.
+~
+
+101 'OSCORE'~
+Syntax: oscore
+
+Will give you a list of all LEGENDARY items currently in the MUD, and total
+counts for the number of UNCOMMON, RARE, EPIC, and LEGENDARY items.
+~
+
+100 'IMMTALK'~
+Syntax: immtalk <<message>
+
+A chat channel which can be accessed only by heroes and immortals.  ':' is a
+synonym for IMMTALK.
+~
+
+101 'KILLSOCKET' 'KILL SOCKET'~
+Syntax: killsocket <<socket #>
+
+Kill the socket <<socket #>. You can get this number from the USERS command or
+the 'desc=' value in MEMORY. Killing the socket will disconnect the user who is
+in some login-related state, but not yet actually playing. (If they are actually
+playing, use DISCONNECT <<charname> instead).
+~
+
+105 'DIRTALK'~
+Syntax: dirtalk <<message>
+
+A chat channel which can be accessed only by GODs and DIRECTORs (IMMORTAL levels
+106 and 105).  '|' is a synonym for DIRTALK.
 ~
 
 0 'QUIET MODE'~

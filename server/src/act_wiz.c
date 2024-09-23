@@ -33,50 +33,67 @@
 BAN_DATA *ban_free;
 BAN_DATA *ban_list;
 
+/* Comparison function for qsort, used to sort wizhelp alphabetically */
+int compare_skills(const void *a, const void *b) {
+    int sn1 = *(const int *)a;
+    int sn2 = *(const int *)b;
 
-
-/* Conversion of Immortal powers to Immortal skills done by Thelonius */
+    return strcmp(skill_table[sn1].name, skill_table[sn2].name);
+}
 
 void do_wizhelp(CHAR_DATA *ch, char *argument)
 {
-        CHAR_DATA *rch;
-        char       buf  [ MAX_STRING_LENGTH ];
-        char       buf1 [ MAX_STRING_LENGTH ];
-        int        sn;
-        int        col;
+    CHAR_DATA *rch;
+    char buf[MAX_STRING_LENGTH];
+    char buf1[MAX_STRING_LENGTH];
+    int sn;
+    int col;
+    int valid_skills[MAX_SKILL];
+    int valid_skill_count = 0;
 
-        rch = get_char( ch );
+    rch = get_char(ch);
 
-        if (!authorized(rch, gsn_wizhelp))
-                return;
-
-        buf1[0] = '\0';
-        col     = 0;
-
-        sprintf(buf1, "Imm skills for level equivalent to %s (level %d):\n\r",
-                extra_level_name(ch), get_trust(ch));
-
-        for (sn = 0; sn < MAX_SKILL; sn++)
-        {
-                if (!skill_table[sn].name)
-                        break;
-
-                if (rch->pcdata->learned[sn] >= 100
-                    && wiz_do(ch, skill_table[sn].name)
-                    && skill_table[sn].prac_type == TYPE_WIZ)
-                {
-                        sprintf( buf, "%-19s", skill_table[sn].name );
-                        strcat( buf1, buf );
-                        if ( ++col % 4 == 0 )
-                                strcat( buf1, "\n\r" );
-                }
-        }
-
-        if ( col % 4 != 0 )
-                strcat( buf1, "\n\r" );
-
-        send_to_char( buf1, ch );
+    if (!authorized(rch, gsn_wizhelp))
         return;
+
+    buf1[0] = '\0';
+    col = 0;
+
+    sprintf(buf1, "=========================================================\n\r{WImm skills for level equivalent to %s (level %d){x\n\r=========================================================\n\r",
+            extra_level_name(ch), get_trust(ch));
+
+    /* Collect all valid skills */
+    for (sn = 0; sn < MAX_SKILL; sn++)
+    {
+        if (!skill_table[sn].name)
+            break;
+
+        if (rch->pcdata->learned[sn] >= 100
+            && wiz_do(ch, skill_table[sn].name)
+            && skill_table[sn].prac_type == TYPE_WIZ)
+        {
+            valid_skills[valid_skill_count++] = sn;
+        }
+    }
+
+    /* Sort the valid skills by their name */
+    qsort(valid_skills, valid_skill_count, sizeof(int), compare_skills);
+
+    /* Format the sorted skills for output */
+    for (int i = 0; i < valid_skill_count; i++)
+    {
+        sn = valid_skills[i];
+        sprintf(buf, "%-19s", skill_table[sn].name);
+        strcat(buf1, buf);
+        if (++col % 4 == 0)
+            strcat(buf1, "\n\r");
+    }
+
+    if (col % 4 != 0)
+        strcat(buf1, "\n\r");
+
+    send_to_char(buf1, ch);
+    return;
 }
 
 
@@ -1401,7 +1418,7 @@ void do_ostat( CHAR_DATA *ch, char *argument )
 void do_osstat( CHAR_DATA *ch, char *argument )
 {
         OBJSET_INDEX_DATA *obj;
-         CHAR_DATA   *rch;
+        CHAR_DATA   *rch;
         AFFECT_DATA *paf;
         char         buf  [ MAX_STRING_LENGTH ];
         char         buf1 [ MAX_STRING_LENGTH ];
@@ -1417,7 +1434,7 @@ void do_osstat( CHAR_DATA *ch, char *argument )
 
         if ( arg[0] == '\0' )
         {
-                send_to_char( "Ostat what?\n\r", ch );
+                send_to_char( "Osstat what?\n\r", ch );
                 return;
         }
 
@@ -1454,7 +1471,7 @@ void do_osstat( CHAR_DATA *ch, char *argument )
                 sprintf( buf, "you need {W%d{x for set bonus 3\n\r", objset_bonus_num_pos(obj->vnum, 3) );
         strcat( buf1, buf );
 */
-        sprintf( buf, "{CAffects Given:{x\n\r");
+        sprintf( buf, "{CEffects Given:{x\n\r");
                 strcat( buf1, buf );
 
         count = 0;
@@ -5573,7 +5590,7 @@ void do_rename( CHAR_DATA *ch, char *argument )
 
         if ( arg1[0] == '\0' || arg2[0] == '\0' || arg3[0] == '\0' )
         {
-                send_to_char( "Syntax: oset <<object> <<string> <<value>\n\r",     ch );
+                send_to_char( "Syntax: rename <<object> <<string> <<value>\n\r",     ch );
                 send_to_char( "\n\r",                                           ch );
                 send_to_char( "String being one of:\n\r",                       ch );
                 send_to_char( "  name short long ed\n\r",                       ch );
@@ -5647,7 +5664,7 @@ void do_rename( CHAR_DATA *ch, char *argument )
 
                 if ( arg4[0] == '\0' )
                 {
-                        send_to_char( "Syntax: oset <<object> ed <<keyword> <<string>\n\r", ch );
+                        send_to_char( "Syntax: rename <<object> ed <<keyword> <<value>\n\r", ch );
                         return;
                 }
 
@@ -5791,7 +5808,7 @@ void do_users (CHAR_DATA *ch, char *argument)
                 if ( d->character && can_see( ch, d->character ) )
                 {
                         count++;
-                        sprintf( buf + strlen( buf ), "[%2d %-13s] %-12s %s\n\r",
+                        sprintf( buf + strlen( buf ), "\n\r[{G%2d {W%-13s{x] {W%-12s{x {C%s{x\n\r",
                                 d->descriptor,
                                 (d->connected < 0 || d->connected > 23)
                                         ? "?" : connect_desc[d->connected],
@@ -5801,7 +5818,7 @@ void do_users (CHAR_DATA *ch, char *argument)
                 }
         }
 
-        sprintf( buf2, "%d users\n\rconnection_count=%d/%d\n\r",
+        sprintf( buf2, "\n\r{W%d{x users    connection_count = {C%d{x/{c%d{x\n\r",
                 count,
                 connection_count,
                 MAX_CONNECTIONS );
