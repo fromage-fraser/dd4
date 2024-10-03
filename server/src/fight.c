@@ -4306,7 +4306,6 @@ void do_target (CHAR_DATA *ch, char *argument)
                         if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] / 2 ) - ( victim->level - ch->level ) ) ) ) )
                             ||   ( IS_NPC(ch) && ( number_percent () < ( ch->level / 2 ) ) ) )
                         {
-                            log_string("Shoudl eb trying to disarm leg body parts here");
                             disarm_bodypart(ch, victim, 4);
                         }
 
