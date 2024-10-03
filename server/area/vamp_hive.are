@@ -1259,7 +1259,7 @@ dark claws~
 The hacked-off paws of a great cat lie on the floor.~
 ~
 5 32|67108864|274877906944 8192
-0~ 0~ 0~ 5~
+4~ 0~ 0~ 5~
 5 0 0
 A
 24 -10
@@ -1307,7 +1307,7 @@ incisors~
 The incisor teeth of some huge rodent lie on the ground.~
 ~
 5 16777216|67108864 1|8192
-0~ 0~ 0~ 10~
+1~ 0~ 0~ 10~
 1 0 0
 #25604
 fangs~
@@ -1315,7 +1315,7 @@ fangs~
 The fangs of a huge bat lie at your feet.~
 ~
 5 16|16777216|67108864 1|8192
-0~ 0~ 0~ 12~
+1~ 0~ 0~ 12~
 1 0 0
 #25605
 snake egg~
@@ -1947,7 +1947,7 @@ sharp fangs~
 The fangs of some vampire have been hacked out and left here.~
 ~
 5 67108864 1|8192
-0~ 0~ 0~ 10~
+1~ 0~ 0~ 10~
 0 0 0
 #25655
 razor-sharp dagger~
@@ -1997,7 +1997,7 @@ a sharp pair of fangs~
 The fangs of a vampire have been hacked from their mouth and left here.~
 ~
 9 67108864 1|16
-0~ 0~ 0~ 0~
+0~ 1~ 0~ 0~
 0 0 0
 A
 19 3

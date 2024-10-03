@@ -3827,6 +3827,12 @@ void do_recite (CHAR_DATA *ch, char *argument)
                 }
         }
 
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char("You can't remember how to do that.\n\r", ch);
+                return;
+        }
+
         act("You recite $p.", ch, scroll, NULL, TO_CHAR);
         act("$n recites $p.", ch, scroll, NULL, TO_ROOM);
 
@@ -4474,6 +4480,9 @@ void do_steal (CHAR_DATA *ch, char *argument)
 
         WAIT_STATE(ch, skill_table[gsn_steal].beats);
         percent  = number_percent() + (IS_AWAKE(victim) ? 5 : -50);
+
+        if ( IS_AFFECTED(ch, AFF_ARM_TRAUMA) )
+            percent /= 2;
 
         if (ch->level + 15 < victim->level
             || victim->position == POS_FIGHTING
@@ -5342,7 +5351,30 @@ void do_poison_weapon(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if ( IS_AFFECTED(ch, AFF_ARM_TRAUMA) )
+        {
+                send_to_char("Your arms are too badly damaged to coordinate this task.\n\r", ch);
+                return;
+        }
+
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char("You can't remember how to do that.\n\r", ch);
+                return;
+        }
+
         WAIT_STATE(ch, skill_table[gsn_poison_weapon].beats);
+
+        if ( IS_AFFECTED(ch, AFF_ARM_TRAUMA)
+        &&   ( number_percent() >= (ch->pcdata->learned[gsn_poison_weapon] / 2) ) )
+        {
+                send_to_char("You fail due to clumsiness and spill some on yourself.  Ouch!\n\r", ch);
+                act("$n spills the poison all over!", ch, NULL, NULL, TO_ROOM);
+                damage(ch, ch, ch->level, gsn_poison_weapon, FALSE);
+                extract_obj(pobj);
+                extract_obj(wobj);
+                return;
+        }
 
         if ( number_percent() >= ch->pcdata->learned[gsn_poison_weapon])
         {
@@ -5732,6 +5764,12 @@ void do_brew (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if ( IS_AFFECTED(ch, AFF_HEAD_TRAUMA) )
+        {
+                send_to_char("You can't remember how to do that.\n\r", ch);
+                return;
+        }
+
         if ((sn = skill_lookup(arg))  < 0)
         {
                 send_to_char("You don't know any spells by that name.\n\r", ch);
@@ -5816,6 +5854,12 @@ void do_scribe (CHAR_DATA *ch, char *argument)
         if ((sn = skill_lookup(arg)) < 0)
         {
                 send_to_char("You don't know any spells by that name.\n\r", ch);
+                return;
+        }
+
+        if ( IS_AFFECTED(ch, AFF_HEAD_TRAUMA) )
+        {
+                send_to_char("You can't remember how to do that.\n\r", ch);
                 return;
         }
 

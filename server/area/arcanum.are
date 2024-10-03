@@ -2179,10 +2179,10 @@ A
 #26095
 gaping maw~
 a gaping maw~
-A gaping maw~
+The gaping maw of some creature lies here.~
 ~
 5 67108864 0
-~ ~ ~ 10~
+1~ ~ ~ 10~
 200 0 0
 A
 19 20
@@ -2192,10 +2192,10 @@ A
 #26096
 long nose~
 a long nose~
-A long nose.~
+The long nose of some creature lies here.~
 ~
 5 67108864 0
-~ ~ ~ 4~
+1~ ~ ~ 4~
 5 0 0
 A
 19 5
@@ -2205,10 +2205,10 @@ A
 #26097
 sharp beak~
 a sharp break~
-A sharp beak.~
+The sharp beak of some creature lies here.~
 ~
 5 67108864 0
-~ ~ ~ 2~
+1~ ~ ~ 2~
 3 0 0
 A
 19 10
@@ -2216,10 +2216,10 @@ A
 #26098
 prickly teeth~
 prickly teeth~
-A prickly set of teeth.~
+A prickly set of teeth lie here.~
 ~
 5 67108864 0
-~ ~ ~ 10~
+1~ ~ ~ 10~
 1 0 0
 A
 19 2

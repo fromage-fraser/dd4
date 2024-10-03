@@ -1085,7 +1085,7 @@ jaws full of large conical teeth~
 Your large, conical teeth protrude from your fearsome jaws.~
 ~
 5 67108864 0
-0~ 0~ 0~ 10~
+1~ 0~ 0~ 10~
 1 0 0
 #27374
 teak javelin~
@@ -1155,7 +1155,7 @@ a long tongue, tipped with spiky protrusions~
 A huge tongue tipped with spikes is here.~
 ~
 5 67108864 0
-0~ 0~ 0~ 11~
+1~ 0~ 0~ 11~
 1 0 0
 #27380
 smooth tentacles~
@@ -1163,7 +1163,7 @@ powerful, smooth tentacles~
 The huge tentacles of some aquatic monster are here.~
 ~
 5 67108864 0
-0~ 0~ 0~ 4~
+3~ 0~ 0~ 4~
 1 0 0
 #27382
 murderous claws~
@@ -1171,7 +1171,7 @@ murderous claws~
 A large pair of claws has been left here.~
 ~
 5 67108864 0
-0~ 15~ 20~ 8~
+3~ 15~ 20~ 8~
 1 10000 0
 A
 19 5
@@ -1254,7 +1254,7 @@ a sharp beak~
 The sharp beak of some aquatic creature is here.~
 ~
 5 67108864 1|8192
-0~ 0~ 0~ 10~
+1~ 0~ 0~ 10~
 4 0 0
 #27389
 kappa head bowl~
@@ -1274,7 +1274,7 @@ huge mandibles~
 The mandibles of some monstrous creature lie here.~
 ~
 5 67108864 0
-0~ 15~ 20~ 10~
+1~ 15~ 20~ 10~
 1 10000 0
 A
 19 8
@@ -1329,7 +1329,7 @@ pinchers~
 A large pair of pinchers has been severed from a creature and left here.~
 ~
 5 67108864 0
-0~ 15~ 20~ 8~
+3~ 15~ 20~ 8~
 1 10000 0
 A
 19 5
@@ -1347,7 +1347,7 @@ tentacles~
 <4>A hideous mass of midnight-blue tentacles has been severed from a creature and left here.<0>~
 ~
 5 67108864 0
-0~ 15~ 20~ 12~
+3~ 15~ 20~ 12~
 1 10000 0
 A
 19 5
@@ -1464,7 +1464,7 @@ a powerful tail~
 The large tail of a black dragon has been severed and left here.~
 ~
 5 67108864 1|8192
-0~ 0~ 0~ 4~
+6~ 0~ 0~ 4~
 5000 0 0
 A
 19 20

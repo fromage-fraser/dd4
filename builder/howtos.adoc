@@ -44,6 +44,7 @@ only ones that might be generally useful to people working with the codebase. +
 * <<add-new-skill>>?
 * <<new-skill-to-class>>?
 * <<calculate-trig-values>>?
+* <<target-body-parts>>?
 
 {nbsp} +
 {nbsp} +
@@ -342,7 +343,71 @@ to assign 500-600 to a new area or whatever.
 
 == Build pet stores [[build-pet-stores]]
 
-- Flag the room the shopkeeper is in `ROOM_PET_SHOP` (4096)
+// // - Flag the room the shopkeeper is in We have introduced the high-level target skill and regenerate spell as part of the post-70 abilities roadmap.  They permit, respectively, the targeting and healing of damage ("trauma") that is localised to body regions. Both abilities are available to PCs and NPCs.
+
+The target skill takes one of the following as an argument: head, eye, arm, leg, heart, tail and torso (or body).
+
+Generally speaking, you will only be able to target a body region that a PC or NPC has, based on (NPC) their BODY_FORM information or (PC) race (some have tails, Yuan-ti don't have legs etc) and form (for shifters and shifter subclasses).  Counter-intuitive results should be regarded as bugs, and fixed.
+
+A successful targeted strike will inflict trauma of the appropriate type.  Different types of trauma have different effects, but will usually include some stat penalty and will not wear off naturally.  Instead, trauma must be healed by the regenerate spell.  This can be paid for at a healer, cast randomly by a spec_cast_adept or spec_cast_orb mobile, or obtained as a potion, pill, etc from the world.
+
+A successful targeted strike also has a chance of disarming body part weapons associated with the region.  To support this, the following values can be applied to weapons, lights, and armour that have the ITEM_BODY_PART flag.  It should be applied as value[0] for weapons and lights, and value[1] for armour, to avoid clashing with already-used values. A 0 or value not in this list will mean the body part is assumed to be undisarmable.
+
+1 - head
+2 - eye
+3 - arm
+4 - leg
+5 - heart
+6 - tail
+// 7 - torso/central massWe have introduced the high-level target skill and regenerate spell as part of the post-70 abilities roadmap.  They permit, respectively, the targeting and healing of damage ("trauma") that is localised to body regions. Both abilities are available to PCs and NPCs.
+
+The target skill takes one of the following as an argument: head, eye, arm, leg, heart, tail and torso (or body).
+
+Generally speaking, you will only be able to target a body region that a PC or NPC has, based on (NPC) their BODY_FORM information or (PC) race (some have tails, Yuan-ti don't have legs etc) and form (for shifters and shifter subclasses).  Counter-intuitive results should be regarded as bugs, and fixed.
+
+A successful targeted strike will inflict trauma of the appropriate type.  Different types of trauma have different effects, but will usually include some stat penalty and will not wear off naturally.  Instead, trauma must be healed by the regenerate spell.  This can be paid for at a healer, cast randomly by a spec_cast_adept or spec_cast_orb mobile, or obtained as a potion, pill, etc from the world.
+
+A successful targeted strike also has a chance of disarming body part weapons associated with the region.  To support this, the following values can be applied to weapons, lights, and armour that have the ITEM_BODY_PART flag.  It should be applied as value[0] for weapons and lights, and value[1] for armour, to avoid clashing with already-used values. A 0 or value not in this list will mean the body part is assumed to be undisarmable.
+
+1 - head
+2 - eye
+3 - arm
+4 - leg
+5 - heart
+6 - tail
+7 - torso/central massWe have introduced the high-level target skill and regenerate spell as part of the post-70 abilities roadmap.  They permit, respectively, the targeting and healing of damage ("trauma") that is localised to body regions. Both abilities are available to PCs and NPCs.
+
+The target skill takes one of the following as an argument: head, eye, arm, leg, heart, tail and torso (or body).
+
+Generally speaking, you will only be able to target a body region that a PC or NPC has, based on (NPC) their BODY_FORM information or (PC) race (some have tails, Yuan-ti don't have legs etc) and form (for shifters and shifter subclasses).  Counter-intuitive results should be regarded as bugs, and fixed.
+
+A successful targeted strike will inflict trauma of the appropriate type.  Different types of trauma have different effects, but will usually include some stat penalty and will not wear off naturally.  Instead, trauma must be healed by the regenerate spell.  This can be paid for at a healer, cast randomly by a spec_cast_adept or spec_cast_orb mobile, or obtained as a potion, pill, etc from the world.
+
+A successful targeted strike also has a chance of disarming body part weapons associated with the region.  To support this, the following values can be applied to weapons, lights, and armour that have the ITEM_BODY_PART flag.  It should be applied as value[0] for weapons and lights, and value[1] for armour, to avoid clashing with already-used values. A 0 or value not in this list will mean the body part is assumed to be undisarmable.
+
+1 - head
+2 - eye
+3 - arm
+4 - leg
+5 - heart
+6 - tail
+7 - torso/central massWe have introduced the high-level target skill and regenerate spell as part of the post-70 abilities roadmap.  They permit, respectively, the targeting and healing of damage ("trauma") that is localised to body regions. Both abilities are available to PCs and NPCs.
+
+The target skill takes one of the following as an argument: head, eye, arm, leg, heart, tail and torso (or body).
+
+Generally speaking, you will only be able to target a body region that a PC or NPC has, based on (NPC) their BODY_FORM information or (PC) race (some have tails, Yuan-ti don't have legs etc) and form (for shifters and shifter subclasses).  Counter-intuitive results should be regarded as bugs, and fixed.
+
+A successful targeted strike will inflict trauma of the appropriate type.  Different types of trauma have different effects, but will usually include some stat penalty and will not wear off naturally.  Instead, trauma must be healed by the regenerate spell.  This can be paid for at a healer, cast randomly by a spec_cast_adept or spec_cast_orb mobile, or obtained as a potion, pill, etc from the world.
+
+A successful targeted strike also has a chance of disarming body part weapons associated with the region.  To support this, the following values can be applied to weapons, lights, and armour that have the ITEM_BODY_PART flag.  It should be applied as value[0] for weapons and lights, and value[1] for armour, to avoid clashing with already-used values. A 0 or value not in this list will mean the body part is assumed to be undisarmable.
+
+1 - head
+2 - eye
+3 - arm
+4 - leg
+5 - heart
+6 - tail
+7 - torso/central mass`ROOM_PET_SHOP` (4096)
 - Make the pet store owner a shopkeeper that doesn't buy/sell any kind +of item; +
 their entry in `#SHOPS` might look like this: +
 `27206 0 0 0 0 0 100 100 0 23            Kianar`
@@ -1234,3 +1299,40 @@ Clear out "Desired percentage" values for any triggers that are surplus to your 
 requirements.
 
 image:trig_calc.png[trig_calc.png,500,,]
+
+== Target and heal body regions [[target-body-parts]]
+
+We have introduced the high-level `target` skill and `regenerate` spell as part of +
+the post-70 abilities roadmap.  They permit, respectively, the targeting and +
+healing of damage (`trauma`) that is localised to body regions. Both abilities +
+are available to PCs and NPCs.
+
+The `target` skill takes one of the following as an argument: `head`, `eye`, `arm`, `leg`, +
+`heart`, `tail` and `torso` (or `body`).
+
+Generally speaking, you will only be able to `target` a body region that a PC or +
+NPC has, based on (NPC) their `BODY_FORM` information or (PC) `race` (some have +
+tails, Yuan-ti don't have legs etc) and `form` (for shifters and shifter +
+subclasses).  Counter-intuitive results should be regarded as bugs, and fixed.
+
+A successful targeted strike will inflict `trauma` of the appropriate type.  +
+Different types of `trauma` have different effects, but will usually include some +
+stat penalty and will not wear off naturally.  Instead, `trauma` must be healed by +
+the `regenerate` spell.  This can be paid for at a healer, cast randomly by a +
+`spec_cast_adept` or `spec_cast_orb` mobile, or obtained as a potion, pill, etc from +
+the world.
+
+A successful targeted strike also has a chance of disarming body part weapons +
+associated with the region.  To support this, the following values can be +
+applied to weapons, lights, and armour that have the `ITEM_BODY_PART` flag.  It +
+should be applied as `value[0]` for weapons and lights, and `value[1]` for armour, +
+to avoid clashing with already-used values. A `0` or value not in this list will +
+mean the body part is assumed to be undisarmable.
+
+`1` - head +
+`2` - eye +
+`3` - arm +
+`4` - leg +
+`5` - heart +
+`6` - tail +
+`7` - torso/central mass +

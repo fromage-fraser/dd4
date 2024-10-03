@@ -83,6 +83,7 @@ void do_blink (CHAR_DATA *ch, char *argument)
 void do_swim (CHAR_DATA *ch, char *argument)
 {
         AFFECT_DATA af;
+        int dex_mod;
 
         if (IS_NPC(ch))
                 return;
@@ -109,6 +110,17 @@ void do_swim (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if ( IS_AFFECTED(ch, AFF_ARM_TRAUMA)
+        ||   IS_AFFECTED(ch, AFF_LEG_TRAUMA)
+        ||   IS_AFFECTED(ch, AFF_TAIL_TRAUMA)
+        ||   IS_AFFECTED(ch, AFF_TORSO_TRAUMA) )
+        {
+            dex_mod = (get_curr_dex(ch) / 5);
+        }
+        else {
+            dex_mod = (get_curr_dex(ch) / 10);
+        }
+
         if ( number_percent() < ch->pcdata->learned[gsn_swim] )
         {
                 af.type      = gsn_swim;
@@ -118,7 +130,7 @@ void do_swim (CHAR_DATA *ch, char *argument)
                 af.bitvector = AFF_SWIM;
                 affect_to_char(ch, &af);
 
-                af.modifier = (get_curr_dex(ch) / 5);
+                af.modifier = dex_mod;
                 af.location = APPLY_HITROLL;
                 affect_to_char(ch, &af);
 
@@ -215,10 +227,10 @@ void do_gouge (CHAR_DATA *ch, char *argument)
 
         if (number_percent() < chance)
         {
-                act ("You deftly lunge at $N's eyes, and gouge them out!", ch, NULL, victim, TO_CHAR);
+                act ("You deftly lunge at $N's eyes, and brutally gouge them!", ch, NULL, victim, TO_CHAR);
                 act ("$n scratches your eyes -- you see <124>red<0>!", ch, NULL, victim, TO_VICT);
-                act ("$n gouges $N's eyes out!", ch, NULL, victim, TO_NOTVICT);
-                arena_commentary("$n gouges out $N's eyes.", ch, victim);
+                act ("$n gouges $N's eyes!", ch, NULL, victim, TO_NOTVICT);
+                arena_commentary("$n gouges $N's eyes.", ch, victim);
 
                 damage(ch, victim, number_range(10, ch->level), gsn_gouge, FALSE);
 
@@ -304,6 +316,12 @@ void do_choke (CHAR_DATA *ch, char *argument)
                 return;
 
         chance = ch->pcdata->learned[gsn_choke];
+
+        if (IS_AFFECTED(ch, AFF_ARM_TRAUMA))
+        {
+            chance = ( ch->pcdata->learned[gsn_choke] / 2 );
+        }
+
         chance += ((ch->level - victim->level) * 3);
 
         if (chance < 5)
@@ -361,6 +379,12 @@ void do_battle_aura (CHAR_DATA *ch, char *argument)
         if (get_curr_int (ch) < 19 && get_curr_wis(ch) <19)
         {
                 send_to_char ("Your lack of intellect and concentration prevents this...\n\r", ch);
+                return;
+        }
+
+        if ( IS_AFFECTED(ch, AFF_HEAD_TRAUMA) )
+        {
+                send_to_char("You can't remember how to do that.\n\r", ch);
                 return;
         }
 
@@ -440,7 +464,7 @@ void do_punch (CHAR_DATA *ch, char *argument)
 
         WAIT_STATE(ch, PULSE_VIOLENCE);
 
-        if (number_percent() < ch->pcdata->learned[gsn_punch])
+        if ( number_percent() < ch->pcdata->learned[gsn_punch] )
         {
                 arena_commentary("$n punches $N.", ch, victim);
                 damage(ch, victim, (ch->level / 2) + number_range(1, ch->level * 2), gsn_punch, FALSE);
@@ -448,8 +472,11 @@ void do_punch (CHAR_DATA *ch, char *argument)
                 if (victim->position ==POS_DEAD || ch->in_room != victim->in_room)
                         return;
 
-                if (number_percent() < ch->pcdata->learned[gsn_second_punch])
-                        damage(ch, victim, ch->level + number_range(ch->level, ch->level * 2),gsn_second_punch, FALSE);
+                if (!IS_AFFECTED(ch, AFF_ARM_TRAUMA))
+                {
+                    if (number_percent() < ch->pcdata->learned[gsn_second_punch])
+                            damage(ch, victim, ch->level + number_range(ch->level, ch->level * 2),gsn_second_punch, FALSE);
+                }
         }
         else
                 damage(ch, victim, 0, gsn_punch, FALSE);
@@ -750,13 +777,21 @@ void do_combo (CHAR_DATA *ch, char *argument)
                 {
                         if (number_percent() < ch->pcdata->learned[gsn_atemi])
                         {
-                                atemi(ch , victim);
-                                combo_last_punch = 1;
-
-                                if (!combo_atemi)
+                                if ( IS_AFFECTED(ch, AFF_ARM_TRAUMA)
+                                && ( number_percent() < ( ch->pcdata->learned[gsn_atemi] / 2 ) ) )
                                 {
-                                        combo_count++;
-                                        combo_atemi = 1;
+                                        damage(ch , victim, 0 , gsn_atemi, FALSE);
+                                        combo_last_punch = 0;
+                                }
+                                else {
+                                    atemi(ch , victim);
+                                    combo_last_punch = 1;
+
+                                    if (!combo_atemi)
+                                    {
+                                            combo_count++;
+                                            combo_atemi = 1;
+                                    }
                                 }
 
                         }
@@ -777,7 +812,15 @@ void do_combo (CHAR_DATA *ch, char *argument)
 
                         if (number_percent() < ch->pcdata->learned[gsn_kansetsu])
                         {
-                                kansetsu(ch, victim);
+                                if ( IS_AFFECTED(ch, AFF_ARM_TRAUMA)
+                                && ( number_percent() < ( ch->pcdata->learned[gsn_kansetsu] / 2 ) ) )
+                                {
+                                        act ("$n attempts to break $N's arms, but fails.", ch, NULL, victim,TO_NOTVICT);
+                                        damage(ch , victim, 0 , gsn_kansetsu, FALSE);
+                                }
+                                else {
+                                    kansetsu(ch, victim);
+                                }
                         }
                         else
                         {
@@ -792,13 +835,21 @@ void do_combo (CHAR_DATA *ch, char *argument)
                 {
                         if (number_percent() < ch->pcdata->learned[gsn_tetsui])
                         {
-                                tetsui(ch, victim);
-                                combo_last_punch = 1;
-
-                                if (!combo_tetsui)
+                                if ( IS_AFFECTED(ch, AFF_ARM_TRAUMA)
+                                && ( number_percent() < ( ch->pcdata->learned[gsn_tetsui] / 2 ) ) )
                                 {
-                                        combo_tetsui = 1;
-                                        combo_count++;
+                                        damage(ch, victim,0, gsn_tetsui, FALSE);
+                                        combo_last_punch = 0;
+                                }
+                                else {
+                                        tetsui(ch, victim);
+                                        combo_last_punch = 1;
+
+                                        if (!combo_tetsui)
+                                        {
+                                                combo_tetsui = 1;
+                                                combo_count++;
+                                        }
                                 }
                         }
                         else
@@ -815,13 +866,21 @@ void do_combo (CHAR_DATA *ch, char *argument)
                 {
                         if (number_percent() < ch->pcdata->learned[gsn_shuto])
                         {
-                                shuto(ch, victim);
-                                combo_last_punch = 1;
-
-                                if (!combo_shuto)
+                                if ( IS_AFFECTED(ch, AFF_ARM_TRAUMA)
+                                && ( number_percent() < ( ch->pcdata->learned[gsn_shuto] / 2 ) ) )
                                 {
-                                        combo_shuto = 1;
-                                        combo_count++;
+                                        damage(ch, victim,0, gsn_shuto, FALSE);
+                                        combo_last_punch = 0;
+                                }
+                                else {
+                                        shuto(ch, victim);
+                                        combo_last_punch = 1;
+
+                                        if (!combo_shuto)
+                                        {
+                                                combo_shuto = 1;
+                                                combo_count++;
+                                        }
                                 }
                         }
                         else
@@ -846,13 +905,21 @@ void do_combo (CHAR_DATA *ch, char *argument)
 
                         if (number_percent() < ch->pcdata->learned[gsn_yokogeri])
                         {
-                                yokogeri(ch, victim);
-                                combo_last_kick = 1;
-
-                                if (!combo_yokogeri)
+                                if ( IS_AFFECTED(ch, AFF_LEG_TRAUMA)
+                                && ( number_percent() < ( ch->pcdata->learned[gsn_yokogeri] / 2 ) ) )
                                 {
-                                        combo_yokogeri = 1;
-                                        combo_count++;
+                                        damage(ch, victim,0, gsn_yokogeri, FALSE);
+                                        combo_last_kick = 0;
+                                }
+                                else {
+                                        yokogeri(ch, victim);
+                                        combo_last_kick = 1;
+
+                                        if (!combo_yokogeri)
+                                        {
+                                                combo_yokogeri = 1;
+                                                combo_count++;
+                                        }
                                 }
                         }
                         else
@@ -877,13 +944,21 @@ void do_combo (CHAR_DATA *ch, char *argument)
 
                         if ( number_percent() < ch->pcdata->learned[gsn_mawasigeri])
                         {
-                                mawasigeri(ch, victim);
-                                combo_last_kick = 1;
-
-                                if (!combo_mawasigeri)
+                                if ( IS_AFFECTED(ch, AFF_LEG_TRAUMA)
+                                && ( number_percent() < ( ch->pcdata->learned[gsn_mawasigeri] / 2 ) ) )
                                 {
-                                        combo_mawasigeri = 1;
-                                        combo_count++;
+                                        damage(ch, victim,0, gsn_mawasigeri, FALSE);
+                                        combo_last_kick = 0;
+                                }
+                                else {
+                                        mawasigeri(ch, victim);
+                                        combo_last_kick = 1;
+
+                                        if (!combo_mawasigeri)
+                                        {
+                                                combo_mawasigeri = 1;
+                                                combo_count++;
+                                        }
                                 }
                         }
                         else
@@ -1462,6 +1537,13 @@ void do_push (CHAR_DATA *ch, char *argument)
 
         chance += race_bonus;
 
+        if ( IS_AFFECTED(ch, AFF_ARM_TRAUMA)
+        ||   IS_AFFECTED(ch, AFF_LEG_TRAUMA
+        ||   IS_AFFECTED(ch, AFF_TORSO_TRAUMA)))
+        {
+                chance = ( chance / 2 );
+        }
+
         if (chance < number_percent())
         {
                 send_to_char("You failed.\n\r", ch);
@@ -1883,13 +1965,32 @@ void do_sharpen (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (number_percent() > ch->pcdata->learned[gsn_sharpen])
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
         {
-                send_to_char("You slip while sharpening your blade! You ruin the stone and cut yourself!!\n\r", ch);
-                damage(ch, ch, ch->level, gsn_sharpen, FALSE);
-                act ("$n cuts $mself while sharpening $m blade!", ch, NULL, NULL, TO_ROOM);
-                extract_obj(wobj);
+                send_to_char("You can't remember how to do that.\n\r", ch);
                 return;
+        }
+
+        if (IS_AFFECTED(ch, AFF_ARM_TRAUMA))
+        {
+            if (number_percent() > (ch->pcdata->learned[gsn_sharpen]/2))
+            {
+                    send_to_char("You clumsily slip while sharpening your blade! You ruin the stone and cut yourself!!\n\r", ch);
+                    damage(ch, ch, ch->level, gsn_sharpen, FALSE);
+                    act ("$n cuts $mself while sharpening $m blade!", ch, NULL, NULL, TO_ROOM);
+                    extract_obj(wobj);
+                    return;
+            }
+        }
+        else {
+            if (number_percent() > ch->pcdata->learned[gsn_sharpen])
+            {
+                    send_to_char("You slip while sharpening your blade! You ruin the stone and cut yourself!!\n\r", ch);
+                    damage(ch, ch, ch->level, gsn_sharpen, FALSE);
+                    act ("$n cuts $mself while sharpening $m blade!", ch, NULL, NULL, TO_ROOM);
+                    extract_obj(wobj);
+                    return;
+            }
         }
 
         if (in_c_room)
@@ -2029,12 +2130,30 @@ void do_forge (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (number_percent() > ch->pcdata->learned[gsn_forge])
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
         {
-                send_to_char("You slip while hammering your armour and pound yourself!\n\r", ch);
-                damage(ch, ch, ch->level, gsn_forge, FALSE);
-                act ("$n pounds $mself while forging $s armour!", ch, NULL, NULL, TO_ROOM);
+                send_to_char("You can't remember how to do that.\n\r", ch);
                 return;
+        }
+
+        if (!IS_AFFECTED(ch, AFF_ARM_TRAUMA))
+        {
+            if (number_percent() > ch->pcdata->learned[gsn_forge])
+            {
+                    send_to_char("You slip while hammering your armour and pound yourself!\n\r", ch);
+                    damage(ch, ch, ch->level, gsn_forge, FALSE);
+                    act ("$n pounds $mself while forging $s armour!", ch, NULL, NULL, TO_ROOM);
+                    return;
+            }
+        }
+        else {
+            if (number_percent() > (ch->pcdata->learned[gsn_forge]/2))
+            {
+                    send_to_char("You clumsily slip while hammering your armour and pound yourself!\n\r", ch);
+                    damage(ch, ch, ch->level, gsn_forge, FALSE);
+                    act ("$n pounds $mself while forging $s armour!", ch, NULL, NULL, TO_ROOM);
+                    return;
+            }
         }
 
         if (in_c_room)
@@ -2347,6 +2466,12 @@ void do_breathe (CHAR_DATA *ch, char *argument)
         if (!ch->fighting)
         {
                 send_to_char("You aren't fighting anyone.\n\r", ch);
+                return;
+        }
+
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char("Your head is too damaged to use breath attacks.\n\r", ch);
                 return;
         }
 
@@ -2936,6 +3061,12 @@ void do_chant(CHAR_DATA *ch, char *arg)
                 return;
         }
 
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char("You can't remember the words!\n\r", ch);
+                return;
+        }
+
         if( is_name( arg, "protection" ) )
         {
                 if( ch->fighting )
@@ -3275,6 +3406,18 @@ void do_sing(CHAR_DATA *ch, char* arg)
         if( !ch->pcdata->learned[skill_lookup(song_table[i].affect)] )
         {
                 send_to_char( "You don't know how to sing that song.\n\r", ch );
+                return;
+        }
+
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char("You can't remember the words!\n\r", ch);
+                return;
+        }
+
+        if (IS_AFFECTED(ch, AFF_ARM_TRAUMA))
+        {
+                send_to_char("Your arms are too damaged--you can't play your instrument.\n\r", ch);
                 return;
         }
 
@@ -4778,6 +4921,12 @@ void do_counterbalance (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char("You can't remember how to do that.\n\r", ch);
+                return;
+        }
+
         /*
                 always succeed - but percentage based on skill      if (number_percent() > ch->pcdata->learned[gsn_counterbalance])
                 {
@@ -5156,7 +5305,6 @@ void do_trigger (CHAR_DATA *ch, char *argument)
 }
 
 
-
 void do_classify( CHAR_DATA *ch, char *arg )
 {
         OBJ_DATA *obj;
@@ -5190,6 +5338,7 @@ void do_classify( CHAR_DATA *ch, char *arg )
         if( obj->item_type != ITEM_PILL
             && obj->item_type != ITEM_FOOD
             && obj->item_type != ITEM_PAINT
+            && obj->item_type != ITEM_SMOKEABLE
             && obj->item_type != ITEM_POTION )
         {
                 send_to_char( "Your herb lore won't help you describe that type of object.\n\r", ch );
@@ -5205,7 +5354,7 @@ void do_classify( CHAR_DATA *ch, char *arg )
 
         if( obj->item_type == ITEM_FOOD )
         {
-                sprintf( buf, "%s looks like food", capitalize( obj->short_descr ) );
+                sprintf( buf, "%s looks like <15>food<0>", capitalize( obj->short_descr ) );
                 if( obj->value[3] != 0 )
                         strcat( buf, ".  It's probably not safe to consume." );
         }
@@ -5213,10 +5362,12 @@ void do_classify( CHAR_DATA *ch, char *arg )
         {
                 sprintf( buf, "%s looks like a ", capitalize( obj->short_descr ) );
                 if( obj->item_type == ITEM_PILL )
-                        strcat( buf, "pill" );
+                        strcat( buf, "<15>pill<0>" );
                 else if( obj->item_type == ITEM_POTION )
-                        strcat( buf, "potion" );
-                else strcat( buf, "paint" );
+                        strcat( buf, "<15>potion<0>" );
+                else if( obj->item_type == ITEM_SMOKEABLE )
+                        strcat( buf, "<15>smokeable substance<0>" );
+                else strcat( buf, "<15>paint<0>" );
                 strcat( buf, ".\n\rEffects:" );
                 found = FALSE;
                 for( i=1; i < 4; i++ )

@@ -383,13 +383,13 @@ He barely looks up at you as you enter.
 #27419
 training dummy isdfughsdifgh~
 a training dummy~
-A training dummy has been set up here for soldiers to test weapons on.
+A dummy has been set up here for soldiers to train with.
 ~
 This training dummy has been bolted to the floor and is used by the fortress's
 soldiers to test weapons on.  It has taken terrible punishment over the years,
 but it is very robustly constructed, and well-maintained.
 ~
-2|64|16777216|33554432|9223372036854775808 1|64|9223372036854775808 0 S
+2|64|16777216|33554432|134217728|9223372036854775808 1|64|9223372036854775808 0 S
 41 0 0 0d0+0 0d0+0
 290 0
 8 8 0

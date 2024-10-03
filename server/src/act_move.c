@@ -396,7 +396,7 @@ void move_char(CHAR_DATA *ch, int door)
         && ( ( ch->race != RACE_SAHUAGIN )
           && ( ch->race != RACE_GRUNG ) ) )
         {
-                send_to_char("You may not dive underwater in mist form.\n\r", ch);
+                send_to_char("You can't go underwater in mist form.\n\r", ch);
                 return;
         }
 
@@ -1124,6 +1124,13 @@ void do_climb(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
+                if ( IS_AFFECTED(ch, AFF_LEG_TRAUMA)
+                ||   IS_AFFECTED(ch, AFF_ARM_TRAUMA) )
+                {
+                        send_to_char("Your limbs are too damaged to attempt a climb.\n\r", ch);
+                        return;
+                }
+
                 pexit = ch->in_room->exit[wall];
                 act ("You examine the $d, and decide how best to tackle it.",
                      ch, NULL, pexit->keyword, TO_CHAR);
@@ -1648,6 +1655,12 @@ void do_pick(CHAR_DATA *ch, char *argument)
                         break;
         }
 
+        if ( IS_AFFECTED(ch, AFF_ARM_TRAUMA) )
+        {
+                send_to_char("Your hands must be undamaged to pick locks.\n\r", ch);
+                return;
+        }
+
         if ((obj = get_obj_here(ch, arg)))
         {
                 if (obj->item_type != ITEM_CONTAINER)
@@ -2155,6 +2168,12 @@ void do_meditate (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (!IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char("Your head throbs with the effort, you cannot meditate.\n\r", ch);
+                return;
+        }
+
         if (IS_AFFECTED(ch, AFF_MEDITATE))
                 REMOVE_BIT(ch->affected_by, AFF_MEDITATE);
 
@@ -2264,6 +2283,12 @@ void do_kiai (CHAR_DATA *ch, char *argument)
 
         if (is_safe(ch, victim))
                 return;
+
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char("You can't concentrate well enough to do that.\n\r", ch);
+                return;
+        }
 
         WAIT_STATE(ch, skill_table[gsn_kiai].beats);
         ch->mana -= mana;
@@ -3077,7 +3102,8 @@ void do_unarmed_combat (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (get_curr_int (ch) < 16)
+        if ( ( get_curr_int (ch) < 16)
+        ||   ( IS_AFFECTED(ch, AFF_HEAD_TRAUMA) ) )
         {
                 send_to_char ("You are unable to remember the details of the art...\n\r", ch);
                 return;
@@ -3129,7 +3155,8 @@ void do_warcry (CHAR_DATA *ch, char *argument)
         if (is_affected (ch, gsn_warcry))
                 return;
 
-        if (!IS_NPC(ch) && get_curr_int (ch) < 16)
+        if ( (!IS_NPC(ch) && get_curr_int (ch) < 16)
+        ||   ( IS_AFFECTED(ch, AFF_HEAD_TRAUMA) ) )
         {
                 send_to_char ("You are unable to remember the complex warchant...\n\r", ch);
                 return;
@@ -3284,6 +3311,12 @@ void do_bash (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if ( IS_AFFECTED(ch, AFF_ARM_TRAUMA) )
+        {
+                send_to_char("Your arms are too damaged to bash things with.\n\r", ch);
+                return;
+        }
+
         if ((door = find_door(ch, arg)) >= 0)
         {
                 ROOM_INDEX_DATA *to_room;
@@ -3326,6 +3359,14 @@ void do_bash (CHAR_DATA *ch, char *argument)
                 if ((get_curr_str(ch) >= 20)
                     && number_percent() < (chance + 4 * (get_curr_str(ch) - 20)))
                 {
+                        if (IS_AFFECTED(ch, AFF_TORSO_TRAUMA))
+                        {
+                                if (number_percent() < get_curr_str(ch))
+                                {
+                                        send_to_char("You are too weakened by your gut wound to bash it open.\n\r", ch );
+                                        return;
+                                }
+                        }
                         /* Success */
                         REMOVE_BIT(pexit->exit_info, EX_CLOSED);
                         if (IS_SET(pexit->exit_info, EX_LOCKED))

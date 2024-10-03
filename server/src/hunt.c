@@ -495,7 +495,15 @@ void do_hunt( CHAR_DATA *ch, char *argument )
          * Deduct some movement.
          */
         if( ch->move > 2 )
+        {
+            if ( IS_AFFECTED(ch, AFF_LEG_TRAUMA) )
+            {
+                ch->move -= ch->move / 4;
+            }
+            else {
                 ch->move -= ch->move / 8;
+            }
+        }
         else
         {
                 send_to_char( "You're too exhausted to hunt anyone!\n\r", ch );

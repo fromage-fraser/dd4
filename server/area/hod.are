@@ -1725,10 +1725,10 @@ the jungle.~
 #55053
 deadly horns~
 deadly horns~
-A pair of deadly horns have been ripped out of some things head.~
+A pair of deadly horns have been ripped out of something's head.~
 ~
 5 67108864 8192
-~ ~ ~ 11~
+1~ ~ ~ 11~
 2 0 0
 
 #55054
@@ -1737,7 +1737,7 @@ flashing claws~
 A set of claws have been severed from something.~
 ~
 5 1048576|67108864 8192
-~ ~ ~ 3~
+3~ ~ ~ 3~
 2 0 0
 A
 19 5
@@ -1924,7 +1924,7 @@ a set of werewolf fangs~
 A set of fangs have been ripped out of the mouth of a werewolf.~
 ~
 5 16777216|67108864 8192
-~ ~ ~ 10~
+1~ ~ ~ 10~
 3 0 0
 A
 19 5

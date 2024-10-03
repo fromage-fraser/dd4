@@ -280,7 +280,7 @@ bool is_immune_to (CHAR_DATA *victim, unsigned long int damtype)
 
 /*
  * Compute a saving throw.
- * Negative apply's make saving throw better.
+ * Negative applies make saving throw better.
  */
 bool saves_spell (int level, CHAR_DATA *victim)
 {
@@ -397,6 +397,17 @@ void do_cast( CHAR_DATA *ch, char *argument )
                     act("$n slurs the words to a spell and it fizzles out.",ch,NULL,NULL,TO_ROOM);
                     return;
                 }
+            }
+        }
+
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+            if (number_percent() <= 50)
+            {
+                WAIT_STATE(ch, 8);
+                send_to_char( "You struggle to recall the incantation, due to your brain injury.\n\r", ch );
+                act("$n starts to cast a spell, then looks confused and stops.",ch,NULL,NULL,TO_ROOM);
+                return;
             }
         }
 
@@ -962,6 +973,11 @@ void spell_synaptic_blast (int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *) vo;
         int        dam;
+
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char("Your brain isn't working well enough to use this spell.\n\r", ch);
+        }
 
         /* dam is 5-12 per level */
 
@@ -1717,10 +1733,15 @@ void spell_cure_blindness( int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
         }
 
+        if (IS_AFFECTED(victim, AFF_EYE_TRAUMA))
+        {
+                send_to_char( "The eyes are too badly damaged for your spell to be effective.\n\r", ch );
+                return;
+        }
+
         affect_strip(victim, gsn_blindness);
         affect_strip(victim, gsn_gouge);
         affect_strip(victim, gsn_dirt);
-        REMOVE_BIT(victim->affected_by, AFF_BLIND);
         REMOVE_BIT(victim->affected_by, AFF_BLIND);
 
         if (ch != victim)
@@ -1994,6 +2015,10 @@ void spell_cure_poison( int sn, int level, CHAR_DATA *ch, void *vo )
                 affect_strip(victim, gsn_blindness);
                 REMOVE_BIT(victim->affected_by, AFF_DOT);
                 REMOVE_BIT(victim->affected_by, AFF_BLIND);
+                if (!is_affected(victim, gsn_target))
+                {
+                    REMOVE_BIT(victim->affected_by, AFF_EYE_TRAUMA);
+                }
         }
 
         if (!IS_NPC(victim))
@@ -2077,6 +2102,10 @@ void spell_stabilise( int sn, int level, CHAR_DATA *ch, void *vo )
                 affect_strip(victim, gsn_blindness);
                 REMOVE_BIT(victim->affected_by, AFF_DOT);
                 REMOVE_BIT(victim->affected_by, AFF_BLIND);
+                if (!is_affected(victim, gsn_target))
+                {
+                    REMOVE_BIT(victim->affected_by, AFF_EYE_TRAUMA);
+                }
         }
 
         /*
@@ -2100,8 +2129,8 @@ void spell_stabilise( int sn, int level, CHAR_DATA *ch, void *vo )
             check_group_bonus(ch);
         }
 
-        send_to_char("Your body returns to its normal state.\n\r", victim);
-        act("$C returns to $S normal state.", ch, NULL, victim, TO_NOTVICT);
+        send_to_char("Your body returns to its natural state.\n\r", victim);
+        act("$C returns to $S natural state.", ch, NULL, victim, TO_NOTVICT);
 
 }
 
@@ -2198,6 +2227,89 @@ void spell_cure_serious( int sn, int level, CHAR_DATA *ch, void *vo )
         return;
 }
 
+void spell_regenerate( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+        CHAR_DATA *victim = (CHAR_DATA *) vo;
+
+        if (IS_NPC(victim))
+        {
+            if (IS_SET(victim->act, ACT_NO_HEAL))
+            {
+                send_to_char( "Your spell has no effect on them.\n\r", ch );
+                return;
+            }
+        }
+
+        if ( ch != victim )
+        {
+                send_to_char( "Ok.\n\r", ch );
+                check_group_bonus(ch);
+        }
+
+        if (IS_AFFECTED(victim, AFF_EYE_TRAUMA))
+        {
+                affect_strip(victim, gsn_blindness);
+                affect_strip(victim, gsn_gouge);
+                affect_strip(victim, gsn_dirt);
+                affect_strip(victim, gsn_eye_trauma);
+                REMOVE_BIT(victim->affected_by, AFF_EYE_TRAUMA);
+                REMOVE_BIT(victim->affected_by, AFF_BLIND);
+                send_to_char( "Your eyes are miraculously healed.\n\r", victim );
+                act( "$n's eyes are miraculously healed.", victim, NULL, NULL, TO_ROOM );
+        }
+
+        if (IS_AFFECTED(victim, AFF_HEAD_TRAUMA))
+        {
+                affect_strip(victim, gsn_head_trauma);
+                REMOVE_BIT(victim->affected_by, AFF_HEAD_TRAUMA);
+                send_to_char( "You instantly recover from your brain injury.\n\r", victim );
+                act( "$n instantly recovers from $n brain injury.", victim, NULL, NULL, TO_ROOM );
+        }
+
+        if (IS_AFFECTED(victim, AFF_ARM_TRAUMA))
+        {
+                affect_strip(victim, gsn_arm_trauma);
+                REMOVE_BIT(victim->affected_by, AFF_ARM_TRAUMA);
+                send_to_char( "Your arms are restored to peak condition.\n\r", victim );
+                act( "$n's arms are restored to peak condition.", victim, NULL, NULL, TO_ROOM );
+        }
+
+        if (IS_AFFECTED(victim, AFF_LEG_TRAUMA))
+        {
+                affect_strip(victim, gsn_leg_trauma);
+                REMOVE_BIT(victim->affected_by, AFF_LEG_TRAUMA);
+                send_to_char( "Your legs are instantaneously renewed.\n\r", victim );
+                act( "$n's legs are instantaneously renewed.", victim, NULL, NULL, TO_ROOM );
+        }
+
+        if (IS_AFFECTED(victim, AFF_HEART_TRAUMA))
+        {
+                affect_strip(victim, gsn_heart_trauma);
+                REMOVE_BIT(victim->affected_by, AFF_HEART_TRAUMA);
+                REMOVE_BIT(victim->affected_by, AFF_DOT);
+                send_to_char( "Your heart stops bleeding and is immediately healed.\n\r", victim );
+                act( "$n's heart is immediately healed.", victim, NULL, NULL, TO_ROOM );
+        }
+
+        if (IS_AFFECTED(victim, AFF_TAIL_TRAUMA))
+        {
+                affect_strip(victim, gsn_tail_trauma);
+                REMOVE_BIT(victim->affected_by, AFF_TAIL_TRAUMA);
+                send_to_char( "Your tail reclaims its full functionality.\n\r", victim );
+                act( "$n's tail reclaims its full functionality.", victim, NULL, NULL, TO_ROOM );
+        }
+
+        if (IS_AFFECTED(victim, AFF_TORSO_TRAUMA))
+        {
+                affect_strip(victim, gsn_torso_trauma);
+                REMOVE_BIT(victim->affected_by, AFF_TORSO_TRAUMA);
+                REMOVE_BIT(victim->affected_by, AFF_DOT);
+                send_to_char( "Your grievously-wounded torso is magically repaired.\n\r", victim );
+                act( "$n's grievously-wounded torso is magically repaired.", victim, NULL, NULL, TO_ROOM );
+        }
+
+        return;
+}
 
 void spell_curse( int sn, int level, CHAR_DATA *ch, void *vo )
 {
@@ -2649,7 +2761,7 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                         return;
                 }
 
-                if (IS_AFFECTED(victim, AFF_BLIND) && IS_IMMORTAL( ch ))
+                if (IS_AFFECTED(victim, AFF_BLIND) && !IS_AFFECTED(victim, AFF_EYE_TRAUMA) && IS_IMMORTAL( ch ))
                 {
                         REMOVE_BIT(victim->affected_by, AFF_BLIND);
                         if (HAS_EYES(victim))
@@ -2841,11 +2953,60 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                         return;
                 }
 
-                if (IS_AFFECTED(victim, AFF_CONFUSION) && IS_IMMORTAL( ch ))
+                if (IS_AFFECTED(victim, AFF_EYE_TRAUMA) && IS_IMMORTAL( ch ))
                 {
-                        REMOVE_BIT(victim->affected_by, AFF_CONFUSION);
-                        send_to_char( "You feel less confused.\n\r", victim );
-                        act( "$n no longer looks quite so confused.", victim, NULL, NULL, TO_ROOM );
+                        affect_strip(victim, gsn_eye_trauma);
+                        REMOVE_BIT(victim->affected_by, AFF_EYE_TRAUMA);
+                        send_to_char( "Your eyes are miraculously healed!\n\r", victim );
+                        act( "$n's eyes are miraculously healed!", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+                if (IS_AFFECTED(victim, AFF_HEAD_TRAUMA) && IS_IMMORTAL( ch ))
+                {
+                        affect_strip(victim, gsn_head_trauma);
+                        REMOVE_BIT(victim->affected_by, AFF_HEAD_TRAUMA);
+                        send_to_char( "Your brain injury is miraculously healed!\n\r", victim );
+                        act( "$n's brain injury is miraculously healed!", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+                if (IS_AFFECTED(victim, AFF_ARM_TRAUMA) && IS_IMMORTAL( ch ))
+                {
+                        affect_strip(victim, gsn_arm_trauma);
+                        REMOVE_BIT(victim->affected_by, AFF_ARM_TRAUMA);
+                        send_to_char( "Your arms are miraculously healed!\n\r", victim );
+                        act( "$n's arms are miraculously healed!", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+                if (IS_AFFECTED(victim, AFF_LEG_TRAUMA) && IS_IMMORTAL( ch ))
+                {
+                        affect_strip(victim, gsn_leg_trauma);
+                        REMOVE_BIT(victim->affected_by, AFF_LEG_TRAUMA);
+                        send_to_char( "Your legs are miraculously healed!\n\r", victim );
+                        act( "$n's legs are miraculously healed!", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+                if (IS_AFFECTED(victim, AFF_HEART_TRAUMA) && IS_IMMORTAL( ch ))
+                {
+                        affect_strip(victim, gsn_heart_trauma);
+                        REMOVE_BIT(victim->affected_by, AFF_HEART_TRAUMA);
+                        send_to_char( "Your heart stops bleeding and is miraculously healed!\n\r", victim );
+                        act( "$n's heart is miraculously healed!", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+                if (IS_AFFECTED(victim, AFF_TAIL_TRAUMA) && IS_IMMORTAL( ch ))
+                {
+                        affect_strip(victim, gsn_tail_trauma);
+                        REMOVE_BIT(victim->affected_by, AFF_TAIL_TRAUMA);
+                        send_to_char( "Your tail is miraculously healed!\n\r", victim );
+                        act( "$n's tail is miraculously healed!", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+                if (IS_AFFECTED(victim, AFF_TORSO_TRAUMA) && IS_IMMORTAL( ch ))
+                {
+                        affect_strip(victim, gsn_torso_trauma);
+                        REMOVE_BIT(victim->affected_by, AFF_TORSO_TRAUMA);
+                        send_to_char( "Your torso is miraculously healed!\n\r", victim );
+                        act( "$n's torso is miraculously healed!", victim, NULL, NULL, TO_ROOM );
                         return;
                 }
 
@@ -2952,6 +3113,12 @@ void spell_enchant_weapon(int sn, int level, CHAR_DATA *ch, void *vo)
             || obj->affected)
         {
                 send_to_char("That item cannot be enchanted.\n\r", ch);
+                return;
+        }
+
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char( "You've forgotten how to enchant objects.\n\r", ch );
                 return;
         }
 
@@ -3755,6 +3922,12 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
         };
 
 
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char( "You can't remember how to identify objects.\n\r", ch );
+                return;
+        }
+
         /*
          *  Name and type
          */
@@ -4310,6 +4483,12 @@ void spell_dark_ritual( int sn, int level, CHAR_DATA *ch, void *vo )
         if (obj->item_type != ITEM_CORPSE_NPC)
         {
                 send_to_char ("There do not appear to be any fresh corpses about...\n\r", ch );
+                return;
+        }
+
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char ("You cannot remember how to perform the complex ritual.\n\r", ch);
                 return;
         }
 
@@ -5083,6 +5262,12 @@ void spell_summon_demon( int sn, int level, CHAR_DATA *ch, void *vo )
                         count++;
         }
 
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char ("You sweat and strain, but cannot remember the complex summoning spell.\n\r", ch);
+                return;
+        }
+
         if (count > 5)
         {
                 send_to_char ("You draw a pentagram and invoke your spell, but no demon appears.\n\r", ch);
@@ -5297,6 +5482,12 @@ void spell_ventriloquate( int sn, int level, CHAR_DATA *ch, void *vo )
         char       speaker [ MAX_INPUT_LENGTH  ];
 
         target_name = one_argument( target_name, speaker );
+
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char( "You seem to have forgotten how to do that.\n\r", ch );
+                return;
+        }
 
         /*
          * Shade 22.3.22 - minor fixes
@@ -5862,6 +6053,10 @@ void spell_cell_adjustment ( int sn, int level, CHAR_DATA *ch, void *vo )
                 affect_strip(victim, gsn_blindness);
                 REMOVE_BIT(victim->affected_by, AFF_DOT);
                 REMOVE_BIT(victim->affected_by, AFF_BLIND);
+                if (!is_affected(victim, gsn_target))
+                {
+                    REMOVE_BIT(victim->affected_by, AFF_EYE_TRAUMA);
+                }
 
                 if (well_count == 0)
                 {
@@ -6819,7 +7014,8 @@ void spell_share_strength ( int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
         }
 
-        if ( get_curr_str( ch ) <= 5 )
+        if ( ( get_curr_str( ch ) <= 5 )
+        ||   ( IS_AFFECTED(ch, AFF_TORSO_TRAUMA) ) )
         {
                 send_to_char( "You are too weak to share your strength.\n\r", ch );
                 return;
@@ -7230,6 +7426,12 @@ void spell_prayer( int sn, int level, CHAR_DATA *ch, void *vo )
         CHAR_DATA  *gch;
         AFFECT_DATA af;
 
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char( "You've forgotten the words to the complex prayer.\n\r", ch );
+                return;
+        }
+
         for (gch = ch->in_room->people; gch; gch = gch->next_in_room)
         {
                 if ( is_affected ( gch, gsn_prayer )  )
@@ -7477,6 +7679,12 @@ void spell_bless_weapon( int sn, int level, CHAR_DATA *ch, void *vo )
             || obj->affected )
         {
                 send_to_char( "That item cannot be blessed.\n\r", ch );
+                return;
+        }
+
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char( "You've forgotten how the blessing goes.\n\r", ch );
                 return;
         }
 
@@ -9128,6 +9336,10 @@ void spell_runic_cure( int sn, int level, CHAR_DATA *ch, void *vo )
                 affect_strip(victim, gsn_blindness);
                 REMOVE_BIT(victim->affected_by, AFF_DOT);
                 REMOVE_BIT(victim->affected_by, AFF_BLIND);
+                if (!is_affected(victim, gsn_target))
+                {
+                    REMOVE_BIT(victim->affected_by, AFF_EYE_TRAUMA);
+                }
         }
 
         if (!IS_NPC(victim))
@@ -9176,6 +9388,10 @@ void spell_runic_ward( int sn, int level, CHAR_DATA *ch, void *vo )
                 affect_strip(victim, gsn_blindness);
                 REMOVE_BIT(victim->affected_by, AFF_DOT);
                 REMOVE_BIT(victim->affected_by, AFF_BLIND);
+                if (!is_affected(victim, gsn_target))
+                {
+                    REMOVE_BIT(victim->affected_by, AFF_EYE_TRAUMA);
+                }
         }
 
         if (!IS_NPC(victim))
@@ -9712,6 +9928,8 @@ void spell_fleshrot (int sn, int level, CHAR_DATA *ch, void *vo)
         AFFECT_DATA af;
         int blind_chance;
         int blind_ceiling;
+        int dot_dam;
+
         bool add_blind = FALSE;
         int duration = (number_fuzzy(level)/5);
         blind_chance = number_range(1, 100);
@@ -9782,13 +10000,17 @@ void spell_fleshrot (int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
+        dot_dam = (victim->hit / 20);
+        if (dot_dam > MAX_DAMAGE)
+            dot_dam = MAX_DAMAGE;
+
         af.type      = sn;
         af.duration  = duration;
 
         af.bitvector = AFF_DOT;
 
         af.location  = APPLY_NONE;
-        af.modifier  = UMIN((victim->hit / 8), MAX_DAMAGE);
+        af.modifier  = dot_dam;
         affect_to_char( victim, &af );
 
         act("<49>Malodorous ropes of putrid smoke stream from $n's hands!<0>", ch, NULL, NULL, TO_ROOM);
@@ -9802,10 +10024,10 @@ void spell_fleshrot (int sn, int level, CHAR_DATA *ch, void *vo)
             af.duration  = duration;
             af.location  = APPLY_HITROLL;
             af.modifier  = -4;
-            af.bitvector = AFF_BLIND;
+            af.bitvector = (AFF_BLIND + AFF_EYE_TRAUMA);
             affect_to_char( victim, &af );
 
-            send_to_char( "<49>Your eyes rot--you are blind!<0>\n\r", victim );
+            send_to_char( "<49>Your eyes rot away--you are blind!<0>\n\r", victim );
             act( "{W$C is blinded!{x", ch, NULL, victim, TO_NOTVICT );
         }
         return;
@@ -9832,6 +10054,13 @@ bool skill_cannot_be_dispelled (int sn)
             || sn == gsn_berserk
             || sn == gsn_warcry
             || sn == gsn_swallow
+            || sn == gsn_eye_trauma
+            || sn == gsn_head_trauma
+            || sn == gsn_arm_trauma
+            || sn == gsn_leg_trauma
+            || sn == gsn_heart_trauma
+            || sn == gsn_tail_trauma
+            || sn == gsn_torso_trauma
             || sn == gsn_swim)
                 return TRUE;
 

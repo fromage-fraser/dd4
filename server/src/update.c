@@ -670,6 +670,9 @@ int hit_gain( CHAR_DATA *ch )
                 }
         }
 
+        if (IS_AFFECTED(ch, AFF_HEART_TRAUMA))
+                gain /= 2;
+
         if (ch->hit > ch->max_hit)
         {
                 if (gain >= 0)
@@ -740,6 +743,9 @@ int mana_gain( CHAR_DATA *ch )
                 gain *= 2;
 
         if (IS_SET(ch->in_room->room_flags, ROOM_TOXIC))
+                gain /= 2;
+
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
                 gain /= 2;
 
         if (ch->in_room->vnum == clan_table[ch->clan].heal_room)
@@ -864,6 +870,9 @@ int move_gain( CHAR_DATA *ch )
                 gain *= 2;
 
         if (IS_SET(ch->in_room->room_flags, ROOM_TOXIC))
+                gain /= 2;
+
+        if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
                 gain /= 2;
 
         if (ch->in_room->vnum == clan_table[ch->clan].heal_room)
@@ -1715,16 +1724,21 @@ void char_update( void )
 
                         }
 
-                        if (IS_AFFECTED(ch, AFF_DOT) )
+                        if ( ( ( IS_AFFECTED(ch, AFF_DOT) )
+                           &&  ( !IS_AFFECTED(ch, AFF_NON_CORPOREAL) ) )
+                        || ( IS_AFFECTED(ch, AFF_DOT) && ch->form == FORM_FLY ) )
                         {
                                 for (paf = ch->affected; paf; paf = paf->next)
                                 {
                                         if ( paf->deleted )
-                                        continue;
+                                            continue;
 
-                                        if( paf->bitvector == AFF_DOT )
+                                        if( paf->bitvector && paf->bitvector == AFF_DOT )
                                         {
+                                            if ( number_percent() < DOT_FREQ )
+                                            {
                                                 damage(ch, ch, paf->modifier, paf->type, FALSE);
+                                            }
                                         }
                                 }
                         }
@@ -2199,6 +2213,17 @@ void aggr_update()
                     }
                 }
                 /* End gravity */
+
+                /* Trauma stuff */
+                if ( IS_AFFECTED(mch, AFF_EYE_TRAUMA) )
+                {
+                    SET_BIT(mch->affected_by, AFF_BLIND);
+                }
+
+                if ( IS_AFFECTED(ch, AFF_EYE_TRAUMA) )
+                {
+                    SET_BIT(ch->affected_by, AFF_BLIND);
+                }
 
                 /*
                 * Mobs with DETECT_CURSE will aggro PCs who are cursed by a spell or who are carrying a cursed

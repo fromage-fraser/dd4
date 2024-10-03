@@ -1431,7 +1431,7 @@ sharp curved fangs~
 Some sharp curved fangs have been ripped out of the mouth of a snake.~
 ~
 5 8|16|512|2048|16384|262144|16777216|67108864 1|8192
-~ ~ ~ 10~
+1~ ~ ~ 10~
 1 0 0
 A
 18 20
@@ -1439,10 +1439,10 @@ A
 #56082
 coils Pitch black~
 pitch black coils~
-Pitch black coils.~
+Pitch black coils lie here in a heap.~
 ~
 9 16|512|2048|67108864 1024
-~ ~ ~ ~
+~ 7~ ~ ~
 1 0 0
 A
 2 3
@@ -1834,7 +1834,7 @@ a {wwhite{x paw~
 A {Wwhite{x paw has been severed from Tahlia!~
 ~
 5 1|67108864 8192
-~ ~ ~ 14~
+4~ ~ ~ 14~
 1 0 0
 A
 19 2
@@ -1847,7 +1847,7 @@ a {wwhite{x paw~
 A {Wwhite{x paw has been severed from Tahlia!~
 ~
 5 1|67108864 8192
-~ ~ ~ 14~
+4~ ~ ~ 14~
 1 0 0
 A
 18 10

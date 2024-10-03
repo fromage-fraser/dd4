@@ -71,6 +71,9 @@ void do_disable(CHAR_DATA *ch, char *argument)
 
         chance = ch->pcdata->learned[gsn_disable]/2;
 
+        if (IS_AFFECTED(ch, AFF_ARM_TRAUMA))
+                chance = ((chance * 2) / 3);
+
         if ( !IS_NPC( ch ) && get_curr_dex( ch ) > 22 )
                 chance += 10;
         if (  get_curr_int( ch ) > 19 )

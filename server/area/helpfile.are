@@ -454,7 +454,11 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 ~
 
 0 CHANGES~
-{W September 3024{X
+{W October 2024{X
+-Skill "target" and spell "regenerate" added, to allow for targeting and healing
+ of body regions on players or mobiles.
+
+{W September 2024{X
 -New area: Omu Central is in, with many supporting code and text changes.
 
 {W April 2024{x
@@ -1393,6 +1397,32 @@ Other players can never view your inventory.
 Syntax: kick <<target>
 
 Kick an opponent during battle, causing some damage.
+~
+
+0 TARGET~
+Syntax: target <<body zone>
+
+Target a strike at one of the following body zones: head, eye, arm, leg, heart,
+tail, or torso, with various appropriate TRAUMA-based effects if successful.
+
+Note your target must be made of organic material and possess e.g. a head in
+order for a targeted strike to have any chance of success.
+~
+
+0 TRAUMA 'EYE TRAUMA' 'HEAD TRAUMA' 'ARM TRAUMA' 'LEG TRAUMA' 'HEART TRAUMA' 'TAIL TRAUMA' 'TORSO TRAUMA'~
+Certain attacks, particularly TARGETed attacks, are capable of inflicting
+various kinds of TRAUMA on players and mobiles.
+
+TRAUMA damage lasts indefinitely, has wide-ranging (and not <558>always<559> obvious)
+effects on skills, spells, and combat, and cannot be healed by rest or generic
+healing spells.  Instead it must be treated by seeking out the REGENERATE spell
+from healer mobs or high-level PC healers, finding consumables that can cast
+this spell on you, or (extreme measure!) dying in order to be reborn without the
+condition/s.
+
+Note that shifter classes may have interesting ways to heal various sorts of
+trauma due to the mutability of their physiology.  Discovering these is left as
+an exercise for the player.
 ~
 
 0 'KNIFE TOSS' KNIFE~
@@ -3441,6 +3471,15 @@ heal more damage.  The psionicist disciplines, like many other skills, are
 limited to the psionicist alone.
 ~
 
+0 'REGENERATE'~
+
+Syntax: cast regenerate <<character>
+
+This spell will heal major non-fatal trauma that has been done to a player or
+mobile, for example serious brain injury, missing eyes or arms, a severed tail,
+etc.
+~
+
 0 'CURE POISON'~
 Syntax: cast 'cure poison' <<character>
 
@@ -5038,33 +5077,31 @@ combinations.
 0 ATEMI~
 Syntax: atemi
 
-This skill makes a quick strike toward your victim.  It is the most
-standard of the Martial Artist skills, and hence will cause only
-moderate damage.
+This skill makes a quick strike toward your victim.  It is the most basic of the
+MARTIAL ARTIST skills, hence causes only moderate damage.
 ~
 
 0 KANSETSU~
 Syntax: kansetsu <<victim>
 
-You will attempt an arm lock on your victim by trying this skill. If
-successful you will break the victim's arms, causing them to drop any
-weapons that they might be holding.  As well as disarming your opponent,
-you will inflict moderate damage.
+You will attempt an arm lock on your victim by trying this skill. If successful
+you will break the victim's arms, causing them to drop any weapons that they
+might be holding.  As well as disarming your opponent, you will inflict moderate
+damage.
 ~
 
 0 TETSUI~
 Syntax: tetsui <<victim>
 
-This can be described as the Hammer Fist technique.  A move requiring
-great precision and power, a successful hit will inflict heavy damage.
+This can be described as the hammer fist technique.  A move requiring great
+precision and power, a successful hit will inflict heavy damage.
 ~
 
 0 SHUTO~
 Syntax: shuto <<victim>
 
-This can best be described as a Knife hand strike.  Again great
-concentration is needed for a successful strike, which will inflict heavy
-damage.
+This can best be described as knife hand strike.  Again great concentration is
+needed for a successful strike, which will inflict heavy damage.
 ~
 
 0 YOKOGERI~
@@ -5077,9 +5114,9 @@ successful, cause heavy damage on the unsuspecting foe.
 0 MAWASIGERI~
 Syntax: mawasigeri
 
-This is the most powerful move in the Martial Artists arsenal.  The round
-house kick will most certainly do extreme damage if successful.  If
-combined in a combo then the effects on the opponent are devastating.
+This is the most powerful move in the MARTIAL ARTIST's arsenal.  The round
+house kick will do extreme damage if successful.  If combined in a combo then
+the effects on the opponent are devastating.
 ~
 
 0 CHOKE~
@@ -5685,7 +5722,7 @@ Ranger skills and spells{x
 second attack           sneak                   third attack
 hide                    forage                  dowse
 dodge                   disarm                  parry
-find traps              disarm traps            grip
+find traps              disable                 grip
 feint                   shoot                   snapshot
 swim
 
@@ -5697,7 +5734,8 @@ barkskin                third shot              hunt
 detect hidden           infravision             snare
 dual                    enhanced hit            classify
 advanced consider       faerie fire             accuracy
-fast healing
+fast healing            lore                    forge
+sharpen                 mount
 
 See 'HELP SBARBARIAN' and 'HELP SBARD' for lists of barbarian and bard
 skills respectively.
@@ -5966,7 +6004,7 @@ poison                  hex                     spiritwrack
 entrapment              animate dead            fireshield
 third spell             bladethirst             fear
 deter                   harm                    cure poison
-cure blind              refresh                 remove curse
+cure blindness          refresh                 remove curse
 second attack           stabilise
 ~
 
@@ -6492,8 +6530,8 @@ Syntax: lunge <<target>
 
 A bloodthirsty Vampire may lunge for an opponent's neck, causing heavy
 damage.  Lunge can only be used on an unprepared enemy.  DOUBLE LUNGE is
-even more devastating.  Vampires full on blood will have a more powerful
-lunge, Vampires weak on blood will have a weaker lunge.
+even more devastating.  Vampires full of blood will have a more powerful
+lunge, vampires low on blood will have a weaker lunge.
 
 ~
 
@@ -7072,6 +7110,42 @@ Clan members should not be carrying more than one of each item they are
 able to wear.
 ~
 
+101 CLASSNUM 'SUBCLASS NUM' 'CLASS NUMBER' SUBCLASS NUMBER' 'SUB NUM'~
+
+Numbers for classes and subclasses (used by mset etc)
+=====================================================
+
+CLASS_MAGE                0
+CLASS_CLERIC              1
+CLASS_THIEF               2
+CLASS_WARRIOR             3
+CLASS_PSIONICIST          4
+CLASS_SHAPE_SHIFTER       5
+CLASS_BRAWLER             6
+CLASS_RANGER              7
+CLASS_SMITHY              8
+
+SUB_CLASS_NONE            0
+SUB_CLASS_NECROMANCER     1
+SUB_CLASS_WARLOCK         2
+SUB_CLASS_TEMPLAR         3
+SUB_CLASS_DRUID           4
+SUB_CLASS_NINJA           5
+SUB_CLASS_BOUNTY          6
+SUB_CLASS_THUG            7
+SUB_CLASS_KNIGHT          8
+SUB_CLASS_INFERNALIST     9
+SUB_CLASS_WITCH           10
+SUB_CLASS_WEREWOLF        11
+SUB_CLASS_VAMPIRE         12
+SUB_CLASS_MONK            13
+SUB_CLASS_MARTIAL_ARTIST  14
+SUB_CLASS_BARBARIAN       15
+SUB_CLASS_BARD            16
+SUB_CLASS_ENGINEER        17
+SUB_CLASS_RUNESMITH       18
+
+~
 
 101 BITZ~
 /*

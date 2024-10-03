@@ -186,7 +186,7 @@ teeth~
 A pair of teeth are here.~
 ~
 5 67108864 0
-~ ~ ~ 10~
+1~ ~ ~ 10~
 5 0 0
 
 #10100
@@ -195,7 +195,7 @@ claws~
 A pair of claws drip with blood here.~
 ~
 5 67108864 0
-~ ~ ~ 14~
+4~ ~ ~ 14~
 5 0 0
 
 #10101
@@ -204,7 +204,7 @@ bloody fangs~
 Bloody Fangs.~
 ~
 5 67108864 0
-~ ~ ~ 10~
+1~ ~ ~ 10~
 5 0 0
 
 #10102
@@ -248,7 +248,7 @@ a tail~
 A pointy tail has been separated from its owner.~
 ~
 5 67108864 0
-~ ~ ~ 11~
+6~ ~ ~ 11~
 10 0 0
 
 #10107

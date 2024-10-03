@@ -381,8 +381,8 @@ void do_pardon(CHAR_DATA *ch, char *argument)
                 if (IS_SET(victim->status, PLR_KILLER))
                 {
                         REMOVE_BIT(victim->status, PLR_KILLER);
-                        send_to_char("Killer flag removed.\n\r", ch);
-                        send_to_char("You are no longer a KILLER.\n\r", victim);
+                        send_to_char("<15>Killer<0> flag removed.\n\r", ch);
+                        send_to_char("You are no longer a <15>KILLER<0>.\n\r", victim);
                 }
                 return;
         }
@@ -392,8 +392,8 @@ void do_pardon(CHAR_DATA *ch, char *argument)
                 if (IS_SET( victim->status, PLR_THIEF))
                 {
                         REMOVE_BIT(victim->status, PLR_THIEF);
-                        send_to_char("Thief flag removed.\n\r", ch);
-                        send_to_char("You are no longer a THIEF.\n\r", victim);
+                        send_to_char("<12>Thief<0> flag removed.\n\r", ch);
+                        send_to_char("You are no longer a <12>THIEF<0>.\n\r", victim);
                 }
                 return;
         }
@@ -415,8 +415,8 @@ void do_pardon(CHAR_DATA *ch, char *argument)
                 {
                         REMOVE_BIT(victim->status, PLR_HUNTED);
                         victim->pcdata->bounty = 0;
-                        send_to_char("Hunted flag removed.\n\r", ch);
-                        send_to_char("You are no longer HUNTED.\n\r", victim);
+                        send_to_char("<11>Hunted<0> flag removed.\n\r", ch);
+                        send_to_char("You are no longer <11>HUNTED<0>.\n\r", victim);
                 }
                 return;
         }
@@ -1013,16 +1013,19 @@ void do_onstat( CHAR_DATA *ch, char *argument )
 
 void do_ostat( CHAR_DATA *ch, char *argument )
 {
-        OBJ_DATA    *obj;
-        OBJSET_INDEX_DATA *pObjSetIndex;
-        CHAR_DATA   *rch;
-        AFFECT_DATA *paf;
-        char         buf  [ MAX_STRING_LENGTH ];
-        char         buf1 [ MAX_STRING_LENGTH ];
-        char         arg  [ MAX_INPUT_LENGTH  ];
-        unsigned long int          i;
-        unsigned long int          next;
+        OBJ_DATA            *obj;
+        OBJSET_INDEX_DATA   *pObjSetIndex;
+        CHAR_DATA           *rch;
+        AFFECT_DATA         *paf;
+        extern char*        body_part_types[];
+        char                buf  [ MAX_STRING_LENGTH ];
+        char                buf1 [ MAX_STRING_LENGTH ];
+        char                arg  [ MAX_INPUT_LENGTH  ];
+        int                 has_bp_flag;
+        unsigned long int   i;
+        unsigned long int   next;
 
+        has_bp_flag = 0;
         rch = get_char( ch );
 
         if ( !authorized( rch, gsn_ostat ) )
@@ -1079,7 +1082,6 @@ void do_ostat( CHAR_DATA *ch, char *argument )
 
         if (obj->extra_flags)
         {
-
                 strcat( buf1, "Item flags (num): {W");
                 /*sprintf(buf, "extra flags for item are %lu\n\r", obj->extra_flags);
                 log_string(buf);*/
@@ -1094,9 +1096,42 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                         {
                                 strcat(buf1, " ");
                                 strcat(buf1, extra_bit_name(i));
+                                if ( i == ITEM_BODY_PART)
+                                {
+                                        has_bp_flag = 1;
+                                }
                         }
                 }
                 strcat(buf1, "{x\n\r");
+
+                /* If there's a body part item that we might care about for combat,
+                   particularly do_target, show details of type. 29/9/24 -- Owl */
+
+                if ( ( has_bp_flag)
+                &&   ( obj->item_type == ITEM_ARMOR
+                    || obj->item_type == ITEM_WEAPON
+                    || obj->item_type == ITEM_LIGHT ) )
+                {
+                        strcat( buf1, "Body part type: {G");
+
+                        if (obj->item_type == ITEM_ARMOR)
+                        {
+                                sprintf( buf, "%s{x [{W%d{x] ",
+                                        body_part_types[obj->value[1]],
+                                        obj->value[1]);
+                                strcat( buf1, buf );
+                        }
+
+                        if ( obj->item_type == ITEM_WEAPON || obj->item_type == ITEM_LIGHT )
+                        {
+                                sprintf( buf, "%s{x [{W%d{x] ",
+                                        body_part_types[obj->value[0]],
+                                        obj->value[0]);
+                                strcat( buf1, buf );
+                        }
+
+                        strcat(buf1, "{x\n\r");
+                }
         }
 
         sprintf( buf, "Wear bits: {W" );

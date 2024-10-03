@@ -2117,7 +2117,7 @@ jaws full of sharp teeth~
 Your sharp teeth protrude from your fearsome jaws.~
 ~
 5 16777216|67108864 0
-0~ 0~ 0~ 10~
+1~ 0~ 0~ 10~
 1 0 0
 #27235
 tail spine~
@@ -2125,7 +2125,7 @@ a sharp tail spine~
 The sharp tail spine of a stingray lies here.~
 ~
 5 16777216|67108864 0
-0~ 0~ 0~ 11~
+6~ 0~ 0~ 11~
 1 0 0
 #27236
 venomous tail spine~
@@ -2133,7 +2133,7 @@ a venomous tail spine~
 The venomous tail spine of a stingray lies here.~
 ~
 5 16384|67108864 0
-0~ 0~ 0~ 0~
+6~ 0~ 0~ 0~
 1 0 0
 #27237
 ledger~
