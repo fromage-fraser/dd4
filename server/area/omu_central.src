@@ -5839,7 +5839,192 @@ a variety of potions, pills, ointments or variable quality and efficacy. He
 generally only sells to fellow grung, but has been known to make an exception
 for authorised visitors to Omu.
 ~
-vn  28400
+vn  28461
+lv  62
+al  -343
+sx  male
+act stay_area sentinel
+aff swim infrared det_hidden det_sneak
+sp  spec_blue_grung
+mp  greet_prog 100
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            yell Itrewic ekik, usv si geou xurwk wux jaseve!
+            murder $n
+        endif
+        endif
+    endif
+~
+
+$mob
+nm blue grung Vrall
+sh Vrall
+lo <63>Vrall the spearsmith scowls as you enter.<0>
+de
+Vrall is a muscular blue grung, and makes his living forging and selling spears,
+the dominant hand-to-hand weapon of the grung. He generally only sells to fellow
+grung, but has been known to make an exception for authorised visitors to Omu.
+~
+vn  28462
+lv  62
+al  -373
+sx  male
+act stay_area sentinel
+aff swim infrared det_hidden det_sneak
+sp  spec_blue_grung
+mp  greet_prog 100
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            yell Wux plythu drekim. Si geou airem wux!
+            murder $n
+        endif
+        endif
+    endif
+~
+
+$mob
+nm blue grung Gleeth slaver
+sh Gleeth
+lo <63>Gleeth the slaver proudly displays his living wares.<0>
+de
+Gleeth is a particularly loathsome blue grung, making his living trafficking in
+the misery of his fellow intelligent creatures.  Despite the nastiness of his
+business, he is proud of his work, and would eagerly extoll the virtue and
+superiority of his 'merchandise' were he able to speak Common, which he does not.
+Gleeth generally only sells to fellow grung, but has been known to make an
+exception for authorised visitors to Omu.
+~
+vn  28463
+lv  62
+al  -875
+sx  male
+act stay_area sentinel
+aff swim infrared det_hidden det_sneak
+sp  spec_blue_grung
+mp  greet_prog 100
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            yell Sia edroki re wer winhalilti, kagh ti for wer likes di wux!
+            murder $n
+        endif
+        endif
+    endif
+~
+
+$mob
+nm  sahuagin small sad Gersk
+sh  a small, sad sahuagin
+lo  A small, sad sahuagin male cowers here.
+de
+This sahuagin really looks like he's been through the wars.  His body is
+covered in scars and bruises, and he wears an expression of resigned misery.
+~
+vn  28464
+lv  60
+al  -225
+sx  male
+bf  has_tail
+act wimpy
+aff swim infrared poison
+
+$mob
+nm  triton gloomy
+sh  a gloomy triton
+lo A {Bblue-skinned{x man shuffles about gloomily.
+de
+You recognise this blue-skinned, fairly-handsome-if-vaguely-fishy-looking
+man as a Triton, a member of a very distinctive race of undersea-dwelling
+folk. You know that Triton dedicate themselves to protecting magical portals
+from sahuagin, kraken, and other monstrous beings of the sea and so tend towards
+being of lawful and good alignment, but that this also means they're likely to
+be extremely haughty and arrogant. This Triton looks quite beaten-down and
+world-weary.  You imagine this is not how he saw his life turning out.
+~
+vn  28465
+lv  61
+al  630
+sx  male
+aff swim det_invis det_hidden infrared protection battle_aura det_good poisoned
+
+$mob
+nm grung green unfortunate
+sh an unfortunate green grung
+lo <118>A very unfortunate green grung simpers and mewls.<0>
+de
+It looks like this green grung ended up offside with a superior at some point,
+and was sentenced to slavery.  He looks miserable and defeated.  If you didn't
+know that he almost certainly deserved much worse, you might even feel sorry for
+him.
+~
+vn  28466
+lv  62
+al  -401
+sx  male
+aff swim infrared det_hidden det_sneak poisoned
+sp  spec_green_grung
+
+$mob
+nm  elf miserable female sea
+sh  a miserable female sea elf
+lo  <86>A smooth-skinned, teal-coloured sea elf female wails miserably.<0>
+de
+Sea elves are of elven ancestry, though with enough differences to qualify as
+a distinct ancestry. They resemble elves with bluish or greenish tinted skin,
+with long, webbed fingers and toes, and visible gills on their ribs.  This
+sea elf is a tall and elegant female who looks quite out of place in her
+squalid surroundings.  She is obviously miserable, traumatised, and
+uncomfortable.
+~
+vn  28467
+lv  63
+al  845
+sx  female
+aff swim infrared det_hidden det_sneak poisoned det_evil det_invis det_magic det_curse protection detect_traps det_good
+
+
+$mob
+nm  kappa sullen
+sh  a sullen kappa
+lo  <28>A sullen, po-faced kappa is here.<0>
+de
+The kappa is of small-humanoid size and has a stooped stance; his main
+distinguishing feature is a hard shell that covers his back. His head is flat
+and pudgy, and his webbed hands end in sharp claws. He looks sullen.
+~
+vn  28468
+lv  64
+al  -245
+sx  male
+sp  spec_kappa
+aff swim infrared
+
+$mob
+nm  nixie female
+sh  a female nixie
+lo  <121>A female nixie frowns and grumbles.<0>
+de
+Nixies are an aquatic race of sprite, quite small and elven in appearance.
+This one has pale green skin, dark green hair, webbed fingers and toes,
+pointed ears, and wide, silvery eyes.  She stands about 4 feet tall, and
+is wearing colourful clothing made out of seaweed, shells, and pearls. She looks
+quite discontented.
+~
+vn  28469
 lv  65
 al  0
 sx  female
@@ -7642,23 +7827,79 @@ the result of an ancient enchantment.
 ~
 
 $obj
-nm  fangs
-sh  a large pair of fangs
-lo  The huge fangs of some undersea creature lie here.
-vn  28400
-ty  weapon
-v3  bite
-wg  30
-ex  body_part sharp
-we  take
-ap  damroll 10
-ap  crit    10
+nm  statue frog granite female
+sh  a large granite statue
+lo  <247>A large granite statue of a female frog towers over you.<0>
+vn  28439
+ty  furniture
+wg  10000
+we  none
+ed  statue frog granite female
+The statue is Nangnang, revered by the Grung of Omu as the goddess of death.
+While generally regarded as a loving and reassuring goddess, she demands live
+sacrifices to retain these qualities, otherwise becoming vengeful and cruel.
+The blood-stained lower extremities of the statue suggests the local Grung do
+not have much trouble keeping her placated.
+~
 
 $obj
-nm  egg leathery
-sh  a large leathery egg
-lo  A large leathery egg lies here.
-vn  28401
+nm  large oak table
+sh  a large oak table
+lo  A large oak table covered in magical supplies is here.
+vn  28440
+ty  spellcraft
+v0  10
+wg  2000
+we  none
+ed  large oak table
+The table is covered in spell reagents, magical equipment, and the evidence of
+both successful and failed magical experiments.
+~
+
+$obj
+nm  large oak table
+sh  a large oak table
+lo  A large oak table covered in tools is here.
+vn  28441
+ty  craft
+v0  10
+wg  2000
+we  none
+ed  large oak table
+The table is covered in various tools to aid in the construction or enhancement
+of useful physical artefacts.
+~
+
+$obj
+nm  glowing forge
+sh  a glowing forge
+lo  The forge radiates a terrible heat.
+vn  28442
+ty  forge
+ex  glow
+wg  2000
+we  none
+ed  glowing forge
+The large forge can be used to smelt metals, should you know how to do that.
+~
+
+$obj
+nm  chitinous carapace
+sh  chitinous carapace
+lo  The chitinous carapace of a giant isopod lies here.
+vn  28443
+ty  armour
+v1  torso
+wg  10
+ex  body_part pure
+we  take body
+ap  ac  -30
+
+$obj
+nm  brood pouch
+sh  a brood pouch
+lo  An isopod's brood pouch is here, full of eggs.
+vn  28444
 ty  pill
 v0  60
 v1  cure blindness
@@ -7669,17 +7910,16 @@ ex  none
 we  take hold
 
 $obj
-nm  teeth razor
-sh  razor-sharp teeth
-lo  The razor-sharp teeth of an aquatic predator lie here.
-vn  28402
-ty  weapon
-v3  bite
-wg  2
-ex  body_part sharp
-we  take
-ap  damroll 15
-ap  crit    15
+nm  bony carapace
+sh  bony carapace
+lo  The bony carapace of a boxfish lies here.
+vn  28445
+ty  armour
+v1  torso
+wg  10
+ex  body_part pure
+we  body
+ap  ac  -40
 
 $obj
 nm  shark capsule
@@ -7712,20 +7952,25 @@ sh  armoured plates
 lo  The armoured plates of a dunkleosteus lies here.
 vn  28448
 ty  armour
-wg  8
+v1  torso
+wg  400
 ex  body_part pure
 we  body
 ap  ac  -200
 
 $obj
-nm  turtle shell shield large
-sh  a large turtle shell
-lo  A large, somewhat slimy turtle shell has been abandoned here.
-vn  28405
-ty  armour
-wg  6
-we  take shield
-ap  ac -15
+nm  powerful jaws
+sh  powerful jaws
+lo  The powerful jaws of a dunkleosteus lies here.
+vn  28449
+ty  weapon
+v0  head
+v3  crush
+wg  50
+ex  body_part pure
+we  wield
+ap  hitroll  50
+ap  damroll  50
 
 $obj
 nm  long spear
