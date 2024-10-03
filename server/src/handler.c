@@ -2865,6 +2865,9 @@ bool can_see (CHAR_DATA *ch, CHAR_DATA *victim)
         if (IS_AFFECTED(ch, AFF_BLIND))
                 return FALSE;
 
+        if (IS_AFFECTED(ch, AFF_EYE_TRAUMA))
+                return FALSE;
+
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_WIZINVIS_MOB))
                 return FALSE;
 
@@ -2960,6 +2963,9 @@ bool can_see_obj( CHAR_DATA *ch, OBJ_DATA *obj )
                 return TRUE;
 
         if ( IS_AFFECTED( ch, AFF_BLIND ) )
+                return FALSE;
+
+        if (IS_AFFECTED(ch, AFF_EYE_TRAUMA))
                 return FALSE;
 
         if ( obj->item_type == ITEM_LIGHT && obj->value[2] != 0 )
@@ -3261,7 +3267,13 @@ char *affect_bit_name (unsigned long int vector)
         if ( vector & AFF_DAZED         ) return "dazed";
         if ( vector & AFF_PRONE         ) return "prone";
         if ( vector & AFF_CONFUSION     ) return "confused";
-
+        if ( vector & AFF_EYE_TRAUMA    ) return "eye_trauma";
+        if ( vector & AFF_HEAD_TRAUMA   ) return "head_trauma";
+        if ( vector & AFF_ARM_TRAUMA    ) return "arm_trauma";
+        if ( vector & AFF_LEG_TRAUMA    ) return "leg_trauma";
+        if ( vector & AFF_HEART_TRAUMA  ) return "heart_trauma";
+        if ( vector & AFF_TAIL_TRAUMA   ) return "tail_trauma";
+        if ( vector & AFF_TORSO_TRAUMA  ) return "torso_trauma";
 
         return "none";
 }
@@ -3309,6 +3321,13 @@ char* affect_bit_name_nice (unsigned long int vector)
         if ( vector & AFF_DAZED         ) return "dazed";
         if ( vector & AFF_PRONE         ) return "prone";
         if ( vector & AFF_CONFUSION     ) return "confused";
+        if ( vector & AFF_EYE_TRAUMA    ) return "eye trauma";
+        if ( vector & AFF_HEAD_TRAUMA   ) return "head trauma";
+        if ( vector & AFF_ARM_TRAUMA    ) return "arm trauma";
+        if ( vector & AFF_LEG_TRAUMA    ) return "leg trauma";
+        if ( vector & AFF_HEART_TRAUMA  ) return "heart trauma";
+        if ( vector & AFF_TAIL_TRAUMA   ) return "tail trauma";
+        if ( vector & AFF_TORSO_TRAUMA  ) return "torso trauma";
 
         return "some unknown effect";
 }

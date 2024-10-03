@@ -312,6 +312,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define MAX_FOOD                          48    /* As full of food as you can be */
 #define MAX_DRINK                         48    /* As not-thirsty as you can be */
 #define MAX_DRUNK                         48    /* As drunk as you can be */
+#define DOT_FREQ                          20    /* What percentage of the time will DOT effects fire when checked? */
 #define VAULT_LEVEL_BUFFER                 5    /* Can save items up to this many levels above your own in your vault */
 
 #define L_IMM                       MAX_LEVEL
@@ -324,7 +325,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   592     /* +1 fleshrot 12/4/24 - Owl */
+#define MAX_SKILL                   601     /* +6 various trauma types 27/9/24 - Owl */
 #define MAX_PRE_REQ                 1400    /* -1 no meditate for shifters 7/4/24 */
 #define MAX_SPELL_GROUP             452     /* +1 reforge Brutus 1/1/23 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
@@ -1916,6 +1917,13 @@ extern  WANTED_DATA *wanted_list_last;
 #define AFF_PRONE                  BIT_34  /* Prone - can't do skills, can cast - Brutus*/
 #define AFF_DAZED                  BIT_35  /* Dazed - can't do anything - Brutus */
 #define AFF_CONFUSION              BIT_36  /* Causes random wandering, overrides ACT_SENTINEL */
+#define AFF_EYE_TRAUMA             BIT_37  /* Eyes have been seriously damaged or destroyed */
+#define AFF_HEAD_TRAUMA            BIT_38  /* Has taken serious brain damage */
+#define AFF_ARM_TRAUMA             BIT_39  /* Arm or arms have been grievously injured or severed */
+#define AFF_LEG_TRAUMA             BIT_40  /* Legs have been grievously injured or severed */
+#define AFF_HEART_TRAUMA           BIT_41  /* Heart has been pierced */
+#define AFF_TAIL_TRAUMA            BIT_42  /* Tail has been grievously injured or severed */
+#define AFF_TORSO_TRAUMA           BIT_43  /* Torso/central mass has been grievously injured */
 #define AFF_SLOW                   BIT_63  /* last */
 
 /* forms - Brutus */
@@ -3298,7 +3306,7 @@ extern int gsn_grip;
 extern int gsn_joust;
 extern int gsn_sharpen;
 extern int gsn_forge;
-extern int gsn_risposte;
+extern int gsn_riposte;
 extern int gsn_destrier;
 extern int gsn_gouge;
 extern int gsn_choke;
@@ -3861,6 +3869,15 @@ extern int gsn_flood;
 extern int gsn_confusion;
 extern int gsn_freedom;
 extern int gsn_fleshrot;
+extern int gsn_target;
+extern int gsn_regenerate;
+extern int gsn_eye_trauma;
+extern int gsn_head_trauma;
+extern int gsn_arm_trauma;
+extern int gsn_leg_trauma;
+extern int gsn_heart_trauma;
+extern int gsn_tail_trauma;
+extern int gsn_torso_trauma;
 
 /*
  *  Deity gsns
@@ -4479,6 +4496,7 @@ DECLARE_DO_FUN( do_swoop                        );      /* swoop for shifter pho
 DECLARE_DO_FUN( do_deploy                       );
 DECLARE_DO_FUN( do_retract                      );
 DECLARE_DO_FUN( do_rfind                        );
+DECLARE_DO_FUN( do_target                       );      /* to target strikes to body areas - Owl */
 
 /*
  * Spell functions.
@@ -4687,6 +4705,7 @@ DECLARE_SPELL_FUN( spell_flood                  );
 DECLARE_SPELL_FUN( spell_confusion              );
 DECLARE_SPELL_FUN( spell_freedom                );
 DECLARE_SPELL_FUN( spell_fleshrot               );
+DECLARE_SPELL_FUN( spell_regenerate             );
 
 
 #define MOB_VNUM_SKELETON  3404
@@ -4904,12 +4923,14 @@ void    death_penalty                   args( ( CHAR_DATA *ch, CHAR_DATA *victim
 void    check_player_death              args( ( CHAR_DATA *opponent, CHAR_DATA *victim ) );
 bool    in_pkill_range                  args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 void    chat_killer                     args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
-void    reset_char_stats                      ( CHAR_DATA *ch);
+void    reset_char_stats                      ( CHAR_DATA *ch );
 bool    aggro_damage                          ( CHAR_DATA *ch, CHAR_DATA *victim, int damage );
 void    check_autoloot                        ( CHAR_DATA *ch, CHAR_DATA *victim );
-void    check_group_bonus                     (CHAR_DATA *ch) ;
+void    check_group_bonus                     ( CHAR_DATA *ch ) ;
 char *  get_damage_string               args( ( int damage_value, bool is_singular ) );
 char *  get_dpr                         args( (int dam) );
+void    disarm_bodypart                       ( CHAR_DATA *ch, CHAR_DATA *victim, int bp_kind );
+bool    remove_bodypart                       ( CHAR_DATA *ch, int iWear, bool fReplace );
 
 /* handler.c */
 int     get_dir                         args( ( char *txt  ) );

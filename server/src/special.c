@@ -410,7 +410,7 @@ bool spec_cast_adept( CHAR_DATA *ch )
         if ( !victim || IS_NPC( victim ) )
                 return FALSE;
 
-        switch ( number_bits( 3 ) )
+        switch ( number_range( 0, 8 ) )
         {
             case 0:
                 act( "$n utters the word 'Edahs'.", ch, NULL, NULL, TO_ROOM );
@@ -451,6 +451,14 @@ bool spec_cast_adept( CHAR_DATA *ch )
             case 7:
                 act("$n utters the word 'Enroht'.", ch, NULL, NULL, TO_ROOM );
                 spell_cure_mana( skill_lookup( "cure mana" ), ch->level, ch, victim );
+                return TRUE;
+
+            case 8:
+                if (number_percent() < 20)
+                {
+                    act("$n utters the word 'Sifircas'.", ch, NULL, NULL, TO_ROOM );
+                    spell_regenerate( skill_lookup( "regenerate" ), ch->level, ch, victim );
+                }
                 return TRUE;
 
         }
@@ -1694,7 +1702,8 @@ bool spec_grail (CHAR_DATA *ch)
         }
         else
         {
-                switch( number_bits( 3 ) )
+                random = number_range(0,8);
+                switch( random )
                 {
                     case 0:
                         act("$c tells you, 'Fear me, for I am the cruellest of this realm...'",
@@ -1747,6 +1756,12 @@ bool spec_grail (CHAR_DATA *ch)
                         }
                         else
                                 spell_teleport( skill_lookup( "teleport" ), ch->level, ch, ch );
+                        return TRUE;
+
+                    case 7:
+                        act("$c says 'Be restored, stranger, and of good cheer...'",
+                            ch, NULL, NULL, TO_ROOM );
+                        spell_regenerate( skill_lookup( "regenerate" ), ch->level, ch, victim );
                         return TRUE;
                 }
         }
@@ -1827,27 +1842,27 @@ bool spec_bounty (CHAR_DATA *ch)
                 switch( number_bits( 3 ) )
                 {
                     case 0:
-                        act("$c tells you 'Fear me, for I am the Cruelest of this Realm...'",
+                        act("$c tells you 'Fear me, for I am the cruelest of this realm...'",
                             ch, NULL, NULL, TO_ROOM );
                         spell_heal( skill_lookup( "heal" ), ch->level, ch, victim );
                         return TRUE;
 
                     case 1:
-                        act("$c says 'Blood, I must shed more blood for my Masters...'", ch,
+                        act("$c says 'Blood, I must shed more blood for my masters...'", ch,
                             NULL, NULL, TO_ROOM);
                         spell_combat_mind( skill_lookup( "combat mind" ), ch->level,
                                           ch, victim );
                         return TRUE;
 
                     case 2:
-                        act("$c asks you 'Be vigilant.  There are many agents of Evil in this Plane.'",
+                        act("$c asks you 'Be vigilant.  There are many agents of evil in this plane.'",
                             ch, NULL, NULL, TO_ROOM );
                         spell_detect_evil( skill_lookup( "detect evil" ), ch->level,
                                           ch, victim );
                         return TRUE;
 
                     case 3:
-                        act("$c tells you 'May you walk with the Gods, and fear Them...'",
+                        act("$c tells you 'May you walk with the gods, and fear them...'",
                             ch, NULL, NULL, TO_ROOM );
                         spell_bless( skill_lookup( "bless" ), ch->level, ch, victim );
                         return TRUE;
@@ -1866,7 +1881,7 @@ bool spec_bounty (CHAR_DATA *ch)
                         return TRUE;
 
                     case 6:
-                        act("$c says 'My Master, I must leave this sinful place...'",
+                        act("$c says 'My master, I must leave this sinful place...'",
                             ch, NULL, NULL, TO_ROOM );
                         if( IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL )
                            || IS_SET( ch->in_room->room_flags, ROOM_CONE_OF_SILENCE ) )
@@ -1902,7 +1917,7 @@ bool spec_cast_orb( CHAR_DATA *ch )
         if ( !victim || IS_NPC( victim ) )
                 return FALSE;
 
-        switch ( number_bits( 3 ) )
+        switch ( number_range( 0, 8 ) )
         {
             case 0:
                 act( "$n pulses briefly.", ch, NULL, NULL, TO_ROOM );
@@ -1947,6 +1962,15 @@ bool spec_cast_orb( CHAR_DATA *ch )
                 act("$n pulses briefly.", ch, NULL, NULL, TO_ROOM );
                 spell_cure_mana( skill_lookup( "cure mana" ),
                                 ch->level, ch, victim );
+                return TRUE;
+
+            case 8:
+                if (number_percent() < 20)
+                {
+                    act("$n pulses briefly.", ch, NULL, NULL, TO_ROOM );
+                    spell_regenerate( skill_lookup( "regenerate" ),
+                                ch->level, ch, victim );
+                }
                 return TRUE;
 
         }

@@ -450,6 +450,18 @@ char * const size_names [ 3 ] =
         "large"
 };
 
+char * const body_part_types [ 8 ] =
+{
+        "default/unspecified",
+        "head",
+        "eye",
+        "arm",
+        "leg",
+        "heart",
+        "tail",
+        "torso/central mass"
+};
+
 
 /*
  *  Race information
@@ -2154,7 +2166,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_natures_fury,                            0 },
 
         { &gsn_group_advcombat,                         0 },
-        { &gsn_risposte,                                0 },
+        { &gsn_riposte,                                0 },
         { &gsn_whirlwind,                               0 },
         { &gsn_decapitate,                              0 },
         { &gsn_focus,                                   0 },
@@ -3531,7 +3543,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
 
         {
-                "riposte", &gsn_risposte,
+                "riposte", &gsn_riposte,
                 TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
                 spell_null, 0, 0,
                 "riposte", "!Riposte!"
@@ -6511,6 +6523,69 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, 8|16384,
                 spell_fleshrot, 5, 12,
                 "<0><22>ro<28>tt<35>in<49>g m<35>al<28>ed<22>ic<28>ti<35>on<0>", "<79>Your flesh stops rotting.<0>"
+        },
+
+        {
+                "target", &gsn_target,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
+                spell_null, 0, 24,
+                "targeted strike", "!Target!"
+        },
+
+        {
+                "regenerate", &gsn_regenerate,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384|131072,
+                spell_regenerate, 75, 24,
+                "", "!Regenerate!"
+        },
+
+        {
+                "eye trauma", &gsn_eye_trauma,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
+                spell_null, 0, 24,
+                "", "!Eye Trauma!"
+        },
+
+        {
+                "head trauma", &gsn_head_trauma,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
+                spell_null, 0, 24,
+                "vicious cranial attack", "<147>The ringing in your ears diminishes.<0>"
+        },
+
+        {
+                "arm trauma", &gsn_arm_trauma,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
+                spell_null, 0, 24,
+                "", "!Arm Trauma!"
+        },
+
+        {
+                "leg trauma", &gsn_leg_trauma,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
+                spell_null, 0, 24,
+                "", "!Leg Trauma!"
+        },
+
+        {
+                "heart trauma", &gsn_heart_trauma,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
+                spell_null, 0, 24,
+                "<124>ca<160>rd<9>iac tr<160>au<124>ma<0>", "<160>Your heart resumes beating.<0>"
+        },
+
+        {
+                "tail trauma", &gsn_tail_trauma,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
+                spell_null, 0, 24,
+                "", "!Tail Trauma!"
+        },
+
+        {
+                "torso trauma", &gsn_torso_trauma,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
+                spell_null, 0, 24,
+                "<173>brutal gut wound<0>", "!Torso Trauma!"
         },
 
         /*

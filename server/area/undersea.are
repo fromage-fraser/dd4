@@ -505,7 +505,7 @@ savage jaws~
 The jaws of a giant sea predator float through the water here.~
 ~
 5 128|67108864 8192
-0~ 1~ 6~ 10~
+1~ 1~ 6~ 10~
 200 0 0
 A
 19 8
@@ -551,7 +551,7 @@ venomous tentacles~
 A sea anemone's venomous tentacles float through the water here.~
 ~
 5 2|67108864 8192
-0~ 1~ 6~ 2~
+3~ 1~ 6~ 2~
 1 0 0
 #27006
 lure anglerfish~
@@ -576,7 +576,7 @@ a hideous fanged maw~
 The ripped-out jaw of an anglerfish floats through the water here.~
 ~
 5 67108864 8192
-0~ 1~ 6~ 10~
+1~ 1~ 6~ 10~
 1 0 0
 A
 19 6
@@ -586,7 +586,7 @@ teeth~
 A sea lion's teeth float through the water here.~
 ~
 5 67108864 8192
-0~ 1~ 6~ 10~
+1~ 1~ 6~ 10~
 3 0 0
 A
 18 10
@@ -635,7 +635,7 @@ nail-like teeth~
 The jaw of some gruesome undersea creature floats here.~
 ~
 5 128|4096|67108864 1|8192
-0~ 1~ 6~ 10~
+1~ 1~ 6~ 10~
 3 0 0
 A
 19 -8
@@ -655,7 +655,7 @@ large claws~
 Some large claws float in the water here.~
 ~
 5 128|4096|67108864 8192
-0~ 1~ 6~ 5~
+3~ 1~ 6~ 5~
 15 0 0
 #27015
 feeding tentacle~
@@ -663,7 +663,7 @@ a huge feeding tentacle~
 A huge feeding tentacle floats in the water here.~
 ~
 5 16384|67108864 8192
-0~ 1~ 6~ 12~
+3~ 1~ 6~ 12~
 300 0 0
 A
 19 20

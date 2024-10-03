@@ -629,7 +629,7 @@ Extra ITEM_ flags:
     ITEM_BLADE_THIRST               BIT_23
     ITEM_SHARP                      BIT_24
     ITEM_FORGED                     BIT_25
-    ITEM_BODY_PART                  BIT_26
+    ITEM_BODY_PART                  BIT_26 *
     ITEM_LANCE                      BIT_27
     ITEM_ANTI_BRAWLER               BIT_28
     ITEM_ANTI_SHAPE_SHIFTER         BIT_29
@@ -640,6 +640,20 @@ Extra ITEM_ flags:
     ITEM_DONOT_RANDOMISE            BIT_37
     ITEM_WEAK_RANDOMISE             BIT_38
     ITEM_CURSED                     BIT_61
+
+* Note if a weapon, armour, or light has this flag and is being worn, value[0]
+  (or value[1] if armour) may be set to any one of the following to denote what
+  part of the body it is associated with--used by skills like 'target' and other
+  effects that target body parts.
+
+    1 - head
+    2 - eye
+    3 - arm
+    4 - leg
+    5 - heart
+    6 - tail
+    7 - torso/central mass
+
 
 WEAR_ flags:
     ITEM_TAKE                       BIT_0
@@ -832,7 +846,7 @@ ITEM_CONTAINER, value[1]).  If you try to add a piped value the server will grab
 the first value and discard the rest.
 
 1  ITEM_LIGHT
-   value[0]    unused
+   value[0]    optional value to denote body part type, if body part
    value[1]    unused
    value[2]    hours of light available, 0 is dead, -1 is infinite
    value[3]    unused
@@ -856,7 +870,7 @@ the first value and discard the rest.
    value[3]    spell name
 
 5  ITEM_WEAPON
-   value[0]    unused
+   value[0]    optional value to denote body part type, if body part
    value[1]    unused (formerly min damage)
    value[2]    unused (formerly max damage)
    value[3]    weapon type:
@@ -889,7 +903,7 @@ the first value and discard the rest.
 
 09 ITEM_ARMOR
    value[0]    unused
-   value[1]    unused
+   value[1]    optional value to denote body part type, if body part
    value[2]    unused
    value[3]    unused
 
@@ -1946,6 +1960,7 @@ paints, smokeables, and pills.
                     flood                   confusion
               psychometry                      nausea
                   freedom                    fleshrot
+               regenerate
 
 If you have any questions about area writing, please contact any of the
 immortals on the DD4 Discord server at https://discord.gg/aGzmAWmXYb (preferred)

@@ -110,10 +110,10 @@ sphere at 31st level */
 {&gsn_focus,                    &gsn_group_advcombat,   90,     PRE_WARRIOR},
 {&gsn_focus,                    &gsn_warrior_base,      60,     PRE_WARRIOR},
 
-{&gsn_risposte,                 &gsn_group_advcombat,   50,     PRE_WARRIOR},
-{&gsn_risposte,                 &gsn_parry,             90,     PRE_WARRIOR},
-{&gsn_risposte,                 &gsn_group_defense,     90,     PRE_WARRIOR},
-{&gsn_risposte,                 &gsn_warrior_base,      60,     PRE_WARRIOR},
+{&gsn_riposte,                 &gsn_group_advcombat,   50,     PRE_WARRIOR},
+{&gsn_riposte,                 &gsn_parry,             90,     PRE_WARRIOR},
+{&gsn_riposte,                 &gsn_group_defense,     90,     PRE_WARRIOR},
+{&gsn_riposte,                 &gsn_warrior_base,      60,     PRE_WARRIOR},
 
 {&gsn_whirlwind,                &gsn_group_advcombat,   95,     PRE_WARRIOR},
 {&gsn_whirlwind,                &gsn_dual,              90,     PRE_WARRIOR},

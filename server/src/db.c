@@ -182,7 +182,7 @@ int     gsn_shield_block;
 int     gsn_joust;
 int     gsn_forge;
 int     gsn_sharpen;
-int     gsn_risposte;
+int     gsn_riposte;
 int     gsn_destrier;
 int     gsn_blindness;
 int     gsn_brew;
@@ -668,6 +668,15 @@ int     gsn_flood;
 int     gsn_confusion;
 int     gsn_freedom;
 int     gsn_fleshrot;
+int     gsn_target;
+int     gsn_regenerate;
+int     gsn_eye_trauma;
+int     gsn_head_trauma;
+int     gsn_arm_trauma;
+int     gsn_leg_trauma;
+int     gsn_heart_trauma;
+int     gsn_tail_trauma;
+int     gsn_torso_trauma;
 
 
 /*

@@ -661,7 +661,7 @@ A long, narrow, flattened rostrum, or nose extension, lined with sharp
 transverse teeth, arranged in a way that makes it resemble a saw.~
 ~
 5 67108864 0
-0~ 0~ 0~ 15~
+1~ 0~ 0~ 15~
 1 0 0
 #27415
 spiny barb~
@@ -670,7 +670,7 @@ This spine has teeth lining its lateral edges, and is coated with a weak
 venom.~
 ~
 5 16384|67108864 0
-0~ 0~ 0~ 16~
+6~ 0~ 0~ 16~
 1 0 0
 #27416
 jaws teeth spiny sharp~
@@ -678,7 +678,7 @@ jaws full of sharp, spiny teeth~
 Your sharp teeth protrude from your fearsome jaws.~
 ~
 5 67108864 0
-0~ 0~ 0~ 10~
+1~ 0~ 0~ 10~
 1 0 0
 #27417
 egg capsule fiddler ray~

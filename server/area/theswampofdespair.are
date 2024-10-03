@@ -680,7 +680,7 @@ sharp claws~
 Sharp claws have ripped from a large beast and left here.~
 ~
 5 4096|16777216|67108864 1|8192
-0~ 0~ 0~ 5~
+3~ 0~ 0~ 5~
 5 0 0
 A
 1 2
@@ -902,7 +902,7 @@ long talons~
 A pair of long talons ripped from some ghastly creature have been left here.~
 ~
 5 16|2048|4096|67108864 1|8192
-0~ 0~ 0~ 5~
+4~ 0~ 0~ 5~
 3 0 0
 A
 18 10

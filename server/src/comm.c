@@ -1147,7 +1147,7 @@ void read_from_buffer (DESCRIPTOR_DATA *d)
                 }
                 else
                 {
-                        if ( ( ++d->repeat >= 50 ) )
+                        if ( ( ++d->repeat >= 200 ) )
                         {
                                 sprintf(log_buf, "%s input spamming!", d->host);
                                 log_string(log_buf);

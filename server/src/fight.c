@@ -51,6 +51,7 @@ void    use_magical_item     args((CHAR_DATA *ch));
 bool    check_arrestor_unit  args((CHAR_DATA *ch, CHAR_DATA *victim, int dt));
 bool    check_shield_unit    args((CHAR_DATA *ch, CHAR_DATA *victim, int dt));
 bool    check_driver_unit    args((CHAR_DATA *ch, CHAR_DATA *victim));
+bool    remove_bodypart      args((CHAR_DATA *ch, int iWear, bool fReplace));
 
 
 /*
@@ -408,7 +409,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 /*
  * These 2 functions are at the top, as Im about to put a check for dazed things
  * If you are dazed you cant attack, BUT things you have in the room can still go off
- * DOTS and Pulese objects - Brutus
+ * DOTS and Pulse objects - Brutus
  *
  */
 
@@ -422,7 +423,12 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 
                         if( paf->bitvector == AFF_DOT )
                         {
-                                damage(ch, victim, paf->modifier, paf->type, FALSE);
+                                /* A bit brutal/good if it goes off every combat round 29/9/24 --Owl */
+
+                                if (number_percent() < DOT_FREQ)
+                                {
+                                    damage(ch, victim, paf->modifier, paf->type, FALSE);
+                                }
                         }
                 }
         }
@@ -482,7 +488,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 
 
         /*
-         * One attack (Even if Prone, everythign else is 50% less likely.)
+         * One attack (Even if PRONE, everything else is 50% less likely.)
          */
         one_hit(ch, victim, dt, FALSE);
 
@@ -534,7 +540,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 {
                         chance = 3 * ch->level / attacks;
 
-                        /* If your PRONE, your 1/2 as likely to Succeed in anything */
+                        /* If you're PRONE, you're 1/2 as likely to succeed in anything */
                         if (IS_AFFECTED(ch, AFF_PRONE))
                                 chance /= 2;
 
@@ -551,7 +557,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         }
 
         /*
-         * Haste Spell & Haste
+         * Haste spell & haste
          */
         if ((is_affected(ch, gsn_haste)) && !IS_AFFECTED(ch, AFF_PRONE))
                 one_hit(ch, victim, dt, FALSE);
@@ -758,13 +764,21 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                 if (ch->position == POS_DEAD)
                         break;
 
-                if (haste && !ch->gag)
-                        send_to_char("{W*SWIFT ATTACK*{x ", ch);
+                if (haste && !ch->gag && !IS_AFFECTED(ch, AFF_ARM_TRAUMA))
+                        send_to_char("<15>*SWIFT ATTACK*<0> ", ch);
                 /*
                  * Check for secondary attack
                  */
                 if (weapon_pos == WEAR_DUAL)
                 {
+                        if (IS_AFFECTED(ch, AFF_ARM_TRAUMA))
+                        {
+                                if (!ch->gag)
+                                {
+                                        send_to_char("<6>Arm trauma prevents you from dual-wielding.<0>\n\r", ch);
+                                }
+                                break;
+                        }
                         /* Not these dam types */
                         if (dt == gsn_circle
                             || dt == gsn_second_circle
@@ -775,7 +789,7 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                             || dt == gsn_shoot
                             || dt == gsn_dive
                             || dt == gsn_joust
-                            || dt == gsn_risposte
+                            || dt == gsn_riposte
                             || dt == gsn_snap_shot)
                                 break;
 
@@ -1092,7 +1106,7 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                         else if (dt == gsn_grapple || dt == gsn_smash)
                                 dam += dam / 4;
 
-                        else if (dt == gsn_risposte)
+                        else if (dt == gsn_riposte)
                                 dam -= dam / 2;
                 }
 
@@ -1475,7 +1489,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
 
                         if (dam && !no_defense)
                         {
-                                /* Engineerts turrent deployable units come before any character defense */
+                                /* Engineer's turrent deployable units come before any character defense */
 
                                 if (check_arrestor_unit(ch, victim, dt))
                                         return;
@@ -1489,8 +1503,8 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                                 if (check_parry(ch, victim))
                                 {
                                         if (!IS_NPC(victim)
-                                            && dt != gsn_risposte
-                                            && number_percent() < victim->pcdata->learned[gsn_risposte] / 2)
+                                            && dt != gsn_riposte
+                                            && number_percent() < victim->pcdata->learned[gsn_riposte] / 2)
                                         {
                                                 if (victim->gag < 2)
                                                         act ("You strike quickly while $n recovers from $s attack.",
@@ -1499,7 +1513,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                                                 act ("While recovering from your attack, $N makes a quick strike.",
                                                      ch, NULL, victim, TO_CHAR);
 
-                                                one_hit (victim, ch, gsn_risposte, FALSE);
+                                                one_hit (victim, ch, gsn_riposte, FALSE);
                                         }
 
                                         return;
@@ -2107,6 +2121,9 @@ bool check_parry (CHAR_DATA *ch, CHAR_DATA *victim)
         if (IS_AFFECTED(victim, AFF_BLIND))
                 chance /= 2;
 
+        if (IS_AFFECTED(victim, AFF_ARM_TRAUMA))
+                chance /= 2;
+
         if (number_percent() >= chance)
         {
                 if (IS_NPC(victim) || !CAN_DO(victim, gsn_dual_parry) || !get_eq_char(victim, WEAR_DUAL))
@@ -2180,6 +2197,9 @@ bool check_shield_block (CHAR_DATA *ch, CHAR_DATA *victim)
                 chance -= 10;
 
         chance += (victim->level - ch->level) * 2;
+
+        if ( IS_AFFECTED(ch, AFF_ARM_TRAUMA) )
+                chance /= 2;
 
         if (chance > 66)
                 chance = 66;
@@ -2365,6 +2385,9 @@ bool check_dodge(CHAR_DATA *ch, CHAR_DATA *victim)
         if (IS_AFFECTED(victim, AFF_BLIND))
                 chance /= 2;
 
+        if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
+                chance /= 2;
+
         if (number_percent() >= chance)
                 return FALSE;
 
@@ -2400,6 +2423,12 @@ bool check_acrobatics (CHAR_DATA *ch, CHAR_DATA *victim)
                 return FALSE;
 
         chance += (victim->level - ch->level) * 2;
+
+        if ( IS_AFFECTED(ch, AFF_ARM_TRAUMA) )
+            chance /= 2;
+
+        if ( IS_AFFECTED(ch, AFF_LEG_TRAUMA) )
+            chance /= 2;
 
         if (chance > 50)
                 chance = 50;
@@ -3918,6 +3947,1067 @@ void do_circle (CHAR_DATA *ch, char *argument)
                 damage (ch, victim, 0, gsn_circle, FALSE);
 }
 
+/* Absolute monster function that is poorly coded and should definitely
+   be refactored, but here we are. 28/9/24 --Owl */
+
+void do_target (CHAR_DATA *ch, char *argument)
+{
+        CHAR_DATA *victim;
+        char arg [ MAX_INPUT_LENGTH ];
+        AFFECT_DATA af;
+        int vnum;
+        int dot_dam;
+        char msg [ MAX_STRING_LENGTH ];
+
+        one_argument (argument, arg);
+        victim = ch->fighting;
+
+        if (!IS_NPC(ch) && !CAN_DO(ch, gsn_target))
+        {
+                send_to_char("You don't know how to do that.\n\r", ch);
+                return;
+        }
+
+        if (!ch->fighting)
+        {
+                send_to_char("You must be fighting to do that!\n\r", ch);
+                return;
+        }
+
+        if (arg[0] == '\0')
+        {
+                send_to_char("Target what?\n\r", ch);
+                return;
+        }
+
+        if (IS_AFFECTED(ch, AFF_BLIND))
+        {
+                send_to_char("You need to be able to see to <10>target<0> something!\n\r", ch);
+                return;
+        }
+
+        if (victim == ch)
+        {
+                send_to_char("No targeting yourself, emo.\n\r", ch);
+                return;
+        }
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("You can't <10>target<0> an object!\n\r", ch);
+                return;
+        }
+
+        if (IS_NPC(victim) && IS_INORGANIC( victim ))
+        {
+                send_to_char("<10>target<0> is only effective against flesh-and-blood opponents.\n\r", ch);
+                return;
+        }
+
+        if (IS_AFFECTED(victim, AFF_NON_CORPOREAL))
+        {
+                send_to_char("You cannot <10>target<0> the non-corporeal.\n\r", ch);
+                return;
+        }
+
+        if (!IS_NPC(victim))
+        {
+                /*
+                    Has to function somewhat differently vs player, as players don't have
+                    BODY_FORM values and can't have body parts that are "disarmed". Should
+                    check player race for relevant effects instead.
+
+                    Doing it this way, while pissing hard on DRY, makes it easy to make
+                    more subtle differences between vs-PC and vs-NPC later.
+
+                    29/9/24 --Owl
+                */
+
+            /* PLAYER VERSUS PLAYER or MOB VERSUS PLAYER STARTS HERE */
+
+            if ( ( !str_cmp( arg, "eye"  ) )
+            ||   ( !str_cmp( arg, "eyes" ) ) )
+            {
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+
+                act ("You <10>target<0> $N's <14>EYES<0> with a strike!", ch, NULL, victim, TO_CHAR);
+
+                if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] ) - ( victim->level - ch->level ) ) ) ) )
+                ||   (  IS_NPC(ch) && ( number_percent () < ch->level ) ) )
+                {
+                        WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+
+                        arena_commentary("$n targets $N's <14>EYES<0> with a strike!", ch, victim);
+
+                        if (!IS_AFFECTED(victim, AFF_EYE_TRAUMA))
+                        {
+                                act ("You successfully attack $N's eyes, and <14>seriously damage them<0>!", ch, NULL, victim, TO_CHAR);
+                                act ("$n strikes you in the eyes -- they are <14>grievously damaged<0>!", ch, NULL, victim, TO_VICT);
+                                act ("$n strikes $N in the eyes!", ch, NULL, victim, TO_NOTVICT);
+                                arena_commentary("$n strikes $N flush in the eyes!", ch, victim);
+
+                                damage(ch, victim, number_range(10, ch->level), gsn_target, FALSE);
+
+                                af.type      = gsn_eye_trauma;
+                                af.duration  = -1;
+                                af.location  = APPLY_HITROLL;
+                                af.modifier  = -(ch->level / 8);
+                                af.bitvector = (AFF_BLIND + AFF_EYE_TRAUMA);
+
+                                affect_to_char(victim, &af);
+                        }
+                        else {
+                                act ("<6>You have already inflicted horrific eye trauma on $N.<0>", ch, NULL, victim, TO_CHAR);
+                        }
+
+                        /* chance of removing any "eye" ITEM_BODY_PARTs ch is wearing, whether eye trauma has
+                           already been inflicted or not -- fails silently if ch has none. */
+
+                        if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] / 2 ) - ( victim->level - ch->level ) ) ) ) )
+                            ||   ( IS_NPC(ch) && ( number_percent () < ( ch->level / 2 ) ) ) )
+                        {
+                            disarm_bodypart(ch, victim, 2);
+                        }
+
+                        check_group_bonus(ch);
+
+                        if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                                return;
+                }
+                else {
+                        damage (ch, victim, 0, gsn_target, FALSE);
+                }
+                return;
+            }
+            else if (  ( !str_cmp( arg, "head"  ) )
+            ||         ( !str_cmp( arg, "heads" ) ) )
+            {
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                send_to_char("You <10>target<0> your opponent's <194>HEAD<0> with a strike!\n\r", ch);
+                if ( (!IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target]) ) ) ) )
+                ||   ( IS_NPC(ch) && ( number_percent () < ch->level ) ) )
+                {
+                        WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+
+                        arena_commentary("$n targets $N's <194>HEAD<0> with a strike!", ch, victim);
+
+                        if (!IS_AFFECTED(victim, AFF_HEAD_TRAUMA))
+                        {
+                                act ("You successfully strike $N's head, and cause <194>serious brain injury<0>!", ch, NULL, victim, TO_CHAR);
+                                act ("$n strikes you in the head -- you take <194>critical brain damage<0>!", ch, NULL, victim, TO_VICT);
+                                act ("$n strikes $N in the head!", ch, NULL, victim, TO_NOTVICT);
+                                arena_commentary("$n strikes $N directly in the head!", ch, victim);
+
+                                damage(ch, victim, number_range(10, ch->level), gsn_head_trauma, FALSE);
+                                daze(ch, victim, gsn_head_trauma, 3);
+
+                                af.type      = gsn_head_trauma;
+                                af.duration  = -1;
+                                af.location  = APPLY_WIS;
+                                af.modifier  = -(ch->level / 10);
+                                af.bitvector = AFF_HEAD_TRAUMA;
+                                affect_to_char(victim, &af);
+
+                                af.location  = APPLY_INT;
+                                af.modifier  = -(ch->level / 10);
+                                af.bitvector = AFF_HEAD_TRAUMA;
+                                affect_to_char(victim, &af);
+                        }
+                        else {
+                                act ("<6>You have already inflicted major head trauma on $N.<0>", ch, NULL, victim, TO_CHAR);
+                        }
+
+                        /* Small chance of decapitation */
+
+                        if ( !( IS_NPC(victim) && IS_SET(victim->act, ACT_UNKILLABLE) )
+                        && ( victim->hit <= ( victim->max_hit / 5 ) )
+                        &&      ((!IS_NPC(ch) && ( number_percent () < ( ( ch->pcdata->learned[gsn_target] / 50 ) + 1 ) ) )
+                            ||   ( IS_NPC(ch) && ( number_percent () < ( ch->level / 50 ) ) ) ) )
+                        {
+                                act ("{BYou strike $N's head perfectly and it DETACHES!!{x", ch, NULL, victim, TO_CHAR);
+                                act ("{B$c's vicious head strike causes $N's head to separate from $S body and fly away!{x",
+                                    ch, NULL, victim, TO_NOTVICT);
+                                act ("{B$c DECAPITATES you!!{x", ch, NULL, victim, TO_VICT);
+
+                                if (IS_NPC(victim))
+                                        sprintf(msg, "%s's severed head rolls around in front of you.",
+                                                victim->short_descr);
+                                else
+                                        sprintf(msg, "%s's severed head rolls around in front of you.",
+                                                victim->name);
+
+                                act (msg, ch, NULL, NULL, TO_ROOM);
+                                arena_commentary("$c decapitates $N!", ch, victim);
+
+                                vnum = OBJ_VNUM_SEVERED_HEAD;
+
+                                if (vnum != 0)
+                                {
+                                        OBJ_DATA *obj;
+                                        char      *name;
+                                        char      buf [ MAX_STRING_LENGTH ];
+
+                                        name = IS_NPC(victim) ? victim->short_descr : victim->name;
+                                        obj = create_object(get_obj_index(vnum), 0, "common", CREATED_NO_RANDOMISER);
+                                        obj->timer = number_range(4, 7);
+                                        obj->timermax = obj->timer;
+
+                                        sprintf(buf, obj->short_descr, name);
+                                        free_string(obj->short_descr);
+                                        obj->short_descr = str_dup(buf);
+
+                                        sprintf(buf, obj->description, name);
+                                        free_string(obj->description);
+                                        obj->description = str_dup(buf);
+
+                                        obj_to_room(obj, ch->in_room);
+                                }
+
+                                damage(ch,victim,victim->max_hit/2,gsn_decapitate, FALSE);
+                                return;
+                        }
+
+                        /* chance of removing any "head" ITEM_BODY_PARTs ch is wearing, whether head trauma has
+                           already been inflicted or not -- fails silently if ch has none  */
+
+                        if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] / 2 ) ) ) ) )
+                            ||   ( IS_NPC(ch) && ( number_percent () < ( ch->level / 2 ) ) ) )
+                        {
+                            disarm_bodypart(ch, victim, 1);
+                        }
+
+                        check_group_bonus(ch);
+
+                        if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                                return;
+                }
+                else {
+                        damage (ch, victim, 0, gsn_target, FALSE);
+                }
+                return;
+            }
+
+            else if (  ( !str_cmp( arg, "arm"  ) )
+            ||         ( !str_cmp( arg, "arms" ) ) )
+            {
+                if ( ( ( victim->class == CLASS_SHAPE_SHIFTER )
+                &&   ( ( victim->form != FORM_NORMAL)
+                    && ( victim->form != FORM_DEMON) )  )
+                ||   ( ( victim->sub_class == SUB_CLASS_WEREWOLF )
+                     &&  ( ( victim->form == FORM_WOLF )
+                        || ( victim->form == FORM_DIREWOLF ) ) ) )
+                {
+                        WAIT_STATE(ch, PULSE_VIOLENCE);
+                        act("{W$C doesn't (currently!) have that body part!{x", ch, NULL, victim, TO_CHAR);
+                        return;
+                }
+
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                send_to_char("You <10>target<0> your opponent's <174>ARM<0> with a strike!\n\r", ch);
+
+                if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] ) - ( victim->level - ch->level ) ) ) ) )
+                ||   (  IS_NPC(ch) && ( number_percent () < ch->level ) ) )
+                {
+                        WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+
+                        arena_commentary("$n targets $N's <174>ARM<0> with a strike!", ch, victim);
+
+                        if (!IS_AFFECTED(victim, AFF_ARM_TRAUMA))
+                        {
+                                act ("You successfully attack $N's arm, and <174>mutilate it beyond recognition<0>!", ch, NULL, victim, TO_CHAR);
+                                act ("$n strikes you in the arm -- it is <174>mutilated beyond recognition<0>!", ch, NULL, victim, TO_VICT);
+                                act ("$n strikes $N in the arm!", ch, NULL, victim, TO_NOTVICT);
+                                arena_commentary("$n strikes $N solidly in the arm!", ch, victim);
+
+                                damage(ch, victim, number_range(10, ch->level), gsn_target, FALSE);
+
+                                af.type      = gsn_arm_trauma;
+                                af.duration  = -1;
+                                af.location  = APPLY_DEX;
+                                af.modifier  = -(ch->level / 8);
+                                af.bitvector = AFF_ARM_TRAUMA;
+
+                                affect_to_char(victim, &af);
+                        }
+                        else {
+                                act ("<6>You have already inflicted critical arm damage on $N.<0>", ch, NULL, victim, TO_CHAR);
+                        }
+
+                        if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] / 2 ) - ( victim->level - ch->level ) ) ) ) )
+                            ||   ( IS_NPC(ch) && ( number_percent () < ( ch->level / 2 ) ) ) )
+                        {
+                            disarm_bodypart(ch, victim, 3);
+                        }
+
+                        check_group_bonus(ch);
+
+                        if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                                return;
+                }
+                else {
+                        damage (ch, victim, 0, gsn_target, FALSE);
+                }
+                return;
+            }
+            else if ( ( ( !str_cmp( arg, "leg"  ) )
+            ||          ( !str_cmp( arg, "legs" ) ) )
+                &&    ( victim->race != RACE_YUAN_TI ) )
+            {
+                if ( ( victim->class == CLASS_SHAPE_SHIFTER )
+                &&   ( victim->form == FORM_SNAKE ) )
+                {
+                        WAIT_STATE(ch, PULSE_VIOLENCE);
+                        act("{W$C doesn't (currently!) have that body part!{x", ch, NULL, victim, TO_CHAR);
+                        return;
+                }
+
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                send_to_char("You <10>target<0> your opponent's <186>LEG<0> with a strike!\n\r", ch);
+
+                if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] ) - ( victim->level - ch->level ) ) ) ) )
+                ||   (  IS_NPC(ch) && ( number_percent () < ch->level ) ) )
+                {
+                        WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+
+                        arena_commentary("$n targets $N's <186>LEG<0> with a strike!", ch, victim);
+
+                        if (!IS_AFFECTED(victim, AFF_LEG_TRAUMA))
+                        {
+                                act ("You successfully attack $N's leg, and <186>brutally cripple it<0>!", ch, NULL, victim, TO_CHAR);
+                                act ("$n strikes you in the leg -- it is <186>maimed<0>!", ch, NULL, victim, TO_VICT);
+                                act ("$n strikes $N in the leg!", ch, NULL, victim, TO_NOTVICT);
+                                arena_commentary("$n strikes $N directly in the leg!", ch, victim);
+
+                                damage(ch, victim, number_range(10, ch->level), gsn_target, FALSE);
+
+                                af.type      = gsn_leg_trauma;
+                                af.duration  = -1;
+
+                                af.location  = APPLY_DEX;
+                                af.modifier  = -(ch->level / 8);
+                                af.bitvector = AFF_LEG_TRAUMA;
+
+                                affect_to_char(victim, &af);
+
+                                af.location  = APPLY_MOVE;
+                                af.modifier  = ( ch->level * -2 );
+
+                                af.bitvector = AFF_LEG_TRAUMA;
+
+                                affect_to_char(victim, &af);
+                        }
+                        else {
+                                act ("<6>You have already inflicted severe leg damage on $N.<0>", ch, NULL, victim, TO_CHAR);
+                        }
+
+                        /* chance of removing any "leg" ITEM_BODY_PARTs ch is wearing, whether leg trauma has
+                           already been inflicted or not -- fails silently if ch has none  */
+
+                        if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] / 2 ) - ( victim->level - ch->level ) ) ) ) )
+                            ||   ( IS_NPC(ch) && ( number_percent () < ( ch->level / 2 ) ) ) )
+                        {
+                            log_string("Shoudl eb trying to disarm leg body parts here");
+                            disarm_bodypart(ch, victim, 4);
+                        }
+
+                        check_group_bonus(ch);
+
+                        if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                                return;
+                }
+                else {
+                        damage (ch, victim, 0, gsn_target, FALSE);
+                }
+                return;
+            }
+            else if ( ( !str_cmp( arg, "heart"  ) )
+            ||        ( !str_cmp( arg, "hearts" ) ) )
+            {
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                send_to_char("You <10>target<0> your opponent's <9>HEART<0> with a strike!\n\r", ch);
+
+                if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] ) - ( victim->level - ch->level ) ) ) ) )
+                ||   (  IS_NPC(ch) && ( number_percent () < ch->level ) ) )
+                {
+                        WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+
+                        arena_commentary("$n targets $N's <9>HEART<0> with a strike!", ch, victim);
+
+                        if (!IS_AFFECTED(victim, AFF_HEART_TRAUMA))
+                        {
+                                act ("You successfully attack $N's heart, and <9>wound it grievously<0>!", ch, NULL, victim, TO_CHAR);
+                                act ("$n strikes you in the heart -- you go into <9>cardiac arrest<0>!", ch, NULL, victim, TO_VICT);
+                                act ("$n strikes $N directly in the heart!", ch, NULL, victim, TO_NOTVICT);
+                                arena_commentary("$n strikes $N directly in the heart!", ch, victim);
+
+                                damage(ch, victim, number_range(30, (ch->level *3)), gsn_heart_trauma, FALSE);
+                                daze(ch, victim, gsn_heart_trauma,2);
+
+                                dot_dam = number_range((victim->level * 5),(victim->level * 6));
+                                if (dot_dam > MAX_DAMAGE)
+                                    dot_dam = MAX_DAMAGE;
+
+                                af.type      = gsn_heart_trauma;
+                                af.duration  = -1;
+
+                                af.location  = APPLY_NONE;
+                                af.modifier  = dot_dam;
+                                af.bitvector = AFF_DOT;
+                                affect_to_char( victim, &af );
+
+                                af.location  = APPLY_CON;
+                                af.modifier  = -(ch->level / 8);
+                                af.bitvector = AFF_HEART_TRAUMA;
+
+                                affect_to_char(victim, &af);
+                        }
+                        else {
+                                act ("<6>You have already damaged $N's heart grievously.<0>", ch, NULL, victim, TO_CHAR);
+                        }
+
+                        /* chance of removing any "heart" ITEM_BODY_PARTs ch is wearing, whether heart trauma has
+                           already been inflicted or not -- fails silently if ch has none  */
+
+                        if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] / 2 ) - ( victim->level - ch->level ) ) ) ) )
+                            ||   ( IS_NPC(ch) && ( number_percent () < ( ch->level / 2 ) ) ) )
+                        {
+                            disarm_bodypart(ch, victim, 5);
+                        }
+
+                        check_group_bonus(ch);
+
+                        if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                                return;
+                }
+                else {
+                        damage (ch, victim, 0, gsn_target, FALSE);
+                }
+                return;
+            }
+            else if ( ( ( !str_cmp( arg, "tail"  ) )
+            ||          ( !str_cmp( arg, "tails" ) ) )
+                && ( ( victim->race == RACE_YUAN_TI )
+                  || ( victim->race == RACE_SATYR )
+                  || ( victim->race == RACE_CENTAUR )
+                  || ( victim->race == RACE_SAHUAGIN )
+                  || ( victim->race == RACE_TIEFLING )
+                  || ( victim->race == RACE_HALF_DRAGON )
+                  || ( victim->class == CLASS_SHAPE_SHIFTER )
+                  || ( victim->sub_class == SUB_CLASS_WEREWOLF ) ) )
+            {
+                if ( ( ( victim->class == CLASS_SHAPE_SHIFTER )
+                &&       ( ( victim->form != FORM_CHAMELEON )
+                        &&  ( victim->form != FORM_CAT )
+                        &&  ( victim->form != FORM_HAWK )
+                        &&  ( victim->form != FORM_SNAKE )
+                        &&  ( victim->form != FORM_SCORPION )
+                        &&  ( victim->form != FORM_TIGER )
+                        &&  ( victim->form != FORM_HYDRA )
+                        &&  ( victim->form != FORM_TIGER )
+                        &&  ( victim->form != FORM_GRIFFIN )
+                        &&  ( victim->form != FORM_DRAGON ) ) )
+                ||   ( ( victim->sub_class == SUB_CLASS_WEREWOLF )
+                        &&  ( ( victim->form != FORM_WOLF ) && ( victim->form != FORM_DIREWOLF ) ) ) )
+                {
+                        WAIT_STATE(ch, PULSE_VIOLENCE);
+                        act("{W$C doesn't (currently!) have that body part!{x", ch, NULL, victim, TO_CHAR);
+                        return;
+                }
+
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                send_to_char("You <10>target<0> your opponent's <154>TAIL<0> with a strike!\n\r", ch);
+
+                if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] ) - ( victim->level - ch->level ) ) ) ) )
+                ||   (  IS_NPC(ch) && ( number_percent () < ch->level ) ) )
+                {
+                        WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+
+                        arena_commentary("$n targets $N's <154>TAIL<0> with a strike!", ch, victim);
+
+                        if (!IS_AFFECTED(victim, AFF_TAIL_TRAUMA))
+                        {
+                                act ("You successfully attack $N's tail, and <154>viciously maim it<0>!", ch, NULL, victim, TO_CHAR);
+                                act ("$n strikes you in the tail -- it is <154>severely damaged<0>!", ch, NULL, victim, TO_VICT);
+                                act ("$n strikes $N in the tail!", ch, NULL, victim, TO_NOTVICT);
+                                arena_commentary("$n strikes $N directly on their tail!", ch, victim);
+
+                                damage(ch, victim, number_range(10, ch->level), gsn_target, FALSE);
+
+                                af.type      = gsn_tail_trauma;
+                                af.duration  = -1;
+
+                                af.location  = APPLY_DEX;
+                                af.modifier  = -(ch->level / 12);
+                                af.bitvector = AFF_TAIL_TRAUMA;
+
+                                affect_to_char(victim, &af);
+                        }
+                        else {
+                                act ("<6>You have already inflicted ruinous tail damage on $N.<0>", ch, NULL, victim, TO_CHAR);
+                        }
+
+                        /* higher-than usual (big target!) chance of removing any "tail" ITEM_BODY_PARTs ch is wearing, whether tail trauma has
+                           already been inflicted or not -- fails silently if ch has none  */
+
+                        if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] ) - ( victim->level - ch->level ) ) ) ) )
+                            ||   ( IS_NPC(ch) && ( number_percent () < ( ch->level ) ) ) )
+                        {
+                            disarm_bodypart(ch, victim, 6);
+                        }
+
+                        check_group_bonus(ch);
+
+                        if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                                return;
+                }
+                else {
+                        damage (ch, victim, 0, gsn_target, FALSE);
+                }
+                return;
+            }
+            else if ( ( !str_cmp( arg, "torso"  ) )
+            ||        ( !str_cmp( arg, "body"   ) ) )
+            {
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+
+                send_to_char("You <10>target<0> your opponent's <173>TORSO<0> with a strike!\n\r", ch);
+                if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] ) - ( victim->level - ch->level ) ) ) ) )
+                ||   (  IS_NPC(ch) && ( number_percent () < ch->level ) ) )
+                {
+                        WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+
+                        arena_commentary("$n targets $N's <173>TORSO<0> with a strike!", ch, victim);
+
+                        if (!IS_AFFECTED(victim, AFF_TORSO_TRAUMA))
+                        {
+                                act ("You successfully attack $N's body, and inflict a <173>terrible gut wound<0>!", ch, NULL, victim, TO_CHAR);
+                                act ("$n strikes you in the torso -- your guts start <173>leaking out<0>!", ch, NULL, victim, TO_VICT);
+                                act ("$n strikes $N directly in the torso!", ch, NULL, victim, TO_NOTVICT);
+                                arena_commentary("$n hit $N straight in the gut!", ch, victim);
+
+                                damage(ch, victim, number_range(20, (ch->level *2)), gsn_target, FALSE);
+
+                                dot_dam = number_range((victim->level),(victim->level * 2));
+                                if (dot_dam > MAX_DAMAGE)
+                                    dot_dam = MAX_DAMAGE;
+
+                                af.type      = gsn_torso_trauma;
+                                af.duration  = -1;
+
+                                af.location  = APPLY_NONE;
+                                af.modifier  = dot_dam;
+                                af.bitvector = AFF_DOT;
+                                affect_to_char( victim, &af );
+
+                                af.location  = APPLY_STR;
+                                af.modifier  = -(ch->level / 15);
+                                af.bitvector = AFF_TORSO_TRAUMA;
+
+                                affect_to_char(victim, &af);
+                        }
+                        else {
+                                act ("<6>You have already grievously wounded $N's body.<0>", ch, NULL, victim, TO_CHAR);
+                        }
+
+                        /* chance of removing any "torso" ITEM_BODY_PARTs ch is wearing, whether torso trauma has
+                           already been inflicted or not -- fails silently if ch has none  */
+
+                        if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] / 2 ) - ( victim->level - ch->level ) ) ) ) )
+                            ||   ( IS_NPC(ch) && ( number_percent () < ( ch->level / 2 ) ) ) )
+                        {
+                            disarm_bodypart(ch, victim, 7);
+                        }
+
+                        check_group_bonus(ch);
+
+                        if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                                return;
+                }
+                else {
+                        damage (ch, victim, 0, gsn_target, FALSE);
+                }
+                return;
+            }
+            else {
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                act("{W$C doesn't have that body part!{x", ch, NULL, victim, TO_CHAR);
+                return;
+            }
+        }
+        else {
+
+            /* PLAYER VERSUS MOB or MOB VERSUS MOB STARTS HERE */
+
+            if ( ( ( !str_cmp( arg, "eye"  ) )
+            ||     ( !str_cmp( arg, "eyes" ) ) )
+                && HAS_EYES( victim ) )
+            {
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+
+                act ("You <10>target<0> $N's <14>EYES<0> with a strike!", ch, NULL, victim, TO_CHAR);
+
+                if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] ) - ( victim->level - ch->level ) ) ) ) )
+                ||   (  IS_NPC(ch) && ( number_percent () < ch->level ) ) )
+                {
+                        WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+
+                        arena_commentary("$n targets $N's <14>EYES<0> with a strike!", ch, victim);
+
+                        if (!IS_AFFECTED(victim, AFF_EYE_TRAUMA))
+                        {
+                                act ("You successfully attack $N's eyes, and <14>seriously damage them<0>!", ch, NULL, victim, TO_CHAR);
+                                act ("$n strikes you in the eyes -- they are <14>grievously damaged<0>!", ch, NULL, victim, TO_VICT);
+                                act ("$n strikes $N in the eyes!", ch, NULL, victim, TO_NOTVICT);
+                                arena_commentary("$n strikes $N flush in the eyes!", ch, victim);
+
+                                damage(ch, victim, number_range(10, ch->level), gsn_target, FALSE);
+
+                                af.type      = gsn_eye_trauma;
+                                af.duration  = -1;
+                                af.location  = APPLY_HITROLL;
+                                af.modifier  = -(ch->level / 8);
+                                af.bitvector = (AFF_BLIND + AFF_EYE_TRAUMA);
+
+                                affect_to_char(victim, &af);
+                        }
+                        else {
+                                act ("<6>You have already inflicted horrific eye trauma on $N.<0>", ch, NULL, victim, TO_CHAR);
+                        }
+
+                        /* chance of removing any "eye" ITEM_BODY_PARTs ch is wearing, whether eye trauma has
+                           already been inflicted or not -- fails silently if ch has none  */
+
+                        if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] / 2 ) - ( victim->level - ch->level ) ) ) ) )
+                            ||   ( IS_NPC(ch) && ( number_percent () < ( ch->level / 2 ) ) ) )
+                        {
+                            disarm_bodypart(ch, victim, 2);
+                        }
+
+                        check_group_bonus(ch);
+
+                        if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                                return;
+                }
+                else {
+                        damage (ch, victim, 0, gsn_target, FALSE);
+                }
+                return;
+            }
+            else if ( ( ( !str_cmp( arg, "head"  ) )
+            ||          ( !str_cmp( arg, "heads" ) ) )
+                && HAS_HEAD( victim ) )
+            {
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                send_to_char("You <10>target<0> your opponent's <194>HEAD<0> with a strike!\n\r", ch);
+                if ( (!IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target]) ) ) ) )
+                ||   ( IS_NPC(ch) && ( number_percent () < ch->level ) ) )
+                {
+
+                        WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+
+                        arena_commentary("$n targets $N's <194>HEAD<0> with a strike!", ch, victim);
+
+                        if (!IS_AFFECTED(victim, AFF_HEAD_TRAUMA))
+                        {
+                                act ("You successfully strike $N's head, and cause <194>serious brain injury<0>!", ch, NULL, victim, TO_CHAR);
+                                act ("$n strikes you in the head -- you take <194>critical brain damage<0>!", ch, NULL, victim, TO_VICT);
+                                act ("$n strikes $N in the head!", ch, NULL, victim, TO_NOTVICT);
+                                arena_commentary("$n strikes $N directly in the head!", ch, victim);
+
+                                damage(ch, victim, number_range(10, ch->level), gsn_head_trauma, FALSE);
+                                daze(ch, victim, gsn_head_trauma, 3);
+
+                                af.type      = gsn_head_trauma;
+                                af.duration  = -1;
+                                af.location  = APPLY_WIS;
+                                af.modifier  = -(ch->level / 10);
+                                af.bitvector = AFF_HEAD_TRAUMA;
+                                affect_to_char(victim, &af);
+
+                                af.location  = APPLY_INT;
+                                af.modifier  = -(ch->level / 10);
+                                af.bitvector = AFF_HEAD_TRAUMA;
+                                affect_to_char(victim, &af);
+                        }
+                        else {
+                                act ("<6>You have already inflicted major head trauma on $N.<0>", ch, NULL, victim, TO_CHAR);
+                        }
+
+                        /* Small chance of decapitation */
+
+                        if ( !(IS_NPC(victim) && IS_SET(victim->act, ACT_UNKILLABLE) )
+                        && ( victim->hit <= ( victim->max_hit / 5 ) )
+                        &&      ((!IS_NPC(ch) && ( number_percent () < ( ( ch->pcdata->learned[gsn_target] / 50 ) + 1 ) ) )
+                            ||   ( IS_NPC(ch) && ( number_percent () < ( ch->level / 50 ) ) ) ) )
+                        {
+                                act ("{BYou strike $N's head perfectly and it DETACHES!!{x", ch, NULL, victim, TO_CHAR);
+                                act ("{B$c's vicious head strike causes $N's head to separate from $S body and fly away!{x",
+                                    ch, NULL, victim, TO_NOTVICT);
+                                act ("{B$c DECAPITATES you!!{x", ch, NULL, victim, TO_VICT);
+
+                                if (IS_NPC(victim))
+                                        sprintf(msg, "%s's severed head rolls around in front of you.",
+                                                victim->short_descr);
+                                else
+                                        sprintf(msg, "%s's severed head rolls around in front of you.",
+                                                victim->name);
+
+                                act (msg, ch, NULL, NULL, TO_ROOM);
+                                arena_commentary("$c decapitates $N!", ch, victim);
+
+                                vnum = OBJ_VNUM_SEVERED_HEAD;
+
+                                if (vnum != 0)
+                                {
+                                        OBJ_DATA *obj;
+                                        char      *name;
+                                        char      buf [ MAX_STRING_LENGTH ];
+
+                                        name = IS_NPC(victim) ? victim->short_descr : victim->name;
+                                        obj = create_object(get_obj_index(vnum), 0, "common", CREATED_NO_RANDOMISER);
+                                        obj->timer = number_range(4, 7);
+                                        obj->timermax = obj->timer;
+
+                                        sprintf(buf, obj->short_descr, name);
+                                        free_string(obj->short_descr);
+                                        obj->short_descr = str_dup(buf);
+
+                                        sprintf(buf, obj->description, name);
+                                        free_string(obj->description);
+                                        obj->description = str_dup(buf);
+
+                                        obj_to_room(obj, ch->in_room);
+                                }
+
+                                damage(ch,victim,victim->max_hit/2,gsn_decapitate, FALSE);
+                                return;
+                        }
+
+                        /* chance of removing any "head" ITEM_BODY_PARTs ch is wearing, whether head trauma has
+                           already been inflicted or not -- fails silently if ch has none  */
+
+                        if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] / 2 ) ) ) ) )
+                            ||   ( IS_NPC(ch) && ( number_percent () < ( ch->level / 2 ) ) ) )
+                        {
+                            disarm_bodypart(ch, victim, 1);
+                        }
+
+                        check_group_bonus(ch);
+
+                        if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                                return;
+                }
+                else {
+                        damage (ch, victim, 0, gsn_target, FALSE);
+                }
+                return;
+            }
+            else if ( ( ( !str_cmp( arg, "arm"  ) )
+            ||          ( !str_cmp( arg, "arms" ) ) )
+                && HAS_ARMS( victim ) )
+            {
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                send_to_char("You <10>target<0> your opponent's <174>ARM<0> with a strike!\n\r", ch);
+
+                if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] ) - ( victim->level - ch->level ) ) ) ) )
+                ||   (  IS_NPC(ch) && ( number_percent () < ch->level ) ) )
+                {
+                        WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+
+                        arena_commentary("$n targets $N's <174>ARM<0> with a strike!", ch, victim);
+
+                        if (!IS_AFFECTED(victim, AFF_ARM_TRAUMA))
+                        {
+                                act ("You successfully attack $N's arm, and <174>mutilate it beyond recognition<0>!", ch, NULL, victim, TO_CHAR);
+                                act ("$n strikes you in the arm -- it is <174>mutilated beyond recognition<0>!", ch, NULL, victim, TO_VICT);
+                                act ("$n strikes $N in the arm!", ch, NULL, victim, TO_NOTVICT);
+                                arena_commentary("$n strikes $N solidly in the arm!", ch, victim);
+
+                                damage(ch, victim, number_range(10, ch->level), gsn_target, FALSE);
+
+                                af.type      = gsn_arm_trauma;
+                                af.duration  = -1;
+                                af.location  = APPLY_DEX;
+                                af.modifier  = -(ch->level / 8);
+                                af.bitvector = AFF_ARM_TRAUMA;
+
+                                affect_to_char(victim, &af);
+                        }
+                        else {
+                                act ("<6>You have already inflicted critical arm damage on $N.<0>", ch, NULL, victim, TO_CHAR);
+                        }
+
+                        /* chance of removing any "arm" ITEM_BODY_PARTs ch is wearing, whether arm trauma has
+                           already been inflicted or not -- fails silently if ch has none  */
+
+                        if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] / 2 ) - ( victim->level - ch->level ) ) ) ) )
+                            ||   ( IS_NPC(ch) && ( number_percent () < ( ch->level / 2 ) ) ) )
+                        {
+                            disarm_bodypart(ch, victim, 3);
+                        }
+
+                        check_group_bonus(ch);
+
+                        if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                                return;
+                }
+                else {
+                        damage (ch, victim, 0, gsn_target, FALSE);
+                }
+                return;
+            }
+            else if ( ( ( !str_cmp( arg, "leg"  ) )
+            ||          ( !str_cmp( arg, "legs" ) ) )
+                && HAS_LEGS( victim ) )
+            {
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                send_to_char("You <10>target<0> your opponent's <186>LEG<0> with a strike!\n\r", ch);
+
+                if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] ) - ( victim->level - ch->level ) ) ) ) )
+                ||   (  IS_NPC(ch) && ( number_percent () < ch->level ) ) )
+                {
+                        WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+
+                        arena_commentary("$n targets $N's <186>LEG<0> with a strike!", ch, victim);
+
+                        if (!IS_AFFECTED(victim, AFF_LEG_TRAUMA))
+                        {
+                                act ("You successfully attack $N's leg, and <186>brutally cripple it<0>!", ch, NULL, victim, TO_CHAR);
+                                act ("$n strikes you in the leg -- it is <186>maimed<0>!", ch, NULL, victim, TO_VICT);
+                                act ("$n strikes $N in the leg!", ch, NULL, victim, TO_NOTVICT);
+                                arena_commentary("$n strikes $N directly in the leg!", ch, victim);
+
+                                damage(ch, victim, number_range(10, ch->level), gsn_target, FALSE);
+
+                                af.type      = gsn_leg_trauma;
+                                af.duration  = -1;
+
+                                af.location  = APPLY_DEX;
+                                af.modifier  = -(ch->level / 8);
+                                af.bitvector = AFF_LEG_TRAUMA;
+
+                                affect_to_char(victim, &af);
+
+                                af.location  = APPLY_MOVE;
+                                af.modifier  = ( ch->level * -2 );
+
+                                af.bitvector = AFF_LEG_TRAUMA;
+
+                                affect_to_char(victim, &af);
+                        }
+                        else {
+                                act ("<6>You have already inflicted severe leg damage on $N.<0>", ch, NULL, victim, TO_CHAR);
+                        }
+
+                        /* chance of removing any "leg" ITEM_BODY_PARTs ch is wearing, whether leg trauma has
+                           already been inflicted or not -- fails silently if ch has none  */
+
+                        if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] / 2 ) - ( victim->level - ch->level ) ) ) ) )
+                            ||   ( IS_NPC(ch) && ( number_percent () < ( ch->level / 2 ) ) ) )
+                        {
+                            disarm_bodypart(ch, victim, 4);
+                        }
+
+                        check_group_bonus(ch);
+
+                        if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                                return;
+                }
+                else {
+                        damage (ch, victim, 0, gsn_target, FALSE);
+                }
+                return;
+            }
+            else if ( ( ( !str_cmp( arg, "heart"  ) )
+            ||          ( !str_cmp( arg, "hearts" ) ) )
+                && HAS_HEART( victim ) )
+            {
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                send_to_char("You <10>target<0> your opponent's <9>HEART<0> with a strike!\n\r", ch);
+
+                if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] ) - ( victim->level - ch->level ) ) ) ) )
+                ||   (  IS_NPC(ch) && ( number_percent () < ch->level ) ) )
+                {
+                        WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+
+                        arena_commentary("$n targets $N's <9>HEART<0> with a strike!", ch, victim);
+
+                        if (!IS_AFFECTED(victim, AFF_HEART_TRAUMA))
+                        {
+                                act ("You successfully attack $N's heart, and <9>wound it grievously<0>!", ch, NULL, victim, TO_CHAR);
+                                act ("$n strikes you in the heart -- you go into <9>cardiac arrest<0>!", ch, NULL, victim, TO_VICT);
+                                act ("$n strikes $N directly in the heart!", ch, NULL, victim, TO_NOTVICT);
+                                arena_commentary("$n strikes $N directly in the heart!", ch, victim);
+
+                                damage(ch, victim, number_range(30, (ch->level *3)), gsn_target, FALSE);
+                                daze(ch, victim, gsn_heart_trauma,2);
+
+                                dot_dam = (victim->hit / 20);
+                                if (dot_dam > MAX_DAMAGE)
+                                    dot_dam = MAX_DAMAGE;
+
+                                af.type      = gsn_heart_trauma;
+                                af.duration  = -1;
+
+                                af.bitvector = AFF_DOT;
+                                af.location  = APPLY_NONE;
+                                af.modifier  = dot_dam;
+                                affect_to_char( victim, &af );
+
+                                af.location  = APPLY_CON;
+                                af.modifier  = -(ch->level / 8);
+                                af.bitvector = AFF_HEART_TRAUMA;
+
+                                affect_to_char(victim, &af);
+                        }
+                        else {
+                                act ("<6>You have already damaged $N's heart grievously.<0>", ch, NULL, victim, TO_CHAR);
+                        }
+
+                        /* chance of removing any "heart" ITEM_BODY_PARTs ch is wearing, whether heart trauma has
+                           already been inflicted or not -- fails silently if ch has none  */
+
+                        if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] / 2 ) - ( victim->level - ch->level ) ) ) ) )
+                            ||   ( IS_NPC(ch) && ( number_percent () < ( ch->level / 2 ) ) ) )
+                        {
+                            disarm_bodypart(ch, victim, 5);
+                        }
+
+                        check_group_bonus(ch);
+
+                        if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                                return;
+                }
+                else {
+                        damage (ch, victim, 0, gsn_target, FALSE);
+                }
+                return;
+            }
+            else if ( ( ( !str_cmp( arg, "tail"  ) )
+            ||          ( !str_cmp( arg, "tails" ) ) )
+                && HAS_TAIL( victim ) )
+            {
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                send_to_char("You <10>target<0> your opponent's <154>TAIL<0> with a strike!\n\r", ch);
+
+                if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] ) - ( victim->level - ch->level ) ) ) ) )
+                ||   (  IS_NPC(ch) && ( number_percent () < ch->level ) ) )
+                {
+                        WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+
+                        arena_commentary("$n targets $N's <154>TAIL<0> with a strike!", ch, victim);
+
+                        if (!IS_AFFECTED(victim, AFF_TAIL_TRAUMA))
+                        {
+                                act ("You successfully attack $N's tail, and <154>viciously maim it<0>!", ch, NULL, victim, TO_CHAR);
+                                act ("$n strikes you in the tail -- it is <154>severely damaged<0>!", ch, NULL, victim, TO_VICT);
+                                act ("$n strikes $N in the tail!", ch, NULL, victim, TO_NOTVICT);
+                                arena_commentary("$n strikes $N directly on their tail!", ch, victim);
+
+                                damage(ch, victim, number_range(10, ch->level), gsn_target, FALSE);
+
+                                af.type      = gsn_tail_trauma;
+                                af.duration  = -1;
+
+                                af.location  = APPLY_DEX;
+                                af.modifier  = -(ch->level / 12);
+                                af.bitvector = AFF_TAIL_TRAUMA;
+
+                                affect_to_char(victim, &af);
+                        }
+                        else {
+                                act ("<6>You have already inflicted ruinous tail damage on $N.<0>", ch, NULL, victim, TO_CHAR);
+                        }
+
+                        /* higher-than usual (big target!) chance of removing any "tail" ITEM_BODY_PARTs ch is wearing, whether tail trauma has
+                           already been inflicted or not -- fails silently if ch has none  */
+
+                        if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] ) - ( victim->level - ch->level ) ) ) ) )
+                            ||   ( IS_NPC(ch) && ( number_percent () < ( ch->level ) ) ) )
+                        {
+                            disarm_bodypart(ch, victim, 6);
+                        }
+
+                        check_group_bonus(ch);
+
+                        if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                                return;
+                }
+                else {
+                        damage (ch, victim, 0, gsn_target, FALSE);
+                }
+                return;
+            }
+            else if ( ( !str_cmp( arg, "torso"  ) )
+            ||        ( !str_cmp( arg, "body"   ) ) )
+            {
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                send_to_char("You <10>target<0> your opponent's <173>TORSO<0> with a strike!\n\r", ch);
+                if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] ) - ( victim->level - ch->level ) ) ) ) )
+                ||   (  IS_NPC(ch) && ( number_percent () < ch->level ) ) )
+                {
+                        WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+
+                        arena_commentary("$n targets $N's <173>TORSO<0> with a strike!", ch, victim);
+
+                        if (!IS_AFFECTED(victim, AFF_TORSO_TRAUMA))
+                        {
+                                act ("You successfully attack $N's body, and inflict a <173>terrible gut wound<0>!", ch, NULL, victim, TO_CHAR);
+                                act ("$n strikes you in the torso -- your guts start <173>leaking out<0>!", ch, NULL, victim, TO_VICT);
+                                act ("$n strikes $N directly in the torso!", ch, NULL, victim, TO_NOTVICT);
+                                arena_commentary("$n hit $N straight in the gut!", ch, victim);
+
+                                damage(ch, victim, number_range(20, (ch->level *2)), gsn_target, FALSE);
+
+                                dot_dam = (victim->hit / 50);
+                                if (dot_dam > MAX_DAMAGE)
+                                    dot_dam = MAX_DAMAGE;
+
+                                af.type      = gsn_torso_trauma;
+                                af.duration  = -1;
+
+                                af.bitvector = AFF_DOT;
+                                af.location  = APPLY_NONE;
+                                af.modifier  = dot_dam;
+                                affect_to_char( victim, &af );
+
+                                af.location  = APPLY_STR;
+                                af.modifier  = -(ch->level / 15);
+                                af.bitvector = AFF_TORSO_TRAUMA;
+
+                                affect_to_char(victim, &af);
+                        }
+                        else {
+                                act ("<6>You have already grievously wounded $N's body.<0>", ch, NULL, victim, TO_CHAR);
+                        }
+
+                        /* chance of removing any "torso" ITEM_BODY_PARTs ch is wearing, whether torso trauma has
+                           already been inflicted or not -- fails silently if ch has none  */
+
+                        if ( ( !IS_NPC(ch) && ( number_percent () < UMAX(5, ( ( ch->pcdata->learned[gsn_target] / 2 ) - ( victim->level - ch->level ) ) ) ) )
+                            ||   ( IS_NPC(ch) && ( number_percent () < ( ch->level / 2 ) ) ) )
+                        {
+                            disarm_bodypart(ch, victim, 7);
+                        }
+
+                        check_group_bonus(ch);
+
+                        if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                                return;
+                }
+                else {
+                        damage (ch, victim, 0, gsn_target, FALSE);
+                }
+                return;
+            }
+            else {
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                act("{W$C doesn't have that body part!{x", ch, NULL, victim, TO_CHAR);
+                return;
+            }
+
+        }
+}
 
 void do_destrier (CHAR_DATA *ch, char *argument)
 {
@@ -4174,6 +5264,15 @@ void do_backstab (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_AFFECTED(ch, AFF_TAIL_TRAUMA))
+        {
+                if (ch->form == FORM_SCORPION)
+                {
+                        send_to_char("Your tail is too damaged to backstab anyone with.\n\r", ch);
+                        return;
+                }
+        }
+
         check_killer(ch, victim);
         WAIT_STATE(ch, PULSE_VIOLENCE);
 
@@ -4323,6 +5422,12 @@ void do_lunge (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
+        {
+                send_to_char("Your legs are too injured to lunge effectively.\n\r", ch);
+                return;
+        }
+
         check_killer(ch, victim);
         WAIT_STATE(ch, PULSE_VIOLENCE);
 
@@ -4439,6 +5544,12 @@ void do_joust (CHAR_DATA *ch, char *argument)
                 act ("$n's jousting is thwarted by $N's acute awareness.",
                      ch, NULL, victim, TO_NOTVICT);
                 damage(ch, victim, 0, gsn_joust, FALSE);
+                return;
+        }
+
+        if ( IS_AFFECTED(ch, AFF_ARM_TRAUMA) )
+        {
+                send_to_char("Your arm is too damaged to joust effectively.\n\r", ch);
                 return;
         }
 
@@ -4597,6 +5708,13 @@ void do_flee (CHAR_DATA *ch, char *argument)
         if (is_affected( ch, gsn_frenzy))
         {
                 send_to_char("The divine rage flowing through your body overrides your desire to flee...\n\r", ch);
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                return;
+        }
+
+        if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
+        {
+                send_to_char("Your legs are too damaged to have any hope of escape!\n\r", ch);
                 WAIT_STATE(ch, PULSE_VIOLENCE);
                 return;
         }
@@ -5112,6 +6230,9 @@ void do_dirt_kick (CHAR_DATA *ch, char *argument)
 
         chance = URANGE(5, chance, 95);
 
+        if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
+            chance /= 2;
+
         if (is_safe(ch, victim))
                 return;
 
@@ -5171,7 +6292,13 @@ void do_kick (CHAR_DATA *ch, char *argument)
 
         WAIT_STATE(ch, skill_table[gsn_kick].beats);
 
-        if (IS_NPC(ch)|| number_percent() < ch->pcdata->learned[gsn_kick])
+        if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
+        {
+            send_to_char("You try to kick, but your leg is too damaged.\n\r", ch);
+            return;
+        }
+
+        if (IS_NPC(ch) || number_percent() < ch->pcdata->learned[gsn_kick])
         {
                 arena_commentary("$n kicks $N.", ch, victim);
 
@@ -5517,6 +6644,12 @@ void do_transfix (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_AFFECTED(ch, AFF_BLIND))
+        {
+                send_to_char("You must be able to see to transfix someone!\n\r", ch);
+                return;
+        }
+
         if (IS_AFFECTED(victim, AFF_HOLD))
         {
                 act ("$N is already held.", ch, NULL, victim, TO_CHAR);
@@ -5759,6 +6892,12 @@ void do_headbutt (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char("Your head is far too damaged to be smashing it into things!\n\n", ch);
+                return;
+        }
+
         if (IS_NPC(ch) || number_percent() < ch->pcdata->learned[gsn_headbutt])
         {
                 if (IS_NPC(victim))
@@ -5859,6 +6998,12 @@ void do_decapitate (CHAR_DATA *ch, char *argument)
         if( IS_NPC(victim) && !HAS_HEAD(victim) )
         {
                 act( "$N doesn't have a head to chop off!", ch, NULL, victim, TO_CHAR );
+                return;
+        }
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_UNKILLABLE))
+        {
+                send_to_char("That won't work on them.\n\r", ch);
                 return;
         }
 
@@ -5993,6 +7138,11 @@ void do_snap_neck (CHAR_DATA *ch, char *argument)
                 chance = ch->pcdata->learned[gsn_snap_neck]/2;
                 chance += get_curr_dex(ch);
                 chance += (ch->level - victim->level) *2;
+        }
+
+        if (IS_AFFECTED(ch, AFF_ARM_TRAUMA))
+        {
+                chance = ( chance /2 );
         }
 
         act ("You attempt to snap $N's spinal column at the neck...",
@@ -6236,7 +7386,7 @@ void do_disarm (CHAR_DATA *ch, char *argument)
 
         if (IS_SET(obj->extra_flags, ITEM_BODY_PART))
         {
-                send_to_char("You cannot sever your opponent's body parts.\n\r", ch);
+                send_to_char("You cannot disarm your opponent's body parts.\n\r", ch);
                 return;
         }
 
@@ -6359,6 +7509,9 @@ void do_trip (CHAR_DATA *ch, char *argument)
                 chance += (ch->level - victim->level) * 2;
         }
 
+        if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
+                chance /= 2;
+
         WAIT_STATE (ch, 2 * PULSE_VIOLENCE );
 
         if (IS_NPC(ch)|| number_percent() < chance)
@@ -6471,6 +7624,16 @@ void do_grapple (CHAR_DATA *ch, char *argument)
                 chance += (ch->level - victim->level) * 2;
         }
 
+        if (IS_AFFECTED(ch, AFF_ARM_TRAUMA))
+        {
+                chance = ( ( chance / 3 ) * 2 );
+        }
+
+        if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
+        {
+                chance = ( ( chance / 3 ) * 2 );
+        }
+
         WAIT_STATE(ch,skill_table[gsn_grapple].beats);
 
         if ((IS_NPC(ch) || number_percent() < chance)
@@ -6575,6 +7738,12 @@ void do_flying_headbutt (CHAR_DATA *ch, char *argument)
         if (!IS_NPC(ch))
                 chance = ch->pcdata->learned[gsn_flying_headbutt];
 
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char("Your head is far too damaged to be smashing it into things!\n\r", ch);
+                return;
+        }
+
         WAIT_STATE(ch,skill_table[gsn_flying_headbutt].beats);
 
         if ((IS_NPC(ch) || number_percent() < chance )
@@ -6584,7 +7753,7 @@ void do_flying_headbutt (CHAR_DATA *ch, char *argument)
                      ch, NULL, victim, TO_CHAR);
                 act ("$n leaps at you and {Cheadbutts{x you down!",
                      ch, NULL, victim, TO_VICT);
-                act ("$n leaps upand {Cheadbutts{x $N down!",
+                act ("$n leaps up and {Cheadbutts{x $N down!",
                      ch, NULL, victim, TO_NOTVICT);
                 arena_commentary("$n's flying headbutt knocks $N to the ground.", ch, victim);
 
@@ -7139,6 +8308,12 @@ void do_shoot (CHAR_DATA *ch, char *argument)
         if (is_safe(ch, victim))
                 return;
 
+        if (IS_AFFECTED(ch, AFF_ARM_TRAUMA))
+        {
+                send_to_char("Your arm is too damaged to operate a weapon like that.\n\r", ch);
+                return;
+        }
+
         /* Remove weapons and shield, equip bow */
         objWield = get_eq_char(ch, WEAR_WIELD);
         if (objWield)
@@ -7237,6 +8412,12 @@ void do_snap_shot (CHAR_DATA *ch, char *argument)
         if (!ch->fighting)
         {
                 send_to_char("You're not fighting anyone!\n\r", ch);
+                return;
+        }
+
+        if (IS_AFFECTED(ch, AFF_ARM_TRAUMA))
+        {
+                send_to_char("Your arm is too damaged to operate that weapon.\n\r", ch);
                 return;
         }
 
@@ -7396,6 +8577,12 @@ void do_tailwhip (CHAR_DATA *ch, char *argument)
         if (is_safe(ch, victim))
                 return;
 
+        if (IS_AFFECTED(ch, AFF_TAIL_TRAUMA))
+        {
+                send_to_char("Your tail is too damaged to whip.\n\r", ch);
+                return;
+        }
+
         chance = ch->pcdata->learned[gsn_tailwhip];
         chance = UMIN (chance, 95);
 
@@ -7459,6 +8646,12 @@ void do_flukeslap (CHAR_DATA *ch, char *argument)
 
         if (is_safe(ch, victim))
                 return;
+
+        if (IS_AFFECTED(ch, AFF_TAIL_TRAUMA))
+        {
+                send_to_char("Your flukes are too damaged to do that.\n\r", ch);
+                return;
+        }
 
         chance = 95;
 
@@ -7632,6 +8825,12 @@ void do_swallow (CHAR_DATA *ch, char *argument)
 
         if (is_safe(ch, victim))
                 return;
+
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char("Your mouth is too damaged to swallow.\n\r", ch);
+                return;
+        }
 
         if (number_percent() < chance)
         {
@@ -8256,24 +9455,91 @@ char *get_dpr( int dam ) {
   }
     return "nothing";
 
-   /*   if (i > 0) {
-        *prev_dpr = dprs[i - 1].dpr_verb;
-      } else {
-        *prev_dpr = "nothing";
-      }
-      *current_dpr = records[i].dpr_verb;
-      if (i < MAX_DPR - 1) {
-        *next_dpr = records[i + 1].dpr_verb;
-      } else {
-        *next_dpr = "nothing";
-      }
-      return;
+}
+
+/* Helper function for do_target.  Given a ch pointer , an int representing the
+   kind of body part to look for, and a percentage value, it will remove the
+   first body part of bp_kind that CHAR is wearing with percent probability
+   --Owl 25/9/24 */
+
+void disarm_bodypart (CHAR_DATA *ch, CHAR_DATA *victim, int bp_kind)
+{
+    OBJ_DATA *obj;
+    OBJ_DATA *obj_next;
+
+    for (obj = victim->carrying; obj; obj = obj_next)
+    {
+            obj_next = obj->next_content;
+
+            if ( ( obj->wear_loc != WEAR_NONE )
+            &&   ( IS_SET(obj->extra_flags, ITEM_BODY_PART ) )
+            &&   ( ( obj->item_type == ITEM_LIGHT ) || ( obj->item_type == ITEM_WEAPON ) )
+            &&   ( obj->value[0] == bp_kind ) )
+            {
+                    remove_bodypart(victim, obj->wear_loc, TRUE);
+            }
+
+            if ( ( obj->wear_loc != WEAR_NONE )
+            &&   ( IS_SET(obj->extra_flags, ITEM_BODY_PART ) )
+            &&   ( obj->item_type == ITEM_ARMOR )
+            &&   ( obj->value[1] == bp_kind ) )
+            {
+                    remove_bodypart(victim, obj->wear_loc, TRUE);
+            }
     }
-  }
-  *prev_dpr = "nothing";
-  *current_dpr = "nothing";
-  *next_dpr = "nothing";
-  */
+
+}
+
+bool remove_bodypart (CHAR_DATA *ch, int iWear, bool fReplace)
+{
+        OBJ_DATA *obj;
+        int plural = 0;
+
+        if (!(obj = get_eq_char(ch, iWear)))
+                return TRUE;
+
+        if (!fReplace)
+                return FALSE;
+
+        if( obj->item_type == ITEM_INSTRUMENT && obj->wear_loc == WEAR_HOLD )
+                remove_songs( ch );
+
+        size_t len = strlen(obj->name);
+
+        if (len > 0 && (obj->name[len - 1] == 's' || obj->name[len - 1] == 'S'))
+        {
+            plural = 1;
+        }
+
+        if (!IS_SET(ch->in_room->room_flags, ROOM_NO_DROP))
+	    {
+                obj_from_char(obj);
+                obj_to_room(obj, ch->in_room);
+
+                if (plural)
+                {
+                        act("$p are torn from $n's body!", ch, obj, NULL, TO_ROOM);
+                        act("$p are torn from your body!", ch, obj, NULL, TO_CHAR);
+                }
+                else
+                {
+                        act("$p is torn from $n's body!", ch, obj, NULL, TO_ROOM);
+                        act("$p is torn from your body!", ch, obj, NULL, TO_CHAR);
+                }
+                return TRUE;
+	    }
+        else {
+                if (plural)
+                {
+                        act("$p refuse to separate from $n's body!", ch, obj, NULL, TO_ROOM);
+                        act("$p refuse to separate from your body!", ch, obj, NULL, TO_CHAR);
+                }
+                else {
+                        act("$p refuses to separate from $n's body!", ch, obj, NULL, TO_ROOM);
+                        act("$p refuses to separate from your body!", ch, obj, NULL, TO_CHAR);
+                }
+                return FALSE;
+        }
 }
 
 

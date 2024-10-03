@@ -7889,6 +7889,7 @@ sh  chitinous carapace
 lo  The chitinous carapace of a giant isopod lies here.
 vn  28443
 ty  armour
+v1  torso
 wg  10
 ex  body_part pure
 we  take body
@@ -7914,6 +7915,7 @@ sh  bony carapace
 lo  The bony carapace of a boxfish lies here.
 vn  28445
 ty  armour
+v1  torso
 wg  10
 ex  body_part pure
 we  body
@@ -7950,6 +7952,7 @@ sh  armoured plates
 lo  The armoured plates of a dunkleosteus lies here.
 vn  28448
 ty  armour
+v1  torso
 wg  400
 ex  body_part pure
 we  body
@@ -7961,6 +7964,7 @@ sh  powerful jaws
 lo  The powerful jaws of a dunkleosteus lies here.
 vn  28449
 ty  weapon
+v0  head
 v3  crush
 wg  50
 ex  body_part pure

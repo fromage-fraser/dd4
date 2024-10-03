@@ -282,14 +282,17 @@ my @obj_ty = qw/
         pipe            pipe_cleaner            smokeable       remains
 /;
 
-
-
 my @obj_weapon = qw/
         hit         slice       stab        slash
         whip        claw        blast       pound
         crush       grep        bite        pierce
         suction     chop        rake        swipe
         sting       scoop       mash        hack
+/;
+
+my @bp_location = qw/
+        default     head        eye         arm
+        leg         heart       tail        torso
 /;
 
 my @mob_sx = qw/
@@ -1842,7 +1845,17 @@ sub check_object_values(\%) {
     #  Light sources
 
     if ($type == 1) {
-        clear_field($obj, 'v0 v1 v3');
+
+        foreach (qw/v0 v1 v3/) {
+            if (!$$obj{$_}) {
+                $$obj{$_} = 0;
+            }
+        }
+
+        if ($msg = &get_single_flag($obj, 'v0', \@bp_location)) {
+            print "$err $msg\n";
+            $errors++;
+        }
 
         if ($msg = &check_field_number($obj, 'v2')) {
             print "$err $msg\n";
@@ -1896,9 +1909,35 @@ sub check_object_values(\%) {
     #  Weapons
 
     elsif ($type == 5) {
-        clear_field($obj, 'v0 v1 v2');
+
+        foreach (qw/v0 v1 v2/) {
+            if (!$$obj{$_}) {
+                $$obj{$_} = 0;
+            }
+        }
+
+        if ($msg = &get_single_flag($obj, 'v0', \@bp_location)) {
+            print "$err $msg\n";
+            $errors++;
+        }
 
         if ($msg = &get_single_flag($obj, 'v3', \@obj_weapon)) {
+            print "$err $msg\n";
+            $errors++;
+        }
+    }
+
+    # Armour
+
+        elsif ($type == 9) {
+
+        foreach (qw/v0 v1 v2 v3/) {
+            if (!$$obj{$_}) {
+                $$obj{$_} = 0;
+            }
+        }
+
+        if ($msg = &get_single_flag($obj, 'v1', \@bp_location)) {
             print "$err $msg\n";
             $errors++;
         }

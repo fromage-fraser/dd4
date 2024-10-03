@@ -661,7 +661,7 @@ a large pair of fangs~
 The huge fangs of some undersea creature lie here.~
 ~
 5 16777216|67108864 1
-~ ~ ~ 10~
+1~ 0~ 0~ 10~
 30 0 0
 A
 19 10
@@ -683,7 +683,7 @@ razor-sharp teeth~
 The razor-sharp teeth of an aquatic predator lie here.~
 ~
 5 16777216|67108864 1
-~ ~ ~ 10~
+1~ 0~ 0~ 10~
 2 0 0
 A
 19 15
@@ -696,7 +696,7 @@ a cowrie dagger~
 A wicked dagger carved from a cowrie shell is here.~
 ~
 5 64|16777216 1|8192
-~ ~ ~ 2~
+0~ 0~ 0~ 2~
 2 0 0
 A
 19 8
@@ -709,7 +709,7 @@ slimy hide~
 The slime-covered hide of some fish-like creature has been dumped here.~
 ~
 9 67108864|137438953472 1|8
-~ ~ ~ ~
+0~ 7~ 0~ 0~
 8 0 0
 A
 17 -10
@@ -724,7 +724,7 @@ a large turtle shell~
 A large, somewhat slimy turtle shell has been abandoned here.~
 ~
 9 0 1|512
-~ ~ ~ ~
+0~ 0~ 0~ 0~
 6 0 0
 A
 17 -15
@@ -735,7 +735,7 @@ a crude spear~
 A crude spear has been placed here.~
 ~
 5 16777216|134217728|274877906944 1|8192
-~ ~ ~ 11~
+0~ 0~ 0~ 11~
 8 0 0
 A
 19 10
@@ -748,7 +748,7 @@ a thick leather jerkin~
 A wet, thick leather jerkin rests here.~
 ~
 9 0 1|8
-~ ~ ~ ~
+0~ 0~ 0~ 0~
 12 0 0
 A
 17 -15
@@ -765,7 +765,7 @@ oily hide~
 The oily hide of some large, eel-like creature has been dumped here.~
 ~
 9 67108864|137438953472 1|8
-~ ~ ~ ~
+0~ 7~ 0~ 0~
 25 0 0
 A
 17 -15
@@ -780,7 +780,7 @@ a long tail with a barbed tip~
 A long, eel-like tail with a stinger at its tip lies here.~
 ~
 5 67108864 1
-~ ~ ~ 16~
+6~ 0~ 0~ 16~
 15 0 0
 
 #28410
@@ -789,7 +789,7 @@ a pair of sharp fangs~
 The fangs of some undersea creature lie here.~
 ~
 5 67108864 1
-~ ~ ~ 10~
+1~ 0~ 0~ 10~
 5 0 0
 A
 19 12
@@ -811,7 +811,7 @@ a bone earring~
 An earring carved from whalebone lies here.~
 ~
 9 0 1|16
-~ ~ ~ ~
+0~ 0~ 0~ 0~
 1 0 0
 E
 bone earring~
@@ -837,7 +837,7 @@ a kopru tattoo~
 A tattoo cut from the flesh of some monstrous sea creature lies here.~
 ~
 9 16|64|274877906944 1|256
-~ ~ ~ ~
+0~ 0~ 0~ 0~
 1 0 0
 E
 kopru tattoo~
@@ -909,8 +909,8 @@ wooden bow~
 a crude wooden bow~
 A crude wooden bow has been abandoned here.~
 ~
-5 1073741824|274877906944 1|131072
-~ ~ ~ 11~
+5 1073741824|274877906944 1|8192
+0~ 0~ 0~ 11~
 8 0 60
 A
 19 8
@@ -929,6 +929,8 @@ E
 triton corpse~
 You've heard the grung like to make such grotesque examples of those who enter
 their territory without permission. He looks not to have died well. You shudder.
+
+The sea floor under the corpse seems to have been disturbed recently.
 ~
 
 #28423
@@ -2264,6 +2266,10 @@ D 4
 ~
 ~
 0 -1 28747
+D 5
+~
+hatch~
+10 -1 28942
 S
 
 #28747
@@ -3036,6 +3042,7 @@ D 0 28446 0 1                   close north in Omu Sovereign Bridge, Lower
 D 0 28446 2 2                   lock south in Omu Sovereign Bridge, Lower
 D 0 28746 0 1                   close north in Omu Sovereign Bridge, Upper
 D 0 28746 2 2                   lock south in Omu Sovereign Bridge, Upper
+D 0 28447 5 1                   close down in Omu Canal, Lower
 D 0 28479 3 2                   lock west in Omu / Yrythelmyn Northern Bridge, Lower
 D 0 28779 3 2                   lock west in Omu / Yrythelmyn Northern Bridge, Upper
 D 0 28480 1 1                   close east in Omu / Yrythelmyn Northern Bridge, Lower
@@ -3178,4 +3185,3 @@ M 28422 spec_green_grung        a grung traitor
 S
 
 #$
-

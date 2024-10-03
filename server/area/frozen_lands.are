@@ -530,7 +530,7 @@ sharp teeth~
 Some sharp teeth are scattered about the ground here.~
 ~
 5 67108864 1|8192
-0~ 0~ 0~ 10~
+1~ 0~ 0~ 10~
 2 0 0
 A
 19 10
@@ -567,7 +567,7 @@ thick white fur~
 A pelt of thick white fur has been left here.~
 ~
 9 67108864 8
-0~ 0~ 0~ 0~
+0~ 7~ 0~ 0~
 2 0 0
 A
 19 20
@@ -605,7 +605,7 @@ pearly white scales~
 Some pearly white dragon scales have been left here.~
 ~
 9 1|67108864 8
-0~ 0~ 0~ 0~
+0~ 7~ 0~ 0~
 2 0 0
 A
 17 -100
@@ -766,7 +766,7 @@ thick white fur~
 A pelt of thick white fur has been left here.~
 ~
 9 67108864 8
-0~ 0~ 0~ 0~
+0~ 7~ 0~ 0~
 4 0 0
 A
 17 -40
@@ -883,7 +883,7 @@ pearly white scales~
 Some pearly white dragon scales have been left here.~
 ~
 9 1|67108864 8
-0~ 0~ 0~ 0~
+0~ 7~ 0~ 0~
 2 0 0
 A
 17 -20

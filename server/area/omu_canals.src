@@ -2073,6 +2073,7 @@ sh  a large pair of fangs
 lo  The huge fangs of some undersea creature lie here.
 vn  28400
 ty  weapon
+v0  head
 v3  bite
 wg  30
 ex  body_part sharp
@@ -2100,6 +2101,7 @@ sh  razor-sharp teeth
 lo  The razor-sharp teeth of an aquatic predator lie here.
 vn  28402
 ty  weapon
+v0  head
 v3  bite
 wg  2
 ex  body_part sharp
@@ -2126,6 +2128,7 @@ sh  slimy hide
 lo  The slime-covered hide of some fish-like creature has been dumped here.
 vn  28404
 ty  armour
+v1  torso
 wg  8
 ex  body_part pure
 we  take body
@@ -2178,6 +2181,7 @@ lo  The oily hide of some large, eel-like creature has been dumped here.
 vn  28408
 ty  armour
 wg  25
+v1  torso
 ex  body_part pure
 we  take body
 ap  ac             -15
@@ -2190,6 +2194,7 @@ sh  a long tail with a barbed tip
 lo  A long, eel-like tail with a stinger at its tip lies here.
 vn  28409
 ty  weapon
+v0  tail
 v3  sting
 wg  15
 ex  body_part
@@ -2201,6 +2206,7 @@ sh  a pair of sharp fangs
 lo  The fangs of some undersea creature lie here.
 vn  28410
 ty  weapon
+v0  head
 v3  bite
 wg  5
 ex  body_part

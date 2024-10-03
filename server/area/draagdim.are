@@ -2427,12 +2427,12 @@ The key to the park lake is here.~
 1 0 0
 
 #28076
-platinum claw~
-a massive platinum claw~
-A massive platinum claw has been severed from Rak'bensol'lafar!~
+platinum claws~
+massive platinum claws~
+The massive platinum claws of Rak'bensol'lafar lie here.~
 ~
 5 16777216|67108864 8192
-~ ~ ~ 5~
+3~ ~ ~ 5~
 20 0 0
 A
 18 50
@@ -2440,12 +2440,12 @@ A
 19 50
 
 #28077
+platinum scales hide~
 platinum scales~
-platinum scales~
-Someone skinned Rak'bensol'lafar!~
+The scaled hide of Rak'bensol'lafar is here.~
 ~
-9 1 8
-~ ~ ~ ~
+9 1|67108864 8
+~ 7~ ~ ~
 50 0 0
 A
 17 -200

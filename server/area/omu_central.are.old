@@ -866,7 +866,7 @@ exception for authorised visitors to Omu.
 |
 
 #28464
-small sad sahuagin Gersk~
+sahuagin small sad Gersk~
 a small, sad sahuagin~
 A small, sad sahuagin male cowers here.
 ~
@@ -879,7 +879,7 @@ covered in scars and bruises, and he wears an expression of resigned misery.
 0 0 1
 
 #28465
-gloomy triton~
+triton gloomy~
 a gloomy triton~
 A {Bblue-skinned{x man shuffles about gloomily.
 ~
@@ -912,7 +912,7 @@ him.
 0 0 1
 
 #28467
-miserable female sea elf~
+elf miserable female sea~
 a miserable female sea elf~
 <86>A smooth-skinned, teal-coloured sea elf female wails miserably.<0>
 ~
@@ -929,7 +929,7 @@ uncomfortable.
 0 0 2
 
 #28468
-sullen kappa~
+kappa sullen~
 a sullen kappa~
 <28>A sullen, po-faced kappa is here.<0>
 ~
@@ -2671,7 +2671,7 @@ chitinous carapace~
 The chitinous carapace of a giant isopod lies here.~
 ~
 9 67108864|137438953472 1|8
-~ ~ ~ ~
+0~ 7~ 0~ 0~
 10 0 0
 A
 17 -30
@@ -2691,7 +2691,7 @@ bony carapace~
 The bony carapace of a boxfish lies here.~
 ~
 9 67108864|137438953472 8
-~ ~ ~ ~
+0~ 7~ 0~ 0~
 10 0 0
 A
 17 -40
@@ -2720,7 +2720,7 @@ armoured plates~
 The armoured plates of a dunkleosteus lies here.~
 ~
 9 67108864|137438953472 8
-~ ~ ~ ~
+0~ 7~ 0~ 0~
 400 0 0
 A
 17 -200
@@ -2731,7 +2731,7 @@ powerful jaws~
 The powerful jaws of a dunkleosteus lies here.~
 ~
 5 67108864|137438953472 8192
-~ ~ ~ 8~
+1~ 0~ 0~ 8~
 50 0 0
 A
 18 50
@@ -2744,7 +2744,7 @@ a long spear~
 A well-used and maintained long spear rests here.~
 ~
 5 0 1|8192
-~ ~ ~ 11~
+0~ 0~ 0~ 11~
 10 0 0
 A
 18 5
@@ -2766,7 +2766,7 @@ an algae lamp~
 A lamp made from bioluminescent algae and driftwood lies here.~
 ~
 1 1|274877906944 1|16384
-~ ~ -1~ ~
+0~ 0~ -1~ 0~
 2 0 60
 A
 12 100
@@ -2892,7 +2892,7 @@ a butcher's cleaver~
 A sharp, heavy butcher's cleaver has been left here.  It smells fishy.~
 ~
 5 274877906944 1|8192
-~ ~ ~ 19~
+0~ 0~ 0~ 19~
 2 0 0
 A
 19 8
@@ -2903,7 +2903,7 @@ a butcher's apron~
 A butcher's apron smeared with blood, much of it blue or green.~
 ~
 9 274877906944 1|1024
-~ ~ ~ ~
+0~ 0~ 0~ 0~
 2 0 0
 A
 17 -5
@@ -2925,7 +2925,7 @@ a fine wooden bow~
 A very fine wooden bow has been abandoned here.~
 ~
 5 1073741824|274877906944 1|8192
-~ ~ ~ 11~
+0~ 0~ 0~ 11~
 11 0 62
 A
 19 9
@@ -3057,7 +3057,7 @@ a very fine spear~
 A very fine wooden spear has been abandoned here.~
 ~
 5 134217728|274877906944 1|8192
-~ ~ ~ 11~
+0~ 0~ 0~ 11~
 15 0 64
 A
 19 12
@@ -3393,7 +3393,7 @@ flowing purple robes~
 Flowing purple robes lie in a heap here.~
 ~
 9 64|274877906944 1|8
-~ ~ ~ ~
+0~ 0~ 0~ 0~
 6 0 0
 A
 13 50
@@ -3406,7 +3406,7 @@ a cruel spear~
 A cruel spear lies here, abandoned.~
 ~
 5 16777216|134217728|274877906944 1|8192
-~ ~ ~ 11~
+0~ 0~ 0~ 11~
 8 0 0
 A
 19 12
@@ -3419,7 +3419,7 @@ an orange steel breastplate~
 An orange breastplate made of steel lies here.~
 ~
 9 0 1|8
-~ ~ ~ ~
+0~ 0~ 0~ 0~
 25 0 0
 A
 17 -45
@@ -3454,7 +3454,7 @@ flowing golden robes~
 Flowing golden robes lie in a heap here.~
 ~
 9 64|274877906944 1|8
-~ ~ ~ ~
+0~ 0~ 0~ 0~
 6 0 0
 A
 13 75

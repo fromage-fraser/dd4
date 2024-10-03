@@ -769,7 +769,7 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                                 paf->duration   = fread_number( fp, &stat );
                                 paf->modifier   = fread_number( fp, &stat );
                                 paf->location   = fread_number( fp, &stat );
-                                paf->bitvector  = fread_number( fp, &stat );
+                                paf->bitvector  = fread_number64( fp, &stat );
                                 paf->deleted    = FALSE;
                                 paf->next       = ch->affected;
                                 ch->affected    = paf;

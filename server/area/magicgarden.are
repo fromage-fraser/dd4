@@ -383,7 +383,7 @@ deadly talons~
 Sharp deadly looking talons have been hacked from some creature and left on the ground.~
 ~
 5 2|16384|67108864 1|8192
-0~ 0~ 0~ 5~
+1~ 0~ 0~ 5~
 5 0 0
 A
 19 40
@@ -811,7 +811,7 @@ tough bark~
 A pile of tree bark lies here.~
 ~
 9 67108864 1|8
-0~ 0~ 0~ 0~
+0~ 7~ 0~ 0~
 4 0 0
 A
 17 -200
@@ -823,7 +823,7 @@ large blue scales~
 The hide of a drake lies here.~
 ~
 9 64|2048|67108864 1|8
-0~ 0~ 0~ 0~
+0~ 7~ 0~ 0~
 4 0 0
 A
 19 30

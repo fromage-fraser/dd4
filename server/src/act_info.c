@@ -3456,6 +3456,12 @@ void do_consider( CHAR_DATA *ch, char *argument )
         act("$n starts to consider $N as a possible target.", ch, NULL, victim, TO_ROOM);
         diff = victim->level - ch->level;
 
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char( "You can't think clearly enough to do that.\n\r", ch );
+                return;
+        }
+
         if ( IS_SET(victim->act, ACT_INVULNERABLE) )
         {
             msg = "$N cannot be physically harmed.";

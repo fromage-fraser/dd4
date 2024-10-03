@@ -16,6 +16,9 @@ void do_morph_chameleon (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
+                /* Remove any arm trauma, cat form doesn't have arms */
+                affect_strip(ch, gsn_arm_trauma);
+
                 if (ch->pcdata->learned[gsn_form_chameleon] > 60
                     || (ch->pcdata->learned[gsn_hide] > (80 - ch->pcdata->learned[gsn_form_chameleon])))
                 {
@@ -396,6 +399,9 @@ void do_morph_hawk (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
+                /* Remove any arm trauma, hawk form doesn't have arms */
+                affect_strip(ch, gsn_arm_trauma);
+
                 if (ch->pcdata->learned[gsn_form_hawk] > 40 || ch->pcdata->learned[gsn_fly])
                 {
                         affect_strip(ch, gsn_fly);
@@ -426,6 +432,10 @@ void do_morph_cat (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
+
+                /* Remove any arm trauma, cat form doesn't have arms */
+                affect_strip(ch, gsn_arm_trauma);
+
                 if (ch->pcdata->learned[gsn_form_cat] > 30)
                 {
                         affect_strip(ch, gsn_infravision);
@@ -527,6 +537,12 @@ void do_coil (CHAR_DATA *ch, char *argument)
         if (is_safe (ch, victim))
                 return;
 
+        if (IS_AFFECTED(ch, AFF_TAIL_TRAUMA))
+        {
+                send_to_char("Your tail is too damaged to wrap it around anything.\n\r", ch);
+                return;
+        }
+
         if (victim->position > POS_STUNNED)
         {
                 if (!victim->fighting)
@@ -610,6 +626,12 @@ void do_constrict (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_AFFECTED(ch, AFF_TAIL_TRAUMA))
+        {
+                send_to_char("Your tail is too damaged to constrict it around anything.\n\r", ch);
+                return;
+        }
+
         WAIT_STATE(ch, skill_table[gsn_constrict].beats);
 
         send_to_char("You {Gconstrict{x your opponent in your coils!\n\r", ch);
@@ -667,6 +689,12 @@ void do_strangle (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_AFFECTED(ch, AFF_TAIL_TRAUMA))
+        {
+                send_to_char("Your tail is too damaged to strangle anyone with it.\n\r", ch);
+                return;
+        }
+
         if (victim->hit < (victim->max_hit / 10))
         {
                 damage(ch, victim, base_damage * 3, gsn_strangle, FALSE);
@@ -696,6 +724,10 @@ void do_morph_snake (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
+                /* Remove any arm or leg trauma, snake form doesn't have arms or legs */
+                affect_strip(ch, gsn_arm_trauma);
+                affect_strip(ch, gsn_leg_trauma);
+
                 bite = create_object(get_obj_index(OBJ_SNAKE_BITE), ch->level, "common", CREATED_NO_RANDOMISER);
                 obj_to_char(bite, ch);
                 form_equip_char(ch, bite, WEAR_WIELD);
@@ -747,6 +779,10 @@ void do_morph_scorpion (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
+
+                /* Remove any arm trauma, scorpion form doesn't have arms */
+                affect_strip(ch, gsn_arm_trauma);
+
                 sting = create_object(get_obj_index(OBJ_SCORPION_STING), ch->level, "common", CREATED_NO_RANDOMISER);
 
                 if (!affect_free)
@@ -829,6 +865,12 @@ void do_venom (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char("Your mouthparts are too damaged to inflict venom.\n\r", ch);
+                return;
+        }
+
         WAIT_STATE(ch, skill_table[gsn_venom].beats);
         act ("You bite $N!",  ch, NULL, victim, TO_CHAR);
         act ("$n bites you!", ch, NULL, victim, TO_VICT);
@@ -895,6 +937,12 @@ void do_web (CHAR_DATA *ch, char *argument)
 
         if (is_safe(ch, victim))
                 return;
+
+        if (IS_AFFECTED(ch, AFF_TORSO_TRAUMA))
+        {
+                send_to_char("Your body is too damaged to produce webbing.\n\r", ch);
+                return;
+        }
 
         WAIT_STATE(ch, PULSE_VIOLENCE);
 
@@ -982,6 +1030,11 @@ void do_morph_spider (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
+                /* Remove any arm or tail trauma, spider form doesn't have arms or a tail */
+
+                affect_strip(ch, gsn_arm_trauma);
+                affect_strip(ch, gsn_tail_trauma);
+
                 mandibles = create_object(get_obj_index(OBJ_SPIDER_MANDIBLES), ch->level, "common", CREATED_NO_RANDOMISER);
                 if (mandibles)
                 {
@@ -1048,6 +1101,10 @@ void do_morph_bear (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
+                /* Remove any arm or tail trauma, bear form doesn't have arms or a tail */
+                affect_strip(ch, gsn_arm_trauma);
+                affect_strip(ch, gsn_tail_trauma);
+
                 claws = create_object(get_obj_index(OBJ_BEAR_CLAWS), ch->level, "common", CREATED_NO_RANDOMISER);
                 if (claws)
                 {
@@ -1110,6 +1167,12 @@ void do_bite (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char("Your teeth are too damaged to bite effectively with.\n\r", ch);
+                return;
+        }
+
         WAIT_STATE(ch, skill_table[gsn_bite].beats);
 
         send_to_char("You attempt to sink your fangs into your victim.\n\r", ch);
@@ -1145,6 +1208,12 @@ void do_crush (CHAR_DATA *ch, char *argument)
         if (!(victim = ch->fighting))
         {
                 send_to_char("You are not fighting anyone.\n\r", ch);
+                return;
+        }
+
+        if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
+        {
+                send_to_char("Your legs are too damaged to crush anyone with.\n\r", ch);
                 return;
         }
 
@@ -1259,6 +1328,12 @@ void do_maul (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
+        {
+                send_to_char("Your claws are too damaged to maul effectively.\n\r", ch);
+                return;
+        }
+
         WAIT_STATE(ch, skill_table[gsn_maul].beats);
         arena_commentary("$n mauls $N.", ch, victim);
         percent = ch->pcdata->learned[gsn_maul];
@@ -1335,6 +1410,9 @@ void do_morph_tiger (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
+                /* Remove any arm trauma, tiger form doesn't have arms */
+                affect_strip(ch, gsn_arm_trauma);
+
                 claws = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level, "common", CREATED_NO_RANDOMISER);
                 fangs = create_object(get_obj_index(OBJ_TIGER_FANGS), ch->level, "common", CREATED_NO_RANDOMISER);
 
@@ -1420,6 +1498,9 @@ void do_morph_wolf (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
+                /* Wolf form has no arms */
+                affect_strip(ch, gsn_arm_trauma);
+
                 claws = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level, "common", CREATED_NO_RANDOMISER);
                 fangs = create_object(get_obj_index(OBJ_TIGER_FANGS), ch->level, "common", CREATED_NO_RANDOMISER);
 
@@ -1553,6 +1634,9 @@ void do_morph_direwolf (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
+                /* Dire wolf form has no arms */
+                affect_strip(ch, gsn_arm_trauma);
+
                 claws = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level, "common", CREATED_NO_RANDOMISER);
                 fangs = create_object(get_obj_index(OBJ_TIGER_FANGS), ch->level, "common", CREATED_NO_RANDOMISER);
 
@@ -1682,6 +1766,9 @@ void do_morph_hydra (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
+                /* Remove any arm trauma, hydra form doesn't have arms */
+                affect_strip(ch, gsn_arm_trauma);
+
                 teeth = create_object(get_obj_index(OBJ_HYDRA_TEETH), ch->level, "common", CREATED_NO_RANDOMISER);
                 teeth->value[1] *= 2;
                 teeth->value[2] *= 2;
@@ -1719,6 +1806,9 @@ void do_morph_dragon (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
+                /* Remove any arm trauma, dragon form doesn't have arms */
+                affect_strip(ch, gsn_arm_trauma);
+
                 if (ch->pcdata->learned[gsn_form_dragon] > 60
                     || ch->pcdata->learned[gsn_fly])
                 {
@@ -1869,6 +1959,9 @@ void do_morph_phoenix (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
+                /* Remove any arm trauma, phoenix form doesn't have arms */
+                affect_strip(ch, gsn_arm_trauma);
+
                 beak = create_object(get_obj_index(OBJ_PHOENIX_BEAK), ch->level, "common", CREATED_NO_RANDOMISER);
                 if (beak)
                 {
@@ -1954,6 +2047,11 @@ void do_morph_fly (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
+
+                /* Remove any arm or tail trauma, fly form doesn't have arms or a tail */
+                affect_strip(ch, gsn_arm_trauma);
+                affect_strip(ch, gsn_tail_trauma);
+
                 for ( paf = ch->affected; paf; paf = paf->next )
                 {
 
@@ -2003,6 +2101,9 @@ void do_morph_demon (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
+                /* Remove any tail trauma, demon form does not have a tail */
+                affect_strip(ch, gsn_tail_trauma);
+
                 if (ch->pcdata->learned[gsn_form_demon] > 10 || ch->pcdata->learned[gsn_fly])
                 {
                         affect_strip(ch, gsn_fly);
@@ -2037,6 +2138,10 @@ void do_morph_griffin (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
+
+                /* Remove any arm trauma, griffin form doesn't have arms */
+                affect_strip(ch, gsn_arm_trauma);
+
                 if (ch->pcdata->learned[gsn_form_fly] > 10 || ch->pcdata->learned[gsn_fly])
                 {
                         affect_strip(ch, gsn_fly);
@@ -2153,7 +2258,7 @@ void do_morph (CHAR_DATA *ch, char *argument)
 
         if (is_affected(ch, gsn_mist_walk) || is_affected(ch, gsn_astral_sidestep))
         {
-                send_to_char("You cannot do that in your current form\n\r",ch);
+                send_to_char("You cannot do that in your current form.\n\r",ch);
                 return;
         }
 

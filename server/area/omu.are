@@ -491,7 +491,7 @@ slimy hide~
 The slime-covered hide of some fish-like creature has been dumped here.~
 ~
 9 67108864|137438953472 1|8
-~ ~ ~ ~
+~ 7~ ~ ~
 8 0 0
 A
 17 -10
@@ -547,7 +547,7 @@ oily hide~
 The oily hide of some large, eel-like creature has been dumped here.~
 ~
 9 67108864|137438953472 1|8
-~ ~ ~ ~
+~ 7~ ~ ~
 25 0 0
 A
 17 -15
@@ -562,7 +562,7 @@ a long tail with a barbed tip~
 A long, eel-like tail with a stinger at its tip lies here.~
 ~
 5 67108864 1
-~ ~ ~ 16~
+6~ ~ ~ 16~
 15 0 0
 
 #28410
@@ -571,7 +571,7 @@ a pair of sharp fangs~
 The fangs of some undersea creature lie here.~
 ~
 5 67108864 1
-~ ~ ~ 10~
+1~ ~ ~ 10~
 5 0 0
 A
 19 12
