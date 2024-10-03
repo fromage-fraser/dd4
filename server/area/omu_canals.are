@@ -652,6 +652,26 @@ nervous and skittish, and is avoiding your gaze.  Curious.
     hide
 ~
 |
+
+#28422
+grung traitor shifty~
+a grung traitor~
+<118>A very shifty-looking green grung tries to avoid attention.<0>
+~
+Grung are a race of small, froglike humanoids.  They are fiercely territorial,
+and see themselves as superior to all other creatures.  Their society is
+caste-based, with the grung's colour denoting his role.  This green grung looks
+nervous and skittish, and is avoiding your gaze.  Curious.
+~
+64 8|32|512|32768|65536|2097152|8388608|67108864 -75 S
+60 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>rand_prog 5~
+    say ..Omu? Passpass? Want?
+    hide
+~
+|
 #0
 
 #OBJECTS
@@ -931,6 +951,8 @@ You've heard the grung like to make such grotesque examples of those who enter
 their territory without permission. He looks not to have died well. You shudder.
 
 The sea floor under the corpse seems to have been disturbed recently.
+
+The sea floor under the corpse seems to have been disturbed recently.
 ~
 
 #28423
@@ -992,6 +1014,24 @@ ornate silver platter~
 The platter looks quite sophisticated for a sahuagin artifact, with recognisable
 figures and moderately intricate filigree decorating its underside.  You imagine
 it might be highly prized by their species.
+~
+
+#28427
+citypass pass Omu tablet writing~
+an Omu citypass~
+A tablet with writing on it lies here.~
+~
+13 0 1|16384
+~ ~ ~ ~
+1 0 45
+E
+citypass pass Omu tablet writing~
+The script is Draconic, you're pretty sure, but you can't read it.
+
+<558>"Nomeno taoul dolruth shalaic duulo ossalur irsa omu taoul, tangis ekess lpuul
+vekikari."<559>
+
+An elaborate seal has been inscribed in it that suggests authority.
 ~
 
 #28427
@@ -1460,6 +1500,7 @@ D 1
 S
 
 #28813
+#28813
 Dummy room~
 Dummy room to link to 28718 until sea elf area is in.
 ~
@@ -1481,6 +1522,7 @@ D 1
 0 -1 28479
 S
 
+#28814
 #28814
 Dummy room~
 Dummy room to link to 28779 until sea elf area is in.
@@ -2270,6 +2312,10 @@ D 5
 ~
 hatch~
 10 -1 28942
+D 5
+~
+hatch~
+10 -1 28942
 S
 
 #28747
@@ -3039,12 +3085,17 @@ D 0 28718 3 2                   lock west in Omu / Yrythelmyn Southern Bridge, U
 D 0 28419 1 2                   lock east in Omu / Yrythelmyn Southern Bridge, Lower
 D 0 28719 1 2                   lock east in Omu / Yrythelmyn Southern Bridge, Upper
 D 0 28446 0 1                   close north in Omu Sovereign Bridge, Lower
+D 0 28446 0 1                   close north in Omu Sovereign Bridge, Lower
 D 0 28446 2 2                   lock south in Omu Sovereign Bridge, Lower
+D 0 28746 0 1                   close north in Omu Sovereign Bridge, Upper
 D 0 28746 0 1                   close north in Omu Sovereign Bridge, Upper
 D 0 28746 2 2                   lock south in Omu Sovereign Bridge, Upper
 D 0 28447 5 1                   close down in Omu Canal, Lower
+D 0 28447 5 1                   close down in Omu Canal, Lower
 D 0 28479 3 2                   lock west in Omu / Yrythelmyn Northern Bridge, Lower
 D 0 28779 3 2                   lock west in Omu / Yrythelmyn Northern Bridge, Upper
+D 0 28480 1 1                   close east in Omu / Yrythelmyn Northern Bridge, Lower
+D 0 28780 1 1                   close east in Omu / Yrythelmyn Northern Bridge, Upper
 D 0 28480 1 1                   close east in Omu / Yrythelmyn Northern Bridge, Lower
 D 0 28780 1 1                   close east in Omu / Yrythelmyn Northern Bridge, Upper
 M 0 28400 3 28403               add a giant sea python to Omu / Yrythelmyn Canal, Lower
@@ -3156,12 +3207,19 @@ E 0 28421 0 21                      equip a crude wooden bow (ranged)
 M 0 28422 1 28441               add a grung traitor to Yrythelmyn Canal, Lower
 E 0 25201 0 16                      equip [out-of-area item] (wield)
 G 0 28427 0                         carry an Omu citypass
+M 0 28422 1 28441               add a grung traitor to Yrythelmyn Canal, Lower
+E 0 25201 0 16                      equip [out-of-area item] (wield)
+G 0 28427 0                         carry an Omu citypass
 I 28422 75 28447 1              a Triton's corpse to Omu Canal, Lower
 I 28423 90 28440 1              a swinging gibbet to Yrythelmyn Canal, Lower
 I 28424 90 28499 1              a staked sahuagin to Omu / Yrythelmyn Canal, Lower
 I 28425 60 28406 1              a headless adventurer to Omu / Yrythelmyn Canal, Lower
 P 0 28426 0 28424               put an ornate silver platter inside a staked sahuagin
 S
+
+#SHOPS
+28422 13 0 0 0 0 300 50 0 23    shop run by a grung traitor
+0
 
 #SHOPS
 28422 13 0 0 0 0 300 50 0 23    shop run by a grung traitor
@@ -3181,6 +3239,7 @@ M 28418 spec_green_grung        a grung hunter
 M 28419 spec_green_grung        a grung hunter
 M 28420 spec_green_grung        a grung hunter
 M 28421 spec_green_grung        a grung warrior
+M 28422 spec_green_grung        a grung traitor
 M 28422 spec_green_grung        a grung traitor
 S
 
