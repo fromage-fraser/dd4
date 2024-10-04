@@ -3967,7 +3967,7 @@ int form_skill_allow (CHAR_DATA *ch, int sn)
 
         if (ch->sub_class == SUB_CLASS_WEREWOLF)
         {
-                for (iter = 0; iter < MAX_VAMPIRE_GAG-3; iter++)
+                for (iter = 0; iter < MAX_VAMPIRE_GAG-5; iter++)
                         if (*vampire_gag_table[iter].skill == sn)
                                 return 0;
         }

@@ -5779,7 +5779,7 @@ void do_rset( CHAR_DATA *ch, char *argument )
 
         for ( person = location->people; person; person = person->next_in_room )
         {
-                if ( person != ch && person->level >= ch->level )
+                if ( person != ch && person->level >= ch->level && IS_IMMORTAL(person))
                 {
                         send_to_char("Your superior is in this room, no rsetting now.\n\r", ch );
                         return;

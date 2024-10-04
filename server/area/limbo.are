@@ -346,12 +346,13 @@ This large horned owl has bright orange eyes and regards you with a mix of mild
 curiosity tinged with contempt.
 ~
 2|2048|9223372036854775808 524288 1000 S
-106 0 0 0d0+0 0d0+0
+110 0 0 0d0+0 0d0+0
 0 0
 0 0 1
 >fight_prog 14~
     if affspell($n) == 564
         shout I've already caved your head in! hahaAA!
+        target head
     else
         yell Coming for your HEAD, fat boy!
         target head
@@ -360,6 +361,7 @@ curiosity tinged with contempt.
 >fight_prog 19~
     if affspell($n) == 565
         shout I've already smashed your arm! hahaAA!
+        target arm
     else
         yell Coming for your ARM, fat boy!
         target arm
@@ -377,6 +379,7 @@ curiosity tinged with contempt.
 >fight_prog 35~
     if affspell($n) == 568
         shout Your tail is RUINED! hahaAA!
+        target tail
     else
         yell Coming for your TAIL, fat boy!
         target tail
@@ -385,6 +388,7 @@ curiosity tinged with contempt.
 >fight_prog 47~
     if affspell($n) == 567
         yell I TOOK YOUR HEART, loser!
+        target heart
     else
         yell Coming for your HEART, fat boy!
         target heart
@@ -393,6 +397,7 @@ curiosity tinged with contempt.
 >fight_prog 100~
     if affspell($n) == 569
         yell I TOOK YOUR BODY, loser!
+        target torso
     else
         yell Coming for your BODY, fat boy!
         target torso

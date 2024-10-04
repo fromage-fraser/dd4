@@ -1278,6 +1278,12 @@ void do_wolfbite (CHAR_DATA *ch, char *argument)
         if (is_safe (ch, victim))
                 return;
 
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char("Your fangs are too damaged to bite with.\n\r", ch);
+                return;
+        }
+
         WAIT_STATE(ch, skill_table[gsn_wolfbite].beats);
 
         send_to_char("You attempt to sink your fangs into your victim.\n\r", ch);

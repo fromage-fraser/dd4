@@ -2880,7 +2880,9 @@ void do_change (CHAR_DATA *ch, char *argument)
 
         if (ch->sub_class == SUB_CLASS_VAMPIRE || ch->sub_class == SUB_CLASS_WEREWOLF)
         {
-                sprintf(buf, "%ss are a challenging class %s, I shall grant you some additional practices to help.", full_sub_class_name(ch->sub_class), ch->name);
+                sprintf(buf, "%s is a challenging class %s, I shall grant you some additional practices to help.",
+                    full_sub_class_name(ch->sub_class),
+                    ch->name);
                 do_say(mob, buf);
 
                 ch->pcdata->int_prac += 5;

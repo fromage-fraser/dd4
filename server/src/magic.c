@@ -7871,6 +7871,7 @@ void spell_sunray( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA *vch;
         int        dam;
+        int        racedam;
         AFFECT_DATA af;
 
         if ( !IS_OUTSIDE( ch )
@@ -7881,13 +7882,13 @@ void spell_sunray( int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
         }
 
-        if ( weather_info.sky > SKY_CLOUDY )
+        if ( weather_info.sky > SKY_CLOUDY && !IS_IMMORTAL(ch) )
         {
                 send_to_char( "You need clear weather.\n\r", ch );
                 return;
         }
 
-        if ( weather_info.sunlight == SUN_DARK )
+        if ( weather_info.sunlight == SUN_DARK && !IS_IMMORTAL(ch) )
         {
                 send_to_char( "It is too dark to cast this spell.\n\r", ch );
                 return;
@@ -7911,8 +7912,11 @@ void spell_sunray( int sn, int level, CHAR_DATA *ch, void *vo )
 
                 if ( vch->in_room == ch->in_room )
                 {
+                        if (!IS_NPC(vch) && is_safe(ch, vch))
+                            continue;
+
                         if ( ! ( vch == ch || IS_AFFECTED( vch, AFF_BLIND )
-                                || saves_spell( level, vch ) ) )
+                                || saves_spell( level, vch ) || is_same_group(vch, ch)) )
                         {
                                 af.type      = gsn_blindness;
                                 af.duration  = 1 + level;
@@ -7925,8 +7929,33 @@ void spell_sunray( int sn, int level, CHAR_DATA *ch, void *vo )
                                 act( "$N is blinded!", ch, NULL, vch, TO_NOTVICT );
                         }
 
-                        if ( vch != ch && ( IS_NPC( ch ) ? !IS_NPC( vch ) : IS_NPC( vch ) ) )
+                        /* if ( vch != ch && ( IS_NPC( ch ) ? !IS_NPC( vch ) : IS_NPC( vch ) ) ) */
+
+                        if ( (vch != ch) && !is_same_group(vch, ch) )
+                        {
+                                if ( vch->race == RACE_ILLITHID )
+                                {
+                                        racedam = (dam * 2);
+                                        damage( ch, vch, saves_spell( level, vch ) ? racedam/2 : racedam, sn, FALSE );
+                                        continue;
+                                }
+
+                                if ( vch->race == RACE_DROW )
+                                {
+                                        racedam = (dam * 1.25);
+                                        damage( ch, vch, saves_spell( level, vch ) ? racedam/2 : racedam, sn, FALSE );
+                                        continue;
+                                }
+
+                                if ( vch->race == RACE_DUERGAR )
+                                {
+                                        racedam = (dam * 1.2);
+                                        damage( ch, vch, saves_spell( level, vch ) ? racedam/2 : racedam, sn, FALSE );
+                                        continue;
+                                }
+
                                 damage( ch, vch, saves_spell( level, vch ) ? dam/2 : dam, sn, FALSE );
+                        }
                         continue;
                 }
 

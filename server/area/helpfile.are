@@ -7147,6 +7147,40 @@ SUB_CLASS_RUNESMITH       18
 
 ~
 
+101 RACENUM 'RACE NUM' RACENUMBER 'RACE NUMBER'~
+
+Numbers for races (used by mset etc)
+====================================
+
+RACE_NONE           0
+RACE_HUMAN          1
+RACE_ELF            2
+RACE_WILD_ELF       3
+RACE_ORC            4
+RACE_GIANT          5
+RACE_SATYR          6
+RACE_OGRE           7
+RACE_GOBLIN         8
+RACE_HALF_DRAGON    9
+RACE_HALFLING       10
+RACE_DWARF          11
+RACE_CENTAUR        12
+RACE_DROW           13
+RACE_TROLL          14
+RACE_ALAGHI         15
+RACE_HOBGOBLIN      16
+RACE_YUAN_TI        17
+RACE_FAE            18
+RACE_SAHUAGIN       19
+RACE_TIEFLING       20
+RACE_JOTUN          21
+RACE_GENASI         22
+RACE_ILLITHID       23
+RACE_GRUNG          24
+RACE_DUERGAR        25
+
+~
+
 101 BITZ~
 /*
  *  Bit values.  View online with 'HELP BITZ'.  Gezhp
