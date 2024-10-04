@@ -3555,8 +3555,6 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, int r
             case ITEM_LOCK_PICK:
             case ITEM_WHETSTONE:
             case ITEM_MITHRIL:
-            case ITEM_CRAFT:
-            case ITEM_SPELLCRAFT:
             case ITEM_FORGE:
             case ITEM_ARRESTOR_UNIT:
             case ITEM_REFLECTOR_UNIT:
@@ -3579,6 +3577,20 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, int r
                 obj->value[0]   = obj->value[1];
                 obj->value[2]   = number_fuzzy( number_fuzzy( obj->value[2] ) );
                 obj->value[3]   = number_fuzzy( number_fuzzy( obj->value[3] ) );
+                break;
+
+            case ITEM_SPELLCRAFT:
+                if (!IS_OBJ_STAT(obj, ITEM_DONOT_RANDOMISE))
+                {
+                    obj->value[0]   = number_fuzzy( number_fuzzy( obj->value[0] ) );
+                }
+                break;
+
+            case ITEM_CRAFT:
+                if (!IS_OBJ_STAT(obj, ITEM_DONOT_RANDOMISE))
+                {
+                    obj->value[0]   = number_fuzzy( number_fuzzy( obj->value[0] ) );
+                }
                 break;
 
             case ITEM_LIGHT:
