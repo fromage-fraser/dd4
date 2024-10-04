@@ -935,7 +935,7 @@ struct vampire_gag vampire_gag_table [ MAX_VAMPIRE_GAG ] =
         {       &gsn_constrict                  },
         {       &gsn_coil                       },
         {       &gsn_web                        },
-        {       &gsn_strangle,                  },
+        {       &gsn_strangle                   },
         {       &gsn_forage                     },
         {       &gsn_tailwhip                   },
         {       &gsn_bite                       },
@@ -946,8 +946,8 @@ struct vampire_gag vampire_gag_table [ MAX_VAMPIRE_GAG ] =
 
         /*
          * Skills below gagged by vamps but shown by werewolves
-         * Need to edit has_pre_req() in act_info.c if the number
-         * of wolf-only skills is changed
+         * Need to edit has_pre_req() in act_info.c and form_skill_allow()
+         * handler.c if the number of wolf-only skills is changed
          */
         {       &gsn_morph                      },
         {       &gsn_wolfbite                   },
