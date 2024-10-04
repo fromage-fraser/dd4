@@ -341,7 +341,6 @@ It looks like a duck. It also seems to be wearing a collar.
 hootfiend~
 Hootfiend the owl~
 <94>A sleepy-looking owl regards you lazily.<0>
-<94>A sleepy-looking owl regards you lazily.<0>
 ~
 This large horned owl has bright orange eyes and regards you with a mix of mild
 curiosity tinged with contempt.
@@ -542,7 +541,6 @@ The steaming turds of %s assail your nostrils.~
 1 0 0
 #20
 mushroom magic~
-mushroom magic~
 a Magic Mushroom~
 A delicious magic mushroom is here.~
 ~
@@ -560,7 +558,6 @@ A bright ball of light shimmers in the air.~
 #22
 spring~
 a magical spring~
-<117>A magical spring flows here.<0>~
 <117>A magical spring flows here.<0>~
 ~
 25 64 0
@@ -678,10 +675,8 @@ The lockpick device is made of brass and doesn't look especially robust.
 talons~
 talons~
 The talons of some creature have been torn off and lie here.~
-The talons of some creature have been torn off and lie here.~
 ~
 5 2|67108864 0
-4~ 10~ 15~ 11~
 4~ 10~ 15~ 11~
 1 10000 7500
 A
@@ -693,11 +688,8 @@ A
 tail sting~
 a tail sting~
 A stinger from the tail of some creature is here.~
-a tail sting~
-A stinger from the tail of some creature is here.~
 ~
 5 1|2|16384|67108864 0
-6~ 10~ 15~ 11~
 6~ 10~ 15~ 11~
 1 10000 7500
 A
@@ -707,10 +699,8 @@ A
 mandibles~
 mandibles~
 Strong mandibles have been severed from a creature and lie here.~
-Strong mandibles have been severed from a creature and lie here.~
 ~
 5 16384|67108864 0
-1~ 15~ 20~ 10~
 1~ 15~ 20~ 10~
 1 10000 7500
 A
@@ -722,10 +712,8 @@ A
 sftclaws~
 claws~
 Claws lie here, attached to the paws of some large beast.~
-Claws lie here, attached to the paws of some large beast.~
 ~
 5 67108864 0
-4~ 15~ 20~ 15~
 4~ 15~ 20~ 15~
 1 10000 7500
 A
@@ -735,10 +723,8 @@ A
 teeth~
 teeth~
 The jaws of some animal lie here.~
-The jaws of some animal lie here.~
 ~
 5 67108864 0
-1~ 15~ 20~ 10~
 1~ 15~ 20~ 10~
 1 10000 7500
 A
@@ -750,10 +736,8 @@ A
 sftclaws~
 claws~
 The severed claws of some creature lie here.~
-The severed claws of some creature lie here.~
 ~
 5 2|67108864 0
-4~ 15~ 20~ 14~
 4~ 15~ 20~ 14~
 1 10000 7500
 A
@@ -765,10 +749,8 @@ A
 sftfangs~
 fangs~
 A jaw full of sharp teeth lies here.~
-A jaw full of sharp teeth lies here.~
 ~
 5 67108864 0
-1~ 15~ 20~ 10~
 1~ 15~ 20~ 10~
 1 10000 7500
 A
@@ -780,10 +762,8 @@ A
 sftclaws~
 claws~
 The claws of some creature have been severed and lie here.~
-The claws of some creature have been severed and lie here.~
 ~
 5 2|67108864 0
-4~ 15~ 20~ 14~
 4~ 15~ 20~ 14~
 1 10000 7500
 A
@@ -795,10 +775,8 @@ A
 teeth~
 teeth~
 Teeth protrude from a mouth that has been cut from an animal and dropped here.~
-Teeth protrude from a mouth that has been cut from an animal and dropped here.~
 ~
 5 2|67108864 0
-1~ 15~ 20~ 14~
 1~ 15~ 20~ 14~
 1 10000 7500
 
@@ -806,10 +784,8 @@ Teeth protrude from a mouth that has been cut from an animal and dropped here.~
 fangs~
 fangs~
 A pile of fangs has been left here.~
-A pile of fangs has been left here.~
 ~
 5 16384|67108864 0
-1~ 10~ 15~ 11~
 1~ 10~ 15~ 11~
 1 10000 7500
 A
@@ -1292,10 +1268,8 @@ There are some herbs here.~
 sftbeak~
 beak~
 The severed beak of a large bird lies here, still twitching and clacking.~
-The severed beak of a large bird lies here, still twitching and clacking.~
 ~
 5 16777216|67108864 0
-1~ 15~ 20~ 14~
 1~ 15~ 20~ 14~
 1 10000 7500
 A
@@ -1937,64 +1911,6 @@ A
 A
 2 3
 
-#572
-robot tummy~
-a robot tummy~
-A mechanical tummy lies here.~
-~
-9 4096|274877906944|16777216|67108864 16
-0~ 7~ 0~ 0~
-20 0 0
-A
-17 -30
-A
-5 3
-A
-14 -100
-
-#573
-robot eye~
-a robot eye~
-A mechanical eye lies here.~
-~
-9 4096|274877906944|16777216|67108864 4
-0~ 2~ 0~ 0~
-20 0 0
-A
-17 -30
-A
-5 3
-A
-14 -100
-
-#574
-sabre~
-snake-Eyes Sabre~
-A long sharp sabre lies here.~
-~
-5 1|2|16|64 1|8192
-0~ 1~ 6~ 11~
-15 0 0
-A
-18 7
-A
-19 7
-
-#575
-main-gauche~
-a Main-Gauche~
-A fencer's main-gauche gleams brightly in the light.~
-~
-5 2 1|8192
-0~ 1~ 6~ 11~
-8 0 0
-A
-18 8
-A
-17 -30
-A
-2 3
-
 #0
 
 
@@ -2105,10 +2021,6 @@ Istari lives here.
 S
 #78
 Owl's dungeon~
-<245>This room is very dark, lit only by a few candles. Through the shadows you
-<243>can make out many metal tools and implements hanging on the wall, but you
-<241>doubt the room's owner is a gardener. An air of despondency and gloom
-<239>permeates the room.<0>
 <245>This room is very dark, lit only by a few candles. Through the shadows you
 <243>can make out many metal tools and implements hanging on the wall, but you
 <241>doubt the room's owner is a gardener. An air of despondency and gloom
@@ -2278,12 +2190,6 @@ spells and combat. The terrain is rugged and uneven, with patches of scorched
 duels. The air is thick with the lingering scent of smoke and ozone, while
 <78>charred and shattered targets litter the landscape, mute monuments to the power
 that has been exercised here.<0>
-<76>You stand in a vast, open field, purposefully set aside as a testing ground for
-spells and combat. The terrain is rugged and uneven, with patches of scorched
-<77>earth, jagged rocks, and trampled grass bearing witness to countless trials and
-duels. The air is thick with the lingering scent of smoke and ozone, while
-<78>charred and shattered targets litter the landscape, mute monuments to the power
-that has been exercised here.<0>
 ~
 0 0 2
 D1
@@ -2299,10 +2205,6 @@ You see Owl's Dungeon.
 S
 #84
 Owl's Arena~
-<21>Deep beneath an ocean surface, a vast underwater expanse serves as a testing
-<21>ground for spells and combat, hidden from the eyes of the world above.
-<20>Bioluminescent plants and creatures cast an eerie glow over the entire region,
-<19>their light flickering through the murky water like ghostly lanterns.<0>
 <21>Deep beneath an ocean surface, a vast underwater expanse serves as a testing
 <21>ground for spells and combat, hidden from the eyes of the world above.
 <20>Bioluminescent plants and creatures cast an eerie glow over the entire region,
@@ -2369,10 +2271,6 @@ E 0 572 0 6                     wear robot eye
 E 0 573 0 3                     wear robot eyebrow
 E 1 574 100 16
 E 1 575 100 18
-E 0 572 0 6                     wear robot eye
-E 0 573 0 3                     wear robot eyebrow
-E 1 574 100 16
-E 1 575 100 18
 
 M 0 78 1 82                     add Ducky the duck to Samxin's Reality
 E 0 62 0 3                      equip a duck collar (neck1)
@@ -2405,7 +2303,6 @@ uncommon crow~
 The Smithys Set of the Crow.
 Crow were the pseudo pets of the Smiths, often seen perching across the Smithys
 Forge in Winter months basking in the heat of the forge, and scavenging any
-Forge in Winter months basking in the heat of the forge, and scavenging any
 food scraps. An Ancient Forgeing process embues the essense of Crow into the
 armour sets allowing it to take on properties of the black feathered denizens.
 ~
@@ -2429,7 +2326,6 @@ M  75 spec_grail                the Hunter
 M   1 spec_warrior              puff
 M   6 spec_celestial_repairman  monkey squadron
 M   5 spec_poison               gulgorthil
-* M  79 spec_bloodsucker          hootfiend
 * M  79 spec_bloodsucker          hootfiend
 S
 

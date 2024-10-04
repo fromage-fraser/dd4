@@ -403,7 +403,6 @@ Enter thy Name: ~
 -1 MOTD~
 {x
     [22 September 2024]
-    [22 September 2024]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -415,9 +414,6 @@ Enter thy Name: ~
     at {Yhttps://www.dragons-domain.org/{x, which has a lot of information.
     We're also active on a Discord server at {Yhttps://discord.gg/aGzmAWmXYb{x
     if you'd like to jump in and say hi!
-
-    {WNEW AREA:{x Omu Central is in, the second of 3 areas comprising Omu city.
-    86 new mobs, 90 new objects, 244(!) new rooms, and a new Reaver quest.
 
     {WNEW AREA:{x Omu Central is in, the second of 3 areas comprising Omu city.
     86 new mobs, 90 new objects, 244(!) new rooms, and a new Reaver quest.
@@ -458,13 +454,6 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 ~
 
 0 CHANGES~
-{W October 2024{X
--Skill "target" and spell "regenerate" added, to allow for targeting and healing
- of body regions on players or mobiles.
-
-{W September 2024{X
--New area: Omu Central is in, with many supporting code and text changes.
-
 {W October 2024{X
 -Skill "target" and spell "regenerate" added, to allow for targeting and healing
  of body regions on players or mobiles.
@@ -1408,32 +1397,6 @@ Other players can never view your inventory.
 Syntax: kick <<target>
 
 Kick an opponent during battle, causing some damage.
-~
-
-0 TARGET~
-Syntax: target <<body zone>
-
-Target a strike at one of the following body zones: head, eye, arm, leg, heart,
-tail, or torso, with various appropriate TRAUMA-based effects if successful.
-
-Note your target must be made of organic material and possess e.g. a head in
-order for a targeted strike to have any chance of success.
-~
-
-0 TRAUMA 'EYE TRAUMA' 'HEAD TRAUMA' 'ARM TRAUMA' 'LEG TRAUMA' 'HEART TRAUMA' 'TAIL TRAUMA' 'TORSO TRAUMA'~
-Certain attacks, particularly TARGETed attacks, are capable of inflicting
-various kinds of TRAUMA on players and mobiles.
-
-TRAUMA damage lasts indefinitely, has wide-ranging (and not <558>always<559> obvious)
-effects on skills, spells, and combat, and cannot be healed by rest or generic
-healing spells.  Instead it must be treated by seeking out the REGENERATE spell
-from healer mobs or high-level PC healers, finding consumables that can cast
-this spell on you, or (extreme measure!) dying in order to be reborn without the
-condition/s.
-
-Note that shifter classes may have interesting ways to heal various sorts of
-trauma due to the mutability of their physiology.  Discovering these is left as
-an exercise for the player.
 ~
 
 0 TARGET~
@@ -2931,7 +2894,6 @@ name within your area.
 ~
 
 101 CRAFTLOC SPELLOC~
-101 CRAFTLOC SPELLOC~
 Crafting and spellcrafting locations:
 
 {CCRAFTING{x
@@ -2960,48 +2922,9 @@ Crafting and spellcrafting locations:
 5321    [The smithy]                 [Old Thalos]                   [10 25]  [mirror.are] {R*{x
 603     [The Blacksmith]             [New Ofcol]                    [0 100]  [ofcol2.are]
 31041   [The Smithy]                 [The City of Anon]             [0 100]  [tcwn.are]{x
-{WVNUM    ROOM                         AREA                           LEVEL    FILENAME{x
-29966   [The lemming smithy]         [The Lemming Caves]            [5 15]   [lemmings2.are]
-2503    [The Armourer]               [Ultima]                       [5 30]   [ultima.are] {R*{x
-5321    [The smithy]                 [Old Thalos]                   [10 25]  [mirror.are] {R*{x
-5221    [The smithy]                 [Thalos]                       [10 25]  [thalos.are]
-1381    [A very hot room]            [Tower of Sorcery]             [10 30]  [hitower.are]
-937     [Smithy]                     [Olympus]                      [20 35]  [olympus.are]
-29868   [The smithy]                 [Prince's Fortress]            [20 40]  [usurper.are]
-27335,27635 [Metalworkers' Forge]    [Ota'ar Dar - Market Canton]   [30 35]  [sahuagin_market.are] {R*{x
-23586   [A Stable.]                  [City Of Thieves]              [30 50]  [citie.are] {R*{x
-14053   [The smithy's cave]          [Cyclops Caves]                [35 55]  [cyclops.are] {R*{x
-31254   [Base of Southwest Tower]    [The Walls of Anon]            [45 60]  [tcwn2.are]
-4752    [Blacksmith's Home]          [Kingdom of Juargan]           [45 65]  [juargan.are] {R*{x
-24023   [The Cobresh Smithy.]        [The Yitrite Mines]            [50 75]  [yitrite.are] {R*{x
-30021   [Gryphon Smithy]             [Krondor]                      [0 100]  [krondor.are]
-27298   [The Fortress Armoury]       [Ota'ar Dar Military Fortress] [45 50]  [sahuagin_miltary.are] {R*{x
-27434, 27734 [The Royal Foundry]     [Ota'ar Dar Prince's Canton]   [55 60]  [sahuagin_prince.are] {R*{x
-28755   [Omu Crafting Workshop]      [Omu Central]                  [60 70]  [omu_central.are] {R*{x
-28096   [Jasmir's Armory]            [Draagdim]                     [0 100]  [draagdim.are]
-29151   [The Bronze Scabbard]        [Freeport]                     [0 100]  [freeport.are] {R*{x
-30803   [The workshop]               [Bastion of Shadows]           [80 100] [bastion.are] {R*{x
-5321    [The smithy]                 [Old Thalos]                   [10 25]  [mirror.are] {R*{x
-603     [The Blacksmith]             [New Ofcol]                    [0 100]  [ofcol2.are]
-31041   [The Smithy]                 [The City of Anon]             [0 100]  [tcwn.are]{x
 
 {MSPELLCRAFTING{x
 -------------
-3019    [Mage's Laboratory]          [Midgaard]                     [0 100]  [midgaard.are]
-9419    [The Laboratory]             [Fleshmonger's Tower]          [5 15]   [fleshmonger.are]
-1386    [A laboratory]               [Tower of Sorcery]             [10 30]  [hitower.are]
-16437   [Experimentation Room]       [Underdark]                    [20 60]  [under2.are] {R*{x
-9533    [Velkyn's laboratory]        [Vampire Catacombs]            [25 35]  [vampcat.are] {R*{x
-10148   [A Laboratory]               [Witch's Tower]                [25 35]  [witch.are] {R*{x
-27352,27652 [Mohmit's Laboratory]    [Ota'ar Dar - Market Canton]   [30 35]  [sahuagin_market.are] {R*{x
-25484   [Laboratory]                 [TenTusks]                     [20 40]  [tentusks.are]
-25107   [Transformation Laboratory]  [Kahsis]                       [35 60]  [kahsis.are] {R*{x
-20387   [The Laboratory]             [The Fortress of Goblins]      [40 60]  [fortress.are]
-13639   [A small laboratory]         [The Valley of Dreams]         [45 60]  [deserts.are] {R*{x
-13407   [The Laboratory]             [The Catacombs]                [0 100]  [dungeons.are] {R*{x
-28748   [Omu Spellcrafting Workshop] [Omu Central]                  [60 70]  [omu_central.are] {R*{x
-15782-15786  [Various]               [Mount Doom]                   [60 85]  [mtdoom2.are]
-14644   [The Laboratory]             [Zyklor's Tower]               [60 100] [tower.are] {R*{x
 3019    [Mage's Laboratory]          [Midgaard]                     [0 100]  [midgaard.are]
 9419    [The Laboratory]             [Fleshmonger's Tower]          [5 15]   [fleshmonger.are]
 1386    [A laboratory]               [Tower of Sorcery]             [10 30]  [hitower.are]
@@ -3383,20 +3306,6 @@ While most NPCs don't have skills, teachers, for example, do, so it will work
 on them similarly to a PC.
 ~
 
-101 CANDO 'CAN DO'~
-Syntax: cando <<target> <<skill>
-
-Will tell you if <<target> character can perform a particular skill, and, if so,
-to what percentage level. If "skill" is present, it will also give you the
-spell/skill number (used internally).  If no "skill" argument is present, it
-will give you a complete list for the character (without the skill/spell
-numbers).  If no target or skill argument is provided, you will just get
-abbreviated help for the command.
-
-While most NPCs don't have skills, teachers, for example, do, so it will work
-on them similarly to a PC.
-~
-
 101 BAMFIN BAMFOUT~
 Syntax: bamfin
 Syntax: bamfin  <<message>
@@ -3560,15 +3469,6 @@ Syntax: cast 'complete healing'
 These spells cure damage on the target character.  The higher-level spells
 heal more damage.  The psionicist disciplines, like many other skills, are
 limited to the psionicist alone.
-~
-
-0 'REGENERATE'~
-
-Syntax: cast regenerate <<character>
-
-This spell will heal major non-fatal trauma that has been done to a player or
-mobile, for example serious brain injury, missing eyes or arms, a severed tail,
-etc.
 ~
 
 0 'REGENERATE'~
@@ -4595,65 +4495,6 @@ A chat channel which can be accessed only by GODs and DIRECTORs (IMMORTAL levels
 106 and 105).  '|' is a synonym for DIRTALK.
 ~
 
-101 'PANTHEONRANK'~
-Syntax: pantheonrank
-
-Display the current rankings of the PANTHEON of gods.
-~
-
-101 'RESET'~
-Syntax: reset
-
-Reset the area that you are in.
-~
-
-100 'RENAME'~
-Syntax: rename <<object> <<string> <<value>
-Syntax: rename <<object> ed <<keyword> <<value>
-
-String being one of:
-  name short long ed (see separate syntax for 'ed,' above)
-
-Use this command to change the keywords, short and long descriptions, and extra
-descriptions of objects.
-~
-
-101 'PANTHEONINFO'~
-Syntax: pantheoninfo
-
-Display qualities of the various deities in the PANTHEON.
-~
-
-101 'OSCORE'~
-Syntax: oscore
-
-Will give you a list of all LEGENDARY items currently in the MUD, and total
-counts for the number of UNCOMMON, RARE, EPIC, and LEGENDARY items.
-~
-
-100 'IMMTALK'~
-Syntax: immtalk <<message>
-
-A chat channel which can be accessed only by heroes and immortals.  ':' is a
-synonym for IMMTALK.
-~
-
-101 'KILLSOCKET' 'KILL SOCKET'~
-Syntax: killsocket <<socket #>
-
-Kill the socket <<socket #>. You can get this number from the USERS command or
-the 'desc=' value in MEMORY. Killing the socket will disconnect the user who is
-in some login-related state, but not yet actually playing. (If they are actually
-playing, use DISCONNECT <<charname> instead).
-~
-
-105 'DIRTALK'~
-Syntax: dirtalk <<message>
-
-A chat channel which can be accessed only by GODs and DIRECTORs (IMMORTAL levels
-106 and 105).  '|' is a synonym for DIRTALK.
-~
-
 0 'QUIET MODE'~
 Syntax: quiet
 
@@ -5238,17 +5079,11 @@ Syntax: atemi
 
 This skill makes a quick strike toward your victim.  It is the most basic of the
 MARTIAL ARTIST skills, hence causes only moderate damage.
-This skill makes a quick strike toward your victim.  It is the most basic of the
-MARTIAL ARTIST skills, hence causes only moderate damage.
 ~
 
 0 KANSETSU~
 Syntax: kansetsu <<victim>
 
-You will attempt an arm lock on your victim by trying this skill. If successful
-you will break the victim's arms, causing them to drop any weapons that they
-might be holding.  As well as disarming your opponent, you will inflict moderate
-damage.
 You will attempt an arm lock on your victim by trying this skill. If successful
 you will break the victim's arms, causing them to drop any weapons that they
 might be holding.  As well as disarming your opponent, you will inflict moderate
@@ -5260,15 +5095,11 @@ Syntax: tetsui <<victim>
 
 This can be described as the hammer fist technique.  A move requiring great
 precision and power, a successful hit will inflict heavy damage.
-This can be described as the hammer fist technique.  A move requiring great
-precision and power, a successful hit will inflict heavy damage.
 ~
 
 0 SHUTO~
 Syntax: shuto <<victim>
 
-This can best be described as knife hand strike.  Again great concentration is
-needed for a successful strike, which will inflict heavy damage.
 This can best be described as knife hand strike.  Again great concentration is
 needed for a successful strike, which will inflict heavy damage.
 ~
@@ -5283,9 +5114,6 @@ successful, cause heavy damage on the unsuspecting foe.
 0 MAWASIGERI~
 Syntax: mawasigeri
 
-This is the most powerful move in the MARTIAL ARTIST's arsenal.  The round
-house kick will do extreme damage if successful.  If combined in a combo then
-the effects on the opponent are devastating.
 This is the most powerful move in the MARTIAL ARTIST's arsenal.  The round
 house kick will do extreme damage if successful.  If combined in a combo then
 the effects on the opponent are devastating.
@@ -5895,7 +5723,6 @@ second attack           sneak                   third attack
 hide                    forage                  dowse
 dodge                   disarm                  parry
 find traps              disable                 grip
-find traps              disable                 grip
 feint                   shoot                   snapshot
 swim
 
@@ -5907,8 +5734,6 @@ barkskin                third shot              hunt
 detect hidden           infravision             snare
 dual                    enhanced hit            classify
 advanced consider       faerie fire             accuracy
-fast healing            lore                    forge
-sharpen                 mount
 fast healing            lore                    forge
 sharpen                 mount
 
@@ -6179,7 +6004,6 @@ poison                  hex                     spiritwrack
 entrapment              animate dead            fireshield
 third spell             bladethirst             fear
 deter                   harm                    cure poison
-cure blindness          refresh                 remove curse
 cure blindness          refresh                 remove curse
 second attack           stabilise
 ~
@@ -6706,8 +6530,6 @@ Syntax: lunge <<target>
 
 A bloodthirsty Vampire may lunge for an opponent's neck, causing heavy
 damage.  Lunge can only be used on an unprepared enemy.  DOUBLE LUNGE is
-even more devastating.  Vampires full of blood will have a more powerful
-lunge, vampires low on blood will have a weaker lunge.
 even more devastating.  Vampires full of blood will have a more powerful
 lunge, vampires low on blood will have a weaker lunge.
 

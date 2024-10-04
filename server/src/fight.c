@@ -52,7 +52,6 @@ bool    check_arrestor_unit  args((CHAR_DATA *ch, CHAR_DATA *victim, int dt));
 bool    check_shield_unit    args((CHAR_DATA *ch, CHAR_DATA *victim, int dt));
 bool    check_driver_unit    args((CHAR_DATA *ch, CHAR_DATA *victim));
 bool    remove_bodypart      args((CHAR_DATA *ch, int iWear, bool fReplace));
-bool    remove_bodypart      args((CHAR_DATA *ch, int iWear, bool fReplace));
 
 
 /*
@@ -411,7 +410,6 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
  * These 2 functions are at the top, as Im about to put a check for dazed things
  * If you are dazed you cant attack, BUT things you have in the room can still go off
  * DOTS and Pulse objects - Brutus
- * DOTS and Pulse objects - Brutus
  *
  */
 
@@ -424,13 +422,6 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                                 continue;
 
                         if( paf->bitvector == AFF_DOT )
-                        {
-                                /* A bit brutal/good if it goes off every combat round 29/9/24 --Owl */
-
-                                if (number_percent() < DOT_FREQ)
-                                {
-                                    damage(ch, victim, paf->modifier, paf->type, FALSE);
-                                }
                         {
                                 /* A bit brutal/good if it goes off every combat round 29/9/24 --Owl */
 
@@ -498,7 +489,6 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 
         /*
          * One attack (Even if PRONE, everything else is 50% less likely.)
-         * One attack (Even if PRONE, everything else is 50% less likely.)
          */
         one_hit(ch, victim, dt, FALSE);
 
@@ -551,7 +541,6 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                         chance = 3 * ch->level / attacks;
 
                         /* If you're PRONE, you're 1/2 as likely to succeed in anything */
-                        /* If you're PRONE, you're 1/2 as likely to succeed in anything */
                         if (IS_AFFECTED(ch, AFF_PRONE))
                                 chance /= 2;
 
@@ -568,7 +557,6 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         }
 
         /*
-         * Haste spell & haste
          * Haste spell & haste
          */
         if ((is_affected(ch, gsn_haste)) && !IS_AFFECTED(ch, AFF_PRONE))
@@ -778,21 +766,11 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
 
                 if (haste && !ch->gag && !IS_AFFECTED(ch, AFF_ARM_TRAUMA))
                         send_to_char("<15>*SWIFT ATTACK*<0> ", ch);
-                if (haste && !ch->gag && !IS_AFFECTED(ch, AFF_ARM_TRAUMA))
-                        send_to_char("<15>*SWIFT ATTACK*<0> ", ch);
                 /*
                  * Check for secondary attack
                  */
                 if (weapon_pos == WEAR_DUAL)
                 {
-                        if (IS_AFFECTED(ch, AFF_ARM_TRAUMA))
-                        {
-                                if (!ch->gag)
-                                {
-                                        send_to_char("<6>Arm trauma prevents you from dual-wielding.<0>\n\r", ch);
-                                }
-                                break;
-                        }
                         if (IS_AFFECTED(ch, AFF_ARM_TRAUMA))
                         {
                                 if (!ch->gag)
@@ -811,7 +789,6 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                             || dt == gsn_shoot
                             || dt == gsn_dive
                             || dt == gsn_joust
-                            || dt == gsn_riposte
                             || dt == gsn_riposte
                             || dt == gsn_snap_shot)
                                 break;
@@ -1129,7 +1106,6 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                         else if (dt == gsn_grapple || dt == gsn_smash)
                                 dam += dam / 4;
 
-                        else if (dt == gsn_riposte)
                         else if (dt == gsn_riposte)
                                 dam -= dam / 2;
                 }
@@ -1514,7 +1490,6 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                         if (dam && !no_defense)
                         {
                                 /* Engineer's turrent deployable units come before any character defense */
-                                /* Engineer's turrent deployable units come before any character defense */
 
                                 if (check_arrestor_unit(ch, victim, dt))
                                         return;
@@ -1530,8 +1505,6 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                                         if (!IS_NPC(victim)
                                             && dt != gsn_riposte
                                             && number_percent() < victim->pcdata->learned[gsn_riposte] / 2)
-                                            && dt != gsn_riposte
-                                            && number_percent() < victim->pcdata->learned[gsn_riposte] / 2)
                                         {
                                                 if (victim->gag < 2)
                                                         act ("You strike quickly while $n recovers from $s attack.",
@@ -1540,7 +1513,6 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                                                 act ("While recovering from your attack, $N makes a quick strike.",
                                                      ch, NULL, victim, TO_CHAR);
 
-                                                one_hit (victim, ch, gsn_riposte, FALSE);
                                                 one_hit (victim, ch, gsn_riposte, FALSE);
                                         }
 
@@ -2152,9 +2124,6 @@ bool check_parry (CHAR_DATA *ch, CHAR_DATA *victim)
         if (IS_AFFECTED(victim, AFF_ARM_TRAUMA))
                 chance /= 2;
 
-        if (IS_AFFECTED(victim, AFF_ARM_TRAUMA))
-                chance /= 2;
-
         if (number_percent() >= chance)
         {
                 if (IS_NPC(victim) || !CAN_DO(victim, gsn_dual_parry) || !get_eq_char(victim, WEAR_DUAL))
@@ -2228,9 +2197,6 @@ bool check_shield_block (CHAR_DATA *ch, CHAR_DATA *victim)
                 chance -= 10;
 
         chance += (victim->level - ch->level) * 2;
-
-        if ( IS_AFFECTED(ch, AFF_ARM_TRAUMA) )
-                chance /= 2;
 
         if ( IS_AFFECTED(ch, AFF_ARM_TRAUMA) )
                 chance /= 2;
@@ -2422,9 +2388,6 @@ bool check_dodge(CHAR_DATA *ch, CHAR_DATA *victim)
         if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
                 chance /= 2;
 
-        if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
-                chance /= 2;
-
         if (number_percent() >= chance)
                 return FALSE;
 
@@ -2460,12 +2423,6 @@ bool check_acrobatics (CHAR_DATA *ch, CHAR_DATA *victim)
                 return FALSE;
 
         chance += (victim->level - ch->level) * 2;
-
-        if ( IS_AFFECTED(ch, AFF_ARM_TRAUMA) )
-            chance /= 2;
-
-        if ( IS_AFFECTED(ch, AFF_LEG_TRAUMA) )
-            chance /= 2;
 
         if ( IS_AFFECTED(ch, AFF_ARM_TRAUMA) )
             chance /= 2;
@@ -5317,15 +5274,6 @@ void do_backstab (CHAR_DATA *ch, char *argument)
                 }
         }
 
-        if (IS_AFFECTED(ch, AFF_TAIL_TRAUMA))
-        {
-                if (ch->form == FORM_SCORPION)
-                {
-                        send_to_char("Your tail is too damaged to backstab anyone with.\n\r", ch);
-                        return;
-                }
-        }
-
         check_killer(ch, victim);
         WAIT_STATE(ch, PULSE_VIOLENCE);
 
@@ -5481,12 +5429,6 @@ void do_lunge (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
-        {
-                send_to_char("Your legs are too injured to lunge effectively.\n\r", ch);
-                return;
-        }
-
         check_killer(ch, victim);
         WAIT_STATE(ch, PULSE_VIOLENCE);
 
@@ -5603,12 +5545,6 @@ void do_joust (CHAR_DATA *ch, char *argument)
                 act ("$n's jousting is thwarted by $N's acute awareness.",
                      ch, NULL, victim, TO_NOTVICT);
                 damage(ch, victim, 0, gsn_joust, FALSE);
-                return;
-        }
-
-        if ( IS_AFFECTED(ch, AFF_ARM_TRAUMA) )
-        {
-                send_to_char("Your arm is too damaged to joust effectively.\n\r", ch);
                 return;
         }
 
@@ -5773,13 +5709,6 @@ void do_flee (CHAR_DATA *ch, char *argument)
         if (is_affected( ch, gsn_frenzy))
         {
                 send_to_char("The divine rage flowing through your body overrides your desire to flee...\n\r", ch);
-                WAIT_STATE(ch, PULSE_VIOLENCE);
-                return;
-        }
-
-        if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
-        {
-                send_to_char("Your legs are too damaged to have any hope of escape!\n\r", ch);
                 WAIT_STATE(ch, PULSE_VIOLENCE);
                 return;
         }
@@ -6305,9 +6234,6 @@ void do_dirt_kick (CHAR_DATA *ch, char *argument)
         if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
             chance /= 2;
 
-        if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
-            chance /= 2;
-
         if (is_safe(ch, victim))
                 return;
 
@@ -6367,13 +6293,6 @@ void do_kick (CHAR_DATA *ch, char *argument)
 
         WAIT_STATE(ch, skill_table[gsn_kick].beats);
 
-        if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
-        {
-            send_to_char("You try to kick, but your leg is too damaged.\n\r", ch);
-            return;
-        }
-
-        if (IS_NPC(ch) || number_percent() < ch->pcdata->learned[gsn_kick])
         if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
         {
             send_to_char("You try to kick, but your leg is too damaged.\n\r", ch);
@@ -6732,12 +6651,6 @@ void do_transfix (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (IS_AFFECTED(ch, AFF_BLIND))
-        {
-                send_to_char("You must be able to see to transfix someone!\n\r", ch);
-                return;
-        }
-
         if (IS_AFFECTED(victim, AFF_HOLD))
         {
                 act ("$N is already held.", ch, NULL, victim, TO_CHAR);
@@ -6986,12 +6899,6 @@ void do_headbutt (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
-        {
-                send_to_char("Your head is far too damaged to be smashing it into things!\n\n", ch);
-                return;
-        }
-
         if (IS_NPC(ch) || number_percent() < ch->pcdata->learned[gsn_headbutt])
         {
                 if (IS_NPC(victim))
@@ -7092,12 +6999,6 @@ void do_decapitate (CHAR_DATA *ch, char *argument)
         if( IS_NPC(victim) && !HAS_HEAD(victim) )
         {
                 act( "$N doesn't have a head to chop off!", ch, NULL, victim, TO_CHAR );
-                return;
-        }
-
-        if (IS_NPC(victim) && IS_SET(victim->act, ACT_UNKILLABLE))
-        {
-                send_to_char("That won't work on them.\n\r", ch);
                 return;
         }
 
@@ -7238,11 +7139,6 @@ void do_snap_neck (CHAR_DATA *ch, char *argument)
                 chance = ch->pcdata->learned[gsn_snap_neck]/2;
                 chance += get_curr_dex(ch);
                 chance += (ch->level - victim->level) *2;
-        }
-
-        if (IS_AFFECTED(ch, AFF_ARM_TRAUMA))
-        {
-                chance = ( chance /2 );
         }
 
         if (IS_AFFECTED(ch, AFF_ARM_TRAUMA))
@@ -7492,7 +7388,6 @@ void do_disarm (CHAR_DATA *ch, char *argument)
         if (IS_SET(obj->extra_flags, ITEM_BODY_PART))
         {
                 send_to_char("You cannot disarm your opponent's body parts.\n\r", ch);
-                send_to_char("You cannot disarm your opponent's body parts.\n\r", ch);
                 return;
         }
 
@@ -7618,9 +7513,6 @@ void do_trip (CHAR_DATA *ch, char *argument)
         if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
                 chance /= 2;
 
-        if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
-                chance /= 2;
-
         WAIT_STATE (ch, 2 * PULSE_VIOLENCE );
 
         if (IS_NPC(ch)|| number_percent() < chance)
@@ -7648,9 +7540,6 @@ void do_grapple (CHAR_DATA *ch, char *argument)
         && !( ch->spec_fun == spec_lookup("spec_kappa") )
         && !( ch->spec_fun == spec_lookup("spec_laghathti") )
         && !( ch->spec_fun == spec_lookup("spec_green_grung") )
-        && !( ch->spec_fun == spec_lookup("spec_purple_grung") )
-        && !( ch->spec_fun == spec_lookup("spec_orange_grung") )
-        && !( ch->spec_fun == spec_lookup("spec_gold_grung") )
         && !( ch->spec_fun == spec_lookup("spec_purple_grung") )
         && !( ch->spec_fun == spec_lookup("spec_orange_grung") )
         && !( ch->spec_fun == spec_lookup("spec_gold_grung") )
@@ -7746,16 +7635,6 @@ void do_grapple (CHAR_DATA *ch, char *argument)
                 chance = ( ( chance / 3 ) * 2 );
         }
 
-        if (IS_AFFECTED(ch, AFF_ARM_TRAUMA))
-        {
-                chance = ( ( chance / 3 ) * 2 );
-        }
-
-        if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
-        {
-                chance = ( ( chance / 3 ) * 2 );
-        }
-
         WAIT_STATE(ch,skill_table[gsn_grapple].beats);
 
         if ((IS_NPC(ch) || number_percent() < chance)
@@ -7791,9 +7670,6 @@ void do_flying_headbutt (CHAR_DATA *ch, char *argument)
         if (IS_NPC(ch)
         && !( ch->spec_fun == spec_lookup("spec_kappa") )
         && !( ch->spec_fun == spec_lookup("spec_green_grung") )
-        && !( ch->spec_fun == spec_lookup("spec_purple_grung") )
-        && !( ch->spec_fun == spec_lookup("spec_orange_grung") )
-        && !( ch->spec_fun == spec_lookup("spec_gold_grung") )
         && !( ch->spec_fun == spec_lookup("spec_purple_grung") )
         && !( ch->spec_fun == spec_lookup("spec_orange_grung") )
         && !( ch->spec_fun == spec_lookup("spec_gold_grung") )
@@ -7869,12 +7745,6 @@ void do_flying_headbutt (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
-        {
-                send_to_char("Your head is far too damaged to be smashing it into things!\n\r", ch);
-                return;
-        }
-
         WAIT_STATE(ch,skill_table[gsn_flying_headbutt].beats);
 
         if ((IS_NPC(ch) || number_percent() < chance )
@@ -7884,7 +7754,6 @@ void do_flying_headbutt (CHAR_DATA *ch, char *argument)
                      ch, NULL, victim, TO_CHAR);
                 act ("$n leaps at you and {Cheadbutts{x you down!",
                      ch, NULL, victim, TO_VICT);
-                act ("$n leaps up and {Cheadbutts{x $N down!",
                 act ("$n leaps up and {Cheadbutts{x $N down!",
                      ch, NULL, victim, TO_NOTVICT);
                 arena_commentary("$n's flying headbutt knocks $N to the ground.", ch, victim);
@@ -8187,7 +8056,6 @@ void do_whirlwind (CHAR_DATA *ch, char *argument)
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") )
         && !( ch->spec_fun == spec_lookup("spec_orange_grung") )
-        && !( ch->spec_fun == spec_lookup("spec_orange_grung") )
         && !( ch->spec_fun == spec_lookup("spec_sahuagin_prince") ) )
                 return;
 
@@ -8447,12 +8315,6 @@ void do_shoot (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (IS_AFFECTED(ch, AFF_ARM_TRAUMA))
-        {
-                send_to_char("Your arm is too damaged to operate a weapon like that.\n\r", ch);
-                return;
-        }
-
         /* Remove weapons and shield, equip bow */
         objWield = get_eq_char(ch, WEAR_WIELD);
         if (objWield)
@@ -8551,12 +8413,6 @@ void do_snap_shot (CHAR_DATA *ch, char *argument)
         if (!ch->fighting)
         {
                 send_to_char("You're not fighting anyone!\n\r", ch);
-                return;
-        }
-
-        if (IS_AFFECTED(ch, AFF_ARM_TRAUMA))
-        {
-                send_to_char("Your arm is too damaged to operate that weapon.\n\r", ch);
                 return;
         }
 
@@ -8728,12 +8584,6 @@ void do_tailwhip (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (IS_AFFECTED(ch, AFF_TAIL_TRAUMA))
-        {
-                send_to_char("Your tail is too damaged to whip.\n\r", ch);
-                return;
-        }
-
         chance = ch->pcdata->learned[gsn_tailwhip];
         chance = UMIN (chance, 95);
 
@@ -8797,12 +8647,6 @@ void do_flukeslap (CHAR_DATA *ch, char *argument)
 
         if (is_safe(ch, victim))
                 return;
-
-        if (IS_AFFECTED(ch, AFF_TAIL_TRAUMA))
-        {
-                send_to_char("Your flukes are too damaged to do that.\n\r", ch);
-                return;
-        }
 
         if (IS_AFFECTED(ch, AFF_TAIL_TRAUMA))
         {
@@ -8982,12 +8826,6 @@ void do_swallow (CHAR_DATA *ch, char *argument)
 
         if (is_safe(ch, victim))
                 return;
-
-        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
-        {
-                send_to_char("Your mouth is too damaged to swallow.\n\r", ch);
-                return;
-        }
 
         if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
         {
@@ -9618,91 +9456,6 @@ char *get_dpr( int dam ) {
   }
     return "nothing";
 
-}
-
-/* Helper function for do_target.  Given a ch pointer , an int representing the
-   kind of body part to look for, and a percentage value, it will remove the
-   first body part of bp_kind that CHAR is wearing with percent probability
-   --Owl 25/9/24 */
-
-void disarm_bodypart (CHAR_DATA *ch, CHAR_DATA *victim, int bp_kind)
-{
-    OBJ_DATA *obj;
-    OBJ_DATA *obj_next;
-
-    for (obj = victim->carrying; obj; obj = obj_next)
-    {
-            obj_next = obj->next_content;
-
-            if ( ( obj->wear_loc != WEAR_NONE )
-            &&   ( IS_SET(obj->extra_flags, ITEM_BODY_PART ) )
-            &&   ( ( obj->item_type == ITEM_LIGHT ) || ( obj->item_type == ITEM_WEAPON ) )
-            &&   ( obj->value[0] == bp_kind ) )
-            {
-                    remove_bodypart(victim, obj->wear_loc, TRUE);
-            }
-
-            if ( ( obj->wear_loc != WEAR_NONE )
-            &&   ( IS_SET(obj->extra_flags, ITEM_BODY_PART ) )
-            &&   ( obj->item_type == ITEM_ARMOR )
-            &&   ( obj->value[1] == bp_kind ) )
-            {
-                    remove_bodypart(victim, obj->wear_loc, TRUE);
-            }
-    }
-
-}
-
-bool remove_bodypart (CHAR_DATA *ch, int iWear, bool fReplace)
-{
-        OBJ_DATA *obj;
-        int plural = 0;
-
-        if (!(obj = get_eq_char(ch, iWear)))
-                return TRUE;
-
-        if (!fReplace)
-                return FALSE;
-
-        if( obj->item_type == ITEM_INSTRUMENT && obj->wear_loc == WEAR_HOLD )
-                remove_songs( ch );
-
-        size_t len = strlen(obj->name);
-
-        if (len > 0 && (obj->name[len - 1] == 's' || obj->name[len - 1] == 'S'))
-        {
-            plural = 1;
-        }
-
-        if (!IS_SET(ch->in_room->room_flags, ROOM_NO_DROP))
-	    {
-                obj_from_char(obj);
-                obj_to_room(obj, ch->in_room);
-
-                if (plural)
-                {
-                        act("$p are torn from $n's body!", ch, obj, NULL, TO_ROOM);
-                        act("$p are torn from your body!", ch, obj, NULL, TO_CHAR);
-                }
-                else
-                {
-                        act("$p is torn from $n's body!", ch, obj, NULL, TO_ROOM);
-                        act("$p is torn from your body!", ch, obj, NULL, TO_CHAR);
-                }
-                return TRUE;
-	    }
-        else {
-                if (plural)
-                {
-                        act("$p refuse to separate from $n's body!", ch, obj, NULL, TO_ROOM);
-                        act("$p refuse to separate from your body!", ch, obj, NULL, TO_CHAR);
-                }
-                else {
-                        act("$p refuses to separate from $n's body!", ch, obj, NULL, TO_ROOM);
-                        act("$p refuses to separate from your body!", ch, obj, NULL, TO_CHAR);
-                }
-                return FALSE;
-        }
 }
 
 /* Helper function for do_target.  Given a ch pointer , an int representing the
