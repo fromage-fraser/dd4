@@ -3630,6 +3630,336 @@ void do_gather (CHAR_DATA *ch, char *arg)
         return;
 }
 
+/* Harvest and carve for druids and rangers, harvest similar to gather but
+   for smokeables.  Carve allows you to make pipes for yourself or others.
+--Owl 4/10/24 */
+
+void do_harvest (CHAR_DATA *ch, char *arg)
+{
+        OBJ_DATA        *smokeable;
+        int             smokeable_type;
+        int             random_smokeable;
+        int             move_cost;
+        bool            random;
+        int             i;
+        char            buf[ MAX_STRING_LENGTH ];
+
+        if( IS_NPC(ch) )
+                return;
+
+        if( !CAN_DO( ch, gsn_harvest ) )
+        {
+                send_to_char( "You don't know what's smokeable and what isn't.\n\r", ch );
+                return;
+        }
+
+        if (ch->sub_class == SUB_CLASS_DRUID)
+        {
+                move_cost = number_range( 75, 100 );
+        }
+        else {
+                move_cost = number_range( 150, 200 );
+        }
+
+        if( ch->move - move_cost < 1 )
+        {
+                send_to_char( "You're too tired to look for smokeables to harvest.\n\r", ch );
+                return;
+        }
+
+        ch->move -= move_cost;
+        WAIT_STATE( ch, PULSE_VIOLENCE );
+
+        smokeable_type = -1;
+        random_smokeable = -1;
+        random = FALSE;
+
+        if( arg[0] == '\0' )
+        {
+                random = TRUE;
+                for( i=0; i < MAX_SMOKEABLES; i++ )
+                {
+                        random_smokeable = number_range( 0, MAX_SMOKEABLES-1 );
+                        if( (ch->pcdata->learned[ gsn_harvest ] >= smokeable_table[ random_smokeable ].min_skill)
+                           && ( ch->level >= smokeable_table[ random_smokeable ].min_level )
+                           && ( ch->in_room->sector_type == smokeable_table[ random_smokeable ].sect_type ) )
+                        {
+                                smokeable_type = random_smokeable;
+                                break;
+                        }
+                }
+        }
+        else for( i=0; i<MAX_SMOKEABLES; i++ )
+        {
+                if( is_full_name( arg, smokeable_table[i].name ) )
+                {
+                        if( ch->in_room->sector_type != smokeable_table[i].sect_type )
+                        {
+                            send_to_char( "You wouldn't find any of that in this sort of terrain.\n\r", ch );
+                            return;
+                        }
+
+                        if( ch->pcdata->learned[ gsn_harvest ] < smokeable_table[i].min_skill )
+                        {
+                            send_to_char( "You don't know enough about how to find it.\n\r", ch );
+                            return;
+                        }
+
+                        if( ch->level < smokeable_table[i].min_level)
+                        {
+                            send_to_char( "You aren't experienced enough to know how to do that.\n\r", ch );
+                            return;
+                        }
+
+                        smokeable_type = i;
+                        break;
+                }
+        }
+
+        if( smokeable_type < 0 )
+        {
+                if( random )
+                {
+                        send_to_char( "You are unable to find any smokeable substances here.\n\r", ch );
+                }
+                else {
+                        send_to_char( "You search intensely but cannot find that smokeable substance.\n\r", ch );
+                }
+
+                act( "$n searches for smokeable substances, but comes up empty-handed.", ch, NULL,NULL, TO_ROOM );
+
+                return;
+        }
+
+        i = smokeable_table[ smokeable_type ].chance * 10;
+
+        if ( ch->sub_class == SUB_CLASS_DRUID )
+        {
+            i = i + ( ( 999 - i ) / 8 );
+        }
+
+        if( number_range( 0, 999 ) >= i )
+        {
+                if( random )
+                        send_to_char( "You are unable to find any smokeable substances here.\n\r", ch );
+                else
+                {
+                        sprintf( buf, "You search the area intensely, but cannot find any %s.\n\r",
+                                smokeable_table[ smokeable_type ].name );
+                        send_to_char( buf, ch );
+                }
+                act( "$n searches for smokeable substances to harvest, but comes up empty handed.", ch, NULL,
+                    NULL, TO_ROOM );
+                return;
+        }
+
+        send_to_char( smokeable_table[ smokeable_type ].action, ch );
+
+        sprintf( buf, "$n searches the area for smokeable substances and finds some %s.",
+                smokeable_table[ smokeable_type ].name );
+        act( buf, ch, NULL, NULL, TO_ROOM );
+
+        smokeable = create_object( get_obj_index( ITEM_VNUM_SMOKEABLE ), 0, "common", CREATED_NO_RANDOMISER );
+        free_string(smokeable->name);
+        free_string(smokeable->short_descr);
+        free_string(smokeable->description);
+        smokeable->name              = str_dup( smokeable_table[ smokeable_type ].keywords );
+        smokeable->short_descr       = str_dup( smokeable_table[ smokeable_type ].short_desc );
+        smokeable->description       = str_dup( smokeable_table[ smokeable_type ].long_desc );
+        smokeable->item_type         = ITEM_SMOKEABLE;
+        smokeable->level             = ch->level;
+        smokeable->value[0]          = ch->sub_class == SUB_CLASS_DRUID ? ( number_fuzzy( smokeable_table[ smokeable_type ].uses ) + ( number_range (0, 7 ) ) ) : number_fuzzy( smokeable_table[ smokeable_type ].uses );
+        smokeable->value[1]          = skill_lookup( smokeable_table[ smokeable_type ].spell1 );
+        smokeable->value[2]          = skill_lookup( smokeable_table[ smokeable_type ].spell2 );
+        smokeable->value[3]          = skill_lookup( smokeable_table[ smokeable_type ].spell3 );
+
+        if( ch->carry_number >= can_carry_n( ch ) )
+                obj_to_room( smokeable, ch->in_room );
+        else obj_to_char( smokeable, ch );
+
+        return;
+}
+
+void do_carve (CHAR_DATA *ch, char *arg)
+{
+        OBJ_DATA        *pipe;
+        OBJ_DATA        *obj;
+        int             pipe_type;
+        int             random_pipe;
+        bool            random;
+        int             i;
+        int             move_cost;
+        int             created_level;
+        int             load_level;
+        char            arg1 [ MAX_INPUT_LENGTH ];
+        char            arg2 [ MAX_INPUT_LENGTH ];
+        char            buf [ MAX_STRING_LENGTH ];
+
+        created_level = 0;
+
+        if( IS_NPC(ch) )
+                return;
+
+        if( !CAN_DO( ch, gsn_carve ) )
+        {
+                send_to_char( "You don't know how to do that.\n\r", ch );
+                return;
+        }
+
+        smash_tilde( arg );
+        arg = one_argument( arg, arg1 );
+        arg = one_argument( arg, arg2 );
+
+        if ( ( arg2[0] != '\0' ) && !is_number( arg2 ) )
+        {
+                send_to_char( "Huh?\n\r", ch );
+                return;
+        }
+
+        if (!(obj = get_eq_char(ch, WEAR_WIELD)) || !is_carving_weapon(obj))
+        {
+                send_to_char("You need to wield an appropriate blade to carve.\n\r", ch);
+                return;
+        }
+
+        if (ch->sub_class == SUB_CLASS_DRUID)
+        {
+                move_cost = number_range( 50, 75 );
+        }
+        else {
+                move_cost = number_range( 100, 150 );
+        }
+
+        if( ch->move - move_cost < 1 )
+        {
+                send_to_char( "You're too tired to look for pipe construction materials.\n\r", ch );
+                return;
+        }
+
+        ch->move -= move_cost;
+        WAIT_STATE( ch, PULSE_VIOLENCE );
+
+        pipe_type = -1;
+        random_pipe = -1;
+        random = FALSE;
+
+        if( arg1[0] == '\0' )
+        {
+                random = TRUE;
+                for( i=0; i < 5; i++ )
+                {
+                        random_pipe = number_range( 0, MAX_PIPES-1 );
+                        if( ( ch->pcdata->learned[ gsn_carve ] >= pipe_table[ random_pipe ].min_skill )
+                        &&  ( ch->level >= pipe_table[ random_pipe ].min_level )
+                        &&  ( ch->in_room->sector_type == pipe_table[ random_pipe ].sect_type ) )
+                        {
+                                pipe_type = random_pipe;
+                                break;
+                        }
+                }
+        }
+        else for( i=0; i < MAX_PIPES; i++ )
+        {
+
+                if( is_full_name( arg1, pipe_table[i].name ) )
+                {
+                        if( ch->in_room->sector_type != pipe_table[i].sect_type )
+                        {
+                            send_to_char( "You won't find materials for that pipe in this terrain.\n\r", ch );
+                            return;
+                        }
+
+                        if( ch->pcdata->learned[ gsn_carve ] < pipe_table[i].min_skill )
+                        {
+                            send_to_char( "You don't know enough about how to find it.\n\r", ch );
+                            return;
+                        }
+
+                        if( ch->level < pipe_table[i].min_level)
+                        {
+                            send_to_char( "You aren't experienced enough to know how to do that.\n\r", ch );
+                            return;
+                        }
+
+                        if (arg2[0] != '\0')
+                        {
+                                created_level = atoi( arg2 );
+
+                                if ( created_level > ch->level )
+                                {
+                                        send_to_char( "You aren't skilled enough to make a pipe of that quality.\n\r", ch );
+                                        return;
+                                }
+                        }
+
+                        pipe_type = i;
+                        break;
+                }
+        }
+
+        if( pipe_type < 0 )
+        {
+                if( random )
+                        send_to_char( "You are unable to find any pipe construction materials.\n\r", ch );
+                else
+                        send_to_char( "You search the area but cannot find the materials you need.\n\r", ch );
+                act( "$n searches for pipe construction materials, but comes up empty-handed.", ch, NULL,
+                        NULL, TO_ROOM );
+                return;
+        }
+
+        i = pipe_table[ pipe_type ].chance * 10;
+
+        if ( ch->sub_class == SUB_CLASS_DRUID )
+        {
+            i = i + ( ( 999 - i ) / 8 );
+        }
+
+        if( number_range( 0, 999 ) >= i )
+        {
+                if( random )
+                        send_to_char( "You are unable to find any pipe construction materials.\n\r", ch );
+                else
+                {
+                        sprintf( buf, "You search the area but can't find what you need to make %s.\n\r",
+                                pipe_table[ pipe_type ].short_desc );
+                        send_to_char( buf, ch );
+                }
+                act( "$n searches for pipe construction materials, but comes up empty-handed.", ch, NULL,
+                    NULL, TO_ROOM );
+                return;
+        }
+
+        send_to_char( pipe_table[ pipe_type ].action, ch );
+
+        sprintf( buf, "$n finds appropriate construction materials and carves %s.",
+                pipe_table[ pipe_type ].short_desc );
+        act( buf, ch, NULL, NULL, TO_ROOM );
+
+        load_level = (random) ? ch->level : ( created_level ? created_level : ch->level);
+
+        pipe = create_object( get_obj_index( ITEM_VNUM_PIPE ), 0, "common", CREATED_NO_RANDOMISER );
+        free_string(pipe->name);
+        free_string(pipe->short_descr);
+        free_string(pipe->description);
+        pipe->name              = str_dup( pipe_table[ pipe_type ].keywords );
+        pipe->short_descr       = str_dup( pipe_table[ pipe_type ].short_desc );
+        pipe->description       = str_dup( pipe_table[ pipe_type ].long_desc );
+        pipe->item_type         = ITEM_PIPE;
+        pipe->level             = load_level;
+        pipe->value[0]          = scale_pipe( pipe_table[ pipe_type ].min_level, load_level, pipe_table[ pipe_type ].c_benefit, FALSE );
+        pipe->value[1]          = scale_pipe( pipe_table[ pipe_type ].min_level, load_level, pipe_table[ pipe_type ].m_benefit, FALSE );
+        pipe->value[2]          = scale_pipe( pipe_table[ pipe_type ].min_level, load_level, pipe_table[ pipe_type ].thirst_cost, TRUE );
+        pipe->value[3]          = scale_pipe( pipe_table[ pipe_type ].min_level, load_level, pipe_table[ pipe_type ].speed, TRUE );
+
+        if( ch->carry_number >= can_carry_n( ch ) )
+                obj_to_room( pipe, ch->in_room );
+        else obj_to_char( pipe, ch );
+
+        return;
+}
+
+
 /* New Smelt Code - Brutus */
 
 
@@ -5432,6 +5762,54 @@ bool is_piercing_weapon (OBJ_DATA *obj)
                 return TRUE;
 
         return FALSE;
+}
+
+bool is_carving_weapon (OBJ_DATA *obj)
+{
+        if (!obj || obj->item_type != ITEM_WEAPON)
+                return FALSE;
+
+        if ( obj->value[3] == 1
+        ||   obj->value[3] == 2
+        ||   obj->value[3] == 3
+        ||   obj->value[3] == 11
+        ||   obj->value[3] == 13
+        ||   obj->value[3] == 19)
+                return TRUE;
+
+        return FALSE;
+}
+
+int scale_pipe(int limit_level, int load_level, int base_value, bool higher_bad)
+{
+    float scaled_value;
+    float percentage_diff;
+
+    if (load_level == 0)
+    {
+            return base_value;
+    }
+
+    percentage_diff = ((float)(limit_level - load_level) / load_level) * 100;
+
+    if (higher_bad)
+    {
+            scaled_value = base_value + (base_value * (percentage_diff / 100));
+    }
+    else {
+            scaled_value = base_value - (base_value * (percentage_diff / 100));
+    }
+
+    if (scaled_value > 230)
+    {
+        scaled_value = 230;
+    }
+    else if (scaled_value < 4)
+    {
+        scaled_value = 4;
+    }
+
+    return (int)scaled_value;
 }
 
 

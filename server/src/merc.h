@@ -229,6 +229,53 @@ struct HERB
 
 #define MAX_HERBS 11
 
+/*
+ * Smokeable info for druid/ranger skill 'harvest'
+ */
+
+struct SMOKEABLE
+{
+        char    *name;
+        int      sect_type;
+        int      uses;
+        char    *spell1;
+        char    *spell2;
+        char    *spell3;
+        int      min_skill;
+        int      min_level;
+        int      chance;
+        char    *keywords;
+        char    *short_desc;
+        char    *long_desc;
+        char    *action;
+};
+
+#define MAX_SMOKEABLES 20
+
+/*
+ * Pipe info for druid/ranger skill 'carve'
+ */
+
+struct PIPE
+{
+        char    *name;
+        int      sect_type;
+        int      c_benefit;
+        int      m_benefit;
+        int      thirst_cost;
+        int      speed;
+        int      min_skill;
+        int      min_level;
+        int      chance;
+        char    *keywords;
+        char    *short_desc;
+        char    *long_desc;
+        char    *action;
+};
+
+#define MAX_PIPES 6
+
+
 struct random_types
 {
         char    apply_buff;
@@ -325,7 +372,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   601     /* +6 various trauma types 27/9/24 - Owl */
+#define MAX_SKILL                   603     /* 602 +1 for carve 4/10/24 */
 #define MAX_PRE_REQ                 1400    /* -1 no meditate for shifters 7/4/24 */
 #define MAX_SPELL_GROUP             452     /* +1 reforge Brutus 1/1/23 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
@@ -2088,6 +2135,8 @@ extern  WANTED_DATA *wanted_list_last;
 
 #define ITEM_VNUM_HERB                   100
 #define ITEM_VNUM_WIZBREW_VIAL            99
+#define ITEM_VNUM_SMOKEABLE              576
+#define ITEM_VNUM_PIPE                   577
 
 
 /*
@@ -3878,6 +3927,8 @@ extern int gsn_leg_trauma;
 extern int gsn_heart_trauma;
 extern int gsn_tail_trauma;
 extern int gsn_torso_trauma;
+extern int gsn_harvest;
+extern int gsn_carve;
 
 /*
  *  Deity gsns
@@ -4014,7 +4065,7 @@ extern const    struct dpr                      dprs                    [ MAX_DP
 extern const    struct clan_items               clan_item_list          [ MAX_CLAN ];
 extern const    struct clan_type                clan_table              [ MAX_CLAN ];
 extern const    struct color_data               color_table             [ ];
-extern char *   const  channel_names                                       [ MAX_CHANNELS ];
+extern char *   const  channel_names                                    [ MAX_CHANNELS ];
 extern const    struct color_data_8bit          color_table_8bit        [ ];
 extern const    struct cmd_type                 cmd_table               [ ];
 extern const    struct liq_type                 liq_table               [ LIQ_MAX  ];
@@ -4029,6 +4080,8 @@ extern const    struct social_type              social_table            [ ];
 extern const    struct pattern_points           pattern_list            [ MAX_PATTERN ];
 extern const    struct soar_points              soar_list               [ MAX_SOAR ];
 extern const    struct HERB                     herb_table              [ MAX_HERBS ];
+extern const    struct SMOKEABLE                smokeable_table         [ MAX_SMOKEABLES ];
+extern const    struct PIPE                     pipe_table              [ MAX_PIPES ];
 extern const    struct random_types             random_list             [ MAX_RANDOMS ];
 extern const    struct song                     song_table              [ MAX_SONGS ];
 extern char *   const  color_list                                       [ MAX_COLOR_LIST ];
@@ -4274,7 +4327,6 @@ DECLARE_DO_FUN( do_log                          );
 DECLARE_DO_FUN( do_look                         );
 DECLARE_DO_FUN( do_lodge                        );      /* put items into vault */
 DECLARE_DO_FUN( do_lunge                        );      /* for VAMPS - Brutus */
-/* DECLARE_DO_FUN( do_map                          ); */      /* Main mapping func - Tavolir */
 DECLARE_DO_FUN( do_maul                         );      /* tiger skill */
 DECLARE_DO_FUN( do_mawasigeri                   );      /* Martial artist - brutus */
 DECLARE_DO_FUN( do_meditate                     );
@@ -4497,6 +4549,8 @@ DECLARE_DO_FUN( do_deploy                       );
 DECLARE_DO_FUN( do_retract                      );
 DECLARE_DO_FUN( do_rfind                        );
 DECLARE_DO_FUN( do_target                       );      /* to target strikes to body areas - Owl */
+DECLARE_DO_FUN( do_harvest                      );      /* basically gather for smokeables - Owl */
+DECLARE_DO_FUN( do_carve                        );      /* make pipes for Druid/Ranger - Owl */
 
 /*
  * Spell functions.
@@ -5176,7 +5230,9 @@ void strip_swallow                           ( CHAR_DATA *ch );
 bool is_bladed_weapon                        ( OBJ_DATA *obj );
 bool is_blunt_weapon                         ( OBJ_DATA *obj );
 bool is_piercing_weapon                      ( OBJ_DATA *obj );
+bool is_carving_weapon                       ( OBJ_DATA *obj );
 bool is_cursed                               ( CHAR_DATA *ch );
+int  scale_pipe                              ( int limit_level, int load_level, int base_value, bool higher_bad );
 
 /* quest.c */
 bool mob_is_quest_target                     ( CHAR_DATA *ch );

@@ -1818,9 +1818,9 @@ A heap of magically-enchanted dust particles lies here.~
 1 0 100
 
 #568
-flickersprout leaves sprout flickering~
+flickersprout shoots sprout flickering~
 flickersprout~
-A flickering, red pile of sprout leaves lies here.~
+A flickering, red pile of sprout shoots lies here.~
 ~
 54 0 1
 15~ fireshield~ hex~ energy drain~
@@ -1910,6 +1910,24 @@ A
 17 -30
 A
 2 3
+
+#576
+smokeable~
+a smokeable substance~
+There is a smokeable substance here.~
+~
+54 0 1|16384
+0~ 0~ 0~ 0~
+1 0 0
+
+#577
+pipe~
+a pipe~
+There is a pipe here.~
+~
+52 0 1|16384
+0~ 0~ 0~ 0~
+1 0 0
 
 #0
 
