@@ -224,6 +224,159 @@ const struct random_types random_list [ MAX_RANDOMS ] =
         { APPLY_SWIFTNESS, SCORE_STATS},
 };
 
+const struct SMOKEABLE smokeable_table [ MAX_SMOKEABLES ] =
+{
+        /*
+         * Smokeable table legend:
+         * name, terrain_type, uses, spell name1, spell name2, spell name3, minimum % skill
+         * to find, minimum ch->level to find, chance of finding, keywords,
+         * short_desc, long_descr, action string (reported if smokeable found
+         * after harvesting)
+         */
+
+        {
+                "frostfire", SECT_MOUNTAIN, 10, "combat mind", "shield", "ego whip",
+                 70, 70, 60, "frostfire heap flakes", "frostfire",
+                "A small heap of red and white flakes lies here.",
+                "You find some red and white flakes and crush them into a powder.\n\r"
+        },
+
+        {
+                "featherblend", SECT_HILLS, 9, "prayer", "cure critical", "feeblemind",
+                 75, 70, 50, "featherblend mixed herbs", "featherblend",
+                "Some mixed herbs have been scattered here.",
+                "You collect a variety of uncommon herbs, dry them out, and mix them together.\n\r"
+        },
+
+        {
+                "necrochaff", SECT_SWAMP, 9, "inertial barrier", "psychic healing", "spiritwrack",
+                 80, 70, 40, "necrochaff black fluffy substance", "necrochaff",
+                "A black, fluffy substance has been left here.",
+                "You obtain a quantity of black, fluffy substance from the swamp.\n\r"
+        },
+
+        {
+                "abyssal kelp", SECT_UNDERWATER_GROUND, 9, "infravision", "breathe water", "nausea",
+                 80, 70, 45, "strands abyssal kelp clump shimmering", "abyssal kelp",
+                "A clump of dark, shimmering abyssal kelp lies here.",
+                "You gather strands of abyssal kelp and artfully remove the moisture from them.\n\r"
+        },
+
+        {
+                "stormroot", SECT_FIELD, 10, "biofeedback", "cure light", "poison",
+                 85, 80, 30, "stormroot shavings tuber grey", "stormroot",
+                "The grey, gnarled shavings of a tuber lie here.",
+                "You dig up a stormroot tuber and produce a pile of shavings from it.\n\r"
+        },
+
+        {
+                "dragonpetal", SECT_FOREST, 8, "dragon shield", "stabilise", "hex",
+                 85, 80, 20, "dragonpetal flowers", "dragonpetal",
+                "The rare flowers of a dragonpetal shrub have been collected here.",
+                "You pluck a handful of flowers from a dragonpetal shrub.\n\r"
+        },
+
+        {
+                "mirthrash", SECT_FOREST, 8, "power heal", "enhanced strength", "paralysis",
+                 85, 80, 25, "mirthrash leaves", "mirthrash",
+                "The green, square leaves of the mirthrash bush have been piled up here.",
+                "You acquire several handfuls of leaves from a mirthrash bush.\n\r"
+        },
+
+        {
+                "biolume sporedust", SECT_UNDERWATER_GROUND, 8, "freedom", "detect magic", "acid breath",
+                 85, 80, 25, "glowing cloud biolume sporedust", "biolume sporedust",
+                "A glowing cloud of sporedust drifts about here, giving off an eerie light.",
+                "You scoop up some glowing sporedust and carefully dehydrate and pack it.\n\r"
+        },
+
+        {
+                "vapourleaf", SECT_HILLS, 11, "dispel magic", "sanctuary", "wither",
+                 90, 90, 25, "vapourleaf", "vapourleaf",
+                "The insubstantial foliage of the vapour tree is here.",
+                "You remove a quantity of wispy, translucent foliage from a vapour tree.\n\r"
+        },
+
+        {
+                "meadowgrass", SECT_FIELD, 12, "haste", "blindness", "paralysis",
+                 90, 90, 20, "meadowgrass", "meadowgrass",
+                "Sweet-smelling grass has been left in a pile here.",
+                "You snatch up multiple handfuls of sweet-smelling grass.\n\r"
+        },
+
+        {
+                "Banshee's lament", SECT_FOREST, 15, "power heal", "slow", "sleep",
+                 90, 90, 18, "Banshee's lament", "Banshee's lament",
+                "Bright green and black leaves have been piled up here.",
+                "You secure a small pile of leaves from a black and green tree.\n\r"
+        },
+
+        {
+                "siltstone shavings", SECT_UNDERWATER_GROUND, 12, "sense traps", "energy containment", "confusion",
+                 90, 90, 17, "fine shavings siltstone", "siltstone shavings",
+                "A pile of fine siltstone shavings rests here, dull and gray.",
+                "You gather siltstone shavings and dry them into a smokeable form.\n\r"
+        },
+
+        {
+                "ashglow", SECT_DESERT, 13, "inertial barrier", "faerie fog", "holy word",
+                 95, 95, 15, "ashglow fibres pile", "ashglow",
+                "Black and gold fibres have been left in a pile here.",
+                "You find an ashglow plant, and strip a pile of fibres from it.\n\r"
+        },
+
+        {
+                "nightbark", SECT_FOREST, 15, "sanctuary", "displacement", "fire breath",
+                 95, 95, 13, "nightbark flakes bark", "nightbark",
+                "Flakes of a dark-grey bark have been chipped from a tree and left here.",
+                "You chip flakes of dark-grey bark from a nightbark tree.\n\r"
+        },
+
+        {
+                "dreamflower", SECT_FIELD, 12, "protection", "heal", "inner fire",
+                 95, 95, 13, "dreamflower flower", "dreamflower",
+                "A brightly-coloured flower has been mashed up and left here.",
+                "You find a brightly-coloured dreamflower, and mash it into a dry paste.\n\r"
+        },
+
+        {
+                "flickersprout", SECT_FIELD, 15, "fireshield", "hex", "energy drain",
+                 100, 100, 10, "flickersprout shoots sprout flickering", "flickersprout",
+                "A flickering, red pile of sprout shoots lies here.",
+                "You pull a bunch of flickering red shoots from a patch of sprouts.\n\r"
+        },
+
+        {
+                "madglobe", SECT_SWAMP, 14, "globe of invulnerability", "prismatic spray", "teleport",
+                 100, 100, 5, "madglobe globes iridescent", "madglobe",
+                "Small, iridescent globes have been piled up here.",
+                "You pick up a clutch of small, iridescent globes lying in the swamp.\n\r"
+        },
+
+        {
+                "motherlode", SECT_MOUNTAIN, 11, "complete heal", "paralysis", "curse",
+                 100, 100, 3, "motherlode pile white powder", "motherlode",
+                "A glowing white pile of powder lies here.",
+                "You cut paddle-shaped leaves from a red-berried plant and process them into white powder.\n\r"
+        },
+
+        {
+                "lumenweed resin", SECT_UNDERWATER_GROUND, 12, "haste", "sanctuary", "confusion",
+                 100, 100, 5, "sticky clumps lumenweed resin", "lumenweed resin",
+                "Sticky clumps of bioluminescent resin are here, faintly glowing.",
+                "You scrape sticky lumenweed resin off a rock.\n\r"
+        },
+
+        {
+                "dune lotus", SECT_DESERT, 10, "regenerate", "paralysis", "nausea",
+                 100, 100, 3, "golden petals dune lotus", "dune lotus",
+                "A handful of golden petals from the rare dune lotus lie here, shimmering in the heat.",
+                "You carefully pluck golden petals from a dune lotus and crush them into a fine, fragrant powder.\n\r"
+        }
+
+
+};
+
 const struct HERB herb_table [ MAX_HERBS ] =
 {
         /*
@@ -310,6 +463,57 @@ const struct HERB herb_table [ MAX_HERBS ] =
         }
 };
 
+const struct PIPE pipe_table [ MAX_PIPES ] =
+{
+        /*
+         * Pipe table legend:
+         * name, sect_type, current_benefit, max_benefit, thirst_cost, speed (waitstate),
+         * min skill to create, min level to create, chance of finding, keywords,
+         * short_desc, long_descr, action string (reported if pipe created after carving)
+         */
+
+        {
+                "wraithwood", SECT_SWAMP, 170, 170, 95, 12,
+                 80, 70, 45, "wraithwood pipe translucent peculiar", "a <108>wraithwood<0> pipe",
+                "A peculiar pipe made of translucent wood lies here.",
+                "You find a branch of <108>wraithwood<0> and carve an elegant pipe from it.\n\r"
+        },
+
+        {
+                "starforged antler", SECT_FIELD, 185, 185, 80, 9,
+                 90, 80, 35, "starforged antler shimmering", "a starforged antler",
+                "A shimmering pipe carved from a deer's antler lies here.",
+                "You pick up an abandoned deer's antler and carve a shimmering pipe from it.\n\r"
+        },
+
+        {
+                "sylvan hookah", SECT_FOREST, 200, 200, 65, 7,
+                 95, 90, 25, "hookah sylvan", "a sylvan hookah",
+                "A hookah pipe of high-quality sylvan manufacture has been abandoned here.",
+                "You fashion a high-quality sylvan-style hookah from the materials at hand.\n\r"
+        },
+
+        {
+                "Odinsbane", SECT_HILLS, 215, 215, 50, 5,
+                 99, 95, 15, "odinsbane pipe statuette", "Odinsbane",
+                "A hollow statuette of the god Odin has been left here.",
+                "You carve a pipe in the shape of Odin from a nice piece of hardwood.\n\r"
+        },
+
+        {
+                "Shadowvine", SECT_MOUNTAIN, 230, 230, 30, 4,
+                 100, 100, 10, "shadowvine", "Shadowvine",
+                "A magical pipe carved from shadowvine pulsates here.",
+                "With great skill and care, you locate a rare shadowvine and fashion a pipe from it.\n\r"
+        },
+
+        {
+                "Coralwhisper", SECT_UNDERWATER_GROUND, 230, 230, 30, 4,
+                100, 85, 5, "coralwhisper", "Coralwhisper",
+                "A beautifully crafted pipe made from ancient coral rests here, glowing faintly.",
+                "With steady hands, you gather ancient coral from the depths and fashion it into a delicate pipe.\n\r"
+        }
+};
 
 /*
  * Blueprint structure : name, description, blueprint_ref, blueprint_ego, blueprint_damage,
@@ -2166,7 +2370,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_natures_fury,                            0 },
 
         { &gsn_group_advcombat,                         0 },
-        { &gsn_riposte,                                0 },
+        { &gsn_riposte,                                 0 },
         { &gsn_whirlwind,                               0 },
         { &gsn_decapitate,                              0 },
         { &gsn_focus,                                   0 },
@@ -2524,17 +2728,17 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
 
         { &gsn_group_armoursmith,                       0 },
         { &gsn_smelt,                                   0 },
-        { &gsn_strengthen,		                0 },
+        { &gsn_strengthen,		                        0 },
         { &gsn_uncommon_set,	                        0 },
-        { &gsn_rare_set,		                0 },
+        { &gsn_rare_set,		                        0 },
         { &gsn_steel_cache,                             0 },
 
-        { &gsn_group_weaponsmith,	                0 },
-        { &gsn_counterbalance,		                0 },
-        { &gsn_weaponchain,		                0 },
-        { &gsn_hurl,		                        0 },
-        { &gsn_imbue,			                0 },
-        { &gsn_shieldchain,		                0 },
+        { &gsn_group_weaponsmith,	                    0 },
+        { &gsn_counterbalance,		                    0 },
+        { &gsn_weaponchain,		                        0 },
+        { &gsn_hurl,		                            0 },
+        { &gsn_imbue,			                        0 },
+        { &gsn_shieldchain,		                        0 },
         { &gsn_steel_broadsword,                        0 },
         { &gsn_titanium_rapier,                         0 },
         { &gsn_adamantite_katana,                       0 },
@@ -2542,40 +2746,40 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_starmetal_dual_blade,	                0 },
         { &gsn_reforge,                                 0 },
 
-        { &gsn_group_turret_tech,	                0 },
-        { &gsn_trigger,			                0 },
-        { &gsn_dart,			                0 },
+        { &gsn_group_turret_tech,	                    0 },
+        { &gsn_trigger,			                        0 },
+        { &gsn_dart,			                        0 },
         { &gsn_arrow,                                   0 },
         { &gsn_turret,                                  0 },
-        { &gsn_launcher,	                        0 },
-        { &gsn_reflector_module,		        0 },
-        { &gsn_shield_module,		                0 },
-        { &gsn_arrestor_module,		                0 },
-        { &gsn_driver_module,			        0 },
-        { &gsn_emergency,		                0 },
+        { &gsn_launcher,	                            0 },
+        { &gsn_reflector_module,		                0 },
+        { &gsn_shield_module,		                    0 },
+        { &gsn_arrestor_module,		                    0 },
+        { &gsn_driver_module,			                0 },
+        { &gsn_emergency,		                        0 },
 
         { &gsn_group_mech_tech,                         0 },
-        { &gsn_deploy,			                0 },
-        { &gsn_forager,        		                0 },
-        { &gsn_spyglass,       		                0 },
-        { &gsn_base,          		                0 },
-        { &gsn_miner,          		                0 },
+        { &gsn_deploy,			                        0 },
+        { &gsn_forager,        		                    0 },
+        { &gsn_spyglass,       		                    0 },
+        { &gsn_base,          		                    0 },
+        { &gsn_miner,          		                    0 },
 
-        { &gsn_group_runic_arts,          		        0 },
-        { &gsn_pyro_rune,            		        0 },
-        { &gsn_cryo_rune,           		        0 },
-        { &gsn_bolt_rune,                              0 },
-        { &gsn_stab_rune,                   	        0 },
-        { &gsn_rend_rune,           		        0 },
-        { &gsn_mend_rune,                              0 },
+        { &gsn_group_runic_arts,          	            0 },
+        { &gsn_pyro_rune,            		            0 },
+        { &gsn_cryo_rune,           		            0 },
+        { &gsn_bolt_rune,                               0 },
+        { &gsn_stab_rune,                               0 },
+        { &gsn_rend_rune,           		            0 },
+        { &gsn_mend_rune,                               0 },
         { &gsn_cure_rune,                               0 },
         { &gsn_ward_rune,                               0 },
 
-        { &gsn_group_inscription, 	       	        0 },
-        { &gsn_inscribe,                  	        0 },
+        { &gsn_group_inscription, 	       	            0 },
+        { &gsn_inscribe,                  	            0 },
         { &gsn_protection,                   	        0 },
         { &gsn_adamantite_runic_blade,                  0 },
-        { &gsn_electrum_runic_blade,              	0 },
+        { &gsn_electrum_runic_blade,                    0 },
         { &gsn_starmetal_runic_blade,                   0 },
 
 
@@ -2595,7 +2799,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_fiery_strike,                            0 },
         { &gsn_lightning_lunge,                         0 },
 
-        {&gsn_group_last,                              0 }
+        {&gsn_group_last,                               0 }
 };
 
 
@@ -6586,6 +6790,20 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 0, 24,
                 "<173>brutal gut wound<0>", "!Torso Trauma!"
+        },
+
+        {
+                "harvest", &gsn_harvest,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
+                spell_null, 0, 0,
+                "harvest", "!Harvest!"
+        },
+
+        {
+                "carve", &gsn_carve,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
+                spell_null, 0, 0,
+                "carve", "!Carve!"
         },
 
         /*

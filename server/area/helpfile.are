@@ -2497,7 +2497,8 @@ Additionally, smokeable substances commonly have both beneficial and negative
 effects; get them identified if you're uncertain about their effects.
 
 Smokeable substances and their associated paraphernalia can be purchased in
-most of the Domain's cities.
+most of the Domain's cities, HARVESTed or WHITTLEd by DRUIDs and RANGERs, or
+acquired via combat and exploration.
 ~
 
 0 PIPE PIPES PIPECLEANERS PIPECLEANER CLEANERS~
@@ -6894,6 +6895,34 @@ Rangers may search woodland areas for medicinal herbs, looking for
 specific plants or taking anything available.  Rangers have a better
 chance of finding a particular herb that they are looking for.
 ~
+
+0 HARVEST~
+Syntax: harvest <<first word of name of smokeable substance>
+Syntax: harvest
+
+Druids and Rangers may seek out smokeable substances in the domain, either
+looking for specific items or taking anything available. While both Druids
+and Rangers learn this discipline, Druids' magical abilities do give them some
+advantages. A player needs a high level of raw skill and to be sensitive to the
+types of terrain different substances are found in to HARVEST successfully.
+~
+
+0 CARVE~
+Syntax: carve <<pipe name> <<pipe level>
+Syntax: carve
+
+Druids and Rangers may use the CARVE skill to make pipes to enjoy smokeable
+substances.  Different pipe materials may be found in different types of
+terrain, and the carver has the option of simply trying to make the best pipe
+they can out of available materials, or of attempting to make a specific pipe
+of specific quality (its level must be equal to or less than their own level).
+
+A carver must wield a bladed weapon while attempting to CARVE.
+
+While both Druids and Rangers learn this discipline, Druids' magical abilities
+give them an advantage.
+~
+
 
 0 DOWSE~
 Syntax: dowse
