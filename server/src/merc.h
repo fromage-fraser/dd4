@@ -372,7 +372,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   603     /* 602 +1 for carve 4/10/24 */
+#define MAX_SKILL                   604     /* 603 +1 for release 6/10/24 */
 #define MAX_PRE_REQ                 1400    /* -1 no meditate for shifters 7/4/24 */
 #define MAX_SPELL_GROUP             452     /* +1 reforge Brutus 1/1/23 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
@@ -3929,6 +3929,7 @@ extern int gsn_tail_trauma;
 extern int gsn_torso_trauma;
 extern int gsn_harvest;
 extern int gsn_carve;
+extern int gsn_release;
 
 /*
  *  Deity gsns
@@ -4761,6 +4762,7 @@ DECLARE_SPELL_FUN( spell_confusion              );
 DECLARE_SPELL_FUN( spell_freedom                );
 DECLARE_SPELL_FUN( spell_fleshrot               );
 DECLARE_SPELL_FUN( spell_regenerate             );
+DECLARE_SPELL_FUN( spell_release                );
 
 
 #define MOB_VNUM_SKELETON  3404

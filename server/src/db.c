@@ -679,6 +679,7 @@ int     gsn_tail_trauma;
 int     gsn_torso_trauma;
 int     gsn_harvest;
 int     gsn_carve;
+int     gsn_release;
 
 
 /*

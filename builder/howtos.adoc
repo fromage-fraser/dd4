@@ -45,6 +45,7 @@ only ones that might be generally useful to people working with the codebase. +
 * <<new-skill-to-class>>?
 * <<calculate-trig-values>>?
 * <<target-body-parts>>?
+* <<check-if-switched>>?
 
 {nbsp} +
 {nbsp} +
@@ -1336,3 +1337,20 @@ mean the body part is assumed to be undisarmable.
 `5` - heart +
 `6` - tail +
 `7` - torso/central mass +
+
+== Check if an NPC is possessed/switched-into [[check-if-switched]]
+
+Switching into or possessing an NPC changes their `ch->desc` to `NULL`, therefore +
+the easiest way to check if an NPC trying to do something is switched into or +
+possessed before executing code is:
+
+[source, "c"]
+if (ch->desc != NULL)
+{
+    Your code...
+}
+
+These checks have been added to the `mob_commands.c` imm-like commands, (`mpgoto` +
+etc) but may need to be added elsewhere to prevent players possessing mobs from +
+getting some access to skills/spells etc. +
+

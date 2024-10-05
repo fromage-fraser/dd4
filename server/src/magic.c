@@ -8386,8 +8386,6 @@ void spell_possession( int sn, int level, CHAR_DATA *ch, void *vo  )
 {
         CHAR_DATA  *victim = (CHAR_DATA *) vo;
 
-        return;
-
         if ( !ch->desc )
                 return;
 
@@ -8403,31 +8401,23 @@ void spell_possession( int sn, int level, CHAR_DATA *ch, void *vo  )
                 return;
         }
 
-
-        if ( !IS_AFFECTED( victim, AFF_CHARM ) || victim->master != ch )
-        {
-                send_to_char( "You must charm your victim first!!\n\r", ch );
-                return;
-        }
-
         if ( victim == ch )
         {
-                send_to_char( "Ok.\n\r", ch );
+                send_to_char( "I mean... okay?\n\r", ch );
                 return;
         }
 
-        /*
-         * Pointed out by Da Pub (What Mud)
-         */
-        if ( !IS_NPC( victim ) || ( ch->level - victim->level < 5 ) )
+        if ( !IS_NPC( victim )
+          || ( ( ch->level - victim->level ) < -5 )
+          || ( saves_spell( level, victim ) ) )
         {
-                send_to_char( "Their will is too strong!\n\r", ch );
+                send_to_char( "Your possession is resisted--their will is too strong!\n\r", ch );
                 return;
         }
 
         if ( victim->desc )
         {
-                send_to_char( "Character is already possessed.\n\r", ch );
+                send_to_char( "They are already possessed.\n\r", ch );
                 return;
         }
 
@@ -8437,8 +8427,32 @@ void spell_possession( int sn, int level, CHAR_DATA *ch, void *vo  )
         victim->desc          = ch->desc;
         ch->desc              = NULL;
 
-        send_to_char( "You concentrate on your victim's mind--suddenly you see what they see!\n\r", victim );
+        send_to_char( "You possess your victim's mind--they are under your complete control!\n\r", victim );
         return;
+}
+
+void spell_release ( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+        if ( !ch->desc )
+                return;
+
+        if ( !ch->desc->original )
+        {
+                send_to_char( "You haven't possessed anyone.\n\r", ch );
+                return;
+        }
+
+        send_to_char( "You return to your body.\n\r", ch );
+
+        ch->desc->original->pcdata->switched = FALSE;
+        ch->desc->character                  = ch->desc->original;
+        ch->desc->original                   = NULL;
+        ch->desc->character->desc            = ch->desc;
+        ch->desc                             = NULL;
+
+
+        return;
+
 }
 
 
