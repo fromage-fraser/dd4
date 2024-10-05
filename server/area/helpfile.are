@@ -455,8 +455,10 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 
 0 CHANGES~
 {W October 2024{X
--Skill "target" and spell "regenerate" added, to allow for targeting and healing
+-Skills "target" and spell "regenerate" added, to allow for targeting and healing
  of body regions on players or mobiles.
+-Skills "harvest" and "carve" added for Druids and Rangers
+-Skill "bitsum" added for IMMs
 
 {W September 2024{X
 -New area: Omu Central is in, with many supporting code and text changes.
@@ -3182,6 +3184,15 @@ Syntax: wizify <<character>
 
 WIZIFY toggles the wizbit flag of a character.  This enables the wizified
 character to enter the game despite a WIZLOCK.
+~
+
+103 BITSUM~
+Syntax: bitsum <<number> <<number> ...
+
+Given a list of numbers between 0 and 63, bitsum will convert them to powers of
+2 and sum them.  This is useful when you're using, say, MSET or OSET to apply a
+list of flags to something at once, or other "apply flags" type arguments that
+take the sum of bit values as their argument.
 ~
 
 102 ECHO RECHO~
