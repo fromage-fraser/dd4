@@ -3952,6 +3952,8 @@ void do_carve (CHAR_DATA *ch, char *arg)
         pipe->value[2]          = scale_pipe( pipe_table[ pipe_type ].min_level, load_level, pipe_table[ pipe_type ].thirst_cost, TRUE );
         pipe->value[3]          = scale_pipe( pipe_table[ pipe_type ].min_level, load_level, pipe_table[ pipe_type ].speed, TRUE );
 
+        set_obj_owner(pipe, ch->name);
+
         if( ch->carry_number >= can_carry_n( ch ) )
                 obj_to_room( pipe, ch->in_room );
         else obj_to_char( pipe, ch );
