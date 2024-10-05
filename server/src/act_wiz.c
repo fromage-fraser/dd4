@@ -6677,4 +6677,37 @@ void do_guide( CHAR_DATA *ch, char *argument )
         save_char_obj( victim );
 }
 
+void do_bitsum(CHAR_DATA *ch, char *argument)
+{
+    char arg[MAX_INPUT_LENGTH];
+    int num;
+    unsigned long long bitvalue_sum = 0;
+
+    // Loop through each argument
+    while (*argument != '\0') {
+        argument = one_argument(argument, arg);
+
+        if (is_number(arg))
+        {
+            num = atoi(arg);
+
+            if (num >= 0 && num < 64)
+            {
+                bitvalue_sum += (1ULL << num);
+            }
+            else {
+                send_to_char("Numbers must be between 0 and 63.\n\r", ch);
+                return;
+            }
+        } else {
+            send_to_char("Invalid input. Please enter numbers only.\n\r", ch);
+            return;
+        }
+    }
+
+    char buf[MAX_STRING_LENGTH];
+    snprintf(buf, sizeof(buf), "Bitvalue sum: %llu\n\r", bitvalue_sum);
+    send_to_char(buf, ch);
+}
+
 /* EOF act_wiz.c */

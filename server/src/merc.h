@@ -4373,6 +4373,7 @@ DECLARE_DO_FUN( do_mppeace                      );
 DECLARE_DO_FUN( do_mset                         );
 DECLARE_DO_FUN( do_oclanitem                    );
 DECLARE_DO_FUN( do_mist_walk                    );
+DECLARE_DO_FUN( do_bitsum                       );
 DECLARE_DO_FUN( do_mstat                        );
 DECLARE_DO_FUN( do_mwhere                       );
 DECLARE_DO_FUN( do_murde                        );

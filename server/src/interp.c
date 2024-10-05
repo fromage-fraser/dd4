@@ -384,6 +384,7 @@ const struct cmd_type cmd_table [] =
         { "oclanitem",  do_oclanitem,   POS_DEAD,        0,  LOG_ALWAYS },
         { "allows",     do_allow,       POS_DEAD,    L_SEN,  LOG_ALWAYS },
         { "ban",        do_ban,         POS_DEAD,    L_SEN,  LOG_ALWAYS },
+        { "bitsum",     do_bitsum,      POS_DEAD,    L_IMM,  LOG_ALWAYS },
         { "deny",       do_deny,        POS_DEAD,    L_SEN,  LOG_ALWAYS },
         { "dirtalk",    do_dirtalk,     POS_DEAD,    L_BUI,  LOG_NORMAL },
         { "|",          do_dirtalk,     POS_DEAD,    L_BUI,  LOG_NORMAL },
