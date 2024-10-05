@@ -459,6 +459,8 @@ See 'HELP SUBCLASSES' for more information on subclasses.
  of body regions on players or mobiles.
 -Skills "harvest" and "carve" added for Druids and Rangers
 -Skill "bitsum" added for IMMs
+-Spell "possession" fixed and re-enabled. Spell "release" added (basically
+ player version of IMM's "return").
 
 {W September 2024{X
 -New area: Omu Central is in, with many supporting code and text changes.
@@ -2659,6 +2661,24 @@ which is of cumulative duration and intensity.  Can be cured in the same way
 that poison can ('cure poison' spell, 'cell adjustment,' etc).
 ~
 
+0 POSSESSION~
+Syntax: cast possession <<victim>
+
+This spell will allow you to POSSESS your victim (unless they are very
+strong-willed), taking full control of them.  To return to your own body, cast
+the RELEASE spell.
+
+Note: it is a very bad idea to learn this spell and NOT learn RELEASE at the
+same time.
+~
+
+0 RELEASE~
+Syntax: cast release
+
+This spell will allow you to return to your own body after POSSESSing another.
+
+Note: It is a very good idea to learn this spell at the same as learning POSSESS.
+~
 
 0 STARVE~
 Syntax: cast starve <<victim>
