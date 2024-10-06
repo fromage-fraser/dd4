@@ -93,11 +93,11 @@ void do_scan (CHAR_DATA *ch, char *argument)
                         if ((pexit = ch->in_room->exit[dir])
                             && pexit->to_room)
                         {
-                                if (IS_SET(pexit->exit_info, EX_SECRET))
+                                if (IS_SET(pexit->exit_info, EX_SECRET) && !is_affected(ch, gsn_clairvoyance))
                                         continue;
 
                                 /* Can't scan through walls, Clark Kent. --Owl 27/8/22 */
-                                if (IS_SET(pexit->exit_info, EX_WALL))
+                                if (IS_SET(pexit->exit_info, EX_WALL) && !is_affected(ch, gsn_clairvoyance))
                                         continue;
 
                                 scan(ch, dir);
@@ -183,6 +183,8 @@ void scan (CHAR_DATA *ch, int door)
                     case SUN_DARK:
                         if (IS_AFFECTED(ch, AFF_INFRARED))
                                 visibility = 4;
+                        if (is_affected(ch, gsn_clairvoyance))
+                                visibility = 6;
                         else
                                 visibility = 2;
                         break;
@@ -211,14 +213,14 @@ void scan (CHAR_DATA *ch, int door)
                    && pexit->to_room != NULL
                    && pexit->to_room != was_in_room)
                 {
-                        if (IS_SET( pexit->exit_info, EX_SECRET ))
+                        if (IS_SET( pexit->exit_info, EX_SECRET ) && !is_affected(ch, gsn_clairvoyance))
                                 break;
 
                         /* Can't scan through walls --Owl 27/8/22 */
-                        if (IS_SET( pexit->exit_info, EX_WALL ))
+                        if (IS_SET( pexit->exit_info, EX_WALL ) && !is_affected(ch, gsn_clairvoyance))
                                 break;
 
-                        if (IS_SET(pexit->exit_info, EX_CLOSED))
+                        if (IS_SET(pexit->exit_info, EX_CLOSED) && !is_affected(ch, gsn_clairvoyance))
                         {
                                 char door_name[80];
                                 one_argument(pexit->keyword, door_name);
@@ -239,7 +241,7 @@ void scan (CHAR_DATA *ch, int door)
                         list = ch->in_room->people;
                         for(rch = list; rch; rch = rch->next_in_room)
                         {
-                                if (can_see(ch, rch) && !IS_AFFECTED(rch, AFF_HIDE))
+                                if (can_see(ch, rch) && ( !IS_AFFECTED(rch, AFF_HIDE) || is_affected(ch, gsn_clairvoyance) ) )
                                 {
                                         found = TRUE;
 

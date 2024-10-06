@@ -1353,4 +1353,3 @@ if (ch->desc != NULL)
 These checks have been added to the `mob_commands.c` imm-like commands, (`mpgoto` +
 etc) but may need to be added elsewhere to prevent players possessing mobs from +
 getting some access to skills/spells etc. +
-
