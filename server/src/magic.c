@@ -4422,6 +4422,26 @@ void spell_infravision( int sn, int level, CHAR_DATA *ch, void *vo )
         return;
 }
 
+void spell_clairvoyance( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+        CHAR_DATA  *victim = (CHAR_DATA *) vo;
+        AFFECT_DATA af;
+
+        if ( is_affected(victim, gsn_clairvoyance ) )
+                return;
+
+        af.type      = gsn_clairvoyance;
+        af.duration  = 2 + ( level / 2);
+        af.location  = APPLY_NONE;
+        af.modifier  = 0;
+        af.bitvector = 0;
+        affect_to_char(victim, &af);
+
+        send_to_char( "<217>Your extrasensory awareness increases.<0>\n\r", victim );
+        act( "$n concentrates and briefly closes $n eyes.\n\r", ch, NULL, NULL, TO_ROOM );
+        return;
+}
+
 
 void spell_invis( int sn, int level, CHAR_DATA *ch, void *vo )
 {

@@ -1960,7 +1960,8 @@ paints, smokeables, and pills.
                     flood                   confusion
               psychometry                      nausea
                   freedom                    fleshrot
-               regenerate
+               regenerate                  possession
+                  release                clairvoyance
 
 If you have any questions about area writing, please contact any of the
 immortals on the DD4 Discord server at https://discord.gg/aGzmAWmXYb (preferred)

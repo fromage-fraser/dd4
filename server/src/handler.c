@@ -2941,7 +2941,7 @@ bool can_see (CHAR_DATA *ch, CHAR_DATA *victim)
             && (ch->sub_class == SUB_CLASS_VAMPIRE || ch->form == FORM_FLY))
                 return TRUE;
 
-        if (room_is_dark(ch->in_room) && !IS_AFFECTED(ch, AFF_INFRARED))
+        if (room_is_dark(ch->in_room) && !IS_AFFECTED(ch, AFF_INFRARED) && !is_affected(ch, gsn_clairvoyance))
                 return FALSE;
 
         if (victim->position == POS_DEAD)
@@ -2977,7 +2977,7 @@ bool can_see_obj( CHAR_DATA *ch, OBJ_DATA *obj )
         if (!IS_NPC(ch) && is_affected(ch, gsn_song_of_revelation))
                 return TRUE;
 
-        if ( room_is_dark( ch->in_room ) && !IS_AFFECTED( ch, AFF_INFRARED ) )
+        if ( room_is_dark( ch->in_room ) && !IS_AFFECTED( ch, AFF_INFRARED ) && !is_affected(ch, gsn_clairvoyance))
                 return FALSE;
 
         if ( IS_SET( obj->extra_flags, ITEM_INVIS )

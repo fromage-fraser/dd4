@@ -461,6 +461,7 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 -Skill "bitsum" added for IMMs
 -Spell "possession" fixed and re-enabled. Spell "release" added (basically
  player version of IMM's "return").
+-Spell "clairvoyance" added
 
 {W September 2024{X
 -New area: Omu Central is in, with many supporting code and text changes.
@@ -2652,13 +2653,20 @@ This spell reduces the strength of the victim, as well as reducing their
 regeneration rate.
 ~
 
-
 0 NAUSEA~
 Syntax: cast nausea <<victim>
 
 This spell has a random negative effect on its target's physical statistics,
 which is of cumulative duration and intensity.  Can be cured in the same way
 that poison can ('cure poison' spell, 'cell adjustment,' etc).
+~
+
+0 CLAIRVOYANCE~
+Syntax: cast clairvoyance
+
+This spell increases the caster's awareness to an extrasensory level, allowing
+him to see through walls and doors, and to still be aware of others even in
+total darkness.
 ~
 
 0 POSSESSION~
