@@ -4767,6 +4767,7 @@ DECLARE_SPELL_FUN( spell_release                );
 DECLARE_SPELL_FUN( spell_clairvoyance           );
 
 
+
 #define MOB_VNUM_SKELETON  3404
 #define MOB_VNUM_GHOUL     3404
 #define MOB_VNUM_GHOST     3404
