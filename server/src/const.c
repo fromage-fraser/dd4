@@ -6812,6 +6812,13 @@ const struct skill_type skill_table [MAX_SKILL] =
                 spell_release, 15, 1,
                 "", "!Release!"
         },
+  
+        {
+                "clairvoyance", &gsn_clairvoyance,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
+                spell_clairvoyance, 5, 1,
+                "", "<215>Your extrasensory awareness fades.<0>"
+        },
 
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
