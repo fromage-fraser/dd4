@@ -2168,7 +2168,7 @@ void do_meditate (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (!IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
         {
                 send_to_char("Your head throbs with the effort, you cannot meditate.\n\r", ch);
                 return;
