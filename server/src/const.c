@@ -6812,7 +6812,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 spell_release, 15, 1,
                 "", "!Release!"
         },
-  
+
         {
                 "clairvoyance", &gsn_clairvoyance,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
