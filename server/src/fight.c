@@ -263,7 +263,7 @@ void violence_update (void)
                                 victim->short_descr );
                         log_string(buf2);*/
 
-                        if (grmobfighting)
+                        if ( grmobfighting)
                         {
                                 /*It's a mob we're grouped with fighting, join in. */
                                 if( CAN_SPEAK(ch) )
@@ -427,7 +427,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 
                                 if (number_percent() < DOT_FREQ)
                                 {
-                                    damage(ch, victim, paf->modifier, paf->type, FALSE);
+                                    damage(ch, ch, paf->modifier, paf->type, FALSE);
                                 }
                         }
                 }
