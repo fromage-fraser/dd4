@@ -402,7 +402,7 @@ Enter thy Name: ~
 
 -1 MOTD~
 {x
-    [22 September 2024]
+    [18 December 2024]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -415,12 +415,11 @@ Enter thy Name: ~
     We're also active on a Discord server at {Yhttps://discord.gg/aGzmAWmXYb{x
     if you'd like to jump in and say hi!
 
+    {WMAJOR SKILLS/SPELLS UPDATE:{x 15 new level 70+ skills and spells added for
+    PCs. Check your class skills HELP to see what they are!
+
     {WNEW AREA:{x Omu Central is in, the second of 3 areas comprising Omu city.
     86 new mobs, 90 new objects, 244(!) new rooms, and a new Reaver quest.
-
-    {WNEW AREA:{x Omu Canals, the first area of the grung sector is complete!
-    20 new mobs, 27 new objects, 64 new rooms, and a new Reaver quest.
-
 
 
 To Enter the Dragons Domain press <<Return>.
@@ -454,78 +453,94 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 ~
 
 0 CHANGES~
-{W October 2024{X
--Skills "target" and spell "regenerate" added, to allow for targeting and healing
- of body regions on players or mobiles.
--Skills "harvest" and "carve" added for Druids and Rangers
--Skill "bitsum" added for IMMs
--Spell "possession" fixed and re-enabled. Spell "release" added (basically
- player version of IMM's "return").
--Spell "clairvoyance" added
+{W December 2024{x
+
+- 15 new level 70+ spells and skills now enabled for all classes. 4 more +
+  "bonus" system mechanic still to code.
+
+{W October 2024{x
+
+- Skills "target" and spell "regenerate" added, to allow for targeting and healing
+  of body regions on players or mobiles.
+- Skills "harvest" and "carve" added for Druids and Rangers
+- Skill "bitsum" added for IMMs
+- Spell "possession" fixed and re-enabled. Spell "release" added (basically
+  player version of IMM's "return").
+- Spell "clairvoyance" added
 
 {W September 2024{X
--New area: Omu Central is in, with many supporting code and text changes.
+
+- New area: Omu Central is in, with many supporting code and text changes.
 
 {W April 2024{x
--added DOT spell 'fleshrot'
--lock vnums added to all keys
--keys now "remember" the last thing they were used to lock or unlock
--affspell($*), insect($*), inrflag($*) added for mobprogs. isaffected($*) fixed
+
+- added DOT spell 'fleshrot'
+- lock vnums added to all keys
+- keys now "remember" the last thing they were used to lock or unlock
+- affspell($*), insect($*), inrflag($*) added for mobprogs. isaffected($*) fixed
 
 {W March 2024{x
--mob spells starve, parch, inebriate, glaciation, conflagration, flood, and
- confusion added
--Ota'ar Dar added to 'pattern'
--supporting code changes for new mob spells
--Nausea spell added (mostly for mobs)
--Gravity functions at a more sensible speed
--Psychometry spell added (post-60 roadmap)
--Waitstates slashed on all minor buff spells
--New area: Omu Canals, first area of new grung sector
--New trap type "snare" added
--shoot skill available to mobs with bows
--Mobprog triggers added to check char size and if an object is in the room
--areas.txt, mobprogram.txt, scribe.pl, and scribe.docx updated
--New area: Ota'ar Dar Prince's Canton - finishes the Ota'ar Dar area
--Smokeables are in, can be purchased at all major cities. Add commands 'smoke'
-and 'clean' and item types pipes, pipe cleaners, and smokeable substance.
--Locked doors now display in "Exits" differently
--ACT_OBJECT for mobs that you want to act more like objects (destructible
-bridges, walls, enchanted armour, etc). Other flags to support concept include
-ACT_NO_FIGHT and ITEM_REMAINS. Relevant affected skills and interactions updated.
--Specials spec_sahuagin_prince and spec_red_grung added
--ACT_INVULNERABLE and ROOM_TOXIC added
--Can read more full class names in WHO information
--Imm skill 'rfind' added to search for rooms by title substring
--enhanced crit, enhanced swiftness, and decay added and tested for post-60
- skills dev
+
+- mob spells starve, parch, inebriate, glaciation, conflagration, flood, and
+  confusion added
+- Ota'ar Dar added to 'pattern'
+- supporting code changes for new mob spells
+- Nausea spell added (mostly for mobs)
+- Gravity functions at a more sensible speed
+- Psychometry spell added (post-60 roadmap)
+- Waitstates slashed on all minor buff spells
+- New area: Omu Canals, first area of new grung sector
+- New trap type "snare" added
+- shoot skill available to mobs with bows
+- Mobprog triggers added to check char size and if an object is in the room
+- areas.txt, mobprogram.txt, scribe.pl, and scribe.docx updated
+- New area: Ota'ar Dar Prince's Canton - finishes the Ota'ar Dar area
+- Smokeables are in, can be purchased at all major cities. Add commands 'smoke'
+  and 'clean' and item types pipes, pipe cleaners, and smokeable substance.
+- Locked doors now display in "Exits" differently
+- ACT_OBJECT for mobs that you want to act more like objects (destructible
+  bridges, walls, enchanted armour, etc). Other flags to support concept include
+  ACT_NO_FIGHT and ITEM_REMAINS. Relevant affected skills and interactions
+  updated.
+- Specials spec_sahuagin_prince and spec_red_grung added
+- ACT_INVULNERABLE and ROOM_TOXIC added
+- Can read more full class names in WHO information
+- Imm skill 'rfind' added to search for rooms by title substring
+- enhanced crit, enhanced swiftness, and decay added and tested for post-60
+  skills dev
 
 {W December 2023{x
--New area in, Ota'ar Dar Residential Area - North, levels 50-55.
--do_empty command added, fountains can now contain any liquid and
- be poisoned.  ostat and area files updated to reflect changes.
--do_tfind added, to make finding teachers with particular skills
-and proficiency levels easier in-game.
+
+- New area in, Ota'ar Dar Residential Area - North, levels 50-55.
+- do_empty command added, fountains can now contain any liquid and
+  be poisoned.  ostat and area files updated to reflect changes.
+- do_tfind added, to make finding teachers with particular skills
+  and proficiency levels easier in-game.
 
 {W October 2023{x
--New area in, Ota'ar Dar Military Fortress, levels 45-50.
-6 new specials added for troops
+
+- New area in, Ota'ar Dar Military Fortress, levels 45-50.
+- 6 new specials added for troops
 
 {W March 2023{x
--New area in, Ota'ar Dar Arena/Jail, levels 40-45. New special
- spec_green_grung
+
+- New area in, Ota'ar Dar Arena/Jail, levels 40-45. New special
+  spec_green_grung
 
 {WFebruary 2023{x
--New area in, Ota'ar Dar Residential Area - South for levels
- 35-40. New special spec_sahuagin_baron added. GUI has a 0.0.X
- version update.
--Vaults added. Permanent storage for characters separate from
- inventory.
+
+- New area in, Ota'ar Dar Residential Area - South for levels
+  35-40. New special spec_sahuagin_baron added. GUI has a 0.0.X
+  version update.
+- Vaults added. Permanent storage for characters separate from
+  inventory.
 
 {WDecember 2022{x
--Mega patch in.  New stats, items, boss mobs and more.
+
+- Mega patch in.  New stats, items, boss mobs and more.
 
 {WAugust 2022{x
+
 - New 30-60 area 'Ota'ar Canals' is in and linked
 - STEAM BREATH added for mages and dragons
 - Dragon form now has SWALLOW
@@ -537,6 +552,7 @@ and proficiency levels easier in-game.
   respectively
 
 {WJuly 2022{x
+
 - Added 8-bit colour to MUD
 - Swim skill (hopefully) fixed and given to a number of classes
 - New race: Grung
@@ -545,6 +561,7 @@ and proficiency levels easier in-game.
 - Added new special 'spec_cast_electric'
 
 {WJune 2022{x
+
 - Added ACT_TINKER.  Mobs with it can repair items that have
   timers on them (sharpened/forged/poisoned weapons etc)
 - Shifter phoenix form has a beak and the 'swoop' ability
