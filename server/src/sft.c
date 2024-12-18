@@ -1853,6 +1853,7 @@ void do_morph_dragon (CHAR_DATA *ch, bool to_form)
                 {
                         send_to_char ("You are surrounded by a terrifying aura!\n\r", ch);
                         affect_strip (ch, gsn_dragon_aura);
+                        affect_strip (ch, gsn_dragon_shield);
 
                         af.type         = gsn_dragon_aura;
                         af.duration     = -1;
@@ -1874,6 +1875,13 @@ void do_morph_dragon (CHAR_DATA *ch, bool to_form)
                         af.bitvector    = AFF_BATTLE_AURA;
                         af.location     = APPLY_NONE;
                         affect_to_char (ch, &af);
+
+                        af.type         = gsn_dragon_shield;
+                        af.duration     = -1;
+                        af.modifier     = 0;
+                        af.bitvector    = 0;
+                        af.location     = APPLY_NONE;
+                        affect_to_char( ch, &af );
                 }
 
                 claws = create_object(get_obj_index(OBJ_DRAGON_CLAWS), ch->level, "common", CREATED_NO_RANDOMISER);
@@ -1938,6 +1946,7 @@ void do_morph_dragon (CHAR_DATA *ch, bool to_form)
                 affect_strip(ch, gsn_fly);
                 affect_strip(ch, gsn_levitation);
                 affect_strip(ch, gsn_dragon_aura);
+                affect_strip (ch, gsn_dragon_shield);
                 REMOVE_BIT(ch->affected_by, AFF_FLYING);
 
                 claws = get_obj_wear(ch, "sftclaws");

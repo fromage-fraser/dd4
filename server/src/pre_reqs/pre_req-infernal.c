@@ -47,3 +47,16 @@
 
 {&gsn_globe,                    &gsn_group_mentald,             100,    PRE_INFERNALIST},
 {&gsn_globe,                    &gsn_infernalist_base,          30,     PRE_INFERNALIST},
+
+/* **** POST-70 SKILLS **** */
+{&gsn_possession,               &gsn_steal_soul,                100,    PRE_INFERNALIST},
+{&gsn_possession,               &gsn_infernalist_base,          70,     PRE_INFERNALIST},
+
+{&gsn_release,                  &gsn_possession,                100,    PRE_INFERNALIST},
+{&gsn_release,                  &gsn_infernalist_base,          70,     PRE_INFERNALIST},
+
+{&gsn_resist_heat,              &gsn_hells_fire,                100,    PRE_INFERNALIST},
+{&gsn_resist_heat,              &gsn_infernalist_base,          80,     PRE_INFERNALIST},
+
+{&gsn_resist_lightning,         &gsn_resist_heat,               100,    PRE_INFERNALIST},
+{&gsn_resist_lightning,         &gsn_infernalist_base,          90,     PRE_INFERNALIST},

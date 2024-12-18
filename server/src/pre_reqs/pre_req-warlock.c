@@ -87,3 +87,17 @@
 
 {&gsn_slow,                     &gsn_group_inner,       100,    PRE_WARLOCK},
 {&gsn_slow,                     &gsn_warlock_base,      60,     PRE_WARLOCK},
+
+/* **** POST-70 SKILLS **** */
+{&gsn_enhanced_swiftness,       &gsn_dual,              100,    PRE_WARLOCK},
+{&gsn_enhanced_swiftness,       &gsn_warlock_base,      70,     PRE_WARLOCK},
+
+{&gsn_target,                   &gsn_group_advcombat,   100,    PRE_WARLOCK},
+{&gsn_target,                   &gsn_warlock_base,      70,     PRE_WARLOCK},
+
+{&gsn_confusion,                &gsn_transport,         100,    PRE_WARLOCK},
+{&gsn_confusion,                &gsn_warlock_base,      80,     PRE_WARLOCK},
+
+{&gsn_freedom,                  &gsn_confusion,         100,    PRE_WARLOCK},
+{&gsn_freedom,                  &gsn_warlock_base,      90,     PRE_WARLOCK},
+

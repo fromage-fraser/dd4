@@ -104,4 +104,14 @@
 
 {&gsn_ectoplasmic_form,         &gsn_group_body,        85,     PRE_MONK},
 
+/* **** POST-70 SKILLS **** */
+{&gsn_target,                   &gsn_kiai,              95,     PRE_MONK},
+{&gsn_target,                   &gsn_monk_base,         70,     PRE_MONK},
+
+{&gsn_enhanced_swiftness,       &gsn_target,            95,     PRE_MONK},
+{&gsn_enhanced_swiftness,       &gsn_monk_base,         70,     PRE_MONK},
+
+{&gsn_enhanced_critical,        &gsn_enhanced_swiftness,95,     PRE_MONK},
+{&gsn_enhanced_critical,        &gsn_monk_base,         80,     PRE_MONK},
+
 

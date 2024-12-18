@@ -5690,7 +5690,8 @@ learn these skills above level 30:
 
 synaptic blast          death field             globe of invulnerability
 ultrablast              disintegrate            fireshield
-third spell             awe
+third spell             awe                     resist heat
+decay                   psychometry             clairvoyance
 
 See 'HELP SWITCH' and 'HELP SINFERNALIST' for lists of witch and infernalist
 skills respectively.
@@ -5726,6 +5727,8 @@ dispel magic            mass heal               brew
 bless weapon            mass sanctuary          wrath of god
 complete healing        power heal              mass power heal
 fireshield              prayer                  globe of invulnerability
+resist lightning        freedom                 resist cold
+resist heat             regenerate
 
 See 'HELP STEMPLAR' and 'HELP SDRUID' for lists of templar and druid
 skills respectively.
@@ -5749,7 +5752,8 @@ also learn these skills above level 30:
 
 double backstab         dual                    detect magic
 second circle           detect invis            invis
-detect hidden           detect sneak
+detect hidden           detect sneak            enhanced critical
+target
 
 See 'HELP SBOUNTY HUNTER' and 'HELP SNINJA' for lists of bounty hunter and
 ninja skills respectively.
@@ -5775,7 +5779,9 @@ detect hidden           infravision             snare
 dual                    enhanced hit            classify
 advanced consider       faerie fire             accuracy
 fast healing            lore                    forge
-sharpen                 mount
+sharpen                 mount                   resist heat
+harvest                 target                  resist cold
+carve                   resist lightning
 
 See 'HELP SBARBARIAN' and 'HELP SBARD' for lists of barbarian and bard
 skills respectively.
@@ -5809,6 +5815,8 @@ scribe                  gas breath              recharge item
 fourth spell            firestorm               meteor storm
 third spell             haste                   prismatic spray
 mount                   steam breath            globe of invulnerability
+freedom                 resist acid             resist lightning
+resist heat             resist cold
 
 See 'HELP SWARLOCK' and 'HELP SNECROMANCER' for lists of warlock and
 necromancer skills respectively.
@@ -5842,7 +5850,8 @@ learn these skills above level 30:
 enhanced hit            lore                    advanced consider
 fourth attack           dual                    focus
 whirlwind               riposte                 forge
-sharpen
+sharpen                 enhanced critical       target
+enhanced swiftness
 
 See 'HELP SKNIGHT' and 'HELP STHUG' for lists of knight and thug skills
 respectively.
@@ -5863,7 +5872,8 @@ summon avatar           second attack           third attack
 fourth attack           enhanced hit            dual
 dodge {Y*{x                 parry                   wolf form
 howl                    wolfbite                ravage
-swim
+swim                    enhanced swiftness      target
+resist cold
 
 {Y*{x The skill 'dodge' is only available in normal form.
 ~
@@ -5873,7 +5883,7 @@ swim
 Vampire skills and spells{x
 
 {RNote:  Shifters who become Vampires lose the ability to morph into
-       any form.{x
+       any previous shifter form.{x
 
 fast healing            advanced consider       transfix
 disarm                  mist walk               suck
@@ -5882,7 +5892,8 @@ third attack            fourth attack           enhanced hit
 dual                    climb                   resist magic
 deter                   fear                    resist toxin
 hunt                    double lunge            aura of fear
-stalk
+stalk                   enhanced swiftness      target
+resist cold
 
 {Y*{x The skill 'feed' is automatically gained by vampires.
 ~
@@ -5894,7 +5905,7 @@ Thug skills{x
 double headbutt         intimidate              extortion
 fourth attack           gouge                   smash
 enhanced hit            steal                   peek
-poison weapon
+poison weapon           enhanced critical       target
 ~
 
 -1 SBARBARIAN~
@@ -5907,6 +5918,8 @@ forge                   whirlwind               push
 gouge                   headbutt                enhanced damage
 second headbutt         sharpen                 hunt
 bash door               fast healing            focus
+enhanced critical       target                  resist cold
+resist heat
 ~
 
 -1 'SBOUNTY HUNTER'~
@@ -5916,7 +5929,8 @@ Bounty hunter skills{x
 assassinate             hunt                    advanced consider
 dual                    berserk                 lore
 trap                    stun                    sharpen
-second circle           forge
+second circle           forge                   enhanced critical
+target
 ~
 
 -1 SBRAWLER~
@@ -5937,6 +5951,7 @@ choke                   fourth attack           snap neck
 whirlwind               battle aura             push
 pugilism                advanced consider       break wrist
 focus                   flying headbutt         enhanced hit
+enhanced critical       target                  enhanced swiftness
 ~
 
 -1 'SSHAPE SHIFTER' SSHIFTER SSHAPESHIFTER~
@@ -5969,6 +5984,7 @@ griffin form              resist heat {Y*{x         dragon form
                                                   tailwhip
                         fly form                  swallow
                                                   dragon aura {Y*{x
+                                                  dragon shield {Y*{x
 
 {Y*{x These skills are automatically gained at 100% by morphing to the
   appropriate form.
@@ -5989,7 +6005,8 @@ forge                   sharpen                 detect invis
 detect hidden           meditation              create food
 create water            dual                    disarm
 joust                   second spell            destrier
-flamestrike             cure poison
+flamestrike             cure poison             enhanced critical
+target
 ~
 
 -1 'SMARTIAL ARTIST'~
@@ -6002,7 +6019,8 @@ shuto                   combo4                  forge
 fast healing            yokogeri                mawasigeri
 enhanced hit            whirlwind               push
 acrobatics              hide                    sneak
-lore                    advanced consider
+lore                    advanced consider       enhanced swiftness
+target                  enhanced critical
 ~
 
 -1 SDRUID~
@@ -6014,7 +6032,8 @@ sunray                  third spell             scribe
 brew                    firestorm               meteor storm
 fireshield              entrapment              breathe water
 resist lightning        resist acid             resist cold
-resist heat             fury of nature
+resist heat             fury of nature          harvest
+carve                   fleshrot                freedom
 ~
 
 -1 SMONK~
@@ -6033,6 +6052,7 @@ ego whip                invis                   aura sight
 combat mind             psionic blast           biofeedback
 ectoplasmic form        inertial barrier        sense traps
 detonate                blink                   pattern
+enhanced swiftness      target                  enhanced critical
 ~
 
 -1 SNECROMANCER~
@@ -6045,7 +6065,8 @@ entrapment              animate dead            fireshield
 third spell             bladethirst             fear
 deter                   harm                    cure poison
 cure blindness          refresh                 remove curse
-second attack           stabilise
+second attack           stabilise               resist acid
+fleshrot                nausea                  resist cold
 ~
 
 -1 SNINJA~
@@ -6054,7 +6075,8 @@ Ninja skills{x
 
 dual                    poison                  cure poison
 poison weapon           trap                    fourth attack
-decapitate              enhanced hit
+decapitate              enhanced hit            target
+enhanced swiftness
 ~
 
 -1 SINFERNALIST~
@@ -6066,6 +6088,8 @@ steal soul              demon flames            infernal fury
 fireshield              detect good             summon demon
 dark ritual             second attack           third spell
 hellfire                chaos blast             detect evil
+possession              release                 resist heat
+resist lightning
 ~
 
 -1 STEMPLAR~
@@ -6076,7 +6100,8 @@ rescue                  parry                   third attack
 bash door               fast healing            grip
 recharge item           warcry                  enhanced hit
 dual                    frenzy                  prayer
-forge                   swim
+forge                   swim                    enhanced swiftness
+target                  resist lightning        resist cold
 ~
 
 -1 SWARLOCK~
@@ -6089,7 +6114,8 @@ fast healing            grip                    recharge item
 warcry                  enhanced hit            whirlwind
 dual                    forge                   dragon shield
 fireshield              transport item          swim
-slow
+slow                    enhanced swiftness      target
+confusion               freedom
 ~
 
 -1 SWITCH~
@@ -6101,6 +6127,9 @@ scribe                  recharge item           entrapment
 fireshield              third spell             animate dead
 steal soul              summon familiar         fear
 second attack           globe of invulnerabilty wither
+resist acid             resist cold             nausea
+resist lightning        confusion               decay
+psychometry             fleshrot
 ~
 
 0 'DEFENSE KNOWLEDGE'~

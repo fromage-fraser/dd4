@@ -92,8 +92,6 @@
 {&gsn_poison,                   &gsn_group_disease,     35,     PRE_CLERIC},
 {&gsn_curse,                    &gsn_group_disease,     50,     PRE_CLERIC},
 
-
-
  /* **** GROUP DIVINATION **** */
 
 {&gsn_group_divination,         &gsn_cleric_base,       30,     PRE_CLERIC},
@@ -201,3 +199,19 @@
 /* **** Riding **** */
 
 {&gsn_group_riding,             &gsn_cleric_base,       59,     PRE_CLERIC},
+
+/* **** POST-70 SKILLS **** */
+{&gsn_resist_lightning,         &gsn_call_lightning,   100,     PRE_CLERIC},
+{&gsn_resist_lightning,         &gsn_cleric_base,       70,     PRE_CLERIC},
+
+{&gsn_freedom,                  &gsn_remove_curse,     100,     PRE_CLERIC},
+{&gsn_freedom,                  &gsn_cleric_base,       70,     PRE_CLERIC},
+
+{&gsn_resist_cold,              &gsn_resist_lightning, 100,     PRE_CLERIC},
+{&gsn_resist_cold,              &gsn_cleric_base,       80,     PRE_CLERIC},
+
+{&gsn_regenerate,               &gsn_complete_healing, 100,     PRE_CLERIC},
+{&gsn_regenerate,               &gsn_cleric_base,       80,     PRE_CLERIC},
+
+{&gsn_resist_heat,              &gsn_resist_cold,      100,     PRE_CLERIC},
+{&gsn_resist_heat,              &gsn_cleric_base,       90,     PRE_CLERIC},

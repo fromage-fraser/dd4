@@ -1,7 +1,6 @@
 /* MAGE PRE REQS */
 
 /* **** STARTING SKILLS **** */
-
 {&gsn_detect_evil,              &gsn_mage_base,         30,     PRE_MAGE},
 {&gsn_detect_good,              &gsn_mage_base,         30,     PRE_MAGE},
 {&gsn_magic_missile,            &gsn_mage_base,         30,     PRE_MAGE},
@@ -11,7 +10,6 @@
 {&gsn_group_protection,         &gsn_mage_base,         30,     PRE_MAGE},
 
 /* **** GROUPS..... **** */
-
 {&gsn_group_evocation,          &gsn_magic_missile,     10,     PRE_MAGE},
 {&gsn_group_alteration,         &gsn_continual_light,   10,     PRE_MAGE},
 {&gsn_group_summoning,          &gsn_summon_familiar,   10,     PRE_MAGE},
@@ -41,11 +39,9 @@
 {&gsn_prismatic_spray,          &gsn_mage_base,         60,     PRE_MAGE},
 
 /* **** GROUP DIVINATION **** */
-
 {&gsn_group_divination,         &gsn_mage_base,         30,     PRE_MAGE},
 
 /* **** GROUP PROTECTION **** */
-
 {&gsn_armor,                    &gsn_group_protection,  30,     PRE_MAGE},
 
 {&gsn_shield,                   &gsn_armor,             60,     PRE_MAGE},
@@ -64,6 +60,17 @@
 {&gsn_mass_invis,               &gsn_group_illusion,    80,     PRE_MAGE},
 {&gsn_mass_invis,               &gsn_invis,             80,     PRE_MAGE},
 
+/* **** RESISTANCE **** */
+{&gsn_resist_acid,              &gsn_mage_base,         70,     PRE_MAGE},
+
+{&gsn_resist_lightning,         &gsn_resist_acid,       95,     PRE_MAGE},
+{&gsn_resist_lightning,         &gsn_mage_base,         80,     PRE_MAGE},
+
+{&gsn_resist_heat,              &gsn_resist_lightning, 100,     PRE_MAGE},
+{&gsn_resist_heat,              &gsn_mage_base,         90,     PRE_MAGE},
+
+{&gsn_resist_cold,              &gsn_resist_heat,      100,     PRE_MAGE},
+{&gsn_resist_cold,              &gsn_mage_base,         90,     PRE_MAGE},
 
 /* **** SUMMONING **** */
 {&gsn_summon,                   &gsn_summon_familiar,   50,     PRE_MAGE},
@@ -95,8 +102,10 @@
 {&gsn_dispel_magic,             &gsn_group_alteration,  80,     PRE_MAGE},
 {&gsn_dispel_magic,             &gsn_mage_base,         30,     PRE_MAGE},
 
-/* **** MANA CONTROL **** */
+{&gsn_freedom,                  &gsn_group_alteration,  100,     PRE_MAGE},
+{&gsn_freedom,                  &gsn_mage_base,         70,     PRE_MAGE},
 
+/* **** MANA CONTROL **** */
 {&gsn_blink,                    &gsn_mage_base,         30,     PRE_MAGE},
 
 {&gsn_third_spell,              &gsn_group_mana,        95,     PRE_MAGE},
@@ -108,7 +117,6 @@
 {&gsn_fourth_spell,             &gsn_mage_base,         60,     PRE_MAGE},
 
 /* **** BREATH SPELLS **** */
-
 {&gsn_group_breath,             &gsn_mage_base,         60,     PRE_MAGE},
 
 {&gsn_frost_breath,             &gsn_group_breath,      30,     PRE_MAGE},
@@ -119,7 +127,6 @@
 {&gsn_gas_breath,               &gsn_group_breath,      95,     PRE_MAGE},
 
 /* **** MAJOR PROTECTIVE **** */
-
 {&gsn_group_majorp,             &gsn_mage_base,         60,     PRE_MAGE},
 {&gsn_group_majorp,             &gsn_group_protection,  85,     PRE_MAGE},
 
@@ -135,7 +142,6 @@
 {&gsn_globe,                    &gsn_mage_base,         60,     PRE_MAGE},
 
 /* **** MANA CRAFT **** */
-
 {&gsn_group_craft,              &gsn_group_mana,        90,     PRE_MAGE},
 {&gsn_group_craft,              &gsn_mage_base,         60,     PRE_MAGE},
 
@@ -146,7 +152,6 @@
 {&gsn_recharge_item,            &gsn_mage_base,         60,     PRE_MAGE},
 
 /* **** DESTRUCTION **** */
-
 {&gsn_group_destruction,        &gsn_group_evocation,   95,     PRE_MAGE},
 {&gsn_group_destruction,        &gsn_mage_base,         60,     PRE_MAGE},
 
@@ -159,5 +164,4 @@
 {&gsn_meteor_storm,             &gsn_mage_base,         60,     PRE_MAGE},
 
 /* **** RIDING **** */
-
 {&gsn_group_riding,             &gsn_mage_base,         59,     PRE_MAGE},

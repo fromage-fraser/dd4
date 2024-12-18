@@ -968,7 +968,7 @@ to the floor, reacting viciously with the marble floor. The dragon speaks.
 ~
 2|64|16384 8|32|128|524288 -1000 S
 107 0 0 0d0+0 0d0+0
-128 0
+640 0
 8 8 1
 >greet_prog 100~
 if ispc($n)
@@ -1921,7 +1921,7 @@ A large chunk of dirt lies on the ground.~
 #14582
 water key~
 the water key~
-(Shimmering) A drop of water forms before your eyes.~
+<37>(Shimmering)<0> Water forms into the shape of a key before your eyes.~
 ~
 18 0 1|16384
 14706~ 0~ 0~ 0~
@@ -5793,11 +5793,11 @@ D3
 S
 #14682
 The Water Key~
-Zyklor has managed to put a large amount of water into this room. It stays here
-by magic, staying within the confines of this room by a magic spell of
-confinement. To the east you can see dirt.
+This room has been filled to the ceiling with sea water. It has been magically
+bound within the confines of the room by dark sorcery. To the east you can see
+dirt.
 ~
-0 8|1024 7
+0 8|1024 12
 D1
 ~
 ~
@@ -5810,7 +5810,7 @@ molten lava. Small flames lick at your feet as you feel the hair on your head
 start to singe. You'd better grab what you came for and leave quickly. To the
 east you can hear a howling wind. To the west is the entrance-way.
 ~
-0 8|1024 0
+0 8|1024|262144 0
 D1
 ~
 ~

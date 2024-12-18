@@ -427,7 +427,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 
                                 if (number_percent() < DOT_FREQ)
                                 {
-                                    damage(ch, ch, paf->modifier, paf->type, FALSE);
+                                    damage(victim, victim, paf->modifier, paf->type, FALSE);
                                 }
                         }
                 }

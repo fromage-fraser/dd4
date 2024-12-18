@@ -48,4 +48,10 @@
 {&gsn_dual,                     &gsn_second_attack,     90,     PRE_BOUNTY},
 {&gsn_dual,                     &gsn_bounty_base,       30,     PRE_BOUNTY},
 
+/* **** POST-70 SKILLS **** */
 
+{&gsn_target,                   &gsn_assassinate,      100,     PRE_BOUNTY},
+{&gsn_target,                   &gsn_bounty_base,       70,     PRE_BOUNTY},
+
+{&gsn_enhanced_critical,        &gsn_stun,              100,     PRE_BOUNTY},
+{&gsn_enhanced_critical,        &gsn_bounty_base,        70,     PRE_BOUNTY},

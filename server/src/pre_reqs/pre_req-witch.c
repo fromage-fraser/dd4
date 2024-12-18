@@ -63,3 +63,27 @@
 {&gsn_wither,                   &gsn_group_death,       90,     PRE_WITCH},
 {&gsn_wither,                   &gsn_witch_base,        30,     PRE_WITCH},
 
+/* **** POST-70 SKILLS **** */
+{&gsn_resist_acid,              &gsn_globe,             100,    PRE_WITCH},
+{&gsn_resist_acid,              &gsn_witch_base,         70,    PRE_WITCH},
+
+{&gsn_resist_cold,              &gsn_resist_acid,       100,    PRE_WITCH},
+{&gsn_resist_cold,              &gsn_witch_base,         70,    PRE_WITCH},
+
+{&gsn_nausea,                   &gsn_fear,              100,    PRE_WITCH},
+{&gsn_nausea,                   &gsn_witch_base,         70,    PRE_WITCH},
+
+{&gsn_resist_lightning,         &gsn_resist_cold,       100,    PRE_WITCH},
+{&gsn_resist_lightning,         &gsn_witch_base,         80,    PRE_WITCH},
+
+{&gsn_confusion,                &gsn_nausea,            100,    PRE_WITCH},
+{&gsn_confusion,                &gsn_witch_base,         80,    PRE_WITCH},
+
+{&gsn_decay,                    &gsn_wither,            100,    PRE_WITCH},
+{&gsn_decay,                    &gsn_witch_base,         80,    PRE_WITCH},
+
+{&gsn_psychometry,              &gsn_scribe,            100,    PRE_WITCH},
+{&gsn_psychometry,              &gsn_witch_base,         90,    PRE_WITCH},
+
+{&gsn_fleshrot,                 &gsn_decay,             100,    PRE_WITCH},
+{&gsn_fleshrot,                 &gsn_witch_base,         90,    PRE_WITCH},

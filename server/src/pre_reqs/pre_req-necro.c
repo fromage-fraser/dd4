@@ -67,3 +67,17 @@
 
 {&gsn_fireshield,               &gsn_group_protection,  90,     PRE_NECRO},
 {&gsn_fireshield,               &gsn_necro_base,        30,     PRE_NECRO},
+
+
+/* **** POST-70 SKILLS **** */
+{&gsn_resist_acid,              &gsn_stabilise,        100,     PRE_NECRO},
+{&gsn_resist_acid,              &gsn_necro_base,        70,     PRE_NECRO},
+
+{&gsn_fleshrot,                 &gsn_group_disease,    100,     PRE_NECRO},
+{&gsn_fleshrot,                 &gsn_necro_base,        70,     PRE_NECRO},
+
+{&gsn_nausea,                   &gsn_group_disease,    100,     PRE_NECRO},
+{&gsn_nausea,                   &gsn_necro_base,        70,     PRE_NECRO},
+
+{&gsn_resist_cold,              &gsn_resist_acid,      100,     PRE_NECRO},
+{&gsn_resist_cold,              &gsn_necro_base,        80,     PRE_NECRO},

@@ -104,3 +104,14 @@
 
 {&gsn_fast_healing,             &gsn_group_inner,       85,     PRE_BRAWLER},
 {&gsn_fast_healing,             &gsn_brawler_base,      30,     PRE_BRAWLER},
+
+/* **** POST-70 SKILLS **** */
+{&gsn_target,                   &gsn_focus,             95,     PRE_BRAWLER},
+{&gsn_target,                   &gsn_brawler_base,      70,     PRE_BRAWLER},
+
+{&gsn_enhanced_critical,        &gsn_enhanced_damage,   95,     PRE_BRAWLER},
+{&gsn_enhanced_critical,        &gsn_brawler_base,      70,     PRE_BRAWLER},
+
+{&gsn_enhanced_swiftness,       &gsn_fourth_attack,     95,     PRE_BRAWLER},
+{&gsn_enhanced_swiftness,       &gsn_brawler_base,      80,     PRE_BRAWLER},
+

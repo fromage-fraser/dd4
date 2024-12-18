@@ -156,3 +156,16 @@ most of them ? */
 {&gsn_third_spell,              &gsn_second_spell,         100,    PRE_PSIONIC},
 {&gsn_third_spell,              &gsn_psionic_base,         60,     PRE_PSIONIC},
 
+/* **** POST-70 SKILLS **** */
+{&gsn_resist_heat,             &gsn_energy_containment,   100,     PRE_PSIONIC},
+{&gsn_resist_heat,             &gsn_psionic_base,          70,     PRE_PSIONIC},
+
+{&gsn_decay,                   &gsn_disintegrate,         100,     PRE_PSIONIC},
+{&gsn_decay,                   &gsn_psionic_base,          70,     PRE_PSIONIC},
+
+{&gsn_psychometry,             &gsn_heighten,             100,     PRE_PSIONIC},
+{&gsn_psychometry,             &gsn_psionic_base,          80,     PRE_PSIONIC},
+
+{&gsn_clairvoyance,            &gsn_combat_mind,          100,     PRE_PSIONIC},
+{&gsn_clairvoyance,            &gsn_psionic_base,          90,     PRE_PSIONIC},
+

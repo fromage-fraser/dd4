@@ -36,36 +36,47 @@
 
 { &gsn_rage,                    &gsn_group_lycanthropy, 80,     PRE_WEREWOLF},
 
-{&gsn_group_armed,              &gsn_werewolf_base,     30,     PRE_WEREWOLF},
-{&gsn_second_attack,            &gsn_group_armed,       50,     PRE_WEREWOLF},
-{&gsn_enhanced_hit,             &gsn_group_armed,       80,     PRE_WEREWOLF},
-{&gsn_enhanced_hit,             &gsn_werewolf_base,     30,     PRE_WEREWOLF},
+{ &gsn_group_armed,             &gsn_werewolf_base,     30,     PRE_WEREWOLF},
+{ &gsn_second_attack,           &gsn_group_armed,       50,     PRE_WEREWOLF},
+{ &gsn_enhanced_hit,            &gsn_group_armed,       80,     PRE_WEREWOLF},
+{ &gsn_enhanced_hit,            &gsn_werewolf_base,     30,     PRE_WEREWOLF},
 
-{&gsn_third_attack,             &gsn_group_armed,       70,     PRE_WEREWOLF},
-{&gsn_third_attack,             &gsn_second_attack,     70,     PRE_WEREWOLF},
-{&gsn_third_attack,             &gsn_werewolf_base,     30,     PRE_WEREWOLF},
+{ &gsn_third_attack,            &gsn_group_armed,       70,     PRE_WEREWOLF},
+{ &gsn_third_attack,            &gsn_second_attack,     70,     PRE_WEREWOLF},
+{ &gsn_third_attack,            &gsn_werewolf_base,     30,     PRE_WEREWOLF},
 
-{&gsn_fourth_attack,            &gsn_group_armed,       90,     PRE_WEREWOLF},
-{&gsn_fourth_attack,            &gsn_second_attack,     85,     PRE_WEREWOLF},
-{&gsn_fourth_attack,            &gsn_third_attack,      85,     PRE_WEREWOLF},
-{&gsn_fourth_attack,            &gsn_werewolf_base,     30,     PRE_WEREWOLF},
+{ &gsn_fourth_attack,           &gsn_group_armed,       90,     PRE_WEREWOLF},
+{ &gsn_fourth_attack,           &gsn_second_attack,     85,     PRE_WEREWOLF},
+{ &gsn_fourth_attack,           &gsn_third_attack,      85,     PRE_WEREWOLF},
+{ &gsn_fourth_attack,           &gsn_werewolf_base,     30,     PRE_WEREWOLF},
 
-{&gsn_dual,                     &gsn_group_armed,       92,     PRE_WEREWOLF},
-{&gsn_dual,                     &gsn_fourth_attack,     90,     PRE_WEREWOLF},
-{&gsn_dual,                     &gsn_werewolf_base,     30,     PRE_WEREWOLF},
+{ &gsn_dual,                    &gsn_group_armed,       92,     PRE_WEREWOLF},
+{ &gsn_dual,                    &gsn_fourth_attack,     90,     PRE_WEREWOLF},
+{ &gsn_dual,                    &gsn_werewolf_base,     30,     PRE_WEREWOLF},
 
-{&gsn_group_defense,            &gsn_werewolf_base,     45,     PRE_WEREWOLF},
+{ &gsn_group_defense,           &gsn_werewolf_base,     45,     PRE_WEREWOLF},
 
-{&gsn_swim,                     &gsn_group_defense,     20,     PRE_WEREWOLF},
-{&gsn_swim,                     &gsn_werewolf_base,     30,     PRE_WEREWOLF},
+{ &gsn_swim,                    &gsn_group_defense,     20,     PRE_WEREWOLF},
+{ &gsn_swim,                    &gsn_werewolf_base,     30,     PRE_WEREWOLF},
 
-{&gsn_dodge,                    &gsn_group_defense,     80,     PRE_WEREWOLF},
-{&gsn_dodge,                    &gsn_werewolf_base,     30,     PRE_WEREWOLF},
+{ &gsn_dodge,                   &gsn_group_defense,     80,     PRE_WEREWOLF},
+{ &gsn_dodge,                   &gsn_werewolf_base,     30,     PRE_WEREWOLF},
 
-{&gsn_parry,                    &gsn_group_defense,     80,     PRE_WEREWOLF},
-{&gsn_parry,                    &gsn_werewolf_base,     30,     PRE_WEREWOLF},
+{ &gsn_parry,                   &gsn_group_defense,     80,     PRE_WEREWOLF},
+{ &gsn_parry,                   &gsn_werewolf_base,     30,     PRE_WEREWOLF},
 
-{&gsn_wolfbite,                 &gsn_form_wolf,         50,     PRE_WEREWOLF},
+{ &gsn_wolfbite,                &gsn_form_wolf,         50,     PRE_WEREWOLF},
 
-{&gsn_ravage,                   &gsn_form_wolf,         70,     PRE_WEREWOLF},
-{&gsn_ravage,                   &gsn_wolfbite,          50,     PRE_WEREWOLF},
+{ &gsn_ravage,                  &gsn_form_wolf,         70,     PRE_WEREWOLF},
+{ &gsn_ravage,                  &gsn_wolfbite,          50,     PRE_WEREWOLF},
+
+/* **** POST-70 SKILLS **** */
+
+{ &gsn_target,                  &gsn_enhanced_hit,      95,    PRE_WEREWOLF},
+{ &gsn_target,                  &gsn_werewolf_base,     70,    PRE_WEREWOLF},
+
+{ &gsn_enhanced_swiftness,      &gsn_fourth_attack,     95,    PRE_WEREWOLF},
+{ &gsn_enhanced_swiftness,      &gsn_werewolf_base,     70,    PRE_WEREWOLF},
+
+{ &gsn_resist_cold,             &gsn_astral_sidestep,   95,    PRE_WEREWOLF},
+{ &gsn_resist_cold,             &gsn_werewolf_base,     80,    PRE_WEREWOLF},

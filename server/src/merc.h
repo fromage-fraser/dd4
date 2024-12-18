@@ -373,8 +373,8 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
 #define MAX_SKILL                   605     /* 604 +1 for clairvoyance 6/10/24 */
-#define MAX_PRE_REQ                 1400    /* -1 no meditate for shifters 7/4/24 */
-#define MAX_SPELL_GROUP             452     /* +1 reforge Brutus 1/1/23 */
+#define MAX_PRE_REQ                 1563    /* +8 Barbarian skills 15/12/24 */
+#define MAX_SPELL_GROUP             465     /* +1 Infernalist skills Owl 15/12/24 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
 #define MAX_VAMPIRE_GAG             27      /* 26 + 1 for 'swallow' | ugly vampire/werewolf hack */

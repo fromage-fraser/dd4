@@ -166,3 +166,21 @@
 {&gsn_sharpen,                  &gsn_forge,             50,     PRE_RANGER},
 {&gsn_sharpen,                  &gsn_ranger_base,       60,     PRE_RANGER},
 
+/* **** POST-70 SKILLS **** */
+{&gsn_target,                   &gsn_accuracy,          95,     PRE_RANGER},
+{&gsn_target,                   &gsn_ranger_base,       70,     PRE_RANGER},
+
+{&gsn_resist_heat,              &gsn_bark_skin,         95,     PRE_RANGER},
+{&gsn_resist_heat,              &gsn_ranger_base,       70,     PRE_RANGER},
+
+{&gsn_harvest,                  &gsn_gather_herbs,      95,     PRE_RANGER},
+{&gsn_harvest,                  &gsn_ranger_base,       70,     PRE_RANGER},
+
+{&gsn_carve,                    &gsn_sharpen,           95,     PRE_RANGER},
+{&gsn_carve,                    &gsn_ranger_base,       80,     PRE_RANGER},
+
+{&gsn_resist_cold,              &gsn_resist_heat,       95,     PRE_RANGER},
+{&gsn_resist_cold,              &gsn_ranger_base,       80,     PRE_RANGER},
+
+{&gsn_resist_lightning,         &gsn_resist_cold,       95,     PRE_RANGER},
+{&gsn_resist_lightning,         &gsn_ranger_base,       90,     PRE_RANGER},
