@@ -71,6 +71,16 @@
 {&gsn_enhanced_hit,             &gsn_advanced_consider, 90,     PRE_ARTIST},
 {&gsn_enhanced_hit,             &gsn_martist_base,      30,     PRE_ARTIST},
 
+/* **** POST-70 SKILLS **** */
+{&gsn_target,                   &gsn_enhanced_hit,      95,     PRE_ARTIST},
+{&gsn_target,                   &gsn_martist_base,      70,     PRE_ARTIST},
+
+{&gsn_enhanced_swiftness,       &gsn_combo4,            95,     PRE_ARTIST},
+{&gsn_enhanced_swiftness,       &gsn_martist_base,      70,     PRE_ARTIST},
+
+{&gsn_enhanced_critical,        &gsn_enhanced_swiftness,95,     PRE_ARTIST},
+{&gsn_enhanced_critical,        &gsn_martist_base,      80,     PRE_ARTIST},
+
 
 
 

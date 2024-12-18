@@ -2368,12 +2368,17 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_moonray,                                 0 },
         { &gsn_wither,                                  0 },
         { &gsn_natures_fury,                            0 },
+        { &gsn_harvest,                                 0 },
+        { &gsn_carve,                                   0 },
 
         { &gsn_group_advcombat,                         0 },
         { &gsn_riposte,                                 0 },
         { &gsn_whirlwind,                               0 },
         { &gsn_decapitate,                              0 },
         { &gsn_focus,                                   0 },
+        { &gsn_enhanced_swiftness,                      0 },
+        { &gsn_enhanced_critical,                       0 },
+        { &gsn_target,                                  0 },
 
         { &gsn_group_metal,                             0 },
         { &gsn_sharpen,                                 0 },
@@ -2475,6 +2480,8 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_poison,                                  0 },
         { &gsn_curse,                                   0 },
         { &gsn_hex,                                     0 },
+        { &gsn_fleshrot,                                0 },
+        { &gsn_nausea,                                  0 },
 
         { &gsn_group_conjuration,                       0 },
         { &gsn_create_water,                            0 },
@@ -2523,6 +2530,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_haste,                                   0 },
         { &gsn_entrapment,                              0 },
         { &gsn_breathe_water,                           0 },
+        { &gsn_freedom,                                 0 },
 
         { &gsn_group_illusion,                          0 },
         { &gsn_ventriloquate,                           0 },
@@ -2532,6 +2540,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_charm_person,                            0 },
         { &gsn_enchant_weapon,                          0 },
         { &gsn_enhance_armor,                           0 },
+        { &gsn_confusion,                               0 },
 
         { &gsn_group_summoning,                         0 },
         { &gsn_summon_familiar,                         0 },
@@ -2561,6 +2570,8 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_locate_object,                           0 },
         { &gsn_sense_traps,                             0 },
         { &gsn_know_alignment,                          0 },
+        { &gsn_psychometry,                             0 },
+        { &gsn_clairvoyance,                            0 },
 
 
         { &gsn_group_death,                             0 },
@@ -2580,6 +2591,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_summon_demon,                            0 },
         { &gsn_hells_fire,                              0 },
         { &gsn_chaos_blast,                             0 },
+        { &gsn_release,                                 0 },
 
         { &gsn_group_lycanthropy,                       0 },
         { &gsn_resist_toxin,                            0 },
@@ -2677,7 +2689,8 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_ultrablast,                              0 },
         { &gsn_awe,                                     0 },
         { &gsn_death_field,                             0 },
-        { &gsn_disintegrate,                           0 },
+        { &gsn_disintegrate,                            0 },
+        { &gsn_decay,                                   0 },
 
         { &gsn_group_body,                              0 },
         { &gsn_levitation,                              0 },
@@ -5509,7 +5522,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "resist magic", &gsn_resist_magic,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_resist_magic, 5, 1,
-                "", "You feel more vulnerable to magic."
+                "", "<177>You feel more vulnerable to magic.<0>"
         },
 
         {
@@ -6034,28 +6047,28 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "resist heat", &gsn_resist_heat,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_resist_heat, 15, 1,
-                "resist heat", "You feel more vulnerable to heat and flame."
+                "resist heat", "<199>You feel more vulnerable to heat and flame.<0>"
         },
 
         {
                 "resist cold", &gsn_resist_cold,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_resist_cold, 15, 1,
-                "resist cold", "You feel more vulnerable to cold and ice."
+                "resist cold", "<117>You feel more vulnerable to cold and ice.<0>"
         },
 
         {
                 "resist lightning", &gsn_resist_lightning,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 4,
                 spell_resist_lightning, 15, 1,
-                "resist lightning", "You feel more vulnerable to electricity."
+                "resist lightning", "<195>You feel more vulnerable to electricity.<0>"
         },
 
         {
                 "resist acid", &gsn_resist_acid,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 128,
                 spell_resist_acid, 15, 1,
-                "resist acid", "You feel more vulnerable to acid."
+                "resist acid", "<192>You feel more vulnerable to acid.<0>"
         },
 
         {

@@ -1008,6 +1008,7 @@ void do_delete( CHAR_DATA *ch, char *argument)
 #endif
                         do_quit(ch,"");
                         sprintf( buf, "rm %s", strsave );
+                        sprintf( buf, "rm %s.vault", strsave );
                         system(buf);
                         unlink(strsave);
                         return;

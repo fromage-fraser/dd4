@@ -3915,8 +3915,8 @@ int has_pre_req(CHAR_DATA *ch, int sn)
         bool sub = FALSE;
         bool gotit = FALSE;
 
-        /* char buf[MAX_STRING_LENGTH]; */
-        /* sprintf(buf,"sn in: %d | %s",sn, skill_table[sn].name);
+        /* char buf[MAX_STRING_LENGTH];
+        sprintf(buf,"sn in: %d | %s",sn, skill_table[sn].name);
         log_string(buf); */
 
         /* Ugly Vampire and Werewolf hacks - Anonymous */

@@ -72,3 +72,15 @@
 {&gsn_second_headbutt,          &gsn_headbutt,          85,     PRE_BARBARIAN},
 {&gsn_second_headbutt,          &gsn_barbarian_base,    30,     PRE_BARBARIAN},
 
+/* **** POST-70 SKILLS **** */
+{&gsn_target,                   &gsn_focus,             95,     PRE_BARBARIAN},
+{&gsn_target,                   &gsn_barbarian_base,    70,     PRE_BARBARIAN},
+
+{&gsn_enhanced_critical,        &gsn_berserk,           95,     PRE_BARBARIAN},
+{&gsn_enhanced_critical,        &gsn_barbarian_base,    70,     PRE_BARBARIAN},
+
+{&gsn_resist_cold,              &gsn_hunt,              95,     PRE_BARBARIAN},
+{&gsn_resist_cold,              &gsn_barbarian_base,    80,     PRE_BARBARIAN},
+
+{&gsn_resist_heat,              &gsn_resist_cold,       95,     PRE_BARBARIAN},
+{&gsn_resist_heat,              &gsn_barbarian_base,    80,     PRE_BARBARIAN},

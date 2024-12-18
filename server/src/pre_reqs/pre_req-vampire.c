@@ -12,6 +12,7 @@
 
 { &gsn_resist_toxin,            &gsn_group_vampyre,             85,     PRE_VAMPIRE},
 { &gsn_resist_toxin,            &gsn_fear,                      80,     PRE_VAMPIRE},
+
 { &gsn_resist_magic,            &gsn_group_vampyre,             85,     PRE_VAMPIRE},
 { &gsn_resist_magic,            &gsn_resist_toxin,              80,     PRE_VAMPIRE},
 
@@ -39,26 +40,35 @@
 { &gsn_deter,                   &gsn_fear,                      90,     PRE_VAMPIRE},
 { &gsn_deter,                   &gsn_vampire_base,              35,     PRE_VAMPIRE},
 
-{&gsn_group_armed,              &gsn_vampire_base,      30,     PRE_VAMPIRE},
-{&gsn_second_attack,            &gsn_group_armed,       20,     PRE_VAMPIRE},
+{ &gsn_group_armed,              &gsn_vampire_base,      30,     PRE_VAMPIRE},
+{ &gsn_second_attack,            &gsn_group_armed,       20,     PRE_VAMPIRE},
 
-{&gsn_enhanced_hit,             &gsn_group_armed,       95,     PRE_VAMPIRE},
-{&gsn_enhanced_hit,             &gsn_vampire_base,      30,     PRE_VAMPIRE},
+{ &gsn_enhanced_hit,             &gsn_group_armed,       95,     PRE_VAMPIRE},
+{ &gsn_enhanced_hit,             &gsn_vampire_base,      30,     PRE_VAMPIRE},
 
-{&gsn_disarm,                   &gsn_group_armed,       75,     PRE_VAMPIRE},
-{&gsn_disarm,                   &gsn_vampire_base,      30,     PRE_VAMPIRE},
+{ &gsn_disarm,                   &gsn_group_armed,       75,     PRE_VAMPIRE},
+{ &gsn_disarm,                   &gsn_vampire_base,      30,     PRE_VAMPIRE},
 
-{&gsn_third_attack,             &gsn_group_armed,       70,     PRE_VAMPIRE},
-{&gsn_third_attack,             &gsn_second_attack,     70,     PRE_VAMPIRE},
-{&gsn_third_attack,             &gsn_vampire_base,      30,     PRE_VAMPIRE},
+{ &gsn_third_attack,             &gsn_group_armed,       70,     PRE_VAMPIRE},
+{ &gsn_third_attack,             &gsn_second_attack,     70,     PRE_VAMPIRE},
+{ &gsn_third_attack,             &gsn_vampire_base,      30,     PRE_VAMPIRE},
 
-{&gsn_fourth_attack,            &gsn_group_armed,       85,     PRE_VAMPIRE},
-{&gsn_fourth_attack,            &gsn_second_attack,     85,     PRE_VAMPIRE},
-{&gsn_fourth_attack,            &gsn_third_attack,      85,     PRE_VAMPIRE},
-{&gsn_fourth_attack,            &gsn_vampire_base,      30,     PRE_VAMPIRE},
+{ &gsn_fourth_attack,            &gsn_group_armed,       85,     PRE_VAMPIRE},
+{ &gsn_fourth_attack,            &gsn_second_attack,     85,     PRE_VAMPIRE},
+{ &gsn_fourth_attack,            &gsn_third_attack,      85,     PRE_VAMPIRE},
+{ &gsn_fourth_attack,            &gsn_vampire_base,      30,     PRE_VAMPIRE},
 
-{&gsn_dual,                     &gsn_group_armed,       90,     PRE_VAMPIRE},
-{&gsn_dual,                     &gsn_third_attack,      90,     PRE_VAMPIRE},
-{&gsn_dual,                     &gsn_fourth_attack,     90,     PRE_VAMPIRE},
-{&gsn_dual,                     &gsn_vampire_base,      50,     PRE_VAMPIRE},
+{ &gsn_dual,                     &gsn_group_armed,       90,     PRE_VAMPIRE},
+{ &gsn_dual,                     &gsn_third_attack,      90,     PRE_VAMPIRE},
+{ &gsn_dual,                     &gsn_fourth_attack,     90,     PRE_VAMPIRE},
+{ &gsn_dual,                     &gsn_vampire_base,      50,     PRE_VAMPIRE},
 
+/* **** POST-70 SKILLS **** */
+{ &gsn_target,                   &gsn_enhanced_hit,      95,     PRE_VAMPIRE},
+{ &gsn_target,                   &gsn_vampire_base,      70,     PRE_VAMPIRE},
+
+{ &gsn_enhanced_swiftness,       &gsn_double_lunge,      95,     PRE_VAMPIRE},
+{ &gsn_enhanced_swiftness,       &gsn_vampire_base,      70,     PRE_VAMPIRE},
+
+{ &gsn_resist_cold,              &gsn_resist_magic,      95,     PRE_VAMPIRE},
+{ &gsn_resist_cold,              &gsn_vampire_base,      80,     PRE_VAMPIRE},

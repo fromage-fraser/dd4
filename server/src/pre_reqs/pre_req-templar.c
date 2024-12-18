@@ -62,3 +62,19 @@
 {&gsn_recharge_item,            &gsn_templar_base,      30,     PRE_TEMPLAR},
 
 
+/* **** POST-70 SKILLS **** */
+
+{&gsn_target,                   &gsn_enhanced_hit,     100,     PRE_TEMPLAR},
+{&gsn_target,                   &gsn_templar_base,      70,     PRE_TEMPLAR},
+
+{&gsn_enhanced_swiftness,       &gsn_third_attack,     100,     PRE_TEMPLAR},
+{&gsn_enhanced_swiftness,       &gsn_templar_base,      70,     PRE_TEMPLAR},
+
+{&gsn_resist_lightning,         &gsn_frenzy,           100,     PRE_TEMPLAR},
+{&gsn_resist_lightning,         &gsn_templar_base,      80,     PRE_TEMPLAR},
+
+{&gsn_resist_cold,              &gsn_resist_lightning, 100,     PRE_TEMPLAR},
+{&gsn_resist_cold,              &gsn_templar_base,      80,     PRE_TEMPLAR},
+
+
+

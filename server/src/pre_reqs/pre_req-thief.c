@@ -146,10 +146,16 @@ Last modified 29/7/97 @ 15:45 - Mat
 
 /* **** HIGH LEVEL **** */
 
-  {&gsn_poison_weapon,          &gsn_thief_base,        74,     PRE_THIEF},
-
   {&gsn_second_circle,          &gsn_group_armed,       85,     PRE_THIEF},
   {&gsn_second_circle,          &gsn_group_stealth,     85,     PRE_THIEF},
   {&gsn_second_circle,          &gsn_circle,            85,     PRE_THIEF},
   {&gsn_second_circle,          &gsn_thief_base,        60,     PRE_THIEF},
+
+  {&gsn_poison_weapon,          &gsn_thief_base,        74,     PRE_THIEF},
+
+  {&gsn_target,                 &gsn_group_armed,      100,     PRE_THIEF},
+  {&gsn_target,                 &gsn_thief_base,        70,     PRE_THIEF},
+
+  {&gsn_enhanced_critical,      &gsn_double_backstab,  100,     PRE_THIEF},
+  {&gsn_enhanced_critical,      &gsn_thief_base,        80,     PRE_THIEF},
 

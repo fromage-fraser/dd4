@@ -89,3 +89,11 @@
 {&gsn_forge,                    &gsn_group_metal,       75,     PRE_KNIGHT},
 {&gsn_forge,                    &gsn_sharpen,           50,     PRE_KNIGHT},
 {&gsn_forge,                    &gsn_knight_base,       30,     PRE_KNIGHT},
+
+/* **** POST-70 SKILLS **** */
+
+{&gsn_target,                   &gsn_joust,             95,     PRE_KNIGHT},
+{&gsn_target,                   &gsn_knight_base,       70,     PRE_KNIGHT},
+
+{&gsn_enhanced_critical,        &gsn_dual,              95,     PRE_KNIGHT},
+{&gsn_enhanced_critical,        &gsn_knight_base,       70,     PRE_KNIGHT},

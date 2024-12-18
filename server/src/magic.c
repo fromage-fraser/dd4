@@ -8754,7 +8754,7 @@ void spell_resist_magic(  int sn, int level, CHAR_DATA *ch, void *vo )
         af.bitvector = 0;
         affect_to_char( victim, &af );
 
-        send_to_char( "You feel resistant to magical attacks.\n\r", ch );
+        send_to_char( "<93>Yo<129>u f<165>ee<201>l r<165>es<129>is<93>ta<129>nt <165>to <201>ma<165>gi<129>ca<93>l a<129>tt<165>ac<201>ks<165>.<0>\n\r", ch );
 }
 
 
@@ -9140,12 +9140,11 @@ void spell_resist_heat (int sn, int level, CHAR_DATA *ch, void *vo)
         af.bitvector = 0;
         affect_to_char(victim, &af);
 
-        send_to_char("You feel more resistant to heat and flame.\n\r", victim);
+        send_to_char("<196>Yo<160>u f<124>ee<88>l m<124>or<160>e r<196>es<160>is<124>ta<88>nt <124>to <160>he<196>at <160>an<124>d f<88>la<124>me<160>.<0>\n\r", victim);
 
         if (victim != ch)
                 send_to_char("Ok.\n\r", ch);
 }
-
 
 void spell_resist_cold (int sn, int level, CHAR_DATA *ch, void *vo)
 {
@@ -9162,7 +9161,7 @@ void spell_resist_cold (int sn, int level, CHAR_DATA *ch, void *vo)
         af.bitvector = 0;
         affect_to_char(victim, &af);
 
-        send_to_char("You feel more resistant to cold and ice.\n\r", victim);
+        send_to_char("<51>Yo<87>u f<123>ee<159>l m<195>or<231>e r<195>es<159>is<123>ta<87>nt <51>to <87>co<123>ld <159>an<195>d i<231>ce<195>.<0>\n\r", victim);
 
         if (victim != ch)
                 send_to_char("Ok.\n\r", ch);
@@ -9184,7 +9183,7 @@ void spell_resist_lightning (int sn, int level, CHAR_DATA *ch, void *vo)
         af.bitvector = 0;
         affect_to_char(victim, &af);
 
-        send_to_char("You feel more resistant to electricity.\n\r", victim);
+        send_to_char("<15>Yo<255>u f<253>ee<251>l m<249>or<251>e r<255>es<15>is<255>ta<253>nt <251>to <249>el<251>ec<255>tr<15>ic<255>it<251>y.<0>\n\r", victim);
 
         if (victim != ch)
                 send_to_char("Ok.\n\r", ch);
@@ -9206,7 +9205,7 @@ void spell_resist_acid (int sn, int level, CHAR_DATA *ch, void *vo)
         af.bitvector = 0;
         affect_to_char(victim, &af);
 
-        send_to_char("You feel more resistant to acid.\n\r", victim);
+        send_to_char("<46>Yo<82>u f<118>ee<154>l m<190>or<226>e r<190>es<154>is<118>ta<82>nt <46>to <82>ac<118>id<154>.<0>\n\r", victim);
 
         if (victim != ch)
                 send_to_char("Ok.\n\r", ch);

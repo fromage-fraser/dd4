@@ -45,3 +45,11 @@
 {&gsn_enhanced_hit,             &gsn_group_advcombat,   95,     PRE_NINJA},
 {&gsn_enhanced_hit,             &gsn_ninja_base,        31,     PRE_NINJA},
 
+/* **** POST-70 SKILLS **** */
+
+{&gsn_target,                   &gsn_decapitate,       100,     PRE_NINJA},
+{&gsn_target,                   &gsn_ninja_base,        70,     PRE_NINJA},
+
+{&gsn_enhanced_swiftness,       &gsn_fourth_attack,    100,     PRE_NINJA},
+{&gsn_enhanced_swiftness,       &gsn_ninja_base,        80,     PRE_NINJA},
+

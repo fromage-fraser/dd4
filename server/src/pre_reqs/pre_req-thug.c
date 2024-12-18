@@ -54,5 +54,13 @@
 {&gsn_intimidate,               &gsn_extort,            95,     PRE_THUG},
 {&gsn_intimidate,               &gsn_thug_base,         30,     PRE_THUG},
 
+/* **** POST-70 SKILLS **** */
+
+{&gsn_target,                   &gsn_enhanced_hit,      95,     PRE_THUG},
+{&gsn_target,                   &gsn_thug_base,         70,     PRE_THUG},
+
+{&gsn_enhanced_critical,        &gsn_gouge,             95,     PRE_THUG},
+{&gsn_enhanced_critical,        &gsn_thug_base,         70,     PRE_THUG},
+
 
 

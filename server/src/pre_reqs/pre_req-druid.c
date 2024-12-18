@@ -84,5 +84,20 @@
 {&gsn_resist_heat,              &gsn_group_resistance,  95,     PRE_DRUID},
 
 
+/* **** POST-70 SKILLS **** */
+
+{&gsn_harvest,                  &gsn_group_nature,     100,     PRE_DRUID},
+{&gsn_harvest,                  &gsn_druid_base,        70,     PRE_DRUID},
+
+{&gsn_carve,                    &gsn_harvest,          100,     PRE_DRUID},
+{&gsn_carve,                    &gsn_druid_base,        70,     PRE_DRUID},
+
+{&gsn_fleshrot,                 &gsn_wither,           100,     PRE_DRUID},
+{&gsn_fleshrot,                 &gsn_druid_base,        80,     PRE_DRUID},
+
+{&gsn_freedom,                  &gsn_entrapment,       100,     PRE_DRUID},
+{&gsn_freedom,                  &gsn_druid_base,        90,     PRE_DRUID},
+
+
 
 

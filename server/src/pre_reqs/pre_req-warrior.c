@@ -131,3 +131,14 @@ sphere at 31st level */
 /* **** Riding **** */
 
 {&gsn_group_riding,             &gsn_warrior_base,      59,     PRE_WARRIOR},
+
+/* **** POST-70 SKILLS **** */
+
+{&gsn_target,                   &gsn_focus,              90,    PRE_WARRIOR},
+{&gsn_target,                   &gsn_warrior_base,       70,    PRE_WARRIOR},
+
+{&gsn_enhanced_critical,        &gsn_enhanced_hit,       90,    PRE_WARRIOR},
+{&gsn_enhanced_critical,        &gsn_warrior_base,       70,    PRE_WARRIOR},
+
+{&gsn_enhanced_swiftness,       &gsn_fourth_attack,      90,    PRE_WARRIOR},
+{&gsn_enhanced_swiftness,       &gsn_warrior_base,       80,    PRE_WARRIOR},
