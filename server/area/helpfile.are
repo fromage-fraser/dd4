@@ -453,31 +453,113 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 ~
 
 0 CHANGES~
-{W December 2024{x
+{WMarch 2022{x
 
-- 15 new level 70+ spells and skills now enabled for all classes. 4 more +
-  "bonus" system mechanic still to code.
+We're back!
 
-{W October 2024{x
+Apart from getting everything running again, the following new skills have
+been added;
 
-- Skills "target" and spell "regenerate" added, to allow for targeting and healing
-  of body regions on players or mobiles.
-- Skills "harvest" and "carve" added for Druids and Rangers
-- Skill "bitsum" added for IMMs
-- Spell "possession" fixed and re-enabled. Spell "release" added (basically
-  player version of IMM's "return").
-- Spell "clairvoyance" added
+- Chaos Blast for Infernalists
+- Detect Curse for those with Divination
+- Knife Toss for Thieves
+- New config option: "AUTOLEVEL"
+- Gravity exists!
+- Grouping Bonuses for support skills & spells
+- Soar for Shifters
+- New area: 'Harpy Haven'
+- New area: 'Kingdom of Juargan'
 
-{W September 2024{X
+Refer appropriate HELP entries.
 
-- New area: Omu Central is in, with many supporting code and text changes.
+We're also trying to tidy up a lot of minor issues, formatting, spelling,
+links in areas, and things like that.
 
-{W April 2024{x
+There are skills that open up which you then can't practice at that
+teacher which we're trying to track down as well.
 
-- added DOT spell 'fleshrot'
-- lock vnums added to all keys
-- keys now "remember" the last thing they were used to lock or unlock
-- affspell($*), insect($*), inrflag($*) added for mobprogs. isaffected($*) fixed
+Please let us know if you see anything along those lines and we'll attempt
+to get it sorted.
+
+Gezhp, Owl and Shade
+
+{WApril 2022{x
+
+- New races: Fae, Sahuagin, Tiefling, Jotun, Genasi, and Illithid
+- Reaper is now a bit friendlier
+- New original area "Undersea" [15-25]
+- New INFAMY table
+- New original area "Shadowsea" [25-30]
+
+{WMay 2022{x
+
+- Ranger skill 'snare' added
+- Crafting and Spellcrafting have been added
+- Crafting and Spellcrafting items have been added
+- Total XP message added
+- Thief skill 'bomb' added
+- Vampires and Werewolfs will gain bonus pracs at 30
+- Lunge and suck damage modified by current blood status
+- Ranger skill Snap Shot added
+
+{WJune 2022{x
+
+- Added ACT_TINKER.  Mobs with it can repair items that have
+  timers on them (sharpened/forged/poisoned weapons etc)
+- Shifter phoenix form has a beak and the 'swoop' ability
+- Added 'crush' as in-between round attack for shifter in bear form
+- Made sure rangers can get 'dowse' and 'forage' from all trainers
+
+{WJuly 2022{x
+
+- Added 8-bit colour to MUD
+- Swim skill (hopefully) fixed and given to a number of classes
+- New race: Grung
+- Added gambling mob functionality
+- Added new area 'Ota'ar Dar - Market Canton' for levels 30-35
+- Added new special 'spec_cast_electric'
+
+{WAugust 2022{x
+
+- New 30-60 area 'Ota'ar Canals' is in and linked
+- STEAM BREATH added for mages and dragons
+- Dragon form now has SWALLOW
+- Skills SWALLOW and FLUKESLAP are in, with spec_small_whale and
+  spec_large_whale
+- Smithy class is in for testing
+- Duergar added as playable race
+- Spells SLOW and STABILISE are in for warlocks and necromancers
+  respectively
+
+{WDecember 2022{x
+
+- Mega patch in.  New stats, items, boss mobs and more.
+
+{WFebruary 2023{x
+
+- New area in, Ota'ar Dar Residential Area - South for levels
+  35-40. New special spec_sahuagin_baron added. GUI has a 0.0.X
+  version update.
+- Vaults added. Permanent storage for characters separate from
+  inventory.
+
+{W March 2023{x
+
+- New area in, Ota'ar Dar Arena/Jail, levels 40-45. New special
+  spec_green_grung
+
+{W October 2023{x
+
+- New area in, Ota'ar Dar Military Fortress, levels 45-50.
+- 6 new specials added for troops
+
+{W December 2023{x
+
+- New area in, Ota'ar Dar Residential Area - North, levels 50-55.
+- do_empty command added, fountains can now contain any liquid and
+  be poisoned.  ostat and area files updated to reflect changes.
+- do_tfind added, to make finding teachers with particular skills
+  and proficiency levels easier in-game.
 
 {W March 2024{x
 
@@ -509,113 +591,32 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 - enhanced crit, enhanced swiftness, and decay added and tested for post-60
   skills dev
 
-{W December 2023{x
+{W April 2024{x
 
-- New area in, Ota'ar Dar Residential Area - North, levels 50-55.
-- do_empty command added, fountains can now contain any liquid and
-  be poisoned.  ostat and area files updated to reflect changes.
-- do_tfind added, to make finding teachers with particular skills
-  and proficiency levels easier in-game.
+- added DOT spell 'fleshrot'
+- lock vnums added to all keys
+- keys now "remember" the last thing they were used to lock or unlock
+- affspell($*), insect($*), inrflag($*) added for mobprogs. isaffected($*) fixed
 
-{W October 2023{x
+{W September 2024{X
 
-- New area in, Ota'ar Dar Military Fortress, levels 45-50.
-- 6 new specials added for troops
+- New area: Omu Central is in, with many supporting code and text changes.
 
-{W March 2023{x
+{W October 2024{x
 
-- New area in, Ota'ar Dar Arena/Jail, levels 40-45. New special
-  spec_green_grung
+- Skills "target" and spell "regenerate" added, to allow for targeting and healing
+  of body regions on players or mobiles.
+- Skills "harvest" and "carve" added for Druids and Rangers
+- Skill "bitsum" added for IMMs
+- Spell "possession" fixed and re-enabled. Spell "release" added (basically
+  player version of IMM's "return").
+- Spell "clairvoyance" added
 
-{WFebruary 2023{x
+{W December 2024{x
 
-- New area in, Ota'ar Dar Residential Area - South for levels
-  35-40. New special spec_sahuagin_baron added. GUI has a 0.0.X
-  version update.
-- Vaults added. Permanent storage for characters separate from
-  inventory.
+- 15 new level 70+ spells and skills now enabled for all classes. 4 more +
+  "bonus" system mechanic still to code.
 
-{WDecember 2022{x
-
-- Mega patch in.  New stats, items, boss mobs and more.
-
-{WAugust 2022{x
-
-- New 30-60 area 'Ota'ar Canals' is in and linked
-- STEAM BREATH added for mages and dragons
-- Dragon form now has SWALLOW
-- Skills SWALLOW and FLUKESLAP are in, with spec_small_whale and
-  spec_large_whale
-- Smithy class is in for testing
-- Duergar added as playable race
-- Spells SLOW and STABILISE are in for warlocks and necromancers
-  respectively
-
-{WJuly 2022{x
-
-- Added 8-bit colour to MUD
-- Swim skill (hopefully) fixed and given to a number of classes
-- New race: Grung
-- Added gambling mob functionality
-- Added new area 'Ota'ar Dar - Market Canton' for levels 30-35
-- Added new special 'spec_cast_electric'
-
-{WJune 2022{x
-
-- Added ACT_TINKER.  Mobs with it can repair items that have
-  timers on them (sharpened/forged/poisoned weapons etc)
-- Shifter phoenix form has a beak and the 'swoop' ability
-- Added 'crush' as in-between round attack for shifter in bear form
-- Made sure rangers can get 'dowse' and 'forage' from all trainers
-
-{WMay 2022{x
-
-- Ranger skill 'snare' added
-- Crafting and Spellcrafting have been added
-- Crafting and Spellcrafting items have been added
-- Total XP message added
-- Thief skill 'bomb' added
-- Vampires and Werewolfs will gain bonus pracs at 30
-- Lunge and suck damage modified by current blood status
-- Ranger skill Snap Shot added
-
-{WApril 2022{x
-
-- New races: Fae, Sahuagin, Tiefling, Jotun, Genasi, and Illithid
-- Reaper is now a bit friendlier
-- New original area "Undersea" [15-25]
-- New INFAMY table
-- New original area "Shadowsea" [25-30]
-
-{WMarch 2022{x
-
-We're back!
-
-Apart from getting everything running again, the following new skills have
-been added;
-
-- Chaos Blast for Infernalists
-- Detect Curse for those with Divination
-- Knife Toss for Thieves
-- New config option: "AUTOLEVEL"
-- Gravity exists!
-- Grouping Bonuses for support skills & spells
-- Soar for Shifters
-- New area: 'Harpy Haven'
-- New area: 'Kingdom of Juargan'
-
-Refer appropriate HELP entries.
-
-We're also trying to tidy up a lot of minor issues, formatting, spelling,
-links in areas, and things like that.
-
-There are skills that open up which you then can't practice at that
-teacher which we're trying to track down as well.
-
-Please let us know if you see anything along those lines and we'll attempt
-to get it sorted.
-
-Gezhp, Owl and Shade
 ~
 
 0 MULTIPLAYING MULTIPLAYERS~
