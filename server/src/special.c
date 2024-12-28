@@ -460,7 +460,6 @@ bool spec_cast_adept( CHAR_DATA *ch )
                     spell_regenerate( skill_lookup( "regenerate" ), ch->level, ch, victim );
                 }
                 return TRUE;
-
         }
 
         return FALSE;

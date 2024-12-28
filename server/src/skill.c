@@ -1596,7 +1596,7 @@ void do_feed (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        send_to_char("You feed on the fresh corpse!\n\r", ch);
+        send_to_char("<196>You feed on the fresh corpse!<0>\n\r", ch);
         ch->rage = UMIN(ch->rage +5, ch->max_rage);
 
         if (ch->rage > (ch->max_rage * 3 / 4))

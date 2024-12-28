@@ -2315,7 +2315,7 @@ void do_morph (CHAR_DATA *ch, char *argument)
 
                 if (IS_FULL_MOON && form == FORM_NORMAL)
                 {
-                        send_to_char("Not while the moon is full!\n\r", ch);
+                        send_to_char("Not while the moon is full.\n\r", ch);
                         return;
                 }
         }

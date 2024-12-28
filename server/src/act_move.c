@@ -3136,6 +3136,81 @@ void do_unarmed_combat (CHAR_DATA *ch, char *argument)
         return;
 }
 
+void do_quicken (CHAR_DATA *ch, char *argument)
+{
+        AFFECT_DATA af;
+
+        if (IS_NPC(ch))
+                return;
+        /* Put any exceptions for spec_funs you want to have access to the skill above */
+
+        if (!IS_NPC(ch) && !CAN_DO(ch, gsn_quicken))
+        {
+                send_to_char("Huh!?\n\r", ch);
+                return;
+        }
+
+        if ( is_affected (ch, gsn_quicken) )
+        {
+                send_to_char ("Your metabolism is already preternaturally hastened.\n\r", ch);
+                return;
+        }
+
+        if ( is_affected( ch, gsn_haste ) )
+        {
+                send_to_char("You are already moving superhumanly fast.\n\r",ch);
+                return;
+        }
+
+        if ( IS_AFFECTED(ch, AFF_TORSO_TRAUMA) )
+        {
+                send_to_char ("Your body is too damaged.\n\r", ch);
+                return;
+        }
+
+        if ( ( ch->sub_class == SUB_CLASS_VAMPIRE )
+        &&   ( ch->rage < ( ch->level / 10) ) )
+        {
+                send_to_char ("You are too blood-starved to do that.\n\r", ch);
+                return;
+        }
+
+        if ( ( ch->sub_class == SUB_CLASS_WEREWOLF )
+        &&   ( ch->rage < ( ch->level / 10) ) )
+        {
+                send_to_char ("You aren't angry enough to do that.\n\r", ch);
+                return;
+        }
+
+        if (IS_NPC(ch) || number_percent() < ch->pcdata->learned[gsn_quicken])
+        {
+                if ( is_affected( ch, gsn_slow ))
+                {
+                        affect_strip(ch, gsn_slow);
+                        REMOVE_BIT(ch->affected_by, AFF_SLOW);
+                        act( "$c is no longer moving in slow motion.", ch, NULL, NULL, TO_ROOM);
+                        send_to_char( "You start to move at your normal speed.\n\r", ch );
+                        ch->rage = ( ch->rage - ( ch->level / 10) );
+                        return;
+                }
+
+                af.type      = gsn_quicken;
+                af.duration  = ch->level / 2;
+                af.modifier  = 0;
+                af.location  = APPLY_NONE;
+                af.bitvector = 0;
+                affect_to_char( ch, &af );
+
+                act ("$c vibrates rapidly, $s body becoming a blur.", ch, NULL, NULL, TO_ROOM);
+                send_to_char("You concentrate intensely, and begin to vibrate with supernatural energy.\n\r", ch);
+                ch->rage = ( ch->rage - ( ch->level / 10) );
+
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                return;
+        }
+
+        return;
+}
 
 void do_warcry (CHAR_DATA *ch, char *argument)
 {

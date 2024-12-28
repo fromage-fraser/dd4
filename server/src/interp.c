@@ -326,6 +326,7 @@ const struct cmd_type cmd_table [] =
         { "practice",           do_practice,       POS_SLEEPING,    0,  LOG_NORMAL },
         { "push",               do_push,           POS_STANDING,    0,  LOG_NORMAL },
         { "qui",                do_qui,            POS_DEAD,        0,  LOG_NORMAL },
+        { "quicken",            do_quicken,        POS_STANDING,    0,  LOG_NORMAL },
         { "quiet",              do_quiet,          POS_DEAD,        0,  LOG_NORMAL },
         { "quit",               do_quit,           POS_DEAD,        0,  LOG_NORMAL },
         { "quest",              do_quest,          POS_SLEEPING,    0,  LOG_NORMAL },

@@ -68,6 +68,9 @@ else
 if rand(10)
 say Tip #5: Ignore immortals and be disembowelled with a rusty keyboard!
 else
+if rand(10)
+say Tip #6: If you find yourself tripping a lot, try a fly potion--or consider microdosing.
+else
 if rand(1)
 say Samxin prefers "Personal Assistant." Remember that. Or he'll smite you.
 else

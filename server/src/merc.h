@@ -372,8 +372,8 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   605     /* 604 +1 for clairvoyance 6/10/24 */
-#define MAX_PRE_REQ                 1563    /* +8 Barbarian skills 15/12/24 */
+#define MAX_SKILL                   606     /* 605 +1 for quicken 28/12/24 */
+#define MAX_PRE_REQ                 1567    /* +2 Werewolf skills 28/12/24 */
 #define MAX_SPELL_GROUP             465     /* +1 Infernalist skills Owl 15/12/24 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
@@ -3931,6 +3931,7 @@ extern int gsn_harvest;
 extern int gsn_carve;
 extern int gsn_release;
 extern int gsn_clairvoyance;
+extern int gsn_quicken;
 
 /*
  *  Deity gsns
@@ -4425,6 +4426,7 @@ DECLARE_DO_FUN( do_quaff                        );
 DECLARE_DO_FUN( do_quest                        );
 DECLARE_DO_FUN( do_question                     );
 DECLARE_DO_FUN( do_qui                          );
+DECLARE_DO_FUN( do_quicken                      );      /* haste-like skill for vamps/werewolves */
 DECLARE_DO_FUN( do_quiet                        );      /* Silent play mode */
 DECLARE_DO_FUN( do_quit                         );
 DECLARE_DO_FUN( do_rage                         );      /* werewolves */
