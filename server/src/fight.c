@@ -485,8 +485,6 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 return;
         }
 
-
-
         /*
          * One attack (Even if PRONE, everything else is 50% less likely.)
          */
@@ -508,7 +506,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 else
                         chance = ch->pcdata->learned[gsn_double_backstab];
 
-                /* If your PRONE, your 1/2 as likely to Succeed in anything */
+                /* If you're PRONE, you're 1/2 as likely to succeed in anything */
                 if (IS_AFFECTED(ch, AFF_PRONE))
                         chance /= 2;
 
@@ -560,6 +558,11 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
          * Haste spell & haste
          */
         if ((is_affected(ch, gsn_haste)) && !IS_AFFECTED(ch, AFF_PRONE))
+                one_hit(ch, victim, dt, FALSE);
+        /*
+         * Quicken skill
+         */
+        if ((is_affected(ch, gsn_quicken)) && !IS_AFFECTED(ch, AFF_PRONE))
                 one_hit(ch, victim, dt, FALSE);
 
         /*
@@ -669,7 +672,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 chance /= 2;
         }
 
-        /* If your PRONE, dont get this attack */
+        /* If you're PRONE, don't get this attack */
         if ((number_percent() < chance) && (!IS_AFFECTED(ch, AFF_PRONE)))
         {
                 one_hit(ch, victim, dt, FALSE);
@@ -692,7 +695,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 chance /= 2;
         }
 
-        /* If your PRONE, dont get this attack */
+        /* If you're PRONE, don't get this attack */
        if ((number_percent() < chance) && (!IS_AFFECTED(ch, AFF_PRONE)))        {
                 one_hit(ch, victim, dt, FALSE);
 
@@ -981,7 +984,7 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
 
                 }
 
-                /* adds to teh meter for smithys */
+                /* adds to the meter for smithys */
                 if ( wield && (IS_SET(wield->ego_flags, EGO_ITEM_EMPOWERED)) && (ch->pcdata->meter < 100) )
                 {
                         if ( (number_percent() < ch->pcdata->learned[gsn_empower]) && (victim->level +5 >= ch->level))
@@ -1143,7 +1146,7 @@ void check_group_bonus(CHAR_DATA *ch)
                 if (IS_NPC(vch))
                         continue;
 
-                if (is_same_group(vch, ch))
+                if (is_same_group(vch, ch) && !IS_NPC(ch))
                 {
                         ch->pcdata->group_support_bonus += 1;
                         break;
@@ -1463,8 +1466,10 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                         /* mob: trip  */
                         if (IS_NPC(ch)
                             && !IS_AFFECTED(victim, AFF_FLYING)
+                            && ( ch->level < 5 )
                             && !IS_AFFECTED(ch, AFF_PRONE)
                             && !is_affected(victim, gsn_haste)
+                            && !is_affected(victim, gsn_quicken)
                             && !is_affected(victim, gsn_fly)
                             && !is_affected(victim, gsn_levitation)
                             && number_percent() < (leveldiff < -5
@@ -7515,7 +7520,7 @@ void do_trip (CHAR_DATA *ch, char *argument)
 
         WAIT_STATE (ch, 2 * PULSE_VIOLENCE );
 
-        if (IS_NPC(ch)|| number_percent() < chance)
+        if (IS_NPC(ch) || number_percent() < chance)
         {
                 act ("<15>You trip $N and $E goes down!<0>", ch, NULL, victim, TO_CHAR);
                 act ("$n trips you and you go down!", ch, NULL, victim, TO_VICT);

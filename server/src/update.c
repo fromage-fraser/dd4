@@ -940,6 +940,13 @@ int rage_gain( CHAR_DATA *ch )
                 else if (ch->rage < ch->max_rage / 4)
                         send_to_char(" You feel weakened - the power of your {Rlunge{x is reduced!\n\r", ch);
 
+                if ( ch->rage < (ch->level / 10)
+                &&   is_affected(ch, gsn_quicken) )
+                {
+                        affect_strip(ch, gsn_quicken);
+                        send_to_char("You are too blood-starved to maintain your speed--you slow down.", ch);
+                }
+
                 if (!ch->pcdata->condition[COND_THIRST] && ch->level < LEVEL_HERO)
                         gain *= 2;
 
@@ -953,6 +960,13 @@ int rage_gain( CHAR_DATA *ch )
 
         if (ch->rage > 90)
                 send_to_char("You feel enraged - you must {Rkill!{x\n\r", ch);
+
+        if ( ch->rage < (ch->level / 10)
+        &&   is_affected(ch, gsn_quicken) )
+        {
+                affect_strip(ch, gsn_quicken);
+                send_to_char("You lack the rage to maintain your speed--you slow down.", ch);
+        }
 
         if (ch->form == FORM_WOLF || ch->form == FORM_DIREWOLF)
                 return UMIN(2, ch->max_rage - ch->rage);

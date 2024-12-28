@@ -2053,6 +2053,8 @@ void spell_stabilise( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if (is_affected(victim, gsn_haste))
                 {affect_strip(victim, gsn_haste);}
+        if (is_affected(victim, gsn_quicken))
+                {affect_strip(victim, gsn_quicken);}
         if (is_affected(victim, gsn_slow))
                 {affect_strip(victim, gsn_slow);}
         if (is_affected(victim, gsn_ectoplasmic_form))
@@ -7542,7 +7544,7 @@ void spell_frenzy (int sn, int level, CHAR_DATA *caster, void *vo)
         affects.modifier  = (( level / 8) + 3);
         affect_to_char( target, &affects);
 
-        if (caster->pcdata->learned[gsn_frenzy] > 94 && !is_affected(target, gsn_haste))
+        if (caster->pcdata->learned[gsn_frenzy] > 94 && !is_affected(target, gsn_haste) && !is_affected(target, gsn_quicken))
         {
                 affects.location  = APPLY_AC;
                 affects.modifier  = level + 50;
@@ -8773,6 +8775,16 @@ void spell_haste(  int sn, int level, CHAR_DATA *ch, void *vo )
             return;
         }
 
+        if ( is_affected( victim, gsn_quicken ) )
+        {
+            if (ch != victim)
+            {
+                send_to_char("They are already hastened.\n\r",ch);
+                return;
+            }
+            return;
+        }
+
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
         {
             send_to_char( "An object cannot be hastened.\n\r", ch );
@@ -8836,6 +8848,32 @@ void spell_slow( int sn, int level, CHAR_DATA *ch, void *vo )
         }
         else {
                 affect_strip(victim, gsn_haste);
+                send_to_char("You slow down to your normal speed.", ch);
+        }
+
+        act("$c slows down to a normal speed.",victim,NULL,NULL,TO_ROOM);
+        return;
+    }
+
+    if (is_affected( victim, gsn_quicken ))
+    {
+        if (victim != ch)
+        {
+                if ( saves_spell( level, victim ) )
+                {
+                        send_to_char("Your spell fails to slow them down.\n\r",ch);
+                        act("The spell fails to slow $n down.",victim,NULL,NULL,TO_ROOM);
+                        damage(ch, victim, number_range(1, ch->level/2), gsn_slow, FALSE);
+                }
+                else {
+                        affect_strip(victim, gsn_quicken);
+                        act( "$c slows down to a normal speed.", victim, NULL, NULL, TO_ROOM );
+                        act("You start to move at your normal speed.", ch, NULL, victim, TO_VICT);
+                }
+                return;
+        }
+        else {
+                affect_strip(victim, gsn_quicken);
                 send_to_char("You slow down to your normal speed.", ch);
         }
 

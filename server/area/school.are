@@ -357,7 +357,7 @@ and protective magiks on the tired and injured recruits.
         cast fly $n
         break
     else
-        say I'm afraid I am no longer of help to you $n.
+        say I'm afraid I can no longer help you, $n.
         break
     endif
 ~

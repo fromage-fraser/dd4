@@ -681,6 +681,7 @@ int     gsn_harvest;
 int     gsn_carve;
 int     gsn_release;
 int     gsn_clairvoyance;
+int     gsn_quicken;
 
 
 /*

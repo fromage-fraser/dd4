@@ -80,3 +80,6 @@
 
 { &gsn_resist_cold,             &gsn_astral_sidestep,   95,    PRE_WEREWOLF},
 { &gsn_resist_cold,             &gsn_werewolf_base,     80,    PRE_WEREWOLF},
+
+{ &gsn_quicken,                 &gsn_fourth_attack,     97,    PRE_WEREWOLF},
+{ &gsn_quicken,                 &gsn_werewolf_base,     80,    PRE_WEREWOLF},

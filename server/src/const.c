@@ -5543,7 +5543,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "lunge", &gsn_lunge,
                 TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 18,
-                "blood-thirsty fangs", "!lunge!"
+                "bloodthirsty assault", "!Lunge!"
         },
 
         {
@@ -5557,7 +5557,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "double lunge", &gsn_double_lunge,
                 TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
                 spell_null, 0, 18,
-                "blood-thirsty fangs", "!Feed!"
+                "bloodthirsty assault", "!Feed!"
         },
 
         {
@@ -6831,6 +6831,13 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_clairvoyance, 5, 1,
                 "", "<215>Your extrasensory awareness fades.<0>"
+        },
+
+        {
+                "quicken", &gsn_quicken,
+                TYPE_STR, TAR_CHAR_SELF, POS_STANDING, 16384,
+                spell_null, 0, 0,
+                "", "You no longer move with preternatural speed."
         },
 
         /*

@@ -614,8 +614,9 @@ Gezhp, Owl and Shade
 
 {W December 2024{x
 
-- 15 new level 70+ spells and skills now enabled for all classes. 4 more +
+- 15 new level 70+ spells and skills now enabled for all classes. A few more +
   "bonus" system mechanic still to code.
+- Skill "quicken" added for vampires and werewolves
 
 ~
 
@@ -1227,6 +1228,14 @@ Syntax: warcry
 
 Improves a warrior's performance in combat by inducing a battle frenzy.
 A fighter will hit more often and do increased damage after making a warcry.
+~
+
+0 QUICKEN~
+Syntax: quicken
+
+Particularly powerful supernatural creatures such as vampires and werewolves can
+focus their energies to speed up their metabolism for a period of time, gaining
+superhuman levels of swiftness.
 ~
 
 0 BERSERK~
@@ -5891,7 +5900,7 @@ fourth attack           enhanced hit            dual
 dodge {Y*{x                 parry                   wolf form
 howl                    wolfbite                ravage
 swim                    enhanced swiftness      target
-resist cold
+resist cold             quicken
 
 {Y*{x The skill 'dodge' is only available in normal form.
 ~
@@ -5911,7 +5920,7 @@ dual                    climb                   resist magic
 deter                   fear                    resist toxin
 hunt                    double lunge            aura of fear
 stalk                   enhanced swiftness      target
-resist cold
+resist cold             quicken
 
 {Y*{x The skill 'feed' is automatically gained by vampires.
 ~
