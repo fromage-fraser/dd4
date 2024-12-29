@@ -6937,6 +6937,7 @@ These chants are divided into combat and non-combat groups:
         enfeeblement        protection
         pain                battle
                             vigour
+                            dragonsbane
 ~
 
 0 'CHANT OF ENFEEBLEMENT' ENFEEBLEMENT~
@@ -6974,6 +6975,14 @@ Using this chant, the bard manages to prepare him or herself for battle in
 such a way as to make themselves more dextrous and hence able to perform
 more moves during combat.
 ~
+
+0 'CHANT OF DRAGONSBANE' DRAGONSBANE~
+Syntax: chant dragonsbane
+
+This chant prepares the bard for a fight with dragons, giving them strong
+resistance to a variety of breath weapons.
+~
+
 
 0 CLASSIFY~
 Syntax: classify <<object>
@@ -7078,6 +7087,7 @@ song of revelation      song of rejuvenation    song of sustenance
 song of tranquility     song of shadows         song of flight
 chant of battle         chant of pain           chant of enfeeblement
 chant of protection     chant of vigour         dual
+chant of dragonsbane
 ~
 
 0 KNOWLEDGE~

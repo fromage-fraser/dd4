@@ -682,6 +682,7 @@ int     gsn_carve;
 int     gsn_release;
 int     gsn_clairvoyance;
 int     gsn_quicken;
+int     gsn_chant_of_dragonsbane;
 
 
 /*

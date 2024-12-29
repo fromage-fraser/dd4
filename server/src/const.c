@@ -2725,6 +2725,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_chant_of_enfeeblement,                   0 },
         { &gsn_chant_of_battle,                         0 },
         { &gsn_chant_of_protection,                     0 },
+        { &gsn_chant_of_dragonsbane,                    0 },
 
         { &gsn_group_herb_lore,                         0 },
         { &gsn_gather_herbs,                            0 },
@@ -6838,6 +6839,13 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_STR, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "You no longer move with preternatural speed."
+        },
+
+        {
+                "chant of dragonsbane", &gsn_chant_of_dragonsbane,
+                TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
+                spell_null, 0, 0,
+                "chant of dragonsbane", "Your dragonsbane chant ends."
         },
 
         /*

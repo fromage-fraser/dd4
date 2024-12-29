@@ -3084,7 +3084,10 @@ void do_chant(CHAR_DATA *ch, char *arg)
                 }
 
                 if (is_affected(ch, gsn_chant_of_protection ))
+                {
+                        send_to_char( "You are already affected by a chant of protection.\n\r", ch );
                         return;
+                }
 
                 send_to_char( "You complete your chant of protection.\n\r", ch );
                 affect_strip(ch, gsn_sanctuary);
@@ -3124,7 +3127,10 @@ void do_chant(CHAR_DATA *ch, char *arg)
                 }
 
                 if( is_affected( ch, gsn_chant_of_battle ) )
+                {
+                        send_to_char( "You are already affected by a chant of battle.\n\r", ch );
                         return;
+                }
 
                 send_to_char( "You complete your battle chant.\n\r", ch );
 
@@ -3136,6 +3142,38 @@ void do_chant(CHAR_DATA *ch, char *arg)
                 affect_to_char( ch, &af );
 
                 af.location     = APPLY_DAMROLL;
+                affect_to_char( ch, &af );
+        }
+
+        else if( is_name( arg, "dragonsbane" ) )
+        {
+                if( ch->fighting )
+                {
+                        send_to_char( "You can't chant that while you're fighting!\n\r", ch );
+                        return;
+                }
+
+                act( "$n begins to chant loudly.", ch, NULL, NULL, TO_ROOM );
+
+                if( number_percent() > ch->pcdata->learned[gsn_chant_of_dragonsbane] )
+                {
+                        send_to_char( "Your dragonsbane chant fails miserably.\n\r", ch );
+                        return;
+                }
+
+                if( is_affected( ch, gsn_dragon_shield ) )
+                {
+                        send_to_char( "The chant of dragonsbane confers no benefit on you.\n\r", ch );
+                        return;
+                }
+
+                send_to_char( "You complete your dragonsbane chant.\n\r", ch );
+
+                af.type         = gsn_dragon_shield;
+                af.duration     = 3 + ch->level/10;
+                af.modifier     = 0;
+                af.bitvector    = 0;
+                af.location     = APPLY_NONE;
                 affect_to_char( ch, &af );
         }
 
@@ -3156,7 +3194,10 @@ void do_chant(CHAR_DATA *ch, char *arg)
                 }
 
                 if( is_affected( ch, gsn_chant_of_vigour ) )
+                {
+                        send_to_char( "You are already affected by a chant of vigour.\n\r", ch );
                         return;
+                }
 
                 send_to_char( "You complete your chant of vigour.\n\r", ch );
                 affect_strip(ch, gsn_haste);
