@@ -372,9 +372,9 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   606     /* 605 +1 for quicken 28/12/24 */
-#define MAX_PRE_REQ                 1567    /* +2 Werewolf skills 28/12/24 */
-#define MAX_SPELL_GROUP             465     /* +1 Infernalist skills Owl 15/12/24 */
+#define MAX_SKILL                   607     /* 606 +1 for chant of dragonsbane 29/12/24 */
+#define MAX_PRE_REQ                 1569    /* +2 Bard skills 29/12/24 */
+#define MAX_SPELL_GROUP             466     /* +1 Bard skills Owl 29/12/24 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
 #define MAX_VAMPIRE_GAG             27      /* 26 + 1 for 'swallow' | ugly vampire/werewolf hack */
@@ -3932,6 +3932,7 @@ extern int gsn_carve;
 extern int gsn_release;
 extern int gsn_clairvoyance;
 extern int gsn_quicken;
+extern int gsn_chant_of_dragonsbane;
 
 /*
  *  Deity gsns

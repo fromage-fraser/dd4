@@ -39,7 +39,11 @@
 {&gsn_resist_heat,              &gsn_chant_of_protection,   95,     PRE_BARD},
 {&gsn_resist_heat,              &gsn_bard_base,             70,     PRE_BARD},
 
+{&gsn_chant_of_dragonsbane,     &gsn_chant_of_vigour,       95,     PRE_BARD},
+{&gsn_chant_of_dragonsbane,     &gsn_bard_base,             70,     PRE_BARD},
+
 {&gsn_resist_cold,              &gsn_resist_heat,           95,     PRE_BARD},
 {&gsn_resist_cold,              &gsn_bard_base,             80,     PRE_BARD},
+
 
 
