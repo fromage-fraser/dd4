@@ -75,3 +75,4 @@
 
 { &gsn_quicken,                  &gsn_double_lunge,      97,     PRE_VAMPIRE},
 { &gsn_quicken,                  &gsn_vampire_base,      80,     PRE_VAMPIRE},
+
