@@ -619,7 +619,8 @@ Gezhp, Owl and Shade
 - Skill "quicken" added for vampires and werewolves
 - Chant "dragonsbane" added for bards
 - Bat form added for vampires
-- Tenketsu (pressure-point strike) added for martial artists
+- tenketsu (pressure-point strike) added for martial artists
+- 'resolve' IMM skill for resolving IPs added
 
 ~
 
@@ -3316,6 +3317,12 @@ Syntax: owhere <<object>
 OWHERE shows you the locations of all objects with a particular name.
 ~
 
+102 RESOLVE~
+Syntax: resolve <<IP number>
+
+RESOLVE allows imms to resolve IP addresses in-game.
+~
+
 102 MWHERE~
 Syntax: mwhere <<name>
 
@@ -5158,7 +5165,6 @@ This advanced skill is a pressure-point hand strike that will result in
 temporary paralysis of its victim if successful.  A successful strike of this
 kind will inflict moderate-to-heavy damage.
 ~
-
 
 0 KANSETSU~
 Syntax: kansetsu <<victim>

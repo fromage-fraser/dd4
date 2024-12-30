@@ -684,6 +684,7 @@ int     gsn_clairvoyance;
 int     gsn_quicken;
 int     gsn_chant_of_dragonsbane;
 int     gsn_tenketsu;
+int     gsn_resolve;
 
 
 /*
