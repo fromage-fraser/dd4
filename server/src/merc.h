@@ -372,7 +372,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   608     /* 607 +1 for tenketsu 31/12/24 */
+#define MAX_SKILL                   609     /* 608 +1 for resolve 31/12/24 */
 #define MAX_PRE_REQ                 1572    /* +2 for tenketsu (martial artist) 31/12/24 */
 #define MAX_SPELL_GROUP             468     /* +1 martial artist skill Owl 31/12/24 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
@@ -3936,6 +3936,7 @@ extern int gsn_clairvoyance;
 extern int gsn_quicken;
 extern int gsn_chant_of_dragonsbane;
 extern int gsn_tenketsu;
+extern int gsn_resolve;
 
 /*
  *  Deity gsns
@@ -4561,6 +4562,7 @@ DECLARE_DO_FUN( do_rfind                        );
 DECLARE_DO_FUN( do_target                       );      /* to target strikes to body areas - Owl */
 DECLARE_DO_FUN( do_harvest                      );      /* basically gather for smokeables - Owl */
 DECLARE_DO_FUN( do_carve                        );      /* make pipes for Druid/Ranger - Owl */
+DECLARE_DO_FUN( do_resolve                      );      /* Resolve IP addresses - Owl */
 
 /*
  * Spell functions.

@@ -6856,6 +6856,13 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "<15><556>pressure-point strike<0>", "!Tenketsu!"
         },
 
+        {
+                "resolve", &gsn_resolve,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
+                spell_null, 0, 0,
+                "", "!Resolve!"
+        },
+
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
          */

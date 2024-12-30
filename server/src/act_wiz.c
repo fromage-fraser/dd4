@@ -29,6 +29,10 @@
 #include <time.h>
 #include "merc.h"
 
+#include <netdb.h>
+#include <arpa/inet.h>
+#include <sys/socket.h>
+
 
 BAN_DATA *ban_free;
 BAN_DATA *ban_list;
@@ -142,6 +146,49 @@ void do_bamfout( CHAR_DATA *ch, char *argument )
         }
 
         return;
+}
+
+void do_resolve(CHAR_DATA *ch, char *argument) {
+    char ip_address[MAX_INPUT_LENGTH];
+    struct sockaddr_in sa;
+    char host[NI_MAXHOST];
+
+    if ( !authorized( ch, gsn_resolve ) )
+        return;
+
+    if ( IS_NPC( ch ) )
+        return;
+
+    // Check if an argument is provided
+    if (argument[0] == '\0') {
+        send_to_char("Syntax: resolve <<IP address>\n\r", ch);
+        return;
+    }
+
+    // Get the IP address from the argument
+    strncpy(ip_address, argument, MAX_INPUT_LENGTH - 1);
+    ip_address[MAX_INPUT_LENGTH - 1] = '\0';
+
+    // Populate the sockaddr_in structure
+    memset(&sa, 0, sizeof(sa));
+    sa.sin_family = AF_INET;
+
+    // Convert IP address to binary form
+    if (inet_pton(AF_INET, ip_address, &sa.sin_addr) <= 0) {
+        send_to_char("Invalid IP address.\n\r", ch);
+        return;
+    }
+
+    // Resolve the hostname
+    if (getnameinfo((struct sockaddr *)&sa, sizeof(sa), host, sizeof(host), NULL, 0, 0) != 0) {
+        send_to_char("Unable to resolve hostname.\n\r", ch);
+        return;
+    }
+
+    // Send the resolved hostname back to the IMM
+    char buf[MAX_STRING_LENGTH];
+    snprintf(buf, MAX_STRING_LENGTH, "The hostname for IP %s is: %s\n\r", ip_address, host);
+    send_to_char(buf, ch);
 }
 
 
