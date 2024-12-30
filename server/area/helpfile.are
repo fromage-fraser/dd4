@@ -5166,7 +5166,6 @@ temporary paralysis of its victim if successful.  A successful strike of this
 kind will inflict moderate-to-heavy damage.
 ~
 
-
 0 KANSETSU~
 Syntax: kansetsu <<victim>
 
@@ -6067,6 +6066,7 @@ enhanced hit            whirlwind               push
 acrobatics              hide                    sneak
 lore                    advanced consider       enhanced swiftness
 target                  enhanced critical       tenketsu
+
 ~
 
 -1 SDRUID~
