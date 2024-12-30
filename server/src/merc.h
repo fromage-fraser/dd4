@@ -347,7 +347,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define MAX_STAT                          32    /* 0->31  - Shade */
 #define MAX_CLAN                           7
 #define MAX_CLAN_LEVEL                     3
-#define MAX_FORM                          20
+#define MAX_FORM                          21    /* 20 + 1 for FORM_BAT --Owl 30/12/24 */
 #define MAX_CHANNELS                      11    /* The number of comms channels we currently have -Owl 22/7/22 */
 #define MAX_8BIT_COLORS                  521    /* Number of entries in color_table_8bit in const.c */
 #define MAX_LEVEL                        106
@@ -372,12 +372,12 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   607     /* 606 +1 for chant of dragonsbane 29/12/24 */
-#define MAX_PRE_REQ                 1569    /* +2 Bard skills 29/12/24 */
-#define MAX_SPELL_GROUP             466     /* +1 Bard skills Owl 29/12/24 */
+#define MAX_SKILL                   607     /* 606 +1 for bat form 30/12/24 */
+#define MAX_PRE_REQ                 1570    /* +1 bat form 30/12/24 */
+#define MAX_SPELL_GROUP             467     /* +1 Vampire form skill Owl 30/12/24 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
-#define MAX_VAMPIRE_GAG             27      /* 26 + 1 for 'swallow' | ugly vampire/werewolf hack */
+#define MAX_VAMPIRE_GAG             25      /* 26 - 1 so vamps get morph again for bat form | ugly vampire/werewolf hack */
 
 /* Define the levels for items - Brutus */
 #define ITEM_SCORE_LEGENDARY    900
@@ -1995,6 +1995,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define FORM_GRIFFIN               18
 #define FORM_WOLF                  19
 #define FORM_DIREWOLF              14
+#define FORM_BAT                   20
 #define FORM_NONE                  MAX_FORM + 1
 #define FORM_ALL                   MAX_FORM + 2
 
@@ -2010,6 +2011,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define OBJ_HYDRA_TEETH            58
 #define OBJ_SNAKE_BITE             59
 #define OBJ_PHOENIX_BEAK           500
+#define OBJ_BAT_FANGS              578
 
 /* this will be for the quest mobs */
 #define QUEST_JUN1                 1

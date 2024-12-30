@@ -1641,7 +1641,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                 strcat( buf1, buf );
 
 
-                sprintf( buf, "Align: {W%d{x  Exp: {W%d{x  Class: {W%d{x ({G%s{x)  SubCl: {W%d{x ({G%s{x)\n\rAge: {W%d{x  Fame: {W%d{x  Form: {W%s{x  Aggro_dam: {R%d{x  Rage: {R%d{x\n\r",
+                sprintf( buf, "Align: {W%d{x  Exp: {W%d{x  Class: {W%d{x ({G%s{x)  SubCl: {W%d{x ({G%s{x)\n\rAge: {W%d{x  Fame: {W%d{x  Form: {W%s{x  Aggro_dam: {R%d{x  Rage: {R%d{w/{r%d{x\n\r",
                         victim->alignment,
                         (level_table[victim->level].exp_total) - victim->exp,
                         victim->class,
@@ -1652,7 +1652,8 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         !IS_NPC( victim ) ? victim->pcdata->fame : 0,
                         extra_form_name(victim->form),
                         victim->aggro_dam,
-                        victim->rage);
+                        victim->rage,
+                        victim->max_rage);
                 strcat( buf1, buf );
 
                 sprintf(buf, "Str pracs: {W%d{x  Int pracs: {W%d{x  Bank: {Y%d{x  Bounty: {Y%d{x\n\rCurrent quest points: {C%d{x  Total quest points: {C%d{x  Quest timer: {C%d{x\n\r",
@@ -3643,6 +3644,7 @@ void do_restore( CHAR_DATA *ch, char *argument )
                         victim->move = victim->max_move;
                         victim->pcdata->condition[COND_FULL] = ( MAX_FOOD - 10);
                         victim->pcdata->condition[COND_THIRST] = MAX_DRINK;
+                        victim->rage = victim->max_rage;
                         update_pos( victim );
                         act( "$n has restored you.", ch, NULL, victim, TO_VICT );
                 }
@@ -3681,6 +3683,7 @@ void do_restore( CHAR_DATA *ch, char *argument )
                         victim->move = victim->max_move;
                         victim->pcdata->condition[COND_FULL] = MAX_FOOD;
                         victim->pcdata->condition[COND_THIRST] = MAX_DRINK;
+                        victim->rage = victim->max_rage;
                         update_pos( victim );
                         act( "$n has restored you.", ch, NULL, victim, TO_VICT );
                 }
@@ -3703,6 +3706,7 @@ void do_restore( CHAR_DATA *ch, char *argument )
 
                 victim->aggro_dam = 0;
                 victim->move = victim->max_move;
+                victim->rage = victim->max_rage;
 
                 update_pos( victim );
                 act( "$n has restored you.", ch, NULL, victim, TO_VICT );

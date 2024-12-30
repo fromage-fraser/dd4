@@ -3805,6 +3805,7 @@ char *extra_form_name (int form)
         if ( form == FORM_DRAGON          ) return "dragon";
         if ( form == FORM_FLY             ) return "fly";
         if ( form == FORM_GRIFFIN         ) return "griffin";
+        if ( form == FORM_BAT             ) return "bat";
 
         return "none";
 }
@@ -3831,6 +3832,7 @@ int extra_form_int (char *name)
         if (!strncmp(name, "dragon", strlen(name)))     form = FORM_DRAGON;
         if (!strncmp(name, "fly", strlen(name)))        form = FORM_FLY;
         if (!strncmp(name, "griffin", strlen(name)))    form = FORM_GRIFFIN;
+        if (!strncmp(name, "bat", strlen(name)))        form = FORM_BAT;
 
         return form;
 }
@@ -3967,7 +3969,7 @@ int form_skill_allow (CHAR_DATA *ch, int sn)
 
         if (ch->sub_class == SUB_CLASS_WEREWOLF)
         {
-                for (iter = 0; iter < MAX_VAMPIRE_GAG-5; iter++)
+                for (iter = 0; iter < MAX_VAMPIRE_GAG-4; iter++)
                         if (*vampire_gag_table[iter].skill == sn)
                                 return 0;
         }

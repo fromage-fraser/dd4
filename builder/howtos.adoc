@@ -46,6 +46,7 @@ only ones that might be generally useful to people working with the codebase. +
 * <<calculate-trig-values>>?
 * <<target-body-parts>>?
 * <<check-if-switched>>?
+* <<add-new-form-vamps-werewolves>>?
 
 {nbsp} +
 {nbsp} +
@@ -1353,3 +1354,92 @@ if (ch->desc != NULL)
 These checks have been added to the `mob_commands.c` imm-like commands, (`mpgoto` +
 etc) but may need to be added elsewhere to prevent players possessing mobs from +
 getting some access to skills/spells etc. +
+
+== Add a new form for vampires or werewolves [[add-new-form-vamps-werewolves]]
+
+Add your new form to `merc.h` with a unique number as below.  Increase `MAX_FORM` +
+appropriately. +
+
+[source, "c"]
+#define FORM_NEWFORM             16
+#define MAX_FORM                 21    /* 20 + 1 for FORM_NEWFORM --Owl 30/12/24 */
+
+Add entries for your new form to the `handler.c` functions `extra_form_name` and +
+`extra_form_int` +
+
+If the form comes with particular skills, add them to the following table in +
+`const.c`, and increase the value of `MAX_FORM_SKILL` appropriately: +
+
+[source, "c"]
+struct form_skill_struct form_skill_table [ MAX_FORM_SKILL ]
+
+You will need to adjust the following table in `const.c` to represent what wear +
+locations your form has available.  The form number is an index into this table, +
+so the new entry must be placed in the correct order. +
+
+[source, "c"]
+const struct loc_wear_struct form_wear_table [MAX_FORM] =
+
+Modify the `do_morph` function in `sft.c` +
+You will have to adjust one of these checks: +
+
+[source, "c"]
+if( ch->sub_class == SUB_CLASS_VAMPIRE && form != FORM_NORMAL && form != FORM_BAT )
+{
+        send_to_char( "You can no longer change into that form.\n\r", ch );
+        return;
+}
+
+[source, "c"]
+if (ch->sub_class == SUB_CLASS_WEREWOLF)
+{
+        if (form != FORM_NORMAL && form != FORM_WOLF)
+        {
+                send_to_char ("You may only morph between wolf and normal forms.\n\r", ch);
+                return;
+        }
+        if (IS_FULL_MOON && form == FORM_NORMAL)
+        {
+                send_to_char("Not while the moon is full.\n\r", ch);
+                return;
+        }
+}
+
+Add your new form to the `switch (old_form)` and `switch (form)` statements +
+
+Create the morph function for your new form in `sft.c` +
+e.g. `void do_morph_newform (CHAR_DATA *ch, bool to_form)`
+
+Easiest to copy another form’s morph function and modify it as required. +
+
+Remember to remove any “trauma” effects where they are to body parts that don’t +
+exist in your form, i.e. snake form will strip any arm or leg trauma. +
+
+This is a good time to create the `gsn_` for your form. +
+
+Add the form to the `&gsn_group_forms` list in `const.c`, then increase +
+`MAX_SPELL_GROUP` in `merc.h` by 1. +
+
+Add an entry to the skill table for the form in the appropriate location in +
+`const.c`.  Then increase `MAX_SKILL` by 1. +
+
+[source, "c"]
+{
+        "new form", &gsn_form_new,
+        TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
+        spell_null, 200, 0,
+        "", "!Form New!"
+},
+
+Add `int gsn_form_newform;` to “Form knowledge gsns” in `db.c` +
+Add `extern int gsn_form_bat;` to `merc.h` +
+Add the pre-req for the form to either the vampire or werewolf pre-req file. +
+Increase `MAX_PRE_REQ` by the number of pre-reqs you added. +
+
+Write a help entry for your new form to `helpfile.are`, and add it to either the +
+`SVAMPIRE` or `SWEREWOLF` skill lists.  Also update the `CHANGES` entry to note +
+it has been added. +
+
+`0 'NEW FORM'~` +
+`The NEW FORM is very formlike and can do a lot of FORMING.` +
+`~` +

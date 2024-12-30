@@ -70,6 +70,8 @@
 { &gsn_enhanced_swiftness,       &gsn_double_lunge,      95,     PRE_VAMPIRE},
 { &gsn_enhanced_swiftness,       &gsn_vampire_base,      70,     PRE_VAMPIRE},
 
+{ &gsn_form_bat,                 &gsn_vampire_base,      70,     PRE_VAMPIRE},
+
 { &gsn_resist_cold,              &gsn_resist_magic,      95,     PRE_VAMPIRE},
 { &gsn_resist_cold,              &gsn_vampire_base,      80,     PRE_VAMPIRE},
 
