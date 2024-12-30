@@ -953,13 +953,6 @@ int rage_gain( CHAR_DATA *ch )
                         do_morph(ch, "normal");
                 }
 
-                if ( ch->rage < (ch->level / 10)
-                &&   is_affected(ch, gsn_quicken) )
-                {
-                        affect_strip(ch, gsn_quicken);
-                        send_to_char("You are too blood-starved to maintain your speed--you slow down.", ch);
-                }
-
                 if (!ch->pcdata->condition[COND_THIRST] && ch->level < LEVEL_HERO)
                         gain *= 2;
 

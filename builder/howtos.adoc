@@ -47,6 +47,7 @@ only ones that might be generally useful to people working with the codebase. +
 * <<target-body-parts>>?
 * <<check-if-switched>>?
 * <<add-new-form-vamps-werewolves>>?
+* <<add-new-martial-artist-move>>?
 
 {nbsp} +
 {nbsp} +
@@ -1444,3 +1445,56 @@ it has been added. +
 `The NEW FORM is very formlike and can do a lot of FORMING.` +
 `~` +
 
+== Add a new combat move for martial artists [[add-new-martial-artist-move]]
+
+The skill must be added to the `gsn_group_arts` list and the `skill_table` in +
+`const.c`.  Increase `MAX_SKILL` and `MAX_SPELL_GROU`P in `merc.h` appropriately. +
+
+Add `int     gsn_newcombatmove;` to `db.c` +
+
+Add a line similar to the following to `interp.c` +
+
+`{ "newcombatmove",     do_newcombatmove,     POS_FIGHTING,    0,  LOG_NORMAL },` +
+
+Add lines similar to the following to `merc.h` +
+
+`extern int gsn_newcombatmove;` +
+`DECLARE_DO_FUN( do_newcombatmove                        );` +
+
+Significant changes must be made to `skill.c` +
+
+Declare function at top of `skill.c` like: +
+
+[source, "c"]
+void newcombatmove args((CHAR_DATA *ch, CHAR_DATA *victim));
+
+Create a counter for the move under “Record unique moves” +
+
+`int combo_newcombatmove;` +
+
+zero it in `reset_combo_flags()` +
+
+`combo_newcombatmove          = 0;` +
+
+Create lookup const in `do_combo` +
+
+`const int sn_newcombatmove   = skill_lookup("newcombatmove");` +
+
+add `else if` in `do_combo` +
+
+[source, "c"]
+else if (is_name(arg, "newcombatmove"))
+    sn = sn_newcombatmove;
+
+There will be a long `if sn == sn_newcombomove` statement to add in `do_combo`. +
+Use a hand strike as a template if you’re making a new hand strike, or a kick +
+if you’re making a new kick. +
+
+You will need to add `do_newcombatmove` and `newcombatmove` functions later in +
+the file. +
+
+Add pre-reqs for the skill to `pre_req-artist.c`.  Increase `MAX_PRE_REQ` in +
+`merc.h` by the number of pre-reqs you added. +
+
+Add helpfile entries for the skill itself, `SMARTIAL`, and under the `COMBO` help. +
+Update `CHANGES` to reflect your skill has been added. +

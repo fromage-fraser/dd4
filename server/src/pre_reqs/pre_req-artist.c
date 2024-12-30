@@ -81,6 +81,9 @@
 {&gsn_enhanced_critical,        &gsn_enhanced_swiftness,95,     PRE_ARTIST},
 {&gsn_enhanced_critical,        &gsn_martist_base,      80,     PRE_ARTIST},
 
+{&gsn_tenketsu,                 &gsn_group_arts,        97,     PRE_ARTIST},
+{&gsn_tenketsu,                 &gsn_martist_base,      80,     PRE_ARTIST},
+
 
 
 

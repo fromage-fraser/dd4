@@ -252,6 +252,7 @@ const struct cmd_type cmd_table [] =
         { "strangle",           do_strangle,    POS_FIGHTING,    0,  LOG_NORMAL },
         { "swoop",              do_swoop,       POS_FIGHTING,    0,  LOG_NORMAL },
         { "suck",               do_suck,        POS_FIGHTING,    0,  LOG_NORMAL },
+        { "tenketsu",           do_tenketsu,    POS_FIGHTING,    0,  LOG_NORMAL },
         { "tetsui",             do_tetsui,      POS_FIGHTING,    0,  LOG_NORMAL },
         { "thrust",             do_thrust,      POS_FIGHTING,    0,  LOG_NORMAL },
         { "transfix",           do_transfix,    POS_STANDING,    0,  LOG_NORMAL },
@@ -489,9 +490,9 @@ const struct cmd_type cmd_table [] =
         /*
          * Clan commands
          */
-        { "clantalk",   do_clantalk,    POS_SLEEPING,   0,   LOG_NORMAL  },
-        { ">",          do_clantalk,    POS_SLEEPING,       0,   LOG_NORMAL  },
-        { "cscore",     do_cscore,      POS_SLEEPING,       0,   LOG_NORMAL },
+        { "clantalk",   do_clantalk,    POS_SLEEPING,   0,   LOG_NORMAL },
+        { ">",          do_clantalk,    POS_SLEEPING,   0,   LOG_NORMAL },
+        { "cscore",     do_cscore,      POS_SLEEPING,   0,   LOG_NORMAL },
         { "guild",      do_guild,       POS_SLEEPING,   0,   LOG_ALWAYS },
         { "home",       do_home,        POS_FIGHTING,   0,   LOG_NORMAL },
         { "leader",     do_leader,      POS_DEAD,       L_APP,  LOG_ALWAYS },

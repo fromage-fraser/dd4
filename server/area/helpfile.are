@@ -619,6 +619,7 @@ Gezhp, Owl and Shade
 - Skill "quicken" added for vampires and werewolves
 - Chant "dragonsbane" added for bards
 - Bat form added for vampires
+- Tenketsu (pressure-point strike) added for martial artists
 
 ~
 
@@ -5125,7 +5126,7 @@ The combo skill lets the martial artist combo together up to four of his
 skills in one attack round.  Only the skills that the Martial Artist gets
 are able to be used.  Those skills are:
 
-        ATEMI   SHUTO   KANSETSU   TETSUI   YOKOGERI   MAWASIGERI
+    ATEMI   SHUTO   KANSETSU   TETSUI   YOKOGERI   MAWASIGERI   TENKETSU
 
 Individual help entries exist for these skills.
 
@@ -5149,6 +5150,15 @@ Syntax: atemi
 This skill makes a quick strike toward your victim.  It is the most basic of the
 MARTIAL ARTIST skills, hence causes only moderate damage.
 ~
+
+0 TENKETSU~
+Syntax: tenketsu
+
+This advanced skill is a pressure-point hand strike that will result in
+temporary paralysis of its victim if successful.  A successful strike of this
+kind will inflict moderate-to-heavy damage.
+~
+
 
 0 KANSETSU~
 Syntax: kansetsu <<victim>
@@ -5924,7 +5934,6 @@ hunt                    double lunge            aura of fear
 stalk                   enhanced swiftness      target
 resist cold             quicken                 bat form
 
-
 {Y*{x The skill 'feed' is automatically gained by vampires.
 ~
 
@@ -6050,7 +6059,8 @@ fast healing            yokogeri                mawasigeri
 enhanced hit            whirlwind               push
 acrobatics              hide                    sneak
 lore                    advanced consider       enhanced swiftness
-target                  enhanced critical
+target                  enhanced critical       tenketsu
+
 ~
 
 -1 SDRUID~

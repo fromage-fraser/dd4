@@ -2396,6 +2396,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_shuto,                                   0 },
         { &gsn_yokogeri,                                0 },
         { &gsn_mawasigeri,                              0 },
+        { &gsn_tenketsu,                                0 },
 
         { &gsn_group_combat,                            0 },
         { &gsn_kiai,                                    0 },
@@ -6846,6 +6847,13 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "chant of dragonsbane", "Your dragonsbane chant ends."
+        },
+
+        {
+                "tenketsu", &gsn_tenketsu,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
+                spell_null, 0, 8,
+                "<15><556>pressure-point strike<0>", "!Tenketsu!"
         },
 
         /*
