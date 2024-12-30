@@ -934,11 +934,24 @@ int rage_gain( CHAR_DATA *ch )
 
         if (ch->sub_class == SUB_CLASS_VAMPIRE)
         {
-
                 if (ch->rage < ch->max_rage / 10)
-                        send_to_char( "You feel weak - you crave {Rblood!{x\n\r", ch);
+                        send_to_char("You feel weak - you crave {Rblood!{x\n\r", ch);
                 else if (ch->rage < ch->max_rage / 4)
-                        send_to_char(" You feel weakened - the power of your {Rlunge{x is reduced!\n\r", ch);
+                        send_to_char("You feel weakened - the power of your {Rlunge{x is reduced!\n\r", ch);
+
+                if ( ch->rage < (ch->level / 10)
+                &&   is_affected(ch, gsn_quicken) )
+                {
+                        affect_strip(ch, gsn_quicken);
+                        send_to_char("You are too blood-starved to maintain your speed--you slow down.", ch);
+                }
+
+                if ( ch->rage < (ch->level / 10)
+                &&   ch->form == FORM_BAT)
+                {
+                        send_to_char("<88><556><558>You are too blood-starved to remain in bat form.<559><557><0>", ch);
+                        do_morph(ch, "normal");
+                }
 
                 if ( ch->rage < (ch->level / 10)
                 &&   is_affected(ch, gsn_quicken) )

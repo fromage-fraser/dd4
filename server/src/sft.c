@@ -2109,6 +2109,67 @@ void do_morph_fly (CHAR_DATA *ch, bool to_form)
         }
 }
 
+void do_morph_bat (CHAR_DATA *ch, bool to_form)
+{
+        OBJ_DATA *fangs;
+        AFFECT_DATA af;
+        AFFECT_DATA *paf;
+
+        if (to_form)
+        {
+                /* Remove any arm trauma, bat form doesn't have arms */
+                affect_strip(ch, gsn_arm_trauma);
+
+                fangs = create_object(get_obj_index(OBJ_BAT_FANGS), ch->level, "common", CREATED_NO_RANDOMISER);
+                obj_to_char(fangs, ch);
+                form_equip_char(ch, fangs, WEAR_WIELD);
+
+                for ( paf = ch->affected; paf; paf = paf->next )
+                {
+
+                        if ( paf->deleted )
+                                continue;
+
+                        if (paf->duration < 0 )
+                                continue;
+
+                        if (effect_is_prayer(paf))
+                                continue;
+
+                        affect_remove( ch, paf );
+                }
+
+                if ((ch->pcdata->learned[gsn_form_bat]) || (ch->pcdata->learned[gsn_fly]))
+                {
+                        affect_strip(ch, gsn_fly);
+                        affect_strip(ch, gsn_levitation);
+                        REMOVE_BIT(ch->affected_by, AFF_FLYING);
+
+                        send_to_char("Your new form enables you to fly.\n\r", ch);
+
+                        af.type      = gsn_form_bat;
+                        af.duration  = -1;
+                        af.location  = APPLY_NONE;
+                        af.modifier  = 0;
+                        af.bitvector = AFF_FLYING;
+                        affect_to_char(ch, &af);
+                        ch->rage = ( ch->rage - ( ch->level / 10 ) );
+                }
+        }
+        else
+        {
+                affect_strip(ch, gsn_form_bat);
+                REMOVE_BIT(ch->affected_by, AFF_FLYING);
+
+                fangs = get_obj_wear(ch, "fangs");
+                if (fangs)
+                {
+                        unequip_char(ch, fangs);
+                        extract_obj(fangs);
+                }
+        }
+}
+
 
 void do_morph_demon (CHAR_DATA *ch, bool to_form)
 {
@@ -2299,9 +2360,11 @@ void do_morph (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if( ch->sub_class == SUB_CLASS_VAMPIRE && form != FORM_NORMAL )
+        if( ch->sub_class == SUB_CLASS_VAMPIRE
+        &&  form != FORM_NORMAL
+        &&  form != FORM_BAT )
         {
-                send_to_char( "You can no longer change your form.\n\r", ch );
+                send_to_char( "You can no longer change into that form.\n\r", ch );
                 return;
         }
 
@@ -2351,6 +2414,14 @@ void do_morph (CHAR_DATA *ch, char *argument)
         if (ch->mana - cost < 0)
         {
                 send_to_char("You do not have enough mana.\n\r",ch);
+                return;
+        }
+
+        if ( ch->sub_class == SUB_CLASS_VAMPIRE
+        &&   form == FORM_BAT
+        &&   ch->rage < (ch->level / 10) )
+        {
+                send_to_char("<88><556><558>You are too blood-starved to morph into bat form.<559><557><0>\n\r", ch);
                 return;
         }
 
@@ -2473,6 +2544,10 @@ void do_morph (CHAR_DATA *ch, char *argument)
             case FORM_DEMON:
                 do_morph_demon(ch, FALSE);
                 break;
+
+            case FORM_BAT:
+                do_morph_bat(ch, FALSE);
+                break;
         }
 
         switch (form)
@@ -2539,6 +2614,10 @@ void do_morph (CHAR_DATA *ch, char *argument)
 
             case FORM_DEMON:
                 do_morph_demon(ch, TRUE);
+                break;
+
+            case FORM_BAT:
+                do_morph_bat(ch, TRUE);
                 break;
 
         }

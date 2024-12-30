@@ -786,10 +786,10 @@ Teeth protrude from a mouth that has been cut from an animal and dropped here.~
 #59
 fangs~
 fangs~
-A pile of fangs has been left here.~
+Some fangs have been ripped from a creature and left here.~
 ~
 5 16384|67108864 0
-1~ 10~ 15~ 11~
+1~ 10~ 15~ 10~
 1 10000 7500
 A
 2 2
@@ -1931,6 +1931,16 @@ There is a pipe here.~
 52 0 1|16384
 0~ 0~ 0~ 0~
 1 0 0
+
+#578
+fangs~
+fangs~
+Some fangs have been ripped from a bat and left here.~
+~
+5 67108864 0
+1~ 10~ 15~ 10~
+1 10000 7500
+
 
 #0
 

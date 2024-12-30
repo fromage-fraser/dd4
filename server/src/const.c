@@ -919,7 +919,8 @@ const struct loc_wear_struct form_wear_table [MAX_FORM] =
         { { 1,1,1,1,1,1,0,0,1,1,0,1,1,1,1,1,1,1,0 } }, /*  werehuman  */
         { { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } }, /*  fly  */
         { { 1,1,1,1,1,1,0,0,1,1,0,1,1,1,1,1,1,1,0 } }, /*  griffin  */
-        { { 1,1,0,1,1,0,1,0,0,1,0,1,1,1,0,1,1,1,0 } }  /*  werewolf  */
+        { { 1,1,0,1,1,0,1,0,0,1,0,1,1,1,0,1,1,1,0 } }, /*  werewolf  */
+        { { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } }  /*  bat  */
 };
 
 
@@ -1128,7 +1129,6 @@ struct vampire_gag vampire_gag_table [ MAX_VAMPIRE_GAG ] =
         {       &gsn_form_chameleon             },
         {       &gsn_form_hawk                  },
         {       &gsn_form_cat                   },
-        {       &gsn_form_bat                   },
         {       &gsn_form_snake                 },
         {       &gsn_form_scorpion              },
         {       &gsn_form_spider                },
@@ -1153,7 +1153,6 @@ struct vampire_gag vampire_gag_table [ MAX_VAMPIRE_GAG ] =
          * Need to edit has_pre_req() in act_info.c and form_skill_allow()
          * handler.c if the number of wolf-only skills is changed
          */
-        {       &gsn_morph                      },
         {       &gsn_wolfbite                   },
         {       &gsn_ravage                     },
         {       &gsn_swim                       },
@@ -2456,6 +2455,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_form_fly,                                0 },
         { &gsn_form_griffin,                            0 },
         { &gsn_form_wolf,                               0 },
+        { &gsn_form_bat,                                0 },
 
         { &gsn_group_healing,                           0 },
         { &gsn_cure_light,                              0 },
@@ -5663,7 +5663,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "fly form", &gsn_form_fly,
                 TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 200, 0,
-                "", "!Form Phoenix!"
+                "", "!Form Fly!"
         },
 
         {

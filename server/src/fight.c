@@ -1529,6 +1529,17 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
 
                                 if (!IS_NPC(victim))
                                 {
+                                        if (victim->form == FORM_BAT
+                                        &&  number_percent() <= UMAX(1, (victim->pcdata->learned[gsn_form_bat] - 5)))
+                                        {
+                                            if (!IS_NPC(ch) && !ch->gag)
+                                                act ("<180>$C flits away from your attack.<0>", ch, NULL, victim, TO_CHAR);
+
+                                            if(!IS_NPC(victim) && !victim->gag)
+                                                act ("<181>You flit away from $n's attack.<0>", ch, NULL, victim, TO_VICT);
+                                            return;
+                                        }
+
                                         if (check_acrobatics(ch, victim))
                                                 return;
 
@@ -5805,7 +5816,7 @@ void do_flee (CHAR_DATA *ch, char *argument)
                                 strip_swallow(ch);
                         }
 
-                        if (ch->form == FORM_GRIFFIN)
+                        if (ch->form == FORM_GRIFFIN || ch->form == FORM_BAT)
                         {
                                 sprintf( buf, "You escape from your opponent without futher harm.\n\r");
                                 send_to_char(buf, ch);
@@ -5818,7 +5829,8 @@ void do_flee (CHAR_DATA *ch, char *argument)
                                 gain_exp(ch, -level_table[ch->level].exp_level/100);
                         }
 
-                        if (ch->pcdata->fame > 500)
+                        if ( ch->pcdata->fame > 500
+                        &&   ch->form != FORM_BAT )
                         {
                                 if (str_cmp("Wimpy", argument))
                                 {

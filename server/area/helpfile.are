@@ -402,7 +402,7 @@ Enter thy Name: ~
 
 -1 MOTD~
 {x
-    [18 December 2024]
+    [30 December 2024]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -617,6 +617,8 @@ Gezhp, Owl and Shade
 - 15 new level 70+ spells and skills now enabled for all classes. A few more +
   "bonus" system mechanic still to code.
 - Skill "quicken" added for vampires and werewolves
+- Chant "dragonsbane" added for bards
+- Bat form added for vampires
 
 ~
 
@@ -5920,7 +5922,8 @@ dual                    climb                   resist magic
 deter                   fear                    resist toxin
 hunt                    double lunge            aura of fear
 stalk                   enhanced swiftness      target
-resist cold             quicken
+resist cold             quicken                 bat form
+
 
 {Y*{x The skill 'feed' is automatically gained by vampires.
 ~
@@ -6345,6 +6348,13 @@ The Griffin is a cross between a lion and a mighty eagle.  The form gets the
 benefit of both flight and the awesome attacking ability of the lion.  Able to
 MAUL as a tiger does, with two sets of claws the damage inflicted is immense.
 Griffins are also able to flee combat without penalty.
+~
+
+0 'BAT FORM'~
+
+BAT FORM is exclusive to high-level vampires.  It will permit the fleeing of
+combat without penalty, and while very poor at combat it is very hard for an
+opponent to land a blow on, as it flits incessantly and acroBAT(!)ically about.
 ~
 
 0 'DRAGON FORM'~
