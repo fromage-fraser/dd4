@@ -16,6 +16,7 @@ void tetsui             args((CHAR_DATA *ch, CHAR_DATA *victim));
 void shuto              args((CHAR_DATA *ch, CHAR_DATA *victim));
 void yokogeri           args((CHAR_DATA *ch, CHAR_DATA *victim));
 void mawasigeri         args((CHAR_DATA *ch, CHAR_DATA *victim));
+void tenketsu           args((CHAR_DATA *ch, CHAR_DATA *victim));
 
 
 /*
@@ -669,6 +670,7 @@ int combo_tetsui;
 int combo_shuto;
 int combo_yokogeri;
 int combo_mawasigeri;
+int combo_tenketsu;
 int combo_count;
 
 /*
@@ -684,6 +686,7 @@ void reset_combo_flags()
         combo_shuto             = 0;
         combo_yokogeri          = 0;
         combo_mawasigeri        = 0;
+        combo_tenketsu          = 0;
         combo_count             = 0;
 }
 
@@ -705,6 +708,7 @@ void do_combo (CHAR_DATA *ch, char *argument)
         const int sn_shuto      = skill_lookup("shuto");
         const int sn_yokogeri   = skill_lookup("yokogeri");
         const int sn_mawasigeri = skill_lookup("mawasigeri");
+        const int sn_tenketsu   = skill_lookup("tenketsu");
 
         if (IS_NPC(ch))
                 return;
@@ -750,6 +754,9 @@ void do_combo (CHAR_DATA *ch, char *argument)
 
                 else if (is_name(arg, "mawasigeri"))
                         sn = sn_mawasigeri;
+
+                else if (is_name(arg, "tenketsu"))
+                        sn = sn_tenketsu;
 
                 else
                         continue;
@@ -968,6 +975,37 @@ void do_combo (CHAR_DATA *ch, char *argument)
                         }
 
                         combo_last_punch = 0;
+                        continue;
+                }
+
+                if (sn == sn_tenketsu)
+                {
+                        if (number_percent() < ch->pcdata->learned[gsn_tenketsu])
+                        {
+                                if ( IS_AFFECTED(ch, AFF_ARM_TRAUMA)
+                                && ( number_percent() < ( ch->pcdata->learned[gsn_tenketsu] / 2 ) ) )
+                                {
+                                        damage(ch, victim,0, gsn_tenketsu, FALSE);
+                                        combo_last_punch = 0;
+                                }
+                                else {
+                                        tenketsu(ch, victim);
+                                        combo_last_punch = 1;
+
+                                        if (!combo_tenketsu)
+                                        {
+                                                combo_tenketsu = 1;
+                                                combo_count++;
+                                        }
+                                }
+                        }
+                        else
+                        {
+                                damage(ch, victim, 0, gsn_tenketsu, FALSE);
+                                combo_last_punch = 0;
+                        }
+
+                        combo_last_kick = 0;
                         continue;
                 }
         }
@@ -1262,6 +1300,55 @@ void do_mawasigeri (CHAR_DATA *ch, char *argument)
                 damage(ch, victim,0, gsn_mawasigeri, FALSE);
 }
 
+void do_tenketsu (CHAR_DATA *ch, char *argument)
+{
+        CHAR_DATA *victim;
+        char arg [MAX_INPUT_LENGTH];
+
+        if (IS_NPC(ch))
+                return;
+
+        if (!CAN_DO(ch, gsn_tenketsu))
+        {
+                send_to_char("You are not skilled enough.\n\r", ch);
+                return;
+        }
+
+        if (!check_blind(ch))
+                return;
+
+        if (! ch->fighting)
+        {
+                send_to_char("You aren't fighting anyone.\n\r", ch);
+                return;
+        }
+
+        one_argument(argument, arg);
+
+        victim = ch->fighting;
+
+        if (arg[0] != '\0')
+        {
+                if (!(victim = get_char_room  (ch, arg)))
+                {
+                        send_to_char("Who is your target?\n\r", ch);
+                        return;
+                }
+        }
+
+        if (is_safe(ch, victim))
+                return;
+
+        WAIT_STATE(ch, skill_table[gsn_tenketsu].beats);
+        if (number_percent() < ch->pcdata->learned[gsn_tenketsu])
+        {
+                reset_combo_flags();
+                tenketsu(ch, victim);
+        }
+        else
+                damage(ch, victim,0, gsn_tenketsu, FALSE);
+}
+
 
 void atemi (CHAR_DATA *ch, CHAR_DATA *victim)
 {
@@ -1406,6 +1493,43 @@ void mawasigeri (CHAR_DATA *ch, CHAR_DATA *victim)
         arena_commentary("$n roundhouse kicks $N.", ch, victim);
         damage(ch, victim, dam, gsn_mawasigeri, FALSE);
 }
+
+void tenketsu (CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        AFFECT_DATA af;
+        int dam = ch->level * 1.9;
+
+        if (combo_last_punch)
+                dam += dam / 5;
+
+        if (combo_count > 2 )
+                dam *= -1.5 + combo_count;
+
+        arena_commentary("$n attacks $N with a pressure-point strike.", ch, victim);
+
+        if ( !IS_AFFECTED( victim, AFF_HOLD ) )
+        {
+                af.type      = gsn_tenketsu;
+                af.duration  = 1 + ch->level / 15;
+                af.location  = APPLY_DEX;
+                af.modifier  = -5;
+                af.bitvector = AFF_HOLD;
+                affect_join( victim, &af );
+
+                af.location     = APPLY_MOVE;
+                af.modifier     = ( ch->level * -10 );
+                af.bitvector    = AFF_NO_RECALL;
+                affect_to_char(victim, &af);
+
+                if ( ch != victim )
+                        send_to_char( "<201>Your pressure-point strike successfully paralyses your victim.<0>\n\r", ch );
+
+                send_to_char( "<14>You cannot move, you are paralysed!<0>\n\r", victim );
+        }
+
+        damage(ch, victim, dam, gsn_tenketsu, FALSE);
+}
+
 
 
 void do_push (CHAR_DATA *ch, char *argument)

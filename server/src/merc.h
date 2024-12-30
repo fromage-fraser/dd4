@@ -372,9 +372,9 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   607     /* 606 +1 for bat form 30/12/24 */
-#define MAX_PRE_REQ                 1570    /* +1 bat form 30/12/24 */
-#define MAX_SPELL_GROUP             467     /* +1 Vampire form skill Owl 30/12/24 */
+#define MAX_SKILL                   608     /* 607 +1 for tenketsu 31/12/24 */
+#define MAX_PRE_REQ                 1572    /* +2 for tenketsu (martial artist) 31/12/24 */
+#define MAX_SPELL_GROUP             468     /* +1 martial artist skill Owl 31/12/24 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
 #define MAX_VAMPIRE_GAG             25      /* 26 - 1 so vamps get morph again for bat form | ugly vampire/werewolf hack */
@@ -3935,6 +3935,7 @@ extern int gsn_release;
 extern int gsn_clairvoyance;
 extern int gsn_quicken;
 extern int gsn_chant_of_dragonsbane;
+extern int gsn_tenketsu;
 
 /*
  *  Deity gsns
@@ -4494,6 +4495,7 @@ DECLARE_DO_FUN( do_switch                       );
 DECLARE_DO_FUN( do_tailwhip                     );      /* Dragon form */
 DECLARE_DO_FUN( do_tell                         );
 DECLARE_DO_FUN( do_tellmode                     );      /* No tells */
+DECLARE_DO_FUN( do_tenketsu                     );      /* Martial artist - Owl */
 DECLARE_DO_FUN( do_tetsui                       );      /* Martial artist - Brutus */
 DECLARE_DO_FUN( do_time                         );
 DECLARE_DO_FUN( do_title                        );
