@@ -281,7 +281,7 @@ void fwrite_char (CHAR_DATA *ch, FILE *fp)
         if (ch->level >= 95) {
             ch->pcdata->max_bonus = 3;
         }
-        if (ch->level == LEVEL_HERO) {
+        if (ch->level >= LEVEL_HERO) {
             ch->pcdata->max_bonus = 4;
         }
 

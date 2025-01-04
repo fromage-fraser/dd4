@@ -2878,8 +2878,7 @@ void recharge_bonuses(CHAR_DATA *ch) {
     pcdata->slept = false;
     pcdata->last_recharge = current_time;
 
-    send_to_char("You feel refreshed and your bonus actions are fully recharged.\r\n", ch);
-
+    send_to_char("<45>You feel refreshed and your bonus actions are fully recharged.\r\n<0>", ch);
 }
 
 bool check_questpoints_allow_level_gain (CHAR_DATA* ch, bool verbose)
