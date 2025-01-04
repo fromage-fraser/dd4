@@ -415,11 +415,11 @@ Enter thy Name: ~
     We're also active on a Discord server at {Yhttps://discord.gg/aGzmAWmXYb{x
     if you'd like to jump in and say hi!
 
+    {WBONUS SYSTEM IS IN{x: High-level characters now have access to a variety
+    of bonus actions, see HELP BONUS for details!
+
     {WMAJOR SKILLS/SPELLS UPDATE:{x 15 new level 70+ skills and spells added for
     PCs. Check your class skills HELP to see what they are!
-
-    {WNEW AREA:{x Omu Central is in, the second of 3 areas comprising Omu city.
-    86 new mobs, 90 new objects, 244(!) new rooms, and a new Reaver quest.
 
 
 To Enter the Dragons Domain press <<Return>.
@@ -621,6 +621,10 @@ Gezhp, Owl and Shade
 - Bat form added for vampires
 - tenketsu (pressure-point strike) added for martial artists
 - 'resolve' IMM skill for resolving IPs added
+
+{W January 2025{X
+
+- Bonus system for high-level characters is in--see HELP BONUS.
 
 ~
 
@@ -2263,6 +2267,8 @@ PROMPT <<%*> creates a prompt where %* represents the following variables:
     %x :  Total experience points
     %z :  Name of the area ("{Wz{xone") your character is in
     %e :  Experience needed to level
+    %u :  Number of bonus actions available
+    %U :  Maximum number of bonus actions possible
     %g :  Coins carried
     %a :  Alignment                  (`evil', `neutral' or `good')
     %A :  Alignment numerical value  (not shown before level 10)
@@ -2296,6 +2302,53 @@ Syntax: title
 
 Sets your title to a given string.  Typing TITLE alone will force your
 title blank.  TITLEs may be colourised, see 'HELP COLOUR3'.
+~
+
+0 WIMPY~
+Syntax: wimpy
+Syntax: wimpy <<number>
+
+WIMPY sets your wimpy value.  When your character takes damage that
+reduces your hit points below your wimpy value, you will automatically
+attempt to flee.
+
+WIMPY with no argument sets your wimpy value to 20% of your maximum hit
+points.
+
+Some monsters are wimpy.
+~
+
+0 BONUS BONUSES 'BONUS SYSTEM' 'BONUS ACTION' 'BONUS ACTIONS'~
+Syntax: bonus
+Syntax: bonus damage
+Syntax: bonus attack
+Syntax: bonus resilience
+Syntax: bonus exotic
+Syntax: bonus initiate
+
+Starting at level 75, all players start to acquire BONUS actions, ending up with
+4 by the time they achieve level 100. BONUS actions give a variety of short-term
+boosts to player offense and defence.  Once bonus actions are used up, in order
+to recharge them a player must both sleep (or meditate) and allow an entire MUD
+"day" to pass.  More types of bonus action effects become available as you
+advance, with all the below being available once you are a HERO.
+
+BONUS by itself will tell you have many bonus actions you have available, and,
+if some are used up, what you need to do to recharge them.
+
+BONUS DAMAGE provides a bonus to offensive spells and melee attacks.
+
+BONUS ATTACK provides an extra melee attack (stacks with quicken and haste) and
+offensive multi-attack spell.
+
+BONUS RESILIENCE is a temporary reduction in damage taken.
+
+BONUS EXOTIC gives broad protection against non-melee damage types--magic,
+poison, fire, gas, steam etc as well as limiting their ability to destroy
+equipment.
+
+BONUS INITIATE will increase the damage done by your initial attack on a creature
+or player.
 ~
 
 0 WIMPY~

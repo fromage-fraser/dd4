@@ -210,7 +210,7 @@ void fwrite_char (CHAR_DATA *ch, FILE *fp)
         fprintf(fp, "DamageMit   %d\n",         ch->damage_mitigation);
         fprintf(fp, "DamangeEnh  %d\n",         ch->damage_enhancement);
         fprintf(fp, "Crit        %d\n",         ch->crit);
-        fprintf(fp, "Swiftness  %d\n",          ch->swiftness);
+        fprintf(fp, "Swiftness  %d\n",         ch->swiftness);
         fprintf(fp, "ResistAcid  %d\n",         ch->resist_acid);
         fprintf(fp, "ResistLightning  %d\n",    ch->resist_lightning);
         fprintf(fp, "ResistHeat  %d\n",         ch->resist_heat);
@@ -270,6 +270,24 @@ void fwrite_char (CHAR_DATA *ch, FILE *fp)
         fprintf(fp, "ChSub       %d\n",     ch->pcdata->choose_subclass);
         fprintf(fp, "Fame        %d\n",     ch->pcdata->fame);
         fprintf(fp, "Saved       %ld\n",    ch->save_time);
+        fprintf(fp, "Bonus       %d\n",     ch->pcdata->bonus);
+
+        if (ch->level >= 75) {
+            ch->pcdata->max_bonus = 1;
+        }
+        if (ch->level >= 85) {
+            ch->pcdata->max_bonus = 2;
+        }
+        if (ch->level >= 95) {
+            ch->pcdata->max_bonus = 3;
+        }
+        if (ch->level == LEVEL_HERO) {
+            ch->pcdata->max_bonus = 4;
+        }
+
+        fprintf(fp, "Bonus_Max   %d\n",     ch->pcdata->max_bonus);
+        fprintf(fp, "Slept       %d\n",     ch->pcdata->slept);
+        fprintf(fp, "LstRecharge %ld\n",    ch->pcdata->last_recharge);
 
         if (ch->pcdata->totalqp)
                 fprintf(fp, "QPTotal     %d\n",  ch->pcdata->totalqp);
@@ -526,6 +544,10 @@ bool load_char_obj (DESCRIPTOR_DATA *d, char *name)
         ch->pcdata->review_stamp = current_time;
         ch->pcdata->pattern = 0;
         ch->pcdata->soar = 0;
+        ch->pcdata->bonus = 0;
+        ch->pcdata->max_bonus = 0;
+        ch->pcdata->slept = false;
+        ch->pcdata->last_recharge = 0;
 
         for (next = 0; next < NUMBER_DEITIES; next++)
                 ch->pcdata->deity_favour[next] = -1;
@@ -808,6 +830,8 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         KEY("Bmfin", ch->pcdata->bamfin, fread_string(fp));
                         KEY("Bmfout", ch->pcdata->bamfout, fread_string(fp));
                         KEY("Blink", ch->pcdata->blink, fread_number( fp, &stat ));
+                        KEY("Bonus", ch->pcdata->bonus, fread_number( fp, &stat ));
+                        KEY("Bonus_Max", ch->pcdata->max_bonus, fread_number( fp, &stat ));
                         KEY("Bounty", ch->pcdata->bounty, fread_number( fp, &stat ));
 
                         if (!str_cmp(word, "Boards"))
@@ -961,6 +985,7 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                     case 'L':
                         KEY("Lvl", ch->level, fread_number( fp, &stat ));
                         KEY("LngDsc", ch->long_descr, fread_string(fp));
+                        KEY("LstRecharge", ch->pcdata->last_recharge, fread_number(fp, &stat));
                         break;
 
                     case 'N':
@@ -1048,6 +1073,7 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         KEY("ShtDsc", ch->short_descr, fread_string(fp));
                         KEY("Silver", ch->silver, fread_number( fp, &stat ));
                         KEY("SbCla", ch->sub_class, fread_number( fp, &stat ));
+                        KEY("Slept", ch->pcdata->slept, fread_number( fp, &stat ));
                         KEY("SplPrac", ch->pcdata->int_prac, fread_number( fp, &stat ));
                         KEY("StatTrain", ch->pcdata->stat_train, fread_number( fp, &stat ));
                         KEY("SpellAttk", ch->pcdata->spell_attacks, fread_number( fp, &stat ));

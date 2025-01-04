@@ -1950,21 +1950,36 @@ void do_sleep (CHAR_DATA *ch, char *argument)
                 send_to_char("You sleep.\n\r", ch);
                 act ("$n sleeps.", ch, NULL, NULL, TO_ROOM);
                 ch->position = POS_SLEEPING;
+                if (!IS_NPC(ch) && ch->pcdata)
+                {
+                    ch->pcdata->slept = true;
+                }
                 break;
         }
 }
 
-
 void do_wake(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
-        char       arg [ MAX_INPUT_LENGTH ];
+        char        arg [ MAX_INPUT_LENGTH ];
+        long        current_lhour = (current_time - 650336715) / (PULSE_TICK / PULSE_PER_SECOND);
+        long        current_lday = current_lhour / 24;
+
+        long        last_lhour = (ch->pcdata->last_recharge - 650336715) / (PULSE_TICK / PULSE_PER_SECOND);
+        long        last_lday = last_lhour / 24;
 
         one_argument(argument, arg);
 
         if (arg[0] == '\0')
         {
                 do_stand(ch, argument);
+                if (!IS_NPC(ch))
+                {
+                    if ((current_lday - last_lday) >= 1 )
+                    {
+                        ch->pcdata->last_recharge = current_time;
+                    }
+                }
                 return;
         }
 
@@ -2186,6 +2201,10 @@ void do_meditate (CHAR_DATA *ch, char *argument)
                 act ("$n sits in a lotus position and begins to meditate.",
                      ch, NULL, NULL, TO_ROOM);
                 ch->position = POS_SLEEPING;
+                if (!IS_NPC(ch) && ch->pcdata)
+                {
+                    ch->pcdata->slept = true;
+                }
                 return;
         }
 
@@ -3158,7 +3177,7 @@ void do_quicken (CHAR_DATA *ch, char *argument)
 
         if ( is_affected( ch, gsn_haste ) )
         {
-                send_to_char("You are already moving superhumanly fast.\n\r",ch);
+                send_to_char("You are already moving with superhuman speed.\n\r",ch);
                 return;
         }
 

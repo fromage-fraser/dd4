@@ -495,7 +495,7 @@ int hit_gain( CHAR_DATA *ch )
                 {
                     send_to_char("<165>This environment is toxic. You should not linger here.<0>\n\r", ch);
 
-                    if (number_percent() < ch->pcdata->learned[gsn_resist_toxin] )
+                    if (number_percent() < ch->pcdata->learned[gsn_resist_toxin] || is_affected(ch, gsn_bonus_exotic) )
                     {
                         send_to_char( "<46>Yo<47>u r<48>es<49>is<48>t t<47>he <46>po<47>is<48>on <49>su<48>rg<47>in<46>g t<47>hr<48>ou<49>gh <48>yo<47>ur <46>ve<47>in<48>s.<0>\n\r",ch );
                     }
@@ -668,6 +668,11 @@ int hit_gain( CHAR_DATA *ch )
                                 }
                         }
                 }
+        }
+
+        if (!IS_NPC(ch))
+        {
+            recharge_bonuses(ch);
         }
 
         if (IS_AFFECTED(ch, AFF_HEART_TRAUMA))
@@ -2847,7 +2852,35 @@ void auction_update ()
         sprintf (last_function, "leaving auction_update");
 }
 
+void recharge_bonuses(CHAR_DATA *ch) {
+    if (IS_NPC(ch)) return;
 
+    PC_DATA *pcdata = ch->pcdata;
+    if (!pcdata) return;
+
+    long current_lhour = (current_time - 650336715) / (PULSE_TICK / PULSE_PER_SECOND);
+    long current_lday = current_lhour / 24;
+
+    long last_lhour = (pcdata->last_recharge - 650336715) / (PULSE_TICK / PULSE_PER_SECOND);
+    long last_lday = last_lhour / 24;
+
+    if ((current_lday - last_lday) < 1) {
+        /* send_to_char("Not enough time has passed to recharge your bonuses.\r\n", ch); */
+        return;
+    }
+
+    if (!pcdata->slept) {
+        /* send_to_char("You have not slept since your last recharge.\r\n", ch); */
+        return;
+    }
+
+    pcdata->bonus = pcdata->max_bonus;
+    pcdata->slept = false;
+    pcdata->last_recharge = current_time;
+
+    send_to_char("You feel refreshed and your bonus actions are fully recharged.\r\n", ch);
+
+}
 
 bool check_questpoints_allow_level_gain (CHAR_DATA* ch, bool verbose)
 {

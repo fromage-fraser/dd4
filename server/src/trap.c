@@ -858,6 +858,10 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                 if ( IS_AFFECTED(ch, AFF_SANCTUARY) )
                         dam /= 2;
 
+                if (!IS_NPC(ch)
+                &&   IS_AFFECTED(ch, AFF_BONUS_RESILIENCE))
+                        dam -= dam / 3;
+
                 if ( dam < 0 )
                         dam = 0;
 
@@ -956,6 +960,10 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
 
                         if ( IS_AFFECTED(wch, AFF_SANCTUARY) )
                                 dam /= 2;
+
+                        if (!IS_NPC(ch)
+                        &&   IS_AFFECTED(ch, AFF_BONUS_RESILIENCE))
+                                dam -= dam / 3;
 
                         if ( dam < 0 )
                                 dam = 0;

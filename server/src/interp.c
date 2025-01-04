@@ -280,6 +280,7 @@ const struct cmd_type cmd_table [] =
         { "arena",              do_arena,          POS_STANDING,    0,  LOG_NORMAL },
         { "balance",            do_balance,        POS_RESTING,     0,  LOG_NORMAL },
         { "bet",                do_bet,            POS_STANDING,    0,  LOG_NORMAL },
+        { "bonus",              do_bonus,          POS_SLEEPING,    0,  LOG_NORMAL },
         { "borrow",             do_borrow,         POS_RESTING,     0,  LOG_NORMAL },
         { "bot",                do_bot,            POS_DEAD,    L_BUI,  LOG_NORMAL },
         { "bash door",          do_bash,           POS_STANDING,    0,  LOG_NORMAL },

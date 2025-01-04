@@ -4956,7 +4956,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "lore", &gsn_lore,
                 TYPE_INT, TAR_OBJ_INV, POS_STANDING, 16384,
-                spell_lore, 10, 24,
+                spell_lore, 10, 12,
                 "", "!Lore!"
         },
 
@@ -6861,6 +6861,41 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,
                 "", "!Resolve!"
+        },
+
+        {
+                "bonus damage", &gsn_bonus_damage,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
+                spell_null, 0, 0,
+                "bonus damage", "Your attacking power fades somewhat."
+        },
+
+        {
+                "bonus attack", &gsn_bonus_attack,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
+                spell_null, 0, 0,
+                "bonus attack", "You no longer receive a bonus attack."
+        },
+
+        {
+                "bonus resilience", &gsn_bonus_resilience,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
+                spell_null, 0, 0,
+                "bonus resilience", "You feel more vulnerable to harm."
+        },
+
+        {
+                "bonus exotic", &gsn_bonus_exotic,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
+                spell_null, 0, 0,
+                "bonus exotic", "You feel more vulnerable to exotic damage."
+        },
+
+        {
+                "bonus initiate", &gsn_bonus_initiate,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
+                spell_null, 0, 0,
+                "bonus initiate", "Your opening attack reduces in potency."
         },
 
         /*

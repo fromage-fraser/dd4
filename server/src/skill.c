@@ -56,6 +56,245 @@ void do_fly (CHAR_DATA *ch, char* argument )
         return;
 }
 
+void do_bonus(CHAR_DATA *ch, char *argument)
+{
+        char       arg   [ MAX_INPUT_LENGTH  ];
+        char       buf   [ MAX_STRING_LENGTH ];
+        char       buf1  [ MAX_STRING_LENGTH ];
+        long       current_lhour = (current_time - 650336715) / (PULSE_TICK / PULSE_PER_SECOND);
+        long       current_lday = current_lhour / 24;
+
+        long       last_lhour = (ch->pcdata->last_recharge - 650336715) / (PULSE_TICK / PULSE_PER_SECOND);
+        long       last_lday = last_lhour / 24;
+        int        must_sleep = 0;
+
+        buf1[0] = '\0';
+
+        one_argument(argument, arg);
+
+        if (IS_NPC(ch))
+        {
+            return;
+        }
+
+        if (arg[0] == '\0')
+        {
+                /* report on bonus status here */
+                if (ch->pcdata->max_bonus <= 0)
+                {
+                    send_to_char( "You have no access to bonus actions.\n\r", ch );
+                    return;
+                }
+
+                sprintf(buf, "You have %d/%d bonus actions available. \n\r",
+                        ch->pcdata->bonus,
+                        ch->pcdata->max_bonus);
+
+                strcat (buf1, buf);
+
+                if ( ( ch->pcdata->max_bonus > 0 )
+                &&   ( ch->pcdata->bonus < ch->pcdata->max_bonus ) )
+                {
+                    if (ch->pcdata->slept == 0)
+                    {
+                        must_sleep = 1;
+                        sprintf(buf, "To regain your bonus actions you must sleep. \n\r");
+                        strcat (buf1, buf);
+                    }
+
+                    if ((current_lday - last_lday) < 1)
+                    {
+                        if (must_sleep)
+                        {
+                            sprintf(buf, "You must also wait a full day until your bonus actions recharge.\r\n");
+                            strcat (buf1, buf);
+                        }
+                        else {
+                            sprintf(buf, "You must wait a full day until your bonus actions recharge.\r\n");
+                            strcat (buf1, buf);
+                        }
+                    }
+                }
+
+                send_to_char(buf1,ch);
+                return;
+
+        }
+
+        if ( !str_cmp( arg, "damage" ) )
+        {
+                if ( ch->pcdata->bonus < 1 )
+                {
+                        send_to_char("You don't have any bonus actions available.\n\r", ch);
+                        return;
+                }
+
+                AFFECT_DATA af;
+
+                if (IS_AFFECTED(ch, AFF_BONUS_DAMAGE))
+                {
+                        send_to_char("Your attacks are already doing extra damage.\n\r", ch);
+                        return;
+                }
+
+                send_to_char("You temporarily increase the power of your attacks.\n\r", ch);
+                act("$n seems suddenly more powerful.", ch, NULL, NULL, TO_ROOM);
+                af.type         = gsn_bonus_damage;
+                af.duration     = ch->pcdata->max_bonus;
+                af.location     = APPLY_NONE;
+                af.modifier     = 0;
+                af.bitvector    = AFF_BONUS_DAMAGE;
+                affect_join(ch, &af);
+                ch->pcdata->bonus--;
+                WAIT_STATE(ch, PULSE_PER_SECOND);
+                return;
+        }
+
+        if ( !str_cmp( arg, "attack" ) )
+        {
+                if ( ch->pcdata->bonus < 1 )
+                {
+                        send_to_char("You don't have any bonus actions available.\n\r", ch);
+                        return;
+                }
+
+                if ( ch->level < LEVEL_HERO )
+                {
+                        send_to_char("You don't have access to that bonus action yet.\n\r", ch);
+                        return;
+                }
+
+                AFFECT_DATA af;
+
+                if (IS_AFFECTED(ch, AFF_BONUS_ATTACK))
+                {
+                        send_to_char("You already receive a bonus attack.\n\r", ch);
+                        return;
+                }
+
+                send_to_char("You temporarily gain an extra attack.\n\r", ch);
+                act("$n starts moving faster.", ch, NULL, NULL, TO_ROOM);
+                af.type         = gsn_bonus_attack;
+                af.duration     = ch->pcdata->max_bonus;
+                af.location     = APPLY_NONE;
+                af.modifier     = 0;
+                af.bitvector    = AFF_BONUS_ATTACK;
+                affect_join(ch, &af);
+                ch->pcdata->bonus--;
+                WAIT_STATE(ch, PULSE_PER_SECOND);
+                return;
+        }
+
+        if ( !str_cmp( arg, "resilience" ) )
+        {
+                if ( ch->pcdata->bonus < 1 )
+                {
+                        send_to_char("You don't have any bonus actions available.\n\r", ch);
+                        return;
+                }
+
+                AFFECT_DATA af;
+
+                if (IS_AFFECTED(ch, AFF_BONUS_RESILIENCE))
+                {
+                        send_to_char("You are already taking reduced damage.\n\r", ch);
+                        return;
+                }
+
+                send_to_char("You are more resistant to damage.\n\r", ch);
+                act("$n suddenly looks more durable.", ch, NULL, NULL, TO_ROOM);
+                af.type         = gsn_bonus_resilience;
+                af.duration     = ch->pcdata->max_bonus;
+                af.location     = APPLY_NONE;
+                af.modifier     = 0;
+                af.bitvector    = AFF_BONUS_RESILIENCE;
+                affect_join(ch, &af);
+                ch->pcdata->bonus--;
+                WAIT_STATE(ch, PULSE_PER_SECOND);
+                return;
+        }
+
+        if ( !str_cmp( arg, "exotic" ) )
+        {
+                if ( ch->pcdata->bonus < 1 )
+                {
+                        send_to_char("You don't have any bonus actions available.\n\r", ch);
+                        return;
+                }
+
+                if ( ch->level < 85 )
+                {
+                        send_to_char("You don't have access to that bonus action yet.\n\r", ch);
+                        return;
+                }
+
+                AFFECT_DATA af;
+
+                if (IS_AFFECTED(ch, AFF_BONUS_EXOTIC))
+                {
+                        send_to_char("You are already protected from exotic damage types.\n\r", ch);
+                        return;
+                }
+
+                send_to_char("You feel more protected against exotic damage.\n\r", ch);
+                act("$n grows sturdier.", ch, NULL, NULL, TO_ROOM);
+                af.type         = gsn_bonus_exotic;
+                af.duration     = ch->pcdata->max_bonus;
+                af.location     = APPLY_NONE;
+                af.modifier     = 0;
+                af.bitvector    = AFF_BONUS_EXOTIC;
+                affect_join(ch, &af);
+
+                af.type      = gsn_bonus_exotic;
+                af.duration  = ch->pcdata->max_bonus;
+                af.modifier  = -ch->level / 6;
+                af.location  = APPLY_SAVING_SPELL;
+                af.bitvector = 0;
+                affect_to_char(ch, &af );
+
+                ch->pcdata->bonus--;
+                WAIT_STATE(ch, PULSE_PER_SECOND);
+                return;
+        }
+
+        if ( !str_cmp( arg, "initiate" ) )
+        {
+                if ( ch->pcdata->bonus < 1 )
+                {
+                        send_to_char("You don't have any bonus actions available.\n\r", ch);
+                        return;
+                }
+
+                if ( ch->level < 95 )
+                {
+                        send_to_char("You don't have access to that bonus action yet.\n\r", ch);
+                        return;
+                }
+
+                AFFECT_DATA af;
+
+                if (IS_AFFECTED(ch, AFF_BONUS_INITIATE))
+                {
+                        send_to_char("Your attacks are already doing extra damage.\n\r", ch);
+                        return;
+                }
+
+                send_to_char("You feel the power of your opening attacks increase.\n\r", ch);
+                act("$n looks more deadly.", ch, NULL, NULL, TO_ROOM);
+                af.type         = gsn_bonus_initiate;
+                af.duration     = ch->pcdata->max_bonus;
+                af.location     = APPLY_NONE;
+                af.modifier     = 0;
+                af.bitvector    = AFF_BONUS_INITIATE;
+                affect_join(ch, &af);
+                ch->pcdata->bonus--;
+                WAIT_STATE(ch, PULSE_PER_SECOND);
+                return;
+        }
+
+        send_to_char("That's not a valid bonus action.\n\r", ch);
+        return;
+}
 
 void do_blink (CHAR_DATA *ch, char *argument)
 {
