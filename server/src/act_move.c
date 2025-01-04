@@ -1855,11 +1855,6 @@ void do_stand(CHAR_DATA *ch, char *argument)
                         long        current_lday = current_lhour / 24;
                         long        last_lhour = (ch->pcdata->last_recharge - 650336715) / (PULSE_TICK / PULSE_PER_SECOND);
                         long        last_lday = last_lhour / 24;
-                        /*long        current_diff = (current_lday - last_lday);
-
-                         bug("Current lday == %d", current_lday);
-                        bug("Last lday == %d", last_lday);
-                        bug("Current diff == %d", current_diff); */
 
                         if ((current_lday - last_lday) >= 1 )
                         {
