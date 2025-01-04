@@ -2326,28 +2326,30 @@ Syntax: bonus resilience
 Syntax: bonus exotic
 Syntax: bonus initiate
 
-Starting at level 75, all players start to acquire BONUS actions, ending up with
+Starting at level 75, all players begin to acquire BONUS actions, ending up with
 4 by the time they achieve level 100. BONUS actions give a variety of short-term
 boosts to player offense and defence.  Once bonus actions are used up, in order
 to recharge them a player must both sleep (or meditate) and allow an entire MUD
-"day" to pass.  More types of bonus action effects become available as you
-advance, with all the below being available once you are a HERO.
+"day" to pass.
 
-BONUS by itself will tell you have many bonus actions you have available, and,
-if some are used up, what you need to do to recharge them.
+More types of bonus action effects become available as you advance in level,
+with all the below available once you are a HERO.
+
+BONUS by itself will tell you how many bonus actions you have available, and,
+if some are used up, how you can recharge them.
 
 BONUS DAMAGE provides a bonus to offensive spells and melee attacks.
 
 BONUS ATTACK provides an extra melee attack (stacks with quicken and haste) and
-offensive multi-attack spell.
+extra offensive multi-attack spell (prismatic spray and the like).
 
-BONUS RESILIENCE is a temporary reduction in damage taken.
+BONUS RESILIENCE reduces damage taken.
 
 BONUS EXOTIC gives broad protection against non-melee damage types--magic,
-poison, fire, gas, steam etc as well as limiting their ability to destroy
+poison, fire, gas, steam, etc--as well as limiting their ability to destroy
 equipment.
 
-BONUS INITIATE will increase the damage done by your initial attack on a creature
+BONUS INITIATE will increase the damage done by your initial attack on a mob
 or player.
 ~
 

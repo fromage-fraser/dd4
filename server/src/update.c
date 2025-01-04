@@ -317,7 +317,7 @@ void advance_level( CHAR_DATA *ch )
                 REMOVE_BIT(ch->act, PLR_BOUGHT_PET);
 
         sprintf (buf, "You gain {G%d hitpoints{x, {C%d mana{x and {Y%d movement{x.\n\r"
-                 "You gain {W%d{x physical and {W%d{x intellectual practice points.\n\r\n\r",
+                 "You gain {W%d{x physical and {W%d{x intellectual practice points.\n\r",
                  add_hp + ch->pcdata->str_prac,
                  add_mana + ch->pcdata->int_prac,
                  add_move,
@@ -387,6 +387,18 @@ void gain_exp( CHAR_DATA *ch, int gain )
                 ch->level += 1;
                 advance_level(ch);
 
+                if ( ch->level == 75
+                ||   ch->level == 85
+                ||   ch->level == 95
+                ||   ch->level == LEVEL_HERO )
+                {
+                    send_to_char( "You also gain a {r[{RBONUS ACTION{x{r]{x.\n\r\n\r",ch );
+                    ch->pcdata->bonus++;
+                    ch->pcdata->max_bonus++;
+                }
+                else {
+                    send_to_char( "\n\r",ch );
+                }
                 if (ch->level == LEVEL_HERO)
                 {
                         sprintf(buf, "-=>>  A time of celebration arrives as %s reaches the ultimate level of HERO!  <<<<=-",ch->name);
@@ -670,7 +682,8 @@ int hit_gain( CHAR_DATA *ch )
                 }
         }
 
-        if (!IS_NPC(ch))
+        if (!IS_NPC(ch)
+        &&  ch->level >= 75)
         {
             recharge_bonuses(ch);
         }

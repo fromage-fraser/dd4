@@ -1848,7 +1848,8 @@ void do_stand(CHAR_DATA *ch, char *argument)
                 if (IS_AFFECTED(ch, AFF_MEDITATE))
                         REMOVE_BIT(ch->affected_by, AFF_MEDITATE);
 
-                if (!IS_NPC(ch))
+                if (!IS_NPC(ch)
+                &&  ch->level >= 75 )
                 {
                         long        current_lhour = (current_time - 650336715) / (PULSE_TICK / PULSE_PER_SECOND);
                         long        current_lday = current_lhour / 24;
