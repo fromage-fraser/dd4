@@ -379,7 +379,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
                 return;
         }
 
-        if ( ch->position < skill_table[sn].minimum_position )
+        if ( ch->position < skill_table[sn].minimum_position)
         {
                 send_to_char( "You can't concentrate enough.\n\r", ch );
                 return;
@@ -639,15 +639,15 @@ void do_cast( CHAR_DATA *ch, char *argument )
                                         {
                                                 send_to_char("They are immune to this type of damage!\n\r", ch);
 
-                                        /* Kick off Combat even if immune */
-                                        if (victim->master != ch
-                                        && victim != ch
-                                        && IS_AWAKE(victim)
-                                        && !victim->fighting)
-                                        {
-                                                multi_hit(victim, ch, TYPE_UNDEFINED);
-                                        }
-                                        return;
+                                                /* Kick off Combat even if immune */
+                                                if (victim->master != ch
+                                                && victim != ch
+                                                && IS_AWAKE(victim)
+                                                && !victim->fighting)
+                                                {
+                                                        multi_hit(victim, ch, TYPE_UNDEFINED);
+                                                }
+                                                return;
                                         }
                                 }
                         }
@@ -673,6 +673,25 @@ void do_cast( CHAR_DATA *ch, char *argument )
                             || ch->in_room != victim->in_room
                             || ch->position < POS_FIGHTING)
                                 return;
+
+                        /* check for AFF_BONUS_ATTACK */
+
+                        if (!IS_NPC(ch) && IS_AFFECTED(ch, AFF_BONUS_ATTACK))
+                        {
+                            /* No mana cost, should always succeed */
+
+                            spell_attack_number = 2;
+
+                            (*skill_table[sn].spell_fun)
+                                (sn, URANGE(1, ch->level, MAX_LEVEL), ch, vo);
+
+                            if (ch->fighting != victim)
+                                    return;
+
+                            if (victim->position == POS_DEAD || ch->in_room != victim->in_room
+                                || ch->position < POS_FIGHTING)
+                                return;
+                        }
 
                         /* 2nd spell */
 
@@ -2045,8 +2064,10 @@ void spell_stabilise( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         /*
          * This idea with this spell is that it removes all a player's
-         * magical body-based transformations.  Given to healers so players
-         * have a way of getting rid of 'AFF_SLOW' in particular.
+         * magical body-based transformations.  Given to healer spec so players
+         * have a way of getting rid of 'AFF_SLOW' in particular.  Note that like
+         * "slow," this spell should not affect effects provided by the bonus
+         * system, which are essentially kinds of "meta" spells/effects.
          */
 
         CHAR_DATA *victim = (CHAR_DATA *) vo;
@@ -4711,8 +4732,10 @@ void spell_poison( int sn, int level, CHAR_DATA *ch, void *vo )
         }
 
         /* next bit for resist poison */
-        if (!IS_NPC(victim) && number_percent() <
-            victim->pcdata->learned[gsn_resist_toxin] && victim->gag < 2)
+        if (!IS_NPC(victim)
+        && ( number_percent() < victim->pcdata->learned[gsn_resist_toxin]
+          || is_affected(victim, gsn_bonus_exotic) )
+        && victim->gag < 2)
         {
             send_to_char( "<46>Yo<47>u r<48>es<49>is<48>t t<47>he <46>po<47>is<48>on <49>su<48>rg<47>in<46>g t<47>hr<48>ou<49>gh <48>yo<47>ur <46>ve<47>in<48>s.<0>\n\r",victim );
             return;
@@ -5581,7 +5604,8 @@ void spell_acid_breath( int sn, int level, CHAR_DATA *ch, void *vo )
         if (number_percent() < 2 * level
             && !saves_spell(level, victim)
             && !IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER)
-            && !is_affected(victim,gsn_dragon_shield))
+            && !is_affected(victim,gsn_dragon_shield)
+            && !is_affected(victim,gsn_bonus_exotic))
         {
 
                 for ( obj_lose = victim->carrying; obj_lose; obj_lose = obj_next )
@@ -5630,7 +5654,8 @@ void spell_acid_breath( int sn, int level, CHAR_DATA *ch, void *vo )
         if (resist || saves_spell(level, victim))
                 dam /= 2;
 
-        if (is_affected(victim, gsn_dragon_shield))
+        if (is_affected(victim, gsn_dragon_shield)
+         || is_affected(victim, gsn_bonus_exotic))
                 dam /= 2;
 
         damage( ch, victim, dam, sn, FALSE );
@@ -5653,7 +5678,8 @@ void spell_fire_breath( int sn, int level, CHAR_DATA *ch, void *vo )
         if (number_percent() < 2 * level
             && !saves_spell(level, victim)
             && !IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER)
-            && !is_affected(victim,gsn_dragon_shield))
+            && !is_affected(victim,gsn_dragon_shield)
+            && !is_affected(victim,gsn_bonus_exotic))
         {
                 for ( obj_lose = victim->carrying; obj_lose; obj_lose = obj_next )
                 {
@@ -5693,7 +5719,8 @@ void spell_fire_breath( int sn, int level, CHAR_DATA *ch, void *vo )
         if (resist || saves_spell(level, victim))
                 dam /= 2;
 
-        if (is_affected(victim, gsn_dragon_shield))
+        if (is_affected(victim, gsn_dragon_shield)
+         || is_affected(victim, gsn_bonus_exotic))
                 dam /= 2;
 
         damage( ch, victim, dam, sn, FALSE );
@@ -5714,7 +5741,8 @@ void spell_steam_breath( int sn, int level, CHAR_DATA *ch, void *vo )
         if (number_percent() < 2 * level
             && !saves_spell(level, victim)
             && !IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER)
-            && !is_affected(victim,gsn_dragon_shield))
+            && !is_affected(victim,gsn_dragon_shield)
+            && !is_affected(victim,gsn_bonus_exotic))
         {
                 for ( obj_lose = victim->carrying; obj_lose; obj_lose = obj_next )
                 {
@@ -5755,7 +5783,8 @@ void spell_steam_breath( int sn, int level, CHAR_DATA *ch, void *vo )
         if (resist || saves_spell(level, victim))
                 dam /= 2;
 
-        if (is_affected(victim, gsn_dragon_shield))
+        if (is_affected(victim, gsn_dragon_shield)
+         || is_affected(victim, gsn_bonus_exotic))
                 dam /= 2;
 
         damage( ch, victim, dam, sn, FALSE );
@@ -5777,7 +5806,8 @@ void spell_frost_breath( int sn, int level, CHAR_DATA *ch, void *vo )
         if (number_percent() < 2 * level
             && !saves_spell( level, victim )
             && !IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER)
-            && !is_affected(victim,gsn_dragon_shield))
+            && !is_affected(victim,gsn_dragon_shield)
+            && !is_affected(victim,gsn_bonus_exotic))
         {
                 for ( obj_lose = victim->carrying; obj_lose; obj_lose = obj_next )
                 {
@@ -5816,7 +5846,8 @@ void spell_frost_breath( int sn, int level, CHAR_DATA *ch, void *vo )
         if (resist || saves_spell(level, victim))
                 dam /= 2;
 
-        if (is_affected(victim, gsn_dragon_shield))
+        if (is_affected(victim, gsn_dragon_shield)
+         || is_affected(victim, gsn_bonus_exotic))
                 dam /= 2;
 
         damage( ch, victim, dam, sn, FALSE );
@@ -5853,7 +5884,8 @@ void spell_gas_breath( int sn, int level, CHAR_DATA *ch, void *vo )
                         if ( saves_spell( level, vch ) )
                                 dam /= 2;
 
-                        if (is_affected(vch,gsn_dragon_shield))
+                        if (is_affected(vch, gsn_dragon_shield)
+                         || is_affected(vch, gsn_bonus_exotic))
                                 dam /= 2;
                         else
                                 spell_nausea( gsn_nausea, level, ch, vch );
@@ -5876,7 +5908,8 @@ void spell_lightning_breath( int sn, int level, CHAR_DATA *ch, void *vo )
             || saves_spell(level, victim))
                 dam /= 2;
 
-        if (is_affected(victim, gsn_dragon_shield))
+        if (is_affected(victim, gsn_dragon_shield)
+         || is_affected(victim, gsn_bonus_exotic))
                 dam /= 2;
 
         damage( ch, victim, dam, sn, FALSE );
@@ -7544,7 +7577,9 @@ void spell_frenzy (int sn, int level, CHAR_DATA *caster, void *vo)
         affects.modifier  = (( level / 8) + 3);
         affect_to_char( target, &affects);
 
-        if (caster->pcdata->learned[gsn_frenzy] > 94 && !is_affected(target, gsn_haste) && !is_affected(target, gsn_quicken))
+        if ( caster->pcdata->learned[gsn_frenzy] > 94
+        && !is_affected(target, gsn_haste)
+        && !is_affected(target, gsn_quicken) )
         {
                 affects.location  = APPLY_AC;
                 affects.modifier  = level + 50;
@@ -9642,8 +9677,10 @@ void spell_nausea( int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
         }
 
-        if (!IS_NPC(victim) && number_percent() <
-            victim->pcdata->learned[gsn_resist_toxin] && victim->gag < 2)
+        if (!IS_NPC(victim)
+        && ( number_percent() < victim->pcdata->learned[gsn_resist_toxin]
+          || is_affected(victim, gsn_bonus_exotic) )
+        && victim->gag < 2)
         {
             send_to_char("<46>Yo<47>u r<48>es<49>is<48>t t<47>he <46>wa<47>ve <48>of <49>na<48>us<47>ea <46>th<47>re<48>at<49>en<48>in<47>g t<46>o o<47>ve<48>rw<49>he<48>lm <47>yo<46>u.<0>\n\r",victim );
             return;
@@ -10078,7 +10115,8 @@ void spell_fleshrot (int sn, int level, CHAR_DATA *ch, void *vo)
         }
 
         if (!IS_NPC(victim)
-        && number_percent() < victim->pcdata->learned[gsn_resist_toxin]
+        && ( number_percent() < victim->pcdata->learned[gsn_resist_toxin]
+          || is_affected(victim, gsn_bonus_exotic) )
         && victim->gag < 2)
         {
             send_to_char( "<46>Yo<47>u r<48>es<49>is<48>t t<47>he <46>di<47>se<48>as<49>e t<48>ha<47>t a<46>ss<47>ai<48>ls <49>yo<48>ur <47>sy<46>st<47>em<48>.<0>\n\r", victim );

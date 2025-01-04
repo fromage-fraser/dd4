@@ -1418,6 +1418,16 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
                         i = buf2;
                         break;
 
+                    case 'u' :
+                        sprintf(buf2, "%d", ch->pcdata->bonus);
+                        i = buf2;
+                        break;
+
+                    case 'U' :
+                        sprintf(buf2, "%d", ch->pcdata->max_bonus);
+                        i = buf2;
+                        break;
+
                     case 'v' :
                         sprintf(buf2, "%d", ch->move);
                         i = buf2;

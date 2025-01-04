@@ -685,6 +685,11 @@ int     gsn_quicken;
 int     gsn_chant_of_dragonsbane;
 int     gsn_tenketsu;
 int     gsn_resolve;
+int     gsn_bonus_damage;
+int     gsn_bonus_attack;
+int     gsn_bonus_resilience;
+int     gsn_bonus_exotic;
+int     gsn_bonus_initiate;
 
 
 /*

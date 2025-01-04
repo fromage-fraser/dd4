@@ -407,9 +407,9 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 
 
 /*
- * These 2 functions are at the top, as Im about to put a check for dazed things
- * If you are dazed you cant attack, BUT things you have in the room can still go off
- * DOTS and Pulse objects - Brutus
+ * These 2 functions are at the top, as I'm about to put a check for dazed things
+ * If you are dazed you can't attack, BUT things you have in the room can still go off
+ * DOTs and pulse objects - Brutus
  *
  */
 
@@ -563,6 +563,12 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
          * Quicken skill
          */
         if ((is_affected(ch, gsn_quicken)) && !IS_AFFECTED(ch, AFF_PRONE))
+                one_hit(ch, victim, dt, FALSE);
+
+        /*
+         * Bonus attack
+         */
+        if ((is_affected(ch, gsn_bonus_attack)) && !IS_AFFECTED(ch, AFF_PRONE))
                 one_hit(ch, victim, dt, FALSE);
 
         /*
@@ -970,7 +976,8 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                 if (wield
                     && IS_SET(wield->extra_flags, ITEM_POISONED)
                     && (IS_NPC(victim)
-                        || number_percent() > victim->pcdata->learned[gsn_resist_toxin]))
+                        || number_percent() > victim->pcdata->learned[gsn_resist_toxin]
+                        || is_affected(victim, gsn_bonus_exotic)))
                 {
                         dam += dam / 4;
                 }
@@ -1263,6 +1270,14 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
         if (!IS_NPC(ch))
                 ch->pcdata->dam_per_fight += dam;
 
+
+        if (!IS_NPC(ch)
+        && ( ch->position == POS_STANDING )
+        && IS_AFFECTED(ch, AFF_BONUS_INITIATE))
+        {
+            dam += dam / 3;
+        }
+
         /*
          *  Damage inflicted to other
          */
@@ -1414,6 +1429,10 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 if (IS_AFFECTED(victim, AFF_BATTLE_AURA))
                         dam -= dam / 6;
 
+                if (!IS_NPC(victim)
+                &&   IS_AFFECTED(victim, AFF_BONUS_RESILIENCE))
+                        dam -= dam / 3;
+
                 if (dam > MAX_DAMAGE)
                 {
                         char buf[MAX_STRING_LENGTH];
@@ -1470,6 +1489,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                             && !IS_AFFECTED(ch, AFF_PRONE)
                             && !is_affected(victim, gsn_haste)
                             && !is_affected(victim, gsn_quicken)
+                            && !is_affected(victim, gsn_bonus_attack)
                             && !is_affected(victim, gsn_fly)
                             && !is_affected(victim, gsn_levitation)
                             && number_percent() < (leveldiff < -5
@@ -1655,9 +1675,12 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
 
         }
 
+        if (!IS_NPC(ch)
+        &&   IS_AFFECTED(ch, AFF_BONUS_DAMAGE))
+                dam += dam / 3;
+
         /* hurt the victim, and inform the victim of his new state */
         victim->hit -= dam;
-
 
         /* immortality.  imms can be nuked by higher imms :) */
         if (!IS_NPC(victim) && victim->level >= LEVEL_IMMORTAL && victim->hit < 1)
@@ -1681,7 +1704,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 AFFECT_DATA af, *paf;
 
                 if (!IS_NPC(victim)
-                    && number_percent() < victim->pcdata->learned[gsn_resist_toxin]
+                    && ( number_percent() < victim->pcdata->learned[gsn_resist_toxin] || is_affected(victim, gsn_bonus_exotic) )
                     && victim->gag < 2)
                 {
                         send_to_char("<46>Yo<47>u r<48>es<49>is<48>t t<47>he <46>po<47>is<48>on <49>su<48>rg<47>in<46>g t<47>hr<48>ou<49>gh <48>yo<47>ur <46>ve<47>in<48>s.<0>\n\r", victim);

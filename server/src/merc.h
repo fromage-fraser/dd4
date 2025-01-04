@@ -359,6 +359,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define MAX_FOOD                          48    /* As full of food as you can be */
 #define MAX_DRINK                         48    /* As not-thirsty as you can be */
 #define MAX_DRUNK                         48    /* As drunk as you can be */
+#define MAX_BONUS                          4    /* Maximum bonus actions possible on a PC */
 #define DOT_FREQ                          20    /* What percentage of the time will DOT effects fire when checked? */
 #define VAULT_LEVEL_BUFFER                 5    /* Can save items up to this many levels above your own in your vault */
 
@@ -372,7 +373,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   609     /* 608 +1 for resolve 31/12/24 */
+#define MAX_SKILL                   614     /* 610 +4 for bonus types 3/1/25 */
 #define MAX_PRE_REQ                 1572    /* +2 for tenketsu (martial artist) 31/12/24 */
 #define MAX_SPELL_GROUP             468     /* +1 martial artist skill Owl 31/12/24 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
@@ -1971,6 +1972,11 @@ extern  WANTED_DATA *wanted_list_last;
 #define AFF_HEART_TRAUMA           BIT_41  /* Heart has been pierced */
 #define AFF_TAIL_TRAUMA            BIT_42  /* Tail has been grievously injured or severed */
 #define AFF_TORSO_TRAUMA           BIT_43  /* Torso/central mass has been grievously injured */
+#define AFF_BONUS_DAMAGE           BIT_44  /* Do bonus damage (bonus effect) */
+#define AFF_BONUS_ATTACK           BIT_45  /* Gives a bonus attack--stacks with haste etc */
+#define AFF_BONUS_RESILIENCE       BIT_46  /* Weaker sanc-like bonus effect */
+#define AFF_BONUS_EXOTIC           BIT_47  /* Reduction/immunity to exotic damage types */
+#define AFF_BONUS_INITIATE         BIT_48  /* Gives bonus damage to "initiation" attacks--backstab, lunge etc */
 #define AFF_SLOW                   BIT_63  /* last */
 
 /* forms - Brutus */
@@ -2935,6 +2941,10 @@ struct  pc_data
         int                 dam_meter;
         int                 rounds;
         int                 dam_per_fight;
+        int                 bonus;         // Current available bonuses
+        int                 max_bonus;     // Maximum number of bonuses
+        bool                slept;         // Whether the player has slept/meditated since the last bonus recharge
+        time_t              last_recharge; // Timestamp of the last recharge
 };
 
 
@@ -3937,6 +3947,11 @@ extern int gsn_quicken;
 extern int gsn_chant_of_dragonsbane;
 extern int gsn_tenketsu;
 extern int gsn_resolve;
+extern int gsn_bonus_damage;
+extern int gsn_bonus_attack;
+extern int gsn_bonus_resilience;
+extern int gsn_bonus_exotic;
+extern int gsn_bonus_initiate;
 
 /*
  *  Deity gsns
@@ -4563,6 +4578,7 @@ DECLARE_DO_FUN( do_target                       );      /* to target strikes to 
 DECLARE_DO_FUN( do_harvest                      );      /* basically gather for smokeables - Owl */
 DECLARE_DO_FUN( do_carve                        );      /* make pipes for Druid/Ranger - Owl */
 DECLARE_DO_FUN( do_resolve                      );      /* Resolve IP addresses - Owl */
+DECLARE_DO_FUN( do_bonus                        );
 
 /*
  * Spell functions.
@@ -5202,6 +5218,7 @@ void auction_update                    args( ( void ) );
 void form_equipment_update                   ( CHAR_DATA *ch );
 int  check_stat_advance                      ( CHAR_DATA *ch, int stat );
 bool check_questpoints_allow_level_gain      ( CHAR_DATA *ch, bool verbose );
+void recharge_bonuses                        ( CHAR_DATA *ch );
 
 /* trap.c */
 bool checkmovetrap                     args( ( CHAR_DATA *ch, int dir) );

@@ -1682,9 +1682,13 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         victim->damage_mitigation);
                 strcat( buf1, buf );
 
-                sprintf( buf, "Crit: {R%d{x  Swiftness: {R%d{x\n\r",
+                sprintf( buf, "Crit: {R%d{x  Swiftness: {R%d{x  Bonus: {R%d{x/{r%d{x  Slept: {R%d{x  Last recharge: {R%ld{x\n\r",
                         GET_CRIT( victim ),
-                        GET_SWIFT( victim ));
+                        GET_SWIFT( victim ),
+                        victim->pcdata->bonus,
+                        victim->pcdata->max_bonus,
+                        victim->pcdata->slept,
+                        victim->pcdata->last_recharge);
                 strcat( buf1, buf );
 
 
@@ -4691,8 +4695,8 @@ void do_mset( CHAR_DATA *ch, char *argument )
                              "  thirst drunk full sub_class form race \n\r"
                              "  bounty fame questpoints totalqp questtime\n\r"
                              "  patron deity_timer deity_flags affected_by\n\r"
-                             "  bank plat gold silver copper age\n\r"
-                             "  rage spec act crit swiftness\n\r"
+                             "  bank plat gold silver copper age rage spec\n\r"
+                             "  act crit swiftness bonus max_bonus slept\n\r"
                              "String being one of:\n\r"
                              "  name short long title spec\n\r", ch);
                 return;
@@ -4902,12 +4906,54 @@ void do_mset( CHAR_DATA *ch, char *argument )
                 if (value < 1 || value >= MAX_RACE )
                 {
                         char buf [ MAX_STRING_LENGTH ];
-                        sprintf( buf, "The range is 1 to %d (see help race).\n\r", ( MAX_RACE - 1) );
+                        sprintf( buf, "The range is 1 to %d (see help RACE).\n\r", ( MAX_RACE - 1) );
                         send_to_char( buf, ch );
                         return;
                 }
 
                 victim->race = value;
+                return;
+        }
+
+        if ( !str_cmp( arg2, "bonus" ) )
+        {
+                if (value < 0 || value > MAX_BONUS )
+                {
+                        char buf [ MAX_STRING_LENGTH ];
+                        sprintf( buf, "The range is 0 to %d (see help BONUS).\n\r", ( MAX_BONUS ) );
+                        send_to_char( buf, ch );
+                        return;
+                }
+
+                victim->pcdata->bonus = value;
+                return;
+        }
+
+        if ( !str_cmp( arg2, "max_bonus" ) )
+        {
+                if (value < 0 || value > MAX_BONUS )
+                {
+                        char buf [ MAX_STRING_LENGTH ];
+                        sprintf( buf, "The range is 0 to %d (see help BONUS).\n\r", ( MAX_BONUS ) );
+                        send_to_char( buf, ch );
+                        return;
+                }
+
+                victim->pcdata->max_bonus = value;
+                return;
+        }
+
+        if ( !str_cmp( arg2, "slept" ) )
+        {
+                if (value < 0 || value > 1 )
+                {
+                        char buf [ MAX_STRING_LENGTH ];
+                        sprintf( buf, "Value can be 0 or 1.\n\r");
+                        send_to_char( buf, ch );
+                        return;
+                }
+
+                victim->pcdata->slept = value;
                 return;
         }
 
