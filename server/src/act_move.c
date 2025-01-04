@@ -820,7 +820,6 @@ void move_char(CHAR_DATA *ch, int door)
         }
 
         /* Lets check we're a pc BEFORE we call the trigger */
-        /* CPU utilisation -= 50% */
         if (!IS_NPC(ch))
         {
                 mprog_entry_trigger(ch);        /* for mob programs - Brutus */
