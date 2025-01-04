@@ -5782,11 +5782,11 @@ void print_player_status (CHAR_DATA *ch, char* buf)
 
         if( ch->class == CLASS_SHAPE_SHIFTER )
         {
-                if (ch->sub_class == SUB_CLASS_VAMPIRE)
-                        sprintf( tmp, "      Form: %13s",
+                if (ch->sub_class == SUB_CLASS_VAMPIRE && ch->form != FORM_BAT)
+                        sprintf( tmp, "      Form: {R%13s{x",
                                 is_affected (ch, gsn_mist_walk) ? "mist" : "normal");
                 else
-                        sprintf( tmp, "      Form: %13s", extra_form_name(ch->form) );
+                        sprintf( tmp, "      Form: {R%13s{x", extra_form_name(ch->form) );
                 strcat( buf, tmp );
         }
         strcat( buf, "\n\r" );
@@ -5818,10 +5818,20 @@ void print_player_status (CHAR_DATA *ch, char* buf)
 
         if( ch->level >= 15 )
         {
-                sprintf( tmp, "Crit: {C%3d%%{x        Swiftness: {C%3d%%{x\n\r",
+                sprintf( tmp, "Crit:   {W%3d%%{x      Swiftness:      {W%3d%%{x",
                         GET_CRIT( ch ), GET_SWIFT( ch ));
                 strcat( buf, tmp );
-                sprintf( tmp, "{WResistances:{x Acid:{C%3d%%{x Lightning:{C%3d%%{x Heat:{C%3d%%{x Cold:{C%3d%%{x ",
+
+                if( ch->level >= 75 )
+                {
+                        sprintf( tmp, "      Bonus actions:  {R%d{x/{r%d{x",
+                        ch->pcdata->bonus,
+                        ch->pcdata->max_bonus );
+                        strcat( buf, tmp );
+                }
+                strcat( buf, "\n\r" );
+
+                sprintf( tmp, "\n\r{WResistances:{x  Acid:{G%3d%%{x  Lightning:{W%3d%%{x  Heat:{R%3d%%{x  Cold:{C%3d%%{x ",
                         ch->resist_acid, ch->resist_lightning, ch->resist_heat, ch->resist_cold);
                 strcat( buf, tmp );
 

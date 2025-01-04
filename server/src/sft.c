@@ -2332,7 +2332,7 @@ void do_morph (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (is_affected(ch, gsn_mist_walk) || is_affected(ch, gsn_astral_sidestep))
+        if (is_affected(ch, gsn_astral_sidestep))
         {
                 send_to_char("You cannot do that in your current form.\n\r",ch);
                 return;
@@ -2383,7 +2383,7 @@ void do_morph (CHAR_DATA *ch, char *argument)
                 }
         }
 
-        if (form == ch->form)
+        if (form == ch->form && !is_affected(ch, gsn_mist_walk))
         {
                 send_to_char("You are already in that form.\n\r", ch);
                 return;
@@ -2464,7 +2464,10 @@ void do_morph (CHAR_DATA *ch, char *argument)
 
         form_equipment_update(ch);
 
-        sprintf(buf, "\n\rYou morph from %s", extra_form_name(old_form));
+        if (is_affected(ch, gsn_mist_walk))
+            sprintf(buf, "\n\rYou morph from mist form");
+        else
+            sprintf(buf, "\n\rYou morph from %s", extra_form_name(old_form));
         sprintf(buf1, " to %s form.\n\r", extra_form_name(form));
         strcat(buf, buf1);
 
@@ -2476,8 +2479,19 @@ void do_morph (CHAR_DATA *ch, char *argument)
                         extra_form_name(form));
                 act (buf, ch, NULL, NULL, TO_ROOM);
         }
-        else
-                act ("$n shimmers and returns to normal.\n\r", ch, NULL, NULL, TO_ROOM);
+        else {
+                if (is_affected(ch, gsn_mist_walk))
+                {
+                    send_to_char("Your body reverts to its normal state.\n\r",ch);
+                    act("A cloud of glowing mist withdraws to unveil $n!",ch,NULL,NULL,TO_ROOM);
+                    affect_strip(ch,gsn_mist_walk);
+                    WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+
+                }
+                else {
+                    act ("$n shimmers and returns to normal.\n\r", ch, NULL, NULL, TO_ROOM);
+                }
+        }
 
         switch (old_form)
         {

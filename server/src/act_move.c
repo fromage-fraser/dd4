@@ -1833,7 +1833,6 @@ void do_stand(CHAR_DATA *ch, char *argument)
 
                 /* Let's not have imms hosed by sleep traps etc -- Owl 8/7/22 */
 
-
                 if ( IS_IMMORTAL(ch) )
                 {
                         REMOVE_BIT(ch->affected_by, AFF_SLEEP);
@@ -1849,6 +1848,27 @@ void do_stand(CHAR_DATA *ch, char *argument)
 
                 if (IS_AFFECTED(ch, AFF_MEDITATE))
                         REMOVE_BIT(ch->affected_by, AFF_MEDITATE);
+
+                if (!IS_NPC(ch))
+                {
+                        long        current_lhour = (current_time - 650336715) / (PULSE_TICK / PULSE_PER_SECOND);
+                        long        current_lday = current_lhour / 24;
+                        long        last_lhour = (ch->pcdata->last_recharge - 650336715) / (PULSE_TICK / PULSE_PER_SECOND);
+                        long        last_lday = last_lhour / 24;
+                        /*long        current_diff = (current_lday - last_lday);
+
+                         bug("Current lday == %d", current_lday);
+                        bug("Last lday == %d", last_lday);
+                        bug("Current diff == %d", current_diff); */
+
+                        if ((current_lday - last_lday) >= 1 )
+                        {
+                            ch->pcdata->bonus = ch->pcdata->max_bonus;
+                            ch->pcdata->last_recharge = current_time;
+                            ch->pcdata->slept = false;
+                            send_to_char("<45>You feel refreshed and your bonus actions are fully recharged.\r\n<0>", ch);
+                        }
+                }
 
                 send_to_char("You wake and ready yourself for action.\n\r", ch);
                 act ("$n wakes and readies $mself for action.", ch, NULL, NULL, TO_ROOM);
@@ -1962,24 +1982,12 @@ void do_wake(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
         char        arg [ MAX_INPUT_LENGTH ];
-        long        current_lhour = (current_time - 650336715) / (PULSE_TICK / PULSE_PER_SECOND);
-        long        current_lday = current_lhour / 24;
-
-        long        last_lhour = (ch->pcdata->last_recharge - 650336715) / (PULSE_TICK / PULSE_PER_SECOND);
-        long        last_lday = last_lhour / 24;
 
         one_argument(argument, arg);
 
         if (arg[0] == '\0')
         {
                 do_stand(ch, argument);
-                if (!IS_NPC(ch))
-                {
-                    if ((current_lday - last_lday) >= 1 )
-                    {
-                        ch->pcdata->last_recharge = current_time;
-                    }
-                }
                 return;
         }
 
@@ -2241,8 +2249,9 @@ void do_visible (CHAR_DATA *ch, char *argument)
                 in_cham = TRUE;
         }
 
-        if (is_affected(ch,gsn_mist_walk))
+        if (is_affected(ch, gsn_mist_walk))
         {
+                send_to_char("You morph from mist form to normal form.\n\r", ch);
                 send_to_char("Your body reverts to its normal state.\n\r",ch);
                 act("A cloud of glowing mist withdraws to unveil $n!",ch,NULL,NULL,TO_ROOM);
                 affect_strip(ch,gsn_mist_walk);
