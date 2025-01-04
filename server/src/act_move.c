@@ -1982,13 +1982,6 @@ void do_wake(CHAR_DATA *ch, char *argument)
         if (arg[0] == '\0')
         {
                 do_stand(ch, argument);
-                if (!IS_NPC(ch))
-                {
-                    if ((current_lday - last_lday) >= 1 )
-                    {
-                        ch->pcdata->last_recharge = current_time;
-                    }
-                }
                 return;
         }
 
