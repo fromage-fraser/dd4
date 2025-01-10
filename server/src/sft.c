@@ -2144,6 +2144,8 @@ void do_morph_bat (CHAR_DATA *ch, bool to_form)
                         affect_strip(ch, gsn_fly);
                         affect_strip(ch, gsn_levitation);
                         REMOVE_BIT(ch->affected_by, AFF_FLYING);
+                        affect_strip(ch, gsn_mist_walk);
+                        REMOVE_BIT(ch->affected_by, AFF_NON_CORPOREAL);
 
                         send_to_char("Your new form enables you to fly.\n\r", ch);
 
