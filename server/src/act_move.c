@@ -2028,7 +2028,13 @@ void do_mist_walk(CHAR_DATA *ch, char *argument )
         if (IS_NPC(ch))
                 return;
 
-        if (!IS_NPC(ch) && !CAN_DO(ch, gsn_mist_walk))
+        if (ch->form == FORM_BAT)
+        {
+                do_morph(ch, "normal");
+        }
+
+        if (!IS_NPC(ch)
+         && !CAN_DO(ch, gsn_mist_walk))
         {
                 send_to_char("Huh?\n\r", ch);
                 return;
@@ -2045,7 +2051,7 @@ void do_mist_walk(CHAR_DATA *ch, char *argument )
 
         if (ch->mount)
         {
-                send_to_char("You cannot whilst riding.\n\r",ch);
+                send_to_char("Not whilst riding.\n\r",ch);
                 return;
         }
 
