@@ -20,8 +20,8 @@
 const struct rank       rank_table [ MAX_RANK ] =
 {
         /* name, rank_bonus, hp_bonus, who_format */
-        { "none",       1,      1,      "{WCommon.{x "},
-        { "common",     1,      1,      "{WCommon.{x "},
+        { "none",       1,      1,      "{WCommon{x "},
+        { "common",     1,      1,      "{WCommon{x "},
         { "rare",       3,      2,      "<39>[Rare]<0> "},
         { "elite",      3,      5,      "<93>[Elite]<0> "},
         { "boss",       4,      7,      "<514><556><16>[<560>BOSS<561>]<0><557> "},

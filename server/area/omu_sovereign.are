@@ -2,7 +2,7 @@
 65 70 45 100
 
 #RECALL
-27347
+28504
 
 #AREA_SPECIAL
 hidden
@@ -10,2933 +10,1346 @@ exp_mod 120
 $
 
 #MOBILES
-#28400
-giant sea python~
-a giant sea python~
-<150>A huge sea python propels itself through the water.<0>
+#28704
+grung orange chiefsguard~
+an orange grung~
+<208>An orange grung chiefsguard patrols the quarter.<0>
 ~
-This colossal serpent, with its muscular, scaled body, glides silently through
-the cold, pressurized waters, navigating the sea floor with an eerie grace.
-
-It seems hungry, but particular.  Let's hope you're not on the menu.
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. He's fit and vigilant, and regards you with deep
+suspicion.
 ~
-64 512|32768|33554432|67108864 0 S
+32|64 8|32|512|8192|8388608|67108864 -770 S
 65 0 0 0d0+0 0d0+0
-4|8|32|128|512 0
+0 0
 0 0 1
->fight_prog 15~
-    if size ($n) == 0
-        mpecho {WA giant sea python thinks you'll make a tasty snack!{x
-        swallow $n
+>greet_prog 100~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            yell Vodrak rathalus! Silsthiss vor'l quarr!
+            murder $n
+        endif
+        endif
     endif
 ~
 |
 
-#28401
-giant sea python~
-a giant sea python~
-<150>A huge sea python navigates the ocean depths.<0>
+#28705
+grung orange chiefsguard~
+an orange grung~
+<208>An orange grung chiefsguard patrols the quarter.<0>
 ~
-This colossal serpent, with its muscular, scaled body, glides silently through
-the cold, pressurized waters, gliding over the sea floor with an eerie grace.
-
-It seems hungry, but particular.  Let's hope you're not on the menu.
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. She is fit and vigilant, and regards you with deep
+suspicion.
 ~
-64 512|32768|33554432|67108864 0 S
-65 0 0 0d0+0 0d0+0
-4|8|32|128|512 0
-0 0 2
->fight_prog 15~
-    if size ($n) == 0
-        mpecho {WA giant sea python thinks you'll make a tasty snack!{x
-        swallow $n
-    endif
-~
-|
-
-#28402
-plesiosaurus~
-a plesiosaurus~
-<153>An ancient plesiosaurus paddles about gracefully.<0>
-~
-A plesiosaurus, with its long neck and four strong flippers, moves efficiently
-through the deep sea. Its head, small compared to its body, but full of
-razor-sharp teeth, scans its surroundings, alert for any signs of prey.
-~
-32|64 512|8192|67108864 0 S
-70 0 0 0d0+0 0d0+0
-4|32|512 0
-0 0 2
-
-#28403
-sea hag~
-a hideous sea hag~
-<63>A hideous sea hag is searching for victims to eat.<0>
-~
-The hideous sea hag patrols the waters, her presence a warning to all who
-venture so deep. With skin as rough as barnacles and eyes that gleam with malice,
-she moves with purpose, searching for victims. Her rank, matted hair flows like
-dead seaweed in the current, and her gnarled hands clutch at the empty space
-before her, ready to clutch, stab, and strangle.
-~
-64|2048 4|8|16|512|32768|8388608|33554432|67108864|1073741824 -876 S
-64 0 0 0d0+0 0d0+0
-0 0
-0 0 2
->all_greet_prog 15~
-    if isgood ($n)
-        yell I cannot endure your wretched goodness!
-        c paralysis $n
-        backstab $n
-    endif
-~
->fight_prog 15~
-    yell Fear me, fleshling filth!
-    c fear $n
-~
->fight_prog 15~
-    say Enjoy this, my pretty!
-    kick
-~
->fight_prog 5~
-    say DESIST!
-    c paralysis $n
-~
->rand_prog 1~
-    c invis
-~
->rand_prog 1~
-    vis
-~
-|
-
-#28404
-kua-toa fish-like humanoid male~
-a male Kua-toa~
-<135>A smallish fish-like humanoid looks suspiciously about.<0>
-~
-A smallish, paunchy humanoid male with the head of a fish and slender, webbed
-hands and feet, this Kua-toa is frowning at you, obviously suspicious.  Kua-toa
-are notoriously duplicitous, willing to turn on anyone if they suspect it will
-be to their advantage, or simply out of peer pressure or fear of maltreatment.
-
-He looks well-equipped for combat, no doubt expecting to find trouble in these
-underwater canals.
-~
-64 8|512|67108864 -375 S
-62 0 0 0d0+0 0d0+0
-0 0
-0 0 1
->fight_prog 5~
-    say Blibdoolpoolp judges us all!
-    c 'wrath of god'
-~
->fight_prog 10~
-    say Demogorgon protect me!
-    c 'holy word' $n
-~
->fight_prog 10~
-    say Blibdoolpool save me from this unbeliever!
-    c 'flamestrike' $n
-~
-|
-
-#28405
-kua-toa fish-like humanoid female~
-a female Kua-toa~
-<135>A fish-like female humanoid casts you a withering glance.<0>
-~
-A lithe, slender humanoid female with the head of a fish and slender, webbed
-hands and feet, this Kua-toa is frowning at you, obviously suspicious.  Kua-toa
-are notoriously duplicitous, willing to turn on anyone if they suspect it will
-be to their advantage, or simply out of peer pressure or fear of maltreatment.
-
-She looks well-equipped for combat, no doubt expecting to find trouble in these
-underwater canals.
-~
-64 8|512|67108864 -391 S
-62 0 0 0d0+0 0d0+0
-0 0
-0 0 2
->fight_prog 5~
-    Visit your judgment upon this villain, great BOOOAL!
-    c 'wrath of god'
-~
->fight_prog 10~
-    say Smite the infidel!
-    c 'holy word' $n
-~
->fight_prog 10~
-    say BOOOAL deliver me from this unbeliever!
-    c 'flamestrike' $n
-~
-|
-
-#28406
-bullywug squat frog-like humanoid~
-a bullywug~
-<149>A squat, frog-like humanoid lumbers about.<0>
-~
-This male frog-like humanoid stands about 6' tall and has a tough, olive-coloured
-hide.  His head is huge compared to his body, with big, bulbous eyes and a wide
-mouth from which regularly erupts a long, flicking tongue. He stinks like a bog.
-~
-64 65536|4194304|67108864 -650 S
-63 0 0 0d0+0 0d0+0
-0 0
-0 0 1
->fight_prog 10~
-    headbutt
-~
->fight_prog 10~
-    kick
-~
->rand_prog 5~
-    cham
-~
-|
-
-#28407
-bullywug squat frog-like humanoid~
-a bullywug~
-<10>A squat, frog-like humanoid lumbers about.<0>
-~
-This female frog-like humanoid stands about 5'6" tall and has a bright,
-emerald-coloured hide.  Her head is huge compared to her body, with big, bulbous
-eyes and a wide mouth from which regularly erupts a long, flicking tongue.
-She stinks like a terrestrial bog.
-~
-64 65536|4194304|67108864 -650 S
-63 0 0 0d0+0 0d0+0
-0 0
-0 0 2
->fight_prog 5~
-    headbutt
-~
->fight_prog 15~
-    kick
-~
->rand_prog 5~
-    cham
-~
-|
-
-#28408
-bullywug frog-like flabby humanoid~
-a bullywug~
-<76>A flabby, frog-like humanoid lumbers about.<0>
-~
-This male frog-like humanoid looks unlike others you've seen, with a weak, rather
-flabby body.  His head is huge compared to his body, with big, bulbous eyes and
-a very wide mouth from which regularly erupts a long, flicking tongue. He stinks
-like a bog.
-~
-64 65536|4194304|67108864 -700 S
-63 0 0 0d0+0 0d0+0
-32 0
-0 0 1
->fight_prog 15~
-    mpecho {MA bullywug croaks deeply, belching out a stream of putrid gas!{x
-    mpasound {M::croOOOoOOOOoOOAAAaak::{x
-    c 'gas breath' $n
-~
->rand_prog 5~
-    cham
-~
-|
-
-#28409
-kopru eel grotesque creature~
-a kopru~
-<173>A grotesque eel-like creature with a humanoid torso slithers about.<0>
-~
-This creature has a humanoid upper body, but a smooth, eel-like head and three
-tails tipped with stingers.  Its mouth contains fangs surrounded by a number of
-small, prehensile tentacles, and its muscular arms end in webbed hands with
-clawed fingers.
-~
-64 512|67108864 -1000 S
-63 0 0 0d0+0 0d0+0
-8|32|512 0
-0 0 1
->fight_prog 10~
-    c 'ultrablast' $n
-~
->fight_prog 1~
-    c 'synaptic blast' $n
-~
-|
-
-#28410
-kopru eel grotesque creature~
-a kopru~
-<173>A fearsome eel-like creature with a humanoid torso slithers about.<0>
-~
-This creature has a humanoid upper body, but a smooth, eel-like head and three
-tails tipped with stingers.  Its mouth contains fangs surrounded by a number of
-small, prehensile tentacles, and its muscular arms end in webbed hands with
-clawed fingers.
-~
-64 512|67108864 -1000 S
-64 0 0 0d0+0 0d0+0
-8|32|512 0
-0 0 2
->fight_prog 1~
-    c 'ultrablast' $n
-~
-|
-
-#28411
-ixzan manta ray fanged~
-an ixzan~
-<92>What looks like a giant, fanged manta ray swoops through the deep sea.<0>
-~
-Ixzan are similar in appearance to manta rays, but dusky in appearance, fanged,
-sentient, and live only in the darkest and deepest waters.  They tend to avoid
-conflict with humanoids, but are more than ready to defend themselves if attack.
-This looks like an ixzan of the rare 'vampiric' subtype.
-~
-64|131072 512|67108864 -890 S
+32|64 8|32|512|8192|8388608|67108864 -775 S
 66 0 0 0d0+0 0d0+0
-4|8|32|512 0
-0 0 1
-
-#28412
-ixzan manta ray fanged~
-an ixzan~
-<91>What looks like a giant, fanged manta ray swoops about in the deep.<0>
-~
-Ixzan are similar in appearance to manta rays, but dusky in appearance, fanged,
-sentient, and live only in the darkest and deepest waters.  They tend to avoid
-conflict with humanoids, but are more than ready to defend themselves if attack.
-This looks like an ixzan of the rare 'vampiric' subtype.
-~
-64|131072 512|67108864 -899 S
-66 0 0 0d0+0 0d0+0
-4|8|32|512 0
+0 0
 0 0 2
-
-#28413
-water naga~
-a water naga~
-<80>A large, snakelike water naga regards you with curiosity.<0>
+>greet_prog 100~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            yell Verthicha drakon! Thedir qoralis ux!
+            murder $n
+        endif
+        endif
+    endif
 ~
-The water naga moves with a grace that belies his considerable size. His long,
-serpent-like body undulates through the water, scales shimmering with subtle
-hues of blue and green. The naga's face, surprisingly humanlike in his aspect,
-manifests a gaze that is both penetrating and calm.
-~
-64 4|8|16|512|8192|67108864|1073741824 -75 S
-67 0 0 0d0+0 0d0+0
-4|8|512 0
-0 0 1
->fight_prog 5~
-    c 'dispel magic' $n
-~
->fight_prog 5~
-    c 'blindness' $n
-~
->fight_prog 5~
-    c 'curse' $n
-~
->fight_prog 5~
-    c 'slow' $n
-~
->fight_prog 5~
-    c 'acid blast' $n
-~
-|
-
-#28414
-water naga~
-a water naga~
-<82>A snakelike water naga glides soundlessly through the murky water.<0>
-~
-The water naga moves with a grace that belies her considerable size. Her long,
-serpent-like body undulates through the water, scales shimmering with subtle
-hues of blue and green. The naga's face, surprisingly humanlike in her aspect,
-manifests a gaze that is both penetrating and calm.
-~
-64 4|8|16|512|8192|32768|67108864|1073741824 -83 S
-67 0 0 0d0+0 0d0+0
-4|8|512 0
-0 0 2
->fight_prog 5~
-    c 'lightning bolt' $n
-~
->fight_prog 5~
-    c 'feeblemind' $n
-~
->fight_prog 5~
-    c 'curse' $n
-~
->fight_prog 5~
-    c 'chill touch' $n
-~
->fight_prog 5~
-    c 'paralysis' $n
-~
-|
-
-#28415
-uchuulon chuul~
-an uchuulon~
-<128>What looks like a translucent chuul covered in mucus lurks here.<0>
-~
-Uchuulons resembled ordinary chuuls in size and shape: a hideous combination of
-crustacean, insect, and serpent some 8 ft long and weighing approximately 290 kg,
-with a mass of tentacles in front of the mouth, two large claws, and a fanned
-tail. They differ in that their carapace is softer, translucent, and coated in a
-thick mucus.
-
-Ambush predators, they tend to hide in mud and darkness and lunge at their prey
-when the opportunity arises.
-~
-2|64 2|8|32|512|65536|8388608|67108864 -837 S
-68 0 0 0d0+0 0d0+0
-32|512 0
-0 0 1
->all_greet_prog 20~
+>act_prog unlocks~
+    yell Vi gomagar! Vi pronlel! Nelithik!
     murder $n
 ~
->fight_prog 10~
-    mpechoat $n <171>The uchuulon tries to grab you with his hideous tentacles!<0>
-    c 'paralysis' $n
+|
+
+#28706
+sharptooth catfish~
+a sharptooth~
+<94>A sharptooth catfish slithers about in the mud.<0>
+~
+This sharptooth catfish is a long, eel-like fish, about 60kg in weight and
+2 metres long.  Its flattened body is dark brown on the back and fades to
+a paler colour on its underbelly.
+
+It's busy grubbing about in the mud for food, and doesn't seem to have much
+interest in you.
+~
+64 8|32|512|32768|67108864 -110 S
+65 0 0 0d0+0 0d0+0
+4|8|32|512 0
+0 0 2
+>rand_prog 1~
+    mpecho <94>::slither::<0>
+~
+>rand_prog 1~
+    mpecho <94>::ssshlorp::<0>
+~
+>rand_prog 1~
+    mpecho <94>::fllllllup::<0>
 ~
 |
 
-#28416
-uchuulon chuul~
-an uchuulon~
-<128>What looks like a translucent chuul covered in mucus lurks here.<0>
+#28707
+sharptooth catfish~
+a sharptooth~
+<94>A sharptooth catfish slithers about in the mud.<0>
 ~
-Uchuulons resembled ordinary chuuls in size and shape: a hideous combination of
-crustacean, insect, and serpent some 8 ft long and weighing approximately 290 kg,
-with a mass of tentacles in front of the mouth, two large claws, and a fanned
-tail. They differ in that their carapace is softer, translucent, and coated in a
-thick mucus.
+This sharptooth catfish is a long, eel-like fish, about 60kg in weight and
+2 metres long.  Its flattened body is dark brown on the back and fades to
+a paler colour on its underbelly.
 
-Ambush predators, they tend to hide in mud and darkness and lunge at their prey
-when the opportunity arises.
+It's busy grubbing about in the mud for food, and doesn't seem to have much
+interest in you.
 ~
-2|64 2|8|32|512|65536|8388608|67108864 -891 S
-68 0 0 0d0+0 0d0+0
-32|512 0
+64 8|32|512|32768|67108864 -110 S
+65 0 0 0d0+0 0d0+0
+4|8|32|512 0
+0 0 1
+>rand_prog 1~
+    mpecho <94>::shlllerp::<0>
+~
+>rand_prog 1~
+    mpecho <94>::shmmmmerk::<0>
+~
+>rand_prog 1~
+    mpecho <94>::blllloop::<0>
+~
+|
+
+#28708
+Kullugrib grung armourer~
+Kullugrib~
+<208>Kullugrib the armourer hammers away here.<0>
+~
+This muscular orange grung is the chiefsguard's armourer.  He is a grim and
+surly grung, who has little to say and likes to keep it that way.
+~
+2|64 8|32|512|8192|8388608|67108864 -795 S
+66 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>greet_prog 100~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            emote scowls at you furiously
+            murder $n
+        endif
+        endif
+    endif
+~
+|
+
+#28709
+training dummy fghdfdhhdfrg~
+a training dummy~
+A training dummy is here, ready to take a beating.
+~
+This training dummy has been bolted to the floor and is used by the chiefsguard
+soldiers to test their weapons on.  It has been fashioned to crudely resemble a
+muscular grung warrior.
+~
+2|64|16777216|33554432|67108864|134217728|9223372036854775808 1|64|512|9223372036854775808 0 S
+66 0 0 0d0+0 0d0+0
+1|2|32|256 0
+0 0 0
+
+#28710
+grung orange chiefsguard~
+an orange grung~
+<208>A muscular female chiefsguard trains here intensely.<0>
+~
+This squat but musclar female orange grung is a member of the chiefsguard.  She
+is busy training her combat skills.
+~
+2|64 8|32|512|8192|8388608|67108864 -801 S
+66 0 0 0d0+0 0d0+0
+0 0
 0 0 2
->all_greet_prog 20~
+>rand_prog 50~
+    if isfight($i)
+        break
+    else
+        yell Verthicha, thraktos niu!
+        mpkill fghdfdhhdfrg
+    endif
+~
+|
+
+#28711
+grung orange chiefsguard~
+an orange grung~
+<208>An orange grung chiefsguard is busy eating here.<0>
+~
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. He's busy eating, and less vigilant than he
+typically would be.
+~
+2|64 8|32|512|8192|8388608|67108864 -710 S
+66 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>greet_prog 100~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            yell Kroniik vokul!
+            murder $n
+        endif
+        endif
+    endif
+~
+|
+
+#28712
+grung orange chiefsguard~
+an orange grung~
+<208>An orange grung chiefsguard chews studiously.<0>
+~
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. She is fit and vigilant, but busy chewing
+something strange-looking right now.
+~
+2|64 8|32|512|8192|8388608|67108864 -735 S
+66 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>greet_prog 100~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            yell Krosis! Zu'u lost ont daan!
+            murder $n
+        endif
+        endif
+    endif
+~
+|
+
+#28713
+grung orange chiefsguard~
+an orange grung~
+<208>An orange grung chiefsguard dozes fitfully.<0>
+~
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. He's relaxing, and feels safe where he is.
+~
+2|64 8|32|512|8192|8388608|67108864 -711 S
+66 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>greet_prog 100~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            wake
+            yell Vorastrix kulok naerth! Zorel!
+            murder $n
+        endif
+        endif
+    endif
+~
+>rand_prog 1~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+            sleep
+        endif
+    endif
+~
+>rand_prog 1~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+            rest
+        endif
+    endif
+~
+>rand_prog 1~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+            wake
+        endif
+    endif
+~
+|
+
+#28714
+grung orange chiefsguard~
+an orange grung~
+<208>An orange grung chiefsguard is relaxing here.<0>
+~
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. She's relaxing, and regards you with only mild
+curiosity.
+~
+2|64 8|32|512|8192|8388608|67108864 -766 S
+66 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>greet_prog 100~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            wake
+            yell Vorastrix un sov? Zeymah!
+            murder $n
+        endif
+        endif
+    endif
+~
+>rand_prog 1~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+            sleep
+        endif
+    endif
+~
+>rand_prog 1~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+            rest
+        endif
+    endif
+~
+>rand_prog 1~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+            wake
+        endif
+    endif
+~
+|
+
+#28715
+grung orange chiefsguard~
+an orange grung~
+<208>An orange grung chiefsguard stands at attention.<0>
+~
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. He's fit and vigilant, and regards you with deep
+suspicion.  His job is to guard the upper entrance of the chiefsguard station.
+~
+2|32|64 8|32|512|8192|8388608|67108864 -800 S
+66 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>greet_prog 100~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            yell Ven jorralla adothai! Dhar'kess Lana!
+            murder $n
+        endif
+        endif
+    endif
+~
+>act_prog unlocks~
+    yell Vi gomagar! Vi pronlel! Nelithik!
     murder $n
 ~
->fight_prog 5~
-    mpechoat $n <171>The uchuulon tries to grab you with her hideous tentacles!<0>
-    c 'paralysis' $n
-~
->fight_prog 5~
-    headbutt
-~
 |
 
-#28417
-grung hunter~
-a grung hunter~
-<118>A green grung is on the hunt for edible creatures.<0>
+#28716
+octopus sinister~
+an octopus~
+<140>A sinister-looking octopus slithers about.<0>
 ~
-Grung are a race of small, froglike humanoids.  They are fiercely territorial,
-and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  By his attire you would
-assume this green grung is a hunter, busy going about and setting and checking
-traps.
+The sinister-looking purple octopus is slithering about looking for a meal. She
+is not aggressive, but you don't doubt she would take a dim view of being
+interrupted while hunting.
 ~
-64 8|32|512|2097152|8388608|67108864 -625 S
-60 0 0 0d0+0 0d0+0
-0 0
-0 0 1
->rand_prog 1~
-    if isfight($i)
-        break
-    else
-        if objroom($i) == 28417
-        or objroom($i) == 28418
-        or objroom($i) == 28419
-        or objroom($i) == 28420
-            mpecho A grung hunter inspects the trap and grumbles.
-        else
-            mpoload 28417
-            drop iuysdfghkskls
-            mpecho A grung hunter busies himself setting up a crude trap.
-        endif
-    endif
-~
->rand_prog 1~
-    if isfight($i)
-        break
-    else
-        get iuysdfghkskls
-        if carrying($i) == 28417
-            mpecho A grung hunter examines the empty trap with evident frustration.
-            mpjunk iuysdfghkskls
-        endif
-    endif
-~
-|
-
-#28418
-grung hunter~
-a grung hunter~
-<118>A green grung is on the hunt for edible creatures.<0>
-~
-Grung are a race of small, froglike humanoids.  They are fiercely territorial,
-and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  By his attire you would
-assume this green grung is a hunter, busy going about and setting and checking
-traps.
-~
-64 8|32|512|2097152|8388608|67108864 -592 S
-60 0 0 0d0+0 0d0+0
-0 0
-0 0 1
->rand_prog 1~
-    if isfight($i)
-        break
-    else
-        if objroom($i) == 28417
-        or objroom($i) == 28418
-        or objroom($i) == 28419
-        or objroom($i) == 28420
-            mpecho A grung hunter inspects the trap and grumbles.
-        else
-            mpoload 28418
-            drop sdfgsdfthsd
-            mpecho A grung hunter busies himself setting up a crude trap.
-        endif
-    endif
-~
->rand_prog 1~
-    if isfight($i)
-        break
-    else
-        get sdfgsdfthsd
-        if carrying($i) == 28418
-            mpecho A grung hunter examines the empty trap with evident frustration.
-            mpjunk sdfgsdfthsd
-        endif
-    endif
-~
-|
-
-#28419
-grung hunter~
-a grung hunter~
-<118>A green grung is on the hunt for edible creatures.<0>
-~
-Grung are a race of small, froglike humanoids.  They are fiercely territorial,
-and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  By his attire you would
-assume this green grung is a hunter, busy going about and setting and checking
-traps.
-~
-64 8|32|512|2097152|8388608|67108864 -670 S
-60 0 0 0d0+0 0d0+0
-0 0
-0 0 1
->rand_prog 1~
-    if isfight($i)
-        break
-    else
-        if objroom($i) == 28417
-        or objroom($i) == 28418
-        or objroom($i) == 28419
-        or objroom($i) == 28420
-            mpecho A grung hunter inspects the trap and grumbles.
-        else
-            mpoload 28419
-            drop jtejerthddfgh
-            mpecho A grung hunter busies himself setting up a crude trap.
-        endif
-    endif
-~
->rand_prog 1~
-    if isfight($i)
-        break
-    else
-        get jtejerthddfgh
-        if carrying($i) == 28419
-            mpecho A grung hunter examines the empty trap with evident frustration.
-            mpjunk jtejerthddfgh
-        endif
-    endif
-~
-|
-
-#28420
-grung hunter~
-a grung hunter~
-<118>A green grung is on the hunt for edible creatures.<0>
-~
-Grung are a race of small, froglike humanoids.  They are fiercely territorial,
-and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  By his attire you would
-assume this green grung is a hunter, busy going about and setting and checking
-traps.
-~
-64 8|32|512|2097152|8388608|67108864 -615 S
-60 0 0 0d0+0 0d0+0
-0 0
-0 0 1
->rand_prog 1~
-    if isfight($i)
-        break
-    else
-        if objroom($i) == 28417
-        or objroom($i) == 28418
-        or objroom($i) == 28419
-        or objroom($i) == 28420
-            mpecho A grung hunter inspects the trap and grumbles.
-        else
-            mpoload 28420
-            drop pyuiopyuirwevg
-            mpecho A grung hunter busies himself setting up a crude trap.
-        endif
-    endif
-~
->rand_prog 1~
-    if isfight($i)
-        break
-    else
-        get pyuiopyuirwevg
-        if carrying($i) == 28420
-            mpecho A grung hunter examines the empty trap with evident frustration.
-            mpjunk jpyuiopyuirwevg
-        endif
-    endif
-~
-|
-
-#28421
-grung warrior~
-a grung warrior~
-<118>A green grung warrior patrols the Omu canal.<0>
-~
-Grung are a race of small, froglike humanoids.  They are fiercely territorial,
-and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  By his attire you would
-assume this green grung is a warrior, looking for intruders on grung territory.
-~
-64 8|32|512|4194304|67108864 -700 S
-60 0 0 0d0+0 0d0+0
-0 0
-0 0 1
+64 8|32|512|32768|67108864 0 S
+66 0 0 0d0+0 0d0+0
+8|32 0
+0 0 2
 >fight_prog 25~
-    headbutt
+    if affspell($n) == 74
+        break
+    else
+        mpechoat $n <140>The octopus tries to ensnare you in her powerful tentacles!<0>
+        c 'paralysis' $n
+    endif
 ~
->all_greet_prog 10~
-    yell Ekess jirai! Rotinivokari persvek hesi kenal!
-    shoot $n
+>rand_prog 1~
+    mpecho <92>A cloud of purple ink forms in the water.<0>
+    mppeace
+    sneak
+    north
+    hide
+~
+>rand_prog 1~
+    mpecho <92>A cloud of purple ink forms in the water.<0>
+    mppeace
+    sneak
+    south
+    hide
+~
+>rand_prog 1~
+    mpecho <92>A cloud of purple ink forms in the water.<0>
+    mppeace
+    sneak
+    east
+    hide
+~
+>rand_prog 1~
+    mpecho <92>A cloud of purple ink forms in the water.<0>
+    mppeace
+    sneak
+    west
+    hide
+~
+>rand_prog 1~
+    mpecho <92>A cloud of purple ink forms in the water.<0>
+    mppeace
+    sneak
+    up
+    hide
+~
+>rand_prog 1~
+    mpecho <92>A cloud of purple ink forms in the water.<0>
+    mppeace
+    sneak
+    down
+    hide
 ~
 |
+
+#28717
+Krek'tok grung receptionist~
+Krek'tok~
+<160>Krek'tok is here, patiently receiving the chief's visitors.<0>
+~
+Krek'tok is here to greet and triage individuals and groups who have come to
+visit the chief.  She is a plump and rather officious-looking female red grung,
+but you don't doubt she could make your life unpleasant if she had to.  You get
+a definite feeling of unctuous corruptibility from her.
+~
+2|64 8|32|128|512|8192|8388608|67108864 -805 S
+67 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>greet_prog 100~
+    if isfight($i)
+        break
+    else
+        say Kagh svabol dronilnric wux ekess ocuir wer rimem, $n?
+    endif
+~
+>rand_prog 2~
+    if isfight($i)
+        break
+    else
+        mpecho Krek'tok winks at you, gesturing towards the eastern door, and her purse.
+    endif
+~
+|
+
+#28718
+advisor sahuagin~
+a sahuagin advisor~
+A sahuagin advisor regards you imperiously.
+~
+This older male sahuagin acts as counsellor and guide to elite figures in the
+sahuagin hieirarchy.  His clothing and demeanour make it clear he is an
+important figure in the Sekolah-worshipping theocratic hierarchy.
+~
+64 8|32|128|512|8192|524288|67108864|536870912 -840 S
+67 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>hitprcnt_prog 10~
+    mpecho {/}B{CThe sahuagin advisor gestures directly at you! Everything goes blue...{x{/{x
+    mptransfer $n 28429
+    mpat $n mpforce $n look
+    mpat $n mpecho {/}B{CThe advisor grins evilly before slowly dematerialising...{x
+~
+|
+
+#28719
+triton man blue-skinned~
+a Triton~
+A {Bblue-skinned man{x struts about here impatiently.
+~
+You recognize this blue-skinned man as a Triton—fairly handsome, though bearing
+a faintly piscine cast to his features. Hailing from a noble and reclusive race
+of ocean-dwellers, Tritons are known for their tireless defense of magical
+sea-gates against sahuagin, krakens, and other abyssal horrors. Their unwavering
+sense of duty often aligns them with law and goodness, but they are equally
+infamous for their imperious demeanour and lofty airs. This one regards you with
+narrowed eyes and a tight-lipped frown—impatient, aloof, and all business.
+~
+64 8|32|512|8192|4194304|67108864|1073741824 625 S
+67 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>rand_prog 1~
+    if isfight($i)
+        break
+    else
+        sigh
+    endif
+~
+>rand_prog 1~
+    if isfight($i)
+        break
+    else
+        roll
+    endif
+~
+|
+
+#28720
+female sea elf~
+a female sea elf~
+<86>A smooth-skinned, teal-coloured sea elf female drifts about distractedly.<0>
+~
+Sea elves are of elven ancestry, though with enough differences to qualify as
+a distinct ancestry. They resemble elves with bluish or greenish tinted skin,
+with long, webbed fingers and toes, and visible gills on their ribs.  This
+sea elf is a tall and elegant female who looks pensive and preoccupied.
+~
+64 4|8|16|32|512|8192|2097152|8388608|67108864|536870912|1073741824 890 S
+67 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>rand_prog 1~
+    if isfight($i)
+        break
+    else
+        grimace
+    endif
+~
+|
+
+#28721
+grung orange chiefsguard~
+an orange grung~
+<208>An orange grung chiefsguard patrols the chief's dwelling.<0>
+~
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. She is fit and vigilant, and regards you with deep
+suspicion.
+~
+32|64 8|32|512|8192|8388608|67108864 -785 S
+68 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>greet_prog 100~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            yell Verthicha drakon! Thedir qoralis ux!
+            murder $n
+        endif
+        endif
+    endif
+~
+>act_prog unlocks~
+    yell Vi gomagar! Vi pronlel! Nelithik!
+    murder $n
+~
+|
+
+#28722
+grung orange chiefsguard~
+an orange grung~
+<208>An orange grung chiefsguard patrols the chief's dwelling.<0>
+~
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. He is fit and vigilant, and regards you with deep
+suspicion.
+~
+32|64 8|32|512|8192|8388608|67108864 -785 S
+68 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>greet_prog 100~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            yell Verthicha drakon! Thedir qoralis ux!
+            murder $n
+        endif
+        endif
+    endif
+~
+|
+
+#28723
+grung orange chiefsguard~
+an orange grung~
+<208>An offduty chiefsguard crouches against the wall here.<0>
+~
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. Despite being off duty he is quite alert.
+~
+2|32|64 8|32|512|8192|8388608|67108864 -731 S
+68 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>greet_prog 100~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            wake
+            yell Vorastrix kulok naerth! Zorel!
+            murder $n
+        endif
+        endif
+    endif
+~
+|
+
+#28724
+grung orange chiefsguard~
+an orange grung~
+<208>An offduty chiefsguard is relaxing here.<0>
+~
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. She's relaxing, and regards you with only mild
+curiosity.
+~
+2|64 8|32|512|8192|8388608|67108864 -786 S
+68 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>greet_prog 100~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            wake
+            yell Vorastrix un sov? Zeymah!
+            murder $n
+        endif
+        endif
+    endif
+~
+>rand_prog 1~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+            rest
+        endif
+    endif
+~
+>rand_prog 1~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+            wake
+        endif
+    endif
+~
+|
+
+#28725
+male sea elf spy~
+a male sea elf~
+<80>A smooth-skinned male sea elf hides in the shadows.<0>
+~
+Sea elves are of elven ancestry, though with enough differences to qualify as
+a distinct ancestry. They resemble elves with bluish or greenish tinted skin,
+with long, webbed fingers and toes, and visible gills on their ribs.  This
+sea elf is a tall,elegant male who seems to be doing his best to avoid detection.
+~
+2|64 2|8|32|512|8192|32768|65536|1048576|8388608|67108864|536870912 890 S
+68 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>rand_prog 1~
+    if isfight($i)
+        break
+    else
+        grimace
+    endif
+~
+|
+
+#28726
+grung orange chiefsguard elite~
+an orange grung~
+<208>An elite orange grung chiefsguard patrols the corridor.<0>
+~
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. She is fit and vigilant, and regards you with deep
+suspicion.  She seems particularly robust.
+~
+32|64 8|32|512|8192|8388608|67108864 -795 S
+69 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+
+#28727
+grung orange chiefsguard~
+an orange grung~
+<208>An elite orange grung chiefsguard patrols the corridor.<0>
+~
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. He is fit and vigilant, and regards you with deep
+suspicion. He seems particularly robust.
+~
+32|64 8|32|512|8192|8388608|67108864 -795 S
+69 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#28728
+grung gold chiefsmate~
+a chiefsmate grung~
+<220>A male gold grung chiefsmate is here, whiling away the hours.<0>
+~
+This male gold grung is one of the chief's mating partners.  He has little to do
+with his days but indulge in minor luxuries and await her call.
+~
+64 8|32|128|512|2048|8192|8388608|16777216|67108864 -810 S
+69 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>greet_prog 100~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            yell Zellu de nomeno ofdio oium!
+            murder $n
+        endif
+        endif
+    endif
+~
+|
+
+#28729
+conger eel~
+a conger eel~
+<138>A conger eel is looking for a meal.<0>
+~
+The conger eel is a large, elongated marine fish known for its serpentine body
+and powerful jaws.  It can grow up to 3 meters long and weight 60 kilos. Conger
+eels have smooth, scaleless skin that ranges from grey to dark brown, and small,
+sharp teeth suited for catching fish, crustaceans, and cephalopods. Though
+nocturnal and solitary by nature, they are fierce predators and sometimes
+mistaken for sea snakes due to their sinuous appearance.
+~
+64 32|512|33554432|67108864 0 S
+67 0 0 0d0+0 0d0+0
+4|8|32|512 0
+0 0 2
+
+#28730
+conger eel~
+a conger eel~
+<138>A conger eel is looking for a meal.<0>
+~
+The conger eel is a large, elongated marine fish known for its serpentine body
+and powerful jaws.  It can grow up to 3 meters long and weight 60 kilos. Conger
+eels have smooth, scaleless skin that ranges from grey to dark brown, and small,
+sharp teeth suited for catching fish, crustaceans, and cephalopods. Though
+nocturnal and solitary by nature, they are fierce predators and sometimes
+mistaken for sea snakes due to their sinuous appearance.
+~
+64 32|512|33554432|67108864 0 S
+69 0 0 0d0+0 0d0+0
+4|8|32|512 0
+0 0 1
+
+#28731
+grung gold chief~
+the Chief~
+<220>The chief rises furiously at your intrusion.<0>
+~
+The Chief Grung is a regal female gold grung, the highest caste among her kind
+and the unquestioned leader of her tribe. Her shimmering golden skin marks her
+as divine in the eyes of her people, a symbol of perfection and power.
+Draped in ornate undersea regalia—bones, scales, and polished coral—she rules
+with a sharp mind and a sharper tongue. Her movements are deliberate and poised,
+her voice commanding and melodic.
+
+Fierce, cunning, and deeply traditional, she maintains order through ritual,
+fear, and an unshakable belief in her own superiority.
+~
+2|64 8|32|128|512|2048|8192|8388608|16777216|67108864 -910 S
+70 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>greet_prog 100~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            yell Zsvanoa bevi wux lekar sia bidrithu! Nelithral ekess wux!
+            murder $n
+        endif
+        endif
+    endif
+~
+>give_prog clasp radiant~
+    if number($o) == 27632
+        if objcount(28730) < 1
+            emote the Chief gurgles with delight.
+            mpoload 28730
+            give bag $n
+        break
+        else
+        if objcount(28730) >= 1
+            emote the Chief gurgles with pleasure.
+        endif
+        endif
+    else
+        emote frowns.
+        drop clasp
+        murder $n
+    endif
+    endif
+~
+|
+< reserved~ boss~
 #0
 
 #OBJECTS
-#28400
-fangs~
-a large pair of fangs~
-The huge fangs of some undersea creature lie here.~
+#28704
+long silver spear~
+a long silver spear~
+A well-used and maintained long silver spear rests here.~
 ~
-5 16777216|67108864 1
-0~ 0~ 0~ 10~
-30 0 0
-A
-19 10
-A
-50 10
-
-#28401
-egg leathery~
-a large leathery egg~
-A large leathery egg lies here.~
-~
-26 0 1|16384
-65~ heal~ heal~ cure poison~
-5 0 0
-
-#28402
-teeth razor~
-razor-sharp teeth~
-The razor-sharp teeth of an aquatic predator lie here.~
-~
-5 16777216|67108864 1
-0~ 0~ 0~ 10~
-2 0 0
-A
-19 15
-A
-50 15
-
-#28403
-dagger cowrie~
-a cowrie dagger~
-A wicked dagger carved from a cowrie shell is here.~
-~
-5 64|16777216 1|8192
-0~ 0~ 0~ 2~
-2 0 0
-A
-19 8
-A
-51 5
-
-#28404
-slimy hide~
-slimy hide~
-The slime-covered hide of some fish-like creature has been dumped here.~
-~
-9 67108864|137438953472 1|8
-0~ 0~ 0~ 0~
-8 0 0
-A
-17 -10
-A
-37 50
-A
-38 50
-
-#28405
-turtle shell shield large~
-a large turtle shell~
-A large, somewhat slimy turtle shell has been abandoned here.~
-~
-9 0 1|512
-0~ 0~ 0~ 0~
-6 0 0
-A
-17 -15
-
-#28406
-crude spear~
-a crude spear~
-A crude spear has been placed here.~
-~
-5 16777216|134217728|274877906944 1|8192
+5 0 1|8192
 0~ 0~ 0~ 11~
-8 0 0
-A
-19 10
-A
-18 8
-
-#28407
-thick leather jerkin~
-a thick leather jerkin~
-A wet, thick leather jerkin rests here.~
-~
-9 0 1|8
-0~ 0~ 0~ 0~
-12 0 0
-A
-17 -15
-A
-5 2
-A
-14 -50
-A
-24 -3
-
-#28408
-oily hide~
-oily hide~
-The oily hide of some large, eel-like creature has been dumped here.~
-~
-9 67108864|137438953472 1|8
-0~ 0~ 0~ 0~
-25 0 0
-A
-17 -15
-A
-36 50
-A
-50 10
-
-#28409
-tail barbed~
-a long tail with a barbed tip~
-A long, eel-like tail with a stinger at its tip lies here.~
-~
-5 67108864 1
-0~ 0~ 0~ 16~
-15 0 0
-
-#28410
-fangs~
-a pair of sharp fangs~
-The fangs of some undersea creature lie here.~
-~
-5 67108864 1
-0~ 0~ 0~ 10~
-5 0 0
-A
-19 12
-A
-50 5
-
-#28411
-bag coins~
-a bag of coins~
-A fat bag of coins lies here.~
-~
-20 0 1
-15~ 28~ 30~ 2~
-1 0 0
-
-#28412
-bone earring~
-a bone earring~
-An earring carved from whalebone lies here.~
-~
-9 0 1|16
-0~ 0~ 0~ 0~
-1 0 0
-E
-bone earring~
-A remarkable piece of craftmanship.  The earring features a number of intricate
-carvings that sensitively follow the delicate natural curves of the bone.  They
-resemble writing, or at least symbols, but what they might mean you have no idea.
-~
-A
-4 4
-
-#28413
-bladder ixzan ichor~
-a bladder of ixzan ichor~
-The dark, squishy bladder of an undersea fiend lies here.~
-~
-10 16|64 1|16384
-66~ combat mind~ stabilise~ remove curse~
-8 0 0
-
-#28414
-kopru tattoo~
-a kopru tattoo~
-A tattoo cut from the flesh of some monstrous sea creature lies here.~
-~
-9 16|64|274877906944 1|256
-0~ 0~ 0~ 0~
-1 0 0
-E
-kopru tattoo~
-The tattoo, meticulously cut from the skin of a kopru, is more than a tattoo;
-it's a talisman, believed to bestow upon its bearer some of the kopru's feared
-combat ability.
-~
+11 0 0
 A
 18 6
 A
 19 6
 
-#28415
-egg naga~
-a water naga's egg~
-A large, white egg lies here.~
+#28705
+orange rock armour~
+bright orange rock armour~
+A suit of bright orange armour made of rock is here.~
 ~
-26 1 1|16384
-65~ heal~ dispel magic~ ~
-7 0 0
+9 0 1|8
+0~ 0~ 0~ 0~
+14 0 0
+A
+17 -20
+A
+5 2
+A
+14 -50
+A
+24 -4
 
-#28416
-transparent mucus blob~
-<181>a handful of transparent mucus<0>~
-A blob of transparent mucus has been left here.~
+#28706
+rock helm~
+a rock helm~
+An orange helm made of rock sits here.~
 ~
-10 32|64 1|16384
-65~ dispel magic~ ~ ~
+9 0 1|16
+0~ 0~ 0~ 0~
+6 0 0
+A
+17 -25
+A
+19 4
+
+#28707
+smoking glowing forge~
+a smoking forge~
+<220>The smoking forge radiates intense heat.<0>~
+~
+43 1 0
+~ ~ ~ ~
+2000 0 0
+E
+smoking glowing forge~
+The forge can be used to smelt metals, should you know how to do that.
+~
+
+#28708
+gleaming anvil~
+a gleaming anvil~
+<69>A gleaming anvil sits here, being pounded away on.<0>~
+~
+30 0 0
+~ ~ ~ ~
+5000 0 0
+
+#28709
+sturdy metal workbench~
+a sturdy metal workbench~
+<240>A sturdy metal workbench runs along the southern wall.<0>~
+~
+40 0 0
+15~ 0~ 0~ 0~
+2000 0 0
+E
+sturdy metal workbench~
+The workbench is covered in various tools to aid in the construction or
+enhancement of useful physical artefacts.
+~
+
+#28710
+muddy spine catfish~
+the muddy spine of a catfish~
+The muck-encrusted spine of some fish lies here.~
+~
+19 0 1
+35~ ~ ~ 1~
+1 0 0
+E
+muddy spine catfish~
+It looks gross.
+~
+
+#28711
+scroll~
+a scroll~
+A scroll with some writing on it is here.~
+~
+13 0 1|16384
+~ ~ ~ ~
+1 0 67
+E
+scroll writing~
+The script is Draconic, you're pretty sure, but you can't read it.
+
+<558>Si offre wux vin gebalam de sia pliso. Confn ekess wer angrimich baryn kagh
+renthisj wer lex "aliyank".<559>
+
+An elaborate seal has been inscribed in it that suggests authority.
+~
+
+#28712
+glittering scroll~
+a glittering scroll~
+A glittering scroll lies here.~
+~
+13 0 1|16384
+~ ~ ~ ~
+1 0 67
+E
+glittering scroll~
+The scroll is a military communique.  It reads:
+{W
+"Chief.
+
+ We seek cooperation to contain the provocations of your southern neighbour.
+ If you would be interested in formalising such an arrangement, send word with
+ my emissary.
+
+ Regards,
+
+
+ Valas Duhnenath, Lord Commander of Eakos"{x
+
+~
+
+#28713
+dark cloak~
+a dark cloak~
+A dark cloak lies here, flickering and shimmering.~
+~
+9 274877906944 1|1024
+0~ 0~ 0~ 0~
+2 0 0
+A
+28 -1
+A
+33 -1
+
+#28714
+masterwork silver spear~
+a masterwork silver spear~
+A well-used and maintained masterwork silver spear rests here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 11~
+11 0 0
+A
+18 10
+A
+19 10
+
+#28715
+golden diadem circlet~
+a golden diadem~
+A golden circlet lies here.~
+~
+9 64|274877906944 1|16
+0~ 0~ 0~ 0~
+1 0 0
+A
+17 -3
+A
+12 110
+
+#28716
+luxurious brown robe~
+a luxurious brown robe~
+A luxurious brown robe lies here in a heap.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~
 2 0 0
 
-#28417
-trap crude iuysdfghkskls~
-a crude trap~
-<94>A crude trap has been left here to bludgeon unwary creatures.<0>~
+#28717
+golden key~
+a small golden key~
+A small golden key has been left here.~
 ~
-12 2097152 2 5 1 1
-~ ~ ~ ~
-10 0 0
+18 0 1|16384
+28409~ 0~ 0~ 0~
+1 0 0
+E
+small golden key~
+This key is very small and elegant, and looks to be made from or thickly-plated
+with gold.
+~
 
-#28418
-trap crude sdfgsdfthsd~
-a crude trap~
-<94>A crude trap has been left here to impale unwary creatures.<0>~
+#28718
+large brass key~
+a large brass key~
+A large brass key has been left here.~
 ~
-12 2097152 2 6 1 1
-~ ~ ~ ~
-10 0 0
+18 0 1|16384
+28429~ 0~ 0~ 0~
+1 0 0
+E
+large brass key~
+This key is heavy and made of brass, of the kind usually used to unlock heavy
+castle doors.
+~
 
-#28419
-trap crude jtejerthddfgh~
-a crude trap~
-<94>A crude trap has been left here to lacerate unwary creatures.<0>~
+#28719
+large brass key~
+a large brass key~
+A large brass key has been left here.~
 ~
-12 2097152 2 7 1 1
-~ ~ ~ ~
-10 0 0
+18 0 1|16384
+28714~ 0~ 0~ 0~
+1 0 68
+E
+large brass key~
+This key is heavy and made of brass, of the kind usually used to unlock heavy
+castle doors.  It has the chief's symbol carved into it.
+~
 
-#28420
-trap crude pyuiopyuirwevg~
-a crude trap~
-<94>A crude trap has been left here to poison unwary creatures.<0>~
+#28720
+velvet purse~
+a velvet purse~
+A large purse made of velvet is here.~
 ~
-12 16384|2097152 2 8 1 1
-~ ~ ~ ~
-10 0 0
+15 0 1|16384
+5~ 0~ -1~ ~
+1 0 68
 
-#28421
-wooden bow~
-a crude wooden bow~
-A crude wooden bow has been abandoned here.~
+#28721
+row teeth sharp~
+a row of sharp teeth~
+Sharp teeth lie scattered here.~
 ~
-5 1073741824|274877906944 1|131072
-0~ 0~ 0~ 11~
-8 0 0
+5 67108864 8192
+1~ 0~ 0~ 10~
+1 0 0
 A
-19 8
+18 7
+A
+19 7
+
+#28722
+large bed~
+a large bed~
+<151>A large bed made of reeds and eelgrass stands here.<0>~
+~
+15 0 0
+1000~ 0~ -1~ ~
+5000 0 0
+
+#28723
+coral crown~
+a coral crown~
+An elaborate crown fashioned from coral lies here.~
+~
+9 64|274877906944 1|16
+0~ 0~ 0~ 0~
+6 0 0
+E
+coral crown~
+This crown is crafted entirely from vibrant, naturally sculpted coral, its
+twisting branches fanning upward like flame frozen in time. Shades of crimson,
+rose, and deep orange intermingle, giving it a fierce, regal presence. The
+coral’s organic form wraps elegantly around the brow, with delicate
+barnacle-like inlays and tiny shells embedded at the base. Worn by rulers of the
+deep, it symbolizes ancient power, oceanic dominion, and the untamed beauty of
+the sea.
+~
+A
+17 -10
+A
+12 130
+
+#28724
+golden sharkscale armour~
+golden sharkscale armour~
+A suit of golden scaled armour is here.~
+~
+9 64|274877906944 1|8
+0~ 0~ 0~ 0~
+10 0 0
+E
+sharkscale armour golden~
+Forged from the gleaming scales of deep-sea golden sharks, this armour shimmers
+with a radiant, rippling luster even in the dimmest ocean depths. Each scale is
+razor-edged, interlocked with precision to allow swift, fluid movement while
+offering formidable protection. The cuirass curves like a second skin over the
+wearer’s form, adorned with etched sigils of rulership and ancient conquest.
+~
+A
+17 -60
+A
+24 -10
+A
+51 5
 A
 50 5
 
-#28422
-triton corpse~
-a Triton's corpse~
-The corpse of a crucified Triton is here.~
+#28725
+polished bone wristband~
+a polished bone wristband~
+A beautiful wristband made from polished bone is here.~
 ~
-23 2097152 2 7 1 1
-~ ~ ~ ~
-80 0 0
+9 274877906944 1|4096
+0~ 0~ 0~ 0~
+2 0 0
 E
-triton corpse~
-You've heard the grung like to make such grotesque examples of those who enter
-their territory without permission. He looks not to have died well. You shudder.
+polished bone wristband~
+This polished bone wristband is smooth to the touch, its pale surface gleaming
+with a subtle sheen from years of careful wear. Carved with simple yet elegant
+grooves, it bears the faint markings of ancient tribal symbols—worn but still
+proud. The bone is curved perfectly to fit the wrist, bound with sinew or
+sea-thread, and whispers of both craftsmanship and ancestry.
+~
+A
+19 11
+A
+18 9
+A
+50 2
+
+#28726
+sea pearl necklace~
+a sea pearl necklace~
+A string of beautiful sea pearls has been left here in a heap.~
+~
+8 274877906944 1|4
+~ ~ ~ ~
+1 0 0
+E
+sea pearl necklace~
+This sea pearl necklace is a luminous strand of ocean-born treasures, each pearl
+perfectly round and glistening with hues of silver, blue, and pale lavender.
+Harvested from the depths of ancient reefs, the pearls are strung on a fine
+thread of braided kelp fiber, nearly invisible against the skin.
 ~
 
-#28423
-gibbet sea elf corpse~
-a swinging gibbet~
-The decomposed corpse of a sea elf swings in a gibbet.~
+#28727
+topaz belt~
+a topaz belt~
+A belt set with topaz gemstones lies in a heap here.~
 ~
-12 2097152 2 6 1 1
-~ ~ ~ ~
-100 0 0
+9 64|274877906944 1|2048
+0~ 0~ 0~ 0~
+2 0 0
 E
-gibbet sea elf corpse~
-You've heard the grung like to make such grotesque examples of those who enter
-their territory without permission. The sea elf is heavily decomposed, and
-smells so strongly you gag.
+topaz belt~
+This striking belt is set with gleaming topaz gemstones, each one faceted to
+catch the light. The golden-brown stones are mounted in a flexible band of dark
+leather or woven sea-hide, reinforced with intricate bronze filigree. Warm and
+radiant, the topaz glows with an inner heat, symbolizing courage, clarity, and
+authority.
+~
+A
+12 85
+A
+51 3
+
+#28728
+dagger cowrie jewelled~
+a jewelled cowrie dagger~
+A dagger carved from a cowrie shell and inlaid with gemstones is here.~
+~
+5 64|1048576|16777216|274877906944 1|8192
+0~ 0~ 0~ 11~
+1 0 0
+E
+dagger cowrie jewelled~
+This jewelled cowrie dagger is a delicate yet deadly weapon, its curved blade
+fashioned from polished bone or obsidian, honed to a razor's edge. The hilt is
+crafted from a large cowrie shell, its natural ridges adorned with tiny
+gemstones—sapphires, garnets, and sea-green tourmalines—set into the grooves
+like stars in a tidal sky. Light and easily concealed, the dagger is as much a
+ceremonial symbol as a weapon, often carried by undersea nobility.
+~
+A
+19 14
+A
+18 16
+A
+51 4
+
+#28729
+shimmering portal~
+a shimmering portal~
+<363>A shimmering portal covers the western wall.<0>~
+~
+33 64 0
+28402~ 28508~ 50~ 200~
+4000 0 0
+E
+shimmering portal~
+Looking into the portal you see multiple overlapping images of an underwater
+city and surrounding deep inter-canton canal areas, full of grung.
 ~
 
-#28424
-sahuagin impaled staked dead stake~
-a staked sahuagin~
-A dead sahuagin has been impaled on a stake and left here.~
+#28730
+bag coins~
+a bag of coins~
+A fat bag of coins lies here.~
 ~
-23 2097152 2 5 1 1
+20 0 1
+80~ 70~ 45~ 50~
+3 0 0
+
+#28731
+scroll pictorial illustrated~
+pictorial scrolls~
+A collection of illustrated scrolls lie here.~
+~
+13 0 1|16384
 ~ ~ ~ ~
-150 0 0
+1 0 0
 E
-sahuagin impaled staked dead stake~
-The sahuagin has had a stake inserted into his rectum and has been left, while
-probably still alive, to slowly die as the stake worked his way right through
-his central mass, eventually erupting fom his mouth in a shower of blood and
-gore.  Grung sure do like to send a message.
+scroll pictorial illustrated~
+You browse through the alarmingly graphic images.  You really wish you hadn't.
 ~
 
-#28425
-midgaardian adventurer headless decapitated~
-a headless adventurer~
-A midgaardian adventurer has been decapitated and propped up here.~
+#28732
+purple ink sac~
+a purple ink sac~
+An ink sac has been ripped form an octopus and left here.~
 ~
-23 64|2097152 2 -1 1 1
-~ ~ ~ ~
-200 0 0
-E
-midgaardian adventurer headless decapitated~
-How easily this could have been you, you think.  Your spine tingles and you feel
-a sudden revulsion, strong enough that you suspect it may have a magical origin.
-You probably shouldn't risk interfering with this body.
+28 0 1|16384
+66~ invis~ blindness~ pass door~
+1 0 0
+
+#28733
+deep purple cloak~
+a deep purple cloak~
+A deep purple cloak lies here in a heap.~
 ~
+9 64|137438953472 1|1024
+0~ 0~ 0~ 0~
+2 0 0
+A
+19 9
+A
+18 10
+A
+40 -1
 #0
 
 #ROOMS
-#28402
-Omu / Yrythelmyn Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between Omu's
-<250>sovereign quarter, the eastern fortifications of Yrythelmyn, and the old city
-<252>centre. The old city's fortifications prevent travel south, but you may travel
-<254>north or east through the canal system, or upwards, towards the huge, looming
-area of darkness in the water above.  To the west lies the bridge that connects
-Yrythelmyn to the old city centre, but a large iron grate prevents access to it
-from here.<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28405
-D 1
-~
-~
-0 -1 28403
-D 4
-~
-~
-0 -1 28702
-S
-
-#28702
-<252>Omu / Yrythelmyn Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between Omu's
-<238>sovereign quarter, the eastern fortifications of Yrythelmyn, and the old city
-<241>centre.  The old city's fortifications prevent travel south, but you may travel
-<244>north or east through the canal system, downwards, towards the ocean floor, or
-<246>upwards, directly into the huge, looming area of dark water above your head.
-To the west lies the region above the bridge that connects Yrythelmyn to the old
-city centre, but a large iron grate prevents access to it from here.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28705
-D 1
-~
-~
-0 -1 28703
-D 4
-~
-~
-0 -1 27144
-D 5
-~
-~
-0 -1 28402
-S
-
-#28403
-Omu / Yrythelmyn Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between Omu's
-<250>sovereign quarter, the eastern fortifications of Yrythelmyn, and the old city
-<252>centre. The old city's fortifications prevent travel south, but you may travel
-<254>north or west through the canal system, or upwards, towards the huge, looming
-area of darkness in the water above.  To the east lies the bridge that connects Omu's
-sovereign quarter to the old city centre, but a large iron grate prevents access to
-it from here.<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28406
-D 3
-~
-~
-0 -1 28402
-D 4
-~
-~
-0 -1 28703
-S
-
-#28703
-<252>Omu / Yrythelmyn Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between Omu's
-<238>sovereign quarter, the eastern fortifications of Yrythelmyn, and the old city
-<241>centre.  The old city's fortifications prevent travel south, but you may travel
-<244>north or west through the canal system, downwards, towards the ocean floor, or
-<246>upwards, directly into the huge, looming area of dark water above your head.
-To the east lies the region above the bridge that connects Omu's sovereign quarter
-to the old city centre, but a large iron grate prevents access to it from here.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28706
-D 3
-~
-~
-0 -1 28702
-D 4
-~
-~
-0 -1 27147
-D 5
-~
-~
-0 -1 28403
-S
-
-#28405
-Omu / Yrythelmyn Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between Omu's
-<250>sovereign quarter and the eastern fortifications of Yrythelmyn.  Yrythelmyn's
-<252>walls prevent travel west, but you may travel north, south, or east through the
-<254>canal system, or upwards, towards the huge, looming area of darkness in the
-water above.<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28411
-D 1
-~
-~
-0 -1 28406
-D 2
-~
-~
-0 -1 28402
-D 4
-~
-~
-0 -1 28705
-S
-
-#28705
-<252>Omu / Yrythelmyn Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between Omu's
-<238>sovereign quarter and the eastern fortifications of Yrythelmyn.  From here,
-<241>you may travel north, south, or east through the canal system, downwards,
-<244>towards the ocean floor, or upwards, directly into the huge, looming area of
-<246>dark water above your head.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28711
-D 1
-~
-~
-0 -1 28706
-D 2
-~
-~
-0 -1 28702
-D 4
-~
-~
-0 -1 27146
-D 5
-~
-~
-0 -1 28405
-S
-
-#28406
-Omu / Yrythelmyn Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between Omu's
-<250>sovereign quarter and the eastern fortifications of Yrythelmyn.  Omu's
-<252>walls prevent travel east, but you may travel north, south, or west through the
-<254>canal system, or upwards, towards the huge, looming area of darkness in the
-water above.<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28412
-D 2
-~
-~
-0 -1 28403
-D 3
-~
-~
-0 -1 28405
-D 4
-~
-~
-0 -1 28706
-S
-
-#28706
-<252>Omu / Yrythelmyn Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between Omu's
-<238>sovereign quarter and the eastern fortifications of Yrythelmyn.  From here,
-<241>you may travel north, south, or west through the canal system, downwards,
-<244>towards the ocean floor, or upwards, directly into the huge, looming area of
-<246>dark water above your head.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28712
-D 2
-~
-~
-0 -1 28703
-D 3
-~
-~
-0 -1 28705
-D 4
-~
-~
-0 -1 27134
-D 5
-~
-~
-0 -1 28406
-S
-
-#28411
-Omu / Yrythelmyn Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between Omu's
-<250>sovereign quarter and the eastern fortifications of Yrythelmyn.   Yrythelmyn's
-<252>walls prevent travel west, but you may travel north, towards the southern
-<254>bridge linking Omu and Yrythelmyn, south or east through the canal system, or
-upwards, towards the huge, looming area of darkness in the water above.<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28418
-D 1
-~
-~
-0 -1 28412
-D 2
-~
-~
-0 -1 28405
-D 4
-~
-~
-0 -1 28711
-S
-
-#28711
-<252>Omu / Yrythelmyn Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between Omu's
-<238>sovereign quarter and the eastern fortifications of Yrythelmyn.  From here,
-<241>you may travel north, towards the area above the southern bridge linking Omu and
-<244>Yrythelmyn, south or east through the canal system, downwards, towards the ocean
-<246> floor, or upwards, directly into the huge, looming area of dark water above
-<246>your head.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28718
-D 1
-~
-~
-0 -1 28712
-D 2
-~
-~
-0 -1 28705
-D 4
-~
-~
-0 -1 27134
-D 5
-~
-~
-0 -1 28411
-S
-
-#28412
-Omu / Yrythelmyn Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between Omu's
-<250>sovereign quarter and the eastern fortifications of Yrythelmyn.   Omu's walls
-<252>prevent travel east, but you may travel north, towards the southern bridge
-<254>linking Omu and Yrythelmyn, south or west through the canal system, or upwards,
-towards the huge, looming area of darkness in the water above.<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28419
-D 2
-~
-~
-0 -1 28406
-D 3
-~
-~
-0 -1 28411
-D 4
-~
-~
-0 -1 28712
-S
-
-#28712
-<252>Omu / Yrythelmyn Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between Omu's
-<238>sovereign quarter and the eastern fortifications of Yrythelmyn.  From here,
-<241>you may travel north, towards the area above the southern bridge linking Omu and
-<244>Yrythelmyn, south or west through the canal system, downwards, towards the ocean
-<246> floor, or upwards, directly into the huge, looming area of dark water above
-<246>your head.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28719
-D 2
-~
-~
-0 -1 28706
-D 3
-~
-~
-0 -1 28711
-D 4
-~
-~
-0 -1 27135
-D 5
-~
-~
-0 -1 28412
-S
-
-#28418
-Omu / Yrythelmyn Southern Bridge, Lower~
-<14>You stand at the western end of the southern bridge connecting Omu's sovereign
-<87>quarter to Yrythelmyn. Yythelmyn's gleaming, majestic gates lie to the west,
-<123>while Omu's crude hardwood gates can be seen in the distance to the east. To
-<159>the north and south you can venture into the deep canal system which separates
-Omu and Yrythelmyn from each other, or you can head upwards, towards the huge,
-looming area of darkness in the water above.
-
-A large <14>SIGN<159> has been fastened to Yrythelmyn's locked and barred gates.<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28426
-D 1
-~
-~
-0 -1 28419
-D 2
-~
-~
-0 -1 28411
-D 3
-~
-gates~
-8 -1 28509
-D 4
-~
-~
-0 -1 28718
-E
-sign~
-
-{W
-o--------------------------------------------------------------o
-| No entrance permitted to non-Alu'Tel'Quessir.  Indefinitely. |
-o--------------------------------------------------------------o
-{x
-~
-S
-
-#28718
-Omu / Yrythelmyn Southern Bridge, Upper~
-<21>You float about 4 metres above the western end of the southern bridge connecting
-<27>Omu's sovereign quarter to Yrythelmyn.  The upper portion of Yythelmyn's
-<33>gleaming, majestic gates lie to the west, while the corresponding portions of
-<39>Omu's crude hardwood gates can be seen in the distance to the east. To the north
-<45>and south you may venture into the deep canal system which separates Omu and
-Yrythelmyn from each other, you may travel downwards, towards the ocean floor, or
-you can swim upwards, directly into the huge, looming area of dark water above
-your head.
-
-A large <21>SIGN<45> has been fastened to Yrythelmyn's locked and barred gates.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28726
-D 1
-~
-~
-0 -1 28719
-D 2
-~
-~
-0 -1 28711
-D 3
-~
-gates~
-8 -1 28809
-D 4
-~
-~
-0 -1 27134
-D 5
-~
-~
-0 -1 28418
-E
-sign~
-
-{W
-o--------------------------------------------------------------o
-| No entrance permitted to non-Alu'Tel'Quessir.  Indefinitely. |
-o--------------------------------------------------------------o
-{x
-~
-S
-
-#28509
-Dummy room~
-Dummy room to link to 28418 until sea elf area is in.
-~
-0 4|512 9
-D 1
-~
-~
-0 -1 28418
-S
-
-#28809
-Dummy room~
-Dummy room to link to 28718 until sea elf area is in.
-~
-0 4|512 9
-D 1
-~
-~
-0 -1 28718
-S
-
-#28510
-Dummy room~
-Dummy room to link to 28479 until sea elf area is in.
-~
-0 4|512 9
-D 1
-~
-~
-0 -1 28479
-S
-
-#28810
-Dummy room~
-Dummy room to link to 28779 until sea elf area is in.
-~
-0 4|512 9
-D 1
-~
-~
-0 -1 28779
-S
-
-#28419
-Omu / Yrythelmyn Southern Bridge, Lower~
-<14>You stand at the eastern end of the southern bridge connecting Omu's sovereign
-<87>quarter to Yrythelmyn. Omu sovereign quarter's crude hardwood gates lie just
-<123>east, while Yythelmyn's gleaming, majestic gates can be seen in the distance to
-<159>the west. To the north and south you can venture into the deep canal system
-which separates Omu and Yrythelmyn from each other, or you can head upwards, towards
-the huge, looming area of darkness in the water above.
-~
-0 0 12
-D 0
-~
-~
-0 -1 28427
-D 1
-~
-gates~
-8 -1 28420
-D 2
-~
-~
-0 -1 28412
-D 3
-~
-~
-0 -1 28418
-D 4
-~
-~
-0 -1 28719
-S
-
-#28719
-Omu / Yrythelmyn Southern Bridge, Upper~
-<21>You float about 4 metres above the eastern end of the southern bridge connecting
-<27>Omu's sovereign quarter to Yrythelmyn.  The upper portion of Omu's crude,
-<33>hardwood gates lie to the east, while the corresponding portion of Yrythelmyn's
-<39>gleaming, majestic gates can be seen in the distance to the west. To the north
-<45>and south you may venture into the deep canal system which separates Omu and
-Yrythelmyn from each other, you may travel downwards, towards the ocean floor, or
-you can swim upwards, directly into the huge, looming area of dark water above
-your head.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28727
-D 1
-~
-gates~
-8 -1 28720
-D 2
-~
-~
-0 -1 28712
-D 3
-~
-~
-0 -1 28718
-D 4
-~
-~
-0 -1 27135
-D 5
-~
-~
-0 -1 28419
-E
-sign~
-
-{W
-o--------------------------------------------------------------o
-| No entrance permitted to non-Alu'Tel'Quessir.  Indefinitely. |
-o--------------------------------------------------------------o
-{x
-~
-S
-
-#28426
-Omu / Yrythelmyn Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between Omu's
-<250>sovereign quarter and the eastern fortifications of Yrythelmyn.   Yrythelmyn's
-<252>walls prevent travel west, but you may travel south, towards the southern
-<254>bridge linking Omu and Yrythelmyn, north or east through the canal system,
-or upwards, towards the huge, looming area of darkness in the water above.<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28433
-D 1
-~
-~
-0 -1 28427
-D 2
-~
-~
-0 -1 28418
-D 4
-~
-~
-0 -1 28726
-S
-
-#28726
-<252>Omu / Yrythelmyn Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between Omu's
-<238>sovereign quarter and the eastern fortifications of Yrythelmyn.  From here,
-<241>you may travel south towards the area above the southern bridge linking Omu and
-<244>Yrythelmyn, north or east through the canal system, downwards, towards the ocean
-<246>floor, or upwards, directly into the huge, looming area of dark water above
-<246>your head.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28733
-D 1
-~
-~
-0 -1 28727
-D 2
-~
-~
-0 -1 28718
-D 4
-~
-~
-0 -1 27135
-D 5
-~
-~
-0 -1 28426
-S
-
-#28427
-Omu / Yrythelmyn Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between Omu's
-<250>sovereign quarter and the eastern fortifications of Yrythelmyn.   Omu's walls
-<252>prevent travel east, but you may travel south, towards the southern bridge
-<254>linking Omu and Yrythelmyn, north or west through the canal system, or upwards,
-towards the huge, looming area of darkness in the water above.<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28434
-D 2
-~
-~
-0 -1 28419
-D 3
-~
-~
-0 -1 28426
-D 4
-~
-~
-0 -1 28727
-S
-
-#28727
-<252>Omu / Yrythelmyn Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between Omu's
-<238>sovereign quarter and the eastern fortifications of Yrythelmyn.  From here,
-<241>you may travel south towards the area above the southern bridge linking Omu and
-<244>Yrythelmyn, north or west through the canal system, downwards, towards the ocean
-<246>floor, or upwards, directly into the huge, looming area of dark water above
-<246>your head.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28734
-D 2
-~
-~
-0 -1 28719
-D 3
-~
-~
-0 -1 28726
-D 4
-~
-~
-0 -1 27136
-D 5
-~
-~
-0 -1 28427
-S
-
-#28433
-Omu / Yrythelmyn Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between Omu's
-<250>sovereign quarter and the eastern fortifications of Yrythelmyn.   Yrythelmyn's
-<252>walls prevent travel west, but you may travel south, north or east through
-<254>the canal system, or upwards, towards the huge, looming area of darkness
-in the water above.  Northward lies a large junction in the canal network.<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28442
-D 1
-~
-~
-0 -1 28434
-D 2
-~
-~
-0 -1 28426
-D 4
-~
-~
-0 -1 28733
-S
-
-#28733
-<252>Omu / Yrythelmyn Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between Omu's
-<238>sovereign quarter and the eastern fortifications of Yrythelmyn.  From here,
-<241>you may travel north, south or east through the canal system, downwards,
-<244>towards the ocean floor, or upwards, directly into the huge, looming area of
-<246>dark water above your head.  Directly north you see a large junction in the
-<246>canal network.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28742
-D 1
-~
-~
-0 -1 28734
-D 2
-~
-~
-0 -1 28726
-D 4
-~
-~
-0 -1 27135
-D 5
-~
-~
-0 -1 28433
-S
-
-#28434
-Omu / Yrythelmyn Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between Omu's
-<250>sovereign quarter and the eastern fortifications of Yrythelmyn.   Omu's walls
-<252>prevent travel east, but you may travel south, north or west through the
-<254>canal system, or upwards, towards the huge, looming area of darkness in the
-water above.  Northward lies a large junction in the canal network.<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28443
-D 2
-~
-~
-0 -1 28427
-D 3
-~
-~
-0 -1 28433
-D 4
-~
-~
-0 -1 28734
-S
-
-#28734
-<252>Omu / Yrythelmyn Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between Omu's
-<238>sovereign quarter and the eastern fortifications of Yrythelmyn.  From here,
-<241>you may travel north, south or west through the canal system, downwards,
-<244>towards the ocean floor, or upwards, directly into the huge, looming area of
-<246>dark water above your head.  Directly north you see a large junction in the
-<246>canal network.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28743
-D 2
-~
-~
-0 -1 28727
-D 3
-~
-~
-0 -1 28733
-D 4
-~
-~
-0 -1 27136
-D 5
-~
-~
-0 -1 28434
-S
-
-#28440
-Yrythelmyn Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between two large
-<250>cantons of Yrythelmyn, the city of the sea elves.  The cantons' strong walls
-<252>prevent travel north or south, and a gleaming steel grate has been erected to
-<254>the west that prevents movement in that direction, but you may continue east
-through the canal system, or upwards, towards the huge, looming area of darkness
-in the water above.<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28441
-D 4
-~
-~
-0 -1 28740
-S
-
-#28740
-<252>Yrythelmyn Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between two
-<238>large cantons of Yrythelmyn, the city of the sea elves.  The cantons' strong
-<241>walls prevent travel north or south, and a gleaming steel grate has been erected
-<244>to the west that prevents movement in that direction, but you may travel east
-<246>through the canal system, down towards the ocean floor, or upwards, directly
-<246>into the huge, looming area of dark water above your head.<0>
-~
-0 0 8
-D 1
-~
-~
-0 -1 28741
-D 4
-~
-~
-0 -1 27134
-D 5
-~
-~
-0 -1 28440
-S
-
-#28441
-Yrythelmyn Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between two large
-<250>cantons of Yrythelmyn, the city of the sea elves.  The cantons' strong walls
-<252>prevent travel north or south, but you may continue east or west through the
-<254>canal system, or upwards, towards the huge, looming area of darkness in the
-water above.  Eastward lies a large junction in the canal network.<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28442
-D 3
-~
-~
-0 -1 28440
-D 4
-~
-~
-0 -1 28741
-S
-
-#28741
-<252>Yrythelmyn Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between two
-<238>large cantons of Yrythelmyn, the city of the sea elves.  The cantons' strong
-<241>walls prevent travel north or south, but you may travel west and east through
-<244>the canal system, down towards the ocean floor, or upwards, directly into the
-<246>huge, looming area of dark water above your head. Eastward lies a large junction
-<246>in the canal network.<0>
-~
-0 0 8
-D 1
-~
-~
-0 -1 28742
-D 3
-~
-~
-0 -1 28740
-D 4
-~
-~
-0 -1 27134
-D 5
-~
-~
-0 -1 28441
-S
-
-#28442
-Omu / Yrythelmyn Canal Junction, Lower~
-<248>You are at the bottom of the ocean floor, in the four-way junction of a deep
-<250>canal network between Omu and the east-facing fortifications of Yrythelmyn.
-<252>You may travel north, south, east, or west from here through the canal system,
-<254>or upwards, towards the huge, looming area of darkness in the water above.<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28453
-D 1
-~
-~
-0 -1 28443
-D 2
-~
-~
-0 -1 28433
-D 3
-~
-~
-0 -1 28441
-D 4
-~
-~
-0 -1 28742
-S
-
-#28742
-<252>Omu / Yrythelmyn Canal Junction, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in the four-way junction of a
-<238>deep canal network between Omu and the east-facing fortifications of Yrythelmyn.
-<241>You may travel north, south, east or west from here through the canal system,
-<244>downwards, towards the ocean floor, or upwards, directly into the huge, looming
-<246>area of dark water above your head.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28753
-D 1
-~
-~
-0 -1 28743
-D 2
-~
-~
-0 -1 28733
-D 3
-~
-~
-0 -1 28741
-D 4
-~
-~
-0 -1 27135
-D 5
-~
-~
-0 -1 28442
-S
-
-#28443
-Omu / Yrythelmyn Canal Junction, Lower~
-<248>You are at the bottom of the ocean floor, in the four-way junction of a deep
-<250>canal network between Omu and the east-facing fortifications of Yrythelmyn.
-<252>You may travel north, south, east, or west from here through the canal system,
-<254>or upwards, towards the huge, looming area of darkness in the water above.<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28454
-D 1
-~
-~
-0 -1 28444
-D 2
-~
-~
-0 -1 28434
-D 3
-~
-~
-0 -1 28442
-D 4
-~
-~
-0 -1 28743
-S
-
-#28743
-<252>Omu / Yrythelmyn Canal Junction, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in the four-way junction of a
-<238>deep canal network between Omu and the east-facing fortifications of Yrythelmyn.
-<241>You may travel north, south, east or west from here through the canal system,
-<244>downwards, towards the ocean floor, or upwards, directly into the huge, looming
-<246>area of dark water above your head.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28754
-D 1
-~
-~
-0 -1 28744
-D 2
-~
-~
-0 -1 28734
-D 3
-~
-~
-0 -1 28742
-D 4
-~
-~
-0 -1 27136
-D 5
-~
-~
-0 -1 28443
-S
-
-#28444
-Omu Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between central
-<250>Omu and its sovereign quarter.  Omu's rough hardwood fortifications prevent
-<252>access north or south, but you may continue east, farther into the canal system,
-<254>west towards a large junction in the canal, or upwards, towards the huge,
-looming area of darkness in the water above.<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28445
-D 3
-~
-~
-0 -1 28443
-D 4
-~
-~
-0 -1 28744
-S
-
-#28744
-<252>Omu Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between central
-<238>Omu and its sovereign quarter.  Omu's crude hardwood fortifications prevent
-<241>travel north or south, but you may continue east, farther into the canal system,
-<244>west towards a large junction in the canal, down towards the ocean floor, or
-<246>upwards, directly into the huge, looming area of dark water above your head.<0>
-~
-0 0 8
-D 1
-~
-~
-0 -1 28745
-D 3
-~
-~
-0 -1 28743
-D 4
-~
-~
-0 -1 27136
-D 5
-~
-~
-0 -1 28444
-S
-
-#28445
-Omu Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between central
-<250>Omu and its sovereign quarter.  Omu's rough hardwood fortifications prevent
-<252>access north or south, but you may continue east, towards a bridge connecting
-<254>the two areas of Omu, west, farther into the canal system or upwards, towards
-the huge, looming area of darkness in the water above.<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28446
-D 3
-~
-~
-0 -1 28444
-D 4
-~
-~
-0 -1 28745
-S
-
-#28745
-<252>Omu Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between central
-<238>Omu and its sovereign quarter.  Omu's crude hardwood fortifications prevent
-<241>travel north or south, but you may continue east, towards a bridge connecting
-<244>the two areas of Omu, west, farther into the canal system, down towards the
-<246>ocean floor, or upwards, directly into the huge, looming area of dark water
-above your head.<0>
-~
-0 0 8
-D 1
-~
-~
-0 -1 28746
-D 3
-~
-~
-0 -1 28744
-D 4
-~
-~
-0 -1 27136
-D 5
-~
-~
-0 -1 28445
-S
-
-#28446
-Omu Sovereign Bridge, Lower~
-<14>You stand on a wide wooden bridge connecting Omu's sovereign quarter to central
-<87>Omu. Omu sovereign quarter's crude hardwood gates lie just south, while Omu
-<123>central's even cruder ones lie immediately north.  To the east and west you can
-<159>venture into the deep canal system which separates Omu's two areas from each
-other, or you can head upwards, towards the huge, looming area of darkness in the
-water above.
-~
-0 0 12
-D 0
-~
-gates~
-8 -1 28457
-D 1
-~
-~
-0 -1 28447
-D 2
-~
-gates~
-8 -1 28437
-D 3
-~
-~
-0 -1 28445
-D 4
-~
-~
-0 -1 28746
-S
-
-#28746
-Omu Sovereign Bridge, Upper~
-<21>You float about 4 metres above the bridge that connects Omu's sovereign quarter
-<27>to central Omu. The upper central Omu gates lie to the north, while the somewhat
-<33>more imposing upper gates of the sovereign quarter lie southward. To the east
-<39>and west you may venture into the upper part of the deep canal system which
-<45>separates Omu's two areas from each other, the ocean floor lies downwards, or
-you can swim up, directly into the huge, looming area of dark water above your head.<0>
-~
-0 0 8
-D 0
-~
-gates~
-8 -1 28757
-D 1
-~
-~
-0 -1 28747
-D 2
-~
-gates~
-8 -1 28737
-D 3
-~
-~
-0 -1 28745
-D 4
-~
-~
-0 -1 27132
-D 5
-~
-~
-0 -1 28446
-S
-
-#28447
-Omu Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between central
-<250>Omu and its sovereign quarter.  Omu's rough hardwood fortifications prevent
-<252>access north or east, but you may continue west, towards a bridge connecting
-<254>the two areas of Omu, south, farther into the canal system or upwards, towards
-the huge, looming area of darkness in the water above.<0>
-~
-0 4 12
-D 2
-~
-~
-0 -1 27470
-D 3
-~
-~
-0 -1 28446
-D 4
-~
-~
-0 -1 28747
-S
-
-#28747
-<252>Omu Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between central
-<238>Omu and its sovereign quarter.  Omu's crude hardwood fortifications prevent
-<241>travel north or east, but you may continue west, towards a bridge connecting
-<244>the two areas of Omu, south, farther into the canal system, down towards the
-<246>ocean floor, or upwards, directly into the huge, looming area of dark water
-above your head.<0>
-~
-0 4 8
-D 2
-~
-~
-0 -1 27770
-D 3
-~
-~
-0 -1 28746
-D 4
-~
-~
-0 -1 27105
-D 5
-~
-~
-0 -1 28447
-S
-
-#28453
-Omu / Yrythelmyn Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between central
-<250>Omu and the eastern fortifications of Yrythelmyn.  Yrythelmyn's walls prevent
-<252>travel west, but you may travel south, north or east through the canal system,
-<254>or upwards, towards the huge, looming area of darkness in the water above.
-Southward you see a large junction in the canal network.<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28467
-D 1
-~
-~
-0 -1 28454
-D 2
-~
-~
-0 -1 28442
-D 4
-~
-~
-0 -1 28753
-S
-
-#28753
-<252>Omu / Yrythelmyn Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between central
-<238>Omu and the eastern fortifications of Yrythelmyn.  From here, you may travel
-<241>north, south or east through the canal system, downwards, towards the ocean
-<244>floor, or upwards, directly into the huge, looming area of dark water above your
-<246>head.  Directly south lies a large junction in the canal network.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28767
-D 1
-~
-~
-0 -1 28754
-D 2
-~
-~
-0 -1 28742
-D 4
-~
-~
-0 -1 27136
-D 5
-~
-~
-0 -1 28453
-S
-
-#28454
-Omu / Yrythelmyn Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between central
-<250>Omu and the eastern fortifications of Yrythelmyn.  Omu's walls prevent travel
-<252>east, but you may travel south, north or west through the canal system, or
-<254>upwards, towards the huge, looming area of darkness in the water above.
-Southward you see a large junction in the canal network.<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28468
-D 2
-~
-~
-0 -1 28443
-D 3
-~
-~
-0 -1 28453
-D 4
-~
-~
-0 -1 28754
-S
-
-#28754
-<252>Omu / Yrythelmyn Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between central
-<238>Omu and the eastern fortifications of Yrythelmyn.  From here, you may travel
-<241>north, south or west through the canal system, downwards, towards the ocean
-<244>floor, or upwards, directly into the huge, looming area of dark water above your
-<246>head.  Directly south lies a large junction in the canal network.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28768
-D 2
-~
-~
-0 -1 28743
-D 3
-~
-~
-0 -1 28753
-D 4
-~
-~
-0 -1 27132
-D 5
-~
-~
-0 -1 28454
-S
-
-#28467
-Omu / Yrythelmyn Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between central
-<250>Omu and the eastern fortifications of Yrythelmyn.  Yrythelmyn's walls prevent
-<252>travel west, but you may travel south, north or east through the canal system,
-<254>or upwards, towards the huge, looming area of darkness in the water above.
-A large bridge reaching from central Omu to Yrythelmyn lies just to the north.<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28479
-D 1
-~
-~
-0 -1 28468
-D 2
-~
-~
-0 -1 28453
-D 4
-~
-~
-0 -1 28767
-S
-
-#28767
-<252>Omu / Yrythelmyn Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between central
-<238>Omu and the eastern fortifications of Yrythelmyn.  From here, you may travel
-<241>north, towards the area above the northern bridge linking Omu and Yrythelmyn,
-<244>south or east through the canal system, downwards, towards the ocean floor,
-<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28779
-D 1
-~
-~
-0 -1 28768
-D 2
-~
-~
-0 -1 28753
-D 4
-~
-~
-0 -1 27132
-D 5
-~
-~
-0 -1 28467
-S
-
-#28468
-Omu / Yrythelmyn Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between central
-<250>Omu and the eastern fortifications of Yrythelmyn.  Omu's walls prevent travel
-<252>east, but you may travel south, north or west through the canal system, or
-<254>upwards, towards the huge, looming area of darkness in the water above.
-A large bridge reaching from central Omu to Yrythelmyn lies just to the north.<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28480
-D 2
-~
-~
-0 -1 28454
-D 3
-~
-~
-0 -1 28467
-D 4
-~
-~
-0 -1 28768
-S
-
-#28768
-<252>Omu / Yrythelmyn Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between central
-<238>Omu and the eastern fortifications of Yrythelmyn.  From here, you may travel
-<241>north, towards the area above the northern bridge linking Omu and Yrythelmyn,
-<244>south or west through the canal system, downwards, towards the ocean floor,
-<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28780
-D 2
-~
-~
-0 -1 28754
-D 3
-~
-~
-0 -1 28767
-D 4
-~
-~
-0 -1 27128
-D 5
-~
-~
-0 -1 28468
-S
-
-#28479
-Omu / Yrythelmyn Northern Bridge, Lower~
-<14>You stand at the western end of the northern bridge connecting central Omu to
-<87>Yrythelmyn. Yythelmyn's gleaming, majestic gates lie to the west, while Omu's
-<123>crude hardwood gates can be seen in the distance to the east. To the north and
-<159>south you can venture into the deep canal system which separates Omu and
-Yrythelmyn from each other, or you can head upwards, towards the huge, looming area
-of darkness in the water above.
-
-A large <14>SIGN<159> has been fastened to Yrythelmyn's locked and barred gates.<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28490
-D 1
-~
-~
-0 -1 28480
-D 2
-~
-~
-0 -1 28467
-D 3
-~
-gates~
-8 -1 28510
-D 4
-~
-~
-0 -1 28779
-E
-sign~
-
-{W
-o--------------------------------------------------------------o
-| No entrance permitted to non-Alu'Tel'Quessir.  Indefinitely. |
-o--------------------------------------------------------------o
-{x
-~
-S
-
-#28779
-Omu / Yrythelmyn Northern Bridge, Upper~
-<21>You float about 4 metres above the western end of the northern bridge connecting
-<27>Omu's central area to Yrythelmyn.  The upper portion of Yythelmyn's gleaming,
-<33>majestic gates lie to the west, while the corresponding portions of Omu's crude
-<39>hardwood gates can be seen in the distance to the east. To the north and south
-<45>you may venture into the deep canal system which separates Omu and Yrythelmyn
-from each other, you may travel downwards, towards the ocean floor, or you can swim
-upwards, directly into the huge, looming area of dark water above your head.
-
-A large <21>SIGN<45> has been fastened to Yrythelmyn's locked and barred gates.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28790
-D 1
-~
-~
-0 -1 28780
-D 2
-~
-~
-0 -1 28767
-D 3
-~
-gates~
-8 -1 28810
-D 4
-~
-~
-0 -1 27132
-D 5
-~
-~
-0 -1 28479
-E
-sign~
-
-{W
-o--------------------------------------------------------------o
-| No entrance permitted to non-Alu'Tel'Quessir.  Indefinitely. |
-o--------------------------------------------------------------o
-{x
-~
-S
-
-#28480
-Omu / Yrythelmyn Northern Bridge, Lower~
-<14>You stand at the eastern end of the northern bridge connecting Omu's sovereign
-<87>quarter to Yrythelmyn. Central Omu's crude hardwood gates lie just east, while
-<123>Yythelmyn's gleaming, majestic gates can be seen in the distance to the west.
-<159>To the north and south you can venture into the deep canal system which
-separates Omu and Yrythelmyn from each other, or you can head upwards, towards the
-huge, looming area of darkness in the water above.
-~
-0 0 12
-D 0
-~
-~
-0 -1 28491
-D 1
-~
-gates~
-8 -1 28481
-D 2
-~
-~
-0 -1 28468
-D 3
-~
-~
-0 -1 28479
-D 4
-~
-~
-0 -1 28780
-S
-
-#28780
-Omu / Yrythelmyn Northern Bridge, Upper~
-<21>You float about 4 metres above the eastern end of the northern bridge connecting
-<27>Omu's central area to Yrythelmyn.  The upper portion of Omu's crude, hardwood
-<33>gates lie to the east, while the corresponding portion of Yrythelmyn's gleaming,
-<39>majestic gates can be seen in the distance to the west. To the north and south
-<45>you may venture into the deep canal system which separates Omu and Yrythelmyn
-from each other, you may travel downwards, towards the ocean floor, or you can swim
-upwards, directly into the huge, looming area of dark water above your head.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28791
-D 1
-~
-gates~
-8 -1 28781
-D 2
-~
-~
-0 -1 28768
-D 3
-~
-~
-0 -1 28779
-D 4
-~
-~
-0 -1 27128
-D 5
-~
-~
-0 -1 28480
-E
-sign~
-
-{W
-o--------------------------------------------------------------o
-| No entrance permitted to non-Alu'Tel'Quessir.  Indefinitely. |
-o--------------------------------------------------------------o
-{x
-~
-S
-
-#28490
-Omu / Yrythelmyn Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between central
-<250>Omu and the eastern fortifications of Yrythelmyn.  Yrythelmyn's walls prevent
-<252>travel west, but you may travel south, north or east through the canal system,
-<254>or upwards, towards the huge, looming area of darkness in the water above.
-A large bridge reaching from central Omu to Yrythelmyn lies just to the south.<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28499
-D 1
-~
-~
-0 -1 28491
-D 2
-~
-~
-0 -1 28479
-D 4
-~
-~
-0 -1 28790
-S
-
-#28790
-<252>Omu / Yrythelmyn Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between central
-<238>Omu and the eastern fortifications of Yrythelmyn.  From here, you may travel
-<241>south, towards the area above the northern bridge linking Omu and Yrythelmyn,
-<244>north or east through the canal system, downwards, towards the ocean floor,
-<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28799
-D 1
-~
-~
-0 -1 28791
-D 2
-~
-~
-0 -1 28779
-D 4
-~
-~
-0 -1 27132
-D 5
-~
-~
-0 -1 28490
-S
-
-#28491
-Omu / Yrythelmyn Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between central
-<250>Omu and the eastern fortifications of Yrythelmyn.  Omu's walls prevent travel
-<252>east, but you may travel south, north or west through the canal system, or
-<254>upwards, towards the huge, looming area of darkness in the water above.
-A large bridge reaching from central Omu to Yrythelmyn lies just to the south.<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28500
-D 2
-~
-~
-0 -1 28480
-D 3
-~
-~
-0 -1 28490
-D 4
-~
-~
-0 -1 28791
-S
-
-#28791
-<252>Omu / Yrythelmyn Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between central
-<238>Omu and the eastern fortifications of Yrythelmyn.  From here, you may travel
-<241>south, towards the area above the northern bridge linking Omu and Yrythelmyn,
-<244>north or west through the canal system, downwards, towards the ocean floor,
-<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28800
-D 2
-~
-~
-0 -1 28780
-D 3
-~
-~
-0 -1 28790
-D 4
-~
-~
-0 -1 27128
-D 5
-~
-~
-0 -1 28491
-S
-
-#28499
-Omu / Yrythelmyn Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between central
-<250>Omu and the eastern fortifications of Yrythelmyn.  Yrythelmyn's walls prevent
-<252>travel west, but you may travel south, north or east through the canal system,
-<254>or upwards, towards the huge, looming area of darkness in the water above.<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28505
-D 1
-~
-~
-0 -1 28500
-D 2
-~
-~
-0 -1 28490
-D 4
-~
-~
-0 -1 28799
-S
-
-#28799
-<252>Omu / Yrythelmyn Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between central
-<238>Omu and the eastern fortifications of Yrythelmyn.  From here, you may travel
-<241>south, north or east through the canal system, downwards, towards the ocean floor,
-<244>or upwards, directly into the huge, looming area of dark water above your head.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28805
-D 1
-~
-~
-0 -1 28800
-D 2
-~
-~
-0 -1 28790
-D 4
-~
-~
-0 -1 27128
-D 5
-~
-~
-0 -1 28499
-S
-
-#28500
-Omu / Yrythelmyn Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between central
-<250>Omu and the eastern fortifications of Yrythelmyn.  Omu's walls prevent travel
-<252>east, but you may travel south, north or west through the canal system, or
-<254>upwards, towards the huge, looming area of darkness in the water above.<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28506
-D 2
-~
-~
-0 -1 28491
-D 3
-~
-~
-0 -1 28499
-D 4
-~
-~
-0 -1 28800
-S
-
-#28800
-<252>Omu / Yrythelmyn Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between central
-<238>Omu and the eastern fortifications of Yrythelmyn.  From here, you may travel
-<241>south, north or west through the canal system, downwards, towards the ocean floor,
-<244>or upwards, directly into the huge, looming area of dark water above your head.<0>
-~
-0 0 8
-D 0
-~
-~
-0 -1 28806
-D 2
-~
-~
-0 -1 28791
-D 3
-~
-~
-0 -1 28799
-D 4
-~
-~
-0 -1 27130
-D 5
-~
-~
-0 -1 28500
-S
-
-#28505
-Omu / Yrythelmyn Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between central
-<250>Omu and the eastern fortifications of Yrythelmyn.  Yrythelmyn's walls prevent
-<252>travel west, but you may travel south or east through the canal system, or
-<254>upwards, towards the huge, looming area of darkness in the water above. To the
-immediate north a huge iron grate has been installed to block access to the open
-ocean.<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28506
-D 2
-~
-~
-0 -1 28499
-D 4
-~
-~
-0 -1 28805
-S
-
-#28805
-<252>Omu / Yrythelmyn Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between central
-<238>Omu and the eastern fortifications of Yrythelmyn. The high canal walls prevent
-<241>access from here to either area, but you may travel south or east, further along
-<244>the canal system, down to the ocean floor, or upwards, directly into the huge,
-<246>looming area of dark water above your head. To the immediate north a huge iron
-grate has been installed to block access to the open ocean.<0>
-~
-0 0 8
-D 1
-~
-~
-0 -1 28806
-D 2
-~
-~
-0 -1 28799
-D 4
-~
-~
-0 -1 27128
-D 5
-~
-~
-0 -1 28505
-S
-
-#28506
-Omu / Yrythelmyn Canal, Lower~
-<248>You are at the bottom of the ocean floor, in a deep canal between central
-<250>Omu and the eastern fortifications of Yrythelmyn.  Omu's walls prevent travel
-<252>east, but you may travel south or west through the canal system, or upwards,
-<254>towards the huge, looming area of darkness in the water above.  To the immediate
-north a huge iron grate has been installed to block access to the open ocean.
-~
-0 0 12
-D 2
-~
-~
-0 -1 28500
-D 3
-~
-~
-0 -1 28505
-D 4
-~
-~
-0 -1 28806
-S
-
-#28806
-<252>Omu / Yrythelmyn Canal, Upper<0>~
-<237>You float about 4 metres above the ocean floor, in a deep canal between central
-<238>Omu and the eastern fortifications of Yrythelmyn. The high canal walls prevent
-<241>access from here to either area, but you may travel south or east, further along
-<244>the canal system, down to the ocean floor, or upwards, directly into the huge,
-<246>looming area of dark water above your head. To the immediate north a huge iron
-grate has been installed to block access to the open ocean.<0>
-~
-0 0 8
-D 2
-~
-~
-0 -1 28800
-D 3
-~
-~
-0 -1 28805
-D 4
-~
-~
-0 -1 27132
-D 5
-~
-~
-0 -1 28506
-S
-
 #28404
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
+Chief's Dwelling - Living / Reception Area~
+<214>This broad, echoing chamber once served as a feasting hall, but now lies far
+below the waves, reclaimed and repurposed by the grung chief. Carved from dark,
+<208>salt-smoothed stone, the room is lit by clusters of bioluminescent
+jelly-lanterns hanging from the high, arched ceiling. Coral creeps through
+<202>cracks in the masonry, mingling with the gilded remains of once-regal carvings.
+
+You may travel north from here.<0>
 ~
 0 0 12
 D 0
@@ -2945,13 +1358,37 @@ D 0
 0 -1 28409
 S
 
+#28704
+Chief's Dwelling - Guardroom~
+<130>This compact, round chamber hums with a quiet tension. Carved from ancient stone
+and reinforced with coral-encrusted supports, it serves as a strategic hub for
+<136>the chiefsguard. Bioluminescent kelp lanterns flicker from above, casting
+shifting green light over weapon racks, and woven reed maps A squad of orange
+<137>grung warriors crouch along the edges—alert, sinewy, and poised to spring.
+
+The room smells faintly of brine and damp moss, and the air vibrates with the
+<138>low, throaty croaks of readiness.  The only exit is the large oak door to the
+north.<0>
+~
+0 0 12
+D 0
+~
+door~
+7 28718 28709
+S
+
 #28407
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
+Chief's Boudoir~
+<214>In the southeast corner of the quarters, nestled within a curved alcove of
+ancient stone, lies the chief’s bed—a raised platform of coral-woven reeds and
+<208>softened eelgrass, framed by arching strands of pearl-studded kelp that drift
+like curtains in the water. The bedding glows faintly with trapped
+<202>bioluminescence, casting a soothing glow over the alcove. Sheltered from the
+main current, this space exudes stillness and quiet power, a sanctuary where the
+<130>chief retreats from duty into sleep, surrounded by tokens of lineage and
+polished shell charms suspended from the walls like ancestral whispers.
+
+You can travel north and east from here.<0>
 ~
 0 0 12
 D 0
@@ -2964,36 +1401,83 @@ D 1
 0 -1 28408
 S
 
-#28408
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
+#28707
+Chief's Dwelling - Greeting Rooms~
+<130>The space is wide but low-ceilinged, its floor uneven with remnants of the
+place's original tiles—-mottled mosaics veiled beneath centuries of sediment and
+<136>barnacle growth. Petitioners and dignitaries wait here, hoping to eventually be
+escorted into the chief's presence by one of the orange warrior grung who patrol
+<137>the area.
+
+From here you can explore the greeting rooms further to the east or south.<0>
 ~
 0 0 12
+D 0
+~
+~
+0 -1 28713
+D 1
+~
+~
+0 -1 28708
+S
+
+#28408
+Chief's Quarters~
+<214>Tucked deep within the submerged ruins, this large chamber serves as the grung
+chief’s personal refuge. The stone walls are softened by thick veils of gently
+<208>waving kelp, and small, glowing jelly-lights cluster in carved sconces, casting
+a serene luminescence that shimmers across the room like moonlight on water.
+<202>Woven sea-grass cushions and ceremonial relics rest in niches along the walls.
+
+A large iron door lies east of here; you can also travel north and east.<0>
+~
+0 4 12
 D 0
 ~
 ~
 0 -1 28414
 D 1
 ~
-~
-0 -1 28409
+door~
+8 28717 28409
 D 3
 ~
 ~
 0 -1 28407
 S
 
+#28708
+Chief's Dwelling - Greeting Rooms~
+<130>The space is wide but low-ceilinged, its floor uneven with remnants of the
+place's original tiles—-mottled mosaics veiled beneath centuries of sediment and
+<136>barnacle growth. Petitioners and dignitaries wait here, hoping to eventually be
+escorted into the chief's presence by one of the orange warrior grung who patrol
+<137>the area.
+
+From here you can explore the greeting rooms further to the north or west.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28714
+D 3
+~
+~
+0 -1 28707
+S
+
 #28409
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
+Chief's Dwelling - Living / Reception Area~
+<214>This broad, echoing chamber once served as a feasting hall, but now lies far
+below the waves, reclaimed and repurposed by the grung chief. Carved from dark,
+<208>salt-smoothed stone, the room is lit by clusters of bioluminescent
+jelly-lanterns hanging from the high, arched ceiling. Coral creeps through
+<202>cracks in the masonry, mingling with the gilded remains of once-regal carvings.
+
+A very solid-looking oak door lies west, and you can also travel north, south,
+or east from here.<0>
 ~
 0 0 12
 D 0
@@ -3010,17 +1494,45 @@ D 2
 0 -1 28404
 D 3
 ~
+door~
+8 28717 28408
+S
+
+#28709
+Chief's Dwelling - Upper Corridors~
+<130>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<136>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<137>restored with bright, geometric tiles in grung patterns.
+
+A large oak door lies south of here; you can also continue north and east along
+the corridor.<0>
 ~
-0 -1 28408
+0 0 12
+D 0
+~
+~
+0 -1 28715
+D 1
+~
+~
+0 -1 28710
+D 2
+~
+door~
+7 28718 28704
 S
 
 #28410
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
+Chief's Dwelling - Living / Reception Area~
+<214>This broad, echoing chamber once served as a feasting hall, but now lies far
+below the waves, reclaimed and repurposed by the grung chief. Carved from dark,
+<208>salt-smoothed stone, the room is lit by clusters of bioluminescent
+jelly-lanterns hanging from the high, arched ceiling. Coral creeps through
+<202>cracks in the masonry, mingling with the gilded remains of once-regal carvings.
+
+You can travel north or west from here.<0>
 ~
 0 0 12
 D 0
@@ -3033,13 +1545,36 @@ D 3
 0 -1 28409
 S
 
+#28710
+Chief's Dwelling - Upper Corridors~
+<130>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<136>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<137>restored with bright, geometric tiles in grung patterns.
+
+You may travel north or west down the corridor.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28716
+D 3
+~
+~
+0 -1 28709
+S
+
 #28413
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
+Chief's Quarters~
+<214>Tucked deep within the submerged ruins, this large chamber serves as the grung
+chief’s personal refuge. The stone walls are softened by thick veils of gently
+<208>waving kelp, and small, glowing jelly-lights cluster in carved sconces, casting
+a serene luminescence that shimmers across the room like moonlight on water.
+<202>Woven sea-grass cushions and ceremonial relics rest in niches along the walls.
+
+You may travel east and south from here.<0>
 ~
 0 0 12
 D 1
@@ -3052,19 +1587,38 @@ D 2
 0 -1 28407
 S
 
-#28414
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
+#28713
+Chief's Dwelling - Greeting Rooms~
+<130>The space is wide but low-ceilinged, its floor uneven with remnants of the
+place's original tiles—-mottled mosaics veiled beneath centuries of sediment and
+<136>barnacle growth. Petitioners and dignitaries wait here, hoping to eventually be
+escorted into the chief's presence by one of the orange warrior grung who patrol
+<137>the area.
+
+From here you can explore the greeting rooms further to the east or south.<0>
 ~
 0 0 12
 D 1
 ~
 ~
-0 -1 28415
+0 -1 28714
+D 2
+~
+~
+0 -1 28707
+S
+
+#28414
+Chief's Quarters~
+<214>Tucked deep within the submerged ruins, this large chamber serves as the grung
+chief’s personal refuge. The stone walls are softened by thick veils of gently
+<208>waving kelp, and small, glowing jelly-lights cluster in carved sconces, casting
+a serene luminescence that shimmers across the room like moonlight on water.
+<202>Woven sea-grass cushions and ceremonial relics rest in niches along the walls.
+
+You may travel west and south from here.<0>
+~
+0 0 12
 D 2
 ~
 ~
@@ -3075,13 +1629,52 @@ D 3
 0 -1 28413
 S
 
+#28714
+Chief's Dwelling - Greeting Rooms~
+<130>The chamber is entered via the bridge north, to the chiefsguard station. The
+entranceway is framed by curling vines of seaweed and a pair of broken stone
+<136>sentinels, humanoid you think, but now unrecognisable.  Soft bioluminescent
+fungi cluster around their bases, casting a slow, pulsating light that fills
+<137>the room with a dreamlike green glow.
+
+The space is wide but low-ceilinged, its floor uneven with remnants of the
+<138>place's original tiles—-mottled mosaics veiled beneath centuries of sediment and
+barnacle growth. Petitioners and dignitaries wait here, hoping to eventually be
+<139>escorted into the chief's presence by one of the orange warrior grung who patrol
+the area.
+
+<140>From here you can travel through the northen gates to the bridge, south or east
+to explore the greeting room further, or through the large oak door to the east,
+<141>providing you have a way to enter through it.<0>
+~
+0 0 12
+D 0
+~
+gates~
+7 28718 28721
+D 1
+~
+door~
+7 28719 28715
+D 2
+~
+~
+0 -1 28708
+D 3
+~
+~
+0 -1 28713
+S
+
 #28415
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
+Chief's Dwelling - Living / Reception Area~
+<214>This broad, echoing chamber once served as a feasting hall, but now lies far
+below the waves, reclaimed and repurposed by the grung chief. Carved from dark,
+<208>salt-smoothed stone, the room is lit by clusters of bioluminescent
+jelly-lanterns hanging from the high, arched ceiling. Coral creeps through
+<202>cracks in the masonry, mingling with the gilded remains of once-regal carvings.
+
+You can travel north, south, or east from here.<0>
 ~
 0 0 12
 D 0
@@ -3096,29 +1689,48 @@ D 2
 ~
 ~
 0 -1 28409
+S
+
+#28715
+Chief's Dwelling - Upper Corridors~
+<130>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<136>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<137>restored with bright, geometric tiles in grung patterns.
+
+A large oak door leads west, or you may travel north or south down the corridor.<0>
+~
+0 4 12
+D 0
+~
+~
+0 -1 28722
+D 2
+~
+~
+0 -1 28709
 D 3
 ~
-~
-0 -1 28414
+door~
+7 28719 28714
 S
 
 #28416
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
+Chief's Dwelling - Living / Reception Area~
+<214>This broad, echoing chamber once served as a feasting hall, but now lies far
+below the waves, reclaimed and repurposed by the grung chief. Carved from dark,
+<208>salt-smoothed stone, the room is lit by clusters of bioluminescent
+jelly-lanterns hanging from the high, arched ceiling. Coral creeps through
+<202>cracks in the masonry, mingling with the gilded remains of once-regal carvings.
+
+You can travel north, south, or west from here.<0>
 ~
 0 0 12
 D 0
 ~
 ~
 0 -1 28423
-D 1
-~
-~
-0 -1 28417
 D 2
 ~
 ~
@@ -3129,157 +1741,84 @@ D 3
 0 -1 28415
 S
 
+#28716
+Chief's Dwelling - Upper Corridors~
+<130>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<136>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<137>restored with bright, geometric tiles in grung patterns.
+
+A large oak door lies to the east; you can also travel north or south down the
+corridor.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28723
+D 1
+~
+door~
+7 28718 28717
+D 2
+~
+~
+0 -1 28710
+S
+
 #28417
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
+Chief's Dwelling - Lower Corridors~
+<214>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<208>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<202>restored with bright, geometric tiles in grung patterns.
+
+You can travel north from here.<0>
 ~
 0 0 12
 D 0
 ~
 ~
 0 -1 28424
-D 3
-~
-~
-0 -1 28416
 S
 
-#28422
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28423
-D 2
-~
-~
-0 -1 28415
-S
+#28717
+Chief's Dwelling - Guardroom~
+<130>This compact, round chamber hums with a quiet tension. Carved from ancient stone
+and reinforced with coral-encrusted supports, it serves as a strategic hub for
+<136>the chiefsguard. Bioluminescent kelp lanterns flicker from above, casting
+shifting green light over weapon racks, and woven reed maps A squad of orange
+<137>grung warriors crouch along the edges—alert, sinewy, and poised to spring.
 
-#28423
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28431
-D 1
-~
-~
-0 -1 28424
-D 2
-~
-~
-0 -1 28416
-D 3
-~
-~
-0 -1 28422
-S
-
-#28424
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28432
-D 1
-~
-~
-0 -1 28425
-D 2
-~
-~
-0 -1 28417
-D 3
-~
-~
-0 -1 28423
-S
-
-#28425
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
+The room smells faintly of brine and damp moss, and the air vibrates with the
+<138>low, throaty croaks of readiness.  The only exit is the large oak door to the
+west.<0>
 ~
 0 0 12
 D 3
 ~
-~
-0 -1 28424
-S
-
-#28431
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28432
-D 2
-~
-~
-0 -1 28423
-S
-
-#28432
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 2
-~
-~
-0 -1 28424
-D 3
-~
-~
-0 -1 28431
+door~
+7 28718 28716
 S
 
 #28420
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
+Sovereign Quarter - G'Diehn Way - Lower~
+<115>You stand on the seafloor level of G'Diehn Way, which separates the Chief's
+Dwelling from the Chiefsguard station in the grung city of Omu's Sovereign
+<114>Quarter, deep under the sea. You can see no entrance to either structure
+from this location.
+
+<114>Omu has been built on top of the ruins of a much older city, and its design
+suggests the grung preference for arboreal structures, with both the station and
+<113>the Chief's Dwelling being constructed from coral, stone, and salvaged artefacts
+that mimic the swampy, tree-like habitats preferred by more amphibiously
+<112>inclined grung.
+
+From here you can head through the Sovereign Quarter's western gate, explore
+the Quarter further to the east or swim up, towards the huge, looming area of
+darkness above your head.
 <0>
 ~
 0 0 12
@@ -3289,36 +1828,52 @@ D 1
 0 -1 28421
 D 3
 ~
+gates~
+7 28718 28419
+D 4
 ~
-0 -1 28419
+~
+0 -1 28720
 S
 
 #28720
-Sovereign Quarter, Upper~
-<248>
-<250>
-<252>
-<254>
+Sovereign Quarter - G'Diehn Way - Upper~
+<22>You are floating about 4 metres above the ground in G'Diehn Way, which separates
+the Chief's Dwelling from the Chiefsguard station in the grung city of Omu's
+<28>Sovereign Quarter, deep under the sea. You can see no entrance to either
+structure from this vantage point. To the immediate east lies a large,
+<34>completely enclosed wooden bridge that you cannot access from here.
+
+From here you can head through the Sovereign Quarter's western gate, head down
+<40>to the sea floor, or swim up, into the huge, looming area of darkness that
+swirls above your head.
 <0>
 ~
-0 0 12
-D 1
-~
-~
-0 -1 28421
+0 0 8
 D 3
 ~
+gates~
+7 28718 28719
+D 4
 ~
-0 -1 28719
+~
+0 -1 27146
+D 5
+~
+~
+0 -1 28420
 S
 
 #28421
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
+Sovereign Quarter - G'Diehn Way - Lower~
+<115>You stand on the seafloor level of G'Diehn Way, which separates the Chief's
+Dwelling from the Chiefsguard station in the grung city of Omu's Sovereign
+<114>Quarter, deep under the sea.
+
+Some distance away to the north you see the great gate leading into the heart of
+<113>the Chiefsguard station, while over your head runs a wide but totally enclosed
+wooden bridge, which cannot be accessed from here. G'Diehn Way, meanwhile,
+<112>continues west.
 ~
 0 0 12
 D 0
@@ -3331,15 +1886,265 @@ D 3
 0 -1 28420
 S
 
-#28429
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
+#28721
+Sovereign Quarter - Ries-rhohrin Bridge~
+<185>You stand on Ries-rhohrin bridge above G'Diehn Way, which connects the Chief's
+Dwelling to the Chiefsguard station in the Sovereign Quarter.  The huge wooden
+<186>gate leading into the Chief's Dwelling lies immediately south, while you can see
+a somewhat smaller and less impressive gate that leads into the Chiefsguard
+<187>station some distance away to the north.  You can also choose to swim directly
+up, into the huge, looming area of darkness that swirls above your head.
 <0>
 ~
 0 0 12
+D 0
+~
+~
+0 -1 28729
+D 2
+~
+gates~
+7 28718 28714
+D 4
+~
+~
+0 -1 27119
+S
+
+#28422
+Chief's Dwelling - Living / Reception Area~
+<214>This broad, echoing chamber once served as a feasting hall, but now lies far
+below the waves, reclaimed and repurposed by the grung chief. Carved from dark,
+<208>salt-smoothed stone, the room is lit by clusters of bioluminescent
+jelly-lanterns hanging from the high, arched ceiling. Coral creeps through
+<202>cracks in the masonry, mingling with the gilded remains of once-regal carvings.
+
+You can travel south or east from here.<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 28423
+D 2
+~
+~
+0 -1 28415
+S
+
+#28722
+Chief's Dwelling - Upper Corridors~
+<130>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<136>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<137>restored with bright, geometric tiles in grung patterns.
+
+The only direction you can travel from here is south.<0>
+~
+0 0 12
+D 2
+~
+~
+0 -1 28715
+S
+
+#28423
+Chief's Dwelling - Living / Reception Area~
+<214>This broad, echoing chamber once served as a feasting hall, but now lies far
+below the waves, reclaimed and repurposed by the grung chief. Carved from dark,
+<208>salt-smoothed stone, the room is lit by clusters of bioluminescent
+jelly-lanterns hanging from the high, arched ceiling. Coral creeps through
+<202>cracks in the masonry, mingling with the gilded remains of once-regal carvings.
+
+You can travel south or west from here.<0>
+~
+0 4 12
+D 0
+~
+door~
+7 28718 28431
+D 2
+~
+~
+0 -1 28416
+D 3
+~
+~
+0 -1 28422
+S
+
+#28723
+Chief's Dwelling - Upper Corridors~
+<130>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<136>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<137>restored with bright, geometric tiles in grung patterns.
+
+You can travel north or south down the corridor from here.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28731
+D 2
+~
+~
+0 -1 28716
+S
+
+#28424
+Chief's Dwelling - Lower Corridors~
+<214>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<208>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<202>restored with bright, geometric tiles in grung patterns.
+
+You can travel north, south, or through the oak door east from here.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28432
+D 1
+~
+door~
+7 28718 28425
+D 2
+~
+~
+0 -1 28417
+S
+
+#28724
+Chief's Dwelling - Upper Corridors~
+<130>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<136>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<137>restored with bright, geometric tiles in grung patterns.
+
+You can travel north or east along the corridor from here.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28732
+D 1
+~
+~
+0 -1 28725
+S
+
+#28425
+Chief's Dwelling - Column to Upper Level~
+<214>You stand at the bottom of a water column that leads to the upper level of the
+chief's dwelling-place. Coral creeps along the stonework, merging with patches
+<208>of lichen and the remains of old, eroded statues in various wall-sconces. Glowing
+kelp lanterns sway gently in the current, casting shifting light across the
+<202>walls.
+
+You can swim up or exit through the large oak door to the west here.<0>
+~
+0 4 12
+D 3
+~
+door~
+7 28718 28424
+D 4
+~
+~
+0 -1 28725
+S
+
+#28725
+Chief's Dwelling - Column to Lower Level~
+<130>You float in a water column that leads down to the lower level of the chief's
+dwelling-place. Coral creeps along the stonework, merging with patches of
+<136>lichen and the remains of old, eroded statues in various wall-sconces. Glowing
+kelp lanterns sway gently in the current, casting shifting light across the
+walls.
+
+You can travel west or swim directly down from here.<0>
+~
+0 0 8
+D 3
+~
+~
+0 -1 28724
+D 5
+~
+~
+0 -1 28425
+S
+
+#28428
+Chiefsguard Station - Training Arena~
+<214>Here lies the chiefguards training arena-—a labyrinthine stronghold of stone and
+coral built within the skeletal remains of an ancient castle. Twisted sea vines
+<208>coil around crumbling archways and phosphorescent fungi cling to the
+battlements, casting an eerie green glow over the entire area. The arena itself
+<202>is a treacherous gauntlet of jagged ruins, shifting sand pits, and
+bioluminescent reefs teeming with sea life. Here, the sovereign quarter's
+grung hone their combat skills and battle-readiness.
+
+To the north lies a great armoury, or you can swim up to the chiefsguard's mess.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28435
+D 4
+~
+~
+0 -1 28728
+S
+
+#28728
+Chiefsguard Station - Mess~
+<130>The dim, murky glow of bioluminescent fungi clings to the crumbling stone walls,
+casting eerie green light across the cavernous hall. Long, barnacle-encrusted
+<136>stone tables stretch before you, their surfaces littered with strange,
+glistening sea creatures—-some half-eaten, others still writhing. This is the
+<137>mess hall of the chiefsguard, where the chief's soldiers gather to eat, make
+sport, and socialise.
+
+<138>You may travel downwards to the training arena, or north to the barracks.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 28735
+D 5
+~
+~
+0 -1 28428
+S
+
+#28429
+Sovereign Quarter - G'Diehn Way - Lower~
+<115>You stand on the seafloor level of G'Diehn Way, which separates the Chief's
+Dwelling from the Chiefsguard station in the grung city of Omu's Sovereign
+<114>Quarter, deep under the sea.
+
+To the north lies the great (by grung standards) gate leading into the heart of
+<113>the Chiefsguard station, while over your head runs a wide but totally enclosed
+wooden bridge, which cannot be accessed from here. G'Diehn Way, meanwhile,
+<112>continues both to the east and south.
+<0>
+~
+0 0 12
+D 0
+~
+gates~
+7 28718 28436
 D 1
 ~
 ~
@@ -3350,12 +2155,46 @@ D 2
 0 -1 28421
 S
 
+#28729
+Sovereign Quarter - Ries-rhohrin Bridge~
+<185>You stand on a wide, wooden bridge above G'Diehn Way, which connects the Chief's
+Dwelling to the Chiefsguard station in the Sovereign Quarter.  The large
+<186>wooden gate leading into the station lies immediately north, while you can see
+the even larger and more impressive gate that leads into the Chief's Dwelling
+<187>some distance away to the south.  You can also choose to swim directly up, into
+the huge, looming area of darkness that swirls above your head.
+<0>
+~
+0 0 12
+D 0
+~
+gates~
+7 28718 28736
+D 2
+~
+~
+0 -1 28721
+D 4
+~
+~
+0 -1 27134
+S
+
 #28430
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
+Sovereign Quarter - G'Diehn Way - Lower~
+<115>You stand on the seafloor level of G'Diehn Way, which separates the Chief's
+Dwelling from the Chiefsguard station in the grung city of Omu's Sovereign
+<114>Quarter, deep under the sea.
+
+<114>Omu has been built on top of the ruins of a much older city, and its design
+suggests the grung preference for arboreal structures, with both the station and
+<113>the Chief's Dwelling being constructed from coral, stone, and salvaged artefacts
+that mimic the swampy, tree-like habitats preferred by more amphibiously
+<112>inclined grung.
+
+From here you can head north, to the Sovereign Quarter's northern gate, explore
+the Quarter further to the west or swim up, towards the huge, looming area of
+darkness above your head.
 <0>
 ~
 0 0 12
@@ -3367,30 +2206,133 @@ D 3
 ~
 ~
 0 -1 28429
+D 4
+~
+~
+0 -1 28730
 S
 
-#28428
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
+#28730
+Sovereign Quarter - G'Diehn Way - Upper~
+<22>You are floating about 4 metres above the ground in G'Diehn Way, which separates
+the Chief's Dwelling from the Chiefsguard station in the grung city of Omu's
+<28>Sovereign Quarter, deep under the sea.  To the west you see a sturdy wooden
+bridge connects the two parts of the quarter, but cannot gain access to it from
+here.
+
+<34>From this spot you can head north, towards the Sovereign Quarter's northern
+gate, swim down to the sea floor, or make your way up, into the huge, looming
+<40>area of darkness that swirls above your head.
 <0>
 ~
-0 0 12
+0 0 8
 D 0
 ~
 ~
-0 -1 28435
+0 -1 28737
+D 4
+~
+~
+0 -1 27119
+D 5
+~
+~
+0 -1 28430
+S
+
+#28431
+Chief's Dwelling - Lower Corridors~
+<214>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<208>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<202>restored with bright, geometric tiles in grung patterns.
+
+You can travel east or through the oak door south from here.<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 28432
+D 2
+~
+door~
+7 28718 28423
+S
+
+#28731
+Chief's Dwelling - Upper Corridors~
+<130>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<136>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<137>restored with bright, geometric tiles in grung patterns.
+
+You can travel south or east along the corridor from here.<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 28732
+D 2
+~
+~
+0 -1 28723
+S
+
+#28432
+Chief's Dwelling - Lower Corridors~
+<214>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<208>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<202>restored with bright, geometric tiles in grung patterns.
+
+You can travel west or south from here.<0>
+~
+0 0 12
+D 2
+~
+~
+0 -1 28424
+D 3
+~
+~
+0 -1 28431
+S
+
+#28732
+Chief's Dwelling - Upper Corridors~
+<130>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<136>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<137>restored with bright, geometric tiles in grung patterns.
+
+You can travel south or west along the corridor from here.<0>
+~
+0 0 12
+D 2
+~
+~
+0 -1 28724
+D 3
+~
+~
+0 -1 28731
 S
 
 #28435
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
+Chiefsguard Armoury~
+<214>You stand in the Chiefsguard station's armoury in Omu's Sovereign
+Quarter.  Its smoking, glowing forge is hard at work producing armour and
+<208>weaponry to outfit the chiefsguard, and you observe various mostly orange grung
+travel through the room either acquiring items or bringing others in for repair.
+
+<202>From here you can head east to the main entranceway which leads out to G'Diehn
+Way, or travel south to explore the station further.<0>
 ~
 0 0 12
 D 1
@@ -3403,1282 +2345,416 @@ D 2
 0 -1 28428
 S
 
-#28436
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
+#28735
+Chiefsguard Station - Barracks~
+<130>This large chamber is low-ceilinged and cloaked in the cold gloom of the deep.
+Rough-hewn stone walls, worn smooth by centuries of salt and silt, enclose the
+<136>chiefsguard barracks in a dim, green-tinted half-light. Algae slicks the
+crumbling surfaces.
+
+<137>Rows of sponge-padded stone slabs line the walls—-primitive bed platforms where
+the chiefsguard warriors rest. Barnacles and bioluminescent polyps have
+<138>colonized the crevices between them, casting a soft pulsating glow that barely
+outlines the silhouettes of slumbering sentries.
+
+<139>This place hums with the silent discipline of soldiers long adapted to the
+depths. The eyes of a carved stone idol of Nangnang glares from the lintels,
+<140>unblinking, as if daring intruders to cross her domain.
+
+You may travel south to the mess, or east to the upper entrance.<0>
 ~
 0 0 12
+D 1
+~
+~
+0 -1 28736
+D 2
+~
+~
+0 -1 28728
+S
+
+#28436
+Chiefsguard Station Entranceway, Lower~
+<214>You stand in the entranceway of the Chiefsguard station in Omu's Sovereign
+Quarter.  Impressively constructed for a grung building, the decaying limestone
+<208>of the ancient city has been extensively reinforced here with coral, stone,
+scavenged wood and various artefacts.  Various mostly orange grung patrol the
+<202>building; these are the chiefsguard, Omu's elite troops who are dedicated to
+protecting the Chief, her family, and advisors.
+
+From here you can head out the southern gates to G'Diehn Way, which separates
+the Chiefsguard Station from the Chief's Dwelling, or travel west to explore the
+station further.
+~
+0 0 12
+D 2
+~
+gate~
+7 28718 28429
 D 3
 ~
 ~
 0 -1 28435
 S
 
+#28736
+Chiefsguard Station Entranceway, Upper~
+<130>You stand in the upper entranceway to the Chiefsguard station in Omu's Sovereign
+Quarter.  Impressively constructed for a grung building, the decaying limestone
+<136>of the ancient city has been extensively reinforced here with coral, stone,
+scavenged wood and various artefacts.  Various mostly-orange grung patrol the
+<137>building; these are the chiefsguard, Omu's elite troops who are dedicated to
+protecting the Chief, her family, and advisors.
+
+<138>From here you can head out the upper southern gates to Ries-rhohrin bridge,
+which will take you to the Chief's Dwelling, or travel west to the barracks.
+~
+0 0 12
+D 2
+~
+gate~
+7 28718 28729
+D 3
+~
+~
+0 -1 28735
+S
+
 #28437
-Sovereign Quarter, Lower~
-<248>
-<250>
-<252>
-<254>
+Sovereign Quarter - G'Diehn Way - Lower~
+<115>You stand on the seafloor level of G'Diehn Way, which separates the Chief's
+Dwelling from the Chiefsguard station in the grung city of Omu's Sovereign
+<114>Quarter, deep under the sea. You can see no entrance to either structure
+from this location.
+
+<114>Omu has been built on top of the ruins of a much older city, and its design
+suggests the grung preference for arboreal structures, with both the station and
+<113>the Chief's Dwelling being constructed from coral, stone, and salvaged artefacts
+that mimic the swampy, tree-like habitats preferred by more amphibiously
+<112>inclined grung.
+
+From here you can head through the Sovereign Quarter's northern gate, explore
+the Quarter further to the south, or swim up, towards the huge, looming area of
+darkness above your head.
 <0>
 ~
 0 0 12
 D 0
 ~
-~
-0 -1 28446
+gates~
+7 28718 28446
 D 2
 ~
 ~
 0 -1 28430
+D 4
+~
+~
+0 -1 28737
 S
 
 #28737
-Sovereign Quarter, Upper~
-<248>
-<250>
-<252>
-<254>
+Sovereign Quarter - G'Diehn Way - Upper~
+<22>You are floating about 4 metres above the ground in G'Diehn Way, which separates
+the Chief's Dwelling from the Chiefsguard station in the grung city of Omu's
+<28>Sovereign Quarter, deep under the sea. You can see no entrance to either
+structure from this vantage point.
+
+<34>From here you can head through the Sovereign Quarter's northern gate, explore
+the Quarter further to the south, head down to the sea floor, or swim up,
+<40>into the huge, looming area of darkness that swirls above your head.
 <0>
 ~
 0 0 8
 D 0
 ~
-~
-0 -1 28746
+gates~
+7 28718 28746
 D 2
 ~
 ~
-0 -1 28430
-S
-
-#28438
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
+0 -1 28730
+D 4
 ~
-0 0 12
-D 0
 ~
+0 -1 27135
+D 5
 ~
-0 -1 28450
-D 1
 ~
-~
-0 -1 28439
-S
-
-#28439
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28451
-D 3
-~
-~
-0 -1 28438
-S
-
-#28448
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-S
-
-#28449
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28460
-D 1
-~
-~
-0 -1 28450
-S
-
-#28450
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28451
-D 2
-~
-~
-0 -1 28438
-D 3
-~
-~
-0 -1 28449
-S
-
-#28451
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28462
-D 2
-~
-~
-0 -1 28439
-D 3
-~
-~
-0 -1 28450
-S
-
-#28452
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-S
-
-#28466
-Ota'ar Dar / Omu Bridge South, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28465
-S
-
-#28455
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-S
-
-#28456
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28470
-D 1
-~
-~
-0 -1 28457
-S
-
-#28457
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28471
-D 2
-~
-~
-0 -1 28446
-S
-
-#28757
-Central Omu, Upper~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28471
-D 2
-~
-~
-0 -1 28746
-S
-
-#28458
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-S
-
-#28459
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28473
-D 1
-~
-~
-0 -1 28460
-S
-
-#28460
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28474
-D 2
-~
-~
-0 -1 28449
-D 3
-~
-~
-0 -1 28459
-S
-
-#28461
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-S
-
-#28462
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28476
-D 1
-~
-~
-0 -1 28463
-D 2
-~
-~
-0 -1 28451
-S
-
-#28463
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28477
-D 1
-~
-~
-0 -1 28464
-D 3
-~
-~
-0 -1 28462
-S
-
-#28464
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28478
-D 1
-~
-~
-0 -1 28465
-D 3
-~
-~
-0 -1 28463
-S
-
-#28465
-Ota'ar Dar / Omu Bridge North, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 2
-~
-~
-0 -1 28466
-D 3
-~
-~
-0 -1 28464
-S
-
-#28469
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28481
-D 1
-~
-~
-0 -1 28470
-S
-
-#28470
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28482
-D 1
-~
-~
-0 -1 28471
-D 2
-~
-~
-0 -1 28456
-D 3
-~
-~
-0 -1 28469
-S
-
-#28471
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28483
-D 1
-~
-~
-0 -1 28472
-D 2
-~
-~
-0 -1 28457
-D 3
-~
-~
-0 -1 28470
-S
-
-#28472
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28484
-D 1
-~
-~
-0 -1 28473
-D 3
-~
-~
-0 -1 28471
-S
-
-#28473
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28485
-D 1
-~
-~
-0 -1 28474
-D 2
-~
-~
-0 -1 28459
-D 3
-~
-~
-0 -1 28472
-S
-
-#28474
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28486
-D 1
-~
-~
-0 -1 28475
-D 2
-~
-~
-0 -1 28460
-D 3
-~
-~
-0 -1 28473
-S
-
-#28475
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28487
-D 1
-~
-~
-0 -1 28476
-D 3
-~
-~
-0 -1 28474
-S
-
-#28476
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28477
-D 2
-~
-~
-0 -1 28462
-D 3
-~
-~
-0 -1 28475
-S
-
-#28477
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28489
-D 1
-~
-~
-0 -1 28478
-D 2
-~
-~
-0 -1 28463
-D 3
-~
-~
-0 -1 28476
-S
-
-#28478
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 2
-~
-~
-0 -1 28464
-D 3
-~
-~
-0 -1 28477
-S
-
-#28481
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28492
-D 1
-~
-~
-0 -1 28482
-D 2
-~
-~
-0 -1 28469
-D 3
-~
-~
-0 -1 28480
-S
-
-#28781
-Central Omu, Upper~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28492
-D 1
-~
-~
-0 -1 28482
-D 2
-~
-~
-0 -1 28469
-D 3
-~
-~
-0 -1 28780
-S
-
-#28482
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28493
-D 1
-~
-~
-0 -1 28483
-D 2
-~
-~
-0 -1 28470
-D 3
-~
-~
-0 -1 28481
-S
-
-#28483
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28494
-D 1
-~
-~
-0 -1 28484
-D 2
-~
-~
-0 -1 28471
-D 3
-~
-~
-0 -1 28482
-S
-
-#28484
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28495
-D 1
-~
-~
-0 -1 28485
-D 2
-~
-~
-0 -1 28472
-D 3
-~
-~
-0 -1 28483
-S
-
-#28485
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28496
-D 1
-~
-~
-0 -1 28486
-D 2
-~
-~
-0 -1 28473
-D 3
-~
-~
-0 -1 28484
-S
-
-#28486
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28497
-D 1
-~
-~
-0 -1 28487
-D 2
-~
-~
-0 -1 28474
-D 3
-~
-~
-0 -1 28485
-S
-
-#28487
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 2
-~
-~
-0 -1 28475
-D 3
-~
-~
-0 -1 28486
-S
-
-#28488
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-S
-
-#28489
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 2
-~
-~
-0 -1 28477
-S
-
-#28492
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28493
-D 2
-~
-~
-0 -1 28481
-S
-
-#28493
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28502
-D 1
-~
-~
-0 -1 28494
-D 2
-~
-~
-0 -1 28482
-D 3
-~
-~
-0 -1 28492
-S
-
-#28494
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28503
-D 1
-~
-~
-0 -1 28495
-D 2
-~
-~
-0 -1 28483
-D 3
-~
-~
-0 -1 28493
-S
-
-#28495
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28496
-D 2
-~
-~
-0 -1 28484
-D 3
-~
-~
-0 -1 28494
-S
-
-#28496
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28497
-D 2
-~
-~
-0 -1 28485
-D 3
-~
-~
-0 -1 28495
-S
-
-#28497
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 2
-~
-~
-0 -1 28486
-D 3
-~
-~
-0 -1 28496
-S
-
-#28498
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-S
-
-#28501
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 0
-~
-~
-0 -1 28507
-S
-
-#28502
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28503
-D 2
-~
-~
-0 -1 28493
-S
-
-#28503
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 2
-~
-~
-0 -1 28494
-D 3
-~
-~
-0 -1 28502
-S
-
-#28504
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-S
-
-#28507
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 1
-~
-~
-0 -1 28508
-D 2
-~
-~
-0 -1 28501
-S
-
-#28508
-Central Omu, Lower~
-<248>
-<250>
-<252>
-<254>
-<0>
-~
-0 0 12
-D 3
-~
-~
-0 -1 28507
+0 -1 28437
 S
 #0
 
 #RESETS
-D 0 28418 3 2                   lock west in Omu / Yrythelmyn Southern Bridge, Lower
-D 0 28718 3 2                   lock west in Omu / Yrythelmyn Southern Bridge, Upper
-D 0 28419 1 1                   close east in Omu / Yrythelmyn Southern Bridge, Lower
-D 0 28719 1 1                   close east in Omu / Yrythelmyn Southern Bridge, Upper
-D 0 28446 0 1                   close north in Omu Sovereign Bridge, Lower
-D 0 28446 2 1                   close south in Omu Sovereign Bridge, Lower
-D 0 28746 0 1                   close north in Omu Sovereign Bridge, Upper
-D 0 28746 2 1                   close south in Omu Sovereign Bridge, Upper
-D 0 28479 3 2                   lock west in Omu / Yrythelmyn Northern Bridge, Lower
-D 0 28779 3 2                   lock west in Omu / Yrythelmyn Northern Bridge, Upper
-D 0 28480 1 1                   close east in Omu / Yrythelmyn Northern Bridge, Lower
-D 0 28780 1 1                   close east in Omu / Yrythelmyn Northern Bridge, Upper
-M 0 28400 3 28403               add a giant sea python to Omu / Yrythelmyn Canal, Lower
-M 0 28400 3 28711               add a giant sea python to Omu / Yrythelmyn Canal, Upper
-E 0 28400 0 16                      equip a large pair of fangs (wield)
-M 0 28400 3 28403               add a giant sea python to Omu / Yrythelmyn Canal, Lower
-E 0 28400 0 16                      equip a large pair of fangs (wield)
-M 0 28401 3 28742               add a giant sea python to Omu / Yrythelmyn Canal Junction, Upper
-E 0 28400 0 16                      equip a large pair of fangs (wield)
-M 0 28401 3 28468               add a giant sea python to Omu / Yrythelmyn Canal, Lower
-E 0 28400 0 16                      equip a large pair of fangs (wield)
-G 0 28401 0                         carry a large leathery egg
-M 0 28401 3 28799               add a giant sea python to Omu / Yrythelmyn Canal, Upper
-E 0 28400 0 16                      equip a large pair of fangs (wield)
-G 0 28401 0                         carry a large leathery egg
-M 0 28402 1 28440               add a plesiosaurus to Yrythelmyn Canal, Lower
-E 0 28402 0 16                      equip razor-sharp teeth (wield)
-M 0 28403 2 28744               add a hideous sea hag to Omu Canal, Upper
-E 0 28403 0 16                      equip a cowrie dagger (wield)
-M 0 28403 2 28799               add a hideous sea hag to Omu / Yrythelmyn Canal, Upper
-E 0 28403 0 16                      equip a cowrie dagger (wield)
-M 0 28404 2 28467               add a male Kua-toa to Omu / Yrythelmyn Canal, Lower
-E 0 28404 0 5                       equip slimy hide (body)
-E 0 28405 0 11                      equip a large turtle shell (shield)
-E 0 28406 0 16                      equip a crude spear (wield)
-M 0 28404 2 28705               add a male Kua-toa to Omu / Yrythelmyn Canal, Upper
-E 0 28404 0 5                       equip slimy hide (body)
-E 0 28405 0 11                      equip a large turtle shell (shield)
-E 0 28406 0 16                      equip a crude spear (wield)
-M 0 28405 2 28705               add a female Kua-toa to Omu / Yrythelmyn Canal, Upper
-E 0 28404 0 5                       equip slimy hide (body)
-E 0 28405 0 11                      equip a large turtle shell (shield)
-E 0 28406 0 16                      equip a crude spear (wield)
-M 0 28405 2 28805               add a female Kua-toa to Omu / Yrythelmyn Canal, Upper
-E 0 28404 0 5                       equip slimy hide (body)
-E 0 28405 0 11                      equip a large turtle shell (shield)
-E 0 28406 0 16                      equip a crude spear (wield)
-M 0 28406 1 28791               add a bullywug to Omu / Yrythelmyn Canal, Upper
-E 0 28407 0 5                       equip a thick leather jerkin (body)
-E 0 28406 0 16                      equip a crude spear (wield)
-G 0 28411 0                         carry a bag of coins
-M 0 28407 1 28741               add a bullywug to Yrythelmyn Canal, Upper
-E 0 28407 0 5                       equip a thick leather jerkin (body)
-E 0 28406 0 16                      equip a crude spear (wield)
-G 0 27282 0                         carry [out-of-area item]
-M 0 28408 1 28727               add a bullywug to Omu / Yrythelmyn Canal, Upper
-E 0 28407 0 5                       equip a thick leather jerkin (body)
-E 0 28406 0 16                      equip a crude spear (wield)
-G 0 27283 0                         carry [out-of-area item]
-M 0 28409 1 28442               add a kopru to Omu / Yrythelmyn Canal Junction, Lower
-E 0 28408 0 5                       equip oily hide (body)
-E 0 28414 0 10                      equip a kopru tattoo (arms)
-E 0 28410 0 16                      equip a pair of sharp fangs (wield)
-E 0 28409 0 18                      equip a long tail with a barbed tip (dual)
-M 0 28410 1 28467               add a kopru to Omu / Yrythelmyn Canal, Lower
-E 0 28408 0 5                       equip oily hide (body)
-E 0 28412 0 6                       equip a bone earring (head)
-E 0 28410 0 16                      equip a pair of sharp fangs (wield)
-E 0 28409 0 18                      equip a long tail with a barbed tip (dual)
-M 0 28411 1 28740               add an ixzan to Yrythelmyn Canal, Upper
-E 0 28410 0 16                      equip a pair of sharp fangs (wield)
-G 0 28413 0                         carry a bladder of ixzan ichor
-M 0 28412 1 28747               add an ixzan to Omu Canal, Upper
-E 0 28410 0 16                      equip a pair of sharp fangs (wield)
-M 0 28413 1 28500               add a water naga to Omu / Yrythelmyn Canal, Lower
-E 0 28410 0 16                      equip a pair of sharp fangs (wield)
-M 0 28414 1 28405               add a water naga to Omu / Yrythelmyn Canal, Lower
-E 0 28410 0 16                      equip a pair of sharp fangs (wield)
-G 0 28415 0                         carry a water naga's egg
-G 0 28415 0                         carry a water naga's egg
-M 0 28415 1 28402               add an uchuulon to Omu / Yrythelmyn Canal, Lower
-E 0 27395 0 16                      equip [out-of-area item] (wield)
-G 0 28416 0                         carry <181>a handful of transparent mucus<0>
-M 0 28416 1 28506               add an uchuulon to Omu / Yrythelmyn Canal, Lower
-E 0 27395 0 16                      equip [out-of-area item] (wield)
-G 0 28416 0                         carry <181>a handful of transparent mucus<0>
-M 0 28417 1 28741               add a grung hunter to Yrythelmyn Canal, Upper
-E 0 27490 0 5                       equip [out-of-area item] (body)
-E 0 28406 0 16                      equip a crude spear (wield)
-M 0 28418 1 28747               add a grung hunter to Omu Canal, Upper
-E 0 27490 0 5                       equip [out-of-area item] (body)
-E 0 28406 0 16                      equip a crude spear (wield)
-M 0 28419 1 28800               add a grung hunter to Omu / Yrythelmyn Canal, Upper
-E 0 27490 0 5                       equip [out-of-area item] (body)
-E 0 28406 0 16                      equip a crude spear (wield)
-M 0 28420 1 28718               add a grung hunter to Omu / Yrythelmyn Southern Bridge, Upper
-E 0 27490 0 5                       equip [out-of-area item] (body)
-E 0 28406 0 16                      equip a crude spear (wield)
-M 0 28421 4 28441               add a grung warrior to Yrythelmyn Canal, Lower
-E 0 27490 0 5                       equip [out-of-area item] (body)
-E 0 28405 0 11                      equip a large turtle shell (shield)
-E 0 28406 0 16                      equip a crude spear (wield)
-E 0 28421 0 21                      equip a crude wooden bow (ranged)
-M 0 28421 4 28447               add a grung warrior to Omu Canal, Lower
-E 0 27490 0 5                       equip [out-of-area item] (body)
-E 0 28405 0 11                      equip a large turtle shell (shield)
-E 0 28406 0 16                      equip a crude spear (wield)
-E 0 28421 0 21                      equip a crude wooden bow (ranged)
-M 0 28421 4 28500               add a grung warrior to Omu / Yrythelmyn Canal, Lower
-E 0 27490 0 5                       equip [out-of-area item] (body)
-E 0 28405 0 11                      equip a large turtle shell (shield)
-E 0 28406 0 16                      equip a crude spear (wield)
-E 0 28421 0 21                      equip a crude wooden bow (ranged)
-M 0 28421 4 28418               add a grung warrior to Omu / Yrythelmyn Southern Bridge, Lower
-E 0 27490 0 5                       equip [out-of-area item] (body)
-E 0 28405 0 11                      equip a large turtle shell (shield)
-E 0 28406 0 16                      equip a crude spear (wield)
-E 0 28421 0 21                      equip a crude wooden bow (ranged)
-I 28422 75 28447 1              a Triton's corpse to Omu Canal, Lower
-I 28423 90 28440 1              a swinging gibbet to Yrythelmyn Canal, Lower
-I 28424 90 28499 1              a staked sahuagin to Omu / Yrythelmyn Canal, Lower
-I 28425 60 28406 1              a headless adventurer to Omu / Yrythelmyn Canal, Lower
+D 0 28704 0 1                   close north in Chief's Dwelling - Guardroom
+D 0 28408 1 2                   lock east in Chief's Quarters
+D 0 28409 3 2                   lock west in Chief's Dwelling - Living / Reception Area
+D 0 28709 2 1                   close south in Chief's Dwelling - Upper Corridors
+D 0 28714 0 2                   lock north in Chief's Dwelling - Greeting Rooms
+D 0 28714 1 2                   lock east in Chief's Dwelling - Greeting Rooms
+D 0 28715 3 2                   lock west in Chief's Dwelling - Upper Corridors
+D 0 28716 1 1                   close east in Chief's Dwelling - Upper Corridors
+D 0 28717 3 1                   close west in Chief's Dwelling - Guardroom
+D 0 28420 3 2                   lock west in Sovereign Quarter - G'Diehn Way - Lower
+D 0 28720 3 2                   lock west in Sovereign Quarter - G'Diehn Way - Upper
+D 0 28721 2 2                   lock south in Sovereign Quarter - Ries-rhohrin Bridge
+D 0 28423 0 1                   close north in Chief's Dwelling - Living / Reception Area
+D 0 28424 1 1                   close east in Chief's Dwelling - Lower Corridors
+D 0 28425 3 1                   close west in Chief's Dwelling - Column to Upper Level
+D 0 28429 0 2                   lock north in Sovereign Quarter - G'Diehn Way - Lower
+D 0 28729 0 2                   lock north in Sovereign Quarter - Ries-rhohrin Bridge
+D 0 28431 2 1                   close south in Chief's Dwelling - Lower Corridors
+D 0 28436 2 2                   lock south in Chiefsguard Station Entranceway, Lower
+D 0 28736 2 2                   lock south in Chiefsguard Station Entranceway, Upper
+D 0 28437 0 2                   lock north in Sovereign Quarter - G'Diehn Way - Lower
+D 0 28737 0 2                   lock north in Sovereign Quarter - G'Diehn Way - Upper
+M 0 28704 4 28437               add an orange grung to Sovereign Quarter - G'Diehn Way - Lower
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+E 0 28704 0 16                      equip a long silver spear (wield)
+G 0 28718 0                         carry a large brass key
+M 0 28705 4 28420               add an orange grung to Sovereign Quarter - G'Diehn Way - Lower
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+E 0 28704 0 16                      equip a long silver spear (wield)
+M 0 28704 4 28730               add an orange grung to Sovereign Quarter - G'Diehn Way - Upper
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+E 0 28704 0 16                      equip a long silver spear (wield)
+G 0 28718 0                         carry a large brass key
+M 0 28704 4 28721               add an orange grung to Sovereign Quarter - Ries-rhohrin Bridge
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+E 0 28704 0 16                      equip a long silver spear (wield)
+M 0 28705 4 28429               add an orange grung to Sovereign Quarter - G'Diehn Way - Lower
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+E 0 28704 0 16                      equip a long silver spear (wield)
+M 0 28705 4 28436               add an orange grung to Chiefsguard Station Entranceway, Lower
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+E 0 28704 0 16                      equip a long silver spear (wield)
+G 0 28718 0                         carry a large brass key
+M 0 28704 4 28436               add an orange grung to Chiefsguard Station Entranceway, Lower
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+E 0 28704 0 16                      equip a long silver spear (wield)
+M 0 28705 4 28436               add an orange grung to Chiefsguard Station Entranceway, Lower
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+E 0 28704 0 16                      equip a long silver spear (wield)
+G 0 28718 0                         carry a large brass key
+M 0 28706 1 28737               add a sharptooth to Sovereign Quarter - G'Diehn Way - Upper
+M 0 28707 1 28421               add a sharptooth to Sovereign Quarter - G'Diehn Way - Lower
+M 0 28708 1 28435               add Kullugrib to Chiefsguard Armoury
+E 0 27542 0 13                      equip [out-of-area item] (waist)
+E 0 27543 0 16                      equip [out-of-area item] (wield)
+M 0 28709 1 28428               add a training dummy to Chiefsguard Station - Training Arena
+M 0 28710 1 28428               add an orange grung to Chiefsguard Station - Training Arena
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28704 0 16                      equip a long silver spear (wield)
+M 0 28711 1 28728               add an orange grung to Chiefsguard Station - Mess
+E 0 28705 0 5                       equip bright orange rock armour (body)
+G 0 28718 0                         carry a large brass key
+M 0 28712 1 28728               add an orange grung to Chiefsguard Station - Mess
+E 0 28705 0 5                       equip bright orange rock armour (body)
+G 0 28710 0                         carry the muddy spine of a catfish
+M 0 28713 1 28735               add an orange grung to Chiefsguard Station - Barracks
+E 0 28705 0 5                       equip bright orange rock armour (body)
+M 0 28714 1 28735               add an orange grung to Chiefsguard Station - Barracks
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+G 0 28718 0                         carry a large brass key
+M 0 28715 5 28736               add an orange grung to Chiefsguard Station Entranceway, Upper
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+E 0 28704 0 16                      equip a long silver spear (wield)
+E 0 28704 0 18                      equip a long silver spear (dual)
+M 0 28715 5 28736               add an orange grung to Chiefsguard Station Entranceway, Upper
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+E 0 28704 0 16                      equip a long silver spear (wield)
+E 0 28704 0 18                      equip a long silver spear (dual)
+M 0 28715 5 28736               add an orange grung to Chiefsguard Station Entranceway, Upper
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+E 0 28704 0 16                      equip a long silver spear (wield)
+E 0 28704 0 18                      equip a long silver spear (dual)
+G 0 28718 0                         carry a large brass key
+M 0 28716 3 28435               add an octopus to Chiefsguard Armoury
+M 0 28716 3 28435               add an octopus to Chiefsguard Armoury
+M 0 28716 3 28728               add an octopus to Chiefsguard Station - Mess
+G 0 28732 0                         carry a purple ink sac
+M 0 28716 3 28736               add an octopus to Chiefsguard Station Entranceway, Upper
+M 0 28717 1 28714               add Krek'tok to Chief's Dwelling - Greeting Rooms
+E 0 27608 0 5                       equip [out-of-area item] (body)
+E 0 27609 0 16                      equip [out-of-area item] (wield)
+E 0 28720 0 17                      equip a velvet purse (hold)
+G 0 28719 0                         carry a large brass key
+M 0 28715 5 28714               add an orange grung to Chief's Dwelling - Greeting Rooms
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+E 0 28704 0 16                      equip a long silver spear (wield)
+E 0 28704 0 18                      equip a long silver spear (dual)
+M 0 28715 5 28714               add an orange grung to Chief's Dwelling - Greeting Rooms
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+E 0 28704 0 16                      equip a long silver spear (wield)
+E 0 28704 0 18                      equip a long silver spear (dual)
+G 0 28718 0                         carry a large brass key
+M 0 28718 1 28707               add a sahuagin advisor to Chief's Dwelling - Greeting Rooms
+E 0 27538 0 12                      equip [out-of-area item] (about)
+E 0 27619 0 16                      equip [out-of-area item] (wield)
+G 0 28711 0                         carry a scroll
+M 0 28719 1 28713               add a Triton to Chief's Dwelling - Greeting Rooms
+E 0 27111 0 5                       equip [out-of-area item] (body)
+E 0 27112 0 13                      equip [out-of-area item] (waist)
+G 0 28712 0                         carry a glittering scroll
+M 0 28720 1 28708               add a female sea elf to Chief's Dwelling - Greeting Rooms
+E 0 27496 0 5                       equip [out-of-area item] (body)
+E 0 27495 0 7                       equip [out-of-area item] (legs)
+E 0 27494 0 8                       equip [out-of-area item] (feet)
+E 0 27493 0 13                      equip [out-of-area item] (waist)
+E 0 27492 0 14                      equip [out-of-area item] (wrist1)
+M 0 28721 3 28709               add an orange grung to Chief's Dwelling - Upper Corridors
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+E 0 28704 0 16                      equip a long silver spear (wield)
+E 0 28704 0 18                      equip a long silver spear (dual)
+G 0 28718 0                         carry a large brass key
+M 0 28722 2 28716               add an orange grung to Chief's Dwelling - Upper Corridors
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+E 0 28704 0 16                      equip a long silver spear (wield)
+E 0 28704 0 18                      equip a long silver spear (dual)
+M 0 28721 3 28731               add an orange grung to Chief's Dwelling - Upper Corridors
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+E 0 28704 0 16                      equip a long silver spear (wield)
+E 0 28704 0 18                      equip a long silver spear (dual)
+G 0 28718 0                         carry a large brass key
+M 0 28722 2 28724               add an orange grung to Chief's Dwelling - Upper Corridors
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+E 0 28704 0 16                      equip a long silver spear (wield)
+E 0 28704 0 18                      equip a long silver spear (dual)
+M 0 28721 3 28725               add an orange grung to Chief's Dwelling - Column to Lower Level
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+E 0 28704 0 16                      equip a long silver spear (wield)
+E 0 28704 0 18                      equip a long silver spear (dual)
+M 0 28723 3 28704               add an orange grung to Chief's Dwelling - Guardroom
+E 0 28705 0 5                       equip bright orange rock armour (body)
+G 0 28718 0                         carry a large brass key
+M 0 28724 3 28704               add an orange grung to Chief's Dwelling - Guardroom
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+M 0 28723 3 28704               add an orange grung to Chief's Dwelling - Guardroom
+E 0 28705 0 5                       equip bright orange rock armour (body)
+M 0 28724 3 28717               add an orange grung to Chief's Dwelling - Guardroom
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+M 0 28723 3 28717               add an orange grung to Chief's Dwelling - Guardroom
+E 0 28705 0 5                       equip bright orange rock armour (body)
+G 0 28718 0                         carry a large brass key
+M 0 28724 3 28717               add an orange grung to Chief's Dwelling - Guardroom
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+M 0 28725 1 28722               add a male sea elf to Chief's Dwelling - Upper Corridors
+E 0 28713 0 12                      equip a dark cloak (about)
+M 0 28726 1 28417               add an orange grung to Chief's Dwelling - Lower Corridors
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+E 0 28714 0 16                      equip a masterwork silver spear (wield)
+E 0 28714 0 18                      equip a masterwork silver spear (dual)
+M 0 28727 1 28417               add an orange grung to Chief's Dwelling - Lower Corridors
+E 0 28705 0 5                       equip bright orange rock armour (body)
+E 0 28706 0 6                       equip a rock helm (head)
+E 0 28714 0 16                      equip a masterwork silver spear (wield)
+E 0 28714 0 18                      equip a masterwork silver spear (dual)
+G 0 28718 0                         carry a large brass key
+M 0 28728 5 28422               add a chiefsmate grung to Chief's Dwelling - Living / Reception Area
+E 0 28715 0 6                       equip a golden diadem (head)
+E 0 28716 0 12                      equip a luxurious brown robe (about)
+G 0 28717 0                         carry a small golden key
+M 0 28728 5 28416               add a chiefsmate grung to Chief's Dwelling - Living / Reception Area
+E 0 28715 0 6                       equip a golden diadem (head)
+E 0 28716 0 12                      equip a luxurious brown robe (about)
+G 0 28717 0                         carry a small golden key
+M 0 28728 5 28409               add a chiefsmate grung to Chief's Dwelling - Living / Reception Area
+E 0 28715 0 6                       equip a golden diadem (head)
+E 0 28716 0 12                      equip a luxurious brown robe (about)
+G 0 28717 0                         carry a small golden key
+M 0 28728 5 28404               add a chiefsmate grung to Chief's Dwelling - Living / Reception Area
+E 0 28715 0 6                       equip a golden diadem (head)
+E 0 28716 0 12                      equip a luxurious brown robe (about)
+G 0 28717 0                         carry a small golden key
+M 0 28729 3 28715               add a conger eel to Chief's Dwelling - Upper Corridors
+E 0 28721 0 16                      equip a row of sharp teeth (wield)
+M 0 28729 3 28716               add a conger eel to Chief's Dwelling - Upper Corridors
+E 0 28721 0 16                      equip a row of sharp teeth (wield)
+M 0 28729 3 28732               add a conger eel to Chief's Dwelling - Upper Corridors
+E 0 28721 0 16                      equip a row of sharp teeth (wield)
+M 0 28730 4 28417               add a conger eel to Chief's Dwelling - Lower Corridors
+E 0 28721 0 16                      equip a row of sharp teeth (wield)
+M 0 28730 4 28432               add a conger eel to Chief's Dwelling - Lower Corridors
+E 0 28721 0 16                      equip a row of sharp teeth (wield)
+M 0 28730 4 28423               add a conger eel to Chief's Dwelling - Living / Reception Area
+E 0 28721 0 16                      equip a row of sharp teeth (wield)
+M 0 28730 4 28409               add a conger eel to Chief's Dwelling - Living / Reception Area
+E 0 28721 0 16                      equip a row of sharp teeth (wield)
+M 0 28731 1 28407               add the Chief to Chief's Boudoir
+E 0 28726 0 3                       equip a sea pearl necklace (neck1)
+E 0 28724 0 5                       equip golden sharkscale armour (body)
+E 0 28723 0 6                       equip a coral crown (head)
+E 0 28727 0 13                      equip a topaz belt (waist)
+E 0 28725 0 14                      equip a polished bone wristband (wrist1)
+E 0 28725 0 15                      equip a polished bone wristband (wrist2)
+E 0 28728 0 16                      equip a jewelled cowrie dagger (wield)
+G 0 27116 0                         carry [out-of-area item]
+M 0 28728 5 28414               add a chiefsmate grung to Chief's Quarters
+E 0 28715 0 6                       equip a golden diadem (head)
+E 0 28716 0 12                      equip a luxurious brown robe (about)
+G 0 28717 0                         carry a small golden key
+I 28722 70 28407 1              a large bed to Chief's Boudoir
+I 28731 18 28407 1              pictorial scrolls to Chief's Boudoir
+P 0 28731 0 28722               put pictorial scrolls inside a large bed
+I 28707 65 28435 1              a smoking forge to Chiefsguard Armoury
+I 28708 65 28435 1              a gleaming anvil to Chiefsguard Armoury
+I 28709 65 28435 1              a sturdy metal workbench to Chiefsguard Armoury
+I 28729 70 28413 1              a shimmering portal to Chief's Quarters
 S
 
+#SHOPS
+28717 18 0 0 0 0 200 50 0 23    shop run by Krek'tok
+0
+
 #SPECIALS
-M 28402 spec_small_whale        a plesiosaurus
-M 28410 spec_cast_mage          a kopru
-M 28411 spec_cast_archmage      an ixzan
-M 28412 spec_cast_priestess     an ixzan
-M 28413 spec_poison             a water naga
-M 28414 spec_poison             a water naga
-M 28415 spec_poison             an uchuulon
-M 28416 spec_poison             an uchuulon
-M 28417 spec_green_grung        a grung hunter
-M 28418 spec_green_grung        a grung hunter
-M 28419 spec_green_grung        a grung hunter
-M 28420 spec_green_grung        a grung hunter
-M 28421 spec_green_grung        a grung warrior
+M 28704 spec_orange_grung       an orange grung
+M 28705 spec_orange_grung       an orange grung
+M 28706 spec_cast_electric      a sharptooth
+M 28707 spec_cast_electric      a sharptooth
+M 28708 spec_orange_grung       Kullugrib
+M 28710 spec_orange_grung       an orange grung
+M 28711 spec_orange_grung       an orange grung
+M 28712 spec_orange_grung       an orange grung
+M 28713 spec_orange_grung       an orange grung
+M 28714 spec_orange_grung       an orange grung
+M 28715 spec_orange_grung       an orange grung
+M 28717 spec_red_grung          Krek'tok
+M 28718 spec_sahuagin_high_cleric 	a sahuagin advisor
+M 28721 spec_orange_grung       an orange grung
+M 28722 spec_orange_grung       an orange grung
+M 28723 spec_orange_grung       an orange grung
+M 28724 spec_orange_grung       an orange grung
+M 28725 spec_superwimpy         a male sea elf
+M 28726 spec_orange_grung       an orange grung
+M 28727 spec_orange_grung       an orange grung
+M 28728 spec_gold_grung         a chiefsmate grung
+M 28729 spec_fido               a conger eel
+M 28730 spec_fido               a conger eel
+M 28731 spec_gold_grung         the Chief
 S
 
 #$

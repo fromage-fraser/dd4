@@ -526,6 +526,9 @@ The syntax of this section is:
          A
          <apply-type:number> <apply-value:number>
      }
+     {
+         M <max_instances:number>
+     }
     }
     #0
 
@@ -689,7 +692,7 @@ of the object. 'item-shop-level' is the level the item will be sold for if it is
 reset in a shopkeeper's inventory.  This number will be fuzzy unless you also
 add the ITEM_DONOT_RANDOMISE flag to the item.
 
-The optional 'E' sections and 'A' sections come after the main data.  An 'E'
+The optional 'E,' 'A,' and 'M' sections come after the main data.  An 'E'
 section ('extra description') contains a keyword-list and a string associated
 with those keywords.  This description string is used when a character looks
 at a word on the keyword list, ie a gem on a sceptre would be:
@@ -767,6 +770,13 @@ APPLY_ types:
     APPLY_SWIFTNESS         51
 
 An object may have an unlimited number of 'E' and 'A' sections.
+
+An 'M' section ('max_instances') contains only the letter M followed by a
+number. This number determines the maximum instances of the object that may be
+loaded per runtime.  This can be useful for limiting scarcity of quest items or
+powerful mob-carried or area-loaded items.  It will limit all attempts to reset,
+immload, or mob-load the item (imms can, however, adjust the max_instances value
+on an object in-game).
 
 --- Notes on use of trapped items
 
@@ -1962,6 +1972,7 @@ paints, smokeables, and pills.
                   freedom                    fleshrot
                regenerate                  possession
                   release                clairvoyance
+
 
 If you have any questions about area writing, please contact any of the
 immortals on the DD4 Discord server at https://discord.gg/aGzmAWmXYb (preferred)

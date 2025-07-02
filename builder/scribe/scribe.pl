@@ -111,8 +111,8 @@ my %mob_aff = (
         charmed         => 262144,
         fly             => 524288,
         flying          => 524288,
-        pass_door       => 1048756,
-        passdoor        => 1048756,
+        pass_door       => 1048576,
+        passdoor        => 1048576,
         detect_traps    => 2097152,
         det_traps       => 2097152,
         battle_aura     => 4194304,
@@ -297,6 +297,10 @@ my @bp_location = qw/
 
 my @mob_sx = qw/
         neuter      male        female
+/;
+
+my @mob_rank = qw/
+        common      rare        elite       boss        world
 /;
 
 my @obj_liquids = qw/
@@ -632,7 +636,7 @@ while (1) {
                 next;
             }
 
-            next if &add_field_data(\%mob, $field, $data, 'sp vn nm sh lo lv act aff bf sx al');
+            next if &add_field_data(\%mob, $field, $data, 'sp vn nm sh lo lv act aff bf sx al rnk');
             print "    line $line: mob: unknown field '$field'\n";
         }
 
@@ -718,7 +722,7 @@ while (1) {
                 next;
             }
 
-            next if &add_field_data(\%obj, $field, $data, 'vn nm sh lo ty ex we wg osl v0 v1 v2 v3 trd trt trc');
+            next if &add_field_data(\%obj, $field, $data, 'vn nm sh lo ty ex we wg osl v0 v1 v2 v3 trd trt trc mi');
             print "    line $line: obj: unknown field '$field'\n";
         }
 
@@ -1112,7 +1116,7 @@ foreach (0 .. $#mobs) {
     my %mob = @{$mobs[$_]};
     my $err = "    mob, line $mob{'line'}:";
 
-    foreach (qw/act aff bf sx al/) {
+    foreach (qw/act aff bf sx al rnk/) {
         $mob{$_} = 0 if (!exists $mob{$_} || $mob{$_} eq '');
     }
 
@@ -1143,6 +1147,11 @@ foreach (0 .. $#mobs) {
     }
 
     if ($msg = &get_single_flag(\%mob, 'sx', \@mob_sx)) {
+        print "$err $msg\n";
+        $mob_errors{$mob{'line'}}++;
+    }
+
+    if ($msg = &get_single_flag(\%mob, 'rnk', \@mob_rank)) {
         print "$err $msg\n";
         $mob_errors{$mob{'line'}}++;
     }
@@ -1223,7 +1232,7 @@ foreach (0 .. $#objs) {
     my %obj = @{$objs[$_]};
     my $err = "    obj, line $obj{'line'}:";
 
-    foreach (qw/we ex osl/) {
+    foreach (qw/we ex osl mi/) {
         $obj{$_} = 0 if (!exists $obj{$_} || $obj{$_} eq '');
     }
 
@@ -2462,6 +2471,10 @@ if (@mobs) {
             print AREA "|\n";
         }
 
+        if ( $mob{'rnk'} >= 1) {
+                print AREA "< reserved~ $mob_rank[$mob{'rnk'}]\~\n";
+        }
+
         while ($mob{'te'} && @{$mob{'te'}}) {
             print AREA shift @{$mob{'te'}};
         }
@@ -2495,6 +2508,10 @@ if (@objs) {
 
         while ($obj{'ap'} && @{$obj{'ap'}}) {
             print AREA "A\n", shift @{$obj{'ap'}};
+        }
+
+        if ($obj{'mi'}) {
+            print AREA "M $obj{'mi'}\n";
         }
     }
 

@@ -348,46 +348,6 @@ rf  no_mob private
 e   28779
 
 $room
-vn  28420
-nm  Dummy room
-de
-Dummy room to link to 28419 until Omu sovereign quarter complete.
-~
-st  air
-rf  no_mob private
-w   28419
-
-$room
-vn  28720
-nm  Dummy room
-de
-Dummy room to link to 28719 until Omu sovereign quarter complete.
-~
-st  air
-rf  no_mob private
-w   28719
-
-$room
-vn  28437
-nm  Dummy room
-de
-Dummy room to link to 28446 until Omu sovereign quarter complete.
-~
-st  air
-rf  no_mob private
-n   28446
-
-$room
-vn  28737
-nm  Dummy room
-de
-Dummy room to link to 28746 until Omu sovereign quarter complete.
-~
-st  air
-rf  no_mob private
-n   28746
-
-$room
 vn  28419
 nm  Omu / Yrythelmyn Southern Bridge, Lower
 de

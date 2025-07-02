@@ -513,7 +513,7 @@ DECLARE_DO_FUN ( do_note  );
 DECLARE_DO_FUN ( do_board );
 
 /* for multiple recalls - see also the #define DEFAULT_RECALL below */
-#define MAX_RECALL_POINTS          16
+#define MAX_RECALL_POINTS          17
 #define CLAN_RECALL                 1
 
 /* Patterns - note they start from 1 */
@@ -3011,6 +3011,8 @@ struct obj_index_data
         int                     trap_dam;
         int                     trap_charge;
         int                     ego_flags;
+        int                     max_instances;    // 0 = unlimited
+        int                     spawn_count;      // number of times created this runtime (not decremented)
 };
 
 /*
@@ -3065,6 +3067,8 @@ struct obj_data
         int                     ego_flags;
         bool                    identified;
         int                     how_created;
+        int                     max_instances;
+        int                     spawn_count;
 };
 
 

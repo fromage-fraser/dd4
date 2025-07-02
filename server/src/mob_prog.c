@@ -1005,6 +1005,22 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
         }
     }
 
+  if ( !str_cmp( buf, "objcount" ) || !str_cmp( buf, "objinstances" ) )
+    {
+        int vnum = atoi( arg );  /* 'arg' is expected to be like '28704' */
+        OBJ_INDEX_DATA *pObjIndex;
+
+        if ( ( pObjIndex = get_obj_index( vnum ) ) == NULL )
+        {
+            bug( "Mob: %d 'objcount' bad vnum", mob->pIndexData->vnum );
+            return FALSE;
+        }
+
+        lhsvl = pObjIndex->spawn_count;
+        rhsvl = atoi( val );  /* 'val' should be the comparison value, e.g. '3' */
+        return mprog_veval( lhsvl, opr, rhsvl );
+    }
+
   if ( !str_cmp( buf, "number" ) )
     {
       switch ( arg[1] )  /* arg should be "$*" so just get the letter */

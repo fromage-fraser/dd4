@@ -1061,6 +1061,7 @@ void do_onstat( CHAR_DATA *ch, char *argument )
 void do_ostat( CHAR_DATA *ch, char *argument )
 {
         OBJ_DATA            *obj;
+        OBJ_INDEX_DATA      *pObjIndex;
         OBJSET_INDEX_DATA   *pObjSetIndex;
         CHAR_DATA           *rch;
         AFFECT_DATA         *paf;
@@ -1093,6 +1094,8 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 send_to_char( "Nothing like that in these realms.\n\r", ch);
                 return;
         }
+
+        pObjIndex = obj->pIndexData;
 
         sprintf( buf, "Vnum: {G%d{x\n\r",
                 obj->pIndexData->vnum);
@@ -1239,6 +1242,9 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 obj->carried_by->name);
                 strcat( buf1, buf );
         }
+
+        sprintf( buf, "Max instances: {W%d{x  Spawn count: {W%d{x\n\r", pObjIndex->max_instances, pObjIndex->spawn_count );
+        strcat( buf1, buf );
 
         if (obj->item_type == 52)
         {
@@ -1919,7 +1925,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
         {
                 /* All MOBILE mstat stuff goes here. */
                 int temp = rank_sn(victim);
-                sprintf( buf, "Vnum: {R%d{x Rank: %s %d\n\r",
+                sprintf( buf, "Vnum: {R%d{x  Rank: %s(%d)\n\r",
                         victim->pIndexData->vnum, rank_table[rank_sn(victim)].who_format, temp);
                 strcat( buf1, buf );
 
@@ -3283,6 +3289,25 @@ void do_oload( CHAR_DATA *ch, char *argument )
                         -- Owl 2/1/23
                 */
                 obj = create_object( pObjIndex, level,"common", CREATED_NO_RANDOMISER );
+
+                /* Check if object creation failed due to spawn cap */
+                if (obj == NULL || obj->deleted == TRUE)
+                {
+                    char buf[MAX_STRING_LENGTH];
+                    sprintf(buf,
+                        "{WWarning: object vnum %d has hit its max_instances limit (%d). No object loaded.{x\n\r",
+                        pObjIndex->vnum,
+                        pObjIndex->max_instances);
+                    send_to_char(buf, ch);
+
+                    if (obj != NULL)
+                    {
+                        obj_to_char(obj, ch);
+                    }
+
+                    return;
+                }
+
                 if ( IS_SET(obj->wear_flags, ITEM_TAKE) )
                 {
                         if ( (ch->carry_number + copies) > can_carry_n( ch ))
@@ -5525,7 +5550,8 @@ void do_oset( CHAR_DATA *ch, char *argument )
                              "or:     oset <<object> <<string> <<value>\n\r\n\r"
                              "Field being one of:\n\r"
                              "  value0 value1 value2 value3 owner ego\n\r"
-                             "  extra wear level weight cost timer timermax\n\r\n\r"
+                             "  extra wear level weight cost timer timermax\n\r"
+                             "  spawn instances\n\r\n\r"
                              "String being one of:\n\r"
                              "  name short long ed\n\r", ch );
                 return;
@@ -5629,6 +5655,18 @@ void do_oset( CHAR_DATA *ch, char *argument )
                         set_obj_owner(obj, "");
                 else
                         set_obj_owner(obj, arg3);
+                return;
+        }
+
+        if ( !str_cmp( arg2, "spawn" ) )
+        {
+                obj->pIndexData->spawn_count = value;
+                return;
+        }
+
+        if ( !str_cmp( arg2, "instances" ) )
+        {
+                obj->pIndexData->max_instances = value;
                 return;
         }
 

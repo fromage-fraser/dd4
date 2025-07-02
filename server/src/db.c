@@ -1947,6 +1947,8 @@ void load_objects( FILE *fp )
                 fBootDb = TRUE;
                 pObjIndex = alloc_perm( sizeof( *pObjIndex ) );
                 pObjIndex->vnum = vnum;
+                pObjIndex->spawn_count = 0;
+                pObjIndex->max_instances = 0;
 
                 if ( fBootDb )
                 {
@@ -2055,6 +2057,17 @@ void load_objects( FILE *fp )
                                         item_affects++;
                               /*  } */
                         }
+                        else if ( letter == 'M' )
+                        {
+                            log_string("Reading max_instances...");
+                                pObjIndex->max_instances = fread_number(fp, &stat);
+
+                                /* Consume newline to ensure clean state */
+                                fread_to_eol(fp);
+
+                                bug("Set max_instances to %d", pObjIndex->max_instances);
+                                bug("for vnum %d", pObjIndex->vnum);
+                        }
                         else if ( letter == 'E' )
                         {
                                 EXTRA_DESCR_DATA *ed;
@@ -2072,6 +2085,8 @@ void load_objects( FILE *fp )
                                 break;
                         }
                 }
+
+
 
                 /*
                  * Translate character strings *value[] into integers:  sn's for
@@ -3469,6 +3484,27 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, int r
                 exit( 1 );
         }
 
+        /* Limit check for runtime-spawn cap */
+        if (pObjIndex->max_instances > 0 && pObjIndex->spawn_count >= pObjIndex->max_instances)
+        {
+                bug("create_object: max_instances hit for vnum %d, returning dummy object.",
+                pObjIndex->vnum);
+
+                OBJ_DATA *obj = alloc_perm(sizeof(*obj));
+                *obj = obj_zero;
+
+                obj->pIndexData = pObjIndex;
+                obj->level = 0;
+                obj->name = str_dup("capped-out object");
+                obj->short_descr = str_dup("(capped-out object)");
+                obj->description = str_dup("An object that failed to load due to spawn cap.");
+                obj->item_type = ITEM_TRASH;
+                obj->wear_loc = -1;
+                SET_BIT(obj->extra_flags, ITEM_NODROP | ITEM_NOREMOVE); // optional
+                obj->deleted = TRUE; // Optional: mark it for cleanup later
+                return obj;
+        }
+
         if ( !obj_free )
         {
                 obj             = alloc_perm( sizeof( *obj ) );
@@ -3920,6 +3956,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, int r
         obj->next               = object_list;
         object_list             = obj;
         pObjIndex->count++;
+        pObjIndex->spawn_count++;
 
         return obj;
 }

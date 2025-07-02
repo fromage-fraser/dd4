@@ -6392,7 +6392,8 @@ and see themselves as superior to all other creatures.  Their society is
 caste-based, with the grung's colour denoting his role.  Blue grung, such as
 this individual, are the artisans, shopkeepers, and domestic workers of the
 grung race.  This grung looks and moves in a suspicious way, as if trying to
-avoid detection by the authorities.
+avoid detection by the authorities.  You also notice he has a few words of
+Common embroidered on his clothing--perhaps he speaks it?
 ~
 vn  28478
 lv  60
@@ -6414,7 +6415,23 @@ mp  greet_prog 100
         endif
     endif
 ~
-
+mp speech_prog common
+    say Yes, I speak it.  Why?  Do you have something written in Draconic you wish translated?
+~
+mp give_prog scroll
+    if number($o) == 28711
+            emote clears throat.
+            mpecho {W"I imagine you want a translation?  Don't look so surprised, Common comes in very handy
+            mpecho {W in my trade.  Well as a gesture of commerical goodwill, why not?  It reads, 'I offer you
+            mpecho {W an alliance from my master. Come to the military baron and speak the word "aliyank".{X
+            emote smiles unctuously.
+            give scroll $n
+    break
+    else
+            say Nomeno ui di thric halkiv ekess ve. Ahfven coi spical.
+            give scroll $n
+    endif
+~
 mp  entry_prog 100
     if isfight($i)
         break
@@ -9096,6 +9113,55 @@ ed  map omu upper central
 ~
 osl 50
 
+$obj
+nm  map omu sovereign quarter lower
+sh  a map of Omu's Sovereign Quarter - Lower
+lo  A map of Omu's Sovereign Quarter lies here.
+vn  28529
+ty  scroll
+v0  50
+v1  -1
+v2  -1
+v3  -1
+wg  1
+we  take hold
+ed  map omu sovereign quarter lower
+<558>You examine a map of <556>Omu's Sovereign Quarter - Lower<557>...<559>
+
+    {Y[{W*{Y][ ]{G[ ]{x
+    {Y[ ]{G[ ][ ]{x{Y[ ][ ]{x
+    {G[ ][ ]{x{Y[ ][ ][ ][ ]{x
+    {Y[{W?{Y][ ][ ][ ][ ]{x
+    {Y[{W*{Y][ ][ ][ ]{x
+          {Y[ ]{x
+
+~
+osl 55
+
+$obj
+nm  map omu sovereign quarter upper
+sh  a map of Omu's Sovereign Quarter - Upper
+lo  A map of Omu's Sovereign Quarter lies here.
+vn  28530
+ty  scroll
+v0  50
+v1  -1
+v2  -1
+v3  -1
+wg  1
+we  take hold
+ed  map omu sovereign quarter upper
+<558>You examine a map of <556>Omu's Sovereign Quarter - Upper<557>...<559>
+
+    {y[ ][ ]{g[ ]{x
+    {y[ ]{Y[ ]{x{g[ ]{y[ ][ ]{x
+    {g[ ]{Y[ ]{x{y[ ][ ][ ][ ]{x
+    {y[ ][{W*{x{y][ ][ ][ ]{x
+    {y[ ][ ][ ][ ]{x
+          {y[ ]{x
+
+~
+osl 55
 
 
 # GAMES
@@ -9521,6 +9587,8 @@ inv     28455
 inv     28456
 inv     28527
 inv     28528
+inv     28529
+inv     28530
 
 # Drobe to Drobe's Dive
 $addmob

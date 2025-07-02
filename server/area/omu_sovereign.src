@@ -12,7 +12,7 @@ bv  0
 # RECALL
 
 $recall
-rl  27504
+rl  28504
 
 # AREA SPECIALS
 
@@ -20,125 +20,2945 @@ $special
 af  hidden
 xp  120
 
-# ROOMS
-
-$room
-vn  28404
-nm  Chief's Dwelling - Lower Level
-de
-You are in the lower level of the grung chief's huge dwelling-place.
-~
-st  underwater_ground
-rf  none
-n   28409
-u   28704
-
-$room
-vn  28407
-nm  Chief's Dwelling - Lower Level
-de
-You are in the lower level of the grung chief's huge dwelling-place.
-~
-st  underwater_ground
-rf  none
-e   28408
-u   28707
-n   28413
-
-$room
-vn  28408
-nm  Chief's Dwelling - Lower Level
-de
-You are in the lower level of the grung chief's huge dwelling-place.
-~
-st  underwater_ground
-rf  none
-w   28407
-e   28409
-u   28708
-n   28414
-
-$room
-vn  28409
-nm  Chief's Dwelling - Lower Level
-de
-You are in the lower level of the grung chief's huge dwelling-place.
-~
-st  underwater_ground
-rf  none
-w   28408
-e   28410
-u   28709
-n   28415
-s   28404
-
-$room
-vn  28410
-nm  Chief's Dwelling - Lower Level
-de
-You are in the lower level of the grung chief's huge dwelling-place.
-~
-st  underwater_ground
-rf  none
-w   28409
-u   28710
-n   28416
-
 # MOBS
 
 $mob
-nm  giant sea python
-sh  a giant sea python
-lo  <150>A huge sea python propels itself through the water.<0>
+nm grung orange chiefsguard
+sh an orange grung
+lo <208>An orange grung chiefsguard patrols the quarter.<0>
 de
-This colossal serpent, with its muscular, scaled body, glides silently through
-the cold, pressurized waters, navigating the sea floor with an eerie grace.
-
-It seems hungry, but particular.  Let's hope you're not on the menu.
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. He's fit and vigilant, and regards you with deep
+suspicion.
 ~
-vn  28404
+vn  28704
 lv  65
-al  0
+al  -770
 sx  male
-bf  no_arms no_legs no_speech huge has_tail
-act stay_area
-aff sneak infrared deter swim
-mp	fight_prog 15
-    if size ($n) == 0
-        mpecho {WA giant sea python thinks you'll make a tasty snack!{x
-        swallow $n
+act stay_area aggressive
+aff swim infrared det_invis det_hidden det_sneak protection
+sp  spec_orange_grung
+mp  greet_prog 100
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            yell Vodrak rathalus! Silsthiss vor'l quarr!
+            murder $n
+        endif
+        endif
     endif
 ~
 
+$mob
+nm grung orange chiefsguard
+sh an orange grung
+lo <208>An orange grung chiefsguard patrols the quarter.<0>
+de
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. She is fit and vigilant, and regards you with deep
+suspicion.
+~
+vn  28705
+lv  66
+al  -775
+sx  female
+act stay_area aggressive
+aff swim infrared det_invis det_hidden det_sneak protection
+sp  spec_orange_grung
+mp  greet_prog 100
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            yell Verthicha drakon! Thedir qoralis ux!
+            murder $n
+        endif
+        endif
+    endif
+~
+mp  act_prog unlocks~
+    yell Vi gomagar! Vi pronlel! Nelithik!
+    murder $n
+~
+
+$mob
+nm sharptooth catfish
+sh a sharptooth
+lo <94>A sharptooth catfish slithers about in the mud.<0>
+de
+This sharptooth catfish is a long, eel-like fish, about 60kg in weight and
+2 metres long.  Its flattened body is dark brown on the back and fades to
+a paler colour on its underbelly.
+
+It's busy grubbing about in the mud for food, and doesn't seem to have much
+interest in you.
+~
+vn  28706
+lv  65
+al  -110
+sx  female
+act stay_area
+aff swim infrared det_invis det_hidden sneak
+bf  no_speech no_arms no_legs has_tail
+sp  spec_cast_electric
+mp  rand_prog 1
+    mpecho <94>::slither::<0>
+~
+
+mp  rand_prog 1
+    mpecho <94>::ssshlorp::<0>
+~
+
+mp  rand_prog 1
+    mpecho <94>::fllllllup::<0>
+~
+
+$mob
+nm sharptooth catfish
+sh a sharptooth
+lo <94>A sharptooth catfish slithers about in the mud.<0>
+de
+This sharptooth catfish is a long, eel-like fish, about 60kg in weight and
+2 metres long.  Its flattened body is dark brown on the back and fades to
+a paler colour on its underbelly.
+
+It's busy grubbing about in the mud for food, and doesn't seem to have much
+interest in you.
+~
+vn  28707
+lv  65
+al  -110
+sx  male
+act stay_area
+aff swim infrared det_invis det_hidden sneak
+bf  no_speech no_arms no_legs has_tail
+sp  spec_cast_electric
+mp  rand_prog 1
+    mpecho <94>::shlllerp::<0>
+~
+
+mp  rand_prog 1
+    mpecho <94>::shmmmmerk::<0>
+~
+
+mp  rand_prog 1
+    mpecho <94>::blllloop::<0>
+~
+
+$mob
+nm Kullugrib grung armourer
+sh Kullugrib
+lo <208>Kullugrib the armourer hammers away here.<0>
+de
+This muscular orange grung is the chiefsguard's armourer.  He is a grim and
+surly grung, who has little to say and likes to keep it that way.
+~
+vn  28708
+lv  66
+al  -795
+sx  male
+act stay_area sentinel
+aff swim infrared det_invis det_hidden det_sneak protection
+sp  spec_orange_grung
+mp  greet_prog 100
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            emote scowls at you furiously
+            murder $n
+        endif
+        endif
+    endif
+~
+
+$mob
+nm training dummy fghdfdhhdfrg
+sh a training dummy
+lo A training dummy is here, ready to take a beating.
+de
+This training dummy has been bolted to the floor and is used by the chiefsguard
+soldiers to test their weapons on.  It has been fashioned to crudely resemble a
+muscular grung warrior.
+~
+vn  28709
+lv  66
+al  0
+sx  neuter
+act stay_area sentinel no_experience no_heal objectlike unkillable cannot_fight
+aff blind hold infrared slow
+bf  no_eyes no_speech inorganic no_head
+
+$mob
+nm grung orange chiefsguard
+sh an orange grung
+lo <208>A muscular female chiefsguard trains here intensely.<0>
+de
+This squat but musclar female orange grung is a member of the chiefsguard.  She
+is busy training her combat skills.
+~
+vn  28710
+lv  66
+al  -801
+sx  female
+act stay_area sentinel
+aff swim infrared det_invis det_hidden det_sneak protection
+sp  spec_orange_grung
+mp  rand_prog 50
+    if isfight($i)
+        break
+    else
+        yell Verthicha, thraktos niu!
+        mpkill fghdfdhhdfrg
+    endif
+~
+
+$mob
+nm grung orange chiefsguard
+sh an orange grung
+lo <208>An orange grung chiefsguard is busy eating here.<0>
+de
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. He's busy eating, and less vigilant than he
+typically would be.
+~
+vn  28711
+lv  66
+al  -710
+sx  male
+act stay_area sentinel
+aff swim infrared det_invis det_hidden det_sneak protection
+sp  spec_orange_grung
+mp  greet_prog 100
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            yell Kroniik vokul!
+            murder $n
+        endif
+        endif
+    endif
+~
+
+$mob
+nm grung orange chiefsguard
+sh an orange grung
+lo <208>An orange grung chiefsguard chews studiously.<0>
+de
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. She is fit and vigilant, but busy chewing
+something strange-looking right now.
+~
+vn  28712
+lv  66
+al  -735
+sx  female
+act stay_area sentinel
+aff swim infrared det_invis det_hidden det_sneak protection
+sp  spec_orange_grung
+mp  greet_prog 100
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            yell Krosis! Zu'u lost ont daan!
+            murder $n
+        endif
+        endif
+    endif
+~
+
+$mob
+nm grung orange chiefsguard
+sh an orange grung
+lo <208>An orange grung chiefsguard dozes fitfully.<0>
+de
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. He's relaxing, and feels safe where he is.
+~
+vn  28713
+lv  66
+al  -711
+sx  male
+act stay_area sentinel
+aff swim infrared det_invis det_hidden det_sneak protection
+sp  spec_orange_grung
+mp  greet_prog 100
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            wake
+            yell Vorastrix kulok naerth! Zorel!
+            murder $n
+        endif
+        endif
+    endif
+~
+mp  rand_prog 1
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+            sleep
+        endif
+    endif
+~
+
+mp  rand_prog 1
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+            rest
+        endif
+    endif
+~
+
+mp  rand_prog 1
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+            wake
+        endif
+    endif
+~
+
+$mob
+nm grung orange chiefsguard
+sh an orange grung
+lo <208>An orange grung chiefsguard is relaxing here.<0>
+de
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. She's relaxing, and regards you with only mild
+curiosity.
+~
+vn  28714
+lv  66
+al  -766
+sx  female
+act stay_area sentinel
+aff swim infrared det_invis det_hidden det_sneak protection
+sp  spec_orange_grung
+mp  greet_prog 100
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            wake
+            yell Vorastrix un sov? Zeymah!
+            murder $n
+        endif
+        endif
+    endif
+~
+
+mp  rand_prog 1
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+            sleep
+        endif
+    endif
+~
+
+mp  rand_prog 1
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+            rest
+        endif
+    endif
+~
+
+mp  rand_prog 1
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+            wake
+        endif
+    endif
+~
+
+$mob
+nm grung orange chiefsguard
+sh an orange grung
+lo <208>An orange grung chiefsguard stands at attention.<0>
+de
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. He's fit and vigilant, and regards you with deep
+suspicion.  His job is to guard the upper entrance of the chiefsguard station.
+~
+vn  28715
+lv  66
+al  -800
+sx  male
+act stay_area aggressive sentinel
+aff swim infrared det_invis det_hidden det_sneak protection
+sp  spec_orange_grung
+mp  greet_prog 100
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            yell Ven jorralla adothai! Dhar'kess Lana!
+            murder $n
+        endif
+        endif
+    endif
+~
+mp  act_prog unlocks~
+    yell Vi gomagar! Vi pronlel! Nelithik!
+    murder $n
+~
+
+$mob
+nm octopus sinister
+sh an octopus
+lo <140>A sinister-looking octopus slithers about.<0>
+de
+The sinister-looking purple octopus is slithering about looking for a meal. She
+is not aggressive, but you don't doubt she would take a dim view of being
+interrupted while hunting.
+~
+vn  28716
+lv  66
+al  0
+sx  female
+act stay_area
+aff swim infrared det_invis det_hidden sneak
+bf  no_speech no_legs
+mp  fight_prog 25
+    if affspell($n) == 74
+        break
+    else
+        mpechoat $n <140>The octopus tries to ensnare you in her powerful tentacles!<0>
+        c 'paralysis' $n
+    endif
+~
+mp  rand_prog 1
+    mpecho <92>A cloud of purple ink forms in the water.<0>
+    mppeace
+    sneak
+    north
+    hide
+~
+mp  rand_prog 1
+    mpecho <92>A cloud of purple ink forms in the water.<0>
+    mppeace
+    sneak
+    south
+    hide
+~
+mp  rand_prog 1
+    mpecho <92>A cloud of purple ink forms in the water.<0>
+    mppeace
+    sneak
+    east
+    hide
+~
+mp  rand_prog 1
+    mpecho <92>A cloud of purple ink forms in the water.<0>
+    mppeace
+    sneak
+    west
+    hide
+~
+mp  rand_prog 1
+    mpecho <92>A cloud of purple ink forms in the water.<0>
+    mppeace
+    sneak
+    up
+    hide
+~
+mp  rand_prog 1
+    mpecho <92>A cloud of purple ink forms in the water.<0>
+    mppeace
+    sneak
+    down
+    hide
+~
+
+$mob
+nm Krek'tok grung receptionist
+sh Krek'tok
+lo <160>Krek'tok is here, patiently receiving the chief's visitors.<0>
+de
+Krek'tok is here to greet and triage individuals and groups who have come to
+visit the chief.  She is a plump and rather officious-looking female red grung,
+but you don't doubt she could make your life unpleasant if she had to.  You get
+a definite feeling of unctuous corruptibility from her.
+~
+vn  28717
+lv  67
+al  -805
+sx  female
+act stay_area sentinel
+aff swim infrared det_invis det_hidden det_sneak protection sanctuary
+sp  spec_red_grung
+mp  greet_prog 100
+    if isfight($i)
+        break
+    else
+        say Kagh svabol dronilnric wux ekess ocuir wer rimem, $n?
+    endif
+~
+mp  rand_prog 2
+    if isfight($i)
+        break
+    else
+        mpecho Krek'tok winks at you, gesturing towards the eastern door, and her purse.
+    endif
+~
+
+$mob
+nm advisor sahuagin
+sh a sahuagin advisor
+lo A sahuagin advisor regards you imperiously.
+de
+This older male sahuagin acts as counsellor and guide to elite figures in the
+sahuagin hieirarchy.  His clothing and demeanour make it clear he is an
+important figure in the Sekolah-worshipping theocratic hierarchy.
+~
+vn  28718
+lv  67
+al  -840
+sx  male
+act stay_area
+aff swim infrared det_invis det_hidden flying sanctuary protection det_curse
+sp  spec_sahuagin_high_cleric
+mp hitprcnt_prog 10
+    mpecho {/}B{CThe sahuagin advisor gestures directly at you! Everything goes blue...{x{/{x
+    mptransfer $n 28429
+    mpat $n mpforce $n look
+    mpat $n mpecho {/}B{CThe advisor grins evilly before slowly dematerialising...{x
+~
+
+$mob
+nm triton man blue-skinned
+sh a Triton
+lo A {Bblue-skinned man{x struts about here impatiently.
+de
+You recognize this blue-skinned man as a Triton—fairly handsome, though bearing
+a faintly piscine cast to his features. Hailing from a noble and reclusive race
+of ocean-dwellers, Tritons are known for their tireless defense of magical
+sea-gates against sahuagin, krakens, and other abyssal horrors. Their unwavering
+sense of duty often aligns them with law and goodness, but they are equally
+infamous for their imperious demeanour and lofty airs. This one regards you with
+narrowed eyes and a tight-lipped frown—impatient, aloof, and all business.
+~
+vn  28719
+lv  67
+al  625
+sx  male
+act stay_area
+aff swim detect_invis detect_hidden infrared protection battle_aura detect_good
+mp  rand_prog 1
+    if isfight($i)
+        break
+    else
+        sigh
+    endif
+~
+mp  rand_prog 1
+    if isfight($i)
+        break
+    else
+        roll
+    endif
+~
+
+$mob
+nm female sea elf
+sh a female sea elf
+lo <86>A smooth-skinned, teal-coloured sea elf female drifts about distractedly.<0>
+de
+Sea elves are of elven ancestry, though with enough differences to qualify as
+a distinct ancestry. They resemble elves with bluish or greenish tinted skin,
+with long, webbed fingers and toes, and visible gills on their ribs.  This
+sea elf is a tall and elegant female who looks pensive and preoccupied.
+~
+vn  28720
+lv  67
+al  890
+sx  female
+act stay_area
+aff detect_evil detect_invis detect_magic detect_hidden infrared protection detect_traps detect_sneak swim detect_curse detect_good
+mp  rand_prog 1
+    if isfight($i)
+        break
+    else
+        grimace
+    endif
+~
+
+$mob
+nm grung orange chiefsguard
+sh an orange grung
+lo <208>An orange grung chiefsguard patrols the chief's dwelling.<0>
+de
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. She is fit and vigilant, and regards you with deep
+suspicion.
+~
+vn  28721
+lv  68
+al  -785
+sx  female
+act stay_area aggressive
+aff swim infrared det_invis det_hidden det_sneak protection
+sp  spec_orange_grung
+mp  greet_prog 100
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            yell Verthicha drakon! Thedir qoralis ux!
+            murder $n
+        endif
+        endif
+    endif
+~
+mp  act_prog unlocks~
+    yell Vi gomagar! Vi pronlel! Nelithik!
+    murder $n
+~
+
+$mob
+nm grung orange chiefsguard
+sh an orange grung
+lo <208>An orange grung chiefsguard patrols the chief's dwelling.<0>
+de
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. He is fit and vigilant, and regards you with deep
+suspicion.
+~
+vn  28722
+lv  68
+al  -785
+sx  male
+act stay_area aggressive
+aff swim infrared det_invis det_hidden det_sneak protection
+sp  spec_orange_grung
+mp  greet_prog 100
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            yell Verthicha drakon! Thedir qoralis ux!
+            murder $n
+        endif
+        endif
+    endif
+~
+
+$mob
+nm grung orange chiefsguard
+sh an orange grung
+lo <208>An offduty chiefsguard crouches against the wall here.<0>
+de
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. Despite being off duty he is quite alert.
+~
+vn  28723
+lv  68
+al  -731
+sx  male
+act stay_area sentinel aggressive
+aff swim infrared det_invis det_hidden det_sneak protection
+sp  spec_orange_grung
+mp  greet_prog 100
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            wake
+            yell Vorastrix kulok naerth! Zorel!
+            murder $n
+        endif
+        endif
+    endif
+~
+
+$mob
+nm grung orange chiefsguard
+sh an orange grung
+lo <208>An offduty chiefsguard is relaxing here.<0>
+de
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. She's relaxing, and regards you with only mild
+curiosity.
+~
+vn  28724
+lv  68
+al  -786
+sx  female
+act stay_area sentinel
+aff swim infrared det_invis det_hidden det_sneak protection
+sp  spec_orange_grung
+mp  greet_prog 100
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            wake
+            yell Vorastrix un sov? Zeymah!
+            murder $n
+        endif
+        endif
+    endif
+~
+
+mp  rand_prog 1
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+            rest
+        endif
+    endif
+~
+
+mp  rand_prog 1
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+            wake
+        endif
+    endif
+~
+
+$mob
+nm male sea elf spy
+sh a male sea elf
+lo <80>A smooth-skinned male sea elf hides in the shadows.<0>
+de
+Sea elves are of elven ancestry, though with enough differences to qualify as
+a distinct ancestry. They resemble elves with bluish or greenish tinted skin,
+with long, webbed fingers and toes, and visible gills on their ribs.  This
+sea elf is a tall,elegant male who seems to be doing his best to avoid detection.
+~
+vn  28725
+lv  68
+al  890
+sx  male
+act stay_area sentinel
+aff detect_invis detect_hidden infrared protection detect_sneak swim detect_curse sneak hidden invisible passdoor
+sp  spec_superwimpy
+mp  rand_prog 1
+    if isfight($i)
+        break
+    else
+        grimace
+    endif
+~
+
+$mob
+nm grung orange chiefsguard elite
+sh an orange grung
+lo <208>An elite orange grung chiefsguard patrols the corridor.<0>
+de
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. She is fit and vigilant, and regards you with deep
+suspicion.  She seems particularly robust.
+~
+vn  28726
+lv  69
+al  -795
+sx  female
+act stay_area aggressive
+aff swim infrared det_invis det_hidden det_sneak protection
+sp  spec_orange_grung
+
+$mob
+nm grung orange chiefsguard
+sh an orange grung
+lo <208>An elite orange grung chiefsguard patrols the corridor.<0>
+de
+This tall orange grung is a member of the chiefsguard, powerful troops sworn to
+defend the chief at all costs. He is fit and vigilant, and regards you with deep
+suspicion. He seems particularly robust.
+~
+vn  28727
+lv  69
+al  -795
+sx  male
+act stay_area aggressive
+aff swim infrared det_invis det_hidden det_sneak protection
+sp  spec_orange_grung
+
+
+$mob
+nm grung gold chiefsmate
+sh a chiefsmate grung
+lo <220>A male gold grung chiefsmate is here, whiling away the hours.<0>
+de
+This male gold grung is one of the chief's mating partners.  He has little to do
+with his days but indulge in minor luxuries and await her call.
+~
+vn  28728
+lv  69
+al  -810
+sx  male
+act stay_area
+aff swim infrared det_invis det_hidden det_sneak protection sanctuary flaming globed
+sp  spec_gold_grung
+mp  greet_prog 100~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            yell Zellu de nomeno ofdio oium!
+            murder $n
+        endif
+        endif
+    endif
+~
+
+$mob
+nm conger eel
+sh a conger eel
+lo <138>A conger eel is looking for a meal.<0>
+de
+The conger eel is a large, elongated marine fish known for its serpentine body
+and powerful jaws.  It can grow up to 3 meters long and weight 60 kilos. Conger
+eels have smooth, scaleless skin that ranges from grey to dark brown, and small,
+sharp teeth suited for catching fish, crustaceans, and cephalopods. Though
+nocturnal and solitary by nature, they are fierce predators and sometimes
+mistaken for sea snakes due to their sinuous appearance.
+~
+vn  28729
+lv  67
+al  0
+sx  female
+act stay_area
+aff swim infrared det_hidden deter
+bf  no_speech no_legs no_arms has_tail
+sp  spec_fido
+
+$mob
+nm conger eel
+sh a conger eel
+lo <138>A conger eel is looking for a meal.<0>
+de
+The conger eel is a large, elongated marine fish known for its serpentine body
+and powerful jaws.  It can grow up to 3 meters long and weight 60 kilos. Conger
+eels have smooth, scaleless skin that ranges from grey to dark brown, and small,
+sharp teeth suited for catching fish, crustaceans, and cephalopods. Though
+nocturnal and solitary by nature, they are fierce predators and sometimes
+mistaken for sea snakes due to their sinuous appearance.
+~
+vn  28730
+lv  69
+al  0
+sx  male
+act stay_area
+aff swim infrared det_hidden deter
+bf  no_speech no_legs no_arms has_tail
+sp  spec_fido
+
+$mob
+nm grung gold chief
+sh the Chief
+lo <220>The chief rises furiously at your intrusion.<0>
+de
+The Chief Grung is a regal female gold grung, the highest caste among her kind
+and the unquestioned leader of her tribe. Her shimmering golden skin marks her
+as divine in the eyes of her people, a symbol of perfection and power.
+Draped in ornate undersea regalia—bones, scales, and polished coral—she rules
+with a sharp mind and a sharper tongue. Her movements are deliberate and poised,
+her voice commanding and melodic.
+
+Fierce, cunning, and deeply traditional, she maintains order through ritual,
+fear, and an unshakable belief in her own superiority.
+~
+vn  28731
+lv  70
+al  -910
+sx  female
+rnk boss
+act stay_area sentinel
+aff swim infrared det_invis det_hidden det_sneak protection sanctuary flaming globed
+sp  spec_gold_grung
+mp  greet_prog 100~
+    if isfight($i)
+        break
+    else
+        if carrying($n) == 28427
+            break
+        else
+        if race($n) != 24
+            yell Zsvanoa bevi wux lekar sia bidrithu! Nelithral ekess wux!
+            murder $n
+        endif
+        endif
+    endif
+~
+mp give_prog clasp radiant
+    if number($o) == 27632
+        if objcount(28730) < 1
+            emote the Chief gurgles with delight.
+            mpoload 28730
+            give bag $n
+        break
+        else
+        if objcount(28730) >= 1
+            emote the Chief gurgles with pleasure.
+        endif
+        endif
+    else
+        emote frowns.
+        drop clasp
+        murder $n
+    endif
+    endif
+~
 
 
 # OBJECTS
 
 $obj
-nm  fangs
-sh  a large pair of fangs
-lo  The huge fangs of some undersea creature lie here.
-vn  28400
+nm  long silver spear
+sh  a long silver spear
+lo  A well-used and maintained long silver spear rests here.
+vn  28704
 ty  weapon
-v3  bite
-wg  30
-ex  body_part sharp
+v3  pierce
+wg  11
+we  take wield
+ap  hitroll  6
+ap  damroll  6
+
+$obj
+nm  orange rock armour
+sh  bright orange rock armour
+lo  A suit of bright orange armour made of rock is here.
+vn  28705
+ty  armour
+wg  14
+ex
+we  take body
+ap  ac          -20
+ap  con          2
+ap  move        -50
+ap  save_spell  -4
+
+$obj
+nm  rock helm
+sh  a rock helm
+lo  An orange helm made of rock sits here.
+vn  28706
+ty  armour
+wg  6
+we  take head
+ap  ac -25
+ap  damroll 4
+
+$obj
+nm  smoking glowing forge
+sh  a smoking forge
+lo  <220>The smoking forge radiates intense heat.<0>
+vn  28707
+ty  forge
+ex  glow
+wg  2000
+we  none
+ed  smoking glowing forge
+The forge can be used to smelt metals, should you know how to do that.
+~
+
+$obj
+nm  gleaming anvil
+sh  a gleaming anvil
+lo  <69>A gleaming anvil sits here, being pounded away on.<0>
+vn  28708
+ty  anvil
+wg  5000
+
+$obj
+nm  sturdy metal workbench
+sh  a sturdy metal workbench
+lo <240>A sturdy metal workbench runs along the southern wall.<0>
+vn  28709
+ty  craft
+v0  15
+wg  2000
+we  none
+ed  sturdy metal workbench
+The workbench is covered in various tools to aid in the construction or
+enhancement of useful physical artefacts.
+~
+
+$obj
+nm  muddy spine catfish
+sh  the muddy spine of a catfish
+lo  The muck-encrusted spine of some fish lies here.
+vn  28710
+ty  food
+v0  35
+v3  1
+wg  1
 we  take
-ap  damroll 10
-ap  crit    10
+ed  muddy spine catfish
+It looks gross.
+~
+
+$obj
+nm  scroll
+sh  a scroll
+lo  A scroll with some writing on it is here.
+vn  28711
+ty  trash
+wg  1
+osl 67
+we  take hold
+ed  scroll writing
+The script is Draconic, you're pretty sure, but you can't read it.
+
+<558>Si offre wux vin gebalam de sia pliso. Confn ekess wer angrimich baryn kagh
+renthisj wer lex "aliyank".<559>
+
+An elaborate seal has been inscribed in it that suggests authority.
+~
+
+$obj
+nm  glittering scroll
+sh  a glittering scroll
+lo  A glittering scroll lies here.
+vn  28712
+ty  trash
+wg  1
+osl 67
+we  take hold
+ed  glittering scroll
+The scroll is a military communique.  It reads:
+{W
+"Chief.
+
+ We seek cooperation to contain the provocations of your southern neighbour.
+ If you would be interested in formalising such an arrangement, send word with
+ my emissary.
+
+ Regards,
+
+
+ Valas Duhnenath, Lord Commander of Eakos"{x
+
+~
+
+$obj
+nm  dark cloak
+sh  a dark cloak
+lo  A dark cloak lies here, flickering and shimmering.
+vn  28713
+ty  armour
+we  take about_body
+ex  steady
+wg  2
+ap invis -1
+ap pass_door -1
+
+$obj
+nm  masterwork silver spear
+sh  a masterwork silver spear
+lo  A well-used and maintained masterwork silver spear rests here.
+vn  28714
+ty  weapon
+v3  pierce
+wg  11
+we  take wield
+ap  hitroll  10
+ap  damroll  10
+
+$obj
+nm  golden diadem circlet
+sh  a golden diadem
+lo  A golden circlet lies here.
+vn  28715
+ty  armour
+wg  1
+we  take head
+ex  steady magic
+ap  ac -3
+ap  mana 110
+
+$obj
+nm  luxurious brown robe
+sh  a luxurious brown robe
+lo  A luxurious brown robe lies here in a heap.
+vn  28716
+ty  armour
+we  take about_body
+wg  2
+
+
+$obj
+nm  golden key
+sh  a small golden key
+lo  A small golden key has been left here.
+vn  28717
+ty  key
+v0  28409
+wg  1
+we  take hold
+ed  small golden key
+This key is very small and elegant, and looks to be made from or thickly-plated
+with gold.
+~
+
+$obj
+nm  large brass key
+sh  a large brass key
+lo  A large brass key has been left here.
+vn  28718
+ty  key
+v0  28429
+wg  1
+we  take hold
+ed  large brass key
+This key is heavy and made of brass, of the kind usually used to unlock heavy
+castle doors.
+~
+
+$obj
+nm  large brass key
+sh  a large brass key
+lo  A large brass key has been left here.
+vn  28719
+ty  key
+v0  28714
+wg  1
+osl 68
+we  take hold
+ed  large brass key
+This key is heavy and made of brass, of the kind usually used to unlock heavy
+castle doors.  It has the chief's symbol carved into it.
+~
+
+$obj
+nm  velvet purse
+sh  a velvet purse
+lo  A large purse made of velvet is here.
+vn  28720
+ty  container
+v0  5
+v1  none
+wg  1
+we  take hold
+osl 68
+
+$obj
+nm  row teeth sharp
+sh  a row of sharp teeth
+lo  Sharp teeth lie scattered here.
+vn  28721
+ty  weapon
+v0  head
+v3  bite
+ex  body_part
+wg  1
+we  wield
+ap  hitroll  7
+ap  damroll  7
+
+$obj
+nm  large bed
+sh  a large bed
+lo  <151>A large bed made of reeds and eelgrass stands here.<0>
+vn  28722
+ty  container
+wg  5000
+v0  1000
+v1  none
+v2 -1
+we  none
+
+$obj
+nm  coral crown
+sh  a coral crown
+lo  An elaborate crown fashioned from coral lies here.
+vn  28723
+ty  armour
+ex  steady magic
+wg  6
+we  take head
+ap  ac -10
+ap  mana 130
+ed coral crown
+This crown is crafted entirely from vibrant, naturally sculpted coral, its
+twisting branches fanning upward like flame frozen in time. Shades of crimson,
+rose, and deep orange intermingle, giving it a fierce, regal presence. The
+coral’s organic form wraps elegantly around the brow, with delicate
+barnacle-like inlays and tiny shells embedded at the base. Worn by rulers of the
+deep, it symbolizes ancient power, oceanic dominion, and the untamed beauty of
+the sea.
+~
+
+$obj
+nm  golden sharkscale armour
+sh  golden sharkscale armour
+lo  A suit of golden scaled armour is here.
+vn  28724
+ty  armour
+wg  10
+ex  steady magic
+we  take body
+ap  ac          -60
+ap  save_spell  -10
+ap  swift       5
+ap  crit        5
+ed sharkscale armour golden
+Forged from the gleaming scales of deep-sea golden sharks, this armour shimmers
+with a radiant, rippling luster even in the dimmest ocean depths. Each scale is
+razor-edged, interlocked with precision to allow swift, fluid movement while
+offering formidable protection. The cuirass curves like a second skin over the
+wearer’s form, adorned with etched sigils of rulership and ancient conquest.
+~
+
+$obj
+nm  polished bone wristband
+sh  a polished bone wristband
+lo  A beautiful wristband made from polished bone is here.
+vn  28725
+ty  armour
+ex  steady
+wg  2
+we  take wrist
+ap  damroll 11
+ap  hitroll 9
+ap  crit    2
+ed polished bone wristband
+This polished bone wristband is smooth to the touch, its pale surface gleaming
+with a subtle sheen from years of careful wear. Carved with simple yet elegant
+grooves, it bears the faint markings of ancient tribal symbols—worn but still
+proud. The bone is curved perfectly to fit the wrist, bound with sinew or
+sea-thread, and whispers of both craftsmanship and ancestry.
+~
+
+$obj
+nm  sea pearl necklace
+sh  a sea pearl necklace
+lo  A string of beautiful sea pearls has been left here in a heap.
+vn  28726
+ty  treasure
+ex  steady
+wg  1
+we  take neck
+ed  sea pearl necklace
+This sea pearl necklace is a luminous strand of ocean-born treasures, each pearl
+perfectly round and glistening with hues of silver, blue, and pale lavender.
+Harvested from the depths of ancient reefs, the pearls are strung on a fine
+thread of braided kelp fiber, nearly invisible against the skin.
+~
+
+$obj
+nm  topaz belt
+sh a topaz belt
+lo  A belt set with topaz gemstones lies in a heap here.
+vn  28727
+ty  armour
+ex  steady magic
+wg  2
+we  take waist
+ap  mana    85
+ap  swift   3
+ed  topaz belt
+This striking belt is set with gleaming topaz gemstones, each one faceted to
+catch the light. The golden-brown stones are mounted in a flexible band of dark
+leather or woven sea-hide, reinforced with intricate bronze filigree. Warm and
+radiant, the topaz glows with an inner heat, symbolizing courage, clarity, and
+authority.
+~
+
+$obj
+nm  dagger cowrie jewelled
+sh  a jewelled cowrie dagger
+lo  A dagger carved from a cowrie shell and inlaid with gemstones is here.
+vn  28728
+ty  weapon
+v3  pierce
+wg  1
+ex  sharp magic vorpal steady
+we  take wield
+ap  damroll 14
+ap  hitroll 16
+ap  swift   4
+ed  dagger cowrie jewelled
+This jewelled cowrie dagger is a delicate yet deadly weapon, its curved blade
+fashioned from polished bone or obsidian, honed to a razor's edge. The hilt is
+crafted from a large cowrie shell, its natural ridges adorned with tiny
+gemstones—sapphires, garnets, and sea-green tourmalines—set into the grooves
+like stars in a tidal sky. Light and easily concealed, the dagger is as much a
+ceremonial symbol as a weapon, often carried by undersea nobility.
+~
+
+$obj
+nm  shimmering portal
+sh  a shimmering portal
+lo  <363>A shimmering portal covers the western wall.<0>
+vn  28729
+ty  portal
+v0  28402
+v1  28508
+v2  50
+v3  200
+ex  magic
+wg  4000
+we  none
+ed  shimmering portal
+Looking into the portal you see multiple overlapping images of an underwater
+city and surrounding deep inter-canton canal areas, full of grung.
+~
+
+$obj
+nm  bag coins
+sh  a bag of coins
+lo  A fat bag of coins lies here.
+vn  28730
+ty  money
+v0  80
+v1  70
+v2  45
+v3  50
+wg  3
+we  take
+
+$obj
+nm  scroll pictorial illustrated
+sh  pictorial scrolls
+lo  A collection of illustrated scrolls lie here.
+vn  28731
+ty  trash
+wg  1
+we  take hold
+ed  scroll pictorial illustrated
+You browse through the alarmingly graphic images.  You really wish you hadn't.
+~
+
+$obj
+nm  purple ink sac
+sh  a purple ink sac
+lo  An ink sac has been ripped form an octopus and left here.
+vn  28732
+ty  paint
+v0  66
+v1  invis
+v2  blindness
+v3  pass door
+wg  1
+we  take hold
+
+$obj
+nm  deep purple cloak
+sh  a deep purple cloak
+lo  A deep purple cloak lies here in a heap.
+vn  28733
+ty  armour
+we  take about_body
+ex  pure magic
+wg  2
+ap damroll  9
+ap hitroll  10
+ap breathe_water -1
+
+
+# ROOMS
+
+$room
+vn  28404
+nm  Chief's Dwelling - Living / Reception Area
+de
+<214>This broad, echoing chamber once served as a feasting hall, but now lies far
+below the waves, reclaimed and repurposed by the grung chief. Carved from dark,
+<208>salt-smoothed stone, the room is lit by clusters of bioluminescent
+jelly-lanterns hanging from the high, arched ceiling. Coral creeps through
+<202>cracks in the masonry, mingling with the gilded remains of once-regal carvings.
+
+You may travel north from here.<0>
+~
+st  underwater_ground
+rf  none
+n   28409
+
+$room
+vn  28704
+nm  Chief's Dwelling - Guardroom
+de
+<130>This compact, round chamber hums with a quiet tension. Carved from ancient stone
+and reinforced with coral-encrusted supports, it serves as a strategic hub for
+<136>the chiefsguard. Bioluminescent kelp lanterns flicker from above, casting
+shifting green light over weapon racks, and woven reed maps A squad of orange
+<137>grung warriors crouch along the edges—alert, sinewy, and poised to spring.
+
+The room smells faintly of brine and damp moss, and the air vibrates with the
+<138>low, throaty croaks of readiness.  The only exit is the large oak door to the
+north.<0>
+~
+st  underwater_ground
+rf  none
+n   28709
+nnm door
+nlo 7
+nke 28718
+nds close
+
+$room
+vn  28407
+nm  Chief's Boudoir
+de
+<214>In the southeast corner of the quarters, nestled within a curved alcove of
+ancient stone, lies the chief’s bed—a raised platform of coral-woven reeds and
+<208>softened eelgrass, framed by arching strands of pearl-studded kelp that drift
+like curtains in the water. The bedding glows faintly with trapped
+<202>bioluminescence, casting a soothing glow over the alcove. Sheltered from the
+main current, this space exudes stillness and quiet power, a sanctuary where the
+<130>chief retreats from duty into sleep, surrounded by tokens of lineage and
+polished shell charms suspended from the walls like ancestral whispers.
+
+You can travel north and east from here.<0>
+~
+st  underwater_ground
+rf  none
+e   28408
+n   28413
+
+$room
+vn  28707
+nm  Chief's Dwelling - Greeting Rooms
+de
+<130>The space is wide but low-ceilinged, its floor uneven with remnants of the
+place's original tiles—-mottled mosaics veiled beneath centuries of sediment and
+<136>barnacle growth. Petitioners and dignitaries wait here, hoping to eventually be
+escorted into the chief's presence by one of the orange warrior grung who patrol
+<137>the area.
+
+From here you can explore the greeting rooms further to the east or south.<0>
+~
+st  underwater_ground
+rf  none
+e   28708
+n   28713
+
+$room
+vn  28408
+nm  Chief's Quarters
+de
+<214>Tucked deep within the submerged ruins, this large chamber serves as the grung
+chief’s personal refuge. The stone walls are softened by thick veils of gently
+<208>waving kelp, and small, glowing jelly-lights cluster in carved sconces, casting
+a serene luminescence that shimmers across the room like moonlight on water.
+<202>Woven sea-grass cushions and ceremonial relics rest in niches along the walls.
+
+A large iron door lies east of here; you can also travel north and east.<0>
+~
+st  underwater_ground
+rf  no_mob
+w   28407
+e   28409
+enm door
+elo 8
+eke 28717
+eds lock
+n   28414
+
+$room
+vn  28708
+nm  Chief's Dwelling - Greeting Rooms
+de
+<130>The space is wide but low-ceilinged, its floor uneven with remnants of the
+place's original tiles—-mottled mosaics veiled beneath centuries of sediment and
+<136>barnacle growth. Petitioners and dignitaries wait here, hoping to eventually be
+escorted into the chief's presence by one of the orange warrior grung who patrol
+<137>the area.
+
+From here you can explore the greeting rooms further to the north or west.<0>
+~
+st  underwater_ground
+rf  none
+w   28707
+n   28714
+
+$room
+vn  28409
+nm  Chief's Dwelling - Living / Reception Area
+de
+<214>This broad, echoing chamber once served as a feasting hall, but now lies far
+below the waves, reclaimed and repurposed by the grung chief. Carved from dark,
+<208>salt-smoothed stone, the room is lit by clusters of bioluminescent
+jelly-lanterns hanging from the high, arched ceiling. Coral creeps through
+<202>cracks in the masonry, mingling with the gilded remains of once-regal carvings.
+
+A very solid-looking oak door lies west, and you can also travel north, south,
+or east from here.<0>
+~
+st  underwater_ground
+rf  none
+w   28408
+wnm door
+wlo 8
+wke 28717
+wds lock
+e   28410
+n   28415
+s   28404
+
+$room
+vn  28709
+nm  Chief's Dwelling - Upper Corridors
+de
+<130>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<136>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<137>restored with bright, geometric tiles in grung patterns.
+
+A large oak door lies south of here; you can also continue north and east along
+the corridor.<0>
+~
+st  underwater_ground
+rf  none
+e   28710
+s   28704
+snm door
+slo 7
+ske 28718
+sds close
+n   28715
+
+$room
+vn  28410
+nm  Chief's Dwelling - Living / Reception Area
+de
+<214>This broad, echoing chamber once served as a feasting hall, but now lies far
+below the waves, reclaimed and repurposed by the grung chief. Carved from dark,
+<208>salt-smoothed stone, the room is lit by clusters of bioluminescent
+jelly-lanterns hanging from the high, arched ceiling. Coral creeps through
+<202>cracks in the masonry, mingling with the gilded remains of once-regal carvings.
+
+You can travel north or west from here.<0>
+~
+st  underwater_ground
+rf  none
+w   28409
+n   28416
+
+$room
+vn  28710
+nm  Chief's Dwelling - Upper Corridors
+de
+<130>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<136>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<137>restored with bright, geometric tiles in grung patterns.
+
+You may travel north or west down the corridor.<0>
+~
+st  underwater_ground
+rf  none
+w   28709
+n   28716
+
+$room
+vn  28413
+nm  Chief's Quarters
+de
+<214>Tucked deep within the submerged ruins, this large chamber serves as the grung
+chief’s personal refuge. The stone walls are softened by thick veils of gently
+<208>waving kelp, and small, glowing jelly-lights cluster in carved sconces, casting
+a serene luminescence that shimmers across the room like moonlight on water.
+<202>Woven sea-grass cushions and ceremonial relics rest in niches along the walls.
+
+You may travel east and south from here.<0>
+~
+st  underwater_ground
+rf  none
+e   28414
+s   28407
+
+$room
+vn  28713
+nm  Chief's Dwelling - Greeting Rooms
+de
+<130>The space is wide but low-ceilinged, its floor uneven with remnants of the
+place's original tiles—-mottled mosaics veiled beneath centuries of sediment and
+<136>barnacle growth. Petitioners and dignitaries wait here, hoping to eventually be
+escorted into the chief's presence by one of the orange warrior grung who patrol
+<137>the area.
+
+From here you can explore the greeting rooms further to the east or south.<0>
+~
+st  underwater_ground
+rf  none
+e   28714
+s   28707
+
+$room
+vn  28414
+nm  Chief's Quarters
+de
+<214>Tucked deep within the submerged ruins, this large chamber serves as the grung
+chief’s personal refuge. The stone walls are softened by thick veils of gently
+<208>waving kelp, and small, glowing jelly-lights cluster in carved sconces, casting
+a serene luminescence that shimmers across the room like moonlight on water.
+<202>Woven sea-grass cushions and ceremonial relics rest in niches along the walls.
+
+You may travel west and south from here.<0>
+~
+st  underwater_ground
+rf  none
+w   28413
+s   28408
+
+$room
+vn  28714
+nm  Chief's Dwelling - Greeting Rooms
+de
+<130>The chamber is entered via the bridge north, to the chiefsguard station. The
+entranceway is framed by curling vines of seaweed and a pair of broken stone
+<136>sentinels, humanoid you think, but now unrecognisable.  Soft bioluminescent
+fungi cluster around their bases, casting a slow, pulsating light that fills
+<137>the room with a dreamlike green glow.
+
+The space is wide but low-ceilinged, its floor uneven with remnants of the
+<138>place's original tiles—-mottled mosaics veiled beneath centuries of sediment and
+barnacle growth. Petitioners and dignitaries wait here, hoping to eventually be
+<139>escorted into the chief's presence by one of the orange warrior grung who patrol
+the area.
+
+<140>From here you can travel through the northen gates to the bridge, south or east
+to explore the greeting room further, or through the large oak door to the east,
+<141>providing you have a way to enter through it.<0>
+~
+st  underwater_ground
+rf  none
+n   28721
+nnm gates
+nlo 7
+nke 28718
+nds lock
+w   28713
+e   28715
+enm door
+elo 7
+eke 28719
+eds lock
+s   28708
+
+$room
+vn  28415
+nm  Chief's Dwelling - Living / Reception Area
+de
+<214>This broad, echoing chamber once served as a feasting hall, but now lies far
+below the waves, reclaimed and repurposed by the grung chief. Carved from dark,
+<208>salt-smoothed stone, the room is lit by clusters of bioluminescent
+jelly-lanterns hanging from the high, arched ceiling. Coral creeps through
+<202>cracks in the masonry, mingling with the gilded remains of once-regal carvings.
+
+You can travel north, south, or east from here.<0>
+~
+st  underwater_ground
+rf  none
+e   28416
+s   28409
+n   28422
+
+$room
+vn  28715
+nm  Chief's Dwelling - Upper Corridors
+de
+<130>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<136>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<137>restored with bright, geometric tiles in grung patterns.
+
+A large oak door leads west, or you may travel north or south down the corridor.<0>
+~
+st  underwater_ground
+rf  no_mob
+n   28722
+s   28709
+w   28714
+wnm door
+wlo 7
+wke 28719
+wds lock
+
+$room
+vn  28416
+nm  Chief's Dwelling - Living / Reception Area
+de
+<214>This broad, echoing chamber once served as a feasting hall, but now lies far
+below the waves, reclaimed and repurposed by the grung chief. Carved from dark,
+<208>salt-smoothed stone, the room is lit by clusters of bioluminescent
+jelly-lanterns hanging from the high, arched ceiling. Coral creeps through
+<202>cracks in the masonry, mingling with the gilded remains of once-regal carvings.
+
+You can travel north, south, or west from here.<0>
+~
+st  underwater_ground
+rf  none
+w   28415
+s   28410
+n   28423
+
+$room
+vn  28716
+nm  Chief's Dwelling - Upper Corridors
+de
+<130>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<136>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<137>restored with bright, geometric tiles in grung patterns.
+
+A large oak door lies to the east; you can also travel north or south down the
+corridor.<0>
+~
+st  underwater_ground
+rf  none
+n   28723
+s   28710
+e   28717
+enm door
+elo 7
+eke 28718
+eds close
+
+$room
+vn  28417
+nm  Chief's Dwelling - Lower Corridors
+de
+<214>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<208>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<202>restored with bright, geometric tiles in grung patterns.
+
+You can travel north from here.<0>
+~
+st  underwater_ground
+rf  none
+n   28424
+
+$room
+vn  28717
+nm  Chief's Dwelling - Guardroom
+de
+<130>This compact, round chamber hums with a quiet tension. Carved from ancient stone
+and reinforced with coral-encrusted supports, it serves as a strategic hub for
+<136>the chiefsguard. Bioluminescent kelp lanterns flicker from above, casting
+shifting green light over weapon racks, and woven reed maps A squad of orange
+<137>grung warriors crouch along the edges—alert, sinewy, and poised to spring.
+
+The room smells faintly of brine and damp moss, and the air vibrates with the
+<138>low, throaty croaks of readiness.  The only exit is the large oak door to the
+west.<0>
+~
+st  underwater_ground
+rf  none
+w   28716
+wnm door
+wlo 7
+wke 28718
+wds close
+
+$room
+vn  28420
+nm  Sovereign Quarter - G'Diehn Way - Lower
+de
+<115>You stand on the seafloor level of G'Diehn Way, which separates the Chief's
+Dwelling from the Chiefsguard station in the grung city of Omu's Sovereign
+<114>Quarter, deep under the sea. You can see no entrance to either structure
+from this location.
+
+<114>Omu has been built on top of the ruins of a much older city, and its design
+suggests the grung preference for arboreal structures, with both the station and
+<113>the Chief's Dwelling being constructed from coral, stone, and salvaged artefacts
+that mimic the swampy, tree-like habitats preferred by more amphibiously
+<112>inclined grung.
+
+From here you can head through the Sovereign Quarter's western gate, explore
+the Quarter further to the east or swim up, towards the huge, looming area of
+darkness above your head.
+<0>
+~
+st  underwater_ground
+rf  none
+u   28720
+e   28421
+w   28419
+wnm gates
+wlo 7
+wke 28718
+wds lock
+
+$room
+vn  28720
+nm  Sovereign Quarter - G'Diehn Way - Upper
+de
+<22>You are floating about 4 metres above the ground in G'Diehn Way, which separates
+the Chief's Dwelling from the Chiefsguard station in the grung city of Omu's
+<28>Sovereign Quarter, deep under the sea. You can see no entrance to either
+structure from this vantage point. To the immediate east lies a large,
+<34>completely enclosed wooden bridge that you cannot access from here.
+
+From here you can head through the Sovereign Quarter's western gate, head down
+<40>to the sea floor, or swim up, into the huge, looming area of darkness that
+swirls above your head.
+<0>
+~
+st  underwater
+rf  none
+u   27146
+d   28420
+w   28719
+wnm gates
+wlo 7
+wke 28718
+wds lock
+
+$room
+vn  28421
+nm  Sovereign Quarter - G'Diehn Way - Lower
+de
+<115>You stand on the seafloor level of G'Diehn Way, which separates the Chief's
+Dwelling from the Chiefsguard station in the grung city of Omu's Sovereign
+<114>Quarter, deep under the sea.
+
+Some distance away to the north you see the great gate leading into the heart of
+<113>the Chiefsguard station, while over your head runs a wide but totally enclosed
+wooden bridge, which cannot be accessed from here. G'Diehn Way, meanwhile,
+<112>continues west.
+~
+st  underwater_ground
+rf  none
+n   28429
+w   28420
+
+$room
+vn  28721
+nm  Sovereign Quarter - Ries-rhohrin Bridge
+de
+<185>You stand on Ries-rhohrin bridge above G'Diehn Way, which connects the Chief's
+Dwelling to the Chiefsguard station in the Sovereign Quarter.  The huge wooden
+<186>gate leading into the Chief's Dwelling lies immediately south, while you can see
+a somewhat smaller and less impressive gate that leads into the Chiefsguard
+<187>station some distance away to the north.  You can also choose to swim directly
+up, into the huge, looming area of darkness that swirls above your head.
+<0>
+~
+st  underwater_ground
+rf  none
+u   27119
+n   28729
+s   28714
+snm gates
+slo 7
+ske 28718
+sds lock
+
+$room
+vn  28422
+nm  Chief's Dwelling - Living / Reception Area
+de
+<214>This broad, echoing chamber once served as a feasting hall, but now lies far
+below the waves, reclaimed and repurposed by the grung chief. Carved from dark,
+<208>salt-smoothed stone, the room is lit by clusters of bioluminescent
+jelly-lanterns hanging from the high, arched ceiling. Coral creeps through
+<202>cracks in the masonry, mingling with the gilded remains of once-regal carvings.
+
+You can travel south or east from here.<0>
+~
+st  underwater_ground
+rf  none
+s   28415
+e   28423
+
+$room
+vn  28722
+nm  Chief's Dwelling - Upper Corridors
+de
+<130>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<136>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<137>restored with bright, geometric tiles in grung patterns.
+
+The only direction you can travel from here is south.<0>
+~
+st  underwater_ground
+rf  none
+s   28715
+
+$room
+vn  28423
+nm  Chief's Dwelling - Living / Reception Area
+de
+<214>This broad, echoing chamber once served as a feasting hall, but now lies far
+below the waves, reclaimed and repurposed by the grung chief. Carved from dark,
+<208>salt-smoothed stone, the room is lit by clusters of bioluminescent
+jelly-lanterns hanging from the high, arched ceiling. Coral creeps through
+<202>cracks in the masonry, mingling with the gilded remains of once-regal carvings.
+
+You can travel south or west from here.<0>
+~
+st  underwater_ground
+rf  no_mob
+n   28431
+nnm door
+nlo 7
+nke 28718
+nds close
+s   28416
+w   28422
+
+$room
+vn  28723
+nm  Chief's Dwelling - Upper Corridors
+de
+<130>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<136>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<137>restored with bright, geometric tiles in grung patterns.
+
+You can travel north or south down the corridor from here.<0>
+~
+st  underwater_ground
+rf  none
+n   28731
+s   28716
+
+$room
+vn  28424
+nm  Chief's Dwelling - Lower Corridors
+de
+<214>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<208>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<202>restored with bright, geometric tiles in grung patterns.
+
+You can travel north, south, or through the oak door east from here.<0>
+~
+st  underwater_ground
+rf  none
+n   28432
+s   28417
+e   28425
+enm door
+elo 7
+eke 28718
+eds close
+
+$room
+vn  28724
+nm  Chief's Dwelling - Upper Corridors
+de
+<130>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<136>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<137>restored with bright, geometric tiles in grung patterns.
+
+You can travel north or east along the corridor from here.<0>
+~
+st  underwater_ground
+rf  none
+n   28732
+e   28725
+
+$room
+vn  28425
+nm  Chief's Dwelling - Column to Upper Level
+de
+<214>You stand at the bottom of a water column that leads to the upper level of the
+chief's dwelling-place. Coral creeps along the stonework, merging with patches
+<208>of lichen and the remains of old, eroded statues in various wall-sconces. Glowing
+kelp lanterns sway gently in the current, casting shifting light across the
+<202>walls.
+
+You can swim up or exit through the large oak door to the west here.<0>
+~
+st  underwater_ground
+rf  no_mob
+w   28424
+wnm door
+wlo 7
+wke 28718
+wds close
+u   28725
+
+$room
+vn  28725
+nm  Chief's Dwelling - Column to Lower Level
+de
+<130>You float in a water column that leads down to the lower level of the chief's
+dwelling-place. Coral creeps along the stonework, merging with patches of
+<136>lichen and the remains of old, eroded statues in various wall-sconces. Glowing
+kelp lanterns sway gently in the current, casting shifting light across the
+walls.
+
+You can travel west or swim directly down from here.<0>
+~
+st  underwater
+rf  none
+w   28724
+d   28425
+
+$room
+vn  28428
+nm  Chiefsguard Station - Training Arena
+de
+<214>Here lies the chiefguards training arena-—a labyrinthine stronghold of stone and
+coral built within the skeletal remains of an ancient castle. Twisted sea vines
+<208>coil around crumbling archways and phosphorescent fungi cling to the
+battlements, casting an eerie green glow over the entire area. The arena itself
+<202>is a treacherous gauntlet of jagged ruins, shifting sand pits, and
+bioluminescent reefs teeming with sea life. Here, the sovereign quarter's
+grung hone their combat skills and battle-readiness.
+
+To the north lies a great armoury, or you can swim up to the chiefsguard's mess.<0>
+~
+st  underwater_ground
+rf  none
+n   28435
+u   28728
+
+$room
+vn  28728
+nm  Chiefsguard Station - Mess
+de
+<130>The dim, murky glow of bioluminescent fungi clings to the crumbling stone walls,
+casting eerie green light across the cavernous hall. Long, barnacle-encrusted
+<136>stone tables stretch before you, their surfaces littered with strange,
+glistening sea creatures—-some half-eaten, others still writhing. This is the
+<137>mess hall of the chiefsguard, where the chief's soldiers gather to eat, make
+sport, and socialise.
+
+<138>You may travel downwards to the training arena, or north to the barracks.<0>
+~
+st  underwater_ground
+rf  none
+n   28735
+d   28428
+
+$room
+vn  28429
+nm  Sovereign Quarter - G'Diehn Way - Lower
+de
+<115>You stand on the seafloor level of G'Diehn Way, which separates the Chief's
+Dwelling from the Chiefsguard station in the grung city of Omu's Sovereign
+<114>Quarter, deep under the sea.
+
+To the north lies the great (by grung standards) gate leading into the heart of
+<113>the Chiefsguard station, while over your head runs a wide but totally enclosed
+wooden bridge, which cannot be accessed from here. G'Diehn Way, meanwhile,
+<112>continues both to the east and south.
+<0>
+~
+st  underwater_ground
+rf  none
+n   28436
+nnm gates
+nlo 7
+nke 28718
+nds lock
+s   28421
+e   28430
+
+$room
+vn  28729
+nm  Sovereign Quarter - Ries-rhohrin Bridge
+de
+<185>You stand on a wide, wooden bridge above G'Diehn Way, which connects the Chief's
+Dwelling to the Chiefsguard station in the Sovereign Quarter.  The large
+<186>wooden gate leading into the station lies immediately north, while you can see
+the even larger and more impressive gate that leads into the Chief's Dwelling
+<187>some distance away to the south.  You can also choose to swim directly up, into
+the huge, looming area of darkness that swirls above your head.
+<0>
+~
+st  underwater_ground
+rf  none
+u   27134
+n   28736
+nnm gates
+nlo 7
+nke 28718
+nds lock
+s   28721
+
+$room
+vn  28430
+nm  Sovereign Quarter - G'Diehn Way - Lower
+de
+<115>You stand on the seafloor level of G'Diehn Way, which separates the Chief's
+Dwelling from the Chiefsguard station in the grung city of Omu's Sovereign
+<114>Quarter, deep under the sea.
+
+<114>Omu has been built on top of the ruins of a much older city, and its design
+suggests the grung preference for arboreal structures, with both the station and
+<113>the Chief's Dwelling being constructed from coral, stone, and salvaged artefacts
+that mimic the swampy, tree-like habitats preferred by more amphibiously
+<112>inclined grung.
+
+From here you can head north, to the Sovereign Quarter's northern gate, explore
+the Quarter further to the west or swim up, towards the huge, looming area of
+darkness above your head.
+<0>
+~
+st  underwater_ground
+rf  none
+n   28437
+w   28429
+u   28730
+
+$room
+vn  28730
+nm  Sovereign Quarter - G'Diehn Way - Upper
+de
+<22>You are floating about 4 metres above the ground in G'Diehn Way, which separates
+the Chief's Dwelling from the Chiefsguard station in the grung city of Omu's
+<28>Sovereign Quarter, deep under the sea.  To the west you see a sturdy wooden
+bridge connects the two parts of the quarter, but cannot gain access to it from
+here.
+
+<34>From this spot you can head north, towards the Sovereign Quarter's northern
+gate, swim down to the sea floor, or make your way up, into the huge, looming
+<40>area of darkness that swirls above your head.
+<0>
+~
+st  underwater
+rf  none
+u   27119
+d   28430
+n   28737
+
+$room
+vn  28431
+nm  Chief's Dwelling - Lower Corridors
+de
+<214>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<208>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<202>restored with bright, geometric tiles in grung patterns.
+
+You can travel east or through the oak door south from here.<0>
+~
+st  underwater_ground
+rf  none
+e   28432
+s   28423
+snm door
+slo 7
+ske 28718
+sds close
+
+$room
+vn  28731
+nm  Chief's Dwelling - Upper Corridors
+de
+<130>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<136>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<137>restored with bright, geometric tiles in grung patterns.
+
+You can travel south or east along the corridor from here.<0>
+~
+st  underwater_ground
+rf  none
+s   28723
+e   28732
+
+$room
+vn  28432
+nm  Chief's Dwelling - Lower Corridors
+de
+<214>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<208>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<202>restored with bright, geometric tiles in grung patterns.
+
+You can travel west or south from here.<0>
+~
+st  underwater_ground
+rf  none
+w   28431
+s   28424
+
+
+$room
+vn  28732
+nm  Chief's Dwelling - Upper Corridors
+de
+<130>You stand in a narrow stone corridor that winds through the heart of the Chief's
+dwelling-place. Coral creeps along the refurbished walls, merging with patches
+<136>of old, eroded carvings. Glowing kelp lanterns sway gently in the current,
+casting shifting light across the mosaic floor, which has been partially
+<137>restored with bright, geometric tiles in grung patterns.
+
+You can travel south or west along the corridor from here.<0>
+~
+st  underwater_ground
+rf  none
+s   28724
+w   28731
+
+$room
+vn  28435
+nm  Chiefsguard Armoury
+de
+<214>You stand in the Chiefsguard station's armoury in Omu's Sovereign
+Quarter.  Its smoking, glowing forge is hard at work producing armour and
+<208>weaponry to outfit the chiefsguard, and you observe various mostly orange grung
+travel through the room either acquiring items or bringing others in for repair.
+
+<202>From here you can head east to the main entranceway which leads out to G'Diehn
+Way, or travel south to explore the station further.<0>
+~
+st  underwater_ground
+rf  none
+s   28428
+e   28436
+
+$room
+vn  28735
+nm  Chiefsguard Station - Barracks
+de
+<130>This large chamber is low-ceilinged and cloaked in the cold gloom of the deep.
+Rough-hewn stone walls, worn smooth by centuries of salt and silt, enclose the
+<136>chiefsguard barracks in a dim, green-tinted half-light. Algae slicks the
+crumbling surfaces.
+
+<137>Rows of sponge-padded stone slabs line the walls—-primitive bed platforms where
+the chiefsguard warriors rest. Barnacles and bioluminescent polyps have
+<138>colonized the crevices between them, casting a soft pulsating glow that barely
+outlines the silhouettes of slumbering sentries.
+
+<139>This place hums with the silent discipline of soldiers long adapted to the
+depths. The eyes of a carved stone idol of Nangnang glares from the lintels,
+<140>unblinking, as if daring intruders to cross her domain.
+
+You may travel south to the mess, or east to the upper entrance.<0>
+~
+st  underwater_ground
+rf  none
+s   28728
+e   28736
+
+$room
+vn  28436
+nm  Chiefsguard Station Entranceway, Lower
+de
+<214>You stand in the entranceway of the Chiefsguard station in Omu's Sovereign
+Quarter.  Impressively constructed for a grung building, the decaying limestone
+<208>of the ancient city has been extensively reinforced here with coral, stone,
+scavenged wood and various artefacts.  Various mostly orange grung patrol the
+<202>building; these are the chiefsguard, Omu's elite troops who are dedicated to
+protecting the Chief, her family, and advisors.
+
+From here you can head out the southern gates to G'Diehn Way, which separates
+the Chiefsguard Station from the Chief's Dwelling, or travel west to explore the
+station further.
+~
+st  underwater_ground
+rf  none
+s   28429
+snm gate
+slo 7
+ske 28718
+sds lock
+w   28435
+
+$room
+vn  28736
+nm  Chiefsguard Station Entranceway, Upper
+de
+<130>You stand in the upper entranceway to the Chiefsguard station in Omu's Sovereign
+Quarter.  Impressively constructed for a grung building, the decaying limestone
+<136>of the ancient city has been extensively reinforced here with coral, stone,
+scavenged wood and various artefacts.  Various mostly-orange grung patrol the
+<137>building; these are the chiefsguard, Omu's elite troops who are dedicated to
+protecting the Chief, her family, and advisors.
+
+<138>From here you can head out the upper southern gates to Ries-rhohrin bridge,
+which will take you to the Chief's Dwelling, or travel west to the barracks.
+~
+st  underwater_ground
+rf  none
+s   28729
+snm gate
+slo 7
+ske 28718
+sds lock
+w   28735
+
+$room
+vn  28437
+nm  Sovereign Quarter - G'Diehn Way - Lower
+de
+<115>You stand on the seafloor level of G'Diehn Way, which separates the Chief's
+Dwelling from the Chiefsguard station in the grung city of Omu's Sovereign
+<114>Quarter, deep under the sea. You can see no entrance to either structure
+from this location.
+
+<114>Omu has been built on top of the ruins of a much older city, and its design
+suggests the grung preference for arboreal structures, with both the station and
+<113>the Chief's Dwelling being constructed from coral, stone, and salvaged artefacts
+that mimic the swampy, tree-like habitats preferred by more amphibiously
+<112>inclined grung.
+
+From here you can head through the Sovereign Quarter's northern gate, explore
+the Quarter further to the south, or swim up, towards the huge, looming area of
+darkness above your head.
+<0>
+~
+st  underwater_ground
+rf  none
+u   28737
+s   28430
+n   28446
+nnm gates
+nlo 7
+nke 28718
+nds lock
+
+$room
+vn  28737
+nm  Sovereign Quarter - G'Diehn Way - Upper
+de
+<22>You are floating about 4 metres above the ground in G'Diehn Way, which separates
+the Chief's Dwelling from the Chiefsguard station in the grung city of Omu's
+<28>Sovereign Quarter, deep under the sea. You can see no entrance to either
+structure from this vantage point.
+
+<34>From here you can head through the Sovereign Quarter's northern gate, explore
+the Quarter further to the south, head down to the sea floor, or swim up,
+<40>into the huge, looming area of darkness that swirls above your head.
+<0>
+~
+st  underwater
+rf  none
+u   27135
+d   28437
+s   28730
+n   28746
+nnm gates
+nlo 7
+nke 28718
+nds lock
+
+# SHOPS
+
+$shop
+vn	28717
+t1	key
+ps	50
+pb	200
+oh	0
+ch	23
 
 # MOB RESETS
 
-# giant sea python - male
+# orange chiefsguard (male) to G'Diehn Way
 $addmob
-mb      28404
-rm      28404
+mb      28704
+rm      28437
+wield   28704
+body    28705
+head    28706
+inv     28718
+num     4
+
+# orange chiefsguard (female) to G'Diehn Way
+$addmob
+mb      28705
+rm      28420
+wield   28704
+body    28705
+head    28706
+num     4
+
+# orange chiefsguard (male) to G'Diehn Way
+$addmob
+mb      28704
+rm      28730
+wield   28704
+body    28705
+head    28706
+inv     28718
+num     4
+
+# orange chiefsguard (male) to Ries-rhohrin Bridge
+$addmob
+mb      28704
+rm      28721
+wield   28704
+body    28705
+head    28706
+num     4
+
+# orange chiefsguard (female) to G'Diehn Way
+$addmob
+mb      28705
+rm      28429
+wield   28704
+body    28705
+head    28706
+num     4
+
+# orange chiefsguard (female) to Station Entranceway (lower)
+$addmob
+mb      28705
+rm      28436
+wield   28704
+body    28705
+head    28706
+inv     28718
+num     4
+
+# orange chiefsguard (male) to Station Entranceway (lower)
+$addmob
+mb      28704
+rm      28436
+wield   28704
+body    28705
+head    28706
+num     4
+
+# orange chiefsguard (female) to Station Entranceway (lower)
+$addmob
+mb      28705
+rm      28436
+wield   28704
+body    28705
+head    28706
+inv     28718
+num     4
+
+# sharptooth catfish (female) to G'Diehn Way
+$addmob
+mb      28706
+rm      28737
+num     1
+
+# sharptooth catfish (male) to G'Diehn Way
+$addmob
+mb      28707
+rm      28421
+num     1
+
+# Armourer to armoury
+$addmob
+mb      28708
+rm      28435
+waist   27542
+wield   27543
+num     1
+
+# training dummy to training area
+$addmob
+mb      28709
+rm      28428
+num     1
+
+# orange grung to training area
+$addmob
+mb      28710
+rm      28428
+wield   28704
+body    28705
+num     1
+
+# orange chiefsguard (male) to Mess
+$addmob
+mb      28711
+rm      28728
+body    28705
+inv     28718
+num     1
+
+# orange chiefsguard (female) to Mess
+$addmob
+mb      28712
+rm      28728
+body    28705
+inv     28710
+num     1
+
+# orange chiefsguard (male) to Barracks
+$addmob
+mb      28713
+rm      28735
+body    28705
+num     1
+
+# orange chiefsguard (female) to Barracks
+$addmob
+mb      28714
+rm      28735
+body    28705
+head    28706
+inv     28718
+num     1
+
+# orange chiefsguard (male) to Chiefsguard station upper entranceway
+$addmob
+mb      28715
+rm      28736
+body    28705
+head    28706
+wield   28704
+dual    28704
+num     5
+
+# orange chiefsguard (male) to Chiefsguard station upper entranceway
+$addmob
+mb      28715
+rm      28736
+body    28705
+head    28706
+wield   28704
+dual    28704
+num     5
+
+# orange chiefsguard (male) to Chiefsguard station upper entranceway
+$addmob
+mb      28715
+rm      28736
+body    28705
+head    28706
+wield   28704
+dual    28704
+inv     28718
+num     5
+
+# an octopus to chiefsguard armoury
+$addmob
+mb      28716
+rm      28435
 num     3
 
-# OBJECT RESETS
 
-# triton corpse
-$addobj
-ob      28422
+# an octopus to Chiefsguard Station entranceway - upper
+$addmob
+mb      28716
+rm      28435
+num     3
+
+# an octopus to Chiefsguard Station - Mess
+$addmob
+mb      28716
+rm      28728
+inv     28732
+num     3
+
+# an octopus to chiefsguard armoury
+$addmob
+mb      28716
+rm      28736
+num     3
+
+# Krek'tok to Chief's Dwelling - Greeting Rooms
+$addmob
+mb      28717
+rm      28714
+body    27608
+wield   27609
+hold    28720
+inv     28719
+num     1
+
+# orange chiefsguard (male) to Chief's Dwelling - Greeting Rooms
+$addmob
+mb      28715
+rm      28714
+body    28705
+head    28706
+wield   28704
+dual    28704
+num     5
+
+# orange chiefsguard (male) to Chief's Dwelling - Greeting Rooms
+$addmob
+mb      28715
+rm      28714
+body    28705
+head    28706
+wield   28704
+dual    28704
+inv     28718
+num     5
+
+# sahuagin advisor to Chief's Dwelling - Greeting Rooms
+$addmob
+mb      28718
+rm      28707
+about   27538
+wield   27619
+inv     28711
+num     1
+
+# triton diplomat to Chief's Dwelling - Greeting Rooms
+$addmob
+mb      28719
+rm      28713
+body    27111
+waist   27112
+inv     28712
+num     1
+
+# female sea elf to Chief's Dwelling - Greeting Rooms
+$addmob
+mb      28720
+rm      28708
+legs    27495
+body    27496
+wrist1  27492
+waist   27493
+feet    27494
+
+# orange chiefsguard (female) to Chief's Dwelling - Upper level
+$addmob
+mb      28721
+rm      28709
+body    28705
+head    28706
+wield   28704
+dual    28704
+inv     28718
+num     3
+
+# orange chiefsguard (male) to  Chief's Dwelling - Upper level
+$addmob
+mb      28722
+rm      28716
+body    28705
+head    28706
+wield   28704
+dual    28704
+num     2
+
+# orange chiefsguard (female) to Chief's Dwelling - Upper level
+$addmob
+mb      28721
+rm      28731
+body    28705
+head    28706
+wield   28704
+dual    28704
+inv     28718
+num     3
+
+# orange chiefsguard (male) to  Chief's Dwelling - Upper level
+$addmob
+mb      28722
+rm      28724
+body    28705
+head    28706
+wield   28704
+dual    28704
+num     2
+
+# orange chiefsguard (female) to Chief's Dwelling - Upper level
+$addmob
+mb      28721
+rm      28725
+body    28705
+head    28706
+wield   28704
+dual    28704
+num     3
+
+# orange chiefsguard (male) to Guardroom
+$addmob
+mb      28723
+rm      28704
+body    28705
+inv     28718
+num     3
+
+# orange chiefsguard (female) to Guardroom
+$addmob
+mb      28724
+rm      28704
+body    28705
+head    28706
+num     3
+
+# orange chiefsguard (male) to Guardroom
+$addmob
+mb      28723
+rm      28704
+body    28705
+num     3
+
+# orange chiefsguard (female) to Guardroom
+$addmob
+mb      28724
+rm      28717
+body    28705
+head    28706
+num     3
+
+# orange chiefsguard (male) to Guardroom
+$addmob
+mb      28723
+rm      28717
+body    28705
+inv     28718
+num     3
+
+# orange chiefsguard (female) to Guardroom
+$addmob
+mb      28724
+rm      28717
+body    28705
+head    28706
+num     3
+
+# sea elf (spy) (male) to Chief's Dwelling - Upper Corridors
+$addmob
+mb      28725
+rm      28722
+about   28713
+num     1
+
+# orange chiefsguard (female) to Chief's Dwelling - Lower Corridors
+$addmob
+mb      28726
+rm      28417
+body    28705
+head    28706
+wield   28714
+dual    28714
+num     1
+
+# orange chiefsguard (male) to Chief's Dwelling - Living / Reception Area
+$addmob
+mb      28727
+rm      28417
+body    28705
+head    28706
+wield   28714
+dual    28714
+inv     28718
+num     1
+
+# chiefsmate to Chief's Dwelling - Living / Reception Area
+$addmob
+mb      28728
+rm      28422
+head    28715
+about   28716
+inv     28717
+num     5
+
+# chiefsmate to Chief's Dwelling - Living / Reception Area
+$addmob
+mb      28728
+rm      28416
+head    28715
+about   28716
+inv     28717
+num     5
+
+# chiefsmate to Chief's Dwelling - Living / Reception Area
+$addmob
+mb      28728
+rm      28409
+head    28715
+about   28716
+inv     28717
+num     5
+
+# chiefsmate to Chief's Dwelling - Living / Reception Area
+$addmob
+mb      28728
 rm      28404
-lv      75
+head    28715
+about   28716
+inv     28717
+num     5
+
+# conger eel to Chief's Dwelling - Upper Corridors
+$addmob
+mb      28729
+rm      28715
+wield   28721
+num     3
+
+# conger eel to Chief's Dwelling - Upper Corridors
+$addmob
+mb      28729
+rm      28716
+wield   28721
+num     3
+
+# conger eel to Chief's Dwelling - Upper Corridors
+$addmob
+mb      28729
+rm      28732
+wield   28721
+num     3
+
+# conger eel to Chief's Dwelling - Lower Corridors
+$addmob
+mb      28730
+rm      28417
+wield   28721
+num     4
+
+# conger eel to Chief's Dwelling - Lower Corridors
+$addmob
+mb      28730
+rm      28432
+wield   28721
+num     4
+
+# conger eel to Chief's Dwelling - Lower Corridors
+$addmob
+mb      28730
+rm      28423
+wield   28721
+num     4
+
+# conger eel to Chief's Dwelling - Lower Corridors
+$addmob
+mb      28730
+rm      28409
+wield   28721
+num     4
+
+# Chief to Chief's Boudoir
+$addmob
+mb      28731
+rm      28407
+head    28723
+body    28724
+wrist1  28725
+wrist2  28725
+neck1   28726
+waist   28727
+wield   28728
+inv     27116
+num     1
+
+# chiefsmate to Chief's Boudoir
+$addmob
+mb      28728
+rm      28414
+head    28715
+about   28716
+inv     28717
+num     5
+
+# bed
+$addobj
+ob      28722
+rm      28407
+lv      70
+
+# scrolls
+$addobj
+ob      28731
+rm      28407
+lv      18
+con     28722
+
+# forge
+$addobj
+ob      28707
+rm      28435
+lv      65
+
+
+# anvil
+$addobj
+ob      28708
+rm      28435
+lv      65
+
+# workbench
+$addobj
+ob      28709
+rm      28435
+lv      65
+
+# portal
+$addobj
+ob      28729
+rm      28413
+lv      70
+
+
+
+

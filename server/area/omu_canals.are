@@ -1492,50 +1492,6 @@ D 1
 0 -1 28779
 S
 
-#28420
-Dummy room~
-Dummy room to link to 28419 until Omu sovereign quarter complete.
-~
-0 4|512 9
-D 3
-~
-~
-0 -1 28419
-S
-
-#28720
-Dummy room~
-Dummy room to link to 28719 until Omu sovereign quarter complete.
-~
-0 4|512 9
-D 3
-~
-~
-0 -1 28719
-S
-
-#28437
-Dummy room~
-Dummy room to link to 28446 until Omu sovereign quarter complete.
-~
-0 4|512 9
-D 0
-~
-~
-0 -1 28446
-S
-
-#28737
-Dummy room~
-Dummy room to link to 28746 until Omu sovereign quarter complete.
-~
-0 4|512 9
-D 0
-~
-~
-0 -1 28746
-S
-
 #28419
 Omu / Yrythelmyn Southern Bridge, Lower~
 <14>You stand at the eastern end of the southern bridge connecting Omu's sovereign
