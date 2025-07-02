@@ -3032,6 +3032,7 @@ Crafting and spellcrafting locations:
 30021   [Gryphon Smithy]             [Krondor]                      [0 100]  [krondor.are]
 27298   [The Fortress Armoury]       [Ota'ar Dar Military Fortress] [45 50]  [sahuagin_miltary.are] {R*{x
 27434, 27734 [The Royal Foundry]     [Ota'ar Dar Prince's Canton]   [55 60]  [sahuagin_prince.are] {R*{x
+28435   [Chiefsguard Armoury]        [Omu - Sovereign Quarter]      [65 70]  [omu_sovereign.are] {R*{x
 28755   [Omu Crafting Workshop]      [Omu Central]                  [60 70]  [omu_central.are] {R*{x
 28096   [Jasmir's Armory]            [Draagdim]                     [0 100]  [draagdim.are]
 29151   [The Bronze Scabbard]        [Freeport]                     [0 100]  [freeport.are] {R*{x

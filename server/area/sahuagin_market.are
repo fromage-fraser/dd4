@@ -4588,13 +4588,13 @@ D4
 S
 #27325
 Reavers' Guild Reception~
-{GYou stand inside the lower floor of a large, two-storey ruined building, deep
+<10>>You stand inside the lower floor of a large, two-storey ruined building, deep
 under the sea.  It has been converted into a reception area for the Ota'ar Dar
 Reavers' Guild. The room is dominated by a large desk, belonging to Reaver Tiareo.
-There is a large sign on the wall behind the desk.
+There is a large <0><64>sign<0><10> on the wall behind the desk.
 
 From this reception room you can leave west to Aquan Avenue, south to the Reavers'
-members' quarters, or up, to the quarters of the Reaver guildmaster.{x
+members' quarters, or up, to the quarters of the Reaver guildmaster.<0>
 ~
 0 8 12
 D2
@@ -4623,6 +4623,7 @@ Currently available quests for prospective Reavers to undertake:
 <15>8.   Weedful things<0>               (<123>50-70<0>)
 <15>9.   The Heart of the Platter<0>     (<123>50-70<0>)
 <15>10.  One Ring to School<0>           (<123>50-70<0>)
+<15>11.  Hook, Line and Inker<0>         (<123>55-75<0>)
 
 ~
 S

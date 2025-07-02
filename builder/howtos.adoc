@@ -48,6 +48,8 @@ only ones that might be generally useful to people working with the codebase. +
 * <<check-if-switched>>?
 * <<add-new-form-vamps-werewolves>>?
 * <<add-new-martial-artist-move>>?
+* <<add-new-recall>>?
+* <<work-with-spawn_count-and-max_instances>>?
 
 {nbsp} +
 {nbsp} +
@@ -1498,3 +1500,75 @@ Add pre-reqs for the skill to `pre_req-artist.c`.  Increase `MAX_PRE_REQ` in +
 
 Add helpfile entries for the skill itself, `SMARTIAL`, and under the `COMBO` help. +
 Update `CHANGES` to reflect your skill has been added. +
+
+
+== Add a new quest recall [[add-new-recall]]
+
+Increase `MAX_RECALL_POINTS` in `merc.h` +
+
+Add the new recall you want to the `do_quest` function in `quest.c`.  Increase +
+`NUMBER_RECALL_POINTS` while you're here. +
+
+
+== Work with spawn_count and max_instances [[work-with-spawn_count-and-max_instances]]
+
+Objects in dd4 now keep track of how many times they have been created per +
+runtime via the `spawn_count` variable in `OBJ_INDEX_DATA`.  Additionally the +
+`max_instances` variable limits how many times an object can be created per +
+runtime (not how many can exist in the world).
+
+`max_instances` defaults to `0` if not set, meaning there is no fixed limit +
+(the usual state of affairs). `ostat` displays these values, and `oset` allows +
+you to change them in-game.  To set `max_instances` on an object, add an `M` +
+line similar to the below example in the relevant area file. +
+
+[source, "c"]
+clasp radiant~
+a radiant clasp~
+A radiant clasp glows with a warm light.~
+~
+4 1|64 1|16384
+30~ 3~ 3~ complete healing~
+1 0 0
+M 3
+E
+radiant clasp~
+This finely wrought clasp pulses with a steady, golden light, warm to the touch
+and etched with runes that shimmer faintly in the dark. When fastened to
+clothing or armour the clasp hums with quiet power, its glow intensifying in
+moments of great need.
+~
+
+If an imm or mob attempts to `oload` or `mpoload` an object more times than its +
+`max_instances` limit a deleted dummy object will be generated (these have no +
+game effect). A visible warning is generated when this happens.  The same thing +
+will happen if a piece of instance-limited gear attempts to reset on a mob if +
+its limit has been reached.
+
+In mobprogs you use can use the `objcount()` if_check to check the `spawn_count` +
+of an object and decide what to do based on it, for example:
+
+[source, "c"]
+>give_prog clasp radiant~
+    if number($o) == 27632
+        if objcount(28730) < 1
+            emote the Chief gurgles with delight.
+            mpoload 28730
+            give bag $n
+        break
+        else
+        if objcount(28730) >= 1
+            emote the Chief gurgles with pleasure.
+        endif
+        endif
+    else
+        emote frowns.
+        drop clasp
+        murder $n
+    endif
+    endif
+~
+
+Limiting object spawns in this way may be used for a variety of reasons, +
+including to limit the ubiquity of high-value items that load on mobs or are +
+given as quest rewards.

@@ -1294,7 +1294,8 @@ and see themselves as superior to all other creatures.  Their society is
 caste-based, with the grung's colour denoting his role.  Blue grung, such as
 this individual, are the artisans, shopkeepers, and domestic workers of the
 grung race.  This grung looks and moves in a suspicious way, as if trying to
-avoid detection by the authorities.
+avoid detection by the authorities.  You also notice he has a few words of
+Common embroidered on his clothing--perhaps he speaks it?
 ~
 64 512|32768|65536|67108864 -815 S
 60 0 0 0d0+0 0d0+0
@@ -1311,6 +1312,23 @@ avoid detection by the authorities.
             say Qe japachi. Confn svern tenpiswo.
         endif
         endif
+    endif
+~
+>speech_prog common~
+    say Yes, I speak it.  Why?  Do you have something written in Draconic you wish translated?
+~
+>give_prog scroll~
+    if number($o) == 28711
+            emote clears throat.
+            mpecho {W"I imagine you want a translation?  Don't look so surprised, Common comes in very handy
+            mpecho {W in my trade.  Well as a gesture of commerical goodwill, why not?  It reads, 'I offer you
+            mpecho {W an alliance from my master. Come to the military baron and speak the word "aliyank".{X
+            emote smiles unctuously.
+            give scroll $n
+    break
+    else
+            say Nomeno ui di thric halkiv ekess ve. Ahfven coi spical.
+            give scroll $n
     endif
 ~
 >entry_prog 100~
@@ -3675,6 +3693,48 @@ map omu upper central~
     <137>[ ]<190>[ ][ ]<137>[<15>*<137>]<190>[ ][ ]<137>[<15>*<137>]<190>[ ]<28>[ ][ ]<21>[ ]<0>
                 <137>[ ]<190>[ ][ ][ ]<137>[<15>*<137>]   <21>[ ]<0>
                       <28>[ ][ ]<0>
+
+~
+
+#28529
+map omu sovereign quarter lower~
+a map of Omu's Sovereign Quarter - Lower~
+A map of Omu's Sovereign Quarter lies here.~
+~
+2 0 1|16384
+50~ -1~ -1~ -1~
+1 0 55
+E
+map omu sovereign quarter lower~
+<558>You examine a map of <556>Omu's Sovereign Quarter - Lower<557>...<559>
+
+    {Y[{W*{Y][ ]{G[ ]{x
+    {Y[ ]{G[ ][ ]{x{Y[ ][ ]{x
+    {G[ ][ ]{x{Y[ ][ ][ ][ ]{x
+    {Y[{W?{Y][ ][ ][ ][ ]{x
+    {Y[{W*{Y][ ][ ][ ]{x
+          {Y[ ]{x
+
+~
+
+#28530
+map omu sovereign quarter upper~
+a map of Omu's Sovereign Quarter - Upper~
+A map of Omu's Sovereign Quarter lies here.~
+~
+2 0 1|16384
+50~ -1~ -1~ -1~
+1 0 55
+E
+map omu sovereign quarter upper~
+<558>You examine a map of <556>Omu's Sovereign Quarter - Upper<557>...<559>
+
+    {y[ ][ ]{g[ ]{x
+    {y[ ]{Y[ ]{x{g[ ]{y[ ][ ]{x
+    {g[ ]{Y[ ]{x{y[ ][ ][ ][ ]{x
+    {y[ ][{W*{x{y][ ][ ][ ]{x
+    {y[ ][ ][ ][ ]{x
+          {y[ ]{x
 
 ~
 #0
@@ -10980,6 +11040,8 @@ G 0 28455 0                         carry a freshwater bladder
 G 0 28456 0                         carry a rough whetstone
 G 0 28527 0                         carry a map of Omu Central - Lower
 G 0 28528 0                         carry a map of Omu Central - Upper
+G 0 28529 0                         carry a map of Omu's Sovereign Quarter - Lower
+G 0 28530 0                         carry a map of Omu's Sovereign Quarter - Upper
 M 0 28455 1 28752               add Drobe to Drobe's Dive
 G 0 16615 0                         carry [out-of-area item]
 M 0 28456 1 28788               add Glimmer to Glimmer's Tinktorium

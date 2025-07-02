@@ -389,7 +389,7 @@ This training dummy has been bolted to the floor and is used by the fortress's
 soldiers to test weapons on.  It has taken terrible punishment over the years,
 but it is very robustly constructed, and well-maintained.
 ~
-2|64|16777216|33554432|134217728|9223372036854775808 1|64|9223372036854775808 0 S
+2|64|16777216|33554432|67108864|134217728|9223372036854775808 1|64|9223372036854775808 0 S
 41 0 0 0d0+0 0d0+0
 290 0
 8 8 0
@@ -625,6 +625,15 @@ else
     say Very foolish to waltz in here without my leave.  Very foolish indeed.
     mpkill $n
 endif
+~
+>speech_prog aliyank~
+    if objcount(27632) < 1
+        say Oh? Hmm.  A strange choice of emissary.  But no matter.  A gift, then.  Take this to the chief.
+        mpoload 27632 67
+        give clasp $n
+    else
+        say The chief has her gift.  Bother me no further.
+    endif
 ~
 |
 < reserved~ boss~
@@ -1096,6 +1105,22 @@ A tall tower shield stamped with the sigil of Ota'ar Dar lies here.~
 10 1300 0
 A
 17 -20
+#27632
+clasp radiant~
+a radiant clasp~
+A radiant clasp glows with a warm light.~
+~
+4 1|64 1|16384
+30~ 3~ 3~ complete healing~
+1 0 0
+M 1
+E
+radiant clasp~
+This finely wrought clasp pulses with a steady, golden light, warm to the touch
+and etched with runes that shimmer faintly in the dark. When fastened to
+clothing or armour the clasp hums with quiet power, its glow intensifying in
+moments of great need.
+~
 #0
 
 
@@ -1694,7 +1719,8 @@ The Baron's War Room~
 <34>This richly-decorated but functional room is the Baron's War Room, where the
 <35>Baron of the military canton performs his official duties, attending to military
 <36>and diplomatic matters--usually with the assistance of a religious advisor.
-<37>
+<36>A large oak desk covered in a detailed circular <37>map<36> dominates the room.
+<36>
 <37>Exits lead west to his private quarters, south to his portal room (which
 <37>permits quick transport to the Prince's canton), and east to the
 <37>heavily-guarded entrance to this chamber.<0>
@@ -1712,6 +1738,16 @@ D3
 ~
 door~
 8 -1 27587
+E
+map~
+{/{x<37>The map depicts the circular layout of a vast city, resembling a wheel with
+numerous 'spokes' extending outward from a central hub. Narrow canals divide the
+segments of the wheel, forming distinct boundaries between regions. Each section
+is shaded in green, red, orange, or yellow, suggesting some form of
+categorization or significance. About one-third of the way from the center
+toward the edge, along the south-southeast axis, a bold black 'X' is marked-—its
+placement deliberate and likely meaningful.<0>
+~
 S
 #27589
 The Baron's Antechamber~

@@ -3448,7 +3448,7 @@ bool check_social( CHAR_DATA *ch, char *command, char *argument )
         {
                 send_to_char( "They aren't here.\n\r",                    ch );
         }
-        else if (IS_SET( victim->act, ACT_OBJECT ))
+        else if (IS_NPC( victim ) && IS_SET( victim->act, ACT_OBJECT ))
         {
                 send_to_char( "You can't socialise with an object.\n\r",  ch );
         }

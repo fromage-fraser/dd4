@@ -490,6 +490,14 @@ void do_mpoload( CHAR_DATA *ch, char *argument )
     }
 
     obj = create_object( pObjIndex, level, "common", CREATED_NO_RANDOMISER );
+
+    /* Fail silently if object creation failed or dummy returned */
+
+    if ( obj == NULL || obj->deleted == TRUE )
+    {
+        return;
+    }
+
     if (IS_SET(obj->wear_flags, ITEM_TAKE) )
     {
         obj_to_char( obj, ch );

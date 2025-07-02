@@ -194,6 +194,45 @@
         endif
 ~
 
+>speech_prog eleven 11~
+        if level($n) < 55
+                mpecho {WReaver Tiareo says 'I'm sorry, that mission is too dangerous for someone of your limited experience.'{x
+        break
+        else
+        if level($n) > 75
+                mpecho {WReaver Tiareo says 'You're far too experienced to undertake that mission.'{x
+        break
+        else
+                mpecho {W'Purple dye is important for sahuagin; it is a sacred colour to us.        '{x
+                mpecho {W'Unfortunately, there are few good sources of the dye.  The highest quality'{x
+                mpecho {W'purple dye comes from the ink sac of a particularly elusive species of     '{x
+                mpecho {W'octopus found in the sovereign quarter of Omu.  Bring me a sac, and the    '{x
+                mpecho {W'will reward you richly.'{x
+        endif
+        endif
+~
+
+>give_prog purple ink sac~
+        if level($n) > 75
+                mpecho {WReaver Tiareo says 'That mission was for someone less experienced.'{x
+                give sac $n
+        break
+        else
+        if number($o) == 28732
+                mpjunk sac
+                mpecho {WReaver Tiareo nods. 'Ahhh, excellent.  This is the good stuff.'{x
+                mpoload 28733 75
+                give purple $n
+                mpecho {WReaver Tiareo says 'Please accept this magical cloak as a token of the city's gratitude.'{x
+        break
+        else
+                mpecho $I examines $O closely.
+                mpecho {WReaver Tiareo says 'Hmm, no.  This isn't it.'{x
+                give sac $n
+        endif
+        endif
+~
+
 >give_prog partially dissolved ring partially-dissolved~
         if level($n) > 70
                 mpecho {WReaver Tiareo says 'That mission was for someone less experienced.'{x

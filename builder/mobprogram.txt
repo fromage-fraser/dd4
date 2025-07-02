@@ -515,6 +515,9 @@ objtype   ($*)  == integer  Is the type of $* equal to integer
 objval#   ($*)  == integer  Is $*->value[#] equal to integer (# from 0-3)
 number    ($*)  == integer  Is the vnum of $* equal to integer
 name      ($*)  == string   Is the name of $* equal to string
+objcount  ($*)  == integer  Is spawn_count of object $* equal to integer
+                            (spawn_count == how many copies of that object have
+                             been created since the MUD last booted)
 
 
 ------------------------MOBCommands Of Interest-----------------------------
