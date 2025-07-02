@@ -16,25 +16,6 @@
         endif
         endif
 ~
->speech_prog one 1~
-        if level($n) < 30
-                mpecho {WReaver Tiareo says 'I'm sorry, that mission is too dangerous for someone of your limited experience.'{x
-        break
-        else
-        if level($n) > 40
-                mpecho {WReaver Tiareo says 'You're far too experienced to undertake that mission.'{x
-        break
-        else
-                mpecho {W'The demon lord Kostchtchie has stolen a valuable hammer from Ota'a Dar's forge'{x
-                mpecho {W'and fled with it to a surface realm that we have been unable to locate. We have'{x
-                mpecho {W'had Reaver reports that he has been seen in the general vicinity of a dying'{x
-                mpecho {W'forest, far to the east of Crystalmir Lake. Your mission is to track him down'{x
-                mpecho {W'and retrieve the hammer, by fair means or foul.'{x
-                emote looks at you and almost smiles
-                mpecho {W'You will, of course, be compensated for your efforts.'{x
-        endif
-        endif
-~
 >speech_prog two 2~
         if level($n) < 30
                 mpecho {WReaver Tiareo says 'I'm sorry, that mission is too dangerous for someone of your limited experience.'{x
@@ -194,7 +175,7 @@
         endif
 ~
 
->speech_prog eleven 11~
+>speech_prog A~
         if level($n) < 55
                 mpecho {WReaver Tiareo says 'I'm sorry, that mission is too dangerous for someone of your limited experience.'{x
         break
@@ -208,6 +189,26 @@
                 mpecho {W'purple dye comes from the ink sac of a particularly elusive species of     '{x
                 mpecho {W'octopus found in the sovereign quarter of Omu.  Bring me a sac, and the    '{x
                 mpecho {W'will reward you richly.'{x
+        endif
+        endif
+~
+
+>speech_prog one 1~
+        if level($n) < 30
+                mpecho {WReaver Tiareo says 'I'm sorry, that mission is too dangerous for someone of your limited experience.'{x
+        break
+        else
+        if level($n) > 40
+                mpecho {WReaver Tiareo says 'You're far too experienced to undertake that mission.'{x
+        break
+        else
+                mpecho {W'The demon lord Kostchtchie has stolen a valuable hammer from Ota'a Dar's forge'{x
+                mpecho {W'and fled with it to a surface realm that we have been unable to locate. We have'{x
+                mpecho {W'had Reaver reports that he has been seen in the general vicinity of a dying'{x
+                mpecho {W'forest, far to the east of Crystalmir Lake. Your mission is to track him down'{x
+                mpecho {W'and retrieve the hammer, by fair means or foul.'{x
+                emote looks at you and almost smiles
+                mpecho {W'You will, of course, be compensated for your efforts.'{x
         endif
         endif
 ~
