@@ -1,1 +1,2596 @@
-<!-- Built with MapMaker v0.3 at 2024-04-07T12:26:17.224878+01:00[Europe/London] --><html lang="en"><title>New Ofcol</title><meta charset="UTF-8"><style type="text/css">@import url(https://fonts.googleapis.com/css?family=Almendra:400|Metamorphous:400,700|Open+Sans:400,600);html{margin:0;padding:0}body{border:0;padding:0;margin:3em 4em;font-family:'Open Sans',sans-serif;font-size:14px;color:#111;background:linear-gradient(to bottom,#f4f2eb,#cac7bc)}h1,h2,h3{font-family:Metamorphous,cursive;color:#555;margin-top:0;margin-bottom:.75em}a{color:#333;text-decoration:none}a:hover{color:#f69700;text-decoration:underline}a.invis{height:0;width:0}.subheading{font-family:Almendra,cursive;font-size:1.25em}.vnum{font-weight:700}.fragments{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:flex-start;align-content:flex-start;align-items:center;margin:15px -15px -15px -15px}.fragment{border:1px solid #999;border-radius:8px;padding:15px;margin:15px;background:#fff}.legend{border:1px solid #999;border-radius:8px;padding:15px;margin:15px;background:#fff;display:grid;grid-template-columns:auto auto auto auto;grid-gap:15px;font-family:'Open Sans',sans-serif;font-size:12px}.s{display:inline-block;height:12px;width:12px}.q{margin:auto}.cells{border:30px solid #ccc;border-radius:4px;display:grid;grid-gap:1px;margin:0}.a{box-sizing:border-box;height:108px;width:108px}.c{background:#fff;display:grid;grid-template-columns:6px 1fr 5fr 1fr 6px;grid-template-rows:6px 1fr 5fr 1fr 6px}.area-exit-cell{background:#ff530d;display:grid;grid-template-columns:6px 1fr 5fr 1fr 6px;grid-template-rows:6px 1fr 5fr 1fr 6px}.t{background:#ccc;display:grid;grid-template-columns:2fr 2fr 2fr;grid-template-rows:2fr 2fr 2fr}.o{grid-column:2;grid-row:1/4;background:#fff;border:1px solid #ccc}.p{grid-row:2;grid-column:1/4;background:#fff;border:1px solid #ccc}.b{background:#ccc}.n-inside{background:grey}.n-city{background:#aba596}.n-field{background:#b1ba31}.n-forest{background:#6b9d3d}.n-hills{background:#7d995e}.n-mountain{background:#929292}.n-water_swim{background:#59addb}.n-water_no_swim{background:#0c62bd}.n-underwater{background:#082fa9}.n-air{background:#c4d3d7}.n-desert{background:#e2bf11}.n-swamp{background:#6b8552}.n-underwater_ground{background:#324a63}.d{color:#333;background:#fff;grid-column:2/5;grid-row:2/5}.area-exit-main{color:#b13808;background:#fff;grid-column:2/5;grid-row:2/5}.l{text-align:center;font-family:'Open Sans',sans-serif;font-size:12px;hyphens:auto;margin:10px;overflow:hidden}.area-exit-main a:active,.area-exit-main a:hover,.area-exit-main a:link,.area-exit-main a:visited{color:#b13808}.g-n{grid-row:1;grid-column:3/4;border-width:0 2px 2px 2px}.g-s{grid-row:5;grid-column:3/4;border-width:2px 2px 0 2px}.g-e{grid-row:3/4;grid-column:5;border-width:2px 0 2px 2px}.g-w{grid-row:3/4;grid-column:1;border-width:2px 2px 2px 0}.h-open{background:#fff;border-color:#fff}.h-door-east,.h-door-north,.h-door-south,.h-door-west{z-index:100;background:#d8c4b8;border-color:#6b5130;border-style:solid;border-radius:2px}.h-door-north{margin:-1px 12px -4px 12px}.h-door-south{margin:-4px 12px -1px 12px}.h-door-east{margin:12px -1px 12px -4px}.h-door-west{margin:12px -4px 12px -1px}.f{z-index:100;font-family:monospace;font-size:12px;margin:auto}.f-n{grid-row:1/4;grid-column:2/5;margin-top:1px}.f-s{grid-row:3/6;grid-column:3/4;margin-bottom:1px}.f-e{grid-row:2/5;grid-column:3/6;margin-right:0}.f-w{grid-row:2/5;grid-column:1/4;margin-left:0}.f-u{grid-row:1/6;grid-column:1/6;margin-top:3px;margin-left:3px}.f-d{grid-row:1/6;grid-column:1/6;margin-right:3px;margin-bottom:3px}.k{background:#e0f;color:#fdfdfd;padding:1px 4px;border-radius:12px}.i{background:#fb8403;color:#fafafa;padding:1px 4px;border-radius:12px;cursor:pointer}.m-n::before{content:"^"}.m-s::before{content:"v"}.m-e::before{content:">"}.m-w::before{content:"<"}.m-u::before{content:"^"}.m-d::before{content:"v"}.j{background:#b9c2c7;color:#fafafa;padding:1px 4px}.room-flags{margin-top:3px}.e{display:inline-block;padding:1px 4px;border-radius:10px;background:#999;color:#f8f8f8;font-family:monospace;font-size:11px;cursor:pointer}.e-randomized-exits::before{content:"R"}.e-no-mobiles{background:#1aa8e2!important}.e-no-mobiles::before{content:"NM"}.e-no-recall{background:#102e67!important}.e-no-recall::before{content:"NR"}.e-healer{background:#2b9611!important}.e-healer::before{content:"H"}.e-shop{background:#ffbf00!important;color:#483602!important}.e-shop::before{content:"$"}.e-teacher{background:#b516c6!important}.e-teacher::before{content:"T"}.u{padding:1px 4px;border-radius:2px;background:#cc4114;color:#f8f8f8;font-family:monospace;cursor:pointer}.summary .links{float:right}.summary .links a{margin-left:15px}</style><div class="summary"><div class="links"><a href="index.html">Index</a></div><h1>New Ofcol</h1><div class="subheading">All levels &mdash; Hatchet</div></div><div class="fragments"><div class="fragment"><div style="grid-template-columns:repeat(16,1fr)"class="cells"><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 645 at (0, 7) --><div class="a c n-inside"><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Kitchen"><span>Kitchen</span></div></div></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 663 at (-3, 6) --><div class="a c n-inside"><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Small House"><span>Small House</span></div></div></div></div><!-- Room vnum 661 at (-2, 6) --><div class="a c n-inside"><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Small House"><span>Small House</span></div></div></div></div><!-- Room vnum 659 at (-1, 6) --><div class="a c n-inside"><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Small House"><span>Small House</span></div></div></div></div><!-- Room vnum 643 at (0, 6) --><div class="a c n-inside"id="label-6"><div class="g-n h-open"></div><div class="g-s h-door-south"></div><div class="f f-u"><a href="#label-5"><span class="i m-u"title="Up to 5 (Bedroom)">5</span></a></div><div class="d"><div class="l"><div title="Big House"><div><span class="u">6</span></div><span>Big House</span></div></div></div></div><!-- Room vnum 652 at (1, 6) --><div class="a c n-inside"><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Small House"><span>Small House</span></div></div></div></div><!-- Room vnum 654 at (2, 6) --><div class="a c n-inside"><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Small House"><span>Small House</span></div></div></div></div><!-- Room vnum 656 at (3, 6) --><div class="a c n-inside"><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Small House"><span>Small House</span></div></div></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 665 at (-4, 5) --><div class="a c n-inside"><div class="g-e h-open"></div><div class="d"><div class="l"><div title="Small House"><span>Small House</span></div></div></div></div><!-- Room vnum 651 at (-3, 5) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="The end of Swiftest Way"><span>The end of Swiftest Way</span></div></div></div></div><!-- Room vnum 650 at (-2, 5) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Swiftest Way"><span>Swiftest Way</span></div></div></div></div><!-- Room vnum 649 at (-1, 5) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Swiftest Way"><span>Swiftest Way</span></div></div></div></div><!-- Room vnum 642 at (0, 5) --><div class="a c n-city"><div class="g-n h-door-north"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="The Big Intersection"><span>The Big Intersection</span></div></div></div></div><!-- Room vnum 646 at (1, 5) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Swiftest Way"><span>Swiftest Way</span></div></div></div></div><!-- Room vnum 647 at (2, 5) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Swiftest Way"><span>Swiftest Way</span></div></div></div></div><!-- Room vnum 648 at (3, 5) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="End of Swiftest Way"><span>End of Swiftest Way</span></div></div></div></div><!-- Room vnum 657 at (4, 5) --><div class="a c n-inside"><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Small House"><span>Small House</span></div></div></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 664 at (-3, 4) --><div class="a c n-inside"><div class="g-n h-open"></div><div class="d"><div class="l"><div title="Small House"><span>Small House</span></div></div></div></div><!-- Room vnum 662 at (-2, 4) --><div class="a c n-inside"><div class="g-n h-open"></div><div class="d"><div class="l"><div title="Small House"><span>Small House</span></div></div></div></div><!-- Room vnum 660 at (-1, 4) --><div class="a c n-inside"><div class="g-n h-open"></div><div class="d"><div class="l"><div title="Small House"><span>Small House</span></div></div></div></div><div class="a t"><div class="o"></div></div><!-- Room vnum 653 at (1, 4) --><div class="a c n-inside"><div class="g-n h-open"></div><div class="d"><div class="l"><div title="Small House"><span>Small House</span></div></div></div></div><!-- Room vnum 655 at (2, 4) --><div class="a c n-inside"><div class="g-n h-open"></div><div class="d"><div class="l"><div title="Small House"><span>Small House</span></div></div></div></div><!-- Room vnum 658 at (3, 4) --><div class="a c n-inside"><div class="g-n h-open"></div><div class="d"><div class="l"><div title="Small House"><span>Small House</span></div></div></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 640 at (-1, 3) --><div class="a c n-inside"><div class="g-s h-open"></div><div class="g-e h-door-east"></div><div class="d"><div class="l"><div title="House"><span>House</span></div></div></div></div><!-- Room vnum 637 at (0, 3) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-door-east"></div><div class="g-w h-door-west"></div><div class="d"><div class="l"><div title="Impy Way"><span>Impy Way</span></div></div></div></div><!-- Room vnum 638 at (1, 3) --><div class="a c n-inside"><div class="g-s h-open"></div><div class="g-w h-door-west"></div><div class="d"><div class="l"><div title="House"><span>House</span></div></div></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 641 at (-1, 2) --><div class="a c n-inside"><div class="g-n h-open"></div><div class="d"><div class="l"><div title="Bedroom"><span>Bedroom</span></div></div></div></div><div class="a t"><div class="o"></div></div><!-- Room vnum 639 at (1, 2) --><div class="a c n-inside"><div class="g-n h-open"></div><div class="d"><div class="l"><div title="Bedroom"><span>Bedroom</span></div></div></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 635 at (-1, 1) --><div class="a c n-inside"><div class="g-s h-open"></div><div class="g-e h-door-east"></div><div class="d"><div class="l"><div title="House"><span>House</span></div></div></div></div><!-- Room vnum 632 at (0, 1) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-door-east"></div><div class="g-w h-door-west"></div><div class="d"><div class="l"><div title="Impy Way"><span>Impy Way</span></div></div></div></div><!-- Room vnum 633 at (1, 1) --><div class="a c n-inside"><div class="g-s h-open"></div><div class="g-w h-door-west"></div><div class="d"><div class="l"><div title="House"><span>House</span></div></div></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 636 at (-1, 0) --><div class="a c n-inside"><div class="g-n h-open"></div><div class="d"><div class="l"><div title="Bedroom"><span>Bedroom</span></div></div></div></div><div class="a t"><div class="o"></div></div><!-- Room vnum 634 at (1, 0) --><div class="a c n-inside"><div class="g-n h-open"></div><div class="d"><div class="l"><div title="Bedroom"><span>Bedroom</span></div></div></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 674 at (7, 0) --><div class="a c n-inside"id="label-26"><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="f f-e"><a href="#label-25"><span class="i m-e"title="East to 25 (A Hallway of the Golden Citadel)">25</span></a></div><div class="d"><div class="l"><div title="A Hallway of the Golden Citadel"><div><span class="u">26</span></div><span>A Hallway of the Golden ...</span></div></div></div></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 675 at (10, 0) --><div class="a c n-inside"id="label-25"><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="f f-w"><a href="#label-26"><span class="i m-w"title="West to 26 (A Hallway of the Golden Citadel)">26</span></a></div><div class="d"><div class="l"><div title="A Hallway of the Golden Citadel"><div><span class="u">25</span></div><span>A Hallway of the Golden ...</span></div></div></div></div><!-- Room vnum 676 at (11, 0) --><div class="a c n-inside"><div class="g-s h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="A Hallway of the Golden Citadel"><span>A Hallway of the Golden ...</span></div></div></div></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 631 at (-2, -1) --><div class="a c n-inside"><div class="g-e h-open"></div><div class="d"><div class="l"><div title="Kitchen"><span>Kitchen</span></div></div></div></div><!-- Room vnum 629 at (-1, -1) --><div class="a c n-inside"id="label-4"><div class="g-e h-door-east"></div><div class="g-w h-open"></div><div class="f f-u"><a href="#label-3"><span class="i m-u"title="Up to 3 (Bedroom)">3</span></a></div><div class="d"><div class="l"><div title="Big House"><div><span class="u">4</span></div><span>Big House</span></div></div></div></div><!-- Room vnum 625 at (0, -1) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-door-east"></div><div class="g-w h-door-west"></div><div class="d"><div class="l"><div title="Impy Way"><span>Impy Way</span></div></div></div></div><!-- Room vnum 626 at (1, -1) --><div class="a c n-inside"id="label-2"><div class="g-e h-open"></div><div class="g-w h-door-west"></div><div class="f f-u"><a href="#label-1"><span class="i m-u"title="Up to 1 (Bedroom)">1</span></a></div><div class="d"><div class="l"><div title="Big House"><div><span class="u">2</span></div><span>Big House</span></div></div></div></div><!-- Room vnum 628 at (2, -1) --><div class="a c n-inside"><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Kitchen"><span>Kitchen</span></div></div></div></div><!-- Room vnum 801 at (3, -1) --><div class="a c n-city"><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Pipes and Smokeables"><span>Pipes and Smokeables</span></div><div class="room-flags"><span class="e e-shop"title="Shop"></span></div></div></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 677 at (7, -1) --><div class="a c n-inside"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="d"><div class="l"><div title="A Hallway of the Golden Citadel"><span>A Hallway of the Golden ...</span></div></div></div></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 670 at (10, -1) --><div class="a c n-inside"id="label-11"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="f f-s"><a href="#label-27"><span class="i m-s"title="South to 27 (The Temple of Ofcol)">27</span></a></div><div class="f f-u"><a href="#label-10"><span class="i m-u"title="Up to 10 (An Upper Chamber of the Golden Citadel)">10</span></a></div><div class="d"><div class="l"><div title="The Anteroom to the Temple of Ofcol"><div><span class="u">11</span></div><span>The Anteroom to the Temple ...</span></div></div></div></div><!-- Room vnum 678 at (11, -1) --><div class="a c n-inside"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="d"><div class="l"><div title="A Hallway of the Golden Citadel"><span>A Hallway of the Golden ...</span></div></div></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a area-exit-cell"><div class="g-n h-none"></div><div class="g-s h-none"></div><div class="g-e h-open"></div><div class="g-w h-none"></div><div class="f f-n"></div><div class="f f-s"></div><div class="f f-e"></div><div class="f f-w"></div><div class="f f-u"></div><div class="f f-d"></div><div class="area-exit-main"><div class="l"><span>To <a href="ofcol.html">Ofcol</a></span></div></div></div><!-- Room vnum 601 at (0, -2) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="The Big Intersection"><span>The Big Intersection</span></div><div class="room-flags"><span class="e e-no-mobiles"title="No mobiles"></span></div></div></div></div><div class="a t"><div class="p"></div></div><div class="a t"><div class="p"></div></div><!-- Room vnum 666 at (3, -2) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Raff Way"><span>Raff Way</span></div></div></div></div><!-- Room vnum 667 at (4, -2) --><div class="a c n-city"><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Raff Way"><span>Raff Way</span></div></div></div></div><!-- Room vnum 699 at (5, -2) --><div class="a c n-city"><div class="g-e h-door-east"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Outside the Entrance to the Golden Citadel"><span>Outside the Entrance to ...</span></div><div class="room-flags"><span class="e e-teacher"title="Teacher"></span></div></div></div></div><!-- Room vnum 698 at (6, -2) --><div class="a c n-inside"><div class="g-e h-open"></div><div class="g-w h-door-west"></div><div class="d"><div class="l"><div title="Inside the Entrance to the Golden Citadel"><span>Inside the Entrance to the ...</span></div></div></div></div><!-- Room vnum 679 at (7, -2) --><div class="a c n-inside"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="A Hallway of the Golden Citadel"><span>A Hallway of the Golden ...</span></div></div></div></div><!-- Room vnum 671 at (8, -2) --><div class="a c n-inside"id="label-7"><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="f f-u"><a href="#label-12"><span class="i m-u"title="Up to 12 (An Upper Chamber of the Golden Citadel)">12</span></a></div><div class="d"><div class="l"><div title="The Anteroom to the Temple of Ofcol"><div><span class="u">7</span></div><span>The Anteroom to the Temple ...</span></div></div></div></div><!-- Room vnum 669 at (9, -2) --><div class="a c n-inside"id="label-27"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="f f-n"><a href="#label-11"><span class="i m-n"title="North to 11 (The Anteroom to the Temple of Ofcol)">11</span></a></div><div class="d"><div class="l"><div title="The Temple of Ofcol"><div><span class="u">27</span></div><span>The Temple of Ofcol</span></div><div class="room-flags"><span class="e e-healer"title="Healer"></span> <span class="e e-teacher"title="Teacher"></span></div></div></div></div><!-- Room vnum 672 at (10, -2) --><div class="a c n-inside"id="label-23"><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="f f-u"><a href="#label-13"><span class="i m-u"title="Up to 13 (An Upper Chamber of the Golden Citadel)">13</span></a></div><div class="d"><div class="l"><div title="The Anteroom to the Temple of Ofcol"><div><span class="u">23</span></div><span>The Anteroom to the Temple ...</span></div></div></div></div><!-- Room vnum 680 at (11, -2) --><div class="a c n-inside"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="A Hallway of the Golden Citadel"><span>A Hallway of the Golden ...</span></div></div></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 603 at (-1, -3) --><div class="a c n-inside"><div class="g-e h-open"></div><div class="d"><div class="l"><div title="The Blacksmith"><span>The Blacksmith</span></div><div class="room-flags"><span class="e e-shop"title="Shop"></span></div></div></div></div><!-- Room vnum 602 at (0, -3) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Impy Way"><span>Impy Way</span></div></div></div></div><!-- Room vnum 604 at (1, -3) --><div class="a c n-inside"><div class="g-w h-open"></div><div class="d"><div class="l"><div title="The Leather Shop"><span>The Leather Shop</span></div><div class="room-flags"><span class="e e-shop"title="Shop"></span></div></div></div></div><div class="a b"></div><!-- Room vnum 800 at (3, -3) --><div class="a c n-city"><div class="g-n h-open"></div><div class="d"><div class="l"><div title="Dragonhoard Bank, Ofcol Branch"><span>Dragonhoard Bank, Ofcol Branch</span></div></div></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 681 at (7, -3) --><div class="a c n-inside"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="d"><div class="l"><div title="A Hallway of the Golden Citadel"><span>A Hallway of the Golden ...</span></div></div></div></div><div class="a b"></div><!-- Room vnum 673 at (9, -3) --><div class="a c n-inside"id="label-15"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="f f-s"><a href="#label-9"><span class="i m-s"title="South to 9 (A Hallway of the Golden Citadel)">9</span></a></div><div class="f f-u"><a href="#label-14"><span class="i m-u"title="Up to 14 (An Upper Chamber of the Golden Citadel)">14</span></a></div><div class="d"><div class="l"><div title="The Anteroom to the Temple of Ofcol"><div><span class="u">15</span></div><span>The Anteroom to the Temple ...</span></div></div></div></div><div class="a b"></div><!-- Room vnum 682 at (11, -3) --><div class="a c n-inside"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="d"><div class="l"><div title="A Hallway of the Golden Citadel"><span>A Hallway of the Golden ...</span></div></div></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 606 at (-1, -4) --><div class="a c n-inside"><div class="g-e h-open"></div><div class="d"><div class="l"><div title="The Pawn &amp; Repair Shop"><span>The Pawn &amp; Repair Shop</span></div><div class="room-flags"><span class="e e-shop"title="Shop"></span></div></div></div></div><!-- Room vnum 605 at (0, -4) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Impy Way"><span>Impy Way</span></div></div></div></div><!-- Room vnum 607 at (1, -4) --><div class="a c n-inside"><div class="g-w h-open"></div><div class="d"><div class="l"><div title="The Meat Store"><span>The Meat Store</span></div><div class="room-flags"><span class="e e-shop"title="Shop"></span></div></div></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 683 at (7, -4) --><div class="a c n-inside"id="label-24"><div class="g-n h-open"></div><div class="g-e h-open"></div><div class="f f-e"><a href="#label-9"><span class="i m-e"title="East to 9 (A Hallway of the Golden Citadel)">9</span></a></div><div class="d"><div class="l"><div title="A Hallway of the Golden Citadel"><div><span class="u">24</span></div><span>A Hallway of the Golden ...</span></div></div></div></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 684 at (10, -4) --><div class="a c n-inside"id="label-9"><div class="g-n h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="f f-n"><a href="#label-15"><span class="i m-n"title="North to 15 (The Anteroom to the Temple of Ofcol)">15</span></a></div><div class="f f-w"><a href="#label-24"><span class="i m-w"title="West to 24 (A Hallway of the Golden Citadel)">24</span></a></div><div class="d"><div class="l"><div title="A Hallway of the Golden Citadel"><div><span class="u">9</span></div><span>A Hallway of the Golden ...</span></div></div></div></div><!-- Room vnum 685 at (11, -4) --><div class="a c n-inside"><div class="g-n h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="A Hallway of the Golden Citadel"><span>A Hallway of the Golden ...</span></div></div></div></div><div class="a b"></div><!-- Room vnum 600 at (-3, -5) --><div class="a c n-inside"><div class="g-e h-door-east"></div><div class="d"><div class="l"><div title="Granny&#39;s Still Room"><span>Granny&#39;s Still Room</span></div></div></div></div><!-- Room vnum 616 at (-2, -5) --><div class="a c n-inside"><div class="g-s h-open"></div><div class="g-w h-door-west"></div><div class="d"><div class="l"><div title="The Shed"><span>The Shed</span></div></div></div></div><!-- Room vnum 609 at (-1, -5) --><div class="a c n-inside"><div class="g-e h-open"></div><div class="d"><div class="l"><div title="Nyles&#39; House of Ale"><span>Nyles&#39; House of Ale</span></div><div class="room-flags"><span class="e e-shop"title="Shop"></span></div></div></div></div><!-- Room vnum 608 at (0, -5) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Impy Way"><span>Impy Way</span></div></div></div></div><!-- Room vnum 610 at (1, -5) --><div class="a c n-inside"><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Farmer&#39;s Market"><span>Farmer&#39;s Market</span></div><div class="room-flags"><span class="e e-shop"title="Shop"></span></div></div></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 615 at (-3, -6) --><div class="a c n-field"><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="d"><div class="l"><div title="Fields"><span>Fields</span></div></div></div></div><!-- Room vnum 612 at (-2, -6) --><div class="a c n-field"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Fields"><span>Fields</span></div></div></div></div><div class="a t"><div class="p"></div></div><!-- Room vnum 611 at (0, -6) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="The End of Impy Way"><span>The End of Impy Way</span></div></div></div></div><!-- Room vnum 668 at (1, -6) --><div class="a c n-field"><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Dirt Road"><span>Dirt Road</span></div></div></div></div><!-- Room vnum 617 at (2, -6) --><div class="a c n-inside"><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Slaughterhouse"><span>Slaughterhouse</span></div></div></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a t"><div class="o"></div></div><div class="a t"><div class="o"></div></div><div class="a b"></div><!-- Room vnum 622 at (0, -7) --><div class="a c n-field"><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Grass Field"><span>Grass Field</span></div></div></div></div><div class="a t"><div class="o"></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 614 at (-3, -8) --><div class="a c n-field"><div class="g-n h-open"></div><div class="g-e h-open"></div><div class="d"><div class="l"><div title="Fields"><span>Fields</span></div></div></div></div><!-- Room vnum 613 at (-2, -8) --><div class="a c n-field"><div class="g-n h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Fields"><span>Fields</span></div></div></div></div><!-- Room vnum 624 at (-1, -8) --><div class="a c n-field"><div class="g-e h-open"></div><div class="d"><div class="l"><div title="Pig Sty"><span>Pig Sty</span></div></div></div></div><!-- Room vnum 621 at (0, -8) --><div class="a c n-field"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Dirt Road"><span>Dirt Road</span></div></div></div></div><!-- Room vnum 618 at (1, -8) --><div class="a c n-field"><div class="g-n h-open"></div><div class="g-s h-door-south"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Dirt Road"><span>Dirt Road</span></div></div></div></div><!-- Room vnum 620 at (2, -8) --><div class="a c n-inside"><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Barn"><span>Barn</span></div></div></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 623 at (0, -9) --><div class="a c n-field"><div class="g-n h-open"></div><div class="d"><div class="l"><div title="Grass Field"><span>Grass Field</span></div></div></div></div><!-- Room vnum 619 at (1, -9) --><div class="a c n-inside"><div class="g-n h-door-north"></div><div class="d"><div class="l"><div title="Chicken Coop"><span>Chicken Coop</span></div></div></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div></div></div><div class="fragment"><div style="grid-template-columns:repeat(1,1fr)"class="cells"><!-- Room vnum 627 at (0, 0) --><div class="a c n-inside"id="label-1"><div class="f f-d"><a href="#label-2"><span class="i m-d"title="Down to 2 (Big House)">2</span></a></div><div class="d"><div class="l"><div title="Bedroom"><div><span class="u">1</span></div><span>Bedroom</span></div></div></div></div></div></div><div class="fragment"><div style="grid-template-columns:repeat(1,1fr)"class="cells"><!-- Room vnum 630 at (0, 0) --><div class="a c n-inside"id="label-3"><div class="f f-d"><a href="#label-4"><span class="i m-d"title="Down to 4 (Big House)">4</span></a></div><div class="d"><div class="l"><div title="Bedroom"><div><span class="u">3</span></div><span>Bedroom</span></div></div></div></div></div></div><div class="fragment"><div style="grid-template-columns:repeat(1,1fr)"class="cells"><!-- Room vnum 644 at (0, 0) --><div class="a c n-inside"id="label-5"><div class="f f-d"><a href="#label-6"><span class="i m-d"title="Down to 6 (Big House)">6</span></a></div><div class="d"><div class="l"><div title="Bedroom"><div><span class="u">5</span></div><span>Bedroom</span></div></div></div></div></div></div><div class="fragment"><div style="grid-template-columns:repeat(3,1fr)"class="cells"><div class="a b"></div><!-- Room vnum 686 at (0, 0) --><div class="a c n-inside"id="label-10"><div class="g-s h-open"></div><div class="f f-u"><a href="#label-16"><span class="i m-u"title="Up to 16 (A Top Chamber of the Golden Citadel)">16</span></a></div><div class="f f-d"><a href="#label-11"><span class="i m-d"title="Down to 11 (The Anteroom to the Temple of Ofcol)">11</span></a></div><div class="d"><div class="l"><div title="An Upper Chamber of the Golden Citadel"><div><span class="u">10</span></div><span>An Upper Chamber of the ...</span></div></div></div></div><div class="a b"></div><!-- Room vnum 687 at (-1, -1) --><div class="a c n-inside"id="label-12"><div class="g-e h-open"></div><div class="f f-u"><a href="#label-17"><span class="i m-u"title="Up to 17 (A Top Chamber of the Golden Citadel)">17</span></a></div><div class="f f-d"><a href="#label-7"><span class="i m-d"title="Down to 7 (The Anteroom to the Temple of Ofcol)">7</span></a></div><div class="d"><div class="l"><div title="An Upper Chamber of the Golden Citadel"><div><span class="u">12</span></div><span>An Upper Chamber of the ...</span></div></div></div></div><!-- Room vnum 688 at (0, -1) --><div class="a c n-inside"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="The Hall of the DragonLords"><span>The Hall of the DragonLords</span></div></div></div></div><!-- Room vnum 689 at (1, -1) --><div class="a c n-inside"id="label-13"><div class="g-w h-open"></div><div class="f f-u"><a href="#label-18"><span class="i m-u"title="Up to 18 (A Top Chamber of the Golden Citadel)">18</span></a></div><div class="f f-d"><a href="#label-8"><span class="i m-d"title="Down to 8 (The Anteroom to the Temple of Ofcol)">8</span></a></div><div class="d"><div class="l"><div title="An Upper Chamber of the Golden Citadel"><div><span class="u">13</span></div><span>An Upper Chamber of the ...</span></div></div></div></div><div class="a b"></div><!-- Room vnum 690 at (0, -2) --><div class="a c n-inside"id="label-14"><div class="g-n h-open"></div><div class="f f-u"><a href="#label-19"><span class="i m-u"title="Up to 19 (A Top Chamber of the Golden Citadel)">19</span></a></div><div class="f f-d"><a href="#label-15"><span class="i m-d"title="Down to 15 (The Anteroom to the Temple of Ofcol)">15</span></a></div><div class="d"><div class="l"><div title="An Upper Chamber of the Golden Citadel"><div><span class="u">14</span></div><span>An Upper Chamber of the ...</span></div></div></div></div><div class="a b"></div></div></div><div class="fragment"><div style="grid-template-columns:repeat(3,1fr)"class="cells"><div class="a b"></div><!-- Room vnum 691 at (0, 0) --><div class="a c n-inside"id="label-16"><div class="g-s h-open"></div><div class="f f-d"><a href="#label-10"><span class="i m-d"title="Down to 10 (An Upper Chamber of the Golden Citadel)">10</span></a></div><div class="d"><div class="l"><div title="A Top Chamber of the Golden Citadel"><div><span class="u">16</span></div><span>A Top Chamber of the ...</span></div></div></div></div><div class="a b"></div><!-- Room vnum 692 at (-1, -1) --><div class="a c n-inside"id="label-17"><div class="g-e h-open"></div><div class="f f-d"><a href="#label-12"><span class="i m-d"title="Down to 12 (An Upper Chamber of the Golden Citadel)">12</span></a></div><div class="d"><div class="l"><div title="A Top Chamber of the Golden Citadel"><div><span class="u">17</span></div><span>A Top Chamber of the ...</span></div></div></div></div><!-- Room vnum 693 at (0, -1) --><div class="a c n-inside"id="label-21"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="f f-u"><a href="#label-20"><span class="i m-u"title="Up to 20 (Above the Dragon Chamber)">20</span></a></div><div class="d"><div class="l"><div title="The Dragon Chamber"><div><span class="u">21</span></div><span>The Dragon Chamber</span></div></div></div></div><!-- Room vnum 694 at (1, -1) --><div class="a c n-inside"id="label-18"><div class="g-w h-open"></div><div class="f f-d"><a href="#label-13"><span class="i m-d"title="Down to 13 (An Upper Chamber of the Golden Citadel)">13</span></a></div><div class="d"><div class="l"><div title="A Top Chamber of the Golden Citadel"><div><span class="u">18</span></div><span>A Top Chamber of the ...</span></div></div></div></div><div class="a b"></div><!-- Room vnum 695 at (0, -2) --><div class="a c n-inside"id="label-19"><div class="g-n h-open"></div><div class="f f-d"><a href="#label-14"><span class="i m-d"title="Down to 14 (An Upper Chamber of the Golden Citadel)">14</span></a></div><div class="d"><div class="l"><div title="A Top Chamber of the Golden Citadel"><div><span class="u">19</span></div><span>A Top Chamber of the ...</span></div></div></div></div><div class="a b"></div></div></div><div class="fragment"><div style="grid-template-columns:repeat(1,1fr)"class="cells"><!-- Room vnum 696 at (0, 0) --><div class="a c n-inside"id="label-20"><div class="f f-u"><a href="#label-22"><span class="i m-u"title="Up to 22 (In the Shaft from the Dragon Chamber)">22</span></a></div><div class="f f-d"><a href="#label-21"><span class="i m-d"title="Down to 21 (The Dragon Chamber)">21</span></a></div><div class="d"><div class="l"><div title="Above the Dragon Chamber"><div><span class="u">20</span></div><span>Above the Dragon Chamber</span></div></div></div></div></div></div><div class="fragment"><div style="grid-template-columns:repeat(1,1fr)"class="cells"><!-- Room vnum 697 at (0, 0) --><div class="a c n-inside"id="label-22"><div class="f f-d"><a href="#label-20"><span class="i m-d"title="Down to 20 (Above the Dragon Chamber)">20</span></a></div><div class="d"><div class="l"><div title="In the Shaft from the Dragon Chamber"><div><span class="u">22</span></div><span>In the Shaft from the ...</span></div></div></div></div></div></div><div id="legend"class="legend"><div class="q"><span class="u">123</span></div><div class="r">Numbered location</div><div class="q"><span class="f i m-u">123</span></div><div class="r">Exit to a numbered location</div><div class="q"><span class="e e-randomized-exits"></span></div><div class="r">Randomized exits</div><div class="q"><span class="e e-no-mobiles"></span></div><div class="r">Mobiles cannot enter</div><div class="q"><span class="e e-no-recall"></span></div><div class="r">Cannot recall</div><div class="q"><span class="e e-healer"></span></div><div class="r">Healer</div><div class="q"><span class="e e-shop"></span></div><div class="r">Shop</div><div class="q"><span class="e e-teacher"></span></div><div class="r">Teacher</div><div class="q"><span class="area-exit-cell"></span></div><div class="r">Exit to another area</div><div class="q"><span class="f k">?</span></div><div class="r">Unknown exit</div><div class="q"><span class="s n-inside"></span></div><div class="r">Inside</div><div class="q"><span class="s n-city"></span></div><div class="r">City</div><div class="q"><span class="s n-field"></span></div><div class="r">Fields</div><div class="q"><span class="s n-forest"></span></div><div class="r">Forest</div><div class="q"><span class="s n-hills"></span></div><div class="r">Hills</div><div class="q"><span class="s n-mountain"></span></div><div class="r">Mountains</div><div class="q"><span class="s n-water_swim"></span></div><div class="r">Swimmable water</div><div class="q"><span class="s n-water_no_swim"></span></div><div class="r">Unswimmable water</div><div class="q"><span class="s n-underwater"></span></div><div class="r">Underwater</div><div class="q"><span class="s n-underwater_ground"></span></div><div class="r">Underwater ground</div><div class="q"><span class="s n-air"></span></div><div class="r">In the air</div><div class="q"><span class="s n-desert"></span></div><div class="r">Desert</div><div class="q"><span class="s n-swamp"></span></div><div class="r">Swamp</div></div></div>
+<!-- Built with MapMaker v0.3 at 2025-07-04T06:01:14.540076+12:00[Pacific/Auckland] -->
+<html lang="en">
+<head>
+    <title>New Ofcol</title>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css?family=Almendra:400|Metamorphous:400,700|Open+Sans:400,600');
+
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            border: 0;
+            padding: 0;
+            margin: 3em 4em;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            color: #111111;
+            background: linear-gradient(to bottom, #f4f2eb, #cac7bc);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Metamorphous', cursive;
+            color: #555555;
+            margin-top: 0;
+            margin-bottom: 0.75em;
+        }
+
+        a {
+            color: #333333;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #f69700;
+            text-decoration: underline;
+        }
+
+        a.invis {
+            height: 0;
+            width: 0;
+        }
+
+        .subheading {
+            font-family: 'Almendra', cursive;
+            font-size: 1.25em;
+        }
+
+        .vnum {
+            font-weight: bold;
+        }
+
+        .fragments {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-content: flex-start;
+            align-items: center;
+            margin: 15px -15px -15px -15px;
+        }
+
+        .fragment {
+            border: 1px solid #999999;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px;
+            background: #ffffff;
+        }
+
+        .legend {
+            border: 1px solid #999999;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px;
+            background: #ffffff;
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            grid-gap: 15px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12px;
+        }
+
+        .s {
+            display: inline-block;
+            height: 12px;
+            width: 12px;
+        }
+
+        .q {
+            margin: auto;
+        }
+
+        .r {
+        }
+
+        .cells {
+            border: 30px solid #cccccc;
+            border-radius: 4px;
+            display: grid;
+            grid-gap: 1px;
+            margin: 0;
+        }
+
+        .a {
+            box-sizing: border-box;
+            height: 108px;
+            width: 108px;
+        }
+
+        .c {
+            background: #ffffff;
+            display: grid;
+            grid-template-columns: 6px 1fr 5fr 1fr 6px;
+            grid-template-rows: 6px 1fr 5fr 1fr 6px;
+        }
+
+        .area-exit-cell {
+            background: #ff530d;
+            display: grid;
+            grid-template-columns: 6px 1fr 5fr 1fr 6px;
+            grid-template-rows: 6px 1fr 5fr 1fr 6px;
+        }
+
+        .t {
+            background: #cccccc;
+            display: grid;
+            grid-template-columns: 2fr 2fr 2fr;
+            grid-template-rows: 2fr 2fr 2fr;
+        }
+
+        .o {
+            grid-column: 2;
+            grid-row: 1 / 4;
+            background: #ffffff;
+            border: 1px solid #cccccc;
+        }
+
+        .p {
+            grid-row: 2;
+            grid-column: 1 / 4;
+            background: #ffffff;
+            border: 1px solid #cccccc;
+        }
+
+        .b {
+            background: #cccccc;
+        }
+
+        .n-inside {
+            background: #808080;
+        }
+
+        .n-city {
+            background: #aba596;
+        }
+
+        .n-field {
+            background: #b1ba31;
+        }
+
+        .n-forest {
+            background: #6b9d3d;
+        }
+
+        .n-hills {
+            background: #7d995e;
+        }
+
+        .n-mountain {
+            background: #929292;
+        }
+
+        .n-water_swim {
+            background: #59addb;
+        }
+
+        .n-water_no_swim {
+            background: #0c62bd;
+        }
+
+        .n-underwater {
+            background: #082fa9;
+        }
+
+        .n-air {
+            background: #c4d3d7;
+        }
+
+        .n-desert {
+            background: #e2bf11;
+        }
+
+        .n-swamp {
+            background: #6b8552;
+        }
+
+        .n-underwater_ground {
+            background: #324a63;
+        }
+
+        .d {
+            color: #333333;
+            background: #ffffff;
+            grid-column: 2 / 5;
+            grid-row: 2 / 5;
+        }
+
+        .area-exit-main {
+            color: #b13808;
+            background: #ffffff;
+            grid-column: 2 / 5;
+            grid-row: 2 / 5;
+        }
+
+        .l {
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12px;
+            hyphens: auto;
+            margin: 10px;
+            overflow: hidden;
+        }
+
+        .area-exit-main a:link,
+        .area-exit-main a:visited,
+        .area-exit-main a:hover,
+        .area-exit-main a:active {
+            color: #b13808;
+        }
+
+        .g-n {
+            grid-row: 1;
+            grid-column: 3 / 4;
+            border-width: 0 2px 2px 2px;
+        }
+
+        .g-s {
+            grid-row: 5;
+            grid-column: 3 / 4;
+            border-width: 2px 2px 0 2px;
+        }
+
+        .g-e {
+            grid-row: 3 / 4;
+            grid-column: 5;
+            border-width: 2px 0 2px 2px;
+        }
+
+        .g-w {
+            grid-row: 3 / 4;
+            grid-column: 1;
+            border-width: 2px 2px 2px 0;
+        }
+
+        .h-open {
+            background: #ffffff;
+            border-color: #ffffff;
+        }
+
+        .h-door-north,
+        .h-door-south,
+        .h-door-east,
+        .h-door-west {
+            z-index: 100;
+            background: #d8c4b8;
+            border-color: #6b5130;
+            border-style: solid;
+            border-radius: 2px;
+        }
+
+        .h-door-north {
+            margin: -1px 12px -4px 12px;
+        }
+
+        .h-door-south {
+            margin: -4px 12px -1px 12px;
+        }
+
+        .h-door-east {
+            margin: 12px -1px 12px -4px;
+        }
+
+        .h-door-west {
+            margin: 12px -4px 12px -1px;
+        }
+
+        .f {
+            z-index: 100;
+            font-family: monospace;
+            font-size: 12px;
+            margin: auto;
+        }
+
+        .f-n {
+            grid-row: 1  / 4;
+            grid-column: 2 / 5;
+            margin-top: 1px
+        }
+
+        .f-s {
+            grid-row: 3 / 6;
+            grid-column: 3 / 4;
+            margin-bottom: 1px
+        }
+
+        .f-e {
+            grid-row: 2 / 5;
+            grid-column: 3 / 6;
+            margin-right: 0;
+        }
+
+        .f-w {
+            grid-row: 2 / 5;
+            grid-column: 1 / 4;
+            margin-left: 0
+        }
+
+        .f-u {
+            grid-row: 1 / 6;
+            grid-column: 1 / 6;
+            margin-top: 3px;
+            margin-left: 3px;
+        }
+
+        .f-d {
+            grid-row: 1 / 6;
+            grid-column: 1 / 6;
+            margin-right: 3px;
+            margin-bottom: 3px;
+        }
+
+        .k {
+            background: #ee00ff;
+            color: #fdfdfd;
+            padding: 1px 4px;
+            border-radius: 12px;
+        }
+
+        .i {
+            background: #fb8403;
+            color: #fafafa;
+            padding: 1px 4px;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .m-n::before {
+            content: "^";
+        }
+
+        .m-s::before {
+            content: "v";
+        }
+
+        .m-e::before {
+            content: ">";
+        }
+
+        .m-w::before {
+            content: "<";
+        }
+
+        .m-u::before {
+            content: "^";
+        }
+
+        .m-d::before {
+            content: "v";
+        }
+
+        .j {
+            background: #b9c2c7;
+            color: #fafafa;
+            padding: 1px 4px;
+        }
+
+        .room-flags {
+            margin-top: 3px;
+        }
+
+        .e {
+            display: inline-block;
+            padding: 1px 4px;
+            border-radius: 10px;
+            background: #999999;
+            color: #f8f8f8;
+            font-family: monospace;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .e-randomized-exits::before {
+            content: "R";
+        }
+
+        .e-no-mobiles {
+            background: #1aa8e2 !important;
+        }
+
+        .e-no-mobiles::before {
+            content: "NM";
+        }
+
+        .e-no-recall {
+            background: #102e67 !important;
+        }
+
+        .e-no-recall::before {
+            content: "NR";
+        }
+
+        .e-healer {
+            background: #2b9611 !important;
+        }
+
+        .e-healer::before {
+            content: "H";
+        }
+
+        .e-shop {
+            background: #ffbf00 !important;
+            color: #483602 !important;
+        }
+
+        .e-shop::before {
+            content: "$";
+        }
+
+
+        .e-teacher {
+            background: #b516c6 !important;
+        }
+
+        .e-teacher::before {
+            content: "T";
+        }
+
+        .u {
+            padding: 1px 4px;
+            border-radius: 2px;
+            background: #cc4114;
+            color: #f8f8f8;
+            font-family: monospace;
+            cursor: pointer;
+        }
+
+        .summary .links {
+            float: right;
+        }
+
+        .summary .links a {
+             margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="summary">
+    <div class="links">
+        <a href="index.html">Index</a>
+    </div>
+    <h1>New Ofcol</h1>
+        <div class="subheading">All levels &mdash; Hatchet</div>
+</div>
+<div class="fragments">
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(16, 1fr);" class="cells">
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 645 at (0, 7) -->
+                            <div class="a c n-inside" >
+                                
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Kitchen">
+                                            <span>Kitchen</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 663 at (-3, 6) -->
+                            <div class="a c n-inside" >
+                                
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Small House">
+                                            <span>Small House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 661 at (-2, 6) -->
+                            <div class="a c n-inside" >
+                                
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Small House">
+                                            <span>Small House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 659 at (-1, 6) -->
+                            <div class="a c n-inside" >
+                                
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Small House">
+                                            <span>Small House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 643 at (0, 6) -->
+                            <div class="a c n-inside" id="label-6">
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-door-south"></div>
+                                
+                                
+                                        <div class="f f-u">
+                                            <a href="#label-5"><span class="i m-u" title="Up to 5 (Bedroom)">5</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Big House">
+                                                <div><span class="u">6</span></div>
+                                            <span>Big House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 652 at (1, 6) -->
+                            <div class="a c n-inside" >
+                                
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Small House">
+                                            <span>Small House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 654 at (2, 6) -->
+                            <div class="a c n-inside" >
+                                
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Small House">
+                                            <span>Small House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 656 at (3, 6) -->
+                            <div class="a c n-inside" >
+                                
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Small House">
+                                            <span>Small House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 665 at (-4, 5) -->
+                            <div class="a c n-inside" >
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Small House">
+                                            <span>Small House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 651 at (-3, 5) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="The end of Swiftest Way">
+                                            <span>The end of Swiftest Way</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 650 at (-2, 5) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Swiftest Way">
+                                            <span>Swiftest Way</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 649 at (-1, 5) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Swiftest Way">
+                                            <span>Swiftest Way</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 642 at (0, 5) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-door-north"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="The Big Intersection">
+                                            <span>The Big Intersection</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 646 at (1, 5) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Swiftest Way">
+                                            <span>Swiftest Way</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 647 at (2, 5) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Swiftest Way">
+                                            <span>Swiftest Way</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 648 at (3, 5) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="End of Swiftest Way">
+                                            <span>End of Swiftest Way</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 657 at (4, 5) -->
+                            <div class="a c n-inside" >
+                                
+                                
+                                
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Small House">
+                                            <span>Small House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 664 at (-3, 4) -->
+                            <div class="a c n-inside" >
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Small House">
+                                            <span>Small House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 662 at (-2, 4) -->
+                            <div class="a c n-inside" >
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Small House">
+                                            <span>Small House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 660 at (-1, 4) -->
+                            <div class="a c n-inside" >
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Small House">
+                                            <span>Small House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a t">
+                                <div class="o"></div>
+                            </div>
+                            <!-- Room vnum 653 at (1, 4) -->
+                            <div class="a c n-inside" >
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Small House">
+                                            <span>Small House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 655 at (2, 4) -->
+                            <div class="a c n-inside" >
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Small House">
+                                            <span>Small House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 658 at (3, 4) -->
+                            <div class="a c n-inside" >
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Small House">
+                                            <span>Small House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 640 at (-1, 3) -->
+                            <div class="a c n-inside" >
+                                
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-door-east"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="House">
+                                            <span>House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 637 at (0, 3) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-door-east"></div>
+                                <div class="g-w h-door-west"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Impy Way">
+                                            <span>Impy Way</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 638 at (1, 3) -->
+                            <div class="a c n-inside" >
+                                
+                                <div class="g-s h-open"></div>
+                                
+                                <div class="g-w h-door-west"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="House">
+                                            <span>House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 641 at (-1, 2) -->
+                            <div class="a c n-inside" >
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Bedroom">
+                                            <span>Bedroom</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a t">
+                                <div class="o"></div>
+                            </div>
+                            <!-- Room vnum 639 at (1, 2) -->
+                            <div class="a c n-inside" >
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Bedroom">
+                                            <span>Bedroom</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 635 at (-1, 1) -->
+                            <div class="a c n-inside" >
+                                
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-door-east"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="House">
+                                            <span>House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 632 at (0, 1) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-door-east"></div>
+                                <div class="g-w h-door-west"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Impy Way">
+                                            <span>Impy Way</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 633 at (1, 1) -->
+                            <div class="a c n-inside" >
+                                
+                                <div class="g-s h-open"></div>
+                                
+                                <div class="g-w h-door-west"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="House">
+                                            <span>House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 636 at (-1, 0) -->
+                            <div class="a c n-inside" >
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Bedroom">
+                                            <span>Bedroom</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a t">
+                                <div class="o"></div>
+                            </div>
+                            <!-- Room vnum 634 at (1, 0) -->
+                            <div class="a c n-inside" >
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Bedroom">
+                                            <span>Bedroom</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 674 at (7, 0) -->
+                            <div class="a c n-inside" id="label-26">
+                                
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                
+                                        <div class="f f-e">
+                                            <a href="#label-25"><span class="i m-e" title="East to 25 (A Hallway of the Golden Citadel)">25</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="A Hallway of the Golden Citadel">
+                                                <div><span class="u">26</span></div>
+                                            <span>A Hallway of the Golden ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 675 at (10, 0) -->
+                            <div class="a c n-inside" id="label-25">
+                                
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                        <div class="f f-w">
+                                            <a href="#label-26"><span class="i m-w" title="West to 26 (A Hallway of the Golden Citadel)">26</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="A Hallway of the Golden Citadel">
+                                                <div><span class="u">25</span></div>
+                                            <span>A Hallway of the Golden ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 676 at (11, 0) -->
+                            <div class="a c n-inside" >
+                                
+                                <div class="g-s h-open"></div>
+                                
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="A Hallway of the Golden Citadel">
+                                            <span>A Hallway of the Golden ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 631 at (-2, -1) -->
+                            <div class="a c n-inside" >
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Kitchen">
+                                            <span>Kitchen</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 629 at (-1, -1) -->
+                            <div class="a c n-inside" id="label-4">
+                                
+                                
+                                <div class="g-e h-door-east"></div>
+                                <div class="g-w h-open"></div>
+                                        <div class="f f-u">
+                                            <a href="#label-3"><span class="i m-u" title="Up to 3 (Bedroom)">3</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Big House">
+                                                <div><span class="u">4</span></div>
+                                            <span>Big House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 625 at (0, -1) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-door-east"></div>
+                                <div class="g-w h-door-west"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Impy Way">
+                                            <span>Impy Way</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 626 at (1, -1) -->
+                            <div class="a c n-inside" id="label-2">
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-door-west"></div>
+                                        <div class="f f-u">
+                                            <a href="#label-1"><span class="i m-u" title="Up to 1 (Bedroom)">1</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Big House">
+                                                <div><span class="u">2</span></div>
+                                            <span>Big House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 628 at (2, -1) -->
+                            <div class="a c n-inside" >
+                                
+                                
+                                
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Kitchen">
+                                            <span>Kitchen</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 801 at (3, -1) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Pipes and Smokeables">
+                                            <span>Pipes and Smokeables</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-shop" title="Shop"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 677 at (7, -1) -->
+                            <div class="a c n-inside" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="A Hallway of the Golden Citadel">
+                                            <span>A Hallway of the Golden ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 670 at (10, -1) -->
+                            <div class="a c n-inside" id="label-11">
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                        <div class="f f-s">
+                                            <a href="#label-27"><span class="i m-s" title="South to 27 (The Temple of Ofcol)">27</span></a>
+                                        </div>
+                                        <div class="f f-u">
+                                            <a href="#label-10"><span class="i m-u" title="Up to 10 (An Upper Chamber of the Golden Citadel)">10</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="The Anteroom to the Temple of Ofcol">
+                                                <div><span class="u">11</span></div>
+                                            <span>The Anteroom to the Temple ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 678 at (11, -1) -->
+                            <div class="a c n-inside" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="A Hallway of the Golden Citadel">
+                                            <span>A Hallway of the Golden ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a area-exit-cell" >
+                                <div class="g-n h-none"></div>
+                                <div class="g-s h-none"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-none"></div>
+                                    <div class="f f-n">
+                                    </div>
+                                    <div class="f f-s">
+                                    </div>
+                                    <div class="f f-e">
+                                    </div>
+                                    <div class="f f-w">
+                                    </div>
+                                    <div class="f f-u">
+                                    </div>
+                                    <div class="f f-d">
+                                    </div>
+                                <div class="area-exit-main">
+                                    <div class="l">
+                                        <span>To <a href="ofcol.html">Ofcol</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 601 at (0, -2) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="The Big Intersection">
+                                            <span>The Big Intersection</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a t">
+                                <div class="p"></div>
+                            </div>
+                            <div class="a t">
+                                <div class="p"></div>
+                            </div>
+                            <!-- Room vnum 666 at (3, -2) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Raff Way">
+                                            <span>Raff Way</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 667 at (4, -2) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Raff Way">
+                                            <span>Raff Way</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 699 at (5, -2) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                <div class="g-e h-door-east"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Outside the Entrance to the Golden Citadel">
+                                            <span>Outside the Entrance to ...</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-teacher" title="Teacher"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 698 at (6, -2) -->
+                            <div class="a c n-inside" >
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-door-west"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Inside the Entrance to the Golden Citadel">
+                                            <span>Inside the Entrance to the ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 679 at (7, -2) -->
+                            <div class="a c n-inside" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="A Hallway of the Golden Citadel">
+                                            <span>A Hallway of the Golden ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 671 at (8, -2) -->
+                            <div class="a c n-inside" id="label-7">
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                        <div class="f f-u">
+                                            <a href="#label-12"><span class="i m-u" title="Up to 12 (An Upper Chamber of the Golden Citadel)">12</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="The Anteroom to the Temple of Ofcol">
+                                                <div><span class="u">7</span></div>
+                                            <span>The Anteroom to the Temple ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 669 at (9, -2) -->
+                            <div class="a c n-inside" id="label-27">
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                        <div class="f f-n">
+                                            <a href="#label-11"><span class="i m-n" title="North to 11 (The Anteroom to the Temple of Ofcol)">11</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="The Temple of Ofcol">
+                                                <div><span class="u">27</span></div>
+                                            <span>The Temple of Ofcol</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-healer" title="Healer"></span>
+                                                    <span class="e e-teacher" title="Teacher"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 672 at (10, -2) -->
+                            <div class="a c n-inside" id="label-23">
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                        <div class="f f-u">
+                                            <a href="#label-13"><span class="i m-u" title="Up to 13 (An Upper Chamber of the Golden Citadel)">13</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="The Anteroom to the Temple of Ofcol">
+                                                <div><span class="u">23</span></div>
+                                            <span>The Anteroom to the Temple ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 680 at (11, -2) -->
+                            <div class="a c n-inside" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="A Hallway of the Golden Citadel">
+                                            <span>A Hallway of the Golden ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 603 at (-1, -3) -->
+                            <div class="a c n-inside" >
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="The Blacksmith">
+                                            <span>The Blacksmith</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-shop" title="Shop"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 602 at (0, -3) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Impy Way">
+                                            <span>Impy Way</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 604 at (1, -3) -->
+                            <div class="a c n-inside" >
+                                
+                                
+                                
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="The Leather Shop">
+                                            <span>The Leather Shop</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-shop" title="Shop"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 800 at (3, -3) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Dragonhoard Bank, Ofcol Branch">
+                                            <span>Dragonhoard Bank, Ofcol Branch</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 681 at (7, -3) -->
+                            <div class="a c n-inside" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="A Hallway of the Golden Citadel">
+                                            <span>A Hallway of the Golden ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 673 at (9, -3) -->
+                            <div class="a c n-inside" id="label-15">
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                        <div class="f f-s">
+                                            <a href="#label-9"><span class="i m-s" title="South to 9 (A Hallway of the Golden Citadel)">9</span></a>
+                                        </div>
+                                        <div class="f f-u">
+                                            <a href="#label-14"><span class="i m-u" title="Up to 14 (An Upper Chamber of the Golden Citadel)">14</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="The Anteroom to the Temple of Ofcol">
+                                                <div><span class="u">15</span></div>
+                                            <span>The Anteroom to the Temple ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 682 at (11, -3) -->
+                            <div class="a c n-inside" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="A Hallway of the Golden Citadel">
+                                            <span>A Hallway of the Golden ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 606 at (-1, -4) -->
+                            <div class="a c n-inside" >
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="The Pawn &amp; Repair Shop">
+                                            <span>The Pawn &amp; Repair Shop</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-shop" title="Shop"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 605 at (0, -4) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Impy Way">
+                                            <span>Impy Way</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 607 at (1, -4) -->
+                            <div class="a c n-inside" >
+                                
+                                
+                                
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="The Meat Store">
+                                            <span>The Meat Store</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-shop" title="Shop"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 683 at (7, -4) -->
+                            <div class="a c n-inside" id="label-24">
+                                <div class="g-n h-open"></div>
+                                
+                                <div class="g-e h-open"></div>
+                                
+                                        <div class="f f-e">
+                                            <a href="#label-9"><span class="i m-e" title="East to 9 (A Hallway of the Golden Citadel)">9</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="A Hallway of the Golden Citadel">
+                                                <div><span class="u">24</span></div>
+                                            <span>A Hallway of the Golden ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 684 at (10, -4) -->
+                            <div class="a c n-inside" id="label-9">
+                                <div class="g-n h-open"></div>
+                                
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                        <div class="f f-n">
+                                            <a href="#label-15"><span class="i m-n" title="North to 15 (The Anteroom to the Temple of Ofcol)">15</span></a>
+                                        </div>
+                                        <div class="f f-w">
+                                            <a href="#label-24"><span class="i m-w" title="West to 24 (A Hallway of the Golden Citadel)">24</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="A Hallway of the Golden Citadel">
+                                                <div><span class="u">9</span></div>
+                                            <span>A Hallway of the Golden ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 685 at (11, -4) -->
+                            <div class="a c n-inside" >
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="A Hallway of the Golden Citadel">
+                                            <span>A Hallway of the Golden ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 600 at (-3, -5) -->
+                            <div class="a c n-inside" >
+                                
+                                
+                                <div class="g-e h-door-east"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Granny&#39;s Still Room">
+                                            <span>Granny&#39;s Still Room</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 616 at (-2, -5) -->
+                            <div class="a c n-inside" >
+                                
+                                <div class="g-s h-open"></div>
+                                
+                                <div class="g-w h-door-west"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="The Shed">
+                                            <span>The Shed</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 609 at (-1, -5) -->
+                            <div class="a c n-inside" >
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Nyles&#39; House of Ale">
+                                            <span>Nyles&#39; House of Ale</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-shop" title="Shop"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 608 at (0, -5) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Impy Way">
+                                            <span>Impy Way</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 610 at (1, -5) -->
+                            <div class="a c n-inside" >
+                                
+                                
+                                
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Farmer&#39;s Market">
+                                            <span>Farmer&#39;s Market</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-shop" title="Shop"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 615 at (-3, -6) -->
+                            <div class="a c n-field" >
+                                
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Fields">
+                                            <span>Fields</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 612 at (-2, -6) -->
+                            <div class="a c n-field" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Fields">
+                                            <span>Fields</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a t">
+                                <div class="p"></div>
+                            </div>
+                            <!-- Room vnum 611 at (0, -6) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="The End of Impy Way">
+                                            <span>The End of Impy Way</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 668 at (1, -6) -->
+                            <div class="a c n-field" >
+                                
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Dirt Road">
+                                            <span>Dirt Road</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 617 at (2, -6) -->
+                            <div class="a c n-inside" >
+                                
+                                
+                                
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Slaughterhouse">
+                                            <span>Slaughterhouse</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a t">
+                                <div class="o"></div>
+                            </div>
+                            <div class="a t">
+                                <div class="o"></div>
+                            </div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 622 at (0, -7) -->
+                            <div class="a c n-field" >
+                                
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Grass Field">
+                                            <span>Grass Field</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a t">
+                                <div class="o"></div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 614 at (-3, -8) -->
+                            <div class="a c n-field" >
+                                <div class="g-n h-open"></div>
+                                
+                                <div class="g-e h-open"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Fields">
+                                            <span>Fields</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 613 at (-2, -8) -->
+                            <div class="a c n-field" >
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Fields">
+                                            <span>Fields</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 624 at (-1, -8) -->
+                            <div class="a c n-field" >
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Pig Sty">
+                                            <span>Pig Sty</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 621 at (0, -8) -->
+                            <div class="a c n-field" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Dirt Road">
+                                            <span>Dirt Road</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 618 at (1, -8) -->
+                            <div class="a c n-field" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-door-south"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Dirt Road">
+                                            <span>Dirt Road</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 620 at (2, -8) -->
+                            <div class="a c n-inside" >
+                                
+                                
+                                
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Barn">
+                                            <span>Barn</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 623 at (0, -9) -->
+                            <div class="a c n-field" >
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Grass Field">
+                                            <span>Grass Field</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 619 at (1, -9) -->
+                            <div class="a c n-inside" >
+                                <div class="g-n h-door-north"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Chicken Coop">
+                                            <span>Chicken Coop</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(1, 1fr);" class="cells">
+                            <!-- Room vnum 627 at (0, 0) -->
+                            <div class="a c n-inside" id="label-1">
+                                
+                                
+                                
+                                
+                                        <div class="f f-d">
+                                            <a href="#label-2"><span class="i m-d" title="Down to 2 (Big House)">2</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Bedroom">
+                                                <div><span class="u">1</span></div>
+                                            <span>Bedroom</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(1, 1fr);" class="cells">
+                            <!-- Room vnum 630 at (0, 0) -->
+                            <div class="a c n-inside" id="label-3">
+                                
+                                
+                                
+                                
+                                        <div class="f f-d">
+                                            <a href="#label-4"><span class="i m-d" title="Down to 4 (Big House)">4</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Bedroom">
+                                                <div><span class="u">3</span></div>
+                                            <span>Bedroom</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(1, 1fr);" class="cells">
+                            <!-- Room vnum 644 at (0, 0) -->
+                            <div class="a c n-inside" id="label-5">
+                                
+                                
+                                
+                                
+                                        <div class="f f-d">
+                                            <a href="#label-6"><span class="i m-d" title="Down to 6 (Big House)">6</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Bedroom">
+                                                <div><span class="u">5</span></div>
+                                            <span>Bedroom</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(3, 1fr);" class="cells">
+                            <div class="a b"></div>
+                            <!-- Room vnum 686 at (0, 0) -->
+                            <div class="a c n-inside" id="label-10">
+                                
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                        <div class="f f-u">
+                                            <a href="#label-16"><span class="i m-u" title="Up to 16 (A Top Chamber of the Golden Citadel)">16</span></a>
+                                        </div>
+                                        <div class="f f-d">
+                                            <a href="#label-11"><span class="i m-d" title="Down to 11 (The Anteroom to the Temple of Ofcol)">11</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="An Upper Chamber of the Golden Citadel">
+                                                <div><span class="u">10</span></div>
+                                            <span>An Upper Chamber of the ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 687 at (-1, -1) -->
+                            <div class="a c n-inside" id="label-12">
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                
+                                        <div class="f f-u">
+                                            <a href="#label-17"><span class="i m-u" title="Up to 17 (A Top Chamber of the Golden Citadel)">17</span></a>
+                                        </div>
+                                        <div class="f f-d">
+                                            <a href="#label-7"><span class="i m-d" title="Down to 7 (The Anteroom to the Temple of Ofcol)">7</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="An Upper Chamber of the Golden Citadel">
+                                                <div><span class="u">12</span></div>
+                                            <span>An Upper Chamber of the ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 688 at (0, -1) -->
+                            <div class="a c n-inside" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="The Hall of the DragonLords">
+                                            <span>The Hall of the DragonLords</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 689 at (1, -1) -->
+                            <div class="a c n-inside" id="label-13">
+                                
+                                
+                                
+                                <div class="g-w h-open"></div>
+                                        <div class="f f-u">
+                                            <a href="#label-18"><span class="i m-u" title="Up to 18 (A Top Chamber of the Golden Citadel)">18</span></a>
+                                        </div>
+                                        <div class="f f-d">
+                                            <a href="#label-8"><span class="i m-d" title="Down to 8 (The Anteroom to the Temple of Ofcol)">8</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="An Upper Chamber of the Golden Citadel">
+                                                <div><span class="u">13</span></div>
+                                            <span>An Upper Chamber of the ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 690 at (0, -2) -->
+                            <div class="a c n-inside" id="label-14">
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                
+                                        <div class="f f-u">
+                                            <a href="#label-19"><span class="i m-u" title="Up to 19 (A Top Chamber of the Golden Citadel)">19</span></a>
+                                        </div>
+                                        <div class="f f-d">
+                                            <a href="#label-15"><span class="i m-d" title="Down to 15 (The Anteroom to the Temple of Ofcol)">15</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="An Upper Chamber of the Golden Citadel">
+                                                <div><span class="u">14</span></div>
+                                            <span>An Upper Chamber of the ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(3, 1fr);" class="cells">
+                            <div class="a b"></div>
+                            <!-- Room vnum 691 at (0, 0) -->
+                            <div class="a c n-inside" id="label-16">
+                                
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                        <div class="f f-d">
+                                            <a href="#label-10"><span class="i m-d" title="Down to 10 (An Upper Chamber of the Golden Citadel)">10</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="A Top Chamber of the Golden Citadel">
+                                                <div><span class="u">16</span></div>
+                                            <span>A Top Chamber of the ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 692 at (-1, -1) -->
+                            <div class="a c n-inside" id="label-17">
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                
+                                        <div class="f f-d">
+                                            <a href="#label-12"><span class="i m-d" title="Down to 12 (An Upper Chamber of the Golden Citadel)">12</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="A Top Chamber of the Golden Citadel">
+                                                <div><span class="u">17</span></div>
+                                            <span>A Top Chamber of the ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 693 at (0, -1) -->
+                            <div class="a c n-inside" id="label-21">
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                        <div class="f f-u">
+                                            <a href="#label-20"><span class="i m-u" title="Up to 20 (Above the Dragon Chamber)">20</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="The Dragon Chamber">
+                                                <div><span class="u">21</span></div>
+                                            <span>The Dragon Chamber</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 694 at (1, -1) -->
+                            <div class="a c n-inside" id="label-18">
+                                
+                                
+                                
+                                <div class="g-w h-open"></div>
+                                        <div class="f f-d">
+                                            <a href="#label-13"><span class="i m-d" title="Down to 13 (An Upper Chamber of the Golden Citadel)">13</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="A Top Chamber of the Golden Citadel">
+                                                <div><span class="u">18</span></div>
+                                            <span>A Top Chamber of the ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 695 at (0, -2) -->
+                            <div class="a c n-inside" id="label-19">
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                
+                                        <div class="f f-d">
+                                            <a href="#label-14"><span class="i m-d" title="Down to 14 (An Upper Chamber of the Golden Citadel)">14</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="A Top Chamber of the Golden Citadel">
+                                                <div><span class="u">19</span></div>
+                                            <span>A Top Chamber of the ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(1, 1fr);" class="cells">
+                            <!-- Room vnum 696 at (0, 0) -->
+                            <div class="a c n-inside" id="label-20">
+                                
+                                
+                                
+                                
+                                        <div class="f f-u">
+                                            <a href="#label-22"><span class="i m-u" title="Up to 22 (In the Shaft from the Dragon Chamber)">22</span></a>
+                                        </div>
+                                        <div class="f f-d">
+                                            <a href="#label-21"><span class="i m-d" title="Down to 21 (The Dragon Chamber)">21</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Above the Dragon Chamber">
+                                                <div><span class="u">20</span></div>
+                                            <span>Above the Dragon Chamber</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(1, 1fr);" class="cells">
+                            <!-- Room vnum 697 at (0, 0) -->
+                            <div class="a c n-inside" id="label-22">
+                                
+                                
+                                
+                                
+                                        <div class="f f-d">
+                                            <a href="#label-20"><span class="i m-d" title="Down to 20 (Above the Dragon Chamber)">20</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="In the Shaft from the Dragon Chamber">
+                                                <div><span class="u">22</span></div>
+                                            <span>In the Shaft from the ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+        </div>
+    <div id="legend" class="legend">
+        <div class="q"><span class="u">123</span></div>
+        <div class="r">Numbered location</div>
+
+        <div class="q"><span class="f i m-u">123</span></div>
+        <div class="r">Exit to a numbered location</div>
+
+        <div class="q"><span class="e e-randomized-exits"></span></div>
+        <div class="r">Randomized exits</div>
+
+        <div class="q"><span class="e e-no-mobiles"></span></div>
+        <div class="r">Mobiles cannot enter</div>
+
+        <div class="q"><span class="e e-no-recall"></span></div>
+        <div class="r">Cannot recall</div>
+
+        <div class="q"><span class="e e-healer"></span></div>
+        <div class="r">Healer</div>
+
+        <div class="q"><span class="e e-shop"></span></div>
+        <div class="r">Shop</div>
+
+        <div class="q"><span class="e e-teacher"></span></div>
+        <div class="r">Teacher</div>
+
+        <div class="q"><span class="area-exit-cell"></span></div>
+        <div class="r">Exit to another area</div>
+
+        <div class="q"><span class="f k">?</span></div>
+        <div class="r">Unknown exit</div>
+
+        <div class="q"><span class="s n-inside"></span></div>
+        <div class="r">Inside</div>
+
+        <div class="q"><span class="s n-city"></span></div>
+        <div class="r">City</div>
+
+        <div class="q"><span class="s n-field"></span></div>
+        <div class="r">Fields</div>
+
+        <div class="q"><span class="s n-forest"></span></div>
+        <div class="r">Forest</div>
+
+        <div class="q"><span class="s n-hills"></span></div>
+        <div class="r">Hills</div>
+
+        <div class="q"><span class="s n-mountain"></span></div>
+        <div class="r">Mountains</div>
+
+        <div class="q"><span class="s n-water_swim"></span></div>
+        <div class="r">Swimmable water</div>
+
+        <div class="q"><span class="s n-water_no_swim"></span></div>
+        <div class="r">Unswimmable water</div>
+
+        <div class="q"><span class="s n-underwater"></span></div>
+        <div class="r">Underwater</div>
+
+        <div class="q"><span class="s n-underwater_ground"></span></div>
+        <div class="r">Underwater ground</div>
+
+        <div class="q"><span class="s n-air"></span></div>
+        <div class="r">In the air</div>
+
+        <div class="q"><span class="s n-desert"></span></div>
+        <div class="r">Desert</div>
+
+        <div class="q"><span class="s n-swamp"></span></div>
+        <div class="r">Swamp</div>
+    </div>
+</div>
+</body>
+</html>
