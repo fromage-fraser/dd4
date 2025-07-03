@@ -2117,7 +2117,7 @@ void do_suck (CHAR_DATA *ch, char *argument)
                 ch->rage = UMIN(ch->rage, ch->max_rage);
 
                 if (ch->rage > (ch->max_rage * 3 / 4))
-                        send_to_char("You feel the power of {Rblood{x surge through your fangs!\n\r", ch);
+                        send_to_char("You feel the power of {Rfresh blood{x surge through your body!\n\r", ch);
 
         }
         else
@@ -2202,7 +2202,7 @@ void do_break_wrist (CHAR_DATA *ch, char *argument)
 
                 if (!obj)
                 {
-                        send_to_char("Your opponent is not wielding a weapon.\n\r", ch);
+                        send_to_char("<15>Your opponent is not wielding a weapon.<0>\n\r", ch);
                         return;
                 }
 

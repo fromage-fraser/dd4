@@ -1,1 +1,2655 @@
-<!-- Built with MapMaker v0.3 at 2024-04-07T12:26:17.610284+01:00[Europe/London] --><html lang="en"><title>Town Of Solace</title><meta charset="UTF-8"><style type="text/css">@import url(https://fonts.googleapis.com/css?family=Almendra:400|Metamorphous:400,700|Open+Sans:400,600);html{margin:0;padding:0}body{border:0;padding:0;margin:3em 4em;font-family:'Open Sans',sans-serif;font-size:14px;color:#111;background:linear-gradient(to bottom,#f4f2eb,#cac7bc)}h1,h2,h3{font-family:Metamorphous,cursive;color:#555;margin-top:0;margin-bottom:.75em}a{color:#333;text-decoration:none}a:hover{color:#f69700;text-decoration:underline}a.invis{height:0;width:0}.subheading{font-family:Almendra,cursive;font-size:1.25em}.vnum{font-weight:700}.fragments{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:flex-start;align-content:flex-start;align-items:center;margin:15px -15px -15px -15px}.fragment{border:1px solid #999;border-radius:8px;padding:15px;margin:15px;background:#fff}.legend{border:1px solid #999;border-radius:8px;padding:15px;margin:15px;background:#fff;display:grid;grid-template-columns:auto auto auto auto;grid-gap:15px;font-family:'Open Sans',sans-serif;font-size:12px}.s{display:inline-block;height:12px;width:12px}.q{margin:auto}.cells{border:30px solid #ccc;border-radius:4px;display:grid;grid-gap:1px;margin:0}.a{box-sizing:border-box;height:108px;width:108px}.c{background:#fff;display:grid;grid-template-columns:6px 1fr 5fr 1fr 6px;grid-template-rows:6px 1fr 5fr 1fr 6px}.area-exit-cell{background:#ff530d;display:grid;grid-template-columns:6px 1fr 5fr 1fr 6px;grid-template-rows:6px 1fr 5fr 1fr 6px}.t{background:#ccc;display:grid;grid-template-columns:2fr 2fr 2fr;grid-template-rows:2fr 2fr 2fr}.o{grid-column:2;grid-row:1/4;background:#fff;border:1px solid #ccc}.p{grid-row:2;grid-column:1/4;background:#fff;border:1px solid #ccc}.b{background:#ccc}.n-inside{background:grey}.n-city{background:#aba596}.n-field{background:#b1ba31}.n-forest{background:#6b9d3d}.n-hills{background:#7d995e}.n-mountain{background:#929292}.n-water_swim{background:#59addb}.n-water_no_swim{background:#0c62bd}.n-underwater{background:#082fa9}.n-air{background:#c4d3d7}.n-desert{background:#e2bf11}.n-swamp{background:#6b8552}.n-underwater_ground{background:#324a63}.d{color:#333;background:#fff;grid-column:2/5;grid-row:2/5}.area-exit-main{color:#b13808;background:#fff;grid-column:2/5;grid-row:2/5}.l{text-align:center;font-family:'Open Sans',sans-serif;font-size:12px;hyphens:auto;margin:10px;overflow:hidden}.area-exit-main a:active,.area-exit-main a:hover,.area-exit-main a:link,.area-exit-main a:visited{color:#b13808}.g-n{grid-row:1;grid-column:3/4;border-width:0 2px 2px 2px}.g-s{grid-row:5;grid-column:3/4;border-width:2px 2px 0 2px}.g-e{grid-row:3/4;grid-column:5;border-width:2px 0 2px 2px}.g-w{grid-row:3/4;grid-column:1;border-width:2px 2px 2px 0}.h-open{background:#fff;border-color:#fff}.h-door-east,.h-door-north,.h-door-south,.h-door-west{z-index:100;background:#d8c4b8;border-color:#6b5130;border-style:solid;border-radius:2px}.h-door-north{margin:-1px 12px -4px 12px}.h-door-south{margin:-4px 12px -1px 12px}.h-door-east{margin:12px -1px 12px -4px}.h-door-west{margin:12px -4px 12px -1px}.f{z-index:100;font-family:monospace;font-size:12px;margin:auto}.f-n{grid-row:1/4;grid-column:2/5;margin-top:1px}.f-s{grid-row:3/6;grid-column:3/4;margin-bottom:1px}.f-e{grid-row:2/5;grid-column:3/6;margin-right:0}.f-w{grid-row:2/5;grid-column:1/4;margin-left:0}.f-u{grid-row:1/6;grid-column:1/6;margin-top:3px;margin-left:3px}.f-d{grid-row:1/6;grid-column:1/6;margin-right:3px;margin-bottom:3px}.k{background:#e0f;color:#fdfdfd;padding:1px 4px;border-radius:12px}.i{background:#fb8403;color:#fafafa;padding:1px 4px;border-radius:12px;cursor:pointer}.m-n::before{content:"^"}.m-s::before{content:"v"}.m-e::before{content:">"}.m-w::before{content:"<"}.m-u::before{content:"^"}.m-d::before{content:"v"}.j{background:#b9c2c7;color:#fafafa;padding:1px 4px}.room-flags{margin-top:3px}.e{display:inline-block;padding:1px 4px;border-radius:10px;background:#999;color:#f8f8f8;font-family:monospace;font-size:11px;cursor:pointer}.e-randomized-exits::before{content:"R"}.e-no-mobiles{background:#1aa8e2!important}.e-no-mobiles::before{content:"NM"}.e-no-recall{background:#102e67!important}.e-no-recall::before{content:"NR"}.e-healer{background:#2b9611!important}.e-healer::before{content:"H"}.e-shop{background:#ffbf00!important;color:#483602!important}.e-shop::before{content:"$"}.e-teacher{background:#b516c6!important}.e-teacher::before{content:"T"}.u{padding:1px 4px;border-radius:2px;background:#cc4114;color:#f8f8f8;font-family:monospace;cursor:pointer}.summary .links{float:right}.summary .links a{margin-left:15px}</style><div class="summary"><div class="links"><a href="index.html">Index</a></div><h1>Town Of Solace</h1><div class="subheading">All levels &mdash; Strahd</div></div><div class="fragments"><div class="fragment"><div style="grid-template-columns:repeat(11,1fr)"class="cells"><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 10312 at (0, 11) --><div class="a c n-city"><div class="g-s h-door-south"></div><div class="g-e h-door-east"></div><div class="d"><div class="l"><div title="Captain&#39;s Waiting Room"><span>Captain&#39;s Waiting Room</span></div></div></div></div><!-- Room vnum 10313 at (1, 11) --><div class="a c n-city"><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-door-west"></div><div class="d"><div class="l"><div title="Administration Hallway"><span>Administration Hallway</span></div></div></div></div><!-- Room vnum 10314 at (2, 11) --><div class="a c n-city"><div class="g-s h-door-south"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Administration Hallway"><span>Administration Hallway</span></div></div></div></div><!-- Room vnum 10315 at (3, 11) --><div class="a c n-city"><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Administration Hallway"><span>Administration Hallway</span></div></div></div></div><!-- Room vnum 10316 at (4, 11) --><div class="a c n-city"><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Administration Hallway"><span>Administration Hallway</span></div></div></div></div><!-- Room vnum 10317 at (5, 11) --><div class="a c n-city"><div class="g-s h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="End of Long Hall"><span>End of Long Hall</span></div></div></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 10302 at (0, 10) --><div class="a c n-city"><div class="g-n h-door-north"></div><div class="g-s h-door-south"></div><div class="d"><div class="l"><div title="Captain&#39;s meeting room"><span>Captain&#39;s meeting room</span></div></div></div></div><!-- Room vnum 10303 at (1, 10) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Administration Hallway"><span>Administration Hallway</span></div></div></div></div><!-- Room vnum 10304 at (2, 10) --><div class="a c n-city"><div class="g-n h-door-north"></div><div class="d"><div class="l"><div title="Guards Room"><span>Guards Room</span></div></div></div></div><!-- Room vnum 10305 at (3, 10) --><div class="a c n-city"><div class="g-s h-door-south"></div><div class="d"><div class="l"><div title="Lieutenant&#39;s Office"><span>Lieutenant&#39;s Office</span></div></div></div></div><!-- Room vnum 10306 at (4, 10) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Administration Hallway"><span>Administration Hallway</span></div></div></div></div><!-- Room vnum 10307 at (5, 10) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Long Hallway"><span>Long Hallway</span></div></div></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 10291 at (-1, 9) --><div class="a c n-city"><div class="g-s h-open"></div><div class="d"><div class="l"><div title="North End of Bar"><span>North End of Bar</span></div></div></div></div><!-- Room vnum 10292 at (0, 9) --><div class="a c n-city"><div class="g-n h-door-north"></div><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Captain&#39;s Office"><span>Captain&#39;s Office</span></div></div></div></div><!-- Room vnum 10293 at (1, 9) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-e h-open"></div><div class="d"><div class="l"><div title="Administration Hallway"><span>Administration Hallway</span></div></div></div></div><!-- Room vnum 10294 at (2, 9) --><div class="a c n-city"><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Administration Hallway"><span>Administration Hallway</span></div></div></div></div><!-- Room vnum 10295 at (3, 9) --><div class="a c n-city"><div class="g-n h-door-north"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Lieutenant&#39;s Reception Area"><span>Lieutenant&#39;s Reception Area</span></div></div></div></div><!-- Room vnum 10296 at (4, 9) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Administration Hallway"><span>Administration Hallway</span></div></div></div></div><!-- Room vnum 10297 at (5, 9) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Long Hallway"><span>Long Hallway</span></div></div></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 10280 at (-2, 8) --><div class="a c n-city"><div class="g-e h-open"></div><div class="d"><div class="l"><div title="West end of Bar."><span>West end of Bar.</span></div></div></div></div><!-- Room vnum 10281 at (-1, 8) --><div class="a c n-city"id="label-6"><div class="g-n h-open"></div><div class="g-e h-door-east"></div><div class="g-w h-open"></div><div class="f f-u"><a href="#label-5"><span class="i m-u"title="Up to 5 (Second Floor of the Inn)">5</span></a></div><div class="d"><div class="l"><div title="Inn of the Last Home"><div><span class="u">6</span></div><span>Inn of the Last Home</span></div><div class="room-flags"><span class="e e-shop"title="Shop"></span></div></div></div></div><!-- Room vnum 10282 at (0, 8) --><div class="a c n-city"><div class="g-n h-door-north"></div><div class="g-s h-open"></div><div class="g-w h-door-west"></div><div class="d"><div class="l"><div title="Outside the Inn of the Last Home"><span>Outside the Inn of the ...</span></div></div></div></div><!-- Room vnum 10283 at (1, 8) --><div class="a c n-city"><div class="g-s h-door-south"></div><div class="d"><div class="l"><div title="Sergeant&#39;s Office"><span>Sergeant&#39;s Office</span></div></div></div></div><!-- Room vnum 10284 at (2, 8) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Administration Hallway"><span>Administration Hallway</span></div></div></div></div><!-- Room vnum 10285 at (3, 8) --><div class="a c n-city"><div class="g-s h-door-south"></div><div class="d"><div class="l"><div title="Guards Room"><span>Guards Room</span></div></div></div></div><!-- Room vnum 10286 at (4, 8) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Administration Hallway"><span>Administration Hallway</span></div></div></div></div><!-- Room vnum 10287 at (5, 8) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Long Hallway"><span>Long Hallway</span></div></div></div></div><div class="a b"></div><!-- Room vnum 10238 at (-4, 7) --><div class="a c n-city"><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Molin&#39;s Mulburry Extracts"><span>Molin&#39;s Mulburry Extracts</span></div><div class="room-flags"><span class="e e-shop"title="Shop"></span></div></div></div></div><!-- Room vnum 10239 at (-3, 7) --><div class="a c n-city"><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Rashan&#39;s Rutabagas"><span>Rashan&#39;s Rutabagas</span></div><div class="room-flags"><span class="e e-shop"title="Shop"></span></div></div></div></div><!-- Room vnum 10240 at (-2, 7) --><div class="a c n-city"><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Lexie&#39;s Scuba Shop"><span>Lexie&#39;s Scuba Shop</span></div><div class="room-flags"><span class="e e-shop"title="Shop"></span></div></div></div></div><!-- Room vnum 10241 at (-1, 7) --><div class="a c n-city"><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Croben&#39;s Containers"><span>Croben&#39;s Containers</span></div><div class="room-flags"><span class="e e-shop"title="Shop"></span></div></div></div></div><!-- Room vnum 10272 at (0, 7) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Cobblestone Path"><span>Cobblestone Path</span></div></div></div></div><!-- Room vnum 10273 at (1, 7) --><div class="a c n-city"><div class="g-n h-door-north"></div><div class="g-e h-door-east"></div><div class="d"><div class="l"><div title="Sergeant&#39;s Reception Room"><span>Sergeant&#39;s Reception Room</span></div></div></div></div><!-- Room vnum 10274 at (2, 7) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-e h-open"></div><div class="g-w h-door-west"></div><div class="d"><div class="l"><div title="Administration Hallway"><span>Administration Hallway</span></div></div></div></div><!-- Room vnum 10275 at (3, 7) --><div class="a c n-city"><div class="g-n h-door-north"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Administration Hallway"><span>Administration Hallway</span></div></div></div></div><!-- Room vnum 10276 at (4, 7) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-door-south"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Administration Hallway"><span>Administration Hallway</span></div></div></div></div><!-- Room vnum 10277 at (5, 7) --><div class="a c n-city"id="label-7"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Long Hallway"><div><span class="u">7</span></div><span>Long Hallway</span></div></div></div></div><!-- Room vnum 10318 at (-5, 6) --><div class="a c n-city"><div class="g-e h-open"></div><div class="d"><div class="l"><div title="Alex&#39;s Tinkery"><span>Alex&#39;s Tinkery</span></div></div></div></div><!-- Room vnum 10233 at (-4, 6) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Marketplace"><span>Marketplace</span></div></div></div></div><!-- Room vnum 10232 at (-3, 6) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Marketplace"><span>Marketplace</span></div></div></div></div><!-- Room vnum 10231 at (-2, 6) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Marketplace"><span>Marketplace</span></div></div></div></div><!-- Room vnum 10230 at (-1, 6) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Marketplace"><span>Marketplace</span></div></div></div></div><!-- Room vnum 10229 at (0, 6) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="End of the Main Road"><span>End of the Main Road</span></div></div></div></div><!-- Room vnum 10262 at (1, 6) --><div class="a c n-city"><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Dusty road."><span>Dusty road.</span></div></div></div></div><!-- Room vnum 10263 at (2, 6) --><div class="a c n-city"id="label-9"><div class="g-n h-open"></div><div class="g-e h-door-east"></div><div class="g-w h-open"></div><div class="f f-n"><a href="#label-8"><span class="i m-n"title="North to 8 (The Vampyre Hive)">8</span></a></div><div class="d"><div class="l"><div title="Townguard Administration Building"><div><span class="u">9</span></div><span>Townguard Administration ...</span></div></div></div></div><!-- Room vnum 10264 at (3, 6) --><div class="a c n-city"><div class="g-s h-open"></div><div class="g-e h-door-east"></div><div class="g-w h-door-west"></div><div class="d"><div class="l"><div title="Entrance Hall"><span>Entrance Hall</span></div></div></div></div><!-- Room vnum 10270 at (4, 6) --><div class="a c n-city"><div class="g-n h-door-north"></div><div class="g-s h-door-south"></div><div class="g-e h-door-east"></div><div class="g-w h-door-west"></div><div class="d"><div class="l"><div title="Hallway Intersection"><span>Hallway Intersection</span></div></div></div></div><!-- Room vnum 10271 at (5, 6) --><div class="a c n-city"><div class="g-e h-open"></div><div class="g-w h-door-west"></div><div class="f f-e"><a href="#label-7"><span class="i m-e"title="East to 7 (Long Hallway)">7</span></a></div><div class="d"><div class="l"><div title="End of Long Hall"><span>End of Long Hall</span></div></div></div></div><div class="a b"></div><!-- Room vnum 10234 at (-4, 5) --><div class="a c n-city"><div class="g-n h-open"></div><div class="d"><div class="l"><div title="Jhen&#39;s Vegetable Cart"><span>Jhen&#39;s Vegetable Cart</span></div><div class="room-flags"><span class="e e-shop"title="Shop"></span></div></div></div></div><!-- Room vnum 10235 at (-3, 5) --><div class="a c n-city"><div class="g-n h-open"></div><div class="d"><div class="l"><div title="Krista&#39;s Fruit Stand"><span>Krista&#39;s Fruit Stand</span></div><div class="room-flags"><span class="e e-shop"title="Shop"></span></div></div></div></div><!-- Room vnum 10236 at (-2, 5) --><div class="a c n-city"><div class="g-n h-open"></div><div class="d"><div class="l"><div title="Janni&#39;s Souvenirs"><span>Janni&#39;s Souvenirs</span></div><div class="room-flags"><span class="e e-shop"title="Shop"></span></div></div></div></div><!-- Room vnum 10237 at (-1, 5) --><div class="a c n-city"><div class="g-n h-open"></div><div class="d"><div class="l"><div title="Nisi&#39;s Frozen Food"><span>Nisi&#39;s Frozen Food</span></div><div class="room-flags"><span class="e e-shop"title="Shop"></span></div></div></div></div><!-- Room vnum 10228 at (0, 5) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Main Road"><span>Main Road</span></div></div></div></div><!-- Room vnum 10267 at (1, 5) --><div class="a c n-city"><div class="g-e h-door-east"></div><div class="d"><div class="l"><div title="Deposits Room"><span>Deposits Room</span></div></div></div></div><!-- Room vnum 10266 at (2, 5) --><div class="a c n-city"><div class="g-e h-door-east"></div><div class="g-w h-door-west"></div><div class="d"><div class="l"><div title="Town Clerk"><span>Town Clerk</span></div></div></div></div><!-- Room vnum 10265 at (3, 5) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-e h-open"></div><div class="g-w h-door-west"></div><div class="d"><div class="l"><div title="Marble Corridor"><span>Marble Corridor</span></div></div></div></div><!-- Room vnum 10268 at (4, 5) --><div class="a c n-city"><div class="g-n h-door-north"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Marble Corridor"><span>Marble Corridor</span></div></div></div></div><!-- Room vnum 10269 at (5, 5) --><div class="a c n-city"><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Water Fountain"><span>Water Fountain</span></div></div></div></div><div class="a b"></div><!-- Room vnum 10224 at (-4, 4) --><div class="a c n-city"><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="d"><div class="l"><div title="Corner of West Gullen Way and Harvest Road."><span>Corner of West Gullen Way ...</span></div></div></div></div><!-- Room vnum 10225 at (-3, 4) --><div class="a c n-city"><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="West Gullen Way"><span>West Gullen Way</span></div></div></div></div><!-- Room vnum 10226 at (-2, 4) --><div class="a c n-city"><div class="g-s h-door-south"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="West Gullen Way"><span>West Gullen Way</span></div></div></div></div><!-- Room vnum 10227 at (-1, 4) --><div class="a c n-city"><div class="g-s h-door-south"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="West Gullen Way"><span>West Gullen Way</span></div></div></div></div><!-- Room vnum 10205 at (0, 4) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Intersection at Main Road"><span>Intersection at Main Road</span></div></div></div></div><!-- Room vnum 10206 at (1, 4) --><div class="a c n-city"><div class="g-s h-door-south"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="East Gullen Way"><span>East Gullen Way</span></div></div></div></div><!-- Room vnum 10207 at (2, 4) --><div class="a c n-city"><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="East Gullen Way"><span>East Gullen Way</span></div></div></div></div><!-- Room vnum 10208 at (3, 4) --><div class="a c n-city"><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="East Gullen Way"><span>East Gullen Way</span></div></div></div></div><!-- Room vnum 10209 at (4, 4) --><div class="a c n-city"><div class="g-s h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Corner of East Gullen and Ketra Road"><span>Corner of East Gullen and ...</span></div></div></div></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 10223 at (-4, 3) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Harvest Road"><span>Harvest Road</span></div></div></div></div><!-- Room vnum 10242 at (-3, 3) --><div class="a c n-city"><div class="g-n h-open"></div><div class="d"><div class="l"><div title="Matt&#39;s Brewery."><span>Matt&#39;s Brewery.</span></div><div class="room-flags"><span class="e e-shop"title="Shop"></span></div></div></div></div><!-- Room vnum 10243 at (-2, 3) --><div class="a c n-city"><div class="g-n h-door-north"></div><div class="d"><div class="l"><div title="a House"><span>a House</span></div></div></div></div><!-- Room vnum 10244 at (-1, 3) --><div class="a c n-city"><div class="g-n h-door-north"></div><div class="d"><div class="l"><div title="a House"><span>a House</span></div></div></div></div><!-- Room vnum 10204 at (0, 3) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Main Road"><span>Main Road</span></div></div></div></div><!-- Room vnum 10251 at (1, 3) --><div class="a c n-city"><div class="g-n h-door-north"></div><div class="d"><div class="l"><div title="a House"><span>a House</span></div></div></div></div><!-- Room vnum 10252 at (2, 3) --><div class="a c n-city"><div class="g-n h-open"></div><div class="d"><div class="l"><div title="The Marilyn&#39;s Bird Factory"><span>The Marilyn&#39;s Bird Factory</span></div><div class="room-flags"><span class="e e-shop"title="Shop"></span></div></div></div></div><!-- Room vnum 10320 at (3, 3) --><div class="a c n-city"><div class="g-n h-open"></div><div class="d"><div class="l"><div title="Ghelt&#39;s Smokeables"><span>Ghelt&#39;s Smokeables</span></div></div></div></div><!-- Room vnum 10210 at (4, 3) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Ketra Road"><span>Ketra Road</span></div></div></div></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 10222 at (-4, 2) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-door-east"></div><div class="d"><div class="l"><div title="Harvest Road"><span>Harvest Road</span></div></div></div></div><!-- Room vnum 10249 at (-3, 2) --><div class="a c n-city"><div class="g-w h-door-west"></div><div class="d"><div class="l"><div title="a House"><span>a House</span></div></div></div></div><!-- Room vnum 10250 at (-2, 2) --><div class="a c n-city"><div class="g-e h-door-east"></div><div class="d"><div class="l"><div title="Cookie&#39;s Relaxing Room"><span>Cookie&#39;s Relaxing Room</span></div></div></div></div><!-- Room vnum 10245 at (-1, 2) --><div class="a c n-city"><div class="g-e h-open"></div><div class="g-w h-door-west"></div><div class="d"><div class="l"><div title="Cookie&#39;s Cookie Cookery."><span>Cookie&#39;s Cookie Cookery.</span></div><div class="room-flags"><span class="e e-shop"title="Shop"></span></div></div></div></div><!-- Room vnum 10203 at (0, 2) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Main Road"><span>Main Road</span></div></div></div></div><!-- Room vnum 10319 at (1, 2) --><div class="a c n-city"><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Dragonhoard Bank, Solace Branch"><span>Dragonhoard Bank, Solace ...</span></div></div></div></div><!-- Room vnum 10259 at (2, 2) --><div class="a c n-city"><div class="g-s h-door-south"></div><div class="d"><div class="l"><div title="Jander&#39;s Office"><span>Jander&#39;s Office</span></div></div></div></div><!-- Room vnum 10254 at (3, 2) --><div class="a c n-city"><div class="g-e h-door-east"></div><div class="d"><div class="l"><div title="Storage Building"><span>Storage Building</span></div></div></div></div><!-- Room vnum 10211 at (4, 2) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-w h-door-west"></div><div class="d"><div class="l"><div title="Ketra Road"><span>Ketra Road</span></div></div></div></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 10221 at (-4, 1) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="d"><div class="l"><div title="Harvest Road"><span>Harvest Road</span></div></div></div></div><!-- Room vnum 10248 at (-3, 1) --><div class="a c n-city"><div class="g-w h-open"></div><div class="d"><div class="l"><div title="The McBakery"><span>The McBakery</span></div><div class="room-flags"><span class="e e-shop"title="Shop"></span></div></div></div></div><!-- Room vnum 10247 at (-2, 1) --><div class="a c n-city"><div class="g-s h-door-south"></div><div class="d"><div class="l"><div title="Old Gambling Parlor"><span>Old Gambling Parlor</span></div></div></div></div><!-- Room vnum 10246 at (-1, 1) --><div class="a c n-city"><div class="g-e h-door-east"></div><div class="d"><div class="l"><div title="a House"><span>a House</span></div></div></div></div><!-- Room vnum 10202 at (0, 1) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-e h-door-east"></div><div class="g-w h-door-west"></div><div class="d"><div class="l"><div title="Main Road"><span>Main Road</span></div></div></div></div><!-- Room vnum 10257 at (1, 1) --><div class="a c n-city"><div class="g-e h-open"></div><div class="g-w h-door-west"></div><div class="d"><div class="l"><div title="Jander&#39;s Restaurant"><span>Jander&#39;s Restaurant</span></div></div></div></div><!-- Room vnum 10256 at (2, 1) --><div class="a c n-city"><div class="g-n h-door-north"></div><div class="g-s h-door-south"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Jander&#39;s Poolhall"><span>Jander&#39;s Poolhall</span></div></div></div></div><!-- Room vnum 10255 at (3, 1) --><div class="a c n-city"><div class="g-e h-door-east"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Jander&#39;s"><span>Jander&#39;s</span></div><div class="room-flags"><span class="e e-shop"title="Shop"></span></div></div></div></div><!-- Room vnum 10212 at (4, 1) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="g-w h-door-west"></div><div class="d"><div class="l"><div title="Ketra Road"><span>Ketra Road</span></div></div></div></div><div class="a b"></div><div class="a b"></div><!-- Room vnum 10220 at (-4, 0) --><div class="a c n-city"id="label-4"><div class="g-n h-open"></div><div class="g-e h-open"></div><div class="f f-u"><a href="#label-3"><span class="i m-u"title="Up to 3 (Inside Southwest Watchtower)">3</span></a></div><div class="d"><div class="l"><div title="Southwest Guardpost and Watchtower"><div><span class="u">4</span></div><span>Southwest Guardpost and ...</span></div></div></div></div><!-- Room vnum 10219 at (-3, 0) --><div class="a c n-city"><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Small Alleyway"><span>Small Alleyway</span></div></div></div></div><!-- Room vnum 10218 at (-2, 0) --><div class="a c n-city"><div class="g-n h-door-north"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Small Alleyway"><span>Small Alleyway</span></div></div></div></div><!-- Room vnum 10217 at (-1, 0) --><div class="a c n-city"><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Small Alleyway"><span>Small Alleyway</span></div></div></div></div><!-- Room vnum 10201 at (0, 0) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-door-south"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Gateway to Solace"><span>Gateway to Solace</span></div><div class="room-flags"><span class="e e-no-mobiles"title="No mobiles"></span></div></div></div></div><!-- Room vnum 10216 at (1, 0) --><div class="a c n-city"><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Small Alleyway"><span>Small Alleyway</span></div></div></div></div><!-- Room vnum 10215 at (2, 0) --><div class="a c n-city"><div class="g-n h-door-north"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Small Alleyway"><span>Small Alleyway</span></div></div></div></div><!-- Room vnum 10214 at (3, 0) --><div class="a c n-city"><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Small Alleyway."><span>Small Alleyway.</span></div></div></div></div><!-- Room vnum 10213 at (4, 0) --><div class="a c n-city"id="label-2"><div class="g-n h-open"></div><div class="g-w h-open"></div><div class="f f-u"><a href="#label-1"><span class="i m-u"title="Up to 1 (Inside Southeast Watchtower)">1</span></a></div><div class="d"><div class="l"><div title="Southeast Guardpost and Watchtower"><div><span class="u">2</span></div><span>Southeast Guardpost and ...</span></div></div></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a area-exit-cell"><div class="g-n h-open"></div><div class="g-s h-none"></div><div class="g-e h-none"></div><div class="g-w h-none"></div><div class="f f-n"></div><div class="f f-s"></div><div class="f f-e"></div><div class="f f-w"></div><div class="f f-u"></div><div class="f f-d"></div><div class="area-exit-main"><div class="l"><span>To <a href="crystal.html">Crystalmir Lake</a></span></div></div></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div><div class="a b"></div></div></div><div class="fragment"><div style="grid-template-columns:repeat(1,1fr)"class="cells"><!-- Room vnum 10253 at (0, 0) --><div class="a c n-city"><div class="d"><div class="l"><div title="Pet Storage"><span>Pet Storage</span></div></div></div></div></div></div><div class="fragment"><div style="grid-template-columns:repeat(1,1fr)"class="cells"><!-- Room vnum 10258 at (0, 0) --><div class="a c n-city"><div class="d"><div class="l"><div title="Death&#39;s Chambers"><span>Death&#39;s Chambers</span></div></div></div></div></div></div><div class="fragment"><div style="grid-template-columns:repeat(1,1fr)"class="cells"><!-- Room vnum 10260 at (0, 0) --><div class="a c n-city"id="label-1"><div class="f f-d"><a href="#label-2"><span class="i m-d"title="Down to 2 (Southeast Guardpost and Watchtower)">2</span></a></div><div class="d"><div class="l"><div title="Inside Southeast Watchtower"><div><span class="u">1</span></div><span>Inside Southeast Watchtower</span></div></div></div></div></div></div><div class="fragment"><div style="grid-template-columns:repeat(1,1fr)"class="cells"><!-- Room vnum 10261 at (0, 0) --><div class="a c n-city"id="label-3"><div class="f f-d"><a href="#label-4"><span class="i m-d"title="Down to 4 (Southwest Guardpost and Watchtower)">4</span></a></div><div class="d"><div class="l"><div title="Inside Southwest Watchtower"><div><span class="u">3</span></div><span>Inside Southwest Watchtower</span></div></div></div></div></div></div><div class="fragment"><div style="grid-template-columns:repeat(4,1fr)"class="cells"><!-- Room vnum 10308 at (0, 3) --><div class="a c n-city"><div class="g-s h-open"></div><div class="g-e h-open"></div><div class="d"><div class="l"><div title="Reading Room"><span>Reading Room</span></div></div></div></div><!-- Room vnum 10309 at (1, 3) --><div class="a c n-city"><div class="g-s h-door-south"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Hallway"><span>Hallway</span></div></div></div></div><!-- Room vnum 10310 at (2, 3) --><div class="a c n-city"><div class="g-s h-door-south"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Hallway"><span>Hallway</span></div></div></div></div><!-- Room vnum 10311 at (3, 3) --><div class="a c n-city"><div class="g-s h-door-south"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Hallway"><span>Hallway</span></div></div></div></div><!-- Room vnum 10298 at (0, 2) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-s h-open"></div><div class="d"><div class="l"><div title="Hallway"><span>Hallway</span></div></div></div></div><!-- Room vnum 10299 at (1, 2) --><div class="a c n-city"><div class="g-n h-door-north"></div><div class="d"><div class="l"><div title="Private Room"><span>Private Room</span></div></div></div></div><!-- Room vnum 10300 at (2, 2) --><div class="a c n-city"><div class="g-n h-door-north"></div><div class="d"><div class="l"><div title="Private Room"><span>Private Room</span></div></div></div></div><!-- Room vnum 10301 at (3, 2) --><div class="a c n-city"><div class="g-n h-door-north"></div><div class="d"><div class="l"><div title="Private Room"><span>Private Room</span></div></div></div></div><!-- Room vnum 10288 at (0, 1) --><div class="a c n-city"><div class="g-n h-open"></div><div class="g-e h-open"></div><div class="d"><div class="l"><div title="Hallway"><span>Hallway</span></div></div></div></div><!-- Room vnum 10289 at (1, 1) --><div class="a c n-city"><div class="g-s h-door-south"></div><div class="g-e h-open"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="Outside Common Room"><span>Outside Common Room</span></div></div></div></div><!-- Room vnum 10290 at (2, 1) --><div class="a c n-city"id="label-5"><div class="g-w h-open"></div><div class="f f-d"><a href="#label-6"><span class="i m-d"title="Down to 6 (Inn of the Last Home)">6</span></a></div><div class="d"><div class="l"><div title="Second Floor of the Inn"><div><span class="u">5</span></div><span>Second Floor of the Inn</span></div></div></div></div><div class="a b"></div><!-- Room vnum 10278 at (0, 0) --><div class="a c n-city"><div class="g-e h-open"></div><div class="d"><div class="l"><div title="West end of Common Room"><span>West end of Common Room</span></div></div></div></div><!-- Room vnum 10279 at (1, 0) --><div class="a c n-city"><div class="g-n h-door-north"></div><div class="g-w h-open"></div><div class="d"><div class="l"><div title="East end of Common Room"><span>East end of Common Room</span></div></div></div></div><div class="a b"></div><div class="a b"></div></div></div><div class="fragment"><div style="grid-template-columns:repeat(1,1fr)"class="cells"><div class="a area-exit-cell"id="label-8"><div class="g-n h-none"></div><div class="g-s h-open"></div><div class="g-e h-none"></div><div class="g-w h-none"></div><div class="f f-n"></div><div class="f f-s"><a href="#label-9"><span class="i m-s"title="South to 9 (Townguard Administration Building)">9</span></a></div><div class="f f-e"></div><div class="f f-w"></div><div class="f f-u"></div><div class="f f-d"></div><div class="area-exit-main"><div class="l"><div><span class="u">8</span></div><span>To <a href="vamp_hive.html">The Vampyre Hive</a></span></div></div></div></div></div><div id="legend"class="legend"><div class="q"><span class="u">123</span></div><div class="r">Numbered location</div><div class="q"><span class="f i m-u">123</span></div><div class="r">Exit to a numbered location</div><div class="q"><span class="e e-randomized-exits"></span></div><div class="r">Randomized exits</div><div class="q"><span class="e e-no-mobiles"></span></div><div class="r">Mobiles cannot enter</div><div class="q"><span class="e e-no-recall"></span></div><div class="r">Cannot recall</div><div class="q"><span class="e e-healer"></span></div><div class="r">Healer</div><div class="q"><span class="e e-shop"></span></div><div class="r">Shop</div><div class="q"><span class="e e-teacher"></span></div><div class="r">Teacher</div><div class="q"><span class="area-exit-cell"></span></div><div class="r">Exit to another area</div><div class="q"><span class="f k">?</span></div><div class="r">Unknown exit</div><div class="q"><span class="s n-inside"></span></div><div class="r">Inside</div><div class="q"><span class="s n-city"></span></div><div class="r">City</div><div class="q"><span class="s n-field"></span></div><div class="r">Fields</div><div class="q"><span class="s n-forest"></span></div><div class="r">Forest</div><div class="q"><span class="s n-hills"></span></div><div class="r">Hills</div><div class="q"><span class="s n-mountain"></span></div><div class="r">Mountains</div><div class="q"><span class="s n-water_swim"></span></div><div class="r">Swimmable water</div><div class="q"><span class="s n-water_no_swim"></span></div><div class="r">Unswimmable water</div><div class="q"><span class="s n-underwater"></span></div><div class="r">Underwater</div><div class="q"><span class="s n-underwater_ground"></span></div><div class="r">Underwater ground</div><div class="q"><span class="s n-air"></span></div><div class="r">In the air</div><div class="q"><span class="s n-desert"></span></div><div class="r">Desert</div><div class="q"><span class="s n-swamp"></span></div><div class="r">Swamp</div></div></div>
+<!-- Built with MapMaker v0.3 at 2025-07-04T06:01:15.674231+12:00[Pacific/Auckland] -->
+<html lang="en">
+<head>
+    <title>Town Of Solace</title>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css?family=Almendra:400|Metamorphous:400,700|Open+Sans:400,600');
+
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            border: 0;
+            padding: 0;
+            margin: 3em 4em;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            color: #111111;
+            background: linear-gradient(to bottom, #f4f2eb, #cac7bc);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Metamorphous', cursive;
+            color: #555555;
+            margin-top: 0;
+            margin-bottom: 0.75em;
+        }
+
+        a {
+            color: #333333;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #f69700;
+            text-decoration: underline;
+        }
+
+        a.invis {
+            height: 0;
+            width: 0;
+        }
+
+        .subheading {
+            font-family: 'Almendra', cursive;
+            font-size: 1.25em;
+        }
+
+        .vnum {
+            font-weight: bold;
+        }
+
+        .fragments {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-content: flex-start;
+            align-items: center;
+            margin: 15px -15px -15px -15px;
+        }
+
+        .fragment {
+            border: 1px solid #999999;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px;
+            background: #ffffff;
+        }
+
+        .legend {
+            border: 1px solid #999999;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px;
+            background: #ffffff;
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            grid-gap: 15px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12px;
+        }
+
+        .s {
+            display: inline-block;
+            height: 12px;
+            width: 12px;
+        }
+
+        .q {
+            margin: auto;
+        }
+
+        .r {
+        }
+
+        .cells {
+            border: 30px solid #cccccc;
+            border-radius: 4px;
+            display: grid;
+            grid-gap: 1px;
+            margin: 0;
+        }
+
+        .a {
+            box-sizing: border-box;
+            height: 108px;
+            width: 108px;
+        }
+
+        .c {
+            background: #ffffff;
+            display: grid;
+            grid-template-columns: 6px 1fr 5fr 1fr 6px;
+            grid-template-rows: 6px 1fr 5fr 1fr 6px;
+        }
+
+        .area-exit-cell {
+            background: #ff530d;
+            display: grid;
+            grid-template-columns: 6px 1fr 5fr 1fr 6px;
+            grid-template-rows: 6px 1fr 5fr 1fr 6px;
+        }
+
+        .t {
+            background: #cccccc;
+            display: grid;
+            grid-template-columns: 2fr 2fr 2fr;
+            grid-template-rows: 2fr 2fr 2fr;
+        }
+
+        .o {
+            grid-column: 2;
+            grid-row: 1 / 4;
+            background: #ffffff;
+            border: 1px solid #cccccc;
+        }
+
+        .p {
+            grid-row: 2;
+            grid-column: 1 / 4;
+            background: #ffffff;
+            border: 1px solid #cccccc;
+        }
+
+        .b {
+            background: #cccccc;
+        }
+
+        .n-inside {
+            background: #808080;
+        }
+
+        .n-city {
+            background: #aba596;
+        }
+
+        .n-field {
+            background: #b1ba31;
+        }
+
+        .n-forest {
+            background: #6b9d3d;
+        }
+
+        .n-hills {
+            background: #7d995e;
+        }
+
+        .n-mountain {
+            background: #929292;
+        }
+
+        .n-water_swim {
+            background: #59addb;
+        }
+
+        .n-water_no_swim {
+            background: #0c62bd;
+        }
+
+        .n-underwater {
+            background: #082fa9;
+        }
+
+        .n-air {
+            background: #c4d3d7;
+        }
+
+        .n-desert {
+            background: #e2bf11;
+        }
+
+        .n-swamp {
+            background: #6b8552;
+        }
+
+        .n-underwater_ground {
+            background: #324a63;
+        }
+
+        .d {
+            color: #333333;
+            background: #ffffff;
+            grid-column: 2 / 5;
+            grid-row: 2 / 5;
+        }
+
+        .area-exit-main {
+            color: #b13808;
+            background: #ffffff;
+            grid-column: 2 / 5;
+            grid-row: 2 / 5;
+        }
+
+        .l {
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12px;
+            hyphens: auto;
+            margin: 10px;
+            overflow: hidden;
+        }
+
+        .area-exit-main a:link,
+        .area-exit-main a:visited,
+        .area-exit-main a:hover,
+        .area-exit-main a:active {
+            color: #b13808;
+        }
+
+        .g-n {
+            grid-row: 1;
+            grid-column: 3 / 4;
+            border-width: 0 2px 2px 2px;
+        }
+
+        .g-s {
+            grid-row: 5;
+            grid-column: 3 / 4;
+            border-width: 2px 2px 0 2px;
+        }
+
+        .g-e {
+            grid-row: 3 / 4;
+            grid-column: 5;
+            border-width: 2px 0 2px 2px;
+        }
+
+        .g-w {
+            grid-row: 3 / 4;
+            grid-column: 1;
+            border-width: 2px 2px 2px 0;
+        }
+
+        .h-open {
+            background: #ffffff;
+            border-color: #ffffff;
+        }
+
+        .h-door-north,
+        .h-door-south,
+        .h-door-east,
+        .h-door-west {
+            z-index: 100;
+            background: #d8c4b8;
+            border-color: #6b5130;
+            border-style: solid;
+            border-radius: 2px;
+        }
+
+        .h-door-north {
+            margin: -1px 12px -4px 12px;
+        }
+
+        .h-door-south {
+            margin: -4px 12px -1px 12px;
+        }
+
+        .h-door-east {
+            margin: 12px -1px 12px -4px;
+        }
+
+        .h-door-west {
+            margin: 12px -4px 12px -1px;
+        }
+
+        .f {
+            z-index: 100;
+            font-family: monospace;
+            font-size: 12px;
+            margin: auto;
+        }
+
+        .f-n {
+            grid-row: 1  / 4;
+            grid-column: 2 / 5;
+            margin-top: 1px
+        }
+
+        .f-s {
+            grid-row: 3 / 6;
+            grid-column: 3 / 4;
+            margin-bottom: 1px
+        }
+
+        .f-e {
+            grid-row: 2 / 5;
+            grid-column: 3 / 6;
+            margin-right: 0;
+        }
+
+        .f-w {
+            grid-row: 2 / 5;
+            grid-column: 1 / 4;
+            margin-left: 0
+        }
+
+        .f-u {
+            grid-row: 1 / 6;
+            grid-column: 1 / 6;
+            margin-top: 3px;
+            margin-left: 3px;
+        }
+
+        .f-d {
+            grid-row: 1 / 6;
+            grid-column: 1 / 6;
+            margin-right: 3px;
+            margin-bottom: 3px;
+        }
+
+        .k {
+            background: #ee00ff;
+            color: #fdfdfd;
+            padding: 1px 4px;
+            border-radius: 12px;
+        }
+
+        .i {
+            background: #fb8403;
+            color: #fafafa;
+            padding: 1px 4px;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .m-n::before {
+            content: "^";
+        }
+
+        .m-s::before {
+            content: "v";
+        }
+
+        .m-e::before {
+            content: ">";
+        }
+
+        .m-w::before {
+            content: "<";
+        }
+
+        .m-u::before {
+            content: "^";
+        }
+
+        .m-d::before {
+            content: "v";
+        }
+
+        .j {
+            background: #b9c2c7;
+            color: #fafafa;
+            padding: 1px 4px;
+        }
+
+        .room-flags {
+            margin-top: 3px;
+        }
+
+        .e {
+            display: inline-block;
+            padding: 1px 4px;
+            border-radius: 10px;
+            background: #999999;
+            color: #f8f8f8;
+            font-family: monospace;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .e-randomized-exits::before {
+            content: "R";
+        }
+
+        .e-no-mobiles {
+            background: #1aa8e2 !important;
+        }
+
+        .e-no-mobiles::before {
+            content: "NM";
+        }
+
+        .e-no-recall {
+            background: #102e67 !important;
+        }
+
+        .e-no-recall::before {
+            content: "NR";
+        }
+
+        .e-healer {
+            background: #2b9611 !important;
+        }
+
+        .e-healer::before {
+            content: "H";
+        }
+
+        .e-shop {
+            background: #ffbf00 !important;
+            color: #483602 !important;
+        }
+
+        .e-shop::before {
+            content: "$";
+        }
+
+
+        .e-teacher {
+            background: #b516c6 !important;
+        }
+
+        .e-teacher::before {
+            content: "T";
+        }
+
+        .u {
+            padding: 1px 4px;
+            border-radius: 2px;
+            background: #cc4114;
+            color: #f8f8f8;
+            font-family: monospace;
+            cursor: pointer;
+        }
+
+        .summary .links {
+            float: right;
+        }
+
+        .summary .links a {
+             margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="summary">
+    <div class="links">
+        <a href="index.html">Index</a>
+    </div>
+    <h1>Town Of Solace</h1>
+        <div class="subheading">All levels &mdash; Strahd</div>
+</div>
+<div class="fragments">
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(11, 1fr);" class="cells">
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 10312 at (0, 11) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-door-south"></div>
+                                <div class="g-e h-door-east"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Captain&#39;s Waiting Room">
+                                            <span>Captain&#39;s Waiting Room</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10313 at (1, 11) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-door-west"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Administration Hallway">
+                                            <span>Administration Hallway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10314 at (2, 11) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-door-south"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Administration Hallway">
+                                            <span>Administration Hallway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10315 at (3, 11) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Administration Hallway">
+                                            <span>Administration Hallway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10316 at (4, 11) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Administration Hallway">
+                                            <span>Administration Hallway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10317 at (5, 11) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-open"></div>
+                                
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="End of Long Hall">
+                                            <span>End of Long Hall</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 10302 at (0, 10) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-door-north"></div>
+                                <div class="g-s h-door-south"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Captain&#39;s meeting room">
+                                            <span>Captain&#39;s meeting room</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10303 at (1, 10) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Administration Hallway">
+                                            <span>Administration Hallway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10304 at (2, 10) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-door-north"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Guards Room">
+                                            <span>Guards Room</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10305 at (3, 10) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-door-south"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Lieutenant&#39;s Office">
+                                            <span>Lieutenant&#39;s Office</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10306 at (4, 10) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Administration Hallway">
+                                            <span>Administration Hallway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10307 at (5, 10) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Long Hallway">
+                                            <span>Long Hallway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 10291 at (-1, 9) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="North End of Bar">
+                                            <span>North End of Bar</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10292 at (0, 9) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-door-north"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Captain&#39;s Office">
+                                            <span>Captain&#39;s Office</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10293 at (1, 9) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                
+                                <div class="g-e h-open"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Administration Hallway">
+                                            <span>Administration Hallway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10294 at (2, 9) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Administration Hallway">
+                                            <span>Administration Hallway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10295 at (3, 9) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-door-north"></div>
+                                
+                                
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Lieutenant&#39;s Reception Area">
+                                            <span>Lieutenant&#39;s Reception Area</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10296 at (4, 9) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Administration Hallway">
+                                            <span>Administration Hallway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10297 at (5, 9) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Long Hallway">
+                                            <span>Long Hallway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 10280 at (-2, 8) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="West end of Bar.">
+                                            <span>West end of Bar.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10281 at (-1, 8) -->
+                            <div class="a c n-city" id="label-6">
+                                <div class="g-n h-open"></div>
+                                
+                                <div class="g-e h-door-east"></div>
+                                <div class="g-w h-open"></div>
+                                        <div class="f f-u">
+                                            <a href="#label-5"><span class="i m-u" title="Up to 5 (Second Floor of the Inn)">5</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Inn of the Last Home">
+                                                <div><span class="u">6</span></div>
+                                            <span>Inn of the Last Home</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-shop" title="Shop"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10282 at (0, 8) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-door-north"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                <div class="g-w h-door-west"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Outside the Inn of the Last Home">
+                                            <span>Outside the Inn of the ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10283 at (1, 8) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-door-south"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Sergeant&#39;s Office">
+                                            <span>Sergeant&#39;s Office</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10284 at (2, 8) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Administration Hallway">
+                                            <span>Administration Hallway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10285 at (3, 8) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-door-south"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Guards Room">
+                                            <span>Guards Room</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10286 at (4, 8) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Administration Hallway">
+                                            <span>Administration Hallway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10287 at (5, 8) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Long Hallway">
+                                            <span>Long Hallway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 10238 at (-4, 7) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Molin&#39;s Mulburry Extracts">
+                                            <span>Molin&#39;s Mulburry Extracts</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-shop" title="Shop"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10239 at (-3, 7) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Rashan&#39;s Rutabagas">
+                                            <span>Rashan&#39;s Rutabagas</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-shop" title="Shop"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10240 at (-2, 7) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Lexie&#39;s Scuba Shop">
+                                            <span>Lexie&#39;s Scuba Shop</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-shop" title="Shop"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10241 at (-1, 7) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Croben&#39;s Containers">
+                                            <span>Croben&#39;s Containers</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-shop" title="Shop"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10272 at (0, 7) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Cobblestone Path">
+                                            <span>Cobblestone Path</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10273 at (1, 7) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-door-north"></div>
+                                
+                                <div class="g-e h-door-east"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Sergeant&#39;s Reception Room">
+                                            <span>Sergeant&#39;s Reception Room</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10274 at (2, 7) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-door-west"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Administration Hallway">
+                                            <span>Administration Hallway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10275 at (3, 7) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-door-north"></div>
+                                
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Administration Hallway">
+                                            <span>Administration Hallway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10276 at (4, 7) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-door-south"></div>
+                                
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Administration Hallway">
+                                            <span>Administration Hallway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10277 at (5, 7) -->
+                            <div class="a c n-city" id="label-7">
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Long Hallway">
+                                                <div><span class="u">7</span></div>
+                                            <span>Long Hallway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10318 at (-5, 6) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Alex&#39;s Tinkery">
+                                            <span>Alex&#39;s Tinkery</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10233 at (-4, 6) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Marketplace">
+                                            <span>Marketplace</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10232 at (-3, 6) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Marketplace">
+                                            <span>Marketplace</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10231 at (-2, 6) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Marketplace">
+                                            <span>Marketplace</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10230 at (-1, 6) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Marketplace">
+                                            <span>Marketplace</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10229 at (0, 6) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="End of the Main Road">
+                                            <span>End of the Main Road</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10262 at (1, 6) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Dusty road.">
+                                            <span>Dusty road.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10263 at (2, 6) -->
+                            <div class="a c n-city" id="label-9">
+                                <div class="g-n h-open"></div>
+                                
+                                <div class="g-e h-door-east"></div>
+                                <div class="g-w h-open"></div>
+                                        <div class="f f-n">
+                                            <a href="#label-8"><span class="i m-n" title="North to 8 (The Vampyre Hive)">8</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Townguard Administration Building">
+                                                <div><span class="u">9</span></div>
+                                            <span>Townguard Administration ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10264 at (3, 6) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-door-east"></div>
+                                <div class="g-w h-door-west"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Entrance Hall">
+                                            <span>Entrance Hall</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10270 at (4, 6) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-door-north"></div>
+                                <div class="g-s h-door-south"></div>
+                                <div class="g-e h-door-east"></div>
+                                <div class="g-w h-door-west"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Hallway Intersection">
+                                            <span>Hallway Intersection</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10271 at (5, 6) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-door-west"></div>
+                                        <div class="f f-e">
+                                            <a href="#label-7"><span class="i m-e" title="East to 7 (Long Hallway)">7</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="End of Long Hall">
+                                            <span>End of Long Hall</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 10234 at (-4, 5) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Jhen&#39;s Vegetable Cart">
+                                            <span>Jhen&#39;s Vegetable Cart</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-shop" title="Shop"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10235 at (-3, 5) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Krista&#39;s Fruit Stand">
+                                            <span>Krista&#39;s Fruit Stand</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-shop" title="Shop"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10236 at (-2, 5) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Janni&#39;s Souvenirs">
+                                            <span>Janni&#39;s Souvenirs</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-shop" title="Shop"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10237 at (-1, 5) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Nisi&#39;s Frozen Food">
+                                            <span>Nisi&#39;s Frozen Food</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-shop" title="Shop"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10228 at (0, 5) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Main Road">
+                                            <span>Main Road</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10267 at (1, 5) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                <div class="g-e h-door-east"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Deposits Room">
+                                            <span>Deposits Room</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10266 at (2, 5) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                <div class="g-e h-door-east"></div>
+                                <div class="g-w h-door-west"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Town Clerk">
+                                            <span>Town Clerk</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10265 at (3, 5) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-door-west"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Marble Corridor">
+                                            <span>Marble Corridor</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10268 at (4, 5) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-door-north"></div>
+                                
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Marble Corridor">
+                                            <span>Marble Corridor</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10269 at (5, 5) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Water Fountain">
+                                            <span>Water Fountain</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 10224 at (-4, 4) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Corner of West Gullen Way and Harvest Road.">
+                                            <span>Corner of West Gullen Way ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10225 at (-3, 4) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="West Gullen Way">
+                                            <span>West Gullen Way</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10226 at (-2, 4) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-door-south"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="West Gullen Way">
+                                            <span>West Gullen Way</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10227 at (-1, 4) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-door-south"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="West Gullen Way">
+                                            <span>West Gullen Way</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10205 at (0, 4) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Intersection at Main Road">
+                                            <span>Intersection at Main Road</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10206 at (1, 4) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-door-south"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="East Gullen Way">
+                                            <span>East Gullen Way</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10207 at (2, 4) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="East Gullen Way">
+                                            <span>East Gullen Way</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10208 at (3, 4) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="East Gullen Way">
+                                            <span>East Gullen Way</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10209 at (4, 4) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-open"></div>
+                                
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Corner of East Gullen and Ketra Road">
+                                            <span>Corner of East Gullen and ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 10223 at (-4, 3) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Harvest Road">
+                                            <span>Harvest Road</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10242 at (-3, 3) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Matt&#39;s Brewery.">
+                                            <span>Matt&#39;s Brewery.</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-shop" title="Shop"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10243 at (-2, 3) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-door-north"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="a House">
+                                            <span>a House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10244 at (-1, 3) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-door-north"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="a House">
+                                            <span>a House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10204 at (0, 3) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Main Road">
+                                            <span>Main Road</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10251 at (1, 3) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-door-north"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="a House">
+                                            <span>a House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10252 at (2, 3) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="The Marilyn&#39;s Bird Factory">
+                                            <span>The Marilyn&#39;s Bird Factory</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-shop" title="Shop"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10320 at (3, 3) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Ghelt&#39;s Smokeables">
+                                            <span>Ghelt&#39;s Smokeables</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10210 at (4, 3) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Ketra Road">
+                                            <span>Ketra Road</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 10222 at (-4, 2) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-door-east"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Harvest Road">
+                                            <span>Harvest Road</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10249 at (-3, 2) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                
+                                <div class="g-w h-door-west"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="a House">
+                                            <span>a House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10250 at (-2, 2) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                <div class="g-e h-door-east"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Cookie&#39;s Relaxing Room">
+                                            <span>Cookie&#39;s Relaxing Room</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10245 at (-1, 2) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-door-west"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Cookie&#39;s Cookie Cookery.">
+                                            <span>Cookie&#39;s Cookie Cookery.</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-shop" title="Shop"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10203 at (0, 2) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Main Road">
+                                            <span>Main Road</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10319 at (1, 2) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Dragonhoard Bank, Solace Branch">
+                                            <span>Dragonhoard Bank, Solace ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10259 at (2, 2) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-door-south"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Jander&#39;s Office">
+                                            <span>Jander&#39;s Office</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10254 at (3, 2) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                <div class="g-e h-door-east"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Storage Building">
+                                            <span>Storage Building</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10211 at (4, 2) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                <div class="g-w h-door-west"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Ketra Road">
+                                            <span>Ketra Road</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 10221 at (-4, 1) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Harvest Road">
+                                            <span>Harvest Road</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10248 at (-3, 1) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="The McBakery">
+                                            <span>The McBakery</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-shop" title="Shop"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10247 at (-2, 1) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-door-south"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Old Gambling Parlor">
+                                            <span>Old Gambling Parlor</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10246 at (-1, 1) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                <div class="g-e h-door-east"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="a House">
+                                            <span>a House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10202 at (0, 1) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-door-east"></div>
+                                <div class="g-w h-door-west"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Main Road">
+                                            <span>Main Road</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10257 at (1, 1) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-door-west"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Jander&#39;s Restaurant">
+                                            <span>Jander&#39;s Restaurant</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10256 at (2, 1) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-door-north"></div>
+                                <div class="g-s h-door-south"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Jander&#39;s Poolhall">
+                                            <span>Jander&#39;s Poolhall</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10255 at (3, 1) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                <div class="g-e h-door-east"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Jander&#39;s">
+                                            <span>Jander&#39;s</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-shop" title="Shop"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10212 at (4, 1) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                <div class="g-w h-door-west"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Ketra Road">
+                                            <span>Ketra Road</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 10220 at (-4, 0) -->
+                            <div class="a c n-city" id="label-4">
+                                <div class="g-n h-open"></div>
+                                
+                                <div class="g-e h-open"></div>
+                                
+                                        <div class="f f-u">
+                                            <a href="#label-3"><span class="i m-u" title="Up to 3 (Inside Southwest Watchtower)">3</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Southwest Guardpost and Watchtower">
+                                                <div><span class="u">4</span></div>
+                                            <span>Southwest Guardpost and ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10219 at (-3, 0) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Small Alleyway">
+                                            <span>Small Alleyway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10218 at (-2, 0) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-door-north"></div>
+                                
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Small Alleyway">
+                                            <span>Small Alleyway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10217 at (-1, 0) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Small Alleyway">
+                                            <span>Small Alleyway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10201 at (0, 0) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-door-south"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Gateway to Solace">
+                                            <span>Gateway to Solace</span>
+                                        </div>
+                                            <div class="room-flags">
+                                                    <span class="e e-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10216 at (1, 0) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Small Alleyway">
+                                            <span>Small Alleyway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10215 at (2, 0) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-door-north"></div>
+                                
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Small Alleyway">
+                                            <span>Small Alleyway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10214 at (3, 0) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Small Alleyway.">
+                                            <span>Small Alleyway.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10213 at (4, 0) -->
+                            <div class="a c n-city" id="label-2">
+                                <div class="g-n h-open"></div>
+                                
+                                
+                                <div class="g-w h-open"></div>
+                                        <div class="f f-u">
+                                            <a href="#label-1"><span class="i m-u" title="Up to 1 (Inside Southeast Watchtower)">1</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Southeast Guardpost and Watchtower">
+                                                <div><span class="u">2</span></div>
+                                            <span>Southeast Guardpost and ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a area-exit-cell" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-none"></div>
+                                <div class="g-e h-none"></div>
+                                <div class="g-w h-none"></div>
+                                    <div class="f f-n">
+                                    </div>
+                                    <div class="f f-s">
+                                    </div>
+                                    <div class="f f-e">
+                                    </div>
+                                    <div class="f f-w">
+                                    </div>
+                                    <div class="f f-u">
+                                    </div>
+                                    <div class="f f-d">
+                                    </div>
+                                <div class="area-exit-main">
+                                    <div class="l">
+                                        <span>To <a href="crystal.html">Crystalmir Lake</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(1, 1fr);" class="cells">
+                            <!-- Room vnum 10253 at (0, 0) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Pet Storage">
+                                            <span>Pet Storage</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(1, 1fr);" class="cells">
+                            <!-- Room vnum 10258 at (0, 0) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Death&#39;s Chambers">
+                                            <span>Death&#39;s Chambers</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(1, 1fr);" class="cells">
+                            <!-- Room vnum 10260 at (0, 0) -->
+                            <div class="a c n-city" id="label-1">
+                                
+                                
+                                
+                                
+                                        <div class="f f-d">
+                                            <a href="#label-2"><span class="i m-d" title="Down to 2 (Southeast Guardpost and Watchtower)">2</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Inside Southeast Watchtower">
+                                                <div><span class="u">1</span></div>
+                                            <span>Inside Southeast Watchtower</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(1, 1fr);" class="cells">
+                            <!-- Room vnum 10261 at (0, 0) -->
+                            <div class="a c n-city" id="label-3">
+                                
+                                
+                                
+                                
+                                        <div class="f f-d">
+                                            <a href="#label-4"><span class="i m-d" title="Down to 4 (Southwest Guardpost and Watchtower)">4</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Inside Southwest Watchtower">
+                                                <div><span class="u">3</span></div>
+                                            <span>Inside Southwest Watchtower</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(4, 1fr);" class="cells">
+                            <!-- Room vnum 10308 at (0, 3) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-open"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Reading Room">
+                                            <span>Reading Room</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10309 at (1, 3) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-door-south"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Hallway">
+                                            <span>Hallway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10310 at (2, 3) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-door-south"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Hallway">
+                                            <span>Hallway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10311 at (3, 3) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-door-south"></div>
+                                
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Hallway">
+                                            <span>Hallway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10298 at (0, 2) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                <div class="g-s h-open"></div>
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Hallway">
+                                            <span>Hallway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10299 at (1, 2) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-door-north"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Private Room">
+                                            <span>Private Room</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10300 at (2, 2) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-door-north"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Private Room">
+                                            <span>Private Room</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10301 at (3, 2) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-door-north"></div>
+                                
+                                
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Private Room">
+                                            <span>Private Room</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10288 at (0, 1) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-open"></div>
+                                
+                                <div class="g-e h-open"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Hallway">
+                                            <span>Hallway</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10289 at (1, 1) -->
+                            <div class="a c n-city" >
+                                
+                                <div class="g-s h-door-south"></div>
+                                <div class="g-e h-open"></div>
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Outside Common Room">
+                                            <span>Outside Common Room</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10290 at (2, 1) -->
+                            <div class="a c n-city" id="label-5">
+                                
+                                
+                                
+                                <div class="g-w h-open"></div>
+                                        <div class="f f-d">
+                                            <a href="#label-6"><span class="i m-d" title="Down to 6 (Inn of the Last Home)">6</span></a>
+                                        </div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="Second Floor of the Inn">
+                                                <div><span class="u">5</span></div>
+                                            <span>Second Floor of the Inn</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <!-- Room vnum 10278 at (0, 0) -->
+                            <div class="a c n-city" >
+                                
+                                
+                                <div class="g-e h-open"></div>
+                                
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="West end of Common Room">
+                                            <span>West end of Common Room</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Room vnum 10279 at (1, 0) -->
+                            <div class="a c n-city" >
+                                <div class="g-n h-door-north"></div>
+                                
+                                
+                                <div class="g-w h-open"></div>
+                                <div class="d">
+                                    <div class="l">
+                                        
+                                        
+                                        <div title="East end of Common Room">
+                                            <span>East end of Common Room</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a b"></div>
+                            <div class="a b"></div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(1, 1fr);" class="cells">
+                            <div class="a area-exit-cell" id="label-8">
+                                <div class="g-n h-none"></div>
+                                <div class="g-s h-open"></div>
+                                <div class="g-e h-none"></div>
+                                <div class="g-w h-none"></div>
+                                    <div class="f f-n">
+                                    </div>
+                                    <div class="f f-s">
+                                            <a href="#label-9"><span class="i m-s" title="South to 9 (Townguard Administration Building)">9</span></a>
+                                    </div>
+                                    <div class="f f-e">
+                                    </div>
+                                    <div class="f f-w">
+                                    </div>
+                                    <div class="f f-u">
+                                    </div>
+                                    <div class="f f-d">
+                                    </div>
+                                <div class="area-exit-main">
+                                    <div class="l">
+                                            <div><span class="u">8</span></div>
+                                        <span>To <a href="vamp_hive.html">The Vampyre Hive</a></span>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+        </div>
+    <div id="legend" class="legend">
+        <div class="q"><span class="u">123</span></div>
+        <div class="r">Numbered location</div>
+
+        <div class="q"><span class="f i m-u">123</span></div>
+        <div class="r">Exit to a numbered location</div>
+
+        <div class="q"><span class="e e-randomized-exits"></span></div>
+        <div class="r">Randomized exits</div>
+
+        <div class="q"><span class="e e-no-mobiles"></span></div>
+        <div class="r">Mobiles cannot enter</div>
+
+        <div class="q"><span class="e e-no-recall"></span></div>
+        <div class="r">Cannot recall</div>
+
+        <div class="q"><span class="e e-healer"></span></div>
+        <div class="r">Healer</div>
+
+        <div class="q"><span class="e e-shop"></span></div>
+        <div class="r">Shop</div>
+
+        <div class="q"><span class="e e-teacher"></span></div>
+        <div class="r">Teacher</div>
+
+        <div class="q"><span class="area-exit-cell"></span></div>
+        <div class="r">Exit to another area</div>
+
+        <div class="q"><span class="f k">?</span></div>
+        <div class="r">Unknown exit</div>
+
+        <div class="q"><span class="s n-inside"></span></div>
+        <div class="r">Inside</div>
+
+        <div class="q"><span class="s n-city"></span></div>
+        <div class="r">City</div>
+
+        <div class="q"><span class="s n-field"></span></div>
+        <div class="r">Fields</div>
+
+        <div class="q"><span class="s n-forest"></span></div>
+        <div class="r">Forest</div>
+
+        <div class="q"><span class="s n-hills"></span></div>
+        <div class="r">Hills</div>
+
+        <div class="q"><span class="s n-mountain"></span></div>
+        <div class="r">Mountains</div>
+
+        <div class="q"><span class="s n-water_swim"></span></div>
+        <div class="r">Swimmable water</div>
+
+        <div class="q"><span class="s n-water_no_swim"></span></div>
+        <div class="r">Unswimmable water</div>
+
+        <div class="q"><span class="s n-underwater"></span></div>
+        <div class="r">Underwater</div>
+
+        <div class="q"><span class="s n-underwater_ground"></span></div>
+        <div class="r">Underwater ground</div>
+
+        <div class="q"><span class="s n-air"></span></div>
+        <div class="r">In the air</div>
+
+        <div class="q"><span class="s n-desert"></span></div>
+        <div class="r">Desert</div>
+
+        <div class="q"><span class="s n-swamp"></span></div>
+        <div class="r">Swamp</div>
+    </div>
+</div>
+</body>
+</html>

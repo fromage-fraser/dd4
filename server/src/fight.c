@@ -7421,7 +7421,7 @@ void do_disarm (CHAR_DATA *ch, char *argument)
 
         if (!obj)
         {
-                send_to_char("Your opponent is not wielding a weapon.\n\r", ch);
+                send_to_char("{WYour opponent is not wielding a weapon.{x\n\r", ch);
                 return;
         }
 
@@ -7438,7 +7438,7 @@ void do_disarm (CHAR_DATA *ch, char *argument)
                 disarm(ch, victim);
 
         else
-                send_to_char("Your disarm attempt failed.\n\r", ch);
+                send_to_char("<51>Your disarm attempt failed.<0>\n\r", ch);
         return;
 }
 
