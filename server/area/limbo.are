@@ -2241,13 +2241,152 @@ Owl's Arena~
 <19>their light flickering through the murky water like ghostly lanterns.<0>
 ~
 0 1048576|9223372036854775808 8
+D1
+~
+~
+0 -1 85
 D3
 You see Owl's outdoors testing room.
 ~
 ~
 0 -1 83
 S
-
+#85
+Owl's Arena~
+Sector type test: City
+~
+0 0 1
+D1
+~
+~
+0 -1 86
+D3
+~
+~
+0 -1 84
+S
+#86
+Owl's Arena~
+Sector type test: Forest
+~
+0 0 3
+D1
+~
+~
+0 -1 87
+D3
+~
+~
+0 -1 85
+S
+#87
+Owl's Arena~
+Sector type test: Hills
+~
+0 0 4
+D1
+~
+~
+0 -1 88
+D3
+~
+~
+0 -1 86
+S
+#88
+Owl's Arena~
+Sector type test: Mountain
+~
+0 0 5
+D1
+~
+~
+0 -1 89
+D3
+~
+~
+0 -1 87
+S
+#89
+Owl's Arena~
+Sector type test: Water_swim
+~
+0 0 6
+D1
+~
+~
+0 -1 90
+D3
+~
+~
+0 -1 88
+S
+#90
+Owl's Arena~
+Sector type test: Water_noswim
+~
+0 0 7
+D1
+~
+~
+0 -1 91
+D3
+~
+~
+0 -1 89
+S
+#91
+Owl's Arena~
+Sector type test: Air
+~
+0 0 9
+D1
+~
+~
+0 -1 92
+D3
+~
+~
+0 -1 90
+S
+#92
+Owl's Arena~
+Sector type test: Desert
+~
+0 0 10
+D1
+~
+~
+0 -1 93
+D3
+~
+~
+0 -1 91
+S
+#93
+Owl's Arena~
+Sector type test: Swamp
+~
+0 0 11
+D1
+~
+~
+0 -1 94
+D3
+~
+~
+0 -1 92
+S
+#94
+Owl's Arena~
+Sector type test: Underwater ground
+~
+0 0 12
+D3
+~
+~
+0 -1 93
+S
 #0
 
 

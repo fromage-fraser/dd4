@@ -343,10 +343,15 @@ void do_swim (CHAR_DATA *ch, char *argument)
         if ( ( ch->form != FORM_SNAKE )
         && ( ch->in_room->sector_type != SECT_UNDERWATER )
         && ( ch->in_room->sector_type != SECT_UNDERWATER_GROUND )
-        && ( ch->in_room->sector_type != SECT_WATER_SWIM )
-        && ( ch->in_room->sector_type != SECT_WATER_NOSWIM ) )
+        && ( ch->in_room->sector_type != SECT_WATER_SWIM ) )
         {
-                send_to_char("You need to be in the water to swim.\n\r", ch);
+                send_to_char("You need to be in a suitable body of water to swim.\n\r", ch);
+                return;
+        }
+
+        if ( ch->in_room->sector_type == SECT_WATER_NOSWIM )
+        {
+                send_to_char("You can't swim in this water.\n\r", ch);
                 return;
         }
 

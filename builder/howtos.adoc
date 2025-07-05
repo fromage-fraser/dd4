@@ -259,6 +259,9 @@ etc in `merc.h`
 
 - Check `do_push` skill as it has racial bonuses/penalties for most of the races.
 
+- Likewise update the `ws_race_terrain` struct, as it has race-based mods for +
+  movement through different terrain types. +
+
 - Make any code changes to support special tests or abilities for new races +
    (example: Sahuagin/Grung dehydration meter and swimming/diving abilities).
 

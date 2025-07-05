@@ -627,7 +627,8 @@ int hit_gain( CHAR_DATA *ch )
 
                 if ( ( ( ( IS_AFFECTED( ch, AFF_SWIM ) )
                 ||       ( is_affected( ch, gsn_swim ) ) )
-                &&     ( ch->form != FORM_SNAKE ) )
+                &&     ( ch->form != FORM_SNAKE )
+                &&     ( ch->level <= LEVEL_HERO ) )
                    && ( ch->in_room->sector_type != SECT_UNDERWATER )
                    && ( ch->in_room->sector_type != SECT_UNDERWATER_GROUND )
                    && ( ch->in_room->sector_type != SECT_WATER_SWIM )
@@ -636,6 +637,16 @@ int hit_gain( CHAR_DATA *ch )
                         affect_strip(ch, gsn_swim);
                         REMOVE_BIT(ch->affected_by, AFF_SWIM);
                         send_to_char("{cNo longer in the water, you stop swimming.{w\n\r", ch);
+                }
+
+                if ( ( ( ( IS_AFFECTED( ch, AFF_SWIM ) )
+                ||       ( is_affected( ch, gsn_swim ) ) )
+                &&       ( ch->level <= LEVEL_HERO ) )
+                    && ( ch->in_room->sector_type == SECT_WATER_NOSWIM ) )
+                {
+                        affect_strip(ch, gsn_swim);
+                        REMOVE_BIT(ch->affected_by, AFF_SWIM);
+                        send_to_char("{cThis water is not suitable for swimming in.{x\n\r", ch);
                 }
 
                 /* Gravity code was here */

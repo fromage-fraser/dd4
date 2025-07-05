@@ -621,6 +621,65 @@ const struct soar_points soar_list [ MAX_SOAR ] =
         {   753 },
 };
 
+/* base movement waitstate imposed by terrain type, see merc.h sector types for mappings */
+
+const struct ws_terrain ws_terrain_list  [ SECT_MAX + 1 ] =
+{
+        { 1 },
+        { 1 },
+        { 2 },
+        { 2 },
+        { 3 },
+        { 3 },
+        { 4 },
+        { 4 },
+        { 4 },
+        { 0 },
+        { 2 },
+        { 2 },
+        { 3 },
+        { 0 },
+};
+
+/* modifiers to terrain waitstate values by race */
+
+const struct ws_race_terrain ws_race_terrain_mod  [ MAX_RACE ] =
+{
+    /* SECT_INSIDE, SECT_CITY, SECT_FIELD, SECT_FOREST, SECT_HILLS,
+       SECT_MOUNTAIN, SECT_WATER_SWIM, SECT_WATER_NOSWIM, SECT_UNDERWATER, SECT_AIR,
+       SECT_DESERT, SECT_SWAMP, SECT_UNDERWATER_GROUND */
+
+       /* ws_race_terrain_mod[ch->race].race_mod[i] */
+
+       { { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 } },   /* RACE_NONE */
+       { { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 } },   /* RACE_HUMAN */
+       { { 0,  1,  0,  0, -1, -1,  0,  0,  0,  0,  0,  1,  0 } },   /* RACE_ELF */
+       { { 0,  1, -1, -1, -1,  0,  0,  0,  0,  0,  1,  1,  0 } },   /* RACE_WILD_ELF */
+       { { 1,  1,  0,  0,  0, -1,  0,  0,  0,  0,  0, -1,  0 } },   /* RACE_ORC */
+       { { 1,  1, -1,  1, -1, -1, -1, -1, -1,  1,  1,  1, -1 } },   /* RACE_GIANT */
+       { { 0,  0,  0, -1,  0,  0,  0,  0,  0,  0,  1,  0,  0 } },   /* RACE_SATYR */
+       { { 0,  0,  0,  1, -1,  0,  0,  0,  0,  0,  0, -1,  0 } },   /* RACE_OGRE */
+       { { 0,  0,  0, -1,  0, -1,  0,  0,  0,  1,  1, -1,  0 } },   /* RACE_GOBLIN */
+       { { 0,  1,  0,  1,  0, -1,  0,  0,  0,  0, -1,  0,  0 } },   /* RACE_HALF_DRAGON */
+       { { 0,  0, -1, -1,  0,  1,  0,  0,  0,  0,  0,  1,  0 } },   /* RACE_HALFLING */
+       { { 0,  0,  0,  0, -1, -1,  0,  0,  0,  0,  0,  1,  0 } },   /* RACE_DWARF */
+       { { 1,  0, -1, -1, -1,  0,  0,  0,  0,  1,  0,  1,  0 } },   /* RACE_CENTAUR */
+       { { 0, -1,  1,  1,  0, -1,  0,  0,  0,  0, -1,  0,  0 } },   /* RACE_DROW */
+       { { 1,  1,  0, -1,  0, -1,  0,  0,  0,  1,  0, -1,  0 } },   /* RACE_TROLL */
+       { { 0,  0, -1, -1, -1,  0,  0,  0,  0,  1,  1,  1,  0 } },   /* RACE_ALAGHI */
+       { { 0,  0, -1,  0,  0, -1,  0,  0,  0,  0,  0,  0,  0 } },   /* RACE_HOBGOBLIN */
+       { { 0,  0, -1, -1,  0,  1, -1,  1,  0,  0, -1,  1,  0 } },   /* RACE_YUAN_TI */
+       { { 0,  0,  0, -1,  1,  1,  0,  0,  0, -1,  0,  1,  0 } },   /* RACE_FAE */
+       { { 0,  0,  1,  1,  1,  1, -2, -2, -2,  1,  2, -1, -2 } },   /* RACE_SAHUAGIN */
+       { { 0,  1,  0,  0,  0, -1,  0,  0,  0, -1, -1, -1,  0 } },   /* RACE_TIEFLING */
+       { { 1, -1, -1,  1, -1, -1,  0,  0,  0,  1,  0,  0,  0 } },   /* RACE_JOTUN */
+       { { 0,  0,  0,  0,  0,  0,  0,  0,  0, -1, -1,  0,  0 } },   /* RACE_GENASI */
+       { { 0,  1,  0,  0,  0,  0,  0,  0,  0, -1,  1, -1,  0 } },   /* RACE_ILLITHID */
+       { { 0,  0,  0,  0,  1,  1, -2, -2, -2,  0,  2, -2, -2 } },   /* RACE_GRUNG */
+       { { 0,  0,  1,  0, -1, -1,  0,  0,  0,  0,  0, -1,  0 } },   /* RACE_DUERGAR */
+
+};
+
 
 /*
  * Clan titles
