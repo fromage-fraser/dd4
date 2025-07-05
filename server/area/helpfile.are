@@ -630,6 +630,8 @@ Gezhp, Owl and Shade
 
 - Omu - Sovereign Quarter complete and in
 - Added instance-limiting and spawn-counting for objects
+- Movement waitstates are (subtly!) affected by multiple things now
+- You can use %c to put the next command in your buffer in your prompt
 
 ~
 
@@ -2272,6 +2274,7 @@ PROMPT <<%*> creates a prompt where %* represents the following variables:
     %x :  Total experience points
     %z :  Name of the area ("{Wz{xone") your character is in
     %e :  Experience needed to level
+    %c :  Displays next command in your input buffer
     %u :  Number of bonus actions available
     %U :  Maximum number of bonus actions possible
     %g :  Coins carried
