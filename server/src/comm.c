@@ -1397,7 +1397,24 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
                         i = "";
                         if(IS_SET(ch->act, PLR_ANSI) || IS_SET(ch->act, PLR_VT100)) i = NTEXT;
                         break;
+                    case 'c':
+                        if (d->inbuf[0] != '\0')
+                        {
+                            char *newline = strchr(d->inbuf, '\n');
+                            if (newline)
+                                *newline = '\0';
 
+                            snprintf(buf2, sizeof(buf2), "%-.50s", d->inbuf);
+
+                            if (newline)
+                                *newline = '\n';  // restore original newline
+                        }
+                        else
+                        {
+                            snprintf(buf2, sizeof(buf2), "...");
+                        }
+                        i = buf2;
+                        break;
                     case 'h' :
                         sprintf(buf2, "%d", ch->hit);
                         i = buf2;
