@@ -166,6 +166,8 @@ no_magic            Magic cannot be used in this area.
 exp_mod NUMBER      An experience point modifier will be applied to all mobs
                     killed in this area.  100 == no change, 50 == halved, 200 ==
                     doubled, etc.
+reset_msg STRING    Reset message that will replace the default. Put a return at
+                    the end of the line and terminate with a tilde (~).
 
 An example #AREA_SPECIAL section follows:
 
@@ -173,6 +175,8 @@ An example #AREA_SPECIAL section follows:
 exp_mod 120
 no_teleport
 no_quest
+reset_msg A fell wind blows through the forest.
+~
 $
 
 

@@ -6571,25 +6571,29 @@ void do_cando (CHAR_DATA *ch, char *argument)
 
 void do_reset (CHAR_DATA *ch, char *argument)
 {
-        char buf[MAX_STRING_LENGTH];
-        CHAR_DATA *pch;
+    char buf[MAX_STRING_LENGTH];
+    CHAR_DATA *pch;
+    AREA_DATA *area = ch->in_room->area;
 
-        if (!authorized(ch, gsn_reset))
-                return;
+    if (!authorized(ch, gsn_reset))
+        return;
 
-        reset_area(ch->in_room->area);
+    reset_area(area);
 
-        for (pch = char_list; pch; pch = pch->next)
+    for (pch = char_list; pch; pch = pch->next)
+    {
+        if (!IS_NPC(pch) && IS_AWAKE(pch) && pch->in_room
+            && pch->in_room->area == area)
         {
-                if (!IS_NPC(pch) && IS_AWAKE(pch) && pch->in_room
-                    && pch->in_room->area == ch->in_room->area)
-                {
-                        send_to_char( "You hear the patter of little feet.\n\r", pch );
-                }
+            if (area->reset_message && area->reset_message[0] != '\0')
+                send_to_char(area->reset_message, pch);
+            else
+                send_to_char("You hear the patter of little feet.\n\r", pch);
         }
+    }
 
-        sprintf(buf, "Area: %s reset.\n\r", ch->in_room->area->name);
-        send_to_char(buf, ch);
+    sprintf(buf, "Area: %s reset.\n\r", area->name);
+    send_to_char(buf, ch);
 }
 
 

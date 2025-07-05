@@ -1,6 +1,10 @@
 #AREA   Diku~    Haon Dor~
 5 10 0 100
 
+#AREA_SPECIAL
+reset_msg A fell wind blows through the forest.
+~
+$
 
 #MOBILES
 #6000
