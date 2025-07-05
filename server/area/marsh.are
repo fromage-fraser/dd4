@@ -1,6 +1,11 @@
 #AREA   Generic~ Old Marsh~
 15 25 0 100
 
+#AREA_SPECIAL
+reset_msg Distant croaks echo through the mire.
+~
+$
+
 
 #MOBILES
 #8301

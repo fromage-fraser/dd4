@@ -3143,6 +3143,7 @@ struct area_data
         int                     container_reset_timer;  /* Poor little cpu; Gezhp */
         unsigned long int       area_flags;
         int                     exp_modifier;
+        char                    *reset_message;
 };
 
 

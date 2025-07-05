@@ -1645,6 +1645,14 @@ void load_area_special (FILE *fp)
                                 area_last->exp_modifier = num;
                 }
 
+                else if (!str_cmp(next, "reset_msg"))
+                {
+                    if (area_last->reset_message)
+                        free_string(area_last->reset_message);
+
+                    area_last->reset_message = fread_string(fp);
+                }
+
                 else
                 {
                         sprintf(buf, "load_area_special: area '%s' has unknown flag '%s' (ignoring)",

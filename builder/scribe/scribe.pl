@@ -398,7 +398,7 @@ my %game_str = (
 
 my @area_specials = qw /
         school      no_quest    hidden      safe
-        no_teleport no_magic    exp_mod
+        no_teleport no_magic    exp_mod     reset_msg
 /;
 
 
@@ -484,7 +484,7 @@ while (1) {
                 next;
             }
 
-            next if &add_field_data(\%special, $field, $data, 'af xp');
+            next if &add_field_data(\%special, $field, $data, 'af xp rm');
             print "    line $line: special: unknown field '$field'\n";
         }
 
@@ -530,7 +530,7 @@ while (1) {
                 next;
             }
 
-            next if &add_field_data(\%special, $field, $data, 'af xp');
+            next if &add_field_data(\%special, $field, $data, 'af xp rm');
             print "    line $line: special: unknown field '$field'\n";
         }
 
@@ -2432,6 +2432,11 @@ if (@special) {
         if ($special{'xp'})
         {
             print AREA "exp_mod $special{'xp'}\n";
+        }
+
+        if ($special{'rm'})
+        {
+            print AREA "reset_msg $special{'rm'}\n~\n";
         }
     }
 
