@@ -1088,6 +1088,15 @@ struct soar_points
         int destination;
 };
 
+struct ws_terrain
+{
+        int ws_base;
+};
+struct ws_race_terrain
+{
+        int race_mod [ 14 ]; /* SECT_MAX + 1 */
+
+};
 
 struct sub_class_type
 {
@@ -4106,6 +4115,8 @@ extern const    struct rank                     rank_table              [ MAX_RA
 extern const    struct social_type              social_table            [ ];
 extern const    struct pattern_points           pattern_list            [ MAX_PATTERN ];
 extern const    struct soar_points              soar_list               [ MAX_SOAR ];
+extern const    struct ws_terrain               ws_terrain_list         [ SECT_MAX + 1 ];
+extern const    struct ws_race_terrain          ws_race_terrain_mod     [ MAX_RACE ];
 extern const    struct HERB                     herb_table              [ MAX_HERBS ];
 extern const    struct SMOKEABLE                smokeable_table         [ MAX_SMOKEABLES ];
 extern const    struct PIPE                     pipe_table              [ MAX_PIPES ];
@@ -4904,6 +4915,7 @@ int   calc_aff_score                          (int apply, int level);
 /* act_move.c */
 void move_char                          args( ( CHAR_DATA *ch, int door ) );
 int  find_door                          args( ( CHAR_DATA *ch, char *arg ) );
+int  get_move_ws                        args( ( CHAR_DATA *ch, int sect ) );
 ED * get_exit                           args( ( ROOM_INDEX_DATA *room, int dir ) );
 
 /* act_obj.c */

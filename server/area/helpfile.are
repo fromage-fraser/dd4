@@ -2975,9 +2975,9 @@ come out of shadow form.
 Syntax: swim
 
 This physical skill will enable you to travel through swimmable water zones,
-will reduce the movement cost of doing so, and will provide a small bonus to
-your combat skill in aquatic environments.  You will automatically stop
-swimming once you're out of the water.
+will reduce the movement and waitstate cost of doing so, and will provide a
+small bonus to your combat skill in aquatic environments.  You will
+automatically stop swimming once you're out of a suitable body of water.
 ~
 
 0 SPELLS~

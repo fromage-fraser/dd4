@@ -680,13 +680,8 @@ void move_char(CHAR_DATA *ch, int door)
 
                 if (!IS_IMMORTAL( ch ))
                 {
-                        if (IS_AFFECTED(ch, AFF_SLOW))
-                        {
-                            WAIT_STATE(ch, 3);
-                        }
-                        else {
-                            WAIT_STATE(ch, 1);
-                        }
+                        WAIT_STATE(ch, get_move_ws(ch, in_room->sector_type));
+
                         if (is_affected(ch, gsn_mount))
                                 ch->move -= 1;
                         else
@@ -819,6 +814,16 @@ void move_char(CHAR_DATA *ch, int door)
                 send_to_char("{cNo longer in the water, you stop swimming.{x\n\r", ch);
         }
 
+        if ( ( ( ( IS_AFFECTED( ch, AFF_SWIM ) )
+        ||       ( is_affected( ch, gsn_swim ) ) )
+        &&       ( ch->level <= LEVEL_HERO ) )
+            && ( ch->in_room->sector_type == SECT_WATER_NOSWIM ) )
+        {
+                affect_strip(ch, gsn_swim);
+                REMOVE_BIT(ch->affected_by, AFF_SWIM);
+                send_to_char("{cThis water is not suitable for swimming in.{x\n\r", ch);
+        }
+
         /* Lets check we're a pc BEFORE we call the trigger */
         if (!IS_NPC(ch))
         {
@@ -861,6 +866,202 @@ void do_up(CHAR_DATA *ch, char *argument)
 void do_down(CHAR_DATA *ch, char *argument)
 {
     move_char(ch, DIR_DOWN);
+}
+
+int get_move_ws(CHAR_DATA *ch, int sect)
+{
+    /* Determine your room-to-room waitstate based on terrain and other factors */
+
+    /* A lot of commented-out variables etc in here for testing, feel free to delete if they
+       offend your aesthetic sensibilities. ;) --Owl 5/7/25 */
+
+    /* char buf [MAX_STRING_LENGTH]; */
+    int ws;
+/*     int ws_prerace;
+    int ws_postrace;
+    int ws_postspeed;
+    int ws_postslow;
+    int ws_postfly;
+    int ws_postswim;
+    int ws_postflymount;
+    int ws_postswimmount;
+    int ws_postspeedmount;
+    int ws_postslowmount;
+    int ws_postsanitise; */
+
+    ws = 0;
+/*     ws_prerace = 0;
+    ws_postrace = 0;
+    ws_postspeed = 0;
+    ws_postslow = 0;
+    ws_postfly = 0;
+    ws_postswim = 0;
+    ws_postflymount = 0;
+    ws_postswimmount = 0;
+    ws_postspeedmount = 0;
+    ws_postslowmount = 0;
+    ws_postsanitise = 0; */
+
+
+    ws = ws_terrain_list[sect].ws_base;
+    /* ws_prerace = ws; */
+
+    if (!is_affected(ch, gsn_mount)
+        && !ch->mount)
+    {
+        ws = ws + ws_race_terrain_mod[ch->race].race_mod[sect];
+        /* ws_postrace = ws; */
+
+        if ( is_affected(ch, gsn_haste)
+        || is_affected(ch, gsn_quicken)
+        || (ch->swiftness > 50))
+        {
+            ws = ws - 1;
+        }
+       /*  ws_postspeed = ws; */
+
+        if (IS_AFFECTED(ch, AFF_FLYING))
+        {
+            if ( sect == SECT_WATER_NOSWIM
+             ||  sect == SECT_UNDERWATER
+             ||  sect == SECT_UNDERWATER_GROUND )
+            {
+                ws = ws - 1;
+            }
+            else {
+                ws = 1;
+            }
+        }
+
+       /*  ws_postfly = ws; */
+
+        if (IS_AFFECTED( ch, AFF_SWIM ))
+        {
+            if ( sect == SECT_UNDERWATER
+             ||  sect == SECT_UNDERWATER_GROUND )
+            {
+                ws = ws - 1;
+            }
+        }
+        /* ws_postswim = ws; */
+
+        if ( is_affected(ch, gsn_slow)
+        || IS_AFFECTED(ch, AFF_SLOW))
+        {
+            ws = ws * 2;
+        }
+        /* ws_postslow = ws; */
+
+        if ( ws < 1
+        &&   sect != SECT_AIR )
+        {
+            ws = 1;
+        }
+
+        if ( ws < 1
+        &&   sect == SECT_AIR )
+        {
+            ws = 0;
+        }
+
+        if ( ws > 4
+        &&  !is_affected(ch, gsn_slow) )
+        {
+            ws = 4;
+        }
+
+        /* ws_postsanitise = ws; */
+    }
+    else {
+
+         if ( is_affected(ch->mount, gsn_haste)
+        || is_affected(ch->mount, gsn_quicken)
+        || (ch->mount->swiftness > 50))
+        {
+            ws = ws - 1;
+        }
+        /* ws_postspeedmount = ws; */
+
+        if (IS_AFFECTED(ch->mount, AFF_FLYING))
+        {
+            if ( sect == SECT_WATER_NOSWIM
+             ||  sect == SECT_UNDERWATER
+             ||  sect == SECT_UNDERWATER_GROUND )
+            {
+                ws = ws - 1;
+            }
+            else {
+                ws = 1;
+            }
+        }
+        /* ws_postflymount = ws; */
+
+        if (IS_AFFECTED( ch->mount, AFF_SWIM ))
+        {
+            if ( sect == SECT_UNDERWATER
+             ||  sect == SECT_UNDERWATER_GROUND )
+            {
+                ws = ws - 1;
+            }
+        }
+       /*  ws_postswimmount = ws; */
+
+        if ( is_affected(ch->mount, gsn_slow)
+        || IS_AFFECTED(ch->mount, AFF_SLOW))
+        {
+            ws = ws * 2;
+        }
+        /* ws_postslowmount = ws; */
+
+        if ( ws < 1
+        &&   sect != SECT_AIR )
+        {
+            ws = 1;
+        }
+
+        if ( ws < 1
+        &&   sect == SECT_AIR )
+        {
+            ws = 0;
+        }
+
+        if ( ws > 4
+        &&  !is_affected(ch->mount, gsn_slow) )
+        {
+            ws = 4;
+        }
+
+        /* ws_postsanitise = ws; */
+
+    }
+
+/*     if (!is_affected(ch, gsn_mount)
+        && !ch->mount)
+    {
+        sprintf( buf, "\nSector type: %s\nBefore race_mod: %d\nAfter race mod: %d\nAfter speed check: %d\nAfter fly check: %d\nAfter swim check: %d\nAfter slow check: %d\nPost sanitisation: %d\n",
+            sector_name(sect),
+            ws_prerace,
+            ws_postrace,
+            ws_postspeed,
+            ws_postfly,
+            ws_postswim,
+            ws_postslow,
+            ws_postsanitise);
+        log_string(buf);
+    }
+    else {
+        sprintf( buf, "\nSector type: %s\nAfter mount speed check: %d\nAfter mount fly check: %d\nAfter mount swim check: %d\nAfter mount slow check: %d\nPost sanitisation: %d\n",
+            sector_name(sect),
+            ws_postspeedmount,
+            ws_postflymount,
+            ws_postswimmount,
+            ws_postslowmount,
+            ws_postsanitise);
+        log_string(buf);
+    } */
+
+    return ws;
+
 }
 
 
