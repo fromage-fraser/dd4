@@ -20,6 +20,9 @@
 {&gsn_know_alignment,           &gsn_detect_evil,       50,     11},
 {&gsn_know_alignment,           &gsn_group_divination,  50,     11},
 
+{&gsn_sense_wisdom,             &gsn_know_alignment,    50,     11},
+{&gsn_sense_wisdom,             &gsn_group_divination,  55,     11},
+
 
 /* **** GROUP ALTERATION **** */
 

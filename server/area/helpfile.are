@@ -632,6 +632,7 @@ Gezhp, Owl and Shade
 - Added instance-limiting and spawn-counting for objects
 - Movement waitstates are (subtly!) affected by multiple things now
 - You can use %c to put the next command in your buffer in your prompt
+- sense wisdom spell added
 
 ~
 
@@ -3649,6 +3650,15 @@ This spell enables the caster to detect evil characters, which will reveal
 a characteristic red aura.
 ~
 
+0 'SENSE WISDOM'~
+Syntax: cast 'sense wisdom'
+
+This spell makes the caster sensitive to an individual's wisdom and knowledge
+levels, allowing him to determine if they may be capable of teaching and
+training others.  It also provides a small boost to the caster's personal wisdom.
+~
+
+
 0 'DETECT GOOD'~
 Syntax: cast 'detect good'
 
@@ -5829,6 +5839,7 @@ holy word               unholy word             detect good
 blink                   second attack           pattern
 invis                   teleport                knock
 create spring           control weather         detect curse
+sense wisdom
 
 True clerics (those that don't change to templars or druids) may also
 learn these skills above level 30:
@@ -5915,6 +5926,7 @@ fireball                mass invis              sense traps
 acid blast              pass door               dispel magic
 second spell            detect evil             detect good
 pattern                 breathe water           detect curse
+sense wisdom
 
 True mages (those who don't change to warlocks or necromancers) may also
 learn these skills above level 30:

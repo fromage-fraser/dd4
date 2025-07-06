@@ -690,6 +690,7 @@ int     gsn_bonus_attack;
 int     gsn_bonus_resilience;
 int     gsn_bonus_exotic;
 int     gsn_bonus_initiate;
+int     gsn_sense_wisdom;
 
 
 /*
@@ -2067,14 +2068,14 @@ void load_objects( FILE *fp )
                         }
                         else if ( letter == 'M' )
                         {
-                            log_string("Reading max_instances...");
+                                /* log_string("Reading max_instances..."); */
                                 pObjIndex->max_instances = fread_number(fp, &stat);
 
                                 /* Consume newline to ensure clean state */
                                 fread_to_eol(fp);
 
-                                bug("Set max_instances to %d", pObjIndex->max_instances);
-                                bug("for vnum %d", pObjIndex->vnum);
+                                /* bug("Set max_instances to %d", pObjIndex->max_instances);
+                                bug("for vnum %d", pObjIndex->vnum); */
                         }
                         else if ( letter == 'E' )
                         {

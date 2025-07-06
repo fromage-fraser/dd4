@@ -1976,6 +1976,7 @@ paints, smokeables, and pills.
                   freedom                    fleshrot
                regenerate                  possession
                   release                clairvoyance
+             sense wisdom
 
 
 If you have any questions about area writing, please contact any of the

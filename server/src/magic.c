@@ -10171,6 +10171,26 @@ void spell_fleshrot (int sn, int level, CHAR_DATA *ch, void *vo)
         return;
 }
 
+void spell_sense_wisdom( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+        CHAR_DATA  *victim = (CHAR_DATA *) vo;
+        AFFECT_DATA af;
+
+        if ( is_affected( victim, gsn_sense_wisdom ) )
+                return;
+
+        af.type      = sn;
+        af.duration  = 5 + (level/2);
+        af.location  = APPLY_WIS;
+        af.modifier  = 1 + (level >= 25) + (level >= 40);
+        af.bitvector = 0;
+        affect_to_char( victim, &af );
+
+        send_to_char( "You are keenly aware of the wisdom of others.\n\r", victim );
+
+        return;
+}
+
 /*
  * Some affect types cannot be dispelled
  */
