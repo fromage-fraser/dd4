@@ -974,6 +974,13 @@ mp give_prog clasp radiant
     endif
     endif
 ~
+mp fight_prog 5
+   cast nausea $n
+~
+
+mp fight_prog 6
+   cast confusion $n
+~
 
 
 # OBJECTS

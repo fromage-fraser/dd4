@@ -885,6 +885,12 @@ fear, and an unshakable belief in her own superiority.
     endif
     endif
 ~
+>fight_prog 5~
+   cast nausea $n
+~
+>fight_prog 6~
+   cast confusion $n
+~
 |
 < reserved~ boss~
 #0

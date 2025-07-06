@@ -2632,6 +2632,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_know_alignment,                          0 },
         { &gsn_psychometry,                             0 },
         { &gsn_clairvoyance,                            0 },
+        { &gsn_sense_wisdom,                            0 },
 
 
         { &gsn_group_death,                             0 },
@@ -6955,6 +6956,13 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "bonus initiate", "Your opening attack reduces in potency."
+        },
+
+        {
+                "sense wisdom", &gsn_sense_wisdom,
+                TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384|131072,
+                spell_sense_wisdom, 5, 1,
+                "", "Your judgment weakens."
         },
 
         /*

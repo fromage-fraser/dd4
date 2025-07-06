@@ -373,9 +373,9 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   614     /* 610 +4 for bonus types 3/1/25 */
-#define MAX_PRE_REQ                 1572    /* +2 for tenketsu (martial artist) 31/12/24 */
-#define MAX_SPELL_GROUP             468     /* +1 martial artist skill Owl 31/12/24 */
+#define MAX_SKILL                   615     /* 614 +1 for sense wisdom 6/7/25 */
+#define MAX_PRE_REQ                 1574    /* +2 for sense wisdom 6/7/25  */
+#define MAX_SPELL_GROUP             469     /* +1 sense wisdom Owl 6/7/25 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
 #define MAX_FORM_SKILL              74      /* 73 + 1 for 'swallow' | for form skill table */
 #define MAX_VAMPIRE_GAG             25      /* 26 - 1 so vamps get morph again for bat form | ugly vampire/werewolf hack */
@@ -2350,10 +2350,10 @@ extern  WANTED_DATA *wanted_list_last;
 #define EGO_ITEM_TURRET_MODULE          BIT_7
 #define EGO_ITEM_CHAINED                BIT_8
 #define EGO_ITEM_STRENGTHEN             BIT_9
-#define EGO_ITEM_CONSTRUCTED            BIT_10 /* for any constructed weapon */
-#define EGO_ITEM_EMPOWERED              BIT_11 /*Empowered weapon */
+#define EGO_ITEM_CONSTRUCTED            BIT_10 /* For any constructed weapon */
+#define EGO_ITEM_EMPOWERED              BIT_11 /* Empowered weapon */
 #define EGO_ITEM_ENGRAVED               BIT_12 /* ENGRAVED armour */
-#define EGO_ITEM_SERRATED               BIT_13 /*Serated weapon */
+#define EGO_ITEM_SERRATED               BIT_13 /* Serrated weapon */
 #define EGO_ITEM_INSCRIBED              BIT_14
 
 
@@ -3966,6 +3966,7 @@ extern int gsn_bonus_attack;
 extern int gsn_bonus_resilience;
 extern int gsn_bonus_exotic;
 extern int gsn_bonus_initiate;
+extern int gsn_sense_wisdom;
 
 /*
  *  Deity gsns
@@ -4806,6 +4807,7 @@ DECLARE_SPELL_FUN( spell_fleshrot               );
 DECLARE_SPELL_FUN( spell_regenerate             );
 DECLARE_SPELL_FUN( spell_release                );
 DECLARE_SPELL_FUN( spell_clairvoyance           );
+DECLARE_SPELL_FUN( spell_sense_wisdom           );
 
 
 #define MOB_VNUM_SKELETON  3404
