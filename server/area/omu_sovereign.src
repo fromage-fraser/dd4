@@ -982,7 +982,6 @@ mp fight_prog 6
    cast confusion $n
 ~
 
-
 # OBJECTS
 
 $obj
