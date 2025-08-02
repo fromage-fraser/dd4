@@ -402,7 +402,7 @@ Enter thy Name: ~
 
 -1 MOTD~
 {x
-    [02 July 2025]
+    [02 August 2025]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -415,11 +415,10 @@ Enter thy Name: ~
     We're also active on a Discord server at {Yhttps://discord.gg/aGzmAWmXYb{x
     if you'd like to jump in and say hi!
 
+    {WNEW SKILL - 'DIG'{x: Players may now DIG for buried loot!  See HELP DIG.
+
     {WNEW AREA: OMU - SOVEREIGN QUARTER IS IN{x: Completes the Omu section of
     the undersea megacity.
-
-    {WBONUS SYSTEM IS IN{x: High-level characters now have access to a variety
-    of bonus actions, see HELP BONUS for details
 
 
 To Enter the Dragons Domain press <<Return>.
@@ -633,6 +632,11 @@ Gezhp, Owl and Shade
 - Movement waitstates are (subtly!) affected by multiple things now
 - You can use %c to put the next command in your buffer in your prompt
 - sense wisdom spell added
+
+{W August 2025{x
+
+- dig ability, item types "digging implement" and "hoard" added, many supporting
+  changes
 
 ~
 
