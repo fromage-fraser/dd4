@@ -615,16 +615,16 @@ pick~
 a pick~
 A pick rests here.~
 ~
-5 0 1|32768
-0~ 0~ 0~ 2~
+6 0 1|32768
+20~ 30~ 55~ 70~
 10 0 0
 #15932
 shovel~
 a shovel~
 A shovel rests here.~
 ~
-5 0 1|32768
-0~ 0~ 0~ 7~
+6 0 1|32768
+19~ 30~ 55~ 69~
 10 0 0
 #15933
 rubble~
@@ -733,6 +733,22 @@ A
 2 -3
 A
 14 -100
+#15943
+sledgehammer~
+a sledgehammer~
+A sledgehammer rests here.~
+~
+5 0 1|32768
+0~ 0~ 0~ 8~
+20 0 0
+#15944
+ore chisel~
+an ore chisel~
+An ore chisel rests here.~
+~
+5 0 1|32768
+0~ 0~ 0~ 2~
+3 0 0
 #0
 
 
@@ -1616,32 +1632,39 @@ E 1 15929 1 8
 E 1 15930 1 3
 *
 M 1 15917 10 15932                   loads gnoll slave
-E 1 15931 1 16
+E 1 15943 1 16
 E 1 15942 1 7
 G 1 15933 1
+G 1 15932 1
 M 1 15917 10 15937                   loads gnoll slave
-E 1 15932 1 16
+E 1 15944 1 16
 E 1 15942 1 7
 G 1 15933 1
+G 1 15932 1
 M 1 15917 10 15938                   loads gnoll slave
-E 1 15931 1 16
+E 1 15943 1 16
 E 1 15942 1 7
 G 1 15933 1
+G 1 15932 1
 M 1 15917 10 15939                   loads gnoll slave
-E 1 15932 1 16
+E 1 15944 1 16
 E 1 15942 1 7
 G 1 15933 1
+G 1 15932 1
 M 1 15917 10 15940                   loads gnoll slave
-E 1 15931 1 16
+E 1 15943 1 16
 E 1 15942 1 7
 G 1 15933 1
+G 1 15932 1
 *
 M 1 15918 4 15938                    loads ogre slave
-E 1 15932 1 16
+E 1 15944 1 16
 E 1 15942 1 7
+G 1 15931 1
 M 1 15918 4 15940                    loads ogre slave
-E 1 15931 1 16
+E 1 15943 1 16
 E 1 15942 1 7
+G 1 15931 1
 *
 M 1 15919 1 15939                    loads flind
 E 1 15935 1 16

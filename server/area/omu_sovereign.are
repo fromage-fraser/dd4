@@ -1343,6 +1343,33 @@ A
 18 10
 A
 40 -1
+
+#28734
+hoard~
+a hoard~
+A partially-buried pile of gold coins is here.~
+~
+7 0 0
+100~ 1~ 150~ 150~
+1 0 0
+
+#28735
+pile gold coins~
+a pile of gold coins~
+A gleaming pile of gold coins lies here.~
+~
+20 0 1
+0~ 0~ 145~ 0~
+3 0 0
+
+#28736
+hefty trowel~
+a hefty trowel~
+A hefty trowel has been abandoned here.~
+~
+6 0 1|16384
+20~ 40~ 120~ 95~
+3 0 65
 #0
 
 #ROOMS
@@ -2729,6 +2756,9 @@ I 28707 65 28435 1              a smoking forge to Chiefsguard Armoury
 I 28708 65 28435 1              a gleaming anvil to Chiefsguard Armoury
 I 28709 65 28435 1              a sturdy metal workbench to Chiefsguard Armoury
 I 28729 70 28413 1              a shimmering portal to Chief's Quarters
+I 28734 1 28421 1               a hoard to Sovereign Quarter - G'Diehn Way - Lower
+P 0 28735 0 28734               put a pile of gold coins inside a hoard
+I 28736 65 28421 1              a hefty trowel to Sovereign Quarter - G'Diehn Way - Lower
 S
 
 #SHOPS

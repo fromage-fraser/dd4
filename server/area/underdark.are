@@ -2920,6 +2920,14 @@ A workbench for magical crafting stands here.~
 41 64 0
 10~ 0~ 0~ 0~
 1000 0 0
+#16097
+duergar pickaxe~
+a duergar pickaxe~
+A gleaming pickaxe of duergar make lies ready.~
+~
+6 0 1|16384
+19~ 43~ 129~ 90~
+1 10000 70
 #0
 
 
@@ -15429,6 +15437,7 @@ G 1 16051 0         ; give helm
 G 1 16052 0         ; give shield
 G 1 16053 0         ; give leggings
 G 1 16054 0         ; give bracer
+G 1 16097 0         ; give pickaxe
 *
 M 1 16076 1 16359           ; loads Satori, jeweller
 *
@@ -15997,7 +16006,7 @@ S
 16065 0 0 0 0 0 120 50 0 23         ; bar tender
 16073 2 3 4 10 0 150 75 0 23            ; yie'stei, magic
 16074 5 0 0 0 0 40 100 0 23         ; zae'tres, weapon
-16075 9 0 0 0 0 40 100 0 23         ; raesarnt, armour
+16075 9 6 0 0 0 40 100 0 23         ; raesarnt, armour
 16076 8 20 0 0 0 150 90 0 23            ; Satori, jeweller
 16077 19 26 0 0 0 150 60 0 23           ; Jiestis, food
 16118 0 0 0 0 0 150 75 0 23         ; inn keep

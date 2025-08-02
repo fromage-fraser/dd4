@@ -310,7 +310,7 @@ the treasure guardian~
 ~
 The golden statue seems most lifelike.
 ~
-2|4|32|64|4096 8|32|512|8388608 0 S
+2|4|32|64|4096|134217728 8|32|512|8388608 0 S
 84 0 0 0d0+0 0d0+0
 304 0
 8 8 0

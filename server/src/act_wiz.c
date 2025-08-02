@@ -1243,8 +1243,20 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 strcat( buf1, buf );
         }
 
-        sprintf( buf, "Max instances: {W%d{x  Spawn count: {W%d{x\n\r", pObjIndex->max_instances, pObjIndex->spawn_count );
-        strcat( buf1, buf );
+        if (pObjIndex->max_instances == 0)
+        {
+                sprintf(buf,
+                        "Max instances: {Gunlimited{x  Spawn count: {W%d{x\n\r",
+                        pObjIndex->spawn_count);
+        }
+        else
+        {
+                sprintf(buf,
+                        "Max instances: {W%d{x  Spawn count: {W%d{x\n\r",
+                        pObjIndex->max_instances,
+                        pObjIndex->spawn_count);
+        }
+        strcat(buf1, buf);
 
         if (obj->item_type == 52)
         {
@@ -4886,7 +4898,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
         if ( !str_cmp( arg2, "swiftness" ) )
         {
-                if ( value < 0 || value >= 100 )
+                if ( value < 0 || value > 100 )
                 {
                         char buf [ MAX_STRING_LENGTH ];
 

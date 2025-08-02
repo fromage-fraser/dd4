@@ -138,8 +138,8 @@ shovel~
 a shovel~
 A shovel is lying here.~
 ~
-5 0 8193
-0~ 1~ 5~ 7~
+6 0 8193
+25~ 16~ 39~ 83~
 8 30 10
 E
 shovel~
@@ -150,8 +150,8 @@ rake~
 a rake~
 A rake is lying here.~
 ~
-5 0 8193
-0~ 1~ 4~ 5~
+6 0 8193
+26~ 15~ 40~ 85~
 8 30 10
 E
 rake~

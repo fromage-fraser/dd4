@@ -1824,6 +1824,14 @@ A small silver talisman lies here~
 1 0 0
 A
 4 1
+#10312
+wooden shovel simple~
+a simple wooden shovel~
+A wooden shovel carved from a single plank of oak is here.~
+~
+6 0 1|16384
+34~ 9~ 26~ 150~
+1 10000 10
 #0
 
 
@@ -4584,6 +4592,7 @@ M 0 10221 1 10236       Janni
 G 1 10263 1                  load charm of solace
 G 1 10264 1                  load ring of solace
 G 1 10265 1                  load earrings of solace
+G 1 10312 1                  load wooden shovel
 *
 M 0 10222 1 10237       Nisi
 G 1 10266 1                  load frozen pizza crust
@@ -4941,7 +4950,7 @@ S
  10214   0  0  0  0  0   110 100    0 23   ; Ghost of Barkeep
  10219   0  0  0  0  0   110 100    4 20   ; Jhen
  10220   0  0  0  0  0   110 100    4 20   ; Krista
- 10221   0  0  0  0  0   125 75     4 20   ; Janni
+ 10221   6  0  0  0  0   125 75     4 20   ; Janni
  10222   5  9  19  0  0  125 75     4 20   ; Nisi
  10223   10  0  0  0  0  125 75     4 20   ; Molin
  10224   0  0  0  0  0   125 75     4 20   ; Rashan

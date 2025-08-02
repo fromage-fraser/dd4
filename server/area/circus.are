@@ -316,7 +316,7 @@ of the cheapness of the Circus Owner.
 #4425
 unicorn horse white~
 a poor horse~
-A poor white horse is here, about to have a horn implanted in it's head.
+A poor white horse is here, about to have a horn implanted in its head.
 ~
 This poor animal had the unfortunate luck of being white.  Just what the
 Circus Owner was looking for.
@@ -2030,8 +2030,8 @@ M 0 4423 2 4432         Bear
 M 0 4424 1 4433         Horse
 M 0 4425 1 4442         poor white horse
 M 0 4426 1 4442         Circus Owner
-O 0 4428 0 4443                 safe in secret room
 E 1 4448 1 16                   scalpel
+O 0 4428 0 4443                 safe in secret room
 O 1 4427 0 4442                         combination slip
 P 1 4412 0 4428                 put coins in safe
 P 1 4451 0 4428                 put small diamond in safe

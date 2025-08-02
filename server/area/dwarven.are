@@ -351,6 +351,15 @@ They are in a circular container, and there are numbers corresponding
 to the day that they are to be taken.  You can tell they haven't been
 used for a while.
 ~
+
+#6520
+pick~
+a mining pick~
+There is a mining pick here.~
+~
+6 256 1|16384
+40~ 14~ 40~ 145~
+1 300 13
 #0
 
 
@@ -1286,7 +1295,7 @@ M 0 6517 2 6548  giant snakes
 M 0 6517 2 6549
 O 0 6516 1 6532  maze key
 O 0 6517 6 6545  coal
-O 0 6518 3 6551
+O 0 6520 3 6551
 M 0 6500 2 6512
 E 1 6508 10 16
 M 0 6500 2 6512

@@ -7309,7 +7309,7 @@ E 1 9559 100 1
 E 1 9559 100 2
 O 1 9560 100 9505           a large black box to Herne's lounge
 O 1 9561 100 9511           a four-postered bed to Herne's bedroom
-O 1 9562 100 9511           a torture rack to Herne's bedroom
+O 1 9562 1 9511           a torture rack to Herne's bedroom
 *
 M 1 9511 1 9511         Herne to Herne's bedroom
 E 1 9563 100 6
@@ -7665,11 +7665,11 @@ O 1 9703 100 9555           balls in space to The Galleria
 O 1 9704 100 9554           coffin to The Galleria
 P 1 9705 100 9696           a simple black key to container steel ball exhibit
 O 1 9706 100 9560           nook to The haul
-O 1 9707 100 9560           cranny to The haul
 P 1 9708 100 9706           gold coins in bags to container nook nooks
+O 1 9707 100 9560           cranny to The haul
+P 1 9709 100 9707           a fiery pill to container cranny crannies crannys
 *
 M 1 9552 1 9539         the shadowthief to A bend in the corridor
-P 1 9709 100 9707           a fiery pill to container cranny crannies crannys
 E 1 9710 100 5
 E 1 9711 100 16
 E 1 9711 100 18

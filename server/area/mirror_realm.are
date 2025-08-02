@@ -1614,8 +1614,8 @@ hoe~
 a hoe~
 A hoe lies here.~
 ~
-5 64 1|8192
-0~ 1~ 6~ 7~
+6 0 1|8192
+22~ 28~ 52~ 74~
 5 0 0
 #19066
 robe white~
@@ -6493,7 +6493,7 @@ E 1 19063 100 12
 E 1 19064 100 16
 *
 M 1 19022 1 19065                       the gardener to Bend in the Path
-E 1 19065 100 16
+G 1 19065 100
 *
 M 1 19006 5 19056                       a citizen of the Mirror Realm to Along the Gravel Path
 E 1 19015 100 16

@@ -266,20 +266,20 @@ my @obj_app = qw/
 /;
 
 my @obj_ty = qw/
-        ?               light                   scroll          wand
-        staff           weapon                  ?               ?
-        treasure        armour                  potion          ?
-        furniture       trash                   ?               container
-        ?               drink_container         key             food
-        money           ?                       boat            npc_corpse
-        pc_corpse       fountain                pill            climbing_eq
-        paint           ?                       anvil           auction_ticket
-        clan            portal                  poison_powder   lockpick
-        instrument      armourers_hammer        mithril         whetstone
-        craft           spellcraft              turret_module   forge
-        arrestor_unit   driver_unit             reflector_unit  shield_unit
-        turret          defensive_turret_module combat_pulse    defensive_pulse
-        pipe            pipe_cleaner            smokeable       remains
+        ?               light                   scroll              wand
+        staff           weapon                  digging_implement   hoard
+        treasure        armour                  potion              ?
+        furniture       trash                   ?                   container
+        ?               drink_container         key                 food
+        money           ?                       boat                npc_corpse
+        pc_corpse       fountain                pill                climbing_eq
+        paint           ?                       anvil               auction_ticket
+        clan            portal                  poison_powder       lockpick
+        instrument      armourers_hammer        mithril             whetstone
+        craft           spellcraft              turret_module       forge
+        arrestor_unit   driver_unit             reflector_unit      shield_unit
+        turret          defensive_turret_module combat_pulse        defensive_pulse
+        pipe            pipe_cleaner            smokeable           remains
 /;
 
 my @obj_weapon = qw/
@@ -1936,9 +1936,51 @@ sub check_object_values(\%) {
         }
     }
 
+    # Digging implement
+
+    elsif ($type == 6) {
+        foreach (qw/v0 v1 v2 v3/) {
+            if (!$$obj{$_}) {
+                $$obj{$_} = 0;
+            }
+        }
+
+        if (!$$obj{'v0'} && !$$obj{'v1'} && !$$obj{'v2'} && !$$obj{'v3'}) {
+            print "$err warning: values 'v0' through 'v3' all zero\n";
+        }
+
+        foreach (qw/v0 v1 v2 v3/) {
+            if ($msg = &check_field_number_range($obj, $_, 0, 'none')) {
+                print "$err $msg\n";
+                $errors++;
+            }
+        }
+    }
+
+    # Hoards
+
+    elsif ($type == 7) {
+        foreach (qw/v0 v1 v2 v3/) {
+            if (!$$obj{$_}) {
+                $$obj{$_} = 0;
+            }
+        }
+
+        if (!$$obj{'v0'} && !$$obj{'v1'} && !$$obj{'v2'} && !$$obj{'v3'}) {
+            print "$err warning: values 'v0' through 'v3' all zero\n";
+        }
+
+        foreach (qw/v0 v1 v2 v3/) {
+            if ($msg = &check_field_number_range($obj, $_, 0, 'none')) {
+                print "$err $msg\n";
+                $errors++;
+            }
+        }
+    }
+
     # Armour
 
-        elsif ($type == 9) {
+    elsif ($type == 9) {
 
         foreach (qw/v0 v1 v2 v3/) {
             if (!$$obj{$_}) {

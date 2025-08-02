@@ -1373,8 +1373,8 @@ A
 5 3
 #21507
 coins pile~
-a huge pile of gold goins~
-A huge pile of gold coins is lying here, just waiting to be taken!~
+a huge pile of coins~
+A huge pile of coins is lying here, just waiting to be taken!~
 ~
 20 0 1
 0~ 500~ 100~ 5~
@@ -2559,6 +2559,15 @@ A platinum key sits here.~
 18 1|2|32|64|1024|2048 1
 21899~ 1~ 6~ 11~
 1 0 0
+
+#21614
+hoard treasure~
+a hoard~
+A partially-unearthed treasure hoard is here.~
+~
+7 0 0
+100~ 1~ 400~ 400~
+1 10000 7500
 #0
 
 
@@ -6381,6 +6390,8 @@ Burial Chamber~
 You have stumbled upon the burial chamber of a pharaoh - here lies all the necessary
 items he needs in his journey into the afterlife. The pharaoh is not entombed here,
 but his servants are!
+
+The earth appears to have been recently disturbed here.
 ~
 0 1|8 0
 D0
@@ -6528,7 +6539,7 @@ S
 Burial Chamber~
 You have stumbled upon the burial chamber of a Queen - here lies all the necessary
 items she needs in her journey into the afterlife. The Queen is not entombed here,
-but her servants are!
+but her servants are!  The ground seems to have been recently disturbed.
 ~
 0 0 1
 D0
@@ -10262,7 +10273,8 @@ E 1 21536 100 15
 E 1 21538 100 16
 O 1 21547 100 21728                     a silver flask to Burial Chamber
 O 1 21546 100 21728                     a divining rod to Burial Chamber
-O 1 21507 100 21728                     a huge pile of gold goins to Burial Chamber
+I 21614 1 21728 1                         A hoard to Burial Chamber
+P 1 21507 0 21614                         a huge pile of gold goins to hoard
 *
 M 1 21564 1 21738                       the undead servant to Burial Chamber
 E 1 21536 100 14
@@ -10274,7 +10286,9 @@ E 1 21536 100 14
 E 1 21538 100 16
 O 1 21545 100 21738                     an ancient parchment to Burial Chamber
 O 1 21544 100 21738                     a golden crown to Burial Chamber
-O 1 21507 100 21738                     a huge pile of gold goins to Burial Chamber
+*
+I 21614 1 21738 1                         A hoard to Burial Chamber
+P 1 21507 0 21614                         a huge pile of gold goins to hoard
 *
 M 1 21563 2 21733                       the mummy to Halls of the Underworld
 E 1 21536 100 14

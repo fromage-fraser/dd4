@@ -928,12 +928,22 @@ int get_move_ws(CHAR_DATA *ch, int sect)
             {
                 ws = ws - 1;
             }
-            else {
+            else if ( sect != SECT_AIR ) {
                 ws = 1;
             }
         }
 
-       /*  ws_postfly = ws; */
+        if ( IS_AFFECTED(ch, AFF_NON_CORPOREAL)
+        && (  sect != SECT_AIR ) )
+        {
+            ws = 1;
+        }
+        else if ( IS_AFFECTED(ch, AFF_NON_CORPOREAL)
+        && (  sect == SECT_AIR ) ) {
+            ws = 0;
+        }
+
+        /*  ws_postfly = ws; */
 
         if (IS_AFFECTED( ch, AFF_SWIM ))
         {
@@ -943,6 +953,7 @@ int get_move_ws(CHAR_DATA *ch, int sect)
                 ws = ws - 1;
             }
         }
+
         /* ws_postswim = ws; */
 
         if ( is_affected(ch, gsn_slow)
@@ -990,10 +1001,21 @@ int get_move_ws(CHAR_DATA *ch, int sect)
             {
                 ws = ws - 1;
             }
-            else {
+            else if ( sect != SECT_AIR ) {
                 ws = 1;
             }
         }
+
+        if ( IS_AFFECTED(ch->mount, AFF_NON_CORPOREAL)
+        && (  sect != SECT_AIR ) )
+        {
+            ws = 1;
+        }
+        else if ( IS_AFFECTED(ch->mount, AFF_NON_CORPOREAL)
+        && (  sect == SECT_AIR ) ) {
+            ws = 0;
+        }
+
         /* ws_postflymount = ws; */
 
         if (IS_AFFECTED( ch->mount, AFF_SWIM ))

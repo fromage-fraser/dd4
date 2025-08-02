@@ -1592,14 +1592,15 @@ void do_look( CHAR_DATA *ch, char *argument )
                                 send_to_char( pdesc, ch );
                                 return;
                         }
+
+                        if ( is_name( arg1, obj->name ) )
+                        {
+                                send_to_char( obj->description, ch );
+                                send_to_char( "\n\r", ch );
+                                return;
+                        }
                 }
 
-                if ( is_name( arg1, obj->name ) )
-                {
-                        send_to_char( obj->description, ch );
-                        send_to_char( "\n\r", ch );
-                        return;
-                }
         }
 
         pdesc = get_extra_descr( arg1, ch->in_room->extra_descr );
@@ -1709,19 +1710,25 @@ void do_examine (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        obj = get_obj_here (ch, arg);
-        if ( (ch->class == CLASS_SMITHY) &&  (ch->pcdata->learned[gsn_innate_knowledge] > obj->level ) &&
-                (obj->item_type == ITEM_WEAPON
-                || obj->item_type == ITEM_ARMOR
-                || obj->item_type == ITEM_TURRET_MODULE
-                || obj->item_type == ITEM_TURRET
-                || obj->item_type == ITEM_DEFENSIVE_TURRET_MODULE) )
+        if ((obj = get_obj_here (ch, arg)))
         {
-                send_to_char ("You cast your expert eye over the item.\n\r", ch);
-                obj->identified = TRUE;
-        }
+                if ( (ch->class == CLASS_SMITHY) &&  (ch->pcdata->learned[gsn_innate_knowledge] > obj->level ) &&
+                        (obj->item_type == ITEM_WEAPON
+                        || obj->item_type == ITEM_ARMOR
+                        || obj->item_type == ITEM_TURRET_MODULE
+                        || obj->item_type == ITEM_TURRET
+                        || obj->item_type == ITEM_DEFENSIVE_TURRET_MODULE) )
+                {
+                        send_to_char ("You cast your expert eye over the item.\n\r", ch);
+                        obj->identified = TRUE;
+                }
 
-        do_look (ch, arg);
+                do_look (ch, arg);
+        }
+        else {
+                send_to_char ("You don't see that object here.\n\r", ch);
+                return;
+        }
 
         /*if ((obj = get_obj_here (ch, arg)))*/
         if (obj)

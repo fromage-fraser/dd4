@@ -1299,6 +1299,19 @@ ground~
 The ground upon closer inspection appears to
 have something buried in it.
 ~
+#4576
+ground stash coins~
+a stash of coins~
+A partially-unearthed stash of coins is here.~
+~
+7 0 0
+100~ 1~ 200~ 200~
+1 10000 7500
+E
+ground stash coins~
+The ground upon closer inspection appears to
+have something buried in it. Get digging?
+~
 #0
 
 
@@ -2026,6 +2039,11 @@ cloth~
 The cloth appears to be of a light weave, the kind a maiden would wear. It
 appears that they headed south.
 ~
+E
+ground stash coins~
+The ground upon closer inspection appears to
+have something buried in it. Get digging?
+~
 S
 #4519
 On a small trail~
@@ -2593,8 +2611,10 @@ O 1 4519 0 4538         burnt corpse
 O 1 4523 0 4538         grasp
 P 1 4524 0 4523 key in grasp of dead man
 O 1 4526 0 4517         pool of water in horse area
-O 1 4527 0 4518         ground on trail
-P 1 4528 0 4527 buries coins in ground
+
+O 1 4576 1 4518         A hoard to trail
+P 1 4528 0 4576         coin to hoard
+
 O 1 4529 0 4518         puts empty sack where coins buried
 M 1 4501 1 4502         traveller on road
 M 1 4502 1 4535         goblin lookout

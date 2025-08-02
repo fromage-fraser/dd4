@@ -319,6 +319,22 @@ A small gold key has been dropped on the ground.~
 18 0 1|16384
 29969~ 0~ 0~ 0~
 10 0 0
+
+#29965
+pickaxe~
+a lemming pickaxe~
+A tiny pickaxe has been dropped here.~
+~
+6 0 1|16384
+33~ 12~ 35~ 155~
+2 0 12
+A
+18 -2
+A
+1 1
+A
+19 3
+
 #0
 
 #ROOMS
@@ -1040,6 +1056,8 @@ M 1 29958 1 29978           the Beast to The beast's lair
 E 1 29960 100 16
 *
 O 1 29964 1 29967           key to the top of the climbing wall
+*
+I 29965 12 29961 1          lemming pickaxe to floor
 S
 
 

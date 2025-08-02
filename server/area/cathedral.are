@@ -764,7 +764,7 @@ Rows and rows of pews can be seen to the south.
 0 -1 4308
 S
 #4310
-The Clergical Chambers~
+The Clerical Chambers~
 These chambers are quite large and appear to be rather clean.  Looking
 about, you notice that the beds are made and clean robes are hanging on
 hooks by the heads of each one.  The beds are arranged so that the foot of
@@ -1831,7 +1831,7 @@ point, it is probably that the stone has been melted to that consistency.
 The pits continues upwards into the darkness and down a short distance
 into the lava.
 ~
-0 8 9
+0 8|262144  9
 D4
 The pit keeps going upwards as far as you can see.
 ~
@@ -1850,7 +1850,7 @@ Need I really say more?   Suffice to say, after being exposed to
 temperatures well in excess of three thousand degrees, there isn't a
 whole heck of a lot left of you, not even ash.
 ~
-0 2|8 0
+0 8|262144  0
 D4
 The pit does still continue upwards you know.
 ~
@@ -1869,7 +1869,7 @@ You find yourself on an old stone road, leading away from a large
 building to the north.  Blocking the road directly to the north is
 a large stone wall with an iron wrought gate planted firmly where the
 road would pass through it.  The building to the north appears to be
-an old church or cathedral.
+an old church or cathedral.  The grassy plains of Lea'Non lie south.
 
 A wooden moss covered sign stands crooked before you.
 ~
@@ -1887,6 +1887,11 @@ De.th await. bey..d the gate. ah..d
 Do n.t pro.eed
 .ou ha.e be.n warne.
 ~
+D2
+You see the grassy plains of Lea'Non.
+~
+~
+0 -1 18260
 S
 #0
 

@@ -83,6 +83,8 @@ const struct cmd_type cmd_table [] =
         { "wield",              do_wear,            POS_RESTING,    0,  LOG_NORMAL      },
         { "lodge",              do_lodge,           POS_RESTING,    0,  LOG_NORMAL      },
         { "claim",              do_claim,           POS_RESTING,    0,  LOG_NORMAL      },
+        { "dig",                do_dig,             POS_STANDING,   0,  LOG_NORMAL      },
+        { "bury",               do_bury,            POS_STANDING,   0,  LOG_NORMAL      },
         /*{ "map",              do_map,         POS_STANDING,    0,  LOG_NORMAL },*/
 
         /*

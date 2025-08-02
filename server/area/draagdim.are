@@ -2512,6 +2512,20 @@ A portal that leads to Thrasher is propped up here.~
 27999~ 27999~ 1~ 100~
 200 0 0
 
+#28104
+earthsplitter~
+Earthsplitter~
+Earthsplitter, the legendary excavation tool lies here.~
+~
+6 64 1|16384
+12~ 60~ 180~ 60~
+1 10000 100
+E
+earthsplitter excavation tool~
+A truly epic implement that has attained the status of a myth, its obsidian
+blade cleaves earth and rock as though they were air.
+~
+
 #0
 
 #ROOMS
@@ -6757,6 +6771,7 @@ E 0 28060 0 16                      equip a dagger (wield)
 M 0 28035 1 28131               add Alvyn to Alvyn's Curio's
 G 0 28073 0                         carry a cloak of froylaven
 G 0 28074 0                         carry a needler
+G 0 28104 0                         carry Earthsplitter
 M 0 28042 1 28072               add The guildmaster to The Thieves' Guild
 E 0 28062 0 16                      equip a honed blade (wield)
 M 0 28041 4 28072               add a thief to The Thieves' Guild
@@ -6837,7 +6852,7 @@ S
 #SHOPS
 28033 5 9 0 0 0 200 100 0 23    shop run by The armourer
 28034 5 9 0 0 0 200 100 0 23    shop run by Silvre Blayde
-28035 5 9 10 8 0 200 100 0 23   shop run by Alvyn
+28035 5 9 10 8 6 200 100 0 23   shop run by Alvyn
 28040 5 9 0 0 0 200 100 0 23    shop run by a thief
 28042 5 9 0 0 0 200 100 0 23    shop run by The guildmaster
 28044 19 10 0 0 0 200 100 0 23  shop run by a Barkeep

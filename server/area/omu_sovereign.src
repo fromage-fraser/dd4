@@ -1429,6 +1429,42 @@ ap damroll  9
 ap hitroll  10
 ap breathe_water -1
 
+$obj
+nm  hoard
+sh  a hoard
+lo  A partially-buried pile of gold coins is here.
+vn  28734
+ty  hoard
+v0  100
+v1  1
+v2  150
+v3  150
+wg  1
+we  none
+
+$obj
+nm  pile gold coins
+sh  a pile of gold coins
+lo  A gleaming pile of gold coins lies here.
+vn  28735
+ty  money
+v2  145
+wg  3
+we  take
+
+$obj
+nm  hefty trowel
+sh  a hefty trowel
+lo  A hefty trowel has been abandoned here.
+vn  28736
+ty  digging_implement
+v0  20
+v1  40
+v2  120
+v3  95
+wg  3
+we  take hold
+osl 65
 
 # ROOMS
 
@@ -2965,6 +3001,20 @@ ob      28729
 rm      28413
 lv      70
 
+# hoard
+$addobj
+ob      28734
+rm      28421
+lv      1
 
+$addobj
+ob      28735
+lv      18
+con     28734
 
+# trowel
+$addobj
+ob      28736
+rm      28421
+lv      65
 

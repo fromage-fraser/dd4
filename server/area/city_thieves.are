@@ -183,7 +183,7 @@ snake~
 the snake~
 A snake slithers along the ground here.
 ~
-It's beady eyes focus on you.
+Its beady eyes focus on you.
 ~
 2|64 0 0 S
 35 0 0 0d0+0 0d0+0
@@ -1399,6 +1399,15 @@ A large forge dominates the room.~
 40 1 0
 10~ 0~ 0~ 0~
 1000 0 0
+
+#23589
+stout pickaxe~
+a stout pickaxe~
+A solid pickaxe with a tempered-steel head and ash‐wood haft is here.~
+~
+6 0 1|16384
+24~ 32~ 95~ 110~
+1 10000 50
 #0
 
 
@@ -3641,6 +3650,7 @@ G 1 23566 100
 G 1 23565 100
 G 1 23564 100
 G 1 23563 100
+G 1 23589 100
 *
 M 1 23514 1 23538           the bare chested man to Town Markets
 E 1 23566 100 8

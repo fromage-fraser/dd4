@@ -3847,7 +3847,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 "something strange",       "a light source",             "a scroll",
                 "a wand",                  "a staff",                    "a weapon",
-                "something strange",       "something strange",          "treasure",
+                "a digging implement",     "something strange",          "treasure",
                 "a piece of armour",       "a potion",                   "something strange",
                 "a piece of furniture",    "a piece of trash",           "something strange",
                 "a container",             "something strange",          "a drink container",
@@ -8422,6 +8422,7 @@ void spell_lore( int sn, int level, CHAR_DATA *ch, void *vo )
         &&   obj->item_type != ITEM_INSTRUMENT
         &&   obj->item_type != ITEM_ARMOURERS_HAMMER
         &&   obj->item_type != ITEM_MITHRIL
+        &&   obj->item_type != ITEM_DIGGER
         &&   obj->item_type != ITEM_WHETSTONE
         &&   obj->item_type != ITEM_CRAFT
         &&   obj->item_type != ITEM_TURRET_MODULE
