@@ -149,6 +149,15 @@ void do_trapstat(CHAR_DATA *ch, char *argument)
             case TRAP_DAM_SNARE:
                 send_to_char("Damage type: {Gsnare{x\n\r", ch );
                 break;
+            case TRAP_DAM_CURSE:
+                send_to_char("Damage type: {Gcurse{x\n\r", ch );
+                break;
+            case TRAP_DAM_HEX:
+                send_to_char("Damage type: {Ghex{x\n\r", ch );
+                break;
+            case TRAP_DAM_SPIRIT:
+                send_to_char("Damage type: {Gspirit{x\n\r", ch );
+                break;
         }
 
         if (obj->trap_eff == 0) {
@@ -243,7 +252,7 @@ void do_trapset(CHAR_DATA *ch, char *argument)
                 send_to_char("Field: move, object(get and put), room, open, damage, charge\n\r\n\r", ch);
                 send_to_char("Values: Move> north, south, east, west, up, down, and all.\n\r\n\r", ch);
                 send_to_char("        Damage> sleep, teleport, fire, cold, acid, energy,\n\r", ch);
-                send_to_char("                blunt, pierce, slash, poison, snare.\n\r\n\r", ch);
+                send_to_char("                blunt, pierce, slash, poison, snare, curse, hex.\n\r\n\r", ch);
                 send_to_char("        Object, open, room> no values\n\r", ch);
                 return;
         }
@@ -262,7 +271,7 @@ void do_trapset(CHAR_DATA *ch, char *argument)
                         send_to_char("Field: move, object(get and put), room, open, damage\n\r\n\r", ch);
                         send_to_char("Values: Move> north, south, east, west, up, down, and all.\n\r", ch);
                         send_to_char("        Damage> sleep, teleport, fire, cold, acid, energy,\n\r", ch);
-                        send_to_char("                blunt, pierce, slash, poison, snare.\n\r\n\r", ch);
+                        send_to_char("                blunt, pierce, slash, poison, snare, curse, hex.\n\r\n\r", ch);
                         send_to_char("        Object, open, room> no values\n\r", ch);
                         return;
                 }
@@ -432,6 +441,24 @@ void do_trapset(CHAR_DATA *ch, char *argument)
                 if ( !str_cmp(arg3, "snare") ) {
                         obj->trap_dam = TRAP_DAM_SNARE;
                         send_to_char("The trap will now ensnare its victims!\n\r", ch );
+                        return;
+                }
+
+                if ( !str_cmp(arg3, "curse") ) {
+                        obj->trap_dam = TRAP_DAM_CURSE;
+                        send_to_char("The trap will now curse its victims!\n\r", ch );
+                        return;
+                }
+
+                if ( !str_cmp(arg3, "hex") ) {
+                        obj->trap_dam = TRAP_DAM_HEX;
+                        send_to_char("The trap will now hex its victims!\n\r", ch );
+                        return;
+                }
+
+                if ( !str_cmp(arg3, "spirit") ) {
+                        obj->trap_dam = TRAP_DAM_SPIRIT;
+                        send_to_char("The trap will now summon a spirit guardian!\n\r", ch );
                         return;
                 }
 
@@ -789,6 +816,42 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
 
             case TRAP_DAM_SLASH:
                 dam = (10* number_range(obj->level/2, obj->level)) + (GET_AC(ch) / 4);
+                break;
+
+            case TRAP_DAM_CURSE:
+                if (!IS_SET(obj->trap_eff, TRAP_EFF_ROOM)) {
+                        spell_curse(gsn_curse, ch->level, ch, ch);
+                } else {
+                        for (wch = ch->in_room->people; wch; wch = wch->next_in_room)
+                                spell_curse(gsn_curse, ch->level, wch, ch);
+                }
+                break;
+
+            case TRAP_DAM_HEX:
+                if (!IS_SET(obj->trap_eff, TRAP_EFF_ROOM)) {
+                        spell_hex(gsn_hex, ch->level, ch, ch);
+                } else {
+                        for (wch = ch->in_room->people; wch; wch = wch->next_in_room)
+                                spell_hex(gsn_hex, ch->level, wch, ch);
+                }
+                break;
+
+            case TRAP_DAM_SPIRIT:
+                {
+                    CHAR_DATA *spirit;
+                    act("{CA furious spirit guardian materialises from thin air!{x", ch, NULL, NULL, TO_ROOM);
+                    act("{CA furious spirit guardian materialises from thin air!{x", ch, NULL, NULL, TO_CHAR);
+                    spirit = create_mobile(get_mob_index(MOB_VNUM_SPIRIT));
+                    spirit->level = URANGE(1, ch->level, LEVEL_HERO - 1);
+                    spirit->max_hit = spirit->level * 10 + number_range(20, 100);
+                    spirit->hit = spirit->max_hit;
+                    spirit->damroll = spirit->level / 2;
+                    spirit->hitroll = spirit->level / 2;
+                    spirit->alignment = -1000;
+                    spirit->fighting = ch;
+                    char_to_room(spirit, ch->in_room);
+                    multi_hit(spirit, ch, TYPE_UNDEFINED);
+                }
                 break;
         }
 

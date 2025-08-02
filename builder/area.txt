@@ -829,6 +829,9 @@ TRAP_DAM_PIERCE          6
 TRAP_DAM_SLASH           7
 TRAP_DAM_POISON          8
 TRAP_DAM_SNARE           9
+TRAP_DAM_CURSE           10
+TRAP_DAM_HEX             11
+TRAP_DAM_SPIRIT          12
 
 
 20 in the example item is the number of charges the trap has before it is

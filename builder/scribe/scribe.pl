@@ -374,7 +374,8 @@ my @wear_loc = qw/
 my @trap_dam = qw/
         sleep       teleport    fire        cold
         acid        energy      blunt       pierce
-        slash       poison      snare
+        slash       poison      snare       curse
+        hex         spirit
 /;
 
 my %trap_trig = (

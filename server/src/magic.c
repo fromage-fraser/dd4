@@ -2342,8 +2342,15 @@ void spell_curse( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( IS_AFFECTED( victim, AFF_CURSE )
         ||   saves_spell( level, victim ) )
         {
-                send_to_char( "You fail to inflict your curse.\n\r", ch );
-                return;
+                if (ch == victim)
+                {
+                    send_to_char( "Dark energy washes over you, but fades harmlessly away.\n\r", ch );
+                    return;
+                }
+                else {
+                    send_to_char("The air thickens with malevolence, but clears without effect.\n\r", ch );
+                    return;
+                }
         }
 
         af.type      = sn;
@@ -8279,14 +8286,26 @@ void spell_hex( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if ( is_affected( victim, sn ) )
         {
-                send_to_char( "Your target is already defiled.\n\r", ch );
+            if (ch == victim) {
+                send_to_char( "A malicious curse is cast, but you are already defiled.\n\r", ch );
                 return;
+            }
+            else {
+                send_to_char( "A foul curse stirs, falters, and fades.\n\r", ch );
+                return;
+            }
         }
 
         if ( saves_spell( level, victim ) )
         {
-                send_to_char( "Your curse is resisted.\n\r", ch );
+            if (ch == victim) {
+                send_to_char( "A dark power gathers in the air... and fizzles.\n\r", ch );
                 return;
+            }
+            else {
+                send_to_char( "A hideous curse is resisted.\n\r", ch );
+                return;
+            }
         }
 
         af.type      = sn;
