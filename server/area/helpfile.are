@@ -2296,6 +2296,7 @@ PROMPT <<%*> creates a prompt where %* represents the following variables:
     %%   :  A literal '%' symbol
 
     %1-%7 :  Standard colour codes                        (see 'HELP ANSI')
+
     {{x,}}x,{{R}}C, various : 'brace-style' standard colour codes
                                                           (see 'HELP ANSI2')
     <<0>-<<565> : 8-bit (256-colour) colour and text decoration codes
