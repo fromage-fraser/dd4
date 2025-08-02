@@ -294,6 +294,7 @@ mpasound You hear something slimy slithering over rock.
 	mpoload 27412
 ~
 |
+< reserved~ rare~
 #27285
 bowhead whale~
 a bowhead whale~
@@ -899,6 +900,21 @@ be 5 metres tall and 25 metres long. He is not at all pleased to see you here.
 >fight_prog 10~
     swallow $n
 ~
+>act_prog p rakes the earth~
+mpecho {RArlauthra bellows in indignation!{x
+mpasound A hideous reptilian screeching comes from the rocky island.
+murder $n
+~
+>act_prog p gouges the ground~
+mpecho {RArlauthra bellows in indignation!{x
+mpasound A hideous reptilian screeching comes from the rocky island.
+murder $n
+~
+>act_prog p digs into the ground~
+mpecho {RArlauthra bellows in indignation!{x
+mpasound A hideous reptilian screeching comes from the rocky island.
+murder $n
+~
 |
 < reserved~ boss~
 #27319
@@ -1286,6 +1302,8 @@ a treasure pile~
 20 1 1|16384
 314~ 55~ 28~ 3~
 15 0 0
+M 2
+
 #27392
 rotting corpse sahuagin~
 the rotting corpse of a sahuagin~
@@ -1513,6 +1531,16 @@ princescantonkey.~
 18 0 1|16384
 27418~ 0~ 0~ 0~
 1 0 0
+
+#27625
+pile treasure~
+a pile of treasure~
+A partially-unearthed pile of treasure is here.~
+~
+7 0 1
+100~ 1~ 400~ 400~
+1 10000 7500
+
 #0
 
 
@@ -6644,8 +6672,11 @@ S
 bedrock.  Signs of recent habitation are everywhere; your guess would be this
 chamber is the home of multiple large, moderately-intelligent aquatic bipedal
 humanoids. Violent and carnivorous ones.<0>
+
+<32>You can't help but notice the some of the bedrock looks to have been excavated
+recently and filled back in.<0>
 ~
-0 1|8 6
+0 1|8 12
 D1
 ~
 ~
@@ -6887,7 +6918,8 @@ S
 <24>if by some fire or terrible corrosive liquid, and the ground is littered with
 <23>animal and humanoid remains in various stages of having been consumed, burned,
 <22>or dismembered. It doesn't feel like the sort of place you ought to spend a
-lot of time, if you can help it.
+lot of time, if you can help it. <0><23>You notice the earth here has been recently
+disturbed.<0><22>
 
 The 'island' is surround by what looks like a 'moat,' which you can travel to
 via any cardinal direction.<0>
@@ -7541,7 +7573,10 @@ E 1 27390 100 16
 *
 M 1 27303 2 27251			a vodyanoi to Canton Canal
 E 1 27390 100 16
-O 1 27391 100 27816			a treasure pile to A Large Chamber in an Undersea Cave
+*
+I 27625 1 27816 1          Hoard to A Large Chamber in an Undersea Cave
+P 1 27391 0 27625           a treasure pile to hoard
+*
 O 1 27392 100 27813			the rotting corpse of a sahuagin to The Dark Entrance to an Undersea Cave
 *
 M 1 27304 1 27816			a male merrow to A Large Chamber in an Undersea Cave
@@ -7679,7 +7714,9 @@ M 1 27318 1 27829			Arlauthra to A room
 E 1 27405 100 6
 E 1 27234 100 16
 E 1 27406 100 18
-O 1 27391 100 27829			a treasure pile to A Large Chamber in an Undersea Cave
+*
+I 27625 1 27829 1          Hoard to A Large Chamber in an Undersea Cave
+P 1 27391 100 27625			a treasure pile to hoard
 *
 M 1 27319 3 27363			a giant limpet to Canton Canal
 E 1 27387 100 5

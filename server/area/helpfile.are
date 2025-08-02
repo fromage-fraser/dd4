@@ -2257,50 +2257,50 @@ PROMPT CURRENT shows your current prompt.
 
 PROMPT <<%*> creates a prompt where %* represents the following variables:
 
-    %h :  Current hits
-    %H :  Maximum hits
-    %m :  Current mana
-    %M :  Maximum mana
-    %v :  Current moves
-    %V :  Maximum moves
-    %q :  Current rage/blood points  (Werewolves/Vampires only)
-    %Q :  Maximum rage/blood points  (Werewolves/Vampires only)
+    %A   :  Alignment numerical value (not shown before level 10)
+    %a   :  Alignment (`evil', `neutral' or `good')
+    %B   :  Displays bold text colour
+    %b   :  Spell 'blink' status ('on' or 'off')
+    %c   :  Displays next command in your input buffer
+    %e   :  Experience needed to level
+    %f   :  Current form (incl. mist) (Shifters/Vampires/Werewolves only)
+    %g   :  Coins carried
+    %G   :  Empower Meter percentage (Smithy Only)
+    %h   :  Current hits
+    %H   :  Maximum hits
+    %i   :  Invisible or visible
+    %k   :  Engraved current power/max power (Smithy Only)
+    %L   :  Server time (hours:minutes:seconds)
+    %m   :  Current mana
+    %M   :  Maximum mana
+    %N   :  Displays normal text colour
+    %p   :  Current position (standing, sleeping, fighting etc)
+    %q   :  Current rage/blood points (Werewolves/Vampires only)
+    %Q   :  Maximum rage/blood points (Werewolves/Vampires only)
+    %r   :  Room name
+    %R   :  Room vnum (Immortals only)
+    %s   :  Personal safety: whether you personally are safe or unsafe
+            from being pkilled at your current location.
+    %S   :  General safety: whether your current location is flagged
+            as safe or unsafe for pkilling in general.
+    %t   :  Current quest timer (minutes until quest finishes)
+    %T   :  Time until next quest
+    %u   :  Number of bonus actions available
+    %U   :  Maximum number of bonus actions possible
+    %v   :  Current moves
+    %V   :  Maximum moves
+    %w   :  Current waitstate (time until next command is read)
+    %W   :  Wizinvisible or visible (Immortals only)
+    %x   :  Total experience points
+    %z   :  Name of the area ("zone") your character is in
+    %%   :  A literal '%' symbol
 
-    %f :  Current form (incl. mist)  (Shifters/Vampires/Werewolves only)
-    %i :  Invisible or visible
-    %w :  Current waitstate          (time until next command is read)
-    %p :  Current position           (standing, sleeping, fighting etc)
-    %t :  Current quest timer        (minutes until quest finishes)
-    %T :  Time until next quest
-    %x :  Total experience points
-    %z :  Name of the area ("{Wz{xone") your character is in
-    %e :  Experience needed to level
-    %c :  Displays next command in your input buffer
-    %u :  Number of bonus actions available
-    %U :  Maximum number of bonus actions possible
-    %g :  Coins carried
-    %a :  Alignment                  (`evil', `neutral' or `good')
-    %A :  Alignment numerical value  (not shown before level 10)
-    %b :  Spell 'blink' status       ('on' or 'off')
-    %r :  Room name
-    %G :  Empower Meter percentage          (Smithy Only)
-    %k :  Engraved current power/max power  (Smithy Only)
+    %1-%7 :  Standard colour codes                        (see 'HELP ANSI')
 
-    %s :  Personal safety: whether you personally are safe or unsafe
-          from being pkilled at your current location.
-    %S :  General safety: whether your current location is flagged
-          as safe or unsafe for pkilling in general.
-
-    %1-%7 : Standard colour codes                         (see 'HELP ANSI')
     {{x,}}x,{{R}}C, various : 'brace-style' standard colour codes
                                                           (see 'HELP ANSI2')
     <<0>-<<565> : 8-bit (256-colour) colour and text decoration codes
                                                           (see 'HELP ANSI3')
-    %B :  Displays bold text colour
-    %N :  Displays normal text colour
-
-    %R :  Room vnum                  (Immortals only)
-    %W :  Wizinvisible or visible    (Immortals only)
 
 E.g. 'PROMPT <<%hhp %mm %vmv>' will set your prompt to "<<10hp 100m 100mv>".
 ~
@@ -2673,6 +2673,20 @@ make the doors rather useless, which always amuses warriors.  Be aware,
 however, that bashing is a fairly aggressive action, and some mobs don't
 take kindly to that type of behaviour...
 ~
+
+0 'DIG'~
+Syntax: dig
+
+An attempt can be made in most sorts of terrain to dig for buried treasure.  In
+order to dig you'll need to either have a digging implement on you (sold in most
+cities or found around the domain), be a shapeshifter class in a form that has
+natural digging capabilities, or be wielding the sort of weapon that can double
+as a crude digging tool.
+
+If there's no buried treasure in your location you have a chance of realising
+this each time you attempt to dig.
+~
+
 
 0 'CHAMELEON POWER'~
 Syntax: chameleon

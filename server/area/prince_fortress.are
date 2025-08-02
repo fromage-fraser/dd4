@@ -972,8 +972,8 @@ spade~
 a spade~
 A spade is propped in the corner.~
 ~
-5 0 1|8192
-0~ 0~ 0~ 0~
+6 0 1|16384
+24~ 20~ 50~ 80~
 5 0 0
 #29841
 glove gloves gardener~
@@ -1559,6 +1559,7 @@ A huge pile of coins is here.~
 20 0 1
 30~ 30~ 32~ 10~
 5 0 0
+M 2
 #29907
 chalice gold jewelled~
 a jewel-encrusted gold chalice~
@@ -3830,7 +3831,7 @@ M 1 29816 1 29859           the gardener to The vegetable garden
 E 1 29842 100 5
 E 1 29841 100 9
 E 1 29843 100 13
-E 1 29840 100 16
+G 1 29840 100
 O 1 29850 100 29853         an altar to By the altar
 O 1 29849 100 29859         vegetables to The vegetable garden
 *

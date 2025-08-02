@@ -902,10 +902,10 @@ A
 19 5
 #14036
 pickaxe axe pick~
-a pickaxe~
-A pickaxe used for digging up dirt or rocks lies against the wall.~
+a sharpened pickaxe~
+A sharpened pickaxe lies against the wall.~
 ~
-5 0 1|8192
+5 16777216 1|8192
 0~ 20~ 30~ 2~
 55 0 0
 #14037

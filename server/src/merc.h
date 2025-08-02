@@ -140,6 +140,11 @@ typedef short int sh_int;
 #define BIT_63  0x8000000000000000    /*  9223372036854775808  */
 #define BIT_MAX 0x8000000000000000    /*  9223372036854775808  */
 
+#define DEBUGF(fmt, ...) do { \
+        char buf[MAX_STRING_LENGTH]; \
+        sprintf(buf, fmt, __VA_ARGS__); \
+        log_string(buf); \
+} while (0)
 /*
  * Structure types.
  */
@@ -1184,6 +1189,14 @@ struct soar_struct
         int     char_level;
 };
 
+/* do_dig-related modifiers based on terrain you're trying to dig */
+struct digmod_terrain
+{
+        int     waitstate_mod;
+        int     damage_mod;
+        int     mvcost_mod;
+};
+
 
 /*
  *  Data Un color type
@@ -2083,6 +2096,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define OBJ_VNUM_SLICED_LEG               15
 #define OBJ_VNUM_SLICED_TAIL             502
 #define OBJ_VNUM_REMAINS                 571
+#define OBJ_VNUM_DIRT_PILE               581
 
 #define OBJ_VNUM_MUSHROOM                 20
 #define OBJ_VNUM_LIGHT_BALL               21
@@ -2192,6 +2206,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_WAND                        3
 #define ITEM_STAFF                       4
 #define ITEM_WEAPON                      5
+#define ITEM_DIGGER                      6  /* Implement to dig with */
+#define ITEM_HOARD                       7  /* Filled-in hole containing loot */
 #define ITEM_TREASURE                    8
 #define ITEM_ARMOR                       9
 #define ITEM_POTION                     10
@@ -2826,6 +2842,13 @@ struct char_data
         */
 };
 
+/* For use in do_dig and do_bury */
+
+#define DIG_NONE       0
+#define DIG_TOOL       1
+#define DIG_FORM       2
+#define DIG_WEAPON     3
+
 
 /* FOR mob progs */
 
@@ -3038,6 +3061,10 @@ struct obj_index_data
 #define CREATED_STRONG_RANDOMISER       3
 #define CREATED_WEAK_RANDOMISER         4
 #define CREATED_SKILL                   5
+
+/* Hoards slowly “fill in” (recover dig damage) over time */
+#define HOARD_RECOVERY_DIVISOR   10  /* heals 1/10th of missing HP each tick */
+#define HOARD_RECOVERY_MIN       1   /* always heal at least this much if possible */
 
 /*
  * One object.
@@ -4118,6 +4145,7 @@ extern const    struct social_type              social_table            [ ];
 extern const    struct pattern_points           pattern_list            [ MAX_PATTERN ];
 extern const    struct soar_points              soar_list               [ MAX_SOAR ];
 extern const    struct ws_terrain               ws_terrain_list         [ SECT_MAX + 1 ];
+extern const    struct digmod_terrain           digmod_terrain_list     [ SECT_MAX + 1 ];
 extern const    struct ws_race_terrain          ws_race_terrain_mod     [ MAX_RACE ];
 extern const    struct HERB                     herb_table              [ MAX_HERBS ];
 extern const    struct SMOKEABLE                smokeable_table         [ MAX_SMOKEABLES ];
@@ -4237,11 +4265,12 @@ DECLARE_DO_FUN( do_bladethirst                  );      /* nec skill - like pois
 DECLARE_DO_FUN( do_blank                        );
 DECLARE_DO_FUN( do_blink                        );      /* umgook added 11/10/98 */
 DECLARE_DO_FUN( do_brandish                     );
-DECLARE_DO_FUN( do_breathe                      );      /* hydr skill */
+DECLARE_DO_FUN( do_breathe                      );      /* hydra skill */
 DECLARE_DO_FUN( do_break_wrist                  );      /* brawler skill - Brutus */
 DECLARE_DO_FUN( do_brew                         );      /* Brew potions */
 DECLARE_DO_FUN( do_brief                        );
 DECLARE_DO_FUN( do_bug                          );
+DECLARE_DO_FUN( do_bury                         );
 DECLARE_DO_FUN( do_buy                          );
 DECLARE_DO_FUN( do_chameleon                    );
 DECLARE_DO_FUN( do_cando                        );
@@ -4275,6 +4304,7 @@ DECLARE_DO_FUN( do_delete                       );      /* For self Deletion ( R
 DECLARE_DO_FUN( do_deny                         );
 DECLARE_DO_FUN( do_deposit                      );      /* deposit money */
 DECLARE_DO_FUN( do_description                  );
+DECLARE_DO_FUN( do_dig                          );
 DECLARE_DO_FUN( do_dirt_kick                    );      /* New ninja skill - Brutus */
 DECLARE_DO_FUN( do_disable                      );      /* for disarming traps */
 DECLARE_DO_FUN( do_disarm                       );

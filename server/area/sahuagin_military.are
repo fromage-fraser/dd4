@@ -2514,8 +2514,8 @@ M 1 27431 4 27592       ; White shark to elite stables
 E 1 27234 100 16        ; shark equip teeth
 *
 M 1 27431 4 27592       ; White shark to elite stables
-O 1 27534 100 27592     ; meat scraps to elite stables
 E 1 27234 100 16        ; shark equip teeth
+O 1 27534 100 27592     ; meat scraps to elite stables
 *
 M 1 27432 1 27588       ; the baron to the Baron's War Room
 E 1 27535 100 16        ; equip battle trident

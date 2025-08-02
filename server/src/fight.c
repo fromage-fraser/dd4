@@ -8263,7 +8263,7 @@ void do_hurl (CHAR_DATA *ch, char *argument)
                         damage(ch, victim, 0, gsn_stun, FALSE);
                 }
         }
-        else if ( obj->item_type == ITEM_WEAPON) /* do this is hurling a weapon */
+        else if ( obj->item_type == ITEM_WEAPON) /* do this if hurling a weapon */
         {
 
                 WAIT_STATE(ch, PULSE_VIOLENCE);

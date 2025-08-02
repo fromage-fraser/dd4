@@ -920,6 +920,14 @@ A large forge dominates the room.~
 40 1 0
 10~ 0~ 0~ 0~
 1000 0 0
+#29136
+ranger mattock~
+a ranger's mattock~
+A mattock forged by forest rangers has been placed here.~
+~
+6 0 1|16384
+17~ 49~ 146~ 80~
+1 10000 80
 #0
 
 
@@ -2515,6 +2523,7 @@ G 1 29115 0    Tapestry
 M 1 29118 1 29151           Raedner in Bronze Scabbard
 G 1 29116 0    Emerald armor
 G 1 29117 0    Dwarven thrower
+G 1 29136 0    Ranger's mattock
 * G 1 40 0       mithril lockpick    Trouble here?
 M 1 29119 1 29152           Samantha in Mystic Eye
 G 1 29118 0    Elven chain sleeves
@@ -2588,7 +2597,7 @@ S
 29111 22 0 0 0 0 130 70 6 17                Shipbuilder buys boats
 29116 17 19 0 0 0 150 75 0 23               Lefty sells food and drink
 29117 8 12 13 26 0 130 80 9 17              Anwar sells junk
-29118 5 9 29 30 0 125 85 6 18               Raedner sells arms & armor
+29118 5 9 29 30 6 125 85 6 18               Raedner sells arms & armor
 29119 9 2 3 4 28 140 60 17 23               Samanthia sells magic at night
 29127 17 19 0 0 0 110 90 0 23               Midge sells food and drink
 29136 52 53 54 28 0 135 85 0 23              Grindle sells smokeables, pipes, pipe cleaners

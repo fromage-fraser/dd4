@@ -1930,6 +1930,22 @@ void obj_update()
                         }
                 }
 
+                /* Hoards should slowly recover damage ("fill in") if left alone */
+
+                if ( obj->item_type == ITEM_HOARD )
+                {
+                        int   current_hp = obj->value[2];
+                        int   max_hp     = obj->value[3];
+
+                        if ( current_hp < max_hp )
+                        {
+                                int missing   = max_hp - current_hp;
+                                int to_heal   = ( missing / HOARD_RECOVERY_DIVISOR ) + HOARD_RECOVERY_MIN;
+
+                                obj->value[2] = UMIN( current_hp + to_heal, max_hp );
+                        }
+                }
+
                 if (obj->timer == TIMER_DAMAGED && obj->carried_by)
                 {
                         if (obj->item_type == ITEM_WEAPON

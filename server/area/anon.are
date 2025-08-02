@@ -2351,6 +2351,14 @@ A large forge dominates the room.~
 43 1 0
 5~ 0~ 0~ 0~
 1000 0 0
+#31098
+masterwork spade~
+a masterwork spade~
+A spade of exceptional quality gleams brightly here.~
+~
+6 0 1|16384
+14~ 54~ 163~ 70~
+1 10000 90
 #0
 
 
@@ -4658,6 +4666,7 @@ G 1 31013 0         0
 G 1 31014 0         0
 G 1 31015 0         0
 G 1 31016 0         0
+G 1 31098 0         0
 *
 M 1 31005 1 31047   LOADS MERC MASTER
 M 1 31047 1 31048   LOADS MERCS
@@ -4945,7 +4954,7 @@ S
 
 #SHOPS
 31003  9 28  0  0  0 150 80 0 23
-31004  5 29 30  0  0 150 80 0 23
+31004  5 29 30  6  0 150 80 0 23
 31005  0  0  0  0  0 150 80 0 23
 31006  2  3  4 10 26 150 80 0 23
 31008  0  0  0  0  0 150 50 0 23

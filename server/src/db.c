@@ -2881,16 +2881,19 @@ void area_update( void )
                 /*
                  * Check for PC's.
                  */
-                if ( pArea->nplayer > 0 && pArea->age == 14 )
+                if (pArea->nplayer > 0 && pArea->age == 14)
                 {
-                        for ( pch = char_list; pch; pch = pch->next )
+                        for (pch = char_list; pch; pch = pch->next)
                         {
-                                if ( !IS_NPC( pch )
-                                    && IS_AWAKE( pch )
+                                if (!IS_NPC(pch)
+                                    && IS_AWAKE(pch)
                                     && pch->in_room
-                                    && pch->in_room->area == pArea )
+                                    && pch->in_room->area == pArea)
                                 {
-                                        send_to_char( "You hear the patter of little feet.\n\r", pch );
+                                        if (pArea->reset_message && pArea->reset_message[0] != '\0')
+                                                send_to_char(pArea->reset_message, pch);
+                                        else
+                                                send_to_char("You hear the patter of little feet.\n\r", pch);
                                 }
                         }
                 }
@@ -3008,11 +3011,11 @@ void reset_area( AREA_DATA *pArea )
                                 continue;
                         }
 
-                        if ( pArea->nplayer > 0
-                            || count_obj_list( pObjIndex, pRoomIndex->contents ) > 0 )
+                        if ( ( ( pArea->nplayer > 0 ) && ( pObjIndex->item_type != ITEM_HOARD ) )
+                        || ( count_obj_list( pObjIndex, pRoomIndex->contents ) > 0 ) )
                         {
-                                last = FALSE;
-                                break;
+                            last = FALSE;
+                            break;
                         }
 
                         if (IS_SET(pObjIndex->extra_flags, ITEM_DONOT_RANDOMISE ))
@@ -3071,11 +3074,11 @@ void reset_area( AREA_DATA *pArea )
                                 continue;
                         }
 
-                        if (pArea->nplayer > 0
-                            || count_obj_list(pObjIndex, pRoomIndex->contents) >= pReset->arg3)
+                        if ( ( ( pArea->nplayer > 0 ) && ( pObjIndex->item_type != ITEM_HOARD ) )
+                        || ( count_obj_list(pObjIndex, pRoomIndex->contents) >= pReset->arg3) )
                         {
-                                last = FALSE;
-                                break;
+                            last = FALSE;
+                            break;
                         }
 
                         if (IS_SET(pObjIndex->extra_flags, ITEM_DONOT_RANDOMISE ))
@@ -3172,8 +3175,11 @@ void reset_area( AREA_DATA *pArea )
 
                         if ( !mob )
                         {
+                                char buf [ MAX_STRING_LENGTH ];
                                 bug( "Reset_area: 'E' or 'G': null mob for vnum %d.",
                                     pReset->arg1 );
+                                sprintf(buf, "In area: %s\n", pArea->name);
+                                log_string (buf);
                                 last = FALSE;
                                 break;
                         }
@@ -3496,8 +3502,8 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, int r
         /* Limit check for runtime-spawn cap */
         if (pObjIndex->max_instances > 0 && pObjIndex->spawn_count >= pObjIndex->max_instances)
         {
-                bug("create_object: max_instances hit for vnum %d, returning dummy object.",
-                pObjIndex->vnum);
+                /* bug("create_object: max_instances hit for vnum %d, returning dummy object.",
+                pObjIndex->vnum); */
 
                 OBJ_DATA *obj = alloc_perm(sizeof(*obj));
                 *obj = obj_zero;
@@ -3721,6 +3727,15 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, int r
                 obj->value[0]   = number_fuzzy( obj->value[0] );
                 obj->value[1]   = number_fuzzy( obj->value[1] );
                 obj->value[2]   = obj->value[1];
+                break;
+
+            case ITEM_DIGGER:
+                obj->value[0]   = number_fuzzy( obj->value[0] );
+                obj->value[3]   = number_fuzzy( obj->value[3] );
+                break;
+
+            case ITEM_HOARD:
+                obj->value[0]   = number_fuzzy( obj->value[0] );
                 break;
 
             case ITEM_STAFF:
@@ -3995,8 +4010,8 @@ void clear_char( CHAR_DATA *ch )
         ch->max_hit             = 20;
         ch->mana                = 100;
         ch->max_mana            = 100;
-        ch->move                = 100;
-        ch->max_move            = 100;
+        ch->move                = 150;
+        ch->max_move            = 150;
         ch->rage                = 50;
         ch->max_rage            = 100;
         ch->leader              = NULL;

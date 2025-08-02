@@ -49,7 +49,7 @@ mines while construction finishes.
 36 0
 8 8 1
 #24003
-dwarven worker slave~
+dwarven worker slave miner~
 the dwarven worker~
 A chained miner is widening the tunnels.
 ~
@@ -765,6 +765,14 @@ A large forge dominates the room.~
 40 1 0
 10~ 0~ 0~ 0~
 1000 0 0
+#24038
+mining pick~
+a mining pick~
+A mining pick sticks out of the wall here.~
+~
+6 1024 1|16384
+30~ 45~ 120~ 95~
+35 0 57
 #0
 
 
@@ -4733,6 +4741,8 @@ E 1 24000 100 11               A Scale of The Dragon
 E 1 24001 100 16               A Talon of The Dragon
 *
 O 1 24037 100 24023           A forge to The Cobresh Smithy
+*
+I 24038 57 24191 1              pick to The mines
 S
 
 #SHOPS

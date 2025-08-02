@@ -34,11 +34,15 @@
 /*
  * Local functions.
  */
-void        get_obj         args((CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container));
-bool        remove_obj      args((CHAR_DATA *ch, int iWear, bool fReplace));
-void        wear_obj        args((CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace));
-CHAR_DATA * find_keeper     args((CHAR_DATA *ch));
-int         get_cost        args((CHAR_DATA *keeper, OBJ_DATA *obj, bool fBuy));
+void        get_obj                     args((CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container));
+bool        remove_obj                  args((CHAR_DATA *ch, int iWear, bool fReplace));
+void        wear_obj                    args((CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace));
+CHAR_DATA * find_keeper                 args((CHAR_DATA *ch));
+int         get_cost                    args((CHAR_DATA *keeper, OBJ_DATA *obj, bool fBuy));
+void        create_or_update_dirt_pile  args((ROOM_INDEX_DATA *room));
+int         modify_dig_wait_state       args((CHAR_DATA *ch, int base_wait, int dig_mode, OBJ_DATA *dig_tool));
+int         modify_dig_move_cost        args((CHAR_DATA *ch, int base_move, int dig_mode, OBJ_DATA *dig_tool));
+int         modify_dig_damage           args((CHAR_DATA *ch, int base_dmg, int dig_mode, OBJ_DATA *dig_tool));
 
 
 void get_obj (CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
@@ -240,6 +244,546 @@ void get_obj_vault (CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
         return;
 }
 
+void do_dig (CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA        *obj;
+        OBJ_DATA        *dig_tool   = NULL;
+        int             dig_mode    = DIG_NONE;
+        int             move_cost;
+        int             wait;
+        int             dig_dmg;
+        OBJ_DATA        *hoard      = NULL;
+
+        if ( ( ch->position < POS_STANDING ) )
+        {
+            send_to_char("You're in no position to do any digging right now.\n\r", ch);
+            return;
+        }
+
+        if (IS_AFFECTED(ch, AFF_SWALLOWED))
+        {
+                send_to_char ("You can't dig, you've been SWALLOWED!\n\r", ch);
+                return;
+        }
+
+        if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
+        {
+                send_to_char("Not in your current state.\n\r", ch);
+                return;
+        }
+
+        if (ch->fighting)
+        {
+                send_to_char("While you're fighting?  No.\n\r", ch);
+                return;
+        }
+
+        if (ch->mount)
+        {
+                send_to_char("Dismount first.\n\r", ch);
+                return;
+        }
+
+        if (IS_AFFECTED(ch, AFF_ARM_TRAUMA))
+        {
+                send_to_char("Your arms are too badly damaged to dig.\n\r", ch);
+                return;
+        }
+
+        if ( ch->in_room->sector_type == SECT_UNDERWATER
+        ||   ch->in_room->sector_type == SECT_WATER_SWIM
+        ||   ch->in_room->sector_type == SECT_WATER_NOSWIM
+        ||   ch->in_room->sector_type == SECT_AIR)
+        {
+            send_to_char("You can't dig in this sort of terrain.\n\r", ch);
+            return;
+        }
+
+        /* either 0 (can't dig) 1 (Can dig, uses first ITEM_DIGGER in inventory),
+           2 (Can dig, uses bear form or wolf/dire wolf/werewolf form) 3 (Can dig uses weapon doing
+           scoop, claw, or rake damage) 1, 2 ,3 are in order of preference, will return the first it hits.
+           */
+
+        for (obj = ch->carrying; obj != NULL; obj = obj->next_content)
+        {
+                if (obj->item_type == ITEM_CONTAINER)
+                        continue;
+
+                if (obj->item_type == ITEM_DIGGER)
+                {
+                        dig_tool = obj;
+                        dig_mode = DIG_TOOL;
+                        break;
+                }
+        }
+
+        if (dig_mode == DIG_NONE)
+        {
+                int i;
+                for (i = 0; i < MAX_WEAR; i++)  // Assuming MAX_WEAR is defined (e.g., 20)
+                {
+                        obj = get_eq_char(ch, i);
+                        if (obj && obj->item_type == ITEM_DIGGER)
+                        {
+                                dig_tool = obj;
+                                dig_mode = DIG_TOOL;
+                                break;
+                        }
+                }
+        }
+
+        if (dig_mode == DIG_NONE)
+        {
+                if (ch->sub_class == SUB_CLASS_WEREWOLF)
+                        dig_mode = DIG_FORM;
+                else if (ch->form == FORM_BEAR)
+                        dig_mode = DIG_FORM;
+                else if (ch->form == FORM_WOLF)
+                        dig_mode = DIG_FORM;
+                else if (ch->form == FORM_DIREWOLF)
+                        dig_mode = DIG_FORM;
+        }
+
+        if (dig_mode == DIG_NONE)
+        {
+                OBJ_DATA *wield = get_eq_char(ch, WEAR_WIELD);
+                OBJ_DATA *dual = get_eq_char(ch, WEAR_DUAL);
+
+                if (wield && (wield->value[3] == 5 ||
+                            wield->value[3]   == 14 ||
+                            wield->value[3]   == 17 ) )
+                {
+                        dig_tool = wield;
+                        dig_mode = DIG_WEAPON;
+                }
+                else if (dual && (dual->value[3]  == 5 ||
+                                dual->value[3]    == 14 ||
+                                dual->value[3]    == 17 ) )
+                {
+                        dig_tool = dual;
+                        dig_mode = DIG_WEAPON;
+                }
+        }
+        /* bug("\nDig mode is: %d\r\n", dig_mode); */
+
+        if (dig_mode == DIG_NONE)
+        {
+                send_to_char("You have no way of doing that.\n\r", ch);
+                return;
+        }
+
+       /*  bug("Dig mode is: %d", dig_mode); */
+
+
+        if ( ( dig_mode == DIG_TOOL)
+        &&   ( dig_tool->level > ch->level ) )
+        {
+                send_to_char("You're too inexperienced to use that digging implement effectively.\n\r", ch);
+                return;
+        }
+
+        /* Okay we're going to dig! Figure out default values for digging mode */
+
+        if (dig_mode == DIG_TOOL && dig_tool != NULL)
+        {
+                move_cost   = number_fuzzy(dig_tool->value[3]);
+                wait        = number_fuzzy(dig_tool->value[0]);
+                dig_dmg     = number_range(dig_tool->value[1], dig_tool->value[2]);
+        }
+
+        if (dig_mode == DIG_FORM && dig_tool == NULL)
+        {
+                move_cost   = number_fuzzy(160 - ch->level);
+
+                if (move_cost  < 50)
+                        move_cost = 50;
+
+                wait        = number_fuzzy(36 - (24*(ch->level/100)));
+
+                if (wait < 12)
+                        wait = 12;
+
+                dig_dmg     = number_fuzzy(number_range(((ch->level/4)+1), (ch->level*2)));
+        }
+
+        if (dig_mode == DIG_WEAPON && dig_tool != NULL)
+        {
+                move_cost   = number_fuzzy(200 - ch->level);
+
+                if (move_cost  < 80)
+                        move_cost = 80;
+
+                wait        = number_fuzzy(44 - (24*(ch->level/100)));
+
+                if (wait < 20)
+                        wait = 20;
+
+                dig_dmg     = number_range((dig_tool->value[1]), (dig_tool->value[2]));
+        }
+
+        wait        = modify_dig_wait_state(ch, wait, dig_mode, dig_tool);
+        move_cost   = modify_dig_move_cost(ch, move_cost, dig_mode, dig_tool);
+        dig_dmg     = modify_dig_damage(ch, dig_dmg, dig_mode, dig_tool);
+
+        if (ch->move < move_cost)
+        {
+            send_to_char("You're too exhausted to dig.\n\r", ch);
+            return;
+        }
+
+        ch->move -= move_cost;
+
+        WAIT_STATE(ch, wait);
+
+        // Try to find an ITEM_HOARD in the room
+        for (hoard = ch->in_room->contents; hoard != NULL; hoard = hoard->next_content)
+        {
+            /* if (hoard->item_type == ITEM_HOARD && !(hoard->value[1] == 2) )  // not already unearthed
+                break; */
+            if (hoard->item_type == ITEM_HOARD )
+                break;
+        }
+
+        if (hoard)
+        {
+                hoard->value[2] -= dig_dmg;
+
+                if (hoard->value[2] <= 0)
+                {
+                        hoard->value[2] = 0;
+                        hoard->value[1] = 2;  /* Mark as unearthed */
+
+                        /* check for a trap */
+                        if ( checkopen(ch, hoard) )
+                                return;
+
+                        switch (dig_mode)
+                        {
+                            case DIG_FORM:
+                                act("With a final powerful rake, $n unearths something!", ch, NULL, NULL, TO_ROOM);
+                                act("With a final powerful rake of claw and tooth, you unearth something!", ch, NULL, NULL, TO_CHAR);
+                                break;
+                            case DIG_WEAPON:
+                                act("With a final violent hack of $s weapon, $n unearths something!", ch, NULL, NULL, TO_ROOM);
+                                act("With a final violent hack of your weapon, you unearth something!", ch, NULL, NULL, TO_CHAR);
+                                break;
+                            case DIG_TOOL:
+                            default:
+                                act("With a final effortful thrust, $n unearths something!", ch, NULL, NULL, TO_ROOM);
+                                act("With a final effortful thrust, you unearth something!", ch, NULL, NULL, TO_CHAR);
+                                break;
+                        }
+
+                         /* Disgorge contents (or indicate the hoard was empty) */
+                        if (hoard->contains == NULL)
+                        {
+                                /* No items were hidden here */
+                                act("{WAlas, this hoard has already been looted--nothing remains but dirt and stones.{x",
+                                    ch, NULL, NULL, TO_CHAR);
+                                act("$n unearths an empty hoard, revealing nothing but dirt and stones.",
+                                    ch, NULL, NULL, TO_ROOM);
+                        }
+                        else
+                        {
+                                OBJ_DATA *obj_next;
+                                for (obj = hoard->contains; obj != NULL; obj = obj_next)
+                                {
+                                        obj_next = obj->next_content;
+                                        obj_from_obj(obj);
+                                        obj_to_room(obj, ch->in_room);
+                                }
+                        }
+
+                        obj_from_room(hoard);
+
+                        extract_obj(hoard);
+                }
+            else
+            {
+                    switch (dig_mode)
+                    {
+                        case DIG_FORM:
+                            act("You rake the earth with your claws and teeth...", ch, NULL, NULL, TO_CHAR);
+                            act("$n rakes the earth with $s claws and teeth.", ch, NULL, NULL, TO_ROOM);
+                            break;
+                        case DIG_WEAPON:
+                            act("You gouge the earth with your weapon...", ch, NULL, NULL, TO_CHAR);
+                            act("$n gouges the ground with $s weapon.", ch, NULL, NULL, TO_ROOM);
+                            break;
+                        case DIG_TOOL:
+                        default:
+                            act("You dig into the earth with {W$p{x...", ch, dig_tool, NULL, TO_CHAR);
+                            act("$n digs into the ground with great effort.", ch, NULL, NULL, TO_ROOM);
+                            break;
+                    }
+            }
+        }
+        else {
+                /* Determine chance of insight into futility of digging where there is no ITEM_HOARD */
+                int insight   = get_curr_int(ch) + get_curr_wis(ch);
+                int threshold = 20;
+                int ichance;
+
+                if (!IS_NPC(ch) &&
+                    (ch->race == RACE_DWARF || ch->race == RACE_DUERGAR))
+                {
+                        insight += 20;
+                }
+
+                ichance = (insight - threshold);
+                if (ichance < 5)
+                    ichance = 5;
+
+                /* bug("ichance is %d", ichance); */
+
+                bool feels_futile = number_percent() < ichance;
+
+                switch (dig_mode)
+                {
+                    case DIG_FORM:
+                        if (feels_futile)
+                        {
+                                act("You rake the earth... but a nagging voice tells you there's nothing here.", ch, NULL, NULL, TO_CHAR);
+                                act("$n rakes the ground, seeming suddenly more hesitant.", ch, NULL, NULL, TO_ROOM);
+                        }
+                        else
+                        {
+                                act("You rake the earth with your claws and teeth...", ch, NULL, NULL, TO_CHAR);
+                                act("$n rakes the earth with $s claws and teeth.", ch, NULL, NULL, TO_ROOM);
+                        }
+                        break;
+
+                    case DIG_WEAPON:
+                        if (feels_futile)
+                        {
+                                act("You gouge the earth with your weapon... but doubt gnaws at you.", ch, NULL, NULL, TO_CHAR);
+                                act("$n gouges at the earth, looking uncertain.", ch, NULL, NULL, TO_ROOM);
+                        }
+                        else
+                        {
+                                act("You gouge the earth with your weapon...", ch, NULL, NULL, TO_CHAR);
+                                act("$n gouges the ground with $s weapon.", ch, NULL, NULL, TO_ROOM);
+                        }
+                        break;
+
+                    case DIG_TOOL:
+                    default:
+                        if (feels_futile)
+                        {
+                                act("You dig into the earth... but get the feeling you're wasting your time.", ch, NULL, NULL, TO_CHAR);
+                                act("$n digs into the ground, $s expression doubtful.", ch, NULL, NULL, TO_ROOM);
+                        }
+                        else
+                        {
+                                act("You dig into the earth with {W$p{x...", ch, dig_tool, NULL, TO_CHAR);
+                                act("$n digs into the ground with great effort.", ch, NULL, NULL, TO_ROOM);
+                        }
+                        break;
+                }
+        }
+
+        create_or_update_dirt_pile(ch->in_room);
+
+        return;
+}
+
+int modify_dig_damage(CHAR_DATA *ch, int base_dmg, int dig_mode, OBJ_DATA *dig_tool)
+{
+        float mod_dmg = (float)base_dmg;
+
+        /* DEBUGF("Base dig damage is %.2f", mod_dmg); */
+
+        /* Apply terrain modifier */
+        mod_dmg += (mod_dmg * digmod_terrain_list[ch->in_room->sector_type].damage_mod) / 100.0f;
+        /* DEBUGF("Post terrain mod is %.2f", mod_dmg); */
+
+        /* Strength modifier */
+        int str = get_curr_str(ch);
+        mod_dmg += str / 3.0f;
+        /* DEBUGF("Post STR mod is %.2f", mod_dmg); */
+
+        /* Racial bonus (dwarves & duergar) */
+        if (!IS_NPC(ch) &&
+            (ch->race == RACE_DWARF || ch->race == RACE_DUERGAR))
+        {
+                mod_dmg *= 1.25f;
+                /* DEBUGF("Post racial bonus is %.2f", mod_dmg); */
+        }
+
+        /* Form bonus if digging with claws/paws */
+        if (dig_mode == DIG_FORM)
+        {
+                if (ch->form == FORM_BEAR)
+                        mod_dmg *= 1.30f;
+                else if (ch->form == FORM_DIREWOLF)
+                        mod_dmg *= 1.40f;
+                else if (ch->form == FORM_WOLF)
+                        mod_dmg *= 1.30f;
+                else if (ch->class == SUB_CLASS_WEREWOLF)
+                        mod_dmg *= 1.10f;
+
+                /* DEBUGF("Post form bonus is %.2f", mod_dmg); */
+        }
+
+        /* Weapon-based digging bonuses (well, penalties) */
+        if (dig_mode == DIG_WEAPON && dig_tool != NULL)
+        {
+                int dam_type = dig_tool->value[3];
+
+                if (dam_type == 5)        /* scoop */
+                        mod_dmg *= 0.40f;
+                else if (dam_type == 14) /* claw */
+                        mod_dmg *= 0.35f;
+                else if (dam_type == 17) /* rake */
+                        mod_dmg *= 0.35f;
+
+                /* DEBUGF("Post weapon modifier is %.2f", mod_dmg); */
+        }
+
+        /* Floor and rounding */
+        int final_dmg = (int)(mod_dmg + 0.5f);
+        if (final_dmg < 1)
+                final_dmg = 1;
+
+        /* DEBUGF("Final dig damage (rounded) is %d\n", final_dmg); */
+        return final_dmg;
+}
+
+int modify_dig_move_cost(CHAR_DATA *ch, int base_move, int dig_mode, OBJ_DATA *dig_tool)
+{
+        float mod_move = (float)base_move;
+
+        /* DEBUGF("Base move is %.2f", mod_move); */
+
+        /* Terrain modifier */
+        mod_move += (mod_move * digmod_terrain_list[ch->in_room->sector_type].mvcost_mod) / 100.0f;
+        /* DEBUGF("Post terrain mod is %.2f", mod_move); */
+
+        /* Constitution modifier */
+        int con = get_curr_con(ch);
+        mod_move = fmaxf(mod_move - con / 2.0f, 1.0f);
+        /* DEBUGF("Post CON mod is %.2f", mod_move); */
+
+        /* Racial bonus for dwarves and duergar */
+        if (!IS_NPC(ch) &&
+            (ch->race == RACE_DWARF || ch->race == RACE_DUERGAR))
+        {
+                mod_move = fmaxf(mod_move * 0.75f, 1.0f);
+               /*  DEBUGF("Post racial mod is %.2f", mod_move); */
+        }
+
+        int final_move = (int)(mod_move + 0.5f);
+        /* DEBUGF("Final movement cost (rounded) is %d\n", final_move); */
+
+        return final_move;
+}
+
+
+int modify_dig_wait_state(CHAR_DATA *ch, int base_wait, int dig_mode, OBJ_DATA *dig_tool)
+{
+        float mod_wait = (float)base_wait;
+
+        /* DEBUGF("Base wait is %.2f", mod_wait); */
+
+        mod_wait += (mod_wait * digmod_terrain_list[ch->in_room->sector_type].waitstate_mod ) / 100.0f;
+        /* DEBUGF("Post terrain mod is %.2f", mod_wait); */
+
+        int dex = get_curr_dex(ch);
+        mod_wait = fmaxf(mod_wait - dex / 6.0f, 1.0f);
+        /* DEBUGF("Post dex mod is %.2f", mod_wait); */
+
+        float swiftness = (float)(ch->swiftness + dex_app[dex].toswift);
+        /* DEBUGF("Ch swiftness is %.2f", swiftness); */
+
+        mod_wait = fmaxf(mod_wait -= swiftness / 20.0f, 1.0f);
+        /* DEBUGF("Post swiftness mod is %.2f", mod_wait); */
+
+        if (is_affected(ch, gsn_haste))
+        {
+                mod_wait = fmaxf(mod_wait *= 0.80f, 1.0f);
+                /* DEBUGF("Post haste mod is %.2f", mod_wait); */
+        }
+
+        if (is_affected(ch, gsn_quicken))
+        {
+                mod_wait = fmaxf(mod_wait *= 0.80f, 1.0f);
+                /* DEBUGF("Post quicken mod is %.2f", mod_wait); */
+        }
+
+        if (is_affected(ch, gsn_bonus_attack))
+        {
+                mod_wait = fmaxf(mod_wait *= 0.90f, 1.0f);
+                /* DEBUGF("Post bonus attack mod is %.2f", mod_wait); */
+        }
+
+        if (!can_see(ch, ch))
+        {
+                mod_wait = fmaxf(mod_wait *= 1.20f, 1.0f);
+                /* DEBUGF("Post blind check mod is %.2f", mod_wait); */
+        }
+
+        if (!IS_NPC(ch) &&
+            (ch->race == RACE_DWARF || ch->race == RACE_DUERGAR))
+        {
+                mod_wait = fmaxf(mod_wait *= 0.50f, 1.0f);
+                /* DEBUGF("Post race check mod is %.2f", mod_wait); */
+        }
+
+        if (is_affected(ch, gsn_slow))
+        {
+                mod_wait = fmaxf(mod_wait *= 3.00f, 1.0f);
+               /*  DEBUGF("Post slow check mod is %.2f", mod_wait); */
+        }
+
+        int final_wait = (int)(mod_wait + 0.5f);
+        /* DEBUGF("Final wait state (rounded) is %d\n", final_wait); */
+
+        return final_wait;
+}
+
+
+void create_or_update_dirt_pile(ROOM_INDEX_DATA *room)
+{
+        OBJ_DATA *obj;
+        static const char *descs[] = {
+                "<215>A small pile of loose dirt is here.<0>",
+                "<58>A mound of churned earth is heaped on the ground.<0>",
+                "<94>You see a significant heap of soil and stones.<0>",
+                "<556><94>An enormous pile of dirt, clods, and rubble dominates the space.<557><0>"
+        };
+
+        for (obj = room->contents; obj != NULL; obj = obj->next_content) {
+                if (obj->item_type == ITEM_TRASH && obj->pIndexData->vnum == OBJ_VNUM_DIRT_PILE) {
+                        break;
+                }
+        }
+
+        if (obj == NULL) {
+                obj = create_object(get_obj_index(OBJ_VNUM_DIRT_PILE), 0, "common", CREATED_NO_RANDOMISER);
+                obj->item_type = ITEM_TRASH;
+                obj->timer = 6;
+                obj->weight = number_fuzzy(30);
+                obj->value[0] = 1;
+                obj->description = str_dup(descs[0]);
+                obj_to_room(obj, room);
+        } else {
+                obj->value[0]++;
+                obj->timer = 6;
+
+                int tier = obj->value[0] / 4;
+                if (tier > 3) tier = 3;
+
+                free_string(obj->description);
+                obj->description = str_dup(descs[tier]);
+                obj->weight = obj->weight + number_fuzzy(10);
+        }
+}
+
+
+void do_bury (CHAR_DATA *ch, char *argument)
+{
+        return;
+}
 
 void do_get (CHAR_DATA *ch, char *argument)
 {
@@ -271,11 +815,18 @@ void do_get (CHAR_DATA *ch, char *argument)
                 {
                         /* 'get obj' */
                         obj = get_obj_list(ch, arg1, ch->in_room->contents);
-                        if (!obj)
+                        if (!obj || ( obj->item_type == ITEM_HOARD && obj->value[1] != 2 ) )
                         {
                                 act("I see no $T here.", ch, NULL, arg1, TO_CHAR);
                                 return;
                         }
+
+                        if (obj->item_type == ITEM_HOARD && obj->value[1] ==2 )
+                        {
+                                send_to_char("You can't do that, it's still partially buried.\n\r", ch);
+                                return;
+                        }
+
                         get_obj(ch, obj, NULL);
 
                         /* Do we get the object?? */
@@ -330,6 +881,10 @@ void do_get (CHAR_DATA *ch, char *argument)
                                 if ((arg1[3] == '\0' || is_name(&arg1[4], obj->name))
                                     && can_see_obj(ch, obj))
                                 {
+
+                                        if (obj->item_type == ITEM_HOARD )
+                                                continue;
+
                                         found = TRUE;
                                         get_obj(ch, obj, NULL);
                                 }
@@ -2801,7 +3356,7 @@ void wear_obj (CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace)
 
         if (CAN_WEAR(eff_class, ch->form, obj, ITEM_WIELD, BIT_WIELD))
         {
-                if (obj->item_type != ITEM_WEAPON)
+                if ( obj->item_type != ITEM_WEAPON )
                 {
                         send_to_char("You cannot use that as a weapon.\n\r", ch);
                         return;

@@ -6462,6 +6462,7 @@ sx  female
 act stay_area sentinel aggressive
 aff swim infrared det_invis det_hidden det_sneak protection sanctuary
 sp  spec_green_grung
+rnk elite
 mp  greet_prog 100
     if isfight($i)
         break
@@ -6534,6 +6535,7 @@ sx  male
 act stay_area sentinel aggressive
 aff swim infrared det_invis det_hidden det_sneak protection sanctuary
 sp  spec_blue_grung
+rnk elite
 mp  greet_prog 100
     if isfight($i)
         break
@@ -6606,6 +6608,7 @@ sx  male
 act stay_area sentinel aggressive
 aff swim infrared det_invis det_hidden det_sneak protection sanctuary
 sp  spec_red_grung
+rnk elite
 mp  greet_prog 100
     if isfight($i)
         break
@@ -7338,6 +7341,7 @@ sx  male
 act stay_area sentinel aggressive
 aff swim infrared det_invis det_hidden det_sneak protection sanctuary
 sp  spec_purple_grung
+rnk elite
 mp  greet_prog 100
     if isfight($i)
         break
@@ -7410,6 +7414,7 @@ sx  male
 act stay_area sentinel aggressive
 aff swim infrared det_invis det_hidden det_sneak protection sanctuary
 sp  spec_orange_grung
+rnk elite
 mp  greet_prog 100
     if isfight($i)
         break
@@ -7481,6 +7486,7 @@ al  -751
 sx  female
 act stay_area sentinel aggressive
 aff swim infrared det_invis det_hidden det_sneak protection sanctuary globe flaming
+rnk elite
 sp  spec_gold_grung
 mp  greet_prog 100
     if isfight($i)
@@ -7829,7 +7835,7 @@ mp  greet_prog 100
 $obj
 nm  ancient fountain
 sh  an ancient fountain
-lo  <51>A magnificent ancient fountain burbles away happily here.<0>
+lo  <51>An ancient fountain burbles away happily here.<0>
 vn  28438
 ty  fountain
 wg  5000

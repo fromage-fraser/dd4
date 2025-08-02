@@ -863,9 +863,9 @@ A pair of heavy gloves is lying on the ground.~
 A
 1 1
 #12035
-sleeves linnen~
-a pair of linnen sleeves~
-A pair of linnen sleeves is lying on the ground.~
+sleeves linen~
+a pair of linen sleeves~
+A pair of linen sleeves is lying on the ground.~
 ~
 9 0 257
 3~ ~ ~ ~
@@ -982,6 +982,14 @@ E
 fountain~
 It is very nice.  Made from fine purple marble.
 ~
+#12047
+reinforced digging fork~
+a reinforced digging fork~
+A heavy-duty fork with braced iron tines has been left here.~
+~
+6 0 1|16384
+22~ 37~ 112~ 100~
+1 10000 60
 #0
 
 
@@ -4749,7 +4757,8 @@ E 1 12029 0 16             Wield a long silver sword
 M 0 12034 1 12185               Julian the armourer
 E 1 12029 0 16             Wield a long silver sword
 G 1 12034 0                Give heavy gloves
-G 1 12035 0                Give linnen sleeves
+G 1 12035 0                Give linen sleeves
+G 1 12047 0                Give a digging fork
 M 0 12035 1 12183               Steve the weaponsmith
 E 1 12029 0 16             Wield a long silver sword
 G 1 12028 0                Give small silver sword
@@ -4824,7 +4833,7 @@ S
  12030   8   0   0  0  0         100 10   6 22  Patrick the green-grocer
  12031   8   0   0  0  0         100 10   6 22  Paul the tailor
  12032   8   0   0  0  0         100 10   0 23  Yves the tavern-keeper
- 12034   8   9   0  0  0         125 50   6 22  Julian the armourer
+ 12034   8   9   6  0  0         125 50   6 22  Julian the armourer
  12035   8   5   0  0  0         125 50   6 22  Steve the weaponsmith
  12046  52  53  54  0  0         125 50   6 22  Samuel the tobacconist
 0

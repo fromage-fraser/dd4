@@ -2959,6 +2959,9 @@ bool can_see_obj( CHAR_DATA *ch, OBJ_DATA *obj )
         if ( obj->deleted )
                 return FALSE;
 
+        if ( obj->item_type == ITEM_HOARD && obj->value[1] != 2 && !IS_IMMORTAL(ch) )
+                return FALSE;
+
         if ( !IS_NPC( ch ) && IS_SET( ch->act, PLR_HOLYLIGHT ) )
                 return TRUE;
 
@@ -3047,6 +3050,8 @@ char *item_type_name( OBJ_DATA *obj  )
             case ITEM_WAND:                     return "wand";
             case ITEM_STAFF:                    return "staff";
             case ITEM_WEAPON:                   return "weapon";
+            case ITEM_DIGGER:                   return "digging implement";
+            case ITEM_HOARD:                    return "hoard";
             case ITEM_TREASURE:                 return "treasure";
             case ITEM_ARMOR:                    return "armour";
             case ITEM_POTION:                   return "potion";
@@ -3178,6 +3183,8 @@ int item_name_type( char *name )
         if ( !str_cmp( name, "wand"               ) ) return ITEM_WAND;
         if ( !str_cmp( name, "staff"              ) ) return ITEM_STAFF;
         if ( !str_cmp( name, "weapon"             ) ) return ITEM_WEAPON;
+        if ( !str_cmp( name, "digging implement"  ) ) return ITEM_DIGGER;
+        if ( !str_cmp( name, "hoard"              ) ) return ITEM_HOARD;
         if ( !str_cmp( name, "treasure"           ) ) return ITEM_TREASURE;
         if ( !str_cmp( name, "armor"              ) ) return ITEM_ARMOR;
         if ( !str_cmp( name, "potion"             ) ) return ITEM_POTION;

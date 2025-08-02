@@ -2460,6 +2460,15 @@ A magical portal glows softly here.~
 33 0 0
 31400~ -1~ 0~ 100~
 0 0 0
+#30091
+dragonbone hoe~
+a dragonbone hoe~
+A hoe fashioned from gleaming black dragonbonme has been carelessly left here.~
+~
+6 0 1|16384
+13~ 57~ 171~ 65~
+1 10000 95
+M 1
 #0
 
 
@@ -6017,12 +6026,14 @@ D 0 30121 0 1               close the altar
 O 0 30089 0 30125           portal to room behind altar
 O 0 30090 0 30065           portal to the portal to draagdim
 *
-M 1 30080 01 30128          Gillian to Tobacconist cart
+M 1 30080 1 30128          Gillian to Tobacconist cart
 G 1 561 100
 G 1 562 100
 G 1 563 100
 G 1 564 100
 G 1 565 100
+*
+I 30091 95 30024 1       Dragonbone hoe to Under the watchtower
 
 S
 

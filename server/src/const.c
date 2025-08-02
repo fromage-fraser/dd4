@@ -641,7 +641,7 @@ const struct ws_terrain ws_terrain_list  [ SECT_MAX + 1 ] =
         { 0 },
 };
 
-/* modifiers to terrain waitstate values by race */
+/* modifiers to terrain waitstate values by race for general movement */
 
 const struct ws_race_terrain ws_race_terrain_mod  [ MAX_RACE ] =
 {
@@ -678,6 +678,25 @@ const struct ws_race_terrain ws_race_terrain_mod  [ MAX_RACE ] =
        { { 0,  0,  0,  0,  1,  1, -2, -2, -2,  0,  2, -2, -2 } },   /* RACE_GRUNG */
        { { 0,  0,  1,  0, -1, -1,  0,  0,  0,  0,  0, -1,  0 } },   /* RACE_DUERGAR */
 
+};
+
+const struct digmod_terrain digmod_terrain_list  [ SECT_MAX + 1 ] =
+/* modifiers to do_dig wait state, dig damage, and dig movement cost by terrain type, expressed as percentages */
+{
+        {  50, -25,  50 },          /*  SECT_INSIDE */
+        {  75, -50,  75 },          /*  SECT_CITY */
+        { -75,  75, -50 },          /*  SECT_FIELD */
+        { -60,  60, -40 },          /*  SECT_FOREST */
+        { -40,  40, -45 },          /*  SECT_HILLS */
+        {   0, -10, -15 },          /*  SECT_MOUNTAIN */
+        {   0,   0,   0 },          /*  SECT_WATER_SWIM */
+        {   0,   0,   0 },          /*  SECT_WATER_NOSWIM */
+        {   0,   0,   0 },          /*  SECT_UNDERWATER */
+        {   0,   0,   0 },          /*  SECT_AIR */
+        { -80,  80, -25 },          /*  SECT_DESERT */
+        { -30,  25,  20 },          /*  SECT_SWAMP */
+        {  60,  40,  45 },          /*  SECT_UNDERWATER_GROUND */
+        {   0,   0,   0 },          /*  SECT_MAX */
 };
 
 
@@ -6829,7 +6848,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "head trauma", &gsn_head_trauma,
                 TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 16384,
                 spell_null, 0, 24,
-                "vicious cranial attack", "<147>The ringing in your ears diminishes.<0>"
+                "vicious cranial attack", "<147>The ringing in your ears fades.<0>"
         },
 
         {

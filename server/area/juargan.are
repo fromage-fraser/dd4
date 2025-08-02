@@ -215,6 +215,14 @@ A large forge dominates the room.~
 40 1 0
 10~ 0~ 0~ 0~
 1000 0 0
+#4710
+pick mining~
+a mining pick~
+A small pick lies here on the ground.~
+~
+6 0 1|16384
+25~ 31~ 90~ 112~
+10 100 46
 #0
 
 
@@ -1534,6 +1542,8 @@ M 0 4707 1 4720           *Dreaded rock worm.
 M 0 4708 3 4769           *Dwarven spirits.
 M 0 4708 3 4769
 M 0 4708 3 4769
+*
+I 4710 46 4707 1
 *
 O 0 4707 1 4769           *Sarcophagus.
 P 1 4708 1 4707           *Puts staff in sarcophagus.

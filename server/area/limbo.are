@@ -5,6 +5,8 @@
 hidden
 no_quest
 safe
+reset_msg The void ripples, and order is restored.
+~
 $
 
 #MOBILES
@@ -352,6 +354,9 @@ curiosity tinged with contempt.
 110 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+>fight_prog 50~
+    c fleshrot $N
+~
 >fight_prog 14~
     if affspell($n) == 564
         shout I've already caved your head in! hahaAA!
@@ -1941,6 +1946,53 @@ Some fangs have been ripped from a bat and left here.~
 1~ 10~ 15~ 10~
 1 10000 7500
 
+
+#579
+spade~
+a spade~
+An unremarkable spade lies here collecting dust.~
+~
+6 0 1|16384
+24~ 20~ 50~ 80~
+1 10000 7500
+
+
+#580
+hoard treasure~
+a hoard~
+A partially-unearthed treasure hoard is here.~
+~
+7 2097152 1|512 5 20 0
+100~ 1~ 400~ 400~
+1 10000 7500
+
+#581
+pile dirt~
+a pile of dirt~
+A pile of dirt is here.~
+~
+13 0 1|16384
+0~ 1~ 6~ 11~
+20 0 0
+
+#582
+hoard treasure~
+a hoard~
+A partially-unearthed treasure hoard is here.~
+~
+7 0 0
+100~ 1~ 100~ 100~
+1 10000 7500
+
+#583
+scoop ice-cream~
+an ice-cream scoop~
+An ice-cream scoop has been dropped here.~
+~
+5 0 1|8192
+1~ 10~ 15~ 17~
+1 10000 7500
+
 #0
 
 
@@ -2446,6 +2498,16 @@ E 0 62 0 3                      equip a duck collar (neck1)
 I 61 1 82 1                     Samxins desk to Samxin's Reality
 I 60 1 82 1                     a {rred{x psychiatrist's couch to Samxin's reality
 P 0 63 0 61                     put a note to Samxin inside Samxins desk
+
+
+I 579 1 83 1                     A spade to Owl's Arena
+I 580 1 83 1                     A hoard to Owl's Arena
+I 582 1 85 1                     A hoard to Owl's Arena
+
+P 1 577 0 580                   pipe in hoard for testing
+P 1 568 0 580                   pipe in hoard for testing
+* P 1 569 0 580                   pipe in hoard for testing
+* P 1 570 0 580                   pipe in hoard for testing
 S
 
 #OBJECT_SETS

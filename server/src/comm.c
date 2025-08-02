@@ -1346,331 +1346,324 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
         point = buf;
         str = ch->prompt;
 
-        while(*str != '\0')
+        while (*str != '\0')
         {
-                if(*str != '%')
+                if (*str != '%')
                 {
                         *point++ = *str++;
                         continue;
                 }
                 ++str;
 
-                switch(*str)
+                switch (*str)
                 {
-                    default:
-                        i = " ";
-                        break;
+                        default:
+                                i = " ";
+                                break;
 
-                    case '1':
-                        i = "";
-                        if(IS_SET(ch->act, PLR_ANSI)) i = BLUE;
-                        break;
-                    case '2':
-                        i = "";
-                        if(IS_SET(ch->act, PLR_ANSI)) i = GREEN;
-                        break;
-                    case '3':
-                        i = "";
-                        if(IS_SET(ch->act, PLR_ANSI)) i = CYAN;
-                        break;
-                    case '4':
-                        i = "";
-                        if(IS_SET(ch->act, PLR_ANSI)) i = RED;
-                        break;
-                    case '5':
-                        i = "";
-                        if(IS_SET(ch->act, PLR_ANSI)) i = PURPLE;
-                        break;
-                    case '6':
-                        i = "";
-                        if(IS_SET(ch->act, PLR_ANSI)) i = YELLOW;
-                        break;
-                    case '7':
-                        i = "";
-                        if(IS_SET(ch->act, PLR_ANSI)) i = GREY;
-                        break;
-                    case 'B':
-                        i = "";
-                        if(IS_SET(ch->act, PLR_ANSI) || IS_SET(ch->act, PLR_VT100)) i = BOLD;
-                        break;
-                    case 'N':
-                        i = "";
-                        if(IS_SET(ch->act, PLR_ANSI) || IS_SET(ch->act, PLR_VT100)) i = NTEXT;
-                        break;
-                    case 'c':
-                        if (d->inbuf[0] != '\0')
-                        {
-                            char *newline = strchr(d->inbuf, '\n');
-                            if (newline)
-                                *newline = '\0';
+                        case '%':
+                                sprintf(buf2, "%%");
+                                i = buf2;
+                                break;
 
-                            snprintf(buf2, sizeof(buf2), "%-.50s", d->inbuf);
+                        case '1':
+                                i = "";
+                                if (IS_SET(ch->act, PLR_ANSI)) i = BLUE;
+                                break;
+                        case '2':
+                                i = "";
+                                if (IS_SET(ch->act, PLR_ANSI)) i = GREEN;
+                                break;
+                        case '3':
+                                i = "";
+                                if (IS_SET(ch->act, PLR_ANSI)) i = CYAN;
+                                break;
+                        case '4':
+                                i = "";
+                                if (IS_SET(ch->act, PLR_ANSI)) i = RED;
+                                break;
+                        case '5':
+                                i = "";
+                                if (IS_SET(ch->act, PLR_ANSI)) i = PURPLE;
+                                break;
+                        case '6':
+                                i = "";
+                                if (IS_SET(ch->act, PLR_ANSI)) i = YELLOW;
+                                break;
+                        case '7':
+                                i = "";
+                                if (IS_SET(ch->act, PLR_ANSI)) i = GREY;
+                                break;
 
-                            if (newline)
-                                *newline = '\n';  // restore original newline
-                        }
-                        else
-                        {
-                            snprintf(buf2, sizeof(buf2), "...");
-                        }
-                        i = buf2;
-                        break;
-                    case 'h' :
-                        sprintf(buf2, "%d", ch->hit);
-                        i = buf2;
-                        break;
-
-                    case 'H' :
-                        sprintf(buf2, "%d", ch->max_hit);
-                        i = buf2;
-                        break;
-
-                    case 'm' :
-                        sprintf(buf2, "%d", ch->mana);
-                        i = buf2;
-                        break;
-
-                    case 'M' :
-                        sprintf(buf2, "%d", ch->max_mana);
-                        i = buf2;
-                        break;
-
-                    case 'u' :
-                        sprintf(buf2, "%d", ch->pcdata->bonus);
-                        i = buf2;
-                        break;
-
-                    case 'U' :
-                        sprintf(buf2, "%d", ch->pcdata->max_bonus);
-                        i = buf2;
-                        break;
-
-                    case 'v' :
-                        sprintf(buf2, "%d", ch->move);
-                        i = buf2;
-                        break;
-
-                    case 'V' :
-                        sprintf(buf2, "%d", ch->max_move);
-                        i = buf2;
-                        break;
-
-                    case 'p' :
-                        sprintf(buf2, "%s", position_name(ch->position));
-                        i = buf2;
-                        break;
-
-                    case 'q' :
-                        sprintf(buf2, "%d", ch->rage);
-                        i = buf2;
-                        break;
-
-                    case 'Q' :
-                        sprintf(buf2, "%d", ch->max_rage);
-                        i = buf2;
-                        break;
-
-                    case 'e' :
-                        if (ch->level >= LEVEL_HERO)
-                                sprintf (buf2, "(n/a)");
-                        else
-                                sprintf(buf2, "%d", level_table[ch->level].exp_total - ch->exp);
-                        i = buf2;
-                        break;
-
-                    case 'x' :
-                        sprintf(buf2, "%d", ch->exp);
-                        i = buf2;
-                        break;
-
-                    case 'g' :
-                        sprintf(buf2, "%d", total_coins_char(ch) );
-                        i = buf2;
-                        break;
-
-                    case 'w' :
-                        sprintf(buf2, "%d", ch->wait);
-                        i = buf2;
-                        break;
-
-                    case 'a' :
-                        sprintf(buf2, "%s", IS_GOOD(ch) ? "good"
-                                : IS_EVIL(ch) ? "evil" : "neutral");
-                        i = buf2;
-                        break;
-
-                    case 'A' :
-                        if (ch->level > 9)
-                                sprintf(buf2, "%d", ch->alignment);
-                        else
-                                sprintf (buf2, "?");
-                        i = buf2;
-                        break;
-
-                    case 'f' :
-                        if (ch->class == CLASS_SHAPE_SHIFTER)
-                        {
-                                if (ch->sub_class == SUB_CLASS_VAMPIRE)
-                                        sprintf (buf2, "%s", is_affected (ch, gsn_mist_walk)
-                                                 ? "mist" : "normal");
+                        case 'A':
+                                if (ch->level > 9)
+                                        sprintf(buf2, "%d", ch->alignment);
                                 else
-                                        sprintf (buf2, "%s", extra_form_name (ch->form));
-                        }
-                        else
-                                sprintf (buf2, " ");
-                        i = buf2;
-                        break;
-
-                    case 't' :
-                        if (ch->pcdata->countdown)
-                                sprintf (buf2, "%d", ch->pcdata->countdown);
-                        else
-                                sprintf (buf2, "no quest");
-                        i = buf2;
-                        break;
-
-                    case 'T' :
-                        if (ch->pcdata->nextquest > 0 || !ch->pcdata->countdown)
-                                sprintf (buf2, "%d", ch->pcdata->nextquest);
-                        else
-                                sprintf (buf2, "questing");
-                        i = buf2;
-                        break;
-
-                    case 'r' :
-                        if(ch->in_room)
-                                sprintf(buf2, "%s", ch->in_room->name);
-                        else
-                                sprintf(buf2, " ");
-                        i = buf2;
-                        break;
-
-                    case 'R' :
-                        if(ch->level > LEVEL_HERO && ch->in_room)
-                                sprintf(buf2, "%d", ch->in_room->vnum);
-                        else
-                                sprintf(buf2, " ");
-                        i = buf2;
-                        break;
-
-                    case 'z' :
-                        if(ch->in_room)
-                                sprintf(buf2, "%s", ch->in_room->area->name);
-                        else
-                                sprintf(buf2, " ");
-                        i = buf2;
-                        break;
-
-                    case 'i' :
-                        sprintf(buf2, "%s", IS_AFFECTED(ch, AFF_INVISIBLE) ?
-                                "invisible" : "visible");
-                        i = buf2;
-                        break;
-
-                    case 'W' :
-                        if(ch->level > LEVEL_HERO)
-                                sprintf(buf2, "(wizinv: %s)",
-                                        IS_SET(ch->act, PLR_WIZINVIS) ? "on" : "off");
-                        else
-                                sprintf(buf2, " ");
-                        i = buf2;
-                        break;
-
-                    case 's':
-                        if (!IS_NPC(ch))
-                        {
-                                if (IS_SET(ch->in_room->room_flags, ROOM_PLAYER_KILLER))
-                                        sprintf(buf2, "{Yarena{x");
-                                else if ((IS_SET(ch->status, PLR_RONIN) || ch->clan)
-                                         && ch->level > 14
-                                         && !(IS_SET(ch->in_room->room_flags, ROOM_SAFE)
-                                              || IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE)))
-                                        sprintf(buf2, "{Runsafe{x");
-                                else
-                                        sprintf(buf2, "{Gsafe{x");
-                        }
-                        else
-                                sprintf(buf2, " ");
-                        i = buf2;
-                        break;
-
-                    case 'S':
-                        if (!IS_NPC(ch))
-                        {
-                                if (IS_SET(ch->in_room->room_flags, ROOM_PLAYER_KILLER))
-                                        sprintf(buf2, "{Yarena{x");
-                                else if (IS_SET(ch->in_room->room_flags, ROOM_SAFE)
-                                         || IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE))
-                                        sprintf(buf2, "{Gsafe{x");
-                                else
-                                        sprintf(buf2, "{Runsafe{x");
-                        }
-                        else
-                                sprintf(buf2, " ");
-                        i = buf2;
-                        break;
-                    case 'G':
-                        if (!IS_NPC(ch))
-                        {
-                                if (ch->pcdata->meter >= 0)
+                                        sprintf(buf2, "?");
+                                i = buf2;
+                                break;
+                        case 'B':
+                                i = "";
+                                if (IS_SET(ch->act, PLR_ANSI)
+                                 || IS_SET(ch->act, PLR_VT100))
+                                        i = BOLD;
+                                break;
+                        case 'G':
+                                if (!IS_NPC(ch) && ch->pcdata->meter >= 0)
                                 {
-                                        int last;
-                                        int first;
-                                        last = (ch->pcdata->meter %10 );
-                                        first = (ch->pcdata->meter);
-                                        while(first >= 10)
-                                        {
-                                                first = first / 10;
-                                        }
+                                        int last  = ch->pcdata->meter % 10;
+                                        int first = ch->pcdata->meter;
+                                        while (first >= 10)
+                                                first /= 10;
 
                                         if (ch->pcdata->meter == 0)
                                                 sprintf(buf2, "[  <51>0%%<0> ]");
                                         else if (ch->pcdata->meter < 10)
                                                 sprintf(buf2, "[<154><454>-<0> <51>%d%%<0> ]", last);
-                                        else if (ch->pcdata->meter < 20)
-                                                sprintf(buf2, "[<154><454>-<0><51>%d%d%%<0> ]", first, last);
-                                        else if (ch->pcdata->meter < 40)
-                                                sprintf(buf2, "[<154><454>-<0><51><448>%d<0><51>%d%%<0> ]", first, last);
-                                        else if (ch->pcdata->meter < 60)
-                                                sprintf(buf2, "[<154><454>-<0><51><448>%d<0><51><442>%d<0><51>%%<0> ]", first, last);
-                                        else if (ch->pcdata->meter < 80)
-                                                sprintf(buf2, "[<154><454>-<0><51><448>%d<0><51><442>%d<436>%%<0> ]", first, last);
-                                        else if (ch->pcdata->meter < 100)
-                                                sprintf(buf2, "[<154><454>-<0><51><448>%d<0><51><442>%d<436>%%<0><124><424>-<0>]", first, last);
-                                        else if (ch->pcdata->meter >= 100)
-                                                sprintf(buf2, "[<556><309><15>100%%<0><309><9>-<0>]");
+                                        else
+                                                sprintf(buf2,
+                                                    "[<154><454>-<0><51>%d%d%%<0> ]",
+                                                    first, last);
                                 }
-                        }
-                        else
-                                sprintf(buf2, " ");
-                        i = buf2;
-                        break;
-                    case 'k' :
-                        if (ch->pcdata->dam_meter >= 0)
-                                sprintf(buf2, "%d/%d%%", ch->pcdata->dam_meter, ch->damage_enhancement );
-                        else
-                                sprintf(buf2, " ");
-                        i = buf2;
-                        break;
-                    case 'b':
-                        if (!IS_NPC(ch) && ch->pcdata->blink)
-                                sprintf(buf2, "on");
-                        else
-                                sprintf(buf2, "off");
-                        i = buf2;
-                        break;
+                                else
+                                        sprintf(buf2, " ");
+                                i = buf2;
+                                break;
+                        case 'H':
+                                sprintf(buf2, "%d", ch->max_hit);
+                                i = buf2;
+                                break;
+                        case 'L':
+                        {
+                                time_t rawtime;
+                                struct tm *timeinfo;
 
-                    case '%' :
-                        sprintf(buf2, "%%");
-                        i = buf2;
+                                time(&rawtime);
+                                timeinfo = localtime(&rawtime);
+                                strftime(buf2, sizeof(buf2), "%H:%M:%S", timeinfo);
+                                i = buf2;
+                        }
                         break;
+                        case 'M':
+                                sprintf(buf2, "%d", ch->max_mana);
+                                i = buf2;
+                                break;
+                        case 'N':
+                                i = "";
+                                if (IS_SET(ch->act, PLR_ANSI)
+                                 || IS_SET(ch->act, PLR_VT100))
+                                        i = NTEXT;
+                                break;
+                        case 'Q':
+                                sprintf(buf2, "%d", ch->max_rage);
+                                i = buf2;
+                                break;
+                        case 'R':
+                                if (ch->level > LEVEL_HERO && ch->in_room)
+                                        sprintf(buf2, "%d", ch->in_room->vnum);
+                                else
+                                        sprintf(buf2, " ");
+                                i = buf2;
+                                break;
+                        case 'S':
+                                if (!IS_NPC(ch))
+                                {
+                                        if (IS_SET(ch->in_room->room_flags, ROOM_PLAYER_KILLER))
+                                                sprintf(buf2, "{Yarena{x");
+                                        else if (IS_SET(ch->in_room->room_flags, ROOM_SAFE)
+                                              || IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE))
+                                                sprintf(buf2, "{Gsafe{x");
+                                        else
+                                                sprintf(buf2, "{Runsafe{x");
+                                }
+                                else
+                                        sprintf(buf2, " ");
+                                i = buf2;
+                                break;
+                        case 'T':
+                                if (ch->pcdata->nextquest > 0 || !ch->pcdata->countdown)
+                                        sprintf(buf2, "%d", ch->pcdata->nextquest);
+                                else
+                                        sprintf(buf2, "questing");
+                                i = buf2;
+                                break;
+                        case 'U':
+                                sprintf(buf2, "%d", ch->pcdata->max_bonus);
+                                i = buf2;
+                                break;
+                        case 'V':
+                                sprintf(buf2, "%d", ch->max_move);
+                                i = buf2;
+                                break;
+                        case 'W':
+                                if (ch->level > LEVEL_HERO)
+                                        sprintf(buf2, "(wizinv: %s)",
+                                            IS_SET(ch->act, PLR_WIZINVIS)
+                                            ? "on" : "off");
+                                else
+                                        sprintf(buf2, " ");
+                                i = buf2;
+                                break;
+
+                        case 'a':
+                                sprintf(buf2, "%s",
+                                    IS_GOOD(ch)  ? "good"
+                                    : IS_EVIL(ch) ? "evil"
+                                                 : "neutral");
+                                i = buf2;
+                                break;
+                        case 'b':
+                                if (!IS_NPC(ch) && ch->pcdata->blink)
+                                        sprintf(buf2, "on");
+                                else
+                                        sprintf(buf2, "off");
+                                i = buf2;
+                                break;
+                        case 'c':
+                                if (d->inbuf[0] != '\0')
+                                {
+                                        char *newline = strchr(d->inbuf, '\n');
+                                        if (newline) *newline = '\0';
+
+                                        snprintf(buf2, sizeof(buf2),
+                                                 "%-.50s", d->inbuf);
+                                        if (newline) *newline = '\n';
+                                }
+                                else
+                                        snprintf(buf2, sizeof(buf2), "...");
+                                i = buf2;
+                                break;
+                        case 'e':
+                                if (ch->level >= LEVEL_HERO)
+                                        sprintf(buf2, "(n/a)");
+                                else
+                                        sprintf(buf2, "%d",
+                                            level_table[ch->level].exp_total
+                                            - ch->exp);
+                                i = buf2;
+                                break;
+                        case 'f':
+                                if (ch->class == CLASS_SHAPE_SHIFTER)
+                                {
+                                        if (ch->sub_class == SUB_CLASS_VAMPIRE)
+                                                sprintf(buf2, "%s",
+                                                    is_affected(ch, gsn_mist_walk)
+                                                    ? "mist" : "normal");
+                                        else
+                                                sprintf(buf2, "%s",
+                                                extra_form_name(ch->form));
+                                }
+                                else
+                                        sprintf(buf2, " ");
+                                i = buf2;
+                                break;
+                        case 'g':
+                                sprintf(buf2, "%d", total_coins_char(ch));
+                                i = buf2;
+                                break;
+                        case 'h':
+                                sprintf(buf2, "%d", ch->hit);
+                                i = buf2;
+                                break;
+                        case 'i':
+                                sprintf(buf2, "%s",
+                                    IS_AFFECTED(ch, AFF_INVISIBLE)
+                                    ? "invisible" : "visible");
+                                i = buf2;
+                                break;
+                        case 'k':
+                                if (ch->pcdata->dam_meter >= 0)
+                                        sprintf(buf2, "%d/%d%%",
+                                            ch->pcdata->dam_meter,
+                                            ch->damage_enhancement);
+                                else
+                                        sprintf(buf2, " ");
+                                i = buf2;
+                                break;
+                        case 'm':
+                                sprintf(buf2, "%d", ch->mana);
+                                i = buf2;
+                                break;
+                        case 'p':
+                                sprintf(buf2, "%s",
+                                    position_name(ch->position));
+                                i = buf2;
+                                break;
+                        case 'q':
+                                sprintf(buf2, "%d", ch->rage);
+                                i = buf2;
+                                break;
+                        case 'r':
+                                if (ch->in_room)
+                                        sprintf(buf2, "%s", ch->in_room->name);
+                                else
+                                        sprintf(buf2, " ");
+                                i = buf2;
+                                break;
+                        case 's':
+                                if (!IS_NPC(ch))
+                                {
+                                        if (IS_SET(ch->in_room->room_flags,
+                                                   ROOM_PLAYER_KILLER))
+                                                sprintf(buf2, "{Yarena{x");
+                                        else if ((IS_SET(ch->status,
+                                                         PLR_RONIN)
+                                                  || ch->clan)
+                                               && ch->level > 14
+                                               && !(IS_SET(ch->in_room
+                                                       ->room_flags,
+                                                       ROOM_SAFE)
+                                                   || IS_SET(ch->in_room
+                                                        ->area
+                                                        ->area_flags,
+                                                        AREA_FLAG_SAFE)))
+                                                sprintf(buf2, "{Runsafe{x");
+                                        else
+                                                sprintf(buf2, "{Gsafe{x");
+                                }
+                                else
+                                        sprintf(buf2, " ");
+                                i = buf2;
+                                break;
+                        case 't':
+                                if (ch->pcdata->countdown)
+                                        sprintf(buf2, "%d",
+                                            ch->pcdata->countdown);
+                                else
+                                        sprintf(buf2, "no quest");
+                                i = buf2;
+                                break;
+                        case 'u':
+                                sprintf(buf2, "%d", ch->pcdata->bonus);
+                                i = buf2;
+                                break;
+                        case 'v':
+                                sprintf(buf2, "%d", ch->move);
+                                i = buf2;
+                                break;
+                        case 'w':
+                                sprintf(buf2, "%d", ch->wait);
+                                i = buf2;
+                                break;
+                        case 'x':
+                                sprintf(buf2, "%d", ch->exp);
+                                i = buf2;
+                                break;
+                        case 'z':
+                                if (ch->in_room)
+                                        sprintf(buf2, "%s",
+                                                ch->in_room
+                                                    ->area->name);
+                                else
+                                        sprintf(buf2, " ");
+                                i = buf2;
+                                break;
                 }
+
                 ++str;
-                while((*point = *i) != '\0')
+                while ((*point = *i) != '\0')
                         ++point, ++i;
         }
-
-        /*write_to_buffer(d, buf, point - buf); */
 
         *point = '\0';
         pbuff = buffer;

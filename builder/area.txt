@@ -560,6 +560,8 @@ ITEM_ types:
     ITEM_WAND                                3
     ITEM_STAFF                               4
     ITEM_WEAPON                              5
+    ITEM_DIGGER                              6
+    ITEM_HOARD                               7
     ITEM_TREASURE                            8
     ITEM_ARMOR                               9
     ITEM_POTION                             10
@@ -908,6 +910,18 @@ the first value and discard the rest.
       17     scoop
       18     mash
       19     hack
+
+6  ITEM_DIGGER
+   value[0]    average base waitstate it penalises player per 'dig' action
+   value[1]    min base dig damage per use
+   value[2]    max base dig damage per use
+   value[3]    average base movement cost per use
+
+7  ITEM_HOARD
+   value[0]    weight capacity of hoard
+   value[1]    If 1, then buried.  If 2, then unearthed
+   value[2]    current remaining "hitpoints" of dig damage left before hoard is unearthed
+   value[3]    "max hitpoints" of hoard (will "heal" back to this value over time)
 
 8  ITEM_TREASURE
    value[0]    unused
