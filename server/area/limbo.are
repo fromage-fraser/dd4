@@ -454,6 +454,21 @@ and stopped, his blue eyes sparkle mischievously.
 0 0
 8 8 1
 
+#83
+spirit guardian~
+a spirit guardian~
+A spirit guardian materialises from the ether.
+~
+A bone-chilling wail rises as a swirling vortex of shadow and frost coalesces
+into a terrifying spirit. Its hollow eyes burn with malice, and tattered
+remnants of burial cloth drift from its spectral form as it lunges into the
+room, shrieking for vengeance.
+~
+2|32|64 8|32|524288|1048576 -1000 S
+64 0 0 0d0+0 0d0+0
+336 0
+8 8 0
+
 
 #0
 
@@ -1962,7 +1977,7 @@ hoard treasure~
 a hoard~
 A partially-unearthed treasure hoard is here.~
 ~
-7 2097152 1|512 5 20 0
+7 2097152 1|4|512 12 1 0
 100~ 1~ 400~ 400~
 1 10000 7500
 

@@ -2184,6 +2184,9 @@ extern  WANTED_DATA *wanted_list_last;
 #define TRAP_DAM_SLASH           7
 #define TRAP_DAM_POISON          8
 #define TRAP_DAM_SNARE           9
+#define TRAP_DAM_CURSE           10
+#define TRAP_DAM_HEX             11
+#define TRAP_DAM_SPIRIT          12
 
 #define TRAP_EFF_MOVE            BIT_0   /* trigger on movement */
 #define TRAP_EFF_OBJECT          BIT_1   /* trigger on get or put */
@@ -4843,6 +4846,7 @@ DECLARE_SPELL_FUN( spell_sense_wisdom           );
 #define MOB_VNUM_SKELETON  3404
 #define MOB_VNUM_GHOUL     3404
 #define MOB_VNUM_GHOST     3404
+#define MOB_VNUM_SPIRIT    83
 
 
 /*

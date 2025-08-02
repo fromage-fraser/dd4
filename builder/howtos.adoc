@@ -50,6 +50,7 @@ only ones that might be generally useful to people working with the codebase. +
 * <<add-new-martial-artist-move>>?
 * <<add-new-recall>>?
 * <<work-with-spawn_count-and-max_instances>>?
+* <<work-with-dig>>?
 
 {nbsp} +
 {nbsp} +
@@ -521,6 +522,9 @@ TRAP_DAM_PIERCE          6
 TRAP_DAM_SLASH           7
 TRAP_DAM_POISON          8
 TRAP_DAM_SNARE           9
+TRAP_DAM_SCURSE         10
+TRAP_DAM_HEX            11
+TRAP_DAM_SPIRIT         12
 
 20 is the number of charges the trap has before it is exhausted.  I don't think +
 0 is important.
@@ -1575,3 +1579,32 @@ of an object and decide what to do based on it, for example:
 Limiting object spawns in this way may be used for a variety of reasons, +
 including to limit the ubiquity of high-value items that load on mobs or are +
 given as quest rewards.
+
+== Work with 'dig,' digging implements, and hoards [[work-with-dig]]
+
+Ability `dig` is in for all players, along with item types `ITEM_DIGGER` and +
+`ITEM_HOARD`.  Information on these new item types is available in `scribe.docx` +
+and `area.txt`.  `HELP DIG` is also worth a look.
+
+Essentially an `ITEM_HOARD` is a player-invisible container (trappable) that may +
+be placed in most terrain types (don't bother to put in `SECT_UNDERWATER`, +
+`SECT_WATER_SWIM`, `SECT_WATER_NOSWIM` or `SECT_AIR`). +
+
+If a player has an `ITEM_DIGGER`, is in a form (bear, werewolf, wolf, dire wolf) +
+with natural digging ability, or is wielding a weapon that does "diglike" damage +
+(claw, rake, scoop) they may attempt to dig in any valid terrain type. +
+
+Digging has a waitstate and movement cost that is affected by many factors +
+(digging implement quality and terrain type for two--check out `do_dig`, tables +
+in `const.c`,  and various helper functions if curious) and will do a certain +
+amount of "dig damage" to any `ITEM_HOARD` in the room.  Once the damage done +
+meets or exceeds the "dig hitpoints" of the hoard the hoard will become +
+"unearthed" and disgorge its contents into the room (unless trapped, in which +
+case its trap will then fire until disabled or the trap charges are exhausted). +
+
+Most large cities sell digging implements, and perhaps half a dozen or so hoards +
+exist naturally in the MUD.  It should be considered good form to give clues to +
+the presence of them via maps, room extra descriptions etc.  Instance-limiting +
+of treasure in hoards (particularly money) is a good idea. It is intended that +
+random hoard generation will be added to the auto quest function, and eventually +
+that random loot will also be added to these hoards. +
