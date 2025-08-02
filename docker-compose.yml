@@ -1,6 +1,4 @@
-version: '3'
 services:
-
   # Build and run the DD4 MUD server
   server:
     platform: linux/amd64
@@ -15,6 +13,7 @@ services:
       - ./server/player:/dd4/external/player
     # Uncomment to always restart:
     # restart: always
+    stop_grace_period: 2s
 
   # Development environment
   # Use the native platform, otherwise gdb can have problems tracing on some archs
@@ -29,3 +28,4 @@ services:
       - ./server:/dd4-dev
       - ./builder:/dd4-dev/builder
     working_dir: /dd4-dev
+    stop_grace_period: 2s

@@ -2296,7 +2296,6 @@ rf  none
 w   28431
 s   28424
 
-
 $room
 vn  28732
 nm  Chief's Dwelling - Upper Corridors
@@ -2971,6 +2970,7 @@ lv      70
 
 # scrolls
 $addobj
+
 ob      28731
 rm      28407
 lv      18
