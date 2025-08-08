@@ -402,7 +402,7 @@ Enter thy Name: ~
 
 -1 MOTD~
 {x
-    [02 August 2025]
+    [08 August 2025]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -415,7 +415,8 @@ Enter thy Name: ~
     We're also active on a Discord server at {Yhttps://discord.gg/aGzmAWmXYb{x
     if you'd like to jump in and say hi!
 
-    {WNEW SKILL - 'DIG'{x: Players may now DIG for buried loot!  See HELP DIG.
+    {WNEW SKILL - 'DIG'{x: Players may now DIG for buried loot, see HELP DIG.
+    Buried treasure has also been added to the automated quest system.
 
     {WNEW AREA: OMU - SOVEREIGN QUARTER IS IN{x: Completes the Omu section of
     the undersea megacity.
@@ -638,6 +639,8 @@ Gezhp, Owl and Shade
 - dig ability, item types "digging implement" and "hoard" added, many supporting
   changes
 - added trap types curse, hex, and spirit
+- integrated random hoards/loot into automated questing
+- tweaked gather so it can be used in SECT_UNDERWTAER_GROUND
 
 ~
 
@@ -2397,7 +2400,8 @@ in the FAQ.
 Randomised quests offer 'quest points' and money as rewards.  You use the
 'QUEST' command to request and complete these quests, once you have found
 a quest master.  Suturb, in the Adventurer's Guild in Midgaard, will offer
-quests to low-level characters.
+quests to low-level characters. Note you'll likely want to figure out a way
+to DIG before questing, as some quests will require it.
 
 You may use the following commands:
 

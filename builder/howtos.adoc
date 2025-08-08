@@ -1605,6 +1605,7 @@ case its trap will then fire until disabled or the trap charges are exhausted). 
 Most large cities sell digging implements, and perhaps half a dozen or so hoards +
 exist naturally in the MUD.  It should be considered good form to give clues to +
 the presence of them via maps, room extra descriptions etc.  Instance-limiting +
-of treasure in hoards (particularly money) is a good idea. It is intended that +
-random hoard generation will be added to the auto quest function, and eventually +
-that random loot will also be added to these hoards. +
+of treasure in hoards (particularly money) is a good idea.  Random hoard +
+generation has been added to the auto quest function (roughly a third of +
+automated quests will be of this type), and random loot can be found in these +
+hoards. +
