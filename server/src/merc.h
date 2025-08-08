@@ -615,6 +615,20 @@ DECLARE_DO_FUN ( do_board );
 #define QUEST_UNAVAILABLE_DELAY          3
 #define QUEST_ABORT_DELAY               15
 
+/* Hoard quest stuff */
+#define QUEST_HOARD 584
+#define HOARD_HINT "\r\n<15>The ground here looks to have been recently disturbed.<0>\n\r"
+
+/* Chance a quest hoard comes trapped (percent) */
+#ifndef HOARD_TRAP_CHANCE
+# define HOARD_TRAP_CHANCE 5 /* For testing */
+#endif
+
+/* Chance the trap is room-wide (percent) */
+#ifndef HOARD_TRAP_ROOM_AOE
+# define HOARD_TRAP_ROOM_AOE 20
+#endif
+
 /*  Quest recall point info struct;  Gezhp 2000  */
 struct quest_recall
 {
@@ -5320,6 +5334,11 @@ int  scale_pipe                              ( int limit_level, int load_level, 
 
 /* quest.c */
 bool mob_is_quest_target                     ( CHAR_DATA *ch );
+void add_hoard_hint                          ( ROOM_INDEX_DATA *room );
+void remove_hoard_hint                       ( ROOM_INDEX_DATA *room );
+bool room_has_other_buried_hoard             ( ROOM_INDEX_DATA *room, OBJ_DATA *exclude );
+void maybe_arm_hoard_trap                    ( OBJ_DATA *hoard, int level );
+int  roll_hoard_trap_type                    ( int for_level );
 
 /* twister.c */
 #ifndef __MTWISTER_H
