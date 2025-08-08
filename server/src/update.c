@@ -1887,6 +1887,10 @@ void obj_update()
                                 message = "$p dries up.";
                                 break;
 
+                            case ITEM_HOARD:
+                                message = "";
+                                break;
+
                             case ITEM_PORTAL:
                                 message = "$p shimmers out of existence.";
                                 break;
@@ -1910,6 +1914,13 @@ void obj_update()
                         {
                                 act(message, rch, obj, NULL, TO_ROOM);
                                 act(message, rch, obj, NULL, TO_CHAR);
+                        }
+
+                        if (obj->item_type == ITEM_HOARD && obj->in_room)
+                        {
+                            ROOM_INDEX_DATA *rm = obj->in_room;
+                            if (!room_has_other_buried_hoard(rm, obj))
+                                remove_hoard_hint(rm);
                         }
 
                         extract_obj(obj);

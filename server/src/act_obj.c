@@ -457,6 +457,16 @@ void do_dig (CHAR_DATA *ch, char *argument)
                         if ( checkopen(ch, hoard) )
                                 return;
 
+                        /* If this is a QUEST hoard, strip the flavour hint unless another buried hoard remains */
+
+                        if (hoard->pIndexData
+                        && hoard->pIndexData->vnum == QUEST_HOARD
+                        && ch->in_room)
+                        {
+                            if ( !room_has_other_buried_hoard(ch->in_room, hoard) )
+                                remove_hoard_hint(ch->in_room);
+                        }
+
                         switch (dig_mode)
                         {
                             case DIG_FORM:

@@ -2908,6 +2908,8 @@ const struct skill_type skill_table [MAX_SKILL] =
          * pointer to spell function, minimum mana, beats
          * damage noun, wear off message
          *
+         * For res_types see "Resistant Immune Susceptible flags" in merc.h
+         *
          * When adding new spells add them near the end, just
          * before the base skills.  Elements are accessed by
          * index and results will be unpredictable (BUT BAD)
@@ -3466,7 +3468,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "sanctuary", &gsn_sanctuary,
                 TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, 16384,
                 spell_sanctuary, 75, 12,
-                "", "<250>The white aura around your body fades.<0>"
+                "", "<15>Th<255>e w<254>hi<253>te <252>au<251>ra<250> ar<249>ou<248>nd <247>yo<246>ur<245> bo<244>dy<243> fa<242>de<241>s.<0>"
         },
 
         {
@@ -4742,7 +4744,8 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "biofeedback", &gsn_biofeedback,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 16384,
                 spell_biofeedback, 75, 12,
-                "", "<250>Your biofeedback is no longer effective.<0>"
+                "", "<15>Yo<255>ur <254>bi<253>of<252>ee<251>db<250>ac<249>k i<248>s n<247>o l<246>on<245>ge<244>r e<243>ff<242>ec<241>ti<240>ve<239>.<0>"
+
         },
 
         {
@@ -5113,7 +5116,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "mass sanctuary", &gsn_mass_sanctuary,
                 TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
                 spell_mass_sanctuary, 200, 24,
-                "", "<250>The white aura around your body fades.<0>"
+                "", "<15>Th<255>e w<254>hi<253>te <252>au<251>ra<250> ar<249>ou<248>nd <247>yo<246>ur<245> bo<244>dy<243> fa<242>de<241>s.<0>"
         },
 
         {
@@ -6452,7 +6455,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "flukeslap", &gsn_flukeslap,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 16|8192,
                 spell_null, 0, 24,
                 "flukeslap", "!Flukeslap!"
         },
@@ -6480,7 +6483,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "spit mucus", &gsn_spit_mucus,
-                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192|32768,
                 spell_null, 0, 24,
                 "<236>e<237>x<238>p<239>e<240>c<241>t<242>o<243>r<245>a<246>t<247>e<248>d <249>m<250>u<251>c<252>u<253>s<0>", "You regain autonomy over your body."
         },
@@ -6770,13 +6773,13 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
         {
                 "starve", &gsn_starve,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 0,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 512|16384,
                 spell_starve, 10, 12,
                 "withering curse", "!Starve!"
         },
         {
                 "parch", &gsn_parch,
-                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 0,
+                TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 512|16384,
                 spell_parch, 10, 12,
                 "dessicating hex", "!Parch!"
         },
@@ -6788,13 +6791,13 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
         {
                 "glaciation", &gsn_glaciation,
-                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 16384,
+                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 2|16384,
                 spell_glaciation, 15, 12,
                 "summoned blizzard", "!Glaciation!"
         },
         {
                 "conflagration", &gsn_conflagration,
-                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 16384,
+                TYPE_INT, TAR_IGNORE, POS_FIGHTING, 1|16384,
                 spell_conflagration, 15, 12,
                 "blazing inferno", "!Conflagration!"
         },
@@ -6806,7 +6809,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
         {
                 "confusion", &gsn_confusion,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 256|16384,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 16384|65536 ,
                 spell_confusion, 10, 12,
                 "disorienting curse", "You feel less confused."
         },
@@ -6818,7 +6821,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
         {
                 "fleshrot", &gsn_fleshrot,
-                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, 8|16384,
+                TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, 8|16384|262144,
                 spell_fleshrot, 5, 12,
                 "<0><22>ro<28>tt<35>in<49>g m<35>al<28>ed<22>ic<28>ti<35>on<0>", "<79>Your flesh stops rotting.<0>"
         },
@@ -6930,7 +6933,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "tenketsu", &gsn_tenketsu,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 16|8192|32768,
                 spell_null, 0, 8,
                 "<15><556>pressure-point strike<0>", "!Tenketsu!"
         },

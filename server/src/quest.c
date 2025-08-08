@@ -55,6 +55,8 @@ DECLARE_DO_FUN( do_say );
 #define QUEST_ITEM4 17543
 #define QUEST_ITEM5 8325
 
+#define NUM_QUEST_OBJQUEST 10
+
 /* Object vnums for object quest 'tokens'. In Moongate, the tokens are
    things like 'the Shield of Moongate', 'the Sceptre of Moongate'. These
    items are worthless and have the rot-death flag, as they are placed
@@ -65,13 +67,94 @@ DECLARE_DO_FUN( do_say );
 #define QUEST_OBJQUEST3 77
 #define QUEST_OBJQUEST4 78
 #define QUEST_OBJQUEST5 79
+#define QUEST_OBJQUEST6 585
+#define QUEST_OBJQUEST7 586
+#define QUEST_OBJQUEST8 587
+#define QUEST_OBJQUEST9 588
+#define QUEST_OBJQUEST10 589
+
+static const int quest_objquest_vnums[NUM_QUEST_OBJQUEST] = {
+        QUEST_OBJQUEST1,
+        QUEST_OBJQUEST2,
+        QUEST_OBJQUEST3,
+        QUEST_OBJQUEST4,
+        QUEST_OBJQUEST5,
+        QUEST_OBJQUEST6,
+        QUEST_OBJQUEST7,
+        QUEST_OBJQUEST8,
+        QUEST_OBJQUEST9,
+        QUEST_OBJQUEST10
+};
+
+#define MAX_QUEST_MOB_VNUM 32200
+#define MAX_QUEST_OBJ_VNUM 32200
+
+#define HOARD_HINT "\r\n<15>The ground here looks to have been recently disturbed.<0>\n\r"
+
+/* rarity tiers */
+#define RARITY_COMMON     0
+#define RARITY_UNCOMMON   1
+#define RARITY_RARE       2
+#define RARITY_EPIC       3
+#define RARITY_LEGENDARY  4
+
+/* probability thresholds per 1000 roll:
+   1–700: common (70%)
+   701–900: uncommon (20%)
+   901–980: rare (8%)
+   981–995: epic (1.5%)
+   996–1000: legendary (0.5%) */
+#define THRESH_COMMON    700
+#define THRESH_UNCOMMON  900
+#define THRESH_RARE      980
+#define THRESH_EPIC      995
+
+/* which item types may drop */
+static const int hoard_loot_whitelist[] = {
+        ITEM_LIGHT,
+        ITEM_SCROLL,
+        ITEM_WAND,
+        ITEM_STAFF,
+        ITEM_WEAPON,
+        ITEM_DIGGER,
+        ITEM_TREASURE,
+        ITEM_ARMOR,
+        ITEM_POTION,
+        ITEM_FURNITURE,
+        ITEM_TRASH,
+        ITEM_CONTAINER,
+        ITEM_DRINK_CON,
+        ITEM_KEY,
+        ITEM_FOOD,
+        ITEM_MONEY,
+        ITEM_BOAT,
+        ITEM_FOUNTAIN,
+        ITEM_PILL,
+        ITEM_CLIMBING_EQ,
+        ITEM_PAINT,
+        ITEM_ANVIL,
+        ITEM_AUCTION_TICKET,
+        ITEM_POISON_POWDER,
+        ITEM_LOCK_PICK,
+        ITEM_INSTRUMENT,
+        ITEM_ARMOURERS_HAMMER,
+        ITEM_MITHRIL,
+        ITEM_WHETSTONE,
+        ITEM_PIPE,
+        ITEM_PIPE_CLEANER,
+        ITEM_SMOKEABLE
+};
+
+static const int hoard_loot_whitelist_size =
+    sizeof(hoard_loot_whitelist) / sizeof(hoard_loot_whitelist[0]);
 
 /* Local functions */
 
-void generate_quest     args(( CHAR_DATA *ch, CHAR_DATA *questman ));
+void generate_quest         args(( CHAR_DATA *ch, CHAR_DATA *questman ));
+void populate_hoard_loot    args((CHAR_DATA *ch, OBJ_DATA *hoard));
 void generate_special_quest (CHAR_DATA *ch, CHAR_DATA *questman);
-void quest_update       args(( void ));
-bool chance             args(( int num ));
+void quest_update           args(( void ));
+bool chance                 args(( int num ));
 
 /* CHANCE function. I use this everywhere in my code, very handy :> */
 
@@ -548,7 +631,7 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
         for (mcounter = 0; mcounter < 100; mcounter ++)
         {
                 do
-                        mob_vnum = number_range(100, 32200);
+                        mob_vnum = number_range(100, MAX_QUEST_MOB_VNUM);
                 while
                         (!get_mob_index(mob_vnum)
                          || mob_vnum == BOT_VNUM);
@@ -625,7 +708,7 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
          *
          */
 
-        if (number_percent() < 15)
+        if (number_percent() < 10)
         {
                 sprintf(buf, "$N says 'I'm sorry, but I don't have any quests for you at this time.'");
                 act(buf, ch, NULL, questman, TO_CHAR);
@@ -635,88 +718,412 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
                 return;
         }
 
-        if (chance(40))
+       /* Pick quest type ~1/3 each: 0=hoard, 1=object, 2=kill */
+        switch ( number_range(0, 2) )
         {
+            case 0: /* HOARD QUEST */
+            {
+                ROOM_INDEX_DATA *room;
+                int tries = 0;
+                do
+                {
+                    int random_room_vnum = number_range(0, 32200);
+                    /* bug("Number of room is %d", random_room_vnum); */
+
+                    /* never allow a room in purgatory */
+                    if (random_room_vnum >= 401 && random_room_vnum <= 427)
+                        room = NULL;
+                    else
+                        room = get_room_index(random_room_vnum);
+
+                    if ( ++tries > 400 )
+                    {
+                        sprintf(buf, "$N says 'I'm sorry, but I don't have any quests for you at this time.'");
+                        act(buf, ch, NULL, questman, TO_CHAR);
+                        sprintf(buf, "$N says 'Try again later.'");
+                        act(buf, ch, NULL, questman, TO_CHAR);
+                        ch->pcdata->nextquest = QUEST_UNAVAILABLE_DELAY;
+                        return;
+                    }
+                }
+                while( !room
+                    ||  room->area == ch->in_room->area
+                    ||  room->sector_type == SECT_UNDERWATER
+                    ||  room->sector_type == SECT_WATER_SWIM
+                    ||  room->sector_type == SECT_WATER_NOSWIM
+                    ||  room->sector_type == SECT_AIR );
+
+                /* create the hoard container */
+                OBJ_DATA *hoard = create_object(
+                    get_obj_index( QUEST_HOARD ),
+                    ch->level, "common", CREATED_NO_RANDOMISER );
+
+                /* mark it buried and at full “hitpoints” */
+                hoard->value[1] = 1;
+                hoard->value[2] = hoard->value[3];
+                hoard->timer    = 240;
+
+                /* (optional) arm the hoard with a trap */
+                maybe_arm_hoard_trap( hoard, ch->level );
+
+                /* put some coinage in it */
+                OBJ_DATA *coins = create_money( number_range( 1, ((ch->level/18)+2) ),
+                                                number_range( 5, ((ch->level)+5)  ),
+                                                number_range( 20, ((ch->level)+20) ),
+                                                number_range( 50, ((ch->level)+50)) );
+                obj_to_obj( coins, hoard );
+
+                /* put the quest token in it as well */
+                int idx = number_range(0, NUM_QUEST_OBJQUEST - 1);
+                int vnum = quest_objquest_vnums[idx];
+                OBJ_DATA *questitem = create_object(
+                    get_obj_index(vnum),
+                    ch->level, "common", CREATED_NO_RANDOMISER );
+                set_obj_owner( questitem, ch->name );
+                questitem->timer = hoard->timer;
+                obj_to_obj( questitem, hoard );
+
+                /* drop the hoard into the chosen room */
+                obj_to_room( hoard, room );
+
+                /* remember where we put it so do_ostat/mpoload can find it if needed */
+                ch->pcdata->questobj  = questitem->pIndexData->vnum;
+                ch->pcdata->questroom = room;
+                ch->pcdata->questarea = room->area;
+
+                populate_hoard_loot( ch, hoard );
+
+                add_hoard_hint(room);
+
+                sprintf( buf,
+                    "\n\r{c%s intones in a voice like distant thunder, \n\r"
+                    "'Legends tell of a lost hoard, buried deep beneath the earth near {C%s{x{c, \n\r"
+                    "at the edge of the ancient realm of {C%s{x{c.  Hie thee swiftly, brave soul, \n\r"
+                    "for the earth’s secret will stir but for a heartbeat...'{x\n\r\n\r",
+                    capitalize( questman->short_descr ),
+                    room->name,
+                    room->area->name );
+                send_to_char( buf, ch );
+                return;
+            }
+
+            case 1: /* OBJECT RETRIEVAL QUEST */
+            {
                 int objvnum = 0;
 
-                switch (number_range(0,4))
+                switch ( number_range(0, 9) )
                 {
-                    case 0:
-                        objvnum = QUEST_OBJQUEST1;
-                        break;
-
-                    case 1:
-                        objvnum = QUEST_OBJQUEST2;
-                        break;
-
-                    case 2:
-                        objvnum = QUEST_OBJQUEST3;
-                        break;
-
-                    case 3:
-                        objvnum = QUEST_OBJQUEST4;
-                        break;
-
-                    case 4:
-                        objvnum = QUEST_OBJQUEST5;
-                        break;
+                    case 0: objvnum = QUEST_OBJQUEST1;  break;
+                    case 1: objvnum = QUEST_OBJQUEST2;  break;
+                    case 2: objvnum = QUEST_OBJQUEST3;  break;
+                    case 3: objvnum = QUEST_OBJQUEST4;  break;
+                    case 4: objvnum = QUEST_OBJQUEST5;  break;
+                    case 5: objvnum = QUEST_OBJQUEST6;  break;
+                    case 6: objvnum = QUEST_OBJQUEST7;  break;
+                    case 7: objvnum = QUEST_OBJQUEST8;  break;
+                    case 8: objvnum = QUEST_OBJQUEST9;  break;
+                    case 9: objvnum = QUEST_OBJQUEST10; break;
                 }
 
                 questitem = create_object(get_obj_index(objvnum), ch->level, "common", CREATED_NO_RANDOMISER);
                 questitem->timer = 240;
                 set_obj_owner(questitem, ch->name);
+
+                /* NB: uses the earlier-found 'room' tied to the chosen victim/area */
                 obj_to_room(questitem, room);
-                ch->pcdata->questobj = questitem->pIndexData->vnum;
+                ch->pcdata->questobj  = questitem->pIndexData->vnum;
                 ch->pcdata->questroom = room;
                 ch->pcdata->questarea = room->area;
 
                 sprintf (buf, "\n\r{c%s says, 'Vile pilferers have stolen {C%s{x{c from the royal "
-                         "treasury!  My court wizardess, with her magic mirror, has pinpointed its "
-                         "location.  I ask that you try your utmost to recover this artefact.  "
-                         "Look in the general area of {C%s{x{c for {C%s{x{c!'{x\n\r\n\r",
-                         capitalize (questman->short_descr),
-                         questitem->short_descr,
-                         ch->pcdata->questarea->name,
-                         ch->pcdata->questroom->name);
+                        "treasury!  My court wizardess, with her magic mirror, has pinpointed its "
+                        "location.  I ask that you try your utmost to recover this artefact.  "
+                        "Look in the general area of {C%s{x{c for {C%s{x{c!'{x\n\r\n\r",
+                        capitalize (questman->short_descr),
+                        questitem->short_descr,
+                        ch->pcdata->questarea->name,
+                        ch->pcdata->questroom->name);
 
                 send_paragraph_to_char(buf, ch, 0);
                 return;
-        }
+            }
 
-        switch(number_range(0,1))
-        {
-            case 0:
-                sprintf(buf, "\n\r{c%s says, 'A bitter enemy of mine, {C%s{x{c, is making vile threats "
-                        "against the Domain.  You are to silence this opposition... permanently.'  "
-                        "%s grins evilly.  'Seek %s in the vicinity of {C%s{x{c.  That location is in the "
-                        "general area of {C%s{x{c.  Good luck!'{x\n\r\n\r",
-                        capitalize (questman->short_descr),
-                        victim->short_descr,
-                        capitalize (questman->short_descr),
-                        victim->short_descr,
-                        ch->pcdata->questroom->name,
-                        ch->pcdata->questarea->name);
+            default: /* KILL QUEST */
+            {
+                switch(number_range(0,1))
+                {
+                    case 0:
+                        sprintf(buf, "\n\r{c%s says, 'A bitter enemy of mine, {C%s{x{c, is making vile threats "
+                                "against the Domain.  You are to silence this opposition... permanently.'  "
+                                "%s grins evilly.  'Seek %s in the vicinity of {C%s{x{c.  That location is in the "
+                                "general area of {C%s{x{c.  Good luck!'{x\n\r\n\r",
+                                capitalize (questman->short_descr),
+                                victim->short_descr,
+                                capitalize (questman->short_descr),
+                                victim->short_descr,
+                                ch->pcdata->questroom->name,
+                                ch->pcdata->questarea->name);
+                        break;
+
+                    case 1:
+                        sprintf (buf, "{c\n\r%s exclaims, 'One of the Domain's most heinous criminals, {C%s{x{c, "
+                                "has escaped from captivity!  Since the escape, %s has murdered %d "
+                                "defenseless civilians!'  %s looks grave.  'The penalty for these "
+                                "crimes is death, and you are to deliver the sentence!  Begin your search "
+                                "in the general area of {C%s{x{c; your target has been spotted in the vicinity "
+                                "of {C%s{x{c.'{x\n\r\n\r",
+                                capitalize (questman->short_descr),
+                                victim->short_descr,
+                                victim->short_descr,
+                                number_range (2, 20),
+                                capitalize (questman->short_descr),
+                                ch->pcdata->questarea->name,
+                                ch->pcdata->questroom->name);
+                        break;
+                }
+
+                ch->pcdata->questmob = victim->pIndexData->vnum;
+                send_paragraph_to_char(buf, ch, 0);
                 break;
-
-            case 1:
-                sprintf (buf, "{c\n\r%s exclaims, 'One of the Domain's most heinous criminals, {C%s{x{c, "
-                         "has escaped from captivity!  Since the escape, %s has murdered %d "
-                         "defenseless civilians!'  %s looks grave.  'The penalty for these "
-                         "crimes is death, and you are to deliver the sentence!  Begin your search "
-                         "in the general area of {C%s{x{c; your target has been spotted in the vicinity "
-                         "of {C%s{x{c.'{x\n\r\n\r",
-                         capitalize (questman->short_descr),
-                         victim->short_descr,
-                         victim->short_descr,
-                         number_range (2, 20),
-                         capitalize (questman->short_descr),
-                         ch->pcdata->questarea->name,
-                         ch->pcdata->questroom->name);
-                break;
+            }
         }
+}
 
-        ch->pcdata->questmob = victim->pIndexData->vnum;
-        send_paragraph_to_char(buf, ch, 0);
+/* Append the hoard hint once, freeing the old description to avoid leaks. */
+void add_hoard_hint(ROOM_INDEX_DATA *room)
+{
+    if (!room || !room->description)
+        return;
+
+    if (strstr(room->description, HOARD_HINT)) /* already there */
+        return;
+
+    size_t oldlen = strlen(room->description);
+    size_t addlen = strlen(HOARD_HINT);
+    char *newdesc = malloc(oldlen + addlen + 1);
+    if (!newdesc) return; /* fail quietly */
+
+    memcpy(newdesc, room->description, oldlen);
+    memcpy(newdesc + oldlen, HOARD_HINT, addlen + 1);
+
+    free_string(room->description);            /* ROM/Envy string free */
+    room->description = str_dup(newdesc);      /* ROM/Envy string dup */
+    free(newdesc);
+}
+
+/* Remove the *last* occurrence of the hoard hint from the room description. */
+void remove_hoard_hint(ROOM_INDEX_DATA *room)
+{
+    if (!room || !room->description) return;
+
+    const char *hint = HOARD_HINT;
+    size_t      hlen = strlen(hint);
+
+    /* find last occurrence */
+    char *desc = room->description;
+    char *last = NULL, *scan = strstr(desc, hint);
+    while (scan) { last = scan; scan = strstr(scan + 1, hint); }
+    if (!last) return;
+
+    size_t pre  = (size_t)(last - desc);
+    size_t post = strlen(last + hlen);
+
+    char *newdesc = malloc(pre + post + 1);
+    if (!newdesc) return;
+
+    memcpy(newdesc, desc, pre);
+    memcpy(newdesc + pre, last + hlen, post);
+    newdesc[pre + post] = '\0';
+
+    free_string(room->description);
+    room->description = str_dup(newdesc);
+    free(newdesc);
+}
+
+/* Utility: does this room have any *other* buried hoard? */
+bool room_has_other_buried_hoard(ROOM_INDEX_DATA *room, OBJ_DATA *exclude)
+{
+    for (OBJ_DATA *o = room ? room->contents : NULL; o; o = o->next_content)
+        if (o != exclude && o->item_type == ITEM_HOARD && o->value[1] == 1) /* 1 = buried */
+            return TRUE;
+    return FALSE;
+}
+
+/* Choose a damage type for hoard traps.
+   Weighted towards curse/hex/spirit, with a mix of classics. */
+int roll_hoard_trap_type(int for_level)
+{
+    int r = number_range(1, 100);
+
+    /*  1–20  : direct damage (fire/cold/acid/energy)
+        21–35 : poison/snare
+        36–55 : blunt/pierce/slash
+        56–75 : curse
+        76–88 : hex
+        89–100: spirit guardian
+    */
+    if (r <= 20) {
+        switch (number_range(0,3)) {
+            case 0: return TRAP_DAM_FIRE;
+            case 1: return TRAP_DAM_COLD;
+            case 2: return TRAP_DAM_ACID;
+            default:return TRAP_DAM_ENERGY;
+        }
+    }
+    else if (r <= 35) {
+        return (number_bits(1) ? TRAP_DAM_POISON : TRAP_DAM_SNARE);
+    }
+    else if (r <= 55) {
+        switch (number_range(0,2)) {
+            case 0: return TRAP_DAM_BLUNT;
+            case 1: return TRAP_DAM_PIERCE;
+            default:return TRAP_DAM_SLASH;
+        }
+    }
+    else if (r <= 75) {
+        return TRAP_DAM_CURSE;
+    }
+    else if (r <= 88) {
+        return TRAP_DAM_HEX;
+    }
+    else {
+        return TRAP_DAM_SPIRIT;
+    }
+}
+
+/* Arm a hoard with a random trap that triggers on OPEN (i.e. when unearthed). */
+
+void maybe_arm_hoard_trap(OBJ_DATA *hoard, int level)
+{
+    if (!hoard)
+        return;
+
+    /* Only trap quest hoards. Bail if this isn’t the right prototype. */
+    if (!hoard->pIndexData || hoard->pIndexData->vnum != QUEST_HOARD)
+        return;
+
+    /* Small chance overall */
+    if (number_percent() > HOARD_TRAP_CHANCE)
+        return;
+
+    /* Clean slate (in case the prototype ever carries trap bits) */
+    REMOVE_BIT(hoard->extra_flags, ITEM_TRAP);
+    hoard->trap_dam    = 0;
+    hoard->trap_eff    = 0;
+    hoard->trap_charge = 0;
+
+    /* Arm it */
+    SET_BIT(hoard->extra_flags, ITEM_TRAP);
+    hoard->trap_dam    = roll_hoard_trap_type(level);
+    hoard->trap_charge = number_range(1, 3);      /* a few pops */
+    hoard->level       = URANGE(1, level, LEVEL_HERO - 1);
+
+    /* Must trigger on “open” to work with do_dig -> checkopen() */
+    SET_BIT(hoard->trap_eff, TRAP_EFF_OPEN);
+
+    /* Sometimes make it room-wide (AoE) for spice */
+    if (number_percent() <= HOARD_TRAP_ROOM_AOE)
+        SET_BIT(hoard->trap_eff, TRAP_EFF_ROOM);
+}
+
+/**
+ * sample 0–4 with a discrete normal(2,1) approximation:
+ *   0 → 2.3%   1 → 24.2%   2 → 47.0%
+ *   3 → 24.2%  4 → 2.3%
+ */
+static int sample_loot_count(void) {
+    int r = number_range(1, 1000);
+    if      (r <=  23) return 0;
+    else if (r <= 265) return 1;
+    else if (r <= 735) return 2;
+    else if (r <= 977) return 3;
+    else               return 4;
+}
+
+/* decide which tier to attempt this drop */
+static int sample_drop_tier(void) {
+    int r = number_range(1, 1000);
+    if      (r <= THRESH_COMMON)   return RARITY_COMMON;
+    else if (r <= THRESH_UNCOMMON) return RARITY_UNCOMMON;
+    else if (r <= THRESH_RARE)     return RARITY_RARE;
+    else if (r <= THRESH_EPIC)     return RARITY_EPIC;
+    else                            return RARITY_LEGENDARY;
+}
+
+/* map an item’s score into a tier */
+static int item_score_to_tier(int score) {
+    if      (score < ITEM_SCORE_UNCOMMON)   return RARITY_COMMON;
+    else if (score < ITEM_SCORE_RARE)       return RARITY_UNCOMMON;
+    else if (score < ITEM_SCORE_EPIC)       return RARITY_RARE;
+    else if (score < ITEM_SCORE_LEGENDARY)  return RARITY_EPIC;
+    else                                     return RARITY_LEGENDARY;
+}
+
+/* fill the hoard with 1–3 extra loot items */
+void populate_hoard_loot(CHAR_DATA *ch, OBJ_DATA *hoard) {
+    int num_items = sample_loot_count();
+    int capacity  = hoard->value[0];
+    int used_wt   = 0;
+    /* bug("Num items is %d", num_items); */
+
+    for (int i = 0; i < num_items; i++) {
+        int target_tier = sample_drop_tier();
+        OBJ_INDEX_DATA *idx = NULL;
+        OBJ_DATA       *tmp = NULL;
+        int attempt = 0;
+
+        /* try up to 1000 times for a matching item */
+        while (++attempt < 1000) {
+            int vnum = number_range(1, MAX_QUEST_OBJ_VNUM);
+            idx = get_obj_index(vnum);
+            if (!idx) continue;
+
+            /* 1) whitelisted type? */
+            bool ok = FALSE;
+            for (int w = 0; w < hoard_loot_whitelist_size; w++)
+                if (idx->item_type == hoard_loot_whitelist[w]) {
+                    ok = TRUE; break;
+                }
+            if (!ok) continue;
+
+            /* 1a) must be takeable */
+            if (!IS_SET(idx->wear_flags, ITEM_TAKE))
+                continue;
+
+            /* 1b) exclude body parts */
+            if (IS_SET(idx->extra_flags, ITEM_BODY_PART))
+                continue;
+
+            /* 2) level within [ch->level-5 .. ch->level] */
+            if (idx->level > ch->level || idx->level < ch->level - 5)
+                continue;
+
+            /* 3) create a temp object to calc its score */
+            tmp = create_object(idx, ch->level, "common", CREATED_NO_RANDOMISER);
+            int score = calc_item_score(tmp);
+            int tier  = item_score_to_tier(score);
+
+            /* discard if not our sampled tier */
+            if (tier != target_tier) {
+                extract_obj(tmp);
+                continue;
+            }
+
+            /* 4) weight check */
+            int wgt = get_obj_weight(tmp);
+            if (used_wt + wgt > capacity) {
+                extract_obj(tmp);
+                continue;
+            }
+
+            /* found it */
+            used_wt += wgt;
+            obj_to_obj(tmp, hoard);
+            break;
+        }
+        /* if no idx found in 1000 tries, stop adding more */
+        if (!idx) break;
+    }
 }
 
 

@@ -956,7 +956,7 @@ Black Codex', 'Playdwarf', 'How to Make Friends and Influence People', and
 #75
 coin amaros~
 the coin of Amaros~
-A magnificent golden coin glitters in the sun~
+A magnificent golden coin glitters in the sun.~
 ~
 8 1 1
 0~ 0~ 0~ 0~
@@ -2007,6 +2007,60 @@ An ice-cream scoop has been dropped here.~
 5 0 1|8192
 1~ 10~ 15~ 17~
 1 10000 7500
+
+#584
+hoard treasure~
+a hoard~
+A partially-unearthed treasure hoard is here.~
+~
+7 0 0
+400~ 1~ 200~ 200~
+1 10000 7500
+
+#585
+coin serenos~
+the coin of Serenos~
+A brilliant silver coin bearing the face of an unknown lord gleams softly here.~
+~
+8 1 1
+0~ 0~ 0~ 0~
+5 0 0
+
+#586
+amulet aevros ivory~
+the amulet of Aevros~
+A delicate ivory amulet carved with swirling glyphs pulses faintly before you.~
+~
+8 2 1
+0~ 0~ 0~ 0~
+5 0 0
+
+#587
+bowl ambros wooden~
+the bowl of Ambros~
+A small hand-carved wooden bowl rests here, its interior darkened by age.~
+~
+8 0 1
+0~ 1~  6~ 11~
+5 0 0
+
+#588
+book orinth tome~
+the tome of Orinth~
+A weathered leather-bound tome lies open, its pages filled with arcane sigils.~
+~
+8 0 1
+0~ 0~ 0~ 0~
+5 0 0
+
+#589
+scroll codex~
+the tattered codex~
+A fragment of an ancient codex lies in tatters here.~
+~
+8 0 1
+0~ 0~ 0~ 0~
+5 0 0
 
 #0
 

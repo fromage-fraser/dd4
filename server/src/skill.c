@@ -3922,7 +3922,8 @@ void do_gather (CHAR_DATA *ch, char *arg)
            && ch->in_room->sector_type != SECT_FIELD
            && ch->in_room->sector_type != SECT_HILLS
            && ch->in_room->sector_type != SECT_SWAMP
-           && ch->in_room->sector_type != SECT_MOUNTAIN )
+           && ch->in_room->sector_type != SECT_MOUNTAIN
+           && ch->in_room->sector_type != SECT_UNDERWATER_GROUND )
         {
                 send_to_char( "You wouldn't find any herbs in this terrain.\n\r", ch );
                 return;
