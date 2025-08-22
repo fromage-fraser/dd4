@@ -2879,7 +2879,7 @@ void death_cry (CHAR_DATA *ch)
             if (!MAKES_CORPSE(ch))
                     strcpy(msg, "$c's form withers and dissolves into nothing.");
             else if (IS_HUGE(ch))
-                    strcpy(msg, "$c's huge body collapses before you... DEAD.");
+                    strcpy(msg, "$c’s huge body convulses and falls still… DEAD.");
             else
                     strcpy(msg, "$c slumps before you... DEAD.");
         }

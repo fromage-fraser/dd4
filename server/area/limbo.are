@@ -2062,6 +2062,15 @@ A fragment of an ancient codex lies in tatters here.~
 0~ 0~ 0~ 0~
 5 0 0
 
+#590
+portkey~
+a portkey~
+A misty portal beckons you to the unknown.~
+~
+33 64 1|16384
+0~ -1~ 0~ 100~
+100 10 1
+
 #0
 
 
@@ -2572,6 +2581,8 @@ P 0 63 0 61                     put a note to Samxin inside Samxins desk
 I 579 1 83 1                     A spade to Owl's Arena
 I 580 1 83 1                     A hoard to Owl's Arena
 I 582 1 85 1                     A hoard to Owl's Arena
+
+I 590 1 88 1                    A portkey to Owl's Arena
 
 P 1 577 0 580                   pipe in hoard for testing
 P 1 568 0 580                   pipe in hoard for testing
