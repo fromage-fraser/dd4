@@ -1,0 +1,97 @@
+[
+  {
+    "month": "March",
+    "year": 2022,
+    "text": "\u000a\u000aWe're back!\u000a\u000aApart from getting everything running again, the following new skills have been added:\u000a\u000a\u000a- Chaos Blast for Infernalists\u000a- Detect Curse for those with Divination\u000a- Knife Toss for Thieves\u000a- New config option: \"AUTOLEVEL\"\u000a- Gravity exists!\u000a- Grouping Bonuses for support skills & spells\u000a- Soar for Shifters\u000a- New area: 'Harpy Haven'\u000a- New area: 'Kingdom of Juargan'\u000a\u000aRefer appropriate HELP entries.\u000a\u000aWe're also trying to tidy up a lot of minor issues, formatting, spelling, links in areas, and things like that.\u000a\u000aThere are skills that open up which you then can't practice at that teacher which we're trying to track down as well.\u000a\u000aPlease let us know if you see anything along those lines and we'll attempt to get it sorted.\u000a\u000aGezhp, Owl and Shade\u000a\u000a"
+  },
+  {
+    "month": "April",
+    "year": 2022,
+    "text": "\u000a\u000a\u000a- New races: Fae, Sahuagin, Tiefling, Jotun, Genasi, and Illithid\u000a- Reaper is now a bit friendlier\u000a- New original area \"Undersea\" [15-25]\u000a- New INFAMY table\u000a- New original area \"Shadowsea\" [25-30]\u000a\u000a"
+  },
+  {
+    "month": "May",
+    "year": 2022,
+    "text": "\u000a\u000a\u000a- Ranger skill 'snare' added\u000a- Crafting and Spellcrafting have been added\u000a- Crafting and Spellcrafting items have been added\u000a- Total XP message added\u000a- Thief skill 'bomb' added\u000a- Vampires and Werewolfs will gain bonus pracs at 30\u000a- Lunge and suck damage modified by current blood status\u000a- Ranger skill Snap Shot added\u000a\u000a"
+  },
+  {
+    "month": "June",
+    "year": 2022,
+    "text": "\u000a\u000a\u000a- Added ACT_TINKER. Mobs with it can repair items that have  timers on them (sharpened/forged/poisoned weapons etc)\u000a- Shifter phoenix form has a beak and the 'swoop' ability\u000a- Added 'crush' as in-between round attack for shifter in bear form\u000a- Made sure rangers can get 'dowse' and 'forage' from all trainers\u000a\u000a"
+  },
+  {
+    "month": "July",
+    "year": 2022,
+    "text": "\u000a\u000a\u000a- Added 8-bit colour to MUD\u000a- Swim skill (hopefully) fixed and given to a number of classes\u000a- New race: Grung\u000a- Added gambling mob functionality\u000a- Added new area 'Ota'ar Dar - Market Canton' for levels 30-35\u000a- Added new special 'spec_cast_electric'\u000a\u000a"
+  },
+  {
+    "month": "August",
+    "year": 2022,
+    "text": "\u000a\u000a\u000a- New 30-60 area 'Ota'ar Canals' is in and linked\u000a- STEAM BREATH added for mages and dragons\u000a- Dragon form now has SWALLOW\u000a- Skills SWALLOW and FLUKESLAP are in, with spec_small_whale and  spec_large_whale\u000a- Smithy class is in for testing\u000a- Duergar added as playable race\u000a- Spells SLOW and STABILISE are in for warlocks and necromancers  respectively\u000a\u000a"
+  },
+  {
+    "month": "December",
+    "year": 2022,
+    "text": "\u000a\u000a\u000a- Mega patch in. New stats, items, boss mobs and more.\u000a\u000a"
+  },
+  {
+    "month": "February",
+    "year": 2023,
+    "text": "\u000a\u000a\u000a- New area in, Ota'ar Dar Residential Area - South for levels  35-40. New special spec_sahuagin_baron added. GUI has a 0.0.X  version update.\u000a- Vaults added. Permanent storage for characters separate from  inventory.\u000a\u000a"
+  },
+  {
+    "month": "March",
+    "year": 2023,
+    "text": "\u000a\u000a\u000a- New area in, Ota'ar Dar Arena/Jail, levels 40-45. New special  spec_green_grung\u000a\u000a"
+  },
+  {
+    "month": "October",
+    "year": 2023,
+    "text": "\u000a\u000a\u000a- New area in, Ota'ar Dar Military Fortress, levels 45-50.\u000a- 6 new specials added for troops\u000a\u000a"
+  },
+  {
+    "month": "December",
+    "year": 2023,
+    "text": "\u000a\u000a\u000a- New area in, Ota'ar Dar Residential Area - North, levels 50-55.\u000a- do_empty command added, fountains can now contain any liquid and  be poisoned. ostat and area files updated to reflect changes.\u000a- do_tfind added, to make finding teachers with particular skills  and proficiency levels easier in-game.\u000a\u000a"
+  },
+  {
+    "month": "March",
+    "year": 2024,
+    "text": "\u000a\u000a\u000a- mob spells starve, parch, inebriate, glaciation, conflagration, flood, and  confusion added\u000a- Ota'ar Dar added to 'pattern'\u000a- supporting code changes for new mob spells\u000a- Nausea spell added (mostly for mobs)\u000a- Gravity functions at a more sensible speed\u000a- Psychometry spell added (post-60 roadmap)\u000a- Waitstates slashed on all minor buff spells\u000a- New area: Omu Canals, first area of new grung sector\u000a- New trap type \"snare\" added\u000a- shoot skill available to mobs with bows\u000a- Mobprog triggers added to check char size and if an object is in the room\u000a- areas.txt, mobprogram.txt, scribe.pl, and scribe.docx updated\u000a- New area: Ota'ar Dar Prince's Canton - finishes the Ota'ar Dar area\u000a- Smokeables are in, can be purchased at all major cities. Add commands 'smoke'  and 'clean' and item types pipes, pipe cleaners, and smokeable substance.\u000a- Locked doors now display in \"Exits\" differently\u000a- ACT_OBJECT for mobs that you want to act more like objects (destructible  bridges, walls, enchanted armour, etc). Other flags to support concept include  ACT_NO_FIGHT and ITEM_REMAINS. Relevant affected skills and interactions  updated.\u000a- Specials spec_sahuagin_prince and spec_red_grung added\u000a- ACT_INVULNERABLE and ROOM_TOXIC added\u000a- Can read more full class names in WHO information\u000a- Imm skill 'rfind' added to search for rooms by title substring\u000a- enhanced crit, enhanced swiftness, and decay added and tested for post-60  skills dev\u000a\u000a"
+  },
+  {
+    "month": "April",
+    "year": 2024,
+    "text": "\u000a\u000a\u000a- added DOT spell 'fleshrot'\u000a- lock vnums added to all keys\u000a- keys now \"remember\" the last thing they were used to lock or unlock\u000a- affspell($*), insect($*), inrflag($*) added for mobprogs. isaffected($*) fixed\u000a\u000a"
+  },
+  {
+    "month": "September",
+    "year": 2024,
+    "text": "\u000a\u000a\u000a- New area: Omu Central is in, with many supporting code and text changes.\u000a\u000a"
+  },
+  {
+    "month": "October",
+    "year": 2024,
+    "text": "\u000a\u000a\u000a- Skills \"target\" and spell \"regenerate\" added, to allow for targeting and healing  of body regions on players or mobiles.\u000a- Skills \"harvest\" and \"carve\" added for Druids and Rangers\u000a- Skill \"bitsum\" added for IMMs\u000a- Spell \"possession\" fixed and re-enabled. Spell \"release\" added (basically  player version of IMM's \"return\").\u000a- Spell \"clairvoyance\" added\u000a\u000a"
+  },
+  {
+    "month": "December",
+    "year": 2024,
+    "text": "\u000a\u000a\u000a- 15 new level 70+ spells and skills now enabled for all classes. A few more +  \"bonus\" system mechanic still to code.\u000a- Skill \"quicken\" added for vampires and werewolves\u000a- Chant \"dragonsbane\" added for bards\u000a- Bat form added for vampires\u000a- tenketsu (pressure-point strike) added for martial artists\u000a- 'resolve' IMM skill for resolving IPs added\u000a\u000a"
+  },
+  {
+    "month": "January",
+    "year": 2025,
+    "text": "\u000a\u000a\u000a- Bonus system for high-level characters is in--see HELP BONUS.\u000a\u000a"
+  },
+  {
+    "month": "July",
+    "year": 2025,
+    "text": "\u000a\u000a\u000a- Omu - Sovereign Quarter complete and in\u000a- Added instance-limiting and spawn-counting for objects\u000a- Movement waitstates are (subtly!) affected by multiple things now\u000a- You can use %c to put the next command in your buffer in your prompt\u000a- sense wisdom spell added\u000a\u000a"
+  },
+  {
+    "month": "August",
+    "year": 2025,
+    "text": "\u000a\u000a\u000a- dig ability, item types \"digging implement\" and \"hoard\" added, many supporting  changes\u000a- added trap types curse, hex, and spirit\u000a- integrated random hoards/loot into automated questing\u000a- tweaked gather so it can be used in SECT_UNDERWATER_GROUND\u000a\u000a"
+  }
+]

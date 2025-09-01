@@ -351,6 +351,9 @@ void do_info( CHAR_DATA *ch, char *argument )
 {
         talk_channel( ch, argument, CHANNEL_INFO, NULL );
         add_to_public_review_buffer(NULL, REVIEW_INFO, argument);
+
+        if (argument && *argument)
+                json_write_events(ch, argument);
 }
 
 
@@ -358,6 +361,9 @@ void tournament_message(char *text, CHAR_DATA *ch)
 {
         talk_channel(ch, text, CHANNEL_ARENA, NULL);
         add_to_public_review_buffer(NULL, REVIEW_ARENA, text);
+
+        if (text && *text)
+                json_write_events(ch, text);
 }
 
 

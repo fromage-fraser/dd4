@@ -1273,7 +1273,7 @@ endif
 if isfight($i)
 break
 else
-say Hear ye all!  The market canton in open to canal traffic, but some other cantons remain inaccesible!
+say Hear ye all!  The market canton is open to canal traffic, but some other cantons remain inaccesible!
 endif
 ~
 >rand_prog 1~
