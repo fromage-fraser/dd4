@@ -5347,6 +5347,14 @@ int  roll_hoard_trap_type                    ( int for_level );
 #define STATE_VECTOR_LENGTH 624
 #define STATE_VECTOR_M      397 /* changes to STATE_VECTOR_LENGTH also require changes to this */
 
+/* write_json.c */
+void json_write_status                      ( );
+void json_write_who                         ( );
+void json_write_events                      ( );
+void json_write_areas                       ( );
+void json_write_changes                     ( );
+void json_write_races                       ( );
+
 typedef struct tagMTRand {
   unsigned long mt[STATE_VECTOR_LENGTH];
   int index;

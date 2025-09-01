@@ -458,7 +458,7 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 We're back!
 
 Apart from getting everything running again, the following new skills have
-been added;
+been added:
 
 - Chaos Blast for Infernalists
 - Detect Curse for those with Divination
@@ -1078,13 +1078,6 @@ Will dispel any movement-affecting effects, e.g paralysis, trap, slow and the
 like. May be cast on oneself or others, in and out of combat.
 ~
 
-0 'FREEDOM'~
-Syntax: cast freedom <<optional_target>
-
-Will dispel any movement-affecting effects, e.g paralysis, trap, slow and the
-like. May be cast on oneself or others, in and out of combat.
-~
-
 0 TRIP~
 Syntax: trip <<target>
 
@@ -1337,7 +1330,8 @@ BUY, SELL, and VALUE, as well as most other object manipulation commands,
 allow the use of the '#.object' format, where # is a number or the word
 "all".  For example, if 'LIST DAGGER' showed you that a shopkeeper had
 five daggers, and you were interested in buying the third one, you would
-type: 'BUY 3.DAGGER'. ~
+type: 'BUY 3.DAGGER'.
+~
 
 0 PETS~
 You can buy pets from a pet shop.  You may buy one more pet each time you
@@ -2083,17 +2077,6 @@ your own clan are not shown.
     {WShade{x      {wArbitrary Rule Maker and Bringer of Furious Wrath{x
     {WGezhp{x      {wBorn-again DD Code-Base Bug-Creationist{x
     {WOwl{x        {wJust Pathetically Happy to be Included{x
-
-{cAscendant Immortals  (In no particular order!){x
-    {WHestia{x     {wDungeon Mistress, Temptress and Area Desecrator{x
-    {WSamxin{x     {wAnti-Establishment Havoc-Wreaker and {RPersonal Assistant{x
-    {WTorment{x    {wSick, Twisted and Evil Incarnate{x
-
-{cDescendant Immortals  (Who may appear on occasion){x
-    {WBrutus{x
-    {WSacrifis{x
-    {WThorne{x
-    {WUmgook{x
 ~
 
 
@@ -2770,14 +2753,6 @@ This spell reduces the strength of the victim, as well as reducing their
 regeneration rate.
 ~
 
-0 NAUSEA~
-Syntax: cast nausea <<victim>
-
-This spell has a random negative effect on its target's physical statistics,
-which is of cumulative duration and intensity.  Can be cured in the same way
-that poison can ('cure poison' spell, 'cell adjustment,' etc).
-~
-
 0 CLAIRVOYANCE~
 Syntax: cast clairvoyance
 
@@ -2805,57 +2780,6 @@ This spell will allow you to return to your own body after POSSESSing another.
 Note: It is a very good idea to learn this spell at the same as learning POSSESS.
 ~
 
-0 STARVE~
-Syntax: cast starve <<victim>
-
-This spell causes a ravenous hunger to come suddenly over its target.
-~
-
-
-0 PARCH~
-Syntax: cast parch <<victim>
-
-This spell causes a terrible thirst to come suddenly over its target.
-~
-
-
-0 INEBRIATE~
-Syntax: cast inebriate <<victim>
-
-This spell makes its target immediately very drunk, with implications for
-spellcasting success and various other fine-motor-based manual skills. As
-alcohol is a poison, 'cure poison' spells and the like are effective remedies to
-the state.
-~
-
-
-0 GLACIATION~
-Syntax: cast glaciation
-
-This spell summons a blizzard into the location it is cast in, making the
-environment freezing.  Will last an entire game session.  Cannot be cast in
-a desert environment, or a room that is on fire.
-~
-
-
-0 CONFLAGRATION~
-Syntax: cast conflagration
-
-This spell summons a blazing inferno into the location it is cast in, making
-the environment burn.  Will last an entire game session.  Cannot be cast in an
-underwater location, or one that is freezing.
-~
-
-
-0 FLOOD~
-Syntax: cast flood
-
-This spell floods the place it is cast in, submerging the entire immediate area.
-Will last an entire game session.  Cannot be cast in a location that is already
-underwater.
-~
-
-
 0 CONFUSION~
 Syntax: cast confusion <<victim>
 
@@ -2863,8 +2787,6 @@ This spell makes its target terribly confused, and imposes penalties to wisdom,
 intelligence, and fighting ability, as well causing random wandering.  It can
 be cured by the application of upper mid- to high level healing spells.
 ~
-
-
 
 0 NAUSEA~
 Syntax: cast nausea <<victim>
@@ -2923,15 +2845,6 @@ Syntax: cast flood
 This spell floods the place it is cast in, submerging the entire immediate area.
 Will last an entire game session.  Cannot be cast in a location that is already
 underwater.
-~
-
-
-0 CONFUSION~
-Syntax: cast confusion <<victim>
-
-This spell makes its target terribly confused, and imposes penalties to wisdom,
-intelligence, and fighting ability, as well causing random wandering.  It can
-be cured by the application of upper mid- to high level healing spells.
 ~
 
 

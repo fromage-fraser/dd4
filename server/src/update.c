@@ -621,14 +621,12 @@ int hit_gain( CHAR_DATA *ch )
                  *  Anti-swim (?); Owl 14/7/22
                  *
                  *  Strip the swim skill and affect for PCs when they're not in 'deep water' rooms.  Leaves
-                 *  shifter snake form unaffected. Imms can dispel their own swimming effect--better for
-                 *  testing etc.
+                 *  shifter snake form unaffected.
                  */
 
                 if ( ( ( ( IS_AFFECTED( ch, AFF_SWIM ) )
                 ||       ( is_affected( ch, gsn_swim ) ) )
-                &&     ( ch->form != FORM_SNAKE )
-                &&     ( ch->level <= LEVEL_HERO ) )
+                &&     ( ch->form != FORM_SNAKE ))
                    && ( ch->in_room->sector_type != SECT_UNDERWATER )
                    && ( ch->in_room->sector_type != SECT_UNDERWATER_GROUND )
                    && ( ch->in_room->sector_type != SECT_WATER_SWIM )
@@ -640,8 +638,7 @@ int hit_gain( CHAR_DATA *ch )
                 }
 
                 if ( ( ( ( IS_AFFECTED( ch, AFF_SWIM ) )
-                ||       ( is_affected( ch, gsn_swim ) ) )
-                &&       ( ch->level <= LEVEL_HERO ) )
+                ||       ( is_affected( ch, gsn_swim ) ) ) )
                     && ( ch->in_room->sector_type == SECT_WATER_NOSWIM ) )
                 {
                         affect_strip(ch, gsn_swim);
@@ -2677,6 +2674,7 @@ void update_handler ()
         static int pulse_point;
         static int pulse_state; /* for prone and dazed state initially - Brutus */
         static int pulse_msdp; /* <--- GCMP */
+        static int json_tick = 0;
 
         sprintf (last_function, "entering update_hander");
 
@@ -2724,6 +2722,15 @@ void update_handler ()
                 list_update();
                 sprintf (last_function, "update_hander: calling deity_update");
                 deity_update();
+        }
+
+        if (++json_tick >= 60)
+        {
+            json_write_status();
+            json_write_who();
+            json_write_areas();
+            json_write_changes("helpfile.are", "../api/changes.json");
+            json_tick = 0;
         }
 
         if ( --pulse_msdp <= 0 )

@@ -1224,6 +1224,7 @@ void boot_db( void )
          * Declare db booting over.
          * Reset all areas once.
          * Load up the notes file.
+         * Write the race information json
          */
         {
                 fix_exits();
@@ -1231,6 +1232,7 @@ void boot_db( void )
                 area_update();
                 load_boards();
                 save_notes();
+                json_write_races();
                 MOBtrigger = TRUE;
                 load_down_time();
         }
