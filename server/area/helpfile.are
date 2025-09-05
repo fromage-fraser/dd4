@@ -402,7 +402,7 @@ Enter thy Name: ~
 
 -1 MOTD~
 {x
-    [08 August 2025]
+    [03 September 2025]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -415,11 +415,12 @@ Enter thy Name: ~
     We're also active on a Discord server at {Yhttps://discord.gg/aGzmAWmXYb{x
     if you'd like to jump in and say hi!
 
+    {WMAJOR WEBSITE UPDATE{x: Website is now looking a lot more 2025 than 2003,
+    and has a lot of cool new stuff on it.  Have a look and check out HELP
+    WEBSITE.
+
     {WNEW SKILL - 'DIG'{x: Players may now DIG for buried loot, see HELP DIG.
     Buried treasure has also been added to the automated quest system.
-
-    {WNEW AREA: OMU - SOVEREIGN QUARTER IS IN{x: Completes the Omu section of
-    the undersea megacity.
 
 
 To Enter the Dragons Domain press <<Return>.
@@ -642,6 +643,11 @@ Gezhp, Owl and Shade
 - integrated random hoards/loot into automated questing
 - tweaked gather so it can be used in SECT_UNDERWATER_GROUND
 
+{W September 2025{x
+
+- MAJOR website update including web client, live data, searchable help, an
+  update log, and an API
+
 ~
 
 0 MULTIPLAYING MULTIPLAYERS~
@@ -709,6 +715,22 @@ Lists all traps in the MUD and their locations.
 Syntax: trapremove <<target>
 
 Removes a trap from a trapped object.
+~
+
+0 WEBSITE 'WEB SITE'~
+DD has a mobile-optimised website up at {Whttps://dragons-domain.org/{x with a
+ton of bells and whistles, including:
+
+- A web-based MUD client allowing you to connect and play, as well as links to
+  other popular MUD clients
+- Our extensive DD FAQ
+- Fastwalks, maps, lore, class-, clan-, and race-information
+- A live dashboard showing real-time MUD information
+- Information about the DD API
+- A feature update log (the CHANGES entry in this help)
+- An online searchable version of this help file
+- Extensive information for anyone interested in building for the MUD
+
 ~
 
 
@@ -1732,7 +1754,7 @@ Also see help for: DAMAGE DEATH EXPERIENCE DEITY SUBCLASSES RACES TICK
                    TEACHER CLAN
 
 More information is available on the DD website: {Bhttps://www.dragons-domain.org/{x.
-You'd do well to read our helpful FAQ, found at {chttps://www.dragons-domain.org/main/faq/dd-faq.html{x!
+You'd do well to read our helpful FAQ, found at {chttps://dragons-domain.org/start/faq/{x!
 ~
 
 0 DAMAGE~
