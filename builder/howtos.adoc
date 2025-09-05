@@ -1609,3 +1609,4 @@ of treasure in hoards (particularly money) is a good idea.  Random hoard +
 generation has been added to the auto quest function (roughly a third of +
 automated quests will be of this type), and random loot can be found in these +
 hoards. +
+
