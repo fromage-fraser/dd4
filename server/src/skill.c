@@ -3897,6 +3897,15 @@ void do_dowse(CHAR_DATA *ch, char *arg)
         WAIT_STATE( ch, PULSE_VIOLENCE );
 }
 
+static bool is_negative_herb(int idx)
+{
+    const char *n = herb_table[idx].name;
+    return !str_cmp(n, "slota")
+        || !str_cmp(n, "zur")
+        || !str_cmp(n, "dynallca")
+        || !str_cmp(n, "karfar");
+}
+
 
 void do_gather (CHAR_DATA *ch, char *arg)
 {
@@ -3929,7 +3938,19 @@ void do_gather (CHAR_DATA *ch, char *arg)
                 return;
         }
 
-        move_cost = number_range( 50, 75 );
+        {
+            int base_low   = 50;
+            int base_high  = 75;
+            int skill_pct  = UMAX(0, UMIN(100, ch->pcdata->learned[ gsn_gather_herbs ]));
+            int level_steps = ch->level / 10;
+            int reduction   = (level_steps * skill_pct) / 100;
+
+            int low  = UMAX(1, base_low  - reduction);
+            int high = UMAX(low, base_high - reduction);
+
+            move_cost = number_range(low, high);
+        }
+
         if( ch->move - move_cost < 1 )
         {
                 send_to_char( "You're too tired to search for healing herbs.\n\r", ch );
@@ -3976,22 +3997,39 @@ void do_gather (CHAR_DATA *ch, char *arg)
                 return;
         }
 
-        i = herb_table[ herb_type ].chance * 10;
-        /* if( random ) i /= 2;  removed for now */
+        int base_pct = herb_table[herb_type].chance;         /* from table, e.g., 60 */
+        int eff_pct  = base_pct;
 
-        if( number_range( 0, 999 ) >= i )
+        if (is_negative_herb(herb_type)) {
+
+            int skill_pct  = UMAX(0, UMIN(100, ch->pcdata->learned[ gsn_gather_herbs ]));
+            int level_pct  = UMAX(0, UMIN(100, ch->level));
+
+            const int MAX_REDUCTION_PCT = 50;
+
+            int reduction_from_level = (MAX_REDUCTION_PCT/2) * level_pct / 100;
+            int reduction_from_skill = (MAX_REDUCTION_PCT/2) * skill_pct / 100;
+            int total_reduction      = reduction_from_level + reduction_from_skill;
+
+            eff_pct = base_pct * (100 - total_reduction) / 100;
+
+            eff_pct = URANGE(1, eff_pct, 95);
+        }
+
+        i = eff_pct * 10;
+
+        if ( number_range(0, 999) >= i )
         {
-                if( random )
-                        send_to_char( "You are unable to find any useful herbs.\n\r", ch );
-                else
-                {
-                        sprintf( buf, "You search the area but cannot find any %s.\n\r",
-                                herb_table[ herb_type ].name );
-                        send_to_char( buf, ch );
-                }
-                act( "$n searches for healing herbs, but comes up empty handed.", ch, NULL,
-                    NULL, TO_ROOM );
-                return;
+            if( random )
+                send_to_char( "You are unable to find any useful herbs.\n\r", ch );
+            else
+            {
+                sprintf( buf, "You search the area but cannot find any %s.\n\r",
+                    herb_table[ herb_type ].name );
+                send_to_char( buf, ch );
+            }
+            act( "$n searches for healing herbs, but comes up empty handed.", ch, NULL, NULL, TO_ROOM );
+            return;
         }
 
         i = number_percent();
