@@ -428,7 +428,7 @@ const struct HERB herb_table [ MAX_HERBS ] =
         },
 
         {
-                "attanar", ITEM_PAINT, "cure poison", 1, 40,
+                "attanar", ITEM_PAINT, "cell adjustment", 1, 40,
                 "attanar moss", "some attanar moss",
                 "A clump of attanar moss sits here.",
                 "You recover some attanar moss and mash it into a salve.\n\r"
