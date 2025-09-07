@@ -108,7 +108,7 @@ He looks grand and determined as he faces a dragon.
 dragon~
 A painted dragon~
 ~
-It's huge body is posed in a stance striking at a knight.
+Its huge body is posed in a stance striking at a knight.
 ~
 2 0 -1000 S
 54 0 0 0d0+0 0d0+0
@@ -967,7 +967,7 @@ S
 
 #39008
 Disconnected~
-{cConnected to host dd4.webredirect.org{w
+{cConnected to host dragons-domain.org{w
 
 O---=<<  Dragons Domain IV  >=----------------- __----^^^^^^^^^^^------__ ---O
 |          .              .         _//^    ^//====......          __--^^^  |
@@ -1423,7 +1423,7 @@ S
 
 #39031
 Cleric's Room~
-A holy symbol a simple robe and a small bed occupy this room.
+A holy symbol, a simple robe, and a small bed are all that you see in this room.
 ~
 0 8 1
 D 0
@@ -1438,7 +1438,7 @@ S
 
 #39032
 {YMage{x~
-Ohoh. You've stumbled upon a mages room....
+Uh-oh. You've stumbled upon a mage's room....
 ~
 0 8 1
 D 2
