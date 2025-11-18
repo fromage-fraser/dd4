@@ -1317,6 +1317,9 @@ Common embroidered on his clothing--perhaps he speaks it?
 >speech_prog common~
     say Yes, I speak it.  Why?  Do you have something written in Draconic you wish translated?
 ~
+>rand_prog 1~
+    say You seek a way into the Sovereign Quarter? Protection from my people's aggression? I may be able to help...
+~
 >give_prog scroll~
     if number($o) == 28711
             emote clears throat.
@@ -11147,6 +11150,7 @@ G 0 28489 0                         carry a crude driftwood key
 M 0 28478 1 28474               add a blue grung to Central Omu, Lower
 G 0 28427 0                         carry [out-of-area item]
 G 0 26032 0                         carry [out-of-area item]
+G 0 28718 0                         carry [out-of-area item]
 M 0 28479 1 28501               add a green grung to Green Grung Hatchery
 E 0 27490 0 5                       equip [out-of-area item] (body)
 E 0 4531 0 6                        equip [out-of-area item] (head)

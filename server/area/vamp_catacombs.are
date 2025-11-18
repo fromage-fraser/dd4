@@ -7183,6 +7183,15 @@ S
 #0
 
 
+#EXITS_SFX
+9511 w lock sfx/door/lock_bolt1.mp3 75
+9511 w unlock sfx/door/unlock_bolt1.mp3 70
+9577 e lock sfx/door/lock_bolt1.mp3 75
+9577 e unlock sfx/door/unlock_bolt1.mp3 70
+$
+
+
+
 #RESETS
 O 1 9717 100 9533           magical bench to Velkyn's Laboratory
 O 1 9500 100 9501           meat scraps to Rubbish room

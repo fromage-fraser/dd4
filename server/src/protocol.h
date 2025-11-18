@@ -14,7 +14,7 @@
  Set your MUD_NAME, and change descriptor_t if necessary.
  ******************************************************************************/
 
-#define MUD_NAME "Dragons Domain V"
+#define MUD_NAME "Dragons Domain IV"
 
 typedef struct descriptor_data descriptor_t;
 
@@ -298,6 +298,7 @@ typedef enum
 
 	GMCP_SUPPORT_CHAR,
 	GMCP_SUPPORT_ROOM,
+    GMCP_SUPPORT_CLIENT_MEDIA,
 	GMCP_SUPPORT_MAX
 } GMCP_SUPPORT;
 
@@ -501,6 +502,34 @@ typedef struct
 	bool_t	bGMCPSupport[GMCP_SUPPORT_MAX]; /* The client supports specific modules */
 	bool_t	bGMCPUpdatePackage[GMCP_PACKAGE_MAX]; /* Send these packages to the client. */
 	char	*GMCPVariable[GMCP_MAX]; /* The message for each variable */
+    bool_t  bClientMediaDefaultSent;
+    /* --- MCMP: per-descriptor ambient state (for key="room-ambient") --- */
+    char   *MediaAmbientName;   /* last 'name' we told the client to play (or NULL) */
+    int     MediaAmbientVol;    /* last volume we sent (informational) */
+    bool_t  MediaAmbientActive; /* we've told the client to play something */
+
+    /* --- Ambient media lanes (Mudlet) --- */
+    char *MediaAreaName;
+    int   MediaAreaVol;
+    bool_t  MediaAreaActive;
+
+    char *MediaRoomName;
+    int   MediaRoomVol;
+    bool_t  MediaRoomActive;
+
+    /* Sector ambience tracking (for crossfade via A/B keys) */
+    char *MediaSectorName;
+    int         MediaSectorVol;
+    bool_t      MediaSectorActive;
+    bool_t      MediaSectorFlip; /* false => next key A, true => next key B */
+
+    /* Weather ambience tracking */
+    char   *MediaWeatherName;   /* currently playing weather loop (file path) */
+    int     MediaWeatherVol;    /* last volume used */
+    bool_t  MediaWeatherActive; /* TRUE if a weather loop is active */
+
+    /* Transient: suppress media Play/Stop during internal moves (e.g., Limbo hop) */
+    bool_t        MediaSuppress;
 	/*************** END GMCP ***************/
 
 } protocol_t;
@@ -774,6 +803,15 @@ void MXPSendTag( descriptor_t *apDescriptor, const char *apTag );
  * filename, eg: SoundSend( pDesc, "monster/growl.wav" );
  */
 void SoundSend( descriptor_t *apDescriptor, const char *apTrigger );
+
+
+/* Sound implementation */
+
+void GMCPEmit(descriptor_t *d, const char *module, const char *json_body);
+void GMCP_Media_Default(descriptor_t *d, const char *base_url);
+void GMCP_Media_Play(descriptor_t *d, const char *name, const char *opts_json);
+void GMCP_Media_Stop(descriptor_t *d, const char *criteria_json);
+void GMCP_Media_Default_Ensure(descriptor_t *d, const char *base_url);
 
 /******************************************************************************
  Colour functions.

@@ -1093,20 +1093,6 @@ This key is very small and elegant, and looks to be made from or thickly-plated
 with gold.
 ~
 
-#28718
-large brass key~
-a large brass key~
-A large brass key has been left here.~
-~
-18 0 1|16384
-28429~ 0~ 0~ 0~
-1 0 0
-E
-large brass key~
-This key is heavy and made of brass, of the kind usually used to unlock heavy
-castle doors.
-~
-
 #28719
 large brass key~
 a large brass key~
@@ -2545,7 +2531,7 @@ M 0 28704 4 28437               add an orange grung to Sovereign Quarter - G'Die
 E 0 28705 0 5                       equip bright orange rock armour (body)
 E 0 28706 0 6                       equip a rock helm (head)
 E 0 28704 0 16                      equip a long silver spear (wield)
-G 0 28718 0                         carry a large brass key
+G 0 28718 0                         carry [out-of-area item]
 M 0 28705 4 28420               add an orange grung to Sovereign Quarter - G'Diehn Way - Lower
 E 0 28705 0 5                       equip bright orange rock armour (body)
 E 0 28706 0 6                       equip a rock helm (head)
@@ -2554,7 +2540,7 @@ M 0 28704 4 28730               add an orange grung to Sovereign Quarter - G'Die
 E 0 28705 0 5                       equip bright orange rock armour (body)
 E 0 28706 0 6                       equip a rock helm (head)
 E 0 28704 0 16                      equip a long silver spear (wield)
-G 0 28718 0                         carry a large brass key
+G 0 28718 0                         carry [out-of-area item]
 M 0 28704 4 28721               add an orange grung to Sovereign Quarter - Ries-rhohrin Bridge
 E 0 28705 0 5                       equip bright orange rock armour (body)
 E 0 28706 0 6                       equip a rock helm (head)
@@ -2567,7 +2553,7 @@ M 0 28705 4 28436               add an orange grung to Chiefsguard Station Entra
 E 0 28705 0 5                       equip bright orange rock armour (body)
 E 0 28706 0 6                       equip a rock helm (head)
 E 0 28704 0 16                      equip a long silver spear (wield)
-G 0 28718 0                         carry a large brass key
+G 0 28718 0                         carry [out-of-area item]
 M 0 28704 4 28436               add an orange grung to Chiefsguard Station Entranceway, Lower
 E 0 28705 0 5                       equip bright orange rock armour (body)
 E 0 28706 0 6                       equip a rock helm (head)
@@ -2576,7 +2562,7 @@ M 0 28705 4 28436               add an orange grung to Chiefsguard Station Entra
 E 0 28705 0 5                       equip bright orange rock armour (body)
 E 0 28706 0 6                       equip a rock helm (head)
 E 0 28704 0 16                      equip a long silver spear (wield)
-G 0 28718 0                         carry a large brass key
+G 0 28718 0                         carry [out-of-area item]
 M 0 28706 1 28737               add a sharptooth to Sovereign Quarter - G'Diehn Way - Upper
 M 0 28707 1 28421               add a sharptooth to Sovereign Quarter - G'Diehn Way - Lower
 M 0 28708 1 28435               add Kullugrib to Chiefsguard Armoury
@@ -2588,7 +2574,7 @@ E 0 28705 0 5                       equip bright orange rock armour (body)
 E 0 28704 0 16                      equip a long silver spear (wield)
 M 0 28711 1 28728               add an orange grung to Chiefsguard Station - Mess
 E 0 28705 0 5                       equip bright orange rock armour (body)
-G 0 28718 0                         carry a large brass key
+G 0 28718 0                         carry [out-of-area item]
 M 0 28712 1 28728               add an orange grung to Chiefsguard Station - Mess
 E 0 28705 0 5                       equip bright orange rock armour (body)
 G 0 28710 0                         carry the muddy spine of a catfish
@@ -2597,7 +2583,7 @@ E 0 28705 0 5                       equip bright orange rock armour (body)
 M 0 28714 1 28735               add an orange grung to Chiefsguard Station - Barracks
 E 0 28705 0 5                       equip bright orange rock armour (body)
 E 0 28706 0 6                       equip a rock helm (head)
-G 0 28718 0                         carry a large brass key
+G 0 28718 0                         carry [out-of-area item]
 M 0 28715 5 28736               add an orange grung to Chiefsguard Station Entranceway, Upper
 E 0 28705 0 5                       equip bright orange rock armour (body)
 E 0 28706 0 6                       equip a rock helm (head)
@@ -2613,7 +2599,7 @@ E 0 28705 0 5                       equip bright orange rock armour (body)
 E 0 28706 0 6                       equip a rock helm (head)
 E 0 28704 0 16                      equip a long silver spear (wield)
 E 0 28704 0 18                      equip a long silver spear (dual)
-G 0 28718 0                         carry a large brass key
+G 0 28718 0                         carry [out-of-area item]
 M 0 28716 3 28435               add an octopus to Chiefsguard Armoury
 M 0 28716 3 28435               add an octopus to Chiefsguard Armoury
 M 0 28716 3 28728               add an octopus to Chiefsguard Station - Mess
@@ -2634,7 +2620,7 @@ E 0 28705 0 5                       equip bright orange rock armour (body)
 E 0 28706 0 6                       equip a rock helm (head)
 E 0 28704 0 16                      equip a long silver spear (wield)
 E 0 28704 0 18                      equip a long silver spear (dual)
-G 0 28718 0                         carry a large brass key
+G 0 28718 0                         carry [out-of-area item]
 M 0 28718 1 28707               add a sahuagin advisor to Chief's Dwelling - Greeting Rooms
 E 0 27538 0 12                      equip [out-of-area item] (about)
 E 0 27619 0 16                      equip [out-of-area item] (wield)
@@ -2654,7 +2640,7 @@ E 0 28705 0 5                       equip bright orange rock armour (body)
 E 0 28706 0 6                       equip a rock helm (head)
 E 0 28704 0 16                      equip a long silver spear (wield)
 E 0 28704 0 18                      equip a long silver spear (dual)
-G 0 28718 0                         carry a large brass key
+G 0 28718 0                         carry [out-of-area item]
 M 0 28722 2 28716               add an orange grung to Chief's Dwelling - Upper Corridors
 E 0 28705 0 5                       equip bright orange rock armour (body)
 E 0 28706 0 6                       equip a rock helm (head)
@@ -2665,7 +2651,7 @@ E 0 28705 0 5                       equip bright orange rock armour (body)
 E 0 28706 0 6                       equip a rock helm (head)
 E 0 28704 0 16                      equip a long silver spear (wield)
 E 0 28704 0 18                      equip a long silver spear (dual)
-G 0 28718 0                         carry a large brass key
+G 0 28718 0                         carry [out-of-area item]
 M 0 28722 2 28724               add an orange grung to Chief's Dwelling - Upper Corridors
 E 0 28705 0 5                       equip bright orange rock armour (body)
 E 0 28706 0 6                       equip a rock helm (head)
@@ -2678,7 +2664,7 @@ E 0 28704 0 16                      equip a long silver spear (wield)
 E 0 28704 0 18                      equip a long silver spear (dual)
 M 0 28723 3 28704               add an orange grung to Chief's Dwelling - Guardroom
 E 0 28705 0 5                       equip bright orange rock armour (body)
-G 0 28718 0                         carry a large brass key
+G 0 28718 0                         carry [out-of-area item]
 M 0 28724 3 28704               add an orange grung to Chief's Dwelling - Guardroom
 E 0 28705 0 5                       equip bright orange rock armour (body)
 E 0 28706 0 6                       equip a rock helm (head)
@@ -2689,7 +2675,7 @@ E 0 28705 0 5                       equip bright orange rock armour (body)
 E 0 28706 0 6                       equip a rock helm (head)
 M 0 28723 3 28717               add an orange grung to Chief's Dwelling - Guardroom
 E 0 28705 0 5                       equip bright orange rock armour (body)
-G 0 28718 0                         carry a large brass key
+G 0 28718 0                         carry [out-of-area item]
 M 0 28724 3 28717               add an orange grung to Chief's Dwelling - Guardroom
 E 0 28705 0 5                       equip bright orange rock armour (body)
 E 0 28706 0 6                       equip a rock helm (head)
@@ -2705,7 +2691,7 @@ E 0 28705 0 5                       equip bright orange rock armour (body)
 E 0 28706 0 6                       equip a rock helm (head)
 E 0 28714 0 16                      equip a masterwork silver spear (wield)
 E 0 28714 0 18                      equip a masterwork silver spear (dual)
-G 0 28718 0                         carry a large brass key
+G 0 28718 0                         carry [out-of-area item]
 M 0 28728 5 28422               add a chiefsmate grung to Chief's Dwelling - Living / Reception Area
 E 0 28715 0 6                       equip a golden diadem (head)
 E 0 28716 0 12                      equip a luxurious brown robe (about)

@@ -29,6 +29,7 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
+#include "protocol.h"
 
 
 bool check_social (CHAR_DATA *ch, char *command, char *argument);
@@ -148,6 +149,8 @@ const struct cmd_type cmd_table [] =
         { "ansi",           do_ansi,        POS_DEAD,        0,  LOG_NORMAL },
         { "color",          do_color,       POS_DEAD,        0,  LOG_NORMAL },
         { "colour",         do_color,       POS_DEAD,        0,  LOG_NORMAL },
+        { "sconfig",        do_sconfig,     POS_DEAD,        0,  LOG_NORMAL },
+
 
         /*
          * Communication commands.
@@ -383,6 +386,7 @@ const struct cmd_type cmd_table [] =
         /*
          * Immortal commands.
          */
+        { "aambient",   do_aambient,    POS_DEAD,    L_BUI,  LOG_ALWAYS },
         { "sstime",     do_sstime,      POS_DEAD,    L_IMM,  LOG_ALWAYS },
         { "advance",    do_advance,     POS_DEAD,    L_DIR,  LOG_ALWAYS },
         { "trust",      do_trust,       POS_DEAD,    L_DIR,  LOG_ALWAYS },
@@ -397,6 +401,7 @@ const struct cmd_type cmd_table [] =
         { "freeze",     do_freeze,      POS_DEAD,    L_SEN,  LOG_ALWAYS },
         { "killsocket", do_killsocket,  POS_DEAD,    L_SEN,  LOG_ALWAYS },
         { "log",        do_log,         POS_DEAD,    L_SEN,  LOG_ALWAYS },
+        { "mcmp",       do_mcmp,        POS_DEAD,    L_IMM,  LOG_ALWAYS },
         { "mset",       do_mset,        POS_DEAD,    L_SEN,  LOG_ALWAYS },
         { "noemote",    do_noemote,     POS_DEAD,    L_SEN,  LOG_NORMAL },
         { "notell",     do_notell,      POS_DEAD,    L_SEN,  LOG_NORMAL },
@@ -405,6 +410,7 @@ const struct cmd_type cmd_table [] =
         { "oset",       do_oset,        POS_DEAD,    L_SEN,  LOG_ALWAYS },
         { "pardon",     do_pardon,      POS_DEAD,    L_SEN,  LOG_ALWAYS },
         { "purge",      do_purge,       POS_DEAD,    L_SEN,  LOG_NORMAL },
+        { "rambient",   do_rambient,    POS_DEAD,    L_BUI,  LOG_ALWAYS },
         { "reset",      do_reset,       POS_DEAD,    L_SEN,  LOG_NORMAL },
         { "restore",    do_restore,     POS_DEAD,    L_SEN,  LOG_ALWAYS },
         { "shutdow",    do_shutdow,     POS_DEAD,    L_SEN,  LOG_NORMAL },
@@ -3195,6 +3201,15 @@ void interpret( CHAR_DATA *ch, char *argument )
 
         if ( !IS_NPC( ch ) )
                 REMOVE_BIT( ch->act, PLR_AFK );
+
+        /* MCMP: send Client.Media.Default once, on first actual user command */
+
+        if (ch->desc) {
+            GMCP_Media_Default_Ensure(
+                ch->desc,
+                "https://www.dragons-domain.org/main/gui/custom/audio/"
+            );
+        }
 
         /*
          * Implement freeze command.

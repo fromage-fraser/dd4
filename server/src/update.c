@@ -405,6 +405,7 @@ void gain_exp( CHAR_DATA *ch, int gain )
                         do_info(ch,buf);
                         sprintf(buf, "-=>>  The name of %s has been recorded for all time in the Hall of Heroes!  <<<<=-\n\r",ch->name);
                         do_info(ch,buf);
+                        media_notify_levelup(ch);
                         ch->pcdata->condition[COND_FULL] = 0;
                         ch->pcdata->condition[COND_THIRST] = 0;
                         ch->pcdata->condition[COND_DRUNK] = 0;
@@ -414,6 +415,7 @@ void gain_exp( CHAR_DATA *ch, int gain )
                 {
                         sprintf(buf,"-=>>%s has made it to level %d<<<<=-\n\r",ch->name,ch->level);
                         do_info(ch,buf);
+                        media_notify_levelup(ch);
                 }
         }
 }
@@ -1359,6 +1361,80 @@ void day_weather_update()
         }
 }
 
+/* --- Weather ambience update ------------------------------------------- */
+/* Called from weather_update() to start/stop ambient weather loops */
+static void update_weather_ambient( void )
+{
+    const sound_event_def *ev = NULL;
+    const char *rk = NULL;
+
+    switch (weather_info.sky) {
+    case SKY_RAINING:
+        rk = "ambient.weather.rain";
+        break;
+    case SKY_LIGHTNING:
+        rk = "ambient.weather.lightning";
+        break;
+    default:
+        rk = NULL;
+        break;
+    }
+
+    if (rk != NULL) {
+        ev = sound_event_lookup(rk);
+        if (ev && ev->files[0]) {
+            for (DESCRIPTOR_DATA *d = descriptor_list; d; d = d->next) {
+                if (!d->character || IS_NPC(d->character)) continue;
+                if (!d->pProtocol || !d->pProtocol->bGMCP) continue;
+                if (!d->character->pcdata || !d->character->pcdata->snd_enabled) continue;
+                if ( !IS_OUTSIDE( d->character ) ) continue;
+                if ( d->character->in_room->sector_type == SECT_UNDERWATER ) continue;
+                if ( d->character->in_room->sector_type == SECT_UNDERWATER_GROUND ) continue;
+
+                /* Only start if not already active or different */
+                if (!d->pProtocol->MediaWeatherActive ||
+                    !d->pProtocol->MediaWeatherName ||
+                    str_cmp(d->pProtocol->MediaWeatherName, ev->files[0])) {
+
+                    /* Stop old loop if running */
+                    if (d->pProtocol->MediaWeatherActive && d->pProtocol->MediaWeatherName) {
+                        GMCP_Media_Stop(d, d->pProtocol->MediaWeatherName);
+                        free_string(d->pProtocol->MediaWeatherName);
+                    }
+
+                    /* Start new loop */
+                    char opts[256];
+                    snprintf(opts, sizeof(opts),
+                             "\"type\":\"music\",\"tag\":\"weather\",\"volume\":%d,\"loops\":-1",
+                             ev->default_volume > 0 ? ev->default_volume : 20);
+                    GMCP_Media_Play(d, ev->files[0], opts);
+
+                    d->pProtocol->MediaWeatherName   = str_dup(ev->files[0]);
+                    d->pProtocol->MediaWeatherVol    = ev->default_volume;
+                    d->pProtocol->MediaWeatherActive = TRUE;
+
+                    log_stringf("WeatherSFX: started loop %s vol=%d for %s",
+                                ev->files[0], ev->default_volume,
+                                d->character->name);
+                }
+            }
+        }
+    } else {
+        /* No weather loop needed (clear/cloudy) => stop any active */
+        for (DESCRIPTOR_DATA *d = descriptor_list; d; d = d->next) {
+            if (d->pProtocol && d->pProtocol->MediaWeatherActive && d->pProtocol->MediaWeatherName) {
+                GMCP_Media_Stop(d, d->pProtocol->MediaWeatherName);
+                free_string(d->pProtocol->MediaWeatherName);
+                d->pProtocol->MediaWeatherName   = NULL;
+                d->pProtocol->MediaWeatherActive = FALSE;
+
+                log_stringf("WeatherSFX: stopped weather loop for %s",
+                            d->character ? d->character->name : "(null)");
+            }
+        }
+    }
+}
+
 
 void weather_update ()
 {
@@ -1510,6 +1586,14 @@ void weather_update ()
                         send_to_char("You sense the <202>sun<0> setting...\n\r", d->character);
                 }
         }
+
+        /* Refresh weather ambience for all PCs */
+        for (d = descriptor_list; d; d = d->next)
+        {
+            if (d->connected == CON_PLAYING && d->character && !IS_NPC(d->character))
+                update_weather_for_char(d->character);
+        }
+        update_weather_ambient();
 }
 
 /*
@@ -3631,5 +3715,7 @@ void gmcp_update( void )
         }
         return;
 }
+
+
 
 /* EOF update.c */

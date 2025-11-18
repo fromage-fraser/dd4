@@ -2,6 +2,8 @@
 15 25 0 100
 
 #AREA_SPECIAL
+ambient ambient/area/marsh.mp3
+ambient_vol 30
 reset_msg Distant croaks echo through the mire.
 ~
 $

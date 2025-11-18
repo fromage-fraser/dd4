@@ -1178,20 +1178,6 @@ $obj
 nm  large brass key
 sh  a large brass key
 lo  A large brass key has been left here.
-vn  28718
-ty  key
-v0  28429
-wg  1
-we  take hold
-ed  large brass key
-This key is heavy and made of brass, of the kind usually used to unlock heavy
-castle doors.
-~
-
-$obj
-nm  large brass key
-sh  a large brass key
-lo  A large brass key has been left here.
 vn  28719
 ty  key
 v0  28714

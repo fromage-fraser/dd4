@@ -594,8 +594,18 @@ void json_write_events(CHAR_DATA *ch, const char *message)
         char esc_player[2*MAX_INPUT_LENGTH];
         char esc_message[2*MAX_STRING_LENGTH];
 
-        json_escape_string(events[i].player, esc_player, sizeof(esc_player));
-        json_escape_string(events[i].message, esc_message, sizeof(esc_message));
+        /* Only escape the newest message, not those already read from JSON */
+        if (i == count - 1 && message && *message) {
+                json_escape_string(events[i].player, esc_player, sizeof(esc_player));
+                json_escape_string(events[i].message, esc_message, sizeof(esc_message));
+        }
+        else {
+                /* Already escaped when read from JSON */
+                strncpy(esc_player, events[i].player, sizeof(esc_player));
+                esc_player[sizeof(esc_player)-1] = '\0';
+                strncpy(esc_message, events[i].message, sizeof(esc_message));
+                esc_message[sizeof(esc_message)-1] = '\0';
+        }
 
         fprintf(f,
             "  {\"timestamp\":%ld,\"player\":\"%s\",\"message\":\"%s\"}%s\n",

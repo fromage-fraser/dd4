@@ -28,6 +28,7 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
+#include "protocol.h"
 
 #include <netdb.h>
 #include <arpa/inet.h>
@@ -857,6 +858,187 @@ void do_rstat( CHAR_DATA *ch, char *argument )
                 strcat(buf1, "Area flags: {Rnone {x[{W0{x]\n\r");
         }
 
+         /* --- Ambience (room + area + sector + effective) -------------------- */
+        {
+            char full[MAX_STRING_LENGTH];
+            char full_sector[MAX_STRING_LENGTH];
+            char full_effective[MAX_STRING_LENGTH];
+            const char *base = "https://www.dragons-domain.org/main/gui/custom/audio/"; /* sane default */
+
+            /* ----- Room ambience ----- */
+            if (location->ambient_sound && location->ambient_sound[0] != '\0')
+            {
+                if (strstr(location->ambient_sound, "://") != NULL)
+                {
+                    strncpy(full, location->ambient_sound, sizeof(full)-1);
+                    full[sizeof(full)-1] = '\0';
+                }
+                else
+                {
+                    snprintf(full, sizeof(full), "%s%s",
+                             base,
+                             (location->ambient_sound[0] == '/')
+                               ? location->ambient_sound + 1
+                               : location->ambient_sound);
+                }
+
+                sprintf(buf, "Room ambience: {G%s{x\n\rRoom ambience volume: {W%d{x\n\r",
+                        full, location->ambient_volume);
+                strcat(buf1, buf);
+            }
+            else
+            {
+                strcat(buf1, "Room ambience: {Rnone{x\n\r");
+            }
+
+            /* ----- Area ambience ----- */
+            if (location->area->ambient_sound && *location->area->ambient_sound)
+            {
+                if (strstr(location->area->ambient_sound, "://") != NULL)
+                {
+                    strncpy(full, location->area->ambient_sound, sizeof(full)-1);
+                    full[sizeof(full)-1] = '\0';
+                }
+                else
+                {
+                    snprintf(full, sizeof(full), "%s%s",
+                             base,
+                             (location->area->ambient_sound[0] == '/')
+                               ? location->area->ambient_sound + 1
+                               : location->area->ambient_sound);
+                }
+
+                sprintf(buf, "Area ambience: {G%s{x\n\rArea ambience volume: {W%d{x\n\r",
+                        full, location->area->ambient_volume);
+                strcat(buf1, buf);
+            }
+            else
+            {
+                strcat(buf1, "Area ambience: {Rnone{x\n\r");
+            }
+
+            /* ----- Sector default ambience (fallback shown for visibility) ----- */
+            {
+                const sector_ambience_t *sa = sector_ambience_for(location->sector_type);
+                if (sa)
+                {
+                    if (strstr(sa->name, "://") != NULL)
+                    {
+                        strncpy(full_sector, sa->name, sizeof(full_sector)-1);
+                        full_sector[sizeof(full_sector)-1] = '\0';
+                    }
+                    else
+                    {
+                        snprintf(full_sector, sizeof(full_sector), "%s%s",
+                                 base,
+                                 (sa->name[0] == '/') ? sa->name + 1 : sa->name);
+                    }
+
+                    sprintf(buf, "Sector default ambience: {G%s{x\n\rSector default volume: {W%d{x\n\r",
+                            full_sector, sa->volume);
+                    strcat(buf1, buf);
+                }
+                else
+                {
+                    strcat(buf1, "Sector default ambience: {Rnone{x\n\r");
+                }
+            }
+
+            /* ----- Effective ambience line (room > area > sector > none) ----- */
+            {
+                const char *eff_src  = NULL;
+                const char *eff_name = NULL;
+                int         eff_vol  = 0;
+
+                if (location->ambient_sound && *location->ambient_sound && location->ambient_volume > 0)
+                {
+                    eff_src  = "room";
+                    eff_name = location->ambient_sound;
+                    eff_vol  = location->ambient_volume;
+                }
+                else if (location->area->ambient_sound && *location->area->ambient_sound && location->area->ambient_volume > 0)
+                {
+                    eff_src  = "area";
+                    eff_name = location->area->ambient_sound;
+                    eff_vol  = location->area->ambient_volume;
+                }
+                else
+                {
+                    const sector_ambience_t *sa = sector_ambience_for(location->sector_type);
+                    if (sa)
+                    {
+                        eff_src  = "sector";
+                        eff_name = sa->name;
+                        eff_vol  = sa->volume;
+                    }
+                }
+
+                if (eff_name)
+                {
+                    if (strstr(eff_name, "://") != NULL)
+                    {
+                        strncpy(full_effective, eff_name, sizeof(full_effective)-1);
+                        full_effective[sizeof(full_effective)-1] = '\0';
+                    }
+                    else
+                    {
+                        snprintf(full_effective, sizeof(full_effective), "%s%s",
+                                 base,
+                                 (eff_name[0] == '/') ? eff_name + 1 : eff_name);
+                    }
+
+                    sprintf(buf, "Effective ambience (%s): {G%s{x @ {W%d{x\n\r",
+                            eff_src, full_effective, eff_vol);
+                    strcat(buf1, buf);
+                }
+                else
+                {
+                    strcat(buf1, "Effective ambience: {Rnone{x\n\r");
+                }
+            }
+        }
+
+        /* ----- Weather ambience (rain / lightning) ---------------------- */
+
+                if (ch && ch->desc && ch->desc->pProtocol)
+                {
+                    protocol_t *p = ch->desc->pProtocol;
+                    if (p->MediaWeatherActive && p->MediaWeatherName && *p->MediaWeatherName)
+                    {
+                        char full_weather[MAX_STRING_LENGTH];
+                        const char *base = "https://www.dragons-domain.org/main/gui/custom/audio/";
+                        if (strstr(p->MediaWeatherName, "://") != NULL)
+                        {
+                            strncpy(full_weather, p->MediaWeatherName, sizeof(full_weather)-1);
+                            full_weather[sizeof(full_weather)-1] = '\0';
+                        }
+                        else
+                        {
+                            snprintf(full_weather, sizeof(full_weather), "%s%s",
+                                     base,
+                                     (p->MediaWeatherName[0] == '/')
+                                       ? p->MediaWeatherName + 1
+                                       : p->MediaWeatherName);
+                        }
+
+                        sprintf(buf,
+                            "Weather ambience: {G%s{x\n\rWeather ambience volume: {W%d{x\n\r",
+                            full_weather, p->MediaWeatherVol);
+                        strcat(buf1, buf);
+                    }
+                    else
+                    {
+                        strcat(buf1, "Weather ambience: {Rnone{x\n\r");
+                    }
+                }
+                else
+                {
+                    strcat(buf1, "Weather ambience: {Runknown{x\n\r");
+                }
+
+
+        /* -------------------------------------------------------------------- */
+
         if (location->room_flags)
         {
                 sprintf( buf, "Room flags (num): {W");
@@ -970,31 +1152,104 @@ void do_rstat( CHAR_DATA *ch, char *argument )
 
         for ( door = 0; door <= 5; door++ )
         {
-                EXIT_DATA *pexit;
+                EXIT_DATA *pexit = location->exit[door];
 
-                if ( ( pexit = location->exit[door] ))
+                if (pexit == NULL)
+                        continue;
+
+                /* Basic exit info */
+                sprintf(buf,
+                        "Door: {W%d{x [{G%-5s{x] To: {R%-5d{x Key: {Y%-5d{x Exit flags: {W%d{x\n\r",
+                        door,
+                        directions[door].name,
+                        pexit->to_room ? pexit->to_room->vnum : 0,
+                        pexit->key,
+                        pexit->exit_info);
+                strcat(buf1, buf);
+
+                if (pexit->keyword[0] != '\0' && pexit->description[0] != '\0')
                 {
-                        sprintf( buf,
-                                "Door: {W%d{x [{G%-5s{x] To: {R%-5d{x Key: {Y%-5d{x Exit flags: {W%d{x\n\r",
-                                door,
-                                directions[door].name,
-                                pexit->to_room ? pexit->to_room->vnum : 0,
-                                pexit->key,
-                                pexit->exit_info );
-
-                        strcat( buf1, buf );
-
-                        if ( pexit->keyword[0]    != '\0'
-                        &&  pexit->description[0] != '\0')
-                        {       sprintf( buf,
-                                "Keyword: {W%s{x  \n\rDescription: \n\r{c%s{x",
+                        sprintf(buf,
+                                "Keyword: {W%s{x\n\rDescription:\n\r{c%s{x",
                                 pexit->keyword,
-                                pexit->description[0] != '\0' ? pexit->description
-                                : "{c(none){x\n\r");
-                                strcat( buf1, buf );
+                                pexit->description);
+                        strcat(buf1, buf);
+                }
+
+                /* ---- Exit SFX (per-exit overrides + effective fallback) ---- */
+                {
+                        const char *open_name  = (pexit->sfx_open  && *pexit->sfx_open)  ? pexit->sfx_open  : NULL;
+                        const char *close_name = (pexit->sfx_close && *pexit->sfx_close) ? pexit->sfx_close : NULL;
+
+                        if (open_name || close_name)
+                        {
+                                int eff_open_vol  = (pexit->sfx_open_vol  > 0) ? pexit->sfx_open_vol  : 60;
+                                int eff_close_vol = (pexit->sfx_close_vol > 0) ? pexit->sfx_close_vol : 55;
+
+                                sprintf(buf,
+                                        "Door SFX (open):  {G%s{x  vol: {W%d{x\n\r",
+                                        open_name ? open_name : "none",
+                                        eff_open_vol);
+                                strcat(buf1, buf);
+
+                                sprintf(buf,
+                                        "Door SFX (close): {G%s{x  vol: {W%d{x\n\r",
+                                        close_name ? close_name : "none",
+                                        eff_close_vol);
+                                strcat(buf1, buf);
+                        }
+                        else
+                        {
+                                sprintf(buf,
+                                        "Door SFX: {Rnone{x → effective open={W%s{x @ {W%d{x, close={W%s{x @ {W%d{x}\n\r",
+                                        "sfx.door.open.generic", 60,
+                                        "sfx.door.close.generic", 55);
+                                strcat(buf1, buf);
+                        }
+                }
+
+                /* ---- Mirror side (other room’s exit, with fallback) ---- */
+                if (pexit->to_room)
+                {
+                        int rev = directions[door].reverse;
+                        if (rev >= 0 && rev <= 5)
+                        {
+                                EXIT_DATA *prev = pexit->to_room->exit[rev];
+                                if (prev)
+                                {
+                                        const char *m_open  = (prev->sfx_open  && *prev->sfx_open)  ? prev->sfx_open  : NULL;
+                                        const char *m_close = (prev->sfx_close && *prev->sfx_close) ? prev->sfx_close : NULL;
+
+                                        if (m_open || m_close)
+                                        {
+                                                int eff_mopen_vol  = (prev->sfx_open_vol  > 0) ? prev->sfx_open_vol  : 60;
+                                                int eff_mclose_vol = (prev->sfx_close_vol > 0) ? prev->sfx_close_vol : 55;
+
+                                                sprintf(buf,
+                                                        "\n\rMirror SFX (open):  {G%s{x  vol: {W%d{x\n\r",
+                                                        m_open ? m_open : "none",
+                                                        eff_mopen_vol);
+                                                strcat(buf1, buf);
+
+                                                sprintf(buf,
+                                                        "\n\rMirror SFX (close): {G%s{x  vol: {W%d{x\n\r",
+                                                        m_close ? m_close : "none",
+                                                        eff_mclose_vol);
+                                                strcat(buf1, buf);
+                                        }
+                                        else
+                                        {
+                                                sprintf(buf,
+                                                        "\n\rMirror SFX: {Rnone{x → effective open={W%s{x @ {W%d{x, close={W%s{x @ {W%d{x}\n\r",
+                                                        "sfx.door.open.generic", 60,
+                                                        "sfx.door.close.generic", 55);
+                                                strcat(buf1, buf);
+                                        }
+                                }
                         }
                 }
         }
+
 
         send_to_char( buf1, ch );
         return;
@@ -6827,6 +7082,440 @@ void do_guide( CHAR_DATA *ch, char *argument )
 
         save_char_obj( victim );
 }
+
+/* Area ambience: set/off + preview */
+void do_aambient( CHAR_DATA *ch, char *argument )
+{
+    char arg1[MAX_INPUT_LENGTH], arg2[MAX_INPUT_LENGTH];
+    char buf [MAX_STRING_LENGTH];
+    int  volume = 25;
+
+    if (!ch || !ch->in_room || !ch->in_room->area) return;
+
+    argument = one_argument(argument, arg1);
+    argument = one_argument(argument, arg2);
+
+    /* Show usage/current */
+    if (arg1[0] == '\0')
+    {
+        send_to_char("Usage: aambient off | aambient <file> [volume 1-100]\n\r", ch);
+
+        if (ch->in_room->area->ambient_sound && *ch->in_room->area->ambient_sound)
+        {
+            sprintf(buf, "Area current: %s @ %d\n\r",
+                    ch->in_room->area->ambient_sound,
+                    UMAX(1, ch->in_room->area->ambient_volume));
+            send_to_char(buf, ch);
+        }
+        return;
+    }
+
+    /* Constants for keys */
+    #define KEY_AREA "dd.ambient.area"
+    #define KEY_ROOM "dd.ambient.room"
+
+    /* Turn OFF */
+    if (!str_cmp(arg1, "off"))
+    {
+        if (ch->in_room->area->ambient_sound) {
+            free_string(ch->in_room->area->ambient_sound);
+            ch->in_room->area->ambient_sound = NULL;
+        }
+        ch->in_room->area->ambient_volume = 0;
+
+        if (ch->desc && ch->desc->pProtocol && ch->desc->pProtocol->bGMCP)
+        {
+            protocol_t *proto = ch->desc->pProtocol;
+
+            /* Stop the AREA lane (safe even if not playing) */
+            GMCP_Media_Stop(ch->desc, "\"key\":\"" KEY_AREA "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
+
+            if (proto) {
+                if (proto->MediaAreaName) { free_string(proto->MediaAreaName); proto->MediaAreaName = NULL; }
+                proto->MediaAreaVol    = 0;
+                proto->MediaAreaActive = FALSE;
+            }
+            /* Do NOT touch room lane here. */
+        }
+
+        send_to_char("Area ambience cleared.\n\r", ch);
+        return;
+    }
+
+    /* Set filename + optional volume */
+    if (arg2[0] != '\0') volume = URANGE(1, atoi(arg2), 100);
+
+    if (ch->in_room->area->ambient_sound)
+        free_string(ch->in_room->area->ambient_sound);
+
+    ch->in_room->area->ambient_sound  = str_dup(arg1);
+    ch->in_room->area->ambient_volume = volume;
+
+    send_to_char("Area ambience set.\n\r", ch);
+
+    /* Preview only if the room itself does NOT have a room override */
+    if (ch->desc
+        && ch->desc->pProtocol && ch->desc->pProtocol->bGMCP
+        && (!ch->in_room->ambient_sound || !*ch->in_room->ambient_sound || ch->in_room->ambient_volume <= 0))
+    {
+        protocol_t *proto = ch->desc->pProtocol;
+
+        GMCP_Media_Default_Ensure(ch->desc, "https://www.dragons-domain.org/main/gui/custom/audio/");
+
+        /* Start/continue area lane */
+        {
+            char opts[256];
+            snprintf(opts, sizeof(opts),
+                     "\"type\":\"music\",\"tag\":\"environment\",\"key\":\"" KEY_AREA "\"," \
+                     "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":1200",
+                     volume);
+            GMCP_Media_Play(ch->desc, ch->in_room->area->ambient_sound, opts);
+        }
+
+        if (proto) {
+            if (proto->MediaAreaName) free_string(proto->MediaAreaName);
+            proto->MediaAreaName   = str_dup(ch->in_room->area->ambient_sound);
+            proto->MediaAreaVol    = volume;
+            proto->MediaAreaActive = TRUE;
+        }
+    }
+
+    #undef KEY_AREA
+    #undef KEY_ROOM
+}
+
+
+void do_rambient( CHAR_DATA *ch, char *argument )
+{
+    char arg1[MAX_INPUT_LENGTH], arg2[MAX_INPUT_LENGTH];
+    char buf [MAX_STRING_LENGTH];
+    int  volume = 25;
+
+    if (!ch || !ch->in_room) return;
+
+    argument = one_argument(argument, arg1);
+    argument = one_argument(argument, arg2);
+
+    /* Show usage/current */
+    if (arg1[0] == '\0')
+    {
+        send_to_char("Usage: rambient off | rambient <<file> [volume 1-100]\n\r", ch);
+
+        if (ch->in_room->ambient_sound && *ch->in_room->ambient_sound)
+        {
+            sprintf(buf, "Room current: %s @ %d\n\r",
+                    ch->in_room->ambient_sound,
+                    UMAX(1, ch->in_room->ambient_volume));
+            send_to_char(buf, ch);
+        }
+        return;
+    }
+
+    /* Constants for keys */
+    #define KEY_AREA "dd.ambient.area"
+    #define KEY_ROOM "dd.ambient.room"
+
+    /* Turn OFF */
+    if (!str_cmp(arg1, "off"))
+    {
+        if (ch->in_room->ambient_sound) {
+            free_string(ch->in_room->ambient_sound);
+            ch->in_room->ambient_sound = NULL;
+        }
+        ch->in_room->ambient_volume = 0;
+
+        if (ch->desc && ch->desc->pProtocol && ch->desc->pProtocol->bGMCP)
+        {
+            protocol_t *proto = ch->desc->pProtocol;
+
+            /* Stop the ROOM lane unconditionally (by key). */
+            GMCP_Media_Stop(ch->desc, "\"key\":\"" KEY_ROOM "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
+
+            if (proto) {
+                if (proto->MediaRoomName) { free_string(proto->MediaRoomName); proto->MediaRoomName = NULL; }
+                proto->MediaRoomVol    = 0;
+                proto->MediaRoomActive = FALSE;
+            }
+
+            /* Resume area ambience immediately if defined for this area */
+            if (ch->in_room->area
+                && ch->in_room->area->ambient_sound && *ch->in_room->area->ambient_sound
+                && ch->in_room->area->ambient_volume > 0)
+            {
+                GMCP_Media_Default_Ensure(ch->desc, "https://www.dragons-domain.org/main/gui/custom/audio/");
+
+                {
+                    char opts[256];
+                    snprintf(opts, sizeof(opts),
+                             "\"type\":\"music\",\"tag\":\"environment\",\"key\":\"" KEY_AREA "\"," \
+                             "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":1200",
+                             URANGE(1, ch->in_room->area->ambient_volume, 100));
+                    GMCP_Media_Play(ch->desc, ch->in_room->area->ambient_sound, opts);
+                }
+
+                if (proto) {
+                    if (proto->MediaAreaName) free_string(proto->MediaAreaName);
+                    proto->MediaAreaName   = str_dup(ch->in_room->area->ambient_sound);
+                    proto->MediaAreaVol    = URANGE(1, ch->in_room->area->ambient_volume, 100);
+                    proto->MediaAreaActive = TRUE;
+                }
+            }
+        }
+
+        send_to_char("Room ambience cleared.\n\r", ch);
+        return;
+    }
+
+    /* Set filename + optional volume */
+    if (arg2[0] != '\0') volume = URANGE(1, atoi(arg2), 100);
+
+    if (ch->in_room->ambient_sound)
+        free_string(ch->in_room->ambient_sound);
+    ch->in_room->ambient_sound  = str_dup(arg1);
+    ch->in_room->ambient_volume = volume;
+
+    send_to_char("Room ambience set; previewing...\n\r", ch);
+
+    /* Preview: play room lane and fade out the area lane */
+    if (ch->desc && ch->desc->pProtocol && ch->desc->pProtocol->bGMCP)
+    {
+        protocol_t *proto = ch->desc->pProtocol;
+
+        GMCP_Media_Default_Ensure(ch->desc, "https://www.dragons-domain.org/main/gui/custom/audio/");
+
+        /* Stop area lane (if any) so room clearly overrides it) */
+        GMCP_Media_Stop(ch->desc, "\"key\":\"" KEY_AREA "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
+        if (proto) {
+            if (proto->MediaAreaName) { free_string(proto->MediaAreaName); proto->MediaAreaName = NULL; }
+            proto->MediaAreaVol    = 0;
+            proto->MediaAreaActive = FALSE;
+        }
+
+        /* Play/continue room lane */
+        {
+            char opts[256];
+            snprintf(opts, sizeof(opts),
+                     "\"type\":\"music\",\"tag\":\"environment\",\"key\":\"" KEY_ROOM "\"," \
+                     "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":1200",
+                     volume);
+            GMCP_Media_Play(ch->desc, ch->in_room->ambient_sound, opts);
+        }
+
+        if (proto) {
+            if (proto->MediaRoomName) free_string(proto->MediaRoomName);
+            proto->MediaRoomName   = str_dup(ch->in_room->ambient_sound);
+            proto->MediaRoomVol    = volume;
+            proto->MediaRoomActive = TRUE;
+        }
+    }
+
+    #undef KEY_AREA
+    #undef KEY_ROOM
+}
+
+void do_mcmp( CHAR_DATA *ch, char *argument )
+{
+    if (!ch || !ch->desc) return;
+
+    if (!ch->desc->pProtocol
+     || !ch->desc->pProtocol->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA]) {
+        send_to_char("Your client hasn’t advertised Client.Media support.\n\r", ch);
+        return;
+    }
+
+    /* Lane keys must match char_to_room logic */
+    #define KEY_AREA "dd.ambient.area"
+    #define KEY_ROOM "dd.ambient.room"
+
+    char arg1[MAX_INPUT_LENGTH] = {0};
+    char arg2[MAX_INPUT_LENGTH] = {0};
+    char arg3[MAX_INPUT_LENGTH] = {0};
+
+    argument = one_argument(argument, arg1);
+    argument = one_argument(argument, arg2);
+    argument = one_argument(argument, arg3);
+
+    if (arg1[0] == '\0') {
+        send_to_char("Usage:\n\r", ch);
+        send_to_char("  mcmp default <url>\n\r", ch);
+        send_to_char("  mcmp area  <<file> [volume 1-100]\n\r", ch);
+        send_to_char("  mcmp room  <<file> [volume 1-100]\n\r", ch);
+        send_to_char("  mcmp music <<file> [volume 1-100]\n\r", ch);
+        send_to_char("  mcmp test  <<file> [volume 1-100]\n\r", ch);
+        send_to_char("  mcmp stop [all|area|room|sound|music] [fade [milliseconds]]\n\r", ch);
+        send_to_char("  mcmp status\n\r", ch);
+        goto mcmp_done;
+    }
+
+    /* Set default base URL */
+    if (!str_cmp(arg1, "default")) {
+        const char *url = NULL;
+        if (arg2[0] != '\0') url = arg2;
+        else if (argument && *argument) url = argument;
+        if (!url || !*url) {
+            send_to_char("Provide a URL, e.g. mcmp default https://example.com/media/\n\r", ch);
+            goto mcmp_done;
+        }
+        GMCP_Media_Default(ch->desc, url);
+        send_to_char("MCMP: Default URL set.\n\r", ch);
+        goto mcmp_done;
+    }
+
+    /* Quick state check */
+    if (!str_cmp(arg1, "status")) {
+        protocol_t *p = ch->desc->pProtocol;
+        char buf[MAX_STRING_LENGTH];
+        sprintf(buf,
+            "Area:  active=%s  vol=%3d  name=%s\n\r"
+            "Room:  active=%s  vol=%3d  name=%s\n\r",
+            (p && p->MediaAreaActive) ? "yes" : "no ",
+            (p ? p->MediaAreaVol : 0),
+            (p && p->MediaAreaName) ? p->MediaAreaName : "(none)",
+            (p && p->MediaRoomActive) ? "yes" : "no ",
+            (p ? p->MediaRoomVol : 0),
+            (p && p->MediaRoomName) ? p->MediaRoomName : "(none)");
+        send_to_char(buf, ch);
+        goto mcmp_done;
+    }
+
+    /* Ensure default URL for your media (idempotent) */
+#ifdef GMCP_Media_Default_Ensure
+    GMCP_Media_Default_Ensure(ch->desc, "https://www.dragons-domain.org/main/gui/custom/audio/");
+#else
+    GMCP_Media_Default(ch->desc, "https://www.dragons-domain.org/main/gui/custom/audio/");
+#endif
+
+    /* ----- PLAY helpers ----- */
+    if (!str_cmp(arg1, "area") || !str_cmp(arg1, "room")
+     || !str_cmp(arg1, "music") || !str_cmp(arg1, "test"))
+    {
+        const char *name = arg2;
+        int volume = 35;
+
+        if (!name || !*name) {
+            send_to_char("Provide a file name.\n\r", ch);
+            goto mcmp_done;
+        }
+
+        if (arg3[0] != '\0') volume = URANGE(1, atoi(arg3), 100);
+        else if (argument && *argument) volume = URANGE(1, atoi(argument), 100);
+
+        if (!str_cmp(arg1, "area")) {
+            char opts[256];
+            snprintf(opts, sizeof(opts),
+                "\"type\":\"music\",\"tag\":\"environment\",\"key\":\"" KEY_AREA "\","
+                "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":600",
+                volume);
+            GMCP_Media_Play(ch->desc, name, opts);
+            send_to_char("MCMP: area lane play sent.\n\r", ch);
+            goto mcmp_done;
+        }
+
+        if (!str_cmp(arg1, "room")) {
+            char opts[256];
+            snprintf(opts, sizeof(opts),
+                "\"type\":\"music\",\"tag\":\"environment\",\"key\":\"" KEY_ROOM "\","
+                "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":600",
+                volume);
+            GMCP_Media_Play(ch->desc, name, opts);
+            send_to_char("MCMP: room lane play sent.\n\r", ch);
+            goto mcmp_done;
+        }
+
+        if (!str_cmp(arg1, "music")) {
+            char opts[256];
+            snprintf(opts, sizeof(opts),
+                "\"type\":\"music\",\"tag\":\"test\",\"volume\":%d,\"loops\":-1,\"continue\":true",
+                volume);
+            GMCP_Media_Play(ch->desc, name, opts);
+            send_to_char("MCMP: generic music play sent.\n\r", ch);
+            goto mcmp_done;
+        }
+
+        /* "test" one-shot sound */
+        {
+            char opts[128];
+            snprintf(opts, sizeof(opts),
+                "\"type\":\"sound\",\"tag\":\"test\",\"volume\":%d",
+                volume);
+            GMCP_Media_Play(ch->desc, name, opts);
+            send_to_char("MCMP: sound play sent.\n\r", ch);
+            goto mcmp_done;
+        }
+    }
+
+    /* ----- STOP helpers ----- */
+    if (!str_cmp(arg1, "stop"))
+    {
+        /* mcmp stop [all|area|room|sound|music] [fade [ms]] */
+        char target[MAX_INPUT_LENGTH] = {0};
+        int have_target = 0;
+        if (arg2[0] != '\0' && str_cmp(arg2, "fade") && str_cmp(arg2, "fadeaway")) {
+            strncpy(target, arg2, sizeof(target)-1);
+            have_target = 1;
+        }
+
+        /* parse optional fade */
+        int fadeout = -1;
+        if (!str_cmp(arg2, "fade") || !str_cmp(arg2, "fadeaway")) {
+            fadeout = URANGE(0, (arg3[0] != '\0') ? atoi(arg3) : 2000, 60000);
+        } else if (!str_cmp(arg3, "fade") || !str_cmp(arg3, "fadeaway")) {
+            fadeout = URANGE(0, (argument && *argument) ? atoi(argument) : 2000, 60000);
+        }
+
+        char base[120] = {0};
+        if (have_target) {
+            if (!str_cmp(target, "area"))
+                snprintf(base, sizeof(base), "\"key\":\"%s\",\"type\":\"music\"", KEY_AREA);
+            else if (!str_cmp(target, "room"))
+                snprintf(base, sizeof(base), "\"key\":\"%s\",\"type\":\"music\"", KEY_ROOM);
+            else if (!str_cmp(target, "music"))
+                snprintf(base, sizeof(base), "\"type\":\"music\"");
+            else if (!str_cmp(target, "sound"))
+                snprintf(base, sizeof(base), "\"type\":\"sound\"");
+            /* else: unknown -> treat as 'all' */
+        }
+
+        char opts[200] = {0};
+        if (fadeout >= 0) {
+            if (base[0] != '\0')
+                snprintf(opts, sizeof(opts), "%s,\"fadeaway\":true,\"fadeout\":%d", base, fadeout);
+            else
+                snprintf(opts, sizeof(opts), "\"fadeaway\":true,\"fadeout\":%d", fadeout);
+        } else {
+            if (base[0] != '\0')
+                snprintf(opts, sizeof(opts), "%s", base);
+            else
+                opts[0] = '\0'; /* stop all immediately */
+        }
+
+        GMCP_Media_Stop(ch->desc, (opts[0] != '\0') ? opts : NULL);
+        send_to_char("MCMP: stop sent.\n\r", ch);
+        goto mcmp_done;
+    }
+
+    /* Fallback: quick sound test */
+    {
+        int volume = 35;
+        if (arg2[0] != '\0') volume = URANGE(1, atoi(arg2), 100);
+        else if (argument && *argument) volume = URANGE(1, atoi(argument), 100);
+
+        char opts[128];
+        snprintf(opts, sizeof(opts),
+            "\"type\":\"sound\",\"tag\":\"test\",\"volume\":%d",
+            volume);
+        GMCP_Media_Play(ch->desc, arg1, opts);
+        send_to_char("MCMP: fallback sound play sent.\n\r", ch);
+    }
+
+    mcmp_done:
+
+    #undef KEY_AREA
+    #undef KEY_ROOM
+    return;
+}
+
+
 
 void do_bitsum(CHAR_DATA *ch, char *argument)
 {

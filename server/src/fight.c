@@ -3081,6 +3081,7 @@ void raw_kill (CHAR_DATA *ch, CHAR_DATA *victim, bool corpse)
 
         victim->pcdata->killed += 1;
         save_char_obj(victim);
+
 }
 
 /*

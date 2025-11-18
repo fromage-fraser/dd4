@@ -1,15 +1,6 @@
 {
   "immortals": [
-    {
-      "name": "Owl",
-      "title": "",
-      "race": "Human  ",
-      "level": 106,
-      "class": "GOD",
-      "clan": "",
-      "clanTitle": "",
-      "flags": []
-    }
+
   ],
   "heroes": [
 
@@ -17,5 +8,5 @@
   "mortals": [
 
   ],
-  "stats": {"current": 1, "max_session": 2}
+  "stats": {"current": 0, "max_session": 1}
 }

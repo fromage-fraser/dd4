@@ -832,8 +832,9 @@ a small wooden chest~
 25 0 0
 E
 chest~
-The chest is small and make of a dark gnarled wood. Its latch is fastened
-by a steel padlock.~
+The chest is small and made of a dark gnarled wood. Its latch is fastened by a
+steel padlock.
+~
 #20610
 key padlock small~
 a padlock key~
@@ -845,7 +846,8 @@ A small key lies here.~
 E
 small padlock key~
 This key looks of a type that opens padlocks, such as might be used to
-fasten boxes and chests.~
+fasten boxes and chests.
+~
 #20611
 gold coins money pile~
 gold coins~
@@ -864,7 +866,8 @@ A silver flask containing a blue liquid lies here.~
 3 0 0
 E
 silver flask blue liquid potion~
-The flask contains a strong-smelling blue liquid. ~
+The flask contains a strong-smelling blue liquid.
+~
 #20613
 bag mixed herbs~
 a bag of mixed herbs~
@@ -875,7 +878,8 @@ A small bag of mixed herbs lies at your feet.~
 2 0 0
 E
 bag mixed herbs~
-This bag contains a variety of edible herbs.~
+This bag contains a variety of edible herbs.
+~
 #20614
 white robe~
 a white robe~
@@ -4623,6 +4627,10 @@ room and you feel all your worldly troubles melt away.
 0 4|1024|16384 9
 S
 #0
+
+#ROOMS_AMBIENT
+20695 ambient/room/20695.mp3 15
+$
 
 
 #RESETS

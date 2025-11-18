@@ -3,6 +3,8 @@
 
 #AREA_SPECIAL
 safe
+ambient ambient/area/purgator.mp3
+ambient_vol 25
 $
 
 #RECALL
@@ -104,7 +106,7 @@ Clouds of white mist fill the whole place.  There's no telling where you
 are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. Better find your corpse fast!
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D4
 ~
 ~
@@ -121,7 +123,7 @@ Clouds of white mist fill the whole place.  There's no telling where you
 are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -154,7 +156,7 @@ Clouds of white mist fill the whole place.  There's no telling where you
 are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -187,7 +189,7 @@ Clouds of white mist fill the whole place.  There's no telling where you
 are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -220,7 +222,7 @@ Clouds of white mist fill the whole place.  There's no telling where you
 are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -253,7 +255,7 @@ Clouds of white mist fill the whole place.  There's no telling where you
 are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -286,7 +288,7 @@ Clouds of white mist fill the whole place.  There's no telling where you
 are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -319,7 +321,7 @@ Clouds of white mist fill the whole place.  There's no telling where you
 are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -352,7 +354,7 @@ Clouds of white mist fill the whole place.  There's no telling where you
 are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -385,7 +387,7 @@ Clouds of white mist fill the whole place.  There's no telling where you
 are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -418,7 +420,7 @@ Clouds of white mist fill the whole place.  There's no telling where you
 are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -451,7 +453,7 @@ Clouds of white mist fill the whole place.  There's no telling where you
 are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -484,7 +486,7 @@ Clouds of white mist fill the whole place.  There's no telling where you
 are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -518,7 +520,7 @@ are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 A small note is posted here.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -558,7 +560,7 @@ Clouds of white mist fill the whole place.  There's no telling where you
 are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -591,7 +593,7 @@ Clouds of white mist fill the whole place.  There's no telling where you
 are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -624,7 +626,7 @@ Clouds of white mist fill the whole place.  There's no telling where you
 are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -657,7 +659,7 @@ Clouds of white mist fill the whole place.  There's no telling where you
 are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -690,7 +692,7 @@ Clouds of white mist fill the whole place.  There's no telling where you
 are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -723,7 +725,7 @@ Clouds of white mist fill the whole place.  There's no telling where you
 are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -757,7 +759,7 @@ are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 A small note is posted here.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -803,7 +805,7 @@ time coz' you're still cold, hungry and very naked ....but most importantly,
 your corpse is rotting!
 There is a note posted here.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -831,7 +833,7 @@ Clouds of white mist fill the whole place.  There's no telling where you
 are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -864,7 +866,7 @@ Clouds of white mist fill the whole place.  There's no telling where you
 are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -898,7 +900,7 @@ are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 A small note is posted here.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 D0
 ~
 ~
@@ -952,7 +954,7 @@ you were alive.  Overwhelmed by anxiety and tears flowing, you beg for mercy
 and search desperately for your corpse.  Good Luck!
      A sign is posted here.
 ~
-4 2|8|1024|8192 0
+4 8|1024|8192 0
 E
 sign~
 The sign reads:
