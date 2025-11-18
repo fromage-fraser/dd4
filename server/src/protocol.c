@@ -371,6 +371,24 @@ protocol_t *ProtocolCreate( void )
 
         for ( i = 0; i < GMCP_PACKAGE_MAX; i++ )
                 pProtocol->bGMCPUpdatePackage[i] = 0;
+
+        /* Sound stuff */
+
+        pProtocol->bClientMediaDefaultSent = false;
+        pProtocol->MediaAmbientName   = NULL;
+        pProtocol->MediaAmbientVol    = 0;
+        pProtocol->MediaAmbientActive = false;
+        pProtocol->MediaSuppress      = FALSE;
+
+        pProtocol->MediaWeatherName   = NULL;
+        pProtocol->MediaWeatherVol    = 0;
+        pProtocol->MediaWeatherActive = FALSE;
+
+        /* Media lane state (area/room already here; add sector as well) */
+        pProtocol->MediaAreaName    = NULL; pProtocol->MediaAreaVol    = 0; pProtocol->MediaAreaActive    = FALSE;
+        pProtocol->MediaRoomName    = NULL; pProtocol->MediaRoomVol    = 0; pProtocol->MediaRoomActive    = FALSE;
+        pProtocol->MediaSectorName  = NULL; pProtocol->MediaSectorVol  = 0; pProtocol->MediaSectorActive  = FALSE;
+
         /*************** END GMCP ***************/
 
    return pProtocol;
@@ -395,7 +413,21 @@ void ProtocolDestroy( protocol_t *apProtocol )
                 free( apProtocol->GMCPVariable[i] );
         /*************** END GMCP ***************/
 
-   free(apProtocol);
+    /* Sound stuff */
+    if (apProtocol->MediaAmbientName)
+    {
+        free_string(apProtocol->MediaAmbientName);
+        apProtocol->MediaAmbientName = NULL;
+    }
+
+    if (apProtocol->MediaWeatherName)
+        free_string(apProtocol->MediaWeatherName);
+
+    if (apProtocol->MediaAreaName)   { free_string(apProtocol->MediaAreaName);   apProtocol->MediaAreaName   = NULL; }
+    if (apProtocol->MediaRoomName)   { free_string(apProtocol->MediaRoomName);   apProtocol->MediaRoomName   = NULL; }
+    if (apProtocol->MediaSectorName) { free_string(apProtocol->MediaSectorName); apProtocol->MediaSectorName = NULL; }
+
+    free(apProtocol);
 }
 
 void ProtocolInput( descriptor_t *apDescriptor, char *apData, int aSize, char *apOut )
@@ -3055,6 +3087,7 @@ const struct gmcp_support_struct bGMCPSupportTable[GMCP_SUPPORT_MAX+1] =
 {
         { GMCP_SUPPORT_CHAR,            "Char"                      },
         { GMCP_SUPPORT_ROOM,            "Room"                      },
+        { GMCP_SUPPORT_CLIENT_MEDIA,    "Client.Media"              },
         { GMCP_SUPPORT_MAX,             NULL                        }
 
 };
@@ -3733,6 +3766,79 @@ void WriteGMCP( descriptor_t *apDescriptor, GMCP_PACKAGE package )
         return;
 }
 
+void GMCPEmit(descriptor_t *d, const char *module, const char *json_body)
+{
+    if (!d || !d->pProtocol || !d->pProtocol->bGMCP) return;
+
+    /* Only send if client said it supports Client.Media when we’re using it */
+    /* (Callers for other modules can skip this check or add their own.) */
+
+    char buf[MAX_PROTOCOL_BUFFER];
+#ifndef COLOR_CODE_FIX
+    /* e.g. "Client.Media.Play { ... }" */
+    snprintf(buf, sizeof(buf), "%s%s %s%s",
+             (char*)iac_sb_gmcp, module,
+             (json_body && *json_body) ? json_body : "{}", (char*)iac_se);
+#else
+    /* If your build uses '{' as a colour code and COLOR_CODE_FIX is enabled,
+       you can choose to wrap the body the same way other GMCP senders do. */
+    snprintf(buf, sizeof(buf), "%s%s {{ %s }%s",
+             (char*)iac_sb_gmcp, module,
+             (json_body && *json_body) ? json_body : "", (char*)iac_se);
+#endif
+    Write(d, buf);
+}
+
+void GMCP_Media_Default(descriptor_t *d, const char *base_url)
+{
+    if (!d || !d->pProtocol || !d->pProtocol->bGMCP) return;
+    if (!d->pProtocol->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA]) return;
+    char body[MAX_PROTOCOL_BUFFER];
+    snprintf(body, sizeof(body), "{\"url\":\"%s\"}", base_url);
+    GMCPEmit(d, "Client.Media.Default", body);
+}
+
+void GMCP_Media_Default_Ensure(descriptor_t *d, const char *base_url)
+{
+    if (!d || !d->pProtocol) return;
+    if (!d->pProtocol->bGMCP) return;
+    if (!d->pProtocol->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA]) return;
+    if (d->pProtocol->bClientMediaDefaultSent) return;
+
+    /* Send once, then latch */
+    GMCP_Media_Default(d, base_url);
+    d->pProtocol->bClientMediaDefaultSent = true;
+}
+
+void GMCP_Media_Play(descriptor_t *d, const char *name, const char *opts_json)
+{
+    if (!d || !d->pProtocol || !d->pProtocol->bGMCP) return;
+    if (!d->pProtocol->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA]) return;
+
+    char body[MAX_PROTOCOL_BUFFER];
+    if (opts_json && *opts_json)
+        /* opts_json should be a comma-separated list of extra "k":v pairs */
+        snprintf(body, sizeof(body), "{ \"name\":\"%s\", %s }", name, opts_json);
+    else
+        snprintf(body, sizeof(body), "{ \"name\":\"%s\" }", name);
+
+    GMCPEmit(d, "Client.Media.Play", body);
+}
+
+void GMCP_Media_Stop(descriptor_t *d, const char *criteria_json)
+{
+    if (!d || !d->pProtocol || !d->pProtocol->bGMCP) return;
+    if (!d->pProtocol->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA]) return;
+
+    char body[MAX_PROTOCOL_BUFFER];
+    if (criteria_json && *criteria_json)
+        snprintf(body, sizeof(body), "{ %s }", criteria_json);
+    else
+        snprintf(body, sizeof(body), "{}"); /* empty body = stop ALL media */
+
+    GMCPEmit(d, "Client.Media.Stop", body);
+}
+
 void SendUpdatedGMCP( descriptor_t *apDescriptor )
 {
         int i;
@@ -3862,4 +3968,98 @@ char *GMCPStrip( char *text )
 
         return buf;
 }
+
+/* --- helpers for room-wide media control on a channel --- */
+
+static void media_for_each_room_char( ROOM_INDEX_DATA *room, void (*fn)(descriptor_t *d, void *ctx), void *ctx )
+{
+        CHAR_DATA *rch;
+        if (room == NULL)
+        {
+                return;
+        }
+
+        for (rch = room->people; rch; rch = rch->next_in_room)
+        {
+                descriptor_t *d;
+
+                if (rch->deleted)
+                {
+                        continue;
+                }
+                d = rch->desc;
+                if (d == NULL)
+                {
+                        continue;
+                }
+                fn( d, ctx );
+        }
+}
+
+typedef struct
+{
+        const char *channel;
+} stop_ctx_t;
+
+static void media_stop_cb( descriptor_t *d, void *vctx )
+{
+        stop_ctx_t *ctx = (stop_ctx_t *)vctx;
+        char json[128];
+
+        if (ctx->channel == NULL || ctx->channel[0] == '\0')
+        {
+                return;
+        }
+
+        /* Stop everything currently playing on this channel for this descriptor */
+        snprintf( json, sizeof(json), "{\"channel\":\"%s\"}", ctx->channel );
+        GMCP_Media_Stop( d, json );
+}
+
+void media_stop_room_channel( ROOM_INDEX_DATA *room, const char *channel )
+{
+        stop_ctx_t ctx;
+        ctx.channel = channel;
+        media_for_each_room_char( room, media_stop_cb, &ctx );
+}
+
+typedef struct
+{
+        const char *file;
+        const char *channel;
+        int         vol;
+        bool_t      replace;    /* if true, hint client to pre-empt */
+} play_ctx_t;
+
+static void media_play_cb( descriptor_t *d, void *vctx )
+{
+        play_ctx_t *ctx = (play_ctx_t *)vctx;
+        char opts[192];
+
+        /* Ensure the client knows our defaults/paths if you use them */
+        GMCP_Media_Default_Ensure( d, NULL );
+
+        /* Build options: channel + volume + replace:true */
+        snprintf( opts, sizeof(opts),
+                  "{\"channel\":\"%s\",\"volume\":%d%s}",
+                  (ctx->channel && *ctx->channel) ? ctx->channel : "sfx",
+                  ctx->vol,
+                  ctx->replace ? ",\"replace\":true" : "" );
+
+        GMCP_Media_Play( d, ctx->file, opts );
+}
+
+/* Play a file to everyone in room on a channel, with optional replace */
+void media_play_room_file( ROOM_INDEX_DATA *room, const char *file, int vol, const char *channel, bool_t replace )
+{
+        play_ctx_t ctx;
+        ctx.file    = file;
+        ctx.channel = (channel && *channel) ? channel : "sfx";
+        ctx.vol     = vol;
+        ctx.replace = replace;
+        media_for_each_room_char( room, media_play_cb, &ctx );
+}
+
+/* If you also need to emit a registry key (not a raw file), do a similar helper that maps key->file then calls media_play_room_file. */
+
 /*************** END GMCP ***************/

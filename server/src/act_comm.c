@@ -197,6 +197,8 @@ void talk_channel ( CHAR_DATA *ch, char *argument, int channel, const char *verb
                         sprintf( buf2, "%s%s$R", color_table_8bit[get_colour_index_by_code(vch->colors[chan(channel)])].act_code, buf );
 
                         act( buf2, ch, argument, vch, TO_VICT );
+                        /* Play a channel notification sound for the recipient (if their settings allow). */
+                        media_notify_channel(vch, channel);
                         vch->position = position;
                 }
         }
@@ -1101,7 +1103,6 @@ void do_quit (CHAR_DATA *ch, char *argument)
                         send_to_char ("Wait until you have bought the item on auction.\n\r", ch);
                         return;
                 }
-
                 else if (ch == auction->seller)
                 {
                         send_to_char ("Wait until you have sold the item on auction.\n\r", ch);
@@ -1885,6 +1886,7 @@ void talk_auction (char *argument)
                         sprintf(buf, "%sAUCTION: $t$R",
                                 color_table_8bit[original->colors[COLOR_AUCTION]].act_code);
                         act(buf, original, argument, NULL, TO_CHAR);
+                        media_notify_channel(original, CHANNEL_AUCTION);
                 }
         }
 }

@@ -46,6 +46,7 @@ An area file contains the following sections:
     #OBJECTS
     #OBJECT_SETS
     #ROOMS
+    #ROOMS_AMBIENT
     #RESETS
     #GAMES
     #SHOPS
@@ -168,13 +169,16 @@ exp_mod NUMBER      An experience point modifier will be applied to all mobs
                     doubled, etc.
 reset_msg STRING    Reset message that will replace the default. Put a return at
                     the end of the line and terminate with a tilde (~).
+ambient FILE        Default area sound media file (relative path; no spaces).
+ambient_vol NUMBER  Default area media volume. 0 = off; 1..100 valid.
 
 An example #AREA_SPECIAL section follows:
 
 #AREA_SPECIAL
-exp_mod 120
 no_teleport
 no_quest
+ambient environment/insects.mp3
+ambient_vol 30
 reset_msg A fell wind blows through the forest.
 ~
 $
@@ -1468,6 +1472,41 @@ The mass of seaweed covers a huge cavemouth at the bottom of the bridge. It
 would be easy enough to clear it away and enter the cave.
 ~
 S
+
+
+
+=== The #ROOMS_AMBIENT section
+
+The section for adding any environmental sounds to rooms.  These instructions
+will override any area-wide (in #AREA_SPECIAL) or terrain-based environmental
+sounds/loops.
+
+The syntax of this section is:
+
+    #ROOMS_AMBIENT
+    {
+     <vnum:number>
+     <relative_filepath:string>
+     <volume:number>
+    }
+    #0
+
+The 'vnum' is the virtual number of the room.
+
+The 'relative_filepath' is the relative path to the room sound file.
+
+The 'volume' is the volume the file should be platyed at (0->100, 0 is muted).
+If volume is omitted, the default of 25 is used (server-configurable).
+
+The '$' at the end marks the end of this section.  It is not optional.
+
+This section must be declared after #ROOMS.
+
+An example section from the MUD:
+
+#ROOMS_AMBIENT
+3054 room/3054.mp3 35
+$
 
 
 

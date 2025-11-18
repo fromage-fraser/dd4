@@ -28,7 +28,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <stdarg.h>
 #include "merc.h"
+
 
 #if !defined( macintosh )
 extern  int     _filbuf         args( (FILE *) );
@@ -875,9 +877,11 @@ void    load_objects            args( ( FILE *fp ) );
 void    load_resets             args( ( FILE *fp ) );
 void    load_object_sets        args( ( FILE *fp ) );
 void    load_rooms              args( ( FILE *fp ) );
+void    load_exits_sfx          args( ( FILE *fp ) );
+void    load_rooms_ambient      args( ( FILE *fp ) );
 void    load_shops              args( ( FILE *fp ) );
 void    load_specials           args( ( FILE *fp ) );
-void	load_games	        args( ( FILE *fp ) );
+void	load_games	            args( ( FILE *fp ) );
 void    load_notes              args( ( void ) );
 void    load_down_time          args( ( void ) );
 void    fix_exits               args( ( void ) );
@@ -1041,32 +1045,36 @@ void boot_db( void )
 
                                 if ( word[0] == '$' )
                                         break;
-                                else if ( !str_cmp( word, "AREA"     ) )
-                                        load_area    ( fpArea );
-                                else if ( !str_cmp( word, "AREA_SPECIAL" ) )
+                                else if ( !str_cmp( word, "AREA"            ) )
+                                        load_area ( fpArea );
+                                else if ( !str_cmp( word, "AREA_SPECIAL"    ) )
                                         load_area_special ( fpArea );
-                                else if ( !str_cmp( word, "HELPS"    ) )
-                                        load_helps   ( fpArea );
-                                else if ( !str_cmp( word, "RECALL"   ) )
-                                        load_recall  ( fpArea );
-                                else if ( !str_cmp( word, "MOBILES"  ) )
+                                else if ( !str_cmp( word, "HELPS"           ) )
+                                        load_helps ( fpArea );
+                                else if ( !str_cmp( word, "RECALL"          ) )
+                                        load_recall ( fpArea );
+                                else if ( !str_cmp( word, "MOBILES"         ) )
                                         load_mobiles ( fpArea );
-                                else if ( !str_cmp( word, "MOBPROGS" ) )
-                                        load_mobprogs( fpArea );
-                                else if ( !str_cmp( word, "OBJECTS"  ) )
+                                else if ( !str_cmp( word, "MOBPROGS"        ) )
+                                        load_mobprogs ( fpArea );
+                                else if ( !str_cmp( word, "OBJECTS"         ) )
                                         load_objects ( fpArea );
-                                else if ( !str_cmp( word, "RESETS"   ) )
-                                        load_resets  ( fpArea );
-                                else if ( !str_cmp( word, "OBJECT_SETS"   ) )
-                                        load_object_sets  ( fpArea );
-                                else if ( !str_cmp( word, "ROOMS"    ) )
-                                        load_rooms   ( fpArea );
-                                else if ( !str_cmp( word, "SHOPS"    ) )
-                                        load_shops   ( fpArea );
-                                else if ( !str_cmp( word, "SPECIALS" ) )
-                                        load_specials( fpArea );
-                                else if ( !str_cmp( word, "GAMES"    ) )
-	                                load_games( fpArea );
+                                else if ( !str_cmp( word, "RESETS"          ) )
+                                        load_resets ( fpArea );
+                                else if ( !str_cmp( word, "OBJECT_SETS"     ) )
+                                        load_object_sets ( fpArea );
+                                else if ( !str_cmp( word, "ROOMS"           ) )
+                                        load_rooms ( fpArea );
+                                else if ( !str_cmp( word, "ROOMS_AMBIENT"   ) )
+                                        load_rooms_ambient ( fpArea );
+                                else if ( !str_cmp( word, "EXITS_SFX"       ) )
+                                        load_exits_sfx ( fpArea );
+                                else if ( !str_cmp( word, "SHOPS"           ) )
+                                        load_shops ( fpArea );
+                                else if ( !str_cmp( word, "SPECIALS"        ) )
+                                        load_specials ( fpArea );
+                                else if ( !str_cmp( word, "GAMES"           ) )
+	                                load_games ( fpArea );
                                 else
                                 {
                                         bug( "Boot_db: bad section name.", 0 );
@@ -1520,8 +1528,13 @@ void load_area( FILE *fp )
         pArea->hi_m_vnum    = 0;
 
         pArea->container_reset_timer = number_range (1, 10);
-        pArea->area_flags = 0;
+        pArea->area_flags   = 0;
         pArea->exp_modifier = 100;
+
+        /* Sound stuff */
+
+        pArea->ambient_sound  = NULL;
+        pArea->ambient_volume = 0;    /* off by default */
 
         if ( !area_first )
                 area_first = pArea
@@ -1654,6 +1667,35 @@ void load_area_special (FILE *fp)
                         free_string(area_last->reset_message);
 
                     area_last->reset_message = fread_string(fp);
+                }
+
+                else if (!str_cmp(next, "ambient"))
+                {
+                    /* Default area ambience filename (no spaces; relative path) */
+                    const char *fname = fread_word(fp);
+
+                    if (area_last->ambient_sound)
+                        free_string(area_last->ambient_sound);
+
+                    area_last->ambient_sound = str_dup(fname);
+                    /* Note: volume remains whatever it currently is (typically 0/off)
+                    until an explicit 'ambient_vol' line is parsed. */
+                }
+
+                else if (!str_cmp(next, "ambient_vol"))
+                {
+                    num = fread_number(fp, &stat);
+
+                    if (num < 0 || num > 100)
+                    {
+                        sprintf(buf, "load_area_special: area '%s' has bad ambient_vol '%d' (ignoring)",
+                                area_last->name, num);
+                        log_string(buf);
+                    }
+                    else
+                    {
+                        area_last->ambient_volume = num;  /* 0 = off; 1..100 valid */
+                    }
                 }
 
                 else
@@ -2474,6 +2516,10 @@ void load_rooms( FILE *fp )
                 pRoomIndex->sector_type         = fread_number( fp, &stat );
                 pRoomIndex->light               = 0;
 
+                /* audio testing */
+                pRoomIndex->ambient_sound       = NULL;
+                pRoomIndex->ambient_volume      = 0;   /* off by default */
+
                 for ( door = 0; door <= 5; door++ )
                         pRoomIndex->exit[door] = NULL;
 
@@ -2501,12 +2547,19 @@ void load_rooms( FILE *fp )
                                 }
 
                                 pexit                   = alloc_perm( sizeof( *pexit ) );
+                                memset(pexit, 0, sizeof(*pexit));
                                 pexit->description      = fread_string( fp );
                                 pexit->keyword          = fread_string( fp );
                                 pexit->exit_info        = 0;
                                 locks                   = fread_number( fp, &stat );
                                 pexit->key              = fread_number( fp, &stat );
                                 pexit->vnum             = fread_number( fp, &stat );
+
+                                /* --- initialise sound fields (safe defaults) --- */
+                                pexit->sfx_open         = NULL;
+                                pexit->sfx_open_vol     = 0;
+                                pexit->sfx_close        = NULL;
+                                pexit->sfx_close_vol    = 0;
 
                                 switch ( locks )
                                 {
@@ -2592,6 +2645,266 @@ void load_rooms( FILE *fp )
         }
 
         return;
+}
+
+/* EXITS_SFX block:
+ *      <vnum> <dir> <open|close> <file> <vol>
+ *      ...
+ *      $
+ */
+void load_exits_sfx( FILE *fp )
+{
+        int line_ok  = 0;
+        int line_bad = 0;
+
+        for ( ; ; )
+        {
+                const char *vtok = fread_word( fp );
+
+                /* End of section */
+                if (vtok[0] == '$')
+                {
+#ifdef log_string
+                        {
+                                char sbuf[128];
+                                snprintf( sbuf, sizeof(sbuf), "load_exits_sfx: ok=%d bad=%d", line_ok, line_bad );
+                                log_string( sbuf );
+                        }
+#endif
+                        break;
+                }
+
+                /* Expect the first token to be a room vnum */
+                if ( !is_number( (char *) vtok ) )
+                {
+#ifdef log_string
+                        {
+                                char sbuf[160];
+                                snprintf( sbuf, sizeof(sbuf),
+                                          "load_exits_sfx: expected vnum or '$', got '%s'", vtok );
+                                log_string( sbuf );
+                        }
+#endif
+                        bug( "load_exits_sfx: bad leading token", 0 );
+                        fread_to_eol( fp );
+                        ++line_bad;
+                        continue;
+                }
+
+                const int vnum = atoi( vtok );
+                ROOM_INDEX_DATA *room = get_room_index( vnum );
+                if (room == NULL)
+                {
+                        bug( "load_exits_sfx: bad room vnum %d", vnum );
+                        fread_to_eol( fp );
+                        ++line_bad;
+                        continue;
+                }
+
+                /* ---- Read and copy tokens into owned buffers (avoid static buffer clobber) ---- */
+                char dir_tok [ MAX_INPUT_LENGTH ];
+                char act_tok [ MAX_INPUT_LENGTH ];
+                char file_tok[ MAX_INPUT_LENGTH ];
+                {
+                        const char *w;
+
+                        w = fread_word( fp );
+                        strncpy( dir_tok, w, sizeof(dir_tok) - 1 );
+                        dir_tok[ sizeof(dir_tok) - 1 ] = '\0';
+
+                        w = fread_word( fp );
+                        strncpy( act_tok, w, sizeof(act_tok) - 1 );
+                        act_tok[ sizeof(act_tok) - 1 ] = '\0';
+
+                        w = fread_word( fp );
+                        strncpy( file_tok, w, sizeof(file_tok) - 1 );
+                        file_tok[ sizeof(file_tok) - 1 ] = '\0';
+                }
+
+                int status = 0;
+                int vol    = fread_number( fp, &status );
+                fread_to_eol( fp );
+
+                /* Map direction with the MUD’s own resolver */
+                int dir = get_dir( (char *) dir_tok );
+
+#ifdef log_string
+                {
+                        char sbuf[240];
+                        snprintf( sbuf, sizeof(sbuf),
+                                  "EXITS_SFX line: vnum=%d dir_tok=%s dir=%d action=%s file=%s vol=%d",
+                                  vnum, dir_tok, dir, act_tok, file_tok, vol );
+                        log_string( sbuf );
+                }
+#endif
+
+                if (dir < 0 || dir > 5)
+                {
+#ifdef log_string
+                        {
+                                char sbuf[160];
+                                snprintf( sbuf, sizeof(sbuf),
+                                          "load_exits_sfx: vnum %d bad dir '%s'", vnum, dir_tok );
+                                log_string( sbuf );
+                        }
+#endif
+                        bug( "load_exits_sfx: bad dir", 0 );
+                        ++line_bad;
+                        continue;
+                }
+
+                if (room->exit[dir] == NULL)
+                {
+#ifdef log_string
+                        {
+                                char sbuf[160];
+                                snprintf( sbuf, sizeof(sbuf),
+                                          "load_exits_sfx: vnum %d has no exit %s",
+                                          vnum, directions[dir].name );
+                                log_string( sbuf );
+                        }
+#endif
+                        bug( "load_exits_sfx: missing exit", vnum );
+                        ++line_bad;
+                        continue;
+                }
+
+                EXIT_DATA *ex = room->exit[dir];
+
+                /* Normalise volume and store per action */
+                vol = URANGE( 1, vol, 100 );
+
+                if ( !str_cmp( act_tok, "open" ) )
+                {
+                        if (ex->sfx_open != NULL)
+                        {
+                                free_string( ex->sfx_open );
+                        }
+                        ex->sfx_open     = str_dup( file_tok );
+                        ex->sfx_open_vol = vol;
+
+#ifdef log_string
+                        {
+                                char sbuf[256];
+                                snprintf( sbuf, sizeof(sbuf),
+                                          "EXITS_SFX: vnum=%d dir=%s set OPEN '%s' vol=%d",
+                                          vnum, directions[dir].name, file_tok, ex->sfx_open_vol );
+                                log_string( sbuf );
+                        }
+#endif
+                        ++line_ok;
+                }
+                else if ( !str_cmp( act_tok, "close" ) )
+                {
+                        if (ex->sfx_close != NULL)
+                        {
+                                free_string( ex->sfx_close );
+                        }
+                        ex->sfx_close     = str_dup( file_tok );
+                        ex->sfx_close_vol = vol;
+
+#ifdef log_string
+                        {
+                                char sbuf[256];
+                                snprintf( sbuf, sizeof(sbuf),
+                                          "EXITS_SFX: vnum=%d dir=%s set CLOSE '%s' vol=%d",
+                                          vnum, directions[dir].name, file_tok, ex->sfx_close_vol );
+                                log_string( sbuf );
+                        }
+#endif
+                        ++line_ok;
+                }
+                else if ( !str_cmp( act_tok, "lock" ) )
+                {
+                        if (ex->sfx_lock) free_string(ex->sfx_lock);
+                        ex->sfx_lock     = str_dup(file_tok);
+                        ex->sfx_lock_vol = URANGE(1, vol, 100);
+                        log_stringf("EXITS_SFX: vnum=%d dir=%s set LOCK '%s' vol=%d",
+                                    vnum, directions[dir].name, file_tok, ex->sfx_lock_vol);
+                        ++line_ok;
+                }
+                else if ( !str_cmp( act_tok, "unlock" ) )
+                {
+                        if (ex->sfx_unlock) free_string(ex->sfx_unlock);
+                        ex->sfx_unlock     = str_dup(file_tok);
+                        ex->sfx_unlock_vol = URANGE(1, vol, 100);
+                        log_stringf("EXITS_SFX: vnum=%d dir=%s set UNLOCK '%s' vol=%d",
+                                    vnum, directions[dir].name, file_tok, ex->sfx_unlock_vol);
+                        ++line_ok;
+                }
+                else
+                {
+#ifdef log_string
+                        {
+                                char sbuf[200];
+                                snprintf( sbuf, sizeof(sbuf),
+                                          "load_exits_sfx: vnum %d bad action '%s'", vnum, act_tok );
+                                log_string( sbuf );
+                        }
+#endif
+                        bug( "load_exits_sfx: bad action", 0 );
+                        ++line_bad;
+                }
+        }
+}
+
+
+/*
+ * Snarf a rooms ambient section
+ */
+void load_rooms_ambient ( FILE *fp )
+{
+    char *word;
+    int   vnum, vol;
+    int   stat;
+    ROOM_INDEX_DATA *room;
+
+    for (;;)
+    {
+        /* First token: either '$' to end, or a vnum */
+        word = fread_word(fp);
+        if (word[0] == '\0' || !str_cmp(word, "$"))
+            break;
+
+        /* Parse vnum */
+        vnum = atoi(word);
+        room = get_room_index(vnum);
+        if (!room)
+        {
+            char buf[MAX_STRING_LENGTH];
+            sprintf(buf, "load_room_ambient: unknown room vnum %d (skipping line)", vnum);
+            log_string(buf);
+
+            /* consume two more tokens if present to keep the parser in sync */
+            (void) fread_word(fp);              /* file/path */
+            (void) fread_number(fp, &stat);     /* volume (optional) */
+            continue;
+        }
+
+        /* File/path (no spaces expected; e.g. ambient/room/3054.mp3) */
+        word = fread_word(fp);
+        if (word[0] == '\0')
+        {
+            char buf[MAX_STRING_LENGTH];
+            sprintf(buf, "load_room_ambient: room %d missing filename (skipping)", vnum);
+            log_string(buf);
+            /* try to consume the rest of the line gracefully */
+            (void) fread_number(fp, &stat);
+            continue;
+        }
+
+        /* Optional volume */
+        vol = fread_number(fp, &stat);
+        if (stat == 0)           /* if your fread_number sets stat==0 on failure */
+            vol = 0;             /* we’ll treat as “unspecified” below */
+
+        /* Apply */
+        if (room->ambient_sound)
+            free_string(room->ambient_sound);
+        room->ambient_sound  = str_dup(word);
+        room->ambient_volume = (vol > 0) ? URANGE(1, vol, 100) : 25; /* pick your preferred default */
+
+    }
 }
 
 
@@ -4020,7 +4333,6 @@ void clear_char( CHAR_DATA *ch )
         ch->master              = NULL;
         ch->inside              = NULL; /* creature char is inside, for do_swallow & AFF_SWALLOW */
         ch->mount               = NULL;
-        /* ch->mapbook          = NULL; */
         ch->deleted             = FALSE;
         ch->exp_modifier        = 100;
 
@@ -5223,6 +5535,19 @@ void log_string (const char *str)
         strtime = ctime(&current_time);
         strtime[strlen(strtime)-6] = '\0';
         fprintf(stderr, "%s :: %s\n", &strtime[4], str);
+}
+
+/* printf-style logger that funnels to your existing log_string() */
+void log_stringf( const char *fmt, ... )
+{
+        char buf[512];
+        va_list ap;
+
+        va_start(ap, fmt);
+        vsnprintf(buf, sizeof(buf), fmt, ap);
+        va_end(ap);
+
+        log_string(buf);
 }
 
 void do_mrank( CHAR_DATA *ch, char *argument )

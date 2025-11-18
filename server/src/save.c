@@ -549,6 +549,16 @@ bool load_char_obj (DESCRIPTOR_DATA *d, char *name)
         ch->pcdata->slept = false;
         ch->pcdata->last_recharge = 0;
 
+        /* Sound stuff */
+        ch->pcdata->snd_enabled = SND_DEF_ENABLED;
+        ch->pcdata->snd_master  = SND_DEF_MASTER;
+        ch->pcdata->snd_env     = SND_DEF_ENV;
+        ch->pcdata->snd_music   = SND_DEF_MUSIC;
+        ch->pcdata->snd_foley   = SND_DEF_FOLEY;
+        ch->pcdata->snd_sfx     = SND_DEF_SFX;
+        ch->pcdata->snd_ui      = SND_DEF_UI;
+        ch->pcdata->snd_notify  = SND_DEF_NOTIFY;
+
         for (next = 0; next < NUMBER_DEITIES; next++)
                 ch->pcdata->deity_favour[next] = -1;
 

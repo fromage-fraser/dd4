@@ -2616,6 +2616,7 @@ void do_drink (CHAR_DATA *ch, char *argument)
                 else {
                         act("You drink $T from $p.", ch, obj, liq_table[obj->value[2]].liq_name, TO_CHAR);
                         act("$n drinks $T from $p.", ch, obj, liq_table[obj->value[2]].liq_name, TO_ROOM);
+                        media_play_consume_sfx_room(ch->in_room, CONSUME_ACT_DRINK, ch);
 
                         amount = MAX_DRINK;
 
@@ -2700,6 +2701,7 @@ void do_drink (CHAR_DATA *ch, char *argument)
                                 ch, obj, liq_table[liquid].liq_name, TO_CHAR);
                         act("$n drinks $T from $p.",
                                 ch, obj, liq_table[liquid].liq_name, TO_ROOM);
+                        media_play_consume_sfx_room(ch->in_room, CONSUME_ACT_DRINK, ch);
                 }
                 amount = number_range(3, 10);
                 amount = UMIN(amount, obj->value[1]);
@@ -3055,6 +3057,7 @@ void do_eat (CHAR_DATA *ch, char *argument)
                         af.bitvector = AFF_POISON;
                         affect_join(ch, &af);
                 }
+                media_play_consume_sfx_room(ch->in_room, CONSUME_ACT_EAT, ch);
                 break;
 
             case ITEM_PILL:
@@ -3066,6 +3069,7 @@ void do_eat (CHAR_DATA *ch, char *argument)
                         obj_cast_spell(obj->value[2], obj->value[0], ch, ch, NULL);
                         obj_cast_spell(obj->value[3], obj->value[0], ch, ch, NULL);
                 }
+                media_play_consume_sfx_room(ch->in_room, CONSUME_ACT_PILL, ch);
                 break;
         }
 
@@ -4242,6 +4246,7 @@ void do_smear (CHAR_DATA *ch, char *argument)
 
         act("You paint yourself with $p.", ch, obj, NULL ,TO_CHAR);
         act("$n paints $mself with $p.", ch, obj, NULL, TO_ROOM);
+        media_play_consume_sfx_room(ch->in_room, CONSUME_ACT_SMEAR, ch);
 
         if (obj->level > ch->level)
                 act("$p is too high level for you.", ch, obj, NULL, TO_CHAR);
@@ -4335,6 +4340,7 @@ void do_quaff (CHAR_DATA *ch, char *argument)
 
         act("You quaff $p.", ch, obj, NULL ,TO_CHAR);
         act("$n quaffs $p.", ch, obj, NULL, TO_ROOM);
+        media_play_consume_sfx_room(ch->in_room, CONSUME_ACT_QUAFF, ch);
 
         if (obj->level > ch->level)
                 act("$p is too high level for you.", ch, obj, NULL, TO_CHAR);
@@ -4612,6 +4618,7 @@ void do_smoke (CHAR_DATA *ch, char *argument)
         {
                 act("You pack your pipe and smoke some {W$p{x.", ch, smokeable, NULL, TO_CHAR);
                 act("$n packs $s pipe and smokes some $p.", ch, smokeable, NULL, TO_ROOM);
+                media_play_consume_sfx_room(ch->in_room, CONSUME_ACT_SMOKE, ch);
 
                 /* Some random 'colour' effects */
 
@@ -6745,6 +6752,22 @@ void do_auction (CHAR_DATA *ch, char *argument)
 
                 sprintf(buf, "A new item has been received: %s.", obj->short_descr);
                 talk_auction(buf);
+                /* One-shot “auction just started” cue for everyone who would see the channel */
+                {
+                    DESCRIPTOR_DATA *d;
+                    for (d = descriptor_list; d; d = d->next)
+                    {
+                        CHAR_DATA *och = d->original ? d->original : d->character;
+                        CHAR_DATA *vch = d->character;
+
+                        if (d->connected != CON_PLAYING || !vch || IS_NPC(vch)) continue;
+                        if (IS_SET(och->deaf, CHANNEL_AUCTION) || och->silent_mode) continue;
+
+                        /* Optional: if you ever restrict auction visibility, mirror the same checks here */
+
+                        sound_emit_char(vch, "notify.auction.start", -1);
+                    }
+                }
 
                 sprintf(buf, "The reserve for this item is %d platinum.",
                         auction->reserve);

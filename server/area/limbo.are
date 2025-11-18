@@ -5,6 +5,8 @@
 hidden
 no_quest
 safe
+ambient ambient/area/limbo.mp3
+ambient_vol 8
 reset_msg The void ripples, and order is restored.
 ~
 $

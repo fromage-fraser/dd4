@@ -739,6 +739,25 @@ their peers.
 
 ~
 
+0 'SOUND CONFIG' 'SCONFIG' 'SOUNDCONFIG' 'SOUND'~
+Syntax:
+  sconfig                 Show your current sound settings
+  sconfig status          Same as above
+  sconfig +sound | -sound Turn sound globally on/off
+  sconfig master N        Set master volume (0..100, 0=mute)
+  sconfig ambient N       Environment (area/room/sector) volume scale
+  sconfig music N         Music volume scale (boss/combat etc.)
+  sconfig foley N         Foley volume scale (mobs/players)
+  sconfig sfx N           SFX volume scale (combat/items)
+  sconfig ui N            UI/alerts volume scale
+
+Notes:
+- "ambient/music/foley/sfx/ui" scales multiply with each track’s own volume.
+- Setting master to 0 or "-sound" fades out all currently playing media.
+- More options to come as the DD sound system implementation proceeds.
+~
+
+
 0 AUTO CONFIG~
 Syntax: auto
 Syntax: config

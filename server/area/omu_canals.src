@@ -366,7 +366,7 @@ w   28418
 e   28420
 enm gates
 elo 8
-eke -1
+eke 28718
 eds lock
 u   28719
 
@@ -399,7 +399,7 @@ w   28718
 e   28720
 enm gates
 elo 8
-eke -1
+eke 28718
 eds lock
 d   28419
 u   27135
@@ -770,7 +770,7 @@ nds close
 s   28437
 snm gates
 slo 8
-ske -1
+ske 28718
 sds lock
 w   28445
 e   28447
@@ -797,7 +797,7 @@ nds close
 s   28737
 snm gates
 slo 8
-ske -1
+ske 28718
 sds lock
 w   28745
 e   28747
@@ -2433,6 +2433,21 @@ vekikari."<559>
 An elaborate seal has been inscribed in it that suggests authority.
 ~
 
+$obj
+nm  large brass key
+sh  a large brass key
+lo  A large brass key has been left here.
+vn  28718
+ty  key
+v0  28429
+wg  1
+we  take hold
+ed  large brass key
+This key is heavy and made of brass, of the kind usually used to unlock large
+castle doors or city gates.
+~
+osl 50
+
 
 # SHOPS
 
@@ -2719,6 +2734,7 @@ rm      28441
 num     1
 wield   25201
 inv     28427
+inv     28718
 
 # OBJECT RESETS
 

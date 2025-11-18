@@ -1265,6 +1265,8 @@ void do_open(CHAR_DATA *ch, char *argument)
                                 act ("The $d opens.", rch, NULL, pexit_rev->keyword, TO_CHAR);
                         }
                 }
+
+                media_play_door_sfx_room(ch->in_room, door, DOOR_ACT_OPEN);
         }
 
         return;
@@ -1524,6 +1526,8 @@ void do_close(CHAR_DATA *ch, char *argument)
                                 act ("The $d closes.", rch, NULL, pexit_rev->keyword, TO_CHAR);
                         }
                 }
+
+                media_play_door_sfx_room(ch->in_room, door, DOOR_ACT_CLOSE);
         }
 
         return;
@@ -1691,6 +1695,7 @@ void do_lock(CHAR_DATA *ch, char *argument)
                 SET_BIT(pexit->exit_info, EX_LOCKED);
                 send_to_char("*Click*\n\r", ch);
                 act ("$n locks the $d.", ch, NULL, pexit->keyword, TO_ROOM);
+                media_play_door_sfx_room( ch->in_room, door, DOOR_ACT_LOCK );
 
                 /* lock the other side */
                 if ((to_room   = pexit->to_room)
@@ -1839,6 +1844,7 @@ void do_unlock(CHAR_DATA *ch, char *argument)
                 REMOVE_BIT(pexit->exit_info, EX_LOCKED);
                 send_to_char("*Click*\n\r", ch);
                 act ("$n unlocks the $d.", ch, NULL, pexit->keyword, TO_ROOM);
+                media_play_door_sfx_room( ch->in_room, door, DOOR_ACT_UNLOCK );
 
                 /* unlock the other side */
                 if ((to_room   = pexit->to_room)

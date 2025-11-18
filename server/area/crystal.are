@@ -951,7 +951,7 @@ S
 Road through the forest~
 This is a well travelled dirt road.
 ~
-100 0 0
+100 0 3
 D0
 You see the entrance to a small town.
 ~
@@ -2380,6 +2380,13 @@ book evil~
 1 -1 10401
 S
 #0
+
+#EXITS_SFX
+10043 s open sfx/door/open_cupboard1.mp3 75
+10043 s close sfx/door/close_cupboard1.mp3 70
+10082 n open sfx/door/open_cupboard1.mp3 75
+10082 n close sfx/door/close_cupboard1.mp3 70
+$
 
 #RESETS
 M 0 10001 1 10024       Goldmoon

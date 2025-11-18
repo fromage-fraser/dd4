@@ -378,7 +378,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   615     /* 614 +1 for sense wisdom 6/7/25 */
+#define MAX_SKILL                   618     /* 617 +1 for aambient 8/9/25 */
 #define MAX_PRE_REQ                 1574    /* +2 for sense wisdom 6/7/25  */
 #define MAX_SPELL_GROUP             469     /* +1 sense wisdom Owl 6/7/25 */
 #define MAX_GROUPS                  61      /* +1 for runecaster - Brutus Aug 2022 */
@@ -872,7 +872,7 @@ struct descriptor_data
         char *                outbuf;
         int                   outsize;
         int                   outtop;
-        protocol_t *        pProtocol; /* <--- GMCP */
+        protocol_t *          pProtocol; /* <--- GMCP */
 
         /* ident stuff */
         int                   ifd;
@@ -1773,6 +1773,66 @@ struct game_type
     GAME_FUN *  game_fun;
 };
 
+/* ---- SOUND STUFF ---- */
+#define SND_DEF_ENABLED         TRUE   /* sound on by default */
+#define SND_DEF_MASTER          70     /* master 0..100 */
+#define SND_DEF_ENV             100    /* environment (area/room/sector) scale 0..100 */
+#define SND_DEF_MUSIC           100    /* music (boss/combat/etc.) scale 0..100 */
+#define SND_DEF_FOLEY           100    /* mob/player foley scale 0..100 */
+#define SND_DEF_SFX             100    /* combat/item/UI SFX scale 0..100 */
+#define SND_DEF_NOTIFY          100    /* notifications scale 0..100 */
+#define SND_DEF_UI              100    /* UI scale 0..100 */
+#define DOOR_LABEL              "door"  /* human category */
+#define DOOR_LANE_FMT           "dd.sfx.door.%d.%s"   /* roomVnum + dir name */
+
+/* --- Sound events (one-shot SFX / notifications) ------------------------ */
+typedef struct sound_event_def {
+    const char *key;          /* e.g., "notify.levelup", "fx.footstep.leather" */
+    const char *files[6];     /* up to 6 variants; NULL-terminated */
+    int         weights[6];   /* same length as files; 0/NULL => equal weight */
+    int         default_volume; /* 1..100 (will be scaled by player master vol) */
+    const char *tag;          /* GMCP tag, e.g., "notify", "fx", "ui" */
+    int         loops;        /* usually 1 for SFX */
+} sound_event_def;
+
+/* sector type default sounds */
+typedef struct sector_ambience_t {
+        const char *name;   /* relative media path or full URL; NULL/"" = none */
+        int         volume; /* 1..100; <=0 means disabled */
+} sector_ambience_t;
+
+typedef enum {
+    DOOR_ACT_OPEN,
+    DOOR_ACT_CLOSE,
+    DOOR_ACT_LOCK,
+    DOOR_ACT_UNLOCK
+} door_action_t;
+
+typedef enum consume_action_t {
+    CONSUME_ACT_EAT,
+    CONSUME_ACT_DRINK,
+    CONSUME_ACT_PILL,
+    CONSUME_ACT_QUAFF,
+    CONSUME_ACT_SMOKE,
+    CONSUME_ACT_SMEAR
+} consume_action_t;
+
+/* Registry accessor */
+const sound_event_def *sound_event_lookup(const char *key);
+
+/* Sound-related function decs */
+void            media_env_refresh               ( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force );
+void            sound_emit_char                 ( CHAR_DATA *ch, const char *event_key, int vol_override ); /* -1 to use default */
+void            sound_emit_room                 ( ROOM_INDEX_DATA *room, const char *event_key, int vol_override /* -1 */, CHAR_DATA *except );
+int             media_apply_master_volume       ( int base_vol, CHAR_DATA *ch ); /* scales 1..100 by player setting (or returns base) */
+void            media_notify_levelup            ( CHAR_DATA *who );
+void            media_notify_channel            ( CHAR_DATA *to, int channel );
+int             media_apply_volume              ( int base_vol, CHAR_DATA *ch, const char *tag, const char *type );
+void            media_play_door_sfx_room        ( ROOM_INDEX_DATA *room, int door, door_action_t act );
+void            sound_play_room_file            ( ROOM_INDEX_DATA *room, const char *file, int base_vol, const char *tag, CHAR_DATA *except , const char *id);
+void            media_play_consume_sfx_room     ( ROOM_INDEX_DATA *room, consume_action_t act, CHAR_DATA *actor );
+void            update_weather_for_char         ( CHAR_DATA *ch );
+
 /*
  *  Wanted board; Gezhp 2001
  */
@@ -2562,6 +2622,9 @@ extern DIR_DATA directions [ MAX_DIR ];
 #define SECT_UNDERWATER_GROUND  12
 #define SECT_MAX                13
 
+extern const sector_ambience_t sector_ambience_defaults[SECT_MAX];
+const        sector_ambience_t *sector_ambience_for(int sector);
+
 
 /*
  * Equipment wear locations.
@@ -2994,6 +3057,15 @@ struct  pc_data
         int                 max_bonus;     // Maximum number of bonuses
         bool                slept;         // Whether the player has slept/meditated since the last bonus recharge
         time_t              last_recharge; // Timestamp of the last recharge
+        /* ---- Per-player sound settings ---- */
+        bool                snd_enabled;    /* master on/off */
+        int                 snd_master;     /* 0..100 master “cap” */
+        int                 snd_env;        /* 0..100 environment scale */
+        int                 snd_music;      /* 0..100 music scale */
+        int                 snd_foley;      /* 0..100 foley scale */
+        int                 snd_sfx;        /* 0..100 combat/item SFX scale */
+        int                 snd_ui;         /* 0..100 UI scale */
+        int                 snd_notify;     /* 0..100 notifications scale */
 };
 
 
@@ -3138,6 +3210,16 @@ struct exit_data
         int     key;
         char *  keyword;
         char *  description;
+
+        /* Optional SFX overrides */
+        char *  sfx_open;      /* relative filename or full URL for open */
+        int     sfx_open_vol;  /* 1..100 (0 = use default) */
+        char *  sfx_close;     /* relative filename or full URL for close */
+        int     sfx_close_vol; /* 1..100 (0 = use default) */
+        char *  sfx_lock;
+        int     sfx_lock_vol;
+        char *  sfx_unlock;
+        int     sfx_unlock_vol;
 };
 
 
@@ -3188,6 +3270,10 @@ struct area_data
         unsigned long int       area_flags;
         int                     exp_modifier;
         char                    *reset_message;
+
+        /* --- MCMP pilot fields (not persisted yet) fallback defaults in area for rooms without override --- */
+        char                    *ambient_sound;   /* e.g. "environment/forest_night.mp3" (relative) */
+        int                     ambient_volume;  /* 1..100; 0 = off */
 };
 
 
@@ -3209,6 +3295,8 @@ struct room_index_data
         unsigned long int       room_flags;
         int                     light;
         int                     sector_type;
+        char                    *ambient_sound;     /* e.g. "environment/forest_night.mp3" (relative to base audio url) */
+        int                     ambient_volume;     /* 1..100; 0 = off */
 };
 
 
@@ -4428,6 +4516,7 @@ DECLARE_DO_FUN( do_mount                        );      /* mounting mobs for rid
 DECLARE_DO_FUN( do_dismount                     );
 DECLARE_DO_FUN( do_destrier                     );
 DECLARE_DO_FUN( do_pattern                      );
+DECLARE_DO_FUN( do_sconfig                      );      /* Sound configuration - Owl 13/9/25 */
 DECLARE_DO_FUN( do_smoke                        );      /* for smokeables - Owl 17/12/23 */
 DECLARE_DO_FUN( do_soar                         );
 DECLARE_DO_FUN( do_infamy                       );       /* Shade Apr 22 */
@@ -4457,10 +4546,12 @@ DECLARE_DO_FUN( do_mpstat                       );
 DECLARE_DO_FUN( do_mptransfer                   );
 DECLARE_DO_FUN( do_mppeace                      );
 
+DECLARE_DO_FUN( do_aambient                     );
 DECLARE_DO_FUN( do_mset                         );
 DECLARE_DO_FUN( do_oclanitem                    );
 DECLARE_DO_FUN( do_mist_walk                    );
 DECLARE_DO_FUN( do_bitsum                       );
+DECLARE_DO_FUN( do_mcmp                         );
 DECLARE_DO_FUN( do_mstat                        );
 DECLARE_DO_FUN( do_mwhere                       );
 DECLARE_DO_FUN( do_murde                        );
@@ -4514,6 +4605,7 @@ DECLARE_DO_FUN( do_quicken                      );      /* haste-like skill for 
 DECLARE_DO_FUN( do_quiet                        );      /* Silent play mode */
 DECLARE_DO_FUN( do_quit                         );
 DECLARE_DO_FUN( do_rage                         );      /* werewolves */
+DECLARE_DO_FUN( do_rambient                     );
 DECLARE_DO_FUN( do_ravage                       );      /* maul for werewolves */
 DECLARE_DO_FUN( do_reboo                        );
 DECLARE_DO_FUN( do_reboot                       );
@@ -5054,6 +5146,7 @@ char *  initial                         args( ( const char *str ) );
 void    append_file                     args( ( CHAR_DATA *ch, char *file, char *str ) );
 void    bug                             args( ( const char *str, int param ) );
 void    log_string                      args( ( const char *str ) );
+void    log_stringf                     args( ( const char *fmt, ... ) );
 void    tail_chain                      args( ( void ) );
 void    reset_area                      args( ( AREA_DATA * pArea ) );
 void    randomise_object                args( ( OBJ_DATA *obj, int level, char *rank) );

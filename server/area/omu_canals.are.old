@@ -1509,7 +1509,7 @@ D 0
 D 1
 ~
 gates~
-8 -1 28420
+8 28718 28420
 D 2
 ~
 ~
@@ -1543,7 +1543,7 @@ D 0
 D 1
 ~
 gates~
-8 -1 28720
+8 28718 28720
 D 2
 ~
 ~
@@ -2154,7 +2154,7 @@ D 1
 D 2
 ~
 gates~
-8 -1 28437
+8 28718 28437
 D 3
 ~
 ~
@@ -2186,7 +2186,7 @@ D 1
 D 2
 ~
 gates~
-8 -1 28737
+8 28718 28737
 D 3
 ~
 ~
@@ -3112,6 +3112,7 @@ E 0 28421 0 21                      equip a crude wooden bow (ranged)
 M 0 28422 1 28441               add a grung traitor to Yrythelmyn Canal, Lower
 E 0 25201 0 16                      equip [out-of-area item] (wield)
 G 0 28427 0                         carry an Omu citypass
+G 0 28718 0                         carry [out-of-area item]
 I 28422 75 28447 1              a Triton's corpse to Omu Canal, Lower
 I 28423 90 28440 1              a swinging gibbet to Yrythelmyn Canal, Lower
 I 28424 90 28499 1              a staked sahuagin to Omu / Yrythelmyn Canal, Lower

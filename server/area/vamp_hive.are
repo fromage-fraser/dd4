@@ -1,6 +1,12 @@
 #AREA   Owl and Thorne~   The Vampyre Hive~
 50 80 40 100
 
+#AREA_SPECIAL
+ambient ambient/area/vamp_hive.mp3
+ambient_vol 30
+reset_msg Distant croaks echo through the mire.
+~
+$
 
 #MOBILES
 #25600
@@ -7113,6 +7119,9 @@ D3
 S
 #0
 
+#ROOMS_AMBIENT
+25741 ambient/room/25741.mp3 15
+$
 
 #RESETS
 D 1 25603 3 2           ; At the filter grill Lock West

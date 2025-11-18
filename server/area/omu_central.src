@@ -6418,6 +6418,10 @@ mp  greet_prog 100
 mp speech_prog common
     say Yes, I speak it.  Why?  Do you have something written in Draconic you wish translated?
 ~
+
+mp  rand_prog 1
+    say You seek a way into the Sovereign Quarter? Protection from my people's aggression? I may be able to help...
+~
 mp give_prog scroll
     if number($o) == 28711
             emote clears throat.
@@ -9169,7 +9173,6 @@ ed  map omu sovereign quarter upper
 ~
 osl 55
 
-
 # GAMES
 
 $game
@@ -9816,6 +9819,7 @@ rm      28474
 num     1
 inv     28427
 inv     26032
+inv     28718
 
 # Green grung hatchery overseer to green grung hatchery
 $addmob
