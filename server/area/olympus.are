@@ -1,6 +1,12 @@
 #AREA   Generic~ Olympus~
 20 35 0 100
 
+#AREA_SPECIAL
+ambient ambient/area/olympus.mp3
+ambient_vol 25
+reset_msg A divine breeze sweeps through the realm, restoring all to order.
+~
+$
 
 #MOBILES
 #901

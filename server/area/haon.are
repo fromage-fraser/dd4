@@ -53,7 +53,7 @@ A fallow deer is grazing peacefully here.
 She is a graceful creature on long, slender legs, and with large, brown eyes
 looking back at you with an air of watchful interest.
 ~
-82 8 350 S
+82 1 350 S
 2 19 2 2d8+2 1d6+0
 36 200
 8 8 2
@@ -553,7 +553,7 @@ You are on a trail leading east and west through the dense forest.  To the
 west, the trees are so huge and their crowns so dense that forest remains in
 total darkness.  A small path leads south through the trees.
 ~
-60 0 3
+60 1 3
 D1
 The trail continues eastwards through the dense forest.
 ~
@@ -762,7 +762,7 @@ You are inside a small one-room cabin made entirely from heavy logs.  It is
 very sparsely furnished, containing only most basic housekeeping equipment,
 such as a bed, a chair and a table.
 ~
-60 8 0
+60 1 0
 D2
 The wooden door leads south.
 ~
@@ -1147,7 +1147,7 @@ You are on a narrow trail winding its way between the enormous, grey trunks.
 The crowns of the trees must be very dense, as they leave the forest floor in
 utter darkness. A faint path leads to the north. The trail leads east and west.
 ~
-61 9 3
+61 1 3
 D1
 The narrow trail leads east to a somewhat lighter part of the forest.
 ~
@@ -1175,7 +1175,7 @@ You are on a dusty trail winding its way east-west between huge, ancient trees
 whose grey trunks remind you of ancient pillars in a enormous, deserted hall.
 To the south, a frail path leads away from the trail.
 ~
-61 9 3
+61 1 3
 D1
 The narrow, dusty trail leads east through the forest.
 ~
@@ -1213,7 +1213,7 @@ You are on a dusty trail winding its way east-west between huge, ancient trees
 that stand close on all sides.  Not a sound is to be heard - everything is
 ominously quiet.
 ~
-61 9 3
+61 1 3
 D1
 The narrow, dusty trail leads east through the forest.
 ~
@@ -1246,7 +1246,7 @@ You are where the dusty trail bends, as to avoid conflict with a colossal
 trunk to the west.  Not a sound is to be heard - everything is ominously quiet.
 The trail leads east and south.
 ~
-61 9 3
+68 1 3
 D0
 You see a dark trail north.
 ~
@@ -1279,7 +1279,7 @@ You are on a narrow path leading through the deep, dark forest.  You feel as if
 the ancient trees observe you in watchful silence.  The path continues north
 and south.
 ~
-61 9 3
+61 1 3
 D0
 The narrow path winds its way through the trees to the north.
 ~
@@ -1305,7 +1305,7 @@ A small path in the deep, dark forest~
 You are on a narrow path leading through the deep, dark forest.  Ancient grey
 trees loom all around you.  The path continues north and west.
 ~
-61 9 3
+61 1 3
 D0
 The narrow path winds its way through the trees to the north.
 ~
@@ -1331,7 +1331,7 @@ A junction in the deep, dark forest~
 You are by a junction where three paths meet.  Ancient grey trees tower above
 you on all sides.  Paths lead east, south and west.
 ~
-61 9 3
+61 1 3
 D1
 The narrow path winds its way through the trees to the east.
 ~
@@ -1362,7 +1362,7 @@ A small path in the deep, dark forest~
 You are on a narrow path leading through the deep, dark forest.  Ancient grey
 trees loom all around you.  The path continues north and east.
 ~
-61 9 3
+61 1 3
 D0
 The narrow path winds its way through the trees to the north.
 ~
@@ -1389,7 +1389,7 @@ You are on a dusty trail winding its way between huge, ancient trees
 standing close on all sides.  The trail leads north and west and to the south,
 a frail path leads away from the trail.
 ~
-61 9 3
+61 1 3
 D0
 The narrow, dusty trail leads north through the forest.
 ~
@@ -1427,7 +1427,7 @@ You are on a dusty trail winding its way east-west between huge, ancient trees
 that stand close on all sides.  Not a sound is to be heard - everything is
 ominously quiet.
 ~
-61 9 3
+61 1 3
 D1
 The narrow, dusty trail leads east through the forest.
 ~
@@ -1455,7 +1455,7 @@ You are on a dusty trail winding its way between huge, ancient trees that stand
 close on all sides.  The trail leads east and south.  To the north, a narrow
 path leads away from the trail.
 ~
-61 9 3
+61 1 3
 D0
 The narrow path leads west between the giant trees.
 ~
@@ -1492,7 +1492,7 @@ A narrow trail through the deep, dark forest~
 You are on a dusty trail winding its way north-south between huge, ancient
 trees that loom ominously above you.
 ~
-61 9 3
+61 1 3
 D0
 The narrow, dusty trail leads north through the forest.
 ~
@@ -1520,7 +1520,7 @@ You are on a dusty trail winding its way between huge, ancient trees
 standing close on all sides.  The trail leads north and west and to the east,
 a frail path leads away from the trail.
 ~
-61 9 3
+61 1 3
 D0
 The narrow, dusty trail leads north through the forest.
 ~
@@ -1557,7 +1557,7 @@ A small path in the deep, dark forest~
 You are on a narrow path leading through the deep, dark forest.  Ancient grey
 trees loom in all directions.  The path continues south and west.
 ~
-61 9 3
+61 1 3
 D2
 The narrow path winds its way through the trees to the south.
 ~
@@ -1583,7 +1583,7 @@ A junction in the deep, dark forest~
 You are by a junction where three paths meet.  Ancient grey trees tower above
 you on all sides.  Paths lead north, east and west.
 ~
-61 9 3
+61 1 3
 D0
 The narrow path winds its way through the trees to the north.
 ~
@@ -1615,7 +1615,7 @@ You are on a narrow path leading through the deep, dark forest.  You feel as
 if the ancient trees observe you in watchful silence.  The path continues north
 and west.
 ~
-61 9 3
+61 1 3
 D0
 The narrow path winds its way through the trees to the north.
 ~
@@ -1641,7 +1641,7 @@ A small path in the deep, dark forest~
 You are on a narrow path leading through the deep, dark forest.  Giant, grey
 trees loom ominously on all sides.  The path continues east and south.
 ~
-61 9 3
+61 1 3
 D1
 The narrow path winds its way through the trees to the east.
 ~
@@ -1667,7 +1667,7 @@ A junction in the deep, dark forest~
 You are by a junction where three paths meet.  Ancient, grey trees seem to
 observe you silently you from all sides.  Paths lead north, east and west.
 ~
-61 9 3
+61 1 3
 D0
 The narrow path winds its way through the trees to the north.
 ~
@@ -1698,7 +1698,7 @@ A small path in the deep, dark forest~
 You are on a narrow path leading through the deep, dark forest.  Ancient,
 grey trees loom everywhere.  The path continues south and west.
 ~
-61 9 3
+61 1 3
 D2
 The narrow path winds its way through the trees to the south.
 ~
@@ -1724,7 +1724,7 @@ A small path in the deep, dark forest~
 You are on a narrow path leading through the deep, dark forest.  Huge, ancient
 trees are on all sides.  The path continues north and south.
 ~
-61 9 3
+61 1 3
 D0
 The narrow path winds its way through the trees to the north.
 ~
@@ -1751,7 +1751,7 @@ You are on a narrow path leading through the deep, dark forest.  To the south a
 fast river is flowing westwards through the forest.  Ancient grey trees loom on
 both banks.  The path continues north and west.
 ~
-61 9 3
+61 1 3
 D0
 The narrow path winds its way through the trees to the north.
 ~
@@ -1783,7 +1783,7 @@ You are on a narrow path leading through the deep, dark forest.  The ancient
 trees stand so close that the path disappears between the dusty roots.  To the
 south a dark river flows from east to west.  The only exit appears to be east.
 ~
-61 9 3
+61 1 3
 D1
 The narrow path winds its way through the trees to the east.
 ~
@@ -1809,7 +1809,7 @@ A small path in the deep, dark forest~
 You are on a narrow path leading through the deep, dark forest.  Giant, grey
 trees loom ominously all around.  The path continues east and south.
 ~
-61 9 3
+61 1 3
 D1
 The narrow path winds its way through the trees to the east.
 ~
@@ -1836,7 +1836,7 @@ You are by a junction where three paths meet.  Ancient, grey trees seem to
 observe you silently you from all around.  To the south a dark river flows from
 east to west through the forest.  Paths lead north, east and west.
 ~
-61 9 3
+61 1 3
 D0
 The narrow path winds its way through the trees to the north.
 ~
@@ -1873,7 +1873,7 @@ You are on a narrow path leading through the deep, dark forest.  The ancient
 trees stand so close that the path disappears between the dusty roots.  To the
 south a dark river flows from east to west.  The only exit appears to be west.
 ~
-61 9 3
+61 1 3
 D3
 The narrow path winds its way through the trees to the west.
 ~
@@ -1905,7 +1905,7 @@ You are on a narrow path leading through the deep, dark forest.  Ancient grey
 trees loom everywhere.  To the south you smell marsh gas.  The path continues
 north and east.
 ~
-61 9 3
+61 1 3
 D0
 The narrow path winds its way through the trees to the north.
 ~
@@ -1942,7 +1942,7 @@ You are on a dusty trail winding its way between huge, ancient trees standing
 close on all sides.  The trail leads north and west, and to the south a frail
 path leads away from the trail.
 ~
-61 9 3
+61 1 3
 D0
 The narrow, dusty trail leads north through the forest.
 ~
@@ -1979,7 +1979,7 @@ A narrow trail through the deep, dark forest~
 You are on a dusty trail winding its way between huge, ancient trees
 standing close on all sides.  The trail leads east and south.
 ~
-61 9 3
+61 1 3
 D1
 The narrow, dusty trail leads east through the forest.
 ~
@@ -2007,7 +2007,7 @@ You are on a dusty trail winding its way east-west between huge, ancient trees
 that stand close on all sides.  Not a sound is to be heard - everything is
 ominously quiet.
 ~
-61 9 3
+61 1 3
 D1
 The narrow, dusty trail leads east through the forest.
 ~
@@ -2035,7 +2035,7 @@ You are on a dusty trail winding its way east-west between huge, ancient trees
 that stand close on all sides.  Not a sound is to be heard - everything is
 ominously quiet.
 ~
-61 9 3
+61 1 3
 D1
 The narrow, dusty trail leads east through the forest.
 ~
@@ -2064,7 +2064,7 @@ wires suspended like ropes between the trees.  To the west the path seems to
 be completely covered in a giant web made from huge threads covered with glue.
 This place gives you the creeps.
 ~
-61 9 3
+61 1 3
 D1
 The narrow, dusty trail leads east through the forest, away from the web.
 ~
@@ -2110,7 +2110,7 @@ The huge, poisonous spider stings you!  You are poisoned!
 >
 You've fallen, and you can't get up!!!!!
 ~
-61 12 3
+61 4 3
 S
 #6132
 Up in the tree~
@@ -2141,7 +2141,7 @@ You are balancing carefully on the giant sticky threads that holds the giant
 web in place.  To the east is a giant tree trunk and to the west is an entrance
 to a cave-like structure made from many layers of spider web.
 ~
-61 9 6
+61 0 6
 D0
 The web continues to the north.
 ~
@@ -2195,7 +2195,7 @@ A dusty trail in the deep, dark forest~
 You are on a dusty trail leading through the deep, dark forest.  Ancient grey
 trees loom all around you.  The trail continues north and east.
 ~
-61 9 3
+61 1 3
 D0
 The dusty trail leads north through the trees.
 ~
@@ -2217,7 +2217,7 @@ You are on a dusty trail leading through the deep, dark forest.  Ancient,
 grey trees loom everywhere.  The trail continues south and west.  A broad
 irregular path leads eastwards away from the trail.
 ~
-61 9 3
+61 1 3
 D1
 The trees standing on the sides of the path have scratch marks on them.
 ~
@@ -2254,7 +2254,7 @@ You are on a dusty trail leading through the deep, dark forest.  Ancient grey
 trees loom all around you.  You see a dark grove north of you.
 To the west, an overgrown path can barely be seen.
 ~
-61 9 3
+61 1 3
 D0
 You see a dark grove north.
 ~
@@ -2281,7 +2281,7 @@ You are at the end of a broad, irregular path.  To the north is a very large
 ominous-looking cave opening.  The trees here have many marks as if something
 with huge claws has been tearing at them in rage.
 ~
-61 9 3
+61 1 3
 D0
 The disgusting smell of a large reptile emanates from the cave opening.
 ~
@@ -2308,7 +2308,7 @@ You are in a big natural cave.  The floor is littered with bones of all sorts
 and the stench is so massive that you could cut it with a knife.  The only
 exit is through the mouth of the cave to the south.
 ~
-61 9 3
+61 9 5
 D2
 The exit leads out into the forest.
 ~
@@ -2325,7 +2325,7 @@ You are on a narrow path leading through the deep, dark forest.  Ancient,
 grey trees loom everywhere.  The tree trunks here seem to be covered in some
 sticky substance.  The path continues south and west.
 ~
-61 9 3
+61 1 3
 D2
 The narrow path winds its way through the trees to the south.
 ~
@@ -2357,7 +2357,7 @@ This trail looks much spookier than any other thats you have seen.  The usual
 animal claw marks and bites on the trees are getting far and few between. The
 trail continues north.
 ~
-61 9 3
+61 1 3
 D0
 the narrow trail continues north.
 ~
@@ -2375,7 +2375,7 @@ This area of the trail is also very peculiar.  You can see no signs of animal
 life what so ever.  The structure of the surrounding trees forces the path to
 make a sharp turn to the east.
 ~
-61 9 3
+61 1 3
 D1
 the trail bends east.
 ~
@@ -2393,7 +2393,7 @@ The trees here seem to form a circle around a HUGE tree that is in the center
 of them.  You notice a wooden door carved into the huge tree to the east.  The
 trail that you followed to get here seems to end at the base of the tree.
 ~
-61 9 3
+61 1 3
 D1
 The tree door is carved beautifully.
 ~
@@ -2454,6 +2454,10 @@ the hallway looks quite grand.
 1 -1 6154
 S
 #0
+
+#ROOMS_AMBIENT
+6143 ambient/room/6143.mp3 30
+$
 
 
 

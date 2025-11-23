@@ -1344,19 +1344,78 @@ void sound_play_room_file( ROOM_INDEX_DATA *room,
         /* Ensure relative paths resolve */
         GMCP_Media_Default(vch->desc, "https://www.dragons-domain.org/main/gui/custom/audio/");
 
+        char unique_id[64];
+        snprintf(unique_id, sizeof(unique_id),
+                "sfx.%ld.%d",
+                current_time,
+                number_range(0,9999));
+
         char opts[256];
         snprintf(opts, sizeof(opts),
-                 "\"id\":\"%s\",\"type\":\"sound\",\"tag\":\"%s\","
-                 "\"volume\":%d,\"loops\":1,\"priority\":50,\"replace\":true",
-                 (id && *id) ? id : "sfx",
-                 (tag && *tag) ? tag : "sfx",
-                 vol);
+                "\"id\":\"%s\",\"type\":\"sound\",\"tag\":\"%s\","
+                "\"volume\":%d,\"loops\":1,\"priority\":50,\"replace\":true",
+                unique_id,
+                (tag && *tag) ? tag : "sfx",
+                vol);
 
         GMCP_Media_Play(vch->desc, file, opts);
+
+
     }
 }
 
 /* Helper: play a one-shot door sound that can overlap with others */
+static void door_play_event_room( ROOM_INDEX_DATA *room,
+                                  const char *file,
+                                  int volume,
+                                  const char *base_tag,
+                                  const char *dname,
+                                  const char *act_str,
+                                  int vnum )
+{
+    if (!room || !file || !*file)
+        return;
+
+    /* Unique ID counter */
+    static unsigned long seq = 0;
+
+    for (CHAR_DATA *vch = room->people; vch; vch = vch->next_in_room)
+    {
+        if (!vch->desc || !vch->desc->pProtocol) continue;
+        protocol_t *p = vch->desc->pProtocol;
+        if (!p->bGMCP || !p->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA]) continue;
+        if (IS_NPC(vch)) continue;
+
+        /* Apply player SFX volume */
+        int vol_adj = media_apply_volume(volume, vch, "sfx", "sfx");
+        if (vol_adj <= 0)
+            continue;
+
+        /* Create a UNIQUE id (id does NOT create a channel!) */
+        unsigned long idnum = ++seq;
+        char idbuf[128];
+        snprintf(idbuf, sizeof(idbuf),
+                 "door.%d.%s.%s.%lu",
+                 vnum, dname, act_str, idnum);
+
+        /* Standard fire-and-forget SFX packet — SAME FORMAT as potion SFX */
+        char opts[256];
+        snprintf(opts, sizeof(opts),
+                 "\"id\":\"%s\",\"type\":\"sound\",\"tag\":\"%s\","
+                 "\"volume\":%d,\"loops\":1,\"priority\":80,\"replace\":true",
+                 idbuf,
+                 base_tag ? base_tag : "sfx",
+                 vol_adj);
+
+        GMCP_Media_Play(vch->desc, file, opts);
+
+        log_stringf("DoorSFX: play %s id=%s vol=%d file=%s for %s",
+                    act_str, idbuf, vol_adj, file, vch->name);
+    }
+}
+
+
+/* Helper: play a one-shot door sound that can overlap with others
 static void door_play_event_room( ROOM_INDEX_DATA *room,
                                   const char *file,
                                   int volume,
@@ -1378,19 +1437,16 @@ static void door_play_event_room( ROOM_INDEX_DATA *room,
         if (!p->bGMCP || !p->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA]) continue;
         if (IS_NPC(vch)) continue;
 
-        /* Each listener gets a slightly different key — prevents replacement */
         unsigned long local_seq = ++global_seq;
         char keybuf[128];
         snprintf(keybuf, sizeof(keybuf),
                  "door.%d.%s.%s.%lu.%ld",
                  vnum, dname, act_str, local_seq, (long)(uintptr_t)vch);
 
-        /* Apply player SFX volume scaling */
         int vol_adj = media_apply_volume(volume, vch, "sfx", "sfx");
         if (vol_adj <= 0)
             continue;
 
-        /* Unique key ensures every sound instance overlaps properly */
         char opts[256];
         snprintf(opts, sizeof(opts),
                  "\"type\":\"sound\",\"tag\":\"%s\",\"key\":\"%s\","
@@ -1403,6 +1459,7 @@ static void door_play_event_room( ROOM_INDEX_DATA *room,
                     act_str, keybuf, vol_adj, file, vch->name);
     }
 }
+*/
 
 /* Picks override (if present) else defaults (registry) and emits to both sides as needed */
 void media_play_door_sfx_room( ROOM_INDEX_DATA *room, int door, door_action_t act )

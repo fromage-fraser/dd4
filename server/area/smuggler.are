@@ -177,7 +177,7 @@ would be a good idea in later life to not attack the crew all at once....
 #17509
 serge helmsman~
 Serge the Helmsman~
-Serge the ships Helmsman rests casually here.
+Serge the ship's Helmsman rests casually here.
 ~
 He looks just like what you would expect from someone who has spent years at
 the helm of a sailing ship. Serge's upper torso is huge and you can see the
@@ -192,7 +192,7 @@ pirate~
 Resting pirate~
 A pirate rests in his hammock here.
 ~
-The pirate looks tired and none to clean.
+The pirate looks tired and none too clean.
 ~
 2|64 0 0 S
 30 0 0 0d0+0 0d0+0
@@ -200,7 +200,7 @@ The pirate looks tired and none to clean.
 8 8 1
 #17511
 concubine woman~
-The Captains Concubine~
+The Captain's Concubine~
 A beautiful, seductive woman lounges here.
 ~
 The concubine is breathtakingly beautiful but there is an arrogant look on her
@@ -212,7 +212,7 @@ face, how dare you come into her divine presence.
 8 8 2
 #17512
 bodyguard~
-Concubines Bodyguard~
+Concubine's Bodyguard~
 The concubines bodyguard waits calmly here.
 ~
 The bodyguard is a large man, well over 6 feet tall with rippling muscles. He
@@ -481,7 +481,7 @@ plain gold ring~
 a plain gold ring~
 An ordinary looking gold ring lies here.~
 ~
-9 1 1|2
+9 1|274877906944 1|2
 0~ 1~ 6~ 11~
 5 0 0
 A
@@ -527,7 +527,7 @@ bandana black~
 a Black Bandana~
 A small piece of black cloth rests here.~
 ~
-9 0 1|16
+9 274877906944 1|16
 0~ 1~ 6~ 11~
 8 0 0
 A
@@ -689,7 +689,7 @@ sparkling stone~
 a sparkling stone~
 A sparkling stone glows brightly here.~
 ~
-8 64 32769
+8 64|274877906944 32769
 0~ 0~ 0~ 0~
 0 0 0
 A
