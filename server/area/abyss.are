@@ -1,6 +1,27 @@
 #AREA Owl~ The Abyss~
 15 30 5 100
 
+#AREA_SPECIAL
+ambient ambient/area/abyss.mp3
+ambient_vol 30
+reset_msg The abyss groans with ancient weight.
+~
+$
+
+#HELPS
+101 ABYSS 'THE ABYSS'~
+This area is mostly a cursed, random maze that connects to several of the
+Midgaard sewer areas that mention the abyss. There are, however a few recallable
+rooms marked by the text 'This place doesn't feel quite so accursed as most of
+the Abyss,' so it shouldn't be too tough for players to get out if they end up
+here accidentally.  It's not a bad place to level if you can handle the
+maze/no-recall irritations, actually.
+
+-Owl
+~
+0 $~
+
+
 #MOBILES
 #7500
 photophore blob glowing pulsing jelly~
@@ -2819,7 +2840,7 @@ S
 M 7503 spec_poison              a pycnogonid
 M 7506 spec_fido                a cloud of siph
 M 7510 spec_bloodsucker         the veranyi
-M 7512 spec_breath_lightning    the cyclothone
+M 7512 spec_cast_electric       the cyclothone
 S
 
 #$

@@ -1,6 +1,13 @@
 #AREA   Merc~    Troll Den~
 10 15 0 100
 
+#AREA_SPECIAL
+ambient ambient/area/trollden.mp3
+ambient_vol 30
+reset_msg The den trembles faintly as its monstrous residents return.
+~
+$
+
 
 #MOBILES
 #2800

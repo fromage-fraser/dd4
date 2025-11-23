@@ -3,6 +3,10 @@
 
 #AREA_SPECIAL
 exp_mod 125
+ambient ambient/area/foundry.mp3
+ambient_vol 15
+reset_msg The clang of crude metalworking echoes through the tunnels.
+~
 $
 
 #MOBILES
