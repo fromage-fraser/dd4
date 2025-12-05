@@ -8130,8 +8130,8 @@ void do_tag (CHAR_DATA *ch, char *argument)
         if (arg2[0] == '-')
         {
                 removing = TRUE;
-                /* Shift past the minus sign */
-                memmove(arg2, arg2 + 1, strlen(arg2));
+                /* Shift past the minus sign - use memmove for overlapping memory */
+                memmove(arg2, arg2 + 1, strlen(arg2 + 1) + 1);
         }
 
         /* Ensure tag starts with # */
