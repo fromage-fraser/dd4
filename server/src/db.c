@@ -3871,6 +3871,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, int r
         obj->ego_flags              = pObjIndex->ego_flags;
         obj->deleted                = FALSE;
         obj->identified             = FALSE;
+        obj->tags                   = NULL;
 
         /*
             Should set obj->how_created as below from merc.h:

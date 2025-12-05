@@ -8065,3 +8065,199 @@ int random_qnd ( int ap_value, char *rank, int ap_type )
 
 }
 
+
+/*
+ * Tag an item with a player-defined label for easier targeting.
+ * Syntax: tag <item> <#tagname>    - add a tag
+ *         tag <item> -<#tagname>   - remove a tag
+ *         tag <item>               - show current tags
+ */
+void do_tag (CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA *obj;
+        char arg1[MAX_INPUT_LENGTH];
+        char arg2[MAX_INPUT_LENGTH];
+        char buf[MAX_STRING_LENGTH];
+        char new_tags[MAX_STRING_LENGTH];
+        bool removing;
+
+        if (IS_NPC(ch))
+        {
+                send_to_char("NPCs cannot tag items.\n\r", ch);
+                return;
+        }
+
+        argument = one_argument(argument, arg1);
+        argument = one_argument(argument, arg2);
+
+        if (arg1[0] == '\0')
+        {
+                send_to_char("Tag what item?\n\r", ch);
+                send_to_char("Syntax: tag <item> <#tagname>  - add a tag\n\r", ch);
+                send_to_char("        tag <item> -<#tagname> - remove a tag\n\r", ch);
+                send_to_char("        tag <item>             - show current tags\n\r", ch);
+                return;
+        }
+
+        if (!(obj = get_obj_carry(ch, arg1)))
+        {
+                if (!(obj = get_obj_wear(ch, arg1)))
+                {
+                        send_to_char("You don't have that item.\n\r", ch);
+                        return;
+                }
+        }
+
+        /* Just show tags if no second argument */
+        if (arg2[0] == '\0')
+        {
+                if (obj->tags && obj->tags[0] != '\0')
+                {
+                        sprintf(buf, "%s is tagged with: %s\n\r",
+                                obj->short_descr, obj->tags);
+                        send_to_char(buf, ch);
+                }
+                else
+                {
+                        sprintf(buf, "%s has no tags.\n\r", obj->short_descr);
+                        send_to_char(buf, ch);
+                }
+                return;
+        }
+
+        /* Check if we're removing a tag (starts with -) */
+        removing = FALSE;
+        if (arg2[0] == '-')
+        {
+                removing = TRUE;
+                /* Shift past the minus sign */
+                memmove(arg2, arg2 + 1, strlen(arg2));
+        }
+
+        /* Ensure tag starts with # */
+        if (arg2[0] != '#')
+        {
+                send_to_char("Tags must start with # (e.g., #heal, #combat).\n\r", ch);
+                return;
+        }
+
+        /* Validate tag: only alphanumeric after # */
+        for (int i = 1; arg2[i] != '\0'; i++)
+        {
+                if (!isalnum(arg2[i]))
+                {
+                        send_to_char("Tags can only contain letters and numbers after #.\n\r", ch);
+                        return;
+                }
+        }
+
+        /* Tag must be at least 2 characters (# plus one letter/digit) */
+        if (strlen(arg2) < 2)
+        {
+                send_to_char("Tag name is too short.\n\r", ch);
+                return;
+        }
+
+        /* Limit tag length */
+        if (strlen(arg2) > 16)
+        {
+                send_to_char("Tag name is too long (max 16 characters including #).\n\r", ch);
+                return;
+        }
+
+        if (removing)
+        {
+                /* Remove a tag */
+                if (!obj->tags || obj->tags[0] == '\0')
+                {
+                        send_to_char("That item has no tags to remove.\n\r", ch);
+                        return;
+                }
+
+                /* Check if the tag exists */
+                if (!is_name(arg2, obj->tags))
+                {
+                        sprintf(buf, "That item is not tagged with %s.\n\r", arg2);
+                        send_to_char(buf, ch);
+                        return;
+                }
+
+                /* Rebuild tags without the specified one */
+                new_tags[0] = '\0';
+                char temp_tags[MAX_STRING_LENGTH];
+                char tag_word[MAX_INPUT_LENGTH];
+                strncpy(temp_tags, obj->tags, sizeof(temp_tags) - 1);
+                temp_tags[sizeof(temp_tags) - 1] = '\0';
+                char *p = temp_tags;
+
+                while (p && *p)
+                {
+                        p = one_argument(p, tag_word);
+                        if (tag_word[0] == '\0')
+                                break;
+                        if (str_cmp(tag_word, arg2) != 0)
+                        {
+                                if (new_tags[0] != '\0')
+                                        strcat(new_tags, " ");
+                                strcat(new_tags, tag_word);
+                        }
+                }
+
+                free_string(obj->tags);
+                obj->tags = str_dup(new_tags);
+
+                sprintf(buf, "Removed tag %s from %s.\n\r", arg2, obj->short_descr);
+                send_to_char(buf, ch);
+        }
+        else
+        {
+                /* Add a tag */
+                /* Check if already tagged with this */
+                if (obj->tags && is_name(arg2, obj->tags))
+                {
+                        sprintf(buf, "That item is already tagged with %s.\n\r", arg2);
+                        send_to_char(buf, ch);
+                        return;
+                }
+
+                /* Limit total number of tags */
+                int tag_count = 0;
+                if (obj->tags && obj->tags[0] != '\0')
+                {
+                        char temp_tags[MAX_STRING_LENGTH];
+                        char tag_word[MAX_INPUT_LENGTH];
+                        strncpy(temp_tags, obj->tags, sizeof(temp_tags) - 1);
+                        temp_tags[sizeof(temp_tags) - 1] = '\0';
+                        char *p = temp_tags;
+                        while (p && *p)
+                        {
+                                p = one_argument(p, tag_word);
+                                if (tag_word[0] != '\0')
+                                        tag_count++;
+                        }
+                }
+
+                if (tag_count >= 5)
+                {
+                        send_to_char("That item already has the maximum of 5 tags.\n\r", ch);
+                        return;
+                }
+
+                /* Add the new tag */
+                if (obj->tags && obj->tags[0] != '\0')
+                {
+                        sprintf(new_tags, "%s %s", obj->tags, arg2);
+                }
+                else
+                {
+                        strcpy(new_tags, arg2);
+                }
+
+                free_string(obj->tags);
+                obj->tags = str_dup(new_tags);
+
+                sprintf(buf, "Tagged %s with %s.\n\r", obj->short_descr, arg2);
+                send_to_char(buf, ch);
+        }
+}
+

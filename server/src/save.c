@@ -469,6 +469,11 @@ void fwrite_obj (CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest, bool vault)
 
         fprintf(fp, "Owner        %s~\n", get_obj_owner(obj));
 
+        if (obj->tags && obj->tags[0] != '\0')
+        {
+                fprintf(fp, "Tags         %s~\n", obj->tags);
+        }
+
         fprintf(fp, "End\n\n");
 
         if (obj->contains)
@@ -1224,6 +1229,7 @@ void fread_obj (CHAR_DATA *ch, FILE *fp, bool vault)
         obj->short_descr        = str_dup("");
         obj->description        = str_dup("");
         obj->deleted            = FALSE;
+        obj->tags               = NULL;
 
         fNest                   = FALSE;
         fVnum                   = TRUE;
@@ -1410,6 +1416,7 @@ void fread_obj (CHAR_DATA *ch, FILE *fp, bool vault)
                     case 'T':
                         KEY("Timer",    obj->timer,             fread_number( fp, &stat ));
                         KEY("TimerMax", obj->timermax,          fread_number( fp, &stat ));
+                        KEY("Tags",     obj->tags,              fread_string( fp ));
                         break;
 
                     case 'V':

@@ -291,6 +291,26 @@ bool is_full_name( const char *str, char *namelist )
 
 
 /*
+ * Check if an object matches a keyword argument.
+ * For #tags, checks the object's tags field.
+ * For regular keywords, checks the object's name field.
+ */
+bool obj_matches_arg( OBJ_DATA *obj, const char *arg )
+{
+        /* If argument starts with #, match against tags */
+        if ( arg[0] == '#' )
+        {
+                if ( obj->tags && obj->tags[0] != '\0' )
+                        return is_name( arg, obj->tags );
+                return FALSE;
+        }
+
+        /* Otherwise, match against name */
+        return is_name( arg, obj->name );
+}
+
+
+/*
  * Apply or remove an affect to a character.
  */
 void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon )
@@ -3021,7 +3041,7 @@ OBJ_DATA *get_obj_list( CHAR_DATA *ch, char *argument, OBJ_DATA *list )
 
         for ( obj = list; obj; obj = obj->next_content )
         {
-                if ( (can_see_obj( ch, obj ) || (obj->in_obj && IS_SET(obj->in_obj->wear_flags, ITEM_WEAR_POUCH))) && is_name( arg, obj->name ) )
+                if ( (can_see_obj( ch, obj ) || (obj->in_obj && IS_SET(obj->in_obj->wear_flags, ITEM_WEAR_POUCH))) && obj_matches_arg( obj, arg ) )
                 {
                         if ( ++count == number )
                                 return obj;
@@ -3049,7 +3069,7 @@ OBJ_DATA *get_obj_carry( CHAR_DATA *ch, char *argument )
         {
                 if ( obj->wear_loc == WEAR_NONE
                     && can_see_obj( ch, obj )
-                    && is_name( arg, obj->name ) )
+                    && obj_matches_arg( obj, arg ) )
                 {
                         if ( ++count == number )
                                 return obj;
@@ -3076,7 +3096,7 @@ OBJ_DATA *get_obj_vaulted( CHAR_DATA *ch, char *argument )
         {
                 if ( obj->wear_loc == WEAR_NONE
                     && can_see_obj( ch, obj )
-                    && is_name( arg, obj->name ) )
+                    && obj_matches_arg( obj, arg ) )
                 {
                         if ( ++count == number )
                                 return obj;
@@ -3105,7 +3125,7 @@ OBJ_DATA *get_obj_wear( CHAR_DATA *ch, char *argument )
         {
                 if ( obj->wear_loc != WEAR_NONE
                     && can_see_obj( ch, obj )
-                    && is_name( arg, obj->name ) )
+                    && obj_matches_arg( obj, arg ) )
                 {
                         if ( ++count == number )
                                 return obj;

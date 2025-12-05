@@ -3194,6 +3194,7 @@ struct obj_data
         int                     how_created;
         int                     max_instances;
         int                     spawn_count;
+        char *                  tags;           /* Player-defined tags for targeting (e.g. "#heal #combat") */
 };
 
 
@@ -4665,6 +4666,7 @@ DECLARE_DO_FUN( do_stun                         );      /* Ninja/thief/ranger sk
 DECLARE_DO_FUN( do_suck                         );      /* Vampire thing - Brutus */
 DECLARE_DO_FUN( do_switch                       );
 DECLARE_DO_FUN( do_tailwhip                     );      /* Dragon form */
+DECLARE_DO_FUN( do_tag                          );      /* Player tags for items */
 DECLARE_DO_FUN( do_tell                         );
 DECLARE_DO_FUN( do_tellmode                     );      /* No tells */
 DECLARE_DO_FUN( do_tenketsu                     );      /* Martial artist - Owl */
@@ -5192,6 +5194,7 @@ int     can_vault_w                     args( ( CHAR_DATA *ch ) );
 bool    is_name                         args( ( const char *str, char *namelist ) );
 bool    multi_keyword_match             args( ( char *keys, char *namelist ) );
 bool    is_full_name                    args( ( const char *str, char *namelist ) );
+bool    obj_matches_arg                 args( ( OBJ_DATA *obj, const char *arg ) );
 void    affect_to_char                  args( ( CHAR_DATA *ch, AFFECT_DATA *paf ) );
 void    affect_remove                   args( ( CHAR_DATA *ch, AFFECT_DATA *paf ) );
 void    affect_from_obj                 args( (OBJ_DATA *obj, AFFECT_DATA *paf ) );

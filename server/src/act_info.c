@@ -405,6 +405,14 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
                         strcat( buf, obj->description );
         }
 
+        /* Display item tags */
+        if ( obj->tags && obj->tags[0] != '\0' )
+        {
+                strcat( buf, " <245>[" );
+                strcat( buf, obj->tags );
+                strcat( buf, "]<0>" );
+        }
+
         return buf;
 }
 

@@ -358,6 +358,7 @@ const struct cmd_type cmd_table [] =
         { "suicide",            do_suicide,        POS_STANDING,    0,  LOG_ALWAYS },
         { "tail",               do_tail,           POS_STANDING,    0,  LOG_NORMAL },
         { "tailwhip",           do_tailwhip,       POS_FIGHTING,    0,  LOG_NORMAL },
+        { "tag",                do_tag,            POS_RESTING,     0,  LOG_NORMAL },
         { "stalk",              do_stalk,          POS_STANDING,    0,  LOG_NORMAL },
         { "spells",             do_spells,         POS_SLEEPING,    0,  LOG_NORMAL },
         { "split",              do_split,          POS_RESTING,     0,  LOG_NORMAL },
