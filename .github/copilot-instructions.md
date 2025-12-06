@@ -67,6 +67,22 @@ When proposing any of the above, ask:
 
 ---
 
+## Repository-Specific Tips for dd4
+
+- Always add help files when adding commands:
+  - Provide a corresponding help entry and player-facing documentation when introducing or modifying any command.
+  - Keep help content consistent with existing tone and structure; update any relevant indices or lists so the help is discoverable.
+
+- Make note of the delimiter for colour when sending output to console:
+  - Preserve and use the project's established colour delimiter/tokens in player-visible output.
+  - Do not introduce new colour formatting without approval; if unsure of the correct delimiter, ask for confirmation.
+
+- Always check for duplicate commands:
+  - Validate that command names and aliases are unique within the command registry/dispatch system.
+  - Avoid shadowing existing commands; if a conflict is detected, propose a resolved name and ask for approval.
+
+---
+
 ## Area Files
 
 - Reference `/server/area` examples for format, tags, IDs, room layout, NPCs, items, and scripts.
