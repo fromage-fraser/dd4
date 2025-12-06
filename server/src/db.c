@@ -244,6 +244,7 @@ int     gsn_ofind;
 int     gsn_oscore;
 int     gsn_osfind;
 int     gsn_oload;
+int     gsn_gemload;
 int     gsn_oset;
 int     gsn_ostat;
 int     gsn_osstat;

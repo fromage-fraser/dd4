@@ -4626,6 +4626,13 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
 
         {
+                "gemload", &gsn_gemload,
+                TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
+                spell_null, 0, 0,
+                "", "!Gemload!"
+        },
+
+        {
                 "oset", &gsn_oset,
                 TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
                 spell_null, 0, 0,

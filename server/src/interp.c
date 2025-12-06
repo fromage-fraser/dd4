@@ -411,6 +411,7 @@ const struct cmd_type cmd_table [] =
         { "notell",     do_notell,      POS_DEAD,    L_SEN,  LOG_NORMAL },
         { "numlock",    do_numlock,     POS_DEAD,    L_SEN,  LOG_ALWAYS },
         { "oload",      do_oload,       POS_DEAD,    L_SEN,  LOG_ALWAYS },
+        { "gemload",    do_gemload,     POS_DEAD,    L_SEN,  LOG_ALWAYS },
         { "oset",       do_oset,        POS_DEAD,    L_SEN,  LOG_ALWAYS },
         { "pardon",     do_pardon,      POS_DEAD,    L_SEN,  LOG_ALWAYS },
         { "purge",      do_purge,       POS_DEAD,    L_SEN,  LOG_NORMAL },

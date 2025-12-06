@@ -6311,7 +6311,7 @@ void do_gem_set( CHAR_DATA *ch, char *argument )
 
         if ( arg1[0] == '\0' || arg2[0] == '\0' )
         {
-                send_to_char( "Syntax: set <gem> <item>\n\r", ch );
+                send_to_char( "Syntax: set <<gem> <<item>\n\r", ch );
                 return;
         }
 
@@ -6446,7 +6446,7 @@ void do_gem_unset( CHAR_DATA *ch, char *argument )
 
         if ( arg1[0] == '\0' )
         {
-                send_to_char( "Syntax: unset <item> [socket#]\n\r", ch );
+                send_to_char( "Syntax: unset <<item> [socket#]\n\r", ch );
                 return;
         }
 
@@ -6636,7 +6636,7 @@ void do_gem_socket( CHAR_DATA *ch, char *argument )
 
         if ( arg[0] == '\0' )
         {
-                send_to_char( "Syntax: socket <item>\n\r", ch );
+                send_to_char( "Syntax: socket <<item>\n\r", ch );
                 return;
         }
 
@@ -6768,7 +6768,7 @@ void do_gem_combine( CHAR_DATA *ch, char *argument )
 
         if ( arg[0] == '\0' )
         {
-                send_to_char( "Syntax: combine <gem type>\n\r", ch );
+                send_to_char( "Syntax: combine <<gem type>\n\r", ch );
                 send_to_char( "This will combine your lowest quality gems of that type.\n\r", ch );
                 return;
         }

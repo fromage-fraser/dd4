@@ -3689,6 +3689,7 @@ extern int gsn_ofind;
 extern int gsn_oscore;
 extern int gsn_osfind;
 extern int gsn_oload;
+extern int gsn_gemload;
 extern int gsn_oset;
 extern int gsn_ostat;
 extern int gsn_osstat;
@@ -4652,6 +4653,7 @@ DECLARE_DO_FUN( do_ofind                        );
 DECLARE_DO_FUN( do_oscore                       );
 DECLARE_DO_FUN( do_osfind                       );
 DECLARE_DO_FUN( do_oload                        );
+DECLARE_DO_FUN( do_gemload                      );      /* Imm gem/socket command */
 DECLARE_DO_FUN( do_open                         );
 DECLARE_DO_FUN( do_open_seal                    );      /*for werewolfs*/
 DECLARE_DO_FUN( do_order                        );
