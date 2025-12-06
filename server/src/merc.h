@@ -2242,6 +2242,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define OBJ_VNUM_MEND_RUNE              2742
 #define OBJ_VNUM_CURE_RUNE              2743
 #define OBJ_VNUM_WARD_RUNE              2744
+#define OBJ_VNUM_GEM_TEMPLATE           2     /* Template object for creating gems */
 
 /* End Smithy Stuff */
 

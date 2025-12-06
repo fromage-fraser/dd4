@@ -6430,6 +6430,7 @@ void do_gem_unset( CHAR_DATA *ch, char *argument )
         int socket_num = 0;
         int gem_type;
         int gem_quality;
+        int i;
 
         if ( IS_NPC(ch) )
                 return;
@@ -6480,7 +6481,7 @@ void do_gem_unset( CHAR_DATA *ch, char *argument )
         {
                 /* Find first filled socket */
                 socket_num = -1;
-                for ( int i = 0; i < item->socket_count && i < MAX_SOCKETS; i++ )
+                for ( i = 0; i < item->socket_count && i < MAX_SOCKETS; i++ )
                 {
                         if ( item->socket_gem_type[i] >= 0 )
                         {
@@ -6528,7 +6529,7 @@ void do_gem_unset( CHAR_DATA *ch, char *argument )
 
         /* Create a gem object to give back to the player */
         /* We need a template gem object - use a generic one or create dynamically */
-        gem_index = get_obj_index( 2 );  /* Use a generic object vnum as template */
+        gem_index = get_obj_index( OBJ_VNUM_GEM_TEMPLATE );  /* Use a generic object vnum as template */
         if ( gem_index != NULL )
         {
                 gem = create_object( gem_index, 0, "common", CREATED_SKILL );
@@ -6866,7 +6867,7 @@ void do_gem_combine( CHAR_DATA *ch, char *argument )
         }
 
         /* Create the new higher quality gem */
-        gem_index = get_obj_index( 2 );  /* Generic object template */
+        gem_index = get_obj_index( OBJ_VNUM_GEM_TEMPLATE );  /* Generic object template */
         if ( gem_index != NULL )
         {
                 new_gem = create_object( gem_index, 0, "common", CREATED_SKILL );

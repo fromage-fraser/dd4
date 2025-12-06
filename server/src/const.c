@@ -732,7 +732,7 @@ const struct gem_type gem_table [ GEM_TYPE_MAX ] =
         { "onyx",        APPLY_AC,               2,  TRUE }, /* GEM_TYPE_ONYX (AC: negative is good) */
         { "jasper",      APPLY_HITROLL,          1, FALSE }, /* GEM_TYPE_JASPER */
         { "ruby",        APPLY_DAMROLL,          1, FALSE }, /* GEM_TYPE_RUBY */
-        { "lapis lazuli",APPLY_SAVING_SPELL,     1,  TRUE }, /* GEM_TYPE_LAPIS (saves: negative is good) */
+        { "lapis lazuli", APPLY_SAVING_SPELL,    1,  TRUE }, /* GEM_TYPE_LAPIS (saves: negative is good) */
         { "opal",        APPLY_RESIST_HEAT,      2, FALSE }, /* GEM_TYPE_OPAL */
         { "aquamarine",  APPLY_RESIST_COLD,      2, FALSE }, /* GEM_TYPE_AQUAMARINE */
         { "amber",       APPLY_RESIST_LIGHTNING, 2, FALSE }, /* GEM_TYPE_AMBER */
