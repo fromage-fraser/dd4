@@ -8275,7 +8275,7 @@ Maximum sockets by item type:
 See also: SET, UNSET, COMBINE, GEMS
 ~
 
-1 'COMBINE' 'COMBINE GEMS'~
+1 'COMBINE GEMS' 'GEM COMBINE'~
 
 Syntax: combine <<gem type>
 
