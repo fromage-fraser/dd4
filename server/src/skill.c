@@ -6544,9 +6544,11 @@ void do_gem_unset( CHAR_DATA *ch, char *argument )
                 gem->name = str_dup( buf );
 
                 free_string( gem->short_descr );
-                sprintf( buf, "a %s %s",
+                sprintf( buf, "a %s %s (%s %+d)",
                         gem_quality_name( gem_quality ),
-                        gem_type_name( gem_type ) );
+                        gem_type_name( gem_type ),
+                        affect_loc_name( gem_table[gem_type].apply_type ),
+                        get_gem_bonus( gem_type, gem_quality ) );
                 gem->short_descr = str_dup( buf );
 
                 free_string( gem->description );
@@ -6882,9 +6884,11 @@ void do_gem_combine( CHAR_DATA *ch, char *argument )
                 new_gem->name = str_dup( buf );
 
                 free_string( new_gem->short_descr );
-                sprintf( buf, "a %s %s",
+                sprintf( buf, "a %s %s (%s %+d)",
                         gem_quality_name( gem_quality + 1 ),
-                        gem_type_name( gem_type ) );
+                        gem_type_name( gem_type ),
+                        affect_loc_name( gem_table[gem_type].apply_type ),
+                        get_gem_bonus( gem_type, gem_quality + 1 ) );
                 new_gem->short_descr = str_dup( buf );
 
                 free_string( new_gem->description );
