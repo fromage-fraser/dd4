@@ -7119,6 +7119,38 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
 
         /*
+         * Gem and Socket System Skills (Smithy class)
+         */
+
+        {
+                "set gem", &gsn_gem_set,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
+                spell_null, 0, 12,
+                "", "!Set Gem!"
+        },
+
+        {
+                "unset gem", &gsn_gem_unset,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
+                spell_null, 0, 12,
+                "", "!Unset Gem!"
+        },
+
+        {
+                "socket item", &gsn_gem_socket,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
+                spell_null, 0, 24,
+                "", "!Socket Item!"
+        },
+
+        {
+                "combine gems", &gsn_gem_combine,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
+                spell_null, 0, 12,
+                "", "!Combine Gems!"
+        },
+
+        /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
          */
 
@@ -7318,38 +7350,6 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-runesmith base-!"
-        },
-
-        /*
-         * Gem and Socket System Skills (Smithy class)
-         */
-
-        {
-                "set gem", &gsn_gem_set,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
-                spell_null, 0, 12,
-                "", "!Set Gem!"
-        },
-
-        {
-                "unset gem", &gsn_gem_unset,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
-                spell_null, 0, 12,
-                "", "!Unset Gem!"
-        },
-
-        {
-                "socket item", &gsn_gem_socket,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
-                spell_null, 0, 24,
-                "", "!Socket Item!"
-        },
-
-        {
-                "combine gems", &gsn_gem_combine,
-                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
-                spell_null, 0, 12,
-                "", "!Combine Gems!"
         },
 
         /*
