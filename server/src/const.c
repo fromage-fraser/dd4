@@ -699,6 +699,48 @@ const struct digmod_terrain digmod_terrain_list  [ SECT_MAX + 1 ] =
         {   0,   0,   0 },          /*  SECT_MAX */
 };
 
+/*
+ * Gem quality names for the socket system.
+ * Order: Dull, Cloudy, Clear, Brilliant, Flawless
+ */
+const char *gem_quality_names[] =
+{
+        "dull",
+        "cloudy",
+        "clear",
+        "brilliant",
+        "flawless"
+};
+
+/*
+ * Gem type table for the socket system.
+ * Maps gem types to APPLY constants and bonus modifiers.
+ *
+ * Fields: name, apply_type, multiplier, negative_is_good
+ *
+ * Fibonacci bonus scaling: base bonuses are 1,2,3,5,8 for Dull→Flawless.
+ * The multiplier adjusts for different apply types (e.g., HP uses higher values).
+ */
+const struct gem_type gem_table [ GEM_TYPE_MAX ] =
+{
+        { "garnet",      APPLY_STR,              1, FALSE }, /* GEM_TYPE_GARNET */
+        { "chrysoberyl", APPLY_DEX,              1, FALSE }, /* GEM_TYPE_CHRYSOBERYL */
+        { "sapphire",    APPLY_INT,              1, FALSE }, /* GEM_TYPE_SAPPHIRE */
+        { "amethyst",    APPLY_WIS,              1, FALSE }, /* GEM_TYPE_AMETHYST */
+        { "jade",        APPLY_CON,              1, FALSE }, /* GEM_TYPE_JADE */
+        { "bloodstone",  APPLY_HIT,              5, FALSE }, /* GEM_TYPE_BLOODSTONE (HP scaled higher) */
+        { "onyx",        APPLY_AC,               2,  TRUE }, /* GEM_TYPE_ONYX (AC: negative is good) */
+        { "jasper",      APPLY_HITROLL,          1, FALSE }, /* GEM_TYPE_JASPER */
+        { "ruby",        APPLY_DAMROLL,          1, FALSE }, /* GEM_TYPE_RUBY */
+        { "lapis lazuli",APPLY_SAVING_SPELL,     1,  TRUE }, /* GEM_TYPE_LAPIS (saves: negative is good) */
+        { "opal",        APPLY_RESIST_HEAT,      2, FALSE }, /* GEM_TYPE_OPAL */
+        { "aquamarine",  APPLY_RESIST_COLD,      2, FALSE }, /* GEM_TYPE_AQUAMARINE */
+        { "amber",       APPLY_RESIST_LIGHTNING, 2, FALSE }, /* GEM_TYPE_AMBER */
+        { "peridot",     APPLY_RESIST_ACID,      2, FALSE }, /* GEM_TYPE_PERIDOT */
+        { "diamond",     APPLY_CRIT,             1, FALSE }, /* GEM_TYPE_DIAMOND */
+        { "sunstone",    APPLY_SWIFTNESS,        1, FALSE }  /* GEM_TYPE_SUNSTONE */
+};
+
 /*---START SOUND STUFF---*/
 
 /* Default ambience per sector (edit names/volumes to your files). */
@@ -7269,6 +7311,38 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
                 spell_null, 0, 0,
                 "", "!-runesmith base-!"
+        },
+
+        /*
+         * Gem and Socket System Skills (Smithy class)
+         */
+
+        {
+                "set gem", &gsn_gem_set,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
+                spell_null, 0, 12,
+                "", "!Set Gem!"
+        },
+
+        {
+                "unset gem", &gsn_gem_unset,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
+                spell_null, 0, 12,
+                "", "!Unset Gem!"
+        },
+
+        {
+                "socket item", &gsn_gem_socket,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
+                spell_null, 0, 24,
+                "", "!Socket Item!"
+        },
+
+        {
+                "combine gems", &gsn_gem_combine,
+                TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
+                spell_null, 0, 12,
+                "", "!Combine Gems!"
         },
 
         /*

@@ -4403,6 +4403,52 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 }
         }
 
+        /* Display socket information */
+        if ( obj->socket_count > 0 )
+        {
+                int filled = 0;
+                int empty = 0;
+                int s;
+
+                for ( s = 0; s < obj->socket_count && s < MAX_SOCKETS; s++ )
+                {
+                        if ( obj->socket_gem_type[s] >= 0 )
+                                filled++;
+                        else
+                                empty++;
+                }
+
+                sprintf( buf, "{W-=-=-=-=-=-=-=-=-=-=-=-=-=-=-={x\n\r" );
+                send_to_char( buf, ch );
+
+                sprintf( buf, "Sockets: {W%d{x total ({G%d{x filled, {Y%d{x empty)\n\r",
+                        obj->socket_count, filled, empty );
+                send_to_char( buf, ch );
+
+                for ( s = 0; s < obj->socket_count && s < MAX_SOCKETS; s++ )
+                {
+                        if ( obj->socket_gem_type[s] >= 0 )
+                        {
+                                int gem_type = obj->socket_gem_type[s];
+                                int gem_qual = obj->socket_gem_quality[s];
+                                int bonus_val = get_gem_bonus( gem_type, gem_qual );
+
+                                sprintf( buf, "  Socket %d: {C%s %s{x ({Y%s %+d{x)\n\r",
+                                        s + 1,
+                                        gem_quality_name( gem_qual ),
+                                        gem_type_name( gem_type ),
+                                        affect_loc_name( gem_table[gem_type].apply_type ),
+                                        bonus_val );
+                                send_to_char( buf, ch );
+                        }
+                        else
+                        {
+                                sprintf( buf, "  Socket %d: {D(empty){x\n\r", s + 1 );
+                                send_to_char( buf, ch );
+                        }
+                }
+        }
+
 /* 2nd pass at sets - Brutus */
 
         if ( (pObjSetIndex = objects_objset(obj->pIndexData->vnum) ) )

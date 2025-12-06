@@ -2319,6 +2319,10 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                 for ( paf = obj->affected; paf; paf = paf->next )
                         affect_modify( ch, paf, TRUE, obj );
 
+                /* Apply bonuses from socketed gems */
+                if ( obj->socket_count > 0 )
+                        apply_socketed_gems( ch, obj, TRUE );
+
                 if ( obj->item_type == ITEM_LIGHT
                     && iWear == WEAR_LIGHT
                     && obj->value[2] != 0
@@ -2399,6 +2403,10 @@ void unequip_char( CHAR_DATA *ch, OBJ_DATA *obj )
 
                 for ( paf = obj->affected; paf; paf = paf->next )
                         affect_modify( ch, paf, FALSE, obj );
+
+                /* Remove bonuses from socketed gems */
+                if ( obj->socket_count > 0 )
+                        apply_socketed_gems( ch, obj, FALSE );
 
                 if ( obj->item_type == ITEM_LIGHT
                     && obj->wear_loc == WEAR_LIGHT
@@ -5252,6 +5260,228 @@ int advatoi( const char *s )
     /* anything left is likely extra digits (ie: 14k4443  -> 3 is extra) */
 
     return number;
+}
+
+
+/*
+ * Gem and Socket System Helper Functions
+ *
+ * Intent: Provide utility functions for the gem socketing system.
+ * These functions handle gem lookups, bonus calculations, and socket limits.
+ */
+
+/*
+ * Fibonacci bonus values for gem qualities (Dull=1, Cloudy=2, Clear=3, Brilliant=5, Flawless=8)
+ */
+static const int gem_fib_bonus[] = {
+        GEM_BONUS_DULL,      /* 1 */
+        GEM_BONUS_CLOUDY,    /* 2 */
+        GEM_BONUS_CLEAR,     /* 3 */
+        GEM_BONUS_BRILLIANT, /* 5 */
+        GEM_BONUS_FLAWLESS   /* 8 */
+};
+
+/*
+ * get_gem_bonus: Calculate the bonus value for a gem of given type and quality.
+ *
+ * Returns the modifier value to apply to the character's stats.
+ * For types where negative is good (AC, saves), returns negative values.
+ */
+int get_gem_bonus( int gem_type, int quality )
+{
+        int base_bonus;
+        int multiplier;
+        int final_bonus;
+
+        if ( gem_type < 0 || gem_type >= GEM_TYPE_MAX )
+                return 0;
+
+        if ( quality < 0 || quality >= GEM_QUALITY_MAX )
+                return 0;
+
+        base_bonus = gem_fib_bonus[quality];
+        multiplier = gem_table[gem_type].multiplier;
+        final_bonus = base_bonus * multiplier;
+
+        /* For AC and saves, negative values are beneficial */
+        if ( gem_table[gem_type].negative_is_good )
+                final_bonus = -final_bonus;
+
+        return final_bonus;
+}
+
+/*
+ * max_sockets_for_slot: Returns the maximum number of sockets allowed for a wear location.
+ *
+ * Small items (rings, amulets): 1 socket
+ * Medium items (belts, gloves, boots, wrists): 2 sockets
+ * Large items (body, weapons, shields, etc.): 4 sockets
+ */
+int max_sockets_for_slot( int wear_loc )
+{
+        switch ( wear_loc )
+        {
+            /* Small gear: 1 socket max */
+            case WEAR_FINGER_L:
+            case WEAR_FINGER_R:
+            case WEAR_NECK_1:
+            case WEAR_NECK_2:
+                return MAX_SOCKETS_SMALL;
+
+            /* Medium gear: 2 sockets max */
+            case WEAR_WAIST:
+            case WEAR_HANDS:
+            case WEAR_FEET:
+            case WEAR_WRIST_L:
+            case WEAR_WRIST_R:
+                return MAX_SOCKETS_MEDIUM;
+
+            /* Large gear: 4 sockets max */
+            case WEAR_BODY:
+            case WEAR_HEAD:
+            case WEAR_LEGS:
+            case WEAR_ARMS:
+            case WEAR_SHIELD:
+            case WEAR_ABOUT:
+            case WEAR_WIELD:
+            case WEAR_DUAL:
+            case WEAR_HOLD:
+                return MAX_SOCKETS_LARGE;
+
+            /* Items that can't have sockets */
+            case WEAR_LIGHT:
+            case WEAR_FLOAT:
+            case WEAR_POUCH:
+            case WEAR_RANGED_WEAPON:
+            default:
+                return 0;
+        }
+}
+
+/*
+ * gem_type_name: Returns the name of a gem type.
+ */
+char *gem_type_name( int gem_type )
+{
+        if ( gem_type < 0 || gem_type >= GEM_TYPE_MAX )
+                return "unknown";
+
+        return (char *)gem_table[gem_type].name;
+}
+
+/*
+ * gem_quality_name: Returns the name of a gem quality.
+ */
+char *gem_quality_name( int quality )
+{
+        if ( quality < 0 || quality >= GEM_QUALITY_MAX )
+                return "unknown";
+
+        return (char *)gem_quality_names[quality];
+}
+
+/*
+ * gem_type_lookup: Look up a gem type by name.
+ * Returns -1 if not found.
+ */
+int gem_type_lookup( const char *name )
+{
+        int i;
+
+        if ( !name || !name[0] )
+                return -1;
+
+        for ( i = 0; i < GEM_TYPE_MAX; i++ )
+        {
+                if ( !str_prefix( name, gem_table[i].name ) )
+                        return i;
+        }
+
+        return -1;
+}
+
+/*
+ * gem_quality_lookup: Look up a gem quality by name.
+ * Returns -1 if not found.
+ */
+int gem_quality_lookup( const char *name )
+{
+        int i;
+
+        if ( !name || !name[0] )
+                return -1;
+
+        for ( i = 0; i < GEM_QUALITY_MAX; i++ )
+        {
+                if ( !str_prefix( name, gem_quality_names[i] ) )
+                        return i;
+        }
+
+        return -1;
+}
+
+/*
+ * can_socket_item: Check if an item type can have sockets.
+ *
+ * Only armor and weapons can have sockets.
+ */
+bool can_socket_item( OBJ_DATA *obj )
+{
+        if ( !obj )
+                return FALSE;
+
+        if ( obj->item_type == ITEM_ARMOR || obj->item_type == ITEM_WEAPON )
+                return TRUE;
+
+        return FALSE;
+}
+
+/*
+ * apply_socketed_gems: Apply or remove bonuses from socketed gems.
+ *
+ * Called when equipping (add=TRUE) or removing (add=FALSE) an item.
+ * Modifies character stats based on gems in sockets.
+ */
+void apply_socketed_gems( CHAR_DATA *ch, OBJ_DATA *obj, bool add )
+{
+        int i;
+        int gem_type;
+        int gem_quality;
+        int bonus;
+        AFFECT_DATA af;
+
+        if ( !ch || !obj )
+                return;
+
+        if ( obj->socket_count <= 0 )
+                return;
+
+        for ( i = 0; i < obj->socket_count && i < MAX_SOCKETS; i++ )
+        {
+                gem_type = obj->socket_gem_type[i];
+                gem_quality = obj->socket_gem_quality[i];
+
+                /* -1 means empty socket */
+                if ( gem_type < 0 || gem_type >= GEM_TYPE_MAX )
+                        continue;
+
+                if ( gem_quality < 0 || gem_quality >= GEM_QUALITY_MAX )
+                        continue;
+
+                bonus = get_gem_bonus( gem_type, gem_quality );
+
+                if ( bonus == 0 )
+                        continue;
+
+                /* Apply or remove the modifier */
+                af.type      = 0;
+                af.duration  = -1;
+                af.location  = gem_table[gem_type].apply_type;
+                af.modifier  = add ? bonus : -bonus;
+                af.bitvector = 0;
+
+                affect_modify( ch, &af, add, obj );
+        }
 }
 
 /* EOF handler.c */
