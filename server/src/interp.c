@@ -207,7 +207,7 @@ const struct cmd_type cmd_table [] =
         { "set",        do_gem_set,     POS_STANDING,    0,  LOG_NORMAL },
         { "unset",      do_gem_unset,   POS_STANDING,    0,  LOG_NORMAL },
         { "socket",     do_gem_socket,  POS_STANDING,    0,  LOG_NORMAL },
-        { "combine",    do_gem_combine, POS_STANDING,    0,  LOG_NORMAL },
+        { "gemcombine", do_gem_combine, POS_STANDING,    0,  LOG_NORMAL },
         { "smoke",      do_smoke,       POS_RESTING,     0,  LOG_NORMAL },
         { "unlock",     do_unlock,      POS_RESTING,     0,  LOG_NORMAL },
         { "value",      do_value,       POS_STANDING,    0,  LOG_NORMAL },

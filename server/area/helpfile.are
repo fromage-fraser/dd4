@@ -8238,7 +8238,7 @@ Different gems provide different stat bonuses:
 Gem quality affects bonus strength: Dull (+1), Cloudy (+2), Clear (+3),
 Brilliant (+5), Flawless (+8). Some gems have multipliers applied.
 
-See also: UNSET, SOCKET, COMBINE, GEMS
+See also: UNSET, SOCKET, GEMCOMBINE, GEMS
 ~
 
 1 'UNSET GEM' 'GEM UNSET'~
@@ -8251,7 +8251,7 @@ If you don't specify a socket number, the first filled socket is used.
 {WWARNING:{x There is a chance the gem may shatter during removal if your
 skill check fails. Higher skill reduces this risk.
 
-See also: SET, SOCKET, COMBINE, GEMS
+See also: SET, SOCKET, GEMCOMBINE, GEMS
 ~
 
 1 'SOCKET' 'ADD SOCKET'~
@@ -8272,12 +8272,12 @@ Maximum sockets by item type:
   Medium items (belts, gloves, boots, wrists): 2 sockets max
   Large items (body, weapons, shields, etc.): 4 sockets max
 
-See also: SET, UNSET, COMBINE, GEMS
+See also: SET, UNSET, GEMCOMBINE, GEMS
 ~
 
-1 'COMBINE GEMS' 'GEM COMBINE'~
+1 'GEMCOMBINE' 'COMBINE GEMS' 'GEM COMBINE'~
 
-Syntax: combine <<gem type>
+Syntax: gemcombine <<gem type>
 
 This Smithy skill allows you to combine multiple gems of the same type and
 quality into a single gem of higher quality. The combining uses Fibonacci
@@ -8319,14 +8319,14 @@ stat-boosting gems.
   Levels 1-20: Dull, 21-40: Cloudy, 41-60: Clear, 61-80: Brilliant, 81+: Flawless
 
 {WSMITHY SKILLS:{x
-  SET     - Place a gem into a socket
-  UNSET   - Remove a gem from a socket
-  SOCKET  - Add a socket to an item (at tinkers, costs platinum)
-  COMBINE - Merge gems to upgrade quality
+  SET        - Place a gem into a socket
+  UNSET      - Remove a gem from a socket
+  SOCKET     - Add a socket to an item (at tinkers, costs platinum)
+  GEMCOMBINE - Merge gems to upgrade quality
 
 Other classes must pay tinkers to perform these services.
 
-See also: SET, UNSET, SOCKET, COMBINE
+See also: SET, UNSET, SOCKET, GEMCOMBINE
 ~
 
 101 'GEMLOAD'~
@@ -8347,7 +8347,7 @@ This immortal command allows you to create gems and add sockets for testing.
   Adds a socket to the specified item (bypasses normal cost and limits,
   but respects the maximum of 4 sockets per item).
 
-See also: GEMS, SET, UNSET, SOCKET, COMBINE
+See also: GEMS, SET, UNSET, SOCKET, GEMCOMBINE
 ~
 
 0 $~

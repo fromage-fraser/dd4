@@ -6736,7 +6736,7 @@ void do_gem_socket( CHAR_DATA *ch, char *argument )
 /*
  * do_gem_combine: Combine gems to create a higher quality gem.
  *
- * Syntax: combine <gem type>
+ * Syntax: gemcombine <gem type>
  *
  * Requirements:
  * - Player must have the gem_combine skill (Smithy class)
@@ -6770,7 +6770,7 @@ void do_gem_combine( CHAR_DATA *ch, char *argument )
 
         if ( arg[0] == '\0' )
         {
-                send_to_char( "Syntax: combine <<gem type>\n\r", ch );
+                send_to_char( "Syntax: gemcombine <<gem type>\n\r", ch );
                 send_to_char( "This will combine your lowest quality gems of that type.\n\r", ch );
                 return;
         }
