@@ -1,6 +1,12 @@
 #AREA   Doctor~  Galaxy~
 20 45 0 100
 
+#AREA_SPECIAL
+ambient ambient/area/galaxy.mp3
+ambient_vol 30
+reset_msg The stars realign themselves with cold precision.
+~
+$
 
 #MOBILES
 #9301
@@ -661,7 +667,7 @@ ring dignity~
 the Ring of Dignity~
 A ring of specialty lies here.~
 ~
-9 1123 1|2
+9 1123|274877906944 1|2
 0~ 0~ 0~ 0~
 3 20000 10000
 E
@@ -678,7 +684,7 @@ sceptre might~
 the Sceptre of Might~
 A sceptre of interest lies here.~
 ~
-1 1091 1|16348
+1 1091|274877906944 1|16348
 0~ 0~ -1~ 0~
 4 20000 10000
 E
@@ -694,7 +700,7 @@ ring universe~
 the ring of the universe~
 Here lies a fortune ... a small ring of power.~
 ~
-9 355 1|2
+9 355|274877906944 1|2
 4~ 0~ 0~ 0~
 3 40000 20000
 E
@@ -710,7 +716,7 @@ great dipper~
 the Great Dipper of the Skies~
 A dazzling white object lies on the ground.~
 ~
-5 355 1|8192
+5 355|274877906944 1|8192
 0~ 4~ 6~ 6~
 20 30000 20000
 A
@@ -791,7 +797,7 @@ You have touched the crystal ball and find that you have gone inside it:
 a world of stars and wonders!  As you look back you figure out there is no
 choice but to go forward.
 ~
-93 0 2
+93 0 9
 D0
 ~
 ~
@@ -804,7 +810,7 @@ at your presence, and comets and meteors wandering around you.  You realize
 that this world may not be the true galaxy after all, but just another
 fantasy zone.  Exits lie virtually in all directions.
 ~
-93 0 1
+93 0 9
 D0
 ~
 ~
@@ -870,7 +876,7 @@ At the Undeveloped Part of the Galaxy~
 This place looks deserted, covered with space debris.  Not a sign of life
 is around.
 ~
-93 0 1
+93 0 9
 D2
 ~
 ~
@@ -1007,7 +1013,7 @@ An Edge of the Galaxy~
 You are on the very edge of the galaxy.  Nothing is here except that there
 is a path which leads down.
 ~
-93 0 1
+93 0 9
 D2
 ~
 ~
@@ -1027,7 +1033,7 @@ You are very near to a gigantic red star.  While you are still fascinated
 by its beauty, the star keeps on growing ... suddenly you realize that you'd
 better leave.
 ~
-93 4 1
+93 4 9
 D0
 ~
 ~
@@ -1053,7 +1059,7 @@ You may find yourself lucky to witness this rare event but even luckier,
 you have finally got out of this galaxy as your body turns into dust.
 That really HURTS!
 ~
-93 6 0
+93 4|262144 9
 S
 #9321
 The Star Cluster~
@@ -1153,7 +1159,7 @@ Western Side of the Temple~
 You are still wandering around this temple.  You notice exits lie in all
 directions except west.
 ~
-93 0 1
+93 8 1
 D0
 ~
 ~
@@ -1172,7 +1178,7 @@ Orion's Hunting Lodge~
 This is dedicated to the Great Hunter of all time -- Orion.
 Scattered on the floor is the famous hunting equipment used by him.
 ~
-93 0 1
+93 8 1
 D0
 ~
 ~
@@ -1187,7 +1193,7 @@ Northern Side of the Temple~
 You are still wandering around this temple.  You notice exits lie in all
 directions except north.
 ~
-93 0 1
+93 8 1
 D1
 ~
 ~
@@ -1208,7 +1214,7 @@ young girl here, chained to the wall, as if she is waiting for execution.
 You look up and realize the chains are sent down directly from above.
 Below you recognize the temple of Thalos.
 ~
-93 0 1
+93 8 1
 D0
 ~
 ~
@@ -1278,7 +1284,7 @@ Eastern Side of the Temple~
 You are still wandering around this temple.  You notice exits lie in all
 directions except east.
 ~
-93 0 1
+93 8 1
 D0
 ~
 ~
@@ -1297,7 +1303,7 @@ Perseus' Chamber~
 It is the chamber of the prince, Perseus.  However, he seems not to be here.
 Maybe he has gone to get Pegasus to save Andromeda?
 ~
-93 0 1
+93 8 1
 D0
 ~
 ~
@@ -1380,7 +1386,7 @@ This is a strange study. Besides the desks and chairs you also see a large
 mirror in the middle.  So, you wonder, is this how you make a Gemini into
 two Gemini?
 ~
-93 0 0
+93 8 0
 D1
 ~
 ~
@@ -1448,7 +1454,7 @@ In the Dry Desert~
 You are confused by the shifting sands around you.  Through the shimmering
 heat you see the hazy outline of a giant scorpion ... is this a mirage?
 ~
-93 0 2
+93 0 10
 D1
 ~
 ~
@@ -1500,7 +1506,7 @@ Inside a Gigantic Clam~
 You feel uneasy here as if some evil magic is being cast on you.
 You suspect something fishy is going on in here.
 ~
-93 0 5
+93 8 0
 D3
 ~
 ~
@@ -1790,6 +1796,9 @@ D0
 S
 #0
 
+#ROOMS_AMBIENT
+9320 ambient/room/9320.mp3 80
+$
 
 
 #RESETS
