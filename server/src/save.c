@@ -412,6 +412,17 @@ void fwrite_obj (CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest, bool vault)
         fprintf(fp, "Values       %d %d %d %d\n",
                 obj->value[0], obj->value[1], obj->value[2], obj->value[3]  );
 
+        /* Save socket data if item has sockets */
+        if (obj->socket_count > 0)
+        {
+                fprintf(fp, "Sockets      %d %d %d %d %d %d %d %d %d\n",
+                        obj->socket_count,
+                        obj->socket_gem_type[0], obj->socket_gem_quality[0],
+                        obj->socket_gem_type[1], obj->socket_gem_quality[1],
+                        obj->socket_gem_type[2], obj->socket_gem_quality[2],
+                        obj->socket_gem_type[3], obj->socket_gem_quality[3]);
+        }
+
         switch (obj->item_type)
         {
             case ITEM_POTION:
@@ -1381,6 +1392,21 @@ void fread_obj (CHAR_DATA *ch, FILE *fp, bool vault)
 
                     case 'S':
                         KEY("ShortDescr", obj->short_descr, fread_string(fp));
+
+                        if (!str_cmp(word, "Sockets"))
+                        {
+                                obj->socket_count       = fread_number( fp, &stat );
+                                obj->socket_gem_type[0] = fread_number( fp, &stat );
+                                obj->socket_gem_quality[0] = fread_number( fp, &stat );
+                                obj->socket_gem_type[1] = fread_number( fp, &stat );
+                                obj->socket_gem_quality[1] = fread_number( fp, &stat );
+                                obj->socket_gem_type[2] = fread_number( fp, &stat );
+                                obj->socket_gem_quality[2] = fread_number( fp, &stat );
+                                obj->socket_gem_type[3] = fread_number( fp, &stat );
+                                obj->socket_gem_quality[3] = fread_number( fp, &stat );
+                                fMatch = TRUE;
+                                break;
+                        }
 
                         if (!str_cmp(word, "Spell"))
                         {
