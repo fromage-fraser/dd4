@@ -4547,38 +4547,38 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                         starmetal *= 2;
 
                 act("$n smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
-                act("You place $p into the forge.", ch, obj, NULL, TO_CHAR);
+                act("{WYou place $p into the forge.{x", ch, obj, NULL, TO_CHAR);
                 smelted_to_char( steel, titanium, adamantite, electrum, starmetal, ch, COINS_ADD);
                 sprintf(buf, "You recover the following raw materials:\n");
                 send_to_char (buf, ch);
                 if (steel > 0)
                 {
                         steel = number_fuzzy (steel);
-                         sprintf(buf,"{wSteel %d{x\n",steel);
+                         sprintf(buf,"    {wSteel {W[{C%d{W]{x\n",steel);
                         send_to_char (buf, ch);
                 }
                 if (titanium > 0)
                 {
                         titanium = number_fuzzy (titanium);
-                        sprintf(buf,"{yTitanium %d{x\n", titanium);
+                        sprintf(buf,"    {yTitanium {W[{C%d{W]{x\n", titanium);
                         send_to_char (buf, ch);
                 }
                 if (adamantite > 0)
                 {
                         adamantite = number_fuzzy (adamantite);
-                        sprintf(buf,"{YAdamantite %d{x\n", adamantite);
+                        sprintf(buf,"    {YAdamantite {W[{C%d{W]{x\n", adamantite);
                         send_to_char (buf, ch);
                 }
                 if (electrum > 0)
                 {
                         electrum = number_fuzzy (electrum);
-                        sprintf(buf,"{WElectrum %d{x\n", electrum);
+                        sprintf(buf,"    {WElectrum {W[{C%d{W]{x\n", electrum);
                         send_to_char (buf, ch);
                 }
                 if (starmetal > 0)
                 {
                         starmetal = number_fuzzy (starmetal);
-                        sprintf(buf,"{RStarmetal %d{x\n", starmetal);
+                        sprintf(buf,"    {RStarmetal {W[{C%d{W]{x\n", starmetal);
                         send_to_char (buf, ch);
                 }
                 ch->smelted_steel += steel;
@@ -4591,7 +4591,7 @@ void do_smelt (CHAR_DATA *ch, char *argument)
         }
         else
         {
-                send_to_char("You skill in smelting lets you down. You fail to recover anything.\n\r", ch);
+                send_to_char("Your skill in smelting lets you down. You fail to recover anything.\n\r", ch);
                 act("You watch as $p slowly dissolves into the belly of the forge.",ch, obj, NULL, TO_CHAR);
                 act("$n fails to recover any materials from $p.",ch, obj, NULL, TO_ROOM);
                 extract_obj(obj);
@@ -4631,7 +4631,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         if( arg1[0] == '\0' )
         {
-                send_to_char( "          {WBlueprints{x  {GLearned{x       {CDamage{x         {YMetal Cost{x\n\r", ch);
+                send_to_char( "            {WBlueprints{x  {GLearned{x       {CDamage{x         {YMetal Cost{x\n\r", ch);
                 send_to_char(bar, ch);
 
                 for (i = 0; i < BLUEPRINTS_MAX; i++)
@@ -4639,7 +4639,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
                         if ((ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)]  > 0) && (blueprint_list[i].blueprint_cost[0] > 0))
                         {
-                                sprintf(buf, "{W%20s{x {G%7d{x%% {c%6d{x {C%6d{x {w%6d{x {y%3d{x {Y%3d{x {W%3d{x {R%3d{x\n\r",
+                                sprintf(buf, "{W%22s{x {G%7d{x%% {c%6d{x {C%6d{x {w%6d{x {y%3d{x {Y%3d{x {W%3d{x {R%3d{x\n\r",
                                 blueprint_list[i].blueprint_name,
                                 ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)],
                                 blueprint_list[i].blueprint_damage[0],
@@ -4671,14 +4671,14 @@ void do_construct( CHAR_DATA *ch, char *arg )
         if (found == -1)
         {
                 send_to_char( "Unknown Blueprint\n\rTry wrapping your blueprint in "" if it's more than one word.\n\r", ch);
-                send_to_char( "          Blueprints         Learned      Damage\n\r", ch);
+                send_to_char( "            Blueprints         Learned      Damage\n\r", ch);
                 send_to_char(bar, ch);
 
                 for (i = 0; i < BLUEPRINTS_MAX; i++)
                 {
                         if ((ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)]  > 0) && (blueprint_list[i].blueprint_cost[0] > 0))
                         {
-                                 sprintf(buf, "{W%20s{x {G%7d{x%% {c%6d{x {C%6d{x {w%6d{x {y%3d{x {Y%3d{x {W%3d{x {R%3d{x\n\r",
+                                 sprintf(buf, "{W%22s{x {G%7d{x%% {c%6d{x {C%6d{x {w%6d{x {y%3d{x {Y%3d{x {W%3d{x {R%3d{x\n\r",
                                 blueprint_list[i].blueprint_name,
                                 ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)],
                                 blueprint_list[i].blueprint_damage[0],
