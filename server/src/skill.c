@@ -18,6 +18,33 @@ void yokogeri           args((CHAR_DATA *ch, CHAR_DATA *victim));
 void mawasigeri         args((CHAR_DATA *ch, CHAR_DATA *victim));
 void tenketsu           args((CHAR_DATA *ch, CHAR_DATA *victim));
 
+static inline void smelted_to_char_loss( const int cost[5],
+                                         CHAR_DATA *ch,
+                                         int coins_mode,
+                                         int learned )
+{
+        int loss_pct;
+        int lost[5];
+        int j;
+
+        if (learned < 1)   learned = 1;
+        if (learned > 100) learned = 100;
+
+        /* 1% -> 100% loss, 100% -> 10% loss (linear) */
+        loss_pct = 100 - ((learned - 1) * 90) / 99;
+
+        for (j = 0; j < 5; j++)
+        {
+                lost[j] = (cost[j] * loss_pct) / 100;
+
+                if (lost[j] < 1 && cost[j] > 0)
+                {
+                        lost[j] = 1;
+                }
+        }
+
+        smelted_to_char(lost[0], lost[1], lost[2], lost[3], lost[4], ch, coins_mode);
+}
 
 /*
  * Fly/Flight for native flyers, Halfdragons Danath
@@ -4766,25 +4793,17 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 if ((!strcmp(blueprint_list[i].blueprint_name, "weaponchain") && number_percent() > ch->pcdata->learned[gsn_weaponchain]) )
                 {
                         send_to_char("You heat the forge and ready your materials.\n\r", ch);
-                        send_to_char("You fumble... your materials slip into the forge and are lost to the infernal heat.\n\r", ch);
+                        send_to_char("You fumble... some of your materials slip into the forge and are lost to the flames.\n\r", ch);
                         act ("$n pounds $mself while creating $s armour!", ch, NULL, NULL, TO_ROOM);
-                        smelted_to_char( blueprint_list[i].blueprint_cost[0],
-                                blueprint_list[i].blueprint_cost[1],
-                                blueprint_list[i].blueprint_cost[2],
-                                blueprint_list[i].blueprint_cost[3],
-                                blueprint_list[i].blueprint_cost[4], ch, COINS_REPLACE);
+                        smelted_to_char_loss(blueprint_list[i].blueprint_cost, ch, COINS_REPLACE, ch->pcdata->learned[gsn_weaponchain]);
                         return;
                 }
                 if ((!strcmp(blueprint_list[i].blueprint_name, "shieldchain") && number_percent() > ch->pcdata->learned[gsn_shieldchain]) )
                 {
                         send_to_char("You heat the forge and ready your materials.\n\r", ch);
-                        send_to_char("You fumble... your materials slip into the forge and are lost to the infernal heat.\n\r", ch);
+                        send_to_char("You fumble... some of your materials slip into the forge and are lost to the flames.\n\r", ch);
                         act ("$n pounds $mself while creating $s armour!", ch, NULL, NULL, TO_ROOM);
-                        smelted_to_char( blueprint_list[i].blueprint_cost[0],
-                                blueprint_list[i].blueprint_cost[1],
-                                blueprint_list[i].blueprint_cost[2],
-                                blueprint_list[i].blueprint_cost[3],
-                                blueprint_list[i].blueprint_cost[4], ch, COINS_REPLACE);
+                        smelted_to_char_loss(blueprint_list[i].blueprint_cost, ch, COINS_REPLACE, ch->pcdata->learned[gsn_shieldchain]);
                         return;
                 }
 
@@ -4812,13 +4831,9 @@ void do_construct( CHAR_DATA *ch, char *arg )
         if ( number_percent() > ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] )
         {
                 send_to_char("You heat the forge and ready your materials.\n\r", ch);
-                send_to_char("You fumble... your materials slip into the forge and are lost to the infernal heat.\n\r", ch);
+                send_to_char("You fumble... some of your materials slip into the forge and are lost to the flames.\n\r", ch);
                 act ("$n pounds $mself while creating $s armour!", ch, NULL, NULL, TO_ROOM);
-                smelted_to_char( blueprint_list[i].blueprint_cost[0],
-                        blueprint_list[i].blueprint_cost[1],
-                        blueprint_list[i].blueprint_cost[2],
-                        blueprint_list[i].blueprint_cost[3],
-                        blueprint_list[i].blueprint_cost[4], ch, COINS_REPLACE);
+                smelted_to_char_loss(blueprint_list[i].blueprint_cost, ch, COINS_REPLACE, ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)]);
                 return;
         }
 
