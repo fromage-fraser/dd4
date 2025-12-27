@@ -4961,7 +4961,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
         char                    arg1 [ MAX_INPUT_LENGTH  ];
         char                    arg2 [ MAX_INPUT_LENGTH  ];
         char                    arg3 [ MAX_INPUT_LENGTH  ];
-        unsigned long int       value;
+        signed long int       value;
         unsigned long int       bvalue;
         int                     ivalue;
         char                    *bptr;
@@ -4989,6 +4989,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
                              "  patron deity_timer deity_flags affected_by\n\r"
                              "  bank plat gold silver copper age rage spec\n\r"
                              "  act crit swiftness bonus max_bonus slept\n\r"
+                             "  steel titanium adamantite electrum starmetal \n\r"
                              "String being one of:\n\r"
                              "  name short long title spec\n\r", ch);
                 return;
@@ -5360,25 +5361,65 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
         if ( !str_cmp( arg2, "plat" ) )
         {
+                if (value < 0) return;
                 victim->plat = value;
                 return;
         }
 
         if ( !str_cmp( arg2, "gold" ) )
         {
+                if (value < 0) return;
                 victim->gold = value;
                 return;
         }
 
         if ( !str_cmp( arg2, "silver" ) )
         {
+                if (value < 0) return;
                 victim->silver = value;
                 return;
         }
 
         if ( !str_cmp( arg2, "copper" ) )
         {
+                if (value < 0) return;
                 victim->copper = value;
+                return;
+        }
+
+        if ( !str_cmp( arg2, "steel" ) )
+        {
+                if (value < 0) return;
+                victim->smelted_steel = value;
+                return;
+        }
+
+        if ( !str_cmp( arg2, "titanium" ) )
+        {
+                if (value < 0) return;
+                victim->smelted_titanium = value;
+                return;
+        }
+
+        if ( !str_cmp( arg2, "adamantite" ) )
+        {
+                if (value < 0) return;
+                victim->smelted_adamantite = value;
+                return;
+        }
+
+        if ( !str_cmp( arg2, "electrum" ) )
+        {
+                if (value < 0) return;
+                victim->smelted_electrum = value;
+                return;
+        }
+
+        if ( !str_cmp( arg2, "starmetal" ) )
+        {
+                if (value < 0)
+                    return;
+                victim->smelted_starmetal = value;
                 return;
         }
 
