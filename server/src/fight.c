@@ -105,7 +105,7 @@ void state_update (void)
                                         {
                                                 send_to_char(skill_table[paf->type].msg_off, ch);
                                                 send_to_char("\n\r", ch);
-                                                act("<15>$n recovers, and re-focuses on the fight.<0>", ch, NULL, NULL, TO_ROOM);
+                                                act("<15>$c recovers, and re-focuses on the fight.<0>", ch, NULL, NULL, TO_ROOM);
                                                 affect_remove(ch, paf);
                                         }
 
