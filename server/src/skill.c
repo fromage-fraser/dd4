@@ -4704,7 +4704,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         if (found == -1)
         {
-                send_to_char( "Unknown Blueprint\n\rTry wrapping your blueprint in "" if it's more than one word.\n\r", ch);
+                send_to_char( "Unknown Blueprint\n\rTry wrapping your blueprint in single quotes if it's more than one word.\n\r", ch);
                 send_to_char( "            Blueprints         Learned      Damage\n\r", ch);
                 send_to_char(bar, ch);
 

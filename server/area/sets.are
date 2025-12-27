@@ -257,7 +257,7 @@ a smithy's steel cache~
 A steel storage box is here.~
 ~
 15 0 1
-100~ 1~ 0~ 0~
+410~ 1~ 0~ 0~
 5 0 0
 E
 steel storage box smithy's~
@@ -266,7 +266,7 @@ to hang or contain any sort of armour piece. On top is a steel whistle.~
 #2720
 blade module~
 blade module~
-A modular pellet component for an Engineers turret.~
+A modular pellet component for an Engineer's turret.~
 ~
 8 0 1
 60~ 120~ 9~ 9~
@@ -274,7 +274,7 @@ A modular pellet component for an Engineers turret.~
 #2721
 shuriken module~
 shuriken module~
-A modular shuriken component for an Engineers turret.~
+A modular shuriken component for an Engineer's turret.~
 ~
 42 0 1
 80~ 200~ 15~ 15~
@@ -282,7 +282,7 @@ A modular shuriken component for an Engineers turret.~
 #2722
 spear module~
 spear module~
-A modular spear component for an Engineers turret.~
+A modular spear component for an Engineer's turret.~
 ~
 42 0 1
 400~ 700~ 4~ 4~
@@ -290,7 +290,7 @@ A modular spear component for an Engineers turret.~
 #2723
 arrestor module~
 arrestor module~
-A modular arrestor component for an Engineers turret.~
+A modular arrestor component for an Engineer's turret.~
 ~
 48 0 1
 0~ 0~ 10~ 10~
@@ -298,7 +298,7 @@ A modular arrestor component for an Engineers turret.~
 #2724
 driver module~
 driver module~
-A modular driver component for an Engineers turret.~
+A modular driver component for an Engineer's turret.~
 ~
 48 0 1
 0~ 0~ 6~ 6~
@@ -306,7 +306,7 @@ A modular driver component for an Engineers turret.~
 #2725
 reflector module~
 reflector module~
-A modular arrestor component for an Engineers turret.~
+A modular arrestor component for an Engineer's turret.~
 ~
 48 0 1
 0~ 0~ 3~ 3~
@@ -314,7 +314,7 @@ A modular arrestor component for an Engineers turret.~
 #2726
 shield module~
 shield module~
-A modular shield component for an Engineers turret.~
+A modular shield component for an Engineer's turret.~
 ~
 48 0 1
 0~ 0~ 3~ 3~
@@ -350,7 +350,7 @@ A
 #2729
 starmetal dual blade sword~
 <1>₪₪₪₪§|(Ξ≥≤≥≤≥≤ΞΞΞΞΞΞΞΞ><0>~
-A dual blade starmetal sword draws your attention.~
+A dual-bladed starmetal sword draws your attention.~
 ~
 5 1|4 1024 8193
 0~ 69~ 169~ 1~

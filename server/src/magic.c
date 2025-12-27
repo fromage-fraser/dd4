@@ -4092,7 +4092,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         strcat (buf, " Engraved");
 
 
-                strcat (buf, ".\n\r");
+                strcat (buf, "\n\r");
                 send_paragraph_to_char (buf, ch, 4);
         }
 

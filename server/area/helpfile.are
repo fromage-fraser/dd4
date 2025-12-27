@@ -7820,7 +7820,7 @@ The origins of the SMITHY steam back to the dawn of time. Long prized throughout
 the realm for forging superior weapons and armour, over the aeons they have
 developed their entire culture around the craft: they can SMELT gear down to raw
 materials, IMBUE and COUNTERBALANCE weapons, and STRENGTHEN armour. Master
-Smithys can fashion legendary armour sets that grant extraordinary set bonuses.
+Smithies can fashion legendary armour sets that grant extraordinary set bonuses.
 ~
 
 1 REFORGE~
@@ -7839,7 +7839,7 @@ you bring your best weapon to bear on your enemies.
 
 Syntax: smelt <<armour> or <<weapon>
 
-Smithys can break down existing weapons and armour into their raw
+Smithies can break down existing weapons and armour into their raw
 materials. They then use these materials as the basis for more
 powerfull weapons, armour and augments.
 
@@ -7853,11 +7853,11 @@ if the smelting is successful.{x
 
 Syntax: imbue <<weapon>
 
-Smithys can add enchancements to weapons via their craft. The art of
-imbuing a weapon can sometimes be unpredictable and often enchancements
-follow this unpredictablity.
+Smithies can add enchancements to weapons via their craft. The art of
+imbuing a weapon is an uncertain one and often enhancements reflect this
+fundamental unpredictablity.
 
-NOTE: You will need to find a FORGE for this. see HELP CRAFTING
+NOTE: You will need to find a FORGE for this. See HELP CRAFTING.
 ~
 
 1 COUNTERBALANCE~
@@ -7875,10 +7875,10 @@ NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
 
 Syntax: construct weaponchain <<weapon>
 
-A Smithys weapon is firstly part of their culture, and their ability to fend
-for themselves in battle. Smithys can chain weapons to their wrist, to
-prevent them being disarmed in battle. Smithys may then HURL their weapon
-during combat, and have it return safely
+A Smithy's weapon is firstly part of their culture, and their ability to fend
+for themselves in battle. Smithies can chain weapons to their wrist, to
+prevent them being disarmed in battle. Smithies may then HURL their weapon
+during combat, and have it return safely.
 
 NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
 ~
@@ -7908,9 +7908,9 @@ connect
 Syntax: construct (To view what armour set pieces are available)
 Syntax: construct <<blueprint>
 
-Smithys are able to create sets of armour with additional bonuses. These
+Smithies are able to create sets of armour with additional bonuses. These
 bonuses are activated when certain pieces are worn together. Set pieces will
-be listed as seperate items to be learned.
+be listed as separate items to be learned.
 
 NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
 ~
@@ -7921,13 +7921,13 @@ Syntax: construct
 Syntax: construct <<blueprint>
 
 Without an argument, CONSTRUCT will show your known BLUEPRINTS.
-m
+
 With a target this allows a Smithy to build items, for example
 WEAPONCHAIN. Expert ENGINEERS will also use CONSTRUCT to build
 TURRETS or modules for the turret. To CONSTRUCT an item with
 multiple words in its name, surround the name with single quotes.
 
-NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
+NOTE: You will need to find an ANVIL for this. See HELP CRAFTING.
 ~
 
 1 STRENGTHEN~
@@ -7986,7 +7986,7 @@ no arguments.
 
 1 'SET PIECES'~
 
-Experienced smithys can construct sets of equipment that when worn
+Experienced smithies can construct sets of equipment that when worn
 together provide additional bonuses.
 ~
 
@@ -8004,9 +8004,9 @@ into the cache.
 
 Syntax: empower <<weapon>
 
-Smithys can empower weapons which enables those weapons to obtain a
+Smithies can empower weapons which enables those weapons to obtain a
 charge when successfully hitting their opponent. When the weapon is
-fully charged they use DISCHARGE to unleash a devistating attack
+fully charged they use DISCHARGE to unleash a devastating attack
 back onto their enemies.
 
 Your weapon's power decays over time when idle.
@@ -8044,7 +8044,7 @@ energy back to the opponent.{x
 
 Syntax: serrate <<weapon>
 
-Smithys can serrate bladed weapons to add bleed effects to opponents.
+Smithies can serrate bladed weapons to inflict bleeding on their opponents.
 
 A forge is needed to do this.
 ~
@@ -8187,7 +8187,7 @@ All modules must be placed in the turret to use.
 
 1 'BLOODFORGED HELM' 'BLOODFORGED BOOTS' 'BLOODFORGED LEGGINGS' 'BLOODFORGED GRIPS'~
 
-This is an EPIC set only available for experianced smithys.
+This is an EPIC set only available for experienced smithies.
 
 Syntax: construct 'bloodforged helm'
 Syntax: construct 'bloodforged boots'
@@ -8202,7 +8202,7 @@ many famous victories.
 
 1 'ASTRAL WRAP' 'ASTRAL ANOMALY' 'ASTRAL PLANE' 'ASTRAL ANOMALY' 'ASTRAL TRANSCENDENCE'~
 
-This is a LEGENDARY set only available for experienced Smithys.
+This is a LEGENDARY set only available for experienced smithies.
 
 Syntax: construct 'astral <<item>'
 
