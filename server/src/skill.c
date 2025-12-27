@@ -4656,6 +4656,13 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 return;
         }
 
+        if ( ( ch->position < POS_STANDING ) &&
+             ( arg1[0] != '\0' ) )
+        {
+            send_to_char("You're in no position to construct that right now.\n\r", ch);
+            return;
+        }
+
         if( arg1[0] == '\0' )
         {
                 send_to_char( "            {WBlueprints{x  {GLearned{x       {CDamage{x         {YMetal Cost{x\n\r", ch);

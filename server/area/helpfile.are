@@ -649,6 +649,11 @@ Gezhp, Owl and Shade
   update log, and an API
 - gather code slightly tweaked so skill and char level have greater effects
 
+{W December 2025{x
+
+- Smelt ruins fewer mats on failure the more skilled you are.
+- Eq AFF messages suppressed after quitting
+
 ~
 
 0 MULTIPLAYING MULTIPLAYERS~
@@ -7916,10 +7921,11 @@ Syntax: construct
 Syntax: construct <<blueprint>
 
 Without an argument, CONSTRUCT will show your known BLUEPRINTS.
-
-With a target this allows a Smithy to build items, for exaple
+m
+With a target this allows a Smithy to build items, for example
 WEAPONCHAIN. Expert ENGINEERS will also use CONSTRUCT to build
-TURRETS or modules for the turret.
+TURRETS or modules for the turret. To CONSTRUCT an item with
+multiple words in its name, surround the name with single quotes.
 
 NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
 ~
@@ -7939,8 +7945,8 @@ NOTE: You will need to find an ANVIL for this. see HELP CRAFTING
 Syntax: construct
 
 Blueprints are learned as you increase your knowledge in weaponsmithing
-or armoursmithing. Blueprints allow a SMITHY to build a number of
-different items, and augments. Using the CONSTRUCT skill without an
+or armoursmithing. Blueprints allow a SMITHY to build and augment a
+number of different items. Using the CONSTRUCT skill without an
 argument will list known blueprints.
 ~
 
@@ -7968,8 +7974,8 @@ starmetal dual blade:   <1>₪₪₪₪§|(Ξ≥≤≥≤≥≤ΞΞΞΞΞΞΞΞ>
 
 1 'WRENCH OF THE CROW' 'WINGS OF THE CROW' 'HUNTSMITHS'~
 
-Syntax: construct wrench of the crow
-Syntax: construct huntsmiths gloves
+Syntax: construct 'wrench of the crow'
+Syntax: construct 'huntsmith gloves'
 Syntax: construct .....
 
 These are blueprints that produce SET PIECES. These pieces when worn
@@ -7980,7 +7986,7 @@ no arguments.
 
 1 'SET PIECES'~
 
-Experiances Smithys can construct sets of armour, that when worn
+Experienced smithys can construct sets of equipment that when worn
 together provide additional bonuses.
 ~
 
@@ -7988,7 +7994,7 @@ together provide additional bonuses.
 
 Syntax: construct 'steel cache'
 
-A Smithys cache can be used as portable storage for any armour or
+A smithy's cache can be used as portable storage for any armour or
 weapons you may find. Its interior is filled with hooks and latches
 that allow all manner of weapons and armour to be hung or strapped
 into the cache.
@@ -8003,10 +8009,10 @@ charge when successfully hitting their opponent. When the weapon is
 fully charged they use DISCHARGE to unleash a devistating attack
 back onto their enemies.
 
-Your weapons power decays over time when idle.
+Your weapon's power decays over time when idle.
 
-Note a charge meter is enabled to your prompt when you empower a
-sword, and added to your prompt. See HELP PROMPT to understand
+Note: a charge meter is enabled to your prompt when you empower a
+sword, and then added to your prompt. See HELP PROMPT to understand
 how to customise this.
 ~
 
@@ -8014,7 +8020,7 @@ how to customise this.
 
 Syntax: discharge
 Upon reaching 100% charge on a empowered weapon (See help EMPOWER)
-you are able to unleash a devistating attack on an opponent.
+you are able to unleash a devastating attack on an opponent.
 ~
 
 1 ENGRAVE~
@@ -8025,8 +8031,8 @@ An experianced SMITHY is able to apply an engraving to armour and
 weapons. Each item that is engraved will contribute to your total
 maximum enhanced damage.
 
-During battle the engravings channel charge into an
-engraved weapon, enhancing its damage, upto the maximum.
+During battle the engravings channel charge into an engraved
+weapon, enhancing its damage up to a maximum value.
 
 You can see this in your PROMPT with %k (see HELP PROMPT)
 
@@ -8036,7 +8042,7 @@ energy back to the opponent.{x
 
 1 SERRATE~
 
-Syntax: Seratte <<weapon>
+Syntax: serrate <<weapon>
 
 Smithys can serrate bladed weapons to add bleed effects to opponents.
 
@@ -8065,10 +8071,10 @@ Syntax: construct 'blade module'
 Syntax: construct 'shuriken module'
 Syntax: construct 'spear module'
 
-These moduels are deemed to be offensive modules that can be
+These modules are deemed to be offensive modules that can be
 TRIGGERED by the ENGINEER.
 
-This will contruct modules that you can equip into your turret.
+This will construct modules that you can equip into your turret.
 Each module will have different damage outputs, and capacity.
 
 You can see these by typing 'construct'
@@ -8081,12 +8087,12 @@ Syntax: look turret (to inspect)
 Syntax: deploy turret (to prime for combat)
 Syntax: retract turret (to retract ready for transport)
 
-Turrets are an engineers support. They can provide additional
-damage or if you so choose, a means to defend yourself. Turrets can
-contain upto 4 modules. Each module performs a differnt ability
-and can be broken up into Offensive or Defensive modules.
+Turrets are an engineer's support. They can provide additional
+damage or, if you so choose, a means to defend yourself. Turrets can
+contain up to 4 modules. Each module performs a differnt ability
+and can be broken up into offensive or defensive modules.
 
-All modules are TRIGGERED by the Engineer.
+All modules are TRIGGERED by the engineer.
 All modules must be placed in the turret to work.
 
 Defensive modules such as the ARRESTOR MODULE generally prevent or
@@ -8181,7 +8187,7 @@ All modules must be placed in the turret to use.
 
 1 'BLOODFORGED HELM' 'BLOODFORGED BOOTS' 'BLOODFORGED LEGGINGS' 'BLOODFORGED GRIPS'~
 
-This is an EPIC set only available for experianced Smithys.
+This is an EPIC set only available for experianced smithys.
 
 Syntax: construct 'bloodforged helm'
 Syntax: construct 'bloodforged boots'
