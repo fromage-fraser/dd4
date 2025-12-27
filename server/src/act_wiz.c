@@ -274,6 +274,7 @@ void do_disconnect( CHAR_DATA *ch, char *argument )
                 if ( d == victim->desc )
                 {
                         close_socket( d );
+                        ch->pcdata->has_quit = TRUE;
                         send_to_char( "Ok.\n\r", ch );
                         return;
                 }

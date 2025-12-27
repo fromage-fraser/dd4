@@ -956,6 +956,7 @@ void close_socket (DESCRIPTOR_DATA *dclose)
                 }
                 else
                 {
+                        dclose->character->pcdata->has_quit = TRUE;
                         free_char(dclose->character);
                 }
         }
@@ -2514,6 +2515,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                             && !temp->character->deleted)
                         {
                                 write_to_buffer(temp, "Another player has disconnected you.\n\r", 0);
+                                d->character->pcdata->has_quit = TRUE;
                                 free_char(d->character);
                                 d->character = temp->character;
                                 d->character->desc = d;
@@ -2983,6 +2985,7 @@ bool check_reconnect (DESCRIPTOR_DATA *d, char *name, bool fConn)
                         }
                         else
                         {
+                                d->character->pcdata->has_quit = TRUE;
                                 free_char(d->character);
                                 d->character = ch;
                                 ch->desc     = d;
@@ -2994,6 +2997,7 @@ bool check_reconnect (DESCRIPTOR_DATA *d, char *name, bool fConn)
                                 log_string(log_buf);
                                 d->connected = CON_PLAYING;
                                 MXPSendTag( d, "<VERSION>" );
+                                ch->pcdata->has_quit = FALSE;
                                 /*
                                  *  Reconnection must not be able to be used to
                                  *  avoid entry lag; Gez 2000

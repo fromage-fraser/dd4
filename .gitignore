@@ -9,6 +9,10 @@
 ~$*
 
 /server/src/envy
+/server/api/changes.json
+/server/api/events.json
+/server/api/status.json
+/server/api/who.json
 /server/src/dd4
 /server/src/shutdown.txt
 /server/area/bugs.txt
