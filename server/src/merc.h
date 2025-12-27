@@ -3053,10 +3053,11 @@ struct  pc_data
         int                 dam_meter;
         int                 rounds;
         int                 dam_per_fight;
-        int                 bonus;         // Current available bonuses
-        int                 max_bonus;     // Maximum number of bonuses
-        bool                slept;         // Whether the player has slept/meditated since the last bonus recharge
-        time_t              last_recharge; // Timestamp of the last recharge
+        int                 bonus;         /* Current available bonuses */
+        int                 max_bonus;     /* Maximum number of bonuses */
+        bool                slept;         /* Whether the player has slept/meditated since the last bonus recharge */
+        time_t              last_recharge; /* Timestamp of the last recharge */
+        bool                has_quit;      /* Whether the player has quit the game (for message suppression) */
         /* ---- Per-player sound settings ---- */
         bool                snd_enabled;    /* master on/off */
         int                 snd_master;     /* 0..100 master “cap” */

@@ -1133,6 +1133,8 @@ void do_quit (CHAR_DATA *ch, char *argument)
         send_to_char("You bid farewell to the Dragons Domain.\n\r", ch);
         send_to_char("{RDon't worry though, they'll be here, plotting their revenge...\n\r\n\r{x", ch );
 
+        ch->pcdata->has_quit = TRUE; /* To suppress eq aff wearoffs */
+
         /* modified by geoff so wizinvis gods are not seen departing :)  */
         if (!IS_SET(ch->act, PLR_WIZINVIS))
         {

@@ -2460,6 +2460,9 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         WAIT_STATE(ch, PULSE_VIOLENCE);
                 }
 
+                /* reset quit flag */
+                ch->pcdata->has_quit = FALSE;
+
                 if (ch->silent_mode)
                         send_to_char("\n\rYou are in silent mode.\n\r", ch);
 

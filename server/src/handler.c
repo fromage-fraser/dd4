@@ -418,6 +418,9 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 else
                 {
                         ch->damage_mitigation += mod;
+
+                        if (ch->pcdata->has_quit) break;
+
                         send_to_char( "Your damage mitigation reduces somewhat.\n\r", ch );
                         break;
                 }
@@ -461,6 +464,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 else
                 {
                         affect_strip( ch, af.type );
+                        if (ch->pcdata->has_quit) break;
                         send_to_char( "<250>The white aura around your body vanishes.<0>\n\r", ch );
                         act( "<250>The white aura around $n's body vanishes.<0>", ch,
                             NULL, NULL, TO_ROOM);
@@ -488,6 +492,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 else
                 {
                         affect_strip( ch, af.type );
+                        if (ch->pcdata->has_quit) break;
                         send_to_char( "You emerge from the shadows.\n\r", ch );
                         act( "$n emerges from the shadows.", ch, NULL, NULL, TO_ROOM);
                         break;
@@ -514,6 +519,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 else
                 {
                         affect_strip( ch, af.type );
+                        if (ch->pcdata->has_quit) break;
                         send_to_char( "You fade back into existence.\n\r", ch );
                         act( "$n fades back into existence.", ch,
                             NULL, NULL, TO_ROOM);
@@ -541,6 +547,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 else
                 {
                         affect_strip( ch, af.type );
+                        if (ch->pcdata->has_quit) break;
                         send_to_char( "You no longer see invisible objects.\n\r", ch );
                         act( "$n's eyes stop tingling.", ch,
                             NULL, NULL, TO_ROOM);
@@ -567,6 +574,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 else
                 {
                         affect_strip( ch, af.type );
+                        if (ch->pcdata->has_quit) break;
                         send_to_char( "You feel less aware of your surroundings.\n\r", ch );
                         break;
                 }
@@ -592,6 +600,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 else
                 {
                         affect_strip( ch, af.type );
+                        if (ch->pcdata->has_quit) break;
                         send_to_char( "<88>The flames around your body fizzle out.<0>\n\r", ch );
                         act( "<88>The flames around $n's body fizzle out.<0>", ch,
                             NULL, NULL, TO_ROOM);
@@ -618,6 +627,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 else
                 {
                         affect_strip( ch, af.type );
+                        if (ch->pcdata->has_quit) break;
                         send_to_char( "<214>You feel less protected.<0>\n\r", ch );
                         break;
                 }
@@ -631,12 +641,13 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 }
                 else
                 {
+                        if (ch->pcdata->has_quit) break;
                         send_to_char( "You feel less prepared for battle.\n\r", ch );
                         break;
                 }
             case APPLY_SERRATED:
                 af.type = skill_lookup( "serrated" );
-                                if( fAdd )
+                if( fAdd )
                 {
                         break;
                 }
@@ -666,6 +677,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 else
                 {
                         affect_strip( ch, af.type );
+                        if (ch->pcdata->has_quit) break;
                         send_to_char( "You feel the pull of gravity slowly return.\n\r", ch );
                         act( "$n seems to be affected by gravity once more.", ch,
                             NULL, NULL, TO_ROOM);
@@ -693,6 +705,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 else
                 {
                         affect_strip( ch, af.type );
+                        if (ch->pcdata->has_quit) break;
                         send_to_char( "You feel solid again.\n\r", ch );
                         act( "$n looks solid once more.", ch, NULL, NULL, TO_ROOM);
                         break;
@@ -719,6 +732,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 else
                 {
                         affect_strip( ch, af.type );
+                        if (ch->pcdata->has_quit) break;
                         send_to_char( "The globe around you implodes.\n\r", ch );
                         act( "The globe around $n implodes.", ch,
                             NULL, NULL, TO_ROOM);
@@ -837,6 +851,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 else
                 {
                         affect_strip( ch, af.type );
+                        if (ch->pcdata->has_quit) break;
                         send_to_char("Your lungs revert to normal.\n\r", ch);
                 }
                 break;
@@ -2380,6 +2395,7 @@ void unequip_char( CHAR_DATA *ch, OBJ_DATA *obj )
                         if ( rem_bonus_objset ( pObjSetIndex, ch, obj, count) )
                         {
                                 affect_modify( ch, paf, FALSE, obj );
+                                if (ch->pcdata->has_quit) break;
                                 send_to_char ( "{WYour set bonus is removed.{x\n\r", ch);
                                 break;
                         }
