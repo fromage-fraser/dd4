@@ -7921,13 +7921,13 @@ Syntax: construct
 Syntax: construct <<blueprint>
 
 Without an argument, CONSTRUCT will show your known BLUEPRINTS.
-m
+
 With a target this allows a Smithy to build items, for example
 WEAPONCHAIN. Expert ENGINEERS will also use CONSTRUCT to build
 TURRETS or modules for the turret. To CONSTRUCT an item with
 multiple words in its name, surround the name with single quotes.
 
-NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
+NOTE: You will need to find an ANVIL for this. See HELP CRAFTING.
 ~
 
 1 STRENGTHEN~
