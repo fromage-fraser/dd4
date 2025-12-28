@@ -1124,6 +1124,75 @@ void populate_hoard_loot(CHAR_DATA *ch, OBJ_DATA *hoard) {
         /* if no idx found in 1000 tries, stop adding more */
         if (!idx) break;
     }
+
+    /*
+     * Gem Generation for Hoards
+     *
+     * Quality scales with character level using Fibonacci-style brackets:
+     * 1-20: Dull, 21-40: Cloudy, 41-60: Clear, 61-80: Brilliant, 81+: Flawless
+     * Chance for a gem to drop: ~25% per quest, scaling slightly with level.
+     */
+    if (number_percent() <= 25 + (ch->level / 10))
+    {
+        OBJ_INDEX_DATA *gem_idx;
+        OBJ_DATA *gem;
+        int gem_type;
+        int gem_quality;
+        char buf[MAX_STRING_LENGTH];
+
+        /* Determine gem quality based on level */
+        if (ch->level >= 81)
+            gem_quality = GEM_QUALITY_FLAWLESS;
+        else if (ch->level >= 61)
+            gem_quality = GEM_QUALITY_BRILLIANT;
+        else if (ch->level >= 41)
+            gem_quality = GEM_QUALITY_CLEAR;
+        else if (ch->level >= 21)
+            gem_quality = GEM_QUALITY_CLOUDY;
+        else
+            gem_quality = GEM_QUALITY_DULL;
+
+        /* Small chance for higher quality: roll again */
+        if (gem_quality < GEM_QUALITY_FLAWLESS && number_percent() <= 15)
+            gem_quality++;
+
+        /* Random gem type */
+        gem_type = number_range(0, GEM_TYPE_MAX - 1);
+
+        /* Create the gem object from generic template */
+        gem_idx = get_obj_index(2);
+        if (gem_idx != NULL)
+        {
+            gem = create_object(gem_idx, ch->level, "common", CREATED_SKILL);
+            gem->item_type = ITEM_GEM;
+            gem->value[0] = gem_type;
+            gem->value[1] = gem_quality;
+            gem->weight = 1;
+            gem->cost = (gem_quality + 1) * 100;
+
+            free_string(gem->name);
+            sprintf(buf, "gem %s %s",
+                gem_quality_name(gem_quality),
+                gem_type_name(gem_type));
+            gem->name = str_dup(buf);
+
+            free_string(gem->short_descr);
+            sprintf(buf, "a %s %s (%s %+d)",
+                gem_quality_name(gem_quality),
+                gem_type_name(gem_type),
+                affect_loc_name(gem_table[gem_type].apply_type),
+                get_gem_bonus(gem_type, gem_quality));
+            gem->short_descr = str_dup(buf);
+
+            free_string(gem->description);
+            sprintf(buf, "A %s %s lies here, glinting softly.",
+                gem_quality_name(gem_quality),
+                gem_type_name(gem_type));
+            gem->description = str_dup(buf);
+
+            obj_to_obj(gem, hoard);
+        }
+    }
 }
 
 

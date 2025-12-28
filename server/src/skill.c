@@ -9,6 +9,10 @@
 #include <time.h>
 #include "merc.h"
 
+/* External function declarations */
+void affect_modify      args( ( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon ) );
+int  total_coins_char   args( ( CHAR_DATA *ch ) );
+void coins_from_char    args( ( int cost, CHAR_DATA *ch ) );
 
 void atemi              args((CHAR_DATA *ch, CHAR_DATA *victim));
 void kansetsu           args((CHAR_DATA *ch, CHAR_DATA *victim));
@@ -6284,5 +6288,652 @@ int scale_pipe(int limit_level, int load_level, int base_value, bool higher_bad)
     return (int)scaled_value;
 }
 
+
+/*
+ * Gem and Socket System Commands
+ *
+ * Intent: Allow Smithy class players to manipulate gems and sockets.
+ * - gem_set: Place a gem in an empty socket
+ * - gem_unset: Remove a gem from a socket
+ * - gem_socket: Add a new socket to an item (requires tinker NPC)
+ * - gem_combine: Combine gems to upgrade quality
+ */
+
+/*
+ * do_gem_set: Place a gem into an item's socket.
+ *
+ * Syntax: set <gem> <item>
+ *
+ * Requirements:
+ * - Player must have the gem_set skill (Smithy class)
+ * - Item must have an empty socket
+ * - Gem must be in player's inventory
+ */
+void do_gem_set( CHAR_DATA *ch, char *argument )
+{
+        char arg1[MAX_INPUT_LENGTH];
+        char arg2[MAX_INPUT_LENGTH];
+        char buf[MAX_STRING_LENGTH];
+        OBJ_DATA *gem;
+        OBJ_DATA *item;
+        int i;
+        int empty_socket = -1;
+
+        if ( IS_NPC(ch) )
+                return;
+
+        if ( !CAN_DO(ch, gsn_gem_set) )
+        {
+                send_to_char( "You don't know how to set gems into items.\n\r", ch );
+                return;
+        }
+
+        argument = one_argument( argument, arg1 );
+        argument = one_argument( argument, arg2 );
+
+        if ( arg1[0] == '\0' || arg2[0] == '\0' )
+        {
+                send_to_char( "Syntax: set <<gem> <<item>\n\r", ch );
+                return;
+        }
+
+        /* Find the gem */
+        if ( ( gem = get_obj_carry( ch, arg1 ) ) == NULL )
+        {
+                send_to_char( "You don't have that gem.\n\r", ch );
+                return;
+        }
+
+        if ( gem->item_type != ITEM_GEM )
+        {
+                send_to_char( "That's not a gem.\n\r", ch );
+                return;
+        }
+
+        /* Find the item */
+        if ( ( item = get_obj_carry( ch, arg2 ) ) == NULL )
+        {
+                /* Check equipped items too */
+                item = get_obj_wear( ch, arg2 );
+                if ( item == NULL )
+                {
+                        send_to_char( "You don't have that item.\n\r", ch );
+                        return;
+                }
+        }
+
+        if ( !can_socket_item( item ) )
+        {
+                send_to_char( "That item cannot have gems socketed into it.\n\r", ch );
+                return;
+        }
+
+        if ( item->socket_count <= 0 )
+        {
+                send_to_char( "That item has no sockets.\n\r", ch );
+                return;
+        }
+
+        /* Find an empty socket */
+        for ( i = 0; i < item->socket_count && i < MAX_SOCKETS; i++ )
+        {
+                if ( item->socket_gem_type[i] < 0 )
+                {
+                        empty_socket = i;
+                        break;
+                }
+        }
+
+        if ( empty_socket < 0 )
+        {
+                send_to_char( "All sockets on that item are already filled.\n\r", ch );
+                return;
+        }
+
+        /* Check skill success */
+        if ( number_percent() > ch->pcdata->learned[gsn_gem_set] )
+        {
+                send_to_char( "You fumble and fail to set the gem properly.\n\r", ch );
+                
+                WAIT_STATE( ch, skill_table[gsn_gem_set].beats );
+                return;
+        }
+
+        /* Set the gem into the socket */
+        item->socket_gem_type[empty_socket] = gem->value[0];     /* gem type stored in value[0] */
+        item->socket_gem_quality[empty_socket] = gem->value[1];  /* quality stored in value[1] */
+
+        /* If item is equipped, apply the gem bonus immediately */
+        if ( item->wear_loc != WEAR_NONE )
+        {
+                int bonus = get_gem_bonus( gem->value[0], gem->value[1] );
+                AFFECT_DATA af;
+
+                af.type      = 0;
+                af.duration  = -1;
+                af.location  = gem_table[gem->value[0]].apply_type;
+                af.modifier  = bonus;
+                af.bitvector = 0;
+
+                affect_modify( ch, &af, TRUE, item );
+        }
+
+        sprintf( buf, "You carefully set %s into %s.\n\r",
+                gem->short_descr, item->short_descr );
+        send_to_char( buf, ch );
+
+        act( "$n sets $p into $P.", ch, gem, item, TO_ROOM );
+
+        
+        WAIT_STATE( ch, skill_table[gsn_gem_set].beats );
+
+        /* Remove and destroy the gem object */
+        extract_obj( gem );
+}
+
+
+/*
+ * do_gem_unset: Remove a gem from an item's socket.
+ *
+ * Syntax: unset <item> [socket#]
+ *
+ * Requirements:
+ * - Player must have the gem_unset skill (Smithy class)
+ * - Item must have a gem in a socket
+ */
+void do_gem_unset( CHAR_DATA *ch, char *argument )
+{
+        char arg1[MAX_INPUT_LENGTH];
+        char arg2[MAX_INPUT_LENGTH];
+        char buf[MAX_STRING_LENGTH];
+        OBJ_DATA *item;
+        OBJ_DATA *gem;
+        OBJ_INDEX_DATA *gem_index;
+        int socket_num = 0;
+        int gem_type;
+        int gem_quality;
+        int i;
+
+        if ( IS_NPC(ch) )
+                return;
+
+        if ( !CAN_DO(ch, gsn_gem_unset) )
+        {
+                send_to_char( "You don't know how to remove gems from items.\n\r", ch );
+                return;
+        }
+
+        argument = one_argument( argument, arg1 );
+        argument = one_argument( argument, arg2 );
+
+        if ( arg1[0] == '\0' )
+        {
+                send_to_char( "Syntax: unset <<item> [socket#]\n\r", ch );
+                return;
+        }
+
+        /* Find the item */
+        if ( ( item = get_obj_carry( ch, arg1 ) ) == NULL )
+        {
+                item = get_obj_wear( ch, arg1 );
+                if ( item == NULL )
+                {
+                        send_to_char( "You don't have that item.\n\r", ch );
+                        return;
+                }
+        }
+
+        if ( item->socket_count <= 0 )
+        {
+                send_to_char( "That item has no sockets.\n\r", ch );
+                return;
+        }
+
+        /* If socket number specified, use it; otherwise find first filled socket */
+        if ( arg2[0] != '\0' )
+        {
+                socket_num = atoi( arg2 ) - 1;  /* User specifies 1-based */
+                if ( socket_num < 0 || socket_num >= item->socket_count )
+                {
+                        send_to_char( "Invalid socket number.\n\r", ch );
+                        return;
+                }
+        }
+        else
+        {
+                /* Find first filled socket */
+                socket_num = -1;
+                for ( i = 0; i < item->socket_count && i < MAX_SOCKETS; i++ )
+                {
+                        if ( item->socket_gem_type[i] >= 0 )
+                        {
+                                socket_num = i;
+                                break;
+                        }
+                }
+        }
+
+        if ( socket_num < 0 || item->socket_gem_type[socket_num] < 0 )
+        {
+                send_to_char( "That socket is empty.\n\r", ch );
+                return;
+        }
+
+        gem_type = item->socket_gem_type[socket_num];
+        gem_quality = item->socket_gem_quality[socket_num];
+
+        /* Check skill success - failure may destroy gem */
+        if ( number_percent() > ch->pcdata->learned[gsn_gem_unset] )
+        {
+                send_to_char( "You fumble and the gem shatters!\n\r", ch );
+                item->socket_gem_type[socket_num] = -1;
+                item->socket_gem_quality[socket_num] = 0;
+
+                /* Remove the bonus if equipped */
+                if ( item->wear_loc != WEAR_NONE )
+                {
+                        int bonus = get_gem_bonus( gem_type, gem_quality );
+                        AFFECT_DATA af;
+
+                        af.type      = 0;
+                        af.duration  = -1;
+                        af.location  = gem_table[gem_type].apply_type;
+                        af.modifier  = -bonus;
+                        af.bitvector = 0;
+
+                        affect_modify( ch, &af, TRUE, item );
+                }
+
+                
+                WAIT_STATE( ch, skill_table[gsn_gem_unset].beats );
+                return;
+        }
+
+        /* Create a gem object to give back to the player */
+        /* We need a template gem object - use a generic one or create dynamically */
+        gem_index = get_obj_index( OBJ_VNUM_GEM_TEMPLATE );  /* Use a generic object vnum as template */
+        if ( gem_index != NULL )
+        {
+                gem = create_object( gem_index, 0, "common", CREATED_SKILL );
+                gem->item_type = ITEM_GEM;
+                gem->value[0] = gem_type;
+                gem->value[1] = gem_quality;
+
+                free_string( gem->name );
+                sprintf( buf, "gem %s %s",
+                        gem_quality_name( gem_quality ),
+                        gem_type_name( gem_type ) );
+                gem->name = str_dup( buf );
+
+                free_string( gem->short_descr );
+                sprintf( buf, "a %s %s (%s %+d)",
+                        gem_quality_name( gem_quality ),
+                        gem_type_name( gem_type ),
+                        affect_loc_name( gem_table[gem_type].apply_type ),
+                        get_gem_bonus( gem_type, gem_quality ) );
+                gem->short_descr = str_dup( buf );
+
+                free_string( gem->description );
+                sprintf( buf, "A %s %s lies here.",
+                        gem_quality_name( gem_quality ),
+                        gem_type_name( gem_type ) );
+                gem->description = str_dup( buf );
+
+                obj_to_char( gem, ch );
+        }
+
+        /* Clear the socket */
+        item->socket_gem_type[socket_num] = -1;
+        item->socket_gem_quality[socket_num] = 0;
+
+        /* Remove the bonus if equipped */
+        if ( item->wear_loc != WEAR_NONE )
+        {
+                int bonus = get_gem_bonus( gem_type, gem_quality );
+                AFFECT_DATA af;
+
+                af.type      = 0;
+                af.duration  = -1;
+                af.location  = gem_table[gem_type].apply_type;
+                af.modifier  = -bonus;
+                af.bitvector = 0;
+
+                affect_modify( ch, &af, TRUE, item );
+        }
+
+        sprintf( buf, "You carefully remove the %s from %s.\n\r",
+                gem_type_name( gem_type ), item->short_descr );
+        send_to_char( buf, ch );
+
+        act( "$n removes a gem from $P.", ch, NULL, item, TO_ROOM );
+
+        
+        WAIT_STATE( ch, skill_table[gsn_gem_unset].beats );
+}
+
+
+/*
+ * do_gem_socket: Add a socket to an item.
+ *
+ * Syntax: socket <item>
+ *
+ * Requirements:
+ * - Player must have the gem_socket skill (Smithy class)
+ * - Must be at a tinker NPC
+ * - Item must be able to have sockets
+ * - Item must not be at max sockets for its slot type
+ * - Costs increase with each additional socket
+ */
+void do_gem_socket( CHAR_DATA *ch, char *argument )
+{
+        char arg[MAX_INPUT_LENGTH];
+        char buf[MAX_STRING_LENGTH];
+        OBJ_DATA *item;
+        CHAR_DATA *tinker = NULL;
+        int max_slots;
+        int cost;
+        int current_sockets;
+
+        if ( IS_NPC(ch) )
+                return;
+
+        if ( !CAN_DO(ch, gsn_gem_socket) )
+        {
+                send_to_char( "You don't know how to add sockets to items.\n\r", ch );
+                return;
+        }
+
+        /* Check for tinker NPC in room */
+        for ( tinker = ch->in_room->people; tinker; tinker = tinker->next_in_room )
+        {
+                if ( IS_NPC(tinker) && IS_SET(tinker->pIndexData->act, ACT_TINKER) )
+                        break;
+        }
+
+        if ( !tinker )
+        {
+                send_to_char( "You need to be at a tinker's shop to add sockets.\n\r", ch );
+                return;
+        }
+
+        argument = one_argument( argument, arg );
+
+        if ( arg[0] == '\0' )
+        {
+                send_to_char( "Syntax: socket <<item>\n\r", ch );
+                return;
+        }
+
+        /* Find the item */
+        if ( ( item = get_obj_carry( ch, arg ) ) == NULL )
+        {
+                send_to_char( "You don't have that item.\n\r", ch );
+                return;
+        }
+
+        if ( !can_socket_item( item ) )
+        {
+                send_to_char( "That item cannot have sockets added to it.\n\r", ch );
+                return;
+        }
+
+        /* Check max sockets based on item's potential wear location */
+        max_slots = MAX_SOCKETS_LARGE;  /* Default to large for items in inventory */
+
+        /* If armor, check its wear flags */
+        if ( item->item_type == ITEM_ARMOR )
+        {
+                if ( IS_SET(item->wear_flags, ITEM_WEAR_FINGER) )
+                        max_slots = MAX_SOCKETS_SMALL;
+                else if ( IS_SET(item->wear_flags, ITEM_WEAR_NECK) )
+                        max_slots = MAX_SOCKETS_SMALL;
+                else if ( IS_SET(item->wear_flags, ITEM_WEAR_WAIST) )
+                        max_slots = MAX_SOCKETS_MEDIUM;
+                else if ( IS_SET(item->wear_flags, ITEM_WEAR_HANDS) )
+                        max_slots = MAX_SOCKETS_MEDIUM;
+                else if ( IS_SET(item->wear_flags, ITEM_WEAR_FEET) )
+                        max_slots = MAX_SOCKETS_MEDIUM;
+                else if ( IS_SET(item->wear_flags, ITEM_WEAR_WRIST) )
+                        max_slots = MAX_SOCKETS_MEDIUM;
+        }
+
+        current_sockets = item->socket_count;
+
+        if ( current_sockets >= max_slots )
+        {
+                send_to_char( "That item already has the maximum number of sockets.\n\r", ch );
+                return;
+        }
+
+        /* Cost increases with each socket: 1st=1000, 2nd=3000, 3rd=8000, 4th=21000 (Fibonacci-ish) */
+        switch ( current_sockets )
+        {
+            case 0:  cost = 1000 * COIN_PLAT; break;
+            case 1:  cost = 3000 * COIN_PLAT; break;
+            case 2:  cost = 8000 * COIN_PLAT; break;
+            case 3:  cost = 21000 * COIN_PLAT; break;
+            default: cost = 50000 * COIN_PLAT; break;
+        }
+
+        if ( total_coins_char(ch) < cost )
+        {
+                sprintf( buf, "Adding a socket costs %d platinum. You don't have enough.\n\r",
+                        cost / COIN_PLAT );
+                send_to_char( buf, ch );
+                return;
+        }
+
+        /* Check skill success */
+        if ( number_percent() > ch->pcdata->learned[gsn_gem_socket] )
+        {
+                /* Failure - lose half the cost */
+                coins_from_char( cost / 2, ch );
+                send_to_char( "The tinker's attempt to add a socket fails, damaging the item slightly.\n\r", ch );
+                
+                WAIT_STATE( ch, skill_table[gsn_gem_socket].beats * 2 );
+                return;
+        }
+
+        /* Success - pay and add socket */
+        coins_from_char( cost, ch );
+        item->socket_count++;
+
+        /* Initialize the new socket as empty */
+        item->socket_gem_type[item->socket_count - 1] = -1;
+        item->socket_gem_quality[item->socket_count - 1] = 0;
+
+        sprintf( buf, "The tinker carefully adds a socket to %s.\n\r", item->short_descr );
+        send_to_char( buf, ch );
+        sprintf( buf, "It now has %d socket%s.\n\r",
+                item->socket_count, item->socket_count == 1 ? "" : "s" );
+        send_to_char( buf, ch );
+
+        act( "$n has a socket added to $p.", ch, item, NULL, TO_ROOM );
+
+        
+        WAIT_STATE( ch, skill_table[gsn_gem_socket].beats );
+}
+
+
+/*
+ * do_gem_combine: Combine gems to create a higher quality gem.
+ *
+ * Syntax: gemcombine <gem type>
+ *
+ * Requirements:
+ * - Player must have the gem_combine skill (Smithy class)
+ * - Must have enough gems of the same type and quality
+ * - Combining thresholds: 2 Dull->Cloudy, 3 Cloudy->Clear, 5 Clear->Brilliant, 8 Brilliant->Flawless
+ */
+void do_gem_combine( CHAR_DATA *ch, char *argument )
+{
+        char arg[MAX_INPUT_LENGTH];
+        char buf[MAX_STRING_LENGTH];
+        OBJ_DATA *gem;
+        OBJ_DATA *gem_next;
+        OBJ_DATA *new_gem;
+        OBJ_INDEX_DATA *gem_index;
+        int gem_type = -1;
+        int gem_quality = -1;
+        int count = 0;
+        int needed = 0;
+        int gems_used = 0;
+
+        if ( IS_NPC(ch) )
+                return;
+
+        if ( !CAN_DO(ch, gsn_gem_combine) )
+        {
+                send_to_char( "You don't know how to combine gems.\n\r", ch );
+                return;
+        }
+
+        argument = one_argument( argument, arg );
+
+        if ( arg[0] == '\0' )
+        {
+                send_to_char( "Syntax: gemcombine <<gem type>\n\r", ch );
+                send_to_char( "This will combine your lowest quality gems of that type.\n\r", ch );
+                return;
+        }
+
+        /* Look up the gem type */
+        gem_type = gem_type_lookup( arg );
+        if ( gem_type < 0 )
+        {
+                send_to_char( "That's not a valid gem type.\n\r", ch );
+                send_to_char( "Valid types: garnet, chrysoberyl, sapphire, amethyst, jade, bloodstone,\n\r", ch );
+                send_to_char( "            onyx, jasper, ruby, lapis, opal, aquamarine, amber, peridot,\n\r", ch );
+                send_to_char( "            diamond, sunstone\n\r", ch );
+                return;
+        }
+
+        /* Find the lowest quality gems of this type and count them */
+        for ( gem_quality = GEM_QUALITY_DULL; gem_quality < GEM_QUALITY_FLAWLESS; gem_quality++ )
+        {
+                count = 0;
+                for ( gem = ch->carrying; gem; gem = gem->next_content )
+                {
+                        if ( gem->item_type == ITEM_GEM
+                             && gem->value[0] == gem_type
+                             && gem->value[1] == gem_quality )
+                        {
+                                count++;
+                        }
+                }
+
+                if ( count > 0 )
+                        break;  /* Found lowest quality with gems */
+        }
+
+        if ( gem_quality >= GEM_QUALITY_FLAWLESS )
+        {
+                send_to_char( "You don't have any gems of that type to combine, or they are already flawless.\n\r", ch );
+                return;
+        }
+
+        /* Determine how many are needed to combine */
+        switch ( gem_quality )
+        {
+            case GEM_QUALITY_DULL:      needed = GEM_COMBINE_DULL; break;
+            case GEM_QUALITY_CLOUDY:    needed = GEM_COMBINE_CLOUDY; break;
+            case GEM_QUALITY_CLEAR:     needed = GEM_COMBINE_CLEAR; break;
+            case GEM_QUALITY_BRILLIANT: needed = GEM_COMBINE_BRILLIANT; break;
+            default: needed = 99; break;
+        }
+
+        if ( count < needed )
+        {
+                sprintf( buf, "You need %d %s %ss to combine into a %s one.\n\r",
+                        needed,
+                        gem_quality_name( gem_quality ),
+                        gem_type_name( gem_type ),
+                        gem_quality_name( gem_quality + 1 ) );
+                send_to_char( buf, ch );
+                sprintf( buf, "You have %d.\n\r", count );
+                send_to_char( buf, ch );
+                return;
+        }
+
+        /* Check skill success */
+        if ( number_percent() > ch->pcdata->learned[gsn_gem_combine] )
+        {
+                /* Failure - lose one gem */
+                for ( gem = ch->carrying; gem; gem = gem_next )
+                {
+                        gem_next = gem->next_content;
+                        if ( gem->item_type == ITEM_GEM
+                             && gem->value[0] == gem_type
+                             && gem->value[1] == gem_quality )
+                        {
+                                extract_obj( gem );
+                                break;
+                        }
+                }
+                send_to_char( "You fumble the combination and a gem shatters!\n\r", ch );
+                
+                WAIT_STATE( ch, skill_table[gsn_gem_combine].beats );
+                return;
+        }
+
+        /* Remove the required gems */
+        gems_used = 0;
+        for ( gem = ch->carrying; gem && gems_used < needed; gem = gem_next )
+        {
+                gem_next = gem->next_content;
+                if ( gem->item_type == ITEM_GEM
+                     && gem->value[0] == gem_type
+                     && gem->value[1] == gem_quality )
+                {
+                        extract_obj( gem );
+                        gems_used++;
+                }
+        }
+
+        /* Create the new higher quality gem */
+        gem_index = get_obj_index( OBJ_VNUM_GEM_TEMPLATE );  /* Generic object template */
+        if ( gem_index != NULL )
+        {
+                new_gem = create_object( gem_index, 0, "common", CREATED_SKILL );
+                new_gem->item_type = ITEM_GEM;
+                new_gem->value[0] = gem_type;
+                new_gem->value[1] = gem_quality + 1;
+
+                free_string( new_gem->name );
+                sprintf( buf, "gem %s %s",
+                        gem_quality_name( gem_quality + 1 ),
+                        gem_type_name( gem_type ) );
+                new_gem->name = str_dup( buf );
+
+                free_string( new_gem->short_descr );
+                sprintf( buf, "a %s %s (%s %+d)",
+                        gem_quality_name( gem_quality + 1 ),
+                        gem_type_name( gem_type ),
+                        affect_loc_name( gem_table[gem_type].apply_type ),
+                        get_gem_bonus( gem_type, gem_quality + 1 ) );
+                new_gem->short_descr = str_dup( buf );
+
+                free_string( new_gem->description );
+                sprintf( buf, "A %s %s lies here.",
+                        gem_quality_name( gem_quality + 1 ),
+                        gem_type_name( gem_type ) );
+                new_gem->description = str_dup( buf );
+
+                obj_to_char( new_gem, ch );
+
+                sprintf( buf, "You combine %d %s %ss into a %s %s!\n\r",
+                        needed,
+                        gem_quality_name( gem_quality ),
+                        gem_type_name( gem_type ),
+                        gem_quality_name( gem_quality + 1 ),
+                        gem_type_name( gem_type ) );
+                send_to_char( buf, ch );
+
+                act( "$n combines several gems into a more brilliant one.", ch, NULL, NULL, TO_ROOM );
+        }
+
+        
+        WAIT_STATE( ch, skill_table[gsn_gem_combine].beats );
+}
 
 

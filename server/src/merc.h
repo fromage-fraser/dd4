@@ -1211,6 +1211,24 @@ struct digmod_terrain
         int     mvcost_mod;
 };
 
+/*
+ * Gem type structure for the socketing system.
+ * Maps gem types to their associated APPLY bonuses.
+ */
+struct gem_type
+{
+        char    *name;           /* Gem name (e.g., "Garnet") */
+        int     apply_type;      /* APPLY_* constant */
+        int     multiplier;      /* Bonus multiplier for this apply type */
+        bool    negative_is_good;/* TRUE if negative values benefit player (e.g., AC) */
+};
+
+/* Quality name lookup */
+extern const char *gem_quality_names[];
+
+/* Gem type table */
+extern const struct gem_type gem_table[];
+
 
 /*
  *  Data Un color type
@@ -2224,6 +2242,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define OBJ_VNUM_MEND_RUNE              2742
 #define OBJ_VNUM_CURE_RUNE              2743
 #define OBJ_VNUM_WARD_RUNE              2744
+#define OBJ_VNUM_GEM_TEMPLATE           2     /* Template object for creating gems */
 
 /* End Smithy Stuff */
 
@@ -2329,6 +2348,56 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_PIPE_CLEANER               53
 #define ITEM_SMOKEABLE                  54
 #define ITEM_REMAINS                    55 /* What a mob who is ACT_OBJECT leaves behind instead of a corpse */
+#define ITEM_GEM                        56 /* A gem that can be socketed into equipment */
+
+/*
+ * Gem qualities: Dull -> Cloudy -> Clear -> Brilliant -> Flawless
+ * Combining: 2 Dull = 1 Cloudy, 3 Cloudy = 1 Clear, 5 Clear = 1 Brilliant, 8 Brilliant = 1 Flawless
+ */
+#define GEM_QUALITY_DULL                0
+#define GEM_QUALITY_CLOUDY              1
+#define GEM_QUALITY_CLEAR               2
+#define GEM_QUALITY_BRILLIANT           3
+#define GEM_QUALITY_FLAWLESS            4
+#define GEM_QUALITY_MAX                 5
+
+/* Fibonacci values for gem combining thresholds (2,3,5,8) */
+#define GEM_COMBINE_DULL                2
+#define GEM_COMBINE_CLOUDY              3
+#define GEM_COMBINE_CLEAR               5
+#define GEM_COMBINE_BRILLIANT           8
+
+/* Fibonacci values for gem apply bonuses (+1,+2,+3,+5,+8) */
+#define GEM_BONUS_DULL                  1
+#define GEM_BONUS_CLOUDY                2
+#define GEM_BONUS_CLEAR                 3
+#define GEM_BONUS_BRILLIANT             5
+#define GEM_BONUS_FLAWLESS              8
+
+/* Gem types - mapped to APPLY constants */
+#define GEM_TYPE_GARNET                 0  /* APPLY_STR */
+#define GEM_TYPE_CHRYSOBERYL            1  /* APPLY_DEX */
+#define GEM_TYPE_SAPPHIRE               2  /* APPLY_INT */
+#define GEM_TYPE_AMETHYST               3  /* APPLY_WIS */
+#define GEM_TYPE_JADE                   4  /* APPLY_CON */
+#define GEM_TYPE_BLOODSTONE             5  /* APPLY_HIT */
+#define GEM_TYPE_ONYX                   6  /* APPLY_AC */
+#define GEM_TYPE_JASPER                 7  /* APPLY_HITROLL */
+#define GEM_TYPE_RUBY                   8  /* APPLY_DAMROLL */
+#define GEM_TYPE_LAPIS                  9  /* APPLY_SAVING_SPELL */
+#define GEM_TYPE_OPAL                   10 /* APPLY_RESIST_HEAT */
+#define GEM_TYPE_AQUAMARINE             11 /* APPLY_RESIST_COLD */
+#define GEM_TYPE_AMBER                  12 /* APPLY_RESIST_LIGHTNING */
+#define GEM_TYPE_PERIDOT                13 /* APPLY_RESIST_ACID */
+#define GEM_TYPE_DIAMOND                14 /* APPLY_CRIT */
+#define GEM_TYPE_SUNSTONE               15 /* APPLY_SWIFTNESS */
+#define GEM_TYPE_MAX                    16
+
+/* Socket limits per wear slot category */
+#define MAX_SOCKETS                     4
+#define MAX_SOCKETS_SMALL               1  /* rings, amulets */
+#define MAX_SOCKETS_MEDIUM              2  /* belts, gloves, boots */
+#define MAX_SOCKETS_LARGE               4  /* body, weapons, shields, etc. */
 
 /*
  * Extra flags.
@@ -3135,6 +3204,7 @@ struct obj_index_data
         int                     ego_flags;
         int                     max_instances;    // 0 = unlimited
         int                     spawn_count;      // number of times created this runtime (not decremented)
+        int                     socket_count;     // Number of sockets defined in area file (0-4)
 };
 
 /*
@@ -3195,6 +3265,10 @@ struct obj_data
         int                     how_created;
         int                     max_instances;
         int                     spawn_count;
+        /* Socket system for gems */
+        int                     socket_count;               /* Number of sockets on this item (0-4) */
+        int                     socket_gem_type [ MAX_SOCKETS ];   /* Gem type in each socket (-1 = empty) */
+        int                     socket_gem_quality [ MAX_SOCKETS ];/* Quality of gem in each socket */
 };
 
 
@@ -3616,6 +3690,7 @@ extern int gsn_ofind;
 extern int gsn_oscore;
 extern int gsn_osfind;
 extern int gsn_oload;
+extern int gsn_gemload;
 extern int gsn_oset;
 extern int gsn_ostat;
 extern int gsn_osstat;
@@ -4101,6 +4176,12 @@ extern int gsn_bonus_exotic;
 extern int gsn_bonus_initiate;
 extern int gsn_sense_wisdom;
 
+/* Gem and socket system skills (Smithy class) */
+extern int gsn_gem_set;        /* Place a gem in a socket */
+extern int gsn_gem_unset;      /* Remove a gem from a socket */
+extern int gsn_gem_socket;     /* Add a socket to an item */
+extern int gsn_gem_combine;    /* Combine gems to upgrade quality */
+
 /*
  *  Deity gsns
  */
@@ -4448,6 +4529,10 @@ DECLARE_DO_FUN( do_forge                        );      /* forge skill - warrior
 DECLARE_DO_FUN( do_freeze                       );
 DECLARE_DO_FUN( do_gag                          );      /* gag parry etc... */
 DECLARE_DO_FUN( do_get                          );
+DECLARE_DO_FUN( do_gem_set                      );      /* Place gem in socket - Smithy */
+DECLARE_DO_FUN( do_gem_unset                    );      /* Remove gem from socket - Smithy */
+DECLARE_DO_FUN( do_gem_socket                   );      /* Add socket to item - Smithy */
+DECLARE_DO_FUN( do_gem_combine                  );      /* Combine gems to upgrade - Smithy */
 DECLARE_DO_FUN( do_give                         );
 DECLARE_DO_FUN( do_gouge                        );      /* brawler skill */
 DECLARE_DO_FUN( do_grapple                      );      /* ditto */
@@ -4569,6 +4654,7 @@ DECLARE_DO_FUN( do_ofind                        );
 DECLARE_DO_FUN( do_oscore                       );
 DECLARE_DO_FUN( do_osfind                       );
 DECLARE_DO_FUN( do_oload                        );
+DECLARE_DO_FUN( do_gemload                      );      /* Imm gem/socket command */
 DECLARE_DO_FUN( do_open                         );
 DECLARE_DO_FUN( do_open_seal                    );      /*for werewolfs*/
 DECLARE_DO_FUN( do_order                        );
@@ -5239,6 +5325,17 @@ int     get_obj_number                  args( ( OBJ_DATA *obj ) );
 int     get_inv_number                  args( ( OBJ_DATA *obj ) );
 int     get_obj_weight                  args( ( OBJ_DATA *obj ) );
 int     get_container_count             args( ( OBJ_DATA *obj ) );
+
+/* Gem and socket system helper functions */
+int     get_gem_bonus                   args( ( int gem_type, int quality ) );
+int     max_sockets_for_slot            args( ( int wear_loc ) );
+char    *gem_type_name                  args( ( int gem_type ) );
+char    *gem_quality_name               args( ( int quality ) );
+int     gem_type_lookup                 args( ( const char *name ) );
+int     gem_quality_lookup              args( ( const char *name ) );
+void    apply_socketed_gems             args( ( CHAR_DATA *ch, OBJ_DATA *obj, bool add ) );
+bool    can_socket_item                 args( ( OBJ_DATA *obj ) );
+
 bool    is_clan                         args( ( CHAR_DATA *ch ) );
 bool    is_same_clan                    args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 int     clan_lookup                     args( ( const char *name ) );

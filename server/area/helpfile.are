@@ -8226,5 +8226,133 @@ This stat will provide a chance to obtain an additional hit any time you attack.
 This applies for 2nd, 3rd, 4th etc attacks. High DEXTERITY will improve this stat.
 ~
 
+1 'SET GEM' 'GEM SET'~
+
+Syntax: set <<gem> <<item>
+
+This Smithy skill allows you to place a gem into an empty socket on an item.
+The gem will be consumed and its bonus will be applied to the item when worn.
+
+Different gems provide different stat bonuses:
+  Garnet (STR), Chrysoberyl (DEX), Sapphire (INT), Amethyst (WIS), Jade (CON)
+  Bloodstone (HP), Onyx (AC), Jasper (HITROLL), Ruby (DAMROLL)
+  Lapis Lazuli (SAVES), Opal (HEAT RESIST), Aquamarine (COLD RESIST)
+  Amber (LIGHTNING RESIST), Peridot (ACID RESIST), Diamond (CRIT), Sunstone (SWIFTNESS)
+
+Gem quality affects bonus strength: Dull (+1), Cloudy (+2), Clear (+3),
+Brilliant (+5), Flawless (+8). Some gems have multipliers applied.
+
+See also: UNSET, SOCKET, GEMCOMBINE, GEMS
+~
+
+1 'UNSET GEM' 'GEM UNSET'~
+
+Syntax: unset <<item> [socket#]
+
+This Smithy skill allows you to remove a gem from an item's socket.
+If you don't specify a socket number, the first filled socket is used.
+
+{WWARNING:{x There is a chance the gem may shatter during removal if your
+skill check fails. Higher skill reduces this risk.
+
+See also: SET, SOCKET, GEMCOMBINE, GEMS
+~
+
+1 'SOCKET' 'ADD SOCKET'~
+
+Syntax: socket <<item>
+
+This Smithy skill allows you to add a new socket to an item. You must be
+at a tinker's shop (ACT_TINKER NPC) to perform this action.
+
+The cost increases with each additional socket:
+  1st socket: 1,000 platinum
+  2nd socket: 3,000 platinum
+  3rd socket: 8,000 platinum
+  4th socket: 21,000 platinum
+
+Maximum sockets by item type:
+  Small items (rings, amulets): 1 socket max
+  Medium items (belts, gloves, boots, wrists): 2 sockets max
+  Large items (body, weapons, shields, etc.): 4 sockets max
+
+See also: SET, UNSET, GEMCOMBINE, GEMS
+~
+
+1 'GEMCOMBINE' 'COMBINE GEMS' 'GEM COMBINE'~
+
+Syntax: gemcombine <<gem type>
+
+This Smithy skill allows you to combine multiple gems of the same type and
+quality into a single gem of higher quality. The combining uses Fibonacci
+scaling:
+  2 Dull gems     -> 1 Cloudy gem
+  3 Cloudy gems   -> 1 Clear gem
+  5 Clear gems    -> 1 Brilliant gem
+  8 Brilliant gems -> 1 Flawless gem
+
+The command will automatically find and combine your lowest quality gems
+of the specified type.
+
+{WWARNING:{x There is a small chance of losing a gem if the skill check fails.
+
+See also: SET, UNSET, SOCKET, GEMS
+~
+
+0 'GEMS' 'GEM' 'SOCKETS' 'SOCKETING'~
+
+The gem and socket system allows you to customize your equipment with
+stat-boosting gems.
+
+{WGEM TYPES:{x
+  Garnet (STR), Chrysoberyl (DEX), Sapphire (INT), Amethyst (WIS), Jade (CON)
+  Bloodstone (HP), Onyx (AC), Jasper (HITROLL), Ruby (DAMROLL)
+  Lapis Lazuli (SAVES), Opal (HEAT RESIST), Aquamarine (COLD RESIST)
+  Amber (LIGHTNING RESIST), Peridot (ACID RESIST), Diamond (CRIT), Sunstone (SWIFT)
+
+{WGEM QUALITIES:{x (Fibonacci scaling)
+  Dull (+1), Cloudy (+2), Clear (+3), Brilliant (+5), Flawless (+8)
+
+{WSOCKET LIMITS:{x
+  Small items (rings, amulets): 1 socket max
+  Medium items (belts, gloves, boots, wrists): 2 sockets max
+  Large items (body, weapons, shields, etc.): 4 sockets max
+
+{WACQUIRING GEMS:{x
+  Gems can be found randomly in quest hoards. Quality scales with level:
+  Levels 1-20: Dull, 21-40: Cloudy, 41-60: Clear, 61-80: Brilliant, 81+: Flawless
+
+{WSMITHY SKILLS:{x
+  SET        - Place a gem into a socket
+  UNSET      - Remove a gem from a socket
+  SOCKET     - Add a socket to an item (at tinkers, costs platinum)
+  GEMCOMBINE - Merge gems to upgrade quality
+
+Other classes must pay tinkers to perform these services.
+
+See also: SET, UNSET, SOCKET, GEMCOMBINE
+~
+
+101 'GEMLOAD'~
+
+Syntax: gemload gem <<type> <<quality>
+Syntax: gemload socket <<item>
+
+This immortal command allows you to create gems and add sockets for testing.
+
+{Wgemload gem <<type> <<quality>{x
+  Creates a gem of the specified type and quality.
+  Types: garnet, chrysoberyl, sapphire, amethyst, jade, bloodstone,
+         onyx, jasper, ruby, lapis, opal, aquamarine, amber, peridot,
+         diamond, sunstone
+  Qualities: dull, cloudy, clear, brilliant, flawless
+
+{Wgemload socket <<item>{x
+  Adds a socket to the specified item (bypasses normal cost and limits,
+  but respects the maximum of 4 sockets per item).
+
+See also: GEMS, SET, UNSET, SOCKET, GEMCOMBINE
+~
+
 0 $~
 #$

@@ -7592,4 +7592,168 @@ void do_bitsum(CHAR_DATA *ch, char *argument)
     send_to_char(buf, ch);
 }
 
+
+/*
+ * do_gemload: Immortal command to create gems and add sockets to items.
+ *
+ * Intent: Provide immortals with tools to test and manage the gem/socket system.
+ *
+ * Syntax:
+ *   gemload gem <type> <quality>     - Create a gem of specified type and quality
+ *   gemload socket <item>            - Add a socket to an item (no cost, no limit)
+ *
+ * Examples:
+ *   gemload gem ruby flawless        - Create a flawless ruby
+ *   gemload gem diamond dull         - Create a dull diamond
+ *   gemload socket sword             - Add a socket to 'sword' item
+ */
+void do_gemload( CHAR_DATA *ch, char *argument )
+{
+        CHAR_DATA *rch;
+        char arg1[MAX_INPUT_LENGTH];
+        char arg2[MAX_INPUT_LENGTH];
+        char arg3[MAX_INPUT_LENGTH];
+        char buf[MAX_STRING_LENGTH];
+
+        rch = get_char( ch );
+
+        if ( !authorized( rch, gsn_gemload ) )
+                return;
+
+        argument = one_argument( argument, arg1 );
+        argument = one_argument( argument, arg2 );
+        argument = one_argument( argument, arg3 );
+
+        if ( arg1[0] == '\0' )
+        {
+                send_to_char( "Syntax: gemload gem <<type> <<quality>\n\r", ch );
+                send_to_char( "        gemload socket <<item>\n\r", ch );
+                send_to_char( "\n\rGem types: garnet, chrysoberyl, sapphire, amethyst, jade, bloodstone,\n\r", ch );
+                send_to_char( "           onyx, jasper, ruby, lapis, opal, aquamarine, amber, peridot,\n\r", ch );
+                send_to_char( "           diamond, sunstone\n\r", ch );
+                send_to_char( "Qualities: dull, cloudy, clear, brilliant, flawless\n\r", ch );
+                return;
+        }
+
+        /* Create a gem */
+        if ( !str_cmp( arg1, "gem" ) )
+        {
+                OBJ_DATA *gem;
+                OBJ_INDEX_DATA *gem_index;
+                int gem_type;
+                int gem_quality;
+
+                if ( arg2[0] == '\0' || arg3[0] == '\0' )
+                {
+                        send_to_char( "Syntax: gemload gem <<type> <<quality>\n\r", ch );
+                        return;
+                }
+
+                gem_type = gem_type_lookup( arg2 );
+                if ( gem_type < 0 )
+                {
+                        send_to_char( "Invalid gem type.\n\r", ch );
+                        send_to_char( "Types: garnet, chrysoberyl, sapphire, amethyst, jade, bloodstone,\n\r", ch );
+                        send_to_char( "       onyx, jasper, ruby, lapis, opal, aquamarine, amber, peridot,\n\r", ch );
+                        send_to_char( "       diamond, sunstone\n\r", ch );
+                        return;
+                }
+
+                gem_quality = gem_quality_lookup( arg3 );
+                if ( gem_quality < 0 )
+                {
+                        send_to_char( "Invalid quality. Use: dull, cloudy, clear, brilliant, flawless\n\r", ch );
+                        return;
+                }
+
+                gem_index = get_obj_index( OBJ_VNUM_GEM_TEMPLATE );
+                if ( gem_index == NULL )
+                {
+                        send_to_char( "Error: Gem template object not found.\n\r", ch );
+                        return;
+                }
+
+                gem = create_object( gem_index, ch->level, "common", CREATED_SKILL );
+                gem->item_type = ITEM_GEM;
+                gem->value[0] = gem_type;
+                gem->value[1] = gem_quality;
+                gem->weight = 1;
+                gem->cost = (gem_quality + 1) * 100;
+
+                free_string( gem->name );
+                sprintf( buf, "gem %s %s",
+                        gem_quality_name( gem_quality ),
+                        gem_type_name( gem_type ) );
+                gem->name = str_dup( buf );
+
+                free_string( gem->short_descr );
+                sprintf( buf, "a %s %s (%s %+d)",
+                        gem_quality_name( gem_quality ),
+                        gem_type_name( gem_type ),
+                        affect_loc_name( gem_table[gem_type].apply_type ),
+                        get_gem_bonus( gem_type, gem_quality ) );
+                gem->short_descr = str_dup( buf );
+
+                free_string( gem->description );
+                sprintf( buf, "A %s %s lies here, glinting softly.",
+                        gem_quality_name( gem_quality ),
+                        gem_type_name( gem_type ) );
+                gem->description = str_dup( buf );
+
+                obj_to_char( gem, ch );
+
+                sprintf( buf, "You create %s.\n\r", gem->short_descr );
+                send_to_char( buf, ch );
+                return;
+        }
+
+        /* Add a socket to an item */
+        if ( !str_cmp( arg1, "socket" ) )
+        {
+                OBJ_DATA *item;
+
+                if ( arg2[0] == '\0' )
+                {
+                        send_to_char( "Syntax: gemload socket <<item>\n\r", ch );
+                        return;
+                }
+
+                if ( ( item = get_obj_carry( ch, arg2 ) ) == NULL )
+                {
+                        item = get_obj_wear( ch, arg2 );
+                        if ( item == NULL )
+                        {
+                                send_to_char( "You don't have that item.\n\r", ch );
+                                return;
+                        }
+                }
+
+                if ( !can_socket_item( item ) )
+                {
+                        send_to_char( "That item type cannot have sockets.\n\r", ch );
+                        return;
+                }
+
+                if ( item->socket_count >= MAX_SOCKETS )
+                {
+                        send_to_char( "That item already has the maximum number of sockets (4).\n\r", ch );
+                        return;
+                }
+
+                item->socket_count++;
+                item->socket_gem_type[item->socket_count - 1] = -1;
+                item->socket_gem_quality[item->socket_count - 1] = 0;
+
+                sprintf( buf, "You add a socket to %s. It now has %d socket%s.\n\r",
+                        item->short_descr,
+                        item->socket_count,
+                        item->socket_count == 1 ? "" : "s" );
+                send_to_char( buf, ch );
+                return;
+        }
+
+        send_to_char( "Syntax: gemload gem <<type> <<quality>\n\r", ch );
+        send_to_char( "        gemload socket <<item>\n\r", ch );
+}
+
 /* EOF act_wiz.c */

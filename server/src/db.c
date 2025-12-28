@@ -244,6 +244,7 @@ int     gsn_ofind;
 int     gsn_oscore;
 int     gsn_osfind;
 int     gsn_oload;
+int     gsn_gemload;
 int     gsn_oset;
 int     gsn_ostat;
 int     gsn_osstat;
@@ -757,6 +758,14 @@ int     gsn_group_mech_tech;
 int     gsn_group_adv_smith;
 int     gsn_group_weaponlore;
 int     gsn_group_last;
+
+/*
+ *  Gem and socket system gsns
+ */
+int     gsn_gem_set;
+int     gsn_gem_unset;
+int     gsn_gem_socket;
+int     gsn_gem_combine;
 
 
 /*
@@ -3871,6 +3880,14 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, int r
         obj->ego_flags              = pObjIndex->ego_flags;
         obj->deleted                = FALSE;
         obj->identified             = FALSE;
+
+        /* Initialize socket data */
+        obj->socket_count           = pObjIndex->socket_count;
+        for ( i = 0; i < MAX_SOCKETS; i++ )
+        {
+                obj->socket_gem_type[i] = -1;     /* Empty socket */
+                obj->socket_gem_quality[i] = 0;
+        }
 
         /*
             Should set obj->how_created as below from merc.h:
