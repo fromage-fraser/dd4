@@ -3,6 +3,10 @@
 
 #AREA_SPECIAL
 exp_mod 115
+ambient ambient/area/shadowsea.mp3
+ambient_vol 30
+reset_msg A tremor passes through the dark water.
+~
 $
 
 #MOBILES
