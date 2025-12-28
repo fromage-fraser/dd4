@@ -2312,7 +2312,7 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                         if ( gets_bonus_objset ( pObjSetIndex, ch, obj, count) )
                         {
                                 affect_modify( ch, paf, TRUE, obj );
-                                /* If the object your about to wear is NOT a set OR it is and you get a bonus then Apply effect */
+                                /* If the object you're about to wear is NOT a set OR it is and you get a bonus then apply effect */
                                 send_to_char ( "{WYou obtain a set bonus.{x\n\r", ch);
                                 break;
                         }
@@ -3614,7 +3614,6 @@ bool  gets_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DA
 
 bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos )
 {
-
         int worn, pre_remove;
         bool found;
         OBJ_DATA *objworn;
@@ -3622,76 +3621,95 @@ bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA
         AFFECT_DATA *paf;
         HashTable *table = createTable();
         HashTable *table2 = createTable();
-        int index =1;
-        found = FALSE;
+        int index = 1;
+
+        OBJSET_INDEX_DATA *target_set;
+
+        found      = FALSE;
+        worn       = 0;
+        pre_remove = 0;
+
+        target_set = objects_objset(obj->pIndexData->vnum);
+
         zeroTable(table);
         zeroTable(table2);
-        worn=0;
-        pre_remove=0;
 
-        /* This is building a PRE REMOVAL view*/
+        /* Build PRE-REMOVAL view for THIS set only */
         for ( objworn = ch->carrying; objworn; objworn = objworn->next_content )
         {
-                /* Skip if the object we find thats already worn is not part of this objects objectset*/
-                if (objects_objset(obj->pIndexData->vnum) != objects_objset(objworn->pIndexData->vnum))
+                if ( objworn->wear_loc == WEAR_NONE )
                         continue;
 
-                /* proceed if this object is part of an objset*/
-                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) && (objworn->wear_loc != WEAR_NONE) )
-                {
-                        insert(table2, objworn->pIndexData->vnum , index);
-                        index++;
-                }
+                pobjsetworn = objects_objset(objworn->pIndexData->vnum);
+
+                if ( pobjsetworn == NULL )
+                        continue;
+
+                if ( pobjsetworn != target_set )
+                        continue;
+
+                insert(table2, objworn->pIndexData->vnum, index);
+                index++;
         }
+
         pre_remove = countTable(table2);
- /*       bug( "PRE count is %d.", pre_remove);  */
         destroyTable(table2);
 
-        /*This is forming a POST removal view*/
+        /* Build POST-REMOVAL view for THIS set only */
+        index = 1;
         for ( objworn = ch->carrying; objworn; objworn = objworn->next_content )
         {
-                /* proceed if this object is part of an objset*/
-                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) && (objworn->wear_loc != WEAR_NONE) )
+                if ( objworn->wear_loc == WEAR_NONE )
+                        continue;
+
+                pobjsetworn = objects_objset(objworn->pIndexData->vnum);
+
+                if ( pobjsetworn == NULL )
+                        continue;
+
+                if ( pobjsetworn != target_set )
+                        continue;
+
+                /* skip the first instance of the object being removed */
+                if ( obj->pIndexData->vnum == objworn->pIndexData->vnum && !found )
                 {
-                        /* lets build an idea of what we would be wearing after removal we WONT insert the FIRST obj we are wearing */
-                        if ( (obj->pIndexData->vnum == objworn->pIndexData->vnum) && !found)
-                        {
-                                found = TRUE;
-                                continue;
-                        }
-                        insert(table, objworn->pIndexData->vnum , index);
-                        index++;
+                        found = TRUE;
+                        continue;
                 }
+
+                insert(table, objworn->pIndexData->vnum, index);
+                index++;
         }
 
-        /* printTable(table); */
-
-        /* Count the number of entries in the hash table (OF WHAT THINGS WOULD LOOK LIKE IF WE DID REMOVETHIS)*/
         worn = countTable(table);
         destroyTable(table);
 
-        /* Comparing the pre remove table with the after remove table. If the unique items are the same, return False*/
-        if (pre_remove == worn)
+        /* If nothing changed, nothing to remove */
+        if ( pre_remove == worn )
                 return FALSE;
-        /* if no worn items after removal, return FALSE*/
+
+        /* If no items from this set remain after removal, you may still want to remove bonuses.
+         * If your bonuses only start at 2+ items, leaving this as FALSE is fine.
+         * Otherwise, remove this early return and let the comparisons below decide.
+         */
         if ( worn == 0 )
                 return FALSE;
 
-       for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
+        for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
         {
-                if ( ( (worn) == objset_bonus_num_pos(pObjSetIndex->vnum, pos) ) )
-                {
+                if ( worn == objset_bonus_num_pos(pObjSetIndex->vnum, pos) )
                         return FALSE;
-                }
-                if ( (worn) < objset_bonus_num_pos(pObjSetIndex->vnum, pos)  )
-                {
+
+                if ( worn < objset_bonus_num_pos(pObjSetIndex->vnum, pos) )
                         return TRUE;
-                }
-                if ( (worn) > ( objset_bonus_num_pos(pObjSetIndex->vnum, pos) ) )
-                      bug( "Bug in rem_objset_bonus, set bonus should already be removed. (worn items %d)", worn);
+
+                if ( worn > objset_bonus_num_pos(pObjSetIndex->vnum, pos) )
+                        bug( "Bug in rem_objset_bonus, set bonus should already be removed. (worn items %d)", worn );
         }
+
         return FALSE;
 }
+
 
 /* Returns the Object set from a objects vnum - Brutus */
 OBJSET_INDEX_DATA *objects_objset( int vnum )
