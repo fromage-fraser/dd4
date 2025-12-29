@@ -5647,9 +5647,16 @@ void spell_acid_breath( int sn, int level, CHAR_DATA *ch, void *vo )
                                 break;
 
                             case ITEM_CONTAINER:
-                                act( "{Y$p fumes and dissolves!{x",
-                                    victim, obj_lose, NULL, TO_CHAR );
-                                extract_obj( obj_lose );
+                                if (obj_lose->pIndexData->vnum == OBJ_VNUM_STEEL_CACHE)
+                                {
+                                        break;
+                                }
+                                else
+                                {
+                                        act( "{Y$p fumes and dissolves!{x",
+                                            victim, obj_lose, NULL, TO_CHAR );
+                                        extract_obj( obj_lose );
+                                }
                                 break;
                         }
                 }
@@ -5700,6 +5707,9 @@ void spell_fire_breath( int sn, int level, CHAR_DATA *ch, void *vo )
                                 continue;
 
                         if (resist && number_bits(1))
+                                continue;
+
+                        if (obj_lose->pIndexData->vnum == OBJ_VNUM_STEEL_CACHE)
                                 continue;
 
                         switch ( obj_lose->item_type )
@@ -5822,6 +5832,9 @@ void spell_frost_breath( int sn, int level, CHAR_DATA *ch, void *vo )
                         obj_next = obj_lose->next_content;
 
                         if ( obj_lose->deleted )
+                                continue;
+
+                        if (obj_lose->pIndexData->vnum == OBJ_VNUM_STEEL_CACHE)
                                 continue;
 
                         if ( number_bits( 2 ) != 0 )

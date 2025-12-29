@@ -651,8 +651,10 @@ Gezhp, Owl and Shade
 
 {W December 2025{x
 
-- Smelt ruins fewer mats on failure the more skilled you are.
-- Eq AFF messages suppressed after quitting
+- Smelt ruins fewer mats on failure the more skilled you are at smelting.
+- Eq AFF messages are suppressed after quitting or getting disconnected
+- Smithy steel caches resist acid and fire, their capacity is also increased
+- Swallow interacts more sensibly with mounts
 
 ~
 
@@ -7997,7 +7999,8 @@ Syntax: construct 'steel cache'
 A smithy's cache can be used as portable storage for any armour or
 weapons you may find. Its interior is filled with hooks and latches
 that allow all manner of weapons and armour to be hung or strapped
-into the cache.
+into the cache.  Its metallic, robust construction makes it
+resistant to destruction by breath weapons.
 ~
 
 1 EMPOWER~
