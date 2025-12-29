@@ -8885,6 +8885,12 @@ void do_swallow (CHAR_DATA *ch, char *argument)
                 act( "<15>$c swallows $N whole!<0>", ch, NULL, victim, TO_NOTVICT );
                 send_to_char("You have been <132>SWALLOWED<0> and can't see a thing!\n\r", victim);
 
+                if (victim->mount)
+                {
+                        send_to_char("You are pulled from your mount!\n\r", victim);
+                        strip_mount(victim);
+                }
+
                 victim->inside = ch;
 
                 af.type      = gsn_swallow;
