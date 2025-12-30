@@ -17,6 +17,10 @@ Materials provide:
 
 The `T` tag is used in area files to specify an item's material composition. It should be placed after the item's basic properties (weight, cost, level) and before any affects (`A`), extra descriptions (`E`), or max instances (`M`) tags.
 
+### Magnetic Tag: G
+
+The `G` tag is used to mark an item as magnetic. It should be placed after the material tag (if present) and before any affects (`A`), extra descriptions (`E`), or max instances (`M`) tags. The value should be 1 for magnetic, 0 for non-magnetic.
+
 ### Format
 
 ```
@@ -30,6 +34,8 @@ The `T` tag is used in area files to specify an item's material composition. It 
 <weight> <cost> <level>
 T
 <material>~
+G
+<1 or 0>
 [A/E/M tags follow...]
 ```
 
@@ -46,6 +52,8 @@ There lies a short sword.~
 4 60 20
 T
 steel/wood/leather~
+G
+1
 A
 18 1
 ```
@@ -93,10 +101,15 @@ Common material types used in fantasy settings:
 
 ### Special Materials
 - `dragonscale` - Scales from dragons, highly protective
-- `exotic` - Mysterious or magical materials
 - `obsidian` - Volcanic glass, sharp and dark
-- `crystal` - Crystalline materials
-- `stone` - Rock-based items
+- `quartz` - Clear crystalline material
+- `amethyst` - Purple crystalline gemstone
+- `ruby` - Red crystalline gemstone
+- `emerald` - Green crystalline gemstone
+- `diamond` - Extremely hard crystalline gemstone
+- `granite` - Hard igneous rock
+- `marble` - Metamorphic rock, often polished
+- `basalt` - Dark volcanic rock
 
 ## Multiple Materials
 
@@ -128,22 +141,24 @@ else if ( letter == 'T' )
 
 ### Display
 
-Materials are shown to players in two contexts:
+Materials and magnetic properties are shown to players in two contexts:
 
 1. **Identify Spell** (`spell_identify` in `magic.c`):
    ```
    It is made of steel/wood/leather.
+   It is magnetic.
    ```
 
 2. **Ostat Command** (`do_ostat` in `act_wiz.c`):
    ```
    Material: steel/wood/leather
+   Magnetic: Yes
    ```
 
 ## Examples from sewer.are
 
 ### Weapons
-- Devil Rod: `exotic/obsidian` - Magical item with black obsidian base
+- Devil Rod: `obsidian` - Volcanic glass rod
 - Large Mace: `iron/organic` - Iron head with organic (tentacle) components
 - Short Sword: `steel/wood/leather` - Traditional construction
 - Dragon Claw: `bone/dragonscale` - Dragon body part
@@ -162,17 +177,35 @@ Materials are shown to players in two contexts:
 - Red Dragonhelm: `bone/dragonscale` - Dragon skull with scales
 - Red Dragon Shield: `dragonscale/bone` - Scale-covered bone shield
 
+## Magnetic Property
+
+Items made from ferromagnetic materials (iron, steel, etc.) can be marked as magnetic using the `G` tag. This property can be used for:
+- Gameplay mechanics (attraction/repulsion effects)
+- Special interactions with other magnetic items
+- Environmental effects in areas with strong magnetic fields
+- Puzzle mechanics
+
+To mark an item as magnetic, add the `G` tag after the material specification:
+```
+T
+steel/wood~
+G
+1
+```
+
 ## Guidelines for Area Builders
 
 1. **Be descriptive but concise**: Use 1-3 materials maximum
 2. **Match item descriptions**: Ensure materials align with the item's description text
 3. **Order by prominence**: List the most significant material first
-4. **Use standard terms**: Stick to the common material types listed above for consistency
-5. **Consider the item type**:
+4. **Use specific materials**: Avoid generic terms like "exotic", "crystal", or "stone" - use specific materials like "obsidian", "quartz", "granite"
+5. **Use standard terms**: Stick to the common material types listed above for consistency
+6. **Consider the item type**:
    - Weapons: Often have blades (metal) and handles (wood/leather)
    - Armour: Usually metal, leather, or cloth
    - Jewelry: Precious metals and gems
    - Shields: Often wood with metal reinforcement
+7. **Mark magnetic items**: Use the `G` tag for items made of ferromagnetic materials (iron, steel) that should have magnetic properties
 
 ## Future Enhancements
 
@@ -183,15 +216,19 @@ The materials system is designed to support future features such as:
 - Material-based special abilities
 - Weight and cost calculations
 - Environmental effects (rust, decay, etc.)
+- Magnetic interactions and gameplay mechanics
 
 ## Backward Compatibility
 
-The `T` tag is optional. Items without materials will function normally:
+The `T` and `G` tags are optional. Items without materials or magnetic properties will function normally:
 - `obj->material` will be NULL
-- Identify and ostat will simply not display material information
+- `obj->is_magnetic` will be FALSE
+- Identify and ostat will simply not display material or magnetic information
 - All existing area files continue to work without modification
 
 ## Version History
 
 - Initial implementation: Added `T` tag support and material fields to object structures
 - Applied to sewer.are: 24 weapons and armour items updated with appropriate materials
+- Enhanced materials: Replaced generic "exotic" with specific "obsidian", added specific crystal/stone types
+- Added magnetic property: New `G` tag and `is_magnetic` boolean field for ferromagnetic items

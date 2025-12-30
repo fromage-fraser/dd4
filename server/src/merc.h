@@ -3136,6 +3136,7 @@ struct obj_index_data
         int                     max_instances;    // 0 = unlimited
         int                     spawn_count;      // number of times created this runtime (not decremented)
         char *                  material;         // material composition (e.g., "steel/wood/leather")
+        bool                    is_magnetic;      // whether item is magnetic
 };
 
 /*
@@ -3197,6 +3198,7 @@ struct obj_data
         int                     max_instances;
         int                     spawn_count;
         char *                  material;         // material composition (inherited from pIndexData)
+        bool                    is_magnetic;      // whether item is magnetic (inherited from pIndexData)
 };
 
 

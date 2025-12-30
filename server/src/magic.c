@@ -4112,6 +4112,15 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
         }
 
         /*
+         *  Magnetic property if set
+         */
+        if (obj->is_magnetic)
+        {
+                sprintf( buf, "{cIt is {Wmagnetic{c.{x\n\r" );
+                send_paragraph_to_char (buf, ch, 4);
+        }
+
+        /*
          *  Item type specific information
          */
         switch (obj->item_type)

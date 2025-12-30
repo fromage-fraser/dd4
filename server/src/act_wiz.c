@@ -1379,6 +1379,13 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 strcat( buf1, buf );
         }
 
+        /* Show magnetic property if set */
+        if (obj->is_magnetic)
+        {
+                sprintf( buf, "\n\rMagnetic: {YYes{x");
+                strcat( buf1, buf );
+        }
+
         /* Show liquid type if drink container or fountain. -- Owl 1/7/22 & 9/12/23 */
         if (obj->item_type == 17 || obj->item_type == 25)
         {

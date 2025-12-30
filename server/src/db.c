@@ -2003,6 +2003,7 @@ void load_objects( FILE *fp )
                 pObjIndex->spawn_count = 0;
                 pObjIndex->max_instances = 0;
                 pObjIndex->material = NULL;
+                pObjIndex->is_magnetic = FALSE;
 
                 if ( fBootDb )
                 {
@@ -2126,6 +2127,12 @@ void load_objects( FILE *fp )
                         {
                                 /* Material composition tag */
                                 pObjIndex->material = fread_string( fp );
+                        }
+                        else if ( letter == 'G' )
+                        {
+                                /* Magnetic property tag */
+                                pObjIndex->is_magnetic = (fread_number(fp, &stat) != 0);
+                                fread_to_eol(fp);
                         }
                         else if ( letter == 'E' )
                         {
@@ -3869,6 +3876,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, int r
         obj->value[3]           = pObjIndex->value[3];
         obj->weight             = pObjIndex->weight;
         obj->material           = pObjIndex->material;
+        obj->is_magnetic        = pObjIndex->is_magnetic;
 
         obj->cost = number_fuzzy(10) * number_fuzzy(level) + number_range(1, 20);
 
