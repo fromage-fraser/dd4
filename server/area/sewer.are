@@ -316,6 +316,8 @@ A lovely silver ring has been left here.~
 9 64 3
 4~ 0~ 0~ 0~
 1 2000 400
+T
+silver~
 A
 18 1
 #7200
@@ -326,6 +328,8 @@ The mysterious devil rod lies on the floor.~
 5 64 8193
 0~ 3~ 5~ 5~
 6 16000 6000
+T
+exotic/obsidian~
 E
 devil rod~
 This is indeed a mysterious rod.  It is dark black at the base but has four
@@ -343,6 +347,8 @@ A large mace lies here.~
 5 64 8193
 0~ 2~ 6~ 8~
 10 1000 200
+T
+iron/organic~
 E
 large mace~
 The mace is pretty large with a weight of 10 lbs.  The head is actually four
@@ -358,6 +364,8 @@ a small mace has been left here.~
 5 64 8193
 0~ 2~ 5~ 8~
 6 600 100
+T
+iron/organic~
 E
 small mace~
 This weapon doesn't look like it does a lot of damage, but then you never know.
@@ -373,6 +381,8 @@ A purple cloak lies on the floor.~
 9 64 5
 6~ 0~ 0~ 0~
 20 5000 2500
+T
+cloth~
 A
 24 -1
 #7204
@@ -399,6 +409,8 @@ A strange white skull lies on the floor looking at you.~
 9 192 17
 1~ 0~ 0~ 0~
 30 0 2500
+T
+bone~
 E
 white skull~
 The skull has two small horns in the forehead. You notice some writing on
@@ -435,6 +447,8 @@ A pair of muddy boots has been dropped here.~
 9 64 65
 3~ 0~ 0~ 0~
 20 75 100
+T
+leather~
 E
 The boots are muddy and they look well worn, but also very comfortable.~
 ~
@@ -460,6 +474,8 @@ There lies a short sword.~
 5 0 8193
 0~ 2~ 4~ 11~
 4 60 20
+T
+steel/wood/leather~
 A
 18 1
 #7216
@@ -470,6 +486,8 @@ On the floor rests an enormous red claw.~
 5 64|512 8193
 0~ 4~ 4~ 5~
 19 1800 900
+T
+bone/dragonscale~
 E
 claw red redclaw~
 This big claw looks like a part of a dragon.
@@ -486,6 +504,8 @@ There is a silvery breast plate on the floor.~
 9 64|256|1024|2048 9
 8~ 0~ 0~ 0~
 40 25000 6000
+T
+silver/steel~
 A
 1 3
 E
@@ -501,6 +521,8 @@ On the floor you see some silvery leg plates.~
 9 64|256|1024|2048 33
 8~ 0~ 0~ 0~
 20 12500 5000
+T
+silver/steel~
 A
 3 3
 E
@@ -515,6 +537,8 @@ You can see a pair of silvery gloves on the floor.~
 9 64|256|1024|2048 129
 8~ 0~ 0~ 0~
 14 900 1000
+T
+silver~
 A
 18 3
 E
@@ -531,6 +555,8 @@ The silvery helmet lies here.~
 9 64|256|1024|2048 17
 9~ 0~ 0~ 0~
 35 9000 3000
+T
+platinum~
 A
 4 3
 E
@@ -546,6 +572,8 @@ The shield of the rose rests on the floor.~
 9 64|256|1024|2048 513
 10~ 0~ 0~ 0~
 60 15000 1000
+T
+steel/wood~
 A
 17 -10
 E
@@ -561,6 +589,8 @@ A pair of silvery boots stand on the floor.~
 9 64|256|1024|2048 65
 8~ 0~ 0~ 0~
 40 2000 1000
+T
+silver~
 A
 2 3
 E
@@ -575,6 +605,8 @@ On the floor you see some silvery arm plates.~
 9 64|256|1024|2048 257
 8~ 0~ 0~ 0~
 40 12500 7000
+T
+silver/steel~
 A
 5 3
 E
@@ -589,6 +621,8 @@ A white cloak lies on the floor.~
 9 64|256|1024|2048 1025
 10~ 0~ 0~ 0~
 20 10000 5000
+T
+cloth~
 E
 cloak white~
 This is a very fine made cloak from an unknown material, in a bright white
@@ -616,6 +650,8 @@ There lies a short sword.~
 5 0 8193
 0~ 2~ 5~ 2~
 4 60 20
+T
+steel/wood/leather~
 E
 small sword~
 This is a very nice little weapon.
@@ -656,6 +692,8 @@ There is a pile of red dragonscale on the floor.~
 9 64|512 9
 9~ 0~ 0~ 0~
 30 50000 12000
+T
+dragonscale~
 A
 2 -1
 A
@@ -668,6 +706,8 @@ On the floor you see two red dragonscale leggings.~
 9 64|512 33
 9~ 0~ 0~ 0~
 17 12500 5000
+T
+dragonscale~
 A
 2 -1
 A
@@ -690,6 +730,8 @@ A helmet fashioned into the likeness of a dragon skull is here.~
 9 64|512 17
 9~ 0~ 0~ 0~
 15 9000 3000
+T
+bone/dragonscale~
 A
 2 -1
 A
@@ -704,6 +746,8 @@ A large red dragon shield rests on the floor.~
 9 64|512 513
 10~ 0~ 0~ 0~
 10 15000 1000
+T
+dragonscale/bone~
 A
 19 2
 #7309
@@ -714,6 +758,8 @@ A pair of a red dragon's rear claws is on the floor.~
 9 64|512 65
 9~ 0~ 0~ 0~
 40 2000 1000
+T
+bone/dragonscale~
 A
 19 2
 A
@@ -726,6 +772,8 @@ On the ground you see two red arm guards.~
 9 64|512 257
 9~ 0~ 0~ 0~
 40 12500 7000
+T
+dragonscale~
 A
 19 2
 A

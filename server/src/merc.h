@@ -3135,6 +3135,7 @@ struct obj_index_data
         int                     ego_flags;
         int                     max_instances;    // 0 = unlimited
         int                     spawn_count;      // number of times created this runtime (not decremented)
+        char *                  material;         // material composition (e.g., "steel/wood/leather")
 };
 
 /*
@@ -3195,6 +3196,7 @@ struct obj_data
         int                     how_created;
         int                     max_instances;
         int                     spawn_count;
+        char *                  material;         // material composition (inherited from pIndexData)
 };
 
 
