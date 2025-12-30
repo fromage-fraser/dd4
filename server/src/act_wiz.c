@@ -1379,8 +1379,8 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 strcat( buf1, buf );
         }
 
-        /* Show magnetic property if set */
-        if (obj->is_magnetic)
+        /* Show magnetic property if material contains ferromagnetic elements */
+        if (is_magnetic(obj))
         {
                 sprintf( buf, "\n\rMagnetic: {YYes{x");
                 strcat( buf1, buf );

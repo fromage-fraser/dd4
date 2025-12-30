@@ -4112,9 +4112,9 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
         }
 
         /*
-         *  Magnetic property if set
+         *  Magnetic property if material contains ferromagnetic elements
          */
-        if (obj->is_magnetic)
+        if (is_magnetic(obj))
         {
                 sprintf( buf, "{cIt is {Wmagnetic{c.{x\n\r" );
                 send_paragraph_to_char (buf, ch, 4);

@@ -17,10 +17,6 @@ Materials provide:
 
 The `T` tag is used in area files to specify an item's material composition. It should be placed after the item's basic properties (weight, cost, level) and before any affects (`A`), extra descriptions (`E`), or max instances (`M`) tags.
 
-### Magnetic Tag: G
-
-The `G` tag is used to mark an item as magnetic. It should be placed after the material tag (if present) and before any affects (`A`), extra descriptions (`E`), or max instances (`M`) tags. The value should be 1 for magnetic, 0 for non-magnetic.
-
 ### Format
 
 ```
@@ -34,8 +30,6 @@ The `G` tag is used to mark an item as magnetic. It should be placed after the m
 <weight> <cost> <level>
 T
 <material>~
-G
-<1 or 0>
 [A/E/M tags follow...]
 ```
 
@@ -52,8 +46,6 @@ There lies a short sword.~
 4 60 20
 T
 steel/wood/leather~
-G
-1
 A
 18 1
 ```
@@ -129,6 +121,9 @@ Materials are stored as strings in both:
 - `OBJ_INDEX_DATA->material` - The prototype/template
 - `OBJ_DATA->material` - Runtime object instances
 
+Magnetic property is calculated dynamically via:
+- `bool is_magnetic(OBJ_DATA *obj)` - Function in `skill.c` that checks material string
+
 ### Loading
 
 The material is loaded from the area file by `load_objects()` in `db.c`:
@@ -136,6 +131,24 @@ The material is loaded from the area file by `load_objects()` in `db.c`:
 else if ( letter == 'T' )
 {
     pObjIndex->material = fread_string( fp );
+}
+```
+
+### Magnetic Detection
+
+The `is_magnetic()` function determines if an item is magnetic:
+```c
+bool is_magnetic (OBJ_DATA *obj)
+{
+    if (!obj || !obj->material || obj->material[0] == '\0')
+        return FALSE;
+
+    /* Check if material string contains ferromagnetic materials */
+    if (strstr(obj->material, "iron") != NULL
+        || strstr(obj->material, "steel") != NULL)
+        return TRUE;
+
+    return FALSE;
 }
 ```
 
@@ -179,18 +192,26 @@ Materials and magnetic properties are shown to players in two contexts:
 
 ## Magnetic Property
 
-Items made from ferromagnetic materials (iron, steel, etc.) can be marked as magnetic using the `G` tag. This property can be used for:
+Items are automatically detected as magnetic based on their material composition. The `is_magnetic()` function checks if the material string contains ferromagnetic materials:
+- **iron** - Any item with "iron" in its material is magnetic
+- **steel** - Any item with "steel" in its material is magnetic
+
+This automatic detection means:
+- No manual tagging required - simply specify the correct material
+- Consistent behavior - all iron/steel items are magnetic
 - Gameplay mechanics (attraction/repulsion effects)
 - Special interactions with other magnetic items
 - Environmental effects in areas with strong magnetic fields
 - Puzzle mechanics
 
-To mark an item as magnetic, add the `G` tag after the material specification:
+Examples of magnetic items:
 ```
-T
-steel/wood~
-G
-1
+steel/wood/leather  -> Magnetic (contains steel)
+iron/organic        -> Magnetic (contains iron)
+silver/steel        -> Magnetic (contains steel)
+wood/leather        -> Not magnetic
+dragonscale         -> Not magnetic
+obsidian            -> Not magnetic
 ```
 
 ## Guidelines for Area Builders
@@ -205,7 +226,7 @@ G
    - Armour: Usually metal, leather, or cloth
    - Jewelry: Precious metals and gems
    - Shields: Often wood with metal reinforcement
-7. **Mark magnetic items**: Use the `G` tag for items made of ferromagnetic materials (iron, steel) that should have magnetic properties
+7. **Magnetic items**: Items containing "iron" or "steel" in their material will automatically be detected as magnetic
 
 ## Future Enhancements
 
@@ -220,9 +241,9 @@ The materials system is designed to support future features such as:
 
 ## Backward Compatibility
 
-The `T` and `G` tags are optional. Items without materials or magnetic properties will function normally:
+The `T` tag is optional. Items without materials will function normally:
 - `obj->material` will be NULL
-- `obj->is_magnetic` will be FALSE
+- `is_magnetic(obj)` will return FALSE for items without materials
 - Identify and ostat will simply not display material or magnetic information
 - All existing area files continue to work without modification
 
@@ -231,4 +252,4 @@ The `T` and `G` tags are optional. Items without materials or magnetic propertie
 - Initial implementation: Added `T` tag support and material fields to object structures
 - Applied to sewer.are: 24 weapons and armour items updated with appropriate materials
 - Enhanced materials: Replaced generic "exotic" with specific "obsidian", added specific crystal/stone types
-- Added magnetic property: New `G` tag and `is_magnetic` boolean field for ferromagnetic items
+- Added magnetic property: Automatically calculated based on material composition (iron/steel detection)

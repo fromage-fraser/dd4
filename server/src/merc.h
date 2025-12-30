@@ -3136,7 +3136,6 @@ struct obj_index_data
         int                     max_instances;    // 0 = unlimited
         int                     spawn_count;      // number of times created this runtime (not decremented)
         char *                  material;         // material composition (e.g., "steel/wood/leather")
-        bool                    is_magnetic;      // whether item is magnetic
 };
 
 /*
@@ -3198,7 +3197,6 @@ struct obj_data
         int                     max_instances;
         int                     spawn_count;
         char *                  material;         // material composition (inherited from pIndexData)
-        bool                    is_magnetic;      // whether item is magnetic (inherited from pIndexData)
 };
 
 
@@ -5427,6 +5425,7 @@ bool is_bladed_weapon                        ( OBJ_DATA *obj );
 bool is_blunt_weapon                         ( OBJ_DATA *obj );
 bool is_piercing_weapon                      ( OBJ_DATA *obj );
 bool is_carving_weapon                       ( OBJ_DATA *obj );
+bool is_magnetic                             ( OBJ_DATA *obj );
 bool is_cursed                               ( CHAR_DATA *ch );
 int  scale_pipe                              ( int limit_level, int load_level, int base_value, bool higher_bad );
 
