@@ -6252,6 +6252,25 @@ bool is_carving_weapon (OBJ_DATA *obj)
         return FALSE;
 }
 
+/*
+ * Intent: Determine if an object is magnetic based on its material composition.
+ * Inputs: obj - The object to check
+ * Outputs: TRUE if the object contains ferromagnetic materials (iron or steel), FALSE otherwise
+ * Notes: Checks the material string for presence of "iron" or "steel" keywords
+ */
+bool is_magnetic (OBJ_DATA *obj)
+{
+        if (!obj || !obj->material || obj->material[0] == '\0')
+                return FALSE;
+
+        /* Check if material string contains ferromagnetic materials */
+        if (strstr(obj->material, "iron") != NULL
+            || strstr(obj->material, "steel") != NULL)
+                return TRUE;
+
+        return FALSE;
+}
+
 int scale_pipe(int limit_level, int load_level, int base_value, bool higher_bad)
 {
     float scaled_value;
