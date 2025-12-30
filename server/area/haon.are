@@ -166,6 +166,8 @@ A heavy lumber axe lies here.~
 5 0 8193
 0~ 2~ 6~ 1~
 10 50 15
+T
+steel/wood~
 E
 axe lumber~
 It is a heavy axe of the kind lumberjacks use to chop down trees.
@@ -178,6 +180,8 @@ A chequered shirt lies here.~
 9 0 9
 3~ 0~ 0~ 0~
 2 20 8
+T
+leather~
 E
 shirt~
 It is an extra large, chequered shirt made from heavy cloth.
@@ -190,6 +194,8 @@ A pair of leather boots lies here.~
 9 0 65
 3~ 0~ 0~ 0~
 4 60 20
+T
+leather~
 E
 boots~
 They are fashioned from rough leather that has been oiled frequently to make
@@ -313,6 +319,8 @@ A long, grey branch rests heavily on the ground.~
 5 0 8193
 0~ 2~ 5~ 7~
 30 60 20
+T
+steel/wood/leather~
 A
 18 -2
 #6105
@@ -371,6 +379,8 @@ A large round shield has been left here.~
 9 0 513
 5~ 0~ 0~ 0~
 15 300 100
+T
+steel/wood~
 E
 shield large~
 It is made from hard wood that has been reinforced with heavy iron bands.
@@ -383,6 +393,8 @@ An iron crown rests on the ground.~
 9 64 17
 4~ 0~ 0~ 0~
 10 5000 1500
+T
+iron/wood/leather~
 A
 4 3
 E
@@ -397,6 +409,8 @@ An iron ring has been left here.~
 9 64 3
 1~ 0~ 0~ 0~
 1 5000 1500
+T
+iron/wood/leather~
 A
 2 1
 E
@@ -412,6 +426,8 @@ the morning star is here collecting dust while it lies on the ground.~
 5 64 8193
 0~ 2~ 8~ 8~
 10 15000 2500
+T
+steel/wood/leather~
 A
 18 4
 A

@@ -216,6 +216,8 @@ There is a dwarven hammer laying here.~
 5 0 8193
 0~ 3~ 6~ 8~
 3 5500 175
+T
+iron/wood~
 #6505
 dwarven plate~
 dwarven plate mail~
@@ -224,6 +226,8 @@ There is dwarven plate mail laying here.~
 9 0 9
 8~ 0~ 0~ 0~
 4 5 5
+T
+steel~
 #6506
 stick~
 long, black stick~
@@ -248,6 +252,8 @@ There is a dwarven club laying here.~
 5 0 8193
 0~ 2~ 6~ 8~
 1 3000 400
+T
+wood~
 #6509
 two-handed dwarven axe~
 a two-handed dwarven axe~
@@ -256,6 +262,8 @@ A two-handed Dwarven axe is here.~
 5 0 8193
 0~ 2~ 7~ 1~
 5 5000 50
+T
+steel/wood~
 A
 18 2
 A
@@ -268,6 +276,8 @@ A dwarven helmet is here.~
 9 0 17
 8~ 0~ 0~ 0~
 4 5 5
+T
+steel~
 #6511
 ring golden dwarven~
 a dwarven golden ring~
@@ -288,6 +298,8 @@ Thick dwarven gloves lay here.~
 9 0 129
 4~ 0~ 0~ 0~
 2 5 5
+T
+leather~
 A
 1 1
 A
@@ -337,6 +349,8 @@ There is a mining pick here.~
 5 256 8193
 0~ 2~ 3~ 11~
 1 300 10
+T
+steel/wood/leather~
 #6519
 pills~
 a box of birth control pills~

@@ -258,6 +258,8 @@ A large toy has been left here.~
 5 2|16777216 1|8192
 0~ 1~ 10~ 0~
 100 25 0
+T
+steel/wood/leather~
 #20501
 dark spear~
 the Spear of Darkness~
@@ -266,6 +268,8 @@ A Spear of Darkness lies here waiting or you to pick it up.~
 5 2|16|512|4096|16777216|134217728 1|8192
 0~ 5~ 10~ 0~
 50 200 0
+T
+iron/wood~
 #20502
 iq vine~
 an I.Q. Vine~
@@ -274,6 +278,8 @@ An I.Q. Vine has been left here.~
 9 1|2|16777216 1|16
 2~ 2~ 2~ 2~
 25 100 0
+T
+leather~
 A
 3 2
 A
@@ -286,6 +292,8 @@ A large mace has been dropped here.~
 5 2|16777216 1|8192
 0~ 2~ 9~ 0~
 100 70 0
+T
+iron/wood~
 #20504
 jagged little pill~
 a jagged little pill~
@@ -302,6 +310,8 @@ A mace has been left here.~
 5 65536|1048576|16777216 1|8192
 0~ 3~ 9~ 0~
 75 100 0
+T
+iron/wood~
 #20506
 cane~
 a cane~
@@ -310,6 +320,8 @@ A finely crafted cane rests against the wall.~
 5 2 1|8192
 0~ 3~ 9~ 0~
 50 150 0
+T
+steel/wood/leather~
 A
 1 2
 #20507
@@ -320,6 +332,8 @@ A serving tray has been set down here.~
 5 16777216 1|8192
 0~ 3~ 9~ 0~
 50 170 0
+T
+steel/wood/leather~
 #20508
 bishop~
 a bishop piece~
@@ -328,6 +342,8 @@ A chess piece has been dropped here.~
 5 16777216 1|8192
 0~ 5~ 9~ 11~
 20 220 0
+T
+steel/wood/leather~
 #20509
 dwarven dagger~
 a dwarven dagger~
@@ -336,6 +352,8 @@ A dwarven dagger has been dropped here.~
 5 128|512|131072 1|8192
 0~ 6~ 10~ 11~
 20 300 0
+T
+steel/wood/leather~
 A
 19 5
 #20510
@@ -346,6 +364,8 @@ A dancer's suit has been dropped here.~
 9 1|16777216 1|8
 20~ 20~ 20~ 20~
 15 100 0
+T
+leather~
 A
 2 2
 E
@@ -362,6 +382,8 @@ A baby shirt has been left here.~
 9 16777216 1|1024
 1~ 1~ 1~ 1~
 15 50 0
+T
+leather~
 E
 flannel jacket~
 The flannel jacket is blue with darker blue plaid on it.  It also
@@ -375,6 +397,8 @@ A nice looking tuxedo has been thrown here.~
 9 16777216 1|1024
 -5~ -5~ -5~ -5~
 50 100 0
+T
+leather~
 E
 tuxedo coat~
 The tuxedo is black and white, with a huge collar.
@@ -387,6 +411,8 @@ A pair of nice pants has been carelessly left here.~
 9 16777216 1|32
 5~ 5~ 5~ 5~
 10 70 0
+T
+leather~
 E
 plaid shorts~
 The plaid shorts are horrendous!  They are red with yellow plaid,
@@ -400,6 +426,8 @@ A servant's uniform has been left here.~
 9 16777216 1|1024
 10~ 10~ 10~ 10~
 5 50 0
+T
+leather~
 E
 zero shirt star~
 The shirt is black and has a silver star right in the center of it.
@@ -412,6 +440,8 @@ A leather shirt has been left here.~
 9 16777216 1|1024
 5~ 5~ 5~ 5~
 5 75 0
+T
+leather~
 A
 13 10
 E
@@ -427,6 +457,8 @@ A nice leather vest is lying here.~
 9 16777216 1|1024
 -25~ -25~ -25~ -25~
 5 150 0
+T
+leather~
 A
 17 5
 E
@@ -441,6 +473,8 @@ A leather whip has been left here.~
 5 1|1048576 1|8192
 0~ 2~ 10~ 4~
 5 0 0
+T
+leather~
 A
 13 10
 A
@@ -467,6 +501,8 @@ A cleaning pick has been dropped here.~
 5 16777216 1|8192
 0~ 4~ 14~ 2~
 5 0 0
+T
+steel/wood/leather~
 A
 1 2
 A

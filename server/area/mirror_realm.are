@@ -944,6 +944,8 @@ A shield with a mirrored surface lies on the ground.~
 9 0 1|512
 6~ 0~ 0~ 0~
 5 0 0
+T
+steel/wood~
 A
 2 1
 E
@@ -958,6 +960,8 @@ A metal plate is on the ground; your face is reflected in its surface.~
 9 0 1|8
 6~ 0~ 0~ 0~
 7 0 0
+T
+steel~
 E
 mirror plate mirrored~
 Your own reflection stares up from the mirrored plate.
@@ -970,6 +974,8 @@ A shiny silver sword lies on the ground here.~
 5 64 1|8192
 0~ 10~ 25~ 3~
 5 0 0
+T
+silver~
 #19004
 chainmail cowl chainmail~
 a chainmail cowl~
@@ -978,6 +984,8 @@ A chainmail cowl is here.~
 9 0 1|16
 4~ 0~ 0~ 0~
 2 0 0
+T
+steel~
 #19005
 throne~
 a throne~
@@ -994,6 +1002,8 @@ A thin grey robe is here.~
 9 0 1|8
 4~ 0~ 0~ 0~
 1 0 0
+T
+cloth~
 #19007
 circlet golden~
 the Golden Circlet~
@@ -1002,6 +1012,8 @@ A golden circlet lies here.~
 9 1|32|64|4096 1|16
 8~ 0~ 0~ 0~
 4 0 0
+T
+gold~
 A
 4 1
 A
@@ -1023,6 +1035,8 @@ A sword with a rusted, bent blade is here.~
 5 64|128|4096 1|8192
 0~ 15~ 20~ 3~
 5 0 0
+T
+steel/wood/leather~
 A
 18 -10
 A
@@ -1035,6 +1049,8 @@ This chainmail jerkin is worn and full of holes.~
 9 0 1|8
 4~ 0~ 0~ 0~
 7 0 0
+T
+steel~
 #19010
 royal staff king~
 the Royal Staff~
@@ -1069,6 +1085,8 @@ A wooden pool cue is here.~
 5 64 1|8192
 0~ 10~ 30~ 7~
 3 0 0
+T
+wood~
 #19013
 pool table~
 a pool table~
@@ -1091,6 +1109,8 @@ An amulet with a silver rope chain lies here.~
 9 1024 1|4
 5~ 0~ 0~ 0~
 2 0 0
+T
+silver~
 A
 5 1
 A
@@ -1103,6 +1123,8 @@ A small steel knife is here.~
 5 64 1|8192
 0~ 7~ 19~ 11~
 2 0 0
+T
+steel/wood/leather~
 E
 small steel dagger~
 The good citizens of the Mirror Realm have no need for weapons; they carry
@@ -1276,6 +1298,8 @@ A unicorn's horn is here.~
 5 1|64|1024 1|8192
 0~ 1~ 6~ 11~
 10 0 0
+T
+gold~
 A
 18 10
 A
@@ -1295,6 +1319,8 @@ An ermine blanket is here.~
 9 0 1|8
 4~ 1~ 6~ 11~
 2 0 0
+T
+leather~
 #19035
 apple tree~
 a grove of apple trees~
@@ -1352,6 +1378,8 @@ A brown robe is here.~
 9 0 1|8
 2~ 0~ 0~ 0~
 3 0 0
+T
+cloth~
 #19041
 telescope ~
 a telescope~
@@ -1400,6 +1428,8 @@ A man's white jacket lies here.~
 9 0 1|1024
 3~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 #19045
 black tie~
 a black bow tie~
@@ -1408,6 +1438,8 @@ A black bow tie is here.~
 9 0 1|4
 2~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 #19046
 shirt white~
 a crisp white shirt~
@@ -1416,6 +1448,8 @@ A heavily starched white shirt is here.~
 9 0 1|8
 5~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 #19047
 pants black~
 a pair of black dress pants~
@@ -1424,6 +1458,8 @@ A pair of black pants lies here.~
 9 0 1|32
 4~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 #19048
 cummerbund~
 a cummerbund~
@@ -1432,6 +1468,8 @@ A cummerbund lies here.~
 9 0 1|2048
 2~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 2 -1
 A
@@ -1444,6 +1482,8 @@ A pair of black shoes lies here.~
 9 0 1|64
 2~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 14 -25
 A
@@ -1456,6 +1496,8 @@ An engagement band lies here.~
 9 1|128|4096 1|2
 2~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 4 1
 E
@@ -1469,6 +1511,8 @@ A wedding dress is here.~
 9 0 1|8
 5~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 5 1
 E
@@ -1484,6 +1528,8 @@ A pair of white flats lie here.~
 9 0 1|64
 2~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 14 15
 #19053
@@ -1494,6 +1540,8 @@ A transparent white veil lies here.~
 9 0 1|16|8192
 3~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 18 -3
 #19054
@@ -1504,6 +1552,8 @@ A diamond engagement ring lies here.~
 9 1|128|4096 1|2
 2~ 0~ 0~ 0~
 1 0 0
+T
+diamond~
 A
 5 1
 E
@@ -1517,6 +1567,8 @@ A corsage of beautiful flowers lies here.~
 9 0 1|16384
 1~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 13 20
 #19056
@@ -1545,6 +1597,8 @@ A crimson robe lies here.~
 9 0 1|1024
 4~ 0~ 0~ 0~
 2 0 0
+T
+cloth~
 A
 13 20
 #19059
@@ -1555,6 +1609,8 @@ A burnt orange robe lies here.~
 9 0 1|1024
 4~ 0~ 0~ 0~
 2 0 0
+T
+cloth~
 A
 14 35
 #19060
@@ -1565,6 +1621,8 @@ A yellow robe lies here.~
 9 0 1|1024
 4~ 0~ 0~ 0~
 2 0 0
+T
+cloth~
 A
 18 5
 #19061
@@ -1575,6 +1633,8 @@ A forest green robe lies here.~
 9 0 1|1024
 4~ 0~ 0~ 0~
 2 0 0
+T
+cloth~
 A
 12 35
 #19062
@@ -1585,6 +1645,8 @@ A sea-blue robe lies here.~
 9 0 1|1024
 4~ 0~ 0~ 0~
 2 0 0
+T
+cloth~
 A
 19 5
 #19063
@@ -1595,6 +1657,8 @@ A violet robe lies here.~
 9 0 1|1024
 4~ 0~ 0~ 0~
 2 0 0
+T
+cloth~
 A
 13 25
 #19064
@@ -1605,6 +1669,8 @@ A clear glass sword lies here, reflecting all sorts of rainbow colors.~
 5 64 1|8192
 0~ 6~ 16~ 1~
 5 0 0
+T
+steel/wood/leather~
 A
 18 5
 A
@@ -1625,6 +1691,8 @@ A white robe lies here.~
 9 1024 1|1024
 2~ 0~ 0~ 0~
 2 0 0
+T
+cloth~
 #19067
 poultice detection~
 a poultice of detection~
@@ -1665,6 +1733,8 @@ A long wooden sword lies here.~
 5 64|128 1|8192
 0~ 1~ 6~ 7~
 5 0 0
+T
+wood~
 A
 2 1
 A
@@ -1677,6 +1747,8 @@ A black karate uniform lies here.~
 9 0 1|8
 4~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 #19073
 red belt master~
 a red master's belt~
@@ -1685,6 +1757,8 @@ A red master's belt lies here.~
 9 1024 1|2048
 3~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 4 1
 #19074
@@ -1727,6 +1801,8 @@ A pocketknife lies here.~
 5 64 1|8192
 0~ 1~ 6~ 11~
 2 0 0
+T
+steel~
 #19079
 raft~
 a small raft~
@@ -1743,6 +1819,8 @@ A navy blue cap lies here, covered with stars and moons.~
 9 0 1|16
 10~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 12 25
 #19081
@@ -1753,6 +1831,8 @@ A navy blue cloak lies here, covered with stars and moons.~
 9 0 1|1024
 3~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 #19082
 page hymn ~
 a hymn~
@@ -1769,6 +1849,8 @@ A rose-colored ring lies here.~
 9 1|1024 1|2
 1~ 0~ 0~ 0~
 1 0 0
+T
+silver~
 A
 13 -25
 A
@@ -1781,6 +1863,8 @@ A pair of clippers lie here.~
 5 64 1|8192
 0~ 1~ 6~ 13~
 5 0 0
+T
+steel/wood/leather~
 #19085
 club staff wood~
 a thick wooden staff~
@@ -1789,6 +1873,8 @@ A rough wooden staff lies here.~
 5 0 1|8192
 0~ 1~ 6~ 7~
 10 0 0
+T
+wood~
 #19086
 leggings mirror~
 a set of mirrored leggings~
@@ -1797,6 +1883,8 @@ A set of mirrored leggings lies here.~
 9 0 1|32
 0~ 0~ 0~ 0~
 5 0 0
+T
+steel~
 #19087
 shawl white~
 a white shawl~
@@ -1805,6 +1893,8 @@ A white shawl lies here.~
 9 0 1|1024
 1~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 #19088
 boots~
 fishing boots~
@@ -1813,6 +1903,8 @@ A pair of fishing boots lies here.~
 9 4096 1|64
 2~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 2 -1
 #19089
@@ -1823,6 +1915,8 @@ A fisherman's gaff lies here.~
 5 64 1|8192
 0~ 0~ 0~ 5~
 5 0 0
+T
+steel/wood/leather~
 #19090
 rain slicker~
 a rain slicker~
@@ -1831,6 +1925,8 @@ A rain slicker lies here.~
 9 0 1|8
 2~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 14 -50
 #19091
@@ -1872,6 +1968,8 @@ A set of antlers lies on the ground here.~
 9 0 1|16
 4~ 0~ 0~ 0~
 8 0 0
+T
+leather~
 A
 2 -1
 A
@@ -1910,6 +2008,8 @@ fangs~
 5 0 1|8192
 0~ 1~ 6~ 10~
 5 0 0
+T
+bone~
 #19098
 hemlock~
 hemlock~
@@ -1942,6 +2042,8 @@ A broken bottle lies here.~
 5 64 1|8192
 0~ 1~ 6~ 1~
 2 0 0
+T
+steel/wood/leather~
 A
 18 -5
 A
@@ -1977,6 +2079,8 @@ A pair of rubber gloves lies here.~
 9 512 1|128
 1~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 #19105
 scabbard~
 a scabbard~
@@ -1993,6 +2097,8 @@ A unicorn's bony horn lies here.~
 5 16|64|128|512 1|8192
 0~ 1~ 6~ 11~
 5 0 0
+T
+bone~
 A
 1 -1
 A
@@ -2036,6 +2142,8 @@ A sword of pure obsidian lies here, seeming to swallow up the rays of light.~
 5 32|64|128|512|4096 1|8192
 0~ 1~ 6~ 3~
 5 0 0
+T
+obsidian~
 A
 13 -50
 A
@@ -2132,6 +2240,8 @@ A tight leather bodice sits here.~
 9 512|4096 1|8
 4~ 0~ 0~ 0~
 3 0 0
+T
+leather~
 A
 13 -25
 A
@@ -2144,6 +2254,8 @@ A tight leather miniskirt lies here.~
 9 4096 1|32
 3~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 2 -2
 #19119
@@ -2186,6 +2298,8 @@ A silver circlet lies here.~
 9 1|1024 1|16
 4~ 0~ 0~ 0~
 5 0 0
+T
+silver~
 A
 12 50
 #19123
@@ -2196,6 +2310,8 @@ A black robe lies here.~
 9 512 1|1024
 4~ 0~ 0~ 0~
 1 0 0
+T
+cloth~
 A
 1 1
 A
@@ -2208,6 +2324,8 @@ A white robe lies here.~
 9 512 1|1024
 4~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 A
 3 1
 A
@@ -2220,6 +2338,8 @@ An amulet lies here....it absorbs all the light around it.~
 9 1|2|32|64|128|4096 1|4
 0~ 0~ 0~ 0~
 5 0 0
+T
+silver~
 A
 1 -20
 A
@@ -2242,6 +2362,8 @@ A black cloak lies here.~
 9 32 1|8
 4~ 0~ 0~ 0~
 1 0 0
+T
+cloth~
 #19127
 blood red dagger~
 a blood-red dagger~
@@ -2250,6 +2372,8 @@ A blood-red dagger lies here.~
 5 16|64|512 1|8192
 0~ 1~ 6~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 19 15
 A
@@ -2310,6 +2434,8 @@ A beekeeper's hat rests here.~
 9 0 1|16
 2~ 0~ 0~ 0~
 2 0 0
+T
+cloth~
 A
 2 -1
 A
@@ -2328,6 +2454,8 @@ A white cloak lies here.~
 9 512 1|8
 4~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 A
 12 50
 #19132
@@ -2338,6 +2466,8 @@ A black cloak lies here.~
 9 0 1|8
 4~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 A
 12 50
 #19133
@@ -2517,6 +2647,8 @@ A small piece of polished amethyst sparkles here.~
 5 0 1|16384
 0~ 1~ 6~ 11~
 1 0 0
+T
+amethyst~
 A
 13 10
 #19143
@@ -2611,6 +2743,8 @@ A tie-dyed t-shirt lies here.~
 9 0 1|8
 4~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 2 -2
 E
@@ -2624,6 +2758,8 @@ A bandanna lies here.~
 9 0 1|16
 2~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 12 50
 #19153
@@ -2634,6 +2770,8 @@ A pair of jeans lies here.~
 9 0 1|32
 2~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 #19154
 magic guitar~
 a magic guitar~
@@ -2668,6 +2806,8 @@ A beautiful sword lies here.~
 5 64|128|4096 1|8192
 0~ 1~ 6~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 13 50
 A
@@ -2694,6 +2834,8 @@ A beautiful jewelled shield lies here.~
 9 64|128 1|512
 0~ 0~ 0~ 0~
 10 0 0
+T
+steel/wood~
 A
 2 1
 A
@@ -2803,6 +2945,8 @@ A small silver pendant lies here.~
 9 1 1|4
 4~ 0~ 0~ 0~
 1 0 0
+T
+silver~
 A
 13 5
 #19171
@@ -2813,6 +2957,8 @@ A simple bronze band lies here.~
 9 1 1|2
 2~ 0~ 0~ 0~
 1 0 0
+T
+bronze/wood/leather~
 A
 3 1
 A
@@ -2825,6 +2971,8 @@ A thick brown robe lies here.~
 9 1 1|1024
 2~ 0~ 0~ 0~
 1 0 0
+T
+cloth~
 A
 5 1
 A

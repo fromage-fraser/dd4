@@ -105,6 +105,8 @@ A pair of winged boots flutter about.~
 9 64 65
 3~ 0~ 0~ 0~
 10 10 10
+T
+leather~
 A
 2 4
 A
@@ -119,6 +121,8 @@ A pair of carved bronze bracers lies here.~
 9 0 257
 4~ 0~ 0~ 0~
 20 3000 1000
+T
+bronze/wood/leather~
 A
 12 30
 #9103
@@ -129,6 +133,8 @@ An ornate brooch was carelessly left here.~
 9 32 5
 0~ 0~ 0~ 0~
 10 1000 500
+T
+leather~
 A
 3 4
 A

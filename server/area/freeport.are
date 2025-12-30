@@ -631,6 +631,8 @@ A fishing pole is here, hooked and baited.~
 5 0 1|8192
 0~ 0~ 0~ 4~
 3 0 0
+T
+steel/wood/leather~
 #29107
 notebook~
 a notebook~
@@ -657,6 +659,8 @@ A suit of scale mail is here.~
 9 64 1|8
 0~ 0~ 0~ 0~
 20 0 0
+T
+steel~
 #29110
 trident~
 a trident~
@@ -665,6 +669,8 @@ A trident has been left here.~
 5 64 1|8192
 0~ 0~ 0~ 2~
 9 0 0
+T
+steel~
 A
 19 3
 #29111
@@ -720,6 +726,8 @@ A suit of emerald armor is here.~
 9 64 1|8
 0~ 0~ 0~ 0~
 40 0 0
+T
+emerald~
 A
 17 -30
 #29117
@@ -730,6 +738,8 @@ A dwarven throwing hammer is here.~
 5 64|32768 1|8192
 0~ 0~ 0~ 0~
 20 0 0
+T
+iron/wood~
 A
 18 4
 A
@@ -742,6 +752,8 @@ A set of elven chainmail sleeves is here.~
 9 64|65536 1|256
 0~ 0~ 0~ 0~
 4 0 0
+T
+steel~
 #29119
 leggings elven chainmail~
 elven chainmail leggings~
@@ -750,6 +762,8 @@ A pair of elven chainmail leggings is here.~
 9 64|65536 1|32
 0~ 0~ 0~ 0~
 5 0 0
+T
+steel~
 #29120
 wine red~
 a glass of Freeport burgundy~
@@ -798,6 +812,8 @@ An emerald wristguard is here.~
 9 64 1|4096
 0~ 0~ 0~ 0~
 10 0 0
+T
+emerald~
 A
 17 -20
 #29126
@@ -808,6 +824,8 @@ An emerald longsword is here.~
 5 64 1|8192
 0~ 0~ 0~ 3~
 10 0 0
+T
+emerald~
 A
 17 -20
 #29127
@@ -818,6 +836,8 @@ An emerald helm is here.~
 9 64 1|16
 0~ 0~ 0~ 0~
 15 0 0
+T
+emerald~
 A
 17 -10
 #29128
@@ -836,6 +856,8 @@ A cape with the emblem of Freeport is here.~
 9 64|256 1|4|8
 0~ 0~ 0~ 0~
 10 0 0
+T
+leather~
 A
 18 2
 A
@@ -876,6 +898,8 @@ A pair of boots with a spring action blade lie here.~
 9 0 1|64
 0~ 0~ 0~ 11~
 5 0 0
+T
+leather~
 A
 17 -10
 A
@@ -888,6 +912,8 @@ A hole in reality lies here.~
 9 64 1|4
 0~ 0~ 0~ 0~
 3 0 0
+T
+leather~
 A
 1 1
 A

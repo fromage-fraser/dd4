@@ -157,6 +157,8 @@ The sword of the rulers of the Realm.~
 5 2|4|64 8193
 0~ 2~ 12~ 3~
 24 55000 12000
+T
+steel/wood/leather~
 A
 18 5
 A
@@ -169,6 +171,8 @@ A vest made of some glowing substance.~
 9 64|1024 9
 8~ 0~ 0~ 0~
 30 12000 3000
+T
+leather~
 A
 19 2
 A
@@ -181,6 +185,8 @@ A helm glowing and pulsing with radiance.~
 9 2|4|64|1024 17
 8~ 0~ 0~ 0~
 10 5000 1800
+T
+steel~
 A
 18 2
 #8103
@@ -191,6 +197,8 @@ An aura lies here shimmering before you.~
 9 2|4|64|1024 257
 7~ 0~ 0~ 0~
 10 12450 2200
+T
+silver~
 A
 18 2
 A
@@ -203,6 +211,8 @@ A pool of energy lies here.~
 9 2|4|64|512 513
 7~ 0~ 0~ 0~
 5 500 100
+T
+steel/wood~
 A
 20 -4
 A

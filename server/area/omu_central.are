@@ -2700,6 +2700,8 @@ The chitinous carapace of a giant isopod lies here.~
 9 67108864|137438953472 1|8
 0~ 7~ 0~ 0~
 10 0 0
+T
+leather~
 A
 17 -30
 
@@ -2720,6 +2722,8 @@ The bony carapace of a boxfish lies here.~
 9 67108864|137438953472 8
 0~ 7~ 0~ 0~
 10 0 0
+T
+leather~
 A
 17 -40
 
@@ -2749,6 +2753,8 @@ The armoured plates of a dunkleosteus lies here.~
 9 67108864|137438953472 8
 0~ 7~ 0~ 0~
 400 0 0
+T
+steel~
 A
 17 -200
 
@@ -2760,6 +2766,8 @@ The powerful jaws of a dunkleosteus lies here.~
 5 67108864|137438953472 8192
 1~ 0~ 0~ 8~
 50 0 0
+T
+steel/wood/leather~
 A
 18 50
 A
@@ -2773,6 +2781,8 @@ A well-used and maintained long spear rests here.~
 5 0 1|8192
 0~ 0~ 0~ 11~
 10 0 0
+T
+iron/wood~
 A
 18 5
 A
@@ -2921,6 +2931,8 @@ A sharp, heavy butcher's cleaver has been left here.  It smells fishy.~
 5 274877906944 1|8192
 0~ 0~ 0~ 19~
 2 0 0
+T
+steel/wood/leather~
 A
 19 8
 
@@ -2932,6 +2944,8 @@ A butcher's apron smeared with blood, much of it blue or green.~
 9 274877906944 1|1024
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 17 -5
 A
@@ -2954,6 +2968,8 @@ A very fine wooden bow has been abandoned here.~
 5 1073741824|274877906944 1|8192
 0~ 0~ 0~ 11~
 11 0 62
+T
+wood~
 A
 19 9
 A
@@ -3086,6 +3102,8 @@ A very fine wooden spear has been abandoned here.~
 5 134217728|274877906944 1|8192
 0~ 0~ 0~ 11~
 15 0 64
+T
+wood~
 A
 19 12
 A
@@ -3422,6 +3440,8 @@ Flowing purple robes lie in a heap here.~
 9 64|274877906944 1|8
 0~ 0~ 0~ 0~
 6 0 0
+T
+cloth~
 A
 13 50
 A
@@ -3435,6 +3455,8 @@ A cruel spear lies here, abandoned.~
 5 16777216|134217728|274877906944 1|8192
 0~ 0~ 0~ 11~
 8 0 0
+T
+iron/wood~
 A
 19 12
 A
@@ -3448,6 +3470,8 @@ An orange breastplate made of steel lies here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 25 0 0
+T
+steel/wood/leather~
 A
 17 -45
 A
@@ -3483,6 +3507,8 @@ Flowing golden robes lie in a heap here.~
 9 64|274877906944 1|8
 0~ 0~ 0~ 0~
 6 0 0
+T
+gold~
 A
 13 75
 A

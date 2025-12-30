@@ -156,6 +156,8 @@ The filthy hide of a beast is laying here.~
 9 0 1|1024
 5~ 0~ 0~ 0~
 50 50 50
+T
+leather~
 E
 troll skin~
 This is the skin from a huge (and dead) beast.  It looks bad, smells bad,
@@ -171,6 +173,8 @@ A ring of black opal lies here gathering dust.~
 9 64 1|2
 3~ 0~ 0~ 0~
 1 1000 100
+T
+silver~
 E
 ring opal~
 It is a full circle of opal, smooth and simple.
@@ -185,6 +189,8 @@ An old leather belt is left on the floor.~
 9 64 1|2048
 6~ 0~ 0~ 0~
 5 100 20
+T
+leather~
 E
 leather belt~
 This old, smelly belt looks like it is barely better than rotting cloth.
@@ -197,6 +203,8 @@ A cracked piece of bone lies here.~
 5 0 1|8192
 0~ 3~ 3~ 7~
 3 3 50
+T
+bone~
 E
 bone~
 This piece of bone looks sturdy enough to be used as a weapon, but you

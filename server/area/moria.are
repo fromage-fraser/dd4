@@ -392,6 +392,8 @@ A ring, with yellow and green ornamentation. It looks very old.~
 9 0 16387
 0~ 0~ 0~ 0~
 1 50 20
+T
+silver~
 E
 ring~
 It feels VERY heavy.
@@ -436,6 +438,8 @@ A metal helmet is here.~
 9 0 16401
 3~ 0~ 0~ 0~
 4 3000 1000
+T
+steel~
 A
 24 -2
 A
@@ -460,6 +464,8 @@ A beautifully crafted dirk is lying here.~
 5 0 8193
 0~ 2~ 6~ 11~
 2 850 400
+T
+steel/wood/leather~
 E
 dirk~
 It's a medium sized, beautifully crafted dirk made from grey alloy.
@@ -478,6 +484,8 @@ An evil black demon blade is here.~
 5 512|2048 8193
 0~ 3~ 4~ 11~
 8 10000 3500
+T
+steel/wood/leather~
 E
 blade~
 You'll become as evil as the weapon, if you use it!
@@ -490,6 +498,8 @@ Some gloves are here.  They look like the right equipment for fighting.~
 9 512 129
 2~ 0~ 0~ 0~
 1 1500 500
+T
+leather~
 A
 18 2
 A
@@ -566,6 +576,8 @@ A light silver dagger is here.~
 5 1024 8193
 0~ 2~ 5~ 11~
 4 6000 2000
+T
+silver~
 E
 dagger light silver~
 It looks like an excellent weapon for thieves.

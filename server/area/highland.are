@@ -280,6 +280,8 @@ A claymore made of laen lies here.~
 5 593 8193
 0~ 0~ 0~ 3~
 24 2450 0
+T
+steel/wood/leather~
 A
 18 2
 A
@@ -292,6 +294,8 @@ A barbed sword lies here.~
 5 0 8193
 0~ 0~ 0~ 3~
 12 1250 0
+T
+steel/wood/leather~
 A
 3 -2
 #11502
@@ -302,6 +306,8 @@ A skirt lies on the ground.~
 9 1024 2049
 0~ 0~ 0~ 0~
 7 1450 0
+T
+leather~
 A
 17 -10
 A
@@ -314,6 +320,8 @@ A heap of plate armor lies on the ground.~
 9 593 9
 0~ 0~ 0~ 0~
 42 4555 0
+T
+steel~
 A
 17 -10
 A
@@ -328,6 +336,8 @@ A pair of boots lies here.~
 9 593 65
 0~ 0~ 0~ 0~
 16 3345 0
+T
+leather~
 A
 14 20
 A
@@ -340,6 +350,8 @@ A helmet made of laen lies here.~
 9 531 17
 0~ 0~ 0~ 0~
 27 4211 0
+T
+steel~
 A
 5 2
 A
@@ -352,6 +364,8 @@ A pair of queer-looking gauntlets lie here.~
 9 531 257
 0~ 0~ 0~ 0~
 14 3325 0
+T
+steel~
 A
 1 2
 A
@@ -365,6 +379,8 @@ A sword of a highlander lies here.~
 5 1024 8193
 0~ 0~ 0~ 3~
 5 2000 0
+T
+steel/wood/leather~
 A
 18 5
 A
@@ -389,6 +405,8 @@ A cloak with constantly-changing colors lies here.~
 9 1 5
 0~ 0~ 0~ 0~
 3 1200 0
+T
+cloth~
 A
 24 -2
 #11510
@@ -399,6 +417,8 @@ A dark mace lies here.~
 5 145 8193
 0~ 0~ 0~ 7~
 12 3340 0
+T
+iron/wood~
 A
 12 20
 #11511
@@ -409,6 +429,8 @@ A pair of blackish boots lies here.~
 9 528 65
 0~ 0~ 0~ 0~
 10 3223 0
+T
+leather~
 A
 12 15
 A
@@ -421,6 +443,8 @@ A bashing weapon of some sort lies here.~
 5 1282 8193
 0~ 0~ 0~ 8~
 19 3440 0
+T
+steel/wood/leather~
 A
 1 2
 A
@@ -435,6 +459,8 @@ A pile of armor lies here.~
 9 1282 9
 0~ 0~ 0~ 0~
 45 5600 0
+T
+steel~
 A
 17 -30
 A
@@ -459,6 +485,8 @@ A plain, simple dagger lies here.~
 5 512 8193
 0~ 0~ 0~ 1~
 2 500 0
+T
+steel/wood/leather~
 #11516
 sword notched~
 a notched sword~
@@ -467,6 +495,8 @@ A worn sword lies here.~
 5 0 8193
 0~ 0~ 0~ 3~
 10 600 0
+T
+steel/wood/leather~
 #11517
 dark key~
 a dark key~
@@ -515,6 +545,8 @@ A dark shield lies here.~
 9 531 513
 0~ 0~ 0~ 0~
 18 2300 0
+T
+steel/wood~
 A
 17 -10
 #11523
@@ -535,6 +567,8 @@ A claymore lies here.~
 5 0 8193
 0~ 0~ 0~ 6~
 12 1250 0
+T
+steel/wood/leather~
 A
 5 1
 A
@@ -555,6 +589,8 @@ Leggings made from the furry hides of multiple animals lie here.~
 9 0 1|32
 0~ 0~ 0~ 0~
 3 0 0
+T
+leather~
 A
 5 2
 #11527
@@ -565,6 +601,8 @@ Hide pants lined with high-quality sheep's wool lie here in a heap.~
 9 0 1|32
 0~ 0~ 0~ 0~
 3 0 0
+T
+leather~
 A
 13 15
 #11528
@@ -575,6 +613,8 @@ Greasy sheepskin pants lie here in a heap.  They really reek.~
 9 2 1|32
 0~ 0~ 0~ 0~
 4 0 0
+T
+leather~
 A
 19 1
 #11529
@@ -585,6 +625,8 @@ A crimson jewel hovers in the air above the ground.~
 9 1|2|64 1|32768
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 19 1
 #0

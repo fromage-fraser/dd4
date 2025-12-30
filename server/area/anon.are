@@ -1182,6 +1182,8 @@ A heavy club sheathed in lead lies here.~
 5 0 1|8192
 0~ 0~ 0~ 8~
 30 0 0
+T
+wood~
 A
 18 -2
 A
@@ -1194,6 +1196,8 @@ A sturdy mace lies here.~
 5 0 1|8192
 0~ 0~ 0~ 7~
 20 0 0
+T
+iron/wood~
 A
 18 1
 A
@@ -1206,6 +1210,8 @@ A good backstabbing weapon, this.~
 5 0 1|8192
 0~ 0~ 0~ 11~
 15 0 0
+T
+steel/wood/leather~
 A
 18 4
 A
@@ -1218,6 +1224,8 @@ A wickedly-curved scimitar hums ominously here.~
 5 2|16|64|512 1|8192
 0~ 0~ 0~ 3~
 25 0 0
+T
+steel/wood/leather~
 A
 18 4
 A
@@ -1230,6 +1238,8 @@ A pair of tough leather boots lie here.~
 9 0 1|64
 0~ 0~ 0~ 0~
 15 0 0
+T
+leather~
 A
 17 -5
 A
@@ -1242,6 +1252,8 @@ A narrow leather belt is curled up here.~
 9 0 1|2048
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 2 1
 A
@@ -1254,6 +1266,8 @@ A kamikaze headband.~
 9 0 1|16
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 18 2
 #31020
@@ -1264,6 +1278,8 @@ A scarf is here.~
 9 0 1|4
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 18 1
 A
@@ -1350,6 +1366,8 @@ The Headsman's mask is here.~
 9 0 1|16
 0~ 0~ 0~ 0~
 75 0 0
+T
+leather~
 A
 13 250
 #31031
@@ -1360,6 +1378,8 @@ The Castellan's Longsword is lying here in the dirt.~
 5 64 1|8192
 0~ 0~ 0~ 11~
 25 0 0
+T
+steel/wood/leather~
 A
 17 -15
 A
@@ -1376,6 +1396,8 @@ A footpad's sap, used to stun victims.~
 5 0 1|8192
 0~ 0~ 0~ 7~
 15 0 0
+T
+steel/wood/leather~
 #31033
 sword longsword~
 an Ornate Longsword~
@@ -1384,6 +1406,8 @@ An Ornate Longsword is lying here.~
 5 64 1|8192
 0~ 0~ 0~ 11~
 25 0 0
+T
+steel/wood/leather~
 A
 18 4
 A
@@ -1396,6 +1420,8 @@ An Ornate Breastplate with a black and gold coat of arms is lying here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 20 0 0
+T
+gold~
 A
 5 2
 A
@@ -1408,6 +1434,8 @@ An Ornate Bracer with a black and gold coat of arms is lying here.~
 9 0 1|4096
 0~ 0~ 0~ 0~
 15 0 0
+T
+gold~
 A
 2 2
 A
@@ -1420,6 +1448,8 @@ A Black Cloak with Gold Trim is lying here.~
 9 0 1|4
 0~ 0~ 0~ 0~
 10 0 0
+T
+gold~
 A
 12 25
 A
@@ -1432,6 +1462,8 @@ An Ornate Helm bearing a black and gold coat of arms lies here.~
 9 0 1|16
 0~ 0~ 0~ 0~
 10 0 0
+T
+gold~
 A
 3 1
 A
@@ -1446,6 +1478,8 @@ A Shield bearing the crest of the City of Anon lies here.~
 9 0 1|512
 0~ 0~ 0~ 0~
 20 0 0
+T
+steel/wood~
 A
 17 -20
 A
@@ -1460,6 +1494,8 @@ A sturdy Throwing Spear has been thrust into the ground here.~
 5 64|134217728 1|8192|16384
 0~ 0~ 0~ 0~
 20 0 0
+T
+iron/wood~
 A
 18 2
 A

@@ -203,6 +203,8 @@ The ground withers beneath a pair of boots.~
 9 32|64|4096 1|64
 15~ 1~ 6~ 11~
 13 0 0
+T
+leather~
 A
 19 10
 A
@@ -215,6 +217,8 @@ A bloody red breastplate with spikes on it is lying here.~
 9 32|64|4096 1|8
 18~ 1~ 6~ 11~
 200 0 0
+T
+steel~
 A
 19 10
 A
@@ -229,6 +233,8 @@ A pair of gloves crawling with insects and disease lies here.~
 9 32|64|4096 1|128
 15~ 1~ 6~ 11~
 10 0 0
+T
+leather~
 A
 1 -5
 A
@@ -243,6 +249,8 @@ A black robe reeking of death is piled in the corner.~
 9 32|64|4096 1|1024
 18~ 1~ 6~ 11~
 50 0 0
+T
+cloth~
 A
 12 1000
 A
@@ -263,6 +271,8 @@ A scythe radiating cold stands in the corner.~
 5 64|128|4096 1|8192
 0~ 85~ 100~ 1~
 30 0 0
+T
+steel/wood~
 A
 5 -5
 A
@@ -275,6 +285,8 @@ An enormous sword covered with blood is stuck in the ground.~
 5 64|128|4096 1|8192
 0~ 85~ 100~ 3~
 30 0 0
+T
+steel/wood/leather~
 A
 19 9
 A
@@ -287,6 +299,8 @@ A sword rests here.~
 5 0 1|8192
 0~ 50~ 70~ 3~
 5 0 0
+T
+steel/wood/leather~
 #5607
 key dirty~
 a dirty key~
@@ -303,6 +317,8 @@ A belt of four colours swirling together lies here.~
 9 32|64|4096 1|2048
 20~ 1~ 6~ 11~
 14 0 0
+T
+leather~
 A
 18 5
 A
@@ -319,6 +335,8 @@ A black robe reeking of death is piled in the corner.~
 9 32|64|4096 1|1024
 18~ 1~ 6~ 11~
 50 0 0
+T
+cloth~
 A
 12 500
 A
@@ -339,6 +357,8 @@ A belt of four colours swirling together lies here.~
 9 32|64|4096 1|2048
 20~ 1~ 6~ 11~
 14 0 0
+T
+leather~
 A
 18 5
 A

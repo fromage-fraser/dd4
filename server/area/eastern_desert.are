@@ -208,6 +208,8 @@ A small mining pick made of what appears to be silver lies on the ground.~
 5 512 8193
 0~ 1~ 9~ 11~
 3 600 200
+T
+silver~
 #5001
 banded mail~
 a glowing suit of banded mail~
@@ -216,6 +218,8 @@ A glowing suit of banded mail lies on the ground.~
 9 65 9
 7~ 0~ 0~ 0~
 0 75000 20000
+T
+steel~
 A
 2 2
 A
@@ -228,6 +232,8 @@ A mighty halberd lies against the wall.~
 5 320 8193
 0~ 3~ 7~ 2~
 16 12000 4000
+T
+steel/wood~
 A
 18 2
 A
@@ -240,6 +246,8 @@ A mushroom shaped amulet lies on the ground.~
 9 64 5
 0~ 0~ 0~ 0~
 2 1500 500
+T
+silver~
 A
 5 1
 #5005
@@ -250,6 +258,8 @@ A large leg bone rests on the ground.~
 5 0 8193
 0~ 1~ 4~ 7~
 5 300 60
+T
+bone~
 #5006
 cactus~
 a small cactus cup~
@@ -322,6 +332,8 @@ A thick padded turban lies here.~
 9 1 17
 0~ 0~ 0~ 0~
 15 4300 1200
+T
+leather~
 A
 17 1
 #5015
@@ -340,6 +352,8 @@ A long, curved sabre stands upright in the ground.~
 5 2048 8193
 0~ 2~ 8~ 3~
 7 1050 230
+T
+steel/wood/leather~
 A
 18 2
 #5017
@@ -350,6 +364,8 @@ A curved scimitar lies at your feet.~
 5 2048 8193
 0~ 2~ 7~ 3~
 6 600 150
+T
+steel/wood/leather~
 A
 18 1
 #5018
@@ -360,6 +376,8 @@ A long, pointed cutlass lies here.~
 5 2048 8193
 0~ 2~ 7~ 3~
 5 550 120
+T
+steel/wood/leather~
 #5019
 potion pink~
 a pink potion~
@@ -384,6 +402,8 @@ A strange energy bow lies here.~
 5 1|2|64|256|1073741824 8193
 0~ 4~ 5~ 6~
 20 150000 10000
+T
+wood~
 A
 19 5
 #5022
@@ -418,6 +438,8 @@ A tarnished copper bracelet lies at your feet.~
 9 192 4097
 5~ 0~ 0~ 0~
 10 23000 2500
+T
+copper~
 A
 13 10
 A

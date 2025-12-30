@@ -128,6 +128,8 @@ A manticore's long, barbed tail has been chopped off here.~
 5 0 0
 ~ ~ ~ 3~
 15 0 0
+T
+steel/wood/leather~
 A
 18 50
 A
@@ -141,6 +143,8 @@ A manticore's razor-sharp teeth have fallen out here.~
 5 0 0
 ~ ~ ~ 10~
 15 0 0
+T
+steel/wood/leather~
 A
 18 50
 A
@@ -181,6 +185,8 @@ A set of spiked shoulder pads rests here.~
 9 0 1|256
 ~ ~ ~ ~
 5 0 0
+T
+leather~
 A
 13 150
 
@@ -192,6 +198,8 @@ A pair of black angel wings lie here.~
 9 0 1|256
 ~ ~ ~ ~
 5 0 0
+T
+leather~
 A
 19 8
 A
@@ -216,6 +224,8 @@ A Mriswith cloak lies crumpled here.~
 9 0 1|1024
 ~ ~ ~ ~
 5 0 0
+T
+cloth~
 A
 5 5
 A
