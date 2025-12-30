@@ -1,0 +1,46 @@
+.command-input {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.command-input input {
+  flex: 1;
+  padding: 0.75rem;
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+.command-input input:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 5px rgba(255, 107, 107, 0.3);
+}
+
+.command-input input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.command-input button {
+  padding: 0.75rem 1.5rem;
+  background-color: #ff6b6b;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.command-input button:hover:not(:disabled) {
+  background-color: #ff5252;
+}
+
+.command-input button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

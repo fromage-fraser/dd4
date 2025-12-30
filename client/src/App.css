@@ -1,0 +1,86 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #2a2a2a;
+  border-bottom: 2px solid #444;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #ff6b6b;
+  text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+}
+
+.status {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.status.connected {
+  color: #4caf50;
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+.status.disconnected {
+  color: #ff6b6b;
+  background-color: rgba(255, 107, 107, 0.1);
+}
+
+.app-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.left-panel {
+  width: 300px;
+  padding: 1rem;
+  background-color: #242424;
+  border-right: 1px solid #444;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.main-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.right-panel {
+  width: 300px;
+  padding: 1rem;
+  background-color: #242424;
+  border-left: 1px solid #444;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.stats-panel, .inventory-panel {
+  background-color: #2a2a2a;
+  padding: 1rem;
+  border-radius: 4px;
+  border: 1px solid #444;
+}
+
+.stats-panel h3, .inventory-panel h3 {
+  margin: 0 0 1rem 0;
+  color: #ff6b6b;
+  font-size: 1rem;
+}

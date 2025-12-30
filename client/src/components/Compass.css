@@ -1,0 +1,52 @@
+.compass {
+  background-color: #2a2a2a;
+  padding: 1rem;
+  border-radius: 4px;
+  border: 1px solid #444;
+}
+
+.compass h3 {
+  margin: 0 0 1rem 0;
+  color: #ff6b6b;
+  font-size: 1rem;
+}
+
+.compass-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.compass-direction {
+  padding: 1rem;
+  border: 1px solid #444;
+  background-color: #1a1a1a;
+  color: #888;
+  cursor: not-allowed;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.compass-direction.available {
+  background-color: #2a4a2a;
+  color: #4caf50;
+  cursor: pointer;
+  border-color: #4caf50;
+}
+
+.compass-direction.available:hover {
+  background-color: #3a5a3a;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+.compass-direction.available:active {
+  transform: scale(0.95);
+}
+
+.compass-direction:disabled {
+  cursor: not-allowed;
+}

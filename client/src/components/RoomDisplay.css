@@ -1,0 +1,34 @@
+.room-display {
+  background-color: #2a2a2a;
+  padding: 1.5rem;
+  border-radius: 4px;
+  border: 1px solid #444;
+  margin-bottom: 1rem;
+}
+
+.room-name {
+  margin: 0 0 1rem 0;
+  color: #ff6b6b;
+  font-size: 1.3rem;
+  text-shadow: 0 0 5px rgba(255, 107, 107, 0.3);
+}
+
+.room-description {
+  margin: 0 0 1rem 0;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+.room-exits {
+  color: #4caf50;
+  font-size: 0.9rem;
+}
+
+.exits-label {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.exits-list {
+  color: #8bc34a;
+}
