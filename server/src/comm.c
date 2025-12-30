@@ -54,6 +54,7 @@
 #include <execinfo.h>
 #include "merc.h"
 #include "protocol.h"
+#include "webgate.h"
 
 /*
  * Malloc debugging stuff.
@@ -225,6 +226,14 @@ int main(int argc, char **argv)
         assert_directory_exists(PLAYER_DIR);
 
         /*
+         * Initialize WebSocket gateway for web clients
+         */
+        if (webgate_init(WEBGATE_DEFAULT_PORT) < 0) {
+                log_string("WARNING: WebSocket gateway failed to initialize");
+                log_string("Web-based clients will not be able to connect");
+        }
+
+        /*
          * Run the game.
          */
         mudport = port;
@@ -234,6 +243,9 @@ int main(int argc, char **argv)
         log_string(log_buf);
         game_loop_unix(control, wizPort);
         close(control);
+
+        /* Shutdown WebSocket gateway */
+        webgate_shutdown();
 
         /*
          * That's all, folks.
@@ -590,6 +602,9 @@ void game_loop_unix(int control, int wizPort)
 
                 maxdesc = control;
 
+                /* Register WebSocket gateway file descriptors */
+                webgate_register_fds(&in_set, &out_set, &maxdesc);
+
                 /*
                  FD_ZERO(&wizPort_in_set);
                  FD_ZERO(&wizPort_out_set);
@@ -624,6 +639,9 @@ void game_loop_unix(int control, int wizPort)
                  */
                 if (FD_ISSET(control, &in_set))
                         new_descriptor(control);
+
+                /* Process WebSocket gateway I/O */
+                webgate_process(&in_set, &out_set);
 
                 /*
                 if (FD_ISSET(wizPort, &wizPort_in_set))
