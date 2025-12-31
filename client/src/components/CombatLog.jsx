@@ -1,9 +1,19 @@
 import React, { useEffect, useRef } from 'react';
 import './CombatLog.css';
+import './ansi.css';
+import { parseAnsiToHtml } from '../utils/ansiParser';
 
 /**
- * CombatLog component displays scrolling message history
- * with color-coded message types
+ * Intent: Display scrolling message history with ANSI color codes converted to HTML/CSS
+ * 
+ * Responsibilities:
+ * - Parse ANSI escape sequences from MUD output
+ * - Convert color codes to styled HTML spans
+ * - Auto-scroll to show latest messages
+ * - Apply message type classes for additional styling
+ * 
+ * Inputs: messages array with {text, type, timestamp}
+ * Outputs: Rendered HTML with ANSI colors and formatting
  */
 function CombatLog({ messages }) {
   const logRef = useRef(null);
@@ -25,9 +35,11 @@ function CombatLog({ messages }) {
         <div className="log-message system">Waiting for connection...</div>
       )}
       {messages.map((msg, index) => (
-        <div key={index} className={getMessageClass(msg.type)}>
-          {msg.text}
-        </div>
+        <div 
+          key={index} 
+          className={getMessageClass(msg.type)}
+          dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(msg.text) }}
+        />
       ))}
     </div>
   );

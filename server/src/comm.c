@@ -24,7 +24,6 @@
  *  around, comes around.                                                  *
  ***************************************************************************/
 
-
 /*
  * This file contains all of the OS-dependent stuff:
  *   startup, signals, BSD sockets for tcp/ip, i/o, timing.
@@ -39,7 +38,6 @@
  * The OS-dependent functions are Read_from_descriptor and Write_to_descriptor.
  * -- Furey  26 Jan 1993
  */
-
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -61,16 +59,14 @@
  */
 #if defined(MALLOC_DEBUG)
 #include <malloc.h>
-extern  int     malloc_debug    args((int));
-extern  int     malloc_verify   args((void));
+extern int malloc_debug args((int));
+extern int malloc_verify args((void));
 #endif
-
 
 /*
  * Signal handling.
  */
 #include <signal.h>
-
 
 /*
  * Socket and TCP/IP stuff.
@@ -88,88 +84,81 @@ extern  int     malloc_verify   args((void));
 #define STDOUT_FILENO 1
 #endif
 
+const char echo_off_str[] = {IAC, WILL, TELOPT_ECHO, '\0'};
+const char echo_on_str[] = {IAC, WONT, TELOPT_ECHO, '\0'};
+const char go_ahead_str[] = {IAC, GA, '\0'};
 
-const   char    echo_off_str    [] = { IAC, WILL, TELOPT_ECHO, '\0' };
-const   char    echo_on_str     [] = { IAC, WONT, TELOPT_ECHO, '\0' };
-const   char    go_ahead_str    [] = { IAC, GA, '\0' };
-
-
-#define     WNOHANG         1       /* Don't block waiting.  */
-
-
+#define WNOHANG 1 /* Don't block waiting.  */
 
 /*
  * OS-dependent declarations.
  */
-#if     defined(interactive)
+#if defined(interactive)
 #include <net/errno.h>
 #include <sys/fcntl.h>
 #endif
 
 /*int   accept          args((int s, struct sockaddr *addr, int *addrlen)); */
 /*int   bind            args((int s, struct sockaddr *name, int namelen)); */
-int     close           args((int fd));
+int close args((int fd));
 /*int   getpeername     args((int s, struct sockaddr *name, int *namelen)); */
 /*int   getsockname     args((int s, struct sockaddr *name, int *namelen));*/
 /* int  gettimeofday    args((struct timeval *tp, struct timezone *tzp));  Commented out due to compile error/duplication -- Owl 10/2/22*/
 /* int  listen          args((int s, int backlog));*/
 /* int  read            args((int fd, char *buf, int nbyte));*/
-int     select          args((int width, fd_set *readfds, fd_set *writefds,
-                            fd_set *exceptfds, struct timeval *timeout));
-int     socket          args((int domain, int type, int protocol));
+int select args((int width, fd_set *readfds, fd_set *writefds,
+                 fd_set *exceptfds, struct timeval *timeout));
+int socket args((int domain, int type, int protocol));
 /* int  write           args((int fd, char *buf, int nbyte));*/
 
-void  nonblock     args((int s));
+void nonblock args((int s));
 
-pid_t   waitpid         args((pid_t pid, int *status, int options));
-pid_t   fork            args((void));
-int     kill            args((pid_t pid, int sig));
-int     pipe            args((int filedes[2]));
-int     dup2            args((int oldfd, int newfd));
-int     execl           args((const char *path, const char *arg, ...));
-
+pid_t waitpid args((pid_t pid, int *status, int options));
+pid_t fork args((void));
+int kill args((pid_t pid, int sig));
+int pipe args((int filedes[2]));
+int dup2 args((int oldfd, int newfd));
+int execl args((const char *path, const char *arg, ...));
 
 /*
  * Global variables.
  */
 
-DESCRIPTOR_DATA *   descriptor_free;    /* Free list for descriptors    */
-DESCRIPTOR_DATA *   descriptor_list;    /* All open descriptors         */
-DESCRIPTOR_DATA *   d_next;             /* Next descriptor in loop      */
-FILE *              fpReserve;          /* Reserved file handle         */
-bool                merc_down;          /* Shutdown                     */
-bool                wizlock;            /* Game is wizlocked            */
-int                 numlock = 0;        /* Game is numlocked at <level> */
-char                str_boot_time [ MAX_INPUT_LENGTH ];
-time_t              current_time;       /* Time of this pulse           */
-time_t              boot_time;
-int                 mudport;            /* mudport */
+DESCRIPTOR_DATA *descriptor_free; /* Free list for descriptors    */
+DESCRIPTOR_DATA *descriptor_list; /* All open descriptors         */
+DESCRIPTOR_DATA *d_next;          /* Next descriptor in loop      */
+FILE *fpReserve;                  /* Reserved file handle         */
+bool merc_down;                   /* Shutdown                     */
+bool wizlock;                     /* Game is wizlocked            */
+int numlock = 0;                  /* Game is numlocked at <level> */
+char str_boot_time[MAX_INPUT_LENGTH];
+time_t current_time; /* Time of this pulse           */
+time_t boot_time;
+int mudport; /* mudport */
 
-void    game_loop_unix          args((int control, int wizPort));
-int     init_socket             args((int port));
-void    new_descriptor          args((int control));
-void    wizPort_handler args((int control));
-bool    read_from_descriptor    args((DESCRIPTOR_DATA *d));
-bool    write_to_descriptor     args((int desc, char *txt, int length));
+void game_loop_unix args((int control, int wizPort));
+int init_socket args((int port));
+void new_descriptor args((int control));
+void wizPort_handler args((int control));
+bool read_from_descriptor args((DESCRIPTOR_DATA * d));
+bool write_to_descriptor args((int desc, char *txt, int length));
 
 int connection_count = 0;
-DESCRIPTOR_DATA *initiative_list [MAX_CONNECTIONS];
-
+DESCRIPTOR_DATA *initiative_list[MAX_CONNECTIONS];
 
 /*
  * Other local functions (OS-independent).
  */
-bool    check_parse_name        args((char *name));
-bool    check_reconnect         args((DESCRIPTOR_DATA *d, char *name, bool fConn));
-bool    check_playing           args((DESCRIPTOR_DATA *d, char *name));
-int     main                    args((int argc, char **argv));
-void    nanny                   args((DESCRIPTOR_DATA *d, char *argument));
-bool    process_output          args((DESCRIPTOR_DATA *d, bool fPrompt));
-void    read_from_buffer        args((DESCRIPTOR_DATA *d));
-void    stop_idling             args((CHAR_DATA *ch));
-void    bust_a_prompt           args((DESCRIPTOR_DATA *d));
-void    assert_directory_exists args((const char *path));
-
+bool check_parse_name args((char *name));
+bool check_reconnect args((DESCRIPTOR_DATA * d, char *name, bool fConn));
+bool check_playing args((DESCRIPTOR_DATA * d, char *name));
+int main args((int argc, char **argv));
+void nanny args((DESCRIPTOR_DATA * d, char *argument));
+bool process_output args((DESCRIPTOR_DATA * d, bool fPrompt));
+void read_from_buffer args((DESCRIPTOR_DATA * d));
+void stop_idling args((CHAR_DATA * ch));
+void bust_a_prompt args((DESCRIPTOR_DATA * d));
+void assert_directory_exists args((const char *path));
 
 int main(int argc, char **argv)
 {
@@ -188,7 +177,7 @@ int main(int argc, char **argv)
          * Init time.
          */
         gettimeofday(&now_time, NULL);
-        current_time = (time_t) now_time.tv_sec;
+        current_time = (time_t)now_time.tv_sec;
         boot_time = current_time;
         strcpy(str_boot_time, ctime(&boot_time));
 
@@ -219,7 +208,6 @@ int main(int argc, char **argv)
                 }
         }
 
-
         /*
          * Check certain directories exist. This helps to avoid surprising errors once the server is running.
          */
@@ -228,7 +216,8 @@ int main(int argc, char **argv)
         /*
          * Initialize WebSocket gateway for web clients
          */
-        if (webgate_init(WEBGATE_DEFAULT_PORT) < 0) {
+        if (webgate_init(WEBGATE_DEFAULT_PORT) < 0)
+        {
                 log_string("WARNING: WebSocket gateway failed to initialize");
                 log_string("Web-based clients will not be able to connect");
         }
@@ -256,12 +245,11 @@ int main(int argc, char **argv)
         return 0;
 }
 
-
 int init_socket(int port)
 {
         static struct sockaddr_in sa_zero;
         struct sockaddr_in sa;
-        int x  = 1;
+        int x = 1;
         int fd;
 
         last_command[0] = '\0';
@@ -273,7 +261,7 @@ int init_socket(int port)
         }
 
         if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR,
-                       (char *) &x, sizeof(x)) < 0)
+                       (char *)&x, sizeof(x)) < 0)
         {
                 perror("Init_socket: SO_REUSEADDR");
                 close(fd);
@@ -282,13 +270,13 @@ int init_socket(int port)
 
 #if defined(SO_DONTLINGER) && !defined(SYSV)
         {
-                struct  linger  ld;
+                struct linger ld;
 
-                ld.l_onoff  = 1;
+                ld.l_onoff = 1;
                 ld.l_linger = 1000;
 
                 if (setsockopt(fd, SOL_SOCKET, SO_DONTLINGER,
-                               (char *) &ld, sizeof(ld)) < 0)
+                               (char *)&ld, sizeof(ld)) < 0)
                 {
                         perror("Init_socket: SO_DONTLINGER");
                         close(fd);
@@ -297,11 +285,11 @@ int init_socket(int port)
         }
 #endif
 
-        sa                  = sa_zero;
-        sa.sin_family       = AF_INET;
-        sa.sin_port         = htons(port);
+        sa = sa_zero;
+        sa.sin_family = AF_INET;
+        sa.sin_port = htons(port);
 
-        if (bind(fd, (struct sockaddr *) &sa, sizeof(sa)) < 0)
+        if (bind(fd, (struct sockaddr *)&sa, sizeof(sa)) < 0)
         {
                 perror("Init_socket: bind");
                 close(fd);
@@ -322,7 +310,7 @@ int init_socket(int port)
                 char *when;
 
                 when = ctime(&current_time);
-                when[strlen(when)-1] = '\0';
+                when[strlen(when) - 1] = '\0';
                 sprintf(buf, "Log starts at %s", when);
                 log_string(buf);
 
@@ -332,7 +320,6 @@ int init_socket(int port)
 
         return fd;
 }
-
 
 /*
  * Here comes the ident driver code.
@@ -345,7 +332,7 @@ int init_socket(int port)
  */
 bool read_from_ident(int fd, char *buffer)
 {
-        static char inbuf[MAX_STRING_LENGTH*2];
+        static char inbuf[MAX_STRING_LENGTH * 2];
         int iStart, i, j, k;
 
         /* Check for overflow. */
@@ -365,7 +352,7 @@ bool read_from_ident(int fd, char *buffer)
                 if (nRead > 0)
                 {
                         iStart += nRead;
-                        if (inbuf[iStart-2] == '\n' || inbuf[iStart-2] == '\r')
+                        if (inbuf[iStart - 2] == '\n' || inbuf[iStart - 2] == '\r')
                                 break;
                 }
                 else if (nRead == 0)
@@ -415,10 +402,10 @@ bool read_from_ident(int fd, char *buffer)
          */
         while (inbuf[i] == '\n' || inbuf[i] == '\r')
                 i++;
-        for (j = 0; (inbuf[j] = inbuf[i+j]) != '\0'; j++)
+        for (j = 0; (inbuf[j] = inbuf[i + j]) != '\0'; j++)
                 ;
 
-    return TRUE;
+        return TRUE;
 }
 
 /*
@@ -428,18 +415,18 @@ void process_ident(DESCRIPTOR_DATA *d)
 {
         char buffer[MAX_INPUT_LENGTH];
         char address[MAX_INPUT_LENGTH];
-        CHAR_DATA *ch=CH(d);
+        CHAR_DATA *ch = CH(d);
         char *user;
-        sh_int results=0;
+        sh_int results = 0;
         int status;
 
-        buffer[0]='\0';
+        buffer[0] = '\0';
 
         if (!read_from_ident(d->ifd, buffer) || IS_NULLSTR(buffer))
                 return;
 
         /* using first arg since we want to keep case */
-        user=first_arg(buffer, address, FALSE);
+        user = first_arg(buffer, address, FALSE);
 
         /* replace and set some states */
         if (!IS_NULLSTR(user))
@@ -454,7 +441,7 @@ void process_ident(DESCRIPTOR_DATA *d)
         }
 
         /* do sensible output */
-        if (results==1) /* address only */
+        if (results == 1) /* address only */
         {
                 /*
                  * Change the two lines below to your notification function...
@@ -466,7 +453,7 @@ void process_ident(DESCRIPTOR_DATA *d)
                 sprintf(log_buf, "%s has address %s.", ch->name, address);
                 log_string(log_buf);
         }
-        else if (results==2 || results==3) /* ident only, or both */
+        else if (results == 2 || results == 3) /* ident only, or both */
         {
                 /*
                  * Change the two lines below to your notification function...
@@ -486,7 +473,7 @@ void process_ident(DESCRIPTOR_DATA *d)
 
         /* close descriptor and kill ident process */
         close(d->ifd);
-        d->ifd=-1;
+        d->ifd = -1;
         /*
          * we don't have to check here,
          * cos the child is probably dead already. (but out of safety we do)
@@ -496,11 +483,10 @@ void process_ident(DESCRIPTOR_DATA *d)
          * and keep lingering around... The waitpid() removes them.
          */
         waitpid(d->ipid, &status, WNOHANG);
-        d->ipid=-1;
+        d->ipid = -1;
 
         return;
 }
-
 
 void create_ident(DESCRIPTOR_DATA *d, long ip, sh_int port)
 {
@@ -508,7 +494,7 @@ void create_ident(DESCRIPTOR_DATA *d, long ip, sh_int port)
         pid_t pid;
 
         /* create pipe first */
-        if (pipe(fds) !=0)
+        if (pipe(fds) != 0)
         {
                 perror("Create_ident: pipe: ");
                 return;
@@ -517,9 +503,9 @@ void create_ident(DESCRIPTOR_DATA *d, long ip, sh_int port)
         if ((pid = fork()) > 0)
         {
                 /* parent process */
-                d->ifd=fds[0];
+                d->ifd = fds[0];
                 close(fds[1]);
-                d->ipid=pid;
+                d->ipid = pid;
         }
 
         else if (pid == 0)
@@ -527,7 +513,7 @@ void create_ident(DESCRIPTOR_DATA *d, long ip, sh_int port)
                 /* child process */
                 char str_ip[64], str_local[64], str_remote[64];
 
-                if (dup2 (fds[1], STDOUT_FILENO) != STDOUT_FILENO)
+                if (dup2(fds[1], STDOUT_FILENO) != STDOUT_FILENO)
                 {
                         perror("Create_ident: dup2(stdout): ");
                         return;
@@ -558,8 +544,6 @@ void create_ident(DESCRIPTOR_DATA *d, long ip, sh_int port)
 
 #endif
 
-
-
 void game_loop_unix(int control, int wizPort)
 {
         static struct timeval null_time;
@@ -567,7 +551,7 @@ void game_loop_unix(int control, int wizPort)
 
         signal(SIGPIPE, SIG_IGN);
         gettimeofday(&last_time, NULL);
-        current_time = (time_t) last_time.tv_sec;
+        current_time = (time_t)last_time.tv_sec;
 
         install_crash_handler();
 
@@ -575,10 +559,10 @@ void game_loop_unix(int control, int wizPort)
         while (!merc_down)
         {
                 DESCRIPTOR_DATA *d;
-                fd_set           in_set;
-                fd_set           out_set;
-                fd_set           exc_set;
-                int              maxdesc;
+                fd_set in_set;
+                fd_set out_set;
+                fd_set exc_set;
+                int maxdesc;
 
                 /*
                  fd_set           wizPort_in_set;
@@ -619,16 +603,17 @@ void game_loop_unix(int control, int wizPort)
                         FD_SET(d->descriptor, &in_set);
                         FD_SET(d->descriptor, &out_set);
                         FD_SET(d->descriptor, &exc_set);
-                        if (d->ifd!=-1 && d->ipid!=-1)
+                        if (d->ifd != -1 && d->ipid != -1)
                         {
                                 maxdesc = UMAX(maxdesc, d->ifd);
                                 FD_SET(d->ifd, &in_set);
                         }
                 }
 
-                if (select(maxdesc+1, &in_set, &out_set, &exc_set, &null_time) < 0
+                if (select(maxdesc + 1, &in_set, &out_set, &exc_set, &null_time) < 0
                     /*|| select(maxdesc+2, &wizPort_in_set, &out_set,
-                    &exc_set, &null_time) < 0*/)
+                    &exc_set, &null_time) < 0*/
+                )
                 {
                         perror("Game_loop: select: poll");
                         exit(1);
@@ -670,8 +655,8 @@ void game_loop_unix(int control, int wizPort)
                  */
                 for (d = descriptor_list; d; d = d_next)
                 {
-                        d_next  = d->next;
-                        d->fcommand     = FALSE;
+                        d_next = d->next;
+                        d->fcommand = FALSE;
 
                         if (FD_ISSET(d->descriptor, &in_set))
                         {
@@ -689,13 +674,10 @@ void game_loop_unix(int control, int wizPort)
                         }
 
                         /* check for input from the ident */
-                        if ((d->connected==CON_PLAYING || CH(d) != NULL)
-                            && d->ifd != -1 && FD_ISSET(d->ifd, &in_set))
+                        if ((d->connected == CON_PLAYING || CH(d) != NULL) && d->ifd != -1 && FD_ISSET(d->ifd, &in_set))
                                 process_ident(d);
 
-                        if (d->character
-                            && d->character->wait > 0
-                            && !IS_TRUE_IMMORTAL(d->character))
+                        if (d->character && d->character->wait > 0 && !IS_TRUE_IMMORTAL(d->character))
                         {
                                 --d->character->wait;
                                 continue;
@@ -704,20 +686,20 @@ void game_loop_unix(int control, int wizPort)
                         read_from_buffer(d);
                         if (d->incomm[0] != '\0')
                         {
-                                d->fcommand     = TRUE;
-                                 if ( d->pProtocol != NULL )
+                                d->fcommand = TRUE;
+                                if (d->pProtocol != NULL)
                                         d->pProtocol->WriteOOB = 0;
                                 stop_idling(d->character);
 
                                 if (d->connected == CON_PLAYING)
                                         if (d->showstr_point)
                                                 show_string(d, d->incomm);
-                                else
-                                        interpret(d->character, d->incomm);
+                                        else
+                                                interpret(d->character, d->incomm);
                                 else
                                         nanny(d, d->incomm);
 
-                                d->incomm[0]    = '\0';
+                                d->incomm[0] = '\0';
                         }
                 }
 
@@ -733,14 +715,13 @@ void game_loop_unix(int control, int wizPort)
                 {
                         d_next = d->next;
 
-                        if ((d->fcommand || d->outtop > 0)
-                            && FD_ISSET(d->descriptor, &out_set))
+                        if ((d->fcommand || d->outtop > 0) && FD_ISSET(d->descriptor, &out_set))
                         {
                                 if (!process_output(d, TRUE))
                                 {
                                         if (d->character)
                                                 save_char_obj(d->character);
-                                        d->outtop       = 0;
+                                        d->outtop = 0;
                                         close_socket(d);
                                 }
                         }
@@ -758,22 +739,19 @@ void game_loop_unix(int control, int wizPort)
 
                         gettimeofday(&now_time, NULL);
 
-                        usecDelta = ((int) last_time.tv_usec)
-                                - ((int)  now_time.tv_usec)
-                                + 1000000 / PULSE_PER_SECOND;
-                        secDelta = ((int) last_time.tv_sec)
-                                - ((int)  now_time.tv_sec);
+                        usecDelta = ((int)last_time.tv_usec) - ((int)now_time.tv_usec) + 1000000 / PULSE_PER_SECOND;
+                        secDelta = ((int)last_time.tv_sec) - ((int)now_time.tv_sec);
 
                         while (usecDelta < 0)
                         {
                                 usecDelta += 1000000;
-                                secDelta  -= 1;
+                                secDelta -= 1;
                         }
 
                         while (usecDelta >= 1000000)
                         {
                                 usecDelta -= 1000000;
-                                secDelta  += 1;
+                                secDelta += 1;
                         }
 
                         if (secDelta > 0 || (secDelta == 0 && usecDelta > 0))
@@ -781,7 +759,7 @@ void game_loop_unix(int control, int wizPort)
                                 struct timeval stall_time;
 
                                 stall_time.tv_usec = usecDelta;
-                                stall_time.tv_sec  = secDelta;
+                                stall_time.tv_sec = secDelta;
 
                                 if (select(0, NULL, NULL, NULL, &stall_time) < 0)
                                 {
@@ -792,41 +770,39 @@ void game_loop_unix(int control, int wizPort)
                 }
 
                 gettimeofday(&last_time, NULL);
-                current_time = (time_t) last_time.tv_sec;
+                current_time = (time_t)last_time.tv_sec;
         }
 
         return;
 }
 
-
-void new_descriptor (int control)
+void new_descriptor(int control)
 {
-        BAN_DATA               *pban;
-        static DESCRIPTOR_DATA  d_zero;
-        DESCRIPTOR_DATA        *dnew;
-        struct sockaddr_in      sock;
-        struct hostent         *from;
-        char                    buf [ MAX_STRING_LENGTH ];
-        int                     desc;
-        socklen_t               size;
-        int                     addr;
-
+        BAN_DATA *pban;
+        static DESCRIPTOR_DATA d_zero;
+        DESCRIPTOR_DATA *dnew;
+        struct sockaddr_in sock;
+        struct hostent *from;
+        char buf[MAX_STRING_LENGTH];
+        int desc;
+        socklen_t size;
+        int addr;
 
         size = sizeof(sock);
-        getsockname(control, (struct sockaddr *) &sock, &size);
+        getsockname(control, (struct sockaddr *)&sock, &size);
 
-        if ((desc = accept(control, (struct sockaddr *) &sock, &size)) < 0)
+        if ((desc = accept(control, (struct sockaddr *)&sock, &size)) < 0)
         {
                 perror("New_descriptor: accept");
                 return;
         }
 
 #if !defined(FNDELAY)
-# if defined(__hpux)
-#  define FNDELAY O_NONBLOCK
-# else
-#  define FNDELAY O_NDELAY
-# endif
+#if defined(__hpux)
+#define FNDELAY O_NONBLOCK
+#else
+#define FNDELAY O_NDELAY
+#endif
 #endif
 
         if (fcntl(desc, F_SETFL, FNDELAY) == -1)
@@ -840,23 +816,23 @@ void new_descriptor (int control)
          */
         if (!descriptor_free)
         {
-                dnew            = alloc_perm(sizeof(*dnew));
+                dnew = alloc_perm(sizeof(*dnew));
         }
         else
         {
-                dnew            = descriptor_free;
+                dnew = descriptor_free;
                 descriptor_free = descriptor_free->next;
         }
 
-        *dnew           = d_zero;
-        dnew->descriptor        = desc;
-        dnew->character     = NULL;
+        *dnew = d_zero;
+        dnew->descriptor = desc;
+        dnew->character = NULL;
         dnew->connected = CON_GET_NAME;
-        dnew->showstr_head  = str_dup("");
+        dnew->showstr_head = str_dup("");
         dnew->showstr_point = 0;
-        dnew->outsize   = 2000;
-        dnew->outbuf    = alloc_mem(dnew->outsize);
-        dnew->pProtocol     = ProtocolCreate(); /* <--- GCMP */
+        dnew->outsize = 2000;
+        dnew->outbuf = alloc_mem(dnew->outsize);
+        dnew->pProtocol = ProtocolCreate(); /* <--- GCMP */
 
         size = sizeof(sock);
 
@@ -865,10 +841,10 @@ void new_descriptor (int control)
          * which ain't very compatible between gcc and system libraries.
          */
 
-        addr = ntohl (sock.sin_addr.s_addr);
+        addr = ntohl(sock.sin_addr.s_addr);
         sprintf(buf, "%d.%d.%d.%d",
                 (addr >> 24) & 0xFF, (addr >> 16) & 0xFF,
-                (addr >>  8) & 0xFF, (addr) & 0xFF);
+                (addr >> 8) & 0xFF, (addr) & 0xFF);
         sprintf(log_buf, "New socket from: %s", buf);
         log_string(log_buf);
 
@@ -877,8 +853,9 @@ void new_descriptor (int control)
         from = NULL;
 
         dnew->host = str_dup(from ? from->h_name : buf);
-        if (from) sprintf (log_buf, "New socket from: %s", from->h_name);
-        server_message (log_buf);
+        if (from)
+                sprintf(log_buf, "New socket from: %s", from->h_name);
+        server_message(log_buf);
 
         /*
          *  Can we accept any more connections?
@@ -928,19 +905,18 @@ void new_descriptor (int control)
          * Send the greeting.
          */
         {
-                extern char * help_greeting;
+                extern char *help_greeting;
 
                 if (help_greeting[0] == '.')
-                        write_to_buffer(dnew, help_greeting+1, 0);
+                        write_to_buffer(dnew, help_greeting + 1, 0);
                 else
-                        write_to_buffer(dnew, help_greeting  , 0);
+                        write_to_buffer(dnew, help_greeting, 0);
         }
 
         return;
 }
 
-
-void close_socket (DESCRIPTOR_DATA *dclose)
+void close_socket(DESCRIPTOR_DATA *dclose)
 {
         CHAR_DATA *ch;
         DESCRIPTOR_DATA *d;
@@ -965,9 +941,7 @@ void close_socket (DESCRIPTOR_DATA *dclose)
                 sprintf(log_buf, "Closing link to %s.", ch->name);
                 log_string(log_buf);
 
-                if ((dclose->connected == CON_PLAYING)
-                    || ((dclose->connected >= CON_NOTE_TO)
-                        && (dclose->connected <= CON_NOTE_FINISH)))
+                if ((dclose->connected == CON_PLAYING) || ((dclose->connected >= CON_NOTE_TO) && (dclose->connected <= CON_NOTE_FINISH)))
                 {
                         act("$n has lost $s link.", ch, NULL, NULL, TO_ROOM);
                         ch->desc = NULL;
@@ -1004,14 +978,13 @@ void close_socket (DESCRIPTOR_DATA *dclose)
 
         /* RT socket leak fix */
         free_mem(dclose->outbuf, dclose->outsize);
-         ProtocolDestroy( dclose->pProtocol ); /* <--- GCMP */
-        dclose->next    = descriptor_free;
+        ProtocolDestroy(dclose->pProtocol); /* <--- GCMP */
+        dclose->next = descriptor_free;
         descriptor_free = dclose;
         connection_count--;
 }
 
-
-bool read_from_descriptor (DESCRIPTOR_DATA *d)
+bool read_from_descriptor(DESCRIPTOR_DATA *d)
 {
         int iStart;
 
@@ -1028,7 +1001,7 @@ bool read_from_descriptor (DESCRIPTOR_DATA *d)
 
         /* Check for overflow. */
         iStart = 0;
-        if ( strlen(d->inbuf) >= sizeof(d->inbuf) - 10 )
+        if (strlen(d->inbuf) >= sizeof(d->inbuf) - 10)
         {
                 sprintf(log_buf, "%s input overflow!", d->host);
                 log_string(log_buf);
@@ -1039,44 +1012,44 @@ bool read_from_descriptor (DESCRIPTOR_DATA *d)
 
         /* Snarf input. */
 #if defined(macintosh)
-        for (; ;)
+        for (;;)
         {
                 int c;
                 c = getc(stdin);
                 if (c == '\0' || c == EOF)
                         break;
                 putc(c, stdout);
-               /* if (c == '\r')
+                /* if (c == '\r')
+                         putc('\n', stdout);
+                 d->inbuf[iStart++] = c; */
+                if (c == '\r')
                         putc('\n', stdout);
-                d->inbuf[iStart++] = c; */
-                if ( c == '\r' )
-	                putc( '\n', stdout );
-	        read_buf[iStart++] = c;
+                read_buf[iStart++] = c;
                 if (iStart > sizeof(d->inbuf) - 10)
                         break;
         }
 #endif
 
 #if defined(MSDOS) || defined(unix)
-        for (; ;)
+        for (;;)
         {
                 int nRead;
 
-       /*         nRead = read(d->descriptor, d->inbuf + iStart,
-                             sizeof(d->inbuf) - 10 - iStart);
+                /*         nRead = read(d->descriptor, d->inbuf + iStart,
+                                      sizeof(d->inbuf) - 10 - iStart);
+                         if (nRead > 0)
+                         {
+                                 iStart += nRead;
+                                 if (d->inbuf[iStart-1] == '\n' || d->inbuf[iStart-1] == '\r')
+                                         break;
+                         } */
+                nRead = read(d->descriptor, read_buf + iStart,
+                             sizeof(read_buf) - 10 - iStart);
                 if (nRead > 0)
                 {
                         iStart += nRead;
-                        if (d->inbuf[iStart-1] == '\n' || d->inbuf[iStart-1] == '\r')
+                        if (read_buf[iStart - 1] == '\n' || read_buf[iStart - 1] == '\r')
                                 break;
-                } */
-                nRead = read( d->descriptor, read_buf + iStart,
-	        sizeof(read_buf) - 10 - iStart );
-                if ( nRead > 0 )
-                {
-                iStart += nRead;
-                if ( read_buf[iStart-1] == '\n' || read_buf[iStart-1] == '\r' )
-                        break;
                 }
                 else if (nRead == 0)
                 {
@@ -1089,19 +1062,17 @@ bool read_from_descriptor (DESCRIPTOR_DATA *d)
         }
 #endif
 
-     /*   d->inbuf[iStart] = '\0';
-        return TRUE; */
+        /*   d->inbuf[iStart] = '\0';
+           return TRUE; */
         read_buf[iStart] = '\0';
-        ProtocolInput( d, read_buf, iStart, d->inbuf );
+        ProtocolInput(d, read_buf, iStart, d->inbuf);
         return TRUE;
-
 }
-
 
 /*
  * Transfer one line from input buffer to input line.
  */
-void read_from_buffer (DESCRIPTOR_DATA *d)
+void read_from_buffer(DESCRIPTOR_DATA *d)
 {
         int i;
         int j;
@@ -1137,8 +1108,8 @@ void read_from_buffer (DESCRIPTOR_DATA *d)
                                 if (d->inbuf[i] == '\n' || d->inbuf[i] == '\r')
                                         break;
                         }
-                        d->inbuf[i]   = '\n';
-                        d->inbuf[i+1] = '\0';
+                        d->inbuf[i] = '\n';
+                        d->inbuf[i + 1] = '\0';
                         break;
                 }
 
@@ -1166,7 +1137,7 @@ void read_from_buffer (DESCRIPTOR_DATA *d)
                 }
                 else
                 {
-                        if ( ( ++d->repeat >= 200 ) )
+                        if ((++d->repeat >= 200))
                         {
                                 sprintf(log_buf, "%s input spamming!", d->host);
                                 log_string(log_buf);
@@ -1190,25 +1161,24 @@ void read_from_buffer (DESCRIPTOR_DATA *d)
          */
         while (d->inbuf[i] == '\n' || d->inbuf[i] == '\r')
                 i++;
-        for (j = 0; (d->inbuf[j] = d->inbuf[i+j]) != '\0'; j++)
+        for (j = 0; (d->inbuf[j] = d->inbuf[i + j]) != '\0'; j++)
                 ;
 
         return;
 }
 
-
 /*
  * Low level output function.
  */
-bool process_output (DESCRIPTOR_DATA *d, bool fPrompt)
+bool process_output(DESCRIPTOR_DATA *d, bool fPrompt)
 {
         extern bool merc_down;
 
         /*
          * Bust a prompt.
          */
-        if ( d->pProtocol->WriteOOB ) /* <-- Add this, and the ";" and "else" */
-        ; /* The last sent data was OOB, so do NOT draw the prompt */
+        if (d->pProtocol->WriteOOB) /* <-- Add this, and the ";" and "else" */
+                ;                   /* The last sent data was OOB, so do NOT draw the prompt */
         else if (fPrompt && !merc_down && d->connected == CON_PLAYING)
         {
                 if (d->showstr_point)
@@ -1234,57 +1204,58 @@ bool process_output (DESCRIPTOR_DATA *d, bool fPrompt)
                                 else
                                         percent = -1;
 
-                                if ( !IS_INORGANIC( victim ) )
+                                if (!IS_INORGANIC(victim))
                                 {
                                         if (percent >= 100)
-                                                sprintf(wound,"is in excellent condition.");
+                                                sprintf(wound, "is in excellent condition.");
                                         else if (percent >= 90)
-                                                sprintf(wound,"has a few scratches.");
+                                                sprintf(wound, "has a few scratches.");
                                         else if (percent >= 75)
-                                                sprintf(wound,"has some small wounds and bruises.");
+                                                sprintf(wound, "has some small wounds and bruises.");
                                         else if (percent >= 50)
-                                                sprintf(wound,"has quite a few wounds.");
+                                                sprintf(wound, "has quite a few wounds.");
                                         else if (percent >= 30)
-                                                sprintf(wound,"has some big nasty wounds and scratches.");
+                                                sprintf(wound, "has some big nasty wounds and scratches.");
                                         else if (percent >= 15)
-                                                sprintf(wound,"looks pretty hurt.");
+                                                sprintf(wound, "looks pretty hurt.");
                                         else if (percent >= 0)
-                                                sprintf(wound,"is in awful condition.");
+                                                sprintf(wound, "is in awful condition.");
                                         else
-                                                sprintf(wound,"is bleeding to death!");
+                                                sprintf(wound, "is bleeding to death!");
                                 }
-                                else {
+                                else
+                                {
 
-                                        if ( percent >= 100 )
-                                                sprintf(wound,"is in perfect condition.");
-                                        else if ( percent >=  90 )
-                                                sprintf(wound,"is slightly damaged.");
-                                        else if ( percent >=  80 )
-                                                sprintf(wound,"has a few signs of damage.");
-                                        else if ( percent >=  70 )
-                                                sprintf(wound,"has noticeable damage.");
-                                        else if ( percent >=  60 )
-                                                sprintf(wound,"is moderately damaged.");
-                                        else if ( percent >=  50 )
-                                                sprintf(wound,"has taken a lot of damage.");
-                                        else if ( percent >=  40 )
-                                                sprintf(wound,"has very significant damage.");
-                                        else if ( percent >=  30 )
-                                                sprintf(wound,"is very heavily damaged.");
-                                        else if ( percent >=  20 )
-                                                sprintf(wound,"is ruinously damaged.");
-                                        else if ( percent >=  10 )
-                                                sprintf(wound,"is on the brink of destruction.");
+                                        if (percent >= 100)
+                                                sprintf(wound, "is in perfect condition.");
+                                        else if (percent >= 90)
+                                                sprintf(wound, "is slightly damaged.");
+                                        else if (percent >= 80)
+                                                sprintf(wound, "has a few signs of damage.");
+                                        else if (percent >= 70)
+                                                sprintf(wound, "has noticeable damage.");
+                                        else if (percent >= 60)
+                                                sprintf(wound, "is moderately damaged.");
+                                        else if (percent >= 50)
+                                                sprintf(wound, "has taken a lot of damage.");
+                                        else if (percent >= 40)
+                                                sprintf(wound, "has very significant damage.");
+                                        else if (percent >= 30)
+                                                sprintf(wound, "is very heavily damaged.");
+                                        else if (percent >= 20)
+                                                sprintf(wound, "is ruinously damaged.");
+                                        else if (percent >= 10)
+                                                sprintf(wound, "is on the brink of destruction.");
                                         else
-                                                sprintf(wound,"is beyond saving.");
+                                                sprintf(wound, "is beyond saving.");
                                 }
 
                                 if (!IS_SET(victim->act, ACT_WIZINVIS_MOB) || IS_IMMORTAL(ch))
                                 {
-                                    sprintf (buf, "%s %s\n\r",
-                                            capitalize_initial (PERS(victim, ch)),
-                                            wound);
-                                    write_to_buffer(d, buf, 0);
+                                        sprintf(buf, "%s %s\n\r",
+                                                capitalize_initial(PERS(victim, ch)),
+                                                wound);
+                                        write_to_buffer(d, buf, 0);
                                 }
                         }
 
@@ -1294,8 +1265,8 @@ bool process_output (DESCRIPTOR_DATA *d, bool fPrompt)
                         if (IS_SET(ch->act, PLR_PROMPT))
                                 bust_a_prompt(d);
 
-        		if ( !d->pProtocol->bSGA )			/* <- GCMP */
-			        write_to_buffer( d, GoAheadStr, 0 );
+                        if (!d->pProtocol->bSGA) /* <- GCMP */
+                                write_to_buffer(d, GoAheadStr, 0);
 
                         if (IS_SET(ch->act, PLR_TELNET_GA))
                                 write_to_buffer(d, go_ahead_str, 0);
@@ -1319,7 +1290,16 @@ bool process_output (DESCRIPTOR_DATA *d, bool fPrompt)
 
         /*
          * OS-dependent output.
+         * For WebSocket connections (negative descriptor), output is handled
+         * by webgate_transfer_mud_output() in the WebSocket handler.
          */
+        if (d->descriptor < 0)
+        {
+                /* WebSocket connection - output already transferred by webgate */
+                d->outtop = 0;
+                return TRUE;
+        }
+
         if (!write_to_descriptor(d->descriptor, d->outbuf, d->outtop))
         {
                 d->outtop = 0;
@@ -1332,7 +1312,6 @@ bool process_output (DESCRIPTOR_DATA *d, bool fPrompt)
         }
 }
 
-
 /*
  * Bust a prompt (player settable prompt)
  * coded by Morgenes for Aldara Mud
@@ -1342,16 +1321,16 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
         CHAR_DATA *ch;
         const char *str;
         const char *i;
-        char      *point;
-        char      *pbuff;
-        char       buffer[ MAX_STRING_LENGTH ];
-        char       buf  [ MAX_STRING_LENGTH ];
-        char       buf2 [ MAX_STRING_LENGTH ];
+        char *point;
+        char *pbuff;
+        char buffer[MAX_STRING_LENGTH];
+        char buf[MAX_STRING_LENGTH];
+        char buf2[MAX_STRING_LENGTH];
 
         if (d->original)
         {
-                sprintf (buf, "[Possessing %s] ", d->character->short_descr);
-                write_to_buffer (d, buf, 0);
+                sprintf(buf, "[Possessing %s] ", d->character->short_descr);
+                write_to_buffer(d, buf, 0);
                 return;
         }
 
@@ -1376,307 +1355,308 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
 
                 switch (*str)
                 {
-                        default:
-                                i = " ";
-                                break;
-
-                        case '%':
-                                sprintf(buf2, "%%");
-                                i = buf2;
-                                break;
-
-                        case '1':
-                                i = "";
-                                if (IS_SET(ch->act, PLR_ANSI)) i = BLUE;
-                                break;
-                        case '2':
-                                i = "";
-                                if (IS_SET(ch->act, PLR_ANSI)) i = GREEN;
-                                break;
-                        case '3':
-                                i = "";
-                                if (IS_SET(ch->act, PLR_ANSI)) i = CYAN;
-                                break;
-                        case '4':
-                                i = "";
-                                if (IS_SET(ch->act, PLR_ANSI)) i = RED;
-                                break;
-                        case '5':
-                                i = "";
-                                if (IS_SET(ch->act, PLR_ANSI)) i = PURPLE;
-                                break;
-                        case '6':
-                                i = "";
-                                if (IS_SET(ch->act, PLR_ANSI)) i = YELLOW;
-                                break;
-                        case '7':
-                                i = "";
-                                if (IS_SET(ch->act, PLR_ANSI)) i = GREY;
-                                break;
-
-                        case 'A':
-                                if (ch->level > 9)
-                                        sprintf(buf2, "%d", ch->alignment);
-                                else
-                                        sprintf(buf2, "?");
-                                i = buf2;
-                                break;
-                        case 'B':
-                                i = "";
-                                if (IS_SET(ch->act, PLR_ANSI)
-                                 || IS_SET(ch->act, PLR_VT100))
-                                        i = BOLD;
-                                break;
-                        case 'G':
-                                if (!IS_NPC(ch) && ch->pcdata->meter >= 0)
-                                {
-                                        int last  = ch->pcdata->meter % 10;
-                                        int first = ch->pcdata->meter;
-                                        while (first >= 10)
-                                                first /= 10;
-
-                                        if (ch->pcdata->meter == 0)
-                                                sprintf(buf2, "[  <51>0%%<0> ]");
-                                        else if (ch->pcdata->meter < 10)
-                                                sprintf(buf2, "[<154><454>-<0> <51>%d%%<0> ]", last);
-                                        else
-                                                sprintf(buf2,
-                                                    "[<154><454>-<0><51>%d%d%%<0> ]",
-                                                    first, last);
-                                }
-                                else
-                                        sprintf(buf2, " ");
-                                i = buf2;
-                                break;
-                        case 'H':
-                                sprintf(buf2, "%d", ch->max_hit);
-                                i = buf2;
-                                break;
-                        case 'L':
-                        {
-                                time_t rawtime;
-                                struct tm *timeinfo;
-
-                                time(&rawtime);
-                                timeinfo = localtime(&rawtime);
-                                strftime(buf2, sizeof(buf2), "%H:%M:%S", timeinfo);
-                                i = buf2;
-                        }
+                default:
+                        i = " ";
                         break;
-                        case 'M':
-                                sprintf(buf2, "%d", ch->max_mana);
-                                i = buf2;
-                                break;
-                        case 'N':
-                                i = "";
-                                if (IS_SET(ch->act, PLR_ANSI)
-                                 || IS_SET(ch->act, PLR_VT100))
-                                        i = NTEXT;
-                                break;
-                        case 'Q':
-                                sprintf(buf2, "%d", ch->max_rage);
-                                i = buf2;
-                                break;
-                        case 'R':
-                                if (ch->level > LEVEL_HERO && ch->in_room)
-                                        sprintf(buf2, "%d", ch->in_room->vnum);
-                                else
-                                        sprintf(buf2, " ");
-                                i = buf2;
-                                break;
-                        case 'S':
-                                if (!IS_NPC(ch))
-                                {
-                                        if (IS_SET(ch->in_room->room_flags, ROOM_PLAYER_KILLER))
-                                                sprintf(buf2, "{Yarena{x");
-                                        else if (IS_SET(ch->in_room->room_flags, ROOM_SAFE)
-                                              || IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE))
-                                                sprintf(buf2, "{Gsafe{x");
-                                        else
-                                                sprintf(buf2, "{Runsafe{x");
-                                }
-                                else
-                                        sprintf(buf2, " ");
-                                i = buf2;
-                                break;
-                        case 'T':
-                                if (ch->pcdata->nextquest > 0 || !ch->pcdata->countdown)
-                                        sprintf(buf2, "%d", ch->pcdata->nextquest);
-                                else
-                                        sprintf(buf2, "questing");
-                                i = buf2;
-                                break;
-                        case 'U':
-                                sprintf(buf2, "%d", ch->pcdata->max_bonus);
-                                i = buf2;
-                                break;
-                        case 'V':
-                                sprintf(buf2, "%d", ch->max_move);
-                                i = buf2;
-                                break;
-                        case 'W':
-                                if (ch->level > LEVEL_HERO)
-                                        sprintf(buf2, "(wizinv: %s)",
-                                            IS_SET(ch->act, PLR_WIZINVIS)
-                                            ? "on" : "off");
-                                else
-                                        sprintf(buf2, " ");
-                                i = buf2;
-                                break;
 
-                        case 'a':
-                                sprintf(buf2, "%s",
-                                    IS_GOOD(ch)  ? "good"
-                                    : IS_EVIL(ch) ? "evil"
-                                                 : "neutral");
-                                i = buf2;
-                                break;
-                        case 'b':
-                                if (!IS_NPC(ch) && ch->pcdata->blink)
-                                        sprintf(buf2, "on");
-                                else
-                                        sprintf(buf2, "off");
-                                i = buf2;
-                                break;
-                        case 'c':
-                                if (d->inbuf[0] != '\0')
-                                {
-                                        char *newline = strchr(d->inbuf, '\n');
-                                        if (newline) *newline = '\0';
+                case '%':
+                        sprintf(buf2, "%%");
+                        i = buf2;
+                        break;
 
-                                        snprintf(buf2, sizeof(buf2),
-                                                 "%-.50s", d->inbuf);
-                                        if (newline) *newline = '\n';
-                                }
+                case '1':
+                        i = "";
+                        if (IS_SET(ch->act, PLR_ANSI))
+                                i = BLUE;
+                        break;
+                case '2':
+                        i = "";
+                        if (IS_SET(ch->act, PLR_ANSI))
+                                i = GREEN;
+                        break;
+                case '3':
+                        i = "";
+                        if (IS_SET(ch->act, PLR_ANSI))
+                                i = CYAN;
+                        break;
+                case '4':
+                        i = "";
+                        if (IS_SET(ch->act, PLR_ANSI))
+                                i = RED;
+                        break;
+                case '5':
+                        i = "";
+                        if (IS_SET(ch->act, PLR_ANSI))
+                                i = PURPLE;
+                        break;
+                case '6':
+                        i = "";
+                        if (IS_SET(ch->act, PLR_ANSI))
+                                i = YELLOW;
+                        break;
+                case '7':
+                        i = "";
+                        if (IS_SET(ch->act, PLR_ANSI))
+                                i = GREY;
+                        break;
+
+                case 'A':
+                        if (ch->level > 9)
+                                sprintf(buf2, "%d", ch->alignment);
+                        else
+                                sprintf(buf2, "?");
+                        i = buf2;
+                        break;
+                case 'B':
+                        i = "";
+                        if (IS_SET(ch->act, PLR_ANSI) || IS_SET(ch->act, PLR_VT100))
+                                i = BOLD;
+                        break;
+                case 'G':
+                        if (!IS_NPC(ch) && ch->pcdata->meter >= 0)
+                        {
+                                int last = ch->pcdata->meter % 10;
+                                int first = ch->pcdata->meter;
+                                while (first >= 10)
+                                        first /= 10;
+
+                                if (ch->pcdata->meter == 0)
+                                        sprintf(buf2, "[  <51>0%%<0> ]");
+                                else if (ch->pcdata->meter < 10)
+                                        sprintf(buf2, "[<154><454>-<0> <51>%d%%<0> ]", last);
                                 else
-                                        snprintf(buf2, sizeof(buf2), "...");
-                                i = buf2;
-                                break;
-                        case 'e':
-                                if (ch->level >= LEVEL_HERO)
-                                        sprintf(buf2, "(n/a)");
+                                        sprintf(buf2,
+                                                "[<154><454>-<0><51>%d%d%%<0> ]",
+                                                first, last);
+                        }
+                        else
+                                sprintf(buf2, " ");
+                        i = buf2;
+                        break;
+                case 'H':
+                        sprintf(buf2, "%d", ch->max_hit);
+                        i = buf2;
+                        break;
+                case 'L':
+                {
+                        time_t rawtime;
+                        struct tm *timeinfo;
+
+                        time(&rawtime);
+                        timeinfo = localtime(&rawtime);
+                        strftime(buf2, sizeof(buf2), "%H:%M:%S", timeinfo);
+                        i = buf2;
+                }
+                break;
+                case 'M':
+                        sprintf(buf2, "%d", ch->max_mana);
+                        i = buf2;
+                        break;
+                case 'N':
+                        i = "";
+                        if (IS_SET(ch->act, PLR_ANSI) || IS_SET(ch->act, PLR_VT100))
+                                i = NTEXT;
+                        break;
+                case 'Q':
+                        sprintf(buf2, "%d", ch->max_rage);
+                        i = buf2;
+                        break;
+                case 'R':
+                        if (ch->level > LEVEL_HERO && ch->in_room)
+                                sprintf(buf2, "%d", ch->in_room->vnum);
+                        else
+                                sprintf(buf2, " ");
+                        i = buf2;
+                        break;
+                case 'S':
+                        if (!IS_NPC(ch))
+                        {
+                                if (IS_SET(ch->in_room->room_flags, ROOM_PLAYER_KILLER))
+                                        sprintf(buf2, "{Yarena{x");
+                                else if (IS_SET(ch->in_room->room_flags, ROOM_SAFE) || IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE))
+                                        sprintf(buf2, "{Gsafe{x");
                                 else
-                                        sprintf(buf2, "%d",
-                                            level_table[ch->level].exp_total
-                                            - ch->exp);
-                                i = buf2;
-                                break;
-                        case 'f':
-                                if (ch->class == CLASS_SHAPE_SHIFTER)
-                                {
-                                        if (ch->sub_class == SUB_CLASS_VAMPIRE)
-                                                sprintf(buf2, "%s",
-                                                    is_affected(ch, gsn_mist_walk)
-                                                    ? "mist" : "normal");
-                                        else
-                                                sprintf(buf2, "%s",
-                                                extra_form_name(ch->form));
-                                }
-                                else
-                                        sprintf(buf2, " ");
-                                i = buf2;
-                                break;
-                        case 'g':
-                                sprintf(buf2, "%d", total_coins_char(ch));
-                                i = buf2;
-                                break;
-                        case 'h':
-                                sprintf(buf2, "%d", ch->hit);
-                                i = buf2;
-                                break;
-                        case 'i':
-                                sprintf(buf2, "%s",
-                                    IS_AFFECTED(ch, AFF_INVISIBLE)
-                                    ? "invisible" : "visible");
-                                i = buf2;
-                                break;
-                        case 'k':
-                                if (ch->pcdata->dam_meter >= 0)
-                                        sprintf(buf2, "%d/%d%%",
-                                            ch->pcdata->dam_meter,
-                                            ch->damage_enhancement);
-                                else
-                                        sprintf(buf2, " ");
-                                i = buf2;
-                                break;
-                        case 'm':
-                                sprintf(buf2, "%d", ch->mana);
-                                i = buf2;
-                                break;
-                        case 'p':
-                                sprintf(buf2, "%s",
-                                    position_name(ch->position));
-                                i = buf2;
-                                break;
-                        case 'q':
-                                sprintf(buf2, "%d", ch->rage);
-                                i = buf2;
-                                break;
-                        case 'r':
-                                if (ch->in_room)
-                                        sprintf(buf2, "%s", ch->in_room->name);
-                                else
-                                        sprintf(buf2, " ");
-                                i = buf2;
-                                break;
-                        case 's':
-                                if (!IS_NPC(ch))
-                                {
-                                        if (IS_SET(ch->in_room->room_flags,
-                                                   ROOM_PLAYER_KILLER))
-                                                sprintf(buf2, "{Yarena{x");
-                                        else if ((IS_SET(ch->status,
-                                                         PLR_RONIN)
-                                                  || ch->clan)
-                                               && ch->level > 14
-                                               && !(IS_SET(ch->in_room
-                                                       ->room_flags,
-                                                       ROOM_SAFE)
-                                                   || IS_SET(ch->in_room
-                                                        ->area
-                                                        ->area_flags,
-                                                        AREA_FLAG_SAFE)))
-                                                sprintf(buf2, "{Runsafe{x");
-                                        else
-                                                sprintf(buf2, "{Gsafe{x");
-                                }
-                                else
-                                        sprintf(buf2, " ");
-                                i = buf2;
-                                break;
-                        case 't':
-                                if (ch->pcdata->countdown)
-                                        sprintf(buf2, "%d",
-                                            ch->pcdata->countdown);
-                                else
-                                        sprintf(buf2, "no quest");
-                                i = buf2;
-                                break;
-                        case 'u':
-                                sprintf(buf2, "%d", ch->pcdata->bonus);
-                                i = buf2;
-                                break;
-                        case 'v':
-                                sprintf(buf2, "%d", ch->move);
-                                i = buf2;
-                                break;
-                        case 'w':
-                                sprintf(buf2, "%d", ch->wait);
-                                i = buf2;
-                                break;
-                        case 'x':
-                                sprintf(buf2, "%d", ch->exp);
-                                i = buf2;
-                                break;
-                        case 'z':
-                                if (ch->in_room)
+                                        sprintf(buf2, "{Runsafe{x");
+                        }
+                        else
+                                sprintf(buf2, " ");
+                        i = buf2;
+                        break;
+                case 'T':
+                        if (ch->pcdata->nextquest > 0 || !ch->pcdata->countdown)
+                                sprintf(buf2, "%d", ch->pcdata->nextquest);
+                        else
+                                sprintf(buf2, "questing");
+                        i = buf2;
+                        break;
+                case 'U':
+                        sprintf(buf2, "%d", ch->pcdata->max_bonus);
+                        i = buf2;
+                        break;
+                case 'V':
+                        sprintf(buf2, "%d", ch->max_move);
+                        i = buf2;
+                        break;
+                case 'W':
+                        if (ch->level > LEVEL_HERO)
+                                sprintf(buf2, "(wizinv: %s)",
+                                        IS_SET(ch->act, PLR_WIZINVIS)
+                                            ? "on"
+                                            : "off");
+                        else
+                                sprintf(buf2, " ");
+                        i = buf2;
+                        break;
+
+                case 'a':
+                        sprintf(buf2, "%s",
+                                IS_GOOD(ch)   ? "good"
+                                : IS_EVIL(ch) ? "evil"
+                                              : "neutral");
+                        i = buf2;
+                        break;
+                case 'b':
+                        if (!IS_NPC(ch) && ch->pcdata->blink)
+                                sprintf(buf2, "on");
+                        else
+                                sprintf(buf2, "off");
+                        i = buf2;
+                        break;
+                case 'c':
+                        if (d->inbuf[0] != '\0')
+                        {
+                                char *newline = strchr(d->inbuf, '\n');
+                                if (newline)
+                                        *newline = '\0';
+
+                                snprintf(buf2, sizeof(buf2),
+                                         "%-.50s", d->inbuf);
+                                if (newline)
+                                        *newline = '\n';
+                        }
+                        else
+                                snprintf(buf2, sizeof(buf2), "...");
+                        i = buf2;
+                        break;
+                case 'e':
+                        if (ch->level >= LEVEL_HERO)
+                                sprintf(buf2, "(n/a)");
+                        else
+                                sprintf(buf2, "%d",
+                                        level_table[ch->level].exp_total - ch->exp);
+                        i = buf2;
+                        break;
+                case 'f':
+                        if (ch->class == CLASS_SHAPE_SHIFTER)
+                        {
+                                if (ch->sub_class == SUB_CLASS_VAMPIRE)
                                         sprintf(buf2, "%s",
-                                                ch->in_room
-                                                    ->area->name);
+                                                is_affected(ch, gsn_mist_walk)
+                                                    ? "mist"
+                                                    : "normal");
                                 else
-                                        sprintf(buf2, " ");
-                                i = buf2;
-                                break;
+                                        sprintf(buf2, "%s",
+                                                extra_form_name(ch->form));
+                        }
+                        else
+                                sprintf(buf2, " ");
+                        i = buf2;
+                        break;
+                case 'g':
+                        sprintf(buf2, "%d", total_coins_char(ch));
+                        i = buf2;
+                        break;
+                case 'h':
+                        sprintf(buf2, "%d", ch->hit);
+                        i = buf2;
+                        break;
+                case 'i':
+                        sprintf(buf2, "%s",
+                                IS_AFFECTED(ch, AFF_INVISIBLE)
+                                    ? "invisible"
+                                    : "visible");
+                        i = buf2;
+                        break;
+                case 'k':
+                        if (ch->pcdata->dam_meter >= 0)
+                                sprintf(buf2, "%d/%d%%",
+                                        ch->pcdata->dam_meter,
+                                        ch->damage_enhancement);
+                        else
+                                sprintf(buf2, " ");
+                        i = buf2;
+                        break;
+                case 'm':
+                        sprintf(buf2, "%d", ch->mana);
+                        i = buf2;
+                        break;
+                case 'p':
+                        sprintf(buf2, "%s",
+                                position_name(ch->position));
+                        i = buf2;
+                        break;
+                case 'q':
+                        sprintf(buf2, "%d", ch->rage);
+                        i = buf2;
+                        break;
+                case 'r':
+                        if (ch->in_room)
+                                sprintf(buf2, "%s", ch->in_room->name);
+                        else
+                                sprintf(buf2, " ");
+                        i = buf2;
+                        break;
+                case 's':
+                        if (!IS_NPC(ch))
+                        {
+                                if (IS_SET(ch->in_room->room_flags,
+                                           ROOM_PLAYER_KILLER))
+                                        sprintf(buf2, "{Yarena{x");
+                                else if ((IS_SET(ch->status,
+                                                 PLR_RONIN) ||
+                                          ch->clan) &&
+                                         ch->level > 14 && !(IS_SET(ch->in_room->room_flags, ROOM_SAFE) || IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE)))
+                                        sprintf(buf2, "{Runsafe{x");
+                                else
+                                        sprintf(buf2, "{Gsafe{x");
+                        }
+                        else
+                                sprintf(buf2, " ");
+                        i = buf2;
+                        break;
+                case 't':
+                        if (ch->pcdata->countdown)
+                                sprintf(buf2, "%d",
+                                        ch->pcdata->countdown);
+                        else
+                                sprintf(buf2, "no quest");
+                        i = buf2;
+                        break;
+                case 'u':
+                        sprintf(buf2, "%d", ch->pcdata->bonus);
+                        i = buf2;
+                        break;
+                case 'v':
+                        sprintf(buf2, "%d", ch->move);
+                        i = buf2;
+                        break;
+                case 'w':
+                        sprintf(buf2, "%d", ch->wait);
+                        i = buf2;
+                        break;
+                case 'x':
+                        sprintf(buf2, "%d", ch->exp);
+                        i = buf2;
+                        break;
+                case 'z':
+                        if (ch->in_room)
+                                sprintf(buf2, "%s",
+                                        ch->in_room
+                                            ->area->name);
+                        else
+                                sprintf(buf2, " ");
+                        i = buf2;
+                        break;
                 }
 
                 ++str;
@@ -1690,18 +1670,16 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
 
         write_to_buffer(d, buffer, 0);
         return;
-
 }
-
 
 /*
  * Append onto an output buffer.
  */
-void write_to_buffer (DESCRIPTOR_DATA *d, const char *txt, int length)
+void write_to_buffer(DESCRIPTOR_DATA *d, const char *txt, int length)
 {
-        txt = ProtocolOutput( d, txt, &length );  /* <--- GCMP */
-        if ( d->pProtocol->WriteOOB > 0 )         /* <--- GCMP */
-                --d->pProtocol->WriteOOB;             /* <--- GCMP */
+        txt = ProtocolOutput(d, txt, &length); /* <--- GCMP */
+        if (d->pProtocol->WriteOOB > 0)        /* <--- GCMP */
+                --d->pProtocol->WriteOOB;      /* <--- GCMP */
         /*
          * Find length in case caller didn't.
          */
@@ -1712,11 +1690,11 @@ void write_to_buffer (DESCRIPTOR_DATA *d, const char *txt, int length)
          * Initial \n\r if needed.
          *
         if (d->outtop == 0 && !d->fcommand) */
-        if ( d->outtop == 0 && !d->fcommand && !d->pProtocol->WriteOOB )
+        if (d->outtop == 0 && !d->fcommand && !d->pProtocol->WriteOOB)
         {
-                d->outbuf[0]    = '\n';
-                d->outbuf[1]    = '\r';
-                d->outtop       = 2;
+                d->outbuf[0] = '\n';
+                d->outbuf[1] = '\r';
+                d->outtop = 2;
         }
 
         /*
@@ -1742,14 +1720,13 @@ void write_to_buffer (DESCRIPTOR_DATA *d, const char *txt, int length)
         return;
 }
 
-
 /*
  * Lowest level output function.
  * Write a block of text to the file descriptor.
  * If this gives errors on very long blocks
  * try lowering the max block size.
  */
-bool write_to_descriptor (int desc, char *txt, int length)
+bool write_to_descriptor(int desc, char *txt, int length)
 {
         int iStart;
         int nWrite;
@@ -1764,42 +1741,44 @@ bool write_to_descriptor (int desc, char *txt, int length)
                 nBlock = UMIN(length - iStart, 4096);
 
                 /* Added some voodoo to prevent dropping connections due to blocking behaviour; Gezhp 2007 */
-                for (i = 0; i < 1024; i++) {
-                    if ((nWrite = write(desc, txt + iStart, nBlock)) < 0) {
-                        if (errno == EWOULDBLOCK || errno == EAGAIN) {
-                            continue;
-                        }
+                for (i = 0; i < 1024; i++)
+                {
+                        if ((nWrite = write(desc, txt + iStart, nBlock)) < 0)
+                        {
+                                if (errno == EWOULDBLOCK || errno == EAGAIN)
+                                {
+                                        continue;
+                                }
 
-                        perror("Write_to_descriptor");
-                        return FALSE;
-                    }
-                    else {
-                        break;
-                    }
+                                perror("Write_to_descriptor");
+                                return FALSE;
+                        }
+                        else
+                        {
+                                break;
+                        }
                 }
         }
 
         return TRUE;
 }
 
-
 /*
  * Deal with sockets that haven't logged in yet.
  */
-void nanny (DESCRIPTOR_DATA *d, char *argument)
+void nanny(DESCRIPTOR_DATA *d, char *argument)
 {
         CHAR_DATA *ch;
-        char      *pwdnew;
-        char      *classname;
-        char      *p;
-        char       buf [ MAX_STRING_LENGTH ];
-        int        iClass;
-        bool       fOld;
-        int        startcoinsamt;
+        char *pwdnew;
+        char *classname;
+        char *p;
+        char buf[MAX_STRING_LENGTH];
+        int iClass;
+        bool fOld;
+        int startcoinsamt;
         COIN_DATA *startcoins;
         DESCRIPTOR_DATA *temp;
-        startcoins = (COIN_DATA *) malloc (sizeof(COIN_DATA));
-
+        startcoins = (COIN_DATA *)malloc(sizeof(COIN_DATA));
 
         /* Delete leading spaces UNLESS character is writing a note */
         if (d->connected != CON_NOTE_TEXT)
@@ -1813,12 +1792,12 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
 
         switch (d->connected)
         {
-            default:
+        default:
                 bug("Nanny: bad d->connected %d.", d->connected);
                 close_socket(d);
                 return;
 
-            case CON_GET_NAME:
+        case CON_GET_NAME:
                 if (argument[0] == '\0')
                 {
                         close_socket(d);
@@ -1876,7 +1855,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         if (ch->level <= numlock && numlock != 0)
                         {
                                 write_to_buffer(d, "The game is locked to your level character.\n\r\n\r", 0);
-                                close_socket(d) ;
+                                close_socket(d);
                                 return;
                         }
                 }
@@ -1894,7 +1873,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         /* Old player */
                         write_to_buffer(d, "Password: ", 0);
                         /* write_to_buffer(d, echo_off_str, 0); */
-                        ProtocolNoEcho( d, true );
+                        ProtocolNoEcho(d, true);
                         d->connected = CON_GET_OLD_PASSWORD;
                         return;
                 }
@@ -1908,13 +1887,11 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 }
                 break;
 
-            case CON_GET_OLD_PASSWORD:
+        case CON_GET_OLD_PASSWORD:
 #if defined(unix)
                 write_to_buffer(d, "\n\r", 2);
 #endif
-                if (ch->pcdata->pwd != NULL
-                    && strlen(ch->pcdata->pwd) > 0
-                    && strcmp(crypt(argument, ch->pcdata->pwd), ch->pcdata->pwd))
+                if (ch->pcdata->pwd != NULL && strlen(ch->pcdata->pwd) > 0 && strcmp(crypt(argument, ch->pcdata->pwd), ch->pcdata->pwd))
                 {
                         write_to_buffer(d, "Wrong password.\n\r", 0);
                         close_socket(d);
@@ -1922,7 +1899,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 }
 
                 /* write_to_buffer(d, echo_on_str, 0); */
-                ProtocolNoEcho( d, false );   /* <--- GMCP */
+                ProtocolNoEcho(d, false); /* <--- GMCP */
                 if (check_reconnect(d, ch->name, TRUE))
                         return;
 
@@ -1939,12 +1916,13 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 d->connected = CON_READ_MOTD;
                 break;
 
-            case CON_CONFIRM_NEW_NAME:
+        case CON_CONFIRM_NEW_NAME:
                 switch (*argument)
                 {
-                    case 'y': case 'Y':
-                            ProtocolNoEcho( d, true );
-                        sprintf( buf, "New character.\n\rGive me a password for %s: ",ch->name );
+                case 'y':
+                case 'Y':
+                        ProtocolNoEcho(d, true);
+                        sprintf(buf, "New character.\n\rGive me a password for %s: ", ch->name);
                         /*
                         sprintf(buf, "\n\rNew character.\n\rEnter a password for %s: %s",
                                 ch->name, echo_off_str); */
@@ -1952,20 +1930,21 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         d->connected = CON_GET_NEW_PASSWORD;
                         break;
 
-                    case 'n': case 'N':
+                case 'n':
+                case 'N':
                         write_to_buffer(d, "Ok, what IS it, then? ", 0);
                         free_char(d->character);
                         d->character = NULL;
                         d->connected = CON_GET_NAME;
                         break;
 
-                    default:
+                default:
                         write_to_buffer(d, "Please type YES or NO: ", 0);
                         break;
                 }
                 break;
 
-            case CON_GET_NEW_PASSWORD:
+        case CON_GET_NEW_PASSWORD:
 #if defined(unix)
                 write_to_buffer(d, "\n\r", 2);
 #endif
@@ -1992,7 +1971,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 d->connected = CON_CONFIRM_NEW_PASSWORD;
                 break;
 
-            case CON_CONFIRM_NEW_PASSWORD:
+        case CON_CONFIRM_NEW_PASSWORD:
 #if defined(unix)
                 write_to_buffer(d, "\n\r", 2);
 #endif
@@ -2004,27 +1983,29 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         return;
                 }
 
-                 /*write_to_buffer(d, echo_on_str, 0); */
-                 ProtocolNoEcho( d, false );
-                write_to_buffer(d, "Do you want to enable colour? [y/n] ",0);
+                /*write_to_buffer(d, echo_on_str, 0); */
+                ProtocolNoEcho(d, false);
+                write_to_buffer(d, "Do you want to enable colour? [y/n] ", 0);
                 d->connected = CON_CHECK_ANSI;
                 break;
 
-            case CON_CHECK_ANSI:
+        case CON_CHECK_ANSI:
                 /* write_to_buffer(d, echo_on_str, 0); */
-                 ProtocolNoEcho( d, false );
+                ProtocolNoEcho(d, false);
 
                 switch (*argument)
                 {
-                    case 'y': case 'Y':
+                case 'y':
+                case 'Y':
                         SET_BIT(ch->act, PLR_ANSI);
                         break;
 
-                    case 'n': case 'N':
+                case 'n':
+                case 'N':
                         break;
 
-                    default:
-                        write_to_buffer(d, "Do you want to enable colour? [y/n] ",0);
+                default:
+                        write_to_buffer(d, "Do you want to enable colour? [y/n] ", 0);
                         return;
                 }
 
@@ -2035,14 +2016,14 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 ch->race = RACE_HUMAN;
                 break;
 
-            case CON_WELCOME_RACE:
+        case CON_WELCOME_RACE:
                 send_to_char("\n\r\n\r{W}bSelect a race{x\n\r\n\r", ch);
                 do_help(ch, "races");
                 send_to_char("\n\r{cPlease choose a race for your character. {C[a-y]{x ", ch);
                 d->connected = CON_GET_NEW_RACE;
                 break;
 
-            case CON_GET_NEW_RACE:
+        case CON_GET_NEW_RACE:
 
                 if (argument[0] == '\0')
                 {
@@ -2054,39 +2035,115 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
 
                 switch (argument[0])
                 {
-                    case 'a': case 'A': ch->race = 1;       break;
-                    case 'b': case 'B': ch->race = 2;       break;
-                    case 'c': case 'C': ch->race = 3;       break;
-                    case 'd': case 'D': ch->race = 4;       break;
-                    case 'e': case 'E': ch->race = 5;       break;
-                    case 'f': case 'F': ch->race = 6;       break;
-                    case 'g': case 'G': ch->race = 7;       break;
-                    case 'h': case 'H': ch->race = 8;       break;
-                    case 'i': case 'I': ch->race = 9;       break;
-                    case 'j': case 'J': ch->race = 10;      break;
-                    case 'k': case 'K': ch->race = 11;      break;
-                    case 'l': case 'L': ch->race = 12;      break;
-                    case 'm': case 'M': ch->race = 13;      break;
-                    case 'n': case 'N': ch->race = 14;      break;
-                    case 'o': case 'O': ch->race = 15;      break;
-                    case 'p': case 'P': ch->race = 16;      break;
-                    case 'q': case 'Q': ch->race = 17;      break;
-                    case 'r': case 'R': ch->race = 18;      break;
-                    case 's': case 'S': ch->race = 19;      break;
-                    case 't': case 'T': ch->race = 20;      break;
-                    case 'u': case 'U': ch->race = 21;      break;
-                    case 'v': case 'V': ch->race = 22;      break;
-                    case 'w': case 'W': ch->race = 23;      break;
-                    case 'x': case 'X': ch->race = 24;      break;
-                    case 'y': case 'Y': ch->race = 25;      break;
+                case 'a':
+                case 'A':
+                        ch->race = 1;
+                        break;
+                case 'b':
+                case 'B':
+                        ch->race = 2;
+                        break;
+                case 'c':
+                case 'C':
+                        ch->race = 3;
+                        break;
+                case 'd':
+                case 'D':
+                        ch->race = 4;
+                        break;
+                case 'e':
+                case 'E':
+                        ch->race = 5;
+                        break;
+                case 'f':
+                case 'F':
+                        ch->race = 6;
+                        break;
+                case 'g':
+                case 'G':
+                        ch->race = 7;
+                        break;
+                case 'h':
+                case 'H':
+                        ch->race = 8;
+                        break;
+                case 'i':
+                case 'I':
+                        ch->race = 9;
+                        break;
+                case 'j':
+                case 'J':
+                        ch->race = 10;
+                        break;
+                case 'k':
+                case 'K':
+                        ch->race = 11;
+                        break;
+                case 'l':
+                case 'L':
+                        ch->race = 12;
+                        break;
+                case 'm':
+                case 'M':
+                        ch->race = 13;
+                        break;
+                case 'n':
+                case 'N':
+                        ch->race = 14;
+                        break;
+                case 'o':
+                case 'O':
+                        ch->race = 15;
+                        break;
+                case 'p':
+                case 'P':
+                        ch->race = 16;
+                        break;
+                case 'q':
+                case 'Q':
+                        ch->race = 17;
+                        break;
+                case 'r':
+                case 'R':
+                        ch->race = 18;
+                        break;
+                case 's':
+                case 'S':
+                        ch->race = 19;
+                        break;
+                case 't':
+                case 'T':
+                        ch->race = 20;
+                        break;
+                case 'u':
+                case 'U':
+                        ch->race = 21;
+                        break;
+                case 'v':
+                case 'V':
+                        ch->race = 22;
+                        break;
+                case 'w':
+                case 'W':
+                        ch->race = 23;
+                        break;
+                case 'x':
+                case 'X':
+                        ch->race = 24;
+                        break;
+                case 'y':
+                case 'Y':
+                        ch->race = 25;
+                        break;
 
-                    default:
+                default:
                         send_to_char("\n\r{Y}rInvalid race!{x\n\r"
-                                "{cPlease choose a race, or press ENTER to display the list of races. {C[a-y]{x ", ch);
+                                     "{cPlease choose a race, or press ENTER to display the list of races. {C[a-y]{x ",
+                                     ch);
                         return;
                 }
 
-                if (ch->race < 1 || ch->race > ( MAX_RACE - 1 ) )
+                if (ch->race < 1 || ch->race > (MAX_RACE - 1))
                 {
                         send_to_char("\n\r{cPlease choose a race for your character. {C[a-y]{x ", ch);
                         return;
@@ -2100,13 +2157,15 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 d->connected = CON_CONFIRM_NEW_RACE;
                 break;
 
-            case CON_CONFIRM_NEW_RACE:
+        case CON_CONFIRM_NEW_RACE:
                 switch (argument[0])
                 {
-                    case 'y': case 'Y': break;
-                    default:
+                case 'y':
+                case 'Y':
+                        break;
+                default:
                         send_to_char("\n\r\n\r{W}bSelect a race{x\n\r\n\r", ch);
-                        do_help (ch, "race");
+                        do_help(ch, "race");
                         send_to_char("\n\r{cPlease choose a race for your character. {C[a-x]{x ", ch);
                         d->connected = CON_GET_NEW_RACE;
                         return;
@@ -2114,11 +2173,12 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
 
                 send_to_char("\n\r\n\r{W}bSelect a gender{x\n\r\n\r"
                              "Please indicate what sex your character is.\n\r"
-                             "{cMale, female or neuter? {C[m/f/n]{x ", ch);
+                             "{cMale, female or neuter? {C[m/f/n]{x ",
+                             ch);
                 d->connected = CON_GET_NEW_SEX;
                 break;
 
-            case CON_GET_NEW_SEX:
+        case CON_GET_NEW_SEX:
 
                 if (argument[0] == '\0')
                 {
@@ -2128,30 +2188,40 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
 
                 switch (argument[0])
                 {
-                    case 'm': case 'M': ch->sex = SEX_MALE;    break;
-                    case 'f': case 'F': ch->sex = SEX_FEMALE;  break;
-                    case 'n': case 'N': ch->sex = SEX_NEUTRAL; break;
-                    default:
+                case 'm':
+                case 'M':
+                        ch->sex = SEX_MALE;
+                        break;
+                case 'f':
+                case 'F':
+                        ch->sex = SEX_FEMALE;
+                        break;
+                case 'n':
+                case 'N':
+                        ch->sex = SEX_NEUTRAL;
+                        break;
+                default:
                         send_to_char("\n\r{Y}rInvalid gender!{x\n\r"
-                                     "{cMale, female or neuter? {C[m/f/n]{x ", ch);
+                                     "{cMale, female or neuter? {C[m/f/n]{x ",
+                                     ch);
                         return;
                 }
 
                 d->connected = CON_DISPLAY_CLASS;
                 sprintf(buf, "\n\r{WGender selected: %s{x\n\r\n\r"
-                            "{cAre you sure you want this gender? {C[y/n]{x ",
-                        ch->sex == SEX_MALE ? "male" :
-                        (ch->sex == SEX_FEMALE ? "female" : "neuter"));
+                             "{cAre you sure you want this gender? {C[y/n]{x ",
+                        ch->sex == SEX_MALE ? "male" : (ch->sex == SEX_FEMALE ? "female" : "neuter"));
                 send_to_char(buf, ch);
                 break;
 
-            case CON_DISPLAY_CLASS:
+        case CON_DISPLAY_CLASS:
 
                 if (argument[0] != 'y' && argument[0] != 'Y')
                 {
                         send_to_char("\n\r\n\r{W}bSelect a gender{x\n\r\n\r"
                                      "Please indicate what sex your character is.\n\r"
-                                     "{cMale, female or neuter? {C[m/f/n]{x ", ch);
+                                     "{cMale, female or neuter? {C[m/f/n]{x ",
+                                     ch);
                         d->connected = CON_GET_NEW_SEX;
                         return;
                 }
@@ -2161,7 +2231,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                              "New characters may choose one of the following classes:\n\r\n\r",
                              ch);
 
-                for (iClass = 0; iClass < MAX_CLASS ; iClass++)
+                for (iClass = 0; iClass < MAX_CLASS; iClass++)
                 {
                         sprintf(buf, "    %s\n\r", class_table[iClass].show_name);
                         send_to_char(buf, ch);
@@ -2171,14 +2241,14 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 d->connected = CON_GET_NEW_CLASS;
                 break;
 
-            case CON_GET_NEW_CLASS:
+        case CON_GET_NEW_CLASS:
 
                 if (argument[0] == '\0')
                 {
                         send_to_char("\n\r\n\r{W}bSelect a class{x\n\r\n\r",
                                      ch);
 
-                        for (iClass = 0; iClass < MAX_CLASS ; iClass++)
+                        for (iClass = 0; iClass < MAX_CLASS; iClass++)
                         {
                                 sprintf(buf, "    %s\n\r", class_table[iClass].show_name);
                                 send_to_char(buf, ch);
@@ -2188,7 +2258,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         return;
                 }
 
-                for (iClass = 0; iClass < MAX_CLASS ; iClass++)
+                for (iClass = 0; iClass < MAX_CLASS; iClass++)
                 {
                         if (!str_prefix(argument, class_table[iClass].show_name))
                         {
@@ -2197,10 +2267,11 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         }
                 }
 
-                if (iClass == MAX_CLASS )
+                if (iClass == MAX_CLASS)
                 {
                         send_to_char("\n\r{Y}rInvalid class!{x\n\r"
-                                     "{cPlease choose a class, or press ENTER to list available classes:{x ", ch);
+                                     "{cPlease choose a class, or press ENTER to list available classes:{x ",
+                                     ch);
                         return;
                 }
 
@@ -2209,16 +2280,36 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 /* define the classname for helps. */
                 switch (ch->class)
                 {
-                    default: classname = "";           break;
-                    case 0:  classname = "Mage";       break;
-                    case 1:  classname = "Cleric";     break;
-                    case 2:  classname = "Thief";      break;
-                    case 3:  classname = "Warrior";    break;
-                    case 4:  classname = "Psionicist"; break;
-                    case 5:  classname = "Shapeshifter"; break;
-                    case 6:  classname = "Brawler";     break;
-                    case 7:  classname = "Ranger";      break;
-                    case 8:  classname = "Smithy";      break;
+                default:
+                        classname = "";
+                        break;
+                case 0:
+                        classname = "Mage";
+                        break;
+                case 1:
+                        classname = "Cleric";
+                        break;
+                case 2:
+                        classname = "Thief";
+                        break;
+                case 3:
+                        classname = "Warrior";
+                        break;
+                case 4:
+                        classname = "Psionicist";
+                        break;
+                case 5:
+                        classname = "Shapeshifter";
+                        break;
+                case 6:
+                        classname = "Brawler";
+                        break;
+                case 7:
+                        classname = "Ranger";
+                        break;
+                case 8:
+                        classname = "Smithy";
+                        break;
                 }
 
                 if (strlen(classname) > 0)
@@ -2235,14 +2326,16 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 d->connected = CON_CONFIRM_CLASS;
                 break;
 
-            case CON_CONFIRM_CLASS:
+        case CON_CONFIRM_CLASS:
                 switch (argument[0])
                 {
-                    case 'y': case 'Y': break;
-                    default:
+                case 'y':
+                case 'Y':
+                        break;
+                default:
                         send_to_char("\n\r\n\r{W}bSelect a class{x\n\r\n\r", ch);
 
-                        for (iClass = 0; iClass < MAX_CLASS ; iClass++)
+                        for (iClass = 0; iClass < MAX_CLASS; iClass++)
                         {
                                 sprintf(buf, "    %s\n\r", class_table[iClass].show_name);
                                 send_to_char(buf, ch);
@@ -2262,11 +2355,11 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 d->connected = CON_GENERATE_STATS;
                 break;
 
-            case CON_GENERATE_STATS:
-                generate_stats (ch);
+        case CON_GENERATE_STATS:
+                generate_stats(ch);
 
                 sprintf(buf, "\n\rStr: %2d  Int: %2d  Wis: %2d  Dex: %2d  Con: %2d\n\r"
-                        "{cAccept? {C[y/n]{x ",
+                             "{cAccept? {C[y/n]{x ",
                         ch->pcdata->perm_str,
                         ch->pcdata->perm_int,
                         ch->pcdata->perm_wis,
@@ -2276,15 +2369,17 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 d->connected = CON_CONFIRM_STATS;
                 break;
 
-            case CON_CONFIRM_STATS:
+        case CON_CONFIRM_STATS:
                 switch (argument[0])
                 {
-                    case 'y': case 'Y': break;
-                    default:
-                        generate_stats (ch);
+                case 'y':
+                case 'Y':
+                        break;
+                default:
+                        generate_stats(ch);
 
                         sprintf(buf, "\n\rStr: %2d  Int: %2d  Wis: %2d  Dex: %2d  Con: %2d\n\r"
-                                "{cAccept? {C[y/n]{x ",
+                                     "{cAccept? {C[y/n]{x ",
                                 ch->pcdata->perm_str,
                                 ch->pcdata->perm_int,
                                 ch->pcdata->perm_wis,
@@ -2295,14 +2390,15 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 }
 
                 send_to_char("\n\r{WCharacter generation complete.{x\n\r\n\r"
-                             "You are now ready to enter the Dragons Domain and begin your training!\n\r\n\r", ch);
+                             "You are now ready to enter the Dragons Domain and begin your training!\n\r\n\r",
+                             ch);
                 SET_BIT(ch->act, PLR_AUTOLEVEL);
                 SET_BIT(ch->act, PLR_TELNET_GA);
                 ch->pcdata->pagelen = 100;
                 d->connected = CON_READ_MOTD;
                 break;
 
-            case CON_READ_MOTD:
+        case CON_READ_MOTD:
                 SET_BIT(ch->act, PLR_AUTOEXIT);
                 ch->next = char_list;
                 char_list = ch;
@@ -2326,15 +2422,14 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         ch->pcdata->learned[skill_lookup(race_table[ch->race].spell_one)] = 99;
                         ch->pcdata->learned[skill_lookup(race_table[ch->race].spell_two)] = 99;
 
-                        startcoinsamt   = 50 + number_fuzzy(3)
-                                * number_fuzzy(4) * number_fuzzy(5) * 9;
+                        startcoinsamt = 50 + number_fuzzy(3) * number_fuzzy(4) * number_fuzzy(5) * 9;
 
-                        coin_crunch (startcoinsamt, startcoins);
+                        coin_crunch(startcoinsamt, startcoins);
                         ch->plat = startcoins->plat;
                         ch->gold = startcoins->gold;
                         ch->silver = startcoins->silver;
                         ch->copper = startcoins->copper;
-                        free (startcoins);
+                        free(startcoins);
 
                         /*
                          * Shade 17.6.22
@@ -2343,7 +2438,6 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                          *
                          * Give them a few of each pracs to get going, make starting hits 50 not 20
                          */
-
 
                         ch->max_hit = 50;
                         ch->hit = ch->max_hit;
@@ -2357,8 +2451,8 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                                 ch->max_mana = 150;
                         }
 
-                        ch->mana        = ch->max_mana;
-                        ch->move        = ch->max_move;
+                        ch->mana = ch->max_mana;
+                        ch->move = ch->max_move;
 
                         set_title(ch, " is a newbie");
                         free_string(ch->prompt);
@@ -2376,9 +2470,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         obj_to_char(obj, ch);
                         equip_char(ch, obj, WEAR_BODY);
 
-                        if (ch->class != CLASS_THIEF
-                            && ch->class != CLASS_BRAWLER
-                            && ch->class != CLASS_MAGE)
+                        if (ch->class != CLASS_THIEF && ch->class != CLASS_BRAWLER && ch->class != CLASS_MAGE)
                         {
                                 obj = create_object(get_obj_index(OBJ_VNUM_SCHOOL_SHIELD), 0, "common", CREATED_NO_RANDOMISER);
                                 obj_to_char(obj, ch);
@@ -2387,7 +2479,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
 
                         if (ch->class != CLASS_BRAWLER)
                         {
-                                obj = create_object( get_obj_index(class_table[ch->class].weapon), 0, "common", CREATED_NO_RANDOMISER);
+                                obj = create_object(get_obj_index(class_table[ch->class].weapon), 0, "common", CREATED_NO_RANDOMISER);
                                 obj_to_char(obj, ch);
                                 equip_char(ch, obj, WEAR_WIELD);
                                 SET_BIT(ch->act, PLR_AUTOWIELD);
@@ -2395,7 +2487,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
 
                         if (ch->class == CLASS_RANGER)
                         {
-                                obj = create_object (get_obj_index(OBJ_VNUM_SCHOOL_BOW), 0, "common", CREATED_NO_RANDOMISER);
+                                obj = create_object(get_obj_index(OBJ_VNUM_SCHOOL_BOW), 0, "common", CREATED_NO_RANDOMISER);
                                 obj_to_char(obj, ch);
                                 equip_char(ch, obj, WEAR_RANGED_WEAPON);
                         }
@@ -2415,7 +2507,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
 
                 if (ch->level == 1)
                 {
-                        sprintf(buf,"%s, a %s of the %s race, is born unto the Domain.",
+                        sprintf(buf, "%s, a %s of the %s race, is born unto the Domain.",
                                 ch->name,
                                 full_class_name(ch->class),
                                 race_table[ch->race].race_name);
@@ -2425,9 +2517,9 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 if (!IS_SET(ch->act, PLR_WIZINVIS) && ch->level > 1)
                 {
                         sprintf(buf, "%s has entered the Dragons Domain...", ch->name);
-                        do_info(ch,  buf);
+                        do_info(ch, buf);
                 }
-                MXPSendTag( d, "<VERSION>" );  /* <--- GCMP */
+                MXPSendTag(d, "<VERSION>"); /* <--- GCMP */
                 /*
                  *  Entry lag and warning; Gez & Shade 2000
                  */
@@ -2435,9 +2527,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 {
                         for (d = descriptor_list; d; d = d->next)
                         {
-                                if (d->connected == CON_PLAYING
-                                    && d->character
-                                    && d->character != ch)
+                                if (d->connected == CON_PLAYING && d->character && d->character != ch)
                                 {
                                         if (d->character->in_room == ch->in_room)
                                         {
@@ -2459,17 +2549,17 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 {
                         REMOVE_BIT(ch->act, PLR_QUESTOR);
                         ch->pcdata->questgiver = NULL;
-                        ch->pcdata->countdown  = 0;
-                        ch->pcdata->questmob   = 0;
-                        ch->pcdata->questobj   = 0;
-                        ch->pcdata->questroom  = NULL;
-                        ch->pcdata->questarea  = NULL;
+                        ch->pcdata->countdown = 0;
+                        ch->pcdata->questmob = 0;
+                        ch->pcdata->questobj = 0;
+                        ch->pcdata->questroom = NULL;
+                        ch->pcdata->questarea = NULL;
                 }
 
                 if (ch->level > 1)
-                        do_board (ch, "");
+                        do_board(ch, "");
 
-                send_to_char( "\n\r", ch );
+                send_to_char("\n\r", ch);
                 do_look(ch, "auto");
 
                 /*  Entry lag  */
@@ -2487,50 +2577,42 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
 
                 break;
 
-            case CON_NOTE_TO:
-                handle_con_note_to (d, argument);
+        case CON_NOTE_TO:
+                handle_con_note_to(d, argument);
                 break;
 
-            case CON_NOTE_SUBJECT:
-                handle_con_note_subject (d, argument);
+        case CON_NOTE_SUBJECT:
+                handle_con_note_subject(d, argument);
                 break;
 
-            case CON_NOTE_EXPIRE:
-                handle_con_note_expire (d, argument);
+        case CON_NOTE_EXPIRE:
+                handle_con_note_expire(d, argument);
                 break;
 
-            case CON_NOTE_TEXT:
-                handle_con_note_text (d, argument);
+        case CON_NOTE_TEXT:
+                handle_con_note_text(d, argument);
                 break;
 
-            case CON_NOTE_FINISH:
-                handle_con_note_finish (d, argument);
+        case CON_NOTE_FINISH:
+                handle_con_note_finish(d, argument);
                 break;
 
-            case CON_GET_DISCONNECTION_PASSWORD:
+        case CON_GET_DISCONNECTION_PASSWORD:
 #if defined(unix)
                 write_to_buffer(d, "\n\r", 2);
 #endif
-                if (ch->pcdata->pwd != NULL
-                    && strlen(ch->pcdata->pwd) > 0
-                    && strcmp(crypt(argument, ch->pcdata->pwd), ch->pcdata->pwd))
+                if (ch->pcdata->pwd != NULL && strlen(ch->pcdata->pwd) > 0 && strcmp(crypt(argument, ch->pcdata->pwd), ch->pcdata->pwd))
                 {
                         close_socket(d);
                         return;
                 }
 
                 /* write_to_buffer(d, echo_on_str, 0); */
-                 ProtocolNoEcho( d, false );
+                ProtocolNoEcho(d, false);
 
                 for (temp = descriptor_list; temp; temp = temp->next)
                 {
-                        if (temp != d
-                            && temp->character
-                            && temp->connected != CON_GET_NAME
-                            && temp->connected != CON_GET_DISCONNECTION_PASSWORD
-                            && !str_cmp(temp->original ? temp->original->name
-                                        : temp->character->name, ch->name)
-                            && !temp->character->deleted)
+                        if (temp != d && temp->character && temp->connected != CON_GET_NAME && temp->connected != CON_GET_DISCONNECTION_PASSWORD && !str_cmp(temp->original ? temp->original->name : temp->character->name, ch->name) && !temp->character->deleted)
                         {
                                 write_to_buffer(temp, "Another player has disconnected you.\n\r", 0);
                                 d->character->pcdata->has_quit = TRUE;
@@ -2551,7 +2633,6 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 break;
         }
 } /* nanny mark */
-
 
 /*
  * Send to one char, new colour version, by Lope.
@@ -2640,12 +2721,12 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
         return;
 }
 */
-void send_to_char (const char *txt, CHAR_DATA *ch)
+void send_to_char(const char *txt, CHAR_DATA *ch)
 {
-        const char    *point;
-        char    *point2;
-        char    buf[ MAX_STRING_LENGTH*4 ];
-        int     skip = 0;
+        const char *point;
+        char *point2;
+        char buf[MAX_STRING_LENGTH * 4];
+        int skip = 0;
         char cur_code[3];
         int cd_count = 2;
         int cv_int;
@@ -2653,8 +2734,8 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
         char close_token;
 
         /* If you change these tokens, you should change the color_table_8bit act_codes as well */
-        open_token   = '<';
-        close_token  = '>';
+        open_token = '<';
+        close_token = '>';
 
         buf[0] = '\0';
         point2 = buf;
@@ -2663,22 +2744,22 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
         {
                 if (IS_SET(ch->act, PLR_ANSI))
                 {
-                        for(point = txt ; *point ; point++)
+                        for (point = txt; *point; point++)
                         {
-                                if(*point == '{')
+                                if (*point == '{')
                                 {
                                         point++;
                                         skip = colour(*point, ch, point2);
-                                        while(skip-- > 0)
+                                        while (skip-- > 0)
                                                 ++point2;
                                         continue;
                                 }
 
-                                if(*point == '}')
+                                if (*point == '}')
                                 {
                                         point++;
                                         skip = bgcolour(*point, ch, point2);
-                                        while(skip-- > 0)
+                                        while (skip-- > 0)
                                                 ++point2;
                                         continue;
                                 }
@@ -2724,7 +2805,8 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
                                                         }
                                                 }
                                         }
-                                        else {
+                                        else
+                                        {
                                                 cur_code[0] = '\0';
                                                 cur_code[1] = '\0';
                                                 cur_code[2] = '\0';
@@ -2737,8 +2819,7 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
 
                                                 reverse_char_array(cur_code, 3);
 
-                                                cv_int = atoi( cur_code );
-
+                                                cv_int = atoi(cur_code);
 
                                                 skip = colour_8bit(cv_int, ch, point2);
 
@@ -2752,7 +2833,8 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
 
                                                 continue;
                                         }
-                                        else {
+                                        else
+                                        {
 
                                                 cur_code[0] = '\0';
                                                 cur_code[1] = '\0';
@@ -2768,7 +2850,7 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
                         }
                         *point2 = '\0';
                         free_string(ch->desc->showstr_head);
-                        ch->desc->showstr_head  = str_dup(buf);
+                        ch->desc->showstr_head = str_dup(buf);
                         ch->desc->showstr_point = ch->desc->showstr_head;
                         show_string(ch->desc, "");
                 }
@@ -2780,12 +2862,12 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
                         cur_code[2] = '\0';
                         cd_count = 2;
 
-                        for(point = txt ; *point ; point++)
+                        for (point = txt; *point; point++)
                         {
-                                if(*point == '{')
+                                if (*point == '{')
                                 {
                                         point++;
-                                        if(*point == '{')
+                                        if (*point == '{')
                                         {
                                                 *point2 = *point;
                                                 *++point2 = '\0';
@@ -2793,10 +2875,10 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
                                         continue;
                                 }
 
-                                if(*point == '}')
+                                if (*point == '}')
                                 {
                                         point++;
-                                        if(*point == '}')
+                                        if (*point == '}')
                                         {
                                                 *point2 = *point;
                                                 *++point2 = '\0';
@@ -2845,7 +2927,8 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
                                                         }
                                                 }
                                         }
-                                        else {
+                                        else
+                                        {
                                                 cur_code[0] = '\0';
                                                 cur_code[1] = '\0';
                                                 cur_code[2] = '\0';
@@ -2856,7 +2939,7 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
                                         if (*point == close_token)
                                         {
                                                 reverse_char_array(cur_code, 3);
-                                                cv_int = atoi( cur_code );
+                                                cv_int = atoi(cur_code);
                                                 strip_colour_8bit(cv_int, ch, point2);
 
                                                 cur_code[0] = '\0';
@@ -2866,7 +2949,8 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
 
                                                 continue;
                                         }
-                                        else {
+                                        else
+                                        {
                                                 cur_code[0] = '\0';
                                                 cur_code[1] = '\0';
                                                 cur_code[2] = '\0';
@@ -2876,13 +2960,12 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
                                         }
                                 }
 
-
                                 *point2 = *point;
                                 *++point2 = '\0';
                         }
                         *point2 = '\0';
                         free_string(ch->desc->showstr_head);
-                        ch->desc->showstr_head  = str_dup(buf);
+                        ch->desc->showstr_head = str_dup(buf);
                         ch->desc->showstr_point = ch->desc->showstr_head;
                         show_string(ch->desc, "");
                 }
@@ -2893,7 +2976,7 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
 /*
  * Parse a name for acceptability.
  */
-bool check_parse_name (char *name)
+bool check_parse_name(char *name)
 {
         int i;
 
@@ -2912,7 +2995,7 @@ bool check_parse_name (char *name)
         /*
          * Length restrictions.
          */
-        if (strlen(name) <  3)
+        if (strlen(name) < 3)
                 return FALSE;
 
         if (strlen(name) > 12)
@@ -2943,15 +3026,15 @@ bool check_parse_name (char *name)
          * Prevent players from naming themselves after mobs.
          */
         {
-                extern MOB_INDEX_DATA *mob_index_hash [ MAX_KEY_HASH ];
+                extern MOB_INDEX_DATA *mob_index_hash[MAX_KEY_HASH];
                 MOB_INDEX_DATA *pMobIndex;
                 int iHash;
 
                 for (iHash = 0; iHash < MAX_KEY_HASH; iHash++)
                 {
-                        for (pMobIndex  = mob_index_hash[iHash];
+                        for (pMobIndex = mob_index_hash[iHash];
                              pMobIndex;
-                             pMobIndex  = pMobIndex->next)
+                             pMobIndex = pMobIndex->next)
                         {
                                 if (is_name(name, pMobIndex->player_name))
                                         return FALSE;
@@ -2977,11 +3060,10 @@ bool check_parse_name (char *name)
         return TRUE;
 }
 
-
 /*
  * Look for link-dead player to reconnect.
  */
-bool check_reconnect (DESCRIPTOR_DATA *d, char *name, bool fConn)
+bool check_reconnect(DESCRIPTOR_DATA *d, char *name, bool fConn)
 {
         /* OBJ_DATA  *obj; */
         CHAR_DATA *ch;
@@ -2992,9 +3074,7 @@ bool check_reconnect (DESCRIPTOR_DATA *d, char *name, bool fConn)
                 if (ch->deleted)
                         continue;
 
-                if (!IS_NPC(ch)
-                    && (!fConn || !ch->desc)
-                    && !str_cmp(d->character->name, ch->name))
+                if (!IS_NPC(ch) && (!fConn || !ch->desc) && !str_cmp(d->character->name, ch->name))
                 {
                         if (fConn == FALSE)
                         {
@@ -3006,15 +3086,15 @@ bool check_reconnect (DESCRIPTOR_DATA *d, char *name, bool fConn)
                                 d->character->pcdata->has_quit = TRUE;
                                 free_char(d->character);
                                 d->character = ch;
-                                ch->desc     = d;
-                                ch->timer    = 0;
+                                ch->desc = d;
+                                ch->timer = 0;
                                 send_to_char("Reconnecting.\n\r", ch);
                                 act("$n has reconnected.", ch, NULL, NULL, TO_ROOM);
                                 sprintf(log_buf, "%s@%s reconnected (to desc %d).",
                                         ch->name, d->host, d->descriptor);
                                 log_string(log_buf);
                                 d->connected = CON_PLAYING;
-                                MXPSendTag( d, "<VERSION>" );
+                                MXPSendTag(d, "<VERSION>");
                                 ch->pcdata->has_quit = FALSE;
                                 /*
                                  *  Reconnection must not be able to be used to
@@ -3024,9 +3104,7 @@ bool check_reconnect (DESCRIPTOR_DATA *d, char *name, bool fConn)
                                 {
                                         for (d = descriptor_list; d; d = d->next)
                                         {
-                                                if (d->connected == CON_PLAYING
-                                                    && d->character
-                                                    && d->character != ch)
+                                                if (d->connected == CON_PLAYING && d->character && d->character != ch)
                                                 {
                                                         if (d->character->in_room == ch->in_room)
                                                         {
@@ -3034,9 +3112,7 @@ bool check_reconnect (DESCRIPTOR_DATA *d, char *name, bool fConn)
                                                                         ch->name);
                                                                 send_to_char(buf, d->character);
                                                         }
-                                                        else if ((ch->was_in_room
-                                                                  && d->character->in_room->area == ch->was_in_room->area)
-                                                                 || d->character->in_room->area == ch->in_room->area)
+                                                        else if ((ch->was_in_room && d->character->in_room->area == ch->was_in_room->area) || d->character->in_room->area == ch->in_room->area)
                                                         {
                                                                 sprintf(buf, "\n\r{R%s has appeared in the area!{x\n\r\n\r",
                                                                         ch->name);
@@ -3049,7 +3125,7 @@ bool check_reconnect (DESCRIPTOR_DATA *d, char *name, bool fConn)
                                 }
 
                                 if (ch->pcdata->in_progress)
-                                        send_to_char ("You have a note in progress. Type NWRITE to continue it.\n\r",ch);
+                                        send_to_char("You have a note in progress. Type NWRITE to continue it.\n\r", ch);
 
                                 /*
                                  * Contributed by Gene Choi
@@ -3068,24 +3144,18 @@ bool check_reconnect (DESCRIPTOR_DATA *d, char *name, bool fConn)
         return FALSE;
 }
 
-
 /*
  * Check if already playing.
  *
  * Now handles players reconnecting themselves.
  */
-bool check_playing (DESCRIPTOR_DATA *d, char *name)
+bool check_playing(DESCRIPTOR_DATA *d, char *name)
 {
         DESCRIPTOR_DATA *dold;
 
         for (dold = descriptor_list; dold; dold = dold->next)
         {
-                if (dold != d
-                    && dold->character
-                    && dold->connected != CON_GET_NAME
-                    && !str_cmp(name, dold->original
-                                ? dold->original->name : dold->character->name)
-                    && !dold->character->deleted)
+                if (dold != d && dold->character && dold->connected != CON_GET_NAME && !str_cmp(name, dold->original ? dold->original->name : dold->character->name) && !dold->character->deleted)
                 {
                         write_to_buffer(d, "That character is already playing.\n\r", 0);
 
@@ -3099,9 +3169,10 @@ bool check_playing (DESCRIPTOR_DATA *d, char *name)
                         }
 
                         write_to_buffer(d, "To reconnect using that character, enter their "
-                                        "password.\n\rPassword for reconnection: ", 0);
+                                           "password.\n\rPassword for reconnection: ",
+                                        0);
                         /* write_to_buffer(d, echo_off_str, 0); */
-                        ProtocolNoEcho( d, true );   /* <--- GMCP */
+                        ProtocolNoEcho(d, true); /* <--- GMCP */
                         d->connected = CON_GET_DISCONNECTION_PASSWORD;
 
                         return TRUE;
@@ -3111,15 +3182,9 @@ bool check_playing (DESCRIPTOR_DATA *d, char *name)
         return FALSE;
 }
 
-
-
 void stop_idling(CHAR_DATA *ch)
 {
-        if (!ch
-            || !ch->desc
-            ||  ch->desc->connected != CON_PLAYING
-            || !ch->was_in_room
-            ||  ch->in_room != get_room_index(ROOM_VNUM_LIMBO))
+        if (!ch || !ch->desc || ch->desc->connected != CON_PLAYING || !ch->was_in_room || ch->in_room != get_room_index(ROOM_VNUM_LIMBO))
         {
                 return;
         }
@@ -3132,11 +3197,10 @@ void stop_idling(CHAR_DATA *ch)
         return;
 }
 
-
 /*
  * Write to all in the room.
  */
-void send_to_room (const char *txt, ROOM_INDEX_DATA *room)
+void send_to_room(const char *txt, ROOM_INDEX_DATA *room)
 {
         DESCRIPTOR_DATA *d;
 
@@ -3146,11 +3210,10 @@ void send_to_room (const char *txt, ROOM_INDEX_DATA *room)
                                 act(txt, d->character, NULL, NULL, TO_CHAR);
 }
 
-
 /*
  * Write to all characters.
  */
-void send_to_all_char (const char *text)
+void send_to_all_char(const char *text)
 {
         DESCRIPTOR_DATA *d;
 
@@ -3164,13 +3227,12 @@ void send_to_all_char (const char *text)
         return;
 }
 
-
 /*
  * Write to one char.
  */
-void send_to_char_bw (const char *txt, CHAR_DATA *ch)
+void send_to_char_bw(const char *txt, CHAR_DATA *ch)
 {
-        if(!txt || !ch->desc)
+        if (!txt || !ch->desc)
                 return;
 
         /*
@@ -3182,7 +3244,7 @@ void send_to_char_bw (const char *txt, CHAR_DATA *ch)
         else
         {
                 free_string(ch->desc->showstr_head);
-                ch->desc->showstr_head  = str_dup(txt);
+                ch->desc->showstr_head = str_dup(txt);
                 ch->desc->showstr_point = ch->desc->showstr_head;
                 show_string(ch->desc, "");
         }
@@ -3190,33 +3252,32 @@ void send_to_char_bw (const char *txt, CHAR_DATA *ch)
         return;
 }
 
-
-void show_string (struct descriptor_data *d, char *input)
+void show_string(struct descriptor_data *d, char *input)
 {
         register char *scan;
-        char  buffer[ MAX_STRING_LENGTH*6 ];
-        char  buf   [ MAX_INPUT_LENGTH    ];
-        int   line      = 0;
-        int   toggle    = 0;
-        int   pagelines = 20;
+        char buffer[MAX_STRING_LENGTH * 6];
+        char buf[MAX_INPUT_LENGTH];
+        int line = 0;
+        int toggle = 0;
+        int pagelines = 20;
 
         one_argument(input, buf);
 
-        switch(UPPER(buf[0]))
+        switch (UPPER(buf[0]))
         {
-            case '\0':
-            case 'C': /* show next page of text */
+        case '\0':
+        case 'C': /* show next page of text */
                 break;
 
-            case 'R': /* refresh current page of text */
+        case 'R': /* refresh current page of text */
                 toggle = 1;
                 break;
 
-            case 'B': /* scroll back a page of text */
+        case 'B': /* scroll back a page of text */
                 toggle = 2;
                 break;
 
-            default: /*otherwise, stop the text viewing */
+        default: /*otherwise, stop the text viewing */
                 if (d->showstr_head)
                 {
                         free_string(d->showstr_head);
@@ -3243,13 +3304,12 @@ void show_string (struct descriptor_data *d, char *input)
                                 if ((line++) == (pagelines * toggle))
                                         break;
                         d->showstr_point--;
-                }
-                while (d->showstr_point != d->showstr_head);
+                } while (d->showstr_point != d->showstr_head);
         }
 
-        line    = 0;
+        line = 0;
         *buffer = 0;
-        scan    = buffer;
+        scan = buffer;
         if (*d->showstr_point)
         {
                 do
@@ -3263,10 +3323,9 @@ void show_string (struct descriptor_data *d, char *input)
                                 }
                         scan++;
                         d->showstr_point++;
-                        if(*d->showstr_point == 0)
+                        if (*d->showstr_point == 0)
                                 break;
-                }
-                while(1);
+                } while (1);
         }
 
         *scan = 0;
@@ -3275,59 +3334,49 @@ void show_string (struct descriptor_data *d, char *input)
         if (*d->showstr_point == 0)
         {
                 free_string(d->showstr_head);
-                d->showstr_head  = str_dup("");
+                d->showstr_head = str_dup("");
                 d->showstr_point = 0;
         }
 
         return;
 }
 
-
 void ansi_color(const char *txt, CHAR_DATA *ch)
 {
         if (txt != NULL && ch->desc != NULL)
         {
-                if (!IS_SET(ch->act,PLR_ANSI) && !IS_SET(ch->act,PLR_VT100))
+                if (!IS_SET(ch->act, PLR_ANSI) && !IS_SET(ch->act, PLR_VT100))
                         return;
-                else
-                        if (IS_SET(ch->act,PLR_VT100) &&  !IS_SET(ch->act,PLR_ANSI))
-                        {
-                                if (!str_cmp(txt, GREEN)
-                                    || !str_cmp(txt, RED)
-                                    || !str_cmp(txt, BLUE)
-                                    || !str_cmp(txt, BLACK)
-                                    || !str_cmp(txt, CYAN)
-                                    || !str_cmp(txt, GREY)
-                                    || !str_cmp(txt, YELLOW)
-                                    || !str_cmp(txt, PURPLE))
-                                        return;
-                        }
+                else if (IS_SET(ch->act, PLR_VT100) && !IS_SET(ch->act, PLR_ANSI))
+                {
+                        if (!str_cmp(txt, GREEN) || !str_cmp(txt, RED) || !str_cmp(txt, BLUE) || !str_cmp(txt, BLACK) || !str_cmp(txt, CYAN) || !str_cmp(txt, GREY) || !str_cmp(txt, YELLOW) || !str_cmp(txt, PURPLE))
+                                return;
+                }
                 write_to_buffer(ch->desc, txt, strlen(txt));
                 return;
         }
 }
 
-
 /*
  * The primary output interface for formatted output.
  */
-void act (const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type)
+void act(const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type)
 {
-        OBJ_DATA        *obj1        = (OBJ_DATA  *) arg1;
-        OBJ_DATA        *obj2        = (OBJ_DATA  *) arg2;
-        CHAR_DATA       *to;
-        CHAR_DATA       *vch         = (CHAR_DATA *) arg2;
-        static char *    const  he_she  [ ] = { "it",  "he",  "she" };
-        static char *    const  him_her [ ] = { "it",  "him", "her" };
-        static char *    const  his_her [ ] = { "its", "his", "her" };
-        const  char            *str;
-        const  char            *i;
-        char            *point;
-        char            *pbuff;
-        char             buffer  [ MAX_STRING_LENGTH * 2 ];
-        char             buf     [ MAX_STRING_LENGTH ];
-        char             buf1    [ 2*  MAX_STRING_LENGTH ];
-        char             fname   [ MAX_INPUT_LENGTH  ];
+        OBJ_DATA *obj1 = (OBJ_DATA *)arg1;
+        OBJ_DATA *obj2 = (OBJ_DATA *)arg2;
+        CHAR_DATA *to;
+        CHAR_DATA *vch = (CHAR_DATA *)arg2;
+        static char *const he_she[] = {"it", "he", "she"};
+        static char *const him_her[] = {"it", "him", "her"};
+        static char *const his_her[] = {"its", "his", "her"};
+        const char *str;
+        const char *i;
+        char *point;
+        char *pbuff;
+        char buffer[MAX_STRING_LENGTH * 2];
+        char buf[MAX_STRING_LENGTH];
+        char buf1[2 * MAX_STRING_LENGTH];
+        char fname[MAX_INPUT_LENGTH];
 
         /* sprintf(log_buf,"Entering act()...");
         log_string(log_buf); */
@@ -3338,8 +3387,8 @@ void act (const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2,
         if (!format || format[0] == '\0')
                 return;
 
-        if ( ch->deleted )
-	        return;
+        if (ch->deleted)
+                return;
 
         to = ch->in_room->people;
         if (type == TO_VICT)
@@ -3354,266 +3403,260 @@ void act (const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2,
                 to = vch->in_room->people;
         }
 
-        for ( ; to; to = to->next_in_room )
+        for (; to; to = to->next_in_room)
         {
-            buffer[0]      = '\0';
-            buf[0]         = '\0';
+                buffer[0] = '\0';
+                buf[0] = '\0';
 
-            if ( to->deleted
-                || ( !to->desc && IS_NPC( to ) &&
-                        !IS_SET( to->pIndexData->progtypes, ACT_PROG ) )
-                || !IS_AWAKE( to ) )
-            {
-                continue;
-            }
-            if ( type == TO_CHAR    && to != ch )
-            {
-                continue;
-            }
-            if ( type == TO_VICT    && ( to != vch || to == ch ) )
-            {
-                continue;
-            }
-            if ( type == TO_ROOM    && to == ch )
-            {
-                continue;
-            }
-            if ( type == TO_NOTVICT && (to == ch || to == vch) )
-            {
-                continue;
-            }
-
-            point   = buf;
-            str     = format;
-
-            while (*str != '\0')
-            {
-                    if (*str != '$')
-                    {
-                            *point++ = *str++;
-                            continue;
-                    }
-                    ++str;
-
-                    if (!arg2 && *str >= 'A' && *str <= 'Z'  && *str >= '0' && *str <= '9')
-                    {
-                            bug("Act: missing arg2 for code %d.", *str);
-                            sprintf(buf1, "Bad act string:  %s", format);
-                            bug(buf1, 0);
-                            i = " <???> ";
-                    }
-                    else
-                    {
-                            switch (*str)
-                            {
-                                default:  bug("Act: bad code %d.", *str);
-                                    sprintf(buf1, "Bad act string:  %s", format);
-                                    bug(buf1, 0);
-                                    i = " <???> ";
-                                    break;
-
-                                case '1':
-                                    i = "";
-                                    if (IS_SET(to->act, PLR_ANSI))
-                                            i = BLUE;
-                                    break;
-
-                                case '2':
-                                    i = "";
-                                    if (IS_SET(to->act, PLR_ANSI))
-                                            i = GREEN;
-                                    break;
-
-                                case '3':
-                                    i = "";
-                                    if (IS_SET(to->act, PLR_ANSI))
-                                            i = CYAN;
-                                    break;
-
-                                case '4':
-                                    i = "";
-                                    if (IS_SET(to->act, PLR_ANSI))
-                                            i = RED;
-                                    break;
-
-                                case '5':
-                                    i = "";
-                                    if (IS_SET(to->act, PLR_ANSI))
-                                            i = PURPLE;
-                                    break;
-
-                                case '6':
-                                    i = "";
-                                    if (IS_SET(to->act, PLR_ANSI))
-                                            i = YELLOW;
-                                    break;
-
-                                case '7':
-                                    i = "";
-                                    if (IS_SET(to->act, PLR_ANSI))
-                                            i = GREY;
-                                    break;
-
-                                case '0':
-                                    i = "";
-                                    if (IS_SET(to->act, PLR_ANSI))
-                                            i = BLACK;
-                                    break;
-
-                                case 'B':
-                                    i = "";
-                                    if (IS_SET(to->act, PLR_ANSI)
-                                        || IS_SET(to->act, PLR_VT100))
-                                            i = BOLD;
-                                    break;
-
-                                case 'I':
-                                    i = "";
-                                    if (IS_SET(to->act, PLR_ANSI)
-                                        ||  IS_SET(to->act, PLR_VT100))
-                                            i = INVERSE;
-                                    break;
-
-                                case 'F':
-                                    i = "";
-                                    if (IS_SET(to->act, PLR_ANSI)
-                                        ||  IS_SET(to->act, PLR_VT100))
-                                            i = FLASH;
-                                    break;
-
-                                case 'R':
-                                    i = "";
-                                    if (IS_SET(to->act, PLR_ANSI)
-                                        ||  IS_SET(to->act, PLR_VT100))
-                                            i = NTEXT;
-                                    break;
-
-                                case 't':
-                                    i = (char *) arg1;
-                                    break;
-
-                                case 'T':
-                                    i = (char *) arg2;
-                                    break;
-
-                                case 'n': i = PERS(ch,  to);
-                                    break;
-
-                                case 'N': i = PERS(vch, to);
-                                    break;
-
-                                case 'c':
-                                    i = capitalize_initial(PERS(ch, to));
-                                    break;
-
-                                case 'C':
-                                    i = capitalize_initial(PERS(vch, to));
-                                    break;
-
-                                case 'e':
-                                    i = he_she  [URANGE(0, ch  ->sex, 2)];
-                                    break;
-
-                                case 'E':
-                                    i = he_she  [URANGE(0, vch ->sex, 2)];
-                                    break;
-
-                                case 'm':
-                                    i = him_her [URANGE(0, ch  ->sex, 2)];
-                                    break;
-
-                                case 'M':
-                                    i = him_her [URANGE(0, vch ->sex, 2)];
-                                    break;
-
-                                case 's':
-                                    i = his_her [URANGE(0, ch  ->sex, 2)];
-                                    break;
-
-                                case 'S':
-                                    i = his_her [URANGE(0, vch ->sex, 2)];
-                                    break;
-
-                                case 'p':
-                                    i = can_see_obj(to, obj1)
-                                            ? obj1->short_descr
-                                            : "something";
-                                    break;
-
-                                case 'P':
-                                    i = can_see_obj(to, obj2)
-                                            ? obj2->short_descr
-                                            : "something";
-                                    break;
-
-                                case 'd':
-                                    if (!arg2 || ((char *) arg2)[0] == '\0')
-                                            i = "door";
-                                    else
-                                    {
-                                            one_argument((char *) arg2, fname);
-                                            i = fname;
-                                    }
-                                    break;
-
-                                case 'D':
-                                    if (!IS_NPC(ch)
-                                        && ch->pcdata->deity_patron > -1
-                                        && ch->pcdata->deity_patron < NUMBER_DEITIES)
-                                            i = deity_info_table[ch->pcdata->deity_patron].name;
-                                    else if (ch->sub_class == SUB_CLASS_INFERNALIST)
-                                            i = "demonic entities";
-                                    else
-                                            i = "God";
-                                    break;
-                            }
-                    }
-                    ++str;
-                    while ((*point = *i) != '\0')
-                            ++point, ++i;
+                if (to->deleted || (!to->desc && IS_NPC(to) && !IS_SET(to->pIndexData->progtypes, ACT_PROG)) || !IS_AWAKE(to))
+                {
+                        continue;
+                }
+                if (type == TO_CHAR && to != ch)
+                {
+                        continue;
+                }
+                if (type == TO_VICT && (to != vch || to == ch))
+                {
+                        continue;
+                }
+                if (type == TO_ROOM && to == ch)
+                {
+                        continue;
+                }
+                if (type == TO_NOTVICT && (to == ch || to == vch))
+                {
+                        continue;
                 }
 
-                *point++        = '\n';
-                *point++        = '\r';
-                *point          = '\0';
-                buf[0]         = UPPER(buf[0]);
-                pbuff           = buffer;
+                point = buf;
+                str = format;
+
+                while (*str != '\0')
+                {
+                        if (*str != '$')
+                        {
+                                *point++ = *str++;
+                                continue;
+                        }
+                        ++str;
+
+                        if (!arg2 && *str >= 'A' && *str <= 'Z' && *str >= '0' && *str <= '9')
+                        {
+                                bug("Act: missing arg2 for code %d.", *str);
+                                sprintf(buf1, "Bad act string:  %s", format);
+                                bug(buf1, 0);
+                                i = " <???> ";
+                        }
+                        else
+                        {
+                                switch (*str)
+                                {
+                                default:
+                                        bug("Act: bad code %d.", *str);
+                                        sprintf(buf1, "Bad act string:  %s", format);
+                                        bug(buf1, 0);
+                                        i = " <???> ";
+                                        break;
+
+                                case '1':
+                                        i = "";
+                                        if (IS_SET(to->act, PLR_ANSI))
+                                                i = BLUE;
+                                        break;
+
+                                case '2':
+                                        i = "";
+                                        if (IS_SET(to->act, PLR_ANSI))
+                                                i = GREEN;
+                                        break;
+
+                                case '3':
+                                        i = "";
+                                        if (IS_SET(to->act, PLR_ANSI))
+                                                i = CYAN;
+                                        break;
+
+                                case '4':
+                                        i = "";
+                                        if (IS_SET(to->act, PLR_ANSI))
+                                                i = RED;
+                                        break;
+
+                                case '5':
+                                        i = "";
+                                        if (IS_SET(to->act, PLR_ANSI))
+                                                i = PURPLE;
+                                        break;
+
+                                case '6':
+                                        i = "";
+                                        if (IS_SET(to->act, PLR_ANSI))
+                                                i = YELLOW;
+                                        break;
+
+                                case '7':
+                                        i = "";
+                                        if (IS_SET(to->act, PLR_ANSI))
+                                                i = GREY;
+                                        break;
+
+                                case '0':
+                                        i = "";
+                                        if (IS_SET(to->act, PLR_ANSI))
+                                                i = BLACK;
+                                        break;
+
+                                case 'B':
+                                        i = "";
+                                        if (IS_SET(to->act, PLR_ANSI) || IS_SET(to->act, PLR_VT100))
+                                                i = BOLD;
+                                        break;
+
+                                case 'I':
+                                        i = "";
+                                        if (IS_SET(to->act, PLR_ANSI) || IS_SET(to->act, PLR_VT100))
+                                                i = INVERSE;
+                                        break;
+
+                                case 'F':
+                                        i = "";
+                                        if (IS_SET(to->act, PLR_ANSI) || IS_SET(to->act, PLR_VT100))
+                                                i = FLASH;
+                                        break;
+
+                                case 'R':
+                                        i = "";
+                                        if (IS_SET(to->act, PLR_ANSI) || IS_SET(to->act, PLR_VT100))
+                                                i = NTEXT;
+                                        break;
+
+                                case 't':
+                                        i = (char *)arg1;
+                                        break;
+
+                                case 'T':
+                                        i = (char *)arg2;
+                                        break;
+
+                                case 'n':
+                                        i = PERS(ch, to);
+                                        break;
+
+                                case 'N':
+                                        i = PERS(vch, to);
+                                        break;
+
+                                case 'c':
+                                        i = capitalize_initial(PERS(ch, to));
+                                        break;
+
+                                case 'C':
+                                        i = capitalize_initial(PERS(vch, to));
+                                        break;
+
+                                case 'e':
+                                        i = he_she[URANGE(0, ch->sex, 2)];
+                                        break;
+
+                                case 'E':
+                                        i = he_she[URANGE(0, vch->sex, 2)];
+                                        break;
+
+                                case 'm':
+                                        i = him_her[URANGE(0, ch->sex, 2)];
+                                        break;
+
+                                case 'M':
+                                        i = him_her[URANGE(0, vch->sex, 2)];
+                                        break;
+
+                                case 's':
+                                        i = his_her[URANGE(0, ch->sex, 2)];
+                                        break;
+
+                                case 'S':
+                                        i = his_her[URANGE(0, vch->sex, 2)];
+                                        break;
+
+                                case 'p':
+                                        i = can_see_obj(to, obj1)
+                                                ? obj1->short_descr
+                                                : "something";
+                                        break;
+
+                                case 'P':
+                                        i = can_see_obj(to, obj2)
+                                                ? obj2->short_descr
+                                                : "something";
+                                        break;
+
+                                case 'd':
+                                        if (!arg2 || ((char *)arg2)[0] == '\0')
+                                                i = "door";
+                                        else
+                                        {
+                                                one_argument((char *)arg2, fname);
+                                                i = fname;
+                                        }
+                                        break;
+
+                                case 'D':
+                                        if (!IS_NPC(ch) && ch->pcdata->deity_patron > -1 && ch->pcdata->deity_patron < NUMBER_DEITIES)
+                                                i = deity_info_table[ch->pcdata->deity_patron].name;
+                                        else if (ch->sub_class == SUB_CLASS_INFERNALIST)
+                                                i = "demonic entities";
+                                        else
+                                                i = "God";
+                                        break;
+                                }
+                        }
+                        ++str;
+                        while ((*point = *i) != '\0')
+                                ++point, ++i;
+                }
+
+                *point++ = '\n';
+                *point++ = '\r';
+                *point = '\0';
+                buf[0] = UPPER(buf[0]);
+                pbuff = buffer;
 
                 colourconv_8bit(pbuff, buf, to);
 
-                if (to->desc) {
-                    write_to_buffer(to->desc, buffer, 0);
+                if (to->desc)
+                {
+                        write_to_buffer(to->desc, buffer, 0);
                 }
-                if ( MOBtrigger )
-	                mprog_act_trigger( buffer, to, ch, obj1, vch );
+                if (MOBtrigger)
+                        mprog_act_trigger(buffer, to, ch, obj1, vch);
         }
 
         MOBtrigger = TRUE;
 
         /* sprintf(log_buf, "Exiting act()...\n\r");
-	    log_string(log_buf); */
+            log_string(log_buf); */
 
         return;
 }
 
-
-void act_move (const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type)
+void act_move(const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type)
 {
-        OBJ_DATA        *obj1        = (OBJ_DATA  *) arg1;
-        OBJ_DATA        *obj2        = (OBJ_DATA  *) arg2;
-        CHAR_DATA       *to;
-        CHAR_DATA       *vch         = (CHAR_DATA *) arg2;
-        static char *    const  he_she  [ ] = { "it",  "he",  "she" };
-        static char *    const  him_her [ ] = { "it",  "him", "her" };
-        static char *    const  his_her [ ] = { "its", "his", "her" };
-        const  char            *str;
-        const  char            *i;
-        char            *point;
-        char            *pbuff;
-        char             buffer  [ MAX_STRING_LENGTH * 2 ];
-        char             buf     [ MAX_STRING_LENGTH ];
-        char             buf1    [ MAX_STRING_LENGTH ];
-        char             fname   [ MAX_INPUT_LENGTH  ];
+        OBJ_DATA *obj1 = (OBJ_DATA *)arg1;
+        OBJ_DATA *obj2 = (OBJ_DATA *)arg2;
+        CHAR_DATA *to;
+        CHAR_DATA *vch = (CHAR_DATA *)arg2;
+        static char *const he_she[] = {"it", "he", "she"};
+        static char *const him_her[] = {"it", "him", "her"};
+        static char *const his_her[] = {"its", "his", "her"};
+        const char *str;
+        const char *i;
+        char *point;
+        char *pbuff;
+        char buffer[MAX_STRING_LENGTH * 2];
+        char buf[MAX_STRING_LENGTH];
+        char buf1[MAX_STRING_LENGTH];
+        char fname[MAX_INPUT_LENGTH];
 
         /*
          * Discard null and zero-length messages.
@@ -3637,29 +3680,26 @@ void act_move (const char *format, CHAR_DATA *ch, const void *arg1, const void *
 
         for (; to; to = to->next_in_room)
         {
-                buffer[0]      = '\0';
-                buf[0]         = '\0';
+                buffer[0] = '\0';
+                buf[0] = '\0';
 
-                if ((to->deleted)
-                    || (!to->desc && IS_NPC(to))
-                    || !IS_AWAKE(to))
+                if ((to->deleted) || (!to->desc && IS_NPC(to)) || !IS_AWAKE(to))
                         continue;
 
-                if (!IS_NPC(to) && IS_AFFECTED(ch, AFF_SNEAK)
-                    && !is_affected(to, gsn_detect_sneak))
-                                continue;
+                if (!IS_NPC(to) && IS_AFFECTED(ch, AFF_SNEAK) && !is_affected(to, gsn_detect_sneak))
+                        continue;
 
-                if (type == TO_CHAR    && to != ch)
+                if (type == TO_CHAR && to != ch)
                         continue;
-                if (type == TO_VICT    && (to != vch || to == ch))
+                if (type == TO_VICT && (to != vch || to == ch))
                         continue;
-                if (type == TO_ROOM    && to == ch)
+                if (type == TO_ROOM && to == ch)
                         continue;
                 if (type == TO_NOTVICT && (to == ch || to == vch))
                         continue;
 
-                point   = buf;
-                str     = format;
+                point = buf;
+                str = format;
                 while (*str != '\0')
                 {
                         if (*str != '$')
@@ -3669,7 +3709,7 @@ void act_move (const char *format, CHAR_DATA *ch, const void *arg1, const void *
                         }
                         ++str;
 
-                        if (!arg2 && *str >= 'A' && *str <= 'Z'  && *str >= '0' && *str <= '9')
+                        if (!arg2 && *str >= 'A' && *str <= 'Z' && *str >= '0' && *str <= '9')
                         {
                                 bug("Act: missing arg2 for code %d.", *str);
                                 sprintf(buf1, "Bad act string:  %s", format);
@@ -3680,146 +3720,143 @@ void act_move (const char *format, CHAR_DATA *ch, const void *arg1, const void *
                         {
                                 switch (*str)
                                 {
-                                    default:  bug("Act: bad code %d.", *str);
+                                default:
+                                        bug("Act: bad code %d.", *str);
                                         sprintf(buf1, "Bad act string:  %s", format);
                                         bug(buf1, 0);
                                         i = " <???> ";
                                         break;
 
-                                    case '1':
+                                case '1':
                                         i = "";
                                         if (IS_SET(to->act, PLR_ANSI))
                                                 i = BLUE;
                                         break;
 
-                                    case '2':
+                                case '2':
                                         i = "";
                                         if (IS_SET(to->act, PLR_ANSI))
                                                 i = GREEN;
                                         break;
 
-                                    case '3':
+                                case '3':
                                         i = "";
                                         if (IS_SET(to->act, PLR_ANSI))
                                                 i = CYAN;
                                         break;
 
-                                    case '4':
+                                case '4':
                                         i = "";
                                         if (IS_SET(to->act, PLR_ANSI))
                                                 i = RED;
                                         break;
 
-                                    case '5':
+                                case '5':
                                         i = "";
                                         if (IS_SET(to->act, PLR_ANSI))
                                                 i = PURPLE;
                                         break;
 
-                                    case '6':
+                                case '6':
                                         i = "";
                                         if (IS_SET(to->act, PLR_ANSI))
                                                 i = YELLOW;
                                         break;
 
-                                    case '7':
+                                case '7':
                                         i = "";
                                         if (IS_SET(to->act, PLR_ANSI))
                                                 i = GREY;
                                         break;
 
-                                    case '0':
+                                case '0':
                                         i = "";
                                         if (IS_SET(to->act, PLR_ANSI))
                                                 i = BLACK;
                                         break;
 
-                                    case 'B':
+                                case 'B':
                                         i = "";
-                                        if (IS_SET(to->act, PLR_ANSI)
-                                            ||  IS_SET(to->act, PLR_VT100))
+                                        if (IS_SET(to->act, PLR_ANSI) || IS_SET(to->act, PLR_VT100))
                                                 i = BOLD;
                                         break;
 
-                                    case 'I':
+                                case 'I':
                                         i = "";
-                                        if (IS_SET(to->act, PLR_ANSI)
-                                            ||  IS_SET(to->act, PLR_VT100))
+                                        if (IS_SET(to->act, PLR_ANSI) || IS_SET(to->act, PLR_VT100))
                                                 i = INVERSE;
                                         break;
 
-                                    case 'F':
+                                case 'F':
                                         i = "";
-                                        if (IS_SET(to->act, PLR_ANSI)
-                                            ||  IS_SET(to->act, PLR_VT100))
+                                        if (IS_SET(to->act, PLR_ANSI) || IS_SET(to->act, PLR_VT100))
                                                 i = FLASH;
                                         break;
 
-                                    case 'R':
+                                case 'R':
                                         i = "";
-                                        if (IS_SET(to->act, PLR_ANSI)
-                                            ||  IS_SET(to->act, PLR_VT100))
+                                        if (IS_SET(to->act, PLR_ANSI) || IS_SET(to->act, PLR_VT100))
                                                 i = NTEXT;
                                         break;
 
-                                    case 't':
-                                        i = (char *) arg1;
+                                case 't':
+                                        i = (char *)arg1;
                                         break;
 
-                                    case 'T':
-                                        i = (char *) arg2;
+                                case 'T':
+                                        i = (char *)arg2;
                                         break;
 
-                                    case 'n':
-                                        i = PERS(ch,  to);
+                                case 'n':
+                                        i = PERS(ch, to);
                                         break;
 
-                                    case 'N':
+                                case 'N':
                                         i = PERS(vch, to);
                                         break;
 
-                                    case 'e':
-                                        i = he_she  [URANGE(0, ch  ->sex, 2)];
+                                case 'e':
+                                        i = he_she[URANGE(0, ch->sex, 2)];
                                         break;
 
-                                    case 'E':
-                                        i = he_she  [URANGE(0, vch ->sex, 2)];
+                                case 'E':
+                                        i = he_she[URANGE(0, vch->sex, 2)];
                                         break;
 
-                                    case 'm':
-                                        i = him_her [URANGE(0, ch  ->sex, 2)];
+                                case 'm':
+                                        i = him_her[URANGE(0, ch->sex, 2)];
                                         break;
 
-                                    case 'M':
-                                        i = him_her [URANGE(0, vch ->sex, 2)];
+                                case 'M':
+                                        i = him_her[URANGE(0, vch->sex, 2)];
                                         break;
 
-                                    case 's':
-                                        i = his_her [URANGE(0, ch  ->sex, 2)];
+                                case 's':
+                                        i = his_her[URANGE(0, ch->sex, 2)];
                                         break;
 
-                                    case 'S':
-                                        i = his_her [URANGE(0, vch ->sex, 2)];
+                                case 'S':
+                                        i = his_her[URANGE(0, vch->sex, 2)];
                                         break;
 
-                                    case 'p':
+                                case 'p':
                                         i = can_see_obj(to, obj1)
                                                 ? obj1->short_descr
                                                 : "something";
                                         break;
 
-                                    case 'P':
+                                case 'P':
                                         i = can_see_obj(to, obj2)
                                                 ? obj2->short_descr
                                                 : "something";
                                         break;
 
-                                    case 'd':
-                                        if (!arg2 || ((char *) arg2)[0] == '\0')
+                                case 'd':
+                                        if (!arg2 || ((char *)arg2)[0] == '\0')
                                                 i = "door";
                                         else
                                         {
-                                                one_argument((char *) arg2, fname);
+                                                one_argument((char *)arg2, fname);
                                                 i = fname;
                                         }
                                         break;
@@ -3833,98 +3870,98 @@ void act_move (const char *format, CHAR_DATA *ch, const void *arg1, const void *
 
                 *point++ = '\n';
                 *point++ = '\r';
-                buf[0]         = UPPER(buf[0]);
-                pbuff           = buffer;
+                buf[0] = UPPER(buf[0]);
+                pbuff = buffer;
 
                 colourconv_8bit(pbuff, buf, to);
 
                 if (to->desc)
                         write_to_buffer(to->desc, buf, point - buf);
 
-                if ( MOBtrigger )
-	                mprog_act_trigger( buffer, to, ch, obj1, vch );
+                if (MOBtrigger)
+                        mprog_act_trigger(buffer, to, ch, obj1, vch);
         }
 
         MOBtrigger = TRUE;
         return;
 }
 
-void bit_explode (CHAR_DATA *ch, char* buf, long unsigned int n)
+void bit_explode(CHAR_DATA *ch, char *buf, long unsigned int n)
 {
-    char tmp [MAX_STRING_LENGTH] = {0};
-    /*char buf2    [ MAX_STRING_LENGTH ];
-    char buf3    [ MAX_STRING_LENGTH ];*/
-    char *sep = "";
-    unsigned long int arr[63] = {0};
-    unsigned long int total;
-    int i = 0;
-    int j;
-    int pos;
+        char tmp[MAX_STRING_LENGTH] = {0};
+        /*char buf2    [ MAX_STRING_LENGTH ];
+        char buf3    [ MAX_STRING_LENGTH ];*/
+        char *sep = "";
+        unsigned long int arr[63] = {0};
+        unsigned long int total;
+        int i = 0;
+        int j;
+        int pos;
 
-    /*unsigned long int a[65],k;
+        /*unsigned long int a[65],k;
 
-    a[0]=1;
+        a[0]=1;
 
-    for(k=1;k<65;k++)
-    {
-        a[k]= 2UL << (k - 1);
-        sprintf(buf3, "k=%lu a[k]=%lu\r\n",k, a[k]);
-        log_string(buf3);
-    }
+        for(k=1;k<65;k++)
+        {
+            a[k]= 2UL << (k - 1);
+            sprintf(buf3, "k=%lu a[k]=%lu\r\n",k, a[k]);
+            log_string(buf3);
+        }
 
-    sprintf(buf2,"bit_explode was passed: %lu", n);
-    log_string(buf2);
+        sprintf(buf2,"bit_explode was passed: %lu", n);
+        log_string(buf2);
 
-    Doesn't accept stupid values
-    if (n <= 0 || n > 18446744073709551616)
-        return;       */
+        Doesn't accept stupid values
+        if (n <= 0 || n > 18446744073709551616)
+            return;       */
 
-    /*sprintf(buf2,"%lu %lu %lu %lu %lu", BIT_31, BIT_32, BIT_33, BIT_34, BIT_35);
-    log_string(buf2);*/
-
-
-    strcpy( buf, tmp );
-
-    while (n) {
-        pos = 63UL - (uint64_t)__builtin_clzl(n);
-
-        /*sprintf(buf2,"pos is: %d", pos);
+        /*sprintf(buf2,"%lu %lu %lu %lu %lu", BIT_31, BIT_32, BIT_33, BIT_34, BIT_35);
         log_string(buf2);*/
 
-        total = pow(2, pos);
+        strcpy(buf, tmp);
 
-        if (total > 0)
+        while (n)
         {
-            arr[i] = total;
-            /*sprintf(buf3,"arr is: %lu", arr);
-            log_string(buf3);*/
+                pos = 63UL - (uint64_t)__builtin_clzl(n);
+
+                /*sprintf(buf2,"pos is: %d", pos);
+                log_string(buf2);*/
+
+                total = pow(2, pos);
+
+                if (total > 0)
+                {
+                        arr[i] = total;
+                        /*sprintf(buf3,"arr is: %lu", arr);
+                        log_string(buf3);*/
+                }
+
+                i++;
+                n ^= 1UL << pos;
         }
 
-        i++;
-        n ^= 1UL << pos;
-    }
-
-    for(j=i; j>=0; j--)
-    {
-        if (j == i)
-            continue;
-
-        if (arr[j] > 0)
+        for (j = i; j >= 0; j--)
         {
-            if ((arr[j] == 1) || (arr[j] == 0))
-            {
-                sep = "";
-            }
-            sprintf(tmp, "%s%lu", sep, arr[j]);
-            strcat( buf, tmp );
-            sep = "|";
+                if (j == i)
+                        continue;
+
+                if (arr[j] > 0)
+                {
+                        if ((arr[j] == 1) || (arr[j] == 0))
+                        {
+                                sep = "";
+                        }
+                        sprintf(tmp, "%s%lu", sep, arr[j]);
+                        strcat(buf, tmp);
+                        sep = "|";
+                }
         }
-    }
 }
 
-int bgcolour (char type, CHAR_DATA *ch, char *string)
+int bgcolour(char type, CHAR_DATA *ch, char *string)
 {
-        char code[ 20 ];
+        char code[20];
         char *p = '\0';
 
         if (IS_NPC(ch))
@@ -3932,70 +3969,70 @@ int bgcolour (char type, CHAR_DATA *ch, char *string)
 
         switch (type)
         {
-            default:
+        default:
                 sprintf(code, B_BLACK);
                 break;
-            case 'k':
+        case 'k':
                 sprintf(code, B_B_BLACK);
                 break;
-            case 'K':
+        case 'K':
                 sprintf(code, B_BLACK);
                 break;
-            case 'b':
+        case 'b':
                 sprintf(code, B_B_BLUE);
                 break;
-            case 'B':
+        case 'B':
                 sprintf(code, B_BLUE);
                 break;
-            case 'c':
+        case 'c':
                 sprintf(code, B_CYAN);
                 break;
-            case 'C':
+        case 'C':
                 sprintf(code, B_B_CYAN);
                 break;
-            case 'g':
+        case 'g':
                 sprintf(code, B_GREEN);
                 break;
-            case 'G':
+        case 'G':
                 sprintf(code, B_B_GREEN);
                 break;
-            case 'm':
+        case 'm':
                 sprintf(code, B_PURPLE);
                 break;
-            case 'M':
+        case 'M':
                 sprintf(code, B_B_PURPLE);
                 break;
-            case 'r':
+        case 'r':
                 sprintf(code, B_RED);
                 break;
-            case 'R':
+        case 'R':
                 sprintf(code, B_B_RED);
                 break;
-            case 'w':
+        case 'w':
                 sprintf(code, B_GREY);
                 break;
-            case 'W':
+        case 'W':
                 sprintf(code, B_B_GREY);
                 break;
-            case 'd':
+        case 'd':
                 sprintf(code, B_D_GREY);
                 break;
-            case 'D':
+        case 'D':
                 sprintf(code, B_D_B_GREY);
                 break;
-            case 'y':
+        case 'y':
                 sprintf(code, B_YELLOW);
                 break;
-            case 'Y':
+        case 'Y':
                 sprintf(code, B_B_YELLOW);
                 break;
-            case '}':
+        case '}':
                 sprintf(code, "%c", '}');
                 break;
         }
 
         p = code;
-        while(*p != '\0')
+        while (*p != '\0')
         {
                 *string = *p++;
                 *++string = '\0';
@@ -4004,13 +4041,10 @@ int bgcolour (char type, CHAR_DATA *ch, char *string)
         return (strlen(code));
 }
 
-
-
-void wizPort_handler (int wizPort)
+void wizPort_handler(int wizPort)
 {
         return;
 }
-
 
 /*
  *  Write player and server activity at point of crash to file.
@@ -4025,7 +4059,8 @@ void write_last_command()
         time_t rawtime;
         char *time_str;
 
-        if (calls++ > 1) {
+        if (calls++ > 1)
+        {
                 log_string("Ack! write_last_command SIGSEGV handler has spewed!");
                 abort();
         }
@@ -4033,7 +4068,7 @@ void write_last_command()
         if (last_command[0] == '\0')
                 return;
 
-        fd = open("../log/last_command.txt", O_WRONLY|O_CREAT, S_IRUSR|S_IWUSR);
+        fd = open("../log/last_command.txt", O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR);
 
         if (fd < 0)
                 return;
@@ -4044,7 +4079,8 @@ void write_last_command()
 
         write(fd, last_command, strlen(last_command));
 
-        if (last_function[0] != '\0') {
+        if (last_function[0] != '\0')
+        {
                 write(fd, "Function: ", 10);
                 write(fd, last_function, strlen(last_function));
                 write(fd, "\n", 1);
@@ -4058,33 +4094,31 @@ void write_last_command()
         abort();
 }
 
-
 void install_crash_handler()
 {
         last_command[0] = '\0';
         last_function[0] = '\0';
 
-        if (atexit (write_last_command) != 0)
+        if (atexit(write_last_command) != 0)
         {
-                perror ("install_crash_handler: atexit");
-                exit (1);
+                perror("install_crash_handler: atexit");
+                exit(1);
         }
 
-        signal (SIGSEGV, write_last_command);
+        signal(SIGSEGV, write_last_command);
 }
-
 
 /*
  *  Send a paragraph less than 80 characters wide and indented
  *  below the first line; Gezhp 2000
  */
 
-void send_paragraph_to_char (char* text, CHAR_DATA* ch, unsigned int indent)
+void send_paragraph_to_char(char *text, CHAR_DATA *ch, unsigned int indent)
 {
-        const int       margin = 78;
-        char            buf [MAX_STRING_LENGTH];
-        int             pos, max, max_line, i, j, k, l;
-        bool            indent_line = FALSE;
+        const int margin = 78;
+        char buf[MAX_STRING_LENGTH];
+        int pos, max, max_line, i, j, k, l;
+        bool indent_line = FALSE;
 
         if (!text)
                 return;
@@ -4093,7 +4127,7 @@ void send_paragraph_to_char (char* text, CHAR_DATA* ch, unsigned int indent)
                 indent = margin / 2;
 
         pos = 0;
-        max = strlen (text);
+        max = strlen(text);
 
         buf[0] = '\0';
 
@@ -4116,21 +4150,21 @@ void send_paragraph_to_char (char* text, CHAR_DATA* ch, unsigned int indent)
 
                 for (j = 0; j < max_line; j++)
                 {
-                        if (i+j >= max)
+                        if (i + j >= max)
                         {
                                 break;
                         }
 
-                        if (text[i+j] == '\n')
+                        if (text[i + j] == '\n')
                         {
-                                k = j+1;
+                                k = j + 1;
                                 break;
                         }
 
-                        if (text[i+j] == ' ')
+                        if (text[i + j] == ' ')
                                 k = j;
 
-                        if (text[i+j] == '{' || text[i+j] == '}')
+                        if (text[i + j] == '{' || text[i + j] == '}')
                                 max_line += 2;
                 }
 
@@ -4139,11 +4173,9 @@ void send_paragraph_to_char (char* text, CHAR_DATA* ch, unsigned int indent)
 
                 for (j = 0; j < k; j++)
                 {
-                        if (text[i+j] != '\n'
-                            && text[i+j] != '\r'
-                            && !(j == 0 && text[i+j] == ' '))
+                        if (text[i + j] != '\n' && text[i + j] != '\r' && !(j == 0 && text[i + j] == ' '))
                         {
-                                buf[pos++] = text[i+j];
+                                buf[pos++] = text[i + j];
                         }
                 }
 
@@ -4153,25 +4185,28 @@ void send_paragraph_to_char (char* text, CHAR_DATA* ch, unsigned int indent)
         }
 
         buf[pos] = '\0';
-        send_to_char (buf, ch);
+        send_to_char(buf, ch);
 }
 
 void assert_directory_exists(const char *path)
 {
-        DIR * dir;
+        DIR *dir;
         char buf[MAX_STRING_LENGTH];
 
         dir = opendir(path);
-        if (dir) {
+        if (dir)
+        {
                 closedir(dir);
-        } else {
+        }
+        else
+        {
                 sprintf(buf, "Required directory does not exist or cannot be opened: %s", path);
                 bug(buf, MAX_STRING_LENGTH);
                 exit(1);
         }
 }
 
-void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
+void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
 {
         /*
          * Yes this is terrible, yes it's the best I can do right now,
@@ -4192,15 +4227,14 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
         char close_token;
 
         /* If you change these tokens, you should change the color_table_8bit act_codes as well */
-        open_token   = '<';
-        close_token  = '>';
+        open_token = '<';
+        close_token = '>';
 
-        if ( ( ch->desc && txt)
-        ||   ( (IS_NPC( ch ) && IS_SET( ch->pIndexData->progtypes, ACT_PROG ) ) && txt ) )
+        if ((ch->desc && txt) || ((IS_NPC(ch) && IS_SET(ch->pIndexData->progtypes, ACT_PROG)) && txt))
         {
                 if (IS_SET(ch->act, PLR_ANSI))
                 {
-                        for (point = txt ; *point ; point++)
+                        for (point = txt; *point; point++)
                         {
                                 if (*point == '{')
                                 {
@@ -4262,7 +4296,8 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
                                                         }
                                                 }
                                         }
-                                        else {
+                                        else
+                                        {
                                                 /* zero code array, lonely token opener */
                                                 cur_code[0] = '\0';
                                                 cur_code[1] = '\0';
@@ -4274,9 +4309,9 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
                                         if (*point == close_token)
                                         {
                                                 /*
-                                                * If we end up here we have the color code
-                                                * and everything is sweet.
-                                                */
+                                                 * If we end up here we have the color code
+                                                 * and everything is sweet.
+                                                 */
                                                 /*sprintf(buf78, "cv_int pre-reverse: %s\r\n", cur_code);
                                                 log_string(buf78);*/
 
@@ -4285,7 +4320,7 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
                                                 /*sprintf(buf78, "cur_code char reversed: %s\r\n", cur_code);
                                                 log_string(buf78);*/
 
-                                                cv_int = atoi( cur_code );
+                                                cv_int = atoi(cur_code);
 
                                                 /*sprintf(buf78, "cv_int to go to colour_8bit(): %d\r\n", cv_int);
                                                 log_string(buf78);*/
@@ -4303,7 +4338,8 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
 
                                                 continue;
                                         }
-                                        else {
+                                        else
+                                        {
                                                 /* We have an unclosed token error */
                                                 /* cv_int = reverse_number( atoi( cur_code ) ); */
 
@@ -4328,13 +4364,13 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
                          * code to strip the tokens out of the string.
                          */
 
-                       /* zero code array  to start */
+                        /* zero code array  to start */
                         cur_code[0] = '\0';
                         cur_code[1] = '\0';
                         cur_code[2] = '\0';
                         cd_count = 2;
 
-                        for (point = txt ; *point ; point++)
+                        for (point = txt; *point; point++)
                         {
 
                                 if (*point == '{' || *point == '}')
@@ -4385,7 +4421,8 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
                                                         }
                                                 }
                                         }
-                                        else {
+                                        else
+                                        {
                                                 /* zero code array, lonely token opener */
                                                 cur_code[0] = '\0';
                                                 cur_code[1] = '\0';
@@ -4397,10 +4434,10 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
                                         if (*point == close_token)
                                         {
                                                 /*
-                                                * have the color code
-                                                */
+                                                 * have the color code
+                                                 */
                                                 reverse_char_array(cur_code, 3);
-                                                cv_int = atoi( cur_code );
+                                                cv_int = atoi(cur_code);
                                                 strip_colour_8bit(cv_int, ch, buffer);
 
                                                 /*sprintf(buf78, "cvint = %d skip = %d \n\r", cv_int, skip);
@@ -4414,7 +4451,8 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
 
                                                 continue;
                                         }
-                                        else {
+                                        else
+                                        {
                                                 /* unclosed token error */
                                                 /* cv_int = reverse_number( atoi( cur_code ) ); */
 
@@ -4433,15 +4471,13 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
                         *buffer = '\0';
                         return;
                 }
-
         }
         return;
-
 }
 
-void strip_colour_8bit (int icode, CHAR_DATA *ch, char *string)
+void strip_colour_8bit(int icode, CHAR_DATA *ch, char *string)
 {
-        char code[ 20 ];
+        char code[20];
         char *p = '\0';
 
         if (IS_NPC(ch))
@@ -4451,16 +4487,16 @@ void strip_colour_8bit (int icode, CHAR_DATA *ch, char *string)
 
         p = code;
 
-        while(*p != '\0')
+        while (*p != '\0')
         {
                 *string = *p++;
                 *++string = '\0';
         }
 }
 
-int colour_8bit (int icode, CHAR_DATA *ch, char *string)
+int colour_8bit(int icode, CHAR_DATA *ch, char *string)
 {
-        char code[ 20 ];
+        char code[20];
         char *p = '\0';
         int i;
 
@@ -4469,14 +4505,14 @@ int colour_8bit (int icode, CHAR_DATA *ch, char *string)
 
         for (i = 0; i < MAX_8BIT_COLORS; i++)
         {
-                if( icode == color_table_8bit[i].number )
+                if (icode == color_table_8bit[i].number)
                 {
-                      sprintf(code, "%s", color_table_8bit[i].code);
+                        sprintf(code, "%s", color_table_8bit[i].code);
                 }
         }
         p = code;
 
-        while(*p != '\0')
+        while (*p != '\0')
         {
                 *string = *p++;
                 *++string = '\0';
@@ -4485,9 +4521,9 @@ int colour_8bit (int icode, CHAR_DATA *ch, char *string)
         return (strlen(code));
 }
 
-int colour (char type, CHAR_DATA *ch, char *string)
+int colour(char type, CHAR_DATA *ch, char *string)
 {
-        char code[ 20 ];
+        char code[20];
         char *p = '\0';
 
         if (IS_NPC(ch))
@@ -4495,76 +4531,76 @@ int colour (char type, CHAR_DATA *ch, char *string)
 
         switch (type)
         {
-            default:
+        default:
                 sprintf(code, CLEAR);
                 break;
-            case 'x':
+        case 'x':
                 sprintf(code, CLEAR);
                 break;
-            case 'k':
+        case 'k':
                 sprintf(code, BLACK);
                 break;
-            case 'b':
+        case 'b':
                 sprintf(code, C_BLUE);
                 break;
-            case 'c':
+        case 'c':
                 sprintf(code, C_CYAN);
                 break;
-            case 'g':
+        case 'g':
                 sprintf(code, C_GREEN);
                 break;
-            case 'm':
+        case 'm':
                 sprintf(code, C_MAGENTA);
                 break;
-            case 'r':
+        case 'r':
                 sprintf(code, C_RED);
                 break;
-            case 'w':
+        case 'w':
                 sprintf(code, C_WHITE);
                 break;
-            case 'y':
+        case 'y':
                 sprintf(code, C_YELLOW);
                 break;
-            case 'B':
+        case 'B':
                 sprintf(code, C_B_BLUE);
                 break;
-            case 'C':
+        case 'C':
                 sprintf(code, C_B_CYAN);
                 break;
-            case 'G':
+        case 'G':
                 sprintf(code, C_B_GREEN);
                 break;
-            case 'M':
+        case 'M':
                 sprintf(code, C_B_MAGENTA);
                 break;
-            case 'R':
+        case 'R':
                 sprintf(code, C_B_RED);
                 break;
-            case 'W':
+        case 'W':
                 sprintf(code, C_B_WHITE);
                 break;
-            case 'Y':
+        case 'Y':
                 sprintf(code, C_B_YELLOW);
                 break;
-            case 'D':
+        case 'D':
                 sprintf(code, C_D_GREY);
                 break;
-            case 'd':
+        case 'd':
                 sprintf(code, D_GREY);
                 break;
-            case '*':
-                 sprintf(code, "%c", 007);
-                 break;
-            case '/':
+        case '*':
+                sprintf(code, "%c", 007);
+                break;
+        case '/':
                 sprintf(code, "%c", 012);
                 break;
-            case '{':
+        case '{':
                 sprintf(code, "%c", '{');
                 break;
         }
 
         p = code;
-        while(*p != '\0')
+        while (*p != '\0')
         {
                 *string = *p++;
                 *++string = '\0';
@@ -4573,7 +4609,7 @@ int colour (char type, CHAR_DATA *ch, char *string)
         return (strlen(code));
 }
 
-void colourconv (char *buffer, const char *txt , CHAR_DATA *ch)
+void colourconv(char *buffer, const char *txt, CHAR_DATA *ch)
 {
         const char *point;
         int skip = 0;
@@ -4582,7 +4618,7 @@ void colourconv (char *buffer, const char *txt , CHAR_DATA *ch)
         {
                 if (IS_SET(ch->act, PLR_ANSI))
                 {
-                        for (point = txt ; *point ; point++)
+                        for (point = txt; *point; point++)
                         {
                                 if (*point == '{')
                                 {
@@ -4609,7 +4645,7 @@ void colourconv (char *buffer, const char *txt , CHAR_DATA *ch)
                 }
                 else
                 {
-                        for (point = txt ; *point ; point++)
+                        for (point = txt; *point; point++)
                         {
                                 if (*point == '{' || *point == '}')
                                 {
@@ -4625,7 +4661,7 @@ void colourconv (char *buffer, const char *txt , CHAR_DATA *ch)
         return;
 }
 
-int reverse_number ( int number )
+int reverse_number(int number)
 {
         int reversed;
         reversed = 0;
@@ -4634,39 +4670,37 @@ int reverse_number ( int number )
         {
                 reversed = reversed * 10;
                 reversed = reversed + number % 10;
-                number   = number / 10;
+                number = number / 10;
         }
         return reversed;
 }
 
-
 void reverse_char_array(char arr[], int n)
 {
-    /* Reverse elements of an array in-place where n = num of elements */
-    int low;
-    int high;
-    int temp;
+        /* Reverse elements of an array in-place where n = num of elements */
+        int low;
+        int high;
+        int temp;
 
-    for (low = 0, high = n - 1; low < high; low++, high--)
-    {
-        temp = arr[low];
-        arr[low] = arr[high];
-        arr[high] = temp;
-    }
+        for (low = 0, high = n - 1; low < high; low++, high--)
+        {
+                temp = arr[low];
+                arr[low] = arr[high];
+                arr[high] = temp;
+        }
 }
 
-int digits_in_int (int number )
+int digits_in_int(int number)
 {
         int count = 0;
 
-        do {
+        do
+        {
                 number /= 10;
                 ++count;
-        }
-        while ( number != 0 );
+        } while (number != 0);
 
         return count;
 }
-
 
 /* EOF comm.c */

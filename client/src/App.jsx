@@ -97,6 +97,22 @@ function App() {
         addMessage(`You are in: ${data.name}`, 'room');
         break;
       
+      case 'Comm.Channel':
+        // Handle channel messages (system, chat, game output, etc)
+        if (data.channel === 'system') {
+          addMessage(data.message, 'system');
+        } else if (data.channel === 'game') {
+          addMessage(data.message, 'normal');
+        } else {
+          addMessage(`[${data.channel}] ${data.message}`, 'info');
+        }
+        break;
+      
+      case 'Comm.Prompt':
+        // Handle prompts (Name:, Password:, etc)
+        addMessage(data.prompt, 'prompt');
+        break;
+      
       case 'Char.Stats':
         // Handle character stats update
         console.log('Stats update:', data);
@@ -130,7 +146,6 @@ function App() {
 
     // Format command as JSON for the gateway
     const message = JSON.stringify({
-      action: 'command',
       command: command
     });
 
