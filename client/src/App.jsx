@@ -5,6 +5,7 @@ import RoomDisplay from './components/RoomDisplay';
 import VitalsBar from './components/VitalsBar';
 import CombatLog from './components/CombatLog';
 import CommandInput from './components/CommandInput';
+import QuickActions from './components/QuickActions';
 
 /**
  * Main application component for DD4 Web Client
@@ -15,12 +16,15 @@ import CommandInput from './components/CommandInput';
  */
 function App() {
   const [connected, setConnected] = useState(false);
+  const [reconnecting, setReconnecting] = useState(false);
+  const [reconnectAttempt, setReconnectAttempt] = useState(0);
   const [vitals, setVitals] = useState({ hp: 100, maxhp: 100, mana: 100, maxmana: 100, move: 100, maxmove: 100 });
   const [room, setRoom] = useState({ name: 'Unknown', description: '', exits: [] });
   const [messages, setMessages] = useState([]);
   const ws = useRef(null);
+  const reconnectTimeoutRef = useRef(null);
 
-  // Connect to WebSocket gateway
+  // Connect to WebSocket gateway with reconnection logic
   useEffect(() => {
     const connectWebSocket = () => {
       // Connect to the WebSocket gateway
@@ -28,17 +32,32 @@ function App() {
       const wsUrl = 'ws://localhost:8080';
       
       try {
+        console.log('Connecting to WebSocket...');
         ws.current = new WebSocket(wsUrl);
 
         ws.current.onopen = () => {
           console.log('Connected to DD4 WebSocket Gateway');
           setConnected(true);
+          setReconnecting(false);
+          setReconnectAttempt(0);
           addMessage('Connected to Dragons Domain IV', 'system');
+          
+          // Note: Client doesn't need to send PINGs
+          // Browser automatically responds to server PINGs with PONGs per RFC-6455
+          // Server sends PING every 30s and closes connection if no PONG after 90s
         };
 
         ws.current.onmessage = (event) => {
           try {
+            // Handle binary frames (pong responses)
+            if (event.data instanceof Blob) {
+              console.log('Received binary frame (likely pong)');
+              return;
+            }
+            
+            console.log('Raw WebSocket message:', event.data);
             const message = JSON.parse(event.data);
+            console.log('Parsed GMCP message:', message);
             handleGMCPMessage(message);
           } catch (err) {
             console.error('Failed to parse message:', err);
@@ -51,17 +70,36 @@ function App() {
           addMessage('Connection error occurred', 'error');
         };
 
-        ws.current.onclose = () => {
-          console.log('Disconnected from WebSocket');
+        ws.current.onclose = (event) => {
+          console.log('Disconnected from WebSocket', event);
           setConnected(false);
-          addMessage('Disconnected from server', 'system');
           
-          // Attempt to reconnect after 5 seconds
-          setTimeout(connectWebSocket, 5000);
+          // Attempt to reconnect with exponential backoff
+          // Delay: 1s, 2s, 4s, 8s, 16s, max 30s
+          const delay = Math.min(1000 * Math.pow(2, reconnectAttempt), 30000);
+          setReconnecting(true);
+          setReconnectAttempt(prev => prev + 1);
+          
+          const delaySeconds = (delay / 1000).toFixed(0);
+          addMessage(`Disconnected. Reconnecting in ${delaySeconds}s... (attempt ${reconnectAttempt + 1})`, 'system');
+          
+          if (reconnectTimeoutRef.current) {
+            clearTimeout(reconnectTimeoutRef.current);
+          }
+          
+          reconnectTimeoutRef.current = setTimeout(() => {
+            connectWebSocket();
+          }, delay);
         };
       } catch (err) {
         console.error('Failed to create WebSocket:', err);
-        setTimeout(connectWebSocket, 5000);
+        setReconnecting(true);
+        
+        const delay = Math.min(1000 * Math.pow(2, reconnectAttempt), 30000);
+        reconnectTimeoutRef.current = setTimeout(() => {
+          setReconnectAttempt(prev => prev + 1);
+          connectWebSocket();
+        }, delay);
       }
     };
 
@@ -69,6 +107,9 @@ function App() {
 
     // Cleanup on unmount
     return () => {
+      if (reconnectTimeoutRef.current) {
+        clearTimeout(reconnectTimeoutRef.current);
+      }
       if (ws.current) {
         ws.current.close();
       }
@@ -99,6 +140,9 @@ function App() {
       
       case 'Comm.Channel':
         // Handle channel messages (system, chat, game output, etc)
+        console.log('Comm.Channel received:', data);
+        console.log('Message text:', data.message);
+        console.log('Message text (escaped):', JSON.stringify(data.message));
         if (data.channel === 'system') {
           addMessage(data.message, 'system');
         } else if (data.channel === 'game') {
@@ -164,14 +208,15 @@ function App() {
     <div className="app">
       <header className="app-header">
         <h1>Dragons Domain IV</h1>
-        <div className={`status ${connected ? 'connected' : 'disconnected'}`}>
-          {connected ? '● Connected' : '○ Disconnected'}
+        <div className={`status ${connected ? 'connected' : reconnecting ? 'reconnecting' : 'disconnected'}`}>
+          {connected ? '● Connected' : reconnecting ? '○ Reconnecting...' : '○ Disconnected'}
         </div>
       </header>
 
       <div className="app-content">
         <div className="left-panel">
           <VitalsBar vitals={vitals} />
+          <QuickActions onCommand={sendCommand} connected={connected} />
           <Compass exits={room.exits} onMove={handleMove} />
         </div>
 

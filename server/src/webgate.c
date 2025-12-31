@@ -468,6 +468,111 @@ void webgate_send_gmcp(WEB_DESCRIPTOR_DATA *web_desc, const char *module, const 
 }
 
 /*
+ * Intent: Send room information to web client via GMCP Room.Info message.
+ *
+ * Formats and sends complete room data including name, description, exits,
+ * and vnum to the web client. This enables the client to update the UI with
+ * current room information and populate the navigation compass.
+ *
+ * Inputs:
+ *   - web_desc: Target web client connection
+ *   - room: Room index data containing room details
+ *
+ * Outputs: None (GMCP message queued for send)
+ *
+ * Preconditions: web_desc is authenticated; room is valid pointer
+ * Postconditions: Room.Info GMCP message sent to client
+ *
+ * Failure Behavior: Silently returns if web_desc or room is NULL
+ *
+ * Notes: JSON strings are escaped to prevent syntax errors. Large descriptions
+ *        may be truncated to fit WEBGATE_MAX_MESSAGE limit.
+ */
+void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room)
+{
+    char json[WEBGATE_MAX_MESSAGE];
+    char exits_json[512];
+    char name_escaped[256];
+    char desc_escaped[MAX_STRING_LENGTH];
+    EXIT_DATA *pexit;
+    int door;
+    bool first = true;
+    int i, j;
+    extern DIR_DATA directions[];
+
+    if (!web_desc || !room)
+        return;
+
+    /* Escape room name for JSON */
+    for (i = 0, j = 0; room->name[i] != '\0' && j < sizeof(name_escaped) - 2; i++)
+    {
+        if (room->name[i] == '"' || room->name[i] == '\\')
+        {
+            name_escaped[j++] = '\\';
+        }
+        name_escaped[j++] = room->name[i];
+    }
+    name_escaped[j] = '\0';
+
+    /* Escape room description for JSON (truncate if too long) */
+    for (i = 0, j = 0; room->description[i] != '\0' && j < sizeof(desc_escaped) - 2 && i < 1000; i++)
+    {
+        if (room->description[i] == '"')
+        {
+            desc_escaped[j++] = '\\';
+            desc_escaped[j++] = '"';
+        }
+        else if (room->description[i] == '\\')
+        {
+            desc_escaped[j++] = '\\';
+            desc_escaped[j++] = '\\';
+        }
+        else if (room->description[i] == '\n')
+        {
+            desc_escaped[j++] = '\\';
+            desc_escaped[j++] = 'n';
+        }
+        else if (room->description[i] == '\r')
+        {
+            continue; /* Skip carriage returns */
+        }
+        else if (room->description[i] >= 32)
+        {
+            desc_escaped[j++] = room->description[i];
+        }
+    }
+    desc_escaped[j] = '\0';
+
+    /* Build exits array JSON */
+    sprintf(exits_json, "[");
+    for (door = 0; door < MAX_DIR; door++)
+    {
+        pexit = room->exit[door];
+        if (pexit && pexit->to_room)
+        {
+            if (!first)
+                strcat(exits_json, ",");
+            sprintf(exits_json + strlen(exits_json), "\"%s\"", directions[door].name);
+            first = false;
+        }
+    }
+    strcat(exits_json, "]");
+
+    /* Build complete Room.Info JSON */
+    snprintf(json, sizeof(json),
+             "{\"name\":\"%s\",\"description\":\"%s\",\"exits\":%s,\"vnum\":%d}",
+             name_escaped,
+             desc_escaped,
+             exits_json,
+             room->vnum);
+
+    sprintf(log_buf, "WebGate: Sending Room.Info (exits: %s)", exits_json);
+    log_string(log_buf);
+
+    webgate_send_gmcp(web_desc, "Room.Info", json);
+}
+
+/*
  * Intent: Broadcast a GMCP message to all authenticated web clients.
  *
  * Iterates through all active web connections and sends the message
@@ -494,6 +599,88 @@ void webgate_broadcast(const char *module, const char *json_body)
         if (web_desc->authenticated)
         {
             webgate_send_gmcp(web_desc, module, json_body);
+        }
+    }
+}
+
+/*
+ * Intent: Send WebSocket ping frame to keep connection alive.
+ *
+ * Sends a WebSocket PING frame (opcode 0x9) to the client. Client must
+ * respond with a PONG frame to indicate connection is still alive. This
+ * prevents idle timeout disconnections and detects broken connections.
+ *
+ * Inputs: web_desc - Web client to ping
+ * Outputs: None (PING frame queued for send)
+ *
+ * Preconditions: web_desc is in WS_STATE_OPEN
+ * Postconditions: PING frame sent; last_ping timestamp updated
+ *
+ * Failure Behavior: Silently returns if connection not open
+ *
+ * Notes: RFC-6455 §5.5.2 - PING frames may include application data
+ */
+void webgate_send_ping(WEB_DESCRIPTOR_DATA *web_desc)
+{
+    unsigned char frame[2];
+
+    if (!web_desc || web_desc->state != WS_STATE_OPEN)
+        return;
+
+    /* WebSocket PING frame: FIN=1, opcode=0x9, no payload */
+    frame[0] = 0x89; /* 10001001: FIN + PING opcode */
+    frame[1] = 0x00; /* No payload, no mask */
+
+    webgate_send_raw(web_desc, (char *)frame, 2);
+    web_desc->last_ping = time(NULL);
+
+    sprintf(log_buf, "WebGate: Sent PING to fd %d", web_desc->fd);
+    log_string(log_buf);
+}
+
+/*
+ * Intent: Perform periodic maintenance on WebSocket connections.
+ *
+ * Called once per game loop iteration (heartbeat). Sends PING frames to
+ * idle connections and closes connections that haven't responded to PING
+ * within the timeout period.
+ *
+ * Inputs: None
+ * Outputs: None (may close unresponsive connections)
+ *
+ * Preconditions: Called from main game loop
+ * Postconditions: Stale connections cleaned up; PINGs sent to idle connections
+ *
+ * Failure Behavior: Per-connection errors handled individually
+ *
+ * Timing:
+ * - Send PING every 30 seconds of idle time
+ * - Close connection if no PONG received within 60 seconds
+ */
+void webgate_pulse(void)
+{
+    WEB_DESCRIPTOR_DATA *web_desc, *web_next;
+    time_t now = time(NULL);
+
+    for (web_desc = web_descriptor_list; web_desc; web_desc = web_next)
+    {
+        web_next = web_desc->next;
+
+        if (web_desc->state != WS_STATE_OPEN)
+            continue;
+
+        /* Send PING every 30 seconds */
+        if (now - web_desc->last_ping >= 30)
+        {
+            webgate_send_ping(web_desc);
+        }
+
+        /* Close connection if no response for 90 seconds */
+        if (now - web_desc->last_ping >= 90)
+        {
+            sprintf(log_buf, "WebGate: Connection timeout (no pong) for fd %d", web_desc->fd);
+            log_string(log_buf);
+            webgate_close(web_desc);
         }
     }
 }
@@ -770,6 +957,11 @@ static bool webgate_parse_websocket_frames(WEB_DESCRIPTOR_DATA *web_desc)
             }
             break;
 
+        case 0x02: /* Binary frame */
+            /* Client attempted to send binary data (possibly malformed ping) */
+            /* Ignore silently or log at debug level */
+            break;
+
         case 0x08: /* Close frame */
             sprintf(log_buf, "WebGate: Client sent close frame");
             log_string(log_buf);
@@ -778,13 +970,15 @@ static bool webgate_parse_websocket_frames(WEB_DESCRIPTOR_DATA *web_desc)
             return false;
 
         case 0x09: /* Ping frame */
-            /* TODO: Send pong response */
-            sprintf(log_buf, "WebGate: Received ping");
+            /* Client sent ping - respond with pong */
+            /* Note: Most browsers auto-respond to server pings, so client shouldn't send these */
+            sprintf(log_buf, "WebGate: Received ping from client (unusual)");
             log_string(log_buf);
+            /* TODO: Send pong response if needed */
             break;
 
         case 0x0A: /* Pong frame */
-            /* Update last_ping timestamp */
+            /* Update last_ping timestamp - this is the normal response to our pings */
             web_desc->last_ping = current_time;
             break;
 
@@ -1046,11 +1240,27 @@ static bool webgate_parse_json_message(WEB_DESCRIPTOR_DATA *web_desc, const char
             if (web_desc->mud_desc->character)
             {
                 interpret(web_desc->mud_desc->character, web_desc->mud_desc->incomm);
+
+                /* Send updated room info after command execution */
+                if (web_desc->mud_desc->character->in_room)
+                {
+                    webgate_send_room_info(web_desc, web_desc->mud_desc->character->in_room);
+                }
             }
         }
         else
         {
+            int old_state = web_desc->mud_desc->connected;
             nanny(web_desc->mud_desc, web_desc->mud_desc->incomm);
+
+            /* Check if player just entered the game */
+            if (old_state != CON_PLAYING && web_desc->mud_desc->connected == CON_PLAYING)
+            {
+                if (web_desc->mud_desc->character && web_desc->mud_desc->character->in_room)
+                {
+                    webgate_send_room_info(web_desc, web_desc->mud_desc->character->in_room);
+                }
+            }
         }
         web_desc->mud_desc->incomm[0] = '\0';
 
@@ -1345,8 +1555,19 @@ static void webgate_transfer_mud_output(WEB_DESCRIPTOR_DATA *web_desc)
     /* Ensure null termination */
     mud_desc->outbuf[mud_desc->outtop] = '\0';
 
+    /* Debug: Log first 100 chars of raw output */
+    {
+        char debug_buf[128];
+        int debug_len = mud_desc->outtop < 100 ? mud_desc->outtop : 100;
+        memcpy(debug_buf, mud_desc->outbuf, debug_len);
+        debug_buf[debug_len] = '\0';
+        sprintf(log_buf, "WebGate: Raw output: %s", debug_buf);
+        log_string(log_buf);
+    }
+
     /* Send as GMCP message */
     /* We need to escape quotes and newlines for JSON */
+    /* ANSI codes (ESC sequences) are passed through for client-side rendering */
     msg_start = mud_desc->outbuf;
     msg_len = 0;
 
@@ -1380,17 +1601,40 @@ static void webgate_transfer_mud_output(WEB_DESCRIPTOR_DATA *web_desc)
             message_buf[msg_len++] = '\\';
             message_buf[msg_len++] = 't';
         }
+        else if (c == 27) /* ESC - start of ANSI sequence */
+        {
+            /* Pass through ANSI escape sequences for client-side color rendering */
+            /* Escape as \u001B for JSON */
+            message_buf[msg_len++] = '\\';
+            message_buf[msg_len++] = 'u';
+            message_buf[msg_len++] = '0';
+            message_buf[msg_len++] = '0';
+            message_buf[msg_len++] = '1';
+            message_buf[msg_len++] = 'B';
+        }
         else if (c >= 32 || c == '\0')
         {
             /* Regular printable character */
             message_buf[msg_len++] = c;
         }
-        /* Skip other control characters */
+        /* Skip other control characters (but not ESC for ANSI) */
     }
     message_buf[msg_len] = '\0';
 
     /* Send as GMCP Comm.Channel message */
     snprintf(json, sizeof(json), "{\"channel\":\"game\",\"message\":\"%s\"}", message_buf);
+
+    /* Debug: Log the JSON being sent */
+    {
+        char debug_json[256];
+        int json_len = strlen(json);
+        int copy_len = json_len < 200 ? json_len : 200;
+        memcpy(debug_json, json, copy_len);
+        debug_json[copy_len] = '\0';
+        sprintf(log_buf, "WebGate: Sending JSON: %s", debug_json);
+        log_string(log_buf);
+    }
+
     webgate_send_gmcp(web_desc, "Comm.Channel", json);
 
     /* Clear the MUD output buffer */

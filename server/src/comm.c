@@ -709,6 +709,11 @@ void game_loop_unix(int control, int wizPort)
                 update_handler();
 
                 /*
+                 * WebSocket connection maintenance (ping/pong, timeouts)
+                 */
+                webgate_pulse();
+
+                /*
                  * Output.
                  */
                 for (d = descriptor_list; d; d = d_next)

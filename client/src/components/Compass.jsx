@@ -4,9 +4,10 @@ import './Compass.css';
 /**
  * Compass component for directional navigation
  * Displays available exits and allows click-to-move
+ * Supports 6 directions: N, E, S, W, U, D
  */
 function Compass({ exits = [], onMove }) {
-  const directions = ['north', 'northeast', 'east', 'southeast', 'south', 'southwest', 'west', 'northwest', 'up', 'down'];
+  const directions = ['north', 'east', 'south', 'west', 'up', 'down'];
   
   const isExitAvailable = (direction) => {
     return exits.some(exit => exit.toLowerCase() === direction.toLowerCase());
@@ -27,35 +28,7 @@ function Compass({ exits = [], onMove }) {
     <div className="compass">
       <h3>Navigation</h3>
       <div className="compass-grid">
-        <button 
-          className={getDirectionClass('northwest')}
-          onClick={() => handleDirectionClick('northwest')}
-          disabled={!isExitAvailable('northwest')}
-        >
-          NW
-        </button>
-        <button 
-          className={getDirectionClass('north')}
-          onClick={() => handleDirectionClick('north')}
-          disabled={!isExitAvailable('north')}
-        >
-          N
-        </button>
-        <button 
-          className={getDirectionClass('northeast')}
-          onClick={() => handleDirectionClick('northeast')}
-          disabled={!isExitAvailable('northeast')}
-        >
-          NE
-        </button>
-        
-        <button 
-          className={getDirectionClass('west')}
-          onClick={() => handleDirectionClick('west')}
-          disabled={!isExitAvailable('west')}
-        >
-          W
-        </button>
+        {/* Top row: Up and North */}
         <button 
           className={getDirectionClass('up')}
           onClick={() => handleDirectionClick('up')}
@@ -64,6 +37,26 @@ function Compass({ exits = [], onMove }) {
           U
         </button>
         <button 
+          className={getDirectionClass('north')}
+          onClick={() => handleDirectionClick('north')}
+          disabled={!isExitAvailable('north')}
+        >
+          N
+        </button>
+        <div className="compass-spacer"></div>
+        
+        {/* Middle row: West, Center, East */}
+        <button 
+          className={getDirectionClass('west')}
+          onClick={() => handleDirectionClick('west')}
+          disabled={!isExitAvailable('west')}
+        >
+          W
+        </button>
+        <div className="compass-center">
+          <span>⊕</span>
+        </div>
+        <button 
           className={getDirectionClass('east')}
           onClick={() => handleDirectionClick('east')}
           disabled={!isExitAvailable('east')}
@@ -71,13 +64,7 @@ function Compass({ exits = [], onMove }) {
           E
         </button>
         
-        <button 
-          className={getDirectionClass('southwest')}
-          onClick={() => handleDirectionClick('southwest')}
-          disabled={!isExitAvailable('southwest')}
-        >
-          SW
-        </button>
+        {/* Bottom row: Down and South */}
         <button 
           className={getDirectionClass('down')}
           onClick={() => handleDirectionClick('down')}
@@ -86,12 +73,13 @@ function Compass({ exits = [], onMove }) {
           D
         </button>
         <button 
-          className={getDirectionClass('southeast')}
-          onClick={() => handleDirectionClick('southeast')}
-          disabled={!isExitAvailable('southeast')}
+          className={getDirectionClass('south')}
+          onClick={() => handleDirectionClick('south')}
+          disabled={!isExitAvailable('south')}
         >
-          SE
+          S
         </button>
+        <div className="compass-spacer"></div>
       </div>
     </div>
   );
