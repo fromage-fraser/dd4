@@ -192,6 +192,40 @@ void webgate_send_gmcp(WEB_DESCRIPTOR_DATA *web_desc, const char *module, const 
 void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room);
 
 /*
+ * Intent: Notify all web clients in a room that room contents have changed.
+ *
+ * Inputs:
+ *   - room - The room that has changed
+ *
+ * Outputs: None (Room.Info messages sent to eligible clients)
+ *
+ * Preconditions: room must be valid
+ * Postconditions: All web clients in room receive updated Room.Info
+ *
+ * Notes: Call when NPCs/items move in/out of room
+ */
+void webgate_notify_room_update(ROOM_INDEX_DATA *room);
+
+/*
+ * Intent: Send character skills/spells to web client via GMCP.
+ *
+ * Provides list of learned active skills and spells for skill bar assignment
+ * and combat opener selection. Should be called on login and when skills improve.
+ *
+ * Inputs:
+ *   - web_desc: Web client descriptor
+ *   - ch: Character whose skills to send
+ *
+ * Outputs: Char.Skills GMCP message with JSON array
+ *
+ * Preconditions: ch must be valid player with pcdata
+ * Postconditions: Client receives skill list with metadata
+ *
+ * Notes: Filters out passive skills; includes opener flag for combat initiation
+ */
+void webgate_send_char_skills(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch);
+
+/*
  * Intent: Broadcast a GMCP message to all authenticated web clients.
  *
  * Inputs:
@@ -238,6 +272,57 @@ void webgate_send_ping(WEB_DESCRIPTOR_DATA *web_desc);
  * Notes: Should be called once per game loop iteration (every 1-2 seconds)
  */
 void webgate_pulse(void);
+
+/*
+ * Intent: Send character vitals to web client via GMCP.
+ *
+ * Inputs:
+ *   - web_desc - Web client descriptor
+ *   - ch - Character to send vitals for
+ *
+ * Outputs: Char.Vitals GMCP message sent to client
+ *
+ * Preconditions: ch must be valid player character
+ * Postconditions: Client receives updated HP/Mana/Move information
+ *
+ * Failure Behavior: Silently returns if connection not open or ch is NULL
+ *
+ * Notes: Should be called after combat, healing, regen, or other vital changes
+ */
+void webgate_send_char_vitals(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch);
+
+/*
+ * Intent: Send character status to web client via GMCP.
+ *
+ * Inputs:
+ *   - web_desc - Web client descriptor
+ *   - ch - Character to send status for
+ *
+ * Outputs: Char.Status GMCP message sent to client
+ *
+ * Preconditions: ch must be valid player character
+ * Postconditions: Client receives updated name/class/affects information
+ *
+ * Failure Behavior: Silently returns if connection not open or ch is NULL
+ *
+ * Notes: Should be called when affects change or position changes
+ */
+void webgate_send_char_status(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch);
+
+/*
+ * Intent: Notify web clients when GMCP protocol updates occur.
+ *
+ * Inputs: mud_desc - MUD descriptor with GMCP updates
+ * Outputs: None (updates sent to associated web clients)
+ *
+ * Preconditions: Called from SendUpdatedGMCP() in protocol.c
+ * Postconditions: Web clients receive current vitals and status
+ *
+ * Failure Behavior: Silently returns if no character or web clients
+ *
+ * Notes: Bridges GMCP protocol (telnet) to WebSocket clients
+ */
+void webgate_notify_gmcp_update(DESCRIPTOR_DATA *mud_desc);
 
 /*
  * Intent: Register file descriptors with select() for WebSocket I/O.

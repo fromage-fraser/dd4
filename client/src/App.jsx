@@ -6,6 +6,10 @@ import VitalsBar from './components/VitalsBar';
 import CombatLog from './components/CombatLog';
 import CommandInput from './components/CommandInput';
 import QuickActions from './components/QuickActions';
+import CharacterInfo from './components/CharacterInfo';
+import RoomContents from './components/RoomContents';
+import SkillBar from './components/SkillBar';
+import SkillAssign from './components/SkillAssign';
 
 /**
  * Main application component for DD4 Web Client
@@ -19,10 +23,38 @@ function App() {
   const [reconnecting, setReconnecting] = useState(false);
   const [reconnectAttempt, setReconnectAttempt] = useState(0);
   const [vitals, setVitals] = useState({ hp: 100, maxhp: 100, mana: 100, maxmana: 100, move: 100, maxmove: 100 });
-  const [room, setRoom] = useState({ name: 'Unknown', description: '', exits: [] });
+  const [status, setStatus] = useState(null);
+  const [room, setRoom] = useState({ name: 'Unknown', description: '', exits: [], items: [], npcs: [] });
   const [messages, setMessages] = useState([]);
+  const [skills, setSkills] = useState([]);
+  const [assignedSkills, setAssignedSkills] = useState(Array(8).fill(null));
+  const [openers, setOpeners] = useState([null, null]);
+  const [showSkillAssign, setShowSkillAssign] = useState(false);
   const ws = useRef(null);
   const reconnectTimeoutRef = useRef(null);
+  const reconnectAttemptRef = useRef(0); // Use ref to track attempts for closure issues
+
+  // Load saved skill configuration from localStorage
+  useEffect(() => {
+    const savedAssigned = localStorage.getItem('dd4_assigned_skills');
+    const savedOpeners = localStorage.getItem('dd4_openers');
+    
+    if (savedAssigned) {
+      try {
+        setAssignedSkills(JSON.parse(savedAssigned));
+      } catch (e) {
+        console.error('Failed to parse saved skill assignments:', e);
+      }
+    }
+    
+    if (savedOpeners) {
+      try {
+        setOpeners(JSON.parse(savedOpeners));
+      } catch (e) {
+        console.error('Failed to parse saved openers:', e);
+      }
+    }
+  }, []);
 
   // Connect to WebSocket gateway with reconnection logic
   useEffect(() => {
@@ -40,6 +72,7 @@ function App() {
           setConnected(true);
           setReconnecting(false);
           setReconnectAttempt(0);
+          reconnectAttemptRef.current = 0; // Reset ref
           addMessage('Connected to Dragons Domain IV', 'system');
           
           // Note: Client doesn't need to send PINGs
@@ -76,18 +109,21 @@ function App() {
           
           // Attempt to reconnect with exponential backoff
           // Delay: 1s, 2s, 4s, 8s, 16s, max 30s
-          const delay = Math.min(1000 * Math.pow(2, reconnectAttempt), 30000);
+          const currentAttempt = reconnectAttemptRef.current;
+          const delay = Math.min(1000 * Math.pow(2, currentAttempt), 30000);
           setReconnecting(true);
-          setReconnectAttempt(prev => prev + 1);
+          setReconnectAttempt(currentAttempt + 1);
+          reconnectAttemptRef.current = currentAttempt + 1; // Update ref
           
           const delaySeconds = (delay / 1000).toFixed(0);
-          addMessage(`Disconnected. Reconnecting in ${delaySeconds}s... (attempt ${reconnectAttempt + 1})`, 'system');
+          addMessage(`Disconnected. Reconnecting in ${delaySeconds}s... (attempt ${currentAttempt + 1})`, 'system');
           
           if (reconnectTimeoutRef.current) {
             clearTimeout(reconnectTimeoutRef.current);
           }
           
           reconnectTimeoutRef.current = setTimeout(() => {
+            console.log(`Reconnection attempt ${reconnectAttemptRef.current}`);
             connectWebSocket();
           }, delay);
         };
@@ -95,9 +131,12 @@ function App() {
         console.error('Failed to create WebSocket:', err);
         setReconnecting(true);
         
-        const delay = Math.min(1000 * Math.pow(2, reconnectAttempt), 30000);
+        const currentAttempt = reconnectAttemptRef.current;
+        const delay = Math.min(1000 * Math.pow(2, currentAttempt), 30000);
+        reconnectAttemptRef.current = currentAttempt + 1;
+        setReconnectAttempt(currentAttempt + 1);
+        
         reconnectTimeoutRef.current = setTimeout(() => {
-          setReconnectAttempt(prev => prev + 1);
           connectWebSocket();
         }, delay);
       }
@@ -133,9 +172,24 @@ function App() {
         setVitals(data);
         break;
       
+      case 'Char.Status':
+        setStatus(data);
+        break;
+      
       case 'Room.Info':
         setRoom(data);
         addMessage(`You are in: ${data.name}`, 'room');
+        break;
+      
+      case 'Char.Skills':
+        // Handle skills update
+        console.log('Char.Skills received:', data);
+        console.log('Skills count:', data.skills?.length);
+        if (data.skills && data.skills.length > 0) {
+          console.log('First 5 skills:', data.skills.slice(0, 5));
+          console.log('Opener skills:', data.skills.filter(s => s.opener));
+          setSkills(data.skills);
+        }
         break;
       
       case 'Comm.Channel':
@@ -204,6 +258,33 @@ function App() {
     sendCommand(direction);
   };
 
+  /**
+   * Handle using a skill from the skill bar
+   */
+  const handleUseSkill = (skill) => {
+    console.log('Using skill:', skill.name);
+    // Skills with mana are typically spells, use 'cast'
+    // Skills without mana are physical abilities, use skill name directly
+    if (skill.type === 'spell') {
+      sendCommand(`cast '${skill.name}'`);
+    } else {
+      sendCommand(skill.name);
+    }
+  };
+
+  /**
+   * Save skill configuration to localStorage
+   */
+  const handleSaveSkillConfig = (newAssigned, newOpeners) => {
+    setAssignedSkills(newAssigned);
+    setOpeners(newOpeners);
+    
+    localStorage.setItem('dd4_assigned_skills', JSON.stringify(newAssigned));
+    localStorage.setItem('dd4_openers', JSON.stringify(newOpeners));
+    
+    console.log('Skill configuration saved:', { assigned: newAssigned, openers: newOpeners });
+  };
+
   return (
     <div className="app">
       <header className="app-header">
@@ -227,16 +308,34 @@ function App() {
         </div>
 
         <div className="right-panel">
-          <div className="stats-panel">
-            <h3>Character Stats</h3>
-            <p>Stats display coming soon...</p>
-          </div>
-          <div className="inventory-panel">
-            <h3>Inventory</h3>
-            <p>Inventory display coming soon...</p>
-          </div>
+          <CharacterInfo vitals={vitals} status={status} />
+          <RoomContents 
+            items={room.items} 
+            npcs={room.npcs} 
+            onCommand={sendCommand} 
+            connected={connected}
+            skills={skills}
+            openers={openers}
+          />
+          <SkillBar
+            skills={skills}
+            assignedSkills={assignedSkills}
+            onUseSkill={handleUseSkill}
+            onAssignClick={() => setShowSkillAssign(true)}
+            connected={connected}
+          />
         </div>
       </div>
+
+      {showSkillAssign && (
+        <SkillAssign
+          skills={skills}
+          assignedSkills={assignedSkills}
+          openers={openers}
+          onSave={handleSaveSkillConfig}
+          onClose={() => setShowSkillAssign(false)}
+        />
+      )}
     </div>
   );
 }

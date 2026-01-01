@@ -58,6 +58,8 @@ static void webgate_free_descriptor(WEB_DESCRIPTOR_DATA *web_desc);
 static DESCRIPTOR_DATA *webgate_create_mud_descriptor(WEB_DESCRIPTOR_DATA *web_desc);
 static void webgate_send_prompt(WEB_DESCRIPTOR_DATA *web_desc, const char *prompt);
 static void webgate_transfer_mud_output(WEB_DESCRIPTOR_DATA *web_desc);
+static void webgate_parse_and_send_gmcp(WEB_DESCRIPTOR_DATA *web_desc, const char *gmcp_msg);
+static void webgate_send_text_as_gmcp(WEB_DESCRIPTOR_DATA *web_desc, const char *text, int len);
 
 /*
  * Intent: Initialize WebSocket gateway server and bind to specified port.
@@ -492,12 +494,17 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
 {
     char json[WEBGATE_MAX_MESSAGE];
     char exits_json[512];
+    char items_json[MAX_STRING_LENGTH];
+    char npcs_json[MAX_STRING_LENGTH];
     char name_escaped[256];
     char desc_escaped[MAX_STRING_LENGTH];
+    char temp_name[256];
     EXIT_DATA *pexit;
+    OBJ_DATA *obj;
+    CHAR_DATA *rch;
     int door;
     bool first = true;
-    int i, j;
+    int i, j, item_count = 0, npc_count = 0;
     extern DIR_DATA directions[];
 
     if (!web_desc || !room)
@@ -558,18 +565,171 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
     }
     strcat(exits_json, "]");
 
-    /* Build complete Room.Info JSON */
+    /* Build items array JSON - limit to 20 items */
+    sprintf(items_json, "[");
+    first = true;
+    for (obj = room->contents; obj && item_count < 20; obj = obj->next_content)
+    {
+        char keywords_escaped[256];
+
+        /* Escape item short description (for display) */
+        for (i = 0, j = 0; obj->short_descr[i] != '\0' && j < sizeof(temp_name) - 2; i++)
+        {
+            if (obj->short_descr[i] == '"' || obj->short_descr[i] == '\\')
+                temp_name[j++] = '\\';
+            if (obj->short_descr[i] >= 32)
+                temp_name[j++] = obj->short_descr[i];
+        }
+        temp_name[j] = '\0';
+
+        /* Escape item keywords (for commands) - use first keyword only */
+        for (i = 0, j = 0; obj->name[i] != '\0' && obj->name[i] != ' ' && j < sizeof(keywords_escaped) - 2; i++)
+        {
+            if (obj->name[i] == '"' || obj->name[i] == '\\')
+                keywords_escaped[j++] = '\\';
+            if (obj->name[i] >= 32)
+                keywords_escaped[j++] = obj->name[i];
+        }
+        keywords_escaped[j] = '\0';
+
+        if (!first)
+            strcat(items_json, ",");
+        sprintf(items_json + strlen(items_json),
+                "{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d}",
+                obj->pIndexData ? obj->pIndexData->vnum : 0,
+                temp_name,
+                keywords_escaped,
+                obj->pIndexData ? obj->pIndexData->vnum : 0);
+        first = false;
+        item_count++;
+    }
+    strcat(items_json, "]");
+
+    /* Build NPCs array JSON - limit to 20 NPCs, exclude the player's character */
+    sprintf(npcs_json, "[");
+    first = true;
+    for (rch = room->people; rch && npc_count < 20; rch = rch->next_in_room)
+    {
+        char keywords_escaped[256];
+
+        /* Skip the player's own character */
+        if (!IS_NPC(rch) && web_desc->mud_desc && rch == web_desc->mud_desc->character)
+            continue;
+
+        /* Escape NPC short description (for display) */
+        for (i = 0, j = 0; rch->short_descr[i] != '\0' && j < sizeof(temp_name) - 2; i++)
+        {
+            if (rch->short_descr[i] == '"' || rch->short_descr[i] == '\\')
+                temp_name[j++] = '\\';
+            if (rch->short_descr[i] >= 32)
+                temp_name[j++] = rch->short_descr[i];
+        }
+        temp_name[j] = '\0';
+
+        /* Escape NPC keywords (for commands) - use first keyword only */
+        for (i = 0, j = 0; rch->name[i] != '\0' && rch->name[i] != ' ' && j < sizeof(keywords_escaped) - 2; i++)
+        {
+            if (rch->name[i] == '"' || rch->name[i] == '\\')
+                keywords_escaped[j++] = '\\';
+            if (rch->name[i] >= 32)
+                keywords_escaped[j++] = rch->name[i];
+        }
+        keywords_escaped[j] = '\0';
+
+        if (!first)
+            strcat(npcs_json, ",");
+        sprintf(npcs_json + strlen(npcs_json),
+                "{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d,\"hostile\":%s}",
+                IS_NPC(rch) && rch->pIndexData ? rch->pIndexData->vnum : 0,
+                temp_name,
+                keywords_escaped,
+                IS_NPC(rch) && rch->pIndexData ? rch->pIndexData->vnum : 0,
+                IS_NPC(rch) && IS_SET(rch->act, ACT_AGGRESSIVE) ? "true" : "false");
+        first = false;
+        npc_count++;
+    }
+    strcat(npcs_json, "]");
+
+    /* Build complete Room.Info JSON with items and NPCs */
     snprintf(json, sizeof(json),
-             "{\"name\":\"%s\",\"description\":\"%s\",\"exits\":%s,\"vnum\":%d}",
+             "{\"name\":\"%s\",\"description\":\"%s\",\"exits\":%s,\"vnum\":%d,\"items\":%s,\"npcs\":%s}",
              name_escaped,
              desc_escaped,
              exits_json,
-             room->vnum);
+             room->vnum,
+             items_json,
+             npcs_json);
 
-    sprintf(log_buf, "WebGate: Sending Room.Info (exits: %s)", exits_json);
+    sprintf(log_buf, "WebGate: Sending Room.Info (exits: %s, items: %d, npcs: %d)",
+            exits_json, item_count, npc_count);
     log_string(log_buf);
 
     webgate_send_gmcp(web_desc, "Room.Info", json);
+}
+
+/*
+ * Intent: Notify all web clients in a room that room contents have changed.
+ *
+ * When NPCs move in/out of a room or items are added/removed, this function
+ * sends updated Room.Info to all web clients present in the room so they
+ * can refresh their displayed contents.
+ *
+ * Inputs:
+ *   - room: The room that has changed
+ *
+ * Outputs: None (Room.Info messages sent to eligible clients)
+ *
+ * Preconditions: room must be valid
+ * Postconditions: All web clients in room receive updated Room.Info
+ *
+ * Performance: O(n) where n is number of people in room
+ */
+void webgate_notify_room_update(ROOM_INDEX_DATA *room)
+{
+    CHAR_DATA *rch;
+    WEB_DESCRIPTOR_DATA *web_desc;
+    int player_count = 0;
+    int web_desc_count = 0;
+
+    if (!room)
+        return;
+
+    sprintf(log_buf, "WebGate: webgate_notify_room_update called for room vnum %d", room->vnum);
+    log_string(log_buf);
+
+    /* Iterate through all characters in the room */
+    for (rch = room->people; rch; rch = rch->next_in_room)
+    {
+        /* Skip NPCs - they don't have web descriptors */
+        if (IS_NPC(rch))
+            continue;
+
+        player_count++;
+        sprintf(log_buf, "WebGate: Found player in room: %s", rch->name);
+        log_string(log_buf);
+
+        /* Find the web descriptor for this player */
+        for (web_desc = web_descriptor_list; web_desc; web_desc = web_desc->next)
+        {
+            web_desc_count++;
+
+            /* Check if this web descriptor matches the player character */
+            if (web_desc->mud_desc && web_desc->mud_desc->character == rch)
+            {
+                sprintf(log_buf, "WebGate: Sending room update to player %s", rch->name);
+                log_string(log_buf);
+                webgate_send_room_info(web_desc, room);
+                break;
+            }
+        }
+    }
+
+    if (player_count > 0)
+    {
+        sprintf(log_buf, "WebGate: Checked %d players, %d web descriptors in room vnum %d",
+                player_count, web_desc_count, room->vnum);
+        log_string(log_buf);
+    }
 }
 
 /*
@@ -601,6 +761,281 @@ void webgate_broadcast(const char *module, const char *json_body)
             webgate_send_gmcp(web_desc, module, json_body);
         }
     }
+}
+
+/*
+ * Intent: Send character skills/spells to web client via GMCP.
+ *
+ * Provides list of learned active skills and spells for skill bar assignment
+ * and combat opener selection. Excludes passive abilities that don't require
+ * manual activation. Includes skill proficiency, mana cost, and metadata for
+ * client-side cooldown tracking and UI display.
+ *
+ * Inputs:
+ *   - web_desc: Web client descriptor
+ *   - ch: Character whose skills to send
+ *
+ * Outputs: Char.Skills GMCP message with JSON array of learned skills
+ *
+ * Preconditions: ch must be valid player character with pcdata, web_desc must be open
+ * Postconditions: Client receives JSON array of active skills with metadata
+ *
+ * Failure Behavior: Returns silently if web_desc or ch is NULL or NPC
+ *
+ * Performance: O(MAX_SKILL) linear scan of skill table
+ *
+ * Notes:
+ *   - Only sends skills with learned > 0
+ *   - Filters out passive skills (spell_null with no combat application)
+ *   - Marks "opener" skills that can initiate combat from POS_STANDING
+ *   - Client tracks cooldowns locally using beats value
+ */
+void webgate_send_char_skills(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
+{
+    char json[MAX_STRING_LENGTH * 4];
+    char skill_entry[MAX_STRING_LENGTH];
+    char skill_name_escaped[MAX_INPUT_LENGTH];
+    const char *src;
+    char *dst;
+    int sn;
+    int count = 0;
+    bool is_opener;
+    const char *skill_type;
+
+    if (!web_desc || !ch || IS_NPC(ch) || web_desc->state != WS_STATE_OPEN)
+        return;
+
+    strcpy(json, "{\"skills\":[");
+
+    /* Iterate through all skills in skill_table */
+    for (sn = 0; sn < MAX_SKILL; sn++)
+    {
+        /* Skip if skill not learned or no skill name */
+        if (ch->pcdata->learned[sn] <= 0 || !skill_table[sn].name)
+            continue;
+
+        /* Skip passive skills (those with spell_null and TAR_IGNORE) */
+        /* Exception: combat skills like backstab, bash, kick have spell_null but are active */
+        if (skill_table[sn].spell_fun == spell_null)
+        {
+            /* Check if it's a combat skill by looking at target and position */
+            /* Combat skills typically have beats > 0 and non-TAR_IGNORE targets OR specific names */
+            if (skill_table[sn].target == TAR_IGNORE && skill_table[sn].beats == 0)
+                continue; /* This is a passive skill, skip it */
+
+            /* Additional filter: skip if it has no noun_damage and target is TAR_IGNORE */
+            if (skill_table[sn].target == TAR_IGNORE &&
+                (!skill_table[sn].noun_damage || skill_table[sn].noun_damage[0] == '\0'))
+                continue;
+        }
+
+        /* Determine if this skill can initiate combat (opener) */
+        /* Openers can be used from POS_STANDING and target enemies */
+        is_opener = (skill_table[sn].minimum_position <= POS_STANDING &&
+                     (skill_table[sn].target == TAR_CHAR_OFFENSIVE ||
+                      skill_table[sn].target == TAR_CHAR_OFFENSIVE_SINGLE));
+
+        /* Determine skill type: spell (uses mana) or skill (physical/special ability) */
+        skill_type = (skill_table[sn].min_mana > 0) ? "spell" : "skill";
+
+        /* Simple JSON escape for skill name (most skill names don't have special chars) */
+        src = skill_table[sn].name;
+        dst = skill_name_escaped;
+        while (*src && (dst - skill_name_escaped) < (MAX_INPUT_LENGTH - 2))
+        {
+            if (*src == '"' || *src == '\\')
+            {
+                *dst++ = '\\';
+            }
+            *dst++ = *src++;
+        }
+        *dst = '\0';
+
+        /* Build JSON entry for this skill */
+        sprintf(skill_entry, "%s{\"id\":%d,\"name\":\"%s\",\"learned\":%d,\"mana\":%d,\"beats\":%d,\"type\":\"%s\",\"opener\":%s}",
+                (count > 0 ? "," : ""),
+                sn,
+                skill_name_escaped,
+                ch->pcdata->learned[sn],
+                skill_table[sn].min_mana,
+                skill_table[sn].beats,
+                skill_type,
+                is_opener ? "true" : "false");
+
+        /* Check if adding this entry would overflow the buffer */
+        if (strlen(json) + strlen(skill_entry) + 10 >= sizeof(json))
+        {
+            sprintf(log_buf, "WebGate: Skill list too large for %s, truncating", ch->name);
+            log_string(log_buf);
+            break;
+        }
+
+        strcat(json, skill_entry);
+        count++;
+    }
+
+    strcat(json, "]}");
+
+    sprintf(log_buf, "WebGate: Sending %d skills to %s", count, ch->name);
+    log_string(log_buf);
+
+    webgate_send_gmcp(web_desc, "Char.Skills", json);
+}
+
+/*
+ * Intent: Send character vitals to web client via GMCP.
+ *
+ * Provides real-time updates of character health, mana, movement, experience,
+ * and level information. This enables web clients to display progress bars
+ * and numeric indicators without parsing game text output.
+ *
+ * Inputs:
+ *   - web_desc: Web client descriptor
+ *   - ch: Character whose vitals to send
+ *
+ * Outputs: Char.Vitals GMCP message sent to client
+ *
+ * Preconditions: ch must be valid player character, web_desc must be open
+ * Postconditions: Client receives JSON with current vitals
+ *
+ * Failure Behavior: Returns silently if web_desc or ch is NULL or connection not open
+ *
+ * Notes: Should be called after combat, healing, regen ticks, level gains
+ */
+void webgate_send_char_vitals(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
+{
+    char json[MAX_STRING_LENGTH];
+    int exp_tnl;
+
+    if (!web_desc || !ch || web_desc->state != WS_STATE_OPEN)
+        return;
+
+    /* Calculate experience to next level */
+    exp_tnl = 0;
+    if (ch->level < LEVEL_HERO)
+    {
+        exp_tnl = level_table[ch->level + 1].exp_level - ch->exp;
+        if (exp_tnl < 0)
+            exp_tnl = 0;
+    }
+
+    snprintf(json, sizeof(json),
+             "{\"hp\":%d,\"maxhp\":%d,\"mana\":%d,\"maxmana\":%d,"
+             "\"move\":%d,\"maxmove\":%d,\"level\":%d,\"align\":%d,"
+             "\"exp\":%d,\"tnl\":%d}",
+             ch->hit, ch->max_hit,
+             ch->mana, ch->max_mana,
+             ch->move, ch->max_move,
+             ch->level, ch->alignment,
+             ch->exp, exp_tnl);
+
+    webgate_send_gmcp(web_desc, "Char.Vitals", json);
+
+    sprintf(log_buf, "WebGate: Sent Char.Vitals (hp:%d/%d mana:%d/%d move:%d/%d)",
+            ch->hit, ch->max_hit, ch->mana, ch->max_mana, ch->move, ch->max_move);
+    log_string(log_buf);
+}
+
+/*
+ * Intent: Send character status information to web client via GMCP.
+ *
+ * Provides character metadata including name, class, race, position, and
+ * active affects. This enables web clients to display character sheets and
+ * buff/debuff indicators without parsing descriptive text.
+ *
+ * Inputs:
+ *   - web_desc: Web client descriptor
+ *   - ch: Character whose status to send
+ *
+ * Outputs: Char.Status GMCP message sent to client
+ *
+ * Preconditions: ch must be valid player character, web_desc must be open
+ * Postconditions: Client receives JSON with character status and affects
+ *
+ * Failure Behavior: Returns silently if web_desc or ch is NULL or connection not open
+ *
+ * Notes: Should be called when affects change, position changes, or on login
+ */
+void webgate_send_char_status(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
+{
+    char json[MAX_STRING_LENGTH * 2];
+    char affect_list[MAX_STRING_LENGTH];
+    AFFECT_DATA *paf;
+    bool first = true;
+    int affect_count = 0;
+    const char *pos_name;
+
+    if (!web_desc || !ch || web_desc->state != WS_STATE_OPEN)
+        return;
+
+    /* Build affects array */
+    sprintf(affect_list, "[");
+    for (paf = ch->affected; paf; paf = paf->next)
+    {
+        if (paf->type < 0 || paf->type >= MAX_SKILL)
+            continue;
+
+        if (!skill_table[paf->type].name || !skill_table[paf->type].name[0])
+            continue;
+
+        if (!first)
+            strcat(affect_list, ",");
+
+        sprintf(affect_list + strlen(affect_list),
+                "{\"name\":\"%s\",\"duration\":%d}",
+                skill_table[paf->type].name,
+                paf->duration);
+        first = false;
+        affect_count++;
+    }
+    strcat(affect_list, "]");
+
+    /* Get position name */
+    switch (ch->position)
+    {
+    case POS_DEAD:
+        pos_name = "dead";
+        break;
+    case POS_MORTAL:
+        pos_name = "mortally wounded";
+        break;
+    case POS_INCAP:
+        pos_name = "incapacitated";
+        break;
+    case POS_STUNNED:
+        pos_name = "stunned";
+        break;
+    case POS_SLEEPING:
+        pos_name = "sleeping";
+        break;
+    case POS_RESTING:
+        pos_name = "resting";
+        break;
+    case POS_FIGHTING:
+        pos_name = "fighting";
+        break;
+    case POS_STANDING:
+        pos_name = "standing";
+        break;
+    default:
+        pos_name = "unknown";
+        break;
+    }
+
+    snprintf(json, sizeof(json),
+             "{\"name\":\"%s\",\"class\":\"%s\",\"race\":\"%s\","
+             "\"position\":\"%s\",\"affects\":%s}",
+             ch->name,
+             class_table[ch->class].show_name,
+             race_table[ch->race].race_name,
+             pos_name,
+             affect_list);
+
+    webgate_send_gmcp(web_desc, "Char.Status", json);
+
+    sprintf(log_buf, "WebGate: Sent Char.Status (%s - %d affects)",
+            ch->name, affect_count);
+    log_string(log_buf);
 }
 
 /*
@@ -681,6 +1116,47 @@ void webgate_pulse(void)
             sprintf(log_buf, "WebGate: Connection timeout (no pong) for fd %d", web_desc->fd);
             log_string(log_buf);
             webgate_close(web_desc);
+        }
+    }
+}
+
+/*
+ * Intent: Notify all web clients for a character of GMCP updates.
+ *
+ * Called from protocol.c when GMCP packages are updated. Finds all web
+ * descriptors for the given MUD descriptor and triggers vitals/status sends.
+ * This bridges the GMCP protocol (telnet-based) to WebSocket clients.
+ *
+ * Inputs: mud_desc - MUD descriptor that has GMCP updates
+ * Outputs: None (updates sent to all associated web clients)
+ *
+ * Preconditions: mud_desc has character attached
+ * Postconditions: Web clients receive Char.Vitals and/or Char.Status
+ *
+ * Failure Behavior: Silently returns if no character or no web clients
+ *
+ * Notes: Called from SendUpdatedGMCP() in protocol.c
+ */
+void webgate_notify_gmcp_update(DESCRIPTOR_DATA *mud_desc)
+{
+    WEB_DESCRIPTOR_DATA *web_desc;
+    CHAR_DATA *ch;
+
+    if (!mud_desc || !mud_desc->character)
+        return;
+
+    ch = mud_desc->character;
+
+    /* Find all web descriptors for this character and update them */
+    for (web_desc = web_descriptor_list; web_desc; web_desc = web_desc->next)
+    {
+        if (web_desc->mud_desc == mud_desc && web_desc->state == WS_STATE_OPEN)
+        {
+            /* Send updated vitals - these change frequently */
+            webgate_send_char_vitals(web_desc, ch);
+
+            /* Send updated status - these change less frequently */
+            webgate_send_char_status(web_desc, ch);
         }
     }
 }
@@ -1259,6 +1735,9 @@ static bool webgate_parse_json_message(WEB_DESCRIPTOR_DATA *web_desc, const char
                 if (web_desc->mud_desc->character && web_desc->mud_desc->character->in_room)
                 {
                     webgate_send_room_info(web_desc, web_desc->mud_desc->character->in_room);
+                    webgate_send_char_vitals(web_desc, web_desc->mud_desc->character);
+                    webgate_send_char_status(web_desc, web_desc->mud_desc->character);
+                    webgate_send_char_skills(web_desc, web_desc->mud_desc->character);
                 }
             }
         }
@@ -1520,60 +1999,84 @@ static void webgate_send_prompt(WEB_DESCRIPTOR_DATA *web_desc, const char *promp
 }
 
 /*
- * Intent: Transfer MUD descriptor output to WebSocket as GMCP messages.
+ * Intent: Parse GMCP message from telnet format and send to web client.
  *
- * Checks if the associated MUD descriptor has output pending in its buffer,
- * formats it as GMCP Comm.Channel messages, and sends via WebSocket frames.
- * This intercepts the normal telnet output path and routes it to web clients.
+ * Extracts the module name (e.g., "Char.Vitals") and JSON data from a
+ * telnet GMCP message, then forwards it to the web client in WebSocket format.
  *
- * Inputs: web_desc with linked mud_desc
- * Outputs: Transfers text from mud_desc->outbuf to WebSocket frames; clears buffer
- * Preconditions: mud_desc exists and has output in outbuf
- * Postconditions: Output delivered to web client; mud_desc->outbuf cleared
- * Failure Behavior: Logs errors; does not block or crash
+ * Inputs: web_desc, gmcp_msg in format "Module.Message { json }"
+ * Outputs: Sends GMCP message to web client
+ * Preconditions: gmcp_msg is null-terminated GMCP message content
+ * Postconditions: Web client receives {"type":"gmcp","module":"...","data":{...}}
+ *
+ * Example Input: "Char.Vitals { "hp": 100, "maxhp": 150 }"
+ * Example Output: {"type":"gmcp","module":"Char.Vitals","data":{"hp":100,"maxhp":150}}
  */
-static void webgate_transfer_mud_output(WEB_DESCRIPTOR_DATA *web_desc)
+static void webgate_parse_and_send_gmcp(WEB_DESCRIPTOR_DATA *web_desc, const char *gmcp_msg)
 {
-    DESCRIPTOR_DATA *mud_desc;
-    char json[MAX_STRING_LENGTH * 2];
-    char *msg_start;
-    char message_buf[MAX_STRING_LENGTH];
-    int msg_len;
+    char module[256];
+    char *json_start;
+    char *space_pos;
+    int module_len;
 
-    if (!web_desc || !web_desc->mud_desc)
+    if (!web_desc || !gmcp_msg)
         return;
 
-    mud_desc = web_desc->mud_desc;
-
-    /* Check if there's output to transfer */
-    if (mud_desc->outtop <= 0)
-        return;
-
-    sprintf(log_buf, "WebGate: Transferring %d bytes of output", mud_desc->outtop);
-    log_string(log_buf);
-
-    /* Ensure null termination */
-    mud_desc->outbuf[mud_desc->outtop] = '\0';
-
-    /* Debug: Log first 100 chars of raw output */
+    /* Find the space between "Module.Message" and "{ json }" */
+    space_pos = strchr(gmcp_msg, ' ');
+    if (!space_pos)
     {
-        char debug_buf[128];
-        int debug_len = mud_desc->outtop < 100 ? mud_desc->outtop : 100;
-        memcpy(debug_buf, mud_desc->outbuf, debug_len);
-        debug_buf[debug_len] = '\0';
-        sprintf(log_buf, "WebGate: Raw output: %s", debug_buf);
+        sprintf(log_buf, "WebGate: Malformed GMCP message (no space): %s", gmcp_msg);
         log_string(log_buf);
+        return;
     }
 
-    /* Send as GMCP message */
-    /* We need to escape quotes and newlines for JSON */
-    /* ANSI codes (ESC sequences) are passed through for client-side rendering */
-    msg_start = mud_desc->outbuf;
-    msg_len = 0;
+    /* Extract module name */
+    module_len = space_pos - gmcp_msg;
+    if (module_len >= sizeof(module))
+        module_len = sizeof(module) - 1;
 
-    for (int i = 0; i < mud_desc->outtop && msg_len < MAX_STRING_LENGTH - 10; i++)
+    memcpy(module, gmcp_msg, module_len);
+    module[module_len] = '\0';
+
+    /* Find JSON start (skip spaces, find '{' or '[') */
+    json_start = space_pos + 1;
+    while (*json_start == ' ')
+        json_start++;
+
+    sprintf(log_buf, "WebGate: Parsed GMCP - Module: %s, JSON: %.100s", module, json_start);
+    log_string(log_buf);
+
+    /* Send to web client */
+    webgate_send_gmcp(web_desc, module, json_start);
+}
+
+/*
+ * Intent: Send regular text as Comm.Channel GMCP message.
+ *
+ * Escapes special JSON characters in text output and sends it as a
+ * Comm.Channel message. Handles ANSI color codes by converting them
+ * to JSON-safe Unicode escapes.
+ *
+ * Inputs: web_desc, text buffer, length
+ * Outputs: Sends Comm.Channel GMCP message
+ * Preconditions: text is valid buffer of specified length
+ * Postconditions: Text delivered to web client as game output
+ */
+static void webgate_send_text_as_gmcp(WEB_DESCRIPTOR_DATA *web_desc, const char *text, int len)
+{
+    char json[MAX_STRING_LENGTH * 2];
+    char message_buf[MAX_STRING_LENGTH];
+    int msg_len = 0;
+    int i;
+
+    if (!web_desc || !text || len <= 0)
+        return;
+
+    /* Escape special JSON characters */
+    for (i = 0; i < len && msg_len < MAX_STRING_LENGTH - 10; i++)
     {
-        char c = msg_start[i];
+        unsigned char c = (unsigned char)text[i];
 
         /* Escape special JSON characters */
         if (c == '"')
@@ -1612,30 +2115,134 @@ static void webgate_transfer_mud_output(WEB_DESCRIPTOR_DATA *web_desc)
             message_buf[msg_len++] = '1';
             message_buf[msg_len++] = 'B';
         }
-        else if (c >= 32 || c == '\0')
+        else if (c >= 32 && c < 127)
         {
-            /* Regular printable character */
+            /* Regular printable ASCII character */
             message_buf[msg_len++] = c;
         }
-        /* Skip other control characters (but not ESC for ANSI) */
+        else if (c == 255)
+        {
+            /* IAC character that wasn't part of GMCP - skip it */
+            sprintf(log_buf, "WebGate: Stray IAC (255) at position %d", i);
+            log_string(log_buf);
+            continue;
+        }
+        /* Skip other control characters */
     }
     message_buf[msg_len] = '\0';
 
     /* Send as GMCP Comm.Channel message */
     snprintf(json, sizeof(json), "{\"channel\":\"game\",\"message\":\"%s\"}", message_buf);
+    webgate_send_gmcp(web_desc, "Comm.Channel", json);
+}
 
-    /* Debug: Log the JSON being sent */
+/*
+ * Intent: Transfer MUD descriptor output to WebSocket as GMCP messages.
+ *
+ * Parses the MUD descriptor output buffer for telnet IAC GMCP sequences and
+ * regular text. GMCP messages are extracted and sent as proper JSON GMCP,
+ * while regular text is sent as Comm.Channel messages. This bridges the
+ * telnet-based GMCP protocol to WebSocket clients.
+ *
+ * Inputs: web_desc with linked mud_desc
+ * Outputs: Transfers GMCP and text from mud_desc->outbuf to WebSocket; clears buffer
+ * Preconditions: mud_desc exists and has output in outbuf
+ * Postconditions: Output delivered to web client; mud_desc->outbuf cleared
+ * Failure Behavior: Logs errors; does not block or crash
+ *
+ * GMCP Format: IAC SB TELOPT_GMCP Module.Message { json } IAC SE
+ * Example: \xFF\xFA\xC9Char.Vitals { "hp": 100, "maxhp": 150 }\xFF\xF0
+ */
+static void webgate_transfer_mud_output(WEB_DESCRIPTOR_DATA *web_desc)
+{
+    DESCRIPTOR_DATA *mud_desc;
+    unsigned char *buf;
+    int buf_len;
+    int i;
+    char text_buf[MAX_STRING_LENGTH];
+    int text_len;
+
+    if (!web_desc || !web_desc->mud_desc)
+        return;
+
+    mud_desc = web_desc->mud_desc;
+
+    /* Check if there's output to transfer */
+    if (mud_desc->outtop <= 0)
+        return;
+
+    buf = (unsigned char *)mud_desc->outbuf;
+    buf_len = mud_desc->outtop;
+    text_len = 0;
+
+    sprintf(log_buf, "WebGate: Transferring %d bytes of output", buf_len);
+    log_string(log_buf);
+
+    /* Parse buffer for IAC GMCP sequences and regular text */
+    for (i = 0; i < buf_len; i++)
     {
-        char debug_json[256];
-        int json_len = strlen(json);
-        int copy_len = json_len < 200 ? json_len : 200;
-        memcpy(debug_json, json, copy_len);
-        debug_json[copy_len] = '\0';
-        sprintf(log_buf, "WebGate: Sending JSON: %s", debug_json);
-        log_string(log_buf);
+        /* Check for IAC SB TELOPT_GMCP (255 250 201) */
+        if (i + 2 < buf_len && buf[i] == 255 && buf[i + 1] == 250 && buf[i + 2] == 201)
+        {
+            /* Flush any pending text before processing GMCP */
+            if (text_len > 0)
+            {
+                text_buf[text_len] = '\0';
+                webgate_send_text_as_gmcp(web_desc, text_buf, text_len);
+                text_len = 0;
+            }
+
+            /* Found GMCP sequence, extract it */
+            int gmcp_start = i + 3; /* Skip IAC SB TELOPT_GMCP */
+            int gmcp_end = gmcp_start;
+
+            /* Find IAC SE (255 240) */
+            while (gmcp_end + 1 < buf_len)
+            {
+                if (buf[gmcp_end] == 255 && buf[gmcp_end + 1] == 240)
+                    break;
+                gmcp_end++;
+            }
+
+            if (gmcp_end + 1 < buf_len && buf[gmcp_end] == 255 && buf[gmcp_end + 1] == 240)
+            {
+                /* Extract GMCP message */
+                int gmcp_len = gmcp_end - gmcp_start;
+                char gmcp_msg[MAX_STRING_LENGTH];
+
+                if (gmcp_len < MAX_STRING_LENGTH)
+                {
+                    memcpy(gmcp_msg, buf + gmcp_start, gmcp_len);
+                    gmcp_msg[gmcp_len] = '\0';
+
+                    /* Parse and send GMCP message */
+                    webgate_parse_and_send_gmcp(web_desc, gmcp_msg);
+                }
+
+                /* Skip past IAC SE */
+                i = gmcp_end + 1;
+            }
+            else
+            {
+                /* Malformed GMCP, treat as regular text */
+                if (text_len < MAX_STRING_LENGTH - 1)
+                    text_buf[text_len++] = buf[i];
+            }
+        }
+        else
+        {
+            /* Regular character, add to text buffer */
+            if (text_len < MAX_STRING_LENGTH - 1)
+                text_buf[text_len++] = buf[i];
+        }
     }
 
-    webgate_send_gmcp(web_desc, "Comm.Channel", json);
+    /* Send any remaining text */
+    if (text_len > 0)
+    {
+        text_buf[text_len] = '\0';
+        webgate_send_text_as_gmcp(web_desc, text_buf, text_len);
+    }
 
     /* Clear the MUD output buffer */
     mud_desc->outtop = 0;

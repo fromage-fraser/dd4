@@ -18,7 +18,7 @@
  *  around, comes around.                                                  *
  ***************************************************************************/
 
-#if defined( macintosh )
+#if defined(macintosh)
 #include <types.h>
 #else
 #include <sys/types.h>
@@ -31,38 +31,36 @@
 #include <math.h>
 #include "merc.h"
 #include "protocol.h"
-
+#include "webgate.h"
 
 AFFECT_DATA *affect_free;
-void affect_modify (CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon);
+void affect_modify(CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon);
 
 /*
  * Retrieve a character's trusted level for permission checking.
  */
-int get_trust( CHAR_DATA *ch )
+int get_trust(CHAR_DATA *ch)
 {
-        if ( ch->desc && ch->desc->original )
+        if (ch->desc && ch->desc->original)
                 ch = ch->desc->original;
 
-        if ( ch->trust != 0 )
+        if (ch->trust != 0)
                 return ch->trust;
 
-        if ( IS_NPC( ch ) && ch->level >= LEVEL_HERO )
+        if (IS_NPC(ch) && ch->level >= LEVEL_HERO)
                 return LEVEL_HERO - 1;
         else
                 return ch->level;
 }
 
-
 /*
  * Retrieve a character's age.
  */
-int get_age( CHAR_DATA *ch )
+int get_age(CHAR_DATA *ch)
 {
-        return 17 + ( ch->played + (int) ( current_time - ch->logon ) ) / 14400;
+        return 17 + (ch->played + (int)(current_time - ch->logon)) / 14400;
         /* 14400 assumes 30 second hours, 24 hours a day, 20 day - Kahn */
 }
-
 
 /*
  * Retrieve character's current stats........ - geoff.
@@ -75,10 +73,9 @@ int get_curr_str(CHAR_DATA *ch)
         if (IS_NPC(ch))
                 return 13;
 
-        max = 25 + race_table[ch->race].str_bonus +  class_table[ch->class].class_stats[0];
+        max = 25 + race_table[ch->race].str_bonus + class_table[ch->class].class_stats[0];
         return URANGE(3, ch->pcdata->perm_str + ch->pcdata->mod_str, max);
 }
-
 
 int get_curr_int(CHAR_DATA *ch)
 {
@@ -87,10 +84,9 @@ int get_curr_int(CHAR_DATA *ch)
         if (IS_NPC(ch))
                 return 13;
 
-        max = 25 + race_table[ch->race].int_bonus +  class_table[ch->class].class_stats[1];
+        max = 25 + race_table[ch->race].int_bonus + class_table[ch->class].class_stats[1];
         return URANGE(3, ch->pcdata->perm_int + ch->pcdata->mod_int, max);
 }
-
 
 int get_curr_wis(CHAR_DATA *ch)
 {
@@ -99,10 +95,9 @@ int get_curr_wis(CHAR_DATA *ch)
         if (IS_NPC(ch))
                 return 13;
 
-        max = 25 + race_table[ch->race].wis_bonus +  class_table[ch->class].class_stats[2];
+        max = 25 + race_table[ch->race].wis_bonus + class_table[ch->class].class_stats[2];
         return URANGE(3, ch->pcdata->perm_wis + ch->pcdata->mod_wis, max);
 }
-
 
 int get_curr_dex(CHAR_DATA *ch)
 {
@@ -115,7 +110,6 @@ int get_curr_dex(CHAR_DATA *ch)
         return URANGE(3, ch->pcdata->perm_dex + ch->pcdata->mod_dex, max);
 }
 
-
 int get_curr_con(CHAR_DATA *ch)
 {
         int max;
@@ -127,27 +121,26 @@ int get_curr_con(CHAR_DATA *ch)
         return URANGE(3, ch->pcdata->perm_con + ch->pcdata->mod_con, max);
 }
 
-
 /*
  * Retrieve a character's carry capacity.
  */
-int can_carry_n( CHAR_DATA *ch )
+int can_carry_n(CHAR_DATA *ch)
 {
-        if ( !IS_NPC( ch ) && ch->level >= LEVEL_IMMORTAL )
+        if (!IS_NPC(ch) && ch->level >= LEVEL_IMMORTAL)
                 return 1000;
 
         /*if ( IS_NPC( ch ) && IS_SET( ch->act, ACT_PET ) )
                 return 0;*/
 
-        return MAX_WEAR + 2 * get_curr_dex( ch ) / 2;
+        return MAX_WEAR + 2 * get_curr_dex(ch) / 2;
 }
 
 /*
  * Retrieve a character's vault item-number capacity.
  */
-int can_vault_n( CHAR_DATA *ch )
+int can_vault_n(CHAR_DATA *ch)
 {
-        if ( !IS_NPC( ch ) && ch->level >= LEVEL_IMMORTAL )
+        if (!IS_NPC(ch) && ch->level >= LEVEL_IMMORTAL)
                 return 1000;
 
         /*if ( IS_NPC( ch ) && IS_SET( ch->act, ACT_PET ) )
@@ -156,27 +149,26 @@ int can_vault_n( CHAR_DATA *ch )
         return (UMAX(20, (ch->level * 2)));
 }
 
-
 /*
  * Retrieve a character's carry capacity.
  */
-int can_carry_w( CHAR_DATA *ch )
+int can_carry_w(CHAR_DATA *ch)
 {
-        if ( !IS_NPC( ch ) && ch->level >= LEVEL_IMMORTAL )
+        if (!IS_NPC(ch) && ch->level >= LEVEL_IMMORTAL)
                 return 1000000;
 
         /*if ( IS_NPC( ch ) && IS_SET( ch->act, ACT_PET ) )
                 return 0;*/
 
-        return str_app[get_curr_str( ch )].carry;
+        return str_app[get_curr_str(ch)].carry;
 }
 
 /*
  * Retrieve a character's vault weight capacity.
  */
-int can_vault_w( CHAR_DATA *ch )
+int can_vault_w(CHAR_DATA *ch)
 {
-        if ( !IS_NPC( ch ) && ch->level >= LEVEL_IMMORTAL )
+        if (!IS_NPC(ch) && ch->level >= LEVEL_IMMORTAL)
                 return 1000000;
 
         /*if ( IS_NPC( ch ) && IS_SET( ch->act, ACT_PET ) )
@@ -190,83 +182,63 @@ int can_vault_w( CHAR_DATA *ch )
  * that fit into either of those categories. --Owl 4/5/22
  */
 
-bool can_craft( CHAR_DATA *ch )
+bool can_craft(CHAR_DATA *ch)
 {
-        if ( ( ch->pcdata->learned[gsn_forge]
-        ||     ch->pcdata->learned[gsn_poison_weapon]
-        ||     ch->pcdata->learned[gsn_sharpen]
-        ||     ch->class == CLASS_SMITHY )
-        && ( !IS_NPC( ch ) ) )
+        if ((ch->pcdata->learned[gsn_forge] || ch->pcdata->learned[gsn_poison_weapon] || ch->pcdata->learned[gsn_sharpen] || ch->class == CLASS_SMITHY) && (!IS_NPC(ch)))
         {
                 return TRUE;
         }
-        else {
+        else
+        {
                 return FALSE;
         }
 }
 
-bool can_spellcraft( CHAR_DATA *ch )
+bool can_spellcraft(CHAR_DATA *ch)
 {
-        if ( ( ch->pcdata->learned[gsn_bark_skin]
-        ||     ch->pcdata->learned[gsn_bladethirst]
-        ||     ch->pcdata->learned[gsn_bless_weapon]
-        ||     ch->pcdata->learned[gsn_brew]
-        ||     ch->pcdata->learned[gsn_continual_light]
-        ||     ch->pcdata->learned[gsn_create_food]
-        ||     ch->pcdata->learned[gsn_create_spring]
-        ||     ch->pcdata->learned[gsn_create_water]
-        ||     ch->pcdata->learned[gsn_enchant_weapon]
-        ||     ch->pcdata->learned[gsn_enhance_armor]
-        ||     ch->pcdata->learned[gsn_flesh_armor]
-        ||     ch->pcdata->learned[gsn_scribe]
-        ||     ch->pcdata->learned[gsn_summon_demon]
-        ||     ch->pcdata->learned[gsn_summon_familiar]
-        ||     ch->pcdata->learned[gsn_recharge_item]
-        ||     ch->pcdata->learned[gsn_stone_skin] )
-        && ( !IS_NPC( ch ) ) )
+        if ((ch->pcdata->learned[gsn_bark_skin] || ch->pcdata->learned[gsn_bladethirst] || ch->pcdata->learned[gsn_bless_weapon] || ch->pcdata->learned[gsn_brew] || ch->pcdata->learned[gsn_continual_light] || ch->pcdata->learned[gsn_create_food] || ch->pcdata->learned[gsn_create_spring] || ch->pcdata->learned[gsn_create_water] || ch->pcdata->learned[gsn_enchant_weapon] || ch->pcdata->learned[gsn_enhance_armor] || ch->pcdata->learned[gsn_flesh_armor] || ch->pcdata->learned[gsn_scribe] || ch->pcdata->learned[gsn_summon_demon] || ch->pcdata->learned[gsn_summon_familiar] || ch->pcdata->learned[gsn_recharge_item] || ch->pcdata->learned[gsn_stone_skin]) && (!IS_NPC(ch)))
         {
                 return TRUE;
         }
-        else {
+        else
+        {
                 return FALSE;
         }
 }
-
 
 /*
  * See if a string is one of the names of an object.
  * New is_name sent in by Alander.
  */
-bool is_name( const char *str, char *namelist )
+bool is_name(const char *str, char *namelist)
 {
-        char name [ MAX_INPUT_LENGTH ];
+        char name[MAX_INPUT_LENGTH];
 
-        for ( ; ; )
+        for (;;)
         {
-                namelist = one_argument( namelist, name );
-                if ( name[0] == '\0' )
+                namelist = one_argument(namelist, name);
+                if (name[0] == '\0')
                         return FALSE;
-                if ( !str_prefix( str, name ) )
+                if (!str_prefix(str, name))
                         return TRUE;
         }
 }
-
 
 /*
  * Match multiple keywords against a name list
  * Gezhp 2000
  */
-bool multi_keyword_match (char *keys, char *namelist)
+bool multi_keyword_match(char *keys, char *namelist)
 {
-        char buf [MAX_INPUT_LENGTH];
+        char buf[MAX_INPUT_LENGTH];
         bool match = FALSE;
 
         for (;;)
         {
-                keys = one_argument (keys, buf);
+                keys = one_argument(keys, buf);
                 if (buf[0] == '\0')
                         break;
-                if (!is_name (buf, namelist))
+                if (!is_name(buf, namelist))
                         return FALSE;
                 match = TRUE;
         }
@@ -274,166 +246,164 @@ bool multi_keyword_match (char *keys, char *namelist)
         return match;
 }
 
-
-bool is_full_name( const char *str, char *namelist )
+bool is_full_name(const char *str, char *namelist)
 {
-        char name [ MAX_INPUT_LENGTH ];
+        char name[MAX_INPUT_LENGTH];
 
-        for ( ; ; )
+        for (;;)
         {
-                namelist = one_argument( namelist, name );
-                if ( name[0] == '\0' )
+                namelist = one_argument(namelist, name);
+                if (name[0] == '\0')
                         return FALSE;
-                if ( !str_cmp( str, name ) )
+                if (!str_cmp(str, name))
                         return TRUE;
         }
 }
 
-
 /*
  * Apply or remove an affect to a character.
  */
-void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon )
+void affect_modify(CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon)
 {
         OBJ_DATA *wield;
-        char buf [MAX_STRING_LENGTH];
+        char buf[MAX_STRING_LENGTH];
         int mod;
         AFFECT_DATA af;
 
         mod = paf->modifier;
 
-        if ( fAdd )
+        if (fAdd)
         {
-                SET_BIT   ( ch->affected_by, paf->bitvector );
+                SET_BIT(ch->affected_by, paf->bitvector);
         }
         else
         {
-                REMOVE_BIT( ch->affected_by, paf->bitvector );
+                REMOVE_BIT(ch->affected_by, paf->bitvector);
                 mod = 0 - mod;
         }
 
-        switch ( paf->location )
+        switch (paf->location)
         {
-            default:
-                sprintf( buf, "Affect_modify: unknown location %d on %s.",
-                        paf->location, ch->name );
-                bug ( buf, 0 );
+        default:
+                sprintf(buf, "Affect_modify: unknown location %d on %s.",
+                        paf->location, ch->name);
+                bug(buf, 0);
                 return;
 
-            case APPLY_NONE:
+        case APPLY_NONE:
                 break;
 
-            case APPLY_STR:
-                    if ( !IS_NPC( ch ) )
-                            ch->pcdata->mod_str += mod;
-                    break;
+        case APPLY_STR:
+                if (!IS_NPC(ch))
+                        ch->pcdata->mod_str += mod;
+                break;
 
-            case APPLY_DEX:
-                if ( !IS_NPC( ch ) )
+        case APPLY_DEX:
+                if (!IS_NPC(ch))
                         ch->pcdata->mod_dex += mod;
                 break;
 
-            case APPLY_INT:
-                if ( !IS_NPC( ch ) )
+        case APPLY_INT:
+                if (!IS_NPC(ch))
                         ch->pcdata->mod_int += mod;
                 break;
 
-            case APPLY_WIS:
-                if ( !IS_NPC( ch ) )
+        case APPLY_WIS:
+                if (!IS_NPC(ch))
                         ch->pcdata->mod_wis += mod;
                 break;
 
-            case APPLY_CON:
-                if ( !IS_NPC( ch ) )
+        case APPLY_CON:
+                if (!IS_NPC(ch))
                         ch->pcdata->mod_con += mod;
                 break;
 
-            case APPLY_SEX:
+        case APPLY_SEX:
                 ch->sex += mod;
                 break;
 
-            case APPLY_CLASS:
-            case APPLY_LEVEL:
-            case APPLY_AGE:
-            case APPLY_HEIGHT:
-            case APPLY_WEIGHT:
-            case APPLY_GOLD:
-            case APPLY_EXP:
-            case APPLY_DRAGON_AURA:
+        case APPLY_CLASS:
+        case APPLY_LEVEL:
+        case APPLY_AGE:
+        case APPLY_HEIGHT:
+        case APPLY_WEIGHT:
+        case APPLY_GOLD:
+        case APPLY_EXP:
+        case APPLY_DRAGON_AURA:
                 break;
 
-            case APPLY_SWIFTNESS:
-                ch->swiftness +=mod;
+        case APPLY_SWIFTNESS:
+                ch->swiftness += mod;
                 break;
 
-            case APPLY_CRIT:
-                ch->crit +=mod;
+        case APPLY_CRIT:
+                ch->crit += mod;
                 break;
 
-            case APPLY_MANA:
+        case APPLY_MANA:
                 ch->max_mana += mod;
                 break;
 
-            case APPLY_HIT:
+        case APPLY_HIT:
                 ch->max_hit += mod;
                 break;
 
-            case APPLY_MOVE:
+        case APPLY_MOVE:
                 ch->max_move += mod;
                 break;
 
-            case APPLY_AC:
+        case APPLY_AC:
                 ch->armor += mod;
                 break;
 
-            case APPLY_HITROLL:
+        case APPLY_HITROLL:
                 ch->hitroll += mod;
                 break;
 
-            case APPLY_DAMROLL:
+        case APPLY_DAMROLL:
                 ch->damroll += mod;
                 break;
 
-            case APPLY_SAVING_PARA:
-            case APPLY_SAVING_ROD:
-            case APPLY_SAVING_PETRI:
-            case APPLY_SAVING_BREATH:
-            case APPLY_SAVING_SPELL:
+        case APPLY_SAVING_PARA:
+        case APPLY_SAVING_ROD:
+        case APPLY_SAVING_PETRI:
+        case APPLY_SAVING_BREATH:
+        case APPLY_SAVING_SPELL:
                 ch->saving_throw += mod;
                 break;
 
-            case APPLY_INSCRIBED:
-                af.type = skill_lookup( "inscribe");
+        case APPLY_INSCRIBED:
+                af.type = skill_lookup("inscribe");
                 ch->inscription_total += mod;
                 break;
 
-            case APPLY_STRENGTHEN:
-                af.type = skill_lookup( "strengthen");
-                if ( fAdd )
+        case APPLY_STRENGTHEN:
+                af.type = skill_lookup("strengthen");
+                if (fAdd)
                 {
                         ch->damage_mitigation += mod;
-                        send_to_char( "Your armour provides additional damage mitigation.\n\r", ch );
+                        send_to_char("Your armour provides additional damage mitigation.\n\r", ch);
                         break;
                 }
                 else
                 {
                         ch->damage_mitigation += mod;
 
-                        if (ch->pcdata->has_quit) break;
+                        if (ch->pcdata->has_quit)
+                                break;
 
-                        send_to_char( "Your damage mitigation reduces somewhat.\n\r", ch );
+                        send_to_char("Your damage mitigation reduces somewhat.\n\r", ch);
                         break;
                 }
 
-            case APPLY_ENGRAVED:
-                af.type = skill_lookup( "engrave");
-                if ( fAdd )
+        case APPLY_ENGRAVED:
+                af.type = skill_lookup("engrave");
+                if (fAdd)
                 {
                         ch->damage_enhancement += mod;
-                        if ( ( (wield = get_eq_char(ch, WEAR_WIELD)) && !IS_SET(wield->ego_flags, EGO_ITEM_ENGRAVED))
-                                || !(wield = get_eq_char(ch, WEAR_WIELD)) )
+                        if (((wield = get_eq_char(ch, WEAR_WIELD)) && !IS_SET(wield->ego_flags, EGO_ITEM_ENGRAVED)) || !(wield = get_eq_char(ch, WEAR_WIELD)))
                         {
-                              send_to_char( "You will need to wield an engraved weapon to benefit from this engraving.\n\r", ch );
+                                send_to_char("You will need to wield an engraved weapon to benefit from this engraving.\n\r", ch);
                         }
                         break;
                 }
@@ -443,211 +413,219 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         break;
                 }
 
-            case APPLY_SANCTUARY:
-                af.type = skill_lookup( "sanctuary" );
-                if( fAdd )
+        case APPLY_SANCTUARY:
+                af.type = skill_lookup("sanctuary");
+                if (fAdd)
                 {
-                        if( is_affected( ch, af.type ) )
+                        if (is_affected(ch, af.type))
                         {
-                                send_to_char( "You are already sanctified.\n\r", ch );
+                                send_to_char("You are already sanctified.\n\r", ch);
                                 break;
                         }
                         af.duration = -1;
                         af.location = APPLY_NONE;
                         af.modifier = 0;
                         af.bitvector = AFF_SANCTUARY;
-                        affect_to_char( ch, &af );
-                        send_to_char( "<15>You are surrounded by a white aura.<0>\n\r", ch );
-                        act( "<15>$c is surrounded by a white aura.<0>", ch, NULL, NULL, TO_ROOM );
+                        affect_to_char(ch, &af);
+                        send_to_char("<15>You are surrounded by a white aura.<0>\n\r", ch);
+                        act("<15>$c is surrounded by a white aura.<0>", ch, NULL, NULL, TO_ROOM);
                         break;
                 }
                 else
                 {
-                        affect_strip( ch, af.type );
-                        if (ch->pcdata->has_quit) break;
-                        send_to_char( "<250>The white aura around your body vanishes.<0>\n\r", ch );
-                        act( "<250>The white aura around $n's body vanishes.<0>", ch,
+                        affect_strip(ch, af.type);
+                        if (ch->pcdata->has_quit)
+                                break;
+                        send_to_char("<250>The white aura around your body vanishes.<0>\n\r", ch);
+                        act("<250>The white aura around $n's body vanishes.<0>", ch,
                             NULL, NULL, TO_ROOM);
                         break;
                 }
 
-            case APPLY_SNEAK:
-                af.type = skill_lookup( "sneak" );
-                if( fAdd )
+        case APPLY_SNEAK:
+                af.type = skill_lookup("sneak");
+                if (fAdd)
                 {
-                        if( is_affected( ch, af.type ) )
+                        if (is_affected(ch, af.type))
                         {
-                                send_to_char( "You are already sneaking.\n\r", ch );
+                                send_to_char("You are already sneaking.\n\r", ch);
                                 break;
                         }
                         af.duration = -1;
                         af.location = APPLY_NONE;
                         af.modifier = 0;
                         af.bitvector = AFF_SNEAK;
-                        affect_to_char( ch, &af );
-                        send_to_char( "You can now move amongst the shadows.\n\r", ch );
-                        act( "$n can now move amongst the shadows.", ch, NULL, NULL, TO_ROOM );
+                        affect_to_char(ch, &af);
+                        send_to_char("You can now move amongst the shadows.\n\r", ch);
+                        act("$n can now move amongst the shadows.", ch, NULL, NULL, TO_ROOM);
                         break;
                 }
                 else
                 {
-                        affect_strip( ch, af.type );
-                        if (ch->pcdata->has_quit) break;
-                        send_to_char( "You emerge from the shadows.\n\r", ch );
-                        act( "$n emerges from the shadows.", ch, NULL, NULL, TO_ROOM);
+                        affect_strip(ch, af.type);
+                        if (ch->pcdata->has_quit)
+                                break;
+                        send_to_char("You emerge from the shadows.\n\r", ch);
+                        act("$n emerges from the shadows.", ch, NULL, NULL, TO_ROOM);
                         break;
                 }
 
-            case APPLY_INVIS:
-                af.type = skill_lookup( "invis" );
-                if( fAdd )
+        case APPLY_INVIS:
+                af.type = skill_lookup("invis");
+                if (fAdd)
                 {
-                        if( is_affected( ch, af.type ) )
+                        if (is_affected(ch, af.type))
                         {
-                                send_to_char( "You are already invisible.\n\r", ch );
+                                send_to_char("You are already invisible.\n\r", ch);
                                 break;
                         }
                         af.duration = -1;
                         af.location = APPLY_NONE;
                         af.modifier = 0;
                         af.bitvector = AFF_INVISIBLE;
-                        affect_to_char( ch, &af );
-                        send_to_char( "<39>You fade out of existence.<0>\n\r", ch );
-                        act( "$n fades out of existence.", ch, NULL, NULL, TO_ROOM );
+                        affect_to_char(ch, &af);
+                        send_to_char("<39>You fade out of existence.<0>\n\r", ch);
+                        act("$n fades out of existence.", ch, NULL, NULL, TO_ROOM);
                         break;
                 }
                 else
                 {
-                        affect_strip( ch, af.type );
-                        if (ch->pcdata->has_quit) break;
-                        send_to_char( "You fade back into existence.\n\r", ch );
-                        act( "$n fades back into existence.", ch,
+                        affect_strip(ch, af.type);
+                        if (ch->pcdata->has_quit)
+                                break;
+                        send_to_char("You fade back into existence.\n\r", ch);
+                        act("$n fades back into existence.", ch,
                             NULL, NULL, TO_ROOM);
                         break;
                 }
 
-            case APPLY_DETECT_INVIS:
-                af.type = skill_lookup( "detect invis" );
-                if( fAdd )
+        case APPLY_DETECT_INVIS:
+                af.type = skill_lookup("detect invis");
+                if (fAdd)
                 {
-                        if( is_affected( ch, af.type ) )
+                        if (is_affected(ch, af.type))
                         {
-                                send_to_char( "You can already see the invisible.\n\r", ch );
+                                send_to_char("You can already see the invisible.\n\r", ch);
                                 break;
                         }
                         af.duration = -1;
                         af.location = APPLY_NONE;
                         af.modifier = 0;
                         af.bitvector = AFF_DETECT_INVIS;
-                        affect_to_char( ch, &af );
-                        send_to_char( "Your eyes tingle.\n\r", ch );
-                        act( "$n's eyes tingle.", ch, NULL, NULL, TO_ROOM );
+                        affect_to_char(ch, &af);
+                        send_to_char("Your eyes tingle.\n\r", ch);
+                        act("$n's eyes tingle.", ch, NULL, NULL, TO_ROOM);
                         break;
                 }
                 else
                 {
-                        affect_strip( ch, af.type );
-                        if (ch->pcdata->has_quit) break;
-                        send_to_char( "You no longer see invisible objects.\n\r", ch );
-                        act( "$n's eyes stop tingling.", ch,
+                        affect_strip(ch, af.type);
+                        if (ch->pcdata->has_quit)
+                                break;
+                        send_to_char("You no longer see invisible objects.\n\r", ch);
+                        act("$n's eyes stop tingling.", ch,
                             NULL, NULL, TO_ROOM);
                         break;
                 }
 
-            case APPLY_DETECT_HIDDEN:
-                af.type = skill_lookup( "detect hidden" );
-                if( fAdd )
+        case APPLY_DETECT_HIDDEN:
+                af.type = skill_lookup("detect hidden");
+                if (fAdd)
                 {
-                        if( is_affected( ch, af.type ) )
+                        if (is_affected(ch, af.type))
                         {
-                                send_to_char( "You can already see the hidden.\n\r", ch );
+                                send_to_char("You can already see the hidden.\n\r", ch);
                                 break;
                         }
                         af.duration = -1;
                         af.location = APPLY_NONE;
                         af.modifier = 0;
                         af.bitvector = AFF_DETECT_HIDDEN;
-                        affect_to_char( ch, &af );
-                        send_to_char( "Your awareness improves.\n\r", ch );
+                        affect_to_char(ch, &af);
+                        send_to_char("Your awareness improves.\n\r", ch);
                         break;
                 }
                 else
                 {
-                        affect_strip( ch, af.type );
-                        if (ch->pcdata->has_quit) break;
-                        send_to_char( "You feel less aware of your surroundings.\n\r", ch );
+                        affect_strip(ch, af.type);
+                        if (ch->pcdata->has_quit)
+                                break;
+                        send_to_char("You feel less aware of your surroundings.\n\r", ch);
                         break;
                 }
 
-            case APPLY_FLAMING:
-                af.type = skill_lookup( "fireshield" );
-                if( fAdd )
+        case APPLY_FLAMING:
+                af.type = skill_lookup("fireshield");
+                if (fAdd)
                 {
-                        if( is_affected( ch, af.type ) )
+                        if (is_affected(ch, af.type))
                         {
-                                send_to_char( "You are already surrounded by flames.\n\r", ch );
+                                send_to_char("You are already surrounded by flames.\n\r", ch);
                                 break;
                         }
                         af.duration = -1;
                         af.location = APPLY_NONE;
                         af.modifier = 0;
                         af.bitvector = AFF_FLAMING;
-                        affect_to_char( ch, &af );
-                        send_to_char( "<196>A flaming aura surrounds you!<0>\n\r", ch );
-                        act( "<196>The air around $n's form bursts into flame.<0>", ch, NULL, NULL, TO_ROOM );
+                        affect_to_char(ch, &af);
+                        send_to_char("<196>A flaming aura surrounds you!<0>\n\r", ch);
+                        act("<196>The air around $n's form bursts into flame.<0>", ch, NULL, NULL, TO_ROOM);
                         break;
                 }
                 else
                 {
-                        affect_strip( ch, af.type );
-                        if (ch->pcdata->has_quit) break;
-                        send_to_char( "<88>The flames around your body fizzle out.<0>\n\r", ch );
-                        act( "<88>The flames around $n's body fizzle out.<0>", ch,
+                        affect_strip(ch, af.type);
+                        if (ch->pcdata->has_quit)
+                                break;
+                        send_to_char("<88>The flames around your body fizzle out.<0>\n\r", ch);
+                        act("<88>The flames around $n's body fizzle out.<0>", ch,
                             NULL, NULL, TO_ROOM);
                         break;
                 }
 
-            case APPLY_PROTECT:
-                af.type = skill_lookup( "protection" );
-                if( fAdd )
+        case APPLY_PROTECT:
+                af.type = skill_lookup("protection");
+                if (fAdd)
                 {
-                        if( is_affected( ch, af.type ) )
+                        if (is_affected(ch, af.type))
                         {
-                                send_to_char( "You are already protected.\n\r", ch );
+                                send_to_char("You are already protected.\n\r", ch);
                                 break;
                         }
                         af.duration = -1;
                         af.location = APPLY_NONE;
                         af.modifier = 0;
                         af.bitvector = AFF_PROTECT;
-                        affect_to_char( ch, &af );
-                        send_to_char( "You feel protected.\n\r", ch );
+                        affect_to_char(ch, &af);
+                        send_to_char("You feel protected.\n\r", ch);
                         break;
                 }
                 else
                 {
-                        affect_strip( ch, af.type );
-                        if (ch->pcdata->has_quit) break;
-                        send_to_char( "<214>You feel less protected.<0>\n\r", ch );
+                        affect_strip(ch, af.type);
+                        if (ch->pcdata->has_quit)
+                                break;
+                        send_to_char("<214>You feel less protected.<0>\n\r", ch);
                         break;
                 }
 
-            case APPLY_BALANCE:
-                af.type = skill_lookup( "counterbalance" );
-                if( fAdd )
+        case APPLY_BALANCE:
+                af.type = skill_lookup("counterbalance");
+                if (fAdd)
                 {
-                        send_to_char( "The counterbalanced weapon will improve your attack speed.\n\r", ch );
+                        send_to_char("The counterbalanced weapon will improve your attack speed.\n\r", ch);
                         break;
                 }
                 else
                 {
-                        if (ch->pcdata->has_quit) break;
-                        send_to_char( "You feel less prepared for battle.\n\r", ch );
+                        if (ch->pcdata->has_quit)
+                                break;
+                        send_to_char("You feel less prepared for battle.\n\r", ch);
                         break;
                 }
-            case APPLY_SERRATED:
-                af.type = skill_lookup( "serrated" );
-                if( fAdd )
+        case APPLY_SERRATED:
+                af.type = skill_lookup("serrated");
+                if (fAdd)
                 {
                         break;
                 }
@@ -656,12 +634,11 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         break;
                 }
 
-
-            case APPLY_FLY:
-                af.type = skill_lookup( "fly" );
-                if( fAdd )
+        case APPLY_FLY:
+                af.type = skill_lookup("fly");
+                if (fAdd)
                 {
-                        if( is_affected( ch, af.type ) )
+                        if (is_affected(ch, af.type))
                         {
                                 break;
                         }
@@ -669,124 +646,127 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         af.location = APPLY_NONE;
                         af.modifier = 0;
                         af.bitvector = AFF_FLYING;
-                        affect_to_char( ch, &af );
-                        send_to_char( "The sensation of gravity leaves your body.\n\r", ch );
-                        act( "$n seems no longer to be affected by gravity.", ch, NULL, NULL, TO_ROOM );
+                        affect_to_char(ch, &af);
+                        send_to_char("The sensation of gravity leaves your body.\n\r", ch);
+                        act("$n seems no longer to be affected by gravity.", ch, NULL, NULL, TO_ROOM);
                         break;
                 }
                 else
                 {
-                        affect_strip( ch, af.type );
-                        if (ch->pcdata->has_quit) break;
-                        send_to_char( "You feel the pull of gravity slowly return.\n\r", ch );
-                        act( "$n seems to be affected by gravity once more.", ch,
+                        affect_strip(ch, af.type);
+                        if (ch->pcdata->has_quit)
+                                break;
+                        send_to_char("You feel the pull of gravity slowly return.\n\r", ch);
+                        act("$n seems to be affected by gravity once more.", ch,
                             NULL, NULL, TO_ROOM);
                         break;
                 }
 
-            case APPLY_PASS_DOOR:
-                af.type = skill_lookup( "pass door" );
-                if( fAdd )
+        case APPLY_PASS_DOOR:
+                af.type = skill_lookup("pass door");
+                if (fAdd)
                 {
-                        if( is_affected( ch, af.type ) )
+                        if (is_affected(ch, af.type))
                         {
-                                send_to_char( "You are already translucent.\n\r", ch );
+                                send_to_char("You are already translucent.\n\r", ch);
                                 break;
                         }
                         af.duration = -1;
                         af.location = APPLY_NONE;
                         af.modifier = 0;
                         af.bitvector = AFF_PASS_DOOR;
-                        affect_to_char( ch, &af );
-                        send_to_char( "<230>You become translucent.<0>\n\r", ch );
-                        act( "$n turns translucent.", ch, NULL, NULL, TO_ROOM );
+                        affect_to_char(ch, &af);
+                        send_to_char("<230>You become translucent.<0>\n\r", ch);
+                        act("$n turns translucent.", ch, NULL, NULL, TO_ROOM);
                         break;
                 }
                 else
                 {
-                        affect_strip( ch, af.type );
-                        if (ch->pcdata->has_quit) break;
-                        send_to_char( "You feel solid again.\n\r", ch );
-                        act( "$n looks solid once more.", ch, NULL, NULL, TO_ROOM);
+                        affect_strip(ch, af.type);
+                        if (ch->pcdata->has_quit)
+                                break;
+                        send_to_char("You feel solid again.\n\r", ch);
+                        act("$n looks solid once more.", ch, NULL, NULL, TO_ROOM);
                         break;
                 }
 
-            case APPLY_GLOBE:
-                af.type = skill_lookup( "globe" );
-                if( fAdd )
+        case APPLY_GLOBE:
+                af.type = skill_lookup("globe");
+                if (fAdd)
                 {
-                        if( is_affected( ch, af.type ) )
+                        if (is_affected(ch, af.type))
                         {
-                                send_to_char( "You are already globed.\n\r", ch );
+                                send_to_char("You are already globed.\n\r", ch);
                                 break;
                         }
                         af.duration = -1;
                         af.location = APPLY_NONE;
                         af.modifier = 0;
                         af.bitvector = AFF_GLOBE;
-                        affect_to_char( ch, &af );
-                        send_to_char( "You are surrounded by an invulnerable globe.\n\r", ch );
-                        act( "$n is surrounded by a scintillating globe.", ch, NULL, NULL, TO_ROOM );
+                        affect_to_char(ch, &af);
+                        send_to_char("You are surrounded by an invulnerable globe.\n\r", ch);
+                        act("$n is surrounded by a scintillating globe.", ch, NULL, NULL, TO_ROOM);
                         break;
                 }
                 else
                 {
-                        affect_strip( ch, af.type );
-                        if (ch->pcdata->has_quit) break;
-                        send_to_char( "The globe around you implodes.\n\r", ch );
-                        act( "The globe around $n implodes.", ch,
+                        affect_strip(ch, af.type);
+                        if (ch->pcdata->has_quit)
+                                break;
+                        send_to_char("The globe around you implodes.\n\r", ch);
+                        act("The globe around $n implodes.", ch,
                             NULL, NULL, TO_ROOM);
                         break;
                 }
 
-            case APPLY_RESIST_HEAT:
+        case APPLY_RESIST_HEAT:
                 ch->resist_heat += mod;
-              /*  af.type = skill_lookup("resist heat");
-              if( fAdd )
-                {
-                        if( is_affected( ch, af.type ) )
-                                break;
+                /*  af.type = skill_lookup("resist heat");
+                if( fAdd )
+                  {
+                          if( is_affected( ch, af.type ) )
+                                  break;
 
-                        af.duration = -1;
-                        af.location = APPLY_NONE;
-                        af.modifier = 0;
-                        af.bitvector = 0;
-                        affect_to_char( ch, &af );
+                          af.duration = -1;
+                          af.location = APPLY_NONE;
+                          af.modifier = 0;
+                          af.bitvector = 0;
+                          affect_to_char( ch, &af );
 
-                        send_to_char( "You feel resistant to heat and flame.\n\r", ch );
-                }
-                else
-                {
-                        affect_strip( ch, af.type );
-                        send_to_char("You feel vulnerable to heat and flame.\n\r", ch);
-                } */
+                          send_to_char( "You feel resistant to heat and flame.\n\r", ch );
+                  }
+                  else
+                  {
+                          affect_strip( ch, af.type );
+                          send_to_char("You feel vulnerable to heat and flame.\n\r", ch);
+                  } */
                 break;
 
-            case APPLY_RESIST_COLD:
+        case APPLY_RESIST_COLD:
                 ch->resist_cold += mod;
- /*
-                af.type = skill_lookup("resist cold");
-                if( fAdd )
-                {
-                        if( is_affected( ch, af.type ) )
-                                break;
+                /*
+                               af.type = skill_lookup("resist cold");
+                               if( fAdd )
+                               {
+                                       if( is_affected( ch, af.type ) )
+                                               break;
 
-                        af.duration = -1;
-                        af.location = APPLY_NONE;
-                        af.modifier = 0;
-                        af.bitvector = 0;
-                        affect_to_char( ch, &af );
+                                       af.duration = -1;
+                                       af.location = APPLY_NONE;
+                                       af.modifier = 0;
+                                       af.bitvector = 0;
+                                       affect_to_char( ch, &af );
 
-                        send_to_char( "You feel resistant to cold and ice.\n\r", ch );
-                }
-                else
-                {
-                        affect_strip( ch, af.type );
-                        send_to_char("You feel vulnerable to cold and ice.\n\r", ch);
-                }
-                break; */
+                                       send_to_char( "You feel resistant to cold and ice.\n\r", ch );
+                               }
+                               else
+                               {
+                                       affect_strip( ch, af.type );
+                                       send_to_char("You feel vulnerable to cold and ice.\n\r", ch);
+                               }
+                               break; */
 
-            case APPLY_RESIST_LIGHTNING:
+        case APPLY_RESIST_LIGHTNING:
                 ch->resist_lightning += mod;
                 /*
                 af.type = skill_lookup("resist lightning");
@@ -810,48 +790,49 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 } */
                 break;
 
-            case APPLY_RESIST_ACID:
+        case APPLY_RESIST_ACID:
                 ch->resist_acid += mod;
-         /*     af.type = skill_lookup("resist acid");
-                if( fAdd )
-                {
-                        if( is_affected( ch, af.type ) )
-                                break;
+                /*     af.type = skill_lookup("resist acid");
+                       if( fAdd )
+                       {
+                               if( is_affected( ch, af.type ) )
+                                       break;
 
-                        af.duration = -1;
-                        af.location = APPLY_NONE;
-                        af.modifier = 0;
-                        af.bitvector = 0;
-                        affect_to_char( ch, &af );
+                               af.duration = -1;
+                               af.location = APPLY_NONE;
+                               af.modifier = 0;
+                               af.bitvector = 0;
+                               affect_to_char( ch, &af );
 
-                        send_to_char( "You feel resistant to acid.\n\r", ch );
-                }
-                else
-                {
-                        affect_strip( ch, af.type );
-                        send_to_char("You feel vulnerable to acid.\n\r", ch);
-                }*/
+                               send_to_char( "You feel resistant to acid.\n\r", ch );
+                       }
+                       else
+                       {
+                               affect_strip( ch, af.type );
+                               send_to_char("You feel vulnerable to acid.\n\r", ch);
+                       }*/
                 break;
 
-            case APPLY_BREATHE_WATER:
+        case APPLY_BREATHE_WATER:
                 af.type = skill_lookup("breathe water");
-                if( fAdd )
+                if (fAdd)
                 {
-                        if( is_affected( ch, af.type ) )
+                        if (is_affected(ch, af.type))
                                 break;
 
                         af.duration = -1;
                         af.location = APPLY_NONE;
                         af.modifier = 0;
                         af.bitvector = 0;
-                        affect_to_char( ch, &af );
+                        affect_to_char(ch, &af);
 
-                        send_to_char( "Your lungs begin to tingle and pulse.\n\r", ch );
+                        send_to_char("Your lungs begin to tingle and pulse.\n\r", ch);
                 }
                 else
                 {
-                        affect_strip( ch, af.type );
-                        if (ch->pcdata->has_quit) break;
+                        affect_strip(ch, af.type);
+                        if (ch->pcdata->has_quit)
+                                break;
                         send_to_char("Your lungs revert to normal.\n\r", ch);
                 }
                 break;
@@ -870,9 +851,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
          * objects are removed TWICE and WE ALL BURN IN HELL.  Gezhp 2001
          */
 
-        if (((wield = get_eq_char(ch, WEAR_WIELD)) || (wield = get_eq_char(ch, WEAR_DUAL)))
-            && wield != weapon
-            && get_obj_weight(wield) > str_app[get_curr_str(ch)].wield)
+        if (((wield = get_eq_char(ch, WEAR_WIELD)) || (wield = get_eq_char(ch, WEAR_DUAL))) && wield != weapon && get_obj_weight(wield) > str_app[get_curr_str(ch)].wield)
         {
                 static int depth;
 
@@ -890,22 +869,21 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
         }
 }
 
-
 /*
  * Give an affect to a char.
  */
-void affect_to_char( CHAR_DATA *ch, AFFECT_DATA *paf )
+void affect_to_char(CHAR_DATA *ch, AFFECT_DATA *paf)
 {
         AFFECT_DATA *paf_new;
 
-        if ( !affect_free )
+        if (!affect_free)
         {
-                paf_new         = alloc_perm( sizeof( *paf_new ) );
+                paf_new = alloc_perm(sizeof(*paf_new));
         }
         else
         {
-                paf_new         = affect_free;
-                affect_free     = affect_free->next;
+                paf_new = affect_free;
+                affect_free = affect_free->next;
         }
 
         *paf_new = *paf;
@@ -913,91 +891,87 @@ void affect_to_char( CHAR_DATA *ch, AFFECT_DATA *paf )
         paf_new->next = ch->affected;
         ch->affected = paf_new;
 
-        affect_modify( ch, paf_new, TRUE, NULL );
+        affect_modify(ch, paf_new, TRUE, NULL);
         return;
 }
-
 
 /*
  * Remove an affect from a char.
  */
-void affect_remove( CHAR_DATA *ch, AFFECT_DATA *paf )
+void affect_remove(CHAR_DATA *ch, AFFECT_DATA *paf)
 {
-        if ( !ch->affected )
+        if (!ch->affected)
         {
-                bug( "Affect_remove: no affect.", 0 );
+                bug("Affect_remove: no affect.", 0);
                 return;
         }
 
-        affect_modify( ch, paf, FALSE, NULL );
+        affect_modify(ch, paf, FALSE, NULL);
 
         paf->deleted = TRUE;
 
         return;
 }
 
-
 /*
  * Strip all affects of a given sn.
  */
-void affect_strip( CHAR_DATA *ch, int sn )
+void affect_strip(CHAR_DATA *ch, int sn)
 {
         AFFECT_DATA *paf;
 
-        for ( paf = ch->affected; paf; paf = paf->next )
+        for (paf = ch->affected; paf; paf = paf->next)
         {
-                if ( paf->deleted )
+                if (paf->deleted)
                         continue;
-                if ( paf->type == sn )
-                        affect_remove( ch, paf );
+                if (paf->type == sn)
+                        affect_remove(ch, paf);
         }
 
         return;
 }
 
-
 /*
  * Return true if a char is affected by a spell.
  */
-bool is_affected( CHAR_DATA *ch, int sn )
+bool is_affected(CHAR_DATA *ch, int sn)
 {
         AFFECT_DATA *paf;
 
-        for ( paf = ch->affected; paf; paf = paf->next )
+        for (paf = ch->affected; paf; paf = paf->next)
         {
-                if ( paf->deleted )
+                if (paf->deleted)
                         continue;
 
-                if ( paf->type == sn )
+                if (paf->type == sn)
                         return TRUE;
         }
 
         return FALSE;
 }
 
-
 /*
  * Add or enhance an affect.
  */
-void affect_join( CHAR_DATA *ch, AFFECT_DATA *paf )
+void affect_join(CHAR_DATA *ch, AFFECT_DATA *paf)
 {
         AFFECT_DATA *paf_old;
 
-        for ( paf_old = ch->affected; paf_old; paf_old = paf_old->next )
+        for (paf_old = ch->affected; paf_old; paf_old = paf_old->next)
         {
-                if ( paf_old->deleted )
+                if (paf_old->deleted)
                         continue;
 
-                if ( paf_old->type == paf->type )
+                if (paf_old->type == paf->type)
                 {
                         paf->duration += paf_old->duration;
                         paf->modifier += paf_old->modifier;
-                        affect_remove( ch, paf_old );
+                        affect_remove(ch, paf_old);
                         break;
                 }
         }
 
-        affect_to_char( ch, paf );
+        affect_to_char(ch, paf);
         return;
 }
 
@@ -1020,29 +994,28 @@ static void mcmp_log_stop(const char *where, const char *opts)
 /*
  * Move a char out of a room.
  */
-void char_from_room( CHAR_DATA *ch )
+void char_from_room(CHAR_DATA *ch)
 {
         OBJ_DATA *obj;
+        ROOM_INDEX_DATA *old_room;
 
-        if ( !ch->in_room )
+        if (!ch->in_room)
         {
-                bug( "Char_from_room: NULL.", 0 );
+                bug("Char_from_room: NULL.", 0);
                 return;
         }
 
-        if ( !IS_NPC( ch ) )
+        old_room = ch->in_room;
+
+        if (!IS_NPC(ch))
                 --ch->in_room->area->nplayer;
 
-        if ( ( obj = get_eq_char( ch, WEAR_LIGHT ) )
-            && obj->item_type == ITEM_LIGHT
-            && obj->value[2] != 0
-            && (!IS_NPC(ch) && ch->desc && ch->desc->connected != CON_GET_OLD_PASSWORD)
-            && ch->in_room->light > 0 )
+        if ((obj = get_eq_char(ch, WEAR_LIGHT)) && obj->item_type == ITEM_LIGHT && obj->value[2] != 0 && (!IS_NPC(ch) && ch->desc && ch->desc->connected != CON_GET_OLD_PASSWORD) && ch->in_room->light > 0)
         {
                 --ch->in_room->light;
         }
 
-        if ( ch == ch->in_room->people )
+        if (ch == ch->in_room->people)
         {
                 ch->in_room->people = ch->next_in_room;
         }
@@ -1050,385 +1023,430 @@ void char_from_room( CHAR_DATA *ch )
         {
                 CHAR_DATA *prev;
 
-                for ( prev = ch->in_room->people; prev; prev = prev->next_in_room )
+                for (prev = ch->in_room->people; prev; prev = prev->next_in_room)
                 {
-                        if ( prev->next_in_room == ch )
+                        if (prev->next_in_room == ch)
                         {
                                 prev->next_in_room = ch->next_in_room;
                                 break;
                         }
                 }
 
-                if ( !prev )
-                        bug( "Char_from_room: ch not found.", 0 );
+                if (!prev)
+                        bug("Char_from_room: ch not found.", 0);
         }
 
-        ch->in_room      = NULL;
+        ch->in_room = NULL;
         ch->next_in_room = NULL;
+
+        /* Notify web clients in the room that room contents changed */
+        if (IS_NPC(ch) && old_room)
+        {
+                webgate_notify_room_update(old_room);
+        }
+
         return;
 }
 
 /* Update weather ambience for a single character */
-void update_weather_for_char( CHAR_DATA *ch )
+void update_weather_for_char(CHAR_DATA *ch)
 {
-    if (!ch || !ch->in_room || !ch->desc || !ch->desc->pProtocol)
-        return;
-    if (IS_NPC(ch))
-        return;
+        if (!ch || !ch->in_room || !ch->desc || !ch->desc->pProtocol)
+                return;
+        if (IS_NPC(ch))
+                return;
 
-    protocol_t *p = ch->desc->pProtocol;
+        protocol_t *p = ch->desc->pProtocol;
 
-    /* Must have GMCP Client.Media and not be suppressed */
-    if (!p->bGMCP || !p->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA])
-        return;
-    if (p->MediaSuppress)
-        return;
+        /* Must have GMCP Client.Media and not be suppressed */
+        if (!p->bGMCP || !p->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA])
+                return;
+        if (p->MediaSuppress)
+                return;
 
-    /* Always assert base for relative paths */
-    GMCP_Media_Default(ch->desc, "https://www.dragons-domain.org/main/gui/custom/audio/");
+        /* Always assert base for relative paths */
+        GMCP_Media_Default(ch->desc, "https://www.dragons-domain.org/main/gui/custom/audio/");
 
-    /* Stable key for weather lane */
-    #define KEY_WEATHER "dd.ambient.weather"
+/* Stable key for weather lane */
+#define KEY_WEATHER "dd.ambient.weather"
 
-    /* If indoors or underwater, suppress weather sounds entirely */
-    if ( (!IS_OUTSIDE(ch))
-      || ( ch->in_room->sector_type == SECT_UNDERWATER )
-      || ( ch->in_room->sector_type == SECT_UNDERWATER_GROUND ) )
-    {
-        if (p->MediaWeatherActive)
+        /* If indoors or underwater, suppress weather sounds entirely */
+        if ((!IS_OUTSIDE(ch)) || (ch->in_room->sector_type == SECT_UNDERWATER) || (ch->in_room->sector_type == SECT_UNDERWATER_GROUND))
         {
-            GMCP_Media_Stop(ch->desc,
-                "\"key\":\"" KEY_WEATHER "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
+                if (p->MediaWeatherActive)
+                {
+                        GMCP_Media_Stop(ch->desc,
+                                        "\"key\":\"" KEY_WEATHER "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
 
-            if (p->MediaWeatherName)
-                free_string(p->MediaWeatherName);
-            p->MediaWeatherName   = NULL;
-            p->MediaWeatherVol    = 0;
-            p->MediaWeatherActive = FALSE;
+                        if (p->MediaWeatherName)
+                                free_string(p->MediaWeatherName);
+                        p->MediaWeatherName = NULL;
+                        p->MediaWeatherVol = 0;
+                        p->MediaWeatherActive = FALSE;
 
-            log_stringf("WeatherSFX: stop (indoors) for %s", ch->name);
-        }
-        return;
-    }
-
-    /* Determine desired weather event and volume */
-    const sound_event_def *ev = NULL;
-    int vol = 0;
-
-    if (weather_info.sky == SKY_RAINING)
-    {
-        ev  = sound_event_lookup("ambient.weather.rain");
-        vol = ev ? ev->default_volume : 15;
-    }
-    else if (weather_info.sky == SKY_LIGHTNING)
-    {
-        ev  = sound_event_lookup("ambient.weather.lightning");
-        vol = ev ? ev->default_volume : 15;
-    }
-
-    /* No relevant weather => stop current lane */
-    if (!ev || !ev->files[0] || !*ev->files[0])
-    {
-        if (p->MediaWeatherActive)
-        {
-            GMCP_Media_Stop(ch->desc,
-                "\"key\":\"" KEY_WEATHER "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
-            if (p->MediaWeatherName)
-                free_string(p->MediaWeatherName);
-            p->MediaWeatherName   = NULL;
-            p->MediaWeatherVol    = 0;
-            p->MediaWeatherActive = FALSE;
-
-            log_stringf("WeatherSFX: stop (clear sky) for %s", ch->name);
-        }
-        return;
-    }
-
-    /* Apply player's ambient slider */
-    vol = media_apply_volume(vol, ch, "environment", "ambient");
-    if (vol <= 0)
-        return;
-
-    /* If changed or inactive, (re)play */
-    if (!p->MediaWeatherActive
-        || !p->MediaWeatherName
-        || str_cmp(p->MediaWeatherName, ev->files[0])
-        || p->MediaWeatherVol != vol)
-    {
-        /* If something might still be playing under this lane key, fade it */
-        if (p->MediaWeatherActive)
-        {
-            GMCP_Media_Stop(ch->desc,
-                "\"key\":\"" KEY_WEATHER "\","
-                "\"type\":\"music\",\"fadeaway\":true,\"fadeout\":600");
-            log_stringf("WeatherSFX: stop previous (switch) for %s", ch->name);
+                        log_stringf("WeatherSFX: stop (indoors) for %s", ch->name);
+                }
+                return;
         }
 
-        /* Update our cache BEFORE play so do_rstat can show it immediately */
-        if (p->MediaWeatherName) free_string(p->MediaWeatherName);
-        p->MediaWeatherName   = str_dup(ev->files[0]);
-        p->MediaWeatherVol    = vol;
+        /* Determine desired weather event and volume */
+        const sound_event_def *ev = NULL;
+        int vol = 0;
 
-        /* Play loop on the weather lane */
+        if (weather_info.sky == SKY_RAINING)
         {
-            char opts[256];
-            snprintf(opts, sizeof(opts),
-                "\"type\":\"music\",\"tag\":\"environment\",\"key\":\"" KEY_WEATHER "\","
-                "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":1200", vol);
-            GMCP_Media_Play(ch->desc, ev->files[0], opts);
+                ev = sound_event_lookup("ambient.weather.rain");
+                vol = ev ? ev->default_volume : 15;
+        }
+        else if (weather_info.sky == SKY_LIGHTNING)
+        {
+                ev = sound_event_lookup("ambient.weather.lightning");
+                vol = ev ? ev->default_volume : 15;
         }
 
-        p->MediaWeatherActive = TRUE;
+        /* No relevant weather => stop current lane */
+        if (!ev || !ev->files[0] || !*ev->files[0])
+        {
+                if (p->MediaWeatherActive)
+                {
+                        GMCP_Media_Stop(ch->desc,
+                                        "\"key\":\"" KEY_WEATHER "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
+                        if (p->MediaWeatherName)
+                                free_string(p->MediaWeatherName);
+                        p->MediaWeatherName = NULL;
+                        p->MediaWeatherVol = 0;
+                        p->MediaWeatherActive = FALSE;
 
-        log_stringf("WeatherSFX: start %s vol=%d for %s",
-                    ev->key, vol, ch->name);
-    }
+                        log_stringf("WeatherSFX: stop (clear sky) for %s", ch->name);
+                }
+                return;
+        }
 
-    #undef KEY_WEATHER
+        /* Apply player's ambient slider */
+        vol = media_apply_volume(vol, ch, "environment", "ambient");
+        if (vol <= 0)
+                return;
+
+        /* If changed or inactive, (re)play */
+        if (!p->MediaWeatherActive || !p->MediaWeatherName || str_cmp(p->MediaWeatherName, ev->files[0]) || p->MediaWeatherVol != vol)
+        {
+                /* If something might still be playing under this lane key, fade it */
+                if (p->MediaWeatherActive)
+                {
+                        GMCP_Media_Stop(ch->desc,
+                                        "\"key\":\"" KEY_WEATHER "\","
+                                        "\"type\":\"music\",\"fadeaway\":true,\"fadeout\":600");
+                        log_stringf("WeatherSFX: stop previous (switch) for %s", ch->name);
+                }
+
+                /* Update our cache BEFORE play so do_rstat can show it immediately */
+                if (p->MediaWeatherName)
+                        free_string(p->MediaWeatherName);
+                p->MediaWeatherName = str_dup(ev->files[0]);
+                p->MediaWeatherVol = vol;
+
+                /* Play loop on the weather lane */
+                {
+                        char opts[256];
+                        snprintf(opts, sizeof(opts),
+                                 "\"type\":\"music\",\"tag\":\"environment\",\"key\":\"" KEY_WEATHER "\","
+                                 "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":1200",
+                                 vol);
+                        GMCP_Media_Play(ch->desc, ev->files[0], opts);
+                }
+
+                p->MediaWeatherActive = TRUE;
+
+                log_stringf("WeatherSFX: start %s vol=%d for %s",
+                            ev->key, vol, ch->name);
+        }
+
+#undef KEY_WEATHER
 }
-
 
 /*
  * Move a char into a room.
  */
-void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
+void char_to_room(CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex)
 {
-    OBJ_DATA *obj;
-    /* char j[512];*/
+        OBJ_DATA *obj;
+        /* char j[512];*/
 
-    if ( !pRoomIndex )
-    {
-        bug( "Char_to_room: NULL.", 0 );
-        return;
-    }
-
-    ch->in_room      = pRoomIndex;
-    ch->next_in_room = pRoomIndex->people;
-    pRoomIndex->people = ch;
-
-    if ( !IS_NPC(ch) )
-    {
-        ++ch->in_room->area->nplayer;
-
-        if ( ( ch->in_room->sector_type != SECT_UNDERWATER )
-          || ( ch->in_room->sector_type != SECT_UNDERWATER_GROUND ) )
+        if (!pRoomIndex)
         {
-            ch->pcdata->air_supply = FULL_AIR_SUPPLY;
+                bug("Char_to_room: NULL.", 0);
+                return;
         }
-    }
 
-    if ( (obj = get_eq_char(ch, WEAR_LIGHT))
-         && obj->item_type == ITEM_LIGHT
-         && obj->value[2] != 0 )
-    {
-        ++ch->in_room->light;
-    }
+        ch->in_room = pRoomIndex;
+        ch->next_in_room = pRoomIndex->people;
+        pRoomIndex->people = ch;
 
-    /* Refresh environmental media (room > area > sector) for this player */
-    media_env_refresh(ch, pRoomIndex, FALSE);
-    update_weather_for_char(ch);
+        if (!IS_NPC(ch))
+        {
+                ++ch->in_room->area->nplayer;
 
-    return;
+                if ((ch->in_room->sector_type != SECT_UNDERWATER) || (ch->in_room->sector_type != SECT_UNDERWATER_GROUND))
+                {
+                        ch->pcdata->air_supply = FULL_AIR_SUPPLY;
+                }
+        }
+
+        if ((obj = get_eq_char(ch, WEAR_LIGHT)) && obj->item_type == ITEM_LIGHT && obj->value[2] != 0)
+        {
+                ++ch->in_room->light;
+        }
+
+        /* Refresh environmental media (room > area > sector) for this player */
+        media_env_refresh(ch, pRoomIndex, FALSE);
+        update_weather_for_char(ch);
+
+        /* Notify web clients in the room that room contents changed */
+        if (IS_NPC(ch))
+        {
+                webgate_notify_room_update(pRoomIndex);
+        }
+
+        return;
 }
-
-
 
 /* Scale a base 1..100 volume by the player's master volume (also 1..100).
    If you don't yet have per-player volume fields, just return base. */
 int media_apply_volume(int base_vol, CHAR_DATA *ch, const char *tag, const char *type)
 {
-    int v = URANGE(1, base_vol, 100);
-    if (!ch || IS_NPC(ch) || !ch->pcdata) return v;
+        int v = URANGE(1, base_vol, 100);
+        if (!ch || IS_NPC(ch) || !ch->pcdata)
+                return v;
 
-    /* global mute */
-    if (!ch->pcdata->snd_enabled) return 0;
+        /* global mute */
+        if (!ch->pcdata->snd_enabled)
+                return 0;
 
-    /* master */
-    int master = URANGE(0, ch->pcdata->snd_master, 100);
-    v = (v * master + 50) / 100;
+        /* master */
+        int master = URANGE(0, ch->pcdata->snd_master, 100);
+        v = (v * master + 50) / 100;
 
-    /* pick category slider */
-    int cat = 100;
+        /* pick category slider */
+        int cat = 100;
 
-    /* music lane (area/room/sector ambience uses type:"music") */
-    if (type && !str_cmp(type, "music"))
-        cat = ch->pcdata->snd_music;
-    else if (tag && !str_cmp(tag, "environment"))
-        cat = ch->pcdata->snd_env;
-    else if (tag && !str_cmp(tag, "foley"))
-        cat = ch->pcdata->snd_foley;
-    else if (tag && !str_cmp(tag, "ui"))
-        cat = ch->pcdata->snd_ui;
-    else if (tag && !str_cmp(tag, "notify"))
-        cat = ch->pcdata->snd_notify;
-    else
-        cat = ch->pcdata->snd_sfx; /* default bucket for generic SFX */
+        /* music lane (area/room/sector ambience uses type:"music") */
+        if (type && !str_cmp(type, "music"))
+                cat = ch->pcdata->snd_music;
+        else if (tag && !str_cmp(tag, "environment"))
+                cat = ch->pcdata->snd_env;
+        else if (tag && !str_cmp(tag, "foley"))
+                cat = ch->pcdata->snd_foley;
+        else if (tag && !str_cmp(tag, "ui"))
+                cat = ch->pcdata->snd_ui;
+        else if (tag && !str_cmp(tag, "notify"))
+                cat = ch->pcdata->snd_notify;
+        else
+                cat = ch->pcdata->snd_sfx; /* default bucket for generic SFX */
 
-    cat = URANGE(0, cat, 100);
-    v = (v * cat + 50) / 100;
+        cat = URANGE(0, cat, 100);
+        v = (v * cat + 50) / 100;
 
-    /* 0 => muted (don’t send Play), otherwise clamp to 1..100 for GMCP */
-    return v <= 0 ? 0 : URANGE(1, v, 100);
+        /* 0 => muted (don’t send Play), otherwise clamp to 1..100 for GMCP */
+        return v <= 0 ? 0 : URANGE(1, v, 100);
 }
 
-int media_apply_master_volume( int base_vol, CHAR_DATA *ch )
+int media_apply_master_volume(int base_vol, CHAR_DATA *ch)
 {
-    /* Defensive defaults */
-    if (base_vol <= 0) return 0;
-    if (!ch || IS_NPC(ch) || !ch->pcdata) return base_vol;
+        /* Defensive defaults */
+        if (base_vol <= 0)
+                return 0;
+        if (!ch || IS_NPC(ch) || !ch->pcdata)
+                return base_vol;
 
-    /* If the player has sound disabled, force silence */
-    if (!ch->pcdata->snd_enabled)
-        return 0;
+        /* If the player has sound disabled, force silence */
+        if (!ch->pcdata->snd_enabled)
+                return 0;
 
-    /* Clamp master and apply scaling (rounded), then clamp final 0..100 */
-    int master = ch->pcdata->snd_master;
-    master = URANGE(0, master, 100);
+        /* Clamp master and apply scaling (rounded), then clamp final 0..100 */
+        int master = ch->pcdata->snd_master;
+        master = URANGE(0, master, 100);
 
-    /* Scale and round to nearest int */
-    int scaled = (base_vol * master + 50) / 100;
+        /* Scale and round to nearest int */
+        int scaled = (base_vol * master + 50) / 100;
 
-    return URANGE(0, scaled, 100);
+        return URANGE(0, scaled, 100);
 }
 
-void media_notify_channel( CHAR_DATA *to, int channel )
+void media_notify_channel(CHAR_DATA *to, int channel)
 {
-    if (!to || IS_NPC(to) || !to->desc || !to->desc->pProtocol) return;
+        if (!to || IS_NPC(to) || !to->desc || !to->desc->pProtocol)
+                return;
 
-    /* Fast opt-out: if the player has notifications/UI volume off, skip. */
-    if (!to->pcdata || !to->pcdata->snd_enabled || to->pcdata->snd_notify <= 0) return;
+        /* Fast opt-out: if the player has notifications/UI volume off, skip. */
+        if (!to->pcdata || !to->pcdata->snd_enabled || to->pcdata->snd_notify <= 0)
+                return;
 
-    /* Respect channel mutes here as a safety net (talk_channel also filters). */
-    if (IS_SET(to->deaf, channel) || to->silent_mode) return;
+        /* Respect channel mutes here as a safety net (talk_channel also filters). */
+        if (IS_SET(to->deaf, channel) || to->silent_mode)
+                return;
 
-    const char *key = NULL;
-    switch (channel)
-    {
-        case CHANNEL_DIRTALK:   key = "notify.channel.dirtalk";  break;
-        case CHANNEL_IMMTALK:   key = "notify.channel.immtalk";  break;
-        case CHANNEL_CHAT:      key = "notify.channel.chat";     break;
-        case CHANNEL_AUCTION:   key = "notify.channel.auction";  break;
-        case CHANNEL_INFO:      key = "notify.channel.info";     break;
-        case CHANNEL_CLAN:      key = "notify.channel.clan";     break;
-        case CHANNEL_SHOUT:     key = "notify.channel.shout";    break;
-        case CHANNEL_MUSIC:     key = "notify.channel.music";    break;
-        case CHANNEL_QUESTION:  key = "notify.channel.question"; break;
-        case CHANNEL_YELL:      key = "notify.channel.yell";     break;
-        case CHANNEL_SERVER:    key = "notify.channel.server";   break;
-        case CHANNEL_ARENA:     key = "notify.channel.arena";    break;
-        case CHANNEL_NEWBIE:    key = "notify.channel.newbie";   break;
-        default: return; /* unknown channel code */
-    }
+        const char *key = NULL;
+        switch (channel)
+        {
+        case CHANNEL_DIRTALK:
+                key = "notify.channel.dirtalk";
+                break;
+        case CHANNEL_IMMTALK:
+                key = "notify.channel.immtalk";
+                break;
+        case CHANNEL_CHAT:
+                key = "notify.channel.chat";
+                break;
+        case CHANNEL_AUCTION:
+                key = "notify.channel.auction";
+                break;
+        case CHANNEL_INFO:
+                key = "notify.channel.info";
+                break;
+        case CHANNEL_CLAN:
+                key = "notify.channel.clan";
+                break;
+        case CHANNEL_SHOUT:
+                key = "notify.channel.shout";
+                break;
+        case CHANNEL_MUSIC:
+                key = "notify.channel.music";
+                break;
+        case CHANNEL_QUESTION:
+                key = "notify.channel.question";
+                break;
+        case CHANNEL_YELL:
+                key = "notify.channel.yell";
+                break;
+        case CHANNEL_SERVER:
+                key = "notify.channel.server";
+                break;
+        case CHANNEL_ARENA:
+                key = "notify.channel.arena";
+                break;
+        case CHANNEL_NEWBIE:
+                key = "notify.channel.newbie";
+                break;
+        default:
+                return; /* unknown channel code */
+        }
 
-    /* One-shot to this player; registry supplies default volume + your scaling. */
-    sound_emit_char(to, key, -1);
+        /* One-shot to this player; registry supplies default volume + your scaling. */
+        sound_emit_char(to, key, -1);
 }
 
 /* Plays a one-shot file to everyone in a room (SFX category), scaled per player. */
-void sound_play_room_file( ROOM_INDEX_DATA *room,
-                           const char *file,
-                           int base_vol,
-                           const char *tag,
-                           CHAR_DATA *except,
-                           const char *id )
+void sound_play_room_file(ROOM_INDEX_DATA *room,
+                          const char *file,
+                          int base_vol,
+                          const char *tag,
+                          CHAR_DATA *except,
+                          const char *id)
 {
-    CHAR_DATA *vch;
+        CHAR_DATA *vch;
 
-    if (!room || !file || !*file) return;
+        if (!room || !file || !*file)
+                return;
 
-    for (vch = room->people; vch; vch = vch->next_in_room)
-    {
-        if (!vch->desc || !vch->desc->pProtocol) continue;
-        if (vch == except) continue;
-        if (IS_NPC(vch)) continue;
+        for (vch = room->people; vch; vch = vch->next_in_room)
+        {
+                if (!vch->desc || !vch->desc->pProtocol)
+                        continue;
+                if (vch == except)
+                        continue;
+                if (IS_NPC(vch))
+                        continue;
 
-        protocol_t *p = vch->desc->pProtocol;
-        if (!p->bGMCP || !p->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA]) continue;
-        if (!vch->pcdata || !vch->pcdata->snd_enabled) continue;
+                protocol_t *p = vch->desc->pProtocol;
+                if (!p->bGMCP || !p->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA])
+                        continue;
+                if (!vch->pcdata || !vch->pcdata->snd_enabled)
+                        continue;
 
-        /* Category = SFX: apply master and sfx sliders (0 => effectively off) */
-        int master = URANGE(0, vch->pcdata->snd_master, 100);
-        int sfx    = URANGE(0, vch->pcdata->snd_sfx,    100);
-        if (master == 0 || sfx == 0) continue;
+                /* Category = SFX: apply master and sfx sliders (0 => effectively off) */
+                int master = URANGE(0, vch->pcdata->snd_master, 100);
+                int sfx = URANGE(0, vch->pcdata->snd_sfx, 100);
+                if (master == 0 || sfx == 0)
+                        continue;
 
-        /* Scale and clamp, but keep at least 1 so it’s audible if requested. */
-        long scaled = (long)base_vol * master / 100;
-        scaled = (long)scaled * sfx / 100;
-        int vol = URANGE(1, (int)scaled, 100);
+                /* Scale and clamp, but keep at least 1 so it’s audible if requested. */
+                long scaled = (long)base_vol * master / 100;
+                scaled = (long)scaled * sfx / 100;
+                int vol = URANGE(1, (int)scaled, 100);
 
-        /* Ensure relative paths resolve */
-        GMCP_Media_Default(vch->desc, "https://www.dragons-domain.org/main/gui/custom/audio/");
+                /* Ensure relative paths resolve */
+                GMCP_Media_Default(vch->desc, "https://www.dragons-domain.org/main/gui/custom/audio/");
 
-        char unique_id[64];
-        snprintf(unique_id, sizeof(unique_id),
-                "sfx.%ld.%d",
-                current_time,
-                number_range(0,9999));
+                char unique_id[64];
+                snprintf(unique_id, sizeof(unique_id),
+                         "sfx.%ld.%d",
+                         current_time,
+                         number_range(0, 9999));
 
-        char opts[256];
-        snprintf(opts, sizeof(opts),
-                "\"id\":\"%s\",\"type\":\"sound\",\"tag\":\"%s\","
-                "\"volume\":%d,\"loops\":1,\"priority\":50,\"replace\":true",
-                unique_id,
-                (tag && *tag) ? tag : "sfx",
-                vol);
+                char opts[256];
+                snprintf(opts, sizeof(opts),
+                         "\"id\":\"%s\",\"type\":\"sound\",\"tag\":\"%s\","
+                         "\"volume\":%d,\"loops\":1,\"priority\":50,\"replace\":true",
+                         unique_id,
+                         (tag && *tag) ? tag : "sfx",
+                         vol);
 
-        GMCP_Media_Play(vch->desc, file, opts);
-
-
-    }
+                GMCP_Media_Play(vch->desc, file, opts);
+        }
 }
 
 /* Helper: play a one-shot door sound that can overlap with others */
-static void door_play_event_room( ROOM_INDEX_DATA *room,
-                                  const char *file,
-                                  int volume,
-                                  const char *base_tag,
-                                  const char *dname,
-                                  const char *act_str,
-                                  int vnum )
+static void door_play_event_room(ROOM_INDEX_DATA *room,
+                                 const char *file,
+                                 int volume,
+                                 const char *base_tag,
+                                 const char *dname,
+                                 const char *act_str,
+                                 int vnum)
 {
-    if (!room || !file || !*file)
-        return;
+        if (!room || !file || !*file)
+                return;
 
-    /* Unique ID counter */
-    static unsigned long seq = 0;
+        /* Unique ID counter */
+        static unsigned long seq = 0;
 
-    for (CHAR_DATA *vch = room->people; vch; vch = vch->next_in_room)
-    {
-        if (!vch->desc || !vch->desc->pProtocol) continue;
-        protocol_t *p = vch->desc->pProtocol;
-        if (!p->bGMCP || !p->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA]) continue;
-        if (IS_NPC(vch)) continue;
+        for (CHAR_DATA *vch = room->people; vch; vch = vch->next_in_room)
+        {
+                if (!vch->desc || !vch->desc->pProtocol)
+                        continue;
+                protocol_t *p = vch->desc->pProtocol;
+                if (!p->bGMCP || !p->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA])
+                        continue;
+                if (IS_NPC(vch))
+                        continue;
 
-        /* Apply player SFX volume */
-        int vol_adj = media_apply_volume(volume, vch, "sfx", "sfx");
-        if (vol_adj <= 0)
-            continue;
+                /* Apply player SFX volume */
+                int vol_adj = media_apply_volume(volume, vch, "sfx", "sfx");
+                if (vol_adj <= 0)
+                        continue;
 
-        /* Create a UNIQUE id (id does NOT create a channel!) */
-        unsigned long idnum = ++seq;
-        char idbuf[128];
-        snprintf(idbuf, sizeof(idbuf),
-                 "door.%d.%s.%s.%lu",
-                 vnum, dname, act_str, idnum);
+                /* Create a UNIQUE id (id does NOT create a channel!) */
+                unsigned long idnum = ++seq;
+                char idbuf[128];
+                snprintf(idbuf, sizeof(idbuf),
+                         "door.%d.%s.%s.%lu",
+                         vnum, dname, act_str, idnum);
 
-        /* Standard fire-and-forget SFX packet — SAME FORMAT as potion SFX */
-        char opts[256];
-        snprintf(opts, sizeof(opts),
-                 "\"id\":\"%s\",\"type\":\"sound\",\"tag\":\"%s\","
-                 "\"volume\":%d,\"loops\":1,\"priority\":80,\"replace\":true",
-                 idbuf,
-                 base_tag ? base_tag : "sfx",
-                 vol_adj);
+                /* Standard fire-and-forget SFX packet — SAME FORMAT as potion SFX */
+                char opts[256];
+                snprintf(opts, sizeof(opts),
+                         "\"id\":\"%s\",\"type\":\"sound\",\"tag\":\"%s\","
+                         "\"volume\":%d,\"loops\":1,\"priority\":80,\"replace\":true",
+                         idbuf,
+                         base_tag ? base_tag : "sfx",
+                         vol_adj);
 
-        GMCP_Media_Play(vch->desc, file, opts);
+                GMCP_Media_Play(vch->desc, file, opts);
 
-        log_stringf("DoorSFX: play %s id=%s vol=%d file=%s for %s",
-                    act_str, idbuf, vol_adj, file, vch->name);
-    }
+                log_stringf("DoorSFX: play %s id=%s vol=%d file=%s for %s",
+                            act_str, idbuf, vol_adj, file, vch->name);
+        }
 }
-
 
 /* Helper: play a one-shot door sound that can overlap with others
 static void door_play_event_room( ROOM_INDEX_DATA *room,
@@ -1477,608 +1495,746 @@ static void door_play_event_room( ROOM_INDEX_DATA *room,
 */
 
 /* Picks override (if present) else defaults (registry) and emits to both sides as needed */
-void media_play_door_sfx_room( ROOM_INDEX_DATA *room, int door, door_action_t act )
+void media_play_door_sfx_room(ROOM_INDEX_DATA *room, int door, door_action_t act)
 {
-    if (!room || door < 0 || door > 5)
-        return;
+        if (!room || door < 0 || door > 5)
+                return;
 
-    EXIT_DATA *pexit = room->exit[door];
+        EXIT_DATA *pexit = room->exit[door];
 
-    const int DEF_OPEN_VOL   = 60;
-    const int DEF_CLOSE_VOL  = 55;
-    const int DEF_LOCK_VOL   = 55;
-    const int DEF_UNLOCK_VOL = 55;
+        const int DEF_OPEN_VOL = 60;
+        const int DEF_CLOSE_VOL = 55;
+        const int DEF_LOCK_VOL = 55;
+        const int DEF_UNLOCK_VOL = 55;
 
-    /* pick action strings */
-    const char *act_str = (act == DOOR_ACT_OPEN)   ? "OPEN"   :
-                          (act == DOOR_ACT_CLOSE) ? "CLOSE"  :
-                          (act == DOOR_ACT_LOCK)  ? "LOCK"   :
-                          (act == DOOR_ACT_UNLOCK)? "UNLOCK" : "???";
+        /* pick action strings */
+        const char *act_str = (act == DOOR_ACT_OPEN) ? "OPEN" : (act == DOOR_ACT_CLOSE) ? "CLOSE"
+                                                            : (act == DOOR_ACT_LOCK)    ? "LOCK"
+                                                            : (act == DOOR_ACT_UNLOCK)  ? "UNLOCK"
+                                                                                        : "???";
 
-    const char *rk = (act == DOOR_ACT_OPEN)   ? "sfx.door.open.generic"   :
-                     (act == DOOR_ACT_CLOSE) ? "sfx.door.close.generic"  :
-                     (act == DOOR_ACT_LOCK)  ? "sfx.door.lock.generic"   :
-                     (act == DOOR_ACT_UNLOCK)? "sfx.door.unlock.generic" : NULL;
+        const char *rk = (act == DOOR_ACT_OPEN) ? "sfx.door.open.generic" : (act == DOOR_ACT_CLOSE) ? "sfx.door.close.generic"
+                                                                        : (act == DOOR_ACT_LOCK)    ? "sfx.door.lock.generic"
+                                                                        : (act == DOOR_ACT_UNLOCK)  ? "sfx.door.unlock.generic"
+                                                                                                    : NULL;
 
-    /* ----- THIS SIDE ----- */
-    {
-        const char *dname = directions[door].name ? directions[door].name : "dir";
+        /* ----- THIS SIDE ----- */
+        {
+                const char *dname = directions[door].name ? directions[door].name : "dir";
 
-        log_stringf("DoorSFX: room=%d dir=%s action=%s",
-                    room->vnum, dname, act_str);
+                log_stringf("DoorSFX: room=%d dir=%s action=%s",
+                            room->vnum, dname, act_str);
 
-        /* 1) Per-exit override */
-        if (pexit != NULL) {
-            const char *file = NULL;
-            int vol = 0;
-            switch (act) {
-            case DOOR_ACT_OPEN:   file = pexit->sfx_open;   vol = (pexit->sfx_open_vol   > 0) ? pexit->sfx_open_vol   : DEF_OPEN_VOL;   break;
-            case DOOR_ACT_CLOSE:  file = pexit->sfx_close;  vol = (pexit->sfx_close_vol  > 0) ? pexit->sfx_close_vol  : DEF_CLOSE_VOL;  break;
-            case DOOR_ACT_LOCK:   file = pexit->sfx_lock;   vol = (pexit->sfx_lock_vol   > 0) ? pexit->sfx_lock_vol   : DEF_LOCK_VOL;   break;
-            case DOOR_ACT_UNLOCK: file = pexit->sfx_unlock; vol = (pexit->sfx_unlock_vol > 0) ? pexit->sfx_unlock_vol : DEF_UNLOCK_VOL; break;
-            default: break;
-            }
-            if (file && *file) {
-                log_stringf("DoorSFX: OVERRIDE %s file=%s vol=%d room=%d",
-                            act_str, file, vol, room->vnum);
-                door_play_event_room(room, file, vol, "sfx", dname, act_str, room->vnum);
-                goto mirror_side;
-            }
+                /* 1) Per-exit override */
+                if (pexit != NULL)
+                {
+                        const char *file = NULL;
+                        int vol = 0;
+                        switch (act)
+                        {
+                        case DOOR_ACT_OPEN:
+                                file = pexit->sfx_open;
+                                vol = (pexit->sfx_open_vol > 0) ? pexit->sfx_open_vol : DEF_OPEN_VOL;
+                                break;
+                        case DOOR_ACT_CLOSE:
+                                file = pexit->sfx_close;
+                                vol = (pexit->sfx_close_vol > 0) ? pexit->sfx_close_vol : DEF_CLOSE_VOL;
+                                break;
+                        case DOOR_ACT_LOCK:
+                                file = pexit->sfx_lock;
+                                vol = (pexit->sfx_lock_vol > 0) ? pexit->sfx_lock_vol : DEF_LOCK_VOL;
+                                break;
+                        case DOOR_ACT_UNLOCK:
+                                file = pexit->sfx_unlock;
+                                vol = (pexit->sfx_unlock_vol > 0) ? pexit->sfx_unlock_vol : DEF_UNLOCK_VOL;
+                                break;
+                        default:
+                                break;
+                        }
+                        if (file && *file)
+                        {
+                                log_stringf("DoorSFX: OVERRIDE %s file=%s vol=%d room=%d",
+                                            act_str, file, vol, room->vnum);
+                                door_play_event_room(room, file, vol, "sfx", dname, act_str, room->vnum);
+                                goto mirror_side;
+                        }
+                }
+
+                /* 2) Registry fallback */
+                if (rk != NULL)
+                {
+                        const sound_event_def *ev = sound_event_lookup(rk);
+                        int defv = (act == DOOR_ACT_OPEN) ? DEF_OPEN_VOL : (act == DOOR_ACT_CLOSE) ? DEF_CLOSE_VOL
+                                                                       : (act == DOOR_ACT_LOCK)    ? DEF_LOCK_VOL
+                                                                       : (act == DOOR_ACT_UNLOCK)  ? DEF_UNLOCK_VOL
+                                                                                                   : 50;
+                        int vol = (ev && ev->default_volume > 0) ? ev->default_volume : defv;
+                        const char *file = (ev && ev->files[0] && *ev->files[0]) ? ev->files[0] : NULL;
+
+                        if (file != NULL)
+                        {
+                                log_stringf("DoorSFX: FALLBACK key=%s file=%s vol=%d room=%d",
+                                            rk, file, vol, room->vnum);
+                                door_play_event_room(room, file, vol, (ev && ev->tag) ? ev->tag : "sfx", dname, act_str, room->vnum);
+                        }
+                        else
+                        {
+                                log_stringf("DoorSFX: FALLBACK MISSING key=%s vol=%d room=%d",
+                                            rk, vol, room->vnum);
+                        }
+                }
         }
-
-        /* 2) Registry fallback */
-        if (rk != NULL) {
-            const sound_event_def *ev = sound_event_lookup(rk);
-            int defv = (act == DOOR_ACT_OPEN)   ? DEF_OPEN_VOL   :
-                       (act == DOOR_ACT_CLOSE) ? DEF_CLOSE_VOL  :
-                       (act == DOOR_ACT_LOCK)  ? DEF_LOCK_VOL   :
-                       (act == DOOR_ACT_UNLOCK)? DEF_UNLOCK_VOL : 50;
-            int vol = (ev && ev->default_volume > 0) ? ev->default_volume : defv;
-            const char *file = (ev && ev->files[0] && *ev->files[0]) ? ev->files[0] : NULL;
-
-            if (file != NULL) {
-                log_stringf("DoorSFX: FALLBACK key=%s file=%s vol=%d room=%d",
-                            rk, file, vol, room->vnum);
-                door_play_event_room(room, file, vol, (ev && ev->tag) ? ev->tag : "sfx", dname, act_str, room->vnum);
-            } else {
-                log_stringf("DoorSFX: FALLBACK MISSING key=%s vol=%d room=%d",
-                            rk, vol, room->vnum);
-            }
-        }
-    }
 
 mirror_side:
-    /* ----- FAR SIDE (mirror) ----- */
-    if (pexit && pexit->to_room) {
-        ROOM_INDEX_DATA *other = pexit->to_room;
-        const int rev = directions[door].reverse;
+        /* ----- FAR SIDE (mirror) ----- */
+        if (pexit && pexit->to_room)
+        {
+                ROOM_INDEX_DATA *other = pexit->to_room;
+                const int rev = directions[door].reverse;
 
-        if (rev >= 0 && rev <= 5) {
-            EXIT_DATA *prev = other->exit[rev];
-            const char *dname_rev = directions[rev].name ? directions[rev].name : "dir";
+                if (rev >= 0 && rev <= 5)
+                {
+                        EXIT_DATA *prev = other->exit[rev];
+                        const char *dname_rev = directions[rev].name ? directions[rev].name : "dir";
 
-            log_stringf("DoorSFX: mirror room=%d dir=%s action=%s",
-                        other->vnum, dname_rev, act_str);
+                        log_stringf("DoorSFX: mirror room=%d dir=%s action=%s",
+                                    other->vnum, dname_rev, act_str);
 
-            /* 1) Far-side override */
-            if (prev) {
-                const char *file = NULL;
-                int vol = 0;
-                switch (act) {
-                case DOOR_ACT_OPEN:   file = prev->sfx_open;   vol = (prev->sfx_open_vol   > 0) ? prev->sfx_open_vol   : DEF_OPEN_VOL;   break;
-                case DOOR_ACT_CLOSE:  file = prev->sfx_close;  vol = (prev->sfx_close_vol  > 0) ? prev->sfx_close_vol  : DEF_CLOSE_VOL;  break;
-                case DOOR_ACT_LOCK:   file = prev->sfx_lock;   vol = (prev->sfx_lock_vol   > 0) ? prev->sfx_lock_vol   : DEF_LOCK_VOL;   break;
-                case DOOR_ACT_UNLOCK: file = prev->sfx_unlock; vol = (prev->sfx_unlock_vol > 0) ? prev->sfx_unlock_vol : DEF_UNLOCK_VOL; break;
-                default: break;
+                        /* 1) Far-side override */
+                        if (prev)
+                        {
+                                const char *file = NULL;
+                                int vol = 0;
+                                switch (act)
+                                {
+                                case DOOR_ACT_OPEN:
+                                        file = prev->sfx_open;
+                                        vol = (prev->sfx_open_vol > 0) ? prev->sfx_open_vol : DEF_OPEN_VOL;
+                                        break;
+                                case DOOR_ACT_CLOSE:
+                                        file = prev->sfx_close;
+                                        vol = (prev->sfx_close_vol > 0) ? prev->sfx_close_vol : DEF_CLOSE_VOL;
+                                        break;
+                                case DOOR_ACT_LOCK:
+                                        file = prev->sfx_lock;
+                                        vol = (prev->sfx_lock_vol > 0) ? prev->sfx_lock_vol : DEF_LOCK_VOL;
+                                        break;
+                                case DOOR_ACT_UNLOCK:
+                                        file = prev->sfx_unlock;
+                                        vol = (prev->sfx_unlock_vol > 0) ? prev->sfx_unlock_vol : DEF_UNLOCK_VOL;
+                                        break;
+                                default:
+                                        break;
+                                }
+                                if (file && *file)
+                                {
+                                        log_stringf("DoorSFX: mirror OVERRIDE %s file=%s vol=%d room=%d",
+                                                    act_str, file, vol, other->vnum);
+                                        door_play_event_room(other, file, vol, "sfx", dname_rev, act_str, other->vnum);
+                                        return;
+                                }
+                        }
+
+                        /* 2) Far-side fallback */
+                        if (rk != NULL)
+                        {
+                                const sound_event_def *ev = sound_event_lookup(rk);
+                                int defv = (act == DOOR_ACT_OPEN) ? DEF_OPEN_VOL : (act == DOOR_ACT_CLOSE) ? DEF_CLOSE_VOL
+                                                                               : (act == DOOR_ACT_LOCK)    ? DEF_LOCK_VOL
+                                                                               : (act == DOOR_ACT_UNLOCK)  ? DEF_UNLOCK_VOL
+                                                                                                           : 50;
+                                int vol = (ev && ev->default_volume > 0) ? ev->default_volume : defv;
+                                const char *file = (ev && ev->files[0] && *ev->files[0]) ? ev->files[0] : NULL;
+
+                                if (file != NULL)
+                                {
+                                        log_stringf("DoorSFX: mirror FALLBACK key=%s file=%s vol=%d room=%d",
+                                                    rk, file, vol, other->vnum);
+                                        door_play_event_room(other, file, vol, (ev && ev->tag) ? ev->tag : "sfx", dname_rev, act_str, other->vnum);
+                                }
+                                else
+                                {
+                                        log_stringf("DoorSFX: mirror FALLBACK MISSING key=%s vol=%d room=%d",
+                                                    rk, vol, other->vnum);
+                                }
+                        }
                 }
-                if (file && *file) {
-                    log_stringf("DoorSFX: mirror OVERRIDE %s file=%s vol=%d room=%d",
-                                act_str, file, vol, other->vnum);
-                    door_play_event_room(other, file, vol, "sfx", dname_rev, act_str, other->vnum);
-                    return;
-                }
-            }
-
-            /* 2) Far-side fallback */
-            if (rk != NULL) {
-                const sound_event_def *ev = sound_event_lookup(rk);
-                int defv = (act == DOOR_ACT_OPEN)   ? DEF_OPEN_VOL   :
-                           (act == DOOR_ACT_CLOSE) ? DEF_CLOSE_VOL  :
-                           (act == DOOR_ACT_LOCK)  ? DEF_LOCK_VOL   :
-                           (act == DOOR_ACT_UNLOCK)? DEF_UNLOCK_VOL : 50;
-                int vol = (ev && ev->default_volume > 0) ? ev->default_volume : defv;
-                const char *file = (ev && ev->files[0] && *ev->files[0]) ? ev->files[0] : NULL;
-
-                if (file != NULL) {
-                    log_stringf("DoorSFX: mirror FALLBACK key=%s file=%s vol=%d room=%d",
-                                rk, file, vol, other->vnum);
-                    door_play_event_room(other, file, vol, (ev && ev->tag) ? ev->tag : "sfx", dname_rev, act_str, other->vnum);
-                } else {
-                    log_stringf("DoorSFX: mirror FALLBACK MISSING key=%s vol=%d room=%d",
-                                rk, vol, other->vnum);
-                }
-            }
         }
-    }
 }
 
 /* Play a consumption-related SFX (eat, drink, pill, quaff, smoke, smear). */
-void media_play_consume_sfx_room( ROOM_INDEX_DATA *room, consume_action_t act, CHAR_DATA *actor )
+void media_play_consume_sfx_room(ROOM_INDEX_DATA *room, consume_action_t act, CHAR_DATA *actor)
 {
-    if (!room) return;
+        if (!room)
+                return;
 
-    const char *rk = NULL;
-    const char *act_str = NULL;
+        const char *rk = NULL;
+        const char *act_str = NULL;
 
-    switch (act) {
-    case CONSUME_ACT_EAT:    rk = "sfx.consume.eat";    act_str = "EAT";    break;
-    case CONSUME_ACT_DRINK:  rk = "sfx.consume.drink";  act_str = "DRINK";  break;
-    case CONSUME_ACT_PILL:   rk = "sfx.consume.pill";   act_str = "PILL";   break;
-    case CONSUME_ACT_QUAFF:  rk = "sfx.consume.quaff";  act_str = "QUAFF";  break;
-    case CONSUME_ACT_SMOKE:  rk = "sfx.consume.smoke";  act_str = "SMOKE";  break;
-    case CONSUME_ACT_SMEAR:  rk = "sfx.consume.smear";  act_str = "SMEAR";  break;
-    default: return;
-    }
+        switch (act)
+        {
+        case CONSUME_ACT_EAT:
+                rk = "sfx.consume.eat";
+                act_str = "EAT";
+                break;
+        case CONSUME_ACT_DRINK:
+                rk = "sfx.consume.drink";
+                act_str = "DRINK";
+                break;
+        case CONSUME_ACT_PILL:
+                rk = "sfx.consume.pill";
+                act_str = "PILL";
+                break;
+        case CONSUME_ACT_QUAFF:
+                rk = "sfx.consume.quaff";
+                act_str = "QUAFF";
+                break;
+        case CONSUME_ACT_SMOKE:
+                rk = "sfx.consume.smoke";
+                act_str = "SMOKE";
+                break;
+        case CONSUME_ACT_SMEAR:
+                rk = "sfx.consume.smear";
+                act_str = "SMEAR";
+                break;
+        default:
+                return;
+        }
 
-    const sound_event_def *ev = sound_event_lookup(rk);
-    if (!ev || !ev->files[0] || !*ev->files[0]) {
-        log_stringf("ConsumeSFX: missing registry key=%s", rk);
-        return;
-    }
+        const sound_event_def *ev = sound_event_lookup(rk);
+        if (!ev || !ev->files[0] || !*ev->files[0])
+        {
+                log_stringf("ConsumeSFX: missing registry key=%s", rk);
+                return;
+        }
 
-    int vol = (ev->default_volume > 0) ? ev->default_volume : 60;
-    const char *file = ev->files[0];
+        int vol = (ev->default_volume > 0) ? ev->default_volume : 60;
+        const char *file = ev->files[0];
 
-    log_stringf("ConsumeSFX: action=%s file=%s vol=%d room=%d",
-                act_str, file, vol, room->vnum);
+        log_stringf("ConsumeSFX: action=%s file=%s vol=%d room=%d",
+                    act_str, file, vol, room->vnum);
 
-    /* broadcast to everyone in the room */
-    sound_play_room_file(room, file, vol, (ev->tag ? ev->tag : "sfx"), NULL, rk);
+        /* broadcast to everyone in the room */
+        sound_play_room_file(room, file, vol, (ev->tag ? ev->tag : "sfx"), NULL, rk);
 }
-
 
 /* Internal: pick a file variant by weights (0 => equal weight). */
 static const char *sound_pick_file(const sound_event_def *def)
 {
-    if (!def || !def->files[0]) return NULL;
+        if (!def || !def->files[0])
+                return NULL;
 
-    /* Count options */
-    int n = 0; for (; n < 6 && def->files[n]; ++n) ;
+        /* Count options */
+        int n = 0;
+        for (; n < 6 && def->files[n]; ++n)
+                ;
 
-    /* Sum weights (if all zero, treat as 1 each) */
-    int total = 0; bool any = FALSE;
-    for (int i = 0; i < n; ++i) { total += def->weights[i]; if (def->weights[i] > 0) any = TRUE; }
-    if (!any) total = n; /* equal weights */
+        /* Sum weights (if all zero, treat as 1 each) */
+        int total = 0;
+        bool any = FALSE;
+        for (int i = 0; i < n; ++i)
+        {
+                total += def->weights[i];
+                if (def->weights[i] > 0)
+                        any = TRUE;
+        }
+        if (!any)
+                total = n; /* equal weights */
 
-    int roll = number_range(1, UMAX(1, total));
-    int acc = 0;
+        int roll = number_range(1, UMAX(1, total));
+        int acc = 0;
 
-    for (int i = 0; i < n; ++i) {
-        int w = any ? def->weights[i] : 1;
-        acc += w;
-        if (roll <= acc) return def->files[i];
-    }
-    return def->files[n-1];
+        for (int i = 0; i < n; ++i)
+        {
+                int w = any ? def->weights[i] : 1;
+                acc += w;
+                if (roll <= acc)
+                        return def->files[i];
+        }
+        return def->files[n - 1];
 }
 
 /* Ensure default base URL is set for the profile (harmless if repeated). */
 static void media_default_ensure(DESCRIPTOR_DATA *d)
 {
-    if (!d) return;
-    GMCP_Media_Default(d, "https://www.dragons-domain.org/main/gui/custom/audio/");
+        if (!d)
+                return;
+        GMCP_Media_Default(d, "https://www.dragons-domain.org/main/gui/custom/audio/");
 }
 
 /* Play a one-shot sound to a single descriptor, honoring master volume. */
 static void sound_play_to_desc(DESCRIPTOR_DATA *d, const sound_event_def *def, int vol_override)
 {
-    if (!d || !d->pProtocol || !d->pProtocol->bGMCP
-        || !d->pProtocol->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA]) return;
+        if (!d || !d->pProtocol || !d->pProtocol->bGMCP || !d->pProtocol->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA])
+                return;
 
-    const char *name = sound_pick_file(def);
-    if (!name) return;
+        const char *name = sound_pick_file(def);
+        if (!name)
+                return;
 
-    media_default_ensure(d);
+        media_default_ensure(d);
 
-    int vol = (vol_override > 0) ? vol_override : def->default_volume;
-    /* We can’t scale without a CHAR_DATA; leave raw for pure descriptors. */
-    vol = URANGE(1, vol, 100);
+        int vol = (vol_override > 0) ? vol_override : def->default_volume;
+        /* We can’t scale without a CHAR_DATA; leave raw for pure descriptors. */
+        vol = URANGE(1, vol, 100);
 
-    char opts[256];
-    /* One-shots: type:"sound", tag from registry, loops from registry (usually 1).
-       We do NOT set a key by default so overlapping repeats are allowed;
-       for mutually-exclusive effects you can add a key later per event. */
-    snprintf(opts, sizeof(opts),
-             "\"type\":\"sound\",\"tag\":\"%s\",\"volume\":%d,\"loops\":%d",
-             def->tag ? def->tag : "fx", vol, (def->loops > 0 ? def->loops : 1));
+        char opts[256];
+        /* One-shots: type:"sound", tag from registry, loops from registry (usually 1).
+           We do NOT set a key by default so overlapping repeats are allowed;
+           for mutually-exclusive effects you can add a key later per event. */
+        snprintf(opts, sizeof(opts),
+                 "\"type\":\"sound\",\"tag\":\"%s\",\"volume\":%d,\"loops\":%d",
+                 def->tag ? def->tag : "fx", vol, (def->loops > 0 ? def->loops : 1));
 
-    GMCP_Media_Play(d, name, opts);
+        GMCP_Media_Play(d, name, opts);
 }
 
 /* Public: play to one player */
 void sound_emit_char(CHAR_DATA *ch, const char *event_key, int vol_override)
 {
-    if (!ch || !ch->desc) return;
+        if (!ch || !ch->desc)
+                return;
 
-    const sound_event_def *def = sound_event_lookup(event_key);
-    if (!def) return;
+        const sound_event_def *def = sound_event_lookup(event_key);
+        if (!def)
+                return;
 
-    int vol = (vol_override > 0) ? vol_override : def->default_volume;
-    vol = media_apply_volume(vol, ch, def->tag, "sound");
-    if (vol <= 0) return;
+        int vol = (vol_override > 0) ? vol_override : def->default_volume;
+        vol = media_apply_volume(vol, ch, def->tag, "sound");
+        if (vol <= 0)
+                return;
 
-    /* Clone def for this call so we can pass the scaled volume cleanly */
-    sound_event_def tmp = *def;
-    tmp.default_volume = vol;
+        /* Clone def for this call so we can pass the scaled volume cleanly */
+        sound_event_def tmp = *def;
+        tmp.default_volume = vol;
 
-    sound_play_to_desc(ch->desc, &tmp, -1);
+        sound_play_to_desc(ch->desc, &tmp, -1);
 }
 
 /* Public: play to everyone in a room (except optional 'except') */
 void sound_emit_room(ROOM_INDEX_DATA *room, const char *event_key, int vol_override, CHAR_DATA *except)
 {
-    if (!room) return;
+        if (!room)
+                return;
 
-    const sound_event_def *def = sound_event_lookup(event_key);
-    if (!def) return;
+        const sound_event_def *def = sound_event_lookup(event_key);
+        if (!def)
+                return;
 
-    for (CHAR_DATA *to = room->people; to; to = to->next_in_room) {
-        if (!to->desc || to == except) continue;
+        for (CHAR_DATA *to = room->people; to; to = to->next_in_room)
+        {
+                if (!to->desc || to == except)
+                        continue;
 
-        int vol = (vol_override > 0) ? vol_override : def->default_volume;
-        vol = media_apply_volume(vol, to, def->tag, "sound");
-        if (vol <= 0) continue;
+                int vol = (vol_override > 0) ? vol_override : def->default_volume;
+                vol = media_apply_volume(vol, to, def->tag, "sound");
+                if (vol <= 0)
+                        continue;
 
-        sound_event_def tmp = *def;
-        tmp.default_volume = vol;
+                sound_event_def tmp = *def;
+                tmp.default_volume = vol;
 
-        sound_play_to_desc(to->desc, &tmp, -1);
-    }
+                sound_play_to_desc(to->desc, &tmp, -1);
+        }
 }
-
 
 /* Re-assert environmental media for a player where they are now.
  * If force == TRUE, treat as changed and (re)send the correct lanes
  * even if our cached proto state looks identical.
  */
-void media_env_refresh( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force )
+void media_env_refresh(CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force)
 {
-    if (!ch || !room || !ch->desc || !ch->desc->pProtocol) return;
+        if (!ch || !room || !ch->desc || !ch->desc->pProtocol)
+                return;
 
-    protocol_t *proto = ch->desc->pProtocol;
+        protocol_t *proto = ch->desc->pProtocol;
 
-    /* Must have GMCP Client.Media and not be suppressed */
-    if (!proto->bGMCP || !proto->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA]) return;
-    if (proto->MediaSuppress) return;
+        /* Must have GMCP Client.Media and not be suppressed */
+        if (!proto->bGMCP || !proto->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA])
+                return;
+        if (proto->MediaSuppress)
+                return;
 
-    /* All relative media names resolve under this base */
-    GMCP_Media_Default(ch->desc, "https://www.dragons-domain.org/main/gui/custom/audio/");
+        /* All relative media names resolve under this base */
+        GMCP_Media_Default(ch->desc, "https://www.dragons-domain.org/main/gui/custom/audio/");
 
-    /* Stable keys for our lanes */
-    #define KEY_AREA   "dd.ambient.area"
-    #define KEY_ROOM   "dd.ambient.room"
-    #define KEY_SECT_A "dd.ambient.sector.A"
-    #define KEY_SECT_B "dd.ambient.sector.B"
+/* Stable keys for our lanes */
+#define KEY_AREA "dd.ambient.area"
+#define KEY_ROOM "dd.ambient.room"
+#define KEY_SECT_A "dd.ambient.sector.A"
+#define KEY_SECT_B "dd.ambient.sector.B"
 
-    /* --- Desired names/volumes (room > area > sector) ---------------------- */
-    const char *area_name = NULL; int area_vol = 0;
-    if (room->area && room->area->ambient_sound && *room->area->ambient_sound
-        && room->area->ambient_volume > 0)
-    {
-        area_name = room->area->ambient_sound;
-        area_vol  = URANGE(1, room->area->ambient_volume, 100);
+        /* --- Desired names/volumes (room > area > sector) ---------------------- */
+        const char *area_name = NULL;
+        int area_vol = 0;
+        if (room->area && room->area->ambient_sound && *room->area->ambient_sound && room->area->ambient_volume > 0)
+        {
+                area_name = room->area->ambient_sound;
+                area_vol = URANGE(1, room->area->ambient_volume, 100);
 
-        /* APPLY PLAYER SETTINGS */
-        area_vol = media_apply_volume(area_vol, ch, "environment", "music");
-        if (area_vol <= 0) { area_name = NULL; } /* treat as no area track */
-    }
-
-    const char *room_name = NULL; int room_vol = 0;
-    if (room->ambient_sound && *room->ambient_sound && room->ambient_volume > 0)
-    {
-        room_name = room->ambient_sound;
-        room_vol  = URANGE(1, room->ambient_volume, 100);
-
-        /* APPLY PLAYER SETTINGS */
-        room_vol = media_apply_volume(room_vol, ch, "environment", "music");
-        if (room_vol <= 0) { room_name = NULL; } /* treat as no room track */
-    }
-
-    /* Sector fallback only if no room and no area */
-    const char *sect_name = NULL; int sect_vol = 0;
-    if (!room_name && !area_name)
-    {
-        const sector_ambience_t *sa = sector_ambience_for(room->sector_type);
-        if (sa && sa->name && *sa->name && sa->volume > 0) {
-            sect_name = sa->name;
-            sect_vol  = URANGE(1, sa->volume, 100);
-
-            /* APPLY PLAYER SETTINGS */
-            sect_vol = media_apply_volume(sect_vol, ch, "environment", "music");
-            if (sect_vol <= 0) { sect_name = NULL; } /* treat as no sector track */
+                /* APPLY PLAYER SETTINGS */
+                area_vol = media_apply_volume(area_vol, ch, "environment", "music");
+                if (area_vol <= 0)
+                {
+                        area_name = NULL;
+                } /* treat as no area track */
         }
-    }
 
-    /* ---------------- Sector lane (A/B crossfade) -------------------------- */
-    if (sect_name)
-    {
-        const char *newKey = (proto->MediaSectorFlip ? KEY_SECT_B : KEY_SECT_A);
-        const char *oldKey = (proto->MediaSectorFlip ? KEY_SECT_A : KEY_SECT_B);
+        const char *room_name = NULL;
+        int room_vol = 0;
+        if (room->ambient_sound && *room->ambient_sound && room->ambient_volume > 0)
+        {
+                room_name = room->ambient_sound;
+                room_vol = URANGE(1, room->ambient_volume, 100);
 
-        bool changed = force
-                    || !proto->MediaSectorActive
-                    || !proto->MediaSectorName
-                    || str_cmp(sect_name, proto->MediaSectorName)
-                    || proto->MediaSectorVol != sect_vol;
-
-        if (changed) {
-            char play_opts[256];
-            snprintf(play_opts, sizeof(play_opts),
-                     "\"type\":\"music\",\"tag\":\"environment\",\"key\":\"%s\","
-                     "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":1200",
-                     newKey, sect_vol);
-            GMCP_Media_Play(ch->desc, sect_name, play_opts);
-
-            /* Always ask previous sector key to fade away if we were active */
-            if (proto->MediaSectorActive) {
-                char stop_opts[192];
-                snprintf(stop_opts, sizeof(stop_opts),
-                         "\"key\":\"%s\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200",
-                         oldKey);
-                GMCP_Media_Stop(ch->desc, stop_opts);
-            }
-
-            if (proto->MediaSectorName) { free_string((char*)proto->MediaSectorName); }
-            proto->MediaSectorName   = str_dup(sect_name);
-            proto->MediaSectorVol    = sect_vol;
-            proto->MediaSectorActive = TRUE;
-            proto->MediaSectorFlip   = !proto->MediaSectorFlip;
+                /* APPLY PLAYER SETTINGS */
+                room_vol = media_apply_volume(room_vol, ch, "environment", "music");
+                if (room_vol <= 0)
+                {
+                        room_name = NULL;
+                } /* treat as no room track */
         }
-    }
-    else {
-        /* Room or Area present, or nothing at all: silence the sector lane */
-        GMCP_Media_Stop(ch->desc, "\"key\":\"" KEY_SECT_A "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
-        GMCP_Media_Stop(ch->desc, "\"key\":\"" KEY_SECT_B "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
-        if (proto->MediaSectorName) { free_string((char*)proto->MediaSectorName); proto->MediaSectorName = NULL; }
-        proto->MediaSectorVol    = 0;
-        proto->MediaSectorActive = FALSE;
-        /* keep flip as-is */
-    }
 
-    /* ---------------- Room lane (room OR sector fallback) ------------------ */
-    if (room_name || sect_name)
-    {
-        const char *want_name = room_name ? room_name : sect_name;
-        const int   want_vol  = room_name ? room_vol  : sect_vol;
+        /* Sector fallback only if no room and no area */
+        const char *sect_name = NULL;
+        int sect_vol = 0;
+        if (!room_name && !area_name)
+        {
+                const sector_ambience_t *sa = sector_ambience_for(room->sector_type);
+                if (sa && sa->name && *sa->name && sa->volume > 0)
+                {
+                        sect_name = sa->name;
+                        sect_vol = URANGE(1, sa->volume, 100);
 
-        bool changed = force
-                    || !proto->MediaRoomActive
-                    || !proto->MediaRoomName
-                    || str_cmp(want_name, proto->MediaRoomName)
-                    || proto->MediaRoomVol != want_vol;
+                        /* APPLY PLAYER SETTINGS */
+                        sect_vol = media_apply_volume(sect_vol, ch, "environment", "music");
+                        if (sect_vol <= 0)
+                        {
+                                sect_name = NULL;
+                        } /* treat as no sector track */
+                }
+        }
 
-        if (changed) {
-            /* Fade away previous room lane if name changed, to avoid a pop */
-            if (proto->MediaRoomActive && proto->MediaRoomName
-                && str_cmp(want_name, proto->MediaRoomName))
-            {
+        /* ---------------- Sector lane (A/B crossfade) -------------------------- */
+        if (sect_name)
+        {
+                const char *newKey = (proto->MediaSectorFlip ? KEY_SECT_B : KEY_SECT_A);
+                const char *oldKey = (proto->MediaSectorFlip ? KEY_SECT_A : KEY_SECT_B);
+
+                bool changed = force || !proto->MediaSectorActive || !proto->MediaSectorName || str_cmp(sect_name, proto->MediaSectorName) || proto->MediaSectorVol != sect_vol;
+
+                if (changed)
+                {
+                        char play_opts[256];
+                        snprintf(play_opts, sizeof(play_opts),
+                                 "\"type\":\"music\",\"tag\":\"environment\",\"key\":\"%s\","
+                                 "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":1200",
+                                 newKey, sect_vol);
+                        GMCP_Media_Play(ch->desc, sect_name, play_opts);
+
+                        /* Always ask previous sector key to fade away if we were active */
+                        if (proto->MediaSectorActive)
+                        {
+                                char stop_opts[192];
+                                snprintf(stop_opts, sizeof(stop_opts),
+                                         "\"key\":\"%s\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200",
+                                         oldKey);
+                                GMCP_Media_Stop(ch->desc, stop_opts);
+                        }
+
+                        if (proto->MediaSectorName)
+                        {
+                                free_string((char *)proto->MediaSectorName);
+                        }
+                        proto->MediaSectorName = str_dup(sect_name);
+                        proto->MediaSectorVol = sect_vol;
+                        proto->MediaSectorActive = TRUE;
+                        proto->MediaSectorFlip = !proto->MediaSectorFlip;
+                }
+        }
+        else
+        {
+                /* Room or Area present, or nothing at all: silence the sector lane */
+                GMCP_Media_Stop(ch->desc, "\"key\":\"" KEY_SECT_A "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
+                GMCP_Media_Stop(ch->desc, "\"key\":\"" KEY_SECT_B "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
+                if (proto->MediaSectorName)
+                {
+                        free_string((char *)proto->MediaSectorName);
+                        proto->MediaSectorName = NULL;
+                }
+                proto->MediaSectorVol = 0;
+                proto->MediaSectorActive = FALSE;
+                /* keep flip as-is */
+        }
+
+        /* ---------------- Room lane (room OR sector fallback) ------------------ */
+        if (room_name || sect_name)
+        {
+                const char *want_name = room_name ? room_name : sect_name;
+                const int want_vol = room_name ? room_vol : sect_vol;
+
+                bool changed = force || !proto->MediaRoomActive || !proto->MediaRoomName || str_cmp(want_name, proto->MediaRoomName) || proto->MediaRoomVol != want_vol;
+
+                if (changed)
+                {
+                        /* Fade away previous room lane if name changed, to avoid a pop */
+                        if (proto->MediaRoomActive && proto->MediaRoomName && str_cmp(want_name, proto->MediaRoomName))
+                        {
+                                GMCP_Media_Stop(ch->desc,
+                                                "\"key\":\"" KEY_ROOM "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
+                                if (proto->MediaRoomName)
+                                {
+                                        free_string((char *)proto->MediaRoomName);
+                                        proto->MediaRoomName = NULL;
+                                }
+                                proto->MediaRoomActive = FALSE;
+                                proto->MediaRoomVol = 0;
+                        }
+
+                        char opts_room[256];
+                        snprintf(opts_room, sizeof(opts_room),
+                                 "\"type\":\"music\",\"tag\":\"environment\",\"key\":\"" KEY_ROOM "\","
+                                 "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":1200",
+                                 want_vol);
+                        GMCP_Media_Play(ch->desc, want_name, opts_room);
+
+                        if (proto->MediaRoomName)
+                                free_string((char *)proto->MediaRoomName);
+                        proto->MediaRoomName = str_dup(want_name);
+                        proto->MediaRoomVol = want_vol;
+                        proto->MediaRoomActive = TRUE;
+                }
+
+                /* Room/sector overrides area — unconditionally silence area lane */
                 GMCP_Media_Stop(ch->desc,
-                    "\"key\":\"" KEY_ROOM "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
-                if (proto->MediaRoomName) { free_string((char*)proto->MediaRoomName); proto->MediaRoomName = NULL; }
+                                "\"key\":\"" KEY_AREA "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
+                if (proto->MediaAreaName)
+                {
+                        free_string((char *)proto->MediaAreaName);
+                        proto->MediaAreaName = NULL;
+                }
+                proto->MediaAreaVol = 0;
+                proto->MediaAreaActive = FALSE;
+        }
+        else
+        {
+                /* No room/sector — unconditionally silence the room lane */
+                GMCP_Media_Stop(ch->desc,
+                                "\"key\":\"" KEY_ROOM "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
+                if (proto->MediaRoomName)
+                {
+                        free_string((char *)proto->MediaRoomName);
+                        proto->MediaRoomName = NULL;
+                }
+                proto->MediaRoomVol = 0;
                 proto->MediaRoomActive = FALSE;
-                proto->MediaRoomVol    = 0;
-            }
-
-            char opts_room[256];
-            snprintf(opts_room, sizeof(opts_room),
-                     "\"type\":\"music\",\"tag\":\"environment\",\"key\":\"" KEY_ROOM "\","
-                     "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":1200",
-                     want_vol);
-            GMCP_Media_Play(ch->desc, want_name, opts_room);
-
-            if (proto->MediaRoomName) free_string((char*)proto->MediaRoomName);
-            proto->MediaRoomName   = str_dup(want_name);
-            proto->MediaRoomVol    = want_vol;
-            proto->MediaRoomActive = TRUE;
         }
 
-        /* Room/sector overrides area — unconditionally silence area lane */
-        GMCP_Media_Stop(ch->desc,
-            "\"key\":\"" KEY_AREA "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
-        if (proto->MediaAreaName) { free_string((char*)proto->MediaAreaName); proto->MediaAreaName = NULL; }
-        proto->MediaAreaVol    = 0;
-        proto->MediaAreaActive = FALSE;
-    }
-    else
-    {
-        /* No room/sector — unconditionally silence the room lane */
-        GMCP_Media_Stop(ch->desc,
-            "\"key\":\"" KEY_ROOM "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
-        if (proto->MediaRoomName) { free_string((char*)proto->MediaRoomName); proto->MediaRoomName = NULL; }
-        proto->MediaRoomVol    = 0;
-        proto->MediaRoomActive = FALSE;
-    }
+        /* ---------------- Area lane (only when no room/sector override) -------- */
+        if (!room_name && !sect_name)
+        {
+                if (area_name)
+                {
+                        bool changed = force || !proto->MediaAreaActive || !proto->MediaAreaName || str_cmp(area_name, proto->MediaAreaName) || proto->MediaAreaVol != area_vol;
 
-    /* ---------------- Area lane (only when no room/sector override) -------- */
-    if (!room_name && !sect_name)
-    {
-        if (area_name) {
-            bool changed = force
-                        || !proto->MediaAreaActive
-                        || !proto->MediaAreaName
-                        || str_cmp(area_name, proto->MediaAreaName)
-                        || proto->MediaAreaVol != area_vol;
+                        if (changed)
+                        {
+                                char opts_area[256];
+                                snprintf(opts_area, sizeof(opts_area),
+                                         "\"type\":\"music\",\"tag\":\"environment\",\"key\":\"" KEY_AREA "\","
+                                         "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":1200",
+                                         area_vol);
+                                GMCP_Media_Play(ch->desc, area_name, opts_area);
 
-            if (changed) {
-                char opts_area[256];
-                snprintf(opts_area, sizeof(opts_area),
-                         "\"type\":\"music\",\"tag\":\"environment\",\"key\":\"" KEY_AREA "\","
-                         "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":1200",
-                         area_vol);
-                GMCP_Media_Play(ch->desc, area_name, opts_area);
-
-                if (proto->MediaAreaName) free_string((char*)proto->MediaAreaName);
-                proto->MediaAreaName   = str_dup(area_name);
-                proto->MediaAreaVol    = area_vol;
-                proto->MediaAreaActive = TRUE;
-            }
-        } else {
-            /* No area ambience defined: ensure any area track is off */
-            GMCP_Media_Stop(ch->desc,
-                "\"key\":\"" KEY_AREA "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
-            if (proto->MediaAreaName) { free_string((char*)proto->MediaAreaName); proto->MediaAreaName = NULL; }
-            proto->MediaAreaVol    = 0;
-            proto->MediaAreaActive = FALSE;
+                                if (proto->MediaAreaName)
+                                        free_string((char *)proto->MediaAreaName);
+                                proto->MediaAreaName = str_dup(area_name);
+                                proto->MediaAreaVol = area_vol;
+                                proto->MediaAreaActive = TRUE;
+                        }
+                }
+                else
+                {
+                        /* No area ambience defined: ensure any area track is off */
+                        GMCP_Media_Stop(ch->desc,
+                                        "\"key\":\"" KEY_AREA "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
+                        if (proto->MediaAreaName)
+                        {
+                                free_string((char *)proto->MediaAreaName);
+                                proto->MediaAreaName = NULL;
+                        }
+                        proto->MediaAreaVol = 0;
+                        proto->MediaAreaActive = FALSE;
+                }
         }
-    }
 
-    #undef KEY_AREA
-    #undef KEY_ROOM
-    #undef KEY_SECT_A
-    #undef KEY_SECT_B
+#undef KEY_AREA
+#undef KEY_ROOM
+#undef KEY_SECT_A
+#undef KEY_SECT_B
 
-    /* also refresh the weather ambience layer */
-    if (ch->pcdata && ch->pcdata->snd_enabled && ch->pcdata->snd_env > 0)
-    {
-        /* Re-assert current weather ambience immediately */
-        update_weather_for_char(ch);
-    }
+        /* also refresh the weather ambience layer */
+        if (ch->pcdata && ch->pcdata->snd_enabled && ch->pcdata->snd_env > 0)
+        {
+                /* Re-assert current weather ambience immediately */
+                update_weather_for_char(ch);
+        }
 }
 
 /* ---- Level-up sound broadcast via registry -------------------------------- */
 
 static const char *snd_pick_from_event(const sound_event_def *ev)
 {
-    int i, n = 0, total = 0;
-    if (!ev) return NULL;
+        int i, n = 0, total = 0;
+        if (!ev)
+                return NULL;
 
-    /* Count valid files and sum positive weights */
-    for (i = 0; i < 6 && ev->files[i]; ++i) {
-        ++n;
-        if (ev->weights[i] > 0) total += ev->weights[i];
-    }
-    if (n == 0) return NULL;
-
-    if (total <= 0) {
-        /* No weights -> uniform choice */
-        int idx = number_range(0, n - 1);
-        return ev->files[idx];
-    } else {
-        /* Weighted choice */
-        int roll = number_range(1, total), acc = 0;
-        for (i = 0; i < n; ++i) {
-            int w = (ev->weights[i] > 0 ? ev->weights[i] : 0);
-            acc += w;
-            if (roll <= acc) return ev->files[i];
-        }
-        return ev->files[0]; /* fallback */
-    }
-}
-
-static bool receives_channel_info( CHAR_DATA *to )
-{
-    if (!to || IS_NPC(to)) return FALSE;
-    if (to->silent_mode)   return FALSE;
-    if (IS_SET(to->deaf, CHANNEL_INFO)) return FALSE;
-    return TRUE;
-}
-
-void media_notify_levelup( CHAR_DATA *who )
-{
-    const sound_event_def *ev = sound_event_lookup("notify.levelup");
-    const char *name = ev ? snd_pick_from_event(ev) : NULL;
-    if (!name) return;
-
-    /* 1) Optional: play to the levelling player as well */
-    if (who && who->desc && who->desc->pProtocol
-        && who->desc->pProtocol->bGMCP
-        && who->desc->pProtocol->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA]
-        && !who->desc->pProtocol->MediaSuppress
-        && who->pcdata && who->pcdata->snd_enabled)
-    {
-        int vol = media_apply_master_volume( ev->default_volume, who );
-        if (vol > 0) {
-            GMCP_Media_Default(who->desc, "https://www.dragons-domain.org/main/gui/custom/audio/");
-            /* one-shot sound; tag is ev->tag (e.g., "notify") */
-            char opts[192];
-            snprintf(opts, sizeof(opts),
-                     "\"type\":\"sound\",\"tag\":\"%s\",\"key\":\"dd.notify.levelup\","
-                     "\"volume\":%d,\"priority\":80",
-                     (ev->tag ? ev->tag : "notify"), vol);
-            GMCP_Media_Play(who->desc, name, opts);
-        }
-    }
-
-    /* 2) Broadcast to everyone who would receive INFO per talk_channel rules */
-    {
-        DESCRIPTOR_DATA *d;
-        for (d = descriptor_list; d; d = d->next)
+        /* Count valid files and sum positive weights */
+        for (i = 0; i < 6 && ev->files[i]; ++i)
         {
-            if (d->connected != CON_PLAYING) continue;
-            if (!d->character)               continue;
-            if (d->character == who)         continue; /* mirror talk_channel: skip sender */
-
-            CHAR_DATA *vch = d->character;
-            CHAR_DATA *och = d->original ? d->original : d->character;
-
-            if (!receives_channel_info(och))                       continue;
-            if (!d->pProtocol || !d->pProtocol->bGMCP)             continue;
-            if (!d->pProtocol->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA]) continue;
-            if (d->pProtocol->MediaSuppress)                        continue;
-            if (!vch->pcdata || !vch->pcdata->snd_enabled)         continue;
-
-            {
-                int vol = media_apply_master_volume( ev->default_volume, vch );
-                if (vol <= 0) continue;
-
-                GMCP_Media_Default(d, "https://www.dragons-domain.org/main/gui/custom/audio/");
-                char opts[192];
-                snprintf(opts, sizeof(opts),
-                         "\"type\":\"sound\",\"tag\":\"%s\",\"key\":\"dd.notify.levelup\","
-                         "\"volume\":%d,\"priority\":80",
-                         (ev->tag ? ev->tag : "notify"), vol);
-                GMCP_Media_Play(d, name, opts);
-            }
+                ++n;
+                if (ev->weights[i] > 0)
+                        total += ev->weights[i];
         }
-    }
+        if (n == 0)
+                return NULL;
+
+        if (total <= 0)
+        {
+                /* No weights -> uniform choice */
+                int idx = number_range(0, n - 1);
+                return ev->files[idx];
+        }
+        else
+        {
+                /* Weighted choice */
+                int roll = number_range(1, total), acc = 0;
+                for (i = 0; i < n; ++i)
+                {
+                        int w = (ev->weights[i] > 0 ? ev->weights[i] : 0);
+                        acc += w;
+                        if (roll <= acc)
+                                return ev->files[i];
+                }
+                return ev->files[0]; /* fallback */
+        }
+}
+
+static bool receives_channel_info(CHAR_DATA *to)
+{
+        if (!to || IS_NPC(to))
+                return FALSE;
+        if (to->silent_mode)
+                return FALSE;
+        if (IS_SET(to->deaf, CHANNEL_INFO))
+                return FALSE;
+        return TRUE;
+}
+
+void media_notify_levelup(CHAR_DATA *who)
+{
+        const sound_event_def *ev = sound_event_lookup("notify.levelup");
+        const char *name = ev ? snd_pick_from_event(ev) : NULL;
+        if (!name)
+                return;
+
+        /* 1) Optional: play to the levelling player as well */
+        if (who && who->desc && who->desc->pProtocol && who->desc->pProtocol->bGMCP && who->desc->pProtocol->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA] && !who->desc->pProtocol->MediaSuppress && who->pcdata && who->pcdata->snd_enabled)
+        {
+                int vol = media_apply_master_volume(ev->default_volume, who);
+                if (vol > 0)
+                {
+                        GMCP_Media_Default(who->desc, "https://www.dragons-domain.org/main/gui/custom/audio/");
+                        /* one-shot sound; tag is ev->tag (e.g., "notify") */
+                        char opts[192];
+                        snprintf(opts, sizeof(opts),
+                                 "\"type\":\"sound\",\"tag\":\"%s\",\"key\":\"dd.notify.levelup\","
+                                 "\"volume\":%d,\"priority\":80",
+                                 (ev->tag ? ev->tag : "notify"), vol);
+                        GMCP_Media_Play(who->desc, name, opts);
+                }
+        }
+
+        /* 2) Broadcast to everyone who would receive INFO per talk_channel rules */
+        {
+                DESCRIPTOR_DATA *d;
+                for (d = descriptor_list; d; d = d->next)
+                {
+                        if (d->connected != CON_PLAYING)
+                                continue;
+                        if (!d->character)
+                                continue;
+                        if (d->character == who)
+                                continue; /* mirror talk_channel: skip sender */
+
+                        CHAR_DATA *vch = d->character;
+                        CHAR_DATA *och = d->original ? d->original : d->character;
+
+                        if (!receives_channel_info(och))
+                                continue;
+                        if (!d->pProtocol || !d->pProtocol->bGMCP)
+                                continue;
+                        if (!d->pProtocol->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA])
+                                continue;
+                        if (d->pProtocol->MediaSuppress)
+                                continue;
+                        if (!vch->pcdata || !vch->pcdata->snd_enabled)
+                                continue;
+
+                        {
+                                int vol = media_apply_master_volume(ev->default_volume, vch);
+                                if (vol <= 0)
+                                        continue;
+
+                                GMCP_Media_Default(d, "https://www.dragons-domain.org/main/gui/custom/audio/");
+                                char opts[192];
+                                snprintf(opts, sizeof(opts),
+                                         "\"type\":\"sound\",\"tag\":\"%s\",\"key\":\"dd.notify.levelup\","
+                                         "\"volume\":%d,\"priority\":80",
+                                         (ev->tag ? ev->tag : "notify"), vol);
+                                GMCP_Media_Play(d, name, opts);
+                        }
+                }
+        }
 }
 
 /*
  * Give an obj to a char.
  */
-void obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch )
+void obj_to_char(OBJ_DATA *obj, CHAR_DATA *ch)
 {
         obj->next_content = ch->carrying;
         ch->carrying = obj;
         obj->carried_by = ch;
         obj->in_room = NULL;
         obj->in_obj = NULL;
-        ch->carry_number += get_obj_number( obj );
-        ch->carry_weight += get_obj_weight( obj );
+        ch->carry_number += get_obj_number(obj);
+        ch->carry_weight += get_obj_weight(obj);
 }
 
 /*
  * Place an obj in a char's vault.
  */
-void obj_to_charvault( OBJ_DATA *obj, CHAR_DATA *ch )
+void obj_to_charvault(OBJ_DATA *obj, CHAR_DATA *ch)
 {
         obj->next_content = ch->pcdata->vault;
         ch->pcdata->vault = obj;
         obj->vaulted_by = ch;
         obj->in_room = NULL;
         obj->in_obj = NULL;
-        ch->pcdata->vault_number += get_obj_number( obj );
-        ch->pcdata->vault_weight += get_obj_weight( obj );
-/*         sprintf(log_buf, "Vault weight is: %d\r\n", ch->pcdata->vault_weight);
-        log_string(log_buf);
-        sprintf(log_buf, "Vault number is: %d\r\n", ch->pcdata->vault_number);
-        log_string(log_buf); */
+        ch->pcdata->vault_number += get_obj_number(obj);
+        ch->pcdata->vault_weight += get_obj_weight(obj);
+        /*         sprintf(log_buf, "Vault weight is: %d\r\n", ch->pcdata->vault_weight);
+                log_string(log_buf);
+                sprintf(log_buf, "Vault number is: %d\r\n", ch->pcdata->vault_number);
+                log_string(log_buf); */
         return;
 }
 
 /*
  * Give obj to char from a char's vault.
  */
-void obj_to_charfromvault( OBJ_DATA *obj, CHAR_DATA *ch )
+void obj_to_charfromvault(OBJ_DATA *obj, CHAR_DATA *ch)
 {
         obj->next_content = ch->carrying;
         ch->carrying = obj;
@@ -2086,31 +2242,30 @@ void obj_to_charfromvault( OBJ_DATA *obj, CHAR_DATA *ch )
         obj->carried_by = ch;
         obj->in_room = NULL;
         obj->in_obj = NULL;
-        ch->carry_number += get_obj_number( obj );
-        ch->carry_weight += get_obj_weight( obj );
-        ch->pcdata->vault_number -= get_obj_number( obj );
-        ch->pcdata->vault_weight -= get_obj_weight( obj );
+        ch->carry_number += get_obj_number(obj);
+        ch->carry_weight += get_obj_weight(obj);
+        ch->pcdata->vault_number -= get_obj_number(obj);
+        ch->pcdata->vault_weight -= get_obj_weight(obj);
 }
-
 
 /*
  * Take an obj from its character.
  */
-void obj_from_char( OBJ_DATA *obj )
+void obj_from_char(OBJ_DATA *obj)
 {
         CHAR_DATA *ch;
         int i;
 
-        if ( !( ch = obj->carried_by ) )
+        if (!(ch = obj->carried_by))
         {
-                bug( "Obj_from_char: null ch.", 0 );
+                bug("Obj_from_char: null ch.", 0);
                 return;
         }
 
-        if ( obj->wear_loc != WEAR_NONE )
-                unequip_char( ch, obj );
+        if (obj->wear_loc != WEAR_NONE)
+                unequip_char(ch, obj);
 
-        if ( ch->carrying == obj )
+        if (ch->carrying == obj)
         {
                 ch->carrying = obj->next_content;
         }
@@ -2118,23 +2273,23 @@ void obj_from_char( OBJ_DATA *obj )
         {
                 OBJ_DATA *prev;
 
-                for ( prev = ch->carrying; prev; prev = prev->next_content )
+                for (prev = ch->carrying; prev; prev = prev->next_content)
                 {
-                        if ( prev->next_content == obj )
+                        if (prev->next_content == obj)
                         {
                                 prev->next_content = obj->next_content;
                                 break;
                         }
                 }
 
-                if ( !prev )
-                        bug( "Obj_from_char: obj not in list.", 0 );
+                if (!prev)
+                        bug("Obj_from_char: obj not in list.", 0);
         }
 
         /* Clear morph list for shifters - Shade */
         if (ch->class == CLASS_SHAPE_SHIFTER && !IS_NPC(ch))
         {
-                for (i=0;i<MAX_WEAR;i++)
+                for (i = 0; i < MAX_WEAR; i++)
                 {
                         if (ch->pcdata->morph_list[i] == obj)
                         {
@@ -2146,24 +2301,24 @@ void obj_from_char( OBJ_DATA *obj )
 
         obj->carried_by = NULL;
         obj->next_content = NULL;
-        ch->carry_number -= get_obj_number( obj );
-        ch->carry_weight -= get_obj_weight( obj );
+        ch->carry_number -= get_obj_number(obj);
+        ch->carry_weight -= get_obj_weight(obj);
 }
 
 /*
  * Take an obj from a pc's vault
  */
-void obj_from_charvault( OBJ_DATA *obj )
+void obj_from_charvault(OBJ_DATA *obj)
 {
         CHAR_DATA *ch;
 
-        if ( !( ch = obj->vaulted_by ) )
+        if (!(ch = obj->vaulted_by))
         {
-                bug( "Obj_from_char: null ch.", 0 );
+                bug("Obj_from_char: null ch.", 0);
                 return;
         }
 
-        if ( ch->pcdata->vault == obj )
+        if (ch->pcdata->vault == obj)
         {
                 ch->pcdata->vault = obj->next_content;
         }
@@ -2171,19 +2326,18 @@ void obj_from_charvault( OBJ_DATA *obj )
         {
                 OBJ_DATA *prev;
 
-                for ( prev = ch->pcdata->vault; prev; prev = prev->next_content )
+                for (prev = ch->pcdata->vault; prev; prev = prev->next_content)
                 {
-                        if ( prev->next_content == obj )
+                        if (prev->next_content == obj)
                         {
                                 prev->next_content = obj->next_content;
                                 break;
                         }
                 }
 
-                if ( !prev )
-                        bug( "Obj_from_char VAULT: obj not in VAULT list.", 0 );
+                if (!prev)
+                        bug("Obj_from_char VAULT: obj not in VAULT list.", 0);
         }
-
 
         obj->vaulted_by = NULL;
         obj->next_content = NULL;
@@ -2194,160 +2348,166 @@ void obj_from_charvault( OBJ_DATA *obj )
 /* Determine the highest level object in a container. Deals with deep nesting. */
 int max_obj_in_obj_level(OBJ_DATA *obj)
 {
-    int max_level;
-    int sub_max_level;
-    OBJ_DATA *sub_obj;
+        int max_level;
+        int sub_max_level;
+        OBJ_DATA *sub_obj;
 
-    max_level = obj->level;
+        max_level = obj->level;
 
-    for (sub_obj = obj->contains; sub_obj != NULL; sub_obj = sub_obj->next_content)
-    {
-        if (sub_obj->deleted)
+        for (sub_obj = obj->contains; sub_obj != NULL; sub_obj = sub_obj->next_content)
         {
-            continue;
-        }
+                if (sub_obj->deleted)
+                {
+                        continue;
+                }
 
-        sub_max_level = max_obj_in_obj_level(sub_obj);
-        if (sub_max_level > max_level)
-        {
-            max_level = sub_max_level;
+                sub_max_level = max_obj_in_obj_level(sub_obj);
+                if (sub_max_level > max_level)
+                {
+                        max_level = sub_max_level;
+                }
         }
-    }
-    return max_level;
+        return max_level;
 }
 
 /*
  * Find the ac value of an obj, including position effect.
  */
-int apply_ac( OBJ_DATA *obj, int iWear )
+int apply_ac(OBJ_DATA *obj, int iWear)
 {
-        if ( obj->item_type != ITEM_ARMOR )
+        if (obj->item_type != ITEM_ARMOR)
                 return 0;
 
-        switch ( iWear )
+        switch (iWear)
         {
-            case WEAR_BODY:     return 3 * obj->value[0];
-            case WEAR_HEAD:     return 2 * obj->value[0];
-            case WEAR_LEGS:     return 2 * obj->value[0];
-            case WEAR_FEET:     return     obj->value[0];
-            case WEAR_HANDS:    return     obj->value[0];
-            case WEAR_ARMS:     return     obj->value[0];
-            case WEAR_SHIELD:   return     obj->value[0];
-            case WEAR_FINGER_L: return     obj->value[0];
-            case WEAR_FINGER_R: return     obj->value[0];
-            case WEAR_NECK_1:   return     obj->value[0];
-            case WEAR_NECK_2:   return     obj->value[0];
-            case WEAR_ABOUT:    return 2 * obj->value[0];
-            case WEAR_WAIST:    return     obj->value[0];
-            case WEAR_WRIST_L:  return     obj->value[0];
-            case WEAR_WRIST_R:  return     obj->value[0];
-            case WEAR_HOLD:     return     obj->value[0];
+        case WEAR_BODY:
+                return 3 * obj->value[0];
+        case WEAR_HEAD:
+                return 2 * obj->value[0];
+        case WEAR_LEGS:
+                return 2 * obj->value[0];
+        case WEAR_FEET:
+                return obj->value[0];
+        case WEAR_HANDS:
+                return obj->value[0];
+        case WEAR_ARMS:
+                return obj->value[0];
+        case WEAR_SHIELD:
+                return obj->value[0];
+        case WEAR_FINGER_L:
+                return obj->value[0];
+        case WEAR_FINGER_R:
+                return obj->value[0];
+        case WEAR_NECK_1:
+                return obj->value[0];
+        case WEAR_NECK_2:
+                return obj->value[0];
+        case WEAR_ABOUT:
+                return 2 * obj->value[0];
+        case WEAR_WAIST:
+                return obj->value[0];
+        case WEAR_WRIST_L:
+                return obj->value[0];
+        case WEAR_WRIST_R:
+                return obj->value[0];
+        case WEAR_HOLD:
+                return obj->value[0];
         }
 
         return 0;
 }
 
-
 /*
  * Find a piece of eq on a character.
  */
-OBJ_DATA *get_eq_char( CHAR_DATA *ch, int iWear )
+OBJ_DATA *get_eq_char(CHAR_DATA *ch, int iWear)
 {
         OBJ_DATA *obj;
 
-        for ( obj = ch->carrying; obj; obj = obj->next_content )
+        for (obj = ch->carrying; obj; obj = obj->next_content)
         {
-                if ( obj->deleted )
+                if (obj->deleted)
                         continue;
 
-                if ( obj->wear_loc == iWear )
+                if (obj->wear_loc == iWear)
                         return obj;
         }
 
         return NULL;
 }
 
-
 /*
  * Equip a char with an obj.
  */
-void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
+void equip_char(CHAR_DATA *ch, OBJ_DATA *obj, int iWear)
 {
         AFFECT_DATA *paf;
         OBJSET_INDEX_DATA *pObjSetIndex;
-        char         buf [ MAX_STRING_LENGTH ];
+        char buf[MAX_STRING_LENGTH];
 
-        if ( get_eq_char( ch, iWear ) )
+        if (get_eq_char(ch, iWear))
         {
-                sprintf( buf, "Equip_char: %s already equipped at %d.",
-                        ch->name, iWear );
-                bug( buf, 0 );
+                sprintf(buf, "Equip_char: %s already equipped at %d.",
+                        ch->name, iWear);
+                bug(buf, 0);
                 return;
         }
 
-        if (   ( IS_OBJ_STAT( obj, ITEM_ANTI_EVIL   ) && IS_EVIL   ( ch ) )
-            || ( IS_OBJ_STAT( obj, ITEM_ANTI_GOOD   ) && IS_GOOD   ( ch ) )
-            || ( IS_OBJ_STAT( obj, ITEM_ANTI_NEUTRAL) && IS_NEUTRAL( ch ) ) )
+        if ((IS_OBJ_STAT(obj, ITEM_ANTI_EVIL) && IS_EVIL(ch)) || (IS_OBJ_STAT(obj, ITEM_ANTI_GOOD) && IS_GOOD(ch)) || (IS_OBJ_STAT(obj, ITEM_ANTI_NEUTRAL) && IS_NEUTRAL(ch)))
         {
                 /*
                  * Thanks to Morgenes for the bug fix here!
                  */
-                act( "You are {Yzapped{x by $p and drop it.", ch, obj, NULL, TO_CHAR );
-                act( "$n is {Yzapped{x by $p and drops it.",  ch, obj, NULL, TO_ROOM );
-                obj_from_char( obj );
-                obj_to_room( obj, ch->in_room );
+                act("You are {Yzapped{x by $p and drop it.", ch, obj, NULL, TO_CHAR);
+                act("$n is {Yzapped{x by $p and drops it.", ch, obj, NULL, TO_ROOM);
+                obj_from_char(obj);
+                obj_to_room(obj, ch->in_room);
                 return;
         }
 
-
-                /* set bonus hack - Brutus Jul 2022 */
-        if ( !IS_NPC(ch) && ( pObjSetIndex = objects_objset(obj->pIndexData->vnum ) ) )
+        /* set bonus hack - Brutus Jul 2022 */
+        if (!IS_NPC(ch) && (pObjSetIndex = objects_objset(obj->pIndexData->vnum)))
         {
                 int count;
-                count=0;
-                for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
+                count = 0;
+                for (paf = pObjSetIndex->affected; paf; paf = paf->next)
                 {
                         count++;
-                     /*   bug( "EQUIP_CHAR DEBUG: total count %d.", count ); */
-                        if ( gets_bonus_objset ( pObjSetIndex, ch, obj, count) )
+                        /*   bug( "EQUIP_CHAR DEBUG: total count %d.", count ); */
+                        if (gets_bonus_objset(pObjSetIndex, ch, obj, count))
                         {
-                                affect_modify( ch, paf, TRUE, obj );
+                                affect_modify(ch, paf, TRUE, obj);
                                 /* If the object you're about to wear is NOT a set OR it is and you get a bonus then apply effect */
-                                send_to_char ( "{WYou obtain a set bonus.{x\n\r", ch);
+                                send_to_char("{WYou obtain a set bonus.{x\n\r", ch);
                                 break;
                         }
                 }
-
         }
-                /* End set bonus hack */
+        /* End set bonus hack */
 
-        if( iWear != WEAR_RANGED_WEAPON )
+        if (iWear != WEAR_RANGED_WEAPON)
         {
-                ch->armor -= apply_ac( obj, iWear );
+                ch->armor -= apply_ac(obj, iWear);
 
                 if (!obj->how_created || obj->how_created == CREATED_PRE_DD5)
                 {
-                for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
-                        affect_modify( ch, paf, TRUE, obj );
+                        for (paf = obj->pIndexData->affected; paf; paf = paf->next)
+                                affect_modify(ch, paf, TRUE, obj);
                 }
 
-                for ( paf = obj->affected; paf; paf = paf->next )
-                        affect_modify( ch, paf, TRUE, obj );
+                for (paf = obj->affected; paf; paf = paf->next)
+                        affect_modify(ch, paf, TRUE, obj);
 
-                if ( obj->item_type == ITEM_LIGHT
-                    && iWear == WEAR_LIGHT
-                    && obj->value[2] != 0
-                    && ch->in_room )
+                if (obj->item_type == ITEM_LIGHT && iWear == WEAR_LIGHT && obj->value[2] != 0 && ch->in_room)
                         ++ch->in_room->light;
         }
 
         obj->wear_loc = iWear;
-        update_pos( ch );
+        update_pos(ch);
         return;
 }
 
-
-void form_equip_char (CHAR_DATA *ch, OBJ_DATA *obj, int iWear)
+void form_equip_char(CHAR_DATA *ch, OBJ_DATA *obj, int iWear)
 {
         OBJ_DATA *removed = NULL;
 
@@ -2363,65 +2523,59 @@ void form_equip_char (CHAR_DATA *ch, OBJ_DATA *obj, int iWear)
         equip_char(ch, obj, iWear);
 }
 
-
 /*
  * Unequip a char with an obj.
  */
-void unequip_char( CHAR_DATA *ch, OBJ_DATA *obj )
+void unequip_char(CHAR_DATA *ch, OBJ_DATA *obj)
 {
         AFFECT_DATA *paf;
-        char         buf [ MAX_STRING_LENGTH ];
+        char buf[MAX_STRING_LENGTH];
         OBJSET_INDEX_DATA *pObjSetIndex;
 
-        if ( obj->wear_loc == WEAR_NONE )
+        if (obj->wear_loc == WEAR_NONE)
         {
-                sprintf( buf, "Unequip_char: %s already unequipped with %d.",
-                        ch->name, obj->pIndexData->vnum );
-                bug( buf, 0 );
+                sprintf(buf, "Unequip_char: %s already unequipped with %d.",
+                        ch->name, obj->pIndexData->vnum);
+                bug(buf, 0);
                 return;
         }
 
-
         /* set bonus hack - Brutus Jul 2022 */
-        if ( !IS_NPC(ch) && ( pObjSetIndex = objects_objset(obj->pIndexData->vnum ) ) )
+        if (!IS_NPC(ch) && (pObjSetIndex = objects_objset(obj->pIndexData->vnum)))
         {
                 int count;
-                count=0;
+                count = 0;
 
-                for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
+                for (paf = pObjSetIndex->affected; paf; paf = paf->next)
                 {
                         count++;
 
-                        if ( rem_bonus_objset ( pObjSetIndex, ch, obj, count) )
+                        if (rem_bonus_objset(pObjSetIndex, ch, obj, count))
                         {
-                                affect_modify( ch, paf, FALSE, obj );
-                                if (ch->pcdata->has_quit) break;
-                                send_to_char ( "{WYour set bonus is removed.{x\n\r", ch);
+                                affect_modify(ch, paf, FALSE, obj);
+                                if (ch->pcdata->has_quit)
+                                        break;
+                                send_to_char("{WYour set bonus is removed.{x\n\r", ch);
                                 break;
                         }
                 }
 
-        }  /* End set bonus hack */
+        } /* End set bonus hack */
 
-        if( obj->wear_loc != WEAR_RANGED_WEAPON )
+        if (obj->wear_loc != WEAR_RANGED_WEAPON)
         {
-                ch->armor += apply_ac( obj, obj->wear_loc );
+                ch->armor += apply_ac(obj, obj->wear_loc);
 
                 if (!obj->how_created || obj->how_created == CREATED_PRE_DD5)
                 {
-                        for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
-                        affect_modify( ch, paf, FALSE, obj );
+                        for (paf = obj->pIndexData->affected; paf; paf = paf->next)
+                                affect_modify(ch, paf, FALSE, obj);
                 }
 
-                for ( paf = obj->affected; paf; paf = paf->next )
-                        affect_modify( ch, paf, FALSE, obj );
+                for (paf = obj->affected; paf; paf = paf->next)
+                        affect_modify(ch, paf, FALSE, obj);
 
-                if ( obj->item_type == ITEM_LIGHT
-                    && obj->wear_loc == WEAR_LIGHT
-                    && obj->value[2] != 0
-                    && ch->in_room
-                    && (!IS_NPC(ch) && ch->desc && ch->desc->connected != CON_GET_OLD_PASSWORD)
-                    && ch->in_room->light > 0 )
+                if (obj->item_type == ITEM_LIGHT && obj->wear_loc == WEAR_LIGHT && obj->value[2] != 0 && ch->in_room && (!IS_NPC(ch) && ch->desc && ch->desc->connected != CON_GET_OLD_PASSWORD) && ch->in_room->light > 0)
                         --ch->in_room->light;
         }
 
@@ -2429,43 +2583,41 @@ void unequip_char( CHAR_DATA *ch, OBJ_DATA *obj )
         return;
 }
 
-
 /*
  * Count occurrences of an obj in a list.
  */
-int count_obj_list( OBJ_INDEX_DATA *pObjIndex, OBJ_DATA *list )
+int count_obj_list(OBJ_INDEX_DATA *pObjIndex, OBJ_DATA *list)
 {
         OBJ_DATA *obj;
-        int       nMatch;
+        int nMatch;
 
         nMatch = 0;
-        for ( obj = list; obj; obj = obj->next_content )
+        for (obj = list; obj; obj = obj->next_content)
         {
-                if ( obj->deleted )
+                if (obj->deleted)
                         continue;
 
-                if ( obj->pIndexData == pObjIndex )
+                if (obj->pIndexData == pObjIndex)
                         nMatch++;
         }
 
         return nMatch;
 }
 
-
 /*
  * Move an obj out of a room.
  */
-void obj_from_room( OBJ_DATA *obj )
+void obj_from_room(OBJ_DATA *obj)
 {
         ROOM_INDEX_DATA *in_room;
 
-        if ( !( in_room = obj->in_room ) )
+        if (!(in_room = obj->in_room))
         {
-                bug( "obj_from_room: NULL.", 0 );
+                bug("obj_from_room: NULL.", 0);
                 return;
         }
 
-        if ( obj == in_room->contents )
+        if (obj == in_room->contents)
         {
                 in_room->contents = obj->next_content;
         }
@@ -2473,23 +2625,23 @@ void obj_from_room( OBJ_DATA *obj )
         {
                 OBJ_DATA *prev;
 
-                for ( prev = in_room->contents; prev; prev = prev->next_content )
+                for (prev = in_room->contents; prev; prev = prev->next_content)
                 {
-                        if ( prev->next_content == obj )
+                        if (prev->next_content == obj)
                         {
                                 prev->next_content = obj->next_content;
                                 break;
                         }
                 }
 
-                if ( !prev )
+                if (!prev)
                 {
-                        bug( "Obj_from_room: obj not found.", 0 );
+                        bug("Obj_from_room: obj not found.", 0);
                         return;
                 }
         }
 
-        obj->in_room      = NULL;
+        obj->in_room = NULL;
         obj->next_content = NULL;
         return;
 }
@@ -2497,7 +2649,7 @@ void obj_from_room( OBJ_DATA *obj )
 /*
  * Move an obj into a room.
  */
-void obj_to_room( OBJ_DATA *obj, ROOM_INDEX_DATA *pRoomIndex )
+void obj_to_room(OBJ_DATA *obj, ROOM_INDEX_DATA *pRoomIndex)
 {
         obj->next_content = pRoomIndex->contents;
         pRoomIndex->contents = obj;
@@ -2507,15 +2659,14 @@ void obj_to_room( OBJ_DATA *obj, ROOM_INDEX_DATA *pRoomIndex )
         return;
 }
 
-
 /*
  * Move an object into an object.
  */
-void obj_to_obj( OBJ_DATA *obj, OBJ_DATA *obj_to )
+void obj_to_obj(OBJ_DATA *obj, OBJ_DATA *obj_to)
 {
-        if ( obj_to->deleted )
+        if (obj_to->deleted)
         {
-                bug( "Obj_to_obj:  Obj_to already deleted", 0 );
+                bug("Obj_to_obj:  Obj_to already deleted", 0);
                 return;
         }
 
@@ -2525,27 +2676,27 @@ void obj_to_obj( OBJ_DATA *obj, OBJ_DATA *obj_to )
         obj->in_room = NULL;
         obj->carried_by = NULL;
 
-        for ( ; obj_to; obj_to = obj_to->in_obj )
+        for (; obj_to; obj_to = obj_to->in_obj)
         {
-                if ( obj_to->deleted )
+                if (obj_to->deleted)
                         continue;
 
-                if ( obj_to->carried_by )
+                if (obj_to->carried_by)
                 {
                         /* Strider - Comment out line below - Container code fix  */
                         /* obj_to->carried_by->carry_number += get_obj_number( obj ); */
-                        obj_to->carried_by->carry_weight += get_obj_weight( obj );
+                        obj_to->carried_by->carry_weight += get_obj_weight(obj);
                 }
         }
 
         return;
 }
 
-void obj_to_objvault( OBJ_DATA *obj, OBJ_DATA *obj_to )
+void obj_to_objvault(OBJ_DATA *obj, OBJ_DATA *obj_to)
 {
-        if ( obj_to->deleted )
+        if (obj_to->deleted)
         {
-                bug( "Obj_to_obj:  Obj_to already deleted", 0 );
+                bug("Obj_to_obj:  Obj_to already deleted", 0);
                 return;
         }
 
@@ -2555,37 +2706,36 @@ void obj_to_objvault( OBJ_DATA *obj, OBJ_DATA *obj_to )
         obj->in_room = NULL;
         obj->vaulted_by = NULL;
 
-        for ( ; obj_to; obj_to = obj_to->in_obj )
+        for (; obj_to; obj_to = obj_to->in_obj)
         {
-                if ( obj_to->deleted )
+                if (obj_to->deleted)
                         continue;
 
-                if ( obj_to->vaulted_by )
+                if (obj_to->vaulted_by)
                 {
                         /* Strider - Comment out line below - Container code fix  */
                         /* obj_to->carried_by->carry_number += get_obj_number( obj ); */
-                        obj_to->vaulted_by->pcdata->vault_weight += get_obj_weight( obj );
+                        obj_to->vaulted_by->pcdata->vault_weight += get_obj_weight(obj);
                 }
         }
 
         return;
 }
 
-
 /*
  * Move an object out of an object.
  */
-void obj_from_obj( OBJ_DATA *obj )
+void obj_from_obj(OBJ_DATA *obj)
 {
         OBJ_DATA *obj_from;
 
-        if ( !( obj_from = obj->in_obj ) )
+        if (!(obj_from = obj->in_obj))
         {
-                bug( "Obj_from_obj: null obj_from.", 0 );
+                bug("Obj_from_obj: null obj_from.", 0);
                 return;
         }
 
-        if ( obj == obj_from->contains )
+        if (obj == obj_from->contains)
         {
                 obj_from->contains = obj->next_content;
         }
@@ -2593,34 +2743,34 @@ void obj_from_obj( OBJ_DATA *obj )
         {
                 OBJ_DATA *prev;
 
-                for ( prev = obj_from->contains; prev; prev = prev->next_content )
+                for (prev = obj_from->contains; prev; prev = prev->next_content)
                 {
-                        if ( prev->next_content == obj )
+                        if (prev->next_content == obj)
                         {
                                 prev->next_content = obj->next_content;
                                 break;
                         }
                 }
 
-                if ( !prev )
+                if (!prev)
                 {
-                        bug( "Obj_from_obj: obj not found.", 0 );
+                        bug("Obj_from_obj: obj not found.", 0);
                         return;
                 }
         }
 
         obj->next_content = NULL;
-        obj->in_obj       = NULL;
+        obj->in_obj = NULL;
 
-        for ( ; obj_from; obj_from = obj_from->in_obj )
+        for (; obj_from; obj_from = obj_from->in_obj)
         {
-                if ( obj_from->deleted )
+                if (obj_from->deleted)
                         continue;
-                if ( obj_from->carried_by )
+                if (obj_from->carried_by)
                 {
                         /* Strider - Comment out line below - Container code fix  */
                         /*obj_from->carried_by->carry_number -= get_obj_number( obj ); */
-                        obj_from->carried_by->carry_weight -= get_obj_weight( obj );
+                        obj_from->carried_by->carry_weight -= get_obj_weight(obj);
                 }
         }
 
@@ -2630,17 +2780,17 @@ void obj_from_obj( OBJ_DATA *obj )
 /*
  * Move an object out of an object that is in a vault. --Owl 23/2/23
  */
-void obj_from_objvault( OBJ_DATA *obj )
+void obj_from_objvault(OBJ_DATA *obj)
 {
         OBJ_DATA *obj_from;
 
-        if ( !( obj_from = obj->in_obj ) )
+        if (!(obj_from = obj->in_obj))
         {
-                bug( "Obj_from_obj: null obj_from.", 0 );
+                bug("Obj_from_obj: null obj_from.", 0);
                 return;
         }
 
-        if ( obj == obj_from->contains )
+        if (obj == obj_from->contains)
         {
                 obj_from->contains = obj->next_content;
         }
@@ -2648,30 +2798,30 @@ void obj_from_objvault( OBJ_DATA *obj )
         {
                 OBJ_DATA *prev;
 
-                for ( prev = obj_from->contains; prev; prev = prev->next_content )
+                for (prev = obj_from->contains; prev; prev = prev->next_content)
                 {
-                        if ( prev->next_content == obj )
+                        if (prev->next_content == obj)
                         {
                                 prev->next_content = obj->next_content;
                                 break;
                         }
                 }
 
-                if ( !prev )
+                if (!prev)
                 {
-                        bug( "Obj_from_obj VAULT: obj not found.", 0 );
+                        bug("Obj_from_obj VAULT: obj not found.", 0);
                         return;
                 }
         }
 
         obj->next_content = NULL;
-        obj->in_obj       = NULL;
+        obj->in_obj = NULL;
 
-        for ( ; obj_from; obj_from = obj_from->in_obj )
+        for (; obj_from; obj_from = obj_from->in_obj)
         {
-                if ( obj_from->deleted )
+                if (obj_from->deleted)
                         continue;
-                if ( obj_from->vaulted_by )
+                if (obj_from->vaulted_by)
                 {
                         /* Strider - Comment out line below - Container code fix  */
                         /*obj_from->carried_by->carry_number -= get_obj_number( obj ); */
@@ -2682,122 +2832,120 @@ void obj_from_objvault( OBJ_DATA *obj )
         return;
 }
 
-
 /*
  * Extract an obj from the world.
  */
-void extract_obj( OBJ_DATA *obj )
+void extract_obj(OBJ_DATA *obj)
 {
         OBJ_DATA *obj_content;
         OBJ_DATA *obj_next;
         extern bool delete_obj;
 
-        if ( obj->deleted )
+        if (obj->deleted)
         {
-                bug( "Extract_obj:  Obj already deleted", 0 );
+                bug("Extract_obj:  Obj already deleted", 0);
                 return;
         }
 
-        if ( obj->in_room )
-                obj_from_room( obj );
+        if (obj->in_room)
+                obj_from_room(obj);
 
-        else if ( obj->carried_by )
-                obj_from_char( obj );
+        else if (obj->carried_by)
+                obj_from_char(obj);
 
-        else if ( obj->in_obj )
-                obj_from_obj( obj );
+        else if (obj->in_obj)
+                obj_from_obj(obj);
 
-        for ( obj_content = obj->contains; obj_content; obj_content = obj_next )
+        for (obj_content = obj->contains; obj_content; obj_content = obj_next)
         {
                 obj_next = obj_content->next_content;
-                if( obj_content->deleted )
+                if (obj_content->deleted)
                         continue;
-                extract_obj( obj_content );
+                extract_obj(obj_content);
         }
 
         obj->deleted = TRUE;
-        delete_obj   = TRUE;
+        delete_obj = TRUE;
         return;
 }
-
 
 /*
  * Extract a char from the world.
  */
-void extract_char( CHAR_DATA *ch, bool fPull )
+void extract_char(CHAR_DATA *ch, bool fPull)
 {
         CHAR_DATA *wch;
-        OBJ_DATA  *obj, *obj_next;
+        OBJ_DATA *obj, *obj_next;
         extern bool delete_char;
 
-        if ( !ch->in_room )
+        if (!ch->in_room)
         {
-                bug( "Extract_char: NULL.", 0 );
+                bug("Extract_char: NULL.", 0);
                 return;
         }
 
         /* Grab protocol (may be NULL for NPCs or non-GMCP connections) */
         protocol_t *p = (ch->desc ? ch->desc->pProtocol : NULL);
 
-        if ( fPull )
+        if (fPull)
         {
-                char* name = IS_NPC(ch) ? ch->short_descr : ch->name;
-                die_follower( ch, name );
+                char *name = IS_NPC(ch) ? ch->short_descr : ch->name;
+                die_follower(ch, name);
         }
 
-        stop_fighting( ch, TRUE );
+        stop_fighting(ch, TRUE);
 
         if (ch->rider)
         {
-                act( "With your mount no longer here, you fall off.", ch->rider, NULL, NULL, TO_CHAR);
-                act( "$c falls from $s slain mount.", ch->rider, NULL, NULL, TO_ROOM);
-                strip_mount (ch->rider);
+                act("With your mount no longer here, you fall off.", ch->rider, NULL, NULL, TO_CHAR);
+                act("$c falls from $s slain mount.", ch->rider, NULL, NULL, TO_ROOM);
+                strip_mount(ch->rider);
         }
 
         if (ch->mount)
         {
-                act ("$c falls from $s mount.", ch, NULL, NULL, TO_ROOM);
-                strip_mount (ch);
+                act("$c falls from $s mount.", ch, NULL, NULL, TO_ROOM);
+                strip_mount(ch);
         }
 
         /* --- Internal bounce to LIMBO with media suppressed --- */
-        if (p) p->MediaSuppress = TRUE;
+        if (p)
+                p->MediaSuppress = TRUE;
 
-        char_from_room (ch);
-        char_to_room   (ch, get_room_index(ROOM_VNUM_LIMBO));
+        char_from_room(ch);
+        char_to_room(ch, get_room_index(ROOM_VNUM_LIMBO));
 
         /* Clean up inventory while in a safe place */
-        for ( obj = ch->carrying; obj; obj = obj_next )
+        for (obj = ch->carrying; obj; obj = obj_next)
         {
                 obj_next = obj->next_content;
-                if ( obj->deleted )
+                if (obj->deleted)
                         continue;
-                extract_obj( obj );
+                extract_obj(obj);
         }
 
-        char_from_room (ch);
+        char_from_room(ch);
 
-        if ( !fPull )
+        if (!fPull)
         {
                 /* We're moving the living character to Purgatory: re-enable media now. */
-                if (p) {
-                    p->MediaSuppress = FALSE;
+                if (p)
+                {
+                        p->MediaSuppress = FALSE;
                 }
 
-                ROOM_INDEX_DATA *location = get_room_index( ROOM_VNUM_PURGATORY_A );
-                if ( !location )
+                ROOM_INDEX_DATA *location = get_room_index(ROOM_VNUM_PURGATORY_A);
+                if (!location)
                 {
-                        bug( "Purgatory A does not exist!", 0 );
-                        location = get_room_index( ROOM_VNUM_ALTAR );
+                        bug("Purgatory A does not exist!", 0);
+                        location = get_room_index(ROOM_VNUM_ALTAR);
                 }
 
                 /* Move to Purgatory (this should normally assert ambience). */
-                char_to_room( ch, location );
+                char_to_room(ch, location);
 
                 /* --- Belt-and-braces: if nothing is active after the move, assert explicitly. --- */
-                if ( ch->desc && ch->desc->pProtocol
-                  && ch->desc->pProtocol->bGMCP
-                  && ch->desc->pProtocol->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA] )
+                if (ch->desc && ch->desc->pProtocol && ch->desc->pProtocol->bGMCP && ch->desc->pProtocol->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA])
                 {
                         protocol_t *pp = ch->desc->pProtocol;
 
@@ -2807,38 +2955,33 @@ void extract_char( CHAR_DATA *ch, bool fPull )
                                 GMCP_Media_Default(ch->desc, "https://www.dragons-domain.org/main/gui/custom/audio/");
 
                                 const char *want_name = NULL;
-                                int         want_vol  = 0;
-                                const char *want_key  = NULL;
+                                int want_vol = 0;
+                                const char *want_key = NULL;
 
                                 /* Prefer room ambience if present… */
-                                if (ch->in_room
-                                 && ch->in_room->ambient_sound && *ch->in_room->ambient_sound
-                                 && ch->in_room->ambient_volume > 0)
+                                if (ch->in_room && ch->in_room->ambient_sound && *ch->in_room->ambient_sound && ch->in_room->ambient_volume > 0)
                                 {
                                         want_name = ch->in_room->ambient_sound;
-                                        want_vol  = URANGE(1, ch->in_room->ambient_volume, 100);
-                                        want_key  = "dd.ambient.room";
+                                        want_vol = URANGE(1, ch->in_room->ambient_volume, 100);
+                                        want_key = "dd.ambient.room";
                                 }
                                 /* …else area ambience… */
-                                else if (ch->in_room && ch->in_room->area
-                                      && ch->in_room->area->ambient_sound && *ch->in_room->area->ambient_sound
-                                      && ch->in_room->area->ambient_volume > 0)
+                                else if (ch->in_room && ch->in_room->area && ch->in_room->area->ambient_sound && *ch->in_room->area->ambient_sound && ch->in_room->area->ambient_volume > 0)
                                 {
                                         want_name = ch->in_room->area->ambient_sound;
-                                        want_vol  = URANGE(1, ch->in_room->area->ambient_volume, 100);
-                                        want_key  = "dd.ambient.area";
+                                        want_vol = URANGE(1, ch->in_room->area->ambient_volume, 100);
+                                        want_key = "dd.ambient.area";
                                 }
                                 /* …else sector fallback (if defined). */
-                                else if (ch->in_room
-                                      && ch->in_room->sector_type >= 0
-                                      && ch->in_room->sector_type < SECT_MAX)
+                                else if (ch->in_room && ch->in_room->sector_type >= 0 && ch->in_room->sector_type < SECT_MAX)
                                 {
                                         extern const sector_ambience_t sector_ambience_defaults[SECT_MAX];
                                         const sector_ambience_t *sa = &sector_ambience_defaults[ch->in_room->sector_type];
-                                        if (sa && sa->name && *sa->name && sa->volume > 0) {
+                                        if (sa && sa->name && *sa->name && sa->volume > 0)
+                                        {
                                                 want_name = sa->name;
-                                                want_vol  = URANGE(1, sa->volume, 100);
-                                                want_key  = "dd.ambient.sector";
+                                                want_vol = URANGE(1, sa->volume, 100);
+                                                want_key = "dd.ambient.sector";
                                         }
                                 }
 
@@ -2852,20 +2995,28 @@ void extract_char( CHAR_DATA *ch, bool fPull )
                                         GMCP_Media_Play(ch->desc, want_name, opts);
 
                                         /* Update cache so subsequent moves behave idempotently. */
-                                        if (!str_cmp(want_key, "dd.ambient.room")) {
-                                                if (pp->MediaRoomName) free_string((char*)pp->MediaRoomName);
-                                                pp->MediaRoomName   = str_dup(want_name);
-                                                pp->MediaRoomVol    = want_vol;
+                                        if (!str_cmp(want_key, "dd.ambient.room"))
+                                        {
+                                                if (pp->MediaRoomName)
+                                                        free_string((char *)pp->MediaRoomName);
+                                                pp->MediaRoomName = str_dup(want_name);
+                                                pp->MediaRoomVol = want_vol;
                                                 pp->MediaRoomActive = TRUE;
-                                        } else if (!str_cmp(want_key, "dd.ambient.area")) {
-                                                if (pp->MediaAreaName) free_string((char*)pp->MediaAreaName);
-                                                pp->MediaAreaName   = str_dup(want_name);
-                                                pp->MediaAreaVol    = want_vol;
+                                        }
+                                        else if (!str_cmp(want_key, "dd.ambient.area"))
+                                        {
+                                                if (pp->MediaAreaName)
+                                                        free_string((char *)pp->MediaAreaName);
+                                                pp->MediaAreaName = str_dup(want_name);
+                                                pp->MediaAreaVol = want_vol;
                                                 pp->MediaAreaActive = TRUE;
-                                        } else {
-                                                if (pp->MediaSectorName) free_string((char*)pp->MediaSectorName);
-                                                pp->MediaSectorName   = str_dup(want_name);
-                                                pp->MediaSectorVol    = want_vol;
+                                        }
+                                        else
+                                        {
+                                                if (pp->MediaSectorName)
+                                                        free_string((char *)pp->MediaSectorName);
+                                                pp->MediaSectorName = str_dup(want_name);
+                                                pp->MediaSectorVol = want_vol;
                                                 pp->MediaSectorActive = TRUE;
                                         }
                                 }
@@ -2877,21 +3028,21 @@ void extract_char( CHAR_DATA *ch, bool fPull )
 
         /* fPull == TRUE : full extraction (quit, purge, etc.) */
 
-        if ( IS_NPC( ch ) )
+        if (IS_NPC(ch))
                 --ch->pIndexData->count;
 
-        if ( ch->desc && ch->desc->original )
-                do_return( ch, "" );
+        if (ch->desc && ch->desc->original)
+                do_return(ch, "");
 
-        for ( wch = char_list; wch; wch = wch->next )
+        for (wch = char_list; wch; wch = wch->next)
         {
-                if ( wch->reply == ch )
+                if (wch->reply == ch)
                         wch->reply = NULL;
         }
 
         ch->deleted = TRUE;
 
-        if ( ch->desc )
+        if (ch->desc)
                 ch->desc->character = NULL;
 
         delete_char = TRUE;
@@ -2900,7 +3051,8 @@ void extract_char( CHAR_DATA *ch, bool fPull )
         if (!IS_NPC(ch) && ch->desc)
         {
                 /* Clear suppression: we want these Stop frames to go out */
-                if (p) p->MediaSuppress = FALSE;
+                if (p)
+                        p->MediaSuppress = FALSE;
 
                 /* Stop our lanes explicitly, then a global stop as a belt-and-braces */
                 GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.room\",\"type\":\"music\"");
@@ -2911,9 +3063,21 @@ void extract_char( CHAR_DATA *ch, bool fPull )
                 /* Also clear cached protocol state if present */
                 if (p)
                 {
-                        if (p->MediaRoomName)   { free_string((char*)p->MediaRoomName);   p->MediaRoomName   = NULL; }
-                        if (p->MediaAreaName)   { free_string((char*)p->MediaAreaName);   p->MediaAreaName   = NULL; }
-                        if (p->MediaSectorName) { free_string((char*)p->MediaSectorName); p->MediaSectorName = NULL; }
+                        if (p->MediaRoomName)
+                        {
+                                free_string((char *)p->MediaRoomName);
+                                p->MediaRoomName = NULL;
+                        }
+                        if (p->MediaAreaName)
+                        {
+                                free_string((char *)p->MediaAreaName);
+                                p->MediaAreaName = NULL;
+                        }
+                        if (p->MediaSectorName)
+                        {
+                                free_string((char *)p->MediaSectorName);
+                                p->MediaSectorName = NULL;
+                        }
                         p->MediaRoomVol = p->MediaAreaVol = p->MediaSectorVol = 0;
                         p->MediaRoomActive = p->MediaAreaActive = p->MediaSectorActive = FALSE;
                 }
@@ -2922,76 +3086,72 @@ void extract_char( CHAR_DATA *ch, bool fPull )
         return;
 }
 
-
 /*
  * Find a char in the room.
  */
-CHAR_DATA *get_char_room( CHAR_DATA *ch, char *argument )
+CHAR_DATA *get_char_room(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *rch;
-        char       arg [ MAX_INPUT_LENGTH ];
-        int        number;
-        int        count;
+        char arg[MAX_INPUT_LENGTH];
+        int number;
+        int count;
 
-        number = number_argument( argument, arg );
-        count  = 0;
+        number = number_argument(argument, arg);
+        count = 0;
 
-        if ( !str_cmp( arg, "self" ) )
+        if (!str_cmp(arg, "self"))
                 return ch;
 
-        for ( rch = ch->in_room->people; rch; rch = rch->next_in_room )
+        for (rch = ch->in_room->people; rch; rch = rch->next_in_room)
         {
-                if ( !can_see( ch, rch ) || !is_name( arg, rch->name ) )
+                if (!can_see(ch, rch) || !is_name(arg, rch->name))
                         continue;
 
-                if ( ++count == number )
+                if (++count == number)
                         return rch;
         }
 
         return NULL;
 }
 
-
 /*
  * Find a char in the world.
  */
-CHAR_DATA *get_char_world( CHAR_DATA *ch, char *argument )
+CHAR_DATA *get_char_world(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *wch;
-        char       arg [ MAX_INPUT_LENGTH ];
-        int        number;
-        int        count;
+        char arg[MAX_INPUT_LENGTH];
+        int number;
+        int count;
 
-        if ( ( wch = get_char_room( ch, argument ) ) )
+        if ((wch = get_char_room(ch, argument)))
                 return wch;
 
-        number = number_argument( argument, arg );
-        count  = 0;
+        number = number_argument(argument, arg);
+        count = 0;
 
-        for ( wch = char_list; wch ; wch = wch->next )
+        for (wch = char_list; wch; wch = wch->next)
         {
-                if ( !can_see( ch, wch ) || !multi_keyword_match( arg, wch->name ) )
+                if (!can_see(ch, wch) || !multi_keyword_match(arg, wch->name))
                         continue;
 
-                if ( ++count == number )
+                if (++count == number)
                         return wch;
         }
 
         return NULL;
 }
 
-
 /*
  * Get quest mob from world
  */
-CHAR_DATA *get_qchar_world( CHAR_DATA *ch, char *argument, int vnum )
+CHAR_DATA *get_qchar_world(CHAR_DATA *ch, char *argument, int vnum)
 {
         CHAR_DATA *wch;
 
-        for ( wch = char_list; wch ; wch = wch->next )
+        for (wch = char_list; wch; wch = wch->next)
         {
-                if ( !can_see( ch, wch ) || strcmp( argument, wch->name )
-                    || !IS_NPC(wch) || vnum != wch->pIndexData->vnum )
+                if (!can_see(ch, wch) || strcmp(argument, wch->name) || !IS_NPC(wch) || vnum != wch->pIndexData->vnum)
                         continue;
 
                 return wch;
@@ -3000,46 +3160,44 @@ CHAR_DATA *get_qchar_world( CHAR_DATA *ch, char *argument, int vnum )
         return NULL;
 }
 
-
 /*
  * Find some object with a given index data.
  * Used by area-reset 'P' command.
  */
-OBJ_DATA *get_obj_type( OBJ_INDEX_DATA *pObjIndex )
+OBJ_DATA *get_obj_type(OBJ_INDEX_DATA *pObjIndex)
 {
         OBJ_DATA *obj;
 
-        for ( obj = object_list; obj; obj = obj->next )
+        for (obj = object_list; obj; obj = obj->next)
         {
-                if ( obj->deleted )
+                if (obj->deleted)
                         continue;
 
-                if ( obj->pIndexData == pObjIndex )
+                if (obj->pIndexData == pObjIndex)
                         return obj;
         }
 
         return NULL;
 }
 
-
 /*
  * Find an obj in a list.
  */
-OBJ_DATA *get_obj_list( CHAR_DATA *ch, char *argument, OBJ_DATA *list )
+OBJ_DATA *get_obj_list(CHAR_DATA *ch, char *argument, OBJ_DATA *list)
 {
         OBJ_DATA *obj;
-        char      arg [ MAX_INPUT_LENGTH ];
-        int       number;
-        int       count;
+        char arg[MAX_INPUT_LENGTH];
+        int number;
+        int count;
 
-        number = number_argument( argument, arg );
-        count  = 0;
+        number = number_argument(argument, arg);
+        count = 0;
 
-        for ( obj = list; obj; obj = obj->next_content )
+        for (obj = list; obj; obj = obj->next_content)
         {
-                if ( (can_see_obj( ch, obj ) || (obj->in_obj && IS_SET(obj->in_obj->wear_flags, ITEM_WEAR_POUCH))) && is_name( arg, obj->name ) )
+                if ((can_see_obj(ch, obj) || (obj->in_obj && IS_SET(obj->in_obj->wear_flags, ITEM_WEAR_POUCH))) && is_name(arg, obj->name))
                 {
-                        if ( ++count == number )
+                        if (++count == number)
                                 return obj;
                 }
         }
@@ -3047,27 +3205,24 @@ OBJ_DATA *get_obj_list( CHAR_DATA *ch, char *argument, OBJ_DATA *list )
         return NULL;
 }
 
-
 /*
  * Find an obj in player's inventory.
  */
-OBJ_DATA *get_obj_carry( CHAR_DATA *ch, char *argument )
+OBJ_DATA *get_obj_carry(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
-        char      arg [ MAX_INPUT_LENGTH ];
-        int       number;
-        int       count;
+        char arg[MAX_INPUT_LENGTH];
+        int number;
+        int count;
 
-        number = number_argument( argument, arg );
-        count  = 0;
+        number = number_argument(argument, arg);
+        count = 0;
 
-        for ( obj = ch->carrying; obj; obj = obj->next_content )
+        for (obj = ch->carrying; obj; obj = obj->next_content)
         {
-                if ( obj->wear_loc == WEAR_NONE
-                    && can_see_obj( ch, obj )
-                    && is_name( arg, obj->name ) )
+                if (obj->wear_loc == WEAR_NONE && can_see_obj(ch, obj) && is_name(arg, obj->name))
                 {
-                        if ( ++count == number )
+                        if (++count == number)
                                 return obj;
                 }
         }
@@ -3078,52 +3233,46 @@ OBJ_DATA *get_obj_carry( CHAR_DATA *ch, char *argument )
 /*
  * Find an obj in player's vault.
  */
-OBJ_DATA *get_obj_vaulted( CHAR_DATA *ch, char *argument )
+OBJ_DATA *get_obj_vaulted(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
-        char      arg [ MAX_INPUT_LENGTH ];
-        int       number;
-        int       count;
+        char arg[MAX_INPUT_LENGTH];
+        int number;
+        int count;
 
-        number = number_argument( argument, arg );
-        count  = 0;
+        number = number_argument(argument, arg);
+        count = 0;
 
-        for ( obj = ch->pcdata->vault; obj; obj = obj->next_content )
+        for (obj = ch->pcdata->vault; obj; obj = obj->next_content)
         {
-                if ( obj->wear_loc == WEAR_NONE
-                    && can_see_obj( ch, obj )
-                    && is_name( arg, obj->name ) )
+                if (obj->wear_loc == WEAR_NONE && can_see_obj(ch, obj) && is_name(arg, obj->name))
                 {
-                        if ( ++count == number )
+                        if (++count == number)
                                 return obj;
                 }
         }
 
         return NULL;
 }
-
-
 
 /*
  * Find an obj in player's equipment.
  */
-OBJ_DATA *get_obj_wear( CHAR_DATA *ch, char *argument )
+OBJ_DATA *get_obj_wear(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
-        char      arg [ MAX_INPUT_LENGTH ];
-        int       number;
-        int       count;
+        char arg[MAX_INPUT_LENGTH];
+        int number;
+        int count;
 
-        number = number_argument( argument, arg );
-        count  = 0;
+        number = number_argument(argument, arg);
+        count = 0;
 
-        for ( obj = ch->carrying; obj; obj = obj->next_content )
+        for (obj = ch->carrying; obj; obj = obj->next_content)
         {
-                if ( obj->wear_loc != WEAR_NONE
-                    && can_see_obj( ch, obj )
-                    && is_name( arg, obj->name ) )
+                if (obj->wear_loc != WEAR_NONE && can_see_obj(ch, obj) && is_name(arg, obj->name))
                 {
-                        if ( ++count == number )
+                        if (++count == number)
                                 return obj;
                 }
         }
@@ -3131,18 +3280,16 @@ OBJ_DATA *get_obj_wear( CHAR_DATA *ch, char *argument )
         return NULL;
 }
 
-
 /*
  * returns race number
  */
-int race_lookup (const char *name)
+int race_lookup(const char *name)
 {
         int race;
 
-        for ( race = 0; race_table[race].race_name != NULL; race++)
+        for (race = 0; race_table[race].race_name != NULL; race++)
         {
-                if (LOWER(name[0]) == LOWER(race_table[race].race_name[0])
-                    &&  !str_prefix( name,race_table[race].race_name))
+                if (LOWER(name[0]) == LOWER(race_table[race].race_name[0]) && !str_prefix(name, race_table[race].race_name))
                         return race;
         }
 
@@ -3152,28 +3299,25 @@ int race_lookup (const char *name)
 /*
  * returns class number
  */
-int class_lookup (const char *name)
+int class_lookup(const char *name)
 {
         int class;
 
-        for ( class = 0; class < MAX_CLASS; class++)
+        for (class = 0; class < MAX_CLASS; class++)
         {
-                if (LOWER(name[0]) == LOWER(class_table[class].who_name[0])
-                    &&  !str_prefix( name,class_table[class].who_name))
+                if (LOWER(name[0]) == LOWER(class_table[class].who_name[0]) && !str_prefix(name, class_table[class].who_name))
                         return class;
         }
 
         return -1;
 }
 
-
-bool is_clan (CHAR_DATA *ch)
+bool is_clan(CHAR_DATA *ch)
 {
-    return ch->clan;
+        return ch->clan;
 }
 
-
-bool is_same_clan (CHAR_DATA *ch, CHAR_DATA *victim)
+bool is_same_clan(CHAR_DATA *ch, CHAR_DATA *victim)
 {
         if (clan_table[ch->clan].independent)
                 return FALSE;
@@ -3181,19 +3325,17 @@ bool is_same_clan (CHAR_DATA *ch, CHAR_DATA *victim)
                 return (ch->clan == victim->clan);
 }
 
-
-int clan_lookup (const char *name)
+int clan_lookup(const char *name)
 {
         int clan;
-        char buf [MAX_INPUT_LENGTH];
+        char buf[MAX_INPUT_LENGTH];
 
         sprintf(buf, "Looking up clan %s", name);
         log_string(buf);
 
         for (clan = 0; clan < MAX_CLAN; clan++)
         {
-                if (LOWER(name[0]) == LOWER(clan_table[clan].name[0])
-                    &&  !str_prefix(name,clan_table[clan].name))
+                if (LOWER(name[0]) == LOWER(clan_table[clan].name[0]) && !str_prefix(name, clan_table[clan].name))
                 {
                         sprintf(buf, "clan lookup clanname %d", clan);
                         log_string(buf);
@@ -3205,9 +3347,7 @@ int clan_lookup (const char *name)
 
         for (clan = 0; clan < MAX_CLAN; clan++)
         {
-                if (LOWER(name[0]) == LOWER(clan_table[clan].who_name[0])
-                    && LOWER(name[1]) == LOWER(clan_table[clan].who_name[1])
-                    && LOWER(name[2]) == LOWER(clan_table[clan].who_name[2]))
+                if (LOWER(name[0]) == LOWER(clan_table[clan].who_name[0]) && LOWER(name[1]) == LOWER(clan_table[clan].who_name[1]) && LOWER(name[2]) == LOWER(clan_table[clan].who_name[2]))
                 {
                         sprintf(buf, "clan lookup clanwho %d", clan);
                         log_string(buf);
@@ -3218,23 +3358,22 @@ int clan_lookup (const char *name)
         return -1;
 }
 
-
 /*
  * Find an obj in the room or in inventory.
  */
-OBJ_DATA *get_obj_here( CHAR_DATA *ch, char *argument )
+OBJ_DATA *get_obj_here(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
 
-        obj = get_obj_list( ch, argument, ch->in_room->contents );
+        obj = get_obj_list(ch, argument, ch->in_room->contents);
 
-        if ( obj )
+        if (obj)
                 return obj;
 
-        if ( ( obj = get_obj_carry( ch, argument ) ) )
+        if ((obj = get_obj_carry(ch, argument)))
                 return obj;
 
-        if ( ( obj = get_obj_wear( ch, argument ) ) )
+        if ((obj = get_obj_wear(ch, argument)))
                 return obj;
 
         return NULL;
@@ -3242,38 +3381,37 @@ OBJ_DATA *get_obj_here( CHAR_DATA *ch, char *argument )
 /*
  * Find an object in a player's vault
  */
-OBJ_DATA *get_obj_herevault( CHAR_DATA *ch, char *argument )
+OBJ_DATA *get_obj_herevault(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
 
-        if ( ( obj = get_obj_vaulted( ch, argument ) ) )
+        if ((obj = get_obj_vaulted(ch, argument)))
                 return obj;
 
         return NULL;
 }
 
-
 /*
  * Find an obj in the world.
  */
-OBJ_DATA *get_obj_world( CHAR_DATA *ch, char *argument )
+OBJ_DATA *get_obj_world(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
-        char      arg [ MAX_INPUT_LENGTH ];
-        int       number;
-        int       count;
+        char arg[MAX_INPUT_LENGTH];
+        int number;
+        int count;
 
-        if ( ( obj = get_obj_here( ch, argument ) ) )
+        if ((obj = get_obj_here(ch, argument)))
                 return obj;
 
-        number = number_argument( argument, arg );
-        count  = 0;
+        number = number_argument(argument, arg);
+        count = 0;
 
-        for ( obj = object_list; obj; obj = obj->next )
+        for (obj = object_list; obj; obj = obj->next)
         {
-                if ( can_see_obj( ch, obj ) && multi_keyword_match( arg, obj->name ) )
+                if (can_see_obj(ch, obj) && multi_keyword_match(arg, obj->name))
                 {
-                        if ( ++count == number )
+                        if (++count == number)
                                 return obj;
                 }
         }
@@ -3281,32 +3419,29 @@ OBJ_DATA *get_obj_world( CHAR_DATA *ch, char *argument )
         return NULL;
 }
 
-
-
 /* Returns object_bonus from an objset set vnum and the position - Brutus */
-char  *objset_bonus( OBJSET_INDEX_DATA *pObjSetIndex, int num )
+char *objset_bonus(OBJSET_INDEX_DATA *pObjSetIndex, int num)
 {
         AFFECT_DATA *paf;
         int count;
         count = 0;
 
-        if (  pObjSetIndex  )
+        if (pObjSetIndex)
         {
-        for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
-        {
-                count++;
-                if (count == num);
-                return "oh dear";
-        }
-
+                for (paf = pObjSetIndex->affected; paf; paf = paf->next)
+                {
+                        count++;
+                        if (count == num)
+                                ;
+                        return "oh dear";
+                }
         }
         return NULL;
-
 }
 
 /* Return how many items need to be worn to get a bonus from a
 objsetvnum and position */
-int objset_bonus_num_pos( int vnum, int pos)
+int objset_bonus_num_pos(int vnum, int pos)
 {
         OBJSET_INDEX_DATA *objset;
         int bonus2;
@@ -3317,7 +3452,7 @@ int objset_bonus_num_pos( int vnum, int pos)
         int count;
         int i;
 
-        if ( ( objset = get_objset_index( vnum ) ) )
+        if ((objset = get_objset_index(vnum)))
         {
 
                 bonus2 = 0;
@@ -3327,56 +3462,52 @@ int objset_bonus_num_pos( int vnum, int pos)
                 bonust = 0;
                 count = 0;
 
-                for( i=0; i < 5; i++ )
+                for (i = 0; i < 5; i++)
                 {
-                        if( objset->bonus_num[i] == 2)
+                        if (objset->bonus_num[i] == 2)
                                 bonus2++;
-                        if( objset->bonus_num[i] == 3)
+                        if (objset->bonus_num[i] == 3)
                                 bonus3++;
-                        if( objset->bonus_num[i] == 4)
+                        if (objset->bonus_num[i] == 4)
                                 bonus4++;
-                        if( objset->bonus_num[i] == 5)
+                        if (objset->bonus_num[i] == 5)
                                 bonus5++;
                 }
 
-                if ( bonus2 > 0)
+                if (bonus2 > 0)
                 {
                         bonust = bonus2;
                         count++;
-                        if ( (pos == count) )
+                        if ((pos == count))
                                 return bonust;
-
                 }
-                if ( (bonus3 > 0) || ( bonus3 > bonust) )
+                if ((bonus3 > 0) || (bonus3 > bonust))
                 {
                         bonust += bonus3;
                         count++;
-                        if ( (pos == count) )
+                        if ((pos == count))
                                 return bonust;
-
                 }
-                if ( (bonus4 > 0) || ( bonus4 > bonust) )
+                if ((bonus4 > 0) || (bonus4 > bonust))
                 {
                         bonust += bonus4;
                         count++;
-                        if ( (pos == count) )
+                        if ((pos == count))
                                 return bonust;
-
                 }
-                if ( (bonus5 > 0) || ( bonus5 > bonust) )
+                if ((bonus5 > 0) || (bonus5 > bonust))
                 {
                         bonust += bonus5;
                         count++;
-                        if (( pos == count ))
+                        if ((pos == count))
                                 return bonust;
                 }
-
         }
         return 0;
 }
 
 /* REturns number of set bonuses in a set */
-int objset_bonus_num( int vnum)
+int objset_bonus_num(int vnum)
 {
         OBJSET_INDEX_DATA *objset;
         int bonus2;
@@ -3386,7 +3517,7 @@ int objset_bonus_num( int vnum)
         int bonust;
         int i;
 
-        if ( ( objset = get_objset_index( vnum ) ) )
+        if ((objset = get_objset_index(vnum)))
         {
 
                 bonus2 = 0;
@@ -3395,18 +3526,18 @@ int objset_bonus_num( int vnum)
                 bonus5 = 0;
                 bonust = 0;
 
-                for( i=0; i < 5; i++ )
+                for (i = 0; i < 5; i++)
                 {
-                        if( objset->bonus_num[i] == 2)
+                        if (objset->bonus_num[i] == 2)
                                 bonus2++;
-                        if( objset->bonus_num[i] == 3)
+                        if (objset->bonus_num[i] == 3)
                                 bonus3++;
-                        if( objset->bonus_num[i] == 4)
+                        if (objset->bonus_num[i] == 4)
                                 bonus4++;
-                        if( objset->bonus_num[i] == 5)
+                        if (objset->bonus_num[i] == 5)
                                 bonus5++;
                 }
-                if ( bonus2 > 0)
+                if (bonus2 > 0)
                         bonust++;
                 if (bonus3 > 0)
                         bonust++;
@@ -3420,7 +3551,7 @@ int objset_bonus_num( int vnum)
 }
 
 /* Returns the type of the objset e.g. rare or epic from the vnum of the objset */
-char *objset_type( int vnum)
+char *objset_type(int vnum)
 {
         OBJSET_INDEX_DATA *pObjSetIndex;
         int i;
@@ -3433,20 +3564,20 @@ char *objset_type( int vnum)
         bonus4 = 0;
         bonus5 = 0;
 
-        if ( ( pObjSetIndex = get_objset_index( vnum ) ) )
+        if ((pObjSetIndex = get_objset_index(vnum)))
+        {
+                for (i = 0; i < 5; i++)
                 {
-                       for( i=0; i < 5; i++ )
-                        {
-                        if( pObjSetIndex->bonus_num[i] == 2)
-                        bonus2++;
-                        if( pObjSetIndex->bonus_num[i] == 3)
-                        bonus3++;
-                        if( pObjSetIndex->bonus_num[i] == 4)
-                        bonus4++;
-                        if( pObjSetIndex->bonus_num[i] == 5)
-                        bonus5++;
-                        }
+                        if (pObjSetIndex->bonus_num[i] == 2)
+                                bonus2++;
+                        if (pObjSetIndex->bonus_num[i] == 3)
+                                bonus3++;
+                        if (pObjSetIndex->bonus_num[i] == 4)
+                                bonus4++;
+                        if (pObjSetIndex->bonus_num[i] == 5)
+                                bonus5++;
                 }
+        }
 
         if (bonus5 > 0)
                 return "<178>Legendary<0>";
@@ -3462,63 +3593,75 @@ char *objset_type( int vnum)
 
 #define TABLE_SIZE 6
 
-typedef struct {
-  int key;
-  int value;
+typedef struct
+{
+        int key;
+        int value;
 } Entry;
 
-typedef struct {
-  Entry *entries;
+typedef struct
+{
+        Entry *entries;
 } HashTable;
 
 /* Create a new hash table */
-HashTable *createTable() {
-  HashTable *table = (HashTable *)malloc(sizeof(HashTable));
-  table->entries = (Entry *)malloc(TABLE_SIZE * sizeof(Entry));
-  return table;
+HashTable *createTable()
+{
+        HashTable *table = (HashTable *)malloc(sizeof(HashTable));
+        table->entries = (Entry *)malloc(TABLE_SIZE * sizeof(Entry));
+        return table;
 }
 
 /* Hash function to determine the index for a given key */
-int hash(int key) {
-  return key % TABLE_SIZE;
+int hash(int key)
+{
+        return key % TABLE_SIZE;
 }
 
 /* Insert a key-value pair into the hash table */
-void insert(HashTable *table, int key, int value) {
-  int index = hash(key);
-  Entry *entry = &table->entries[index];
-  entry->key = key;
-  entry->value = value;
+void insert(HashTable *table, int key, int value)
+{
+        int index = hash(key);
+        Entry *entry = &table->entries[index];
+        entry->key = key;
+        entry->value = value;
 }
 
-void insert_with_duplicates(HashTable *table, int key, int value) {
-    int index = hash(key);
-    table->entries[index].key = key;
-    table->entries[index].value = value;
+void insert_with_duplicates(HashTable *table, int key, int value)
+{
+        int index = hash(key);
+        table->entries[index].key = key;
+        table->entries[index].value = value;
 }
 
 /* Check if a key is in the hash table */
-bool contains(HashTable *table, int key) {
-  int index = hash(key);
-  Entry *entry = &table->entries[index];
-  return entry->key == key;
+bool contains(HashTable *table, int key)
+{
+        int index = hash(key);
+        Entry *entry = &table->entries[index];
+        return entry->key == key;
 }
 
 /* print the has table */
-void printTable(HashTable *table) {
+void printTable(HashTable *table)
+{
         int i;
-        for (i = 0; i < TABLE_SIZE; i++) {
-        Entry *entry = &table->entries[i];
-        if (entry->key != 0) {
-                printf("%d: %d\n", entry->key, entry->value);
+        for (i = 0; i < TABLE_SIZE; i++)
+        {
+                Entry *entry = &table->entries[i];
+                if (entry->key != 0)
+                {
+                        printf("%d: %d\n", entry->key, entry->value);
                 }
         }
 }
 
-int countTable(HashTable *table) {
+int countTable(HashTable *table)
+{
         int i;
-        int count=0;
-        for (i = 0; i < TABLE_SIZE; i++) {
+        int count = 0;
+        for (i = 0; i < TABLE_SIZE; i++)
+        {
                 if (table->entries[i].key != 0)
                         count++;
         }
@@ -3526,43 +3669,47 @@ int countTable(HashTable *table) {
 }
 
 /* Zero the hash table*/
-void zeroTable(HashTable *table) {
+void zeroTable(HashTable *table)
+{
         int i;
-  for ( i = 0; i < TABLE_SIZE; i++) {
-    Entry *entry = &table->entries[i];
-    entry->key = 0;
-    entry->value = 0;
-  }
+        for (i = 0; i < TABLE_SIZE; i++)
+        {
+                Entry *entry = &table->entries[i];
+                entry->key = 0;
+                entry->value = 0;
+        }
 }
 
 /*Destroy the hash table*/
-void destroyTable(HashTable *table) {
+void destroyTable(HashTable *table)
+{
         int i;
-  /* Zero the hash table */
-  for (i = 0; i < TABLE_SIZE; i++) {
-    Entry *entry = &table->entries[i];
-    entry->key = 0;
-    entry->value = 0;
-  }
+        /* Zero the hash table */
+        for (i = 0; i < TABLE_SIZE; i++)
+        {
+                Entry *entry = &table->entries[i];
+                entry->key = 0;
+                entry->value = 0;
+        }
 
-  /* Free the memory for the hash table and its entries */
-  free(table->entries);
-  free(table);
+        /* Free the memory for the hash table and its entries */
+        free(table->entries);
+        free(table);
 }
 
 /* Brutus says: CAREFUL IF COPYING THIS You want to make sure that you destroy the has table from mem BEFORE
 returning out of this function returnes TRUE/FALSE when wearing an object. */
-bool  gets_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos )
+bool gets_bonus_objset(OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos)
 {
         int worn;
         OBJ_DATA *objworn;
         OBJSET_INDEX_DATA *pobjsetworn;
         AFFECT_DATA *paf;
         HashTable *table = createTable();
-        int index =1;
+        int index = 1;
 
         zeroTable(table);
-        for ( objworn = ch->carrying; objworn; objworn = objworn->next_content )
+        for (objworn = ch->carrying; objworn; objworn = objworn->next_content)
         {
 
                 /* Skip if the object we find thats already worn is not part of this objects objectset*/
@@ -3570,40 +3717,39 @@ bool  gets_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DA
                         continue;
 
                 /* return FALSE skip if we find the object to be worn is already worn */
-                if ( obj->pIndexData->vnum == objworn->pIndexData->vnum && (objworn->wear_loc != WEAR_NONE))
+                if (obj->pIndexData->vnum == objworn->pIndexData->vnum && (objworn->wear_loc != WEAR_NONE))
                 {
                         destroyTable(table);
                         return FALSE;
                 }
                 /* proceed if this object is part of an objset*/
-                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) && (objworn->wear_loc != WEAR_NONE) )
+                if ((pobjsetworn = objects_objset(objworn->pIndexData->vnum)) && (objworn->wear_loc != WEAR_NONE))
                 {
-                        insert(table, objworn->pIndexData->vnum , index);
+                        insert(table, objworn->pIndexData->vnum, index);
                         index++;
                 }
-
         }
         /* Insert our object into the table to get a view of what things woudl look like AFTER WEARING*/
-        insert(table, obj->pIndexData->vnum , index);
+        insert(table, obj->pIndexData->vnum, index);
         index++;
         /* printTable(table); */
-        worn =0;
+        worn = 0;
 
         /* Count the number of entries in the hash table (OF WHAT THINGS WOULD LOOK LIKE IF WE DID WEAR THIS)*/
         worn = countTable(table);
         destroyTable(table);
 
-        if ( worn == 0 )
+        if (worn == 0)
                 return FALSE;
         /* we have found an object, which is part of an objset set - proceed */
-       for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
+        for (paf = pObjSetIndex->affected; paf; paf = paf->next)
         {
-                if ( worn > objset_bonus_num_pos(pObjSetIndex->vnum, pos)  )
+                if (worn > objset_bonus_num_pos(pObjSetIndex->vnum, pos))
                 {
-                       /* bug( "OBJSSET ADD FALSE: check if worn is great than current paf count %d", pos); */
+                        /* bug( "OBJSSET ADD FALSE: check if worn is great than current paf count %d", pos); */
                         return FALSE;
                 }
-                if ( (worn) == ( objset_bonus_num_pos(pObjSetIndex->vnum, pos) ) ) /* if this item */
+                if ((worn) == (objset_bonus_num_pos(pObjSetIndex->vnum, pos))) /* if this item */
                 {
                         /* bug( "OBJSET ADD TRUE: Total worm items %d", worn); */
                         return TRUE;
@@ -3612,7 +3758,7 @@ bool  gets_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DA
         return FALSE;
 }
 
-bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos )
+bool rem_bonus_objset(OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos)
 {
         int worn, pre_remove;
         bool found;
@@ -3625,8 +3771,8 @@ bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA
 
         OBJSET_INDEX_DATA *target_set;
 
-        found      = FALSE;
-        worn       = 0;
+        found = FALSE;
+        worn = 0;
         pre_remove = 0;
 
         target_set = objects_objset(obj->pIndexData->vnum);
@@ -3635,17 +3781,17 @@ bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA
         zeroTable(table2);
 
         /* Build PRE-REMOVAL view for THIS set only */
-        for ( objworn = ch->carrying; objworn; objworn = objworn->next_content )
+        for (objworn = ch->carrying; objworn; objworn = objworn->next_content)
         {
-                if ( objworn->wear_loc == WEAR_NONE )
+                if (objworn->wear_loc == WEAR_NONE)
                         continue;
 
                 pobjsetworn = objects_objset(objworn->pIndexData->vnum);
 
-                if ( pobjsetworn == NULL )
+                if (pobjsetworn == NULL)
                         continue;
 
-                if ( pobjsetworn != target_set )
+                if (pobjsetworn != target_set)
                         continue;
 
                 insert(table2, objworn->pIndexData->vnum, index);
@@ -3657,21 +3803,21 @@ bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA
 
         /* Build POST-REMOVAL view for THIS set only */
         index = 1;
-        for ( objworn = ch->carrying; objworn; objworn = objworn->next_content )
+        for (objworn = ch->carrying; objworn; objworn = objworn->next_content)
         {
-                if ( objworn->wear_loc == WEAR_NONE )
+                if (objworn->wear_loc == WEAR_NONE)
                         continue;
 
                 pobjsetworn = objects_objset(objworn->pIndexData->vnum);
 
-                if ( pobjsetworn == NULL )
+                if (pobjsetworn == NULL)
                         continue;
 
-                if ( pobjsetworn != target_set )
+                if (pobjsetworn != target_set)
                         continue;
 
                 /* skip the first instance of the object being removed */
-                if ( obj->pIndexData->vnum == objworn->pIndexData->vnum && !found )
+                if (obj->pIndexData->vnum == objworn->pIndexData->vnum && !found)
                 {
                         found = TRUE;
                         continue;
@@ -3685,51 +3831,50 @@ bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA
         destroyTable(table);
 
         /* If nothing changed, nothing to remove */
-        if ( pre_remove == worn )
+        if (pre_remove == worn)
                 return FALSE;
 
         /* If no items from this set remain after removal, you may still want to remove bonuses.
          * If your bonuses only start at 2+ items, leaving this as FALSE is fine.
          * Otherwise, remove this early return and let the comparisons below decide.
          */
-        if ( worn == 0 )
+        if (worn == 0)
                 return FALSE;
 
-        for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
+        for (paf = pObjSetIndex->affected; paf; paf = paf->next)
         {
-                if ( worn == objset_bonus_num_pos(pObjSetIndex->vnum, pos) )
+                if (worn == objset_bonus_num_pos(pObjSetIndex->vnum, pos))
                         return FALSE;
 
-                if ( worn < objset_bonus_num_pos(pObjSetIndex->vnum, pos) )
+                if (worn < objset_bonus_num_pos(pObjSetIndex->vnum, pos))
                         return TRUE;
 
-                if ( worn > objset_bonus_num_pos(pObjSetIndex->vnum, pos) )
-                        bug( "Bug in rem_objset_bonus, set bonus should already be removed. (worn items %d)", worn );
+                if (worn > objset_bonus_num_pos(pObjSetIndex->vnum, pos))
+                        bug("Bug in rem_objset_bonus, set bonus should already be removed. (worn items %d)", worn);
         }
 
         return FALSE;
 }
 
-
 /* Returns the Object set from a objects vnum - Brutus */
-OBJSET_INDEX_DATA *objects_objset( int vnum )
+OBJSET_INDEX_DATA *objects_objset(int vnum)
 {
 
         OBJSET_INDEX_DATA *pObjSetIndex;
-        extern int      top_objset_index;
+        extern int top_objset_index;
         int osvnum;
         int nMatch;
         int i;
-        nMatch  = 0;
+        nMatch = 0;
 
-        for ( osvnum = 0; nMatch < top_objset_index; osvnum++ )
+        for (osvnum = 0; nMatch < top_objset_index; osvnum++)
         {
-                if ( ( pObjSetIndex = get_objset_index( osvnum ) ) )
+                if ((pObjSetIndex = get_objset_index(osvnum)))
                 {
                         nMatch++;
-                        for( i=0; i < 5; i++ )
+                        for (i = 0; i < 5; i++)
                         {
-                                if ( vnum == pObjSetIndex->objects[i] )
+                                if (vnum == pObjSetIndex->objects[i])
                                 {
                                         return pObjSetIndex;
                                 }
@@ -3740,20 +3885,20 @@ OBJSET_INDEX_DATA *objects_objset( int vnum )
 }
 
 /*  Returns the objectset from a name  -Brutus  */
-OBJSET_INDEX_DATA *get_objset( char *argument )
+OBJSET_INDEX_DATA *get_objset(char *argument)
 {
         OBJSET_INDEX_DATA *pObjSetIndex;
-        extern int      top_objset_index;
-        int             vnum;
-        int             nMatch;
+        extern int top_objset_index;
+        int vnum;
+        int nMatch;
         nMatch = 0;
 
-        for ( vnum = 0; nMatch < top_objset_index; vnum++ )
+        for (vnum = 0; nMatch < top_objset_index; vnum++)
         {
-                if ( ( pObjSetIndex = get_objset_index( vnum ) ) )
+                if ((pObjSetIndex = get_objset_index(vnum)))
                 {
                         nMatch++;
-                        if ( multi_keyword_match( argument, pObjSetIndex->name ) )
+                        if (multi_keyword_match(argument, pObjSetIndex->name))
                         {
                                 return pObjSetIndex;
                         }
@@ -3762,42 +3907,38 @@ OBJSET_INDEX_DATA *get_objset( char *argument )
         return NULL;
 }
 
-
-
-
 /*
  * Create a 'money' obj.
  */
-OBJ_DATA *create_money( int plat, int gold, int silver, int copper )
+OBJ_DATA *create_money(int plat, int gold, int silver, int copper)
 {
         OBJ_DATA *obj;
 
-        if ( (plat + gold + silver + copper) <= 0 )
+        if ((plat + gold + silver + copper) <= 0)
         {
-                bug( "Create_money: zero or negative money %d.", (plat + gold + silver + copper) );
+                bug("Create_money: zero or negative money %d.", (plat + gold + silver + copper));
                 copper = 1;
         }
 
-        if ( (plat + gold + silver + copper) == 1 )
-                obj = create_object( get_obj_index( OBJ_VNUM_MONEY_ONE  ), 0,"common", CREATED_NO_RANDOMISER );
+        if ((plat + gold + silver + copper) == 1)
+                obj = create_object(get_obj_index(OBJ_VNUM_MONEY_ONE), 0, "common", CREATED_NO_RANDOMISER);
         else
-                obj = create_object( get_obj_index( OBJ_VNUM_MONEY_SOME ), 0,"common", CREATED_NO_RANDOMISER);
+                obj = create_object(get_obj_index(OBJ_VNUM_MONEY_SOME), 0, "common", CREATED_NO_RANDOMISER);
 
-        obj->value[0]           = copper;
-        obj->value[1]           = silver;
-        obj->value[2]           = gold;
-        obj->value[3]           = plat;
+        obj->value[0] = copper;
+        obj->value[1] = silver;
+        obj->value[2] = gold;
+        obj->value[3] = plat;
         obj->weight = plat + gold + silver + copper;
 
         return obj;
 }
 
-
 /*
  * Return # of objects which an object counts as.
  * Thanks to Tony Chamberlain for the correct recursive code here.
  */
-int get_obj_number( OBJ_DATA *obj )
+int get_obj_number(OBJ_DATA *obj)
 {
         return 1;
 
@@ -3824,64 +3965,62 @@ int get_obj_number( OBJ_DATA *obj )
         */
 }
 
-int get_container_count( OBJ_DATA *obj)
+int get_container_count(OBJ_DATA *obj)
 {
         int number = 0;
-        for ( obj = obj->contains; obj; obj = obj->next_content )
+        for (obj = obj->contains; obj; obj = obj->next_content)
         {
-                if ( obj->deleted )
+                if (obj->deleted)
                         continue;
                 number++;
         }
         return number;
 }
 
-
 /*
  * Return weight of an object, including weight of contents.
  */
-int get_obj_weight( OBJ_DATA *obj )
+int get_obj_weight(OBJ_DATA *obj)
 {
         int weight;
 
         weight = obj->weight;
-        for ( obj = obj->contains; obj; obj = obj->next_content )
+        for (obj = obj->contains; obj; obj = obj->next_content)
         {
-                if ( obj->deleted )
+                if (obj->deleted)
                         continue;
-                weight += get_obj_weight( obj );
+                weight += get_obj_weight(obj);
         }
 
         return weight;
 }
 
-
 /*
  * True if room is dark.
  */
-bool room_is_dark( ROOM_INDEX_DATA *pRoomIndex )
+bool room_is_dark(ROOM_INDEX_DATA *pRoomIndex)
 {
         OBJ_DATA *obj;
 
-        if ( pRoomIndex->light > 0 )
+        if (pRoomIndex->light > 0)
                 return FALSE;
 
-        for ( obj = pRoomIndex->contents; obj; obj = obj->next_content )
+        for (obj = pRoomIndex->contents; obj; obj = obj->next_content)
         {
-                if ( obj->deleted )
+                if (obj->deleted)
                         continue;
 
-                if ( obj->item_type == ITEM_LIGHT && obj->value[2] != 0 )
+                if (obj->item_type == ITEM_LIGHT && obj->value[2] != 0)
                         return FALSE;
         }
 
-        if ( IS_SET( pRoomIndex->room_flags, ROOM_DARK ) )
+        if (IS_SET(pRoomIndex->room_flags, ROOM_DARK))
                 return TRUE;
 
-        if ( pRoomIndex->sector_type == SECT_INSIDE )
+        if (pRoomIndex->sector_type == SECT_INSIDE)
                 return FALSE;
 
-        if ( weather_info.sunlight == SUN_SET || weather_info.sunlight == SUN_DARK )
+        if (weather_info.sunlight == SUN_SET || weather_info.sunlight == SUN_DARK)
                 return TRUE;
 
         return FALSE;
@@ -3890,34 +4029,33 @@ bool room_is_dark( ROOM_INDEX_DATA *pRoomIndex )
 /*
  * True if room is private.
  */
-bool room_is_private( ROOM_INDEX_DATA *pRoomIndex )
+bool room_is_private(ROOM_INDEX_DATA *pRoomIndex)
 {
         CHAR_DATA *rch;
         int count = 0;
 
-        for ( rch = pRoomIndex->people; rch; rch = rch->next_in_room )
+        for (rch = pRoomIndex->people; rch; rch = rch->next_in_room)
         {
-                if ( rch->deleted )
+                if (rch->deleted)
                         continue;
                 count++;
         }
 
-        if ( IS_SET( pRoomIndex->room_flags, ROOM_PRIVATE  ) && count >= 2 )
+        if (IS_SET(pRoomIndex->room_flags, ROOM_PRIVATE) && count >= 2)
                 return TRUE;
 
-        if ( IS_SET( pRoomIndex->room_flags, ROOM_SOLITARY ) && count >= 1 )
+        if (IS_SET(pRoomIndex->room_flags, ROOM_SOLITARY) && count >= 1)
                 return TRUE;
 
         return FALSE;
 }
 
-
 /*
  * True if char can see through mist form - Istari
  */
-bool can_see_mist (CHAR_DATA *ch, CHAR_DATA *victim)
+bool can_see_mist(CHAR_DATA *ch, CHAR_DATA *victim)
 {
-        if (victim->deleted )
+        if (victim->deleted)
                 return FALSE;
 
         if (ch->level > LEVEL_HERO || ch->sub_class == SUB_CLASS_VAMPIRE)
@@ -3926,11 +4064,10 @@ bool can_see_mist (CHAR_DATA *ch, CHAR_DATA *victim)
         return FALSE;
 }
 
-
 /*
  * True if char can see victim.
  */
-bool can_see (CHAR_DATA *ch, CHAR_DATA *victim)
+bool can_see(CHAR_DATA *ch, CHAR_DATA *victim)
 {
         int chance;
 
@@ -3940,17 +4077,13 @@ bool can_see (CHAR_DATA *ch, CHAR_DATA *victim)
         if (ch == victim)
                 return TRUE;
 
-        if (!IS_NPC(victim)
-            && IS_SET(victim->act, PLR_WIZINVIS)
-            && get_trust(ch) < get_trust(victim))
+        if (!IS_NPC(victim) && IS_SET(victim->act, PLR_WIZINVIS) && get_trust(ch) < get_trust(victim))
                 return FALSE;
 
         if (ch->level > LEVEL_HERO)
                 return TRUE;
 
-        if (!IS_NPC(ch)
-            && IS_AFFECTED(ch, AFF_NON_CORPOREAL)
-            && ch->in_room != victim->in_room)
+        if (!IS_NPC(ch) && IS_AFFECTED(ch, AFF_NON_CORPOREAL) && ch->in_room != victim->in_room)
                 return FALSE;
 
         if (IS_AFFECTED(ch, AFF_BLIND))
@@ -3990,7 +4123,7 @@ bool can_see (CHAR_DATA *ch, CHAR_DATA *victim)
                         if (chance < 5)
                                 chance = 5;
 
-                        if (number_percent() < chance )
+                        if (number_percent() < chance)
                                 victim->pcdata->tailing[0] = '\0';
                         else
                                 return FALSE;
@@ -4015,11 +4148,7 @@ bool can_see (CHAR_DATA *ch, CHAR_DATA *victim)
         if (!IS_NPC(ch) && IS_SET(ch->act, PLR_HOLYLIGHT))
                 return TRUE;
 
-        if (IS_NPC(ch)
-            && !IS_NPC(victim)
-            && IS_AFFECTED(victim, AFF_SNEAK)
-            && !IS_AFFECTED(ch, AFF_DETECT_SNEAK)
-            && number_percent() < (50 + (victim->level - ch->level) * 5))
+        if (IS_NPC(ch) && !IS_NPC(victim) && IS_AFFECTED(victim, AFF_SNEAK) && !IS_AFFECTED(ch, AFF_DETECT_SNEAK) && number_percent() < (50 + (victim->level - ch->level) * 5))
                 return FALSE;
 
         if (IS_AFFECTED(victim, AFF_INVISIBLE) && !IS_AFFECTED(ch, AFF_DETECT_INVIS))
@@ -4028,8 +4157,7 @@ bool can_see (CHAR_DATA *ch, CHAR_DATA *victim)
         if (IS_AFFECTED(victim, AFF_HIDE) && !IS_AFFECTED(ch, AFF_DETECT_HIDDEN))
                 return FALSE;
 
-        if (room_is_dark(ch->in_room)
-            && (ch->sub_class == SUB_CLASS_VAMPIRE || ch->form == FORM_FLY))
+        if (room_is_dark(ch->in_room) && (ch->sub_class == SUB_CLASS_VAMPIRE || ch->form == FORM_FLY))
                 return TRUE;
 
         if (room_is_dark(ch->in_room) && !IS_AFFECTED(ch, AFF_INFRARED) && !is_affected(ch, gsn_clairvoyance))
@@ -4041,53 +4169,50 @@ bool can_see (CHAR_DATA *ch, CHAR_DATA *victim)
         return TRUE;
 }
 
-
 /*
  * True if char can see obj.
  */
-bool can_see_obj( CHAR_DATA *ch, OBJ_DATA *obj )
+bool can_see_obj(CHAR_DATA *ch, OBJ_DATA *obj)
 {
-        if ( obj->deleted )
+        if (obj->deleted)
                 return FALSE;
 
-        if ( obj->item_type == ITEM_HOARD && obj->value[1] != 2 && !IS_IMMORTAL(ch) )
+        if (obj->item_type == ITEM_HOARD && obj->value[1] != 2 && !IS_IMMORTAL(ch))
                 return FALSE;
 
-        if ( !IS_NPC( ch ) && IS_SET( ch->act, PLR_HOLYLIGHT ) )
+        if (!IS_NPC(ch) && IS_SET(ch->act, PLR_HOLYLIGHT))
                 return TRUE;
 
-        if ( IS_AFFECTED( ch, AFF_BLIND ) )
+        if (IS_AFFECTED(ch, AFF_BLIND))
                 return FALSE;
 
         if (IS_AFFECTED(ch, AFF_EYE_TRAUMA))
                 return FALSE;
 
-        if ( obj->item_type == ITEM_LIGHT && obj->value[2] != 0 )
+        if (obj->item_type == ITEM_LIGHT && obj->value[2] != 0)
                 return TRUE;
 
-        if ( room_is_dark( ch->in_room ) && ch->sub_class == SUB_CLASS_VAMPIRE)
+        if (room_is_dark(ch->in_room) && ch->sub_class == SUB_CLASS_VAMPIRE)
                 return TRUE;
 
         if (!IS_NPC(ch) && is_affected(ch, gsn_song_of_revelation))
                 return TRUE;
 
-        if ( room_is_dark( ch->in_room ) && !IS_AFFECTED( ch, AFF_INFRARED ) && !is_affected(ch, gsn_clairvoyance))
+        if (room_is_dark(ch->in_room) && !IS_AFFECTED(ch, AFF_INFRARED) && !is_affected(ch, gsn_clairvoyance))
                 return FALSE;
 
-        if ( IS_SET( obj->extra_flags, ITEM_INVIS )
-            && !IS_AFFECTED( ch, AFF_DETECT_INVIS ) )
+        if (IS_SET(obj->extra_flags, ITEM_INVIS) && !IS_AFFECTED(ch, AFF_DETECT_INVIS))
                 return FALSE;
 
         return TRUE;
 }
 
-
 /*
  * True if char can drop obj.
  */
-bool can_drop_obj( CHAR_DATA *ch, OBJ_DATA *obj )
+bool can_drop_obj(CHAR_DATA *ch, OBJ_DATA *obj)
 {
-        if ( !IS_SET( obj->extra_flags, ITEM_NODROP ) )
+        if (!IS_SET(obj->extra_flags, ITEM_NODROP))
                 return TRUE;
         return FALSE;
 }
@@ -4096,287 +4221,497 @@ bool can_drop_obj( CHAR_DATA *ch, OBJ_DATA *obj )
  * Return damage type description for a weapon given array element location
  */
 
-char* weapon_damage_type_name (int dt_num)
+char *weapon_damage_type_name(int dt_num)
 {
         /* For use in ostat -- Owl 27/6/22 */
 
-        if (dt_num == 0)    return "hit";
-        if (dt_num == 1)    return "slice";
-        if (dt_num == 2)    return "stab";
-        if (dt_num == 3)    return "slash";
-        if (dt_num == 4)    return "whip";
-        if (dt_num == 5)    return "claw";
-        if (dt_num == 6)    return "blast";
-        if (dt_num == 7)    return "pound";
-        if (dt_num == 8)    return "crush";
-        if (dt_num == 9)    return "grep";
-        if (dt_num == 10)   return "bite";
-        if (dt_num == 11)   return "pierce";
-        if (dt_num == 12)   return "suction";
-        if (dt_num == 13)   return "chop";
-        if (dt_num == 14)   return "rake";
-        if (dt_num == 15)   return "swipe";
-        if (dt_num == 16)   return "sting";
-        if (dt_num == 17)   return "scoop";
-        if (dt_num == 18)   return "mash";
-        if (dt_num == 19)   return "hack";
+        if (dt_num == 0)
+                return "hit";
+        if (dt_num == 1)
+                return "slice";
+        if (dt_num == 2)
+                return "stab";
+        if (dt_num == 3)
+                return "slash";
+        if (dt_num == 4)
+                return "whip";
+        if (dt_num == 5)
+                return "claw";
+        if (dt_num == 6)
+                return "blast";
+        if (dt_num == 7)
+                return "pound";
+        if (dt_num == 8)
+                return "crush";
+        if (dt_num == 9)
+                return "grep";
+        if (dt_num == 10)
+                return "bite";
+        if (dt_num == 11)
+                return "pierce";
+        if (dt_num == 12)
+                return "suction";
+        if (dt_num == 13)
+                return "chop";
+        if (dt_num == 14)
+                return "rake";
+        if (dt_num == 15)
+                return "swipe";
+        if (dt_num == 16)
+                return "sting";
+        if (dt_num == 17)
+                return "scoop";
+        if (dt_num == 18)
+                return "mash";
+        if (dt_num == 19)
+                return "hack";
 
         return "(unknown)";
 }
-
-
 
 /*
  * Return ascii name of an item type.
  */
-char *item_type_name( OBJ_DATA *obj  )
+char *item_type_name(OBJ_DATA *obj)
 {
         OBJ_DATA *in_obj;
-        char buf [ MAX_STRING_LENGTH ];
+        char buf[MAX_STRING_LENGTH];
 
-        switch ( obj->item_type )
+        switch (obj->item_type)
         {
-            case ITEM_LIGHT:                    return "light";
-            case ITEM_SCROLL:                   return "scroll";
-            case ITEM_WAND:                     return "wand";
-            case ITEM_STAFF:                    return "staff";
-            case ITEM_WEAPON:                   return "weapon";
-            case ITEM_DIGGER:                   return "digging implement";
-            case ITEM_HOARD:                    return "hoard";
-            case ITEM_TREASURE:                 return "treasure";
-            case ITEM_ARMOR:                    return "armour";
-            case ITEM_POTION:                   return "potion";
-            case ITEM_FURNITURE:                return "furniture";
-            case ITEM_TRASH:                    return "trash";
-            case ITEM_CONTAINER:                return "container";
-            case ITEM_DRINK_CON:                return "drink container";
-            case ITEM_KEY:                      return "key";
-            case ITEM_FOOD:                     return "food";
-            case ITEM_MONEY:                    return "money";
-            case ITEM_BOAT:                     return "boat";
-            case ITEM_CORPSE_NPC:               return "npc corpse";
-            case ITEM_CORPSE_PC:                return "pc corpse";
-            case ITEM_FOUNTAIN:                 return "fountain";
-            case ITEM_PILL:                     return "pill";
-            case ITEM_CLIMBING_EQ:              return "climbing eq";
-            case ITEM_PAINT:                    return "paint pigment";
-            case ITEM_MOB:                      return "mob";
-            case ITEM_ANVIL:                    return "anvil";
-            case ITEM_AUCTION_TICKET:           return "auction ticket";
-            case ITEM_CLAN_OBJECT:              return "clan item";
-            case ITEM_PORTAL:                   return "portal";
-            case ITEM_POISON_POWDER:            return "poison powder";
-            case ITEM_LOCK_PICK:                return "lock pick";
-            case ITEM_INSTRUMENT:               return "instrument";
-            case ITEM_ARMOURERS_HAMMER:         return "armourer's hammer";
-            case ITEM_MITHRIL:                  return "mithril";
-            case ITEM_WHETSTONE:                return "whetstone";
-            case ITEM_CRAFT:                    return "crafting";
-            case ITEM_SPELLCRAFT:               return "spellcrafting";
-            case ITEM_TURRET_MODULE:            return "turret module";
-            case ITEM_FORGE:                    return "forge";
-            case ITEM_ARRESTOR_UNIT:            return "arrestor unit";
-            case ITEM_DRIVER_UNIT:              return "driver unit";
-            case ITEM_REFLECTOR_UNIT:           return "reflector unit";
-            case ITEM_SHIELD_UNIT:              return "shield unit";
-            case ITEM_TURRET:                   return "turret";
-            case ITEM_DEFENSIVE_TURRET_MODULE:  return "defensive turret module";
-            case ITEM_COMBAT_PULSE:             return "combat pulse";
-            case ITEM_DEFENSIVE_PULSE:          return "defensive pulse";
-            case ITEM_PIPE:                     return "pipe";
-            case ITEM_PIPE_CLEANER:             return "pipe cleaner";
-            case ITEM_SMOKEABLE:                return "smokeable";
-            case ITEM_REMAINS:                  return "remains";
+        case ITEM_LIGHT:
+                return "light";
+        case ITEM_SCROLL:
+                return "scroll";
+        case ITEM_WAND:
+                return "wand";
+        case ITEM_STAFF:
+                return "staff";
+        case ITEM_WEAPON:
+                return "weapon";
+        case ITEM_DIGGER:
+                return "digging implement";
+        case ITEM_HOARD:
+                return "hoard";
+        case ITEM_TREASURE:
+                return "treasure";
+        case ITEM_ARMOR:
+                return "armour";
+        case ITEM_POTION:
+                return "potion";
+        case ITEM_FURNITURE:
+                return "furniture";
+        case ITEM_TRASH:
+                return "trash";
+        case ITEM_CONTAINER:
+                return "container";
+        case ITEM_DRINK_CON:
+                return "drink container";
+        case ITEM_KEY:
+                return "key";
+        case ITEM_FOOD:
+                return "food";
+        case ITEM_MONEY:
+                return "money";
+        case ITEM_BOAT:
+                return "boat";
+        case ITEM_CORPSE_NPC:
+                return "npc corpse";
+        case ITEM_CORPSE_PC:
+                return "pc corpse";
+        case ITEM_FOUNTAIN:
+                return "fountain";
+        case ITEM_PILL:
+                return "pill";
+        case ITEM_CLIMBING_EQ:
+                return "climbing eq";
+        case ITEM_PAINT:
+                return "paint pigment";
+        case ITEM_MOB:
+                return "mob";
+        case ITEM_ANVIL:
+                return "anvil";
+        case ITEM_AUCTION_TICKET:
+                return "auction ticket";
+        case ITEM_CLAN_OBJECT:
+                return "clan item";
+        case ITEM_PORTAL:
+                return "portal";
+        case ITEM_POISON_POWDER:
+                return "poison powder";
+        case ITEM_LOCK_PICK:
+                return "lock pick";
+        case ITEM_INSTRUMENT:
+                return "instrument";
+        case ITEM_ARMOURERS_HAMMER:
+                return "armourer's hammer";
+        case ITEM_MITHRIL:
+                return "mithril";
+        case ITEM_WHETSTONE:
+                return "whetstone";
+        case ITEM_CRAFT:
+                return "crafting";
+        case ITEM_SPELLCRAFT:
+                return "spellcrafting";
+        case ITEM_TURRET_MODULE:
+                return "turret module";
+        case ITEM_FORGE:
+                return "forge";
+        case ITEM_ARRESTOR_UNIT:
+                return "arrestor unit";
+        case ITEM_DRIVER_UNIT:
+                return "driver unit";
+        case ITEM_REFLECTOR_UNIT:
+                return "reflector unit";
+        case ITEM_SHIELD_UNIT:
+                return "shield unit";
+        case ITEM_TURRET:
+                return "turret";
+        case ITEM_DEFENSIVE_TURRET_MODULE:
+                return "defensive turret module";
+        case ITEM_COMBAT_PULSE:
+                return "combat pulse";
+        case ITEM_DEFENSIVE_PULSE:
+                return "defensive pulse";
+        case ITEM_PIPE:
+                return "pipe";
+        case ITEM_PIPE_CLEANER:
+                return "pipe cleaner";
+        case ITEM_SMOKEABLE:
+                return "smokeable";
+        case ITEM_REMAINS:
+                return "remains";
         }
 
-        for ( in_obj = obj; in_obj->in_obj; in_obj = in_obj->in_obj )
+        for (in_obj = obj; in_obj->in_obj; in_obj = in_obj->in_obj)
                 ;
 
-        if ( in_obj->carried_by )
-                sprintf( buf, "Item_type_name: unknown type %d from %s owned by %s.",
-                        obj->item_type, obj->name, obj->carried_by->name );
+        if (in_obj->carried_by)
+                sprintf(buf, "Item_type_name: unknown type %d from %s owned by %s.",
+                        obj->item_type, obj->name, obj->carried_by->name);
         else
-                sprintf( buf,
+                sprintf(buf,
                         "Item_type_name: unknown type %d from %s owned by (unknown).",
-                        obj->item_type, obj->name );
+                        obj->item_type, obj->name);
 
-        bug( buf, 0 );
+        bug(buf, 0);
         return "(unknown)";
 }
-
 
 /*
  * Return ascii name of an affect location.
  */
-char *affect_loc_name( int location )
+char *affect_loc_name(int location)
 {
-        switch ( location )
+        switch (location)
         {
-            case APPLY_NONE:                return "none";
-            case APPLY_STR:                 return "strength";
-            case APPLY_DEX:                 return "dexterity";
-            case APPLY_INT:                 return "intelligence";
-            case APPLY_WIS:                 return "wisdom";
-            case APPLY_CON:                 return "constitution";
-            case APPLY_SEX:                 return "sex";
-            case APPLY_CLASS:               return "class";
-            case APPLY_LEVEL:               return "level";
-            case APPLY_AGE:                 return "age";
-            case APPLY_HEIGHT:              return "height";
-            case APPLY_WEIGHT:              return "weight";
-            case APPLY_MANA:                return "mana";
-            case APPLY_HIT:                 return "hit points";
-            case APPLY_MOVE:                return "moves";
-            case APPLY_GOLD:                return "gold";
-            case APPLY_EXP:                 return "experience";
-            case APPLY_AC:                  return "armor class";
-            case APPLY_HITROLL:             return "hit roll";
-            case APPLY_DAMROLL:             return "damage roll";
-            case APPLY_SAVING_PARA:         return "save vs paralysis";
-            case APPLY_SAVING_ROD:          return "save vs rod";
-            case APPLY_SAVING_PETRI:        return "save vs petrification";
-            case APPLY_SAVING_BREATH:       return "save vs breath";
-            case APPLY_SAVING_SPELL:        return "save vs spell";
-            case APPLY_SANCTUARY:           return "sanctuary";
-            case APPLY_SNEAK:               return "sneak";
-            case APPLY_FLY:                 return "fly";
-            case APPLY_INVIS:               return "invisibility";
-            case APPLY_DETECT_INVIS:        return "detect invisibility";
-            case APPLY_DETECT_HIDDEN:       return "detect hidden";
-            case APPLY_PROTECT:             return "protection";
-            case APPLY_PASS_DOOR:           return "pass door";
-            case APPLY_GLOBE:               return "globe";
-            case APPLY_FLAMING:             return "fireshield";
-            case APPLY_RESIST_HEAT:         return "heat resistance";
-            case APPLY_RESIST_COLD:         return "cold resistance";
-            case APPLY_RESIST_LIGHTNING:    return "lightning resistance";
-            case APPLY_RESIST_ACID:         return "acid resistance";
-            case APPLY_BREATHE_WATER:       return "breathe water";
-            case APPLY_BALANCE:             return "attack speed";
-            case APPLY_STRENGTHEN:          return "damage mitigation";
-            case APPLY_ENGRAVED:            return "damage enhancement";
-            case APPLY_SERRATED:            return "bleed over time";
-            case APPLY_INSCRIBED:           return "rune focus";
-            case APPLY_CRIT:                return "critical hit chance";
-            case APPLY_SWIFTNESS:           return "swift attack";
-            case APPLY_DRAGON_AURA:         return "aura of the dragon";
+        case APPLY_NONE:
+                return "none";
+        case APPLY_STR:
+                return "strength";
+        case APPLY_DEX:
+                return "dexterity";
+        case APPLY_INT:
+                return "intelligence";
+        case APPLY_WIS:
+                return "wisdom";
+        case APPLY_CON:
+                return "constitution";
+        case APPLY_SEX:
+                return "sex";
+        case APPLY_CLASS:
+                return "class";
+        case APPLY_LEVEL:
+                return "level";
+        case APPLY_AGE:
+                return "age";
+        case APPLY_HEIGHT:
+                return "height";
+        case APPLY_WEIGHT:
+                return "weight";
+        case APPLY_MANA:
+                return "mana";
+        case APPLY_HIT:
+                return "hit points";
+        case APPLY_MOVE:
+                return "moves";
+        case APPLY_GOLD:
+                return "gold";
+        case APPLY_EXP:
+                return "experience";
+        case APPLY_AC:
+                return "armor class";
+        case APPLY_HITROLL:
+                return "hit roll";
+        case APPLY_DAMROLL:
+                return "damage roll";
+        case APPLY_SAVING_PARA:
+                return "save vs paralysis";
+        case APPLY_SAVING_ROD:
+                return "save vs rod";
+        case APPLY_SAVING_PETRI:
+                return "save vs petrification";
+        case APPLY_SAVING_BREATH:
+                return "save vs breath";
+        case APPLY_SAVING_SPELL:
+                return "save vs spell";
+        case APPLY_SANCTUARY:
+                return "sanctuary";
+        case APPLY_SNEAK:
+                return "sneak";
+        case APPLY_FLY:
+                return "fly";
+        case APPLY_INVIS:
+                return "invisibility";
+        case APPLY_DETECT_INVIS:
+                return "detect invisibility";
+        case APPLY_DETECT_HIDDEN:
+                return "detect hidden";
+        case APPLY_PROTECT:
+                return "protection";
+        case APPLY_PASS_DOOR:
+                return "pass door";
+        case APPLY_GLOBE:
+                return "globe";
+        case APPLY_FLAMING:
+                return "fireshield";
+        case APPLY_RESIST_HEAT:
+                return "heat resistance";
+        case APPLY_RESIST_COLD:
+                return "cold resistance";
+        case APPLY_RESIST_LIGHTNING:
+                return "lightning resistance";
+        case APPLY_RESIST_ACID:
+                return "acid resistance";
+        case APPLY_BREATHE_WATER:
+                return "breathe water";
+        case APPLY_BALANCE:
+                return "attack speed";
+        case APPLY_STRENGTHEN:
+                return "damage mitigation";
+        case APPLY_ENGRAVED:
+                return "damage enhancement";
+        case APPLY_SERRATED:
+                return "bleed over time";
+        case APPLY_INSCRIBED:
+                return "rune focus";
+        case APPLY_CRIT:
+                return "critical hit chance";
+        case APPLY_SWIFTNESS:
+                return "swift attack";
+        case APPLY_DRAGON_AURA:
+                return "aura of the dragon";
         }
 
-        bug( "Affect_location_name: unknown location %d.", location );
+        bug("Affect_location_name: unknown location %d.", location);
         return "(unknown)";
 }
 
-
-int item_name_type( char *name )
+int item_name_type(char *name)
 {
-        if ( !str_cmp( name, "light"              ) ) return ITEM_LIGHT;
-        if ( !str_cmp( name, "scroll"             ) ) return ITEM_SCROLL;
-        if ( !str_cmp( name, "wand"               ) ) return ITEM_WAND;
-        if ( !str_cmp( name, "staff"              ) ) return ITEM_STAFF;
-        if ( !str_cmp( name, "weapon"             ) ) return ITEM_WEAPON;
-        if ( !str_cmp( name, "digging implement"  ) ) return ITEM_DIGGER;
-        if ( !str_cmp( name, "hoard"              ) ) return ITEM_HOARD;
-        if ( !str_cmp( name, "treasure"           ) ) return ITEM_TREASURE;
-        if ( !str_cmp( name, "armor"              ) ) return ITEM_ARMOR;
-        if ( !str_cmp( name, "potion"             ) ) return ITEM_POTION;
-        if ( !str_cmp( name, "furniture"          ) ) return ITEM_FURNITURE;
-        if ( !str_cmp( name, "trash"              ) ) return ITEM_TRASH;
-        if ( !str_cmp( name, "container"          ) ) return ITEM_CONTAINER;
-        if ( !str_cmp( name, "drink"              ) ) return ITEM_DRINK_CON;
-        if ( !str_cmp( name, "key"                ) ) return ITEM_KEY;
-        if ( !str_cmp( name, "food"               ) ) return ITEM_FOOD;
-        if ( !str_cmp( name, "money"              ) ) return ITEM_MONEY;
-        if ( !str_cmp( name, "boat"               ) ) return ITEM_BOAT;
-        if ( !str_cmp( name, "corpse"             ) ) return ITEM_CORPSE_NPC;
-        if ( !str_cmp( name, "player corpse"      ) ) return ITEM_CORPSE_PC;
-        if ( !str_cmp( name, "fountain"           ) ) return ITEM_FOUNTAIN;
-        if ( !str_cmp( name, "pill"               ) ) return ITEM_PILL;
-        if ( !str_cmp( name, "climbing equipment" ) ) return ITEM_CLIMBING_EQ;
-        if ( !str_cmp( name, "paint"              ) ) return ITEM_PAINT;
-        if ( !str_cmp( name, "mob"                ) ) return ITEM_MOB;
-        if ( !str_cmp( name, "anvil"              ) ) return ITEM_ANVIL;
-        if ( !str_cmp( name, "auction ticket"     ) ) return ITEM_AUCTION_TICKET;
-        if ( !str_cmp( name, "clan object"        ) ) return ITEM_CLAN_OBJECT;
-        if ( !str_cmp( name, "portal"             ) ) return ITEM_PORTAL;
-        if ( !str_cmp( name, "poison powder"      ) ) return ITEM_POISON_POWDER;
-        if ( !str_cmp( name, "lockpick"           ) ) return ITEM_LOCK_PICK;
-        if ( !str_cmp( name, "instrument"         ) ) return ITEM_INSTRUMENT;
-        if ( !str_cmp( name, "armourer's hammer"  ) ) return ITEM_ARMOURERS_HAMMER;
-        if ( !str_cmp( name, "mithril"            ) ) return ITEM_MITHRIL;
-        if ( !str_cmp( name, "whetstone"          ) ) return ITEM_WHETSTONE;
-        if ( !str_cmp( name, "crafting item"      ) ) return ITEM_CRAFT;
-        if ( !str_cmp( name, "spellcrafting item" ) ) return ITEM_SPELLCRAFT ;
-        if ( !str_cmp( name, "turret module"      ) ) return ITEM_TURRET_MODULE;
-        if ( !str_cmp( name, "forge"              ) ) return ITEM_FORGE;
-        if ( !str_cmp( name, "turret"             ) ) return ITEM_TURRET;
-        if ( !str_cmp( name, "turret module"      ) ) return ITEM_DEFENSIVE_TURRET_MODULE;
-        if ( !str_cmp( name, "combat pulse"       ) ) return ITEM_COMBAT_PULSE;
-        if ( !str_cmp( name, "defensive pulse"    ) ) return ITEM_DEFENSIVE_PULSE;
-        if ( !str_cmp( name, "pipe"               ) ) return ITEM_PIPE;
-        if ( !str_cmp( name, "pipe cleaner"       ) ) return ITEM_PIPE_CLEANER;
-        if ( !str_cmp( name, "smokeable"          ) ) return ITEM_SMOKEABLE;
-        if ( !str_cmp( name, "remains"            ) ) return ITEM_REMAINS;
+        if (!str_cmp(name, "light"))
+                return ITEM_LIGHT;
+        if (!str_cmp(name, "scroll"))
+                return ITEM_SCROLL;
+        if (!str_cmp(name, "wand"))
+                return ITEM_WAND;
+        if (!str_cmp(name, "staff"))
+                return ITEM_STAFF;
+        if (!str_cmp(name, "weapon"))
+                return ITEM_WEAPON;
+        if (!str_cmp(name, "digging implement"))
+                return ITEM_DIGGER;
+        if (!str_cmp(name, "hoard"))
+                return ITEM_HOARD;
+        if (!str_cmp(name, "treasure"))
+                return ITEM_TREASURE;
+        if (!str_cmp(name, "armor"))
+                return ITEM_ARMOR;
+        if (!str_cmp(name, "potion"))
+                return ITEM_POTION;
+        if (!str_cmp(name, "furniture"))
+                return ITEM_FURNITURE;
+        if (!str_cmp(name, "trash"))
+                return ITEM_TRASH;
+        if (!str_cmp(name, "container"))
+                return ITEM_CONTAINER;
+        if (!str_cmp(name, "drink"))
+                return ITEM_DRINK_CON;
+        if (!str_cmp(name, "key"))
+                return ITEM_KEY;
+        if (!str_cmp(name, "food"))
+                return ITEM_FOOD;
+        if (!str_cmp(name, "money"))
+                return ITEM_MONEY;
+        if (!str_cmp(name, "boat"))
+                return ITEM_BOAT;
+        if (!str_cmp(name, "corpse"))
+                return ITEM_CORPSE_NPC;
+        if (!str_cmp(name, "player corpse"))
+                return ITEM_CORPSE_PC;
+        if (!str_cmp(name, "fountain"))
+                return ITEM_FOUNTAIN;
+        if (!str_cmp(name, "pill"))
+                return ITEM_PILL;
+        if (!str_cmp(name, "climbing equipment"))
+                return ITEM_CLIMBING_EQ;
+        if (!str_cmp(name, "paint"))
+                return ITEM_PAINT;
+        if (!str_cmp(name, "mob"))
+                return ITEM_MOB;
+        if (!str_cmp(name, "anvil"))
+                return ITEM_ANVIL;
+        if (!str_cmp(name, "auction ticket"))
+                return ITEM_AUCTION_TICKET;
+        if (!str_cmp(name, "clan object"))
+                return ITEM_CLAN_OBJECT;
+        if (!str_cmp(name, "portal"))
+                return ITEM_PORTAL;
+        if (!str_cmp(name, "poison powder"))
+                return ITEM_POISON_POWDER;
+        if (!str_cmp(name, "lockpick"))
+                return ITEM_LOCK_PICK;
+        if (!str_cmp(name, "instrument"))
+                return ITEM_INSTRUMENT;
+        if (!str_cmp(name, "armourer's hammer"))
+                return ITEM_ARMOURERS_HAMMER;
+        if (!str_cmp(name, "mithril"))
+                return ITEM_MITHRIL;
+        if (!str_cmp(name, "whetstone"))
+                return ITEM_WHETSTONE;
+        if (!str_cmp(name, "crafting item"))
+                return ITEM_CRAFT;
+        if (!str_cmp(name, "spellcrafting item"))
+                return ITEM_SPELLCRAFT;
+        if (!str_cmp(name, "turret module"))
+                return ITEM_TURRET_MODULE;
+        if (!str_cmp(name, "forge"))
+                return ITEM_FORGE;
+        if (!str_cmp(name, "turret"))
+                return ITEM_TURRET;
+        if (!str_cmp(name, "turret module"))
+                return ITEM_DEFENSIVE_TURRET_MODULE;
+        if (!str_cmp(name, "combat pulse"))
+                return ITEM_COMBAT_PULSE;
+        if (!str_cmp(name, "defensive pulse"))
+                return ITEM_DEFENSIVE_PULSE;
+        if (!str_cmp(name, "pipe"))
+                return ITEM_PIPE;
+        if (!str_cmp(name, "pipe cleaner"))
+                return ITEM_PIPE_CLEANER;
+        if (!str_cmp(name, "smokeable"))
+                return ITEM_SMOKEABLE;
+        if (!str_cmp(name, "remains"))
+                return ITEM_REMAINS;
         return 0;
-
 }
-
 
 /*
  * Return ascii name of an affect bit vector.
  * Remember to change the function directly below too.
  */
-char *affect_bit_name (unsigned long int vector)
+char *affect_bit_name(unsigned long int vector)
 {
-        if ( vector & AFF_BLIND             ) return "blind";
-        if ( vector & AFF_INVISIBLE         ) return "invisible";
-        if ( vector & AFF_DETECT_EVIL       ) return "detect_evil";
-        if ( vector & AFF_DETECT_INVIS      ) return "detect_invis";
-        if ( vector & AFF_DETECT_MAGIC      ) return "detect_magic";
-        if ( vector & AFF_DETECT_HIDDEN     ) return "detect_hidden";
-        if ( vector & AFF_HOLD              ) return "hold";
-        if ( vector & AFF_SANCTUARY         ) return "sanctuary";
-        if ( vector & AFF_FAERIE_FIRE       ) return "faerie_fire";
-        if ( vector & AFF_INFRARED          ) return "infrared";
-        if ( vector & AFF_CURSE             ) return "curse";
-        if ( vector & AFF_FLAMING           ) return "flaming";
-        if ( vector & AFF_POISON            ) return "poisoned";
-        if ( vector & AFF_PROTECT           ) return "protection";
-        if ( vector & AFF_MEDITATE          ) return "meditating";
-        if ( vector & AFF_SNEAK             ) return "sneak";
-        if ( vector & AFF_HIDE              ) return "hide";
-        if ( vector & AFF_SLEEP             ) return "sleep";
-        if ( vector & AFF_CHARM             ) return "charm";
-        if ( vector & AFF_FLYING            ) return "flying";
-        if ( vector & AFF_PASS_DOOR         ) return "pass_door";
-        if ( vector & AFF_DETECT_TRAPS      ) return "detect_traps";
-        if ( vector & AFF_BATTLE_AURA       ) return "battle_aura";
-        if ( vector & AFF_DETECT_SNEAK      ) return "detect_sneak";
-        if ( vector & AFF_GLOBE             ) return "globed";
-        if ( vector & AFF_DETER             ) return "deter";
-        if ( vector & AFF_SWIM              ) return "swim";
-        if ( vector & AFF_PRAYER_PLAGUE     ) return "plague";
-        if ( vector & AFF_NON_CORPOREAL     ) return "non_corporeal";
-        if ( vector & AFF_DETECT_CURSE      ) return "detect_curse";
-        if ( vector & AFF_DETECT_GOOD       ) return "detect_good";
-        if ( vector & AFF_SWALLOWED         ) return "swallowed";
-        if ( vector & AFF_NO_RECALL         ) return "no_recall";
-        if ( vector & AFF_SLOW              ) return "slow";
-        if ( vector & AFF_DOT               ) return "DOT";
-        if ( vector & AFF_DAZED             ) return "dazed";
-        if ( vector & AFF_PRONE             ) return "prone";
-        if ( vector & AFF_CONFUSION         ) return "confused";
-        if ( vector & AFF_EYE_TRAUMA        ) return "eye_trauma";
-        if ( vector & AFF_HEAD_TRAUMA       ) return "head_trauma";
-        if ( vector & AFF_ARM_TRAUMA        ) return "arm_trauma";
-        if ( vector & AFF_LEG_TRAUMA        ) return "leg_trauma";
-        if ( vector & AFF_HEART_TRAUMA      ) return "heart_trauma";
-        if ( vector & AFF_TAIL_TRAUMA       ) return "tail_trauma";
-        if ( vector & AFF_TORSO_TRAUMA      ) return "torso_trauma";
-        if ( vector & AFF_BONUS_DAMAGE      ) return "extra_damage";
-        if ( vector & AFF_BONUS_ATTACK      ) return "extra_attack";
-        if ( vector & AFF_BONUS_RESILIENCE  ) return "extra_resilience";
-        if ( vector & AFF_BONUS_EXOTIC      ) return "exotic_reduction";
-        if ( vector & AFF_BONUS_INITIATE    ) return "initiation_bonus";
+        if (vector & AFF_BLIND)
+                return "blind";
+        if (vector & AFF_INVISIBLE)
+                return "invisible";
+        if (vector & AFF_DETECT_EVIL)
+                return "detect_evil";
+        if (vector & AFF_DETECT_INVIS)
+                return "detect_invis";
+        if (vector & AFF_DETECT_MAGIC)
+                return "detect_magic";
+        if (vector & AFF_DETECT_HIDDEN)
+                return "detect_hidden";
+        if (vector & AFF_HOLD)
+                return "hold";
+        if (vector & AFF_SANCTUARY)
+                return "sanctuary";
+        if (vector & AFF_FAERIE_FIRE)
+                return "faerie_fire";
+        if (vector & AFF_INFRARED)
+                return "infrared";
+        if (vector & AFF_CURSE)
+                return "curse";
+        if (vector & AFF_FLAMING)
+                return "flaming";
+        if (vector & AFF_POISON)
+                return "poisoned";
+        if (vector & AFF_PROTECT)
+                return "protection";
+        if (vector & AFF_MEDITATE)
+                return "meditating";
+        if (vector & AFF_SNEAK)
+                return "sneak";
+        if (vector & AFF_HIDE)
+                return "hide";
+        if (vector & AFF_SLEEP)
+                return "sleep";
+        if (vector & AFF_CHARM)
+                return "charm";
+        if (vector & AFF_FLYING)
+                return "flying";
+        if (vector & AFF_PASS_DOOR)
+                return "pass_door";
+        if (vector & AFF_DETECT_TRAPS)
+                return "detect_traps";
+        if (vector & AFF_BATTLE_AURA)
+                return "battle_aura";
+        if (vector & AFF_DETECT_SNEAK)
+                return "detect_sneak";
+        if (vector & AFF_GLOBE)
+                return "globed";
+        if (vector & AFF_DETER)
+                return "deter";
+        if (vector & AFF_SWIM)
+                return "swim";
+        if (vector & AFF_PRAYER_PLAGUE)
+                return "plague";
+        if (vector & AFF_NON_CORPOREAL)
+                return "non_corporeal";
+        if (vector & AFF_DETECT_CURSE)
+                return "detect_curse";
+        if (vector & AFF_DETECT_GOOD)
+                return "detect_good";
+        if (vector & AFF_SWALLOWED)
+                return "swallowed";
+        if (vector & AFF_NO_RECALL)
+                return "no_recall";
+        if (vector & AFF_SLOW)
+                return "slow";
+        if (vector & AFF_DOT)
+                return "DOT";
+        if (vector & AFF_DAZED)
+                return "dazed";
+        if (vector & AFF_PRONE)
+                return "prone";
+        if (vector & AFF_CONFUSION)
+                return "confused";
+        if (vector & AFF_EYE_TRAUMA)
+                return "eye_trauma";
+        if (vector & AFF_HEAD_TRAUMA)
+                return "head_trauma";
+        if (vector & AFF_ARM_TRAUMA)
+                return "arm_trauma";
+        if (vector & AFF_LEG_TRAUMA)
+                return "leg_trauma";
+        if (vector & AFF_HEART_TRAUMA)
+                return "heart_trauma";
+        if (vector & AFF_TAIL_TRAUMA)
+                return "tail_trauma";
+        if (vector & AFF_TORSO_TRAUMA)
+                return "torso_trauma";
+        if (vector & AFF_BONUS_DAMAGE)
+                return "extra_damage";
+        if (vector & AFF_BONUS_ATTACK)
+                return "extra_attack";
+        if (vector & AFF_BONUS_RESILIENCE)
+                return "extra_resilience";
+        if (vector & AFF_BONUS_EXOTIC)
+                return "exotic_reduction";
+        if (vector & AFF_BONUS_INITIATE)
+                return "initiation_bonus";
 
         return "none";
 }
@@ -4384,58 +4719,108 @@ char *affect_bit_name (unsigned long int vector)
 /*
  *  Used for the 'affect' command output
  */
-char* affect_bit_name_nice (unsigned long int vector)
+char *affect_bit_name_nice(unsigned long int vector)
 {
-        if ( vector & AFF_BLIND             ) return "blindness";
-        if ( vector & AFF_INVISIBLE         ) return "invisibility";
-        if ( vector & AFF_DETECT_EVIL       ) return "detect evil";
-        if ( vector & AFF_DETECT_INVIS      ) return "detect invisibility";
-        if ( vector & AFF_DETECT_MAGIC      ) return "detect magic";
-        if ( vector & AFF_DETECT_HIDDEN     ) return "detect hidden";
-        if ( vector & AFF_HOLD              ) return "hold";
-        if ( vector & AFF_SANCTUARY         ) return "sanctuary";
-        if ( vector & AFF_FAERIE_FIRE       ) return "faerie fire";
-        if ( vector & AFF_INFRARED          ) return "infrared vision";
-        if ( vector & AFF_CURSE             ) return "curse";
-        if ( vector & AFF_FLAMING           ) return "fireshield";
-        if ( vector & AFF_POISON            ) return "poison";
-        if ( vector & AFF_PROTECT           ) return "protection";
-        if ( vector & AFF_MEDITATE          ) return "meditation";
-        if ( vector & AFF_SNEAK             ) return "sneak";
-        if ( vector & AFF_HIDE              ) return "hide";
-        if ( vector & AFF_SLEEP             ) return "sleep";
-        if ( vector & AFF_CHARM             ) return "charm";
-        if ( vector & AFF_FLYING            ) return "flight";
-        if ( vector & AFF_PASS_DOOR         ) return "pass door";
-        if ( vector & AFF_DETECT_TRAPS      ) return "detect traps";
-        if ( vector & AFF_BATTLE_AURA       ) return "battle aura";
-        if ( vector & AFF_DETECT_SNEAK      ) return "detect sneak";
-        if ( vector & AFF_GLOBE             ) return "globe";
-        if ( vector & AFF_DETER             ) return "deter aggression";
-        if ( vector & AFF_SWIM              ) return "swim";
-        if ( vector & AFF_PRAYER_PLAGUE     ) return "plague";
-        if ( vector & AFF_NON_CORPOREAL     ) return "non-corporeal form";
-        if ( vector & AFF_DETECT_CURSE      ) return "detect curse";
-        if ( vector & AFF_DETECT_GOOD       ) return "detect good";
-        if ( vector & AFF_SWALLOWED         ) return "swallowed";
-        if ( vector & AFF_NO_RECALL         ) return "no_recall";
-        if ( vector & AFF_SLOW              ) return "slow";
-        if ( vector & AFF_DOT               ) return "DOT";
-        if ( vector & AFF_DAZED             ) return "dazed";
-        if ( vector & AFF_PRONE             ) return "prone";
-        if ( vector & AFF_CONFUSION         ) return "confused";
-        if ( vector & AFF_EYE_TRAUMA        ) return "eye trauma";
-        if ( vector & AFF_HEAD_TRAUMA       ) return "head trauma";
-        if ( vector & AFF_ARM_TRAUMA        ) return "arm trauma";
-        if ( vector & AFF_LEG_TRAUMA        ) return "leg trauma";
-        if ( vector & AFF_HEART_TRAUMA      ) return "heart trauma";
-        if ( vector & AFF_TAIL_TRAUMA       ) return "tail trauma";
-        if ( vector & AFF_TORSO_TRAUMA      ) return "torso trauma";
-        if ( vector & AFF_BONUS_DAMAGE      ) return "extra damage";
-        if ( vector & AFF_BONUS_ATTACK      ) return "extra attack";
-        if ( vector & AFF_BONUS_RESILIENCE  ) return "extra resilience";
-        if ( vector & AFF_BONUS_EXOTIC      ) return "exotic reduction";
-        if ( vector & AFF_BONUS_INITIATE    ) return "initiation bonus";
+        if (vector & AFF_BLIND)
+                return "blindness";
+        if (vector & AFF_INVISIBLE)
+                return "invisibility";
+        if (vector & AFF_DETECT_EVIL)
+                return "detect evil";
+        if (vector & AFF_DETECT_INVIS)
+                return "detect invisibility";
+        if (vector & AFF_DETECT_MAGIC)
+                return "detect magic";
+        if (vector & AFF_DETECT_HIDDEN)
+                return "detect hidden";
+        if (vector & AFF_HOLD)
+                return "hold";
+        if (vector & AFF_SANCTUARY)
+                return "sanctuary";
+        if (vector & AFF_FAERIE_FIRE)
+                return "faerie fire";
+        if (vector & AFF_INFRARED)
+                return "infrared vision";
+        if (vector & AFF_CURSE)
+                return "curse";
+        if (vector & AFF_FLAMING)
+                return "fireshield";
+        if (vector & AFF_POISON)
+                return "poison";
+        if (vector & AFF_PROTECT)
+                return "protection";
+        if (vector & AFF_MEDITATE)
+                return "meditation";
+        if (vector & AFF_SNEAK)
+                return "sneak";
+        if (vector & AFF_HIDE)
+                return "hide";
+        if (vector & AFF_SLEEP)
+                return "sleep";
+        if (vector & AFF_CHARM)
+                return "charm";
+        if (vector & AFF_FLYING)
+                return "flight";
+        if (vector & AFF_PASS_DOOR)
+                return "pass door";
+        if (vector & AFF_DETECT_TRAPS)
+                return "detect traps";
+        if (vector & AFF_BATTLE_AURA)
+                return "battle aura";
+        if (vector & AFF_DETECT_SNEAK)
+                return "detect sneak";
+        if (vector & AFF_GLOBE)
+                return "globe";
+        if (vector & AFF_DETER)
+                return "deter aggression";
+        if (vector & AFF_SWIM)
+                return "swim";
+        if (vector & AFF_PRAYER_PLAGUE)
+                return "plague";
+        if (vector & AFF_NON_CORPOREAL)
+                return "non-corporeal form";
+        if (vector & AFF_DETECT_CURSE)
+                return "detect curse";
+        if (vector & AFF_DETECT_GOOD)
+                return "detect good";
+        if (vector & AFF_SWALLOWED)
+                return "swallowed";
+        if (vector & AFF_NO_RECALL)
+                return "no_recall";
+        if (vector & AFF_SLOW)
+                return "slow";
+        if (vector & AFF_DOT)
+                return "DOT";
+        if (vector & AFF_DAZED)
+                return "dazed";
+        if (vector & AFF_PRONE)
+                return "prone";
+        if (vector & AFF_CONFUSION)
+                return "confused";
+        if (vector & AFF_EYE_TRAUMA)
+                return "eye trauma";
+        if (vector & AFF_HEAD_TRAUMA)
+                return "head trauma";
+        if (vector & AFF_ARM_TRAUMA)
+                return "arm trauma";
+        if (vector & AFF_LEG_TRAUMA)
+                return "leg trauma";
+        if (vector & AFF_HEART_TRAUMA)
+                return "heart trauma";
+        if (vector & AFF_TAIL_TRAUMA)
+                return "tail trauma";
+        if (vector & AFF_TORSO_TRAUMA)
+                return "torso trauma";
+        if (vector & AFF_BONUS_DAMAGE)
+                return "extra damage";
+        if (vector & AFF_BONUS_ATTACK)
+                return "extra attack";
+        if (vector & AFF_BONUS_RESILIENCE)
+                return "extra resilience";
+        if (vector & AFF_BONUS_EXOTIC)
+                return "exotic reduction";
+        if (vector & AFF_BONUS_INITIATE)
+                return "initiation bonus";
 
         return "some unknown effect";
 }
@@ -4444,36 +4829,64 @@ char* affect_bit_name_nice (unsigned long int vector)
  * Return ascii name of player act bit vectors. Used by mstat. --Owl 21/3/22
  */
 
-char *pact_bit_name (unsigned long int vector)
+char *pact_bit_name(unsigned long int vector)
 {
-        if ( vector & PLR_IS_NPC        ) return "is_npc";
-        if ( vector & PLR_BOUGHT_PET    ) return "bought_pet";
-        if ( vector & PLR_QUESTOR       ) return "questor";
-        if ( vector & PLR_AUTOEXIT      ) return "autoexit";
-        if ( vector & PLR_AUTOLOOT      ) return "autoloot";
-        if ( vector & PLR_AUTOSAC       ) return "autosac";
-        if ( vector & PLR_BLANK         ) return "blank";
-        if ( vector & PLR_BRIEF         ) return "brief";
-        if ( vector & PLR_LEADER        ) return "leader";
-        if ( vector & PLR_COMBINE       ) return "combine";
-        if ( vector & PLR_PROMPT        ) return "prompt";
-        if ( vector & PLR_TELNET_GA     ) return "telnet_ga";
-        if ( vector & PLR_HOLYLIGHT     ) return "holylight";
-        if ( vector & PLR_WIZINVIS      ) return "wisinvis";
-        if ( vector & PLR_FALLING       ) return "falling";
-        if ( vector & PLR_SILENCE       ) return "silenced";
-        if ( vector & PLR_NO_EMOTE      ) return "no_emote";
-        if ( vector & PLR_NO_TELL       ) return "no_tell";
-        if ( vector & PLR_LOG           ) return "logged";
-        if ( vector & PLR_DENY          ) return "denied";
-        if ( vector & PLR_FREEZE        ) return "frozen";
-        if ( vector & PLR_GUIDE         ) return "guide";
-        if ( vector & PLR_AUTOLEVEL     ) return "autolevel";
-        if ( vector & PLR_ANSI          ) return "ansi";
-        if ( vector & PLR_VT100         ) return "vt100";
-        if ( vector & PLR_AFK           ) return "afk";
-        if ( vector & PLR_AUTOWIELD     ) return "autowield";
-        if ( vector & PLR_AUTOCOIN      ) return "autocoin";
+        if (vector & PLR_IS_NPC)
+                return "is_npc";
+        if (vector & PLR_BOUGHT_PET)
+                return "bought_pet";
+        if (vector & PLR_QUESTOR)
+                return "questor";
+        if (vector & PLR_AUTOEXIT)
+                return "autoexit";
+        if (vector & PLR_AUTOLOOT)
+                return "autoloot";
+        if (vector & PLR_AUTOSAC)
+                return "autosac";
+        if (vector & PLR_BLANK)
+                return "blank";
+        if (vector & PLR_BRIEF)
+                return "brief";
+        if (vector & PLR_LEADER)
+                return "leader";
+        if (vector & PLR_COMBINE)
+                return "combine";
+        if (vector & PLR_PROMPT)
+                return "prompt";
+        if (vector & PLR_TELNET_GA)
+                return "telnet_ga";
+        if (vector & PLR_HOLYLIGHT)
+                return "holylight";
+        if (vector & PLR_WIZINVIS)
+                return "wisinvis";
+        if (vector & PLR_FALLING)
+                return "falling";
+        if (vector & PLR_SILENCE)
+                return "silenced";
+        if (vector & PLR_NO_EMOTE)
+                return "no_emote";
+        if (vector & PLR_NO_TELL)
+                return "no_tell";
+        if (vector & PLR_LOG)
+                return "logged";
+        if (vector & PLR_DENY)
+                return "denied";
+        if (vector & PLR_FREEZE)
+                return "frozen";
+        if (vector & PLR_GUIDE)
+                return "guide";
+        if (vector & PLR_AUTOLEVEL)
+                return "autolevel";
+        if (vector & PLR_ANSI)
+                return "ansi";
+        if (vector & PLR_VT100)
+                return "vt100";
+        if (vector & PLR_AFK)
+                return "afk";
+        if (vector & PLR_AUTOWIELD)
+                return "autowield";
+        if (vector & PLR_AUTOCOIN)
+                return "autocoin";
 
         return "none";
 }
@@ -4482,37 +4895,66 @@ char *pact_bit_name (unsigned long int vector)
  * Return ascii name of a mob's act bit vector. Used by mstat. --Owl 12/3/22
  */
 
-char *act_bit_name (unsigned long int vector)
+char *act_bit_name(unsigned long int vector)
 {
-        if ( vector & ACT_IS_NPC                ) return "is_npc";
-        if ( vector & ACT_SENTINEL              ) return "sentinel";
-        if ( vector & ACT_SCAVENGER             ) return "scavenger";
-        if ( vector & ACT_QUESTMASTER           ) return "questmaster";
-        if ( vector & ACT_AGGRESSIVE            ) return "aggressive";
-        if ( vector & ACT_STAY_AREA             ) return "stay_area";
-        if ( vector & ACT_WIMPY                 ) return "wimpy";
-        if ( vector & ACT_PET                   ) return "pet";
-        if ( vector & ACT_NO_QUEST              ) return "no_quest";
-        if ( vector & ACT_PRACTICE              ) return "practice";
-        if ( vector & ACT_REGENERATOR           ) return "regenerator";
-        if ( vector & ACT_NOCHARM               ) return "no_charm";
-        if ( vector & ACT_IS_HEALER             ) return "healer";
-        if ( vector & ACT_IS_FAMOUS             ) return "famous";
-        if ( vector & ACT_LOSE_FAME             ) return "lose_fame";
-        if ( vector & ACT_WIZINVIS_MOB          ) return "wizinvis";
-        if ( vector & ACT_MOUNTABLE             ) return "mount";
-        if ( vector & ACT_TINKER                ) return "tinker";
-        if ( vector & ACT_BANKER                ) return "banker";
-        if ( vector & ACT_IDENTIFY              ) return "identify";
-        if ( vector & ACT_DIE_IF_MASTER_GONE    ) return "die_if_master_gone";
-        if ( vector & ACT_CLAN_GUARD            ) return "clan_guard";
-        if ( vector & ACT_NO_SUMMON             ) return "no_summon";
-        if ( vector & ACT_NO_EXPERIENCE         ) return "no_experience";
-        if ( vector & ACT_NO_HEAL               ) return "no_heal";
-        if ( vector & ACT_UNKILLABLE            ) return "unkillable";
-        if ( vector & ACT_NO_FIGHT              ) return "cannot_fight";
-        if ( vector & ACT_INVULNERABLE          ) return "invulnerable";
-        if ( vector & ACT_OBJECT                ) return "objectlike";
+        if (vector & ACT_IS_NPC)
+                return "is_npc";
+        if (vector & ACT_SENTINEL)
+                return "sentinel";
+        if (vector & ACT_SCAVENGER)
+                return "scavenger";
+        if (vector & ACT_QUESTMASTER)
+                return "questmaster";
+        if (vector & ACT_AGGRESSIVE)
+                return "aggressive";
+        if (vector & ACT_STAY_AREA)
+                return "stay_area";
+        if (vector & ACT_WIMPY)
+                return "wimpy";
+        if (vector & ACT_PET)
+                return "pet";
+        if (vector & ACT_NO_QUEST)
+                return "no_quest";
+        if (vector & ACT_PRACTICE)
+                return "practice";
+        if (vector & ACT_REGENERATOR)
+                return "regenerator";
+        if (vector & ACT_NOCHARM)
+                return "no_charm";
+        if (vector & ACT_IS_HEALER)
+                return "healer";
+        if (vector & ACT_IS_FAMOUS)
+                return "famous";
+        if (vector & ACT_LOSE_FAME)
+                return "lose_fame";
+        if (vector & ACT_WIZINVIS_MOB)
+                return "wizinvis";
+        if (vector & ACT_MOUNTABLE)
+                return "mount";
+        if (vector & ACT_TINKER)
+                return "tinker";
+        if (vector & ACT_BANKER)
+                return "banker";
+        if (vector & ACT_IDENTIFY)
+                return "identify";
+        if (vector & ACT_DIE_IF_MASTER_GONE)
+                return "die_if_master_gone";
+        if (vector & ACT_CLAN_GUARD)
+                return "clan_guard";
+        if (vector & ACT_NO_SUMMON)
+                return "no_summon";
+        if (vector & ACT_NO_EXPERIENCE)
+                return "no_experience";
+        if (vector & ACT_NO_HEAL)
+                return "no_heal";
+        if (vector & ACT_UNKILLABLE)
+                return "unkillable";
+        if (vector & ACT_NO_FIGHT)
+                return "cannot_fight";
+        if (vector & ACT_INVULNERABLE)
+                return "invulnerable";
+        if (vector & ACT_OBJECT)
+                return "objectlike";
 
         return "none";
 }
@@ -4521,281 +4963,455 @@ char *act_bit_name (unsigned long int vector)
  * ASCII name for body_form flags, used in mstat --Owl 9/2/22
  *
  */
-char* body_form_name (unsigned long int vector)
+char *body_form_name(unsigned long int vector)
 {
         switch (vector)
         {
-                case BODY_NO_HEAD:          return "no_head";
-                case BODY_NO_EYES:          return "no_eyes";
-                case BODY_NO_ARMS:          return "no_arms";
-                case BODY_NO_LEGS:          return "no_legs";
-                case BODY_NO_HEART:         return "no_heart";
-                case BODY_NO_SPEECH:        return "no_speech";
-                case BODY_NO_CORPSE:        return "no_corpse";
-                case BODY_HUGE:             return "huge";
-                case BODY_INORGANIC:        return "inorganic";
-                case BODY_HAS_TAIL:         return "has_tail";
+        case BODY_NO_HEAD:
+                return "no_head";
+        case BODY_NO_EYES:
+                return "no_eyes";
+        case BODY_NO_ARMS:
+                return "no_arms";
+        case BODY_NO_LEGS:
+                return "no_legs";
+        case BODY_NO_HEART:
+                return "no_heart";
+        case BODY_NO_SPEECH:
+                return "no_speech";
+        case BODY_NO_CORPSE:
+                return "no_corpse";
+        case BODY_HUGE:
+                return "huge";
+        case BODY_INORGANIC:
+                return "inorganic";
+        case BODY_HAS_TAIL:
+                return "has_tail";
 
-                case PART_HEAD:                 return "head";
-                case PART_MANY_HEAD:            return "many_heads";
-                case PART_ARMS:                 return "arms";
-                case PART_MANY_ARMS:            return "many_arms";
-                case PART_2_LEGS:               return "tail";
-                case PART_4_LEGS:               return "four_legs";
-                case PART_MANY_LEGS:            return "many_legs";
-                case PART_HEART:                return "heart";
-                case PART_BRAINS:               return "brains";
-                case PART_GUTS:                 return "guts";
-                case PART_FINGERS:              return "fingers";
-                case PART_EAR:                  return "ear";
-                case PART_EYE:                  return "eye";
-                case PART_LONG_TONGUE:          return "long_tounge";
-                case PART_EYESTALKS:            return "eyestalks";
-                case PART_TENTACLES:            return "tentacles";
-                case PART_FINS:                 return "fins";
-                case PART_WINGS:                return "wings";
-                case PART_TAIL:                 return "tail";
-                case PART_SCALES:               return "scales";
+        case PART_HEAD:
+                return "head";
+        case PART_MANY_HEAD:
+                return "many_heads";
+        case PART_ARMS:
+                return "arms";
+        case PART_MANY_ARMS:
+                return "many_arms";
+        case PART_2_LEGS:
+                return "tail";
+        case PART_4_LEGS:
+                return "four_legs";
+        case PART_MANY_LEGS:
+                return "many_legs";
+        case PART_HEART:
+                return "heart";
+        case PART_BRAINS:
+                return "brains";
+        case PART_GUTS:
+                return "guts";
+        case PART_FINGERS:
+                return "fingers";
+        case PART_EAR:
+                return "ear";
+        case PART_EYE:
+                return "eye";
+        case PART_LONG_TONGUE:
+                return "long_tounge";
+        case PART_EYESTALKS:
+                return "eyestalks";
+        case PART_TENTACLES:
+                return "tentacles";
+        case PART_FINS:
+                return "fins";
+        case PART_WINGS:
+                return "wings";
+        case PART_TAIL:
+                return "tail";
+        case PART_SCALES:
+                return "scales";
 
-                case PART_CLAWS:                return "claws";
-                case PART_FANGS:                return "fangs";
-                case PART_HORNS:                return "horns";
-                case PART_TUSKS:                return "tusks";
-                case PART_TAILATTACK:           return "tail";
-                case PART_SHARPSCALES:          return "sharp_scales";
-                case PART_BEAK:                 return "beak";
-                case PART_HAUNCH:               return "haunch";
-                case PART_HOOVES:               return "hooves";
-                case PART_PAWS:                 return "paws";
-                case PART_FORELEGS:             return "forelegs";
-                case PART_FEATHERS:             return "feathers";
-                case PART_HUSK_SHELL:           return "husk_shell";
+        case PART_CLAWS:
+                return "claws";
+        case PART_FANGS:
+                return "fangs";
+        case PART_HORNS:
+                return "horns";
+        case PART_TUSKS:
+                return "tusks";
+        case PART_TAILATTACK:
+                return "tail";
+        case PART_SHARPSCALES:
+                return "sharp_scales";
+        case PART_BEAK:
+                return "beak";
+        case PART_HAUNCH:
+                return "haunch";
+        case PART_HOOVES:
+                return "hooves";
+        case PART_PAWS:
+                return "paws";
+        case PART_FORELEGS:
+                return "forelegs";
+        case PART_FEATHERS:
+                return "feathers";
+        case PART_HUSK_SHELL:
+                return "husk_shell";
 
-                default: return "none";
+        default:
+                return "none";
         }
 }
 
-char* created_name( int created)
+char *created_name(int created)
 {
         switch (created)
         {
-                case CREATED_PRE_DD5:           return "pre DD5 code";
-                case CREATED_NO_RANDOMISER:     return "no randomiser applied";
-                case CREATED_STRONG_RANDOMISER: return "the strong randomiser";
-                case CREATED_WEAK_RANDOMISER:   return "the _weak_ randomiser";
-                case CREATED_SKILL:             return "a skill (e.g. construct)";
-                default:                        return "pre dd5 code";
+        case CREATED_PRE_DD5:
+                return "pre DD5 code";
+        case CREATED_NO_RANDOMISER:
+                return "no randomiser applied";
+        case CREATED_STRONG_RANDOMISER:
+                return "the strong randomiser";
+        case CREATED_WEAK_RANDOMISER:
+                return "the _weak_ randomiser";
+        case CREATED_SKILL:
+                return "a skill (e.g. construct)";
+        default:
+                return "pre dd5 code";
         }
 }
-char* resist_name (unsigned long int vector)
+char *resist_name(unsigned long int vector)
 {
         switch (vector)
         {
-                case RES_FIRE:          return "fire";
-                case RES_COLD:          return "cold";
-                case RES_ELECTRICITY:   return "electricity";
-                case RES_ENERGY:        return "energy";
-                case RES_BLUNT:         return "blunt";
-                case RES_PIERCE:        return "piercing";
-                case RES_SLASH:         return "slash";
-                case RES_ACID:          return "acid";
-                case RES_POISON:        return "poison";
-                case RES_DRAIN:         return "drain";
-                case RES_SLEEP:         return "sleep";
-                case RES_CHARM:         return "charm";
-                case RES_HOLD:          return "hold";
-                case RES_NONMAGIC:      return "non_magic";
-                case RES_MAGIC:         return "magic";
-                case RES_PARALYSIS:     return "paralysis";
+        case RES_FIRE:
+                return "fire";
+        case RES_COLD:
+                return "cold";
+        case RES_ELECTRICITY:
+                return "electricity";
+        case RES_ENERGY:
+                return "energy";
+        case RES_BLUNT:
+                return "blunt";
+        case RES_PIERCE:
+                return "piercing";
+        case RES_SLASH:
+                return "slash";
+        case RES_ACID:
+                return "acid";
+        case RES_POISON:
+                return "poison";
+        case RES_DRAIN:
+                return "drain";
+        case RES_SLEEP:
+                return "sleep";
+        case RES_CHARM:
+                return "charm";
+        case RES_HOLD:
+                return "hold";
+        case RES_NONMAGIC:
+                return "non_magic";
+        case RES_MAGIC:
+                return "magic";
+        case RES_PARALYSIS:
+                return "paralysis";
 
-                default: return "none";
+        default:
+                return "none";
         }
 }
 
 /*
  * ASCII name for room flags, used in rstat --Owl 10/2/22
  *
-*/
+ */
 
-char* room_flag_name (unsigned long int vector)
+char *room_flag_name(unsigned long int vector)
 {
         switch (vector)
         {
-                case ROOM_DARK:             return "dark";
-                case ROOM_NO_MOB:           return "no_mob";
-                case ROOM_INDOORS:          return "indoors";
-                case ROOM_VAULT:            return "vault";
-                case ROOM_CRAFT:            return "craft";
-                case ROOM_SPELLCRAFT:       return "spellcraft";
-                case ROOM_PRIVATE:          return "private";
-                case ROOM_SAFE:             return "safe";
-                case ROOM_SOLITARY:         return "solitary";
-                case ROOM_PET_SHOP:         return "pet_shop";
-                case ROOM_NO_RECALL:        return "no_recall";
-                case ROOM_CONE_OF_SILENCE:  return "cone_of_silence";
-                case ROOM_PLAYER_KILLER:    return "player_killer";
-                case ROOM_HEALING:          return "healing";
-                case ROOM_FREEZING:         return "freezing";
-                case ROOM_BURNING:          return "burning";
-                case ROOM_NO_MOUNT:         return "no_mount";
-                case ROOM_TOXIC:            return "toxic";
-                case ROOM_NO_DROP:          return "no_drop";
+        case ROOM_DARK:
+                return "dark";
+        case ROOM_NO_MOB:
+                return "no_mob";
+        case ROOM_INDOORS:
+                return "indoors";
+        case ROOM_VAULT:
+                return "vault";
+        case ROOM_CRAFT:
+                return "craft";
+        case ROOM_SPELLCRAFT:
+                return "spellcraft";
+        case ROOM_PRIVATE:
+                return "private";
+        case ROOM_SAFE:
+                return "safe";
+        case ROOM_SOLITARY:
+                return "solitary";
+        case ROOM_PET_SHOP:
+                return "pet_shop";
+        case ROOM_NO_RECALL:
+                return "no_recall";
+        case ROOM_CONE_OF_SILENCE:
+                return "cone_of_silence";
+        case ROOM_PLAYER_KILLER:
+                return "player_killer";
+        case ROOM_HEALING:
+                return "healing";
+        case ROOM_FREEZING:
+                return "freezing";
+        case ROOM_BURNING:
+                return "burning";
+        case ROOM_NO_MOUNT:
+                return "no_mount";
+        case ROOM_TOXIC:
+                return "toxic";
+        case ROOM_NO_DROP:
+                return "no_drop";
 
-                default: return "(unknown)";
+        default:
+                return "(unknown)";
         }
 }
-
 
 /*
  * ASCII name for area flags, used in rstat --Owl 10/2/22
  *
-*/
+ */
 
-char* area_flag_name (unsigned long int vector)
+char *area_flag_name(unsigned long int vector)
 {
-        if ( vector & AREA_FLAG_SCHOOL          ) return "school";
-        if ( vector & AREA_FLAG_NO_QUEST        ) return "no_quest";
-        if ( vector & AREA_FLAG_HIDDEN          ) return "hidden";
-        if ( vector & AREA_FLAG_SAFE            ) return "safe";
-        if ( vector & AREA_FLAG_NO_TELEPORT     ) return "no_teleport";
-        if ( vector & AREA_FLAG_NO_MAGIC        ) return "no_magic";
+        if (vector & AREA_FLAG_SCHOOL)
+                return "school";
+        if (vector & AREA_FLAG_NO_QUEST)
+                return "no_quest";
+        if (vector & AREA_FLAG_HIDDEN)
+                return "hidden";
+        if (vector & AREA_FLAG_SAFE)
+                return "safe";
+        if (vector & AREA_FLAG_NO_TELEPORT)
+                return "no_teleport";
+        if (vector & AREA_FLAG_NO_MAGIC)
+                return "no_magic";
         return "none";
 }
 
 /*
-* ASCII name for wear flags, used in ostat --Owl 12/2/22
-*
-*/
-char* wear_flag_name (int vector)
+ * ASCII name for wear flags, used in ostat --Owl 12/2/22
+ *
+ */
+char *wear_flag_name(int vector)
 {
-        if ( vector & ITEM_TAKE             ) return "take";
-        if ( vector & ITEM_WEAR_FINGER      ) return "finger";
-        if ( vector & ITEM_WEAR_NECK        ) return "neck";
-        if ( vector & ITEM_WEAR_BODY        ) return "body";
-        if ( vector & ITEM_WEAR_HEAD        ) return "head";
-        if ( vector & ITEM_WEAR_LEGS        ) return "legs";
-        if ( vector & ITEM_WEAR_FEET        ) return "feet";
-        if ( vector & ITEM_WEAR_HANDS       ) return "hands";
-        if ( vector & ITEM_WEAR_ARMS        ) return "arms";
-        if ( vector & ITEM_WEAR_SHIELD      ) return "shield";
-        if ( vector & ITEM_WEAR_ABOUT       ) return "about";
-        if ( vector & ITEM_WEAR_WAIST       ) return "waist";
-        if ( vector & ITEM_WEAR_WRIST       ) return "wrist";
-        if ( vector & ITEM_WIELD            ) return "wield";
-        if ( vector & ITEM_HOLD             ) return "hold";
-        if ( vector & ITEM_FLOAT            ) return "float";
-        if ( vector & ITEM_WEAR_POUCH       ) return "pouch";
-        if ( vector & ITEM_RANGED_WEAPON    ) return "ranged";
+        if (vector & ITEM_TAKE)
+                return "take";
+        if (vector & ITEM_WEAR_FINGER)
+                return "finger";
+        if (vector & ITEM_WEAR_NECK)
+                return "neck";
+        if (vector & ITEM_WEAR_BODY)
+                return "body";
+        if (vector & ITEM_WEAR_HEAD)
+                return "head";
+        if (vector & ITEM_WEAR_LEGS)
+                return "legs";
+        if (vector & ITEM_WEAR_FEET)
+                return "feet";
+        if (vector & ITEM_WEAR_HANDS)
+                return "hands";
+        if (vector & ITEM_WEAR_ARMS)
+                return "arms";
+        if (vector & ITEM_WEAR_SHIELD)
+                return "shield";
+        if (vector & ITEM_WEAR_ABOUT)
+                return "about";
+        if (vector & ITEM_WEAR_WAIST)
+                return "waist";
+        if (vector & ITEM_WEAR_WRIST)
+                return "wrist";
+        if (vector & ITEM_WIELD)
+                return "wield";
+        if (vector & ITEM_HOLD)
+                return "hold";
+        if (vector & ITEM_FLOAT)
+                return "float";
+        if (vector & ITEM_WEAR_POUCH)
+                return "pouch";
+        if (vector & ITEM_RANGED_WEAPON)
+                return "ranged";
         return "none";
 }
 
 /*
-* ASCII name for wear location, used in ostat --Owl 12/2/22
-*
-*/
+ * ASCII name for wear location, used in ostat --Owl 12/2/22
+ *
+ */
 
-char* wear_location_name (int wearloc_num)
+char *wear_location_name(int wearloc_num)
 {
         /* These values are used in #RESETS. */
 
-        if (wearloc_num == WEAR_NONE)           return "none";
-        if (wearloc_num == WEAR_LIGHT)          return "light";
-        if (wearloc_num == WEAR_FINGER_L)       return "left_finger";
-        if (wearloc_num == WEAR_FINGER_R)       return "right_finger";
-        if (wearloc_num == WEAR_NECK_1)         return "neck_1";
-        if (wearloc_num == WEAR_NECK_2)         return "neck_2";
-        if (wearloc_num == WEAR_BODY)           return "on_body";
-        if (wearloc_num == WEAR_HEAD)           return "head";
-        if (wearloc_num == WEAR_LEGS)           return "legs";
-        if (wearloc_num == WEAR_FEET)           return "feet";
-        if (wearloc_num == WEAR_HANDS)          return "hands";
-        if (wearloc_num == WEAR_ARMS)           return "arms";
-        if (wearloc_num == WEAR_SHIELD)         return "shield";
-        if (wearloc_num == WEAR_ABOUT)          return "about_body";
-        if (wearloc_num == WEAR_WAIST)          return "waist";
-        if (wearloc_num == WEAR_WRIST_L)        return "left_wrist";
-        if (wearloc_num == WEAR_WRIST_R)        return "right_wrist";
-        if (wearloc_num == WEAR_WIELD)          return "wield";
-        if (wearloc_num == WEAR_HOLD)           return "hold";
-        if (wearloc_num == WEAR_DUAL)           return "dual_wield";
-        if (wearloc_num == WEAR_FLOAT)          return "float";
-        if (wearloc_num == WEAR_POUCH)          return "pouch";
-        if (wearloc_num == WEAR_RANGED_WEAPON)  return "ranged";
+        if (wearloc_num == WEAR_NONE)
+                return "none";
+        if (wearloc_num == WEAR_LIGHT)
+                return "light";
+        if (wearloc_num == WEAR_FINGER_L)
+                return "left_finger";
+        if (wearloc_num == WEAR_FINGER_R)
+                return "right_finger";
+        if (wearloc_num == WEAR_NECK_1)
+                return "neck_1";
+        if (wearloc_num == WEAR_NECK_2)
+                return "neck_2";
+        if (wearloc_num == WEAR_BODY)
+                return "on_body";
+        if (wearloc_num == WEAR_HEAD)
+                return "head";
+        if (wearloc_num == WEAR_LEGS)
+                return "legs";
+        if (wearloc_num == WEAR_FEET)
+                return "feet";
+        if (wearloc_num == WEAR_HANDS)
+                return "hands";
+        if (wearloc_num == WEAR_ARMS)
+                return "arms";
+        if (wearloc_num == WEAR_SHIELD)
+                return "shield";
+        if (wearloc_num == WEAR_ABOUT)
+                return "about_body";
+        if (wearloc_num == WEAR_WAIST)
+                return "waist";
+        if (wearloc_num == WEAR_WRIST_L)
+                return "left_wrist";
+        if (wearloc_num == WEAR_WRIST_R)
+                return "right_wrist";
+        if (wearloc_num == WEAR_WIELD)
+                return "wield";
+        if (wearloc_num == WEAR_HOLD)
+                return "hold";
+        if (wearloc_num == WEAR_DUAL)
+                return "dual_wield";
+        if (wearloc_num == WEAR_FLOAT)
+                return "float";
+        if (wearloc_num == WEAR_POUCH)
+                return "pouch";
+        if (wearloc_num == WEAR_RANGED_WEAPON)
+                return "ranged";
 
         return "NO WEAR LOCATION NUM";
-
 }
 
 /*
-* ASCII name for sector flags, used in rstat --Owl 10/2/22
-*
-*/
-char* sector_name (int sector_num)
+ * ASCII name for sector flags, used in rstat --Owl 10/2/22
+ *
+ */
+char *sector_name(int sector_num)
 {
-        if (sector_num == SECT_INSIDE)                  return "inside";
-        if (sector_num == SECT_CITY)                    return "city";
-        if (sector_num == SECT_FIELD)                   return "field";
-        if (sector_num == SECT_FOREST)                  return "forest";
-        if (sector_num == SECT_HILLS)                   return "hills";
-        if (sector_num == SECT_MOUNTAIN)                return "mountain";
-        if (sector_num == SECT_WATER_SWIM)              return "water_swim";
-        if (sector_num == SECT_WATER_NOSWIM)            return "water_noswim";
-        if (sector_num == SECT_UNDERWATER)              return "underwater";
-        if (sector_num == SECT_AIR)                     return "air";
-        if (sector_num == SECT_DESERT)                  return "desert";
-        if (sector_num == SECT_SWAMP)                   return "swamp";
-        if (sector_num == SECT_UNDERWATER_GROUND)       return "underwater_ground";
-        if (sector_num == SECT_MAX)                     return "max";
+        if (sector_num == SECT_INSIDE)
+                return "inside";
+        if (sector_num == SECT_CITY)
+                return "city";
+        if (sector_num == SECT_FIELD)
+                return "field";
+        if (sector_num == SECT_FOREST)
+                return "forest";
+        if (sector_num == SECT_HILLS)
+                return "hills";
+        if (sector_num == SECT_MOUNTAIN)
+                return "mountain";
+        if (sector_num == SECT_WATER_SWIM)
+                return "water_swim";
+        if (sector_num == SECT_WATER_NOSWIM)
+                return "water_noswim";
+        if (sector_num == SECT_UNDERWATER)
+                return "underwater";
+        if (sector_num == SECT_AIR)
+                return "air";
+        if (sector_num == SECT_DESERT)
+                return "desert";
+        if (sector_num == SECT_SWAMP)
+                return "swamp";
+        if (sector_num == SECT_UNDERWATER_GROUND)
+                return "underwater_ground";
+        if (sector_num == SECT_MAX)
+                return "max";
 
         return "NO SECTOR NUM";
 }
 
 /*
-* ASCII name for character races, used in mstat --Owl 23/04/22
-*
-*/
+ * ASCII name for character races, used in mstat --Owl 23/04/22
+ *
+ */
 
-char* race_name (int race_num)
+char *race_name(int race_num)
 {
-        if (race_num == RACE_NONE)              return "none";
-        if (race_num == RACE_HUMAN)             return "human";
-        if (race_num == RACE_ELF)               return "elf";
-        if (race_num == RACE_WILD_ELF)          return "wild elf";
-        if (race_num == RACE_ORC)               return "orc";
-        if (race_num == RACE_GIANT)             return "giant";
-        if (race_num == RACE_SATYR)             return "satyr";
-        if (race_num == RACE_OGRE )             return "ogre";
-        if (race_num == RACE_GOBLIN)            return "goblin";
-        if (race_num == RACE_HALF_DRAGON)       return "half dragon";
-        if (race_num == RACE_HALFLING)          return "halfling";
-        if (race_num == RACE_DWARF)             return "dwarf";
-        if (race_num == RACE_CENTAUR)           return "centaur";
-        if (race_num == RACE_DROW)              return "drow";
-        if (race_num == RACE_TROLL)             return "troll";
-        if (race_num == RACE_ALAGHI)            return "alaghi";
-        if (race_num == RACE_HOBGOBLIN)         return "hobgoblin";
-        if (race_num == RACE_YUAN_TI)           return "yuan-ti";
-        if (race_num == RACE_FAE)               return "fae";
-        if (race_num == RACE_SAHUAGIN)          return "sahuagin";
-        if (race_num == RACE_TIEFLING)          return "tiefling";
-        if (race_num == RACE_JOTUN)             return "jotun";
-        if (race_num == RACE_GENASI)            return "genasi";
-        if (race_num == RACE_ILLITHID)          return "illithid";
-        if (race_num == RACE_GRUNG)             return "grung";
+        if (race_num == RACE_NONE)
+                return "none";
+        if (race_num == RACE_HUMAN)
+                return "human";
+        if (race_num == RACE_ELF)
+                return "elf";
+        if (race_num == RACE_WILD_ELF)
+                return "wild elf";
+        if (race_num == RACE_ORC)
+                return "orc";
+        if (race_num == RACE_GIANT)
+                return "giant";
+        if (race_num == RACE_SATYR)
+                return "satyr";
+        if (race_num == RACE_OGRE)
+                return "ogre";
+        if (race_num == RACE_GOBLIN)
+                return "goblin";
+        if (race_num == RACE_HALF_DRAGON)
+                return "half dragon";
+        if (race_num == RACE_HALFLING)
+                return "halfling";
+        if (race_num == RACE_DWARF)
+                return "dwarf";
+        if (race_num == RACE_CENTAUR)
+                return "centaur";
+        if (race_num == RACE_DROW)
+                return "drow";
+        if (race_num == RACE_TROLL)
+                return "troll";
+        if (race_num == RACE_ALAGHI)
+                return "alaghi";
+        if (race_num == RACE_HOBGOBLIN)
+                return "hobgoblin";
+        if (race_num == RACE_YUAN_TI)
+                return "yuan-ti";
+        if (race_num == RACE_FAE)
+                return "fae";
+        if (race_num == RACE_SAHUAGIN)
+                return "sahuagin";
+        if (race_num == RACE_TIEFLING)
+                return "tiefling";
+        if (race_num == RACE_JOTUN)
+                return "jotun";
+        if (race_num == RACE_GENASI)
+                return "genasi";
+        if (race_num == RACE_ILLITHID)
+                return "illithid";
+        if (race_num == RACE_GRUNG)
+                return "grung";
 
         return "NO RACE NUM";
 }
 
 /*
-* ASCII name for character size, used in mstat --Owl 25/3/24
-*
-*/
+ * ASCII name for character size, used in mstat --Owl 25/3/24
+ *
+ */
 
-char* race_size_name (int ch_size)
+char *race_size_name(int ch_size)
 {
-        if (ch_size == 0)   return "small";
-        if (ch_size == 1)   return "medium";
-        if (ch_size == 2)   return "large";
+        if (ch_size == 0)
+                return "small";
+        if (ch_size == 1)
+                return "medium";
+        if (ch_size == 2)
+                return "large";
 
         return "unknown";
 }
@@ -4803,221 +5419,338 @@ char* race_size_name (int ch_size)
 /*
  * Return ascii name of anti-class vector - brutus
  */
-char *extra_class_name (unsigned long int extra_flags)
+char *extra_class_name(unsigned long int extra_flags)
 {
-        if ( extra_flags & ITEM_ANTI_MAGE)          return "Mage";
-        if ( extra_flags & ITEM_ANTI_CLERIC)        return "Cleric";
-        if ( extra_flags & ITEM_ANTI_THIEF)         return "Thief";
-        if ( extra_flags & ITEM_ANTI_WARRIOR)       return "Warrior";
-        if ( extra_flags & ITEM_ANTI_PSIONIC)       return "Psionic";
-        if ( extra_flags & ITEM_ANTI_BRAWLER)       return "Brawler";
-        if ( extra_flags & ITEM_ANTI_SHAPE_SHIFTER) return "Shape Shifter";
-        if ( extra_flags & ITEM_ANTI_RANGER)        return "Ranger";
-        if ( extra_flags & ITEM_ANTI_SMITHY)        return "Smithy";
+        if (extra_flags & ITEM_ANTI_MAGE)
+                return "Mage";
+        if (extra_flags & ITEM_ANTI_CLERIC)
+                return "Cleric";
+        if (extra_flags & ITEM_ANTI_THIEF)
+                return "Thief";
+        if (extra_flags & ITEM_ANTI_WARRIOR)
+                return "Warrior";
+        if (extra_flags & ITEM_ANTI_PSIONIC)
+                return "Psionic";
+        if (extra_flags & ITEM_ANTI_BRAWLER)
+                return "Brawler";
+        if (extra_flags & ITEM_ANTI_SHAPE_SHIFTER)
+                return "Shape Shifter";
+        if (extra_flags & ITEM_ANTI_RANGER)
+                return "Ranger";
+        if (extra_flags & ITEM_ANTI_SMITHY)
+                return "Smithy";
         return "none";
 }
 
 /* return text string for position --Owl 9/2/22*/
 
-char *position_name (int position)
+char *position_name(int position)
 {
-        if (position == POS_DEAD)       return "dead";
-        if (position == POS_MORTAL)     return "mortally wounded";
-        if (position == POS_INCAP)      return "incapacitated";
-        if (position == POS_STUNNED)    return "stunned";
-        if (position == POS_SLEEPING)   return "sleeping";
-        if (position == POS_RESTING)    return "resting";
-        if (position == POS_FIGHTING)   return "fighting";
-        if (position == POS_STANDING)   return "standing";
+        if (position == POS_DEAD)
+                return "dead";
+        if (position == POS_MORTAL)
+                return "mortally wounded";
+        if (position == POS_INCAP)
+                return "incapacitated";
+        if (position == POS_STUNNED)
+                return "stunned";
+        if (position == POS_SLEEPING)
+                return "sleeping";
+        if (position == POS_RESTING)
+                return "resting";
+        if (position == POS_FIGHTING)
+                return "fighting";
+        if (position == POS_STANDING)
+                return "standing";
 
         return "NO POSITION";
 }
 
-
 /* return class and subclass names  - geoff */
-char *full_class_name (int class)
+char *full_class_name(int class)
 {
-        if (class == CLASS_MAGE)            return "Mage";
-        if (class == CLASS_CLERIC)          return "Cleric";
-        if (class == CLASS_THIEF)           return "Thief";
-        if (class == CLASS_WARRIOR)         return "Warrior";
-        if (class == CLASS_PSIONICIST)      return "Psionic";
-        if (class == CLASS_BRAWLER)         return "Brawler";
-        if (class == CLASS_SHAPE_SHIFTER)   return "Shape Shifter";
-        if (class == CLASS_RANGER)          return "Ranger";
-        if (class == CLASS_SMITHY)          return "Smithy";
+        if (class == CLASS_MAGE)
+                return "Mage";
+        if (class == CLASS_CLERIC)
+                return "Cleric";
+        if (class == CLASS_THIEF)
+                return "Thief";
+        if (class == CLASS_WARRIOR)
+                return "Warrior";
+        if (class == CLASS_PSIONICIST)
+                return "Psionic";
+        if (class == CLASS_BRAWLER)
+                return "Brawler";
+        if (class == CLASS_SHAPE_SHIFTER)
+                return "Shape Shifter";
+        if (class == CLASS_RANGER)
+                return "Ranger";
+        if (class == CLASS_SMITHY)
+                return "Smithy";
 
         return "none";
 }
 
-
-char *full_sub_class_name (int sub_class)
+char *full_sub_class_name(int sub_class)
 {
-        if (sub_class == SUB_CLASS_NECROMANCER)         return "Necromancer";
-        if (sub_class == SUB_CLASS_WARLOCK)             return "Warlock";
-        if (sub_class == SUB_CLASS_TEMPLAR)             return "Templar";
-        if (sub_class == SUB_CLASS_DRUID)               return "Druid";
-        if (sub_class == SUB_CLASS_NINJA)               return "Ninja";
-        if (sub_class == SUB_CLASS_BOUNTY)              return "Bounty Hunter";
-        if (sub_class == SUB_CLASS_THUG)                return "Thug";
-        if (sub_class == SUB_CLASS_KNIGHT)              return "Knight";
-        if (sub_class == SUB_CLASS_INFERNALIST)         return "Infernalist";
-        if (sub_class == SUB_CLASS_WITCH)               return "Witch";
-        if (sub_class == SUB_CLASS_WEREWOLF)            return "Werewolf";
-        if (sub_class == SUB_CLASS_VAMPIRE)             return "Vampire";
-        if (sub_class == SUB_CLASS_MONK)                return "Monk";
-        if (sub_class == SUB_CLASS_MARTIAL_ARTIST)      return "Martial Artist";
-        if (sub_class == SUB_CLASS_BARBARIAN)           return "Barbarian";
-        if (sub_class == SUB_CLASS_BARD)                return "Bard";
-        if (sub_class == SUB_CLASS_ENGINEER)            return "Engineer";
-        if (sub_class == SUB_CLASS_RUNESMITH)           return "Runesmith";
+        if (sub_class == SUB_CLASS_NECROMANCER)
+                return "Necromancer";
+        if (sub_class == SUB_CLASS_WARLOCK)
+                return "Warlock";
+        if (sub_class == SUB_CLASS_TEMPLAR)
+                return "Templar";
+        if (sub_class == SUB_CLASS_DRUID)
+                return "Druid";
+        if (sub_class == SUB_CLASS_NINJA)
+                return "Ninja";
+        if (sub_class == SUB_CLASS_BOUNTY)
+                return "Bounty Hunter";
+        if (sub_class == SUB_CLASS_THUG)
+                return "Thug";
+        if (sub_class == SUB_CLASS_KNIGHT)
+                return "Knight";
+        if (sub_class == SUB_CLASS_INFERNALIST)
+                return "Infernalist";
+        if (sub_class == SUB_CLASS_WITCH)
+                return "Witch";
+        if (sub_class == SUB_CLASS_WEREWOLF)
+                return "Werewolf";
+        if (sub_class == SUB_CLASS_VAMPIRE)
+                return "Vampire";
+        if (sub_class == SUB_CLASS_MONK)
+                return "Monk";
+        if (sub_class == SUB_CLASS_MARTIAL_ARTIST)
+                return "Martial Artist";
+        if (sub_class == SUB_CLASS_BARBARIAN)
+                return "Barbarian";
+        if (sub_class == SUB_CLASS_BARD)
+                return "Bard";
+        if (sub_class == SUB_CLASS_ENGINEER)
+                return "Engineer";
+        if (sub_class == SUB_CLASS_RUNESMITH)
+                return "Runesmith";
 
         return "none";
 }
-
 
 /* Return ascii name for character levels. */
-char *extra_level_name (CHAR_DATA *ch)
+char *extra_level_name(CHAR_DATA *ch)
 {
         switch (get_trust(ch))
         {
-            case L_HER: return "Hero";
-            case L_BUI: return "Builder";
-            case L_APP: return "Apprentice";
-            case L_JUN: return "Junior";
-            case L_SEN: return "Senior";
-            case L_DIR: return "God's Gopher";
-            case L_IMM: return "The Boss";
+        case L_HER:
+                return "Hero";
+        case L_BUI:
+                return "Builder";
+        case L_APP:
+                return "Apprentice";
+        case L_JUN:
+                return "Junior";
+        case L_SEN:
+                return "Senior";
+        case L_DIR:
+                return "God's Gopher";
+        case L_IMM:
+                return "The Boss";
 
-            default: return "nothing special";
+        default:
+                return "nothing special";
         }
 }
 
-
-char *extra_form_name (int form)
+char *extra_form_name(int form)
 {
-        if ( form == FORM_NORMAL          ) return "normal";
-        if ( form == FORM_CHAMELEON       ) return "chameleon";
-        if ( form == FORM_HAWK            ) return "hawk";
-        if ( form == FORM_CAT             ) return "cat";
-        if ( form == FORM_SNAKE           ) return "snake";
-        if ( form == FORM_SCORPION        ) return "scorpion";
-        if ( form == FORM_SPIDER          ) return "spider";
-        if ( form == FORM_BEAR            ) return "bear";
-        if ( form == FORM_TIGER           ) return "tiger";
-        if ( form == FORM_HYDRA           ) return "hydra";
-        if ( form == FORM_WOLF            ) return "wolf";
-        if ( form == FORM_DIREWOLF        ) return "direwolf";
-        if ( form == FORM_PHOENIX         ) return "phoenix";
-        if ( form == FORM_DEMON           ) return "demon";
-        if ( form == FORM_DRAGON          ) return "dragon";
-        if ( form == FORM_FLY             ) return "fly";
-        if ( form == FORM_GRIFFIN         ) return "griffin";
-        if ( form == FORM_BAT             ) return "bat";
+        if (form == FORM_NORMAL)
+                return "normal";
+        if (form == FORM_CHAMELEON)
+                return "chameleon";
+        if (form == FORM_HAWK)
+                return "hawk";
+        if (form == FORM_CAT)
+                return "cat";
+        if (form == FORM_SNAKE)
+                return "snake";
+        if (form == FORM_SCORPION)
+                return "scorpion";
+        if (form == FORM_SPIDER)
+                return "spider";
+        if (form == FORM_BEAR)
+                return "bear";
+        if (form == FORM_TIGER)
+                return "tiger";
+        if (form == FORM_HYDRA)
+                return "hydra";
+        if (form == FORM_WOLF)
+                return "wolf";
+        if (form == FORM_DIREWOLF)
+                return "direwolf";
+        if (form == FORM_PHOENIX)
+                return "phoenix";
+        if (form == FORM_DEMON)
+                return "demon";
+        if (form == FORM_DRAGON)
+                return "dragon";
+        if (form == FORM_FLY)
+                return "fly";
+        if (form == FORM_GRIFFIN)
+                return "griffin";
+        if (form == FORM_BAT)
+                return "bat";
 
         return "none";
 }
 
-
-int extra_form_int (char *name)
+int extra_form_int(char *name)
 {
         int form = -1;
 
-        if (!strncmp(name, "normal", strlen(name)))     form = FORM_NORMAL;
-        if (!strncmp(name, "chameleon", strlen(name)))  form = FORM_CHAMELEON;
-        if (!strncmp(name, "hawk", strlen(name)))       form = FORM_HAWK;
-        if (!strncmp(name, "cat", strlen(name)))        form = FORM_CAT;
-        if (!strncmp(name, "snake", strlen(name)))      form = FORM_SNAKE;
-        if (!strncmp(name, "scorpion", strlen(name)))   form = FORM_SCORPION;
-        if (!strncmp(name, "spider", strlen(name)))     form = FORM_SPIDER;
-        if (!strncmp(name, "bear", strlen(name)))       form = FORM_BEAR;
-        if (!strncmp(name, "tiger", strlen(name)))      form = FORM_TIGER;
-        if (!strncmp(name, "hydra", strlen(name)))      form = FORM_HYDRA;
-        if (!strncmp(name, "wolf", strlen(name)))       form = FORM_WOLF;
-        if (!strncmp(name, "direwolf", strlen(name)))   form = FORM_DIREWOLF;
-        if (!strncmp(name, "phoenix", strlen(name)))    form = FORM_PHOENIX;
-        if (!strncmp(name, "demon", strlen(name)))      form = FORM_DEMON;
-        if (!strncmp(name, "dragon", strlen(name)))     form = FORM_DRAGON;
-        if (!strncmp(name, "fly", strlen(name)))        form = FORM_FLY;
-        if (!strncmp(name, "griffin", strlen(name)))    form = FORM_GRIFFIN;
-        if (!strncmp(name, "bat", strlen(name)))        form = FORM_BAT;
+        if (!strncmp(name, "normal", strlen(name)))
+                form = FORM_NORMAL;
+        if (!strncmp(name, "chameleon", strlen(name)))
+                form = FORM_CHAMELEON;
+        if (!strncmp(name, "hawk", strlen(name)))
+                form = FORM_HAWK;
+        if (!strncmp(name, "cat", strlen(name)))
+                form = FORM_CAT;
+        if (!strncmp(name, "snake", strlen(name)))
+                form = FORM_SNAKE;
+        if (!strncmp(name, "scorpion", strlen(name)))
+                form = FORM_SCORPION;
+        if (!strncmp(name, "spider", strlen(name)))
+                form = FORM_SPIDER;
+        if (!strncmp(name, "bear", strlen(name)))
+                form = FORM_BEAR;
+        if (!strncmp(name, "tiger", strlen(name)))
+                form = FORM_TIGER;
+        if (!strncmp(name, "hydra", strlen(name)))
+                form = FORM_HYDRA;
+        if (!strncmp(name, "wolf", strlen(name)))
+                form = FORM_WOLF;
+        if (!strncmp(name, "direwolf", strlen(name)))
+                form = FORM_DIREWOLF;
+        if (!strncmp(name, "phoenix", strlen(name)))
+                form = FORM_PHOENIX;
+        if (!strncmp(name, "demon", strlen(name)))
+                form = FORM_DEMON;
+        if (!strncmp(name, "dragon", strlen(name)))
+                form = FORM_DRAGON;
+        if (!strncmp(name, "fly", strlen(name)))
+                form = FORM_FLY;
+        if (!strncmp(name, "griffin", strlen(name)))
+                form = FORM_GRIFFIN;
+        if (!strncmp(name, "bat", strlen(name)))
+                form = FORM_BAT;
 
         return form;
 }
 
-
 /*
  * Return ascii name of extra flags vector.
  */
-char *extra_bit_name (unsigned long int extra_flags)
+char *extra_bit_name(unsigned long int extra_flags)
 {
         switch (extra_flags)
         {
-            case ITEM_GLOW:                 return "glow";
-            case ITEM_HUM:                  return "hum";
-            case ITEM_EGO:                  return "ego";
-            case ITEM_ANTI_RANGER:          return "anti_ranger";
-            case ITEM_EVIL:                 return "evil";
-            case ITEM_INVIS:                return "invis";
-            case ITEM_MAGIC:                return "magic";
-            case ITEM_NODROP:               return "no_drop";
-            case ITEM_BLESS:                return "blessed";
-            case ITEM_ANTI_GOOD:            return "anti_good";
-            case ITEM_ANTI_EVIL:            return "anti_evil";
-            case ITEM_ANTI_NEUTRAL:         return "anti_neutral";
-            case ITEM_NOREMOVE:             return "no_remove";
-            case ITEM_INVENTORY:            return "inventory";
-            case ITEM_POISONED:             return "poisoned";
-            case ITEM_ANTI_MAGE:            return "anti_mage";
-            case ITEM_ANTI_CLERIC:          return "anti_cleric";
-            case ITEM_ANTI_THIEF:           return "anti_thief";
-            case ITEM_ANTI_WARRIOR:         return "anti_warrior";
-            case ITEM_ANTI_PSIONIC:         return "anti_psionic";
-            case ITEM_VORPAL:               return "vorpal";
-            case ITEM_TRAP:                 return "trapped";
-            case ITEM_DONATED:              return "donated";
-            case ITEM_BLADE_THIRST:         return "blade_thirst";
-            case ITEM_SHARP:                return "sharp";
-            case ITEM_FORGED:               return "forged";
-            case ITEM_BODY_PART:            return "body_part";
-            case ITEM_LANCE:                return "lance";
-            case ITEM_ANTI_BRAWLER:         return "anti_brawler";
-            case ITEM_ANTI_SHAPE_SHIFTER:   return "anti_shifter";
-            case ITEM_BOW:                  return "bow";
-            case ITEM_ANTI_SMITHY:          return "anti_smithy";
-            case ITEM_CURSED:               return "cursed";
-            case ITEM_RUNE:                 return "rune";
-            case ITEM_DONOT_RANDOMISE:      return "pure";
-            case ITEM_WEAK_RANDOMISE:       return "steady";
-            case ITEM_DEPLOYED:             return "deployed";
+        case ITEM_GLOW:
+                return "glow";
+        case ITEM_HUM:
+                return "hum";
+        case ITEM_EGO:
+                return "ego";
+        case ITEM_ANTI_RANGER:
+                return "anti_ranger";
+        case ITEM_EVIL:
+                return "evil";
+        case ITEM_INVIS:
+                return "invis";
+        case ITEM_MAGIC:
+                return "magic";
+        case ITEM_NODROP:
+                return "no_drop";
+        case ITEM_BLESS:
+                return "blessed";
+        case ITEM_ANTI_GOOD:
+                return "anti_good";
+        case ITEM_ANTI_EVIL:
+                return "anti_evil";
+        case ITEM_ANTI_NEUTRAL:
+                return "anti_neutral";
+        case ITEM_NOREMOVE:
+                return "no_remove";
+        case ITEM_INVENTORY:
+                return "inventory";
+        case ITEM_POISONED:
+                return "poisoned";
+        case ITEM_ANTI_MAGE:
+                return "anti_mage";
+        case ITEM_ANTI_CLERIC:
+                return "anti_cleric";
+        case ITEM_ANTI_THIEF:
+                return "anti_thief";
+        case ITEM_ANTI_WARRIOR:
+                return "anti_warrior";
+        case ITEM_ANTI_PSIONIC:
+                return "anti_psionic";
+        case ITEM_VORPAL:
+                return "vorpal";
+        case ITEM_TRAP:
+                return "trapped";
+        case ITEM_DONATED:
+                return "donated";
+        case ITEM_BLADE_THIRST:
+                return "blade_thirst";
+        case ITEM_SHARP:
+                return "sharp";
+        case ITEM_FORGED:
+                return "forged";
+        case ITEM_BODY_PART:
+                return "body_part";
+        case ITEM_LANCE:
+                return "lance";
+        case ITEM_ANTI_BRAWLER:
+                return "anti_brawler";
+        case ITEM_ANTI_SHAPE_SHIFTER:
+                return "anti_shifter";
+        case ITEM_BOW:
+                return "bow";
+        case ITEM_ANTI_SMITHY:
+                return "anti_smithy";
+        case ITEM_CURSED:
+                return "cursed";
+        case ITEM_RUNE:
+                return "rune";
+        case ITEM_DONOT_RANDOMISE:
+                return "pure";
+        case ITEM_WEAK_RANDOMISE:
+                return "steady";
+        case ITEM_DEPLOYED:
+                return "deployed";
 
-            default: return "(unknown)";
+        default:
+                return "(unknown)";
         }
 }
 
-
-CHAR_DATA *get_char( CHAR_DATA *ch )
+CHAR_DATA *get_char(CHAR_DATA *ch)
 {
-        if ( !ch->pcdata )
+        if (!ch->pcdata)
                 return ch->desc->original;
         else
                 return ch;
 }
 
-
-bool longstring( CHAR_DATA *ch, char *argument )
+bool longstring(CHAR_DATA *ch, char *argument)
 {
-        if ( strlen( argument) > 60 )
+        if (strlen(argument) > 60)
         {
-                send_to_char( "No more than 60 characters in this field.\n\r", ch );
+                send_to_char("No more than 60 characters in this field.\n\r", ch);
                 return TRUE;
         }
         else
                 return FALSE;
 }
 
-
-bool authorized (CHAR_DATA *ch, int gsn)
+bool authorized(CHAR_DATA *ch, int gsn)
 {
         /* Thought Wizinvis mobs should have access to imm commands etc. Change if problem --Owl 06.10.23 */
         if (IS_SET(ch->act, ACT_WIZINVIS_MOB))
@@ -5025,34 +5758,32 @@ bool authorized (CHAR_DATA *ch, int gsn)
 
         if (IS_NPC(ch))
         {
-                send_to_char( "You are not authorized to use this command.\n\r", ch );
+                send_to_char("You are not authorized to use this command.\n\r", ch);
                 return FALSE;
         }
-        else
-        if (ch->pcdata->learned[gsn] < 100)
+        else if (ch->pcdata->learned[gsn] < 100)
         {
-                send_to_char( "You are not authorized to use this command.\n\r", ch );
+                send_to_char("You are not authorized to use this command.\n\r", ch);
                 return FALSE;
         }
         else
                 return TRUE;
 }
 
-
-void end_of_game( void )
+void end_of_game(void)
 {
         DESCRIPTOR_DATA *d;
         DESCRIPTOR_DATA *d_next;
 
-        for ( d = descriptor_list; d; d = d_next )
+        for (d = descriptor_list; d; d = d_next)
         {
                 d_next = d->next;
-                if ( d->connected == CON_PLAYING )
+                if (d->connected == CON_PLAYING)
                 {
-                        if ( d->character->position == POS_FIGHTING )
-                                interpret( d->character, "save" );
+                        if (d->character->position == POS_FIGHTING)
+                                interpret(d->character, "save");
                         else
-                                interpret( d->character, "quit" );
+                                interpret(d->character, "quit");
                 }
         }
 
@@ -5062,8 +5793,7 @@ void end_of_game( void )
         save_infamy_table();
 }
 
-
-int form_skill_allow (CHAR_DATA *ch, int sn)
+int form_skill_allow(CHAR_DATA *ch, int sn)
 {
         int iter;
 
@@ -5077,7 +5807,7 @@ int form_skill_allow (CHAR_DATA *ch, int sn)
 
         if (ch->sub_class == SUB_CLASS_WEREWOLF)
         {
-                for (iter = 0; iter < MAX_VAMPIRE_GAG-4; iter++)
+                for (iter = 0; iter < MAX_VAMPIRE_GAG - 4; iter++)
                         if (*vampire_gag_table[iter].skill == sn)
                                 return 0;
         }
@@ -5106,8 +5836,7 @@ int form_skill_allow (CHAR_DATA *ch, int sn)
         return 0;
 }
 
-
-void generate_stats (CHAR_DATA *ch)
+void generate_stats(CHAR_DATA *ch)
 {
 
         /*
@@ -5144,58 +5873,57 @@ void generate_stats (CHAR_DATA *ch)
         ch->pcdata->perm_con += class_table[ch->class].class_stats[4];
 }
 
-
 /*
  * Returns value 0 - 9 based on directional text.
  */
-int get_dir( char *txt )
+int get_dir(char *txt)
 {
         int edir;
         char c1;
 
-        if ( !str_cmp( txt, "somewhere" ) )
+        if (!str_cmp(txt, "somewhere"))
                 return 10;
 
         c1 = txt[0];
 
-        if ( c1 == '\0' )
+        if (c1 == '\0')
                 return 0;
 
         edir = 0;
 
-        switch ( c1 )
+        switch (c1)
         {
-            case 'n':
-            case '0':
+        case 'n':
+        case '0':
                 edir = 0;
                 break;
 
-            case 'e':
-            case '1':
+        case 'e':
+        case '1':
                 edir = 1;
                 break;
 
-            case 's':
-            case '2':
+        case 's':
+        case '2':
                 edir = 2;
                 break;
 
-            case 'w':
-            case '3':
+        case 'w':
+        case '3':
                 edir = 3;
                 break;
 
-            case 'u':
-            case '4':
+        case 'u':
+        case '4':
                 edir = 4;
                 break;
 
-            case 'd':
-            case '5':
+        case 'd':
+        case '5':
                 edir = 5;
                 break;
 
-            case '?':
+        case '?':
                 edir = 10;
                 break;
         }
@@ -5203,8 +5931,7 @@ int get_dir( char *txt )
         return edir;
 }
 
-
-int mana_cost (CHAR_DATA *ch, int sn)
+int mana_cost(CHAR_DATA *ch, int sn)
 {
         if (IS_NPC(ch))
                 return 0;
@@ -5219,20 +5946,17 @@ int mana_cost (CHAR_DATA *ch, int sn)
          */
 
         if (skill_table[sn].target == TAR_CHAR_OFFENSIVE_SINGLE || skill_table[sn].target == TAR_CHAR_OFFENSIVE)
-                return UMAX (skill_table[sn].min_mana, 60 - ch->pcdata->learned[sn]);
+                return UMAX(skill_table[sn].min_mana, 60 - ch->pcdata->learned[sn]);
         else
-                return UMAX (skill_table[sn].min_mana, 45 - ch->pcdata->learned[sn]);
-
+                return UMAX(skill_table[sn].min_mana, 45 - ch->pcdata->learned[sn]);
 }
 
-
-int get_phys_penalty (CHAR_DATA *ch)
+int get_phys_penalty(CHAR_DATA *ch)
 {
         return (30 - ((get_curr_str(ch) + get_curr_dex(ch) + (get_curr_int(ch) * 2)) / 4));
 }
 
-
-int get_int_penalty (CHAR_DATA *ch)
+int get_int_penalty(CHAR_DATA *ch)
 {
         return (30 - ((get_curr_wis(ch) + (get_curr_int(ch)) * 2) / 3));
 }
@@ -5252,41 +5976,48 @@ int get_int_penalty (CHAR_DATA *ch)
   modified the buffer, so I had to make a copy of it. What the hell, it
   works :) (read: it seems to work :)
 */
-int advatoi( const char *s )
+int advatoi(const char *s)
 {
-    int number		= 0;
-    int multiplier	= 0;
+        int number = 0;
+        int multiplier = 0;
 
-    /*
-     * as long as the current character is a digit add to current number.
-     */
-    while ( isdigit( s[0] ) )
-        number = ( number * 10 ) + ( *s++ - '0' );
+        /*
+         * as long as the current character is a digit add to current number.
+         */
+        while (isdigit(s[0]))
+                number = (number * 10) + (*s++ - '0');
 
-    switch (UPPER(s[0]))
-    {
-        case 'K'  : number *= ( multiplier = 1000 );      ++s; break;
-        case 'M'  : number *= ( multiplier = 1000000 );   ++s; break;
-        case '\0' : break;
-        default   : return 0; /* not k nor m nor NULL - return 0! */
-    }
+        switch (UPPER(s[0]))
+        {
+        case 'K':
+                number *= (multiplier = 1000);
+                ++s;
+                break;
+        case 'M':
+                number *= (multiplier = 1000000);
+                ++s;
+                break;
+        case '\0':
+                break;
+        default:
+                return 0; /* not k nor m nor NULL - return 0! */
+        }
 
-    /* if any digits follow k/m, add those too */
-    while ( isdigit( s[0] ) && ( multiplier > 1 ) )
-    {
-        /* the further we get to right, the less the digit 'worth' */
-        multiplier /= 10;
-        number = number + ( ( *s++ - '0' ) * multiplier );
-    }
+        /* if any digits follow k/m, add those too */
+        while (isdigit(s[0]) && (multiplier > 1))
+        {
+                /* the further we get to right, the less the digit 'worth' */
+                multiplier /= 10;
+                number = number + ((*s++ - '0') * multiplier);
+        }
 
-    /* return 0 if non-digit character was found, other than NULL */
-    if ( s[0] != '\0' && !isdigit( s[0] ) )
-        return 0;
+        /* return 0 if non-digit character was found, other than NULL */
+        if (s[0] != '\0' && !isdigit(s[0]))
+                return 0;
 
-    /* anything left is likely extra digits (ie: 14k4443  -> 3 is extra) */
+        /* anything left is likely extra digits (ie: 14k4443  -> 3 is extra) */
 
-    return number;
+        return number;
 }
 
 /* EOF handler.c */
-
