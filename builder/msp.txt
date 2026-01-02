@@ -1,0 +1,106 @@
+MSP
+===
+Work is being done on supporting MSP (Mud Sound Protocol) on the Mudlet platform
+for the MUD.  This document will outline the current state of implementation as
+well as future plans.
+
+CURRENTLY IMPLEMENTED
+=====================
+
+SCONFIG
+=======
+
+The player command 'sconfig' (see HELP SCONFIG) is used by players to customise
+their individual sound environment.  It enables turning sound on/off completely
+and by sound category, and volume scaling on a "master" and per-category level.
+
+Ambient sound
+=============
+
+All sector types (forest, hills, etc) have ambient loops associated with them.
+These can be overridden on a per-room or per-area basis.
+
+To put an ambient loop on a whole area, use the following syntax in the
+#AREA_SPECIAL header:
+
+#AREA_SPECIAL
+ambient ambient/area/abyss.mp3
+ambient_vol 30
+
+The above tells the MUD to load the abyss.mp3 loop (via relative link from the
+"audio" directory) loop for all rooms in the area with a volume of 30/100.
+
+The currently implemented state of the sound directory structure under the
+"gui->custom" directory is as below:
+
+audio
+|->ambient
+  |-->area
+  |-->room
+  |-->sector
+  |-->weather
+|->notify
+|->sfx
+  |-->door
+  |-->misc
+|->ui
+
+To override the area ambient loop, you can add loops on a per-room basis by
+adding the below section with a line for each room after the #ROOMS section in
+an area file.
+
+#ROOMS_AMBIENT
+9320 ambient/room/9320.mp3 80
+$
+
+Weather effects are automatically layered over ambient sound.  Currently they
+exist for rain and lightning.
+
+SFX
+===
+
+Currently some SFX exist. Mostly for opening/closing/locking/unlocking doors and
+basic item consumption sounds.
+
+Door sounds can be overridden with custom sounds like so:
+
+#EXITS_SFX
+10043 s open sfx/door/open_cupboard1.mp3 75
+10043 s close sfx/door/close_cupboard1.mp3 70
+10082 n open sfx/door/open_cupboard1.mp3 75
+10082 n close sfx/door/close_cupboard1.mp3 70
+$
+
+Consumption sounds are in sfx->misc but cannot currently be overridden, only
+turned off (along with all SFX) with SCONFIG.
+
+Notifications
+=============
+
+There are notification sounds for when different comms channels are used, when
+auctions start, and when characters level.  These cannot currently be
+customised, only turned on/off or have their relative volume adjusted.
+
+
+Todo
+====
+- sconfig needs to persist across sessions (save/restore from pfile)
+- sound level scaling in sconfig has to be tested extensively
+- scribe needs to support all the area file alterations for sound
+- Allow consumable items to have a field that overrides the generic eat/drink
+  etc sound that plays for them.
+- Should have this for all items that can make sounds, e.g. weapons.
+- Combat sound effects
+- Foley (player footsteps, mob movement noises, mob sound loops, objects emitting
+  sounds).
+- Battle music?  Music as its own separate ambient layer?
+- Mudlet GUI sounds
+
+
+Other
+=====
+As all our sounds are pushed over MSP from the server side we run into issues
+with masking of overlapping sounds.  It looks like the solution to this is
+likely to be some kind of per-playing sound queuing so you can have, say the
+ability to hear rapid opening and closing of a door, or combat sounds
+interrupting rather than masking each other.
