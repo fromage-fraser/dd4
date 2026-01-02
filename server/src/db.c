@@ -2002,6 +2002,7 @@ void load_objects( FILE *fp )
                 pObjIndex->vnum = vnum;
                 pObjIndex->spawn_count = 0;
                 pObjIndex->max_instances = 0;
+                pObjIndex->material = NULL;
 
                 if ( fBootDb )
                 {
@@ -2120,6 +2121,11 @@ void load_objects( FILE *fp )
 
                                 /* bug("Set max_instances to %d", pObjIndex->max_instances);
                                 bug("for vnum %d", pObjIndex->vnum); */
+                        }
+                        else if ( letter == 'T' )
+                        {
+                                /* Material composition tag */
+                                pObjIndex->material = fread_string( fp );
                         }
                         else if ( letter == 'E' )
                         {
@@ -3862,6 +3868,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level, char* rank, int r
         obj->value[2]           = pObjIndex->value[2];
         obj->value[3]           = pObjIndex->value[3];
         obj->weight             = pObjIndex->weight;
+        obj->material           = pObjIndex->material;
 
         obj->cost = number_fuzzy(10) * number_fuzzy(level) + number_range(1, 20);
 
