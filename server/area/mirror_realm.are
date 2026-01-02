@@ -346,7 +346,7 @@ Finishing School" diploma.
 0 0
 8 8 1
 #19025
-pool man~
+pool man player~
 the pool player~
 A pool player stands here practicing his game.
 ~
@@ -2469,7 +2469,8 @@ A beautiful altar of glass and crystal sparkles in the sunlight.~
 500 0 0
 E
 altar crystal~
-You see a small drawer in the front of the sparkling altar.~
+You see a small drawer in the front of the sparkling altar.
+~
 #19138
 crystal sigil~
 the crystal sigil~
@@ -2508,7 +2509,8 @@ An altar made of sparkling amethyst stands here.~
 500 0 0
 E
 drawer purple altar~
-A drawer has been set into the front of the altar.~
+A drawer has been set into the front of the altar.
+~
 #19142
 amethyst sigil~
 the amethyst sigil~
@@ -2529,7 +2531,8 @@ An altar encrusted with bright red rubies stands here.~
 500 0 0
 E
 altar ruby red drawer~
-A small drawer has been set into the front of the altar.~
+A small drawer has been set into the front of the altar.
+~
 #19144
 ruby sigil~
 the ruby sigil~
@@ -2560,7 +2563,8 @@ A beautiful altar of sapphire stands before you.~
 500 0 0
 E
 drawer sapphire altar~
-A small drawer has been set into the front of the altar.~
+A small drawer has been set into the front of the altar.
+~
 #19147
 drawer green altar~
 the green altar~
@@ -2571,7 +2575,8 @@ An emerald altar stands before you.~
 500 0 0
 E
 drawer altar~
-A small drawer has been set into the front of the altar.~
+A small drawer has been set into the front of the altar.
+~
 #19148
 emerald sigil~
 the emerald sigil~
@@ -3020,7 +3025,7 @@ D3
 1 -1 19009
 S
 #19009
-Inside a  Watchtower~
+Inside a Watchtower~
 The wooden guard station looks out over the bright, colorful side of the
 realm; large, open windows let you watch over the land as a whole, and
 a telescope bolted to the floor allows you to look more closely.  The room is
@@ -3039,7 +3044,7 @@ hatch door knob~
 1 -1 19044
 S
 #19010
-Inside a  Watchtower~
+Inside a Watchtower~
 The wooden guard station hangs over the darker side of the realm; large
 windows allow you to look over the land as a whole, while a telescope
 lets you look more closely.  The station is almost completely empty, save

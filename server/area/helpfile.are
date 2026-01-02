@@ -656,6 +656,10 @@ Gezhp, Owl and Shade
 - Smithy steel caches resist acid and fire, their capacity is also increased
 - Swallow interacts more sensibly with mounts
 
+{W January 2026{x
+
+- msp.txt added to track progress on sound implementation and its use
+
 ~
 
 0 MULTIPLAYING MULTIPLAYERS~
@@ -5932,10 +5936,10 @@ necromancer skills respectively.
 
 Smithy skills{x
 
-smelt                   shield block        STRENGTHEN
+smelt                   shield block        strengthen
 construct               imbue               counterbalance
 weaponchain             shieldchain         hurl
-uncommon set            rare set
+uncommon set            rare set            reforge
 ~
 
 -1 SWARRIOR~

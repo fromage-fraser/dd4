@@ -3555,7 +3555,7 @@ void do_consider( CHAR_DATA *ch, char *argument )
             if ( hpdiff <= 25 )
                     buf = " you can take a tiny bit more damage than $E can.";
             if ( hpdiff <= 0 )
-                    buf = " $E can take a tiny bit more damagethan you can.";
+                    buf = " $E can take a tiny bit more damage than you can.";
             if ( hpdiff <= -25 )
                     buf = " $E can take a bit more damage than you can.";
             if ( hpdiff <= -50 )
