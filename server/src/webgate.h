@@ -226,6 +226,40 @@ void webgate_notify_room_update(ROOM_INDEX_DATA *room);
 void webgate_send_char_skills(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch);
 
 /*
+ * Intent: Send character inventory to web client via GMCP.
+ *
+ * Provides list of items in character's inventory for UI display and interaction.
+ * Should be called when inventory changes (get, drop, give, etc).
+ *
+ * Inputs:
+ *   - web_desc: Web client descriptor
+ *   - ch: Character whose inventory to send
+ *
+ * Outputs: Char.Inventory GMCP message with JSON array
+ *
+ * Preconditions: ch must be valid character
+ * Postconditions: Client receives inventory list with item metadata
+ */
+void webgate_send_char_inventory(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch);
+
+/*
+ * Intent: Send character equipment to web client via GMCP.
+ *
+ * Provides list of equipped items organized by wear location for paperdoll-style
+ * UI display. Should be called when equipment changes (wear, remove, etc).
+ *
+ * Inputs:
+ *   - web_desc: Web client descriptor
+ *   - ch: Character whose equipment to send
+ *
+ * Outputs: Char.Equipment GMCP message with JSON object
+ *
+ * Preconditions: ch must be valid character
+ * Postconditions: Client receives equipment data for all 22 slots
+ */
+void webgate_send_char_equipment(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch);
+
+/*
  * Intent: Broadcast a GMCP message to all authenticated web clients.
  *
  * Inputs:
@@ -308,6 +342,22 @@ void webgate_send_char_vitals(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch);
  * Notes: Should be called when affects change or position changes
  */
 void webgate_send_char_status(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch);
+
+/*
+ * Intent: Send shop inventory to web client for GUI display and purchase.
+ *
+ * Inputs:
+ *   - ch: Player character viewing the shop
+ *   - keeper: Shopkeeper NPC with inventory
+ *
+ * Outputs: None (Shop.Inventory GMCP message sent)
+ *
+ * Preconditions: ch and keeper must be valid
+ * Postconditions: Shop.Inventory sent if player has web connection
+ *
+ * Notes: Only sends visible items for sale; called from do_list command
+ */
+void webgate_send_shop_inventory(CHAR_DATA *ch, CHAR_DATA *keeper);
 
 /*
  * Intent: Notify web clients when GMCP protocol updates occur.

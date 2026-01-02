@@ -2,14 +2,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import Compass from './components/Compass';
 import RoomDisplay from './components/RoomDisplay';
-import VitalsBar from './components/VitalsBar';
+import CharacterInfo from './components/CharacterInfo';
 import CombatLog from './components/CombatLog';
 import CommandInput from './components/CommandInput';
 import QuickActions from './components/QuickActions';
-import CharacterInfo from './components/CharacterInfo';
 import RoomContents from './components/RoomContents';
 import SkillBar from './components/SkillBar';
 import SkillAssign from './components/SkillAssign';
+import CharacterSheet from './components/CharacterSheet';
+import ShopModal from './components/ShopModal';
 
 /**
  * Main application component for DD4 Web Client
@@ -30,6 +31,10 @@ function App() {
   const [assignedSkills, setAssignedSkills] = useState(Array(8).fill(null));
   const [openers, setOpeners] = useState([null, null]);
   const [showSkillAssign, setShowSkillAssign] = useState(false);
+  const [showCharacterSheet, setShowCharacterSheet] = useState(false);
+  const [inventory, setInventory] = useState([]);
+  const [equipment, setEquipment] = useState(null);
+  const [shopData, setShopData] = useState(null); // { shopkeeper, items }
   const ws = useRef(null);
   const reconnectTimeoutRef = useRef(null);
   const reconnectAttemptRef = useRef(0); // Use ref to track attempts for closure issues
@@ -192,6 +197,29 @@ function App() {
         }
         break;
       
+      case 'Char.Inventory':
+        // Handle inventory update
+        console.log('Char.Inventory received:', data);
+        console.log('Inventory count:', data.items?.length);
+        if (data.items) {
+          setInventory(data.items);
+        }
+        break;
+      
+      case 'Char.Equipment':
+        // Handle equipment update
+        console.log('Char.Equipment received:', data);
+        if (data.equipment) {
+          setEquipment(data.equipment);
+        }
+        break;
+      
+      case 'Shop.Inventory':
+        // Handle shop inventory
+        console.log('Shop.Inventory received:', data);
+        setShopData(data);
+        break;
+      
       case 'Comm.Channel':
         // Handle channel messages (system, chat, game output, etc)
         console.log('Comm.Channel received:', data);
@@ -252,6 +280,21 @@ function App() {
   };
 
   /**
+   * Request fresh inventory and equipment data from server
+   */
+  const refreshInventoryEquipment = () => {
+    if (!ws.current || ws.current.readyState !== WebSocket.OPEN) {
+      return;
+    }
+    
+    // Send 'inventory' and 'equipment' commands to trigger server GMCP updates
+    // The server should already be sending these via GMCP, but we can request refresh
+    console.log('Requesting inventory/equipment refresh');
+    sendCommand('inventory');
+    sendCommand('equipment');
+  };
+
+  /**
    * Handle movement via compass
    */
   const handleMove = (direction) => {
@@ -296,9 +339,13 @@ function App() {
 
       <div className="app-content">
         <div className="left-panel">
-          <VitalsBar vitals={vitals} />
-          <QuickActions onCommand={sendCommand} connected={connected} />
-          <Compass exits={room.exits} onMove={handleMove} />
+          <CharacterInfo vitals={vitals} status={status} />
+          <QuickActions 
+            onCommand={sendCommand} 
+            connected={connected}
+            onOpenCharacterSheet={() => setShowCharacterSheet(true)}
+          />
+          <Compass exits={room.exits} onMove={handleMove} onCommand={sendCommand} />
         </div>
 
         <div className="main-panel">
@@ -308,7 +355,6 @@ function App() {
         </div>
 
         <div className="right-panel">
-          <CharacterInfo vitals={vitals} status={status} />
           <RoomContents 
             items={room.items} 
             npcs={room.npcs} 
@@ -317,15 +363,16 @@ function App() {
             skills={skills}
             openers={openers}
           />
-          <SkillBar
-            skills={skills}
-            assignedSkills={assignedSkills}
-            onUseSkill={handleUseSkill}
-            onAssignClick={() => setShowSkillAssign(true)}
-            connected={connected}
-          />
         </div>
       </div>
+
+      <SkillBar
+        skills={skills}
+        assignedSkills={assignedSkills}
+        onUseSkill={handleUseSkill}
+        onAssignClick={() => setShowSkillAssign(true)}
+        connected={connected}
+      />
 
       {showSkillAssign && (
         <SkillAssign
@@ -334,6 +381,27 @@ function App() {
           openers={openers}
           onSave={handleSaveSkillConfig}
           onClose={() => setShowSkillAssign(false)}
+        />
+      )}
+
+      {showCharacterSheet && (
+        <CharacterSheet
+          inventory={inventory}
+          equipment={equipment}
+          onCommand={sendCommand}
+          onClose={() => setShowCharacterSheet(false)}
+          connected={connected}
+          onRefresh={refreshInventoryEquipment}
+        />
+      )}
+
+      {shopData && (
+        <ShopModal
+          shopkeeper={shopData.shopkeeper}
+          items={shopData.items}
+          onClose={() => setShopData(null)}
+          onBuy={sendCommand}
+          connected={connected}
         />
       )}
     </div>

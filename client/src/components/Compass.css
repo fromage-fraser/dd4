@@ -60,6 +60,165 @@
   cursor: not-allowed;
 }
 
+/* Door state styling */
+.compass-direction.door-locked {
+  border-color: #dc143c;
+  background-color: rgba(220, 20, 60, 0.15);
+}
+
+.compass-direction.door-locked.available {
+  background-color: rgba(220, 20, 60, 0.25);
+  border-color: #ff1744;
+  color: #ff6b6b;
+}
+
+.compass-direction.door-locked.available:hover {
+  background-color: rgba(220, 20, 60, 0.35);
+  box-shadow: 0 0 10px rgba(220, 20, 60, 0.5);
+}
+
+.compass-direction.door-closed {
+  border-color: #ffa500;
+  background-color: rgba(255, 165, 0, 0.15);
+}
+
+.compass-direction.door-closed.available {
+  background-color: rgba(255, 165, 0, 0.25);
+  border-color: #ffa500;
+  color: #ffb347;
+}
+
+.compass-direction.door-closed.available:hover {
+  background-color: rgba(255, 165, 0, 0.35);
+  box-shadow: 0 0 10px rgba(255, 165, 0, 0.5);
+}
+
+/* Door icon positioning */
+.door-icon {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 0.7em;
+  opacity: 0.9;
+}
+
+/* Door actions panel */
+.door-actions-panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #2a2a3e 0%, #1f1f2e 100%);
+  border: 2px solid #4a90e2;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  min-width: 280px;
+  max-width: 90vw;
+}
+
+.door-actions-panel h4 {
+  margin: 0 0 1rem 0;
+  color: #4a90e2;
+  font-size: 1.1rem;
+  text-align: center;
+  border-bottom: 1px solid #444;
+  padding-bottom: 0.5rem;
+}
+
+.door-status {
+  text-align: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.status-locked {
+  color: #ff6b6b;
+  background: rgba(220, 20, 60, 0.2);
+  border: 1px solid #dc143c;
+}
+
+.status-closed {
+  color: #ffb347;
+  background: rgba(255, 165, 0, 0.2);
+  border: 1px solid #ffa500;
+}
+
+.status-open {
+  color: #4caf50;
+  background: rgba(76, 175, 80, 0.2);
+  border: 1px solid #4caf50;
+}
+
+.door-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.door-action-btn {
+  padding: 0.75rem 1rem;
+  border: 2px solid #4a90e2;
+  background: linear-gradient(135deg, #357abd 0%, #2a5a8f 100%);
+  color: #fff;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 44px;
+}
+
+.door-action-btn:hover {
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  box-shadow: 0 0 12px rgba(74, 144, 226, 0.5);
+  transform: translateY(-1px);
+}
+
+.door-action-btn:active {
+  transform: translateY(1px);
+}
+
+.door-action-btn.bash {
+  border-color: #ff6b6b;
+  background: linear-gradient(135deg, #dc143c 0%, #b01030 100%);
+}
+
+.door-action-btn.bash:hover {
+  background: linear-gradient(135deg, #ff1744 0%, #dc143c 100%);
+  box-shadow: 0 0 12px rgba(220, 20, 60, 0.5);
+}
+
+.door-action-btn.pick {
+  border-color: #ffb347;
+  background: linear-gradient(135deg, #ff8c00 0%, #cc7000 100%);
+}
+
+.door-action-btn.pick:hover {
+  background: linear-gradient(135deg, #ffa500 0%, #ff8c00 100%);
+  box-shadow: 0 0 12px rgba(255, 165, 0, 0.5);
+}
+
+.door-panel-close {
+  padding: 0.5rem 1rem;
+  border: 1px solid #666;
+  background: #333;
+  color: #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.door-panel-close:hover {
+  background: #444;
+  border-color: #888;
+}
+
 /* Compass center marker */
 .compass-center {
   display: flex;

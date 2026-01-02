@@ -493,7 +493,7 @@ void webgate_send_gmcp(WEB_DESCRIPTOR_DATA *web_desc, const char *module, const 
 void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room)
 {
     char json[WEBGATE_MAX_MESSAGE];
-    char exits_json[512];
+    char exits_json[2048]; /* Increased from 512 to handle 6 exits with door info */
     char items_json[MAX_STRING_LENGTH];
     char npcs_json[MAX_STRING_LENGTH];
     char name_escaped[256];
@@ -557,10 +557,58 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
         pexit = room->exit[door];
         if (pexit && pexit->to_room)
         {
+            char door_keyword[128];
+            const char *src;
+            char *dst;
+            bool has_door = IS_SET(pexit->exit_info, EX_ISDOOR);
+            bool is_closed = IS_SET(pexit->exit_info, EX_CLOSED);
+            bool is_locked = IS_SET(pexit->exit_info, EX_LOCKED);
+            bool is_pickproof = IS_SET(pexit->exit_info, EX_PICKPROOF);
+
+            /* Escape door keyword if exists */
+            if (has_door && pexit->keyword && pexit->keyword[0] != '\0')
+            {
+                src = pexit->keyword;
+                dst = door_keyword;
+                while (*src && (dst - door_keyword) < sizeof(door_keyword) - 2)
+                {
+                    if (*src == '"' || *src == '\\')
+                        *dst++ = '\\';
+                    if (*src >= 32 && *src != ' ')
+                        *dst++ = *src++;
+                    else if (*src == ' ')
+                        break; /* Only use first word */
+                    else
+                        src++;
+                }
+                *dst = '\0';
+            }
+            else
+            {
+                strcpy(door_keyword, "door");
+            }
+
             if (!first)
                 strcat(exits_json, ",");
-            sprintf(exits_json + strlen(exits_json), "\"%s\"", directions[door].name);
-            first = false;
+
+            /* Check buffer space before appending */
+            if (strlen(exits_json) + 200 < sizeof(exits_json))
+            {
+                sprintf(exits_json + strlen(exits_json),
+                        "{\"dir\":\"%s\",\"hasDoor\":%s,\"isClosed\":%s,\"isLocked\":%s,\"isPickproof\":%s,\"keyword\":\"%s\"}",
+                        directions[door].name,
+                        has_door ? "true" : "false",
+                        is_closed ? "true" : "false",
+                        is_locked ? "true" : "false",
+                        is_pickproof ? "true" : "false",
+                        door_keyword);
+                first = false;
+            }
+            else
+            {
+                bug("webgate_send_room_info: exits_json buffer overflow", 0);
+                break;
+            }
         }
     }
     strcat(exits_json, "]");
@@ -595,11 +643,12 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
         if (!first)
             strcat(items_json, ",");
         sprintf(items_json + strlen(items_json),
-                "{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d}",
+                "{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d,\"type\":%d}",
                 obj->pIndexData ? obj->pIndexData->vnum : 0,
                 temp_name,
                 keywords_escaped,
-                obj->pIndexData ? obj->pIndexData->vnum : 0);
+                obj->pIndexData ? obj->pIndexData->vnum : 0,
+                obj->item_type);
         first = false;
         item_count++;
     }
@@ -639,12 +688,13 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
         if (!first)
             strcat(npcs_json, ",");
         sprintf(npcs_json + strlen(npcs_json),
-                "{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d,\"hostile\":%s}",
+                "{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d,\"hostile\":%s,\"isShopkeeper\":%s}",
                 IS_NPC(rch) && rch->pIndexData ? rch->pIndexData->vnum : 0,
                 temp_name,
                 keywords_escaped,
                 IS_NPC(rch) && rch->pIndexData ? rch->pIndexData->vnum : 0,
-                IS_NPC(rch) && IS_SET(rch->act, ACT_AGGRESSIVE) ? "true" : "false");
+                IS_NPC(rch) && IS_SET(rch->act, ACT_AGGRESSIVE) ? "true" : "false",
+                IS_NPC(rch) && rch->pIndexData && rch->pIndexData->pShop ? "true" : "false");
         first = false;
         npc_count++;
     }
@@ -730,6 +780,112 @@ void webgate_notify_room_update(ROOM_INDEX_DATA *room)
                 player_count, web_desc_count, room->vnum);
         log_string(log_buf);
     }
+}
+
+/*
+ * Intent: Send shop inventory to web client via GMCP Shop.Inventory message.
+ *
+ * When a player uses the "list" command at a shopkeeper, this function
+ * sends the shop's inventory to the web client so items can be displayed
+ * in the GUI for purchase.
+ *
+ * Inputs:
+ *   - ch: Player character viewing the shop
+ *   - keeper: Shopkeeper NPC
+ *
+ * Outputs: None (Shop.Inventory GMCP message sent to client)
+ *
+ * Preconditions: ch and keeper must be valid; keeper must have inventory
+ * Postconditions: Shop.Inventory sent to web client if authenticated
+ *
+ * Notes: Only sends items that are for sale (not worn, visible, and have valid cost)
+ */
+void webgate_send_shop_inventory(CHAR_DATA *ch, CHAR_DATA *keeper)
+{
+    char json[WEBGATE_MAX_MESSAGE];
+    char items_json[MAX_STRING_LENGTH];
+    char temp_name[256];
+    WEB_DESCRIPTOR_DATA *web_desc;
+    OBJ_DATA *obj;
+    int cost, i, j;
+    bool first = true;
+    int item_count = 0;
+    extern int get_cost(CHAR_DATA * keeper, OBJ_DATA * obj, bool fBuy);
+
+    if (!ch || !keeper)
+        return;
+
+    /* Find web descriptor for this character */
+    for (web_desc = web_descriptor_list; web_desc; web_desc = web_desc->next)
+    {
+        if (web_desc->mud_desc && web_desc->mud_desc->character == ch)
+            break;
+    }
+
+    if (!web_desc)
+        return;
+
+    /* Build items array JSON */
+    sprintf(items_json, "[");
+
+    for (obj = keeper->carrying; obj && item_count < 100; obj = obj->next_content)
+    {
+        char keywords_escaped[256];
+
+        if (obj->wear_loc != WEAR_NONE)
+            continue;
+
+        cost = get_cost(keeper, obj, TRUE);
+        if (cost < 0)
+            continue;
+
+        if (!can_see_obj(ch, obj))
+            continue;
+
+        /* Escape item name for JSON */
+        for (i = 0, j = 0; obj->short_descr[i] != '\0' && j < sizeof(temp_name) - 2; i++)
+        {
+            if (obj->short_descr[i] == '"' || obj->short_descr[i] == '\\')
+                temp_name[j++] = '\\';
+            if (obj->short_descr[i] >= 32)
+                temp_name[j++] = obj->short_descr[i];
+        }
+        temp_name[j] = '\0';
+
+        /* Escape item keywords (for commands) - use first keyword only */
+        for (i = 0, j = 0; obj->name[i] != '\0' && obj->name[i] != ' ' && j < sizeof(keywords_escaped) - 2; i++)
+        {
+            if (obj->name[i] == '"' || obj->name[i] == '\\')
+                keywords_escaped[j++] = '\\';
+            if (obj->name[i] >= 32)
+                keywords_escaped[j++] = obj->name[i];
+        }
+        keywords_escaped[j] = '\0';
+
+        if (!first)
+            strcat(items_json, ",");
+
+        sprintf(items_json + strlen(items_json),
+                "{\"name\":\"%s\",\"keywords\":\"%s\",\"level\":%d,\"cost\":%d,\"vnum\":%d}",
+                temp_name,
+                keywords_escaped,
+                obj->level,
+                cost,
+                obj->pIndexData ? obj->pIndexData->vnum : 0);
+
+        first = false;
+        item_count++;
+    }
+
+    strcat(items_json, "]");
+
+    /* Build complete Shop.Inventory JSON */
+    snprintf(json, sizeof(json),
+             "{\"shopkeeper\":\"%s\",\"items\":%s}",
+             keeper->short_descr,
+             items_json);
+
+    webgate_send_gmcp(web_desc, "Shop.Inventory", json);
 }
 
 /*
@@ -880,6 +1036,812 @@ void webgate_send_char_skills(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
     log_string(log_buf);
 
     webgate_send_gmcp(web_desc, "Char.Skills", json);
+}
+
+/*
+ * Intent: Serialize item extra flags to JSON array format.
+ *
+ * Only includes flags that are visible to player. Unidentified items only
+ * show cosmetic flags (glow, hum), while identified items show all flags.
+ *
+ * Inputs:
+ *   - obj: Item to serialize
+ *   - identified: Whether item stats are visible
+ *   - buf: Output buffer for JSON array
+ *   - buf_size: Size of output buffer
+ *
+ * Outputs: buf filled with JSON array string like ["glow","hum","magic"]
+ *
+ * Preconditions: obj is valid, buf has sufficient space
+ * Postconditions: buf contains properly formatted JSON array
+ */
+static void webgate_serialize_extra_flags(OBJ_DATA *obj, bool identified, char *buf, int buf_size)
+{
+    unsigned long int flags = obj->extra_flags;
+    bool first = true;
+    int len = 0;
+
+    buf[0] = '\0';
+    strcat(buf, "[");
+    len++;
+
+    /* Always show cosmetic flags */
+    if (flags & ITEM_GLOW)
+    {
+        strcat(buf, first ? "\"glow\"" : ",\"glow\"");
+        first = false;
+    }
+    if (flags & ITEM_HUM)
+    {
+        strcat(buf, first ? "\"hum\"" : ",\"hum\"");
+        first = false;
+    }
+
+    /* Show all other flags only if identified */
+    if (identified)
+    {
+        if (flags & ITEM_MAGIC)
+        {
+            strcat(buf, first ? "\"magic\"" : ",\"magic\"");
+            first = false;
+        }
+        if (flags & ITEM_BLESS)
+        {
+            strcat(buf, first ? "\"blessed\"" : ",\"blessed\"");
+            first = false;
+        }
+        if (flags & ITEM_CURSED)
+        {
+            strcat(buf, first ? "\"cursed\"" : ",\"cursed\"");
+            first = false;
+        }
+        if (flags & ITEM_INVIS)
+        {
+            strcat(buf, first ? "\"invis\"" : ",\"invis\"");
+            first = false;
+        }
+        if (flags & ITEM_EVIL)
+        {
+            strcat(buf, first ? "\"evil\"" : ",\"evil\"");
+            first = false;
+        }
+        if (flags & ITEM_NODROP)
+        {
+            strcat(buf, first ? "\"no_drop\"" : ",\"no_drop\"");
+            first = false;
+        }
+        if (flags & ITEM_NOREMOVE)
+        {
+            strcat(buf, first ? "\"no_remove\"" : ",\"no_remove\"");
+            first = false;
+        }
+        if (flags & ITEM_VORPAL)
+        {
+            strcat(buf, first ? "\"vorpal\"" : ",\"vorpal\"");
+            first = false;
+        }
+        if (flags & ITEM_TRAP)
+        {
+            strcat(buf, first ? "\"trapped\"" : ",\"trapped\"");
+            first = false;
+        }
+        if (flags & ITEM_POISONED)
+        {
+            strcat(buf, first ? "\"poisoned\"" : ",\"poisoned\"");
+            first = false;
+        }
+        if (flags & ITEM_SHARP)
+        {
+            strcat(buf, first ? "\"sharp\"" : ",\"sharp\"");
+            first = false;
+        }
+        if (flags & ITEM_FORGED)
+        {
+            strcat(buf, first ? "\"forged\"" : ",\"forged\"");
+            first = false;
+        }
+    }
+
+    strcat(buf, "]");
+}
+
+/*
+ * Intent: Serialize item ego flags to JSON array format.
+ *
+ * Only included if item is identified and has ITEM_EGO flag set.
+ *
+ * Inputs:
+ *   - obj: Item to serialize
+ *   - identified: Whether item stats are visible
+ *   - buf: Output buffer
+ *   - buf_size: Size of output buffer
+ *
+ * Outputs: buf filled with JSON array like ["firebrand","balanced"]
+ */
+static void webgate_serialize_ego_flags(OBJ_DATA *obj, bool identified, char *buf, int buf_size)
+{
+    int flags;
+    bool first = true;
+
+    buf[0] = '\0';
+    strcat(buf, "[");
+
+    if (!identified || !IS_OBJ_STAT(obj, ITEM_EGO))
+    {
+        strcat(buf, "]");
+        return;
+    }
+
+    flags = obj->ego_flags;
+
+    if (flags & EGO_ITEM_BLOODLUST)
+    {
+        strcat(buf, first ? "\"bloodlust\"" : ",\"bloodlust\"");
+        first = false;
+    }
+    if (flags & EGO_ITEM_SOUL_STEALER)
+    {
+        strcat(buf, first ? "\"soul_stealer\"" : ",\"soul_stealer\"");
+        first = false;
+    }
+    if (flags & EGO_ITEM_FIREBRAND)
+    {
+        strcat(buf, first ? "\"firebrand\"" : ",\"firebrand\"");
+        first = false;
+    }
+    if (flags & EGO_ITEM_IMBUED)
+    {
+        strcat(buf, first ? "\"imbued\"" : ",\"imbued\"");
+        first = false;
+    }
+    if (flags & EGO_ITEM_BALANCED)
+    {
+        strcat(buf, first ? "\"balanced\"" : ",\"balanced\"");
+        first = false;
+    }
+    if (flags & EGO_ITEM_BATTLE_TERROR)
+    {
+        strcat(buf, first ? "\"battle_terror\"" : ",\"battle_terror\"");
+        first = false;
+    }
+    if (flags & EGO_ITEM_STRENGTHEN)
+    {
+        strcat(buf, first ? "\"strengthened\"" : ",\"strengthened\"");
+        first = false;
+    }
+    if (flags & EGO_ITEM_EMPOWERED)
+    {
+        strcat(buf, first ? "\"empowered\"" : ",\"empowered\"");
+        first = false;
+    }
+    if (flags & EGO_ITEM_SERRATED)
+    {
+        strcat(buf, first ? "\"serrated\"" : ",\"serrated\"");
+        first = false;
+    }
+    if (flags & EGO_ITEM_ENGRAVED)
+    {
+        strcat(buf, first ? "\"engraved\"" : ",\"engraved\"");
+        first = false;
+    }
+    if (flags & EGO_ITEM_INSCRIBED)
+    {
+        strcat(buf, first ? "\"inscribed\"" : ",\"inscribed\"");
+        first = false;
+    }
+
+    strcat(buf, "]");
+}
+
+/*
+ * Intent: Serialize item affect modifiers to JSON array format.
+ *
+ * Converts item's AFFECT_DATA linked list to JSON array of stat modifiers.
+ * Only included if item is identified.
+ *
+ * Inputs:
+ *   - obj: Item to serialize
+ *   - identified: Whether item stats are visible
+ *   - buf: Output buffer
+ *   - buf_size: Size of output buffer
+ *
+ * Outputs: buf filled with JSON array like [{"type":"hitroll","modifier":5}]
+ */
+static void webgate_serialize_affects(OBJ_DATA *obj, bool identified, char *buf, int buf_size)
+{
+    AFFECT_DATA *paf;
+    bool first = true;
+    char temp[256];
+
+    buf[0] = '\0';
+    strcat(buf, "[");
+
+    if (!identified)
+    {
+        strcat(buf, "]");
+        return;
+    }
+
+    /* Iterate through both index and object-specific affects */
+    if (obj->pIndexData && (!obj->how_created || obj->how_created == CREATED_PRE_DD5))
+    {
+        for (paf = obj->pIndexData->affected; paf; paf = paf->next)
+        {
+            if (paf->location != APPLY_NONE && paf->modifier != 0)
+            {
+                sprintf(temp, "%s{\"type\":\"%s\",\"modifier\":%d}",
+                        first ? "" : ",",
+                        affect_loc_name(paf->location),
+                        paf->modifier);
+                if (strlen(buf) + strlen(temp) < buf_size - 10)
+                {
+                    strcat(buf, temp);
+                    first = false;
+                }
+            }
+        }
+    }
+
+    for (paf = obj->affected; paf; paf = paf->next)
+    {
+        if (paf->location != APPLY_NONE && paf->modifier != 0)
+        {
+            sprintf(temp, "%s{\"type\":\"%s\",\"modifier\":%d}",
+                    first ? "" : ",",
+                    affect_loc_name(paf->location),
+                    paf->modifier);
+            if (strlen(buf) + strlen(temp) < buf_size - 10)
+            {
+                strcat(buf, temp);
+                first = false;
+            }
+        }
+    }
+
+    strcat(buf, "]");
+}
+
+/*
+ * Intent: Serialize item class restrictions to JSON array format.
+ *
+ * Only included if item is identified and has class restriction flags.
+ *
+ * Inputs:
+ *   - obj: Item to serialize
+ *   - identified: Whether item stats are visible
+ *   - buf: Output buffer
+ *   - buf_size: Size of output buffer
+ *
+ * Outputs: buf filled with JSON array like ["mage","cleric"]
+ */
+static void webgate_serialize_class_restrictions(OBJ_DATA *obj, bool identified, char *buf, int buf_size)
+{
+    unsigned long int flags = obj->extra_flags;
+    bool first = true;
+
+    buf[0] = '\0';
+    strcat(buf, "[");
+
+    if (!identified)
+    {
+        strcat(buf, "]");
+        return;
+    }
+
+    if (flags & ITEM_ANTI_MAGE)
+    {
+        strcat(buf, first ? "\"mage\"" : ",\"mage\"");
+        first = false;
+    }
+    if (flags & ITEM_ANTI_CLERIC)
+    {
+        strcat(buf, first ? "\"cleric\"" : ",\"cleric\"");
+        first = false;
+    }
+    if (flags & ITEM_ANTI_THIEF)
+    {
+        strcat(buf, first ? "\"thief\"" : ",\"thief\"");
+        first = false;
+    }
+    if (flags & ITEM_ANTI_WARRIOR)
+    {
+        strcat(buf, first ? "\"warrior\"" : ",\"warrior\"");
+        first = false;
+    }
+    if (flags & ITEM_ANTI_PSIONIC)
+    {
+        strcat(buf, first ? "\"psionic\"" : ",\"psionic\"");
+        first = false;
+    }
+    if (flags & ITEM_ANTI_BRAWLER)
+    {
+        strcat(buf, first ? "\"brawler\"" : ",\"brawler\"");
+        first = false;
+    }
+    if (flags & ITEM_ANTI_SHAPE_SHIFTER)
+    {
+        strcat(buf, first ? "\"shape_shifter\"" : ",\"shape_shifter\"");
+        first = false;
+    }
+    if (flags & ITEM_ANTI_RANGER)
+    {
+        strcat(buf, first ? "\"ranger\"" : ",\"ranger\"");
+        first = false;
+    }
+    if (flags & ITEM_ANTI_SMITHY)
+    {
+        strcat(buf, first ? "\"smithy\"" : ",\"smithy\"");
+        first = false;
+    }
+
+    strcat(buf, "]");
+}
+
+/*
+ * Intent: Serialize item alignment restrictions to JSON array format.
+ *
+ * Only included if item is identified and has alignment restriction flags.
+ *
+ * Inputs:
+ *   - obj: Item to serialize
+ *   - identified: Whether item stats are visible
+ *   - buf: Output buffer
+ *   - buf_size: Size of output buffer
+ *
+ * Outputs: buf filled with JSON array like ["evil","good"]
+ */
+static void webgate_serialize_alignment_restrictions(OBJ_DATA *obj, bool identified, char *buf, int buf_size)
+{
+    unsigned long int flags = obj->extra_flags;
+    bool first = true;
+
+    buf[0] = '\0';
+    strcat(buf, "[");
+
+    if (!identified)
+    {
+        strcat(buf, "]");
+        return;
+    }
+
+    if (flags & ITEM_ANTI_GOOD)
+    {
+        strcat(buf, first ? "\"good\"" : ",\"good\"");
+        first = false;
+    }
+    if (flags & ITEM_ANTI_NEUTRAL)
+    {
+        strcat(buf, first ? "\"neutral\"" : ",\"neutral\"");
+        first = false;
+    }
+    if (flags & ITEM_ANTI_EVIL)
+    {
+        strcat(buf, first ? "\"evil\"" : ",\"evil\"");
+        first = false;
+    }
+
+    strcat(buf, "]");
+}
+
+/*
+ * Intent: Determine item rarity based on item score.
+ *
+ * Returns rarity string for color coding item names in GUI.
+ *
+ * Inputs:
+ *   - obj: Item to check
+ *
+ * Outputs: Returns rarity string: "common", "uncommon", "rare", "epic", "legendary"
+ */
+static const char *webgate_get_item_rarity(OBJ_DATA *obj)
+{
+    int score;
+
+    if (!obj || !obj->pIndexData)
+        return "common";
+
+    score = calc_item_score(obj);
+
+    if (score >= ITEM_SCORE_LEGENDARY)
+        return "legendary";
+    if (score >= ITEM_SCORE_EPIC)
+        return "epic";
+    if (score >= ITEM_SCORE_RARE)
+        return "rare";
+    if (score >= ITEM_SCORE_UNCOMMON)
+        return "uncommon";
+
+    return "common";
+}
+
+/*
+ * Intent: Check if item is part of an object set.
+ *
+ * Returns set name if item is part of a set, otherwise returns empty string.
+ *
+ * Inputs:
+ *   - obj: Item to check
+ *
+ * Outputs: Returns set type name or empty string
+ */
+static const char *webgate_get_item_set(OBJ_DATA *obj)
+{
+    OBJSET_INDEX_DATA *pObjSetIndex;
+
+    if (!obj || !obj->pIndexData)
+        return "";
+
+    pObjSetIndex = objects_objset(obj->pIndexData->vnum);
+    if (pObjSetIndex)
+        return objset_type(pObjSetIndex->vnum);
+
+    return "";
+}
+
+/*
+ * Intent: Send character inventory to web client via GMCP.
+ *
+ * Provides list of items in character's inventory for UI display and
+ * interaction. Includes item metadata for building context menus with
+ * actions like drop, wear, use, etc.
+ *
+ * Inputs:
+ *   - web_desc: Web client descriptor
+ *   - ch: Character whose inventory to send
+ *
+ * Outputs: Char.Inventory GMCP message with JSON array of inventory items
+ *
+ * Preconditions: ch must be valid player character, web_desc must be open
+ * Postconditions: Client receives JSON array of carried items
+ *
+ * Failure Behavior: Returns silently if web_desc or ch is NULL
+ *
+ * Performance: O(n) where n is number of items carried
+ *
+ * Notes: Limits to 100 items to prevent buffer overflow
+ */
+void webgate_send_char_inventory(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
+{
+    char json[MAX_STRING_LENGTH * 4];
+    char item_entry[MAX_STRING_LENGTH * 2];
+    char item_name_escaped[MAX_INPUT_LENGTH];
+    char keywords_escaped[MAX_INPUT_LENGTH];
+    char material_escaped[MAX_INPUT_LENGTH];
+    char extra_flags_json[512];
+    char ego_flags_json[512];
+    char affects_json[1024];
+    char class_restrictions_json[256];
+    char alignment_restrictions_json[128];
+    const char *src;
+    char *dst;
+    OBJ_DATA *obj;
+    int count = 0;
+    const char *item_type_name;
+
+    if (!web_desc || !ch || web_desc->state != WS_STATE_OPEN)
+        return;
+
+    strcpy(json, "{\"items\":[");
+
+    /* Iterate through carried items */
+    for (obj = ch->carrying; obj && count < 100; obj = obj->next_content)
+    {
+        /* Skip worn items - they're in equipment */
+        if (obj->wear_loc != WEAR_NONE)
+            continue;
+
+        /* Escape item short description */
+        src = obj->short_descr;
+        dst = item_name_escaped;
+        while (*src && (dst - item_name_escaped) < (MAX_INPUT_LENGTH - 2))
+        {
+            if (*src == '"' || *src == '\\')
+                *dst++ = '\\';
+            *dst++ = *src++;
+        }
+        *dst = '\0';
+
+        /* Escape item keywords (first keyword only) */
+        src = obj->name;
+        dst = keywords_escaped;
+        while (*src && *src != ' ' && (dst - keywords_escaped) < (MAX_INPUT_LENGTH - 2))
+        {
+            if (*src == '"' || *src == '\\')
+                *dst++ = '\\';
+            *dst++ = *src++;
+        }
+        *dst = '\0';
+
+        /* Escape material name */
+        if (obj->material && obj->material[0] != '\0')
+        {
+            src = obj->material;
+            dst = material_escaped;
+            while (*src && (dst - material_escaped) < (MAX_INPUT_LENGTH - 2))
+            {
+                if (*src == '"' || *src == '\\')
+                    *dst++ = '\\';
+                *dst++ = *src++;
+            }
+            *dst = '\0';
+        }
+        else
+        {
+            strcpy(material_escaped, "unknown");
+        }
+
+        /* Determine item type name for client */
+        switch (obj->item_type)
+        {
+        case ITEM_WEAPON:
+            item_type_name = "weapon";
+            break;
+        case ITEM_ARMOR:
+            item_type_name = "armor";
+            break;
+        case ITEM_POTION:
+            item_type_name = "potion";
+            break;
+        case ITEM_SCROLL:
+            item_type_name = "scroll";
+            break;
+        case ITEM_FOOD:
+            item_type_name = "food";
+            break;
+        case ITEM_DRINK_CON:
+            item_type_name = "drink";
+            break;
+        case ITEM_CONTAINER:
+            item_type_name = "container";
+            break;
+        case ITEM_LIGHT:
+            item_type_name = "light";
+            break;
+        case ITEM_KEY:
+            item_type_name = "key";
+            break;
+        case ITEM_TREASURE:
+            item_type_name = "treasure";
+            break;
+        default:
+            item_type_name = "item";
+            break;
+        }
+
+        /* Serialize identification details */
+        webgate_serialize_extra_flags(obj, obj->identified, extra_flags_json, sizeof(extra_flags_json));
+        webgate_serialize_ego_flags(obj, obj->identified, ego_flags_json, sizeof(ego_flags_json));
+        webgate_serialize_affects(obj, obj->identified, affects_json, sizeof(affects_json));
+        webgate_serialize_class_restrictions(obj, obj->identified, class_restrictions_json, sizeof(class_restrictions_json));
+        webgate_serialize_alignment_restrictions(obj, obj->identified, alignment_restrictions_json, sizeof(alignment_restrictions_json));
+
+        /* Get rarity and set information */
+        {
+            const char *rarity = webgate_get_item_rarity(obj);
+            const char *set_name = webgate_get_item_set(obj);
+            char set_escaped[256];
+
+            /* Escape set name */
+            src = set_name;
+            dst = set_escaped;
+            while (*src && (dst - set_escaped) < sizeof(set_escaped) - 2)
+            {
+                if (*src == '"' || *src == '\\')
+                    *dst++ = '\\';
+                *dst++ = *src++;
+            }
+            *dst = '\0';
+
+            /* Build JSON entry for this item with identification details */
+            sprintf(item_entry, "%s{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"type\":\"%s\",\"level\":%d,\"weight\":%d,\"canWear\":%s,\"identified\":%s,\"material\":\"%s\",\"rarity\":\"%s\",\"setName\":\"%s\",\"extraFlags\":%s,\"egoFlags\":%s,\"affects\":%s,\"classRestrictions\":%s,\"alignmentRestrictions\":%s}",
+                    (count > 0 ? "," : ""),
+                    obj->pIndexData ? obj->pIndexData->vnum : 0,
+                    item_name_escaped,
+                    keywords_escaped,
+                    item_type_name,
+                    obj->level,
+                    obj->weight,
+                    (obj->wear_flags > 0 && obj->wear_flags != ITEM_TAKE) ? "true" : "false",
+                    obj->identified ? "true" : "false",
+                    material_escaped,
+                    rarity,
+                    set_escaped,
+                    extra_flags_json,
+                    ego_flags_json,
+                    affects_json,
+                    class_restrictions_json,
+                    alignment_restrictions_json);
+        }
+
+        /* Check buffer overflow */
+        if (strlen(json) + strlen(item_entry) + 10 >= sizeof(json))
+        {
+            sprintf(log_buf, "WebGate: Inventory list too large for %s, truncating", ch->name);
+            log_string(log_buf);
+            break;
+        }
+
+        strcat(json, item_entry);
+        count++;
+    }
+
+    strcat(json, "]}");
+
+    sprintf(log_buf, "WebGate: Sending %d inventory items to %s", count, ch->name);
+    log_string(log_buf);
+
+    webgate_send_gmcp(web_desc, "Char.Inventory", json);
+}
+
+/*
+ * Intent: Send character equipment to web client via GMCP.
+ *
+ * Provides list of equipped items organized by wear location for paperdoll-style
+ * UI display. Includes all 22 equipment slots even if empty so client can show
+ * equipment slots consistently.
+ *
+ * Inputs:
+ *   - web_desc: Web client descriptor
+ *   - ch: Character whose equipment to send
+ *
+ * Outputs: Char.Equipment GMCP message with JSON object of equipment slots
+ *
+ * Preconditions: ch must be valid character, web_desc must be open
+ * Postconditions: Client receives JSON with all equipment slots
+ *
+ * Failure Behavior: Returns silently if web_desc or ch is NULL
+ *
+ * Performance: O(n) where n is MAX_WEAR (22 slots)
+ *
+ * Notes: Sends null for empty slots so client knows all possible slots
+ */
+void webgate_send_char_equipment(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
+{
+    char json[MAX_STRING_LENGTH * 4];
+    char item_entry[MAX_STRING_LENGTH * 2];
+    char item_name_escaped[MAX_INPUT_LENGTH];
+    char keywords_escaped[MAX_INPUT_LENGTH];
+    char material_escaped[MAX_INPUT_LENGTH];
+    char extra_flags_buf[MAX_STRING_LENGTH];
+    char ego_flags_buf[MAX_STRING_LENGTH];
+    char affects_buf[MAX_STRING_LENGTH];
+    char class_restrict_buf[MAX_STRING_LENGTH];
+    char align_restrict_buf[MAX_STRING_LENGTH];
+    const char *src;
+    char *dst;
+    OBJ_DATA *obj;
+    int wear_loc;
+    bool first = true;
+    const char *slot_names[] = {
+        "light", "finger_l", "finger_r", "neck_1", "neck_2",
+        "body", "head", "legs", "feet", "hands",
+        "arms", "shield", "about", "waist", "wrist_l",
+        "wrist_r", "wield", "hold", "dual", "float",
+        "pouch", "ranged_weapon"};
+
+    if (!web_desc || !ch || web_desc->state != WS_STATE_OPEN)
+        return;
+
+    strcpy(json, "{\"equipment\":{");
+
+    /* Iterate through all equipment slots */
+    for (wear_loc = WEAR_LIGHT; wear_loc < MAX_WEAR; wear_loc++)
+    {
+        if (!first)
+            strcat(json, ",");
+
+        obj = get_eq_char(ch, wear_loc);
+
+        if (obj)
+        {
+            /* Escape item short description */
+            src = obj->short_descr;
+            dst = item_name_escaped;
+            while (*src && (dst - item_name_escaped) < (MAX_INPUT_LENGTH - 2))
+            {
+                if (*src == '"' || *src == '\\')
+                    *dst++ = '\\';
+                *dst++ = *src++;
+            }
+            *dst = '\0';
+
+            /* Escape item keywords (first keyword only) */
+            src = obj->name;
+            dst = keywords_escaped;
+            while (*src && *src != ' ' && (dst - keywords_escaped) < (MAX_INPUT_LENGTH - 2))
+            {
+                if (*src == '"' || *src == '\\')
+                    *dst++ = '\\';
+                *dst++ = *src++;
+            }
+            *dst = '\0';
+
+            /* Escape material name */
+            src = obj->material ? obj->material : "unknown";
+            dst = material_escaped;
+            while (*src && (dst - material_escaped) < (MAX_INPUT_LENGTH - 2))
+            {
+                if (*src == '"' || *src == '\\')
+                    *dst++ = '\\';
+                *dst++ = *src++;
+            }
+            *dst = '\0';
+
+            /* Serialize identification details using helper functions */
+            webgate_serialize_extra_flags(obj, obj->identified, extra_flags_buf, sizeof(extra_flags_buf));
+            webgate_serialize_ego_flags(obj, obj->identified, ego_flags_buf, sizeof(ego_flags_buf));
+            webgate_serialize_affects(obj, obj->identified, affects_buf, sizeof(affects_buf));
+            webgate_serialize_class_restrictions(obj, obj->identified, class_restrict_buf, sizeof(class_restrict_buf));
+            webgate_serialize_alignment_restrictions(obj, obj->identified, align_restrict_buf, sizeof(align_restrict_buf));
+
+            /* Get rarity and set information */
+            {
+                const char *rarity = webgate_get_item_rarity(obj);
+                const char *set_name = webgate_get_item_set(obj);
+                char set_escaped[256];
+                const char *src2;
+                char *dst2;
+
+                /* Escape set name */
+                src2 = set_name;
+                dst2 = set_escaped;
+                while (*src2 && (dst2 - set_escaped) < sizeof(set_escaped) - 2)
+                {
+                    if (*src2 == '"' || *src2 == '\\')
+                        *dst2++ = '\\';
+                    *dst2++ = *src2++;
+                }
+                *dst2 = '\0';
+
+                /* Build item entry with all identification details */
+                sprintf(item_entry,
+                        "\"%s\":{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\","
+                        "\"level\":%d,\"type\":%d,\"weight\":%d,"
+                        "\"identified\":%s,\"material\":\"%s\",\"rarity\":\"%s\",\"setName\":\"%s\","
+                        "\"extraFlags\":%s,\"egoFlags\":%s,\"affects\":%s,"
+                        "\"classRestrictions\":%s,\"alignmentRestrictions\":%s}",
+                        slot_names[wear_loc],
+                        obj->pIndexData ? obj->pIndexData->vnum : 0,
+                        item_name_escaped,
+                        keywords_escaped,
+                        obj->level,
+                        obj->item_type,
+                        obj->weight,
+                        obj->identified ? "true" : "false",
+                        material_escaped,
+                        rarity,
+                        set_escaped,
+                        extra_flags_buf,
+                        ego_flags_buf,
+                        affects_buf,
+                        class_restrict_buf,
+                        align_restrict_buf);
+            }
+        }
+        else
+        {
+            /* Empty slot */
+            sprintf(item_entry, "\"%s\":null", slot_names[wear_loc]);
+        }
+
+        /* Check buffer overflow */
+        if (strlen(json) + strlen(item_entry) + 10 >= sizeof(json))
+        {
+            sprintf(log_buf, "WebGate: Equipment list too large for %s, truncating", ch->name);
+            log_string(log_buf);
+            break;
+        }
+
+        strcat(json, item_entry);
+        first = false;
+    }
+
+    strcat(json, "}}");
+
+    sprintf(log_buf, "WebGate: Sending equipment to %s", ch->name);
+    log_string(log_buf);
+
+    webgate_send_gmcp(web_desc, "Char.Equipment", json);
 }
 
 /*
@@ -1157,6 +2119,72 @@ void webgate_notify_gmcp_update(DESCRIPTOR_DATA *mud_desc)
 
             /* Send updated status - these change less frequently */
             webgate_send_char_status(web_desc, ch);
+        }
+    }
+}
+
+/*
+ * Intent: Send inventory update to all web clients for a MUD descriptor.
+ *
+ * Helper function for command handlers (get, drop, wear, remove) to trigger
+ * inventory updates. Finds all web descriptors associated with the MUD
+ * descriptor and sends updated inventory data.
+ *
+ * Inputs: mud_desc - MUD descriptor whose character's inventory changed
+ * Outputs: None (Char.Inventory GMCP sent to all associated web clients)
+ *
+ * Preconditions: mud_desc has character attached
+ * Postconditions: Web clients receive updated inventory
+ */
+void webgate_send_char_inventory_for_desc(DESCRIPTOR_DATA *mud_desc)
+{
+    WEB_DESCRIPTOR_DATA *web_desc;
+    CHAR_DATA *ch;
+
+    if (!mud_desc || !mud_desc->character)
+        return;
+
+    ch = mud_desc->character;
+
+    /* Find all web descriptors for this character and update inventory */
+    for (web_desc = web_descriptor_list; web_desc; web_desc = web_desc->next)
+    {
+        if (web_desc->mud_desc == mud_desc && web_desc->state == WS_STATE_OPEN)
+        {
+            webgate_send_char_inventory(web_desc, ch);
+        }
+    }
+}
+
+/*
+ * Intent: Send equipment update to all web clients for a MUD descriptor.
+ *
+ * Helper function for command handlers (wear, remove) to trigger
+ * equipment updates. Finds all web descriptors associated with the MUD
+ * descriptor and sends updated equipment data.
+ *
+ * Inputs: mud_desc - MUD descriptor whose character's equipment changed
+ * Outputs: None (Char.Equipment GMCP sent to all associated web clients)
+ *
+ * Preconditions: mud_desc has character attached
+ * Postconditions: Web clients receive updated equipment
+ */
+void webgate_send_char_equipment_for_desc(DESCRIPTOR_DATA *mud_desc)
+{
+    WEB_DESCRIPTOR_DATA *web_desc;
+    CHAR_DATA *ch;
+
+    if (!mud_desc || !mud_desc->character)
+        return;
+
+    ch = mud_desc->character;
+
+    /* Find all web descriptors for this character and update equipment */
+    for (web_desc = web_descriptor_list; web_desc; web_desc = web_desc->next)
+    {
+        if (web_desc->mud_desc == mud_desc && web_desc->state == WS_STATE_OPEN)
+        {
+            webgate_send_char_equipment(web_desc, ch);
         }
     }
 }
@@ -1738,6 +2766,8 @@ static bool webgate_parse_json_message(WEB_DESCRIPTOR_DATA *web_desc, const char
                     webgate_send_char_vitals(web_desc, web_desc->mud_desc->character);
                     webgate_send_char_status(web_desc, web_desc->mud_desc->character);
                     webgate_send_char_skills(web_desc, web_desc->mud_desc->character);
+                    webgate_send_char_inventory(web_desc, web_desc->mud_desc->character);
+                    webgate_send_char_equipment(web_desc, web_desc->mud_desc->character);
                 }
             }
         }
