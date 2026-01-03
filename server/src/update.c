@@ -27,6 +27,7 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
+#include "sound.h"
 /*
  * Externals
  */
@@ -41,20 +42,21 @@ bool    delete_char;
 /*
  * Local functions.
  */
-int     hit_gain        args( ( CHAR_DATA *ch ) );
-int     mana_gain       args( ( CHAR_DATA *ch ) );
-int     move_gain       args( ( CHAR_DATA *ch ) );
-int     rage_gain       args( ( CHAR_DATA *ch ) );
-int     meter_gain      args( ( CHAR_DATA *ch ) );
-int     engrave_gain    args( ( CHAR_DATA *ch ) );
-void    mobile_update   args( ( void ) );
-void    weather_update  args( ( void ) );
-void    char_update     args( ( void ) );
-void    obj_update      args( ( void ) );
-void    aggr_update     args( ( void ) );
-void    quest_update    args( ( void ) ); /* Vassago - quest.c */
-void	msdp_update	    args( ( void ) ); /* <--- GMCP */
-void	gmcp_update	    args( ( void ) ); /* <--- GMCP */
+int     hit_gain         args( ( CHAR_DATA *ch ) );
+int     mana_gain        args( ( CHAR_DATA *ch ) );
+int     move_gain        args( ( CHAR_DATA *ch ) );
+int     rage_gain        args( ( CHAR_DATA *ch ) );
+int     meter_gain       args( ( CHAR_DATA *ch ) );
+int     engrave_gain     args( ( CHAR_DATA *ch ) );
+void    mobile_update    args( ( void ) );
+void    weather_update   args( ( void ) );
+void    char_update      args( ( void ) );
+void    obj_update       args( ( void ) );
+void    aggr_update      args( ( void ) );
+void    quest_update     args( ( void ) ); /* Vassago - quest.c */
+void	msdp_update	     args( ( void ) ); /* <--- GMCP */
+void	gmcp_update	     args( ( void ) ); /* <--- GMCP */
+void    sound_sfx_update args( ( void ) ); /* <--- SFX */
 
 
 /*
@@ -1433,6 +1435,65 @@ static void update_weather_ambient( void )
             }
         }
     }
+}
+
+void sound_sfx_update( void )
+{
+        DESCRIPTOR_DATA *d;
+
+        for ( d = descriptor_list; d; d = d->next )
+        {
+                SFX_EVENT *e;
+                char opts[256];
+
+                if ( !d->pProtocol )
+                        continue;
+
+                /* Always tick cooldown, even if queue is empty. */
+                if ( d->sfx_cooldown > 0 )
+                {
+                        d->sfx_cooldown--;
+                        continue;
+                }
+
+                if ( d->sfx_head == d->sfx_tail )
+                        continue;
+
+                e = &d->sfx_q[d->sfx_head];
+
+                /*snprintf( opts, sizeof(opts),
+                          "\"id\":\"%s\",\"type\":\"sound\",\"tag\":\"%s\","
+                          "\"volume\":%d,\"loops\":1,\"priority\":50,\"replace\":false",
+                          e->id, e->tag, e->volume );*/
+                snprintf( opts, sizeof(opts),
+                            "\"channel\":\"%s\",\"volume\":%d",
+                            e->id, e->volume );
+
+                GMCP_Media_Default( d, "https://www.dragons-domain.org/main/gui/custom/audio/" );
+
+                log_stringf( "SFXQ: DEQ d=%p head=%d tail=%d cd=%d tag=%s vol=%d id=%s file=%s",
+                    d,
+                    d->sfx_head,
+                    d->sfx_tail,
+                    d->sfx_cooldown,
+                    e->tag,
+                    e->volume,
+                    e->id,
+                    e->file );
+
+                GMCP_Media_Play( d, e->file, opts );
+
+                d->sfx_head = ( d->sfx_head + 1 ) % MAX_SFX_QUEUE;
+
+                /* Enforce a minimum gap so back-to-back door events do not collide. */
+                d->sfx_cooldown = UMAX( 1, e->delay_ticks );
+
+                log_stringf( "SFXQ: POST d=%p new_head=%d tail=%d set_cd=%d",
+                    d,
+                    d->sfx_head,
+                    d->sfx_tail,
+                    d->sfx_cooldown );
+        }
 }
 
 
@@ -2822,6 +2883,8 @@ void update_handler ()
                 pulse_msdp      = PULSE_PER_SECOND;
                 msdp_update();
         }
+
+        sound_sfx_update();
 
         sprintf (last_function, "calling gmcp_update");
         gmcp_update();   /* Comment this out to disable for troubleshooting */

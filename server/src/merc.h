@@ -217,6 +217,21 @@ typedef void GAME_FUN   args( ( CHAR_DATA *ch, CHAR_DATA *croupier, int amount, 
 typedef void CONSTRUCT_FUN args( ( int sn, int level, CHAR_DATA *ch ) );
 
 /*
+    Any sound stuff that can't go in sound.h etc
+*/
+
+#define MAX_SFX_QUEUE           32     /* For SFX queue so we can have non-masking sound */
+
+typedef struct sfx_event
+{
+        char    file[128];
+        char    tag[32];
+        char    id[64];
+        int     volume;
+        int     delay_ticks;    /* gap after this sound */
+} SFX_EVENT;
+
+/*
  * Herb info for ranger skill 'gather'
  */
 struct HERB
@@ -880,6 +895,11 @@ struct descriptor_data
         char *                ident;
         int                   port;
         int                   ip;
+
+        /* SFX queue */
+        SFX_EVENT       sfx_q[MAX_SFX_QUEUE];
+        int             sfx_head, sfx_tail;
+        int             sfx_cooldown;
 };
 
 
@@ -934,9 +954,6 @@ struct descriptor_data
 #define PART_FORELEGS           BIT_43
 #define PART_FEATHERS           BIT_44
 #define PART_HUSK_SHELL         BIT_45
-
-
-
 
 
 #define HAS_HEAD( ch )          ( !( ch->body_form & BODY_NO_HEAD ) || (ch->body_form & PART_HEAD) || (ch->body_form & PART_MANY_HEAD))
