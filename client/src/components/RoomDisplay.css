@@ -19,6 +19,21 @@
   color: #e0e0e0;
 }
 
+.extra-descr-keyword {
+  color: #4a90e2;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.extra-descr-keyword:hover {
+  color: #5aa0f2;
+  text-decoration-style: solid;
+  text-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
+
 .room-exits {
   color: #4caf50;
   font-size: 0.9rem;

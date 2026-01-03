@@ -5425,6 +5425,13 @@ void do_buy(CHAR_DATA *ch, char *argument)
                         obj_from_char(obj);
                         obj_to_char(obj, ch);
                 }
+
+                /* Trigger inventory update for web clients */
+                if (ch->desc)
+                {
+                        extern void webgate_send_char_inventory_for_desc(DESCRIPTOR_DATA * d);
+                        webgate_send_char_inventory_for_desc(ch->desc);
+                }
         }
 }
 
@@ -5618,6 +5625,13 @@ void do_sell(CHAR_DATA *ch, char *argument)
         {
                 obj_from_char(obj);
                 obj_to_char(obj, keeper);
+        }
+
+        /* Trigger inventory update for web clients */
+        if (ch->desc)
+        {
+                extern void webgate_send_char_inventory_for_desc(DESCRIPTOR_DATA * d);
+                webgate_send_char_inventory_for_desc(ch->desc);
         }
 
         return;

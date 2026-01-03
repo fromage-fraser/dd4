@@ -11,6 +11,7 @@ import SkillBar from './components/SkillBar';
 import SkillAssign from './components/SkillAssign';
 import CharacterSheet from './components/CharacterSheet';
 import ShopModal from './components/ShopModal';
+import PracticeModal from './components/PracticeModal';
 
 /**
  * Main application component for DD4 Web Client
@@ -35,6 +36,8 @@ function App() {
   const [inventory, setInventory] = useState([]);
   const [equipment, setEquipment] = useState(null);
   const [shopData, setShopData] = useState(null); // { shopkeeper, items }
+  const [shopMessage, setShopMessage] = useState(null);
+  const [showPracticeModal, setShowPracticeModal] = useState(false);
   const ws = useRef(null);
   const reconnectTimeoutRef = useRef(null);
   const reconnectAttemptRef = useRef(0); // Use ref to track attempts for closure issues
@@ -225,7 +228,28 @@ function App() {
         console.log('Comm.Channel received:', data);
         console.log('Message text:', data.message);
         console.log('Message text (escaped):', JSON.stringify(data.message));
-        if (data.channel === 'system') {
+        
+        // Check for shopkeeper messages that should be shown in GUI
+        if (data.channel === 'game' && data.message) {
+          const msg = data.message.trim();
+          
+          // Handle "uninterested" messages for items that can't be sold
+          if (msg.includes('looks uninterested in') || msg.includes("won't buy that") || 
+              msg.includes("can't sell") || msg.includes("don't have that")) {
+            // If shop modal is open, show the message there
+            if (shopData) {
+              setShopMessage(msg);
+            }
+            // Also show in the output window as error
+            addMessage(msg, 'error');
+          } else if (data.channel === 'system') {
+            addMessage(data.message, 'system');
+          } else if (data.channel === 'game') {
+            addMessage(data.message, 'normal');
+          } else {
+            addMessage(`[${data.channel}] ${data.message}`, 'info');
+          }
+        } else if (data.channel === 'system') {
           addMessage(data.message, 'system');
         } else if (data.channel === 'game') {
           addMessage(data.message, 'normal');
@@ -281,17 +305,18 @@ function App() {
 
   /**
    * Request fresh inventory and equipment data from server
+   * Note: With the server now sending GMCP updates automatically after 
+   * buy/sell/drop/wear actions, this function is mainly a fallback
    */
   const refreshInventoryEquipment = () => {
     if (!ws.current || ws.current.readyState !== WebSocket.OPEN) {
       return;
     }
     
-    // Send 'inventory' and 'equipment' commands to trigger server GMCP updates
-    // The server should already be sending these via GMCP, but we can request refresh
-    console.log('Requesting inventory/equipment refresh');
-    sendCommand('inventory');
-    sendCommand('equipment');
+    // Server automatically sends Char.Inventory and Char.Equipment GMCP
+    // updates after transactions, so we don't need to send text commands
+    // This function is kept for potential future explicit refresh needs
+    console.log('Inventory/equipment will auto-refresh via GMCP');
   };
 
   /**
@@ -358,10 +383,12 @@ function App() {
           <RoomContents 
             items={room.items} 
             npcs={room.npcs} 
-            onCommand={sendCommand} 
+            extraDescriptions={room.extraDescriptions || []}
+            onCommand={sendCommand}
             connected={connected}
             skills={skills}
             openers={openers}
+            onPracticeClick={() => setShowPracticeModal(true)}
           />
         </div>
       </div>
@@ -399,8 +426,25 @@ function App() {
         <ShopModal
           shopkeeper={shopData.shopkeeper}
           items={shopData.items}
-          onClose={() => setShopData(null)}
+          inventory={inventory}
+          onClose={() => {
+            setShopData(null);
+            setShopMessage(null);
+          }}
           onBuy={sendCommand}
+          connected={connected}
+          onRefresh={refreshInventoryEquipment}
+          shopMessage={shopMessage}
+        />
+      )}
+
+      {showPracticeModal && (
+        <PracticeModal
+          skills={skills}
+          pracPhysical={vitals.pracPhysical || 0}
+          pracIntellectual={vitals.pracIntellectual || 0}
+          onClose={() => setShowPracticeModal(false)}
+          onPractice={sendCommand}
           connected={connected}
         />
       )}

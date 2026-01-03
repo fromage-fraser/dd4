@@ -688,27 +688,91 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
         if (!first)
             strcat(npcs_json, ",");
         sprintf(npcs_json + strlen(npcs_json),
-                "{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d,\"hostile\":%s,\"isShopkeeper\":%s}",
+                "{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d,\"hostile\":%s,\"isShopkeeper\":%s,\"isTrainer\":%s}",
                 IS_NPC(rch) && rch->pIndexData ? rch->pIndexData->vnum : 0,
                 temp_name,
                 keywords_escaped,
                 IS_NPC(rch) && rch->pIndexData ? rch->pIndexData->vnum : 0,
                 IS_NPC(rch) && IS_SET(rch->act, ACT_AGGRESSIVE) ? "true" : "false",
-                IS_NPC(rch) && rch->pIndexData && rch->pIndexData->pShop ? "true" : "false");
+                IS_NPC(rch) && rch->pIndexData && rch->pIndexData->pShop ? "true" : "false",
+                IS_NPC(rch) && IS_SET(rch->act, ACT_PRACTICE) ? "true" : "false");
         first = false;
         npc_count++;
     }
     strcat(npcs_json, "]");
 
-    /* Build complete Room.Info JSON with items and NPCs */
+    /* Build extra descriptions array JSON */
+    char extra_descr_json[MAX_STRING_LENGTH];
+    EXTRA_DESCR_DATA *ed;
+    sprintf(extra_descr_json, "[");
+    first = true;
+    for (ed = room->extra_descr; ed; ed = ed->next)
+    {
+        char keyword_escaped[256];
+        char description_escaped[MAX_STRING_LENGTH];
+
+        if (!ed->keyword || !ed->description)
+            continue;
+
+        /* Escape keyword for JSON */
+        for (i = 0, j = 0; ed->keyword[i] != '\0' && j < sizeof(keyword_escaped) - 2; i++)
+        {
+            if (ed->keyword[i] == '"' || ed->keyword[i] == '\\')
+                keyword_escaped[j++] = '\\';
+            if (ed->keyword[i] >= 32)
+                keyword_escaped[j++] = ed->keyword[i];
+        }
+        keyword_escaped[j] = '\0';
+
+        /* Escape description for JSON */
+        for (i = 0, j = 0; ed->description[i] != '\0' && j < sizeof(description_escaped) - 2 && i < 1000; i++)
+        {
+            if (ed->description[i] == '"')
+            {
+                description_escaped[j++] = '\\';
+                description_escaped[j++] = '"';
+            }
+            else if (ed->description[i] == '\\')
+            {
+                description_escaped[j++] = '\\';
+                description_escaped[j++] = '\\';
+            }
+            else if (ed->description[i] == '\n')
+            {
+                description_escaped[j++] = '\\';
+                description_escaped[j++] = 'n';
+            }
+            else if (ed->description[i] == '\r')
+            {
+                continue; /* Skip carriage returns */
+            }
+            else if (ed->description[i] >= 32)
+            {
+                description_escaped[j++] = ed->description[i];
+            }
+        }
+        description_escaped[j] = '\0';
+
+        if (!first)
+            strcat(extra_descr_json, ",");
+        sprintf(extra_descr_json + strlen(extra_descr_json),
+                "{\"keyword\":\"%s\",\"description\":\"%s\"}",
+                keyword_escaped,
+                description_escaped);
+        first = false;
+    }
+    strcat(extra_descr_json, "]");
+
+    /* Build complete Room.Info JSON with items, NPCs, and extra descriptions */
     snprintf(json, sizeof(json),
-             "{\"name\":\"%s\",\"description\":\"%s\",\"exits\":%s,\"vnum\":%d,\"items\":%s,\"npcs\":%s}",
+             "{\"name\":\"%s\",\"description\":\"%s\",\"exits\":%s,\"vnum\":%d,\"items\":%s,\"npcs\":%s,\"extraDescriptions\":%s}",
              name_escaped,
              desc_escaped,
              exits_json,
              room->vnum,
              items_json,
-             npcs_json);
+             npcs_json,
+             extra_descr_json);
 
     sprintf(log_buf, "WebGate: Sending Room.Info (exits: %s, items: %d, npcs: %d)",
             exits_json, item_count, npc_count);
@@ -966,22 +1030,18 @@ void webgate_send_char_skills(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
     /* Iterate through all skills in skill_table */
     for (sn = 0; sn < MAX_SKILL; sn++)
     {
-        /* Skip if skill not learned or no skill name */
-        if (ch->pcdata->learned[sn] <= 0 || !skill_table[sn].name)
+        /* Skip if no skill name or if it's a wizard/null skill */
+        if (!skill_table[sn].name ||
+            skill_table[sn].prac_type == TYPE_WIZ ||
+            skill_table[sn].prac_type == TYPE_NULL)
             continue;
 
-        /* Skip passive skills (those with spell_null and TAR_IGNORE) */
-        /* Exception: combat skills like backstab, bash, kick have spell_null but are active */
-        if (skill_table[sn].spell_fun == spell_null)
+        /* Include skills the character has learned (CAN_DO checks learned > 0) */
+        /* OR skills they can learn (learned == 0, has pre-req, and sn < gsn_mage_base) */
+        if (!CAN_DO(ch, sn))
         {
-            /* Check if it's a combat skill by looking at target and position */
-            /* Combat skills typically have beats > 0 and non-TAR_IGNORE targets OR specific names */
-            if (skill_table[sn].target == TAR_IGNORE && skill_table[sn].beats == 0)
-                continue; /* This is a passive skill, skip it */
-
-            /* Additional filter: skip if it has no noun_damage and target is TAR_IGNORE */
-            if (skill_table[sn].target == TAR_IGNORE &&
-                (!skill_table[sn].noun_damage || skill_table[sn].noun_damage[0] == '\0'))
+            /* For unlearned skills, check if they can be learned */
+            if (ch->pcdata->learned[sn] != 0 || sn >= gsn_mage_base || !has_pre_req(ch, sn))
                 continue;
         }
 
@@ -1008,7 +1068,7 @@ void webgate_send_char_skills(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
         *dst = '\0';
 
         /* Build JSON entry for this skill */
-        sprintf(skill_entry, "%s{\"id\":%d,\"name\":\"%s\",\"learned\":%d,\"mana\":%d,\"beats\":%d,\"type\":\"%s\",\"opener\":%s}",
+        sprintf(skill_entry, "%s{\"id\":%d,\"name\":\"%s\",\"learned\":%d,\"mana\":%d,\"beats\":%d,\"type\":\"%s\",\"opener\":%s,\"pracType\":%d}",
                 (count > 0 ? "," : ""),
                 sn,
                 skill_name_escaped,
@@ -1016,7 +1076,8 @@ void webgate_send_char_skills(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
                 skill_table[sn].min_mana,
                 skill_table[sn].beats,
                 skill_type,
-                is_opener ? "true" : "false");
+                is_opener ? "true" : "false",
+                skill_table[sn].prac_type);
 
         /* Check if adding this entry would overflow the buffer */
         if (strlen(json) + strlen(skill_entry) + 10 >= sizeof(json))
@@ -1868,28 +1929,44 @@ void webgate_send_char_vitals(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
 {
     char json[MAX_STRING_LENGTH];
     int exp_tnl;
+    int exp_level_start;
+    int str_prac = 0;
+    int int_prac = 0;
 
     if (!web_desc || !ch || web_desc->state != WS_STATE_OPEN)
         return;
 
-    /* Calculate experience to next level */
+    /* Calculate experience to next level and exp at start of current level */
     exp_tnl = 0;
+    exp_level_start = 0;
     if (ch->level < LEVEL_HERO)
     {
-        exp_tnl = level_table[ch->level + 1].exp_level - ch->exp;
+        exp_tnl = level_table[ch->level].exp_total - ch->exp;
         if (exp_tnl < 0)
             exp_tnl = 0;
+
+        /* Get exp total at start of current level (from previous level) */
+        if (ch->level > 1)
+            exp_level_start = level_table[ch->level - 1].exp_total;
+    }
+
+    /* Get practice points for player characters */
+    if (ch->pcdata)
+    {
+        str_prac = ch->pcdata->str_prac;
+        int_prac = ch->pcdata->int_prac;
     }
 
     snprintf(json, sizeof(json),
              "{\"hp\":%d,\"maxhp\":%d,\"mana\":%d,\"maxmana\":%d,"
              "\"move\":%d,\"maxmove\":%d,\"level\":%d,\"align\":%d,"
-             "\"exp\":%d,\"tnl\":%d}",
+             "\"exp\":%d,\"tnl\":%d,\"expLevelStart\":%d,\"pracPhysical\":%d,\"pracIntellectual\":%d}",
              ch->hit, ch->max_hit,
              ch->mana, ch->max_mana,
              ch->move, ch->max_move,
              ch->level, ch->alignment,
-             ch->exp, exp_tnl);
+             ch->exp, exp_tnl, exp_level_start,
+             str_prac, int_prac);
 
     webgate_send_gmcp(web_desc, "Char.Vitals", json);
 
@@ -2743,6 +2820,9 @@ static bool webgate_parse_json_message(WEB_DESCRIPTOR_DATA *web_desc, const char
         {
             if (web_desc->mud_desc->character)
             {
+                /* Reset idle timer when processing web commands */
+                web_desc->mud_desc->character->timer = 0;
+
                 interpret(web_desc->mud_desc->character, web_desc->mud_desc->incomm);
 
                 /* Send updated room info after command execution */

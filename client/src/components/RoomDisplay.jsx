@@ -3,10 +3,14 @@ import './RoomDisplay.css';
 
 /**
  * RoomDisplay component shows the current room information
- * including name, description, and visible exits
+ * including name, description, and visible exits.
  */
 function RoomDisplay({ room }) {
-  const { name = 'Unknown Location', description = '', exits = [] } = room;
+  const { 
+    name = 'Unknown Location', 
+    description = '', 
+    exits = []
+  } = room;
 
   // Extract direction names from exit objects or use strings directly
   const exitDirections = exits.map(exit => 
@@ -28,3 +32,4 @@ function RoomDisplay({ room }) {
 }
 
 export default RoomDisplay;
+
