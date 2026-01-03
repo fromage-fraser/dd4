@@ -140,9 +140,13 @@ function Compass({ exits = [], onMove, onCommand }) {
           <span className="dir-label">W</span>
           <span className="door-icon">{getDoorIcon(getExit('west'))}</span>
         </button>
-        <div className="compass-center">
-          <span>⊕</span>
-        </div>
+        <button 
+          className="compass-center recall-btn"
+          onClick={() => onCommand && onCommand('recall')}
+          title="Recall to your base of operations"
+        >
+          <span className="recall-icon">🏠</span>
+        </button>
         <button 
           className={getDirectionClass('east')}
           onClick={() => handleDirectionClick('east')}

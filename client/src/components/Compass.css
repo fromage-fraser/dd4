@@ -60,6 +60,42 @@
   cursor: not-allowed;
 }
 
+/* Recall button in center */
+.compass-center {
+  min-width: 48px;
+  min-height: 48px;
+  padding: 0.8rem;
+  border: 2px solid #4169e1;
+  background-color: rgba(65, 105, 225, 0.2);
+  color: #6495ed;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: rgba(65, 105, 225, 0.3);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.compass-center:hover {
+  background-color: rgba(65, 105, 225, 0.35);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(65, 105, 225, 0.5);
+}
+
+.compass-center:active {
+  transform: scale(0.95);
+}
+
+.recall-icon {
+  display: block;
+  line-height: 1;
+}
+
 /* Door state styling */
 .compass-direction.door-locked {
   border-color: #dc143c;

@@ -38,6 +38,7 @@ function App() {
   const [shopData, setShopData] = useState(null); // { shopkeeper, items }
   const [shopMessage, setShopMessage] = useState(null);
   const [showPracticeModal, setShowPracticeModal] = useState(false);
+  const [itemDetails, setItemDetails] = useState({}); // Store detailed item info keyed by item name
   const ws = useRef(null);
   const reconnectTimeoutRef = useRef(null);
   const reconnectAttemptRef = useRef(0); // Use ref to track attempts for closure issues
@@ -164,6 +165,85 @@ function App() {
   }, []);
 
   /**
+   * Parse item details from identify/examine text
+   * Extracts type, wear location, value, AC, set info, etc.
+   */
+  const parseItemDetails = (text, itemName) => {
+    const details = {};
+    
+    // Remove ANSI color codes for parsing (both \u001b format and <##> format)
+    const cleanText = text.replace(/\u001b\[[0-9;]*m/g, '').replace(/<[0-9]+>/g, '');
+    
+    // Extract long description - everything between the separator lines before set info
+    const descMatch = cleanText.match(/={10,}\s*\n([\s\S]+?)\n(?:={10,}|-{10,}|$)/);
+    if (descMatch) {
+      details.longDescription = descMatch[1].trim();
+    }
+    
+    // Extract item type - handle "piece of" prefix
+    const typeMatch = cleanText.match(/You determine that .+ is a (?:piece of )?(\w+)\./);
+    if (typeMatch) {
+      details.itemType = typeMatch[1].charAt(0).toUpperCase() + typeMatch[1].slice(1);
+    }
+    
+    // Extract wear location
+    const wearMatch = cleanText.match(/It is worn on the ([\w\s]+)\./);
+    if (wearMatch) {
+      details.wearLocation = wearMatch[1].trim();
+    }
+    
+    // Extract value and currency
+    const valueMatch = cleanText.match(/is worth ([0-9,]+) (\w+) coins/);
+    if (valueMatch) {
+      details.value = parseInt(valueMatch[1].replace(/,/g, ''));
+      details.valueCurrency = valueMatch[2];
+    }
+    
+    // Extract armor class
+    const acMatch = cleanText.match(/It has an armou?r class of ([0-9]+)\./);
+    if (acMatch) {
+      details.armorClass = parseInt(acMatch[1]);
+    }
+    
+    // Extract damage dice for weapons
+    const damageMatch = cleanText.match(/It inflicts ([0-9]+)d([0-9]+) damage/);
+    if (damageMatch) {
+      details.damageDice = `${damageMatch[1]}d${damageMatch[2]}`;
+    }
+    
+    // Extract set information - look for the separator line and "This is part of"
+    const setMatch = cleanText.match(/This is part of (?:a |an )?(\w+) set\./);
+    if (setMatch) {
+      details.setRarity = setMatch[1];
+    }
+    
+    // Extract set name - line after the separator, before the blank line
+    const setNameMatch = cleanText.match(/-{10,}\s*\n(?:This is part of[^\n]+\n)?([^\n:]+):/);
+    if (setNameMatch) {
+      details.setName = setNameMatch[1].trim();
+    }
+    
+    // Extract set lore - everything between the set name line and "Equip X items"
+    const loreMatch = cleanText.match(/:\s*\n\s*\n([\s\S]+?)\n(?:Equip \d)/);
+    if (loreMatch) {
+      details.setLore = loreMatch[1].trim().replace(/\n\n/g, '\n');
+    }
+    
+    // Extract set bonus - "Equip X items to provide..."
+    const setBonusMatch = cleanText.match(/Equip ([0-9]+) items? to provide ([\w\s]+) by ([0-9]+)/);
+    if (setBonusMatch) {
+      details.setBonus = {
+        itemCount: parseInt(setBonusMatch[1]),
+        stat: setBonusMatch[2].trim(),
+        value: parseInt(setBonusMatch[3])
+      };
+    }
+    
+    console.log('Parsed item details:', details);
+    return details;
+  };
+
+  /**
    * Handle incoming GMCP messages from the server
    * Routes messages to appropriate state handlers based on module type
    */
@@ -181,6 +261,7 @@ function App() {
         break;
       
       case 'Char.Status':
+        console.log('Char.Status received:', data);
         setStatus(data);
         break;
       
@@ -232,6 +313,33 @@ function App() {
         // Check for shopkeeper messages that should be shown in GUI
         if (data.channel === 'game' && data.message) {
           const msg = data.message.trim();
+          
+          // Parse item identification/examination details
+          if (msg.includes('You determine that') && msg.includes('is a')) {
+            const itemNameMatch = msg.match(/You determine that ([^\n]+) is a/);
+            if (itemNameMatch) {
+              // Extract clean item name (remove ANSI codes)
+              const rawName = itemNameMatch[1];
+              const cleanName = rawName.replace(/\u001b\[[0-9;]*m/g, '').trim();
+              
+              // Strip articles (a/an/the) for better matching
+              const nameWithoutArticle = cleanName.replace(/^(a|an|the)\s+/i, '');
+              
+              console.log('Parsing item details for:', cleanName);
+              console.log('Storing as (without article):', nameWithoutArticle);
+              console.log('Full examine text:', msg);
+              
+              const details = parseItemDetails(msg, cleanName);
+              
+              console.log('Parsed details:', details);
+              
+              // Store under the name without article for consistent lookup
+              setItemDetails(prev => ({
+                ...prev,
+                [nameWithoutArticle]: details
+              }));
+            }
+          }
           
           // Handle "uninterested" messages for items that can't be sold
           if (msg.includes('looks uninterested in') || msg.includes("won't buy that") || 
@@ -389,6 +497,7 @@ function App() {
             skills={skills}
             openers={openers}
             onPracticeClick={() => setShowPracticeModal(true)}
+            itemDetails={itemDetails}
           />
         </div>
       </div>
@@ -419,6 +528,7 @@ function App() {
           onClose={() => setShowCharacterSheet(false)}
           connected={connected}
           onRefresh={refreshInventoryEquipment}
+          itemDetails={itemDetails}
         />
       )}
 
