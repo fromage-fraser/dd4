@@ -2073,19 +2073,6 @@ A misty portal beckons you to the unknown.~
 0~ -1~ 0~ 100~
 100 10 1
 
-#591
-key test~
-a test key~
-A test key is here.~
-~
-18 0 1
-84~ 0~ 0~ 0~
-5 0 0
-E
-test key~
-A key for testing.
-~
-
 #0
 
 
@@ -2602,7 +2589,6 @@ I 580 1 83 1                     A hoard to Owl's Arena
 I 582 1 85 1                     A hoard to Owl's Arena
 
 I 590 1 88 1                    A portkey to Owl's Arena
-I 591 1 84 1                    test key to Owl's arena
 
 P 1 577 0 580                   pipe in hoard for testing
 P 1 568 0 580                   pipe in hoard for testing

@@ -28,7 +28,6 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
-#include "sound.h"
 #include "protocol.h"
 
 #include <netdb.h>

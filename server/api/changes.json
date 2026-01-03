@@ -98,15 +98,5 @@
     "month": "September",
     "year": 2025,
     "text": "\u000a\u000a\u000a- MAJOR website update including web client, live data, searchable help, an  update log, and an API\u000a- gather code slightly tweaked so skill and char level have greater effects\u000a\u000a"
-  },
-  {
-    "month": "December",
-    "year": 2025,
-    "text": "\u000a\u000a\u000a- Smelt ruins fewer mats on failure the more skilled you are at smelting.\u000a- Eq AFF messages are suppressed after quitting or getting disconnected\u000a- Smithy steel caches resist acid and fire, their capacity is also increased\u000a- Swallow interacts more sensibly with mounts\u000a\u000a"
-  },
-  {
-    "month": "January",
-    "year": 2026,
-    "text": "\u000a\u000a\u000a- msp.txt added to track progress on sound implementation and its use\u000a\u000a"
   }
 ]
