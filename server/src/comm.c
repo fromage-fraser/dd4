@@ -831,6 +831,12 @@ void new_descriptor (int control)
         }
 
         *dnew           = d_zero;
+        /* Initialise SFX queue state */
+        dnew->sfx_head = 0;
+        dnew->sfx_tail = 0;
+        dnew->sfx_cooldown = 0;
+        memset( dnew->sfx_q, 0, sizeof(dnew->sfx_q) );
+
         dnew->descriptor        = desc;
         dnew->character     = NULL;
         dnew->connected = CON_GET_NAME;

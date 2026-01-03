@@ -217,6 +217,21 @@ typedef void GAME_FUN   args( ( CHAR_DATA *ch, CHAR_DATA *croupier, int amount, 
 typedef void CONSTRUCT_FUN args( ( int sn, int level, CHAR_DATA *ch ) );
 
 /*
+    Any sound stuff that can't go in sound.h etc
+*/
+
+#define MAX_SFX_QUEUE           32     /* For SFX queue so we can have non-masking sound */
+
+typedef struct sfx_event
+{
+        char    file[128];
+        char    tag[32];
+        char    id[64];
+        int     volume;
+        int     delay_ticks;    /* gap after this sound */
+} SFX_EVENT;
+
+/*
  * Herb info for ranger skill 'gather'
  */
 struct HERB
@@ -880,6 +895,11 @@ struct descriptor_data
         char *                ident;
         int                   port;
         int                   ip;
+
+        /* SFX queue */
+        SFX_EVENT       sfx_q[MAX_SFX_QUEUE];
+        int             sfx_head, sfx_tail;
+        int             sfx_cooldown;
 };
 
 
@@ -934,9 +954,6 @@ struct descriptor_data
 #define PART_FORELEGS           BIT_43
 #define PART_FEATHERS           BIT_44
 #define PART_HUSK_SHELL         BIT_45
-
-
-
 
 
 #define HAS_HEAD( ch )          ( !( ch->body_form & BODY_NO_HEAD ) || (ch->body_form & PART_HEAD) || (ch->body_form & PART_MANY_HEAD))
@@ -2512,10 +2529,10 @@ extern  WANTED_DATA *wanted_list_last;
  * Values for containers (value[1]).
  * Used in #OBJECTS.
  */
-#define CONT_CLOSEABLE                  1
-#define CONT_PICKPROOF                  2
-#define CONT_CLOSED                     4
-#define CONT_LOCKED                     8
+#define CONT_CLOSEABLE                 1
+#define CONT_PICKPROOF                 2
+#define CONT_CLOSED                    4
+#define CONT_LOCKED                    8
 
 
 /*
@@ -3135,6 +3152,7 @@ struct obj_index_data
         int                     ego_flags;
         int                     max_instances;    // 0 = unlimited
         int                     spawn_count;      // number of times created this runtime (not decremented)
+        char *                  material;         // material composition (e.g., "steel/wood/leather")
 };
 
 /*
@@ -3195,6 +3213,7 @@ struct obj_data
         int                     how_created;
         int                     max_instances;
         int                     spawn_count;
+        char *                  material;         // material composition (inherited from pIndexData)
 };
 
 
@@ -5423,6 +5442,7 @@ bool is_bladed_weapon                        ( OBJ_DATA *obj );
 bool is_blunt_weapon                         ( OBJ_DATA *obj );
 bool is_piercing_weapon                      ( OBJ_DATA *obj );
 bool is_carving_weapon                       ( OBJ_DATA *obj );
+bool is_magnetic                             ( OBJ_DATA *obj );
 bool is_cursed                               ( CHAR_DATA *ch );
 int  scale_pipe                              ( int limit_level, int load_level, int base_value, bool higher_bad );
 

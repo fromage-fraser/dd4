@@ -30,6 +30,7 @@
 #include <time.h>
 #include <math.h>
 #include "merc.h"
+#include "sound.h"
 #include "protocol.h"
 
 
@@ -2040,6 +2041,49 @@ void media_notify_levelup( CHAR_DATA *who )
             }
         }
     }
+}
+
+/*
+ * Move a char into a room.
+ */
+void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
+{
+    OBJ_DATA *obj;
+    /* char j[512];*/
+
+    if ( !pRoomIndex )
+    {
+        bug( "Char_to_room: NULL.", 0 );
+        return;
+    }
+
+    ch->in_room      = pRoomIndex;
+    ch->next_in_room = pRoomIndex->people;
+    pRoomIndex->people = ch;
+
+    if ( !IS_NPC(ch) )
+    {
+        ++ch->in_room->area->nplayer;
+
+        if ( ( ch->in_room->sector_type != SECT_UNDERWATER )
+          || ( ch->in_room->sector_type != SECT_UNDERWATER_GROUND ) )
+        {
+            ch->pcdata->air_supply = FULL_AIR_SUPPLY;
+        }
+    }
+
+    if ( (obj = get_eq_char(ch, WEAR_LIGHT))
+         && obj->item_type == ITEM_LIGHT
+         && obj->value[2] != 0 )
+    {
+        ++ch->in_room->light;
+    }
+
+    /* Refresh environmental media (room > area > sector) for this player */
+    media_env_refresh(ch, pRoomIndex, FALSE);
+    update_weather_for_char(ch);
+
+    return;
 }
 
 /*

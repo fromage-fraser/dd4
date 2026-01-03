@@ -27,6 +27,7 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
+#include "sound.h"
 /*
  * Externals
  */
@@ -41,20 +42,21 @@ bool    delete_char;
 /*
  * Local functions.
  */
-int     hit_gain        args( ( CHAR_DATA *ch ) );
-int     mana_gain       args( ( CHAR_DATA *ch ) );
-int     move_gain       args( ( CHAR_DATA *ch ) );
-int     rage_gain       args( ( CHAR_DATA *ch ) );
-int     meter_gain      args( ( CHAR_DATA *ch ) );
-int     engrave_gain    args( ( CHAR_DATA *ch ) );
-void    mobile_update   args( ( void ) );
-void    weather_update  args( ( void ) );
-void    char_update     args( ( void ) );
-void    obj_update      args( ( void ) );
-void    aggr_update     args( ( void ) );
-void    quest_update    args( ( void ) ); /* Vassago - quest.c */
-void	msdp_update	    args( ( void ) ); /* <--- GMCP */
-void	gmcp_update	    args( ( void ) ); /* <--- GMCP */
+int     hit_gain         args( ( CHAR_DATA *ch ) );
+int     mana_gain        args( ( CHAR_DATA *ch ) );
+int     move_gain        args( ( CHAR_DATA *ch ) );
+int     rage_gain        args( ( CHAR_DATA *ch ) );
+int     meter_gain       args( ( CHAR_DATA *ch ) );
+int     engrave_gain     args( ( CHAR_DATA *ch ) );
+void    mobile_update    args( ( void ) );
+void    weather_update   args( ( void ) );
+void    char_update      args( ( void ) );
+void    obj_update       args( ( void ) );
+void    aggr_update      args( ( void ) );
+void    quest_update     args( ( void ) ); /* Vassago - quest.c */
+void	msdp_update	     args( ( void ) ); /* <--- GMCP */
+void	gmcp_update	     args( ( void ) ); /* <--- GMCP */
+void    sound_sfx_update args( ( void ) ); /* <--- SFX */
 
 
 /*
@@ -2822,6 +2824,8 @@ void update_handler ()
                 pulse_msdp      = PULSE_PER_SECOND;
                 msdp_update();
         }
+
+        sound_sfx_update();
 
         sprintf (last_function, "calling gmcp_update");
         gmcp_update();   /* Comment this out to disable for troubleshooting */
