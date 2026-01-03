@@ -1373,6 +1373,20 @@ void do_ostat( CHAR_DATA *ch, char *argument )
         sprintf( buf, "Type: {G%s{x [{W%d{x] ",item_type_name( obj ), obj->item_type);
         strcat( buf1, buf );
 
+        /* Show material composition if available */
+        if (obj->material && obj->material[0] != '\0')
+        {
+                sprintf( buf, "\n\rMaterial: {C%s{x", obj->material);
+                strcat( buf1, buf );
+        }
+
+        /* Show magnetic property if material contains ferromagnetic elements */
+        if (is_magnetic(obj))
+        {
+                sprintf( buf, "\n\rMagnetic: {YYes{x");
+                strcat( buf1, buf );
+        }
+
         /* Show liquid type if drink container or fountain. -- Owl 1/7/22 & 9/12/23 */
         if (obj->item_type == 17 || obj->item_type == 25)
         {
