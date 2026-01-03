@@ -2529,10 +2529,10 @@ extern  WANTED_DATA *wanted_list_last;
  * Values for containers (value[1]).
  * Used in #OBJECTS.
  */
-#define CONT_CLOSEABLE                  1
-#define CONT_PICKPROOF                  2
-#define CONT_CLOSED                     4
-#define CONT_LOCKED                     8
+#define CONT_CLOSEABLE                 1
+#define CONT_PICKPROOF                 2
+#define CONT_CLOSED                    4
+#define CONT_LOCKED                    8
 
 
 /*
