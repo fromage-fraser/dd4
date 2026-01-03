@@ -1002,6 +1002,21 @@ void affect_join( CHAR_DATA *ch, AFFECT_DATA *paf )
         return;
 }
 
+/*
+static void mcmp_log_play(const char *where, const char *name, const char *opts)
+{
+    char b[512];
+    snprintf(b, sizeof(b), "MCMP PLAY @%s name='%s' opts={%s}", where, name ? name : "(null)", opts ? opts : "");
+    log_string(b);
+}
+
+static void mcmp_log_stop(const char *where, const char *opts)
+{
+    char b[512];
+    snprintf(b, sizeof(b), "MCMP STOP @%s filter={%s}", where, opts ? opts : "");
+    log_string(b);
+}
+*/
 
 /*
  * Move a char out of a room.
@@ -1052,6 +1067,125 @@ void char_from_room( CHAR_DATA *ch )
         ch->in_room      = NULL;
         ch->next_in_room = NULL;
         return;
+}
+
+/* Update weather ambience for a single character */
+void update_weather_for_char( CHAR_DATA *ch )
+{
+    if (!ch || !ch->in_room || !ch->desc || !ch->desc->pProtocol)
+        return;
+    if (IS_NPC(ch))
+        return;
+
+    protocol_t *p = ch->desc->pProtocol;
+
+    /* Must have GMCP Client.Media and not be suppressed */
+    if (!p->bGMCP || !p->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA])
+        return;
+    if (p->MediaSuppress)
+        return;
+
+    /* Always assert base for relative paths */
+    GMCP_Media_Default(ch->desc, "https://www.dragons-domain.org/main/gui/custom/audio/");
+
+    /* Stable key for weather lane */
+    #define KEY_WEATHER "dd.ambient.weather"
+
+    /* If indoors or underwater, suppress weather sounds entirely */
+    if ( (!IS_OUTSIDE(ch))
+      || ( ch->in_room->sector_type == SECT_UNDERWATER )
+      || ( ch->in_room->sector_type == SECT_UNDERWATER_GROUND ) )
+    {
+        if (p->MediaWeatherActive)
+        {
+            GMCP_Media_Stop(ch->desc,
+                "\"key\":\"" KEY_WEATHER "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
+
+            if (p->MediaWeatherName)
+                free_string(p->MediaWeatherName);
+            p->MediaWeatherName   = NULL;
+            p->MediaWeatherVol    = 0;
+            p->MediaWeatherActive = FALSE;
+
+            log_stringf("WeatherSFX: stop (indoors) for %s", ch->name);
+        }
+        return;
+    }
+
+    /* Determine desired weather event and volume */
+    const sound_event_def *ev = NULL;
+    int vol = 0;
+
+    if (weather_info.sky == SKY_RAINING)
+    {
+        ev  = sound_event_lookup("ambient.weather.rain");
+        vol = ev ? ev->default_volume : 15;
+    }
+    else if (weather_info.sky == SKY_LIGHTNING)
+    {
+        ev  = sound_event_lookup("ambient.weather.lightning");
+        vol = ev ? ev->default_volume : 15;
+    }
+
+    /* No relevant weather => stop current lane */
+    if (!ev || !ev->files[0] || !*ev->files[0])
+    {
+        if (p->MediaWeatherActive)
+        {
+            GMCP_Media_Stop(ch->desc,
+                "\"key\":\"" KEY_WEATHER "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
+            if (p->MediaWeatherName)
+                free_string(p->MediaWeatherName);
+            p->MediaWeatherName   = NULL;
+            p->MediaWeatherVol    = 0;
+            p->MediaWeatherActive = FALSE;
+
+            log_stringf("WeatherSFX: stop (clear sky) for %s", ch->name);
+        }
+        return;
+    }
+
+    /* Apply player's ambient slider */
+    vol = media_apply_volume(vol, ch, "environment", "ambient");
+    if (vol <= 0)
+        return;
+
+    /* If changed or inactive, (re)play */
+    if (!p->MediaWeatherActive
+        || !p->MediaWeatherName
+        || str_cmp(p->MediaWeatherName, ev->files[0])
+        || p->MediaWeatherVol != vol)
+    {
+        /* If something might still be playing under this lane key, fade it */
+        if (p->MediaWeatherActive)
+        {
+            GMCP_Media_Stop(ch->desc,
+                "\"key\":\"" KEY_WEATHER "\","
+                "\"type\":\"music\",\"fadeaway\":true,\"fadeout\":600");
+            log_stringf("WeatherSFX: stop previous (switch) for %s", ch->name);
+        }
+
+        /* Update our cache BEFORE play so do_rstat can show it immediately */
+        if (p->MediaWeatherName) free_string(p->MediaWeatherName);
+        p->MediaWeatherName   = str_dup(ev->files[0]);
+        p->MediaWeatherVol    = vol;
+
+        /* Play loop on the weather lane */
+        {
+            char opts[256];
+            snprintf(opts, sizeof(opts),
+                "\"type\":\"music\",\"tag\":\"environment\",\"key\":\"" KEY_WEATHER "\","
+                "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":1200", vol);
+            GMCP_Media_Play(ch->desc, ev->files[0], opts);
+        }
+
+        p->MediaWeatherActive = TRUE;
+
+        log_stringf("WeatherSFX: start %s vol=%d for %s",
+                    ev->key, vol, ch->name);
+    }
+
+    #undef KEY_WEATHER
 }
 
 
