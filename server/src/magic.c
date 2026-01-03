@@ -4103,6 +4103,24 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
         send_paragraph_to_char (buf, ch, 4);
 
         /*
+         *  Material composition if available
+         */
+        if (obj->material && obj->material[0] != '\0')
+        {
+                sprintf( buf, "{cIt is made of {W%s{c.{x\n\r", obj->material );
+                send_paragraph_to_char (buf, ch, 4);
+        }
+
+        /*
+         *  Magnetic property if material contains ferromagnetic elements
+         */
+        if (is_magnetic(obj))
+        {
+                sprintf( buf, "{cIt is {Wmagnetic{c.{x\n\r" );
+                send_paragraph_to_char (buf, ch, 4);
+        }
+
+        /*
          *  Item type specific information
          */
         switch (obj->item_type)
