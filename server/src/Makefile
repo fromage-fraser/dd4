@@ -20,8 +20,6 @@ O_FILES = act_comm.o act_info.o act_move.o act_obj.o act_wiz.o board.o comm.o co
           deity.o tournament.o bot.o twister.o protocol.o mob.o write_json.o \
           sound.o sound_const.o
 
-H_FILES = merc.h protocol.h sound.h
-
 dd4: $(O_FILES)
 	-rm -f dd4
 	$(CC) -o dd4 $(O_FILES) $(L_FLAGS)
