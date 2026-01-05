@@ -143,22 +143,47 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
     const getItemVisualIndicators = (item) => {
         const indicators = [];
         
-        // Show visual flags for items (cosmetic flags always visible)
-        if (item.extraFlags && item.extraFlags.includes('GLOW')) {
+        // Cosmetic flags (always visible)
+        if (item.extraFlags && item.extraFlags.includes('glow')) {
             indicators.push({ icon: '✨', label: 'Glowing', color: 'glow' });
         }
-        if (item.extraFlags && item.extraFlags.includes('HUM')) {
+        if (item.extraFlags && item.extraFlags.includes('hum')) {
             indicators.push({ icon: '🎵', label: 'Humming', color: 'hum' });
         }
-        if (item.extraFlags && item.extraFlags.includes('MAGIC')) {
-            indicators.push({ icon: '🔮', label: 'Magical', color: 'magic' });
-        }
         
-        // Show identification status
-        if (item.identified === false) {
+        // Identified-only flags and effects
+        if (item.identified === true) {
+            if (item.extraFlags && item.extraFlags.includes('magic')) {
+                indicators.push({ icon: '🔮', label: 'Magical', color: 'magic' });
+            }
+            if (item.extraFlags && item.extraFlags.includes('cursed')) {
+                indicators.push({ icon: '💀', label: 'Cursed', color: 'cursed' });
+            }
+            
+            // Ego enchantment effects
+            if (item.egoFlags) {
+                if (item.egoFlags.includes('firebrand')) {
+                    indicators.push({ icon: '🔥', label: 'Firebrand', color: 'firebrand' });
+                }
+                if (item.egoFlags.includes('empowered')) {
+                    indicators.push({ icon: '⚡', label: 'Empowered', color: 'empowered' });
+                }
+                if (item.egoFlags.includes('soul_stealer')) {
+                    indicators.push({ icon: '👻', label: 'Soul Stealer', color: 'soul-stealer' });
+                }
+                if (item.egoFlags.includes('bloodlust')) {
+                    indicators.push({ icon: '🩸', label: 'Bloodlust', color: 'bloodlust' });
+                }
+                if (item.egoFlags.includes('serrated')) {
+                    indicators.push({ icon: '⚔️', label: 'Serrated', color: 'serrated' });
+                }
+                if (item.egoFlags.includes('balanced')) {
+                    indicators.push({ icon: '⚖️', label: 'Balanced', color: 'balanced' });
+                }
+            }
+        } else if (item.identified === false) {
+            // Show identification status for unidentified items
             indicators.push({ icon: '❓', label: 'Unidentified', color: 'unidentified' });
-        } else if (item.identified === true) {
-            indicators.push({ icon: '✓', label: 'Identified', color: 'identified' });
         }
         
         return indicators;

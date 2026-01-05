@@ -48,6 +48,9 @@ int webgate_listen_fd = -1;
  */
 static void webgate_read(WEB_DESCRIPTOR_DATA *web_desc);
 static void webgate_write(WEB_DESCRIPTOR_DATA *web_desc);
+static void webgate_serialize_extra_flags(OBJ_DATA *obj, bool identified, char *buf, int buf_size);
+static void webgate_serialize_ego_flags(OBJ_DATA *obj, bool identified, char *buf, int buf_size);
+
 static bool webgate_process_handshake(WEB_DESCRIPTOR_DATA *web_desc);
 static bool webgate_parse_websocket_frames(WEB_DESCRIPTOR_DATA *web_desc);
 static bool webgate_parse_json_message(WEB_DESCRIPTOR_DATA *web_desc, const char *json);
@@ -640,15 +643,25 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
         }
         keywords_escaped[j] = '\0';
 
+        /* Serialize item flags for visual effects */
+        char extra_flags_json[512];
+        char ego_flags_json[512];
+        webgate_serialize_extra_flags(obj, obj->identified, extra_flags_json, sizeof(extra_flags_json));
+        webgate_serialize_ego_flags(obj, obj->identified, ego_flags_json, sizeof(ego_flags_json));
+
         if (!first)
             strcat(items_json, ",");
         sprintf(items_json + strlen(items_json),
-                "{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d,\"type\":%d}",
+                "{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d,\"type\":%d,"
+                "\"identified\":%s,\"extraFlags\":%s,\"egoFlags\":%s}",
                 obj->pIndexData ? obj->pIndexData->vnum : 0,
                 temp_name,
                 keywords_escaped,
                 obj->pIndexData ? obj->pIndexData->vnum : 0,
-                obj->item_type);
+                obj->item_type,
+                obj->identified ? "true" : "false",
+                extra_flags_json,
+                ego_flags_json);
         first = false;
         item_count++;
     }

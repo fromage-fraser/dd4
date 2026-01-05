@@ -452,6 +452,47 @@
     animation: pulse 2s ease-in-out infinite;
 }
 
+/* Enchantment Effects */
+.indicator.cursed {
+    background: rgba(220, 20, 60, 0.2);
+    box-shadow: 0 0 8px rgba(220, 20, 60, 0.4);
+    animation: cursePulse 2s ease-in-out infinite;
+}
+
+.indicator.firebrand {
+    background: rgba(255, 69, 0, 0.2);
+    box-shadow: 0 0 8px rgba(255, 69, 0, 0.5);
+    animation: flameFlicker 1.5s ease-in-out infinite;
+}
+
+.indicator.empowered {
+    background: rgba(138, 43, 226, 0.2);
+    box-shadow: 0 0 8px rgba(138, 43, 226, 0.5);
+    animation: electricPulse 1s ease-in-out infinite;
+}
+
+.indicator.soul-stealer {
+    background: rgba(75, 0, 130, 0.2);
+    box-shadow: 0 0 8px rgba(75, 0, 130, 0.5);
+    animation: darkPulse 2s ease-in-out infinite;
+}
+
+.indicator.serrated {
+    background: rgba(192, 192, 192, 0.2);
+    box-shadow: 0 0 8px rgba(192, 192, 192, 0.4);
+}
+
+.indicator.balanced {
+    background: rgba(0, 255, 127, 0.2);
+    box-shadow: 0 0 8px rgba(0, 255, 127, 0.4);
+}
+
+.indicator.bloodlust {
+    background: rgba(139, 0, 0, 0.2);
+    box-shadow: 0 0 8px rgba(139, 0, 0, 0.5);
+    animation: bloodPulse 1.5s ease-in-out infinite;
+}
+
 @keyframes pulse {
     0%, 100% {
         opacity: 0.6;
@@ -460,3 +501,61 @@
         opacity: 1;
     }
 }
+
+@keyframes cursePulse {
+    0%, 100% {
+        box-shadow: 0 0 8px rgba(220, 20, 60, 0.4);
+        opacity: 0.8;
+    }
+    50% {
+        box-shadow: 0 0 16px rgba(220, 20, 60, 0.8);
+        opacity: 1;
+    }
+}
+
+@keyframes flameFlicker {
+    0%, 100% { 
+        box-shadow: 0 0 8px rgba(255, 69, 0, 0.5);
+        opacity: 0.9;
+    }
+    25% { 
+        box-shadow: 0 0 12px rgba(255, 69, 0, 0.7);
+        opacity: 1;
+    }
+    50% { 
+        box-shadow: 0 0 6px rgba(255, 69, 0, 0.4);
+        opacity: 0.85;
+    }
+    75% { 
+        box-shadow: 0 0 14px rgba(255, 69, 0, 0.8);
+        opacity: 1;
+    }
+}
+
+@keyframes electricPulse {
+    0%, 100% { 
+        box-shadow: 0 0 8px rgba(138, 43, 226, 0.5);
+    }
+    50% { 
+        box-shadow: 0 0 16px rgba(138, 43, 226, 0.9);
+    }
+}
+
+@keyframes darkPulse {
+    0%, 100% { 
+        box-shadow: 0 0 8px rgba(75, 0, 130, 0.5);
+        opacity: 0.7;
+    }
+    50% { 
+        box-shadow: 0 0 16px rgba(75, 0, 130, 0.9);
+        opacity: 1;
+    }
+}
+
+@keyframes bloodPulse {
+    0%, 100% { 
+        box-shadow: 0 0 8px rgba(139, 0, 0, 0.5);
+    }
+    50% { 
+        box-shadow: 0 0 14px rgba(139, 0, 0, 0.9);
+        transform: scale(1.05);
