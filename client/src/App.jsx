@@ -82,6 +82,30 @@ function App() {
       });
   }, []);
 
+  // Match current room to map when mapsData loads
+  useEffect(() => {
+    if (mapsData && room.areaName) {
+      console.log('Checking map for current area:', room.areaName);
+      const areaNameLower = room.areaName.toLowerCase().trim();
+      let matchedMap = null;
+      
+      for (const [filename, mapInfo] of Object.entries(mapsData)) {
+        const mapNameLower = mapInfo.name.toLowerCase().trim();
+        if (mapNameLower === areaNameLower) {
+          console.log('Found matching map:', filename, mapInfo);
+          matchedMap = mapInfo;
+          break;
+        }
+      }
+      
+      setCurrentMap(matchedMap);
+      
+      if (!matchedMap) {
+        console.log('No map found for area:', room.areaName);
+      }
+    }
+  }, [mapsData, room.areaName]);
+
   // Connect to WebSocket gateway with reconnection logic
   useEffect(() => {
     const connectWebSocket = () => {
@@ -287,6 +311,7 @@ function App() {
         addMessage(`You are in: ${data.name}`, 'room');
         
         // Match area name to map data
+        console.log('Room.Info received, areaName:', data.areaName, 'mapsData loaded:', mapsData !== null);
         if (data.areaName && mapsData) {
           console.log('Area name from server:', data.areaName);
           
