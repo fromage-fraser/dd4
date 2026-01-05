@@ -1,0 +1,426 @@
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Modal Content */
+.modal-content {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 12px;
+    border: 2px solid #0f3460;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Modal Header */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 2px solid #0f3460;
+    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #e94560;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.item-type-icon {
+    font-size: 1.8rem;
+}
+
+.close-button {
+    background: transparent;
+    border: none;
+    color: #aaa;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.close-button:hover {
+    background: rgba(233, 69, 96, 0.2);
+    color: #e94560;
+}
+
+/* Modal Body */
+.modal-body {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+    color: #ccc;
+}
+
+/* Detail Sections */
+.detail-section {
+    margin-bottom: 20px;
+}
+
+.detail-section h4 {
+    color: #00d4ff;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+    padding-bottom: 5px;
+}
+
+/* Identification Badge */
+.identification-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.identification-badge.identified {
+    background: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+    border: 1px solid #2ecc71;
+}
+
+.identification-badge.unidentified {
+    background: rgba(241, 196, 15, 0.2);
+    color: #f1c40f;
+    border: 1px solid #f1c40f;
+}
+
+/* Info Grid */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: rgba(15, 52, 96, 0.3);
+    border-radius: 6px;
+}
+
+.info-label {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.info-value {
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Flags Container */
+.flags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.flag-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    background: rgba(0, 212, 255, 0.15);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 15px;
+    color: #00d4ff;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.ego-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    background: rgba(255, 215, 0, 0.15);
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    border-radius: 15px;
+    color: #ffd700;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.restriction-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    background: rgba(231, 76, 60, 0.15);
+    border: 1px solid rgba(231, 76, 60, 0.3);
+    border-radius: 15px;
+    color: #e74c3c;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Affects List */
+.affects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.affect-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: rgba(15, 52, 96, 0.3);
+    border-radius: 6px;
+    border-left: 3px solid #555;
+}
+
+.affect-item.positive {
+    border-left-color: #2ecc71;
+}
+
+.affect-item.negative {
+    border-left-color: #e74c3c;
+}
+
+.affect-icon {
+    font-size: 1.2rem;
+}
+
+.affect-location {
+    flex: 1;
+    color: #ccc;
+    font-weight: 500;
+}
+
+.affect-modifier {
+    font-weight: bold;
+    font-size: 1.1rem;
+    min-width: 50px;
+    text-align: right;
+}
+
+.affect-item.positive .affect-modifier {
+    color: #2ecc71;
+}
+
+.affect-item.negative .affect-modifier {
+    color: #e74c3c;
+}
+
+/* Restrictions */
+.restrictions-container {
+    color: #ccc;
+}
+
+.restriction-note {
+    margin-bottom: 10px;
+    color: #aaa;
+    font-style: italic;
+}
+
+/* Unidentified Hint */
+.unidentified-hint {
+    background: rgba(241, 196, 15, 0.1);
+    border: 1px dashed rgba(241, 196, 15, 0.3);
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+}
+
+.unidentified-hint p {
+    margin: 0;
+    color: #f1c40f;
+}
+
+.unidentified-hint strong {
+    color: #fff;
+}
+
+/* Modal Footer */
+.modal-footer {
+    padding: 15px 20px;
+    border-top: 2px solid #0f3460;
+    display: flex;
+    justify-content: flex-end;
+    background: rgba(15, 52, 96, 0.2);
+}
+
+.modal-button {
+    padding: 10px 24px;
+    background: linear-gradient(135deg, #e94560 0%, #d63447 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.modal-button:hover {
+    background: linear-gradient(135deg, #ff5370 0%, #e94560 100%);
+    box-shadow: 0 4px 12px rgba(233, 69, 96, 0.4);
+    transform: translateY(-1px);
+}
+
+/* Scrollbar Styling */
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: rgba(15, 52, 96, 0.3);
+    border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: rgba(0, 212, 255, 0.3);
+    border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 212, 255, 0.5);
+}
+
+/* Set Information Section */
+.set-info {
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(75, 0, 130, 0.1));
+    border: 1px solid rgba(138, 43, 226, 0.3);
+    border-radius: 6px;
+    padding: 1rem;
+}
+
+.set-info h4 {
+    color: #da70d6;
+    margin-bottom: 0.75rem;
+}
+
+.set-rarity {
+    margin-bottom: 0.5rem;
+}
+
+.rarity-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+.rarity-badge.common {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ccc;
+}
+
+.rarity-badge.uncommon {
+    background: rgba(34, 139, 34, 0.3);
+    color: #5cdb5c;
+}
+
+.rarity-badge.rare {
+    background: rgba(30, 144, 255, 0.3);
+    color: #6495ed;
+}
+
+.rarity-badge.epic {
+    background: rgba(138, 43, 226, 0.3);
+    color: #da70d6;
+}
+
+.rarity-badge.legendary {
+    background: rgba(255, 165, 0, 0.3);
+    color: #ffa500;
+}
+
+.set-name {
+    color: #87ceeb;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.set-lore {
+    color: #b8b8b8;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0.75rem 0;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    white-space: pre-wrap;
+}
+
+.set-bonus {
+    color: #98d98e;
+    font-size: 0.95rem;
+    margin-top: 0.75rem;
+    padding: 0.5rem;
+    background: rgba(76, 175, 80, 0.1);
+    border-left: 3px solid #4caf50;
+    border-radius: 4px;
+}
+
+.set-bonus .positive {
+    color: #4caf50;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+    
+    .modal-header h3 {
+        font-size: 1.2rem;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -6,8 +6,9 @@ import './Compass.css';
  * Displays available exits and allows click-to-move
  * Supports 6 directions: N, E, S, W, U, D
  * Handles doors (open/closed/locked) with interaction options
+ * Shows map button when area map is available
  */
-function Compass({ exits = [], onMove, onCommand }) {
+function Compass({ exits = [], onMove, onCommand, hasMap = false, onShowMap }) {
   const [selectedExit, setSelectedExit] = useState(null);
   const directions = ['north', 'east', 'south', 'west', 'up', 'down'];
   
@@ -107,7 +108,18 @@ function Compass({ exits = [], onMove, onCommand }) {
 
   return (
     <div className="compass">
-      <h3>Navigation</h3>
+      <div className="compass-header">
+        <h3>Navigation</h3>
+        {hasMap && (
+          <button 
+            className="map-button" 
+            onClick={onShowMap}
+            title="View area map"
+          >
+            🗺️
+          </button>
+        )}
+      </div>
       <div className="compass-grid">
         {/* Top row: Up and North */}
         <button 

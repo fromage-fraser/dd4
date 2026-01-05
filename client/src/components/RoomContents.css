@@ -1,0 +1,462 @@
+/**
+ * Intent: Styling for interactive room contents (items and NPCs).
+ * 
+ * Mobile-first design with touch-optimized buttons and contextual action menus.
+ * Uses color coding to distinguish hostile/friendly NPCs and emphasize selection.
+ * 
+ * Features:
+ *   - 48px minimum touch targets (WCAG AAA)
+ *   - Visual feedback for selection and hover states
+ *   - Color-coded hostile (red) vs friendly (green) NPCs
+ *   - Smooth animations for menu expand/collapse
+ *   - Responsive layout for mobile/tablet/desktop
+ */
+
+.room-contents {
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.content-section {
+    margin-bottom: 1rem;
+}
+
+.content-section:last-child {
+    margin-bottom: 0;
+}
+
+.content-header {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    color: #4CAF50;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.content-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.content-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+/* Item Buttons */
+.item-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    min-height: 48px;
+    width: 100%;
+    
+    background: rgba(30, 30, 30, 0.8);
+    border: 2px solid rgba(76, 175, 80, 0.3);
+    border-radius: 4px;
+    color: #E0E0E0;
+    
+    font-size: 0.95rem;
+    font-family: 'Courier New', monospace;
+    text-align: left;
+    
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    /* Touch optimization */
+    -webkit-tap-highlight-color: rgba(76, 175, 80, 0.3);
+    user-select: none;
+    touch-action: manipulation;
+}
+
+.item-button:hover:not(:disabled) {
+    background: rgba(40, 40, 40, 0.9);
+    border-color: rgba(76, 175, 80, 0.6);
+    transform: translateX(4px);
+}
+
+.item-button:active:not(:disabled) {
+    transform: translateX(2px) scale(0.98);
+}
+
+.item-button.selected {
+    background: rgba(76, 175, 80, 0.2);
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+}
+
+.item-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.item-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.item-name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* NPC Buttons */
+.npc-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    min-height: 48px;
+    width: 100%;
+    
+    background: rgba(30, 30, 30, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    color: #E0E0E0;
+    
+    font-size: 0.95rem;
+    font-family: 'Courier New', monospace;
+    text-align: left;
+    
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    /* Touch optimization */
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);
+    user-select: none;
+    touch-action: manipulation;
+}
+
+/* Hostile NPCs - Red theme */
+.npc-button.hostile {
+    border-color: rgba(244, 67, 54, 0.4);
+}
+
+.npc-button.hostile:hover:not(:disabled) {
+    background: rgba(40, 20, 20, 0.9);
+    border-color: rgba(244, 67, 54, 0.7);
+    transform: translateX(4px);
+}
+
+.npc-button.hostile.selected {
+    background: rgba(244, 67, 54, 0.2);
+    border-color: #F44336;
+    box-shadow: 0 0 8px rgba(244, 67, 54, 0.4);
+}
+
+/* Friendly NPCs - Green theme */
+.npc-button.friendly {
+    border-color: rgba(76, 175, 80, 0.3);
+}
+
+.npc-button.friendly:hover:not(:disabled) {
+    background: rgba(20, 40, 20, 0.9);
+    border-color: rgba(76, 175, 80, 0.6);
+    transform: translateX(4px);
+}
+
+.npc-button.friendly.selected {
+    background: rgba(76, 175, 80, 0.2);
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+}
+
+.npc-button:active:not(:disabled) {
+    transform: translateX(2px) scale(0.98);
+}
+
+.npc-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.npc-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.npc-name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.npc-indicator {
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+    flex-shrink: 0;
+}
+
+.npc-indicator.shopkeeper {
+    color: #FFD700;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.npc-indicator.trainer {
+    color: #64B5F6;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+/* Action Menu */
+.action-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.action-button {
+    flex: 1 1 auto;
+    min-width: 100px;
+    padding: 0.6rem 1rem;
+    min-height: 48px;
+    
+    background: rgba(33, 150, 243, 0.2);
+    border: 1px solid rgba(33, 150, 243, 0.5);
+    border-radius: 4px;
+    color: #E0E0E0;
+    
+    font-size: 0.9rem;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    
+    cursor: pointer;
+    transition: all 0.15s ease;
+    
+    /* Touch optimization */
+    -webkit-tap-highlight-color: rgba(33, 150, 243, 0.3);
+    user-select: none;
+    touch-action: manipulation;
+}
+
+.action-button:hover:not(:disabled) {
+    background: rgba(33, 150, 243, 0.4);
+    border-color: #2196F3;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+}
+
+.action-button:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba(33, 150, 243, 0.2);
+}
+
+.action-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Empty State */
+.empty-state {
+    padding: 2rem 1rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.4);
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* Extra Description Buttons */
+.extra-desc-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    min-height: 48px;
+    width: 100%;
+    
+    background: rgba(30, 30, 50, 0.8);
+    border: 2px solid rgba(74, 144, 226, 0.3);
+    border-radius: 4px;
+    color: #E0E0E0;
+    
+    font-size: 0.95rem;
+    font-family: 'Courier New', monospace;
+    text-align: left;
+    
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    /* Touch optimization */
+    -webkit-tap-highlight-color: rgba(74, 144, 226, 0.3);
+    user-select: none;
+    touch-action: manipulation;
+}
+
+.extra-desc-button:hover {
+    background: rgba(40, 40, 60, 0.9);
+    border-color: rgba(74, 144, 226, 0.6);
+    transform: translateX(4px);
+}
+
+.extra-desc-button:active {
+    transform: translateX(2px) scale(0.98);
+}
+
+.extra-desc-button.selected {
+    background: rgba(74, 144, 226, 0.2);
+    border-color: #4a90e2;
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
+}
+
+.extra-desc-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.extra-desc-keyword {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-transform: capitalize;
+}
+
+/* Extra Description Details */
+.extra-desc-details {
+    padding: 0.75rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    border: 1px solid rgba(74, 144, 226, 0.3);
+    color: #d0d0d0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    animation: slideDown 0.2s ease;
+}
+
+.extra-desc-details p {
+    margin: 0;
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .room-contents {
+        padding: 0.75rem;
+    }
+    
+    .action-menu {
+        flex-direction: column;
+    }
+    
+    .action-button {
+        min-width: 100%;
+        flex: 1 1 100%;
+    }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .action-button {
+        min-width: 120px;
+    }
+}
+
+/* Desktop - Larger screens */
+@media (min-width: 1025px) {
+    .room-contents {
+        padding: 1rem;
+    }
+    
+    .content-list {
+        gap: 0.75rem;
+    }
+    
+    .action-button {
+        min-width: 140px;
+    }
+}
+
+/* Item Visual Indicators */
+.item-indicators {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.indicator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    font-size: 0.9rem;
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+.indicator:hover {
+    transform: scale(1.2);
+}
+
+.indicator.glow {
+    background: rgba(255, 215, 0, 0.2);
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+.indicator.hum {
+    background: rgba(138, 43, 226, 0.2);
+    box-shadow: 0 0 8px rgba(138, 43, 226, 0.4);
+}
+
+.indicator.magic {
+    background: rgba(0, 191, 255, 0.2);
+    box-shadow: 0 0 8px rgba(0, 191, 255, 0.4);
+}
+
+.indicator.identified {
+    background: rgba(46, 204, 113, 0.2);
+    box-shadow: 0 0 8px rgba(46, 204, 113, 0.3);
+}
+
+.indicator.unidentified {
+    background: rgba(241, 196, 15, 0.2);
+    box-shadow: 0 0 8px rgba(241, 196, 15, 0.3);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+}

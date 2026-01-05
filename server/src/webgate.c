@@ -763,19 +763,32 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
     }
     strcat(extra_descr_json, "]");
 
-    /* Build complete Room.Info JSON with items, NPCs, and extra descriptions */
+    /* Get area name for map display */
+    char area_name_escaped[256];
+    const char *area_name = room->area ? room->area->name : "Unknown";
+    for (i = 0, j = 0; area_name[i] != '\0' && j < sizeof(area_name_escaped) - 2; i++)
+    {
+        if (area_name[i] == '"' || area_name[i] == '\\')
+            area_name_escaped[j++] = '\\';
+        if (area_name[i] >= 32)
+            area_name_escaped[j++] = area_name[i];
+    }
+    area_name_escaped[j] = '\0';
+
+    /* Build complete Room.Info JSON with items, NPCs, extra descriptions, and area name */
     snprintf(json, sizeof(json),
-             "{\"name\":\"%s\",\"description\":\"%s\",\"exits\":%s,\"vnum\":%d,\"items\":%s,\"npcs\":%s,\"extraDescriptions\":%s}",
+             "{\"name\":\"%s\",\"description\":\"%s\",\"exits\":%s,\"vnum\":%d,\"items\":%s,\"npcs\":%s,\"extraDescriptions\":%s,\"areaName\":\"%s\"}",
              name_escaped,
              desc_escaped,
              exits_json,
              room->vnum,
              items_json,
              npcs_json,
-             extra_descr_json);
+             extra_descr_json,
+             area_name_escaped);
 
-    sprintf(log_buf, "WebGate: Sending Room.Info (exits: %s, items: %d, npcs: %d)",
-            exits_json, item_count, npc_count);
+    sprintf(log_buf, "WebGate: Sending Room.Info (exits: %s, items: %d, npcs: %d, area: %s)",
+            exits_json, item_count, npc_count, area_name_escaped);
     log_string(log_buf);
 
     webgate_send_gmcp(web_desc, "Room.Info", json);

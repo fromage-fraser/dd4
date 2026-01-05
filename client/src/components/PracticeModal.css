@@ -1,0 +1,284 @@
+/* Practice Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Practice Modal Container */
+.practice-modal {
+  background: linear-gradient(145deg, #1a1a1a 0%, #2a2a2a 100%);
+  border-radius: 8px;
+  border: 2px solid #64B5F6;
+  box-shadow: 0 10px 40px rgba(100, 181, 246, 0.3);
+  width: 90%;
+  max-width: 900px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Header */
+.practice-header {
+  padding: 1.5rem;
+  border-bottom: 2px solid #64B5F6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(100, 181, 246, 0.1);
+}
+
+.practice-header h2 {
+  margin: 0;
+  color: #64B5F6;
+  font-size: 1.5rem;
+  text-shadow: 0 0 10px rgba(100, 181, 246, 0.5);
+}
+
+.close-button {
+  background: transparent;
+  border: 2px solid #f44336;
+  color: #f44336;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background: #f44336;
+  color: #fff;
+  transform: rotate(90deg);
+}
+
+/* Content */
+.practice-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+/* Practice Points Display */
+.practice-points {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+
+.practice-point-box {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  border: 2px solid;
+  min-width: 180px;
+}
+
+.practice-point-box.physical {
+  border-color: #ff6b6b;
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+.practice-point-box.intellectual {
+  border-color: #64B5F6;
+  background: linear-gradient(135deg, rgba(100, 181, 246, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+.point-icon {
+  font-size: 1.8rem;
+}
+
+.point-label {
+  flex: 1;
+  font-weight: bold;
+  color: #e0e0e0;
+}
+
+.point-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+/* Practice Sections */
+.practice-sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.practice-section {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 1rem;
+  border: 2px solid;
+}
+
+.practice-section.physical-section {
+  border-color: #ff6b6b;
+}
+
+.practice-section.intellectual-section {
+  border-color: #64B5F6;
+}
+
+.practice-section h3 {
+  margin: 0 0 1rem 0;
+  color: #e0e0e0;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-icon {
+  font-size: 1.3rem;
+}
+
+/* Skill List */
+.skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.practice-skill {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.practice-skill:hover {
+  background: rgba(0, 0, 0, 0.7);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.skill-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.skill-name {
+  color: #e0e0e0;
+  font-weight: bold;
+}
+
+.skill-learned {
+  color: #ffd700;
+  font-size: 0.9rem;
+}
+
+.practice-button {
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #4caf50 0%, #81c784 100%);
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.practice-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #66bb6a 0%, #4caf50 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.4);
+}
+
+.practice-button:disabled {
+  background: rgba(100, 100, 100, 0.3);
+  color: rgba(255, 255, 255, 0.3);
+  cursor: not-allowed;
+}
+
+.no-skills {
+  text-align: center;
+  padding: 2rem;
+  color: #999;
+  font-style: italic;
+}
+
+/* Footer */
+.practice-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+}
+
+.close-footer-button {
+  padding: 0.75rem 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.close-footer-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .practice-modal {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .practice-sections {
+    grid-template-columns: 1fr;
+  }
+
+  .practice-points {
+    flex-direction: column;
+  }
+
+  .practice-point-box {
+    width: 100%;
+  }
+}

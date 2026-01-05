@@ -1,0 +1,707 @@
+{
+  "cathedral.html": {
+    "filename": "cathedral.html",
+    "name": "The Abandoned Cathedral",
+    "levels": "Levels 60-90"
+  },
+  "abyss.html": {
+    "filename": "abyss.html",
+    "name": "The Abyss",
+    "levels": "Levels 15-30"
+  },
+  "adventurers_guild.html": {
+    "filename": "adventurers_guild.html",
+    "name": "Adventurer's Guild",
+    "levels": "All levels"
+  },
+  "ambush.html": {
+    "filename": "ambush.html",
+    "name": "Ambush",
+    "levels": "Levels 6-16"
+  },
+  "ancalador.html": {
+    "filename": "ancalador.html",
+    "name": "Ancalador",
+    "levels": "Levels 60-100"
+  },
+  "apoc.html": {
+    "filename": "apoc.html",
+    "name": "Apocalypse Now",
+    "levels": "Levels 55-100"
+  },
+  "arachnos.html": {
+    "filename": "arachnos.html",
+    "name": "Arachnos",
+    "levels": "Levels 5-20"
+  },
+  "arcanum.html": {
+    "filename": "arcanum.html",
+    "name": "Arcanum Castle",
+    "levels": "Levels 75-100"
+  },
+  "arena.html": {
+    "filename": "arena.html",
+    "name": "The Arena",
+    "levels": "All levels"
+  },
+  "argent.html": {
+    "filename": "argent.html",
+    "name": "Argentium",
+    "levels": "Levels 15-25"
+  },
+  "arikasbab.html": {
+    "filename": "arikasbab.html",
+    "name": "Arika's Bed & Breakfast",
+    "levels": "All levels"
+  },
+  "astral.html": {
+    "filename": "astral.html",
+    "name": "The Astral Plane",
+    "levels": "Levels 15-35"
+  },
+  "bastion.html": {
+    "filename": "bastion.html",
+    "name": "Bastion of Shadows",
+    "levels": "Levels 80-100"
+  },
+  "catacombs.html": {
+    "filename": "catacombs.html",
+    "name": "The Catacombs",
+    "levels": "Unknown level"
+  },
+  "chapel.html": {
+    "filename": "chapel.html",
+    "name": "Chapel Catacombs",
+    "levels": "Levels 15-25"
+  },
+  "circus.html": {
+    "filename": "circus.html",
+    "name": "The Circus",
+    "levels": "Levels 1-12"
+  },
+  "anon.html": {
+    "filename": "anon.html",
+    "name": "The City of Anon",
+    "levels": "All levels"
+  },
+  "city_thieves.html": {
+    "filename": "city_thieves.html",
+    "name": "City Of Thieves",
+    "levels": "Levels 30-50"
+  },
+  "crystal.html": {
+    "filename": "crystal.html",
+    "name": "Crystalmir Lake",
+    "levels": "Levels 5-15"
+  },
+  "cyclops.html": {
+    "filename": "cyclops.html",
+    "name": "Cyclops Caves",
+    "levels": "Levels 35-55"
+  },
+  "hood.html": {
+    "filename": "hood.html",
+    "name": "Dangerous Neighborhood",
+    "levels": "Levels 5-15"
+  },
+  "darkwood.html": {
+    "filename": "darkwood.html",
+    "name": "Dark Wood",
+    "levels": "Levels 50-60"
+  },
+  "deathdun.html": {
+    "filename": "deathdun.html",
+    "name": "Deathtrap Dungeon",
+    "levels": "Levels 50-75"
+  },
+  "demondium.html": {
+    "filename": "demondium.html",
+    "name": "Demondium",
+    "levels": "Levels 60-90"
+  },
+  "descent.html": {
+    "filename": "descent.html",
+    "name": "Descent to Hell",
+    "levels": "Levels 30-45"
+  },
+  "desert_of_despair.html": {
+    "filename": "desert_of_despair.html",
+    "name": "Desert of Despair",
+    "levels": "All levels"
+  },
+  "draagdim.html": {
+    "filename": "draagdim.html",
+    "name": "Draagdim",
+    "levels": "Unknown level"
+  },
+  "east_of_draagdim.html": {
+    "filename": "east_of_draagdim.html",
+    "name": "Draagdim Countryside",
+    "levels": "All levels"
+  },
+  "cult.html": {
+    "filename": "cult.html",
+    "name": "Dragon Cult",
+    "levels": "Levels 5-25"
+  },
+  "draconia.html": {
+    "filename": "draconia.html",
+    "name": "Dragon Tower",
+    "levels": "Levels 5-50"
+  },
+  "dragonquest.html": {
+    "filename": "dragonquest.html",
+    "name": "DragonQuest",
+    "levels": "Level 100"
+  },
+  "drow.html": {
+    "filename": "drow.html",
+    "name": "Drow City",
+    "levels": "Levels 15-25"
+  },
+  "dwarven_catacombs.html": {
+    "filename": "dwarven_catacombs.html",
+    "name": "Dwarven Catacombs",
+    "levels": "Levels 10-20"
+  },
+  "daycare.html": {
+    "filename": "daycare.html",
+    "name": "Dwarven Day Care",
+    "levels": "Levels 1-5"
+  },
+  "dwarven_home.html": {
+    "filename": "dwarven_home.html",
+    "name": "Dwarven Homestead",
+    "levels": "Levels 1-55"
+  },
+  "dwarven.html": {
+    "filename": "dwarven.html",
+    "name": "Dwarven Kingdom",
+    "levels": "Levels 10-25"
+  },
+  "eeriewoods.html": {
+    "filename": "eeriewoods.html",
+    "name": "The Eerie Woods",
+    "levels": "All levels"
+  },
+  "canyon.html": {
+    "filename": "canyon.html",
+    "name": "Elemental Canyon",
+    "levels": "Levels 5-30"
+  },
+  "fleshmonger.html": {
+    "filename": "fleshmonger.html",
+    "name": "Fleshmonger's Tower",
+    "levels": "Levels 5-15"
+  },
+  "forest.html": {
+    "filename": "forest.html",
+    "name": "Forest",
+    "levels": "Levels 1-10"
+  },
+  "goblin_fortress.html": {
+    "filename": "goblin_fortress.html",
+    "name": "The Fortress of Goblins",
+    "levels": "Levels 40-60"
+  },
+  "foundry.html": {
+    "filename": "foundry.html",
+    "name": "The Foundry",
+    "levels": "Levels 1-5"
+  },
+  "freeport.html": {
+    "filename": "freeport.html",
+    "name": "Freeport",
+    "levels": "All levels"
+  },
+  "frozen_lands.html": {
+    "filename": "frozen_lands.html",
+    "name": "The Frozen Lands",
+    "levels": "Levels 70-85"
+  },
+  "galaxy.html": {
+    "filename": "galaxy.html",
+    "name": "Galaxy",
+    "levels": "Levels 20-45"
+  },
+  "ghost_town.html": {
+    "filename": "ghost_town.html",
+    "name": "Ghost Town",
+    "levels": "Levels 55-80"
+  },
+  "gloomy.html": {
+    "filename": "gloomy.html",
+    "name": "Gloomy Forest",
+    "levels": "All levels"
+  },
+  "gnome.html": {
+    "filename": "gnome.html",
+    "name": "Gnome Village",
+    "levels": "Levels 5-15"
+  },
+  "goblin_caves.html": {
+    "filename": "goblin_caves.html",
+    "name": "Goblin Caves",
+    "levels": "Levels 10-26"
+  },
+  "golem.html": {
+    "filename": "golem.html",
+    "name": "Golem Settlement",
+    "levels": "Levels 80-100"
+  },
+  "grave.html": {
+    "filename": "grave.html",
+    "name": "Graveyard",
+    "levels": "Levels 5-10"
+  },
+  "eastern_desert.html": {
+    "filename": "eastern_desert.html",
+    "name": "Great Eastern Desert",
+    "levels": "Levels 10-20"
+  },
+  "pyramid.html": {
+    "filename": "pyramid.html",
+    "name": "The Great Pyramid",
+    "levels": "Levels 5-35"
+  },
+  "gremlinlair.html": {
+    "filename": "gremlinlair.html",
+    "name": "Gremlin Lair",
+    "levels": "Levels 1-5"
+  },
+  "haon.html": {
+    "filename": "haon.html",
+    "name": "Haon Dor",
+    "levels": "Levels 5-10"
+  },
+  "harpy.html": {
+    "filename": "harpy.html",
+    "name": "Harpy Haven",
+    "levels": "Levels 45-55"
+  },
+  "heltower.html": {
+    "filename": "heltower.html",
+    "name": "Hel's Tower",
+    "levels": "Levels 30-60"
+  },
+  "highland.html": {
+    "filename": "highland.html",
+    "name": "The Highlands",
+    "levels": "Levels 15-25"
+  },
+  "grove.html": {
+    "filename": "grove.html",
+    "name": "Holy Grove",
+    "levels": "Levels 5-20"
+  },
+  "air.html": {
+    "filename": "air.html",
+    "name": "In the Air",
+    "levels": "Levels 5-10"
+  },
+  "quake.html": {
+    "filename": "quake.html",
+    "name": "The Isle of Quake",
+    "levels": "All levels"
+  },
+  "pirates_isles.html": {
+    "filename": "pirates_isles.html",
+    "name": "The Isles of the Pirate Lords",
+    "levels": "Levels 20-45"
+  },
+  "kahsis.html": {
+    "filename": "kahsis.html",
+    "name": "Kahsis",
+    "levels": "Levels 35-60"
+  },
+  "kaladim.html": {
+    "filename": "kaladim.html",
+    "name": "Kaladim",
+    "levels": "Levels 25-35"
+  },
+  "warkeep.html": {
+    "filename": "warkeep.html",
+    "name": "The Keep of the Warlock",
+    "levels": "Levels 70-90"
+  },
+  "kerofk.html": {
+    "filename": "kerofk.html",
+    "name": "Kerofk",
+    "levels": "All levels"
+  },
+  "juargan.html": {
+    "filename": "juargan.html",
+    "name": "Kingdom of Juargan",
+    "levels": "Levels 45-65"
+  },
+  "krondor.html": {
+    "filename": "krondor.html",
+    "name": "Krondor",
+    "levels": "All levels"
+  },
+  "leanon.html": {
+    "filename": "leanon.html",
+    "name": "Lea'Non",
+    "levels": "All levels"
+  },
+  "lemmings.html": {
+    "filename": "lemmings.html",
+    "name": "The Lemming Caves",
+    "levels": "Levels 5-15"
+  },
+  "haven.html": {
+    "filename": "haven.html",
+    "name": "Little Haven",
+    "levels": "Levels 10-30"
+  },
+  "magicgarden.html": {
+    "filename": "magicgarden.html",
+    "name": "The Magic Garden",
+    "levels": "Levels 80-100"
+  },
+  "mahntor.html": {
+    "filename": "mahntor.html",
+    "name": "Mahn-Tor Keep",
+    "levels": "Levels 15-35"
+  },
+  "midennir.html": {
+    "filename": "midennir.html",
+    "name": "Miden'nir",
+    "levels": "Levels 5-15"
+  },
+  "midgaard.html": {
+    "filename": "midgaard.html",
+    "name": "Midgaard",
+    "levels": "All levels"
+  },
+  "mirror_realm.html": {
+    "filename": "mirror_realm.html",
+    "name": "Mirror Realm",
+    "levels": "Levels 20-50"
+  },
+  "moria.html": {
+    "filename": "moria.html",
+    "name": "Moria",
+    "levels": "Levels 5-15"
+  },
+  "mtdoom.html": {
+    "filename": "mtdoom.html",
+    "name": "Mount Doom",
+    "levels": "Levels 60-85"
+  },
+  "school.html": {
+    "filename": "school.html",
+    "name": "Mud School",
+    "levels": "Levels 1-5"
+  },
+  "new_ofcol.html": {
+    "filename": "new_ofcol.html",
+    "name": "New Ofcol",
+    "levels": "All levels"
+  },
+  "ofcol.html": {
+    "filename": "ofcol.html",
+    "name": "Ofcol",
+    "levels": "All levels"
+  },
+  "marsh.html": {
+    "filename": "marsh.html",
+    "name": "Old Marsh",
+    "levels": "Levels 15-25"
+  },
+  "old_thalos.html": {
+    "filename": "old_thalos.html",
+    "name": "Old Thalos",
+    "levels": "Levels 10-25"
+  },
+  "olympus.html": {
+    "filename": "olympus.html",
+    "name": "Olympus",
+    "levels": "Levels 20-35"
+  },
+  "omu_sovereign.html": {
+    "filename": "omu_sovereign.html",
+    "name": "Omu - Sovereign Quarter",
+    "levels": "Levels 65-70"
+  },
+  "omu_canals.html": {
+    "filename": "omu_canals.html",
+    "name": "Omu Canals",
+    "levels": "Levels 60-70"
+  },
+  "omu_central.html": {
+    "filename": "omu_central.html",
+    "name": "Omu Central",
+    "levels": "Levels 60-70"
+  },
+  "sahuagin_market.html": {
+    "filename": "sahuagin_market.html",
+    "name": "Ota'ar Dar - Market Canton",
+    "levels": "Levels 30-35"
+  },
+  "sahuagin_arena_jail.html": {
+    "filename": "sahuagin_arena_jail.html",
+    "name": "Ota'ar Dar Arena/Jail",
+    "levels": "Levels 40-45"
+  },
+  "sahuagin_canals.html": {
+    "filename": "sahuagin_canals.html",
+    "name": "Ota'ar Dar Canals",
+    "levels": "Levels 30-60"
+  },
+  "sahuagin_military.html": {
+    "filename": "sahuagin_military.html",
+    "name": "Ota'ar Dar Military Fortress",
+    "levels": "Levels 45-50"
+  },
+  "sahuagin_prince.html": {
+    "filename": "sahuagin_prince.html",
+    "name": "Ota'ar Dar Prince's Canton",
+    "levels": "Levels 55-60"
+  },
+  "sahuagin_res_north.html": {
+    "filename": "sahuagin_res_north.html",
+    "name": "Ota'ar Dar Residential - North",
+    "levels": "Levels 50-55"
+  },
+  "sahuagin_res_south.html": {
+    "filename": "sahuagin_res_south.html",
+    "name": "Ota'ar Dar Residential - South",
+    "levels": "Levels 35-40"
+  },
+  "pit.html": {
+    "filename": "pit.html",
+    "name": "The Pit!",
+    "levels": "Levels 40-70"
+  },
+  "plains_north.html": {
+    "filename": "plains_north.html",
+    "name": "Plains of the North",
+    "levels": "Levels 1-20"
+  },
+  "plains_south.html": {
+    "filename": "plains_south.html",
+    "name": "Plains of the South",
+    "levels": "Levels 10-100"
+  },
+  "tpi.html": {
+    "filename": "tpi.html",
+    "name": "The Plane Inn",
+    "levels": "Levels 35-75"
+  },
+  "nirvana.html": {
+    "filename": "nirvana.html",
+    "name": "The Plane of Nirvana",
+    "levels": "Levels 20-45"
+  },
+  "portal.html": {
+    "filename": "portal.html",
+    "name": "The Portal",
+    "levels": "Levels 80-95"
+  },
+  "prince_fortress.html": {
+    "filename": "prince_fortress.html",
+    "name": "Prince's Fortress",
+    "levels": "Levels 20-40"
+  },
+  "purgator.html": {
+    "filename": "purgator.html",
+    "name": "Purgatory",
+    "levels": "All levels"
+  },
+  "rats.html": {
+    "filename": "rats.html",
+    "name": "The Rats' Lair",
+    "levels": "Levels 2-10"
+  },
+  "redferne.html": {
+    "filename": "redferne.html",
+    "name": "Redferne's Residence",
+    "levels": "Levels 20-30"
+  },
+  "river.html": {
+    "filename": "river.html",
+    "name": "The River",
+    "levels": "All levels"
+  },
+  "sea_deception.html": {
+    "filename": "sea_deception.html",
+    "name": "The Sea of Deception",
+    "levels": "Levels 5-10"
+  },
+  "pirates_seas.html": {
+    "filename": "pirates_seas.html",
+    "name": "The Seas of the Pirate Lords",
+    "levels": "All levels"
+  },
+  "sentinel.html": {
+    "filename": "sentinel.html",
+    "name": "Sentinel Pass",
+    "levels": "All levels"
+  },
+  "sewer.html": {
+    "filename": "sewer.html",
+    "name": "Sewer",
+    "levels": "Levels 5-20"
+  },
+  "shadow_keep.html": {
+    "filename": "shadow_keep.html",
+    "name": "Shadow Keep",
+    "levels": "Levels 10-30"
+  },
+  "shadowsea.html": {
+    "filename": "shadowsea.html",
+    "name": "Shadowsea",
+    "levels": "Levels 20-30"
+  },
+  "shaolin.html": {
+    "filename": "shaolin.html",
+    "name": "Shaolin Temple",
+    "levels": "Levels 15-25"
+  },
+  "shire.html": {
+    "filename": "shire.html",
+    "name": "The Shire",
+    "levels": "Levels 5-15"
+  },
+  "smuggler.html": {
+    "filename": "smuggler.html",
+    "name": "Smugglers Ship",
+    "levels": "Levels 35-45"
+  },
+  "swamp_conn.html": {
+    "filename": "swamp_conn.html",
+    "name": "Swamp",
+    "levels": "All levels"
+  },
+  "theswampofdespair.html": {
+    "filename": "theswampofdespair.html",
+    "name": "The Swamp of Despair",
+    "levels": "Levels 60-75"
+  },
+  "tabernacle.html": {
+    "filename": "tabernacle.html",
+    "name": "The Tabernacle of Coggery",
+    "levels": "Levels 40-65"
+  },
+  "mrinthas.html": {
+    "filename": "mrinthas.html",
+    "name": "Temple of Mrinthas",
+    "levels": "Levels 35-50"
+  },
+  "tentusks.html": {
+    "filename": "tentusks.html",
+    "name": "TenTusks",
+    "levels": "Levels 20-40"
+  },
+  "thalos.html": {
+    "filename": "thalos.html",
+    "name": "Thalos",
+    "levels": "Levels 10-25"
+  },
+  "thoran.html": {
+    "filename": "thoran.html",
+    "name": "Thoran",
+    "levels": "Levels 35-90"
+  },
+  "three_trials.html": {
+    "filename": "three_trials.html",
+    "name": "The Three Trials",
+    "levels": "Levels 50-100"
+  },
+  "hitower.html": {
+    "filename": "hitower.html",
+    "name": "Tower of Sorcery",
+    "levels": "Levels 10-30"
+  },
+  "solace.html": {
+    "filename": "solace.html",
+    "name": "Town Of Solace",
+    "levels": "All levels"
+  },
+  "trollden.html": {
+    "filename": "trollden.html",
+    "name": "Troll Den",
+    "levels": "Levels 10-15"
+  },
+  "ultima.html": {
+    "filename": "ultima.html",
+    "name": "Ultima",
+    "levels": "Levels 5-30"
+  },
+  "underdark.html": {
+    "filename": "underdark.html",
+    "name": "Underdark",
+    "levels": "Levels 20-60"
+  },
+  "undersea.html": {
+    "filename": "undersea.html",
+    "name": "Undersea",
+    "levels": "Levels 15-25"
+  },
+  "vamp_vale.html": {
+    "filename": "vamp_vale.html",
+    "name": "Vale of the Vampyre",
+    "levels": "Levels 35-50"
+  },
+  "dreams.html": {
+    "filename": "dreams.html",
+    "name": "The Valley of Dreams",
+    "levels": "Levels 45-60"
+  },
+  "valley_elves.html": {
+    "filename": "valley_elves.html",
+    "name": "Valley of the Elves",
+    "levels": "Levels 5-20"
+  },
+  "vamp_catacombs.html": {
+    "filename": "vamp_catacombs.html",
+    "name": "Vampire Catacombs",
+    "levels": "Levels 25-40"
+  },
+  "vamp_hive.html": {
+    "filename": "vamp_hive.html",
+    "name": "The Vampyre Hive",
+    "levels": "Levels 50-80"
+  },
+  "anon_walls.html": {
+    "filename": "anon_walls.html",
+    "name": "The Walls of Anon",
+    "levels": "Levels 45-60"
+  },
+  "wastelands.html": {
+    "filename": "wastelands.html",
+    "name": "The Wastelands",
+    "levels": "All levels"
+  },
+  "lotus_temple.html": {
+    "filename": "lotus_temple.html",
+    "name": "White Lotus Temple",
+    "levels": "Levels 20-50"
+  },
+  "witch.html": {
+    "filename": "witch.html",
+    "name": "Witch's Tower",
+    "levels": "Levels 25-35"
+  },
+  "wyvern.html": {
+    "filename": "wyvern.html",
+    "name": "Wyvern's Tower",
+    "levels": "Levels 5-20"
+  },
+  "yggdrasil.html": {
+    "filename": "yggdrasil.html",
+    "name": "Yggdrasil",
+    "levels": "Levels 15-35"
+  },
+  "yitrite.html": {
+    "filename": "yitrite.html",
+    "name": "The Yitrite Mines",
+    "levels": "Levels 50-75"
+  },
+  "zyklor_tower.html": {
+    "filename": "zyklor_tower.html",
+    "name": "Zyklor's Tower",
+    "levels": "Levels 60-100"
+  }
+}

@@ -1,0 +1,134 @@
+/**
+ * Quick Actions Component Styles
+ * Mobile-first, touch-optimized action buttons for common MUD commands
+ */
+
+.quick-actions {
+  background-color: #2a2a2a;
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid #444;
+  margin-bottom: 1rem;
+}
+
+.quick-actions h4 {
+  margin: 0 0 0.75rem 0;
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.quick-action-btn {
+  /* Touch-friendly minimum size (48x48px per WCAG) */
+  min-width: 48px;
+  min-height: 60px;
+  padding: 0.5rem;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  
+  background-color: #1a1a1a;
+  border: 2px solid #444;
+  border-radius: 8px;
+  color: #e0e0e0;
+  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  /* Touch optimization */
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.quick-action-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.quick-action-text {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.quick-action-btn:hover:not(:disabled) {
+  background-color: #2a2a2a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.quick-action-btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.quick-action-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  border-color: #333;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .quick-actions {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .quick-actions h4 {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .quick-actions-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.4rem;
+  }
+  
+  .quick-action-btn {
+    min-height: 56px;
+    padding: 0.4rem;
+  }
+  
+  .quick-action-icon {
+    font-size: 1.8rem;
+  }
+  
+  .quick-action-text {
+    font-size: 0.65rem;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .quick-actions-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* Large screens */
+@media (min-width: 1025px) {
+  .quick-actions-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  
+  .quick-action-btn {
+    min-height: 70px;
+  }
+}

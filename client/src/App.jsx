@@ -12,6 +12,7 @@ import SkillAssign from './components/SkillAssign';
 import CharacterSheet from './components/CharacterSheet';
 import ShopModal from './components/ShopModal';
 import PracticeModal from './components/PracticeModal';
+import MapModal from './components/MapModal';
 
 /**
  * Main application component for DD4 Web Client
@@ -39,6 +40,9 @@ function App() {
   const [shopMessage, setShopMessage] = useState(null);
   const [showPracticeModal, setShowPracticeModal] = useState(false);
   const [itemDetails, setItemDetails] = useState({}); // Store detailed item info keyed by item name
+  const [mapsData, setMapsData] = useState(null); // All available maps from maps.json
+  const [currentMap, setCurrentMap] = useState(null); // Current area's map data
+  const [showMapModal, setShowMapModal] = useState(false); // Store detailed item info keyed by item name
   const ws = useRef(null);
   const reconnectTimeoutRef = useRef(null);
   const reconnectAttemptRef = useRef(0); // Use ref to track attempts for closure issues
@@ -63,6 +67,19 @@ function App() {
         console.error('Failed to parse saved openers:', e);
       }
     }
+  }, []);
+
+  // Load maps.json on mount
+  useEffect(() => {
+    fetch('/maps.json')
+      .then(response => response.json())
+      .then(data => {
+        console.log('Loaded maps.json:', Object.keys(data).length, 'maps');
+        setMapsData(data);
+      })
+      .catch(error => {
+        console.error('Failed to load maps.json:', error);
+      });
   }, []);
 
   // Connect to WebSocket gateway with reconnection logic
@@ -268,6 +285,30 @@ function App() {
       case 'Room.Info':
         setRoom(data);
         addMessage(`You are in: ${data.name}`, 'room');
+        
+        // Match area name to map data
+        if (data.areaName && mapsData) {
+          console.log('Area name from server:', data.areaName);
+          
+          // Find matching map by comparing area names (case-insensitive, trimmed)
+          const areaNameLower = data.areaName.toLowerCase().trim();
+          let matchedMap = null;
+          
+          for (const [filename, mapInfo] of Object.entries(mapsData)) {
+            const mapNameLower = mapInfo.name.toLowerCase().trim();
+            if (mapNameLower === areaNameLower) {
+              console.log('Found matching map:', filename, mapInfo);
+              matchedMap = mapInfo;
+              break;
+            }
+          }
+          
+          setCurrentMap(matchedMap);
+          
+          if (!matchedMap) {
+            console.log('No map found for area:', data.areaName);
+          }
+        }
         break;
       
       case 'Char.Skills':
@@ -478,7 +519,13 @@ function App() {
             connected={connected}
             onOpenCharacterSheet={() => setShowCharacterSheet(true)}
           />
-          <Compass exits={room.exits} onMove={handleMove} onCommand={sendCommand} />
+          <Compass 
+            exits={room.exits} 
+            onMove={handleMove} 
+            onCommand={sendCommand}
+            hasMap={currentMap !== null}
+            onShowMap={() => setShowMapModal(true)}
+          />
         </div>
 
         <div className="main-panel">
@@ -556,6 +603,14 @@ function App() {
           onClose={() => setShowPracticeModal(false)}
           onPractice={sendCommand}
           connected={connected}
+        />
+      )}
+
+      {showMapModal && currentMap && (
+        <MapModal
+          mapData={currentMap}
+          playerLevel={vitals.level || 1}
+          onClose={() => setShowMapModal(false)}
         />
       )}
     </div>

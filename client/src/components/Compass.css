@@ -5,10 +5,40 @@
   border: 1px solid #444;
 }
 
+.compass-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
 .compass h3 {
-  margin: 0 0 1rem 0;
+  margin: 0;
   color: #ff6b6b;
   font-size: 1rem;
+}
+
+.map-button {
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  border: 2px solid #5da3f0;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.map-button:hover {
+  background: linear-gradient(135deg, #5da3f0 0%, #4a90e2 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+.map-button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .compass-grid {
