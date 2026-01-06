@@ -11,16 +11,18 @@ import './QuickActions.css';
  * - onCommand: callback function to execute a command
  * - connected: boolean indicating server connection status
  * - onOpenCharacterSheet: callback to open the character sheet modal
+ * - onOpenSpellBook: callback to open the spell book modal
  * 
  * Outputs: Rendered quick action button bar
  * 
  * Notes: Icons use emoji for universal compatibility. Can be replaced with
  *        icon library (FontAwesome, Material Icons) for more polished look.
  */
-function QuickActions({ onCommand, connected, onOpenCharacterSheet }) {
+function QuickActions({ onCommand, connected, onOpenCharacterSheet, onOpenSpellBook }) {
   const quickCommands = [
     { label: '👁️', text: 'Look', command: 'look', color: '#2196f3' },
     { label: '📋', text: 'Sheet', action: 'sheet', color: '#9c27b0' },
+    { label: '📖', text: 'Spells', action: 'spellbook', color: '#673ab7' },
     { label: '📊', text: 'Score', command: 'score', color: '#4caf50' },
     { label: '👥', text: 'Who', command: 'who', color: '#00bcd4' },
   ];
@@ -30,6 +32,11 @@ function QuickActions({ onCommand, connected, onOpenCharacterSheet }) {
     
     if (cmd.action === 'sheet') {
       onOpenCharacterSheet();
+      return;
+    }
+    
+    if (cmd.action === 'spellbook') {
+      onOpenSpellBook();
       return;
     }
     

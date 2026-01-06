@@ -14,6 +14,7 @@ import ShopModal from './components/ShopModal';
 import HealerModal from './components/HealerModal';
 import PracticeModal from './components/PracticeModal';
 import MapModal from './components/MapModal';
+import SpellBookModal from './components/SpellBookModal';
 
 /**
  * Main application component for DD4 Web Client
@@ -41,6 +42,7 @@ function App() {
   const [shopMessage, setShopMessage] = useState(null);
   const [healerData, setHealerData] = useState(null); // { healer, services }
   const [showPracticeModal, setShowPracticeModal] = useState(false);
+  const [showSpellBook, setShowSpellBook] = useState(false);
   const [itemDetails, setItemDetails] = useState({}); // Store detailed item info keyed by item name
   const [mapsData, setMapsData] = useState(null); // All available maps from maps.json
   const [currentMap, setCurrentMap] = useState(null); // Current area's map data
@@ -551,6 +553,7 @@ function App() {
             onCommand={sendCommand} 
             connected={connected}
             onOpenCharacterSheet={() => setShowCharacterSheet(true)}
+            onOpenSpellBook={() => setShowSpellBook(true)}
           />
           <Compass 
             exits={room.exits} 
@@ -636,6 +639,16 @@ function App() {
           onClose={() => setShowPracticeModal(false)}
           onPractice={sendCommand}
           connected={connected}
+        />
+      )}
+
+      {showSpellBook && (
+        <SpellBookModal
+          skills={skills}
+          room={room}
+          inventory={inventory}
+          onCommand={sendCommand}
+          onClose={() => setShowSpellBook(false)}
         />
       )}
 

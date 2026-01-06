@@ -649,17 +649,26 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
         webgate_serialize_extra_flags(obj, obj->identified, extra_flags_json, sizeof(extra_flags_json));
         webgate_serialize_ego_flags(obj, obj->identified, ego_flags_json, sizeof(ego_flags_json));
 
+        /* Check if we have room in buffer before adding */
+        if (strlen(items_json) + 512 >= sizeof(items_json))
+        {
+            sprintf(log_buf, "WebGate: Items list too large for room %d, truncating", room->vnum);
+            log_string(log_buf);
+            break;
+        }
+
         if (!first)
             strcat(items_json, ",");
         sprintf(items_json + strlen(items_json),
                 "{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d,\"type\":%d,"
-                "\"identified\":%s,\"extraFlags\":%s,\"egoFlags\":%s}",
+                "\"identified\":%s,\"canTake\":%s,\"extraFlags\":%s,\"egoFlags\":%s}",
                 obj->pIndexData ? obj->pIndexData->vnum : 0,
                 temp_name,
                 keywords_escaped,
                 obj->pIndexData ? obj->pIndexData->vnum : 0,
                 obj->item_type,
                 obj->identified ? "true" : "false",
+                IS_SET(obj->wear_flags, ITEM_TAKE) ? "true" : "false",
                 extra_flags_json,
                 ego_flags_json);
         first = false;
@@ -667,18 +676,16 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
     }
     strcat(items_json, "]");
 
-    /* Build NPCs array JSON - limit to 20 NPCs, exclude the player's character */
+    /* Build NPCs array JSON - limit to 20 NPCs */
     sprintf(npcs_json, "[");
     first = true;
     for (rch = room->people; rch && npc_count < 20; rch = rch->next_in_room)
     {
         char keywords_escaped[256];
+        bool is_npc = IS_NPC(rch);
+        bool is_player = !is_npc;
 
-        /* Skip the player's own character */
-        if (!IS_NPC(rch) && web_desc->mud_desc && rch == web_desc->mud_desc->character)
-            continue;
-
-        /* Escape NPC short description (for display) */
+        /* Escape character short description (for display) */
         for (i = 0, j = 0; rch->short_descr[i] != '\0' && j < sizeof(temp_name) - 2; i++)
         {
             if (rch->short_descr[i] == '"' || rch->short_descr[i] == '\\')
@@ -688,7 +695,7 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
         }
         temp_name[j] = '\0';
 
-        /* Escape NPC keywords (for commands) - use first keyword only */
+        /* Escape character keywords (for commands) - use first keyword only */
         for (i = 0, j = 0; rch->name[i] != '\0' && rch->name[i] != ' ' && j < sizeof(keywords_escaped) - 2; i++)
         {
             if (rch->name[i] == '"' || rch->name[i] == '\\')
@@ -698,18 +705,41 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
         }
         keywords_escaped[j] = '\0';
 
+        /* Check if we have room in buffer before adding */
+        if (strlen(npcs_json) + 512 >= sizeof(npcs_json))
+        {
+            sprintf(log_buf, "WebGate: NPCs list too large for room %d, truncating", room->vnum);
+            log_string(log_buf);
+            break;
+        }
+
         if (!first)
             strcat(npcs_json, ",");
-        sprintf(npcs_json + strlen(npcs_json),
-                "{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d,\"hostile\":%s,\"isShopkeeper\":%s,\"isTrainer\":%s,\"isHealer\":%s}",
-                IS_NPC(rch) && rch->pIndexData ? rch->pIndexData->vnum : 0,
-                temp_name,
-                keywords_escaped,
-                IS_NPC(rch) && rch->pIndexData ? rch->pIndexData->vnum : 0,
-                IS_NPC(rch) && IS_SET(rch->act, ACT_AGGRESSIVE) ? "true" : "false",
-                IS_NPC(rch) && rch->pIndexData && rch->pIndexData->pShop ? "true" : "false",
-                IS_NPC(rch) && IS_SET(rch->act, ACT_PRACTICE) ? "true" : "false",
-                IS_NPC(rch) && IS_SET(rch->act, ACT_IS_HEALER) ? "true" : "false");
+
+        if (is_player)
+        {
+            /* Player entry */
+            sprintf(npcs_json + strlen(npcs_json),
+                    "{\"id\":0,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":0,\"isPlayer\":true,\"level\":%d}",
+                    temp_name,
+                    keywords_escaped,
+                    rch->level);
+        }
+        else
+        {
+            /* NPC entry */
+            sprintf(npcs_json + strlen(npcs_json),
+                    "{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d,\"hostile\":%s,\"isShopkeeper\":%s,\"isTrainer\":%s,\"isHealer\":%s,\"isPlayer\":false}",
+                    rch->pIndexData ? rch->pIndexData->vnum : 0,
+                    temp_name,
+                    keywords_escaped,
+                    rch->pIndexData ? rch->pIndexData->vnum : 0,
+                    IS_SET(rch->act, ACT_AGGRESSIVE) ? "true" : "false",
+                    rch->pIndexData && rch->pIndexData->pShop ? "true" : "false",
+                    IS_SET(rch->act, ACT_PRACTICE) ? "true" : "false",
+                    IS_SET(rch->act, ACT_IS_HEALER) ? "true" : "false");
+        }
+
         first = false;
         npc_count++;
     }
@@ -1296,7 +1326,7 @@ void webgate_send_char_skills(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
         *dst = '\0';
 
         /* Build JSON entry for this skill */
-        sprintf(skill_entry, "%s{\"id\":%d,\"name\":\"%s\",\"learned\":%d,\"mana\":%d,\"beats\":%d,\"type\":\"%s\",\"opener\":%s,\"pracType\":%d}",
+        sprintf(skill_entry, "%s{\"id\":%d,\"name\":\"%s\",\"learned\":%d,\"mana\":%d,\"beats\":%d,\"type\":\"%s\",\"opener\":%s,\"pracType\":%d,\"target\":%d}",
                 (count > 0 ? "," : ""),
                 sn,
                 skill_name_escaped,
@@ -1305,7 +1335,8 @@ void webgate_send_char_skills(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
                 skill_table[sn].beats,
                 skill_type,
                 is_opener ? "true" : "false",
-                skill_table[sn].prac_type);
+                skill_table[sn].prac_type,
+                skill_table[sn].target);
 
         /* Check if adding this entry would overflow the buffer */
         if (strlen(json) + strlen(skill_entry) + 10 >= sizeof(json))
