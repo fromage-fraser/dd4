@@ -11,6 +11,7 @@ import SkillBar from './components/SkillBar';
 import SkillAssign from './components/SkillAssign';
 import CharacterSheet from './components/CharacterSheet';
 import ShopModal from './components/ShopModal';
+import HealerModal from './components/HealerModal';
 import PracticeModal from './components/PracticeModal';
 import MapModal from './components/MapModal';
 
@@ -38,6 +39,7 @@ function App() {
   const [equipment, setEquipment] = useState(null);
   const [shopData, setShopData] = useState(null); // { shopkeeper, items }
   const [shopMessage, setShopMessage] = useState(null);
+  const [healerData, setHealerData] = useState(null); // { healer, services }
   const [showPracticeModal, setShowPracticeModal] = useState(false);
   const [itemDetails, setItemDetails] = useState({}); // Store detailed item info keyed by item name
   const [mapsData, setMapsData] = useState(null); // All available maps from maps.json
@@ -370,6 +372,12 @@ function App() {
         setShopData(data);
         break;
       
+      case 'Healer.Services':
+        // Handle healer services
+        console.log('Healer.Services received:', data);
+        setHealerData(data);
+        break;
+      
       case 'Comm.Channel':
         // Handle channel messages (system, chat, game output, etc)
         console.log('Comm.Channel received:', data);
@@ -538,7 +546,7 @@ function App() {
 
       <div className="app-content">
         <div className="left-panel">
-          <CharacterInfo vitals={vitals} status={status} />
+          <CharacterInfo vitals={vitals} status={status} onCommand={sendCommand} />
           <QuickActions 
             onCommand={sendCommand} 
             connected={connected}
@@ -636,6 +644,16 @@ function App() {
           mapData={currentMap}
           playerLevel={vitals.level || 1}
           onClose={() => setShowMapModal(false)}
+        />
+      )}
+
+      {healerData && (
+        <HealerModal
+          healer={healerData.healer}
+          services={healerData.services}
+          onClose={() => setHealerData(null)}
+          onBuyService={sendCommand}
+          connected={connected}
         />
       )}
     </div>

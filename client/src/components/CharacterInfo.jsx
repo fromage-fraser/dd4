@@ -8,7 +8,7 @@ import './CharacterInfo.css';
  * character metadata (name, level, class, race), and active affects/buffs.
  * Updates via GMCP Char.Vitals and Char.Status messages from server.
  */
-function CharacterInfo({ vitals, status }) {
+function CharacterInfo({ vitals, status, onCommand }) {
     if (!vitals || !status) {
         return (
             <div className="character-info">
@@ -27,6 +27,50 @@ function CharacterInfo({ vitals, status }) {
         if (percent > 50) return '#ffeb3b'; // Yellow
         if (percent > 25) return '#ff9800'; // Orange
         return '#f44336'; // Red
+    };
+
+    /**
+     * Intent: Map affect name to emoji icon for compact display.
+     * Inputs: affectName - Name of the affect/spell/buff.
+     * Outputs: Emoji string representing the affect.
+     */
+    const getAffectIcon = (affectName) => {
+        const name = affectName.toLowerCase();
+        
+        // Positive buffs
+        if (name.includes('bless')) return '✨';
+        if (name.includes('armor') || name.includes('protection')) return '🛡️';
+        if (name.includes('shield')) return '🛡️';
+        if (name.includes('sanctuary')) return '🌟';
+        if (name.includes('haste') || name.includes('speed')) return '⚡';
+        if (name.includes('strength') || name.includes('giant')) return '💪';
+        if (name.includes('fly') || name.includes('flying')) return '🕊️';
+        if (name.includes('invisible') || name.includes('invis')) return '👻';
+        if (name.includes('detect') || name.includes('see')) return '👁️';
+        if (name.includes('infravision') || name.includes('dark')) return '🌙';
+        if (name.includes('vitalize')) return '❤️';
+        if (name.includes('regenerate') || name.includes('regen')) return '💚';
+        if (name.includes('stone') || name.includes('rock')) return '🗿';
+        if (name.includes('water')) return '💧';
+        if (name.includes('fire') || name.includes('flame')) return '🔥';
+        if (name.includes('ice') || name.includes('frost')) return '❄️';
+        if (name.includes('pass door')) return '🚪';
+        if (name.includes('refresh')) return '💨';
+        
+        // Negative debuffs
+        if (name.includes('poison')) return '☠️';
+        if (name.includes('curse')) return '😈';
+        if (name.includes('blind')) return '🙈';
+        if (name.includes('plague')) return '🦠';
+        if (name.includes('sleep')) return '😴';
+        if (name.includes('charm')) return '💖';
+        if (name.includes('weaken')) return '🥴';
+        if (name.includes('slow')) return '🐌';
+        if (name.includes('fear')) return '😱';
+        if (name.includes('stun')) return '💫';
+        
+        // Default
+        return '🔮';
     };
     
     return (
@@ -105,18 +149,25 @@ function CharacterInfo({ vitals, status }) {
             
             {status.affects && status.affects.length > 0 && (
                 <div className="active-affects">
-                    <h4>Active Effects</h4>
+                    <h4 
+                        className="affects-title clickable" 
+                        onClick={() => onCommand && onCommand('affects')}
+                        title="Click to see detailed affects"
+                    >
+                        Active Effects
+                    </h4>
                     <div className="affect-list">
                         {status.affects.map((aff, idx) => {
                             const isExpiring = aff.duration <= 5;
+                            const icon = getAffectIcon(aff.name);
                             return (
                                 <span 
                                     key={idx} 
-                                    className={`affect-badge ${isExpiring ? 'expiring' : ''}`}
+                                    className={`affect-icon ${isExpiring ? 'expiring' : ''}`}
                                     title={`${aff.name} (${aff.duration} rounds remaining)`}
                                 >
-                                    {aff.name}
-                                    <span className="affect-duration">({aff.duration})</span>
+                                    <span className="affect-emoji">{icon}</span>
+                                    <span className="affect-timer">{aff.duration}</span>
                                 </span>
                             );
                         })}

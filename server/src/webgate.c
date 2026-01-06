@@ -701,14 +701,15 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
         if (!first)
             strcat(npcs_json, ",");
         sprintf(npcs_json + strlen(npcs_json),
-                "{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d,\"hostile\":%s,\"isShopkeeper\":%s,\"isTrainer\":%s}",
+                "{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d,\"hostile\":%s,\"isShopkeeper\":%s,\"isTrainer\":%s,\"isHealer\":%s}",
                 IS_NPC(rch) && rch->pIndexData ? rch->pIndexData->vnum : 0,
                 temp_name,
                 keywords_escaped,
                 IS_NPC(rch) && rch->pIndexData ? rch->pIndexData->vnum : 0,
                 IS_NPC(rch) && IS_SET(rch->act, ACT_AGGRESSIVE) ? "true" : "false",
                 IS_NPC(rch) && rch->pIndexData && rch->pIndexData->pShop ? "true" : "false",
-                IS_NPC(rch) && IS_SET(rch->act, ACT_PRACTICE) ? "true" : "false");
+                IS_NPC(rch) && IS_SET(rch->act, ACT_PRACTICE) ? "true" : "false",
+                IS_NPC(rch) && IS_SET(rch->act, ACT_IS_HEALER) ? "true" : "false");
         first = false;
         npc_count++;
     }
@@ -976,6 +977,207 @@ void webgate_send_shop_inventory(CHAR_DATA *ch, CHAR_DATA *keeper)
              items_json);
 
     webgate_send_gmcp(web_desc, "Shop.Inventory", json);
+}
+
+/*
+ * Intent: Send healer services list to web client via GMCP for healer modal display.
+ *
+ * Inputs: ch - Player requesting healer services; healer - NPC mob with ACT_IS_HEALER flag.
+ * Outputs: Sends "Healer.Services" GMCP message with JSON structure:
+ *          {healer: name, services: [{keyword, name, description, cost, category}]}
+ * Preconditions: ch must have web descriptor; healer must be valid NPC.
+ * Postconditions: Client receives healer service list and opens healer modal UI.
+ * Failure Behavior: Returns silently if no web descriptor.
+ * Notes: Service descriptions pulled from skill_table with generic fallbacks.
+ *        Categories: healing, curing, utility, buff. Based on spell_list from healer.c.
+ */
+void webgate_send_healer_services(CHAR_DATA *ch, CHAR_DATA *healer)
+{
+    WEB_DESCRIPTOR_DATA *web_desc;
+    char json[MAX_STRING_LENGTH * 2];
+    char services_json[MAX_STRING_LENGTH * 2];
+    char healer_name_escaped[256];
+    char temp_name[256];
+    char temp_keyword[256];
+    char temp_description[512];
+    const int NUMBER_SPELLS = 14;
+    int i, j, sn;
+    bool first = true;
+
+    /* Healer spell list from healer.c */
+    const struct healer_spell
+    {
+        char *keyword;
+        char *spell_name;
+        int price;
+        char *category; /* healing, curing, utility, buff */
+    } spell_list[14] = {
+        {"light", "cure light wounds", 2, "healing"},
+        {"serious", "cure serious wounds", 5, "healing"},
+        {"critical", "cure critical wounds", 10, "healing"},
+        {"heal", "heal", 15, "healing"},
+        {"power", "power heal", 35, "healing"},
+        {"blindness", "cure blindness", 5, "curing"},
+        {"poison", "cure poison", 5, "curing"},
+        {"stabilise", "stabilise", 5, "healing"},
+        {"regenerate", "regenerate", 35, "buff"},
+        {"curse", "remove curse", 5, "curing"},
+        {"refresh", "refresh", 1, "utility"},
+        {"bless", "bless", 10, "buff"},
+        {"mana", "restore mana", 40, "utility"},
+        {"vitalize", "vitalize", 120, "buff"}};
+
+    if (!ch || !healer)
+        return;
+
+    /* Find web descriptor for this character */
+    for (web_desc = web_descriptor_list; web_desc; web_desc = web_desc->next)
+    {
+        if (web_desc->mud_desc && web_desc->mud_desc->character == ch)
+            break;
+    }
+
+    if (!web_desc)
+        return;
+
+    /* Escape healer name for JSON */
+    for (i = 0, j = 0; healer->short_descr[i] != '\0' && j < sizeof(healer_name_escaped) - 2; i++)
+    {
+        if (healer->short_descr[i] == '"' || healer->short_descr[i] == '\\')
+            healer_name_escaped[j++] = '\\';
+        if (healer->short_descr[i] >= 32)
+            healer_name_escaped[j++] = healer->short_descr[i];
+    }
+    healer_name_escaped[j] = '\0';
+
+    /* Build services JSON array */
+    sprintf(services_json, "[");
+
+    for (i = 0; i < NUMBER_SPELLS; i++)
+    {
+        char description[512];
+        int k;
+
+        /* Escape keyword */
+        for (j = 0, k = 0; spell_list[i].keyword[j] != '\0' && k < sizeof(temp_keyword) - 2; j++)
+        {
+            if (spell_list[i].keyword[j] == '"' || spell_list[i].keyword[j] == '\\')
+                temp_keyword[k++] = '\\';
+            if (spell_list[i].keyword[j] >= 32)
+                temp_keyword[k++] = spell_list[i].keyword[j];
+        }
+        temp_keyword[k] = '\0';
+
+        /* Escape spell name */
+        for (j = 0, k = 0; spell_list[i].spell_name[j] != '\0' && k < sizeof(temp_name) - 2; j++)
+        {
+            if (spell_list[i].spell_name[j] == '"' || spell_list[i].spell_name[j] == '\\')
+                temp_name[k++] = '\\';
+            if (spell_list[i].spell_name[j] >= 32)
+                temp_name[k++] = spell_list[i].spell_name[j];
+        }
+        temp_name[k] = '\0';
+
+        /* Get spell description from skill_table or use fallback */
+        sn = skill_lookup(spell_list[i].spell_name);
+        if (sn >= 0 && sn < MAX_SKILL && skill_table[sn].noun_damage && skill_table[sn].noun_damage[0] != '\0')
+        {
+            /* Use skill table description */
+            sprintf(description, "%s", skill_table[sn].noun_damage);
+        }
+        else
+        {
+            /* Generic fallback descriptions based on spell name */
+            if (!str_cmp(spell_list[i].keyword, "light"))
+                sprintf(description, "Heals minor wounds");
+            else if (!str_cmp(spell_list[i].keyword, "serious"))
+                sprintf(description, "Heals serious wounds");
+            else if (!str_cmp(spell_list[i].keyword, "critical"))
+                sprintf(description, "Heals critical wounds");
+            else if (!str_cmp(spell_list[i].keyword, "heal"))
+                sprintf(description, "Restores a large amount of health");
+            else if (!str_cmp(spell_list[i].keyword, "power"))
+                sprintf(description, "Restores a massive amount of health");
+            else if (!str_cmp(spell_list[i].keyword, "blindness"))
+                sprintf(description, "Removes blindness");
+            else if (!str_cmp(spell_list[i].keyword, "poison"))
+                sprintf(description, "Cures poison");
+            else if (!str_cmp(spell_list[i].keyword, "stabilise"))
+                sprintf(description, "Stabilizes dying character");
+            else if (!str_cmp(spell_list[i].keyword, "regenerate"))
+                sprintf(description, "Grants regeneration over time");
+            else if (!str_cmp(spell_list[i].keyword, "curse"))
+                sprintf(description, "Removes curses");
+            else if (!str_cmp(spell_list[i].keyword, "refresh"))
+                sprintf(description, "Restores movement energy");
+            else if (!str_cmp(spell_list[i].keyword, "bless"))
+                sprintf(description, "Grants divine blessing");
+            else if (!str_cmp(spell_list[i].keyword, "mana"))
+                sprintf(description, "Restores 100 mana");
+            else if (!str_cmp(spell_list[i].keyword, "vitalize"))
+                sprintf(description, "Greatly enhances vitality");
+            else
+                sprintf(description, "Provides healing service");
+        }
+
+        /* Escape description for JSON */
+        for (j = 0, k = 0; description[j] != '\0' && k < sizeof(temp_description) - 2; j++)
+        {
+            if (description[j] == '"' || description[j] == '\\')
+                temp_description[k++] = '\\';
+            if (description[j] >= 32)
+                temp_description[k++] = description[j];
+        }
+        temp_description[k] = '\0';
+
+        /* Add service to array */
+        if (!first)
+            strcat(services_json, ",");
+
+        sprintf(services_json + strlen(services_json),
+                "{\"keyword\":\"%s\",\"name\":\"%s\",\"description\":\"%s\",\"cost\":%d,\"category\":\"%s\"}",
+                temp_keyword,
+                temp_name,
+                temp_description,
+                spell_list[i].price,
+                spell_list[i].category);
+
+        first = false;
+    }
+
+    strcat(services_json, "]");
+
+    /* Build final GMCP message */
+    sprintf(json, "{\"healer\":\"%s\",\"services\":%s}",
+            healer_name_escaped,
+            services_json);
+
+    webgate_send_gmcp(web_desc, "Healer.Services", json);
+}
+
+/*
+ * Intent: Check if character is using web client (has active web descriptor).
+ *
+ * Inputs: ch - Character to check
+ * Outputs: true if character has web descriptor, false otherwise
+ * Preconditions: ch must be valid
+ * Notes: Used to conditionally skip text output when web client handles via GMCP.
+ */
+bool webgate_is_web_client(CHAR_DATA *ch)
+{
+    WEB_DESCRIPTOR_DATA *web_desc;
+
+    if (!ch)
+        return false;
+
+    /* Find web descriptor for this character */
+    for (web_desc = web_descriptor_list; web_desc; web_desc = web_desc->next)
+    {
+        if (web_desc->mud_desc && web_desc->mud_desc->character == ch)
+            return true;
+    }
+
+    return false;
 }
 
 /*

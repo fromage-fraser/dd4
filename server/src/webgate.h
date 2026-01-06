@@ -360,6 +360,17 @@ void webgate_send_char_status(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch);
 void webgate_send_shop_inventory(CHAR_DATA *ch, CHAR_DATA *keeper);
 
 /*
+ * Intent: Send healer services list to web client via GMCP for healer modal display.
+ *
+ * Inputs: ch - Player requesting healer services; healer - Healer NPC mob
+ * Preconditions: ch and healer must be valid; healer has ACT_IS_HEALER flag
+ * Postconditions: Healer.Services GMCP message sent if player has web connection
+ *
+ * Notes: Service data pulled from healer spell list; called from do_heal command
+ */
+void webgate_send_healer_services(CHAR_DATA *ch, CHAR_DATA *healer);
+
+/*
  * Intent: Notify web clients when GMCP protocol updates occur.
  *
  * Inputs: mud_desc - MUD descriptor with GMCP updates
@@ -411,6 +422,15 @@ void webgate_register_fds(fd_set *readfds, fd_set *writefds, int *maxfd);
  * Example output: "get sword"
  */
 char *webgate_json_to_command(const char *json_msg);
+
+/*
+ * Intent: Check if character is using web client (has active web descriptor).
+ *
+ * Inputs: ch - Character to check
+ * Outputs: true if character has web descriptor, false otherwise
+ * Notes: Useful for conditional output (skip text when web client handles via GMCP)
+ */
+bool webgate_is_web_client(CHAR_DATA *ch);
 
 /*
  * Global state

@@ -47,6 +47,11 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
             baseActions.push({ label: '📚 Practice', command: 'practice', isTrainer: true });
         }
 
+        // Add Heal action for healers
+        if (npc && npc.isHealer) {
+            baseActions.push({ label: '⚕️ Heal', command: 'heal' });
+        }
+
         // Add opener skills if available
         if (openers && skills) {
             openers.forEach((openerId, idx) => {
@@ -111,6 +116,13 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
         // Handle list action (no target needed)
         if (action.command === 'list') {
             onCommand('list');
+            setSelectedNpc(null);
+            return;
+        }
+
+        // Handle heal action (no target needed)
+        if (action.command === 'heal') {
+            onCommand('heal');
             setSelectedNpc(null);
             return;
         }
@@ -269,6 +281,11 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
                                     {npc.isTrainer && (
                                         <span className="npc-indicator trainer" title="Trainer">
                                             📚
+                                        </span>
+                                    )}
+                                    {npc.isHealer && (
+                                        <span className="npc-indicator healer" title="Healer">
+                                            ⚕️
                                         </span>
                                     )}
                                 </button>
