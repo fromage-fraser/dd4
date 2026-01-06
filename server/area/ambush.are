@@ -650,6 +650,8 @@ A spear with blood stains on it is here.~
 5 134217728 1|8192
 0~ 0~ 0~ 2~
 12 0 0
+T
+iron/wood~
 E
 blood spear~
 The blood is long dried on the haft of the spear.
@@ -664,6 +666,8 @@ A wooden spear is here.~
 5 134217728 1|8192
 0~ 0~ 0~ 2~
 12 0 0
+T
+wood~
 E
 spear~
 The blade is made of iron and bound to the wooden
@@ -677,6 +681,8 @@ A poorly made arrow is here~
 5 0 1|16384
 0~ 0~ 0~ 11~
 3 0 0
+T
+steel/wood/leather~
 A
 18 -1
 A
@@ -764,6 +770,8 @@ A piece of leather armor is here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 150 0 0
+T
+leather~
 #4531
 helmet hard leather~
 a hard leather helmet~
@@ -772,6 +780,8 @@ A hard leather helmet is here.~
 9 0 1|16
 0~ 0~ 0~ 0~
 30 0 0
+T
+leather~
 #4532
 leggings hard leather~
 hard leather leggings~
@@ -780,6 +790,8 @@ A pair of hard leather leggings is here.~
 9 0 1|32
 0~ 0~ 0~ 0~
 45 0 0
+T
+leather~
 #4533
 boots hard leather~
 hard leather boots~
@@ -788,6 +800,8 @@ A pair of hard leather boots is here.~
 9 0 1|64
 0~ 0~ 0~ 0~
 30 0 0
+T
+leather~
 #4534
 gauntlets hard leather~
 hard leather gauntlets~
@@ -796,6 +810,8 @@ A pair of hard leather gauntlets is here.~
 9 0 1|128
 0~ 0~ 0~ 0~
 15 0 0
+T
+leather~
 #4535
 sleeves hard leather~
 hard leather sleeves~
@@ -804,6 +820,8 @@ A pair of hard leather sleeves is here.~
 9 0 1|256
 0~ 0~ 0~ 0~
 55 0 0
+T
+leather~
 #4536
 shield hard leather~
 hard leather shield~
@@ -812,6 +830,8 @@ A hard leather shield is here.~
 9 0 1|512
 0~ 0~ 0~ 0~
 35 0 0
+T
+leather~
 #4537
 girdle hard leather~
 hard leather girdle~
@@ -820,6 +840,8 @@ A hard leather girdle is here.~
 9 0 1|2048
 0~ 0~ 0~ 0~
 10 0 0
+T
+leather~
 #4538
 collar war dog~
 a war dog collar~
@@ -828,6 +850,8 @@ A war dog collar is here.~
 9 0 1|4
 0~ 0~ 0~ 0~
 20 0 0
+T
+leather~
 A
 19 1
 #4539
@@ -850,6 +874,8 @@ A short bow is here.~
 5 1073741824 1|8192
 0~ 0~ 0~ 4~
 13 0 0
+T
+wood~
 E
 bow~
 The bow is made of some springy kind of
@@ -889,6 +915,8 @@ A beautiful gold ring is here.~
 9 64 1|2
 0~ 0~ 0~ 0~
 2 0 0
+T
+gold~
 A
 17 -3
 A
@@ -1058,6 +1086,8 @@ A bullwhip is coiled on the ground.~
 5 0 1|8192
 0~ 0~ 0~ 4~
 6 0 0
+T
+leather~
 E
 whip bullwhip~
 The bullwhip is made of animal hide, and has been
@@ -1084,6 +1114,8 @@ A wavy bladed dagger is here.~
 5 0 1|8192
 0~ 0~ 0~ 11~
 3 0 0
+T
+steel/wood/leather~
 A
 19 1
 E
@@ -1132,6 +1164,8 @@ A suit of drow chain mail is here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 15 0 0
+T
+steel~
 A
 17 -5
 E
@@ -1147,6 +1181,8 @@ An spider amulet made of dark metal is here.~
 9 512 1|4
 0~ 0~ 0~ 0~
 3 0 0
+T
+silver~
 A
 12 10
 E
@@ -1162,6 +1198,8 @@ A bladed flail is here.~
 5 0 1|8192
 0~ 0~ 0~ 0~
 14 0 0
+T
+steel/wood/leather~
 A
 18 1
 A
@@ -1247,6 +1285,8 @@ A strange girdle is here.~
 9 64 1|2048
 0~ 0~ 0~ 0~
 8 0 0
+T
+leather~
 A
 1 1
 A
@@ -1263,6 +1303,8 @@ A runed broad sword lies here.~
 5 64|4096 1|8192
 0~ 0~ 0~ 5~
 16 0 0
+T
+steel/wood/leather~
 A
 18 1
 A

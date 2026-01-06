@@ -440,6 +440,8 @@ A colossal warhammer rests on the floor, glowing faintly.~
 5 1|64|274877906944 1|8192
 45~ 25~ 40~ 8~
 40 0 0
+T
+iron/wood~
 A
 18 3
 A
@@ -458,6 +460,8 @@ A thick armband gleams below you.~
 9 1|64 1|4096
 12~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 19 1
 A
@@ -474,6 +478,8 @@ A long curved scimitar ending in a snake's head lies here.~
 5 274877906944 1|8192
 40~ 25~ 35~ 3~
 10 0 0
+T
+steel/wood/leather~
 A
 2 2
 A
@@ -490,6 +496,8 @@ A green mail shirt lies here.~
 9 0 1|8
 10~ 1~ 6~ 11~
 15 0 0
+T
+steel~
 A
 2 2
 E
@@ -507,6 +515,8 @@ A circular shield carrying the design of a snake sits on the ground.~
 9 0 1|512
 12~ 1~ 6~ 11~
 10 0 0
+T
+steel/wood~
 E
 shield~
 This round shield is made from hardwood trimmed with steel.  Although not
@@ -521,6 +531,8 @@ A long handled mace rests here.~
 5 274877906944 1|8192
 0~ 25~ 40~ 8~
 25 0 0
+T
+iron/wood~
 A
 18 5
 A
@@ -538,6 +550,8 @@ A skin of the serpent lies on the floor.~
 9 274877906944 1|1024
 14~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 2 3
 A
@@ -560,6 +574,8 @@ You spot an oddly shaped helmet and visor here.~
 9 0 1|16
 12~ 1~ 6~ 11~
 10 0 0
+T
+steel~
 E
 helmet~
 This brass helmet and visor are shaped for a head other than a humans...
@@ -572,6 +588,8 @@ A gigantic double headed and spiked axe hovers in the air before you.~
 5 1|64|512|1024|274877906944 1|8192
 0~ 40~ 50~ 1~
 50 0 0
+T
+steel/wood~
 A
 19 10
 A
@@ -589,6 +607,8 @@ A throbbing steel symbol hangs from a neckchain.~
 9 2|64|274877906944 1|4
 15~ 1~ 6~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 19 7
 E
@@ -625,6 +645,8 @@ Luxuriant robes lay on the floor.~
 9 274877906944 1|8
 14~ 1~ 6~ 11~
 10 0 0
+T
+cloth~
 A
 23 -5
 A
@@ -642,6 +664,8 @@ A snake biting its own tail forms a silver ring.~
 9 274877906944 1|2
 12~ 1~ 6~ 11~
 5 0 0
+T
+silver~
 A
 12 50
 A
@@ -716,6 +740,8 @@ A rusty tack hammer lies here.~
 5 0 1|8192
 0~ 1~ 6~ 7~
 5 0 0
+T
+iron/wood~
 E
 hammer~
 The hammer is fragile and all but useless.  In desperate circumstances it could
@@ -729,6 +755,8 @@ An ancient chisel wouldn't cut through butter in the summer.~
 5 0 1|8192
 0~ 1~ 6~ 2~
 5 0 0
+T
+steel/wood/leather~
 E
 chisel~
 The chisel's blade is nicked and completely blunted.
@@ -915,6 +943,8 @@ A curved dagger is serrated on both edges.~
 5 64|274877906944 1|8192
 0~ 25~ 45~ 11~
 20 0 0
+T
+steel/wood/leather~
 A
 18 6
 A
@@ -932,6 +962,8 @@ A copper ring gleams from the floor.~
 9 64|274877906944 1|2
 10~ 1~ 6~ 11~
 5 0 0
+T
+copper~
 A
 17 -25
 A
@@ -948,6 +980,8 @@ On the floor lays a pair of green snakescale leggings.~
 9 274877906944 1|32
 14~ 1~ 6~ 11~
 25 0 0
+T
+steel~
 A
 14 50
 A
@@ -969,6 +1003,8 @@ Robust plate armour stands here.~
 9 274877906944 1|8
 15~ 1~ 6~ 11~
 40 0 0
+T
+steel~
 A
 17 -10
 A
@@ -986,6 +1022,8 @@ A sleek golden sabre lays here.~
 5 64|274877906944 1|8192
 0~ 30~ 50~ 11~
 35 0 0
+T
+gold~
 A
 19 7
 A
@@ -1027,6 +1065,8 @@ A solid iron engineer's hammer rests here.~
 5 64|274877906944 1|8192
 0~ 30~ 60~ 7~
 50 0 0
+T
+iron/wood/leather~
 A
 19 10
 A
@@ -1047,6 +1087,8 @@ An emerald green skullcap lays here.~
 9 274877906944 1|16
 20~ 1~ 6~ 11~
 5 0 0
+T
+bone~
 A
 17 -10
 A
@@ -1069,6 +1111,8 @@ A pair of sturdy, emerald leggings sit here.~
 9 274877906944 1|32
 16~ 1~ 6~ 11~
 30 0 0
+T
+emerald~
 A
 13 50
 A
@@ -1100,6 +1144,8 @@ You spy a large, bone handled spear.~
 5 64|128|134217728|274877906944 1|8192
 0~ 35~ 60~ 11~
 45 0 0
+T
+bone~
 A
 12 50
 A
@@ -1135,6 +1181,8 @@ Snake skulls are threaded on a metal chain.~
 9 274877906944 1|2048
 18~ 1~ 6~ 11~
 15 0 0
+T
+bone~
 A
 9 100
 A
@@ -1169,6 +1217,8 @@ A long, bulky lance stands here.~
 5 134217728|274877906944 1|8192
 0~ 25~ 45~ 11~
 35 0 0
+T
+steel/wood~
 A
 18 5
 A
@@ -1186,6 +1236,8 @@ A vicious cleaver lays on the floor.~
 5 274877906944 1|8192
 0~ 30~ 50~ 1~
 40 0 0
+T
+steel/wood/leather~
 A
 19 8
 A
@@ -1243,6 +1295,8 @@ A pair of brass hydraulic claws lay here.~
 9 274877906944 1|128
 18~ 1~ 6~ 11~
 40 0 0
+T
+brass/wood/leather~
 A
 1 4
 A
@@ -1272,6 +1326,8 @@ On the ground lays a tarnished silver bracelet.~
 9 274877906944 1|4096
 20~ 1~ 6~ 11~
 10 0 0
+T
+silver~
 A
 18 4
 A
@@ -1317,6 +1373,8 @@ Deep green armguards lay in a pair.~
 9 0 1|256
 20~ 1~ 6~ 11~
 20 0 0
+T
+emerald~
 A
 17 -10
 E
@@ -1332,6 +1390,8 @@ A glowing bastard sword hovers in the air before your eyes.~
 5 1|2|64|274877906944 1|8192
 0~ 40~ 60~ 3~
 35 0 0
+T
+steel/wood/leather~
 A
 18 8
 A
@@ -1370,6 +1430,8 @@ A small amulet lays on the flagstones.~
 9 274877906944 1|4
 22~ 1~ 6~ 11~
 5 0 0
+T
+granite~
 A
 18 8
 A
@@ -1451,6 +1513,8 @@ A doubled headed dwarven axe stands here.~
 5 2|64|274877906944 1|8192
 50~ 40~ 60~ 1~
 45 0 0
+T
+steel/wood~
 A
 18 12
 A

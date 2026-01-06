@@ -412,6 +412,8 @@ A sturdy rock sits here.~
 5 512|1024 1|8192
 0~ 1~ 6~ 8~
 5 0 0
+T
+steel/wood/leather~
 #18401
 pile bullion gold coins~
 a gleaming pile of coins~
@@ -428,6 +430,8 @@ A dull grey stone sits here and acts stonish.~
 9 1|32|64|1024|2048 1|16384
 0~ 0~ 0~ 0~
 1 0 0
+T
+granite~
 A
 18 6
 A

@@ -122,6 +122,8 @@ An axe made of plastic lies here.~
 5 0 8193
 0~ 1~ 6~ 3~
 15 600 200
+T
+steel/wood~
 #6601
 ring pink ice~
 a pink ice ring~
@@ -130,6 +132,8 @@ A pink ice ring draws your eye.~
 9 0 3
 1~ 0~ 0~ 0~
 8 7000 2500
+T
+silver~
 A
 1  1
 A
@@ -142,6 +146,8 @@ A linen robe is crumpled into a ball here.~
 9 0 1025
 1~ 0~ 0~ 0~
 5 4000 2000
+T
+cloth~
 A
 4 1
 A
@@ -178,6 +184,8 @@ A toy gun with a sharp bayonet lies here.~
 5 0 8193
 0~ 2~ 3~ 7~
 5 1700 1000
+T
+steel/wood/leather~
 #0
 
 

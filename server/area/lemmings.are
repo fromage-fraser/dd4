@@ -145,6 +145,8 @@ A tiny pickaxe lies here.~
 5 0 1|8192
 0~ 0~ 0~ 5~
 2 0 0
+T
+steel/wood~
 A
 18 -2
 A
@@ -159,6 +161,8 @@ A small hammer lies here.~
 5 0 1|8192
 0~ 0~ 0~ 7~
 5 0 0
+T
+iron/wood~
 A
 19 5
 A
@@ -171,6 +175,8 @@ A small axe lies here.~
 5 0 1|8192
 0~ 0~ 0~ 13~
 10 0 0
+T
+steel/wood~
 A
 5 1
 A
@@ -254,6 +260,8 @@ The dented helm of a lemming hero lies here.~
 9 2|1024 1|16
 0~ 0~ 0~ 0~
 5 0 0
+T
+steel~
 A
 19 3
 A
@@ -275,6 +283,8 @@ Claws of the beast have been severed and deposited here.~
 5 64|512|2048|4096 1|8192
 0~ 0~ 0~ 5~
 5 0 0
+T
+bone~
 A
 18 5
 #29961
@@ -285,6 +295,8 @@ A small gleaming scalpel lies here.~
 5 0 1|8192
 0~ 0~ 0~ 11~
 2 0 0
+T
+steel/wood/leather~
 A
 18 5
 A
@@ -297,6 +309,8 @@ A pile of cloth covered in arcane runes lies here.~
 9 16|64|512 1|1024
 0~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 A
 4 2
 A

@@ -151,6 +151,8 @@ Fur-lined trousers sit in a heap on the ground.~
 9 0 1|32
 ~ ~ ~ ~
 5 0 0
+T
+fur~
 A
 13 150
 
@@ -162,6 +164,8 @@ A pair of leather leg bindings has been left here.~
 9 0 1|32
 ~ ~ ~ ~
 5 0 0
+T
+leather~
 A
 19 8
 A
@@ -175,6 +179,8 @@ Beautiful, brightly coloured gypsy charms lay here.~
 9 0 1|256
 ~ ~ ~ ~
 5 0 0
+T
+leather~
 A
 19 15
 A
@@ -208,6 +214,8 @@ A sharp steel dagger sticks blade-first into the dirt.~
 5 0 0
 ~ ~ ~ 2~
 15 0 0
+T
+steel/wood/leather~
 A
 19 50
 A

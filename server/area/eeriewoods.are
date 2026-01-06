@@ -249,6 +249,8 @@ A brown belt with a shiny gold buckle has been dropped here.~
 9 2048 1|2048
 0~ 0~ 0~ 0~
 2 0 0
+T
+gold~
 A
 2 -5
 A
@@ -261,6 +263,8 @@ A pair of sturdy green breeches have been neatly folded up here.~
 9 2048 1|32
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 5 -2
 A
@@ -273,6 +277,8 @@ A green puritan style hat with a gold buckle sits here.~
 9 2048 1|16
 0~ 0~ 0~ 0~
 3 0 0
+T
+gold~
 A
 3 -2
 A
@@ -285,6 +291,8 @@ A homespun bright green tunic has been left here.~
 9 2048 1|8
 0~ 0~ 0~ 0~
 4 0 0
+T
+cloth~
 A
 12 -150
 A
@@ -299,6 +307,8 @@ A pair of green boots with bright gold buckles have been left here.~
 9 2048 1|64
 0~ 0~ 0~ 0~
 3 0 0
+T
+gold~
 A
 19 -8
 A
@@ -319,6 +329,8 @@ An ornate silver bridle is lying at your feet.~
 9 2|32|64|128|1024|2048|4096 1|16
 0~ 0~ 0~ 0~
 2 0 0
+T
+silver~
 A
 2 2
 A
@@ -397,6 +409,8 @@ A green hooded robe lies on the ground at your feet.~
 9 64 1|1024
 0~ 0~ 0~ 0~
 4 0 0
+T
+cloth~
 A
 17 -45
 #29015
@@ -407,6 +421,8 @@ An exquisite silver bracelet lies here.~
 9 64|1024 1|4096
 0~ 0~ 0~ 0~
 0 0 0
+T
+silver~
 A
 12 0
 #29016
@@ -417,6 +433,8 @@ A brown hooded robe lies on the ground at your feet.~
 9 64 1|1024
 0~ 0~ 0~ 0~
 4 0 0
+T
+cloth~
 A
 17 -45
 #29017
@@ -427,6 +445,8 @@ The fabled elven amulet of wisdom lies at your feet.~
 9 64|1024|2048 1|4
 0~ 0~ 0~ 0~
 1 0 0
+T
+silver~
 A
 4 6
 E

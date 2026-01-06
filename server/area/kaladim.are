@@ -224,6 +224,8 @@ A jagged spear lies here.~
 5 64 1|8192
 0~ 0~ 0~ 2~
 8 0 0
+T
+iron/wood~
 A
 19 8
 A
@@ -238,6 +240,8 @@ A small black bracer lies here.~
 9 2 1|4096
 0~ 0~ 0~ 3~
 5 0 0
+T
+steel~
 A
 2 2
 A
@@ -258,6 +262,8 @@ A barbed whip humming with evil rests here.~
 5 2|16 1|8192
 0~ 0~ 0~ 4~
 5 0 0
+T
+leather~
 A
 19 6
 A
@@ -272,6 +278,8 @@ Some scales lie on the ground.~
 9 0 1|1024
 0~ 0~ 0~ 0~
 15 0 0
+T
+dragonscale~
 A
 17 10
 A

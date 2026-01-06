@@ -212,6 +212,8 @@ A giant Turtle dragon shell lies here.~
 9 1 1|1024
 14~ 0~ 0~ 0~
 20 0 0
+T
+dragonscale~
 E
 turtle dragon shell~
 This is the giant shell of a Turtle dragon.
@@ -224,6 +226,8 @@ A farming scythe lies here.~
 5 0 1|8192
 0~ 5~ 15~ 3~
 10 0 0
+T
+steel/wood~
 E
 farming scythe~
 This scythe is used by the farmers to harvest their wheat.
@@ -251,6 +255,8 @@ A bright silver bracer lies here.~
 9 512 1|4096
 7~ 0~ 0~ 0~
 7 0 0
+T
+silver~
 E
 bright silver bracer~
 This is a bright silver bracer fitted with four gems. The inside of the
@@ -306,6 +312,8 @@ There is a silver longsword on the ground.~
 5 1024 1|8192
 0~ 5~ 20~ 1~
 7 0 0
+T
+silver~
 E
 silver longsword~
 This silver longsword looks as if it has seen many battles.
@@ -322,6 +330,8 @@ a pair of farmers longjohns are lying here.~
 9 0 1|8
 5~ 0~ 0~ 0~
 2 20 8
+T
+leather~
 E
 longjohns~
 Its a pair of longjohns....the kind a farmer would wear.
@@ -366,6 +376,8 @@ There is a suit of leather armor~
 9 0 1|8
 2~ 0~ 0~ 0~
 5 100 20
+T
+leather~
 #10014
 chamorro dagger~
 Chamorro Dagger~
@@ -374,6 +386,8 @@ There is a chamorro dagger lying here.~
 5 0 1|8192
 0~ 5~ 12~ 2~
 5 0 0
+T
+steel/wood/leather~
 E
 chamorro dagger~
 a chamorro dagger what else? It is engraved with, "Made in Guam"
@@ -386,6 +400,8 @@ There is a long wicked looking pole arm lying here.~
 5 134217728 1|8192
 0~ 7~ 15~ 0~
 20 0 0
+T
+steel/wood~
 E
 footmans lance~
 This is a long pole arm with detailed engravings on the shaft. The blade at
@@ -401,6 +417,8 @@ a large pile of skin is lying here.~
 9 0 1|8
 7~ 0~ 0~ 0~
 10 0 0
+T
+leather~
 E
 Human skin vest~
 This vest is made of multiple layers of human skin stitched together.
@@ -413,6 +431,8 @@ a helmet made of leather and iron lies here.~
 9 0 1|16
 4~ 0~ 0~ 0~
 4 0 0
+T
+iron/wood/leather~
 E
 draconian helmet~
 This is a crudly constructed leather helmet, held together with large

@@ -1262,6 +1262,8 @@ A blazing sword blinds you with its radiance.~
 5 1|1024|2048 1|8192
 ~ ~ ~ 11~
 1 0 0
+T
+steel/wood/leather~
 A
 19 7
 A
@@ -1275,6 +1277,8 @@ A blazing breastplate shines here.~
 9 1|2|1024|2048 1|8
 ~ ~ ~ ~
 1 0 0
+T
+steel~
 A
 19 11
 
@@ -1295,6 +1299,8 @@ Light~
 5 1|1024|2048 8192
 ~ ~ ~ 0~
 1 0 0
+T
+steel/wood/leather~
 A
 19 7
 A
@@ -1308,6 +1314,8 @@ Light~
 9 1|1024|2048 8
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 19 11
 
@@ -1337,6 +1345,8 @@ A shaft of light blinds you.~
 5 1024|2048|134217728 1|131072
 ~ ~ ~ 0~
 1 0 0
+T
+steel/wood/leather~
 A
 19 17
 A
@@ -1352,6 +1362,8 @@ Purity~
 5 1|2|64|256|1024|2048 1|8192
 ~ ~ ~ 11~
 1 0 0
+T
+steel/wood/leather~
 A
 19 13
 A
@@ -1365,6 +1377,8 @@ The protection of the light has been lost.~
 9 1|1024|2048|67108864 8
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 19 10
 A
@@ -1391,6 +1405,8 @@ A blade of darkness absorbs the light.~
 5 16|512|2048 1|8192
 ~ ~ ~ 2~
 1 0 0
+T
+steel/wood/leather~
 A
 19 5
 A
@@ -1404,6 +1420,8 @@ A black patch of reality blots out the light.~
 9 16|512|2048 1|8
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 19 11
 
@@ -1433,6 +1451,8 @@ Some sharp curved fangs have been ripped out of the mouth of a snake.~
 5 8|16|512|2048|16384|262144|16777216|67108864 1|8192
 1~ ~ ~ 10~
 1 0 0
+T
+bone~
 A
 18 20
 
@@ -1444,6 +1464,8 @@ Pitch black coils lie here in a heap.~
 9 16|512|2048|67108864 1024
 ~ 7~ ~ ~
 1 0 0
+T
+leather~
 A
 2 3
 A
@@ -1468,6 +1490,8 @@ darkness~
 5 16|512|2048 8192
 ~ ~ ~ 2~
 1 0 0
+T
+steel/wood/leather~
 A
 19 5
 A
@@ -1481,6 +1505,8 @@ darkness~
 9 16|512|2048 8
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 19 11
 
@@ -1492,6 +1518,8 @@ A shaft of darkness blinds you.~
 5 512|2048|134217728 1|131072
 ~ ~ ~ 0~
 1 0 0
+T
+steel/wood/leather~
 A
 19 17
 A
@@ -1507,6 +1535,8 @@ Hatred.~
 5 2|64|256|512|2048 1|8192
 ~ ~ ~ 11~
 1 0 0
+T
+steel/wood/leather~
 A
 19 13
 A
@@ -1520,6 +1550,8 @@ The caress of the darkness has been lost.~
 9 512|2048 8
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 19 10
 A
@@ -1544,6 +1576,8 @@ An ethereal dagger flickers in and out of existence.~
 5 2|512|1024 1|8192
 ~ ~ ~ 3~
 1 0 0
+T
+steel/wood/leather~
 A
 19 4
 A
@@ -1561,6 +1595,8 @@ A shell of existence awaits to be filled.~
 9 2|512|1024 1|8
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 24 -50
 A
@@ -1576,6 +1612,8 @@ Emptiness.~
 5 2|512|1024 8192
 ~ ~ ~ 3~
 1 0 0
+T
+steel/wood/leather~
 A
 19 4
 A
@@ -1593,6 +1631,8 @@ Emptiness.~
 9 2|512|1024 8
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 24 -50
 A
@@ -1608,6 +1648,8 @@ A shaft of existence exists.~
 5 2|512|1024|134217728 1|131072
 ~ ~ ~ 0~
 1 0 0
+T
+steel/wood/leather~
 A
 19 17
 A
@@ -1623,6 +1665,8 @@ Existing.~
 5 2|64|256|512|1024 1|8192
 ~ ~ ~ 11~
 1 0 0
+T
+steel/wood/leather~
 A
 19 13
 A
@@ -1636,6 +1680,8 @@ The strength of being has been lost.~
 9 2|512|1024|67108864 8
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 19 10
 A
@@ -1660,6 +1706,8 @@ The helm of the planes twirls around in space.~
 9 1|2|33554432 1|16
 ~ ~ ~ ~
 1 0 0
+T
+steel~
 A
 19 10
 A
@@ -1673,6 +1721,8 @@ A piece of the planes floats here.~
 9 1|2 1|32768
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 18 6
 A
@@ -1686,6 +1736,8 @@ Some tattered rags of clothing decay here.~
 9 0 1|1024
 ~ ~ ~ ~
 1 0 0
+T
+cloth~
 
 #56058
 Poisoned rose~
@@ -1695,6 +1747,8 @@ A Poisoned Red Rose blooms here.~
 5 2|16384 8192
 ~ ~ ~ 10~
 1 0 0
+T
+steel/wood/leather~
 A
 19 5
 A
@@ -1708,6 +1762,8 @@ A red and black velvet robe lies crumpled here.~
 9 1 1|1024
 ~ ~ ~ ~
 1 0 0
+T
+cloth~
 A
 2 3
 A
@@ -1723,6 +1779,8 @@ A black silk headscarf~
 9 2 1|16
 ~ ~ ~ ~
 1 0 0
+T
+silk~
 A
 13 50
 
@@ -1734,6 +1792,8 @@ An antediluvian stone sparkles here.~
 9 1|2|64 1|16384
 ~ ~ ~ ~
 1 0 0
+T
+granite~
 A
 19 5
 A
@@ -1792,6 +1852,8 @@ A bloody steel axe drips blood.~
 5 1|2 1|8192
 ~ ~ ~ 13~
 1 0 0
+T
+steel/wood/leather~
 E
 bloody steel axe~
 A razor sharp weapon, fresh blood dripping from its blade, it emanates an
@@ -1810,6 +1872,8 @@ A tattered T-shirt rots here.~
 9 0 1|8
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 13 20
 A
@@ -1823,6 +1887,8 @@ A blood soaked dog leash.~
 9 16 1|16384
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 18 5
 A
@@ -1836,6 +1902,8 @@ A {Wwhite{x paw has been severed from Tahlia!~
 5 1|67108864 8192
 4~ ~ ~ 14~
 1 0 0
+T
+steel/wood/leather~
 A
 19 2
 A
@@ -1849,6 +1917,8 @@ A {Wwhite{x paw has been severed from Tahlia!~
 5 1|67108864 8192
 4~ ~ ~ 14~
 1 0 0
+T
+steel/wood/leather~
 A
 18 10
 A
@@ -1862,6 +1932,8 @@ A red dog collar rests here.~
 9 2 1|4
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 19 3
 
@@ -1893,6 +1965,8 @@ twinkle~
 9 67108864 16
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 19 500
 
@@ -1922,6 +1996,8 @@ Casual clothing~
 9 67108864 8
 ~ ~ ~ ~
 1 0 0
+T
+cloth~
 A
 19 500
 
@@ -1933,6 +2009,8 @@ Apron~
 9 67108864 1024
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 19 500
 
@@ -1944,6 +2022,8 @@ A blackened robe.~
 9 67108864 8
 ~ ~ ~ ~
 1 0 0
+T
+cloth~
 A
 19 500
 
@@ -2000,6 +2080,8 @@ Some really {wwhite robes{x have been tossed here.~
 9 256|33554432|67108864 1024
 ~ ~ ~ ~
 1 0 0
+T
+cloth~
 A
 19 500
 A
