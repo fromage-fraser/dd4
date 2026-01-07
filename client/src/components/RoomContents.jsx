@@ -2,13 +2,18 @@ import React, { useState } from 'react';
 import './RoomContents.css';
 import ItemDetailModal from './ItemDetailModal';
 
-function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPracticeClick, extraDescriptions, itemDetails }) {
+function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPracticeClick, extraDescriptions, itemDetails, playerName }) {
     const [selectedItem, setSelectedItem] = useState(null);
     const [selectedNpc, setSelectedNpc] = useState(null);
+    const [selectedPlayer, setSelectedPlayer] = useState(null);
     const [detailModalItem, setDetailModalItem] = useState(null);
     const [selectedExtraDesc, setSelectedExtraDesc] = useState(null);
 
     const ITEM_PORTAL = 33; // Portal item type from server
+
+    // Separate players from NPCs and filter out current player
+    const players = npcs ? npcs.filter(char => char.isPlayer && char.name.toLowerCase() !== playerName?.toLowerCase()) : [];
+    const actualNpcs = npcs ? npcs.filter(char => !char.isPlayer) : [];
 
     const itemActions = [
         { label: '🔍 Inspect', command: null, action: 'inspect' },
@@ -28,6 +33,14 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
             return portalActions;
         }
         return itemActions;
+    };
+
+    // Player actions are different from NPC actions
+    const getPlayerActions = () => {
+        return [
+            { label: '👁️ Look', command: 'look' },
+            { label: '🚶 Follow', command: 'follow' },
+        ];
     };
 
     // Build NPC actions dynamically including opener skills
@@ -83,11 +96,20 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
     const handleItemClick = (item) => {
         setSelectedItem(selectedItem?.id === item.id ? null : item);
         setSelectedNpc(null);
+        setSelectedPlayer(null);
         setSelectedExtraDesc(null);
     };
 
     const handleNpcClick = (npc) => {
         setSelectedNpc(selectedNpc?.id === npc.id ? null : npc);
+        setSelectedItem(null);
+        setSelectedPlayer(null);
+        setSelectedExtraDesc(null);
+    };
+
+    const handlePlayerClick = (player) => {
+        setSelectedPlayer(selectedPlayer?.keywords === player.keywords ? null : player);
+        setSelectedNpc(null);
         setSelectedItem(null);
         setSelectedExtraDesc(null);
     };
@@ -96,6 +118,7 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
         setSelectedExtraDesc(selectedExtraDesc?.keyword === extraDesc.keyword ? null : extraDesc);
         setSelectedItem(null);
         setSelectedNpc(null);
+        setSelectedPlayer(null);
     };
 
     const executeAction = (action, target) => {
@@ -162,6 +185,7 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
         
         setSelectedItem(null);
         setSelectedNpc(null);
+        setSelectedPlayer(null);
     };
 
     const getItemVisualIndicators = (item) => {
@@ -272,11 +296,48 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
                     </div>
                 </div>
             )}
-            {npcs && npcs.length > 0 && (
+            {players && players.length > 0 && (
+                <div className="content-section">
+                    <h4 className="content-header">Players Here</h4>
+                    <div className="content-list">
+                        {players.map((player, index) => (
+                            <div key={`player-${index}-${player.keywords}`} className="content-item">
+                                <button
+                                    className={`player-button ${selectedPlayer?.keywords === player.keywords ? 'selected' : ''}`}
+                                    onClick={() => handlePlayerClick(player)}
+                                    disabled={!connected}
+                                    title={`Click for actions: ${player.name}`}
+                                >
+                                    <span className="player-icon">👤</span>
+                                    <span className="player-name">{player.name}</span>
+                                    {player.level && (
+                                        <span className="player-level">Lv{player.level}</span>
+                                    )}
+                                </button>
+                                {selectedPlayer?.keywords === player.keywords && (
+                                    <div className="action-menu">
+                                        {getPlayerActions().map((action, idx) => (
+                                            <button
+                                                key={idx}
+                                                className="action-button"
+                                                onClick={() => executeAction(action, player)}
+                                                disabled={!connected}
+                                            >
+                                                {action.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
+            {actualNpcs && actualNpcs.length > 0 && (
                 <div className="content-section">
                     <h4 className="content-header">Characters Here</h4>
                     <div className="content-list">
-                        {npcs.map((npc, index) => (
+                        {actualNpcs.map((npc, index) => (
                             <div key={`npc-${index}-${npc.id}-${npc.vnum}`} className="content-item">
                                 <button
                                     className={`npc-button ${selectedNpc?.id === npc.id ? 'selected' : ''} ${npc.hostile ? 'hostile' : 'friendly'}`}
@@ -325,7 +386,7 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
                     </div>
                 </div>
             )}
-            {(!items || items.length === 0) && (!npcs || npcs.length === 0) && (!extraDescriptions || extraDescriptions.length === 0) && (
+            {(!items || items.length === 0) && (!actualNpcs || actualNpcs.length === 0) && (!players || players.length === 0) && (!extraDescriptions || extraDescriptions.length === 0) && (
                 <div className="empty-state">
                     <p>Nothing of note here.</p>
                 </div>
