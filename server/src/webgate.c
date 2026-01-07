@@ -3085,7 +3085,8 @@ static bool webgate_parse_json_message(WEB_DESCRIPTOR_DATA *web_desc, const char
                 interpret(web_desc->mud_desc->character, web_desc->mud_desc->incomm);
 
                 /* Send updated room info after command execution */
-                if (web_desc->mud_desc->character->in_room)
+                /* Note: character may have been freed by commands like quit, so check again */
+                if (web_desc->mud_desc->character && web_desc->mud_desc->character->in_room)
                 {
                     webgate_send_room_info(web_desc, web_desc->mud_desc->character->in_room);
                 }

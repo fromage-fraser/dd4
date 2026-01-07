@@ -25,6 +25,7 @@ services:
       dockerfile: docker/dev.Dockerfile
     ports:
       - "18888:8888"
+      - "8080:8080"
     volumes:
       - ./server:/dd4-dev
       - ./builder:/dd4-dev/builder
