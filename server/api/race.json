@@ -1,0 +1,252 @@
+[
+  {
+    "id": 1,
+    "who_name": "Human  ",
+    "name": "Human",
+    "stats": {"str": 0, "int": 1, "wis": 0, "dex": 0, "con": 0},
+    "regen": {"hp": 0, "mana": 0, "move": 0},
+    "skills": ["Identify", "Detect Evil"],
+    "size": "Medium",
+    "terrain_mods": {"inside": 0, "city": 0, "field": 0, "forest": 0, "hills": 0, "mountain": 0, "water_swim": 0, "water_noswim": 0, "underwater": 0, "air": 0, "desert": 0, "swamp": 0, "underwater_ground": 0}
+  },
+  {
+    "id": 2,
+    "who_name": "Elf    ",
+    "name": "Elf",
+    "stats": {"str": -2, "int": 2, "wis": 1, "dex": 1, "con": -1},
+    "regen": {"hp": -20, "mana": 20, "move": 10},
+    "skills": ["Infravision", "Refresh"],
+    "size": "Medium",
+    "terrain_mods": {"inside": 0, "city": 1, "field": 0, "forest": 0, "hills": -1, "mountain": -1, "water_swim": 0, "water_noswim": 0, "underwater": 0, "air": 0, "desert": 0, "swamp": 1, "underwater_ground": 0}
+  },
+  {
+    "id": 3,
+    "who_name": "WildElf",
+    "name": "Wild-Elf",
+    "stats": {"str": 1, "int": -1, "wis": -2, "dex": 1, "con": 2},
+    "regen": {"hp": 10, "mana": -10, "move": 10},
+    "skills": ["Infravision", "Forage"],
+    "size": "Medium",
+    "terrain_mods": {"inside": 0, "city": 1, "field": -1, "forest": -1, "hills": -1, "mountain": 0, "water_swim": 0, "water_noswim": 0, "underwater": 0, "air": 0, "desert": 1, "swamp": 1, "underwater_ground": 0}
+  },
+  {
+    "id": 4,
+    "who_name": "Orc    ",
+    "name": "Orc",
+    "stats": {"str": 2, "int": -1, "wis": -1, "dex": -1, "con": 2},
+    "regen": {"hp": 20, "mana": -20, "move": 10},
+    "skills": ["Trip", "Dirt Kick"],
+    "size": "Medium",
+    "terrain_mods": {"inside": 1, "city": 1, "field": 0, "forest": 0, "hills": 0, "mountain": -1, "water_swim": 0, "water_noswim": 0, "underwater": 0, "air": 0, "desert": 0, "swamp": -1, "underwater_ground": 0}
+  },
+  {
+    "id": 5,
+    "who_name": "Giant  ",
+    "name": "Giant",
+    "stats": {"str": 3, "int": -2, "wis": -2, "dex": -1, "con": 3},
+    "regen": {"hp": 30, "mana": -30, "move": 0},
+    "skills": ["Giant Strength", "Bash Door"],
+    "size": "Large",
+    "terrain_mods": {"inside": 1, "city": 1, "field": -1, "forest": 1, "hills": -1, "mountain": -1, "water_swim": -1, "water_noswim": -1, "underwater": -1, "air": 1, "desert": 1, "swamp": 1, "underwater_ground": -1}
+  },
+  {
+    "id": 6,
+    "who_name": "Satyr  ",
+    "name": "Satyr",
+    "stats": {"str": -1, "int": -1, "wis": 2, "dex": 2, "con": -1},
+    "regen": {"hp": -10, "mana": -10, "move": 30},
+    "skills": ["Sleep", "Sneak"],
+    "size": "Medium",
+    "terrain_mods": {"inside": 0, "city": 0, "field": 0, "forest": -1, "hills": 0, "mountain": 0, "water_swim": 0, "water_noswim": 0, "underwater": 0, "air": 0, "desert": 1, "swamp": 0, "underwater_ground": 0}
+  },
+  {
+    "id": 7,
+    "who_name": "Ogre   ",
+    "name": "Ogre",
+    "stats": {"str": 3, "int": -2, "wis": -2, "dex": 0, "con": 2},
+    "regen": {"hp": 20, "mana": -30, "move": 10},
+    "skills": ["Kick", "Stone Skin"],
+    "size": "Large",
+    "terrain_mods": {"inside": 0, "city": 0, "field": 0, "forest": 1, "hills": -1, "mountain": 0, "water_swim": 0, "water_noswim": 0, "underwater": 0, "air": 0, "desert": 0, "swamp": -1, "underwater_ground": 0}
+  },
+  {
+    "id": 8,
+    "who_name": "Goblin ",
+    "name": "Goblin",
+    "stats": {"str": -2, "int": 1, "wis": 3, "dex": 1, "con": -2},
+    "regen": {"hp": -10, "mana": 0, "move": 10},
+    "skills": ["Shield", "Hide"],
+    "size": "Small",
+    "terrain_mods": {"inside": 0, "city": 0, "field": 0, "forest": -1, "hills": 0, "mountain": -1, "water_swim": 0, "water_noswim": 0, "underwater": 0, "air": 1, "desert": 1, "swamp": -1, "underwater_ground": 0}
+  },
+  {
+    "id": 9,
+    "who_name": "HlfDrgn",
+    "name": "Half-Dragon",
+    "stats": {"str": 2, "int": -2, "wis": 2, "dex": -1, "con": 0},
+    "regen": {"hp": 20, "mana": -20, "move": 10},
+    "skills": ["Flight", "Dragon Shield"],
+    "size": "Large",
+    "terrain_mods": {"inside": 0, "city": 1, "field": 0, "forest": 1, "hills": 0, "mountain": -1, "water_swim": 0, "water_noswim": 0, "underwater": 0, "air": 0, "desert": -1, "swamp": 0, "underwater_ground": 0}
+  },
+  {
+    "id": 10,
+    "who_name": "Halflng",
+    "name": "Halfling",
+    "stats": {"str": -2, "int": 0, "wis": 1, "dex": 3, "con": -1},
+    "regen": {"hp": -20, "mana": 10, "move": 30},
+    "skills": ["Sneak", "Blindness"],
+    "size": "Small",
+    "terrain_mods": {"inside": 0, "city": 0, "field": -1, "forest": -1, "hills": 0, "mountain": 1, "water_swim": 0, "water_noswim": 0, "underwater": 0, "air": 0, "desert": 0, "swamp": 1, "underwater_ground": 0}
+  },
+  {
+    "id": 11,
+    "who_name": "Dwarf  ",
+    "name": "Dwarf",
+    "stats": {"str": 2, "int": -2, "wis": 1, "dex": -1, "con": 1},
+    "regen": {"hp": 30, "mana": -20, "move": -20},
+    "skills": ["Grip", "Armor"],
+    "size": "Small",
+    "terrain_mods": {"inside": 0, "city": 0, "field": 0, "forest": 0, "hills": -1, "mountain": -1, "water_swim": 0, "water_noswim": 0, "underwater": 0, "air": 0, "desert": 0, "swamp": 1, "underwater_ground": 0}
+  },
+  {
+    "id": 12,
+    "who_name": "Centaur",
+    "name": "Centaur",
+    "stats": {"str": 1, "int": -1, "wis": -1, "dex": 2, "con": 0},
+    "regen": {"hp": -10, "mana": 10, "move": 20},
+    "skills": ["Kick", "Shield"],
+    "size": "Large",
+    "terrain_mods": {"inside": 1, "city": 0, "field": -1, "forest": -1, "hills": -1, "mountain": 0, "water_swim": 0, "water_noswim": 0, "underwater": 0, "air": 1, "desert": 0, "swamp": 1, "underwater_ground": 0}
+  },
+  {
+    "id": 13,
+    "who_name": "Drow   ",
+    "name": "Drow",
+    "stats": {"str": -3, "int": 3, "wis": 1, "dex": 2, "con": -2},
+    "regen": {"hp": -30, "mana": 30, "move": 0},
+    "skills": ["Sneak", "Heighten Senses"],
+    "size": "Medium",
+    "terrain_mods": {"inside": 0, "city": -1, "field": 1, "forest": 1, "hills": 0, "mountain": -1, "water_swim": 0, "water_noswim": 0, "underwater": 0, "air": 0, "desert": -1, "swamp": 0, "underwater_ground": 0}
+  },
+  {
+    "id": 14,
+    "who_name": "Troll  ",
+    "name": "Troll",
+    "stats": {"str": 2, "int": -1, "wis": -2, "dex": -1, "con": 3},
+    "regen": {"hp": 30, "mana": -30, "move": -10},
+    "skills": ["Fast Healing", "Cell Adjustment"],
+    "size": "Large",
+    "terrain_mods": {"inside": 1, "city": 1, "field": 0, "forest": -1, "hills": 0, "mountain": -1, "water_swim": 0, "water_noswim": 0, "underwater": 0, "air": 1, "desert": 0, "swamp": -1, "underwater_ground": 0}
+  },
+  {
+    "id": 15,
+    "who_name": "Alaghi ",
+    "name": "Alaghi",
+    "stats": {"str": 1, "int": -1, "wis": -1, "dex": -1, "con": 3},
+    "regen": {"hp": 30, "mana": -20, "move": 10},
+    "skills": ["Berserk", "Bash Door"],
+    "size": "Large",
+    "terrain_mods": {"inside": 0, "city": 0, "field": -1, "forest": -1, "hills": -1, "mountain": 0, "water_swim": 0, "water_noswim": 0, "underwater": 0, "air": 1, "desert": 1, "swamp": 1, "underwater_ground": 0}
+  },
+  {
+    "id": 16,
+    "who_name": "Hobgbln",
+    "name": "Hobgoblin",
+    "stats": {"str": 1, "int": -1, "wis": -1, "dex": 0, "con": 2},
+    "regen": {"hp": 10, "mana": 10, "move": 0},
+    "skills": ["Resist Magic", "Teleport"],
+    "size": "Medium",
+    "terrain_mods": {"inside": 0, "city": 0, "field": -1, "forest": 0, "hills": 0, "mountain": -1, "water_swim": 0, "water_noswim": 0, "underwater": 0, "air": 0, "desert": 0, "swamp": 0, "underwater_ground": 0}
+  },
+  {
+    "id": 17,
+    "who_name": "Yuan-ti",
+    "name": "Yuan-ti",
+    "stats": {"str": 1, "int": 0, "wis": 0, "dex": 1, "con": -1},
+    "regen": {"hp": -20, "mana": 0, "move": 20},
+    "skills": ["Hide", "Resist Toxin"],
+    "size": "Medium",
+    "terrain_mods": {"inside": 0, "city": 0, "field": -1, "forest": -1, "hills": 0, "mountain": 1, "water_swim": -1, "water_noswim": 1, "underwater": 0, "air": 0, "desert": -1, "swamp": 1, "underwater_ground": 0}
+  },
+  {
+    "id": 18,
+    "who_name": "Fae    ",
+    "name": "Fae",
+    "stats": {"str": -3, "int": 3, "wis": 3, "dex": 1, "con": -3},
+    "regen": {"hp": -30, "mana": 30, "move": 20},
+    "skills": ["Faerie Fire", "Fly"],
+    "size": "Small",
+    "terrain_mods": {"inside": 0, "city": 0, "field": 0, "forest": -1, "hills": 1, "mountain": 1, "water_swim": 0, "water_noswim": 0, "underwater": 0, "air": -1, "desert": 0, "swamp": 1, "underwater_ground": 0}
+  },
+  {
+    "id": 19,
+    "who_name": "Sahuagn",
+    "name": "Sahuagin",
+    "stats": {"str": 2, "int": -1, "wis": -1, "dex": -1, "con": 2},
+    "regen": {"hp": 20, "mana": 0, "move": 0},
+    "skills": ["Gouge", "Dowse"],
+    "size": "Medium",
+    "terrain_mods": {"inside": 0, "city": 0, "field": 1, "forest": 1, "hills": 1, "mountain": 1, "water_swim": -2, "water_noswim": -2, "underwater": -2, "air": 1, "desert": 2, "swamp": -1, "underwater_ground": -2}
+  },
+  {
+    "id": 20,
+    "who_name": "Tieflng",
+    "name": "Tiefling",
+    "stats": {"str": 0, "int": 1, "wis": 0, "dex": -2, "con": 2},
+    "regen": {"hp": 20, "mana": 10, "move": -10},
+    "skills": ["Abyssal Hand", "Resist Heat"],
+    "size": "Medium",
+    "terrain_mods": {"inside": 0, "city": 1, "field": 0, "forest": 0, "hills": 0, "mountain": -1, "water_swim": 0, "water_noswim": 0, "underwater": 0, "air": -1, "desert": -1, "swamp": -1, "underwater_ground": 0}
+  },
+  {
+    "id": 21,
+    "who_name": "Jotun  ",
+    "name": "Jotun",
+    "stats": {"str": 3, "int": -1, "wis": -2, "dex": -2, "con": 3},
+    "regen": {"hp": 30, "mana": -20, "move": -10},
+    "skills": ["Berserk", "Resist Cold"],
+    "size": "Large",
+    "terrain_mods": {"inside": 1, "city": -1, "field": -1, "forest": 1, "hills": -1, "mountain": -1, "water_swim": 0, "water_noswim": 0, "underwater": 0, "air": 1, "desert": 0, "swamp": 0, "underwater_ground": 0}
+  },
+  {
+    "id": 22,
+    "who_name": "Genasi ",
+    "name": "Genasi",
+    "stats": {"str": -1, "int": 2, "wis": -1, "dex": -1, "con": 2},
+    "regen": {"hp": 10, "mana": 10, "move": 0},
+    "skills": ["Infravision", "Resist Magic"],
+    "size": "Medium",
+    "terrain_mods": {"inside": 0, "city": 0, "field": 0, "forest": 0, "hills": 0, "mountain": 0, "water_swim": 0, "water_noswim": 0, "underwater": 0, "air": -1, "desert": -1, "swamp": 0, "underwater_ground": 0}
+  },
+  {
+    "id": 23,
+    "who_name": "Illithd",
+    "name": "Illithid",
+    "stats": {"str": -2, "int": 2, "wis": 3, "dex": -2, "con": 0},
+    "regen": {"hp": 0, "mana": 30, "move": -20},
+    "skills": ["Fear", "Energy Drain"],
+    "size": "Medium",
+    "terrain_mods": {"inside": 0, "city": 1, "field": 0, "forest": 0, "hills": 0, "mountain": 0, "water_swim": 0, "water_noswim": 0, "underwater": 0, "air": -1, "desert": 1, "swamp": -1, "underwater_ground": 0}
+  },
+  {
+    "id": 24,
+    "who_name": "Grung  ",
+    "name": "Grung",
+    "stats": {"str": 0, "int": -2, "wis": -1, "dex": 3, "con": 1},
+    "regen": {"hp": 20, "mana": -10, "move": 10},
+    "skills": ["Resist Toxin", "Poison"],
+    "size": "Small",
+    "terrain_mods": {"inside": 0, "city": 0, "field": 0, "forest": 0, "hills": 1, "mountain": 1, "water_swim": -2, "water_noswim": -2, "underwater": -2, "air": 0, "desert": 2, "swamp": -2, "underwater_ground": -2}
+  },
+  {
+    "id": 25,
+    "who_name": "Duergar",
+    "name": "Duergar",
+    "stats": {"str": 2, "int": 2, "wis": -2, "dex": -2, "con": 1},
+    "regen": {"hp": 30, "mana": -20, "move": -20},
+    "skills": ["Infravision", "Invis"],
+    "size": "Medium",
+    "terrain_mods": {"inside": 0, "city": 0, "field": 1, "forest": 0, "hills": -1, "mountain": -1, "water_swim": 0, "water_noswim": 0, "underwater": 0, "air": 0, "desert": 0, "swamp": -1, "underwater_ground": 0}
+  }
+]
