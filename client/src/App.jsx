@@ -489,8 +489,8 @@ function App() {
 
   /**
    * Request fresh inventory and equipment data from server
-   * Note: With the server now sending GMCP updates automatically after 
-   * buy/sell/drop/wear actions, this function is mainly a fallback
+   * Note: Server automatically sends GMCP updates after identify and other actions
+   * This function is kept as a placeholder for explicit refresh needs
    */
   const refreshInventoryEquipment = () => {
     if (!ws.current || ws.current.readyState !== WebSocket.OPEN) {
@@ -498,8 +498,8 @@ function App() {
     }
     
     // Server automatically sends Char.Inventory and Char.Equipment GMCP
-    // updates after transactions, so we don't need to send text commands
-    // This function is kept for potential future explicit refresh needs
+    // updates after identify, transactions, and equipment changes
+    // No action needed here - GMCP updates happen automatically
     console.log('Inventory/equipment will auto-refresh via GMCP');
   };
 

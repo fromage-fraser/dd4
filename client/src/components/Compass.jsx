@@ -79,24 +79,24 @@ function Compass({ exits = [], onMove, onCommand, hasMap = false, onShowMap }) {
   const handleDoorAction = (action, exitData) => {
     if (!onCommand || !exitData) return;
     
-    const keyword = exitData.keyword || 'door';
+    const direction = exitData.dir;
     let command;
     
     switch (action) {
       case 'open':
-        command = `open ${keyword}`;
+        command = `open ${direction}`;
         break;
       case 'close':
-        command = `close ${keyword}`;
+        command = `close ${direction}`;
         break;
       case 'unlock':
-        command = `unlock ${keyword}`;
+        command = `unlock ${direction}`;
         break;
       case 'pick':
-        command = `pick ${keyword}`;
+        command = `pick ${direction}`;
         break;
       case 'bash':
-        command = `bash ${keyword}`;
+        command = `bash ${direction}`;
         break;
       default:
         return;
