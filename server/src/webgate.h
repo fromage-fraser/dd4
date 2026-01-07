@@ -360,6 +360,18 @@ void webgate_send_char_status(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch);
 void webgate_send_shop_inventory(CHAR_DATA *ch, CHAR_DATA *keeper);
 
 /*
+ * Intent: Send identifier service to web client via GMCP for identify modal.
+ *
+ * Inputs: ch - Player requesting identify; identifier - NPC with ACT_IDENTIFY
+ * Outputs: Identifier.Inventory GMCP message sent to client
+ * Preconditions: ch and identifier must be valid
+ * Postconditions: Client opens identify modal with player inventory
+ *
+ * Notes: Called from do_identify when no arguments provided; costs 1G per item
+ */
+void webgate_send_identifier_inventory(CHAR_DATA *ch, CHAR_DATA *identifier);
+
+/*
  * Intent: Send healer services list to web client via GMCP for healer modal display.
  *
  * Inputs: ch - Player requesting healer services; healer - Healer NPC mob

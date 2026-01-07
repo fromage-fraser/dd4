@@ -11,6 +11,7 @@ import SkillBar from './components/SkillBar';
 import SkillAssign from './components/SkillAssign';
 import CharacterSheet from './components/CharacterSheet';
 import ShopModal from './components/ShopModal';
+import IdentifyModal from './components/IdentifyModal';
 import HealerModal from './components/HealerModal';
 import PracticeModal from './components/PracticeModal';
 import MapModal from './components/MapModal';
@@ -39,6 +40,7 @@ function App() {
   const [inventory, setInventory] = useState([]);
   const [equipment, setEquipment] = useState(null);
   const [shopData, setShopData] = useState(null); // { shopkeeper, items }
+  const [identifierData, setIdentifierData] = useState(null); // { identifier }
   const [shopMessage, setShopMessage] = useState(null);
   const [healerData, setHealerData] = useState(null); // { healer, services }
   const [showPracticeModal, setShowPracticeModal] = useState(false);
@@ -374,6 +376,12 @@ function App() {
         setShopData(data);
         break;
       
+      case 'Identifier.Inventory':
+        // Handle identifier inventory
+        console.log('Identifier.Inventory received:', data);
+        setIdentifierData(data);
+        break;
+      
       case 'Healer.Services':
         // Handle healer services
         console.log('Healer.Services received:', data);
@@ -628,6 +636,18 @@ function App() {
           connected={connected}
           onRefresh={refreshInventoryEquipment}
           shopMessage={shopMessage}
+        />
+      )}
+
+      {identifierData && (
+        <IdentifyModal
+          identifier={identifierData.identifier}
+          inventory={inventory}
+          onClose={() => {
+            setIdentifierData(null);
+          }}
+          onIdentify={(keywords) => sendCommand(`identify ${keywords}`)}
+          connected={connected}
         />
       )}
 

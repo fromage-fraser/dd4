@@ -729,7 +729,7 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
         {
             /* NPC entry */
             sprintf(npcs_json + strlen(npcs_json),
-                    "{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d,\"hostile\":%s,\"isShopkeeper\":%s,\"isTrainer\":%s,\"isHealer\":%s,\"isPlayer\":false}",
+                    "{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d,\"hostile\":%s,\"isShopkeeper\":%s,\"isTrainer\":%s,\"isHealer\":%s,\"isIdentifier\":%s,\"isPlayer\":false}",
                     rch->pIndexData ? rch->pIndexData->vnum : 0,
                     temp_name,
                     keywords_escaped,
@@ -737,7 +737,8 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
                     IS_SET(rch->act, ACT_AGGRESSIVE) ? "true" : "false",
                     rch->pIndexData && rch->pIndexData->pShop ? "true" : "false",
                     IS_SET(rch->act, ACT_PRACTICE) ? "true" : "false",
-                    IS_SET(rch->act, ACT_IS_HEALER) ? "true" : "false");
+                    IS_SET(rch->act, ACT_IS_HEALER) ? "true" : "false",
+                    IS_SET(rch->act, ACT_IDENTIFY) ? "true" : "false");
         }
 
         first = false;
@@ -1007,6 +1008,50 @@ void webgate_send_shop_inventory(CHAR_DATA *ch, CHAR_DATA *keeper)
              items_json);
 
     webgate_send_gmcp(web_desc, "Shop.Inventory", json);
+}
+
+/*
+ * Intent: Send identifier service to web client via GMCP Identifier.Inventory.
+ * Shows identifier NPC name so client can open identify modal.
+ *
+ * Inputs: ch - Player requesting identify service; identifier - NPC with ACT_IDENTIFY flag
+ * Outputs: Sends "Identifier.Inventory" GMCP message with identifier name
+ * Preconditions: ch must have web descriptor; identifier must be valid NPC
+ * Postconditions: Client receives identifier info and opens identify modal UI
+ */
+void webgate_send_identifier_inventory(CHAR_DATA *ch, CHAR_DATA *identifier)
+{
+    char json[MAX_STRING_LENGTH];
+    WEB_DESCRIPTOR_DATA *web_desc;
+    char temp_name[256];
+    int i, j;
+
+    if (!ch || !identifier)
+        return;
+
+    /* Find web descriptor for this character */
+    for (web_desc = web_descriptor_list; web_desc; web_desc = web_desc->next)
+    {
+        if (web_desc->mud_desc && web_desc->mud_desc->character == ch)
+            break;
+    }
+
+    if (!web_desc)
+        return;
+
+    /* Escape identifier name for JSON */
+    for (i = 0, j = 0; identifier->short_descr[i] != '\0' && j < sizeof(temp_name) - 2; i++)
+    {
+        if (identifier->short_descr[i] == '"' || identifier->short_descr[i] == '\\')
+            temp_name[j++] = '\\';
+        if (identifier->short_descr[i] >= 32)
+            temp_name[j++] = identifier->short_descr[i];
+    }
+    temp_name[j] = '\0';
+
+    snprintf(json, sizeof(json), "{\"identifier\":\"%s\"}", temp_name);
+
+    webgate_send_gmcp(web_desc, "Identifier.Inventory", json);
 }
 
 /*

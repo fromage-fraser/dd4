@@ -52,6 +52,11 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
             baseActions.push({ label: '⚕️ Heal', command: 'heal' });
         }
 
+        // Add Identify action for identifiers
+        if (npc && npc.isIdentifier) {
+            baseActions.push({ label: '🔮 Identify', command: 'identify' });
+        }
+
         // Add opener skills if available
         if (openers && skills) {
             openers.forEach((openerId, idx) => {
@@ -123,6 +128,13 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
         // Handle heal action (no target needed)
         if (action.command === 'heal') {
             onCommand('heal');
+            setSelectedNpc(null);
+            return;
+        }
+
+        // Handle identify action (opens identifier modal)
+        if (action.command === 'identify') {
+            onCommand('identify');
             setSelectedNpc(null);
             return;
         }
@@ -281,6 +293,11 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
                                     {npc.isTrainer && (
                                         <span className="npc-indicator trainer" title="Trainer">
                                             📚
+                                        </span>
+                                    )}
+                                    {npc.isIdentifier && (
+                                        <span className="npc-indicator identifier" title="Identifier">
+                                            🔮
                                         </span>
                                     )}
                                     {npc.isHealer && (
