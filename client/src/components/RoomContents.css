@@ -217,6 +217,76 @@
     animation: pulse 2s ease-in-out infinite;
 }
 
+/* Player Buttons - Blue theme to distinguish from NPCs */
+.player-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    min-height: 48px;
+    width: 100%;
+    
+    background: rgba(30, 30, 30, 0.8);
+    border: 2px solid rgba(33, 150, 243, 0.4);
+    border-radius: 4px;
+    color: #E0E0E0;
+    
+    font-size: 0.95rem;
+    font-family: 'Courier New', monospace;
+    text-align: left;
+    
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    /* Touch optimization */
+    -webkit-tap-highlight-color: rgba(33, 150, 243, 0.3);
+    user-select: none;
+    touch-action: manipulation;
+}
+
+.player-button:hover:not(:disabled) {
+    background: rgba(20, 30, 40, 0.9);
+    border-color: rgba(33, 150, 243, 0.7);
+    transform: translateX(4px);
+}
+
+.player-button:active:not(:disabled) {
+    transform: translateX(2px) scale(0.98);
+}
+
+.player-button.selected {
+    background: rgba(33, 150, 243, 0.2);
+    border-color: #2196F3;
+    box-shadow: 0 0 8px rgba(33, 150, 243, 0.4);
+}
+
+.player-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.player-name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.player-level-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0.5rem;
+    background: rgba(33, 150, 243, 0.3);
+    border: 1px solid rgba(33, 150, 243, 0.5);
+    border-radius: 12px;
+    color: #2196F3;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
 @keyframes pulse {
     0%, 100% {
         opacity: 1;

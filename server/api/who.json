@@ -15,7 +15,26 @@
 
   ],
   "mortals": [
-
+    {
+      "name": "Jonnie",
+      "title": " is a newbie",
+      "race": "Fae    ",
+      "level": 1,
+      "class": "Mage",
+      "clan": "",
+      "clanTitle": "",
+      "flags": ["Idle"]
+    },
+    {
+      "name": "Baldy",
+      "title": " is a newbie",
+      "race": "Human  ",
+      "level": 1,
+      "class": "Mage",
+      "clan": "",
+      "clanTitle": "",
+      "flags": []
+    }
   ],
-  "stats": {"current": 1, "max_session": 1}
+  "stats": {"current": 3, "max_session": 3}
 }

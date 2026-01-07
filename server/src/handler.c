@@ -1039,8 +1039,8 @@ void char_from_room(CHAR_DATA *ch)
         ch->in_room = NULL;
         ch->next_in_room = NULL;
 
-        /* Notify web clients in the room that room contents changed */
-        if (IS_NPC(ch) && old_room)
+        /* Notify web clients in the room that room contents changed (for both NPCs and players leaving) */
+        if (old_room)
         {
                 webgate_notify_room_update(old_room);
         }
@@ -1201,11 +1201,8 @@ void char_to_room(CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex)
         media_env_refresh(ch, pRoomIndex, FALSE);
         update_weather_for_char(ch);
 
-        /* Notify web clients in the room that room contents changed */
-        if (IS_NPC(ch))
-        {
-                webgate_notify_room_update(pRoomIndex);
-        }
+        /* Notify web clients in the room that room contents changed (both NPCs and players) */
+        webgate_notify_room_update(pRoomIndex);
 
         return;
 }

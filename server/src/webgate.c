@@ -893,14 +893,9 @@ void webgate_notify_room_update(ROOM_INDEX_DATA *room)
 {
     CHAR_DATA *rch;
     WEB_DESCRIPTOR_DATA *web_desc;
-    int player_count = 0;
-    int web_desc_count = 0;
 
     if (!room)
         return;
-
-    sprintf(log_buf, "WebGate: webgate_notify_room_update called for room vnum %d", room->vnum);
-    log_string(log_buf);
 
     /* Iterate through all characters in the room */
     for (rch = room->people; rch; rch = rch->next_in_room)
@@ -909,31 +904,16 @@ void webgate_notify_room_update(ROOM_INDEX_DATA *room)
         if (IS_NPC(rch))
             continue;
 
-        player_count++;
-        sprintf(log_buf, "WebGate: Found player in room: %s", rch->name);
-        log_string(log_buf);
-
         /* Find the web descriptor for this player */
         for (web_desc = web_descriptor_list; web_desc; web_desc = web_desc->next)
         {
-            web_desc_count++;
-
             /* Check if this web descriptor matches the player character */
             if (web_desc->mud_desc && web_desc->mud_desc->character == rch)
             {
-                sprintf(log_buf, "WebGate: Sending room update to player %s", rch->name);
-                log_string(log_buf);
                 webgate_send_room_info(web_desc, room);
                 break;
             }
         }
-    }
-
-    if (player_count > 0)
-    {
-        sprintf(log_buf, "WebGate: Checked %d players, %d web descriptors in room vnum %d",
-                player_count, web_desc_count, room->vnum);
-        log_string(log_buf);
     }
 }
 

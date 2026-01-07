@@ -595,6 +595,7 @@ function App() {
             openers={openers}
             onPracticeClick={() => setShowPracticeModal(true)}
             itemDetails={itemDetails}
+            currentPlayerName={status?.name}
           />
         </div>
       </div>
