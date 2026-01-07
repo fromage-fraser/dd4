@@ -205,6 +205,25 @@ void webgate_send_gmcp(WEB_DESCRIPTOR_DATA *web_desc, const char *module, const 
 void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room);
 
 /*
+ * Intent: Check if a room has any web clients present.
+ *
+ * Quick check to avoid unnecessary room update processing when no
+ * web clients are present in the room. Useful for optimizing door
+ * state changes and other room updates.
+ *
+ * Inputs:
+ *   - room - The room to check
+ *
+ * Outputs: true if room has at least one web client, false otherwise
+ *
+ * Preconditions: room must be valid (NULL returns false)
+ * Postconditions: None (read-only check)
+ *
+ * Performance: O(n*m) where n = people in room, m = web descriptors
+ */
+bool webgate_room_has_web_clients(ROOM_INDEX_DATA *room);
+
+/*
  * Intent: Notify all web clients in a room that room contents have changed.
  *
  * Inputs:

@@ -528,7 +528,7 @@ void webgate_send_gmcp(WEB_DESCRIPTOR_DATA *web_desc, const char *module, const 
  */
 void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room)
 {
-    char json[WEBGATE_MAX_MESSAGE];
+    char json[262144];     /* 256KB buffer to accommodate all component strings (4x32KB + exits + names) */
     char exits_json[2048]; /* Increased from 512 to handle 6 exits with door info */
     char items_json[MAX_STRING_LENGTH];
     char npcs_json[MAX_STRING_LENGTH];
@@ -718,6 +718,10 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
         bool is_npc = IS_NPC(rch);
         bool is_player = !is_npc;
 
+        /* Skip the viewing player's own character - don't show yourself in the list */
+        if (web_desc->mud_desc && web_desc->mud_desc->character == rch)
+            continue;
+
         /* Escape character short description (for display) */
         for (i = 0, j = 0; rch->short_descr[i] != '\0' && j < sizeof(temp_name) - 2; i++)
         {
@@ -751,7 +755,7 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
 
         if (is_player)
         {
-            /* Player entry */
+            /* Player entry - players have unique names so don't need instance ID */
             sprintf(npcs_json + strlen(npcs_json),
                     "{\"id\":0,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":0,\"isPlayer\":true,\"level\":%d}",
                     temp_name,
@@ -760,10 +764,10 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
         }
         else
         {
-            /* NPC entry */
+            /* NPC entry - use memory address as unique instance ID to distinguish multiple NPCs of same type */
             sprintf(npcs_json + strlen(npcs_json),
-                    "{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d,\"hostile\":%s,\"isShopkeeper\":%s,\"isTrainer\":%s,\"isHealer\":%s,\"isIdentifier\":%s,\"isPlayer\":false}",
-                    rch->pIndexData ? rch->pIndexData->vnum : 0,
+                    "{\"id\":%lu,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d,\"hostile\":%s,\"isShopkeeper\":%s,\"isTrainer\":%s,\"isHealer\":%s,\"isIdentifier\":%s,\"isPlayer\":false}",
+                    (unsigned long)(uintptr_t)rch,
                     temp_name,
                     keywords_escaped,
                     rch->pIndexData ? rch->pIndexData->vnum : 0,
@@ -889,6 +893,32 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
  *
  * Performance: O(n) where n is number of people in room
  */
+bool webgate_room_has_web_clients(ROOM_INDEX_DATA *room)
+{
+    CHAR_DATA *rch;
+    WEB_DESCRIPTOR_DATA *web_desc;
+
+    if (!room)
+        return false;
+
+    /* Quick check: iterate through all characters in the room */
+    for (rch = room->people; rch; rch = rch->next_in_room)
+    {
+        /* Skip NPCs - they don't have web descriptors */
+        if (IS_NPC(rch))
+            continue;
+
+        /* Check if this player has a web descriptor */
+        for (web_desc = web_descriptor_list; web_desc; web_desc = web_desc->next)
+        {
+            if (web_desc->mud_desc && web_desc->mud_desc->character == rch)
+                return true;
+        }
+    }
+
+    return false;
+}
+
 void webgate_notify_room_update(ROOM_INDEX_DATA *room)
 {
     CHAR_DATA *rch;
@@ -937,7 +967,7 @@ void webgate_notify_room_update(ROOM_INDEX_DATA *room)
  */
 void webgate_send_shop_inventory(CHAR_DATA *ch, CHAR_DATA *keeper)
 {
-    char json[WEBGATE_MAX_MESSAGE];
+    char json[65536]; /* 64KB buffer for large shop inventories */
     char items_json[MAX_STRING_LENGTH];
     char temp_name[256];
     WEB_DESCRIPTOR_DATA *web_desc;
@@ -3150,12 +3180,9 @@ static bool webgate_parse_json_message(WEB_DESCRIPTOR_DATA *web_desc, const char
                     return true;
                 }
 
-                /* Send updated room info after command execution */
-                /* Note: character may have been freed by commands like quit, so check again */
-                if (web_desc->mud_desc->character && web_desc->mud_desc->character->in_room)
-                {
-                    webgate_send_room_info(web_desc, web_desc->mud_desc->character->in_room);
-                }
+                /* Room info is sent by specific commands/events, not after every command */
+                /* This prevents duplicate "You are in:" messages */
+                /* Room updates are triggered by: movement, webgate_notify_room_update(), etc. */
             }
         }
         else
