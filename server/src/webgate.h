@@ -125,6 +125,19 @@ void webgate_shutdown(void);
 void webgate_process(fd_set *readfds, fd_set *writefds);
 
 /*
+ * Intent: Clean up web descriptor reference when MUD descriptor is closed.
+ *
+ * Inputs: mud_desc - MUD descriptor being closed
+ * Outputs: None (clears associated web_desc->mud_desc pointer)
+ *
+ * Preconditions: Called from close_socket() before descriptor is freed
+ * Postconditions: Any associated web descriptor has its mud_desc pointer cleared
+ *
+ * Failure Behavior: Silently returns if mud_desc is NULL or not found
+ */
+void webgate_cleanup_mud_descriptor(DESCRIPTOR_DATA *mud_desc);
+
+/*
  * Intent: Accept a new WebSocket connection.
  *
  * Inputs: listen_fd - Listening socket file descriptor

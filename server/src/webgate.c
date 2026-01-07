@@ -367,6 +367,39 @@ WEB_DESCRIPTOR_DATA *webgate_accept(int listen_fd)
 }
 
 /*
+ * Intent: Clean up web descriptor reference when MUD descriptor is being closed.
+ *
+ * Called from close_socket() to ensure web_desc->mud_desc pointer doesn't
+ * become a dangling pointer when the MUD descriptor is freed. This prevents
+ * segfaults when the web client tries to reconnect.
+ *
+ * Inputs: mud_desc - The MUD descriptor being closed
+ * Outputs: None (clears web_desc->mud_desc if found)
+ * Preconditions: mud_desc is valid and being closed
+ * Postconditions: Associated web_desc has mud_desc cleared
+ */
+void webgate_cleanup_mud_descriptor(DESCRIPTOR_DATA *mud_desc)
+{
+    WEB_DESCRIPTOR_DATA *web_desc;
+
+    if (!mud_desc)
+        return;
+
+    /* Find the web descriptor that owns this mud descriptor */
+    for (web_desc = web_descriptor_list; web_desc; web_desc = web_desc->next)
+    {
+        if (web_desc->mud_desc == mud_desc)
+        {
+            sprintf(log_buf, "WebGate: Clearing mud_desc reference from web_desc fd %d",
+                    web_desc->fd);
+            log_string(log_buf);
+            web_desc->mud_desc = NULL;
+            return;
+        }
+    }
+}
+
+/*
  * Intent: Close a WebSocket connection and free associated resources.
  *
  * Sends proper WebSocket close frame (if connection is established),
@@ -3129,6 +3162,14 @@ static bool webgate_parse_json_message(WEB_DESCRIPTOR_DATA *web_desc, const char
 
                 interpret(web_desc->mud_desc->character, web_desc->mud_desc->incomm);
 
+                /* Check if mud_desc is still valid - interpret may have freed it */
+                if (!web_desc->mud_desc)
+                {
+                    sprintf(log_buf, "WebGate: mud_desc was closed during interpret");
+                    log_string(log_buf);
+                    return true;
+                }
+
                 /* Send updated room info after command execution */
                 /* Note: character may have been freed by commands like quit, so check again */
                 if (web_desc->mud_desc->character && web_desc->mud_desc->character->in_room)
@@ -3141,6 +3182,14 @@ static bool webgate_parse_json_message(WEB_DESCRIPTOR_DATA *web_desc, const char
         {
             int old_state = web_desc->mud_desc->connected;
             nanny(web_desc->mud_desc, web_desc->mud_desc->incomm);
+
+            /* Check if mud_desc is still valid - nanny may have called close_socket */
+            if (!web_desc->mud_desc)
+            {
+                sprintf(log_buf, "WebGate: mud_desc was closed during nanny");
+                log_string(log_buf);
+                return true;
+            }
 
             /* Check if player just entered the game */
             if (old_state != CON_PLAYING && web_desc->mud_desc->connected == CON_PLAYING)
@@ -3156,6 +3205,15 @@ static bool webgate_parse_json_message(WEB_DESCRIPTOR_DATA *web_desc, const char
                 }
             }
         }
+
+        /* Check again before accessing incomm - interpret/nanny may have freed mud_desc */
+        if (!web_desc->mud_desc)
+        {
+            sprintf(log_buf, "WebGate: mud_desc was closed during command processing");
+            log_string(log_buf);
+            return true;
+        }
+
         web_desc->mud_desc->incomm[0] = '\0';
 
         sprintf(log_buf, "WebGate: After nanny/interpret, outtop=%d",

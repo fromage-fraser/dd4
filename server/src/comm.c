@@ -926,6 +926,10 @@ void close_socket(DESCRIPTOR_DATA *dclose)
         CHAR_DATA *ch;
         DESCRIPTOR_DATA *d;
 
+        /* Notify webgate to clear any web_desc->mud_desc pointers */
+        extern void webgate_cleanup_mud_descriptor(DESCRIPTOR_DATA * mud_desc);
+        webgate_cleanup_mud_descriptor(dclose);
+
         if (dclose->outtop > 0)
                 process_output(dclose, FALSE);
 
