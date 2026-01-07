@@ -45,7 +45,6 @@ function QuickActions({ onCommand, connected, onOpenCharacterSheet, onOpenSpellB
 
   return (
     <div className="quick-actions">
-      <h4>Quick Actions</h4>
       <div className="quick-actions-grid">
         {quickCommands.map((cmd, idx) => (
           <button

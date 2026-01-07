@@ -548,21 +548,27 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>Dragons Domain IV</h1>
-        <div className={`status ${connected ? 'connected' : reconnecting ? 'reconnecting' : 'disconnected'}`}>
-          {connected ? '● Connected' : reconnecting ? '○ Reconnecting...' : '○ Disconnected'}
+        <div className="header-left">
+          <h1>Dragons Domain IV</h1>
         </div>
-      </header>
-
-      <div className="app-content">
-        <div className="left-panel">
-          <CharacterInfo vitals={vitals} status={status} onCommand={sendCommand} />
+        <div className="header-center">
           <QuickActions 
             onCommand={sendCommand} 
             connected={connected}
             onOpenCharacterSheet={() => setShowCharacterSheet(true)}
             onOpenSpellBook={() => setShowSpellBook(true)}
           />
+        </div>
+        <div className="header-right">
+          <div className={`status ${connected ? 'connected' : reconnecting ? 'reconnecting' : 'disconnected'}`}>
+            {connected ? '● Connected' : reconnecting ? '○ Reconnecting...' : '○ Disconnected'}
+          </div>
+        </div>
+      </header>
+
+      <div className="app-content">
+        <div className="left-panel">
+          <CharacterInfo vitals={vitals} status={status} onCommand={sendCommand} />
           <Compass 
             exits={room.exits} 
             onMove={handleMove} 

@@ -4,11 +4,8 @@
  */
 
 .quick-actions {
-  background-color: #2a2a2a;
-  padding: 0.75rem;
-  border-radius: 4px;
-  border: 1px solid #444;
-  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 .quick-actions h4 {
@@ -20,14 +17,13 @@
 }
 
 .quick-actions-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   gap: 0.5rem;
 }
 
 .quick-action-btn {
-  /* Touch-friendly minimum size (48x48px per WCAG) */
-  min-width: 48px;
+  /* Touch-friendly minimum size */
+  min-width: 60px;
   min-height: 60px;
   padding: 0.5rem;
   

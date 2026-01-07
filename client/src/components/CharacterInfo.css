@@ -200,7 +200,7 @@
 }
 
 .active-affects h4 {
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 0.5rem 0;
   font-size: 0.9rem;
   color: #ff6b6b;
   text-transform: uppercase;
@@ -209,8 +209,30 @@
 
 .affect-list {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-height: 80px;
+  padding-bottom: 0.25rem;
+}
+
+.affect-list::-webkit-scrollbar {
+  height: 6px;
+}
+
+.affect-list::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 3px;
+}
+
+.affect-list::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 3px;
+}
+
+.affect-list::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .affect-badge {

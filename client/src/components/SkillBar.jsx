@@ -111,18 +111,9 @@ function SkillBar({ skills, assignedSkills, onUseSkill, onAssignClick, connected
 
   return (
     <div className="skill-bar">
-      <div className="skill-bar-header">
+      <div className="skill-bar-container">
         <span className="skill-bar-title">Skills</span>
-        <button 
-          className="skill-assign-button"
-          onClick={onAssignClick}
-          disabled={!connected}
-          title="Assign skills to hotbar"
-        >
-          ⚙️
-        </button>
-      </div>
-      <div className="skill-slots">
+        <div className="skill-slots">
         {assignedSkills.map((skillId, index) => {
           const skill = skillId ? skills.find(s => s.id === skillId) : null;
           const cooldown = cooldowns[index];
@@ -162,6 +153,15 @@ function SkillBar({ skills, assignedSkills, onUseSkill, onAssignClick, connected
             </div>
           );
         })}
+        </div>
+        <button 
+          className="skill-assign-button"
+          onClick={onAssignClick}
+          disabled={!connected}
+          title="Assign skills to hotbar"
+        >
+          ⚙️
+        </button>
       </div>
     </div>
   );

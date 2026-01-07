@@ -1,7 +1,7 @@
 .skill-bar {
   background: rgba(20, 20, 30, 0.98);
   border-top: 2px solid #444;
-  padding: 12px;
+  padding: 8px 12px;
   position: sticky;
   bottom: 0;
   left: 0;
@@ -10,13 +10,12 @@
   box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.5);
 }
 
-.skill-bar-header {
+.skill-bar-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #444;
+  gap: 12px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .skill-bar-title {
@@ -25,6 +24,8 @@
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 1px;
+  white-space: nowrap;
+  min-width: 60px;
 }
 
 .skill-assign-button {
@@ -55,8 +56,7 @@
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   gap: 8px;
-  max-width: 1200px;
-  margin: 0 auto;
+  flex: 1;
 }
 
 .skill-slot {

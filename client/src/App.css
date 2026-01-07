@@ -10,16 +10,37 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0.5rem 1rem;
   background-color: #2a2a2a;
   border-bottom: 2px solid #444;
+  gap: 1rem;
+}
+
+.header-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.header-center {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.header-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .app-header h1 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #ff6b6b;
   text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+  white-space: nowrap;
 }
 
 .status {
