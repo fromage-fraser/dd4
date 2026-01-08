@@ -14,13 +14,11 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
     const actualNpcs = npcs ? npcs.filter(npc => !npc.isPlayer) : [];
 
     const ITEM_PORTAL = 33; // Portal item type from server
+    const ITEM_FOUNTAIN = 25; // Fountain item type from server
 
-    const itemActions = [
-        { label: '🔍 Inspect', command: null, action: 'inspect' },
+    const baseItemActions = [
         { label: '👁️ Examine', command: 'examine' },
         { label: '📦 Get', command: 'get' },
-        { label: '🍺 Drink', command: 'drink' },
-        { label: '🍖 Eat', command: 'eat' },
     ];
 
     const portalActions = [
@@ -32,7 +30,15 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
         if (item.type === ITEM_PORTAL) {
             return portalActions;
         }
-        return itemActions;
+        
+        const actions = [...baseItemActions];
+        
+        // Add drink action only for fountains
+        if (item.type === ITEM_FOUNTAIN) {
+            actions.push({ label: '🍺 Drink', command: 'drink' });
+        }
+        
+        return actions;
     };
 
     // Build NPC actions dynamically including opener skills
@@ -124,23 +130,6 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
 
     const executeAction = (action, target) => {
         if (!connected) return;
-        
-        // Handle inspect action (opens modal)
-        if (action.action === 'inspect') {
-            // Send examine command to get detailed info
-            onCommand(`examine ${target.keywords}`);
-            // Wait for examine response, then show modal with merged data
-            setTimeout(() => {
-                const itemNameWithoutArticle = target.name.replace(/^(a|an|the)\s+/i, '');
-                const enrichedItem = {
-                    ...target,
-                    ...(itemDetails && itemDetails[itemNameWithoutArticle] ? itemDetails[itemNameWithoutArticle] : {})
-                };
-                setDetailModalItem(enrichedItem);
-            }, 800);
-            setSelectedItem(null);
-            return;
-        }
         
         // Handle list action (no target needed)
         if (action.command === 'list') {

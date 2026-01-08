@@ -1330,6 +1330,33 @@ void webgate_broadcast(const char *module, const char *json_body)
 }
 
 /*
+ * Intent: Check if a skill is a group skill (prerequisite/category, not castable).
+ *
+ * Group skills represent skill categories or prerequisites rather than
+ * individual usable abilities. They should not appear in skill bars or
+ * spellbooks as they cannot be directly cast or used.
+ *
+ * Inputs:
+ *   - sn: Skill number (index into skill_table)
+ *
+ * Outputs: TRUE if skill is a group skill, FALSE otherwise
+ *
+ * Notes:
+ *   - Group skills have the exact pattern:
+ *     TYPE_INT, TAR_IGNORE, POS_DEAD, spell_null, 0 mana, 0 beats
+ *   - This distinguishes them from usable skills
+ *   - New group skills will automatically be filtered based on these properties
+ */
+bool is_group_skill(int sn)
+{
+    if (sn < 0 || sn >= MAX_SKILL)
+        return FALSE;
+
+    /* Group skills must match ALL of these criteria */
+    return (skill_table[sn].prac_type == TYPE_INT && skill_table[sn].target == TAR_IGNORE && skill_table[sn].minimum_position == POS_DEAD && skill_table[sn].spell_fun == spell_null && skill_table[sn].min_mana == 0 && skill_table[sn].beats == 0);
+}
+
+/*
  * Intent: Send character skills/spells to web client via GMCP.
  *
  * Provides list of learned active skills and spells for skill bar assignment
@@ -1380,6 +1407,10 @@ void webgate_send_char_skills(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
         if (!skill_table[sn].name ||
             skill_table[sn].prac_type == TYPE_WIZ ||
             skill_table[sn].prac_type == TYPE_NULL)
+            continue;
+
+        /* Skip group skills (skill groupings/prerequisites, not castable) */
+        if (is_group_skill(sn))
             continue;
 
         /* Include skills the character has learned (CAN_DO checks learned > 0) */
