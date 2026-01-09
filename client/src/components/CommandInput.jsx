@@ -20,6 +20,7 @@ function CommandInput({ onSubmit, connected }) {
   const [command, setCommand] = useState('');
   const [history, setHistory] = useState([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
+  const [lastSentSelected, setLastSentSelected] = useState(false);
   const inputRef = useRef(null);
 
   // On mobile, prevent viewport scroll when keyboard appears
@@ -39,23 +40,41 @@ function CommandInput({ onSubmit, connected }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    if (!command.trim()) return;
-    
-    // Add to history
-    setHistory(prev => [...prev, command]);
-    setHistoryIndex(-1);
-    
-    // Send command
-    onSubmit(command);
-    
-    // Clear input
-    setCommand('');
-    
-    // On mobile, blur to dismiss keyboard after sending
-    // User can tap input again to type next command
+    // If input is empty, repeat last non-empty command from history (if any)
+    let toSend = command;
+
+    if (!toSend.trim()) {
+      if (history.length > 0) {
+        toSend = history[history.length - 1];
+        // show the repeated command in the input so the user can see/edit it
+        setCommand(toSend);
+      } else {
+        // nothing in history, send an empty string (useful for login prompts)
+        toSend = '';
+      }
+    } else {
+      // Non-empty: store in history
+      setHistory((prev) => [...prev, toSend]);
+      setHistoryIndex(-1);
+    }
+
+    // Send the command (may be empty string or repeated history entry)
+    onSubmit(toSend);
+
+    // Keep the last command visible in the input and select it so
+    // typing replaces it and Enter will resend it. On mobile, we
+    // still blur to dismiss the keyboard instead of selecting.
     if (window.innerWidth <= 768) {
       inputRef.current?.blur();
+    } else {
+      // Focus and select the text so it's highlighted
+      inputRef.current?.focus();
+      try {
+        inputRef.current?.select();
+        setLastSentSelected(true);
+      } catch (err) {
+        // ignore if selection fails
+      }
     }
   };
 
@@ -90,7 +109,11 @@ function CommandInput({ onSubmit, connected }) {
         ref={inputRef}
         type="text"
         value={command}
-        onChange={(e) => setCommand(e.target.value)}
+        onChange={(e) => {
+          // If the last-sent command was selected, typing should replace it
+          if (lastSentSelected) setLastSentSelected(false);
+          setCommand(e.target.value);
+        }}
         onKeyDown={handleKeyDown}
         placeholder={connected ? "Enter command..." : "Not connected"}
         disabled={!connected}
@@ -99,7 +122,7 @@ function CommandInput({ onSubmit, connected }) {
         autoCapitalize="off"
         spellCheck="false"
       />
-      <button type="submit" disabled={!connected || !command.trim()}>
+      <button type="submit" disabled={!connected}>
         Send
       </button>
     </form>
