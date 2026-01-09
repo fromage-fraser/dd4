@@ -2837,12 +2837,26 @@ void extract_obj(OBJ_DATA *obj)
 {
         OBJ_DATA *obj_content;
         OBJ_DATA *obj_next;
+        ROOM_INDEX_DATA *notify_room = NULL;
+        OBJ_DATA *root = NULL;
         extern bool delete_obj;
 
         if (obj->deleted)
         {
                 bug("Extract_obj:  Obj already deleted", 0);
                 return;
+        }
+
+        /* Determine top-level room to notify (avoid multiple notifications
+           during recursive extraction of nested contents) */
+        if (obj->in_room)
+                notify_room = obj->in_room;
+        else if (obj->carried_by && obj->carried_by->in_room)
+                notify_room = obj->carried_by->in_room;
+        else if (obj->in_obj) {
+                for (root = obj; root->in_obj; root = root->in_obj)
+                        ;
+                notify_room = root->in_room;
         }
 
         if (obj->in_room)
@@ -2864,6 +2878,11 @@ void extract_obj(OBJ_DATA *obj)
 
         obj->deleted = TRUE;
         delete_obj = TRUE;
+
+        /* notify web clients once for the top-level room (if any) */
+        if (notify_room && webgate_room_has_web_clients(notify_room))
+                webgate_notify_room_update(notify_room);
+
         return;
 }
 
