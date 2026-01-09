@@ -190,6 +190,11 @@ void get_obj(CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
                 webgate_send_char_inventory_for_desc(ch->desc);
         }
 
+        /* Notify web clients in the room that contents changed (loot, get, etc) */
+        if (ch->in_room)
+        {
+                webgate_notify_room_update(ch->in_room);
+        }
         return;
 }
 
@@ -3507,6 +3512,15 @@ void do_wear(CHAR_DATA *ch, char *argument)
                         if (obj->wear_loc == WEAR_NONE && can_see_obj(ch, obj))
                                 wear_obj(ch, obj, FALSE);
                 }
+                /* After wear all, notify web clients of inventory and equipment update */
+                if (!IS_NPC(ch) && ch->desc)
+                {
+                        extern void webgate_send_char_inventory_for_desc(DESCRIPTOR_DATA * d);
+                        extern void webgate_send_char_equipment_for_desc(DESCRIPTOR_DATA * d);
+                        webgate_send_char_inventory_for_desc(ch->desc);
+                        webgate_send_char_equipment_for_desc(ch->desc);
+                }
+
                 return;
         }
         else
@@ -3576,6 +3590,15 @@ void do_remove(CHAR_DATA *ch, char *argument)
 
                         if (obj->wear_loc != WEAR_NONE)
                                 remove_obj(ch, obj->wear_loc, TRUE);
+                }
+
+                /* After remove all, notify web clients of inventory and equipment update */
+                if (!IS_NPC(ch) && ch->desc)
+                {
+                        extern void webgate_send_char_inventory_for_desc(DESCRIPTOR_DATA * d);
+                        extern void webgate_send_char_equipment_for_desc(DESCRIPTOR_DATA * d);
+                        webgate_send_char_inventory_for_desc(ch->desc);
+                        webgate_send_char_equipment_for_desc(ch->desc);
                 }
 
                 return;

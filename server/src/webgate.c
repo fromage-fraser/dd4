@@ -682,6 +682,63 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
         webgate_serialize_extra_flags(obj, obj->identified, extra_flags_json, sizeof(extra_flags_json));
         webgate_serialize_ego_flags(obj, obj->identified, ego_flags_json, sizeof(ego_flags_json));
 
+        /* If this object contains other objects (e.g., a corpse), serialize contained items so client can offer loot */
+        char contents_json[4096];
+        bool canLoot = false;
+        if (obj->contains)
+        {
+            OBJ_DATA *cobj;
+            int cont_count = 0;
+            bool first_cont = true;
+
+            sprintf(contents_json, "[");
+            for (cobj = obj->contains; cobj && cont_count < 20; cobj = cobj->next_content)
+            {
+                char cont_name[256];
+                char cont_keywords[256];
+                int a, b;
+
+                /* Escape contained item short description */
+                for (a = 0, b = 0; cobj->short_descr[a] != '\0' && b < sizeof(cont_name) - 2; a++)
+                {
+                    if (cobj->short_descr[a] == '"' || cobj->short_descr[a] == '\\')
+                        cont_name[b++] = '\\';
+                    if (cobj->short_descr[a] >= 32)
+                        cont_name[b++] = cobj->short_descr[a];
+                }
+                cont_name[b] = '\0';
+
+                /* Escape contained item keywords (first word) */
+                for (a = 0, b = 0; cobj->name[a] != '\0' && cobj->name[a] != ' ' && b < sizeof(cont_keywords) - 2; a++)
+                {
+                    if (cobj->name[a] == '"' || cobj->name[a] == '\\')
+                        cont_keywords[b++] = '\\';
+                    if (cobj->name[a] >= 32)
+                        cont_keywords[b++] = cobj->name[a];
+                }
+                cont_keywords[b] = '\0';
+
+                if (!first_cont)
+                    strcat(contents_json, ",");
+
+                sprintf(contents_json + strlen(contents_json),
+                        "{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d}",
+                        cobj->pIndexData ? cobj->pIndexData->vnum : 0,
+                        cont_name,
+                        cont_keywords,
+                        cobj->pIndexData ? cobj->pIndexData->vnum : 0);
+
+                first_cont = false;
+                cont_count++;
+            }
+            strcat(contents_json, "]");
+            canLoot = (cont_count > 0);
+        }
+        else
+        {
+            strcpy(contents_json, "[]");
+        }
+
         /* Check if we have room in buffer before adding */
         if (strlen(items_json) + 512 >= sizeof(items_json))
         {
@@ -694,7 +751,7 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
             strcat(items_json, ",");
         sprintf(items_json + strlen(items_json),
                 "{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d,\"type\":%d,"
-                "\"identified\":%s,\"canTake\":%s,\"extraFlags\":%s,\"egoFlags\":%s}",
+                "\"identified\":%s,\"canTake\":%s,\"extraFlags\":%s,\"egoFlags\":%s,\"canLoot\":%s,\"contents\":%s}",
                 obj->pIndexData ? obj->pIndexData->vnum : 0,
                 temp_name,
                 keywords_escaped,
@@ -703,7 +760,9 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
                 obj->identified ? "true" : "false",
                 IS_SET(obj->wear_flags, ITEM_TAKE) ? "true" : "false",
                 extra_flags_json,
-                ego_flags_json);
+                ego_flags_json,
+                canLoot ? "true" : "false",
+                contents_json);
         first = false;
         item_count++;
     }
@@ -857,34 +916,15 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
     }
     area_name_escaped[j] = '\0';
 
-    /* Build room flags JSON array (e.g., ROOM_NO_MOB, ROOM_HEALING) */
-    char room_flags_json[256];
-    bool first_flag = true;
-    strcpy(room_flags_json, "[");
-    if (IS_SET(room->room_flags, ROOM_NO_MOB))
-    {
-        strcat(room_flags_json, "\"ROOM_NO_MOB\"");
-        first_flag = false;
-    }
-    if (IS_SET(room->room_flags, ROOM_HEALING))
-    {
-        if (!first_flag)
-            strcat(room_flags_json, ",");
-        strcat(room_flags_json, "\"ROOM_HEALING\"");
-        first_flag = false;
-    }
-    strcat(room_flags_json, "]");
-
-    /* Build complete Room.Info JSON with items, NPCs, extra descriptions, room flags and area name */
+    /* Build complete Room.Info JSON with items, NPCs, extra descriptions, and area name */
     snprintf(json, sizeof(json),
-             "{\"name\":\"%s\",\"description\":\"%s\",\"exits\":%s,\"vnum\":%d,\"items\":%s,\"npcs\":%s,\"roomFlags\":%s,\"extraDescriptions\":%s,\"areaName\":\"%s\"}",
+             "{\"name\":\"%s\",\"description\":\"%s\",\"exits\":%s,\"vnum\":%d,\"items\":%s,\"npcs\":%s,\"extraDescriptions\":%s,\"areaName\":\"%s\"}",
              name_escaped,
              desc_escaped,
              exits_json,
              room->vnum,
              items_json,
              npcs_json,
-             room_flags_json,
              extra_descr_json,
              area_name_escaped);
 
@@ -1428,9 +1468,12 @@ void webgate_send_char_skills(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
             skill_table[sn].prac_type == TYPE_NULL)
             continue;
 
+        /* Skip group skills (skill groupings/prerequisites, not castable) */
+        if (is_group_skill(sn))
+            continue;
+
         /* Include skills the character has learned (CAN_DO checks learned > 0) */
         /* OR skills they can learn (learned == 0, has pre-req, and sn < gsn_mage_base) */
-        /* Group skills are included because they can be practiced */
         if (!CAN_DO(ch, sn))
         {
             /* For unlearned skills, check if they can be learned */
@@ -1461,7 +1504,7 @@ void webgate_send_char_skills(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
         *dst = '\0';
 
         /* Build JSON entry for this skill */
-        sprintf(skill_entry, "%s{\"id\":%d,\"name\":\"%s\",\"learned\":%d,\"mana\":%d,\"beats\":%d,\"type\":\"%s\",\"opener\":%s,\"pracType\":%d,\"target\":%d,\"isGroup\":%s}",
+        sprintf(skill_entry, "%s{\"id\":%d,\"name\":\"%s\",\"learned\":%d,\"mana\":%d,\"beats\":%d,\"type\":\"%s\",\"opener\":%s,\"pracType\":%d,\"target\":%d}",
                 (count > 0 ? "," : ""),
                 sn,
                 skill_name_escaped,
@@ -1471,8 +1514,7 @@ void webgate_send_char_skills(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
                 skill_type,
                 is_opener ? "true" : "false",
                 skill_table[sn].prac_type,
-                skill_table[sn].target,
-                is_group_skill(sn) ? "true" : "false");
+                skill_table[sn].target);
 
         /* Check if adding this entry would overflow the buffer */
         if (strlen(json) + strlen(skill_entry) + 10 >= sizeof(json))
@@ -2956,14 +2998,6 @@ static bool webgate_parse_websocket_frames(WEB_DESCRIPTOR_DATA *web_desc)
         case 0x0A: /* Pong frame */
             /* Update last_ping timestamp - this is the normal response to our pings */
             web_desc->last_ping = current_time;
-
-            /* Intent: Treat a PONG from the web client as activity.
-               Reset the associated MUD character's idle timer so web
-               clients that auto-pong aren't sent to limbo for inactivity. */
-            if (web_desc->mud_desc && web_desc->mud_desc->character)
-            {
-                web_desc->mud_desc->character->timer = 0;
-            }
             break;
 
         default:

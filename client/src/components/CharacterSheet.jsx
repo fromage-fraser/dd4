@@ -205,6 +205,24 @@ function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, o
             <div className="character-sheet-modal" onClick={(e) => e.stopPropagation()}>
                 <div className="character-sheet-header">
                     <h2>📋 Character Sheet</h2>
+                    <div className="character-sheet-header-actions">
+                        <button
+                            className="header-action-btn"
+                            onClick={() => onCommand('wear all')}
+                            disabled={!connected}
+                            title="Wear all wearable items"
+                        >
+                            🧥 Wear All
+                        </button>
+                        <button
+                            className="header-action-btn"
+                            onClick={() => onCommand('remove all')}
+                            disabled={!connected}
+                            title="Remove all equipped items"
+                        >
+                            🚫 Remove All
+                        </button>
+                    </div>
                     <button className="close-button" onClick={onClose}>✕</button>
                 </div>
 

@@ -1,0 +1,11 @@
+.modal-overlay{position:fixed;left:0;top:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:2000}
+.modal-content{background:#fff;padding:16px;border-radius:6px;max-width:520px;width:100%;box-shadow:0 6px 24px rgba(0,0,0,0.3)}
+.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.modal-body{max-height:60vh;overflow:auto}
+.loot-list{display:flex;flex-direction:column;gap:8px}
+.loot-item{display:flex;justify-content:space-between;align-items:center;padding:8px;border:1px solid #e6eef8;border-radius:4px;background:#fbfdff}
+.loot-name{font-weight:600;color:#1f2937}
+.modal-footer{display:flex;justify-content:flex-end;margin-top:12px}
+.modal-button,.action-button{background:#2b8cff;color:#fff;border:none;padding:6px 10px;border-radius:4px;cursor:pointer}
+.modal-button:hover,.action-button:hover{opacity:0.95}
+.empty{color:#444}

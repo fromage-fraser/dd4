@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import './RoomContents.css';
 import ItemDetailModal from './ItemDetailModal';
+import LootModal from './LootModal';
 
 function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPracticeClick, extraDescriptions, itemDetails, currentPlayerName }) {
     const [selectedItem, setSelectedItem] = useState(null);
     const [selectedNpc, setSelectedNpc] = useState(null);
     const [selectedPlayer, setSelectedPlayer] = useState(null);
     const [detailModalItem, setDetailModalItem] = useState(null);
+    const [lootModalContainer, setLootModalContainer] = useState(null);
     const [selectedExtraDesc, setSelectedExtraDesc] = useState(null);
 
     // Filter players from NPCs and exclude current player
@@ -20,6 +22,8 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
         { label: '👁️ Examine', command: 'examine' },
         { label: '📦 Get', command: 'get' },
     ];
+
+    // Add loot action to base actions dynamically if container has loot
 
     const portalActions = [
         { label: '🌀 Enter', command: 'enter' },
@@ -36,6 +40,11 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
         // Add drink action only for fountains
         if (item.type === ITEM_FOUNTAIN) {
             actions.push({ label: '🍺 Drink', command: 'drink' });
+        }
+
+        // Add loot action if server indicated the item can be looted
+        if (item.canLoot) {
+            actions.push({ label: '🧰 Loot', command: 'loot' });
         }
         
         return actions;
@@ -169,6 +178,13 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
             const command = `${action.command} ${targetRef}`;
             onCommand(command);
         } else {
+            // Special handling for loot action: open Loot modal
+            if (action.command === 'loot') {
+                // target is the container item
+                setLootModalContainer(target);
+                return;
+            }
+
             const command = `${action.command} ${targetRef}`;
             onCommand(command);
         }
@@ -226,6 +242,23 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
         return indicators;
     };
 
+    // Keep the loot modal in sync with room updates: when `items` changes,
+    // refresh the container reference so its `contents` reflect latest Room.Info.
+    React.useEffect(() => {
+        if (!lootModalContainer) return;
+        if (!items || items.length === 0) return;
+
+        // Try to find updated container by id first, then by keywords, then by name
+        const updated = items.find(it => it.id === lootModalContainer.id)
+            || items.find(it => (lootModalContainer.keywords && it.keywords && it.keywords === lootModalContainer.keywords))
+            || items.find(it => it.name === lootModalContainer.name);
+
+        // If we found an updated container, update state so modal shows fresh contents
+        if (updated) setLootModalContainer(updated);
+        // If not found, container may have been taken/removed; close modal.
+        else setLootModalContainer(null);
+    }, [items]);
+
     return (
         <div className="room-contents">
             {detailModalItem && (
@@ -234,6 +267,42 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
                     onClose={() => setDetailModalItem(null)} 
                 />
             )}
+            {lootModalContainer && (
+                <LootModal
+                    container={lootModalContainer}
+                    contents={lootModalContainer.contents || []}
+                    onClose={() => setLootModalContainer(null)}
+                    onTake={(it) => {
+                        // Use keyword (not description) when looting.
+                        // If multiple items share the same keyword, use indexed syntax: "2.ring"
+                        const itemKeyword = it.keywords && it.keywords.length ? it.keywords.split(' ')[0] : (it.name ? it.name.split(' ')[0] : 'item');
+                        const containerKeyword = lootModalContainer.keywords && lootModalContainer.keywords.length ? lootModalContainer.keywords.split(' ')[0] : (lootModalContainer.name ? lootModalContainer.name.split(' ')[0] : 'container');
+
+                        // Determine ordinal index among items in the container that share the same keyword
+                        const contents = lootModalContainer.contents || [];
+                        let ordinal = 0;
+                        for (let i = 0; i < contents.length; i++) {
+                            const ci = contents[i];
+                            const ciKeyword = ci.keywords && ci.keywords.length ? ci.keywords.split(' ')[0] : (ci.name ? ci.name.split(' ')[0] : '');
+                            if (ciKeyword === itemKeyword) {
+                                ordinal++;
+                                // Compare by reference when possible, fallback to name+vnum
+                                if (ci === it || (ci.name === it.name && ci.vnum === it.vnum)) {
+                                    break;
+                                }
+                            }
+                        }
+
+                        const itemRef = ordinal > 1 ? `${ordinal}.${itemKeyword}` : itemKeyword;
+                        const cmd = `get ${itemRef} ${containerKeyword}`;
+                        onCommand(cmd);
+                        // Keep the modal open; expect server to send updated Room.Info
+                        // which will refresh the modal contents via effect above.
+                    }}
+                />
+            )}
+
+            
             
             {players && players.length > 0 && (
                 <div className="content-section">
