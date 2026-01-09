@@ -2071,7 +2071,11 @@ void do_drop(CHAR_DATA *ch, char *argument)
                 }
 
                 obj_to_room(create_money(plat, gold, silver, copper), ch->in_room);
-
+                /* Notify web clients in the room that contents changed (loot, get, etc) */
+                if (ch->in_room)
+                {
+                        webgate_notify_room_update(ch->in_room);
+                }
                 send_to_char("Ok.\n\r", ch);
                 act("$n drops some coins.", ch, NULL, NULL, TO_ROOM);
                 return;
@@ -2094,6 +2098,7 @@ void do_drop(CHAR_DATA *ch, char *argument)
 
                 obj_from_char(obj);
                 obj_to_room(obj, ch->in_room);
+
                 act("You drop $p.", ch, obj, NULL, TO_CHAR);
                 act("$n drops $p.", ch, obj, NULL, TO_ROOM);
 
@@ -2128,7 +2133,11 @@ void do_drop(CHAR_DATA *ch, char *argument)
                                 }
                         }
                 }
-
+                /* Notify web clients in the room that contents changed (loot, get, etc) */
+                if (ch->in_room)
+                {
+                        webgate_notify_room_update(ch->in_room);
+                }
                 if (!found)
                 {
                         if (arg[3] == '\0')
@@ -2144,6 +2153,7 @@ void do_drop(CHAR_DATA *ch, char *argument)
         {
                 extern void webgate_send_char_inventory_for_desc(DESCRIPTOR_DATA * d);
                 webgate_send_char_inventory_for_desc(ch->desc);
+                webgate_notify_room_update(ch->in_room);
         }
 }
 
