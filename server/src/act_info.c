@@ -29,6 +29,7 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
+#include "webgate.h"
 
 char *const where_name[] =
     {
@@ -4462,6 +4463,24 @@ void prac_slist(CHAR_DATA *ch)
         sprintf(foo, "You have {W%d{x {%cphysical{x and {W%d{x {%cintellectual{x practices remaining.\n\r",
                 ch->pcdata->str_prac, str_col, ch->pcdata->int_prac, int_col);
         send_to_char(foo, ch);
+
+        /* Send updated skills to web clients via GMCP */
+        if (ch->desc)
+        {
+                extern WEB_DESCRIPTOR_DATA *web_descriptor_list;
+                extern void webgate_send_char_skills(WEB_DESCRIPTOR_DATA * web_desc, CHAR_DATA * ch);
+                WEB_DESCRIPTOR_DATA *web_desc;
+
+                /* Find web descriptor for this character */
+                for (web_desc = web_descriptor_list; web_desc; web_desc = web_desc->next)
+                {
+                        if (web_desc->mud_desc && web_desc->mud_desc == ch->desc)
+                        {
+                                webgate_send_char_skills(web_desc, ch);
+                                break;
+                        }
+                }
+        }
 
         return;
 }

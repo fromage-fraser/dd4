@@ -1,6 +1,14 @@
 import { useState } from 'react';
 import './SkillAssign.css';
 import { getUsableSkills } from '../utils/skillFilters';
+import TargetSelector from './TargetSelector';
+import { 
+  setMassTarget, 
+  TAR_CHAR_OFFENSIVE, 
+  TAR_CHAR_OFFENSIVE_SINGLE,
+  TAR_CHAR_DEFENSIVE,
+  requiresTarget
+} from '../utils/targetMemory';
 
 /*
  * Intent: Modal for assigning skills to hotbar slots and selecting opener skills.
@@ -11,6 +19,7 @@ import { getUsableSkills } from '../utils/skillFilters';
  * - Select 2 opener skills for combat initiation (shown in NPC action menu)
  * - Clear assignments from slots
  * - Save configuration to localStorage
+ * - Set targets for all offensive or defensive skills at once (mass targeting)
  *
  * Excludes group skills (e.g., "dark magiks") as they cannot be cast/used
  *
@@ -20,17 +29,21 @@ import { getUsableSkills } from '../utils/skillFilters';
  *   - openers: Current opener assignments [2 skill IDs or null]
  *   - onSave: Callback(assignedSkills, openers) when configuration saved
  *   - onClose: Callback() to close modal
+ *   - characterName: String - character name for target memory localStorage keys
+ *   - room: Object - current room data with npcs array for mass targeting
  *
  * UI Organization:
  *   - Left: Available skills list (filterable, searchable)
- *   - Right: 8 hotbar slots + 2 opener slots
+ *   - Right: 8 hotbar slots + 2 opener slots + mass target buttons
  *   - Bottom: Save/Cancel buttons
  */
-function SkillAssign({ skills, assignedSkills, openers, onSave, onClose }) {
+function SkillAssign({ skills, assignedSkills, openers, onSave, onClose, characterName, room }) {
   const [localAssigned, setLocalAssigned] = useState([...assignedSkills]);
   const [localOpeners, setLocalOpeners] = useState([...openers]);
   const [filter, setFilter] = useState('all'); // all, spell, skill, opener
   const [search, setSearch] = useState('');
+  const [targetSelectorOpen, setTargetSelectorOpen] = useState(false);
+  const [massTargetMode, setMassTargetMode] = useState(null); // 'offensive' or 'defensive'
 
   // Filter out group skills (like "dark magiks") - they can't be used/assigned
   const usableSkills = getUsableSkills(skills);
@@ -97,6 +110,49 @@ function SkillAssign({ skills, assignedSkills, openers, onSave, onClose }) {
   // Check if skill is assigned at all (for styling)
   const isAssigned = (skillId) => {
     return getAssignmentCount(skillId) > 0;
+  };
+
+  // Get affected skills for mass targeting
+  const getAffectedSkills = (mode) => {
+    if (!characterName) return [];
+    
+    return usableSkills.filter(skill => {
+      // Must require targeting
+      if (!requiresTarget(skill.target)) return false;
+      
+      if (mode === 'offensive') {
+        return skill.target === TAR_CHAR_OFFENSIVE || skill.target === TAR_CHAR_OFFENSIVE_SINGLE;
+      } else if (mode === 'defensive') {
+        return skill.target === TAR_CHAR_DEFENSIVE;
+      }
+      return false;
+    }).map(skill => ({ id: skill.id, name: skill.name }));
+  };
+
+  // Handle mass target button clicks
+  const handleMassTargetClick = (mode) => {
+    const affected = getAffectedSkills(mode);
+    if (affected.length === 0) {
+      alert(`No ${mode} skills found that require targeting.`);
+      return;
+    }
+    
+    setMassTargetMode(mode);
+    setTargetSelectorOpen(true);
+  };
+
+  // Handle mass target save
+  const handleMassTargetSave = (targetName) => {
+    if (!massTargetMode || !characterName) return;
+    
+    const affected = getAffectedSkills(massTargetMode);
+    const skillIds = affected.map(s => s.id);
+    
+    // Save to localStorage
+    setMassTarget(characterName, skillIds, targetName);
+    
+    console.log(`Mass target set for ${skillIds.length} ${massTargetMode} skills: ${targetName}`);
+    alert(`Target "${targetName}" set for ${skillIds.length} ${massTargetMode} skill${skillIds.length !== 1 ? 's' : ''}`);
   };
 
   return (
@@ -254,6 +310,29 @@ function SkillAssign({ skills, assignedSkills, openers, onSave, onClose }) {
                 })}
               </div>
             </div>
+
+            <div className="mass-target-section">
+              <h3>Mass Target Assignment</h3>
+              <p className="section-help">Set targets for multiple skills at once</p>
+              <div className="mass-target-buttons">
+                <button 
+                  className="mass-target-button offensive"
+                  onClick={() => handleMassTargetClick('offensive')}
+                  disabled={!characterName || getAffectedSkills('offensive').length === 0}
+                  title={`Set target for all ${getAffectedSkills('offensive').length} offensive skills`}
+                >
+                  ⚔️ Set All Offensive ({getAffectedSkills('offensive').length})
+                </button>
+                <button 
+                  className="mass-target-button defensive"
+                  onClick={() => handleMassTargetClick('defensive')}
+                  disabled={!characterName || getAffectedSkills('defensive').length === 0}
+                  title={`Set target for all ${getAffectedSkills('defensive').length} defensive skills`}
+                >
+                  🛡️ Set All Defensive ({getAffectedSkills('defensive').length})
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -261,6 +340,21 @@ function SkillAssign({ skills, assignedSkills, openers, onSave, onClose }) {
           <button className="cancel-button" onClick={onClose}>Cancel</button>
           <button className="save-button" onClick={handleSave}>Save Configuration</button>
         </div>
+
+        {/* Target Selector Modal for Mass Targeting */}
+        <TargetSelector
+          isOpen={targetSelectorOpen}
+          onClose={() => {
+            setTargetSelectorOpen(false);
+            setMassTargetMode(null);
+          }}
+          onSave={handleMassTargetSave}
+          targetType={massTargetMode === 'offensive' ? TAR_CHAR_OFFENSIVE : TAR_CHAR_DEFENSIVE}
+          npcs={room?.npcs || []}
+          characterName={characterName}
+          isMassMode={true}
+          affectedSkills={getAffectedSkills(massTargetMode)}
+        />
       </div>
     </div>
   );

@@ -30,6 +30,9 @@ function App() {
   const [reconnectAttempt, setReconnectAttempt] = useState(0);
   const [vitals, setVitals] = useState({ hp: 100, maxhp: 100, mana: 100, maxmana: 100, move: 100, maxmove: 100 });
   const [status, setStatus] = useState(null);
+  const [characterName, setCharacterName] = useState(null); // Character name for localStorage keys
+  const [isFighting, setIsFighting] = useState(false); // Combat state
+  const [opponent, setOpponent] = useState(null); // Current combat opponent name
   const [room, setRoom] = useState({ name: 'Unknown', description: '', exits: [], items: [], npcs: [] });
   const [messages, setMessages] = useState([]);
   const [skills, setSkills] = useState([]);
@@ -310,6 +313,27 @@ function App() {
       case 'Char.Status':
         console.log('Char.Status received:', data);
         setStatus(data);
+        // Extract character name for target memory localStorage keys
+        if (data.name && data.name !== characterName) {
+          console.log('Character name set:', data.name);
+          setCharacterName(data.name);
+        }
+        break;
+      
+      case 'Char.Enemies':
+        // Handle combat state tracking
+        console.log('Char.Enemies received:', data);
+        if (data.enemies && data.enemies.length > 0) {
+          // In combat - set fighting state and first opponent
+          setIsFighting(true);
+          setOpponent(data.enemies[0].name);
+          console.log('Combat started with:', data.enemies[0].name);
+        } else {
+          // Combat ended
+          setIsFighting(false);
+          setOpponent(null);
+          console.log('Combat ended');
+        }
         break;
       
       case 'Room.Info':
@@ -512,6 +536,24 @@ function App() {
   };
 
   /**
+   * Request fresh skills data from server via GMCP
+   * Ensures skill list is current when opening modals
+   */
+  const refreshSkills = () => {
+    if (!ws.current || ws.current.readyState !== WebSocket.OPEN) {
+      return;
+    }
+    
+    // Send 'practice' command to trigger webgate_send_char_skills()
+    // Don't add to message log (silent refresh)
+    const message = JSON.stringify({
+      command: 'practice'
+    });
+    ws.current.send(message);
+    console.log('Requesting Char.Skills GMCP update via skills command');
+  };
+
+  /**
    * Handle movement via compass
    */
   const handleMove = (direction) => {
@@ -556,7 +598,10 @@ function App() {
             onCommand={sendCommand} 
             connected={connected}
             onOpenCharacterSheet={() => setShowCharacterSheet(true)}
-            onOpenSpellBook={() => setShowSpellBook(true)}
+            onOpenSpellBook={() => {
+              refreshSkills();
+              setShowSpellBook(true);
+            }}
           />
         </div>
         <div className="header-right">
@@ -604,8 +649,15 @@ function App() {
         skills={skills}
         assignedSkills={assignedSkills}
         onUseSkill={handleUseSkill}
-        onAssignClick={() => setShowSkillAssign(true)}
+        onAssignClick={() => {
+          refreshSkills();
+          setShowSkillAssign(true);
+        }}
         connected={connected}
+        characterName={characterName}
+        isFighting={isFighting}
+        opponent={opponent}
+        room={room}
       />
 
       {showSkillAssign && (
@@ -615,6 +667,8 @@ function App() {
           openers={openers}
           onSave={handleSaveSkillConfig}
           onClose={() => setShowSkillAssign(false)}
+          characterName={characterName}
+          room={room}
         />
       )}
 

@@ -31,14 +31,15 @@ export function getPracticeableSkills(skills) {
  * Filter skills that can be actively used/cast
  * Excludes group skills (like "dark magiks") as they are just prerequisites
  * and cannot be assigned to skill bars or cast
+ * Also excludes skills with 0% learned - no use in battle
  * 
  * @param {Array} skills - All skills from GMCP
- * @returns {Array} Skills that can be used/cast (not group skills)
+ * @returns {Array} Skills that can be used/cast (not group skills, learned > 0%)
  */
 export function getUsableSkills(skills) {
   if (!skills) return [];
   
-  return skills.filter(skill => !skill.isGroup);
+  return skills.filter(skill => !skill.isGroup && skill.learned > 0);
 }
 
 /**
