@@ -2997,6 +2997,14 @@ void do_eat(CHAR_DATA *ch, char *argument)
                 WAIT_STATE(ch, PULSE_VIOLENCE / 2);
 
         extract_obj(obj);
+        /* After eating, notify web clients of inventory and equipment update */
+        if (!IS_NPC(ch) && ch->desc)
+        {
+                extern void webgate_send_char_inventory_for_desc(DESCRIPTOR_DATA * d);
+                extern void webgate_send_char_equipment_for_desc(DESCRIPTOR_DATA * d);
+                webgate_send_char_inventory_for_desc(ch->desc);
+                webgate_send_char_equipment_for_desc(ch->desc);
+        }
         return;
 }
 
