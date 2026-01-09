@@ -1,25 +1,16 @@
 import React from 'react';
 import './PracticeModal.css';
+import { categorizeByPracticeType } from '../utils/skillFilters';
 
 /**
  * PracticeModal component displays available skills to practice
  * Shows skills filtered by practice type (physical/intellectual)
+ * Includes group skills (e.g., "dark magiks") that unlock prerequisites
  * Displays current skill percentage and allows training
  */
 function PracticeModal({ skills, pracPhysical, pracIntellectual, onClose, onPractice, connected }) {
-  const TYPE_INT = 1;
-  const TYPE_STR = 2;
-  const TYPE_WIZ = 3;
-  const TYPE_NULL = 4;
-
-  // Filter skills that can be practiced (not TYPE_WIZ or TYPE_NULL)
-  const practiceableSkills = skills.filter(skill => 
-    skill.pracType === TYPE_INT || skill.pracType === TYPE_STR
-  );
-
-  // Separate into physical and intellectual
-  const physicalSkills = practiceableSkills.filter(s => s.pracType === TYPE_STR);
-  const intellectualSkills = practiceableSkills.filter(s => s.pracType === TYPE_INT);
+  // Get skills categorized by practice type (includes group skills)
+  const { physical: physicalSkills, intellectual: intellectualSkills } = categorizeByPracticeType(skills);
 
   const handlePractice = (skill) => {
     if (!connected) return;

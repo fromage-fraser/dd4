@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import './SpellBookModal.css';
+import { getUsableSkills } from '../utils/skillFilters';
 
 // TAR_* constants matching server-side (from merc.h)
 const TAR_IGNORE = 0;                  // Area effect
@@ -53,11 +54,11 @@ const SpellBookModal = ({ skills = [], room = {}, inventory = [], onCommand, onC
     console.log('- Learned abilities:', skills.filter(s => s.learned > 0).length);
   }, [skills]);
 
-  // Filter to show all learned abilities (both spells and skills)
-  const spells = useMemo(() => 
-    skills.filter(s => s.learned > 0),
-    [skills]
-  );
+  // Filter to show learned abilities that can be used (excludes group skills like "dark magiks")
+  const spells = useMemo(() => {
+    const usable = getUsableSkills(skills);
+    return usable.filter(s => s.learned > 0);
+  }, [skills]);
 
   // Apply search filter
   const filteredSpells = useMemo(() => {

@@ -1409,12 +1409,9 @@ void webgate_send_char_skills(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
             skill_table[sn].prac_type == TYPE_NULL)
             continue;
 
-        /* Skip group skills (skill groupings/prerequisites, not castable) */
-        if (is_group_skill(sn))
-            continue;
-
         /* Include skills the character has learned (CAN_DO checks learned > 0) */
         /* OR skills they can learn (learned == 0, has pre-req, and sn < gsn_mage_base) */
+        /* Group skills are included because they can be practiced */
         if (!CAN_DO(ch, sn))
         {
             /* For unlearned skills, check if they can be learned */
@@ -1445,7 +1442,7 @@ void webgate_send_char_skills(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
         *dst = '\0';
 
         /* Build JSON entry for this skill */
-        sprintf(skill_entry, "%s{\"id\":%d,\"name\":\"%s\",\"learned\":%d,\"mana\":%d,\"beats\":%d,\"type\":\"%s\",\"opener\":%s,\"pracType\":%d,\"target\":%d}",
+        sprintf(skill_entry, "%s{\"id\":%d,\"name\":\"%s\",\"learned\":%d,\"mana\":%d,\"beats\":%d,\"type\":\"%s\",\"opener\":%s,\"pracType\":%d,\"target\":%d,\"isGroup\":%s}",
                 (count > 0 ? "," : ""),
                 sn,
                 skill_name_escaped,
@@ -1455,7 +1452,8 @@ void webgate_send_char_skills(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
                 skill_type,
                 is_opener ? "true" : "false",
                 skill_table[sn].prac_type,
-                skill_table[sn].target);
+                skill_table[sn].target,
+                is_group_skill(sn) ? "true" : "false");
 
         /* Check if adding this entry would overflow the buffer */
         if (strlen(json) + strlen(skill_entry) + 10 >= sizeof(json))

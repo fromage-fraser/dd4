@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './SkillAssign.css';
+import { getUsableSkills } from '../utils/skillFilters';
 
 /*
  * Intent: Modal for assigning skills to hotbar slots and selecting opener skills.
@@ -10,6 +11,8 @@ import './SkillAssign.css';
  * - Select 2 opener skills for combat initiation (shown in NPC action menu)
  * - Clear assignments from slots
  * - Save configuration to localStorage
+ *
+ * Excludes group skills (e.g., "dark magiks") as they cannot be cast/used
  *
  * Inputs:
  *   - skills: Array of all available skills from Char.Skills GMCP
@@ -29,8 +32,11 @@ function SkillAssign({ skills, assignedSkills, openers, onSave, onClose }) {
   const [filter, setFilter] = useState('all'); // all, spell, skill, opener
   const [search, setSearch] = useState('');
 
+  // Filter out group skills (like "dark magiks") - they can't be used/assigned
+  const usableSkills = getUsableSkills(skills);
+
   // Filter skills based on type and search
-  const filteredSkills = skills.filter(skill => {
+  const filteredSkills = usableSkills.filter(skill => {
     // Search filter
     if (search && !skill.name.toLowerCase().includes(search.toLowerCase())) {
       return false;
@@ -81,9 +87,16 @@ function SkillAssign({ skills, assignedSkills, openers, onSave, onClose }) {
     onClose();
   };
 
-  // Check if skill is already assigned
+  // Check how many times a skill is assigned (for visual indicator)
+  const getAssignmentCount = (skillId) => {
+    const hotbarCount = localAssigned.filter(id => id === skillId).length;
+    const openerCount = localOpeners.filter(id => id === skillId).length;
+    return hotbarCount + openerCount;
+  };
+
+  // Check if skill is assigned at all (for styling)
   const isAssigned = (skillId) => {
-    return localAssigned.includes(skillId) || localOpeners.includes(skillId);
+    return getAssignmentCount(skillId) > 0;
   };
 
   return (
@@ -110,54 +123,61 @@ function SkillAssign({ skills, assignedSkills, openers, onSave, onClose }) {
                   className={filter === 'all' ? 'active' : ''}
                   onClick={() => setFilter('all')}
                 >
-                  All ({skills.length})
+                  All ({usableSkills.length})
                 </button>
                 <button
                   className={filter === 'spell' ? 'active' : ''}
                   onClick={() => setFilter('spell')}
                 >
-                  Spells ({skills.filter(s => s.type === 'spell').length})
+                  Spells ({usableSkills.filter(s => s.type === 'spell').length})
                 </button>
                 <button
                   className={filter === 'skill' ? 'active' : ''}
                   onClick={() => setFilter('skill')}
                 >
-                  Skills ({skills.filter(s => s.type === 'skill').length})
+                  Skills ({usableSkills.filter(s => s.type === 'skill').length})
                 </button>
                 <button
                   className={filter === 'opener' ? 'active' : ''}
                   onClick={() => setFilter('opener')}
                 >
-                  Openers ({skills.filter(s => s.opener).length})
+                  Openers ({usableSkills.filter(s => s.opener).length})
                 </button>
               </div>
             </div>
 
             <div className="skills-list">
-              {filteredSkills.map(skill => (
-                <div
-                  key={skill.id}
-                  className={`skill-item ${isAssigned(skill.id) ? 'assigned' : ''}`}
-                  draggable
-                  onDragStart={(e) => e.dataTransfer.setData('skillId', skill.id)}
-                >
-                  <span className="skill-item-icon">
-                    {skill.type === 'spell' ? '🔮' : '⚔️'}
-                  </span>
-                  <div className="skill-item-info">
-                    <div className="skill-item-name">
-                      {skill.name}
-                      {skill.opener && <span className="opener-badge">⚡</span>}
+              {filteredSkills.map(skill => {
+                const assignmentCount = getAssignmentCount(skill.id);
+                return (
+                  <div
+                    key={skill.id}
+                    className={`skill-item ${assignmentCount > 0 ? 'assigned' : ''}`}
+                    draggable
+                    onDragStart={(e) => e.dataTransfer.setData('skillId', skill.id)}
+                  >
+                    <span className="skill-item-icon">
+                      {skill.type === 'spell' ? '🔮' : '⚔️'}
+                    </span>
+                    <div className="skill-item-info">
+                      <div className="skill-item-name">
+                        {skill.name}
+                        {skill.opener && <span className="opener-badge">⚡</span>}
+                      </div>
+                      <div className="skill-item-stats">
+                        {skill.mana > 0 && <span className="mana">{skill.mana}m</span>}
+                        <span className="cooldown">{skill.beats}s</span>
+                        <span className="proficiency">{skill.learned}%</span>
+                      </div>
                     </div>
-                    <div className="skill-item-stats">
-                      {skill.mana > 0 && <span className="mana">{skill.mana}m</span>}
-                      <span className="cooldown">{skill.beats}s</span>
-                      <span className="proficiency">{skill.learned}%</span>
-                    </div>
+                    {assignmentCount > 0 && (
+                      <span className="assigned-indicator">
+                        {assignmentCount > 1 ? `${assignmentCount}✓` : '✓'}
+                      </span>
+                    )}
                   </div>
-                  {isAssigned(skill.id) && <span className="assigned-indicator">✓</span>}
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
