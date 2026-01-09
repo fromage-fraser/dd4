@@ -18,7 +18,7 @@ import './QuickActions.css';
  * Notes: Icons use emoji for universal compatibility. Can be replaced with
  *        icon library (FontAwesome, Material Icons) for more polished look.
  */
-function QuickActions({ onCommand, connected, onOpenCharacterSheet, onOpenSpellBook }) {
+function QuickActions({ onCommand, connected, onOpenCharacterSheet, onOpenSpellBook, status, room }) {
   const quickCommands = [
     { label: '👁️', text: 'Look', command: 'look', color: '#2196f3' },
     { label: '📋', text: 'Sheet', action: 'sheet', color: '#9c27b0' },
@@ -27,20 +27,34 @@ function QuickActions({ onCommand, connected, onOpenCharacterSheet, onOpenSpellB
     { label: '👥', text: 'Who', command: 'who', color: '#00bcd4' },
   ];
 
+  const isSleeping = status && status.position && String(status.position).toLowerCase().includes('sleep');
+  const roomFlags = room && room.roomFlags ? room.roomFlags : [];
+  const hasNoMob = roomFlags.includes('ROOM_NO_MOB');
+  const isHealing = roomFlags.includes('ROOM_HEALING');
+
   const handleClick = (cmd) => {
     if (!connected) return;
-    
+
     if (cmd.action === 'sheet') {
       onOpenCharacterSheet();
       return;
     }
-    
+
     if (cmd.action === 'spellbook') {
       onOpenSpellBook();
       return;
     }
-    
+
     onCommand(cmd.command);
+  };
+
+  const handleSleepToggle = () => {
+    if (!connected) return;
+    if (isSleeping) {
+      onCommand('wake');
+    } else {
+      onCommand('sleep');
+    }
   };
 
   return (
@@ -59,6 +73,20 @@ function QuickActions({ onCommand, connected, onOpenCharacterSheet, onOpenSpellB
             <span className="quick-action-text">{cmd.text}</span>
           </button>
         ))}
+
+        {/* Sleep/Wake quick action */}
+        <button
+          key="sleep"
+          className={`quick-action-btn ${hasNoMob ? 'no-mob' : ''}`}
+          style={{ borderColor: '#ff9800' }}
+          onClick={handleSleepToggle}
+          disabled={!connected}
+          title={isSleeping ? 'Wake' : 'Sleep'}
+        >
+          <span className="quick-action-icon">{isSleeping ? '🛌' : '😴'}</span>
+          <span className="quick-action-text">{isSleeping ? 'Wake' : 'Sleep'}</span>
+          {isHealing && <span className="healing-overlay">↑</span>}
+        </button>
       </div>
     </div>
   );

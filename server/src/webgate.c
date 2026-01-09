@@ -857,15 +857,34 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
     }
     area_name_escaped[j] = '\0';
 
-    /* Build complete Room.Info JSON with items, NPCs, extra descriptions, and area name */
+    /* Build room flags JSON array (e.g., ROOM_NO_MOB, ROOM_HEALING) */
+    char room_flags_json[256];
+    bool first_flag = true;
+    strcpy(room_flags_json, "[");
+    if (IS_SET(room->room_flags, ROOM_NO_MOB))
+    {
+        strcat(room_flags_json, "\"ROOM_NO_MOB\"");
+        first_flag = false;
+    }
+    if (IS_SET(room->room_flags, ROOM_HEALING))
+    {
+        if (!first_flag)
+            strcat(room_flags_json, ",");
+        strcat(room_flags_json, "\"ROOM_HEALING\"");
+        first_flag = false;
+    }
+    strcat(room_flags_json, "]");
+
+    /* Build complete Room.Info JSON with items, NPCs, extra descriptions, room flags and area name */
     snprintf(json, sizeof(json),
-             "{\"name\":\"%s\",\"description\":\"%s\",\"exits\":%s,\"vnum\":%d,\"items\":%s,\"npcs\":%s,\"extraDescriptions\":%s,\"areaName\":\"%s\"}",
+             "{\"name\":\"%s\",\"description\":\"%s\",\"exits\":%s,\"vnum\":%d,\"items\":%s,\"npcs\":%s,\"roomFlags\":%s,\"extraDescriptions\":%s,\"areaName\":\"%s\"}",
              name_escaped,
              desc_escaped,
              exits_json,
              room->vnum,
              items_json,
              npcs_json,
+             room_flags_json,
              extra_descr_json,
              area_name_escaped);
 

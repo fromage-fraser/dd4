@@ -52,6 +52,29 @@
   touch-action: manipulation;
 }
 
+/* Positioning for overlays and modifiers */
+.quick-action-btn {
+  position: relative;
+}
+
+.quick-action-btn.no-mob {
+  box-shadow: 0 0 12px rgba(76, 175, 80, 0.45);
+  border-color: #4caf50 !important;
+}
+
+.quick-action-btn .healing-overlay {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffeb3b;
+  border-radius: 6px;
+  padding: 0 6px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
 .quick-action-icon {
   font-size: 1.5rem;
   line-height: 1;

@@ -594,9 +594,11 @@ function App() {
           <h1>Dragons Domain IV</h1>
         </div>
         <div className="header-center">
-          <QuickActions 
-            onCommand={sendCommand} 
+          <QuickActions
+            onCommand={sendCommand}
             connected={connected}
+            status={status}
+            room={room}
             onOpenCharacterSheet={() => setShowCharacterSheet(true)}
             onOpenSpellBook={() => {
               refreshSkills();
