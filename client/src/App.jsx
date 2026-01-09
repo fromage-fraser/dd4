@@ -16,6 +16,7 @@ import HealerModal from './components/HealerModal';
 import PracticeModal from './components/PracticeModal';
 import MapModal from './components/MapModal';
 import SpellBookModal from './components/SpellBookModal';
+import HelpModal from './components/HelpModal';
 
 /**
  * Main application component for DD4 Web Client
@@ -52,6 +53,7 @@ function App() {
   const [mapsData, setMapsData] = useState(null); // All available maps from maps.json
   const [currentMap, setCurrentMap] = useState(null); // Current area's map data
   const [showMapModal, setShowMapModal] = useState(false); // Store detailed item info keyed by item name
+  const [helpContent, setHelpContent] = useState(null);
   const ws = useRef(null);
   const reconnectTimeoutRef = useRef(null);
   const reconnectAttemptRef = useRef(0); // Use ref to track attempts for closure issues
@@ -421,7 +423,14 @@ function App() {
         // Check for shopkeeper messages that should be shown in GUI
         if (data.channel === 'game' && data.message) {
           const msg = data.message.trim();
-          
+
+          // Detect help output and surface it in the Practice modal
+          if (msg.match(/help for/i) || msg.includes('Syntax:') || msg.match(/^Help for/i)) {
+            const clean = msg.replace(/\u001b\[[0-9;]*m/g, '').replace(/<[0-9]+>/g, '');
+            console.log('Help text received:', clean);
+            setHelpContent(clean);
+          }
+
           // Parse item identification/examination details
           if (msg.includes('You determine that') && msg.includes('is a')) {
             const itemNameMatch = msg.match(/You determine that ([^\n]+) is a/);
@@ -515,6 +524,21 @@ function App() {
       command: command
     });
 
+    ws.current.send(message);
+    addMessage(`> ${command}`, 'command');
+  };
+
+  // Wrapper used for help requests so we can surface help output in the UI
+  const requestHelp = (command) => {
+    // clear previous help
+    setHelpContent(null);
+    // Send the actual help command
+    if (!ws.current || ws.current.readyState !== WebSocket.OPEN) {
+      addMessage('Not connected to server', 'error');
+      return;
+    }
+
+    const message = JSON.stringify({ command });
     ws.current.send(message);
     addMessage(`> ${command}`, 'command');
   };
@@ -721,8 +745,14 @@ function App() {
           pracIntellectual={vitals.pracIntellectual || 0}
           onClose={() => setShowPracticeModal(false)}
           onPractice={sendCommand}
+          onRefresh={refreshSkills}
           connected={connected}
+          onHelp={requestHelp}
         />
+      )}
+
+      {helpContent && (
+        <HelpModal content={helpContent} onClose={() => setHelpContent(null)} />
       )}
 
       {showSpellBook && (

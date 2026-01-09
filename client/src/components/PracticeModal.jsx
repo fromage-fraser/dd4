@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './PracticeModal.css';
 import { categorizeByPracticeType } from '../utils/skillFilters';
 
@@ -8,14 +8,42 @@ import { categorizeByPracticeType } from '../utils/skillFilters';
  * Includes group skills (e.g., "dark magiks") that unlock prerequisites
  * Displays current skill percentage and allows training
  */
-function PracticeModal({ skills, pracPhysical, pracIntellectual, onClose, onPractice, connected }) {
+function PracticeModal({ skills, pracPhysical, pracIntellectual, onClose, onPractice, onRefresh, connected, onHelp }) {
   // Get skills categorized by practice type (includes group skills)
   const { physical: physicalSkills, intellectual: intellectualSkills } = categorizeByPracticeType(skills);
+
+  // Track per-skill help debounce timers
+  const [helpTimers, setHelpTimers] = useState({});
 
   const handlePractice = (skill) => {
     if (!connected) return;
     onPractice(`practice ${skill.name}`);
+    // Request a fresh skill list after practicing so the modal updates
+    // Small delay gives the server time to generate Char.Skills GMCP
+    if (onRefresh) {
+      setTimeout(() => onRefresh(), 300);
+    }
   };
+
+  const handleHelpClick = (skill) => {
+    if (!connected || !onHelp) return;
+
+    // If already debounced, ignore
+    if (helpTimers[skill.id]) return;
+
+    // Set a short debounce so repeated clicks don't spam the server
+    const tid = setTimeout(() => {
+      onHelp(`help ${skill.name}`);
+      setHelpTimers(prev => {
+        const copy = { ...prev };
+        delete copy[skill.id];
+        return copy;
+      });
+    }, 500);
+
+    setHelpTimers(prev => ({ ...prev, [skill.id]: tid }));
+  };
+
 
   const renderSkillList = (skillList, type, practicePoints) => {
     if (skillList.length === 0) {
@@ -27,7 +55,18 @@ function PracticeModal({ skills, pracPhysical, pracIntellectual, onClose, onPrac
         {skillList.map((skill) => (
           <div key={`practice-${skill.id}`} className="practice-skill">
             <div className="skill-info">
-              <span className="skill-name">{skill.name}</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span className="skill-name">{skill.name}</span>
+                <button
+                  className="help-button"
+                  onClick={() => handleHelpClick(skill)}
+                  disabled={!connected || Boolean(helpTimers[skill.id])}
+                  title={`Show help for ${skill.name}`}
+                  aria-label={`Show help for ${skill.name}`}
+                >
+                  ?
+                </button>
+              </div>
               <span className="skill-learned">{skill.learned}%</span>
             </div>
             <button 
