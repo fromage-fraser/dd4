@@ -108,7 +108,14 @@ function translateRomToAnsi(text) {
     if (map[p1]) return map[p1];
     return m;
   });
-  text = text.replace(/<([0-9]{1,3})>/g, (m, p1) => map[p1] || m);
+   text = text.replace(/<([0-9]{1,3})>/g, (m, p1) => {
+     // if it's a numeric 0-255 value, treat as 256-color SGR
+     if (/^\d+$/.test(p1)) {
+       const n = parseInt(p1, 10);
+       if (!Number.isNaN(n) && n >= 0 && n <= 255) return `\x1B[38;5;${n}m`;
+     }
+     return map[p1] || m;
+   });
   return text;
 }
 
