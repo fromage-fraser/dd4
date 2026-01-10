@@ -1587,6 +1587,15 @@ void damage(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
         update_pos(ch);
         update_pos(victim);
 
+        /*
+         * Send real-time enemy status update to web clients
+         * Triggered on every damage tick for live HP tracking in UI
+         */
+        if (!IS_NPC(ch) && ch->desc)
+                webgate_send_char_enemies_for_desc(ch->desc);
+        if (!IS_NPC(victim) && victim->desc && victim != ch)
+                webgate_send_char_enemies_for_desc(victim->desc);
+
         for (fighter = ch, opponent = victim, count = 0;
              (!count) || (ch != victim && count == 1);
              fighter = victim, opponent = ch, count++)
@@ -2462,6 +2471,12 @@ void set_fighting(CHAR_DATA *ch, CHAR_DATA *victim)
 
         ch->fighting = victim;
         ch->position = POS_FIGHTING;
+
+        /* Send enemy status update to web clients when combat starts */
+        if (!IS_NPC(ch) && ch->desc)
+                webgate_send_char_enemies_for_desc(ch->desc);
+        if (!IS_NPC(victim) && victim->desc)
+                webgate_send_char_enemies_for_desc(victim->desc);
 }
 
 /*
@@ -2498,6 +2513,10 @@ void stop_fighting(CHAR_DATA *ch, bool fBoth)
                                 affect_strip(fch, gsn_unarmed_combat);
 
                         update_pos(fch);
+
+                        /* Send enemy status update (empty array) to web clients when combat ends */
+                        if (!IS_NPC(fch) && fch->desc)
+                                webgate_send_char_enemies_for_desc(fch->desc);
                 }
         }
 

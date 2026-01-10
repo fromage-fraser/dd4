@@ -3311,6 +3311,9 @@ void gmcp_update(void)
                                 UpdateGMCPString(d, GMCP_ENEMY, "");
                         }
 
+                        /* Send enemy status to web clients */
+                        webgate_send_char_enemies_for_desc(d);
+
                         buf4[0] = '\0';
 
                         buf[0] = '\0';

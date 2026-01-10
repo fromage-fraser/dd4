@@ -358,6 +358,35 @@ void webgate_pulse(void);
 void webgate_send_char_vitals(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch);
 
 /*
+ * Intent: Send real-time enemy combat status to web client via GMCP.
+ *
+ * Inputs:
+ *   - web_desc - Web client descriptor
+ *   - ch - Character whose enemies to report
+ *
+ * Outputs: Char.Enemies GMCP message sent to client
+ *
+ * Preconditions: ch must be valid player character
+ * Postconditions: Client receives JSON array of current combat opponents
+ *
+ * Failure Behavior: Sends empty array if not in combat
+ *
+ * Notes: Called on every damage tick for real-time HP updates
+ */
+void webgate_send_char_enemies(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch);
+
+/*
+ * Intent: Send enemy combat status via descriptor lookup.
+ *
+ * Inputs: mud_desc - Standard MUD descriptor
+ * Outputs: None (Char.Enemies GMCP sent if web client found)
+ *
+ * Preconditions: mud_desc has character attached
+ * Postconditions: Web clients receive updated enemy status
+ */
+void webgate_send_char_enemies_for_desc(DESCRIPTOR_DATA *mud_desc);
+
+/*
  * Intent: Send character status to web client via GMCP.
  *
  * Inputs:

@@ -2602,6 +2602,107 @@ void webgate_send_char_status(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
 }
 
 /*
+ * Intent: Send real-time enemy combat status to web client via GMCP.
+ *
+ * Builds JSON array of all combatants with the player's primary target
+ * (ch->fighting) listed first for UI emphasis. Each enemy includes a unique
+ * hex ID (memory address) to distinguish duplicate names, combat stats,
+ * and isPrimary flag for UI highlighting.
+ *
+ * Inputs:
+ *   - web_desc: Web client descriptor
+ *   - ch: Player character whose enemies to report
+ *
+ * Outputs: None (GMCP Char.Enemies message queued)
+ *
+ * Preconditions: web_desc is authenticated and in WS_STATE_OPEN
+ * Postconditions: Char.Enemies message sent with current combat state
+ *
+ * Failure Behavior: Silently returns if web_desc or ch invalid
+ *
+ * Notes: Called on every damage tick for real-time HP updates.
+ *        Send empty array when not in combat to clear UI.
+ */
+void webgate_send_char_enemies(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
+{
+    char json[MAX_STRING_LENGTH];
+    char enemy_json[512];
+    CHAR_DATA *vch;
+    ROOM_INDEX_DATA *room;
+    bool first = true;
+
+    if (!web_desc || !ch || web_desc->state != WS_STATE_OPEN)
+        return;
+
+    room = ch->in_room;
+    if (!room)
+    {
+        /* No room - send empty array */
+        webgate_send_gmcp(web_desc, "Char.Enemies", "[]");
+        return;
+    }
+
+    /* Start building JSON array */
+    strcpy(json, "[");
+
+    /* Add primary target first (ch->fighting) if present */
+    if (ch->fighting)
+    {
+        snprintf(enemy_json, sizeof(enemy_json),
+                 "{\"id\":\"%p\",\"name\":\"%s\",\"level\":%d,"
+                 "\"hp\":%d,\"maxhp\":%d,\"vnum\":%d,\"isPrimary\":true}",
+                 (void *)ch->fighting,
+                 IS_NPC(ch->fighting) ? ch->fighting->short_descr : ch->fighting->name,
+                 ch->fighting->level,
+                 ch->fighting->hit,
+                 ch->fighting->max_hit,
+                 IS_NPC(ch->fighting) ? ch->fighting->pIndexData->vnum : 0);
+        strcat(json, enemy_json);
+        first = false;
+    }
+
+    /* Add all other combatants in the room */
+    for (vch = room->people; vch; vch = vch->next_in_room)
+    {
+        /* Skip self */
+        if (vch == ch)
+            continue;
+
+        /* Skip primary target (already added) */
+        if (vch == ch->fighting)
+            continue;
+
+        /* Include if this character is fighting us or we're fighting them */
+        if (vch->fighting == ch || ch->fighting == vch)
+        {
+            if (!first)
+                strcat(json, ",");
+
+            snprintf(enemy_json, sizeof(enemy_json),
+                     "{\"id\":\"%p\",\"name\":\"%s\",\"level\":%d,"
+                     "\"hp\":%d,\"maxhp\":%d,\"vnum\":%d,\"isPrimary\":false}",
+                     (void *)vch,
+                     IS_NPC(vch) ? vch->short_descr : vch->name,
+                     vch->level,
+                     vch->hit,
+                     vch->max_hit,
+                     IS_NPC(vch) ? vch->pIndexData->vnum : 0);
+            strcat(json, enemy_json);
+            first = false;
+        }
+    }
+
+    /* Close array */
+    strcat(json, "]");
+
+    webgate_send_gmcp(web_desc, "Char.Enemies", json);
+
+    sprintf(log_buf, "WebGate: Sent Char.Enemies (fighting: %s)",
+            ch->fighting ? (IS_NPC(ch->fighting) ? ch->fighting->short_descr : ch->fighting->name) : "none");
+    log_string(log_buf);
+}
+
+/*
  * Intent: Send WebSocket ping frame to keep connection alive.
  *
  * Sends a WebSocket PING frame (opcode 0x9) to the client. Client must
@@ -2786,6 +2887,39 @@ void webgate_send_char_equipment_for_desc(DESCRIPTOR_DATA *mud_desc)
         if (web_desc->mud_desc == mud_desc && web_desc->state == WS_STATE_OPEN)
         {
             webgate_send_char_equipment(web_desc, ch);
+        }
+    }
+}
+
+/*
+ * Intent: Send enemy combat status to all web clients for a MUD descriptor.
+ *
+ * Helper function for combat system to trigger real-time enemy updates.
+ * Finds all web descriptors associated with the MUD descriptor and sends
+ * current combat enemy data with HP, level, and unique IDs.
+ *
+ * Inputs: mud_desc - MUD descriptor whose character's enemies to report
+ * Outputs: None (Char.Enemies GMCP sent to all associated web clients)
+ *
+ * Preconditions: mud_desc has character attached
+ * Postconditions: Web clients receive updated enemy combat status
+ */
+void webgate_send_char_enemies_for_desc(DESCRIPTOR_DATA *mud_desc)
+{
+    WEB_DESCRIPTOR_DATA *web_desc;
+    CHAR_DATA *ch;
+
+    if (!mud_desc || !mud_desc->character)
+        return;
+
+    ch = mud_desc->character;
+
+    /* Find all web descriptors for this character and update enemies */
+    for (web_desc = web_descriptor_list; web_desc; web_desc = web_desc->next)
+    {
+        if (web_desc->mud_desc == mud_desc && web_desc->state == WS_STATE_OPEN)
+        {
+            webgate_send_char_enemies(web_desc, ch);
         }
     }
 }

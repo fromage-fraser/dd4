@@ -7,6 +7,7 @@ import CombatLog from './components/CombatLog';
 import CommandInput from './components/CommandInput';
 import QuickActions from './components/QuickActions';
 import RoomContents from './components/RoomContents';
+import EnemyStatus from './components/EnemyStatus';
 import SkillBar from './components/SkillBar';
 import SkillAssign from './components/SkillAssign';
 import CharacterSheet from './components/CharacterSheet';
@@ -34,6 +35,7 @@ function App() {
   const [characterName, setCharacterName] = useState(null); // Character name for localStorage keys
   const [isFighting, setIsFighting] = useState(false); // Combat state
   const [opponent, setOpponent] = useState(null); // Current combat opponent name
+  const [enemies, setEnemies] = useState([]); // Full array of combat enemies with HP/level
   const [room, setRoom] = useState({ name: 'Unknown', description: '', exits: [], items: [], npcs: [] });
   const [messages, setMessages] = useState([]);
   const [skills, setSkills] = useState([]);
@@ -337,15 +339,18 @@ function App() {
         break;
       
       case 'Char.Enemies':
-        // Handle combat state tracking
+        // Handle combat state tracking with full enemy array
         console.log('Char.Enemies received:', data);
-        if (data.enemies && data.enemies.length > 0) {
-          // In combat - set fighting state and first opponent
+        // data is directly the enemies array from server
+        if (Array.isArray(data) && data.length > 0) {
+          // In combat - store full enemies array
+          setEnemies(data);
           setIsFighting(true);
-          setOpponent(data.enemies[0].name);
-          console.log('Combat started with:', data.enemies[0].name);
+          setOpponent(data[0].name);
+          console.log('Combat active with enemies:', data);
         } else {
-          // Combat ended
+          // Combat ended - clear enemies
+          setEnemies([]);
           setIsFighting(false);
           setOpponent(null);
           console.log('Combat ended');
@@ -684,6 +689,7 @@ function App() {
         </div>
 
         <div className="right-panel">
+          <EnemyStatus enemies={enemies} />
           <RoomContents 
             items={room.items} 
             npcs={room.npcs} 
