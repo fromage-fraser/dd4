@@ -6,6 +6,35 @@
   margin-bottom: 1rem;
 }
 
+.room-display.minimized {
+  padding: 0.5rem 0.75rem;
+}
+
+.room-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.minimize-toggle {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: #ddd;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.minimize-toggle:hover {
+  background: rgba(255,255,255,0.02);
+}
+
 .room-name {
   margin: 0 0 1rem 0;
   color: #ff6b6b;
