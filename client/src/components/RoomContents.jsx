@@ -60,7 +60,7 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
 
         // Add List action for shopkeepers
         if (npc && npc.isShopkeeper) {
-            baseActions.push({ label: '🛒 List', command: 'list' });
+            baseActions.push({ label: '🛒 Shop', command: 'list' });
         }
 
         // Add Practice action for trainers
