@@ -1416,6 +1416,46 @@ bool is_group_skill(int sn)
 }
 
 /*
+ * Intent: Determine whether a skill should be considered practiceable
+ * at a trainer. This includes both physical (`TYPE_STR`) and
+ * intellectual/knowledge (`TYPE_INT`) practice types. Group skills
+ * that represent knowledge groups will also be included because they
+ * use `TYPE_INT`.
+ */
+bool is_practiceable_skill(int sn)
+{
+    if (sn < 0 || sn >= MAX_SKILL)
+        return FALSE;
+
+    return (skill_table[sn].prac_type == TYPE_INT || skill_table[sn].prac_type == TYPE_STR) ? TRUE : FALSE;
+}
+
+/*
+ * Intent: Determine whether a skill is actionable / assignable to a
+ * hotbar (i.e. an ability the player can actively invoke). This
+ * excludes group/knowledge skills and obvious passive entries.
+ */
+bool is_actionable_skill(int sn)
+{
+    if (sn < 0 || sn >= MAX_SKILL)
+        return FALSE;
+
+    /* Exclude group skills (categories/prereqs) */
+    if (is_group_skill(sn))
+        return FALSE;
+
+    /* Exclude wizard/null placeholders */
+    if (skill_table[sn].prac_type == TYPE_WIZ || skill_table[sn].prac_type == TYPE_NULL)
+        return FALSE;
+
+    /* If the skill has no mana cost, no beats and target is ignore, it's not actionable */
+    if (skill_table[sn].min_mana == 0 && skill_table[sn].beats == 0 && skill_table[sn].target == TAR_IGNORE)
+        return FALSE;
+
+    return TRUE;
+}
+
+/*
  * Intent: Send character skills/spells to web client via GMCP.
  *
  * Provides list of learned active skills and spells for skill bar assignment
@@ -2998,6 +3038,13 @@ static bool webgate_parse_websocket_frames(WEB_DESCRIPTOR_DATA *web_desc)
         case 0x0A: /* Pong frame */
             /* Update last_ping timestamp - this is the normal response to our pings */
             web_desc->last_ping = current_time;
+            /* Intent: Treat a PONG from the web client as activity.
+            Reset the associated MUD character's idle timer so web
+            clients that auto-pong aren't sent to limbo for inactivity. */
+            if (web_desc->mud_desc && web_desc->mud_desc->character)
+            {
+                web_desc->mud_desc->character->timer = 0;
+            }
             break;
 
         default:
