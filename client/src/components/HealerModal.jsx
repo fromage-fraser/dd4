@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './ShopModal.css'; // Reuse ShopModal CSS classes
+import { parseAnsiToHtml, stripAnsi } from '../utils/ansiParser';
 
 /**
  * HealerModal component displays healer services grouped by category
@@ -86,13 +87,13 @@ function HealerModal({ healer, services, onClose, onBuyService, connected }) {
     <div className="modal-overlay" onClick={onClose}>
       <div className="shop-modal" onClick={(e) => e.stopPropagation()}>
         <div className="shop-header">
-          <h2>⚕️ {healer}'s Services</h2>
+          <h2 dangerouslySetInnerHTML={{ __html: `⚕️ ${parseAnsiToHtml(healer)}'s Services` }} />
           <button className="close-button" onClick={onClose}>✕</button>
         </div>
 
         {notification && (
           <div className="shop-notification">
-            <span className="notification-text">{notification}</span>
+            <span className="notification-text" dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(notification) }} />
             <button className="notification-close" onClick={() => setNotification(null)}>✕</button>
           </div>
         )}
@@ -109,16 +110,16 @@ function HealerModal({ healer, services, onClose, onBuyService, connected }) {
                     <div key={`service-${category}-${index}`} className="healer-service-card">
                       <div className="healer-service-info">
                         <div className="healer-service-header">
-                          <span className="healer-service-name">{service.name}</span>
+                          <span className="healer-service-name" dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(service.name) }} />
                           <span className="healer-service-cost">{service.cost} gold</span>
                         </div>
-                        <p className="healer-service-description">{service.description}</p>
+                        <p className="healer-service-description" dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(service.description) }} />
                       </div>
                       <button
                         className="buy-button buy-service"
                         onClick={() => handleBuyService(service)}
                         disabled={!connected || isTransacting}
-                        title={`Purchase ${service.name} for ${service.cost} gold`}
+                        title={`Purchase ${stripAnsi(service.name || '')} for ${service.cost} gold`}
                       >
                         Buy
                       </button>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './PracticeModal.css';
+import { parseAnsiToHtml, stripAnsi } from '../utils/ansiParser';
 import { categorizeByPracticeType } from '../utils/skillFilters';
 
 /**
@@ -56,7 +57,7 @@ function PracticeModal({ skills, pracPhysical, pracIntellectual, onClose, onPrac
           <div key={`practice-${skill.id}`} className="practice-skill">
             <div className="skill-info">
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span className="skill-name">{skill.name}</span>
+                <span className="skill-name" dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(skill.name) }} />
                 <button
                   className="help-button"
                   onClick={() => handleHelpClick(skill)}
@@ -78,7 +79,7 @@ function PracticeModal({ skills, pracPhysical, pracIntellectual, onClose, onPrac
                   ? `No ${type} practice points remaining` 
                   : skill.learned >= 100 
                     ? 'Skill mastered' 
-                    : `Practice ${skill.name}`
+                    : `Practice ${stripAnsi(skill.name || '')}`
               }
             >
               {skill.learned >= 100 ? '✓ Mastered' : 'Practice'}

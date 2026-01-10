@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './RoomContents.css';
+import { parseAnsiToHtml, stripAnsi } from '../utils/ansiParser';
 import ItemDetailModal from './ItemDetailModal';
 import LootModal from './LootModal';
 
@@ -316,7 +317,7 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
                                     disabled={!connected}
                                     title={`Click for actions: ${player.name}`}
                                 >
-                                    <span className="player-name">{player.name}</span>
+                                    <span className="player-name" dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(player.name) }} />
                                     {player.level && (
                                         <span className="player-level-badge" title={`Level ${player.level}`}>
                                             Lv{player.level}
@@ -355,10 +356,10 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
                                         className={`item-button ${selectedItem?.id === item.id ? 'selected' : ''}`}
                                         onClick={() => handleItemClick(item)}
                                         disabled={!connected}
-                                        title={`Click for actions: ${item.name}`}
+                                        title={`Click for actions: ${stripAnsi(item.name || '')}`}
                                     >
                                         <span className="item-icon">📦</span>
-                                        <span className="item-name">{item.name}</span>
+                                        <span className="item-name" dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(item.name) }} />
                                         {indicators.length > 0 && (
                                             <span className="item-indicators">
                                                 {indicators.map((ind, idx) => (
@@ -405,7 +406,7 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
                                     disabled={!connected}
                                     title={`Click for actions: ${npc.name}`}
                                 >
-                                    <span className="npc-name">{npc.name}</span>
+                                    <span className="npc-name" dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(npc.name) }} />
                                     {npc.isShopkeeper && (
                                         <span className="npc-indicator shopkeeper" title="Shopkeeper">
                                             🛒
@@ -458,17 +459,17 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
                     <div className="content-list">
                         {extraDescriptions.map((extraDesc, index) => (
                             <div key={`extra-${index}-${extraDesc.keyword}`} className="content-item">
-                                <button
+                                    <button
                                     className={`extra-desc-button ${selectedExtraDesc?.keyword === extraDesc.keyword ? 'selected' : ''}`}
                                     onClick={() => handleExtraDescClick(extraDesc)}
-                                    title={`Click to view details about ${extraDesc.keyword}`}
+                                    title={`Click to view details about ${stripAnsi(extraDesc.keyword || '')}`}
                                 >
                                     <span className="extra-desc-icon">👁️</span>
-                                    <span className="extra-desc-keyword">{extraDesc.keyword}</span>
+                                    <span className="extra-desc-keyword" dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(extraDesc.keyword) }} />
                                 </button>
                                 {selectedExtraDesc?.keyword === extraDesc.keyword && (
                                     <div className="extra-desc-details">
-                                        <p>{extraDesc.description}</p>
+                                        <p dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(extraDesc.description) }} />
                                     </div>
                                 )}
                             </div>

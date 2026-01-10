@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ShopModal.css';
+import { parseAnsiToHtml, stripAnsi } from '../utils/ansiParser';
 
 /**
  * ShopModal component displays shop inventory and player inventory side-by-side
@@ -118,13 +119,13 @@ function ShopModal({ shopkeeper, items, inventory, onClose, onBuy, connected, on
     <div className="modal-overlay" onClick={onClose}>
       <div className="shop-modal" onClick={(e) => e.stopPropagation()}>
         <div className="shop-header">
-          <h2>🛒 {shopkeeper}'s Shop</h2>
+          <h2 dangerouslySetInnerHTML={{ __html: `🛒 ${parseAnsiToHtml(shopkeeper)}'s Shop` }} />
           <button className="close-button" onClick={onClose}>✕</button>
         </div>
 
         {notification && (
           <div className="shop-notification">
-            <span className="notification-text">{notification}</span>
+            <span className="notification-text" dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(notification) }} />
             <button className="notification-close" onClick={() => setNotification(null)}>✕</button>
           </div>
         )}
@@ -146,7 +147,7 @@ function ShopModal({ shopkeeper, items, inventory, onClose, onBuy, connected, on
                     <div key={`shop-item-${index}-${item.vnum}`} className="shop-item">
                       <span className="col-level">{item.level}</span>
                       <span className="col-price">{item.cost}cp</span>
-                      <span className="col-item">{item.name}</span>
+                      <span className="col-item" dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(item.name) }} />
                       <div className="col-actions">
                         <button 
                           className="buy-button buy-1"
@@ -199,7 +200,7 @@ function ShopModal({ shopkeeper, items, inventory, onClose, onBuy, connected, on
                       >
                         <span className="item-icon">{getItemIcon(item.type)}</span>
                         <div className="item-info">
-                          <span className={`item-name ${getRarityClass(item.rarity)}`}>{item.name}</span>
+                          <span className={`item-name ${getRarityClass(item.rarity)}`} dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(item.name) }} />
                           <span className="item-details">Lv{item.level} • {item.weight}lbs</span>
                           {!isSellable && <span className="item-warning">⚠️ Cannot sell</span>}
                         </div>

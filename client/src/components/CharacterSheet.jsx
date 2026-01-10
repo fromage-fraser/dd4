@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './CharacterSheet.css';
+import { parseAnsiToHtml, stripAnsi } from '../utils/ansiParser';
 
 function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, onRefresh, itemDetails }) {
     const [selectedInventoryItem, setSelectedInventoryItem] = useState(null);
@@ -230,7 +231,9 @@ function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, o
                     {inspectedItem && (
                         <div className="item-detail-panel">
                             <div className="detail-header">
-                                <h3 className={getRarityClass(inspectedItem.rarity)}>{inspectedItem.name}</h3>
+                                <h3 className={getRarityClass(inspectedItem.rarity)}>
+                                    <span dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(inspectedItem.name) }} />
+                                </h3>
                                 <button className="detail-close-btn" onClick={() => setInspectedItem(null)}>✕</button>
                             </div>
                             <div className="detail-body">
@@ -265,7 +268,7 @@ function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, o
                                 {inspectedItem.longDescription && (
                                     <div className="detail-section">
                                         <h4>Description</h4>
-                                        <p style={{whiteSpace: 'pre-wrap'}}>{inspectedItem.longDescription}</p>
+                                        <div style={{whiteSpace: 'pre-wrap'}} dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(inspectedItem.longDescription) }} />
                                     </div>
                                 )}
 
@@ -365,13 +368,13 @@ function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, o
                                             className={`equipment-slot-modal ${item ? 'equipped' : 'empty'} ${isSelected ? 'selected' : ''}`}
                                             onClick={() => handleEquipmentClick(slot, item)}
                                             disabled={!connected || !item}
-                                            title={item ? `${item.name} (Lv ${item.level})` : `Empty ${slot.label}`}
+                                            title={item ? `${stripAnsi(item.name || '')} (Lv ${item.level})` : `Empty ${slot.label}`}
                                         >
                                             <div className="slot-icon">{slot.icon}</div>
                                             <div className="slot-label">{slot.label}</div>
                                             {item && (
                                                 <>
-                                                    <div className={`slot-item-name ${getRarityClass(item.rarity)}`}>{item.name}</div>
+                                                    <div className={`slot-item-name ${getRarityClass(item.rarity)}`} dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(item.name) }} />
                                                     {indicators.length > 0 && (
                                                         <div className="item-indicators-inline">
                                                             {indicators.map((ind, idx) => (
@@ -421,10 +424,10 @@ function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, o
                                                 className={`inventory-item-modal ${isSelected ? 'selected' : ''}`}
                                                 onClick={() => handleInventoryClick(item, index)}
                                                 disabled={!connected}
-                                                title={`${item.name} (Lv ${item.level}, ${item.weight}lbs)`}
+                                                title={`${stripAnsi(item.name || '')} (Lv ${item.level}, ${item.weight}lbs)`}
                                             >
                                                 <span className="item-icon">{getItemIcon(item.type)}</span>
-                                                <span className={`item-name ${getRarityClass(item.rarity)}`}>{item.name}</span>
+                                                <span className={`item-name ${getRarityClass(item.rarity)}`} dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(item.name) }} />
                                                 <span className="item-level">Lv{item.level}</span>
                                                 {indicators.length > 0 && (
                                                     <span className="item-indicators-inline">

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './ShopModal.css';
+import { parseAnsiToHtml, stripAnsi } from '../utils/ansiParser';
 
 /**
  * Intent: Display identify service modal for unidentified items
@@ -73,7 +74,7 @@ function IdentifyModal({ identifier, inventory, onClose, onIdentify, connected }
     <div className="modal-overlay" onClick={onClose}>
       <div className="shop-modal" onClick={(e) => e.stopPropagation()}>
         <div className="shop-header">
-          <h2>🔮 {identifier}'s Identify Service</h2>
+          <h2 dangerouslySetInnerHTML={{ __html: `🔮 ${parseAnsiToHtml(identifier)}'s Identify Service` }} />
           <button className="close-button" onClick={onClose}>✕</button>
         </div>
 
@@ -98,10 +99,8 @@ function IdentifyModal({ identifier, inventory, onClose, onIdentify, connected }
                     >
                       <span className="item-icon">{getItemIcon(item.type)}</span>
                       <div className="item-info">
-                        <span className={`item-name ${getRarityClass(item.rarity)}`}>
-                          {item.name}
-                          {identified && <span className="identified-checkmark"> ✓</span>}
-                        </span>
+                        <span className={`item-name ${getRarityClass(item.rarity)}`} dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(item.name) }} />
+                        {identified && <span className="identified-checkmark"> ✓</span>}
                         <span className="item-details">
                           Lv{item.level} • {item.weight ? `${item.weight}lbs` : 'Light'}
                         </span>

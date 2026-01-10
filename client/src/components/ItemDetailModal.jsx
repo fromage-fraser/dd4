@@ -1,5 +1,6 @@
 import React from 'react';
 import './ItemDetailModal.css';
+import { parseAnsiToHtml, stripAnsi } from '../utils/ansiParser';
 
 /**
  * Modal component for displaying detailed item identification information
@@ -91,7 +92,7 @@ function ItemDetailModal({ item, onClose }) {
                 <div className="modal-header">
                     <h3>
                         <span className="item-type-icon">{getItemTypeIcon(item.type)}</span>
-                        {item.name}
+                        <span dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(item.name) }} />
                     </h3>
                     <button className="close-button" onClick={onClose}>✕</button>
                 </div>
@@ -243,10 +244,10 @@ function ItemDetailModal({ item, onClose }) {
                                 <span className={`rarity-badge ${item.setRarity.toLowerCase()}`}>{item.setRarity}</span> Set
                             </div>
                             {item.setName && (
-                                <div className="set-name">{item.setName}</div>
+                                <div className="set-name" dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(item.setName) }} />
                             )}
                             {item.setLore && (
-                                <div className="set-lore">{item.setLore}</div>
+                                <div className="set-lore" dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(item.setLore) }} />
                             )}
                             {item.setBonus && (
                                 <div className="set-bonus">

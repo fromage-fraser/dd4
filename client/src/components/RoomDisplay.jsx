@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './RoomDisplay.css';
+import { parseAnsiToHtml } from '../utils/ansiParser';
 
 /**
  * RoomDisplay component shows the current room information
@@ -37,7 +38,7 @@ function RoomDisplay({ room }) {
   return (
     <div className={`room-display ${minimized ? 'minimized' : ''}`}>
       <div className="room-header">
-        <h2 className="room-name">{name}</h2>
+        <h2 className="room-name" dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(name) }} />
         <button
           className="minimize-toggle"
           aria-pressed={minimized}
@@ -50,7 +51,7 @@ function RoomDisplay({ room }) {
 
       {!minimized && (
         <>
-          {description && <p className="room-description">{description}</p>}
+          {description && <p className="room-description" dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(description) }} />}
           {exits.length > 0 && (
             <div className="room-exits">
               <span className="exits-label">Obvious exits:</span>
