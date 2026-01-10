@@ -1508,9 +1508,8 @@ void webgate_send_char_skills(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
             skill_table[sn].prac_type == TYPE_NULL)
             continue;
 
-        /* Skip group skills (skill groupings/prerequisites, not castable) */
-        if (is_group_skill(sn))
-            continue;
+        /* Detect group skills (skill groupings/prerequisites) - include them so client can render knowledge groups */
+        bool is_group = is_group_skill(sn);
 
         /* Include skills the character has learned (CAN_DO checks learned > 0) */
         /* OR skills they can learn (learned == 0, has pre-req, and sn < gsn_mage_base) */
@@ -1527,8 +1526,11 @@ void webgate_send_char_skills(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
                      (skill_table[sn].target == TAR_CHAR_OFFENSIVE ||
                       skill_table[sn].target == TAR_CHAR_OFFENSIVE_SINGLE));
 
-        /* Determine skill type: spell (uses mana) or skill (physical/special ability) */
-        skill_type = (skill_table[sn].min_mana > 0) ? "spell" : "skill";
+        /* Determine skill type: group (category), spell (uses mana) or skill (physical/special ability) */
+        if (is_group)
+            skill_type = "group";
+        else
+            skill_type = (skill_table[sn].min_mana > 0) ? "spell" : "skill";
 
         /* Simple JSON escape for skill name (most skill names don't have special chars) */
         src = skill_table[sn].name;
@@ -1544,10 +1546,11 @@ void webgate_send_char_skills(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
         *dst = '\0';
 
         /* Build JSON entry for this skill */
-        sprintf(skill_entry, "%s{\"id\":%d,\"name\":\"%s\",\"learned\":%d,\"mana\":%d,\"beats\":%d,\"type\":\"%s\",\"opener\":%s,\"pracType\":%d,\"target\":%d}",
+        sprintf(skill_entry, "%s{\"id\":%d,\"name\":\"%s\",\"isGroup\":%s,\"learned\":%d,\"mana\":%d,\"beats\":%d,\"type\":\"%s\",\"opener\":%s,\"pracType\":%d,\"target\":%d}",
                 (count > 0 ? "," : ""),
                 sn,
                 skill_name_escaped,
+                is_group ? "true" : "false",
                 ch->pcdata->learned[sn],
                 skill_table[sn].min_mana,
                 skill_table[sn].beats,
