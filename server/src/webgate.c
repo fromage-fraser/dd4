@@ -481,21 +481,17 @@ void webgate_send_gmcp(WEB_DESCRIPTOR_DATA *web_desc, const char *module, const 
     int len;
 
     if (!web_desc || web_desc->state != WS_STATE_OPEN)
-    {
         return;
-    }
 
     if (!module || !json_body)
-    {
         return;
-    }
 
     /* Format as GMCP-style JSON message */
     len = snprintf(message, sizeof(message),
                    "{\"type\":\"gmcp\",\"module\":\"%s\",\"data\":%s}\n",
                    module, json_body);
 
-    if (len >= sizeof(message))
+    if (len >= (int)sizeof(message))
     {
         bug("webgate_send_gmcp: message truncated", 0);
         return;
@@ -503,6 +499,32 @@ void webgate_send_gmcp(WEB_DESCRIPTOR_DATA *web_desc, const char *module, const 
 
     /* Send as WebSocket text frame */
     webgate_send_text_frame(web_desc, message, len);
+}
+
+/* Returns true if the given character has an open web descriptor */
+bool webgate_has_web_desc(CHAR_DATA *ch)
+{
+    WEB_DESCRIPTOR_DATA *w;
+
+    if (!ch)
+        return false;
+
+    for (w = web_descriptor_list; w; w = w->next)
+    {
+        if (w->mud_desc && w->mud_desc->character == ch && w->state == WS_STATE_OPEN)
+            return true;
+    }
+
+    return false;
+}
+
+/* Safe send wrapper: call webgate_send_shop_inventory only if web client is connected */
+void webgate_send_shop_inventory_safe(CHAR_DATA *ch, CHAR_DATA *keeper, const char *message)
+{
+    if (!webgate_has_web_desc(ch))
+        return;
+
+    webgate_send_shop_inventory(ch, keeper, message);
 }
 
 /*
@@ -1024,11 +1046,12 @@ void webgate_notify_room_update(ROOM_INDEX_DATA *room)
  *
  * Notes: Only sends items that are for sale (not worn, visible, and have valid cost)
  */
-void webgate_send_shop_inventory(CHAR_DATA *ch, CHAR_DATA *keeper)
+void webgate_send_shop_inventory(CHAR_DATA *ch, CHAR_DATA *keeper, const char *message)
 {
     char json[65536]; /* 64KB buffer for large shop inventories */
     char items_json[MAX_STRING_LENGTH];
     char temp_name[256];
+    char msg_escaped[1024];
     WEB_DESCRIPTOR_DATA *web_desc;
     OBJ_DATA *obj;
     int cost, i, j;
@@ -1103,11 +1126,32 @@ void webgate_send_shop_inventory(CHAR_DATA *ch, CHAR_DATA *keeper)
 
     strcat(items_json, "]");
 
-    /* Build complete Shop.Inventory JSON */
-    snprintf(json, sizeof(json),
-             "{\"shopkeeper\":\"%s\",\"items\":%s}",
-             keeper->short_descr,
-             items_json);
+    /* Build complete Shop.Inventory JSON, include optional message if provided */
+    if (message && message[0] != '\0')
+    {
+        /* Escape message for JSON */
+        for (i = 0, j = 0; message[i] != '\0' && j < (int)sizeof(msg_escaped) - 2; i++)
+        {
+            if (message[i] == '"' || message[i] == '\\')
+                msg_escaped[j++] = '\\';
+            if ((unsigned char)message[i] >= 32)
+                msg_escaped[j++] = message[i];
+        }
+        msg_escaped[j] = '\0';
+
+        snprintf(json, sizeof(json),
+                 "{\"shopkeeper\":\"%s\",\"items\":%s,\"message\":\"%s\"}",
+                 keeper->short_descr,
+                 items_json,
+                 msg_escaped);
+    }
+    else
+    {
+        snprintf(json, sizeof(json),
+                 "{\"shopkeeper\":\"%s\",\"items\":%s}",
+                 keeper->short_descr,
+                 items_json);
+    }
 
     webgate_send_gmcp(web_desc, "Shop.Inventory", json);
 }

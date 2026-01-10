@@ -389,7 +389,13 @@ void webgate_send_char_status(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch);
  *
  * Notes: Only sends visible items for sale; called from do_list command
  */
-void webgate_send_shop_inventory(CHAR_DATA *ch, CHAR_DATA *keeper);
+void webgate_send_shop_inventory(CHAR_DATA *ch, CHAR_DATA *keeper, const char *message);
+
+/* Return true if this character has an open web client connection */
+bool webgate_has_web_desc(CHAR_DATA *ch);
+
+/* Safe send: only sends if the character has an open web descriptor */
+void webgate_send_shop_inventory_safe(CHAR_DATA *ch, CHAR_DATA *keeper, const char *message);
 
 /*
  * Intent: Send identifier service to web client via GMCP for identify modal.

@@ -46,6 +46,15 @@ function App() {
   const [shopData, setShopData] = useState(null); // { shopkeeper, items }
   const [identifierData, setIdentifierData] = useState(null); // { identifier }
   const [shopMessage, setShopMessage] = useState(null);
+  const [lastUserCommandTs, setLastUserCommandTs] = useState(0);
+  const shopOpenRef = useRef(false);
+
+  // Ensure identical consecutive shop messages still surface in the UI
+  // Pushes a message object with a timestamp so identical text always updates
+  const pushShopMessage = (msg) => {
+    if (!msg) return;
+    setShopMessage({ text: msg, ts: Date.now() });
+  };
   const [healerData, setHealerData] = useState(null); // { healer, services }
   const [showPracticeModal, setShowPracticeModal] = useState(false);
   const [showSpellBook, setShowSpellBook] = useState(false);
@@ -116,6 +125,11 @@ function App() {
       }
     }
   }, [mapsData, room.areaName]);
+
+  // Keep a ref indicating whether the shop modal is currently open
+  useEffect(() => {
+    shopOpenRef.current = !!shopData;
+  }, [shopData]);
 
   // Connect to WebSocket gateway with reconnection logic
   useEffect(() => {
@@ -399,7 +413,16 @@ function App() {
       case 'Shop.Inventory':
         // Handle shop inventory
         console.log('Shop.Inventory received:', data);
+        // Always set shop data so the modal appears when the server sends it.
+        // Surface the optional message if the user acted recently or modal already open.
         setShopData(data);
+        if (data.message) {
+          if (shopOpenRef.current || (Date.now() - lastUserCommandTs) < 5000) {
+            pushShopMessage(data.message);
+          } else {
+            console.log('Received Shop.Inventory with message, but suppressing notification (no recent user command)');
+          }
+        }
         break;
       
       case 'Identifier.Inventory':
@@ -461,9 +484,11 @@ function App() {
           // Handle "uninterested" messages for items that can't be sold
           if (msg.includes('looks uninterested in') || msg.includes("won't buy that") || 
               msg.includes("can't sell") || msg.includes("don't have that")) {
-            // If shop modal is open, show the message there
-            if (shopData) {
-              setShopMessage(msg);
+            // Show the message in the shop modal only if modal open or user acted recently
+            if (shopData || (Date.now() - lastUserCommandTs) < 5000) {
+              pushShopMessage(msg);
+            } else {
+              console.log('Ignoring unsolicited shopkeeper message (no recent user activity)');
             }
             // Also show in the output window as error
             addMessage(msg, 'error');
@@ -526,6 +551,7 @@ function App() {
 
     ws.current.send(message);
     addMessage(`> ${command}`, 'command');
+    setLastUserCommandTs(Date.now());
   };
 
   // Wrapper used for help requests so we can surface help output in the UI
@@ -541,6 +567,7 @@ function App() {
     const message = JSON.stringify({ command });
     ws.current.send(message);
     addMessage(`> ${command}`, 'command');
+    setLastUserCommandTs(Date.now());
   };
 
   /**
@@ -575,6 +602,7 @@ function App() {
     });
     ws.current.send(message);
     console.log('Requesting Char.Skills GMCP update via skills command');
+    setLastUserCommandTs(Date.now());
   };
 
   /**

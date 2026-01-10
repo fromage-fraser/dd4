@@ -9,6 +9,7 @@ import { parseAnsiToHtml, stripAnsi } from '../utils/ansiParser';
  * Intent: Stays open during transactions and refreshes both shop and inventory
  */
 function ShopModal({ shopkeeper, items, inventory, onClose, onBuy, connected, onRefresh, shopMessage }) {
+  console.log('ShopModal mounted/updated with shopMessage:', shopMessage);
   const [selectedInventoryItem, setSelectedInventoryItem] = useState(null);
   const [isTransacting, setIsTransacting] = useState(false);
   const [notification, setNotification] = useState(null);
@@ -56,8 +57,10 @@ function ShopModal({ shopkeeper, items, inventory, onClose, onBuy, connected, on
 
   // Listen for shop messages from parent
   React.useEffect(() => {
-    if (shopMessage) {
-      setNotification(shopMessage);
+    console.log('ShopModal shopMessage effect fired:', shopMessage);
+    const msgText = shopMessage ? (typeof shopMessage === 'string' ? shopMessage : shopMessage.text) : null;
+    if (msgText) {
+      setNotification(msgText);
       // Clear any previous notification timer
       const timer = setTimeout(() => {
         setNotification(null);

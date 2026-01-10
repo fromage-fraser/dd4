@@ -5325,6 +5325,8 @@ void do_buy(CHAR_DATA *ch, char *argument)
                 if (!can_see_obj(ch, obj))
                 {
                         send_to_char("Buy what?  You can't see anything to buy.\n\r", ch);
+                        if (webgate_has_web_desc(ch))
+                                webgate_send_shop_inventory_safe(ch, keeper, "You can't see anything to buy.");
                         return;
                 }
 
@@ -5349,7 +5351,15 @@ void do_buy(CHAR_DATA *ch, char *argument)
                 if (charcoins < (cost * item_count))
                 {
                         if (item_count == 1)
+                        {
                                 act("$n tells you 'You can't afford to buy $p'.", keeper, obj, ch, TO_VICT);
+                                if (webgate_has_web_desc(ch))
+                                {
+                                        char msg[MAX_STRING_LENGTH];
+                                        snprintf(msg, sizeof(msg), "You can't afford to buy %s.", obj->short_descr);
+                                        webgate_send_shop_inventory_safe(ch, keeper, msg);
+                                }
+                        }
                         else
                         {
                                 char buf[MAX_STRING_LENGTH];
@@ -5360,6 +5370,12 @@ void do_buy(CHAR_DATA *ch, char *argument)
                                         sprintf(buf, "$n tells you '%s? You must be kidding - you can't even afford a single one, let alone %d!'", capitalize(obj->short_descr), item_count);
 
                                 act(buf, keeper, obj, ch, TO_VICT);
+                                if (webgate_has_web_desc(ch))
+                                {
+                                        char msg[MAX_STRING_LENGTH];
+                                        snprintf(msg, sizeof(msg), "%s", buf);
+                                        webgate_send_shop_inventory_safe(ch, keeper, msg);
+                                }
                         }
 
                         return;
@@ -5375,12 +5391,16 @@ void do_buy(CHAR_DATA *ch, char *argument)
                 if (ch->carry_number + (get_obj_number(obj) * item_count) > can_carry_n(ch))
                 {
                         send_to_char("You can't carry that many items.\n\r", ch);
+                        if (webgate_has_web_desc(ch))
+                                webgate_send_shop_inventory_safe(ch, keeper, "You can't carry that many items.");
                         return;
                 }
 
                 if ((ch->carry_weight + ch->coin_weight) + item_count * get_obj_weight(obj) > can_carry_w(ch))
                 {
                         send_to_char("You can't carry that much weight.\n\r", ch);
+                        if (webgate_has_web_desc(ch))
+                                webgate_send_shop_inventory_safe(ch, keeper, "You can't carry that much weight.");
                         return;
                 }
 
@@ -5569,7 +5589,8 @@ void do_list(CHAR_DATA *ch, char *argument)
                 send_to_char(buf1, ch);
 
                 /* Send shop inventory to web client via GMCP */
-                webgate_send_shop_inventory(ch, keeper);
+                if (webgate_has_web_desc(ch))
+                        webgate_send_shop_inventory_safe(ch, keeper, NULL);
 
                 return;
         }
@@ -5598,24 +5619,36 @@ void do_sell(CHAR_DATA *ch, char *argument)
         {
                 act("$n tells you 'You don't have that item'.", keeper, NULL, ch, TO_VICT);
                 ch->reply = keeper;
+                if (webgate_has_web_desc(ch))
+                        webgate_send_shop_inventory_safe(ch, keeper, "You don't have that item.");
                 return;
         }
 
         if (!can_drop_obj(ch, obj))
         {
                 send_to_char("You can't let go of it.\n\r", ch);
+                if (webgate_has_web_desc(ch))
+                        webgate_send_shop_inventory_safe(ch, keeper, "You can't let go of it.");
                 return;
         }
 
         if (obj->owner[0] != '\0')
         {
                 act("$n looks uninterested in $p.", keeper, obj, ch, TO_VICT);
+                if (webgate_has_web_desc(ch))
+                {
+                        char msg[MAX_STRING_LENGTH];
+                        snprintf(msg, sizeof(msg), "%s looks uninterested in %s.", keeper->short_descr, obj->short_descr);
+                        webgate_send_shop_inventory_safe(ch, keeper, msg);
+                }
                 return;
         }
 
         if (IS_SET(obj->extra_flags, ITEM_DONATED))
         {
                 send_to_char("You can't sell a donated item.\n\r", ch);
+                if (webgate_has_web_desc(ch))
+                        webgate_send_shop_inventory_safe(ch, keeper, "You can't sell a donated item.");
                 return;
         }
 
@@ -5623,12 +5656,20 @@ void do_sell(CHAR_DATA *ch, char *argument)
         {
                 act("$n tells you 'I can't see that item'.", keeper, NULL, ch, TO_VICT);
                 ch->reply = keeper;
+                if (webgate_has_web_desc(ch))
+                        webgate_send_shop_inventory_safe(ch, keeper, "I can't see that item.");
                 return;
         }
 
         if ((cost = get_cost(keeper, obj, FALSE)) <= 0)
         {
                 act("$n looks uninterested in $p.", keeper, obj, ch, TO_VICT);
+                if (webgate_has_web_desc(ch))
+                {
+                        char msg[MAX_STRING_LENGTH];
+                        snprintf(msg, sizeof(msg), "%s looks uninterested in %s.", keeper->short_descr, obj->short_descr);
+                        webgate_send_shop_inventory_safe(ch, keeper, msg);
+                }
                 return;
         }
 
@@ -5637,6 +5678,8 @@ void do_sell(CHAR_DATA *ch, char *argument)
                 act("$n tells you 'I won't buy that!  It's poisoned!'",
                     keeper, NULL, ch, TO_VICT);
                 ch->reply = keeper;
+                if (webgate_has_web_desc(ch))
+                        webgate_send_shop_inventory_safe(ch, keeper, "I won't buy that! It's poisoned!");
                 return;
         }
 
