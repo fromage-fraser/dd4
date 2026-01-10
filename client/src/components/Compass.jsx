@@ -110,6 +110,15 @@ function Compass({ exits = [], onMove, onCommand, hasMap = false, onShowMap }) {
     <div className="compass">
       <div className="compass-header">
         <h3>Navigation</h3>
+        {onCommand && (
+          <button
+            className="scan-button"
+            onClick={() => onCommand('scan')}
+            title="Scan surroundings"
+          >
+            🔎
+          </button>
+        )}
         {hasMap && (
           <button 
             className="map-button" 
