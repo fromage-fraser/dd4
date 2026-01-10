@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './Compass.css';
 
 /**
@@ -9,7 +9,27 @@ import './Compass.css';
  * Shows map button when area map is available
  */
 function Compass({ exits = [], onMove, onCommand, hasMap = false, onShowMap }) {
+  // selectedExit: null or { exitData, left, top }
   const [selectedExit, setSelectedExit] = useState(null);
+  const compassRef = useRef(null);
+  const panelRef = useRef(null);
+
+  // Close panel when clicking outside it. Use 'click' so button onClick runs first.
+  useEffect(() => {
+    if (!selectedExit) return undefined;
+    const handler = (ev) => {
+      if (!panelRef.current) return;
+      if (!panelRef.current.contains(ev.target)) {
+        setSelectedExit(null);
+      }
+    };
+    document.addEventListener('click', handler);
+    document.addEventListener('touchstart', handler);
+    return () => {
+      document.removeEventListener('click', handler);
+      document.removeEventListener('touchstart', handler);
+    };
+  }, [selectedExit]);
   const directions = ['north', 'east', 'south', 'west', 'up', 'down'];
   
   const getExit = (direction) => {
@@ -61,13 +81,21 @@ function Compass({ exits = [], onMove, onCommand, hasMap = false, onShowMap }) {
     return `compass-direction ${direction} available${statusClass}`;
   };
 
-  const handleDirectionClick = (direction) => {
+  const handleDirectionClick = (direction, evt) => {
     const exitData = getExit(direction);
     if (exitData) {
       const doorStatus = getDoorStatus(exitData);
       if (doorStatus && doorStatus !== 'open') {
-        // Door exists and is not open, show door options
-        setSelectedExit(exitData);
+        // Door exists and is not open, show door options anchored to button
+        if (compassRef.current && evt && evt.currentTarget) {
+          const compassRect = compassRef.current.getBoundingClientRect();
+          const btnRect = evt.currentTarget.getBoundingClientRect();
+          const left = btnRect.left - compassRect.left + (btnRect.width / 2);
+          const top = btnRect.top - compassRect.top + (btnRect.height / 2);
+          setSelectedExit({ exitData, left, top });
+        } else {
+          setSelectedExit({ exitData, left: '50%', top: '50%' });
+        }
       } else {
         // No door or door is open, move normally
         onMove(direction);
@@ -107,7 +135,7 @@ function Compass({ exits = [], onMove, onCommand, hasMap = false, onShowMap }) {
   };
 
   return (
-    <div className="compass">
+    <div className="compass" ref={compassRef}>
       <div className="compass-header">
         <h3>Navigation</h3>
         {hasMap && (
@@ -124,7 +152,7 @@ function Compass({ exits = [], onMove, onCommand, hasMap = false, onShowMap }) {
         {/* Top row: Up and North */}
         <button 
           className={getDirectionClass('up')}
-          onClick={() => handleDirectionClick('up')}
+          onClick={(e) => handleDirectionClick('up', e)}
           disabled={!isExitAvailable('up')}
           title={getDoorStatus(getExit('up')) ? `Door: ${getDoorStatus(getExit('up'))}` : ''}
         >
@@ -133,7 +161,7 @@ function Compass({ exits = [], onMove, onCommand, hasMap = false, onShowMap }) {
         </button>
         <button 
           className={getDirectionClass('north')}
-          onClick={() => handleDirectionClick('north')}
+          onClick={(e) => handleDirectionClick('north', e)}
           disabled={!isExitAvailable('north')}
           title={getDoorStatus(getExit('north')) ? `Door: ${getDoorStatus(getExit('north'))}` : ''}
         >
@@ -145,7 +173,7 @@ function Compass({ exits = [], onMove, onCommand, hasMap = false, onShowMap }) {
         {/* Middle row: West, Center, East */}
         <button 
           className={getDirectionClass('west')}
-          onClick={() => handleDirectionClick('west')}
+          onClick={(e) => handleDirectionClick('west', e)}
           disabled={!isExitAvailable('west')}
           title={getDoorStatus(getExit('west')) ? `Door: ${getDoorStatus(getExit('west'))}` : ''}
         >
@@ -161,7 +189,7 @@ function Compass({ exits = [], onMove, onCommand, hasMap = false, onShowMap }) {
         </button>
         <button 
           className={getDirectionClass('east')}
-          onClick={() => handleDirectionClick('east')}
+          onClick={(e) => handleDirectionClick('east', e)}
           disabled={!isExitAvailable('east')}
           title={getDoorStatus(getExit('east')) ? `Door: ${getDoorStatus(getExit('east'))}` : ''}
         >
@@ -172,7 +200,7 @@ function Compass({ exits = [], onMove, onCommand, hasMap = false, onShowMap }) {
         {/* Bottom row: Down and South */}
         <button 
           className={getDirectionClass('down')}
-          onClick={() => handleDirectionClick('down')}
+          onClick={(e) => handleDirectionClick('down', e)}
           disabled={!isExitAvailable('down')}
           title={getDoorStatus(getExit('down')) ? `Door: ${getDoorStatus(getExit('down'))}` : ''}
         >
@@ -181,7 +209,7 @@ function Compass({ exits = [], onMove, onCommand, hasMap = false, onShowMap }) {
         </button>
         <button 
           className={getDirectionClass('south')}
-          onClick={() => handleDirectionClick('south')}
+          onClick={(e) => handleDirectionClick('south', e)}
           disabled={!isExitAvailable('south')}
           title={getDoorStatus(getExit('south')) ? `Door: ${getDoorStatus(getExit('south'))}` : ''}
         >
@@ -192,36 +220,55 @@ function Compass({ exits = [], onMove, onCommand, hasMap = false, onShowMap }) {
       </div>
       
       {/* Door interaction panel */}
-      {selectedExit && selectedExit.hasDoor && (
-        <div className="door-actions-panel">
-          <h4>Door: {selectedExit.keyword || 'door'}</h4>
+      {selectedExit && selectedExit.exitData && (
+        (() => {
+          const panelWidth = 260; // should match CSS min-width
+          let left = selectedExit.left;
+          let top = selectedExit.top;
+          if (compassRef.current && typeof left === 'number') {
+            const compassRect = compassRef.current.getBoundingClientRect();
+            // constrain horizontally to keep panel inside compass
+            if (left + panelWidth / 2 > compassRect.width) {
+              left = compassRect.width - panelWidth / 2 - 8;
+            } else if (left - panelWidth / 2 < 0) {
+              left = panelWidth / 2 + 8;
+            }
+          }
+          const style = {
+            left: typeof left === 'number' ? `${left}px` : left,
+            top: typeof top === 'number' ? `${top}px` : top,
+            transform: 'translate(-50%, -110%)'
+          };
+          return (
+            <div className="door-actions-panel" ref={panelRef} style={style}>
+          <h4>Door: {selectedExit.exitData.keyword || 'door'}</h4>
           <div className="door-status">
-            Status: <span className={`status-${getDoorStatus(selectedExit)}`}>
-              {getDoorStatus(selectedExit).toUpperCase()}
+            Status: <span className={`status-${getDoorStatus(selectedExit.exitData)}`}>
+              {getDoorStatus(selectedExit.exitData).toUpperCase()}
             </span>
           </div>
           <div className="door-actions">
-            {selectedExit.isClosed && !selectedExit.isLocked && (
-              <button className="door-action-btn" onClick={() => handleDoorAction('open', selectedExit)}>
+            {selectedExit.exitData.isClosed && !selectedExit.exitData.isLocked && (
+              <button className="door-action-btn" onClick={() => handleDoorAction('open', selectedExit.exitData)}>
                 🚪 Open
               </button>
             )}
-            {!selectedExit.isClosed && (
-              <button className="door-action-btn" onClick={() => handleDoorAction('close', selectedExit)}>
+            {!selectedExit.exitData.isClosed && (
+              <button className="door-action-btn" onClick={() => handleDoorAction('close', selectedExit.exitData)}>
                 🚪 Close
               </button>
             )}
-            {selectedExit.isLocked && (
+            {selectedExit.exitData.isLocked && (
               <>
-                <button className="door-action-btn" onClick={() => handleDoorAction('unlock', selectedExit)}>
+                <button className="door-action-btn" onClick={() => handleDoorAction('unlock', selectedExit.exitData)}>
                   🔓 Unlock
                 </button>
-                {!selectedExit.isPickproof && (
-                  <button className="door-action-btn pick" onClick={() => handleDoorAction('pick', selectedExit)}>
+                {!selectedExit.exitData.isPickproof && (
+                  <button className="door-action-btn pick" onClick={() => handleDoorAction('pick', selectedExit.exitData)}>
                     🔧 Pick Lock
                   </button>
                 )}
-                <button className="door-action-btn bash" onClick={() => handleDoorAction('bash', selectedExit)}>
+                <button className="door-action-btn bash" onClick={() => handleDoorAction('bash', selectedExit.exitData)}>
                   💥 Bash
                 </button>
               </>
@@ -231,6 +278,8 @@ function Compass({ exits = [], onMove, onCommand, hasMap = false, onShowMap }) {
             </button>
           </div>
         </div>
+      );
+    })()
       )}
     </div>
   );
