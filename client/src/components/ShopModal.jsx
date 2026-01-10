@@ -145,7 +145,7 @@ function ShopModal({ shopkeeper, items, inventory, onClose, onBuy, connected, on
                   {items.map((item, index) => (
                     <div key={`shop-item-${index}-${item.vnum}`} className="shop-item">
                       <span className="col-level">{item.level}</span>
-                      <span className="col-price">{item.cost}gp</span>
+                      <span className="col-price">{item.cost}cp</span>
                       <span className="col-item">{item.name}</span>
                       <div className="col-actions">
                         <button 
