@@ -612,6 +612,8 @@ function App() {
         isFighting={isFighting}
         opponent={opponent}
         room={room}
+        equipment={equipment}
+        onCommand={sendCommand}
       />
 
       {showSkillAssign && (

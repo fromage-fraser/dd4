@@ -28,6 +28,37 @@
   min-width: 60px;
 }
 
+.skill-action-button {
+  background: #444;
+  border: 2px solid #666;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px 12px;
+  font-size: 20px;
+  transition: all 0.2s;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-action-button:hover:not(:disabled) {
+  background: #555;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.skill-action-button:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.skill-action-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
 .skill-assign-button {
   background: #444;
   border: 1px solid #666;

@@ -19,6 +19,7 @@ import TargetSelector from './TargetSelector';
  * - Client-side cooldown progress indicators
  * - Empty slot states for unassigned positions
  * - Click-to-use functionality
+ * - Conditional action buttons (zap for wands, brandish for staves, flee when fighting)
  *
  * Inputs:
  *   - skills: Array of all available skills from Char.Skills GMCP
@@ -30,13 +31,15 @@ import TargetSelector from './TargetSelector';
  *   - isFighting: Boolean - whether character is in combat
  *   - opponent: String|null - current combat opponent name
  *   - room: Object - current room data with npcs array
+ *   - equipment: Object - equipment object with wield/hold slots containing item type info
+ *   - onCommand: Callback(command) to execute game commands (for zap/brandish/flee)
  *
  * Cooldown Tracking:
  *   - Client tracks cooldowns using setTimeout based on skill.beats
  *   - Visual progress indicator shows remaining cooldown time
  *   - Beats are converted to seconds (game ticks)
  */
-function SkillBar({ skills, assignedSkills, onUseSkill, onAssignClick, connected, characterName, isFighting, opponent, room }) {
+function SkillBar({ skills, assignedSkills, onUseSkill, onAssignClick, connected, characterName, isFighting, opponent, room, equipment, onCommand }) {
   const [cooldowns, setCooldowns] = useState({}); // { slotIndex: { endTime, duration } }
   const [skillTargets, setSkillTargets] = useState({}); // Loaded from localStorage
   const [targetSelectorOpen, setTargetSelectorOpen] = useState(false);
@@ -162,10 +165,44 @@ function SkillBar({ skills, assignedSkills, onUseSkill, onAssignClick, connected
     console.log(`Target set for ${selectedSkillForTarget.name}: ${targetName}`);
   };
 
+  // Helper functions to detect wielded item types
+  const isWieldingWand = () => {
+    return equipment?.wield?.type === 3 || equipment?.hold?.type === 3;
+  };
+
+  const isWieldingStaff = () => {
+    return equipment?.wield?.type === 4 || equipment?.hold?.type === 4;
+  };
+
   return (
     <div className="skill-bar">
       <div className="skill-bar-container">
         <span className="skill-bar-title">Skills</span>
+        
+        {/* Conditional action buttons - left side */}
+        {isWieldingWand() && (
+          <button 
+            className="skill-action-button"
+            onClick={() => onCommand('zap')}
+            disabled={!connected}
+            title="Zap wand"
+            style={{ borderColor: '#ffc107' }}
+          >
+            ⚡
+          </button>
+        )}
+        {isWieldingStaff() && (
+          <button 
+            className="skill-action-button"
+            onClick={() => onCommand('brandish')}
+            disabled={!connected}
+            title="Brandish staff"
+            style={{ borderColor: '#9c27b0' }}
+          >
+            🔮
+          </button>
+        )}
+        
         <div className="skill-slots">
         {assignedSkills.map((skillId, index) => {
           const skill = skillId ? skills.find(s => s.id === skillId) : null;
@@ -241,6 +278,19 @@ function SkillBar({ skills, assignedSkills, onUseSkill, onAssignClick, connected
         >
           ⚙️
         </button>
+        
+        {/* Flee action button - right side */}
+        {isFighting && (
+          <button 
+            className="skill-action-button skill-flee-button"
+            onClick={() => onCommand('flee')}
+            disabled={!connected}
+            title="Flee from combat"
+            style={{ borderColor: '#f44336' }}
+          >
+            🏃
+          </button>
+        )}
       </div>
 
       {/* Target Selector Modal */}
