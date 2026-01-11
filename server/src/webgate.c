@@ -12,6 +12,7 @@
 #include <unistd.h>
 #include <errno.h>
 #include <stdint.h>
+#include <ctype.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -1887,6 +1888,185 @@ static void webgate_serialize_affects(OBJ_DATA *obj, bool identified, char *buf,
 }
 
 /*
+ * Intent: Strip color codes from string for JSON output.
+ *
+ * Removes all MUD color codes ({X}, }X}, <NNN>) from source string to produce
+ * clean text suitable for JSON serialization. Basic pattern matching only.
+ *
+ * Inputs:
+ *   - src: Source string with color codes
+ *   - dst: Destination buffer for cleaned string
+ *   - max_len: Maximum length of destination buffer
+ *
+ * Outputs: dst filled with color-stripped text
+ *
+ * Preconditions: dst buffer must have space for max_len characters
+ * Postconditions: dst contains null-terminated string without color codes
+ *
+ * Notes: Handles {X, }X, and <NNN> color code formats used in this MUD
+ */
+static void strip_color_codes_for_json(const char *src, char *dst, int max_len)
+{
+    int i = 0;
+
+    if (!src)
+    {
+        dst[0] = '\0';
+        return;
+    }
+
+    while (*src && i < max_len - 1)
+    {
+        /* Skip {X color codes */
+        if (*src == '{' && *(src + 1))
+        {
+            src += 2;
+            continue;
+        }
+        /* Skip }X background color codes */
+        if (*src == '}' && *(src + 1))
+        {
+            src += 2;
+            continue;
+        }
+        /* Skip <NNN> 8-bit color codes */
+        if (*src == '<' && *(src + 1) && isdigit(*(src + 1)))
+        {
+            src++; /* skip '<' */
+            while (*src && isdigit(*src))
+                src++;
+            if (*src == '>')
+                src++;
+            continue;
+        }
+
+        /* Copy regular character */
+        dst[i++] = *src++;
+    }
+    dst[i] = '\0';
+}
+
+/*
+ * Intent: Serialize item wear flags to JSON array format.
+ *
+ * Converts obj->wear_flags bitmask to JSON array of string flag names.
+ * Used to determine which equipment slots an inventory item can be worn in.
+ *
+ * Inputs:
+ *   - obj: Item to serialize
+ *   - buf: Output buffer
+ *   - buf_size: Size of output buffer
+ *
+ * Outputs: buf filled with JSON array like ["finger","neck","body"]
+ *
+ * Preconditions: obj must be valid
+ * Postconditions: buf contains JSON array of wear location strings
+ *
+ * Notes: Maps ITEM_WEAR_* constants to client-friendly slot names
+ */
+static void webgate_serialize_wear_flags(OBJ_DATA *obj, char *buf, int buf_size)
+{
+    unsigned long int flags = obj->wear_flags;
+    bool first = true;
+
+    buf[0] = '\0';
+    strcat(buf, "[");
+
+    if (flags & ITEM_TAKE)
+    {
+        strcat(buf, first ? "\"take\"" : ",\"take\"");
+        first = false;
+    }
+    if (flags & ITEM_WEAR_FINGER)
+    {
+        strcat(buf, first ? "\"finger\"" : ",\"finger\"");
+        first = false;
+    }
+    if (flags & ITEM_WEAR_NECK)
+    {
+        strcat(buf, first ? "\"neck\"" : ",\"neck\"");
+        first = false;
+    }
+    if (flags & ITEM_WEAR_BODY)
+    {
+        strcat(buf, first ? "\"body\"" : ",\"body\"");
+        first = false;
+    }
+    if (flags & ITEM_WEAR_HEAD)
+    {
+        strcat(buf, first ? "\"head\"" : ",\"head\"");
+        first = false;
+    }
+    if (flags & ITEM_WEAR_LEGS)
+    {
+        strcat(buf, first ? "\"legs\"" : ",\"legs\"");
+        first = false;
+    }
+    if (flags & ITEM_WEAR_FEET)
+    {
+        strcat(buf, first ? "\"feet\"" : ",\"feet\"");
+        first = false;
+    }
+    if (flags & ITEM_WEAR_HANDS)
+    {
+        strcat(buf, first ? "\"hands\"" : ",\"hands\"");
+        first = false;
+    }
+    if (flags & ITEM_WEAR_ARMS)
+    {
+        strcat(buf, first ? "\"arms\"" : ",\"arms\"");
+        first = false;
+    }
+    if (flags & ITEM_WEAR_SHIELD)
+    {
+        strcat(buf, first ? "\"shield\"" : ",\"shield\"");
+        first = false;
+    }
+    if (flags & ITEM_WEAR_ABOUT)
+    {
+        strcat(buf, first ? "\"about\"" : ",\"about\"");
+        first = false;
+    }
+    if (flags & ITEM_WEAR_WAIST)
+    {
+        strcat(buf, first ? "\"waist\"" : ",\"waist\"");
+        first = false;
+    }
+    if (flags & ITEM_WEAR_WRIST)
+    {
+        strcat(buf, first ? "\"wrist\"" : ",\"wrist\"");
+        first = false;
+    }
+    if (flags & ITEM_WIELD)
+    {
+        strcat(buf, first ? "\"wield\"" : ",\"wield\"");
+        first = false;
+    }
+    if (flags & ITEM_HOLD)
+    {
+        strcat(buf, first ? "\"hold\"" : ",\"hold\"");
+        first = false;
+    }
+    if (flags & ITEM_FLOAT)
+    {
+        strcat(buf, first ? "\"float\"" : ",\"float\"");
+        first = false;
+    }
+    if (flags & ITEM_WEAR_POUCH)
+    {
+        strcat(buf, first ? "\"pouch\"" : ",\"pouch\"");
+        first = false;
+    }
+    if (flags & ITEM_RANGED_WEAPON)
+    {
+        strcat(buf, first ? "\"ranged_weapon\"" : ",\"ranged_weapon\"");
+        first = false;
+    }
+
+    strcat(buf, "]");
+}
+
+/*
  * Intent: Serialize item class restrictions to JSON array format.
  *
  * Only included if item is identified and has class restriction flags.
@@ -2205,6 +2385,12 @@ void webgate_send_char_inventory(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
             const char *rarity = webgate_get_item_rarity(obj);
             const char *set_name = webgate_get_item_set(obj);
             char set_escaped[256];
+            char wear_flags_json[512];
+            char long_desc_clean[MAX_STRING_LENGTH];
+            char long_desc_escaped[MAX_STRING_LENGTH];
+            char damage_dice[32];
+            int damage_min = 0, damage_max = 0;
+            int armor_class = 0;
 
             /* Escape set name */
             src = set_name;
@@ -2217,25 +2403,129 @@ void webgate_send_char_inventory(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
             }
             *dst = '\0';
 
-            /* Build JSON entry for this item with identification details */
-            sprintf(item_entry, "%s{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"type\":\"%s\",\"level\":%d,\"weight\":%d,\"canWear\":%s,\"identified\":%s,\"material\":\"%s\",\"rarity\":\"%s\",\"setName\":\"%s\",\"extraFlags\":%s,\"egoFlags\":%s,\"affects\":%s,\"classRestrictions\":%s,\"alignmentRestrictions\":%s}",
-                    (count > 0 ? "," : ""),
-                    obj->pIndexData ? obj->pIndexData->vnum : 0,
-                    item_name_escaped,
-                    keywords_escaped,
-                    item_type_name,
-                    obj->level,
-                    obj->weight,
-                    (obj->wear_flags > 0 && obj->wear_flags != ITEM_TAKE) ? "true" : "false",
-                    obj->identified ? "true" : "false",
-                    material_escaped,
-                    rarity,
-                    set_escaped,
-                    extra_flags_json,
-                    ego_flags_json,
-                    affects_json,
-                    class_restrictions_json,
-                    alignment_restrictions_json);
+            /* Serialize wear flags */
+            webgate_serialize_wear_flags(obj, wear_flags_json, sizeof(wear_flags_json));
+
+            /* Strip colors from long description and escape for JSON */
+            if (obj->description && obj->description[0] != '\0')
+            {
+                strip_color_codes_for_json(obj->description, long_desc_clean, sizeof(long_desc_clean));
+                src = long_desc_clean;
+                dst = long_desc_escaped;
+                while (*src && (dst - long_desc_escaped) < sizeof(long_desc_escaped) - 2)
+                {
+                    if (*src == '"' || *src == '\\')
+                        *dst++ = '\\';
+                    if (*src == '\n')
+                    {
+                        *dst++ = '\\';
+                        *dst++ = 'n';
+                        src++;
+                        continue;
+                    }
+                    if (*src == '\r')
+                    {
+                        src++;
+                        continue;
+                    }
+                    *dst++ = *src++;
+                }
+                *dst = '\0';
+            }
+            else
+            {
+                long_desc_escaped[0] = '\0';
+            }
+
+            /* Extract weapon damage or armor AC */
+            if (obj->item_type == ITEM_WEAPON)
+            {
+                damage_min = obj->value[1];
+                damage_max = obj->value[2];
+                sprintf(damage_dice, "%dd%d", damage_min, damage_max);
+            }
+            else if (obj->item_type == ITEM_ARMOR)
+            {
+                armor_class = obj->value[0];
+            }
+
+            /* Build JSON entry for this item with all details */
+            if (obj->item_type == ITEM_WEAPON)
+            {
+                sprintf(item_entry, "%s{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"type\":\"%s\",\"level\":%d,\"weight\":%d,\"canWear\":%s,\"identified\":%s,\"material\":\"%s\",\"rarity\":\"%s\",\"setName\":\"%s\",\"extraFlags\":%s,\"egoFlags\":%s,\"affects\":%s,\"classRestrictions\":%s,\"alignmentRestrictions\":%s,\"wearFlags\":%s,\"damageMin\":%d,\"damageMax\":%d,\"damageDice\":\"%s\",\"itemValue\":%d,\"valueCurrency\":\"copper\",\"longDescription\":\"%s\"}",
+                        (count > 0 ? "," : ""),
+                        obj->pIndexData ? obj->pIndexData->vnum : 0,
+                        item_name_escaped,
+                        keywords_escaped,
+                        item_type_name,
+                        obj->level,
+                        obj->weight,
+                        (obj->wear_flags > 0 && obj->wear_flags != ITEM_TAKE) ? "true" : "false",
+                        obj->identified ? "true" : "false",
+                        material_escaped,
+                        rarity,
+                        set_escaped,
+                        extra_flags_json,
+                        ego_flags_json,
+                        affects_json,
+                        class_restrictions_json,
+                        alignment_restrictions_json,
+                        wear_flags_json,
+                        damage_min,
+                        damage_max,
+                        damage_dice,
+                        obj->cost,
+                        long_desc_escaped);
+            }
+            else if (obj->item_type == ITEM_ARMOR)
+            {
+                sprintf(item_entry, "%s{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"type\":\"%s\",\"level\":%d,\"weight\":%d,\"canWear\":%s,\"identified\":%s,\"material\":\"%s\",\"rarity\":\"%s\",\"setName\":\"%s\",\"extraFlags\":%s,\"egoFlags\":%s,\"affects\":%s,\"classRestrictions\":%s,\"alignmentRestrictions\":%s,\"wearFlags\":%s,\"armorClass\":%d,\"itemValue\":%d,\"valueCurrency\":\"copper\",\"longDescription\":\"%s\"}",
+                        (count > 0 ? "," : ""),
+                        obj->pIndexData ? obj->pIndexData->vnum : 0,
+                        item_name_escaped,
+                        keywords_escaped,
+                        item_type_name,
+                        obj->level,
+                        obj->weight,
+                        (obj->wear_flags > 0 && obj->wear_flags != ITEM_TAKE) ? "true" : "false",
+                        obj->identified ? "true" : "false",
+                        material_escaped,
+                        rarity,
+                        set_escaped,
+                        extra_flags_json,
+                        ego_flags_json,
+                        affects_json,
+                        class_restrictions_json,
+                        alignment_restrictions_json,
+                        wear_flags_json,
+                        armor_class,
+                        obj->cost,
+                        long_desc_escaped);
+            }
+            else
+            {
+                sprintf(item_entry, "%s{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"type\":\"%s\",\"level\":%d,\"weight\":%d,\"canWear\":%s,\"identified\":%s,\"material\":\"%s\",\"rarity\":\"%s\",\"setName\":\"%s\",\"extraFlags\":%s,\"egoFlags\":%s,\"affects\":%s,\"classRestrictions\":%s,\"alignmentRestrictions\":%s,\"wearFlags\":%s,\"itemValue\":%d,\"valueCurrency\":\"copper\",\"longDescription\":\"%s\"}",
+                        (count > 0 ? "," : ""),
+                        obj->pIndexData ? obj->pIndexData->vnum : 0,
+                        item_name_escaped,
+                        keywords_escaped,
+                        item_type_name,
+                        obj->level,
+                        obj->weight,
+                        (obj->wear_flags > 0 && obj->wear_flags != ITEM_TAKE) ? "true" : "false",
+                        obj->identified ? "true" : "false",
+                        material_escaped,
+                        rarity,
+                        set_escaped,
+                        extra_flags_json,
+                        ego_flags_json,
+                        affects_json,
+                        class_restrictions_json,
+                        alignment_restrictions_json,
+                        wear_flags_json,
+                        obj->cost,
+                        long_desc_escaped);
+            }
         }
 
         /* Check buffer overflow */
@@ -2364,8 +2654,14 @@ void webgate_send_char_equipment(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
                 const char *rarity = webgate_get_item_rarity(obj);
                 const char *set_name = webgate_get_item_set(obj);
                 char set_escaped[256];
+                char wear_flags_json[512];
+                char long_desc_clean[MAX_STRING_LENGTH];
+                char long_desc_escaped[MAX_STRING_LENGTH];
+                char damage_dice[32];
                 const char *src2;
                 char *dst2;
+                int damage_min = 0, damage_max = 0;
+                int armor_class = 0;
 
                 /* Escape set name */
                 src2 = set_name;
@@ -2378,29 +2674,147 @@ void webgate_send_char_equipment(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
                 }
                 *dst2 = '\0';
 
+                /* Serialize wear flags */
+                webgate_serialize_wear_flags(obj, wear_flags_json, sizeof(wear_flags_json));
+
+                /* Strip colors from long description and escape for JSON */
+                if (obj->description && obj->description[0] != '\0')
+                {
+                    strip_color_codes_for_json(obj->description, long_desc_clean, sizeof(long_desc_clean));
+                    src2 = long_desc_clean;
+                    dst2 = long_desc_escaped;
+                    while (*src2 && (dst2 - long_desc_escaped) < sizeof(long_desc_escaped) - 2)
+                    {
+                        if (*src2 == '"' || *src2 == '\\')
+                            *dst2++ = '\\';
+                        if (*src2 == '\n')
+                        {
+                            *dst2++ = '\\';
+                            *dst2++ = 'n';
+                            src2++;
+                            continue;
+                        }
+                        if (*src2 == '\r')
+                        {
+                            src2++;
+                            continue;
+                        }
+                        *dst2++ = *src2++;
+                    }
+                    *dst2 = '\0';
+                }
+                else
+                {
+                    long_desc_escaped[0] = '\0';
+                }
+
+                /* Extract weapon damage or armor AC */
+                damage_dice[0] = '\0';
+                if (obj->item_type == ITEM_WEAPON)
+                {
+                    damage_min = obj->value[1];
+                    damage_max = obj->value[2];
+                    sprintf(damage_dice, "%dd%d", damage_min, damage_max);
+                }
+                else if (obj->item_type == ITEM_ARMOR)
+                {
+                    armor_class = obj->value[0];
+                }
+
                 /* Build item entry with all identification details */
-                sprintf(item_entry,
-                        "\"%s\":{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\","
-                        "\"level\":%d,\"type\":%d,\"weight\":%d,"
-                        "\"identified\":%s,\"material\":\"%s\",\"rarity\":\"%s\",\"setName\":\"%s\","
-                        "\"extraFlags\":%s,\"egoFlags\":%s,\"affects\":%s,"
-                        "\"classRestrictions\":%s,\"alignmentRestrictions\":%s}",
-                        slot_names[wear_loc],
-                        obj->pIndexData ? obj->pIndexData->vnum : 0,
-                        item_name_escaped,
-                        keywords_escaped,
-                        obj->level,
-                        obj->item_type,
-                        obj->weight,
-                        obj->identified ? "true" : "false",
-                        material_escaped,
-                        rarity,
-                        set_escaped,
-                        extra_flags_buf,
-                        ego_flags_buf,
-                        affects_buf,
-                        class_restrict_buf,
-                        align_restrict_buf);
+                if (obj->item_type == ITEM_WEAPON)
+                {
+                    sprintf(item_entry,
+                            "\"%s\":{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\","
+                            "\"level\":%d,\"type\":%d,\"weight\":%d,"
+                            "\"identified\":%s,\"material\":\"%s\",\"rarity\":\"%s\",\"setName\":\"%s\","
+                            "\"extraFlags\":%s,\"egoFlags\":%s,\"affects\":%s,"
+                            "\"classRestrictions\":%s,\"alignmentRestrictions\":%s,\"wearFlags\":%s,"
+                            "\"damageMin\":%d,\"damageMax\":%d,\"damageDice\":\"%s\","
+                            "\"itemValue\":%d,\"valueCurrency\":\"copper\",\"longDescription\":\"%s\"}",
+                            slot_names[wear_loc],
+                            obj->pIndexData ? obj->pIndexData->vnum : 0,
+                            item_name_escaped,
+                            keywords_escaped,
+                            obj->level,
+                            obj->item_type,
+                            obj->weight,
+                            obj->identified ? "true" : "false",
+                            material_escaped,
+                            rarity,
+                            set_escaped,
+                            extra_flags_buf,
+                            ego_flags_buf,
+                            affects_buf,
+                            class_restrict_buf,
+                            align_restrict_buf,
+                            wear_flags_json,
+                            damage_min,
+                            damage_max,
+                            damage_dice,
+                            obj->cost,
+                            long_desc_escaped);
+                }
+                else if (obj->item_type == ITEM_ARMOR)
+                {
+                    sprintf(item_entry,
+                            "\"%s\":{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\","
+                            "\"level\":%d,\"type\":%d,\"weight\":%d,"
+                            "\"identified\":%s,\"material\":\"%s\",\"rarity\":\"%s\",\"setName\":\"%s\","
+                            "\"extraFlags\":%s,\"egoFlags\":%s,\"affects\":%s,"
+                            "\"classRestrictions\":%s,\"alignmentRestrictions\":%s,\"wearFlags\":%s,"
+                            "\"armorClass\":%d,"
+                            "\"itemValue\":%d,\"valueCurrency\":\"copper\",\"longDescription\":\"%s\"}",
+                            slot_names[wear_loc],
+                            obj->pIndexData ? obj->pIndexData->vnum : 0,
+                            item_name_escaped,
+                            keywords_escaped,
+                            obj->level,
+                            obj->item_type,
+                            obj->weight,
+                            obj->identified ? "true" : "false",
+                            material_escaped,
+                            rarity,
+                            set_escaped,
+                            extra_flags_buf,
+                            ego_flags_buf,
+                            affects_buf,
+                            class_restrict_buf,
+                            align_restrict_buf,
+                            wear_flags_json,
+                            armor_class,
+                            obj->cost,
+                            long_desc_escaped);
+                }
+                else
+                {
+                    sprintf(item_entry,
+                            "\"%s\":{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\","
+                            "\"level\":%d,\"type\":%d,\"weight\":%d,"
+                            "\"identified\":%s,\"material\":\"%s\",\"rarity\":\"%s\",\"setName\":\"%s\","
+                            "\"extraFlags\":%s,\"egoFlags\":%s,\"affects\":%s,"
+                            "\"classRestrictions\":%s,\"alignmentRestrictions\":%s,\"wearFlags\":%s,"
+                            "\"itemValue\":%d,\"valueCurrency\":\"copper\",\"longDescription\":\"%s\"}",
+                            slot_names[wear_loc],
+                            obj->pIndexData ? obj->pIndexData->vnum : 0,
+                            item_name_escaped,
+                            keywords_escaped,
+                            obj->level,
+                            obj->item_type,
+                            obj->weight,
+                            obj->identified ? "true" : "false",
+                            material_escaped,
+                            rarity,
+                            set_escaped,
+                            extra_flags_buf,
+                            ego_flags_buf,
+                            affects_buf,
+                            class_restrict_buf,
+                            align_restrict_buf,
+                            wear_flags_json,
+                            obj->cost,
+                            long_desc_escaped);
+                }
             }
         }
         else

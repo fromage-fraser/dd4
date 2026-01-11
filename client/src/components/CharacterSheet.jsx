@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import './CharacterSheet.css';
 import { parseAnsiToHtml, stripAnsi } from '../utils/ansiParser';
 
-function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, onRefresh, itemDetails }) {
+function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, onRefresh }) {
     const [selectedInventoryItem, setSelectedInventoryItem] = useState(null);
     const [selectedEquipmentSlot, setSelectedEquipmentSlot] = useState(null);
     const [inspectedItem, setInspectedItem] = useState(null);
+    const [comparisonItems, setComparisonItems] = useState([]);
 
     const equipmentSlots = [
         { key: 'light', label: 'Light', icon: '🔦' },
@@ -133,6 +134,50 @@ function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, o
         }
     };
 
+    // Map wearFlags to equipment slot keys
+    const mapWearFlagsToSlots = (wearFlags) => {
+        if (!wearFlags || !Array.isArray(wearFlags)) return [];
+        
+        const slotMapping = {
+            'finger': ['finger_l', 'finger_r'],
+            'neck': ['neck_1', 'neck_2'],
+            'wrist': ['wrist_l', 'wrist_r'],
+            'body': ['body'],
+            'head': ['head'],
+            'legs': ['legs'],
+            'feet': ['feet'],
+            'hands': ['hands'],
+            'arms': ['arms'],
+            'shield': ['shield'],
+            'about': ['about'],
+            'waist': ['waist'],
+            'wield': ['wield'],
+            'hold': ['hold'],
+            'float': ['float'],
+            'pouch': ['pouch'],
+            'ranged_weapon': ['ranged_weapon']
+        };
+        
+        const slots = [];
+        wearFlags.forEach(flag => {
+            if (slotMapping[flag]) {
+                slots.push(...slotMapping[flag]);
+            }
+        });
+        
+        return slots;
+    };
+
+    // Get currently equipped items for comparison
+    const getEquippedItemsForSlots = (slots) => {
+        if (!equipment || !slots || slots.length === 0) return [];
+        
+        return slots.map(slotKey => ({
+            slot: slotKey,
+            item: equipment[slotKey] || null
+        }));
+    };
+
     const handleInventoryClick = (item, index) => {
         setSelectedInventoryItem(selectedInventoryItem === index ? null : index);
         setSelectedEquipmentSlot(null);
@@ -149,17 +194,17 @@ function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, o
         if (!connected) return;
         
         if (action.action === 'inspect') {
-            // Send examine command to get detailed info
-            onCommand(`examine ${item.keywords}`);
-            // Wait for examine response, then show modal with merged data
-            setTimeout(() => {
-                const itemNameWithoutArticle = item.name.replace(/^(a|an|the)\s+/i, '');
-                const enrichedItem = {
-                    ...item,
-                    ...(itemDetails && itemDetails[itemNameWithoutArticle] ? itemDetails[itemNameWithoutArticle] : {})
-                };
-                setInspectedItem(enrichedItem);
-            }, 800);
+            // Determine if item is wearable and get compatible slots
+            const isWearable = item.wearFlags && item.wearFlags.some(flag => flag !== 'take');
+            let comparison = [];
+            
+            if (isWearable) {
+                const compatibleSlots = mapWearFlagsToSlots(item.wearFlags);
+                comparison = getEquippedItemsForSlots(compatibleSlots);
+            }
+            
+            setInspectedItem(item);
+            setComparisonItems(comparison);
             setSelectedInventoryItem(null);
             return;
         }
@@ -186,17 +231,9 @@ function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, o
             }
             setInspectedItem(null);
         } else if (action === 'examine') {
-            // Send examine command to get detailed info
-            onCommand(`examine ${item.keywords}`);
-            // Wait for examine response, then show modal with merged data
-            setTimeout(() => {
-                const itemNameWithoutArticle = item.name.replace(/^(a|an|the)\s+/i, '');
-                const enrichedItem = {
-                    ...item,
-                    ...(itemDetails && itemDetails[itemNameWithoutArticle] ? itemDetails[itemNameWithoutArticle] : {})
-                };
-                setInspectedItem(enrichedItem);
-            }, 800);
+            // Equipment items don't need comparison since they're already equipped
+            setInspectedItem(item);
+            setComparisonItems([]);
         }
         setSelectedEquipmentSlot(null);
     };
@@ -228,6 +265,132 @@ function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, o
                 </div>
 
                 <div className="character-sheet-content">
+                    {inspectedItem && comparisonItems.length > 0 && (
+                        <div className="comparison-panel">
+                            <div className="comparison-header">
+                                <h3>Equipment Comparison</h3>
+                            </div>
+                            <div className="comparison-body">
+                                {comparisonItems.map((comp, idx) => {
+                                    const slotLabel = equipmentSlots.find(s => s.key === comp.slot)?.label || comp.slot;
+                                    const currentItem = comp.item;
+                                    const newAvgDamage = inspectedItem.damageMin !== undefined && inspectedItem.damageMax !== undefined 
+                                        ? (inspectedItem.damageMin + inspectedItem.damageMax) / 2 
+                                        : null;
+                                    const currentAvgDamage = currentItem?.damageMin !== undefined && currentItem?.damageMax !== undefined
+                                        ? (currentItem.damageMin + currentItem.damageMax) / 2
+                                        : null;
+                                    
+                                    return (
+                                        <div key={idx} className="comparison-row">
+                                            <div className="comparison-slot-header">{slotLabel}</div>
+                                            <div className="comparison-items-container">
+                                                {/* Currently Equipped Item */}
+                                                <div className="comparison-item-side">
+                                                    <div className="comparison-side-label">Equipped</div>
+                                                    {currentItem ? (
+                                                        <div className="comparison-item-card">
+                                                            <div className="comparison-item-name">
+                                                                <span dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(currentItem.name) }} />
+                                                            </div>
+                                                            <div className="comparison-stats">
+                                                                {/* Weapon average damage */}
+                                                                {currentAvgDamage !== null && newAvgDamage !== null && (
+                                                                    <div className="stat-row">
+                                                                        <span className="stat-label">Avg Damage:</span>
+                                                                        <span className="stat-value">{currentAvgDamage.toFixed(1)}</span>
+                                                                    </div>
+                                                                )}
+                                                                
+                                                                {/* Armor AC */}
+                                                                {currentItem.armorClass !== undefined && inspectedItem.armorClass !== undefined && (
+                                                                    <div className="stat-row">
+                                                                        <span className="stat-label">AC:</span>
+                                                                        <span className="stat-value">{currentItem.armorClass}</span>
+                                                                    </div>
+                                                                )}
+                                                                
+                                                                {/* Level */}
+                                                                <div className="stat-row">
+                                                                    <span className="stat-label">Level:</span>
+                                                                    <span className="stat-value">{currentItem.level}</span>
+                                                                </div>
+                                                                
+                                                                {/* Affects */}
+                                                                {currentItem.affects && currentItem.affects.length > 0 && (
+                                                                    <div className="stat-affects">
+                                                                        <div className="stat-label">Affects:</div>
+                                                                        {currentItem.affects.map((affect, affIdx) => (
+                                                                            <div key={affIdx} className="stat-affect-item">
+                                                                                {affect.type}: {affect.modifier > 0 ? '+' : ''}{affect.modifier}
+                                                                            </div>
+                                                                        ))}
+                                                                    </div>
+                                                                )}
+                                                            </div>
+                                                        </div>
+                                                    ) : (
+                                                        <div className="comparison-item-empty">
+                                                            <div className="empty-slot-icon">∅</div>
+                                                            <div className="empty-slot-text">Empty Slot</div>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                                
+                                                <div className="comparison-arrow">→</div>
+                                                
+                                                {/* New Item */}
+                                                <div className="comparison-item-side">
+                                                    <div className="comparison-side-label">New Item</div>
+                                                    <div className="comparison-item-card">
+                                                        <div className="comparison-item-name">
+                                                            <span dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(inspectedItem.name) }} />
+                                                        </div>
+                                                        <div className="comparison-stats">
+                                                            {/* Weapon average damage with comparison */}
+                                                            {newAvgDamage !== null && (
+                                                                <div className={`stat-row ${currentAvgDamage !== null ? (newAvgDamage > currentAvgDamage ? 'stat-better' : newAvgDamage < currentAvgDamage ? 'stat-worse' : '') : ''}`}>
+                                                                    <span className="stat-label">Avg Damage:</span>
+                                                                    <span className="stat-value">{newAvgDamage.toFixed(1)}</span>
+                                                                </div>
+                                                            )}
+                                                            
+                                                            {/* Armor AC with comparison */}
+                                                            {inspectedItem.armorClass !== undefined && (
+                                                                <div className={`stat-row ${currentItem?.armorClass !== undefined ? (inspectedItem.armorClass > currentItem.armorClass ? 'stat-better' : inspectedItem.armorClass < currentItem.armorClass ? 'stat-worse' : '') : ''}`}>
+                                                                    <span className="stat-label">AC:</span>
+                                                                    <span className="stat-value">{inspectedItem.armorClass}</span>
+                                                                </div>
+                                                            )}
+                                                            
+                                                            {/* Level without color coding */}
+                                                            <div className="stat-row">
+                                                                <span className="stat-label">Level:</span>
+                                                                <span className="stat-value">{inspectedItem.level}</span>
+                                                            </div>
+                                                            
+                                                            {/* Affects */}
+                                                            {inspectedItem.affects && inspectedItem.affects.length > 0 && (
+                                                                <div className="stat-affects">
+                                                                    <div className="stat-label">Affects:</div>
+                                                                    {inspectedItem.affects.map((affect, affIdx) => (
+                                                                        <div key={affIdx} className="stat-affect-item">
+                                                                            {affect.type}: {affect.modifier > 0 ? '+' : ''}{affect.modifier}
+                                                                        </div>
+                                                                    ))}
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    )}
+                    
                     {inspectedItem && (
                         <div className="item-detail-panel">
                             <div className="detail-header">
@@ -254,14 +417,14 @@ function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, o
                                     {inspectedItem.wearLocation && (
                                         <p><strong>Worn:</strong> {inspectedItem.wearLocation}</p>
                                     )}
-                                    {inspectedItem.value !== undefined && (
-                                        <p><strong>Value:</strong> {inspectedItem.value} {inspectedItem.valueCurrency || 'copper'}</p>
+                                    {inspectedItem.itemValue !== undefined && (
+                                        <p><strong>Value:</strong> {inspectedItem.itemValue} {inspectedItem.valueCurrency || 'copper'}</p>
+                                    )}
+                                    {inspectedItem.damageMin !== undefined && inspectedItem.damageMax !== undefined && (
+                                        <p><strong>Damage:</strong> {inspectedItem.damageMin}-{inspectedItem.damageMax}</p>
                                     )}
                                     {inspectedItem.armorClass !== undefined && (
                                         <p><strong>Armor Class:</strong> {inspectedItem.armorClass}</p>
-                                    )}
-                                    {inspectedItem.damageDice && (
-                                        <p><strong>Damage:</strong> {inspectedItem.damageDice}</p>
                                     )}
                                 </div>
 
