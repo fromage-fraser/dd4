@@ -147,33 +147,39 @@ function CharacterInfo({ vitals, status, onCommand }) {
                 </div>
             </div>
             
-            {status.affects && status.affects.length > 0 && (
-                <div className="active-affects">
-                    <h4 
-                        className="affects-title clickable" 
-                        onClick={() => onCommand && onCommand('affects')}
-                        title="Click to see detailed affects"
-                    >
-                        Active Effects
-                    </h4>
-                    <div className="affect-list">
-                        {status.affects.map((aff, idx) => {
-                            const isExpiring = aff.duration <= 5;
-                            const icon = getAffectIcon(aff.name);
-                            return (
-                                <span 
-                                    key={idx} 
-                                    className={`affect-icon ${isExpiring ? 'expiring' : ''}`}
-                                    title={`${aff.name} (${aff.duration} rounds remaining)`}
-                                >
-                                    <span className="affect-emoji">{icon}</span>
-                                    <span className="affect-timer">{aff.duration}</span>
-                                </span>
-                            );
-                        })}
+            {(() => {
+                const activeAffects = (status.affects || []).filter(a => Number(a.duration) > 0);
+                if (activeAffects.length === 0) return null;
+
+                return (
+                    <div className="active-affects">
+                        <h4 
+                            className="affects-title clickable" 
+                            onClick={() => onCommand && onCommand('affects')}
+                            title="Click to see detailed affects"
+                        >
+                            Active Effects
+                        </h4>
+                        <div className="affect-list">
+                            {activeAffects.map((aff, idx) => {
+                                const isExpiring = Number(aff.duration) <= 5;
+                                const icon = getAffectIcon(aff.name);
+                                const key = `${aff.name}-${idx}`;
+                                return (
+                                    <span 
+                                        key={key} 
+                                        className={`affect-icon ${isExpiring ? 'expiring' : ''}`}
+                                        title={`${aff.name} (${aff.duration} rounds remaining)`}
+                                    >
+                                        <span className="affect-emoji">{icon}</span>
+                                        <span className="affect-timer">{aff.duration}</span>
+                                    </span>
+                                );
+                            })}
+                        </div>
                     </div>
-                </div>
-            )}
+                );
+            })()}
         </div>
     );
 }
