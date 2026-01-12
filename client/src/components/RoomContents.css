@@ -574,6 +574,22 @@
     animation: bloodPulse 1.5s ease-in-out infinite;
 }
 
+/* Container status indicators */
+.indicator.locked {
+    background: rgba(231, 76, 60, 0.2);
+    box-shadow: 0 0 8px rgba(231, 76, 60, 0.4);
+}
+
+.indicator.closed {
+    background: rgba(241, 196, 15, 0.2);
+    box-shadow: 0 0 8px rgba(241, 196, 15, 0.3);
+}
+
+.indicator.open {
+    background: rgba(46, 204, 113, 0.2);
+    box-shadow: 0 0 8px rgba(46, 204, 113, 0.3);
+}
+
 @keyframes pulse {
     0%, 100% {
         opacity: 0.6;

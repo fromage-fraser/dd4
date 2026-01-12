@@ -43,6 +43,22 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
             actions.push({ label: '🍺 Drink', command: 'drink' });
         }
 
+        // Add container-specific actions based on status
+        if (item.isContainer) {
+            // If container is locked, add unlock action
+            if (item.isLocked) {
+                actions.push({ label: '🔓 Unlock', command: 'unlock' });
+            }
+            // If container is closed but not locked, add open action
+            else if (item.isClosed) {
+                actions.push({ label: '📂 Open', command: 'open' });
+            }
+            // If container is open and closeable, add close action
+            else if (item.isCloseable && !item.isClosed) {
+                actions.push({ label: '📁 Close', command: 'close' });
+            }
+        }
+
         // Add loot action if server indicated the item can be looted
         if (item.canLoot) {
             actions.push({ label: '🧰 Loot', command: 'loot' });
@@ -196,6 +212,17 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
 
     const getItemVisualIndicators = (item) => {
         const indicators = [];
+        
+        // Container status indicators (always visible)
+        if (item.isContainer) {
+            if (item.isLocked) {
+                indicators.push({ icon: '🔒', label: 'Locked', color: 'locked' });
+            } else if (item.isClosed) {
+                indicators.push({ icon: '📁', label: 'Closed', color: 'closed' });
+            } else {
+                indicators.push({ icon: '📂', label: 'Open', color: 'open' });
+            }
+        }
         
         // Cosmetic flags (always visible)
         if (item.extraFlags && item.extraFlags.includes('glow')) {

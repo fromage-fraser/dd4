@@ -533,23 +533,26 @@ void webgate_send_shop_inventory_safe(CHAR_DATA *ch, CHAR_DATA *keeper, const ch
  *
  * Formats and sends complete room data including name, description, exits,
  * and vnum to the web client. This enables the client to update the UI with
- * current room information and populate the navigation compass.
+ * current room information and populate the navigation compass. Respects
+ * visibility rules: only objects and characters the viewer can see are included.
  *
  * Inputs:
  *   - web_desc: Target web client connection
  *   - room: Room index data containing room details
+ *   - viewer: Character viewing the room (for can_see checks)
  *
  * Outputs: None (GMCP message queued for send)
  *
- * Preconditions: web_desc is authenticated; room is valid pointer
- * Postconditions: Room.Info GMCP message sent to client
+ * Preconditions: web_desc is authenticated; room and viewer are valid pointers
+ * Postconditions: Room.Info GMCP message sent to client with visibility-filtered contents
  *
- * Failure Behavior: Silently returns if web_desc or room is NULL
+ * Failure Behavior: Silently returns if web_desc, room, or viewer is NULL
  *
  * Notes: JSON strings are escaped to prevent syntax errors. Large descriptions
- *        may be truncated to fit WEBGATE_MAX_MESSAGE limit.
+ *        may be truncated to fit WEBGATE_MAX_MESSAGE limit. Items and NPCs are
+ *        filtered based on can_see and can_see_obj checks.
  */
-void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room)
+void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room, CHAR_DATA *viewer)
 {
     char json[262144];     /* 256KB buffer to accommodate all component strings (4x32KB + exits + names) */
     char exits_json[2048]; /* Increased from 512 to handle 6 exits with door info */
@@ -566,7 +569,7 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
     int i, j, item_count = 0, npc_count = 0;
     extern DIR_DATA directions[];
 
-    if (!web_desc || !room)
+    if (!web_desc || !room || !viewer)
         return;
 
     /* Escape room name for JSON */
@@ -678,6 +681,12 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
     for (obj = room->contents; obj && item_count < 20; obj = obj->next_content)
     {
         char keywords_escaped[256];
+        bool viewer_can_see;
+
+        /* Check if viewer can see this object */
+        viewer_can_see = can_see_obj(viewer, obj);
+        if (!viewer_can_see)
+            continue;
 
         /* Escape item short description (for display) */
         for (i = 0, j = 0; obj->short_descr[i] != '\0' && j < sizeof(temp_name) - 2; i++)
@@ -770,11 +779,18 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
             break;
         }
 
+        /* Determine container flags for ITEM_CONTAINER types */
+        bool is_container = (obj->item_type == ITEM_CONTAINER);
+        bool is_closed = is_container && IS_SET(obj->value[1], CONT_CLOSED);
+        bool is_locked = is_container && IS_SET(obj->value[1], CONT_LOCKED);
+        bool is_closeable = is_container && IS_SET(obj->value[1], CONT_CLOSEABLE);
+
         if (!first)
             strcat(items_json, ",");
         sprintf(items_json + strlen(items_json),
                 "{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d,\"type\":%d,"
-                "\"identified\":%s,\"canTake\":%s,\"extraFlags\":%s,\"egoFlags\":%s,\"canLoot\":%s,\"contents\":%s}",
+                "\"identified\":%s,\"canTake\":%s,\"extraFlags\":%s,\"egoFlags\":%s,\"canLoot\":%s,\"contents\":%s,"
+                "\"isContainer\":%s,\"isClosed\":%s,\"isLocked\":%s,\"isCloseable\":%s,\"canSee\":true}",
                 obj->pIndexData ? obj->pIndexData->vnum : 0,
                 temp_name,
                 keywords_escaped,
@@ -785,7 +801,11 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
                 extra_flags_json,
                 ego_flags_json,
                 canLoot ? "true" : "false",
-                contents_json);
+                contents_json,
+                is_container ? "true" : "false",
+                is_closed ? "true" : "false",
+                is_locked ? "true" : "false",
+                is_closeable ? "true" : "false");
         first = false;
         item_count++;
     }
@@ -799,9 +819,15 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
         char keywords_escaped[256];
         bool is_npc = IS_NPC(rch);
         bool is_player = !is_npc;
+        bool viewer_can_see;
 
         /* Skip the viewing player's own character - don't show yourself in the list */
-        if (web_desc->mud_desc && web_desc->mud_desc->character == rch)
+        if (rch == viewer)
+            continue;
+
+        /* Check if viewer can see this character */
+        viewer_can_see = can_see(viewer, rch);
+        if (!viewer_can_see)
             continue;
 
         /* Escape character short description (for display) */
@@ -839,7 +865,7 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
         {
             /* Player entry - players have unique names so don't need instance ID */
             sprintf(npcs_json + strlen(npcs_json),
-                    "{\"id\":0,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":0,\"isPlayer\":true,\"level\":%d}",
+                    "{\"id\":0,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":0,\"isPlayer\":true,\"level\":%d,\"canSee\":true}",
                     temp_name,
                     keywords_escaped,
                     rch->level);
@@ -848,7 +874,7 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
         {
             /* NPC entry - use memory address as unique instance ID to distinguish multiple NPCs of same type */
             sprintf(npcs_json + strlen(npcs_json),
-                    "{\"id\":%lu,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d,\"hostile\":%s,\"isShopkeeper\":%s,\"isTrainer\":%s,\"isHealer\":%s,\"isIdentifier\":%s,\"isPlayer\":false}",
+                    "{\"id\":%lu,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d,\"hostile\":%s,\"isShopkeeper\":%s,\"isTrainer\":%s,\"isHealer\":%s,\"isIdentifier\":%s,\"isPlayer\":false,\"canSee\":true}",
                     (unsigned long)(uintptr_t)rch,
                     temp_name,
                     keywords_escaped,
@@ -1022,7 +1048,7 @@ void webgate_notify_room_update(ROOM_INDEX_DATA *room)
             /* Check if this web descriptor matches the player character */
             if (web_desc->mud_desc && web_desc->mud_desc->character == rch)
             {
-                webgate_send_room_info(web_desc, room);
+                webgate_send_room_info(web_desc, room, rch);
                 break;
             }
         }
@@ -3935,7 +3961,7 @@ static bool webgate_parse_json_message(WEB_DESCRIPTOR_DATA *web_desc, const char
             {
                 if (web_desc->mud_desc->character && web_desc->mud_desc->character->in_room)
                 {
-                    webgate_send_room_info(web_desc, web_desc->mud_desc->character->in_room);
+                    webgate_send_room_info(web_desc, web_desc->mud_desc->character->in_room, web_desc->mud_desc->character);
                     webgate_send_char_vitals(web_desc, web_desc->mud_desc->character);
                     webgate_send_char_status(web_desc, web_desc->mud_desc->character);
                     webgate_send_char_skills(web_desc, web_desc->mud_desc->character);

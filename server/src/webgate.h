@@ -202,7 +202,7 @@ void webgate_send_gmcp(WEB_DESCRIPTOR_DATA *web_desc, const char *module, const 
  *
  * Notes: Enables client-side compass and room display updates
  */
-void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room);
+void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room, CHAR_DATA *viewer);
 
 /*
  * Intent: Check if a room has any web clients present.
