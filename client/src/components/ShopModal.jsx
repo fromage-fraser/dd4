@@ -29,15 +29,42 @@ function ShopModal({ shopkeeper, items, inventory, onClose, onBuy, connected, on
     }, 600);
   };
 
-  const handleSell = (item) => {
+  const handleSell = (item, itemIndex) => {
     if (!connected || isTransacting) return;
     setIsTransacting(true);
     
     // Clear any previous notification
     setNotification(null);
     
-    // Sell command with item keywords
-    onBuy(`sell ${item.keywords}`);
+    // With full keywords now available, find most specific keyword to minimize conflicts
+    // If multiple items share keywords, use position prefix
+    const keywords = item.keywords || 'item';
+    const keywordArray = keywords.toLowerCase().split(/\s+/);
+    
+    // Find the longest (most specific) keyword
+    const bestKeyword = keywordArray.reduce((longest, current) => 
+      current.length > longest.length ? current : longest, keywordArray[0] || 'item');
+    
+    // Check if any other inventory item shares this keyword
+    let position = 1;
+    let hasDuplicate = false;
+    
+    if (inventory) {
+      for (let i = 0; i < inventory.length; i++) {
+        if (i === itemIndex) continue;
+        
+        const otherKeywords = inventory[i].keywords ? inventory[i].keywords.toLowerCase().split(/\s+/) : [];
+        if (otherKeywords.includes(bestKeyword)) {
+          hasDuplicate = true;
+          if (i < itemIndex) position++;
+        }
+      }
+    }
+    
+    const targetItem = hasDuplicate ? `${position}.${bestKeyword}` : bestKeyword;
+    
+    // Sell command with best keyword (and position if needed)
+    onBuy(`sell ${targetItem}`);
     
     // Server now automatically sends Char.Inventory GMCP after sell
     // We just need to re-request the shop listing to keep modal open
@@ -211,7 +238,7 @@ function ShopModal({ shopkeeper, items, inventory, onClose, onBuy, connected, on
                           className="sell-button"
                           onClick={(e) => {
                             e.stopPropagation();
-                            handleSell(item);
+                            handleSell(item, index);
                           }}
                           disabled={!connected || !isSellable || isTransacting}
                           title={isSellable ? "Sell this item" : "Shopkeeper won't buy this"}

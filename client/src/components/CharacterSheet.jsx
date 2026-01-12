@@ -190,7 +190,7 @@ function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, o
         }
     };
 
-    const executeInventoryAction = (action, item) => {
+    const executeInventoryAction = (action, item, itemIndex) => {
         if (!connected) return;
         
         if (action.action === 'inspect') {
@@ -212,7 +212,33 @@ function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, o
         if (action.requiresWearable && !item.canWear) return;
         if (action.requiresType && item.type !== action.requiresType) return;
         
-        const command = `${action.command} ${item.keywords}`;
+        // With full keywords now available, find most specific keyword to minimize conflicts
+        const keywords = item.keywords || 'item';
+        const keywordArray = keywords.toLowerCase().split(/\s+/);
+        
+        // Find the longest (most specific) keyword
+        const bestKeyword = keywordArray.reduce((longest, current) => 
+            current.length > longest.length ? current : longest, keywordArray[0] || 'item');
+        
+        // Check if any other inventory item shares this keyword
+        let position = 1;
+        let hasDuplicate = false;
+        
+        if (inventory) {
+            for (let i = 0; i < inventory.length; i++) {
+                if (i === itemIndex) continue;
+                
+                const otherKeywords = inventory[i].keywords ? inventory[i].keywords.toLowerCase().split(/\s+/) : [];
+                if (otherKeywords.includes(bestKeyword)) {
+                    hasDuplicate = true;
+                    if (i < itemIndex) position++;
+                }
+            }
+        }
+        
+        const targetItem = hasDuplicate ? `${position}.${bestKeyword}` : bestKeyword;
+        const command = `${action.command} ${targetItem}`;
+        
         onCommand(command);
         setSelectedInventoryItem(null);
         
@@ -608,7 +634,7 @@ function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, o
                                                         <button
                                                             key={idx}
                                                             className="action-btn"
-                                                            onClick={() => executeInventoryAction(action, item)}
+                                                            onClick={() => executeInventoryAction(action, item, index)}
                                                             disabled={!connected}
                                                         >
                                                             {action.label}

@@ -2332,10 +2332,10 @@ void webgate_send_char_inventory(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
         }
         *dst = '\0';
 
-        /* Escape item keywords (first keyword only) */
+        /* Escape item keywords (all keywords, not just first) */
         src = obj->name;
         dst = keywords_escaped;
-        while (*src && *src != ' ' && (dst - keywords_escaped) < (MAX_INPUT_LENGTH - 2))
+        while (*src && (dst - keywords_escaped) < (MAX_INPUT_LENGTH - 2))
         {
             if (*src == '"' || *src == '\\')
                 *dst++ = '\\';
