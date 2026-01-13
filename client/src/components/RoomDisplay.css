@@ -76,3 +76,35 @@
 .exits-list {
   color: #8bc34a;
 }
+
+/* Visibility restriction styling */
+.visibility-message {
+  color: #cccccc;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 1rem;
+  margin: 0;
+  font-style: italic;
+}
+
+.room-display.visibility-restricted .room-name {
+  color: #666;
+  text-shadow: none;
+}
+
+/* Fade in/out animations */
+.fade-in {
+  animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

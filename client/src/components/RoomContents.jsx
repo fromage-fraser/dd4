@@ -3,8 +3,14 @@ import './RoomContents.css';
 import { parseAnsiToHtml, stripAnsi } from '../utils/ansiParser';
 import ItemDetailModal from './ItemDetailModal';
 import LootModal from './LootModal';
+import { canSeeRoom, getVisibilityMessage } from '../utils/visibilityHelper';
 
-function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPracticeClick, extraDescriptions, itemDetails, currentPlayerName }) {
+/**
+ * Intent: Display room contents (items, NPCs, players) with visibility restrictions
+ * Responsibilities: Show interactive elements when character can see; hide when blind/asleep
+ * Constraints: Must check status before rendering content; animate transitions
+ */
+function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPracticeClick, extraDescriptions, itemDetails, currentPlayerName, status }) {
     const [selectedItem, setSelectedItem] = useState(null);
     const [selectedNpc, setSelectedNpc] = useState(null);
     const [selectedPlayer, setSelectedPlayer] = useState(null);
@@ -287,8 +293,21 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
         else setLootModalContainer(null);
     }, [items]);
 
+    // Check if character can see room contents
+    const canSee = canSeeRoom(status);
+    const visibilityMsg = getVisibilityMessage(status);
+
+    // If character cannot see, show visibility restriction message instead of content
+    if (!canSee && visibilityMsg) {
+        return (
+            <div key="contents-restricted" className="room-contents visibility-restricted fade-in">
+                <p className="visibility-message">{visibilityMsg}</p>
+            </div>
+        );
+    }
+
     return (
-        <div className="room-contents">
+        <div key="contents-visible" className="room-contents fade-in">
             {detailModalItem && (
                 <ItemDetailModal 
                     item={detailModalItem} 

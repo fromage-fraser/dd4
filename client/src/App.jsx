@@ -577,7 +577,7 @@ function App() {
         </div>
 
         <div className="main-panel">
-          <RoomDisplay room={room} />
+          <RoomDisplay room={room} status={status} />
           <CombatLog messages={messages} />
           <CommandInput onSubmit={sendCommand} connected={connected} />
         </div>
@@ -595,6 +595,7 @@ function App() {
             onPracticeClick={() => setShowPracticeModal(true)}
             itemDetails={itemDetails}
             currentPlayerName={status?.name}
+            status={status}
           />
         </div>
       </div>
@@ -636,7 +637,7 @@ function App() {
           onClose={() => setShowCharacterSheet(false)}
           connected={connected}
           onRefresh={refreshInventoryEquipment}
-
+          status={status}
         />
       )}
 

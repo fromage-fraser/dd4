@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import './CharacterSheet.css';
 import { parseAnsiToHtml, stripAnsi } from '../utils/ansiParser';
+import { canSeeInventory, canEquipItem, canRemoveItem, canExamineItem, getEquipmentActionTooltip, getVisibilityMessage } from '../utils/visibilityHelper';
 
-function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, onRefresh }) {
+/**
+ * Intent: Display character inventory and equipment with visibility restrictions
+ * Responsibilities: Show/hide inventory based on sleep state; filter equipment actions based on blind/sleep
+ * Constraints: Equipment always visible but actions restricted; inventory hidden when asleep
+ */
+function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, onRefresh, status }) {
     const [selectedInventoryItem, setSelectedInventoryItem] = useState(null);
     const [selectedEquipmentSlot, setSelectedEquipmentSlot] = useState(null);
     const [inspectedItem, setInspectedItem] = useState(null);
@@ -192,6 +198,16 @@ function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, o
 
     const executeInventoryAction = (action, item, itemIndex) => {
         if (!connected) return;
+
+        // Check visibility permissions for wear action
+        if (action.command === 'wear' && !canEquipItem(status)) {
+            return; // Cannot wear while blind or asleep
+        }
+        
+        // Check visibility permissions for inspect action
+        if (action.action === 'inspect' && !canExamineItem(status)) {
+            return; // Cannot examine while blind or asleep
+        }
         
         if (action.action === 'inspect') {
             // Determine if item is wearable and get compatible slots
@@ -250,6 +266,11 @@ function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, o
     const executeEquipmentAction = (action, item) => {
         if (!connected || !item) return;
         
+        // Check visibility permissions for equipment actions
+        if (action === 'remove' && !canRemoveItem(status)) {
+            return; // Cannot remove while asleep
+        }
+        
         if (action === 'remove') {
             onCommand(`remove ${item.keywords}`);
             if (onRefresh) {
@@ -272,17 +293,17 @@ function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, o
                     <div className="character-sheet-header-actions">
                         <button
                             className="header-action-btn"
-                            onClick={() => onCommand('wear all')}
-                            disabled={!connected}
-                            title="Wear all wearable items"
+                            onClick={() => canEquipItem(status) && onCommand('wear all')}
+                            disabled={!connected || !canEquipItem(status)}
+                            title={canEquipItem(status) ? "Wear all wearable items" : getEquipmentActionTooltip(status, 'equip')}
                         >
                             🧥 Wear All
                         </button>
                         <button
                             className="header-action-btn"
-                            onClick={() => onCommand('remove all')}
-                            disabled={!connected}
-                            title="Remove all equipped items"
+                            onClick={() => canRemoveItem(status) && onCommand('remove all')}
+                            disabled={!connected || !canRemoveItem(status)}
+                            title={canRemoveItem(status) ? "Remove all equipped items" : getEquipmentActionTooltip(status, 'remove')}
                         >
                             🚫 Remove All
                         </button>
@@ -581,14 +602,16 @@ function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, o
                                                 <button
                                                     className="action-btn"
                                                     onClick={() => executeEquipmentAction('remove', item)}
-                                                    disabled={!connected}
+                                                    disabled={!connected || !canRemoveItem(status)}
+                                                    title={canRemoveItem(status) ? 'Remove item' : getEquipmentActionTooltip(status, 'remove')}
                                                 >
                                                     🚫 Remove
                                                 </button>
                                                 <button
                                                     className="action-btn"
                                                     onClick={() => executeEquipmentAction('examine', item)}
-                                                    disabled={!connected}
+                                                    disabled={!connected || !canExamineItem(status)}
+                                                    title={canExamineItem(status) ? 'Examine item' : getEquipmentActionTooltip(status, 'examine')}
                                                 >
                                                     🔍 Examine
                                                 </button>
@@ -602,9 +625,14 @@ function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, o
 
                     <div className="inventory-section">
                         <h3 className="section-title">🎒 Inventory ({inventory ? inventory.length : 0} items)</h3>
-                        <div className="inventory-list-modal">
-                            {inventory && inventory.length > 0 ? (
-                                inventory.map((item, index) => {
+                        {!canSeeInventory(status) ? (
+                            <div key="inventory-restricted" className="inventory-visibility-overlay">
+                                <p className="visibility-message">{getVisibilityMessage(status)}</p>
+                            </div>
+                        ) : (
+                            <div key="inventory-visible" className="inventory-list-modal">
+                                {inventory && inventory.length > 0 ? (
+                                    inventory.map((item, index) => {
                                     const isSelected = selectedInventoryItem === index;
                                     const indicators = getItemVisualIndicators(item);
                                     return (
@@ -630,16 +658,32 @@ function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, o
                                             </button>
                                             {isSelected && (
                                                 <div className="inventory-actions-modal">
-                                                    {getAvailableInventoryActions(item).map((action, idx) => (
-                                                        <button
-                                                            key={idx}
-                                                            className="action-btn"
-                                                            onClick={() => executeInventoryAction(action, item, index)}
-                                                            disabled={!connected}
-                                                        >
-                                                            {action.label}
-                                                        </button>
-                                                    ))}
+                                                    {getAvailableInventoryActions(item).map((action, idx) => {
+                                                        const isWearAction = action.command === 'wear';
+                                                        const isInspectAction = action.action === 'inspect';
+                                                        const isDisabled = !connected || 
+                                                            (isWearAction && !canEquipItem(status)) ||
+                                                            (isInspectAction && !canExamineItem(status));
+                                                        
+                                                        let tooltip = '';
+                                                        if (isWearAction && !canEquipItem(status)) {
+                                                            tooltip = getEquipmentActionTooltip(status, 'equip');
+                                                        } else if (isInspectAction && !canExamineItem(status)) {
+                                                            tooltip = getEquipmentActionTooltip(status, 'examine');
+                                                        }
+                                                        
+                                                        return (
+                                                            <button
+                                                                key={idx}
+                                                                className="action-btn"
+                                                                onClick={() => executeInventoryAction(action, item, index)}
+                                                                disabled={isDisabled}
+                                                                title={tooltip}
+                                                            >
+                                                                {action.label}
+                                                            </button>
+                                                        );
+                                                    })}
                                                 </div>
                                             )}
                                         </div>
@@ -650,7 +694,8 @@ function CharacterSheet({ inventory, equipment, onCommand, onClose, connected, o
                                     <p>Your backpack is empty</p>
                                 </div>
                             )}
-                        </div>
+                            </div>
+                        )}
                     </div>
                 </div>
 

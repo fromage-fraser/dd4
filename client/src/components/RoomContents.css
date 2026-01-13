@@ -19,6 +19,24 @@
     margin-bottom: 0.5rem;
 }
 
+/* Visibility restriction styling */
+.room-contents.visibility-restricted {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+    padding: 2rem;
+}
+
+.room-contents .visibility-message {
+    color: #cccccc;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: center;
+    margin: 0;
+    font-style: italic;
+}
+
 .content-section {
     margin-bottom: 1rem;
 }
@@ -656,5 +674,21 @@
     50% { 
         box-shadow: 0 0 14px rgba(139, 0, 0, 0.9);
         transform: scale(1.05);
+    }
+}
+
+/* Fade in animation for visibility restoration */
+.fade-in {
+    animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
