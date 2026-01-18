@@ -4229,7 +4229,8 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
         const char *point;
         /* char buf78 [MAX_STRING_LENGTH];*/
         int skip = 0;
-        char cur_code[3];
+        /* cur_code needs space for up to 3 digits plus a NUL terminator */
+        char cur_code[4];
         int cd_count = 2;
         int cv_int;
         char open_token;
@@ -4276,6 +4277,13 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
                                                 continue;
                                         }
 
+                                        /* Zero the code buffer and reset count before parsing */
+                                        cur_code[0] = '\0';
+                                        cur_code[1] = '\0';
+                                        cur_code[2] = '\0';
+                                        cur_code[3] = '\0';
+                                        cd_count = 2;
+
                                         if (isdigit(*point))
                                         {
                                                 if (cd_count < 0)
@@ -4311,6 +4319,7 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
                                                 cur_code[0] = '\0';
                                                 cur_code[1] = '\0';
                                                 cur_code[2] = '\0';
+                                                cur_code[3] = '\0';
                                                 cd_count = 2;
                                                 continue;
                                         }
@@ -4321,8 +4330,8 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
                                                  * If we end up here we have the color code
                                                  * and everything is sweet.
                                                  */
-                                                /*sprintf(buf78, "cv_int pre-reverse: %s\r\n", cur_code);
-                                                log_string(buf78);*/
+                                                /* Ensure the parsed code is NUL-terminated */
+                                                cur_code[3] = '\0';
 
                                                 reverse_char_array(cur_code, 3);
 
@@ -4340,6 +4349,7 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
                                                 cur_code[0] = '\0';
                                                 cur_code[1] = '\0';
                                                 cur_code[2] = '\0';
+                                                cur_code[3] = '\0';
                                                 cd_count = 2;
 
                                                 while (skip-- > 0)
@@ -4355,6 +4365,7 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
                                                 cur_code[0] = '\0';
                                                 cur_code[1] = '\0';
                                                 cur_code[2] = '\0';
+                                                cur_code[3] = '\0';
                                                 cd_count = 2;
 
                                                 continue;
@@ -4377,6 +4388,7 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
                         cur_code[0] = '\0';
                         cur_code[1] = '\0';
                         cur_code[2] = '\0';
+                        cur_code[3] = '\0';
                         cd_count = 2;
 
                         for (point = txt; *point; point++)
@@ -4401,6 +4413,13 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
                                                 continue;
                                         }
 
+                                        /* Zero code buffer and reset count */
+                                        cur_code[0] = '\0';
+                                        cur_code[1] = '\0';
+                                        cur_code[2] = '\0';
+                                        cur_code[3] = '\0';
+                                        cd_count = 2;
+
                                         if (isdigit(*point))
                                         {
                                                 if (cd_count < 0)
@@ -4436,6 +4455,7 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
                                                 cur_code[0] = '\0';
                                                 cur_code[1] = '\0';
                                                 cur_code[2] = '\0';
+                                                cur_code[3] = '\0';
                                                 cd_count = 2;
                                                 continue;
                                         }
@@ -4445,6 +4465,8 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
                                                 /*
                                                  * have the color code
                                                  */
+                                                /* Ensure NUL-termination */
+                                                cur_code[3] = '\0';
                                                 reverse_char_array(cur_code, 3);
                                                 cv_int = atoi(cur_code);
                                                 strip_colour_8bit(cv_int, ch, buffer);
@@ -4456,6 +4478,7 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
                                                 cur_code[0] = '\0';
                                                 cur_code[1] = '\0';
                                                 cur_code[2] = '\0';
+                                                cur_code[3] = '\0';
                                                 cd_count = 2;
 
                                                 continue;
@@ -4468,6 +4491,7 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
                                                 cur_code[0] = '\0';
                                                 cur_code[1] = '\0';
                                                 cur_code[2] = '\0';
+                                                cur_code[3] = '\0';
                                                 cd_count = 2;
 
                                                 continue;

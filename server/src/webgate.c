@@ -1551,7 +1551,7 @@ bool is_actionable_skill(int sn)
  *   - Only sends skills with learned > 0
  *   - Filters out passive skills (spell_null with no combat application)
  *   - Marks "opener" skills that can initiate combat from POS_STANDING
- *   - Client tracks cooldowns locally using beats value
+ *   - Client tracks cooldowns locally using beats value (server sends beats divided by 4 to represent client seconds)
  */
 void webgate_send_char_skills(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
 {
@@ -1617,6 +1617,9 @@ void webgate_send_char_skills(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
         *dst = '\0';
 
         /* Build JSON entry for this skill */
+        /* Convert server-side 'beats' to client cooldown seconds by dividing by 4.
+           Keep 0 for no cooldown; otherwise round up and ensure a minimum of 1 second. */
+        int client_beats = skill_table[sn].beats ? ((skill_table[sn].beats + 3) / 4) : 0;
         sprintf(skill_entry, "%s{\"id\":%d,\"name\":\"%s\",\"isGroup\":%s,\"learned\":%d,\"mana\":%d,\"beats\":%d,\"type\":\"%s\",\"opener\":%s,\"pracType\":%d,\"target\":%d}",
                 (count > 0 ? "," : ""),
                 sn,
@@ -1624,7 +1627,7 @@ void webgate_send_char_skills(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
                 is_group ? "true" : "false",
                 ch->pcdata->learned[sn],
                 skill_table[sn].min_mana,
-                skill_table[sn].beats,
+                client_beats,
                 skill_type,
                 is_opener ? "true" : "false",
                 skill_table[sn].prac_type,
