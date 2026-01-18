@@ -3959,14 +3959,26 @@ static bool webgate_parse_json_message(WEB_DESCRIPTOR_DATA *web_desc, const char
             /* Check if player just entered the game */
             if (old_state != CON_PLAYING && web_desc->mud_desc->connected == CON_PLAYING)
             {
+                sprintf(log_buf, "WebGate: Player entering game (state transition detected)");
+                log_string(log_buf);
+
                 if (web_desc->mud_desc->character && web_desc->mud_desc->character->in_room)
                 {
+                    sprintf(log_buf, "WebGate: Sending initial GMCP data for %s",
+                            web_desc->mud_desc->character->name);
+                    log_string(log_buf);
+
                     webgate_send_room_info(web_desc, web_desc->mud_desc->character->in_room, web_desc->mud_desc->character);
                     webgate_send_char_vitals(web_desc, web_desc->mud_desc->character);
                     webgate_send_char_status(web_desc, web_desc->mud_desc->character);
                     webgate_send_char_skills(web_desc, web_desc->mud_desc->character);
+                    webgate_send_char_skill_tree(web_desc, web_desc->mud_desc->character);
                     webgate_send_char_inventory(web_desc, web_desc->mud_desc->character);
                     webgate_send_char_equipment(web_desc, web_desc->mud_desc->character);
+
+                    sprintf(log_buf, "WebGate: Completed initial GMCP send for %s",
+                            web_desc->mud_desc->character->name);
+                    log_string(log_buf);
                 }
             }
         }
@@ -4484,4 +4496,420 @@ static void webgate_transfer_mud_output(WEB_DESCRIPTOR_DATA *web_desc)
 
     /* Clear the MUD output buffer */
     mud_desc->outtop = 0;
+}
+
+/*
+ * Intent: Recursively build flattened prerequisite chain string with arrows
+ * Inputs: sn - skill number to build chain for, depth - current recursion depth, visited - cycle detection array
+ * Outputs: Returns prerequisite chain string like "skill1 → skill2 → skill3"
+ * Preconditions: skill_prereq_cache initialized, sn valid
+ * Postconditions: Returns malloc'd string or empty string, caller must free
+ * Failure Behavior: Returns empty string on MAX_STRING_LENGTH overflow or max depth exceeded
+ * Performance: O(d*p) where d is depth (max 6), p is prerequisites per skill
+ * Notes: Groups prerequisites by group number (0=all required, 1-27=one path required)
+ */
+/*
+ * Intent: Check if skill requires subclass base (necro/warlock/mage@60+) anywhere in prerequisite chain
+ * Inputs: sn (skill number), visited (cycle detection array)
+ * Outputs: Returns TRUE if skill requires subclass base anywhere in prerequisite chain
+ * Preconditions: skill_prereq_cache initialized
+ * Performance: O(d*p) where d is depth, p is prerequisites per skill
+ * Notes: For multi-subclass mode, checks all mage-related groups
+ */
+static bool is_skill_requires_subclass_base(int sn, bool *visited)
+{
+    PREREQ_NODE *prereq;
+
+    if (sn < 0 || sn >= MAX_SKILL)
+        return FALSE;
+
+    if (visited[sn])
+        return FALSE;
+
+    visited[sn] = TRUE;
+
+    /* Check this skill's direct prerequisites */
+    for (prereq = skill_prereq_cache[sn].prereqs; prereq; prereq = prereq->next)
+    {
+        /* Accept prerequisites from any mage-related group or common */
+        if (prereq->group == PRE_MAGE || prereq->group == PRE_NECRO ||
+            prereq->group == PRE_WARLOCK || prereq->group == 0)
+        {
+            /* Necro or Warlock base at ANY level means subclass-only */
+            if (prereq->pre_req_sn == gsn_necro_base ||
+                prereq->pre_req_sn == gsn_warlock_base)
+            {
+                visited[sn] = FALSE;
+                return TRUE;
+            }
+
+            /* Mage base at 60+ means subclass-only */
+            if (prereq->pre_req_sn == gsn_mage_base &&
+                prereq->min_proficiency >= 60)
+            {
+                visited[sn] = FALSE;
+                return TRUE;
+            }
+
+            /* Recursively check if the prerequisite skill requires subclass base */
+            if (is_skill_requires_subclass_base(prereq->pre_req_sn, visited))
+            {
+                visited[sn] = FALSE;
+                return TRUE;
+            }
+        }
+    }
+
+    visited[sn] = FALSE;
+    return FALSE;
+}
+
+/*
+ * Intent: Recursively check if skill or its prerequisites require base class at 60+
+ * Inputs: sn (skill number), visited (cycle detection array), pre_group (class group)
+ * Outputs: Returns TRUE if skill is subclass-specific (requires base@60+ anywhere in chain)
+ * Preconditions: skill_prereq_cache initialized
+ * Performance: O(d*p) where d is depth, p is prerequisites per skill
+ * Notes: Prevents infinite recursion via visited array
+ */
+static bool is_skill_subclass_recursive(int sn, bool *visited, int pre_group)
+{
+    PREREQ_NODE *prereq;
+
+    if (sn < 0 || sn >= MAX_SKILL)
+        return FALSE;
+
+    if (visited[sn])
+        return FALSE;
+
+    visited[sn] = TRUE;
+
+    /* Check direct prerequisites of this skill */
+    for (prereq = skill_prereq_cache[sn].prereqs; prereq; prereq = prereq->next)
+    {
+        if (prereq->group != pre_group && prereq->group != 0)
+            continue;
+
+        /* Direct check: does THIS prerequisite require base@60+? */
+        if ((prereq->pre_req_sn == gsn_mage_base ||
+             prereq->pre_req_sn == gsn_necro_base ||
+             prereq->pre_req_sn == gsn_warlock_base ||
+             prereq->pre_req_sn == gsn_cleric_base ||
+             prereq->pre_req_sn == gsn_thief_base ||
+             prereq->pre_req_sn == gsn_warrior_base) &&
+            prereq->min_proficiency >= 60)
+        {
+            visited[sn] = FALSE;
+            return TRUE;
+        }
+
+        /* Recursive check: does the prerequisite skill itself require base@60+? */
+        if (is_skill_subclass_recursive(prereq->pre_req_sn, visited, pre_group))
+        {
+            visited[sn] = FALSE;
+            return TRUE;
+        }
+    }
+
+    visited[sn] = FALSE;
+    return FALSE;
+}
+
+/*
+ * Intent: Build flattened prerequisite chain for a skill, filtered by class group
+ * Inputs: sn (skill number), depth (recursion depth), visited (cycle detection), pre_group (class filter)
+ * Outputs: String containing prerequisite chain (e.g., "kick@50 + lunge@30")
+ * Preconditions: skill_prereq_cache initialized, sn valid
+ * Postconditions: Returns static string (not thread safe)
+ * Failure Behavior: Returns "Unknown" on error, stops at MAX_PREREQ_DEPTH
+ * Performance: O(n) where n is prerequisite count
+ * Notes: Only shows prerequisites matching pre_group or group 0 (common)
+ */
+static char *build_flattened_prereq_chain(int sn, int depth, bool *visited, int pre_group)
+{
+    static char result[MAX_STRING_LENGTH];
+    char temp[MAX_STRING_LENGTH];
+    PREREQ_NODE *prereq;
+    bool first = TRUE;
+
+    result[0] = '\0';
+
+    /* Check depth limit */
+    if (depth >= MAX_PREREQ_CHAIN_DEPTH || sn < 0 || sn >= MAX_SKILL)
+        return "Unknown";
+
+    /* Check for cycles */
+    if (visited[sn])
+        return result;
+
+    visited[sn] = TRUE;
+
+    /* Check if this skill has prerequisites */
+    if (!skill_prereq_cache[sn].prereqs || skill_prereq_cache[sn].prereq_count == 0)
+    {
+        visited[sn] = FALSE;
+        return result;
+    }
+
+    /* Walk prerequisite chain, filtering by class group */
+    for (prereq = skill_prereq_cache[sn].prereqs; prereq; prereq = prereq->next)
+    {
+        /* Skip prerequisites not for this class (unless group 0 = common) */
+        if (prereq->group != 0 && prereq->group != pre_group)
+            continue;
+
+        /* Skip base class skills (mage_base, cleric_base, etc.) - not useful for grouping */
+        if (prereq->pre_req_sn == gsn_mage_base ||
+            prereq->pre_req_sn == gsn_cleric_base ||
+            prereq->pre_req_sn == gsn_thief_base ||
+            prereq->pre_req_sn == gsn_warrior_base)
+            continue;
+
+        if (!first)
+            strcat(result, " + ");
+        first = FALSE;
+
+        /* Add prerequisite skill name without proficiency number */
+        if (skill_table[prereq->pre_req_sn].name)
+        {
+            strcat(result, skill_table[prereq->pre_req_sn].name);
+        }
+    }
+
+    visited[sn] = FALSE;
+    return result;
+}
+
+/*
+ * Intent: Send class-specific skill tree to web client via GMCP Char.SkillTree
+ * Inputs: web_desc (authenticated), ch (player character)
+ * Outputs: JSON array of ALL skills with prerequisites for this class
+ * Preconditions: web_desc authenticated, ch valid, prerequisite cache initialized
+ * Postconditions: Client receives skills array with learned values; client determines available vs locked
+ * Failure Behavior: Aborts if web_desc invalid or disconnected
+ * Performance: O(n) where n is gsn_mage_base
+ * Notes: Simplified approach - send all class skills, let client compare learned values
+ */
+void webgate_send_char_skill_tree(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
+{
+    char json[MAX_STRING_LENGTH * 8]; /* Large buffer for full skill tree */
+    char skill_entry[MAX_STRING_LENGTH * 2];
+    char skill_name_escaped[MAX_INPUT_LENGTH];
+    char *prereq_chain;
+    const char *src;
+    char *dst;
+    int sn;
+    int pre_group;
+    int skill_count = 0;
+    bool visited[MAX_SKILL];
+    bool first = TRUE;
+    PREREQ_NODE *prereq;
+
+    sprintf(log_buf, "WebGate: webgate_send_char_skill_tree called for %s (state:%d)",
+            ch ? ch->name : "NULL", web_desc ? web_desc->state : -1);
+    log_string(log_buf);
+
+    if (!web_desc || !ch || IS_NPC(ch) || web_desc->state != WS_STATE_OPEN)
+    {
+        log_string("WebGate: Skill tree send aborted (invalid state)");
+        return;
+    }
+
+    sprintf(log_buf, "WebGate: Sending Char.SkillTree for %s", ch->name);
+    log_string(log_buf);
+
+    /* Determine character's class group (same logic as do_advice) */
+    pre_group = ch->class + 1;
+    if (ch->sub_class)
+        pre_group = ch->sub_class + MAX_CLASS;
+
+    /* Initialize JSON structure with character level */
+    sprintf(json, "{\"level\":%d,\"skills\":[", ch->level);
+
+    /* Initialize visited array for cycle detection */
+    for (sn = 0; sn < MAX_SKILL; sn++)
+        visited[sn] = FALSE;
+
+    /* Determine which groups to send (all subclass options if < 30 and mage) */
+    int groups_to_send[3];
+    int group_count = 0;
+    const char *subclass_names[3] = {"", "", ""};
+    bool multi_subclass_mode = FALSE;
+
+    if (ch->level < 30 && ch->class == CLASS_MAGE && ch->sub_class == SUB_CLASS_NONE)
+    {
+        /* Send all mage skills once, but tag subclass skills with their appropriate subclass */
+        groups_to_send[0] = PRE_MAGE;
+        group_count = 1;
+        multi_subclass_mode = TRUE;
+    }
+    else
+    {
+        /* Send only current class group */
+        groups_to_send[0] = pre_group;
+        subclass_names[0] = "";
+        group_count = 1;
+        multi_subclass_mode = FALSE;
+    }
+
+    /* Iterate through each group to send */
+    for (int group_idx = 0; group_idx < group_count; group_idx++)
+    {
+        int current_group = groups_to_send[group_idx];
+
+        /* Iterate through skill cache and find all skills with prerequisites for this group */
+        for (sn = 0; sn < gsn_mage_base; sn++)
+        {
+            bool has_class_prereq = FALSE;
+            bool is_subclass_skill = FALSE;
+            const char *skill_subclass_name = "";
+
+            if (!skill_table[sn].name)
+                continue;
+
+            /* Skip hidden/immortal skills */
+            if (skill_table[sn].prac_type == TYPE_WIZ || skill_table[sn].prac_type == TYPE_NULL)
+                continue;
+
+            /* Check if this skill has any prerequisites in the cache for this group */
+            /* In multi-subclass mode, check for ANY mage-related group (PRE_MAGE, PRE_NECRO, PRE_WARLOCK) */
+            for (prereq = skill_prereq_cache[sn].prereqs; prereq; prereq = prereq->next)
+            {
+                if (multi_subclass_mode)
+                {
+                    /* Accept prerequisites from any mage subclass group */
+                    if (prereq->group == PRE_MAGE || prereq->group == PRE_NECRO ||
+                        prereq->group == PRE_WARLOCK || prereq->group == 0)
+                    {
+                        has_class_prereq = TRUE;
+                        break;
+                    }
+                }
+                else
+                {
+                    /* Match if group is for this class OR group is 0 (common prereq) */
+                    if (prereq->group == current_group || prereq->group == 0)
+                    {
+                        has_class_prereq = TRUE;
+                        break;
+                    }
+                }
+            }
+
+            /* Skip skills without prerequisites for this group */
+            if (!has_class_prereq)
+                continue;
+
+            /* Recursively check if this skill or any prerequisite requires base@60+ */
+            /* In multi-subclass mode, check with PRE_MAGE but accept all mage-related prereqs */
+            if (multi_subclass_mode)
+            {
+                /* For multi-subclass, we need special handling with recursive checking */
+                bool found_subclass_prereq = FALSE;
+
+                /* Recursive helper to check if skill or its prerequisites require subclass base */
+                bool check_recursive[MAX_SKILL];
+                for (int i = 0; i < MAX_SKILL; i++)
+                    check_recursive[i] = FALSE;
+
+                found_subclass_prereq = is_skill_requires_subclass_base(sn, check_recursive);
+                is_subclass_skill = found_subclass_prereq;
+            }
+            else
+            {
+                is_subclass_skill = is_skill_subclass_recursive(sn, visited, current_group);
+            }
+
+            /* Determine subclass name for multi-subclass mode */
+            if (multi_subclass_mode && is_subclass_skill)
+            {
+                /* Check prerequisite groups to determine which subclass this skill belongs to */
+                bool has_necro_prereq = FALSE;
+                bool has_warlock_prereq = FALSE;
+                PREREQ_NODE *check_prereq;
+
+                for (check_prereq = skill_prereq_cache[sn].prereqs; check_prereq; check_prereq = check_prereq->next)
+                {
+                    if (check_prereq->group == PRE_NECRO)
+                        has_necro_prereq = TRUE;
+                    if (check_prereq->group == PRE_WARLOCK)
+                        has_warlock_prereq = TRUE;
+                }
+
+                /* Assign subclass based on which prerequisite groups exist */
+                /* If skill has both necro and warlock prereqs, prefer showing in both */
+                /* For now, prioritize: Warlock > Necromancer > Pure Mage */
+                if (has_warlock_prereq)
+                {
+                    skill_subclass_name = "Warlock";
+                }
+                else if (has_necro_prereq)
+                {
+                    skill_subclass_name = "Necromancer";
+                }
+                else
+                {
+                    /* Pure Mage: subclass skill but no specific subclass prereqs */
+                    skill_subclass_name = "Pure Mage";
+                }
+            }
+
+            /* Escape skill name for JSON */
+            src = skill_table[sn].name;
+            dst = skill_name_escaped;
+            while (*src && (dst - skill_name_escaped) < (MAX_INPUT_LENGTH - 2))
+            {
+                if (*src == '"' || *src == '\\')
+                    *dst++ = '\\';
+                *dst++ = *src++;
+            }
+            *dst = '\0';
+
+            /* Get prerequisite chain for this skill */
+            prereq_chain = build_flattened_prereq_chain(sn, 0, visited, current_group);
+
+            /* Build skill entry with id, name, learned, prerequisites, subclass flag, and subclass name */
+            /* Only add subclassName if this is actually a subclass-specific skill */
+            if (is_subclass_skill && skill_subclass_name && strlen(skill_subclass_name) > 0)
+            {
+                sprintf(skill_entry, "%s{\"id\":%d,\"name\":\"%s\",\"learned\":%d,\"prerequisites\":\"%s\",\"isSubclass\":%s,\"subclassName\":\"%s\"}",
+                        first ? "" : ",",
+                        sn,
+                        skill_name_escaped,
+                        ch->pcdata->learned[sn],
+                        prereq_chain ? prereq_chain : "",
+                        is_subclass_skill ? "true" : "false",
+                        skill_subclass_name);
+            }
+            else
+            {
+                sprintf(skill_entry, "%s{\"id\":%d,\"name\":\"%s\",\"learned\":%d,\"prerequisites\":\"%s\",\"isSubclass\":%s}",
+                        first ? "" : ",",
+                        sn,
+                        skill_name_escaped,
+                        ch->pcdata->learned[sn],
+                        prereq_chain ? prereq_chain : "",
+                        is_subclass_skill ? "true" : "false");
+            }
+
+            /* Check buffer space */
+            if (strlen(json) + strlen(skill_entry) + 100 >= sizeof(json))
+            {
+                log_string("WebGate: Skill tree too large, truncating");
+                break;
+            }
+
+            strcat(json, skill_entry);
+            first = FALSE;
+            skill_count++;
+        }
+    }
+
+    strcat(json, "]}");
+
+    sprintf(log_buf, "WebGate: Skill tree sent - %d skills for class group %d",
+            skill_count, pre_group);
+    log_string(log_buf);
+
+    webgate_send_gmcp(web_desc, "Char.SkillTree", json);
 }

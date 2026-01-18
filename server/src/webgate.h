@@ -187,6 +187,26 @@ void webgate_close(WEB_DESCRIPTOR_DATA *web_desc);
 void webgate_send_gmcp(WEB_DESCRIPTOR_DATA *web_desc, const char *module, const char *json_body);
 
 /*
+ * Intent: Send skill tree information to web client via GMCP Char.SkillTree.
+ *
+ * Inputs:
+ *   - web_desc - Target web client connection
+ *   - ch - Character whose skill tree to send
+ *
+ * Outputs: None (GMCP message queued)
+ *
+ * Preconditions: web_desc is authenticated; ch is valid; prerequisite cache initialized
+ * Postconditions: Char.SkillTree GMCP message sent with available/locked/progress arrays
+ *
+ * Failure Behavior: Logs error if cache not ready; skips on invalid parameters
+ *
+ * Performance: O(n) where n is MAX_SKILL; optimized for typical skill counts
+ *
+ * Notes: Includes all skills with prerequisites shown as flattened chains
+ */
+void webgate_send_char_skill_tree(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch);
+
+/*
  * Intent: Send room information to a web client via GMCP Room.Info.
  *
  * Inputs:

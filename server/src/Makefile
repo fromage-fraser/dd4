@@ -13,7 +13,8 @@ L_FLAGS = $(LINK) $(DEBUG) $(PROF) -lcrypt -lm -lcrypto
 O_FILES = act_comm.o act_info.o act_move.o act_obj.o act_wiz.o board.o comm.o const.o \
           healer.o hunt.o db.o fight.o gamble.o handler.o interp.o magic.o mob_commands.o \
           mob_prog.o save.o special.o update.o quest.o trap.o skill.o sft.o table.o \
-          deity.o tournament.o bot.o twister.o protocol.o mob.o write_json.o webgate.o
+          deity.o tournament.o bot.o twister.o protocol.o mob.o write_json.o webgate.o \
+          prereq_cache.o
 
 dd4: $(O_FILES)
 	-rm -f dd4

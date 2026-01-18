@@ -4168,6 +4168,26 @@ void do_practice(CHAR_DATA *ch, char *argument)
 
                 sprintf(buf, "I hope my knowledge helps you, %s.", ch->name);
                 do_say(mob, buf);
+
+                /* Update skill tree for web clients */
+                if (ch->desc)
+                {
+                        extern WEB_DESCRIPTOR_DATA *web_descriptor_list;
+                        extern void webgate_send_char_skill_tree(WEB_DESCRIPTOR_DATA * web_desc, CHAR_DATA * ch);
+                        WEB_DESCRIPTOR_DATA *web_desc;
+
+                        /* Find web descriptor for this character */
+                        for (web_desc = web_descriptor_list; web_desc; web_desc = web_desc->next)
+                        {
+                                if (web_desc->mud_desc && web_desc->mud_desc == ch->desc)
+                                {
+                                        webgate_send_char_skills(web_desc, ch);
+                                        webgate_send_char_skill_tree(web_desc, ch);
+                                        break;
+                                }
+                        }
+                }
+
                 return;
         }
         else
@@ -4177,6 +4197,27 @@ void do_practice(CHAR_DATA *ch, char *argument)
                 do_say(mob, buf);
                 return;
         }
+}
+
+void do_skilltree(CHAR_DATA *ch, char *argument)
+{
+        WEB_DESCRIPTOR_DATA *web_desc;
+
+        if (IS_NPC(ch))
+                return;
+
+        /* Find the web descriptor for this character */
+        for (web_desc = web_descriptor_list; web_desc; web_desc = web_desc->next)
+        {
+                if (web_desc->mud_desc && web_desc->mud_desc->character == ch)
+                {
+                        webgate_send_char_skill_tree(web_desc, ch);
+                        send_to_char("Skill tree data sent to GUI.\n\r", ch);
+                        return;
+                }
+        }
+
+        send_to_char("You must be using the web client to view the skill tree.\n\r", ch);
 }
 
 void do_train(CHAR_DATA *ch, char *argument)

@@ -18,6 +18,7 @@ import PracticeModal from './components/PracticeModal';
 import MapModal from './components/MapModal';
 import SpellBookModal from './components/SpellBookModal';
 import HelpModal from './components/HelpModal';
+import SkillTreeModal from './components/SkillTreeModal';
 
 /**
  * Main application component for DD4 Web Client
@@ -60,6 +61,8 @@ function App() {
   const [healerData, setHealerData] = useState(null); // { healer, services }
   const [showPracticeModal, setShowPracticeModal] = useState(false);
   const [showSpellBook, setShowSpellBook] = useState(false);
+  const [showSkillTree, setShowSkillTree] = useState(false);
+  const [skillTree, setSkillTree] = useState(null);
   const [itemDetails, setItemDetails] = useState({}); // Store detailed item info keyed by item name
   const [mapsData, setMapsData] = useState(null); // All available maps from maps.json
   const [currentMap, setCurrentMap] = useState(null); // Current area's map data
@@ -319,6 +322,26 @@ function App() {
         }
         break;
       
+      case 'Char.SkillTree':
+        // Handle skill tree update (prerequisite visualization)
+        // New simplified format: {skills:[{id,name,learned,prerequisites}]}
+        console.log('Char.SkillTree received:', data);
+        console.log('Raw skills array:', data.skills);
+        console.log('Total skills for class:', data.skills?.length);
+        
+        // Split into available (learned > 0) and locked (learned == 0)
+        if (data.skills && Array.isArray(data.skills)) {
+          const available = data.skills.filter(s => s.learned > 0);
+          const locked = data.skills.filter(s => s.learned === 0);
+          console.log('Available skills:', available.length, available.slice(0, 3));
+          console.log('Locked skills:', locked.length, locked.slice(0, 3));
+          setSkillTree({available, locked});
+          console.log('SkillTree state updated');
+        } else {
+          console.error('Invalid skills data structure:', data);
+        }
+        break;
+      
       case 'Char.Inventory':
         // Handle inventory update
         console.log('Char.Inventory received:', data);
@@ -505,6 +528,24 @@ function App() {
   };
 
   /**
+   * Request fresh skill tree data from server via GMCP
+   * Ensures skill tree is current when opening skill tree modal
+   */
+  const refreshSkillTree = () => {
+    if (!ws.current || ws.current.readyState !== WebSocket.OPEN) {
+      return;
+    }
+    
+    // Send 'skilltree' command to trigger webgate_send_char_skill_tree()
+    const message = JSON.stringify({
+      command: 'skilltree'
+    });
+    ws.current.send(message);
+    console.log('Requesting Char.SkillTree GMCP update via skilltree command');
+    setLastUserCommandTs(Date.now());
+  };
+
+  /**
    * Handle movement via compass
    */
   const handleMove = (direction) => {
@@ -554,6 +595,10 @@ function App() {
             onOpenSpellBook={() => {
               refreshSkills();
               setShowSpellBook(true);
+            }}
+            onOpenSkillTree={() => {
+              refreshSkillTree();
+              setShowSkillTree(true);
             }}
           />
         </div>
@@ -693,6 +738,15 @@ function App() {
           inventory={inventory}
           onCommand={sendCommand}
           onClose={() => setShowSpellBook(false)}
+        />
+      )}
+
+      {showSkillTree && skillTree && (
+        <SkillTreeModal
+          key={`st-${skillTree.available?.length || 0}-${skillTree.locked?.length || 0}`}
+          skillTree={skillTree}
+          onCommand={sendCommand}
+          onClose={() => setShowSkillTree(false)}
         />
       )}
 

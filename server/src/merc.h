@@ -376,12 +376,13 @@ bool has_tranquility(CHAR_DATA *ch);
 #define LEVEL_IMMORTAL L_BUI
 #define LEVEL_HERO (LEVEL_IMMORTAL - 1)
 
-#define MAX_SKILL 618       /* 617 +1 for aambient 8/9/25 */
-#define MAX_PRE_REQ 1574    /* +2 for sense wisdom 6/7/25  */
-#define MAX_SPELL_GROUP 469 /* +1 sense wisdom Owl 6/7/25 */
-#define MAX_GROUPS 61       /* +1 for runecaster - Brutus Aug 2022 */
-#define MAX_FORM_SKILL 74   /* 73 + 1 for 'swallow' | for form skill table */
-#define MAX_VAMPIRE_GAG 25  /* 26 - 1 so vamps get morph again for bat form | ugly vampire/werewolf hack */
+#define MAX_SKILL 618            /* 617 +1 for aambient 8/9/25 */
+#define MAX_PRE_REQ 1574         /* +2 for sense wisdom 6/7/25  */
+#define MAX_SPELL_GROUP 469      /* +1 sense wisdom Owl 6/7/25 */
+#define MAX_PREREQ_CHAIN_DEPTH 6 /* Maximum depth for prerequisite chain display */
+#define MAX_GROUPS 61            /* +1 for runecaster - Brutus Aug 2022 */
+#define MAX_FORM_SKILL 74        /* 73 + 1 for 'swallow' | for form skill table */
+#define MAX_VAMPIRE_GAG 25       /* 26 - 1 so vamps get morph again for bat form | ugly vampire/werewolf hack */
 
 /* Define the levels for items - Brutus */
 #define ITEM_SCORE_LEGENDARY 900
@@ -1125,6 +1126,30 @@ struct pre_req_struct
         int *pre_req;
         int min;
         int group;
+};
+
+/*
+ * Prerequisite cache structures for skill tree visualization
+ * Intent: Store prerequisite data in linked lists for efficient traversal and flattening
+ */
+struct prereq_node
+{
+        int pre_req_sn;           /* Skill number of the prerequisite */
+        int min_proficiency;      /* Minimum proficiency required (0-100%) */
+        int group;                /* Group number: 0=all required, 1-27=one path required */
+        struct prereq_node *next; /* Next prerequisite in the list */
+};
+
+typedef struct prereq_node PREREQ_NODE;
+
+/*
+ * Per-skill prerequisite data cache
+ * Intent: Cache all prerequisites for a skill for O(1) lookup during skill tree generation
+ */
+struct skill_prereq_data
+{
+        PREREQ_NODE *prereqs; /* Linked list of prerequisites */
+        int prereq_count;     /* Total number of prerequisites for this skill */
 };
 
 struct spell_group_struct
@@ -4177,6 +4202,9 @@ extern const struct loc_wear_struct loc_wear_table[MAX_CLASS + MAX_SUB_CLASS - 1
 extern struct pre_req_struct pre_req_table[MAX_PRE_REQ];
 extern struct spell_group_struct spell_group_table[MAX_SPELL_GROUP];
 extern const int *spell_groups[MAX_GROUPS];
+
+/* Prerequisite cache - indexed by skill number */
+extern struct skill_prereq_data skill_prereq_cache[MAX_SKILL];
 extern struct form_skill_struct form_skill_table[MAX_FORM_SKILL];
 extern struct vampire_gag vampire_gag_table[MAX_VAMPIRE_GAG];
 
@@ -4489,6 +4517,7 @@ DECLARE_DO_FUN(do_venom); /* spider skill - BBrutus */
 DECLARE_DO_FUN(do_poison_weapon);
 DECLARE_DO_FUN(do_pose);
 DECLARE_DO_FUN(do_practice);
+DECLARE_DO_FUN(do_skilltree);
 DECLARE_DO_FUN(do_pugalism); /* for brawlers */
 DECLARE_DO_FUN(do_shuto);    /* Martial artist - brutus */
 DECLARE_DO_FUN(do_swim);     /* hmmmm i wonder ?? */
@@ -5003,6 +5032,7 @@ void reverse_char_array(char arr[], int n);
 
 /* db.c */
 void boot_db args((void));
+void cache_prerequisites args((void));
 void area_update args((void));
 CD *create_mobile args((MOB_INDEX_DATA * pMobIndex));
 OD *create_object args((OBJ_INDEX_DATA * pObjIndex, int level, char *rank, int randomise));

@@ -12,13 +12,14 @@ import './QuickActions.css';
  * - connected: boolean indicating server connection status
  * - onOpenCharacterSheet: callback to open the character sheet modal
  * - onOpenSpellBook: callback to open the spell book modal
+ * - onOpenSkillTree: callback to open the skill tree modal
  * 
  * Outputs: Rendered quick action button bar
  * 
  * Notes: Icons use emoji for universal compatibility. Can be replaced with
  *        icon library (FontAwesome, Material Icons) for more polished look.
  */
-function QuickActions({ onCommand, connected, onOpenCharacterSheet, onOpenSpellBook, status, room }) {
+function QuickActions({ onCommand, connected, onOpenCharacterSheet, onOpenSpellBook, onOpenSkillTree, status, room }) {
   const quickCommands = [
     { label: '👁️', text: 'Look', command: 'look', color: '#2196f3' },
     { label: '📋', text: 'Sheet', action: 'sheet', color: '#9c27b0' },
@@ -42,6 +43,11 @@ function QuickActions({ onCommand, connected, onOpenCharacterSheet, onOpenSpellB
 
     if (cmd.action === 'spellbook') {
       onOpenSpellBook();
+      return;
+    }
+
+    if (cmd.action === 'skilltree') {
+      onOpenSkillTree();
       return;
     }
 
@@ -86,6 +92,19 @@ function QuickActions({ onCommand, connected, onOpenCharacterSheet, onOpenSpellB
           <span className="quick-action-icon">{isSleeping ? '🛌' : '😴'}</span>
           <span className="quick-action-text">{isSleeping ? 'Wake' : 'Sleep'}</span>
           {isHealing && <span className="healing-overlay">↑</span>}
+        </button>
+
+        {/* Skill Tree quick action */}
+        <button
+          key="skilltree"
+          className="quick-action-btn"
+          style={{ borderColor: '#8bc34a' }}
+          onClick={() => handleClick({ action: 'skilltree' })}
+          disabled={!connected}
+          title="Skill Tree"
+        >
+          <span className="quick-action-icon">🌳</span>
+          <span className="quick-action-text">Skills</span>
         </button>
       </div>
     </div>
