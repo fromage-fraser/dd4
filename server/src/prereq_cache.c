@@ -38,9 +38,7 @@ void cache_prerequisites(void)
         int or_groups_found[28] = {0}; /* Track OR groups 1-27 */
         time_t start_time, end_time;
         char buf[MAX_STRING_LENGTH];
-        char cycle_path[MAX_STRING_LENGTH];
         PREREQ_NODE *new_node;
-        bool visited[MAX_SKILL];
 
         start_time = current_time;
 

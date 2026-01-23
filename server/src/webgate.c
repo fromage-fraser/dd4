@@ -4631,7 +4631,6 @@ static bool is_skill_subclass_recursive(int sn, bool *visited, int pre_group)
 static char *build_flattened_prereq_chain(int sn, int depth, bool *visited, int pre_group)
 {
     static char result[MAX_STRING_LENGTH];
-    char temp[MAX_STRING_LENGTH];
     PREREQ_NODE *prereq;
     bool first = TRUE;
 
@@ -4736,7 +4735,6 @@ void webgate_send_char_skill_tree(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
     /* Determine which groups to send (all subclass options if < 30 and mage) */
     int groups_to_send[3];
     int group_count = 0;
-    const char *subclass_names[3] = {"", "", ""};
     bool multi_subclass_mode = FALSE;
 
     if (ch->level < 30 && ch->class == CLASS_MAGE && ch->sub_class == SUB_CLASS_NONE)
@@ -4750,7 +4748,6 @@ void webgate_send_char_skill_tree(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
     {
         /* Send only current class group */
         groups_to_send[0] = pre_group;
-        subclass_names[0] = "";
         group_count = 1;
         multi_subclass_mode = FALSE;
     }
