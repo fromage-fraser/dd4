@@ -1,12 +1,12 @@
 .skill-bar {
   background: rgba(20, 20, 30, 0.98);
   border-top: 2px solid #444;
-  padding: 8px 12px;
-  position: sticky;
-  bottom: 0;
+  padding: 4px 12px;
+  position: fixed;
+  bottom: 80px;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 999;
   box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.5);
 }
 
@@ -86,14 +86,15 @@
 .skill-slots {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  gap: 8px;
+  gap: 6px;
   flex: 1;
 }
 
 .skill-slot {
   position: relative;
-  aspect-ratio: 1;
-  min-height: 60px;
+  height: 36px;
+  max-height: 36px;
+  min-height: 36px;
   background: linear-gradient(135deg, #2a2a3a 0%, #1a1a2a 100%);
   border: 2px solid #444;
   border-radius: 8px;
@@ -102,7 +103,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 6px;
+  padding: 4px;
   transition: all 0.2s;
   overflow: hidden;
   touch-action: manipulation; /* Optimize for touch */

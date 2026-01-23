@@ -10,6 +10,8 @@ import RoomContents from './components/RoomContents';
 import EnemyStatus from './components/EnemyStatus';
 import SkillBar from './components/SkillBar';
 import SkillAssign from './components/SkillAssign';
+import AliasBar from './components/AliasBar';
+import AliasAssign from './components/AliasAssign';
 import CharacterSheet from './components/CharacterSheet';
 import ShopModal from './components/ShopModal';
 import IdentifyModal from './components/IdentifyModal';
@@ -43,6 +45,8 @@ function App() {
   const [assignedSkills, setAssignedSkills] = useState(Array(8).fill(null));
   const [openers, setOpeners] = useState([null, null]);
   const [showSkillAssign, setShowSkillAssign] = useState(false);
+  const [assignedAliases, setAssignedAliases] = useState(Array(8).fill(null));
+  const [showAliasModal, setShowAliasModal] = useState(false);
   const [showCharacterSheet, setShowCharacterSheet] = useState(false);
   const [inventory, setInventory] = useState([]);
   const [equipment, setEquipment] = useState(null);
@@ -93,6 +97,25 @@ function App() {
       }
     }
   }, []);
+
+  // Load character-specific aliases when character name is available
+  useEffect(() => {
+    if (!characterName) return;
+    
+    const aliasKey = `dd4_aliases_${characterName}`;
+    const savedAliases = localStorage.getItem(aliasKey);
+    
+    if (savedAliases) {
+      try {
+        setAssignedAliases(JSON.parse(savedAliases));
+      } catch (e) {
+        console.error('Failed to parse saved aliases:', e);
+      }
+    } else {
+      // Reset to empty when switching characters
+      setAssignedAliases(Array(8).fill(null));
+    }
+  }, [characterName]);
 
   // Load maps.json on mount
   useEffect(() => {
@@ -579,6 +602,22 @@ function App() {
     console.log('Skill configuration saved:', { assigned: newAssigned, openers: newOpeners });
   };
 
+  /*
+    Intent: Save configured aliases to state and persist to character-specific localStorage.
+    Inputs: newAliases - array of 8 alias objects or nulls from AliasAssign modal.
+    Outputs: Updates assignedAliases state and saves to localStorage with character-specific key.
+    Preconditions: newAliases should be properly formatted array, characterName should be set.
+    Postconditions: Aliases are available for AliasBar to render and localStorage is updated per character.
+  */
+  const handleSaveAliases = (newAliases) => {
+    setAssignedAliases(newAliases);
+    if (characterName) {
+      const aliasKey = `dd4_aliases_${characterName}`;
+      localStorage.setItem(aliasKey, JSON.stringify(newAliases));
+      console.log('Alias configuration saved for', characterName, ':', newAliases);
+    }
+  };
+
   return (
     <div className="app">
       <header className="app-header">
@@ -662,6 +701,12 @@ function App() {
         onCommand={sendCommand}
       />
 
+      <AliasBar
+        aliases={assignedAliases}
+        onOpenSettings={() => setShowAliasModal(true)}
+        onExecuteCommand={sendCommand}
+      />
+
       {showSkillAssign && (
         <SkillAssign
           skills={skills}
@@ -671,6 +716,14 @@ function App() {
           onClose={() => setShowSkillAssign(false)}
           characterName={characterName}
           room={room}
+        />
+      )}
+
+      {showAliasModal && (
+        <AliasAssign
+          currentAliases={assignedAliases}
+          onSave={handleSaveAliases}
+          onClose={() => setShowAliasModal(false)}
         />
       )}
 

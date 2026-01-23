@@ -95,7 +95,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 1rem 1rem 170px 1rem;
   overflow: hidden;
   position: relative; /* For sticky child positioning context */
 }

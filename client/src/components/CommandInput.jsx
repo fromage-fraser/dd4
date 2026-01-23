@@ -58,8 +58,20 @@ function CommandInput({ onSubmit, connected }) {
       setHistoryIndex(-1);
     }
 
-    // Send the command (may be empty string or repeated history entry)
-    onSubmit(toSend);
+    // Split by semicolon for multi-command support
+    const commands = toSend.split(';').map(cmd => cmd.trim()).filter(cmd => cmd.length > 0);
+    
+    // Send each command with a delay to allow server to process and respond
+    if (commands.length > 0) {
+      commands.forEach((cmd, index) => {
+        setTimeout(() => {
+          onSubmit(cmd);
+        }, index * 150); // 150ms delay between each command
+      });
+    } else if (toSend === '') {
+      // If no commands after split, send empty string (for login prompts)
+      onSubmit(toSend);
+    }
 
     // Keep the last command visible in the input and select it so
     // typing replaces it and Enter will resend it. On mobile, we
@@ -121,6 +133,7 @@ function CommandInput({ onSubmit, connected }) {
         autoCorrect="off"
         autoCapitalize="off"
         spellCheck="false"
+        maxLength={100}
       />
       <button type="submit" disabled={!connected}>
         Send
