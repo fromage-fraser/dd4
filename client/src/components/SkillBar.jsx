@@ -234,9 +234,13 @@ function SkillBar({ skills, assignedSkills, onUseSkill, onAssignClick, connected
               
               {skill ? (
                 <>
-                  <div className="skill-icon">{skill.type === 'spell' ? '🔮' : '⚔️'}</div>
                   <div className="skill-name">{skill.name}</div>
-                  <div className="skill-mana">{skill.mana > 0 ? `${skill.mana}m` : ''}</div>
+                  <div className="skill-meta">
+                    {skill.mana > 0 && <span className="skill-mana">{skill.mana}m</span>}
+                    {isOnCooldown && (
+                      <span className="skill-cd">{Math.ceil((cooldown.endTime - Date.now()) / 1000)}s</span>
+                    )}
+                  </div>
                   
                   {/* Target display */}
                   {targetInfo.target && (
@@ -257,9 +261,6 @@ function SkillBar({ skills, assignedSkills, onUseSkill, onAssignClick, connected
                         className="cooldown-progress" 
                         style={{ height: `${100 - progress}%` }}
                       />
-                      <div className="cooldown-text">
-                        {Math.ceil((cooldown.endTime - Date.now()) / 1000)}s
-                      </div>
                     </div>
                   )}
                 </>
