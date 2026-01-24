@@ -3471,6 +3471,13 @@ void disarm(CHAR_DATA *ch, CHAR_DATA *victim)
         else
                 obj_to_room(obj, victim->in_room);
 
+        /* Notify web clients of equipment update */
+        if (!IS_NPC(victim) && victim->desc)
+        {
+                extern void webgate_send_char_equipment_for_desc(DESCRIPTOR_DATA * d);
+                webgate_send_char_equipment_for_desc(victim->desc);
+        }
+
         check_group_bonus(ch);
 }
 

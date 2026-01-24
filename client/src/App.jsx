@@ -39,6 +39,9 @@ function App() {
   const [isFighting, setIsFighting] = useState(false); // Combat state
   const [opponent, setOpponent] = useState(null); // Current combat opponent name
   const [enemies, setEnemies] = useState([]); // Full array of combat enemies with HP/level
+  const [isDisarmed, setIsDisarmed] = useState(false); // Disarmed state during combat
+  const [disarmedWeapons, setDisarmedWeapons] = useState([]); // Array of weapon objects that were disarmed
+  const previousEquipment = useRef(null); // Track previous equipment state for disarm detection
   const [room, setRoom] = useState({ name: 'Unknown', description: '', exits: [], items: [], npcs: [] });
   const [messages, setMessages] = useState([]);
   const [skills, setSkills] = useState([]);
@@ -158,6 +161,52 @@ function App() {
   useEffect(() => {
     shopOpenRef.current = !!shopData;
   }, [shopData]);
+
+  /*
+    Intent: Detect when player is disarmed during combat by tracking equipment changes.
+    Compares current equipment state with previous state to identify weapon removal.
+    Inputs: equipment - current equipment GMCP data, isFighting - combat state
+    Outputs: Updates isDisarmed state and stores disarmed weapon info
+    Preconditions: Equipment data available from GMCP Char.Equipment messages
+    Postconditions: isDisarmed triggers recovery button display, disarmedWeapons stores weapon keywords
+  */
+  useEffect(() => {
+    if (!equipment) {
+      previousEquipment.current = equipment;
+      return;
+    }
+
+    // Only track disarms during combat
+    if (previousEquipment.current && isFighting) {
+      const weapons = [];
+      
+      // Check wield slot
+      if (previousEquipment.current.wield && !equipment.wield) {
+        weapons.push(previousEquipment.current.wield);
+      }
+      
+      // Check dual wield slot
+      if (previousEquipment.current.dual && !equipment.dual) {
+        weapons.push(previousEquipment.current.dual);
+      }
+      
+      // If weapons were lost during combat, mark as disarmed
+      if (weapons.length > 0) {
+        console.log('Disarmed! Lost weapons:', weapons);
+        setIsDisarmed(true);
+        setDisarmedWeapons(weapons);
+      }
+    }
+    
+    // Clear disarm state when weapons are re-equipped
+    if (isDisarmed && equipment.wield) {
+      console.log('Weapon re-equipped, clearing disarm state');
+      setIsDisarmed(false);
+      setDisarmedWeapons([]);
+    }
+    
+    previousEquipment.current = equipment;
+  }, [equipment, isFighting, isDisarmed]);
 
   // Connect to WebSocket gateway with reconnection logic
   useEffect(() => {
@@ -418,6 +467,25 @@ function App() {
         // Check for shopkeeper messages that should be shown in GUI
         if (data.channel === 'game' && data.message) {
           const msg = data.message.trim();
+          const msgLower = msg.toLowerCase();
+          
+          // Hybrid disarm detection: parse combat messages for instant button feedback
+          // Patterns: "DISARMS you", "weapon slips from your hands", "breaks your wrist"
+          if (isFighting && (msgLower.includes('disarm') && msgLower.includes('you')) ||
+              msgLower.includes('weapon slips from your hands') ||
+              msgLower.includes('weapon to fall') ||
+              msgLower.includes('breaks your wrist')) {
+            console.log('Disarm detected via message parsing:', msg);
+            // Mark as disarmed immediately; equipment update will provide weapon details
+            // Store current weapons before equipment update arrives
+            const weapons = [];
+            if (equipment?.wield) weapons.push(equipment.wield);
+            if (equipment?.dual) weapons.push(equipment.dual);
+            if (weapons.length > 0) {
+              setIsDisarmed(true);
+              setDisarmedWeapons(weapons);
+            }
+          }
 
           // Detect help output and surface it in the Practice modal
           if (msg.match(/help for/i) || msg.includes('Syntax:') || msg.match(/^Help for/i)) {
@@ -618,6 +686,39 @@ function App() {
     }
   };
 
+  /*
+    Intent: Recover disarmed weapons by sending get/wield commands for each weapon.
+    Executes recovery sequence for all disarmed weapons (handles dual-wielding).
+    Inputs: disarmedWeapons - array of weapon objects with keywords
+    Outputs: Sends commands to server, hides recovery button immediately
+    Preconditions: disarmedWeapons array populated with weapon data from GMCP
+    Postconditions: Commands sent to server, isDisarmed set to false (button fades)
+    Notes: Button hides immediately to handle edge case where mob picks up weapon.
+           Uses first keyword from weapon's keywords string for targeting.
+  */
+  const handleWeaponRecovery = () => {
+    if (!disarmedWeapons || disarmedWeapons.length === 0) {
+      console.warn('handleWeaponRecovery called with no disarmed weapons');
+      return;
+    }
+    
+    console.log('Recovering weapons:', disarmedWeapons);
+    
+    // Send get and wield commands for each disarmed weapon
+    disarmedWeapons.forEach(weapon => {
+      // Extract first keyword from keywords string
+      const keyword = weapon.keywords ? weapon.keywords.split(' ')[0] : weapon.name;
+      console.log(`Recovering weapon: ${weapon.name} using keyword: ${keyword}`);
+      sendCommand(`get ${keyword}`);
+      sendCommand(`wield ${keyword}`);
+    });
+    
+    // Hide button immediately after sending commands
+    // Handles edge case where another mob picks up weapon
+    setIsDisarmed(false);
+    setDisarmedWeapons([]);
+  };
+
   return (
     <div className="app">
       <header className="app-header">
@@ -667,7 +768,13 @@ function App() {
         </div>
 
         <div className="right-panel">
-          <EnemyStatus enemies={enemies} />
+          <EnemyStatus 
+            enemies={enemies} 
+            isDisarmed={isDisarmed}
+            disarmedWeapons={disarmedWeapons}
+            onRecoverWeapon={handleWeaponRecovery}
+            connected={connected}
+          />
           <RoomContents 
             items={room.items} 
             npcs={room.npcs} 

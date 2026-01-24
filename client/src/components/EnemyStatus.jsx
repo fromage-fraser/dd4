@@ -6,8 +6,9 @@ import './EnemyStatus.css';
  * EnemyStatus component displays real-time enemy combat status
  * Shows all opponents with health bars, level, and highlights primary target
  * Updates in real-time via GMCP Char.Enemies messages
+ * Displays weapon recovery button when player is disarmed during combat
  */
-function EnemyStatus({ enemies }) {
+function EnemyStatus({ enemies, isDisarmed, disarmedWeapons, onRecoverWeapon, connected }) {
   // Don't render if no enemies
   if (!enemies || enemies.length === 0) {
     return null;
@@ -61,6 +62,19 @@ function EnemyStatus({ enemies }) {
           </div>
         );
       })}
+      
+      {/* Disarm recovery button - appears when player is disarmed during combat */}
+      {isDisarmed && disarmedWeapons && disarmedWeapons.length > 0 && (
+        <button
+          className="recover-weapon-btn"
+          onClick={onRecoverWeapon}
+          disabled={!connected}
+          title={`Recover ${disarmedWeapons.map(w => w.name).join(' and ')}`}
+        >
+          <span className="recover-icon">⚔️</span>
+          <span className="recover-text">Recover Weapons</span>
+        </button>
+      )}
     </div>
   );
 }
