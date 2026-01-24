@@ -13,14 +13,16 @@ import './QuickActions.css';
  * - onOpenCharacterSheet: callback to open the character sheet modal
  * - onOpenSpellBook: callback to open the spell book modal
  * - onOpenSkillTree: callback to open the skill tree modal
+ * - onOpenConfigModal: callback to open the config/settings modal
  * 
  * Outputs: Rendered quick action button bar
  * 
  * Notes: Icons use emoji for universal compatibility. Can be replaced with
  *        icon library (FontAwesome, Material Icons) for more polished look.
  */
-function QuickActions({ onCommand, connected, onOpenCharacterSheet, onOpenSpellBook, onOpenSkillTree, status, room }) {
+function QuickActions({ onCommand, connected, onOpenCharacterSheet, onOpenSpellBook, onOpenSkillTree, onOpenConfigModal, status, room }) {
   const quickCommands = [
+    { label: '⚙️', text: 'Settings', action: 'config', color: '#607d8b' },
     { label: '👁️', text: 'Look', command: 'look', color: '#2196f3' },
     { label: '📋', text: 'Sheet', action: 'sheet', color: '#9c27b0' },
     { label: '📖', text: 'Spells', action: 'spellbook', color: '#673ab7' },
@@ -51,6 +53,11 @@ function QuickActions({ onCommand, connected, onOpenCharacterSheet, onOpenSpellB
       return;
     }
 
+    if (cmd.action === 'config') {
+      onOpenConfigModal();
+      return;
+    }
+
     onCommand(cmd.command);
   };
 
@@ -69,7 +76,7 @@ function QuickActions({ onCommand, connected, onOpenCharacterSheet, onOpenSpellB
         {quickCommands.map((cmd, idx) => (
           <button
             key={idx}
-            className="quick-action-btn"
+            className={`quick-action-btn ${cmd.action === 'config' ? 'settings-btn' : ''}`}
             style={{ borderColor: cmd.color }}
             onClick={() => handleClick(cmd)}
             disabled={!connected}

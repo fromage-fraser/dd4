@@ -3045,6 +3045,65 @@ void webgate_send_char_status(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
 }
 
 /*
+ * Intent: Send character configuration flags to web client via GMCP Char.Config message.
+ *
+ * Formats and sends all 16 player configuration options (autoexit, autoloot, etc.)
+ * as a JSON object with boolean values. This enables the web client settings modal
+ * to display and sync current config state without parsing ANSI text output.
+ *
+ * Inputs:
+ *   - web_desc: Target web client connection
+ *   - ch: Character whose config flags to send
+ *
+ * Outputs: None (GMCP message queued for send)
+ *
+ * Preconditions: web_desc is authenticated; ch is valid player character (not NPC)
+ * Postconditions: Char.Config message sent to client with all 16 config values
+ *
+ * Failure Behavior: Silently returns if web_desc, ch is NULL, connection not open, or ch is NPC
+ *
+ * Notes: Called when config modal opens and after each config change.
+ *        Booleans sent as 1/0 for JSON compatibility.
+ */
+void webgate_send_gmcp_char_config(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
+{
+    char json[MAX_STRING_LENGTH];
+
+    if (!web_desc || !ch || web_desc->state != WS_STATE_OPEN)
+        return;
+
+    if (IS_NPC(ch))
+        return;
+
+    snprintf(json, sizeof(json),
+             "{\"autoexit\":%d,\"autoloot\":%d,\"autosac\":%d,\"autocoin\":%d,"
+             "\"autowield\":%d,\"autolevel\":%d,\"blank\":%d,\"brief\":%d,"
+             "\"combine\":%d,\"prompt\":%d,\"ansi\":%d,\"gag\":%d,"
+             "\"quiet\":%d,\"alloweq\":%d,\"telnetga\":%d,\"tell\":%d}",
+             IS_SET(ch->act, PLR_AUTOEXIT) ? 1 : 0,
+             IS_SET(ch->act, PLR_AUTOLOOT) ? 1 : 0,
+             IS_SET(ch->act, PLR_AUTOSAC) ? 1 : 0,
+             IS_SET(ch->act, PLR_AUTOCOIN) ? 1 : 0,
+             IS_SET(ch->act, PLR_AUTOWIELD) ? 1 : 0,
+             IS_SET(ch->act, PLR_AUTOLEVEL) ? 1 : 0,
+             IS_SET(ch->act, PLR_BLANK) ? 1 : 0,
+             IS_SET(ch->act, PLR_BRIEF) ? 1 : 0,
+             IS_SET(ch->act, PLR_COMBINE) ? 1 : 0,
+             IS_SET(ch->act, PLR_PROMPT) ? 1 : 0,
+             IS_SET(ch->act, PLR_ANSI) ? 1 : 0,
+             ch->gag,
+             ch->silent_mode,
+             ch->pcdata->allow_look,
+             IS_SET(ch->act, PLR_TELNET_GA) ? 1 : 0,
+             !IS_SET(ch->act, PLR_NO_TELL) ? 1 : 0);
+
+    webgate_send_gmcp(web_desc, "Char.Config", json);
+
+    sprintf(log_buf, "WebGate: Sent Char.Config to %s", ch->name);
+    log_string(log_buf);
+}
+
+/*
  * Intent: Send real-time enemy combat status to web client via GMCP.
  *
  * Builds JSON array of all combatants with the player's primary target
@@ -3264,6 +3323,9 @@ void webgate_notify_gmcp_update(DESCRIPTOR_DATA *mud_desc)
 
             /* Send updated status - these change less frequently */
             webgate_send_char_status(web_desc, ch);
+
+            /* Send updated config - when config changes */
+            webgate_send_gmcp_char_config(web_desc, ch);
         }
     }
 }

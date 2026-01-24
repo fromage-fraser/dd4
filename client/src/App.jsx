@@ -21,6 +21,7 @@ import MapModal from './components/MapModal';
 import SpellBookModal from './components/SpellBookModal';
 import HelpModal from './components/HelpModal';
 import SkillTreeModal from './components/SkillTreeModal';
+import ConfigModal from './components/ConfigModal';
 
 /**
  * Main application component for DD4 Web Client
@@ -79,6 +80,8 @@ function App() {
   const [currentMap, setCurrentMap] = useState(null); // Current area's map data
   const [showMapModal, setShowMapModal] = useState(false); // Store detailed item info keyed by item name
   const [helpContent, setHelpContent] = useState(null);
+  const [configOptions, setConfigOptions] = useState(null); // Config state from server (Char.Config GMCP)
+  const [showConfigModal, setShowConfigModal] = useState(false);
   const ws = useRef(null);
   const reconnectTimeoutRef = useRef(null);
   const reconnectAttemptRef = useRef(0); // Use ref to track attempts for closure issues
@@ -609,6 +612,12 @@ function App() {
         }
         break;
       
+      case 'Char.Config':
+        // Handle config update from server
+        console.log('Char.Config received:', data);
+        setConfigOptions(data);
+        break;
+      
       case 'Shop.Inventory':
         // Handle shop inventory
         console.log('Shop.Inventory received:', data);
@@ -918,6 +927,10 @@ function App() {
               refreshSkillTree();
               setShowSkillTree(true);
             }}
+            onOpenConfigModal={() => {
+              sendCommand('config');
+              setShowConfigModal(true);
+            }}
           />
         </div>
         <div className="header-right">
@@ -1136,6 +1149,15 @@ function App() {
           services={healerData.services}
           onClose={() => setHealerData(null)}
           onBuyService={sendCommand}
+          connected={connected}
+        />
+      )}
+
+      {showConfigModal && (
+        <ConfigModal
+          configOptions={configOptions}
+          onCommand={sendCommand}
+          onClose={() => setShowConfigModal(false)}
           connected={connected}
         />
       )}

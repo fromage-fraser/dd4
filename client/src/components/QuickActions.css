@@ -103,6 +103,10 @@
   border-color: #333;
 }
 
+.quick-action-btn.settings-btn {
+  margin-right: 1rem;
+}
+
 /* Mobile optimizations */
 @media (max-width: 768px) {
   .quick-actions {

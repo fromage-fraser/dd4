@@ -5084,6 +5084,10 @@ void do_config(CHAR_DATA *ch, char *argument)
                                  ? "<6>[<40>+<0><556>TELL<0>     <6>]<0> You receive tells.\n\r"
                                  : "<6>[<196>-<0><246>tell<0>     <6>]<0> You don't hear tells.\n\r",
                              ch);
+
+                /* Send config to web clients when displaying config */
+                if (ch->desc)
+                        webgate_notify_gmcp_update(ch->desc);
         }
         else
         {
@@ -5145,6 +5149,47 @@ void do_config(CHAR_DATA *ch, char *argument)
                         buf[0] = UPPER(buf[0]);
                         send_to_char(buf, ch);
                 }
+
+                /* Send GMCP update to telnet clients */
+                if (ch->desc && ch->desc->pProtocol && ch->desc->pProtocol->bGMCP)
+                {
+                        GMCP_VARIABLE var = GMCP_NULL;
+
+                        /* Map bit to GMCP variable */
+                        if (bit == PLR_AUTOEXIT)
+                                var = GMCP_CONFIG_AUTOEXIT;
+                        else if (bit == PLR_AUTOLOOT)
+                                var = GMCP_CONFIG_AUTOLOOT;
+                        else if (bit == PLR_AUTOSAC)
+                                var = GMCP_CONFIG_AUTOSAC;
+                        else if (bit == PLR_AUTOCOIN)
+                                var = GMCP_CONFIG_AUTOCOIN;
+                        else if (bit == PLR_AUTOWIELD)
+                                var = GMCP_CONFIG_AUTOWIELD;
+                        else if (bit == PLR_AUTOLEVEL)
+                                var = GMCP_CONFIG_AUTOLEVEL;
+                        else if (bit == PLR_BLANK)
+                                var = GMCP_CONFIG_BLANK;
+                        else if (bit == PLR_BRIEF)
+                                var = GMCP_CONFIG_BRIEF;
+                        else if (bit == PLR_COMBINE)
+                                var = GMCP_CONFIG_COMBINE;
+                        else if (bit == PLR_PROMPT)
+                                var = GMCP_CONFIG_PROMPT;
+                        else if (bit == PLR_ANSI)
+                                var = GMCP_CONFIG_ANSI;
+                        else if (bit == PLR_TELNET_GA)
+                                var = GMCP_CONFIG_TELNETGA;
+
+                        if (var != GMCP_NULL)
+                        {
+                                UpdateGMCPNumber(ch->desc, var, fSet ? 1 : 0);
+                                SendUpdatedGMCP(ch->desc);
+                        }
+                }
+
+                /* Send config update to web clients */
+                webgate_notify_gmcp_update(ch->desc);
         }
 
         return;

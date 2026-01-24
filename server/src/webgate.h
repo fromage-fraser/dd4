@@ -378,6 +378,22 @@ void webgate_pulse(void);
 void webgate_send_char_vitals(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch);
 
 /*
+ * Intent: Send character configuration flags to web client via GMCP.
+ *
+ * Inputs:
+ *   - web_desc - Web client descriptor
+ *   - ch - Character whose config to send
+ *
+ * Outputs: Char.Config GMCP message sent to client
+ *
+ * Preconditions: ch must be valid player character (not NPC)
+ * Postconditions: Client receives JSON object with all 16 config boolean values
+ *
+ * Notes: Called when config modal opens and after each config change
+ */
+void webgate_send_gmcp_char_config(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch);
+
+/*
  * Intent: Send real-time enemy combat status to web client via GMCP.
  *
  * Inputs:

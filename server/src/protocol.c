@@ -3108,6 +3108,7 @@ const struct gmcp_package_struct GMCPPackageTable[GMCP_PACKAGE_MAX + 1] =
         {GMCP_ITEMS, GMCP_SUPPORT_CHAR, "Char", "Items"},
         {GMCP_ENEMIES, GMCP_SUPPORT_CHAR, "Char", "Enemies"},
         {GMCP_ROOM, GMCP_SUPPORT_ROOM, "Room", "Info"},
+        {GMCP_CONFIG, GMCP_SUPPORT_CHAR, "Char", "Config"},
         {GMCP_PACKAGE_MAX, -1, "", ""}
 
 };
@@ -3191,6 +3192,22 @@ const struct gmcp_variable_struct GMCPVariableTable[GMCP_MAX + 1] =
         {GMCP_ROOM_FLAGS, GMCP_ROOM, "flags", GMCP_STRING},
         {GMCP_ROOM_VNUM, GMCP_ROOM, "vnum", GMCP_NUMBER},
         {GMCP_ROOM_EXITS, GMCP_ROOM, "exits", GMCP_OBJECT},
+        {GMCP_CONFIG_AUTOEXIT, GMCP_CONFIG, "autoexit", GMCP_NUMBER},
+        {GMCP_CONFIG_AUTOLOOT, GMCP_CONFIG, "autoloot", GMCP_NUMBER},
+        {GMCP_CONFIG_AUTOSAC, GMCP_CONFIG, "autosac", GMCP_NUMBER},
+        {GMCP_CONFIG_AUTOCOIN, GMCP_CONFIG, "autocoin", GMCP_NUMBER},
+        {GMCP_CONFIG_AUTOWIELD, GMCP_CONFIG, "autowield", GMCP_NUMBER},
+        {GMCP_CONFIG_AUTOLEVEL, GMCP_CONFIG, "autolevel", GMCP_NUMBER},
+        {GMCP_CONFIG_BLANK, GMCP_CONFIG, "blank", GMCP_NUMBER},
+        {GMCP_CONFIG_BRIEF, GMCP_CONFIG, "brief", GMCP_NUMBER},
+        {GMCP_CONFIG_COMBINE, GMCP_CONFIG, "combine", GMCP_NUMBER},
+        {GMCP_CONFIG_PROMPT, GMCP_CONFIG, "prompt", GMCP_NUMBER},
+        {GMCP_CONFIG_ANSI, GMCP_CONFIG, "ansi", GMCP_NUMBER},
+        {GMCP_CONFIG_GAG, GMCP_CONFIG, "gag", GMCP_NUMBER},
+        {GMCP_CONFIG_QUIET, GMCP_CONFIG, "quiet", GMCP_NUMBER},
+        {GMCP_CONFIG_ALLOWEQ, GMCP_CONFIG, "alloweq", GMCP_NUMBER},
+        {GMCP_CONFIG_TELNETGA, GMCP_CONFIG, "telnetga", GMCP_NUMBER},
+        {GMCP_CONFIG_TELL, GMCP_CONFIG, "tell", GMCP_NUMBER},
         {GMCP_MAX, -1, "", GMCP_NUMBER}
 
 };
