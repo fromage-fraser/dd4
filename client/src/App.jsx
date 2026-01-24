@@ -33,6 +33,8 @@ function App() {
   const [connected, setConnected] = useState(false);
   const [reconnecting, setReconnecting] = useState(false);
   const [reconnectAttempt, setReconnectAttempt] = useState(0);
+  const [connectionError, setConnectionError] = useState(null);
+  const [showQuitConfirm, setShowQuitConfirm] = useState(false);
   const [vitals, setVitals] = useState({ hp: 100, maxhp: 100, mana: 100, maxmana: 100, move: 100, maxmove: 100 });
   const [status, setStatus] = useState(null);
   const [characterName, setCharacterName] = useState(null); // Character name for localStorage keys
@@ -42,6 +44,8 @@ function App() {
   const [isDisarmed, setIsDisarmed] = useState(false); // Disarmed state during combat
   const [disarmedWeapons, setDisarmedWeapons] = useState([]); // Array of weapon objects that were disarmed
   const previousEquipment = useRef(null); // Track previous equipment state for disarm detection
+  const isManualDisconnect = useRef(false); // Track if disconnect was user-initiated
+  const isQuitting = useRef(false); // Track if user is intentionally quitting to show login again
   const [room, setRoom] = useState({ name: 'Unknown', description: '', exits: [], items: [], npcs: [] });
   const [messages, setMessages] = useState([]);
   const [skills, setSkills] = useState([]);
@@ -209,23 +213,34 @@ function App() {
   }, [equipment, isFighting, isDisarmed]);
 
   // Connect to WebSocket gateway with reconnection logic
-  useEffect(() => {
-    const connectWebSocket = () => {
-      // Connect to the WebSocket gateway
-      // In production, this should be configurable
-      const wsUrl = 'ws://localhost:8080';
-      
-      try {
-        console.log('Connecting to WebSocket...');
-        ws.current = new WebSocket(wsUrl);
+  const connectWebSocket = () => {
+    // Connection state guard - prevent duplicate connections
+    if (ws.current && ws.current.readyState === WebSocket.CONNECTING) {
+      console.log('Connection already in progress, skipping...');
+      return;
+    }
+    if (ws.current && ws.current.readyState === WebSocket.OPEN) {
+      console.log('Already connected, skipping...');
+      return;
+    }
+    
+    // Connect to the WebSocket gateway
+    // In production, this should be configurable
+    const wsUrl = 'ws://localhost:8080';
+    
+    try {
+      console.log('Connecting to WebSocket...');
+      ws.current = new WebSocket(wsUrl);
 
-        ws.current.onopen = () => {
-          console.log('Connected to DD4 WebSocket Gateway');
-          setConnected(true);
-          setReconnecting(false);
-          setReconnectAttempt(0);
-          reconnectAttemptRef.current = 0; // Reset ref
-          addMessage('Connected to Dragons Domain IV', 'system');
+      ws.current.onopen = () => {
+        console.log('Connected to DD4 WebSocket Gateway');
+        setConnected(true);
+        setReconnecting(false);
+        setReconnectAttempt(0);
+        reconnectAttemptRef.current = 0; // Reset ref
+        setConnectionError(null); // Clear any previous errors
+        isManualDisconnect.current = false; // Reset manual disconnect flag
+        addMessage('Connected to Dragons Domain IV', 'system');
           
           // Note: Client doesn't need to send PINGs
           // Browser automatically responds to server PINGs with PONGs per RFC-6455
@@ -250,25 +265,60 @@ function App() {
           }
         };
 
-        ws.current.onerror = (error) => {
-          console.error('WebSocket error:', error);
-          addMessage('Connection error occurred', 'error');
-        };
+      ws.current.onerror = (error) => {
+        console.error('WebSocket error:', error);
+        const errorMsg = 'Connection error occurred';
+        setConnectionError(errorMsg);
+        addMessage(errorMsg, 'error');
+      };
 
-        ws.current.onclose = (event) => {
-          console.log('Disconnected from WebSocket', event);
-          setConnected(false);
+      ws.current.onclose = (event) => {
+        console.log('Disconnected from WebSocket', event);
+        setConnected(false);
+        
+        // If user quit intentionally, clear state and reconnect immediately to show login
+        if (isQuitting.current) {
+          console.log('Quit detected, clearing state and reconnecting...');
+          isQuitting.current = false;
           
+          // Clear game state
+          setCharacterName(null);
+          setMessages([]);
+          setRoom({ name: 'Unknown', description: '', exits: [], items: [], npcs: [] });
+          setVitals({ hp: 100, maxhp: 100, mana: 100, maxmana: 100, move: 100, maxmove: 100 });
+          setStatus(null);
+          setIsFighting(false);
+          setOpponent(null);
+          setEnemies([]);
+          
+          // Reconnect immediately to show login prompt
+          reconnectAttemptRef.current = 0;
+          setReconnectAttempt(0);
+          setReconnecting(true);
+          setConnectionError(null);
+          
+          setTimeout(() => {
+            console.log('Reconnecting after quit...');
+            connectWebSocket();
+          }, 500); // Small delay for cleanup
+          return;
+        }
+        
+        // Only auto-reconnect on connection errors, not manual disconnects
+        // Stop after 5 failed attempts
+        const currentAttempt = reconnectAttemptRef.current;
+        const maxAttempts = 5;
+        
+        if (!isManualDisconnect.current && currentAttempt < maxAttempts) {
           // Attempt to reconnect with exponential backoff
           // Delay: 1s, 2s, 4s, 8s, 16s, max 30s
-          const currentAttempt = reconnectAttemptRef.current;
           const delay = Math.min(1000 * Math.pow(2, currentAttempt), 30000);
           setReconnecting(true);
           setReconnectAttempt(currentAttempt + 1);
           reconnectAttemptRef.current = currentAttempt + 1; // Update ref
           
           const delaySeconds = (delay / 1000).toFixed(0);
-          addMessage(`Disconnected. Reconnecting in ${delaySeconds}s... (attempt ${currentAttempt + 1})`, 'system');
+          addMessage(`Disconnected. Reconnecting in ${delaySeconds}s... (attempt ${currentAttempt + 1}/${maxAttempts})`, 'system');
           
           if (reconnectTimeoutRef.current) {
             clearTimeout(reconnectTimeoutRef.current);
@@ -278,12 +328,28 @@ function App() {
             console.log(`Reconnection attempt ${reconnectAttemptRef.current}`);
             connectWebSocket();
           }, delay);
-        };
-      } catch (err) {
-        console.error('Failed to create WebSocket:', err);
+        } else {
+          // Manual disconnect or max attempts reached
+          setReconnecting(false);
+          if (currentAttempt >= maxAttempts && !isManualDisconnect.current) {
+            const errorMsg = 'Max reconnection attempts reached. Please reconnect manually.';
+            setConnectionError(errorMsg);
+            addMessage(errorMsg, 'error');
+          } else if (isManualDisconnect.current) {
+            addMessage('Disconnected from server', 'system');
+          }
+        }
+      };
+    } catch (err) {
+      console.error('Failed to create WebSocket:', err);
+      const errorMsg = `Failed to create WebSocket: ${err.message}`;
+      setConnectionError(errorMsg);
+      
+      const currentAttempt = reconnectAttemptRef.current;
+      const maxAttempts = 5;
+      
+      if (currentAttempt < maxAttempts) {
         setReconnecting(true);
-        
-        const currentAttempt = reconnectAttemptRef.current;
         const delay = Math.min(1000 * Math.pow(2, currentAttempt), 30000);
         reconnectAttemptRef.current = currentAttempt + 1;
         setReconnectAttempt(currentAttempt + 1);
@@ -291,9 +357,14 @@ function App() {
         reconnectTimeoutRef.current = setTimeout(() => {
           connectWebSocket();
         }, delay);
+      } else {
+        setReconnecting(false);
+        addMessage('Max reconnection attempts reached', 'error');
       }
-    };
+    }
+  };
 
+  useEffect(() => {
     connectWebSocket();
 
     // Cleanup on unmount
@@ -302,10 +373,117 @@ function App() {
         clearTimeout(reconnectTimeoutRef.current);
       }
       if (ws.current) {
+        // Remove event handlers before closing to prevent reconnection
+        ws.current.onclose = null;
+        ws.current.onerror = null;
         ws.current.close();
+        ws.current = null;
       }
     };
   }, []);
+
+  /**
+   * Handle manual reconnection triggered by user
+   * Resets connection state and attempts fresh connection
+   */
+  const handleManualReconnect = () => {
+    console.log('Manual reconnect triggered');
+    
+    // Clear any pending reconnect timeouts
+    if (reconnectTimeoutRef.current) {
+      clearTimeout(reconnectTimeoutRef.current);
+      reconnectTimeoutRef.current = null;
+    }
+    
+    // Reset connection state
+    setReconnectAttempt(0);
+    reconnectAttemptRef.current = 0;
+    setConnectionError(null);
+    setReconnecting(true);
+    isManualDisconnect.current = false;
+    
+    // Close existing connection if any
+    if (ws.current) {
+      ws.current.onclose = null; // Prevent reconnection logic
+      ws.current.onerror = null;
+      ws.current.close();
+      ws.current = null;
+    }
+    
+    // Attempt new connection
+    addMessage('Manually reconnecting...', 'system');
+    setTimeout(() => {
+      connectWebSocket();
+    }, 100);
+  };
+
+  /**
+   * Handle quit button - shows confirmation dialog
+   */
+  const handleQuit = () => {
+    setShowQuitConfirm(true);
+  };
+
+  /**
+   * Confirm and execute quit command
+   * Sends quit command to server and lets server close connection
+   * After disconnect, will clear state and reconnect to show login
+   */
+  const confirmQuit = () => {
+    console.log('Quit confirmed');
+    setShowQuitConfirm(false);
+    
+    if (ws.current && ws.current.readyState === WebSocket.OPEN) {
+      // Send quit command to server - let server close the connection
+      sendCommand('quit');
+      
+      // Set quitting flag so we know to reconnect after disconnect
+      isQuitting.current = true;
+      isManualDisconnect.current = false; // Allow reconnect after quit
+      
+      addMessage('Logging out...', 'system');
+      
+      // Fallback: If server doesn't close connection within 3 seconds, force close from client
+      setTimeout(() => {
+        if (isQuitting.current && ws.current && ws.current.readyState === WebSocket.OPEN) {
+          console.log('Server did not close connection, forcing close from client');
+          
+          // Remove event handlers to prevent double-firing
+          ws.current.onclose = null;
+          ws.current.onerror = null;
+          
+          // Close the connection
+          ws.current.close();
+          ws.current = null;
+          
+          // Manually trigger the quit cleanup and reconnect
+          isQuitting.current = false;
+          setConnected(false);
+          
+          // Clear game state
+          setCharacterName(null);
+          setMessages([]);
+          setRoom({ name: 'Unknown', description: '', exits: [], items: [], npcs: [] });
+          setVitals({ hp: 100, maxhp: 100, mana: 100, maxmana: 100, move: 100, maxmove: 100 });
+          setStatus(null);
+          setIsFighting(false);
+          setOpponent(null);
+          setEnemies([]);
+          
+          // Reconnect immediately to show login prompt
+          reconnectAttemptRef.current = 0;
+          setReconnectAttempt(0);
+          setReconnecting(true);
+          setConnectionError(null);
+          
+          setTimeout(() => {
+            console.log('Reconnecting after forced close...');
+            connectWebSocket();
+          }, 500);
+        }
+      }, 3000);
+    }
+  };
 
   /**
    * Handle incoming GMCP messages from the server
@@ -746,8 +924,42 @@ function App() {
           <div className={`status ${connected ? 'connected' : reconnecting ? 'reconnecting' : 'disconnected'}`}>
             {connected ? '● Connected' : reconnecting ? '○ Reconnecting...' : '○ Disconnected'}
           </div>
+          {!connected && (
+            <button 
+              className={`reconnect-btn ${reconnecting ? 'reconnecting' : ''}`}
+              onClick={handleManualReconnect}
+              disabled={reconnecting}
+            >
+              {reconnecting ? '🔄 Reconnecting...' : '🔄 Reconnect'}
+            </button>
+          )}
+          {connected && (
+            <button className="quit-btn" onClick={handleQuit}>
+              ⏻ Quit
+            </button>
+          )}
         </div>
       </header>
+
+      {connectionError && (
+        <div className="error-banner">
+          <span className="error-message">{connectionError}</span>
+          <button className="dismiss-btn" onClick={() => setConnectionError(null)}>✕</button>
+        </div>
+      )}
+
+      {showQuitConfirm && (
+        <div className="modal-overlay" onClick={() => setShowQuitConfirm(false)}>
+          <div className="quit-confirm-modal" onClick={(e) => e.stopPropagation()}>
+            <h3>Confirm Logout</h3>
+            <p>Continue to logout.</p>
+            <div className="modal-actions">
+              <button className="cancel-btn" onClick={() => setShowQuitConfirm(false)}>Cancel</button>
+              <button className="confirm-btn" onClick={confirmQuit}>Logout</button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="app-content">
         <div className="left-panel">

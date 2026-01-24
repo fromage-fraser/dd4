@@ -33,6 +33,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  gap: 0.5rem;
 }
 
 .app-header h1 {
@@ -72,6 +73,197 @@
   50% {
     opacity: 0.6;
   }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Connection control buttons */
+.reconnect-btn,
+.quit-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.reconnect-btn {
+  background-color: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+  border: 1px solid #4caf50;
+}
+
+.reconnect-btn:hover:not(:disabled) {
+  background-color: rgba(76, 175, 80, 0.3);
+  transform: translateY(-1px);
+}
+
+.reconnect-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.reconnect-btn.reconnecting {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.quit-btn {
+  background-color: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
+  border: 1px solid #ff6b6b;
+}
+
+.quit-btn:hover {
+  background-color: rgba(255, 107, 107, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Error banner */
+.error-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: rgba(255, 107, 107, 0.15);
+  border-bottom: 2px solid #ff6b6b;
+  color: #ff6b6b;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.error-message {
+  flex: 1;
+  font-size: 0.95rem;
+}
+
+.dismiss-btn {
+  background: none;
+  border: none;
+  color: #ff6b6b;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  transition: opacity 0.2s;
+}
+
+.dismiss-btn:hover {
+  opacity: 0.7;
+}
+
+/* Quit confirmation modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.quit-confirm-modal {
+  background-color: #2a2a2a;
+  border: 2px solid #444;
+  border-radius: 8px;
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  animation: scaleIn 0.2s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.quit-confirm-modal h3 {
+  margin: 0 0 1rem 0;
+  color: #ff6b6b;
+  font-size: 1.3rem;
+}
+
+.quit-confirm-modal p {
+  margin: 0 0 1.5rem 0;
+  color: #e0e0e0;
+  font-size: 1rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.cancel-btn,
+.confirm-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.cancel-btn {
+  background-color: rgba(128, 128, 128, 0.2);
+  color: #e0e0e0;
+  border: 1px solid #666;
+}
+
+.cancel-btn:hover {
+  background-color: rgba(128, 128, 128, 0.3);
+  transform: translateY(-1px);
+}
+
+.confirm-btn {
+  background-color: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
+  border: 1px solid #ff6b6b;
+}
+
+.confirm-btn:hover {
+  background-color: rgba(255, 107, 107, 0.3);
+  transform: translateY(-1px);
 }
 
 .app-content {
