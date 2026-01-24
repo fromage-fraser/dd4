@@ -187,7 +187,7 @@ function App() {
     if (previousEquipment.current && isFighting) {
       const weapons = [];
       
-      // Check wield slot
+      // Check wield slot - only detect if transitioning from equipped to not equipped
       if (previousEquipment.current.wield && !equipment.wield) {
         weapons.push(previousEquipment.current.wield);
       }
@@ -197,23 +197,27 @@ function App() {
         weapons.push(previousEquipment.current.dual);
       }
       
-      // If weapons were lost during combat, mark as disarmed
+      // If weapons were lost during combat, add to disarmed list
       if (weapons.length > 0) {
-        console.log('Disarmed! Lost weapons:', weapons);
         setIsDisarmed(true);
-        setDisarmedWeapons(weapons);
+        setDisarmedWeapons(prevWeapons => {
+          // Add newly disarmed weapons to existing list (handles multiple disarms)
+          const existing = prevWeapons || [];
+          // Only add if not already in the list (prevents duplicates from rapid updates)
+          const newWeapons = weapons.filter(w => 
+            !existing.some(e => e.keywords === w.keywords)
+          );
+          if (newWeapons.length > 0) {
+            return [...existing, ...newWeapons];
+          }
+          return existing;
+        });
       }
     }
     
-    // Clear disarm state when weapons are re-equipped
-    if (isDisarmed && equipment.wield) {
-      console.log('Weapon re-equipped, clearing disarm state');
-      setIsDisarmed(false);
-      setDisarmedWeapons([]);
-    }
-    
+    // Always update previous equipment to track state properly
     previousEquipment.current = equipment;
-  }, [equipment, isFighting, isDisarmed]);
+  }, [equipment, isFighting]);
 
   // Connect to WebSocket gateway with reconnection logic
   const connectWebSocket = () => {
@@ -656,21 +660,49 @@ function App() {
           const msg = data.message.trim();
           const msgLower = msg.toLowerCase();
           
-          // Hybrid disarm detection: parse combat messages for instant button feedback
+          // Primary disarm detection: parse combat messages
           // Patterns: "DISARMS you", "weapon slips from your hands", "breaks your wrist"
-          if (isFighting && (msgLower.includes('disarm') && msgLower.includes('you')) ||
+          if (isFighting && ((msgLower.includes('disarm') && msgLower.includes('you')) ||
               msgLower.includes('weapon slips from your hands') ||
               msgLower.includes('weapon to fall') ||
-              msgLower.includes('breaks your wrist')) {
-            console.log('Disarm detected via message parsing:', msg);
-            // Mark as disarmed immediately; equipment update will provide weapon details
-            // Store current weapons before equipment update arrives
+              msgLower.includes('breaks your wrist'))) {
+            
+            // Use previousEquipment if available (more reliable), fallback to current equipment
+            const weaponSource = previousEquipment.current || equipment;
+            
             const weapons = [];
-            if (equipment?.wield) weapons.push(equipment.wield);
-            if (equipment?.dual) weapons.push(equipment.dual);
+            if (weaponSource?.wield) {
+              weapons.push(weaponSource.wield);
+            }
+            if (weaponSource?.dual) {
+              weapons.push(weaponSource.dual);
+            }
+            
             if (weapons.length > 0) {
               setIsDisarmed(true);
-              setDisarmedWeapons(weapons);
+              setDisarmedWeapons(prevWeapons => {
+                const existing = prevWeapons || [];
+                // Add weapons that aren't already in the list
+                const newWeapons = weapons.filter(w => 
+                  !existing.some(e => e.keywords === w.keywords)
+                );
+                if (newWeapons.length > 0) {
+                  // Update previousEquipment to reflect the weapon was there
+                  // This helps subsequent disarm detection
+                  if (previousEquipment.current) {
+                    newWeapons.forEach(w => {
+                      if (w.keywords === weaponSource?.wield?.keywords) {
+                        previousEquipment.current.wield = w;
+                      }
+                      if (w.keywords === weaponSource?.dual?.keywords) {
+                        previousEquipment.current.dual = w;
+                      }
+                    });
+                  }
+                  return [...existing, ...newWeapons];
+                }
+                return existing;
+              });
             }
           }
 
@@ -874,36 +906,35 @@ function App() {
   };
 
   /*
-    Intent: Recover disarmed weapons by sending get/wield commands for each weapon.
-    Executes recovery sequence for all disarmed weapons (handles dual-wielding).
-    Inputs: disarmedWeapons - array of weapon objects with keywords
-    Outputs: Sends commands to server, hides recovery button immediately
-    Preconditions: disarmedWeapons array populated with weapon data from GMCP
-    Postconditions: Commands sent to server, isDisarmed set to false (button fades)
-    Notes: Button hides immediately to handle edge case where mob picks up weapon.
+    Intent: Handles individual weapon pickup after disarm during combat
+    Inputs: Single weapon object from disarmedWeapons array
+    Outputs: Sends 'get' command to server, removes weapon from disarmed list
+    Preconditions: weapon object with keywords or name property
+    Postconditions: Command sent, weapon removed from array, card disappears
+    Notes: Only sends 'get' command - auto-wield will handle wielding.
            Uses first keyword from weapon's keywords string for targeting.
+           Removes individual weapon from array (not all weapons).
   */
-  const handleWeaponRecovery = () => {
-    if (!disarmedWeapons || disarmedWeapons.length === 0) {
-      console.warn('handleWeaponRecovery called with no disarmed weapons');
+  const handleWeaponRecovery = (weapon) => {
+    if (!weapon) {
       return;
     }
     
-    console.log('Recovering weapons:', disarmedWeapons);
+    // Extract first keyword from keywords string
+    const keyword = weapon.keywords ? weapon.keywords.split(' ')[0] : weapon.name;
     
-    // Send get and wield commands for each disarmed weapon
-    disarmedWeapons.forEach(weapon => {
-      // Extract first keyword from keywords string
-      const keyword = weapon.keywords ? weapon.keywords.split(' ')[0] : weapon.name;
-      console.log(`Recovering weapon: ${weapon.name} using keyword: ${keyword}`);
-      sendCommand(`get ${keyword}`);
-      sendCommand(`wield ${keyword}`);
+    // Send only get command - auto-wield will handle wielding
+    sendCommand(`get ${keyword}`);
+    
+    // Remove this specific weapon from disarmed list
+    setDisarmedWeapons(prevWeapons => {
+      const updated = prevWeapons.filter(w => w !== weapon);
+      // Clear disarmed state if no weapons left
+      if (updated.length === 0) {
+        setIsDisarmed(false);
+      }
+      return updated;
     });
-    
-    // Hide button immediately after sending commands
-    // Handles edge case where another mob picks up weapon
-    setIsDisarmed(false);
-    setDisarmedWeapons([]);
   };
 
   return (

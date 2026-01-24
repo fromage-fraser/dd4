@@ -63,17 +63,25 @@ function EnemyStatus({ enemies, isDisarmed, disarmedWeapons, onRecoverWeapon, co
         );
       })}
       
-      {/* Disarm recovery button - appears when player is disarmed during combat */}
+      {/* Disarm recovery - individual weapon cards for one-click pickup */}
       {isDisarmed && disarmedWeapons && disarmedWeapons.length > 0 && (
-        <button
-          className="recover-weapon-btn"
-          onClick={onRecoverWeapon}
-          disabled={!connected}
-          title={`Recover ${disarmedWeapons.map(w => w.name).join(' and ')}`}
-        >
-          <span className="recover-icon">⚔️</span>
-          <span className="recover-text">Recover Weapons</span>
-        </button>
+        <div className="disarmed-weapons-container">
+          {disarmedWeapons.map((weapon, index) => (
+            <button
+              key={index}
+              className="disarmed-weapon-card"
+              onClick={() => onRecoverWeapon(weapon)}
+              disabled={!connected}
+              title={`Pick up ${weapon.name}`}
+            >
+              <span 
+                className="weapon-name"
+                dangerouslySetInnerHTML={{ __html: parseAnsiToHtml(weapon.name) }}
+              />
+              <span className="hand-icon">🖐️</span>
+            </button>
+          ))}
+        </div>
       )}
     </div>
   );

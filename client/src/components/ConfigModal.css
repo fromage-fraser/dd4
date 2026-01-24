@@ -157,7 +157,9 @@
   border-radius: 50%;
   background: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transi
+  transition: transform 0.3s ease;
+}
+
 .config-toggle-switch.off .toggle-slider {
   transform: translateX(0);
 }
@@ -239,4 +241,5 @@ ap: 0.5rem;
   }
 
   .config-toggle-switch {
-    margin-left: auto
+    margin-left: auto;
+  }

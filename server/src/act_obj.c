@@ -877,7 +877,15 @@ void do_get(CHAR_DATA *ch, char *argument)
                                 if (!get_eq_char(ch, WEAR_WIELD) || (!get_eq_char(ch, WEAR_DUAL) && CAN_DO(ch, gsn_dual)))
                                 {
                                         if (!class || CAN_WEAR(class, ch->form, obj, ITEM_WIELD, BIT_WIELD))
+                                        {
                                                 wear_obj(ch, obj, TRUE);
+                                                /* Send GMCP equipment update after auto-wield */
+                                                if (ch->desc)
+                                                {
+                                                        extern void webgate_send_char_equipment_for_desc(DESCRIPTOR_DATA * d);
+                                                        webgate_send_char_equipment_for_desc(ch->desc);
+                                                }
+                                        }
                                 }
                         }
                 }
