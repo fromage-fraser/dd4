@@ -539,7 +539,8 @@ function App() {
       
       case 'Room.Info':
         setRoom(data);
-        addMessage(`You are in: ${data.name}`, 'room');
+        // Suppress "You are in:" messages to avoid spam during room updates
+        // addMessage(`You are in: ${data.name}`, 'room');
         
         // Match area name to map data
         console.log('Room.Info received, areaName:', data.areaName, 'mapsData loaded:', mapsData !== null);
