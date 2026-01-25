@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useImperativeHandle, forwardRef } from 'react';
 import './SkillTreeModal.css';
 
 /**
@@ -12,6 +12,9 @@ import './SkillTreeModal.css';
  * - skillTree: object with { available: [], locked: [] } from Char.SkillTree GMCP
  * - onClose: callback to close the modal
  * - onCommand: callback to execute MUD commands
+ * - onHelp: callback to request help for skills/groups
+ * - connected: boolean for connection status
+ * - ref: forwarded ref exposing showError(message) method
  * 
  * Outputs: Rendered skill tree visualization in modal
  * 
@@ -20,9 +23,20 @@ import './SkillTreeModal.css';
  * 
  * Notes: Prerequisites shown with → arrows; OR groups show alternatives
  */
-function SkillTreeModal({ skillTree, onClose, onCommand }) {
+const SkillTreeModal = forwardRef(({ skillTree, onClose, onCommand, onHelp, connected }, ref) => {
   const [filter, setFilter] = useState('all'); // 'all', 'available', 'locked'
   const [searchTerm, setSearchTerm] = useState('');
+  const [helpTimers, setHelpTimers] = useState({});
+  const [errorMessage, setErrorMessage] = useState('');
+
+  // Expose showError method to parent via ref
+  useImperativeHandle(ref, () => ({
+    showError: (message) => {
+      setErrorMessage(message);
+      // Auto-dismiss after 5 seconds
+      setTimeout(() => setErrorMessage(''), 5000);
+    }
+  }));
 
   console.log('SkillTreeModal rendered with skillTree:', skillTree);
 
@@ -154,6 +168,28 @@ function SkillTreeModal({ skillTree, onClose, onCommand }) {
     onCommand(`practice ${skillName}`);
   };
 
+  const handlePracticeGroup = (groupName) => {
+    // Practice the group skill (e.g., "practice evocation magiks")
+    onCommand(`practice ${groupName.toLowerCase()} magiks`);
+  };
+
+  const handleHelpClick = (itemName, itemId) => {
+    if (!connected || !onHelp) return;
+
+    if (helpTimers[itemId]) return;
+
+    const tid = setTimeout(() => {
+      onHelp(`help ${itemName}`);
+      setHelpTimers(prev => {
+        const copy = { ...prev };
+        delete copy[itemId];
+        return copy;
+      });
+    }, 500);
+
+    setHelpTimers(prev => ({ ...prev, [itemId]: tid }));
+  };
+
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
@@ -167,6 +203,14 @@ function SkillTreeModal({ skillTree, onClose, onCommand }) {
           <h2>🌳 Skill Tree</h2>
           <button className="skill-tree-close" onClick={onClose}>✕</button>
         </div>
+
+        {errorMessage && (
+          <div className="skill-tree-error-banner">
+            <span className="error-icon">⚠️</span>
+            <span className="error-text">{errorMessage}</span>
+            <button className="error-dismiss" onClick={() => setErrorMessage('')}>✕</button>
+          </div>
+        )}
 
         <div className="skill-tree-controls">
           <input
@@ -204,11 +248,38 @@ function SkillTreeModal({ skillTree, onClose, onCommand }) {
             const groupSkills = filteredGroups[groupName];
             const availableCount = groupSkills.filter(s => s.learned > 0).length;
             const lockedCount = groupSkills.filter(s => s.learned === 0).length;
+            
+            // Find the group skill itself (e.g., "evocation magiks")
+            const groupSkillName = `${groupName.toLowerCase()} magiks`;
+            const groupSkill = allSkills.find(s => s.name.toLowerCase() === groupSkillName);
 
             return (
               <div key={groupName} className="skill-group">
                 <h3 className="group-title">
-                  📚 {groupName} ({availableCount} / {groupSkills.length})
+                  <span>
+                    📚 {groupName} ({availableCount} / {groupSkills.length})
+                    {groupSkill && groupSkill.learned > 0 && (
+                      <span className="group-learned"> - {groupSkill.learned}%</span>
+                    )}
+                  </span>
+                  <div className="group-actions">
+                    <button
+                      className="help-button"
+                      onClick={() => handleHelpClick(`${groupName.toLowerCase()} magiks`, `group-${groupName}`)}
+                      disabled={!connected || Boolean(helpTimers[`group-${groupName}`])}
+                      title={`Show help for ${groupName} magiks`}
+                    >
+                      ?
+                    </button>
+                    <button
+                      className="practice-btn group-practice"
+                      onClick={() => handlePracticeGroup(groupName)}
+                      disabled={!connected}
+                      title={`Practice ${groupName} magiks`}
+                    >
+                      Practice
+                    </button>
+                  </div>
                 </h3>
                 <div className="skill-list">
                   {groupSkills.map((skill, idx) => (
@@ -217,10 +288,20 @@ function SkillTreeModal({ skillTree, onClose, onCommand }) {
                       className={`skill-card ${skill.learned > 0 ? 'available' : 'locked'}`}
                     >
                       <div className="skill-card-header">
-                        <span className="skill-name">
-                          {skill.learned > 0 ? '✓ ' : '🔒 '}
-                          {skill.name}
-                        </span>
+                        <div className="skill-name-with-help">
+                          <span className="skill-name">
+                            {skill.learned > 0 ? '✓ ' : '🔒 '}
+                            {skill.name}
+                          </span>
+                          <button
+                            className="help-button"
+                            onClick={() => handleHelpClick(skill.name, `skill-${groupName}-${idx}`)}
+                            disabled={!connected || Boolean(helpTimers[`skill-${groupName}-${idx}`])}
+                            title={`Show help for ${skill.name}`}
+                          >
+                            ?
+                          </button>
+                        </div>
                         {skill.learned > 0 && (
                           <span className="skill-proficiency">{skill.learned}%</span>
                         )}
@@ -256,10 +337,20 @@ function SkillTreeModal({ skillTree, onClose, onCommand }) {
                     className={`skill-card ${skill.learned > 0 ? 'available' : 'locked'}`}
                   >
                     <div className="skill-card-header">
-                      <span className="skill-name">
-                        {skill.learned > 0 ? '✓ ' : '🔒 '}
-                        {skill.name}
-                      </span>
+                      <div className="skill-name-with-help">
+                        <span className="skill-name">
+                          {skill.learned > 0 ? '✓ ' : '🔒 '}
+                          {skill.name}
+                        </span>
+                        <button
+                          className="help-button"
+                          onClick={() => handleHelpClick(skill.name, `ungrouped-${idx}`)}
+                          disabled={!connected || Boolean(helpTimers[`ungrouped-${idx}`])}
+                          title={`Show help for ${skill.name}`}
+                        >
+                          ?
+                        </button>
+                      </div>
                       {skill.learned > 0 && (
                         <span className="skill-proficiency">{skill.learned}%</span>
                       )}
@@ -310,10 +401,20 @@ function SkillTreeModal({ skillTree, onClose, onCommand }) {
                                   className={`skill-card compact ${skill.learned > 0 ? 'available' : 'locked'}`}
                                 >
                                   <div className="skill-card-header">
-                                    <span className="skill-name">
-                                      {skill.learned > 0 ? '✓ ' : '🔒 '}
-                                      {skill.name}
-                                    </span>
+                                    <div className="skill-name-with-help">
+                                      <span className="skill-name">
+                                        {skill.learned > 0 ? '✓ ' : '🔒 '}
+                                        {skill.name}
+                                      </span>
+                                      <button
+                                        className="help-button"
+                                        onClick={() => handleHelpClick(skill.name, `subclass-${subclassName}-${groupName}-${idx}`)}
+                                        disabled={!connected || Boolean(helpTimers[`subclass-${subclassName}-${groupName}-${idx}`])}
+                                        title={`Show help for ${skill.name}`}
+                                      >
+                                        ?
+                                      </button>
+                                    </div>
                                   </div>
                                   {skill.prerequisites && (
                                     <div className="skill-prerequisites">
@@ -351,10 +452,20 @@ function SkillTreeModal({ skillTree, onClose, onCommand }) {
                           className={`skill-card ${skill.learned > 0 ? 'available' : 'locked'}`}
                         >
                           <div className="skill-card-header">
-                            <span className="skill-name">
-                              {skill.learned > 0 ? '✓ ' : '🔒 '}
-                              {skill.name}
-                            </span>
+                            <div className="skill-name-with-help">
+                              <span className="skill-name">
+                                {skill.learned > 0 ? '✓ ' : '🔒 '}
+                                {skill.name}
+                              </span>
+                              <button
+                                className="help-button"
+                                onClick={() => handleHelpClick(skill.name, `legacy-subclass-${groupName}-${idx}`)}
+                                disabled={!connected || Boolean(helpTimers[`legacy-subclass-${groupName}-${idx}`])}
+                                title={`Show help for ${skill.name}`}
+                              >
+                                ?
+                              </button>
+                            </div>
                             {skill.learned > 0 && (
                               <span className="skill-proficiency">{skill.learned}%</span>
                             )}
@@ -384,6 +495,6 @@ function SkillTreeModal({ skillTree, onClose, onCommand }) {
       </div>
     </div>
   );
-}
+});
 
 export default SkillTreeModal;

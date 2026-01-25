@@ -4068,6 +4068,10 @@ void do_practice(CHAR_DATA *ch, char *argument)
         if (!mob)
         {
                 send_to_char("Who is going to teach you?\n\r", ch);
+                if (webgate_has_web_desc(ch))
+                {
+                        webgate_send_skill_tree_error(ch, "You must be at a trainer to practice skills.");
+                }
                 return;
         }
 
@@ -4105,6 +4109,10 @@ void do_practice(CHAR_DATA *ch, char *argument)
                         sprintf(buf, "I'm sorry %s, you haven't the potential to obtain further knowledge.",
                                 ch->name);
                         do_say(mob, buf);
+                        if (webgate_has_web_desc(ch))
+                        {
+                                webgate_send_skill_tree_error(ch, "You don't have any intellectual practice points remaining.");
+                        }
                         return;
                 }
         }
@@ -4115,6 +4123,10 @@ void do_practice(CHAR_DATA *ch, char *argument)
                         sprintf(buf, "I'm sorry %s, you haven't the ability to learn more skills.",
                                 ch->name);
                         do_say(mob, buf);
+                        if (webgate_has_web_desc(ch))
+                        {
+                                webgate_send_skill_tree_error(ch, "You don't have any physical practice points remaining.");
+                        }
                         return;
                 }
         }
@@ -4134,6 +4146,13 @@ void do_practice(CHAR_DATA *ch, char *argument)
                         sprintf(buf, "I'm sorry %s, but I have insufficient knowledge to help you.",
                                 ch->name);
                         do_say(mob, buf);
+                        if (webgate_has_web_desc(ch))
+                        {
+                                if (ch->pcdata->learned[sn] >= 100)
+                                        webgate_send_skill_tree_error(ch, "This skill is already mastered.");
+                                else
+                                        webgate_send_skill_tree_error(ch, "This trainer cannot teach you any more about this skill.");
+                        }
                         return;
                 }
         }
@@ -4148,6 +4167,13 @@ void do_practice(CHAR_DATA *ch, char *argument)
                         sprintf(buf, "I'm sorry %s, but I have insufficient knowledge to help you.",
                                 ch->name);
                         do_say(mob, buf);
+                        if (webgate_has_web_desc(ch))
+                        {
+                                if (ch->pcdata->learned[sn] >= 100)
+                                        webgate_send_skill_tree_error(ch, "This skill is already mastered.");
+                                else
+                                        webgate_send_skill_tree_error(ch, "This trainer cannot teach you any more about this skill.");
+                        }
                         return;
                 }
         }
@@ -4195,6 +4221,10 @@ void do_practice(CHAR_DATA *ch, char *argument)
                 sprintf(buf, "I'm sorry %s, but you are not ready for that knowledge.",
                         ch->name);
                 do_say(mob, buf);
+                if (webgate_has_web_desc(ch))
+                {
+                        webgate_send_skill_tree_error(ch, "You haven't met the prerequisites for this skill.");
+                }
                 return;
         }
 }

@@ -461,6 +461,7 @@ bool webgate_has_web_desc(CHAR_DATA *ch);
 
 /* Safe send: only sends if the character has an open web descriptor */
 void webgate_send_shop_inventory_safe(CHAR_DATA *ch, CHAR_DATA *keeper, const char *message);
+void webgate_send_skill_tree_error(CHAR_DATA *ch, const char *message);
 
 /*
  * Intent: Send identifier service to web client via GMCP for identify modal.

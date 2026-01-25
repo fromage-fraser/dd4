@@ -16,7 +16,6 @@ import CharacterSheet from './components/CharacterSheet';
 import ShopModal from './components/ShopModal';
 import IdentifyModal from './components/IdentifyModal';
 import HealerModal from './components/HealerModal';
-import PracticeModal from './components/PracticeModal';
 import MapModal from './components/MapModal';
 import SpellBookModal from './components/SpellBookModal';
 import HelpModal from './components/HelpModal';
@@ -71,10 +70,10 @@ function App() {
     setShopMessage({ text: msg, ts: Date.now() });
   };
   const [healerData, setHealerData] = useState(null); // { healer, services }
-  const [showPracticeModal, setShowPracticeModal] = useState(false);
   const [showSpellBook, setShowSpellBook] = useState(false);
   const [showSkillTree, setShowSkillTree] = useState(false);
   const [skillTree, setSkillTree] = useState(null);
+  const skillTreeRef = useRef(null); // Ref to call showError method
   const [itemDetails, setItemDetails] = useState({}); // Store detailed item info keyed by item name
   const [mapsData, setMapsData] = useState(null); // All available maps from maps.json
   const [currentMap, setCurrentMap] = useState(null); // Current area's map data
@@ -599,6 +598,14 @@ function App() {
         }
         break;
       
+      case 'Char.SkillTreeError':
+        // Handle practice errors - display in skill tree modal
+        console.log('Char.SkillTreeError received:', data);
+        if (data.message && skillTreeRef.current) {
+          skillTreeRef.current.showError(data.message);
+        }
+        break;
+      
       case 'Char.Inventory':
         // Handle inventory update
         console.log('Char.Inventory received:', data);
@@ -1039,7 +1046,10 @@ function App() {
             connected={connected}
             skills={skills}
             openers={openers}
-            onPracticeClick={() => setShowPracticeModal(true)}
+            onPracticeClick={() => {
+              refreshSkillTree();
+              setShowSkillTree(true);
+            }}
             itemDetails={itemDetails}
             currentPlayerName={status?.name}
             status={status}
@@ -1130,19 +1140,6 @@ function App() {
         />
       )}
 
-      {showPracticeModal && (
-        <PracticeModal
-          skills={skills}
-          pracPhysical={vitals.pracPhysical || 0}
-          pracIntellectual={vitals.pracIntellectual || 0}
-          onClose={() => setShowPracticeModal(false)}
-          onPractice={sendCommand}
-          onRefresh={refreshSkills}
-          connected={connected}
-          onHelp={requestHelp}
-        />
-      )}
-
       {helpContent && (
         <HelpModal content={helpContent} onClose={() => setHelpContent(null)} />
       )}
@@ -1159,9 +1156,12 @@ function App() {
 
       {showSkillTree && skillTree && (
         <SkillTreeModal
+          ref={skillTreeRef}
           key={`st-${skillTree.available?.length || 0}-${skillTree.locked?.length || 0}`}
           skillTree={skillTree}
           onCommand={sendCommand}
+          onHelp={sendCommand}
+          connected={connected}
           onClose={() => setShowSkillTree(false)}
         />
       )}

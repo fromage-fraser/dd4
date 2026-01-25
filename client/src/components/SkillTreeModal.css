@@ -42,6 +42,111 @@
   text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
 }
 
+/* Error banner for practice failures */
+.skill-tree-error-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin: 1rem 1.5rem 0;
+  background: linear-gradient(135deg, rgba(255, 70, 70, 0.2) 0%, rgba(200, 40, 40, 0.2) 100%);
+  border: 2px solid rgba(255, 70, 70, 0.6);
+  border-radius: 8px;
+  color: #ffcccc;
+  animation: slideDown 0.3s ease-out;
+}
+
+.error-icon {
+  font-size: 1.25rem;
+  filter: drop-shadow(0 0 4px rgba(255, 200, 0, 0.6));
+}
+
+.error-text {
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.error-dismiss {
+  background: transparent;
+  border: none;
+  color: #ffcccc;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.error-dismiss:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.group-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.group-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.skill-name-with-help {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.help-button {
+  padding: 0.25rem 0.5rem;
+  background: rgba(100, 149, 237, 0.2);
+  border: 1px solid rgba(100, 149, 237, 0.5);
+  border-radius: 4px;
+  color: #6495ed;
+  font-size: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 24px;
+  height: 24px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.help-button:hover:not(:disabled) {
+  background: rgba(100, 149, 237, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(100, 149, 237, 0.3);
+}
+
+.help-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.practice-btn.group-practice {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+}
+
 .skill-tree-close {
   background: transparent;
   border: 2px solid #ff4444;
@@ -173,6 +278,12 @@
   background: rgba(74, 222, 128, 0.1);
   border-left: 3px solid #4ade80;
   border-radius: 4px;
+}
+
+.group-learned {
+  color: #00ff88;
+  font-weight: 700;
+  text-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
 }
 
 .skill-list {

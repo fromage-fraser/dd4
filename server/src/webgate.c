@@ -529,6 +529,61 @@ void webgate_send_shop_inventory_safe(CHAR_DATA *ch, CHAR_DATA *keeper, const ch
 }
 
 /*
+ * Intent: Send skill tree error message to web client via GMCP.
+ *
+ * Formats and sends an error message to web clients when practice commands fail.
+ * This enables the skill tree modal to display error messages prominently instead
+ * of requiring users to scroll through text output. Follows the safe send pattern:
+ * only sends if the character has an active web descriptor.
+ *
+ * Inputs:
+ *   - ch: Character attempting to practice
+ *   - message: Error message to display in modal (e.g., "You don't have enough practice points")
+ *
+ * Outputs: None (GMCP message queued for send if web client connected)
+ *
+ * Preconditions: ch is valid; message is non-NULL
+ * Postconditions: Char.SkillTreeError GMCP message sent to client if web descriptor present
+ *
+ * Failure Behavior: Silently returns if ch lacks web descriptor
+ *
+ * Notes: Called from do_practice error paths (no trainer, insufficient points, prerequisites, etc.)
+ */
+void webgate_send_skill_tree_error(CHAR_DATA *ch, const char *message)
+{
+    WEB_DESCRIPTOR_DATA *web_desc;
+    char json[MAX_STRING_LENGTH];
+    char msg_escaped[MAX_STRING_LENGTH - 100]; /* Leave room for JSON formatting */
+    int i, j;
+
+    if (!webgate_has_web_desc(ch))
+        return;
+
+    /* Find web descriptor for this character */
+    for (web_desc = web_descriptor_list; web_desc; web_desc = web_desc->next)
+    {
+        if (web_desc->mud_desc && web_desc->mud_desc == ch->desc)
+        {
+            /* Escape the message for JSON */
+            for (i = 0, j = 0; message[i] != '\0' && j < sizeof(msg_escaped) - 2; i++)
+            {
+                if (message[i] == '"' || message[i] == '\\')
+                {
+                    msg_escaped[j++] = '\\';
+                }
+                msg_escaped[j++] = message[i];
+            }
+            msg_escaped[j] = '\0';
+
+            /* Send GMCP message */
+            snprintf(json, sizeof(json), "{ \"message\": \"%s\" }", msg_escaped);
+            webgate_send_gmcp(web_desc, "Char.SkillTreeError", json);
+            break;
+        }
+    }
+}
+
+/*
  * Intent: Send room information to web client via GMCP Room.Info message.
  *
  * Formats and sends complete room data including name, description, exits,

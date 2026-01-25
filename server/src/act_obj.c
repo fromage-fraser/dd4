@@ -5327,6 +5327,8 @@ void do_buy(CHAR_DATA *ch, char *argument)
                 if (cost <= 0)
                 {
                         act("$n tells you 'I don't sell that -- try LIST.", keeper, NULL, ch, TO_VICT);
+                        if (webgate_has_web_desc(ch))
+                                webgate_send_shop_inventory_safe(ch, keeper, "I don't sell that -- try LIST.");
                         return;
                 }
 
@@ -5393,6 +5395,12 @@ void do_buy(CHAR_DATA *ch, char *argument)
                 {
                         act("$n tells you 'You can't use $p yet'.", keeper, obj, ch, TO_VICT);
                         ch->reply = keeper;
+                        if (webgate_has_web_desc(ch))
+                        {
+                                char msg[MAX_STRING_LENGTH];
+                                snprintf(msg, sizeof(msg), "You can't use %s yet.", obj->short_descr);
+                                webgate_send_shop_inventory_safe(ch, keeper, msg);
+                        }
                         return;
                 }
 
@@ -5416,6 +5424,12 @@ void do_buy(CHAR_DATA *ch, char *argument)
                 if ((item_count > 1) && !IS_SET(obj->extra_flags, ITEM_INVENTORY))
                 {
                         act("$n tells you 'Sorry--$p is something I have only one of.'", keeper, obj, ch, TO_VICT);
+                        if (webgate_has_web_desc(ch))
+                        {
+                                char msg[MAX_STRING_LENGTH];
+                                snprintf(msg, sizeof(msg), "Sorry, %s is something I have only one of.", obj->short_descr);
+                                webgate_send_shop_inventory_safe(ch, keeper, msg);
+                        }
                         return;
                 }
 
