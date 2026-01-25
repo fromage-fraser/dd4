@@ -1073,6 +1073,11 @@ void do_open(CHAR_DATA *ch, char *argument)
                 REMOVE_BIT(obj->value[1], CONT_CLOSED);
                 send_to_char("Ok.\n\r", ch);
                 act("$n opens $p.", ch, obj, NULL, TO_ROOM);
+
+                /* Notify web clients in current room that container state changed */
+                if (webgate_room_has_web_clients(ch->in_room))
+                        webgate_notify_room_update(ch->in_room);
+
                 return;
         }
 
@@ -1112,6 +1117,11 @@ void do_open(CHAR_DATA *ch, char *argument)
                         REMOVE_BIT(obj->value[1], CONT_CLOSED);
                         send_to_char("You open it.\n\r", ch);
                         act("$n opens $p in $S vault.", ch, obj, ch, TO_ROOM);
+
+                        /* Notify web clients in current room that container state changed */
+                        if (webgate_room_has_web_clients(ch->in_room))
+                                webgate_notify_room_update(ch->in_room);
+
                         return;
                 }
         }
@@ -1345,6 +1355,11 @@ void do_close(CHAR_DATA *ch, char *argument)
                 SET_BIT(obj->value[1], CONT_CLOSED);
                 send_to_char("Ok.\n\r", ch);
                 act("$n closes $p.", ch, obj, NULL, TO_ROOM);
+
+                /* Notify web clients in current room that container state changed */
+                if (webgate_room_has_web_clients(ch->in_room))
+                        webgate_notify_room_update(ch->in_room);
+
                 return;
         }
 
@@ -1375,6 +1390,11 @@ void do_close(CHAR_DATA *ch, char *argument)
                         SET_BIT(obj->value[1], CONT_CLOSED);
                         send_to_char("You close it.\n\r", ch);
                         act("$n closes $p in $S vault.", ch, obj, ch, TO_ROOM);
+
+                        /* Notify web clients in current room that container state changed */
+                        if (webgate_room_has_web_clients(ch->in_room))
+                                webgate_notify_room_update(ch->in_room);
+
                         return;
                 }
         }
@@ -1509,6 +1529,11 @@ void do_lock(CHAR_DATA *ch, char *argument)
                 SET_BIT(obj->value[1], CONT_LOCKED);
                 send_to_char("*Click*\n\r", ch);
                 act("$n locks $p.", ch, obj, NULL, TO_ROOM);
+
+                /* Notify web clients in current room that container state changed */
+                if (webgate_room_has_web_clients(ch->in_room))
+                        webgate_notify_room_update(ch->in_room);
+
                 return;
         }
 
@@ -1551,6 +1576,11 @@ void do_lock(CHAR_DATA *ch, char *argument)
                         SET_BIT(obj->value[1], CONT_LOCKED);
                         send_to_char("*Click*\n\r", ch);
                         act("$n locks $p in $S vault.", ch, obj, ch, TO_ROOM);
+
+                        /* Notify web clients in current room that container state changed */
+                        if (webgate_room_has_web_clients(ch->in_room))
+                                webgate_notify_room_update(ch->in_room);
+
                         return;
                 }
         }
@@ -1662,6 +1692,11 @@ void do_unlock(CHAR_DATA *ch, char *argument)
                 REMOVE_BIT(obj->value[1], CONT_LOCKED);
                 send_to_char("*Click*\n\r", ch);
                 act("$n unlocks $p.", ch, obj, NULL, TO_ROOM);
+
+                /* Notify web clients in current room that container state changed */
+                if (webgate_room_has_web_clients(ch->in_room))
+                        webgate_notify_room_update(ch->in_room);
+
                 return;
         }
 
@@ -1704,6 +1739,11 @@ void do_unlock(CHAR_DATA *ch, char *argument)
                         REMOVE_BIT(obj->value[1], CONT_LOCKED);
                         send_to_char("*Click*\n\r", ch);
                         act("$n unlocks $p in $S vault.", ch, obj, ch, TO_ROOM);
+
+                        /* Notify web clients in current room that container state changed */
+                        if (webgate_room_has_web_clients(ch->in_room))
+                                webgate_notify_room_update(ch->in_room);
+
                         return;
                 }
         }

@@ -56,12 +56,17 @@ function RoomContents({ items, npcs, onCommand, connected, skills, openers, onPr
                 actions.push({ label: '🔓 Unlock', command: 'unlock' });
             }
             // If container is closed but not locked, add open action
-            else if (item.isClosed) {
+            else if (item.isClosed && !item.isLocked) {
                 actions.push({ label: '📂 Open', command: 'open' });
             }
             // If container is open and closeable, add close action
             else if (item.isCloseable && !item.isClosed) {
                 actions.push({ label: '📁 Close', command: 'close' });
+            }
+            
+            // Add lock action if container is closeable, closed, and not locked
+            if (item.isCloseable && item.isClosed && !item.isLocked) {
+                actions.push({ label: '🔒 Lock', command: 'lock' });
             }
         }
 

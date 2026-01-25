@@ -839,13 +839,14 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
         bool is_closed = is_container && IS_SET(obj->value[1], CONT_CLOSED);
         bool is_locked = is_container && IS_SET(obj->value[1], CONT_LOCKED);
         bool is_closeable = is_container && IS_SET(obj->value[1], CONT_CLOSEABLE);
+        bool can_open = is_container && is_closeable && is_closed && !is_locked;
 
         if (!first)
             strcat(items_json, ",");
         sprintf(items_json + strlen(items_json),
                 "{\"id\":%d,\"name\":\"%s\",\"keywords\":\"%s\",\"vnum\":%d,\"type\":%d,"
                 "\"identified\":%s,\"canTake\":%s,\"extraFlags\":%s,\"egoFlags\":%s,\"canLoot\":%s,\"contents\":%s,"
-                "\"isContainer\":%s,\"isClosed\":%s,\"isLocked\":%s,\"isCloseable\":%s,\"canSee\":true}",
+                "\"isContainer\":%s,\"isClosed\":%s,\"isLocked\":%s,\"isCloseable\":%s,\"canOpen\":%s,\"canSee\":true}",
                 obj->pIndexData ? obj->pIndexData->vnum : 0,
                 temp_name,
                 keywords_escaped,
@@ -860,7 +861,8 @@ void webgate_send_room_info(WEB_DESCRIPTOR_DATA *web_desc, ROOM_INDEX_DATA *room
                 is_container ? "true" : "false",
                 is_closed ? "true" : "false",
                 is_locked ? "true" : "false",
-                is_closeable ? "true" : "false");
+                is_closeable ? "true" : "false",
+                can_open ? "true" : "false");
         first = false;
         item_count++;
     }
@@ -1381,9 +1383,17 @@ void webgate_send_healer_services(CHAR_DATA *ch, CHAR_DATA *healer)
         }
         temp_name[k] = '\0';
 
+        /* Check for specific spell overrides first */
+        if (!str_cmp(spell_list[i].keyword, "stabilise"))
+        {
+            sprintf(description, "Removes magical body-state transformations");
+        }
+        else if (!str_cmp(spell_list[i].keyword, "regenerate"))
+        {
+            sprintf(description, "Removes trauma damage");
+        }
         /* Get spell description from skill_table or use fallback */
-        sn = skill_lookup(spell_list[i].spell_name);
-        if (sn >= 0 && sn < MAX_SKILL && skill_table[sn].noun_damage && skill_table[sn].noun_damage[0] != '\0')
+        else if ((sn = skill_lookup(spell_list[i].spell_name)) >= 0 && sn < MAX_SKILL && skill_table[sn].noun_damage && skill_table[sn].noun_damage[0] != '\0')
         {
             /* Use skill table description */
             sprintf(description, "%s", skill_table[sn].noun_damage);
@@ -1406,9 +1416,9 @@ void webgate_send_healer_services(CHAR_DATA *ch, CHAR_DATA *healer)
             else if (!str_cmp(spell_list[i].keyword, "poison"))
                 sprintf(description, "Cures poison");
             else if (!str_cmp(spell_list[i].keyword, "stabilise"))
-                sprintf(description, "Stabilizes dying character");
+                sprintf(description, "Removes magical body-state transformations");
             else if (!str_cmp(spell_list[i].keyword, "regenerate"))
-                sprintf(description, "Grants regeneration over time");
+                sprintf(description, "Removes trauma damage");
             else if (!str_cmp(spell_list[i].keyword, "curse"))
                 sprintf(description, "Removes curses");
             else if (!str_cmp(spell_list[i].keyword, "refresh"))
