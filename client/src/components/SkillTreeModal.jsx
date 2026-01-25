@@ -54,8 +54,22 @@ const SkillTreeModal = forwardRef(({ skillTree, onClose, onCommand, onHelp, conn
     const subclassByName = {}; // Organize subclass skills by subclass name
     const subclassGroups = {}; // Legacy: single subclass view
     const ungrouped = [];
+    const baseSkills = []; // Skills that depend directly on base (no group)
+
+    // First pass: identify all group skills and create group containers
+    const groupSkillsMap = {};
+    skills.forEach(skill => {
+      if (skill.isGroup) {
+        groupSkillsMap[skill.id] = skill;
+      }
+    });
 
     skills.forEach(skill => {
+      // Skip the group skills themselves in the main loop - we'll add them as headers
+      if (skill.isGroup) {
+        return;
+      }
+
       // Separate subclass-specific skills
       if (skill.isSubclass) {
         // If we have subclassName, organize by that
@@ -64,12 +78,9 @@ const SkillTreeModal = forwardRef(({ skillTree, onClose, onCommand, onHelp, conn
             subclassByName[skill.subclassName] = {};
           }
           
-          // Group within subclass by spell group
-          const prereqs = skill.prerequisites || '';
-          const groupMatch = prereqs.match(/([a-z]+(?:\s+[a-z]+)*)\s+magiks/i);
-          
-          if (groupMatch) {
-            const groupName = groupMatch[1].charAt(0).toUpperCase() + groupMatch[1].slice(1);
+          // Group within subclass by their group prerequisite
+          if (skill.groupId && skill.groupId >= 0 && groupSkillsMap[skill.groupId]) {
+            const groupName = groupSkillsMap[skill.groupId].name;
             if (!subclassByName[skill.subclassName][groupName]) {
               subclassByName[skill.subclassName][groupName] = [];
             }
@@ -82,11 +93,8 @@ const SkillTreeModal = forwardRef(({ skillTree, onClose, onCommand, onHelp, conn
           }
         } else {
           // Legacy: no subclassName (level 30+)
-          const prereqs = skill.prerequisites || '';
-          const groupMatch = prereqs.match(/([a-z]+(?:\s+[a-z]+)*)\s+magiks/i);
-          
-          if (groupMatch) {
-            const groupName = groupMatch[1].charAt(0).toUpperCase() + groupMatch[1].slice(1);
+          if (skill.groupId && skill.groupId >= 0 && groupSkillsMap[skill.groupId]) {
+            const groupName = groupSkillsMap[skill.groupId].name;
             if (!subclassGroups[groupName]) {
               subclassGroups[groupName] = [];
             }
@@ -101,28 +109,23 @@ const SkillTreeModal = forwardRef(({ skillTree, onClose, onCommand, onHelp, conn
         return;
       }
       
-      // Extract primary spell group from prerequisites
-      // Look for patterns like "evocation magiks", "alteration magiks", etc.
-      const prereqs = skill.prerequisites || '';
-      const groupMatch = prereqs.match(/([a-z]+(?:\s+[a-z]+)*)\s+magiks/i);
-      
-      if (groupMatch) {
-        const groupName = groupMatch[1].charAt(0).toUpperCase() + groupMatch[1].slice(1);
+      // Regular skills: organize by their group prerequisite
+      if (skill.groupId && skill.groupId >= 0 && groupSkillsMap[skill.groupId]) {
+        const groupName = groupSkillsMap[skill.groupId].name;
         if (!groups[groupName]) {
-          groups[groupName] = [];
+          groups[groupName] = {
+            groupSkill: groupSkillsMap[skill.groupId],
+            skills: []
+          };
         }
-        groups[groupName].push(skill);
-      } else if (prereqs.includes('mage base')) {
-        if (!groups['Mage Base']) {
-          groups['Mage Base'] = [];
-        }
-        groups['Mage Base'].push(skill);
+        groups[groupName].skills.push(skill);
       } else {
-        ungrouped.push(skill);
+        // No group prerequisite - these are base skills
+        baseSkills.push(skill);
       }
     });
 
-    return { groups, subclassGroups, subclassByName, ungrouped };
+    return { groups, subclassGroups, subclassByName, ungrouped: baseSkills };
   };
 
   const allSkills = [...available, ...locked];
@@ -243,54 +246,64 @@ const SkillTreeModal = forwardRef(({ skillTree, onClose, onCommand, onHelp, conn
         </div>
 
         <div className="skill-tree-content">
-          {/* Render each spell group as a collapsible section */}
+          {/* Render each spell/skill group as a collapsible section */}
           {filteredGroupNames.map(groupName => {
-            const groupSkills = filteredGroups[groupName];
+            const groupData = filteredGroups[groupName];
+            const groupSkills = groupData.skills || groupData; // Handle both old and new structure
+            const groupSkill = groupData.groupSkill; // The group skill itself
             const availableCount = groupSkills.filter(s => s.learned > 0).length;
             const lockedCount = groupSkills.filter(s => s.learned === 0).length;
-            
-            // Find the group skill itself (e.g., "evocation magiks")
-            const groupSkillName = `${groupName.toLowerCase()} magiks`;
-            const groupSkill = allSkills.find(s => s.name.toLowerCase() === groupSkillName);
 
             return (
               <div key={groupName} className="skill-group">
-                <h3 className="group-title">
+                <h3 className={`group-title ${groupSkill && !groupSkill.available ? 'locked' : ''}`}>
                   <span>
+                    {groupSkill && !groupSkill.available ? '🔒 ' : (groupSkill && groupSkill.learned > 0 ? '✓ ' : '')}
                     📚 {groupName} ({availableCount} / {groupSkills.length})
-                    {groupSkill && groupSkill.learned > 0 && (
+                    {groupSkill && (
                       <span className="group-learned"> - {groupSkill.learned}%</span>
                     )}
                   </span>
                   <div className="group-actions">
-                    <button
-                      className="help-button"
-                      onClick={() => handleHelpClick(`${groupName.toLowerCase()} magiks`, `group-${groupName}`)}
-                      disabled={!connected || Boolean(helpTimers[`group-${groupName}`])}
-                      title={`Show help for ${groupName} magiks`}
-                    >
-                      ?
-                    </button>
-                    <button
-                      className="practice-btn group-practice"
-                      onClick={() => handlePracticeGroup(groupName)}
-                      disabled={!connected}
-                      title={`Practice ${groupName} magiks`}
-                    >
-                      Practice
-                    </button>
+                    {groupSkill && (
+                      <>
+                        <button
+                          className="help-button"
+                          onClick={() => handleHelpClick(groupSkill.name, `group-${groupName}`)}
+                          disabled={!connected || Boolean(helpTimers[`group-${groupName}`])}
+                          title={`Show help for ${groupSkill.name}`}
+                        >
+                          ?
+                        </button>
+                        {groupSkill.available && (
+                          <button
+                            className="practice-btn group-practice"
+                            onClick={() => handlePractice(groupSkill.name)}
+                            disabled={!connected}
+                            title={`Practice ${groupSkill.name}`}
+                          >
+                            Practice
+                          </button>
+                        )}
+                      </>
+                    )}
                   </div>
                 </h3>
+                {groupSkill && groupSkill.prerequisites && (
+                  <div className="group-prerequisites">
+                    <span className="prereq-label">Group Requires:</span> {groupSkill.prerequisites}
+                  </div>
+                )}
                 <div className="skill-list">
                   {groupSkills.map((skill, idx) => (
                     <div 
                       key={`${groupName}-${idx}`} 
-                      className={`skill-card ${skill.learned > 0 ? 'available' : 'locked'}`}
+                      className={`skill-card ${skill.available ? 'available' : 'locked'}`}
                     >
                       <div className="skill-card-header">
                         <div className="skill-name-with-help">
                           <span className="skill-name">
-                            {skill.learned > 0 ? '✓ ' : '🔒 '}
+                            {skill.learned > 0 ? '✓ ' : (!skill.available ? '🔒 ' : '')}
                             {skill.name}
                           </span>
                           <button
@@ -302,7 +315,7 @@ const SkillTreeModal = forwardRef(({ skillTree, onClose, onCommand, onHelp, conn
                             ?
                           </button>
                         </div>
-                        {skill.learned > 0 && (
+                        {skill.available && (
                           <span className="skill-proficiency">{skill.learned}%</span>
                         )}
                       </div>
@@ -311,10 +324,11 @@ const SkillTreeModal = forwardRef(({ skillTree, onClose, onCommand, onHelp, conn
                           <span className="prereq-label">Requires:</span> {skill.prerequisites}
                         </div>
                       )}
-                      {skill.learned > 0 && skill.learned < 100 && (
+                      {skill.available && skill.learned < 100 && (
                         <button 
                           className="practice-btn"
                           onClick={() => handlePractice(skill.name)}
+                          disabled={!connected}
                         >
                           Practice
                         </button>
@@ -334,12 +348,12 @@ const SkillTreeModal = forwardRef(({ skillTree, onClose, onCommand, onHelp, conn
                 {filteredUngrouped.map((skill, idx) => (
                   <div 
                     key={`ungrouped-${idx}`} 
-                    className={`skill-card ${skill.learned > 0 ? 'available' : 'locked'}`}
+                    className={`skill-card ${skill.available ? 'available' : 'locked'}`}
                   >
                     <div className="skill-card-header">
                       <div className="skill-name-with-help">
                         <span className="skill-name">
-                          {skill.learned > 0 ? '✓ ' : '🔒 '}
+                          {skill.learned > 0 ? '✓ ' : (!skill.available ? '🔒 ' : '')}
                           {skill.name}
                         </span>
                         <button
@@ -351,7 +365,7 @@ const SkillTreeModal = forwardRef(({ skillTree, onClose, onCommand, onHelp, conn
                           ?
                         </button>
                       </div>
-                      {skill.learned > 0 && (
+                      {skill.available && (
                         <span className="skill-proficiency">{skill.learned}%</span>
                       )}
                     </div>
@@ -360,10 +374,11 @@ const SkillTreeModal = forwardRef(({ skillTree, onClose, onCommand, onHelp, conn
                         <span className="prereq-label">Requires:</span> {skill.prerequisites}
                       </div>
                     )}
-                    {skill.learned > 0 && skill.learned < 100 && (
+                    {skill.available && skill.learned < 100 && (
                       <button 
                         className="practice-btn"
                         onClick={() => handlePractice(skill.name)}
+                        disabled={!connected}
                       >
                         Practice
                       </button>
@@ -398,12 +413,12 @@ const SkillTreeModal = forwardRef(({ skillTree, onClose, onCommand, onHelp, conn
                               {groupSkills.map((skill, idx) => (
                                 <div 
                                   key={`${subclassName}-${groupName}-${idx}`} 
-                                  className={`skill-card compact ${skill.learned > 0 ? 'available' : 'locked'}`}
+                                  className={`skill-card compact ${skill.available ? 'available' : 'locked'}`}
                                 >
                                   <div className="skill-card-header">
                                     <div className="skill-name-with-help">
                                       <span className="skill-name">
-                                        {skill.learned > 0 ? '✓ ' : '🔒 '}
+                                        {skill.learned > 0 ? '✓ ' : (!skill.available ? '🔒 ' : '')}
                                         {skill.name}
                                       </span>
                                       <button
@@ -449,12 +464,12 @@ const SkillTreeModal = forwardRef(({ skillTree, onClose, onCommand, onHelp, conn
                       {groupSkills.map((skill, idx) => (
                         <div 
                           key={`subclass-${groupName}-${idx}`} 
-                          className={`skill-card ${skill.learned > 0 ? 'available' : 'locked'}`}
+                          className={`skill-card ${skill.available ? 'available' : 'locked'}`}
                         >
                           <div className="skill-card-header">
                             <div className="skill-name-with-help">
                               <span className="skill-name">
-                                {skill.learned > 0 ? '✓ ' : '🔒 '}
+                                {skill.learned > 0 ? '✓ ' : (!skill.available ? '🔒 ' : '')}
                                 {skill.name}
                               </span>
                               <button
@@ -466,7 +481,7 @@ const SkillTreeModal = forwardRef(({ skillTree, onClose, onCommand, onHelp, conn
                                 ?
                               </button>
                             </div>
-                            {skill.learned > 0 && (
+                            {skill.available && (
                               <span className="skill-proficiency">{skill.learned}%</span>
                             )}
                           </div>
@@ -475,10 +490,11 @@ const SkillTreeModal = forwardRef(({ skillTree, onClose, onCommand, onHelp, conn
                               <span className="prereq-label">Requires:</span> {skill.prerequisites}
                             </div>
                           )}
-                          {skill.learned > 0 && skill.learned < 100 && (
+                          {skill.available && skill.learned < 100 && (
                             <button 
                               className="practice-btn"
                               onClick={() => handlePractice(skill.name)}
+                              disabled={!connected}
                             >
                               Practice
                             </button>

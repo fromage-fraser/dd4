@@ -1648,11 +1648,11 @@ void webgate_send_char_skills(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
         bool is_group = is_group_skill(sn);
 
         /* Include skills the character has learned (CAN_DO checks learned > 0) */
-        /* OR skills they can learn (learned == 0, has pre-req, and sn < gsn_mage_base) */
+        /* OR skills they can learn (learned == 0, has pre-req) */
         if (!CAN_DO(ch, sn))
         {
             /* For unlearned skills, check if they can be learned */
-            if (ch->pcdata->learned[sn] != 0 || sn >= gsn_mage_base || !has_pre_req(ch, sn))
+            if (ch->pcdata->learned[sn] != 0 || !has_pre_req(ch, sn))
                 continue;
         }
 
@@ -4639,16 +4639,17 @@ static void webgate_transfer_mud_output(WEB_DESCRIPTOR_DATA *web_desc)
  * Notes: Groups prerequisites by group number (0=all required, 1-27=one path required)
  */
 /*
- * Intent: Check if skill requires subclass base (necro/warlock/mage@60+) anywhere in prerequisite chain
- * Inputs: sn (skill number), visited (cycle detection array)
+ * Intent: Check if skill requires subclass base (base@60+ or subclass-specific base) anywhere in prerequisite chain
+ * Inputs: sn (skill number), visited (cycle detection array), char_class (base class), pre_group (prerequisite group)
  * Outputs: Returns TRUE if skill requires subclass base anywhere in prerequisite chain
  * Preconditions: skill_prereq_cache initialized
  * Performance: O(d*p) where d is depth, p is prerequisites per skill
- * Notes: For multi-subclass mode, checks all mage-related groups
+ * Notes: Checks class-specific subclass bases dynamically
  */
-static bool is_skill_requires_subclass_base(int sn, bool *visited)
+static bool is_skill_requires_subclass_base(int sn, bool *visited, int char_class, int pre_group)
 {
     PREREQ_NODE *prereq;
+    int base_skill_sn = -1;
 
     if (sn < 0 || sn >= MAX_SKILL)
         return FALSE;
@@ -4658,31 +4659,76 @@ static bool is_skill_requires_subclass_base(int sn, bool *visited)
 
     visited[sn] = TRUE;
 
+    /* Determine which base skill to check based on class */
+    switch (char_class)
+    {
+    case CLASS_MAGE:
+        base_skill_sn = gsn_mage_base;
+        break;
+    case CLASS_CLERIC:
+        base_skill_sn = gsn_cleric_base;
+        break;
+    case CLASS_THIEF:
+        base_skill_sn = gsn_thief_base;
+        break;
+    case CLASS_WARRIOR:
+        base_skill_sn = gsn_warrior_base;
+        break;
+    case CLASS_SHAPE_SHIFTER:
+        base_skill_sn = gsn_shifter_base;
+        break;
+    case CLASS_BRAWLER:
+        base_skill_sn = gsn_brawler_base;
+        break;
+    case CLASS_RANGER:
+        base_skill_sn = gsn_ranger_base;
+        break;
+    case CLASS_SMITHY:
+        base_skill_sn = gsn_smithy_base;
+        break;
+    default:
+        visited[sn] = FALSE;
+        return FALSE;
+    }
+
     /* Check this skill's direct prerequisites */
     for (prereq = skill_prereq_cache[sn].prereqs; prereq; prereq = prereq->next)
     {
-        /* Accept prerequisites from any mage-related group or common */
-        if (prereq->group == PRE_MAGE || prereq->group == PRE_NECRO ||
-            prereq->group == PRE_WARLOCK || prereq->group == 0)
+        /* Accept prerequisites from current class group or common */
+        if (prereq->group == pre_group || prereq->group == 0 ||
+            /* Also accept subclass groups for this class */
+            (char_class == CLASS_MAGE && (prereq->group == PRE_NECRO || prereq->group == PRE_WARLOCK)) ||
+            (char_class == CLASS_CLERIC && (prereq->group == PRE_TEMPLAR || prereq->group == PRE_DRUID)) ||
+            (char_class == CLASS_THIEF && (prereq->group == PRE_NINJA || prereq->group == PRE_BOUNTY)) ||
+            (char_class == CLASS_WARRIOR && (prereq->group == PRE_KNIGHT || prereq->group == PRE_THUG)) ||
+            (char_class == CLASS_SHAPE_SHIFTER && (prereq->group == PRE_WEREWOLF || prereq->group == PRE_VAMPIRE)) ||
+            (char_class == CLASS_BRAWLER && prereq->group == PRE_MONK) ||
+            (char_class == CLASS_RANGER && prereq->group == PRE_BARBARIAN) ||
+            (char_class == CLASS_SMITHY && (prereq->group == PRE_ENGINEER || prereq->group == PRE_RUNESMITH)))
         {
-            /* Necro or Warlock base at ANY level means subclass-only */
-            if (prereq->pre_req_sn == gsn_necro_base ||
-                prereq->pre_req_sn == gsn_warlock_base)
+            /* Check for subclass-specific base skills at ANY level */
+            if ((char_class == CLASS_MAGE && (prereq->pre_req_sn == gsn_necro_base || prereq->pre_req_sn == gsn_warlock_base)) ||
+                (char_class == CLASS_CLERIC && (prereq->pre_req_sn == gsn_templar_base || prereq->pre_req_sn == gsn_druid_base)) ||
+                (char_class == CLASS_THIEF && (prereq->pre_req_sn == gsn_ninja_base || prereq->pre_req_sn == gsn_bounty_base)) ||
+                (char_class == CLASS_WARRIOR && (prereq->pre_req_sn == gsn_knight_base || prereq->pre_req_sn == gsn_thug_base)) ||
+                (char_class == CLASS_SHAPE_SHIFTER && (prereq->pre_req_sn == gsn_werewolf_base || prereq->pre_req_sn == gsn_vampire_base)) ||
+                (char_class == CLASS_BRAWLER && prereq->pre_req_sn == gsn_monk_base) ||
+                (char_class == CLASS_RANGER && prereq->pre_req_sn == gsn_barbarian_base) ||
+                (char_class == CLASS_SMITHY && (prereq->pre_req_sn == gsn_engineer_base || prereq->pre_req_sn == gsn_runesmith_base)))
             {
                 visited[sn] = FALSE;
                 return TRUE;
             }
 
-            /* Mage base at 60+ means subclass-only */
-            if (prereq->pre_req_sn == gsn_mage_base &&
-                prereq->min_proficiency >= 60)
+            /* Base class skill at 60+ means subclass-only */
+            if (prereq->pre_req_sn == base_skill_sn && prereq->min_proficiency >= 60)
             {
                 visited[sn] = FALSE;
                 return TRUE;
             }
 
             /* Recursively check if the prerequisite skill requires subclass base */
-            if (is_skill_requires_subclass_base(prereq->pre_req_sn, visited))
+            if (is_skill_requires_subclass_base(prereq->pre_req_sn, visited, char_class, pre_group))
             {
                 visited[sn] = FALSE;
                 return TRUE;
@@ -4816,7 +4862,7 @@ static char *build_flattened_prereq_chain(int sn, int depth, bool *visited, int 
  * Preconditions: web_desc authenticated, ch valid, prerequisite cache initialized
  * Postconditions: Client receives skills array with learned values; client determines available vs locked
  * Failure Behavior: Aborts if web_desc invalid or disconnected
- * Performance: O(n) where n is gsn_mage_base
+ * Performance: O(n) where n is MAX_SKILL
  * Notes: Simplified approach - send all class skills, let client compare learned values
  */
 void webgate_send_char_skill_tree(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
@@ -4859,17 +4905,71 @@ void webgate_send_char_skill_tree(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
     for (sn = 0; sn < MAX_SKILL; sn++)
         visited[sn] = FALSE;
 
-    /* Determine which groups to send (all subclass options if < 30 and mage) */
+    /* Determine which groups to send (all subclass options if < 30 and class has subclasses) */
     int groups_to_send[3];
     int group_count = 0;
     bool multi_subclass_mode = FALSE;
 
-    if (ch->level < 30 && ch->class == CLASS_MAGE && ch->sub_class == SUB_CLASS_NONE)
+    if (ch->level < 30 && ch->sub_class == SUB_CLASS_NONE)
     {
-        /* Send all mage skills once, but tag subclass skills with their appropriate subclass */
-        groups_to_send[0] = PRE_MAGE;
-        group_count = 1;
-        multi_subclass_mode = TRUE;
+        /* Check if this class has subclasses */
+        switch (ch->class)
+        {
+        case CLASS_MAGE:
+            /* Mage: Necromancer, Warlock, Pure Mage */
+            groups_to_send[0] = PRE_MAGE;
+            group_count = 1;
+            multi_subclass_mode = TRUE;
+            break;
+        case CLASS_CLERIC:
+            /* Cleric: Templar, Druid, Pure Cleric */
+            groups_to_send[0] = PRE_CLERIC;
+            group_count = 1;
+            multi_subclass_mode = TRUE;
+            break;
+        case CLASS_THIEF:
+            /* Thief: Ninja, Bounty Hunter, Pure Thief */
+            groups_to_send[0] = PRE_THIEF;
+            group_count = 1;
+            multi_subclass_mode = TRUE;
+            break;
+        case CLASS_WARRIOR:
+            /* Warrior: Knight, Thug, Pure Warrior */
+            groups_to_send[0] = PRE_WARRIOR;
+            group_count = 1;
+            multi_subclass_mode = TRUE;
+            break;
+        case CLASS_SHAPE_SHIFTER:
+            /* Shifter: Werewolf, Vampire, Pure Shifter */
+            groups_to_send[0] = PRE_SHIFTER;
+            group_count = 1;
+            multi_subclass_mode = TRUE;
+            break;
+        case CLASS_BRAWLER:
+            /* Brawler: Monk, Martial Artist, Pure Brawler */
+            groups_to_send[0] = PRE_BRAWLER;
+            group_count = 1;
+            multi_subclass_mode = TRUE;
+            break;
+        case CLASS_RANGER:
+            /* Ranger: Barbarian, Pure Ranger */
+            groups_to_send[0] = PRE_RANGER;
+            group_count = 1;
+            multi_subclass_mode = TRUE;
+            break;
+        case CLASS_SMITHY:
+            /* Smithy: Engineer, Runesmith, Pure Smithy */
+            groups_to_send[0] = PRE_SMITHY;
+            group_count = 1;
+            multi_subclass_mode = TRUE;
+            break;
+        default:
+            /* Send only current class group (Psionic, etc.) */
+            groups_to_send[0] = pre_group;
+            group_count = 1;
+            multi_subclass_mode = FALSE;
+            break;
+        }
     }
     else
     {
@@ -4885,7 +4985,7 @@ void webgate_send_char_skill_tree(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
         int current_group = groups_to_send[group_idx];
 
         /* Iterate through skill cache and find all skills with prerequisites for this group */
-        for (sn = 0; sn < gsn_mage_base; sn++)
+        for (sn = 0; sn < MAX_SKILL; sn++)
         {
             bool has_class_prereq = FALSE;
             bool is_subclass_skill = FALSE;
@@ -4899,14 +4999,46 @@ void webgate_send_char_skill_tree(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
                 continue;
 
             /* Check if this skill has any prerequisites in the cache for this group */
-            /* In multi-subclass mode, check for ANY mage-related group (PRE_MAGE, PRE_NECRO, PRE_WARLOCK) */
+            /* MUST have at least ONE prerequisite specifically for this class, not just generic (group 0) */
             for (prereq = skill_prereq_cache[sn].prereqs; prereq; prereq = prereq->next)
             {
                 if (multi_subclass_mode)
                 {
-                    /* Accept prerequisites from any mage subclass group */
-                    if (prereq->group == PRE_MAGE || prereq->group == PRE_NECRO ||
-                        prereq->group == PRE_WARLOCK || prereq->group == 0)
+                    /* Accept prerequisites from current class or its subclasses (but NOT generic group 0) */
+                    bool is_valid_prereq = FALSE;
+
+                    switch (ch->class)
+                    {
+                    case CLASS_MAGE:
+                        is_valid_prereq = (prereq->group == PRE_MAGE || prereq->group == PRE_NECRO || prereq->group == PRE_WARLOCK);
+                        break;
+                    case CLASS_CLERIC:
+                        is_valid_prereq = (prereq->group == PRE_CLERIC || prereq->group == PRE_TEMPLAR || prereq->group == PRE_DRUID);
+                        break;
+                    case CLASS_THIEF:
+                        is_valid_prereq = (prereq->group == PRE_THIEF || prereq->group == PRE_NINJA || prereq->group == PRE_BOUNTY);
+                        break;
+                    case CLASS_WARRIOR:
+                        is_valid_prereq = (prereq->group == PRE_WARRIOR || prereq->group == PRE_KNIGHT || prereq->group == PRE_THUG);
+                        break;
+                    case CLASS_SHAPE_SHIFTER:
+                        is_valid_prereq = (prereq->group == PRE_SHIFTER || prereq->group == PRE_WEREWOLF || prereq->group == PRE_VAMPIRE);
+                        break;
+                    case CLASS_BRAWLER:
+                        is_valid_prereq = (prereq->group == PRE_BRAWLER || prereq->group == PRE_MONK);
+                        break;
+                    case CLASS_RANGER:
+                        is_valid_prereq = (prereq->group == PRE_RANGER || prereq->group == PRE_BARBARIAN);
+                        break;
+                    case CLASS_SMITHY:
+                        is_valid_prereq = (prereq->group == PRE_SMITHY || prereq->group == PRE_ENGINEER || prereq->group == PRE_RUNESMITH);
+                        break;
+                    default:
+                        is_valid_prereq = FALSE;
+                        break;
+                    }
+
+                    if (is_valid_prereq)
                     {
                         has_class_prereq = TRUE;
                         break;
@@ -4914,8 +5046,8 @@ void webgate_send_char_skill_tree(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
                 }
                 else
                 {
-                    /* Match if group is for this class OR group is 0 (common prereq) */
-                    if (prereq->group == current_group || prereq->group == 0)
+                    /* Match ONLY if group is specifically for this class (NOT group 0) */
+                    if (prereq->group == current_group)
                     {
                         has_class_prereq = TRUE;
                         break;
@@ -4923,12 +5055,12 @@ void webgate_send_char_skill_tree(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
                 }
             }
 
-            /* Skip skills without prerequisites for this group */
+            /* Skip skills without prerequisites specifically for this class */
             if (!has_class_prereq)
                 continue;
 
             /* Recursively check if this skill or any prerequisite requires base@60+ */
-            /* In multi-subclass mode, check with PRE_MAGE but accept all mage-related prereqs */
+            /* In multi-subclass mode, check with current class and pre_group */
             if (multi_subclass_mode)
             {
                 /* For multi-subclass, we need special handling with recursive checking */
@@ -4939,7 +5071,7 @@ void webgate_send_char_skill_tree(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
                 for (int i = 0; i < MAX_SKILL; i++)
                     check_recursive[i] = FALSE;
 
-                found_subclass_prereq = is_skill_requires_subclass_base(sn, check_recursive);
+                found_subclass_prereq = is_skill_requires_subclass_base(sn, check_recursive, ch->class, current_group);
                 is_subclass_skill = found_subclass_prereq;
             }
             else
@@ -4953,6 +5085,18 @@ void webgate_send_char_skill_tree(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
                 /* Check prerequisite groups to determine which subclass this skill belongs to */
                 bool has_necro_prereq = FALSE;
                 bool has_warlock_prereq = FALSE;
+                bool has_knight_prereq = FALSE;
+                bool has_thug_prereq = FALSE;
+                bool has_engineer_prereq = FALSE;
+                bool has_runesmith_prereq = FALSE;
+                bool has_templar_prereq = FALSE;
+                bool has_druid_prereq = FALSE;
+                bool has_ninja_prereq = FALSE;
+                bool has_bounty_prereq = FALSE;
+                bool has_werewolf_prereq = FALSE;
+                bool has_vampire_prereq = FALSE;
+                bool has_monk_prereq = FALSE;
+                bool has_barbarian_prereq = FALSE;
                 PREREQ_NODE *check_prereq;
 
                 for (check_prereq = skill_prereq_cache[sn].prereqs; check_prereq; check_prereq = check_prereq->next)
@@ -4961,23 +5105,106 @@ void webgate_send_char_skill_tree(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
                         has_necro_prereq = TRUE;
                     if (check_prereq->group == PRE_WARLOCK)
                         has_warlock_prereq = TRUE;
+                    if (check_prereq->group == PRE_KNIGHT)
+                        has_knight_prereq = TRUE;
+                    if (check_prereq->group == PRE_THUG)
+                        has_thug_prereq = TRUE;
+                    if (check_prereq->group == PRE_ENGINEER)
+                        has_engineer_prereq = TRUE;
+                    if (check_prereq->group == PRE_RUNESMITH)
+                        has_runesmith_prereq = TRUE;
+                    if (check_prereq->group == PRE_TEMPLAR)
+                        has_templar_prereq = TRUE;
+                    if (check_prereq->group == PRE_DRUID)
+                        has_druid_prereq = TRUE;
+                    if (check_prereq->group == PRE_NINJA)
+                        has_ninja_prereq = TRUE;
+                    if (check_prereq->group == PRE_BOUNTY)
+                        has_bounty_prereq = TRUE;
+                    if (check_prereq->group == PRE_WEREWOLF)
+                        has_werewolf_prereq = TRUE;
+                    if (check_prereq->group == PRE_VAMPIRE)
+                        has_vampire_prereq = TRUE;
+                    if (check_prereq->group == PRE_MONK)
+                        has_monk_prereq = TRUE;
+                    if (check_prereq->group == PRE_BARBARIAN)
+                        has_barbarian_prereq = TRUE;
                 }
 
                 /* Assign subclass based on which prerequisite groups exist */
-                /* If skill has both necro and warlock prereqs, prefer showing in both */
-                /* For now, prioritize: Warlock > Necromancer > Pure Mage */
-                if (has_warlock_prereq)
+                switch (ch->class)
                 {
-                    skill_subclass_name = "Warlock";
-                }
-                else if (has_necro_prereq)
-                {
-                    skill_subclass_name = "Necromancer";
-                }
-                else
-                {
-                    /* Pure Mage: subclass skill but no specific subclass prereqs */
-                    skill_subclass_name = "Pure Mage";
+                case CLASS_MAGE:
+                    /* Prioritize: Warlock > Necromancer > Pure Mage */
+                    if (has_warlock_prereq)
+                        skill_subclass_name = "Warlock";
+                    else if (has_necro_prereq)
+                        skill_subclass_name = "Necromancer";
+                    else
+                        skill_subclass_name = "Pure Mage";
+                    break;
+                case CLASS_CLERIC:
+                    /* Prioritize: Templar > Druid > Pure Cleric */
+                    if (has_templar_prereq)
+                        skill_subclass_name = "Templar";
+                    else if (has_druid_prereq)
+                        skill_subclass_name = "Druid";
+                    else
+                        skill_subclass_name = "Pure Cleric";
+                    break;
+                case CLASS_THIEF:
+                    /* Prioritize: Ninja > Bounty Hunter > Pure Thief */
+                    if (has_ninja_prereq)
+                        skill_subclass_name = "Ninja";
+                    else if (has_bounty_prereq)
+                        skill_subclass_name = "Bounty Hunter";
+                    else
+                        skill_subclass_name = "Pure Thief";
+                    break;
+                case CLASS_WARRIOR:
+                    /* Prioritize: Knight > Thug > Pure Warrior */
+                    if (has_knight_prereq)
+                        skill_subclass_name = "Knight";
+                    else if (has_thug_prereq)
+                        skill_subclass_name = "Thug";
+                    else
+                        skill_subclass_name = "Pure Warrior";
+                    break;
+                case CLASS_SHAPE_SHIFTER:
+                    /* Prioritize: Werewolf > Vampire > Pure Shifter */
+                    if (has_werewolf_prereq)
+                        skill_subclass_name = "Werewolf";
+                    else if (has_vampire_prereq)
+                        skill_subclass_name = "Vampire";
+                    else
+                        skill_subclass_name = "Pure Shifter";
+                    break;
+                case CLASS_BRAWLER:
+                    /* Prioritize: Monk > Pure Brawler */
+                    if (has_monk_prereq)
+                        skill_subclass_name = "Monk";
+                    else
+                        skill_subclass_name = "Pure Brawler";
+                    break;
+                case CLASS_RANGER:
+                    /* Prioritize: Barbarian > Pure Ranger */
+                    if (has_barbarian_prereq)
+                        skill_subclass_name = "Barbarian";
+                    else
+                        skill_subclass_name = "Pure Ranger";
+                    break;
+                case CLASS_SMITHY:
+                    /* Prioritize: Engineer > Runesmith > Pure Smithy */
+                    if (has_engineer_prereq)
+                        skill_subclass_name = "Engineer";
+                    else if (has_runesmith_prereq)
+                        skill_subclass_name = "Runesmith";
+                    else
+                        skill_subclass_name = "Pure Smithy";
+                    break;
+                default:
+                    skill_subclass_name = "";
+                    break;
                 }
             }
 
@@ -4995,28 +5222,100 @@ void webgate_send_char_skill_tree(WEB_DESCRIPTOR_DATA *web_desc, CHAR_DATA *ch)
             /* Get prerequisite chain for this skill */
             prereq_chain = build_flattened_prereq_chain(sn, 0, visited, current_group);
 
-            /* Build skill entry with id, name, learned, prerequisites, subclass flag, and subclass name */
+            /* Check if this skill is itself a group skill */
+            bool skill_is_group = is_group_skill(sn);
+
+            /* Find immediate group prerequisite for organization (first group skill this depends on) */
+            int group_prereq_id = -1;
+            for (PREREQ_NODE *p = skill_prereq_cache[sn].prereqs; p; p = p->next)
+            {
+                /* Only look at prerequisites for this specific class */
+                if (multi_subclass_mode)
+                {
+                    /* Accept prerequisites from current class or its subclasses */
+                    bool is_valid_group_prereq = FALSE;
+
+                    switch (ch->class)
+                    {
+                    case CLASS_MAGE:
+                        is_valid_group_prereq = (p->group == PRE_MAGE || p->group == PRE_NECRO || p->group == PRE_WARLOCK);
+                        break;
+                    case CLASS_CLERIC:
+                        is_valid_group_prereq = (p->group == PRE_CLERIC || p->group == PRE_TEMPLAR || p->group == PRE_DRUID);
+                        break;
+                    case CLASS_THIEF:
+                        is_valid_group_prereq = (p->group == PRE_THIEF || p->group == PRE_NINJA || p->group == PRE_BOUNTY);
+                        break;
+                    case CLASS_WARRIOR:
+                        is_valid_group_prereq = (p->group == PRE_WARRIOR || p->group == PRE_KNIGHT || p->group == PRE_THUG);
+                        break;
+                    case CLASS_SHAPE_SHIFTER:
+                        is_valid_group_prereq = (p->group == PRE_SHIFTER || p->group == PRE_WEREWOLF || p->group == PRE_VAMPIRE);
+                        break;
+                    case CLASS_BRAWLER:
+                        is_valid_group_prereq = (p->group == PRE_BRAWLER || p->group == PRE_MONK);
+                        break;
+                    case CLASS_RANGER:
+                        is_valid_group_prereq = (p->group == PRE_RANGER || p->group == PRE_BARBARIAN);
+                        break;
+                    case CLASS_SMITHY:
+                        is_valid_group_prereq = (p->group == PRE_SMITHY || p->group == PRE_ENGINEER || p->group == PRE_RUNESMITH);
+                        break;
+                    default:
+                        is_valid_group_prereq = FALSE;
+                        break;
+                    }
+
+                    if (is_valid_group_prereq && is_group_skill(p->pre_req_sn))
+                    {
+                        group_prereq_id = p->pre_req_sn;
+                        break;
+                    }
+                }
+                else
+                {
+                    if (p->group == current_group)
+                    {
+                        if (is_group_skill(p->pre_req_sn))
+                        {
+                            group_prereq_id = p->pre_req_sn;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            /* Check if character currently meets prerequisites for this skill */
+            bool prereqs_met = has_pre_req(ch, sn);
+
+            /* Build skill entry with id, name, learned, prerequisites, subclass flag, group flag, group ID, and availability */
             /* Only add subclassName if this is actually a subclass-specific skill */
             if (is_subclass_skill && skill_subclass_name && strlen(skill_subclass_name) > 0)
             {
-                sprintf(skill_entry, "%s{\"id\":%d,\"name\":\"%s\",\"learned\":%d,\"prerequisites\":\"%s\",\"isSubclass\":%s,\"subclassName\":\"%s\"}",
+                sprintf(skill_entry, "%s{\"id\":%d,\"name\":\"%s\",\"learned\":%d,\"prerequisites\":\"%s\",\"isSubclass\":%s,\"subclassName\":\"%s\",\"isGroup\":%s,\"groupId\":%d,\"available\":%s}",
                         first ? "" : ",",
                         sn,
                         skill_name_escaped,
                         ch->pcdata->learned[sn],
                         prereq_chain ? prereq_chain : "",
                         is_subclass_skill ? "true" : "false",
-                        skill_subclass_name);
+                        skill_subclass_name,
+                        skill_is_group ? "true" : "false",
+                        group_prereq_id,
+                        prereqs_met ? "true" : "false");
             }
             else
             {
-                sprintf(skill_entry, "%s{\"id\":%d,\"name\":\"%s\",\"learned\":%d,\"prerequisites\":\"%s\",\"isSubclass\":%s}",
+                sprintf(skill_entry, "%s{\"id\":%d,\"name\":\"%s\",\"learned\":%d,\"prerequisites\":\"%s\",\"isSubclass\":%s,\"isGroup\":%s,\"groupId\":%d,\"available\":%s}",
                         first ? "" : ",",
                         sn,
                         skill_name_escaped,
                         ch->pcdata->learned[sn],
                         prereq_chain ? prereq_chain : "",
-                        is_subclass_skill ? "true" : "false");
+                        is_subclass_skill ? "true" : "false",
+                        skill_is_group ? "true" : "false",
+                        group_prereq_id,
+                        prereqs_met ? "true" : "false");
             }
 
             /* Check buffer space */
