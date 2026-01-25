@@ -973,6 +973,14 @@ function App() {
           />
         </div>
         <div className="header-right">
+          <button 
+            className="bug-report-btn"
+            onClick={() => window.open('https://discord.com/channels/946246985722241105/976241614051745823', '_blank')}
+            title="Report Bug"
+            aria-label="Report Bug"
+          >
+            🐛
+          </button>
           <div className={`status ${connected ? 'connected' : reconnecting ? 'reconnecting' : 'disconnected'}`}>
             {connected ? '● Connected' : reconnecting ? '○ Reconnecting...' : '○ Disconnected'}
           </div>
