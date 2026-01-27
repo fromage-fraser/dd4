@@ -14,15 +14,17 @@ import './QuickActions.css';
  * - onOpenSpellBook: callback to open the spell book modal
  * - onOpenSkillTree: callback to open the skill tree modal
  * - onOpenConfigModal: callback to open the config/settings modal
+ * - onOpenSettings: callback to open the server profiles settings modal
  * 
  * Outputs: Rendered quick action button bar
  * 
  * Notes: Icons use emoji for universal compatibility. Can be replaced with
  *        icon library (FontAwesome, Material Icons) for more polished look.
  */
-function QuickActions({ onCommand, connected, onOpenCharacterSheet, onOpenSpellBook, onOpenSkillTree, onOpenConfigModal, status, room }) {
+function QuickActions({ onCommand, connected, onOpenCharacterSheet, onOpenSpellBook, onOpenSkillTree, onOpenConfigModal, onOpenSettings, status, room }) {
   const quickCommands = [
-    { label: '⚙️', text: 'Settings', action: 'config', color: '#607d8b' },
+    { label: '🌐', text: 'Server', action: 'settings', color: '#e91e63' },
+    { label: '⚙️', text: 'Config', action: 'config', color: '#607d8b' },
     { label: '👁️', text: 'Look', command: 'look', color: '#2196f3' },
     { label: '📋', text: 'Sheet', action: 'sheet', color: '#9c27b0' },
     { label: '📖', text: 'Spells', action: 'spellbook', color: '#673ab7' },
@@ -36,6 +38,12 @@ function QuickActions({ onCommand, connected, onOpenCharacterSheet, onOpenSpellB
   const isHealing = roomFlags.includes('ROOM_HEALING');
 
   const handleClick = (cmd) => {
+    // Allow settings to be opened even when disconnected
+    if (cmd.action === 'settings') {
+      onOpenSettings();
+      return;
+    }
+
     if (!connected) return;
 
     if (cmd.action === 'sheet') {
@@ -79,7 +87,7 @@ function QuickActions({ onCommand, connected, onOpenCharacterSheet, onOpenSpellB
             className={`quick-action-btn ${cmd.action === 'config' ? 'settings-btn' : ''}`}
             style={{ borderColor: cmd.color }}
             onClick={() => handleClick(cmd)}
-            disabled={!connected}
+            disabled={cmd.action === 'settings' ? false : !connected}
             title={cmd.text}
           >
             <span className="quick-action-icon">{cmd.label}</span>

@@ -21,6 +21,7 @@ import SpellBookModal from './components/SpellBookModal';
 import HelpModal from './components/HelpModal';
 import SkillTreeModal from './components/SkillTreeModal';
 import ConfigModal from './components/ConfigModal';
+import Settings from './components/Settings';
 
 /**
  * Main application component for DD4 Web Client
@@ -81,6 +82,9 @@ function App() {
   const [helpContent, setHelpContent] = useState(null);
   const [configOptions, setConfigOptions] = useState(null); // Config state from server (Char.Config GMCP)
   const [showConfigModal, setShowConfigModal] = useState(false);
+  const [serverProfiles, setServerProfiles] = useState([]);
+  const [activeProfile, setActiveProfile] = useState(null);
+  const [showSettingsModal, setShowSettingsModal] = useState(false);
   const ws = useRef(null);
   const reconnectTimeoutRef = useRef(null);
   const reconnectAttemptRef = useRef(0); // Use ref to track attempts for closure issues
@@ -125,6 +129,65 @@ function App() {
       setAssignedAliases(Array(8).fill(null));
     }
   }, [characterName]);
+
+  // Initialize server profiles from localStorage with locked defaults
+  useEffect(() => {
+    const savedProfiles = localStorage.getItem('dd4_server_profiles');
+    const savedActiveId = localStorage.getItem('dd4_active_profile');
+    
+    let profiles = [];
+    
+    if (savedProfiles) {
+      try {
+        profiles = JSON.parse(savedProfiles);
+      } catch (e) {
+        console.error('Failed to parse saved profiles:', e);
+      }
+    }
+    
+    // If no profiles exist, create default locked profiles
+    if (profiles.length === 0) {
+      profiles = [
+        {
+          id: 'default_dev',
+          name: 'Dev',
+          wsUrl: 'ws://localhost:8080',
+          description: 'Local development server',
+          isLocked: true,
+          createdAt: Date.now()
+        },
+        {
+          id: 'default_prod',
+          name: 'Prod',
+          wsUrl: 'wss://dragons-domain.org:8888',
+          description: 'Production server',
+          isLocked: true,
+          createdAt: Date.now()
+        }
+      ];
+      
+      // Save default profiles
+      localStorage.setItem('dd4_server_profiles', JSON.stringify(profiles));
+    }
+    
+    setServerProfiles(profiles);
+    
+    // Set active profile
+    let active = null;
+    if (savedActiveId) {
+      active = profiles.find(p => p.id === savedActiveId);
+    }
+    
+    // Default to Dev profile if no active profile found
+    if (!active) {
+      active = profiles.find(p => p.id === 'default_dev') || profiles[0];
+      if (active) {
+        localStorage.setItem('dd4_active_profile', active.id);
+      }
+    }
+    
+    setActiveProfile(active);
+  }, []);
 
   // Load maps.json on mount
   useEffect(() => {
@@ -218,6 +281,30 @@ function App() {
     previousEquipment.current = equipment;
   }, [equipment, isFighting]);
 
+  // Handle saving server profiles from Settings modal
+  const handleSaveProfiles = (profiles, activeId) => {
+    setServerProfiles(profiles);
+    const active = profiles.find(p => p.id === activeId);
+    setActiveProfile(active);
+    
+    // Save to localStorage
+    localStorage.setItem('dd4_server_profiles', JSON.stringify(profiles));
+    localStorage.setItem('dd4_active_profile', activeId);
+    
+    // If switching profiles while connected, disconnect
+    if (connected && active.id !== activeProfile?.id) {
+      isManualDisconnect.current = true;
+      ws.current?.close();
+      addMessage('Disconnected to switch servers. Reconnecting...', 'system');
+      
+      // Reconnect after brief delay
+      setTimeout(() => {
+        isManualDisconnect.current = false;
+        connectWebSocket();
+      }, 500);
+    }
+  };
+
   // Connect to WebSocket gateway with reconnection logic
   const connectWebSocket = () => {
     // Connection state guard - prevent duplicate connections
@@ -230,12 +317,11 @@ function App() {
       return;
     }
     
-    // Connect to the WebSocket gateway
-    // In production, this should be configurable
-    const wsUrl = 'ws://localhost:8080';
+    // Connect to the WebSocket gateway using active profile
+    const wsUrl = activeProfile?.wsUrl || 'wss://localhost:8080';
     
     try {
-      console.log('Connecting to WebSocket...');
+      console.log('Connecting to WebSocket:', wsUrl);
       ws.current = new WebSocket(wsUrl);
 
       ws.current.onopen = () => {
@@ -371,7 +457,10 @@ function App() {
   };
 
   useEffect(() => {
-    connectWebSocket();
+    // Only connect once activeProfile is loaded
+    if (activeProfile) {
+      connectWebSocket();
+    }
 
     // Cleanup on unmount
     return () => {
@@ -386,7 +475,7 @@ function App() {
         ws.current = null;
       }
     };
-  }, []);
+  }, [activeProfile]);
 
   /**
    * Handle manual reconnection triggered by user
@@ -970,6 +1059,7 @@ function App() {
               sendCommand('config');
               setShowConfigModal(true);
             }}
+            onOpenSettings={() => setShowSettingsModal(true)}
           />
         </div>
         <div className="header-right">
@@ -1198,6 +1288,16 @@ function App() {
           configOptions={configOptions}
           onCommand={sendCommand}
           onClose={() => setShowConfigModal(false)}
+          connected={connected}
+        />
+      )}
+
+      {showSettingsModal && (
+        <Settings
+          profiles={serverProfiles}
+          activeProfile={activeProfile}
+          onSave={handleSaveProfiles}
+          onClose={() => setShowSettingsModal(false)}
           connected={connected}
         />
       )}
