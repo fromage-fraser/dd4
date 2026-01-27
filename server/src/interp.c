@@ -2886,15 +2886,20 @@ void interpret(CHAR_DATA *ch, char *argument)
 
         /*
          * Record completed command
+         * Skip if character was extracted (e.g., quit, purge, slay)
+         * to prevent accessing freed memory
          */
-        sprintf(last_command, "Command '%s'\nIssued by '%s' (%s)\nMaster is '%s'\n"
-                              "*** Command was completed successfully ***\n",
-                logline,
-                IS_NPC(ch) ? ch->short_descr : ch->name,
-                IS_NPC(ch) ? "NPC" : "player",
-                ch->master ? (IS_NPC(ch->master) ? ch->master->short_descr
-                                                 : ch->master->name)
-                           : "(null)");
+        if (!ch->deleted)
+        {
+                sprintf(last_command, "Command '%s'\nIssued by '%s' (%s)\nMaster is '%s'\n"
+                                      "*** Command was completed successfully ***\n",
+                        logline,
+                        IS_NPC(ch) ? ch->short_descr : ch->name,
+                        IS_NPC(ch) ? "NPC" : "player",
+                        ch->master ? (IS_NPC(ch->master) ? ch->master->short_descr
+                                                         : ch->master->name)
+                                   : "(null)");
+        }
         tail_chain();
         return;
 }

@@ -699,7 +699,12 @@ void game_loop_unix(int control, int wizPort)
                                 else
                                         nanny(d, d->incomm);
 
-                                d->incomm[0] = '\0';
+                                /* Check if descriptor was closed during interpret/nanny/show_string
+                                 * (e.g., player quit). If so, skip accessing descriptor fields.
+                                 * We detect this by checking if d->character is NULL, which is set
+                                 * before close_socket is called. */
+                                if (d->character != NULL || d->connected != CON_PLAYING)
+                                        d->incomm[0] = '\0';
                         }
                 }
 
@@ -829,15 +834,15 @@ void new_descriptor(int control)
                 descriptor_free = descriptor_free->next;
         }
 
-        *dnew           = d_zero;
+        *dnew = d_zero;
         /* Initialise SFX queue state */
         dnew->sfx_head = 0;
         dnew->sfx_tail = 0;
         dnew->sfx_cooldown = 0;
-        memset( dnew->sfx_q, 0, sizeof(dnew->sfx_q) );
+        memset(dnew->sfx_q, 0, sizeof(dnew->sfx_q));
 
-        dnew->descriptor        = desc;
-        dnew->character     = NULL;
+        dnew->descriptor = desc;
+        dnew->character = NULL;
         dnew->connected = CON_GET_NAME;
         dnew->showstr_head = str_dup("");
         dnew->showstr_point = 0;
@@ -3302,10 +3307,13 @@ void show_string(struct descriptor_data *d, char *input)
                 return;
         }
 
-        if (d->original)
+        /* Character may be NULL if they quit while viewing paged text */
+        if (d->original && d->original->pcdata)
                 pagelines = d->original->pcdata->pagelen;
-        else
+        else if (d->character && d->character->pcdata)
                 pagelines = d->character->pcdata->pagelen;
+        else
+                return; /* No valid character, abort show_string */
 
         if (toggle)
         {
