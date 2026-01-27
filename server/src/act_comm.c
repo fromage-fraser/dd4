@@ -29,6 +29,7 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
+#include "sound.h"
 
 /*
  * Local functions.

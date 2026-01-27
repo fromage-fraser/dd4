@@ -30,6 +30,7 @@
 #include <time.h>
 #include "merc.h"
 #include "webgate.h"
+#include "sound.h"
 
 char *const where_name[] =
     {
@@ -3469,7 +3470,7 @@ void do_consider(CHAR_DATA *ch, char *argument)
                 if (hpdiff <= 25)
                         buf = " you can take a tiny bit more damage than $E can.";
                 if (hpdiff <= 0)
-                        buf = " $E can take a tiny bit more damagethan you can.";
+                        buf = " $E can take a tiny bit more damage than you can.";
                 if (hpdiff <= -25)
                         buf = " $E can take a bit more damage than you can.";
                 if (hpdiff <= -50)
@@ -4068,10 +4069,6 @@ void do_practice(CHAR_DATA *ch, char *argument)
         if (!mob)
         {
                 send_to_char("Who is going to teach you?\n\r", ch);
-                if (webgate_has_web_desc(ch))
-                {
-                        webgate_send_skill_tree_error(ch, "You must be at a trainer to practice skills.");
-                }
                 return;
         }
 
@@ -4109,10 +4106,6 @@ void do_practice(CHAR_DATA *ch, char *argument)
                         sprintf(buf, "I'm sorry %s, you haven't the potential to obtain further knowledge.",
                                 ch->name);
                         do_say(mob, buf);
-                        if (webgate_has_web_desc(ch))
-                        {
-                                webgate_send_skill_tree_error(ch, "You don't have any intellectual practice points remaining.");
-                        }
                         return;
                 }
         }
@@ -4123,10 +4116,6 @@ void do_practice(CHAR_DATA *ch, char *argument)
                         sprintf(buf, "I'm sorry %s, you haven't the ability to learn more skills.",
                                 ch->name);
                         do_say(mob, buf);
-                        if (webgate_has_web_desc(ch))
-                        {
-                                webgate_send_skill_tree_error(ch, "You don't have any physical practice points remaining.");
-                        }
                         return;
                 }
         }
@@ -4146,13 +4135,6 @@ void do_practice(CHAR_DATA *ch, char *argument)
                         sprintf(buf, "I'm sorry %s, but I have insufficient knowledge to help you.",
                                 ch->name);
                         do_say(mob, buf);
-                        if (webgate_has_web_desc(ch))
-                        {
-                                if (ch->pcdata->learned[sn] >= 100)
-                                        webgate_send_skill_tree_error(ch, "This skill is already mastered.");
-                                else
-                                        webgate_send_skill_tree_error(ch, "This trainer cannot teach you any more about this skill.");
-                        }
                         return;
                 }
         }
@@ -4167,13 +4149,6 @@ void do_practice(CHAR_DATA *ch, char *argument)
                         sprintf(buf, "I'm sorry %s, but I have insufficient knowledge to help you.",
                                 ch->name);
                         do_say(mob, buf);
-                        if (webgate_has_web_desc(ch))
-                        {
-                                if (ch->pcdata->learned[sn] >= 100)
-                                        webgate_send_skill_tree_error(ch, "This skill is already mastered.");
-                                else
-                                        webgate_send_skill_tree_error(ch, "This trainer cannot teach you any more about this skill.");
-                        }
                         return;
                 }
         }
@@ -4194,26 +4169,6 @@ void do_practice(CHAR_DATA *ch, char *argument)
 
                 sprintf(buf, "I hope my knowledge helps you, %s.", ch->name);
                 do_say(mob, buf);
-
-                /* Update skill tree for web clients */
-                if (ch->desc)
-                {
-                        extern WEB_DESCRIPTOR_DATA *web_descriptor_list;
-                        extern void webgate_send_char_skill_tree(WEB_DESCRIPTOR_DATA * web_desc, CHAR_DATA * ch);
-                        WEB_DESCRIPTOR_DATA *web_desc;
-
-                        /* Find web descriptor for this character */
-                        for (web_desc = web_descriptor_list; web_desc; web_desc = web_desc->next)
-                        {
-                                if (web_desc->mud_desc && web_desc->mud_desc == ch->desc)
-                                {
-                                        webgate_send_char_skills(web_desc, ch);
-                                        webgate_send_char_skill_tree(web_desc, ch);
-                                        break;
-                                }
-                        }
-                }
-
                 return;
         }
         else
@@ -4221,10 +4176,6 @@ void do_practice(CHAR_DATA *ch, char *argument)
                 sprintf(buf, "I'm sorry %s, but you are not ready for that knowledge.",
                         ch->name);
                 do_say(mob, buf);
-                if (webgate_has_web_desc(ch))
-                {
-                        webgate_send_skill_tree_error(ch, "You haven't met the prerequisites for this skill.");
-                }
                 return;
         }
 }
@@ -4534,24 +4485,6 @@ void prac_slist(CHAR_DATA *ch)
         sprintf(foo, "You have {W%d{x {%cphysical{x and {W%d{x {%cintellectual{x practices remaining.\n\r",
                 ch->pcdata->str_prac, str_col, ch->pcdata->int_prac, int_col);
         send_to_char(foo, ch);
-
-        /* Send updated skills to web clients via GMCP */
-        if (ch->desc)
-        {
-                extern WEB_DESCRIPTOR_DATA *web_descriptor_list;
-                extern void webgate_send_char_skills(WEB_DESCRIPTOR_DATA * web_desc, CHAR_DATA * ch);
-                WEB_DESCRIPTOR_DATA *web_desc;
-
-                /* Find web descriptor for this character */
-                for (web_desc = web_descriptor_list; web_desc; web_desc = web_desc->next)
-                {
-                        if (web_desc->mud_desc && web_desc->mud_desc == ch->desc)
-                        {
-                                webgate_send_char_skills(web_desc, ch);
-                                break;
-                        }
-                }
-        }
 
         return;
 }
@@ -5114,10 +5047,6 @@ void do_config(CHAR_DATA *ch, char *argument)
                                  ? "<6>[<40>+<0><556>TELL<0>     <6>]<0> You receive tells.\n\r"
                                  : "<6>[<196>-<0><246>tell<0>     <6>]<0> You don't hear tells.\n\r",
                              ch);
-
-                /* Send config to web clients when displaying config */
-                if (ch->desc)
-                        webgate_notify_gmcp_update(ch->desc);
         }
         else
         {
@@ -5179,379 +5108,9 @@ void do_config(CHAR_DATA *ch, char *argument)
                         buf[0] = UPPER(buf[0]);
                         send_to_char(buf, ch);
                 }
-
-                /* Send GMCP update to telnet clients */
-                if (ch->desc && ch->desc->pProtocol && ch->desc->pProtocol->bGMCP)
-                {
-                        GMCP_VARIABLE var = GMCP_NULL;
-
-                        /* Map bit to GMCP variable */
-                        if (bit == PLR_AUTOEXIT)
-                                var = GMCP_CONFIG_AUTOEXIT;
-                        else if (bit == PLR_AUTOLOOT)
-                                var = GMCP_CONFIG_AUTOLOOT;
-                        else if (bit == PLR_AUTOSAC)
-                                var = GMCP_CONFIG_AUTOSAC;
-                        else if (bit == PLR_AUTOCOIN)
-                                var = GMCP_CONFIG_AUTOCOIN;
-                        else if (bit == PLR_AUTOWIELD)
-                                var = GMCP_CONFIG_AUTOWIELD;
-                        else if (bit == PLR_AUTOLEVEL)
-                                var = GMCP_CONFIG_AUTOLEVEL;
-                        else if (bit == PLR_BLANK)
-                                var = GMCP_CONFIG_BLANK;
-                        else if (bit == PLR_BRIEF)
-                                var = GMCP_CONFIG_BRIEF;
-                        else if (bit == PLR_COMBINE)
-                                var = GMCP_CONFIG_COMBINE;
-                        else if (bit == PLR_PROMPT)
-                                var = GMCP_CONFIG_PROMPT;
-                        else if (bit == PLR_ANSI)
-                                var = GMCP_CONFIG_ANSI;
-                        else if (bit == PLR_TELNET_GA)
-                                var = GMCP_CONFIG_TELNETGA;
-
-                        if (var != GMCP_NULL)
-                        {
-                                UpdateGMCPNumber(ch->desc, var, fSet ? 1 : 0);
-                                SendUpdatedGMCP(ch->desc);
-                        }
-                }
-
-                /* Send config update to web clients */
-                webgate_notify_gmcp_update(ch->desc);
         }
 
         return;
-}
-
-/* Player sound configuration (sconfig) */
-void do_sconfig(CHAR_DATA *ch, char *argument)
-{
-        char arg1[MAX_INPUT_LENGTH], arg2[MAX_INPUT_LENGTH];
-
-        if (IS_NPC(ch))
-                return;
-
-        /* Ensure sensible one-time defaults if zeroed/unset */
-        if (ch->pcdata->snd_master == 0 &&
-            ch->pcdata->snd_env == 0 &&
-            ch->pcdata->snd_music == 0 &&
-            ch->pcdata->snd_foley == 0 &&
-            ch->pcdata->snd_sfx == 0 &&
-            ch->pcdata->snd_ui == 0 &&
-            ch->pcdata->snd_notify == 0)
-        {
-                ch->pcdata->snd_enabled = SND_DEF_ENABLED;
-                ch->pcdata->snd_master = SND_DEF_MASTER;
-                ch->pcdata->snd_env = SND_DEF_ENV;
-                ch->pcdata->snd_music = SND_DEF_MUSIC;
-                ch->pcdata->snd_foley = SND_DEF_FOLEY;
-                ch->pcdata->snd_sfx = SND_DEF_SFX;
-                ch->pcdata->snd_ui = SND_DEF_UI;
-                ch->pcdata->snd_notify = SND_DEF_NOTIFY;
-        }
-
-        argument = one_argument(argument, arg1);
-        argument = one_argument(argument, arg2);
-
-        /* No args or 'status' -> show current settings */
-        if (arg1[0] == '\0' || !str_cmp(arg1, "status"))
-        {
-                send_to_char("<14>[<0> <15>Keyword<0>  <14>]<0> <15>Option<0>\n\r-------------------\n\r", ch);
-
-                send_to_char(ch->pcdata->snd_enabled
-                                 ? "<6>[<40>+<0><556>SOUND<0>    <6>]<0> Sound is on.\n\r"
-                                 : "<6>[<196>-<0><246>sound<0>    <6>]<0> Sound is off.\n\r",
-                             ch);
-
-                const int master = URANGE(0, ch->pcdata->snd_master, 100);
-                const bool snd_on = (ch->pcdata->snd_enabled && master > 0);
-
-                const int v_env = URANGE(0, ch->pcdata->snd_env, 100);
-                const int v_music = URANGE(0, ch->pcdata->snd_music, 100);
-                const int v_foley = URANGE(0, ch->pcdata->snd_foley, 100);
-                const int v_sfx = URANGE(0, ch->pcdata->snd_sfx, 100);
-                const int v_ui = URANGE(0, ch->pcdata->snd_ui, 100);
-                const int v_notify = URANGE(0, ch->pcdata->snd_notify, 100);
-
-                const bool on_env = snd_on && v_env > 0;
-                const bool on_music = snd_on && v_music > 0;
-                const bool on_foley = snd_on && v_foley > 0;
-                const bool on_sfx = snd_on && v_sfx > 0;
-                const bool on_ui = snd_on && v_ui > 0;
-                const bool on_notify = snd_on && v_notify > 0;
-
-                char line[MAX_STRING_LENGTH];
-
-                sprintf(line, "<6>[<40>+<0><556>MASTER<0>   <6>]<0> Master volume:      {W%3d{x\n\r", master);
-                send_to_char(line, ch);
-
-                if (on_env)
-                        sprintf(line, "<6>[<40>+<0><556>AMBIENT<0>  <6>]<0> Environment volume: {W%3d{x\n\r", v_env);
-                else
-                        sprintf(line, "<6>[<196>-<0><246>ambient<0>  <6>]<0> Ambient sound is off.\n\r");
-                send_to_char(line, ch);
-
-                if (on_music)
-                        sprintf(line, "<6>[<40>+<0><556>MUSIC<0>    <6>]<0> Music volume:       {W%3d{x\n\r", v_music);
-                else
-                        sprintf(line, "<6>[<196>-<0><246>music<0>    <6>]<0> Music is off.\n\r");
-                send_to_char(line, ch);
-
-                if (on_foley)
-                        sprintf(line, "<6>[<40>+<0><556>FOLEY<0>    <6>]<0> Foley volume:       {W%3d{x\n\r", v_foley);
-                else
-                        sprintf(line, "<6>[<196>-<0><246>foley<0>    <6>]<0> Foley is off.\n\r");
-                send_to_char(line, ch);
-
-                if (on_sfx)
-                        sprintf(line, "<6>[<40>+<0><556>SFX<0>      <6>]<0> SFX volume:         {W%3d{x\n\r", v_sfx);
-                else
-                        sprintf(line, "<6>[<196>-<0><246>sfx<0>      <6>]<0> SFX is off.\n\r");
-                send_to_char(line, ch);
-
-                if (on_ui)
-                        sprintf(line, "<6>[<40>+<0><556>UI<0>       <6>]<0> UI volume:          {W%3d{x\n\r", v_ui);
-                else
-                        sprintf(line, "<6>[<196>-<0><246>ui<0>       <6>]<0> UI sounds are off.\n\r");
-                send_to_char(line, ch);
-
-                if (on_notify)
-                        sprintf(line, "<6>[<40>+<0><556>NOTIFY<0>   <6>]<0> Notifications:      {W%3d{x\n\r", v_notify);
-                else
-                        sprintf(line, "<6>[<196>-<0><246>notify<0>   <6>]<0> Notification sounds are off.\n\r");
-                send_to_char(line, ch);
-
-                send_to_char("\n\rShortcuts: +sound/-sound, +ambient/-ambient, +notify/-notify\n\r", ch);
-                send_to_char("Setters:   master/ambient/music/foley/sfx/ui/notify <<0..100>\n\r", ch);
-                return;
-        }
-
-        /* +sound / -sound toggles */
-        if (arg1[0] == '+' || arg1[0] == '-')
-        {
-                bool set = (arg1[0] == '+');
-
-                if (!str_cmp(arg1 + 1, "sound"))
-                {
-                        ch->pcdata->snd_enabled = set ? TRUE : FALSE;
-
-                        if (!set && ch->desc && ch->desc->pProtocol && ch->desc->pProtocol->bGMCP)
-                        {
-                                /* Fade everything out politely if turning sound off */
-                                GMCP_Media_Stop(ch->desc, "\"fadeaway\":true,\"fadeout\":800");
-
-                                /* ALSO clear all cached media state so +sound will fully republish */
-                                {
-                                        protocol_t *p = ch->desc->pProtocol;
-
-                                        /* Weather */
-                                        if (p->MediaWeatherName)
-                                        {
-                                                free_string(p->MediaWeatherName);
-                                        }
-                                        p->MediaWeatherName = NULL;
-                                        p->MediaWeatherVol = 0;
-                                        p->MediaWeatherActive = FALSE;
-
-                                        /* Sector (A/B lane) */
-                                        if (p->MediaSectorName)
-                                        {
-                                                free_string((char *)p->MediaSectorName);
-                                        }
-                                        p->MediaSectorName = NULL;
-                                        p->MediaSectorVol = 0;
-                                        p->MediaSectorActive = FALSE;
-                                        /* keep flip state or reset as you prefer; resetting is fine: */
-                                        p->MediaSectorFlip = FALSE;
-
-                                        /* Room */
-                                        if (p->MediaRoomName)
-                                        {
-                                                free_string((char *)p->MediaRoomName);
-                                        }
-                                        p->MediaRoomName = NULL;
-                                        p->MediaRoomVol = 0;
-                                        p->MediaRoomActive = FALSE;
-
-                                        /* Area */
-                                        if (p->MediaAreaName)
-                                        {
-                                                free_string((char *)p->MediaAreaName);
-                                        }
-                                        p->MediaAreaName = NULL;
-                                        p->MediaAreaVol = 0;
-                                        p->MediaAreaActive = FALSE;
-                                }
-                        }
-
-                        if (set && ch->desc && ch->desc->pProtocol && ch->desc->pProtocol->bGMCP)
-                        {
-                                /* Force a full re-assert when turning sound back on */
-                                ch->desc->pProtocol->MediaSuppress = FALSE;
-                                media_env_refresh(ch, ch->in_room, TRUE);
-                                update_weather_for_char(ch);
-                        }
-
-                        send_to_char(set ? "Sound is now {GON{x.\n\r" : "Sound is now {ROFF{x.\n\r", ch);
-                        return;
-                }
-                else if (!str_cmp(arg1 + 1, "ambient"))
-                {
-                        if (set)
-                        {
-                                if (ch->pcdata->snd_env == 0)
-                                        ch->pcdata->snd_env = SND_DEF_ENV;
-
-                                if (ch->pcdata->snd_enabled && ch->desc && ch->desc->pProtocol && ch->desc->pProtocol->bGMCP)
-                                {
-                                        media_env_refresh(ch, ch->in_room, TRUE);
-                                        update_weather_for_char(ch);
-                                }
-
-                                send_to_char("Ambient/environment sound is now {GON{x.\n\r", ch);
-                                log_stringf("WeatherSFX: reassert after sconfig for %s", ch->name);
-                        }
-                        else
-                        {
-                                ch->pcdata->snd_env = 0;
-
-                                if (ch->desc && ch->desc->pProtocol && ch->desc->pProtocol->bGMCP)
-                                {
-                                        /* Stop ambient lanes (room/area/sector/weather) */
-                                        GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.room\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":700");
-                                        GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.area\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":700");
-                                        GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.sector.A\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":700");
-                                        GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.sector.B\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":700");
-                                        GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.weather\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":700");
-
-                                        /* ALSO clear our weather cache so a later toggle ON will republish */
-                                        {
-                                                protocol_t *p = ch->desc->pProtocol;
-                                                if (p)
-                                                {
-                                                        if (p->MediaWeatherName)
-                                                        {
-                                                                free_string(p->MediaWeatherName);
-                                                        }
-                                                        p->MediaWeatherName = NULL;
-                                                        p->MediaWeatherVol = 0;
-                                                        p->MediaWeatherActive = FALSE;
-                                                }
-                                        }
-                                }
-                                send_to_char("Ambient/environment sound is now {ROFF{x.\n\r", ch);
-                        }
-                        return;
-                }
-                else if (!str_cmp(arg1 + 1, "notify"))
-                {
-                        if (set)
-                        {
-                                if (ch->pcdata->snd_notify == 0)
-                                        ch->pcdata->snd_notify = SND_DEF_NOTIFY;
-                                send_to_char("Notifications are now {GON{x.\n\r", ch);
-                        }
-                        else
-                        {
-                                ch->pcdata->snd_notify = 0;
-                                send_to_char("Notifications are now {ROFF{x.\n\r", ch);
-                        }
-                        return;
-                }
-
-                send_to_char("Use +sound/-sound, +ambient/-ambient, or +notify/-notify.\n\r", ch);
-                return;
-        }
-
-        /* value setters */
-        {
-                int *slot = NULL;
-                const char *which = arg1;
-
-                if (!str_cmp(arg1, "master"))
-                        slot = &ch->pcdata->snd_master;
-                else if (!str_cmp(arg1, "ambient") || !str_cmp(arg1, "env") || !str_cmp(arg1, "ambience"))
-                        slot = &ch->pcdata->snd_env;
-                else if (!str_cmp(arg1, "music"))
-                        slot = &ch->pcdata->snd_music;
-                else if (!str_cmp(arg1, "foley"))
-                        slot = &ch->pcdata->snd_foley;
-                else if (!str_cmp(arg1, "sfx"))
-                        slot = &ch->pcdata->snd_sfx;
-                else if (!str_cmp(arg1, "ui"))
-                        slot = &ch->pcdata->snd_ui;
-                else if (!str_cmp(arg1, "notify"))
-                        slot = &ch->pcdata->snd_notify;
-
-                if (!slot)
-                {
-                        send_to_char("Syntax:\n\r", ch);
-                        send_to_char("  sconfig status\n\r", ch);
-                        send_to_char("  +sound | -sound\n\r", ch);
-                        send_to_char("  +ambient | -ambient\n\r", ch);
-                        send_to_char("  +notify  | -notify\n\r", ch);
-                        send_to_char("  master/ambient/music/foley/sfx/ui/notify <0..100>\n\r", ch);
-                        return;
-                }
-
-                if (arg2[0] == '\0')
-                {
-                        char buf[MAX_STRING_LENGTH];
-                        sprintf(buf, "%s is currently {W%3d{x.\n\r", which, URANGE(0, *slot, 100));
-                        send_to_char(buf, ch);
-                        return;
-                }
-
-                *slot = URANGE(0, atoi(arg2), 100);
-
-                {
-                        char buf[MAX_STRING_LENGTH];
-                        sprintf(buf, "%s set to {W%3d{x.\n\r", which, *slot);
-                        send_to_char(buf, ch);
-                }
-
-                if ((!ch->pcdata->snd_enabled || ch->pcdata->snd_master == 0) &&
-                    ch->desc && ch->desc->pProtocol && ch->desc->pProtocol->bGMCP)
-                {
-                        GMCP_Media_Stop(ch->desc, "\"fadeaway\":true,\"fadeout\":800");
-                        return;
-                }
-
-                if ((slot == &ch->pcdata->snd_env) && ch->desc && ch->desc->pProtocol && ch->desc->pProtocol->bGMCP)
-                {
-                        if (*slot == 0)
-                        {
-                                /* Turning ambient down to 0 -> stop ambient AND weather */
-                                GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.room\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":700");
-                                GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.area\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":700");
-                                GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.sector.A\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":700");
-                                GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.sector.B\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":700");
-                                GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.weather\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":700");
-
-                                /* Clear weather cache so future ON will republish */
-                                {
-                                        protocol_t *p = ch->desc->pProtocol;
-                                        if (p)
-                                        {
-                                                if (p->MediaWeatherName)
-                                                {
-                                                        free_string(p->MediaWeatherName);
-                                                }
-                                                p->MediaWeatherName = NULL;
-                                                p->MediaWeatherVol = 0;
-                                                p->MediaWeatherActive = FALSE;
-                                        }
-                                }
-                        }
-                        else
-                        {
-                                media_env_refresh(ch, ch->in_room, TRUE);
-                                update_weather_for_char(ch);
-                        }
-                }
-        }
 }
 
 void do_wizlist(CHAR_DATA *ch, char *argument)
@@ -6027,7 +5586,6 @@ void do_identify(CHAR_DATA *ch, char *argument)
         OBJ_DATA *obj;
         CHAR_DATA *rch;
         int cost;
-        extern void webgate_send_identifier_inventory(CHAR_DATA * ch, CHAR_DATA * identifier);
 
         for (rch = ch->in_room->people; rch; rch = rch->next_in_room)
         {
@@ -6043,8 +5601,8 @@ void do_identify(CHAR_DATA *ch, char *argument)
 
         if (argument[0] == '\0')
         {
-                /* Send GMCP Identifier.Inventory to open modal UI */
-                webgate_send_identifier_inventory(ch, rch);
+                act("$C asks you, 'Which object would you like to identify? (1G fee)'",
+                    ch, NULL, rch, TO_CHAR);
                 return;
         }
 

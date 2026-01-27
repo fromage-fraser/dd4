@@ -113,6 +113,7 @@ is damaged it hardly needs repair.
 & 95 'weapon lore'
 & 30 'engineer base'
 & 30 'runesmith base'
+& 30 'smithy base'
 #31003
 armorer~
 the Armorer~
@@ -1036,6 +1037,7 @@ Nonetheless he appears interested in your presence. He has knowledge to share.
 & 95 'runic arts'
 & 95 'rune casting'
 & 95 'inscription'
+& 30 'smithy base'
 & 30 'engineer base'
 & 30 'runesmith base'
 

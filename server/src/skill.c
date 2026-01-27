@@ -4521,7 +4521,7 @@ void do_smelt (CHAR_DATA *ch, char *argument)
 
         if ((obj->item_type == ITEM_WEAPON) && !is_bladed_weapon(obj))
         {
-                send_to_char("You cant smelt that type of weapon. Find something with a blade.\n\r", ch);
+                send_to_char("You can't smelt that type of weapon. Find something with a blade.\n\r", ch);
                 return;
         }
 
@@ -4537,7 +4537,7 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                                || !str_cmp( wear_flag_name(next), "about")
                                || !str_cmp( wear_flag_name(next), "hold") )
                                 {
-                                        send_to_char("You cant smelt that type of armour.\n\r", ch);
+                                        send_to_char("You can't smelt that type of armour.\n\r", ch);
                                         return;
                                 }
                         }

@@ -30,6 +30,7 @@
 #include <time.h>
 #include "merc.h"
 #include "webgate.h"
+#include "sound.h"
 
 /*
  * Local functions.

@@ -28,6 +28,7 @@
 #include <time.h>
 #include "merc.h"
 #include "webgate.h"
+#include "sound.h"
 /*
  * Externals
  */
@@ -56,6 +57,7 @@ void aggr_update args((void));
 void quest_update args((void)); /* Vassago - quest.c */
 void msdp_update args((void));  /* <--- GMCP */
 void gmcp_update args((void));  /* <--- GMCP */
+void sound_sfx_update args((void)); /* <--- SFX */
 
 /*
  * Advancement stuff.
@@ -2608,6 +2610,8 @@ void update_handler()
                 pulse_msdp = PULSE_PER_SECOND;
                 msdp_update();
         }
+
+        sound_sfx_update();
 
         sprintf(last_function, "calling gmcp_update");
         gmcp_update(); /* Comment this out to disable for troubleshooting */

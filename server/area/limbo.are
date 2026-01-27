@@ -2376,12 +2376,12 @@ Owl's Arena~
 D1
 ~
 ~
-0 -1 85
+8 591 85
 D3
 You see Owl's outdoors testing room.
 ~
 ~
-0 -1 83
+8 591 83
 S
 #85
 Owl's Arena~
@@ -2523,6 +2523,10 @@ S
 
 
 #RESETS
+D 1 84 1 2
+D 1 84 3 2
+
+
 O 1 70 100 70                   Jammer's Guitar to Jammer's Studio
 O 1 72 100 71                   Madboy's Crayons to Madboy's Cell
 M 1 1 1 2                       Puff

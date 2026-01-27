@@ -322,17 +322,17 @@ image:craftloc.webp[Capture.PNG,600,,]
 - Need Docker for Windows Desktop, Windows Subsystem for Linux (2, with a distro +
  also installed--Ubuntu is good), VM enabled in BIOS, and Hyper-V activated
 
-- With distro installed, install `make`, `docker`, and `docker-compose`
+- With distro installed, install `make`, `docker`
 
 - use Powershell terminal in Visual Studio Code
 
-`docker-compose build --no-cache server` +
-`docker-compose up -d server`
+`docker compose build --no-cache server` +
+`docker compose up -d server`
 
 MUD will be on local port 8888
 
 Also for dev build: +
-`docker-compose run --rm --service-ports dev`
+`docker compose run --rm --service-ports dev`
 
 On 127.0.0.1 port 18888
 

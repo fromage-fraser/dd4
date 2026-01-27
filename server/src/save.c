@@ -28,6 +28,7 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
+#include "sound.h"
 
 #if !defined(macintosh)
 extern  int     _filbuf         args((FILE *));
