@@ -1,0 +1,141 @@
+.command-input {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background-color: #0d0d0d;
+  border-top: 1px solid #333;
+  margin: 0 -1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  flex-shrink: 0;
+  flex-grow: 0;
+  align-items: center;
+  min-height: 42px;
+  max-height: 42px;
+}
+
+.command-input input {
+  flex: 1;
+  padding: 0.25rem 0.5rem;
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.2;
+  height: 32px;
+  
+  /* Touch optimization */
+  -webkit-appearance: none; /* Remove iOS styling */
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.command-input input:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 5px rgba(255, 107, 107, 0.3);
+}
+
+.command-input input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.command-input button {
+  padding: 0.25rem 1rem;
+  background-color: #ff6b6b;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+  height: 32px;
+  
+  /* Touch optimization */
+  min-width: 60px;
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+}
+
+.command-input button:hover:not(:disabled) {
+  background-color: #ff5252;
+}
+
+.command-input button:active:not(:disabled) {
+  background-color: #e04444;
+  transform: scale(0.98);
+}
+
+.command-input button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .command-input {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    gap: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    background-color: #0d0d0d;
+    border-top: 2px solid #333;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .command-input input {
+    font-size: 14px;
+    padding: 0.25rem 0.5rem;
+    height: 32px;
+  }
+
+  .command-input button {
+    padding: 0.25rem 1rem;
+    min-width: 60px;
+    height: 32px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .command-input {
+    gap: 0.375rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .command-input input {
+    padding: 0.25rem 0.5rem;
+    height: 32px;
+  }
+
+  .command-input button {
+    padding: 0.25rem 0.75rem;
+    min-width: 50px;
+    font-size: 14px;
+    height: 32px;
+  }
+}
+
+/* Tablet landscape */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .command-input {
+    padding: 0.25rem 0.5rem;
+  }
+
+  .command-input input {
+    font-size: 14px;
+    padding: 0.25rem 0.5rem;
+    height: 32px;
+  }
+
+  .command-input button {
+    height: 32px;
+  }
+}

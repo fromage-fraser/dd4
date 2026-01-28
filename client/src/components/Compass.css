@@ -1,0 +1,361 @@
+.compass {
+  background-color: #2a2a2a;
+  padding: 1rem;
+  border-radius: 4px;
+  border: 1px solid #444;
+}
+
+.compass-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.compass h3 {
+  margin: 0;
+  color: #ff6b6b;
+  font-size: 1rem;
+}
+
+.map-button {
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  border: 2px solid #5da3f0;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.map-button:hover {
+  background: linear-gradient(135deg, #5da3f0 0%, #4a90e2 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+.map-button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Scan button - visually aligned with map button but distinct */
+.scan-button {
+  background: linear-gradient(135deg, #8e44ad 0%, #6f1d9b 100%);
+  border: 2px solid #a678d9;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 0.36rem 0.7rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  margin-right: 0.5rem;
+}
+
+.scan-button:hover {
+  background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+.scan-button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.compass-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.compass-direction {
+  /* Touch-friendly minimum size (48x48px per WCAG) */
+  min-width: 48px;
+  min-height: 48px;
+  padding: 1.2rem;
+  border: 2px solid #444;
+  background-color: #1a1a1a;
+  color: #888;
+  cursor: not-allowed;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  
+  /* Touch optimization */
+  -webkit-tap-highlight-color: rgba(76, 175, 80, 0.3);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.compass-direction.available {
+  background-color: #2a4a2a;
+  color: #4caf50;
+  cursor: pointer;
+  border-color: #4caf50;
+}
+
+.compass-direction.available:hover {
+  background-color: #3a5a3a;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+.compass-direction.available:active {
+  transform: scale(0.95);
+}
+
+.compass-direction:disabled {
+  cursor: not-allowed;
+}
+
+/* Recall button in center */
+.compass-center {
+  min-width: 48px;
+  min-height: 48px;
+  padding: 0.8rem;
+  border: 2px solid #4169e1;
+  background-color: rgba(65, 105, 225, 0.2);
+  color: #6495ed;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: rgba(65, 105, 225, 0.3);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.compass-center:hover {
+  background-color: rgba(65, 105, 225, 0.35);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(65, 105, 225, 0.5);
+}
+
+.compass-center:active {
+  transform: scale(0.95);
+}
+
+.recall-icon {
+  display: block;
+  line-height: 1;
+}
+
+/* Door state styling */
+.compass-direction.door-locked {
+  border-color: #dc143c;
+  background-color: rgba(220, 20, 60, 0.15);
+}
+
+.compass-direction.door-locked.available {
+  background-color: rgba(220, 20, 60, 0.25);
+  border-color: #ff1744;
+  color: #ff6b6b;
+}
+
+.compass-direction.door-locked.available:hover {
+  background-color: rgba(220, 20, 60, 0.35);
+  box-shadow: 0 0 10px rgba(220, 20, 60, 0.5);
+}
+
+.compass-direction.door-closed {
+  border-color: #ffa500;
+  background-color: rgba(255, 165, 0, 0.15);
+}
+
+.compass-direction.door-closed.available {
+  background-color: rgba(255, 165, 0, 0.25);
+  border-color: #ffa500;
+  color: #ffb347;
+}
+
+.compass-direction.door-closed.available:hover {
+  background-color: rgba(255, 165, 0, 0.35);
+  box-shadow: 0 0 10px rgba(255, 165, 0, 0.5);
+}
+
+/* Door icon positioning */
+.door-icon {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 0.7em;
+  opacity: 0.9;
+}
+
+/* Door actions panel */
+.door-actions-panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #2a2a3e 0%, #1f1f2e 100%);
+  border: 2px solid #4a90e2;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  min-width: 280px;
+  max-width: 90vw;
+}
+
+.door-actions-panel h4 {
+  margin: 0 0 1rem 0;
+  color: #4a90e2;
+  font-size: 1.1rem;
+  text-align: center;
+  border-bottom: 1px solid #444;
+  padding-bottom: 0.5rem;
+}
+
+.door-status {
+  text-align: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.status-locked {
+  color: #ff6b6b;
+  background: rgba(220, 20, 60, 0.2);
+  border: 1px solid #dc143c;
+}
+
+.status-closed {
+  color: #ffb347;
+  background: rgba(255, 165, 0, 0.2);
+  border: 1px solid #ffa500;
+}
+
+.status-open {
+  color: #4caf50;
+  background: rgba(76, 175, 80, 0.2);
+  border: 1px solid #4caf50;
+}
+
+.door-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.door-action-btn {
+  padding: 0.75rem 1rem;
+  border: 2px solid #4a90e2;
+  background: linear-gradient(135deg, #357abd 0%, #2a5a8f 100%);
+  color: #fff;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 44px;
+}
+
+.door-action-btn:hover {
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  box-shadow: 0 0 12px rgba(74, 144, 226, 0.5);
+  transform: translateY(-1px);
+}
+
+.door-action-btn:active {
+  transform: translateY(1px);
+}
+
+.door-action-btn.bash {
+  border-color: #ff6b6b;
+  background: linear-gradient(135deg, #dc143c 0%, #b01030 100%);
+}
+
+.door-action-btn.bash:hover {
+  background: linear-gradient(135deg, #ff1744 0%, #dc143c 100%);
+  box-shadow: 0 0 12px rgba(220, 20, 60, 0.5);
+}
+
+.door-action-btn.pick {
+  border-color: #ffb347;
+  background: linear-gradient(135deg, #ff8c00 0%, #cc7000 100%);
+}
+
+.door-action-btn.pick:hover {
+  background: linear-gradient(135deg, #ffa500 0%, #ff8c00 100%);
+  box-shadow: 0 0 12px rgba(255, 165, 0, 0.5);
+}
+
+.door-panel-close {
+  padding: 0.5rem 1rem;
+  border: 1px solid #666;
+  background: #333;
+  color: #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.door-panel-close:hover {
+  background: #444;
+  border-color: #888;
+}
+
+/* Compass center marker */
+.compass-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 1.5rem;
+  user-select: none;
+}
+
+/* Mobile optimizations - larger touch targets */
+@media (max-width: 768px) {
+  .compass {
+    padding: 0.75rem;
+  }
+  
+  .compass h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .compass-grid {
+    gap: 0.75rem;
+  }
+  
+  .compass-direction {
+    min-width: 56px;
+    min-height: 56px;
+    padding: 1.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .compass-direction.available:active {
+    transform: scale(0.92);
+    background-color: #4a6a4a;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .compass-grid {
+    gap: 0.6rem;
+  }
+  
+  .compass-direction {
+    padding: 1.3rem;
+    font-size: 1rem;
+  }
+}

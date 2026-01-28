@@ -31,7 +31,8 @@
 #include <math.h>
 #include "merc.h"
 #include "protocol.h"
-
+#include "webgate.h"
+#include "sound.h"
 
 AFFECT_DATA *affect_free;
 void affect_modify (CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon);
@@ -1034,8 +1035,17 @@ void char_from_room( CHAR_DATA *ch )
                         bug( "Char_from_room: ch not found.", 0 );
         }
 
+        ROOM_INDEX_DATA *old_room = ch->in_room;
+
         ch->in_room      = NULL;
         ch->next_in_room = NULL;
+
+        /* Notify web clients in the room that room contents changed */
+        if (old_room && webgate_room_has_web_clients(old_room))
+        {
+                webgate_notify_room_update(old_room);
+        }
+
         return;
 }
 
@@ -1074,6 +1084,14 @@ void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
         {
                 ++ch->in_room->light;
         }
+
+        /* Refresh environmental media (room > area > sector) for this player */
+        media_env_refresh(ch, pRoomIndex, FALSE);
+        update_weather_for_char(ch);
+
+        /* Notify web clients in the room that room contents changed (both NPCs and players) */
+        if (webgate_room_has_web_clients(pRoomIndex))
+                webgate_notify_room_update(pRoomIndex);
 
         return;
 }

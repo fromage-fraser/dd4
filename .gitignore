@@ -17,3 +17,6 @@
 /server/src/shutdown.txt
 /server/area/bugs.txt
 /server/player/
+
+# Snyk Security Extension - AI Rules (auto-generated)
+.github/instructions/snyk_rules.instructions.md

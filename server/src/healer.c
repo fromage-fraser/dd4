@@ -15,7 +15,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "merc.h"
-
+#include "webgate.h"
 
 struct healer_spell
 {
@@ -23,7 +23,6 @@ struct healer_spell
         char *spell_name;
         int price;
 };
-
 
 void do_heal(CHAR_DATA *ch, char *argument)
 {
@@ -34,46 +33,53 @@ void do_heal(CHAR_DATA *ch, char *argument)
 
         const int NUMBER_SPELLS = 14;
         const struct healer_spell spell_list[14] =
-        {
+            {
                 /*  keyword, spell name, price in gold pieces */
-                { "light",     "cure light wounds",     2     },
-                { "serious",   "cure serious wounds",   5     },
-                { "critical",  "cure critical wounds",  10    },
-                { "heal",      "heal",                  15    },
-                { "power",     "power heal",            35    },
-                { "blindness", "cure blindness",        5     },
-                { "poison",    "cure poison",           5     },
-                { "stabilise", "stabilise",             5     },
-                { "regenerate","regenerate",            35    },
-                { "curse",     "remove curse",          5     },
-                { "refresh",   "refresh",               1     },
-                { "bless",     "bless",                 10    },
-                { "mana",      "restore mana",          40    },
-                { "vitalize",  "vitalize",              120   }
-        };
+                {"light", "cure light wounds", 2},
+                {"serious", "cure serious wounds", 5},
+                {"critical", "cure critical wounds", 10},
+                {"heal", "heal", 15},
+                {"power", "power heal", 35},
+                {"blindness", "cure blindness", 5},
+                {"poison", "cure poison", 5},
+                {"stabilise", "stabilise", 5},
+                {"regenerate", "regenerate", 35},
+                {"curse", "remove curse", 5},
+                {"refresh", "refresh", 1},
+                {"bless", "bless", 10},
+                {"mana", "restore mana", 40},
+                {"vitalize", "vitalize", 120}};
 
-        for ( mob = ch->in_room->people; mob; mob = mob->next_in_room )
+        for (mob = ch->in_room->people; mob; mob = mob->next_in_room)
         {
-                if ( IS_NPC(mob) && IS_SET(mob->act, ACT_IS_HEALER) )
+                if (IS_NPC(mob) && IS_SET(mob->act, ACT_IS_HEALER))
                         break;
         }
 
-        if ( ch->fighting )
+        if (ch->fighting)
         {
-                send_to_char( "Not while fighting!\n\r", ch);
+                send_to_char("Not while fighting!\n\r", ch);
                 return;
         }
 
         if (!mob)
         {
-                send_to_char( "You can't do that here.\n\r", ch );
+                send_to_char("You can't do that here.\n\r", ch);
                 return;
         }
 
-        one_argument(argument,arg);
+        one_argument(argument, arg);
 
         if (arg[0] == '\0')
         {
+                /* For web clients, only send GMCP; skip text output */
+                if (webgate_is_web_client(ch))
+                {
+                        webgate_send_healer_services(ch, mob);
+                        return;
+                }
+
+                /* For telnet clients, show text list */
                 send_to_char("\n\r{WThe following spells are available from the healer:{x\n\r\n\r", ch);
                 for (i = 0; i < NUMBER_SPELLS; i++)
                 {
@@ -84,6 +90,9 @@ void do_heal(CHAR_DATA *ch, char *argument)
                         send_to_char(buf, ch);
                 }
                 send_to_char("\n\rType '{WHEAL <<spell>{x' to receive healing.\n\r", ch);
+
+                /* Send healer services to web client */
+                webgate_send_healer_services(ch, mob);
                 return;
         }
 
@@ -114,21 +123,26 @@ void do_heal(CHAR_DATA *ch, char *argument)
                         if (is_name(arg, "mana"))
                         {
                                 ch->mana += 100;
-                                ch->mana = UMIN(ch->mana,ch->max_mana);
-                                send_to_char("A warm glow passes through you.\n\r",ch);
+                                ch->mana = UMIN(ch->mana, ch->max_mana);
+                                send_to_char("A warm glow passes through you.\n\r", ch);
+
+                                /* Refresh healer services for web client */
+                                webgate_send_healer_services(ch, mob);
                                 return;
                         }
 
                         sn = skill_lookup(spell_list[i].spell_name);
                         if (sn < 0 || sn >= MAX_SKILL)
                                 return;
-                        (*skill_table[sn].spell_fun) (sn, mob->level, mob, ch);
+                        (*skill_table[sn].spell_fun)(sn, mob->level, mob, ch);
+
+                        /* Refresh healer services for web client */
+                        webgate_send_healer_services(ch, mob);
                         return;
                 }
         }
 
         send_to_char("Type HEAL for a list of spells you may select.\n\r", ch);
 }
-
 
 /* EOF healer.c */

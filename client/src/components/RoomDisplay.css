@@ -1,0 +1,110 @@
+.room-display {
+  background-color: #2a2a2a;
+  padding: 1.5rem;
+  border-radius: 4px;
+  border: 1px solid #444;
+  margin-bottom: 1rem;
+}
+
+.room-display.minimized {
+  padding: 0.5rem 0.75rem;
+}
+
+.room-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.minimize-toggle {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: #ddd;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.minimize-toggle:hover {
+  background: rgba(255,255,255,0.02);
+}
+
+.room-name {
+  margin: 0 0 1rem 0;
+  color: #ff6b6b;
+  font-size: 1.3rem;
+  text-shadow: 0 0 5px rgba(255, 107, 107, 0.3);
+}
+
+.room-description {
+  margin: 0 0 1rem 0;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+.extra-descr-keyword {
+  color: #4a90e2;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.extra-descr-keyword:hover {
+  color: #5aa0f2;
+  text-decoration-style: solid;
+  text-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
+
+.room-exits {
+  color: #4caf50;
+  font-size: 0.9rem;
+}
+
+.exits-label {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.exits-list {
+  color: #8bc34a;
+}
+
+/* Visibility restriction styling */
+.visibility-message {
+  color: #cccccc;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 1rem;
+  margin: 0;
+  font-style: italic;
+}
+
+.room-display.visibility-restricted .room-name {
+  color: #666;
+  text-shadow: none;
+}
+
+/* Fade in/out animations */
+.fade-in {
+  animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

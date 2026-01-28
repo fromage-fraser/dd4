@@ -29,6 +29,7 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
+#include "webgate.h"
 #include "sound.h"
 
 char *const where_name[] =
@@ -4068,6 +4069,10 @@ void do_practice(CHAR_DATA *ch, char *argument)
         if (!mob)
         {
                 send_to_char("Who is going to teach you?\n\r", ch);
+                if (webgate_has_web_desc(ch))
+                {
+                        webgate_send_skill_tree_error(ch, "You must be at a trainer to practice skills.");
+                }
                 return;
         }
 
@@ -4105,6 +4110,10 @@ void do_practice(CHAR_DATA *ch, char *argument)
                         sprintf(buf, "I'm sorry %s, you haven't the potential to obtain further knowledge.",
                                 ch->name);
                         do_say(mob, buf);
+                        if (webgate_has_web_desc(ch))
+                        {
+                                webgate_send_skill_tree_error(ch, "You don't have any intellectual practice points remaining.");
+                        }
                         return;
                 }
         }
@@ -4115,6 +4124,10 @@ void do_practice(CHAR_DATA *ch, char *argument)
                         sprintf(buf, "I'm sorry %s, you haven't the ability to learn more skills.",
                                 ch->name);
                         do_say(mob, buf);
+                        if (webgate_has_web_desc(ch))
+                        {
+                                webgate_send_skill_tree_error(ch, "You don't have any physical practice points remaining.");
+                        }
                         return;
                 }
         }
@@ -4134,6 +4147,13 @@ void do_practice(CHAR_DATA *ch, char *argument)
                         sprintf(buf, "I'm sorry %s, but I have insufficient knowledge to help you.",
                                 ch->name);
                         do_say(mob, buf);
+                        if (webgate_has_web_desc(ch))
+                        {
+                                if (ch->pcdata->learned[sn] >= 100)
+                                        webgate_send_skill_tree_error(ch, "This skill is already mastered.");
+                                else
+                                        webgate_send_skill_tree_error(ch, "This trainer cannot teach you any more about this skill.");
+                        }
                         return;
                 }
         }
@@ -4148,6 +4168,13 @@ void do_practice(CHAR_DATA *ch, char *argument)
                         sprintf(buf, "I'm sorry %s, but I have insufficient knowledge to help you.",
                                 ch->name);
                         do_say(mob, buf);
+                        if (webgate_has_web_desc(ch))
+                        {
+                                if (ch->pcdata->learned[sn] >= 100)
+                                        webgate_send_skill_tree_error(ch, "This skill is already mastered.");
+                                else
+                                        webgate_send_skill_tree_error(ch, "This trainer cannot teach you any more about this skill.");
+                        }
                         return;
                 }
         }
@@ -4168,6 +4195,24 @@ void do_practice(CHAR_DATA *ch, char *argument)
 
                 sprintf(buf, "I hope my knowledge helps you, %s.", ch->name);
                 do_say(mob, buf);
+                /* Update skill tree for web clients */
+                if (ch->desc)
+                {
+                        extern WEB_DESCRIPTOR_DATA *web_descriptor_list;
+                        extern void webgate_send_char_skill_tree(WEB_DESCRIPTOR_DATA * web_desc, CHAR_DATA * ch);
+                        WEB_DESCRIPTOR_DATA *web_desc;
+
+                        /* Find web descriptor for this character */
+                        for (web_desc = web_descriptor_list; web_desc; web_desc = web_desc->next)
+                        {
+                                if (web_desc->mud_desc && web_desc->mud_desc == ch->desc)
+                                {
+                                        webgate_send_char_skills(web_desc, ch);
+                                        webgate_send_char_skill_tree(web_desc, ch);
+                                        break;
+                                }
+                        }
+                }
                 return;
         }
         else
@@ -4175,8 +4220,33 @@ void do_practice(CHAR_DATA *ch, char *argument)
                 sprintf(buf, "I'm sorry %s, but you are not ready for that knowledge.",
                         ch->name);
                 do_say(mob, buf);
+                if (webgate_has_web_desc(ch))
+                {
+                        webgate_send_skill_tree_error(ch, "You haven't met the prerequisites for this skill.");
+                }
                 return;
         }
+}
+
+void do_skilltree(CHAR_DATA *ch, char *argument)
+{
+        WEB_DESCRIPTOR_DATA *web_desc;
+
+        if (IS_NPC(ch))
+                return;
+
+        /* Find the web descriptor for this character */
+        for (web_desc = web_descriptor_list; web_desc; web_desc = web_desc->next)
+        {
+                if (web_desc->mud_desc && web_desc->mud_desc->character == ch)
+                {
+                        webgate_send_char_skill_tree(web_desc, ch);
+                        send_to_char("Skill tree data sent to GUI.\n\r", ch);
+                        return;
+                }
+        }
+
+        send_to_char("You must be using the web client to view the skill tree.\n\r", ch);
 }
 
 void do_train(CHAR_DATA *ch, char *argument)
@@ -4463,6 +4533,23 @@ void prac_slist(CHAR_DATA *ch)
         sprintf(foo, "You have {W%d{x {%cphysical{x and {W%d{x {%cintellectual{x practices remaining.\n\r",
                 ch->pcdata->str_prac, str_col, ch->pcdata->int_prac, int_col);
         send_to_char(foo, ch);
+        /* Send updated skills to web clients via GMCP */
+        if (ch->desc)
+        {
+                extern WEB_DESCRIPTOR_DATA *web_descriptor_list;
+                extern void webgate_send_char_skills(WEB_DESCRIPTOR_DATA * web_desc, CHAR_DATA * ch);
+                WEB_DESCRIPTOR_DATA *web_desc;
+
+                /* Find web descriptor for this character */
+                for (web_desc = web_descriptor_list; web_desc; web_desc = web_desc->next)
+                {
+                        if (web_desc->mud_desc && web_desc->mud_desc == ch->desc)
+                        {
+                                webgate_send_char_skills(web_desc, ch);
+                                break;
+                        }
+                }
+        }
 
         return;
 }
@@ -5025,6 +5112,9 @@ void do_config(CHAR_DATA *ch, char *argument)
                                  ? "<6>[<40>+<0><556>TELL<0>     <6>]<0> You receive tells.\n\r"
                                  : "<6>[<196>-<0><246>tell<0>     <6>]<0> You don't hear tells.\n\r",
                              ch);
+                /* Send config to web clients when displaying config */
+                if (ch->desc)
+                        webgate_notify_gmcp_update(ch->desc);
         }
         else
         {
@@ -5086,6 +5176,46 @@ void do_config(CHAR_DATA *ch, char *argument)
                         buf[0] = UPPER(buf[0]);
                         send_to_char(buf, ch);
                 }
+                /* Send GMCP update to telnet clients */
+                if (ch->desc && ch->desc->pProtocol && ch->desc->pProtocol->bGMCP)
+                {
+                        GMCP_VARIABLE var = GMCP_NULL;
+
+                        /* Map bit to GMCP variable */
+                        if (bit == PLR_AUTOEXIT)
+                                var = GMCP_CONFIG_AUTOEXIT;
+                        else if (bit == PLR_AUTOLOOT)
+                                var = GMCP_CONFIG_AUTOLOOT;
+                        else if (bit == PLR_AUTOSAC)
+                                var = GMCP_CONFIG_AUTOSAC;
+                        else if (bit == PLR_AUTOCOIN)
+                                var = GMCP_CONFIG_AUTOCOIN;
+                        else if (bit == PLR_AUTOWIELD)
+                                var = GMCP_CONFIG_AUTOWIELD;
+                        else if (bit == PLR_AUTOLEVEL)
+                                var = GMCP_CONFIG_AUTOLEVEL;
+                        else if (bit == PLR_BLANK)
+                                var = GMCP_CONFIG_BLANK;
+                        else if (bit == PLR_BRIEF)
+                                var = GMCP_CONFIG_BRIEF;
+                        else if (bit == PLR_COMBINE)
+                                var = GMCP_CONFIG_COMBINE;
+                        else if (bit == PLR_PROMPT)
+                                var = GMCP_CONFIG_PROMPT;
+                        else if (bit == PLR_ANSI)
+                                var = GMCP_CONFIG_ANSI;
+                        else if (bit == PLR_TELNET_GA)
+                                var = GMCP_CONFIG_TELNETGA;
+
+                        if (var != GMCP_NULL)
+                        {
+                                UpdateGMCPNumber(ch->desc, var, fSet ? 1 : 0);
+                                SendUpdatedGMCP(ch->desc);
+                        }
+                }
+
+                /* Send config update to web clients */
+                webgate_notify_gmcp_update(ch->desc);
         }
 
         return;
@@ -5564,6 +5694,7 @@ void do_identify(CHAR_DATA *ch, char *argument)
         OBJ_DATA *obj;
         CHAR_DATA *rch;
         int cost;
+        extern void webgate_send_identifier_inventory(CHAR_DATA * ch, CHAR_DATA * identifier);
 
         for (rch = ch->in_room->people; rch; rch = rch->next_in_room)
         {
@@ -5579,6 +5710,8 @@ void do_identify(CHAR_DATA *ch, char *argument)
 
         if (argument[0] == '\0')
         {
+                /* Send GMCP Identifier.Inventory to open modal UI */
+                webgate_send_identifier_inventory(ch, rch);
                 act("$C asks you, 'Which object would you like to identify? (1G fee)'",
                     ch, NULL, rch, TO_CHAR);
                 return;
