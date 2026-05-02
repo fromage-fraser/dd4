@@ -8665,7 +8665,7 @@ void spell_animate_weapon(int sn, int level, CHAR_DATA *ch, void *vo)
 
                 if (saves_spell(level, victim))
                 {
-                        send_to_char("They moved too quickly.\n\r", ch);
+                        send_to_char("{cThey moved too quickly.{x\n\r", ch);
                         return;
                 }
 
@@ -8698,7 +8698,7 @@ void spell_animate_weapon(int sn, int level, CHAR_DATA *ch, void *vo)
 
                 if (saves_spell(level, victim))
                 {
-                        send_to_char("They moved too quickly.\n\r", ch);
+                        send_to_char("{cThey moved too quickly.{x\n\r", ch);
                         return;
                 }
 

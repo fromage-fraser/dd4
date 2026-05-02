@@ -1791,6 +1791,9 @@ void extract_char( CHAR_DATA *ch, bool fPull )
                 return;
         }
 
+        /* Grab protocol (may be NULL for NPCs or non-GMCP connections) */
+        protocol_t *p = (ch->desc ? ch->desc->pProtocol : NULL);
+
         if ( fPull )
         {
             char* name;
@@ -1818,6 +1821,9 @@ void extract_char( CHAR_DATA *ch, bool fPull )
                 strip_mount (ch);
         }
 
+        /* --- Internal bounce to LIMBO with media suppressed --- */
+        if (p) p->MediaSuppress = TRUE;
+
         /* Prevent reporting of removal of perm affect items to active players */
         char_from_room (ch);
         char_to_room (ch, get_room_index(ROOM_VNUM_LIMBO));
@@ -1831,20 +1837,105 @@ void extract_char( CHAR_DATA *ch, bool fPull )
         }
 
         char_from_room (ch);
-
         if ( !fPull )
         {
-                ROOM_INDEX_DATA *location;
+                /* We're moving the living character to Purgatory: re-enable media now. */
+                if (p) {
+                    p->MediaSuppress = FALSE;
+                }
 
-                if ( !( location = get_room_index( ROOM_VNUM_PURGATORY_A ) ) )
+                ROOM_INDEX_DATA *location = get_room_index( ROOM_VNUM_PURGATORY_A );
+                if ( !location )
                 {
                         bug( "Purgatory A does not exist!", 0 );
-                        char_to_room( ch, get_room_index( ROOM_VNUM_ALTAR ) );
+                        location = get_room_index( ROOM_VNUM_ALTAR );
                 }
-                else
-                        char_to_room( ch, location );
+
+                /* Move to Purgatory (this should normally assert ambience). */
+                char_to_room( ch, location );
+
+                /* --- Belt-and-braces: if nothing is active after the move, assert explicitly. --- */
+                if ( ch->desc && ch->desc->pProtocol
+                  && ch->desc->pProtocol->bGMCP
+                  && ch->desc->pProtocol->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA] )
+                {
+                        protocol_t *pp = ch->desc->pProtocol;
+
+                        if (!pp->MediaRoomActive && !pp->MediaAreaActive && !pp->MediaSectorActive)
+                        {
+                                /* Ensure base URL (harmless if already set). */
+                                GMCP_Media_Default(ch->desc, "https://www.dragons-domain.org/main/gui/custom/audio/");
+
+                                const char *want_name = NULL;
+                                int         want_vol  = 0;
+                                const char *want_key  = NULL;
+
+                                /* Prefer room ambience if present… */
+                                if (ch->in_room
+                                 && ch->in_room->ambient_sound && *ch->in_room->ambient_sound
+                                 && ch->in_room->ambient_volume > 0)
+                                {
+                                        want_name = ch->in_room->ambient_sound;
+                                        want_vol  = URANGE(1, ch->in_room->ambient_volume, 100);
+                                        want_key  = "dd.ambient.room";
+                                }
+                                /* …else area ambience… */
+                                else if (ch->in_room && ch->in_room->area
+                                      && ch->in_room->area->ambient_sound && *ch->in_room->area->ambient_sound
+                                      && ch->in_room->area->ambient_volume > 0)
+                                {
+                                        want_name = ch->in_room->area->ambient_sound;
+                                        want_vol  = URANGE(1, ch->in_room->area->ambient_volume, 100);
+                                        want_key  = "dd.ambient.area";
+                                }
+                                /* …else sector fallback (if defined). */
+                                else if (ch->in_room
+                                      && ch->in_room->sector_type >= 0
+                                      && ch->in_room->sector_type < SECT_MAX)
+                                {
+                                        extern const sector_ambience_t sector_ambience_defaults[SECT_MAX];
+                                        const sector_ambience_t *sa = &sector_ambience_defaults[ch->in_room->sector_type];
+                                        if (sa && sa->name && *sa->name && sa->volume > 0) {
+                                                want_name = sa->name;
+                                                want_vol  = URANGE(1, sa->volume, 100);
+                                                want_key  = "dd.ambient.sector";
+                                        }
+                                }
+
+                                if (want_name && want_key)
+                                {
+                                        char opts[256];
+                                        snprintf(opts, sizeof(opts),
+                                                 "\"type\":\"music\",\"tag\":\"environment\",\"key\":\"%s\","
+                                                 "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":600",
+                                                 want_key, want_vol);
+                                        GMCP_Media_Play(ch->desc, want_name, opts);
+
+                                        /* Update cache so subsequent moves behave idempotently. */
+                                        if (!str_cmp(want_key, "dd.ambient.room")) {
+                                                if (pp->MediaRoomName) free_string((char*)pp->MediaRoomName);
+                                                pp->MediaRoomName   = str_dup(want_name);
+                                                pp->MediaRoomVol    = want_vol;
+                                                pp->MediaRoomActive = TRUE;
+                                        } else if (!str_cmp(want_key, "dd.ambient.area")) {
+                                                if (pp->MediaAreaName) free_string((char*)pp->MediaAreaName);
+                                                pp->MediaAreaName   = str_dup(want_name);
+                                                pp->MediaAreaVol    = want_vol;
+                                                pp->MediaAreaActive = TRUE;
+                                        } else {
+                                                if (pp->MediaSectorName) free_string((char*)pp->MediaSectorName);
+                                                pp->MediaSectorName   = str_dup(want_name);
+                                                pp->MediaSectorVol    = want_vol;
+                                                pp->MediaSectorActive = TRUE;
+                                        }
+                                }
+                        }
+                }
+
                 return;
         }
+
+        /* fPull == TRUE : full extraction (quit, purge, etc.) */
 
         if ( IS_NPC( ch ) )
                 --ch->pIndexData->count;
@@ -1864,6 +1955,30 @@ void extract_char( CHAR_DATA *ch, bool fPull )
                 ch->desc->character = NULL;
 
         delete_char = TRUE;
+
+        /* Stop all sound/media as the last thing the client sees */
+        if (!IS_NPC(ch) && ch->desc)
+        {
+                /* Clear suppression: we want these Stop frames to go out */
+                if (p) p->MediaSuppress = FALSE;
+
+                /* Stop our lanes explicitly, then a global stop as a belt-and-braces */
+                GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.room\",\"type\":\"music\"");
+                GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.area\",\"type\":\"music\"");
+                GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.sector\",\"type\":\"music\"");
+                GMCP_Media_Stop(ch->desc, NULL);
+
+                /* Also clear cached protocol state if present */
+                if (p)
+                {
+                        if (p->MediaRoomName)   { free_string((char*)p->MediaRoomName);   p->MediaRoomName   = NULL; }
+                        if (p->MediaAreaName)   { free_string((char*)p->MediaAreaName);   p->MediaAreaName   = NULL; }
+                        if (p->MediaSectorName) { free_string((char*)p->MediaSectorName); p->MediaSectorName = NULL; }
+                        p->MediaRoomVol = p->MediaAreaVol = p->MediaSectorVol = 0;
+                        p->MediaRoomActive = p->MediaAreaActive = p->MediaSectorActive = FALSE;
+                }
+        }
+
         return;
 }
 
