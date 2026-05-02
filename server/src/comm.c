@@ -51,6 +51,7 @@
 #include <time.h>
 #include <execinfo.h>
 #include "merc.h"
+#include "sound.h"
 #include "protocol.h"
 #include "webgate.h"
 
@@ -544,6 +545,23 @@ void create_ident(DESCRIPTOR_DATA *d, long ip, sh_int port)
 
 #endif
 
+#define SFX_TICK_USEC 50000  /* 50ms = 20Hz; tune this */
+
+static void sfx_io_tick(void)
+{
+        DESCRIPTOR_DATA *d;
+
+        /* dequeue and emit GMCP media events into outbuf */
+        sound_sfx_update();
+
+        /* flush output immediately so the client receives the GMCP now */
+        for (d = descriptor_list; d; d = d->next)
+        {
+                if (d->outtop > 0)
+                        process_output(d, TRUE);
+        }
+}
+
 void game_loop_unix(int control, int wizPort)
 {
         static struct timeval null_time;
@@ -766,15 +784,26 @@ void game_loop_unix(int control, int wizPort)
 
                         if (secDelta > 0 || (secDelta == 0 && usecDelta > 0))
                         {
-                                struct timeval stall_time;
+                                long remaining_usec = secDelta * 1000000L + usecDelta;
 
-                                stall_time.tv_usec = usecDelta;
-                                stall_time.tv_sec = secDelta;
-
-                                if (select(0, NULL, NULL, NULL, &stall_time) < 0)
+                                while (remaining_usec > 0)
                                 {
-                                        perror("Game_loop: select: stall");
-                                        exit(1);
+                                        long slice = remaining_usec > SFX_TICK_USEC ? SFX_TICK_USEC : remaining_usec;
+
+                                        struct timeval stall_time;
+                                        stall_time.tv_sec  = 0;
+                                        stall_time.tv_usec = slice;
+
+                                        if (select(0, NULL, NULL, NULL, &stall_time) < 0)
+                                        {
+                                                perror("Game_loop: select: stall");
+                                                exit(1);
+                                        }
+
+                                        /* run fast sfx + flush during the wait */
+                                        sfx_io_tick();
+
+                                        remaining_usec -= slice;
                                 }
                         }
                 }

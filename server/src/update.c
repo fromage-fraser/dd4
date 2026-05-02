@@ -1319,9 +1319,9 @@ static void update_weather_ambient(void)
                                         d->pProtocol->MediaWeatherVol = ev->default_volume;
                                         d->pProtocol->MediaWeatherActive = TRUE;
 
-                                        log_stringf("WeatherSFX: started loop %s vol=%d for %s",
+                                        if ( SND_LOG_ENABLED) { log_stringf("WeatherSFX: started loop %s vol=%d for %s",
                                                     ev->files[0], ev->default_volume,
-                                                    d->character->name);
+                                                    d->character->name); }
                                 }
                         }
                 }
@@ -1338,8 +1338,8 @@ static void update_weather_ambient(void)
                                 d->pProtocol->MediaWeatherName = NULL;
                                 d->pProtocol->MediaWeatherActive = FALSE;
 
-                                log_stringf("WeatherSFX: stopped weather loop for %s",
-                                            d->character ? d->character->name : "(null)");
+                                if ( SND_LOG_ENABLED) { log_stringf("WeatherSFX: stopped weather loop for %s",
+                                            d->character ? d->character->name : "(null)"); }
                         }
                 }
         }

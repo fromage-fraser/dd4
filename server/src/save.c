@@ -256,6 +256,16 @@ void fwrite_char (CHAR_DATA *ch, FILE *fp)
                  ch->colors[8],
                  ch->colors[9]);
 
+        fprintf(fp, "SndCfg      %d %d %d %d %d %d %d %d\n",
+                ch->pcdata->snd_enabled,
+                ch->pcdata->snd_master,
+                ch->pcdata->snd_env,
+                ch->pcdata->snd_music,
+                ch->pcdata->snd_foley,
+                ch->pcdata->snd_sfx,
+                ch->pcdata->snd_ui,
+                ch->pcdata->snd_notify);
+
         fprintf(fp, "CurRecall   %d\n", ch->pcdata->current_recall);
         fprintf(fp, "SpellAttk   %d\n", ch->pcdata->spell_attacks);
         fprintf(fp, "Blink       %d\n", ch->pcdata->blink);
@@ -1085,6 +1095,21 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         KEY("Silver", ch->silver, fread_number( fp, &stat ));
                         KEY("SbCla", ch->sub_class, fread_number( fp, &stat ));
                         KEY("Slept", ch->pcdata->slept, fread_number( fp, &stat ));
+
+                        if (!str_cmp(word, "SndCfg"))
+                        {
+                                ch->pcdata->snd_enabled = fread_number(fp, &stat);
+                                ch->pcdata->snd_master  = fread_number(fp, &stat);
+                                ch->pcdata->snd_env     = fread_number(fp, &stat);
+                                ch->pcdata->snd_music   = fread_number(fp, &stat);
+                                ch->pcdata->snd_foley   = fread_number(fp, &stat);
+                                ch->pcdata->snd_sfx     = fread_number(fp, &stat);
+                                ch->pcdata->snd_ui      = fread_number(fp, &stat);
+                                ch->pcdata->snd_notify  = fread_number(fp, &stat);
+                                fMatch = TRUE;
+                                break;
+                        }
+
                         KEY("SplPrac", ch->pcdata->int_prac, fread_number( fp, &stat ));
                         KEY("StatTrain", ch->pcdata->stat_train, fread_number( fp, &stat ));
                         KEY("SpellAttk", ch->pcdata->spell_attacks, fread_number( fp, &stat ));

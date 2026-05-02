@@ -402,7 +402,7 @@ Enter thy Name: ~
 
 -1 MOTD~
 {x
-    [03 September 2025]
+    [03 May 2026]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -415,12 +415,12 @@ Enter thy Name: ~
     We're also active on a Discord server at {Yhttps://discord.gg/aGzmAWmXYb{x
     if you'd like to jump in and say hi!
 
+    {WCOMBAT SOUNDS{x: Beta combat SFX are in, use the SCONFIG command to
+    modify volume or switch on/off.
+
     {WMAJOR WEBSITE UPDATE{x: Website is now looking a lot more 2025 than 2003,
     and has a lot of cool new stuff on it.  Have a look and check out HELP
     WEBSITE.
-
-    {WNEW SKILL - 'DIG'{x: Players may now DIG for buried loot, see HELP DIG.
-    Buried treasure has also been added to the automated quest system.
 
 
 To Enter the Dragons Domain press <<Return>.
@@ -659,6 +659,10 @@ Gezhp, Owl and Shade
 {W January 2026{x
 
 - msp.txt added to track progress on sound implementation and its use
+
+{W May 2026{x
+
+- Implemented some combat sounds (beta).  Sconfig saves to pfile.
 
 ~
 

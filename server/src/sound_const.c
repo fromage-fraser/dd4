@@ -61,18 +61,79 @@ static const sound_event_def sound_events[] = {
     { "sfx.door.close.generic",  { "sfx/door/close_generic.mp3",  NULL }, { 0,0 }, 55, "sfx"   , 1 },
     { "sfx.door.lock.generic",   { "sfx/door/lock_generic.mp3",   NULL }, { 0,0 }, 55, "sfx"   , 1 },
     { "sfx.door.unlock.generic", { "sfx/door/unlock_generic.mp3", NULL }, { 0,0 }, 55, "sfx"   , 1 },
-    { "sfx.consume.eat",         { "sfx/misc/eat_generic.mp3",    NULL }, { 0,0 }, 65, "sfx"   , 1 },
-    { "sfx.consume.drink",       { "sfx/misc/drink_generic.mp3",  NULL }, { 0,0 }, 65, "sfx"   , 1 },
-    { "sfx.consume.pill",        { "sfx/misc/pill_generic.mp3",   NULL }, { 0,0 }, 65, "sfx"   , 1 },
-    { "sfx.consume.quaff",       { "sfx/misc/quaff_generic.mp3",  NULL }, { 0,0 }, 65, "sfx"   , 1 },
-    { "sfx.consume.smoke",       { "sfx/misc/smoke_generic.mp3",  NULL }, { 0,0 }, 65, "sfx"   , 1 },
-    { "sfx.consume.smear",       { "sfx/misc/smear_generic.mp3",  NULL }, { 0,0 }, 65, "sfx"   , 1 },
+    { "sfx.consume.eat",         { "sfx/misc/eat_generic.mp3",    NULL }, { 0,0 }, 35, "sfx"   , 1 },
+    { "sfx.consume.drink",       { "sfx/misc/drink_generic.mp3",  NULL }, { 0,0 }, 35, "sfx"   , 1 },
+    { "sfx.consume.pill",        { "sfx/misc/pill_generic.mp3",   NULL }, { 0,0 }, 35, "sfx"   , 1 },
+    { "sfx.consume.quaff",       { "sfx/misc/quaff_generic.mp3",  NULL }, { 0,0 }, 35, "sfx"   , 1 },
+    { "sfx.consume.smoke",       { "sfx/misc/smoke_generic.mp3",  NULL }, { 0,0 }, 35, "sfx"   , 1 },
+    { "sfx.consume.smear",       { "sfx/misc/smear_generic.mp3",  NULL }, { 0,0 }, 35, "sfx"   , 1 },
+
+    /* SFX - Combat */
+
+    {
+        "sfx.combat.hit.organic",
+        {
+            "sfx/combat/hit/pool.organic.1.mp3",
+            "sfx/combat/hit/pool.organic.2.mp3",
+            "sfx/combat/hit/pool.organic.3.mp3",
+            "sfx/combat/hit/pool.organic.4.mp3",
+            "sfx/combat/hit/pool.organic.5.mp3",
+            "sfx/combat/hit/pool.organic.6.mp3",
+            "sfx/combat/hit/pool.organic.7.mp3",
+            "sfx/combat/hit/pool.organic.8.mp3",
+            "sfx/combat/hit/pool.organic.9.mp3",
+            "sfx/combat/hit/pool.organic.10.mp3",
+            "sfx/combat/hit/pool.organic.11.mp3",
+            "sfx/combat/hit/pool.organic.12.mp3",
+            "sfx/combat/hit/pool.organic.13.mp3",
+            "sfx/combat/hit/pool.organic.14.mp3",
+            "sfx/combat/hit/pool.organic.15.mp3",
+            "sfx/combat/hit/pool.organic.16.mp3",
+            "sfx/combat/hit/pool.organic.17.mp3",
+            "sfx/combat/hit/pool.organic.18.mp3",
+            "sfx/combat/hit/pool.organic.19.mp3",
+            "sfx/combat/hit/pool.organic.20.mp3",
+            "sfx/combat/hit/pool.organic.21.mp3",
+            "sfx/combat/hit/pool.organic.22.mp3",
+            "sfx/combat/hit/pool.organic.23.mp3",
+            "sfx/combat/hit/pool.organic.24.mp3",
+            "sfx/combat/hit/pool.organic.25.mp3",
+            "sfx/combat/hit/pool.organic.26.mp3",
+            "sfx/combat/hit/pool.organic.27.mp3",
+            "sfx/combat/hit/pool.organic.28.mp3",
+            "sfx/combat/hit/pool.organic.29.mp3",
+            "sfx/combat/hit/pool.organic.30.mp3",
+            "sfx/combat/hit/pool.organic.31.mp3",
+            NULL
+        },
+        { 0 },
+        65,
+        "sfx",
+        1
+    },
+    { "sfx.combat.hit.inorganic", { "sfx/combat/hit/pool.inorganic.1.mp3",
+                                    "sfx/combat/hit/pool.inorganic.2.mp3",
+                                    "sfx/combat/hit/pool.inorganic.3.mp3",
+                                    "sfx/combat/hit/pool.inorganic.4.mp3",
+                                    "sfx/combat/hit/pool.inorganic.5.mp3",
+                                    "sfx/combat/hit/pool.inorganic.6.mp3",
+                                    "sfx/combat/hit/pool.inorganic.7.mp3",
+                                    "sfx/combat/hit/pool.inorganic.8.mp3",
+                                    "sfx/combat/hit/pool.inorganic.9.mp3",
+                                    "sfx/combat/hit/pool.inorganic.10.mp3",
+                                    "sfx/combat/hit/pool.inorganic.11.mp3",
+                                    "sfx/combat/hit/pool.inorganic.12.mp3",
+                                    "sfx/combat/hit/pool.inorganic.13.mp3",
+        NULL },
+    { 0 },
+    65, "sfx", 1 },
+
+    { "sfx.combat.mobdeath.1",     { "sfx/combat/mobdeath/1.mp3", NULL }, { 0,0 }, 40, "sfx", 1 },
+    { "sfx.combat.mobdeath.2",     { "sfx/combat/mobdeath/2.mp3", NULL }, { 0,0 }, 40, "sfx", 1 },
 
     /* Weather */
     { "ambient.weather.rain",      { "ambient/weather/rain_loop1.mp3", NULL }, {0,0}, 15, "ambient.weather", 1 },
     { "ambient.weather.lightning", { "ambient/weather/lightning_loop1.mp3", NULL }, {0,0}, 15, "ambient.weather", 1 },
-
-
 
     /* Sentinel */
     { NULL, { NULL }, { 0 }, 0, NULL, 0 }
@@ -87,5 +148,30 @@ const sound_event_def *sound_event_lookup(const char *key)
     }
     return NULL;
 }
+
+/* Map damage max thresholds to event keys (ORGANIC keys for test pass). */
+typedef struct combat_hit_tier_map
+{
+        int         max_damage;
+        const char *key_organic;
+        const char *key_inorganic; /* keep for later; can be NULL for now */
+} COMBAT_HIT_TIER_MAP;
+
+const COMBAT_HIT_TIER_MAP combat_hit_tiers[] =
+{
+        { 8,  "sfx.combat.hit.scratch.organic",   "sfx.combat.hit.scratch.inorganic"   },
+        { 16, "sfx.combat.hit.graze.organic",     "sfx.combat.hit.graze.inorganic"     },
+        { 24, "sfx.combat.hit.hit.organic",       "sfx.combat.hit.hit.inorganic"       },
+        { 32, "sfx.combat.hit.injure.organic",    "sfx.combat.hit.injure.inorganic"    },
+        { 40, "sfx.combat.hit.wound.organic",     "sfx.combat.hit.wound.inorganic"     },
+        { 48, "sfx.combat.hit.maul.organic",      "sfx.combat.hit.maul.inorganic"      },
+        { 56, "sfx.combat.hit.decimate.organic",  "sfx.combat.hit.decimate.inorganic"  },
+        { 64, "sfx.combat.hit.mangle.organic",    "sfx.combat.hit.mangle.inorganic"    },
+        { 72, "sfx.combat.hit.maim.organic",      "sfx.combat.hit.maim.inorganic"      },
+
+        { -1, NULL, NULL } /* sentinel */
+};
+
+extern const COMBAT_HIT_TIER_MAP combat_hit_tiers[];
 
 /*---END SOUND STUFF---*/
