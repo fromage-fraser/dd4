@@ -17,6 +17,13 @@ hungry as you stand near this starving man.
 85 0 0 0d0+0 0d0+0
 16|32|256 0
 8 8 1
+>fight_prog 10~
+    c starve $N
+~
+>fight_prog 10~
+    c parch $N
+~
+|
 < reserved~ elite~
 #5601
 War~
@@ -88,7 +95,7 @@ make you his next meal.
 8 8 1
 #5605
 rat rats~
-the pestilence filled rats~
+the pestilence-filled rat~
 A large rat is spreading disease.
 ~
 Unnatural red eyes sit atop the head of this amazingly large rat.

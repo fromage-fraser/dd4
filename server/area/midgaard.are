@@ -46,9 +46,9 @@ A tall grocer, who moves two 200 pounds bags of flour around on his shoulders.
 #3003
 weaponsmith~
 the weaponsmith~
-A weaponsmith.
+A grizzled weaponsmith watches you closely.
 ~
-A young weaponsmith, who still has lots to learn.
+A grizzled weaponsmith, who has plied his trade for many years.
 ~
 2|32768|16777216 0 900 S
 50 2 2 1d1+30000 1d8+32
@@ -2672,7 +2672,10 @@ The note reads:
 S
 #3011
 The Weapon Shop~
-You are inside the weapon shop.  There is a small note on the counter.
+You are inside a cramped weapon shop. Racks of swords, axes, and polearms line
+the walls, their edges catching the dim forge-light. Behind a scarred wooden
+counter, crossbows and daggers are displayed just out of reach, alongside a few
+rarer, rune-etched pieces.
 ~
 0 8|1024 0
 D2
