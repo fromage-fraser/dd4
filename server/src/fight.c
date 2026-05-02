@@ -27,6 +27,7 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
+#include "sound.h"
 
 /*
  * Local functions.
@@ -2747,6 +2748,13 @@ void death_cry(CHAR_DATA *ch)
 
         act(msg, ch, NULL, NULL, TO_ROOM);
 
+        /* SFX: death cry (same room) */
+        if ( IS_NPC( ch ) && ( !IS_INORGANIC( ch ) ) )
+                sound_mobdeath_room( ch->in_room, 40 );
+
+        if ( IS_NPC( ch ) && ( IS_INORGANIC( ch ) ) )
+                sound_mobdeath_room_key( ch->in_room, "sfx.combat.mobdeath.2", 40 );
+
         /* Body parts */
         if (body_part_vnum != 0)
         {
@@ -2778,23 +2786,32 @@ void death_cry(CHAR_DATA *ch)
         }
 
         /* Death cry heard in neighbouring locations */
-        if (!IS_NPC(ch) || CAN_SPEAK(ch))
+        if ( IS_NPC(ch) || CAN_SPEAK(ch) )
         {
-                if (IS_NPC(ch))
+                if ( IS_NPC(ch) )
                         strcpy(msg, "You hear something's death cry.");
                 else
                         strcpy(msg, "You hear someone's death cry.");
 
                 was_in_room = ch->in_room;
 
-                for (door = 0; door <= 5; door++)
+                for ( door = 0; door < 6; door++ )
                 {
                         EXIT_DATA *pexit;
 
-                        if ((pexit = was_in_room->exit[door]) && pexit->to_room && pexit->to_room != was_in_room)
+                        if ( (pexit = was_in_room->exit[door])
+                        && pexit->to_room
+                        && pexit->to_room != was_in_room )
                         {
                                 ch->in_room = pexit->to_room;
-                                act(msg, ch, NULL, NULL, TO_ROOM);
+
+                                act( msg, ch, NULL, NULL, TO_ROOM );
+
+                                /* SFX: death cry heard next door too */
+                                if ( IS_NPC(ch) && !IS_INORGANIC(ch) )
+                                        sound_mobdeath_room( ch->in_room, 40 );
+                                else if ( IS_NPC(ch) && IS_INORGANIC(ch) )
+                                        sound_mobdeath_room_key( ch->in_room, "sfx.combat.mobdeath.2", 40 );
                         }
                 }
 
@@ -3291,6 +3308,8 @@ void dam_message(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison,
 
         if (dt == TYPE_HIT)
         {
+                sound_combat_hit_sfx( ch, victim, dam, dt );
+
                 /* Combat gagging level 2 now gags 'misses' -- Owl */
 
                 if (((ch->gag == 2) && (dam > 0)))
