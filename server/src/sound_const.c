@@ -55,6 +55,7 @@ static const sound_event_def sound_events[] = {
     { "notify.channel.arena",    { "notify/channel_arena.mp3",    NULL }, { 0,0 }, 65, "notify", 1 },
     { "notify.channel.newbie",   { "notify/channel_newbie.mp3",   NULL }, { 0,0 }, 60, "notify", 1 },
     { "notify.auction.start",    { "notify/auction_start.mp3",    NULL }, { 0,0 }, 65, "notify", 1 },
+    { "notify.disconnect",       { "notify/disconnect.mp3",       NULL }, { 0, 0}, 60, "notify", 1 },
 
     /* SFX */
     { "sfx.door.open.generic",   { "sfx/door/open_generic.mp3",   NULL }, { 0,0 }, 60, "sfx"   , 1 },
@@ -111,25 +112,407 @@ static const sound_event_def sound_events[] = {
         "sfx",
         1
     },
-    { "sfx.combat.hit.inorganic", { "sfx/combat/hit/pool.inorganic.1.mp3",
-                                    "sfx/combat/hit/pool.inorganic.2.mp3",
-                                    "sfx/combat/hit/pool.inorganic.3.mp3",
-                                    "sfx/combat/hit/pool.inorganic.4.mp3",
-                                    "sfx/combat/hit/pool.inorganic.5.mp3",
-                                    "sfx/combat/hit/pool.inorganic.6.mp3",
-                                    "sfx/combat/hit/pool.inorganic.7.mp3",
-                                    "sfx/combat/hit/pool.inorganic.8.mp3",
-                                    "sfx/combat/hit/pool.inorganic.9.mp3",
-                                    "sfx/combat/hit/pool.inorganic.10.mp3",
-                                    "sfx/combat/hit/pool.inorganic.11.mp3",
-                                    "sfx/combat/hit/pool.inorganic.12.mp3",
-                                    "sfx/combat/hit/pool.inorganic.13.mp3",
-        NULL },
-    { 0 },
-    65, "sfx", 1 },
+    {
+        "sfx.combat.hit.inorganic",
+        {
+            "sfx/combat/hit/pool.inorganic.1.mp3",
+            "sfx/combat/hit/pool.inorganic.2.mp3",
+            "sfx/combat/hit/pool.inorganic.3.mp3",
+            "sfx/combat/hit/pool.inorganic.4.mp3",
+            "sfx/combat/hit/pool.inorganic.5.mp3",
+            "sfx/combat/hit/pool.inorganic.6.mp3",
+            "sfx/combat/hit/pool.inorganic.7.mp3",
+            "sfx/combat/hit/pool.inorganic.8.mp3",
+            "sfx/combat/hit/pool.inorganic.9.mp3",
+            "sfx/combat/hit/pool.inorganic.10.mp3",
+            "sfx/combat/hit/pool.inorganic.11.mp3",
+            "sfx/combat/hit/pool.inorganic.12.mp3",
+            "sfx/combat/hit/pool.inorganic.13.mp3",
+            NULL
+        },
+        { 0 },
+        65,
+        "sfx",
+        1
+    },
 
-    { "sfx.combat.mobdeath.1",     { "sfx/combat/mobdeath/1.mp3", NULL }, { 0,0 }, 40, "sfx", 1 },
-    { "sfx.combat.mobdeath.2",     { "sfx/combat/mobdeath/2.mp3", NULL }, { 0,0 }, 40, "sfx", 1 },
+    { "sfx.combat.slash.organic",
+        {
+            "sfx/combat/slash/pool.organic.1.mp3",
+            "sfx/combat/slash/pool.organic.2.mp3",
+            "sfx/combat/slash/pool.organic.3.mp3",
+            "sfx/combat/slash/pool.organic.4.mp3",
+            "sfx/combat/slash/pool.organic.5.mp3",
+            NULL
+        },
+        { 0 },
+        65,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.slash.inorganic",
+        {
+            "sfx/combat/slash/pool.inorganic.1.mp3",
+            "sfx/combat/slash/pool.inorganic.2.mp3",
+            "sfx/combat/slash/pool.inorganic.3.mp3",
+            "sfx/combat/slash/pool.inorganic.4.mp3",
+            "sfx/combat/slash/pool.inorganic.5.mp3",
+            NULL
+        },
+        { 0 },
+        65,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.whip.organic",
+        {
+            "sfx/combat/whip/pool.organic.1.mp3",
+            "sfx/combat/whip/pool.organic.2.mp3",
+            "sfx/combat/whip/pool.organic.3.mp3",
+            "sfx/combat/whip/pool.organic.4.mp3",
+            "sfx/combat/whip/pool.organic.5.mp3",
+            "sfx/combat/whip/pool.organic.6.mp3",
+            "sfx/combat/whip/pool.organic.7.mp3",
+            "sfx/combat/whip/pool.organic.8.mp3",
+            NULL
+        },
+        { 0 },
+        65,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.whip.inorganic",
+        {
+            "sfx/combat/whip/pool.inorganic.1.mp3",
+            "sfx/combat/whip/pool.inorganic.2.mp3",
+            "sfx/combat/whip/pool.inorganic.3.mp3",
+            "sfx/combat/whip/pool.inorganic.4.mp3",
+            "sfx/combat/whip/pool.inorganic.5.mp3",
+            "sfx/combat/whip/pool.inorganic.6.mp3",
+            "sfx/combat/whip/pool.inorganic.7.mp3",
+            "sfx/combat/whip/pool.inorganic.8.mp3",
+            NULL
+        },
+        { 0 },
+        65,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.chop.organic",
+        {
+            "sfx/combat/chop/pool.organic.1.mp3",
+            "sfx/combat/chop/pool.organic.2.mp3",
+            "sfx/combat/chop/pool.organic.3.mp3",
+            "sfx/combat/chop/pool.organic.4.mp3",
+            "sfx/combat/chop/pool.organic.5.mp3",
+            "sfx/combat/chop/pool.organic.6.mp3",
+            "sfx/combat/chop/pool.organic.7.mp3",
+            "sfx/combat/chop/pool.organic.8.mp3",
+            NULL
+        },
+        { 0 },
+        85,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.chop.inorganic",
+        {
+            "sfx/combat/chop/pool.inorganic.1.mp3",
+            "sfx/combat/chop/pool.inorganic.2.mp3",
+            "sfx/combat/chop/pool.inorganic.3.mp3",
+            "sfx/combat/chop/pool.inorganic.4.mp3",
+            "sfx/combat/chop/pool.inorganic.5.mp3",
+            "sfx/combat/chop/pool.inorganic.6.mp3",
+            "sfx/combat/chop/pool.inorganic.7.mp3",
+            "sfx/combat/chop/pool.inorganic.8.mp3",
+            NULL
+        },
+        { 0 },
+        85,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.bow.organic",
+        {
+            "sfx/combat/bow/pool.organic.1.mp3",
+            "sfx/combat/bow/pool.organic.2.mp3",
+            "sfx/combat/bow/pool.organic.3.mp3",
+            "sfx/combat/bow/pool.organic.4.mp3",
+            NULL
+        },
+        { 0 },
+        100,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.bow.inorganic",
+        {
+            "sfx/combat/bow/pool.inorganic.1.mp3",
+            "sfx/combat/bow/pool.inorganic.2.mp3",
+            "sfx/combat/bow/pool.inorganic.3.mp3",
+            "sfx/combat/bow/pool.inorganic.4.mp3",
+            NULL
+        },
+        { 0 },
+        100,
+        "sfx",
+        1
+    },
+    { "sfx.combat.stab.organic",
+        {
+            "sfx/combat/stab/pool.organic.1.mp3",
+            "sfx/combat/stab/pool.organic.2.mp3",
+            "sfx/combat/stab/pool.organic.3.mp3",
+            "sfx/combat/stab/pool.organic.4.mp3",
+            "sfx/combat/stab/pool.organic.5.mp3",
+            NULL
+        },
+        { 0 },
+        100,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.stab.inorganic",
+        {
+            "sfx/combat/stab/pool.inorganic.1.mp3",
+            "sfx/combat/stab/pool.inorganic.2.mp3",
+            "sfx/combat/stab/pool.inorganic.3.mp3",
+            "sfx/combat/stab/pool.inorganic.4.mp3",
+            "sfx/combat/stab/pool.inorganic.5.mp3",
+            NULL
+        },
+        { 0 },
+        100,
+        "sfx",
+        1
+    },
+
+        { "sfx.combat.pound.organic",
+        {
+            "sfx/combat/pound/pool.organic.1.mp3",
+            "sfx/combat/pound/pool.organic.2.mp3",
+            "sfx/combat/pound/pool.organic.3.mp3",
+            "sfx/combat/pound/pool.organic.4.mp3",
+            NULL
+        },
+        { 0 },
+        65,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.pound.inorganic",
+        {
+            "sfx/combat/pound/pool.inorganic.1.mp3",
+            "sfx/combat/pound/pool.inorganic.2.mp3",
+            "sfx/combat/pound/pool.inorganic.3.mp3",
+            NULL
+        },
+        { 0 },
+        65,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.pierce.organic",
+        {
+            "sfx/combat/pierce/pool.organic.1.mp3",
+            "sfx/combat/pierce/pool.organic.2.mp3",
+            "sfx/combat/pierce/pool.organic.3.mp3",
+            "sfx/combat/pierce/pool.organic.4.mp3",
+            NULL
+        },
+        { 0 },
+        100,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.pierce.inorganic",
+        {
+            "sfx/combat/pierce/pool.inorganic.1.mp3",
+            "sfx/combat/pierce/pool.inorganic.2.mp3",
+            "sfx/combat/pierce/pool.inorganic.3.mp3",
+            "sfx/combat/pierce/pool.inorganic.4.mp3",
+            NULL
+        },
+        { 0 },
+        100,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.shield_block",
+        {
+                "sfx/combat/shield_block/pool.1.mp3",
+                "sfx/combat/shield_block/pool.2.mp3",
+                "sfx/combat/shield_block/pool.3.mp3",
+                "sfx/combat/shield_block/pool.4.mp3",
+                NULL
+        },
+        { 0 },
+        60,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.miss",
+        {
+                "sfx/combat/miss/pool.1.mp3",
+                "sfx/combat/miss/pool.2.mp3",
+                "sfx/combat/miss/pool.3.mp3",
+                "sfx/combat/miss/pool.4.mp3",
+                "sfx/combat/miss/pool.5.mp3",
+                NULL
+        },
+        { 0 },
+        60,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.dodge",
+        {
+                "sfx/combat/dodge/pool.1.mp3",
+                "sfx/combat/dodge/pool.2.mp3",
+                "sfx/combat/dodge/pool.3.mp3",
+                "sfx/combat/dodge/pool.4.mp3",
+                "sfx/combat/dodge/pool.5.mp3",
+                NULL
+        },
+        { 0 },
+        60,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.parry.weapon",
+        {
+            "sfx/combat/parry/pool.weapon.1.mp3",
+            "sfx/combat/parry/pool.weapon.2.mp3",
+            "sfx/combat/parry/pool.weapon.3.mp3",
+            "sfx/combat/parry/pool.weapon.4.mp3",
+            "sfx/combat/parry/pool.weapon.5.mp3",
+            NULL
+        },
+        { 0 },
+        60,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.parry.noweapon",
+        {
+            "sfx/combat/parry/pool.noweapon.1.mp3",
+            "sfx/combat/parry/pool.noweapon.2.mp3",
+            "sfx/combat/parry/pool.noweapon.3.mp3",
+            "sfx/combat/parry/pool.noweapon.4.mp3",
+            "sfx/combat/parry/pool.noweapon.5.mp3",
+            "sfx/combat/parry/pool.noweapon.6.mp3",
+            "sfx/combat/parry/pool.noweapon.7.mp3",
+            NULL
+        },
+        { 0 },
+        60,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.acrobatics",
+        {
+                "sfx/combat/acrobatics/pool.1.mp3",
+                "sfx/combat/acrobatics/pool.2.mp3",
+                "sfx/combat/acrobatics/pool.3.mp3",
+                NULL
+        },
+        { 0 },
+        60,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.transfix",
+        {
+                "sfx/combat/transfix/pool.1.mp3",
+                "sfx/combat/transfix/pool.2.mp3",
+                "sfx/combat/transfix/pool.3.mp3",
+                NULL
+        },
+        { 0 },
+        60,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.mobdeath.1",     { "sfx/combat/mobdeath/1.mp3", NULL }, { 0,0 }, 70, "sfx", 1 },
+    { "sfx.combat.mobdeath.2",     { "sfx/combat/mobdeath/2.mp3", NULL }, { 0,0 }, 70, "sfx", 1 },
+
+    { "sfx.spell.cast.generic",
+        {
+                "sfx/spell/cast/generic.1.mp3",
+                "sfx/spell/cast/generic.2.mp3",
+                NULL
+        },
+        { 0 },
+        70,
+        "sfx",
+        1
+    },
+
+    { "sfx.spell.wearoff.generic",
+        {
+                "sfx/spell/wearoff/generic.1.mp3",
+                "sfx/spell/wearoff/generic.2.mp3",
+                NULL
+        },
+        { 0 },
+        70,
+        "sfx",
+        1
+    },
+
+    { "sfx.spell.cast.fireshield",
+        {
+                "sfx/spell/cast/fireshield.1.mp3",
+                "sfx/spell/cast/fireshield.2.mp3",
+                NULL
+        },
+        { 0 },
+        70,
+        "sfx",
+        1
+    },
+
+    { "sfx.spell.wearoff.fireshield",
+        {
+                "sfx/spell/wearoff/fireshield.1.mp3",
+                NULL
+        },
+        { 0 },
+        70,
+        "sfx",
+        1
+    },
+
+    { "sfx.spell.cast.fireball",
+        {
+                "sfx/spell/cast/fireball.1.mp3",
+                "sfx/spell/cast/fireball.2.mp3",
+                NULL
+        },
+        { 0 },
+        70,
+        "sfx",
+        1
+    },
 
     /* Weather */
     { "ambient.weather.rain",      { "ambient/weather/rain_loop1.mp3", NULL }, {0,0}, 15, "ambient.weather", 1 },

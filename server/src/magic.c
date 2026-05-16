@@ -31,6 +31,7 @@
 #include <time.h>
 #include "merc.h"
 #include "webgate.h"
+#include "sound.h"
 
 /*
  * Local functions.
@@ -648,6 +649,7 @@ void do_cast(CHAR_DATA *ch, char *argument)
                         }
                 }
 
+                sound_spell_sfx( ch, sn, "cast" );
                 (*skill_table[sn].spell_fun)(sn, URANGE(1, ch->level, MAX_LEVEL), ch, vo);
 
                 /*
@@ -675,6 +677,7 @@ void do_cast(CHAR_DATA *ch, char *argument)
 
                                 spell_attack_number = 2;
 
+                                /* sound_spell_sfx( ch, sn, "cast" ); */
                                 (*skill_table[sn].spell_fun)(sn, URANGE(1, ch->level, MAX_LEVEL), ch, vo);
 
                                 if (ch->fighting != victim)
@@ -716,6 +719,7 @@ void do_cast(CHAR_DATA *ch, char *argument)
 
                         spell_attack_number = 2;
 
+                        /* sound_spell_sfx( ch, sn, "cast" ); */
                         (*skill_table[sn].spell_fun)(sn, URANGE(1, ch->level, MAX_LEVEL), ch, vo);
 
                         if (ch->fighting != victim)
@@ -757,6 +761,7 @@ void do_cast(CHAR_DATA *ch, char *argument)
 
                         spell_attack_number = 3;
 
+                        /* sound_spell_sfx( ch, sn, "cast" ); */
                         (*skill_table[sn].spell_fun)(sn, URANGE(1, ch->level, MAX_LEVEL), ch, vo);
 
                         if (ch->fighting != victim)
@@ -798,6 +803,7 @@ void do_cast(CHAR_DATA *ch, char *argument)
 
                         spell_attack_number = 4;
 
+                        /* sound_spell_sfx( ch, sn, "cast" ); */
                         (*skill_table[sn].spell_fun)(sn, URANGE(1, ch->level, MAX_LEVEL), ch, vo);
 
                         if (ch->fighting != victim)

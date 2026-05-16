@@ -1,6 +1,13 @@
 #AREA Forstal~ The Plane of Nirvana~
 20 45 5 100
 
+#AREA_SPECIAL
+ambient ambient/area/nirvana.mp3
+ambient_vol 30
+reset_msg Reality shivers; Nirvana’s horizon folds and reforms.
+~
+$
+
 #MOBILES
 #8100
 tridrone~
@@ -933,7 +940,7 @@ Looking west you can see a long hallway.
 S
 #8139
 A Junction in the hallway~
-Your are standing in a junction, exits lead in all the cardinal directions.
+You are standing in a junction, exits lead in all the cardinal directions.
 ~
 81 8 0
 D0

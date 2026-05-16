@@ -1991,21 +1991,34 @@ bool check_parry(CHAR_DATA *ch, CHAR_DATA *victim)
                         return FALSE;
         }
 
+
         if (victim->class == CLASS_BRAWLER)
         {
                 if (!IS_NPC(ch) && !ch->gag)
+                {
+                        sound_combat_parry_sfx( ch, victim );
                         act("<222>$C pre-empts your attack.<0>", ch, NULL, victim, TO_CHAR);
+                }
 
                 if (!IS_NPC(victim) && !victim->gag)
+                {
+                        sound_combat_parry_sfx( ch, victim );
                         act("<220>You pre-empt $n's attack.<0>", ch, NULL, victim, TO_VICT);
+                }
         }
         else
         {
                 if (!IS_NPC(ch) && !ch->gag)
+                {
+                        sound_combat_parry_sfx( ch, victim );
                         act("<222>$C parries your attack.<0>", ch, NULL, victim, TO_CHAR);
+                }
 
                 if (!IS_NPC(victim) && !victim->gag)
+                {
+                        sound_combat_parry_sfx( ch, victim );
                         act("<220>You parry $n's attack.<0>", ch, NULL, victim, TO_VICT);
+                }
         }
 
         return TRUE;
@@ -2048,10 +2061,16 @@ bool check_shield_block(CHAR_DATA *ch, CHAR_DATA *victim)
                 return FALSE;
 
         if (!IS_NPC(victim) && !victim->gag)
+        {
+                sound_combat_shield_block_sfx( ch, victim );
                 act("<51>You block $n's attack with your shield.<0>", ch, NULL, victim, TO_VICT);
+        }
 
         if (!IS_NPC(ch) && !ch->gag)
+        {
+                sound_combat_shield_block_sfx( ch, victim );
                 act("<87>Your blow bounces off $N's shield.<0>", ch, NULL, victim, TO_CHAR);
+        }
 
         return TRUE;
 }
@@ -2229,10 +2248,16 @@ bool check_dodge(CHAR_DATA *ch, CHAR_DATA *victim)
                 return FALSE;
 
         if (!IS_NPC(ch) && !ch->gag)
+        {
+                sound_combat_dodge_sfx( ch, victim );
                 act("<76>$C dodges your attack.<0>", ch, NULL, victim, TO_CHAR);
+        }
 
         if (!IS_NPC(victim) && !victim->gag)
+        {
+                sound_combat_dodge_sfx( ch, victim );
                 act("<113>You dodge $n's attack.<0>", ch, NULL, victim, TO_VICT);
+        }
 
         return TRUE;
 }
@@ -2273,10 +2298,16 @@ bool check_acrobatics(CHAR_DATA *ch, CHAR_DATA *victim)
                 return FALSE;
 
         if (!IS_NPC(ch) && !ch->gag)
+        {
+                sound_combat_acrobatics_sfx( ch, victim );
                 act("<123>$C evades your attack.<0>", ch, NULL, victim, TO_CHAR);
+        }
 
         if (!victim->gag)
+        {
+                sound_combat_acrobatics_sfx( ch, victim );
                 act("<14>You flip away from $n's attack!<0>", ch, NULL, victim, TO_VICT);
+        }
 
         return TRUE;
 }
@@ -2307,10 +2338,16 @@ bool check_aura_of_fear(CHAR_DATA *ch, CHAR_DATA *victim)
                 return FALSE;
 
         if (!IS_NPC(ch) && !ch->gag)
+        {
+                sound_combat_transfix_sfx( ch, victim );
                 act("<129>You cower in fear at the sight of $C!<0>", ch, NULL, victim, TO_CHAR);
+        }
 
         if (!victim->gag)
+        {
+                sound_combat_transfix_sfx( ch, victim );
                 act("<93>You terrify $n, preventing $m from attacking!<0>", ch, NULL, victim, TO_VICT);
+        }
 
         return TRUE;
 }
@@ -3299,6 +3336,10 @@ void dam_message(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison,
 
         punct = (dam <= 24) ? '.' : '!';
 
+        /* if ( dam <= 0 && ch->gag < 2 ) */
+        if ( dam <= 0 )
+                sound_combat_miss_sfx( ch, victim );
+
         if ((crit) && (dam > 0))
                 sprintf(buf9, " {W*CRITICAL HIT*{x");
         else
@@ -3306,10 +3347,16 @@ void dam_message(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison,
                 *buf9 = '\0';
         }
 
-        if (dt == TYPE_HIT)
+        if ( dam > 0 )
         {
-                sound_combat_hit_sfx( ch, victim, dam, dt );
+                if ( dt == gsn_shoot )
+                        sound_combat_hit_sfx( ch, victim, dam, TYPE_BOW_HIT );
+                else if ( dt >= TYPE_HIT )
+                        sound_combat_hit_sfx( ch, victim, dam, dt );
+        }
 
+        if ( dt == TYPE_HIT )
+        {
                 /* Combat gagging level 2 now gags 'misses' -- Owl */
 
                 if (((ch->gag == 2) && (dam > 0)))

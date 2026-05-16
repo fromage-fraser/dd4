@@ -84,13 +84,12 @@ customised, only turned on/off or have their relative volume adjusted.
 
 Todo
 ====
-- sconfig needs to persist across sessions (save/restore from pfile)
 - sound level scaling in sconfig has to be tested extensively
 - scribe needs to support all the area file alterations for sound
 - Allow consumable items to have a field that overrides the generic eat/drink
   etc sound that plays for them.
 - Should have this for all items that can make sounds, e.g. weapons.
-- Combat sound effects
+- Combat sound effects still unfinished, though many have been implemeneted
 - Foley (player footsteps, mob movement noises, mob sound loops, objects emitting
   sounds).
 - Battle music?  Music as its own separate ambient layer?
