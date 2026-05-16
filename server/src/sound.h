@@ -8,7 +8,7 @@
 #include "merc.h"
 
 #define SND_DEF_ENABLED         TRUE   /* sound on by default */
-#define SND_LOG_ENABLED         TRUE   /* sound logging default */
+#define SND_LOG_ENABLED         FALSE   /* sound logging default */
 #define SND_DEF_MASTER          100     /* master 0..100 */
 #define SND_DEF_ENV             100    /* environment (area/room/sector) scale 0..100 */
 #define SND_DEF_MUSIC           100    /* music (boss/combat/etc.) scale 0..100 */

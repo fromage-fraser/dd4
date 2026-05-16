@@ -3357,6 +3357,8 @@ void dam_message(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison,
 
         if ( dt == TYPE_HIT )
         {
+                sound_combat_hit_sfx( ch, victim, dam, dt );
+
                 /* Combat gagging level 2 now gags 'misses' -- Owl */
 
                 if (((ch->gag == 2) && (dam > 0)))
