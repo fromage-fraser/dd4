@@ -1630,6 +1630,7 @@ void char_update(void)
                                 {
                                         if (paf->type > 0 && skill_table[paf->type].msg_off)
                                         {
+                                                sound_spell_sfx( ch, paf->type, "wearoff" );
                                                 send_to_char(skill_table[paf->type].msg_off, ch);
                                                 send_to_char("\n\r", ch);
                                         }

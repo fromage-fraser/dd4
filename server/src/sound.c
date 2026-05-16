@@ -22,6 +22,8 @@ typedef struct combat_hit_tier_map
 } COMBAT_HIT_TIER_MAP;
 
 extern const COMBAT_HIT_TIER_MAP combat_hit_tiers[];
+bool process_output args( ( DESCRIPTOR_DATA *d, bool fPrompt ) );
+bool write_to_descriptor args((int desc, char *txt, int length));
 
 /* existing from your sound system */
 extern const sound_event_def *sound_event_lookup( const char *key );
@@ -86,14 +88,14 @@ void sound_mobdeath_room_key( ROOM_INDEX_DATA *room, const char *key, int base_v
                         continue;
 
                 /* Hard priority: flush anything already queued for this client. */
-                sfx_queue_clear( vch->desc );
+                /* sfx_queue_clear( vch->desc ); */
 
                 /* Combat: no extra delay. */
                 sfx_enqueue( vch->desc,
                              file,
                              vol_adj,
                              ( ev->tag && *ev->tag ) ? ev->tag : "sfx",
-                             0 );
+                             1 );
         }
 }
 
@@ -190,29 +192,6 @@ static bool is_target_inorganic( CHAR_DATA *victim )
         return FALSE;
 }
 
-static bool is_hit_damage_type( int dt )
-{
-        if ( dt != 1000 )
-                return FALSE;
-
-        return TRUE;
-}
-
-static int combat_damage_to_volume( int dam )
-{
-        const int vol_min = 8;
-        const int vol_max = 100;
-
-        /* Map dam from 1..5500 onto 8..100 (cap beyond). */
-        const int dam_min = 1;
-        const int dam_max = 5500;
-
-        if ( dam <= dam_min ) return vol_min;
-        if ( dam >= dam_max ) return vol_max;
-
-        return vol_min + ( (dam - dam_min) * (vol_max - vol_min) ) / (dam_max - dam_min);
-}
-
 void sound_combat_hit_sfx( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
 {
         const sound_event_def *ev;
@@ -230,15 +209,58 @@ void sound_combat_hit_sfx( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
         if ( dt == TYPE_UNDEFINED )
                 return;
 
-        /* Only the "hit" weapon damage class for this test. */
-        if ( !is_hit_damage_type(dt) )
-                return;
-
-        /* Organic vs inorganic target. */
-        if ( is_target_inorganic(victim) )
-                key = "sfx.combat.hit.inorganic";
+        if ( dt == TYPE_BOW_HIT )
+        {
+                key = is_target_inorganic(victim)
+                    ? "sfx.combat.bow.inorganic"
+                    : "sfx.combat.bow.organic";
+        }
+        else if ( dt == TYPE_HIT + 2 )
+        {
+                key = is_target_inorganic(victim)
+                    ? "sfx.combat.stab.inorganic"
+                    : "sfx.combat.stab.organic";
+        }
+        else if ( dt == TYPE_HIT + 3 )
+        {
+                key = is_target_inorganic(victim)
+                    ? "sfx.combat.slash.inorganic"
+                    : "sfx.combat.slash.organic";
+        }
+        else if ( dt == TYPE_HIT + 4 )
+        {
+                key = is_target_inorganic(victim)
+                    ? "sfx.combat.whip.inorganic"
+                    : "sfx.combat.whip.organic";
+        }
+        else if ( dt == TYPE_HIT + 7 )
+        {
+                key = is_target_inorganic(victim)
+                    ? "sfx.combat.pound.inorganic"
+                    : "sfx.combat.pound.organic";
+        }
+        else if ( dt == TYPE_HIT + 11 )
+        {
+                key = is_target_inorganic(victim)
+                    ? "sfx.combat.pierce.inorganic"
+                    : "sfx.combat.pierce.organic";
+        }
+        else if ( dt == TYPE_HIT + 13 )
+        {
+                key = is_target_inorganic(victim)
+                    ? "sfx.combat.chop.inorganic"
+                    : "sfx.combat.chop.organic";
+        }
+        else if ( dt == TYPE_HIT )
+        {
+                key = is_target_inorganic(victim)
+                    ? "sfx.combat.hit.inorganic"
+                    : "sfx.combat.hit.organic";
+        }
         else
-                key = "sfx.combat.hit.organic";
+        {
+                return;
+        }
 
         ev = sound_event_lookup( key );
         if ( !ev )
@@ -249,8 +271,7 @@ void sound_combat_hit_sfx( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
         if ( !file )
                 return;
 
-        /* Volume is driven by dam (scratch ~8 .. particlize ~100). */
-        vol = combat_damage_to_volume( dam );
+        vol = ev->default_volume;
 
         for ( vch = ch->in_room ? ch->in_room->people : NULL; vch; vch = vch->next_in_room )
         {
@@ -271,6 +292,436 @@ void sound_combat_hit_sfx( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
                 sfx_enqueue( vch->desc,
                              file,
                              number_fuzzy(vol_adj),
+                             ( ev->tag && *ev->tag ) ? ev->tag : "sfx",
+                             1 );
+        }
+}
+
+void sound_combat_shield_block_sfx( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+        const sound_event_def *ev;
+        const char            *file;
+        CHAR_DATA             *vch;
+        int                    i;
+        int                    count;
+
+        if ( !ch || !victim || !ch->in_room )
+                return;
+
+        ev = sound_event_lookup( "sfx.combat.shield_block" );
+        if ( !ev )
+                return;
+
+        count = 0;
+        for ( i = 0; i < SOUND_MAX_FILES; i++ )
+        {
+                if ( !ev->files[i] || !*ev->files[i] )
+                        break;
+
+                count++;
+        }
+
+        if ( count <= 0 )
+                return;
+
+        file = ev->files[number_range( 0, count - 1 )];
+
+        for ( vch = ch->in_room->people; vch; vch = vch->next_in_room )
+        {
+                int vol;
+
+                if ( !vch->desc || !vch->desc->pProtocol )
+                        continue;
+
+                if ( IS_NPC( vch ) )
+                        continue;
+
+                if ( !vch->pcdata || !vch->pcdata->snd_enabled )
+                        continue;
+
+                vol = media_apply_volume( ev->default_volume, vch, "sfx", "sfx" );
+                if ( vol <= 0 )
+                        continue;
+
+                sfx_enqueue( vch->desc,
+                             file,
+                             vol,
+                             ( ev->tag && *ev->tag ) ? ev->tag : "sfx",
+                             1 );
+        }
+}
+
+void sound_combat_miss_sfx( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+        const sound_event_def *ev;
+        const char            *file;
+        CHAR_DATA             *vch;
+        int                    i;
+        int                    count;
+
+        if ( !ch || !victim || !ch->in_room )
+                return;
+
+        ev = sound_event_lookup( "sfx.combat.miss" );
+        if ( !ev )
+                return;
+
+        count = 0;
+        for ( i = 0; i < SOUND_MAX_FILES; i++ )
+        {
+                if ( !ev->files[i] || !*ev->files[i] )
+                        break;
+
+                count++;
+        }
+
+        if ( count <= 0 )
+                return;
+
+        file = ev->files[number_range( 0, count - 1 )];
+
+        for ( vch = ch->in_room->people; vch; vch = vch->next_in_room )
+        {
+                int vol;
+
+                if ( !vch->desc || !vch->desc->pProtocol )
+                        continue;
+
+                if ( IS_NPC( vch ) )
+                        continue;
+
+                if ( !vch->pcdata || !vch->pcdata->snd_enabled )
+                        continue;
+
+                vol = media_apply_volume( ev->default_volume, vch, "sfx", "sfx" );
+                if ( vol <= 0 )
+                        continue;
+
+                sfx_enqueue( vch->desc,
+                             file,
+                             vol,
+                             ( ev->tag && *ev->tag ) ? ev->tag : "sfx",
+                             1 );
+        }
+}
+
+void sound_combat_dodge_sfx( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+        const sound_event_def *ev;
+        const char            *file;
+        CHAR_DATA             *vch;
+        int                    i;
+        int                    count;
+
+        if ( !ch || !victim || !ch->in_room )
+                return;
+
+        ev = sound_event_lookup( "sfx.combat.dodge" );
+        if ( !ev )
+                return;
+
+        count = 0;
+        for ( i = 0; i < SOUND_MAX_FILES; i++ )
+        {
+                if ( !ev->files[i] || !*ev->files[i] )
+                        break;
+
+                count++;
+        }
+
+        if ( count <= 0 )
+                return;
+
+        file = ev->files[number_range( 0, count - 1 )];
+
+        for ( vch = ch->in_room->people; vch; vch = vch->next_in_room )
+        {
+                int vol;
+
+                if ( !vch->desc || !vch->desc->pProtocol )
+                        continue;
+
+                if ( IS_NPC( vch ) )
+                        continue;
+
+                if ( !vch->pcdata || !vch->pcdata->snd_enabled )
+                        continue;
+
+                vol = media_apply_volume( ev->default_volume, vch, "sfx", "sfx" );
+                if ( vol <= 0 )
+                        continue;
+
+                sfx_enqueue( vch->desc,
+                             file,
+                             vol,
+                             ( ev->tag && *ev->tag ) ? ev->tag : "sfx",
+                             1 );
+        }
+}
+
+void sound_combat_parry_sfx( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+        const sound_event_def *ev;
+        const char            *file;
+        const char            *key;
+        CHAR_DATA             *vch;
+        OBJ_DATA              *wield;
+        int                    i;
+        int                    count;
+
+        if ( !ch || !victim || !ch->in_room )
+                return;
+
+        wield = get_eq_char( victim, WEAR_WIELD );
+
+        if ( wield )
+                key = "sfx.combat.parry.weapon";
+        else
+                key = "sfx.combat.parry.noweapon";
+
+        ev = sound_event_lookup( key );
+        if ( !ev )
+                return;
+
+        count = 0;
+        for ( i = 0; i < SOUND_MAX_FILES; i++ )
+        {
+                if ( !ev->files[i] || !*ev->files[i] )
+                        break;
+
+                count++;
+        }
+
+        if ( count <= 0 )
+                return;
+
+        file = ev->files[number_range( 0, count - 1 )];
+
+        for ( vch = ch->in_room->people; vch; vch = vch->next_in_room )
+        {
+                int vol;
+
+                if ( !vch->desc || !vch->desc->pProtocol )
+                        continue;
+
+                if ( IS_NPC( vch ) )
+                        continue;
+
+                if ( !vch->pcdata || !vch->pcdata->snd_enabled )
+                        continue;
+
+                vol = media_apply_volume( ev->default_volume, vch, "sfx", "sfx" );
+                if ( vol <= 0 )
+                        continue;
+
+                sfx_enqueue( vch->desc,
+                             file,
+                             vol,
+                             ( ev->tag && *ev->tag ) ? ev->tag : "sfx",
+                             1 );
+        }
+}
+
+void sound_combat_acrobatics_sfx( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+        const sound_event_def *ev;
+        const char            *file;
+        CHAR_DATA             *vch;
+        int                    i;
+        int                    count;
+
+        if ( !ch || !victim || !ch->in_room )
+                return;
+
+        ev = sound_event_lookup( "sfx.combat.acrobatics" );
+        if ( !ev )
+                return;
+
+        count = 0;
+        for ( i = 0; i < SOUND_MAX_FILES; i++ )
+        {
+                if ( !ev->files[i] || !*ev->files[i] )
+                        break;
+
+                count++;
+        }
+
+        if ( count <= 0 )
+                return;
+
+        file = ev->files[number_range( 0, count - 1 )];
+
+        for ( vch = ch->in_room->people; vch; vch = vch->next_in_room )
+        {
+                int vol;
+
+                if ( !vch->desc || !vch->desc->pProtocol )
+                        continue;
+
+                if ( IS_NPC( vch ) )
+                        continue;
+
+                if ( !vch->pcdata || !vch->pcdata->snd_enabled )
+                        continue;
+
+                vol = media_apply_volume( ev->default_volume, vch, "sfx", "sfx" );
+                if ( vol <= 0 )
+                        continue;
+
+                sfx_enqueue( vch->desc,
+                             file,
+                             vol,
+                             ( ev->tag && *ev->tag ) ? ev->tag : "sfx",
+                             1 );
+        }
+}
+
+void sound_combat_transfix_sfx( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+        const sound_event_def *ev;
+        const char            *file;
+        CHAR_DATA             *vch;
+        int                    i;
+        int                    count;
+
+        if ( !ch || !victim || !ch->in_room )
+                return;
+
+        ev = sound_event_lookup( "sfx.combat.transfix" );
+        if ( !ev )
+                return;
+
+        count = 0;
+        for ( i = 0; i < SOUND_MAX_FILES; i++ )
+        {
+                if ( !ev->files[i] || !*ev->files[i] )
+                        break;
+
+                count++;
+        }
+
+        if ( count <= 0 )
+                return;
+
+        file = ev->files[number_range( 0, count - 1 )];
+
+        for ( vch = ch->in_room->people; vch; vch = vch->next_in_room )
+        {
+                int vol;
+
+                if ( !vch->desc || !vch->desc->pProtocol )
+                        continue;
+
+                if ( IS_NPC( vch ) )
+                        continue;
+
+                if ( !vch->pcdata || !vch->pcdata->snd_enabled )
+                        continue;
+
+                vol = media_apply_volume( ev->default_volume, vch, "sfx", "sfx" );
+                if ( vol <= 0 )
+                        continue;
+
+                sfx_enqueue( vch->desc,
+                             file,
+                             vol,
+                             ( ev->tag && *ev->tag ) ? ev->tag : "sfx",
+                             0 );
+        }
+}
+
+static void sound_make_spell_key( char *buf, int size, const char *phase, int sn )
+{
+        char name[256];
+        int  i;
+        int  j;
+
+        if ( sn < 0 || sn >= MAX_SKILL || !skill_table[sn].name )
+        {
+                snprintf( buf, size, "sfx.spell.%s.generic", phase );
+                return;
+        }
+
+        for ( i = 0, j = 0; skill_table[sn].name[i] && j < (int)sizeof(name) - 1; i++ )
+        {
+                if ( skill_table[sn].name[i] == ' ' )
+                        name[j++] = '_';
+                else
+                        name[j++] = LOWER( skill_table[sn].name[i] );
+        }
+
+        name[j] = '\0';
+
+        snprintf( buf, size, "sfx.spell.%s.%s", phase, name );
+}
+
+void sound_spell_sfx( CHAR_DATA *ch, int sn, const char *phase )
+{
+        const sound_event_def *ev;
+        const char            *file;
+        char                   key[MAX_INPUT_LENGTH];
+        CHAR_DATA             *vch;
+        int                    i;
+        int                    count;
+
+        if ( !ch || !ch->in_room || !phase || !*phase )
+                return;
+
+        sound_make_spell_key( key, sizeof(key), phase, sn );
+
+        if ( SND_LOG_ENABLED )
+        {
+                log_stringf( "SpellSFX: trying key=%s sn=%d phase=%s",
+                             key, sn, phase );
+        }
+
+        ev = sound_event_lookup( key );
+
+        if ( !ev )
+        {
+                snprintf( key, sizeof(key), "sfx.spell.%s.generic", phase );
+                ev = sound_event_lookup( key );
+        }
+
+        if ( !ev )
+                return;
+
+        count = 0;
+
+        for ( i = 0; i < SOUND_MAX_FILES; i++ )
+        {
+                if ( !ev->files[i] || !*ev->files[i] )
+                        break;
+
+                count++;
+        }
+
+        if ( count <= 0 )
+                return;
+
+        file = ev->files[number_range( 0, count - 1 )];
+
+        for ( vch = ch->in_room->people; vch; vch = vch->next_in_room )
+        {
+                int vol;
+
+                if ( !vch->desc || !vch->desc->pProtocol )
+                        continue;
+
+                if ( IS_NPC( vch ) )
+                        continue;
+
+                if ( !vch->pcdata || !vch->pcdata->snd_enabled )
+                        continue;
+
+                vol = media_apply_volume( ev->default_volume, vch, "sfx", "sfx" );
+
+                if ( vol <= 0 )
+                        continue;
+
+                sfx_enqueue( vch->desc,
+                             file,
+                             vol,
                              ( ev->tag && *ev->tag ) ? ev->tag : "sfx",
                              1 );
         }
@@ -485,6 +936,7 @@ void media_notify_channel( CHAR_DATA *to, int channel )
 
     /* One-shot to this player; registry supplies default volume + your scaling. */
     sound_emit_char(to, key, -1);
+
 }
 
 /* sound_play_room_file: enqueue instead of play */
@@ -1484,6 +1936,12 @@ void do_sconfig( CHAR_DATA *ch, char *argument )
         {
             if (set)
             {
+                if (!ch->pcdata->snd_enabled)
+                {
+                    send_to_char("Not while sound is {ROFF{x.\n\r", ch);
+                    return;
+                }
+
                 if (ch->pcdata->snd_env == 0)
                     ch->pcdata->snd_env = SND_DEF_ENV;
 
@@ -1529,6 +1987,12 @@ void do_sconfig( CHAR_DATA *ch, char *argument )
         {
             if (set)
             {
+                if (!ch->pcdata->snd_enabled)
+                {
+                    send_to_char("Not while sound is {ROFF{x.\n\r", ch);
+                    return;
+                }
+
                 if (ch->pcdata->snd_notify == 0)
                     ch->pcdata->snd_notify = SND_DEF_NOTIFY;
                 send_to_char("Notifications are now {GON{x.\n\r", ch);
@@ -1544,6 +2008,12 @@ void do_sconfig( CHAR_DATA *ch, char *argument )
         {
             if (set)
             {
+                if (!ch->pcdata->snd_enabled)
+                {
+                    send_to_char("Not while sound is {ROFF{x.\n\r", ch);
+                    return;
+                }
+
                 if (ch->pcdata->snd_sfx == 0)
                     ch->pcdata->snd_sfx = SND_DEF_SFX;
                 send_to_char("Sfx are now {GON{x.\n\r", ch);

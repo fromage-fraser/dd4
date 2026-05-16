@@ -8,8 +8,8 @@
 #include "merc.h"
 
 #define SND_DEF_ENABLED         TRUE   /* sound on by default */
-#define SND_LOG_ENABLED         FALSE   /* sound on by default */
-#define SND_DEF_MASTER          70     /* master 0..100 */
+#define SND_LOG_ENABLED         FALSE   /* sound logging default */
+#define SND_DEF_MASTER          100     /* master 0..100 */
 #define SND_DEF_ENV             100    /* environment (area/room/sector) scale 0..100 */
 #define SND_DEF_MUSIC           100    /* music (boss/combat/etc.) scale 0..100 */
 #define SND_DEF_FOLEY           100    /* mob/player foley scale 0..100 */
@@ -18,7 +18,8 @@
 #define SND_DEF_UI              100    /* UI scale 0..100 */
 #define DOOR_LABEL              "door"  /* human category */
 #define DOOR_LANE_FMT           "dd.sfx.door.%d.%s"   /* roomVnum + dir name */
-#define SOUND_MAX_FILES         32  /* 31 + NULL terminator */
+#define SOUND_MAX_FILES         64  /* 63 + NULL terminator */
+#define TYPE_BOW_HIT            ( TYPE_HIT + 100 ) /* For making shoot sounds different */
 
 /* --- Sound events (one-shot SFX / notifications) ------------------------ */
 typedef struct sound_event_def {
@@ -74,6 +75,13 @@ void            sound_sfx_update                args( ( void ) );
 void            sound_mobdeath_room             ( ROOM_INDEX_DATA *room, int base_vol );
 void            sfx_queue_clear                 ( DESCRIPTOR_DATA *d );
 void            sound_mobdeath_room_key         ( ROOM_INDEX_DATA *room, const char *key, int base_vol );
+void            sound_combat_shield_block_sfx   ( CHAR_DATA *ch, CHAR_DATA *victim );
+void            sound_combat_miss_sfx           ( CHAR_DATA *ch, CHAR_DATA *victim );
+void            sound_combat_dodge_sfx          ( CHAR_DATA *ch, CHAR_DATA *victim );
+void            sound_combat_parry_sfx          ( CHAR_DATA *ch, CHAR_DATA *victim );
+void            sound_combat_acrobatics_sfx     ( CHAR_DATA *ch, CHAR_DATA *victim );
+void            sound_combat_transfix_sfx       ( CHAR_DATA *ch, CHAR_DATA *victim );
+void            sound_spell_sfx                 ( CHAR_DATA *ch, int sn, const char *phase );
 
 extern const sector_ambience_t sector_ambience_defaults[SECT_MAX];
 const        sector_ambience_t *sector_ambience_for(int sector);

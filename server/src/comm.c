@@ -545,7 +545,7 @@ void create_ident(DESCRIPTOR_DATA *d, long ip, sh_int port)
 
 #endif
 
-#define SFX_TICK_USEC 50000  /* 50ms = 20Hz; tune this */
+#define SFX_TICK_USEC 45000  /* 50ms = 20Hz; tune this */
 
 static void sfx_io_tick(void)
 {
