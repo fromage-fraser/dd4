@@ -459,6 +459,11 @@ static const sound_event_def sound_events[] = {
         {
                 "sfx/spell/cast/generic.1.mp3",
                 "sfx/spell/cast/generic.2.mp3",
+                "sfx/spell/cast/generic.3.mp3",
+                "sfx/spell/cast/generic.4.mp3",
+                "sfx/spell/cast/generic.5.mp3",
+                "sfx/spell/cast/generic.6.mp3",
+                "sfx/spell/cast/generic.7.mp3",
                 NULL
         },
         { 0 },
@@ -471,6 +476,11 @@ static const sound_event_def sound_events[] = {
         {
                 "sfx/spell/wearoff/generic.1.mp3",
                 "sfx/spell/wearoff/generic.2.mp3",
+                "sfx/spell/wearoff/generic.3.mp3",
+                "sfx/spell/wearoff/generic.4.mp3",
+                "sfx/spell/wearoff/generic.5.mp3",
+                "sfx/spell/wearoff/generic.6.mp3",
+                "sfx/spell/wearoff/generic.7.mp3",
                 NULL
         },
         { 0 },
@@ -506,6 +516,19 @@ static const sound_event_def sound_events[] = {
         {
                 "sfx/spell/cast/fireball.1.mp3",
                 "sfx/spell/cast/fireball.2.mp3",
+                NULL
+        },
+        { 0 },
+        70,
+        "sfx",
+        1
+    },
+
+    { "sfx.spell.cast.hellfire",
+        {
+                "sfx/spell/cast/hellfire.1.mp3",
+                "sfx/spell/cast/hellfire.2.mp3",
+                "sfx/spell/cast/hellfire.3.mp3",
                 NULL
         },
         { 0 },

@@ -95,11 +95,3 @@ Todo
 - Battle music?  Music as its own separate ambient layer?
 - Mudlet GUI sounds
 
-
-Other
-=====
-As all our sounds are pushed over MSP from the server side we run into issues
-with masking of overlapping sounds.  It looks like the solution to this is
-likely to be some kind of per-playing sound queuing so you can have, say the
-ability to hear rapid opening and closing of a door, or combat sounds
-interrupting rather than masking each other.
