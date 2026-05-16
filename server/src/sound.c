@@ -1505,7 +1505,7 @@ void media_env_refresh( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force )
         area_vol  = URANGE(1, room->area->ambient_volume, 100);
 
         /* APPLY PLAYER SETTINGS */
-        area_vol = media_apply_volume(area_vol, ch, "environment", "music");
+        area_vol = media_apply_volume(area_vol, ch, "environment", "ambient");
         if (area_vol <= 0) { area_name = NULL; } /* treat as no area track */
     }
 
@@ -1516,7 +1516,7 @@ void media_env_refresh( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force )
         room_vol  = URANGE(1, room->ambient_volume, 100);
 
         /* APPLY PLAYER SETTINGS */
-        room_vol = media_apply_volume(room_vol, ch, "environment", "music");
+        room_vol = media_apply_volume(room_vol, ch, "environment", "ambient");
         if (room_vol <= 0) { room_name = NULL; } /* treat as no room track */
     }
 
@@ -1530,7 +1530,7 @@ void media_env_refresh( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force )
             sect_vol  = URANGE(1, sa->volume, 100);
 
             /* APPLY PLAYER SETTINGS */
-            sect_vol = media_apply_volume(sect_vol, ch, "environment", "music");
+            sect_vol = media_apply_volume(sect_vol, ch, "environment", "ambient");
             if (sect_vol <= 0) { sect_name = NULL; } /* treat as no sector track */
         }
     }
@@ -1550,7 +1550,7 @@ void media_env_refresh( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force )
         if (changed) {
             char play_opts[256];
             snprintf(play_opts, sizeof(play_opts),
-                     "\"type\":\"music\",\"tag\":\"environment\",\"key\":\"%s\","
+                     "\"type\":\"ambient\",\"tag\":\"environment\",\"key\":\"%s\","
                      "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":1200",
                      newKey, sect_vol);
             GMCP_Media_Play(ch->desc, sect_name, play_opts);
@@ -1559,7 +1559,7 @@ void media_env_refresh( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force )
             if (proto->MediaSectorActive) {
                 char stop_opts[192];
                 snprintf(stop_opts, sizeof(stop_opts),
-                         "\"key\":\"%s\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200",
+                         "\"key\":\"%s\",\"type\":\"ambient\",\"fadeaway\":true,\"fadeout\":1200",
                          oldKey);
                 GMCP_Media_Stop(ch->desc, stop_opts);
             }
@@ -1573,8 +1573,8 @@ void media_env_refresh( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force )
     }
     else {
         /* Room or Area present, or nothing at all: silence the sector lane */
-        GMCP_Media_Stop(ch->desc, "\"key\":\"" KEY_SECT_A "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
-        GMCP_Media_Stop(ch->desc, "\"key\":\"" KEY_SECT_B "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
+        GMCP_Media_Stop(ch->desc, "\"key\":\"" KEY_SECT_A "\",\"type\":\"ambient\",\"fadeaway\":true,\"fadeout\":1200");
+        GMCP_Media_Stop(ch->desc, "\"key\":\"" KEY_SECT_B "\",\"type\":\"ambient\",\"fadeaway\":true,\"fadeout\":1200");
         if (proto->MediaSectorName) { free_string((char*)proto->MediaSectorName); proto->MediaSectorName = NULL; }
         proto->MediaSectorVol    = 0;
         proto->MediaSectorActive = FALSE;
@@ -1599,7 +1599,7 @@ void media_env_refresh( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force )
                 && str_cmp(want_name, proto->MediaRoomName))
             {
                 GMCP_Media_Stop(ch->desc,
-                    "\"key\":\"" KEY_ROOM "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
+                    "\"key\":\"" KEY_ROOM "\",\"type\":\"ambient\",\"fadeaway\":true,\"fadeout\":1200");
                 if (proto->MediaRoomName) { free_string((char*)proto->MediaRoomName); proto->MediaRoomName = NULL; }
                 proto->MediaRoomActive = FALSE;
                 proto->MediaRoomVol    = 0;
@@ -1607,7 +1607,7 @@ void media_env_refresh( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force )
 
             char opts_room[256];
             snprintf(opts_room, sizeof(opts_room),
-                     "\"type\":\"music\",\"tag\":\"environment\",\"key\":\"" KEY_ROOM "\","
+                     "\"type\":\"ambient\",\"tag\":\"environment\",\"key\":\"" KEY_ROOM "\","
                      "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":1200",
                      want_vol);
             GMCP_Media_Play(ch->desc, want_name, opts_room);
@@ -1620,7 +1620,7 @@ void media_env_refresh( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force )
 
         /* Room/sector overrides area — unconditionally silence area lane */
         GMCP_Media_Stop(ch->desc,
-            "\"key\":\"" KEY_AREA "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
+            "\"key\":\"" KEY_AREA "\",\"type\":\"ambient\",\"fadeaway\":true,\"fadeout\":1200");
         if (proto->MediaAreaName) { free_string((char*)proto->MediaAreaName); proto->MediaAreaName = NULL; }
         proto->MediaAreaVol    = 0;
         proto->MediaAreaActive = FALSE;
@@ -1629,7 +1629,7 @@ void media_env_refresh( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force )
     {
         /* No room/sector — unconditionally silence the room lane */
         GMCP_Media_Stop(ch->desc,
-            "\"key\":\"" KEY_ROOM "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
+            "\"key\":\"" KEY_ROOM "\",\"type\":\"ambient\",\"fadeaway\":true,\"fadeout\":1200");
         if (proto->MediaRoomName) { free_string((char*)proto->MediaRoomName); proto->MediaRoomName = NULL; }
         proto->MediaRoomVol    = 0;
         proto->MediaRoomActive = FALSE;
@@ -1648,7 +1648,7 @@ void media_env_refresh( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force )
             if (changed) {
                 char opts_area[256];
                 snprintf(opts_area, sizeof(opts_area),
-                         "\"type\":\"music\",\"tag\":\"environment\",\"key\":\"" KEY_AREA "\","
+                         "\"type\":\"ambient\",\"tag\":\"environment\",\"key\":\"" KEY_AREA "\","
                          "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":1200",
                          area_vol);
                 GMCP_Media_Play(ch->desc, area_name, opts_area);
@@ -1661,7 +1661,7 @@ void media_env_refresh( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force )
         } else {
             /* No area ambience defined: ensure any area track is off */
             GMCP_Media_Stop(ch->desc,
-                "\"key\":\"" KEY_AREA "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":1200");
+                "\"key\":\"" KEY_AREA "\",\"type\":\"ambient\",\"fadeaway\":true,\"fadeout\":1200");
             if (proto->MediaAreaName) { free_string((char*)proto->MediaAreaName); proto->MediaAreaName = NULL; }
             proto->MediaAreaVol    = 0;
             proto->MediaAreaActive = FALSE;
@@ -1961,11 +1961,12 @@ void do_sconfig( CHAR_DATA *ch, char *argument )
                 if (ch->desc && ch->desc->pProtocol && ch->desc->pProtocol->bGMCP)
                 {
                     /* Stop ambient lanes (room/area/sector/weather) */
-                    GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.room\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":700");
-                    GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.area\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":700");
-                    GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.sector.A\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":700");
-                    GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.sector.B\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":700");
-                    GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.weather\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":700");
+                    GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.room\",\"type\":\"ambient\",\"fadeaway\":true,\"fadeout\":700");
+                    GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.area\",\"type\":\"ambient\",\"fadeaway\":true,\"fadeout\":700");
+                    GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.sector.A\",\"type\":\"ambient\",\"fadeaway\":true,\"fadeout\":700");
+                    GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.sector.B\",\"type\":\"ambient\",\"fadeaway\":true,\"fadeout\":700");
+                    GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.weather\",\"type\":\"ambient\",\"fadeaway\":true,\"fadeout\":700");
+                    media_env_refresh(ch, ch->in_room, TRUE);
 
                     /* ALSO clear our weather cache so a later toggle ON will republish */
                     {
