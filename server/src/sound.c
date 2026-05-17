@@ -459,6 +459,60 @@ void sound_combat_dodge_sfx( CHAR_DATA *ch, CHAR_DATA *victim )
         }
 }
 
+void sound_combat_blink_sfx( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+        const sound_event_def *ev;
+        const char            *file;
+        CHAR_DATA             *vch;
+        int                    i;
+        int                    count;
+
+        if ( !ch || !victim || !ch->in_room )
+                return;
+
+        ev = sound_event_lookup( "sfx.combat.blink" );
+        if ( !ev )
+                return;
+
+        count = 0;
+        for ( i = 0; i < SOUND_MAX_FILES; i++ )
+        {
+                if ( !ev->files[i] || !*ev->files[i] )
+                        break;
+
+                count++;
+        }
+
+        if ( count <= 0 )
+                return;
+
+        file = ev->files[number_range( 0, count - 1 )];
+
+        for ( vch = ch->in_room->people; vch; vch = vch->next_in_room )
+        {
+                int vol;
+
+                if ( !vch->desc || !vch->desc->pProtocol )
+                        continue;
+
+                if ( IS_NPC( vch ) )
+                        continue;
+
+                if ( !vch->pcdata || !vch->pcdata->snd_enabled )
+                        continue;
+
+                vol = media_apply_volume( ev->default_volume, vch, "sfx", "sfx" );
+                if ( vol <= 0 )
+                        continue;
+
+                sfx_enqueue( vch->desc,
+                             file,
+                             vol,
+                             ( ev->tag && *ev->tag ) ? ev->tag : "sfx",
+                             1 );
+        }
+}
+
 void sound_combat_parry_sfx( CHAR_DATA *ch, CHAR_DATA *victim )
 {
         const sound_event_def *ev;
