@@ -2201,10 +2201,16 @@ bool check_blink(CHAR_DATA *ch, CHAR_DATA *victim)
         victim->mana -= 5;
 
         if (!IS_NPC(ch) && !ch->gag)
+        {
+                sound_combat_blink_sfx( ch, victim );
                 act("<81>$C shimmers and you miss your attack.<0>", ch, NULL, victim, TO_CHAR);
+        }
 
         if (!victim->gag)
+        {
+                sound_combat_blink_sfx( ch, victim );
                 act("<117>You fade away before $n's attack.<0>", ch, NULL, victim, TO_VICT);
+        }
 
         return TRUE;
 }

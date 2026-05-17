@@ -81,6 +81,7 @@ void            sound_combat_dodge_sfx          ( CHAR_DATA *ch, CHAR_DATA *vict
 void            sound_combat_parry_sfx          ( CHAR_DATA *ch, CHAR_DATA *victim );
 void            sound_combat_acrobatics_sfx     ( CHAR_DATA *ch, CHAR_DATA *victim );
 void            sound_combat_transfix_sfx       ( CHAR_DATA *ch, CHAR_DATA *victim );
+void            sound_combat_blink_sfx          ( CHAR_DATA *ch, CHAR_DATA *victim );
 void            sound_spell_sfx                 ( CHAR_DATA *ch, int sn, const char *phase );
 
 extern const sector_ambience_t sector_ambience_defaults[SECT_MAX];

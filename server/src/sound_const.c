@@ -452,6 +452,19 @@ static const sound_event_def sound_events[] = {
         1
     },
 
+    { "sfx.combat.blink",
+        {
+                "sfx/combat/blink/pool.1.mp3",
+                "sfx/combat/blink/pool.2.mp3",
+                "sfx/combat/blink/pool.3.mp3",
+                NULL
+        },
+        { 0 },
+        60,
+        "sfx",
+        1
+    },
+
     { "sfx.combat.mobdeath.1",     { "sfx/combat/mobdeath/1.mp3", NULL }, { 0,0 }, 70, "sfx", 1 },
     { "sfx.combat.mobdeath.2",     { "sfx/combat/mobdeath/2.mp3", NULL }, { 0,0 }, 70, "sfx", 1 },
 
