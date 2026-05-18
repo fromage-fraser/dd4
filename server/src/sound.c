@@ -1526,214 +1526,256 @@ void sound_emit_room(ROOM_INDEX_DATA *room, const char *event_key, int vol_overr
     }
 }
 
-
-/* Re-assert environmental media for a player where they are now.
- * If force == TRUE, treat as changed and (re)send the correct lanes
- * even if our cached proto state looks identical.
- */
 void media_env_refresh( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force )
 {
-    if (!ch || !room || !ch->desc || !ch->desc->pProtocol) return;
+        protocol_t              *proto;
+        const char              *area_name = NULL;
+        const char              *room_name = NULL;
+        const char              *sect_name = NULL;
+        int                      area_vol = 0;
+        int                      room_vol = 0;
+        int                      sect_vol = 0;
 
-    protocol_t *proto = ch->desc->pProtocol;
+#define KEY_AREA_A      "dd.ambient.area.A"
+#define KEY_AREA_B      "dd.ambient.area.B"
+#define KEY_ROOM_A      "dd.ambient.room.A"
+#define KEY_ROOM_B      "dd.ambient.room.B"
+#define KEY_SECT_A      "dd.ambient.sector.A"
+#define KEY_SECT_B      "dd.ambient.sector.B"
+#define AMBIENT_FADE    2000
 
-    /* Must have GMCP Client.Media and not be suppressed */
-    if (!proto->bGMCP || !proto->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA]) return;
-    if (proto->MediaSuppress) return;
+        if ( !ch || !room || !ch->desc || !ch->desc->pProtocol )
+                return;
 
-    /* All relative media names resolve under this base */
-    GMCP_Media_Default(ch->desc, "https://www.dragons-domain.org/main/gui/custom/audio/");
+        proto = ch->desc->pProtocol;
 
-    /* Stable keys for our lanes */
-    #define KEY_AREA   "dd.ambient.area"
-    #define KEY_ROOM   "dd.ambient.room"
-    #define KEY_SECT_A "dd.ambient.sector.A"
-    #define KEY_SECT_B "dd.ambient.sector.B"
+        if ( !proto->bGMCP || !proto->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA] )
+                return;
 
-    /* --- Desired names/volumes (room > area > sector) ---------------------- */
-    const char *area_name = NULL; int area_vol = 0;
-    if (room->area && room->area->ambient_sound && *room->area->ambient_sound
-        && room->area->ambient_volume > 0)
-    {
-        area_name = room->area->ambient_sound;
-        area_vol  = URANGE(1, room->area->ambient_volume, 100);
+        if ( proto->MediaSuppress )
+                return;
 
-        /* APPLY PLAYER SETTINGS */
-        area_vol = media_apply_volume(area_vol, ch, "environment", "ambient");
-        if (area_vol <= 0) { area_name = NULL; } /* treat as no area track */
-    }
+        GMCP_Media_Default( ch->desc, "https://www.dragons-domain.org/main/gui/custom/audio/" );
 
-    const char *room_name = NULL; int room_vol = 0;
-    if (room->ambient_sound && *room->ambient_sound && room->ambient_volume > 0)
-    {
-        room_name = room->ambient_sound;
-        room_vol  = URANGE(1, room->ambient_volume, 100);
+        if ( room->area && room->area->ambient_sound && *room->area->ambient_sound
+        &&   room->area->ambient_volume > 0 )
+        {
+                area_name = room->area->ambient_sound;
+                area_vol = URANGE( 1, room->area->ambient_volume, 100 );
+                area_vol = media_apply_volume( area_vol, ch, "environment", "ambient" );
 
-        /* APPLY PLAYER SETTINGS */
-        room_vol = media_apply_volume(room_vol, ch, "environment", "ambient");
-        if (room_vol <= 0) { room_name = NULL; } /* treat as no room track */
-    }
-
-    /* Sector fallback only if no room and no area */
-    const char *sect_name = NULL; int sect_vol = 0;
-    if (!room_name && !area_name)
-    {
-        const sector_ambience_t *sa = sector_ambience_for(room->sector_type);
-        if (sa && sa->name && *sa->name && sa->volume > 0) {
-            sect_name = sa->name;
-            sect_vol  = URANGE(1, sa->volume, 100);
-
-            /* APPLY PLAYER SETTINGS */
-            sect_vol = media_apply_volume(sect_vol, ch, "environment", "ambient");
-            if (sect_vol <= 0) { sect_name = NULL; } /* treat as no sector track */
+                if ( area_vol <= 0 )
+                        area_name = NULL;
         }
-    }
 
-    /* ---------------- Sector lane (A/B crossfade) -------------------------- */
-    if (sect_name)
-    {
-        const char *newKey = (proto->MediaSectorFlip ? KEY_SECT_B : KEY_SECT_A);
-        const char *oldKey = (proto->MediaSectorFlip ? KEY_SECT_A : KEY_SECT_B);
+        if ( room->ambient_sound && *room->ambient_sound && room->ambient_volume > 0 )
+        {
+                room_name = room->ambient_sound;
+                room_vol = URANGE( 1, room->ambient_volume, 100 );
+                room_vol = media_apply_volume( room_vol, ch, "environment", "ambient" );
 
-        bool changed = force
-                    || !proto->MediaSectorActive
-                    || !proto->MediaSectorName
-                    || str_cmp(sect_name, proto->MediaSectorName)
-                    || proto->MediaSectorVol != sect_vol;
-
-        if (changed) {
-            char play_opts[256];
-            snprintf(play_opts, sizeof(play_opts),
-                     "\"type\":\"ambient\",\"tag\":\"environment\",\"key\":\"%s\","
-                     "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":1200",
-                     newKey, sect_vol);
-            GMCP_Media_Play(ch->desc, sect_name, play_opts);
-
-            /* Always ask previous sector key to fade away if we were active */
-            if (proto->MediaSectorActive) {
-                char stop_opts[192];
-                snprintf(stop_opts, sizeof(stop_opts),
-                         "\"key\":\"%s\",\"type\":\"ambient\",\"fadeaway\":true,\"fadeout\":1200",
-                         oldKey);
-                GMCP_Media_Stop(ch->desc, stop_opts);
-            }
-
-            if (proto->MediaSectorName) { free_string((char*)proto->MediaSectorName); }
-            proto->MediaSectorName   = str_dup(sect_name);
-            proto->MediaSectorVol    = sect_vol;
-            proto->MediaSectorActive = TRUE;
-            proto->MediaSectorFlip   = !proto->MediaSectorFlip;
+                if ( room_vol <= 0 )
+                        room_name = NULL;
         }
-    }
-    else {
-        /* Room or Area present, or nothing at all: silence the sector lane */
-        GMCP_Media_Stop(ch->desc, "\"key\":\"" KEY_SECT_A "\",\"type\":\"ambient\",\"fadeaway\":true,\"fadeout\":1200");
-        GMCP_Media_Stop(ch->desc, "\"key\":\"" KEY_SECT_B "\",\"type\":\"ambient\",\"fadeaway\":true,\"fadeout\":1200");
-        if (proto->MediaSectorName) { free_string((char*)proto->MediaSectorName); proto->MediaSectorName = NULL; }
-        proto->MediaSectorVol    = 0;
-        proto->MediaSectorActive = FALSE;
-        /* keep flip as-is */
-    }
 
-    /* ---------------- Room lane (room OR sector fallback) ------------------ */
-    if (room_name || sect_name)
-    {
-        const char *want_name = room_name ? room_name : sect_name;
-        const int   want_vol  = room_name ? room_vol  : sect_vol;
+        if ( !room_name && !area_name )
+        {
+                const sector_ambience_t *sa;
 
-        bool changed = force
-                    || !proto->MediaRoomActive
-                    || !proto->MediaRoomName
-                    || str_cmp(want_name, proto->MediaRoomName)
-                    || proto->MediaRoomVol != want_vol;
+                sa = sector_ambience_for( room->sector_type );
 
-        if (changed) {
-            /* Fade away previous room lane if name changed, to avoid a pop */
-            if (proto->MediaRoomActive && proto->MediaRoomName
-                && str_cmp(want_name, proto->MediaRoomName))
-            {
-                GMCP_Media_Stop(ch->desc,
-                    "\"key\":\"" KEY_ROOM "\",\"type\":\"ambient\",\"fadeaway\":true,\"fadeout\":1200");
-                if (proto->MediaRoomName) { free_string((char*)proto->MediaRoomName); proto->MediaRoomName = NULL; }
+                if ( sa && sa->name && *sa->name && sa->volume > 0 )
+                {
+                        sect_name = sa->name;
+                        sect_vol = URANGE( 1, sa->volume, 100 );
+                        sect_vol = media_apply_volume( sect_vol, ch, "environment", "ambient" );
+
+                        if ( sect_vol <= 0 )
+                                sect_name = NULL;
+                }
+        }
+
+        if ( room_name )
+        {
+                bool changed;
+                const char *new_key;
+                const char *old_key;
+
+                new_key = proto->MediaRoomFlip ? KEY_ROOM_B : KEY_ROOM_A;
+                old_key = proto->MediaRoomFlip ? KEY_ROOM_A : KEY_ROOM_B;
+
+                changed = force
+                       || !proto->MediaRoomActive
+                       || !proto->MediaRoomName
+                       || str_cmp( room_name, proto->MediaRoomName )
+                       || proto->MediaRoomVol != room_vol;
+
+                if ( changed )
+                {
+                        char opts[256];
+                        char stop[192];
+
+                        snprintf( opts, sizeof(opts),
+                                  "\"type\":\"music\",\"tag\":\"environment\",\"key\":\"%s\","
+                                  "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":%d",
+                                  new_key, room_vol, AMBIENT_FADE );
+                        GMCP_Media_Play( ch->desc, room_name, opts );
+
+                        if ( proto->MediaRoomActive )
+                        {
+                                snprintf( stop, sizeof(stop),
+                                          "\"key\":\"%s\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":%d",
+                                          old_key, AMBIENT_FADE );
+                                GMCP_Media_Stop( ch->desc, stop );
+                        }
+
+                        if ( proto->MediaRoomName )
+                                free_string( proto->MediaRoomName );
+
+                        proto->MediaRoomName = str_dup( room_name );
+                        proto->MediaRoomVol = room_vol;
+                        proto->MediaRoomActive = TRUE;
+                        proto->MediaRoomFlip = !proto->MediaRoomFlip;
+                }
+
+                GMCP_Media_Stop( ch->desc, "\"key\":\"" KEY_AREA_A "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":2000" );
+                GMCP_Media_Stop( ch->desc, "\"key\":\"" KEY_AREA_B "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":2000" );
+                GMCP_Media_Stop( ch->desc, "\"key\":\"" KEY_SECT_A "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":2000" );
+                GMCP_Media_Stop( ch->desc, "\"key\":\"" KEY_SECT_B "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":2000" );
+        }
+        else
+        {
+                GMCP_Media_Stop( ch->desc, "\"key\":\"" KEY_ROOM_A "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":2000" );
+                GMCP_Media_Stop( ch->desc, "\"key\":\"" KEY_ROOM_B "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":2000" );
+
+                if ( proto->MediaRoomName )
+                {
+                        free_string( proto->MediaRoomName );
+                        proto->MediaRoomName = NULL;
+                }
+
+                proto->MediaRoomVol = 0;
                 proto->MediaRoomActive = FALSE;
-                proto->MediaRoomVol    = 0;
-            }
-
-            char opts_room[256];
-            snprintf(opts_room, sizeof(opts_room),
-                     "\"type\":\"ambient\",\"tag\":\"environment\",\"key\":\"" KEY_ROOM "\","
-                     "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":1200",
-                     want_vol);
-            GMCP_Media_Play(ch->desc, want_name, opts_room);
-
-            if (proto->MediaRoomName) free_string((char*)proto->MediaRoomName);
-            proto->MediaRoomName   = str_dup(want_name);
-            proto->MediaRoomVol    = want_vol;
-            proto->MediaRoomActive = TRUE;
         }
 
-        /* Room/sector overrides area — unconditionally silence area lane */
-        GMCP_Media_Stop(ch->desc,
-            "\"key\":\"" KEY_AREA "\",\"type\":\"ambient\",\"fadeaway\":true,\"fadeout\":1200");
-        if (proto->MediaAreaName) { free_string((char*)proto->MediaAreaName); proto->MediaAreaName = NULL; }
-        proto->MediaAreaVol    = 0;
-        proto->MediaAreaActive = FALSE;
-    }
-    else
-    {
-        /* No room/sector — unconditionally silence the room lane */
-        GMCP_Media_Stop(ch->desc,
-            "\"key\":\"" KEY_ROOM "\",\"type\":\"ambient\",\"fadeaway\":true,\"fadeout\":1200");
-        if (proto->MediaRoomName) { free_string((char*)proto->MediaRoomName); proto->MediaRoomName = NULL; }
-        proto->MediaRoomVol    = 0;
-        proto->MediaRoomActive = FALSE;
-    }
+        if ( !room_name && area_name )
+        {
+                bool changed;
+                const char *new_key;
+                const char *old_key;
 
-    /* ---------------- Area lane (only when no room/sector override) -------- */
-    if (!room_name && !sect_name)
-    {
-        if (area_name) {
-            bool changed = force
-                        || !proto->MediaAreaActive
-                        || !proto->MediaAreaName
-                        || str_cmp(area_name, proto->MediaAreaName)
-                        || proto->MediaAreaVol != area_vol;
+                new_key = proto->MediaAreaFlip ? KEY_AREA_B : KEY_AREA_A;
+                old_key = proto->MediaAreaFlip ? KEY_AREA_A : KEY_AREA_B;
 
-            if (changed) {
-                char opts_area[256];
-                snprintf(opts_area, sizeof(opts_area),
-                         "\"type\":\"ambient\",\"tag\":\"environment\",\"key\":\"" KEY_AREA "\","
-                         "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":1200",
-                         area_vol);
-                GMCP_Media_Play(ch->desc, area_name, opts_area);
+                changed = force
+                       || !proto->MediaAreaActive
+                       || !proto->MediaAreaName
+                       || str_cmp( area_name, proto->MediaAreaName )
+                       || proto->MediaAreaVol != area_vol;
 
-                if (proto->MediaAreaName) free_string((char*)proto->MediaAreaName);
-                proto->MediaAreaName   = str_dup(area_name);
-                proto->MediaAreaVol    = area_vol;
-                proto->MediaAreaActive = TRUE;
-            }
-        } else {
-            /* No area ambience defined: ensure any area track is off */
-            GMCP_Media_Stop(ch->desc,
-                "\"key\":\"" KEY_AREA "\",\"type\":\"ambient\",\"fadeaway\":true,\"fadeout\":1200");
-            if (proto->MediaAreaName) { free_string((char*)proto->MediaAreaName); proto->MediaAreaName = NULL; }
-            proto->MediaAreaVol    = 0;
-            proto->MediaAreaActive = FALSE;
+                if ( changed )
+                {
+                        char opts[256];
+                        char stop[192];
+
+                        snprintf( opts, sizeof(opts),
+                                  "\"type\":\"music\",\"tag\":\"environment\",\"key\":\"%s\","
+                                  "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":%d",
+                                  new_key, area_vol, AMBIENT_FADE );
+                        GMCP_Media_Play( ch->desc, area_name, opts );
+
+                        if ( proto->MediaAreaActive )
+                        {
+                                snprintf( stop, sizeof(stop),
+                                          "\"key\":\"%s\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":%d",
+                                          old_key, AMBIENT_FADE );
+                                GMCP_Media_Stop( ch->desc, stop );
+                        }
+
+                        if ( proto->MediaAreaName )
+                                free_string( proto->MediaAreaName );
+
+                        proto->MediaAreaName = str_dup( area_name );
+                        proto->MediaAreaVol = area_vol;
+                        proto->MediaAreaActive = TRUE;
+                        proto->MediaAreaFlip = !proto->MediaAreaFlip;
+                }
+
+                GMCP_Media_Stop( ch->desc, "\"key\":\"" KEY_SECT_A "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":2000" );
+                GMCP_Media_Stop( ch->desc, "\"key\":\"" KEY_SECT_B "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":2000" );
         }
-    }
+        else if ( !room_name )
+        {
+                GMCP_Media_Stop( ch->desc, "\"key\":\"" KEY_AREA_A "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":2000" );
+                GMCP_Media_Stop( ch->desc, "\"key\":\"" KEY_AREA_B "\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":2000" );
 
-    #undef KEY_AREA
-    #undef KEY_ROOM
-    #undef KEY_SECT_A
-    #undef KEY_SECT_B
+                if ( proto->MediaAreaName )
+                {
+                        free_string( proto->MediaAreaName );
+                        proto->MediaAreaName = NULL;
+                }
 
-    /* also refresh the weather ambience layer */
-    if (ch->pcdata && ch->pcdata->snd_enabled && ch->pcdata->snd_env > 0)
-    {
-        /* Re-assert current weather ambience immediately */
-        update_weather_for_char(ch);
-    }
+                proto->MediaAreaVol = 0;
+                proto->MediaAreaActive = FALSE;
+        }
+
+        if ( !room_name && !area_name && sect_name )
+        {
+                const char *new_key;
+                const char *old_key;
+                bool changed;
+
+                new_key = proto->MediaSectorFlip ? KEY_SECT_B : KEY_SECT_A;
+                old_key = proto->MediaSectorFlip ? KEY_SECT_A : KEY_SECT_B;
+
+                changed = force
+                       || !proto->MediaSectorActive
+                       || !proto->MediaSectorName
+                       || str_cmp( sect_name, proto->MediaSectorName )
+                       || proto->MediaSectorVol != sect_vol;
+
+                if ( changed )
+                {
+                        char opts[256];
+                        char stop[192];
+
+                        snprintf( opts, sizeof(opts),
+                                  "\"type\":\"music\",\"tag\":\"environment\",\"key\":\"%s\","
+                                  "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":%d",
+                                  new_key, sect_vol, AMBIENT_FADE );
+                        GMCP_Media_Play( ch->desc, sect_name, opts );
+
+                        if ( proto->MediaSectorActive )
+                        {
+                                snprintf( stop, sizeof(stop),
+                                          "\"key\":\"%s\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":%d",
+                                          old_key, AMBIENT_FADE );
+                                GMCP_Media_Stop( ch->desc, stop );
+                        }
+
+                        if ( proto->MediaSectorName )
+                                free_string( proto->MediaSectorName );
+
+                        proto->MediaSectorName = str_dup( sect_name );
+                        proto->MediaSectorVol = sect_vol;
+                        proto->MediaSectorActive = TRUE;
+                        proto->MediaSectorFlip = !proto->MediaSectorFlip;
+                }
+        }
+
+        if ( ch->pcdata && ch->pcdata->snd_enabled && ch->pcdata->snd_env > 0 )
+                update_weather_for_char( ch );
+
+#undef KEY_AREA_A
+#undef KEY_AREA_B
+#undef KEY_ROOM_A
+#undef KEY_ROOM_B
+#undef KEY_SECT_A
+#undef KEY_SECT_B
+#undef AMBIENT_FADE
 }
+
+
 
 /* ---- Level-up sound broadcast via registry -------------------------------- */
 

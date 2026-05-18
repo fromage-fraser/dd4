@@ -537,6 +537,8 @@ typedef struct
    char *MediaRoomName;
    int MediaRoomVol;
    bool_t MediaRoomActive;
+   bool_t   MediaRoomFlip;
+   bool_t   MediaAreaFlip;
 
    /* Sector ambience tracking (for crossfade via A/B keys) */
    char *MediaSectorName;
