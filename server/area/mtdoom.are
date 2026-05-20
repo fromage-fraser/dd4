@@ -631,6 +631,8 @@ The armor of Lord Krothgar lies here.~
 9 2|16|64|128|512|2048 1|8
 0~ 0~ 0~ 0~
 25 0 0
+T
+steel~
 A
 1 2
 A
@@ -653,6 +655,8 @@ The sword of Lord Krothgar is here.~
 5 2|16|64|128|512|2048 1|8192
 0~ 0~ 0~ 11~
 15 0 0
+T
+steel/wood/leather~
 A
 13 50
 A
@@ -667,6 +671,8 @@ The shield of Lord Krothgar is here.~
 9 2|16|64|128|512|2048 1|512
 0~ 0~ 0~ 0~
 15 0 0
+T
+steel/wood~
 A
 17 -30
 A
@@ -681,6 +687,8 @@ The cursed helm of Lord Krothgar is here.~
 9 2|16|64|128|512|2048|4096|2305843009213693952 1|16
 0~ 0~ 0~ 0~
 5 0 0
+T
+steel~
 A
 3 -5
 A
@@ -693,6 +701,8 @@ A two-handed sword lies here.~
 5 2|16|64|512 1|8192
 0~ 0~ 0~ 8~
 10 0 0
+T
+steel/wood/leather~
 A
 1 3
 A
@@ -709,6 +719,8 @@ A burnt helm painted with a hideous visage lies here.~
 9 2|16|64|512|4096 1|16
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 12 20
 A
@@ -725,6 +737,8 @@ The legendary iron fist lies here.~
 5 2|16|64|512|4096 1|128
 0~ 0~ 0~ 0~
 10 40000 0
+T
+iron/wood/leather~
 A
 2 -2
 A
@@ -739,6 +753,8 @@ A demon's barbed flail lies here.~
 5 2|16|64|512 1|8192
 0~ 0~ 0~ 4~
 10 0 0
+T
+iron/steel~
 A
 18 15
 A
@@ -775,6 +791,8 @@ The robes of the archmage are crumpled up in a corner here.~
 9 1|64 1|1024
 0~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 A
 12 150
 #15711
@@ -793,6 +811,8 @@ A sacrificial dagger is stuck in the ground here.~
 5 16|512 1|8192
 0~ 0~ 0~ 11~
 5 0 0
+T
+steel/wood/leather~
 #15713
 robes~
 the high priest's robes~
@@ -801,6 +821,8 @@ The high priest's robes lie here.~
 9 16|512 1|1024
 0~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 A
 4 4
 #15714
@@ -811,6 +833,8 @@ The high priest's ceremonial mask is here.~
 9 16|512 1|16
 0~ 0~ 0~ 0~
 3 0 0
+T
+leather~
 A
 5 3
 A
@@ -823,6 +847,8 @@ A suit of spiked plate mail has been foolishly discarded here.~
 9 2|16|512 1|8
 0~ 0~ 0~ 0~
 20 0 0
+T
+steel~
 A
 17 -15
 #15716
@@ -833,6 +859,8 @@ A huge morning star is buried in the ground here.~
 5 2|16|64|512 1|8192
 0~ 0~ 0~ 8~
 15 0 0
+T
+steel/wood/leather~
 A
 18 -5
 A
@@ -845,6 +873,8 @@ A dark helm lies here.~
 9 2|16|512 1|16
 0~ 0~ 0~ 0~
 5 0 0
+T
+steel~
 #15718
 dagger~
 a sacrifical dagger~
@@ -853,6 +883,8 @@ A sacrificial dagger is stuck in the ground here.~
 5 16|512 1|8192
 0~ 0~ 0~ 11~
 5 0 0
+T
+steel/wood/leather~
 #15719
 robes~
 the priest's robes~
@@ -861,6 +893,8 @@ The priest's robes lie here.~
 9 16|512 1|1024
 0~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 #15720
 mask~
 the priest's death mask~
@@ -869,6 +903,8 @@ The priest's ceremonial mask is here.~
 9 16|512 1|16
 0~ 0~ 0~ 0~
 3 0 0
+T
+leather~
 #15721
 mage robes~
 the mage's robes~
@@ -877,6 +913,8 @@ Some dirty robes covered in chemical stains lie here.~
 9 0 1|1024
 0~ 0~ 0~ 0~
 1 0 0
+T
+cloth~
 #15722
 wand~
 a magic wand~
@@ -901,6 +939,8 @@ A huge dragon scale has been dropped here.~
 9 2|16|512 1|512
 0~ 0~ 0~ 0~
 10 0 0
+T
+dragonscale~
 A
 17 -18
 A
@@ -913,6 +953,8 @@ A dragon's tooth lies here.~
 5 2|16|512 1|16384
 0~ 0~ 0~ 11~
 10 0 0
+T
+dragonscale~
 A
 18 10
 A
@@ -925,6 +967,8 @@ A pair of dragon claws is here.~
 9 2|16|512 1|128
 0~ 0~ 0~ 0~
 10 0 0
+T
+dragonscale~
 A
 2 -2
 A
@@ -939,6 +983,8 @@ A dragon hide is piled up here.~
 9 2|16|512 1|1024
 0~ 0~ 0~ 0~
 10 0 0
+T
+dragonscale~
 A
 13 15
 A
@@ -971,6 +1017,8 @@ A pair of manacles lies here.~
 9 64|4096 1|256
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 2 -3
 A
@@ -983,6 +1031,8 @@ An illithid's robes lie here, discarded.~
 9 64 1|1024
 0~ 0~ 0~ 0~
 1 0 0
+T
+cloth~
 A
 12 25
 #15732
@@ -1065,6 +1115,8 @@ A spiked collar rests here.~
 9 16|4096 1|4
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 19 6
 #15741
@@ -1097,6 +1149,8 @@ A normal wooden club lies here.~
 5 0 1|8192
 0~ 0~ 0~ 7~
 5 0 0
+T
+wood~
 #15744
 collar~
 a slave collar~
@@ -1105,6 +1159,8 @@ A slave collar lies here.~
 9 4096 1|4
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 2 -1
 A
@@ -1121,6 +1177,8 @@ A glaive has been left propped up here.~
 5 64 1|8192
 0~ 0~ 0~ 3~
 10 0 0
+T
+steel/wood/leather~
 A
 18 13
 A
@@ -1141,6 +1199,8 @@ A pole arm lies here.~
 5 0 1|8192
 0~ 0~ 0~ 8~
 10 0 0
+T
+steel/wood/leather~
 A
 18 -2
 A
@@ -1153,6 +1213,8 @@ A tight-fitting suit of black chainmail lies here.~
 9 16|4096 1|8
 0~ 0~ 0~ 0~
 10 0 0
+T
+steel~
 A
 2 -2
 A
@@ -1165,6 +1227,8 @@ The black sword glows here.~
 5 1|16|64|512 1|8192
 0~ 0~ 0~ 3~
 5 0 0
+T
+steel/wood/leather~
 A
 18 18
 #15750
@@ -1175,6 +1239,8 @@ The blue sword hums here.~
 5 2|16|64|512 1|8192
 0~ 0~ 0~ 3~
 5 0 0
+T
+steel/wood/leather~
 A
 19 18
 #15751
@@ -1185,6 +1251,8 @@ Some black robes with no special properties lie here.~
 9 0 1|1024
 0~ 0~ 0~ 0~
 1 0 0
+T
+cloth~
 E
 robes~
 They look extraordinarily unencumbering.
@@ -1209,6 +1277,8 @@ A black Drow cloak is crumpled on the floor here.~
 9 0 1|1024
 0~ 0~ 0~ 0~
 1 0 0
+T
+cloth~
 A
 2 1
 A
@@ -1225,6 +1295,8 @@ A pair of black drow boots is here.~
 9 0 1|64
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 2 1
 A
@@ -1239,6 +1311,8 @@ A suit of finely crafted adamantite chainmail is here.~
 9 64 1|8
 0~ 0~ 0~ 0~
 5 0 0
+T
+adamantite~
 A
 5 1
 A
@@ -1253,6 +1327,8 @@ A rod with several writhing tentacles attached is here.~
 5 64 1|8192
 0~ 0~ 0~ 4~
 10 0 0
+T
+leather~
 A
 18 10
 A
@@ -1265,6 +1341,8 @@ A tiara lies here.~
 9 64|512 1|16
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 3 2
 A

@@ -220,6 +220,8 @@ A strange spear lies here.~
 5 128|512|134217728 8193
 0~ 3~ 5~ 2~
 10 20000 5000
+T
+iron/wood~
 A
 19 3
 A
@@ -232,6 +234,8 @@ A wicked looking horned helmet lies here.~
 9 128|512 17
 6~ 0~ 0~ 0~
 5 15000 10000
+T
+steel~
 E
 horns horn~
 These horns appear to be made of adamantite.~
@@ -247,6 +251,8 @@ An old suit of chain mail lies here, corroded by the marsh.~
 9 128|512 9
 7~ 0~ 0~ 0~
 20 2000 2000
+T
+steel~
 #8306
 scythe~
 a huge, wicked-looking scythe~
@@ -255,6 +261,8 @@ An evil, wicked-looking scythe lies in the shadows.~
 5 128|512 8193
 0~ 4~ 4~ 1~
 16 100000 20000
+T
+steel/wood~
 A
 18 3
 A

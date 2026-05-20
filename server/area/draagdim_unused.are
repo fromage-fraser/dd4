@@ -42,6 +42,8 @@ A sword bearing the symbol of the Draagdim elite guard rests here.~
 5 64|1024 1|8192
 0~ 1~ 6~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 19 10
 #28101
@@ -52,6 +54,8 @@ A breastplate bearing the symbol of the Draagdim Elite guard lies here...~
 9 64|1024 1|8
 0~ 1~ 6~ 11~
 5 0 0
+T
+silver~
 A
 17 -20
 A
@@ -64,6 +68,8 @@ A helmet bearing the symbol of the Draagdim Elite guard lies here...~
 9 64|1024 1|16
 0~ 1~ 6~ 11~
 1 0 0
+T
+steel~
 A
 17 -10
 A
@@ -76,6 +82,8 @@ A large and carefully sharpened battleaxe rests here.~
 5 64|2048 1|8192
 0~ 1~ 6~ 13~
 5 0 0
+T
+steel/wood~
 A
 19 20
 #28104
@@ -86,6 +94,8 @@ A leather jerkin bearing the symbol of Draagdim lies here.~
 9 64|1024 1|8
 0~ 1~ 6~ 11~
 2 0 0
+T
+leather~
 A
 17 -10
 A
@@ -98,6 +108,8 @@ A shield bearing the symbol of the Draagdim elite guard lies here.~
 9 64|1024|2048 1|512
 0~ 1~ 6~ 11~
 2 0 0
+T
+steel/wood~
 A
 17 -25
 A

@@ -498,6 +498,8 @@ A pair of large bracers lies here.~
 9 0 1|256
 3~ 0~ 0~ 0~
 8 0 0
+T
+steel~
 A
 1 1
 A
@@ -510,6 +512,8 @@ A small sword lies here.~
 5 0 8193
 0~ 0~ 11~ 11~
 1 0 0
+T
+steel/wood/leather~
 A
 18 3
 A
@@ -522,6 +526,8 @@ A long, thin, shimmering object lies here.~
 5 0 8193
 0~ 0~ 7~ 7~
 0 0 0
+T
+wood~
 A
 18 2
 A
@@ -534,6 +540,8 @@ A rubber bastard sword is here.~
 5 0 8193
 0~ 0~ 1~ 1~
 0 0 0
+T
+steel/wood/leather~
 A
 18 1
 A
@@ -562,6 +570,8 @@ A razor lies here.~
 5 0 8193
 0~ 0~ 2~ 2~
 1 0 0
+T
+steel/wood/leather~
 A
 19 2
 A
@@ -598,6 +608,8 @@ A sharp, well balanced knife lies on the ground.~
 5 0 8193
 0~ 0~ 2~ 2~
 1 0 0
+T
+steel~
 A
 18 2
 #4417
@@ -608,6 +620,8 @@ A strip of black cloth lies here.~
 9 0 17
 0~ 0~ 0~ 0~
 1 0 0
+T
+cloth~
 A
 18 -10
 A
@@ -620,6 +634,8 @@ A leather whip is lying on the ground.~
 5 0 8193
 2~ 2~ 4~ 4~
 1 0 0
+T
+leather~
 A
 18 5
 A
@@ -642,6 +658,8 @@ A huge pair of shoes lies here, apparently forgotten.~
 9 0 65
 0~ 0~ 0~ 0~
 4 0 0
+T
+leather~
 A
 14 -20
 A
@@ -654,6 +672,8 @@ The Ringmaster's tophat lies here.~
 9 0 17
 0~ 0~ 0~ 0~
 1 0 0
+T
+cloth~
 A
 12 10
 A
@@ -666,6 +686,8 @@ A thin knife with a sharp blade lies here.~
 5 0 8193
 0~ 0~ 1~ 1~
 1 0 0
+T
+steel/wood/leather~
 A
 18 -2
 A
@@ -831,6 +853,8 @@ A red nose like a clown might wear, lies forgotten upon the ground.~
 9 0 17
 0~ 0~ 0~ 0~
 1 100 0
+T
+leather~
 A
 3 -2
 A
@@ -907,6 +931,8 @@ A very sharp knife gleams from the floor.~
 5 0 8193
 0~ 0~ 11~ 11~
 1 0 0
+T
+steel~
 A
 18 3
 A

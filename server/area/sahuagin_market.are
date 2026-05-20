@@ -1955,6 +1955,8 @@ A leather jerkin is lying here.~
 9 0 1|8
 2~ 0~ 0~ 0~
 5 100 30
+T
+leather~
 #27216
 cap leather smart~
 a smart leather cap~
@@ -1963,6 +1965,8 @@ A leather cap is lying here.~
 9 0 1|16
 2~ 0~ 0~ 0~
 1 50 30
+T
+leather~
 #27217
 pants pair leather stylish~
 a stylish pair of leather pants~
@@ -1971,6 +1975,8 @@ A stlish pair of leather pants is lying here.~
 9 0 1|32
 2~ 0~ 0~ 0~
 5 50 30
+T
+leather~
 #27218
 boots leather sturdy pair~
 a sturdy pair of leather boots~
@@ -1979,6 +1985,8 @@ A sturdy pair of leather boots lies here.~
 9 0 1|64
 2~ 0~ 0~ 0~
 3 50 30
+T
+leather~
 #27219
 gloves comfortable pair leather~
 a comfortable pair of leather gloves~
@@ -1987,6 +1995,8 @@ A comfortable-looking pair of leather gloves is lying here.~
 9 0 1|128
 2~ 0~ 0~ 0~
 1 50 30
+T
+leather~
 #27220
 vambraces leather pair~
 a pair of leather vambraces~
@@ -1995,6 +2005,8 @@ A pair of leather vambraces is lying here.~
 9 0 1|256
 2~ 0~ 0~ 0~
 3 50 30
+T
+leather~
 #27221
 jerkin reinforced leather~
 a reinforced leather jerkin~
@@ -2003,6 +2015,8 @@ A reinforced leather jerkin is lying here.~
 9 0 1|8
 3~ 0~ 0~ 0~
 10 200 30
+T
+leather~
 #27222
 cap boiled leather~
 a boiled leather cap~
@@ -2011,6 +2025,8 @@ A boiled leather cap is lying here.~
 9 0 1|16
 3~ 0~ 0~ 0~
 2 100 30
+T
+leather~
 #27223
 pants shiny leather~
 a pair of shiny leather pants~
@@ -2019,6 +2035,8 @@ A pair of shiny leather pants is lying here.~
 9 0 1|32
 3~ 0~ 0~ 0~
 8 100 30
+T
+leather~
 #27224
 boots hardened leather pair~
 a pair of hardened leather boots~
@@ -2027,6 +2045,8 @@ A pair of hardened leather boots lies here.~
 9 0 1|64
 3~ 0~ 0~ 0~
 4 100 30
+T
+leather~
 #27225
 gloves cured leather~
 a pair of cured leather gloves~
@@ -2035,6 +2055,8 @@ A pair of cured leather gloves is lying here.~
 9 0 1|128
 3~ 0~ 0~ 0~
 1 100 30
+T
+leather~
 #27226
 sleeves cured leather~
 a pair of cured leather sleeves~
@@ -2043,6 +2065,8 @@ A pair of cured leather sleeves is lying here.~
 9 0 1|256
 3~ 0~ 0~ 0~
 4 100 30
+T
+leather~
 #27227
 cured leather skin water~
 a cured leather water skin~
@@ -2071,6 +2095,8 @@ A spiked pauldron is here.~
 9 0 1|4
 0~ 1~ 6~ 11~
 8 0 0
+T
+leather~
 A
 17 -10
 #27230
@@ -2081,6 +2107,8 @@ A wooden training trident is here.~
 5 0 1|8192
 0~ 1~ 6~ 0~
 7 0 30
+T
+wood~
 A
 18 8
 #27231
@@ -2091,6 +2119,8 @@ A tasselled purple loincloth is here.~
 9 0 1|2048
 0~ 1~ 6~ 11~
 1 0 0
+T
+cloth~
 #27232
 training spear~
 a training spear~
@@ -2099,6 +2129,8 @@ A wooden training spear rests here.~
 5 0 1|8192
 0~ 0~ 0~ 0~
 2 0 30
+T
+wood~
 #27233
 veteran spear~
 a veteran's spear~
@@ -2107,6 +2139,8 @@ A well-used and superbly-maintained spear rests here.~
 5 16|64|134217728 1|8192
 0~ 0~ 0~ 11~
 6 0 60
+T
+iron/wood~
 A
 18 6
 A
@@ -2119,6 +2153,8 @@ Your sharp teeth protrude from your fearsome jaws.~
 5 16777216|67108864 0
 1~ 0~ 0~ 10~
 1 0 0
+T
+steel/wood/leather~
 #27235
 tail spine~
 a sharp tail spine~
@@ -2127,6 +2163,8 @@ The sharp tail spine of a stingray lies here.~
 5 16777216|67108864 0
 6~ 0~ 0~ 11~
 1 0 0
+T
+steel/wood/leather~
 #27236
 venomous tail spine~
 a venomous tail spine~
@@ -2135,6 +2173,8 @@ The venomous tail spine of a stingray lies here.~
 5 16384|67108864 0
 6~ 0~ 0~ 0~
 1 0 0
+T
+steel/wood/leather~
 #27237
 ledger~
 a ledger~
@@ -2158,6 +2198,8 @@ A slide rules lies here.~
 5 0 1|8192
 0~ 0~ 0~ 0~
 1 0 0
+T
+steel/wood/leather~
 E
 slide rule~
 The slide rule is a mechanical device used for doing computation, and is used
@@ -2176,6 +2218,8 @@ A feathered writing instrument lies here.~
 5 64 1|8192
 0~ 0~ 0~ 11~
 1 0 0
+T
+steel/wood/leather~
 E
 quill feather writing instrument~
 This quill is a writing tool made from a moulted primary wing-feather of a
@@ -2190,6 +2234,8 @@ A heavy crossbow has been left here.~
 5 1073741824 1|131072
 0~ 0~ 0~ 11~
 5 0 35
+T
+wood~
 A
 19 3
 A
@@ -2202,6 +2248,8 @@ A light crossbow has been left here.~
 5 1073741824 1|131072
 0~ 0~ 0~ 11~
 2 0 30
+T
+wood~
 A
 19 2
 A
@@ -2214,6 +2262,8 @@ A crude trident is here.~
 5 16|64 1|8192
 0~ 1~ 6~ 2~
 10 0 30
+T
+steel~
 A
 18 8
 #27243
@@ -2224,6 +2274,8 @@ A large net is lined with sharp barbs.~
 5 0 1|8192
 0~ 12~ 22~ 9~
 10 0 30
+T
+steel/wood/leather~
 A
 19 4
 E
@@ -2240,6 +2292,8 @@ A veteran's heavy crossbow has been left here.~
 5 1073741824 1|131072
 0~ 0~ 0~ 11~
 5 0 35
+T
+wood~
 A
 19 5
 A
@@ -2252,6 +2306,8 @@ A veteran's light crossbow has been left here.~
 5 1073741824 1|131072
 0~ 0~ 0~ 11~
 2 0 35
+T
+wood~
 A
 19 4
 A
@@ -2420,6 +2476,8 @@ A Reaver's heavy crossbow has been left here.~
 5 1073741824 1|131072
 0~ 0~ 0~ 11~
 5 0 35
+T
+wood~
 A
 19 5
 A
@@ -2434,6 +2492,8 @@ A splendid example of a sahuagin Reaver's scimitar rests here.~
 5 1048576|16777216 1|8192
 0~ 0~ 0~ 1~
 6 0 35
+T
+steel/wood/leather~
 A
 18 5
 A
@@ -2692,6 +2752,8 @@ A pair of prisoner's shackles lie here.~
 9 128|4096|274877906944 1|4096
 0~ 0~ 0~ 0~
 10 0 0
+T
+leather~
 A
 2 -10
 A
@@ -2708,6 +2770,8 @@ A ball and chain lies here.~
 9 128|4096|274877906944 1|32
 0~ 0~ 0~ 0~
 15 0 0
+T
+steel~
 A
 14 -300
 A
@@ -2734,6 +2798,8 @@ A cruel-looking whip lies here.~
 5 16|128|512|2048 1|8192
 0~ 0~ 0~ 4~
 2 0 0
+T
+leather~
 A
 2 -2
 A
@@ -2962,6 +3028,8 @@ Green robes lie here in a heap.~
 9 16|64 1|1024
 0~ 0~ 0~ 0~
 2 0 0
+T
+cloth~
 A
 12 30
 A
@@ -2974,6 +3042,8 @@ Brown robes lie here in a heap.~
 9 16|64 1|1024
 0~ 0~ 0~ 0~
 2 0 0
+T
+cloth~
 A
 19 3
 A
@@ -3078,6 +3148,8 @@ A  turquoise stone floats here.~
 9 1|32|64|274877906944 1|32768
 0~ 0~ 0~ 0~
 1 0 0
+T
+granite~
 A
 13 37
 E
@@ -3185,6 +3257,8 @@ The wooden box lies here.~
 9 0 1|1024
 4~ 0~ 0~ 0~
 4 0 35
+T
+wood~
 A
 40 -1
 A
@@ -3202,6 +3276,8 @@ A strange-looking harness is here, covered in spikes.~
 9 0 1|1024
 4~ 0~ 0~ 0~
 4 0 55
+T
+leather~
 A
 40 -1
 A
@@ -3219,6 +3295,8 @@ An obsidian suit designed for aquatic adventure lies here.~
 9 64 1|1024
 4~ 0~ 0~ 0~
 4 0 75
+T
+obsidian~
 A
 40 -1
 A
@@ -3235,6 +3313,8 @@ A magic robe shimmers at your feet.~
 9 1|64 1|1024
 4~ 0~ 0~ 0~
 4 0 100
+T
+cloth~
 A
 40 -1
 A
@@ -3454,6 +3534,8 @@ A simple vice lies here.~
 9 512|2048|4096|274877906944 1|2
 0~ 0~ 0~ 0~
 3 0 30
+T
+leather~
 A
 2 -10
 A
@@ -3479,6 +3561,8 @@ A device for tearing out tongues is here.~
 5 512|2048|274877906944 1|8192
 0~ 0~ 0~ 5~
 3 0 30
+T
+steel/wood/leather~
 A
 19 4
 A
@@ -3501,6 +3585,8 @@ What looks like a large iron boot is here.~
 9 512|2048|4096|274877906944 1|64
 0~ 0~ 0~ 0~
 18 0 35
+T
+iron/wood/leather~
 A
 2 -20
 A
@@ -3530,6 +3616,8 @@ A pear-shaped metal object lies here.~
 5 512|2048|274877906944 1|8192
 0~ 0~ 0~ 8~
 4 0 30
+T
+steel/wood/leather~
 A
 19 5
 A
@@ -3552,6 +3640,8 @@ A clawed iron weapon of some sort lies here.~
 5 274877906944 1|8192
 0~ 0~ 0~ 5~
 10 0 35
+T
+iron/wood/leather~
 A
 19 6
 A
@@ -3584,6 +3674,8 @@ A bundle of leafless twigs bound together lies here.~
 5 274877906944 1|8192
 0~ 0~ 0~ 0~
 4 0 35
+T
+steel/wood/leather~
 A
 2 2
 A
@@ -3619,6 +3711,8 @@ A cityguard's spiked pauldron is here.~
 9 0 1|4
 0~ 1~ 6~ 11~
 8 0 0
+T
+leather~
 A
 17 -15
 #27365
@@ -3629,6 +3723,8 @@ A master's light crossbow has been left here.~
 5 1073741824 1|131072
 0~ 0~ 0~ 11~
 2 0 30
+T
+wood~
 A
 19 5
 A
@@ -3653,6 +3749,8 @@ A nasty-looking cudgel has been left here.~
 5 2|64 1|8192
 0~ 0~ 0~ 7~
 15 0 0
+T
+steel/wood/leather~
 A
 19 6
 A
@@ -3681,6 +3779,8 @@ A very comfortable-looking pair of boots lie here.~
 9 1|256 33
 9~ 0~ 0~ 0~
 17 12500 5000
+T
+leather~
 A
 13 60
 A
@@ -3693,6 +3793,8 @@ A dagger made from the shell of a large gastropod lies here.~
 5 0 1|8192
 0~ 8~ 18~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 19 3
 A
@@ -3959,6 +4061,8 @@ A cudgel made of a very hard wood lies here.~
 5 0 8193
 0~ 0~ 0~ 7~
 5 0 0
+T
+iron/wood/leather~
 A
 19 7
 A
@@ -4166,6 +4270,8 @@ a brilliant red crystal~
 9 64|274877906944 1|32768
 0~ 0~ 0~ 0~
 1 0 0
+T
+quartz~
 A
 13 60
 

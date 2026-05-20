@@ -954,6 +954,8 @@ An executioner's axe is here waiting to possess its next user.~
 5 1024|2048 1|8192
 0~ 5~ 6~ 1~
 80 30000 0
+T
+steel/wood/leather~
 E
 axe blade~
 It is quite heavy.  The blade is made of some metal that you can't even
@@ -989,6 +991,8 @@ A dagger with a long thin blade is here.~
 5 0 1|8192
 0~ 2~ 4~ 11~
 1 10 0
+T
+steel/wood/leather~
 #3021
 sword small~
 a small sword~
@@ -997,6 +1001,8 @@ A small sword lies here.~
 5 0 1|8192
 0~ 2~ 5~ 11~
 3 60 0
+T
+steel/wood/leather~
 #3022
 sword long~
 a long sword~
@@ -1005,6 +1011,8 @@ A long sword has been left here.~
 5 0 1|8192
 0~ 2~ 6~ 3~
 8 100 0
+T
+steel/wood/leather~
 #3030
 torch~
 a torch~
@@ -1113,6 +1121,8 @@ A scale mail jacket is lying on the ground.~
 9 0 1|8
 4~ 0~ 0~ 0~
 40 1000 0
+T
+steel~
 #3046
 bronze breast plate~
 a bronze breast plate~
@@ -1121,6 +1131,8 @@ A bronze breast plate is lying on the ground.~
 9 0 1|8
 6~ 0~ 0~ 0~
 80 7000 0
+T
+bronze/wood/leather~
 #3167
 eggnogg bottle~
 a bottle of eggnogg~
@@ -1161,6 +1173,8 @@ A leather jerkin is lying on the ground.~
 9 0 1|8
 2~ 0~ 0~ 0~
 5 100 0
+T
+leather~
 #3061
 cap~
 a leather cap~
@@ -1169,6 +1183,8 @@ A leather cap is lying on the ground.~
 9 0 1|16
 2~ 0~ 0~ 0~
 1 50 0
+T
+leather~
 #3062
 pants~
 a pair of leather pants~
@@ -1177,6 +1193,8 @@ A pair of leather pants is lying on the ground.~
 9 0 1|32
 2~ 0~ 0~ 0~
 5 50 0
+T
+leather~
 #3063
 boots~
 a pair of leather boots~
@@ -1185,6 +1203,8 @@ A pair of leather boots lies here.~
 9 0 1|64
 2~ 0~ 0~ 0~
 3 50 0
+T
+leather~
 #3064
 gloves~
 a pair of leather gloves~
@@ -1193,6 +1213,8 @@ A pair of leather gloves is lying on the ground.~
 9 0 1|128
 2~ 0~ 0~ 0~
 1 50 0
+T
+leather~
 #3065
 sleeves~
 a pair of leather sleeves~
@@ -1201,6 +1223,8 @@ A pair of leather sleeves is lying on the ground.~
 9 0 1|256
 2~ 0~ 0~ 0~
 3 50 0
+T
+leather~
 #3066
 jerkin~
 a studded leather jerkin~
@@ -1209,6 +1233,8 @@ A studded leather jerkin is lying on the ground.~
 9 0 1|8
 3~ 0~ 0~ 0~
 10 200 0
+T
+leather~
 #3067
 cap~
 a hard leather cap~
@@ -1217,6 +1243,8 @@ A hard leather cap is lying on the ground.~
 9 0 1|16
 3~ 0~ 0~ 0~
 2 100 0
+T
+leather~
 #3068
 pants~
 a pair of studded leather pants~
@@ -1225,6 +1253,8 @@ A pair of studded leather pants is lying on the ground.~
 9 0 1|32
 3~ 0~ 0~ 0~
 8 100 0
+T
+leather~
 #3069
 boots~
 a pair of hard leather boots~
@@ -1233,6 +1263,8 @@ A pair of hard leather boots lies here.~
 9 0 1|64
 3~ 0~ 0~ 0~
 4 100 0
+T
+leather~
 #3070
 gloves~
 a pair of hard leather gloves~
@@ -1241,6 +1273,8 @@ A pair of hard leather gloves is lying on the ground.~
 9 0 1|128
 3~ 0~ 0~ 0~
 1 100 0
+T
+leather~
 #3071
 sleeves~
 a pair of studded leather sleeves~
@@ -1249,6 +1283,8 @@ A pair of studded leather sleeves is lying on the ground.~
 9 0 1|256
 3~ 0~ 0~ 0~
 4 100 0
+T
+leather~
 #3072
 jerkin scale mail~
 a scale mail jerkin~
@@ -1257,6 +1293,8 @@ A scale mail jerkin is lying on the ground.~
 9 0 1|8
 4~ 0~ 0~ 0~
 20 500 0
+T
+steel~
 #3073
 coif scale mail~
 a scale mail coif~
@@ -1265,6 +1303,8 @@ A scale mail coif is lying on the ground.~
 9 0 1|16
 4~ 0~ 0~ 0~
 4 250 0
+T
+steel~
 #3074
 skirt scale mail~
 a long scale mail skirt~
@@ -1273,6 +1313,8 @@ A long scale mail skirt is lying on the ground.~
 9 0 1|32
 4~ 0~ 0~ 0~
 20 250 0
+T
+steel~
 #3075
 boots reinforced~
 a pair of reinforced boots~
@@ -1281,6 +1323,8 @@ A pair of reinforced boots lies here.~
 9 0 1|64
 4~ 0~ 0~ 0~
 6 250 0
+T
+leather~
 #3076
 gloves reinforced~
 a pair of reinforced gloves~
@@ -1289,6 +1333,8 @@ A pair of reinforced gloves is lying on the ground.~
 9 0 1|128
 4~ 0~ 0~ 0~
 2 250 0
+T
+leather~
 #3077
 sleeves scale mail~
 a pair of scale mail sleeves~
@@ -1297,6 +1343,8 @@ A pair of scale mail sleeves is lying on the ground.~
 9 0 1|256
 4~ 0~ 0~ 0~
 8 250 0
+T
+steel~
 #3097
 shield small metal~
 a small metal shield~
@@ -1305,6 +1353,8 @@ A small metal shield is lying on the ground.~
 9 0 1|512
 4~ 0~ 0~ 0~
 3 500 0
+T
+steel/wood~
 #3100
 tea cup~
 a cup of tea~
@@ -1349,6 +1399,8 @@ A bronze bracer is lying on the ground.~
 9 0 1|4096
 6~ 0~ 0~ 0~
 8 2500 0
+T
+bronze/wood/leather~
 #3106
 bracer iron~
 an iron bracer~
@@ -1357,6 +1409,8 @@ An iron bracer is lying on the ground.~
 9 0 1|4096
 7~ 0~ 0~ 0~
 8 5000 0
+T
+iron/wood/leather~
 #3120
 key iron~
 a key~
@@ -1413,6 +1467,8 @@ A long sword has been left here.~
 5 0 1|8192
 0~ 3~ 8~ 3~
 8 600 0
+T
+steel/wood/leather~
 E
 sword long~
 This is the ceremonial sword of the Mayor of Midgaard.
@@ -1569,6 +1625,8 @@ You see a standard issue sword here.~
 5 64 1|8192
 0~ 3~ 4~ 3~
 5 0 0
+T
+steel/wood/leather~
 A
 18 2
 A
@@ -1586,6 +1644,8 @@ You see a standard issue dagger here.~
 5 64 1|8192
 0~ 4~ 4~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 18 2
 A
@@ -1603,6 +1663,8 @@ You see a standard issue mace here.~
 5 64 1|8192
 0~ 4~ 4~ 7~
 5 0 0
+T
+iron/wood~
 A
 18 2
 A
@@ -1620,6 +1682,8 @@ You see a standard issue vest here.~
 9 0 1|8
 5~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 E
 standard vest~
 You see a vest of great craftsmanship.  Stamped on the side is:
@@ -1633,6 +1697,8 @@ You see a standard issue shield here.~
 9 0 1|512
 5~ 0~ 0~ 0~
 5 0 0
+T
+steel/wood~
 E
 standard shield~
 You see a shield of great craftsmanship.  Imprinted on the side is:
@@ -1646,6 +1712,8 @@ You see a standard issue cloak here.~
 9 0 1|4
 5~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 E
 standard cloak~
 You see a cloak of great craftsmanship.  Imprinted on the side is:
@@ -1659,6 +1727,8 @@ You see a standard issue helmet here.~
 9 0 1|16
 5~ 0~ 0~ 0~
 5 0 0
+T
+steel~
 E
 standard helmet~
 You see a helmet of great craftsmanship.  Imprinted on the side is:
@@ -1672,6 +1742,8 @@ You see a pair of standard issue leggings here.~
 9 0 1|32
 5~ 0~ 0~ 0~
 5 0 0
+T
+steel~
 E
 standard leggings~
 You see leggings of great craftsmanship.  Imprinted on the side is:
@@ -1685,6 +1757,8 @@ You see a pair of standard issue boots here.~
 9 0 1|64
 5~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 E
 standard boots~
 You see boots of great craftsmanship.  Imprinted on the side is:
@@ -1698,6 +1772,8 @@ You see a pair of standard issue gloves here.~
 9 0 1|128
 5~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 E
 standard gloves~
 You see gloves of great craftsmanship.  Imprinted on the side is:
@@ -1711,6 +1787,8 @@ You see a pair of standard issue sleeves here.~
 9 0 1|256
 5~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 E
 standard sleeves~
 You see sleeves of great craftsmanship.  Imprinted on the side is:
@@ -1724,6 +1802,8 @@ You see a standard issue cape here.~
 9 0 1|1024
 5~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 E
 standard cape~
 You see a cape of great craftsmanship.  Imprinted on the side is:
@@ -1737,6 +1817,8 @@ You see a standard issue belt here.~
 9 0 1|2048
 5~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 E
 standard belt~
 You see a belt of great craftsmanship.  Imprinted on the side is:
@@ -1750,6 +1832,8 @@ You see a standard issue bracer here.~
 9 0 1|4096
 5~ 0~ 0~ 0~
 5 0 0
+T
+steel~
 E
 standard bracer~
 You see a bracer of great craftsmanship.  Imprinted on the side is:
@@ -1763,6 +1847,8 @@ You see a ring with a strange symbol on the floor.~
 9 64 1|2
 0~ 0~ 0~ 0~
 1 0 0
+T
+silver~
 A
 17 -6
 A
@@ -1805,6 +1891,8 @@ A diamond wedding ring has been left here.~
 9 256 1|2
 1~ 0~ 0~ 0~
 1 0 0
+T
+diamond~
 E
 ring diamond wedding~
 A slender gold band set with a marquise-cut four carat blue-white solitaire.
@@ -1818,6 +1906,8 @@ A gold wedding band has been left here.~
 9 256 1|2
 1~ 0~ 0~ 0~
 1 0 0
+T
+gold~
 E
 band gold wedding~
 A wide, plain circle of gold inscribed: 'I love you forever.'
@@ -2168,6 +2258,8 @@ A large hunting knife rests here.~
 5 0 1|8192
 0~ 20~ 40~ 2~
 5 0 0
+T
+steel~
 
 #3382
 bracer glowing~
@@ -2177,6 +2269,8 @@ A elegant bracer lies before you~
 9 1 1|4096
 6~ ~ ~ ~
 5 0 0
+T
+steel~
 A
 1 1
 A

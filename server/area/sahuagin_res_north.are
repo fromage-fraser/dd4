@@ -704,6 +704,8 @@ A thick leather apron lies here.~
 9 274877906944 1|2048
 8~ 0~ 0~ 0~
 20 0 0
+T
+leather~
 A
 14 -100
 A
@@ -726,6 +728,8 @@ A pair of steel tongs.~
 5 1|274877906944 1|8192
 0~ 10~ 15~ 8~
 20 0 0
+T
+steel/wood/leather~
 A
 2 -2
 A
@@ -740,6 +744,8 @@ A large doubled-headed axe stands here.~
 5 2|64|274877906944 1|8192
 50~ 40~ 60~ 1~
 45 0 0
+T
+steel/wood~
 A
 18 6
 A
@@ -762,6 +768,8 @@ A richly-embroidered purple loincloth is here.~
 9 0 1|2048
 0~ 1~ 6~ 11~
 1 0 0
+T
+cloth~
 A
 17 -10
 #27547
@@ -772,6 +780,8 @@ A child-sized bronze trident is here.~
 5 16|64 1|8192
 0~ 1~ 6~ 2~
 5 0 30
+T
+bronze/wood/leather~
 A
 18 2
 A
@@ -784,6 +794,8 @@ A child-sized weighted net of very fine manufacture lies here.~
 5 16|64 1|8192
 0~ 1~ 6~ 9~
 5 0 30
+T
+steel/wood/leather~
 A
 18 5
 A
@@ -796,6 +808,8 @@ Chartreuse robes lie here in a heap.~
 9 16|64 1|1024
 0~ 0~ 0~ 0~
 2 0 0
+T
+cloth~
 A
 12 40
 A
@@ -851,6 +865,8 @@ A dagger with four blades is here.~
 5 64|1048576|274877906944 1|8192
 0~ 0~ 0~ 11~
 3 0 0
+T
+steel/wood/leather~
 A
 18 10
 A
@@ -1055,6 +1071,8 @@ The spear of an Ota'ar Dar lieutenant has been left here.~
 5 16|64|134217728|274877906944 1|8192
 0~ 0~ 0~ 11~
 4 0 0
+T
+iron/wood~
 A
 18 5
 A
@@ -1071,6 +1089,8 @@ A ieutenant's spiked pauldron is here.~
 9 0 1|4
 0~ 1~ 6~ 11~
 8 0 0
+T
+leather~
 A
 17 -25
 #27560
@@ -1081,6 +1101,8 @@ A very well-crafted trident has been left here.~
 5 16|64|274877906944 1|8192
 0~ 0~ 0~ 11~
 4 0 0
+T
+steel~
 A
 17 -15
 A
@@ -1099,6 +1121,8 @@ A metal crest covered in sharpened spikes lies here.~
 9 64|16777216|274877906944 1|16
 8~ 0~ 0~ 0~
 10 0 0
+T
+leather~
 A
 2 1
 A
@@ -1120,6 +1144,8 @@ Some large canines have been ripped from the mouth of a sea creature.~
 5 16777216|67108864 0
 1~ 0~ 0~ 10~
 1 0 0
+T
+steel/wood/leather~
 #27563
 shimmering oval portal~
 a shimmering portal~
@@ -1150,6 +1176,8 @@ A diamond-tipped trident of exquisite manufacture is here.~
 5 16|64 1|8192
 0~ 1~ 6~ 2~
 10 0 30
+T
+diamond~
 A
 18 15
 A
@@ -1162,6 +1190,8 @@ The hideous eyes of some deep-sea fish lie here.~
 9 64 1|16
 8~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #27567
 beltpouch pouch silvery~
 a silvery beltpouch~

@@ -231,6 +231,8 @@ You see a wooden staff on the floor.~
 5 1024 1|8192
 0~ 3~ 3~ 7~
 5 50 50
+T
+wood~
 E
 staff wooden~
 This oaken staff is very hefty but balanced.
@@ -243,6 +245,8 @@ Some brown cloth is on the floor.~
 9 1024 1|8
 6~ 0~ 0~ 0~
 5 60 60
+T
+cloth~
 E
 robe brown cloth~
 This robe is rough, but appears quite durable.
