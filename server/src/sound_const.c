@@ -350,6 +350,176 @@ static const sound_event_def sound_events[] = {
         1
     },
 
+    { "sfx.combat.slice.organic",
+        {
+            "sfx/combat/slice/pool.organic.1.mp3",
+            "sfx/combat/slice/pool.organic.2.mp3",
+            "sfx/combat/slice/pool.organic.3.mp3",
+            "sfx/combat/slice/pool.organic.4.mp3",
+            "sfx/combat/slice/pool.organic.5.mp3",
+            NULL
+        },
+        { 0 },
+        100,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.slice.inorganic",
+        {
+            "sfx/combat/slice/pool.inorganic.1.mp3",
+            "sfx/combat/slice/pool.inorganic.2.mp3",
+            "sfx/combat/slice/pool.inorganic.3.mp3",
+            "sfx/combat/slice/pool.inorganic.4.mp3",
+            "sfx/combat/slice/pool.inorganic.5.mp3",
+            NULL
+        },
+        { 0 },
+        100,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.claw.organic",
+        {
+            "sfx/combat/claw/pool.organic.1.mp3",
+            "sfx/combat/claw/pool.organic.2.mp3",
+            "sfx/combat/claw/pool.organic.3.mp3",
+            "sfx/combat/claw/pool.organic.4.mp3",
+            "sfx/combat/claw/pool.organic.5.mp3",
+            NULL
+        },
+        { 0 },
+        100,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.claw.inorganic",
+        {
+            "sfx/combat/claw/pool.inorganic.1.mp3",
+            "sfx/combat/claw/pool.inorganic.2.mp3",
+            "sfx/combat/claw/pool.inorganic.3.mp3",
+            "sfx/combat/claw/pool.inorganic.4.mp3",
+            "sfx/combat/claw/pool.inorganic.5.mp3",
+            NULL
+        },
+        { 0 },
+        50,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.blast.organic",
+        {
+            "sfx/combat/blast/pool.organic.1.mp3",
+            "sfx/combat/blast/pool.organic.2.mp3",
+            "sfx/combat/blast/pool.organic.3.mp3",
+            "sfx/combat/blast/pool.organic.4.mp3",
+            "sfx/combat/blast/pool.organic.5.mp3",
+            NULL
+        },
+        { 0 },
+        100,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.blast.inorganic",
+        {
+            "sfx/combat/blast/pool.inorganic.1.mp3",
+            "sfx/combat/blast/pool.inorganic.2.mp3",
+            "sfx/combat/blast/pool.inorganic.3.mp3",
+            "sfx/combat/blast/pool.inorganic.4.mp3",
+            "sfx/combat/blast/pool.inorganic.5.mp3",
+            NULL
+        },
+        { 0 },
+        100,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.crush.organic",
+        {
+            "sfx/combat/crush/pool.organic.1.mp3",
+            "sfx/combat/crush/pool.organic.2.mp3",
+            "sfx/combat/crush/pool.organic.3.mp3",
+            "sfx/combat/crush/pool.organic.4.mp3",
+            "sfx/combat/crush/pool.organic.5.mp3",
+            NULL
+        },
+        { 0 },
+        100,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.crush.inorganic",
+        {
+            "sfx/combat/crush/pool.inorganic.1.mp3",
+            "sfx/combat/crush/pool.inorganic.2.mp3",
+            "sfx/combat/crush/pool.inorganic.3.mp3",
+            "sfx/combat/crush/pool.inorganic.4.mp3",
+            "sfx/combat/crush/pool.inorganic.5.mp3",
+            NULL
+        },
+        { 0 },
+        100,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.grep",
+        {
+            "sfx/combat/grep/pool.1.mp3",
+            "sfx/combat/grep/pool.2.mp3",
+            "sfx/combat/grep/pool.3.mp3",
+            "sfx/combat/grep/pool.4.mp3",
+            "sfx/combat/grep/pool.5.mp3",
+            "sfx/combat/grep/pool.6.mp3",
+            "sfx/combat/grep/pool.7.mp3",
+            "sfx/combat/grep/pool.8.mp3",
+            "sfx/combat/grep/pool.9.mp3",
+            "sfx/combat/grep/pool.10.mp3",
+            NULL
+        },
+        { 0 },
+        100,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.bite.organic",
+        {
+            "sfx/combat/bite/pool.organic.1.mp3",
+            "sfx/combat/bite/pool.organic.2.mp3",
+            "sfx/combat/bite/pool.organic.3.mp3",
+            "sfx/combat/bite/pool.organic.4.mp3",
+            "sfx/combat/bite/pool.organic.5.mp3",
+            NULL
+        },
+        { 0 },
+        100,
+        "sfx",
+        1
+    },
+
+    { "sfx.combat.bite.inorganic",
+        {
+            "sfx/combat/bite/pool.inorganic.1.mp3",
+            "sfx/combat/bite/pool.inorganic.2.mp3",
+            "sfx/combat/bite/pool.inorganic.3.mp3",
+            "sfx/combat/bite/pool.inorganic.4.mp3",
+            "sfx/combat/bite/pool.inorganic.5.mp3",
+            NULL
+        },
+        { 0 },
+        100,
+        "sfx",
+        1
+    },
+
     { "sfx.combat.shield_block",
         {
                 "sfx/combat/shield_block/pool.1.mp3",
@@ -461,6 +631,20 @@ static const sound_event_def sound_events[] = {
         },
         { 0 },
         60,
+        "sfx",
+        1
+    },
+
+    {
+        "sfx.combat.resist_toxin",
+        {
+                "sfx/combat/resist_toxin/pool.1.mp3",
+                "sfx/combat/resist_toxin/pool.2.mp3",
+                "sfx/combat/resist_toxin/pool.3.mp3",
+                NULL
+        },
+        { 0 },
+        50,
         "sfx",
         1
     },

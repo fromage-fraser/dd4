@@ -4661,6 +4661,7 @@ void spell_poison(int sn, int level, CHAR_DATA *ch, void *vo)
         /* next bit for resist poison */
         if (!IS_NPC(victim) && (number_percent() < victim->pcdata->learned[gsn_resist_toxin] || is_affected(victim, gsn_bonus_exotic)) && victim->gag < 2)
         {
+                sound_combat_resist_toxin_sfx( victim );
                 send_to_char("<46>Yo<47>u r<48>es<49>is<48>t t<47>he <46>po<47>is<48>on <49>su<48>rg<47>in<46>g t<47>hr<48>ou<49>gh <48>yo<47>ur <46>ve<47>in<48>s.<0>\n\r", victim);
                 return;
         }
@@ -9353,6 +9354,7 @@ void spell_nausea(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (!IS_NPC(victim) && (number_percent() < victim->pcdata->learned[gsn_resist_toxin] || is_affected(victim, gsn_bonus_exotic)) && victim->gag < 2)
         {
+                sound_combat_resist_toxin_sfx( victim );
                 send_to_char("<46>Yo<47>u r<48>es<49>is<48>t t<47>he <46>wa<47>ve <48>of <49>na<48>us<47>ea <46>th<47>re<48>at<49>en<48>in<47>g t<46>o o<47>ve<48>rw<49>he<48>lm <47>yo<46>u.<0>\n\r", victim);
                 return;
         }
@@ -9768,6 +9770,7 @@ void spell_fleshrot(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (!IS_NPC(victim) && (number_percent() < victim->pcdata->learned[gsn_resist_toxin] || is_affected(victim, gsn_bonus_exotic)) && victim->gag < 2)
         {
+                sound_combat_resist_toxin_sfx( victim );
                 send_to_char("<46>Yo<47>u r<48>es<49>is<48>t t<47>he <46>di<47>se<48>as<49>e t<48>ha<47>t a<46>ss<47>ai<48>ls <49>yo<48>ur <47>sy<46>st<47>em<48>.<0>\n\r", victim);
                 return;
         }

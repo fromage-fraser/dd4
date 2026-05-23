@@ -524,6 +524,7 @@ int hit_gain(CHAR_DATA *ch)
 
                         if (number_percent() < ch->pcdata->learned[gsn_resist_toxin] || is_affected(ch, gsn_bonus_exotic))
                         {
+                                sound_combat_resist_toxin_sfx( ch );
                                 send_to_char("<46>Yo<47>u r<48>es<49>is<48>t t<47>he <46>po<47>is<48>on <49>su<48>rg<47>in<46>g t<47>hr<48>ou<49>gh <48>yo<47>ur <46>ve<47>in<48>s.<0>\n\r", ch);
                         }
                         else
