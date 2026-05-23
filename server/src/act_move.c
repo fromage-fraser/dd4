@@ -1402,10 +1402,12 @@ void do_close(CHAR_DATA *ch, char *argument)
 
         if ((door = find_door(ch, arg)) >= 0)
         {
-                log_stringf("DoorSFX: do_close ENTER room=%d door=%d act=%d",
+                if (SND_LOG_ENABLED ) {
+                    log_stringf("DoorSFX: do_close ENTER room=%d door=%d act=%d",
                                 ch->in_room ? ch->in_room->vnum : -1,
                                 door,
                                 DOOR_ACT_CLOSE);
+                }
                 /* 'close door' */
                 EXIT_DATA *pexit;
                 EXIT_DATA *pexit_rev;

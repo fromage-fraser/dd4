@@ -215,6 +215,12 @@ void sound_combat_hit_sfx( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
                     ? "sfx.combat.bow.inorganic"
                     : "sfx.combat.bow.organic";
         }
+        else if ( dt == TYPE_HIT + 1 )
+        {
+                key = is_target_inorganic(victim)
+                    ? "sfx.combat.slice.inorganic"
+                    : "sfx.combat.slice.organic";
+        }
         else if ( dt == TYPE_HIT + 2 )
         {
                 key = is_target_inorganic(victim)
@@ -233,11 +239,39 @@ void sound_combat_hit_sfx( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
                     ? "sfx.combat.whip.inorganic"
                     : "sfx.combat.whip.organic";
         }
+        else if ( dt == TYPE_HIT + 5 )
+        {
+                key = is_target_inorganic(victim)
+                    ? "sfx.combat.claw.inorganic"
+                    : "sfx.combat.claw.organic";
+        }
+        else if ( dt == TYPE_HIT + 6 )
+        {
+                key = is_target_inorganic(victim)
+                    ? "sfx.combat.blast.inorganic"
+                    : "sfx.combat.blast.organic";
+        }
         else if ( dt == TYPE_HIT + 7 )
         {
                 key = is_target_inorganic(victim)
                     ? "sfx.combat.pound.inorganic"
                     : "sfx.combat.pound.organic";
+        }
+        else if ( dt == TYPE_HIT + 8 )
+        {
+                key = is_target_inorganic(victim)
+                    ? "sfx.combat.crush.inorganic"
+                    : "sfx.combat.crush.organic";
+        }
+        else if ( dt == TYPE_HIT + 9 )
+        {
+                key = "sfx.combat.grep";
+        }
+        else if ( dt == TYPE_HIT + 10 )
+        {
+                key = is_target_inorganic(victim)
+                    ? "sfx.combat.bite.inorganic"
+                    : "sfx.combat.bite.organic";
         }
         else if ( dt == TYPE_HIT + 11 )
         {
@@ -680,8 +714,50 @@ void sound_combat_transfix_sfx( CHAR_DATA *ch, CHAR_DATA *victim )
                              file,
                              vol,
                              ( ev->tag && *ev->tag ) ? ev->tag : "sfx",
-                             0 );
+                             1 );
         }
+}
+
+void sound_combat_resist_toxin_sfx( CHAR_DATA *victim )
+{
+        const sound_event_def *ev;
+        const char            *file;
+        int                    vol;
+        int                    i;
+        int                    count;
+
+        if ( !victim || IS_NPC(victim) || !victim->desc || !victim->desc->pProtocol )
+                return;
+
+        if ( !victim->pcdata || !victim->pcdata->snd_enabled )
+                return;
+
+        ev = sound_event_lookup( "sfx.combat.resist_toxin" );
+        if ( !ev )
+                return;
+
+        count = 0;
+        for ( i = 0; i < SOUND_MAX_FILES; i++ )
+        {
+                if ( !ev->files[i] || !*ev->files[i] )
+                        break;
+                count++;
+        }
+
+        if ( count <= 0 )
+                return;
+
+        file = ev->files[number_range( 0, count - 1 )];
+
+        vol = media_apply_volume( ev->default_volume, victim, "sfx", "sfx" );
+        if ( vol <= 0 )
+                return;
+
+        sfx_enqueue( victim->desc,
+                     file,
+                     vol,
+                     ( ev->tag && *ev->tag ) ? ev->tag : "sfx",
+                     1 );
 }
 
 static void sound_make_spell_key( char *buf, int size, const char *phase, int sn )
@@ -1248,8 +1324,10 @@ void media_play_door_sfx_room( ROOM_INDEX_DATA *room, int door, door_action_t ac
         {
                 const char *dname = directions[door].name ? directions[door].name : "dir";
 
-                log_stringf( "DoorSFX: room=%d dir=%s action=%s",
+                if (SND_LOG_ENABLED ) {
+                    log_stringf( "DoorSFX: room=%d dir=%s action=%s",
                              room->vnum, dname, act_str );
+                }
 
                 /* 1) Per-exit override */
                 if ( pexit != NULL )
@@ -1281,8 +1359,10 @@ void media_play_door_sfx_room( ROOM_INDEX_DATA *room, int door, door_action_t ac
 
                         if ( file && *file )
                         {
-                                log_stringf( "DoorSFX: OVERRIDE %s file=%s vol=%d room=%d",
+                                if (SND_LOG_ENABLED ) {
+                                    log_stringf( "DoorSFX: OVERRIDE %s file=%s vol=%d room=%d",
                                              act_str, file, vol, room->vnum );
+                                }
                                 door_play_event_room( room, file, vol, "sfx", dname, act_str, room->vnum );
                                 goto mirror_side;
                         }
@@ -1302,14 +1382,18 @@ void media_play_door_sfx_room( ROOM_INDEX_DATA *room, int door, door_action_t ac
 
                         if ( file != NULL )
                         {
-                                log_stringf( "DoorSFX: FALLBACK key=%s file=%s vol=%d room=%d",
+                                if (SND_LOG_ENABLED ) {
+                                    log_stringf( "DoorSFX: FALLBACK key=%s file=%s vol=%d room=%d",
                                              rk, file, vol, room->vnum );
+                                }
                                 door_play_event_room( room, file, vol, tag, dname, act_str, room->vnum );
                                 goto mirror_side;
                         }
 
-                        log_stringf( "DoorSFX: FALLBACK MISSING key=%s vol=%d room=%d",
+                        if (SND_LOG_ENABLED ) {
+                            log_stringf( "DoorSFX: FALLBACK MISSING key=%s vol=%d room=%d",
                                      rk, vol, room->vnum );
+                        }
                 }
         }
 
@@ -1325,8 +1409,10 @@ mirror_side:
                         EXIT_DATA *prev = other->exit[rev];
                         const char *dname_rev = directions[rev].name ? directions[rev].name : "dir";
 
-                        log_stringf( "DoorSFX: mirror room=%d dir=%s action=%s",
+                        if (SND_LOG_ENABLED ) {
+                            log_stringf( "DoorSFX: mirror room=%d dir=%s action=%s",
                                      other->vnum, dname_rev, act_str );
+                        }
 
                         /* 1) Far-side override */
                         if ( prev )
@@ -1358,8 +1444,10 @@ mirror_side:
 
                                 if ( file && *file )
                                 {
-                                        log_stringf( "DoorSFX: mirror OVERRIDE %s file=%s vol=%d room=%d",
+                                        if (SND_LOG_ENABLED ) {
+                                            log_stringf( "DoorSFX: mirror OVERRIDE %s file=%s vol=%d room=%d",
                                                      act_str, file, vol, other->vnum );
+                                        }
                                         door_play_event_room( other, file, vol, "sfx", dname_rev, act_str, other->vnum );
                                         return;
                                 }
@@ -1379,14 +1467,18 @@ mirror_side:
 
                                 if ( file != NULL )
                                 {
-                                        log_stringf( "DoorSFX: mirror FALLBACK key=%s file=%s vol=%d room=%d",
+                                        if (SND_LOG_ENABLED ) {
+                                            log_stringf( "DoorSFX: mirror FALLBACK key=%s file=%s vol=%d room=%d",
                                                      rk, file, vol, other->vnum );
+                                        }
                                         door_play_event_room( other, file, vol, tag, dname_rev, act_str, other->vnum );
                                         return;
                                 }
 
-                                log_stringf( "DoorSFX: mirror FALLBACK MISSING key=%s vol=%d room=%d",
+                                if (SND_LOG_ENABLED ) {
+                                    log_stringf( "DoorSFX: mirror FALLBACK MISSING key=%s vol=%d room=%d",
                                              rk, vol, other->vnum );
+                                }
                         }
                 }
         }
