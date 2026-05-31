@@ -679,8 +679,13 @@ void move_char(CHAR_DATA *ch, int door)
                 }
         }
 
+        sound_footstep_sfx( ch, in_room, to_room, in_room, ch );
+
         char_from_room(ch);
         char_to_room(ch, to_room);
+
+        sound_footstep_sfx( ch, in_room, to_room, to_room, NULL );
+
         do_look(ch, "auto");
 
         if (is_affected(ch, gsn_mist_walk))

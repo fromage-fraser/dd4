@@ -2699,7 +2699,7 @@ clinging to pieces of wreckage and flotsam for several hours, you are washed
 up upon a hot sandy beach.  After resting for a moment, you decide whether to
 travel north or south along the beach, or head east into some jungle.
 ~
-0 0 2
+0 0 10
 D0
 ~
 ~
@@ -2718,7 +2718,7 @@ Beach~
 The beach is clean and golden, the sun oppressively hot.  You can follow the
 sand to the east or south.
 ~
-0 0 2
+0 0 10
 D1
 ~
 ~
@@ -2733,7 +2733,7 @@ Beach~
 The hot beach stretches to the west and south.  A steep cliff juts out to the
 north.
 ~
-0 0 2
+0 0 10
 D0
 ~
 ~
@@ -2788,7 +2788,7 @@ Beach~
 The beach is a little rockier here, and the ocean stretches around to the
 east.  You can travel north and west along the sand.
 ~
-0 0 2
+0 0 10
 D0
 ~
 ~
@@ -2803,7 +2803,7 @@ Beach~
 The sun leaves you sweltering and you consider taking cover in the jungle to
 the northeast.  You can travel north and east along the beach.
 ~
-0 0 2
+0 0 10
 D0
 ~
 ~

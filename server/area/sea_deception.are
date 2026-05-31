@@ -904,7 +904,7 @@ any other landmass.
 You can head west into a circle of trees, or back east to try your luck in the
 sea.
 ~
-0 4|1024 2
+0 4|1024 10
 D1
 ~
 ~
@@ -1059,7 +1059,7 @@ All around the mist rolls. No vegetation of any description can be seen.
 Scanning the landscape, you see that this 'island' extends to the east and
 the landscape disappears in a misty haze.
 ~
-0 4 6
+0 4 10
 D1
 ~
 ~

@@ -279,11 +279,51 @@ void sound_combat_hit_sfx( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
                     ? "sfx.combat.pierce.inorganic"
                     : "sfx.combat.pierce.organic";
         }
+        else if ( dt == TYPE_HIT + 12 )
+        {
+                key = is_target_inorganic(victim)
+                    ? "sfx.combat.suction.inorganic"
+                    : "sfx.combat.suction.organic";
+        }
         else if ( dt == TYPE_HIT + 13 )
         {
                 key = is_target_inorganic(victim)
                     ? "sfx.combat.chop.inorganic"
                     : "sfx.combat.chop.organic";
+        }
+        else if ( dt == TYPE_HIT + 14 )
+        {
+                key = is_target_inorganic(victim)
+                    ? "sfx.combat.rake.inorganic"
+                    : "sfx.combat.rake.organic";
+        }
+        else if ( dt == TYPE_HIT + 15 )
+        {
+                key = is_target_inorganic(victim)
+                    ? "sfx.combat.swipe.inorganic"
+                    : "sfx.combat.swipe.organic";
+        }
+        else if ( dt == TYPE_HIT + 16 )
+        {
+                key = "sfx.combat.sting";
+        }
+        else if ( dt == TYPE_HIT + 17 )
+        {
+                key = is_target_inorganic(victim)
+                    ? "sfx.combat.scoop.inorganic"
+                    : "sfx.combat.scoop.organic";
+        }
+        else if ( dt == TYPE_HIT + 18 )
+        {
+                key = is_target_inorganic(victim)
+                    ? "sfx.combat.mash.inorganic"
+                    : "sfx.combat.mash.organic";
+        }
+        else if ( dt == TYPE_HIT + 19 )
+        {
+                key = is_target_inorganic(victim)
+                    ? "sfx.combat.hack.inorganic"
+                    : "sfx.combat.hack.organic";
         }
         else if ( dt == TYPE_HIT )
         {
@@ -328,6 +368,181 @@ void sound_combat_hit_sfx( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
                              number_fuzzy(vol_adj),
                              ( ev->tag && *ev->tag ) ? ev->tag : "sfx",
                              1 );
+        }
+}
+
+static const char *sound_terrain_key( int sector )
+{
+        switch ( sector )
+        {
+                case SECT_INSIDE: return "inside";
+                case SECT_CITY: return "city";
+                case SECT_FIELD: return "field";
+                case SECT_FOREST: return "forest";
+                case SECT_HILLS: return "hills";
+                case SECT_MOUNTAIN: return "mountain";
+                case SECT_DESERT: return "desert";
+                case SECT_SWAMP: return "swamp";
+                case SECT_WATER_SWIM: return "water";
+                case SECT_WATER_NOSWIM: return "water";
+                case SECT_UNDERWATER: return "underwater";
+                case SECT_UNDERWATER_GROUND: return "underwater_ground";
+                case SECT_AIR: return "air";
+        }
+        return "generic";
+}
+
+static const char *sound_footstep_gait( CHAR_DATA *actor )
+{
+        if ( !actor )
+                return "generic";
+
+        if (is_affected(actor, gsn_mist_walk))
+                return "mist";
+
+        switch ( actor->form )
+        {
+            case FORM_HAWK:
+                if ( IS_AFFECTED(actor, AFF_FLYING) )
+                        return "hawk_flying";
+                return "hawk";
+
+            case FORM_DRAGON:
+                if ( IS_AFFECTED(actor, AFF_FLYING) )
+                        return "dragon_flying";
+                return "dragon";
+
+            case FORM_PHOENIX:
+                if ( IS_AFFECTED(actor, AFF_FLYING) )
+                        return "phoenix_flying";
+                return "phoenix";
+
+            case FORM_FLY:
+                if ( IS_AFFECTED(actor, AFF_FLYING) )
+                        return "fly_flying";
+                return "fly";
+
+            case FORM_BAT:
+                if ( IS_AFFECTED(actor, AFF_FLYING) )
+                        return "bat_flying";
+                return "bat";
+
+            case FORM_DEMON:
+                if ( IS_AFFECTED(actor, AFF_FLYING) )
+                        return "demon_flying";
+                return "demon";
+
+            case FORM_GRIFFIN:
+                if ( IS_AFFECTED(actor, AFF_FLYING) )
+                        return "griffin_flying";
+                return "griffin";
+
+            case FORM_CHAMELEON: return "chameleon";
+            case FORM_CAT:       return "cat";
+            case FORM_SNAKE:     return "snake";
+            case FORM_SCORPION:  return "scorpion";
+            case FORM_SPIDER:    return "spider";
+            case FORM_BEAR:      return "bear";
+            case FORM_TIGER:     return "tiger";
+            case FORM_GHOST:     return "ghost";
+            case FORM_HYDRA:     return "hydra";
+            case FORM_DIREWOLF:  return "direwolf";
+            case FORM_WOLF:      return "wolf";
+        }
+
+        if ( IS_AFFECTED(actor, AFF_FLYING) )
+                return "flying";
+
+        if ( !IS_NPC(actor) && actor->race == RACE_CENTAUR )
+                return "clop";
+
+        if ( !IS_NPC(actor) && actor->race == RACE_YUAN_TI )
+                return "snake";
+
+        if ( IS_NPC(actor)
+        &&   IS_SET(actor->act, ACT_MOUNTABLE)
+        &&   !IS_AFFECTED(actor, AFF_SWIM)
+        &&   !IS_AFFECTED(actor, AFF_FLYING) )
+                return "clop";
+
+        return "generic";
+}
+
+void sound_footstep_sfx( CHAR_DATA *actor, ROOM_INDEX_DATA *from_room, ROOM_INDEX_DATA *to_room, ROOM_INDEX_DATA *hear_room, CHAR_DATA *except )
+{
+        const sound_event_def *ev;
+        const char            *file;
+        CHAR_DATA             *vch;
+        char                   key[MAX_INPUT_LENGTH];
+        const char            *terrain;
+        const char            *gait;
+
+        if ( !actor || !from_room || !to_room || !hear_room )
+                return;
+
+        if ( actor->rider )
+                return;
+
+        if ( IS_AFFECTED(actor, AFF_SNEAK) )
+                return;
+
+        terrain = sound_terrain_key( to_room->sector_type );
+        gait    = sound_footstep_gait( actor );
+
+        snprintf( key, sizeof(key), "sfx.foley.step.%s.%s", gait, terrain );
+        ev = sound_event_lookup( key );
+
+        if ( !ev )
+        {
+                snprintf( key, sizeof(key), "sfx.foley.step.%s.generic", gait );
+                ev = sound_event_lookup( key );
+        }
+
+        if ( !ev )
+        {
+                snprintf( key, sizeof(key), "sfx.foley.step.generic.%s", terrain );
+                ev = sound_event_lookup( key );
+        }
+
+        if ( !ev )
+                ev = sound_event_lookup( "sfx.foley.step.generic" );
+
+        if ( !ev )
+                return;
+
+        file = sound_event_pick_file( ev );
+
+        if ( !file )
+                return;
+
+        for ( vch = hear_room->people; vch; vch = vch->next_in_room )
+        {
+                int vol;
+
+                if ( vch == except )
+                    continue;
+
+                if ( !vch->desc || !vch->desc->pProtocol )
+                        continue;
+
+                if ( IS_NPC(vch) )
+                        continue;
+
+                if ( !vch->pcdata || !vch->pcdata->snd_enabled )
+                        continue;
+
+                vol = media_apply_volume( ev->default_volume, vch, "foley", "sound" );
+
+                if ( vol <= 0 )
+                        continue;
+
+                if ( SND_LOG_ENABLED) { log_stringf("SFX: playing footstep sound %s", file); }
+
+                sfx_enqueue( vch->desc,
+                             file,
+                             vol,
+                             "foley",
+                             0 );
         }
 }
 
@@ -2058,7 +2273,7 @@ void do_sconfig( CHAR_DATA *ch, char *argument )
             sprintf(line, "<6>[<196>-<0><246>notify<0>   <6>]<0> Notification sounds are off.\n\r");
         send_to_char(line, ch);
 
-        send_to_char("\n\rShortcuts: +sound/-sound, +ambient/-ambient, +sfx/-sfx, +notify/-notify\n\r", ch);
+        send_to_char("\n\rShortcuts: +sound/-sound, +ambient/-ambient, +sfx/-sfx, +foley/-foley, +notify/-notify\n\r", ch);
         send_to_char("Setters:   master/ambient/music/foley/sfx/ui/notify <<0..100>\n\r", ch);
         return;
     }
@@ -2214,8 +2429,30 @@ void do_sconfig( CHAR_DATA *ch, char *argument )
             }
             return;
         }
+        else if (!str_cmp(arg1+1, "foley"))
+        {
+            if (set)
+            {
+                if (!ch->pcdata->snd_enabled)
+                {
+                    send_to_char("Not while sound is {ROFF{x.\n\r", ch);
+                    return;
+                }
 
-        send_to_char("Use +sound/-sound, +ambient/-ambient, +sfx/-sfx, or +notify/-notify.\n\r", ch);
+                if (ch->pcdata->snd_foley == 0)
+                    ch->pcdata->snd_foley = SND_DEF_FOLEY;
+
+                send_to_char("Foley is now {GON{x.\n\r", ch);
+            }
+            else
+            {
+                ch->pcdata->snd_foley = 0;
+                send_to_char("Foley is now {ROFF{x.\n\r", ch);
+            }
+            return;
+        }
+
+        send_to_char("Use +sound/-sound, +ambient/-ambient, +sfx/-sfx, +foley/-foley or +notify/-notify.\n\r", ch);
         return;
     }
 
@@ -2239,6 +2476,7 @@ void do_sconfig( CHAR_DATA *ch, char *argument )
             send_to_char("  +sound   | -sound\n\r", ch);
             send_to_char("  +ambient | -ambient\n\r", ch);
             send_to_char("  +notify  | -notify\n\r", ch);
+            send_to_char("  +foley   | -foley\n\r", ch);
             send_to_char("  +sfx     | -sfx\n\r", ch);
             send_to_char("  master/ambient/music/foley/sfx/ui/notify <<0..100>\n\r", ch);
             return;
