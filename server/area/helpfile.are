@@ -402,7 +402,7 @@ Enter thy Name: ~
 
 -1 MOTD~
 {x
-    [03 May 2026]
+    [01 June 2026]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -415,12 +415,11 @@ Enter thy Name: ~
     We're also active on a Discord server at {Yhttps://discord.gg/aGzmAWmXYb{x
     if you'd like to jump in and say hi!
 
+    {WFOOTSTEP FOLEY{x: Sounds for footsteps are in, influenced by terrain,
+    race, forms, flight, mountedness(!), and sneak.
+
     {WCOMBAT SOUNDS{x: Beta combat SFX are in, use the SCONFIG command to
     modify volume or switch on/off.
-
-    {WMAJOR WEBSITE UPDATE{x: Website is now looking a lot more 2025 than 2003,
-    and has a lot of cool new stuff on it.  Have a look and check out HELP
-    WEBSITE.
 
 
 To Enter the Dragons Domain press <<Return>.
@@ -663,6 +662,11 @@ Gezhp, Owl and Shade
 {W May 2026{x
 
 - Implemented some combat sounds (beta).  Sconfig saves to pfile.
+
+{WJune 2026{X
+
+- Extensive combat sounds now implemented
+- Footstep foley added
 
 ~
 
