@@ -875,6 +875,61 @@ static const sound_event_def sound_events[] = {
         1
     },
 
+    {
+        "sfx.combat.maul",
+        {
+                "sfx/combat/maul/pool.1.mp3",
+                "sfx/combat/maul/pool.2.mp3",
+                "sfx/combat/maul/pool.3.mp3",
+                NULL
+        },
+        { 0 },
+        70,
+        "sfx",
+        1
+    },
+
+    {
+        "sfx.combat.crush",
+        {
+                "sfx/combat/crush_bear/pool.1.mp3",
+                "sfx/combat/crush_bear/pool.2.mp3",
+                "sfx/combat/crush_bear/pool.3.mp3",
+                NULL
+        },
+        { 0 },
+        70,
+        "sfx",
+        1
+    },
+
+    {
+        "sfx.combat.web",
+        {
+                "sfx/combat/web/pool.1.mp3",
+                "sfx/combat/web/pool.2.mp3",
+                "sfx/combat/web/pool.3.mp3",
+                NULL
+        },
+        { 0 },
+        70,
+        "sfx",
+        1
+    },
+
+    {
+        "sfx.combat.venom",
+        {
+                "sfx/combat/venom/pool.1.mp3",
+                "sfx/combat/venom/pool.2.mp3",
+                NULL
+        },
+        { 0 },
+        70,
+        "sfx",
+        1
+    },
+
     { "sfx.combat.mobdeath.1",     { "sfx/combat/mobdeath/1.mp3", NULL }, { 0,0 }, 70, "sfx", 1 },
     { "sfx.combat.mobdeath.2",     { "sfx/combat/mobdeath/2.mp3", NULL }, { 0,0 }, 70, "sfx", 1 },
 
@@ -969,6 +1024,18 @@ static const sound_event_def sound_events[] = {
         1
     },
 
+    { "sfx.spell.cast.teleport",
+        {
+                "sfx/spell/cast/teleport.1.mp3",
+                "sfx/spell/cast/teleport.2.mp3",
+                NULL
+        },
+        { 0 },
+        70,
+        "sfx",
+        1
+    },
+
     { "sfx.spell.cast.hellfire",
         {
                 "sfx/spell/cast/hellfire.1.mp3",
@@ -1029,49 +1096,6 @@ static const sound_event_def sound_events[] = {
     FOOTSTEP_BASE(wolf),
     FOOTSTEP_TERRAIN_SET(mist),
     FOOTSTEP_BASE(mist),
-
-    /*
-    { "sfx.foley.step.generic",                     { "sfx/foley/step/generic.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.generic.inside",              { "sfx/foley/step/generic_inside.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.generic.city",                { "sfx/foley/step/generic_city.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.generic.field",               { "sfx/foley/step/generic_field.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.generic.forest",              { "sfx/foley/step/generic_forest.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.generic.hills",               { "sfx/foley/step/generic_hills.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.generic.mountain",            { "sfx/foley/step/generic_mountain.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.generic.desert",              { "sfx/foley/step/generic_desert.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.generic.swamp",               { "sfx/foley/step/generic_swamp.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.generic.water",               { "sfx/foley/step/generic_water.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.generic.underwater",          { "sfx/foley/step/generic_underwater.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.generic.underwater_ground",   { "sfx/foley/step/generic_underwater_ground.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.generic.air",                 { "sfx/foley/step/generic_air.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-
-    { "sfx.foley.step.clop.inside",                 { "sfx/foley/step/clop_inside.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.clop.city",                   { "sfx/foley/step/clop_city.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.clop.field",                  { "sfx/foley/step/clop_field.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.clop.forest",                 { "sfx/foley/step/clop_forest.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.clop.hills",                  { "sfx/foley/step/clop_hills.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.clop.mountain",               { "sfx/foley/step/clop_mountain.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.clop.desert",                 { "sfx/foley/step/clop_desert.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.clop.swamp",                  { "sfx/foley/step/clop_swamp.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.clop.water",                  { "sfx/foley/step/clop_water.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.clop.underwater",             { "sfx/foley/step/clop_underwater.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.clop.underwater_ground",      { "sfx/foley/step/clop_underwater_ground.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.clop.air",                    { "sfx/foley/step/clop_air.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.clop.generic",                { "sfx/foley/step/clop_generic.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-
-    { "sfx.foley.step.flying.inside",               { "sfx/foley/step/flying_inside.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.flying.city",                 { "sfx/foley/step/flying_city.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.flying.field",                { "sfx/foley/step/flying_field.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.flying.forest",               { "sfx/foley/step/flying_forest.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.flying.hills",                { "sfx/foley/step/flying_hills.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.flying.mountain",             { "sfx/foley/step/flying_mountain.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.flying.desert",               { "sfx/foley/step/flying_desert.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.flying.swamp",                { "sfx/foley/step/flying_swamp.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.flying.water",                { "sfx/foley/step/flying_water.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.flying.underwater",           { "sfx/foley/step/flying_underwater.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.flying.underwater_ground",    { "sfx/foley/step/flying_underwater_ground.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.flying.air",                  { "sfx/foley/step/flying_air.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.step.flying.generic",              { "sfx/foley/step/flying_generic.1.mp3", NULL }, { 0 }, 45, "foley", 1 }, */
 
     /* Weather */
     { "ambient.weather.rain",      { "ambient/weather/rain_loop1.mp3", NULL }, {0,0}, 15, "ambient.weather", 1 },

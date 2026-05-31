@@ -8,6 +8,7 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
+#include "sound.h"
 
 
 void do_morph_chameleon (CHAR_DATA *ch, bool to_form)
@@ -875,6 +876,7 @@ void do_venom (CHAR_DATA *ch, char *argument)
         act ("You bite $N!",  ch, NULL, victim, TO_CHAR);
         act ("$n bites you!", ch, NULL, victim, TO_VICT);
         act ("$n bites $N!",  ch, NULL, victim, TO_NOTVICT);
+        sound_combat_venom_sfx( ch, victim );
 
         spell_poison (gsn_venom, ch->level, ch, victim);
 }
@@ -963,6 +965,7 @@ void do_web (CHAR_DATA *ch, char *argument)
                 act ("$n skilfully spins a sticky web around $N, trapping $M here!",
                      ch, NULL, victim, TO_ROOM);
                 arena_commentary("$n traps $N in a sticky web.", ch, victim);
+                sound_combat_web_sfx( ch, victim );
 
                 af.type = gsn_web;
                 af.duration = 4 + (ch->level / 20);
@@ -1169,7 +1172,7 @@ void do_bite (CHAR_DATA *ch, char *argument)
 
         if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
         {
-                send_to_char("Your teeth are too damaged to bite effectively with.\n\r", ch);
+                send_to_char("Your teeth are too damaged to bite effectively.\n\r", ch);
                 return;
         }
 
@@ -1225,6 +1228,7 @@ void do_crush (CHAR_DATA *ch, char *argument)
         {
                 AFFECT_DATA af;
                 arena_commentary("$c crushes $N in $s powerful arms.", ch, victim);
+                sound_combat_crush_sfx( ch, victim );
                 act ("$c crushes $N in $s powerful arms!\n\r", ch, NULL, victim, TO_NOTVICT);
                 damage(ch,victim,number_range(ch->level*3, ch->level*4), gsn_crush, FALSE);
                 af.type         = gsn_crush;
@@ -1342,6 +1346,7 @@ void do_maul (CHAR_DATA *ch, char *argument)
 
         WAIT_STATE(ch, skill_table[gsn_maul].beats);
         arena_commentary("$n mauls $N.", ch, victim);
+        sound_combat_maul_sfx( ch, victim );
         percent = ch->pcdata->learned[gsn_maul];
         count = 0;
 
