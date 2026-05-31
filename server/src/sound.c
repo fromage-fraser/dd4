@@ -546,6 +546,170 @@ void sound_footstep_sfx( CHAR_DATA *actor, ROOM_INDEX_DATA *from_room, ROOM_INDE
         }
 }
 
+void sound_combat_crush_sfx( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+        const sound_event_def *ev;
+        const char            *file;
+        CHAR_DATA             *vch;
+
+        if ( !ch || !victim || !ch->in_room )
+                return;
+
+        ev = sound_event_lookup( "sfx.combat.crush" );
+
+        if ( !ev )
+                return;
+
+        file = sound_event_pick_file( ev );
+
+        if ( !file )
+                return;
+
+        for ( vch = ch->in_room->people; vch; vch = vch->next_in_room )
+        {
+                int vol;
+
+                if ( !vch->desc || !vch->desc->pProtocol )
+                        continue;
+
+                if ( IS_NPC(vch) )
+                        continue;
+
+                if ( !vch->pcdata || !vch->pcdata->snd_enabled )
+                        continue;
+
+                vol = media_apply_volume( ev->default_volume, vch, "sfx", "sfx" );
+
+                if ( vol <= 0 )
+                        continue;
+
+                sfx_enqueue( vch->desc, file, vol, "sfx", 0 );
+        }
+}
+
+void sound_combat_venom_sfx( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+        const sound_event_def *ev;
+        const char            *file;
+        CHAR_DATA             *vch;
+
+        if ( !ch || !victim || !ch->in_room )
+                return;
+
+        ev = sound_event_lookup( "sfx.combat.venom" );
+
+        if ( !ev )
+                return;
+
+        file = sound_event_pick_file( ev );
+
+        if ( !file )
+                return;
+
+        for ( vch = ch->in_room->people; vch; vch = vch->next_in_room )
+        {
+                int vol;
+
+                if ( !vch->desc || !vch->desc->pProtocol )
+                        continue;
+
+                if ( IS_NPC(vch) )
+                        continue;
+
+                if ( !vch->pcdata || !vch->pcdata->snd_enabled )
+                        continue;
+
+                vol = media_apply_volume( ev->default_volume, vch, "sfx", "sfx" );
+
+                if ( vol <= 0 )
+                        continue;
+
+                sfx_enqueue( vch->desc, file, vol, "sfx", 0 );
+        }
+}
+
+void sound_combat_web_sfx( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+        const sound_event_def *ev;
+        const char            *file;
+        CHAR_DATA             *vch;
+
+        if ( !ch || !victim || !ch->in_room )
+                return;
+
+        ev = sound_event_lookup( "sfx.combat.web" );
+
+        if ( !ev )
+                return;
+
+        file = sound_event_pick_file( ev );
+
+        if ( !file )
+                return;
+
+        for ( vch = ch->in_room->people; vch; vch = vch->next_in_room )
+        {
+                int vol;
+
+                if ( !vch->desc || !vch->desc->pProtocol )
+                        continue;
+
+                if ( IS_NPC(vch) )
+                        continue;
+
+                if ( !vch->pcdata || !vch->pcdata->snd_enabled )
+                        continue;
+
+                vol = media_apply_volume( ev->default_volume, vch, "sfx", "sfx" );
+
+                if ( vol <= 0 )
+                        continue;
+
+                sfx_enqueue( vch->desc, file, vol, "sfx", 0 );
+        }
+}
+
+void sound_combat_maul_sfx( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+        const sound_event_def *ev;
+        const char            *file;
+        CHAR_DATA             *vch;
+
+        if ( !ch || !victim || !ch->in_room )
+                return;
+
+        ev = sound_event_lookup( "sfx.combat.maul" );
+
+        if ( !ev )
+                return;
+
+        file = sound_event_pick_file( ev );
+
+        if ( !file )
+                return;
+
+        for ( vch = ch->in_room->people; vch; vch = vch->next_in_room )
+        {
+                int vol;
+
+                if ( !vch->desc || !vch->desc->pProtocol )
+                        continue;
+
+                if ( IS_NPC(vch) )
+                        continue;
+
+                if ( !vch->pcdata || !vch->pcdata->snd_enabled )
+                        continue;
+
+                vol = media_apply_volume( ev->default_volume, vch, "sfx", "sfx" );
+
+                if ( vol <= 0 )
+                        continue;
+
+                sfx_enqueue( vch->desc, file, vol, "sfx", 0 );
+        }
+}
+
 void sound_combat_shield_block_sfx( CHAR_DATA *ch, CHAR_DATA *victim )
 {
         const sound_event_def *ev;
