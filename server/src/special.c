@@ -415,50 +415,50 @@ bool spec_cast_adept( CHAR_DATA *ch )
         {
             case 0:
                 act( "$n utters the word 'Edahs'.", ch, NULL, NULL, TO_ROOM );
-                sound_spell_sfx( ch, skill_lookup( "armor" ), "cast" );
+                if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "armor" ), "cast" ); }
                 spell_armor( skill_lookup( "armor" ), ch->level, ch, victim );
                 return TRUE;
 
             case 1:
                 act( "$n utters the word 'Lwo'.",    ch, NULL, NULL, TO_ROOM );
-                sound_spell_sfx( ch, skill_lookup( "bless" ), "cast" );
+                if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "bless" ), "cast" ); }
                 spell_bless( skill_lookup( "bless" ), ch->level, ch, victim );
                 return TRUE;
 
             case 2:
                 act( "$n utters the word 'Phzeg'.",   ch, NULL, NULL, TO_ROOM );
-                sound_spell_sfx( ch, skill_lookup( "cure blindness" ), "cast" );
+                if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "cure blindness" ), "cast" ); }
                 spell_cure_blindness( skill_lookup( "cure blindness" ),
                                      ch->level, ch, victim );
                 return TRUE;
 
             case 3:
                 act( "$n utters the word 'Nixmas'.",    ch, NULL, NULL, TO_ROOM );
-                sound_spell_sfx( ch, skill_lookup( "cure light" ), "cast" );
+                if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "cure light" ), "cast" ); }
                 spell_cure_light( skill_lookup( "cure light" ), ch->level, ch, victim );
                 return TRUE;
 
             case 4:
                 act( "$n utters the word 'Suturb'.",  ch, NULL, NULL, TO_ROOM );
-                sound_spell_sfx( ch, skill_lookup( "cure poison" ), "cast" );
+                if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "cure poison" ), "cast" ); }
                 spell_cure_poison( skill_lookup( "cure poison" ), ch->level, ch, victim );
                 return TRUE;
 
             case 5:
                 act( "$n utters the word 'Aitseh'.", ch, NULL, NULL, TO_ROOM );
-                sound_spell_sfx( ch, skill_lookup( "refresh" ), "cast" );
+                if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "refresh" ), "cast" ); }
                 spell_refresh( skill_lookup( "refresh" ), ch->level, ch, victim );
                 return TRUE;
 
             case 6:
                 act("$n says the word 'Tnemrot'.",ch,NULL,NULL,TO_ROOM);
-                sound_spell_sfx( ch, skill_lookup( "cure serious" ), "cast" );
+                if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "cure serious" ), "cast" ); }
                 spell_cure_serious( skill_lookup( "cure serious" ), ch->level, ch, victim );
                 return TRUE;
 
             case 7:
                 act("$n utters the word 'Enroht'.", ch, NULL, NULL, TO_ROOM );
-                sound_spell_sfx( ch, skill_lookup( "cure mana" ), "cast" );
+                if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "cure mana" ), "cast" ); }
                 spell_cure_mana( skill_lookup( "cure mana" ), ch->level, ch, victim );
                 return TRUE;
 
@@ -466,7 +466,7 @@ bool spec_cast_adept( CHAR_DATA *ch )
                 if (number_percent() < 20)
                 {
                     act("$n utters the word 'Sifircas'.", ch, NULL, NULL, TO_ROOM );
-                    sound_spell_sfx( ch, skill_lookup( "regenerate" ), "cast" );
+                    if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "regenerate" ), "cast" ); }
                     spell_regenerate( skill_lookup( "regenerate" ), ch->level, ch, victim );
                 }
                 return TRUE;

@@ -85,13 +85,13 @@ customised, only turned on/off or have their relative volume adjusted.
 Todo
 ====
 - sound level scaling in sconfig has to be tested extensively
-- scribe needs to support all the area file alterations for sound
+- scribe needs to support all the area file alterations for sound (ooof)
 - Allow consumable items to have a field that overrides the generic eat/drink
   etc sound that plays for them.
 - Should have this for all items that can make sounds, e.g. weapons.
-- Combat sound effects still unfinished, though many have been implemeneted
-- Foley (player footsteps, mob movement noises, mob sound loops, objects emitting
-  sounds).
+- Foley: footsteps are done, but could use soem tidying up, particularly for
+  shifter forms. Could also add mob movement noises, mob sound loops, objects
+  emitting sounds).
 - Battle music?  Music as its own separate ambient layer?
 - Mudlet GUI sounds
 
