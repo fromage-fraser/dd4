@@ -1117,7 +1117,7 @@ forest once more but it's hard work slugging through these dunes and you think
 it might be best not to head that way. You can head back towards the trial to
 the north or head off towards the beach to the east.
 ~
-0 0 2
+0 0 10
 D0
 ~
 ~
@@ -1137,7 +1137,7 @@ debris. Looking past it you think you can just make out a ship but when you
 look closer you cant see anything, guess you must have imagined it since
 there's no reason for a ship to be out here is there?
 ~
-0 0 2
+0 0 10
 D3
 ~
 ~
@@ -1154,7 +1154,7 @@ luckily there's no one about. But in the distance you thought you heard
 laughter quickly stifled. The beach continues to the north and
 the sea looks inviting enough for a quick dip.
 ~
-0 0 2
+0 0 10
 D0
 ~
 ~
@@ -2174,7 +2174,7 @@ nature. Wearily you haul yourself out of the rowboat and stagger onto the
 shore. You lie exhausted on the shore for some moments thinking over your
 experience against the smugglers ship.
 ~
-0 1 1
+0 1 10
 S
 #0
 

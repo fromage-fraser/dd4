@@ -1262,7 +1262,7 @@ A Beach~
 and the harsh ocean is to the south.  To the north, you can see a less steep
 mountain ahead, which you can probably climb.
 ~
-2 0 2
+2 0 10
 D0
 The beach continues toward the mountain.
 ~
@@ -1283,7 +1283,7 @@ foot of a large mountain, while south of you, you can hear the roar of the
 waves crashing against the rocky beach.  The vertical cliffs to the east and
 west block any movement in those directions.
 ~
-2 0 2
+2 0 10
 D0
 You see the foot of the mountains.
 ~

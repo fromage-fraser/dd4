@@ -10873,6 +10873,10 @@ D 3
 S
 #0
 
+#ROOMS_AMBIENT
+28504 ambient/room/28504.mp3 25
+$
+
 #RESETS
 D 0 28438 5 2                   lock down in Central Omu, Lower
 D 0 28466 2 1                   close south in Ota'ar Dar / Omu Bridge South, Lower

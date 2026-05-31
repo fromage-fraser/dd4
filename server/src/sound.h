@@ -84,6 +84,7 @@ void            sound_combat_transfix_sfx       ( CHAR_DATA *ch, CHAR_DATA *vict
 void            sound_combat_blink_sfx          ( CHAR_DATA *ch, CHAR_DATA *victim );
 void            sound_spell_sfx                 ( CHAR_DATA *ch, int sn, const char *phase );
 void            sound_combat_resist_toxin_sfx   ( CHAR_DATA *victim );
+void            sound_footstep_sfx              ( CHAR_DATA *actor, ROOM_INDEX_DATA *from_room, ROOM_INDEX_DATA *to_room, ROOM_INDEX_DATA *hear_room, CHAR_DATA *except );
 
 extern const sector_ambience_t sector_ambience_defaults[SECT_MAX];
 const        sector_ambience_t *sector_ambience_for(int sector);

@@ -6675,6 +6675,9 @@ D5
 S
 #0
 
+#ROOMS_AMBIENT
+27341 ambient/room/27341.mp3 25
+$
 
 #RESETS
 D 1 27353 3 1			; Malana Bridge, Lower Lock West

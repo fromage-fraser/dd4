@@ -221,7 +221,7 @@ typedef void CONSTRUCT_FUN args((int sn, int level, CHAR_DATA *ch));
     Any sound stuff that can't go in sound.h etc
 */
 
-#define MAX_SFX_QUEUE 32 /* For SFX queue so we can have non-masking sound */
+#define MAX_SFX_QUEUE 64 /* For SFX queue so we can have non-masking sound */
 
 typedef struct sfx_event
 {

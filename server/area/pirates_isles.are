@@ -1530,7 +1530,7 @@ You stand on the beach. Raider ships have been beached further up,
 towards the jungle, where a small hut is located. A dense tropical
 jungle surrounds you.
 ~
-0 0 2
+0 0 10
 D0
 The jungle~
 ~
@@ -2025,7 +2025,7 @@ You stand on an exotic black sand beach. There is no vegetation on this
 island, for as far as you can see. To the south of you a black mountain
 looms. The sand is soft, and your feet sink deeply into its warmth.
 ~
-0 4 2
+0 4 10
 D0
 The cove~
 ~
@@ -2046,7 +2046,7 @@ island, for as far as you can see. To the south and east of you a
 black mountain looms. Waves curl on a reef 150' off shore, and gently
 roll in to crash at your feet.
 ~
-0 0 2
+0 0 10
 D1
 The beach~
 ~
@@ -2187,7 +2187,7 @@ looms. The dappled sunlight makes its way through the cool palm canopy
 to gently warm the soft black sand. You dream of that lover you once had
 in a far off city, and wish they could have been here now.
 ~
-0 0 2
+0 0 10
 D0
 The beach~
 ~
@@ -2203,7 +2203,7 @@ You stand on an exotic black sand beach. There is no vegetation on this
 island, for as far as you can see. To the east of you a black mountain
 looms.
 ~
-0 0 2
+0 0 10
 D0
 The beach~
 ~
