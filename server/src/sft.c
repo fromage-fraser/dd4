@@ -2485,6 +2485,7 @@ void do_morph (CHAR_DATA *ch, char *argument)
                 sprintf(buf, "$n shimmers and morphs into a %s.\n\r",
                         extra_form_name(form));
                 act (buf, ch, NULL, NULL, TO_ROOM);
+                sound_morph_sfx( ch );
         }
         else {
                 if (is_affected(ch, gsn_mist_walk))
@@ -2492,11 +2493,13 @@ void do_morph (CHAR_DATA *ch, char *argument)
                     send_to_char("Your body reverts to its normal state.\n\r",ch);
                     act("A cloud of glowing mist withdraws to unveil $n!",ch,NULL,NULL,TO_ROOM);
                     affect_strip(ch,gsn_mist_walk);
+                    sound_morph_sfx( ch );
                     WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
 
                 }
                 else {
                     act ("$n shimmers and returns to normal.\n\r", ch, NULL, NULL, TO_ROOM);
+                    sound_morph_sfx( ch );
                 }
         }
 

@@ -396,7 +396,7 @@ Enter thy Name: ~
 
 101 IMOTD~
 {x
-{cDragons Domain version 4.2024{x
+{cDragons Domain version 4.2026{x
 
 ~
 
@@ -418,8 +418,8 @@ Enter thy Name: ~
     {WFOOTSTEP FOLEY{x: Sounds for footsteps are in, influenced by terrain,
     race, forms, flight, mountedness(!), and sneak.
 
-    {WCOMBAT SOUNDS{x: Beta combat SFX are in, use the SCONFIG command to
-    modify volume or switch on/off.
+    {WCOMBAT SOUNDS{x: Combat SFX are in, use the SCONFIG command to modify
+    volume or switch on/off.
 
 
 To Enter the Dragons Domain press <<Return>.

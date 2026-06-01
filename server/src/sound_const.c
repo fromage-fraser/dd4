@@ -930,6 +930,131 @@ static const sound_event_def sound_events[] = {
         1
     },
 
+    {
+        "sfx.combat.assassinate",
+        {
+                "sfx/combat/assassinate/pool.1.mp3",
+                "sfx/combat/assassinate/pool.2.mp3",
+                "sfx/combat/assassinate/pool.3.mp3",
+                NULL
+        },
+        { 0 },
+        70,
+        "sfx",
+        1
+    },
+
+    {
+        "sfx.combat.backstab",
+        {
+                "sfx/combat/backstab/pool.1.mp3",
+                "sfx/combat/backstab/pool.2.mp3",
+                "sfx/combat/backstab/pool.3.mp3",
+                NULL
+        },
+        { 0 },
+        70,
+        "sfx",
+        1
+    },
+
+    {
+        "sfx.skill.morph",
+        {
+                "sfx/skill/morph/pool.1.mp3",
+                "sfx/skill/morph/pool.2.mp3",
+                "sfx/skill/morph/pool.3.mp3",
+                NULL
+        },
+        { 0 },
+        70,
+        "sfx",
+        1
+    },
+
+    /* Conditions */
+
+    {
+        "sfx.condition.nausea",
+        {
+                "sfx/condition/nausea/pool.1.mp3",
+                "sfx/condition/nausea/pool.2.mp3",
+                "sfx/condition/nausea/pool.3.mp3",
+                NULL
+        },
+        { 0 },
+        55,
+        "sfx",
+        1
+    },
+
+    {
+        "sfx.condition.poison",
+        {
+                "sfx/condition/poison/pool.1.mp3",
+                "sfx/condition/poison/pool.2.mp3",
+                "sfx/condition/poison/pool.3.mp3",
+                NULL
+        },
+        { 0 },
+        55,
+        "sfx",
+        1
+    },
+
+    {
+        "sfx.condition.hold_breath",
+        {
+                "sfx/condition/hold_breath/pool.1.mp3",
+                "sfx/condition/hold_breath/pool.2.mp3",
+                "sfx/condition/hold_breath/pool.3.mp3",
+                "sfx/condition/hold_breath/pool.4.mp3",
+                NULL
+        },
+        { 0 },
+        55,
+        "sfx",
+        1
+    },
+
+    {
+        "sfx.condition.drowning",
+        {
+                "sfx/condition/drowning/pool.1.mp3",
+                "sfx/condition/drowning/pool.2.mp3",
+                "sfx/condition/drowning/pool.3.mp3",
+                NULL
+        },
+        { 0 },
+        55,
+        "sfx",
+        1
+    },
+
+    {
+        "sfx.condition.void",
+        {
+                "sfx/condition/void/pool.1.mp3",
+                NULL
+        },
+        { 0 },
+        75,
+        "sfx",
+        1
+    },
+
+    {
+        "sfx.condition.light_out",
+        {
+                "sfx/condition/light_out/pool.1.mp3",
+                NULL
+        },
+        { 0 },
+        75,
+        "sfx",
+        1
+    },
+
     { "sfx.combat.mobdeath.1",     { "sfx/combat/mobdeath/1.mp3", NULL }, { 0,0 }, 70, "sfx", 1 },
     { "sfx.combat.mobdeath.2",     { "sfx/combat/mobdeath/2.mp3", NULL }, { 0,0 }, 70, "sfx", 1 },
 
