@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include "merc.h"
 #include "webgate.h"
+#include "sound.h"
 
 struct healer_spell
 {
@@ -124,6 +125,7 @@ void do_heal(CHAR_DATA *ch, char *argument)
                         {
                                 ch->mana += 100;
                                 ch->mana = UMIN(ch->mana, ch->max_mana);
+                                sound_spell_sfx( ch, 0, "cast" );
                                 send_to_char("A warm glow passes through you.\n\r", ch);
 
                                 /* Refresh healer services for web client */
@@ -134,6 +136,7 @@ void do_heal(CHAR_DATA *ch, char *argument)
                         sn = skill_lookup(spell_list[i].spell_name);
                         if (sn < 0 || sn >= MAX_SKILL)
                                 return;
+                        sound_spell_sfx( ch, sn, "cast" );
                         (*skill_table[sn].spell_fun)(sn, mob->level, mob, ch);
 
                         /* Refresh healer services for web client */

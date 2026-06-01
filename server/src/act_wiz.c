@@ -1997,10 +1997,11 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                 strcat(buf1, buf);
 
                 sprintf(buf,
-                        "Thirst: {W%d{x  Full: {W%d{x  Drunk: {W%d{x\n\rPosition: {G%d{x [{W%s{x]  Wimpy: {G%d{x  Page Lines: {G%d{x\n\r",
+                        "Thirst: {W%d{x  Full: {W%d{x  Drunk: {W%d{x  Air Supply: {W%d{x\n\rPosition: {G%d{x [{W%s{x]  Wimpy: {G%d{x  Page Lines: {G%d{x\n\r",
                         victim->pcdata->condition[COND_THIRST],
                         victim->pcdata->condition[COND_FULL],
                         victim->pcdata->condition[COND_DRUNK],
+                        victim->pcdata->air_supply,
                         victim->position,
                         position_name(victim->position),
                         victim->wimpy,

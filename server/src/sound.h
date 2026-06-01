@@ -89,6 +89,11 @@ void            sound_combat_maul_sfx           ( CHAR_DATA *ch, CHAR_DATA *vict
 void            sound_combat_web_sfx            ( CHAR_DATA *ch, CHAR_DATA *victim );
 void            sound_combat_venom_sfx          ( CHAR_DATA *ch, CHAR_DATA *victim );
 void            sound_combat_crush_sfx          ( CHAR_DATA *ch, CHAR_DATA *victim );
+void            sound_combat_skill_sfx          ( CHAR_DATA *ch, CHAR_DATA *victim, const char *key );
+void            sound_combat_backstab_sfx       ( CHAR_DATA *ch, CHAR_DATA *victim );
+void            sound_combat_assassinate_sfx    ( CHAR_DATA *ch, CHAR_DATA *victim );
+void            sound_morph_sfx                 ( CHAR_DATA *ch );
+void            sound_condition_sfx             ( CHAR_DATA *ch, const char *key );
 
 extern const sector_ambience_t sector_ambience_defaults[SECT_MAX];
 const        sector_ambience_t *sector_ambience_for(int sector);

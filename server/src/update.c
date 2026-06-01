@@ -1559,6 +1559,7 @@ void char_update(void)
                                         --ch->in_room->light;
                                         act("$p goes out.", ch, obj, NULL, TO_ROOM);
                                         act("$p goes out.", ch, obj, NULL, TO_CHAR);
+                                        sound_condition_sfx( ch, "sfx.condition.light_out" );
                                         extract_obj(obj);
                                 }
                         }
@@ -1574,6 +1575,7 @@ void char_update(void)
 
                                         send_to_char("You disappear into the void.\n\r", ch);
                                         act("$n disappears into the void.", ch, NULL, NULL, TO_ROOM);
+                                        sound_condition_sfx( ch, "sfx.condition.void" );
 
                                         save_char_obj(ch);
                                         char_from_room(ch);
@@ -1711,6 +1713,7 @@ void char_update(void)
 
                                 send_to_char("You sweat and retch.\n\r", ch);
                                 act("$n sweats and retches.", ch, NULL, NULL, TO_ROOM);
+                                sound_condition_sfx( ch, "sfx.condition.nausea" );
                                 damage(ch, ch, number_range(3, 5), gsn_nausea, FALSE);
                         }
 
@@ -1721,6 +1724,7 @@ void char_update(void)
 
                                 send_to_char("You shiver and suffer.\n\r", ch);
                                 act("$n shivers and suffers.", ch, NULL, NULL, TO_ROOM);
+                                sound_condition_sfx( ch, "sfx.condition.poison" );
                                 damage(ch, ch, number_range(2, 4), gsn_poison, FALSE);
                         }
 
@@ -1747,12 +1751,14 @@ void char_update(void)
                                 if (--ch->pcdata->air_supply > 0)
                                 {
                                         send_to_char("{BYou hold your breath under the water...{x\n\r", ch);
+                                        sound_condition_sfx( ch, "sfx.condition.hold_breath" );
                                         return;
                                 }
                                 else
                                 {
                                         send_to_char("{BYou gasp desperately for breath: you're drowning!{x\n\r", ch);
                                         act("$n is drowning!", ch, NULL, NULL, TO_ROOM);
+                                        sound_condition_sfx( ch, "sfx.condition.drowning" );
                                         damage(ch, ch, number_range(ch->level * 3, ch->level * 5),
                                                TYPE_UNDEFINED, FALSE);
 

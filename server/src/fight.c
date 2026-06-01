@@ -5094,6 +5094,7 @@ void do_backstab(CHAR_DATA *ch, char *argument)
                 if (!IS_NPC(ch) && number_percent() < ch->pcdata->learned[gsn_assassinate] && number_percent() < assas_chance && HAS_HEAD(victim) && !IS_SET(victim->act, ACT_OBJECT) && !IS_INORGANIC(victim) && !(is_entered_in_tournament(victim) && is_still_alive_in_tournament(victim) && tournament_status == TOURNAMENT_STATUS_RUNNING))
                 {
                         arena_commentary("$n assassinates $N!", ch, victim);
+                        sound_combat_assassinate_sfx( ch, victim );
                         act("You spin around $N and quickly slit $S throat!",
                             ch, NULL, victim, TO_CHAR);
                         act("$c spins around $N and quickly slits $S throat!",
@@ -5133,6 +5134,7 @@ void do_backstab(CHAR_DATA *ch, char *argument)
                 }
 
                 arena_commentary("$n backstabs $N.", ch, victim);
+                sound_combat_backstab_sfx( ch, victim );
                 WAIT_STATE(victim, 2 * PULSE_VIOLENCE);
                 multi_hit(ch, victim, gsn_backstab);
         }
