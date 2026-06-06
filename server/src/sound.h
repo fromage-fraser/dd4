@@ -7,7 +7,7 @@
 #include "protocol.h"
 #include "merc.h"
 
-#define SND_DEF_ENABLED         TRUE   /* sound on by default */
+#define SND_DEF_ENABLED         TRUE    /* sound on by default */
 #define SND_LOG_ENABLED         FALSE   /* sound logging default */
 #define SND_DEF_MASTER          100     /* master 0..100 */
 #define SND_DEF_ENV             100    /* environment (area/room/sector) scale 0..100 */
@@ -94,6 +94,7 @@ void            sound_combat_backstab_sfx       ( CHAR_DATA *ch, CHAR_DATA *vict
 void            sound_combat_assassinate_sfx    ( CHAR_DATA *ch, CHAR_DATA *victim );
 void            sound_morph_sfx                 ( CHAR_DATA *ch );
 void            sound_condition_sfx             ( CHAR_DATA *ch, const char *key );
+void            sound_spell_sfx_delay           ( CHAR_DATA *ch, int sn, const char *phase, int delay_ticks );
 
 extern const sector_ambience_t sector_ambience_defaults[SECT_MAX];
 const        sector_ambience_t *sector_ambience_for(int sector);

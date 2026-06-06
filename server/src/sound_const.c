@@ -83,7 +83,12 @@ static const sound_event_def sound_events[] = {
     { "sfx.consume.drink",       { "sfx/misc/drink_generic.mp3",  NULL }, { 0,0 }, 35, "sfx"   , 1 },
     { "sfx.consume.pill",        { "sfx/misc/pill_generic.mp3",   NULL }, { 0,0 }, 35, "sfx"   , 1 },
     { "sfx.consume.quaff",       { "sfx/misc/quaff_generic.mp3",  NULL }, { 0,0 }, 35, "sfx"   , 1 },
-    { "sfx.consume.smoke",       { "sfx/misc/smoke_generic.mp3",  NULL }, { 0,0 }, 35, "sfx"   , 1 },
+    { "sfx.consume.smoke",
+        { "sfx/misc/smoke_generic.1.mp3",
+          "sfx/misc/smoke_generic.2.mp3",
+          "sfx/misc/smoke_generic.3.mp3",
+           NULL
+        }, { 0 }, 35, "sfx", 1 },
     { "sfx.consume.smear",       { "sfx/misc/smear_generic.mp3",  NULL }, { 0,0 }, 35, "sfx"   , 1 },
 
     /* SFX - Combat */
@@ -1149,6 +1154,17 @@ static const sound_event_def sound_events[] = {
         1
     },
 
+    { "sfx.spell.cast.summon_demon",
+        {
+                "sfx/spell/cast/summon_demon.1.mp3",
+                NULL
+        },
+        { 0 },
+        70,
+        "sfx",
+        1
+    },
+
     { "sfx.spell.cast.teleport",
         {
                 "sfx/spell/cast/teleport.1.mp3",
@@ -1176,7 +1192,6 @@ static const sound_event_def sound_events[] = {
 
     /* Footstep foley */
 
-        /* Foley */
     { "sfx.foley.step.generic", { "sfx/foley/step/generic.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
     FOOTSTEP_TERRAIN_SET(generic),
     FOOTSTEP_TERRAIN_SET(clop),
@@ -1185,18 +1200,32 @@ static const sound_event_def sound_events[] = {
     FOOTSTEP_BASE(flying),
     FOOTSTEP_TERRAIN_SET(hawk_flying),
     FOOTSTEP_BASE(hawk_flying),
+    FOOTSTEP_TERRAIN_SET(hawk),
+    FOOTSTEP_BASE(hawk),
     FOOTSTEP_TERRAIN_SET(dragon_flying),
     FOOTSTEP_BASE(dragon_flying),
+    FOOTSTEP_TERRAIN_SET(dragon),
+    FOOTSTEP_BASE(dragon),
     FOOTSTEP_TERRAIN_SET(phoenix_flying),
     FOOTSTEP_BASE(phoenix_flying),
+    FOOTSTEP_TERRAIN_SET(phoenix),
+    FOOTSTEP_BASE(phoenix),
     FOOTSTEP_TERRAIN_SET(fly_flying),
     FOOTSTEP_BASE(fly_flying),
+    FOOTSTEP_TERRAIN_SET(fly),
+    FOOTSTEP_BASE(fly),
     FOOTSTEP_TERRAIN_SET(bat_flying),
     FOOTSTEP_BASE(bat_flying),
+    FOOTSTEP_TERRAIN_SET(bat),
+    FOOTSTEP_BASE(bat),
     FOOTSTEP_TERRAIN_SET(demon_flying),
     FOOTSTEP_BASE(demon_flying),
+    FOOTSTEP_TERRAIN_SET(demon),
+    FOOTSTEP_BASE(demon),
     FOOTSTEP_TERRAIN_SET(griffin_flying),
     FOOTSTEP_BASE(griffin_flying),
+    FOOTSTEP_TERRAIN_SET(griffin),
+    FOOTSTEP_BASE(griffin),
     FOOTSTEP_TERRAIN_SET(chameleon),
     FOOTSTEP_BASE(chameleon),
     FOOTSTEP_TERRAIN_SET(hawk),
