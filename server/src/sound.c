@@ -1360,6 +1360,7 @@ void media_play_door_sfx_room( ROOM_INDEX_DATA *room, int door, door_action_t ac
                         }
                 }
         }
+}
 
 mirror_side:
         /* ----- FAR SIDE (mirror) ----- */
@@ -1483,6 +1484,7 @@ void media_play_consume_sfx_room( ROOM_INDEX_DATA *room, consume_action_t act, C
                 {
                         log_stringf( "ConsumeSFX: missing registry key=%s", rk );
                 }
+        }
 
                 return;
         }
