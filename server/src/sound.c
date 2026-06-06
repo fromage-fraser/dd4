@@ -1360,6 +1360,7 @@ void media_play_door_sfx_room( ROOM_INDEX_DATA *room, int door, door_action_t ac
                         }
                 }
         }
+}
 
 mirror_side:
         /* ----- FAR SIDE (mirror) ----- */
