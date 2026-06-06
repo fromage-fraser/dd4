@@ -1264,7 +1264,7 @@ void media_play_door_sfx_room( ROOM_INDEX_DATA *room, int door, door_action_t ac
         const char *act_str;
         const char *rk;
 
-        const int DEF_OPEN_VOL   = 60;
+        const int DEF_OPEN_VOL   = 59;
         const int DEF_CLOSE_VOL  = 55;
         const int DEF_LOCK_VOL   = 55;
         const int DEF_UNLOCK_VOL = 55;
@@ -1484,7 +1484,6 @@ void media_play_consume_sfx_room( ROOM_INDEX_DATA *room, consume_action_t act, C
                 {
                         log_stringf( "ConsumeSFX: missing registry key=%s", rk );
                 }
-        }
 
                 return;
         }
