@@ -8,7 +8,7 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
-
+#include "sound.h"
 
 void atemi              args((CHAR_DATA *ch, CHAR_DATA *victim));
 void kansetsu           args((CHAR_DATA *ch, CHAR_DATA *victim));
@@ -3481,6 +3481,7 @@ void do_chant(CHAR_DATA *ch, char *arg)
                 if (is_affected(ch, gsn_chant_of_protection ))
                 {
                         send_to_char( "You are already affected by a chant of protection.\n\r", ch );
+                        sound_spell_sfx_delay( ch, gsn_chant_of_protection, "wearoff", 2 );
                         return;
                 }
 
@@ -3524,6 +3525,7 @@ void do_chant(CHAR_DATA *ch, char *arg)
                 if( is_affected( ch, gsn_chant_of_battle ) )
                 {
                         send_to_char( "You are already affected by a chant of battle.\n\r", ch );
+                        sound_spell_sfx_delay( ch, gsn_chant_of_battle, "wearoff", 2 );
                         return;
                 }
 
@@ -3559,6 +3561,7 @@ void do_chant(CHAR_DATA *ch, char *arg)
                 if( is_affected( ch, gsn_dragon_shield ) )
                 {
                         send_to_char( "The chant of dragonsbane confers no benefit on you.\n\r", ch );
+                        sound_spell_sfx_delay( ch, gsn_dragon_shield, "wearoff", 2 );
                         return;
                 }
 
@@ -3591,6 +3594,7 @@ void do_chant(CHAR_DATA *ch, char *arg)
                 if( is_affected( ch, gsn_chant_of_vigour ) )
                 {
                         send_to_char( "You are already affected by a chant of vigour.\n\r", ch );
+                        sound_spell_sfx_delay( ch, gsn_chant_of_vigour, "wearoff", 2 );
                         return;
                 }
 
@@ -3629,6 +3633,7 @@ void do_chant(CHAR_DATA *ch, char *arg)
                    || saves_spell( ch->level, victim ) || number_percent() > chance )
                 {
                         send_to_char( "Your chant of enfeeblement has no effect.\n\r", ch );
+                        sound_spell_sfx_delay( ch, gsn_chant_of_enfeeblement, "wearoff", 2 );
                         return;
                 }
 

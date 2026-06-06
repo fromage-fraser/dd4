@@ -531,6 +531,7 @@ void do_cast(CHAR_DATA *ch, char *argument)
                         sprintf(buf, "<193>You are already affected by '%s'.<0>\n\r",
                                 skill_table[sn].name);
                         send_to_char(buf, ch);
+                        sound_spell_sfx_delay( ch, sn, "wearoff", 2 );
                         return;
                 }
 
@@ -549,6 +550,7 @@ void do_cast(CHAR_DATA *ch, char *argument)
                         sprintf(buf, "<193>You are already affected by '%s'.<0>\n\r",
                                 skill_table[sn].name);
                         send_to_char(buf, ch);
+                        sound_spell_sfx_delay( ch, sn, "wearoff", 2 );
                         return;
                 }
 
@@ -649,8 +651,17 @@ void do_cast(CHAR_DATA *ch, char *argument)
                         }
                 }
 
-                sound_spell_sfx( ch, sn, "cast" );
+
+                if ( sn == gsn_summon_demon
+                &&   ch->class == CLASS_SHAPE_SHIFTER
+                &&   ch->form != FORM_DEMON )
+                {
+                        send_to_char("What do you think you are, a demon?\n\r", ch);
+                        return;
+                }
+
                 (*skill_table[sn].spell_fun)(sn, URANGE(1, ch->level, MAX_LEVEL), ch, vo);
+                sound_spell_sfx( ch, sn, "cast" );
 
                 /*
                  * Add a counter for support spells cast on your group members
@@ -885,6 +896,7 @@ void obj_cast_spell(int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DAT
 
         target_name = "";
         (*skill_table[sn].spell_fun)(sn, level, ch, vo);
+        sound_spell_sfx_delay( ch, sn, "cast", 15 );
 
         if (skill_table[sn].target == TAR_CHAR_OFFENSIVE && victim->master != ch && ch != victim)
         {
@@ -4864,6 +4876,7 @@ void spell_sanctuary(int sn, int level, CHAR_DATA *ch, void *vo)
                 {
                         sprintf(buf, "<193>You are already affected by that spell.<0>\n\r");
                         send_to_char(buf, ch);
+                        sound_spell_sfx_delay( ch, sn, "wearoff", 2 );
                 }
                 else
                 {
@@ -4878,6 +4891,7 @@ void spell_sanctuary(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 sprintf(buf, "<193>You are already affected by that spell.<0>\n\r");
                 send_to_char(buf, ch);
+                sound_spell_sfx_delay( ch, sn, "wearoff", 2 );
                 return;
         }
 
@@ -4908,6 +4922,7 @@ void spell_sense_traps(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (victim == ch)
                 {
                         sprintf(buf, "<193>You are already affected by 'sense traps'.<0>\n\r");
+                        sound_spell_sfx_delay( ch, sn, "wearoff", 2 );
                         send_to_char(buf, ch);
                 }
                 else
@@ -4943,6 +4958,7 @@ void spell_shield(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (victim == ch)
                 {
                         sprintf(buf, "<193>You are already affected by a force shield.<0>\n\r");
+                        sound_spell_sfx_delay( ch, sn, "wearoff", 2 );
                         send_to_char(buf, ch);
                 }
                 else
@@ -5164,12 +5180,6 @@ void spell_summon_demon(int sn, int level, CHAR_DATA *ch, void *vo)
         if (IS_SET(ch->in_room->room_flags, ROOM_SPELLCRAFT))
         {
                 in_sc_room = TRUE;
-        }
-
-        if (ch->class == CLASS_SHAPE_SHIFTER && ch->form != FORM_DEMON)
-        {
-                send_to_char("What do you think you are, a demon?\n\r", ch);
-                return;
         }
 
         /*  Check for existing demons a'la 'summon avatar'.  Gezhp  */

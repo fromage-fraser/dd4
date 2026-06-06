@@ -208,6 +208,15 @@ void scan(CHAR_DATA *ch, int door)
                 }
         }
 
+        /* Some forms are baller for scanning --Owl */
+        if (!IS_NPC(ch)
+        && ch->class == CLASS_SHAPE_SHIFTER
+        && ( ch->form == FORM_CAT
+          || ch->form == FORM_BAT
+          || ch->form == FORM_WOLF
+          || ch->form == FORM_DIREWOLF  ) )
+            visibility = 6;
+
         was_in_room = ch->in_room;
         found = FALSE;
 

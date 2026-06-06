@@ -497,6 +497,7 @@ void sound_footstep_sfx( CHAR_DATA *actor, ROOM_INDEX_DATA *from_room, ROOM_INDE
         gait    = sound_footstep_gait( actor );
 
         snprintf( key, sizeof(key), "sfx.foley.step.%s.%s", gait, terrain );
+        if ( SND_LOG_ENABLED) { log_stringf("SFX: Initial key is %s", key); }
         ev = sound_event_lookup( key );
 
         if ( !ev )
@@ -745,6 +746,11 @@ static void sound_make_spell_key( char *buf, int size, const char *phase, int sn
 
 void sound_spell_sfx( CHAR_DATA *ch, int sn, const char *phase )
 {
+        sound_spell_sfx_delay( ch, sn, phase, 0 );
+}
+
+void sound_spell_sfx_delay( CHAR_DATA *ch, int sn, const char *phase, int delay_ticks )
+{
         const sound_event_def *ev;
         const char            *file;
         char                   key[MAX_INPUT_LENGTH];
@@ -811,7 +817,7 @@ void sound_spell_sfx( CHAR_DATA *ch, int sn, const char *phase )
                              file,
                              vol,
                              ( ev->tag && *ev->tag ) ? ev->tag : "sfx",
-                             0 );
+                             delay_ticks );
         }
 }
 
@@ -1354,6 +1360,7 @@ void media_play_door_sfx_room( ROOM_INDEX_DATA *room, int door, door_action_t ac
                         }
                 }
         }
+}
 
 mirror_side:
         /* ----- FAR SIDE (mirror) ----- */
@@ -1446,35 +1453,68 @@ mirror_side:
 /* Play a consumption-related SFX (eat, drink, pill, quaff, smoke, smear). */
 void media_play_consume_sfx_room( ROOM_INDEX_DATA *room, consume_action_t act, CHAR_DATA *actor )
 {
-    if (!room) return;
+        const sound_event_def *ev;
+        const char            *rk;
+        const char            *act_str;
+        const char            *file;
+        int                    vol;
 
-    const char *rk = NULL;
-    const char *act_str = NULL;
+        if ( !room )
+                return;
 
-    switch (act) {
-    case CONSUME_ACT_EAT:    rk = "sfx.consume.eat";    act_str = "EAT";    break;
-    case CONSUME_ACT_DRINK:  rk = "sfx.consume.drink";  act_str = "DRINK";  break;
-    case CONSUME_ACT_PILL:   rk = "sfx.consume.pill";   act_str = "PILL";   break;
-    case CONSUME_ACT_QUAFF:  rk = "sfx.consume.quaff";  act_str = "QUAFF";  break;
-    case CONSUME_ACT_SMOKE:  rk = "sfx.consume.smoke";  act_str = "SMOKE";  break;
-    case CONSUME_ACT_SMEAR:  rk = "sfx.consume.smear";  act_str = "SMEAR";  break;
-    default: return;
-    }
+        rk = NULL;
+        act_str = NULL;
 
-    const sound_event_def *ev = sound_event_lookup(rk);
-    if (!ev || !ev->files[0] || !*ev->files[0]) {
-        if ( SND_LOG_ENABLED ) { log_stringf("ConsumeSFX: missing registry key=%s", rk); }
-        return;
-    }
+        switch ( act )
+        {
+            case CONSUME_ACT_EAT:    rk = "sfx.consume.eat";    act_str = "EAT";    break;
+            case CONSUME_ACT_DRINK:  rk = "sfx.consume.drink";  act_str = "DRINK";  break;
+            case CONSUME_ACT_PILL:   rk = "sfx.consume.pill";   act_str = "PILL";   break;
+            case CONSUME_ACT_QUAFF:  rk = "sfx.consume.quaff";  act_str = "QUAFF";  break;
+            case CONSUME_ACT_SMOKE:  rk = "sfx.consume.smoke";  act_str = "SMOKE";  break;
+            case CONSUME_ACT_SMEAR:  rk = "sfx.consume.smear";  act_str = "SMEAR";  break;
+            default: return;
+        }
 
-    int vol = (ev->default_volume > 0) ? ev->default_volume : 60;
-    const char *file = ev->files[0];
+        ev = sound_event_lookup( rk );
 
-    if ( SND_LOG_ENABLED ) { log_stringf("ConsumeSFX: action=%s file=%s vol=%d room=%d",
-                act_str, file, vol, room->vnum); }
+        if ( !ev )
+        {
+                if ( SND_LOG_ENABLED )
+                {
+                        log_stringf( "ConsumeSFX: missing registry key=%s", rk );
+                }
+        }
 
-    /* broadcast to everyone in the room */
-    sound_play_room_file(room, file, vol, (ev->tag ? ev->tag : "sfx"), NULL, rk);
+                return;
+        }
+
+        file = sound_event_pick_file( ev );
+
+        if ( !file )
+        {
+                if ( SND_LOG_ENABLED )
+                {
+                        log_stringf( "ConsumeSFX: no file for registry key=%s", rk );
+                }
+
+                return;
+        }
+
+        vol = ( ev->default_volume > 0 ) ? ev->default_volume : 60;
+
+        if ( SND_LOG_ENABLED )
+        {
+                log_stringf( "ConsumeSFX: action=%s file=%s vol=%d room=%d",
+                             act_str, file, vol, room->vnum );
+        }
+
+        sound_play_room_file( room,
+                              file,
+                              vol,
+                              ( ev->tag && *ev->tag ) ? ev->tag : "sfx",
+                              NULL,
+                              rk );
 }
 
 
