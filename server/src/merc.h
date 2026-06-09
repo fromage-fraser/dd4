@@ -2706,6 +2706,7 @@ struct mob_index_data
         char *description;
         char *mobspec; /* MB SPEC data */
         char *rank;    /* Rank of a mob (elite, boss, rare) */
+        char *footstep_key[SECT_MAX];
         int vnum;
         int count;
         int killed;

@@ -275,6 +275,11 @@ The syntax of this section is:
      <body_form:number> <exp:number>
      <position:number> <position:number> <sex:number>
      {
+        {mob_foley_type_1} " " {mob_foley_key_1} "~"
+            .   .   .
+        {mob_foley_type_last} " " {mob_foley_key_last} "~"
+     }
+     {
         ">" {mobprog_trigger_type} " " {argument_list} "~"
         {program_command_1}
         {program_command_2}
@@ -445,6 +450,38 @@ Relevant checks for heads, arms etc are made to prevent wrong body parts from
 being produced.  Body parts from mobiles with 'BODY_INORGANIC' set are made type
 'trash' and are inedible (but still have a timer set to prevent clutter).
 
+The "mob_foley_type" and  "mob_foley_key" values are what allow you to
+optionally override default mobile foley sounds.  Currently footstep foley is
+implemented by terrain type.  The default footstep sounds are those of a
+medium-sized humanoid moving through SECT_CITY, SECT_SWAMP, etc.  To override
+them you can use types and keys per below, where "3060" in the list below is the
+mob's vnum.  Any sounds not overridden will use the defaults.
+
+    FStepInside sfx.foley.mob.3060.inside~
+    FStepCity sfx.foley.mob.3060.city~
+    FStepField sfx.foley.mob.3060.field~
+    FStepForest sfx.foley.mob.3060.forest~
+    FStepHills sfx.foley.mob.3060.hills~
+    FStepMountain sfx.foley.mob.3060.mountain~
+    FStepDesert sfx.foley.mob.3060.desert~
+    FStepSwamp sfx.foley.mob.3060.swamp~
+    FStepWater sfx.foley.mob.3060.water~
+    FStepUnderwater sfx.foley.mob.3060.underwater~
+    FStepUnderwaterGround sfx.foley.mob.3060.underwater_ground~
+    FStepAir sfx.foley.mob.3060.air~
+
+You will need to add entries to the sound_const.c file for these overrides, and
+upload the sounds in the appropriate server directories for Mudlet to pull them,
+e.g.
+
+{ "sfx.foley.mob.3060.city",
+    { "sfx/foley/mob/3060/city.1.mp3",
+      "sfx/foley/mob/3060/city.2.mp3", NULL }, { 0 }, 45, "foley", 1 },
+
+{ "sfx.foley.mob.3060.inside",
+    { "sfx/foley/mob/3060/inside.1.mp3",
+      "sfx/foley/mob/3060/inside.2.mp3", NULL }, { 0 }, 45, "foley", 1 },
+
 The "mobprog_trigger_type" and associated information describe the format of
 mobprogs, simple mobile-specific programs written in the MUD's pseudo-scripting
 Mobprog language.  Their description is out of scope of this document, but read
@@ -488,6 +525,8 @@ be 5 metres tall and 25 metres long. He is not at all pleased to see you here.
 60 0 0 0d0+0 0d0+0
 640 0
 8 8 1
+FStepCity sfx.foley.mob.27318.city~
+FStepInside sfx.foley.mob.27318.inside~
 >rand_prog 3~
     mpasound A hideous reptilian screeching comes from the rocky island.
 ~

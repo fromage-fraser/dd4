@@ -1838,6 +1838,9 @@ void load_mobiles(FILE *fp)
                 pMobIndex = alloc_perm(sizeof(*pMobIndex));
                 pMobIndex->vnum = vnum;
 
+                for (stat = 0; stat < SECT_MAX; stat++)
+                        pMobIndex->footstep_key[stat] = NULL;
+
                 if (fBootDb)
                 {
                         if (!area_last->low_m_vnum)
@@ -1932,6 +1935,54 @@ void load_mobiles(FILE *fp)
                 }
                 else
                         ungetc(letter, fp);
+
+                for (;;)
+                {
+                        char *word;
+
+                        letter = fread_letter(fp);
+
+                        if (letter == '#' || letter == '>' || letter == '<' || letter == '&')
+                        {
+                                ungetc(letter, fp);
+                                break;
+                        }
+
+                        ungetc(letter, fp);
+                        word = fread_word(fp);
+
+                        if (!str_cmp(word, "FStepInside"))
+                                pMobIndex->footstep_key[SECT_INSIDE] = fread_string(fp);
+                        else if (!str_cmp(word, "FStepCity"))
+                                pMobIndex->footstep_key[SECT_CITY] = fread_string(fp);
+                        else if (!str_cmp(word, "FStepField"))
+                                pMobIndex->footstep_key[SECT_FIELD] = fread_string(fp);
+                        else if (!str_cmp(word, "FStepForest"))
+                                pMobIndex->footstep_key[SECT_FOREST] = fread_string(fp);
+                        else if (!str_cmp(word, "FStepHills"))
+                                pMobIndex->footstep_key[SECT_HILLS] = fread_string(fp);
+                        else if (!str_cmp(word, "FStepMountain"))
+                                pMobIndex->footstep_key[SECT_MOUNTAIN] = fread_string(fp);
+                        else if (!str_cmp(word, "FStepWater"))
+                                pMobIndex->footstep_key[SECT_WATER_SWIM] = fread_string(fp);
+                        else if (!str_cmp(word, "FStepNoSwim"))
+                                pMobIndex->footstep_key[SECT_WATER_NOSWIM] = fread_string(fp);
+                        else if (!str_cmp(word, "FStepUnderwater"))
+                                pMobIndex->footstep_key[SECT_UNDERWATER] = fread_string(fp);
+                        else if (!str_cmp(word, "FStepAir"))
+                                pMobIndex->footstep_key[SECT_AIR] = fread_string(fp);
+                        else if (!str_cmp(word, "FStepDesert"))
+                                pMobIndex->footstep_key[SECT_DESERT] = fread_string(fp);
+                        else if (!str_cmp(word, "FStepSwamp"))
+                                pMobIndex->footstep_key[SECT_SWAMP] = fread_string(fp);
+                        else if (!str_cmp(word, "FStepUnderwaterGround"))
+                                pMobIndex->footstep_key[SECT_UNDERWATER_GROUND] = fread_string(fp);
+                        else
+                        {
+                                bug("Load_mobiles: unknown mob foley field.", 0);
+                                fread_to_eol(fp);
+                        }
+                }
 
                 iHash = vnum % MAX_KEY_HASH;
                 pMobIndex->next = mob_index_hash[iHash];

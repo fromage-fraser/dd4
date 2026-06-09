@@ -95,6 +95,7 @@ void            sound_combat_assassinate_sfx    ( CHAR_DATA *ch, CHAR_DATA *vict
 void            sound_morph_sfx                 ( CHAR_DATA *ch );
 void            sound_condition_sfx             ( CHAR_DATA *ch, const char *key );
 void            sound_spell_sfx_delay           ( CHAR_DATA *ch, int sn, const char *phase, int delay_ticks );
+void            sound_foley_sfx                 ( CHAR_DATA *ch, const char *key );
 
 extern const sector_ambience_t sector_ambience_defaults[SECT_MAX];
 const        sector_ambience_t *sector_ambience_for(int sector);

@@ -483,6 +483,7 @@ void sound_footstep_sfx( CHAR_DATA *actor, ROOM_INDEX_DATA *from_room, ROOM_INDE
         char                   key[MAX_INPUT_LENGTH];
         const char            *terrain;
         const char            *gait;
+        const char            *override_key;
 
         if ( !actor || !from_room || !to_room || !hear_room )
                 return;
@@ -493,12 +494,28 @@ void sound_footstep_sfx( CHAR_DATA *actor, ROOM_INDEX_DATA *from_room, ROOM_INDE
         if ( IS_AFFECTED(actor, AFF_SNEAK) )
                 return;
 
-        terrain = sound_terrain_key( to_room->sector_type );
+        terrain = sound_terrain_key( hear_room->sector_type );
         gait    = sound_footstep_gait( actor );
 
-        snprintf( key, sizeof(key), "sfx.foley.step.%s.%s", gait, terrain );
-        if ( SND_LOG_ENABLED) { log_stringf("SFX: Initial key is %s", key); }
-        ev = sound_event_lookup( key );
+        override_key = NULL;
+
+        if ( IS_NPC(actor)
+        &&   actor->pIndexData
+        &&   hear_room->sector_type >= 0
+        &&   hear_room->sector_type < SECT_MAX )
+                override_key = actor->pIndexData->footstep_key[hear_room->sector_type];
+
+        if ( override_key && *override_key )
+        {
+                ev = sound_event_lookup( override_key );
+                if ( SND_LOG_ENABLED) { log_stringf("SFX: Initial key (MOB FOLEY) is %s", override_key); }
+        }
+        else
+        {
+                snprintf( key, sizeof(key), "sfx.foley.step.%s.%s", gait, terrain );
+                if ( SND_LOG_ENABLED) { log_stringf("SFX: Initial key is %s", key); }
+                ev = sound_event_lookup( key );
+        }
 
         if ( !ev )
         {
@@ -2350,7 +2367,10 @@ void sound_combat_skill_sfx( CHAR_DATA *ch, CHAR_DATA *victim, const char *key )
                 if ( !vch->pcdata || !vch->pcdata->snd_enabled )
                         continue;
 
-                vol = media_apply_volume( ev->default_volume, vch, "sfx", "sfx" );
+                if ( !str_prefix("sfx.foley.", key) )
+                        vol = media_apply_volume( ev->default_volume, vch, "foley", "sound" );
+                else
+                        vol = media_apply_volume( ev->default_volume, vch, "sfx", "sfx" );
 
                 if ( vol <= 0 )
                         continue;
@@ -2371,6 +2391,14 @@ void sound_morph_sfx( CHAR_DATA *ch )
 void sound_condition_sfx( CHAR_DATA *ch, const char *key )
 {
         if ( !ch || IS_NPC(ch) || !key || !*key )
+                return;
+
+        sound_combat_skill_sfx( ch, ch, key );
+}
+
+void sound_foley_sfx( CHAR_DATA *ch, const char *key )
+{
+        if ( !ch || !ch->in_room || !key || !*key )
                 return;
 
         sound_combat_skill_sfx( ch, ch, key );

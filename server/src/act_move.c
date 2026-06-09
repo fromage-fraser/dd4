@@ -2052,12 +2052,14 @@ void do_stand(CHAR_DATA *ch, char *argument)
 
                 send_to_char("You wake and ready yourself for action.\n\r", ch);
                 act("$n wakes and readies $mself for action.", ch, NULL, NULL, TO_ROOM);
+                sound_condition_sfx( ch, "sfx.condition.wake" );
                 ch->position = POS_STANDING;
                 break;
 
         case POS_RESTING:
                 send_to_char("You ready yourself for action.\n\r", ch);
                 act("$n readies $mself for action.", ch, NULL, NULL, TO_ROOM);
+                sound_condition_sfx( ch, "sfx.condition.wake" );
                 ch->position = POS_STANDING;
                 break;
 
@@ -2096,6 +2098,7 @@ void do_rest(CHAR_DATA *ch, char *argument)
         case POS_STANDING:
                 send_to_char("You rest.\n\r", ch);
                 act("$n rests.", ch, NULL, NULL, TO_ROOM);
+                sound_condition_sfx( ch, "sfx.condition.rest" );
                 ch->position = POS_RESTING;
                 break;
         }
@@ -2148,6 +2151,7 @@ void do_sleep(CHAR_DATA *ch, char *argument)
                 send_to_char("You sleep.\n\r", ch);
                 act("$n sleeps.", ch, NULL, NULL, TO_ROOM);
                 ch->position = POS_SLEEPING;
+                sound_condition_sfx( ch, "sfx.condition.sleep" );
                 if (!IS_NPC(ch) && ch->pcdata)
                 {
                         ch->pcdata->slept = true;
@@ -2375,6 +2379,7 @@ void do_meditate(CHAR_DATA *ch, char *argument)
         {
                 SET_BIT(ch->affected_by, AFF_MEDITATE);
                 send_to_char("You fall into a deep trance.\n\r", ch);
+                sound_condition_sfx( ch, "sfx.condition.meditate" );
                 act("$n sits in a lotus position and begins to meditate.",
                     ch, NULL, NULL, TO_ROOM);
                 ch->position = POS_SLEEPING;

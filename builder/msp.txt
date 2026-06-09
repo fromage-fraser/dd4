@@ -81,17 +81,73 @@ There are notification sounds for when different comms channels are used, when
 auctions start, and when characters level.  These cannot currently be
 customised, only turned on/off or have their relative volume adjusted.
 
+Overridable Footstep Foley for NPCs
+===================================
+
+By default mobiles have the footstep sounds of a medium-sized humanoid, modified
+by terrain type.  If you wish to override these on a per-mob basis, you can do
+it like so:
+
+Add any of the following keys (for the terrain-type foley you want to override
+for the mob) after the mob's #MOBILES entry, where the "3060" is the mob's vnum:
+
+FStepInside sfx.foley.mob.3060.inside~
+FStepCity sfx.foley.mob.3060.city~
+FStepField sfx.foley.mob.3060.field~
+FStepForest sfx.foley.mob.3060.forest~
+FStepHills sfx.foley.mob.3060.hills~
+FStepMountain sfx.foley.mob.3060.mountain~
+FStepDesert sfx.foley.mob.3060.desert~
+FStepSwamp sfx.foley.mob.3060.swamp~
+FStepWater sfx.foley.mob.3060.water~
+FStepUnderwater sfx.foley.mob.3060.underwater~
+FStepUnderwaterGround sfx.foley.mob.3060.underwater_ground~
+FStepAir sfx.foley.mob.3060.air~
+
+Example:
+
+cityguard guard~
+the cityguard~
+A cityguard stands here.
+~
+A big, strong, helpful, trustworthy guard.
+~
+1|64|32768|16777216 0 1000 S
+15 15 -2 15d15+150 1d4+10
+0 0
+8 8 1
+FStepCity sfx.foley.mob.3060.city~
+FStepInside sfx.foley.mob.3060.inside~
+
+
+Then add entries to the sound_const.c sound registry file, below will randomly
+select from a few files for either terrain type:
+
+{ "sfx.foley.mob.3060.city",
+{ "sfx/foley/mob/3060/city.1.mp3", "sfx/foley/mob/3060/city.2.mp3", NULL },
+{ 0 }, 45, "foley", 1 },
+{ "sfx.foley.mob.3060.inside",
+{ "sfx/foley/mob/3060/inside.1.mp3", "sfx/foley/mob/3060/inside.2.mp3", NULL },
+{ 0 }, 45, "foley", 1 },
+
+Now just recompile, ensure the sound files are uploaded to the relevant folders
+on the MUD server (currently under appropriate sub-directories of
+/var/www/smihilist.com/dd4/web/main/gui/custom/audio/) and BOOM.
+
 
 Todo
 ====
 - sound level scaling in sconfig has to be tested extensively
-- scribe needs to support all the area file alterations for sound (ooof)
+- scribe needs to support all the area file alterations for sound (ooof), also
+  needs documentation to support this
 - Allow consumable items to have a field that overrides the generic eat/drink
   etc sound that plays for them.
 - Should have this for all items that can make sounds, e.g. weapons.
-- Foley: footsteps are done, but could use soem tidying up, particularly for
-  shifter forms. Could also add mob movement noises, mob sound loops, objects
-  emitting sounds).
+- Foley: footsteps are done per above. Could also add mob movement noises,
+  mob sound loops (pulsing spheres, growling dragons etc), objects
+  emitting sounds.  Sounds for moving items in and out of containers and to and
+  from the ground.  Could be overriden on a per-object basis like footsteps.
+- Sounds related to working with objects in your vault, similarly.
 - Battle music?  Music as its own separate ambient layer?
 - Mudlet GUI sounds
 
