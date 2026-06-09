@@ -417,6 +417,8 @@ A big, strong, helpful, trustworthy guard.
 15 15 -2 15d15+150 1d4+10
 0 0
 8 8 1
+FStepCity sfx.foley.mob.3060.city~
+FStepInside sfx.foley.mob.3060.inside~
 #3061
 janitor~
 the janitor~
@@ -445,6 +447,8 @@ around his teeth.
 0 20 10 1d6+4 1d4+0
 36 0
 8 8 1
+FStepCity sfx.foley.mob.3062.city~
+FStepInside sfx.foley.mob.3062.inside~
 #3063
 vagabond~
 the vagabond~
@@ -456,6 +460,8 @@ He looks pretty mean.
 5 16 5 2d6+60 1d8+0
 0 0
 8 8 1
+FStepCity sfx.foley.mob.3063.city~
+FStepInside sfx.foley.mob.3063.inside~
 #3064
 drunk~
 the drunk~

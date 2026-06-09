@@ -2472,6 +2472,7 @@ void do_fill(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        sound_foley_sfx( ch, "sfx.foley.fill" );
         act("You fill $p with $T.", ch, obj, liq_table[fountain->value[2]].liq_name, TO_CHAR);
         act("$n fills $p with $T.", ch, obj, liq_table[fountain->value[2]].liq_name, TO_ROOM);
 
