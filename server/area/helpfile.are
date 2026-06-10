@@ -402,7 +402,7 @@ Enter thy Name: ~
 
 -1 MOTD~
 {x
-    [01 June 2026]
+    [11 June 2026]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -415,11 +415,10 @@ Enter thy Name: ~
     We're also active on a Discord server at {Yhttps://discord.gg/aGzmAWmXYb{x
     if you'd like to jump in and say hi!
 
+    {WAI POLICY{x: AI policy added. See {WHELP AI{x.
+
     {WFOOTSTEP FOLEY{x: Sounds for footsteps are in, influenced by terrain,
     race, forms, flight, mountedness(!), and sneak.
-
-    {WCOMBAT SOUNDS{x: Combat SFX are in, use the SCONFIG command to modify
-    volume or switch on/off.
 
 
 To Enter the Dragons Domain press <<Return>.
@@ -751,6 +750,26 @@ ton of bells and whistles, including:
 - An online searchable version of this help file
 - Extensive information for anyone interested in building for the MUD
 
+~
+
+0 AI 'AI POLICY'~
+DD4 has an official AI use policy.  It is as follows:
+
+*   The core MUD codebase should remain human-led and human-understood.
+
+*   AI can assist, but should not autonomously design, restructure, or
+    mass-implement core game systems.
+
+*   All core code changes should be small enough that a human contributor can
+    explain, review, and maintain them.
+
+*   Agentic development is fine for adjacent tools, clients, websites, builders,
+    and experiments, preferably these live in separate repos.
+
+*   If we ever want to revisit/revise this later, we will do so deliberately
+    rather than just drifting into it.
+
+    Signed off by Brutus, Gezhp, Owl, and Shade, 11/6/26
 ~
 
 

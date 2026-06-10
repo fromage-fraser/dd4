@@ -790,7 +790,7 @@ of parchment under poor lighting.
 #3154
 brawler~
 a brawler~
-A rough looking brawler stands here guarding the entrance.
+A rough-looking brawler stands here guarding the entrance.
 ~
 The brawler watches you carefully. He stands there with a smug grin on his
 face, as if he knows what you are thinking.
@@ -945,8 +945,8 @@ A firebreather has been left here.~
 8~ 8~ 7~ 0~
 10 50 0
 #3004
-bottle local~
-a bottle of local specialty~
+bottle local speciality~
+a bottle of local speciality~
 A dark bottle has been left here.~
 ~
 17 0 1
@@ -5054,7 +5054,7 @@ D0
 S
 #3211
 The Miscellaneous Donation Room~
-The room is coverd with miscellaneous junk.
+The room is covered with miscellaneous junk.
 ~
 0 8|1024 0
 D5

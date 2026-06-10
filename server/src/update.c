@@ -106,6 +106,43 @@ int check_stat_advance(CHAR_DATA *ch, int stat)
         return 0;
 }
 
+static void gmcp_flatten_text( char *out, const char *in, int out_size )
+{
+        int  i;
+        int  j;
+        bool last_space;
+
+        if ( !out || out_size <= 0 )
+                return;
+
+        out[0] = '\0';
+
+        if ( !in )
+                return;
+
+        j = 0;
+        last_space = TRUE;
+
+        for ( i = 0; in[i] != '\0' && j < out_size - 1; i++ )
+        {
+                if ( (unsigned char) in[i] <= ' ' )
+                {
+                        if ( !last_space )
+                        {
+                                out[j++] = ' ';
+                                last_space = TRUE;
+                        }
+                }
+                else
+                {
+                        out[j++] = in[i];
+                        last_space = FALSE;
+                }
+        }
+
+        out[j] = '\0';
+}
+
 void advance_stat(CHAR_DATA *ch)
 {
         int type = -1;
@@ -3039,6 +3076,7 @@ void gmcp_update(void)
                         int iShow;
                         int rNext;
                         int rSetcount;
+
                         bool fShort;
                         bool fShowNothing;
                         bool fCombine;
@@ -3202,10 +3240,17 @@ void gmcp_update(void)
                         UpdateGMCPNumber(d, GMCP_ADAMANTITE, d->character->smelted_adamantite);
                         UpdateGMCPNumber(d, GMCP_ELECTRUM, d->character->smelted_electrum);
                         UpdateGMCPNumber(d, GMCP_STARMETAL, d->character->smelted_starmetal);
-
                         UpdateGMCPString(d, GMCP_AREA, d->character->in_room->area->name);
                         UpdateGMCPString(d, GMCP_ROOM_NAME, d->character->in_room->name);
                         UpdateGMCPNumber(d, GMCP_ROOM_SECT, d->character->in_room->sector_type);
+                        UpdateGMCPString(d, GMCP_ROOM_SECT_TXT, sector_name( d->character->in_room->sector_type ));
+                        char room_desc_flat [ MAX_STRING_LENGTH ];
+
+                        gmcp_flatten_text( room_desc_flat,
+                                           d->character->in_room->description,
+                                           MAX_STRING_LENGTH );
+
+                        UpdateGMCPString( d, GMCP_ROOM_DESC, room_desc_flat );
                         UpdateGMCPNumber(d, GMCP_ROOM_FLAGS, d->character->in_room->room_flags);
                         UpdateGMCPNumber(d, GMCP_ROOM_VNUM, d->character->in_room->vnum);
 

@@ -39,7 +39,7 @@
 /*
  * WebSocket gateway configuration
  */
-#define WEBGATE_DEFAULT_PORT 8080
+#define WEBGATE_DEFAULT_PORT 8889
 #define WEBGATE_MAX_MESSAGE (32 * 1024) /* 32KB max WebSocket message */
 #define WEBGATE_PROTOCOL_VERSION "1.0"
 
