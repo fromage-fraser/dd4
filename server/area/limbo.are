@@ -2073,6 +2073,15 @@ A misty portal beckons you to the unknown.~
 0~ -1~ 0~ 100~
 100 10 1
 
+#591
+pipeweed~
+pipeweed~
+A small pile of fragrant pipeweed has been left here.~
+~
+54 0 1
+2~ bless~ shield~ weaken~
+1 10 1
+
 #0
 
 
