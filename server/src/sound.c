@@ -2403,3 +2403,13 @@ void sound_foley_sfx( CHAR_DATA *ch, const char *key )
 
         sound_combat_skill_sfx( ch, ch, key );
 }
+
+void sound_portal_enter_sfx( CHAR_DATA *ch )
+{
+        sound_combat_skill_sfx( ch, ch, "sfx.portal.enter" );
+}
+
+void sound_portal_exit_sfx( CHAR_DATA *ch )
+{
+        sound_combat_skill_sfx( ch, ch, "sfx.portal.exit" );
+}

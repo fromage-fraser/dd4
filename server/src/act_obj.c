@@ -2830,8 +2830,12 @@ void do_enter(CHAR_DATA *ch, char *argument)
                     ch, NULL, NULL, TO_CHAR);
         }
 
+        sound_portal_enter_sfx(ch);
+
         char_from_room(ch);
         char_to_room(ch, room);
+
+        sound_portal_exit_sfx(ch);
 
         if (is_affected(ch, gsn_mist_walk))
                 act("<87>A glowing mist emerges from the portal.<0>", ch, NULL, NULL, TO_ROOM);
