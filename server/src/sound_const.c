@@ -1213,6 +1213,13 @@ static const sound_event_def sound_events[] = {
         1
     },
 
+    { "sfx.portal.enter",
+        { "sfx/portal/enter/pool.1.mp3", "sfx/portal/enter/pool.2.mp3", "sfx/portal/enter/pool.3.mp3", NULL },
+        { 0 }, 60, "sfx", 1 },
+    { "sfx.portal.exit",
+        { "sfx/portal/exit/pool.1.mp3", "sfx/portal/exit/pool.2.mp3", "sfx/portal/exit/pool.3.mp3", NULL },
+        { 0 }, 60, "sfx", 1 },
+
     /* Footstep foley */
 
     { "sfx.foley.step.generic", { "sfx/foley/step/generic.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
