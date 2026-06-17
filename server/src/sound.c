@@ -367,7 +367,7 @@ void sound_combat_hit_sfx( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
                              file,
                              number_fuzzy(vol_adj),
                              ( ev->tag && *ev->tag ) ? ev->tag : "sfx",
-                             0 );
+                             1 );
         }
 }
 
@@ -567,7 +567,7 @@ void sound_footstep_sfx( CHAR_DATA *actor, ROOM_INDEX_DATA *from_room, ROOM_INDE
                              file,
                              vol,
                              "foley",
-                             0 );
+                             1 );
         }
 }
 
@@ -690,7 +690,7 @@ void sound_combat_parry_sfx( CHAR_DATA *ch, CHAR_DATA *victim )
                              file,
                              vol,
                              ( ev->tag && *ev->tag ) ? ev->tag : "sfx",
-                             0 );
+                             1 );
         }
 }
 
@@ -733,7 +733,7 @@ void sound_combat_resist_toxin_sfx( CHAR_DATA *victim )
                      file,
                      vol,
                      ( ev->tag && *ev->tag ) ? ev->tag : "sfx",
-                     0 );
+                     1 );
 }
 
 static void sound_make_spell_key( char *buf, int size, const char *phase, int sn )
@@ -863,7 +863,8 @@ void update_weather_for_char( CHAR_DATA *ch )
     /* If indoors or underwater, suppress weather sounds entirely */
     if ( (!IS_OUTSIDE(ch))
       || ( ch->in_room->sector_type == SECT_UNDERWATER )
-      || ( ch->in_room->sector_type == SECT_UNDERWATER_GROUND ) )
+      || ( ch->in_room->sector_type == SECT_UNDERWATER_GROUND )
+      || IS_SET(ch->in_room->room_flags, ROOM_NO_WEATHER) )
     {
         if (p->MediaWeatherActive)
         {
@@ -2379,7 +2380,7 @@ void sound_combat_skill_sfx( CHAR_DATA *ch, CHAR_DATA *victim, const char *key )
                              file,
                              vol,
                              ( ev->tag && *ev->tag ) ? ev->tag : "sfx",
-                             0 );
+                             1 );
         }
 }
 

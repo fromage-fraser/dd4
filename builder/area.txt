@@ -1400,6 +1400,7 @@ ROOM_ flags:
     ROOM_BURNING            BIT_18      Room does burning damage
     ROOM_NO_MOUNT           BIT_19      Mounts cannot access room
     ROOM_TOXIC              BIT_20      Healing slowed, chance of being poisoned
+    ROOM_NO_WEATHER         BIT_21      No weather in room
     ROOM_NO_DROP            BIT_63      Cannot drop items in room
 
 

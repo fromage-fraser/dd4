@@ -88,11 +88,11 @@ templar~
 a templar~
 A templar shouts "AKK! SLAY THE INFIDEL!"
 ~
-As you peer closely he peers back at you
+As you peer closely he peers back at you.
 
 A templar peers closely at you.
-A templar tells you, "You are an evil force trying to spread your ways!".
-A templar tells you, "You must die for your sin!".
+A templar tells you, "You are an evil force trying to spread your ways!"
+A templar tells you, "You must die for your sin!"
 ~
 36 0 600 S
 12 9 3 12d12+120 1d4+8
@@ -394,8 +394,8 @@ S
 #2002
 North/south tunnel~
 This part of the catacombs looked roughly hewn and man-made. There is
-a large cross painted on the floor of the tunnel.To the south it seems
-maybe a bit lighter for some odd reason.  To the north a ray of light
+a large cross painted on the floor of the tunnel. To the south it seems
+maybe a bit lighter for some odd reason. To the north a ray of light
 comes in from a hole in the ceiling.
 ~
 20 8 0
@@ -469,7 +469,7 @@ Hallway~
 The hallway takes on a more indoor look to the west.  To the east it
 looks awfully dark.
 ~
-20 268 0
+20 12 0
 D3
 ~
 ~
@@ -567,7 +567,7 @@ As the tunnel leads south it gets more humid and damp.  Moss covers the
 walls and ferns even grow in the cracks here and there.  To the north it
 seems much more sterile.
 ~
-20 9 2
+20 9 0
 D2
 ~
 ~
@@ -695,7 +695,7 @@ and south. To the south it seems to get impossibly darker.  To the east
 you hear... birds?  A small rivulet of water seeps in from the passage
 east.  The air is very humid and damp here.
 ~
-20 9 2
+20 9 0
 D1
 ~
 ~
@@ -814,10 +814,10 @@ S
 #2026
 Very dark passage~
 This room is so dark that even powerful magic lights seems to barely
-illuminate the ground in front of you.  If its possible it seems even
+illuminate the ground in front of you.  If it's possible it seems even
 darker to the south.  The passage also leads back north.
 ~
-20 9 2
+20 9 0
 D2
 ~
 ~
@@ -845,7 +845,7 @@ S
 #2028
 The holy grove~
 All of a sudden all the mysterious sounds of the grove stop. Or perhaps
-its just the strange humming and glowing from a clearing to the south
+it's just the strange humming and glowing from a clearing to the south
 drowning out everything else. There is a sort of magical forcefield door
 to the south.
 ~
@@ -871,7 +871,7 @@ there's nothing really to describe except maybe the powerful sense of
 evil coming from the east and the almost overcoming urge to run to the
 west.
 ~
-20 9 2
+20 9 0
 D3
 ~
 ~
@@ -938,7 +938,7 @@ protected at the same time.  The swirling mist makes it tough to tell
 directions quite clearly, but you seem to be able to go north or south.
 The mist gets denser to the south.
 ~
-20 9 2
+20 9 0
 D2
 ~
 ~
@@ -1026,7 +1026,7 @@ S
 #2038
 The burial grounds~
 Legions of skeletal warriors wander by and battle the enemy even in
-death.  Old battlelines have been forgotten and new ones made. Its a
+death.  Old battlelines have been forgotten and new ones made. It's a
 gruesome scene.
 ~
 20 9 5
@@ -1061,7 +1061,7 @@ A chilling icy mist swirl about you.  The dampness and warmth has become
 bitter cold.  The walls of the cavern are several feet thick with ice
 here.  An icy wind blows from the south.
 ~
-20 9 2
+20 9 0
 D1
 ~
 ~
@@ -1078,7 +1078,7 @@ blowing in from the east and a chilly breeze blowing in from the west.
 The updrafts create bizarre icy-steamy mists which dance along the
 walls.
 ~
-20 9 2
+20 9 0
 D3
 ~
 ~
@@ -1093,7 +1093,7 @@ Mist cavern~
 A warm wind blows in from the east.  The air is still stifling hot in
 here despite the breeze.  The mist seems thick enough to be alive. . .
 ~
-20 9 2
+20 9 0
 D3
 ~
 ~
@@ -1128,7 +1128,7 @@ Huge multicolored tunnel~
 The tunnel leads north and south.  To the south there is an odd
 twinkling phenomenon.
 ~
-20 9 2
+20 9 0
 D2
 ~
 ~
@@ -1194,12 +1194,12 @@ D0
 S
 #2048
 Twisty cavern~
-The way twist this way and that and its all you can do to keep your head
+The way twists this way and that and it's all you can do to keep your head
 from spinning.  The air is very cold here and layers of ice on the wall.
 The sounds of metal on ice echo through the cavern. A side passage leads
 east and the main passage goes north and south.
 ~
-20 9 2
+20 9 0
 D1
 ~
 ~
@@ -1219,7 +1219,7 @@ The walls of the tunnels have many brilliant colours in them from the
 various veins of crystals running in them.  An odd twinkling comes from
 the east.
 ~
-20 9 2
+20 9 0
 D3
 ~
 ~
@@ -1259,7 +1259,7 @@ S
 #2051
 Ruined monument~
 A monument to a famous king once stood here. Not much is left to even
-signify that is was here at all.  A building of some sort can be entered
+signify that it was here at all.  A building of some sort can be entered
 through a basement to the east.  The southern gate of the grounds is to
 the south.
 ~
@@ -1279,7 +1279,7 @@ D0
 S
 #2052
 Basement~
-Its dark and it smells like. ...BATS down here!  All you see is a swirl
+It's dark and it smells like... BATS down here!  All you see is a swirl
 of the darkness and lots of scratching bats madly flailing around. A set
 of stairs go up into the building and a broken window leads west.
 ~
@@ -1298,7 +1298,7 @@ Fresh graves~
 The graves here seem very recent.  You notice many signs of digging and
 defilement.  There are piles of fresh bodies here awaiting burial.  A
 strange sense of evil magic from the south makes the hairs on the back
-of your neck to stand on end!
+of your neck stand on end!
 ~
 20 9 4
 D2
@@ -1348,11 +1348,11 @@ D0
 S
 #2056
 Twisty passage~
-The passage bends north and east here.  To the east your not certain
+The passage bends north and east here.  To the east you're not certain
 what lies ahead due to all the twists and turns you've made.  To the
 north is seems cold.
 ~
-20 9 2
+20 9 0
 D1
 ~
 ~
@@ -1367,7 +1367,7 @@ Cross of caverns~
 A little-used cavern enters from the south. A passage twists away to
 the west.  An odd twinkling comes from the cave to the north.
 ~
-20 9 2
+20 9 0
 D3
 ~
 ~
@@ -1383,10 +1383,10 @@ D0
 S
 #2058
 Lonely tunnel~
-Something indescribable makes you feel lonesome and sad here. Its just
-a feeling you get from this tunnel.  The tunnel east and west.
+Something indescribable makes you feel lonesome and sad here. It's just
+a feeling you get from this tunnel.  The tunnel heads east and west.
 ~
-20 9 2
+20 9 0
 D1
 ~
 ~
@@ -1402,7 +1402,7 @@ Something indescribable makes you feel lonesome and sad here. You see a
 gate to a burial ground to the north.  This lonesome tunnel sighs along
 west and east.
 ~
-20 9 2
+20 9 0
 D3
 ~
 ~
@@ -1421,7 +1421,7 @@ Bend in the lonely tunnel~
 Something indescribable makes you feel lonesome and sad here. The
 tunnel bends west and south.
 ~
-20 9 2
+20 9 0
 D3
 ~
 ~
@@ -1437,7 +1437,7 @@ Something indescribable makes you feel lonesome and sad here. The very
 walls of the tunnel seems to groan.  to the north the tunnel bends and
 east is an intersection.
 ~
-20 9 2
+20 9 0
 D1
 ~
 ~
@@ -1454,7 +1454,7 @@ direction.  Also you feel an ominous sense of evil magic from there.
 The tunnel to the west creaks and sighs as if alive.  To the south you
 smell a hint of fresh air.
 ~
-20 9 2
+20 9 0
 D3
 ~
 ~
@@ -1473,7 +1473,7 @@ Tunnel~
 The tunnel heads north and south.  North you see an intersection and
 far to the south you sense light and smell a fresh breeze.
 ~
-20 9 2
+20 9 0
 D2
 ~
 ~
@@ -1488,7 +1488,7 @@ Tunnel~
 The tunnel slopes noticeably down to the north and you sense the surface
 could be reached to the south.
 ~
-20 9 2
+20 9 0
 D2
 ~
 ~
@@ -1510,7 +1510,7 @@ here.  The message reads:
 An ancient Glyph above the entrance keeps monsters from wandering up
 from the catacombs.
 ~
-20 4 2
+20 4 0
 D4
 ~
 floorboard board~
@@ -1522,11 +1522,11 @@ D0
 S
 #2066
 Unknown passage~
-Oh dear you seem to have lost your way.  You look back from whence you
+Oh dear you seem to have lost your way.  You look back whence you
 came but there's no exit there any more.  There are exits in other
 directions but you have a feeling that you are hopelessly lost.
 ~
-20 269 2
+20 13 0
 D1
 ~
 ~
@@ -1538,11 +1538,11 @@ D2
 S
 #2067
 Unknown passage~
-Oh dear you seem to have lost your way.  You look back from whence you
+Oh dear you seem to have lost your way.  You look back whence you
 came but there's no exit there any more.  There are exits in other
 directions but you have a feeling that you are hopelessly lost.
 ~
-20 269 2
+20 13 0
 D3
 ~
 ~
@@ -1554,11 +1554,11 @@ D2
 S
 #2068
 Unknown passage~
-Oh dear you seem to have lost your way.  You look back from whence you
+Oh dear you seem to have lost your way.  You look back whence you
 came but there's no exit there any more.  There are exits in other
 directions but you have a feeling that you are hopelessly lost.
 ~
-20 269 2
+20 13 0
 D1
 ~
 ~
@@ -1570,11 +1570,11 @@ D0
 S
 #2069
 Unknown passage~
-Oh dear you seem to have lost your way.  You look back from whence you
+Oh dear you seem to have lost your way.  You look back whence you
 came but there's no exit there any more.  There are exits in other
 directions but you have a feeling that you are hopelessly lost.
 ~
-20 269 2
+20 13 0
 D3
 ~
 ~

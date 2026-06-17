@@ -1,6 +1,8 @@
 DD4 AI use policy
 =================
 
+DD4 has an official AI use policy for game development.  It is as follows:
+
 *   The core MUD codebase should remain human-led and human-understood.
 
 *   AI can assist, but should not autonomously design, restructure, or
@@ -12,7 +14,7 @@ DD4 AI use policy
 *   Agentic development is fine for adjacent tools, clients, websites, builders,
     and experiments, but preferably these live in separate repos.
 
-*   If we ever want to revisit/revise this later, we will do so deliberately
-    rather than just drifting into it.
+*   If we ever want to revise this policy later, we will do so deliberately
+    rather than drifting into practices that do not align with these principles.
 
 Signed off by Brutus, Gezhp, Owl, and Shade, 11/6/26
