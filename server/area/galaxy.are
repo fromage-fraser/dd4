@@ -3,7 +3,7 @@
 
 #AREA_SPECIAL
 ambient ambient/area/galaxy.mp3
-ambient_vol 30
+ambient_vol 20
 reset_msg The stars realign themselves with cold precision.
 ~
 $
@@ -1518,7 +1518,7 @@ You have reached the end of the mystic chains.  Looking up, you notice a
 small landing on which you can climb.  However, there seems to be another
 forcefield blocking your way.
 ~
-93 0 5
+93 2097152 5
 D4
 You see the forcefield of Summer.
 ~
@@ -1535,7 +1535,7 @@ On the Draco~
 You realize you are standing on scaly ground.  As you wonder what the ground
 is made of, you feel the ground move.
 ~
-93 1 4
+93 2097153 4
 D0
 ~
 ~
@@ -1551,7 +1551,7 @@ At last you realize that you are on a giant snake-like dragon called the
 Draco, the guardian of the inner galaxy.  You realize that the Draco is
 actually flying now!
 ~
-93 1 4
+93 2097153 4
 D2
 ~
 ~
@@ -1564,9 +1564,9 @@ S
 #9357
 Path of the Draco~
 As you struggle along this scaly creature you realize that the only way
-you can reach to the inner galaxy is by going all the way to the head.
+you can reach the inner galaxy is by going all the way to the head.
 ~
-93 1 4
+93 2097153 4
 D0
 ~
 ~
@@ -1582,7 +1582,7 @@ You are approaching the leg part of this creature.  You look around and see
 that the surrounding is all dark except for some faint lights from the
 distant stars.
 ~
-93 1 4
+93 2097153 4
 D0
 ~
 ~
@@ -1597,7 +1597,7 @@ On the Back of Draco~
 At last you are half way through this long, weary journey. You can see
 the wings are to the east but it seems that another forcefield is in the way.
 ~
-93 1 4
+93 2097153 4
 D1
 You see the forcefield of Autumn.
 ~
@@ -1613,7 +1613,7 @@ Between the Wings of Draco~
 You hear some giant flapping sounds nearby.  You desperately try to get hold
 of something as the forceful gusts sweep you away.
 ~
-93 1 4
+93 2097153 4
 D1
 ~
 ~
@@ -1628,7 +1628,7 @@ Near the Arms of Draco~
 From above you can faintly make out the gigantic arms which extend far
 beyond into the darkness.
 ~
-93 1 4
+93 2097153 4
 D2
 ~
 ~
@@ -1643,7 +1643,7 @@ On the Neck of Draco~
 Your journey is now approaching the end.  However, this neck seems to be
 endless.
 ~
-93 1 4
+93 2097153 4
 D0
 ~
 ~
@@ -1659,7 +1659,7 @@ You have come to the end of Draco, but you can't find the head!
 You see a forcefield to the south, some distance away, beyond reach.
 If only the head were here ...
 ~
-93 1 4
+93 2097153 4
 D1
 ~
 ~
@@ -1675,7 +1675,7 @@ Now you are in the innermost part of the galaxy.  What you are walking on now
 is the path of the Great Dipper or the Plough.  You notice that there are
 seven rooms in this zone, representing the seven stars of the Dipper.
 ~
-93 0 1
+93 2097152 1
 D0
 You see the forcefield of Winter.~
 forcefield~
@@ -1694,7 +1694,7 @@ Cassiopeia's Throne~
 This is the Throne room of the Queen of the Universe.  From here you can see
 every star and constellation in the Universe.
 ~
-93 0 1
+93 2097152 1
 D0
 ~
 ~
@@ -1708,7 +1708,7 @@ S
 Along the Path of the Dipper~
 You see stars around you but nothing of special interest.
 ~
-93 0 1
+93 2097152 1
 D1
 ~
 ~
@@ -1723,7 +1723,7 @@ Cepheus' Throne~
 This is the Throne room of the King of the Universe.  From here you can see
 every star and constellation in the Universe.
 ~
-93 0 1
+93 2097152 1
 D0
 ~
 ~
@@ -1741,7 +1741,7 @@ S
 Along the path of the Dipper~
 You see stars around you but nothing of special interest.
 ~
-93 0 1
+93 2097152 1
 D0
 ~
 ~
@@ -1755,7 +1755,7 @@ S
 Along the path of the Dipper~
 You see stars around you but nothing of special interest.
 ~
-93 0 1
+93 2097152 1
 D1
 ~
 ~
@@ -1771,7 +1771,7 @@ You have finished the path of the Dipper.  Here, the most prominent feature
 is a set of claw-marks.  You also notice a room to the south; it looks as
 if Polaris could lie here.
 ~
-93 0 1
+93 2097152 1
 D0
 ~
 ~
@@ -1797,7 +1797,7 @@ S
 #0
 
 #ROOMS_AMBIENT
-9320 ambient/room/9320.mp3 80
+9320 ambient/room/9320.mp3 40
 $
 
 

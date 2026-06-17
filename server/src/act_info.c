@@ -2715,6 +2715,12 @@ void do_weather(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_SET(ch->in_room->room_flags, ROOM_NO_WEATHER))
+        {
+                send_to_char("There's no weather in this place.\n\r", ch);
+                return;
+        }
+
         if ((ch->in_room->sector_type == SECT_UNDERWATER) || (ch->in_room->sector_type == SECT_UNDERWATER_GROUND))
         {
                 send_to_char("You can't see the weather underwater.\n\r", ch);

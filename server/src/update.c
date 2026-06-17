@@ -105,6 +105,43 @@ int check_stat_advance(CHAR_DATA *ch, int stat)
 
         return 0;
 }
+static void gmcp_json_escape( char *out, const char *in, int out_size )
+{
+        int i;
+        int j;
+
+        if ( !out || out_size <= 0 )
+                return;
+
+        out[0] = '\0';
+
+        if ( !in )
+                return;
+
+        j = 0;
+
+        for ( i = 0; in[i] != '\0' && j < out_size - 1; i++ )
+        {
+                if ( in[i] == '"' || in[i] == '\\' )
+                {
+                        if ( j < out_size - 2 )
+                        {
+                                out[j++] = '\\';
+                                out[j++] = in[i];
+                        }
+                }
+                else if ( in[i] == '\r' || in[i] == '\n' || in[i] == '\t' )
+                {
+                        out[j++] = ' ';
+                }
+                else
+                {
+                        out[j++] = in[i];
+                }
+        }
+
+        out[j] = '\0';
+}
 
 static void gmcp_flatten_text( char *out, const char *in, int out_size )
 {
@@ -600,7 +637,7 @@ int hit_gain(CHAR_DATA *ch)
                 gain += (get_curr_con(ch) / 4);
         }
 
-        if (ch->sub_class == SUB_CLASS_VAMPIRE && IS_OUTSIDE(ch) && !IS_SET(ch->in_room->room_flags, ROOM_DARK) && ch->in_room->sector_type != SECT_UNDERWATER && ch->in_room->sector_type != SECT_UNDERWATER_GROUND && weather_info.sky < SKY_RAINING && (time_info.hour >= 6 && time_info.hour <= 18) && !is_affected(ch, gsn_mist_walk))
+        if (ch->sub_class == SUB_CLASS_VAMPIRE && IS_OUTSIDE(ch) && !IS_SET(ch->in_room->room_flags, ROOM_DARK) && ch->in_room->sector_type != SECT_UNDERWATER && ch->in_room->sector_type != SECT_UNDERWATER_GROUND && weather_info.sky < SKY_RAINING && (time_info.hour >= 6 && time_info.hour <= 18) && !is_affected(ch, gsn_mist_walk) && !IS_SET(ch->in_room->room_flags, ROOM_NO_WEATHER) )
         {
                 send_to_char("Your skin burns as the {Ysunlight{x hits it!\n\r", ch);
                 act("$n's skin starts to burn!", ch, NULL, NULL, TO_ROOM);
@@ -1288,7 +1325,7 @@ void day_weather_update()
 
         for (d = descriptor_list; d; d = d->next)
         {
-                if (d->connected == CON_PLAYING && IS_OUTSIDE(d->character) && (d->character->in_room->sector_type != SECT_UNDERWATER) && (d->character->in_room->sector_type != SECT_UNDERWATER_GROUND) && IS_AWAKE(d->character))
+                if (d->connected == CON_PLAYING && IS_OUTSIDE(d->character) && (d->character->in_room->sector_type != SECT_UNDERWATER) && (d->character->in_room->sector_type != SECT_UNDERWATER_GROUND) && IS_AWAKE(d->character) && !IS_SET(d->character->in_room->room_flags, ROOM_NO_WEATHER) )
                         send_to_char(buf, d->character);
         }
 }
@@ -1327,6 +1364,8 @@ static void update_weather_ambient(void)
                                 if (!d->character->pcdata || !d->character->pcdata->snd_enabled)
                                         continue;
                                 if (!IS_OUTSIDE(d->character))
+                                        continue;
+                                if (IS_SET(d->character->in_room->room_flags, ROOM_NO_WEATHER))
                                         continue;
                                 if (d->character->in_room->sector_type == SECT_UNDERWATER)
                                         continue;
@@ -1488,7 +1527,7 @@ void weather_update()
 
         for (d = descriptor_list; d; d = d->next)
         {
-                if (buf[0] != '\0' && d->connected == CON_PLAYING && IS_OUTSIDE(d->character) && (d->character->in_room->sector_type != SECT_UNDERWATER) && (d->character->in_room->sector_type != SECT_UNDERWATER_GROUND) && IS_AWAKE(d->character))
+                if (buf[0] != '\0' && d->connected == CON_PLAYING && IS_OUTSIDE(d->character) && (d->character->in_room->sector_type != SECT_UNDERWATER) && (d->character->in_room->sector_type != SECT_UNDERWATER_GROUND) && IS_AWAKE(d->character) && !IS_SET(d->character->in_room->room_flags, ROOM_NO_WEATHER) )
                         send_to_char(buf, d->character);
 
                 if (time_info.hour == 20 && d->character && d->character->sub_class == SUB_CLASS_WEREWOLF && weather_info.moonlight == MOON_FULL)
@@ -3329,23 +3368,38 @@ void gmcp_update(void)
                                         if (enemy == ch->fighting || ch->fighting == d->character)
                                         {
 #ifndef COLOR_CODE_FIX
+                                                char enemy_long_desc [ MAX_STRING_LENGTH ];
+                                                char enemy_look_desc [ MAX_STRING_LENGTH ];
+
+                                                gmcp_json_escape( enemy_long_desc,
+                                                                IS_NPC(enemy) ? enemy->long_descr : "",
+                                                                MAX_STRING_LENGTH );
+
+                                                gmcp_json_escape( enemy_look_desc,
+                                                                IS_NPC(enemy) ? enemy->description : "",
+                                                                MAX_STRING_LENGTH );
+
                                                 if (buf[0] == '\0')
                                                 {
-                                                        sprintf(buf, "[ { \"name\": \"%s\", \"level\": \"%d\", \"hp\": \"%d\", \"maxhp\": \"%d\", \"isnpc\": \"%d\" }",
+                                                        sprintf( buf, "[ { \"name\": \"%s\", \"level\": \"%d\", \"hp\": \"%d\", \"maxhp\": \"%d\", \"isnpc\": \"%d\", \"long_desc\": \"%s\", \"look_desc\": \"%s\" }",
                                                                 (IS_NPC(enemy) ? enemy->short_descr : enemy->name),
                                                                 enemy->level,
                                                                 enemy->hit,
                                                                 enemy->max_hit,
-                                                                (IS_NPC(enemy) ? enemy->pIndexData->vnum : 0));
+                                                                (IS_NPC(enemy) ? enemy->pIndexData->vnum : 0),
+                                                                (IS_NPC(enemy) ? enemy_long_desc : ""),
+                                                                (IS_NPC(enemy) ? enemy_look_desc : ""));
                                                 }
                                                 else
                                                 {
-                                                        sprintf(buf2, ", { \"name\": \"%s\", \"level\": \"%d\", \"hp\": \"%d\", \"maxhp\": \"%d\", \"isnpc\": \"%d\" }",
+                                                        sprintf( buf2, ", { \"name\": \"%s\", \"level\": \"%d\", \"hp\": \"%d\", \"maxhp\": \"%d\", \"isnpc\": \"%d\", \"long_desc\": \"%s\", \"look_desc\": \"%s\" }",
                                                                 (IS_NPC(enemy) ? enemy->short_descr : enemy->name),
                                                                 enemy->level,
                                                                 enemy->hit,
                                                                 enemy->max_hit,
-                                                                (IS_NPC(enemy) ? enemy->pIndexData->vnum : 0));
+                                                                (IS_NPC(enemy) ? enemy->pIndexData->vnum : 0),
+                                                                (IS_NPC(enemy) ? enemy_long_desc : ""),
+                                                                (IS_NPC(enemy) ? enemy_look_desc : ""));
                                                         strcat(buf, buf2);
                                                 }
 #else

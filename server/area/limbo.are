@@ -2082,6 +2082,26 @@ A small pile of fragrant pipeweed has been left here.~
 2~ bless~ shield~ weaken~
 1 10 1
 
+#592
+cursed stat item~
+the cursed stat item~
+The cursed stat item lies here.~
+This item was created by Owl for testing.
+~
+9 1|64 1|64
+20~ 1~ 6~ 11~
+5 0 0
+A
+1 -30
+A
+2 -30
+A
+3 -30
+A
+4 -30
+A
+5 -30
+
 #0
 
 

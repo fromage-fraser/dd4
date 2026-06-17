@@ -150,4 +150,20 @@ Todo
 - Sounds related to working with objects in your vault, similarly.
 - Battle music?  Music as its own separate ambient layer?
 - Mudlet GUI sounds
+- Now that ROOM_NO_WEATHER is in, need to go through and put it on rooms where
+  it makes sense
+- Object foley:
+
+Core object commands: brandish, clean, close, climb, construct, drink, drop,
+deploy, eat, empty, enter, feed, fill, give, hold, list, lock, open, pick, put,
+quaff, smear, recite, retract, remove, sell, take, sacrifice, smelt, smoke,
+unlock, value, wear, zap.
+
+Object commands listed elsewhere: get, inventory, vault, look, wield, lodge,
+claim, dig, bury; also compare, equipment, examine, inspect, read.
+
+Likely object-affecting skill/misc commands: disarm, shoot, trap, knife toss,
+bomb, trigger, brew, carve, deposit, dowse, empower, engrave, forge, gather,
+harvest, identify, imbue, inscribe, poison weapon, reforge, repair, scribe,
+serrate, sharpen, split, steal, withdraw.
 

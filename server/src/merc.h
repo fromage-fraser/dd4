@@ -2492,6 +2492,7 @@ extern WANTED_DATA *wanted_list_last;
 #define ROOM_BURNING BIT_18
 #define ROOM_NO_MOUNT BIT_19
 #define ROOM_TOXIC BIT_20
+#define ROOM_NO_WEATHER BIT_21 /* Weather cannot occur in this room --Owl 16/6/26 */
 #define ROOM_NO_DROP BIT_63 /* Can't drop items in room, will prevent disarming in room too -- Owl 6/8/22 */
 
 /*

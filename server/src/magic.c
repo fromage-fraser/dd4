@@ -1283,7 +1283,7 @@ void spell_call_lightning(int sn, int level, CHAR_DATA *ch, void *vo)
                         continue;
                 }
 
-                if (vch->in_room->area == ch->in_room->area && (vch->in_room->sector_type != SECT_UNDERWATER) && (vch->in_room->sector_type != SECT_UNDERWATER_GROUND) && IS_OUTSIDE(vch) && IS_AWAKE(vch))
+                if (vch->in_room->area == ch->in_room->area && (vch->in_room->sector_type != SECT_UNDERWATER) && (vch->in_room->sector_type != SECT_UNDERWATER_GROUND) && IS_OUTSIDE(vch) && IS_AWAKE(vch) && !IS_SET(vch->in_room->room_flags, ROOM_NO_WEATHER))
                         send_to_char("{YLightning{x flashes in the sky.\n\r", vch);
         }
 }
@@ -7699,7 +7699,7 @@ void spell_moonray(int sn, int level, CHAR_DATA *ch, void *vo)
                         continue;
                 }
 
-                if (vch->in_room->area == ch->in_room->area && IS_OUTSIDE(vch) && (vch->in_room->sector_type != SECT_UNDERWATER) && (vch->in_room->sector_type != SECT_UNDERWATER_GROUND) && IS_AWAKE(vch))
+                if (vch->in_room->area == ch->in_room->area && IS_OUTSIDE(vch) && (vch->in_room->sector_type != SECT_UNDERWATER) && (vch->in_room->sector_type != SECT_UNDERWATER_GROUND) && IS_AWAKE(vch) && !IS_SET(vch->in_room->room_flags, ROOM_NO_WEATHER))
                         send_to_char("The moon pulses in the sky.\n\r", vch);
         }
 }
@@ -7793,7 +7793,7 @@ void spell_sunray(int sn, int level, CHAR_DATA *ch, void *vo)
                         continue;
                 }
 
-                if (vch->in_room->area == ch->in_room->area && IS_OUTSIDE(vch) && (vch->in_room->sector_type != SECT_UNDERWATER) && (vch->in_room->sector_type != SECT_UNDERWATER_GROUND) && IS_AWAKE(vch))
+                if (vch->in_room->area == ch->in_room->area && IS_OUTSIDE(vch) && (vch->in_room->sector_type != SECT_UNDERWATER) && (vch->in_room->sector_type != SECT_UNDERWATER_GROUND) && IS_AWAKE(vch) && !IS_SET(vch->in_room->room_flags, ROOM_NO_WEATHER))
                         send_to_char("The sun pulses violently in the sky.\n\r", vch);
         }
 }
