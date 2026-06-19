@@ -180,43 +180,6 @@ static void gmcp_flatten_text( char *out, const char *in, int out_size )
         out[j] = '\0';
 }
 
-static void gmcp_flatten_text( char *out, const char *in, int out_size )
-{
-        int  i;
-        int  j;
-        bool last_space;
-
-        if ( !out || out_size <= 0 )
-                return;
-
-        out[0] = '\0';
-
-        if ( !in )
-                return;
-
-        j = 0;
-        last_space = TRUE;
-
-        for ( i = 0; in[i] != '\0' && j < out_size - 1; i++ )
-        {
-                if ( (unsigned char) in[i] <= ' ' )
-                {
-                        if ( !last_space )
-                        {
-                                out[j++] = ' ';
-                                last_space = TRUE;
-                        }
-                }
-                else
-                {
-                        out[j++] = in[i];
-                        last_space = FALSE;
-                }
-        }
-
-        out[j] = '\0';
-}
-
 void advance_stat(CHAR_DATA *ch)
 {
         int type = -1;

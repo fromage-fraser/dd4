@@ -12,7 +12,7 @@ $
 #7000
 mud monster mudmonster~
 the horrifying Mudmonster~
-A horrifying Mudmonster is slowly evolving from the mud...
+A horrifying Mudmonster is slowly forming from the mud...
 ~
 It sure looks like something out of a horror movie. It strongly resembles
 a huge figure made up from mud alone, and it sure looks like it had human
@@ -99,7 +99,7 @@ The evil wanderer is very thin.  He is dressed in a grey cloak.
 #7008
 homonculus homo~
 the homonculus~
-The homonculus is here, looking at you with an evil look.
+The homonculus is here, looking at you with disdain.
 ~
 The Homonculus appears in a man-like form, about 18'' tall, it has a
 greenish, reptilian skin, leathery wings, and a bat-like mouth, with
@@ -137,7 +137,7 @@ staring at you with a look in its eyes that suggest immense hunger.
 #7013
 mud monster mudmonster~
 the horrifying mudmonster~
-A horrifying mudmonster is slowly evolving from the mud...
+A horrifying mudmonster is slowly forming from the mud...
 ~
 It looks like something out of a horror movie. It strongly resembles a huge
 humanoid figure made up from mud alone.  It had human flesh for breakfast and is
@@ -230,7 +230,7 @@ filthy and moth eaten. Jones really stinks...
 #7046
 herald mouse killer ettin~
 Herald~
-Herald 'Mouse-Killer' the ettin is standing here looking confused at you.
+Herald 'Mouse-Killer' the ettin is standing here looking confused.
 ~
 When you look at Herald, you feel pity. His dress are really poor,
 and the one of his heads hangs down. At the rope around his stomach
@@ -243,7 +243,7 @@ hangs dead mouses and rats. He does not smell good.
 #7200
 master mind mindflayer~
 the master mindflayer~
-The master mindflayer is here, looking at you with an evil look.
+The master mindflayer is here, looking at you with an evil glare.
 ~
 It's a seven foot tall humanoid dressed in a purple cloak, and swinging a
 black and purple rod above its head as if it was going to attack you any
@@ -282,7 +282,7 @@ center of its head.
 #7203
 wererat rat were~
 the ugly wererat~
-An ugly wererat is here, looking at you with a strange flick in his eyes.
+An ugly wererat is here, looking at you with a strange flicker in his eyes.
 ~
 The wererat is about four foot tall. It looks very much like rat, except
 that it is standing.
@@ -294,7 +294,7 @@ that it is standing.
 #7204
 rat gigantic~
 the gigantic rat~
-There is a gigantic rat here, looking at you with a hungry look.
+There is a gigantic rat here, looking at you hungrily.
 ~
 The gigantic rat is about ten foot long from head to tail and has claws
 the size of your head looking very nasty.
@@ -387,7 +387,7 @@ A
 24 -1
 #7204
 potion neon blue~
-an neon blue potion~
+a neon blue potion~
 A neon blue potion stands on the floor.~
 ~
 10 64 1
@@ -2822,9 +2822,8 @@ door stone~
 S
 #7202
 The lair~
-On the floor you see a lot of human decay, like bones and skulls. You also
-see a lot of slime. On the wall is a torch sitting in its sconce. To the north
-are a wooden door.
+Human bones are strewn across the floor here. You also see a lot of slime. On
+the wall is a torch sitting in its sconce. To the north is a wooden door.
 ~
 72 8 0
 D0
@@ -3163,9 +3162,9 @@ The water is dirty but it looks like you would be able to swim in it.
 S
 #7216
 Under water in the sewer~
-You swim in some dirty water and is holding you breath. You'd better
-continue before you drown. It is a good thing that you can hold your light
-above water-level.
+You swim in some dirty water and are holding you breath. You'd better
+get moving before you drown. It is a good thing you can hold your light source
+above the water-level.
 ~
 72 9 6
 D0
@@ -3255,7 +3254,7 @@ You can see another drain to the east.
 S
 #7221
 The sewer drain~
-You are in a sewer drain, there is nothing special inhere, except for a
+You are in a sewer drain. There is nothing special in here except for a
 loud echo.
 ~
 72 9 0
@@ -3314,7 +3313,7 @@ S
 #7224
 The sewer junction~
 You stand in a junction of three sewer drains. You see some odd scratches on
-the pipe wall, as from a gigantic rat.North and south the sewer continues
+the pipe wall, as from a gigantic rat. North and south the sewer continues
 as usual, but west it looks a little strange.
 ~
 72 9 0
@@ -4594,7 +4593,7 @@ The northern end of the pool~
 You have wet feet, you are standing in water. The water looks calm. You can
 see that it's a big lake. Light seeps from the water.
 ~
-74 8 0
+74 8 6
 D0
 You can see a small cave.
 ~
