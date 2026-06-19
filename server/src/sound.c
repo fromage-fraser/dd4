@@ -567,7 +567,7 @@ void sound_footstep_sfx( CHAR_DATA *actor, ROOM_INDEX_DATA *from_room, ROOM_INDE
                              file,
                              vol,
                              "foley",
-                             1 );
+                             0 );
         }
 }
 
@@ -733,7 +733,7 @@ void sound_combat_resist_toxin_sfx( CHAR_DATA *victim )
                      file,
                      vol,
                      ( ev->tag && *ev->tag ) ? ev->tag : "sfx",
-                     1 );
+                     0 );
 }
 
 static void sound_make_spell_key( char *buf, int size, const char *phase, int sn )

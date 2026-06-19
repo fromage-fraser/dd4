@@ -1497,7 +1497,7 @@ Dense forest covers the hilly wilderness, gigantic trees towering into the
 air about you.  A narrow, overgrown path winds through the firs and oaks in
 a westerly direction.
 ~
-0 4 2
+0 4 3
 D1
 ~
 ~
@@ -1512,7 +1512,7 @@ Forest Path~
 The overgrown path winds east and south through the trees.  The under
 growth and scrub grows steadily denser as you travel into the forest.
 ~
-0 0 2
+0 0 3
 D1
 ~
 ~
@@ -1527,7 +1527,7 @@ Forest Path~
 You make your way up a gentle rise, hacking the bramble that crowds the
 forest floor.  You may head north or south from here.
 ~
-0 0 2
+0 0 3
 D0
 ~
 ~
@@ -1544,7 +1544,7 @@ spaced and a steady wind blows from the west.  You can head north and west
 down the hill; the forest is too dense for you to travel in any other
 direction.
 ~
-0 0 2
+0 0 4
 D0
 ~
 ~
@@ -1559,7 +1559,7 @@ Forest Path~
 The path winds through the ancient trees.  You can head east and south from
 here.
 ~
-0 0 2
+0 0 3
 D1
 ~
 ~
@@ -1574,7 +1574,7 @@ Forest Path~
 The path through the forest begins to rise sharply to the south.  You can
 head north from here, or climb up the forested hill south of here.
 ~
-0 0 2
+0 0 3
 D0
 ~
 ~
@@ -1607,7 +1607,7 @@ Forest Path~
 You hack your way through the dense forest.  You travel east and north from
 here.
 ~
-0 0 2
+0 0 3
 D0
 ~
 ~
@@ -1622,7 +1622,7 @@ Forest Path~
 The forest is dark and damp, the trees truly monstrous.  An overgrown cliff
 rises directly east, or you can head back into lighter forest to the west.
 ~
-0 0 2
+0 0 3
 D1
 ~
 ~

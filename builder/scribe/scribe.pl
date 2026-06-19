@@ -357,6 +357,7 @@ my %room_rf = (
         burning         => 262144,
         no_mount        => 524288,
         toxic           => 1048576,
+        no_weather      => 2097152,
         no_drop         => 9223372036854775808,
         nodrop          => 9223372036854775808,
 
@@ -400,6 +401,7 @@ my %game_str = (
 my @area_specials = qw /
         school      no_quest    hidden      safe
         no_teleport no_magic    exp_mod     reset_msg
+        ambient     ambient_vol
 /;
 
 
@@ -485,59 +487,12 @@ while (1) {
                 next;
             }
 
-            next if &add_field_data(\%special, $field, $data, 'af xp rm');
+            next if &add_field_data(\%special, $field, $data, 'af xp rm am av');
             print "    line $line: special: unknown field '$field'\n";
         }
 
         push @special, [ %special ];
     }
-
-
-    #  Recall information
-
-    elsif ($header eq 'recall') {
-        my %recall;
-        $recall{'line'} = $line;
-
-        while (@source) {
-            my ($field, $data) = &get_field_data(\@source);
-
-            if (!$field) {
-                last if $data eq 'BREAK';
-                print "    line $line: recall: $data\n" if $data;
-                next;
-            }
-
-            next if &add_field_data(\%recall, $field, $data, 'rl');
-            print "    line $line: recall: unknown field '$field'\n";
-        }
-
-        push @recall, [ %recall ];
-    }
-
-
-    # Area special information
-
-    elsif ($header eq 'special') {
-        my %special;
-        $special{'line'} = $line;
-
-        while (@source) {
-            my ($field, $data) = &get_field_data(\@source);
-
-            if (!$field) {
-                last if $data eq 'BREAK';
-                print "    line $line: special: $data\n" if $data;
-                next;
-            }
-
-            next if &add_field_data(\%special, $field, $data, 'af xp rm');
-            print "    line $line: special: unknown field '$field'\n";
-        }
-
-        push @special, [ %special ];
-    }
-
 
     #  One help entry
 
@@ -1039,6 +994,24 @@ foreach (0 .. $#special) {
 
     if (exists($special{'xp'})) {
         if ($msg = &check_field_number_range(\%special, 'xp', 0, 'none')) {
+            print "$err $msg\n";
+            $special_errors{$special{'line'}}++;
+        }
+    }
+
+    if (exists($special{'am'})) {
+        if ($msg = &check_field_defined(\%special, 'am')) {
+            print "$err $msg\n";
+            $special_errors{$special{'line'}}++;
+        }
+        elsif ($special{'am'} =~ /\s/) {
+            print "$err field 'ambient' must not contain spaces: $special{'ambient'}\n";
+            $special_errors{$special{'line'}}++;
+        }
+    }
+
+    if (exists($special{'av'})) {
+        if ($msg = &check_field_number_range(\%special, 'av', 0, 100)) {
             print "$err $msg\n";
             $special_errors{$special{'line'}}++;
         }
@@ -2480,6 +2453,16 @@ if (@special) {
         if ($special{'rm'})
         {
             print AREA "reset_msg $special{'rm'}\n~\n";
+        }
+
+        if (exists $special{'am'} && $special{'am'} ne '')
+        {
+            print AREA "ambient $special{'am'}\n";
+        }
+
+        if (exists $special{'av'} && $special{'av'} ne '')
+        {
+            print AREA "ambient_vol $special{'av'}\n";
         }
     }
 
