@@ -1017,6 +1017,8 @@ An ancient sabre lays here, pulsing.~
 5 1|2|64|4096 1|8192
 0~ 30~ 80~ 1~
 30 0 0
+T
+steel/wood/leather~
 A
 18 12
 A
@@ -1029,6 +1031,8 @@ An intense white coloured robe lies here.~
 9 1|32|64|512 1|1024
 12~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 A
 25 1
 #14502
@@ -1039,6 +1043,8 @@ Mystical runes cover a pair of black boots.~
 9 1|64 1|64
 12~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 5 3
 A
@@ -1053,6 +1059,8 @@ The skin of a red dragon lies here.~
 9 1|2 1|8
 10~ 0~ 0~ 0~
 40 0 0
+T
+dragonscale~
 A
 1 4
 A
@@ -1067,6 +1075,8 @@ An intense humming comes from a small bracer.~
 9 2|64 1|4096
 10~ 0~ 0~ 0~
 5 0 0
+T
+steel~
 A
 18 10
 A
@@ -1079,6 +1089,8 @@ A small blue ring inscribed with arcane symbols lies at your feet.~
 9 2|32|64 1|2
 12~ 0~ 0~ 0~
 10 0 0
+T
+silver~
 A
 12 300
 #14506
@@ -1089,6 +1101,8 @@ A pair of armbands radiate pure evil.~
 9 16|64|512|4096 1|256
 13~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 19 15
 A
@@ -1103,6 +1117,8 @@ Some boots are here, barely visible to the naked eye.~
 9 2|64|128|512 1|64
 12~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 2 4
 #14508
@@ -1113,6 +1129,8 @@ A katana made from mithril lies here.~
 5 1|2 1|8192
 0~ 40~ 60~ 1~
 10 0 0
+T
+mithril~
 A
 18 15
 A
@@ -1125,6 +1143,8 @@ Some black cloth lies heaped in the corner.~
 9 1|64 1|16
 12~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 A
 18 10
 #14510
@@ -1135,6 +1155,8 @@ A pile of black cloth merges into the shadows.~
 9 1|64 1|1024
 12~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 A
 18 10
 A
@@ -1147,6 +1169,8 @@ A multicoloured cloaks, lies here, waiting to master someone.~
 9 2|16|128|2048|4096 1|1024
 15~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 A
 12 200
 A
@@ -1159,6 +1183,8 @@ A staff covered with runes leans up against a wall.~
 5 2|64 1|8192
 0~ 30~ 50~ 7~
 5 0 0
+T
+wood~
 A
 12 200
 #14513
@@ -1169,6 +1195,8 @@ You notice a small copper ring lying on the ground~
 9 32|2048 1|2
 8~ 0~ 0~ 0~
 5 0 0
+T
+copper~
 A
 4 3
 A
@@ -1183,6 +1211,8 @@ A well crafted mithril longsword lies here~
 5 1|16 1|8192
 0~ 30~ 60~ 0~
 5 0 0
+T
+mithril~
 A
 18 13
 E
@@ -1197,6 +1227,8 @@ A heap of dragon scales are heaped here.~
 9 1|16|512 1|8
 13~ 0~ 0~ 0~
 40 0 0
+T
+dragonscale~
 A
 1 3
 A
@@ -1211,6 +1243,8 @@ A skull of a dragon lies in the dirt.~
 9 1|16|64|4096 1|16
 12~ 0~ 0~ 0~
 5 0 0
+T
+dragonscale~
 A
 19 4
 A
@@ -1223,6 +1257,8 @@ A suit of thaleum sparkles in the sunlight.~
 9 1 1|8
 15~ 0~ 0~ 0~
 30 0 0
+T
+steel~
 A
 1 4
 #14518
@@ -1233,6 +1269,8 @@ A majestic thaleum axe leans against the wall.~
 5 1 1|8192
 0~ 20~ 45~ 1~
 5 0 0
+T
+steel/wood~
 A
 18 12
 #14519
@@ -1243,6 +1281,8 @@ A pulsating amulet draws your attention.~
 9 1|16|128|4096 1|4
 2~ 0~ 0~ 0~
 7 0 0
+T
+silver~
 A
 3 -13
 A
@@ -1255,6 +1295,8 @@ A skull made from glass catches your eye.~
 9 1|32 1|16384
 10~ 0~ 0~ 0~
 5 0 0
+T
+bone~
 A
 12 140
 #14521
@@ -1265,6 +1307,8 @@ A heap of black cloth, covered with runes lies at your feet.~
 9 16|64|512|2048 1|1024
 12~ 0~ 0~ 0~
 10 0 0
+T
+cloth~
 A
 4 3
 A
@@ -1281,6 +1325,8 @@ A pointed hat, probably from a dead witch.~
 9 16|512|4096 1|16
 9~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 A
 24 -20
 #14523
@@ -1301,6 +1347,8 @@ A small jewel encrusted collar, complete with name tag.~
 9 1|64 1|4
 8~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 19 12
 E
@@ -1325,6 +1373,8 @@ A long metallic pin.~
 5 64|2048|16384|262144 1|8192
 0~ 40~ 65~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 19 15
 A
@@ -1337,6 +1387,8 @@ Large feathers protrude from a headdress lying here.~
 9 4096 1|16
 3~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 2 2
 A
@@ -1349,6 +1401,8 @@ A pile of detached fingers, strung together, lie on the ground.~
 9 0 1|4
 2~ 0~ 0~ 0~
 15 0 0
+T
+silver~
 A
 19 12
 A
@@ -1366,6 +1420,8 @@ A grass loincloth rustles in the breeze.~
 9 2 1|2048
 6~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 A
 2 3
 A
@@ -1378,6 +1434,8 @@ A pair of shackles seem to move towards your wrists.~
 9 2|16|64|128|4096 1|4096
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 1 -13
 A
@@ -1392,6 +1450,8 @@ A nasty looking whip with many barbs attracts your attention~
 5 1|16|512 1|8192
 0~ 45~ 65~ 4~
 20 0 0
+T
+leather~
 A
 19 14
 A
@@ -1404,6 +1464,8 @@ A pair of comfortable leather boots lie here.~
 9 512 1|64
 8~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 2 2
 #14533
@@ -1430,6 +1492,8 @@ A red dragons scale rests against the wall.~
 9 1|64 1|512
 12~ 0~ 0~ 0~
 5 0 0
+T
+dragonscale~
 A
 23 -15
 A
@@ -1444,6 +1508,8 @@ A fang ripped from the jaw of a dragon lies here.~
 5 1|16384|67108864 1|8192
 1~ 1~ 65~ 11~
 17 0 0
+T
+dragonscale~
 A
 9 50
 A
@@ -1456,6 +1522,8 @@ The infamous ring of thaj-koj glows as you examine it.~
 9 1|32|1024|2048 1|2
 12~ 0~ 0~ 0~
 12 0 0
+T
+silver~
 A
 18 17
 A
@@ -1536,6 +1604,8 @@ Light reflects off a long, metallic blade, mystifying you.~
 5 1|2|64|1024|2048|16384 1|8192
 0~ 70~ 120~ 6~
 5 0 0
+T
+steel/wood/leather~
 E
 blade one~
 ...NGER
@@ -1592,6 +1662,8 @@ A large tower shield rests on the ground.~
 9 0 1|512
 13~ 0~ 0~ 0~
 5 0 0
+T
+steel/wood~
 A
 17 -10
 A
@@ -1604,6 +1676,8 @@ A long sword is impaled into the ground here.~
 5 0 1|8192
 0~ 20~ 38~ 3~
 15 0 0
+T
+steel/wood/leather~
 A
 18 7
 E
@@ -1619,6 +1693,8 @@ A pile of black cloth is heaped in the corner of the room.~
 9 64|2048 1|1024
 10~ 0~ 0~ 0~
 2 0 0
+T
+cloth~
 A
 4 3
 A
@@ -1637,6 +1713,8 @@ A necklace made from pure gold sparkles in the sun-light.~
 9 1|64 1|4
 7~ 0~ 0~ 0~
 10 0 0
+T
+gold~
 A
 4 4
 A
@@ -1649,6 +1727,8 @@ A green coloured suit.~
 9 0 1|8
 3~ 0~ 0~ 0~
 20 0 0
+T
+leather~
 #14556
 sword short~
 a short sword~
@@ -1657,6 +1737,8 @@ A short sword lies in the dust.~
 5 2|16384 1|8192
 0~ 20~ 35~ 11~
 10 0 0
+T
+steel/wood/leather~
 A
 18 6
 E
@@ -1671,6 +1753,8 @@ A suit of leather armour rests here.~
 9 0 1|8
 8~ 0~ 0~ 0~
 10 0 0
+T
+leather~
 #14558
 suit blue~
 a blue suit~
@@ -1679,6 +1763,8 @@ A blue suit draws your attention.~
 9 0 1|8
 5~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 #14559
 wooden spoon~
 a wooden spoon~
@@ -1687,6 +1773,8 @@ A wooden spoon, covered in some sort of chunky gruel.~
 5 16 1|8192
 0~ 20~ 35~ 17~
 10 0 0
+T
+wood~
 #14560
 oven~
 an oven~
@@ -1719,6 +1807,8 @@ A simple wooden club lies at your feet.~
 5 0 1|8192
 0~ 30~ 40~ 7~
 25 0 0
+T
+wood~
 #14563
 shackles damned~
 shackles of the damned~
@@ -1727,6 +1817,8 @@ A pair of shackles seem to say use me, use me.~
 9 1|2|16|64|128|4096 1|128
 2~ 0~ 0~ 0~
 10 0 0
+T
+leather~
 A
 12 -300
 A
@@ -1757,6 +1849,8 @@ The long black robes reeks of evil.~
 9 16|512 1|1024
 12~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 A
 2 3
 #14567
@@ -1775,6 +1869,8 @@ A black dagger merges in to the shadows.~
 5 16|512|16384 1|8192
 0~ 30~ 45~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 18 13
 #14569
@@ -1785,6 +1881,8 @@ A plain white lab coat hangs on a peg.~
 9 16 1|1024
 9~ 0~ 0~ 0~
 13 0 0
+T
+leather~
 A
 3 4
 A
@@ -1801,6 +1899,8 @@ A vicious looking scalpel lies on a table, dripping blood.~
 5 2|16|64 1|8192
 0~ 15~ 15~ 11~
 15 0 0
+T
+steel/wood/leather~
 A
 18 8
 A
@@ -1833,6 +1933,8 @@ A very lethal barbed sword beckons you to control it.~
 5 2|64|4096 1|8192
 0~ 20~ 30~ 3~
 35 0 0
+T
+steel/wood/leather~
 A
 19 20
 A
@@ -1906,6 +2008,8 @@ A large two-handed sword lies in pristine condition in the dirt.~
 5 1|64 1|8192
 0~ 20~ 38~ 3~
 25 0 0
+T
+steel/wood/leather~
 A
 19 13
 A
@@ -1982,6 +2086,8 @@ An eyepatch lies on the floor.~
 9 1|64 1|16
 9~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 2 3
 A
@@ -2004,6 +2110,8 @@ A wickedly sharp blade lies on the ground.~
 5 2|1024 1|8192
 0~ 20~ 30~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 19 9
 #14591
@@ -2014,6 +2122,8 @@ A pair of elegant gloves.~
 9 2|64|2048 1|128
 12~ 0~ 0~ 0~
 8 0 0
+T
+leather~
 A
 18 13
 A
@@ -2033,6 +2143,8 @@ A leather belt, set with large spikes, hangs on a hook.~
 9 1|64 1|2048
 9~ 0~ 0~ 0~
 12 0 0
+T
+leather~
 A
 2 -1
 A
@@ -2135,6 +2247,8 @@ A pair of shiny leggings lean against a wall.~
 9 1|32|64|128|2048 1|32
 10~ 0~ 0~ 0~
 5 0 0
+T
+steel~
 A
 19 9
 A
@@ -2155,6 +2269,8 @@ A bolt of lightning stretches down from the heavens.~
 5 1 1|8192
 0~ 10~ 35~ 6~
 20 0 0
+T
+steel/wood/leather~
 A
 18 12
 #14605
@@ -2165,6 +2281,8 @@ A huge lightning bolt forms into a trident as you watch.~
 5 1 1|8192
 0~ 20~ 40~ 11~
 5 0 0
+T
+steel~
 A
 18 7
 #14606
@@ -2175,6 +2293,8 @@ A large pointed piece of ice is melting into a puddle.~
 5 2|64 1|8192
 0~ 20~ 35~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 19 8
 #14607
@@ -2206,6 +2326,8 @@ A red suit lies neatly folded on a table.~
 9 0 1|8
 7~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 #14610
 bronze plate ~
 a bronze plate~
@@ -2214,6 +2336,8 @@ A bronze breastplate rests on the ground.~
 9 1|64 1|8
 9~ 0~ 0~ 0~
 20 0 0
+T
+bronze/wood/leather~
 A
 1 2
 #14611
@@ -2224,6 +2348,8 @@ Some bronze leggings lean against the wall.~
 9 64 1|32
 8~ 0~ 0~ 0~
 10 0 0
+T
+bronze/wood/leather~
 A
 3 2
 #14612
@@ -2234,6 +2360,8 @@ A pair of bronze armguards catch your eye~
 9 64 1|256
 8~ 0~ 0~ 0~
 5 0 0
+T
+bronze/wood/leather~
 A
 5 2
 #14613
@@ -2244,6 +2372,8 @@ A bronze helm rests in the corner of the room.~
 9 64 1|16
 8~ 0~ 0~ 0~
 5 0 0
+T
+bronze/wood/leather~
 A
 4 2
 #14614
@@ -2254,6 +2384,8 @@ A pair of bronze boots sparkle before you.~
 9 2|64 1|64
 7~ 0~ 0~ 0~
 5 0 0
+T
+bronze/wood/leather~
 A
 2 2
 #14615
@@ -2264,6 +2396,8 @@ The leg bone of a long dead adventurer lies on the ground.~
 5 0 1|8192
 0~ 10~ 15~ 7~
 10 0 0
+T
+bone~
 #14616
 trident~
 a trident~
@@ -2272,6 +2406,8 @@ A great trident rests against the wall.~
 5 1|64 1|8192
 0~ 40~ 55~ 11~
 5 0 0
+T
+steel~
 A
 19 6
 #14617
@@ -2290,6 +2426,8 @@ A figurine of an angel, hovers before you.~
 9 1|2|32|64|1024|2048 1|4
 12~ 0~ 0~ 0~
 5 0 0
+T
+silver~
 A
 13 100
 A
@@ -2347,6 +2485,8 @@ The sword that legends are made of. There can only be ONE!~
 5 1|2|64|1024|2048|1048576|137438953472 1|8192
 0~ 70~ 120~ 11~
 15 0 0
+T
+steel/wood/leather~
 A
 17 -50
 A

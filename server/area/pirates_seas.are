@@ -251,6 +251,8 @@ A circular fire burns and crackles here.~
 9 1|64 1|2048
 0~ 0~ 0~ 0~
 10 0 0
+T
+leather~
 A
 3 1
 E
@@ -267,6 +269,8 @@ Soaring high above you is a little stormy cloud.~
 9 32|64 1|4
 0~ 0~ 0~ 0~
 8 0 0
+T
+leather~
 E
 cape storm~
 The storm cape tingles with electricity, and is wet to your touch. It slips
@@ -306,6 +310,8 @@ A beautiful set of dreddlocks lie on the ground.~
 9 0 16
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 #0
 
 

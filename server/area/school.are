@@ -439,6 +439,8 @@ A heavy iron mace lays at your feet.~
 5 64 1|8192
 0~ 2~ 3~ 7~
 5 0 5
+T
+iron/wood/leather~
 E
 iron mace~
 
@@ -459,6 +461,8 @@ A dagger whose hilt is inlaid with jewels of many varieties lies here.~
 5 64|16777216 1|8192
 0~ 2~ 3~ 11~
 5 0 5
+T
+steel/wood/leather~
 E
 jewel-studded dagger~
 
@@ -480,6 +484,8 @@ A steel broadsword lies at your feet.~
 5 64 1|8192
 0~ 2~ 3~ 3~
 5 0 5
+T
+steel/wood/leather~
 E
 sharp steel sword broadsword~
 
@@ -501,6 +507,8 @@ A vest of chainmail lies on the ground. It seems to be almost new.~
 9 0 1|8
 2~ 0~ 0~ 0~
 5 0 5
+T
+steel~
 E
 chainmail vest~
 
@@ -517,6 +525,8 @@ A shield emblazoned with the visage of a dragon stands against the wall here.~
 9 0 1|512
 2~ 0~ 0~ 0~
 5 0 5
+T
+dragonscale~
 E
 dragon shield dragonshield~
 
@@ -538,6 +548,8 @@ A dark-blue cloak lies in a heap.~
 9 0 1|4
 2~ 0~ 0~ 0~
 5 0 5
+T
+cloth~
 E
 dark blue dark-blue cloak~
 
@@ -553,6 +565,8 @@ A steel helm sits on the ground at your feet.~
 9 0 1|16
 2~ 0~ 0~ 0~
 5 0 5
+T
+steel/wood/leather~
 E
 steel barrel helm barrel-helm~
 
@@ -569,6 +583,8 @@ A pair of leather leggings dotted with brass studs lies on the ground.~
 9 0 1|32
 2~ 0~ 0~ 0~
 5 0 5
+T
+brass/wood/leather~
 E
 leather studded leggings~
 
@@ -586,6 +602,8 @@ A pair of black leather boots has been stacked neatly against the wall here.~
 9 0 1|64
 2~ 0~ 0~ 0~
 5 0 5
+T
+leather~
 E
 black leather boots~
 
@@ -602,6 +620,8 @@ Gloves made from the skin of a deer lie here, neatly folded.~
 9 0 1|128
 2~ 0~ 0~ 0~
 5 0 5
+T
+leather~
 E
 deerhide gloves~
 
@@ -618,6 +638,8 @@ A pair of green scalemail sleeves has been discarded here.~
 9 0 1|256
 2~ 0~ 0~ 0~
 5 0 5
+T
+steel~
 E
 green scalemail sleeves~
 
@@ -634,6 +656,8 @@ A velvet cape has been tossed carelessly here.~
 9 0 1|1024
 2~ 0~ 0~ 0~
 5 0 5
+T
+leather~
 E
 velvet cape~
 
@@ -650,6 +674,8 @@ A thick leather belt with a silver buckle lays here.~
 9 0 1|2048
 2~ 0~ 0~ 0~
 5 0 5
+T
+silver~
 E
 belt silver leather~
 
@@ -666,6 +692,8 @@ A wrist bracer fashioned from copper lies here.~
 9 0 1|4096
 2~ 0~ 0~ 0~
 5 0 5
+T
+copper~
 E
 copper bracer~
 
@@ -726,6 +754,8 @@ A long brown robe lies neatly folded on the ground here.~
 9 0 1|8
 2~ 0~ 0~ 0~
 5 0 5
+T
+cloth~
 
 #3718
 portal blue light magical~
@@ -773,6 +803,8 @@ A short bow lies here.~
 5 1073741824 1|8192
 0~ 2~ 16~ 11~
 5 150 20
+T
+wood~
 E
 short bow~
 It looks like a simple bow used by rangers.

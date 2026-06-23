@@ -28,6 +28,8 @@ The black lotus blade lies here.~
 5 4096|16384 0
 ~ ~ ~ 11~
 10 0 0
+T
+steel/wood/leather~
 A
 18 1
 A
@@ -41,6 +43,8 @@ A lethal steel sword lies here.~
 5 0 0
 ~ ~ ~ 3~
 10 0 0
+T
+steel/wood/leather~
 A
 19 1
 
@@ -52,6 +56,8 @@ A steel visor lies here.~
 9 0 0
 ~ ~ ~ ~
 5 0 0
+T
+steel/wood/leather~
 
 #11003
 steel breastplate~
@@ -61,6 +67,8 @@ A steel breastplate lies here.~
 9 0 0
 ~ ~ ~ ~
 5 0 0
+T
+steel/wood/leather~
 
 #11004
 black leather pants~
@@ -70,6 +78,8 @@ Some black leather pants lie here.~
 9 0 0
 ~ ~ ~ ~
 5 0 0
+T
+leather~
 
 #11005
 black leather boots~
@@ -79,6 +89,8 @@ Some black leather boots sit here.~
 9 0 0
 ~ ~ ~ ~
 5 0 0
+T
+leather~
 
 #11006
 black leather gloves~
@@ -88,6 +100,8 @@ Some black leather gloves lie here.~
 9 0 0
 ~ ~ ~ ~
 5 0 0
+T
+leather~
 
 #11007
 double-headed axe~
@@ -97,6 +111,8 @@ A double-headed axe sits here.~
 5 0 0
 ~ ~ ~ 13~
 10 0 0
+T
+steel/wood~
 A
 1 10
 A
@@ -110,6 +126,8 @@ Some fur skins lie here.~
 9 0 0
 ~ ~ ~ ~
 5 0 0
+T
+fur~
 
 #11009
 horned helmet~
@@ -119,6 +137,8 @@ A horned helmet sits here.~
 9 0 0
 ~ ~ ~ ~
 5 0 0
+T
+steel~
 
 #11010
 amulet protection~
@@ -128,6 +148,8 @@ An amulet of protection sits here.~
 9 0 0
 ~ ~ ~ ~
 1 0 0
+T
+silver~
 A
 24 -20
 
@@ -139,6 +161,8 @@ An ivory bracer lies here.~
 9 0 0
 ~ ~ ~ ~
 5 0 0
+T
+steel~
 
 #11012
 black hood~
@@ -148,6 +172,8 @@ A black hood lies here.~
 9 0 0
 ~ ~ ~ ~
 2 0 0
+T
+leather~
 
 #11013
 black robes~
@@ -157,6 +183,8 @@ Some black robes lie here.~
 9 0 0
 ~ ~ ~ ~
 5 0 0
+T
+cloth~
 
 #11014
 padded boots~
@@ -166,6 +194,8 @@ Some padded boots sit here.~
 9 0 0
 ~ ~ ~ ~
 10 0 0
+T
+leather~
 
 #11015
 tiger claws~
@@ -175,6 +205,8 @@ Some tiger claws sit here.~
 9 0 0
 ~ ~ ~ ~
 5 0 0
+T
+leather~
 A
 19 1
 
@@ -186,6 +218,8 @@ A silk belt sits here.~
 9 0 0
 ~ ~ ~ ~
 5 0 0
+T
+silk~
 
 #11017
 dragon tooth dagger~
@@ -195,6 +229,8 @@ A dragon tooth dagger lies here.~
 5 0 0
 ~ ~ ~ 11~
 5 0 0
+T
+dragonscale~
 
 #11018
 willow wand~
@@ -213,6 +249,8 @@ The Amulet of the Magi rests here.~
 9 0 0
 ~ ~ ~ ~
 5 0 0
+T
+silver~
 A
 24 -50
 
@@ -224,6 +262,8 @@ Some deep purple robes rest here.~
 9 0 0
 ~ ~ ~ ~
 15 0 0
+T
+cloth~
 
 #11021
 ring wizardry~
@@ -233,6 +273,8 @@ A wind of wizardry lies here.~
 9 0 0
 ~ ~ ~ ~
 1 0 0
+T
+silver~
 A
 3 15
 A
@@ -246,6 +288,8 @@ A flowing cape lies here.~
 9 0 0
 ~ ~ ~ ~
 5 0 0
+T
+leather~
 
 #11023
 teeth~
@@ -255,6 +299,8 @@ Some teeth lie here.~
 5 4096|67108864 0
 1~ ~ ~ 10~
 5 0 0
+T
+steel/wood/leather~
 A
 19 1
 
@@ -266,6 +312,8 @@ A breastplate sits here.~
 9 0 0
 ~ ~ ~ ~
 10 0 0
+T
+steel~
 
 #11025
 bloodstone ring~
@@ -275,6 +323,8 @@ A bloodstone ring sits here.~
 9 0 0
 ~ ~ ~ ~
 1 0 0
+T
+granite~
 A
 24 -10
 #0

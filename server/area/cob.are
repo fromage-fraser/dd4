@@ -188,6 +188,8 @@ Psionic force is here.~
 5 1 8192
 ~ ~ ~ 8~
 1 0 0
+T
+steel/wood/leather~
 A
 19 50
 A
@@ -201,6 +203,8 @@ Tentacles.~
 5 1 8192
 ~ ~ ~ 12~
 1 0 0
+T
+steel/wood/leather~
 A
 18 50
 A
@@ -268,6 +272,8 @@ Some black stockings lie crumpled here.~
 9 0 1|32
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 13 150
 
@@ -279,6 +285,8 @@ Drider's Silk Leggings are folded here.~
 9 0 1|32
 ~ ~ ~ ~
 1 0 0
+T
+silk~
 A
 19 8
 A
@@ -303,6 +311,8 @@ Some Vines of Ivy are here.~
 9 0 1|256
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 19 15
 A

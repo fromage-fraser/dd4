@@ -729,6 +729,8 @@ A filthy pile of grey sackcloth lies here.~
 9 2 1|8
 0~ 0~ 0~ 0~
 3 0 0
+T
+cloth~
 E
 smock filthy grey~
 This is a crude one-piece garment fashioned of sackcloth.~
@@ -751,6 +753,8 @@ A white cotton dress lies in a heap.~
 9 0 1|8
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 E
 white cotton faded dress~
 The one piece cotton dress is faded and worn. It is bloodstained.~
@@ -762,6 +766,8 @@ A long red scarf has been left here.~
 9 0 1|2048
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 E
 red scarf tassels long~
 The long red scarf has been decorated with golden tassels and floral patterning.~
@@ -773,6 +779,8 @@ The sharp claws of some beast have been hacked off and left here.~
 5 512 8192
 0~ 0~ 0~ 3~
 2 0 0
+T
+bone~
 #20606
 rawhide leggings skin~
 rawhide leggings~
@@ -781,6 +789,8 @@ Leggings made from animal skin lie here.~
 9 16|64|512 1|32
 0~ 0~ 0~ 0~
 8 0 0
+T
+leather~
 A
 2 2
 A
@@ -799,6 +809,8 @@ A bracer fashioned of hardened leather lies before you.~
 9 16|64|512 1|4096
 0~ 0~ 0~ 0~
 10 0 0
+T
+leather~
 A
 19 4
 A
@@ -888,6 +900,8 @@ A white robe radiates goodness.~
 9 1|64|1024|2048 1|1024
 0~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 A
 17 -40
 A
@@ -903,6 +917,8 @@ A long white dress lies here.~
 9 1|64|1024|2048 1|8|8192
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 17 -55
 A
@@ -918,6 +934,8 @@ A long silver chain is on the ground.~
 9 1|64 1|2048
 0~ 0~ 0~ 0~
 5 0 0
+T
+silver~
 A
 12 60
 A
@@ -934,6 +952,8 @@ A ritual dagger lies on the ground.~
 5 1|64|1024 1|8192
 0~ 0~ 0~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 18 10
 A
@@ -953,6 +973,8 @@ An unremarkable pair of leather sandals sit here.~
 9 1 1|64
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 27 -1
 E
@@ -966,6 +988,8 @@ A wolves' fangs have been ripped from its mouth.~
 5 67108864 8192
 1~ 0~ 0~ 10~
 5 0 0
+T
+bone~
 #20620
 coffin large oak~
 a large oak coffin~
@@ -985,6 +1009,8 @@ A jet-black stone floats in the air.~
 9 16|512|16384 1|32768
 0~ 0~ 0~ 0~
 5 0 0
+T
+granite~
 A
 19 6
 A
@@ -1001,6 +1027,8 @@ A dark helm radiates evil and foulness.~
 9 1|16|512 1|16
 0~ 0~ 0~ 0~
 10 0 0
+T
+steel~
 A
 18 6
 A
@@ -1017,6 +1045,8 @@ A black leather jerkin lies here.~
 9 16|64|512 1|8
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 19 5
 A
@@ -1035,6 +1065,8 @@ The claws of some unfortunate creature lie here.~
 5 0 8192
 0~ 0~ 0~ 3~
 5 0 0
+T
+bone~
 A
 18 8
 #20625
@@ -1045,6 +1077,8 @@ Some leather leggings lie here.~
 9 16|512|4096 1|32
 0~ 0~ 0~ 0~
 7 0 0
+T
+leather~
 A
 24 -8
 #20626
@@ -1055,6 +1089,8 @@ A black bullwhip lies in a neat coil.~
 5 1|16|64|128|512|1024|4096 1|8192
 0~ 0~ 0~ 4~
 10 0 0
+T
+leather~
 A
 19 8
 A
@@ -1070,6 +1106,8 @@ A leather body harness sits on the floor.~
 9 512 1|8
 0~ 0~ 0~ 0~
 17 0 0
+T
+leather~
 A
 17 -15
 A
@@ -1085,6 +1123,8 @@ Leggings made of deer hide lie before you.~
 9 512 1|32
 0~ 0~ 0~ 0~
 8 0 0
+T
+leather~
 A
 17 -11
 E
@@ -1109,6 +1149,8 @@ A long green dress made of precious silk lies here.~
 9 16|64 1|1024
 0~ 0~ 0~ 0~
 5 0 0
+T
+silk~
 A
 12 200
 E
@@ -1122,6 +1164,8 @@ A silver circlet lies in the dust.~
 9 16|64|512 1|4
 0~ 0~ 0~ 0~
 1 0 0
+T
+silver~
 A
 13 80
 A
@@ -1138,6 +1182,8 @@ A jewelled dagger of great beauty and craftsmanship lies here.~
 5 16 1|8192
 0~ 0~ 0~ 2~
 3 0 0
+T
+steel/wood/leather~
 E
 dagger jewelled~
 The dagger is of beautiful craftsmanship and design and its hilt is studded
@@ -1172,6 +1218,8 @@ A pocketknife lies here at your feet.~
 5 0 1|8192
 0~ 0~ 0~ 2~
 1 0 0
+T
+steel~
 A
 19 -6
 A
@@ -1198,6 +1246,8 @@ A leather shield studded with spikes lies here.~
 9 16|64|512 1|512
 0~ 0~ 0~ 0~
 15 0 0
+T
+leather~
 A
 19 8
 A
@@ -1225,6 +1275,8 @@ The clawed hand of some unfortunate creature lies on the ground.~
 5 0 8192
 0~ 0~ 0~ 3~
 5 0 0
+T
+bone~
 A
 24 -15
 #20640
@@ -1235,6 +1287,8 @@ A pale green ring glows with an eerie light.~
 9 1|32|64 1|2
 0~ 0~ 0~ 0~
 1 0 0
+T
+jade~
 A
 13 40
 E
@@ -1301,6 +1355,8 @@ Golden robes shimmer at your feet.~
 9 1|64|1024 1|8
 0~ 0~ 0~ 0~
 10 0 0
+T
+gold~
 A
 12 160
 E
@@ -1315,6 +1371,8 @@ A pair of nondescript leather sandals lie here.~
 9 0 1|64
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 E
 sandals pair leather~
 The sandals are well made, but otherwise uninteresting.~
@@ -1326,6 +1384,8 @@ A golden halo of light rests at your feet.~
 9 1|64|1024|2048 1|32768
 0~ 0~ 0~ 0~
 1 0 0
+T
+gold~
 A
 12 70
 A
@@ -1355,6 +1415,8 @@ A pile of tattered rags is at your feet.~
 9 2 1|8|8192
 0~ 0~ 0~ 0~
 4 0 0
+T
+leather~
 E
 tattered rags rag~
 It might have been a suit or vest once but it is too worn and ragged to tell now.~
@@ -1366,6 +1428,8 @@ A black iron gorget rests here.~
 9 16 1|4
 0~ 0~ 0~ 0~
 5 0 0
+T
+iron/wood/leather~
 A
 5 3
 E
@@ -1379,6 +1443,8 @@ A black iron vambrace lies here.~
 9 16 1|4096
 0~ 0~ 0~ 0~
 5 0 0
+T
+iron/wood/leather~
 A
 24 -15
 E
@@ -1392,6 +1458,8 @@ A pair of black iron gauntlets lie here neatly folded.~
 9 16 1|128
 0~ 0~ 0~ 0~
 5 0 0
+T
+iron/wood/leather~
 A
 2 3
 E
@@ -1405,6 +1473,8 @@ Black iron pauldrons rest here.~
 9 16|512 1|256
 0~ 0~ 0~ 0~
 15 0 0
+T
+iron/wood/leather~
 A
 13 50
 A
@@ -1422,6 +1492,8 @@ A black iron helm lies at your feet.~
 9 16|512 1|16
 0~ 0~ 0~ 0~
 10 0 0
+T
+iron/wood/leather~
 A
 19 8
 A
@@ -1437,6 +1509,8 @@ A black iron breastplate sits on the floor at your feet.~
 9 16|512 1|8
 0~ 0~ 0~ 0~
 25 0 0
+T
+iron/wood/leather~
 A
 13 40
 E
@@ -1450,6 +1524,8 @@ A black iron girdle sits on the ground.~
 9 16|64|128|512|4096 1|2048
 0~ 0~ 0~ 0~
 10 0 0
+T
+iron/wood/leather~
 A
 12 200
 E
@@ -1466,6 +1542,8 @@ A pair of black iron cuisses lie on the ground.~
 9 16 1|32
 0~ 0~ 0~ 0~
 7 0 0
+T
+iron/wood/leather~
 A
 17 -35
 E
@@ -1480,6 +1558,8 @@ A black iron spear leans against a wall here.~
 5 16|128|4096|134217728 1|8192
 0~ 0~ 0~ 11~
 5 0 0
+T
+iron/wood/leather~
 A
 19 6
 A
@@ -1496,6 +1576,8 @@ A black iron buckler lies at your feet.~
 9 16|512|16384 1|512
 0~ 0~ 0~ 0~
 7 0 0
+T
+iron/wood/leather~
 A
 19 6
 A
@@ -1533,6 +1615,8 @@ A blood-red cloak lies neatly folded before you.~
 9 16|64 1|1024
 0~ 0~ 0~ 0~
 8 0 0
+T
+cloth~
 A
 13 80
 A
@@ -1551,6 +1635,8 @@ A shining globe levitates in the air before you.~
 9 1|64 1|32768
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 24 -10
 A
@@ -1580,6 +1666,8 @@ Some unfortunate creature has had its fangs ripped out.~
 5 16384 8192
 0~ 0~ 0~ 10~
 20 0 0
+T
+bone~
 E
 fangs~
 The sharp fangs drip with green mucus.~
@@ -1591,6 +1679,8 @@ The leathery wings of some large animal lie here.~
 9 16|64 1|1024
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 27 -1
 A
@@ -1659,6 +1749,8 @@ A velvet cape lies in a pile at your feet.~
 9 0 1|1024
 0~ 0~ 0~ 0~
 6 0 0
+T
+leather~
 E
 velvet cape black~
 Nothing remarkable about it. Nice and warm though.~
@@ -1670,6 +1762,8 @@ The claws of some demonic beast have been hacked off and left here.~
 9 16|64|512|4096 1|64
 0~ 0~ 0~ 0~
 15 0 0
+T
+leather~
 A
 19 9
 A
@@ -1686,6 +1780,8 @@ Black leggings made from the scales of some sort of demon lie here.~
 9 16|64|512|4096|274877906944 1|32
 0~ 0~ 0~ 0~
 7 0 0
+T
+steel~
 A
 19 6
 A
@@ -1704,6 +1800,8 @@ The claws of some large predator lie here.~
 5 16|64 1|8192
 0~ 0~ 0~ 5~
 5 0 0
+T
+bone~
 A
 19 10
 #20675
@@ -1728,6 +1826,8 @@ A large horned codpiece lies on the ground.~
 9 16|64|512|274877906944 1|2048
 0~ 0~ 0~ 0~
 9 0 0
+T
+leather~
 A
 1 5
 A
@@ -1746,6 +1846,8 @@ Black metallic vambraces radiate evil.~
 9 16|64|512|274877906944 1|4096
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 19 5
 A
@@ -1766,6 +1868,8 @@ A featureless black ring lies here.~
 9 1|16|32|512 1|2
 0~ 0~ 0~ 0~
 1 0 0
+T
+silver~
 A
 19 10
 E
@@ -1780,6 +1884,8 @@ You feel uncomfortable for some reason.~
 9 16|64|512|131072|137438953472 1|32768
 0~ 0~ 0~ 0~
 0 0 0
+T
+leather~
 A
 26 -1
 A
@@ -1818,6 +1924,8 @@ A shining girdle shimmers on the ground, radiating holiness.~
 9 1|64|1024|2048|274877906944 1|2048
 0~ 0~ 0~ 0~
 8 0 0
+T
+leather~
 A
 19 8
 A
@@ -1847,6 +1955,8 @@ A carved bone lies at your feet.~
 9 16|64|512 1|16384
 0~ 0~ 0~ 0~
 1 0 0
+T
+bone~
 A
 18 3
 A

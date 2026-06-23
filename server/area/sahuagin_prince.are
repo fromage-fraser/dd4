@@ -1133,6 +1133,8 @@ A gleaming sword floats in the air before you.~
 5 1|64|1024|274877906944 1|8192
 0~ 20~ 30~ 11~
 10 0 0
+T
+steel/wood/leather~
 A
 18 12
 A
@@ -1173,6 +1175,8 @@ A beaked helm lies here.~
 9 0 1|16
 8~ 1~ 6~ 11~
 5 0 0
+T
+steel~
 A
 19 4
 E
@@ -1188,6 +1192,8 @@ A pair of chain leggings are piled here.~
 9 0 1|32
 5~ 0~ 0~ 0~
 20 600 0
+T
+steel~
 A
 17 -15
 #27576
@@ -1198,6 +1204,8 @@ The sharp talons of the hawkpeople lie here.~
 9 64|274877906944 1|128
 0~ 1~ 6~ 11~
 3 0 0
+T
+leather~
 A
 2 4
 A
@@ -1302,6 +1310,8 @@ A very fine-looking trident stamped with the Ota'ar Dar Prince's seal has been l
 5 16|64|274877906944 1|8192
 0~ 0~ 0~ 11~
 4 0 0
+T
+steel~
 A
 17 -12
 A
@@ -1320,6 +1330,8 @@ A spiked pauldron carrying the Prince of Ota'ar Dar's insignia is here.~
 9 0 1|4
 0~ 1~ 6~ 11~
 8 0 0
+T
+leather~
 A
 17 -30
 
@@ -1331,6 +1343,8 @@ A purple loincloth  covered in metal scales is here.~
 9 0 1|2048
 0~ 1~ 6~ 11~
 1 0 0
+T
+cloth~
 A
 17 -20
 
@@ -1342,6 +1356,8 @@ The spear of a royal Ota'ar Dar cavalryman has been left here.~
 5 16|64|134217728|274877906944 1|8192
 0~ 0~ 0~ 11~
 4 0 0
+T
+iron/wood~
 A
 18 8
 A
@@ -1359,6 +1375,8 @@ A thick leather apron with a royal seal lies in a heap here.~
 9 1|274877906944 1|2048
 8~ 0~ 0~ 0~
 20 0 0
+T
+leather~
 A
 5 4
 A
@@ -1383,6 +1401,8 @@ A pair of iron tongs.~
 5 274877906944 1|8192
 0~ 10~ 15~ 8~
 20 0 0
+T
+iron/wood/leather~
 A
 2 -6
 A
@@ -1398,6 +1418,8 @@ A pair of iron tongs.~
 5 0 1|8192
 0~ 10~ 15~ 8~
 20 0 0
+T
+iron/wood/leather~
 A
 2 -4
 A
@@ -1522,6 +1544,8 @@ A poisoned blade lies at your feet.~
 5 128|16384 1|8192
 0~ 0~ 0~ 1~
 1 0 0
+T
+steel/wood/leather~
 A
 2 -15
 A
@@ -1542,6 +1566,8 @@ A large steel serving spoon is here.~
 5 0 1|8192
 0~ 30~ 40~ 17~
 1 0 0
+T
+steel/wood/leather~
 
 #27602
 waitingroomkey~
@@ -1560,6 +1586,8 @@ A luxurious purple robe with gold trim lies here in a heap.~
 9 64|262144 1|1024
 0~ 0~ 0~ 0~
 3 0 0
+T
+gold~
 A
 12 50
 E
@@ -1576,6 +1604,8 @@ A pearl-handed dagger of exquisite craftsmanship lies here.~
 5 64|274877906944 1|8192
 0~ 0~ 0~ 11~
 3 0 0
+T
+steel/wood/leather~
 A
 12 30
 A
@@ -1595,6 +1625,8 @@ The elaborate robes of a top-ranking royal functionary lie here.~
 9 64|274877906944 1|1024
 0~ 0~ 0~ 0~
 3 0 0
+T
+cloth~
 A
 12 260
 E
@@ -1648,6 +1680,8 @@ A small suit of armour carved out of red rock lies here.~
 9 0 1|8
 5~ 1~ 6~ 11~
 5 0 0
+T
+steel~
 A
 17 -35
 E
@@ -1722,6 +1756,8 @@ A spiked pauldron carrying the Prince of Ota'ar Dar's insignia is here.~
 9 0 1|4
 0~ 1~ 6~ 11~
 8 0 0
+T
+leather~
 A
 17 -50
 
@@ -1733,6 +1769,8 @@ A purple loincloth  covered in metal plates is here.~
 9 0 1|2048
 0~ 1~ 6~ 11~
 1 0 0
+T
+cloth~
 A
 17 -40
 
@@ -1744,6 +1782,8 @@ The spear of a princeguard has been left here.~
 5 16|64|134217728|274877906944 1|8192
 0~ 0~ 0~ 11~
 4 0 0
+T
+iron/wood~
 A
 18 15
 A
@@ -1782,6 +1822,8 @@ The legendary Trident of Sovereignty sits here, radiating magic.~
 5 16|64|274877906944 1|8192
 0~ 1~ 6~ 2~
 10 0 30
+T
+steel~
 A
 4 6
 A
@@ -1815,6 +1857,8 @@ A shining golden crown covered in lethal spikes lies here.~
 9 64|16777216|274877906944 1|16
 8~ 0~ 0~ 0~
 10 0 0
+T
+gold~
 A
 2 4
 A
@@ -1865,6 +1909,8 @@ A cleric's mace has been left here.~
 5 64 1|8192
 0~ 0~ 0~ 8~
 5 0 0
+T
+iron/wood~
 A
 17 -30
 A

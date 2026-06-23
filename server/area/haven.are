@@ -143,6 +143,8 @@ An axe of blue flame boils the water beneath it.~
 5 1 8193
 0~ 2~ 15~ 3~
 14 5000 500
+T
+steel/wood~
 A
 13 2
 A
@@ -155,6 +157,8 @@ A beautiful shield lies at your feet.~
 9 1 513
 10~ 0~ 0~ 0~
 8 1000000 2000
+T
+steel/wood~
 A
 1 1
 A

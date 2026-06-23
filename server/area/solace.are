@@ -698,6 +698,8 @@ A black helmet is on the floor.~
 9 64|1024 1|16
 8~ 0~ 0~ 0~
 30 10000 100
+T
+obsidian~
 A
 13 1
 A
@@ -710,6 +712,8 @@ A pair of black sleeves are on the floor.~
 9 64|1024 1|256
 8~ 0~ 0~ 0~
 40 10000 100
+T
+obsidian~
 A
 5 1
 A
@@ -722,6 +726,8 @@ Some black leggings are on the floor.~
 9 64|1024 1|32
 9~ 0~ 0~ 0~
 40 10000 100
+T
+obsidian~
 A
 14 20
 A
@@ -734,6 +740,8 @@ A pair of black gauntlets are on the floor.~
 9 64|1024 1|128
 11~ 0~ 0~ 0~
 40 10000 100
+T
+obsidian~
 A
 18 3
 A
@@ -746,6 +754,8 @@ Some black boots are on the floor.~
 9 64|1024 1|64
 9~ 0~ 0~ 0~
 40 10000 100
+T
+obsidian~
 A
 13 10
 A
@@ -758,6 +768,8 @@ a black cloak lies on the floor.~
 9 64|1024 1|4
 9~ 0~ 0~ 0~
 40 10000 100
+T
+cloth~
 A
 22 -4
 A
@@ -770,6 +782,8 @@ A black girth is on the floor.~
 9 64|1024 1|2048
 9~ 0~ 0~ 0~
 40 10000 100
+T
+obsidian~
 A
 1 1
 A
@@ -782,6 +796,8 @@ A large, black shield is on the floor.~
 9 64|1024 1|512
 9~ 0~ 0~ 0~
 40 10000 100
+T
+obsidian~
 A
 17 4
 A
@@ -794,6 +810,8 @@ A shiny black amulet with a gold symbol is here.~
 9 64|1024 1|4
 9~ 0~ 0~ 0~
 40 15 100
+T
+gold~
 A
 17 3
 A
@@ -814,6 +832,8 @@ A black hilted sword with engravings on the blade lie here.~
 5 32|64 1|8192
 0~ 6~ 8~ 1~
 7 10000 100
+T
+steel/wood/leather~
 E
 sword~
 The blade of the sword is a full meter long, and straight as an arrow, with
@@ -840,6 +860,8 @@ A shiny ring of obsidian is in the dirt.~
 9 64 1|2
 6~ 0~ 0~ 0~
 1 15 100
+T
+obsidian~
 A
 24 -2
 A
@@ -852,6 +874,8 @@ You see an obsidian bracer here.~
 9 0 1|4096
 7~ 0~ 0~ 0~
 9 0 500
+T
+obsidian~
 #10214
 weapons cabinet~
 a weapons cabinet~
@@ -874,6 +898,8 @@ A black hilted sword with engravings on the blade lie here.~
 5 32|64 1|8192
 0~ 6~ 8~ 1~
 7 10000 100
+T
+dragonscale~
 E
 sword~
 The blade of the sword is a full meter long, and straight as an arrow, with
@@ -902,6 +928,8 @@ A steel helmet is on the floor.~
 9 64|1024 1|16
 5~ 0~ 0~ 0~
 25 10000 100
+T
+steel/wood/leather~
 A
 21 -2
 A
@@ -914,6 +942,8 @@ A pair of steel sleeves are on the floor.~
 9 64|1024 1|256
 7~ 0~ 0~ 0~
 35 10000 100
+T
+steel/wood/leather~
 A
 20 -2
 A
@@ -926,6 +956,8 @@ Some steel leggings are on the floor.~
 9 64|1024 1|32
 8~ 0~ 0~ 0~
 35 10000 100
+T
+steel/wood/leather~
 A
 14 10
 A
@@ -938,6 +970,8 @@ A pair of steel gauntlets are on the floor.~
 9 64|1024 1|128
 9~ 0~ 0~ 0~
 35 10000 100
+T
+steel/wood/leather~
 A
 18 1
 A
@@ -952,6 +986,8 @@ Some steel boots are on the floor.~
 9 64|1024 1|64
 8~ 0~ 0~ 0~
 35 10000 100
+T
+steel/wood/leather~
 A
 13 5
 A
@@ -964,6 +1000,8 @@ a lieutenant's cloak lies on the floor.~
 9 64|1024 1|4
 8~ 0~ 0~ 0~
 35 10000 100
+T
+cloth~
 A
 22 -2
 A
@@ -976,6 +1014,8 @@ A steel girth is on the floor.~
 9 64|1024 1|2048
 8~ 0~ 0~ 0~
 35 10000 100
+T
+steel/wood/leather~
 A
 24 -1
 #10223
@@ -986,6 +1026,8 @@ A large, steel shield is on the floor.~
 9 64|1024 1|512
 8~ 0~ 0~ 0~
 35 10000 100
+T
+steel/wood/leather~
 A
 17 2
 A
@@ -998,6 +1040,8 @@ You see a steel bracer here.~
 9 0 1|4096
 6~ 0~ 0~ 0~
 9 0 500
+T
+steel/wood/leather~
 A
 12 5
 #10225
@@ -1009,6 +1053,8 @@ A black hilted sword with engravings on the blade lie here.~
 5 2|32|64|4096 1|8192
 0~ 10~ 35~ 11~
 7 10000 100
+T
+steel/wood/leather~
 E
 sword~
 The blade of the sword is a full meter long, and straight as an arrow, with
@@ -1039,6 +1085,8 @@ A red helmet is on the floor.~
 9 64|1024 1|16
 4~ 0~ 0~ 0~
 20 10000 100
+T
+steel~
 A
 21 -1
 #10227
@@ -1049,6 +1097,8 @@ A pair of red scalemail sleeves are on the floor.~
 9 64|1024 1|256
 6~ 0~ 0~ 0~
 30 10000 100
+T
+steel~
 A
 20 -1
 #10228
@@ -1059,6 +1109,8 @@ Some red scalemail leggings are on the floor.~
 9 64|1024 1|32
 7~ 0~ 0~ 0~
 30 10000 100
+T
+steel~
 A
 14 5
 #10229
@@ -1069,6 +1121,8 @@ A pair of red scalemail gauntlets are on the floor.~
 9 64|1024 1|128
 8~ 0~ 0~ 0~
 30 10000 100
+T
+steel~
 A
 21 -1
 #10230
@@ -1079,6 +1133,8 @@ Some red scalemail boots are on the floor.~
 9 64|1024 1|64
 7~ 0~ 0~ 0~
 30 10000 100
+T
+leather~
 A
 13 2
 A
@@ -1091,6 +1147,8 @@ a red sergeant's cloak lies on the floor.~
 9 64|1024 1|4
 7~ 0~ 0~ 0~
 30 10000 100
+T
+cloth~
 A
 22 -1
 #10232
@@ -1101,6 +1159,8 @@ A red scalemail girth is on the floor.~
 9 64|1024 1|2048
 8~ 0~ 0~ 0~
 30 10000 100
+T
+steel~
 #10233
 shield large red~
 the large red shield~
@@ -1109,6 +1169,8 @@ A large, red shield is on the floor.~
 9 64|1024 1|512
 7~ 0~ 0~ 0~
 30 10000 100
+T
+steel/wood~
 A
 17 1
 #10234
@@ -1119,6 +1181,8 @@ You see a red bracer here.~
 9 0 1|4096
 5~ 0~ 0~ 0~
 9 0 500
+T
+steel~
 A
 12 1
 #10235
@@ -1129,6 +1193,8 @@ A red steel warhammer with engravings on the head lies here.~
 5 2|64 1|8192
 0~ 6~ 15~ 8~
 35 10000 100
+T
+steel/wood/leather~
 E
 hammer warhammer~
 This hammer has the words, "MAGE MASHER" engraved into it's head.
@@ -1149,6 +1215,8 @@ A suit of black platemail is sitting on the floor.~
 9 64 1|8
 7~ 0~ 0~ 0~
 10 1000 100
+T
+steel~
 A
 24 -1
 A
@@ -1161,6 +1229,8 @@ A blade with runes etched in it is on the floor.~
 5 64 1|8192
 0~ 3~ 12~ 0~
 7 1000 100
+T
+steel/wood/leather~
 A
 18 2
 #10238
@@ -1171,6 +1241,8 @@ A hammer with runes etched in it is on the floor.~
 5 64 1|8192
 0~ 2~ 10~ 0~
 12 1000 100
+T
+iron/wood~
 A
 18 2
 #10239
@@ -1181,6 +1253,8 @@ A polearm with runes etched in it is on the floor.~
 5 64|134217728 1|8192
 0~ 6~ 15~ 0~
 7 1000 100
+T
+steel/wood~
 A
 18 2
 #10240
@@ -1191,6 +1265,8 @@ A bunch of rings sewn together with taotamoa bark is on the ground.~
 9 64 1|8192
 11~ 0~ 0~ 0~
 6 1000 100
+T
+silver~
 E
 ringmail~
 This armor is imported from the island of Guam.
@@ -1269,6 +1345,8 @@ A bunch of taxes and fines are here waiting to take your money.~
 5 0 1|8192
 0~ 10~ 15~ 12~
 40 100 10
+T
+steel/wood~
 A
 15 -10000
 #10250
@@ -1279,6 +1357,8 @@ A large two-handed sword with runes etched in it is on the floor.~
 5 64 1|8192
 0~ 5~ 15~ 0~
 7 1000 100
+T
+steel/wood/leather~
 A
 18 2
 #10251
@@ -1385,6 +1465,8 @@ A shiny black charm with a gold symbol is here.~
 9 0 1|4
 5~ 0~ 0~ 0~
 15 15 0
+T
+gold~
 #10264
 ring solace~
 the ring of Solace~
@@ -1393,6 +1475,8 @@ A shiny black ring with a gold symbol is here.~
 9 0 1|2
 6~ 0~ 0~ 0~
 5 15 0
+T
+gold~
 #10265
 earrings solace~
 the earrings of Solace~
@@ -1401,6 +1485,8 @@ A pair of shiny black earrings with a gold symbols is here.~
 9 0 1|16
 8~ 0~ 0~ 0~
 4 15 0
+T
+gold~
 #10266
 frozen pizza crust~
 a frozen pizza crust~
@@ -1409,6 +1495,8 @@ A large, frozen pizza crust is on the ground melting.~
 9 0 1|512
 8~ 0~ 0~ 0~
 15 0 0
+T
+leather~
 #10267
 frozen pumpkin~
 a frozen pumpkin~
@@ -1417,6 +1505,8 @@ A large, frozen pumpkin is on the ground melting.~
 9 0 1|16
 8~ 0~ 0~ 0~
 15 0 0
+T
+leather~
 #10268
 frozen side beef~
 a frozen side of beef~
@@ -1425,6 +1515,8 @@ A large, frozen side of beef is on the ground melting.~
 9 0 1|8
 10~ 0~ 0~ 0~
 23 0 0
+T
+leather~
 #10269
 frozen asparagus spear~
 a frozen asparagus spear~
@@ -1433,6 +1525,8 @@ A frozen asparagus spear is on the ground melting.~
 5 0 1|8192
 0~ 3~ 9~ 0~
 15 0 0
+T
+iron/wood~
 A
 18 1
 #10270
@@ -1493,6 +1587,8 @@ A pair of flippers are here.~
 9 64 1|64
 6~ 0~ 0~ 0~
 7 15 15
+T
+leather~
 A
 2 2
 #10277
@@ -1503,6 +1599,8 @@ A scuba snorkel is on the ground.~
 9 0 1|16
 5~ 0~ 0~ 0~
 2 15 15
+T
+leather~
 A
 40 -1
 #10278
@@ -1513,6 +1611,8 @@ A scuba dive belt is on the ground drying out.~
 9 0 1|2048
 8~ 0~ 0~ 0~
 50 400 15
+T
+leather~
 #10279
 belt pouch~
 belt pouch~
@@ -1545,6 +1645,8 @@ A pile of cloth is on the ground here.~
 9 0 1|1024
 7~ 0~ 0~ 0~
 15 400 50
+T
+cloth~
 #10283
 travellers dagger~
 travellers dagger~
@@ -1553,6 +1655,8 @@ A small dagger is here. It looks like the kind a lot of travellers carry.~
 5 0 1|8192
 0~ 1~ 4~ 11~
 10 400 50
+T
+steel/wood/leather~
 #10284
 travellers spellbook~
 travellers spellbook~
@@ -1577,6 +1681,8 @@ You see a travellers vest here.~
 9 0 1|8
 5~ 0~ 0~ 0~
 5 0 500
+T
+leather~
 #10287
 travellers cloak~
 a travellers cloak~
@@ -1585,6 +1691,8 @@ You see a travellers cloak here.~
 9 0 5
 5~ 0~ 0~ 0~
 5 0 500
+T
+cloth~
 #10288
 travellers sword~
 a travellers sword~
@@ -1593,6 +1701,8 @@ You see a travellers sword here.~
 5 64 1|8193
 0~ 3~ 4~ 3~
 5 0 500
+T
+steel/wood/leather~
 #10289
 travellers scalemail~
 a travellers scalemail~
@@ -1601,6 +1711,8 @@ You see a travellers scalemail here.~
 9 0 1|8
 5~ 0~ 0~ 0~
 5 0 500
+T
+steel~
 #10290
 travellers shield~
 a travellers shield~
@@ -1609,6 +1721,8 @@ You see a travellers shield here.~
 9 0 1|513
 5~ 0~ 0~ 0~
 5 0 500
+T
+steel/wood~
 #10291
 travellers hammer~
 a travellers hammer~
@@ -1617,6 +1731,8 @@ You see a travellers hammer here.~
 5 0 1|8192
 5~ 0~ 0~ 0~
 5 0 500
+T
+iron/wood~
 #10292
 Magnus's spellbook~
 Magnus's spellbook~
@@ -1633,6 +1749,8 @@ A pile of cloth is on the ground. The cloth is covered with arcane symbols.~
 9 64 1|1024
 10~ 0~ 0~ 0~
 10 400 50
+T
+cloth~
 A
 12 20
 A
@@ -1645,6 +1763,8 @@ A finely crafted suit of crystal plate armor is here.~
 9 32|64 1|8
 12~ 0~ 0~ 0~
 60 400 50
+T
+quartz~
 A
 1 1
 A
@@ -1659,6 +1779,8 @@ A huge bloody scythe is here floating above the ground~
 5 1|64|512 1|8192
 0~ 100~ 100~ 0~
 50 400 50
+T
+steel/wood~
 A
 18 80
 A
@@ -1673,6 +1795,8 @@ A finely crafted crystal shield is here.~
 9 32|64 1|512
 12~ 0~ 0~ 0~
 20 400 50
+T
+quartz~
 A
 13 10
 #10297
@@ -1683,6 +1807,8 @@ A finely crafted crystal longsword is here.~
 5 32|64 1|8192
 0~ 5~ 12~ 1~
 7 400 50
+T
+quartz~
 A
 13 10
 A
@@ -1695,6 +1821,8 @@ A suit of obsiadian plate armor is here on the ground.~
 9 64|1024 1|8
 15~ 0~ 0~ 0~
 40 400 50
+T
+obsidian~
 A
 13 20
 A
@@ -1707,6 +1835,8 @@ A suit of steel plate armor is here on the ground.~
 9 64|1024 1|8
 14~ 0~ 0~ 0~
 37 400 50
+T
+steel/wood/leather~
 A
 13 15
 A
@@ -1719,6 +1849,8 @@ A suit of red plate armor is here on the ground.~
 9 64|1024 1|8
 12~ 0~ 0~ 0~
 33 400 50
+T
+steel~
 A
 13 10
 A
@@ -1731,6 +1863,8 @@ A bow with runes etched in it is on the floor.~
 5 64|1073741824 1|8192
 0~ 6~ 15~ 0~
 7 1000 100
+T
+wood~
 A
 18 2
 #10302

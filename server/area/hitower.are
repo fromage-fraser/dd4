@@ -897,6 +897,8 @@ A mithril hammer has been left here.~
 5 64 8193
 0~ 2~ 6~ 7~
 19 10000 1000
+T
+mithril~
 A
 18 2
 A
@@ -925,6 +927,8 @@ A long sword has been left here.~
 5 0 8193
 0~ 1~ 8~ 3~
 8 10000 1000
+T
+steel/wood/leather~
 A
 18 1
 A
@@ -937,6 +941,8 @@ A finely crafted dagger made of silver is on the ground here.~
 5 0 8193
 0~ 3~ 3~ 11~
 5 15000 1200
+T
+silver~
 A
 18 2
 A
@@ -949,6 +955,8 @@ A curved scimitar is here in a jewel-covered sheath.~
 5 0 8193
 0~ 2~ 7~ 3~
 10 17500 1950
+T
+steel/wood/leather~
 A
 13 3
 #1320
@@ -959,6 +967,8 @@ A wooden staff is against the wall here.~
 5 0 8193
 0~ 1~ 4~ 8~
 6 10 5
+T
+wood~
 #1321
 cabinet silver~
 a silver chased cabinet~
@@ -1079,6 +1089,8 @@ A pair of wire-rimmed spectacles has been left here.~
 9 64 17
 0~ 0~ 0~ 0~
 4 10000 5000
+T
+leather~
 A
 3 1
 A
@@ -1099,6 +1111,8 @@ A heart shaped medallion is here.~
 9 320 5
 0~ 0~ 0~ 0~
 3 10000 1000
+T
+leather~
 A
 4 2
 A
@@ -1137,6 +1151,8 @@ A travel worn cloak has carelessly been left here.~
 9 0 5
 0~ 0~ 0~ 0~
 5 2000 250
+T
+cloth~
 A
 17 -5
 A
@@ -1149,6 +1165,8 @@ Some multicoloured cloth is on the ground here~
 9 64 1025
 0~ 0~ 0~ 0~
 4 15000 5000
+T
+cloth~
 A
 2 2
 A
@@ -1161,6 +1179,8 @@ A pair of old boots is here, they look very comfortable.~
 9 64 65
 0~ 0~ 0~ 0~
 2 3500 900
+T
+leather~
 A
 14 15
 #1344
@@ -1203,6 +1223,8 @@ A meat cleaver is sticking in the wall here.~
 5 0 8193
 0~ 3~ 4~ 1~
 8 600 100
+T
+steel/wood/leather~
 #1356
 shackles chain~
 some chain shackles~
@@ -1223,6 +1245,8 @@ A long dagger that seems to be made of silver is here.~
 5 64 8193
 0~ 2~ 4~ 11~
 5 1200 500
+T
+silver~
 A
 18 1
 #1359
@@ -1379,6 +1403,8 @@ A runed chisel is here.~
 5 65 8193
 0~ 2~ 3~ 11~
 6 1500 500
+T
+steel/wood/leather~
 A
 2 1
 #1377
@@ -1405,6 +1431,8 @@ A dark cowl is here.~
 9 576 5
 0~ 0~ 0~ 0~
 5 1200 400
+T
+leather~
 A
 17 -8
 A
@@ -1425,6 +1453,8 @@ A huge spiked club has been left here.~
 5 0 8193
 0~ 3~ 5~ 8~
 29 750 200
+T
+steel/wood~
 #1382
 robe grey~
 a grey robe~
@@ -1445,6 +1475,8 @@ A pile of grey cloth has been left here.~
 9 1600 5
 0~ 0~ 0~ 0~
 7 12000 1200
+T
+cloth~
 A
 17 -12
 A
@@ -1457,6 +1489,8 @@ A glinting hoop of silvery metal is here.~
 9 64 4097
 0~ 0~ 0~ 0~
 5 5000 500
+T
+silver~
 A
 17 -5
 #1385
@@ -1467,6 +1501,8 @@ A grey piece of wood shod in iron has been left here.~
 5 64 8193
 0~ 2~ 7~ 8~
 7 9000 3000
+T
+iron/wood/leather~
 A
 18 3
 #1386
@@ -1477,6 +1513,8 @@ A small clear cube is sitting here.~
 9 65 16385
 0~ 0~ 0~ 0~
 5 5000 1000
+T
+leather~
 A
 17 -5
 #1387
@@ -1499,6 +1537,8 @@ A hoop of black onyx is here.~
 9 64 4097
 0~ 0~ 0~ 0~
 6 8500 850
+T
+leather~
 A
 19 2
 #1389
@@ -1509,6 +1549,8 @@ A pile of black cloth is on the ground here.~
 9 2624 5
 0~ 0~ 0~ 0~
 8 9000 950
+T
+cloth~
 A
 17 -12
 A
@@ -1521,6 +1563,8 @@ A piece of black glass is here.~
 5 512 8193
 0~ 2~ 7~ 1~
 8 12000 2000
+T
+obsidian~
 A
 19 3
 #1391
@@ -1543,6 +1587,8 @@ A hoop of silvery metal is here.~
 9 64 4097
 0~ 0~ 0~ 0~
 5 5000 1000
+T
+silver~
 A
 18 2
 #1393
@@ -1553,6 +1599,8 @@ A pile of white cloth is on the ground here.~
 9 3392 5
 0~ 0~ 0~ 0~
 7 9000 1500
+T
+cloth~
 A
 17 -12
 A
@@ -1565,6 +1613,8 @@ An ivory hilted dagger has been left here~
 5 1344 8193
 0~ 2~ 6~ 11~
 8 12000 1500
+T
+steel/wood/leather~
 A
 18 1
 A
@@ -1577,6 +1627,8 @@ A small spiked collar is here.~
 9 64 5
 0~ 0~ 0~ 0~
 9 10000 5000
+T
+leather~
 A
 17 -2
 A
@@ -1601,6 +1653,8 @@ A small ring with a green gemstone is here.~
 9 64 3
 0~ 0~ 0~ 0~
 5 50000 10000
+T
+emerald~
 A
 12 20
 #1398
@@ -1611,6 +1665,8 @@ A beautifully crafted hoop of emerald is here.~
 9 64 4097
 0~ 0~ 0~ 0~
 5 30000 3500
+T
+emerald~
 A
 17 -5
 A
@@ -1623,6 +1679,8 @@ A large clear crystal cube is here.~
 9 65 16385
 0~ 0~ 0~ 0~
 6 20000 2000
+T
+quartz~
 A
 17 -10
 A
@@ -1635,6 +1693,8 @@ A wavy bladed knife made of ebony is here.~
 5 64 8193
 0~ 3~ 4~ 11~
 9 60000 5000
+T
+steel/wood/leather~
 A
 2 2
 A
@@ -1647,6 +1707,8 @@ Some green dragon scales which have been sewn together are here.~
 9 64 9
 10~ 0~ 0~ 0~
 9 10000 1000
+T
+dragonscale~
 E
 green scale shirt~
 Green dragon scale shirt was made from a poor unfortunate green dragon.

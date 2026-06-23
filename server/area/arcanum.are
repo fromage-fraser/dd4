@@ -1422,6 +1422,8 @@ THE dog collar of the universe.~
 9 8|131072|524288|268435456|536870912 4
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 1 50
 A
@@ -1598,6 +1600,8 @@ An ethereal ring rests here, light passing through it.~
 9 0 1|2
 ~ ~ ~ ~
 1 0 0
+T
+silver~
 A
 13 151
 
@@ -1609,6 +1613,8 @@ A dusty belt lies here, half buried in the ground.~
 9 128|1024|2048 1|2048
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 18 10
 A
@@ -1723,6 +1729,8 @@ The shard of a collar glimmers here. {Y*The collar glows softly*{x~
 9 1 1|4
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 E
 shard collar~
 It glows faintly as you touch it and fills you with the sense that it
@@ -1763,6 +1771,8 @@ A king's sword has been laid here.~
 5 0 1|8192
 ~ ~ ~ 15~
 1 0 0
+T
+steel/wood/leather~
 A
 19 10
 A
@@ -1776,6 +1786,8 @@ A queen's sword has been laid here.~
 5 0 1|8192
 ~ ~ ~ 15~
 1 0 0
+T
+steel/wood/leather~
 A
 19 -10
 A
@@ -1789,6 +1801,8 @@ Some king's armor has been discarded here.~
 9 0 1|8
 ~ ~ ~ ~
 1 0 0
+T
+steel~
 A
 19 10
 A
@@ -1802,6 +1816,8 @@ Some queen's armor has been discarded here.~
 9 0 1|8
 ~ ~ ~ ~
 1 0 0
+T
+steel~
 A
 19 -10
 A
@@ -1815,6 +1831,8 @@ A king's helm has been tossed here.~
 9 0 1|16
 ~ ~ ~ ~
 1 0 0
+T
+steel~
 A
 19 11
 A
@@ -1828,6 +1846,8 @@ A queen's helm has been tossed here.~
 9 0 1|16
 ~ ~ ~ ~
 1 0 0
+T
+steel~
 A
 19 -11
 A
@@ -1841,6 +1861,8 @@ A glimmering sword has been lost here.~
 5 0 1|8192
 ~ ~ ~ 1~
 1 0 0
+T
+steel/wood/leather~
 A
 19 17
 A
@@ -1854,6 +1876,8 @@ A glimmering breastplate rests here.~
 9 0 1|8
 ~ ~ ~ ~
 1 0 0
+T
+silver~
 A
 18 5
 A
@@ -1867,6 +1891,8 @@ A pair of glimmering leg guards have been dropped here.~
 9 0 1|32
 ~ ~ ~ ~
 1 0 0
+T
+silver~
 A
 18 5
 A
@@ -1880,6 +1906,8 @@ silver {darmor{x~
 9 0 1|8
 ~ ~ ~ ~
 1 0 0
+T
+silver~
 A
 18 1
 A
@@ -1893,6 +1921,8 @@ A huge crescent battleaxe has been flung here.~
 5 0 1|8192
 ~ ~ ~ 1~
 1 0 0
+T
+steel/wood~
 A
 19 1
 
@@ -1904,6 +1934,8 @@ A crystal of empyrosis~
 9 2048 1|32768
 ~ ~ ~ ~
 1 0 0
+T
+quartz~
 A
 13 125
 
@@ -1915,6 +1947,8 @@ A dust pan has been dropped by a servant here.~
 5 16777216 1|8192
 ~ ~ ~ 7~
 5 0 0
+T
+steel/wood/leather~
 
 #26068
 servant's uniform~
@@ -1924,6 +1958,8 @@ A servant must be running around naked, as one's uniform lies here.~
 9 0 1|1024
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 
 #26069
 servant's pin~
@@ -1933,6 +1969,8 @@ A servant's pin is spinning around here.~
 9 33554432 1|4
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 19 10
 A
@@ -1946,6 +1984,8 @@ A dust rag is wadded up here.~
 9 128|4096 1|16384
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 2 10
 A
@@ -1959,6 +1999,8 @@ A ring of fortitude has been taken from its rightful owner.~
 9 1|2|32 1|2
 ~ ~ ~ ~
 1 0 0
+T
+silver~
 A
 17 -200
 A
@@ -1976,6 +2018,8 @@ a pointy sword is being pointy here.~
 5 256 1|8192
 ~ ~ ~ 2~
 6 0 0
+T
+steel/wood/leather~
 A
 18 5
 A
@@ -1989,6 +2033,8 @@ A dull sword rusts away here.~
 5 16384|262144 0
 ~ ~ ~ 15~
 7 0 0
+T
+steel/wood/leather~
 A
 19 -5
 A
@@ -2002,6 +2048,8 @@ Some leather padding has been discarded here.~
 9 1|2|64 1|8
 ~ ~ ~ ~
 10 0 0
+T
+leather~
 A
 14 -5000
 A
@@ -2015,6 +2063,8 @@ A thin sheet of metal lies here.~
 9 1 1|16
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 24 -25
 A
@@ -2037,6 +2087,8 @@ How can scratches be off a person you ask? Hell if I know.~
 9 128|4096 0
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 13 -1
 A
@@ -2056,6 +2108,8 @@ A bruise on the ground. Impressive, huh?~
 9 128|4096 0
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 25 1
 
@@ -2082,6 +2136,8 @@ A blood-stained partizan flecked with gore has been stolen from Phzeg.~
 5 0 1|8192
 ~ ~ ~ 3~
 10 0 0
+T
+steel/wood/leather~
 A
 19 10
 
@@ -2093,6 +2149,8 @@ Some kind of bindings exist here.~
 5 0 1|8192
 ~ ~ ~ 7~
 10 0 0
+T
+steel/wood/leather~
 A
 19 10
 
@@ -2104,6 +2162,8 @@ An aura of confidence.~
 9 0 1|2048
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 18 20
 A
@@ -2117,6 +2177,8 @@ An air of mastery.~
 5 0 1|8192
 ~ ~ ~ 0~
 1 0 0
+T
+steel/wood/leather~
 A
 18 6
 A
@@ -2130,6 +2192,8 @@ A fully functioning sword appears fully functional.~
 5 0 1|8192
 ~ ~ ~ 3~
 5 0 0
+T
+steel/wood/leather~
 A
 18 10
 A
@@ -2143,6 +2207,8 @@ A transparent {Rred{x dirk sticks out of the ground.~
 5 0 1|8192
 ~ ~ ~ 3~
 5 0 0
+T
+steel/wood/leather~
 A
 18 10
 A
@@ -2156,6 +2222,8 @@ A king's burden has been dropped.~
 9 0 0
 ~ ~ ~ ~
 100 0 0
+T
+leather~
 A
 18 40
 A
@@ -2171,6 +2239,8 @@ A queen's concern has been dropped here.~
 9 0 0
 ~ ~ ~ ~
 100 0 0
+T
+leather~
 A
 18 40
 A
@@ -2184,6 +2254,8 @@ The gaping maw of some creature lies here.~
 5 67108864 0
 1~ ~ ~ 10~
 200 0 0
+T
+steel/wood/leather~
 A
 19 20
 A
@@ -2197,6 +2269,8 @@ The long nose of some creature lies here.~
 5 67108864 0
 1~ ~ ~ 4~
 5 0 0
+T
+steel/wood/leather~
 A
 19 5
 A
@@ -2210,6 +2284,8 @@ The sharp beak of some creature lies here.~
 5 67108864 0
 1~ ~ ~ 2~
 3 0 0
+T
+steel/wood/leather~
 A
 19 10
 
@@ -2221,6 +2297,8 @@ A prickly set of teeth lie here.~
 5 67108864 0
 1~ ~ ~ 10~
 1 0 0
+T
+steel/wood/leather~
 A
 19 2
 A
@@ -2233,6 +2311,8 @@ An impression of expertise.~
 9 1|64 1|512
 0~ 1~ 6~ 11~
 10 0 0
+T
+leather~
 A
 19 8
 #0

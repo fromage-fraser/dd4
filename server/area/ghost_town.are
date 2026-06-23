@@ -491,6 +491,8 @@ The Hand of Vecna lies here.~
 9 16|128|512|4096|65536 1|128
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 2 3
 A
@@ -511,6 +513,8 @@ The Eye of Vecna glows evilly here.~
 9 1|16|512|4096 1|16
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 3 3
 A
@@ -525,6 +529,8 @@ The Sword of Kas beckons to you!~
 5 2|8|16|64|512|4096|16384|131072|262144 1|8192
 0~ 0~ 0~ 11~
 20 0 0
+T
+steel/wood/leather~
 A
 12 100
 A
@@ -541,6 +547,8 @@ A Circlet lies here, gathering dust.~
 9 64|4096 1|16
 0~ 0~ 0~ 0~
 25 0 0
+T
+silver~
 A
 3 -3
 A
@@ -569,6 +577,8 @@ Robes made of human flesh are piled here.~
 9 16|512 1|1024
 0~ 0~ 0~ 0~
 25 0 0
+T
+cloth~
 A
 12 150
 A
@@ -583,6 +593,8 @@ A Rod fashioned from a human femur lies here.~
 5 16|512 1|8192
 0~ 0~ 0~ 8~
 25 0 0
+T
+bone~
 A
 12 15
 A
@@ -617,6 +629,8 @@ A black cloak is piled here.~
 9 0 1|1024
 0~ 0~ 0~ 0~
 10 0 0
+T
+cloth~
 #8812
 sword~
 (Diabolical) a Dark Sword~
@@ -625,6 +639,8 @@ A Dark Sword hums evilly here.~
 5 2|16|512 1|8192
 0~ 0~ 0~ 0~
 35 0 0
+T
+steel/wood/leather~
 A
 1 1
 A
@@ -643,6 +659,8 @@ A Suit of Dark Armor lies here.~
 9 16|512 1|8
 0~ 0~ 0~ 0~
 25 0 0
+T
+steel~
 A
 17 -10
 A
@@ -657,6 +675,8 @@ A Dark Helm seeks to possess you!~
 9 128|4096 1|16
 0~ 0~ 0~ 0~
 75 0 0
+T
+steel~
 A
 3 -3
 A
@@ -737,6 +757,8 @@ A translucent sword lies on the ground, shimmering.~
 5 64|512|16777216 1|8192
 0~ 0~ 0~ 0~
 35 0 0
+T
+steel/wood/leather~
 A
 17 -20
 A
