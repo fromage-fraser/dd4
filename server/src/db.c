@@ -689,6 +689,9 @@ int gsn_bonus_resilience;
 int gsn_bonus_exotic;
 int gsn_bonus_initiate;
 int gsn_sense_wisdom;
+int gsn_sonic_blast;
+int gsn_bubble_jet;
+int gsn_banish;
 
 /*
  *  Spell groups
@@ -3314,6 +3317,11 @@ void reset_area(AREA_DATA *pArea)
                                 obj = create_object(pObjIndex, number_fuzzy(level), "common", CREATED_NO_RANDOMISER);
                                 obj->cost = 0;
                         }
+                        else if (IS_SET(pObjIndex->extra_flags, ITEM_FICKLE))
+                        {
+                                obj = create_object(pObjIndex, number_fuzzy(level), "common", CREATED_FICKLE_RANDOMISER);
+                                obj->cost = 0;
+                        }
                         else if ((IS_SET(pObjIndex->extra_flags, ITEM_WEAK_RANDOMISE) || (level < RANDOMISER_MIN_LEVEL)))
                         {
                                 obj = create_object(pObjIndex, number_fuzzy(level), "common", CREATED_WEAK_RANDOMISER);
@@ -3374,6 +3382,11 @@ void reset_area(AREA_DATA *pArea)
                                 obj = create_object(pObjIndex, number_fuzzy(pReset->arg1), "common", CREATED_NO_RANDOMISER);
                                 obj->cost = 0;
                         }
+                        else if (IS_SET(pObjIndex->extra_flags, ITEM_FICKLE))
+                        {
+                                obj = create_object(pObjIndex, number_fuzzy(pReset->arg1), "common", CREATED_FICKLE_RANDOMISER);
+                                obj->cost = 0;
+                        }
                         else if ((IS_SET(pObjIndex->extra_flags, ITEM_WEAK_RANDOMISE) || (level < RANDOMISER_MIN_LEVEL)))
                         {
                                 obj = create_object(pObjIndex, number_fuzzy(pReset->arg1), "common", CREATED_WEAK_RANDOMISER);
@@ -3427,6 +3440,11 @@ void reset_area(AREA_DATA *pArea)
                         {
                                 obj = create_object(pObjIndex, number_fuzzy(obj_to->level), "common", CREATED_NO_RANDOMISER);
                                 obj_to_obj(obj, obj_to);
+                        }
+                        else if (IS_SET(pObjIndex->extra_flags, ITEM_FICKLE))
+                        {
+                                obj = create_object(pObjIndex, number_fuzzy(obj_to->level), "common", CREATED_FICKLE_RANDOMISER);
+                                obj->cost = 0;
                         }
                         else if ((IS_SET(pObjIndex->extra_flags, ITEM_WEAK_RANDOMISE) || (level < RANDOMISER_MIN_LEVEL)))
                         {
@@ -3528,7 +3546,9 @@ void reset_area(AREA_DATA *pArea)
                                         /* Bit of wobble on item levels hard-set for stores, unless the objects
                                          also have the donot_randomise flag on them -- Owl 30/12/23 */
 
-                                        if (IS_SET(pObjIndex->extra_flags, ITEM_DONOT_RANDOMISE))
+                                        if (IS_SET(pObjIndex->extra_flags, ITEM_DONOT_RANDOMISE)
+                                        ||  (IS_SET(pObjIndex->extra_flags, ITEM_FICKLE)
+                                        &&   number_range(0, 2) == 0))
                                         {
                                                 olevel = pObjIndex->level;
                                         }
@@ -3548,6 +3568,10 @@ void reset_area(AREA_DATA *pArea)
                                 if (IS_SET(pObjIndex->extra_flags, ITEM_DONOT_RANDOMISE))
                                 {
                                         obj = create_object(pObjIndex, olevel, "common", CREATED_NO_RANDOMISER);
+                                }
+                                else if (IS_SET(pObjIndex->extra_flags, ITEM_FICKLE))
+                                {
+                                        obj = create_object(pObjIndex, olevel, "common", CREATED_FICKLE_RANDOMISER);
                                 }
                                 else if ((IS_SET(pObjIndex->extra_flags, ITEM_WEAK_RANDOMISE) || (olevel < RANDOMISER_MIN_LEVEL)))
                                 {
@@ -3576,6 +3600,10 @@ void reset_area(AREA_DATA *pArea)
                                 else if ((IS_SET(pObjIndex->extra_flags, ITEM_DONOT_RANDOMISE)))
                                 {
                                         obj = create_object(pObjIndex, number_fuzzy(level), rank_char(mob), CREATED_NO_RANDOMISER);
+                                }
+                                else if ((IS_SET(pObjIndex->extra_flags, ITEM_FICKLE)))
+                                {
+                                        obj = create_object(pObjIndex, number_fuzzy(level), rank_char(mob), CREATED_FICKLE_RANDOMISER);
                                 }
                                 else if ((IS_SET(pObjIndex->extra_flags, ITEM_WEAK_RANDOMISE)) || (level < RANDOMISER_MIN_LEVEL))
                                 {
@@ -3844,11 +3872,31 @@ OBJ_DATA *create_object(OBJ_INDEX_DATA *pObjIndex, int level, char *rank, int ra
             CREATED_STRONG_RANDOMISER       3
             CREATED_WEAK_RANDOMISER         4
             CREATED_SKILL                   5
+            CREATED_FICKLE_RANDOMISER       6
         */
         obj->how_created = randomise;
 
         /* transfer the index affects to the object
         If randomising DO NOT TRANSFER*/
+
+        if (obj->how_created == CREATED_FICKLE_RANDOMISER)
+        {
+                switch (number_range(0, 2))
+                {
+                    case 0:
+                        obj->how_created = CREATED_NO_RANDOMISER;
+                        break;
+
+                    case 1:
+                        obj->how_created = CREATED_WEAK_RANDOMISER;
+                        break;
+
+                    default:
+                        obj->how_created = CREATED_STRONG_RANDOMISER;
+                        break;
+                }
+        }
+
         if (obj->how_created <= CREATED_NO_RANDOMISER)
         {
                 for (paf = obj->pIndexData->affected; paf; paf = paf->next)

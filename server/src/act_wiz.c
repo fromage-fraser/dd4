@@ -1862,6 +1862,9 @@ void do_mstat(CHAR_DATA *ch, char *argument)
         char arg[MAX_INPUT_LENGTH];
         unsigned long int next;
         int count;
+        const sound_event_def *sdef;
+        const char *fname;
+        int sect;
 
         rch = get_char(ch);
 
@@ -2339,6 +2342,25 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                 }
                         }
                         strcat(buf1, "{x\n\r");
+                }
+
+                for ( sect = 0; sect < SECT_MAX; sect++ )
+                {
+                        if ( !victim->pIndexData->footstep_key[sect]
+                        ||   victim->pIndexData->footstep_key[sect][0] == '\0' )
+                                continue;
+
+                        sdef = sound_event_lookup( victim->pIndexData->footstep_key[sect] );
+                        fname = ( sdef && sdef->files[0] && sdef->files[0][0] != '\0' )
+                            ? sdef->files[0]
+                            : "(no sound_const.c match)";
+
+                        sprintf( buf,
+                                "Footstep foley: {W%s{x  Key: {C%s{x  File: {G%s{x\n\r",
+                                sector_name( sect ),
+                                victim->pIndexData->footstep_key[sect],
+                                fname );
+                        strcat( buf1, buf );
                 }
 
                 if ((paf = victim->affected))

@@ -977,6 +977,15 @@ static const sound_event_def sound_events[] = {
         1
     },
 
+    {
+        "sfx.skill.bubble_jet",
+        { "sfx/skill/bubble_jet/bubble_jet.1.mp3", NULL },
+        { 0,0 },
+        55,
+        "sfx",
+        1
+    },
+
     /* Conditions */
 
     {
@@ -985,6 +994,20 @@ static const sound_event_def sound_events[] = {
                 "sfx/condition/nausea/pool.1.mp3",
                 "sfx/condition/nausea/pool.2.mp3",
                 "sfx/condition/nausea/pool.3.mp3",
+                NULL
+        },
+        { 0 },
+        55,
+        "sfx",
+        1
+    },
+
+    {
+        "sfx.condition.tinnitus",
+        {
+                "sfx/condition/tinnitus/pool.1.mp3",
+                "sfx/condition/tinnitus/pool.2.mp3",
+                "sfx/condition/tinnitus/pool.3.mp3",
                 NULL
         },
         { 0 },
@@ -1154,6 +1177,17 @@ static const sound_event_def sound_events[] = {
         1
     },
 
+    { "sfx.spell.cast.steam_breath",
+        {
+                "sfx/spell/cast/steam_breath.1.mp3",
+                NULL
+        },
+        { 0 },
+        70,
+        "sfx",
+        1
+    },
+
     { "sfx.spell.wearoff.biofeedback",
         {
                 "sfx/spell/wearoff/biofeedback.1.mp3",
@@ -1205,6 +1239,28 @@ static const sound_event_def sound_events[] = {
                 "sfx/spell/cast/hellfire.1.mp3",
                 "sfx/spell/cast/hellfire.2.mp3",
                 "sfx/spell/cast/hellfire.3.mp3",
+                NULL
+        },
+        { 0 },
+        70,
+        "sfx",
+        1
+    },
+
+    { "sfx.spell.cast.sonic_blast",
+        {
+                "sfx/spell/cast/sonic_blast.1.mp3",
+                NULL
+        },
+        { 0 },
+        70,
+        "sfx",
+        1
+    },
+
+    { "sfx.spell.wearoff.sonic_blast",
+        {
+                "sfx/spell/wearoff/sonic_blast.1.mp3",
                 NULL
         },
         { 0 },

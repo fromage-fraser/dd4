@@ -217,6 +217,7 @@ const struct cmd_type cmd_table[] =
         {"breathe", do_breathe, POS_FIGHTING, 0, LOG_NORMAL},
         {"bite", do_bite, POS_FIGHTING, 0, LOG_NORMAL},
         {"bs", do_backstab, POS_STANDING, 0, LOG_NORMAL},
+        {"bubble jet", do_bubble_jet, POS_FIGHTING, 0, LOG_NORMAL},
         {"circle", do_circle, POS_FIGHTING, 0, LOG_NORMAL},
         {"choke", do_choke, POS_FIGHTING, 0, LOG_NORMAL},
         {"coil", do_coil, POS_FIGHTING, 0, LOG_NORMAL},
@@ -487,6 +488,7 @@ const struct cmd_type cmd_table[] =
         {"mptransfer", do_mptransfer, POS_DEAD, 0, LOG_NORMAL},
         {"mpforce", do_mpforce, POS_DEAD, 0, LOG_NORMAL},
         {"mppeace", do_mppeace, POS_DEAD, 0, LOG_NORMAL},
+        {"mpotimer", do_mpotimer, POS_DEAD, 0, LOG_NORMAL},
 
         {"gouge", do_gouge, POS_STANDING, 0, LOG_NORMAL},
         {"atemi", do_atemi, POS_FIGHTING, 0, LOG_NORMAL},

@@ -1457,7 +1457,9 @@ void damage(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 }
         */
         if (dt != TYPE_UNDEFINED)
+        {
                 dam_message(ch, victim, dam, dt, poison, crit);
+        }
 
         /* Reflector Unit (Smithy) */
         if ((turret_unit) && (reflected_dam > 0) && (IS_SPELL(dt)) && (ch != victim) && (!IS_NPC(victim)))
@@ -8374,6 +8376,104 @@ void do_flukeslap(CHAR_DATA *ch, char *argument)
                 return;
 
         victim->position = POS_RESTING;
+}
+
+void do_bubble_jet(CHAR_DATA *ch, char *argument)
+{
+        CHAR_DATA   *victim;
+        AFFECT_DATA  af;
+        char         arg[MAX_INPUT_LENGTH];
+        int          chance;
+        int          dam;
+        int          duration;
+
+        if (!IS_NPC(ch) && !CAN_DO(ch, gsn_bubble_jet))
+        {
+                send_to_char("You don't know how to do that.\n\r", ch);
+                return;
+        }
+
+        if (!ch->in_room
+        ||  (ch->in_room->sector_type != SECT_WATER_SWIM
+        &&   ch->in_room->sector_type != SECT_WATER_NOSWIM
+        &&   ch->in_room->sector_type != SECT_UNDERWATER
+        &&   ch->in_room->sector_type != SECT_UNDERWATER_GROUND))
+        {
+                send_to_char("You need to be in water to use bubble jet.\n\r", ch);
+                return;
+        }
+
+        if (!ch->fighting)
+        {
+                send_to_char("You aren't fighting anyone.\n\r", ch);
+                return;
+        }
+
+        one_argument(argument, arg);
+        victim = ch->fighting;
+
+        if (arg[0] != '\0' && !(victim = get_char_room(ch, arg)))
+        {
+                send_to_char("Bubble jet whom?\n\r", ch);
+                return;
+        }
+
+        if (victim == ch || is_safe(ch, victim))
+                return;
+
+        chance = IS_NPC(ch) ? 90 : ch->pcdata->learned[gsn_bubble_jet];
+
+        WAIT_STATE(ch, PULSE_VIOLENCE);
+
+        if (number_percent() > chance)
+        {
+                act("You blast a stream of bubbles at $N, but miss $M.", ch, NULL, victim, TO_CHAR);
+                act("$c blasts a stream of bubbles at you, but misses!", ch, NULL, victim, TO_VICT);
+                act("$c blasts a stream of bubbles at $N, but misses $M.", ch, NULL, victim, TO_NOTVICT);
+                sound_emit_room(ch->in_room, "sfx.skill.bubble_jet", -1, NULL);
+                damage(ch, victim, 0, gsn_bubble_jet, FALSE);
+                return;
+        }
+
+        act("<45>You blast $N with a buffeting jet of bubbles!<0>", ch, NULL, victim, TO_CHAR);
+        act("<45>$c blasts you with a buffeting jet of bubbles!<0>", ch, NULL, victim, TO_VICT);
+        act("<45>$c blasts $N with a buffeting jet of bubbles!<0>", ch, NULL, victim, TO_NOTVICT);
+        sound_emit_room(ch->in_room, "sfx.skill.bubble_jet", -1, NULL);
+
+        dam = number_range(1, UMAX(2, ch->level / 8));
+        damage(ch, victim, dam, gsn_bubble_jet, FALSE);
+
+        if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                return;
+
+        duration = number_range(1, 3);
+
+        if (!is_affected(victim, gsn_nausea))
+        {
+                af.type      = gsn_nausea;
+                af.duration  = duration;
+                af.location  = APPLY_CON;
+                af.modifier  = -1;
+                af.bitvector = AFF_POISON;
+                affect_to_char(victim, &af);
+
+                send_to_char("<154>Your stomach churns as the bubble jet batters you through the water.<0>\n\r", victim);
+        }
+
+        if (!is_affected(victim, gsn_confusion)
+        &&  !IS_AFFECTED(victim, AFF_CONFUSION))
+        {
+                af.type      = gsn_confusion;
+                af.duration  = duration;
+                af.location  = APPLY_HITROLL;
+                af.modifier  = -UMAX(1, ch->level / 10);
+                af.bitvector = AFF_CONFUSION;
+                affect_to_char(victim, &af);
+
+                send_to_char("<45>The churning bubbles leave you dizzy and disorientated.<0>\n\r", victim);
+        }
+
+        return;
 }
 
 void do_spit_mucus(CHAR_DATA *ch, char *argument)

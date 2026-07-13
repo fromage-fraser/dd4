@@ -308,8 +308,15 @@ bool dragon( CHAR_DATA *ch, char *spell_name )
                     ch, NULL, NULL, TO_ROOM);
 
         else if (sn == skill_lookup("steam breath"))
-                act("Superheated steam blasts from $n's mouth!",
+        {
+                act("{CSuperheated steam blasts from $n's mouth!{x",
                     ch, NULL, NULL, TO_ROOM);
+
+                sound_emit_room(ch->in_room,
+                                "sfx.spell.cast.steam_breath",
+                                -1,
+                                NULL);
+        }
 
         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
 

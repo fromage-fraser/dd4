@@ -130,6 +130,10 @@ is very hard to resist.
 15 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+>fight_prog 8~
+c sonic $n
+~
+|
 #17010
 typhoon raging~
 The raging typhoon~

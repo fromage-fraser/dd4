@@ -1007,7 +1007,7 @@ The scroll is a military communique.  It reads:
  You know as well as I do that the truce between Eakos and Ota'ar Dar is
  fragile. It behooves us both to act responsibly in the best interests of our
  respective people.  Provocations of the sort offered to us last week serve no
- one and risk serious disruption to the status quo.  If any issues need to be
+ one and risk serious disruption of the status quo.  If any issues need to be
  addressed, send word back with my emissary and I will respond to them
  promptly.
 
@@ -1291,8 +1291,7 @@ S
 <213>To your east lie the heavy wooden gates that permit access into the fortress
 <213>itself.
 <213>
-<213>A huge, imposing steel gate bars your way west.  There is no way of getting
-<213>through it that you can see from here.<0>
+<213>A huge, imposing steel gate lies west.<0>
 ~
 0 8 12
 D0
@@ -1310,7 +1309,7 @@ D2
 D3
 ~
 gate~
-8 -1 27291
+8 -1 29235
 S
 #27292
 Fortress Grounds, Near Entrance~
@@ -1797,7 +1796,7 @@ jail canton.<0>
 S
 #27591
 <320>On the Fortress Wall Walk<0>~
-<20>You are walking on the wall walk of a military fortress. Massive locked gates
+<20>You are walking on the wall walk of a military fortress. Massive steel gates
 <26>lead out of the canton to the west.  You can take a look over the <69>parapet<0>
 <33>to the <69>west<0>, <33>continue north and south along the walk, or swim up, into the
 <33>huge, looming area of darkness in the water above you.<0>
@@ -1814,7 +1813,7 @@ D2
 D3
 ~
 gate~
-8 -1 27591
+8 -1 29335
 D4
 ~
 ~
@@ -2145,8 +2144,8 @@ S
 #RESETS
 D 1 27284 2 1			; Barracks Walls South Entrance Lower Close South
 D 1 27584 2 1			; Barracks Walls South Entrance Upper Close South
-D 1 27291 3 2			; Barracks Walls West Entrance Lower Lock West
-D 1 27591 3 2			; Barracks Walls West Entrance Upper Lock West
+D 1 27291 3 1			; Barracks Walls West Entrance Lower Close West
+D 1 27591 3 1			; Barracks Walls West Entrance Upper Close West
 D 1 27291 1 2			; Barracks Walls Camp Entrance Lower Lock East
 D 1 27302 0 2			; Barracks Walls North Entrance Lower Lock North
 D 1 27602 0 2			; Barracks Walls North Entrance Upper Lock North

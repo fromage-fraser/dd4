@@ -1243,7 +1243,16 @@ void mobile_update(void)
                 /*
                  * Wander
                  */
-                if (!IS_SET(ch->act, ACT_SENTINEL) && (door = number_bits(5)) <= 5 && (pexit = ch->in_room->exit[door]) && pexit->to_room && !IS_SET(pexit->exit_info, EX_CLOSED) && !IS_SET(pexit->to_room->room_flags, ROOM_NO_MOB) && !IS_SET(ch->act, ACT_DIE_IF_MASTER_GONE) && (!IS_SET(ch->act, ACT_STAY_AREA) || pexit->to_room->area == ch->in_room->area))
+                if ( !IS_SET(ch->act, ACT_SENTINEL)
+                &&   (door = number_bits(5)) <= 5
+                &&   ( !IS_AFFECTED(ch, AFF_SLOW) || number_percent() <= 25 )
+                &&   (pexit = ch->in_room->exit[door])
+                &&   pexit->to_room
+                &&   !IS_SET(pexit->exit_info, EX_CLOSED)
+                &&   !IS_SET(pexit->to_room->room_flags, ROOM_NO_MOB)
+                &&   !IS_SET(ch->act, ACT_DIE_IF_MASTER_GONE)
+                &&   ( !IS_SET(ch->act, ACT_STAY_AREA)
+                ||     pexit->to_room->area == ch->in_room->area ) )
                 {
                         move_char(ch, door);
 
@@ -1815,7 +1824,18 @@ void char_update(void)
                                         {
                                                 if (number_percent() < DOT_FREQ)
                                                 {
-                                                        damage(ch, ch, paf->modifier, paf->type, FALSE);
+                                                        if (paf->type >= 0
+                                                        &&  !str_cmp(skill_table[paf->type].name, "sonic blast"))
+                                                        {
+                                                                sound_condition_sfx( ch, "sfx.condition.tinnitus" );
+                                                                send_to_char("<39>Your ears ring agonisingly as the lingering sonic vibrations tear through you.<0>\n\r", ch);
+                                                                act("<39>$n winces as lingering sonic vibrations tear through $m.<0>", ch, NULL, NULL, TO_ROOM);
+                                                                damage(ch, ch, paf->modifier, TYPE_UNDEFINED, FALSE);
+                                                        }
+                                                        else
+                                                        {
+                                                                damage(ch, ch, paf->modifier, paf->type, FALSE);
+                                                        }
                                                 }
                                         }
                                 }

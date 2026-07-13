@@ -215,6 +215,7 @@ my %obj_ex = (
         rune         => 68719476736,
         pure         => 137438953472,
         steady       => 274877906944,
+        fickle       => 549755813888,
         cursed       => 2305843009213693952,
 );
 
@@ -316,6 +317,25 @@ my @room_st = qw/
         underwater          air         desert      swamp
         underwater_ground
 /;
+
+my %mob_footstep = (
+        inside              => [ "FStepInside", "inside" ],
+        city                => [ "FStepCity", "city" ],
+        field               => [ "FStepField", "field" ],
+        forest              => [ "FStepForest", "forest" ],
+        hills               => [ "FStepHills", "hills" ],
+        mountain            => [ "FStepMountain", "mountain" ],
+        water               => [ "FStepWater", "water" ],
+        water_swim          => [ "FStepWater", "water" ],
+        noswim              => [ "FStepNoSwim", "noswim" ],
+        no_swim             => [ "FStepNoSwim", "noswim" ],
+        water_no_swim       => [ "FStepNoSwim", "noswim" ],
+        underwater          => [ "FStepUnderwater", "underwater" ],
+        air                 => [ "FStepAir", "air" ],
+        desert              => [ "FStepDesert", "desert" ],
+        swamp               => [ "FStepSwamp", "swamp" ],
+        underwater_ground   => [ "FStepUnderwaterGround", "underwater_ground" ],
+);
 
 my @exit_ds = qw/
         open        close       lock
@@ -420,7 +440,7 @@ close $fh;
 
 print "Reading source...\n";
 
-my ($fatal, $line, $msg, %area, @recall, @special, @mobs, @objs, @rooms, @addmobs, @helps, @addobjs, @shops, @games);
+my ($fatal, $line, $msg, %area, @recall, @special, @mobs, @objs, @objsets, @rooms, @room_ambient, @addmobs, @helps, @addobjs, @shops, @games);
 
 while (1) {
     my $next = shift @source;
@@ -592,6 +612,16 @@ while (1) {
                 next;
             }
 
+            if ($field eq 'ff') {
+                if (!$data) {
+                    print "    line $line: mob: field 'ff' empty\n";
+                }
+                else {
+                    push @{$mob{'ff'}}, $data;
+                }
+                next;
+            }
+
             next if &add_field_data(\%mob, $field, $data, 'sp vn nm sh lo lv act aff bf sx al rnk');
             print "    line $line: mob: unknown field '$field'\n";
         }
@@ -685,6 +715,46 @@ while (1) {
         push @objs, [ %obj ];
     }
 
+    elsif ($header eq 'objset' || $header eq 'objectset') {
+        my %set;
+        $set{'line'} = $line;
+
+        while (@source) {
+            my ($field, $data) = &get_field_data(\@source);
+
+            if ($field eq 'de') {
+                my $start = $line;
+                my ($msg, $error) = &get_text_block(\@source);
+
+                if (!$msg) {
+                    print "    line $start: objset: $error\n";
+                    $fatal = 1;
+                    last;
+                }
+                else {
+                    $set{'de'} = $msg;
+                }
+                next;
+            }
+
+            if (!$field) {
+                last if $data eq 'BREAK';
+                print "    line $line: objset: $data\n" if $data;
+                next;
+            }
+
+            if ($field eq 'ob' || $field eq 'bt' || $field eq 'ap') {
+                push @{$set{$field}}, $data;
+                next;
+            }
+
+            next if &add_field_data(\%set, $field, $data, 'vn nm');
+            print "    line $line: objset: unknown field '$field'\n";
+        }
+
+        push @objsets, [ %set ];
+    }
+
 
     #  One object reset
 
@@ -772,7 +842,7 @@ while (1) {
 
             next if &add_field_data(\%room, $field, $data,
                     'vn rf st nm n s e w u d rnd nnm snm enm wnm unm dnm ulo dlo wlo elo nlo slo nke ske wke eke uke dke
-                     nds sds eds wds uds dds');
+                     nds sds eds wds uds dds am av');
             print "    line $line: room: unknown field '$field'\n";
         }
 
@@ -930,7 +1000,7 @@ sub get_text_block(\@) {
 print "Verifying data...\n";
 
 my ($area_errors, %recall_errors, %special_errors, %mob_errors, %mob_vnums, %obj_errors, %obj_vnums, @specials,
-        %room_errors, %room_vnums, @resets, %addmob_errors, %room_names,
+        %objset_errors, %objset_vnums, %room_errors, %room_vnums, @resets, %addmob_errors, %room_names,
         %mob_names, %obj_names, %help_errors, %addobj_errors, %game_errors, %shop_errors);
 
 
@@ -1193,6 +1263,22 @@ foreach (0 .. $#mobs) {
         $mob{'te'} = [ @tmp ];
     }
 
+    if (exists $mob{'ff'}) {
+        my @tmp;
+
+        foreach my $next (@{$mob{'ff'}}) {
+            if (!exists $mob_footstep{$next}) {
+                print "$err field 'ff': invalid footstep terrain: $next\n";
+                $mob_errors{$mob{'line'}}++;
+                next;
+            }
+
+            push @tmp, $next;
+        }
+
+        $mob{'ff'} = [ @tmp ];
+    }
+
     $mob_names{$mob{'vn'}} = $mob{'sh'}
             unless $mob_errors{$mob{'line'}};
 
@@ -1283,6 +1369,54 @@ foreach (0 .. $#objs) {
     $objs[$_] = [ %obj ];
 }
 
+#  Objsets
+
+foreach (0 .. $#objsets) {
+    my %set = @{$objsets[$_]};
+    my $err = "    objset, line $set{'line'}:";
+
+    foreach (qw/vn nm de/) {
+        if ($msg = &check_field_defined(\%set, $_)) {
+            print "$err $msg\n";
+            $objset_errors{$set{'line'}}++;
+        }
+    }
+
+    if ($msg = &check_field_number_range(\%set, 'vn', 0, 'none')) {
+        print "$err $msg\n";
+        $objset_errors{$set{'line'}}++;
+    }
+    elsif (++$objset_vnums{$set{'vn'}} > 1) {
+        print "$err vnum '$set{'vn'}' already in use\n";
+        $objset_errors{$set{'line'}}++;
+    }
+
+    foreach my $field (qw/ob bt/) {
+        my @tmp;
+
+        while ($set{$field} && @{$set{$field}}) {
+            my $next = shift @{$set{$field}};
+
+            if (!&is_number($next) || $next < 0) {
+                print "$err field '$field' invalid: $next\n";
+                $objset_errors{$set{'line'}}++;
+                next;
+            }
+
+            push @tmp, $next;
+        }
+
+        push @tmp, 0 while @tmp < 5;
+        @tmp = @tmp[0 .. 4];
+        $set{$field} = [ @tmp ];
+    }
+
+    if ($msg = &check_object_applies(\%set)) {
+        $objset_errors{$set{'line'}} += $msg;
+    }
+
+    $objsets[$_] = [ %set ];
+}
 
 #  Rooms
 
@@ -1401,6 +1535,24 @@ foreach (0 .. $#rooms) {
             }
         }
     }
+
+    if (exists $room{'am'} && $room{'am'} ne '') {
+        $room{'av'} = 25 unless exists $room{'av'} && $room{'av'} ne '';
+
+        if ($room{'am'} =~ /\s/) {
+            print "$err field 'am' must not contain spaces: $room{'am'}\n";
+            $room_errors{$room{'line'}}++;
+        }
+
+        if ($msg = &check_field_number_range(\%room, 'av', 0, 100)) {
+            print "$err $msg\n";
+            $room_errors{$room{'line'}}++;
+        }
+
+        push @room_ambient, ($room{'vn'} + $area{'bv'}) . " $room{'am'} $room{'av'}\n"
+                unless $room_errors{$room{'line'}};
+    }
+
 
     $room_names{$room{'vn'}} = $room{'nm'}
             unless $room_errors{$room{'line'}};
@@ -2368,6 +2520,9 @@ if ($area_errors || keys %recall_errors || keys %special_errors || keys %mob_err
     foreach (keys %obj_errors) {
         print "    obj, line $_: ", errors($obj_errors{$_});
     }
+    foreach (keys %objset_errors) {
+        print "    objset, line $_: ", errors($objset_errors{$_});
+    }
     foreach (keys %room_errors) {
         print "    room, line $_: ", errors($room_errors{$_});
     }
@@ -2509,6 +2664,14 @@ if (@mobs) {
         while ($mob{'te'} && @{$mob{'te'}}) {
             print AREA shift @{$mob{'te'}};
         }
+
+        while ($mob{'ff'} && @{$mob{'ff'}}) {
+            my $terrain = shift @{$mob{'ff'}};
+            my ($field, $suffix) = @{$mob_footstep{$terrain}};
+            my $full_vnum = $mob{'vn'} + $area{'bv'};
+
+            print AREA "$field sfx.foley.mob.$full_vnum.$suffix~\n";
+        }
     }
 
     print AREA "#0\n\n";
@@ -2549,6 +2712,26 @@ if (@objs) {
     print AREA "#0\n\n";
 }
 
+#  Print objsets
+
+if (@objsets) {
+    print AREA "#OBJECT_SETS";
+
+    foreach (@objsets) {
+        my %set = @{$_};
+
+        print AREA "\n#" . ($set{'vn'} + $area{'bv'}) . "\n$set{'nm'}~\n$set{'de'}~\n";
+
+        print AREA join(" ", map { $_ ? $_ + $area{'bv'} : 0 } @{$set{'ob'}}) . "\n";
+        print AREA join(" ", @{$set{'bt'}}) . "\n";
+
+        while ($set{'ap'} && @{$set{'ap'}}) {
+            print AREA "A ", shift @{$set{'ap'}};
+        }
+    }
+
+    print AREA "#0\n\n";
+}
 
 #  Print rooms
 
@@ -2578,6 +2761,15 @@ if (@rooms) {
     print AREA "#0\n\n";
 }
 
+if (@room_ambient) {
+    print AREA "#ROOMS_AMBIENT\n";
+
+    foreach (@room_ambient) {
+        print AREA;
+    }
+
+    print AREA "\$\n\n";
+}
 
 #  Print resets
 

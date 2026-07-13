@@ -1185,6 +1185,10 @@ Her song works its way into your mind.
 90 0 0 0d0+0 0d0+0
 0 0
 0 0 2
+>fight_prog 15~
+c sonic $n
+~
+|
 
 #764
 Bone Golem~

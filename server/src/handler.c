@@ -3626,6 +3626,7 @@ char* created_name( int created)
                 case CREATED_STRONG_RANDOMISER: return "the strong randomiser";
                 case CREATED_WEAK_RANDOMISER:   return "the _weak_ randomiser";
                 case CREATED_SKILL:             return "a skill (e.g. construct)";
+                case CREATED_FICKLE_RANDOMISER: return "randomly chosen randomisation";
                 default:                        return "pre dd5 code";
         }
 }
@@ -4032,6 +4033,7 @@ char *extra_bit_name (unsigned long int extra_flags)
             case ITEM_RUNE:                 return "rune";
             case ITEM_DONOT_RANDOMISE:      return "pure";
             case ITEM_WEAK_RANDOMISE:       return "steady";
+            case ITEM_FICKLE:               return "fickle";
             case ITEM_DEPLOYED:             return "deployed";
 
             default: return "(unknown)";

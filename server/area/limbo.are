@@ -357,7 +357,7 @@ curiosity tinged with contempt.
 0 0
 0 0 1
 >fight_prog 50~
-    c fleshrot $N
+    c sonic $n
 ~
 >fight_prog 14~
     if affspell($n) == 564
@@ -470,6 +470,23 @@ room, shrieking for vengeance.
 64 0 0 0d0+0 0d0+0
 336 0
 8 8 0
+
+#84
+hootfiend~
+Hootfiend the owl~
+<94>A sleepy-looking owl regards you lazily.<0>
+~
+This large horned owl has bright orange eyes and regards you with a mix of mild
+curiosity tinged with contempt.
+~
+2|2048|9223372036854775808 524288 1000 S
+110 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>fight_prog 50~
+    bubble $n
+~
+|
 
 
 #0
@@ -2605,6 +2622,8 @@ E 0 572 0 6                     wear robot eye
 E 0 573 0 3                     wear robot eyebrow
 E 1 574 100 16
 E 1 575 100 18
+
+M 0 84 1 84                     a Hootfiend to Owl's Testing room
 
 M 0 78 1 82                     add Ducky the duck to Samxin's Reality
 E 0 62 0 3                      equip a duck collar (neck1)
