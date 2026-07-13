@@ -362,12 +362,18 @@ void sound_combat_hit_sfx( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
                 if ( vol_adj <= 0 )
                         continue;
 
-                /* Your new preference: non-door sounds delay 1. */
+                /* Your new preference: non-door sounds delay 1.
                 sfx_enqueue( vch->desc,
                              file,
                              number_fuzzy(vol_adj),
                              ( ev->tag && *ev->tag ) ? ev->tag : "sfx",
-                             1 );
+                             1 ); */
+
+                sfx_enqueue( vch->desc,
+                             file,
+                             number_fuzzy(vol_adj),
+                             "combat",
+                             3 );
         }
 }
 
@@ -513,7 +519,7 @@ void sound_footstep_sfx( CHAR_DATA *actor, ROOM_INDEX_DATA *from_room, ROOM_INDE
         else
         {
                 snprintf( key, sizeof(key), "sfx.foley.step.%s.%s", gait, terrain );
-                if ( SND_LOG_ENABLED) { log_stringf("SFX: Initial key is %s", key); }
+               /* if ( SND_LOG_ENABLED) { log_stringf("SFX: Initial key is %s", key); } */
                 ev = sound_event_lookup( key );
         }
 
@@ -1051,6 +1057,25 @@ void media_notify_channel( CHAR_DATA *to, int channel )
 
 }
 
+static int sfx_queue_count_tag( DESCRIPTOR_DATA *d, const char *tag )
+{
+        int i;
+        int count;
+
+        if ( !d || !tag || !*tag )
+                return 0;
+
+        count = 0;
+
+        for ( i = d->sfx_head; i != d->sfx_tail; i = ( i + 1 ) % MAX_SFX_QUEUE )
+        {
+                if ( !str_cmp( d->sfx_q[i].tag, tag ) )
+                        count++;
+        }
+
+        return count;
+}
+
 /* sound_play_room_file: enqueue instead of play */
 void sfx_enqueue( DESCRIPTOR_DATA *d,
                   const char *file,
@@ -1064,6 +1089,12 @@ void sfx_enqueue( DESCRIPTOR_DATA *d,
 
         if ( !d || !file || !*file )
                 return;
+
+        if ( tag && !str_cmp( tag, "combat" )
+        &&   sfx_queue_count_tag( d, "combat" ) >= 3 )
+        {
+                return;
+        }
 
         next = ( d->sfx_tail + 1 ) % MAX_SFX_QUEUE;
         if ( next == d->sfx_head )
@@ -1242,10 +1273,23 @@ void sound_sfx_update( void )
                 /*snprintf( opts, sizeof(opts),
                           "\"id\":\"%s\",\"type\":\"sound\",\"tag\":\"%s\","
                           "\"volume\":%d,\"loops\":1,\"priority\":50,\"replace\":false",
-                          e->id, e->tag, e->volume );*/
+                          e->id, e->tag, e->volume );
                 snprintf( opts, sizeof(opts),
                             "\"channel\":\"%s\",\"volume\":%d",
-                            e->id, e->volume );
+                            e->id, e->volume ); */
+
+                if ( !str_cmp( e->tag, "combat" ) )
+                {
+                        snprintf( opts, sizeof(opts),
+                                  "\"channel\":\"dd.sfx.combat\",\"volume\":%d",
+                                  e->volume );
+                }
+                else
+                {
+                        snprintf( opts, sizeof(opts),
+                                  "\"channel\":\"%s\",\"volume\":%d",
+                                  e->id, e->volume );
+                }
 
                 GMCP_Media_Default( d, "https://www.dragons-domain.org/main/gui/custom/audio/" );
 

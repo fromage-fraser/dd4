@@ -1,0 +1,869 @@
+﻿# AREA HEADER
+
+$area
+au  Owl
+ti  Eakos Canals
+ls  70
+us  85
+le  45
+ue  100
+bv  0
+
+# RECALL
+
+$recall
+rl  27347
+
+# AREA SPECIALS
+
+$special
+xp  110
+
+# Rooms
+
+$room
+vn  29200
+nm  Ota'ar Dar / Eakos Canal, Lower
+de
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>Arena / Prison canton and Eakos City.  Eakos City's walls prevent travel west,
+<252>but you may travel north or east through the canal system, or upwards, towards
+<254>the huge, looming area of darkness in the water above. To the immediate south
+a huge iron grate has been installed to block access to the open ocean.<0>
+~
+st  underwater_ground
+rf  none
+
+n   29202
+e   29201
+u   29300
+
+$room
+vn  29201
+nm  Ota'ar Dar / Eakos Canal, Lower
+de
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>Arena / Prison canton and Eakos City.  Ota'ar Dar's walls prevent travel east,
+<252>but you may travel north or west through the canal system, or upwards, towards
+<254>the huge, looming area of darkness in the water above. To the immediate south
+a huge iron grate has been installed to block access to the open ocean.<0>
+~
+st  underwater_ground
+rf  none
+
+n   29203
+w   29200
+u   29301
+
+$room
+vn  29202
+nm  Ota'ar Dar / Eakos Canal, Lower
+de
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>Arena / Prison canton and Eakos City.  Eakos City's walls prevent travel west,
+<252>but you may travel south, north or east through the canal system, or upwards,
+<254>towards the huge, looming area of darkness in the water above.<0>
+~
+st  underwater_ground
+rf  none
+
+n   29204
+e   29203
+s   29200
+u   29302
+
+$room
+vn  29203
+nm  Ota'ar Dar / Eakos Canal, Lower
+de
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>Arena / Prison canton and Eakos City.  Ota'ar Dar's walls prevent travel east,
+<252>but you may travel south, north or west through the canal system, or upwards,
+<254>towards the huge, looming area of darkness in the water above.<0>
+~
+st  underwater_ground
+rf  none
+
+n   29205
+s   29201
+w   29202
+u   29303
+
+$room
+vn  29204
+nm  Ota'ar Dar / Eakos Canal, Lower
+de
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>Arena / Prison canton and Eakos City.  Eakos City's walls prevent travel west,
+<252>but you may travel south, north or east through the canal system, or upwards,
+<254>towards the huge, looming area of darkness in the water above.  A large bridge
+reaching from Ota'ar Dar to Eakos City lies just to the north.<0>
+~
+st  underwater_ground
+rf  none
+
+n   29206
+e   29205
+s   29202
+u   29304
+
+$room
+vn  29205
+nm  Ota'ar Dar / Eakos Canal, Lower
+de
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>Arena / Prison canton and Eakos City.  Ota'ar Dar's walls prevent travel east,
+<252>but you may travel south, north or west through the canal system, or upwards,
+<254>towards the huge, looming area of darkness in the water above.  A large bridge 
+reaching from central Ota'ar Dar to Eakos City lies just to the north.<0>
+~
+st  underwater_ground
+rf  none
+
+n   29207
+s   29203
+w   29204
+u   29305
+
+$room
+vn  29206
+nm  Ota'ar Dar / Eakos Southern Bridge, Lower
+de
+<14>You stand at the western end of the southern bridge connecting Eakos City to
+<87>Ota'ar Dar. Eakos City's glittering gates lie to the west, while Ota'ar Dar's
+<123>imposing canton gates can be seen in the distance to the east. To the north and
+<159>south you can venture into the deep canal system which separates Eakos and
+Ota'ar Dar from each other, or you can head upwards, towards the huge, looming area
+of darkness in the water above.
+
+A large <14>SIGN<159> has been fastened to Eakos City's locked and barred gates.<0>
+~
+st  underwater_ground
+rf  none
+
+ed  sign
+o------------------------------------------------------------------------o
+| Due to military tensions Eakos City is currently closed to foreigners. |
+o------------------------------------------------------------------------o
+~
+n   29208
+e   29207
+s   29204
+w   29206
+wde
+Glittering, glorious.  Magnificent, really.
+~
+wnm gate
+wlo pick_bash_pass
+wds lock
+u   29306
+
+$room
+vn  29207
+nm  Ota'ar Dar / Eakos Southern Bridge, Lower
+de
+<14>You stand at the eastern end of the southern bridge connecting Eakos City to
+<87>Ota'ar Dar. Eakos City's glittering gates lie far to the west, while Ota'ar Dar's
+<123>steel canton gates can be seen right here to the east. To the north and south
+<159>you can venture into the deep canal system which separates Eakos and Ota'ar Dar
+from each other, or you can head upwards, towards the huge, looming area of 
+darkness in the water above.
+
+A large <14>SIGN<159> has been fastened to Ota'ar Dar Arena's gates.<0>
+~
+st  underwater_ground
+rf  none
+
+ed  sign
+o--------------------------------o
+| Trelka, ini gavir di wer Baron.|
+o--------------------------------o
+~
+n   29209
+e   29207
+ede
+Huge, steel.  Imposing.  Very securely locked and don't seem to have been used in a long time.
+~
+enm gates
+elo pick_bash_pass
+eds lock
+s   29205
+w   29206
+u   29307
+
+$room
+vn  29208
+nm  Ota'ar Dar / Eakos Canal, Lower
+de
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>Arena / Prison canton and Eakos City.  Eakos City's walls prevent travel west,
+<252>but you may travel south, north or east through the canal system, or upwards,
+<254>towards the huge, looming area of darkness in the water above.  A large bridge
+reaching from Ota'ar Dar to Eakos City lies just to the south.<0>
+~
+st  underwater_ground
+rf  none
+
+n   29210
+e   29209
+s   29206
+u   29308
+
+$room
+vn  29209
+nm  Ota'ar Dar / Eakos Canal, Lower
+de
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>Arena / Prison canton and Eakos City.  Ota'ar Dar's walls prevent travel east,
+<252>but you may travel south, north or west through the canal system, or upwards,
+<254>towards the huge, looming area of darkness in the water above.  A large bridge 
+reaching from central Ota'ar Dar to Eakos City lies just to the south.<0>
+~
+st  underwater_ground
+rf  none
+
+n   29211
+s   29207
+w   29208
+u   29309
+
+$room
+vn  29210
+nm  Ota'ar Dar / Eakos Canal, Lower
+de
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>Arena / Prison canton and Eakos City.  Eakos City's walls prevent travel west,
+<252>but you may travel south, north or east through the canal system, or
+<254>upwards, towards the huge, looming area of darkness in the water above.
+Northward lies a large junction in the canal network.<0>
+~
+st  underwater_ground
+rf  none
+
+n   29217
+e   29211
+s   29208
+u   29310
+
+$room
+vn  29211
+nm  Ota'ar Dar / Eakos Canal, Lower
+de
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>Arena / Prison canton and Eakos City.  Ota'ar Dar's walls prevent travel east,
+<252>but you may travel south, north or west through the canal system, or
+<254>upwards, towards the huge, looming area of darkness in the water above.
+Northward lies a large junction in the canal network.<0>
+~
+st  underwater_ground
+rf  none
+
+n   29218
+s   29209
+w   29210
+u   29311
+
+$room
+vn  29217
+nm  Ota'ar Dar / Eakos Canal, Lower
+de
+<248>You are at the bottom of the ocean floor, in the four-way junction of a deep
+<250>canal network between Ota'ar Dar and Eakos. You may travel north, south, east,
+<252>or west from here through the canal system, or upwards, towards the huge, 
+<254>looming area of darkness in the water above.<0>
+~
+st  underwater_ground
+rf  none
+
+n   29224
+e   29218
+s   29210
+u   29317
+
+$room
+vn  29218
+nm  Ota'ar Dar / Eakos Canal, Lower
+de
+<248>You are at the bottom of the ocean floor, in the four-way junction of a deep
+<250>canal network between Ota'ar Dar and Eakos. You may travel north, south, east,
+<252>or west from here through the canal system, or upwards, towards the huge, 
+<254>looming area of darkness in the water above.<0>
+~
+st  underwater_ground
+rf  none
+
+n   29225
+e   27247
+s   29211
+w   29217
+u   29318
+
+$room
+vn  29224
+nm  Ota'ar Dar / Eakos Canal, Lower
+de
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton and Eakos's residential area.  You may travel north, south, or
+<252>east from here through the canal system, or upwards, towards the huge, 
+<254>looming area of darkness in the water above.  Directly south you see a large 
+junction in the canal network.<0>
+~
+st  underwater_ground
+rf  none
+
+n   29230
+e   29225
+s   29217
+u   29324
+
+$room
+vn  29225
+nm  Ota'ar Dar / Eakos Canal, Lower
+de
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton and Eakos's residential area.  You may travel north, south, or
+<252>west from here through the canal system, or upwards, towards the huge, 
+<254>looming area of darkness in the water above.  Directly south you see a large 
+junction in the canal network.<0>
+~
+st  underwater_ground
+rf  none
+
+n   29231
+s   29218
+w   29224
+u   29325
+
+$room
+vn  29230
+nm  Ota'ar Dar / Eakos Canal, Lower
+de
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton and Eakos's residential area.  Eakos's walls prevent travel 
+<252>west, but you may travel south, north or east through the canal system, or 
+<254>upwards, towards the huge, looming area of darkness in the water above.  A large
+bridge reaching from Ota'ar Dar to Eakos City lies just to the north.<0>
+~
+st  underwater_ground
+rf  none
+
+n   29234
+e   29231
+s   29224
+u   29330
+
+$room
+vn  29231
+nm  Ota'ar Dar / Eakos Canal, Lower
+de
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton and Eakos's residential area.  Ota'ar Dar's walls prevent travel 
+<252>east, but you may travel south, north or west through the canal system, or 
+<254>upwards, towards the huge, looming area of darkness in the water above.  A large
+bridge reaching from Ota'ar Dar to Eakos City lies just to the north.<0>
+~
+st  underwater_ground
+rf  none
+
+n   29235
+s   29225
+w   29230
+u   29331
+
+$room
+vn  29234
+nm  Ota'ar Dar / Eakos Northern Bridge, Lower
+de
+<14>You stand at the western end of the northern bridge connecting Eakos City's
+<87>residential area to Ota'ar Dar's military canton. Eakos's glittering gates lie 
+<123>to the west, while Ota'ar Dar's imposing and heavily fortified gates can be seen
+<159>in the distance to the east. To the north and south you can venture into the 
+deep canal system which separates Eakos and Ota'ar Dar from each other, or you can 
+head upwards, towards the huge, looming area of darkness in the water above.
+
+A large <14>SIGN<159> has been fastened to Eakos's residential area's locked and 
+barred gates.<0>
+~
+st  underwater_ground
+rf  none
+
+ed  sign
+o----------------------------------------------------------------------------o
+| Due to military tensions Eakos's residential area is closed to foreigners. |
+o----------------------------------------------------------------------------o
+~
+e   29235
+s   29230
+w   29234
+wde
+Glittering, majestic.  Very impressive.
+~
+wnm gate
+wlo pick_bash_pass
+wds lock
+u   29334
+
+$room
+vn  29235
+nm  Ota'ar Dar / Eakos Northern Bridge, Lower
+de
+<14>You stand at the western end of the northern bridge connecting Eakos City's
+<87>residential area to Ota'ar Dar's military canton. Eakos's glittering gates lie 
+<123>far to the west, while Ota'ar Dar's imposing and heavily fortified gates are
+<159>right before you, to the east. To the north and south you can venture into the 
+deep canal system which separates Eakos and Ota'ar Dar from each other, or you can 
+head upwards, towards the huge, looming area of darkness in the water above.
+~
+st  underwater_ground
+rf  none
+
+e   27291
+ede
+Very large.  Steel.  imposing.
+~
+enm gate
+elo door
+eds close
+s   29231
+w   29234
+u   29335
+
+$room
+vn  29300
+nm  Ota'ar Dar / Eakos Canal, Upper
+de
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's Arena / Prison canton and Eakos City.  The high canal walls prevent access
+<241>from here to either area, but you may travel north or east, further along the
+<244>canal system, down to the ocean floor, or upwards, directly into the sinister,
+<246>looming area of dark water above your head. To the immediate south a huge iron
+grate has been installed to block access to the open ocean.<0>
+~
+st  underwater
+rf  none
+
+n   29302
+e   29301
+u   27148
+d   29200
+
+$room
+vn  29301
+nm  Ota'ar Dar / Eakos Canal, Upper
+de
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's Arena / Prison canton and Eakos City.  The high canal walls prevent access
+<241>from here to either area, but you may travel north or west, further along the
+<244>canal system, down to the ocean floor, or upwards, directly into the sinister,
+<246>looming area of dark water above your head. To the immediate south a huge iron
+grate has been installed to block access to the open ocean.<0>
+~
+st  underwater
+rf  none
+
+n   29303
+w   29300
+u   27139
+d   29201
+
+$room
+vn  29302
+nm  Ota'ar Dar / Eakos Canal, Upper
+de
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's Arena / Prison canton and Eakos City.  The high canal walls prevent access
+<241>from here to either area, but you may travel north or east, further along the
+<244>canal system, down to the ocean floor, or upwards, directly into the sinister,
+<246>looming area of dark water above your head.<0>
+~
+st  underwater
+rf  none
+
+n   29304
+e   29303
+s   29300
+u   27149
+d   29202
+
+$room
+vn  29303
+nm  Ota'ar Dar / Eakos Canal, Upper
+de
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's Arena / Prison canton and Eakos City.  The high canal walls prevent access
+<241>from here to either area, but you may travel north or west, further along the
+<244>canal system, down to the ocean floor, or upwards, directly into the sinister,
+<246>looming area of dark water above your head.<0>
+~
+st  underwater
+rf  none
+
+n   29305
+s   29301
+w   29302
+u   27126
+d   29203
+
+$room
+vn  29304
+nm  Ota'ar Dar / Eakos Canal, Upper
+de
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's Arena / Prison canton and Eakos City.  From here, you may travel north, 
+<241>towards the area above the southern bridge linking Ota'ar Dar and Eakos City,
+<244>south or east through the canal system, downwards, towards the ocean floor,
+<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
+~
+st  underwater
+rf  none
+
+n   29306
+e   29305
+s   29302
+u   27145
+d   29204
+
+$room
+vn  29305
+nm  Ota'ar Dar / Eakos Canal, Upper
+de
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's Arena / Prison canton and Eakos City.  From here, you may travel north, 
+<241>towards the area above the southern bridge linking Ota'ar Dar and Eakos City,
+<244>south or west through the canal system, downwards, towards the ocean floor,
+<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
+~
+st  underwater
+rf  none
+
+n   29307
+s   29303
+w   29304
+u   27126
+d   29205
+
+$room
+vn  29306
+nm  Ota'ar Dar / Eakos Southern Bridge, Upper
+de
+<21>You float about 4 metres above the western end of the southern bridge connecting
+<27>Ota'ar Dar to Eakos City. The upper portion of Eakos's glittering city gates lie
+<33to the west, while the corresponding portions of Ota'ar Dar's imposing canton
+<39>gates can be seen in the distance to the east. To the north and south you may
+<45>venture into the deep canal system which separates Eakos and Ota'ar Dar from
+each other, you may travel downwards, towards the ocean floor, or you can swim 
+upwards, directly into the huge, looming area of dark water above your head.
+
+A large <21>SIGN<45> has been fastened to Eakos City's locked and barred gates.<0>
+~
+st  underwater
+rf  none
+
+ed  sign
+o------------------------------------------------------------------------o
+| Due to military tensions Eakos City is currently closed to foreigners. |
+o------------------------------------------------------------------------o
+~
+n   29308
+e   29307
+s   29304
+w   29306
+wde
+Glittering, glorious.  Magnificent, really.
+~
+wnm gate
+wlo pick_bash_pass
+wds lock
+u   27145
+d   29206
+
+$room
+vn  29307
+nm  Ota'ar Dar / Eakos Southern Bridge, Upper
+de
+<21>You float about 4 metres above the eastern end of the southern bridge connecting
+<27>Ota'ar Dar's Arena / Prison canton to Eakos City.  The upper portion of Ota'ar
+<33>Dar's huge steel gates lie to the east, while the corresponding portion of Eakos
+<39>City's glittering gates can be seen in the distance to the west. To the north
+<45>and south you may venture into the deep canal system which separates Ota'ar Dar
+and Eakos from each other, you may travel downwards, towards the ocean floor, or 
+you can swim upwards, directly into the huge, looming area of dark water above 
+your head.
+
+A large <21>SIGN<45> has been fastened to Ota'ar Dar Arena's gates.<0>
+~
+st  underwater
+rf  none
+
+ed  sign
+o--------------------------------o
+| Trelka, ini gavir di wer Baron.|
+o--------------------------------o
+~
+n   29309
+e   29307
+ede
+Huge.  Steel.  Imposing. Look to have not been used in a long time.
+~
+enm gates
+elo pick_bash_pass
+eds lock
+s   29305
+w   29306
+u   27149
+d   29207
+
+$room
+vn  29308
+nm  Ota'ar Dar / Eakos Canal, Upper
+de
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's Arena / Prison canton and Eakos City.  From here, you may travel south, 
+<241>towards the area above the southern bridge linking Ota'ar Dar and Eakos City,
+<244>north or east through the canal system, downwards, towards the ocean floor,
+<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
+~
+st  underwater
+rf  none
+
+n   29310
+e   29309
+s   29306
+u   27145
+d   29208
+
+$room
+vn  29309
+nm  Ota'ar Dar / Eakos Canal, Upper
+de
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's Arena / Prison canton and Eakos City.  From here, you may travel south, 
+<241>towards the area above the southern bridge linking Ota'ar Dar and Eakos City,
+<244>north or west through the canal system, downwards, towards the ocean floor,
+<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
+~
+st  underwater
+rf  none
+
+n   29311
+s   29307
+w   29308
+u   27122
+d   29209
+
+$room
+vn  29310
+nm  Ota'ar Dar / Eakos Canal, Upper
+de
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's Arena / Prison canton and Eakos City.  From here, you may travel south, 
+<241>north or east through the canal system, downwards, towards the ocean floor,
+<244>or upwards, directly into the huge, looming area of dark water above your head.
+Northward lies a large junction in the canal network.<0>
+~
+st  underwater
+rf  none
+
+n   29317
+e   29311
+s   29308
+u   27144
+d   29210
+
+$room
+vn  29311
+nm  Ota'ar Dar / Eakos Canal, Upper
+de
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's Arena / Prison canton and Eakos City.  From here, you may travel south, 
+<241>north or west through the canal system, downwards, towards the ocean floor,
+<244>or upwards, directly into the huge, looming area of dark water above your head.
+Northward lies a large junction in the canal network.<0>
+~
+st  underwater
+rf  none
+
+n   29318
+s   29309
+w   29310
+u   27145
+d   29211
+
+$room
+vn  29317
+nm  Ota'ar Dar / Eakos Canal, Upper
+de
+<237>You float about 4 metres above the ocean floor, in the four-way junction of a
+<238>deep canal network between Ota'ar Dar and Eakos. You may travel north, south,
+<241>east or west from here through the canal system, downwards, towards the ocean
+<244>floor, or upwards, directly into the huge, looming area of dark water above your
+<246>head.<0>
+~
+st  underwater
+rf  none
+
+n   29324
+e   29318
+s   29310
+u   27147
+d   29217
+
+$room
+vn  29318
+nm  Ota'ar Dar / Eakos Canal, Upper
+de
+<237>You float about 4 metres above the ocean floor, in the four-way junction of a
+<238>deep canal network between Ota'ar Dar and Eakos. You may travel north, south,
+<241>east or west from here through the canal system, downwards, towards the ocean
+<244>floor, or upwards, directly into the huge, looming area of dark water above your
+<246>head.<0>
+~
+st  underwater
+rf  none
+
+n   29325
+e   27547
+s   29311
+w   29317
+u   27144
+d   29218
+
+$room
+vn  29324
+nm  Ota'ar Dar / Eakos Canal, Upper
+de
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's military canton and Eakos's residential area.  From here, you may travel
+<241>north, south or east through the canal system, downwards, towards the ocean 
+<244>floor, or upwards, directly into the huge, looming area of dark water above your
+<246>head.  Directly south you see a large junction in the canal network.<0>
+~
+st  underwater
+rf  none
+
+n   29330
+e   29325
+s   29317
+u   27144
+d   29224
+
+$room
+vn  29325
+nm  Ota'ar Dar / Eakos Canal, Upper
+de
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's military canton and Eakos's residential area.  From here, you may travel
+<241>north, south or west through the canal system, downwards, towards the ocean 
+<244>floor, or upwards, directly into the huge, looming area of dark water above your
+<246>head.  Directly south you see a large junction in the canal network.<0>
+~
+st  underwater
+rf  none
+
+n   29331
+s   29318
+w   29324
+u   27145
+d   29225
+
+$room
+vn  29330
+nm  Ota'ar Dar / Eakos Canal, Upper
+de
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's military canton and Eakos's residential area.  From here, you may travel 
+<241>north, towards the area above the northern bridge linking Ota'ar Dar and Eakos,
+<244>south or east through the canal system, downwards, towards the ocean floor,
+<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
+~
+st  underwater
+rf  none
+
+n   29334
+e   29331
+s   29324
+u   27147
+d   29230
+
+$room
+vn  29331
+nm  Ota'ar Dar / Eakos Canal, Upper
+de
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's military canton and Eakos's residential area.  From here, you may travel 
+<241>north, towards the area above the northern bridge linking Ota'ar Dar and Eakos,
+<244>south or west through the canal system, downwards, towards the ocean floor,
+<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
+~
+st  underwater
+rf  none
+
+n   29335
+s   29325
+w   29330
+u   27144
+d   29231
+
+$room
+vn  29334
+nm  Ota'ar Dar / Eakos Northern Bridge, Upper
+de
+<21>You float about 4 metres above the western end of the northern bridge connecting
+<27>Ota'ar Dar's military canton to Eakos City's residential area. The upper portion 
+<33>of Eakos's glittering gates lie to the west, while the corresponding portions
+<39>of Ota'ar Dar's imposing steel gates can be seen in the distance to the east. 
+<45>To the north and south you may venture into the deep canal system which 
+separates Eakos and Ota'ar Dar from each other, you may travel downwards, towards 
+the ocean floor, or you can swim upwards, directly into the huge, looming area of 
+dark water above your head.
+
+A large <21>SIGN<45> has been fastened to Eakos's residential area's locked and 
+barred gates.<0>
+~
+st  underwater
+rf  none
+
+ed  sign
+o----------------------------------------------------------------------------o
+| Due to military tensions Eakos's residential area is closed to foreigners. |
+o----------------------------------------------------------------------------o
+~
+e   29335
+s   29330
+w   29334
+wde
+Glittering.  Fancy.  Probably pricey.
+~
+wnm gates
+wlo pick_bash_pass
+wds lock
+u   27147
+d   29234
+
+$room
+vn  29335
+nm  Ota'ar Dar / Eakos Northern Bridge, Upper
+de
+<21>You float about 4 metres above the eastern end of the northern bridge connecting
+<27>Ota'ar Dar's military canton to Eakos City's residential area. The upper portion 
+<33>of Eakos's glittering gates lie far to the west, while the corresponding 
+<39>portions of Ota'ar Dar's imposing steel gates lie immediately here to the east. 
+<45>To the north and south you may venture into the deep canal system which 
+separates Eakos and Ota'ar Dar from each other, you may travel downwards, towards 
+the ocean floor, or you can swim upwards, directly into the huge, looming area of 
+dark water above your head.
+~
+st  underwater
+rf  none
+
+e   27591
+ede
+Very military-looking.  Solid steel.  High.
+~
+enm gate
+elo door
+eds close
+s   29331
+w   29334
+u   27144
+d   29235

@@ -5081,16 +5081,12 @@ const struct skill_type skill_table[MAX_SKILL] =
         {"smelt", &gsn_smelt,
          TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
          spell_null, 0, 0,
-         "smelt", "!Smelt!"
-
-        },
+         "smelt", "!Smelt!"},
 
         {"imbue", &gsn_imbue,
          TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
          spell_null, 0, 0,
-         "imbue", "!Imbue!"
-
-        },
+         "imbue", "!Imbue!"},
 
         {"counterbalance", &gsn_counterbalance,
          TYPE_STR, TAR_IGNORE, POS_STANDING, 8192,
@@ -5110,9 +5106,7 @@ const struct skill_type skill_table[MAX_SKILL] =
         {"empower", &gsn_empower,
          TYPE_INT, TAR_IGNORE, POS_STANDING, 16384,
          spell_null, 0, 0,
-         "empower", "!Empower!"
-
-        },
+         "empower", "!Empower!"},
 
         {"osstat", &gsn_osstat,
          TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
@@ -5124,8 +5118,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          spell_null, 0, 0,
          "", "!Ostat!"},
 
-        {
-            "hurl", &gsn_hurl,
+        {"hurl", &gsn_hurl,
             TYPE_STR, TAR_IGNORE, POS_FIGHTING, 8192,
             spell_null, 0, 24,
             "hurled weapon", "!Hurl!"
@@ -5446,38 +5439,47 @@ const struct skill_type skill_table[MAX_SKILL] =
          TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 256 | 16384,
          spell_nausea, 10, 12,
          "<190>ro<191>il<192>in<193>g h<194>ea<195>d a<194>nd <193>st<192>om<191>ac<190>h<0>", "<80>You are no longer nauseated.<0>"},
+
         {"starve", &gsn_starve,
          TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 512 | 16384,
          spell_starve, 10, 12,
          "withering curse", "!Starve!"},
+
         {"parch", &gsn_parch,
          TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 512 | 16384,
          spell_parch, 10, 12,
          "dessicating hex", "!Parch!"},
+
         {"inebriate", &gsn_inebriate,
          TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 256 | 16384,
          spell_inebriate, 10, 12,
          "inebriating charm", "!Inebriate!"},
+
         {"glaciation", &gsn_glaciation,
          TYPE_INT, TAR_IGNORE, POS_FIGHTING, 2 | 16384,
          spell_glaciation, 15, 12,
          "summoned blizzard", "!Glaciation!"},
+
         {"conflagration", &gsn_conflagration,
          TYPE_INT, TAR_IGNORE, POS_FIGHTING, 1 | 16384,
          spell_conflagration, 15, 12,
          "blazing inferno", "!Conflagration!"},
+
         {"flood", &gsn_flood,
          TYPE_INT, TAR_IGNORE, POS_FIGHTING, 16384,
          spell_flood, 15, 12,
          "tsunami", "!Flood!"},
+
         {"confusion", &gsn_confusion,
          TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 16384 | 65536,
          spell_confusion, 10, 12,
          "disorienting curse", "You feel less confused."},
+
         {"freedom", &gsn_freedom,
          TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, 16384 | 131072,
          spell_freedom, 50, 12,
          "emancipating incantation", "!Freedom!"},
+
         {"fleshrot", &gsn_fleshrot,
          TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, 8 | 16384 | 262144,
          spell_fleshrot, 5, 12,
@@ -5598,6 +5600,22 @@ const struct skill_type skill_table[MAX_SKILL] =
          spell_sense_wisdom, 5, 1,
          "", "Your judgment weakens."},
 
+        {"sonic blast", &gsn_sonic_blast,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 8 | 16384,
+         spell_sonic_blast, 25, 12,
+         "<45>sonic <39>blast<0>", "The ringing in your ears slowly fades away, and your stomach settles."},
+
+        {"bubble jet", &gsn_bubble_jet,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 16 | 8192,
+         spell_null, 0, 24,
+         "bubble jet", "!Bubble Jet!"},
+
+        {"banish", &gsn_banish,
+         TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, 16384,
+         spell_banish, 50, 12,
+         "<14>banishing spell<0>", "!Banish!"
+        },
+
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
          */
@@ -5606,8 +5624,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          *  Base skills for classes :)  ALWAYS LEAVE BASE SKILLS AT END OF THE TABLE !!!
          */
 
-        {
-            "mage base", &gsn_mage_base,
+        {"mage base", &gsn_mage_base,
             TYPE_NULL, TAR_IGNORE, POS_STANDING, 16384,
             spell_null, 0, 0,
             "", "!-mage base-!"},

@@ -872,3 +872,58 @@ void do_mppeace( CHAR_DATA *ch, char *argument )
         return;
 
 }
+
+void do_mpotimer( CHAR_DATA *ch, char *argument )
+{
+        OBJ_DATA *obj;
+        char arg1[MAX_INPUT_LENGTH];
+        char arg2[MAX_INPUT_LENGTH];
+        int value;
+
+        if ( !IS_NPC(ch) || ch->desc != NULL )
+                return;
+
+        argument = one_argument(argument, arg1);
+        argument = one_argument(argument, arg2);
+
+        if ( arg1[0] == '\0'
+        ||   arg2[0] == '\0'
+        ||  !is_number(arg2) )
+        {
+                bug("Mob: %d bad mpotimer syntax",
+                    ch->pIndexData->vnum);
+                return;
+        }
+
+        value = atoi(arg2);
+
+        if ( value < 0 )
+        {
+                bug("Mob: %d negative mpotimer value",
+                    ch->pIndexData->vnum);
+                return;
+        }
+
+        for ( obj = ch->carrying; obj; obj = obj->next_content )
+        {
+                if ( !obj->deleted && is_name(arg1, obj->name) )
+                        break;
+        }
+
+        if ( !obj && ch->in_room )
+        {
+                for ( obj = ch->in_room->contents;
+                      obj;
+                      obj = obj->next_content )
+                {
+                        if ( !obj->deleted && is_name(arg1, obj->name) )
+                                break;
+                }
+        }
+
+        if ( !obj )
+                return;
+
+        obj->timer = value;
+        obj->timermax = value;
+}

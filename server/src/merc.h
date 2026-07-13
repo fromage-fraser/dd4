@@ -391,9 +391,9 @@ bool has_tranquility(CHAR_DATA *ch);
 #define LEVEL_IMMORTAL L_BUI
 #define LEVEL_HERO (LEVEL_IMMORTAL - 1)
 
-#define MAX_SKILL 618            /* 617 +1 for aambient 8/9/25 */
+#define MAX_SKILL 621            /* 620 +1 banish Owl 10/7/26 */
 #define MAX_PRE_REQ 1574         /* +2 for sense wisdom 6/7/25  */
-#define MAX_SPELL_GROUP 469      /* +1 sense wisdom Owl 6/7/25 */
+#define MAX_SPELL_GROUP 469      /*  */
 #define MAX_PREREQ_CHAIN_DEPTH 6 /* Maximum depth for prerequisite chain display */
 #define MAX_GROUPS 61            /* +1 for runecaster - Brutus Aug 2022 */
 #define MAX_FORM_SKILL 74        /* 73 + 1 for 'swallow' | for form skill table */
@@ -2297,6 +2297,7 @@ extern WANTED_DATA *wanted_list_last;
 #define ITEM_RUNE BIT_36
 #define ITEM_DONOT_RANDOMISE BIT_37 /* Create item exactly as in area file, also prevents some general number fuzziness */
 #define ITEM_WEAK_RANDOMISE BIT_38  /* Item applies randomised gently by random_qnd() */
+#define ITEM_FICKLE BIT_39          /* Item randomly not-randomised, randomised, or weakly randomised */
 #define ITEM_CURSED BIT_61          /* carrier attacked by mobs with DETECT_CURSE, magic travel nonfunctional if carried */
 
 /*
@@ -3051,6 +3052,7 @@ struct obj_index_data
 #define CREATED_STRONG_RANDOMISER 3
 #define CREATED_WEAK_RANDOMISER 4
 #define CREATED_SKILL 5
+#define CREATED_FICKLE_RANDOMISER 6
 
 /* Hoards slowly “fill in” (recover dig damage) over time */
 #define HOARD_RECOVERY_DIVISOR 10 /* heals 1/10th of missing HP each tick */
@@ -3991,7 +3993,9 @@ extern int gsn_bonus_resilience;
 extern int gsn_bonus_exotic;
 extern int gsn_bonus_initiate;
 extern int gsn_sense_wisdom;
-
+extern int gsn_sonic_blast;
+extern int gsn_bubble_jet;
+extern int gsn_banish;
 /*
  *  Deity gsns
  */
@@ -4259,6 +4263,7 @@ DECLARE_DO_FUN(do_breathe);     /* hydra skill */
 DECLARE_DO_FUN(do_break_wrist); /* brawler skill - Brutus */
 DECLARE_DO_FUN(do_brew);        /* Brew potions */
 DECLARE_DO_FUN(do_brief);
+DECLARE_DO_FUN(do_bubble_jet);
 DECLARE_DO_FUN(do_bug);
 DECLARE_DO_FUN(do_bury);
 DECLARE_DO_FUN(do_buy);
@@ -4430,6 +4435,7 @@ DECLARE_DO_FUN(do_mppurge);
 DECLARE_DO_FUN(do_mpstat);
 DECLARE_DO_FUN(do_mptransfer);
 DECLARE_DO_FUN(do_mppeace);
+DECLARE_DO_FUN(do_mpotimer);
 
 DECLARE_DO_FUN(do_aambient);
 DECLARE_DO_FUN(do_mset);
@@ -4833,6 +4839,8 @@ DECLARE_SPELL_FUN(spell_regenerate);
 DECLARE_SPELL_FUN(spell_release);
 DECLARE_SPELL_FUN(spell_clairvoyance);
 DECLARE_SPELL_FUN(spell_sense_wisdom);
+DECLARE_SPELL_FUN(spell_sonic_blast);
+DECLARE_SPELL_FUN(spell_banish);
 
 #define MOB_VNUM_SKELETON 3404
 #define MOB_VNUM_GHOUL 3404

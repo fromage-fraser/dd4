@@ -691,6 +691,7 @@ Extra ITEM_ flags:
     ITEM_RUNE                       BIT_36
     ITEM_DONOT_RANDOMISE            BIT_37
     ITEM_WEAK_RANDOMISE             BIT_38
+    ITEM_FICKLE                     BIT_39
     ITEM_CURSED                     BIT_61
 
 * Note if a weapon, armour, or light has this flag and is being worn, value[0]
@@ -2072,7 +2073,8 @@ paints, smokeables, and pills.
                   freedom                    fleshrot
                regenerate                  possession
                   release                clairvoyance
-             sense wisdom
+             sense wisdom                 sonic blast
+                   banish
 
 If you have any questions about area writing, please contact any of the
 immortals on the DD4 Discord server at https://discord.gg/aGzmAWmXYb (preferred)

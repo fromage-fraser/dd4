@@ -3394,7 +3394,10 @@ void spell_gate(int sn, int level, CHAR_DATA *ch, void *vo)
                         pccount++;
         }
 
-        do_say(ch, "{RCome brothers!  Join me in this glorious bloodbath!{x");
+        if (CAN_SPEAK(ch))
+        {
+            do_say(ch, "{RCome brothers!  Join me in this glorious bloodbath!{x");
+        }
 
         mob = create_mobile(get_mob_index(MOB_VNUM_VAMPIRE));
         /* Tweaked slightly to make  spell a little more dangerous. 9/4/15 --Owl */
@@ -5380,6 +5383,85 @@ void spell_teleport(int sn, int level, CHAR_DATA *ch, void *vo)
         }
 
         return;
+}
+
+void spell_banish(int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        CHAR_DATA *victim = (CHAR_DATA *)vo;
+        CHAR_DATA *mount;
+        ROOM_INDEX_DATA *room;
+        OBJ_DATA *obj;
+
+        if (!victim || victim == ch
+        ||  !victim->in_room
+        ||  victim->in_room != ch->in_room)
+                return;
+
+        mount = is_affected(victim, gsn_mount) ? victim->mount : NULL;
+
+        for (obj = victim->carrying; obj; obj = obj->next_content)
+        {
+                if (!obj->deleted
+                &&  IS_SET(obj->extra_flags, ITEM_CURSED))
+                        goto failed;
+        }
+
+        if (IS_AFFECTED(victim, AFF_NO_RECALL)
+        ||  IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL)
+        ||  IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER)
+        ||  IS_SET(victim->in_room->area->area_flags,
+                   AREA_FLAG_NO_TELEPORT)
+        ||  saves_spell(level, victim))
+                goto failed;
+
+        for (;;)
+        {
+                room = get_room_index(number_range(0, 65535));
+
+                if (!room
+                ||  IS_SET(room->area->area_flags, AREA_FLAG_NO_TELEPORT)
+                ||  IS_SET(room->room_flags, ROOM_PLAYER_KILLER)
+                ||  IS_SET(room->room_flags, ROOM_NO_RECALL)
+                ||  IS_SET(room->room_flags, ROOM_SOLITARY)
+                ||  IS_SET(room->room_flags, ROOM_CONE_OF_SILENCE))
+                        continue;
+
+                if (mount
+                && (IS_SET(room->room_flags, ROOM_NO_MOUNT)
+                ||  IS_SET(room->room_flags, ROOM_PRIVATE)))
+                        continue;
+
+                break;
+        }
+
+        act("<14>You banish $N in a flash of blue-white light!<0>",
+            ch, NULL, victim, TO_CHAR);
+        act("<14>$c banishes you in a flash of blue-white light!<0>",
+            ch, NULL, victim, TO_VICT);
+        act("<14>$c banishes $N in a flash of blue-white light!<0>",
+            ch, NULL, victim, TO_NOTVICT);
+
+        stop_fighting(victim, TRUE);
+        char_from_room(victim);
+        char_to_room(victim, room);
+
+        if (mount)
+        {
+                char_from_room(mount);
+                char_to_room(mount, room);
+        }
+
+        act("{C$c is hurled into being.{x", victim, NULL, NULL, TO_ROOM);
+        do_look(victim, "auto");
+        send_to_char("\n\r{CYou are hurled back into being.{x\n\r", victim);
+        return;
+
+failed:
+        act("{cYour attempt to banish $N fails.{x",
+            ch, NULL, victim, TO_CHAR);
+        act("{c$c's magic tears at you but fails to banish you!{x",
+            ch, NULL, victim, TO_VICT);
+        damage(ch, victim, UMAX(1, level / 4), sn, FALSE);
 }
 
 void spell_ventriloquate(int sn, int level, CHAR_DATA *ch, void *vo)
@@ -9850,6 +9932,104 @@ void spell_sense_wisdom(int sn, int level, CHAR_DATA *ch, void *vo)
         affect_to_char(victim, &af);
 
         send_to_char("You are keenly aware of the wisdom of others.\n\r", victim);
+
+        return;
+}
+
+void spell_sonic_blast(int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        CHAR_DATA   *victim = (CHAR_DATA *)vo;
+        AFFECT_DATA  af;
+        bool         saved;
+        bool         can_affect;
+        int          dam;
+        int          confusion_duration;
+        int          dot_duration;
+        int          dot_dam;
+
+        if ( !victim )
+                return;
+
+        dam = dice(level, 3);
+        saved = saves_spell(level, victim);
+
+        if ( saved )
+                dam /= 2;
+
+        if (spell_attack_number == 1)
+        {
+                act("<39>A thunderous sonic shockwave ripples outward from $n!<0>", ch, NULL, NULL, TO_ROOM);
+                act("You project a <39>bone-rattling sonic maelstrom<0>!", ch, NULL, NULL, TO_CHAR);
+        }
+
+        damage(ch, victim, dam, sn, FALSE);
+
+        if ( saved || victim->position == POS_DEAD )
+                return;
+
+        can_affect = TRUE;
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+                can_affect = FALSE;
+
+        if (IS_NPC(victim) && IS_INORGANIC(victim))
+                can_affect = FALSE;
+
+        if ( !can_affect )
+                return;
+
+        if ( !is_affected(victim, gsn_nausea)
+        &&   !is_affected(victim, gsn_prayer_plague) )
+        {
+                af.type      = gsn_nausea;
+                af.duration  = number_range(1, (level / 30));
+                af.location  = APPLY_CON;
+                af.modifier  = -1;
+                af.bitvector = AFF_POISON;
+                affect_to_char(victim, &af);
+
+                send_to_char("<154>Your stomach lurches sickeningly from the sonic assault.<0>\n\r", victim);
+        }
+
+        if ( !is_affected(victim, sn)
+        &&   !IS_AFFECTED(victim, AFF_DOT) )
+        {
+                dot_duration = URANGE(2, (level / 30), 4);
+                dot_dam      = URANGE(1, (level / 4), 30);
+
+                af.type      = sn;
+                af.duration  = dot_duration;
+                af.location  = APPLY_NONE;
+                af.modifier  = dot_dam;
+                af.bitvector = AFF_DOT;
+                affect_to_char(victim, &af);
+
+                send_to_char("<39>Painful vibrations continue to tear through your body.<0>\n\r", victim);
+        }
+
+        if ( !is_affected(victim, gsn_confusion)
+        &&   !IS_AFFECTED(victim, AFF_CONFUSION) )
+        {
+                confusion_duration = URANGE(1, level / 30, 3);
+
+                af.type      = gsn_confusion;
+                af.duration  = confusion_duration;
+                af.bitvector = AFF_CONFUSION;
+
+                af.location  = APPLY_HITROLL;
+                af.modifier  = -UMAX(1, level / 8);
+                affect_to_char(victim, &af);
+
+                af.location  = APPLY_INT;
+                af.modifier  = -1;
+                affect_to_char(victim, &af);
+
+                af.location  = APPLY_WIS;
+                af.modifier  = -1;
+                affect_to_char(victim, &af);
+
+                send_to_char("<558>The sonic blast leaves you reeling and confused.<559>\n\r", victim);
+        }
 
         return;
 }

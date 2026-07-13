@@ -184,11 +184,32 @@
                 mpecho {WReaver Tiareo says 'You're far too experienced to undertake that mission.'{x
         break
         else
-                mpecho {W'Purple dye is important for sahuagin; it is a sacred colour to us.        '{x
-                mpecho {W'Unfortunately, there are few good sources of the dye.  The highest quality'{x
+                mpecho {W'Purple dye is important for sahuagin; it is a sacred colour to us.         '{x
+                mpecho {W'Unfortunately, there are few good sources of the dye.  The highest quality '{x
                 mpecho {W'purple dye comes from the ink sac of a particularly elusive species of     '{x
                 mpecho {W'octopus found in the sovereign quarter of Omu.  Bring me a sac, and the    '{x
                 mpecho {W'will reward you richly.'{x
+        endif
+        endif
+~
+
+>speech_prog B~
+        if level($n) < 70
+                mpecho {WReaver Tiareo says 'I'm sorry, that mission is too dangerous for someone of your limited experience.'{x
+        break
+        else
+        if level($n) > 85
+                mpecho {WReaver Tiareo says 'You're far too experienced to undertake that mission.'{x
+        break
+        else
+                mpecho {W'Many moons ago, Reaver Ciarte was fishing with his young son in the Yeats '{x
+                mpecho {W'Sea.  He had recently magically fashioned his son a remarkable and unique '{x
+                mpecho {W'toy.  Unknown to him at the time, his son brought the toy on the trip and '{x
+                mpecho {W'lost it overboard.  He has been searching for it since, as he has been    '{x
+                mpecho {W'unable to replicate its construction.  Through scrying, he has narrowed   '{x
+                mpecho {W'down its location to the Eakos canal system, and believes it likely in the'{x
+                mpecho {W'possession of some large, crocodilian creature.  I charge you to retrieve '{x
+                mpecho {W'this toy, and bring it hither.'{x
         endif
         endif
 ~
@@ -451,6 +472,26 @@
                 mpecho $I examines $O closely.
                 mpecho {WReaver Tiareo says 'Sorry $n, this isn't an authentic item.'{x
                 give shaky $n
+        endif
+        endif
+~
+>give_prog marvellous toy~
+        if level($n) > 80
+                mpecho {WReaver Tiareo says 'That mission was for someone less experienced.'{x
+                give marvellous $n
+        break
+        else
+        if number($o) == 29252
+                mpjunk marvellous
+                mpecho {WReaver Tiareo says 'Brilliant work, $n, Ciarte and his son will be delighted.'{x
+                mpoload 29251 75
+                mpecho {WReaver Tiareo says 'Ciarte's son told me to give you this as a reward.'{x
+                give wooden $n
+        break
+        else
+                mpecho $I examines $O closely.
+                mpecho {WReaver Tiareo says 'Sorry $n, this isn't what I'm after.'{x
+                give marvellous $n
         endif
         endif
 ~

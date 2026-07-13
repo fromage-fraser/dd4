@@ -362,7 +362,6 @@ Syntax: ronin <<target>
 Toggle whether a player is flagged RONIN.
 ~
 
-
 -1 GREETING~
 O---=<  Dragons Domain IV  >=----------------- __----^^^^^^^^^^^------__ ---O
 |          .              .         _//^    ^//====......          __--^^^  |
@@ -388,11 +387,9 @@ O---<   Welcome Traveller, to the   D r a g o n s   D o m a i n   IV    >---O
 | DikuMud created by H.Starfeldt, K.Nyboe, T.Madsen, M.Seifert, & S.Hammer. |
 | Based on the original Merc 2.2 source written by Kahn, Hatchet and Furey. |
 | DD III code by Shade, Gezhp, Owl, Brutus, Jyhad, Tavolir, and Danath.     |
-| DD IV code by Shade, Owl, Gezhp and the rest of the team.                 |
+| DD IV code by Shade, Owl, Brutus, Gezhp and the rest of the team.         |
 O-----< MobCode from Merc 2.2 >-----< Quest Code (c) 1996 Ryan Addams >-----O
 Enter thy Name: ~
-
-
 
 101 IMOTD~
 {x
@@ -400,9 +397,10 @@ Enter thy Name: ~
 
 ~
 
+
 -1 MOTD~
 {x
-    [11 June 2026]
+    [13 July 2026]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -415,10 +413,11 @@ Enter thy Name: ~
     We're also active on a Discord server at {Yhttps://discord.gg/aGzmAWmXYb{x
     if you'd like to jump in and say hi!
 
-    {WAI POLICY{x: AI policy added. See {WHELP AI{x.
+    {WNEW AREA: EAKOS CANALS{x For levels 70-85.  This is the first part of the
+    Triton portion of the underwater megacity. 37 new mobs, 52 new objects, 131
+    new rooms, 1 new armour set, and 1 new quest!
 
-    {WFOOTSTEP FOLEY{x: Sounds for footsteps are in, influenced by terrain,
-    race, forms, flight, mountedness(!), and sneak.
+    {WAI POLICY{x: AI policy added. See {WHELP AI{x.
 
 
 To Enter the Dragons Domain press <<Return>.
@@ -666,6 +665,15 @@ Gezhp, Owl and Shade
 
 - Extensive combat sounds now implemented
 - Footstep foley added
+
+{WJuly 2026{X
+
+- "sonic blast" spell added
+- "bubble jet" skill added
+- "mpotimer" added--mobs can put timers on objects
+- "fickle" flag for objects added to permit randomising the randomisation
+- "banish" spell added
+- Eakos Canals complete and in
 
 ~
 
@@ -3941,6 +3949,13 @@ This spell takes you from your current location to a random location
 somewhere in the world.
 ~
 
+0 BANISH~
+Syntax: cast <<banish> <<target>
+
+If successful the target is BANISHED to a random location in the world.  If they
+resist, or the attempt fails, combat will be initiated if not already occurring.
+~
+
 0 VENTRILOQUATE 'CREATE SOUND'~
 Syntax: cast ventriloquate  <<speaker> <<message>
 Syntax: cast 'create sound' <<speaker> <<message>
@@ -5089,6 +5104,14 @@ Syntax: cast 'prismatic spray' <<target>
 This spell creates an array of magical affects, lightning, fire, acid,
 heat all at once.  This does terrible things to the victims who feel the
 combined effects of a mages most powerful magik.
+~
+
+0 'SONIC BLAST'~
+Syntax: cast 'sonic blast' <<target>
+
+This spell does only modest damage to its target, but induces nausea, confusion,
+and has some lingering effects due to its impact on the equilibrium and auditory
+system of its victim.
 ~
 
 0 'INNER FIRE'~

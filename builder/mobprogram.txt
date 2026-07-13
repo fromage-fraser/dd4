@@ -331,7 +331,8 @@ NOTE:  When the mobile dies, if the random percentage is less than the argument
     with a text message which said the mobile restored itself, this
     might be a convincing effect. (Note that your kitten could turn into
     a dragon this way too).  Of course this assumes that some NPC
-    commands have been implemented.
+    commands have been implemented. Note: $o is an empty value during a
+    death_prog.  Refer to objects using keywords etc.
 
 Note that the first successful bribe_prog, give_prog, hitprcnt_prog,
 death_prog, fight_prog, rand_prog and entry_prog is the only one which
@@ -621,6 +622,12 @@ Syntax:  MPPEACE
 
     Causes all characters and mobiles in a room to stop fighting.
 
+
+Syntax:  MPOTIMER <object> <number of ticks>
+
+    Sets a timer on an object.  Useful to help players obtain expiring
+    consumables, or even armour/weapons. Avoid using $o or the like if it'S
+    triggering during a death_prog--use keywords instead.
 
 --------------------------Regarding CPU Slowdown-------------------------------
 

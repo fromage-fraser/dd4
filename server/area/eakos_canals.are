@@ -1,0 +1,5716 @@
+#AREA Owl~ Eakos Canals~
+70 85 45 100
+
+#RECALL
+27347
+
+#AREA_SPECIAL
+exp_mod 112
+reset_msg {cA cold current rolls through the deep canals.{x
+~
+$
+
+#MOBILES
+#29200
+giant sea slug~
+a giant sea slug~
+<183>A giant sea slug is slithering about down here.<0>
+~
+A vast sea slug creeps across the ocean floor, its soft, rippling body leaving 
+a glistening trail over the silt. Its mottled hide shifts between dull violet, 
+grey and sickly green, and its fleshy horns sway blindly in the current as it 
+feeds among the drowned stones.
+~
+4|64|2048 512|67108864|9223372036854775808 0 S
+70 0 0 0d0+0 0d0+0
+4|8|32|128|512 0
+0 0 0
+>fight_prog 10~
+spit $n
+~
+|
+
+#29201
+marple fish~
+a marple~
+<196>A <202>b<208>r<214>i<220>g<226>h<190>t<154>l<118>y<82>-<46>c<47>o<48>l<49>o<48>u<47>r<46>e<47>d <51>a<87>n<123>d <159>c<195>h<201>e<207>e<213>r<219>f<225>u<189>l<153>-<117>l<81>o<45>o<39>k<33>i<27>n<21>g <93>f<129>i<165>s<201>h <207>s<213>w<219>i<225>m<189>s <153>a<117>b<81>o<45>u<39>t <33>m<27>e<21>r<57>r<93>i<129>l<165>y<0>.
+~
+A marple fish drifts through the deep water like a living lantern, its bright 
+scales glowing in bands of pink, gold, and sea-green. It flicks its delicate 
+fins with cheerful energy, scattering tiny sparks of light as it darts between 
+the dark rocks below.
+~
+64|128 512|8192|67108864|1073741824 300 S
+71 0 0 0d0+0 0d0+0
+4|8|32|512 0
+0 0 2
+>rand_prog 3~
+mpasound <69>A violent stream of bubbles catches your eye.<0>
+~
+>fight_prog 10~
+bubble $n
+~
+|
+
+#29202
+marple fish~
+a marple~
+<196>A <202>b<208>r<214>i<220>g<226>h<190>t<154>l<118>y<82>-<46>c<47>o<48>l<49>o<48>u<47>r<46>e<47>d <51>a<87>n<123>d <159>c<195>h<201>e<207>e<213>r<219>f<225>u<189>l<153>-<117>l<81>o<45>o<39>k<33>i<27>n<21>g <93>f<129>i<165>s<201>h <207>s<213>w<219>i<225>m<189>s <153>a<117>b<81>o<45>u<39>t <33>m<27>e<21>r<57>r<93>i<129>l<165>y<0>.
+~
+A marple fish drifts through the deep water like a living lantern, its bright 
+scales glowing in bands of pink, gold, and sea-green. It flicks its delicate 
+fins with cheerful energy, scattering tiny sparks of light as it darts between 
+the dark rocks below.
+~
+64|128 512|8192|67108864|1073741824 315 S
+71 0 0 0d0+0 0d0+0
+4|8|32|512 0
+0 0 1
+>rand_prog 3~
+mpasound <69>A violent stream of bubbles catches your eye.<0>
+~
+>fight_prog 10~
+bubble $n
+~
+|
+
+#29203
+ingkludd misshapen shelled creature~
+an ingkludd~
+<225>A misshapen shelled creature crawls painfully about.<0>
+~
+An eyeless, misshapen, shelled creature lies half-buried in the silt of the 
+ocean floor, its swollen body bulging awkwardly from a shell too small to 
+contain it. It seems to barely move, save for a faint regular twitching at its 
+pore-like breathing opening, but the moment anything disturbs it, the ingkludd 
+erupts into a piercing, bubbling shriek that carries horribly through the dark 
+water.
+~
+64 1|512|8192|4194304|67108864|9223372036854775808 -95 S
+71 0 0 0d0+0 0d0+0
+1|2|32 0
+0 0 0
+>rand_prog 3~
+mpasound <218>A piercing titter echoes through the deep water.<0>
+~
+>fight_prog 8~
+mpechoat $n <218>The ingkludd shrieks at you through its foul-looking breathing-hole!<0>
+c sonic $n
+~
+|
+
+#29204
+deepsea harpy~
+a deepsea harpy~
+<73>A deepsea harpy glides through the water, singing mournfully.<0>
+~
+A deepsea harpy hovers in the black water, her ragged fins spread like drowned 
+wings and her pale, sharp face framed by drifting strands of hair. She moves 
+with eerie grace above the ocean floor, taloned hands flexing as her thin, 
+mournful song trembles through the crushing dark.
+~
+64|4096 512|8192|524288|67108864 -290 S
+72 0 0 0d0+0 0d0+0
+32 0
+0 0 2
+>rand_prog 2~
+mpasound <37>A mournful song echoes through the deep.<0>
+~
+>fight_prog 8~
+if affspell($n) == 74
+        break
+else
+        mpechoat $n {cA deepsea harpy sings a melody that strikes at the very core of your being.{x
+	 c sonic $n
+        c 'paralysis' $n
+endif
+~
+|
+
+#29205
+water giant~
+a water giant~
+<81>A towering water giant glides effortlessly through the depths.<0>
+~
+A towering water giant glides effortlessly through the depths, his smooth blue 
+skin rippling like the ocean around it. Broad-shouldered and powerfully built, 
+he carries a massive coral-forged trident, his calm, watchful gaze following 
+every movement with quiet confidence.
+~
+64 16|512|4194304|67108864|1073741824 -125 S
+73 0 0 0d0+0 0d0+0
+128 0
+0 0 1
+>fight_prog 8~
+if inrflag($n) ==  131072
+        break
+else
+        mpechoat $n {CThe water giant summons an underwater blizzard!{x
+        c glaciation $n
+endif
+~
+|
+
+#29206
+water giantess~
+a water giantess~
+<45>A svelte water giantess moves with effortless grace.<0>
+~
+A towering water giantess moves with effortless grace through the deep, her 
+smooth turquoise skin shimmering faintly in the filtered light. Long strands of 
+dark seaweed-like hair drift behind her as she bears a beautifully crafted water 
+net, her calm but commanding presence making even the fiercest sea creatures 
+give way.
+~
+64 16|512|4194304|67108864|1073741824 -155 S
+73 0 0 0d0+0 0d0+0
+128 0
+0 0 2
+>fight_prog 8~
+c 'fury of nature' $n
+~
+|
+< reserved~ elite~
+
+#29207
+lorwyn merrow~
+a Lorwyn merrow~
+<80>A proud merrow watches you with bright, calculating eyes.<0>
+~
+This male Lorwyn merrow carries himself with polished dignity, every gesture 
+calm, precise and faintly theatrical. His voice is smooth and persuasive, and 
+he seems far more likely to defeat an enemy with argument, oath or clever 
+bargain than with a blade.
+~
+64|4096 8|32|512|8192|8388608|67108864 0 S
+73 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>fight_prog 5~
+if affspell($n) == 565
+    break
+else
+    target arm
+endif
+~
+>fight_prog 5~
+if affspell($n) == 566
+    break
+else
+    target leg
+endif
+~
+>rand_prog 1~
+say I have heard drowned bells with clearer arguments than yours.
+~
+>rand_prog 1~
+say Were wit a current, you would still be stranded.
+~
+>rand_prog 1~
+say You speak boldly for someone so poorly edited.
+~
+>rand_prog 1~
+say I admire your confidence; it survives all contact with reality.
+~
+>rand_prog 1~
+say Your mind has all the depth of an inland tidepool.
+~
+>rand_prog 1~
+say I would debate you, but it is ill sport to harvest only the lowest fruit.
+~
+>rand_prog 1~
+say I have met sea foam with firmer conviction.
+~
+>rand_prog 1~
+say Do all landfolk conflate volume with intelligence?
+~
+>rand_prog 1~
+say What a fine anchor you would make—heavy, dull, and a massive drag on everyone.
+~
+>rand_prog 1~
+say I’d tell you to get a backbone, but you’d just slither away.
+~
+|
+
+#29208
+lorwyn merrow~
+a Lorwyn merrow~
+<86>A Lorwyn merrow glides nearby, her luminous scales glinting.<0>
+~
+This female Lorwyn merrow moves with courtly confidence, her colourful fins 
+trailing like silk through the water. Her expression is warm but unreadable, 
+and every word she speaks feels carefully chosen to flatter, challenge or 
+quietly outmanoeuvre.
+~
+64|4096 8|32|512|8192|8388608|67108864 0 S
+73 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>fight_prog 10~
+if affspell($n) == 277
+        break
+else
+        mpechoat $n {cThe merrow ridicules you in brutal fashion.{x
+        c 'ego whip' $n
+endif
+~
+>rand_prog 1~
+say If wit were a currency, you’d be deep in debt.
+~
+>rand_prog 1~
+say How brave of you to bring that face underwater; most wreckage waits to be dragged down.
+~
+>rand_prog 1~
+say You move with all the grace of a dropped anchor.
+~
+>rand_prog 1~
+say Do stay. It is rare to meet someone who makes desolation look educated.
+~
+>rand_prog 1~
+say I would call you shallow, but even puddles resent such comparison.
+~
+>rand_prog 1~
+say I have seen pearls form around irritants less persistent than you.
+~
+>rand_prog 1~
+say You have a face one might trust with bad news, provided one wished it made worse.
+~
+>rand_prog 1~
+say You are proof that nature, when bored, might practise caricature.
+~
+>rand_prog 1~
+say Please speak again; I am collecting examples of courage untroubled by good judgment.
+~
+>rand_prog 1~
+say You wear ignorance with such polish that one almost forgets it is not jewellery.
+~
+>fight_prog 5~
+if affspell($n) == 558
+    break
+else
+    mpechoat $n {cThe merrow smiles slyly, whilst wiggling her fins in a curious pattern.{x
+    c confusion $n
+endif
+^
+~
+|
+
+#29209
+deinosuchus crocodile~
+a deinosuchus~
+<22>A huge deinosuchus lurks here, displaying an armoured hide and massive jaws.<0>
+~
+The enormous crocodile-like deinosuchus stretches nearly ten metres from blunt 
+snout to heavy tail, its dark, ridged hide plated like old stone. Its eyes sit 
+cold and watchful above a mouth built for crushing bone, and every slow 
+movement suggests terrible strength held in patient reserve. It swims through 
+the deep, dark ocean, hunting for prey.  Today might be your unlucky day.
+~
+64|2048 32|512|4194304|8388608|33554432|67108864|9223372036854775808 0 S
+74 0 0 0d0+0 0d0+0
+4|32|128|512 0
+0 0 2
+>fight_prog 6~
+swallow $n
+~
+>greet_prog 10~
+mpkill $n
+~
+>entry_prog 5~
+mpkill $n
+~
+|
+< reserved~ elite~
+
+#29210
+deinosuchus crocodile~
+a deinosuchus~
+<22>A huge male deinosuchus lurks here, all brute strength and reptilian menace.<0>
+~
+This enormous male Deinosuchus stretches nearly ten metres from blunt snout to 
+heavy tail, his dark, ridged hide plated like old river stone. His cold eyes 
+watch from above a massive jaw built to crush bone, and every slow movement 
+through the deep oceanic environ carries the weight of a patient, primeval 
+predator.  Whelp.
+~
+64|2048 32|512|4194304|8388608|33554432|67108864|9223372036854775808 0 S
+74 0 0 0d0+0 0d0+0
+4|32|128|512 0
+0 0 1
+>fight_prog 8~
+swallow $n
+~
+>greet_prog 9~
+mpkill $n
+~
+>entry_prog 7~
+mpkill $n
+~
+|
+< reserved~ elite~
+
+#29211
+mosasaur~
+a mosasaur~
+<244>A vast marine reptile glides stealthily through the water.<0>
+~
+The mosasaur is a huge, powerfully built sea predator from a half-forgotten age, 
+moving through deep water with the dreadful confidence of something that fears 
+nothing. Its armoured hide, immense jaws, and crushing bite make it the terror 
+of inland seas, where it is said to ram vessels below the waterline before 
+devouring the survivors. Though slow and awkward on land, in the water it is a 
+monstrous hunter, capable of dragging large prey down into the dark and 
+swallowing it whole.
+~
+64 32|512|32768|8388608|67108864 -55 S
+75 0 0 0d0+0 0d0+0
+4|8|32|128|512 0
+0 0 2
+>fight_prog 10~
+swallow $n
+~
+>greet_prog 10~
+mpkill $n
+~
+>entry_prog 10~
+mpkill $n
+~
+>fight_prog 10~
+flukeslap $n
+~
+>fight_prog 5~
+mpecho {cThe mosasaur unleashes a thundering bellow!{x
+c 'sonic blast' $n
+~
+>death_prog 100~
+mpecho Something is expelled from the mosasaur's body...
+mpoload 29252 75
+~
+|
+< reserved~ rare~
+
+#29212
+wretchglow spinosaurid silhouette bioluminescent~
+a wretchglow~
+<122>You see a huge spinosaurid silhouette lit by a sickly bioluminescent lure.<0>
+~
+The wretchglow is a magical, deep-water spinosaurus variant known as “the Last 
+Light”, a name earned from the ghostly glow that hangs before it in the 
+darkness. It haunts submerged caves and lightless channels, using its 
+bioluminescence to attract curious or desperate prey before closing with 
+terrible speed and razor-sharp teeth. Its glow is beautiful from a distance, 
+but once the great shape behind it emerges from the murk the watcher 
+understands what has found them.
+~
+64|2048 16|32|512|32768|65536|4194304|8388608|67108864 -55 S
+75 0 0 0d0+0 0d0+0
+4|32|128|512 0
+0 0 1
+>greet_prog 15~
+mpkill $n
+~
+>entry_prog 15~
+mpkill $n
+~
+>death_prog 100~
+mpoload 29248 83
+~
+|
+< reserved~ boss~
+
+#29213
+deep scion~
+a deep scion~
+<64>A deep scion is here, all fangs, scales, and hateful intelligence.<0>
+~
+In its piscine form, the deep scion reveals what the sea has truly made of it: 
+a powerful humanoid shape twisted with fish-like features, lamprey jaws, raking 
+claws, and the cold stare of something that no longer belongs to land. You're 
+told it moves with awkward heaviness out of water, but here in the depths it 
+becomes swift, predatory, and horribly at home.
+~
+64 4|512|8192|67108864|1073741824 -1000 S
+75 0 0 0d0+0 0d0+0
+64 0
+0 0 1
+>fight_prog 9~
+c 'synaptic blast' $n
+~
+>death_prog 100~
+mpecho <64>As life fades from the deep scion, he returns to his human shape.<0>
+mpoload 29216
+
+
+
+
+~
+|
+
+#29214
+deep scion female~
+a deep scion~
+<64>A female deep scion is here, all slick scales and lamprey jaws.<0>
+~
+In her piscine form, the deep scion reveals what the sea has made of her: a 
+powerful womanly shape twisted into something fish-like, predatory, and wrong. 
+Slick scales cover her body, claws rake from her hands, and her lamprey-like 
+jaws open with a hunger that no longer seems human. She still carries faint 
+traces of the woman she once was, but only enough to make the transformation 
+feel like a cruel memory wearing a monster’s skin.
+~
+64 4|512|8192|67108864|1073741824 -1000 S
+75 0 0 0d0+0 0d0+0
+64 0
+0 0 2
+>fight_prog 10~
+c 'synaptic blast' $n
+~
+>death_prog 100~
+mpecho <64>As life fades from the deep scion, she returns to her human shape.<0>
+mpoload 29217
+
+
+~
+|
+
+#29215
+water weird serpentine living woman translucent~
+a water weird~
+<39>A translucent, serpentine woman of living water forms from the deep.<0>
+~
+The water weird emerges as an upper body of clear water, shaped like a beautiful 
+female figure, while its lower half coils back as a twisting column. It is an 
+elemental guardian bound to these waters, malicious according to the nature of 
+the place it protects. Silent and eerily intelligent, it waits unseen until 
+disturbed, then rises in a sudden liquid surge to seize, coil, and drag the 
+living down.
+~
+64|2048 2|4|8|16|512|8192|32768|65536|524288|1048576|8388608|67108864|1073741824 -1000 S
+76 0 0 0d0+0 0d0+0
+8|32|64|256|512 0
+0 0 0
+>fight_prog 5~
+if inrflag($n) ==  131072
+        break
+else
+        mpechoat $n {CThe temperature suddenly drops!{x
+        c glaciation $n
+endif
+^
+~
+>fight_prog 5~
+c 'steam breath' $n
+~
+>fight_prog 5~
+c 'fury of nature' $n
+~
+>fight_prog 5~
+bubble $n
+~
+|
+< reserved~ elite~
+
+#29216
+anguillian~
+an anguillian~
+<58>A me<94>na<58>ci<94>ng<58>, e<94>el<58>-l<94>ik<58>e h<94>um<58>ano<94>id <58>fa<94>ce<58>s yo<94>u c<58>ol<94>dl<58>y.<0>
+~
+An anguillian glides through the deep water, its six-foot eel-like body covered 
+in mottled brown scales and ending in a flat, finned tail. Short legs and wide 
+six-toed feet tuck beneath it, while two upper appendages end in hard bony 
+pincers. Its blunt, eyeless, jawless face is dominated by a circular mouth 
+ringed with teeth, flanked by spiny fins, giving it the look of something bred 
+in lightless trenches rather than mortal seas.
+~
+4|64|2048 1|67108864 -375 S
+78 0 0 0d0+0 0d0+0
+2|512 0
+0 0 1
+< reserved~ rare~
+
+#29217
+anguillian~
+an anguillian~
+<58>A f<94>em<58>al<94>e a<58>ng<94>ui<58>ll<94>ia<58>n s<94>wi<58>ms<94> he<58>re<94>, h<58>er<94> bo<58>dy<94> co<58>il<94>ed<58> ar<94>ou<58>nd<94> a c<58>lu<94>tc<58>h o<94>f l<58>ea<94>th<58>er<94>y e<58>gg<94>s.<0>
+~
+This female anguillian moves through the deep ocean water with slow, guarded 
+menace, her brown-speckled eel-like-but-roughly-humanoid body has a small 
+cluster of soft, translucent eggs attached to it. Short legs and wide six-toed 
+feet tuck beneath her long tail, while two upper appendages end in hard bony 
+pincers. Her pincers flex at the slightest disturbance, and her circular, 
+tooth-ringed mouth at the centre of her eyeless head opens and closes silently 
+as she is on guard for anything foolish enough to come near her brood.
+~
+4|64|2048 1|67108864 -385 S
+78 0 0 0d0+0 0d0+0
+2|512 0
+0 0 2
+< reserved~ rare~
+
+#29218
+ocean strider~
+an ocean strider~
+A towering ocean strider plows through the water, black-and-white skin gleaming.
+~
+This enormous aquatic fey resembles a strange union of giant elf and orca, 
+standing nearly twenty feet tall with smooth, glossy black-and-white skin, sharp 
+teeth and a powerful tail. He moves athrough the deep undersea as though it were 
+solid ground, carrying himself with eerie grace and terrible confidence.
+~
+64 4|8|32|4194304|8388608|67108864 0 S
+79 0 0 0d0+0 0d0+0
+32|128 0
+0 0 1
+>act_prog p from the corpse of~
+mpecho {RAn ocean strider looks at you with fury and disgust!{x
+murder $n
+
+~
+|
+< reserved~ elite~
+
+#29219
+ocean strider~
+an ocean strider~
+A huge ocean strider marches through the water, her piebald skin shimmering.
+~
+This enormous aquatic fey resembles a strange union of giant elf and orca, 
+standing nearly twenty feet tall with smooth, glossy black-and-white skin, sharp 
+teeth and a powerful tail. She moves athrough the deep undersea as though it 
+were solid ground, carrying herself with haughty grace and terrible confidence.
+~
+64 4|8|32|4194304|8388608|67108864 0 S
+79 0 0 0d0+0 0d0+0
+32|128 0
+0 0 2
+>act_prog p from the corpse of~
+mpecho {RAn ocean strider looks at you with fury and disgust!{x
+murder $n
+~
+|
+< reserved~ elite~
+
+#29220
+Auralithra pearl dragon~
+Auralithra~
+<255>Au<252>ra<189>li<195>th<225>ra<159> th<251>e p<255>ea<252>rl<189> dr<195>ag<225>on<159> co<251>il<255>s h<252>er<189>e i<195>n c<225>ol<159>d, l<251>um<255>in<252>ou<189>s w<195>at<225>er<159>.<0>
+~
+Auralithra rests in the coldest part of the chamber, her long, pearl-white body 
+circled around coins, coral, gems and valuable relics. Her scales gleam with soft 
+nacreous colours, shifting from milk-white to faint rose, blue, and silver as 
+the undersea current moves over her. She watches in perfect stillness, her 
+clawed feet clutching at her hoard, her bearing regal and ancient, and it almost 
+seems as though every treasure here is an extension of her own pale splendour.
+~
+2|64 4|8|16|32|128|8192|524288|8388608|67108864|536870912|1073741824 0 S
+80 0 0 0d0+0 0d0+0
+4|128|512 0
+0 0 2
+>fight_prog 5~
+swallow $n
+~
+>fight_prog 5~
+mpechoat $n {WAuralithra smiles, rather charmingly. "Oh possum, do you REALLy want to hurt me?"
+mpforce $n flee
+
+~
+>rand_prog 1~
+mpecho {WAuralithra smiles at you, expectantly.{x
+~
+>act_prog p digs into the ground~
+mpecho {WAuralithra <558>really<559> did not like that.{x
+mpkill $n
+~
+>death_prog 100~
+mpoload 29247 83
+~
+|
+
+#29221
+stone urchin sea-urchin~
+a stone urchin~
+<238>A stone sea-urchin clings to the side of the tunnel walls.<0>
+~
+The stone urchin clings motionless to the tunnel floor, half-buried among silt 
+and broken shell as though it were only a jagged black rock. Long, mineral-hard 
+spines radiate from its rounded body, each one dark at the base and pale at the 
+tip with a faint venomous sheen. When the current shifts too near, the spines 
+flex almost imperceptibly, waiting to pierce careless flesh.
+~
+2|64 1|65536|67108864 0 S
+79 0 0 0d0+0 0d0+0
+1|2|4|8|16|32 0
+0 0 1
+>all_greet_prog 10~
+mpechoat $n {WYou accidentally step on a stone urchin!{x
+mpkill $n
+~
+>death_prog 100~
+mpoload 29228
+mpotimer chunk 100
+~
+|
+
+#29222
+stone urchin sea-urchin~
+a stone urchin~
+<238>A stone sea-urchin clings to the side of the chamber wall.<0>
+~
+The stone urchin clings motionless to the tunnel floor, half-buried among silt 
+and broken shell as though it were only a jagged black rock. Long, mineral-hard 
+spines radiate from its rounded body, each one dark at the base and pale at the 
+tip with a faint venomous sheen. When the current shifts too near, the spines 
+flex almost imperceptibly, waiting to pierce careless flesh.
+~
+2|64 1|65536|67108864 0 S
+79 0 0 0d0+0 0d0+0
+1|2|4|8|16|32 0
+0 0 2
+>all_greet_prog 10~
+mpechoat $n {WYou accidentally step on a stone urchin!{x
+mpkill $n
+~
+>death_prog 100~
+mpoload 29228
+mpotimer chunk 100
+~
+|
+
+#29223
+scrag deep-sea deepsea troll~
+a scrag~
+<143>A hulking scrag lurks here, all rubbery green flesh and tangled weed-hair.<0>
+~
+This deep-sea troll has a gaunt, powerful body, long clawed arms, and pallid 
+green hide slick with slime and barnacle scars. Its black eyes gleam with crude 
+hunger beneath ropes of kelp-like hair, while its ragged mouth opens and closes 
+as though tasting blood in the current.
+~
+64|2048 32|512|67108864|1073741824 -485 S
+80 0 0 0d0+0 0d0+0
+32 0
+0 0 2
+>fight_prog 9~
+c starve $n
+~
+>fight_prog 5~
+c parch $n
+~
+>death_prog 50~
+mpoload 29229
+mpotimer chunk 100
+~
+|
+
+#29224
+scrag deep-sea deepsea troll~
+a scrag~
+<143>A rough-looking scrag stomps about here, his green flesh shimmering.<0>
+~
+This deep-sea troll has a gaunt, powerful body, long clawed arms, and pallid 
+green hide slick with slime and barnacle scars. His black eyes gleam with crude 
+hunger beneath ropes of kelp-like hair, while his ragged mouth opens and closes 
+as though tasting blood in the current.
+~
+64|2048 32|512|67108864|1073741824 -435 S
+80 0 0 0d0+0 0d0+0
+32 0
+0 0 1
+>fight_prog 9~
+c starve $n
+~
+>fight_prog 5~
+c parch $n
+~
+>death_prog 50~
+mpoload 29230
+mpotimer chunk 100
+~
+|
+
+#29225
+ashiera~
+an ashiera~
+<74>A stocky ashiera glides here, grey-blue ridges sweeping from his brow.<0>
+~
+This aquatic humanoid is short and powerful, with grey skin, small ears and 
+nose, gills at the neck, and webbed fingers moving with restless precision 
+through the deep water. Ridged blue-grey folds sweep back from his brow, while 
+a faint chill gathers around his fingertips, hinting at the coldfire and 
+fog-wrapped magic of his wild-blooded race.
+~
+64 524288|67108864 -120 S
+80 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>fight_prog 8~
+if inrflag($n) ==  131072
+        break
+else
+        mpechoat $n {CThe ashiera's fingertips burn bright blue!{x
+        c glaciation $n
+endif
+~
+>fight_prog 7~
+if affspell  ($n)  == 21
+	break
+else 
+	c 'chill touch' $n
+endif
+~
+|
+
+#29226
+ashiera~
+an ashiera~
+<74>A fierce female ashiera swims here, her webbed hands wreathed in drifting mist.<0>
+~
+This female ashiera is short, stocky and powerfully built, with grey skin, small 
+features, neck-gills, and slightly webbed fingers and toes. Blue-grey ridges 
+sweep back from her brow, while her slick, close-fitting garments cling to her 
+body as she moves through the water with the same hard, territorial confidence 
+her people show in sea or sky.
+~
+64 524288|67108864 -125 S
+80 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>fight_prog 8~
+if inrflag($n) ==  131072
+        break
+else
+        mpechoat $n {CThe ashiera's fingertips burn bright blue!{x
+        c glaciation $n
+endif
+~
+>fight_prog 6~
+if affspell  ($n)  == 21
+	break
+else 
+	c 'chill touch' $n
+endif
+~
+|
+
+#29227
+ocean sprite~
+an ocean sprite~
+<81>A cheerful male ocean sprite swims here.<0>
+~
+This two-foot-tall, wingless faerie has rounded cheeks, wide fish-like eyes and 
+slick light-blue skin, with coarse green hair drifting around the gills of his 
+neck. Webbing joins his fingers and toes, while shells, pearls and fragments of 
+sunken treasure ornament his vivid eelskin clothing.
+~
+64|128|4096|8388608 2|4|8|128|512|8192|524288|67108864|536870912|1073741824 850 S
+81 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>death_prog 50~
+mpoload 29239
+mpotimer chunk 200
+~
+|
+
+#29228
+ocean sprite~
+an ocean sprite~
+<81>A graceful female ocean sprite frolics here.<0>
+~
+This diminutive ocean sprite has a fine, cheerful face, large aquatic eyes and 
+smooth blue skin that shines softly in the filtered light. Her seaweed-textured 
+hair floats around delicate neck-gills, and her bright eelskin garments are 
+decorated with coral, pearls and tiny treasures gathered from the ocean floor.
+~
+64|128|4096|8388608 2|4|8|128|512|8192|524288|67108864|536870912|1073741824 850 S
+81 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>death_prog 25~
+mpoload 29239
+mpotimer chunk 200
+~
+|
+
+#29229
+giant seahorse~
+a giant seahorse~
+<75>A broad-crested giant seahorse drifts here, his armoured hide gleaming blue and gold.<0>
+~
+This enormous seahorse moves with stately power, its ridged plates, curling tail 
+and crown-like crest marking a mature male whose swollen brood pouch rests 
+beneath its plated belly.
+~
+64|131072 8192|67108864 750 S
+82 0 0 0d0+0 0d0+0
+4|8|512 0
+0 0 1
+>fight_prog 10~
+bubble $n
+~
+>death_prog 50~
+if rand(50)
+mpmload 29231
+endif
+if rand(50)
+mpmload 29231
+endif
+if rand(50)
+mpmload 29231
+endif
+if rand(50)
+mpmload 29231
+endif
+if rand(50)
+mpmload 29231
+endif
+if rand(50)
+mpmload 29231
+endif
+~
+|
+
+#29230
+giant seahorse~
+a giant seahorse~
+<210>A graceful female seahorse swims here, her coral-red armour shimmering.<0>
+~
+This towering seahorse has a slender, elegant body covered in overlapping bony 
+plates, with delicate fins, a long tubular snout and a tightly coiled tail that 
+grips coral when the current grows strong.
+~
+64|131072 8192|67108864 750 S
+82 0 0 0d0+0 0d0+0
+4|8|512 0
+0 0 2
+>fight_prog 10~
+bubble $n
+~
+|
+
+#29231
+baby tiny seahorse~
+a baby seahorse~
+<195>A newborn seahorse flutters here, its fragile body pale and translucent.<0>
+~
+Newly released from its father’s brood pouch, this minute seahorse drifts 
+unsteadily through the water. Its delicate fins beat rapidly, while its soft, 
+translucent armour and tightly curled tail mark it as scarcely born.
+~
+64|128|131072 8192|1048576|67108864 350 S
+80 0 0 0d0+0 0d0+0
+4|8|512 0
+0 0 1
+>fight_prog 10~
+bubble $n
+~
+|
+
+#29232
+vapour imp~
+a vapour imp~
+<160>A cackling male vapour imp oozes red mist from his crimson skin.<0>
+~
+This two-foot-tall imp has a protruding belly, clawed hands and feet, a pointed 
+tail, curved horns and a huge drooping nose above a grin of tiny teeth; red 
+vapour seeps constantly from his pores, and his blazing eyes gleam with vicious 
+delight.
+~
+64|2048|4096 8|16|512|524288|1048576|67108864|1073741824 -1000 S
+83 0 0 0d0+0 0d0+0
+64|512 0
+0 0 1
+>fight_prog 2~
+c inebriate $n
+~
+>fight_prog 1~
+c parch $n
+~
+|
+< reserved~ rare~
+
+#29233
+vapour imp~
+a vapour imp~
+<124>A shrieking female vapor imp prowls here, wreathed in blood-red mist.<0>
+~
+This diminutive crimson fiend has long ears, slender horns, sharp claws and a 
+sinuous pointed tail, while crimson vapour curls from her skin and gathers 
+around her blazing red eyes and needle-toothed smile.
+~
+64|2048|4096 8|16|512|524288|1048576|67108864|1073741824 -1000 S
+83 0 0 0d0+0 0d0+0
+32|64|512 0
+0 0 2
+>fight_prog 1~
+c banish $n
+~
+>fight_prog 1~
+c starve $n
+~
+|
+< reserved~ rare~
+
+#29234
+sea wyrm~
+a sea wyrm~
+<109>A majestic sea wyrm glides through the water, its serpentine body gleaming.<0>
+~
+This enormous, wingless sea dragon stretches nearly twenty-five feet from its 
+powerful jaws to the tip of its tapering tail, moving deep under the sea with 
+serene, sinuous grace. Though normally placid, its muscular coils could crush a 
+small vessel, while a deep breath swells within its throat behind rows of 
+predatory teeth.
+~
+64|4096|8388608 4|8|16|32|2097152|8388608|67108864|536870912|1073741824 -75 S
+84 0 0 0d0+0 0d0+0
+4|8|32|128|512 0
+0 0 1
+>fight_prog 8~
+swallow $n
+~
+>death_prog 50~
+if rand(50)
+mpoload 29243
+mpotimer egg 150
+endif
+if rand(50)
+mpoload 29244
+mpotimer egg 150
+endif
+if rand(50)
+mpoload 29245
+mpotimer egg 150
+endif
+~
+|
+< reserved~ elite~
+
+#29235
+myrmyxicus monstrous~
+a myrmyxicus~
+<154>A monstrous myrmyxicus lurks here, its clawed arms and writhing tentacles poised to strike.<0>
+~
+Nearly twenty-five feet long, this greasy deepwater demon has the fanged head of 
+a prehistoric sea reptile, tiny black eyes and three pairs of curling ram-like 
+horns. Tall spines rise along its back, while four muscular arms surround its 
+chest, six octopoid tentacles ring its waist, and its eel-like body ends in a 
+slavering lamprey mouth.
+~
+64|2048|4096|8388608 4|8|16|32|512|8192|8388608|16777216|67108864|536870912|1073741824 -1000 S
+85 0 0 0d0+0 0d0+0
+8|128|512 0
+0 0 1
+>fight_prog 7~
+c 'acid breath' $n
+~
+>fight_prog 5~
+c nausea $n
+~
+>fight_prog 5~
+mpecho Something happens.
+~
+>fight_prog 3~
+c hex $n
+~
+>death_prog 100~
+mpoload 29249 83
+~
+|
+< reserved~ boss~
+
+#29236
+giant water spider~
+a giant water spider~
+<239>A large water spider crouches in the drowned canal.<0>
+~
+She lurks where the underwater current grows still, a huge aquatic spider with 
+a swollen dark body, glassy eyes, and long hooked legs that move almost silently 
+through the gloom. Fine strands of webbing drift between grates, pillars, and 
+broken masonry, trembling whenever prey passes too close. Though monstrous, 
+she has a cold, deliberate intelligence, waiting beneath the murk until the 
+right moment to unfold from the shadows and drag the struggling victim deeper 
+into her drowned lair.
+~
+2|64 512|65536|8388608|67108864 -440 S
+82 0 0 0d0+0 0d0+0
+4|32 0
+0 0 2
+>greet_prog 8~
+mpkill $n
+~
+>death_prog 60~
+mpoload 29250 80
+~
+|
+
+#29237
+giant sea anemone~
+a giant sea anemone~
+<218>A <225>gi<189>an<153>t <147>se<141>a <135>an<99>em<105>on<111>e <147>cl<153>in<189>gs<225> t<218>o <225>th<189>e <153>ca<147>na<141>l <135>fl<99>oo<105>r,<111> h<147>er<153> t<189>en<225>dr<218>il<225>s <189>wa<153>vi<147>ng<141> g<135>en<99>tl<105>y.<0>
+~
+She waits among the stones and silt of the drowned canal, a vast sea anemone 
+with a fleshy column anchored deep into the floor and a halo of long, luminous 
+tendrils swaying gently in the current. Her colours are strangely lovely, all 
+ghost-pink, blue-white, and bruised violet, but every soft movement hides a 
+paralysing hunger. When prey drifts near, her tendrils close with sudden grace, 
+drawing the victim down into the pulsing mouth at her centre.
+~
+2|64|4096 8|64|512|8192|8388608|67108864 0 S
+82 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|128 0
+0 0 2
+>greet_prog 7~
+mpkill $n
+swallow $n
+~
+>fight_prog 8~
+c paralysis $n
+~
+>fight_prog 4~
+swallow $n
+~
+|
+#0
+
+#OBJECTS
+#29200
+misshapen shell hideously~
+a hideously misshapen shell~
+The misshapen shell of a large sea creature lies here.~
+~
+9 4096|67108864|274877906944 1024
+0~ 7~ 0~ 0~
+1 0 0
+A
+17 -40
+A
+51 -10
+A
+37 -1
+A
+38 -1
+A
+23 -10
+A
+2 -10
+
+#29201
+talons~
+razor-sharp talons~
+The talons of a deepsea harpy lie here.~
+~
+5 4096|16777216|67108864|274877906944 8192
+3~ 0~ 0~ 14~
+1 0 0
+A
+19 8
+A
+50 5
+A
+51 5
+
+#29202
+thick grey slime~
+thick grey slime~
+A small pool of thick grey slime is here.~
+~
+28 274877906944 1|16384
+71~ ~ resist cold~ ~
+1 0 0
+
+#29203
+crude blackwood club~
+a crude blackwood club~
+A crude, heavy club of blackened driftwood rests here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 7~
+4 0 0
+E
+crude blackwood club~
+A crude, heavy club of blackened driftwood, studded with jagged shells, 
+coral shards and the yellowed teeth of drowned beasts. Long soaked in 
+the crushing depths, it bears a slick sheen of algae and salt, while 
+frayed lengths of kelp trail from its haft like tattered streamers.
+
+~
+A
+19 7
+A
+18 -5
+A
+24 -8
+
+#29204
+coral trident coral-forged~
+a massive coral-forged trident~
+A massive trident forged from deep-sea coral has been abandoned here.~
+~
+5 64 1|8192
+0~ 0~ 0~ 2~
+30 0 0
+A
+1 4
+A
+19 12
+A
+50 6
+A
+36 -1
+
+#29205
+coral girdle~
+a coral girdle~
+A giant girdle made of coral and decorated with seaweed lies here.~
+~
+9 64|549755813888 1|2048
+0~ 0~ 0~ 0~
+40 0 0
+A
+1 4
+A
+19 4
+A
+50 5
+A
+12 15
+
+#29206
+water net~
+a water net~
+A new object lies here.~
+~
+5 64 1|8192
+0~ 0~ 0~ 9~
+30 0 0
+A
+2 4
+A
+51 5
+A
+18 20
+A
+50 -8
+
+#29207
+viscious claws~
+vicious claws~
+The claws of some deep sea creature lie here.~
+~
+5 4096|16777216|67108864 8192
+3~ 0~ 0~ 5~
+1 0 0
+A
+51 6
+A
+19 5
+A
+18 7
+A
+50 5
+
+#29208
+abyssal marrowfruit~
+an abyssal marrowfruit~
+A soft, pearl-white abyssal marrowfruit pulses faintly with blue light.~
+~
+26 64 1|16384
+70~ regenerate~ ~ ~
+1 0 0
+E
+abyssal marrowfruit~
+The abyssal marrowfruit grows in clusters along the bones of ancient 
+things that sank too deep to rot. Each fruit is no larger than a 
+clenched fist, pale and translucent, with slow threads of blue-green 
+light moving beneath its skin like veins. When split open, it 
+releases a faint mineral sweetness and a shimmer of silvery sap that 
+clings to wounds, sealing torn flesh with an itching, unnatural speed. 
+Deep-sea scavengers will fight viciously over even a bruised specimen, 
+and divers whisper that eating too much of it does not merely heal the 
+body, but encourages it to remember older, stranger shapes.
+~
+
+#29209
+massive jaws~
+massive jaws~
+The massive jaws of some crocodilian creature lie here.~
+~
+5 4096|16777216|67108864|274877906944 8192
+1~ 0~ 0~ 10~
+60 0 0
+A
+19 40
+A
+50 15
+
+#29210
+armoured hide~
+an armoured hide~
+The thick hide of a huge crocodilian creature lies here.~
+~
+9 274877906944 8
+0~ 7~ 0~ 0~
+200 0 0
+A
+17 -50
+A
+32 -1
+A
+37 -1
+A
+38 -1
+A
+36 -1
+
+#29211
+deinosuchus egg crocodilian~
+a deinosuchus egg~
+The egg of some huge crocodilian creature lies here.~
+~
+26 0 1|16384
+74~ sanctuary~ cell adjustment~ ~
+1 0 0
+
+#29212
+tough hide~
+a tough hide~
+The tough hide of some kind of underwater dinosaur lies here.~
+~
+9 4096|67108864|274877906944 8
+0~ 7~ 0~ 0~
+500 0 0
+A
+17 -200
+A
+24 -15
+A
+37 -1
+A
+36 -1
+A
+38 -1
+
+#29213
+magical lure rod long scaled~
+a magical lure~
+A long scaled rod with a luminous tip is here.~
+~
+3 0 1|16384
+75~ 4~ 4~ regenerate~
+5 0 0
+
+#29214
+battleaxe axe heavy slimy~
+a heavy battleaxe~
+A heavy, slimy battleaxe rests here.~
+~
+5 16|64|512 1|8192
+0~ 0~ 0~ 13~
+30 0 0
+A
+1 4
+A
+19 15
+A
+50 5
+A
+51 5
+
+#29215
+maw lamprey~
+a lamprey-like maw~
+The lamprey-like maw of some aquatic beast lies here.~
+~
+5 67108864 8192
+1~ 0~ 0~ 10~
+2 0 0
+A
+19 10
+A
+18 -5
+
+#29216
+handsome man corpse~
+a handsome man's corpse~
+The corpse of a handsome man lies here.~
+~
+23 0 0
+~ ~ ~ ~
+80 0 0
+E
+handsome man corpse~
+The corpse is that of a handsome man, broad-shouldered and finely made, his face
+now peaceful in a way his monstrous shape never was. Dark hair clings damply to 
+his brow, and his skin has the pale, cold beauty of something long-rested in 
+deep waters. Only faint bruising around his mouth suggests the horror that once 
+moved beneath this human mask.
+~
+
+#29217
+beautiful woman corpse~
+a beautiful woman's corpse~
+The corpse of a beautiful woman lies here.~
+~
+23 0 0
+~ ~ ~ ~
+55 0 0
+E
+beautiful woman corpse~
+The corpse is that of a beautiful woman, elegant even in death, with sea-dark 
+hair spread about her like seaweed in a current. Her features are composed and 
+strangely sorrowful, as though the change back into human flesh restored some 
+trace of who she had been before the deep claimed her. Her pale skin is cold and
+sodden, and faint red staining marks her lips.
+~
+
+#29218
+sharp pincers~
+sharp pincers~
+The sharp pincers of some terrible deep sea beast lie here.~
+~
+5 16777216|67108864 8192
+3~ 0~ 0~ 5~
+15 0 0
+A
+19 10
+A
+1 4
+
+#29219
+whiplike tail~
+heavy whiplike tail~
+The long, mottled brown tail of some large sea creature lies here.~
+~
+5 4096|67108864 8192
+6~ 0~ 0~ 4~
+30 0 0
+A
+51 7
+A
+50 10
+
+#29220
+soft translucent egg~
+a soft, translucent egg~
+Pale, soft, translucent eggs of some sort lie here.~
+~
+26 64 1
+75~ breathe water~ biofeedback~ cell adjustment~
+1 0 0
+E
+soft pale translucent egg~
+They look aquatic.  On close inspection, they have a faint electric glow to 
+them--even seeming to slightly pulsate.
+~
+
+#29221
+enormous sword~
+an enormous sword~
+An enormous sword has been left here.~
+~
+5 64|256|549755813888 1|8192
+0~ 0~ 0~ 3~
+200 0 0
+A
+1 8
+A
+24 -10
+A
+37 -1
+A
+50 9
+A
+19 14
+
+#29222
+black coral wand~
+a black coral wand~
+A large wand made of black coral has been left here.~
+~
+3 64 1|16384
+78~ 4~ 4~ fury of nature~
+15 0 0
+
+#29223
+hoard ground patch~
+A dragon's hoard~
+A dragon's hoard is here.~
+~
+7 0 0
+300~ 1~ 200~ 200~
+1 0 0
+
+#29224
+pile coins~
+a pile of coins~
+A gleaming pile of coins lies scattered here.~
+~
+20 0 1
+456~ 77~ 104~ 4~
+1 0 0
+
+#29225
+massive teeth pearl dragon twin~
+twin rows of massive teeth~
+The massive jaws of a pearl dragon lie here.~
+~
+5 4096|16777216|67108864|274877906944 8192
+1~ 0~ 0~ 10~
+60 0 0
+A
+19 50
+A
+50 20
+A
+51 10
+
+#29226
+pearl hide~
+a pearl hide~
+The hide of a pearl dragon lies here.~
+~
+8 1 1|8
+~ ~ ~ ~
+90 0 80
+A
+51 10
+A
+50 10
+A
+17 -50
+
+#29227
+sharp black spines~
+sharp spines~
+A collection of sharp black spines lie in a heap here.~
+~
+5 4096|16384|16777216|67108864 8192
+7~ 0~ 0~ 11~
+1 0 0
+
+#29228
+chunk sea urchin flesh~
+a chunk of sea urchin flesh~
+A chunk of sea urchin flesh rots here.~
+~
+26 0 1|16384
+79~ cell adjustment~ ~ ~
+1 0 0
+
+#29229
+chunk scrag flesh~
+a chunk of scrag flesh~
+A chunk of some creature's flesh rots here.~
+~
+26 0 1|16384
+79~ regenerate~ ~ ~
+1 0 0
+
+#29230
+pile coins~
+a pile of coins~
+A somewhat grubby pile of coins lies scattered here.~
+~
+20 0 1
+456~ 40~ 51~ 1~
+1 0 0
+
+#29231
+lance ashieran~
+an Ashieran lance~
+A crude lance has been abandoned here.~
+~
+5 16|16777216|134217728|549755813888 1|8192
+0~ 0~ 0~ 11~
+8 0 0
+A
+50 8
+A
+24 -6
+A
+37 -1
+
+#29232
+ray hide harness~
+a ray hide harness~
+A smallish harness made from ray hide sits here.~
+~
+9 549755813888 1|8
+0~ 0~ 0~ 0~
+8 0 0
+A
+17 -18
+A
+51 7
+A
+13 20
+
+#29233
+sharkskin loincloth~
+a sharkskin loincloth~
+A smallish armoured loincloth made of sharkskin lies here.~
+~
+9 549755813888 1|2048
+0~ 0~ 0~ 0~
+4 0 0
+A
+19 6
+A
+50 6
+
+#29234
+eelskin tunic~
+an eelskin tunic~
+A bright tunic made from worked eelskin lies here.~
+~
+9 64|256|1024|549755813888 1|8
+0~ 0~ 0~ 0~
+4 0 0
+A
+51 11
+A
+17 -25
+
+#29235
+eelskin dress~
+an eelskin dress~
+A bright dress made from worked eelskin lies here.~
+~
+9 64|256|1024|549755813888 1|8
+0~ 0~ 0~ 0~
+4 0 0
+A
+51 14
+A
+17 -15
+
+#29236
+dagger sharp small~
+a small, sharp dagger~
+A small, sharp dagger rests here.~
+~
+5 64|256|16777216|549755813888 1|8192
+0~ 0~ 0~ 2~
+1 0 0
+A
+37 -1
+A
+51 9
+A
+2 3
+
+#29237
+driftwood bow~
+a driftwood bow~
+A small bow made of driftwood lies here.~
+~
+5 64|256|1073741824|549755813888 1|131072
+0~ 0~ 0~ 11~
+3 0 0
+A
+37 -1
+A
+51 7
+A
+2 2
+A
+19 8
+
+#29238
+seaweed salve ointment pottle~
+a seaweed salve~
+A small pottle of some sort of ointment lies here.~
+~
+28 64 1
+81~ sleep~ ~ ~
+1 0 0
+
+#29239
+chunk sprite flesh~
+a chunk of sprite flesh~
+A chunk of some creature's flesh rots here.~
+~
+26 0 1|16384
+80~ stabilise~ ~ ~
+1 0 0
+
+#29240
+sharp claws red~
+sharp claws~
+A heap of small, red claws lie here.~
+~
+5 16|512|2048|16777216|67108864 8192
+0~ 0~ 0~ 3~
+1 0 0
+A
+39 -1
+A
+37 -1
+A
+36 -1
+A
+38 -1
+A
+24 -15
+
+#29241
+curved horns~
+curved horns~
+A small pair of curved horns lies here.~
+~
+9 512|2048|549755813888 1|16
+0~ 1~ 0~ 0~
+1 0 0
+A
+19 9
+A
+51 5
+A
+50 5
+
+#29242
+terrifying jaws~
+terrifying jaws~
+The terrifying jaws of a sea wyrm lie here.~
+~
+5 4096|16777216|67108864|274877906944 8192
+1~ 0~ 0~ 10~
+60 0 0
+A
+19 20
+A
+50 10
+A
+51 8
+
+#29243
+sea wyrm egg~
+a sea wyrm egg~
+The egg of a sea wyrm has been placed here.~
+~
+26 64 1|16384
+84~ sanctuary~ sense wisdom~ freedom~
+1 0 0
+
+#29244
+sea wyrm egg~
+a sea wyrm egg~
+The egg of a sea wyrm has been placed here.~
+~
+26 64 1|16384
+84~ protection~ detect curse~ stabilise~
+1 0 0
+
+#29245
+sea wyrm egg~
+a sea wyrm egg~
+The egg of a sea wyrm has been placed here.~
+~
+26 64 1|16384
+84~ prayer~ cell adjustment~ bark skin~
+1 0 0
+
+#29246
+double scythe double-headed double-bladed~
+a double-headed scythe~
+An evil-looking double-bladed scythe rests here.~
+~
+5 16|64|512|2048|16777216|549755813888 1|8192
+0~ 0~ 0~ 1~
+20 0 0
+A
+19 20
+A
+51 8
+A
+50 8
+A
+18 8
+
+#29247
+dreaming star stone~
+<159>The Dreaming Star<0>~
+A pale stone floats in slow orbit here, radiating restful magic.~
+~
+9 1|64|256|274877906944 1|32768
+0~ 0~ 0~ 0~
+1 0 0
+A
+12 120
+A
+13 20
+M 2
+
+#29248
+greaves silvered quiet vigil~
+<159>Greaves of the Quiet Vigil<0>~
+Silvered greaves etched with sleeping runes have been tossed here.~
+~
+13 64|256|274877906944 1|32
+~ ~ ~ ~
+7 0 0
+A
+12 50
+A
+13 20
+M 2
+
+#29249
+moonlit shield ward slumber~
+<159>The Ward of Slumber<0>~
+A moonlit shield hums softly.~
+~
+9 1|2|64|256|274877906944 1|512
+0~ 0~ 0~ 0~
+10 0 0
+A
+12 175
+A
+13 125
+M 2
+
+#29250
+spider gland~
+a spider's gland~
+The gland of some large spider has been left here.~
+~
+10 0 1|16384
+80~ cell adjustment~ ~ ~
+1 0 0
+
+#29251
+toy wooden sword small~
+a toy wooden sword~
+A small, toy wooden sword sits here.~
+~
+5 64|137438953472 1|8192
+0~ 0~ 0~ 7~
+5 0 0
+E
+plain wooden sword~
+It looks like an unremarkable toy wooden sword.  You get an odd tingle in your 
+arm when you hold it, though.
+~
+A
+13 110
+
+#29252
+marvellous toy~
+a marvellous toy~
+A marvellous toy sits here, whirring.~
+~
+13 2|64 1|16384
+~ ~ ~ ~
+1 0 0
+E
+marvellous toy~
+It goes "zip" when it moves, and "pop" when it stops, and, "whirrr" when it 
+stands still. You have no idea what it is.
+~
+#0
+
+#OBJECT_SETS
+#29200
+Deepsea Healing~
+The Deepsea Healing collection was comissioned by good Eakos canal denizens who 
+rescued and tended wounded travellers, to assist in their efforts. Its floating 
+stone was said to draw restorative magic from the crushing depths, while the 
+greaves and shield guarded healing sleepers from prowling things in the dark 
+water. After the collective's dwelling was attacked and ater abandoned, these
+three relics were scattered through the canal's drowned passageways, waiting to 
+aid those brave and fortunate enough to recover them successfully.
+~
+29247 29248 29249 0 0
+2 2 3 0 0
+A 25 -1
+A 32 -1
+#0
+
+#ROOMS
+#29200
+Ota'ar Dar / Eakos Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>Arena / Prison canton and Eakos City.  Eakos City's walls prevent travel west,
+<252>but you may travel north or east through the canal system, or upwards, towards
+<254>the huge, looming area of darkness in the water above. To the immediate south
+a huge iron grate has been installed to block access to the open ocean.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29202
+D 1
+~
+~
+0 -1 29201
+D 4
+~
+~
+0 -1 29300
+S
+
+#29201
+Ota'ar Dar / Eakos Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>Arena / Prison canton and Eakos City.  Ota'ar Dar's walls prevent travel east,
+<252>but you may travel north or west through the canal system, or upwards, towards
+<254>the huge, looming area of darkness in the water above. To the immediate south
+a huge iron grate has been installed to block access to the open ocean.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29203
+D 3
+~
+~
+0 -1 29200
+D 4
+~
+~
+0 -1 29301
+S
+
+#29202
+Ota'ar Dar / Eakos Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>Arena / Prison canton and Eakos City.  Eakos City's walls prevent travel west,
+<252>but you may travel south, north or east through the canal system, or upwards,
+<254>towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29204
+D 1
+~
+~
+0 -1 29203
+D 2
+~
+~
+0 -1 29200
+D 4
+~
+~
+0 -1 29302
+S
+
+#29203
+Ota'ar Dar / Eakos Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>Arena / Prison canton and Eakos City.  Ota'ar Dar's walls prevent travel east,
+<252>but you may travel south, north or west through the canal system, or upwards,
+<254>towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29205
+D 2
+~
+~
+0 -1 29201
+D 3
+~
+~
+0 -1 29202
+D 4
+~
+~
+0 -1 29303
+S
+
+#29204
+Ota'ar Dar / Eakos Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>Arena / Prison canton and Eakos City.  Eakos City's walls prevent travel west,
+<252>but you may travel south, north or east through the canal system, or upwards,
+<254>towards the huge, looming area of darkness in the water above.  A large bridge
+reaching from Ota'ar Dar to Eakos City lies just to the north.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29206
+D 1
+~
+~
+0 -1 29205
+D 2
+~
+~
+0 -1 29202
+D 4
+~
+~
+0 -1 29304
+S
+
+#29205
+Ota'ar Dar / Eakos Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>Arena / Prison canton and Eakos City.  Ota'ar Dar's walls prevent travel east,
+<252>but you may travel south, north or west through the canal system, or upwards,
+<254>towards the huge, looming area of darkness in the water above.  A large bridge 
+reaching from central Ota'ar Dar to Eakos City lies just to the north.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29207
+D 2
+~
+~
+0 -1 29203
+D 3
+~
+~
+0 -1 29204
+D 4
+~
+~
+0 -1 29305
+S
+
+#29206
+Ota'ar Dar / Eakos Southern Bridge, Lower~
+<14>You stand at the western end of the southern bridge connecting Eakos City to
+<87>Ota'ar Dar. Eakos City's glittering gates lie to the west, while Ota'ar Dar's
+<123>imposing canton gates can be seen in the distance to the east. To the north and
+<159>south you can venture into the deep canal system which separates Eakos and
+Ota'ar Dar from each other, or you can head upwards, towards the huge, looming area
+of darkness in the water above.
+
+A large <14>SIGN<159> has been fastened to Eakos City's locked and barred gates.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29208
+D 1
+~
+~
+0 -1 29207
+D 2
+~
+~
+0 -1 29204
+D 3
+Glittering, glorious.  Magnificent, really.
+~
+gate~
+8 -1 29206
+D 4
+~
+~
+0 -1 29306
+E
+sign~
+o------------------------------------------------------------------------o
+| Due to military tensions Eakos City is currently closed to foreigners. |
+o------------------------------------------------------------------------o
+~
+S
+
+#29207
+Ota'ar Dar / Eakos Southern Bridge, Lower~
+<14>You stand at the eastern end of the southern bridge connecting Eakos City to
+<87>Ota'ar Dar. Eakos City's glittering gates lie far to the west, while Ota'ar Dar's
+<123>steel canton gates can be seen right here to the east. To the north and south
+<159>you can venture into the deep canal system which separates Eakos and Ota'ar Dar
+from each other, or you can head upwards, towards the huge, looming area of 
+darkness in the water above.
+
+A large <14>SIGN<159> has been fastened to Ota'ar Dar Arena's gates.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29209
+D 1
+Huge, steel.  Imposing.  Very securely locked and don't seem to have been used in a long time.
+~
+gates~
+8 -1 29207
+D 2
+~
+~
+0 -1 29205
+D 3
+~
+~
+0 -1 29206
+D 4
+~
+~
+0 -1 29307
+E
+sign~
+o--------------------------------o
+| Trelka, ini gavir di wer Baron.|
+o--------------------------------o
+~
+S
+
+#29208
+Ota'ar Dar / Eakos Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>Arena / Prison canton and Eakos City.  Eakos City's walls prevent travel west,
+<252>but you may travel south, north or east through the canal system, or upwards,
+<254>towards the huge, looming area of darkness in the water above.  A large bridge
+reaching from Ota'ar Dar to Eakos City lies just to the south.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29210
+D 1
+~
+~
+0 -1 29209
+D 2
+~
+~
+0 -1 29206
+D 4
+~
+~
+0 -1 29308
+S
+
+#29209
+Ota'ar Dar / Eakos Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>Arena / Prison canton and Eakos City.  Ota'ar Dar's walls prevent travel east,
+<252>but you may travel south, north or west through the canal system, or upwards,
+<254>towards the huge, looming area of darkness in the water above.  A large bridge 
+reaching from central Ota'ar Dar to Eakos City lies just to the south.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29211
+D 2
+~
+~
+0 -1 29207
+D 3
+~
+~
+0 -1 29208
+D 4
+~
+~
+0 -1 29309
+S
+
+#29210
+Ota'ar Dar / Eakos Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>Arena / Prison canton and Eakos City.  Eakos City's walls prevent travel west,
+<252>but you may travel south, north or east through the canal system, or
+<254>upwards, towards the huge, looming area of darkness in the water above.
+Northward lies a large junction in the canal network.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29217
+D 1
+~
+~
+0 -1 29211
+D 2
+~
+~
+0 -1 29208
+D 4
+~
+~
+0 -1 29310
+S
+
+#29211
+Ota'ar Dar / Eakos Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>Arena / Prison canton and Eakos City.  Ota'ar Dar's walls prevent travel east,
+<252>but you may travel south, north or west through the canal system, or
+<254>upwards, towards the huge, looming area of darkness in the water above.
+Northward lies a large junction in the canal network.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29218
+D 2
+~
+~
+0 -1 29209
+D 3
+~
+~
+0 -1 29210
+D 4
+~
+~
+0 -1 29311
+S
+
+#29212
+Eakos City/Commander's Pavilion Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between the 
+<250>Commander's Pavilion and Eakos City.  High canal walls prevent travel south or 
+<252>east, but you may travel north, deeper into the Eakos canal system, west, to
+<254>the bridge that connects Easkos City to the Commander's Pavilion, or upwards, 
+towards the huge, looming area of darkness in the water above. A very thick 
+patch of seaweed lies directly below you.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29219
+D 3
+~
+~
+0 -1 29258
+D 4
+~
+~
+0 -1 29312
+D 5
+Very thick patch.  Is there... something beneath it?
+~
+~
+12 -1 29362
+S
+
+#29213
+Eakos City/Residential Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Eakos's
+<250>residential area and central city.  Eakos's walls prevent travel west or south,
+<252>but you may travel north, deeper into the Eakos canal system, east, towards a 
+<254>glittering bridge connecting Eakos CIty and its residential area, or upwards, 
+towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29223
+D 1
+~
+~
+0 -1 29214
+D 4
+~
+~
+0 -1 29313
+S
+
+#29214
+Zhur-ka Bridge, Lower~
+<14>You stand on the scintillant bridge that connects Eakos City to its residential
+<87>area. Imposing, glittering gates, made of rough-hewn yet skilfully polished 
+<123>ancient stone lie at the immediate northern and southern ends of the bridge.
+<159>From here you may travel east or west, deeper into the Eakos canal system, or 
+upwards, towards the huge, looming area of darkness in the water above.
+
+Large <14>SIGNS<159> have been fastened to the gates at both ends of the bridge.<0>
+~
+0 4 12
+D 0
+Imposing.  Glittering.  Fancy.
+~
+gates north~
+8 -1 29214
+D 1
+~
+~
+0 -1 29215
+D 2
+Impressive.  Shiny.  Old.
+~
+gates south~
+8 -1 29214
+D 3
+~
+~
+0 -1 29213
+D 4
+~
+~
+0 -1 29314
+E
+signs sign~
+o-------------------------------------------------------------------o
+| Due to military tensions Eakos is currently closed to foreigners. |
+o-------------------------------------------------------------------o
+~
+S
+
+#29215
+Eakos City/Residential Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Eakos's
+<250>residential area and central city.  Eakos's walls prevent travel north or south,
+<252>but you may travel east, deeper into the Eakos canal system, west, towards a 
+<254>glittering bridge connecting Eakos CIty and its residential area, or upwards, 
+towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 29216
+D 3
+~
+~
+0 -1 29214
+D 4
+~
+~
+0 -1 29315
+S
+
+#29216
+Eakos City/Residential Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Eakos's
+<250>residential area and central city.  Eakos's walls prevent travel north or south,
+<252>but you may travel west, deeper into the Eakos canal system, east, towards a 
+<254>large junction in the canal network, or upwards, towards the huge, looming area
+of darkness in the water above.<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 29217
+D 3
+~
+~
+0 -1 29215
+D 4
+~
+~
+0 -1 29316
+S
+
+#29217
+Ota'ar Dar / Eakos Canal, Lower~
+<248>You are at the bottom of the ocean floor, in the four-way junction of a deep
+<250>canal network between Ota'ar Dar and Eakos. You may travel north, south, east,
+<252>or west from here through the canal system, or upwards, towards the huge, 
+<254>looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29224
+D 1
+~
+~
+0 -1 29218
+D 2
+~
+~
+0 -1 29210
+D 3
+~
+~
+0 -1 29216
+D 4
+~
+~
+0 -1 29317
+S
+
+#29218
+Ota'ar Dar / Eakos Canal, Lower~
+<248>You are at the bottom of the ocean floor, in the four-way junction of a deep
+<250>canal network between Ota'ar Dar and Eakos. You may travel north, south, east,
+<252>or west from here through the canal system, or upwards, towards the huge, 
+<254>looming area of darkness in the water above.<0>
+~
+0 4 12
+D 0
+~
+~
+0 -1 29225
+D 1
+~
+~
+0 -1 27247
+D 2
+~
+~
+0 -1 29211
+D 3
+~
+~
+0 -1 29217
+D 4
+~
+~
+0 -1 29318
+S
+
+#29219
+Eakos City/Commander's Pavilion Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between the 
+<250>Commander's Pavilion and Eakos City.  High canal walls prevent travel north or 
+<252>west, but you may travel south or east, deeper into the Eakos canal system, 
+<254>or upwards, towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 29220
+D 2
+~
+~
+0 -1 29212
+D 4
+~
+~
+0 -1 29319
+S
+
+#29220
+Eakos City/Commander's Pavilion Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between the 
+<250>Commander's Pavilion and Eakos City.  High canal walls prevent travel south or 
+<252>east, but you may travel north or west, deeper into the Eakos canal system, 
+<254>or upwards, towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29226
+D 3
+~
+~
+0 -1 29219
+D 4
+~
+~
+0 -1 29320
+S
+
+#29221
+Eakos City/Residential Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Eakos's
+<250>residential area and central city.  Eakos's walls prevent travel west or south,
+<252>but you may travel north or east, deeper into the Eakos canal system, or 
+<254>upwards, towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29229
+D 1
+~
+~
+0 -1 29222
+D 4
+~
+~
+0 -1 29321
+S
+
+#29222
+Eakos City/Residential Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Eakos's
+<250>residential area and central city.  Eakos's walls prevent travel north or south,
+<252>but you may travel west or east, deeper into the Eakos canal system, or 
+<254>upwards, towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 29223
+D 3
+~
+~
+0 -1 29221
+D 4
+~
+~
+0 -1 29322
+S
+
+#29223
+Eakos City/Residential Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Eakos's
+<250>residential area and central city.  Eakos's walls prevent travel north or east,
+<252>but you may travel west or south, deeper into the Eakos canal system, or 
+<254>upwards, towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 2
+~
+~
+0 -1 29213
+D 3
+~
+~
+0 -1 29222
+D 4
+~
+~
+0 -1 29323
+S
+
+#29224
+Ota'ar Dar / Eakos Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton and Eakos's residential area.  You may travel north, south, or
+<252>east from here through the canal system, or upwards, towards the huge, 
+<254>looming area of darkness in the water above.  Directly south you see a large 
+junction in the canal network.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29230
+D 1
+~
+~
+0 -1 29225
+D 2
+~
+~
+0 -1 29217
+D 4
+~
+~
+0 -1 29324
+S
+
+#29225
+Ota'ar Dar / Eakos Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton and Eakos's residential area.  You may travel north, south, or
+<252>west from here through the canal system, or upwards, towards the huge, 
+<254>looming area of darkness in the water above.  Directly south you see a large 
+junction in the canal network.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29231
+D 2
+~
+~
+0 -1 29218
+D 3
+~
+~
+0 -1 29224
+D 4
+~
+~
+0 -1 29325
+S
+
+#29226
+Eakos City/Commander's Pavilion Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between the 
+<250>Commander's Pavilion and Eakos City.  High canal walls prevent travel north or 
+<252>west, but you may travel south, deeper into the Eakos canal system, east, to a 
+<254>large junction in the canal network, or upwards, towards the huge, looming area 
+of darkness in the water above.<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 29227
+D 2
+~
+~
+0 -1 29220
+D 4
+~
+~
+0 -1 29326
+S
+
+#29227
+Great Eakos Canal Junction, Lower~
+<248>You are at the bottom of the ocean floor, in the southeastern part of the great 
+<250>Eakos canal junction at the centre of its canal network. You may travel west,
+<252>north, or east from here through the canal system, or upwards, towards the huge, 
+<254>looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29232
+D 1
+~
+~
+0 -1 29228
+D 3
+~
+~
+0 -1 29226
+D 4
+~
+~
+0 -1 29327
+S
+
+#29228
+Great Eakos Canal Junction, Lower~
+<248>You are at the bottom of the ocean floor, in the southeastern part of the great 
+<250>Eakos canal junction at the centre of its canal network. You may travel east,
+<252>north, or west from here through the canal system, or upwards, towards the huge, 
+<254>looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29233
+D 1
+~
+~
+0 -1 29229
+D 3
+~
+~
+0 -1 29227
+D 4
+~
+~
+0 -1 29328
+S
+
+#29229
+Eakos City/Residential Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Eakos's
+<250>residential area and central city.  Eakos's walls prevent travel north or east,
+<252>but you may travel south, deeper into the Eakos canal system, west, to a large
+<254>junction in the canal network, or upwards, towards the huge, looming area of 
+darkness in the water above.<0>
+~
+0 0 12
+D 2
+~
+~
+0 -1 29221
+D 3
+~
+~
+0 -1 29228
+D 4
+~
+~
+0 -1 29329
+S
+
+#29230
+Ota'ar Dar / Eakos Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton and Eakos's residential area.  Eakos's walls prevent travel 
+<252>west, but you may travel south, north or east through the canal system, or 
+<254>upwards, towards the huge, looming area of darkness in the water above.  A large
+bridge reaching from Ota'ar Dar to Eakos City lies just to the north.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29234
+D 1
+~
+~
+0 -1 29231
+D 2
+~
+~
+0 -1 29224
+D 4
+~
+~
+0 -1 29330
+S
+
+#29231
+Ota'ar Dar / Eakos Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton and Eakos's residential area.  Ota'ar Dar's walls prevent travel 
+<252>east, but you may travel south, north or west through the canal system, or 
+<254>upwards, towards the huge, looming area of darkness in the water above.  A large
+bridge reaching from Ota'ar Dar to Eakos City lies just to the north.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29235
+D 2
+~
+~
+0 -1 29225
+D 3
+~
+~
+0 -1 29230
+D 4
+~
+~
+0 -1 29331
+S
+
+#29232
+Great Eakos Canal Junction, Lower~
+<248>You are at the bottom of the ocean floor, in the westernmost part of the great 
+<250>Eakos canal junction at the centre of its canal network. You may travel east,
+<252>south, or north from here through the canal system, or upwards, towards the huge, 
+<254>looming area of darkness in the water above.<0>
+~
+0 4 12
+D 0
+~
+~
+0 -1 29237
+D 1
+~
+~
+0 -1 29233
+D 2
+~
+~
+0 -1 29227
+D 4
+~
+~
+0 -1 29332
+S
+
+#29233
+Great Eakos Canal Junction, Lower~
+<248>You are at the bottom of the ocean floor, in the easternmost part of the great 
+<250>Eakos canal junction at the centre of its canal network. You may travel west,
+<252>south, or north from here through the canal system, or upwards, towards the huge, 
+<254>looming area of darkness in the water above.<0>
+~
+0 4 12
+D 0
+~
+~
+0 -1 29238
+D 2
+~
+~
+0 -1 29228
+D 3
+~
+~
+0 -1 29232
+D 4
+~
+~
+0 -1 29333
+S
+
+#29234
+Ota'ar Dar / Eakos Northern Bridge, Lower~
+<14>You stand at the western end of the northern bridge connecting Eakos City's
+<87>residential area to Ota'ar Dar's military canton. Eakos's glittering gates lie 
+<123>to the west, while Ota'ar Dar's imposing and heavily fortified gates can be seen
+<159>in the distance to the east. To the north and south you can venture into the 
+deep canal system which separates Eakos and Ota'ar Dar from each other, or you can 
+head upwards, towards the huge, looming area of darkness in the water above.
+
+A large <14>SIGN<159> has been fastened to Eakos's residential area's locked and 
+barred gates.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29240
+D 1
+~
+~
+0 -1 29235
+D 2
+~
+~
+0 -1 29230
+D 3
+Glittering, majestic.  Very impressive.
+~
+gate~
+8 -1 29234
+D 4
+~
+~
+0 -1 29334
+E
+sign~
+o----------------------------------------------------------------------------o
+| Due to military tensions Eakos's residential area is closed to foreigners. |
+o----------------------------------------------------------------------------o
+~
+S
+
+#29235
+Ota'ar Dar / Eakos Northern Bridge, Lower~
+<14>You stand at the western end of the northern bridge connecting Eakos City's
+<87>residential area to Ota'ar Dar's military canton. Eakos's glittering gates lie 
+<123>far to the west, while Ota'ar Dar's imposing and heavily fortified gates are
+<159>right before you, to the east. To the north and south you can venture into the 
+deep canal system which separates Eakos and Ota'ar Dar from each other, or you can 
+head upwards, towards the huge, looming area of darkness in the water above.
+~
+0 0 12
+D 0
+~
+~
+0 -1 29241
+D 1
+Very large.  Steel.  imposing.
+~
+gate~
+1 -1 27291
+D 2
+~
+~
+0 -1 29231
+D 3
+~
+~
+0 -1 29234
+D 4
+~
+~
+0 -1 29335
+S
+
+#29236
+Commander's Pavilion/Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between the 
+<250>Commander's Pavilion and Yrythelmyn.  Fortified walls prevent travel south or 
+<252>west, but you may travel north, deeper into the canal system, east, to a large
+<254>junction in the canal network, or upwards, towards the huge, looming area of 
+darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29242
+D 1
+~
+~
+0 -1 29237
+D 4
+~
+~
+0 -1 29336
+S
+
+#29237
+Great Eakos Canal Junction, Lower~
+<248>You are at the bottom of the ocean floor, in the northwestern part of the great 
+<250>Eakos canal junction at the centre of its canal network. You may travel west,
+<252>south, or east from here through the canal system, or upwards, towards the huge, 
+<254>looming area of darkness in the water above.<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 29238
+D 2
+~
+~
+0 -1 29232
+D 3
+~
+~
+0 -1 29236
+D 4
+~
+~
+0 -1 29337
+S
+
+#29238
+Great Eakos Canal Junction, Lower~
+<248>You are at the bottom of the ocean floor, in the northeastern part of the great 
+<250>Eakos canal junction at the centre of its canal network. You may travel west,
+<252>south, or east from here through the canal system, or upwards, towards the huge, 
+<254>looming area of darkness in the water above.<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 29239
+D 2
+~
+~
+0 -1 29233
+D 3
+~
+~
+0 -1 29237
+D 4
+~
+~
+0 -1 29338
+S
+
+#29239
+Yrythelmyn/Eakos Residential Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Eakos's
+<250>residential area and Yrythelmyn.  Fortified walls prevent travel south or east,
+<252>but you may travel north, deeper into the canal system, west, to a large
+<254>junction in the canal network, or upwards, towards the huge, looming area of 
+darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29243
+D 3
+~
+~
+0 -1 29238
+D 4
+~
+~
+0 -1 29339
+S
+
+#29240
+Ota'ar Dar / Eakos Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton and Eakos's residential area.  Eakos's walls prevent travel 
+<252>west, but you may travel south, north or east through the canal system, or upwards,
+<254>towards the huge, looming area of darkness in the water above.  A large bridge
+reaching from Ota'ar Dar to Eakos City lies just to the south.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29245
+D 1
+~
+~
+0 -1 29241
+D 2
+~
+~
+0 -1 29234
+D 4
+~
+~
+0 -1 29340
+S
+
+#29241
+Ota'ar Dar / Eakos Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton and Eakos's residential area.  Ota'ar Dar's walls prevent travel
+<252>east, but you may travel south, north or west through the canal system, or 
+<254>upwards, towards the huge, looming area of darkness in the water above.  A large 
+bridge reaching from Ota'ar Dar to Eakos lies just to the south.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29246
+D 2
+~
+~
+0 -1 29235
+D 3
+~
+~
+0 -1 29240
+D 4
+~
+~
+0 -1 29341
+S
+
+#29242
+Commander's Pavilion/Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between the
+<250>Commander's Pavilion and Yrythelmyn.  Fortified walls prevent travel east or 
+<252>west, but you may travel north or south, deeper into the canal system, or 
+<254>upwards, towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29248
+D 2
+~
+~
+0 -1 29236
+D 4
+~
+~
+0 -1 29342
+S
+
+#29243
+Yrythelmyn/Eakos Residential Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Eakos's
+<250>residential area and Yrythelmyn.  Fortified walls prevent travel north or west,
+<252>but you may travel south or east, deeper into the canal system, or upwards,
+<254>towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 29244
+D 2
+~
+~
+0 -1 29239
+D 4
+~
+~
+0 -1 29343
+S
+
+#29244
+Yrythelmyn/Eakos Residential Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Eakos's
+<250>residential area and Yrythelmyn.  Fortified walls prevent travel south or east,
+<252>but you may travel north or west, deeper into the canal system, or upwards,
+<254>towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29249
+D 3
+~
+~
+0 -1 29243
+D 4
+~
+~
+0 -1 29344
+S
+
+#29245
+Ota'ar Dar / Eakos Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton and Eakos's residential area.  Eakos's walls prevent travel 
+<252>west, but you may travel south, north or east through the canal system, or 
+<254>upwards, towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29252
+D 1
+~
+~
+0 -1 29246
+D 2
+~
+~
+0 -1 29240
+D 4
+~
+~
+0 -1 29345
+S
+
+#29246
+Ota'ar Dar / Eakos Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Ota'ar Dar's
+<250>military canton and Eakos's residential area.  Ota'ar Dar's walls prevent travel
+<252>east, but you may travel south, north or west through the canal system, or 
+<254>upwards, towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29253
+D 2
+~
+~
+0 -1 29241
+D 3
+~
+~
+0 -1 29245
+D 4
+~
+~
+0 -1 29346
+S
+
+#29247
+Commander's Pavilion/Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between the
+<250>Commander's Pavilion and Yrythelmyn.  Fortified walls prevent travel west or 
+<252>south, but you may travel east, deeper into the canal system, north, towards 
+<254>the glittering bridge that connects the Pavilion and Yrythelmyn, or upwards,
+<254>towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29254
+D 1
+~
+~
+0 -1 29248
+D 4
+~
+~
+0 -1 29347
+S
+
+#29248
+Commander's Pavilion/Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between the
+<250>Commander's Pavilion and Yrythelmyn.  Fortified walls prevent travel east or 
+<252>north, but you may travel west or south, deeper into the canal system, or 
+<254>upwards, towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 2
+~
+~
+0 -1 29242
+D 3
+~
+~
+0 -1 29247
+D 4
+~
+~
+0 -1 29348
+S
+
+#29249
+Yrythelmyn/Eakos Residential Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Eakos's
+<250>residential area and Yrythelmyn.  Fortified walls prevent travel north or west,
+<252>but you may travel south or east, deeper into the canal system, or upwards,
+<254>towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 29250
+D 2
+~
+~
+0 -1 29244
+D 4
+~
+~
+0 -1 29349
+S
+
+#29250
+Yrythelmyn/Eakos Residential Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Eakos's
+<250>residential area and Yrythelmyn.  Fortified walls prevent travel south or east
+<252>but you may travel north or west, deeper into the canal system, or upwards,
+<254>towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29255
+D 3
+~
+~
+0 -1 29249
+D 4
+~
+~
+0 -1 29350
+S
+
+#29251
+Old City Centre/Eakos Residential Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Eakos's
+<250>residential area and a bridge leading from there to the old city centre.  
+<252>Fortified walls prevent travel west and south, and a large iron grate prevents
+<254>access to the bridge, but you may travel north, deeper into the canal system, or
+<254>upwards, towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29257
+D 4
+~
+~
+0 -1 29351
+S
+
+#29252
+Ota'ar Dar / Eakos Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between two ancient
+<252>bridges leading to the old city centre. The old city's fortifications prevent 
+<254>movement north, but you may travel south or east through the canal system, or 
+upwards, towards the huge, looming area of darkness in the water above.  To the 
+immediate west is the bridge that connects Eakos's residential area to the old 
+city centre, but a large iron grate prevents access to it from here.<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 29253
+D 2
+~
+~
+0 -1 29245
+D 4
+~
+~
+0 -1 29352
+S
+
+#29253
+Ota'ar Dar / Eakos Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between two ancient
+<252>bridges leading to the old city centre. The old city's fortifications prevent 
+<254>movement north, but you may travel south or west through the canal system, or 
+upwards, towards the huge, looming area of darkness in the water above.  To the 
+immediate east is the bridge that connects Ota'ar Dar's military canton to the 
+old city centre, but a large iron grate prevents access to it from here.<0>
+~
+0 0 12
+D 2
+~
+~
+0 -1 29246
+D 3
+~
+~
+0 -1 29252
+D 4
+~
+~
+0 -1 29353
+S
+
+#29254
+Ael'thir Bridge, Lower~
+<14>You stand on the scintillant bridge that connects the Commander's Pavilion to 
+<87>Yrythelmyn. Imposing, glittering gates, made of rough-hewn yet skilfully polished 
+<123>ancient stone, lie at the immediate western end of the bridge, while graceful,
+<159>richly-decorated gates lie at the eastern end.  Both gates are locked and
+appear impenetrable.  From here you may travel north or south, deeper into the 
+Eakos canal system, or upwards, towards the huge, looming area of darkness in 
+the water above.<0>
+~
+0 4 12
+D 0
+~
+~
+0 -1 29260
+D 1
+Definitely Elven.
+~
+gates graceful richly-decorated~
+8 -1 29254
+D 2
+~
+~
+0 -1 29247
+D 3
+Interesting combination of natural and worked.
+~
+gates imposing rough-hewn glittering~
+8 -1 29254
+D 4
+~
+~
+0 -1 29354
+S
+
+#29255
+Yrythelmyn/Eakos Residential Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Eakos's
+<250>residential area, Yrythelmyn, and a bridge leading to the old city centre.  
+<252>Fortified walls prevent travel west, and a large iron grate prevents access 
+<254>to the bridge, but you may travel east or south, deeper into the canal system, 
+<254>or upwards, towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 29256
+D 2
+~
+~
+0 -1 29250
+D 4
+~
+~
+0 -1 29355
+S
+
+#29256
+Old City Centre/Eakos Residential Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Eakos's
+<250>residential area and the old city centre.  Fortified walls prevent travel north
+<252>or south, but you may travel west or east, deeper into the canal system, or
+<254>upwards, towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 1
+~
+~
+0 -1 29257
+D 3
+~
+~
+0 -1 29255
+D 4
+~
+~
+0 -1 29356
+S
+
+#29257
+Old City Centre/Eakos Residential Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between Eakos's
+<250>residential area and the old city centre.  Fortified walls prevent travel north
+<252>or east, but you may travel west or south, deeper into the canal system, or
+<254>upwards, towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 2
+~
+~
+0 -1 29251
+D 3
+~
+~
+0 -1 29256
+D 4
+~
+~
+0 -1 29357
+S
+
+#29258
+Northern end of Vur'gath Bridge, Lower~
+<14>You stand at the northern end of the scintillant bridge that connects Eakos City 
+<87>to the Commander's Pavilion. An huge and very imposing, glittering gate, made of 
+<123>rough-hewn yet skilfully polished ancient stone lies directly north, while to
+<159>the west a huge iron grate prevents travel out into the open ocean.  From here 
+you may travel east, deeper into the Eakos canal system, south, to the end of the
+bridge that connects to Eakos City, or upwards, towards the huge, looming area of 
+darkness in the water above.
+
+A large <14>SIGN<159> has been fastened to the Commander's Pavilion gates.<0>
+~
+0 0 12
+D 0
+Huge, glittering.  Expensive-looking.
+~
+gate~
+8 -1 29258
+D 1
+~
+~
+0 -1 29212
+D 2
+~
+~
+0 -1 29259
+D 4
+~
+~
+0 -1 29358
+E
+sign~
+o----------------------------------------------------------------o
+| Due to military tensions the Pavilion is closed to foreigners. |
+o----------------------------------------------------------------o
+~
+S
+
+#29259
+Southern end of Vur'gath Bridge, Lower~
+<14>You stand at the southern end of the scintillant bridge that connects Eakos City 
+<87>to the Commander's Pavilion. An huge and very imposing, glittering gate, made of 
+<123>rough-hewn yet skilfully polished ancient stone lies directly east, while to
+<159>the west and south huge iron grates prevents travel out into the open ocean.  
+From here you may travel north, to the end of the bridge that connects to the 
+Commander's Pavilion, or upwards, towards the huge, looming area of darkness in the 
+water above. 
+
+A large <14>SIGN<159> has been fastened to the Eakos City gates.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29258
+D 1
+Very skilfully polished.  Ancient.
+~
+gate~
+8 -1 29259
+D 4
+~
+~
+0 -1 29359
+E
+sign~
+o--------------------------------------------------------------o
+| Due to military tensions Eakos City is closed to foreigners. |
+o--------------------------------------------------------------o
+~
+S
+
+#29260
+Commander's Pavilion/Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between the
+<250>Commander's Pavilion and Yrythelmyn.  Fortified walls prevent travel west or 
+<252>east, but you may travel north, deeper into the canal system, south, towards 
+<254>the glittering bridge that connects the Pavilion and Yrythelmyn, or upwards,
+<254>towards the huge, looming area of darkness in the water above.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29261
+D 2
+~
+~
+0 -1 29254
+D 4
+~
+~
+0 -1 29360
+S
+
+#29261
+Commander's Pavilion/Yrythelmyn Canal, Lower~
+<248>You are at the bottom of the ocean floor, in a deep canal between the
+<250>Commander's Pavilion and Yrythelmyn.  Fortified walls prevent travel west or 
+<252>east, but you may travel south, deeper into the canal system, or upwards,
+<254>towards the huge, looming area of darkness in the water above. A huge iron
+grate prevents further travel north through the canal network, but you can see
+a large junction that lies beyond it.<0>
+~
+0 0 12
+D 2
+~
+~
+0 -1 29260
+D 4
+~
+~
+0 -1 29361
+S
+
+#29300
+Ota'ar Dar / Eakos Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's Arena / Prison canton and Eakos City.  The high canal walls prevent access
+<241>from here to either area, but you may travel north or east, further along the
+<244>canal system, down to the ocean floor, or upwards, directly into the sinister,
+<246>looming area of dark water above your head. To the immediate south a huge iron
+grate has been installed to block access to the open ocean.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29302
+D 1
+~
+~
+0 -1 29301
+D 4
+~
+~
+0 -1 27148
+D 5
+~
+~
+0 -1 29200
+S
+
+#29301
+Ota'ar Dar / Eakos Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's Arena / Prison canton and Eakos City.  The high canal walls prevent access
+<241>from here to either area, but you may travel north or west, further along the
+<244>canal system, down to the ocean floor, or upwards, directly into the sinister,
+<246>looming area of dark water above your head. To the immediate south a huge iron
+grate has been installed to block access to the open ocean.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29303
+D 3
+~
+~
+0 -1 29300
+D 4
+~
+~
+0 -1 27139
+D 5
+~
+~
+0 -1 29201
+S
+
+#29302
+Ota'ar Dar / Eakos Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's Arena / Prison canton and Eakos City.  The high canal walls prevent access
+<241>from here to either area, but you may travel south, north or east, further along
+<244>the canal system, down to the ocean floor, or upwards, directly into the 
+<246>sinister,looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29304
+D 1
+~
+~
+0 -1 29303
+D 2
+~
+~
+0 -1 29300
+D 4
+~
+~
+0 -1 27149
+D 5
+~
+~
+0 -1 29202
+S
+
+#29303
+Ota'ar Dar / Eakos Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's Arena / Prison canton and Eakos City.  The high canal walls prevent access
+<241>from here to either area, but you may travel south, north or west, further along
+<244>the canal system, down to the ocean floor, or upwards, directly into the 
+<246>sinister, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29305
+D 2
+~
+~
+0 -1 29301
+D 3
+~
+~
+0 -1 29302
+D 4
+~
+~
+0 -1 27126
+D 5
+~
+~
+0 -1 29203
+S
+
+#29304
+Ota'ar Dar / Eakos Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's Arena / Prison canton and Eakos City.  From here, you may travel north, 
+<241>towards the area above the southern bridge linking Ota'ar Dar and Eakos City,
+<244>south or east through the canal system, downwards, towards the ocean floor,
+<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29306
+D 1
+~
+~
+0 -1 29305
+D 2
+~
+~
+0 -1 29302
+D 4
+~
+~
+0 -1 27145
+D 5
+~
+~
+0 -1 29204
+S
+
+#29305
+Ota'ar Dar / Eakos Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's Arena / Prison canton and Eakos City.  From here, you may travel north, 
+<241>towards the area above the southern bridge linking Ota'ar Dar and Eakos City,
+<244>south or west through the canal system, downwards, towards the ocean floor,
+<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29307
+D 2
+~
+~
+0 -1 29303
+D 3
+~
+~
+0 -1 29304
+D 4
+~
+~
+0 -1 27126
+D 5
+~
+~
+0 -1 29205
+S
+
+#29306
+Ota'ar Dar / Eakos Southern Bridge, Upper~
+<21>You float about 4 metres above the western end of the southern bridge connecting
+<27>Ota'ar Dar to Eakos City. The upper portion of Eakos's glittering city gates lie
+<33to the west, while the corresponding portions of Ota'ar Dar's imposing canton
+<39>gates can be seen in the distance to the east. To the north and south you may
+<45>venture into the deep canal system which separates Eakos and Ota'ar Dar from
+each other, you may travel downwards, towards the ocean floor, or you can swim 
+upwards, directly into the huge, looming area of dark water above your head.
+
+A large <21>SIGN<45> has been fastened to Eakos City's locked and barred gates.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29308
+D 1
+~
+~
+0 -1 29307
+D 2
+~
+~
+0 -1 29304
+D 3
+Glittering, glorious.  Magnificent, really.
+~
+gate~
+8 -1 29306
+D 4
+~
+~
+0 -1 27145
+D 5
+~
+~
+0 -1 29206
+E
+sign~
+o------------------------------------------------------------------------o
+| Due to military tensions Eakos City is currently closed to foreigners. |
+o------------------------------------------------------------------------o
+~
+S
+
+#29307
+Ota'ar Dar / Eakos Southern Bridge, Upper~
+<21>You float about 4 metres above the eastern end of the southern bridge connecting
+<27>Ota'ar Dar's Arena / Prison canton to Eakos City.  The upper portion of Ota'ar
+<33>Dar's huge steel gates lie to the east, while the corresponding portion of Eakos
+<39>City's glittering gates can be seen in the distance to the west. To the north
+<45>and south you may venture into the deep canal system which separates Ota'ar Dar
+and Eakos from each other, you may travel downwards, towards the ocean floor, or 
+you can swim upwards, directly into the huge, looming area of dark water above 
+your head.
+
+A large <21>SIGN<45> has been fastened to Ota'ar Dar Arena's gates.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29309
+D 1
+Huge.  Steel.  Imposing. Look to have not been used in a long time.
+~
+gates~
+8 -1 29307
+D 2
+~
+~
+0 -1 29305
+D 3
+~
+~
+0 -1 29306
+D 4
+~
+~
+0 -1 27149
+D 5
+~
+~
+0 -1 29207
+E
+sign~
+o--------------------------------o
+| Trelka, ini gavir di wer Baron.|
+o--------------------------------o
+~
+S
+
+#29308
+Ota'ar Dar / Eakos Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's Arena / Prison canton and Eakos City.  From here, you may travel south, 
+<241>towards the area above the southern bridge linking Ota'ar Dar and Eakos City,
+<244>north or east through the canal system, downwards, towards the ocean floor,
+<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29310
+D 1
+~
+~
+0 -1 29309
+D 2
+~
+~
+0 -1 29306
+D 4
+~
+~
+0 -1 27145
+D 5
+~
+~
+0 -1 29208
+S
+
+#29309
+Ota'ar Dar / Eakos Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's Arena / Prison canton and Eakos City.  From here, you may travel south, 
+<241>towards the area above the southern bridge linking Ota'ar Dar and Eakos City,
+<244>north or west through the canal system, downwards, towards the ocean floor,
+<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29311
+D 2
+~
+~
+0 -1 29307
+D 3
+~
+~
+0 -1 29308
+D 4
+~
+~
+0 -1 27122
+D 5
+~
+~
+0 -1 29209
+S
+
+#29310
+Ota'ar Dar / Eakos Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's Arena / Prison canton and Eakos City.  From here, you may travel south, 
+<241>north or east through the canal system, downwards, towards the ocean floor,
+<244>or upwards, directly into the huge, looming area of dark water above your head.
+Northward lies a large junction in the canal network.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29317
+D 1
+~
+~
+0 -1 29311
+D 2
+~
+~
+0 -1 29308
+D 4
+~
+~
+0 -1 27144
+D 5
+~
+~
+0 -1 29210
+S
+
+#29311
+Ota'ar Dar / Eakos Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's Arena / Prison canton and Eakos City.  From here, you may travel south, 
+<241>north or west through the canal system, downwards, towards the ocean floor,
+<244>or upwards, directly into the huge, looming area of dark water above your head.
+Northward lies a large junction in the canal network.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29318
+D 2
+~
+~
+0 -1 29309
+D 3
+~
+~
+0 -1 29310
+D 4
+~
+~
+0 -1 27145
+D 5
+~
+~
+0 -1 29211
+S
+
+#29312
+Eakos City/Commander's Pavilion Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Eakos
+<238>City and the Commander's Pavilion.  From here, you may travel north, deeper into
+<241>the canal network, west, towards the area above the bridge that links Eakos City
+<244>to the Commander's Pavilion, downwards, towards the ocean floor, or upwards, 
+<244>directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29319
+D 3
+~
+~
+0 -1 29358
+D 4
+~
+~
+0 -1 27144
+D 5
+~
+~
+0 -1 29212
+S
+
+#29313
+Eakos City/Residential Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Eakos
+<238>City and Eakos's residential area.  From here, you may travel north, deeper
+<241>into the Eakos canal system, east towards the area above the glittering bridge 
+<244>that links Eakos City and its residential area, downwards, towards the ocean  
+<246>floor, or upwards, directly into the huge, looming area of dark water above your
+head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29323
+D 1
+~
+~
+0 -1 29314
+D 4
+~
+~
+0 -1 27144
+D 5
+~
+~
+0 -1 29213
+S
+
+#29314
+Zhur-ka Bridge, Upper~
+<21>You float about 4 metres above the scintillant bridge connecting Eakos City to
+<27>Eakos City's residential area. The upper portions of the gates to both cantons 
+<33>lie immediately north and south. To the east and west you may venture further
+<39>into Eakos's canal system, you may travel downwards, towards the ocean floor,
+<45>or you can swim upwards, directly into the huge, looming area of dark water 
+above your head.
+
+Large <21>SIGNS<45> have been fastened to the gates at both ends of the bridge.<0>
+ 
+~
+0 4 8
+D 0
+massive.  Fancy.  Intimidating.
+~
+gates north~
+8 -1 29314
+D 1
+~
+~
+0 -1 29315
+D 2
+Glittering, majestic.  Intimidating.
+~
+gates south~
+8 -1 29314
+D 3
+~
+~
+0 -1 29313
+D 4
+~
+~
+0 -1 27147
+D 5
+~
+~
+0 -1 29214
+E
+signs sign~
+o-------------------------------------------------------------------o
+| Due to military tensions Eakos is currently closed to foreigners. |
+o-------------------------------------------------------------------o
+~
+S
+
+#29315
+Eakos City/Residential Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Eakos
+<238>City and Eakos's residential area.  From here, you may travel east, further into
+<241>the Eakos canal system, west towards the area above the glittering bridge that 
+<244>links Eakos City and its residential area, downwards, towards the ocean floor,
+<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 1
+~
+~
+0 -1 29316
+D 3
+~
+~
+0 -1 29314
+D 4
+~
+~
+0 -1 27135
+D 5
+~
+~
+0 -1 29215
+S
+
+#29316
+Eakos City/Residential Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Eakos
+<238>City and Eakos's residential area.  From here, you may travel west, deeper into
+<241>the Eakos canal system, east towards a large junction in the canal network, 
+<244>downwards, towards the ocean floor, or upwards, directly into the huge, looming
+<246>area of dark water above your head.<0>
+~
+0 0 8
+D 1
+~
+~
+0 -1 29317
+D 3
+~
+~
+0 -1 29315
+D 4
+~
+~
+0 -1 27136
+D 5
+~
+~
+0 -1 29216
+S
+
+#29317
+Ota'ar Dar / Eakos Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in the four-way junction of a
+<238>deep canal network between Ota'ar Dar and Eakos. You may travel north, south,
+<241>east or west from here through the canal system, downwards, towards the ocean
+<244>floor, or upwards, directly into the huge, looming area of dark water above your
+<246>head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29324
+D 1
+~
+~
+0 -1 29318
+D 2
+~
+~
+0 -1 29310
+D 3
+~
+~
+0 -1 29316
+D 4
+~
+~
+0 -1 27147
+D 5
+~
+~
+0 -1 29217
+S
+
+#29318
+Ota'ar Dar / Eakos Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in the four-way junction of a
+<238>deep canal network between Ota'ar Dar and Eakos. You may travel north, south,
+<241>east or west from here through the canal system, downwards, towards the ocean
+<244>floor, or upwards, directly into the huge, looming area of dark water above your
+<246>head. This patch of water feels peculiarly calm.<0>
+~
+0 4|1024|65536 8
+D 0
+~
+~
+0 -1 29325
+D 1
+~
+~
+0 -1 27547
+D 2
+~
+~
+0 -1 29311
+D 3
+~
+~
+0 -1 29317
+D 4
+~
+~
+0 -1 27144
+D 5
+~
+~
+0 -1 29218
+S
+
+#29319
+Eakos City/Commander's Pavilion Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Eakos
+<238>City and the Commander's Pavilion.  From here, you may travel south or east, 
+<241>deeper into the network, downwards, towards the ocean floor, or upwards, 
+<244>directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 1
+~
+~
+0 -1 29320
+D 2
+~
+~
+0 -1 29312
+D 4
+~
+~
+0 -1 27149
+D 5
+~
+~
+0 -1 29219
+S
+
+#29320
+Eakos City/Commander's Pavilion Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Eakos
+<238>City and the Commander's Pavilion.  From here, you may travel north or west, 
+<241>deeper into the network, downwards, towards the ocean floor, or upwards, 
+<244>directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29326
+D 3
+~
+~
+0 -1 29319
+D 4
+~
+~
+0 -1 27145
+D 5
+~
+~
+0 -1 29220
+S
+
+#29321
+Eakos City/Residential Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Eakos
+<238>City and Eakos's residential area.  From here, you may travel north or east, 
+<241>deeper into the network, downwards, towards the ocean floor, or upwards, 
+<244>directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29329
+D 1
+~
+~
+0 -1 29322
+D 4
+~
+~
+0 -1 27144
+D 5
+~
+~
+0 -1 29221
+S
+
+#29322
+Eakos City/Residential Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Eakos
+<238>City and Eakos's residential area.  From here, you may travel west or east, 
+<241>deeper into the network, downwards, towards the ocean floor, or upwards, 
+<244>directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 1
+~
+~
+0 -1 29323
+D 3
+~
+~
+0 -1 29321
+D 4
+~
+~
+0 -1 27145
+D 5
+~
+~
+0 -1 29222
+S
+
+#29323
+Eakos City/Residential Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Eakos
+<238>City and Eakos's residential area.  From here, you may travel west or south, 
+<241>deeper into the network, downwards, towards the ocean floor, or upwards, 
+<244>directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 2
+~
+~
+0 -1 29313
+D 3
+~
+~
+0 -1 29322
+D 4
+~
+~
+0 -1 27144
+D 5
+~
+~
+0 -1 29223
+S
+
+#29324
+Ota'ar Dar / Eakos Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's military canton and Eakos's residential area.  From here, you may travel
+<241>north, south or east through the canal system, downwards, towards the ocean 
+<244>floor, or upwards, directly into the huge, looming area of dark water above your
+<246>head.  Directly south you see a large junction in the canal network.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29330
+D 1
+~
+~
+0 -1 29325
+D 2
+~
+~
+0 -1 29317
+D 4
+~
+~
+0 -1 27144
+D 5
+~
+~
+0 -1 29224
+S
+
+#29325
+Ota'ar Dar / Eakos Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar 
+<238>Dar's military canton and Eakos's residential area.  From here, you may travel
+<241>north, south or west through the canal system, downwards, towards the ocean 
+<244>floor, or upwards, directly into the huge, looming area of dark water above your
+<246>head.  Directly south you see a large junction in the canal network.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29331
+D 2
+~
+~
+0 -1 29318
+D 3
+~
+~
+0 -1 29324
+D 4
+~
+~
+0 -1 27145
+D 5
+~
+~
+0 -1 29225
+S
+
+#29326
+Eakos City/Commander's Pavilion Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between the 
+<238>Commander's Pavilion and Eakos City.  From here, you may travel east, towards a
+<241>large junction in the canal system, south, deeper into the network, downwards, 
+<244>towards the ocean floor, or upwards, directly into the huge, looming area of 
+<246>dark water above your head.<0>
+~
+0 0 8
+D 1
+~
+~
+0 -1 29327
+D 2
+~
+~
+0 -1 29320
+D 4
+~
+~
+0 -1 27147
+D 5
+~
+~
+0 -1 29226
+S
+
+#29327
+Great Eakos Canal Junction, Upper~
+<237>You float about 4 metres above the ocean floor, in the southwestern part of the 
+<238>great Eakos canal junction at the centre of its canal network. You may travel 
+<241>north, east, or west from here through the canal system, downwards, towards the
+<244>ocean floor, or upwards, directly into the huge, looming area of dark water
+<246>above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29332
+D 1
+~
+~
+0 -1 29328
+D 3
+~
+~
+0 -1 29326
+D 4
+~
+~
+0 -1 27145
+D 5
+~
+~
+0 -1 29227
+S
+
+#29328
+Great Eakos Canal Junction, Upper~
+<237>You float about 4 metres above the ocean floor, in the southeastern part of the 
+<238>great Eakos canal junction at the centre of its canal network. You may travel 
+<241>north, east, or west from here through the canal system, downwards, towards the
+<244>ocean floor, or upwards, directly into the huge, looming area of dark water
+<246>above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29333
+D 1
+~
+~
+0 -1 29329
+D 3
+~
+~
+0 -1 29327
+D 4
+~
+~
+0 -1 27145
+D 5
+~
+~
+0 -1 29228
+S
+
+#29329
+Eakos City/Residential Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Eakos
+<238>City and Eakos's residential area.  From here, you may travel west, towards a
+<241>large junction in the canal system, south, deeper into the network, downwards, 
+<244>towards the ocean floor, or upwards, directly into the huge, looming area of 
+<246>dark water above your head.<0>
+~
+0 0 8
+D 2
+~
+~
+0 -1 29321
+D 3
+~
+~
+0 -1 29328
+D 4
+~
+~
+0 -1 27147
+D 5
+~
+~
+0 -1 29229
+S
+
+#29330
+Ota'ar Dar / Eakos Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's military canton and Eakos's residential area.  From here, you may travel 
+<241>north, towards the area above the northern bridge linking Ota'ar Dar and Eakos,
+<244>south or east through the canal system, downwards, towards the ocean floor,
+<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29334
+D 1
+~
+~
+0 -1 29331
+D 2
+~
+~
+0 -1 29324
+D 4
+~
+~
+0 -1 27147
+D 5
+~
+~
+0 -1 29230
+S
+
+#29331
+Ota'ar Dar / Eakos Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's military canton and Eakos's residential area.  From here, you may travel 
+<241>north, towards the area above the northern bridge linking Ota'ar Dar and Eakos,
+<244>south or west through the canal system, downwards, towards the ocean floor,
+<246>or upwards, directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29335
+D 2
+~
+~
+0 -1 29325
+D 3
+~
+~
+0 -1 29330
+D 4
+~
+~
+0 -1 27144
+D 5
+~
+~
+0 -1 29231
+S
+
+#29332
+Great Eakos Canal Junction, Upper~
+<237>You float about 4 metres above the ocean floor, in the westernmost part of the 
+<238>great Eakos canal junction at the centre of its canal network. You may travel 
+<241>north, south, or east from here through the canal system, downwards, towards the
+<244>ocean floor, or upwards, directly into the huge, looming area of dark water
+<246>above your head.<0>
+~
+0 4 8
+D 0
+~
+~
+0 -1 29337
+D 1
+~
+~
+0 -1 29333
+D 2
+~
+~
+0 -1 29327
+D 4
+~
+~
+0 -1 27147
+D 5
+~
+~
+0 -1 29232
+S
+
+#29333
+Great Eakos Canal Junction, Upper~
+<237>You float about 4 metres above the ocean floor, in the easternmost part of the 
+<238>great Eakos canal junction at the centre of its canal network. You may travel 
+<241>north, south, or west from here through the canal system, downwards, towards the
+<244>ocean floor, or upwards, directly into the huge, looming area of dark water
+<246>above your head.  This location feels oddly peaceful, considering the 
+surrounding environment.<0>
+~
+0 4|1024|65536 8
+D 0
+~
+~
+0 -1 29338
+D 2
+~
+~
+0 -1 29328
+D 3
+~
+~
+0 -1 29332
+D 4
+~
+~
+0 -1 27147
+D 5
+~
+~
+0 -1 29233
+S
+
+#29334
+Ota'ar Dar / Eakos Northern Bridge, Upper~
+<21>You float about 4 metres above the western end of the northern bridge connecting
+<27>Ota'ar Dar's military canton to Eakos City's residential area. The upper portion 
+<33>of Eakos's glittering gates lie to the west, while the corresponding portions
+<39>of Ota'ar Dar's imposing steel gates can be seen in the distance to the east. 
+<45>To the north and south you may venture into the deep canal system which 
+separates Eakos and Ota'ar Dar from each other, you may travel downwards, towards 
+the ocean floor, or you can swim upwards, directly into the huge, looming area of 
+dark water above your head.
+
+A large <21>SIGN<45> has been fastened to Eakos's residential area's locked and 
+barred gates.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29340
+D 1
+~
+~
+0 -1 29335
+D 2
+~
+~
+0 -1 29330
+D 3
+Glittering.  Fancy.  Probably pricey.
+~
+gates~
+8 -1 29334
+D 4
+~
+~
+0 -1 27147
+D 5
+~
+~
+0 -1 29234
+E
+sign~
+o----------------------------------------------------------------------------o
+| Due to military tensions Eakos's residential area is closed to foreigners. |
+o----------------------------------------------------------------------------o
+~
+S
+
+#29335
+Ota'ar Dar / Eakos Northern Bridge, Upper~
+<21>You float about 4 metres above the eastern end of the northern bridge connecting
+<27>Ota'ar Dar's military canton to Eakos City's residential area. The upper portion 
+<33>of Eakos's glittering gates lie far to the west, while the corresponding 
+<39>portions of Ota'ar Dar's imposing steel gates lie immediately here to the east. 
+<45>To the north and south you may venture into the deep canal system which 
+separates Eakos and Ota'ar Dar from each other, you may travel downwards, towards 
+the ocean floor, or you can swim upwards, directly into the huge, looming area of 
+dark water above your head.
+~
+0 0 8
+D 0
+~
+~
+0 -1 29341
+D 1
+Very military-looking.  Solid steel.  High.
+~
+gate~
+1 -1 27591
+D 2
+~
+~
+0 -1 29331
+D 3
+~
+~
+0 -1 29334
+D 4
+~
+~
+0 -1 27144
+D 5
+~
+~
+0 -1 29235
+S
+
+#29336
+Commander's Pavilion/Yrythelmyn Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between the
+<238>Commander's Pavilion and Yrythelmyn.  From here, you may travel east, towards
+<241>a large junction in the canal system, north, deeper into the network, downwards, 
+<244>towards the ocean floor, or upwards, directly into the huge, looming area of
+<246>dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29342
+D 1
+~
+~
+0 -1 29337
+D 4
+~
+~
+0 -1 27135
+D 5
+~
+~
+0 -1 29236
+S
+
+#29337
+Great Eakos Canal Junction, Upper~
+<237>You float about 4 metres above the ocean floor, in the northwestern part of the 
+<238>great Eakos canal junction at the centre of its canal network. You may travel 
+<241>west, south, or east from here through the canal system, downwards, towards the
+<244>ocean floor, or upwards, directly into the huge, looming area of dark water
+<246>above your head.<0>
+~
+0 0 8
+D 1
+~
+~
+0 -1 29338
+D 2
+~
+~
+0 -1 29332
+D 3
+~
+~
+0 -1 29336
+D 4
+~
+~
+0 -1 27135
+D 5
+~
+~
+0 -1 29237
+S
+
+#29338
+Great Eakos Canal Junction, Upper~
+<237>You float about 4 metres above the ocean floor, in the northeastern part of the 
+<238>great Eakos canal junction at the centre of its canal network. You may travel 
+<241>west, south, or east from here through the canal system, downwards, towards the
+<244>ocean floor, or upwards, directly into the huge, looming area of dark water
+<246>above your head.<0>
+~
+0 0 8
+D 1
+~
+~
+0 -1 29339
+D 2
+~
+~
+0 -1 29333
+D 3
+~
+~
+0 -1 29337
+D 4
+~
+~
+0 -1 27136
+D 5
+~
+~
+0 -1 29238
+S
+
+#29339
+Yrythelmyn/Eakos Residential Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between 
+<238>Yrythelmyn and Eakos's residential area.  From here, you may travel west, 
+<241>towards a large junction in the canal system, north, deeper into the network,  
+<244>downwards, towards the ocean floor, or upwards, directly into the huge, looming 
+<246>area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29343
+D 3
+~
+~
+0 -1 29338
+D 4
+~
+~
+0 -1 27147
+D 5
+~
+~
+0 -1 29239
+S
+
+#29340
+Ota'ar Dar / Eakos Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's military canton and Eakos's residential area.  From here, you may travel 
+<241>south, towards the area above the northern bridge linking Ota'ar Dar and Eakos, 
+<244>north or east through the canal system, downwards, towards the ocean floor, or 
+<246>upwards, directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29345
+D 1
+~
+~
+0 -1 29341
+D 2
+~
+~
+0 -1 29334
+D 4
+~
+~
+0 -1 27144
+D 5
+~
+~
+0 -1 29240
+S
+
+#29341
+Ota'ar Dar / Eakos Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's military canton and Eakos's residential area.  From here, you may travel 
+<241>south, towards the area above the northern bridge that links Ota'ar Dar and Eakos, 
+<244>north or west through the canal system, downwards, towards the ocean floor, or 
+<246>upwards, directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29346
+D 2
+~
+~
+0 -1 29335
+D 3
+~
+~
+0 -1 29340
+D 4
+~
+~
+0 -1 27144
+D 5
+~
+~
+0 -1 29241
+S
+
+#29342
+Commander's Pavilion/Yrythelmyn Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between the
+<238>Commander's Pavilion and Yrythelmyn.  From here, you may travel north or south,
+<241>deeper into the network, downwards, towards the ocean floor, or upwards, 
+<244>directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29348
+D 2
+~
+~
+0 -1 29336
+D 4
+~
+~
+0 -1 27135
+D 5
+~
+~
+0 -1 29242
+S
+
+#29343
+Yrythelmyn/Eakos Residential Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between 
+<238>Yrythelmyn and Eakos's residential area.  From here, you may travel south or  
+<241>east, deeper into the network, downwards, towards the ocean floor, or upwards,
+<244>directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 1
+~
+~
+0 -1 29344
+D 2
+~
+~
+0 -1 29339
+D 4
+~
+~
+0 -1 27135
+D 5
+~
+~
+0 -1 29243
+S
+
+#29344
+Yrythelmyn/Eakos Residential Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between 
+<238>Yrythelmyn and Eakos's residential area.  From here, you may travel north or  
+<241>west, deeper into the network, downwards, towards the ocean floor, or upwards,
+<244>directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29349
+D 3
+~
+~
+0 -1 29343
+D 4
+~
+~
+0 -1 27134
+D 5
+~
+~
+0 -1 29244
+S
+
+#29345
+Ota'ar Dar / Eakos Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's military canton and Eakos's residential area  The high canal walls prevent
+<241>access from here to either area, but you may travel south, north or east, 
+<244>further along the canal system, down to the ocean floor, or upwards, directly 
+<246>into the sinister, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29352
+D 1
+~
+~
+0 -1 29346
+D 2
+~
+~
+0 -1 29340
+D 4
+~
+~
+0 -1 27134
+D 5
+~
+~
+0 -1 29245
+S
+
+#29346
+Ota'ar Dar / Eakos Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar
+<238>Dar's military canton and Eakos's residential area.  The high canal walls 
+<241>prevent access from here to either area, but you may travel north, south or 
+<244>west, further along the canal system, down to the ocean floor, or upwards, 
+<246>directly into the sinister, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29353
+D 2
+~
+~
+0 -1 29341
+D 3
+~
+~
+0 -1 29345
+D 4
+~
+~
+0 -1 27147
+D 5
+~
+~
+0 -1 29246
+S
+
+#29347
+Commander's Pavilion/Yrythelmyn Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between the
+<238>Commander's Pavilion and Yrythelmyn.  From here, you may travel east, deeper
+<241>into the network, north, towards the area above the bridge connecting the 
+<244>Pavilion to Yrythelmyn, downwards, towards the ocean floor, or upwards, directly
+<244>into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29354
+D 1
+~
+~
+0 -1 29348
+D 4
+~
+~
+0 -1 27136
+D 5
+~
+~
+0 -1 29247
+S
+
+#29348
+Commander's Pavilion/Yrythelmyn Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between the
+<238>Commander's Pavilion and Yrythelmyn.  From here, you may travel west or south,
+<241>deeper into the network, downwards, towards the ocean floor, or upwards, 
+<244>directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 2
+~
+~
+0 -1 29342
+D 3
+~
+~
+0 -1 29347
+D 4
+~
+~
+0 -1 27135
+D 5
+~
+~
+0 -1 29248
+S
+
+#29349
+Yrythelmyn/Eakos Residential Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between 
+<238>Yrythelmyn and Eakos's residential area.  From here, you may travel south or  
+<241>east, deeper into the network, downwards, towards the ocean floor, or upwards,
+<244>directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 1
+~
+~
+0 -1 29350
+D 2
+~
+~
+0 -1 29344
+D 4
+~
+~
+0 -1 27134
+D 5
+~
+~
+0 -1 29249
+S
+
+#29350
+Yrythelmyn/Eakos Residential Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between 
+<238>Yrythelmyn and Eakos's residential area.  From here, you may travel north or  
+<241>west, deeper into the network, downwards, towards the ocean floor, or upwards,
+<244>directly into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29355
+D 3
+~
+~
+0 -1 29349
+D 4
+~
+~
+0 -1 27135
+D 5
+~
+~
+0 -1 29250
+S
+
+#29351
+Old City Centre/Eakos Residential Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Eakos's
+<238>residential area and a bridge leading from there to the old city centre.  
+<241>Fortified walls prevent travel south or west, and a large iron grate prevents 
+<244>access to the bridge, but you may travel north, deeper into the canal system, 
+<246>downwards, towards the ocean floor, or upwards, towards the huge, looming area 
+of darkness in the water above.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29357
+D 4
+~
+~
+0 -1 27134
+D 5
+~
+~
+0 -1 29251
+S
+
+#29352
+Ota'ar Dar / Eakos Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between two
+<238>ancient bridges leading to the old city centre.  The old city's fortifications 
+<244>prevent travel north, but you may travel south or east through the canal system,
+<246>downwards, towards the ocean floor, or upwards, directly into the huge, looming
+area of dark water above your head.  To the west lies the region above the 
+bridge that connects Eakos's residential area to the old city centre, but a 
+large iron grate prevents access to it from here.<0>
+~
+0 0 8
+D 1
+~
+~
+0 -1 29353
+D 2
+~
+~
+0 -1 29345
+D 4
+~
+~
+0 -1 27135
+D 5
+~
+~
+0 -1 29252
+S
+
+#29353
+Ota'ar Dar / Eakos Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between two
+<238>ancient bridges leading to the old city centre.  The old city's fortifications 
+<244>prevent travel north, but you may travel south or west through the canal system,
+<246>downwards, towards the ocean floor, or upwards, directly into the huge, looming
+area of dark water above your head.  To the east lies the region above the 
+bridge that connects Ota'ar Dar's military canton to the old city centre, but a 
+large iron grate prevents access to it from here.<0>
+~
+0 0 8
+D 2
+~
+~
+0 -1 29346
+D 3
+~
+~
+0 -1 29352
+D 4
+~
+~
+0 -1 27134
+D 5
+~
+~
+0 -1 29253
+S
+
+#29354
+Ael'thir Bridge, Upper~
+<21>You float about 4 metres above the scintillant bridge connecting the Commander's
+<27>Pavilion to Yrythelmyn. The upper portions of the gates to both cantons lie
+<33>immediately east and west. To the north and south you may venture further into
+<39>the canal system, you may travel downwards, towards the ocean floor, or you can
+<45>swim upwards, directly into the looming area of dark water above your head.<0>
+ 
+~
+0 4 8
+D 0
+~
+~
+0 -1 29360
+D 1
+Richly-decorated.  Definitely Elven.
+~
+gates graceful elegant~
+8 -1 29354
+D 2
+~
+~
+0 -1 29347
+D 3
+Interesting combination of natural and crafted.
+~
+gates glittering~
+8 -1 29354
+D 4
+~
+~
+0 -1 27136
+D 5
+~
+~
+0 -1 29254
+E
+signs sign~
+o-------------------------------------------------------------------o
+| Due to military tensions Eakos is currently closed to foreigners. |
+o-------------------------------------------------------------------o
+~
+S
+
+#29355
+Yrythelmyn/Eakos Residential Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between 
+<238>Yrythelmyn, Eakos's residential area, and a bridge leading to the old city 
+<241>centre.  From here, you may travel south or east, deeper into the network, 
+<244>downwards, towards the ocean floor, or upwards, directly into the huge, looming 
+<246>area of dark water above your head.<0>
+~
+0 0 8
+D 1
+~
+~
+0 -1 29356
+D 2
+~
+~
+0 -1 29350
+D 4
+~
+~
+0 -1 27134
+D 5
+~
+~
+0 -1 29255
+S
+
+#29356
+Old City Centre/Eakos Residential Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Eakos's
+<238>residential area and the old city centre.  Fortified walls prevent travel north
+<241>or south, but you may travel west or east, deeper into the canal system, 
+<244>downwards, towards the ocean floor, or upwards, towards the huge, looming area 
+<246>of darkness in the water above.<0>
+~
+0 0 8
+D 1
+~
+~
+0 -1 29357
+D 3
+~
+~
+0 -1 29355
+D 4
+~
+~
+0 -1 27135
+D 5
+~
+~
+0 -1 29256
+S
+
+#29357
+Old City Centre/Eakos Residential Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between Eakos's
+<238>residential area and the old city centre.  Fortified walls prevent travel north
+<241>or east, but you may travel west or south, deeper into the canal system, 
+<244>downwards, towards the ocean floor, or upwards, towards the huge, looming area 
+<246>of darkness in the water above.<0>
+~
+0 0 8
+D 2
+~
+~
+0 -1 29351
+D 3
+~
+~
+0 -1 29356
+D 4
+~
+~
+0 -1 27135
+D 5
+~
+~
+0 -1 29257
+S
+
+#29358
+Northern end of Vur'gath Bridge, Upper~
+<21>You float about 4 metres above the northern end of the bridge connecting Eakos
+<27>City and the Commander's Pavilion. The upper portion of the Pavilion's majestic,
+<33>glittering gates lie to the immediate north, while the corresponding portions
+<39>of Eakos City's gates can be seen in the distance to the southeast. To the east
+<45>you may venture into the deep canal system which separates Eakos City and the 
+Pavilion, you may travel south, towards the Eakos City end of the bridge, or you can 
+swim upwards, directly into the huge, looming area of dark water above your head.
+Huge steel grates prevent movement west, in the direction of the open ocean.
+
+A large <21>SIGN<45> has been fastened to the Commander's Pavilion gates.<0>
+~
+0 0 8
+D 0
+Majestic.  Very glittery.
+~
+gates~
+8 -1 29358
+D 1
+~
+~
+0 -1 29312
+D 2
+~
+~
+0 -1 29359
+D 4
+~
+~
+0 -1 27149
+D 5
+~
+~
+0 -1 29258
+E
+sign~
+o----------------------------------------------------------------o
+| Due to military tensions the Pavilion is closed to foreigners. |
+o----------------------------------------------------------------o
+~
+S
+
+#29359
+Southern end of Vur'gath Bridge, Upper~
+<21>You float about 4 metres above the southern end of the bridge connecting Eakos
+<27>City and the Commander's Pavilion. The upper portion of Eakos City's rough-hewn,
+<33>glittering gates lie to your immediate east, while the corresponding portions
+<39>of the Pavilion gates can be seen in the distance to the north. You may travel 
+<45>north, towards the Pavilion end of the bridge, or you can swim upwards, directly 
+into the huge, looming area of dark water above your head.  Huge steel grates
+prevent movement west and south, towards the open ocean.
+
+A large <21>SIGN<45> has been fastened to the Commander's Pavilion gates.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29358
+D 1
+Wow.  Just wow.
+~
+gates~
+8 -1 29359
+D 4
+~
+~
+0 -1 27148
+D 5
+~
+~
+0 -1 29259
+E
+sign~
+o--------------------------------------------------------------o
+| Due to military tensions Eakos City is closed to foreigners. |
+o--------------------------------------------------------------o
+~
+S
+
+#29360
+Commander's Pavilion/Yrythelmyn Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between the
+<238>Commander's Pavilion and Yrythelmyn.  From here, you may travel north, deeper
+<241>into the network, south, towards the area above the bridge connecting the 
+<244>Pavilion to Yrythelmyn, downwards, towards the ocean floor, or upwards, directly
+<244>into the huge, looming area of dark water above your head.<0>
+~
+0 0 8
+D 0
+~
+~
+0 -1 29361
+D 2
+~
+~
+0 -1 29354
+D 4
+~
+~
+0 -1 27136
+D 5
+~
+~
+0 -1 29260
+S
+
+#29361
+Commander's Pavilion/Yrythelmyn Canal, Upper~
+<237>You float about 4 metres above the ocean floor, in a deep canal between the
+<238>Commander's Pavilion and Yrythelmyn.  From here, you may travel south, deeper
+<241>into the network, south, downwards, towards the ocean floor, or upwards, 
+<244>directly into the huge, looming area of dark water above your head. A massive
+iron grate prevents you from travelling farther north, though you can see a large
+junction beyond it.<0>
+~
+0 0 8
+D 2
+~
+~
+0 -1 29360
+D 4
+~
+~
+0 -1 27136
+D 5
+~
+~
+0 -1 29261
+S
+
+#29362
+A Wide Shaft~
+<144>A wide vertical shaft descends from the canal system through old, wet stone, its 
+<145>walls slick with mineral slime and luminous salt. Above, an entrance is almost 
+<146>invisible once the seaweed closes it over, leaving only a narrow seam where the 
+<147>very dim light of the network leaks through. Below you, the shaft drops towards 
+<153>cleaner, colder water, from which carries the distant sound of a deep swooshing.<0>
+~
+0 1|4 8
+D 4
+Very thick patch.  Is there... something beneath it?
+~
+~
+12 -1 29212
+D 5
+~
+~
+0 -1 29363
+S
+
+#29363
+An Underwater Tunnel~
+<144>A low, rounded tunnel in the bedrock opens at the base of an upwards shaft. 
+<145>Here, canal stone gives way to smoother rock veined with pale shell and 
+<146>pearl-coloured minerals. The water that fills this underwater passage is cold
+<147>and clear, moving in slow pulses along a horizontal passage to the south. Faint 
+<153>drifts of luminous silt stir cloudily up from the floor, revealing deep scrape
+marks along the walls.<0>
+~
+0 0 12
+D 2
+~
+~
+0 -1 29364
+D 4
+~
+~
+0 -1 29362
+S
+
+#29364
+An Underwater Tunnel~
+<144>You are in an underwater tunnel carved out of ocean bedrock.  The walls are 
+<145>veined with pale shell and pearl-coloured minerals. The water that fills this 
+<146>underwater passage is cold and clear, moving in slow pulses along a horizontal 
+<147>passage that leads north and south. Faint drifts of luminous silt stir cloudily
+<153>up from the floor, revealing deep scrape marks along the walls.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29363
+D 2
+~
+~
+0 -1 29365
+S
+
+#29365
+An Underwater Tunnel~
+<144>You are in an underwater tunnel carved out of ocean bedrock.  The walls are 
+<145>veined with pale shell and pearl-coloured minerals. The water that fills this 
+<146>underwater passage is cold and clear, moving in slow pulses along a horizontal 
+<147>passage that leads north and south. Faint drifts of luminous silt stir cloudily
+<153>up from the floor, revealing deep scrape marks along the walls.  The tunnel 
+seems to open up into a larger area to the south.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29364
+D 2
+~
+~
+0 -1 29366
+S
+
+#29366
+An Underwater Chamber~
+<144>This cold corner of the undersea chamber is dim and still, its walls crusted 
+<145>with pale shell-growths and slow-drifting silt. A tunnel opens before you to the 
+<146>north, while clearer water flows onward through the chamber’s shadowed breadth
+<147>to the south and east.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29365
+D 1
+~
+~
+0 -1 29368
+D 2
+~
+~
+0 -1 29367
+S
+
+#29367
+An Underwater Chamber~
+<144>The water in the chamber here deepens into a darker hue, and you can see where 
+<145>strands of white seaweed trail from cracks in the stone. Something has scraped 
+<146>long, deep marks across the walls, leaving raw grooves in its mineral crust.<0>
+~
+0 0 12
+D 0
+~
+~
+0 -1 29366
+D 1
+~
+~
+0 -1 29369
+S
+
+#29368
+An Underwater Chamber~
+<144>Smoothed stone arches above your head in this part of the undersea chamber, 
+<145>veined with pearl-white mineral streaks and faintly pulsating blue light. Broken 
+<146>shells and polished fragments of bone lie scattered across the cavern's floor, 
+<147>shaped into small ridges by the steady current.<0>
+~
+0 0 12
+D 2
+~
+~
+0 -1 29369
+D 3
+~
+~
+0 -1 29366
+S
+
+#29369
+An Underwater Chamber~
+<144>This corner of the chamber glows with a soft, pearly radiance, that is scattered 
+<145>by the water and reflected by the hoard of coins, gems, coral and other valuable 
+<146>items heaped upon its floor. The water is noticeably colder here, and you watch 
+<147>in quiet wonder as each faint wash of current sends glittering mosaics of light 
+<153>sliding over the treasure pile, as if the moon itself were casting its gentle 
+beams down here, deep beneath the sea's surface.
+
+A patch of ground here looks to have been recently disturbed.<0>
+~
+0 131072 12
+D 0
+~
+~
+0 -1 29368
+D 3
+~
+~
+0 -1 29367
+S
+#0
+
+#RESETS
+D 0 29206 3 2                   lock west in Ota'ar Dar / Eakos Southern Bridge, Lower
+D 0 29207 1 2                   lock east in Ota'ar Dar / Eakos Southern Bridge, Lower
+D 0 29214 0 2                   lock north in Zhur-ka Bridge, Lower
+D 0 29214 2 2                   lock south in Zhur-ka Bridge, Lower
+D 0 29234 3 2                   lock west in Ota'ar Dar / Eakos Northern Bridge, Lower
+D 0 29235 1 1                   close east in Ota'ar Dar / Eakos Northern Bridge, Lower
+D 0 29254 1 2                   lock east in Ael'thir Bridge, Lower
+D 0 29254 3 2                   lock west in Ael'thir Bridge, Lower
+D 0 29258 0 2                   lock north in Northern end of Vur'gath Bridge, Lower
+D 0 29259 1 2                   lock east in Southern end of Vur'gath Bridge, Lower
+D 0 29306 3 2                   lock west in Ota'ar Dar / Eakos Southern Bridge, Upper
+D 0 29307 1 2                   lock east in Ota'ar Dar / Eakos Southern Bridge, Upper
+D 0 29314 0 2                   lock north in Zhur-ka Bridge, Upper
+D 0 29314 2 2                   lock south in Zhur-ka Bridge, Upper
+D 0 29334 3 2                   lock west in Ota'ar Dar / Eakos Northern Bridge, Upper
+D 0 29335 1 1                   close east in Ota'ar Dar / Eakos Northern Bridge, Upper
+D 0 29354 1 2                   lock east in Ael'thir Bridge, Upper
+D 0 29354 3 2                   lock west in Ael'thir Bridge, Upper
+D 0 29358 0 2                   lock north in Northern end of Vur'gath Bridge, Upper
+D 0 29359 1 2                   lock east in Southern end of Vur'gath Bridge, Upper
+M 0 29200 5 29202               add a giant sea slug to Ota'ar Dar / Eakos Canal, Lower
+G 0 29202 0                         carry thick grey slime
+M 0 29200 5 29202               add a giant sea slug to Ota'ar Dar / Eakos Canal, Lower
+G 0 29202 0                         carry thick grey slime
+M 0 29200 5 29307               add a giant sea slug to Ota'ar Dar / Eakos Southern Bridge, Upper
+M 0 29200 5 29210               add a giant sea slug to Ota'ar Dar / Eakos Canal, Lower
+G 0 29202 0                         carry thick grey slime
+M 0 29200 5 29331               add a giant sea slug to Ota'ar Dar / Eakos Canal, Upper
+M 0 29200 5 29245               add a giant sea slug to Ota'ar Dar / Eakos Canal, Lower
+M 0 29201 3 29201               add a marple to Ota'ar Dar / Eakos Canal, Lower
+M 0 29201 3 29308               add a marple to Ota'ar Dar / Eakos Canal, Upper
+M 0 29201 3 29217               add a marple to Ota'ar Dar / Eakos Canal, Lower
+M 0 29202 2 29346               add a marple to Ota'ar Dar / Eakos Canal, Upper
+M 0 29202 2 29234               add a marple to Ota'ar Dar / Eakos Northern Bridge, Lower
+M 0 29203 4 29215               add an ingkludd to Eakos City/Residential Canal, Lower
+E 0 29200 0 12                      equip a hideously misshapen shell (about)
+M 0 29203 4 29317               add an ingkludd to Ota'ar Dar / Eakos Canal, Upper
+E 0 29200 0 12                      equip a hideously misshapen shell (about)
+M 0 29203 4 29235               add an ingkludd to Ota'ar Dar / Eakos Northern Bridge, Lower
+E 0 29200 0 12                      equip a hideously misshapen shell (about)
+M 0 29203 4 29205               add an ingkludd to Ota'ar Dar / Eakos Canal, Lower
+E 0 29200 0 12                      equip a hideously misshapen shell (about)
+M 0 29204 4 29300               add a deepsea harpy to Ota'ar Dar / Eakos Canal, Upper
+E 0 29201 0 16                      equip razor-sharp talons (wield)
+E 0 29203 0 18                      equip a crude blackwood club (dual)
+M 0 29204 4 29316               add a deepsea harpy to Eakos City/Residential Canal, Upper
+E 0 29201 0 16                      equip razor-sharp talons (wield)
+M 0 29204 4 29206               add a deepsea harpy to Ota'ar Dar / Eakos Southern Bridge, Lower
+E 0 29201 0 16                      equip razor-sharp talons (wield)
+E 0 29203 0 18                      equip a crude blackwood club (dual)
+M 0 29204 4 29253               add a deepsea harpy to Ota'ar Dar / Eakos Canal, Lower
+E 0 29201 0 16                      equip razor-sharp talons (wield)
+M 0 29205 2 29304               add a water giant to Ota'ar Dar / Eakos Canal, Upper
+E 0 29205 0 13                      equip a coral girdle (waist)
+E 0 29204 0 16                      equip a massive coral-forged trident (wield)
+M 0 29205 2 29340               add a water giant to Ota'ar Dar / Eakos Canal, Upper
+E 0 29205 0 13                      equip a coral girdle (waist)
+E 0 29204 0 16                      equip a massive coral-forged trident (wield)
+M 0 29206 1 29225               add a water giantess to Ota'ar Dar / Eakos Canal, Lower
+E 0 29205 0 13                      equip a coral girdle (waist)
+E 0 29206 0 16                      equip a water net (wield)
+M 0 29207 1 29315               add a Lorwyn merrow to Eakos City/Residential Canal, Upper
+E 0 29207 0 16                      equip vicious claws (wield)
+M 0 29208 1 29209               add a Lorwyn merrow to Ota'ar Dar / Eakos Canal, Lower
+E 0 29207 0 16                      equip vicious claws (wield)
+G 0 29208 0                         carry an abyssal marrowfruit
+M 0 29209 1 29224               add a deinosuchus to Ota'ar Dar / Eakos Canal, Lower
+E 0 29210 0 5                       equip an armoured hide (body)
+E 0 29209 0 16                      equip massive jaws (wield)
+G 0 29211 0                         carry a deinosuchus egg
+M 0 29210 1 29303               add a deinosuchus to Ota'ar Dar / Eakos Canal, Upper
+E 0 29210 0 5                       equip an armoured hide (body)
+E 0 29209 0 16                      equip massive jaws (wield)
+M 0 29211 1 29311               add a mosasaur to Ota'ar Dar / Eakos Canal, Upper
+E 0 29212 0 5                       equip a tough hide (body)
+E 0 29209 0 16                      equip massive jaws (wield)
+M 0 29212 1 29352               add a wretchglow to Ota'ar Dar / Eakos Canal, Upper
+E 0 29207 0 16                      equip vicious claws (wield)
+E 0 29213 0 17                      equip a magical lure (hold)
+E 0 29209 0 18                      equip massive jaws (dual)
+M 0 29213 2 29213               add a deep scion to Eakos City/Residential Canal, Lower
+E 0 29214 0 16                      equip a heavy battleaxe (wield)
+E 0 29215 0 18                      equip a lamprey-like maw (dual)
+M 0 29213 2 29220               add a deep scion to Eakos City/Commander's Pavilion Canal, Lower
+E 0 29207 0 16                      equip vicious claws (wield)
+E 0 29215 0 18                      equip a lamprey-like maw (dual)
+M 0 29214 2 29322               add a deep scion to Eakos City/Residential Canal, Upper
+E 0 29214 0 16                      equip a heavy battleaxe (wield)
+E 0 29215 0 18                      equip a lamprey-like maw (dual)
+M 0 29214 2 29326               add a deep scion to Eakos City/Commander's Pavilion Canal, Upper
+E 0 29207 0 16                      equip vicious claws (wield)
+E 0 29215 0 18                      equip a lamprey-like maw (dual)
+M 0 29215 4 29221               add a water weird to Eakos City/Residential Canal, Lower
+M 0 29215 4 29359               add a water weird to Southern end of Vur'gath Bridge, Upper
+M 0 29215 4 29329               add a water weird to Eakos City/Residential Canal, Upper
+M 0 29215 4 29228               add a water weird to Great Eakos Canal Junction, Lower
+M 0 29216 1 29212               add an anguillian to Eakos City/Commander's Pavilion Canal, Lower
+E 0 29218 0 16                      equip sharp pincers (wield)
+E 0 29219 0 18                      equip heavy whiplike tail (dual)
+M 0 29217 2 29226               add an anguillian to Eakos City/Commander's Pavilion Canal, Lower
+E 0 29218 0 16                      equip sharp pincers (wield)
+E 0 29219 0 18                      equip heavy whiplike tail (dual)
+G 0 29220 0                         carry a soft, translucent egg
+G 0 29220 0                         carry a soft, translucent egg
+M 0 29217 2 29312               add an anguillian to Eakos City/Commander's Pavilion Canal, Upper
+E 0 29218 0 16                      equip sharp pincers (wield)
+E 0 29219 0 18                      equip heavy whiplike tail (dual)
+G 0 29220 0                         carry a soft, translucent egg
+G 0 29220 0                         carry a soft, translucent egg
+G 0 29220 0                         carry a soft, translucent egg
+M 0 29218 1 29319               add an ocean strider to Eakos City/Commander's Pavilion Canal, Upper
+E 0 29209 0 16                      equip massive jaws (wield)
+E 0 29221 0 18                      equip an enormous sword (dual)
+M 0 29219 1 29259               add an ocean strider to Southern end of Vur'gath Bridge, Lower
+E 0 29209 0 16                      equip massive jaws (wield)
+E 0 29222 0 17                      equip a black coral wand (hold)
+M 0 29220 1 29369               add Auralithra to An Underwater Chamber
+E 0 29226 0 5                       equip a pearl hide (body)
+E 0 29225 0 16                      equip twin rows of massive teeth (wield)
+M 0 29221 1 29364               add a stone urchin to An Underwater Tunnel
+E 0 29227 0 16                      equip sharp spines (wield)
+M 0 29222 1 29367               add a stone urchin to An Underwater Chamber
+E 0 29227 0 16                      equip sharp spines (wield)
+M 0 29223 2 29242               add a scrag to Commander's Pavilion/Yrythelmyn Canal, Lower
+E 0 29207 0 16                      equip vicious claws (wield)
+M 0 29223 2 29243               add a scrag to Yrythelmyn/Eakos Residential Canal, Lower
+E 0 29207 0 16                      equip vicious claws (wield)
+M 0 29224 2 29247               add a scrag to Commander's Pavilion/Yrythelmyn Canal, Lower
+E 0 29207 0 16                      equip vicious claws (wield)
+M 0 29224 2 29251               add a scrag to Old City Centre/Eakos Residential Canal, Lower
+E 0 29207 0 16                      equip vicious claws (wield)
+M 0 29225 2 29261               add an ashiera to Commander's Pavilion/Yrythelmyn Canal, Lower
+E 0 29232 0 5                       equip a ray hide harness (body)
+E 0 29233 0 13                      equip a sharkskin loincloth (waist)
+E 0 29231 0 16                      equip an Ashieran lance (wield)
+M 0 29225 2 29238               add an ashiera to Great Eakos Canal Junction, Lower
+E 0 29232 0 5                       equip a ray hide harness (body)
+E 0 29233 0 13                      equip a sharkskin loincloth (waist)
+E 0 29231 0 16                      equip an Ashieran lance (wield)
+M 0 29226 2 29249               add an ashiera to Yrythelmyn/Eakos Residential Canal, Lower
+E 0 29232 0 5                       equip a ray hide harness (body)
+E 0 29233 0 13                      equip a sharkskin loincloth (waist)
+E 0 29231 0 16                      equip an Ashieran lance (wield)
+M 0 29226 2 29256               add an ashiera to Old City Centre/Eakos Residential Canal, Lower
+E 0 29232 0 5                       equip a ray hide harness (body)
+E 0 29233 0 13                      equip a sharkskin loincloth (waist)
+E 0 29231 0 16                      equip an Ashieran lance (wield)
+M 0 29227 2 29360               add an ocean sprite to Commander's Pavilion/Yrythelmyn Canal, Upper
+E 0 29234 0 5                       equip an eelskin tunic (body)
+E 0 29236 0 16                      equip a small, sharp dagger (wield)
+M 0 29227 2 29348               add an ocean sprite to Commander's Pavilion/Yrythelmyn Canal, Upper
+E 0 29234 0 5                       equip an eelskin tunic (body)
+G 0 29238 0                         carry a seaweed salve
+M 0 29228 1 29338               add an ocean sprite to Great Eakos Canal Junction, Upper
+E 0 29235 0 5                       equip an eelskin dress (body)
+E 0 29237 0 21                      equip a driftwood bow (ranged)
+G 0 29238 0                         carry a seaweed salve
+M 0 29229 2 29355               add a giant seahorse to Yrythelmyn/Eakos Residential Canal, Upper
+M 0 29229 2 29351               add a giant seahorse to Old City Centre/Eakos Residential Canal, Upper
+M 0 29230 1 29361               add a giant seahorse to Commander's Pavilion/Yrythelmyn Canal, Upper
+M 0 29232 1 29349               add a vapour imp to Yrythelmyn/Eakos Residential Canal, Upper
+E 0 29241 0 6                       equip curved horns (head)
+E 0 29240 0 16                      equip sharp claws (wield)
+M 0 29233 1 29336               add a vapour imp to Commander's Pavilion/Yrythelmyn Canal, Upper
+E 0 29241 0 6                       equip curved horns (head)
+E 0 29240 0 16                      equip sharp claws (wield)
+M 0 29234 1 29357               add a sea wyrm to Old City Centre/Eakos Residential Canal, Upper
+E 0 29242 0 16                      equip terrifying jaws (wield)
+M 0 29235 1 29260               add a myrmyxicus to Commander's Pavilion/Yrythelmyn Canal, Lower
+E 0 29246 0 16                      equip a double-headed scythe (wield)
+M 0 29236 1 29232               add a giant water spider to Great Eakos Canal Junction, Lower
+M 0 29237 1 29233               add a giant sea anemone to Great Eakos Canal Junction, Lower
+I 29223 80 29369 1              A dragon's hoard to An Underwater Chamber
+P 0 29224 0 29223               put a pile of coins inside A dragon's hoard
+S
+
+#SPECIALS
+M 29212 spec_breath_steam       a wretchglow
+M 29216 spec_bloodsucker        an anguillian
+M 29217 spec_bloodsucker        an anguillian
+M 29218 spec_warrior            an ocean strider
+M 29219 spec_cast_priestess     an ocean strider
+M 29220 spec_breath_steam       Auralithra
+M 29227 spec_cast_water_sprite  an ocean sprite
+M 29228 spec_cast_water_sprite  an ocean sprite
+M 29232 spec_cast_undead        a vapour imp
+M 29233 spec_demon              a vapour imp
+M 29234 spec_breath_gas         a sea wyrm
+M 29235 spec_breath_gas         a myrmyxicus
+M 29236 spec_poison             a giant water spider
+M 29237 spec_poison             a giant sea anemone
+S
+
+#$

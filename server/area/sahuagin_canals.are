@@ -869,6 +869,9 @@ mpasound ::rumble::
 >rand_prog 3~
 mpasound You hear the sharp hiss of expelled steam.
 ~
+>fight_prog 5~
+bubble $n
+~
 |
 < reserved~ elite~
 #27318
@@ -1627,11 +1630,10 @@ Ota'ar Dar Military/Arena Canton Canal, Lower~
 <248>You are at the bottom of the ocean floor, at the western end of a deep canal
 <250>between Ota'ar Dar's military canton, to the north, and its arena canton, to
 <252>the south. The high canal walls prevent access to either canton from here,
-<254>and a huge iron grate prevents further travel east, but you may travel
-east along the canal or upwards, towards the huge, looming area of darkness
-in the water above. You also notice what looks like the entrance to an
-underground cave to the south--a large opening has been carved through the canal
-walls and into the sea bedrock.<0>
+<254>but you may travel west or east along the canal or upwards, towards the huge,
+looming area of darkness in the water above. You also notice what looks like the
+entrance to an underground cave to the south--a large opening has been carved
+through the canal walls and into the sea bedrock.<0>
 ~
 0 0 12
 D1
@@ -1642,6 +1644,10 @@ D2
 ~
 ~
 0 -1 27813
+D3
+~
+~
+0 -1 29218
 D4
 ~
 ~
@@ -3942,16 +3948,19 @@ S
 <252>Ota'ar Dar Military/Arena Canton Canal, Upper<0>~
 <237>You float about 4 metres above the ocean floor, in a deep canal between Ota'ar Dar's
 <238>military canton, to the north, and its arena canton, to the south. The high canal
-<241>walls prevent access from here to either canton and a huge iron grate prevents
-<244>further travel west, but you may travel east, along the canal system, downwards,
-<246>towards the ocean floor, or upwards, directly into the huge, looming area of
-dark water above your head.<0>
+<241>walls prevent access from here to either canton, but you may travel west or east
+<244>through the canal system, downwards, towards the ocean floor, or upwards,
+<246>directly into the huge, looming area of dark water above your head.<0>
 ~
 0 0 8
 D1
 ~
 ~
 0 -1 27546
+D3
+~
+~
+0 -1 29318
 D4
 ~
 ~
@@ -6673,7 +6682,7 @@ bedrock.  Signs of recent habitation are everywhere; your guess would be this
 chamber is the home of multiple large, moderately-intelligent aquatic bipedal
 humanoids. Violent and carnivorous ones.<0>
 
-<32>You can't help but notice the some of the bedrock looks to have been excavated
+<32>You can't help but notice that some of the bedrock looks to have been excavated
 recently and filled back in.<0>
 ~
 0 1|8 12

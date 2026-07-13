@@ -17,6 +17,10 @@ sharp talons flex as she considers you for dinner.
 50 1 0 2d6+260 4d6+4
 0 15000
 8 8 2
+>fight_prog 5~
+c sonic $n
+~
+|
 #9102
 harpy leader screaming~
 the screaming harpy leader~
@@ -31,6 +35,10 @@ surrounds her.
 53 8 2 4d7+510 4d8+5
 0 15000
 8 8 2
+>fight_prog 9~
+c sonic $n
+~
+|
 #9103
 air elemental ghostly~
 a ghostly air elemental~
