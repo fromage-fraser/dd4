@@ -4436,6 +4436,7 @@ DECLARE_DO_FUN(do_mpstat);
 DECLARE_DO_FUN(do_mptransfer);
 DECLARE_DO_FUN(do_mppeace);
 DECLARE_DO_FUN(do_mpotimer);
+DECLARE_DO_FUN(do_mpcost);
 
 DECLARE_DO_FUN(do_aambient);
 DECLARE_DO_FUN(do_mset);

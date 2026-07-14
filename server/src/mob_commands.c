@@ -927,3 +927,49 @@ void do_mpotimer( CHAR_DATA *ch, char *argument )
         obj->timer = value;
         obj->timermax = value;
 }
+
+void do_mpcost(CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA *obj;
+        char arg1[MAX_INPUT_LENGTH];
+        char arg2[MAX_INPUT_LENGTH];
+        char arg3[MAX_INPUT_LENGTH];
+        int value;
+
+        if (!IS_NPC(ch) || ch->desc != NULL)
+        {
+                send_to_char("Huh?\n\r", ch);
+                return;
+        }
+
+        argument = one_argument(argument, arg1);
+        argument = one_argument(argument, arg2);
+        one_argument(argument, arg3);
+
+        if (arg1[0] == '\0'
+        ||  str_cmp(arg2, "cost")
+        ||  !is_number(arg3))
+        {
+                bug("Mpcost - syntax: mpcost <object> cost <value>: vnum %d.",
+                    ch->pIndexData->vnum);
+                return;
+        }
+
+        value = atoi(arg3);
+
+        if (value < 0)
+        {
+                bug("Mpcost - negative cost: vnum %d.",
+                    ch->pIndexData->vnum);
+                return;
+        }
+
+        if (!(obj = get_obj_here(ch, arg1)))
+        {
+                bug("Mpcost - object not found: vnum %d.",
+                    ch->pIndexData->vnum);
+                return;
+        }
+
+        obj->cost = value;
+}
