@@ -629,6 +629,12 @@ Syntax:  MPOTIMER <object> <number of ticks>
     consumables, or even armour/weapons. Avoid using $o or the like if it'S
     triggering during a death_prog--use keywords instead.
 
+
+Syntax:  MPCOST <object> cost <value in copper pieces>
+
+    Set a cost on an object. Useful to give players high value items they can
+    sell or trade, or alter the value of objects given to the mob.
+
 --------------------------Regarding CPU Slowdown-------------------------------
 
     We have no real idea how slow this makes a mud. However, you will find
@@ -797,6 +803,7 @@ MPKILL		<victim>		    MPPURGE		    [argument]
 MPGOTO		<dest>			    MPAT		    <dest> <command>
 MPTRANSFER	<dest> [location]	MPFORCE		    <victim> <command>
                                 MPPEACE
+MPOTIMER <object> <timer value> MPCOST <object> cost <value in copper>
 
 ======================END OF QUICK REFERENCE SHEET===========================
 

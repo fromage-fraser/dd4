@@ -623,6 +623,8 @@ mpkill $n
 ~
 >death_prog 100~
 mpoload 29247 83
+mpoload 29226 80
+mpcost hide cost 10000
 ~
 |
 
@@ -1449,6 +1451,7 @@ A gleaming pile of coins lies scattered here.~
 20 0 1
 456~ 77~ 104~ 4~
 1 0 0
+M 4
 
 #29225
 massive teeth pearl dragon twin~
@@ -1479,6 +1482,7 @@ A
 50 10
 A
 17 -50
+M 3
 
 #29227
 sharp black spines~
@@ -1515,6 +1519,7 @@ A somewhat grubby pile of coins lies scattered here.~
 20 0 1
 456~ 40~ 51~ 1~
 1 0 0
+M 5
 
 #29231
 lance ashieran~
@@ -5637,7 +5642,6 @@ M 0 29219 1 29259               add an ocean strider to Southern end of Vur'gath
 E 0 29209 0 16                      equip massive jaws (wield)
 E 0 29222 0 17                      equip a black coral wand (hold)
 M 0 29220 1 29369               add Auralithra to An Underwater Chamber
-E 0 29226 0 5                       equip a pearl hide (body)
 E 0 29225 0 16                      equip twin rows of massive teeth (wield)
 M 0 29221 1 29364               add a stone urchin to An Underwater Tunnel
 E 0 29227 0 16                      equip sharp spines (wield)

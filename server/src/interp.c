@@ -489,6 +489,7 @@ const struct cmd_type cmd_table[] =
         {"mpforce", do_mpforce, POS_DEAD, 0, LOG_NORMAL},
         {"mppeace", do_mppeace, POS_DEAD, 0, LOG_NORMAL},
         {"mpotimer", do_mpotimer, POS_DEAD, 0, LOG_NORMAL},
+         {"mpcost", do_mpcost, POS_DEAD, 0, LOG_NORMAL},
 
         {"gouge", do_gouge, POS_STANDING, 0, LOG_NORMAL},
         {"atemi", do_atemi, POS_FIGHTING, 0, LOG_NORMAL},
