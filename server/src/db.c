@@ -3039,7 +3039,7 @@ void load_specials(FILE *fp)
                          * weak combat specials
                          */
 
-                        if (pMobIndex->spec_fun == spec_lookup("spec_poison") || pMobIndex->spec_fun == spec_lookup("spec_bloodsucker") || pMobIndex->spec_fun == spec_lookup("spec_superwimpy") || pMobIndex->spec_fun == spec_lookup("spec_spectral_minion") || pMobIndex->spec_fun == spec_lookup("spec_kungfu_poison") || pMobIndex->spec_fun == spec_lookup("spec_guard") || pMobIndex->spec_fun == spec_lookup("spec_sahuagin_guard") || pMobIndex->spec_fun == spec_lookup("spec_judge"))
+                        if (pMobIndex->spec_fun == spec_lookup("spec_poison") || pMobIndex->spec_fun == spec_lookup("spec_bloodsucker") || pMobIndex->spec_fun == spec_lookup("spec_superwimpy") || pMobIndex->spec_fun == spec_lookup("spec_spectral_minion") || pMobIndex->spec_fun == spec_lookup("spec_kungfu_poison") || pMobIndex->spec_fun == spec_lookup("spec_guard") || pMobIndex->spec_fun == spec_lookup("spec_sahuagin_guard") || pMobIndex->spec_fun == spec_lookup("spec_cast_judge"))
                                 bonus = 5;
 
                         /*
@@ -3444,7 +3444,7 @@ void reset_area(AREA_DATA *pArea)
                         else if (IS_SET(pObjIndex->extra_flags, ITEM_FICKLE))
                         {
                                 obj = create_object(pObjIndex, number_fuzzy(obj_to->level), "common", CREATED_FICKLE_RANDOMISER);
-                                obj->cost = 0;
+                                obj_to_obj(obj, obj_to);
                         }
                         else if ((IS_SET(pObjIndex->extra_flags, ITEM_WEAK_RANDOMISE) || (level < RANDOMISER_MIN_LEVEL)))
                         {

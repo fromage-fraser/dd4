@@ -2361,6 +2361,14 @@ A spade of exceptional quality gleams brightly here.~
 6 0 1|16384
 14~ 54~ 163~ 70~
 1 10000 90
+#31099
+portal grimy~
+the grimy portal~
+A swirling, glowing portal lies before you. A bad smell comes from it.~
+~
+33 0 0
+8001~ -1~ 0~ 100~
+1 0 0
 #0
 
 
@@ -4465,7 +4473,7 @@ Victory Parade West
 S
 #31195
 The Portal Chambers~
-These chambers house the three magical portals of the city of Anon.
+These chambers house the four magical portals of the city of Anon.
 Proceed carefully, for you travel at your own risk!
 ~
 0 8|1024 0
@@ -4488,6 +4496,11 @@ A Sandy Room
 ~
 ~
 0 -1 31198
+D4
+A Grimy Room
+~
+~
+0 -1 31326
 S
 #31196
 A Dirty Room~
@@ -4626,6 +4639,20 @@ Liberty Lane
 ~
 ~
 0 -1 31038
+S
+#31326
+A Grimy Room~
+You have entered a grimy room with a smooth stone floor. The walls are covered
+in indecipherable but likely scatological scrawlings. Bloody needles and curious
+metal tubes lie scattered about on the floor. Something very wrong lies through
+this portal, you can just sense it.
+~
+0 8|1024 0
+D5
+The Portal Chambers
+~
+~
+0 -1 31195
 S
 #0
 
@@ -4915,9 +4942,10 @@ G 1 31078 0            0
 G 1 31079 0            0
 G 1 31080 0            0
 *
-O 1 31082 1 31196      LOADS cyclops PORTAL
-O 1 31083 1 31197      LOADS krondor PORTAL
-O 1 31084 1 31198      LOADS quake   PORTAL
+O 1 31082 1 31196      LOADS cyclops  PORTAL
+O 1 31083 1 31197      LOADS krondor  PORTAL
+O 1 31084 1 31198      LOADS quake    PORTAL
+O 1 31099 1 31326      LOADS megacity PORTAL
 *
 M 1 31057 1 31199      loads alix thaumaturgist
 *
