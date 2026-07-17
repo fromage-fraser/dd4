@@ -11,7 +11,7 @@
 
 use strict;
 use warnings;
-print "DD4 Area File Scribe version 0.7\n";
+print "DD4 Area File Scribe version 0.8\n";
 
 
 #############################################################################
@@ -421,7 +421,7 @@ my %game_str = (
 my @area_specials = qw /
         school      no_quest    hidden      safe
         no_teleport no_magic    exp_mod     reset_msg
-        ambient     ambient_vol
+        ambient     ambient_vol music       music_vol
 /;
 
 
@@ -440,7 +440,7 @@ close $fh;
 
 print "Reading source...\n";
 
-my ($fatal, $line, $msg, %area, @recall, @special, @mobs, @objs, @objsets, @rooms, @room_ambient, @addmobs, @helps, @addobjs, @shops, @games);
+my ($fatal, $line, $msg, %area, @recall, @special, @mobs, @objs, @objsets, @rooms, @room_media, @addmobs, @helps, @addobjs, @shops, @games);
 
 while (1) {
     my $next = shift @source;
@@ -507,7 +507,7 @@ while (1) {
                 next;
             }
 
-            next if &add_field_data(\%special, $field, $data, 'af xp rm am av');
+            next if &add_field_data(\%special, $field, $data, 'af xp rm am av mu mv');
             print "    line $line: special: unknown field '$field'\n";
         }
 
@@ -842,7 +842,7 @@ while (1) {
 
             next if &add_field_data(\%room, $field, $data,
                     'vn rf st nm n s e w u d rnd nnm snm enm wnm unm dnm ulo dlo wlo elo nlo slo nke ske wke eke uke dke
-                     nds sds eds wds uds dds am av');
+                     nds sds eds wds uds dds am av mu mv');
             print "    line $line: room: unknown field '$field'\n";
         }
 
@@ -1057,8 +1057,8 @@ foreach (0 .. $#special) {
 
     if (exists($special{'af'})) {
         if ($msg = &check_keyword_list(\%special, 'af', \@area_specials)) {
-               print "$err $msg\n";
-               $special_errors{$special{'line'}}++;
+            print "$err $msg\n";
+            $special_errors{$special{'line'}}++;
         }
     }
 
@@ -1069,16 +1069,22 @@ foreach (0 .. $#special) {
         }
     }
 
+
+    # Area ambient file.
+
     if (exists($special{'am'})) {
         if ($msg = &check_field_defined(\%special, 'am')) {
             print "$err $msg\n";
             $special_errors{$special{'line'}}++;
         }
         elsif ($special{'am'} =~ /\s/) {
-            print "$err field 'ambient' must not contain spaces: $special{'ambient'}\n";
+            print "$err field 'am' must not contain spaces: $special{'am'}\n";
             $special_errors{$special{'line'}}++;
         }
     }
+
+
+    # Area ambient volume.
 
     if (exists($special{'av'})) {
         if ($msg = &check_field_number_range(\%special, 'av', 0, 100)) {
@@ -1087,42 +1093,25 @@ foreach (0 .. $#special) {
         }
     }
 
-    $special[$_] = [ %special ];
-}
 
+    # Area music file.
 
-#  Recall header
-
-foreach (0 .. $#recall) {
-    my %recall = @{$recall[$_]};
-    my $err = "    recall, line $recall{'line'}:";
-
-    foreach (qw/rl/) {
-        if ($msg = &check_field_number_range(\%recall, $_, 0, 'none')) {
+    if (exists($special{'mu'})) {
+        if ($msg = &check_field_defined(\%special, 'mu')) {
             print "$err $msg\n";
-            $recall_errors{$recall{'line'}}++;
+            $special_errors{$special{'line'}}++;
         }
-    }
-    $recall[$_] = [ %recall ];
-}
-
-
-
-#  Area special header
-
-foreach (0 .. $#special) {
-    my %special = @{$special[$_]};
-    my $err = "    special, line $special{'line'}:";
-
-    if (exists($special{'af'})) {
-        if ($msg = &check_keyword_list(\%special, 'af', \@area_specials)) {
-               print "$err $msg\n";
-               $special_errors{$special{'line'}}++;
+        elsif ($special{'mu'} =~ /\s/) {
+            print "$err field 'mu' must not contain spaces: $special{'mu'}\n";
+            $special_errors{$special{'line'}}++;
         }
     }
 
-    if (exists($special{'xp'})) {
-        if ($msg = &check_field_number_range(\%special, 'xp', 0, 'none')) {
+
+    # Area music volume.
+
+    if (exists($special{'mv'})) {
+        if ($msg = &check_field_number_range(\%special, 'mv', 0, 100)) {
             print "$err $msg\n";
             $special_errors{$special{'line'}}++;
         }
@@ -1130,7 +1119,6 @@ foreach (0 .. $#special) {
 
     $special[$_] = [ %special ];
 }
-
 
 #  Helps
 
@@ -1536,11 +1524,17 @@ foreach (0 .. $#rooms) {
         }
     }
 
+    #  Room ambient media.
+
     if (exists $room{'am'} && $room{'am'} ne '') {
         $room{'av'} = 25 unless exists $room{'av'} && $room{'av'} ne '';
 
         if ($room{'am'} =~ /\s/) {
             print "$err field 'am' must not contain spaces: $room{'am'}\n";
+            $room_errors{$room{'line'}}++;
+        }
+        elsif ($room{'am'} !~ m{^ambient/}) {
+            print "$err field 'am' must begin with 'ambient/': $room{'am'}\n";
             $room_errors{$room{'line'}}++;
         }
 
@@ -1549,7 +1543,33 @@ foreach (0 .. $#rooms) {
             $room_errors{$room{'line'}}++;
         }
 
-        push @room_ambient, ($room{'vn'} + $area{'bv'}) . " $room{'am'} $room{'av'}\n"
+        push @room_media, ($room{'vn'} + $area{'bv'})
+                . " $room{'am'} $room{'av'}\n"
+                unless $room_errors{$room{'line'}};
+    }
+
+
+    #  Room music media.
+
+    if (exists $room{'mu'} && $room{'mu'} ne '') {
+        $room{'mv'} = 25 unless exists $room{'mv'} && $room{'mv'} ne '';
+
+        if ($room{'mu'} =~ /\s/) {
+            print "$err field 'mu' must not contain spaces: $room{'mu'}\n";
+            $room_errors{$room{'line'}}++;
+        }
+        elsif ($room{'mu'} !~ m{^music/}) {
+            print "$err field 'mu' must begin with 'music/': $room{'mu'}\n";
+            $room_errors{$room{'line'}}++;
+        }
+
+        if ($msg = &check_field_number_range(\%room, 'mv', 0, 100)) {
+            print "$err $msg\n";
+            $room_errors{$room{'line'}}++;
+        }
+
+        push @room_media, ($room{'vn'} + $area{'bv'})
+                . " $room{'mu'} $room{'mv'}\n"
                 unless $room_errors{$room{'line'}};
     }
 
@@ -2619,6 +2639,16 @@ if (@special) {
         {
             print AREA "ambient_vol $special{'av'}\n";
         }
+
+        if (exists $special{'mu'} && $special{'mu'} ne '')
+        {
+            print AREA "music $special{'mu'}\n";
+        }
+
+        if (exists $special{'mv'} && $special{'mv'} ne '')
+        {
+            print AREA "music_vol $special{'mv'}\n";
+        }
     }
 
     print AREA "\$\n\n";
@@ -2761,10 +2791,10 @@ if (@rooms) {
     print AREA "#0\n\n";
 }
 
-if (@room_ambient) {
+if (@room_media) {
     print AREA "#ROOMS_AMBIENT\n";
 
-    foreach (@room_ambient) {
+    foreach (@room_media) {
         print AREA;
     }
 

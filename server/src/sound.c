@@ -1925,7 +1925,245 @@ void media_env_refresh( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force )
 #undef AMBIENT_FADE
 }
 
+/*
+ * Dedicated looping music layer.
+ *
+ * This layer is independent from environmental ambience. Ambient and music
+ * may therefore play simultaneously.
+ *
+ * Music selection precedence:
+ *
+ *     1. Room music, when defined with a positive volume.
+ *     2. Area music, when defined with a positive volume.
+ *     3. Silence.
+ *
+ * A/B keys allow smooth crossfading without replacing the incoming track
+ * before it has had time to fade in.
+ */
+#define MEDIA_MUSIC_KEY_A "dd.music.A"
+#define MEDIA_MUSIC_KEY_B "dd.music.B"
+#define MEDIA_MUSIC_FADE  2000
 
+/*
+ * Clear only the server-side cached music state.
+ *
+ * This does not itself send a Client.Media.Stop message.
+ */
+static void media_music_state_clear(protocol_t *proto)
+{
+        if (!proto)
+                return;
+
+        if (proto->MediaMusicName)
+        {
+                free_string(proto->MediaMusicName);
+                proto->MediaMusicName = NULL;
+        }
+
+        proto->MediaMusicVol = 0;
+        proto->MediaMusicActive = FALSE;
+}
+
+/*
+ * Stop both possible music crossfade keys and clear the cache.
+ *
+ * Stopping both keys is intentional. It leaves no stale A or B track behind
+ * after toggling music off, changing master sound state, or moving to a
+ * location with no defined music.
+ */
+static void media_music_stop(CHAR_DATA *ch, int fadeout)
+{
+        protocol_t *proto;
+        char        opts[192];
+
+        if (!ch || !ch->desc || !ch->desc->pProtocol)
+                return;
+
+        proto = ch->desc->pProtocol;
+
+        fadeout = URANGE(0, fadeout, 10000);
+
+        if (proto->bGMCP
+        &&  proto->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA])
+        {
+                snprintf(opts, sizeof(opts),
+                         "\"key\":\"%s\",\"type\":\"music\","
+                         "\"fadeaway\":true,\"fadeout\":%d",
+                         MEDIA_MUSIC_KEY_A,
+                         fadeout);
+                GMCP_Media_Stop(ch->desc, opts);
+
+                snprintf(opts, sizeof(opts),
+                         "\"key\":\"%s\",\"type\":\"music\","
+                         "\"fadeaway\":true,\"fadeout\":%d",
+                         MEDIA_MUSIC_KEY_B,
+                         fadeout);
+                GMCP_Media_Stop(ch->desc, opts);
+        }
+
+        media_music_state_clear(proto);
+}
+
+/*
+ * Resolve and publish the desired music loop for one player.
+ */
+void media_music_refresh(CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force)
+{
+        protocol_t *proto;
+        const char *music_name;
+        const char *new_key;
+        const char *old_key;
+        int         music_vol;
+        bool        changed;
+        char        opts[256];
+        char        stop[192];
+
+        if (!ch || !room || !ch->desc || !ch->desc->pProtocol)
+                return;
+
+        if (IS_NPC(ch))
+                return;
+
+        proto = ch->desc->pProtocol;
+
+        if (!proto->bGMCP
+        ||  !proto->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA])
+                return;
+
+        if (proto->MediaSuppress)
+                return;
+
+        /*
+         * The master setting and music setting are both applied by
+         * media_apply_volume(). No Play message will be sent when either
+         * setting is zero.
+         */
+        music_name = NULL;
+        music_vol = 0;
+
+        /*
+         * Room music has precedence over area music.
+         */
+        if (room->music_sound
+        &&  *room->music_sound
+        &&  room->music_volume > 0)
+        {
+                music_name = room->music_sound;
+                music_vol = URANGE(1, room->music_volume, 100);
+        }
+        else if (room->area
+        &&       room->area->music_sound
+        &&       *room->area->music_sound
+        &&       room->area->music_volume > 0)
+        {
+                music_name = room->area->music_sound;
+                music_vol = URANGE(1, room->area->music_volume, 100);
+        }
+
+        if (music_name)
+        {
+                /*
+                 * type="music" selects the player's snd_music slider in
+                 * media_apply_volume().
+                 */
+                music_vol = media_apply_volume(music_vol,
+                                               ch,
+                                               "music",
+                                               "music");
+
+                if (music_vol <= 0)
+                        music_name = NULL;
+        }
+
+        /*
+         * Nothing is wanted here, or the player has muted music.
+         */
+        if (!music_name)
+        {
+                if (proto->MediaMusicActive || proto->MediaMusicName)
+                        media_music_stop(ch, MEDIA_MUSIC_FADE);
+
+                return;
+        }
+
+        GMCP_Media_Default(
+                ch->desc,
+                "https://www.dragons-domain.org/main/gui/custom/audio/");
+
+        changed = force
+               || !proto->MediaMusicActive
+               || !proto->MediaMusicName
+               || str_cmp(music_name, proto->MediaMusicName)
+               || proto->MediaMusicVol != music_vol;
+
+        if (!changed)
+                return;
+
+        /*
+         * Select the unused A/B key for the incoming track.
+         */
+        new_key = proto->MediaMusicFlip
+                ? MEDIA_MUSIC_KEY_B
+                : MEDIA_MUSIC_KEY_A;
+
+        old_key = proto->MediaMusicFlip
+                ? MEDIA_MUSIC_KEY_A
+                : MEDIA_MUSIC_KEY_B;
+
+        /*
+         * Begin the incoming track first so the old and new music overlap
+         * during the fade.
+         */
+        snprintf(opts, sizeof(opts),
+            "\"type\":\"music\",\"tag\":\"music\",\"key\":\"%s\","
+            "\"volume\":%d,\"loops\":\"-1\",\"continue\":\"true\","
+            "\"fadein\":%d",
+            new_key,
+            music_vol,
+            MEDIA_MUSIC_FADE);
+
+        if (SND_LOG_ENABLED ) {
+            log_stringf("Music GMCP Play: name=%s opts=%s",
+            music_name,
+            opts);
+        }
+
+        GMCP_Media_Play(ch->desc, music_name, opts);
+
+        /*
+         * Fade the outgoing key only when a previous music track was active.
+         */
+        if (proto->MediaMusicActive)
+        {
+                snprintf(stop, sizeof(stop),
+                         "\"key\":\"%s\",\"type\":\"music\","
+                         "\"fadeaway\":true,\"fadeout\":%d",
+                         old_key,
+                         MEDIA_MUSIC_FADE);
+
+                GMCP_Media_Stop(ch->desc, stop);
+        }
+
+        /*
+         * Update the descriptor cache after publishing the new state.
+         */
+        if (proto->MediaMusicName)
+                free_string(proto->MediaMusicName);
+
+        proto->MediaMusicName = str_dup(music_name);
+        proto->MediaMusicVol = music_vol;
+        proto->MediaMusicActive = TRUE;
+        proto->MediaMusicFlip = !proto->MediaMusicFlip;
+
+        if (SND_LOG_ENABLED)
+        {
+                log_stringf("Music: player=%s file=%s volume=%d key=%s",
+                            ch->name,
+                            music_name,
+                            music_vol,
+                            new_key);
+        }
+}
 
 /* ---- Level-up sound broadcast via registry -------------------------------- */
 
@@ -2116,7 +2354,7 @@ void do_sconfig( CHAR_DATA *ch, char *argument )
             sprintf(line, "<6>[<196>-<0><246>notify<0>   <6>]<0> Notification sounds are off.\n\r");
         send_to_char(line, ch);
 
-        send_to_char("\n\rShortcuts: +sound/-sound, +ambient/-ambient, +sfx/-sfx, +foley/-foley, +notify/-notify\n\r", ch);
+        send_to_char("\n\rShortcuts: +sound/-sound, +ambient/-ambient, +music/-music, +sfx/-sfx, +foley/-foley, +notify/-notify\n\r", ch);
         send_to_char("Setters:   master/ambient/music/foley/sfx/ui/notify <<0..100>\n\r", ch);
         return;
     }
@@ -2164,6 +2402,19 @@ void do_sconfig( CHAR_DATA *ch, char *argument )
                     p->MediaAreaName   = NULL;
                     p->MediaAreaVol    = 0;
                     p->MediaAreaActive = FALSE;
+
+                    /*
+                     * Dedicated music lane.
+                     */
+                    if (p->MediaMusicName)
+                    {
+                        free_string(p->MediaMusicName);
+                        p->MediaMusicName = NULL;
+                    }
+
+                    p->MediaMusicVol = 0;
+                    p->MediaMusicActive = FALSE;
+                    p->MediaMusicFlip = FALSE;
                 }
             }
 
@@ -2171,7 +2422,9 @@ void do_sconfig( CHAR_DATA *ch, char *argument )
             {
                 /* Force a full re-assert when turning sound back on */
                 ch->desc->pProtocol->MediaSuppress = FALSE;
+
                 media_env_refresh(ch, ch->in_room, TRUE);
+                media_music_refresh(ch, ch->in_room, TRUE);
                 update_weather_for_char(ch);
             }
 
@@ -2228,6 +2481,44 @@ void do_sconfig( CHAR_DATA *ch, char *argument )
                 }
                 send_to_char("Ambient/environment sound is now {ROFF{x.\n\r", ch);
             }
+            return;
+        }
+        else if (!str_cmp(arg1 + 1, "music"))
+        {
+            if (set)
+            {
+                if (!ch->pcdata->snd_enabled)
+                {
+                    send_to_char("Not while sound is {ROFF{x.\n\r", ch);
+                    return;
+                }
+
+                if (ch->pcdata->snd_music == 0)
+                    ch->pcdata->snd_music = SND_DEF_MUSIC;
+
+                if (ch->desc
+                &&  ch->desc->pProtocol
+                &&  ch->desc->pProtocol->bGMCP)
+                {
+                    media_music_refresh(ch, ch->in_room, TRUE);
+                }
+
+                send_to_char("Music is now {GON{x.\n\r", ch);
+            }
+            else
+            {
+                ch->pcdata->snd_music = 0;
+
+                if (ch->desc
+                &&  ch->desc->pProtocol
+                &&  ch->desc->pProtocol->bGMCP)
+                {
+                    media_music_stop(ch, 700);
+                }
+
+                send_to_char("Music is now {ROFF{x.\n\r", ch);
+            }
+
             return;
         }
         else if (!str_cmp(arg1+1, "notify"))
@@ -2295,7 +2586,7 @@ void do_sconfig( CHAR_DATA *ch, char *argument )
             return;
         }
 
-        send_to_char("Use +sound/-sound, +ambient/-ambient, +sfx/-sfx, +foley/-foley or +notify/-notify.\n\r", ch);
+        send_to_char("Use +sound/-sound, +ambient/-ambient, +music/-music, +sfx/-sfx, +foley/-foley or +notify/-notify.\n\r", ch);
         return;
     }
 
@@ -2318,6 +2609,7 @@ void do_sconfig( CHAR_DATA *ch, char *argument )
             send_to_char("  sconfig status\n\r", ch);
             send_to_char("  +sound   | -sound\n\r", ch);
             send_to_char("  +ambient | -ambient\n\r", ch);
+            send_to_char("  +music   | -music\n\r", ch);
             send_to_char("  +notify  | -notify\n\r", ch);
             send_to_char("  +foley   | -foley\n\r", ch);
             send_to_char("  +sfx     | -sfx\n\r", ch);
@@ -2348,23 +2640,58 @@ void do_sconfig( CHAR_DATA *ch, char *argument )
             return;
         }
 
-        if ((slot == &ch->pcdata->snd_env) && ch->desc && ch->desc->pProtocol && ch->desc->pProtocol->bGMCP)
+        if ((slot == &ch->pcdata->snd_env)
+        &&  ch->desc
+        &&  ch->desc->pProtocol
+        &&  ch->desc->pProtocol->bGMCP)
         {
             if (*slot == 0)
             {
                 /* Turning ambient down to 0 -> stop ambient AND weather */
-                GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.room\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":700");
-                GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.area\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":700");
-                GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.sector.A\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":700");
-                GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.sector.B\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":700");
-                GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.weather\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":700");
+                GMCP_Media_Stop(
+                        ch->desc,
+                        "\"key\":\"dd.ambient.room.A\",\"type\":\"music\","
+                        "\"fadeaway\":true,\"fadeout\":700");
+
+                GMCP_Media_Stop(
+                        ch->desc,
+                        "\"key\":\"dd.ambient.room.B\",\"type\":\"music\","
+                        "\"fadeaway\":true,\"fadeout\":700");
+
+                GMCP_Media_Stop(
+                        ch->desc,
+                        "\"key\":\"dd.ambient.area.A\",\"type\":\"music\","
+                        "\"fadeaway\":true,\"fadeout\":700");
+
+                GMCP_Media_Stop(
+                        ch->desc,
+                        "\"key\":\"dd.ambient.area.B\",\"type\":\"music\","
+                        "\"fadeaway\":true,\"fadeout\":700");
+
+                GMCP_Media_Stop(
+                        ch->desc,
+                        "\"key\":\"dd.ambient.sector.A\",\"type\":\"music\","
+                        "\"fadeaway\":true,\"fadeout\":700");
+
+                GMCP_Media_Stop(
+                        ch->desc,
+                        "\"key\":\"dd.ambient.sector.B\",\"type\":\"music\","
+                        "\"fadeaway\":true,\"fadeout\":700");
+
+                GMCP_Media_Stop(
+                        ch->desc,
+                        "\"key\":\"dd.ambient.weather\",\"type\":\"music\","
+                        "\"fadeaway\":true,\"fadeout\":700");
 
                 /* Clear weather cache so future ON will republish */
                 {
                     protocol_t *p = ch->desc->pProtocol;
+
                     if (p)
                     {
-                        if (p->MediaWeatherName) { free_string(p->MediaWeatherName); }
+                        if (p->MediaWeatherName)
+                                free_string(p->MediaWeatherName);
+
                         p->MediaWeatherName   = NULL;
                         p->MediaWeatherVol    = 0;
                         p->MediaWeatherActive = FALSE;
@@ -2376,6 +2703,39 @@ void do_sconfig( CHAR_DATA *ch, char *argument )
                 media_env_refresh(ch, ch->in_room, TRUE);
                 update_weather_for_char(ch);
             }
+        }
+
+        /*
+         * Apply music-volume changes immediately.
+         */
+        if ((slot == &ch->pcdata->snd_music)
+        &&  ch->desc
+        &&  ch->desc->pProtocol
+        &&  ch->desc->pProtocol->bGMCP)
+        {
+            if (*slot == 0)
+            {
+                media_music_stop(ch, 700);
+            }
+            else
+            {
+                media_music_refresh(ch, ch->in_room, TRUE);
+            }
+        }
+
+        /*
+         * A non-zero master-volume change affects all persistent layers.
+         * Recalculate and republish them immediately.
+         */
+        if ((slot == &ch->pcdata->snd_master)
+        &&  *slot > 0
+        &&  ch->desc
+        &&  ch->desc->pProtocol
+        &&  ch->desc->pProtocol->bGMCP)
+        {
+            media_env_refresh(ch, ch->in_room, TRUE);
+            media_music_refresh(ch, ch->in_room, TRUE);
+            update_weather_for_char(ch);
         }
     }
 }

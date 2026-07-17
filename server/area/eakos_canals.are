@@ -8,6 +8,8 @@
 exp_mod 112
 reset_msg {cA cold current rolls through the deep canals.{x
 ~
+music music/area/eakos_canals.mp3
+music_vol 20
 $
 
 #MOBILES
@@ -29,6 +31,8 @@ feeds among the drowned stones.
 spit $n
 ~
 |
+FStepUnderwater sfx.foley.mob.29200.underwater~
+FStepUnderwaterGround sfx.foley.mob.29200.underwater_ground~
 
 #29201
 marple fish~
@@ -5523,6 +5527,10 @@ D 3
 0 -1 29367
 S
 #0
+
+#ROOMS_AMBIENT
+29369 music/room/29369.mp3 40
+$
 
 #RESETS
 D 0 29206 3 2                   lock west in Ota'ar Dar / Eakos Southern Bridge, Lower

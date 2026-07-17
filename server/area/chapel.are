@@ -261,6 +261,48 @@ arms raises. He looks mighty tough to be just a minor minion.
 35 0 -4 1d1+385 4d5+15
 96 105000
 8 8 1
+#3419
+water elemental guardian~
+The guardian water elemental~
+A towering water elemental surges and coils here.
+~
+The guardian water elemental rises in a churning column of dark, restless
+water. Its vaguely humanoid shape constantly collapses and reforms, while two
+cold points of blue light burn within its featureless face. Powerful currents
+twist through its body, suggesting that this is no ordinary summoned servant.
+~
+2|32|512|8388608|1048576|67108864 40 -1000 S
+28 0 -4 1d1+385 4d5+15
+64|256|16|1|2|4|8 105000
+8 8 1
+#3420
+desert djinn guardian~
+The desert djinn~
+A desert djinn swirls here amid a veil of scorching sand.
+~
+The desert djinn towers within a spiralling column of sand and shimmering heat.
+Its broad, bronze-skinned torso is adorned with ancient golden ornaments, while
+its lower body dissolves into a restless desert whirlwind. Burning amber eyes
+regard all who approach with the merciless patience of the endless wastes.
+~
+2|32|512|8388608|524288 40 -1000 S
+28 0 -4 1d1+385 4d5+15
+64|8 105000
+8 8 1
+#3421
+evil air spirit guardian~
+The evil air spirit~
+An evil air spirit twists here in a shrieking vortex.
+~
+The evil air spirit hangs above the ground as a turbulent mass of black wind
+and roiling vapour. A gaunt, distorted face repeatedly forms within the gale,
+its hollow eyes flashing with pale lightning before dissolving again. Freezing
+currents circle its insubstantial body, carrying whispers of hatred and death.
+~
+2|32|512|8388608|1048576|524288 40 -1000 S
+28 0 -4 1d1+385 4d5+15
+64|1|2|4|8|16|256 105000
+8 8 1
 #0
 
 

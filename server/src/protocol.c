@@ -387,15 +387,37 @@ protocol_t *ProtocolCreate(void)
    pProtocol->MediaWeatherActive = FALSE;
 
    /* Media lane state (area/room already here; add sector as well) */
+    /*
+    * Ambient area lane.
+    */
    pProtocol->MediaAreaName = NULL;
    pProtocol->MediaAreaVol = 0;
    pProtocol->MediaAreaActive = FALSE;
+   pProtocol->MediaAreaFlip = FALSE;
+
+   /*
+    * Ambient room lane.
+    */
    pProtocol->MediaRoomName = NULL;
    pProtocol->MediaRoomVol = 0;
    pProtocol->MediaRoomActive = FALSE;
+   pProtocol->MediaRoomFlip = FALSE;
+
+   /*
+    * Ambient sector lane.
+    */
    pProtocol->MediaSectorName = NULL;
    pProtocol->MediaSectorVol = 0;
    pProtocol->MediaSectorActive = FALSE;
+   pProtocol->MediaSectorFlip = FALSE;
+
+   /*
+    * Resolved music lane.
+    */
+   pProtocol->MediaMusicName = NULL;
+   pProtocol->MediaMusicVol = 0;
+   pProtocol->MediaMusicActive = FALSE;
+   pProtocol->MediaMusicFlip = FALSE;
 
    /*************** END GMCP ***************/
 
@@ -445,6 +467,11 @@ void ProtocolDestroy(protocol_t *apProtocol)
    {
       free_string(apProtocol->MediaSectorName);
       apProtocol->MediaSectorName = NULL;
+   }
+   if (apProtocol->MediaMusicName)
+   {
+      free_string(apProtocol->MediaMusicName);
+      apProtocol->MediaMusicName = NULL;
    }
 
    free(apProtocol);

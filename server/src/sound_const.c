@@ -1340,14 +1340,19 @@ static const sound_event_def sound_events[] = {
 
     /* Mob footstep foley */
 
-    { "sfx.foley.mob.3060.city",   { "sfx/foley/mob/3060/city.1.mp3", "sfx/foley/mob/3060/city.2.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.mob.3060.inside", { "sfx/foley/mob/3060/inside.1.mp3", "sfx/foley/mob/3060/inside.2.mp3", NULL }, { 0 }, 45, "foley", 1 },
+    { "sfx.foley.mob.3060.city",                { "sfx/foley/mob/3060/city.1.mp3",
+                                                  "sfx/foley/mob/3060/city.2.mp3", NULL }, { 0 }, 45, "foley", 1 },
+    { "sfx.foley.mob.3060.inside",              { "sfx/foley/mob/3060/inside.1.mp3",
+                                                  "sfx/foley/mob/3060/inside.2.mp3", NULL }, { 0 }, 45, "foley", 1 },
 
-    { "sfx.foley.mob.3062.city",   { "sfx/foley/mob/3062/city.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.mob.3062.inside", { "sfx/foley/mob/3062/inside.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
+    { "sfx.foley.mob.3062.city",                { "sfx/foley/mob/3062/city.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
+    { "sfx.foley.mob.3062.inside",              { "sfx/foley/mob/3062/inside.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
 
-    { "sfx.foley.mob.3063.city",   { "sfx/foley/mob/3063/city.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
-    { "sfx.foley.mob.3063.inside", { "sfx/foley/mob/3063/inside.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
+    { "sfx.foley.mob.3063.city",                { "sfx/foley/mob/3063/city.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
+    { "sfx.foley.mob.3063.inside",              { "sfx/foley/mob/3063/inside.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
+
+    { "sfx.foley.mob.29200.underwater",         { "sfx/foley/mob/29200/underwater.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
+    { "sfx.foley.mob.29200.underwater_ground",  { "sfx/foley/mob/29200/underwater_ground.1.mp3", NULL }, { 0 }, 45, "foley", 1 },
 
     /* Other foley */
     { "sfx.foley.fill",             { "sfx/foley/fill/pool.1.mp3", NULL }, { 0 }, 65, "foley", 1 },
