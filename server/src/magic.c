@@ -9984,9 +9984,8 @@ void spell_sense_wisdom(int sn, int level, CHAR_DATA *ch, void *vo)
         return;
 }
 
-void spell_sonic_blast(int sn, int level, CHAR_DATA *ch, void *vo)
+static void spell_sonic_blast_victim(int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim)
 {
-        CHAR_DATA   *victim = (CHAR_DATA *)vo;
         AFFECT_DATA  af;
         bool         saved;
         bool         can_affect;
@@ -10003,12 +10002,6 @@ void spell_sonic_blast(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if ( saved )
                 dam /= 2;
-
-        if (spell_attack_number == 1)
-        {
-                act("<39>A thunderous sonic shockwave ripples outward from $n!<0>", ch, NULL, NULL, TO_ROOM);
-                act("You project a <39>bone-rattling sonic maelstrom<0>!", ch, NULL, NULL, TO_CHAR);
-        }
 
         damage(ch, victim, dam, sn, FALSE);
 
@@ -10081,6 +10074,45 @@ void spell_sonic_blast(int sn, int level, CHAR_DATA *ch, void *vo)
 
         return;
 }
+
+void spell_sonic_blast(int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        CHAR_DATA *victim;
+        CHAR_DATA *victim_next;
+
+        (void)vo;
+
+        if (!ch || !ch->in_room)
+                return;
+
+        if (spell_attack_number == 1)
+        {
+                act("<39>A thunderous sonic shockwave ripples outward from $n!<0>",
+                    ch, NULL, NULL, TO_ROOM);
+                act("You project a <39>bone-rattling sonic maelstrom<0>!",
+                    ch, NULL, NULL, TO_CHAR);
+        }
+
+        for (victim = ch->in_room->people;
+             victim;
+             victim = victim_next)
+        {
+                victim_next = victim->next_in_room;
+
+                if (victim == ch)
+                        continue;
+
+                if (victim->deleted)
+                        continue;
+
+                if (is_same_group(victim, ch))
+                        continue;
+
+                spell_sonic_blast_victim(sn, level, ch, victim);
+        }
+}
+
+
 
 /*
  * Some affect types cannot be dispelled
