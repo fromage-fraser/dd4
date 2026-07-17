@@ -58,6 +58,7 @@ const sound_event_def *sound_event_lookup(const char *key);
 
 /* Sound-related function decs */
 void            media_env_refresh               ( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force );
+void            media_music_refresh             ( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force );
 void            sound_emit_char                 ( CHAR_DATA *ch, const char *event_key, int vol_override ); /* -1 to use default */
 void            sound_emit_room                 ( ROOM_INDEX_DATA *room, const char *event_key, int vol_override /* -1 */, CHAR_DATA *except );
 int             media_apply_master_volume       ( int base_vol, CHAR_DATA *ch ); /* scales 1..100 by player setting (or returns base) */

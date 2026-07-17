@@ -541,21 +541,29 @@ typedef struct
    char *MediaRoomName;
    int MediaRoomVol;
    bool_t MediaRoomActive;
-   bool_t   MediaRoomFlip;
-   bool_t   MediaAreaFlip;
+   bool_t MediaRoomFlip;
+   bool_t MediaAreaFlip;
 
-   /* Sector ambience tracking (for crossfade via A/B keys) */
+   /* Sector ambience tracking */
    char *MediaSectorName;
    int MediaSectorVol;
    bool_t MediaSectorActive;
-   bool_t MediaSectorFlip; /* false => next key A, true => next key B */
+   bool_t MediaSectorFlip;
+
+   /*
+    * Resolved musical layer:
+    * room music overrides area music.
+    */
+   char *MediaMusicName;
+   int MediaMusicVol;
+   bool_t MediaMusicActive;
+   bool_t MediaMusicFlip;
 
    /* Weather ambience tracking */
-   char *MediaWeatherName;    /* currently playing weather loop (file path) */
-   int MediaWeatherVol;       /* last volume used */
-   bool_t MediaWeatherActive; /* TRUE if a weather loop is active */
+   char *MediaWeatherName;
+   int MediaWeatherVol;
+   bool_t MediaWeatherActive;
 
-   /* Transient: suppress media Play/Stop during internal moves (e.g., Limbo hop) */
    bool_t MediaSuppress;
    /*************** END GMCP ***************/
 

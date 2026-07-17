@@ -1085,8 +1085,17 @@ void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
                 ++ch->in_room->light;
         }
 
-        /* Refresh environmental media (room > area > sector) for this player */
+        /*
+         * Refresh both persistent looping layers.
+         *
+         * Ambient:
+         *     room > area > sector
+         *
+         * Music:
+         *     room > area
+         */
         media_env_refresh(ch, pRoomIndex, FALSE);
+        media_music_refresh(ch, pRoomIndex, FALSE);
         update_weather_for_char(ch);
 
         /* Notify web clients in the room that room contents changed (both NPCs and players) */
@@ -1907,7 +1916,7 @@ void extract_char( CHAR_DATA *ch, bool fPull )
                                         char opts[256];
                                         snprintf(opts, sizeof(opts),
                                                  "\"type\":\"music\",\"tag\":\"environment\",\"key\":\"%s\","
-                                                 "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":600",
+                                                 "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":800",
                                                  want_key, want_vol);
                                         GMCP_Media_Play(ch->desc, want_name, opts);
 

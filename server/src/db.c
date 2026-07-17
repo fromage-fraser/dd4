@@ -1535,10 +1535,17 @@ void load_area(FILE *fp)
         pArea->area_flags = 0;
         pArea->exp_modifier = 100;
 
-        /* Sound stuff */
-
+        /*
+         * Area media defaults.
+         *
+         * Both layers are disabled until their filename and a positive
+         * volume are supplied in #AREA_SPECIAL.
+         */
         pArea->ambient_sound = NULL;
-        pArea->ambient_volume = 0; /* off by default */
+        pArea->ambient_volume = 0;
+
+        pArea->music_sound = NULL;
+        pArea->music_volume = 0;
 
         if (!area_first)
                 area_first = pArea;
@@ -1695,6 +1702,46 @@ void load_area_special(FILE *fp)
                         else
                         {
                                 area_last->ambient_volume = num; /* 0 = off; 1..100 valid */
+                        }
+                }
+
+                else if (!str_cmp(next, "music"))
+                {
+                        const char *fname;
+
+                        /*
+                         * Default area music filename.
+                         *
+                         * This is a relative path beneath the Client.Media
+                         * default URL. Spaces are not supported in this field.
+                         */
+                        fname = fread_word(fp);
+
+                        if (area_last->music_sound)
+                                free_string(area_last->music_sound);
+
+                        area_last->music_sound = str_dup(fname);
+                }
+
+                else if (!str_cmp(next, "music_vol"))
+                {
+                        num = fread_number(fp, &stat);
+
+                        if (num < 0 || num > 100)
+                        {
+                                sprintf(buf,
+                                        "load_area_special: area '%s' has bad music_vol '%d' (ignoring)",
+                                        area_last->name,
+                                        num);
+                                log_string(buf);
+                        }
+                        else
+                        {
+                                /*
+                                 * Zero disables area music.
+                                 * Values 1..100 are valid source volumes.
+                                 */
+                                area_last->music_volume = num;
                         }
                 }
 
@@ -2556,9 +2603,16 @@ void load_rooms(FILE *fp)
                 pRoomIndex->sector_type = fread_number(fp, &stat);
                 pRoomIndex->light = 0;
 
-                /* audio testing */
+                /*
+                 * Room-specific media defaults.
+                 *
+                 * Definitions may be added later by #ROOMS_AMBIENT.
+                 */
                 pRoomIndex->ambient_sound = NULL;
-                pRoomIndex->ambient_volume = 0; /* off by default */
+                pRoomIndex->ambient_volume = 0;
+
+                pRoomIndex->music_sound = NULL;
+                pRoomIndex->music_volume = 0;
 
                 for (door = 0; door <= 5; door++)
                         pRoomIndex->exit[door] = NULL;
@@ -2886,59 +2940,172 @@ void load_exits_sfx(FILE *fp)
 }
 
 /*
- * Snarf a rooms ambient section
+ * Load room-specific looping media.
+ *
+ * Format:
+ *
+ *     #ROOMS_AMBIENT
+ *     <room vnum> <relative path> <volume>
+ *     ...
+ *     $
+ *
+ * The path prefix determines the media layer:
+ *
+ *     ambient/...  -> environmental ambience
+ *     music/...    -> musical layer
+ *
+ * Examples:
+ *
+ *     25741 ambient/room/25741.mp3 15
+ *     25741 music/room/25741.mp3 20
+ *
+ * A room may have one entry for each layer.
+ * Later duplicate entries replace earlier entries for that same layer.
  */
 void load_rooms_ambient(FILE *fp)
 {
-        char *word;
-        int vnum, vol;
-        int stat;
         ROOM_INDEX_DATA *room;
+        const char      *word;
+        char             vnum_tok[MAX_INPUT_LENGTH];
+        char             file_tok[MAX_INPUT_LENGTH];
+        char             buf[MAX_STRING_LENGTH];
+        int              vnum;
+        int              vol;
+        int              stat;
 
         for (;;)
         {
-                /* First token: either '$' to end, or a vnum */
+                /*
+                 * Read the first token separately because fread_word()
+                 * commonly returns storage that is reused by subsequent
+                 * calls. Copy it before reading anything else.
+                 */
                 word = fread_word(fp);
-                if (word[0] == '\0' || !str_cmp(word, "$"))
+
+                strncpy(vnum_tok, word, sizeof(vnum_tok) - 1);
+                vnum_tok[sizeof(vnum_tok) - 1] = '\0';
+
+                if (vnum_tok[0] == '\0' || !str_cmp(vnum_tok, "$"))
                         break;
 
-                /* Parse vnum */
-                vnum = atoi(word);
+                /*
+                 * Read the filename before resolving the room so an invalid
+                 * room still consumes the complete line and leaves the parser
+                 * correctly aligned.
+                 */
+                word = fread_word(fp);
+
+                strncpy(file_tok, word, sizeof(file_tok) - 1);
+                file_tok[sizeof(file_tok) - 1] = '\0';
+
+                stat = 0;
+                vol = fread_number(fp, &stat);
+
+                /*
+                 * Discard comments or trailing material and advance to the
+                 * next physical line.
+                 */
+                fread_to_eol(fp);
+
+                if (!is_number(vnum_tok))
+                {
+                        sprintf(buf,
+                                "load_rooms_ambient: expected room vnum or '$', got '%s' (ignoring line)",
+                                vnum_tok);
+                        log_string(buf);
+                        continue;
+                }
+
+                vnum = atoi(vnum_tok);
+
                 room = get_room_index(vnum);
+
                 if (!room)
                 {
-                        char buf[MAX_STRING_LENGTH];
-                        sprintf(buf, "load_room_ambient: unknown room vnum %d (skipping line)", vnum);
+                        sprintf(buf,
+                                "load_rooms_ambient: unknown room vnum %d (ignoring line)",
+                                vnum);
                         log_string(buf);
-
-                        /* consume two more tokens if present to keep the parser in sync */
-                        (void)fread_word(fp);          /* file/path */
-                        (void)fread_number(fp, &stat); /* volume (optional) */
                         continue;
                 }
 
-                /* File/path (no spaces expected; e.g. ambient/room/3054.mp3) */
-                word = fread_word(fp);
-                if (word[0] == '\0')
+                if (file_tok[0] == '\0')
                 {
-                        char buf[MAX_STRING_LENGTH];
-                        sprintf(buf, "load_room_ambient: room %d missing filename (skipping)", vnum);
+                        sprintf(buf,
+                                "load_rooms_ambient: room %d has no media filename (ignoring line)",
+                                vnum);
                         log_string(buf);
-                        /* try to consume the rest of the line gracefully */
-                        (void)fread_number(fp, &stat);
                         continue;
                 }
 
-                /* Optional volume */
-                vol = fread_number(fp, &stat);
-                if (stat == 0)   /* if your fread_number sets stat==0 on failure */
-                        vol = 0; /* we’ll treat as “unspecified” below */
+                /*
+                 * fread_number() leaves stat at zero on success and sets it
+                 * non-zero when the number is malformed.
+                 */
+                if (stat != 0)
+                {
+                        sprintf(buf,
+                                "load_rooms_ambient: room %d file '%s' has no valid volume (ignoring line)",
+                                vnum,
+                                file_tok);
+                        log_string(buf);
+                        continue;
+                }
 
-                /* Apply */
-                if (room->ambient_sound)
-                        free_string(room->ambient_sound);
-                room->ambient_sound = str_dup(word);
-                room->ambient_volume = (vol > 0) ? URANGE(1, vol, 100) : 25; /* pick your preferred default */
+                if (vol < 0 || vol > 100)
+                {
+                        sprintf(buf,
+                                "load_rooms_ambient: room %d file '%s' has invalid volume %d (ignoring line)",
+                                vnum,
+                                file_tok,
+                                vol);
+                        log_string(buf);
+                        continue;
+                }
+
+                /*
+                 * Require a complete directory prefix rather than merely
+                 * checking the first few letters. This prevents paths such as
+                 * "musicbox/foo.mp3" being mistaken for the music layer.
+                 */
+                if (!str_prefix("ambient/", file_tok))
+                {
+                        if (room->ambient_sound)
+                                free_string(room->ambient_sound);
+
+                        room->ambient_sound = str_dup(file_tok);
+                        room->ambient_volume = vol;
+
+                        sprintf(buf,
+                                "ROOMS_AMBIENT: room %d ambient='%s' volume=%d",
+                                vnum,
+                                room->ambient_sound,
+                                room->ambient_volume);
+                        log_string(buf);
+                }
+                else if (!str_prefix("music/", file_tok))
+                {
+                        if (room->music_sound)
+                                free_string(room->music_sound);
+
+                        room->music_sound = str_dup(file_tok);
+                        room->music_volume = vol;
+
+                        sprintf(buf,
+                                "ROOMS_AMBIENT: room %d music='%s' volume=%d",
+                                vnum,
+                                room->music_sound,
+                                room->music_volume);
+                        log_string(buf);
+                }
+                else
+                {
+                        sprintf(buf,
+                                "load_rooms_ambient: room %d path '%s' must begin with 'ambient/' or 'music/' (ignoring line)",
+                                vnum,
+                                file_tok);
+                        log_string(buf);
+                }
         }
 }
 

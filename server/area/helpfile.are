@@ -400,7 +400,7 @@ Enter thy Name: ~
 
 -1 MOTD~
 {x
-    [13 July 2026]
+    [18 July 2026]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -413,12 +413,13 @@ Enter thy Name: ~
     We're also active on a Discord server at {Yhttps://discord.gg/aGzmAWmXYb{x
     if you'd like to jump in and say hi!
 
+    {WMUSIC{x: Music is not in and can be added on a per-area or per-room basis.
+    Exists on a separate layer from ambient environmental sound, and can be
+    manipulated with SCONFIG.
+
     {WNEW AREA{x: "Eakos Canals" for levels 70-85.  This is the first part of
     the Triton portion of the underwater megacity. 37 new mobs, 52 new objects,
     131 new rooms, 1 new armour set, and 1 new quest.
-
-    {WFOOTSTEP FOLEY{x: Sounds for footsteps are in, influenced by terrain,
-    race, forms, flight, mountedness(!), and sneak.
 
 
 To Enter the Dragons Domain press <<Return>.
@@ -676,6 +677,7 @@ Gezhp, Owl and Shade
 - "banish" spell added
 - Eakos Canals complete and in
 - "mpcost" added--mobs can alter values of objects
+- Music layer added on per-area and per-room basis
 
 ~
 

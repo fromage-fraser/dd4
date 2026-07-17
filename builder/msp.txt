@@ -14,47 +14,139 @@ The player command 'sconfig' (see HELP SCONFIG) is used by players to customise
 their individual sound environment.  It enables turning sound on/off completely
 and by sound category, and volume scaling on a "master" and per-category level.
 
+Ambient and music sound
+=======================
+
+Ambient sound and music are separate looping media layers. They can play at the
+same time and are controlled independently through the player's sound config.
+
 Ambient sound
 =============
 
-All sector types (forest, hills, etc) have ambient loops associated with them.
-These can be overridden on a per-room or per-area basis.
+All sector types (forest, hills, etc.) have ambient loops associated with them.
+These can be overridden on a per-area or per-room basis.
+
+Ambient sound uses the following priority:
+
+room ambient -> area ambient -> sector ambient
 
 To put an ambient loop on a whole area, use the following syntax in the
-#AREA_SPECIAL header:
+#AREA_SPECIAL section:
 
 #AREA_SPECIAL
 ambient ambient/area/abyss.mp3
 ambient_vol 30
 
-The above tells the MUD to load the abyss.mp3 loop (via relative link from the
-"audio" directory) loop for all rooms in the area with a volume of 30/100.
+The above tells the MUD to load abyss.mp3 as the default environmental loop for
+the area, using a path relative to the "audio" directory, at a source volume of
+30/100.
 
-The currently implemented state of the sound directory structure under the
-"gui->custom" directory is as below:
+Music
+=====
 
-audio
-|->ambient
-  |-->area
-  |-->room
-  |-->sector
-  |-->weather
-|->notify
-|->sfx
-  |-->door
-  |-->misc
-|->ui
+Music is a separate layer from ambient sound. Area music plays throughout an
+area unless it is overridden by music assigned to a specific room.
 
-To override the area ambient loop, you can add loops on a per-room basis by
-adding the below section with a line for each room after the #ROOMS section in
-an area file.
+Music uses the following priority:
+
+room music -> area music -> no music
+
+To put a music loop on a whole area, use the following syntax in the
+#AREA_SPECIAL section:
+
+#AREA_SPECIAL
+music music/area/abyss.mp3
+music_vol 20
+
+The above tells the MUD to load abyss.mp3 as the default looping music for the
+area, using a path relative to the "audio" directory, at a source volume of
+20/100.
+
+An area may define both ambient sound and music:
+
+#AREA_SPECIAL
+ambient ambient/area/abyss.mp3
+ambient_vol 30
+music music/area/abyss.mp3
+music_vol 20
+
+Room overrides
+==============
+
+Room-specific ambient and music loops are defined in the #ROOMS_AMBIENT
+section. This section must appear after the area's #ROOMS section.
+
+The media layer is determined by the beginning of the file path:
+
+ambient/    Environmental ambient layer
+music/      Music layer
+
+Example:
 
 #ROOMS_AMBIENT
 9320 ambient/room/9320.mp3 80
+9320 music/room/9320.mp3 30
 $
 
-Weather effects are automatically layered over ambient sound.  Currently they
+The above assigns both a room ambient loop and a room music loop to room 9320.
+
+A room may have only one of the two layers defined:
+
+#ROOMS_AMBIENT
+9320 music/room/9320.mp3 30
+9321 ambient/room/9321.mp3 80
+$
+
+Room ambient overrides area and sector ambient. Room music overrides area
+music. Leaving a room with a music override causes the area's music to resume.
+
+Volumes
+=======
+
+The volume following each filename is the source volume from 0 to 100.
+
+0       Disables that definition.
+1..100  Valid source volume.
+
+The final volume heard by a player is also affected by their master, ambient,
+or music volume settings.
+
+Directory structure
+===================
+
+The currently implemented sound directory structure under the "gui/custom"
+directory is (additional subdirectories exist for some):
+
+audio
+|->ambient
+|  |->area
+|  |->room
+|  |->sector
+|  |->weather
+|->music
+|  |->area
+|  |->room
+|->notify
+|->sfx
+|  |->combat
+|  |->condition
+|  |->door
+|  |->foley
+|  |->misc
+|  |->portal
+|  |->skill
+|  |->spell
+
+|->ui
+
+Weather
+=======
+
+Weather effects are automatically layered over ambient sound. They currently
 exist for rain and lightning.
+
+Weather effects belong to the ambient/environment layer and do not replace or
+interrupt the separate music layer.
 
 SFX
 ===
@@ -148,8 +240,9 @@ Todo
   emitting sounds.  Sounds for moving items in and out of containers and to and
   from the ground.  Could be overriden on a per-object basis like footsteps.
 - Sounds related to working with objects in your vault, similarly.
-- Battle music?  Music as its own separate ambient layer?
 - Mudlet GUI sounds
+- Music on a per-mob basis that overrides area/room music and only plays during
+  battle?
 - Now that ROOM_NO_WEATHER is in, need to go through and put it on rooms where
   it makes sense
 - Object foley:

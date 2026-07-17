@@ -1903,6 +1903,9 @@ extern WANTED_DATA *wanted_list_last;
 #define MOB_VNUM_CITYGUARD 3060
 #define MOB_VNUM_VAMPIRE 3404
 #define MOB_VNUM_ULT 3160
+#define MOB_VNUM_WATER_GUARDIAN 3419
+#define MOB_VNUM_DESERT_DJINN 3420
+#define MOB_VNUM_AIR_SPIRIT 3421
 
 #define MOB_VNUM_AIR_ELEMENTAL 8914
 #define MOB_VNUM_EARTH_ELEMENTAL 8915
@@ -3171,9 +3174,20 @@ struct area_data
         int exp_modifier;
         char *reset_message;
 
-        /* --- MCMP pilot fields (not persisted yet) fallback defaults in area for rooms without override --- */
-        char *ambient_sound; /* e.g. "environment/forest_night.mp3" (relative) */
-        int ambient_volume;  /* 1..100; 0 = off */
+         /*
+         * Persistent area media definitions loaded from the area file.
+         *
+         * Ambient is environmental sound and uses the player's
+         * snd_env setting.
+         *
+         * Music is a separate musical layer and uses the player's
+         * snd_music setting.
+         */
+        char *ambient_sound;
+        int ambient_volume;  /* 0 = disabled; 1..100 = source volume */
+
+        char *music_sound;
+        int music_volume;    /* 0 = disabled; 1..100 = source volume */
 };
 
 /*
@@ -3194,8 +3208,17 @@ struct room_index_data
         unsigned long int room_flags;
         int light;
         int sector_type;
-        char *ambient_sound; /* e.g. "environment/forest_night.mp3" (relative to base audio url) */
-        int ambient_volume;  /* 1..100; 0 = off */
+         /*
+         * Optional room-specific media.
+         *
+         * Room ambient overrides area and sector ambient.
+         * Room music overrides area music.
+         */
+        char *ambient_sound;
+        int ambient_volume;  /* 0 = disabled; 1..100 = source volume */
+
+        char *music_sound;
+        int music_volume;    /* 0 = disabled; 1..100 = source volume */
 };
 
 /*

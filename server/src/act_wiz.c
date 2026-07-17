@@ -988,6 +988,171 @@ void do_rstat(CHAR_DATA *ch, char *argument)
                 }
         }
 
+        /* --- Music (room + area + effective) ---------------------------- */
+        {
+                char        full_music[MAX_STRING_LENGTH];
+                char        full_effective_music[MAX_STRING_LENGTH];
+                const char *base =
+                        "https://www.dragons-domain.org/main/gui/custom/audio/";
+
+                /*
+                 * Room music definition.
+                 *
+                 * Display the definition even when its volume is zero so
+                 * rstat can expose a configured but disabled room track.
+                 */
+                if (location->music_sound
+                &&  *location->music_sound)
+                {
+                        if (strstr(location->music_sound, "://") != NULL)
+                        {
+                                strncpy(full_music,
+                                        location->music_sound,
+                                        sizeof(full_music) - 1);
+
+                                full_music[sizeof(full_music) - 1] = '\0';
+                        }
+                        else
+                        {
+                                snprintf(
+                                        full_music,
+                                        sizeof(full_music),
+                                        "%s%s",
+                                        base,
+                                        location->music_sound[0] == '/'
+                                                ? location->music_sound + 1
+                                                : location->music_sound);
+                        }
+
+                        sprintf(
+                                buf,
+                                "Room music: {G%s{x\n\r"
+                                "Room music volume: {W%d{x\n\r",
+                                full_music,
+                                location->music_volume);
+
+                        strcat(buf1, buf);
+                }
+                else
+                {
+                        strcat(buf1, "Room music: {Rnone{x\n\r");
+                }
+
+                /*
+                 * Area music definition.
+                 */
+                if (location->area->music_sound
+                &&  *location->area->music_sound)
+                {
+                        if (strstr(location->area->music_sound, "://") != NULL)
+                        {
+                                strncpy(full_music,
+                                        location->area->music_sound,
+                                        sizeof(full_music) - 1);
+
+                                full_music[sizeof(full_music) - 1] = '\0';
+                        }
+                        else
+                        {
+                                snprintf(
+                                        full_music,
+                                        sizeof(full_music),
+                                        "%s%s",
+                                        base,
+                                        location->area->music_sound[0] == '/'
+                                                ? location->area->music_sound + 1
+                                                : location->area->music_sound);
+                        }
+
+                        sprintf(
+                                buf,
+                                "Area music: {G%s{x\n\r"
+                                "Area music volume: {W%d{x\n\r",
+                                full_music,
+                                location->area->music_volume);
+
+                        strcat(buf1, buf);
+                }
+                else
+                {
+                        strcat(buf1, "Area music: {Rnone{x\n\r");
+                }
+
+                /*
+                 * Effective music:
+                 *
+                 *     room music > area music > none
+                 *
+                 * A definition whose volume is zero is disabled and therefore
+                 * does not override the next available layer.
+                 */
+                {
+                        const char *effective_source = NULL;
+                        const char *effective_name = NULL;
+                        int         effective_volume = 0;
+
+                        if (location->music_sound
+                        &&  *location->music_sound
+                        &&  location->music_volume > 0)
+                        {
+                                effective_source = "room";
+                                effective_name = location->music_sound;
+                                effective_volume = location->music_volume;
+                        }
+                        else if (location->area->music_sound
+                        &&       *location->area->music_sound
+                        &&       location->area->music_volume > 0)
+                        {
+                                effective_source = "area";
+                                effective_name = location->area->music_sound;
+                                effective_volume =
+                                        location->area->music_volume;
+                        }
+
+                        if (effective_name)
+                        {
+                                if (strstr(effective_name, "://") != NULL)
+                                {
+                                        strncpy(
+                                                full_effective_music,
+                                                effective_name,
+                                                sizeof(full_effective_music) - 1);
+
+                                        full_effective_music[
+                                                sizeof(full_effective_music) - 1
+                                        ] = '\0';
+                                }
+                                else
+                                {
+                                        snprintf(
+                                                full_effective_music,
+                                                sizeof(full_effective_music),
+                                                "%s%s",
+                                                base,
+                                                effective_name[0] == '/'
+                                                        ? effective_name + 1
+                                                        : effective_name);
+                                }
+
+                                sprintf(
+                                        buf,
+                                        "Effective music (%s): "
+                                        "{G%s{x @ {W%d{x\n\r",
+                                        effective_source,
+                                        full_effective_music,
+                                        effective_volume);
+
+                                strcat(buf1, buf);
+                        }
+                        else
+                        {
+                                strcat(
+                                        buf1,
+                                        "Effective music: {Rnone{x\n\r");
+                        }
+                }
+        }
+
         /* ----- Weather ambience (rain / lightning) ---------------------- */
 
         if (ch && ch->desc && ch->desc->pProtocol)

@@ -3380,30 +3380,78 @@ void spell_fly(int sn, int level, CHAR_DATA *ch, void *vo)
 
 void spell_gate(int sn, int level, CHAR_DATA *ch, void *vo)
 {
-        CHAR_DATA *gch;
-        CHAR_DATA *mob;
-        int npccount = 0;
-        int pccount = 0;
+        CHAR_DATA     *gch;
+        CHAR_DATA     *mob;
+        MOB_INDEX_DATA *pMobIndex;
+        int            mob_vnum;
+        int            npccount = 0;
+        int            pccount = 0;
+
+        if (!ch || !ch->in_room)
+                return;
 
         for (gch = ch->in_room->people; gch; gch = gch->next_in_room)
         {
                 if (IS_NPC(gch) && !IS_AFFECTED(gch, AFF_CHARM))
                         npccount++;
-                if (!IS_NPC(gch) ||
-                    (IS_NPC(gch) && IS_AFFECTED(gch, AFF_CHARM)))
+
+                if (!IS_NPC(gch)
+                ||  (IS_NPC(gch) && IS_AFFECTED(gch, AFF_CHARM)))
                         pccount++;
         }
 
-        if (CAN_SPEAK(ch))
+        switch (ch->in_room->sector_type)
         {
-            do_say(ch, "{RCome brothers!  Join me in this glorious bloodbath!{x");
+        case SECT_DESERT:
+                mob_vnum = MOB_VNUM_DESERT_DJINN;
+
+                if (CAN_SPEAK(ch))
+                        do_say(ch, "{YCome forth, spirit of the scorching wastes!{x");
+                break;
+
+        case SECT_WATER_SWIM:
+        case SECT_WATER_NOSWIM:
+        case SECT_UNDERWATER:
+        case SECT_UNDERWATER_GROUND:
+                mob_vnum = MOB_VNUM_WATER_GUARDIAN;
+
+                if (CAN_SPEAK(ch))
+                        do_say(ch, "{CCome forth, spirit of the fathomless waters!{x");
+                break;
+
+        case SECT_AIR:
+                mob_vnum = MOB_VNUM_AIR_SPIRIT;
+
+                if (CAN_SPEAK(ch))
+                        do_say(ch, "{WCome forth, spirit of the howling winds!{x");
+                break;
+
+        default:
+                mob_vnum = MOB_VNUM_VAMPIRE;
+
+                if (CAN_SPEAK(ch))
+                        do_say(ch, "{RCome brothers! Join me in this glorious bloodbath!{x");
+                break;
         }
 
-        mob = create_mobile(get_mob_index(MOB_VNUM_VAMPIRE));
-        /* Tweaked slightly to make  spell a little more dangerous. 9/4/15 --Owl */
+        pMobIndex = get_mob_index(mob_vnum);
+
+        if (!pMobIndex)
+        {
+                bug("Spell_gate: missing mobile vnum %d.", mob_vnum);
+                return;
+        }
+
+        mob = create_mobile(pMobIndex);
+
+        /*
+         * Tweaked slightly to make spell a little more dangerous.
+         * 9/4/15 --Owl
+         */
         mob->level = ch->level - 7;
-        mob->max_hit = mob->level * 8 + number_range(mob->level * mob->level / 4,
-                                                     mob->level * mob->level);
+        mob->max_hit = mob->level * 8
+                     + number_range(mob->level * mob->level / 4,
+                                    mob->level * mob->level);
         mob->hit = mob->max_hit;
 
         char_to_room(mob, ch->in_room);

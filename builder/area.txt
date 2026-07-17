@@ -157,20 +157,29 @@ that should follow it.
 
 The current #AREA_SPECIAL flags are:
 
-school              Area is a MUD SCHOOL (new character beginning area)
+school              Area is a MUD SCHOOL (new character beginning area).
 no_quest            No mobs in this area may be auto-quest targets.
-hidden              "areas" command will not show this area and the mapmaker
-                    will not generate maps of it.
+hidden              The "areas" command will not show this area, and the
+                    mapmaker will not generate maps of it.
 safe                Pkilling cannot happen in this area.
 no_teleport         A player cannot teleport into this area.
 no_magic            Magic cannot be used in this area.
-exp_mod NUMBER      An experience point modifier will be applied to all mobs
-                    killed in this area.  100 == no change, 50 == halved, 200 ==
-                    doubled, etc.
-reset_msg STRING    Reset message that will replace the default. Put a return at
-                    the end of the line and terminate with a tilde (~).
-ambient FILE        Default area sound media file (relative path; no spaces).
-ambient_vol NUMBER  Default area media volume. 0 = off; 1..100 valid.
+exp_mod NUMBER      An experience point modifier is applied to all mobs killed
+                    in this area. 100 means no change, 50 means halved, 200
+                    means doubled, and so forth.
+reset_msg STRING    Reset message that replaces the default area-reset message.
+                    Put the message on the following line and terminate it with
+                    a tilde (~).
+ambient FILE        Default environmental ambience for the area. FILE is a
+                    relative media path containing no spaces, normally
+                    beginning with "ambient/".
+ambient_vol NUMBER  Default area ambience volume. 0 disables the area ambience;
+                    values from 1 to 100 are valid.
+music FILE          Default looping music for the area. FILE is a relative
+                    media path containing no spaces, normally beginning with
+                    "music/".
+music_vol NUMBER    Default area music volume. 0 disables the area music;
+                    values from 1 to 100 are valid.
 
 An example #AREA_SPECIAL section follows:
 
