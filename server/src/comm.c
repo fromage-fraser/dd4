@@ -76,6 +76,7 @@ extern int malloc_verify args((void));
 #include <netdb.h>
 #include <netinet/in.h>
 #include <sys/socket.h>
+#include <arpa/inet.h>
 #include <arpa/telnet.h>
 
 /*
@@ -99,6 +100,8 @@ const char go_ahead_str[] = {IAC, GA, '\0'};
 #include <sys/fcntl.h>
 #endif
 
+#define REVERSE_DNS_TIMEOUT_USEC 250000L
+
 /*int   accept          args((int s, struct sockaddr *addr, int *addrlen)); */
 /*int   bind            args((int s, struct sockaddr *name, int namelen)); */
 int close args((int fd));
@@ -120,6 +123,12 @@ int kill args((pid_t pid, int sig));
 int pipe args((int filedes[2]));
 int dup2 args((int oldfd, int newfd));
 int execl args((const char *path, const char *arg, ...));
+
+static bool resolve_hostname_timeout(
+        const struct sockaddr_in *address,
+        char *host,
+        size_t host_size,
+        long timeout_usec);
 
 /*
  * Global variables.
@@ -815,17 +824,145 @@ void game_loop_unix(int control, int wizPort)
         return;
 }
 
+static bool resolve_hostname_timeout(
+        const struct sockaddr_in *address,
+        char *host,
+        size_t host_size,
+        long timeout_usec)
+{
+        int fds[2];
+        pid_t pid;
+        fd_set read_set;
+        struct timeval timeout;
+        ssize_t bytes;
+        int ready;
+        int status;
+        bool resolved;
+
+        if (!address || !host || host_size < 2)
+                return FALSE;
+
+        host[0] = '\0';
+        resolved = FALSE;
+
+        if (pipe(fds) < 0)
+        {
+                perror("resolve_hostname_timeout: pipe");
+                return FALSE;
+        }
+
+        pid = fork();
+
+        if (pid < 0)
+        {
+                perror("resolve_hostname_timeout: fork");
+                close(fds[0]);
+                close(fds[1]);
+                return FALSE;
+        }
+
+        if (pid == 0)
+        {
+                char child_host[NI_MAXHOST];
+                int result;
+
+                close(fds[0]);
+
+                child_host[0] = '\0';
+
+                result = getnameinfo(
+                        (const struct sockaddr *)address,
+                        sizeof(*address),
+                        child_host,
+                        sizeof(child_host),
+                        NULL,
+                        0,
+                        NI_NAMEREQD);
+
+                if (result == 0 && child_host[0] != '\0')
+                {
+                        /*
+                         * The hostname is much smaller than a pipe buffer,
+                         * so this write cannot realistically block.
+                         */
+                        (void)write(
+                                fds[1],
+                                child_host,
+                                strlen(child_host) + 1);
+                }
+
+                close(fds[1]);
+
+                /*
+                 * Do not run inherited atexit handlers or flush inherited
+                 * stdio buffers in the forked child.
+                 */
+                _Exit(result == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
+        }
+
+        /*
+         * Parent process.
+         */
+        close(fds[1]);
+
+        FD_ZERO(&read_set);
+        FD_SET(fds[0], &read_set);
+
+        timeout.tv_sec = timeout_usec / 1000000L;
+        timeout.tv_usec = timeout_usec % 1000000L;
+
+        ready = select(
+                fds[0] + 1,
+                &read_set,
+                NULL,
+                NULL,
+                &timeout);
+
+        if (ready > 0 && FD_ISSET(fds[0], &read_set))
+        {
+                bytes = read(fds[0], host, host_size - 1);
+
+                if (bytes > 0)
+                {
+                        host[bytes] = '\0';
+
+                        if (host[0] != '\0')
+                                resolved = TRUE;
+                }
+        }
+        else if (ready < 0 && errno != EINTR)
+        {
+                perror("resolve_hostname_timeout: select");
+        }
+
+        close(fds[0]);
+
+        /*
+         * Do not allow the resolver child to continue beyond our deadline.
+         * Killing an already-exited child simply fails with ESRCH.
+         */
+        if (kill(pid, SIGKILL) < 0 && errno != ESRCH)
+                perror("resolve_hostname_timeout: kill");
+
+        while (waitpid(pid, &status, 0) < 0)
+        {
+                if (errno != EINTR)
+                        break;
+        }
+
+        return resolved;
+}
+
 void new_descriptor(int control)
 {
         BAN_DATA *pban;
         static DESCRIPTOR_DATA d_zero;
         DESCRIPTOR_DATA *dnew;
         struct sockaddr_in sock;
-        struct hostent *from;
-        char buf[MAX_STRING_LENGTH];
+        char ip_address[INET_ADDRSTRLEN];
+        char resolved_host[NI_MAXHOST];
         int desc;
         socklen_t size;
-        int addr;
 
         size = sizeof(sock);
         getsockname(control, (struct sockaddr *)&sock, &size);
@@ -886,20 +1023,46 @@ void new_descriptor(int control)
          * which ain't very compatible between gcc and system libraries.
          */
 
-        addr = ntohl(sock.sin_addr.s_addr);
-        sprintf(buf, "%d.%d.%d.%d",
-                (addr >> 24) & 0xFF, (addr >> 16) & 0xFF,
-                (addr >> 8) & 0xFF, (addr) & 0xFF);
-        sprintf(log_buf, "New socket from: %s", buf);
+        if (!inet_ntop(
+            AF_INET,
+            &sock.sin_addr,
+            ip_address,
+            sizeof(ip_address)))
+        {
+                perror("new_descriptor: inet_ntop");
+                strncpy(ip_address, "unknown", sizeof(ip_address) - 1);
+                ip_address[sizeof(ip_address) - 1] = '\0';
+        }
+
+        /*
+         * Keep the numeric IP in dnew->host so existing IP-based
+         * ban matching continues to work.
+         */
+        dnew->host = str_dup(ip_address);
+
+        if (resolve_hostname_timeout(
+                    &sock,
+                    resolved_host,
+                    sizeof(resolved_host),
+                    REVERSE_DNS_TIMEOUT_USEC))
+        {
+                snprintf(
+                        log_buf,
+                        MAX_STRING_LENGTH,
+                        "New socket from: %s (%s)",
+                        ip_address,
+                        resolved_host);
+        }
+        else
+        {
+                snprintf(
+                        log_buf,
+                        MAX_STRING_LENGTH,
+                        "New socket from: %s",
+                        ip_address);
+        }
+
         log_string(log_buf);
-
-        /* from = gethostbyaddr((char *) &sock.sin_addr,
-                sizeof(sock.sin_addr), AF_INET); */
-        from = NULL;
-
-        dnew->host = str_dup(from ? from->h_name : buf);
-        if (from)
-                sprintf(log_buf, "New socket from: %s", from->h_name);
         server_message(log_buf);
 
         /*
@@ -4778,5 +4941,7 @@ int digits_in_int(int number)
 
         return count;
 }
+
+
 
 /* EOF comm.c */

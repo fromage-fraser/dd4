@@ -698,6 +698,11 @@ think it might be dodgy, don't do it or you'll probably regret it.
 The DD Team
 ~
 
+0 VITALIZE VITALISE~
+
+This healer-only spell fully restores your hitpoints, mana, and movement.
+~
+
 101 ZONE ZONES~
 Syntax: zones <<low_vnum> <<high_vnum>
 

@@ -4,6 +4,13 @@
 #RECALL
 27347
 
+#AREA_SPECIAL
+reset_msg {cThe market's hubbub grows suddenly louder, then falls silent.{x
+~
+music music/area/sahuagin_market.mp3
+music_vol 20
+$
+
 #MOBILES
 #27200
 Pheskak cartographer~

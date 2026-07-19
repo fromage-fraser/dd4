@@ -1339,98 +1339,6 @@ void day_weather_update()
         }
 }
 
-/* --- Weather ambience update ------------------------------------------- */
-/* Called from weather_update() to start/stop ambient weather loops */
-static void update_weather_ambient(void)
-{
-        const sound_event_def *ev = NULL;
-        const char *rk = NULL;
-
-        switch (weather_info.sky)
-        {
-        case SKY_RAINING:
-                rk = "ambient.weather.rain";
-                break;
-        case SKY_LIGHTNING:
-                rk = "ambient.weather.lightning";
-                break;
-        default:
-                rk = NULL;
-                break;
-        }
-
-        if (rk != NULL)
-        {
-                ev = sound_event_lookup(rk);
-                if (ev && ev->files[0])
-                {
-                        for (DESCRIPTOR_DATA *d = descriptor_list; d; d = d->next)
-                        {
-                                if (!d->character || IS_NPC(d->character))
-                                        continue;
-                                if (!d->pProtocol || !d->pProtocol->bGMCP)
-                                        continue;
-                                if (!d->character->pcdata || !d->character->pcdata->snd_enabled)
-                                        continue;
-                                if (!IS_OUTSIDE(d->character))
-                                        continue;
-                                if (IS_SET(d->character->in_room->room_flags, ROOM_NO_WEATHER))
-                                        continue;
-                                if (d->character->in_room->sector_type == SECT_UNDERWATER)
-                                        continue;
-                                if (d->character->in_room->sector_type == SECT_UNDERWATER_GROUND)
-                                        continue;
-
-                                /* Only start if not already active or different */
-                                if (!d->pProtocol->MediaWeatherActive ||
-                                    !d->pProtocol->MediaWeatherName ||
-                                    str_cmp(d->pProtocol->MediaWeatherName, ev->files[0]))
-                                {
-
-                                        /* Stop old loop if running */
-                                        if (d->pProtocol->MediaWeatherActive && d->pProtocol->MediaWeatherName)
-                                        {
-                                                GMCP_Media_Stop(d, d->pProtocol->MediaWeatherName);
-                                                free_string(d->pProtocol->MediaWeatherName);
-                                        }
-
-                                        /* Start new loop */
-                                        char opts[256];
-                                        snprintf(opts, sizeof(opts),
-                                                 "\"type\":\"music\",\"tag\":\"weather\",\"volume\":%d,\"loops\":-1",
-                                                 ev->default_volume > 0 ? ev->default_volume : 20);
-                                        GMCP_Media_Play(d, ev->files[0], opts);
-
-                                        d->pProtocol->MediaWeatherName = str_dup(ev->files[0]);
-                                        d->pProtocol->MediaWeatherVol = ev->default_volume;
-                                        d->pProtocol->MediaWeatherActive = TRUE;
-
-                                        if ( SND_LOG_ENABLED) { log_stringf("WeatherSFX: started loop %s vol=%d for %s",
-                                                    ev->files[0], ev->default_volume,
-                                                    d->character->name); }
-                                }
-                        }
-                }
-        }
-        else
-        {
-                /* No weather loop needed (clear/cloudy) => stop any active */
-                for (DESCRIPTOR_DATA *d = descriptor_list; d; d = d->next)
-                {
-                        if (d->pProtocol && d->pProtocol->MediaWeatherActive && d->pProtocol->MediaWeatherName)
-                        {
-                                GMCP_Media_Stop(d, d->pProtocol->MediaWeatherName);
-                                free_string(d->pProtocol->MediaWeatherName);
-                                d->pProtocol->MediaWeatherName = NULL;
-                                d->pProtocol->MediaWeatherActive = FALSE;
-
-                                if ( SND_LOG_ENABLED) { log_stringf("WeatherSFX: stopped weather loop for %s",
-                                            d->character ? d->character->name : "(null)"); }
-                        }
-                }
-        }
-}
-
 void weather_update()
 {
         DESCRIPTOR_DATA *d;
@@ -1536,41 +1444,78 @@ void weather_update()
 
         for (d = descriptor_list; d; d = d->next)
         {
-                if (buf[0] != '\0' && d->connected == CON_PLAYING && IS_OUTSIDE(d->character) && (d->character->in_room->sector_type != SECT_UNDERWATER) && (d->character->in_room->sector_type != SECT_UNDERWATER_GROUND) && IS_AWAKE(d->character) && !IS_SET(d->character->in_room->room_flags, ROOM_NO_WEATHER) )
-                        send_to_char(buf, d->character);
+                CHAR_DATA *ch;
 
-                if (time_info.hour == 20 && d->character && d->character->sub_class == SUB_CLASS_WEREWOLF && weather_info.moonlight == MOON_FULL)
+                if (d->connected != CON_PLAYING)
+                        continue;
+
+                ch = d->character;
+
+                if (!ch || !ch->in_room)
+                        continue;
+
+                if (buf[0] != '\0'
+                &&  IS_OUTSIDE(ch)
+                &&  ch->in_room->sector_type != SECT_UNDERWATER
+                &&  ch->in_room->sector_type != SECT_UNDERWATER_GROUND
+                &&  IS_AWAKE(ch)
+                &&  !IS_SET(ch->in_room->room_flags, ROOM_NO_WEATHER))
                 {
-                        if (d->character->position != POS_FIGHTING)
-                                d->character->position = POS_STANDING;
-
-                        send_to_char("<230>The full moon inspires a glorious <88>bloodlust<0><230> in you!<0>\n\r",
-                                     d->character);
-
-                        if (d->character->form != FORM_WOLF && d->character->form != FORM_DIREWOLF)
-                                do_morph(d->character, "wolf");
-
-                        act("$n bays at the <230>moon<0>!", d->character, NULL, NULL, TO_ROOM);
+                        send_to_char(buf, ch);
                 }
 
-                if (time_info.hour == 5 && d->character && (d->character->sub_class == SUB_CLASS_VAMPIRE || d->character->sub_class == SUB_CLASS_WEREWOLF))
+                if (time_info.hour == 20
+                &&  ch->sub_class == SUB_CLASS_WEREWOLF
+                &&  weather_info.moonlight == MOON_FULL)
                 {
-                        send_to_char("You sense the <226>sun<0> rising...\n\r", d->character);
+                        if (ch->position != POS_FIGHTING)
+                                ch->position = POS_STANDING;
+
+                        send_to_char(
+                                "<230>The full moon inspires a glorious "
+                                "<88>bloodlust<0><230> in you!<0>\n\r",
+                                ch);
+
+                        if (ch->form != FORM_WOLF
+                        &&  ch->form != FORM_DIREWOLF)
+                        {
+                                do_morph(ch, "wolf");
+                        }
+
+                        act("$n bays at the <230>moon<0>!",
+                            ch, NULL, NULL, TO_ROOM);
                 }
 
-                if (time_info.hour == 19 && d->character && (d->character->sub_class == SUB_CLASS_VAMPIRE || d->character->sub_class == SUB_CLASS_WEREWOLF))
+                if (time_info.hour == 5
+                &&  (ch->sub_class == SUB_CLASS_VAMPIRE
+                ||   ch->sub_class == SUB_CLASS_WEREWOLF))
                 {
-                        send_to_char("You sense the <202>sun<0> setting...\n\r", d->character);
+                        send_to_char(
+                                "You sense the <226>sun<0> rising...\n\r",
+                                ch);
+                }
+
+                if (time_info.hour == 19
+                &&  (ch->sub_class == SUB_CLASS_VAMPIRE
+                ||   ch->sub_class == SUB_CLASS_WEREWOLF))
+                {
+                        send_to_char(
+                                "You sense the <202>sun<0> setting...\n\r",
+                                ch);
                 }
         }
 
-        /* Refresh weather ambience for all PCs */
+        /* Refresh weather ambience for all playing PCs. */
         for (d = descriptor_list; d; d = d->next)
         {
-                if (d->connected == CON_PLAYING && d->character && !IS_NPC(d->character))
-                        update_weather_for_char(d->character);
+                if (d->connected != CON_PLAYING)
+                        continue;
+
+                if (!d->character || IS_NPC(d->character))
+                        continue;
+
+                update_weather_for_char(d->character);
         }
-        update_weather_ambient();
 }
 
 /*
