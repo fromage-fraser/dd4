@@ -554,20 +554,25 @@ void create_ident(DESCRIPTOR_DATA *d, long ip, sh_int port)
 
 #endif
 
-#define SFX_TICK_USEC 45000  /* 50ms = 20Hz; tune this */
+#define SFX_TICK_USEC 40000  /* 40 ms; tune this */
 
 static void sfx_io_tick(void)
 {
         DESCRIPTOR_DATA *d;
 
-        /* dequeue and emit GMCP media events into outbuf */
+        /*
+         * Dequeue and emit queued media events.
+         */
         sound_sfx_update();
 
-        /* flush output immediately so the client receives the GMCP now */
-        for (d = descriptor_list; d; d = d->next)
+        /*
+         * This is a background media flush, not the completion of a
+         * player command. Do not generate or redraw prompts here.
+         */
+        for ( d = descriptor_list; d; d = d->next )
         {
-                if (d->outtop > 0)
-                        process_output(d, TRUE);
+                if ( d->outtop > 0 )
+                        process_output( d, FALSE );
         }
 }
 
@@ -1387,8 +1392,28 @@ bool process_output(DESCRIPTOR_DATA *d, bool fPrompt)
         extern bool merc_down;
 
         /*
+         * Snoop only ordinary game output that was already queued when
+         * process_output() was called.
+         *
+         * This must happen before bust_a_prompt(), otherwise the victim's
+         * generated prompt is copied to the snooper on every background
+         * output flush.
+         *
+         * Do not forward GMCP, MSDP or other protocol-only output to the
+         * snooper's connection.
+         */
+        if ( d->snoop_by
+        &&   d->outtop > 0
+        &&   ( !d->pProtocol || d->pProtocol->WriteOOB == 0 ) )
+        {
+                write_to_buffer( d->snoop_by, "% ", 2 );
+                write_to_buffer( d->snoop_by, d->outbuf, d->outtop );
+        }
+
+        /*
          * Bust a prompt.
          */
+
         if (d->pProtocol->WriteOOB) /* <-- Add this, and the ";" and "else" */
                 ;                   /* The last sent data was OOB, so do NOT draw the prompt */
         else if (fPrompt && !merc_down && d->connected == CON_PLAYING)
@@ -1490,15 +1515,6 @@ bool process_output(DESCRIPTOR_DATA *d, bool fPrompt)
          */
         if (d->outtop == 0)
                 return TRUE;
-
-        /*
-         * Snoop-o-rama.
-         */
-        if (d->snoop_by)
-        {
-                write_to_buffer(d->snoop_by, "% ", 2);
-                write_to_buffer(d->snoop_by, d->outbuf, d->outtop);
-        }
 
         /*
          * OS-dependent output.

@@ -1971,11 +1971,21 @@ void extract_char( CHAR_DATA *ch, bool fPull )
                 /* Clear suppression: we want these Stop frames to go out */
                 if (p) p->MediaSuppress = FALSE;
 
-                /* Stop our lanes explicitly, then a global stop as a belt-and-braces */
-                GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.room\",\"type\":\"music\"");
-                GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.area\",\"type\":\"music\"");
-                GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.sector\",\"type\":\"music\"");
-                GMCP_Media_Stop(ch->desc, NULL);
+                /*
+                 * Fade out all audio over two seconds.
+                 *
+                 * "music" covers ambient and background music.
+                 * "sound" covers SFX, foley, notifications, combat sounds, etc.
+                 */
+                GMCP_Media_Stop(
+                        ch->desc,
+                        "\"type\":\"music\",\"fadeaway\":true,\"fadeout\":3000"
+                );
+
+                GMCP_Media_Stop(
+                        ch->desc,
+                        "\"type\":\"sound\",\"fadeaway\":true,\"fadeout\":3000"
+                );
 
                 /* Also clear cached protocol state if present */
                 if (p)

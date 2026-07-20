@@ -1,6 +1,12 @@
 #AREA   Binky~   The Circus~
 1 12 0 100
 
+#AREA_SPECIAL
+reset_msg A calliope wheezes back to life, and the circus stirs for another show.
+~
+music music/area/circus.mp3
+music_vol 20
+$
 
 #HELPS
 0 $~
