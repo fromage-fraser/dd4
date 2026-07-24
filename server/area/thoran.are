@@ -597,6 +597,8 @@ A nice looking sword is lying here.~
 5 1 1|8192
 0~ 3~ 6~ 3~
 10 1000 0
+T
+steel/wood/leather~
 A
 18 4
 A
@@ -609,6 +611,8 @@ A shield is lying here.~
 9 1 1|512
 5~ 0~ 0~ 0~
 5 500 0
+T
+steel/wood~
 #26706
 shotglass~
 a shotglass~
@@ -673,6 +677,8 @@ The scales of a dragon are lying here.~
 9 1 1|512
 10~ 0~ 0~ 0~
 5 1000 0
+T
+dragonscale~
 A
 2 5
 #26714
@@ -683,6 +689,8 @@ The head of a dragon is lying here.~
 9 1 1|16
 7~ 0~ 0~ 0~
 5 1000 0
+T
+dragonscale~
 #26715
 tail dragon~
 the tail of a dragon~
@@ -691,6 +699,8 @@ The tail of a dragon is lying here.~
 9 1 1|32
 7~ 0~ 0~ 0~
 5 1000 0
+T
+dragonscale~
 A
 19 6
 #26716
@@ -701,6 +711,8 @@ The wings of a gargoyle are lying here.~
 9 1 1|1024
 9~ 0~ 0~ 0~
 5 1000 0
+T
+leather~
 #26717
 calculator~
 a calculator~
@@ -709,6 +721,8 @@ A scientific calculator is lying here.~
 9 1 1|16384
 0~ 0~ 0~ 0~
 3 500 0
+T
+leather~
 A
 3 1
 A
@@ -721,6 +735,8 @@ A pencil is lying here.~
 5 1 1|8192
 0~ 3~ 6~ 11~
 5 1000 0
+T
+steel/wood/leather~
 #26719
 vampire teeth~
 the teeth of a vampire~
@@ -729,6 +745,8 @@ The teeth of a vampire are lying here.~
 5 1|67108864 1|8192
 1~ 3~ 6~ 10~
 5 1000 0
+T
+steel/wood/leather~
 #26720
 black cape~
 a black cape~
@@ -737,6 +755,8 @@ A black cape is lying here.~
 9 1 1|1024
 7~ 0~ 0~ 0~
 3 1000 0
+T
+leather~
 #26721
 broom~
 a broom~
@@ -745,6 +765,8 @@ A broom is lying here.~
 5 1 1|8192
 0~ 3~ 6~ 5~
 5 1000 0
+T
+steel/wood/leather~
 #26722
 cauldron~
 a cauldron~
@@ -761,6 +783,8 @@ A serving tray is lying here.~
 5 1 1|8192
 0~ 3~ 6~ 7~
 5 1000 0
+T
+steel/wood/leather~
 #26724
 ring truth~
 a ring of truth~
@@ -769,6 +793,8 @@ A beautiful ring is lying here.~
 5 1 1|2
 15~ 0~ 0~ 0~
 2 1000 0
+T
+steel/wood/leather~
 A
 18 3
 A
@@ -781,6 +807,8 @@ A beautiful ring is lying here.~
 9 1 1|2
 15~ 0~ 0~ 0~
 2 1000 0
+T
+silver~
 A
 18 3
 A
@@ -793,6 +821,8 @@ A beautifully crafted sword is lying here.~
 5 1 1|8192
 0~ 6~ 8~ 3~
 10 5000 0
+T
+steel/wood/leather~
 A
 18 3
 A
@@ -805,6 +835,8 @@ A pair of boots is lying here.~
 9 1 1|64
 15~ 0~ 0~ 0~
 5 1000 0
+T
+leather~
 A
 18 3
 A
@@ -819,6 +851,8 @@ A chest plate is lying here.~
 9 1 1|8
 15~ 0~ 0~ 0~
 5 1000 0
+T
+steel~
 A
 18 3
 A
@@ -831,6 +865,8 @@ A pair of gloves is lying here.~
 9 1 1|128
 15~ 0~ 0~ 0~
 5 1000 0
+T
+leather~
 A
 18 3
 A
@@ -843,6 +879,8 @@ A shield is lying here.~
 9 1 1|512
 15~ 0~ 0~ 0~
 5 1000 0
+T
+steel/wood~
 A
 18 3
 A
@@ -855,6 +893,8 @@ A cape is lying here.~
 9 1 1|1024
 15~ 0~ 0~ 0~
 5 1000 0
+T
+leather~
 A
 18 3
 A
@@ -867,6 +907,8 @@ A belt is lying here.~
 9 1 1|2048
 15~ 0~ 0~ 0~
 5 1000 0
+T
+leather~
 A
 18 5
 A
@@ -881,6 +923,8 @@ A bracelet is lying here.~
 9 1 1|4096
 15~ 0~ 0~ 0~
 5 1000 0
+T
+leather~
 A
 18 5
 A
@@ -893,6 +937,8 @@ A bracelet is lying here.~
 9 1 1|4096
 15~ 0~ 0~ 0~
 5 1000 0
+T
+cloth~
 A
 18 5
 A
@@ -905,6 +951,8 @@ A sceptre is lying here.~
 9 1 1|16384
 15~ 0~ 0~ 0~
 5 1000 0
+T
+leather~
 A
 18 5
 A
@@ -921,6 +969,8 @@ A set of arm plates is lying here.~
 9 1 1|256
 15~ 0~ 0~ 0~
 5 1000 0
+T
+steel~
 A
 18 5
 A
@@ -933,6 +983,8 @@ A silver ankh is lying here.~
 9 1 1|4
 15~ 0~ 0~ 0~
 5 1000 0
+T
+silver~
 A
 18 5
 A
@@ -945,6 +997,8 @@ A golden cross is lying here.~
 9 1 1|4
 15~ 0~ 0~ 0~
 5 1000 0
+T
+gold~
 A
 18 9
 A
@@ -969,6 +1023,8 @@ A helm is lying here.~
 9 1 1|16
 15~ 0~ 0~ 0~
 5 1000 0
+T
+steel~
 A
 18 5
 A
@@ -983,6 +1039,8 @@ A pair of leggings are lying here.~
 9 1 1|32
 15~ 0~ 0~ 0~
 5 1000 0
+T
+steel~
 A
 18 5
 A

@@ -400,6 +400,8 @@ A fine-looking jewelled dagger rests here.~
 5 0 1|8192
 0~ 8~ 28~ 11~
 15 0 0
+T
+steel/wood/leather~
 A
 19 4
 A
@@ -424,6 +426,8 @@ A wicked-looking curved blade lies here.~
 5 64 1|8192
 0~ 8~ 26~ 3~
 18 0 0
+T
+steel/wood/leather~
 A
 18 2
 A
@@ -436,6 +440,8 @@ A small black patch lies here.~
 9 1|64 1|16
 8~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 2 -1
 A
@@ -452,6 +458,8 @@ A heap of cloth lies here.~
 9 0 1|32
 0~ 1~ 6~ 11~
 15 0 0
+T
+cloth~
 #17511
 shirt ripped~
 a ripped shirt~
@@ -460,6 +468,8 @@ A well worn ripped shirt lies in a heap here.~
 9 0 1|8
 0~ 1~ 6~ 11~
 8 0 0
+T
+leather~
 A
 2 1
 A
@@ -472,6 +482,8 @@ A long sharp sabre lies here.~
 5 1|2|16|64 1|8192
 0~ 1~ 6~ 11~
 15 0 0
+T
+steel/wood/leather~
 A
 18 7
 A
@@ -484,6 +496,8 @@ An ordinary looking gold ring lies here.~
 9 1|274877906944 1|2
 0~ 1~ 6~ 11~
 5 0 0
+T
+gold~
 A
 2 2
 A
@@ -498,6 +512,8 @@ A fencer's main-gauche gleams brightly in the light.~
 5 2 1|8192
 0~ 1~ 6~ 11~
 8 0 0
+T
+steel/wood/leather~
 A
 18 8
 A
@@ -512,6 +528,8 @@ A neatly-folded tunic is here.~
 9 64 1|8
 0~ 1~ 6~ 11~
 15 0 0
+T
+cloth~
 A
 17 -5
 #17516
@@ -522,6 +540,8 @@ A fine-looking belt is coiled here.~
 9 0 1|2048
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #17517
 bandana black~
 a Black Bandana~
@@ -530,6 +550,8 @@ A small piece of black cloth rests here.~
 9 274877906944 1|16
 0~ 1~ 6~ 11~
 8 0 0
+T
+cloth~
 A
 18 6
 A
@@ -544,6 +566,8 @@ A gold amulet with a locket lies here.~
 9 0 1|4
 0~ 1~ 6~ 11~
 8 0 0
+T
+gold~
 A
 24 -5
 E
@@ -560,6 +584,8 @@ A fine silk shirt is neatly folded here.~
 9 1 1|8
 0~ 1~ 6~ 11~
 8 0 0
+T
+silk~
 A
 9 -8
 A
@@ -574,6 +600,8 @@ An expensive-looking ring lies on the ground.~
 9 64 1|2
 0~ 1~ 6~ 11~
 4 0 0
+T
+silver~
 A
 24 -5
 A
@@ -586,6 +614,8 @@ A pair of black silk pants lie here.~
 9 0 1|32
 0~ 1~ 6~ 11~
 12 0 0
+T
+silk~
 A
 17 -6
 #17522
@@ -596,6 +626,8 @@ A sharp poniard lies hidden in the shadows.~
 5 0 1|8192
 0~ 1~ 6~ 11~
 12 0 0
+T
+steel/wood/leather~
 A
 18 8
 A
@@ -608,6 +640,8 @@ A crumpled white apron lies here.~
 9 0 1|1024
 0~ 1~ 6~ 11~
 10 0 0
+T
+leather~
 A
 5 3
 #17524
@@ -618,6 +652,8 @@ The biggest, heaviest skillet you ever saw is here.~
 5 64 1|8192
 0~ 1~ 6~ 11~
 60 0 0
+T
+steel/wood/leather~
 A
 19 12
 A
@@ -630,6 +666,8 @@ A beautifully-balanced white-hilted throwing knife rests here.~
 5 0 1|8192
 0~ 1~ 6~ 11~
 8 0 0
+T
+steel~
 A
 18 8
 A
@@ -644,6 +682,8 @@ A beautifully-balanced black-hilted throwing knife rests here.~
 5 0 1|8192
 0~ 1~ 6~ 11~
 8 0 0
+T
+steel~
 A
 19 6
 A
@@ -658,6 +698,8 @@ A stylish-looking blue shirt lies crumpled on the ground.~
 9 64 1|8
 0~ 1~ 6~ 11~
 16 0 0
+T
+leather~
 A
 18 6
 #17528
@@ -668,6 +710,8 @@ A pair of expensive-looking black pants have been discarded here.~
 9 64 1|32
 0~ 1~ 6~ 11~
 16 0 0
+T
+cloth~
 A
 17 -8
 A
@@ -680,6 +724,8 @@ A not-so-clean headband has been tossed to the ground here.~
 9 64 1|16
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 2 2
 A
@@ -704,6 +750,8 @@ A pair of elegant white gloves lie neatly here.~
 9 0 1|128
 0~ 1~ 6~ 11~
 8 0 0
+T
+leather~
 A
 2 1
 #17532
@@ -714,6 +762,8 @@ An ugly-looking belaying pin rests here.~
 5 64 1|8192
 0~ 1~ 6~ 8~
 16 0 0
+T
+steel/wood/leather~
 A
 18 -6
 A
@@ -732,6 +782,8 @@ A coil of ragged-looking rope rests here.~
 9 0 1|2048
 0~ 1~ 6~ 11~
 8 0 0
+T
+leather~
 #17534
 waistcoat stained~
 a Scruffy Waistcoat~
@@ -740,6 +792,8 @@ What remains of a once fine waistcoat lies here.~
 9 64 1|1024
 0~ 1~ 6~ 11~
 12 0 0
+T
+cloth~
 A
 1 2
 A
@@ -758,6 +812,8 @@ A plain sabre lies her.e~
 5 0 1|8192
 0~ 1~ 6~ 3~
 5 0 0
+T
+steel/wood/leather~
 #17536
 blade~
 a blade~
@@ -766,6 +822,8 @@ A well-used blade is here.~
 5 0 1|8192
 0~ 1~ 6~ 3~
 25 0 0
+T
+steel/wood/leather~
 A
 18 5
 A
@@ -778,6 +836,8 @@ A pair of linen pants is here.~
 9 0 1|32
 0~ 1~ 6~ 11~
 12 0 0
+T
+leather~
 A
 1 2
 A
@@ -790,6 +850,8 @@ A linen shirt lies here.~
 9 0 1|8
 0~ 1~ 6~ 11~
 10 0 0
+T
+leather~
 A
 17 -8
 #17539
@@ -800,6 +862,8 @@ A comfortable pair of leather boots stand here.~
 9 0 1|64
 0~ 1~ 6~ 11~
 8 0 0
+T
+leather~
 A
 2 2
 #17540
@@ -810,6 +874,8 @@ An expensive gown of silk is here.~
 9 64 1|8
 0~ 1~ 6~ 11~
 15 0 0
+T
+silk~
 A
 12 60
 A
@@ -822,6 +888,8 @@ A lavender sash rests here.~
 9 64 1|2048
 0~ 1~ 6~ 11~
 10 0 0
+T
+leather~
 A
 17 -10
 A
@@ -836,6 +904,8 @@ A ring sparkles in the light.~
 9 1|64 1|2
 0~ 1~ 6~ 11~
 5 0 0
+T
+diamond~
 A
 9 -10
 A
@@ -850,6 +920,8 @@ A bracelet sparkles in the light here.~
 9 1|64 1|4096
 0~ 1~ 6~ 11~
 12 0 0
+T
+diamond~
 A
 12 25
 A
@@ -876,6 +948,8 @@ A fencer's main-gauche is here.~
 5 0 1|8192
 0~ 1~ 6~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 17 -10
 A
@@ -888,6 +962,8 @@ A silver armguard lies here.~
 9 0 1|256
 0~ 1~ 6~ 11~
 12 0 0
+T
+silver~
 A
 17 -10
 #17547
@@ -898,6 +974,8 @@ A short, heavy-bladed dirk lies here.~
 5 0 1|8192
 0~ 1~ 6~ 2~
 5 0 0
+T
+steel/wood/leather~
 #17548
 boots leather~
 hard leather boots~
@@ -906,6 +984,8 @@ A pair of hard leather boots stand here.~
 9 0 1|64
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #17549
 knife~
 a short knife~
@@ -914,6 +994,8 @@ A short knife with a keen edge lies here.~
 5 0 1|8192
 0~ 1~ 6~ 2~
 7 0 0
+T
+steel~
 #17550
 shirt cotton white~
 a cotton shirt~
@@ -922,6 +1004,8 @@ A white cotton shirt lies here.~
 9 0 1|8
 0~ 1~ 6~ 11~
 12 0 0
+T
+leather~
 #17551
 blue pants~
 blue cotton pants~
@@ -930,6 +1014,8 @@ A stylish-looking pair of blue pants lie here.~
 9 0 1|32
 0~ 1~ 6~ 11~
 12 0 0
+T
+leather~
 A
 13 25
 #17552
@@ -940,6 +1026,8 @@ A thin, sharp rapier rests on the ground here.~
 5 0 1|8192
 0~ 1~ 6~ 11~
 12 0 0
+T
+steel/wood/leather~
 A
 18 8
 A
@@ -952,6 +1040,8 @@ A small pearl cufflink is here.~
 9 0 1|4096
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 2 1
 A
@@ -972,6 +1062,8 @@ A small but sharp dagger is here.~
 5 64 1|8192
 0~ 1~ 6~ 11~
 12 0 0
+T
+steel/wood/leather~
 A
 18 2
 A
@@ -984,6 +1076,8 @@ Torn grey robes lie here.~
 9 64 1|1024
 0~ 1~ 6~ 11~
 12 0 0
+T
+cloth~
 A
 24 -8
 #17557
@@ -994,6 +1088,8 @@ A pair of elegant riding boots stand neatly here.~
 9 0 1|64
 0~ 1~ 6~ 11~
 15 0 0
+T
+leather~
 A
 14 50
 A
@@ -1006,6 +1102,8 @@ A pointed, ridiculous-looking hat is here.~
 9 64 1|16
 0~ 1~ 6~ 11~
 12 0 0
+T
+cloth~
 A
 3 2
 A

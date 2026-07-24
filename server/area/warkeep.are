@@ -304,6 +304,8 @@ Some black robes have been left here.~
 9 1|64|512 1|1024
 0~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 A
 3 3
 A
@@ -326,6 +328,8 @@ A bone sword is stuck in the ground here.~
 5 1|512 1|8192
 0~ 0~ 0~ 11~
 10 0 0
+T
+bone~
 A
 18 4
 A
@@ -338,6 +342,8 @@ A bronze helm covered in runes has been left here.~
 9 1|64|512 1|16
 0~ 0~ 0~ 0~
 7 0 0
+T
+bronze/wood/leather~
 A
 17 -10
 A
@@ -402,6 +408,8 @@ A rune-covered dagger has been left here.~
 5 2|16|64|512 1|8192
 0~ 0~ 0~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 18 6
 #15911
@@ -430,6 +438,8 @@ A spiked club lies here.~
 5 512 1|32768
 0~ 0~ 0~ 8~
 20 0 0
+T
+steel/wood~
 A
 18 -4
 A
@@ -442,6 +452,8 @@ A leather hauberk has been dropped here.~
 9 0 1|8
 10~ 0~ 0~ 0~
 10 0 0
+T
+leather~
 #15915
 drake hide~
 a fire drake hide~
@@ -450,6 +462,8 @@ The hide of a fire drake has been removed and left here.~
 9 2|512 1|1024
 0~ 0~ 0~ 0~
 25 0 0
+T
+leather~
 A
 17 -25
 A
@@ -462,6 +476,8 @@ A suit of bronze plate has been piled up here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 15 0 0
+T
+bronze/wood/leather~
 #15917
 bronze shield~
 a bronze shield~
@@ -470,6 +486,8 @@ A bronze shield lies here.~
 9 0 1|512
 0~ 0~ 0~ 0~
 10 0 0
+T
+bronze/wood/leather~
 #15918
 bronze helm~
 a bronze helm~
@@ -478,6 +496,8 @@ A bronze helm has been left here.~
 9 0 1|16
 0~ 0~ 0~ 0~
 6 0 0
+T
+bronze/wood/leather~
 #15919
 bronze sword~
 a bronze sword~
@@ -486,6 +506,8 @@ A bronze sword is buried in the ground here.~
 5 0 1|8192
 0~ 0~ 0~ 3~
 12 0 0
+T
+bronze/wood/leather~
 #15920
 robes~
 some green robes~
@@ -494,6 +516,8 @@ Some green robes are crumpled up on the floor here.~
 9 1|64|512 1|1024
 0~ 0~ 0~ 0~
 3 0 0
+T
+cloth~
 A
 12 113
 A
@@ -506,6 +530,8 @@ A wooden staff with a bronze head lies here.~
 5 0 1|32768
 0~ 0~ 0~ 7~
 9 0 0
+T
+bronze/wood/leather~
 A
 19 3
 #15922
@@ -532,6 +558,8 @@ A spiked dog collar lies here.~
 9 0 1|4
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 18 2
 A
@@ -544,6 +572,8 @@ The black robes of an assassin have been torn from her and left here.~
 9 512 1|16384
 0~ 0~ 0~ 0~
 3 0 0
+T
+cloth~
 A
 2 2
 A
@@ -556,6 +586,8 @@ A throwing dagger has been left here.~
 5 16|64|128 1|8192
 0~ 0~ 0~ 0~
 3 0 0
+T
+steel/wood/leather~
 A
 18 20
 #15927
@@ -566,6 +598,8 @@ A rare steel sword covered in runes lies here.~
 5 1|64 1|8192
 0~ 0~ 0~ 3~
 10 0 0
+T
+steel/wood/leather~
 A
 18 4
 A
@@ -578,6 +612,8 @@ A magic ring floats by here.~
 9 1|64|32768 1|2
 0~ 0~ 0~ 0~
 1 0 0
+T
+silver~
 A
 12 100
 A
@@ -592,6 +628,8 @@ A pair of elven boots lie here.~
 9 0 1|64
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 2 2
 A
@@ -604,6 +642,8 @@ A green elven cloak has been left here.~
 9 0 1|4
 0~ 0~ 0~ 0~
 3 0 0
+T
+cloth~
 A
 5 1
 A
@@ -642,6 +682,8 @@ A whip has been curled up here.~
 5 0 1|8192
 0~ 0~ 0~ 4~
 5 0 0
+T
+leather~
 #15935
 flind bar~
 a flind bar~
@@ -650,6 +692,8 @@ A flind bar has been left here.~
 9 512 1|8192
 0~ 0~ 0~ 7~
 5 0 0
+T
+leather~
 A
 19 5
 #15936
@@ -729,6 +773,8 @@ A set of leg irons rest here.~
 9 4096 1|32
 0~ 0~ 0~ 0~
 10 0 0
+T
+iron/wood/leather~
 A
 2 -3
 A
@@ -741,6 +787,8 @@ A sledgehammer rests here.~
 5 0 1|32768
 0~ 0~ 0~ 8~
 20 0 0
+T
+iron/wood~
 #15944
 ore chisel~
 an ore chisel~
@@ -749,6 +797,8 @@ An ore chisel rests here.~
 5 0 1|32768
 0~ 0~ 0~ 2~
 3 0 0
+T
+steel/wood/leather~
 #0
 
 

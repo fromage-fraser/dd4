@@ -249,6 +249,8 @@ A jagged spear has been left here.~
 5 134217728 8193
 0~ 2~ 5~ 11~
 15 4000 1500
+T
+iron/wood~
 #2201
 dagger silver~
 a silver dagger~
@@ -257,6 +259,8 @@ A silver dagger is lying here.~
 5 0 8193
 0~ 2~ 4~ 11~
 10 1000 200
+T
+silver~
 #2202
 knife tooth dragon~
 a dragon's tooth knife~
@@ -265,6 +269,8 @@ A dangerous looking knife made from a dragon's tooth has been left here.~
 5 0 8193
 0~ 3~ 5~ 11~
 8 100000 50000
+T
+dragonscale~
 A
 2 1
 A
@@ -277,6 +283,8 @@ A scaly bracelet lies on the ground.~
 9 0 4097
 6~ 0~ 0~ 0~
 10 40000 10000
+T
+dragonscale~
 #2204
 belt silk black~
 a black silk belt~
@@ -285,6 +293,8 @@ A black belt made of the finest silk is hanging here.~
 9 0 2049
 6~ 0~ 0~ 0~
 25 10000 4000
+T
+silk~
 A
 5 2
 #2210
@@ -305,6 +315,8 @@ A tarnished platinum bracelet has been dropped here.~
 9 1 4097
 7~ 0~ 0~ 0~
 5 50000 25000
+T
+platinum~
 #2220
 symbol holy~
 a holy symbol~
@@ -313,6 +325,8 @@ A golden holy symbol is here.~
 9 1 16389
 4~ 0~ 0~ 0~
 2 50000 5000
+T
+gold~
 A
 12 15
 #2221
@@ -323,6 +337,8 @@ A black robe is hanging on a hook on the wall.~
 9 0 1025
 5~ 0~ 0~ 0~
 3 50000 5000
+T
+cloth~
 A
 19 2
 #2222
@@ -333,6 +349,8 @@ An emerald long sword is leaning against the wall.~
 5 0 8193
 0~ 3~ 6~ 3~
 24 200000 100000
+T
+emerald~
 #2223
 club stone~
 a stone club~
@@ -341,6 +359,8 @@ A heavy looking stone club is here.~
 5 0 8193
 0~ 3~ 5~ 8~
 18 7500 5000
+T
+granite~
 #2224
 ring diamond~
 a diamond ring~
@@ -349,6 +369,8 @@ A diamond ring lies gleaming on the ground.~
 9 0 3
 4~ 0~ 0~ 0~
 6 50000 10000
+T
+diamond~
 A
 18 3
 A
@@ -361,6 +383,8 @@ A copper ring is here.~
 9 0 3
 1~ 0~ 0~ 0~
 1 100000 25000
+T
+copper~
 A
 4 2
 #2231
@@ -427,6 +451,8 @@ A large crested shield draws your attention.~
 9 0 513
 8~ 0~ 0~ 0~
 20 200000 100000
+T
+steel/wood~
 A
 5 1
 #2243
@@ -461,6 +487,8 @@ A set of scale mail has been abandoned here.~
 9 1 9
 8~ 0~ 0~ 0~
 20 100000 20000
+T
+steel~
 #2250
 staff black~
 a black staff~
@@ -493,6 +521,8 @@ A pair of spiked gauntlets.~
 9 65 129
 4~ 0~ 0~ 0~
 10 50000 5000
+T
+steel~
 A
 19 2
 A
@@ -505,6 +535,8 @@ A golden scimitar.~
 5 1 8193
 0~ 3~ 5~ 3~
 10 40000 7000
+T
+gold~
 A
 3 1
 A
@@ -517,6 +549,8 @@ A diamond brooch.~
 9 64 5
 4~ 0~ 0~ 0~
 2 10000 4000
+T
+diamond~
 A
 12 25
 #2270
@@ -535,6 +569,8 @@ A pair of dragon skin gloves are lying on the ground.~
 9 0 129
 6~ 0~ 0~ 0~
 5 40000 15000
+T
+dragonscale~
 A
 2 2
 #2275
@@ -545,6 +581,8 @@ A helm made of a dragon's skull is lying on the ground.~
 9 0 17
 5~ 0~ 0~ 0~
 15 30000 6000
+T
+dragonscale~
 A
 13 15
 #2276
@@ -555,6 +593,8 @@ A large mound of fur is lying here.~
 9 0 1025
 6~ 0~ 0~ 0~
 10 25000 10000
+T
+cloth~
 A
 1 1
 A
@@ -567,6 +607,8 @@ A pair of dragon scale leggings is lying on the ground.~
 9 0 33
 7~ 0~ 0~ 0~
 15 35000 4000
+T
+dragonscale~
 #2281
 sleeves dragon scale~
 a set of dragon scale sleeves~
@@ -575,6 +617,8 @@ A set of dragon scale sleeves is lying on the ground.~
 9 0 257
 7~ 0~ 0~ 0~
 12 30000 3000
+T
+dragonscale~
 #2285
 whip dragon tail~
 a dragon tailed whip~
@@ -583,6 +627,8 @@ A dragon tailed whip is lying on the ground.~
 5 2|512 8193
 0~ 4~ 5~ 4~
 14 40000 20500
+T
+dragonscale~
 A
 18 2
 A
@@ -595,6 +641,8 @@ A copper hammer is lying on the ground.~
 5 0 8193
 0~ 3~ 5~ 8~
 12 30000 15000
+T
+copper~
 #2298
 orb chromatic dragon~
 the chromatic Dragon Orb~

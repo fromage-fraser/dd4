@@ -252,6 +252,8 @@ A hieroglyph-engraved mace has been left here.~
 5 0 8193
 0~ 0~ 0~ 7~
 10 800 50
+T
+iron/wood~
 E
 egyptian mace~
 The mace is formed from solid brass, and engraved in strange hieroglyphs.
@@ -264,6 +266,8 @@ Sand-coloured robes lie here.~
 9 0 1025
 4~ 0~ 0~ 0~
 5 500 40
+T
+cloth~
 E
 sand robes~
 The robes are coloured a sandy off-white, and are in fact caked and covered
@@ -278,6 +282,8 @@ A flat dirk made of chipped obsidian lies here.~
 5 64 8193
 0~ 0~ 0~ 11~
 8 1000 100
+T
+obsidian~
 A
 2 1
 A
@@ -296,6 +302,8 @@ A dirty cloth turban has been forgotten here.~
 9 64 17
 5~ 0~ 0~ 0~
 10 1500 250
+T
+cloth~
 A
 2 1
 A
@@ -313,6 +321,8 @@ Long cloth wrappings lie on the ground in a pile.~
 9 0 9
 5~ 0~ 0~ 0~
 15 1250 175
+T
+cloth~
 E
 cloth wrappings~
 The cloth wrappings are old, wrinkled, and stink of embalming fluid.
@@ -365,6 +375,8 @@ A curved scimitar made of stone rests on the ground.~
 5 2|64 8193
 0~ 0~ 0~ 3~
 18 10000 750
+T
+granite~
 A
 18 2
 A
@@ -455,6 +467,8 @@ A small brass ankh has been left here.~
 9 256|1024 16385
 7~ 0~ 0~ 0~
 9 10000 300
+T
+brass/wood/leather~
 A
 3 1
 A
@@ -486,6 +500,8 @@ The mighty paw of a lion-like creature has been dropped here.~
 5 64 8193
 0~ 0~ 0~ 5~
 20 18000 600
+T
+steel/wood/leather~
 A
 5 1
 A
@@ -582,6 +598,8 @@ A beautiful, intricately detailed mask has been forgotten here.~
 9 64 17
 10~ 0~ 0~ 0~
 10 15000 750
+T
+gold~
 A
 12 25
 A
@@ -638,6 +656,8 @@ A small sandy-coloured ring has been carelessly dropped here.~
 9 2|64 3
 8~ 0~ 0~ 0~
 5 20000 750
+T
+silver~
 A
 3 1
 A
@@ -671,6 +691,8 @@ Massive leggings formed from the body of a sphinx stand here.~
 9 64|1024 33
 10~ 0~ 0~ 0~
 20 20000 500
+T
+steel~
 A
 1 3
 A

@@ -267,6 +267,8 @@ An ornate Longsword is lying here.~
 5 64|274877906944 1|8192
 0~ 0~ 0~ 11~
 25 0 0
+T
+steel/wood/leather~
 A
 18 4
 A
@@ -279,6 +281,8 @@ An ornate Breastplate with a black and gold coat of arms is lying here.~
 9 274877906944 1|8
 0~ 0~ 0~ 0~
 20 0 0
+T
+gold~
 A
 5 2
 A
@@ -291,6 +295,8 @@ An ornate Bracer with a black and gold coat of arms is lying here.~
 9 0 1|4096
 0~ 0~ 0~ 0~
 15 0 0
+T
+gold~
 A
 2 2
 A
@@ -303,6 +309,8 @@ A black cloak with Gold Trim is lying here.~
 9 274877906944 1|4
 0~ 0~ 0~ 0~
 10 0 0
+T
+gold~
 A
 12 25
 A
@@ -315,6 +323,8 @@ An ornate helm bearing a black and gold coat of arms lies here.~
 9 0 1|16
 0~ 0~ 0~ 0~
 10 0 0
+T
+gold~
 A
 3 1
 A
@@ -329,6 +339,8 @@ A shield bearing the crest of the City of Anon lies here.~
 9 0 1|512
 0~ 0~ 0~ 0~
 20 0 0
+T
+steel/wood~
 A
 17 -20
 #31206
@@ -339,6 +351,8 @@ A sturdy throwing spear has been thrust into the ground here.~
 5 64|134217728 1|8192|16384
 0~ 0~ 0~ 0~
 20 0 0
+T
+iron/wood~
 A
 18 4
 A
@@ -351,6 +365,8 @@ A signet ring that identifies the wearer as a trusted wall guard lies here.~
 9 1|2|274877906944 1|2
 0~ 0~ 0~ 0~
 1 0 0
+T
+cloth~
 A
 2 3
 A
@@ -367,6 +383,8 @@ A suit of heavy plate mail is piled up here.~
 9 1024|274877906944 1|8
 0~ 0~ 0~ 0~
 50 0 0
+T
+steel~
 A
 2 -2
 A
@@ -379,6 +397,8 @@ A knight's broadsword lies here.~
 5 1|64|1024 1|8192
 0~ 0~ 0~ 3~
 10 0 0
+T
+steel/wood/leather~
 A
 18 8
 A
@@ -391,6 +411,8 @@ A knight's shield lies here.~
 9 1024 1|512
 0~ 0~ 0~ 0~
 10 0 0
+T
+steel/wood~
 A
 17 -20
 #31211
@@ -401,6 +423,8 @@ A knight's helm lies here.~
 9 1024 1|16
 0~ 0~ 0~ 0~
 5 0 0
+T
+steel~
 A
 4 3
 #31212
@@ -411,6 +435,8 @@ A pair of mail gauntlets lie here.~
 9 64|1024 1|16
 0~ 0~ 0~ 0~
 4 0 0
+T
+steel~
 A
 1 2
 A
@@ -425,6 +451,8 @@ A holy signet ring lies here.~
 9 1|2|256|1024|274877906944 1|2
 0~ 0~ 0~ 0~
 10 0 0
+T
+silver~
 A
 2 3
 A
@@ -441,6 +469,8 @@ The marshal's uniform lies here, neatly pressed.~
 9 0 1|8
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 18 3
 A
@@ -492,6 +522,8 @@ A finely-crafted crossbow lies here.~
 5 1073741824 1|8192
 0~ 0~ 0~ 11~
 10 0 48
+T
+wood~
 A
 18 4
 A
@@ -504,6 +536,8 @@ A suit of chainmail lies here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 5 0 0
+T
+steel~
 A
 5 2
 #31221
@@ -514,6 +548,8 @@ A pair of leather leggings lie here.~
 9 0 1|32
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 13 25
 #31222
@@ -524,6 +560,8 @@ A strip of hardened leather lies here.~
 9 0 1|4096
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 #31223
 scroll torn~
 a torn scroll~
@@ -616,6 +654,8 @@ A belaying pin lies here.~
 5 0 1|8192
 0~ 0~ 0~ 7~
 5 0 0
+T
+steel/wood/leather~
 #31232
 barrel ale~
 a barrel of ale~
@@ -632,6 +672,8 @@ An empty barrel rests here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 #31234
 lantern~
 a lantern~
@@ -648,6 +690,8 @@ A coil of rope lies here.~
 9 0 1|2048
 0~ 0~ 0~ 0~
 2 200 0
+T
+leather~
 A
 5 1
 #31236
@@ -690,6 +734,8 @@ A cutlass lies here.~
 5 0 1|8192
 0~ 0~ 0~ 3~
 7 0 0
+T
+steel/wood/leather~
 #31241
 ring wizardry~
 a ring of wizardry~
@@ -698,6 +744,8 @@ A ring of wizardry has been left here.~
 9 1|64 1|2
 0~ 0~ 0~ 0~
 1 0 0
+T
+silver~
 A
 3 2
 A
@@ -722,6 +770,8 @@ A white robe of the magi lies here.~
 9 1|64|1024|274877906944 1|1024
 0~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 A
 2 2
 A
@@ -738,6 +788,8 @@ A pair of boots of speed lie here.~
 9 1|64|274877906944 1|64
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 2 3
 A
@@ -752,6 +804,8 @@ A suit of invincible plate lies here.~
 9 2|16|32|64|128|512|2048|4096|274877906944 1|8
 20~ 0~ 0~ 0~
 25 0 0
+T
+steel~
 A
 1 4
 A

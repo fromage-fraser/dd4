@@ -532,6 +532,8 @@ Some sharp teeth are scattered about the ground here.~
 5 67108864 1|8192
 1~ 0~ 0~ 10~
 2 0 0
+T
+steel/wood/leather~
 A
 19 10
 A
@@ -551,6 +553,8 @@ The sleek spotted pelt of a leopard seal has been discarded here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 3 0 0
+T
+fur~
 A
 17 -40
 A
@@ -569,6 +573,8 @@ A pelt of thick white fur has been left here.~
 9 67108864 8
 0~ 7~ 0~ 0~
 2 0 0
+T
+fur~
 A
 19 20
 A
@@ -607,6 +613,8 @@ Some pearly white dragon scales have been left here.~
 9 1|67108864 8
 0~ 7~ 0~ 0~
 2 0 0
+T
+dragonscale~
 A
 17 -100
 A
@@ -663,6 +671,8 @@ A pile of black cloth has been left here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 1 0 0
+T
+cloth~
 A
 2 2
 A
@@ -694,6 +704,8 @@ A pair of black woolen pants have been discarded here.~
 9 0 1|32
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 5 3
 A
@@ -711,6 +723,8 @@ A pile of leather has been left here.~
 9 0 1|1024
 0~ 0~ 0~ 0~
 3 0 0
+T
+leather~
 A
 5 3
 A
@@ -732,6 +746,8 @@ A pair of fur lined leather boots have been left here.~
 9 0 1|64
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 17 0
 E
@@ -748,6 +764,8 @@ A small silver dagger has been discarded here.~
 5 64|4096 1|8192
 0~ 0~ 0~ 11~
 1 0 0
+T
+silver~
 A
 19 15
 A
@@ -768,6 +786,8 @@ A pelt of thick white fur has been left here.~
 9 67108864 8
 0~ 7~ 0~ 0~
 4 0 0
+T
+fur~
 A
 17 -40
 A
@@ -787,6 +807,8 @@ A bloodstained cudgel has been left here.~
 5 16 1|8192
 0~ 0~ 0~ 7~
 3 0 0
+T
+steel/wood/leather~
 A
 17 -10
 A
@@ -807,6 +829,8 @@ A battered steel-plated shield has been discarded here.~
 9 16 1|512
 0~ 0~ 0~ 0~
 5 0 0
+T
+steel/wood/leather~
 A
 1 2
 A
@@ -831,6 +855,8 @@ A sharp knife has been discarded here.~
 5 0 1|8192
 0~ 0~ 0~ 1~
 1 0 0
+T
+steel~
 A
 17 -10
 A
@@ -849,6 +875,8 @@ A fur lined tunic has been discarded here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 2 0 0
+T
+fur~
 A
 5 2
 A
@@ -866,6 +894,8 @@ A pair of seal skin leggings have been left here.~
 9 0 1|32
 0~ 0~ 0~ 0~
 2 0 0
+T
+steel~
 A
 17 -15
 A
@@ -885,6 +915,8 @@ Some pearly white dragon scales have been left here.~
 9 1|67108864 8
 0~ 7~ 0~ 0~
 2 0 0
+T
+dragonscale~
 A
 17 -20
 A
@@ -911,6 +943,8 @@ silver garment~
 9 64|128 1|8
 0~ 0~ 0~ 0~
 2 0 0
+T
+silver~
 A
 17 -20
 A
@@ -929,6 +963,8 @@ frosty vapours~
 9 32|64|2048 1|32768
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 1 -1
 A
@@ -947,6 +983,8 @@ silver sword~
 5 64|128|4096 1|8192
 0~ 0~ 0~ 11~
 3 0 0
+T
+silver~
 A
 17 -30
 A
@@ -974,6 +1012,8 @@ A pile of white cloth has been left here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 2 0 0
+T
+cloth~
 A
 17 -20
 A
@@ -994,6 +1034,8 @@ A heavy woolen cloak has been left in a pile here.~
 9 2|64|1024 1|1024
 0~ 0~ 0~ 0~
 4 0 0
+T
+cloth~
 A
 1 2
 A
@@ -1023,6 +1065,8 @@ A ritual dagger has been left here.~
 5 1|64 1|8192
 0~ 0~ 0~ 0~
 9 0 0
+T
+steel/wood/leather~
 A
 17 -20
 A
@@ -1044,6 +1088,8 @@ A silver ring inlaid with pearl emanates brilliant shining light.~
 9 1|64 1|2
 0~ 0~ 0~ 0~
 1 0 0
+T
+silver~
 A
 3 5
 A
@@ -1062,6 +1108,8 @@ A leather cloak lined with fur has been left in a pile here.~
 9 0 1|1024
 0~ 0~ 0~ 0~
 3 0 0
+T
+leather~
 A
 17 -25
 A
@@ -1079,6 +1127,8 @@ An amulet has been discarded here.~
 9 64 1|4
 0~ 0~ 0~ 0~
 2 0 0
+T
+silver~
 A
 17 -10
 A

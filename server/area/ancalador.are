@@ -235,6 +235,8 @@ A strange looking sword lies discarded here.~
 5 0 1|8192
 0~ 2~ 6~ 3~
 5 900 0
+T
+steel/wood/leather~
 E
 falchion sword~
 It is a short sword of the hacking variety, it seems a bit worn.
@@ -309,6 +311,8 @@ A long, bamboo blowgun rest on the ground.~
 5 0 1|8192
 0~ 9~ 2~ 7~
 5 16000 0
+T
+steel/wood/leather~
 A
 18 15
 E
@@ -355,6 +359,8 @@ A nasty looking stiletto with a shiny black blade lies amid the dust.~
 5 2|64|512 1|8192
 0~ 4~ 4~ 11~
 3 10000 0
+T
+steel/wood/leather~
 A
 18 8
 A
@@ -371,6 +377,8 @@ A shield with a large, dead scarab mounted in the center lies here.~
 9 64 1|512
 6~ 0~ 0~ 0~
 17 9000 0
+T
+steel/wood~
 A
 5 3
 E
@@ -387,6 +395,8 @@ A skull-headed mace has been left here.~
 5 2|64|512 1|8192
 0~ 3~ 6~ 6~
 14 12000 0
+T
+bone~
 A
 19 12
 A
@@ -422,6 +432,8 @@ A well balanced throwing knife lies on the ground.~
 5 0 1|8192
 0~ 1~ 4~ 3~
 1 10 0
+T
+steel~
 E
 knife throwing~
 This knife has been carefully crafted to provide maximum balance,
@@ -448,6 +460,8 @@ A long, sharp polearm has been left here.~
 5 134217728 1|8192
 0~ 2~ 8~ 3~
 16 1500 0
+T
+steel/wood/leather~
 A
 18 -2
 A
@@ -464,6 +478,8 @@ A single, white minstrel's glove has been discarded here.~
 9 1|64 1|128
 6~ 0~ 0~ 0~
 8 4500 0
+T
+leather~
 A
 18 9
 E
@@ -479,6 +495,8 @@ A worn and shabby suit of ring mail has been cast away here.~
 9 64 1|8
 9~ 0~ 0~ 0~
 20 70000 0
+T
+silver~
 A
 26 3
 E
@@ -519,6 +537,8 @@ A rusty grave beater flail has been dropped here.~
 5 0 1|8192
 0~ 2~ 7~ 2~
 12 1500 0
+T
+iron/steel~
 A
 19 1
 E
@@ -533,6 +553,8 @@ An old and rusty dagger has been left here.~
 5 0 1|8192
 0~ 2~ 2~ 3~
 1 2 0
+T
+steel/wood/leather~
 E
 dagger rusty~
 This dagger appears to be rather old and by the looks of it,
@@ -559,6 +581,8 @@ A glistening metal object is here, it appears to be a shield.~
 9 64 1|512
 9~ 0~ 0~ 0~
 1 1000 0
+T
+steel/wood~
 A
 1 -2
 A
@@ -590,6 +614,8 @@ A helm made of a silverish metal has been left here.~
 9 0 1|16
 0~ 0~ 0~ 0~
 10 1000 0
+T
+silver~
 E
 helm silver metal~
 This helm looks to be purely ornamental, and does not look like it
@@ -609,6 +635,8 @@ An old, rotted leather jacket is decomposing on the ground here.~
 9 0 1|8
 -8~ 0~ 0~ 0~
 3 0 0
+T
+leather~
 E
 jacket rotted leather~
 This jacket looks like it may have once been in decent condition,
