@@ -3,7 +3,12 @@
 
 #AREA_SPECIAL
 exp_mod 107
+reset_msg {cA cold current washes briskly through the canal system.{x
+~
+music music/area/sahuagin_canals.mp3
+music_vol 20
 $
+
 
 #RECALL
 27347
