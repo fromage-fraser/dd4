@@ -6,6 +6,8 @@
 
 #AREA_SPECIAL
 exp_mod 120
+music music/area/omu_central.mp3
+music_vol 20
 $
 
 #MOBILES

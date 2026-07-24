@@ -1,6 +1,11 @@
 #AREA   Lok~       The Isles of the Pirate Lords~
 20 45 0 100
 
+#AREA_SPECIAL
+music music/area/pirate_isles.mp3
+music_vol 20
+$
+
 #MOBILES
 #17011
 pirate guard~

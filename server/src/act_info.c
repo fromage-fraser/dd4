@@ -4778,6 +4778,22 @@ void do_channels(CHAR_DATA *ch, char *argument)
                                      ch);
                 }
 
+                if (ch->level >= L_DIR)
+                {
+                        send_to_char(!IS_SET(ch->deaf, CHANNEL_DIRTALK)
+                                         ? " +DIRTALK"
+                                         : " -dirtalk",
+                                     ch);
+                }
+
+                if (ch->level > L_DIR)
+                {
+                        send_to_char(!IS_SET(ch->deaf, CHANNEL_SERVER)
+                                         ? " +SERVER"
+                                         : " -server",
+                                     ch);
+                }
+
                 send_to_char(!IS_SET(ch->deaf, CHANNEL_MUSIC)
                                  ? " +MUSIC"
                                  : " -music",

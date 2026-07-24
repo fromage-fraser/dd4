@@ -1,6 +1,11 @@
 #AREA   Lok~     The Seas of the Pirate Lords~
 -2 -2 0 100
 
+#AREA_SPECIAL
+music music/area/pirate_seas.mp3
+music_vol 20
+$
+
 #HELPS
 101 Pirate Lords~
 Pirate lords is laid out with a 170 room area and 6 individual islands.
@@ -32,7 +37,7 @@ A pirate raider ship is here menacing commerce!
 The ship is a single mast trireme, low to the water, and has a ram. Pirates
 man the riggings and catapults with Greek fire.
 ~
-32 0 -800 S
+32|134217728 0 -800 S
 10 0 0 0d0+0 0d0+0
 63 0
 8 8 0
@@ -44,7 +49,7 @@ A merchant trader is here, low in the water, with a full cargo.
 The merchant galley has 2 tiers of oars, and rides low in the water due
 to the full cargo hold. It is heavily guarded.
 ~
-128 0 200 S
+128|134217728 0 200 S
 15 0 0 0d0+0 0d0+0
 63 0
 8 8 0
@@ -56,7 +61,7 @@ A merchant trader is here, rowing high in the water.
 The merchant galley has 2 tiers of oars, and rides high in the water due
 to the empty cargo hold. It is lightly guarded.
 ~
-128 0 200 S
+128|134217728 0 200 S
 8 0 0 0d0+0 0d0+0
 63 0
 8 8 0
@@ -68,7 +73,7 @@ A whaler is here seeking its quarry.
 The whaler is a low ship with several rowboats in tow. A blood wake trails
 the ship, evidence of a successful hunt.
 ~
-0 0 0 S
+134217728 0 0 S
 8 0 0 0d0+0 0d0+0
 63 0
 8 8 0
@@ -79,7 +84,7 @@ A whaler is here seeking its quarry.
 ~
 The whaler is a low ship with several rowboats in tow.
 ~
-0 0 0 S
+134217728 0 0 S
 8 0 0 0d0+0 0d0+0
 63 0
 8 8 0
@@ -91,7 +96,7 @@ A black masted ghost ship crosses the horizon, sailing on air and misery.
 The ghost ship is transparent and has rigging of an ancient make. You hear
 howls of terror coming from within the vessel.
 ~
-0 2|32768|524288 0 S
+134217728 2|32768|524288 0 S
 20 0 0 0d0+0 0d0+0
 63 0
 8 8 0
@@ -142,7 +147,7 @@ A raging typhoon is here, making you seasick.
 The typhoon has high winds and towering black clouds. Lightning arcs wildly
 at its center, the sign that this is a non natural phenomena.
 ~
-32 128 0 S
+32|134217728 128 0 S
 20 0 0 0d0+0 0d0+0
 96 0
 8 8 0
