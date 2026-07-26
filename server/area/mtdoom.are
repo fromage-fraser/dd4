@@ -3,6 +3,8 @@
 
 #AREA_SPECIAL
 exp_mod 110
+music music/area/mtdoom.mp3
+music_vol 20
 $
 
 #MOBILES

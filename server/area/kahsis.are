@@ -3,6 +3,10 @@
 
 #AREA_SPECIAL
 exp_mod 115
+reset_msg {gSibilant prayers echo through Kahsis as the temple renews.{x
+~
+music music/area/kahsis.mp3
+music_vol 20
 $
 
 #MOBILES

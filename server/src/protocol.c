@@ -219,7 +219,12 @@ static variable_name_t VariableNameTable[eMSDP_MAX + 1] =
  ******************************************************************************/
 
 static int s_Players = 0;
-static time_t s_Uptime = 0;
+extern time_t boot_time;
+extern int top_area;
+extern int top_help;
+extern int top_mob_index;
+extern int top_obj_index;
+extern int top_room;
 
 /******************************************************************************
  Local function prototypes.
@@ -1129,9 +1134,17 @@ const char *ProtocolOutput(descriptor_t *apDescriptor, const char *apData, int *
  * other protocols if the client responds with IAC WILL TTYPE or IAC WONT
  * TTYPE.  Thanks go to Donky on MudBytes for the suggestion.
  */
+
 void ProtocolNegotiate(descriptor_t *apDescriptor)
 {
+   /*
+    * Retain the existing TTYPE negotiation, but advertise MSSP immediately
+    * as required by MSSP crawlers.  ConfirmNegotiation() remembers the
+    * negotiation state, so the later general negotiation will not send a
+    * duplicate WILL MSSP.
+    */
    ConfirmNegotiation(apDescriptor, eNEGOTIATED_TTYPE, true, true);
+   ConfirmNegotiation(apDescriptor, eNEGOTIATED_MSSP, true, true);
 }
 
 /* Tells the client to switch echo on or off. */
@@ -1619,9 +1632,6 @@ void MSDPSetArray(descriptor_t *apDescriptor, variable_t aMSDP, const char *apVa
 void MSSPSetPlayers(int aPlayers)
 {
    s_Players = aPlayers;
-
-   if (s_Uptime == 0)
-      s_Uptime = time(0);
 }
 
 /******************************************************************************
@@ -2797,10 +2807,74 @@ static const char *GetMSSP_Players()
    return Buffer;
 }
 
-static const char *GetMSSP_Uptime()
+static const char *GetMSSP_Uptime(void)
 {
    static char Buffer[32];
-   sprintf(Buffer, "%d", (int)s_Uptime);
+
+   snprintf(
+      Buffer,
+      sizeof(Buffer),
+      "%lld",
+      (long long)boot_time
+   );
+
+   return Buffer;
+}
+
+#define DEFINE_MSSP_INTEGER_GETTER(function_name, expression)        \
+static const char *function_name(void)                               \
+{                                                                   \
+   static char Buffer[32];                                          \
+                                                                    \
+   snprintf(                                                        \
+      Buffer,                                                       \
+      sizeof(Buffer),                                               \
+      "%d",                                                         \
+      (int)(expression)                                             \
+   );                                                               \
+                                                                    \
+   return Buffer;                                                   \
+}
+
+DEFINE_MSSP_INTEGER_GETTER(GetMSSP_Areas,     top_area)
+DEFINE_MSSP_INTEGER_GETTER(GetMSSP_Helpfiles, top_help)
+DEFINE_MSSP_INTEGER_GETTER(GetMSSP_Mobiles,   top_mob_index)
+DEFINE_MSSP_INTEGER_GETTER(GetMSSP_Objects,   top_obj_index)
+DEFINE_MSSP_INTEGER_GETTER(GetMSSP_Rooms,     top_room)
+
+DEFINE_MSSP_INTEGER_GETTER(
+   GetMSSP_Classes,
+   MAX_CLASS + MAX_SUB_CLASS - 1
+)
+
+DEFINE_MSSP_INTEGER_GETTER(
+   GetMSSP_Levels,
+   LEVEL_HERO
+)
+
+DEFINE_MSSP_INTEGER_GETTER(
+   GetMSSP_Races,
+   MAX_RACE - 1
+)
+
+#undef DEFINE_MSSP_INTEGER_GETTER
+
+static const char *GetMSSP_Skills(void)
+{
+   static char Buffer[32];
+   int sn;
+   int count = 0;
+
+   for (sn = 0; sn < MAX_SKILL; ++sn)
+   {
+      if (skill_table[sn].name != NULL
+          && skill_table[sn].name[0] != '\0')
+      {
+         ++count;
+      }
+   }
+
+   snprintf(Buffer, sizeof(Buffer), "%d", count);
    return Buffer;
 }
 
@@ -2810,7 +2884,7 @@ static const char *GetMSSP_Uptime()
 static void SendMSSP(descriptor_t *apDescriptor)
 {
    char MSSPBuffer[MAX_MSSP_BUFFER];
-   char MSSPPair[128];
+   char MSSPPair[512];
    int SizeBuffer = 3; /* IAC SB MSSP */
    int i;              /* Loop counter */
 
@@ -2822,113 +2896,97 @@ static void SendMSSP(descriptor_t *apDescriptor)
     * variables, otherwise crawlers may reject the data as invalid.
     */
    static MSSP_t MSSPTable[] =
-       {
-           /* Required */
-           {"NAME", MUD_NAME}, /* Change this in protocol.h */
-           {"PLAYERS", FUNCTION_CALL(GetMSSP_Players)},
-           {"UPTIME", FUNCTION_CALL(GetMSSP_Uptime)},
+    {
+    /*
+        * Required MSSP variables.
+        */
+    {"NAME", MUD_NAME},
+    {"PLAYERS", FUNCTION_CALL(GetMSSP_Players)},
+    {"UPTIME", FUNCTION_CALL(GetMSSP_Uptime)},
 
-           /* Generic */
-           {"CRAWL DELAY", "-1"},
-           /*
-                 { "HOSTNAME",           "" },
-                 { "PORT",               "" },
-                 { "CODEBASE",           "" },
-                 { "CONTACT",            "" },
-                 { "CREATED",            "" },
-                 { "ICON",               "" },
-                 { "IP",                 "" },
-                 { "LANGUAGE",           "" },
-                 { "LOCATION",           "" },
-                 { "MINIMUM AGE",        "" },
-                 { "WEBSITE",            "" },
-           */
-           /* Categorisation */
-           /*
-                 { "FAMILY",             "" },
-                 { "GENRE",              "" },
-                 { "GAMEPLAY",           "" },
-                 { "STATUS",             "" },
-                 { "GAMESYSTEM",         "" },
-                 { "INTERMUD",           "" },
-                 { "SUBGENRE",           "" },
-           */
-           /* World */
-           /*
-                 { "AREAS",              "0" },
-                 { "HELPFILES",          "0" },
-                 { "MOBILES",            "0" },
-                 { "OBJECTS",            "0" },
-                 { "ROOMS",              "0" },
-                 { "CLASSES",            "0" },
-                 { "LEVELS",             "0" },
-                 { "RACES",              "0" },
-                 { "SKILLS",             "0" },
-           */
-           /* Protocols */
-           /*
-                 { "ANSI",               "1" },
-                 { "GMCP",               "0" },
-           #ifdef USING_MCCP
-                 { "MCCP",               "1" },
-           #else
-                 { "MCCP",               "0" },
-           #endif // USING_MCCP
-                 { "MCP",                "0" },
-                 { "MSDP",               "1" },
-                 { "MSP",                "1" },
-                 { "MXP",                "1" },
-                 { "PUEBLO",             "0" },
-                 { "UTF-8",              "1" },
-                 { "VT100",              "0" },
-                 { "XTERM 256 COLORS",   "1" },
-           */
-           /* Commercial */
-           /*
-                 { "PAY TO PLAY",        "0" },
-                 { "PAY FOR PERKS",      "0" },
-           */
-           /* Hiring */
-           /*
-                 { "HIRING BUILDERS",    "0" },
-                 { "HIRING CODERS",      "0" },
-           */
-           /* Extended variables */
+    /*
+        * Generic information.
+        *
+        * Multiple values of the same variable are permitted.  The final
+        * value is treated as the preferred/default value by crawlers.
+        */
+    {"CHARSET", "ASCII"},
+    {"CHARSET", "UTF-8"},
 
-           /* World */
-           /*
-                 { "DBSIZE",             "0" },
-                 { "EXITS",              "0" },
-                 { "EXTRA DESCRIPTIONS", "0" },
-                 { "MUDPROGS",           "0" },
-                 { "MUDTRIGS",           "0" },
-                 { "RESETS",             "0" },
-           */
-           /* Game */
-           /*
-                 { "ADULT MATERIAL",     "0" },
-                 { "MULTICLASSING",      "0" },
-                 { "NEWBIE FRIENDLY",    "0" },
-                 { "PLAYER CITIES",      "0" },
-                 { "PLAYER CLANS",       "0" },
-                 { "PLAYER CRAFTING",    "0" },
-                 { "PLAYER GUILDS",      "0" },
-                 { "EQUIPMENT SYSTEM",   "" },
-                 { "MULTIPLAYING",       "" },
-                 { "PLAYERKILLING",      "" },
-                 { "QUEST SYSTEM",       "" },
-                 { "ROLEPLAYING",        "" },
-                 { "TRAINING SYSTEM",    "" },
-                 { "WORLD ORIGINALITY",  "" },
-           */
-           /* Protocols */
-           /*
-                 { "ATCP",               "1" },
-                 { "SSL",                "0" },
-                 { "ZMP",                "0" },
-           */
-           {NULL, NULL} /* This must always be last. */
-       };
+    {"CODEBASE", "Envy 1.0"},
+    {"CODEBASE", "Dragons Domain IV"},
+
+    /*
+        * Verify these before uncommenting them.
+        */
+    {"CONTACT", "dragonsdomainteam@gmail.com"},
+    {"CREATED", "1992"},
+    {"ICON", "https://smihilist.com/dd4/web/dragonsfighting.jpg"},
+
+    {"CRAWL DELAY", "5"},
+    {"DISCORD", DISCORD_INVITE_URL},
+    {"HOSTNAME", "dragons-domain.org"},
+    {"LANGUAGE", "English"},
+    {"LOCATION", "New Zealand"},
+    {"PORT", "8888"},
+    {"WEBSITE", "https://www.dragons-domain.org/"},
+
+    /*
+        * Categorisation.
+        *
+        * Adjust SUBGENRE and the GAMEPLAY ordering if a different
+        * description is more accurate.  The most important/default
+        * GAMEPLAY value should appear last.
+        */
+    {"FAMILY", "DikuMUD"},
+    {"GENRE", "Fantasy"},
+
+    {"GAMEPLAY", "Roleplaying"},
+    {"GAMEPLAY", "Player versus Player"},
+    {"GAMEPLAY", "Questing"},
+    {"GAMEPLAY", "Player versus Environment"},
+    {"GAMEPLAY", "Hack and Slash"},
+
+    {"STATUS", "Live"},
+    {"GAMESYSTEM", "Tick Based"},
+    {"SUBGENRE", "High Fantasy"},
+
+    /*
+        * World statistics.
+        */
+    {"AREAS", FUNCTION_CALL(GetMSSP_Areas)},
+    {"HELPFILES", FUNCTION_CALL(GetMSSP_Helpfiles)},
+    {"MOBILES", FUNCTION_CALL(GetMSSP_Mobiles)},
+    {"OBJECTS", FUNCTION_CALL(GetMSSP_Objects)},
+    {"ROOMS", FUNCTION_CALL(GetMSSP_Rooms)},
+    {"CLASSES", FUNCTION_CALL(GetMSSP_Classes)},
+    {"LEVELS", FUNCTION_CALL(GetMSSP_Levels)},
+    {"RACES", FUNCTION_CALL(GetMSSP_Races)},
+    {"SKILLS", FUNCTION_CALL(GetMSSP_Skills)},
+
+    /*
+        * Current official protocol capability fields.
+        */
+    {"ANSI", "1"},
+    {"UTF-8", "1"},
+    {"VT100", "0"},
+    {"XTERM 256 COLORS", "1"},
+    {"XTERM TRUE COLORS", "0"},
+
+    /*
+        * Commercial status.
+        */
+    {"PAY TO PLAY", "0"},
+    {"PAY FOR PERKS", "0"},
+
+    /*
+    * Uncomment and set these when applicable.
+    */
+    /* {"HIRING BUILDERS", "1"}, */
+    /* {"HIRING CODERS", "1"}, */
+
+    {NULL, NULL}
+    };
 
    /* Begin the subnegotiation sequence */
    sprintf(MSSPBuffer, "%c%c%c", IAC, SB, TELOPT_MSSP);
@@ -2937,17 +2995,39 @@ static void SendMSSP(descriptor_t *apDescriptor)
    {
       int SizePair;
 
-      /* Retrieve the next MSSP variable/value pair */
-      sprintf(MSSPPair, "%c%s%c%s", MSSP_VAR, MSSPTable[i].pName, MSSP_VAL,
-              MSSPTable[i].pFunction ? (*MSSPTable[i].pFunction)() : MSSPTable[i].pValue);
+      const char *pValue;
 
-      /* Make sure we don't overflow the buffer */
-      SizePair = strlen(MSSPPair);
-      if (SizePair + SizeBuffer < MAX_MSSP_BUFFER - 4)
-      {
-         strcat(MSSPBuffer, MSSPPair);
-         SizeBuffer += SizePair;
-      }
+    pValue = MSSPTable[i].pFunction
+        ? (*MSSPTable[i].pFunction)()
+        : MSSPTable[i].pValue;
+
+    SizePair = snprintf(
+    MSSPPair,
+    sizeof(MSSPPair),
+    "%c%s%c%s",
+    MSSP_VAR,
+    MSSPTable[i].pName,
+    MSSP_VAL,
+    pValue != NULL ? pValue : ""
+    );
+
+    if (SizePair < 0 || SizePair >= (int)sizeof(MSSPPair))
+    {
+    ReportBug("SendMSSP: MSSP variable/value pair was too long.\n");
+    continue;
+    }
+
+    /*
+    * Reserve two bytes for IAC SE and one for the terminating NUL.
+    */
+    if (SizeBuffer + SizePair + 2 >= MAX_MSSP_BUFFER)
+    {
+    ReportBug("SendMSSP: MAX_MSSP_BUFFER is too small.\n");
+    break;
+    }
+
+    strcat(MSSPBuffer, MSSPPair);
+    SizeBuffer += SizePair;
    }
 
    /* End the subnegotiation sequence */

@@ -1,6 +1,10 @@
 #AREA   Alfa~    Moria~
 5 15 0 100
 
+#AREA_SPECIAL
+music music/area/moria.mp3
+music_vol 20
+$
 
 #MOBILES
 #4000
@@ -612,7 +616,7 @@ The dusty trail continues towards the south.
 0 -1 3900
 S
 #3902
-Northwest corner of dusty trail.~
+Northwest corner of dusty trail~
    You are standing outside the northwestern corner of the city wall.
 The trail leads east following the north wall and south towards the gate.
 ~
@@ -629,7 +633,7 @@ The dusty trail leads south towards the gate.
 0 -1 3901
 S
 #3903
-Dusty trail along north wall.~
+Dusty trail along north wall~
    You are walking on the trail following the outside of Midgaard's
 northern wall.
 ~
@@ -646,7 +650,7 @@ The dusty trail turns left around the corner of the wall, behind it Haon-Dor.
 0 -1 3902
 S
 #3904
-The long dusty trail following the north wall.~
+The long dusty trail following the north wall~
 You are walking along the north wall. This is the rear of the Temple.
 It is not as pompous and impressive from this side. To the north the plains
 extend towards the horizon.
@@ -675,7 +679,7 @@ They read : Tear down the Wall   -Pink Floyd
 ~
 S
 #3905
-Dusty trail along north wall.~
+Dusty trail along north wall~
    You are walking on the trail following the outside of Midgaard's
 northern wall.
 ~
@@ -693,7 +697,7 @@ The dusty trail is winding along the north wall of Midgaard.
 0 -1 3904
 S
 #3906
-Northeast corner of dusty trail.~
+Northeast corner of dusty trail~
    You are standing outside the northeastern corner of the city wall.
 The trail leads west following the north wall and south towards the gate.
 ~
@@ -1320,7 +1324,7 @@ D3
 0 0 4038
 S
 #4040
-The mountain top.~
+The mountain top~
    Exits are north, east, and west.
 ~
 40 0 5
@@ -1994,7 +1998,7 @@ D3
 0 0 4115
 S
 #4115
-The dark passage.~
+The dark passage~
    You are in a dark passage, that leads east. In the ceiling you notice
 a small hole, just big enough to pass through.
 ~
