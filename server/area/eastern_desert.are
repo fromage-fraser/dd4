@@ -1,6 +1,12 @@
 #AREA   Anon~    Great Eastern Desert~
 10 20 0 100
 
+#AREA_SPECIAL
+reset_msg {yA scorching wind sweeps across the desert, erasing every footprint.{x
+~
+music music/area/eastern_desert.mp3
+music_vol 20
+$
 
 #MOBILES
 #5000
@@ -295,7 +301,7 @@ rope~
 a coil of rope~
 A long coil of rope lies on the ground.~
 ~
-12 0 1
+27 0 1
 0~ 0~ 0~ 0~
 12 450 45
 #5012
@@ -1155,11 +1161,11 @@ You see the center of the nomad camp.~
 0 0 5056
 S
 #5059
-The warrior's tent.~
+The warriors' tent~
      This tent has a few furnishings, but mainly it holds the band's
 protectors. They all stare at you coldly as you enter.
 ~
-50 128 2
+50 0 2
 D3
 Outside you see some peaceful camels.~
 ~
@@ -1171,7 +1177,7 @@ The main tent~
 outside. A fancy carpet lies on the sand and numerous baskets line the
 walls.
 ~
-50 128 2
+50 0 2
 D1
 ~
 ~
@@ -1187,7 +1193,7 @@ The main tent~
 definitely rich as you inspect the tapestries, baskets, and a few
 paintings as well.
 ~
-50 128 2
+50 0 2
 D3
 You see the entrance to this tent.~
 ~
@@ -1301,7 +1307,7 @@ D3
 0 0 5069
 S
 #5069
-A small cavern.~
+A small cavern~
      It is dark and damp and bats hang from the ceiling. A narrow crack is
 in the east wall. The floor now slopes upwards.
 ~

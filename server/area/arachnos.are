@@ -1,6 +1,13 @@
 #AREA   Mahatma~ Arachnos~
 5 20 0 100
 
+#AREA_SPECIAL
+reset_msg {mSilken strands tighten as unseen hunters return to their lairs.{x
+~
+music music/area/arachnos.mp3
+music_vol 20
+$
+
 
 #MOBILES
 #6301

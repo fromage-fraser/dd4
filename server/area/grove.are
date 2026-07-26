@@ -1,6 +1,12 @@
 #AREA   Alfa~    Holy Grove~
 5 20 0 100
 
+#AREA_SPECIAL
+reset_msg {gWildflowers open beneath the trees as the woodland spirits return.{x
+~
+music music/area/grove.mp3
+music_vol 20
+$
 
 #MOBILES
 #8900
