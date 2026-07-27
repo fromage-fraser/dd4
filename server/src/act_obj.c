@@ -5558,10 +5558,28 @@ void do_list(CHAR_DATA *ch, char *argument)
                                         strcat(buf1, "{d[{WLvl  Price{d]{W  Creature for sale{x\n\r");
                                         /*strcat(buf1, "Pets for sale:\n\r");*/
                                 }
-                                sprintf(buf, "{d[{x{w%3d %6d{d]{x  %s\n\r",
-                                        pet->level,
-                                        10 * pet->level * pet->level,
-                                        pet->short_descr);
+                                if (IS_TARGET_MODE(ch)
+                                &&  pet->target_id != 0)
+                                {
+                                        snprintf(
+                                                buf,
+                                                sizeof(buf),
+                                                "{d[{x{w%3d %6d{d]{x [#%llu] %s\n\r",
+                                                pet->level,
+                                                10 * pet->level * pet->level,
+                                                (unsigned long long)pet->target_id,
+                                                pet->short_descr);
+                                }
+                                else
+                                {
+                                        snprintf(
+                                                buf,
+                                                sizeof(buf),
+                                                "{d[{x{w%3d %6d{d]{x  %s\n\r",
+                                                pet->level,
+                                                10 * pet->level * pet->level,
+                                                pet->short_descr);
+                                }
                                 strcat(buf1, buf);
                         }
                 }
@@ -5578,8 +5596,11 @@ void do_list(CHAR_DATA *ch, char *argument)
                 char arg[MAX_INPUT_LENGTH];
                 int cost;
                 bool found;
+                uint64_t target_id;
+                bool by_target_id;
 
                 one_argument(argument, arg);
+                by_target_id = parse_target_id(arg, &target_id);
 
                 if (!(keeper = find_keeper(ch)))
                         return;
@@ -5591,7 +5612,12 @@ void do_list(CHAR_DATA *ch, char *argument)
                         if (obj->wear_loc != WEAR_NONE || (cost = get_cost(keeper, obj, TRUE)) < 0)
                                 continue;
 
-                        if (can_see_obj(ch, obj) && (arg[0] == '\0' || is_name(arg, obj->name)))
+                        if (can_see_obj(ch, obj)
+                        &&  (arg[0] == '\0'
+                            || (by_target_id
+                                && obj->target_id == target_id)
+                            || (!by_target_id
+                                && is_name(arg, obj->name))))
                         {
                                 if (!found)
                                 {
@@ -5599,8 +5625,29 @@ void do_list(CHAR_DATA *ch, char *argument)
                                         strcat(buf1, "{d[{WLvl Price{d]{W  Item for sale{x\n\r");
                                 }
 
-                                sprintf(buf, "{d[{x{w%3d %5d{d]{x  %s\n\r",
-                                        obj->level, cost, obj->short_descr);
+                                if (IS_TARGET_MODE(ch)
+                                &&  obj->target_id != 0)
+                                {
+                                        snprintf(
+                                                buf,
+                                                sizeof(buf),
+                                                "{d[{x{w%3d %5d{d]{x [#%llu] %s\n\r",
+                                                obj->level,
+                                                cost,
+                                                (unsigned long long)obj->target_id,
+                                                obj->short_descr);
+                                }
+                                else
+                                {
+                                        snprintf(
+                                                buf,
+                                                sizeof(buf),
+                                                "{d[{x{w%3d %5d{d]{x  %s\n\r",
+                                                obj->level,
+                                                cost,
+                                                obj->short_descr);
+                                }
+
                                 strcat(buf1, buf);
                         }
                 }

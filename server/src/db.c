@@ -69,6 +69,27 @@ char *warning2;
 AUCTION_DATA *auction;
 
 /*
+ * Process-wide target ID namespace.
+ *
+ * Mobiles and objects share the same sequence so that a number can never
+ * refer to both an object and a mobile during one server process.
+ *
+ * Zero means "no ID assigned".
+ */
+static uint64_t next_target_id = 1;
+
+static uint64_t allocate_target_id(void)
+{
+        if (next_target_id == 0)
+        {
+                bug("Allocate_target_id: target ID space exhausted.", 0);
+                exit(1);
+        }
+
+        return next_target_id++;
+}
+
+/*
  * Tables - Geogg, Tavolir, Gezhp
  */
 FAME_TABLE fame_table[FAME_TABLE_LENGTH];
@@ -3918,6 +3939,7 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA *pMobIndex)
         }
 
         clear_char(mob);
+        mob->target_id = allocate_target_id();
         mob->pIndexData = pMobIndex;
 
         mob->name = pMobIndex->player_name;
@@ -4005,6 +4027,7 @@ OBJ_DATA *create_object(OBJ_INDEX_DATA *pObjIndex, int level, char *rank, int ra
         }
 
         *obj = obj_zero;
+        obj->target_id = allocate_target_id();
         obj->pIndexData = pObjIndex;
         obj->in_room = NULL;
         obj->level = level;

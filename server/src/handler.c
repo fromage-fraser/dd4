@@ -291,6 +291,49 @@ bool is_full_name( const char *str, char *namelist )
         }
 }
 
+/*
+ * Parse an exact live-instance selector such as "#123".
+ *
+ * Returns TRUE only if the entire argument is:
+ *
+ *     #
+ *     followed by one or more decimal digits
+ *     representing a non-zero uint64_t value.
+ */
+bool parse_target_id(const char *argument, uint64_t *target_id)
+{
+        const unsigned char *p;
+        uint64_t value;
+        unsigned int digit;
+
+        if (!argument || !target_id)
+                return FALSE;
+
+        if (argument[0] != '#' || argument[1] == '\0')
+                return FALSE;
+
+        value = 0;
+
+        for (p = (const unsigned char *)argument + 1; *p; p++)
+        {
+                if (!isdigit(*p))
+                        return FALSE;
+
+                digit = (unsigned int)(*p - '0');
+
+                if (value > (UINT64_MAX - digit) / 10)
+                        return FALSE;
+
+                value = value * 10 + digit;
+        }
+
+        if (value == 0)
+                return FALSE;
+
+        *target_id = value;
+        return TRUE;
+}
+
 
 /*
  * Apply or remove an affect to a character.
@@ -2001,58 +2044,114 @@ void extract_char( CHAR_DATA *ch, bool fPull )
         return;
 }
 
-
 /*
  * Find a char in the room.
  */
-CHAR_DATA *get_char_room( CHAR_DATA *ch, char *argument )
+CHAR_DATA *get_char_room(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *rch;
-        char       arg [ MAX_INPUT_LENGTH ];
-        int        number;
-        int        count;
+        char arg[MAX_INPUT_LENGTH];
+        int number;
+        int count;
+        uint64_t target_id;
 
-        number = number_argument( argument, arg );
-        count  = 0;
+        /*
+         * Exact instance selector.
+         *
+         * Only NPCs receive target IDs. Knowing an ID must not bypass
+         * visibility restrictions.
+         */
+        if (parse_target_id(argument, &target_id))
+        {
+                for (rch = ch->in_room->people;
+                     rch;
+                     rch = rch->next_in_room)
+                {
+                        if (!IS_NPC(rch))
+                                continue;
 
-        if ( !str_cmp( arg, "self" ) )
+                        if (rch->target_id != target_id)
+                                continue;
+
+                        if (!can_see(ch, rch))
+                                return NULL;
+
+                        return rch;
+                }
+
+                return NULL;
+        }
+
+        number = number_argument(argument, arg);
+        count = 0;
+
+        if (!str_cmp(arg, "self"))
                 return ch;
 
-        for ( rch = ch->in_room->people; rch; rch = rch->next_in_room )
+        for (rch = ch->in_room->people;
+             rch;
+             rch = rch->next_in_room)
         {
-                if ( !can_see( ch, rch ) || !is_name( arg, rch->name ) )
+                if (!can_see(ch, rch)
+                ||  !is_name(arg, rch->name))
                         continue;
 
-                if ( ++count == number )
+                if (++count == number)
                         return rch;
         }
 
         return NULL;
 }
 
-
 /*
  * Find a char in the world.
  */
-CHAR_DATA *get_char_world( CHAR_DATA *ch, char *argument )
+CHAR_DATA *get_char_world(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *wch;
-        char       arg [ MAX_INPUT_LENGTH ];
-        int        number;
-        int        count;
+        char arg[MAX_INPUT_LENGTH];
+        int number;
+        int count;
+        uint64_t target_id;
 
-        if ( ( wch = get_char_room( ch, argument ) ) )
+        /*
+         * Prefer the current room, as before.
+         */
+        if ((wch = get_char_room(ch, argument)))
                 return wch;
 
-        number = number_argument( argument, arg );
-        count  = 0;
-
-        for ( wch = char_list; wch ; wch = wch->next )
+        /*
+         * Exact world-scoped NPC selector.
+         */
+        if (parse_target_id(argument, &target_id))
         {
-                if ( !can_see( ch, wch ) || !multi_keyword_match( arg, wch->name ) )
+                for (wch = char_list; wch; wch = wch->next)
+                {
+                        if (!IS_NPC(wch))
+                                continue;
+
+                        if (wch->target_id != target_id)
+                                continue;
+
+                        if (!can_see(ch, wch))
+                                return NULL;
+
+                        return wch;
+                }
+
+                return NULL;
+        }
+
+        number = number_argument(argument, arg);
+        count = 0;
+
+        for (wch = char_list; wch; wch = wch->next)
+        {
+                if (!can_see(ch, wch)
+                ||  !multi_keyword_match(arg, wch->name))
                         continue;
 
-                if ( ++count == number )
+                if (++count == number)
                         return wch;
         }
 
@@ -2104,21 +2203,58 @@ OBJ_DATA *get_obj_type( OBJ_INDEX_DATA *pObjIndex )
 /*
  * Find an obj in a list.
  */
-OBJ_DATA *get_obj_list( CHAR_DATA *ch, char *argument, OBJ_DATA *list )
+OBJ_DATA *get_obj_list(
+        CHAR_DATA *ch,
+        char *argument,
+        OBJ_DATA *list)
 {
         OBJ_DATA *obj;
-        char      arg [ MAX_INPUT_LENGTH ];
-        int       number;
-        int       count;
+        char arg[MAX_INPUT_LENGTH];
+        int number;
+        int count;
+        uint64_t target_id;
 
-        number = number_argument( argument, arg );
-        count  = 0;
-
-        for ( obj = list; obj; obj = obj->next_content )
+        if (parse_target_id(argument, &target_id))
         {
-                if ( (can_see_obj( ch, obj ) || (obj->in_obj && IS_SET(obj->in_obj->wear_flags, ITEM_WEAR_POUCH))) && is_name( arg, obj->name ) )
+                for (obj = list; obj; obj = obj->next_content)
                 {
-                        if ( ++count == number )
+                        bool visible;
+
+                        if (obj->deleted)
+                                continue;
+
+                        if (obj->target_id != target_id)
+                                continue;
+
+                        visible =
+                                can_see_obj(ch, obj)
+                                || (obj->in_obj
+                                    && IS_SET(
+                                            obj->in_obj->wear_flags,
+                                            ITEM_WEAR_POUCH));
+
+                        if (!visible)
+                                return NULL;
+
+                        return obj;
+                }
+
+                return NULL;
+        }
+
+        number = number_argument(argument, arg);
+        count = 0;
+
+        for (obj = list; obj; obj = obj->next_content)
+        {
+                if ((can_see_obj(ch, obj)
+                     || (obj->in_obj
+                         && IS_SET(
+                                 obj->in_obj->wear_flags,
+                                 ITEM_WEAR_POUCH)))
+                &&  is_name(arg, obj->name))
+                {
+                        if (++count == number)
                                 return obj;
                 }
         }
@@ -2130,23 +2266,50 @@ OBJ_DATA *get_obj_list( CHAR_DATA *ch, char *argument, OBJ_DATA *list )
 /*
  * Find an obj in player's inventory.
  */
-OBJ_DATA *get_obj_carry( CHAR_DATA *ch, char *argument )
+OBJ_DATA *get_obj_carry(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
-        char      arg [ MAX_INPUT_LENGTH ];
-        int       number;
-        int       count;
+        char arg[MAX_INPUT_LENGTH];
+        int number;
+        int count;
+        uint64_t target_id;
 
-        number = number_argument( argument, arg );
-        count  = 0;
-
-        for ( obj = ch->carrying; obj; obj = obj->next_content )
+        if (parse_target_id(argument, &target_id))
         {
-                if ( obj->wear_loc == WEAR_NONE
-                    && can_see_obj( ch, obj )
-                    && is_name( arg, obj->name ) )
+                for (obj = ch->carrying;
+                     obj;
+                     obj = obj->next_content)
                 {
-                        if ( ++count == number )
+                        if (obj->deleted)
+                                continue;
+
+                        if (obj->wear_loc != WEAR_NONE)
+                                continue;
+
+                        if (obj->target_id != target_id)
+                                continue;
+
+                        if (!can_see_obj(ch, obj))
+                                return NULL;
+
+                        return obj;
+                }
+
+                return NULL;
+        }
+
+        number = number_argument(argument, arg);
+        count = 0;
+
+        for (obj = ch->carrying;
+             obj;
+             obj = obj->next_content)
+        {
+                if (obj->wear_loc == WEAR_NONE
+                &&  can_see_obj(ch, obj)
+                &&  is_name(arg, obj->name))
+                {
+                        if (++count == number)
                                 return obj;
                 }
         }
@@ -2157,23 +2320,53 @@ OBJ_DATA *get_obj_carry( CHAR_DATA *ch, char *argument )
 /*
  * Find an obj in player's vault.
  */
-OBJ_DATA *get_obj_vaulted( CHAR_DATA *ch, char *argument )
+OBJ_DATA *get_obj_vaulted(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
-        char      arg [ MAX_INPUT_LENGTH ];
-        int       number;
-        int       count;
+        char arg[MAX_INPUT_LENGTH];
+        int number;
+        int count;
+        uint64_t target_id;
 
-        number = number_argument( argument, arg );
-        count  = 0;
-
-        for ( obj = ch->pcdata->vault; obj; obj = obj->next_content )
+        if (parse_target_id(argument, &target_id))
         {
-                if ( obj->wear_loc == WEAR_NONE
-                    && can_see_obj( ch, obj )
-                    && is_name( arg, obj->name ) )
+                if (!ch->pcdata)
+                        return NULL;
+
+                for (obj = ch->pcdata->vault;
+                     obj;
+                     obj = obj->next_content)
                 {
-                        if ( ++count == number )
+                        if (obj->deleted)
+                                continue;
+
+                        if (obj->wear_loc != WEAR_NONE)
+                                continue;
+
+                        if (obj->target_id != target_id)
+                                continue;
+
+                        if (!can_see_obj(ch, obj))
+                                return NULL;
+
+                        return obj;
+                }
+
+                return NULL;
+        }
+
+        number = number_argument(argument, arg);
+        count = 0;
+
+        for (obj = ch->pcdata->vault;
+             obj;
+             obj = obj->next_content)
+        {
+                if (obj->wear_loc == WEAR_NONE
+                &&  can_see_obj(ch, obj)
+                &&  is_name(arg, obj->name))
+                {
+                        if (++count == number)
                                 return obj;
                 }
         }
@@ -2182,27 +2375,53 @@ OBJ_DATA *get_obj_vaulted( CHAR_DATA *ch, char *argument )
 }
 
 
-
 /*
  * Find an obj in player's equipment.
  */
-OBJ_DATA *get_obj_wear( CHAR_DATA *ch, char *argument )
+OBJ_DATA *get_obj_wear(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
-        char      arg [ MAX_INPUT_LENGTH ];
-        int       number;
-        int       count;
+        char arg[MAX_INPUT_LENGTH];
+        int number;
+        int count;
+        uint64_t target_id;
 
-        number = number_argument( argument, arg );
-        count  = 0;
-
-        for ( obj = ch->carrying; obj; obj = obj->next_content )
+        if (parse_target_id(argument, &target_id))
         {
-                if ( obj->wear_loc != WEAR_NONE
-                    && can_see_obj( ch, obj )
-                    && is_name( arg, obj->name ) )
+                for (obj = ch->carrying;
+                     obj;
+                     obj = obj->next_content)
                 {
-                        if ( ++count == number )
+                        if (obj->deleted)
+                                continue;
+
+                        if (obj->wear_loc == WEAR_NONE)
+                                continue;
+
+                        if (obj->target_id != target_id)
+                                continue;
+
+                        if (!can_see_obj(ch, obj))
+                                return NULL;
+
+                        return obj;
+                }
+
+                return NULL;
+        }
+
+        number = number_argument(argument, arg);
+        count = 0;
+
+        for (obj = ch->carrying;
+             obj;
+             obj = obj->next_content)
+        {
+                if (obj->wear_loc != WEAR_NONE
+                &&  can_see_obj(ch, obj)
+                &&  is_name(arg, obj->name))
+                {
+                        if (++count == number)
                                 return obj;
                 }
         }
@@ -2335,24 +2554,48 @@ OBJ_DATA *get_obj_herevault( CHAR_DATA *ch, char *argument )
 /*
  * Find an obj in the world.
  */
-OBJ_DATA *get_obj_world( CHAR_DATA *ch, char *argument )
+OBJ_DATA *get_obj_world(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
-        char      arg [ MAX_INPUT_LENGTH ];
-        int       number;
-        int       count;
+        char arg[MAX_INPUT_LENGTH];
+        int number;
+        int count;
+        uint64_t target_id;
 
-        if ( ( obj = get_obj_here( ch, argument ) ) )
+        /*
+         * Preserve the existing preference for local objects.
+         */
+        if ((obj = get_obj_here(ch, argument)))
                 return obj;
 
-        number = number_argument( argument, arg );
-        count  = 0;
-
-        for ( obj = object_list; obj; obj = obj->next )
+        if (parse_target_id(argument, &target_id))
         {
-                if ( can_see_obj( ch, obj ) && multi_keyword_match( arg, obj->name ) )
+                for (obj = object_list; obj; obj = obj->next)
                 {
-                        if ( ++count == number )
+                        if (obj->deleted)
+                                continue;
+
+                        if (obj->target_id != target_id)
+                                continue;
+
+                        if (!can_see_obj(ch, obj))
+                                return NULL;
+
+                        return obj;
+                }
+
+                return NULL;
+        }
+
+        number = number_argument(argument, arg);
+        count = 0;
+
+        for (obj = object_list; obj; obj = obj->next)
+        {
+                if (can_see_obj(ch, obj)
+                &&  multi_keyword_match(arg, obj->name))
+                {
+                        if (++count == number)
                                 return obj;
                 }
         }
@@ -3524,6 +3767,7 @@ char *pact_bit_name (unsigned long int vector)
         if ( vector & PLR_FALLING       ) return "falling";
         if ( vector & PLR_SILENCE       ) return "silenced";
         if ( vector & PLR_NO_EMOTE      ) return "no_emote";
+        if ( vector & PLR_TARGETMODE    ) return "targetmode";
         if ( vector & PLR_NO_TELL       ) return "no_tell";
         if ( vector & PLR_LOG           ) return "logged";
         if ( vector & PLR_DENY          ) return "denied";

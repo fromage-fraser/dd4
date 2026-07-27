@@ -400,7 +400,7 @@ Enter thy Name: ~
 
 -1 MOTD~
 {x
-    [18 July 2026]
+    [27 July 2026]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -413,13 +413,13 @@ Enter thy Name: ~
     We're also active on a Discord server at {Yhttps://discord.gg/aGzmAWmXYb{x
     if you'd like to jump in and say hi!
 
+    {WTARGETMODE{x: See HELP CONFIG--you can now toggle TARGETMODE to see unique
+    selectors for all visible mobiles and objects. No more "kill 4.goblin" or
+    "eat 7.pie"!
+
     {WMUSIC{x: Music is now in and can be added on a per-area or per-room basis.
     Exists on a separate layer from ambient environmental sound, and can be
     manipulated with SCONFIG.
-
-    {WNEW AREA{x: "Eakos Canals" for levels 70-85.  This is the first part of
-    the Triton portion of the underwater megacity. 37 new mobs, 52 new objects,
-    131 new rooms, 1 new armour set, and 1 new quest.
 
 
 To Enter the Dragons Domain press <<Return>.
@@ -678,6 +678,9 @@ Gezhp, Owl and Shade
 - Eakos Canals complete and in
 - "mpcost" added--mobs can alter values of objects
 - Music layer added on per-area and per-room basis
+- MSSP response upgraded
+- Music and custom reset messages added to many areas
+- TARGETMODE added to enable precise selection of objects and mobiles
 
 ~
 
@@ -2191,21 +2194,22 @@ option on or off.
 
 The options are:
 
-    AUTOEXIT  You automatically see exits.
-    AUTOLOOT  You automatically loot corpses.
-    AUTOSAC   You automatically sacrifice corpses.
-    AUTOCOIN  You automatically take coin from corpses.
-    AUTOWIELD You automatically wield weapons picked up when in combat.
-    AUTOLEVEL You automatically level when you gain enough experience.
-    BLANK     You have a blank line before your prompt.
-    BRIEF     You see brief descriptions only.
-    COMBINE   You see object lists in combined format.
-    PROMPT    You have a prompt.
-    ANSI      You receive colour.
-    GAG       You gag out some less important combat messages.
-    QUIET     You don't receive messages broadcasted to the MUD.
-    TELNETGA  You receive a telnet GA sequence.
-    TELL      You don't receive TELL messages.
+    AUTOEXIT   You automatically see exits.
+    AUTOLOOT   You automatically loot corpses.
+    AUTOSAC    You automatically sacrifice corpses.
+    AUTOCOIN   You automatically take coin from corpses.
+    AUTOWIELD  You automatically wield weapons picked up when in combat.
+    AUTOLEVEL  You automatically level when you gain enough experience.
+    BLANK      You have a blank line before your prompt.
+    BRIEF      You see brief descriptions only.
+    COMBINE    You see object lists in combined format.
+    TARGETMODE You see exact [#number] selectors for mobiles and objects.
+    PROMPT     You have a prompt.
+    ANSI       You receive colour.
+    GAG        You gag out some less important combat messages.
+    QUIET      You don't receive messages broadcasted to the MUD.
+    TELNETGA   You receive a telnet GA sequence.
+    TELL       You don't receive TELL messages.
 
 You can also type AUTOEXIT, AUTOLOOT, AUTOSAC, AUTOWIELD, BLANK, BRIEF,
 COMBINE, QUIET, GAG and TELLMODE directly from the prompt to toggle the status

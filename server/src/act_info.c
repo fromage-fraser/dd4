@@ -278,7 +278,18 @@ char *format_obj_to_char(OBJ_DATA *obj, CHAR_DATA *ch, bool fShort)
 {
         static char buf[MAX_STRING_LENGTH];
         OBJSET_INDEX_DATA *pObjSetIndex;
+
         buf[0] = '\0';
+
+        if (IS_TARGET_MODE(ch)
+        &&  obj->target_id != 0)
+        {
+                snprintf(
+                        buf,
+                        sizeof(buf),
+                        "[#%llu] ",
+                        (unsigned long long)obj->target_id);
+        }
 
         if ((pObjSetIndex = objects_objset(obj->pIndexData->vnum)))
         {
@@ -428,7 +439,9 @@ void show_turret_to_char(OBJ_DATA *list, CHAR_DATA *ch, bool fShort)
          */
         for (iShow = 0; iShow < nShow; iShow++)
         {
-                if (IS_NPC(ch) || IS_SET(ch->act, PLR_COMBINE))
+                if (IS_NPC(ch)
+                ||  (IS_SET(ch->act, PLR_COMBINE)
+                    && !IS_SET(ch->act, PLR_TARGETMODE)))
                 {
                         if (prgnShow[iShow] != 1)
                         {
@@ -447,7 +460,9 @@ void show_turret_to_char(OBJ_DATA *list, CHAR_DATA *ch, bool fShort)
 
         if (nShow == 0)
         {
-                if (IS_NPC(ch) || IS_SET(ch->act, PLR_COMBINE))
+                if (IS_NPC(ch)
+                ||  (IS_SET(ch->act, PLR_COMBINE)
+                    && !IS_SET(ch->act, PLR_TARGETMODE)))
                         send_to_char("     ", ch);
 
                 send_to_char("Nothing.\n\r", ch);
@@ -508,7 +523,9 @@ void show_list_to_char(OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNot
                         pstrShow = format_obj_to_char(obj, ch, fShort);
                         fCombine = FALSE;
 
-                        if (IS_NPC(ch) || IS_SET(ch->act, PLR_COMBINE))
+                        if (IS_NPC(ch)
+                        ||  (IS_SET(ch->act, PLR_COMBINE)
+                            && !IS_SET(ch->act, PLR_TARGETMODE)))
                         {
                                 /*
                                  * Look for duplicates, case sensitive.
@@ -542,7 +559,9 @@ void show_list_to_char(OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNot
          */
         for (iShow = 0; iShow < nShow; iShow++)
         {
-                if (IS_NPC(ch) || IS_SET(ch->act, PLR_COMBINE))
+                if (IS_NPC(ch)
+                ||  (IS_SET(ch->act, PLR_COMBINE)
+                    && !IS_SET(ch->act, PLR_TARGETMODE)))
                 {
                         if (prgnShow[iShow] != 1)
                         {
@@ -561,7 +580,9 @@ void show_list_to_char(OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNot
 
         if (fShowNothing && nShow == 0)
         {
-                if (IS_NPC(ch) || IS_SET(ch->act, PLR_COMBINE))
+                if (IS_NPC(ch)
+                ||  (IS_SET(ch->act, PLR_COMBINE)
+                    && !IS_SET(ch->act, PLR_TARGETMODE)))
                         send_to_char("     ", ch);
 
                 send_to_char("Nothing.\n\r", ch);
@@ -579,9 +600,30 @@ void show_char_to_char_0(CHAR_DATA *victim, CHAR_DATA *ch)
         char buf[MAX_STRING_LENGTH];
         char tmp[MAX_STRING_LENGTH];
         char tmp2[MAX_STRING_LENGTH];
+        bool show_target_id;
+
         buf[0] = '\0';
 
-        if (IS_SET(victim->act, ACT_OBJECT))
+        show_target_id =
+                IS_TARGET_MODE(ch)
+                && IS_NPC(victim)
+                && victim->target_id != 0;
+
+        if (show_target_id)
+        {
+                snprintf(
+                        buf,
+                        sizeof(buf),
+                        "[#%llu] ",
+                        (unsigned long long)victim->target_id);
+        }
+
+        /*
+         * ACT_OBJECT mobiles normally use object-list indentation.
+         * That indentation is undesirable after an exact ID prefix.
+         */
+        if (IS_SET(victim->act, ACT_OBJECT)
+        &&  !show_target_id)
         {
                 strcat(buf, "     ");
         }
@@ -589,18 +631,33 @@ void show_char_to_char_0(CHAR_DATA *victim, CHAR_DATA *ch)
         if (is_affected(victim, gsn_mist_walk))
         {
                 if (CAN_SEE_MIST(ch))
-                        sprintf(buf, "[%s] ", victim->name);
+                {
+                        snprintf(
+                                tmp,
+                                sizeof(tmp),
+                                "[%s] ",
+                                victim->name);
+                        strcat(buf, tmp);
+                }
 
-                strcat(buf, "<121>(Glowing)<0> A strange mist floats about.\n\r");
+                strcat(
+                        buf,
+                        "<121>(Glowing)<0> A strange mist floats about.\n\r");
                 send_to_char(buf, ch);
                 return;
         }
 
         if (tournament_status == TOURNAMENT_STATUS_RUNNING && is_entered_in_tournament(victim) && tournament_team_count > 1 && victim->tournament_team >= 0 && victim->tournament_team < TOURNAMENT_MAX_TEAMS)
         {
-                sprintf(buf, "%s%s{x ",
-                        tournament_teams[victim->tournament_team].colour_code,
-                        tournament_teams[victim->tournament_team].flag);
+                snprintf(
+                        tmp,
+                        sizeof(tmp),
+                        "%s%s{x ",
+                        tournament_teams[
+                                victim->tournament_team].colour_code,
+                        tournament_teams[
+                                victim->tournament_team].flag);
+                strcat(buf, tmp);
         }
 
         if (IS_NPC(victim) && !IS_NPC(ch) && ch->pcdata->questmob > 0 && victim->pIndexData->vnum == ch->pcdata->questmob)
@@ -1301,6 +1358,7 @@ void do_look(CHAR_DATA *ch, char *argument)
         char arg2[MAX_INPUT_LENGTH];
         char *pdesc;
         int door;
+        uint64_t target_id;
 
         /* sprintf(buf2,"rand: %d %d %d %d %d %d %d %d %d %d\n------------------\n",
         number_percent(), number_percent(), number_percent(), number_percent(),
@@ -1484,6 +1542,34 @@ void do_look(CHAR_DATA *ch, char *argument)
         if ((victim = get_char_room(ch, arg1)))
         {
                 show_char_to_char_1(victim, ch);
+                return;
+        }
+
+        /*
+         * The normal object section below manually uses is_name().
+         * Resolve exact object IDs before entering those loops.
+         */
+        if (parse_target_id(arg1, &target_id))
+        {
+                obj = get_obj_here(ch, arg1);
+
+                if (!obj)
+                {
+                        send_to_char(
+                                "You do not see that here.\n\r",
+                                ch);
+                        return;
+                }
+
+                send_to_char(obj->description, ch);
+                send_to_char("\n\r", ch);
+
+                if (obj->carried_by == ch
+                &&  obj->identified)
+                {
+                        spell_identify(1, 1, ch, obj);
+                }
+
                 return;
         }
 
@@ -1753,23 +1839,26 @@ void do_examine(CHAR_DATA *ch, char *argument)
         }
 }
 
-/* Look at an object in your vault*/
+/* Look at an object in your vault. */
 void do_inspect(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
+        OBJ_DATA *scan;
         char arg[MAX_INPUT_LENGTH];
         char *pdesc;
+        uint64_t target_id;
+        bool by_target_id;
 
         one_argument(argument, arg);
 
         if (IS_NPC(ch))
-        {
                 return;
-        }
 
         if (!IS_SET(ch->in_room->room_flags, ROOM_VAULT))
         {
-                send_to_char("You cannot inspect items in your vault from here.\n\r", ch);
+                send_to_char(
+                        "You cannot inspect items in your vault from here.\n\r",
+                        ch);
                 return;
         }
 
@@ -1779,53 +1868,95 @@ void do_inspect(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        by_target_id = parse_target_id(arg, &target_id);
+        pdesc = NULL;
+
         obj = get_obj_herevault(ch, arg);
-        if ((ch->class == CLASS_SMITHY) && (ch->pcdata->learned[gsn_innate_knowledge] > obj->level) &&
-            (obj->item_type == ITEM_WEAPON || obj->item_type == ITEM_ARMOR || obj->item_type == ITEM_TURRET_MODULE || obj->item_type == ITEM_TURRET || obj->item_type == ITEM_DEFENSIVE_TURRET_MODULE))
+
+        /*
+         * Preserve vault extra-description lookup for ordinary keywords.
+         * An ID is never an extra-description keyword.
+         */
+        if (!obj && !by_target_id)
         {
-                send_to_char("You cast your expert eye over the item.\n\r", ch);
+                for (scan = ch->pcdata->vault;
+                     scan;
+                     scan = scan->next_content)
+                {
+                        if (!can_see_obj(ch, scan))
+                                continue;
+
+                        pdesc = get_extra_descr(
+                                arg,
+                                scan->extra_descr);
+
+                        if (!pdesc)
+                        {
+                                pdesc = get_extra_descr(
+                                        arg,
+                                        scan->pIndexData->extra_descr);
+                        }
+
+                        if (pdesc)
+                        {
+                                obj = scan;
+                                break;
+                        }
+                }
+        }
+        else if (obj && !by_target_id)
+        {
+                pdesc = get_extra_descr(
+                        arg,
+                        obj->extra_descr);
+
+                if (!pdesc)
+                {
+                        pdesc = get_extra_descr(
+                                arg,
+                                obj->pIndexData->extra_descr);
+                }
+        }
+
+        if (!obj)
+        {
+                send_to_char(
+                        "You do not have anything like that in your vault.\n\r",
+                        ch);
+                return;
+        }
+
+        if (ch->class == CLASS_SMITHY
+        &&  ch->pcdata->learned[gsn_innate_knowledge] > obj->level
+        && (obj->item_type == ITEM_WEAPON
+            || obj->item_type == ITEM_ARMOR
+            || obj->item_type == ITEM_TURRET_MODULE
+            || obj->item_type == ITEM_TURRET
+            || obj->item_type == ITEM_DEFENSIVE_TURRET_MODULE))
+        {
+                send_to_char(
+                        "You cast your expert eye over the item.\n\r",
+                        ch);
                 obj->identified = TRUE;
         }
 
-        for (obj = ch->pcdata->vault; obj; obj = obj->next_content)
+        if (pdesc)
+                send_to_char(pdesc, ch);
+        else
+                send_to_char(obj->description, ch);
+
+        send_to_char("\n\r", ch);
+
+        if (obj->identified)
+                spell_identify(1, 1, ch, obj);
+
+        if (IS_SET(obj->extra_flags, ITEM_TRAP)
+        &&  number_percent()
+            < ch->pcdata->learned[gsn_find_traps])
         {
-                if (can_see_obj(ch, obj))
-                {
-                        pdesc = get_extra_descr(arg, obj->extra_descr);
-                        if (pdesc)
-                        {
-                                send_to_char(pdesc, ch);
-                                send_to_char("\n\r", ch);
-                                if (obj->identified)
-                                {
-                                        spell_identify(1, 1, ch, obj);
-                                }
-                        }
-
-                        pdesc = get_extra_descr(arg, obj->pIndexData->extra_descr);
-                        if (pdesc)
-                        {
-                                send_to_char(pdesc, ch);
-                                send_to_char("\n\r", ch);
-                        }
-                }
-                if (is_name(arg, obj->name))
-                {
-                        send_to_char(obj->description, ch);
-                        send_to_char("\n\r", ch);
-                        if (obj->identified)
-                        {
-                                spell_identify(1, 1, ch, obj);
-                        }
-                        break;
-                }
-        }
-
-        obj = get_obj_herevault(ch, arg);
-
-        if (!IS_NPC(ch) && IS_SET(obj->extra_flags, ITEM_TRAP) && number_percent() < ch->pcdata->learned[gsn_find_traps])
-        {
-                send_to_char("\n\r{RYou believe that it is trapped.{x\n\r", ch);
+                send_to_char(
+                        "\n\r{RYou believe that it is trapped.{x\n\r",
+                        ch);
                 return;
         }
 
@@ -1844,36 +1975,60 @@ void do_inspect(CHAR_DATA *ch, char *argument)
                 }
 
                 if (obj->item_type == ITEM_REMAINS)
-                {
                         act("$p contain", ch, obj, NULL, TO_CHAR);
-                }
                 else
-                {
                         act("$p contains", ch, obj, NULL, TO_CHAR);
-                }
 
-                show_list_to_char(obj->contains, ch, TRUE, TRUE, FALSE);
+                show_list_to_char(
+                        obj->contains,
+                        ch,
+                        TRUE,
+                        TRUE,
+                        FALSE);
                 break;
 
         case ITEM_WEAPON:
-                if (obj->timer > 0 && obj->timer <= TIMER_ALERT)
+                if (obj->timer > 0
+                &&  obj->timer <= TIMER_ALERT)
                 {
-                        if (IS_SET(obj->extra_flags, ITEM_POISONED))
-                                send_to_char("Poison is beginning to seriously corrode the blade.\n\r", ch);
-
-                        else if (IS_SET(obj->extra_flags, ITEM_SHARP) || IS_SET(obj->extra_flags, ITEM_BLADE_THIRST))
-                                send_to_char("The blade's condition is deteriorating badly.\n\r", ch);
+                        if (IS_SET(
+                                obj->extra_flags,
+                                ITEM_POISONED))
+                        {
+                                send_to_char(
+                                        "Poison is beginning to seriously corrode the blade.\n\r",
+                                        ch);
+                        }
+                        else if (IS_SET(
+                                     obj->extra_flags,
+                                     ITEM_SHARP)
+                              || IS_SET(
+                                     obj->extra_flags,
+                                     ITEM_BLADE_THIRST))
+                        {
+                                send_to_char(
+                                        "The blade's condition is deteriorating badly.\n\r",
+                                        ch);
+                        }
                 }
                 break;
 
         case ITEM_ARMOR:
-                if (obj->timer > 0 && obj->timer <= TIMER_ALERT && IS_SET(obj->extra_flags, ITEM_FORGED))
-                        send_to_char("The forged metal looks to be in poor condition.\n\r", ch);
+                if (obj->timer > 0
+                &&  obj->timer <= TIMER_ALERT
+                &&  IS_SET(
+                        obj->extra_flags,
+                        ITEM_FORGED))
+                {
+                        send_to_char(
+                                "The forged metal looks to be in poor condition.\n\r",
+                                ch);
+                }
                 break;
         }
+
         return;
 }
-
 /*
  * Thanks to Zrin for auto-exit part.
  */
@@ -5041,98 +5196,103 @@ void do_config(CHAR_DATA *ch, char *argument)
 
         if (arg[0] == '\0')
         {
-                send_to_char("<14>[<0> <15>Keyword<0>  <14>]<0> <15>Option<0>\n\r-------------------\n\r", ch);
+                send_to_char("<14>[<0> <15>Keyword<0>   <14>]<0> <15>Option<0>\n\r--------------------\n\r", ch);
 
                 send_to_char(IS_SET(ch->act, PLR_AUTOWIELD)
-                                 ? "<6>[<40>+<0><556>AUTOWIELD<0><6>]<0> You automatically wield picked up weapons in combat.\n\r"
-                                 : "<6>[<196>-<0><246>autowield<0><6>]<0> You don't automatically wield picked up weapons in combat.\n\r",
+                                 ? "<6>[<40>+<0><556>AUTOWIELD<0> <6>]<0> You automatically wield picked up weapons in combat.\n\r"
+                                 : "<6>[<196>-<0><246>autowield<0> <6>]<0> You don't automatically wield picked up weapons in combat.\n\r",
                              ch);
 
                 send_to_char(IS_SET(ch->act, PLR_AUTOEXIT)
-                                 ? "<6>[<40>+<0><556>AUTOEXIT<0> <6>]<0> You automatically see exits.\n\r"
-                                 : "<6>[<196>-<0><246>autoexit<0> <6>]<0> You don't automatically see exits.\n\r",
+                                 ? "<6>[<40>+<0><556>AUTOEXIT<0>  <6>]<0> You automatically see exits.\n\r"
+                                 : "<6>[<196>-<0><246>autoexit<0>  <6>]<0> You don't automatically see exits.\n\r",
                              ch);
 
                 send_to_char(IS_SET(ch->act, PLR_AUTOLOOT)
-                                 ? "<6>[<40>+<0><556>AUTOLOOT<0> <6>]<0> You automatically loot corpses.\n\r"
-                                 : "<6>[<196>-<0><246>autoloot<0> <6>]<0> You don't automatically loot corpses.\n\r",
+                                 ? "<6>[<40>+<0><556>AUTOLOOT<0>  <6>]<0> You automatically loot corpses.\n\r"
+                                 : "<6>[<196>-<0><246>autoloot<0>  <6>]<0> You don't automatically loot corpses.\n\r",
                              ch);
 
                 send_to_char(IS_SET(ch->act, PLR_AUTOCOIN)
-                                 ? "<6>[<40>+<0><556>AUTOCOIN<0> <6>]<0> You automatically take money from corpses.\n\r"
-                                 : "<6>[<196>-<0><246>autocoin<0> <6>]<0> You don't automatically take money from corpses.\n\r",
+                                 ? "<6>[<40>+<0><556>AUTOCOIN<0>  <6>]<0> You automatically take money from corpses.\n\r"
+                                 : "<6>[<196>-<0><246>autocoin<0>  <6>]<0> You don't automatically take money from corpses.\n\r",
                              ch);
 
                 send_to_char(IS_SET(ch->act, PLR_AUTOSAC)
-                                 ? "<6>[<40>+<0><556>AUTOSAC<0>  <6>]<0> You automatically sacrifice corpses.\n\r"
-                                 : "<6>[<196>-<0><246>autosac<0>  <6>]<0> You don't automatically sacrifice corpses.\n\r",
+                                 ? "<6>[<40>+<0><556>AUTOSAC<0>   <6>]<0> You automatically sacrifice corpses.\n\r"
+                                 : "<6>[<196>-<0><246>autosac<0>   <6>]<0> You don't automatically sacrifice corpses.\n\r",
                              ch);
 
                 send_to_char(IS_SET(ch->act, PLR_AUTOLEVEL)
-                                 ? "<6>[<40>+<0><556>AUTOLEVEL<0><6>]<0> You automatically level if you have enough experience.\n\r"
-                                 : "<6>[<196>-<0><246>autolevel<0><6>]<0> You don't automatically level if you have enough experience.\n\r",
+                                 ? "<6>[<40>+<0><556>AUTOLEVEL<0> <6>]<0> You automatically level if you have enough experience.\n\r"
+                                 : "<6>[<196>-<0><246>autolevel<0> <6>]<0> You don't automatically level if you have enough experience.\n\r",
                              ch);
 
                 send_to_char(IS_SET(ch->act, PLR_BLANK)
-                                 ? "<6>[<40>+<0><556>BLANK<0>    <6>]<0> You have a blank line before your prompt.\n\r"
-                                 : "<6>[<196>-<0><246>blank<0>    <6>]<0> You have no blank line before your prompt.\n\r",
+                                 ? "<6>[<40>+<0><556>BLANK<0>     <6>]<0> You have a blank line before your prompt.\n\r"
+                                 : "<6>[<196>-<0><246>blank<0>     <6>]<0> You have no blank line before your prompt.\n\r",
                              ch);
 
                 send_to_char(IS_SET(ch->act, PLR_BRIEF)
-                                 ? "<6>[<40>+<0><556>BRIEF<0>    <6>]<0> You see brief descriptions.\n\r"
-                                 : "<6>[<196>-<0><246>brief<0>    <6>]<0> You see long descriptions.\n\r",
+                                 ? "<6>[<40>+<0><556>BRIEF<0>     <6>]<0> You see brief descriptions.\n\r"
+                                 : "<6>[<196>-<0><246>brief<0>     <6>]<0> You see long descriptions.\n\r",
                              ch);
 
                 send_to_char(IS_SET(ch->act, PLR_COMBINE)
-                                 ? "<6>[<40>+<0><556>COMBINE<0>  <6>]<0> You see object lists in combined format.\n\r"
-                                 : "<6>[<196>-<0><246>combine<0>  <6>]<0> You see object lists in single format.\n\r",
+                                 ? "<6>[<40>+<0><556>COMBINE<0>   <6>]<0> You see object lists in combined format.\n\r"
+                                 : "<6>[<196>-<0><246>combine<0>   <6>]<0> You see object lists in single format.\n\r",
                              ch);
 
+                send_to_char(IS_SET(ch->act, PLR_TARGETMODE)
+                                ? "<6>[<40>+<0><556>TARGETMODE<0><6>]<0> Mobiles and objects show #number selectors.\n\r"
+                                : "<6>[<196>-<0><246>targetmode<0><6>]<0> #number selectors are hidden.\n\r",
+                                ch);
+
                 send_to_char(IS_SET(ch->act, PLR_PROMPT)
-                                 ? "<6>[<40>+<0><556>PROMPT<0>   <6>]<0> You have a prompt.\n\r"
-                                 : "<6>[<196>-<0><246>prompt<0>   <6>]<0> You don't have a prompt.\n\r",
+                                 ? "<6>[<40>+<0><556>PROMPT<0>    <6>]<0> You have a prompt.\n\r"
+                                 : "<6>[<196>-<0><246>prompt<0>    <6>]<0> You don't have a prompt.\n\r",
                              ch);
 
                 send_to_char(IS_SET(ch->act, PLR_ANSI)
-                                 ? "<6>[<40>+<0><556>ANSI<0>     <6>]<0> You have color.\n\r"
-                                 : "<6>[<196>-<0><246>ANSI<0>     <6>]<0> You don't have color.\n\r",
+                                 ? "<6>[<40>+<0><556>ANSI<0>      <6>]<0> You have color.\n\r"
+                                 : "<6>[<196>-<0><246>ANSI<0>      <6>]<0> You don't have color.\n\r",
                              ch);
 
                 send_to_char((ch->gag != 0)
                                  ? ((ch->gag == 1)
-                                        ? "<6>[<40>+<0><556>GAG light<0><6>]<0> You are gagging some combat messages.\n\r"
-                                        : "<6>[<40>+<0><556>GAG heavy<0><6>]<0> You are gagging many combat messages.\n\r")
-                                 : "<6>[<196>-<0><246>gag<0>      <6>]<0> You receive all combat messages.\n\r",
+                                        ? "<6>[<40>+<0><556>GAG light<0> <6>]<0> You are gagging some combat messages.\n\r"
+                                        : "<6>[<40>+<0><556>GAG heavy<0> <6>]<0> You are gagging many combat messages.\n\r")
+                                 : "<6>[<196>-<0><246>gag<0>       <6>]<0> You receive all combat messages.\n\r",
                              ch);
 
                 send_to_char((ch->silent_mode)
-                                 ? "<6>[<40>+<0><556>QUIET<0>    <6>]<0> You're in quiet mode.\n\r"
-                                 : "<6>[<196>-<0><246>quiet<0>    <6>]<0> Quiet mode is off.\n\r",
+                                 ? "<6>[<40>+<0><556>QUIET<0>     <6>]<0> You're in quiet mode.\n\r"
+                                 : "<6>[<196>-<0><246>quiet<0>     <6>]<0> Quiet mode is off.\n\r",
                              ch);
 
                 send_to_char((ch->pcdata->allow_look)
-                                 ? "<6>[<40>+<0><556>ALLOWEQ<0>  <6>]<0> Players see your description and equipment.\n\r"
-                                 : "<6>[<196>-<0><246>alloweq<0>  <6>]<0> Players see your description only.\n\r",
+                                 ? "<6>[<40>+<0><556>ALLOWEQ<0>   <6>]<0> Players see your description and equipment.\n\r"
+                                 : "<6>[<196>-<0><246>alloweq<0>   <6>]<0> Players see your description only.\n\r",
                              ch);
 
                 send_to_char(IS_SET(ch->act, PLR_TELNET_GA)
-                                 ? "<6>[<40>+<0><556>TELNETGA<0> <6>]<0> You receive a telnet GA sequence.\n\r"
-                                 : "<6>[<196>-<0><246>telnetga<0> <6>]<0> You don't receive a telnet GA sequence.\n\r",
+                                 ? "<6>[<40>+<0><556>TELNETGA<0>  <6>]<0> You receive a telnet GA sequence.\n\r"
+                                 : "<6>[<196>-<0><246>telnetga<0>  <6>]<0> You don't receive a telnet GA sequence.\n\r",
                              ch);
 
                 send_to_char(IS_SET(ch->act, PLR_SILENCE)
-                                 ? "<6>[<40>+<0><556>SILENCE<0>  <6>]<0> You are silenced.\n\r"
+                                 ? "<6>[<40>+<0><556>SILENCE<0>   <6>]<0> You are silenced.\n\r"
                                  : "",
                              ch);
 
                 send_to_char(!IS_SET(ch->act, PLR_NO_EMOTE)
                                  ? ""
-                                 : "<6>[<196>-<0><246>emote<0>    <6>]<0> You can't emote.\n\r",
+                                 : "<6>[<196>-<0><246>emote<0>     <6>]<0> You can't emote.\n\r",
                              ch);
 
                 send_to_char(!IS_SET(ch->act, PLR_NO_TELL)
-                                 ? "<6>[<40>+<0><556>TELL<0>     <6>]<0> You receive tells.\n\r"
-                                 : "<6>[<196>-<0><246>tell<0>     <6>]<0> You don't hear tells.\n\r",
+                                 ? "<6>[<40>+<0><556>TELL<0>      <6>]<0> You receive tells.\n\r"
+                                 : "<6>[<196>-<0><246>tell<0>      <6>]<0> You don't hear tells.\n\r",
                              ch);
                 /* Send config to web clients when displaying config */
                 if (ch->desc)
@@ -5172,6 +5332,8 @@ void do_config(CHAR_DATA *ch, char *argument)
                         bit = PLR_BRIEF;
                 else if (!str_cmp(arg + 1, "combine"))
                         bit = PLR_COMBINE;
+                else if (!str_cmp(arg + 1, "targetmode"))
+                        bit = PLR_TARGETMODE;
                 else if (!str_cmp(arg + 1, "prompt"))
                         bit = PLR_PROMPT;
                 else if (!str_cmp(arg + 1, "ansi"))
@@ -5222,6 +5384,8 @@ void do_config(CHAR_DATA *ch, char *argument)
                                 var = GMCP_CONFIG_BRIEF;
                         else if (bit == PLR_COMBINE)
                                 var = GMCP_CONFIG_COMBINE;
+                        else if (bit == PLR_TARGETMODE)
+                                var = GMCP_CONFIG_TARGETMODE;
                         else if (bit == PLR_PROMPT)
                                 var = GMCP_CONFIG_PROMPT;
                         else if (bit == PLR_ANSI)

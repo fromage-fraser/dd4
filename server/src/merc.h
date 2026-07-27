@@ -2632,6 +2632,7 @@ extern DIR_DATA directions[MAX_DIR];
 #define PLR_FALLING BIT_14 /* Owl 20/3/22, 'gravity' code */
 #define PLR_SILENCE BIT_15
 #define PLR_NO_EMOTE BIT_16
+#define PLR_TARGETMODE BIT_17 /* Show exact #number entity selectors */
 #define PLR_NO_TELL BIT_18
 #define PLR_LOG BIT_19
 #define PLR_DENY BIT_20
@@ -2749,6 +2750,12 @@ struct char_data
         ROOM_INDEX_DATA *was_in_room;
         PC_DATA *pcdata;
         MPROG_ACT_LIST *mpact;
+
+        /*
+         * Unique identifier for a live NPC instance.
+         * Player characters retain zero.
+         */
+        uint64_t target_id;
 
         char *name;
         char *short_descr;
@@ -3076,6 +3083,11 @@ struct obj_data
         AFFECT_DATA *affected;
         OBJ_INDEX_DATA *pIndexData;
         ROOM_INDEX_DATA *in_room;
+
+        /*
+         * Unique identifier for this live object instance.
+         */
+        uint64_t target_id;
 
         char *name;
         char *short_descr;
@@ -4058,6 +4070,7 @@ extern int gsn_prayer_plague;
  */
 #define IS_QUESTOR(ch) (IS_SET((ch)->act, PLR_QUESTOR))
 #define IS_NPC(ch) (IS_SET((ch)->act, ACT_IS_NPC))
+#define IS_TARGET_MODE(ch) (!IS_NPC(ch) && IS_SET((ch)->act, PLR_TARGETMODE))
 #define IS_TRUE_IMMORTAL(ch) (ch->level >= L_SEN)
 #define IS_IMMORTAL(ch) (get_trust(ch) >= LEVEL_IMMORTAL)
 #define IS_HERO(ch) (get_trust(ch) >= LEVEL_HERO)
@@ -5106,6 +5119,7 @@ int can_vault_w args((CHAR_DATA * ch));
 bool is_name args((const char *str, char *namelist));
 bool multi_keyword_match args((char *keys, char *namelist));
 bool is_full_name args((const char *str, char *namelist));
+bool parse_target_id args((const char *argument, uint64_t *target_id));
 void affect_to_char args((CHAR_DATA * ch, AFFECT_DATA *paf));
 void affect_remove args((CHAR_DATA * ch, AFFECT_DATA *paf));
 void affect_from_obj args((OBJ_DATA * obj, AFFECT_DATA *paf));
