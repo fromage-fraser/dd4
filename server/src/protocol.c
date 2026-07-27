@@ -3312,6 +3312,7 @@ const struct gmcp_variable_struct GMCPVariableTable[GMCP_MAX + 1] =
         {GMCP_CONFIG_BLANK, GMCP_CONFIG, "blank", GMCP_NUMBER},
         {GMCP_CONFIG_BRIEF, GMCP_CONFIG, "brief", GMCP_NUMBER},
         {GMCP_CONFIG_COMBINE, GMCP_CONFIG, "combine", GMCP_NUMBER},
+        {GMCP_CONFIG_TARGETMODE, GMCP_CONFIG, "targetmode", GMCP_NUMBER},
         {GMCP_CONFIG_PROMPT, GMCP_CONFIG, "prompt", GMCP_NUMBER},
         {GMCP_CONFIG_ANSI, GMCP_CONFIG, "ansi", GMCP_NUMBER},
         {GMCP_CONFIG_GAG, GMCP_CONFIG, "gag", GMCP_NUMBER},
