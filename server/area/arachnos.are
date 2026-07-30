@@ -22,6 +22,18 @@ growing in as of late.
 5 17 8 5d4+50 2d4+1
 63 600
 8 8 2
+FStepInside sfx.foley.mob.6301.inside~
+FStepCity sfx.foley.mob.6301.city~
+FStepField sfx.foley.mob.6301.field~
+FStepForest sfx.foley.mob.6301.forest~
+FStepHills sfx.foley.mob.6301.hills~
+FStepMountain sfx.foley.mob.6301.mountain~
+FStepDesert sfx.foley.mob.6301.desert~
+FStepSwamp sfx.foley.mob.6301.swamp~
+FStepWater sfx.foley.mob.6301.water~
+FStepUnderwater sfx.foley.mob.6301.underwater~
+FStepUnderwaterGround sfx.foley.mob.6301.underwater_ground~
+FStepAir sfx.foley.mob.6301.air~
 #6302
 dragon Yevaud~
 Yevaud~
@@ -44,6 +56,18 @@ The Wolf Spider is hairy, very hairy.
 6 12 4 3d8+70 2d5+3
 52 2000
 8 8 2
+FStepInside sfx.foley.mob.6303.inside~
+FStepCity sfx.foley.mob.6303.city~
+FStepField sfx.foley.mob.6303.field~
+FStepForest sfx.foley.mob.6303.forest~
+FStepHills sfx.foley.mob.6303.hills~
+FStepMountain sfx.foley.mob.6303.mountain~
+FStepDesert sfx.foley.mob.6303.desert~
+FStepSwamp sfx.foley.mob.6303.swamp~
+FStepWater sfx.foley.mob.6303.water~
+FStepUnderwater sfx.foley.mob.6303.underwater~
+FStepUnderwaterGround sfx.foley.mob.6303.underwater_ground~
+FStepAir sfx.foley.mob.6303.air~
 #6304
 orc~
 the orc~
@@ -78,6 +102,19 @@ An ordinary drone spider.
 6 12 4 6d6+60 2d4+0
 52 800
 8 8 1
+Worked for 25s
+FStepInside sfx.foley.mob.6306.inside~
+FStepCity sfx.foley.mob.6306.city~
+FStepField sfx.foley.mob.6306.field~
+FStepForest sfx.foley.mob.6306.forest~
+FStepHills sfx.foley.mob.6306.hills~
+FStepMountain sfx.foley.mob.6306.mountain~
+FStepDesert sfx.foley.mob.6306.desert~
+FStepSwamp sfx.foley.mob.6306.swamp~
+FStepWater sfx.foley.mob.6306.water~
+FStepUnderwater sfx.foley.mob.6306.underwater~
+FStepUnderwaterGround sfx.foley.mob.6306.underwater_ground~
+FStepAir sfx.foley.mob.6306.air~
 #6307
 spider ethereal~
 the ethereal spider~
@@ -89,6 +126,18 @@ She winks in and out.
 10 10 0 10d10+100 2d4+4
 52 4000
 8 8 2
+FStepInside sfx.foley.mob.6307.inside~
+FStepCity sfx.foley.mob.6307.city~
+FStepField sfx.foley.mob.6307.field~
+FStepForest sfx.foley.mob.6307.forest~
+FStepHills sfx.foley.mob.6307.hills~
+FStepMountain sfx.foley.mob.6307.mountain~
+FStepDesert sfx.foley.mob.6307.desert~
+FStepSwamp sfx.foley.mob.6307.swamp~
+FStepWater sfx.foley.mob.6307.water~
+FStepUnderwater sfx.foley.mob.6307.underwater~
+FStepUnderwaterGround sfx.foley.mob.6307.underwater_ground~
+FStepAir sfx.foley.mob.6307.air~
 #6308
 slave human~
 the slave of Arachnos~
@@ -123,6 +172,18 @@ The Bird Spider has very powerful jaws.
 14 7 -3 14d14+140 2d9+2
 52 8000
 8 8 2
+FStepInside sfx.foley.mob.6310.inside~
+FStepCity sfx.foley.mob.6310.city~
+FStepField sfx.foley.mob.6310.field~
+FStepForest sfx.foley.mob.6310.forest~
+FStepHills sfx.foley.mob.6310.hills~
+FStepMountain sfx.foley.mob.6310.mountain~
+FStepDesert sfx.foley.mob.6310.desert~
+FStepSwamp sfx.foley.mob.6310.swamp~
+FStepWater sfx.foley.mob.6310.water~
+FStepUnderwater sfx.foley.mob.6310.underwater~
+FStepUnderwaterGround sfx.foley.mob.6310.underwater_ground~
+FStepAir sfx.foley.mob.6310.air~
 #6311
 hermit~
 the Hermit~
@@ -171,6 +232,18 @@ them.
 26 -2 -8 26d26+260 1d8+20
 52 65000
 8 8 2
+FStepInside sfx.foley.mob.6314.inside~
+FStepCity sfx.foley.mob.6314.city~
+FStepField sfx.foley.mob.6314.field~
+FStepForest sfx.foley.mob.6314.forest~
+FStepHills sfx.foley.mob.6314.hills~
+FStepMountain sfx.foley.mob.6314.mountain~
+FStepDesert sfx.foley.mob.6314.desert~
+FStepSwamp sfx.foley.mob.6314.swamp~
+FStepWater sfx.foley.mob.6314.water~
+FStepUnderwater sfx.foley.mob.6314.underwater~
+FStepUnderwaterGround sfx.foley.mob.6314.underwater_ground~
+FStepAir sfx.foley.mob.6314.air~
 #6315
 ki-rin~
 the Ki-Rin~
@@ -218,6 +291,18 @@ sharp poisonous fangs to paralyse or kill its prey.
 8 13 2 8d8+80 2d5+1
 52 2500
 8 8 0
+FStepInside sfx.foley.mob.6318.inside~
+FStepCity sfx.foley.mob.6318.city~
+FStepField sfx.foley.mob.6318.field~
+FStepForest sfx.foley.mob.6318.forest~
+FStepHills sfx.foley.mob.6318.hills~
+FStepMountain sfx.foley.mob.6318.mountain~
+FStepDesert sfx.foley.mob.6318.desert~
+FStepSwamp sfx.foley.mob.6318.swamp~
+FStepWater sfx.foley.mob.6318.water~
+FStepUnderwater sfx.foley.mob.6318.underwater~
+FStepUnderwaterGround sfx.foley.mob.6318.underwater_ground~
+FStepAir sfx.foley.mob.6318.air~
 #6319
 queen spider~
 the Queen Spider~
@@ -231,6 +316,18 @@ if it wasn't so immensely fat.  Its large, bulbous eyes stare back at you.
 15 6 -4 15d15+150 2d8+2
 52 12000
 8 8 2
+FStepInside sfx.foley.mob.6319.inside~
+FStepCity sfx.foley.mob.6319.city~
+FStepField sfx.foley.mob.6319.field~
+FStepForest sfx.foley.mob.6319.forest~
+FStepHills sfx.foley.mob.6319.hills~
+FStepMountain sfx.foley.mob.6319.mountain~
+FStepDesert sfx.foley.mob.6319.desert~
+FStepSwamp sfx.foley.mob.6319.swamp~
+FStepWater sfx.foley.mob.6319.water~
+FStepUnderwater sfx.foley.mob.6319.underwater~
+FStepUnderwaterGround sfx.foley.mob.6319.underwater_ground~
+FStepAir sfx.foley.mob.6319.air~
 #0
 
 

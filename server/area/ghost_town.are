@@ -1,6 +1,13 @@
 #AREA   Yaegar~  Ghost Town~
 55 80 0 100
 
+#AREA_SPECIAL
+reset_msg {WA tumbleweed rolls slowly through the town, pursued by whispers.{x
+~
+music music/area/ghost_town.mp3
+music_vol 20
+$
+
 #HELPS
 0 'GHOST TOWN'~
 This is purely a simple hack-n-slash area with the interesting added feature
@@ -33,7 +40,7 @@ fell domain- DEATH.
 #8801
 wraith~
 a wraith~
-A Wraith strides  silently toward you, death in its glowing red eyes.
+A Wraith strides silently toward you, death in its glowing red eyes.
 ~
 The spirit of some former minion of this place, this foul Undead creature
 will do its best you meet the same fate as all previous intruders in this

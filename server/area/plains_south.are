@@ -1,6 +1,11 @@
 #AREA   Prozak~  Plains of the South~
 10 100 0 100
 
+#AREA_SPECIAL
+music music/area/plains_south.mp3
+music_vol 20
+$
+
 #MOBILES
 #18400
 rolling rock boulder~
