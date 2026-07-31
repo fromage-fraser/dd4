@@ -1654,6 +1654,81 @@ void sound_emit_char(CHAR_DATA *ch, const char *event_key, int vol_override)
     sound_play_to_desc(ch->desc, &tmp, -1);
 }
 
+/*
+ * Play the area-reset notification to one player.
+ *
+ * The area may override the registry file with reset_sound. The sound is
+ * always routed through the notify category, so the player's master and
+ * notification-volume settings are respected.
+ */
+void media_notify_area_reset(CHAR_DATA *ch, AREA_DATA *area)
+{
+        const sound_event_def *ev;
+        const char *file;
+        int volume;
+        char opts[256];
+
+        if (!ch || IS_NPC(ch) || !area || !ch->desc || !ch->desc->pProtocol)
+                return;
+
+        if (!ch->pcdata || !ch->pcdata->snd_enabled)
+                return;
+
+        if (!ch->desc->pProtocol->bGMCP
+        ||  !ch->desc->pProtocol->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA]
+        ||  ch->desc->pProtocol->MediaSuppress)
+                return;
+
+        /*
+         * An explicit zero disables reset notifications for this area.
+         */
+        if (area->reset_sound_volume == 0)
+                return;
+
+        ev = sound_event_lookup("notify.area.reset");
+
+        /*
+         * Prefer the area's filename. Otherwise use the registry default.
+         */
+        if (area->reset_sound && area->reset_sound[0] != '\0')
+                file = area->reset_sound;
+        else
+                file = sound_event_pick_file(ev);
+
+        if (!file || file[0] == '\0')
+                return;
+
+        /*
+         * Prefer the area's volume. Otherwise use the registry default.
+         */
+        if (area->reset_sound_volume > 0)
+                volume = area->reset_sound_volume;
+        else if (ev && ev->default_volume > 0)
+                volume = ev->default_volume;
+        else
+                volume = 60;
+
+        /*
+         * Apply the player's master and notification sliders.
+         */
+        volume = media_apply_volume(volume, ch, "notify", "sound");
+
+        if (volume <= 0)
+                return;
+
+        /*
+         * Ensure relative filenames resolve beneath the configured media URL.
+         */
+        media_default_ensure(ch->desc);
+
+        snprintf(opts, sizeof(opts),
+                 "\"type\":\"sound\",\"tag\":\"notify\","
+                 "\"volume\":%d,\"loops\":1",
+                 volume);
+
+        GMCP_Media_Play(ch->desc, file, opts);
+}
+
 /* Public: play to everyone in a room (except optional 'except') */
 void sound_emit_room(ROOM_INDEX_DATA *room, const char *event_key, int vol_override, CHAR_DATA *except)
 {
