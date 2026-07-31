@@ -4,6 +4,8 @@
 #AREA_SPECIAL
 no_quest
 safe
+music music/area/midgaard.mp3
+music_vol 20
 $
 
 #MOBILES

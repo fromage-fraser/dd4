@@ -58,6 +58,7 @@ const sector_ambience_t *sector_ambience_for(int sector)
 static const sound_event_def sound_events[] = {
     /* Notifications */
     { "notify.levelup",          { "notify/levelup1.mp3",         NULL }, { 0,0 }, 70, "notify", 1 },
+    { "notify.area.reset",       { "notify/area_reset.mp3",       NULL }, { 0,0 }, 60, "notify", 1 },
     { "notify.channel.dirtalk",  { "notify/channel_dirtalk.mp3",  NULL }, { 0,0 }, 60, "notify", 1 },
     { "notify.channel.immtalk",  { "notify/channel_immtalk.mp3",  NULL }, { 0,0 }, 60, "notify", 1 },
     { "notify.channel.chat",     { "notify/channel_chat.mp3",     NULL }, { 0,0 }, 60, "notify", 1 },

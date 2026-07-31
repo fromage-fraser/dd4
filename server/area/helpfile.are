@@ -681,6 +681,7 @@ Gezhp, Owl and Shade
 - MSSP response upgraded
 - Music and custom reset messages added to many areas
 - TARGETMODE added to enable precise selection of objects and mobiles
+- Area reset message now has a default sound that can be overridden
 
 ~
 

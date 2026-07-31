@@ -3186,6 +3186,15 @@ struct area_data
         int exp_modifier;
         char *reset_message;
 
+        /*
+         * One-shot area-reset notification.
+         *
+         * A NULL reset_sound uses the notify.area.reset registry event.
+         * Volume: -1 = registry default, 0 = disabled, 1..100 = override.
+         */
+        char *reset_sound;
+        int reset_sound_volume;
+
          /*
          * Persistent area media definitions loaded from the area file.
          *

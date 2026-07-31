@@ -6986,6 +6986,8 @@ void do_reset(CHAR_DATA *ch, char *argument)
                                 send_to_char(area->reset_message, pch);
                         else
                                 send_to_char("You hear the patter of little feet.\n\r", pch);
+
+                        media_notify_area_reset(pch, area);
                 }
         }
 

@@ -507,7 +507,7 @@ while (1) {
                 next;
             }
 
-            next if &add_field_data(\%special, $field, $data, 'af xp rm am av mu mv');
+            next if &add_field_data(\%special, $field, $data, 'af xp rm rs rv am av mu mv');
             print "    line $line: special: unknown field '$field'\n";
         }
 
@@ -1064,6 +1064,30 @@ foreach (0 .. $#special) {
 
     if (exists($special{'xp'})) {
         if ($msg = &check_field_number_range(\%special, 'xp', 0, 'none')) {
+            print "$err $msg\n";
+            $special_errors{$special{'line'}}++;
+        }
+    }
+
+
+    # Area reset notification sound file.
+
+    if (exists($special{'rs'})) {
+        if ($msg = &check_field_defined(\%special, 'rs')) {
+            print "$err $msg\n";
+            $special_errors{$special{'line'}}++;
+        }
+        elsif ($special{'rs'} =~ /\s/) {
+            print "$err field 'rs' must not contain spaces: $special{'rs'}\n";
+            $special_errors{$special{'line'}}++;
+        }
+    }
+
+
+    # Area reset notification sound volume.
+
+    if (exists($special{'rv'})) {
+        if ($msg = &check_field_number_range(\%special, 'rv', 0, 100)) {
             print "$err $msg\n";
             $special_errors{$special{'line'}}++;
         }
@@ -2628,6 +2652,16 @@ if (@special) {
         if ($special{'rm'})
         {
             print AREA "reset_msg $special{'rm'}\n~\n";
+        }
+
+        if (exists $special{'rs'} && $special{'rs'} ne '')
+        {
+            print AREA "reset_sound $special{'rs'}\n";
+        }
+
+        if (exists $special{'rv'} && $special{'rv'} ne '')
+        {
+            print AREA "reset_sound_vol $special{'rv'}\n";
         }
 
         if (exists $special{'am'} && $special{'am'} ne '')

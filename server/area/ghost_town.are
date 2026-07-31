@@ -4,6 +4,8 @@
 #AREA_SPECIAL
 reset_msg {WA tumbleweed rolls slowly through the town, pursued by whispers.{x
 ~
+reset_sound notify/area/ghost_town_reset.mp3
+reset_sound_vol 55
 music music/area/ghost_town.mp3
 music_vol 20
 $

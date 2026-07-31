@@ -64,6 +64,7 @@ void            sound_emit_room                 ( ROOM_INDEX_DATA *room, const c
 int             media_apply_master_volume       ( int base_vol, CHAR_DATA *ch ); /* scales 1..100 by player setting (or returns base) */
 void            media_notify_levelup            ( CHAR_DATA *who );
 void            media_notify_channel            ( CHAR_DATA *to, int channel );
+void            media_notify_area_reset         ( CHAR_DATA *ch, AREA_DATA *area );
 int             media_apply_volume              ( int base_vol, CHAR_DATA *ch, const char *tag, const char *type );
 void            media_play_door_sfx_room        ( ROOM_INDEX_DATA *room, int door, door_action_t act );
 void            sound_play_room_file            ( ROOM_INDEX_DATA *room, const char *file, int base_vol, const char *tag, CHAR_DATA *except , const char *id);

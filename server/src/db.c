@@ -30,6 +30,7 @@
 #include <time.h>
 #include <stdarg.h>
 #include "merc.h"
+#include "sound.h"
 
 #if !defined(macintosh)
 extern int _filbuf args((FILE *));
@@ -1556,6 +1557,10 @@ void load_area(FILE *fp)
         pArea->area_flags = 0;
         pArea->exp_modifier = 100;
 
+        pArea->reset_message = NULL;
+        pArea->reset_sound = NULL;
+        pArea->reset_sound_volume = -1;
+
         /*
          * Area media defaults.
          *
@@ -1695,6 +1700,45 @@ void load_area_special(FILE *fp)
                                 free_string(area_last->reset_message);
 
                         area_last->reset_message = fread_string(fp);
+                }
+
+                else if (!str_cmp(next, "reset_sound"))
+                {
+                        const char *fname;
+
+                        /*
+                         * Optional per-area override for notify.area.reset.
+                         * This is a relative path beneath the Client.Media
+                         * default URL. Spaces are not supported.
+                         */
+                        fname = fread_word(fp);
+
+                        if (area_last->reset_sound)
+                                free_string(area_last->reset_sound);
+
+                        area_last->reset_sound = str_dup(fname);
+                }
+
+                else if (!str_cmp(next, "reset_sound_vol"))
+                {
+                        num = fread_number(fp, &stat);
+
+                        if (num < 0 || num > 100)
+                        {
+                                sprintf(buf,
+                                        "load_area_special: area '%s' has bad reset_sound_vol '%d' (ignoring)",
+                                        area_last->name,
+                                        num);
+                                log_string(buf);
+                        }
+                        else
+                        {
+                                /*
+                                 * 0 disables the reset sound.
+                                 * 1..100 overrides the registry volume.
+                                 */
+                                area_last->reset_sound_volume = num;
+                        }
                 }
 
                 else if (!str_cmp(next, "ambient"))
@@ -3379,6 +3423,8 @@ void area_update(void)
                                                 send_to_char(pArea->reset_message, pch);
                                         else
                                                 send_to_char("You hear the patter of little feet.\n\r", pch);
+
+                                        media_notify_area_reset(pch, pArea);
                                 }
                         }
                 }

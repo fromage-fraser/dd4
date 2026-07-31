@@ -1,6 +1,15 @@
 #AREA   Hakim~   Swamp~
 -2 -2 0 100
 
+#AREA_SPECIAL
+reset_msg {gA wet wind stirs the reeds and the swamp reclaims its paths.{x
+~
+reset_sound notify/area/swamp_conn_reset.mp3
+reset_sound_vol 55
+music music/area/swamp_conn.mp3
+music_vol 20
+$
+
 #MOBILES
 #31400
 ball light will wisp~

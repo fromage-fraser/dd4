@@ -157,39 +157,52 @@ that should follow it.
 
 The current #AREA_SPECIAL flags are:
 
-school              Area is a MUD SCHOOL (new character beginning area).
-no_quest            No mobs in this area may be auto-quest targets.
-hidden              The "areas" command will not show this area, and the
-                    mapmaker will not generate maps of it.
-safe                Pkilling cannot happen in this area.
-no_teleport         A player cannot teleport into this area.
-no_magic            Magic cannot be used in this area.
-exp_mod NUMBER      An experience point modifier is applied to all mobs killed
-                    in this area. 100 means no change, 50 means halved, 200
-                    means doubled, and so forth.
-reset_msg STRING    Reset message that replaces the default area-reset message.
-                    Put the message on the following line and terminate it with
-                    a tilde (~).
-ambient FILE        Default environmental ambience for the area. FILE is a
-                    relative media path containing no spaces, normally
-                    beginning with "ambient/".
-ambient_vol NUMBER  Default area ambience volume. 0 disables the area ambience;
-                    values from 1 to 100 are valid.
-music FILE          Default looping music for the area. FILE is a relative
-                    media path containing no spaces, normally beginning with
-                    "music/".
-music_vol NUMBER    Default area music volume. 0 disables the area music;
-                    values from 1 to 100 are valid.
+school                  Area is a MUD SCHOOL (new character beginning area).
+no_quest                No mobs in this area may be auto-quest targets.
+hidden                  The "areas" command will not show this area, and the
+                        mapmaker will not generate maps of it.
+safe                    Pkilling cannot happen in this area.
+no_teleport             A player cannot teleport into this area.
+no_magic                Magic cannot be used in this area.
+exp_mod NUMBER          An experience point modifier is applied to all mobs
+                        killed in this area. 100 means no change, 50 means
+                        halved, 200 means doubled, and so forth.
+reset_msg STRING        Reset message that replaces the default area-reset
+                        message. Put the message on the following line and
+                        terminate it with a tilde (~).
+reset_sound FILE        Replaces the default notification sound played when the
+                        area-reset message is shown. FILE must be a relative
+                        media path containing no spaces, normally beginning with
+                        'notify/'. If this setting is omitted, the default reset
+                        sound is: notify/area_reset.mp3
+reset_sound_vol NUMBER  Sets the source volume of the area-reset notification
+                        sound. A value of 0 disables the reset sound. If this
+                        setting is omitted, the default volume is 60.
+ambient FILE            Default environmental ambience for the area. FILE is a
+                        relative media path containing no spaces, normally
+                        beginning with "ambient/".
+ambient_vol NUMBER      Default area ambience volume. 0 disables the area
+                        ambience; values from 1 to 100 are valid.
+music FILE              Default looping music for the area. FILE is a relative
+                        media path containing no spaces, normally beginning with
+                        "music/".
+music_vol NUMBER        Default area music volume. 0 disables the area music;
+                        values from 1 to 100 are valid.
 
 An example #AREA_SPECIAL section follows:
 
 #AREA_SPECIAL
 no_teleport
 no_quest
-ambient environment/insects.mp3
+ambient ambient/area/forest_insects.mp3
 ambient_vol 30
-reset_msg A fell wind blows through the forest.
+music music/area/forest_theme.mp3
+music_vol 20
+reset_msg
+A fell wind blows through the forest.
 ~
+reset_sound notify/area/forest_reset.mp3
+reset_sound_vol 55
 $
 
 

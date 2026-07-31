@@ -4,6 +4,8 @@
 #AREA_SPECIAL
 reset_msg {mSilken strands tighten as unseen hunters return to their lairs.{x
 ~
+reset_sound notify/area/arachnos_reset.mp3
+reset_sound_vol 55
 music music/area/arachnos.mp3
 music_vol 20
 $
