@@ -565,6 +565,14 @@ typedef struct
    int MediaWeatherVol;
    bool_t MediaWeatherActive;
 
+   /*
+    * Earliest server time at which persistent media may be reasserted.
+    *
+    * This prevents the heartbeat from interfering with a newly started
+    * track's fade-in or initial download.
+    */
+   long MediaHeartbeatAfter;
+
    bool_t MediaSuppress;
    /*************** END GMCP ***************/
 

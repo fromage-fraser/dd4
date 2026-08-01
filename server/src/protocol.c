@@ -391,6 +391,8 @@ protocol_t *ProtocolCreate(void)
    pProtocol->MediaWeatherVol = 0;
    pProtocol->MediaWeatherActive = FALSE;
 
+   pProtocol->MediaHeartbeatAfter = 0;
+
    /* Media lane state (area/room already here; add sector as well) */
     /*
     * Ambient area lane.
