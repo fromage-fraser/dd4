@@ -8,6 +8,8 @@
 exp_mod 112
 reset_msg {cA cold current rolls through the deep canals.{x
 ~
+reset_sound notify/area/eakos_canals_reset.mp3
+reset_sound_vol 55
 music music/area/eakos_canals.mp3
 music_vol 20
 $
