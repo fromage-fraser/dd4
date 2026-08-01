@@ -29,6 +29,29 @@ bool write_to_descriptor args((int desc, char *txt, int length));
 extern const sound_event_def *sound_event_lookup( const char *key );
 extern int media_apply_volume( int base, CHAR_DATA *ch, const char *cat, const char *slider );
 
+/*
+ * Temporary server-side workaround for clients that fail to honour an
+ * indefinite Client.Media loop after the first play.
+ *
+ * A normal track change gets a grace period so the heartbeat cannot
+ * interrupt its fade-in or initial download. Once the grace period has
+ * elapsed, the server reasserts persistent media at the configured interval.
+ */
+#define MEDIA_HEARTBEAT_INTERVAL_SECONDS 2
+#define MEDIA_HEARTBEAT_GRACE_SECONDS    30
+
+/*
+ * Delay heartbeat reassertion after a genuine media change.
+ */
+static void media_heartbeat_arm(protocol_t *proto)
+{
+        if (!proto)
+                return;
+
+        proto->MediaHeartbeatAfter =
+                (long)current_time + MEDIA_HEARTBEAT_GRACE_SECONDS;
+}
+
 /* Your queue function signature (per your latest version) */
 extern void sfx_enqueue( DESCRIPTOR_DATA *d, const char *file, int vol, const char *tag, int delay_ticks );
 
@@ -953,6 +976,7 @@ void update_weather_for_char( CHAR_DATA *ch )
                 "\"type\":\"music\",\"tag\":\"environment\",\"key\":\"" KEY_WEATHER "\","
                 "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":1200", vol);
             GMCP_Media_Play(ch->desc, ev->files[0], opts);
+            media_heartbeat_arm(p);
         }
 
         p->MediaWeatherActive = TRUE;
@@ -1246,9 +1270,425 @@ static void door_play_event_room( ROOM_INDEX_DATA *room,
         }
 }
 
-void sound_sfx_update( void )
+/*
+ * Publish one heartbeat without changing the server's cached media state.
+ *
+ * The caller must supply the key that is currently active. No Stop message is
+ * sent, and no A/B flip flag is changed.
+ */
+static bool media_heartbeat_play(CHAR_DATA *ch,
+                                 const char *name,
+                                 const char *tag,
+                                 const char *key,
+                                 int volume)
+{
+        char opts[256];
+
+        if (!ch
+        ||  !ch->desc
+        ||  !name
+        ||  name[0] == '\0'
+        ||  !tag
+        ||  tag[0] == '\0'
+        ||  !key
+        ||  key[0] == '\0'
+        ||  volume <= 0)
+                return FALSE;
+
+        snprintf(opts, sizeof(opts),
+                 "\"type\":\"music\",\"tag\":\"%s\",\"key\":\"%s\","
+                 "\"volume\":%d,\"loops\":-1,\"continue\":true",
+                 tag,
+                 key,
+                 URANGE(1, volume, 100));
+
+        GMCP_Media_Play(ch->desc, name, opts);
+
+        return TRUE;
+}
+
+
+/*
+ * Reassert the effective environmental ambience for one player.
+ *
+ * Selection precedence remains:
+ *
+ *     room ambience
+ *     area ambience
+ *     sector ambience
+ *
+ * MediaRoomFlip, MediaAreaFlip, and MediaSectorFlip indicate which key was
+ * most recently published because the normal refresh function toggles each
+ * flag after publishing the incoming track.
+ */
+static bool media_heartbeat_ambient(CHAR_DATA *ch)
+{
+        protocol_t              *proto;
+        ROOM_INDEX_DATA         *room;
+        const sector_ambience_t *sector;
+        const char              *name;
+        const char              *cached_name;
+        const char              *key;
+        int                      base_volume;
+        int                      volume;
+        int                      cached_volume;
+        bool                     active;
+
+        proto = ch->desc->pProtocol;
+        room = ch->in_room;
+
+        sector = NULL;
+        name = NULL;
+        cached_name = NULL;
+        key = NULL;
+        base_volume = 0;
+        cached_volume = 0;
+        active = FALSE;
+
+        /*
+         * Room ambience has highest precedence.
+         */
+        if (room->ambient_sound
+        &&  room->ambient_sound[0] != '\0'
+        &&  room->ambient_volume > 0)
+        {
+                name = room->ambient_sound;
+                base_volume = URANGE(1, room->ambient_volume, 100);
+
+                cached_name = proto->MediaRoomName;
+                cached_volume = proto->MediaRoomVol;
+                active = proto->MediaRoomActive;
+
+                /*
+                 * The normal refresh toggles the flag after publishing:
+                 *
+                 *     flip TRUE  => A is currently active
+                 *     flip FALSE => B is currently active
+                 */
+                key = proto->MediaRoomFlip
+                    ? "dd.ambient.room.A"
+                    : "dd.ambient.room.B";
+        }
+        /*
+         * Area ambience is used when there is no enabled room override.
+         */
+        else if (room->area
+        &&       room->area->ambient_sound
+        &&       room->area->ambient_sound[0] != '\0'
+        &&       room->area->ambient_volume > 0)
+        {
+                name = room->area->ambient_sound;
+                base_volume =
+                        URANGE(1, room->area->ambient_volume, 100);
+
+                cached_name = proto->MediaAreaName;
+                cached_volume = proto->MediaAreaVol;
+                active = proto->MediaAreaActive;
+
+                key = proto->MediaAreaFlip
+                    ? "dd.ambient.area.A"
+                    : "dd.ambient.area.B";
+        }
+        /*
+         * Sector ambience is the final fallback.
+         */
+        else
+        {
+                sector = sector_ambience_for(room->sector_type);
+
+                if (sector
+                &&  sector->name
+                &&  sector->name[0] != '\0'
+                &&  sector->volume > 0)
+                {
+                        name = sector->name;
+                        base_volume = URANGE(1, sector->volume, 100);
+
+                        cached_name = proto->MediaSectorName;
+                        cached_volume = proto->MediaSectorVol;
+                        active = proto->MediaSectorActive;
+
+                        key = proto->MediaSectorFlip
+                            ? "dd.ambient.sector.A"
+                            : "dd.ambient.sector.B";
+                }
+        }
+
+        if (!name)
+        {
+                /*
+                 * Repair stale server-side state through the normal refresh
+                 * path rather than trying to construct a Stop here.
+                 */
+                if (proto->MediaRoomActive
+                ||  proto->MediaAreaActive
+                ||  proto->MediaSectorActive)
+                {
+                        media_env_refresh(ch, room, FALSE);
+                }
+
+                return FALSE;
+        }
+
+        volume = media_apply_volume(base_volume,
+                                    ch,
+                                    "environment",
+                                    "ambient");
+
+        if (volume <= 0)
+                return FALSE;
+
+        /*
+         * If the cached state does not describe the location's effective
+         * ambience, use the ordinary refresh machinery. That path performs
+         * any required A/B transition and arms a new grace period.
+         */
+        if (!active
+        ||  !cached_name
+        ||  cached_name[0] == '\0'
+        ||  str_cmp(name, cached_name)
+        ||  cached_volume != volume)
+        {
+                media_env_refresh(ch, room, FALSE);
+                return FALSE;
+        }
+
+        return media_heartbeat_play(ch,
+                                    name,
+                                    "environment",
+                                    key,
+                                    volume);
+}
+
+
+/*
+ * Reassert the effective dedicated music layer for one player.
+ *
+ * Selection precedence remains:
+ *
+ *     room music
+ *     area music
+ */
+static bool media_heartbeat_music(CHAR_DATA *ch)
+{
+        protocol_t      *proto;
+        ROOM_INDEX_DATA *room;
+        const char      *name;
+        const char      *key;
+        int              base_volume;
+        int              volume;
+
+        proto = ch->desc->pProtocol;
+        room = ch->in_room;
+
+        name = NULL;
+        base_volume = 0;
+
+        if (room->music_sound
+        &&  room->music_sound[0] != '\0'
+        &&  room->music_volume > 0)
+        {
+                name = room->music_sound;
+                base_volume = URANGE(1, room->music_volume, 100);
+        }
+        else if (room->area
+        &&       room->area->music_sound
+        &&       room->area->music_sound[0] != '\0'
+        &&       room->area->music_volume > 0)
+        {
+                name = room->area->music_sound;
+                base_volume =
+                        URANGE(1, room->area->music_volume, 100);
+        }
+
+        if (!name)
+        {
+                if (proto->MediaMusicActive || proto->MediaMusicName)
+                        media_music_refresh(ch, room, FALSE);
+
+                return FALSE;
+        }
+
+        volume = media_apply_volume(base_volume,
+                                    ch,
+                                    "music",
+                                    "music");
+
+        if (volume <= 0)
+                return FALSE;
+
+        if (!proto->MediaMusicActive
+        ||  !proto->MediaMusicName
+        ||  proto->MediaMusicName[0] == '\0'
+        ||  str_cmp(name, proto->MediaMusicName)
+        ||  proto->MediaMusicVol != volume)
+        {
+                media_music_refresh(ch, room, FALSE);
+                return FALSE;
+        }
+
+        /*
+         * As with the ambient lanes, the normal music refresh toggles the
+         * flag after sending:
+         *
+         *     flip TRUE  => A is currently active
+         *     flip FALSE => B is currently active
+         */
+        key = proto->MediaMusicFlip
+            ? "dd.music.A"
+            : "dd.music.B";
+
+        return media_heartbeat_play(ch,
+                                    name,
+                                    "music",
+                                    key,
+                                    volume);
+}
+
+
+/*
+ * Weather is also a persistent music-type environmental loop, so it is
+ * subject to the same client-side failure.
+ */
+static bool media_heartbeat_weather(CHAR_DATA *ch)
+{
+        protocol_t            *proto;
+        const sound_event_def *event;
+        int                    volume;
+
+        proto = ch->desc->pProtocol;
+        event = NULL;
+
+        /*
+         * Keep the cached weather lane consistent with current room
+         * conditions.
+         */
+        if (!IS_OUTSIDE(ch)
+        ||  ch->in_room->sector_type == SECT_UNDERWATER
+        ||  ch->in_room->sector_type == SECT_UNDERWATER_GROUND
+        ||  IS_SET(ch->in_room->room_flags, ROOM_NO_WEATHER))
+        {
+                if (proto->MediaWeatherActive)
+                        update_weather_for_char(ch);
+
+                return FALSE;
+        }
+
+        if (weather_info.sky == SKY_RAINING)
+                event = sound_event_lookup("ambient.weather.rain");
+        else if (weather_info.sky == SKY_LIGHTNING)
+                event = sound_event_lookup("ambient.weather.lightning");
+        else
+        {
+                if (proto->MediaWeatherActive)
+                        update_weather_for_char(ch);
+
+                return FALSE;
+        }
+
+        if (!event
+        ||  !event->files[0]
+        ||  event->files[0][0] == '\0')
+                return FALSE;
+
+        volume = media_apply_volume(event->default_volume,
+                                    ch,
+                                    "environment",
+                                    "ambient");
+
+        if (volume <= 0)
+                return FALSE;
+
+        if (!proto->MediaWeatherActive
+        ||  !proto->MediaWeatherName
+        ||  proto->MediaWeatherName[0] == '\0'
+        ||  str_cmp(event->files[0], proto->MediaWeatherName)
+        ||  proto->MediaWeatherVol != volume)
+        {
+                update_weather_for_char(ch);
+                return FALSE;
+        }
+
+        return media_heartbeat_play(ch,
+                                    event->files[0],
+                                    "environment",
+                                    "dd.ambient.weather",
+                                    volume);
+}
+
+
+/*
+ * Reassert all persistent media for connected playing characters.
+ */
+static void media_loop_heartbeat_update(void)
 {
         DESCRIPTOR_DATA *d;
+        CHAR_DATA       *ch;
+        protocol_t      *proto;
+
+        for (d = descriptor_list; d; d = d->next)
+        {
+                if (d->connected != CON_PLAYING
+                ||  !d->character
+                ||  !d->pProtocol)
+                        continue;
+
+                ch = d->character;
+                proto = d->pProtocol;
+
+                /*
+                 * Switched immortals are omitted because the controlled NPC
+                 * does not own the original player's sound preferences.
+                 */
+                if (IS_NPC(ch)
+                ||  !ch->pcdata
+                ||  !ch->in_room
+                ||  !ch->desc
+                ||  ch->desc != d)
+                        continue;
+
+                if (!ch->pcdata->snd_enabled
+                ||  !proto->bGMCP
+                ||  !proto->bGMCPSupport[GMCP_SUPPORT_CLIENT_MEDIA]
+                ||  proto->MediaSuppress)
+                        continue;
+
+                if (proto->MediaHeartbeatAfter > (long)current_time)
+                        continue;
+
+                media_heartbeat_ambient(ch);
+                media_heartbeat_music(ch);
+                media_heartbeat_weather(ch);
+
+                /*
+                 * A normal refresh called above may have armed the longer
+                 * grace period. Preserve it if so. Otherwise schedule the
+                 * next ordinary heartbeat.
+                 */
+                if (proto->MediaHeartbeatAfter <= (long)current_time)
+                {
+                        proto->MediaHeartbeatAfter =
+                                (long)current_time
+                                + MEDIA_HEARTBEAT_INTERVAL_SECONDS;
+                }
+        }
+}
+
+void sound_sfx_update( void )
+{
+        static int media_heartbeat_pulse = PULSE_PER_SECOND;
+        DESCRIPTOR_DATA *d;
+
+        /*
+         * Run the descriptor scan once per second. Each descriptor then uses
+         * MediaHeartbeatAfter to determine whether its persistent media is
+         * actually due for reassertion.
+         */
+        if (--media_heartbeat_pulse <= 0)
+        {
+                media_heartbeat_pulse = PULSE_PER_SECOND;
+                media_loop_heartbeat_update();
+        }
 
         for ( d = descriptor_list; d; d = d->next )
         {
@@ -1845,6 +2285,7 @@ void media_env_refresh( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force )
                                   "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":%d",
                                   new_key, room_vol, AMBIENT_FADE );
                         GMCP_Media_Play( ch->desc, room_name, opts );
+                        media_heartbeat_arm(proto);
 
                         if ( proto->MediaRoomActive )
                         {
@@ -1908,6 +2349,7 @@ void media_env_refresh( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force )
                                   "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":%d",
                                   new_key, area_vol, AMBIENT_FADE );
                         GMCP_Media_Play( ch->desc, area_name, opts );
+                        media_heartbeat_arm(proto);
 
                         if ( proto->MediaAreaActive )
                         {
@@ -1969,6 +2411,7 @@ void media_env_refresh( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force )
                                   "\"volume\":%d,\"loops\":-1,\"continue\":true,\"fadein\":%d",
                                   new_key, sect_vol, AMBIENT_FADE );
                         GMCP_Media_Play( ch->desc, sect_name, opts );
+                        media_heartbeat_arm(proto);
 
                         if ( proto->MediaSectorActive )
                         {
@@ -2190,12 +2633,12 @@ void media_music_refresh(CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force)
          * during the fade.
          */
         snprintf(opts, sizeof(opts),
-            "\"type\":\"music\",\"tag\":\"music\",\"key\":\"%s\","
-            "\"volume\":%d,\"loops\":\"-1\",\"continue\":\"true\","
-            "\"fadein\":%d",
-            new_key,
-            music_vol,
-            MEDIA_MUSIC_FADE);
+                 "\"type\":\"music\",\"tag\":\"music\",\"key\":\"%s\","
+                 "\"volume\":%d,\"loops\":-1,\"continue\":true,"
+                 "\"fadein\":%d",
+                 new_key,
+                 music_vol,
+                 MEDIA_MUSIC_FADE);
 
         if (SND_LOG_ENABLED ) {
             log_stringf("Music GMCP Play: name=%s opts=%s",
@@ -2204,6 +2647,7 @@ void media_music_refresh(CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool force)
         }
 
         GMCP_Media_Play(ch->desc, music_name, opts);
+        media_heartbeat_arm(proto);
 
         /*
          * Fade the outgoing key only when a previous music track was active.
