@@ -39,6 +39,14 @@ void note_attach args((CHAR_DATA * ch));
 void note_remove args((CHAR_DATA * ch, NOTE_DATA *pnote));
 void talk_channel args((CHAR_DATA * ch, char *argument, int channel, const char *verb));
 
+static const char *gmcp_comm_channel_name(int channel);
+
+static void gmcp_send_comm(DESCRIPTOR_DATA *d,
+                           CHAR_DATA *speaker,
+                           CHAR_DATA *viewer,
+                           const char *channel,
+                           const char *text);
+
 /*
  * 'Review' command channel buffers; Gez 2001
  */
@@ -98,6 +106,93 @@ int chan(int channel)
         }
 
         return c;
+}
+
+/*
+ * Stable names placed in Comm.Channel.Text.channel.
+ */
+static const char *gmcp_comm_channel_name(int channel)
+{
+        switch (channel)
+        {
+        case CHANNEL_AUCTION:
+                return "auction";
+
+        case CHANNEL_CHAT:
+                return "chat";
+
+        case CHANNEL_SERVER:
+                return "server";
+
+        case CHANNEL_IMMTALK:
+                return "immtalk";
+
+        case CHANNEL_MUSIC:
+                return "music";
+
+        case CHANNEL_QUESTION:
+                return "question";
+
+        case CHANNEL_SHOUT:
+                return "shout";
+
+        case CHANNEL_YELL:
+                return "yell";
+
+        /*
+         * DD's information/notification channel.
+         */
+        case CHANNEL_INFO:
+                return "info";
+
+        case CHANNEL_CLAN:
+                return "clan";
+
+        case CHANNEL_DIRTALK:
+                return "dirtalk";
+
+        case CHANNEL_ARENA:
+                return "arena";
+
+        case CHANNEL_NEWBIE:
+                return "newbie";
+
+        default:
+                return "unknown";
+        }
+}
+
+
+/*
+ * Send one communication to one exact recipient.
+ *
+ * PERS() is deliberately used for the talker. It returns the speaker's
+ * recipient-visible name, or "someone" when the speaker cannot be seen.
+ */
+static void gmcp_send_comm(DESCRIPTOR_DATA *d,
+                           CHAR_DATA *speaker,
+                           CHAR_DATA *viewer,
+                           const char *channel,
+                           const char *text)
+{
+        const char *talker;
+
+        if (!d
+        ||  !viewer
+        ||  !channel
+        ||  channel[0] == '\0'
+        ||  !text)
+                return;
+
+        talker = speaker
+                ? PERS(speaker, viewer)
+                : "";
+
+        GMCPSendCommChannelText(
+                d,
+                channel,
+                talker,
+                text);
 }
 
 /*
@@ -194,6 +289,22 @@ void talk_channel(CHAR_DATA *ch, char *argument, int channel, const char *verb)
                 sprintf(buf, "$c %ss%s '$t'$R", verb, verb2);
         }
 
+        /*
+         * INFO and ARENA do not display a self-message in the existing
+         * function. Every other channel has already displayed the sender's
+         * own communication above.
+         */
+        if (channel != CHANNEL_INFO
+        &&  channel != CHANNEL_ARENA)
+        {
+                gmcp_send_comm(
+                        ch->desc,
+                        ch,
+                        ch,
+                        gmcp_comm_channel_name(channel),
+                        argument);
+        }
+
         for (d = descriptor_list; d; d = d->next)
         {
                 CHAR_DATA *och;
@@ -222,8 +333,34 @@ void talk_channel(CHAR_DATA *ch, char *argument, int channel, const char *verb)
                         sprintf(buf2, "%s%s$R", color_table_8bit[get_colour_index_by_code(vch->colors[chan(channel)])].act_code, buf);
 
                         act(buf2, ch, argument, vch, TO_VICT);
-                        /* Play a channel notification sound for the recipient (if their settings allow). */
+
+                        /*
+                         * act() suppresses messages to sleeping recipients.
+                         *
+                         * Most channels temporarily place vch in
+                         * POS_STANDING above. SHOUT and YELL deliberately do
+                         * not, so this check preserves their existing hearing
+                         * behaviour.
+                         */
+                        if (IS_AWAKE(vch))
+                        {
+                                gmcp_send_comm(
+                                        d,
+                                        (channel == CHANNEL_INFO
+                                         || channel == CHANNEL_ARENA)
+                                                ? NULL
+                                                : ch,
+                                        vch,
+                                        gmcp_comm_channel_name(channel),
+                                        argument);
+                        }
+
+                        /*
+                         * Play a channel notification sound for the recipient
+                         * if their settings allow it.
+                         */
                         media_notify_channel(vch, channel);
+
                         vch->position = position;
                 }
         }
@@ -430,6 +567,17 @@ void do_say(CHAR_DATA *ch, char *argument)
         if (ch->desc)
         {
                 act(buf, ch, argument, NULL, TO_CHAR);
+
+                if (IS_AWAKE(ch))
+                {
+                        gmcp_send_comm(
+                                ch->desc,
+                                ch,
+                                ch,
+                                "say",
+                                argument);
+                }
+
                 MOBtrigger = FALSE;
         }
 
@@ -442,6 +590,17 @@ void do_say(CHAR_DATA *ch, char *argument)
                 if (mob != ch && mob->desc != NULL)
                 {
                         act(buf, mob, argument, NULL, TO_CHAR);
+
+                        if (IS_AWAKE(mob))
+                        {
+                                gmcp_send_comm(
+                                        mob->desc,
+                                        ch,
+                                        mob,
+                                        "say",
+                                        argument);
+                        }
+
                         MOBtrigger = FALSE;
                 }
                 if (IS_NPC(ch) && IS_NPC(mob) && mob->pIndexData->vnum == ch->pIndexData->vnum)
@@ -457,6 +616,7 @@ void do_tell(CHAR_DATA *ch, char *argument)
         CHAR_DATA *victim;
         char arg[MAX_INPUT_LENGTH];
         char buf[MAX_STRING_LENGTH];
+        char gmcp_channel[MAX_INPUT_LENGTH];
         int position;
 
         if (!IS_NPC(ch) && (IS_SET(ch->act, PLR_SILENCE) || ch->silent_mode || IS_SET(ch->act, PLR_NO_TELL)))
@@ -501,12 +661,45 @@ void do_tell(CHAR_DATA *ch, char *argument)
                 color_table_8bit[get_colour_index_by_code(ch->colors[COLOR_TELL])].act_code);
         act(buf, ch, argument, victim, TO_CHAR);
 
+        if (ch->desc && IS_AWAKE(ch))
+        {
+                snprintf(
+                        gmcp_channel,
+                        sizeof(gmcp_channel),
+                        "tell %s",
+                        PERS(victim, ch));
+
+                gmcp_send_comm(
+                        ch->desc,
+                        ch,
+                        ch,
+                        gmcp_channel,
+                        argument);
+        }
+
         sprintf(buf, "%s$C tells you '$t'$R",
                 color_table_8bit[get_colour_index_by_code(victim->colors[COLOR_TELL])].act_code);
 
         position = victim->position;
         victim->position = POS_STANDING;
         act(buf, victim, argument, ch, TO_CHAR);
+
+        if (victim->desc)
+        {
+                snprintf(
+                        gmcp_channel,
+                        sizeof(gmcp_channel),
+                        "tell %s",
+                        PERS(ch, victim));
+
+                gmcp_send_comm(
+                        victim->desc,
+                        ch,
+                        victim,
+                        gmcp_channel,
+                        argument);
+        }
+
         victim->position = position;
         victim->reply = ch;
 
@@ -520,6 +713,7 @@ void do_reply(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
         char buf[MAX_STRING_LENGTH];
+        char gmcp_channel[MAX_INPUT_LENGTH];
         int position;
 
         if (!IS_NPC(ch) && (IS_SET(ch->act, PLR_SILENCE)))
@@ -555,12 +749,47 @@ void do_reply(CHAR_DATA *ch, char *argument)
         sprintf(buf, "%sYou tell $N '$t'$R",
                 color_table_8bit[get_colour_index_by_code(ch->colors[COLOR_TELL])].act_code);
         act(buf, ch, argument, victim, TO_CHAR);
+
+        if (ch->desc && IS_AWAKE(ch))
+        {
+                snprintf(
+                        gmcp_channel,
+                        sizeof(gmcp_channel),
+                        "tell %s",
+                        PERS(victim, ch));
+
+                gmcp_send_comm(
+                        ch->desc,
+                        ch,
+                        ch,
+                        gmcp_channel,
+                        argument);
+        }
+
         position = victim->position;
         victim->position = POS_STANDING;
 
         sprintf(buf, "%s$c tells you '$t'$R",
                 color_table_8bit[get_colour_index_by_code(ch->colors[COLOR_TELL])].act_code);
+
         act(buf, ch, argument, victim, TO_VICT);
+
+        if (victim->desc)
+        {
+                snprintf(
+                        gmcp_channel,
+                        sizeof(gmcp_channel),
+                        "tell %s",
+                        PERS(ch, victim));
+
+                gmcp_send_comm(
+                        victim->desc,
+                        ch,
+                        victim,
+                        gmcp_channel,
+                        argument);
+        }
+
         victim->position = position;
         victim->reply = ch;
 
@@ -1736,8 +1965,22 @@ void do_gtell(CHAR_DATA *ch, char *argument)
                         color_table_8bit[get_colour_index_by_code(gch->colors[COLOR_TELL])].act_code, ch->name, argument);
                 position = gch->position;
                 gch->position = POS_STANDING;
+
                 if (is_same_group(gch, ch))
+                {
                         act(buf, gch, NULL, NULL, TO_CHAR);
+
+                        if (gch->desc)
+                        {
+                                gmcp_send_comm(
+                                        gch->desc,
+                                        ch,
+                                        gch,
+                                        "group",
+                                        argument);
+                        }
+                }
+
                 gch->position = position;
         }
 
@@ -1788,8 +2031,22 @@ void talk_auction(char *argument)
                 {
                         sprintf(buf, "%sAUCTION: $t$R",
                                 color_table_8bit[original->colors[COLOR_AUCTION]].act_code);
+
                         act(buf, original, argument, NULL, TO_CHAR);
-                        media_notify_channel(original, CHANNEL_AUCTION);
+
+                        if (IS_AWAKE(original))
+                        {
+                                gmcp_send_comm(
+                                        d,
+                                        NULL,
+                                        original,
+                                        "auction",
+                                        argument);
+                        }
+
+                        media_notify_channel(
+                                original,
+                                CHANNEL_AUCTION);
                 }
         }
 }
@@ -1812,6 +2069,16 @@ void server_message(const char *text)
                         sprintf(buf, "%s[Server] $t$R",
                                 color_table_8bit[get_colour_index_by_code(ch->colors[COLOR_SERVER])].act_code);
                         act(buf, ch, text, NULL, TO_CHAR);
+
+                        if (IS_AWAKE(ch))
+                        {
+                                gmcp_send_comm(
+                                        d,
+                                        NULL,
+                                        ch,
+                                        "server",
+                                        text);
+                        }
                 }
         }
 }

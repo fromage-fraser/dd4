@@ -3217,6 +3217,7 @@ const struct gmcp_package_struct GMCPPackageTable[GMCP_PACKAGE_MAX + 1] =
         {GMCP_WORTH, GMCP_SUPPORT_CHAR, "Char", "Worth"},
         {GMCP_AFFECTED, GMCP_SUPPORT_CHAR, "Char", "Affect"},
         {GMCP_ITEMS, GMCP_SUPPORT_CHAR, "Char", "Items"},
+        {GMCP_WORN, GMCP_SUPPORT_CHAR, "Char", "Worn"},
         {GMCP_ENEMIES, GMCP_SUPPORT_CHAR, "Char", "Enemies"},
         {GMCP_ROOM, GMCP_SUPPORT_ROOM, "Room", "Info"},
         {GMCP_CONFIG, GMCP_SUPPORT_CHAR, "Char", "Config"},
@@ -3297,6 +3298,7 @@ const struct gmcp_variable_struct GMCPVariableTable[GMCP_MAX + 1] =
         {GMCP_ENEMY, GMCP_ENEMIES, NULL, GMCP_ARRAY},
         {GMCP_AFFECT, GMCP_AFFECTED, NULL, GMCP_ARRAY},
         {GMCP_INVENTORY, GMCP_ITEMS, NULL, GMCP_ARRAY},
+        {GMCP_WORN_ITEMS, GMCP_WORN, NULL, GMCP_ARRAY},
         {GMCP_AREA, GMCP_ROOM, "area", GMCP_STRING},
         {GMCP_ROOM_NAME, GMCP_ROOM, "name", GMCP_STRING},
         {GMCP_ROOM_SECT, GMCP_ROOM, "sector", GMCP_NUMBER},
@@ -3959,6 +3961,162 @@ void GMCPEmit(descriptor_t *d, const char *module, const char *json_body)
             (json_body && *json_body) ? json_body : "", (char *)iac_se);
 #endif
    Write(d, buf);
+}
+
+/*
+ * Escape text for use inside a JSON string.
+ *
+ * UTF-8 bytes are preserved. JSON-sensitive characters and standard control
+ * characters are escaped. Other control bytes are converted to spaces.
+ */
+void GMCPJSONEscape(char *out, const char *in, int out_size)
+{
+   int           i;
+   int           j;
+   unsigned char c;
+   char          escaped;
+
+   if (!out || out_size <= 0)
+      return;
+
+   out[0] = '\0';
+
+   if (!in)
+      return;
+
+   j = 0;
+
+   for (i = 0; in[i] != '\0' && j < out_size - 1; i++)
+   {
+      c = (unsigned char)in[i];
+      escaped = '\0';
+
+      switch (c)
+      {
+      case '"':
+         escaped = '"';
+         break;
+
+      case '\\':
+         escaped = '\\';
+         break;
+
+      case '\b':
+         escaped = 'b';
+         break;
+
+      case '\f':
+         escaped = 'f';
+         break;
+
+      case '\n':
+         escaped = 'n';
+         break;
+
+      case '\r':
+         escaped = 'r';
+         break;
+
+      case '\t':
+         escaped = 't';
+         break;
+
+      default:
+         break;
+      }
+
+      if (escaped != '\0')
+      {
+         /*
+          * Two escaped characters plus the terminating NUL are required.
+          */
+         if (j + 2 >= out_size)
+            break;
+
+         out[j++] = '\\';
+         out[j++] = escaped;
+      }
+      else if (c < 0x20)
+      {
+         /*
+          * Do not place unescaped control bytes into JSON.
+          */
+         out[j++] = ' ';
+      }
+      else
+      {
+         out[j++] = (char)c;
+      }
+   }
+
+   out[j] = '\0';
+}
+
+
+/*
+ * Send a structured communication event.
+ *
+ * This is deliberately emitted directly rather than being stored as a normal
+ * GMCP package variable: communications are discrete events and identical
+ * consecutive messages must each be delivered.
+ */
+void GMCPSendCommChannelText(descriptor_t *d,
+                             const char *channel,
+                             const char *talker,
+                             const char *text)
+{
+   char channel_escaped[256];
+   char talker_escaped[MAX_INPUT_LENGTH * 2];
+   char text_escaped[MAX_PROTOCOL_BUFFER - 1024];
+   char body[MAX_PROTOCOL_BUFFER];
+   int  length;
+
+   if (!d
+   ||  !d->pProtocol
+   ||  !d->pProtocol->bGMCP)
+      return;
+
+   if (!channel
+   ||  channel[0] == '\0'
+   ||  !text)
+      return;
+
+   GMCPJSONEscape(
+      channel_escaped,
+      channel,
+      sizeof(channel_escaped));
+
+   GMCPJSONEscape(
+      talker_escaped,
+      talker ? talker : "",
+      sizeof(talker_escaped));
+
+   GMCPJSONEscape(
+      text_escaped,
+      text,
+      sizeof(text_escaped));
+
+   length = snprintf(
+      body,
+      sizeof(body),
+      "{"
+      "\"channel\":\"%s\","
+      "\"talker\":\"%s\","
+      "\"text\":\"%s\""
+      "}",
+      channel_escaped,
+      talker_escaped,
+      text_escaped);
+
+   if (length < 0 || length >= (int)sizeof(body))
+   {
+      ReportBug(
+         "GMCPSendCommChannelText: communication exceeded "
+         "MAX_PROTOCOL_BUFFER.\n");
+      return;
+   }
+
+   GMCPEmit(d, "Comm.Channel.Text", body);
 }
 
 void GMCP_Media_Default(descriptor_t *d, const char *base_url)
