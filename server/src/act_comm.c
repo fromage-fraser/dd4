@@ -196,6 +196,254 @@ static void gmcp_send_comm(DESCRIPTOR_DATA *d,
 }
 
 /*
+ * Channels represented in Char.Channels.
+ *
+ * TELL is appended separately because it uses PLR_NO_TELL rather than a
+ * CHANNEL_* bit in ch->deaf.
+ *
+ * SAY and GROUP are not included because DD4 does not provide individual
+ * enable/disable settings for them.
+ */
+static const int gmcp_channel_state_bits[] =
+{
+        CHANNEL_AUCTION,
+        CHANNEL_CHAT,
+        CHANNEL_MUSIC,
+        CHANNEL_QUESTION,
+        CHANNEL_SHOUT,
+        CHANNEL_YELL,
+        CHANNEL_INFO,
+        CHANNEL_CLAN,
+        CHANNEL_ARENA,
+        CHANNEL_NEWBIE,
+        CHANNEL_IMMTALK,
+        CHANNEL_DIRTALK,
+        CHANNEL_SERVER,
+        0
+};
+
+
+/*
+ * Return whether the character is currently entitled to receive a channel.
+ *
+ * These checks follow the actual recipient restrictions in talk_channel()
+ * and server_message(), rather than merely copying which channels happen to
+ * be printed by the textual CHANNELS command.
+ */
+static bool gmcp_channel_has_access(CHAR_DATA *ch, int channel)
+{
+        if (!ch || IS_NPC(ch))
+                return FALSE;
+
+        switch (channel)
+        {
+        case CHANNEL_IMMTALK:
+                /*
+                 * talk_channel() permits heroes and immortals to receive
+                 * immtalk.
+                 */
+                return IS_HERO(ch);
+
+        case CHANNEL_DIRTALK:
+                /*
+                 * talk_channel() permits L_SEN and above to receive dirtalk.
+                 */
+                return get_trust(ch) >= L_SEN;
+
+        case CHANNEL_SERVER:
+                /*
+                 * server_message() sends only to levels above L_DIR.
+                 */
+                return ch->level > L_DIR;
+
+        case CHANNEL_CLAN:
+                /*
+                 * Independent clans are treated as non-clan characters by
+                 * do_clantalk().
+                 */
+                if (!is_clan(ch))
+                        return FALSE;
+
+                if (ch->clan < 0 || ch->clan >= MAX_CLAN)
+                        return FALSE;
+
+                return !clan_table[ch->clan].independent;
+
+        case CHANNEL_NEWBIE:
+                /*
+                 * The same condition is used by do_newbie() and
+                 * talk_channel().
+                 */
+                return ch->level <= 4
+                    || ch->level >= LEVEL_HERO
+                    || IS_SET(ch->act, PLR_GUIDE);
+
+        default:
+                return TRUE;
+        }
+}
+
+
+/*
+ * Publish all configurable channel states for one character.
+ *
+ * access:
+ *     The character is entitled to receive the channel.
+ *
+ * enabled:
+ *     The channel's own mute flag is off. This remains independent of quiet
+ *     mode so the client can preserve the player's individual preferences.
+ *
+ * receiving:
+ *     The character will currently receive the channel after applying quiet
+ *     mode. Server messages deliberately bypass quiet mode in server_message().
+ *
+ * silenced:
+ *     PLR_SILENCE blocks the character from transmitting most communications,
+ *     but does not itself stop incoming channel messages.
+ */
+void gmcp_send_channel_state(CHAR_DATA *ch)
+{
+        char json[MAX_STRING_LENGTH];
+        int i;
+        int channel;
+        int used;
+        int written;
+        bool access;
+        bool enabled;
+        bool receiving;
+        bool quiet;
+        bool silenced;
+
+        if (!ch
+        ||  IS_NPC(ch)
+        ||  !ch->desc
+        ||  !ch->desc->pProtocol
+        ||  !ch->desc->pProtocol->bGMCP)
+        {
+                return;
+        }
+
+        quiet = ch->silent_mode != 0;
+        silenced = IS_SET(ch->act, PLR_SILENCE);
+
+        used = snprintf(
+                json,
+                sizeof(json),
+                "{"
+                "\"quiet\":%s,"
+                "\"silenced\":%s,"
+                "\"channels\":[",
+                quiet ? "true" : "false",
+                silenced ? "true" : "false");
+
+        if (used < 0 || used >= (int)sizeof(json))
+        {
+                bug(
+                        "Gmcp_send_channel_state: "
+                        "unable to start channel-state JSON.",
+                        0);
+                return;
+        }
+
+        for (i = 0; gmcp_channel_state_bits[i] != 0; i++)
+        {
+                channel = gmcp_channel_state_bits[i];
+
+                access = gmcp_channel_has_access(ch, channel);
+
+                enabled = access
+                       && !IS_SET(ch->deaf, channel);
+
+                /*
+                 * Every ordinary channel is suppressed by quiet mode.
+                 * SERVER is the exception: server_message() does not test
+                 * silent_mode.
+                 */
+                receiving = enabled
+                         && (channel == CHANNEL_SERVER || !quiet);
+
+                written = snprintf(
+                        json + used,
+                        sizeof(json) - used,
+                        "%s"
+                        "{"
+                        "\"name\":\"%s\","
+                        "\"access\":%s,"
+                        "\"enabled\":%s,"
+                        "\"receiving\":%s"
+                        "}",
+                        i == 0 ? "" : ",",
+                        gmcp_comm_channel_name(channel),
+                        access ? "true" : "false",
+                        enabled ? "true" : "false",
+                        receiving ? "true" : "false");
+
+                if (written < 0
+                ||  written >= (int)(sizeof(json) - used))
+                {
+                        bug(
+                                "Gmcp_send_channel_state: "
+                                "channel-state JSON exceeded buffer.",
+                                0);
+                        return;
+                }
+
+                used += written;
+        }
+
+        /*
+         * TELL uses PLR_NO_TELL rather than ch->deaf.
+         */
+        access = TRUE;
+        enabled = !IS_SET(ch->act, PLR_NO_TELL);
+        receiving = enabled && !quiet;
+
+        written = snprintf(
+                json + used,
+                sizeof(json) - used,
+                ","
+                "{"
+                "\"name\":\"tell\","
+                "\"access\":%s,"
+                "\"enabled\":%s,"
+                "\"receiving\":%s"
+                "}",
+                access ? "true" : "false",
+                enabled ? "true" : "false",
+                receiving ? "true" : "false");
+
+        if (written < 0
+        ||  written >= (int)(sizeof(json) - used))
+        {
+                bug(
+                        "Gmcp_send_channel_state: "
+                        "tell state exceeded buffer.",
+                        0);
+                return;
+        }
+
+        used += written;
+
+        written = snprintf(
+                json + used,
+                sizeof(json) - used,
+                "]}");
+
+        if (written < 0
+        ||  written >= (int)(sizeof(json) - used))
+        {
+                bug(
+                        "Gmcp_send_channel_state: "
+                        "unable to terminate channel-state JSON.",
+                        0);
+                return;
+        }
+
+        GMCPSendChannelState(ch->desc, json);
+}
+
+/*
  * Generic channel function.
  */
 void talk_channel(CHAR_DATA *ch, char *argument, int channel, const char *verb)
@@ -235,6 +483,13 @@ void talk_channel(CHAR_DATA *ch, char *argument, int channel, const char *verb)
 
         if (channel != CHANNEL_INFO)
                 ch->silent_mode = 0;
+
+        /*
+         * Speaking on a channel automatically enables that channel and, for
+         * ordinary channels, leaves quiet mode. Publish the resulting state.
+         */
+        if (!IS_NPC(ch))
+                gmcp_send_channel_state(ch);
 
         if (channel == CHANNEL_INFO)
                 sprintf(buf, "<<INFO>: $t");
@@ -1801,6 +2056,8 @@ void do_tellmode(CHAR_DATA *ch, char *argument)
                 SET_BIT(ch->act, PLR_NO_TELL);
                 send_to_char("You no longer hear tells.\n\r", ch);
         }
+
+        gmcp_send_channel_state(ch);
 }
 
 void do_gag(CHAR_DATA *ch, char *argument)
@@ -1843,6 +2100,8 @@ void do_quiet(CHAR_DATA *ch, char *argument)
                 send_to_char("Silent mode on.\n\r", ch);
                 ch->silent_mode = 1;
         }
+
+        gmcp_send_channel_state(ch);
 }
 
 /*

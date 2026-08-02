@@ -532,6 +532,16 @@ typedef struct
    bool_t bGMCPSupport[GMCP_SUPPORT_MAX];       /* The client supports specific modules */
    bool_t bGMCPUpdatePackage[GMCP_PACKAGE_MAX]; /* Send these packages to the client. */
    char *GMCPVariable[GMCP_MAX];                /* The message for each variable */
+
+   /*
+    * Last Char.Channels JSON body sent to this descriptor.
+    *
+    * Char.Channels is emitted directly rather than through
+    * GMCPVariableTable because its body contains both an array and
+    * top-level state fields.
+    */
+   char *GMCPChannelState;
+
    bool_t bClientMediaDefaultSent;
    /* --- MCMP: per-descriptor ambient state (for key="room-ambient") --- */
    char *MediaAmbientName;    /* last 'name' we told the client to play (or NULL) */
@@ -864,6 +874,9 @@ void GMCPSendCommChannelText(descriptor_t *d,
                              const char *channel,
                              const char *talker,
                              const char *text);
+
+void GMCPSendChannelState(descriptor_t *d,
+                          const char *json_body);
 
 void GMCP_Media_Default(descriptor_t *d, const char *base_url);
 void GMCP_Media_Play(descriptor_t *d, const char *name, const char *opts_json);

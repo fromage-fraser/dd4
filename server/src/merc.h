@@ -4960,6 +4960,7 @@ void talk_auction args((char *argument));
 void do_quit args((CHAR_DATA * ch, char *argument));
 bool is_group_members_mount(CHAR_DATA *mount, CHAR_DATA *ch);
 void server_message(const char *text);
+void gmcp_send_channel_state args((CHAR_DATA * ch));
 
 /*
  * Colour stuff by Lope of Loping Through The MUD
