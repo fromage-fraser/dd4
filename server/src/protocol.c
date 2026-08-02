@@ -379,6 +379,12 @@ protocol_t *ProtocolCreate(void)
    for (i = 0; i < GMCP_PACKAGE_MAX; i++)
       pProtocol->bGMCPUpdatePackage[i] = 0;
 
+   /*
+    * Char.Channels has its own per-descriptor cache because it is sent
+    * directly with GMCPEmit().
+    */
+   pProtocol->GMCPChannelState = AllocString("");
+
    /* Sound stuff */
 
    pProtocol->bClientMediaDefaultSent = false;
@@ -448,6 +454,12 @@ void ProtocolDestroy(protocol_t *apProtocol)
    /*************** START GMCP ***************/
    for (i = 0; i < GMCP_MAX; i++)
       free(apProtocol->GMCPVariable[i]);
+
+   if (apProtocol->GMCPChannelState)
+   {
+      free(apProtocol->GMCPChannelState);
+      apProtocol->GMCPChannelState = NULL;
+   }
    /*************** END GMCP ***************/
 
    /* Sound stuff */
@@ -4117,6 +4129,50 @@ void GMCPSendCommChannelText(descriptor_t *d,
    }
 
    GMCPEmit(d, "Comm.Channel.Text", body);
+}
+
+/*
+ * Send Char.Channels only when the JSON state has changed.
+ *
+ * Unlike Comm.Channel.Text, this is persistent state rather than an event.
+ * Caching prevents gmcp_update() from resending the same channel list on
+ * every game pulse.
+ */
+void GMCPSendChannelState(descriptor_t *d,
+                          const char *json_body)
+{
+   protocol_t *protocol;
+   const char *body;
+   char *copy;
+
+   if (!d
+   ||  !d->pProtocol
+   ||  !d->pProtocol->bGMCP)
+      return;
+
+   protocol = d->pProtocol;
+
+   body = json_body && json_body[0] != '\0'
+        ? json_body
+        : "{}";
+
+   if (protocol->GMCPChannelState
+   &&  !strcmp(protocol->GMCPChannelState, body))
+      return;
+
+   copy = AllocString(body);
+
+   if (!copy)
+   {
+      ReportBug(
+         "GMCPSendChannelState: unable to allocate channel-state cache.\n");
+      return;
+   }
+
+   free(protocol->GMCPChannelState);
+   protocol->GMCPChannelState = copy;
+
+   GMCPEmit(d, "Char.Channels", body);
 }
 
 void GMCP_Media_Default(descriptor_t *d, const char *base_url)

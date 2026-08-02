@@ -5046,6 +5046,13 @@ void do_channels(CHAR_DATA *ch, char *argument)
                 send_to_char("Ok.\n\r", ch);
         }
 
+        /*
+         * This sends immediately after a valid channel toggle. When CHANNELS
+         * was used without arguments, the cache usually suppresses the packet
+         * unless another state change has occurred.
+         */
+        gmcp_send_channel_state(ch);
+
         return;
 }
 
