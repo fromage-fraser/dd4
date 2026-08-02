@@ -180,6 +180,163 @@ static void gmcp_flatten_text( char *out, const char *in, int out_size )
         out[j] = '\0';
 }
 
+/*
+ * Stable GMCP names for DD4's equipment slots.
+ *
+ * The order must match WEAR_LIGHT through WEAR_RANGED_WEAPON.
+ */
+static const char *const gmcp_wear_slot_names[MAX_WEAR] =
+{
+        "light",
+        "finger_l",
+        "finger_r",
+        "neck_1",
+        "neck_2",
+        "body",
+        "head",
+        "legs",
+        "feet",
+        "hands",
+        "arms",
+        "shield",
+        "about",
+        "waist",
+        "wrist_l",
+        "wrist_r",
+        "wield",
+        "hold",
+        "dual",
+        "float",
+        "pouch",
+        "ranged_weapon"
+};
+
+
+/*
+ * Build the contents of a Char.Worn JSON array.
+ *
+ * Do not put the outer '[' and ']' in this buffer. WriteGMCP() supplies them
+ * because GMCP_WORN_ITEMS is declared as GMCP_ARRAY.
+ */
+static void gmcp_build_worn_equipment(CHAR_DATA *ch,
+                                      char *out,
+                                      int out_size)
+{
+        OBJ_DATA *obj;
+        char      entry[MAX_STRING_LENGTH];
+        char      name_escaped[MAX_INPUT_LENGTH * 2];
+        char      keywords_escaped[MAX_INPUT_LENGTH * 2];
+        char      material_escaped[MAX_INPUT_LENGTH * 2];
+        int       wear_loc;
+        int       used;
+        int       written;
+        bool      first;
+
+        if (!out || out_size <= 0)
+                return;
+
+        out[0] = '\0';
+
+        if (!ch)
+                return;
+
+        used = 0;
+        first = TRUE;
+
+        for (wear_loc = WEAR_LIGHT;
+             wear_loc < MAX_WEAR;
+             wear_loc++)
+        {
+                obj = get_eq_char(ch, wear_loc);
+
+                if (!obj || obj->deleted)
+                        continue;
+
+                GMCPJSONEscape(
+                        name_escaped,
+                        obj->short_descr ? obj->short_descr : "",
+                        sizeof(name_escaped));
+
+                GMCPJSONEscape(
+                        keywords_escaped,
+                        obj->name ? obj->name : "",
+                        sizeof(keywords_escaped));
+
+                GMCPJSONEscape(
+                        material_escaped,
+                        obj->material ? obj->material : "",
+                        sizeof(material_escaped));
+
+                written = snprintf(
+                        entry,
+                        sizeof(entry),
+                        "%s"
+                        "{"
+                        "\"slot\":\"%s\","
+                        "\"wear_loc\":%d,"
+                        "\"instance_id\":\"%llu\","
+                        "\"vnum\":%d,"
+                        "\"name\":\"%s\","
+                        "\"keywords\":\"%s\","
+                        "\"item_type\":%d,"
+                        "\"level\":%d,"
+                        "\"weight\":%d,"
+                        "\"identified\":%s,"
+                        "\"material\":\"%s\""
+                        "}",
+                        first ? "" : ",",
+                        gmcp_wear_slot_names[wear_loc],
+                        wear_loc,
+                        (unsigned long long)obj->target_id,
+                        obj->pIndexData
+                                ? obj->pIndexData->vnum
+                                : 0,
+                        name_escaped,
+                        keywords_escaped,
+                        obj->item_type,
+                        obj->level,
+                        obj->weight,
+                        obj->identified
+                                ? "true"
+                                : "false",
+                        material_escaped);
+
+                if (written < 0
+                ||  written >= (int)sizeof(entry)
+                ||  used + written >= out_size)
+                {
+                        bug(
+                                "Gmcp_build_worn_equipment: "
+                                "equipment JSON was truncated.",
+                                0);
+                        break;
+                }
+
+                memcpy(out + used, entry, written);
+
+                used += written;
+                out[used] = '\0';
+                first = FALSE;
+        }
+
+        /*
+         * GMCP variables start as empty strings. Store one whitespace
+         * character for an empty equipment list so the initial empty array
+         * differs from the initial cache and is sent to the client.
+         *
+         * WriteGMCP() will produce:
+         *
+         *     Char.Worn [   ]
+         *
+         * which is valid empty-array JSON.
+         */
+        if (first && out_size > 1)
+        {
+                out[0] = ' ';
+                out[1] = '\0';
+        }
+}
+
 void advance_stat(CHAR_DATA *ch)
 {
         int type = -1;
@@ -3439,6 +3596,23 @@ void gmcp_update(void)
                                 strcat(buf, " ]");
 
                         UpdateGMCPString(d, GMCP_AFFECT, buf);
+
+                        /*
+                         * Worn equipment.
+                         *
+                         * UpdateGMCPString() compares this deterministic JSON
+                         * with the previous value, so Char.Worn is only sent
+                         * when the equipment actually changes.
+                         */
+                        gmcp_build_worn_equipment(
+                                d->character,
+                                buf,
+                                sizeof(buf));
+
+                        UpdateGMCPString(
+                                d,
+                                GMCP_WORN_ITEMS,
+                                buf);
 
                         /* Inventory */
 

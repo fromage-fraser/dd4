@@ -316,6 +316,7 @@ typedef enum
    GMCP_WORTH,
    GMCP_AFFECTED,
    GMCP_ITEMS,
+   GMCP_WORN,
    GMCP_ENEMIES,
    GMCP_ROOM,
    GMCP_CONFIG,
@@ -403,6 +404,9 @@ typedef enum
 
    /* Inventory */
    GMCP_INVENTORY,
+
+   /* Worn equipment */
+   GMCP_WORN_ITEMS,
 
    /* Room */
    GMCP_AREA,
@@ -851,6 +855,16 @@ void SoundSend(descriptor_t *apDescriptor, const char *apTrigger);
 /* Sound implementation */
 
 void GMCPEmit(descriptor_t *d, const char *module, const char *json_body);
+
+void GMCPJSONEscape(char *out,
+                    const char *in,
+                    int out_size);
+
+void GMCPSendCommChannelText(descriptor_t *d,
+                             const char *channel,
+                             const char *talker,
+                             const char *text);
+
 void GMCP_Media_Default(descriptor_t *d, const char *base_url);
 void GMCP_Media_Play(descriptor_t *d, const char *name, const char *opts_json);
 void GMCP_Media_Stop(descriptor_t *d, const char *criteria_json);
