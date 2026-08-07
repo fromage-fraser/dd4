@@ -49,8 +49,8 @@ riverwind man~
 Riverwind~
 Riverwind the Ranger is standing here.
 ~
-A black haired ranger whose muscles surge with power.
-He looks travel weary and tired but happy to help.
+A black-haired ranger whose muscles surge with power.
+He looks travel-weary and tired, but happy to help.
 ~
 64|512|1024 128 900 S
 30 0 0 0d0+0 0d0+0
@@ -67,7 +67,7 @@ Baaz Draconian robed~
 Baaz Draconian~
 A robed figure is standing here.
 ~
-Its hard to tell anything about the figure. It is concealed by its heavy robe
+It's hard to tell anything about the figure. It is concealed by its heavy robe
 and hood.
 ~
 67 512 -750 S
@@ -79,7 +79,7 @@ Farmer~
 The Farmer~
 The Farmer is standing here looking after his workers...
 ~
-He looks like a farmer...go figure...
+He looks like a farmer... go figure.
 ~
 1 0 150 S
 10 0 0 0d0+0 0d0+0
@@ -90,7 +90,7 @@ Farm worker~
 Farm worker~
 A farm worker is here harvesting grain.
 ~
-The worker is very busy...leave him alone.
+The worker is very busy... leave him alone.
 ~
 64 0 125 S
 5 0 0 0d0+0 0d0+0
@@ -99,9 +99,9 @@ The worker is very busy...leave him alone.
 #10007
 barracuda~
 Barracuda~
-there is a barracuda swimming around you...it looks hungry..
+There is a barracuda swimming around you...it looks hungry..
 ~
-This is a very hungry looking fish with BIG teeth...
+This is a very hungry-looking fish with BIG teeth...
 ~
 34 0 20 S
 7 0 0 0d0+0 0d0+0
@@ -112,9 +112,9 @@ Turtle Dragon~
 Turtle dragon~
 There is a very large Turtle dragon here.
 ~
-This is a very big dragon. It looks more turtle than dragon though.
-Its blue-green scales glisten with moisture. Steam jets from its nostrals.
-It looks intently at you as if you look you over before eating you.
+This is a very big dragon. It looks more like a turtle than a dragon, though.
+Its blue-green scales glisten with moisture. Steam jets from its nostrils.
+It looks intently at you as if inspecting you before deciding to eat you.
 ~
 99 8 -700 S
 27 0 0 0d0+0 0d0+0
@@ -125,8 +125,8 @@ farmers guard dog~
 Farmers guarddog~
 The Farmer's guarddog is here guarding whatever he's suppose to guard.
 ~
-This is a very mean looking dog. And since it doesn't know you ...I think he's
-thinking of biting you!!....
+This is a very mean-looking dog. And since it doesn't know you... I think he's
+thinking of biting you!
 ~
 34 8 100 S
 7 0 0 0d0+0 0d0+0
@@ -148,7 +148,7 @@ hobgoblin flunky~
 hobgoblin flunky~
 A small hobgoblin seems to be searching for something.
 ~
-The hobgoblin screams at you, "Give me the blue crystal staff!!!!"
+The hobgoblin screams at you, "Give me the blue crystal staff!"
 ~
 68 0 -300 S
 6 12 6 6d6+60 2d4+0
@@ -159,8 +159,8 @@ White Stag~
 the White Stag~
 A beautiful white stag is here.
 ~
-This is the White Stag. You can't believe you actually see it...It is
-suppose to be just a legend...
+This is the White Stag. You can't believe you actually see it... it is supposed
+to be just a legend...
 ~
 68 65536 -300 S
 17 12 6 6d6+60 2d4+0
@@ -194,7 +194,7 @@ mouse field~
 a field mouse~
 A small mouse runs across your foot.
 ~
-The Mouse is a cute little creature.
+The mouse is a cute little creature.
 ~
 6 0 100 S
 4 19 9 2d4+10 1d4+0
@@ -239,8 +239,7 @@ A blue crystal staff lies here.~
 E
 blue crystal staff~
 This staff is carved from a single piece of blue crystal. It is about five
-feet
-long and has a two-inch-diameter shaft. The ornamentally bladed head of
+feet long and has a two-inch-diameter shaft. The ornamentally-bladed head of
 the staff bears a gem in its center.
 ~
 #10004
@@ -272,7 +271,7 @@ There is a fire pit here, still smoldering.~
 0 0 0
 E
 fire pit~
-This is the smoldering fire pit of whomever's camp this was.
+This is the smoldering fire pit of whoever's camp this was.
 ~
 #10006
 house key ~
@@ -284,7 +283,7 @@ There is a house key on the ground.~
 2 0 0
 E
 house key~
-This looks like someones house key.
+This looks like someone's house key.
 ~
 #10007
 coathanger~
@@ -296,7 +295,7 @@ There is a coathanger on the ground.~
 2 0 0
 E
 coathanger~
-It looks like a coathanger...duh....
+It looks like a coathanger... duh.
 ~
 #10008
 silver longsword~
@@ -317,14 +316,14 @@ A
 #10009
 farmer longjohns~
 a farmer's longjohns~
-a pair of farmers longjohns are lying here.~
+A pair of farmers' longjohns are lying here.~
 ~
 9 0 1|8
 5~ 0~ 0~ 0~
 2 20 8
 E
 longjohns~
-Its a pair of longjohns....the kind a farmer would wear.
+It's a pair of longjohns... the kind a farmer would wear.
 ~
 #10010
 ancient coins gold~
@@ -336,7 +335,7 @@ Some ancient gold coins lie piled up in a heap on the floor.~
 0 0 0
 E
 coins~
-The coins seem to be gold.  From a spanish shipwreck maybe?
+The coins seem to be gold.  From a Spanish shipwreck maybe?
 ~
 #10011
 ancient coins gold~
@@ -348,7 +347,7 @@ Some ancient gold coins lie piled up in a heap on the floor.~
 0 0 0
 E
 coins~
-The coins seem to be gold.  From a spanish shipwreck maybe?
+The coins seem to be gold.  From a Spanish shipwreck maybe?
 ~
 #10012
 grain~
@@ -361,7 +360,7 @@ There is some grain here.~
 #10013
 leather armor~
 leather armor~
-There is a suit of leather armor~
+There is a suit of leather armor here.~
 ~
 9 0 1|8
 2~ 0~ 0~ 0~
@@ -376,47 +375,45 @@ There is a chamorro dagger lying here.~
 5 0 0
 E
 chamorro dagger~
-a chamorro dagger what else? It is engraved with, "Made in Guam"
+A chamorro dagger, what else? It is engraved with "Made in Guam".
 ~
 #10015
 Footman's Lance~
 a Footman's lance~
-There is a long wicked looking pole arm lying here.~
+There is a long, wicked-looking polearm lying here.~
 ~
 5 134217728 1|8192
 0~ 7~ 15~ 0~
 20 0 0
 E
 footmans lance~
-This is a long pole arm with detailed engravings on the shaft. The blade at
-the
-end of the pole is formed in various hooks and spikes, to maximize the amount
-of damage inflicted...
+This is a long polearm with detailed engravings on the shaft. The blade at the
+end of the pole is covered in various hooks and spikes, to maximize the amount
+of damage it inflicts.
 ~
 #10016
 Humanskin vest~
 a Humanskin vest~
-a large pile of skin is lying here.~
+A large pile of skin is lying here.~
 ~
 9 0 1|8
 7~ 0~ 0~ 0~
 10 0 0
 E
 Human skin vest~
-This vest is made of multiple layers of human skin stitched together.
+This vest is made of multiple layers of human skin, stitched together.
 ~
 #10017
 draconian helmet~
 a draconian helmet~
-a helmet made of leather and iron lies here.~
+A helmet made of leather and iron lies here.~
 ~
 9 0 1|16
 4~ 0~ 0~ 0~
 4 0 0
 E
 draconian helmet~
-This is a crudly constructed leather helmet, held together with large
-iron bands.
+A crudely-constructed leather helmet, held together with large iron bands.
 ~
 #0
 
@@ -427,6 +424,7 @@ From this rock outcropping the valley below seems peaceful, untouched.
 Dense forests of pine carpet the mountainsides, broken only by thick aspen
 woods. The mountains, deep blue in the distance, circle the valley floor and
 form a soft highland bowl.
+
 There is a sign nailed to a nearby tree.
 ~
 100 0 5
@@ -445,8 +443,8 @@ sign~
 
 **CRYSTALMIR LAKE**
 
-For those of you who enjoy dragonlance.
-First of many dragonlance areas.
+For those of you who enjoy Dragonlance.
+First of many Dragonlance areas.
 
 Original Story and Design:
 
@@ -461,7 +459,7 @@ S
 #10002
 Road among the Vallenwoods.~
 This dusty road winds among the vallenwoods. The breeze rustles the
-leaves above your head, as if to speak to you. The Road continues
+leaves above your head, as if to speak to you. The road continues
 west into the mountains and south to Darkenwood.
 ~
 100 0 3
@@ -485,7 +483,7 @@ S
 Entrance to the Town of Solace~
 A warm autumn breeze rustles the great vallenwood trees of Solace. The
 road that wanders through the trees blazes in the bright colors of autumn.
-The richly stained buildings of Solace rest cradled over head in the boughs
+The richly-stained buildings of Solace rest cradled overhead in the boughs
 of the trees.
 ~
 100  0 1
@@ -2492,7 +2490,7 @@ S
 M  10001 spec_cast_cleric       Goldmoon
 M  10001 spec_cast_adept       Goldmoon
 *
-M  10008 spec_breath_gas      Turtle Dragon
+M  10008 spec_breath_steam      Turtle Dragon
 *
 M  10013 spec_thief                Pooh bear
 *
