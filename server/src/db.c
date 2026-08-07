@@ -3985,7 +3985,17 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA *pMobIndex)
         }
 
         clear_char(mob);
-        mob->target_id = allocate_target_id();
+
+        if (pMobIndex->player_name
+        &&  pMobIndex->player_name[0] != '\0')
+        {
+                mob->target_id = allocate_target_id();
+        }
+        else
+        {
+                mob->target_id = 0;
+        }
+
         mob->pIndexData = pMobIndex;
 
         mob->name = pMobIndex->player_name;
