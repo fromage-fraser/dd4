@@ -4501,7 +4501,8 @@ void assert_directory_exists(const char *path)
 }
 
 /*
- * Convert normal and 8-bit colour tokens.
+ * Convert DD4's standard brace colour codes and numerical
+ * 8-bit colour codes into ANSI escape sequences.
  *
  * buffer must point to an array containing at least
  * MAX_STRING_LENGTH bytes.
@@ -4514,20 +4515,20 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
         char *out;
         char escape[20];
         char marker;
+        int ansi_enabled;
         int code;
         int digits;
         int i;
         int code_index;
         size_t remaining;
         size_t length;
-        bool ansi;
 
         if (buffer == NULL)
                 return;
 
         /*
-         * Always leave the destination in a valid state, including
-         * when one of the other arguments is invalid.
+         * Always produce a valid empty string when the remaining
+         * arguments are invalid.
          */
         buffer[0] = '\0';
 
@@ -4535,8 +4536,8 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
                 return;
 
         /*
-         * Preserve the original rule: process characters with a
-         * descriptor, plus NPCs currently running an ACT_PROG.
+         * Preserve the original rule: process output for characters
+         * with descriptors and NPCs currently executing an ACT_PROG.
          */
         if (ch->desc == NULL)
         {
@@ -4549,21 +4550,33 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
         point = txt;
         out = buffer;
         remaining = MAX_STRING_LENGTH - 1;
-        ansi = IS_SET(ch->act, PLR_ANSI);
+
+        /*
+         * IS_SET() returns the complete bit mask. PLR_ANSI is BIT_24,
+         * so it must be explicitly converted to zero or one before it
+         * is stored or tested as a Boolean value.
+         */
+        ansi_enabled = (IS_SET(ch->act, PLR_ANSI) != 0);
 
         while (*point != '\0' && remaining > 0)
         {
                 /*
-                 * Process normal foreground and background colour
-                 * tokens: {x, {R, }b, etc.
+                 * Standard DD4 foreground and background colour codes:
+                 *
+                 *     {Yyellow{x
+                 *     {Bbright blue{x
+                 *     }Rbright red background
+                 *
+                 * colour() also handles "{{" as a literal "{", while
+                 * bgcolour() handles "}}" as a literal "}".
                  */
                 if (*point == '{' || *point == '}')
                 {
                         marker = *point++;
 
                         /*
-                         * Preserve a lone marker instead of advancing
-                         * beyond the end of the source string.
+                         * Do not read beyond the source string when it
+                         * ends with an unmatched brace.
                          */
                         if (*point == '\0')
                         {
@@ -4572,22 +4585,8 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
                                 break;
                         }
 
-                        /*
-                         * "{{" is the escaped form of a literal "{".
-                         * Preserve it regardless of ANSI state.
-                         */
-                        if (marker == '{' && *point == '{')
+                        if (ansi_enabled)
                         {
-                                *out++ = '{';
-                                remaining--;
-                        }
-                        else if (ansi)
-                        {
-                                /*
-                                 * Render into a small temporary buffer so
-                                 * colour() and bgcolour() cannot write past
-                                 * the destination limit.
-                                 */
                                 escape[0] = '\0';
 
                                 if (marker == '{')
@@ -4598,8 +4597,8 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
                                 length = strlen(escape);
 
                                 /*
-                                 * Do not write a partial ANSI escape
-                                 * sequence when the output is full.
+                                 * Never write part of an ANSI escape
+                                 * sequence.
                                  */
                                 if (length > remaining)
                                         break;
@@ -4612,12 +4611,19 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
                                 }
                         }
 
+                        /*
+                         * Skip the character following the brace. It
+                         * was either converted above or stripped because
+                         * ANSI is disabled.
+                         */
                         point++;
                         continue;
                 }
 
                 /*
-                 * Process 8-bit colour tokens: <0>, <196>, etc.
+                 * Numerical 8-bit colour codes:
+                 *
+                 *     <123>coloured text<0>
                  */
                 if (*point == '<')
                 {
@@ -4625,7 +4631,8 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
                         scan = point + 1;
 
                         /*
-                         * "<<" represents one literal "<".
+                         * "<<" is the documented escape for one literal
+                         * less-than character.
                          */
                         if (*scan == '<')
                         {
@@ -4639,8 +4646,10 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
                         digits = 0;
 
                         /*
-                         * The token format permits one to three digits.
-                         * Cast to unsigned char before calling isdigit().
+                         * DD4 numerical codes contain between one and
+                         * three digits. Cast to unsigned char before
+                         * isdigit() to avoid undefined behaviour for
+                         * negative char values.
                          */
                         while (digits < 3
                         &&     isdigit((unsigned char)*scan))
@@ -4652,35 +4661,37 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
 
                         if (digits > 0 && *scan == '>')
                         {
-                                /*
-                                 * Validate the number before using it.
-                                 * This avoids calling colour_8bit() with an
-                                 * unknown number and reading its uninitialised
-                                 * local code buffer.
-                                 */
                                 code_index = -1;
 
+                                /*
+                                 * Validate the code before reading its
+                                 * ANSI sequence. The old colour_8bit()
+                                 * helper leaves its local code buffer
+                                 * uninitialised when no matching entry
+                                 * exists.
+                                 */
                                 for (i = 0; i < MAX_8BIT_COLORS; i++)
                                 {
                                         if (color_table_8bit[i].number == code)
+                                        {
                                                 code_index = i;
+                                                break;
+                                        }
                                 }
 
                                 if (code_index >= 0)
                                 {
-                                        /*
-                                         * Valid colour tokens are removed
-                                         * when ANSI is disabled. NPC output
-                                         * also remains plain text, matching
-                                         * the existing helper behaviour.
-                                         */
-                                        if (ansi && !IS_NPC(ch))
+                                        if (ansi_enabled && !IS_NPC(ch))
                                         {
                                                 length = strlen(
                                                         color_table_8bit[
                                                                 code_index
                                                         ].code);
 
+                                                /*
+                                                 * Never emit a partial
+                                                 * ANSI sequence.
+                                                 */
                                                 if (length > remaining)
                                                         break;
 
@@ -4698,16 +4709,19 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
                                                 }
                                         }
 
+                                        /*
+                                         * The complete valid token has
+                                         * either been converted or stripped.
+                                         */
                                         point = scan + 1;
                                         continue;
                                 }
                         }
 
                         /*
-                         * This was not a complete, recognised token.
-                         * Preserve the literal '<' and process the
-                         * remaining characters normally instead of
-                         * silently deleting them.
+                         * This is not a complete recognised numerical
+                         * token. Preserve the '<' and process the rest
+                         * of the text normally rather than deleting it.
                          */
                         *out++ = *token_start;
                         remaining--;
