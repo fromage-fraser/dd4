@@ -19,7 +19,7 @@ An undead Temple Guard~
 A long dead soldier stands here.
 ~
 The rotting body of the zombie temple guard utters a low moan as it waves
-it's finely-crafted spear at you threateningly.It wears a bronze
+its finely-crafted spear at you threateningly.It wears a bronze
 breastplate and appears to have superior fighting skills.
 ~
 2|64 8|512|8192 0 S
@@ -31,8 +31,8 @@ Temple Guard zombie undead~
 A wandering Temple Guard~
 An undead Temple Guard stands here.
 ~
-The rotting temple guard utters a low moan as it waves it's spear
-threateningly. The spear appears to be of a superior quality as does it's
+The rotting temple guard utters a low moan as it waves its spear
+threateningly. The spear appears to be of a superior quality as does its
 bronze breastplate.
 ~
 32|64 8|512|8192 0 S
@@ -72,7 +72,7 @@ An extremely large rat~
 A huge rat scrabbles around here for tidbits to eat.
 ~
 The huge rat salivates as you stand looking at it. It looks hungry and you
-appear to be on it's menu.
+appear to be on its menu.
 ~
 32|64 32|32768 0 S
 35 0 0 0d0+0 0d0+0
@@ -95,7 +95,7 @@ An undead Temple Acolyte~
 The long-dead, Temple Acolyte wears rotting robes.
 ~
 The undead acolyte is nothing more than a skelton with skin stretched
-tautly over it's body giving it a mummified look. Rags hang where once
+tautly over its body giving it a mummified look. Rags hang where once
 plush robes did.
 ~
 64 8|512|8192 750 S
@@ -149,7 +149,7 @@ A huge Daemon guards this area.
 ~
 The 12 foot tall daemon looks at you with a mixture of hunger and
 amusement. It's short elephant-like trunk snuffles in your direction
-splashing hissing, green acid as it flexes it's huge arms and clicks it's
+splashing hissing, green acid as it flexes its huge arms and clicks its
 claws.
 ~
 2|4|32|64 8|32|512|8192|32768|65536|524288 -500 S

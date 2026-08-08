@@ -522,11 +522,21 @@ void multi_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt)
          */
         if ((is_affected(ch, gsn_haste)) && !IS_AFFECTED(ch, AFF_PRONE))
                 one_hit(ch, victim, dt, FALSE);
+
         /*
          * Quicken skill
          */
-        if ((is_affected(ch, gsn_quicken)) && !IS_AFFECTED(ch, AFF_PRONE))
+        if (is_affected(ch, gsn_quicken)
+        &&  !IS_AFFECTED(ch, AFF_PRONE)
+        &&  ch->move >= 2)
+        {
+                int quicken_cost;
+
+                quicken_cost = UMAX(2, ch->move / 10);
+                ch->move -= quicken_cost;
+
                 one_hit(ch, victim, dt, FALSE);
+        }
 
         /*
          * Bonus attack

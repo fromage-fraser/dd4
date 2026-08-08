@@ -1093,7 +1093,7 @@ int rank_sn_index(MOB_INDEX_DATA *pMobIndex)
         return 1;
 }
 
-/* REturn the species index number for a character */
+/* Return the species index number for a character */
 int mob_type_sn(CHAR_DATA *ch)
 {
         if (ch->mobspec)

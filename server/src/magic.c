@@ -220,7 +220,7 @@ bool is_immune_to(CHAR_DATA *victim, unsigned long int damtype)
                 return FALSE;
         }
 
-        /* This part to check the mobs spec - WIll need another section for character */
+        /* This part to check the mobs spec - Will need another section for character */
         if (victim->mobspec && IS_NPC(victim))
         {
                 int ms;
