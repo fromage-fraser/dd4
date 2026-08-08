@@ -3925,9 +3925,45 @@ void gmcp_update(void)
                         UpdateGMCPNumber(d, GMCP_MAX_MANA, d->character->max_mana);
                         UpdateGMCPNumber(d, GMCP_MAX_MOVE, d->character->max_move);
                         UpdateGMCPNumber(d, GMCP_POSITION, d->character->position);
-                        UpdateGMCPString(d, GMCP_FORM, extra_form_name(d->character->form));
+                        UpdateGMCPString(
+                                d,
+                                GMCP_FORM,
+                                extra_form_name(d->character->form));
                         UpdateGMCPNumber(d, GMCP_RAGE, d->character->rage);
-                        UpdateGMCPNumber(d, GMCP_MAX_RAGE, d->character->max_rage);
+                        UpdateGMCPNumber(
+                                d,
+                                GMCP_MAX_RAGE,
+                                d->character->max_rage);
+
+                        UpdateGMCPNumber(
+                                d,
+                                GMCP_HUNGER,
+                                d->character->pcdata->condition[COND_FULL]);
+
+                        UpdateGMCPNumber(
+                                d,
+                                GMCP_MAX_HUNGER,
+                                MAX_FOOD);
+
+                        UpdateGMCPNumber(
+                                d,
+                                GMCP_THIRST,
+                                d->character->pcdata->condition[COND_THIRST]);
+
+                        UpdateGMCPNumber(
+                                d,
+                                GMCP_MAX_THIRST,
+                                MAX_DRINK);
+
+                        UpdateGMCPNumber(
+                                d,
+                                GMCP_DRUNK,
+                                d->character->pcdata->condition[COND_DRUNK]);
+
+                        UpdateGMCPNumber(
+                                d,
+                                GMCP_MAX_DRUNK,
+                                MAX_DRUNK);
 
                         UpdateGMCPNumber(d, GMCP_STR, d->character->pcdata->perm_str);
                         UpdateGMCPNumber(d, GMCP_INT, d->character->pcdata->perm_int);
