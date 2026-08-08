@@ -45,7 +45,7 @@ Raider~
 A Raider~
 A Raider stands here - watch out!
 ~
-The Raider is pausing before it's next kill - you?
+The Raider is pausing before its next kill - you?
 ~
 4|64 8|32|512|32768|65536 -250 S
 40 0 0 0d0+0 0d0+0
@@ -56,7 +56,7 @@ Fanatic~
 the Fanatic~
 The Fanatic sees you,  screams and attacks.
 ~
-The Fanatic has a look of terror on it's face.
+The Fanatic has a look of terror on its face.
 ~
 32|64 32|512 -100 S
 40 0 0 0d0+0 0d0+0

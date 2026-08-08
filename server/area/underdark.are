@@ -383,7 +383,7 @@ A weird shape made of slime flows along the wall.
 ~
 The slime is green and oozes slowly down the wall onto the floor.  You
 look closely and notice with a start that it seems to be alive.  The slime is
-slowly eating it's way through the wall and floor.
+slowly eating its way through the wall and floor.
 ~
 1|64 0 0 S
 30 0 2 0d0+0 0d0+0
@@ -467,7 +467,7 @@ A huge iron statue of a human stands to the side.
 ~
 This looks to be an iron statue of a human.  The statue stands a good
 fifteen feet tall.  In fact it almost looks as if it can move.  You then
-glance at it's eyes and notice with a shock that they are watching you.
+glance at its eyes and notice with a shock that they are watching you.
 ~
 1|2|64 8 0 S
 50 0 2 0d0+0 0d0+0
@@ -4064,7 +4064,7 @@ Diamond street
 S
 #16049
 Diamond Street~
-The ground shines in your light.  Only a single glowing orb casts it's eerie
+The ground shines in your light.  Only a single glowing orb casts its eerie
 light to make the shadows fade.
 
 Diamond street lies east, south and west
@@ -4088,7 +4088,7 @@ Diamond street
 S
 #16050
 Diamond Street~
-The ground shines in your light.  Only a single glowing orb casts it's eerie
+The ground shines in your light.  Only a single glowing orb casts its eerie
 light to make the shadows fade.
 
 Diamond street lies east, south and west
@@ -5661,7 +5661,7 @@ The githzerai is humanoid.  Dressed in a monastic robe there is a sense of
 power that flows from his pose.  The githzerai are a race of humanoids that
 were enslaved by the mind flayers where they were scarred for all eternity.
 The githzerai is human in height and weight.  Most githzerai are strong
-and very capable with mental powers.  This statue is very lifelike, and it's
+and very capable with mental powers.  This statue is very lifelike, and its
 eyes seem to glow in the weird lighting of the orb.
 ~
 E
@@ -5675,7 +5675,7 @@ there is a note that reads
 be blessed indeed.
 
 You take one final look at this impressive almost life like representation of
-Silence and notice that it's eyes glow purple and seem to be watching your
+Silence and notice that its eyes glow purple and seem to be watching your
 every move.
 ~
 S
@@ -6250,7 +6250,7 @@ Sunset
 S
 #16125
 Sunset~
-This is Sunset, the street of the west.  This street makes it's way down the
+This is Sunset, the street of the west.  This street makes its way down the
 western side of the Underdark.  Screams find their way to your ears, and the
 murky dark seems to overpower your soul here.  As in the rest of the city,
 there are little floating orbs that float in the air, giving the area a
@@ -6635,7 +6635,7 @@ Road of Shadows~
 You stand on the Road of Shadows.  This road clearly takes its name by the
 simple fact that everything is covered by shadows.  Even the floating orbs
 seems to radiate not light, but the gray of shadows.  Along this street,
-everything loses it's color and becomes black and white.
+everything loses its color and becomes black and white.
 
 The road of shadows continues east and west.
 ~
@@ -7486,7 +7486,7 @@ S
 #16182
 Azurite Street~
 You wander along Azurite Street.  There is little of note along this section
-of the street.  The hum of the city seems to be distant, the smell of it's
+of the street.  The hum of the city seems to be distant, the smell of its
 citizens seems to have diminished.  The only minor interest is the fact that
 the street is slight bluish.
 
@@ -7678,7 +7678,7 @@ S
 Death's Lane~
 You are walking down Death's Lane.  The street seems to be a dark brown,
 very much like the color of dried blood.  The sounds of the city are a faint
-murmur in the background.  A solitary glowing orb spreads it's dim light in
+murmur in the background.  A solitary glowing orb spreads its dim light in
 a small circle a little to the east.
 
 Death's Lane continues east and west
@@ -8057,7 +8057,7 @@ S
 #16207
 Traveler's Crescent~
 You are walking down the Traveler's Crescent.  This clean and bright street
-makes it's way in a circle like fashion.  You can almost imagine trees
+makes its way in a circle like fashion.  You can almost imagine trees
 standing at the edge of the street.  The glowing orbs float brightly in the
 air.
 
@@ -8719,7 +8719,7 @@ South stretches a corridor, west the hall goes onwards
 ~
 0 1|8|8192 1
 D2
-A corridor makes it's way south
+A corridor makes its way south
 ~
 ~
 0 -1 16234
@@ -8874,7 +8874,7 @@ tapestries~
 The tapestries on the wall depict a strange scene.  There are two tapestries,
 each one complimenting the other.  In one, there is a mind flayer who seems to
 be controlling a huge beholder.  In the other, the beholder has this mind
-flayer in it's huge gaping mouth and there is a large githzerai wielding
+flayer in its huge gaping mouth and there is a large githzerai wielding
 a flaming silver sword to the side watching in awe.
 ~
 S
@@ -9697,7 +9697,7 @@ S
 #16273
 Abandoned Rest Room~
 You are standing in what was once the washroom for the workers in this
-warehouse.  The stall that was here has long since been destroyed and it's
+warehouse.  The stall that was here has long since been destroyed and its
 wreckage lies on the floor.  Where the toilet was is quite obvious, there is
 a round hole in the ground.
 
@@ -10843,7 +10843,7 @@ S
 #16322
 Slave Cage~
 You are currently in the slave cage.  The smell is incredible.  At times your
-stomach threatens to rebel and release it's latest meal.  The sounds of the
+stomach threatens to rebel and release its latest meal.  The sounds of the
 slaves crying and cursing fills your ears.  The ground is covered in dirt and
 some hay, it's as if these slaves are not humanoids.
 
@@ -12430,7 +12430,7 @@ You are standing the southwestern end of the council chamber.  The
 chamber is large and spacious with great acoustics.  A large table
 dominates the room, it is here that the thieves make their decisions on
 whom to rob and plunder.  The thief's guild continues to grow even while
-the assassin's guild attempts to prevent it's growth.
+the assassin's guild attempts to prevent its growth.
 
 The chamber continues to the north and east
 ~
@@ -13569,7 +13569,7 @@ S
 #16437
 Experimentation Room~
 You are in the experimentation room.  This room is separated from the rest
-of the house by it's location.  There are all sorts of weird instruments lying
+of the house by its location.  There are all sorts of weird instruments lying
 on a large table against the north wall.  You see scalpels and scissors along
 with weird magical wands and devices.  A cage with dead rabbits lies
 under the table.
@@ -15045,7 +15045,7 @@ E 1 16001 0 5           ;
 M 1 16001 35 16346          ; ditto
 E 1 16001 0 5           ;
 M 1 16002 24 16003          ; loads floating eye onto street
-G 1 16002 0         ; gives it it's eye
+G 1 16002 0         ; gives it its eye
 M 1 16002 24 16052          ; loads floating eye
 M 1 16002 24 16087          ; loads floating eye
 M 1 16002 24 16088          ; ditto
@@ -15054,7 +15054,7 @@ M 1 16002 24 16108          ; ditto
 M 1 16002 24 16113          ; ditto
 M 1 16002 24 16120          ; ditto
 M 1 16002 24 16139          ; loads floating eye onto street
-G 1 16002 0         ; gives it it's eye
+G 1 16002 0         ; gives it its eye
 M 1 16002 24 16071          ; loads floating eye
 M 1 16002 24 16020          ; loads floating eye
 M 1 16002 24 16040          ; ditto
@@ -15063,7 +15063,7 @@ M 1 16002 24 16096          ; ditto
 M 1 16002 24 16177          ; ditto
 M 1 16002 24 16152          ; ditto
 M 1 16002 24 16047          ; loads floating eye onto street
-G 1 16002 0         ; gives it it's eye
+G 1 16002 0         ; gives it its eye
 M 1 16002 24 16047          ; loads floating eye
 M 1 16002 24 16073          ; loads floating eye
 M 1 16002 24 16073          ; ditto
@@ -15071,7 +15071,7 @@ M 1 16002 24 16083          ; ditto
 M 1 16002 24 16083          ; ditto
 M 1 16002 24 16198          ; ditto
 M 1 16002 24 16198          ; ditto
-G 1 16002 0         ; give it it's eye
+G 1 16002 0         ; give it its eye
 M 1 16003 3 16331           ; loads prisoner into cell
 M 1 16003 3 16334           ; ditto
 M 1 16003 3 16343           ; ditto

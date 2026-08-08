@@ -626,7 +626,9 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
         OBJ_DATA *questitem;
         char buf [MAX_STRING_LENGTH];
         long mcounter;
-        int level_diff, mob_vnum, upper_limit;
+        int area_quest_level, level_diff, mob_vnum, upper_limit;
+
+        area_quest_level = UMIN(ch->level, LEVEL_HERO);
 
         for (mcounter = 0; mcounter < 100; mcounter ++)
         {
@@ -674,11 +676,15 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
                                 ch->pcdata->questroom = room;
                                 ch->pcdata->questarea = room->area;
 
-                                if (room && room->area->low_level <= ch->level && room->area->high_level >= ch->level)
+                                if (room
+                                &&  room->area->low_level <= area_quest_level
+                                &&  room->area->high_level >= area_quest_level)
+                                {
                                         break;
-
-                                else
+                                }
+                                else {
                                         vsearch = NULL;
+                                }
                         }
                         else
                                 vsearch = NULL;

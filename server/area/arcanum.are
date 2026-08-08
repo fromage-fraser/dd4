@@ -734,7 +734,7 @@ has small eyes and hovers a little above the ground.
 #26036
 vorc~
 a vorc~
-A vorc stands here, it's pointy ears wobbling around a bit.
+A vorc stands here, its pointy ears wobbling around a bit.
 ~
 It's E.T.'ish, with big pointy ears, and pink. It occasionally makes some
 high pitched screech-like sounds.
@@ -767,7 +767,7 @@ high pitched screech-like sounds.
    give plat $n
    mpoload 26061
    give crystal $n
-   mpecho {cThe vorc twitches it's ears.{x
+   mpecho {cThe vorc twitches its ears.{x
    mptransfer $n 26002
 ~
 |

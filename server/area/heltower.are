@@ -55,8 +55,8 @@ giant~
 the Fire Giant~
 The Fire Giant stands here hefting a massive club.
 ~
-The Giant looks down at you, slowly it grins and says "Fooood!". It picks
-up it's club and gets ready to squash you.
+The Giant looks down at you, slowly it grins and says "Fooood!" It picks up its
+club and gets ready to squash you.
 ~
 2|4|32|64 32 -500 S
 42 0 0 0d0+0 0d0+0
@@ -197,7 +197,7 @@ The Soul Gem~
 The Soul Gem floats in the centre of the room.
 ~
 The Soul Gem appears to be a large, milky gem that glows with a soft
-light. Small shadows can be seen moving around inside it's cloudy depths.
+light. Small shadows can be seen moving around inside its cloudy depths.
 ~
 2|64|512 8|32|128|512|8192 0 S
 70 0 0 0d0+0 0d0+0

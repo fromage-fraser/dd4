@@ -4500,6 +4500,230 @@ void assert_directory_exists(const char *path)
         }
 }
 
+/*
+ * Convert normal and 8-bit colour tokens.
+ *
+ * buffer must point to an array containing at least
+ * MAX_STRING_LENGTH bytes.
+ */
+void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
+{
+        const char *point;
+        const char *scan;
+        const char *token_start;
+        char *out;
+        char escape[20];
+        char marker;
+        int code;
+        int digits;
+        int i;
+        int code_index;
+        size_t remaining;
+        size_t length;
+        bool ansi;
+
+        if (buffer == NULL)
+                return;
+
+        /*
+         * Always leave the destination in a valid state, including
+         * when one of the other arguments is invalid.
+         */
+        buffer[0] = '\0';
+
+        if (txt == NULL || ch == NULL)
+                return;
+
+        /*
+         * Preserve the original rule: process characters with a
+         * descriptor, plus NPCs currently running an ACT_PROG.
+         */
+        if (ch->desc == NULL)
+        {
+                if (!IS_NPC(ch)
+                || ch->pIndexData == NULL
+                || !IS_SET(ch->pIndexData->progtypes, ACT_PROG))
+                        return;
+        }
+
+        point = txt;
+        out = buffer;
+        remaining = MAX_STRING_LENGTH - 1;
+        ansi = IS_SET(ch->act, PLR_ANSI);
+
+        while (*point != '\0' && remaining > 0)
+        {
+                /*
+                 * Process normal foreground and background colour
+                 * tokens: {x, {R, }b, etc.
+                 */
+                if (*point == '{' || *point == '}')
+                {
+                        marker = *point++;
+
+                        /*
+                         * Preserve a lone marker instead of advancing
+                         * beyond the end of the source string.
+                         */
+                        if (*point == '\0')
+                        {
+                                *out++ = marker;
+                                remaining--;
+                                break;
+                        }
+
+                        /*
+                         * "{{" is the escaped form of a literal "{".
+                         * Preserve it regardless of ANSI state.
+                         */
+                        if (marker == '{' && *point == '{')
+                        {
+                                *out++ = '{';
+                                remaining--;
+                        }
+                        else if (ansi)
+                        {
+                                /*
+                                 * Render into a small temporary buffer so
+                                 * colour() and bgcolour() cannot write past
+                                 * the destination limit.
+                                 */
+                                escape[0] = '\0';
+
+                                if (marker == '{')
+                                        colour(*point, ch, escape);
+                                else
+                                        bgcolour(*point, ch, escape);
+
+                                length = strlen(escape);
+
+                                /*
+                                 * Do not write a partial ANSI escape
+                                 * sequence when the output is full.
+                                 */
+                                if (length > remaining)
+                                        break;
+
+                                if (length > 0)
+                                {
+                                        memcpy(out, escape, length);
+                                        out += length;
+                                        remaining -= length;
+                                }
+                        }
+
+                        point++;
+                        continue;
+                }
+
+                /*
+                 * Process 8-bit colour tokens: <0>, <196>, etc.
+                 */
+                if (*point == '<')
+                {
+                        token_start = point;
+                        scan = point + 1;
+
+                        /*
+                         * "<<" represents one literal "<".
+                         */
+                        if (*scan == '<')
+                        {
+                                *out++ = '<';
+                                remaining--;
+                                point = scan + 1;
+                                continue;
+                        }
+
+                        code = 0;
+                        digits = 0;
+
+                        /*
+                         * The token format permits one to three digits.
+                         * Cast to unsigned char before calling isdigit().
+                         */
+                        while (digits < 3
+                        &&     isdigit((unsigned char)*scan))
+                        {
+                                code = (code * 10) + (*scan - '0');
+                                scan++;
+                                digits++;
+                        }
+
+                        if (digits > 0 && *scan == '>')
+                        {
+                                /*
+                                 * Validate the number before using it.
+                                 * This avoids calling colour_8bit() with an
+                                 * unknown number and reading its uninitialised
+                                 * local code buffer.
+                                 */
+                                code_index = -1;
+
+                                for (i = 0; i < MAX_8BIT_COLORS; i++)
+                                {
+                                        if (color_table_8bit[i].number == code)
+                                                code_index = i;
+                                }
+
+                                if (code_index >= 0)
+                                {
+                                        /*
+                                         * Valid colour tokens are removed
+                                         * when ANSI is disabled. NPC output
+                                         * also remains plain text, matching
+                                         * the existing helper behaviour.
+                                         */
+                                        if (ansi && !IS_NPC(ch))
+                                        {
+                                                length = strlen(
+                                                        color_table_8bit[
+                                                                code_index
+                                                        ].code);
+
+                                                if (length > remaining)
+                                                        break;
+
+                                                if (length > 0)
+                                                {
+                                                        memcpy(
+                                                                out,
+                                                                color_table_8bit[
+                                                                        code_index
+                                                                ].code,
+                                                                length);
+
+                                                        out += length;
+                                                        remaining -= length;
+                                                }
+                                        }
+
+                                        point = scan + 1;
+                                        continue;
+                                }
+                        }
+
+                        /*
+                         * This was not a complete, recognised token.
+                         * Preserve the literal '<' and process the
+                         * remaining characters normally instead of
+                         * silently deleting them.
+                         */
+                        *out++ = *token_start;
+                        remaining--;
+                        point = token_start + 1;
+                        continue;
+                }
+
+                *out++ = *point++;
+                remaining--;
+        }
+
+        *out = '\0';
+}
+
+#if 0 /* Temporarily disable old colourconv_8bit implementation */
+
 void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
 {
         /*
@@ -4792,6 +5016,8 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
         }
         return;
 }
+
+#endif
 
 void strip_colour_8bit(int icode, CHAR_DATA *ch, char *string)
 {

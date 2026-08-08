@@ -343,7 +343,7 @@ if carrying($n) == 55071
 say Save Adonis! Help Vesta! Help help!
 else
 say I got a story to tell, I do. You wanna hear it? Do you?
-mpecho The critter obviously wants to share it's tale very badly.
+mpecho The critter obviously wants to share its tale very badly.
 endif
 ~
 >speech_prog p Yes.~
@@ -1355,7 +1355,7 @@ say {yenough to allow me to free myself from here and deal{x
 say {ywith Tynan once and for all. You do not have to wield it, and{x
 say {yin fact should not so as to not alert Tynan, simply have{x
 say {yit with you in your inventory. Do not put it in a{x
-say {ycontainer, either. That will blunt it's power and{x
+say {ycontainer, either. That will blunt its power and{x
 say {yI will need to retrieve it quickly from you.{X
 say {yPlease, for Vesta.{x
 mpecho Adonis glances at the stone you picked up.
