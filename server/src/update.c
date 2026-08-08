@@ -3017,6 +3017,26 @@ void recharge_bonuses(CHAR_DATA *ch)
         send_to_char("<45>You feel refreshed and your bonus actions are fully recharged.\r\n<0>", ch);
 }
 
+static int questpoints_required_for_advance(int level)
+{
+        switch (level)
+        {
+            case 29:
+                return 1;
+
+            case 49:
+                return 200;
+
+            case 79:
+                return 500;
+
+            case 99:
+                return 1000;
+        }
+
+        return 0;
+}
+
 bool check_questpoints_allow_level_gain(CHAR_DATA *ch, bool verbose)
 {
         int qp;
@@ -3025,39 +3045,10 @@ bool check_questpoints_allow_level_gain(CHAR_DATA *ch, bool verbose)
         if (IS_NPC(ch))
                 return FALSE;
 
-        switch (ch->level)
-        {
-                /* Old
-                 case 30:  qp =    1;  break;
-                 case 49:  qp =  200;  break;
-                 case 59:  qp =  400;  break;
-                 case 69:  qp =  600;  break;
-                 case 79:  qp =  900;  break;
-                 case 89:  qp = 1200;  break;
-                 case 99:  qp = 1500;  break;
-                 */
+        qp = questpoints_required_for_advance(ch->level);
 
-                /* You'll also need to change the messages in do_score if you change these values. */
-
-        case 29:
-                qp = 1;
-                break;
-
-        case 49:
-                qp = 200;
-                break;
-
-        case 79:
-                qp = 500;
-                break;
-
-        case 99:
-                qp = 1000;
-                break;
-
-        default:
+        if (qp == 0)
                 return TRUE;
-        }
 
         if (ch->pcdata->totalqp < qp)
         {
@@ -3213,6 +3204,160 @@ void msdp_update(void)
  *
  * Add a new gmcp_update() function.
  ***************************************************************************/
+
+static void gmcp_update_quest(DESCRIPTOR_DATA *d)
+{
+        CHAR_DATA       *ch;
+        CHAR_DATA       *giver;
+        ROOM_INDEX_DATA *questroom;
+        AREA_DATA       *questarea;
+        MOB_INDEX_DATA  *mob_index;
+        OBJ_INDEX_DATA  *obj_index;
+        OBJ_DATA        *carried;
+        const char      *status;
+        const char      *type;
+        const char      *giver_name;
+        const char      *target_name;
+        const char      *room_name;
+        const char      *area_name;
+        int              active;
+        int              complete;
+        int              mob_vnum;
+        int              object_vnum;
+        int              giver_vnum;
+        int              room_vnum;
+        int              required;
+        int              shortfall;
+
+        if (!d || !d->character || IS_NPC(d->character)
+        ||  !d->character->pcdata)
+        {
+                return;
+        }
+
+        ch = d->character;
+        active = IS_SET(ch->act, PLR_QUESTOR) ? 1 : 0;
+
+        giver = active ? ch->pcdata->questgiver : NULL;
+        questroom = active ? ch->pcdata->questroom : NULL;
+        questarea = active ? ch->pcdata->questarea : NULL;
+        mob_index = NULL;
+        obj_index = NULL;
+
+        mob_vnum = active ? ch->pcdata->questmob : 0;
+        object_vnum = active ? ch->pcdata->questobj : 0;
+        complete = 0;
+        giver_vnum = 0;
+        room_vnum = questroom ? questroom->vnum : 0;
+
+        status = "available";
+        type = "none";
+        giver_name = "";
+        target_name = "";
+        room_name = questroom && questroom->name
+                ? questroom->name
+                : "";
+
+        if (!questarea && questroom)
+                questarea = questroom->area;
+
+        area_name = questarea && questarea->name
+                ? questarea->name
+                : "";
+
+        if (giver && !giver->deleted)
+        {
+                giver_name = IS_NPC(giver)
+                        ? giver->short_descr
+                        : giver->name;
+
+                if (IS_NPC(giver) && giver->pIndexData)
+                        giver_vnum = giver->pIndexData->vnum;
+        }
+
+        if (active && mob_vnum != 0)
+        {
+                type = "kill";
+
+                if (mob_vnum == -1)
+                {
+                        complete = 1;
+                }
+                else
+                {
+                        mob_index = get_mob_index(mob_vnum);
+
+                        if (mob_index && mob_index->short_descr)
+                                target_name = mob_index->short_descr;
+                }
+        }
+        else if (active && object_vnum > 0)
+        {
+                type = "retrieve";
+                obj_index = get_obj_index(object_vnum);
+
+                if (obj_index && obj_index->short_descr)
+                        target_name = obj_index->short_descr;
+
+                /* Mirror do_quest complete: only top-level carried objects count. */
+                for (carried = ch->carrying;
+                     carried;
+                     carried = carried->next_content)
+                {
+                        if (carried->deleted || !carried->pIndexData)
+                                continue;
+
+                        if (carried->pIndexData->vnum
+                        ==  object_vnum)
+                        {
+                                complete = 1;
+                                break;
+                        }
+                }
+        }
+
+        if (active)
+                status = complete ? "return" : "active";
+        else if (ch->pcdata->nextquest > 0)
+                status = "cooldown";
+
+        required = questpoints_required_for_advance(ch->level);
+        shortfall = UMAX(0, required - ch->pcdata->totalqp);
+
+        UpdateGMCPNumber(d, GMCP_QUEST_ACTIVE, active);
+        UpdateGMCPString(d, GMCP_QUEST_STATUS, status);
+        UpdateGMCPString(d, GMCP_QUEST_TYPE, type);
+        UpdateGMCPNumber(d, GMCP_QUEST_COMPLETE, complete);
+        UpdateGMCPNumber(d, GMCP_QUEST_COUNTDOWN,
+                         ch->pcdata->countdown);
+        UpdateGMCPNumber(d, GMCP_QUEST_NEXT,
+                         ch->pcdata->nextquest);
+        UpdateGMCPNumber(d, GMCP_QUEST_POINTS,
+                         ch->pcdata->questpoints);
+        UpdateGMCPNumber(d, GMCP_QUEST_TOTAL_POINTS,
+                         ch->pcdata->totalqp);
+        UpdateGMCPNumber(d, GMCP_QUEST_MOB,
+                         mob_vnum);
+        UpdateGMCPNumber(d, GMCP_QUEST_OBJECT,
+                         object_vnum);
+        UpdateGMCPNumber(d, GMCP_QUEST_GIVER_VNUM,
+                         giver_vnum);
+        UpdateGMCPString(d, GMCP_QUEST_GIVER_NAME,
+                         giver_name ? giver_name : "");
+        UpdateGMCPString(d, GMCP_QUEST_TARGET_NAME,
+                         target_name ? target_name : "");
+        UpdateGMCPNumber(d, GMCP_QUEST_ROOM_VNUM,
+                         room_vnum);
+        UpdateGMCPString(d, GMCP_QUEST_ROOM_NAME,
+                         room_name);
+        UpdateGMCPString(d, GMCP_QUEST_AREA_NAME,
+                         area_name);
+        UpdateGMCPNumber(d, GMCP_QUEST_LEVEL_QP_REQUIRED,
+                         required);
+        UpdateGMCPNumber(d, GMCP_QUEST_LEVEL_QP_SHORTFALL,
+                         shortfall);
+}
+
 void gmcp_update(void)
 {
         DESCRIPTOR_DATA *d;
@@ -3407,7 +3552,7 @@ void gmcp_update(void)
                         UpdateGMCPNumber(d, GMCP_TITANIUM, d->character->smelted_titanium);
                         UpdateGMCPNumber(d, GMCP_ADAMANTITE, d->character->smelted_adamantite);
                         UpdateGMCPNumber(d, GMCP_ELECTRUM, d->character->smelted_electrum);
-                        UpdateGMCPNumber(d, GMCP_STARMETAL, d->character->smelted_starmetal);
+                        gmcp_update_quest(d);
                         UpdateGMCPString(d, GMCP_AREA, d->character->in_room->area->name);
                         UpdateGMCPString(d, GMCP_ROOM_NAME, d->character->in_room->name);
                         UpdateGMCPNumber(d, GMCP_ROOM_SECT, d->character->in_room->sector_type);
