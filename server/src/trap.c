@@ -723,33 +723,75 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                         }
 
                         act( "$n slowly fades out of existence.", ch, NULL, NULL, TO_ROOM );
+                        GMCPSetArrival(ch->desc,
+                                ch->in_room->vnum,
+                                pRoomIndex->vnum,
+                                -1,
+                                "forced");
                         char_from_room( ch );
                         char_to_room( ch, pRoomIndex );
                         act( "$n slowly fades into existence.", ch, NULL, NULL, TO_ROOM );
                         do_look( ch, "auto" );
                         return;
                 }
-                else {
-                        for (wch = ch->in_room->people; wch != NULL; wch = wch->next_in_room) {
-                                if ( wch->in_room == NULL
-                                    ||   IS_SET(wch->in_room->room_flags, ROOM_NO_RECALL)
-                                    || ( !IS_NPC(wch) && wch->fighting != NULL ) ) {
-                                        send_to_char( "Wow, that was close... a trap was set off and malfunctioned!\n\r", wch);
+                else
+                {
+                        CHAR_DATA *wch_next;
+
+                        for (wch = ch->in_room->people;
+                             wch != NULL;
+                             wch = wch_next)
+                        {
+                                wch_next = wch->next_in_room;
+
+                                if (wch->in_room == NULL
+                                ||  IS_SET(wch->in_room->room_flags, ROOM_NO_RECALL)
+                                || (!IS_NPC(wch) && wch->fighting != NULL))
+                                {
+                                        send_to_char(
+                                                "Wow, that was close... a trap was set off and malfunctioned!\n\r",
+                                                wch);
                                         continue;
                                 }
 
-                                for ( ; ; ) {
-                                        pRoomIndex = get_room_index( number_range( 0, 65535 ) );
-                                        if ( pRoomIndex != NULL )
-                                                if ( !IS_SET(pRoomIndex->room_flags, ROOM_PRIVATE)
-                                                    &&   !IS_SET(pRoomIndex->room_flags, ROOM_SOLITARY) )
-                                                        break;
+                                for (;;)
+                                {
+                                        pRoomIndex = get_room_index(
+                                                number_range(0, 65535));
+
+                                        if (pRoomIndex != NULL
+                                        && !IS_SET(pRoomIndex->room_flags, ROOM_PRIVATE)
+                                        && !IS_SET(pRoomIndex->room_flags, ROOM_SOLITARY))
+                                        {
+                                                break;
+                                        }
                                 }
-                                act( "$n slowly fades out of existence.", wch, NULL, NULL, TO_ROOM );
-                                char_from_room( wch );
-                                char_to_room( wch, pRoomIndex );
-                                act( "$n slowly fades into existence.", wch, NULL, NULL, TO_ROOM );
-                                do_look( ch, "auto" );
+
+                                act(
+                                        "$n slowly fades out of existence.",
+                                        wch,
+                                        NULL,
+                                        NULL,
+                                        TO_ROOM);
+
+                                GMCPSetArrival(
+                                        wch->desc,
+                                        wch->in_room->vnum,
+                                        pRoomIndex->vnum,
+                                        -1,
+                                        "forced");
+
+                                char_from_room(wch);
+                                char_to_room(wch, pRoomIndex);
+
+                                act(
+                                        "$n slowly fades into existence.",
+                                        wch,
+                                        NULL,
+                                        NULL,
+                                        TO_ROOM);
+
+                                do_look(wch, "auto");
                         }
                 }
                 break;

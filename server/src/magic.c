@@ -5142,6 +5142,11 @@ void spell_summon(int sn, int level, CHAR_DATA *ch, void *vo)
 
         act("$c disappears suddenly.", victim, NULL, NULL, TO_ROOM);
         act("$c has summoned you!", ch, NULL, victim, TO_VICT);
+        GMCPSetArrival(victim->desc,
+                       victim->in_room->vnum,
+                       ch->in_room->vnum,
+                       -1,
+                       "summon");
         char_from_room(victim);
         char_to_room(victim, ch->in_room);
         act("$c arrives suddenly.", victim, NULL, NULL, TO_ROOM);
@@ -5406,6 +5411,14 @@ void spell_teleport(int sn, int level, CHAR_DATA *ch, void *vo)
         }
 
         stop_fighting(victim, TRUE);
+
+
+        GMCPSetArrival(victim->desc,
+                victim->in_room->vnum,
+                pRoomIndex->vnum,
+                -1,
+                "teleport");
+
         char_from_room(victim);
 
         if (is_entered_in_tournament(ch) && tournament_status == TOURNAMENT_STATUS_RUNNING && is_still_alive_in_tournament(ch))
@@ -5490,6 +5503,13 @@ void spell_banish(int sn, int level, CHAR_DATA *ch, void *vo)
             ch, NULL, victim, TO_NOTVICT);
 
         stop_fighting(victim, TRUE);
+
+        GMCPSetArrival(victim->desc,
+                victim->in_room->vnum,
+                room->vnum,
+                -1,
+                "banish");
+
         char_from_room(victim);
         char_to_room(victim, room);
 

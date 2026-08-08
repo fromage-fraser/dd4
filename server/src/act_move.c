@@ -690,6 +690,12 @@ void move_char(CHAR_DATA *ch, int door)
 
         sound_footstep_sfx( ch, in_room, to_room, in_room, ch );
 
+        GMCPSetArrival(ch->desc,
+                       in_room->vnum,
+                       to_room->vnum,
+                       door,
+                       "walk");
+
         char_from_room(ch);
         char_to_room(ch, to_room);
 
@@ -1307,6 +1313,12 @@ void do_climb(CHAR_DATA *ch, char *argument)
                         update_pos(ch);
                         return;
                 }
+
+                GMCPSetArrival(ch->desc,
+                       ch->in_room->vnum,
+                       pexit->to_room->vnum,
+                       wall,
+                       "climb");
 
                 act("You use your climbing expertise to scale the $d.",
                     ch, NULL, pexit->keyword, TO_CHAR);
@@ -2660,6 +2672,11 @@ void do_recall(CHAR_DATA *ch, char *argument)
 
                 ch->move /= 2;
                 act_move("$n disappears.", ch, NULL, NULL, TO_ROOM);
+                GMCPSetArrival(ch->desc,
+                       ch->in_room->vnum,
+                       location->vnum,
+                       -1,
+                       "recall");
                 char_from_room(ch);
                 char_to_room(ch, location);
 

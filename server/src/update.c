@@ -24,6 +24,7 @@
 #include <sys/types.h>
 #endif
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <time.h>
 #include "merc.h"
@@ -33,6 +34,7 @@
  * Externals
  */
 extern bool merc_down;
+extern const int movement_loss[SECT_MAX];
 
 /*
  * Globals
@@ -178,6 +180,504 @@ static void gmcp_flatten_text( char *out, const char *in, int out_size )
         }
 
         out[j] = '\0';
+}
+
+static const char *gmcp_direction_short(int direction)
+{
+        static const char *const short_names[6] =
+        {
+                "n",
+                "e",
+                "s",
+                "w",
+                "u",
+                "d"
+        };
+
+        if (direction < DIR_NORTH
+        ||  direction > DIR_DOWN)
+        {
+                return NULL;
+        }
+
+        return short_names[direction];
+}
+
+
+static const char *gmcp_exit_state(EXIT_DATA *pexit)
+{
+        if (!pexit)
+                return "open";
+
+        if (IS_SET(pexit->exit_info, EX_WALL))
+                return "wall";
+
+        if (IS_SET(pexit->exit_info, EX_LOCKED))
+                return "locked";
+
+        if (IS_SET(pexit->exit_info, EX_CLOSED))
+                return "closed";
+
+        return "open";
+}
+
+
+/*
+ * Return the movement points this character would normally lose by taking
+ * this exit now.
+ *
+ * Keep this helper in step with move_char() if DD4's movement-cost rules are
+ * changed later.
+ */
+static int gmcp_exit_cost(CHAR_DATA *ch,
+                          ROOM_INDEX_DATA *from_room,
+                          ROOM_INDEX_DATA *to_room)
+{
+        int cost;
+
+        if (!ch || !from_room || !to_room)
+                return 1;
+
+        if (IS_IMMORTAL(ch))
+                return 0;
+
+        /*
+         * move_char() currently charges one movement point while using the
+         * mount affect, irrespective of the terrain calculation.
+         */
+        if (is_affected(ch, gsn_mount))
+                return 1;
+
+        cost =
+                movement_loss[
+                        UMIN(SECT_MAX - 1, from_room->sector_type)]
+                +
+                movement_loss[
+                        UMIN(SECT_MAX - 1, to_room->sector_type)];
+
+        /*
+         * This mirrors the effective current move_char() behaviour.
+         */
+        if (IS_AFFECTED(ch, AFF_NON_CORPOREAL)
+        ||  IS_AFFECTED(ch, AFF_FLYING))
+        {
+                cost /= 3;
+                cost = UMAX(cost, 1);
+        }
+
+        if ((to_room->sector_type == SECT_WATER_NOSWIM
+        ||   to_room->sector_type == SECT_WATER_SWIM
+        ||   to_room->sector_type == SECT_SWAMP
+        ||   to_room->sector_type == SECT_UNDERWATER
+        ||   to_room->sector_type == SECT_UNDERWATER_GROUND)
+        &&  (ch->race == RACE_SAHUAGIN
+        ||   ch->race == RACE_GRUNG
+        ||   IS_AFFECTED(ch, AFF_SWIM)))
+        {
+                cost /= 3;
+                cost = UMAX(cost, 1);
+        }
+
+        if (IS_AFFECTED(ch, AFF_SLOW))
+        {
+                cost *= 3;
+                cost = UMAX(cost, 1);
+        }
+
+        return UMAX(cost, 1);
+}
+
+
+static void gmcp_build_exit_details(CHAR_DATA *ch,
+                                    ROOM_INDEX_DATA *room,
+                                    char *out,
+                                    int out_size)
+{
+        EXIT_DATA *pexit;
+        const char *direction;
+        const char *state;
+        char door_escaped[MAX_INPUT_LENGTH * 2];
+        int used;
+        int written;
+        int door;
+        bool first;
+
+        if (!out || out_size <= 0)
+                return;
+
+        out[0] = '\0';
+
+        if (!ch || !room)
+                return;
+
+        used = 0;
+        first = TRUE;
+
+        for (door = DIR_NORTH;
+             door <= DIR_DOWN;
+             door++)
+        {
+                pexit = room->exit[door];
+
+                if (!pexit || !pexit->to_room)
+                        continue;
+
+                direction = gmcp_direction_short(door);
+                state = gmcp_exit_state(pexit);
+
+                gmcp_json_escape(
+                        door_escaped,
+                        pexit->keyword
+                                ? pexit->keyword
+                                : "",
+                        sizeof(door_escaped));
+
+                written = snprintf(
+                        out + used,
+                        out_size - used,
+                        "%s"
+                        "\"%s\":{"
+                        "\"to\":%d,"
+                        "\"state\":\"%s\","
+                        "\"door\":\"%s\","
+                        "\"cost\":%d"
+                        "}",
+                        first ? "" : ",",
+                        direction,
+                        pexit->to_room->vnum,
+                        state,
+                        door_escaped,
+                        gmcp_exit_cost(ch,
+                                       room,
+                                       pexit->to_room));
+
+                if (written < 0
+                ||  written >= out_size - used)
+                {
+                        bug("Gmcp_build_exit_details: "
+                            "exit JSON was truncated.",
+                            0);
+                        break;
+                }
+
+                used += written;
+                first = FALSE;
+        }
+}
+
+
+static bool gmcp_append_room_tag(char *out,
+                                 int out_size,
+                                 int *used,
+                                 bool *first,
+                                 const char *tag)
+{
+        int written;
+
+        if (!out || !used || !first || !tag)
+                return FALSE;
+
+        written = snprintf(out + *used,
+                           out_size - *used,
+                           "%s\"%s\"",
+                           *first ? "" : ",",
+                           tag);
+
+        if (written < 0
+        ||  written >= out_size - *used)
+        {
+                bug("Gmcp_append_room_tag: "
+                    "tag JSON was truncated.",
+                    0);
+                return FALSE;
+        }
+
+        *used += written;
+        *first = FALSE;
+        return TRUE;
+}
+
+
+static void gmcp_build_room_tags(CHAR_DATA *ch,
+                                 ROOM_INDEX_DATA *room,
+                                 char *out,
+                                 int out_size)
+{
+        CHAR_DATA *mob;
+        int used;
+        bool first;
+        bool shop;
+        bool bank;
+        bool trainer;
+        bool healer;
+        bool questmaster;
+        bool aggressive;
+        bool danger;
+
+        if (!out || out_size <= 0)
+                return;
+
+        out[0] = '\0';
+
+        if (!ch || !room)
+                return;
+
+        shop = IS_SET(room->room_flags, ROOM_PET_SHOP);
+        bank = FALSE;
+        trainer = FALSE;
+        healer = IS_SET(room->room_flags, ROOM_HEALING);
+        questmaster = FALSE;
+        aggressive = FALSE;
+
+        for (mob = room->people;
+             mob;
+             mob = mob->next_in_room)
+        {
+                if (mob->deleted
+                ||  !IS_NPC(mob)
+                ||  !can_see(ch, mob))
+                {
+                        continue;
+                }
+
+                if (mob->pIndexData
+                &&  mob->pIndexData->pShop)
+                {
+                        shop = TRUE;
+                }
+
+                if (IS_SET(mob->act, ACT_BANKER))
+                        bank = TRUE;
+
+                if (IS_SET(mob->act, ACT_PRACTICE)
+                ||  (mob->pIndexData
+                     && mob->pIndexData->skills))
+                {
+                        trainer = TRUE;
+                }
+
+                if (IS_SET(mob->act, ACT_IS_HEALER))
+                        healer = TRUE;
+
+                if (IS_SET(mob->act, ACT_QUESTMASTER))
+                        questmaster = TRUE;
+
+                if (IS_SET(mob->act, ACT_AGGRESSIVE))
+                        aggressive = TRUE;
+        }
+
+        danger =
+                IS_SET(room->room_flags, ROOM_FREEZING)
+                || IS_SET(room->room_flags, ROOM_BURNING)
+                || IS_SET(room->room_flags, ROOM_TOXIC)
+                || (aggressive
+                    && !IS_SET(room->room_flags, ROOM_SAFE));
+
+        used = 0;
+        first = TRUE;
+
+        if (shop
+        &&  !gmcp_append_room_tag(out, out_size,
+                                  &used, &first, "shop"))
+                return;
+
+        if (bank
+        &&  !gmcp_append_room_tag(out, out_size,
+                                  &used, &first, "bank"))
+                return;
+
+        if (trainer
+        &&  !gmcp_append_room_tag(out, out_size,
+                                  &used, &first, "trainer"))
+                return;
+
+        if (healer
+        &&  !gmcp_append_room_tag(out, out_size,
+                                  &used, &first, "healer"))
+                return;
+
+        if (questmaster
+        &&  !gmcp_append_room_tag(out, out_size,
+                                  &used, &first, "questmaster"))
+                return;
+
+        if (IS_SET(room->room_flags, ROOM_SAFE)
+        &&  !gmcp_append_room_tag(out, out_size,
+                                  &used, &first, "safe"))
+                return;
+
+        if (IS_SET(room->room_flags, ROOM_PLAYER_KILLER)
+        &&  !gmcp_append_room_tag(out, out_size,
+                                  &used, &first, "arena"))
+                return;
+
+        if (IS_SET(room->room_flags, ROOM_VAULT)
+        &&  !gmcp_append_room_tag(out, out_size,
+                                  &used, &first, "vault"))
+                return;
+
+        if (IS_SET(room->room_flags, ROOM_CRAFT)
+        &&  !gmcp_append_room_tag(out, out_size,
+                                  &used, &first, "craft"))
+                return;
+
+        if (IS_SET(room->room_flags, ROOM_SPELLCRAFT)
+        &&  !gmcp_append_room_tag(out, out_size,
+                                  &used, &first, "spellcraft"))
+                return;
+
+        if (danger)
+                gmcp_append_room_tag(out, out_size,
+                                     &used, &first, "danger");
+}
+
+
+static int gmcp_area_id(ROOM_INDEX_DATA *room)
+{
+        if (!room || !room->area)
+                return 0;
+
+        /*
+         * DD4 allocates stable room-vnum ranges per area. The area's lowest
+         * room vnum therefore survives an area-title change and is a better
+         * mapper key than the display name.
+         */
+        if (room->area->low_r_vnum > 0)
+                return room->area->low_r_vnum;
+
+        /*
+         * Defensive fallback for an area whose range was not populated.
+         */
+        return room->vnum;
+}
+
+
+static void gmcp_clear_pending_arrival(protocol_t *protocol)
+{
+        if (!protocol)
+                return;
+
+        protocol->GMCPArrivalPending = false;
+        protocol->GMCPArrivalFrom = 0;
+        protocol->GMCPArrivalTo = 0;
+        protocol->GMCPArrivalDirection = -1;
+        protocol->GMCPArrivalKind[0] = '\0';
+}
+
+
+static void gmcp_update_room_arrival(DESCRIPTOR_DATA *d,
+                                     ROOM_INDEX_DATA *room)
+{
+        protocol_t *protocol;
+        ROOM_INDEX_DATA *from_room;
+        EXIT_DATA *pexit;
+        const char *direction_name;
+        const char *kind;
+        char arrival[MAX_INPUT_LENGTH];
+        int old_vnum;
+        int from_vnum;
+        int direction;
+        int door;
+
+        if (!d || !d->pProtocol || !room)
+                return;
+
+        protocol = d->pProtocol;
+        old_vnum = atoi(protocol->GMCPVariable[GMCP_ROOM_VNUM]);
+
+        if (old_vnum == room->vnum)
+        {
+                /*
+                 * Discard an annotation for a transition which ultimately
+                 * left the character in the same room.
+                 */
+                if (protocol->GMCPArrivalPending
+                &&  protocol->GMCPArrivalTo == room->vnum)
+                {
+                        gmcp_clear_pending_arrival(protocol);
+                }
+
+                return;
+        }
+
+        from_vnum = old_vnum;
+        direction = -1;
+        kind = old_vnum > 0
+                ? "other"
+                : "login";
+
+        if (protocol->GMCPArrivalPending
+        &&  protocol->GMCPArrivalTo == room->vnum)
+        {
+                from_vnum = protocol->GMCPArrivalFrom;
+                direction = protocol->GMCPArrivalDirection;
+                kind = protocol->GMCPArrivalKind[0] != '\0'
+                        ? protocol->GMCPArrivalKind
+                        : "other";
+        }
+        else if (old_vnum > 0)
+        {
+                /*
+                 * Fallback for any ordinary move which has not been
+                 * explicitly annotated. This scans the old room's outbound
+                 * exits, so one-way exits are handled correctly.
+                 */
+                from_room = get_room_index(old_vnum);
+
+                if (from_room)
+                {
+                        for (door = DIR_NORTH;
+                             door <= DIR_DOWN;
+                             door++)
+                        {
+                                pexit = from_room->exit[door];
+
+                                if (!pexit || !pexit->to_room)
+                                        continue;
+
+                                if (pexit->to_room->vnum
+                                ==  room->vnum)
+                                {
+                                        direction = door;
+                                        kind = "walk";
+                                        break;
+                                }
+                        }
+                }
+        }
+
+        direction_name =
+                gmcp_direction_short(direction);
+
+        if (direction_name)
+        {
+                snprintf(
+                        arrival,
+                        sizeof(arrival),
+                        "\"from\":%d,"
+                        "\"direction\":\"%s\","
+                        "\"kind\":\"%s\"",
+                        from_vnum,
+                        direction_name,
+                        kind);
+        }
+        else
+        {
+                snprintf(
+                        arrival,
+                        sizeof(arrival),
+                        "\"from\":%d,"
+                        "\"direction\":null,"
+                        "\"kind\":\"%s\"",
+                        from_vnum,
+                        kind);
+        }
+
+        UpdateGMCPString(d,
+                         GMCP_ROOM_ARRIVAL,
+                         arrival);
+
+        gmcp_clear_pending_arrival(protocol);
 }
 
 /*
@@ -3228,6 +3728,7 @@ static void gmcp_update_quest(DESCRIPTOR_DATA *d)
         int              room_vnum;
         int              required;
         int              shortfall;
+        int              area_id;
 
         if (!d || !d->character || IS_NPC(d->character)
         ||  !d->character->pcdata)
@@ -3264,6 +3765,12 @@ static void gmcp_update_quest(DESCRIPTOR_DATA *d)
         area_name = questarea && questarea->name
                 ? questarea->name
                 : "";
+
+        area_id = questarea
+        ? (questarea->low_r_vnum > 0
+            ? questarea->low_r_vnum
+            : room_vnum)
+        : 0;
 
         if (giver && !giver->deleted)
         {
@@ -3352,6 +3859,8 @@ static void gmcp_update_quest(DESCRIPTOR_DATA *d)
                          room_name);
         UpdateGMCPString(d, GMCP_QUEST_AREA_NAME,
                          area_name);
+        UpdateGMCPNumber(d, GMCP_QUEST_AREA_ID,
+                         area_id);
         UpdateGMCPNumber(d, GMCP_QUEST_LEVEL_QP_REQUIRED,
                          required);
         UpdateGMCPNumber(d, GMCP_QUEST_LEVEL_QP_SHORTFALL,
@@ -3374,6 +3883,8 @@ void gmcp_update(void)
                         char buf2[MAX_STRING_LENGTH];
                         char buf3[MAX_STRING_LENGTH];
                         char buf4[MAX_STRING_LENGTH];
+                        char exit_details[MAX_STRING_LENGTH];
+                        char room_tags[MAX_INPUT_LENGTH];
                         char **prgpstrShow;
                         char *pstrShow;
                         int *prgnShow;
@@ -3554,8 +4065,23 @@ void gmcp_update(void)
                         UpdateGMCPNumber(d, GMCP_ELECTRUM, d->character->smelted_electrum);
                         UpdateGMCPNumber(d, GMCP_STARMETAL, d->character->smelted_starmetal);
                         gmcp_update_quest(d);
-                        UpdateGMCPString(d, GMCP_AREA, d->character->in_room->area->name);
-                        UpdateGMCPString(d, GMCP_ROOM_NAME, d->character->in_room->name);
+                        gmcp_update_room_arrival(d, room);
+
+                        UpdateGMCPString(
+                                d,
+                                GMCP_AREA,
+                                room->area->name);
+
+                        UpdateGMCPNumber(
+                                d,
+                                GMCP_AREA_ID,
+                                gmcp_area_id(room));
+
+                        UpdateGMCPString(
+                                d,
+                                GMCP_ROOM_NAME,
+                                room->name);
+
                         UpdateGMCPNumber(d, GMCP_ROOM_SECT, d->character->in_room->sector_type);
                         UpdateGMCPString(d, GMCP_ROOM_SECT_TXT, sector_name( d->character->in_room->sector_type ));
                         char room_desc_flat [ MAX_STRING_LENGTH ];
@@ -3587,6 +4113,16 @@ void gmcp_update(void)
                         rSetcount = 0;
 
                         UpdateGMCPString(d, GMCP_ROOM_FLAGS, buf4);
+                        gmcp_build_room_tags(
+                                d->character,
+                                room,
+                                room_tags,
+                                sizeof(room_tags));
+
+                        UpdateGMCPString(
+                                d,
+                                GMCP_ROOM_TAGS,
+                                room_tags);
 
                         sprintf(buf, "%d", d->character->in_room->vnum);
 
@@ -3625,6 +4161,16 @@ void gmcp_update(void)
                                 }
 
                                 UpdateGMCPString(d, GMCP_ROOM_EXITS, buf);
+                                gmcp_build_exit_details(
+                                        d->character,
+                                        room,
+                                        exit_details,
+                                        sizeof(exit_details));
+
+                                UpdateGMCPString(
+                                        d,
+                                        GMCP_ROOM_EXIT_DETAILS,
+                                        exit_details);
                         }
 
                         if (enemy)

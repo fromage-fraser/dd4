@@ -2832,6 +2832,12 @@ void do_enter(CHAR_DATA *ch, char *argument)
 
         sound_portal_enter_sfx(ch);
 
+        GMCPSetArrival(ch->desc,
+                       ch->in_room->vnum,
+                       room->vnum,
+                       -1,
+                       "portal");
+
         char_from_room(ch);
         char_to_room(ch, room);
 
