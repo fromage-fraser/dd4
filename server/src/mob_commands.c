@@ -781,6 +781,12 @@ void do_mptransfer (CHAR_DATA *ch, char *argument)
                         if (vch->fighting)
                                 stop_fighting (vch, TRUE);
 
+                        GMCPSetArrival(victim->desc,
+                            victim->in_room->vnum,
+                            location->vnum,
+                            -1,
+                            "forced");
+
                         char_from_room (vch);
                         char_to_room (vch, location);
                 }

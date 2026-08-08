@@ -280,7 +280,8 @@ typedef enum
    GMCP_STRING,
    GMCP_NUMBER,
    GMCP_OBJECT,
-   GMCP_ARRAY
+   GMCP_ARRAY,
+   GMCP_MEMBER_ARRAY
 } GMCP_TYPE;
 
 typedef enum
@@ -411,6 +412,7 @@ typedef enum
 
    /* Room */
    GMCP_AREA,
+   GMCP_AREA_ID,
    GMCP_ROOM_NAME,
    GMCP_ROOM_SECT,
    GMCP_ROOM_SECT_TXT,
@@ -418,6 +420,30 @@ typedef enum
    GMCP_ROOM_FLAGS,
    GMCP_ROOM_VNUM,
    GMCP_ROOM_EXITS,
+   GMCP_ROOM_EXIT_DETAILS,
+   GMCP_ROOM_ARRIVAL,
+   GMCP_ROOM_TAGS,
+
+   /* Quest */
+   GMCP_QUEST_ACTIVE,
+   GMCP_QUEST_STATUS,
+   GMCP_QUEST_TYPE,
+   GMCP_QUEST_COMPLETE,
+   GMCP_QUEST_COUNTDOWN,
+   GMCP_QUEST_NEXT,
+   GMCP_QUEST_POINTS,
+   GMCP_QUEST_TOTAL_POINTS,
+   GMCP_QUEST_MOB,
+   GMCP_QUEST_OBJECT,
+   GMCP_QUEST_GIVER_VNUM,
+   GMCP_QUEST_GIVER_NAME,
+   GMCP_QUEST_TARGET_NAME,
+   GMCP_QUEST_ROOM_VNUM,
+   GMCP_QUEST_ROOM_NAME,
+   GMCP_QUEST_AREA_NAME,
+   GMCP_QUEST_AREA_ID,
+   GMCP_QUEST_LEVEL_QP_REQUIRED,
+   GMCP_QUEST_LEVEL_QP_SHORTFALL,
 
    /* Quest */
    GMCP_QUEST_ACTIVE,
@@ -562,6 +588,19 @@ typedef struct
     * top-level state fields.
     */
    char *GMCPChannelState;
+
+   /*
+    * Explicit context for the next player-visible room transition.
+    *
+    * Ordinary directional movement can also be inferred from the previous
+    * Room.Info.vnum, but this state distinguishes portals, recalls,
+    * teleports, forced movement, and immortal transfers.
+    */
+   bool_t GMCPArrivalPending;
+   int GMCPArrivalFrom;
+   int GMCPArrivalTo;
+   int GMCPArrivalDirection;
+   char GMCPArrivalKind[32];
 
    bool_t bClientMediaDefaultSent;
    /* --- MCMP: per-descriptor ambient state (for key="room-ambient") --- */
@@ -949,6 +988,12 @@ extern const char iac_se[];
 extern void SendUpdatedGMCP(descriptor_t *apDescriptor);
 extern void UpdateGMCPString(descriptor_t *apDescriptor, GMCP_VARIABLE var, const char *string);
 extern void UpdateGMCPNumber(descriptor_t *apDescriptor, GMCP_VARIABLE var, const long number);
+extern void GMCPSetArrival(descriptor_t *d,
+                           int from_vnum,
+                           int to_vnum,
+                           int direction,
+                           const char *kind);
+
 /*************** END GMCP ***************/
 
 #endif /* PROTOCOL_H */

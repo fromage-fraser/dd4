@@ -384,6 +384,12 @@ protocol_t *ProtocolCreate(void)
     * directly with GMCPEmit().
     */
    pProtocol->GMCPChannelState = AllocString("");
+   pProtocol->GMCPArrivalPending = false;
+   pProtocol->GMCPArrivalFrom = 0;
+   pProtocol->GMCPArrivalTo = 0;
+   pProtocol->GMCPArrivalDirection = -1;
+   pProtocol->GMCPArrivalKind[0] = '\0';
+
 
    /* Sound stuff */
 
@@ -3312,7 +3318,9 @@ const struct gmcp_variable_struct GMCPVariableTable[GMCP_MAX + 1] =
         {GMCP_AFFECT, GMCP_AFFECTED, NULL, GMCP_ARRAY},
         {GMCP_INVENTORY, GMCP_ITEMS, NULL, GMCP_ARRAY},
         {GMCP_WORN_ITEMS, GMCP_WORN, NULL, GMCP_ARRAY},
+
         {GMCP_AREA, GMCP_ROOM, "area", GMCP_STRING},
+        {GMCP_AREA_ID, GMCP_ROOM, "area_id", GMCP_NUMBER},
         {GMCP_ROOM_NAME, GMCP_ROOM, "name", GMCP_STRING},
         {GMCP_ROOM_SECT, GMCP_ROOM, "sector", GMCP_NUMBER},
         {GMCP_ROOM_SECT_TXT, GMCP_ROOM, "sector_text", GMCP_STRING},
@@ -3320,6 +3328,9 @@ const struct gmcp_variable_struct GMCPVariableTable[GMCP_MAX + 1] =
         {GMCP_ROOM_FLAGS, GMCP_ROOM, "flags", GMCP_STRING},
         {GMCP_ROOM_VNUM, GMCP_ROOM, "vnum", GMCP_NUMBER},
         {GMCP_ROOM_EXITS, GMCP_ROOM, "exits", GMCP_OBJECT},
+        {GMCP_ROOM_EXIT_DETAILS, GMCP_ROOM, "exit_details", GMCP_OBJECT},
+        {GMCP_ROOM_ARRIVAL, GMCP_ROOM, "arrival", GMCP_OBJECT},
+        {GMCP_ROOM_TAGS, GMCP_ROOM, "tags", GMCP_MEMBER_ARRAY},
 
         {GMCP_QUEST_ACTIVE, GMCP_QUEST, "active", GMCP_NUMBER},
         {GMCP_QUEST_STATUS, GMCP_QUEST, "status", GMCP_STRING},
@@ -3337,6 +3348,7 @@ const struct gmcp_variable_struct GMCPVariableTable[GMCP_MAX + 1] =
         {GMCP_QUEST_ROOM_VNUM, GMCP_QUEST, "room_vnum", GMCP_NUMBER},
         {GMCP_QUEST_ROOM_NAME, GMCP_QUEST, "room_name", GMCP_STRING},
         {GMCP_QUEST_AREA_NAME, GMCP_QUEST, "area_name", GMCP_STRING},
+        {GMCP_QUEST_AREA_ID, GMCP_QUEST, "area_id", GMCP_NUMBER},
         {GMCP_QUEST_LEVEL_QP_REQUIRED, GMCP_QUEST, "level_qp_required", GMCP_NUMBER},
         {GMCP_QUEST_LEVEL_QP_SHORTFALL, GMCP_QUEST, "level_qp_shortfall", GMCP_NUMBER},
 
@@ -3923,6 +3935,12 @@ void WriteGMCP(descriptor_t *apDescriptor, GMCP_PACKAGE package)
             sprintf(buf2, ", \"%s\": {{ %s }", GMCPVariableTable[i].name, apDescriptor->pProtocol->GMCPVariable[i]);
             break;
 #endif
+         case GMCP_MEMBER_ARRAY:
+            sprintf(buf2,
+                    "\"%s\": [ %s ]",
+                    GMCPVariableTable[i].name,
+                    apDescriptor->pProtocol->GMCPVariable[i]);
+            break;
 
          case GMCP_ARRAY:
             sprintf(buf, "%s%s.%s [ %s ]%s", (char *)iac_sb_gmcp, GMCPPackageTable[package].module, GMCPPackageTable[package].message, apDescriptor->pProtocol->GMCPVariable[i], (char *)iac_se);
@@ -3955,6 +3973,12 @@ void WriteGMCP(descriptor_t *apDescriptor, GMCP_PACKAGE package)
             sprintf(buf2, ", \"%s\": {{ %s }", GMCPVariableTable[i].name, apDescriptor->pProtocol->GMCPVariable[i]);
             break;
 #endif
+         case GMCP_MEMBER_ARRAY:
+            sprintf(buf2,
+                    ", \"%s\": [ %s ]",
+                    GMCPVariableTable[i].name,
+                    apDescriptor->pProtocol->GMCPVariable[i]);
+            break;
 
          default:
             break;
@@ -4254,6 +4278,41 @@ void GMCP_Media_Stop(descriptor_t *d, const char *criteria_json)
       snprintf(body, sizeof(body), "{}"); /* empty body = stop ALL media */
 
    GMCPEmit(d, "Client.Media.Stop", body);
+}
+
+void GMCPSetArrival(descriptor_t *d,
+                    int from_vnum,
+                    int to_vnum,
+                    int direction,
+                    const char *kind)
+{
+        protocol_t *protocol;
+
+        if (!d || !d->pProtocol)
+                return;
+
+        protocol = d->pProtocol;
+
+        protocol->GMCPArrivalPending = true;
+        protocol->GMCPArrivalFrom = from_vnum;
+        protocol->GMCPArrivalTo = to_vnum;
+
+        if (direction >= DIR_NORTH
+        &&  direction <= DIR_DOWN)
+        {
+                protocol->GMCPArrivalDirection = direction;
+        }
+        else
+        {
+                protocol->GMCPArrivalDirection = -1;
+        }
+
+        snprintf(protocol->GMCPArrivalKind,
+                 sizeof(protocol->GMCPArrivalKind),
+                 "%s",
+                 kind && kind[0] != '\0'
+                        ? kind
+                        : "other");
 }
 
 void SendUpdatedGMCP(descriptor_t *apDescriptor)

@@ -642,6 +642,12 @@ void do_transfer(CHAR_DATA *ch, char *argument)
                 check_for_tournament_winner();
         }
 
+        GMCPSetArrival(victim->desc,
+                victim->in_room->vnum,
+                location->vnum,
+                -1,
+                "immortal");
+
         char_from_room(victim);
         char_to_room(victim, location);
         act("$n arrives in a puff of smoke.", victim, NULL, NULL, TO_ROOM);
@@ -743,6 +749,12 @@ void do_goto(CHAR_DATA *ch, char *argument)
                 char_from_room(ch->mount);
                 char_to_room(ch->mount, location);
         }
+
+        GMCPSetArrival(ch->desc,
+                       ch->in_room->vnum,
+                       location->vnum,
+                       -1,
+                       "immortal");
 
         char_from_room(ch);
         char_to_room(ch, location);
