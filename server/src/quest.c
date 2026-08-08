@@ -1167,6 +1167,9 @@ void quest_update ()
                                 ch->pcdata->questgiver = NULL;
                                 ch->pcdata->countdown = 0;
                                 ch->pcdata->questmob = 0;
+                                ch->pcdata->questobj = 0;
+                                ch->pcdata->questroom = NULL;
+                                ch->pcdata->questarea = NULL;
                         }
 
                         if (ch->pcdata->countdown > 0 && ch->pcdata->countdown < 6)
