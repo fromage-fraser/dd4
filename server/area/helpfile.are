@@ -2353,7 +2353,7 @@ PROMPT <<%*> creates a prompt where %* represents the following variables:
     %a   :  Alignment (`evil', `neutral' or `good')
     %B   :  Displays bold text colour
     %b   :  Spell 'blink' status ('on' or 'off')
-    %c   :  Displays next command in your input buffer
+    %c   :  Displays next command in your buffer and how many are behind it
     %e   :  Experience needed to level
     %f   :  Current form (incl. mist) (Shifters/Vampires/Werewolves only)
     %g   :  Coins carried

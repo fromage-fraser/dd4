@@ -3552,6 +3552,7 @@ void gmcp_update(void)
                         UpdateGMCPNumber(d, GMCP_TITANIUM, d->character->smelted_titanium);
                         UpdateGMCPNumber(d, GMCP_ADAMANTITE, d->character->smelted_adamantite);
                         UpdateGMCPNumber(d, GMCP_ELECTRUM, d->character->smelted_electrum);
+                        UpdateGMCPNumber(d, GMCP_STARMETAL, d->character->smelted_starmetal);
                         gmcp_update_quest(d);
                         UpdateGMCPString(d, GMCP_AREA, d->character->in_room->area->name);
                         UpdateGMCPString(d, GMCP_ROOM_NAME, d->character->in_room->name);
