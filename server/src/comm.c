@@ -1751,21 +1751,84 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
                         i = buf2;
                         break;
                 case 'c':
-                        if (d->inbuf[0] != '\0')
-                        {
-                                char *newline = strchr(d->inbuf, '\n');
-                                if (newline)
-                                        *newline = '\0';
+                {
+                        const char *command_start;
+                        const char *command_end;
+                        const char *scan;
+                        int command_length;
+                        int queued_commands;
 
+                        command_start = d->inbuf;
+                        queued_commands = 0;
+
+                        while (*command_start == '\n'
+                        ||     *command_start == '\r')
+                        {
+                                command_start++;
+                        }
+
+                        if (*command_start == '\0')
+                        {
+                                snprintf(buf2, sizeof(buf2), "...");
+                                i = buf2;
+                                break;
+                        }
+
+                        command_end = command_start;
+
+                        while (*command_end != '\0'
+                        &&     *command_end != '\n'
+                        &&     *command_end != '\r')
+                        {
+                                command_end++;
+                        }
+
+                        scan = command_end;
+
+                        while (*scan != '\0')
+                        {
+                                while (*scan == '\n'
+                                ||     *scan == '\r')
+                                {
+                                        scan++;
+                                }
+
+                                if (*scan == '\0')
+                                        break;
+
+                                queued_commands++;
+
+                                while (*scan != '\0'
+                                &&     *scan != '\n'
+                                &&     *scan != '\r')
+                                {
+                                        scan++;
+                                }
+                        }
+
+                        command_length =
+                                (int)(command_end - command_start);
+                        command_length = UMIN(command_length, 50);
+
+                        if (queued_commands > 0)
+                        {
                                 snprintf(buf2, sizeof(buf2),
-                                         "%-.50s", d->inbuf);
-                                if (newline)
-                                        *newline = '\n';
+                                         "%.*s (%d)",
+                                         command_length,
+                                         command_start,
+                                         queued_commands);
                         }
                         else
-                                snprintf(buf2, sizeof(buf2), "...");
+                        {
+                                snprintf(buf2, sizeof(buf2),
+                                         "%.*s",
+                                         command_length,
+                                         command_start);
+                        }
+
                         i = buf2;
                         break;
+                }
                 case 'e':
                         if (ch->level >= LEVEL_HERO)
                                 sprintf(buf2, "(n/a)");
