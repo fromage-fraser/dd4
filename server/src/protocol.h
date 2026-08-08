@@ -351,6 +351,12 @@ typedef enum
    GMCP_FORM,
    GMCP_RAGE,
    GMCP_MAX_RAGE,
+   GMCP_HUNGER,
+   GMCP_MAX_HUNGER,
+   GMCP_THIRST,
+   GMCP_MAX_THIRST,
+   GMCP_DRUNK,
+   GMCP_MAX_DRUNK,
 
    /* Stats */
    GMCP_STR,
