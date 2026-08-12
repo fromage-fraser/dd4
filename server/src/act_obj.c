@@ -1838,7 +1838,7 @@ void do_empty(CHAR_DATA *ch, char *argument)
                                 {
                                         obj_next = obj->next_content;
 
-                                        if ((arg[3] == '\0' || is_name(&arg[4], obj->name)) && can_see_obj(ch, obj))
+                                        if (can_see_obj(ch, obj))
                                         {
                                                 found = TRUE;
 
@@ -1888,7 +1888,7 @@ void do_empty(CHAR_DATA *ch, char *argument)
                 {
                         obj_next = obj->next_content;
 
-                        if ((arg[3] == '\0' || is_name(&arg[4], obj->name)) && can_see_obj(ch, obj))
+                        if (can_see_obj(ch, obj))
                         {
                                 found = TRUE;
 

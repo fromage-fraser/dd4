@@ -1,6 +1,12 @@
 #AREA   Silence~  Underdark~
 20 60 0 100
 
+#AREA_SPECIAL
+reset_msg <97>A distant iron bell tolls once within the depths.<0>
+~
+music music/area/underdark.mp3
+music_vol 20
+$
 
 #MOBILES
 #16001
@@ -39,7 +45,7 @@ A prisoner stares at you from the back of the cell.
 You look at this prisoner disgusted, how could anyone be put in a jail in
 this city?  This fellow must have committed the ultimate in crimes.  He
 stares at you and does nothing else.  It looks as if he has lost the will to
-live.. You wonder what the enforcers did to him.
+live.. you wonder what the enforcers did to him.
 ~
 1|2|64 4|4096 -400 S
 28 0 2 0d0+0 0d0+0
@@ -3898,7 +3904,7 @@ S
 Ruby Street~
 You stand on Ruby Street.  An orb lights the way as it floats above your
 head.  The ground is reddish and well travelled.  Shadows lie on either side
-of you and they seem to breath with their own life.
+of you and they seem to breathe with their own life.
 
 Ruby continues to the east, to the west is Sunset
 ~
@@ -3918,7 +3924,7 @@ S
 Ruby Street~
 You stand on Ruby Street.  An orb lights the way as it floats above your
 head.  The ground is reddish and well travelled.  Shadows lie on either side
-of you and they seem to breath with their own life.
+of you and they seem to breathe with their own life.
 
 Ruby continues to the east, to the west is Sunset
 ~
@@ -8624,7 +8630,7 @@ jade and every once in awhile your light dances off the wall into your eye.
 The hall has been lit, but the light that is already there is murky and your
 light source seems harsh compared to the soft light that fills the hall.
 
-The hall continues east and west, south are some beautiful door
+The hall continues east and west, south are some beautiful doors
 ~
 0 1|8|8192 1
 D1
