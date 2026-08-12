@@ -683,6 +683,13 @@ Gezhp, Owl and Shade
 - TARGETMODE added to enable precise selection of objects and mobiles
 - Area reset message now has a default sound that can be overridden
 
+{WAugust 2026{X
+
+- Many major GUI updates with supporting GMCP enhancements.
+- Development of a bot playtesting system underway
+- DD Builder now available for download from website
+
+
 ~
 
 0 MULTIPLAYING MULTIPLAYERS~

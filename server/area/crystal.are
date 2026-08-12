@@ -1,6 +1,15 @@
 #AREA   Strahd~  Crystalmir Lake~
 5 15 0 100
 
+#AREA_SPECIAL
+exp_mod 112
+reset_msg <32>A faint mist drifts over the water before dissolving in the air.<0>
+~
+reset_sound notify/area/crystal.mp3
+reset_sound_vol 55
+music music/area/crystal.mp3
+music_vol 20
+$
 
 #MOBILES
 #10001
