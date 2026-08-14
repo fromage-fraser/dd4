@@ -1417,6 +1417,9 @@ void damage(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                                 if (check_dodge(ch, victim))
                                         return;
 
+                                if (IS_NPC(victim) && check_blink(ch, victim))
+                                        return;
+
                                 if (!IS_NPC(victim))
                                 {
                                         if (victim->form == FORM_BAT && number_percent() <= UMAX(1, (victim->pcdata->learned[gsn_form_bat] - 5)))
@@ -2188,41 +2191,62 @@ bool check_blink(CHAR_DATA *ch, CHAR_DATA *victim)
 {
         int chance;
 
-        if (!victim->pcdata->blink)
-                return FALSE;
+        if (IS_NPC(victim))
+        {
+                if (!IS_SET(victim->act, ACT_BLINK))
+                        return FALSE;
 
-        chance = victim->pcdata->learned[gsn_blink] / 2;
+                chance = UMIN(30, UMAX(1, victim->level / 2));
+        }
+        else
+        {
+                if (!victim->pcdata->blink)
+                        return FALSE;
 
-        if (!chance)
-                return FALSE;
+                chance = victim->pcdata->learned[gsn_blink] / 2;
+
+                if (!chance)
+                        return FALSE;
+        }
 
         chance += (victim->level - ch->level) * 2;
-
-        if (chance > 66)
-                chance = 66;
+        chance = URANGE(1, chance, 66);
 
         if (number_percent() >= chance)
                 return FALSE;
 
         if (victim->mana < 5)
-        {
-                send_to_char("<117>Your body returns to a more stable state.<0>\n\r", victim);
-                victim->pcdata->blink = FALSE;
                 return FALSE;
-        }
 
         victim->mana -= 5;
 
-        if (!IS_NPC(ch) && !ch->gag)
+        if (IS_NPC(victim))
         {
-                sound_combat_blink_sfx( ch, victim );
-                act("<81>$C shimmers and you miss your attack.<0>", ch, NULL, victim, TO_CHAR);
-        }
+                if (!IS_NPC(ch) && !ch->gag)
+                {
+                        act("<81>$C shimmers and your attack passes right through $M!<0>",
+                            ch, NULL, victim, TO_CHAR);
+                }
 
-        if (!victim->gag)
+                if (!victim->gag)
+                {
+                        act("<117>You fade away before $n's attack.<0>",
+                            ch, NULL, victim, TO_VICT);
+                }
+        }
+        else
         {
-                sound_combat_blink_sfx( ch, victim );
-                act("<117>You fade away before $n's attack.<0>", ch, NULL, victim, TO_VICT);
+                if (!IS_NPC(ch) && !ch->gag)
+                {
+                        act("<81>$C shimmers and you miss your attack.<0>",
+                            ch, NULL, victim, TO_CHAR);
+                }
+
+                if (!victim->gag)
+                {
+                        act("<117>You fade away before $n's attack.<0>",
+                            ch, NULL, victim, TO_VICT);
+                }
         }
 
         return TRUE;

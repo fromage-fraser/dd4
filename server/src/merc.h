@@ -1952,6 +1952,7 @@ extern WANTED_DATA *wanted_list_last;
 #define ACT_NO_FIGHT BIT_26           /* No active attacks in fights (fireshield still works) - Owl */
 #define ACT_OBJECT BIT_27             /* Use to create attackable objects... bridges, walls, magic swords etc - Owl */
 #define ACT_INVULNERABLE BIT_28       /* Cannot be physically damaged -- Owl */
+#define ACT_BLINK BIT_29              /* Mob access to the "blink" ability -- Owl */
 #define ACT_UNKILLABLE BIT_63         /* Can't be killed. 'slay' still works. - Owl */
 
 /*

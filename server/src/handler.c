@@ -3818,6 +3818,7 @@ char *act_bit_name (unsigned long int vector)
         if ( vector & ACT_NO_FIGHT              ) return "cannot_fight";
         if ( vector & ACT_INVULNERABLE          ) return "invulnerable";
         if ( vector & ACT_OBJECT                ) return "objectlike";
+        if ( vector & ACT_BLINK                 ) return "can_blink";
 
         return "none";
 }

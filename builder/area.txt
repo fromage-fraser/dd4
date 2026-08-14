@@ -365,6 +365,7 @@ ACT_ flags:
                                        damaging like fireshield still works)
     ACT_OBJECT              BIT_27     Acts as an attackable object
     ACT_INVULNERABLE        BIT_28     Cannot be physically damaged
+    ACT_BLINK               BIT_29     Mob access to the "blink" ability
     ACT_UNKILLABLE          BIT_63     Cannot be killed. 'slay' still works
 
 The 'affected-flags' define more attributes of the mobile.

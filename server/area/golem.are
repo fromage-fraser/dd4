@@ -117,7 +117,7 @@ A golem cleric heals those who ask.
 The cleric is wearing a bright silver cloak, and has intense, penetrating eyes.
 It stares at you, piercing your soul.
 ~
-64 8|32|512|8192|16777216 1000 S
+64|536870912 8|32|512|8192|16777216 1000 S
 105 1 0 100d12+19900 10d10+56
 304 0
 8 8 0
