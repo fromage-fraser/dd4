@@ -74,6 +74,7 @@ my %mob_act = (
         no_fight           => 67108864,
         objectlike         => 134217728,
         invulnerable       => 268435456,
+        blink              => 536870912,
         unkillable         => 9223372036854775808,
 );
 
