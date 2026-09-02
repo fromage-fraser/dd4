@@ -1953,6 +1953,7 @@ extern WANTED_DATA *wanted_list_last;
 #define ACT_OBJECT BIT_27             /* Use to create attackable objects... bridges, walls, magic swords etc - Owl */
 #define ACT_INVULNERABLE BIT_28       /* Cannot be physically damaged -- Owl */
 #define ACT_BLINK BIT_29              /* Mob access to the "blink" ability -- Owl */
+#define ACT_UNDEAD BIT_30             /* Mob is undead; various implications */
 #define ACT_UNKILLABLE BIT_63         /* Can't be killed. 'slay' still works. - Owl */
 
 /*
@@ -4080,6 +4081,7 @@ extern int gsn_prayer_plague;
  */
 #define IS_QUESTOR(ch) (IS_SET((ch)->act, PLR_QUESTOR))
 #define IS_NPC(ch) (IS_SET((ch)->act, ACT_IS_NPC))
+#define IS_UNDEAD(ch) ((ch) != NULL && (IS_NPC(ch) ? IS_SET((ch)->act, ACT_UNDEAD) : ((ch)->sub_class == SUB_CLASS_VAMPIRE)))
 #define IS_TARGET_MODE(ch) (!IS_NPC(ch) && IS_SET((ch)->act, PLR_TARGETMODE))
 #define IS_TRUE_IMMORTAL(ch) (ch->level >= L_SEN)
 #define IS_IMMORTAL(ch) (get_trust(ch) >= LEVEL_IMMORTAL)
