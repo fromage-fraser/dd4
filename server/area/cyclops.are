@@ -526,6 +526,8 @@ Boots made from human skin lie here.~
 9 2|64 1|64
 8~ 0~ 0~ 0~
 15 1250 0
+T
+leather~
 A
 2 3
 #14002
@@ -536,6 +538,8 @@ A huge pair of grubby overalls lie here needing a wash.~
 9 0 1|8
 3~ 0~ 0~ 0~
 15 800 0
+T
+leather~
 #14003
 one-eyed whip~
 a one-eyed whip~
@@ -544,6 +548,8 @@ The whip here seems to be staring at YOU!~
 5 64 1|8192
 0~ 15~ 40~ 4~
 18 1200 0
+T
+leather~
 A
 18 5
 #14004
@@ -554,6 +560,8 @@ Someone has left their rusty scythe lying in the mud.~
 5 0 1|8192
 0~ 10~ 30~ 3~
 20 100 0
+T
+steel/wood~
 A
 2 -1
 A
@@ -568,6 +576,8 @@ Some very large, sturdy banded armour has been left here.~
 9 0 1|8
 9~ 0~ 0~ 0~
 30 1500 0
+T
+steel~
 A
 17 -5
 #14006
@@ -578,6 +588,8 @@ A VERY vicious spiked club lies here, pulsating!~
 5 16|64|512 1|8192
 0~ 20~ 40~ 7~
 30 2000 0
+T
+steel/wood~
 A
 18 -2
 A
@@ -608,6 +620,8 @@ A large heap of finely crafted silver lies here.~
 9 16|64|512 1|8
 14~ 0~ 0~ 0~
 30 0 0
+T
+silver~
 A
 13 50
 A
@@ -622,6 +636,8 @@ A huge polearm with intricate carvings leans against the wall.~
 5 16|64|512|134217728 1|8192
 0~ 25~ 50~ 7~
 10 0 0
+T
+steel/wood/leather~
 A
 19 3
 A
@@ -634,6 +650,8 @@ A very evil-looking helmet glows as you look at it.~
 9 1|16|64 1|16
 10~ 0~ 0~ 0~
 15 0 0
+T
+steel~
 A
 18 8
 #14014
@@ -644,6 +662,8 @@ The ring of a powerful sorcerer looks like it needs a new home.~
 9 2|32|64|512 1|2
 6~ 0~ 0~ 0~
 5 0 0
+T
+silver~
 A
 12 100
 A
@@ -658,6 +678,8 @@ A HUGE mace capable of inflicting great pain waits to maim another victim.~
 5 1|16|64 1|8192
 0~ 25~ 45~ 7~
 25 0 0
+T
+iron/wood~
 A
 19 7
 #14016
@@ -676,6 +698,8 @@ The quarterstaff hums quietly as you look at it.~
 5 2|16|64 1|8192
 0~ 30~ 40~ 8~
 20 0 0
+T
+wood~
 A
 17 -40
 A
@@ -696,6 +720,8 @@ Some bracers covered in spikes lie here, be careful not to stand on them!~
 9 2|16|64 1|4096
 8~ 0~ 0~ 0~
 10 0 0
+T
+steel~
 A
 19 4
 A
@@ -708,6 +734,8 @@ A HUGE black trident leans against the wall - waiting.~
 5 16|64|512 1|8192
 0~ 40~ 60~ 5~
 30 0 0
+T
+steel~
 A
 18 -10
 A
@@ -732,6 +760,8 @@ A vicious jagged dagger is here, covered with the blood of its last victim.~
 5 1|2|16|64|512|2048 1|8192
 0~ 40~ 65~ 11~
 30 0 0
+T
+steel/wood/leather~
 A
 18 8
 A
@@ -744,6 +774,8 @@ A jeweled belt of great splendor lies before you.~
 9 64|128|512 1|2048
 13~ 0~ 0~ 0~
 20 0 0
+T
+leather~
 A
 12 75
 A
@@ -756,6 +788,8 @@ A magnificent crown lies here, radiating.~
 9 1|2|64 1|16
 10~ 0~ 0~ 0~
 25 0 0
+T
+gold~
 A
 17 -25
 A
@@ -768,6 +802,8 @@ You recognise this as the mane from one of the heads of a great chimera.~
 9 1|2 1|4
 15~ 0~ 0~ 0~
 15 0 0
+T
+leather~
 A
 18 8
 A
@@ -780,6 +816,8 @@ You recognise this as a goat's horn from one of the heads of a great chimera.~
 9 1 1|16
 8~ 0~ 0~ 0~
 10 0 0
+T
+leather~
 A
 19 5
 E
@@ -794,6 +832,8 @@ You recognise this yellow tooth as being that from a dragon's head.~
 5 1|64 1|8192
 0~ 30~ 45~ 11~
 20 0 0
+T
+dragonscale~
 A
 19 5
 A
@@ -808,6 +848,8 @@ A chair sits in the corner but its last owner didn't use it to sit on.~
 9 2|64 1|512
 8~ 0~ 0~ 0~
 40 0 0
+T
+steel/wood~
 A
 2 -1
 A
@@ -822,6 +864,8 @@ These armguards covered in spikes would greatly enhance your fighting ability.~
 9 2|64|512 1|256
 10~ 0~ 0~ 0~
 20 0 0
+T
+leather~
 A
 19 3
 A
@@ -876,6 +920,8 @@ A large warhammer lies here; it is doubtful you could wield such a large weapon.
 5 16|64 1|8192
 0~ 15~ 35~ 8~
 50 0 0
+T
+iron/wood~
 A
 19 8
 A
@@ -896,6 +942,8 @@ A massive sledgehammer rests against the wall here.~
 5 0 1|8192
 0~ 20~ 30~ 8~
 55 0 0
+T
+iron/wood~
 A
 2 -2
 A
@@ -908,6 +956,8 @@ A sharpened pickaxe lies against the wall.~
 5 16777216 1|8192
 0~ 20~ 30~ 2~
 55 0 0
+T
+steel/wood~
 #14037
 hot branding iron~
 a hot branding iron~
@@ -916,6 +966,8 @@ A red hot branding iron is burning a hole in the ground here.~
 5 1|64|512 1|8192
 0~ 25~ 45~ 6~
 5 0 0
+T
+iron/wood/leather~
 A
 19 0
 #14038
@@ -934,6 +986,8 @@ A helm and visor made from crimson steel rests here.~
 9 0 1|16
 10~ 0~ 0~ 0~
 8 0 0
+T
+steel/wood/leather~
 #14040
 steel breastplate~
 a steel breastplate~
@@ -942,6 +996,8 @@ A breastplate of thick steel rests here.~
 9 0 1|8
 6~ 0~ 0~ 0~
 10 0 0
+T
+steel/wood/leather~
 #14041
 note~
 a note~
@@ -970,6 +1026,8 @@ An axe used for chopping wood lies here.~
 5 0 1|8192
 0~ 10~ 15~ 13~
 15 0 0
+T
+wood~
 #14043
 rope coil~
 a coil of rope~
@@ -986,6 +1044,8 @@ A saw designed for two people is here, needing a sharpen.~
 5 0 1|8192
 0~ 10~ 15~ 1~
 55 0 0
+T
+steel/wood/leather~
 #14045
 rusty armor breastplate plate~
 rusty armour~
@@ -994,6 +1054,8 @@ Some rusty armor is here badly needing attention.~
 9 0 1|8
 1~ 0~ 0~ 0~
 20 0 0
+T
+steel~
 #14046
 mace spiked broken~
 a broken spiked mace~
@@ -1002,6 +1064,8 @@ The mace has been broken two-thirds the way up the handle, and many of the spike
 5 0 1|8192
 0~ 10~ 20~ 7~
 15 0 0
+T
+iron/wood~
 A
 19 -5
 A
@@ -1014,6 +1078,8 @@ A rather large piece of timber that has just been felled lies here.~
 5 0 1|8192
 0~ 10~ 50~ 8~
 100 0 0
+T
+wood~
 #14048
 cart wooden~
 a wooden cart~
@@ -1030,6 +1096,8 @@ The pitch-black robe emanates darkness.~
 9 2|512 1|1024
 12~ 0~ 0~ 0~
 15 0 0
+T
+cloth~
 A
 12 75
 #14050
@@ -1052,6 +1120,8 @@ A pair of smithy's gloves lie here.~
 9 1 1|128
 12~ 0~ 0~ 0~
 15 0 0
+T
+leather~
 A
 23 -15
 A
@@ -1064,6 +1134,8 @@ An apron belonging to a smithy lies here.~
 9 1 1|2048
 8~ 0~ 0~ 0~
 20 0 0
+T
+leather~
 A
 13 100
 A
@@ -1076,6 +1148,8 @@ Large padded gloves are here, you can only guess as to what they were used for.~
 9 2|16 1|128
 10~ 0~ 0~ 0~
 20 0 0
+T
+cloth~
 A
 2 2
 A
@@ -1090,6 +1164,8 @@ A large pair of padded sleeves are here, waiting to be worn.~
 9 1|64 1|256
 9~ 0~ 0~ 0~
 18 0 0
+T
+cloth~
 A
 2 2
 A
@@ -1102,6 +1178,8 @@ A pair of silver leggings covered in huge metal spikes lean against the wall.~
 9 1|16|64|512 1|32
 9~ 0~ 0~ 0~
 30 0 0
+T
+silver~
 A
 2 -2
 A
@@ -1116,6 +1194,8 @@ Your eyes light up as you recognise a suit of adamite platemail.~
 9 1|2|64|512 1|8
 15~ 0~ 0~ 0~
 40 0 0
+T
+steel~
 A
 18 8
 A
@@ -1130,6 +1210,8 @@ Some vambraces made of crimson steel rest here.~
 9 0 1|256
 10~ 0~ 0~ 0~
 8 0 0
+T
+steel/wood/leather~
 #14058
 greaves steel crimson~
 a pair of crimson steel greaves~
@@ -1138,6 +1220,8 @@ Some greaves made from crimson steel rest here.~
 9 0 1|32
 10~ 0~ 0~ 0~
 8 0 0
+T
+steel/wood/leather~
 #14059
 star morning morningstar~
 a huge morningstar~
@@ -1146,6 +1230,8 @@ A huge morning star rests here.~
 5 64 1|8192
 0~ 7~ 30~ 11~
 20 0 0
+T
+steel/wood/leather~
 A
 19 2
 A
@@ -1161,6 +1247,8 @@ A demon-faced talisman glares at you angrily.~
 9 1|64 1|4
 5~ 0~ 0~ 0~
 11 0 0
+T
+leather~
 A
 2 -8
 A
@@ -1173,6 +1261,8 @@ A black silk robe lies heaped in one corner.~
 9 0 1|1024
 15~ 0~ 0~ 0~
 6 0 0
+T
+silk~
 A
 17 -10
 A
@@ -1185,6 +1275,8 @@ A long slim dagger has been left here.~
 5 0 1|8192
 0~ 20~ 45~ 11~
 4 0 0
+T
+steel/wood/leather~
 A
 18 5
 A
@@ -1209,6 +1301,8 @@ Some golden silk lies in a heap here.~
 9 1|2|64 1|128
 12~ 0~ 0~ 0~
 4 0 0
+T
+gold~
 A
 3 3
 A
@@ -1239,6 +1333,8 @@ A dark amulet emanates evil as you look at it.~
 9 1|16|128|512 1|4
 6~ 0~ 0~ 0~
 5 0 0
+T
+silver~
 A
 12 150
 A
@@ -1261,6 +1357,8 @@ Some well-padded armor lies forgotten in a heap.~
 9 512 1|8
 14~ 0~ 0~ 0~
 30 0 0
+T
+steel~
 A
 17 -20
 #14070
@@ -1271,6 +1369,8 @@ An ordinary club lies here.~
 5 0 1|8192
 0~ 10~ 15~ 8~
 20 0 0
+T
+wood~
 A
 18 4
 #14071
@@ -1281,6 +1381,8 @@ A translucent pile of cloth glows in the corner.~
 9 1|64|1024 1|1024
 14~ 0~ 0~ 0~
 10 0 0
+T
+cloth~
 A
 12 250
 A
@@ -1295,6 +1397,8 @@ A skin of a deer is lying at your feet.~
 9 0 1|8
 3~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 #14073
 knife hunting~
 a hunting knife~
@@ -1303,6 +1407,8 @@ A hunting knife is here still covered in blood.~
 5 0 1|8192
 0~ 10~ 25~ 2~
 15 0 0
+T
+steel~
 #14074
 potion indigo~
 an indigo potion~
@@ -1319,6 +1425,8 @@ A large wooden spoon is here.~
 5 64 1|8192
 0~ 30~ 40~ 17~
 20 0 0
+T
+wood~
 #14076
 net fisherman's~
 a fisherman's net~
@@ -1327,6 +1435,8 @@ A net used for catching fish is here.~
 5 0 1|8192
 0~ 20~ 35~ 9~
 20 0 0
+T
+steel/wood/leather~
 A
 19 -5
 A
@@ -1347,6 +1457,8 @@ An katana lies here, its blade covered with runes of death.~
 5 1|16|64|1048576 1|8192
 0~ 35~ 50~ 1~
 30 0 0
+T
+steel/wood/leather~
 A
 18 15
 A

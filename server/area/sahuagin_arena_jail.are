@@ -909,6 +909,8 @@ A short sword designed for thrusting and stabbing at close quarters is here.~
 5 0 1|8192
 0~ 0~ 0~ 2~
 2 0 0
+T
+steel/wood/leather~
 A
 18 7
 #27475
@@ -919,6 +921,8 @@ Long metal greaves that cover the shins and feet have been placed here.~
 9 0 1|64
 2~ 0~ 0~ 0~
 3 50 30
+T
+cloth~
 A
 17 -12
 #27476
@@ -929,6 +933,8 @@ A rectangular wooden shield with a bronze boss is here.~
 9 0 1|512
 0~ 0~ 0~ 0~
 35 0 0
+T
+bronze/wood/leather~
 A
 17 -20
 #27477
@@ -939,6 +945,8 @@ A thick, leather belt adorned with metal decorations sits here.~
 9 0 2049
 5~ 0~ 0~ 0~
 5 0 500
+T
+leather~
 A
 1 2
 A
@@ -953,6 +961,8 @@ A well-used and maintained long spear rests here.~
 5 16|64|134217728 1|8192
 0~ 0~ 0~ 11~
 6 0 61
+T
+iron/wood~
 A
 18 5
 A
@@ -965,6 +975,8 @@ A round iron buckler lies here.~
 9 0 1|512
 0~ 0~ 0~ 0~
 35 0 0
+T
+iron/wood/leather~
 A
 17 -10
 A
@@ -977,6 +989,8 @@ A metal tube with a t-shaped semicircular blade at the end lies here.~
 5 0 1|8192
 0~ 0~ 0~ 1~
 2 0 0
+T
+steel/wood/leather~
 A
 17 -12
 A
@@ -1045,6 +1059,8 @@ A leather whip lies here.~
 5 16|128|512|2048 1|8192
 0~ 0~ 0~ 4~
 2 0 0
+T
+leather~
 A
 19 3
 A
@@ -1078,6 +1094,8 @@ A small suit of armour carved out of rock lies here.~
 9 0 1|8
 5~ 1~ 6~ 11~
 5 0 0
+T
+steel~
 A
 17 -15
 E
@@ -1092,6 +1110,8 @@ An exquisite spear has been placed here.~
 5 16|64|134217728|274877906944 1|8192
 0~ 0~ 0~ 11~
 4 0 63
+T
+iron/wood~
 A
 18 8
 A
@@ -1110,6 +1130,8 @@ A wristshield made of shell is here.~
 9 64 1|4096
 ~ ~ ~ ~
 1 0 0
+T
+steel/wood~
 A
 17 -15
 A
@@ -1122,6 +1144,8 @@ A skirt made of leather and shells lies on the ground.~
 9 1024 1|2048
 0~ 0~ 0~ 0~
 2 1450 0
+T
+leather~
 A
 17 -10
 A
@@ -1134,6 +1158,8 @@ Flexible boots made from the bark of a young tree have been placed here.~
 9 1024 1|64
 15~ 1~ 6~ 11~
 3 0 0
+T
+leather~
 A
 18 10
 A
@@ -1146,6 +1172,8 @@ A pair of shining green scaled leggings have been left here.~
 9 0 1|32
 0~ 0~ 0~ 0~
 45 0 0
+T
+steel~
 A
 17 -8
 #27496
@@ -1156,6 +1184,8 @@ A green leather jerkin of very fine workmanship lies here.~
 9 0 1|8
 5~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 17 -18
 A
@@ -1168,6 +1198,8 @@ A very fine trident of superb manufacture is here.~
 5 16|64|274877906944 1|8192
 0~ 1~ 6~ 2~
 10 0 30
+T
+steel~
 A
 18 8
 A
@@ -1202,6 +1234,8 @@ A weighted barbed net of very high quality lies here.~
 5 16|64 1|8192
 0~ 1~ 6~ 9~
 10 0 30
+T
+steel/wood/leather~
 A
 18 8
 A
@@ -1214,6 +1248,8 @@ A heavy crossbow of remarkably robust construction sits here.~
 5 64|1073741824 1|8192
 0~ 0~ 0~ 0~
 20 0 0
+T
+wood~
 A
 19 12
 A
@@ -1233,6 +1269,8 @@ A seal in the shape of a giant shark lies here.~
 9 256|32768 1|16384
 0~ 0~ 0~ 0~
 3 2500 1900
+T
+leather~
 A
 12 60
 #27503
@@ -1243,6 +1281,8 @@ A metal crest covered in sharpened spikes lies here.~
 9 64|16777216|274877906944 1|16
 8~ 0~ 0~ 0~
 10 0 0
+T
+leather~
 A
 2 2
 A

@@ -72,6 +72,8 @@ A black-hilted sword with a jewelled pommel lies here.~
 5 0 1|8192
 0~ 6~ 25~ 3~
 10 0 0
+T
+steel/wood/leather~
 A
 18 2
 A
@@ -120,6 +122,8 @@ A leather belt with a shiny silver buckle lies here.~
 9 0 1|2048
 4~ 1~ 6~ 11~
 5 0 0
+T
+silver~
 #18106
 boots low-heeled~
 a pair of low-heeled boots~
@@ -128,6 +132,8 @@ A well-made pair of boots is here on the ground.~
 9 0 1|64
 3~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #0
 
 

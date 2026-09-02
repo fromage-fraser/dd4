@@ -847,6 +847,8 @@ A wooden mallet is here.~
 5 0 1|8192
 0~ 0~ 0~ 8~
 10 0 0
+T
+wood~
 A
 18 -1
 A
@@ -864,6 +866,8 @@ A robe made of brilliant tropical bird plumage is here.~
 9 0 1|1024
 0~ 0~ 0~ 0~
 8 0 0
+T
+cloth~
 E
 robe feather~
 It sure is pretty.
@@ -907,6 +911,8 @@ A well crafted weapons belt is lying here.~
 9 64 1|2048
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 19 3
 E
@@ -927,6 +933,8 @@ A pair of gauntlets with arrows on them lies here.~
 9 64 1|128
 0~ 0~ 0~ 0~
 2 0 0
+T
+steel~
 A
 18 3
 E
@@ -962,6 +970,8 @@ An arm-length curved sword is here.~
 5 0 1|8192
 0~ 0~ 0~ 3~
 6 0 0
+T
+steel/wood/leather~
 A
 18 1
 A
@@ -988,6 +998,8 @@ Armbands made of fire are smoldering on the ground.~
 9 1|64 1|256
 0~ 0~ 0~ 0~
 5 0 0
+T
+silver~
 A
 13 30
 A
@@ -1012,6 +1024,8 @@ A well balanced javelin is here.~
 5 64|134217728 1|8192
 10~ 10~ 10~ 10~
 3 0 0
+T
+steel/wood~
 A
 18 2
 #17028
@@ -1022,6 +1036,8 @@ You see a suspicious looking cloak here. Hmmm.~
 9 32|64 1|1024
 0~ 0~ 0~ 0~
 4 0 0
+T
+cloth~
 E
 cloak~
 Yes, you have seen a thief wearing this once before.
@@ -1050,6 +1066,8 @@ A pair of pants cut from the skin of a fish lie here.~
 9 64 1|32
 0~ 0~ 0~ 0~
 4 0 0
+T
+leather~
 A
 17 -10
 A
@@ -1212,6 +1230,8 @@ A vest made of a bright blue fine chain mesh hovers here.~
 9 64 1|1024
 100~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 A
 18 3
 A
@@ -1290,6 +1310,8 @@ Wings from an ENORMOUS black bird lie well preserved on the ground.~
 9 32|64 1|256
 0~ 0~ 0~ 0~
 50 0 0
+T
+leather~
 A
 19 4
 E
@@ -1320,6 +1342,8 @@ A well balanced blue metal throwing dagger is here.~
 5 64 1|16384
 0~ 0~ 0~ 0~
 2 0 0
+T
+steel/wood/leather~
 A
 18 1
 A
@@ -1344,6 +1368,8 @@ A white fur skin cloak is here.~
 9 0 1|1024
 0~ 0~ 0~ 0~
 7 0 0
+T
+cloth~
 #17054
 vest fur skin~
 a fur skin vest~
@@ -1352,6 +1378,8 @@ A white fur skin vest is here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 5 0 0
+T
+fur~
 #17055
 leggings fur skin~
 fur skin leggings~
@@ -1360,6 +1388,8 @@ Some white fur skin leggings are here.~
 9 0 1|32
 0~ 0~ 0~ 0~
 8 0 0
+T
+fur~
 #17056
 buckler spiked~
 a spiked buckler~
@@ -1368,6 +1398,8 @@ A spiked buckler is here.~
 9 0 1|512
 0~ 0~ 0~ 11~
 1 0 0
+T
+leather~
 A
 17 -10
 A
@@ -1396,6 +1428,8 @@ A long piece of wire lies on the ground.~
 5 0 1|8192
 0~ 0~ 0~ 9~
 1 0 0
+T
+steel/wood/leather~
 #17060
 stone ghost~
 the ghost stone~
@@ -1412,6 +1446,8 @@ A mighty two handed battle axe lies neglected in the dirt.~
 5 0 1|8192
 0~ 0~ 0~ 3~
 45 0 0
+T
+steel/wood~
 A
 19 8
 #17062
@@ -1422,6 +1458,8 @@ A suit of armor fashioned from ice lies melting on the ground.~
 9 32|64 1|8
 0~ 0~ 0~ 0~
 50 0 0
+T
+steel~
 A
 1 -2
 A
@@ -1447,6 +1485,8 @@ A long bastard sword made of ice lies here melting.~
 5 32|64|2048 1|8192
 0~ 0~ 0~ 10~
 30 0 0
+T
+steel/wood/leather~
 A
 1 -2
 A

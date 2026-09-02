@@ -204,6 +204,8 @@ A body-wrecker polearm lies here.~
 5 134217728 8193
 0~ 4~ 6~ 11~
 27 30000 5
+T
+steel/wood/leather~
 #9901
 hammer iron~
 a huge hammer of cold iron~
@@ -212,6 +214,8 @@ A hammer of iron with silver and nickel detail lies here.~
 5 528 8193
 0~ 3~ 10~ 7~
 25 100000 5
+T
+iron/wood/leather~
 #9902
 bastard sword~
 a holy bastard sword~
@@ -220,6 +224,8 @@ A beautiful sword lies on the ground here.~
 5 1089 8193
 0~ 4~ 5~ 3~
 19 76000 5
+T
+steel/wood/leather~
 A
 13 25
 A
@@ -248,6 +254,8 @@ Some sleeves made of crystal lie here.~
 9 32 257
 20~ 0~ 0~ 0~
 10 50000 5
+T
+quartz~
 A
 19 2
 #9906
@@ -282,6 +290,8 @@ A cast iron girth lies here.~
 9 2 2049
 45~ 0~ 0~ 0~
 10 4000 5
+T
+iron/wood/leather~
 A
 3 -4
 #0

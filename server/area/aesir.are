@@ -271,6 +271,8 @@ A shining suit of chain mail lies here.~
 9 0 8
 0~ 0~ 0~ 0~
 50 0 0
+T
+steel/wood/leather~
 
 #966
 spear~
@@ -280,6 +282,8 @@ A finely crafted spear lies here.~
 5 1|2|16|128 8192
 0~ 0~ 0~ 6~
 5 0 0
+T
+wood~
 A
 19 50
 A
@@ -293,6 +297,8 @@ A pair of greaves radiating silver light are lying here.~
 9 1 1|32
 0~ 0~ 0~ 0~
 5 0 0
+T
+silver~
 A
 19 8
 
@@ -304,6 +310,8 @@ A pair of greaves radiating golden light are lying here.~
 9 1 1|32
 0~ 0~ 0~ 0~
 5 0 0
+T
+gold~
 A
 12 150
 A
@@ -317,6 +325,8 @@ Some vambraces radiating golden light are lying here.~
 9 0 1|256
 0~ 0~ 0~ 0~
 5 0 0
+T
+gold~
 A
 19 15
 A
@@ -373,6 +383,8 @@ Some Scales of the Water Serpent lay here.~
 9 0 1|32
 ~ ~ ~ ~
 10 0 0
+T
+leather~
 A
 13 150
 
@@ -384,6 +396,8 @@ Some Greaves of War sit on the ground.~
 9 0 1|32
 ~ ~ ~ ~
 10 0 0
+T
+steel~
 A
 13 150
 A
@@ -397,6 +411,8 @@ The Bones of the Nexus beast lay here.~
 9 0 1|256
 ~ ~ ~ ~
 10 0 0
+T
+bone~
 A
 13 250
 A

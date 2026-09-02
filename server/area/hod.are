@@ -1668,6 +1668,8 @@ Adonis sword~
 5 1|2|1024 1|8192
 ~ ~ ~ 1~
 5 0 0
+T
+steel/wood/leather~
 A
 19 -100
 A
@@ -1681,6 +1683,8 @@ A pair of shredded boots are practically in pieces here.~
 9 2 1|64
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 19 8
 
@@ -1692,6 +1696,8 @@ Some kind of three pronged spear is stuck in the ground here.~
 5 1024 1|8192
 ~ ~ ~ 11~
 4 0 0
+T
+iron/wood~
 A
 19 5
 
@@ -1730,6 +1736,8 @@ A pair of deadly horns have been ripped out of something's head.~
 5 67108864 8192
 1~ ~ ~ 11~
 2 0 0
+T
+steel/wood/leather~
 
 #55054
 flashing claws~
@@ -1739,6 +1747,8 @@ A set of claws have been severed from something.~
 5 1048576|67108864 8192
 3~ ~ ~ 3~
 2 0 0
+T
+bone~
 A
 19 5
 A
@@ -1806,6 +1816,8 @@ The Flaming Vorpal Long sword of Power Strike~
 5 1|2|128|256|1048576 1|8192
 ~ ~ ~ 9~
 1 0 0
+T
+steel/wood/leather~
 A
 19 5
 A
@@ -1819,6 +1831,8 @@ A humming {cd{bag{cger{x is stuck in the ground.~
 5 2 1|8192
 ~ ~ ~ 2~
 1 0 0
+T
+steel/wood/leather~
 A
 19 5
 A
@@ -1904,6 +1918,8 @@ A pair of crumbling pants rot on the ground.~
 9 1 1|32
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 19 6
 A
@@ -1926,6 +1942,8 @@ A set of fangs have been ripped out of the mouth of a werewolf.~
 5 16777216|67108864 8192
 1~ ~ ~ 10~
 3 0 0
+T
+bone~
 A
 19 5
 A
@@ -1943,6 +1961,8 @@ An ancient acorn has been set here. Will it grow into a tree?~
 9 1|16384 1|16384
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 13 150
 A
@@ -1964,6 +1984,8 @@ A clot of {Rblood{x bobs along in the air.~
 9 2048 1|32768
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 19 1
 A
@@ -2031,6 +2053,8 @@ a {yst{war{x cloak flutters in the breeze.~
 9 1 1|1024
 ~ ~ ~ ~
 1 0 0
+T
+cloth~
 A
 13 200
 A
@@ -2044,6 +2068,8 @@ A {rruby{x hammer catches your eye.~
 5 256 1|8192
 ~ ~ ~ 7~
 3 0 0
+T
+ruby~
 A
 19 2
 A
@@ -2068,6 +2094,8 @@ A shard sword glitters mightily.~
 5 1 1|8192
 ~ ~ ~ 3~
 1 0 0
+T
+steel/wood/leather~
 A
 14 400
 A
@@ -2109,6 +2137,8 @@ A {cshar{bd{x of a sword is embedded into the ground here.~
 5 8|524288|268435456 1
 ~ ~ ~ 1~
 1 0 0
+T
+steel/wood/leather~
 A
 19 500
 A
@@ -2126,6 +2156,8 @@ A {cshar{bd{x of a sword is embedded into the ground here.~
 5 8|524288|268435456 1
 ~ ~ ~ 1~
 1 0 0
+T
+steel/wood/leather~
 A
 19 50
 A
@@ -2143,6 +2175,8 @@ Some {wwhite{x chain mail is here.~
 9 512 1|8
 ~ ~ ~ ~
 6 0 0
+T
+steel~
 A
 19 5
 
@@ -2154,6 +2188,8 @@ A snowy {wwhite{x cloak is piled here.~
 9 0 1|1024
 ~ ~ ~ ~
 1 0 0
+T
+cloth~
 A
 18 5
 A
@@ -2171,6 +2207,8 @@ A pure {wwhite{x hood has been set here.~
 9 0 1|16
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 18 5
 A
@@ -2186,6 +2224,8 @@ A slim blade sits here.~
 5 0 1|8192
 ~ ~ ~ 1~
 2 0 0
+T
+steel/wood/leather~
 A
 19 5
 A
@@ -2237,6 +2277,8 @@ Adonis' brown tunic lies here.~
 9 0 1|8
 ~ ~ ~ ~
 1 0 0
+T
+cloth~
 A
 19 5
 A
@@ -2252,6 +2294,8 @@ A pair of thick black pants have been tossed here.~
 9 1024 1|32
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 19 3
 A
@@ -2265,6 +2309,8 @@ A pair of sturdy {dblack{x boots have been discarded here.~
 9 1024 1|64
 ~ ~ ~ ~
 2 0 0
+T
+leather~
 A
 19 4
 A
@@ -2278,6 +2324,8 @@ Adonis' scabbard~
 9 1024 1|2048
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 19 5
 A
@@ -2293,6 +2341,8 @@ Vesta's red dress is here.~
 9 0 1|8
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 
 #55007
 black laced boots~
@@ -2302,6 +2352,8 @@ Some {dblack{x laced boots sit here.~
 9 0 1|64
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 
 #55008
 silver pendant~
@@ -2311,6 +2363,8 @@ A {wsi{ll{x{wv{le{x{wr{x pendant has been thrown away here.~
 9 0 1|4
 ~ ~ ~ ~
 1 0 0
+T
+silver~
 
 #55010
 small black belt~
@@ -2320,6 +2374,8 @@ A small black belt has fallen here.~
 9 0 1|2048
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 
 #55071
 sparkling twinkling~
@@ -2340,6 +2396,8 @@ A Dragonian neck brace spins around here.~
 9 2 1|4
 ~ ~ ~ ~
 1 0 0
+T
+dragonscale~
 A
 13 25
 
@@ -2351,6 +2409,8 @@ A Fairy Queen Face Mask grins at you.~
 9 1|2|1024|2048 1|16
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 17 -15
 A
@@ -2368,6 +2428,8 @@ A square buckler lies dented on the ground.~
 9 0 1|512
 ~ ~ ~ ~
 5 0 0
+T
+leather~
 A
 19 5
 A

@@ -198,6 +198,8 @@ A large shirt has been left here.~
 9 16|256|8192 1|8
 20~ 20~ 20~ 20~
 5 0 0
+T
+leather~
 A
 2 3
 A
@@ -212,6 +214,8 @@ A black robe has been left here.~
 9 0 1|1024
 14~ 14~ 14~ 14~
 5 0 0
+T
+cloth~
 #20403
 pill combat~
 a pill of combat~
@@ -236,6 +240,8 @@ A HUGE bright sword has been left here.~
 5 1|64 1|8192
 0~ 13~ 10~ 3~
 45 45000 0
+T
+steel/wood/leather~
 A
 18 25
 A
@@ -250,6 +256,8 @@ A large helmet has been dropped here.~
 9 0 1|16
 25~ 25~ 25~ 25~
 50 10000 0
+T
+steel~
 A
 5 2
 A
@@ -262,6 +270,8 @@ A collar of stone has been left here.~
 9 0 1|4
 20~ 20~ 20~ 20~
 10 12500 0
+T
+granite~
 A
 13 20
 A
@@ -276,6 +286,8 @@ A small mithril ring lies here.~
 9 0 1|2
 18~ 18~ 18~ 18~
 5 10000 0
+T
+mithril~
 A
 12 175
 #20409
@@ -286,6 +298,8 @@ A pair of finely crafted gauntlets has been left here.~
 9 16|64|128|4096 1|128
 20~ 20~ 20~ 20~
 5 11500 0
+T
+steel~
 A
 18 12
 A
@@ -300,6 +314,8 @@ A pair of fine pauldrons has been dropped here.~
 9 0 1|256
 20~ 20~ 20~ 20~
 30 10000 0
+T
+leather~
 A
 1 2
 A
@@ -312,6 +328,8 @@ A large cuirass has been carelessly left here.~
 9 0 1|8
 22~ 22~ 22~ 22~
 15 10000 0
+T
+leather~
 A
 5 2
 A
@@ -324,6 +342,8 @@ A leather belt has been dropped here.~
 9 0 1|2048
 20~ 20~ 20~ 20~
 5 7500 0
+T
+leather~
 A
 12 100
 A
@@ -338,6 +358,8 @@ A set of finely crafted greaves are here.~
 9 0 1|32
 20~ 20~ 20~ 20~
 10 8000 0
+T
+steel~
 A
 14 100
 #20414
@@ -348,6 +370,8 @@ A pair of boots has been left here.~
 9 0 1|64
 18~ 18~ 18~ 18~
 50 25000 0
+T
+leather~
 A
 19 7
 A
@@ -360,6 +384,8 @@ A cloak has been left here.~
 9 1|2 1|1024
 17~ 17~ 17~ 17~
 10 25000 0
+T
+cloth~
 A
 3 3
 A
@@ -374,6 +400,8 @@ A mithril dagger is stuck in the ground.~
 5 1|64 1|8192
 0~ 10~ 11~ 2~
 10 30000 0
+T
+mithril~
 A
 18 10
 A
@@ -388,6 +416,8 @@ A bright silver cloak has been dropped here.~
 9 0 1|1024
 26~ 26~ 26~ 26~
 30 25000 0
+T
+silver~
 A
 3 3
 A
@@ -402,6 +432,8 @@ A finely crafted mace has been dropped here.~
 5 1|2|64 1|8192
 0~ 15~ 10~ 7~
 30 30000 0
+T
+iron/wood~
 A
 12 100
 A
@@ -414,6 +446,8 @@ A bright silver girth has been left here.~
 9 1|64 1|2048
 26~ 26~ 26~ 26~
 5 22500 0
+T
+silver~
 A
 13 50
 A
@@ -430,6 +464,8 @@ The master's weapon gleams in the light.~
 5 1|2|8|32|64|16384|262144 1|8192
 0~ 15~ 10~ 3~
 40 40000 0
+T
+steel/wood/leather~
 A
 19 30
 A
@@ -444,6 +480,8 @@ A flaming dagger burns here.~
 5 1|64 1|8192
 0~ 16~ 10~ 11~
 20 30000 0
+T
+steel/wood/leather~
 A
 2 3
 A
@@ -474,6 +512,8 @@ An ebony dagger has been discarded here.~
 5 16|32|64|4096|524288 1|8192
 0~ 9~ 15~ 2~
 10 10000 0
+T
+steel/wood/leather~
 A
 19 20
 A

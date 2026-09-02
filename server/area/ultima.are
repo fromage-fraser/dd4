@@ -1098,6 +1098,8 @@ The crook lies here.~
 5 0 8193
 0~ 0~ 0~ 7~
 4 0 0
+T
+steel/wood/leather~
 #2418
 doll~
 the doll~
@@ -1118,6 +1120,8 @@ Katrina's sword gleams prettily.~
 5 1024 8193
 0~ 0~ 0~ 1~
 2 0 0
+T
+steel/wood/leather~
 E
 sword~
 The sword is shined and cared for with much care.  It glows with
@@ -1139,6 +1143,8 @@ The magic dagger lies here, pulsating.~
 5 2 8193
 0~ 0~ 0~ 11~
 4 0 0
+T
+steel/wood/leather~
 A
 3 2
 A
@@ -1151,6 +1157,8 @@ The robes of a mage lies here.~
 9 0 1025
 0~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 E
 robe~
 These robes are comfortable and clean.
@@ -1163,6 +1171,8 @@ Smithy's horseshoes are here.~
 9 1 65
 0~ 0~ 0~ 0~
 7 0 0
+T
+leather~
 A
 14 50
 A
@@ -1207,6 +1217,8 @@ Iolo's bow stands against a wall.~
 5 3|1073741824 8193
 0~ 0~ 0~ 6~
 4 0 0
+T
+wood~
 E
 bow iolo~
 Crafted by the master himself, Iolo, the bow is finely made.  It
@@ -1223,6 +1235,8 @@ A chicken is lying on the ground.~
 5 1024 8193
 0~ 0~ 0~ 7~
 6 0 0
+T
+steel/wood/leather~
 E
 chicken~
 As you look closer you see this isn't a real chicken, it's one of
@@ -1240,6 +1254,8 @@ The Infinity Bow floats here.~
 5 1|2|1024|1073741824 8193
 0~ 0~ 0~ 6~
 3 0 0
+T
+wood~
 E
 infinity bow~
 The bow is immense, yet light.  You see no string, but as your
@@ -1258,6 +1274,8 @@ A simple wooden spear lies here.~
 5 134217728 8193
 0~ 0~ 0~ 2~
 4 0 0
+T
+wood~
 #2432
 club~
 a stone club~
@@ -1266,6 +1284,8 @@ A stone club is here.~
 5 0 8193
 0~ 0~ 0~ 7~
 10 0 0
+T
+granite~
 #2433
 gavel~
 a gavel~
@@ -1274,6 +1294,8 @@ The Judge's gavel lies here.~
 5 1024 8193
 0~ 0~ 0~ 7~
 5 0 0
+T
+steel/wood/leather~
 E
 judge gavel~
 The Gavel is made of ironwood, and seems to have some of the
@@ -1291,6 +1313,8 @@ Janna's staff lies here.~
 5 1025 8193
 0~ 0~ 0~ 8~
 7 0 0
+T
+wood~
 E
 staff~
 Janna's staff is strangely shaped, in a double helix form.  As
@@ -1307,6 +1331,8 @@ Geoffrey's sword gleams in the sun.~
 5 1025 8193
 0~ 0~ 0~ 3~
 7 0 0
+T
+steel/wood/leather~
 E
 geoffreys sword~
 Geoffrey's sword is heavy but sharp.  When you touch the jeweled
@@ -1321,6 +1347,8 @@ A simple sword is here.~
 5 0 8193
 0~ 0~ 0~ 1~
 5 0 0
+T
+steel/wood/leather~
 #2437
 sword bastard~
 a bastard sword~
@@ -1329,6 +1357,8 @@ Simon's monstrous bastard sword lies here.~
 5 1025 8193
 0~ 0~ 0~ 3~
 18 0 0
+T
+steel/wood/leather~
 E
 sword bastard~
 This is the biggest and best sword you've ever seen.  It's
@@ -1355,6 +1385,8 @@ A tinker's hammer lies here.~
 5 0 8193
 0~ 0~ 0~ 8~
 12 0 0
+T
+iron/wood~
 #2439
 sword~
 a sword~
@@ -1363,6 +1395,8 @@ Julia's hot, glowing sword lies here.~
 5 1025 8193
 0~ 0~ 0~ 1~
 8 0 0
+T
+steel/wood/leather~
 E
 glowing sword hot~
 Julia was working on this sword before you attacked her.  Though
@@ -1384,6 +1418,8 @@ The most beautiful amulet lies in a pile here.~
 9 1025|2048 5
 0~ 0~ 0~ 0~
 1 0 0
+T
+silver~
 A
 20 -5
 A
@@ -1404,6 +1440,8 @@ A sword lies on the ground.~
 5 0 8193
 0~ 0~ 0~ 1~
 10 0 0
+T
+steel/wood/leather~
 A
 18 2
 #2442
@@ -1414,6 +1452,8 @@ A paladin's suit of armour lies here.~
 9 0 9
 0~ 0~ 0~ 0~
 15 0 0
+T
+steel~
 A
 1 1
 A
@@ -1426,6 +1466,8 @@ Dupre's rapier is here.~
 5 1025  8193
 0~ 0~ 0~ 11~
 13 0 0
+T
+steel/wood/leather~
 A
 1 1
 A
@@ -1438,6 +1480,8 @@ A gargoyle's boomerang is here.~
 5 2 8193
 0~ 0~ 0~ 6~
 6 0 0
+T
+steel/wood/leather~
 E
 boomerang~
 Though this seems like your basic boomerang, it is much more.  It
@@ -1456,6 +1500,8 @@ A corroded, rusty sword is here.~
 5 128|4096 8193
 0~ 0~ 0~ 1~
 9 0 0
+T
+steel/wood/leather~
 A
 9 100
 #2446
@@ -1466,6 +1512,8 @@ A spiked rusty shield lies here.~
 9 128|4096 513
 0~ 0~ 0~ 0~
 5 0 0
+T
+steel/wood~
 A
 19 3
 A
@@ -1478,6 +1526,8 @@ A magic cloak is here.~
 9 1 5
 0~ 0~ 0~ 0~
 6 0 0
+T
+cloth~
 A
 12 10
 A
@@ -1490,6 +1540,8 @@ A bright light of power shoots into the air.~
 9 1 9
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 17 10
 A
@@ -1502,6 +1554,8 @@ The empty shell of the Guardian head lies here.~
 9 16|512|2048 17
 0~ 0~ 0~ 0~
 10 0 0
+T
+steel~
 E
 face head helmet red~
 When you slew the evil Guardian, all that was left was his
@@ -1525,6 +1579,8 @@ Waves of corruption come off this evilly enchanted spiked mace.~
 5 16|512|2048 8193
 0~ 0~ 0~ 7~
 5 0 0
+T
+iron/wood~
 A
 19 6
 A
@@ -1537,6 +1593,8 @@ This completely black armor reeks of death.~
 9 16|512|2048 9
 0~ 0~ 0~ 0~
 9 0 0
+T
+steel~
 A
 17 5
 A
@@ -1551,6 +1609,8 @@ You see a very oddly-shaped charm... it might be worth it to look at its shape.~
 9 16|512|2048 5
 0~ 0~ 0~ 0~
 3 0 0
+T
+leather~
 E
 shape~
 The charm looks to be a mummified part of a body.  It is about 3
@@ -1582,6 +1642,8 @@ Sentri's helmet is here.~
 9 1024 17
 0~ 0~ 0~ 0~
 30 0 0
+T
+steel~
 A
 4 2
 A
@@ -1594,6 +1656,8 @@ Sentri's sleeves lies here.~
 9 1024 257
 0~ 0~ 0~ 0~
 40 0 0
+T
+cloth~
 A
 1 2
 A
@@ -1606,6 +1670,8 @@ Sentri's girth is here.~
 9 1024 2049
 0~ 0~ 0~ 0~
 40 0 0
+T
+leather~
 A
 13 15
 A
@@ -1618,6 +1684,8 @@ Sentri's two-handed sword is here.~
 5 1024 8193
 0~ 0~ 0~ 3~
 20 0 0
+T
+steel/wood/leather~
 A
 18 3
 A
@@ -1630,6 +1698,8 @@ Sentri's gloves are here.~
 9 1024 129
 0~ 0~ 0~ 0~
 40 0 0
+T
+leather~
 A
 18 3
 A
@@ -1642,6 +1712,8 @@ Sentri's boots are here.~
 9 1024 65
 0~ 0~ 0~ 0~
 40 0 0
+T
+leather~
 A
 2 1
 A
@@ -1654,6 +1726,8 @@ Sentri left his leggings here.~
 9 1024 33
 0~ 0~ 0~ 0~
 40 0 0
+T
+steel~
 A
 2 1
 A
@@ -1666,6 +1740,8 @@ Sentri left his armour here.~
 9 1024 9
 0~ 0~ 0~ 0~
 30 0 0
+T
+steel~
 A
 18 3
 A
@@ -1678,6 +1754,8 @@ A triangular shaped medallion is here.~
 9 0 5
 0~ 0~ 0~ 0~
 6 0 0
+T
+leather~
 A
 12 10
 A
@@ -1690,6 +1768,8 @@ The most amazingly well crafted sword lies here.~
 5 32|64|256 8193
 0~ 0~ 0~ 1~
 4 0 0
+T
+steel/wood/leather~
 E
 glass sword~
 Invisible to the naked eye, this sword is the best crafted, as
@@ -1715,6 +1795,8 @@ A jewel encrusted crown is here.~
 9 1 17
 0~ 0~ 0~ 0~
 10 0 0
+T
+gold~
 E
 british crown~
 Legend has it that this most perfect of crowns has within one of
@@ -1737,6 +1819,8 @@ A pure gold sceptre is topped with a perfect crystal orb of power.~
 9 1 16385
 0~ 0~ 0~ 0~
 1 0 0
+T
+gold~
 E
 sceptre~
 The second of the crown jewels, this sceptre is amazingly light,
@@ -1764,6 +1848,8 @@ A silver amulet lies here.~
 9 1 5
 0~ 0~ 0~ 0~
 1 0 0
+T
+silver~
 E
 amulet~
 British's amulet is in the shape of the great earth serpent.

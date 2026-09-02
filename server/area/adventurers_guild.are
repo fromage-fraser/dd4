@@ -121,6 +121,8 @@ A large metal shield bears a holy symbol on its front face.~
 9 1 1|512
 10~ 10~ 10~ 10~
 10 0 0
+T
+steel/wood~
 A
 19 4
 A
@@ -153,6 +155,8 @@ A shining emerald necklace lays on the ground.~
 9 1|64 1|4
 0~ 0~ 0~ 0~
 5 0 0
+T
+emerald~
 A
 18 9
 A
@@ -175,6 +179,8 @@ A shining emerald necklace lays on the ground.~
 9 1|64 1|4
 0~ 0~ 0~ 0~
 5 0 0
+T
+emerald~
 A
 18 9
 A
@@ -189,6 +195,8 @@ You notice the intense glow of a magnificent vest.~
 9 1|64 9
 0~ 0~ 0~ 0~
 30 0 0
+T
+leather~
 A
 18 2
 A
@@ -203,6 +211,8 @@ A shiny metal choker has been discarded here.~
 9 2|64 1|4
 0~ 0~ 0~ 0~
 30 0 0
+T
+mithril~
 A
 2 1
 A
@@ -224,6 +234,8 @@ A talisman inscribed with runes has been dropped here.~
 9 2|64 1|4
 0~ 0~ 0~ 0~
 8 0 0
+T
+leather~
 A
 37 1
 E

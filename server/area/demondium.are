@@ -1319,6 +1319,8 @@ A short sword, well-suited for a goblin lies here.~
 5 16|512 1|8192
 0~ 2~ 10~ 3~
 5 0 0
+T
+steel/wood/leather~
 #21501
 goblin leather vest~
 a goblin's leather vest~
@@ -1327,6 +1329,8 @@ A leather vest, well-suited to a goblin lies here.~
 9 16 1|8
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #21502
 silver bullet~
 a silver bullet~
@@ -1455,6 +1459,8 @@ The sword has broken in the middle of the blade, and is rusted.~
 5 128|4096 1|8192
 0~ 1~ 6~ 1~
 30 0 0
+T
+steel/wood/leather~
 A
 13 -50
 A
@@ -1469,6 +1475,8 @@ The helmet is rusted through.~
 9 128|4096 1|16
 0~ 1~ 6~ 11~
 5 0 0
+T
+steel~
 A
 17 25
 A
@@ -1483,6 +1491,8 @@ A ring  rests here.~
 9 0 1|2
 -5~ 1~ 6~ 11~
 5 0 0
+T
+silver~
 A
 17 -10
 A
@@ -1495,6 +1505,8 @@ A thick warm wolf hide lies here.~
 9 16|512 1|1024
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 17 -15
 #21518
@@ -1505,6 +1517,8 @@ A grey belt is barely discernible here.~
 9 16|512 1|2048
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 13 20
 A
@@ -1517,6 +1531,8 @@ A feathered headdress hangs here.~
 9 16|512 1|16
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 12 25
 #21520
@@ -1527,6 +1543,8 @@ An amulet made of powerful banes glows here.~
 9 1|16|512 1|4
 0~ 1~ 6~ 11~
 5 0 0
+T
+silver~
 A
 12 40
 #21521
@@ -1547,6 +1565,8 @@ A pair of slimy bracers lie here untouched.~
 9 16 1|4096
 0~ 1~ 6~ 11~
 5 0 0
+T
+steel~
 A
 19 5
 A
@@ -1559,6 +1579,8 @@ A corpse lies half buried in the swamp.~
 5 16|512 1|8192
 0~ 10~ 25~ 9~
 40 0 0
+T
+steel/wood/leather~
 A
 19 2
 A
@@ -1603,6 +1625,8 @@ A leather saddle designed for a camel is here.~
 9 0 1|2048
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #21529
 nomad scimitar~
 a nomad's short scimitar~
@@ -1611,6 +1635,8 @@ A sharp curved scimitar lies here.~
 5 64 1|8192
 0~ 5~ 10~ 3~
 10 0 0
+T
+steel/wood/leather~
 #21530
 bedouin sword~
 a bedouin's short sword~
@@ -1619,6 +1645,8 @@ A bedouin's short sword rests here.~
 5 64 1|8192
 0~ 5~ 10~ 1~
 10 0 0
+T
+steel/wood/leather~
 #21531
 harem sash~
 a harem sash~
@@ -1627,6 +1655,8 @@ A harem sash with bells tinkles in the wind.~
 9 0 1|2048
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 2 0
 #21532
@@ -1637,6 +1667,8 @@ A sandy old robe lies here.~
 9 0 1|1024
 0~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 A
 17 0
 #21533
@@ -1647,6 +1679,8 @@ A pile of sandy rags lie here.~
 9 0 1|16
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 4 3
 A
@@ -1659,6 +1693,8 @@ A small dagger rests here.~
 5 0 1|8192
 0~ 10~ 15~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 19 5
 A
@@ -1671,6 +1707,8 @@ A pair of old sand coloured boots sit here waiting to be claimed.~
 9 0 1|64
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #21536
 mummy bandage~
 mummy's bandages~
@@ -1679,6 +1717,8 @@ Some old rags lie in a corner.~
 9 16|128|512|1024|2048|4096 1|4096
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 13 -25
 #21537
@@ -1689,6 +1729,8 @@ A curved sword covered in hieroglyphs lies here.~
 5 0 1|8192
 0~ 5~ 9~ 13~
 15 0 0
+T
+steel/wood/leather~
 A
 19 2
 #21538
@@ -1699,6 +1741,8 @@ An arm of a mummy lies on the floor.~
 5 0 1|8192
 0~ 10~ 15~ 7~
 5 0 0
+T
+steel/wood/leather~
 A
 9 5000
 A
@@ -1727,6 +1771,8 @@ Osiris' scales of judgement sit quietly here.~
 9 0 1|16384
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 17 -25
 A
@@ -1739,6 +1785,8 @@ A mummy's leg...~
 5 16 1|8192
 0~ 1~ 6~ 0~
 25 0 0
+T
+steel/wood/leather~
 #21542
 belt Underworld~
 belt of the Underworld~
@@ -1747,6 +1795,8 @@ A strange black belt lies here.~
 9 512 1|2048
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 5 3
 A
@@ -1761,6 +1811,8 @@ A symbol of the Underworld hangs on a chain~
 9 16|512 1|4
 0~ 1~ 6~ 11~
 5 0 0
+T
+steel~
 A
 12 25
 #21544
@@ -1771,6 +1823,8 @@ An ice cold golden crown sits here.~
 9 128|4096 1|16|8192
 0~ 1~ 6~ 11~
 5 0 0
+T
+gold~
 A
 1 -3
 A
@@ -1817,6 +1871,8 @@ Osiris' powerful sword shines here.~
 5 1 1|8192
 0~ 20~ 35~ 4~
 5 0 0
+T
+steel/wood/leather~
 A
 19 5
 A
@@ -1845,6 +1901,8 @@ A bone sword rests here.~
 5 0 1|8192
 0~ 10~ 19~ 3~
 5 0 0
+T
+bone~
 #21552
 bone helmet~
 a bone helmet~
@@ -1853,6 +1911,8 @@ A helmet made from a skull grins at you.~
 9 0 1|16
 0~ 1~ 6~ 11~
 5 0 0
+T
+bone~
 A
 17 -20
 #21553
@@ -1863,6 +1923,8 @@ A pair of bracers made from a thick piece of bone sit here.~
 9 16 1|4096
 10~ 1~ 6~ 11~
 5 0 0
+T
+bone~
 A
 19 6
 A
@@ -1877,6 +1939,8 @@ A shield made from a large bone sits here.~
 9 0 1|512
 0~ 1~ 6~ 11~
 5 0 0
+T
+bone~
 A
 17 -25
 #21555
@@ -1895,6 +1959,8 @@ A licorice strap sits here enticing you.~
 5 0 1|8192
 0~ 11~ 25~ 10~
 5 0 0
+T
+steel/wood/leather~
 A
 19 4
 A
@@ -1907,6 +1973,8 @@ Akmar's Ring should be on his finger.~
 9 16 1|2
 25~ 1~ 6~ 11~
 5 0 0
+T
+silver~
 A
 17 -25
 #21558
@@ -1917,6 +1985,8 @@ A small black ring hums quietly to itself.~
 9 1|2|16|2305843009213693952 1|2
 0~ 1~ 6~ 11~
 5 0 0
+T
+silver~
 A
 13 -2000
 #21559
@@ -1927,6 +1997,8 @@ A huge broadsword gleams here.~
 5 0 1|8192
 0~ 15~ 30~ 3~
 35 0 0
+T
+steel/wood/leather~
 A
 19 5
 A
@@ -1939,6 +2011,8 @@ A huge spiked mace is covered in dried blood.~
 5 0 1|8192
 0~ 10~ 19~ 7~
 35 0 0
+T
+iron/wood~
 #21561
 tooth jaguar~
 a jaguar's tooth~
@@ -1947,6 +2021,8 @@ A large jaguars tooth has been removed from a jaw.~
 5 16 1|8192
 0~ 20~ 30~ 11~
 5 0 0
+T
+bone~
 A
 19 5
 #21562
@@ -1957,6 +2033,8 @@ A grey cloak lies quietly in a corner.~
 9 0 1|1024
 0~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 A
 2 3
 A
@@ -1971,6 +2049,8 @@ These fine gloves would be very good for a mage.~
 9 0 1|128
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 12 100
 A
@@ -1989,6 +2069,8 @@ A medallion with the symbol of Pavlopetri on it has been discarded here.~
 9 0 1|4
 10~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 A
 12 50
 A
@@ -2035,6 +2117,8 @@ A pair of boots made from the skin of a jaguar stand here.~
 9 1|16 1|64
 18~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 14 100
 A
@@ -2049,6 +2133,8 @@ A black armband lies here.~
 9 16 1|256
 15~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 12 50
 A
@@ -2065,6 +2151,8 @@ A pair of leggings made from some unknown black metal sits here.~
 9 16 1|32
 0~ 1~ 6~ 11~
 5 0 0
+T
+steel~
 A
 2 2
 A
@@ -2085,6 +2173,8 @@ There seems to be something lying in the shadows nearby.~
 9 2 1|512
 20~ 1~ 6~ 11~
 5 0 0
+T
+steel/wood~
 A
 17 -20
 A
@@ -2097,6 +2187,8 @@ A shiny black PVC bodysuit lies here... kinky.~
 9 0 1|8
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 3 2
 A
@@ -2143,6 +2235,8 @@ Some ribbed body armour sits here.~
 9 1|16 1|8
 0~ 1~ 6~ 11~
 5 0 0
+T
+steel~
 A
 17 -25
 A
@@ -2157,6 +2251,8 @@ A tall white hat sits here.~
 9 0 1|16
 0~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 A
 3 3
 A
@@ -2181,6 +2277,8 @@ An evil looking finger puppet grins evilly at you.~
 9 16 1|2
 13~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 A
 12 50
 A
@@ -2209,6 +2307,8 @@ A twisted dagger is embedded into the floor.~
 5 16|32 1|8192
 0~ 15~ 35~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 12 25
 A
@@ -2223,6 +2323,8 @@ A belt soaked in the blood of sacrifice victims hangs from a hook.~
 9 16 1|2048
 10~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 A
 17 -10
 A
@@ -2241,6 +2343,8 @@ An evil looking yellow bracelet has been given special powers by being used in s
 9 16 1|4096
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 17 -10
 A
@@ -2255,6 +2359,8 @@ A shield the colour of midnight sits here.~
 9 0 1|512
 0~ 1~ 6~ 11~
 5 0 0
+T
+steel/wood~
 A
 17 -20
 A
@@ -2267,6 +2373,8 @@ A blood red sacrificial robe hums with evil power.~
 9 16|32|64|512|2048|4096 1|1024
 15~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 #21587
 yellow robe~
 a yellow sacrificial robe~
@@ -2275,6 +2383,8 @@ A evil looking yellow sacrificial robe hums with power.~
 9 16|32|64|512|2048|4096 1|1024
 10~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 #21588
 black robe~
 a black sacrificial robe~
@@ -2283,6 +2393,8 @@ An evil looking black sacrificial robe hums with power.~
 9 16|32|64|512|2048|4096 1|1024
 10~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 #21589
 red boots bloody~
 a pair of bloody boots~
@@ -2291,6 +2403,8 @@ A pair of boots sit here dripping blood.~
 9 16 1|64
 15~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 17 -10
 A
@@ -2305,6 +2419,8 @@ A pair of yellow gloves, great for keeping blood off your hands when making sacr
 9 16|512|2048 1|128
 10~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #21591
 cursed spike~
 an ancient cursed spike~
@@ -2313,6 +2429,8 @@ An ancient cursed spike sits here waiting to possess someone.~
 5 16|64|128|512|2048|4096|2305843009213693952 1|8192
 0~ 15~ 21~ 11~
 5 0 0
+T
+steel/wood~
 A
 19 5
 #21592
@@ -2323,6 +2441,8 @@ An old, but not ancient cursed spike waits to possess someone.~
 5 16|64|128|512|2048|4096|2305843009213693952 1|8192
 0~ 10~ 19~ 11~
 5 0 0
+T
+steel/wood~
 A
 19 4
 #21593
@@ -2333,6 +2453,8 @@ The favourite weapon of cult recruiters all around the universe, the e-meter, si
 5 1|2|16|64|128|512|2048|4096|2305843009213693952 1|8192
 0~ 1~ 1~ 12~
 5 0 0
+T
+steel/wood/leather~
 A
 3 -20
 A
@@ -2349,6 +2471,8 @@ An evil, powerful artifact lies just beyond your grasp.~
 5 2|16 1|8192
 0~ 25~ 50~ 11~
 15 0 0
+T
+steel/wood/leather~
 A
 19 15
 A
@@ -2387,6 +2511,8 @@ A very pretty young lady has been sacrificed to please Thrasher, how sad.~
 9 1|16|512|2048|4096 1|1024
 20~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 17 -20
 A
@@ -2403,6 +2529,8 @@ A tiny live demon is on the end of a gold chain.~
 9 1|16 1|4|8192
 20~ 1~ 6~ 11~
 5 0 0
+T
+gold~
 A
 17 -15
 A
@@ -2425,6 +2553,8 @@ A pair of flaming boots scorch the air around you.~
 9 16 1|64|8192
 20~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 14 500
 A

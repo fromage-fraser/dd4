@@ -166,6 +166,8 @@ A length of metal piping lies here.~
 5 0 1|8192
 0~ 0~ 0~ 7~
 5 0 0
+T
+steel/wood/leather~
 E
 metal pipe piping~
 This length of heavy iron pipe, perhaps two feet long, will serve as
@@ -179,6 +181,8 @@ A chunk of broken masonry sits on the ground.~
 5 0 1|8192
 0~ 0~ 0~ 7~
 3 0 0
+T
+granite~
 E
 chunk broken masonry stone rubble~
 This piece of rubble can be held in one hand and used as a bludgeon.
@@ -191,6 +195,8 @@ A viscious looking spiked metal rod has been left here.~
 5 0 1|8192
 0~ 0~ 0~ 3~
 8 0 0
+T
+steel/wood~
 A
 19 1
 E
@@ -207,6 +213,8 @@ A tatty leather jerkin has been discarded here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 7 0 0
+T
+leather~
 E
 leather jerkin~
 This leather jerkin is of poor quality but will offer some protection
@@ -220,6 +228,8 @@ A rusty metal buckler sits on the ground.~
 9 0 1|512
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 E
 metal buckler~
 The circular buckler has been roughly cut from sheet metal and has
@@ -234,6 +244,8 @@ You spy a pair of short leather leg guards here.~
 9 0 1|32
 0~ 0~ 0~ 0~
 4 0 0
+T
+leather~
 E
 leather leg guards~
 These leg guards offer a minimum of protection to your shins.
@@ -246,6 +258,8 @@ An ugly, studded metal collar has been tossed here.~
 9 0 1|4
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 E
 studded metal collar~
 Sharp studs project from this thick metal collar, deteriorated with
@@ -275,6 +289,8 @@ You notice a rusted iron cap on the ground here.~
 9 0 1|16
 0~ 0~ 0~ 0~
 5 0 0
+T
+iron/wood/leather~
 E
 iron cap~
 Rust claims most of this dented iron cap, although it will protect

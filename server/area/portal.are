@@ -370,6 +370,8 @@ A huge stone fist gathers dust on the ground.~
 5 0 1|8192
 0~ 20~ 50~ 7~
 5 0 0
+T
+granite~
 A
 19 5
 E
@@ -383,6 +385,8 @@ A giant stony breastplate rests on the ground~
 9 0 1|8
 10~ 0~ 0~ 0~
 50 0 0
+T
+granite~
 A
 17 -50
 #14803
@@ -393,6 +397,8 @@ A pair of stone bracers rest here.~
 9 2 1|4096
 10~ 0~ 0~ 0~
 20 0 0
+T
+granite~
 A
 1 4
 A
@@ -408,6 +414,8 @@ A dull stone ring rests in the corner.~
 9 1|128 1|2
 10~ 0~ 0~ 0~
 5 0 0
+T
+granite~
 A
 2 3
 A
@@ -615,6 +623,8 @@ Various body parts lay scattered around the room.~
 5 0 1|8192
 0~ 1~ 6~ 11~
 5 0 0
+T
+steel/wood/leather~
 #14825
 ankh red~
 a red ankh~
@@ -639,6 +649,8 @@ A roughly-bound book rests here in the dust.~
 5 0 1|8192
 0~ 1~ 6~ 11~
 5 0 0
+T
+steel/wood/leather~
 E
 book roughly bound~
 Opening the book, you take a step back. It is written in blood. There
@@ -790,6 +802,8 @@ A huge dragon's claw.~
 5 0 1|8192
 0~ 1~ 6~ 5~
 5 0 0
+T
+dragonscale~
 #14832
 dragon's tooth~
 a dragon's tooth~
@@ -798,6 +812,8 @@ A dragon's tooth lies here.~
 9 0 1|16
 0~ 1~ 6~ 11~
 15 0 0
+T
+dragonscale~
 A
 12 0
 #14833
@@ -808,6 +824,8 @@ A large dragon's scale lies here.~
 5 2 1|512
 0~ 1~ 6~ 11~
 20 0 0
+T
+dragonscale~
 A
 23 10
 A
@@ -822,6 +840,8 @@ A robe decorated with snakes lies here.~
 9 2 1|1024
 0~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 A
 24 20
 A
@@ -834,6 +854,8 @@ A curved dagger~
 5 0 1|8192
 0~ 1~ 6~ 11~
 10 0 0
+T
+steel/wood/leather~
 A
 18 0
 #14836
@@ -844,6 +866,8 @@ A set of hydra claws lie here.~
 5 0 1|8192
 0~ 1~ 6~ 5~
 5 0 0
+T
+bone~
 #0
 
 

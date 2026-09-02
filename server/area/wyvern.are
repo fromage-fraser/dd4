@@ -334,6 +334,8 @@ A rusty cleaver lies on a counter top.~
 5 0 8193
 0~ 1~ 6~ 3~
 2 5 5
+T
+steel/wood/leather~
 #1602
 fine mace~
 the fine mace~
@@ -342,6 +344,8 @@ There is a large mace of fine quality here.~
 5 64 8193
 0~ 2~ 5~ 7~
 11 900 200
+T
+iron/wood~
 A
 18 1
 #1603
@@ -352,6 +356,8 @@ A long elven dagger made of adamantite is here.~
 5 65 8193
 0~ 2~ 5~ 11~
 2 1000 250
+T
+adamantite~
 A
 18 2
 #1604
@@ -362,6 +368,8 @@ A fine steel broad sword is lying on the ground.~
 5 65 8193
 0~ 2~ 6~ 3~
 12 1200 350
+T
+steel/wood/leather~
 A
 18 1
 A
@@ -374,6 +382,8 @@ A Rod of Might is lying here.~
 5 66 8193
 0~ 2~ 7~ 6~
 13 4000 550
+T
+steel/wood/leather~
 A
 18 2
 A
@@ -386,6 +396,8 @@ There is a large black kite shield lying here.~
 9 65 513
 6~ 0~ 0~ 0~
 6 1000 150
+T
+steel/wood~
 A
 24 1
 #1614
@@ -396,6 +408,8 @@ A commander's helm rests on a table here.~
 9 65 17
 7~ 0~ 0~ 0~
 4 2000 350
+T
+steel~
 E
 helm~
 This elegant helm is plated in mithril and silver.~
@@ -409,6 +423,8 @@ A magical bracer made from mithril lies on the ground!~
 9 66 257
 6~ 0~ 0~ 0~
 2 6500 1000
+T
+mithril~
 A
 1 1
 #1616
@@ -419,6 +435,8 @@ A valuable cloak of dark blue cloth lies on the floor.~
 9 65 5
 1~ 0~ 0~ 0~
 2 1600 1500
+T
+cloth~
 A
 17 -6
 A
@@ -477,6 +495,8 @@ A short bow has been carelessly left here.~
 5 1073741824 1|8192
 0~ 2~ 16~ 11~
 5 150 20
+T
+wood~
 E
 short bow~
 It looks like the bows used by rustin hunters.
@@ -489,6 +509,8 @@ A long bow has been foolishly abandoned here.~
 5 65|1073741824 8193
 0~ 2~ 6~ 11~
 8 500 100
+T
+wood~
 E
 long bow~
 It looks like the bows used by rustin hunters.
@@ -503,6 +525,8 @@ A gnarled looking staff lies on the ground.~
 5 65 8193
 0~ 2~ 6~ 7~
 7 800 120
+T
+wood~
 A
 13 5
 #1704
@@ -513,6 +537,8 @@ An ancient long sword has been left here.~
 5 66 8193
 0~ 2~ 8~ 3~
 10 10000 4000
+T
+steel/wood/leather~
 A
 18 3
 A
@@ -525,6 +551,8 @@ A fur cap lies here on the ground.~
 9 0 17
 2~ 0~ 0~ 0~
 1 50 10
+T
+fur~
 #1712
 travelling boots~
 a pair of travelling boots~
@@ -533,6 +561,8 @@ A sturdy pair of travelling boots lies here.~
 9 64 65
 5~ 0~ 0~ 0~
 2 3500 700
+T
+leather~
 A
 14 10
 #1713
@@ -543,6 +573,8 @@ A ring of etched bronze gleams dimly on the ground.~
 9 64 3
 3~ 0~ 0~ 0~
 1 2000 400
+T
+bronze/wood/leather~
 A
 12 5
 #0

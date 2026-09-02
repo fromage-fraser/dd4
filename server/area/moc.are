@@ -151,6 +151,8 @@ an expertly crafted broadsword has been stolen from Filleg.~
 5 0 0
 ~ ~ ~ 13~
 15 0 0
+T
+steel/wood/leather~
 A
 19 50
 A
@@ -164,6 +166,8 @@ A crystal dagger has been stolen from Filleg.~
 5 0 0
 ~ ~ ~ 2~
 15 0 0
+T
+quartz~
 A
 19 50
 A
@@ -177,6 +181,8 @@ A mended uniform has been stolen from Filleg.~
 9 0 0
 ~ ~ ~ ~
 5 0 0
+T
+leather~
 
 #362
 roasted duck~
@@ -213,6 +219,8 @@ Spiked therion bracers are here.~
 9 0 1|256
 ~ ~ ~ ~
 5 0 0
+T
+steel~
 A
 13 150
 
@@ -224,6 +232,8 @@ Guards of divinity are here.~
 9 64 1|256
 ~ ~ ~ ~
 5 0 0
+T
+leather~
 A
 18 8
 A
@@ -237,6 +247,8 @@ Leggings of quorthon have been taken from their owner.~
 9 2 1|32
 ~ ~ ~ ~
 1 0 0
+T
+steel~
 A
 19 15
 A

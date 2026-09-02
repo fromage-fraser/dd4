@@ -501,6 +501,8 @@ A handaxe is on the floor here.~
 5 0 1|8192
 0~ 1~ 8~ 3~
 10 100 20
+T
+steel/wood~
 E
 handaxe hand axe~
 You see a finely made axe.  Iron, with a nice wooden shaft, this axe can
@@ -514,6 +516,8 @@ A sharp meat cleaver is just lying on the floor here!~
 5 0 8193
 0~ 2~ 4~ 3~
 5 150 20
+T
+steel/wood/leather~
 E
 meat cleaver~
 This meat cleaver is made of good steel.
@@ -636,6 +640,8 @@ A pitchfork is on the floor.~
 5 0 8193
 0~ 3~ 3~ 11~
 10 50 10
+T
+steel/wood/leather~
 #616
 vest~
 a leather vest~
@@ -644,6 +650,8 @@ A leather vest is on the floor.~
 9 0 1|8
 2~ 0~ 0~ 0~
 10 50 10
+T
+leather~
 #617
 sleeves~
 some leather sleeves~
@@ -652,6 +660,8 @@ Some leather sleeves are on the floor.~
 9 0 1|256
 2~ 0~ 0~ 0~
 5 50 10
+T
+leather~
 #618
 leggings~
 some leather leggings~
@@ -660,6 +670,8 @@ Some leather leggings are on the floor.~
 9 0 1|32
 2~ 0~ 0~ 0~
 5 50 10
+T
+leather~
 #619
 boots~
 some leather boots~
@@ -668,6 +680,8 @@ Some leather boots are on the floor.~
 9 0 1|64
 2~ 0~ 0~ 0~
 5 50 10
+T
+leather~
 #620
 signet ring~
 an Ofcol signet ring~
@@ -676,6 +690,8 @@ A shiny ring of gold is in the dirt.~
 9 64 1|2
 6~ 0~ 0~ 0~
 1 1000 100
+T
+gold~
 A
 24 -1
 A
@@ -688,6 +704,8 @@ A pile of brass plates is against the wall here.~
 9 64 1|8
 6~ 0~ 0~ 0~
 10 1000 100
+T
+brass/wood/leather~
 A
 24 -2
 A
@@ -700,6 +718,8 @@ A brass helm is against the wall here.~
 9 64 1|16
 6~ 0~ 0~ 0~
 10 1000 100
+T
+brass/wood/leather~
 A
 24 -1
 A
@@ -712,6 +732,8 @@ A pile of brass plates is against the wall here.~
 9 64 1|32
 6~ 0~ 0~ 0~
 10 1000 100
+T
+brass/wood/leather~
 A
 24 -1
 A
@@ -724,6 +746,8 @@ Some brass boots are against the wall here.~
 9 64 1|64
 6~ 0~ 0~ 0~
 10 1000 100
+T
+brass/wood/leather~
 A
 24 -1
 A
@@ -736,6 +760,8 @@ Some brass gauntlets are against the wall here.~
 9 64 1|128
 6~ 0~ 0~ 0~
 10 1000 100
+T
+brass/wood/leather~
 A
 24 -1
 A
@@ -748,6 +774,8 @@ A pile of brass plates is against the wall here.~
 9 64 1|256
 6~ 0~ 0~ 0~
 10 1000 100
+T
+brass/wood/leather~
 A
 24 -1
 A
@@ -760,6 +788,8 @@ A big plate of brass is against the wall here.~
 9 64 1|512
 6~ 0~ 0~ 0~
 10 1000 100
+T
+brass/wood/leather~
 A
 24 -1
 A
@@ -772,6 +802,8 @@ A brass girth is against the wall here.~
 9 64 1|2048
 6~ 0~ 0~ 0~
 10 1000 100
+T
+brass/wood/leather~
 A
 24 -1
 A
@@ -784,6 +816,8 @@ A brass bracer is against the wall here.~
 9 64 1|4096
 6~ 0~ 0~ 0~
 10 1000 100
+T
+brass/wood/leather~
 A
 24 -1
 A
@@ -796,6 +830,8 @@ A VERY big sword is against the wall here.~
 5 64 1|8192
 0~ 4~ 4~ 1~
 16 1000 100
+T
+steel/wood/leather~
 A
 18 -2
 A
@@ -808,6 +844,8 @@ A pile of silver plating and chain is on the floor.~
 9 64|1024 1|8
 8~ 0~ 0~ 0~
 20 2000 100
+T
+silver~
 A
 12 10
 A
@@ -820,6 +858,8 @@ A shiny helm is on the floor.~
 9 64|1024 1|16
 8~ 0~ 0~ 0~
 20 2000 100
+T
+silver~
 A
 12 5
 A
@@ -832,6 +872,8 @@ Some shiny leggings are on the floor.~
 9 64|1024 1|32
 8~ 0~ 0~ 0~
 20 2000 100
+T
+silver~
 A
 12 5
 A
@@ -844,6 +886,8 @@ Some shiny boots are on the floor.~
 9 64|1024 1|64
 8~ 0~ 0~ 0~
 20 2000 100
+T
+silver~
 A
 12 5
 A
@@ -856,6 +900,8 @@ Some shiny gauntlets are on the floor.~
 9 64|1024 1|128
 8~ 0~ 0~ 0~
 20 2000 100
+T
+silver~
 A
 12 5
 A
@@ -868,6 +914,8 @@ Some shiny sleeves are on the floor.~
 9 64|1024 1|256
 8~ 0~ 0~ 0~
 20 2000 100
+T
+silver~
 A
 12 5
 A
@@ -880,6 +928,8 @@ A shiny shield is on the floor.~
 9 64|1024 1|512
 8~ 0~ 0~ 0~
 20 2000 100
+T
+silver~
 A
 12 5
 A
@@ -892,6 +942,8 @@ A shiny girth is on the floor.~
 9 64|1024 1|2048
 8~ 0~ 0~ 0~
 20 2000 100
+T
+silver~
 A
 12 5
 A
@@ -904,6 +956,8 @@ A pile of silvery metal is on the floor.~
 9 64|1024 1|8
 9~ 0~ 0~ 0~
 50 10000 100
+T
+silver~
 A
 13 15
 A
@@ -916,6 +970,8 @@ A silvery helmet is on the floor.~
 9 64|1024 1|16
 9~ 0~ 0~ 0~
 30 10000 100
+T
+silver~
 A
 12 10
 A
@@ -928,6 +984,8 @@ Some silvery leggings are on the floor.~
 9 64|1024 1|32
 9~ 0~ 0~ 0~
 40 10000 100
+T
+silver~
 A
 13 10
 A
@@ -940,6 +998,8 @@ Some silvery boots are on the floor.~
 9 64|1024 1|64
 9~ 0~ 0~ 0~
 40 10000 100
+T
+silver~
 A
 13 10
 A
@@ -952,6 +1012,8 @@ A pair of silvery gauntlets are on the floor.~
 9 64|1024 1|128
 9~ 0~ 0~ 0~
 40 10000 100
+T
+silver~
 A
 13 10
 A
@@ -964,6 +1026,8 @@ A pair of silvery sleeves are on the floor.~
 9 64|1024 1|256
 9~ 0~ 0~ 0~
 40 10000 100
+T
+silver~
 A
 13 10
 A
@@ -976,6 +1040,8 @@ A jagged, silvery shield is on the floor.~
 9 64|1024 1|512
 9~ 0~ 0~ 0~
 40 10000 100
+T
+silver~
 A
 13 10
 A
@@ -988,6 +1054,8 @@ A silvery girth is on the floor.~
 9 64|1024 1|2048
 9~ 0~ 0~ 0~
 40 10000 100
+T
+silver~
 A
 13 10
 A
@@ -1000,6 +1068,8 @@ A glowing silvery sword is hovering here, ready to possess an owner.~
 5 64|1024 1|8192
 0~ 5~ 6~ 1~
 25 10000 10000
+T
+silver~
 A
 18 1
 A
@@ -1044,6 +1114,8 @@ A very shiny symbol is on the floor.~
 9 64|256|1024|2048 1|4
 8~ 0~ 0~ 0~
 5 1000 1000
+T
+leather~
 A
 12 10
 A
@@ -1056,6 +1128,8 @@ A heavy polearm is against the wall here, ready to inflict damage.~
 5 64|1024|134217728 1|8192
 0~ 5~ 6~ 2~
 20 10000 10000
+T
+steel/wood/leather~
 A
 18 5
 A
@@ -1068,6 +1142,8 @@ A golden dragonscale torso is on the floor!~
 9 64|1024 1|8
 9~ 0~ 0~ 0~
 25 5000 5000
+T
+gold~
 A
 17 -5
 A
@@ -1080,6 +1156,8 @@ A golden dragonhelm is on the floor!~
 9 64|1024 1|16
 9~ 0~ 0~ 0~
 10 5000 5000
+T
+gold~
 A
 17 -3
 A
@@ -1092,6 +1170,8 @@ Some golden dragonscale leggings are on the floor!~
 9 64|1024 1|32
 9~ 0~ 0~ 0~
 10 5000 5000
+T
+gold~
 A
 17 -3
 A
@@ -1104,6 +1184,8 @@ Some golden dragonscale boots are on the floor!~
 9 64|1024 1|64
 9~ 0~ 0~ 0~
 10 5000 5000
+T
+gold~
 A
 17 -3
 A
@@ -1116,6 +1198,8 @@ Some golden dragonscale gauntlets are on the floor!~
 9 64|1024 1|128
 9~ 0~ 0~ 0~
 10 5000 5000
+T
+gold~
 A
 17 -3
 A
@@ -1128,6 +1212,8 @@ Some golden dragonscale sleeves are on the floor!~
 9 64|1024 1|256
 9~ 0~ 0~ 0~
 10 5000 5000
+T
+gold~
 A
 17 -3
 A
@@ -1140,6 +1226,8 @@ A golden dragonscale shield is on the floor!~
 9 64|1024 1|512
 9~ 0~ 0~ 0~
 10 5000 5000
+T
+gold~
 A
 17 -3
 A
@@ -1152,6 +1240,8 @@ A golden dragonscale girth is on the floor!~
 9 64|1024 1|2048
 9~ 0~ 0~ 0~
 10 5000 5000
+T
+gold~
 A
 17 -3
 A
@@ -1164,6 +1254,8 @@ A huge golden claw is on the floor~
 5 64|1024 1|8192
 0~ 5~ 5~ 5~
 20 5000 5000
+T
+gold~
 A
 19 6
 #663
@@ -1186,6 +1278,8 @@ A golden robe is on the floor.~
 9 64|1024 1|1024
 9~ 0~ 0~ 0~
 10 5000 5000
+T
+gold~
 A
 3 2
 #665
@@ -1204,6 +1298,8 @@ A broom is against the wall here.~
 5 0 1|8192
 0~ 2~ 3~ 7~
 8 100 10
+T
+steel/wood/leather~
 A
 18 3
 A

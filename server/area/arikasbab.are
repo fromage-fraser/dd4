@@ -572,6 +572,8 @@ A black leather cloak has been left in a pile here.~
 9 2|128|2048|4096 1|1024
 0~ 0~ 0~ 0~
 8 0 0
+T
+leather~
 A
 17 -20
 A
@@ -602,6 +604,8 @@ A silver dagger adorned with rubies has been carelessly dropped here.~
 5 4096 1|8192
 0~ 0~ 0~ 11~
 3 0 0
+T
+silver~
 A
 17 -40
 A
@@ -623,6 +627,8 @@ A blunt mace used for bludgeoning has been discarded here.~
 5 0 1|8192
 0~ 0~ 0~ 8~
 5 0 0
+T
+iron/wood~
 A
 17 -20
 A
@@ -642,6 +648,8 @@ A pile of black velvet has been left here.~
 9 64 1|32
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 18 -1
 A
@@ -661,6 +669,8 @@ A pile of black leather has been left here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 4 0 0
+T
+leather~
 A
 17 -10
 A
@@ -681,6 +691,8 @@ A small pile of black leather has been left here.~
 9 0 1|16
 0~ 0~ 0~ 0~
 3 0 0
+T
+leather~
 A
 17 -10
 A
@@ -699,6 +711,8 @@ A pair of  black boots have been left here.~
 9 0 1|64
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 17 -10
 A
@@ -903,6 +917,8 @@ A pile of white linen has been left here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 17 -10
 A
@@ -921,6 +937,8 @@ A pile of white linen has been left here.~
 9 0 1|32
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 17 0
 E
@@ -936,6 +954,8 @@ A floppy chef's hat has been left here.~
 9 0 1|16
 0~ 0~ 0~ 0~
 1 0 0
+T
+cloth~
 A
 17 -10
 A
@@ -954,6 +974,8 @@ A pair if white leather shoes have been left here.~
 9 0 1|64
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 17 -10
 E
@@ -969,6 +991,8 @@ A simple gold ring has been discarded here.~
 9 1 1|2
 0~ 0~ 0~ 0~
 2 0 0
+T
+gold~
 A
 17 -10
 A
@@ -988,6 +1012,8 @@ A sharp knife has been abandoned here.~
 5 0 1|8192
 0~ 0~ 0~ 0~
 2 0 0
+T
+steel~
 A
 17 -10
 A
@@ -1005,6 +1031,8 @@ A small pile of white linen has been left here.~
 9 0 1|2048
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 17 -5
 E
@@ -1022,6 +1050,8 @@ A pile of white cloth has been left here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 3 0 0
+T
+cloth~
 A
 17 -10
 E
@@ -1037,6 +1067,8 @@ A pile of white lace has been left here.~
 9 0 1|16
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 17 -5
 E
@@ -1052,6 +1084,8 @@ A pair of white stiletto boots have been left here.~
 9 0 1|64
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 17 -10
 A
@@ -1085,6 +1119,8 @@ A fine gold chain has been left here.~
 9 1 1|4
 0~ 0~ 0~ 0~
 2 0 0
+T
+gold~
 A
 12 30
 E
@@ -1146,6 +1182,8 @@ A fierce-looking bow has been left here.~
 5 2|64|1073741824 1|8192
 0~ 0~ 0~ 0~
 2 0 0
+T
+wood~
 A
 17 -10
 A
@@ -1164,6 +1202,8 @@ gold breastplate~
 9 1 1|8
 0~ 0~ 0~ 0~
 8 0 0
+T
+gold~
 A
 17 -40
 A
@@ -1183,6 +1223,8 @@ gold bracers~
 9 1 1|256
 0~ 0~ 0~ 0~
 5 0 0
+T
+gold~
 A
 17 -10
 E
@@ -1198,6 +1240,8 @@ gold horseshoes~
 9 1 1|64
 0~ 0~ 0~ 0~
 8 0 0
+T
+gold~
 A
 17 -5
 A
@@ -1352,6 +1396,8 @@ white silk gown~
 9 0 1|8
 0~ 0~ 0~ 0~
 1 0 0
+T
+silk~
 E
 white silk gown~
 The short white night gown is made from silk and trimmed with lace.
@@ -1364,6 +1410,8 @@ silver chain~
 9 64 1|4096
 0~ 0~ 0~ 0~
 1 0 0
+T
+silver~
 A
 13 30
 A
@@ -1574,6 +1622,8 @@ A pair of black stiletto boots have been left here.~
 9 0 1|64
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 17 -10
 A
@@ -1591,6 +1641,8 @@ A pile of black cloth has been left here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 3 0 0
+T
+cloth~
 A
 17 0
 E
@@ -1670,6 +1722,8 @@ fluorescent green stone~
 9 64 1|32768
 0~ 0~ 0~ 0~
 1 0 0
+T
+granite~
 A
 19 1
 A
@@ -1732,6 +1786,8 @@ A double edged silver dagger has been left here.~
 5 0 1|8192
 0~ 0~ 0~ 11~
 2 0 0
+T
+silver~
 A
 17 0
 E
@@ -1746,6 +1802,8 @@ A hooded cloak has been left in a pile here.~
 9 0 1|1024
 0~ 0~ 0~ 0~
 3 0 0
+T
+cloth~
 A
 17 -20
 A
@@ -1775,6 +1833,8 @@ A dark red shirt has been left in a heap here.~
 9 16 1|8
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 #28389
 black pants~
 black dress pants~
@@ -1783,6 +1843,8 @@ A piece of black clothing has been left in a heap.  ~
 9 0 1|32
 0~ 0~ 0~ 0~
 1 0 0
+T
+cloth~
 #28390
 black boots~
 chunky black boots~
@@ -1791,6 +1853,8 @@ A pair of chunky black boots have been left here.~
 9 0 1|64
 0~ 0~ 0~ 0~
 4 0 0
+T
+leather~
 #28391
 bed~
 a wrought-iron bed~
@@ -1814,6 +1878,8 @@ gold lance~
 5 1|64|134217728 1|8192
 0~ 0~ 0~ 11~
 2 0 0
+T
+gold~
 A
 18 10
 A

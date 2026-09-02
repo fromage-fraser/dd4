@@ -532,6 +532,8 @@ A silver dragon claw rests on the floor.~
 5 1027 8193
 ~ 8~ 29~ 5~
 18 0 0
+T
+silver~
 A
 18 4
 A
@@ -554,6 +556,8 @@ A sharp spear lies here.~
 5 65|134217728 8193
 ~ 5~ 25~ 11~
 5 0 0
+T
+iron/wood~
 #12005
 coins gold pile~
 a pile of gold coins~
@@ -570,6 +574,8 @@ A steel dagger with a long blade lies here.~
 5 0 8193
 ~ 4~ 16~ 11~
 3 0 0
+T
+steel/wood/leather~
 A
 18 2
 #12007
@@ -580,6 +586,8 @@ You see a steel vest here.~
 9 0 9
 8~ ~ ~ ~
 5 0 0
+T
+steel/wood/leather~
 A
 12 10
 A
@@ -592,6 +600,8 @@ A steel shield is lying on the ground.~
 9 0 513
 8~ ~ ~ ~
 5 0 0
+T
+steel/wood/leather~
 A
 12 10
 A
@@ -604,6 +614,8 @@ A huge spear lies here.~
 5 67|134217728 8193
 ~ 10~ 25~ 11~
 6 0 0
+T
+iron/wood~
 A
 18 4
 A
@@ -616,6 +628,8 @@ You see a diamond crown here.~
 9 0 17
 6~ ~ ~ ~
 5 0 0
+T
+diamond~
 A
 3 2
 A
@@ -668,6 +682,8 @@ You see a rush-skirt here.~
 9 0 2049
 5~ ~ ~ ~
 3 0 0
+T
+leather~
 A
 2 2
 A
@@ -680,6 +696,8 @@ You see a diamond ring here.~
 9 0 3
 ~ ~ ~ ~
 2 0 0
+T
+diamond~
 A
 1 1
 A
@@ -692,6 +710,8 @@ You see a pair of bronze leggings here.~
 9 0 33
 4~ ~ ~ ~
 5 0 0
+T
+bronze/wood/leather~
 A
 5 1
 #12019
@@ -702,6 +722,8 @@ You see a pair of leather boots here.~
 9 0 65
 4~ ~ ~ ~
 5 0 0
+T
+leather~
 A
 14 50
 A
@@ -714,6 +736,8 @@ A wood-cutter's axe is lying here.~
 5 1024 8193
 ~ 8~ 22~ 13~
 12 0 0
+T
+wood~
 A
 18 2
 A
@@ -736,6 +760,8 @@ You see diamond necklace here.~
 9 0 5
 5~ ~ ~ ~
 4 0 0
+T
+diamond~
 A
 3 2
 A
@@ -750,6 +776,8 @@ You see a pair of black gloves here.~
 9 2048 129
 2~ ~ ~ ~
 3 0 0
+T
+leather~
 A
 1 1
 A
@@ -764,6 +792,8 @@ A small silver dragon claw rests on the floor.~
 5 1027 8193
 ~ 5~ 15~ 5~
 9 0 0
+T
+silver~
 A
 18 2
 A
@@ -802,6 +832,8 @@ A small silver sword lies here.~
 5 0 8193
 ~ 3~ 9~ 3~
 3 0 0
+T
+silver~
 A
 18 2
 #12029
@@ -812,6 +844,8 @@ A long silver sword has been left here.~
 5 0 8193
 ~ 4~ 11~ 3~
 8 0 0
+T
+silver~
 A
 18 4
 A
@@ -840,6 +874,8 @@ A pair of fashionable pants is lying on the ground.~
 9 0 33
 3~ ~ ~ ~
 4 0 5
+T
+leather~
 A
 4 1
 #12033
@@ -850,6 +886,8 @@ A fashionable jacket lies on the ground.~
 9 0 9
 3~ ~ ~ ~
 5 0 5
+T
+leather~
 A
 3 1
 #12034
@@ -860,6 +898,8 @@ A pair of heavy gloves is lying on the ground.~
 9 0 129
 3~ ~ ~ ~
 5 0 0
+T
+leather~
 A
 1 1
 #12035
@@ -870,6 +910,8 @@ A pair of linen sleeves is lying on the ground.~
 9 0 257
 3~ ~ ~ ~
 3 0 0
+T
+cloth~
 A
 2 1
 #12036
@@ -904,6 +946,8 @@ A silver claymore has been left here.~
 5 0 8193
 ~ 10~ 30~ 3~
 10 0 0
+T
+silver~
 A
 19 5
 A
@@ -916,6 +960,8 @@ You see a steel plate lying here.~
 9 0 9
 10~ ~ ~ ~
 5 0 0
+T
+steel/wood/leather~
 A
 12 10
 A
@@ -928,6 +974,8 @@ You see a steel helm lying here.~
 9 0 17
 10~ ~ ~ ~
 5 0 0
+T
+steel/wood/leather~
 A
 1 2
 A
@@ -940,6 +988,8 @@ You see a judge's wig lying here.~
 9 0 17
 12~ ~ ~ ~
 3 0 0
+T
+leather~
 A
 4 3
 #12043
@@ -950,6 +1000,8 @@ A carpet-beater has been left here.~
 5 0 8193
 ~ 15~ 30~ ~
 6 0 0
+T
+steel/wood/leather~
 A
 18 1
 A

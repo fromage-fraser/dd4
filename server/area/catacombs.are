@@ -348,6 +348,8 @@ A wicked looking scythe rests here.~
 5 64|512 1|8192
 0~ 1~ 6~ 3~
 10 0 0
+T
+steel/wood~
 A
 18 10
 A
@@ -360,6 +362,8 @@ A short sword rests here.~
 5 0 1|8192
 0~ 1~ 6~ 3~
 2 0 0
+T
+steel/wood/leather~
 A
 18 2
 A
@@ -380,6 +384,8 @@ A suit of leathers rests here.~
 9 0 1|8
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 17 -2
 #13304
@@ -398,6 +404,8 @@ A breastplate lies here.~
 9 0 1|8
 12~ 1~ 6~ 11~
 2 0 0
+T
+steel~
 #13306
 Helmet crested~
 a crested helmet~
@@ -406,6 +414,8 @@ A crested helmet rests here.~
 9 0 1|16
 0~ 1~ 6~ 11~
 2 0 0
+T
+steel~
 #13307
 Mace Mrinthian~
 a Mrinthian mace~
@@ -414,6 +424,8 @@ A mace rests here.~
 5 64|1024|2048 1|8192
 0~ 1~ 6~ 7~
 5 0 0
+T
+iron/wood~
 A
 18 4
 A
@@ -426,6 +438,8 @@ Some grey robes lie here.~
 9 64|1024|2048 1|1024
 0~ 1~ 6~ 11~
 1 0 0
+T
+cloth~
 A
 17 -5
 A
@@ -440,6 +454,8 @@ A Mrinthian spear lies here.~
 5 64|1024|2048|134217728 1|8192
 0~ 1~ 6~ 11~
 5 0 0
+T
+iron/wood~
 A
 18 5
 A
@@ -454,6 +470,8 @@ A black cloth mask rests here.~
 9 512 1|16
 0~ 1~ 6~ 11~
 1 0 0
+T
+cloth~
 A
 13 10
 A
@@ -474,6 +492,8 @@ A long dagger rests here.~
 5 64|512 1|8192
 0~ 1~ 6~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 18 10
 A
@@ -490,6 +510,8 @@ A Mrinthian sword rests here.~
 5 64 1|8192
 0~ 1~ 6~ 3~
 5 0 0
+T
+steel/wood/leather~
 A
 13 10
 A
@@ -502,6 +524,8 @@ A Banded staff rests here.~
 5 64|4096 1|8192
 0~ 1~ 6~ 7~
 5 0 0
+T
+wood~
 A
 13 20
 A
@@ -516,6 +540,8 @@ The Archwizards robes lie here.~
 9 64|4096 1|1024
 0~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 A
 12 100
 A
@@ -532,6 +558,8 @@ A Horned ring rests here.~
 9 64 1|2
 0~ 1~ 6~ 11~
 1 0 0
+T
+silver~
 A
 13 20
 A
@@ -548,6 +576,8 @@ The Archwizards jerkin lies here.~
 9 64 1|8
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 A
 24 -5
 A
@@ -622,6 +652,8 @@ A Tower shield, used by Mrinthian Knights, rests here.~
 9 64|1024 1|512
 0~ 1~ 6~ 11~
 10 0 0
+T
+steel/wood~
 A
 17 -10
 A
@@ -696,6 +728,8 @@ A pair of black leather greaves rests here.~
 9 64 1|32
 0~ 1~ 6~ 11~
 2 0 0
+T
+leather~
 A
 17 -5
 A
@@ -708,6 +742,8 @@ A pair of fine leather gloves lie here.~
 9 64 1|128
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 A
 19 5
 A
@@ -734,6 +770,8 @@ A fine chainmail vest lies here.~
 9 64|512 1|8
 0~ 1~ 6~ 11~
 10 0 0
+T
+steel~
 A
 17 -5
 A
@@ -754,6 +792,8 @@ A pile of black cloth lies here.~
 9 64|512 1|1024
 0~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 A
 4 1
 A
@@ -770,6 +810,8 @@ A silver-etched gold bracer lies here.~
 9 64 1|4096
 0~ 1~ 6~ 11~
 2 0 0
+T
+silver~
 A
 19 5
 A
@@ -788,6 +830,8 @@ A black skullcap rests here.~
 9 64|512 1|16
 0~ 1~ 6~ 11~
 1 0 0
+T
+bone~
 A
 3 5
 A
@@ -806,6 +850,8 @@ A rune-carved, black staff rests here.~
 5 2|32|64|128|512|4096 1|8192
 0~ 1~ 6~ 6~
 5 0 0
+T
+wood~
 A
 17 -100
 A
@@ -826,6 +872,8 @@ A pile of red cloth lies here.~
 9 16|64|128|512|4096 1|1024
 0~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 A
 9 100
 A
@@ -846,6 +894,8 @@ A ring made carved from bone lies here.~
 9 1|2|16|64|128|512|1024|4096 1|2
 12~ 1~ 6~ 11~
 1 0 0
+T
+bone~
 A
 1 1
 A
@@ -882,6 +932,8 @@ A shadowy sword rests here.~
 5 1|16|64|128|512|2048|4096 1|8192
 0~ 1~ 6~ 3~
 0 0 0
+T
+steel/wood/leather~
 A
 1 3
 A
@@ -896,6 +948,8 @@ A shadowy breastplate lies here.~
 5 1|16|64|128|512|2048|4096 1|8
 0~ 1~ 6~ 11~
 0 0 0
+T
+steel/wood/leather~
 A
 17 -10
 A
@@ -910,6 +964,8 @@ A shadowy helm rests here.~
 9 1|16|64|128|512|2048|4096 1|16
 0~ 1~ 6~ 11~
 0 0 0
+T
+steel~
 A
 3 3
 A
@@ -980,6 +1036,8 @@ Some bracers of defence lie here.~
 9 64|1024|2048 1|4096
 0~ 1~ 6~ 11~
 1 0 0
+T
+steel~
 A
 23 -5
 A
@@ -1008,6 +1066,8 @@ The mace of Zed lies here.~
 5 1|8|64|1024|2048|131072|262144|524288|268435456|536870912 1|8192
 0~ 9~ 22~ 8~
 1 0 0
+T
+iron/wood~
 A
 12 50
 A
@@ -1037,6 +1097,8 @@ The Archwizard's hat has been carelessly discarded here.~
 9 64|1024|2048 1|16
 0~ 1~ 6~ 11~
 1 0 0
+T
+cloth~
 A
 12 15
 A
@@ -1094,6 +1156,8 @@ A rune-covered helmet lies here.~
 9 64|1024|2048 1|16
 0~ 1~ 6~ 11~
 1 0 0
+T
+steel~
 A
 13 5
 A
@@ -1106,6 +1170,8 @@ A pair of rune-covered sleeves lie here.~
 9 64|1024|2048 1|256
 0~ 1~ 6~ 11~
 1 0 0
+T
+cloth~
 A
 18 3
 A
@@ -1118,6 +1184,8 @@ A small rune covered amulet lies here.~
 9 64|1024|2048 1|4
 10~ 1~ 6~ 11~
 1 0 0
+T
+silver~
 A
 13 10
 A
@@ -1132,6 +1200,8 @@ A rune-covered vest lies here.~
 9 64|1024|2048 1|8
 0~ 1~ 6~ 11~
 3 0 0
+T
+leather~
 A
 12 50
 A
@@ -1144,6 +1214,8 @@ A ring bearing the markings of the cult of Zed lies here.~
 9 64|1024|2048 1|2
 0~ 1~ 6~ 11~
 1 0 0
+T
+silver~
 A
 18 3
 A
@@ -1158,6 +1230,8 @@ Some rune covered Leggings lie here.~
 9 64|1024|2048 1|32
 0~ 1~ 6~ 11~
 2 0 0
+T
+steel~
 A
 12 10
 A
@@ -1172,6 +1246,8 @@ Some rune covered gloves lie here.~
 9 1|2|64|1024|2048 1|128
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 A
 5 3
 A
@@ -1186,6 +1262,8 @@ A pair of rune covered boots lie here.~
 9 64|1024|2048 1|64
 0~ 1~ 6~ 11~
 2 0 0
+T
+leather~
 A
 14 25
 A
@@ -1200,6 +1278,8 @@ A rune covered shield lies here.~
 9 64|1024|2048 1|512
 0~ 1~ 6~ 11~
 2 0 0
+T
+steel/wood~
 A
 13 10
 A
@@ -1216,6 +1296,8 @@ A rune covered girdle lies here.~
 9 64|1024|2048 1|2048
 0~ 1~ 6~ 11~
 2 0 0
+T
+leather~
 A
 18 3
 A
@@ -1230,6 +1312,8 @@ A rune covered bracer lies here.~
 9 64|1024|2048 1|4096
 0~ 1~ 6~ 11~
 1 0 0
+T
+steel~
 A
 4 1
 A
@@ -1337,6 +1421,8 @@ A black stone hovers in the air above the ground.~
 9 2|64|128 1|32768
 0~ 0~ 0~ 0~
 0 0 0
+T
+granite~
 A
 19 8
 A
@@ -1353,6 +1439,8 @@ A blue stone hovers in the air above the ground.~
 9 1|64|256 1|32768
 0~ 0~ 0~ 0~
 0 0 0
+T
+granite~
 A
 12 100
 E

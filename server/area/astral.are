@@ -286,6 +286,8 @@ The ground cracks under the weight of a grey hammer lying here.~
 5 512|1024 8193
 0~ 4~ 8~ 8~
 55 1000000 5000
+T
+iron/wood~
 A
 2 -2
 A
@@ -380,6 +382,8 @@ A flat-bladed silvery knife lies here.~
 5 0 8193
 0~ 2~ 4~ 2~
 3 1000 250
+T
+silver~
 A
 18 1
 A
@@ -398,6 +402,8 @@ A sharp-looking silvery dagger lies here.~
 5 0 8193
 0~ 3~ 4~ 11~
 3 1500 375
+T
+silver~
 A
 18 2
 A
@@ -416,6 +422,8 @@ Light glints off the edge of a razor-sharp sword.~
 5 0 8193
 0~ 4~ 4~ 1~
 3 2000 450
+T
+steel/wood/leather~
 A
 2 1
 A
@@ -436,6 +444,8 @@ A heavy yet thinly bladed two-handed sword lies here.~
 5 0 8193
 0~ 6~ 4~ 3~
 16 5000 750
+T
+steel/wood/leather~
 A
 18 2
 A
@@ -454,6 +464,8 @@ A silvery sword gleams unnaturally with an alien light.~
 5 1 8193
 0~ 5~ 4~ 3~
 13 10000 750
+T
+silver~
 A
 2 2
 A
@@ -474,6 +486,8 @@ A rusty iron flail with wicked barbs on it tears at the ground.~
 5 2|16|64 8193
 0~ 5~ 5~ 5~
 14 20000 1000
+T
+iron/wood/leather~
 A
 18 3
 A
@@ -492,6 +506,8 @@ You feel tendrils of evil emanating from a wicked blade.~
 5 16|128|4096 8193
 0~ 10~ 3~ 3~
 25 100000 5000
+T
+steel/wood/leather~
 A
 1 2
 A
@@ -544,6 +560,8 @@ An intricately fashioned splint mail vest lies here.~
 9 0 9
 7~ 0~ 0~ 0~
 45 5000 300
+T
+steel~
 E
 vest splint~
 This splint mail has been expertly and ornately fashioned from the highest
@@ -557,6 +575,8 @@ An intricately fashioned splint mail skirt lies here.~
 9 0 33
 7~ 0~ 0~ 0~
 20 1000 150
+T
+steel~
 E
 skirt splint~
 This splint mail has been expertly and ornately fashioned from the highest
@@ -570,6 +590,8 @@ A pair of intricately fashioned splint mail sleeves lie here.~
 9 0 257
 7~ 0~ 0~ 0~
 15 1000 150
+T
+steel~
 E
 sleeves splint~
 This splint mail has been expertly and ornately fashioned from the highest
@@ -583,6 +605,8 @@ A pair of painstakingly designed ornate gauntlets lie here.~
 9 0 129
 7~ 0~ 0~ 0~
 5 19000 500
+T
+steel~
 A
 1 2
 A
@@ -602,6 +626,8 @@ A decaying hunk of cracked leather has been discarded here.~
 9 0 9
 9~ 0~ 0~ 0~
 5 50 500
+T
+leather~
 A
 17 -6
 A
@@ -693,6 +719,8 @@ A rusted sword is on the floor.~
 5 0 1|8192
 0~ 3~ 3~ 3~
 10 0 0
+T
+steel/wood/leather~
 A
 18 -2
 A

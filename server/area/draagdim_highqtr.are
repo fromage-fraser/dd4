@@ -619,6 +619,8 @@ Some Black Robes lie here...~
 9 1|64 1|1024
 12~ 1~ 6~ 11~
 1 0 0
+T
+cloth~
 A
 17 -25
 A
@@ -676,6 +678,8 @@ watch...~
 5 64|1024 1|8192
 0~ 1~ 6~ 3~
 2 0 0
+T
+steel/wood/leather~
 A
 18 2
 A
@@ -688,6 +692,8 @@ A suit of high quarter armour lies here.  You wonder where its owner is...~
 9 64|1024 1|8
 0~ 1~ 6~ 11~
 5 0 0
+T
+steel~
 A
 23 -4
 A
@@ -700,6 +706,8 @@ A pair of high quarter boots lie here...~
 9 64 1|64
 0~ 1~ 6~ 11~
 2 0 0
+T
+leather~
 A
 14 0
 A
@@ -712,6 +720,8 @@ A high quarter shield rests here.~
 9 64 1|512
 0~ 1~ 6~ 11~
 6 0 5
+T
+steel/wood~
 A
 19 3
 A
@@ -728,6 +738,8 @@ A pair of high quarter leggings lie here.~
 9 64 1|32
 8~ 1~ 6~ 11~
 3 0 0
+T
+steel~
 A
 13 10
 A
@@ -744,6 +756,8 @@ A high quarter bracer lies here.~
 9 64 1|4096
 0~ 1~ 6~ 11~
 1 0 0
+T
+steel~
 A
 19 1
 A
@@ -768,6 +782,8 @@ A high quarter cloak lies here.~
 9 64 1|1024
 0~ 1~ 6~ 11~
 3 0 10
+T
+cloth~
 A
 4 1
 A
@@ -782,6 +798,8 @@ A pair of high quarter sleeves lie here.~
 9 64 1|256
 0~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 A
 17 -5
 A
@@ -794,6 +812,8 @@ A sword rests here.~
 9 64 1|128
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 A
 2 2
 A
@@ -806,6 +826,8 @@ A helmet bearing the crest of the High Quarter Warden lies here.~
 9 64 1|16
 0~ 1~ 6~ 11~
 4 0 0
+T
+steel~
 A
 13 10
 A
@@ -818,6 +840,8 @@ Jasmir's apron lies here...~
 9 1|64|1024|2048 1|2048
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 19 2
 A
@@ -872,6 +896,8 @@ A fine silk robe lies here...~
 9 128 1|1024
 0~ 1~ 6~ 11~
 2 0 0
+T
+silk~
 A
 24 -3
 #28036
@@ -989,6 +1015,8 @@ a broken longsword~
 5 0 8192
 ~ ~ ~ 3~
 20 0 0
+T
+steel/wood/leather~
 
 #28048
 armor plate full~
@@ -998,6 +1026,8 @@ pitted full plate armor~
 9 0 8
 ~ ~ ~ ~
 50 0 0
+T
+steel~
 
 #28049
 shield kite~
@@ -1007,6 +1037,8 @@ a burnt kite shield~
 9 0 512
 ~ ~ ~ ~
 20 0 0
+T
+steel/wood~
 
 #0
 
