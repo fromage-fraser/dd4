@@ -2094,14 +2094,18 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                         strcat(buf1, buf);
                 }
 
-                sprintf(buf, "Sex: {W%s{x  Race: {W%d{x ({G%s{x)  Size: {G%s{x  Level: {W%d{x  Room: {R%d{x\n\r",
+                sprintf(buf, "Sex: {W%s{x  Race: {W%d{x ({G%s{x)  Size: {G%s{x\n\r",
                         victim->sex == SEX_MALE ? "male" : victim->sex == SEX_FEMALE ? "female"
                                                                                      : "neutral",
                         victim->race,
                         race_name(victim->race),
-                        race_size_name(race_table[victim->race].size),
+                        race_size_name(race_table[victim->race].size));
+                strcat(buf1, buf);
+
+                sprintf(buf, "Level: {W%d{x  Room: {R%d{x  Undead: %s\n\r",
                         victim->level,
-                        !victim->in_room ? 0 : victim->in_room->vnum);
+                        !victim->in_room ? 0 : victim->in_room->vnum,
+                        IS_UNDEAD(victim) ? "{Gyes{x" : "{Rno{x");
                 strcat(buf1, buf);
 
                 sprintf(buf, "Str: {C%d{x  Int: {C%d{x  Wis: {C%d{x  Dex: {C%d{x  Con: {C%d{x\n\r",
@@ -2360,8 +2364,9 @@ void do_mstat(CHAR_DATA *ch, char *argument)
         {
                 /* All MOBILE mstat stuff goes here. */
                 int temp = rank_sn(victim);
-                sprintf(buf, "Vnum: {R%d{x  Rank: %s(%d)\n\r",
-                        victim->pIndexData->vnum, rank_table[rank_sn(victim)].who_format, temp);
+                sprintf(buf, "Vnum: {R%d{x  Rank: %s(%d){x\n\r",
+                        victim->pIndexData->vnum,
+                        rank_table[rank_sn(victim)].who_format, temp);
                 strcat(buf1, buf);
 
                 if (victim->short_descr[0] != '\0' && victim->long_descr[0] != '\0')

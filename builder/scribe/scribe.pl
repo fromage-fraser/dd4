@@ -75,6 +75,7 @@ my %mob_act = (
         objectlike         => 134217728,
         invulnerable       => 268435456,
         blink              => 536870912,
+        undead             => 1073741824,
         unkillable         => 9223372036854775808,
 );
 
