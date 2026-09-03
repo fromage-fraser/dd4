@@ -4293,6 +4293,7 @@ char *extra_bit_name (unsigned long int extra_flags)
             case ITEM_ANTI_BRAWLER:         return "anti_brawler";
             case ITEM_ANTI_SHAPE_SHIFTER:   return "anti_shifter";
             case ITEM_BOW:                  return "bow";
+            case ITEM_UNDEAD:               return "undead";
             case ITEM_ANTI_SMITHY:          return "anti_smithy";
             case ITEM_CURSED:               return "cursed";
             case ITEM_RUNE:                 return "rune";

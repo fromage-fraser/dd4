@@ -710,6 +710,7 @@ Extra ITEM_ flags:
     ITEM_ANTI_BRAWLER               BIT_28
     ITEM_ANTI_SHAPE_SHIFTER         BIT_29
     ITEM_BOW                        BIT_30
+    ITEM_UNDEAD                     BIT_31 **
     ITEM_ANTI_SMITHY                BIT_34
     ITEM_DEPLOYED                   BIT_35
     ITEM_RUNE                       BIT_36
@@ -730,6 +731,14 @@ Extra ITEM_ flags:
     5 - heart
     6 - tail
     7 - torso/central mass
+
+** ITEM_UNDEAD may be applied to any object. It marks the object as having an
+   undead nature or as originating from an undead character. The game
+   automatically adds it to ITEM_CORPSE_NPC, ITEM_CORPSE_PC, ITEM_REMAINS, and
+   generated body-part objects when the source character satisfies IS_UNDEAD().
+   At this stage, the flag has no automatic gameplay effect merely because it is
+   present on an unrelated object. For ordinary players, the property is
+   revealed when the object is identified.
 
 
 WEAR_ flags:

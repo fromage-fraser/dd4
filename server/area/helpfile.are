@@ -692,7 +692,9 @@ Gezhp, Owl and Shade
 {WSeptember 2026{X
 
 - ACT_UNDEAD added, along with some supporting features.
-
+- ITEM_UNDEAD object extra flag added. Corpses, remains, and generated body
+  parts originating from undead characters are now tagged automatically.
+  Identifying such an object reveals its undead nature.
 
 ~
 
