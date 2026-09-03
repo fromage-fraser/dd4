@@ -2268,17 +2268,17 @@ extern WANTED_DATA *wanted_list_last;
  */
 #define ITEM_GLOW BIT_0
 #define ITEM_HUM BIT_1
-#define ITEM_EGO BIT_2         /* Item has special effects/powers; was ITEM_DARK */
-#define ITEM_ANTI_RANGER BIT_3 /* Was ITEM_LOCK */
+#define ITEM_EGO BIT_2              /* Item has special effects/powers; was ITEM_DARK */
+#define ITEM_ANTI_RANGER BIT_3      /* Was ITEM_LOCK */
 #define ITEM_EVIL BIT_4
 #define ITEM_INVIS BIT_5
 #define ITEM_MAGIC BIT_6
-#define ITEM_NODROP BIT_7 /* carrier attacked by mobs with DETECT_CURSE */
+#define ITEM_NODROP BIT_7           /* carrier attacked by mobs with DETECT_CURSE */
 #define ITEM_BLESS BIT_8
 #define ITEM_ANTI_GOOD BIT_9
 #define ITEM_ANTI_EVIL BIT_10
 #define ITEM_ANTI_NEUTRAL BIT_11
-#define ITEM_NOREMOVE BIT_12 /* carrier attacked by mobs with DETECT_CURSE */
+#define ITEM_NOREMOVE BIT_12        /* carrier attacked by mobs with DETECT_CURSE */
 #define ITEM_INVENTORY BIT_13
 #define ITEM_POISONED BIT_14
 #define ITEM_ANTI_MAGE BIT_15
@@ -2297,6 +2297,7 @@ extern WANTED_DATA *wanted_list_last;
 #define ITEM_ANTI_BRAWLER BIT_28
 #define ITEM_ANTI_SHAPE_SHIFTER BIT_29
 #define ITEM_BOW BIT_30
+#define ITEM_UNDEAD BIT_31          /* Object has an undead nature or originated from an undead character */
 #define ITEM_ANTI_SMITHY BIT_34
 #define ITEM_DEPLOYED BIT_35
 #define ITEM_RUNE BIT_36

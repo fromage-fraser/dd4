@@ -212,6 +212,7 @@ my %obj_ex = (
         anti_brawler => 268435456,
         anti_shifter => 536870912,
         bow          => 1073741824,
+        undead       => 2147483648,
         anti_smithy  => 17179869184,
         deployed     => 34359738368,
         rune         => 68719476736,

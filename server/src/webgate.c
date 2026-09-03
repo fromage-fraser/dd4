@@ -1775,6 +1775,11 @@ static void webgate_serialize_extra_flags(OBJ_DATA *obj, bool identified, char *
             strcat(buf, first ? "\"cursed\"" : ",\"cursed\"");
             first = false;
         }
+        if (flags & ITEM_UNDEAD)
+        {
+            strcat(buf, first ? "\"undead\"" : ",\"undead\"");
+            first = false;
+        }
         if (flags & ITEM_INVIS)
         {
             strcat(buf, first ? "\"invis\"" : ",\"invis\"");

@@ -3841,7 +3841,7 @@ void spell_identify(int sn, int level, CHAR_DATA *ch, void *vo)
                 "?", "?", "is bloodthirsty",
                 "has been sharpened", "has been forged", "is a body part",
                 "can be used as a lance", "?",
-                "?", "can be used as a bow", "?",
+                "?", "can be used as a bow", "has an undead nature",
                 "?", "?", "?",
                 "?", "?", "?",
                 "?", "?", "?",

@@ -1117,6 +1117,10 @@ Current effects of the `ACT_OBJECT` flag include:
 * A "remains" object rather than an NPC corpse is created when the `ACT_OBJECT` +
 mob is destroyed (vs "killed")
 
+* If the destroyed `ACT_OBJECT` mob is undead, its generated remains receive +
+`ITEM_UNDEAD`. Ordinary NPC/PC corpses and generated body parts from undead +
+characters receive the same provenance flag.
+
 * Autoloot/autocoin/autosac will correctly interact with remains.
 
 * Messages for "death" etc are sensible and reflect the mob's status as a +

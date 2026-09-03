@@ -2670,6 +2670,12 @@ void make_corpse(CHAR_DATA *ch)
                 corpse->name = str_dup(buf);
         }
 
+        /*
+         * Preserve undead provenance on corpses and remains.
+         */
+        if (IS_UNDEAD(ch))
+                SET_BIT(corpse->extra_flags, ITEM_UNDEAD);
+
         sprintf(buf, corpse->short_descr, name);
         free_string(corpse->short_descr);
         corpse->short_descr = str_dup(buf);
@@ -2849,6 +2855,12 @@ void death_cry(CHAR_DATA *ch)
 
                 /* Set body_part flag so you can't locate magically */
                 SET_BIT(obj->extra_flags, ITEM_BODY_PART);
+
+                /*
+                 * Preserve undead provenance on severed body parts.
+                 */
+                if (IS_UNDEAD(ch))
+                        SET_BIT(obj->extra_flags, ITEM_UNDEAD);
 
                 /*  Make body parts from inorganic mobs inedible.  */
                 if (IS_INORGANIC(ch))
