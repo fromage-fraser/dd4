@@ -229,7 +229,15 @@ RESISTANCE_RESULT get_resistance_result(CHAR_DATA *victim, unsigned long int res
         bool resistant;
         bool vulnerable;
 
-        if (!victim || res_types == 0)
+        if (!victim)
+                return RES_RESULT_NORMAL;
+
+        /*
+         * Unknown or reserved bits must not affect runtime resolution.
+         */
+        res_types &= RES_VALID_MASK;
+
+        if (res_types == 0)
                 return RES_RESULT_NORMAL;
 
         if (!IS_NPC(victim) || !victim->mobspec)

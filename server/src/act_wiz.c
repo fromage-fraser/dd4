@@ -2623,8 +2623,11 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                 /* Pull out the species specific info for this mob - Brutus Sept 2022 */
                 if (victim->mobspec)
                 {
+                        unsigned long int resistance_conflicts;
+                        unsigned long int unknown_resistance_bits;
                         int sn;
                         int species;
+
                         species = species_sn(victim);
 
                         for (sn = 0; sn < MAX_MOB; sn++)
@@ -2634,7 +2637,7 @@ void do_mstat(CHAR_DATA *ch, char *argument)
 
                                 if (!str_cmp(victim->mobspec, mob_table[sn].name))
                                 {
-                                        strcat(buf, "\n\r{WThe Mobs Specification:{x\n\r");
+                                        strcpy(buf, "\n\r{WThe Mobs Specification:{x\n\r");
                                         strcat(buf1, buf);
 
                                         sprintf(buf, "Name: %s Species: %s\n\r",
@@ -2690,7 +2693,35 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                                         strcat(buf1, resist_name(next));
                                                 }
                                         }
+
                                         strcat(buf1, "{x\n\r");
+
+                                        resistance_conflicts =
+                                            ((mob_table[sn].resists
+                                              & mob_table[sn].vulnerabilities)
+                                             | (mob_table[sn].resists
+                                                & mob_table[sn].immunes)
+                                             | (mob_table[sn].vulnerabilities
+                                                & mob_table[sn].immunes))
+                                            & RES_VALID_MASK;
+
+                                        unknown_resistance_bits =
+                                            (mob_table[sn].resists
+                                             | mob_table[sn].vulnerabilities
+                                             | mob_table[sn].immunes)
+                                            & ~RES_VALID_MASK;
+
+                                        if (resistance_conflicts == 0
+                                        &&  unknown_resistance_bits == 0)
+                                        {
+                                                strcat(buf1,
+                                                       "Resistance data: {Gvalid{x\n\r");
+                                        }
+                                        else
+                                        {
+                                                strcat(buf1,
+                                                       "Resistance data: {RINVALID -- see boot log{x\n\r");
+                                        }
 
                                         sprintf(buf, "HP Mod: %d Dam Mod: %d Crit Mod: %d Swiftness Mod: %d\n\r",
                                                 mob_table[sn].hp_mod, mob_table[sn].dam_mod, mob_table[sn].crit_mod, mob_table[sn].haste_mod);
@@ -2737,6 +2768,7 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                         sprintf(buf, "Lang: %d\n\r Spec_1: %s\n\r Spec_2: %s\n\r Spec_3: %s\n\r",
                                                 mob_table[sn].language, mob_table[sn].spec_fun1, mob_table[sn].spec_fun2, mob_table[sn].spec_boss);
                                         strcat(buf1, buf);
+                                        break;
                                 }
                         }
                 }
