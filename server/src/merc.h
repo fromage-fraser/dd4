@@ -3306,6 +3306,17 @@ struct skill_type
 #define RES_DARK BIT_18
 #define RES_CURSE BIT_19
 
+/*
+ * Effective response to one or more RES_* categories.
+ */
+typedef enum resistance_result
+{
+        RES_RESULT_NORMAL = 0,
+        RES_RESULT_IMMUNE,
+        RES_RESULT_RESISTANT,
+        RES_RESULT_VULNERABLE
+} RESISTANCE_RESULT;
+
 #define MAX_MOB 3
 #define MAX_SPECIES 4
 #define MAX_RANK 6
@@ -5255,6 +5266,7 @@ bool wiz_do args((CHAR_DATA * ch, char *command));
 /* magic.c */
 int skill_lookup args((const char *name));
 bool saves_spell args((int level, CHAR_DATA *victim));
+RESISTANCE_RESULT get_resistance_result args((CHAR_DATA * victim, unsigned long int res_types));
 bool is_immune_to args((CHAR_DATA * victim, unsigned long int dam_type));
 void obj_cast_spell args((int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *obj));
 bool mob_interacts_players(CHAR_DATA *mob);
