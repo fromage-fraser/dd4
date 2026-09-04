@@ -1227,7 +1227,7 @@ bool spec_poison( CHAR_DATA *ch )
         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-        spell_poison( gsn_poison, ch->level, ch, victim );
+        spell_poison(gsn_venom, ch->level, ch, victim);
         return TRUE;
 }
 
@@ -2030,7 +2030,7 @@ bool spec_kungfu_poison( CHAR_DATA *ch )
         act( "$n hits $N with the poison palm technique!",  ch, NULL, victim, TO_NOTVICT );
         act( "$n hits you with the poison palm technique!", ch, NULL, victim, TO_VICT    );
 
-        spell_poison( gsn_poison, ch->level, ch, victim );
+        spell_poison(gsn_venom, ch->level, ch, victim);
 
         return TRUE;
 }
@@ -3490,7 +3490,7 @@ bool spec_uzollru( CHAR_DATA *ch )
                         act( "Your tentacles burrow into $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n's tentacles burrow into you...", ch, NULL, victim, TO_VICT  );
                         act( "$n's tentacles burrow into $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison( gsn_poison, ch->level, ch, victim );
+                        spell_poison(gsn_venom, ch->level, ch, victim);
                         one_hit(ch, victim, gsn_suck, FALSE);
                         one_hit(ch, victim, gsn_suck, FALSE);
                         return TRUE;
@@ -3513,7 +3513,7 @@ bool spec_uzollru( CHAR_DATA *ch )
                         act( "Your tentacles burrow into $N' flesh!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n's tentacles burrow into your flesh!", ch, NULL, victim, TO_VICT    );
                         act( "$n's tentacles burrow into $N's flesh!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison( gsn_poison, ch->level, ch, victim );
+                        spell_poison(gsn_venom, ch->level, ch, victim);
                         one_hit(ch, victim, gsn_suck, FALSE);
                         one_hit(ch, victim, gsn_suck, FALSE);
                         return TRUE;
@@ -3795,7 +3795,7 @@ bool spec_sahuagin_prince (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison( gsn_poison, ch->level, ch, victim );
+                        spell_poison(gsn_venom, ch->level, ch, victim);
                         return TRUE;
 
                     case  6:
@@ -4309,7 +4309,7 @@ bool spec_sahuagin_lieutenant (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison( gsn_poison, ch->level, ch, victim );
+                        spell_poison(gsn_venom, ch->level, ch, victim);
                         return TRUE;
 
                     case  5:
@@ -4409,7 +4409,7 @@ bool spec_green_grung (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison( gsn_poison, ch->level, ch, victim );
+                        spell_poison(gsn_venom, ch->level, ch, victim);
                         spell_paralysis( gsn_paralysis, ch->level, ch, victim );
                         return TRUE;
 
@@ -4429,7 +4429,7 @@ bool spec_green_grung (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison( gsn_poison, ch->level, ch, victim );
+                        spell_poison(gsn_venom, ch->level, ch, victim);
                         spell_paralysis( gsn_paralysis, ch->level, ch, victim );
                         return TRUE;
 
@@ -4630,7 +4630,7 @@ bool spec_blue_grung (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison( gsn_poison, ch->level, ch, victim );
+                        spell_poison(gsn_venom, ch->level, ch, victim);
                         if ( CAN_SPEAK(victim) ) { do_shout(victim, "ArrRrRRrrRRgh!!!"); }
                         spell_confusion( gsn_confusion, ch->level, ch, victim );
                         return TRUE;
@@ -4660,7 +4660,7 @@ bool spec_blue_grung (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison( gsn_poison, ch->level, ch, victim );
+                        spell_poison(gsn_venom, ch->level, ch, victim);
                         if ( CAN_SPEAK(victim) ) { do_shout(victim, "oOooOooOOoOoOOOo!!!"); }
                         return TRUE;
 
@@ -4775,7 +4775,7 @@ bool spec_purple_grung (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison( gsn_poison, ch->level, ch, victim );
+                        spell_poison(gsn_venom, ch->level, ch, victim);
                         spell_paralysis( gsn_paralysis, ch->level, ch, victim );
                         if (!IS_NPC(victim)) {
                             if ( ( victim->pcdata->condition[COND_THIRST] > 0 )
@@ -4818,7 +4818,7 @@ bool spec_purple_grung (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison( gsn_poison, ch->level, ch, victim );
+                        spell_poison(gsn_venom, ch->level, ch, victim);
                         spell_paralysis( gsn_paralysis, ch->level, ch, victim );
                         if (!IS_NPC(victim)) {
                             if ( ( victim->pcdata->condition[COND_THIRST] > 0 )
@@ -4931,7 +4931,7 @@ bool spec_orange_grung (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison( gsn_poison, ch->level, ch, victim );
+                        spell_poison(gsn_venom, ch->level, ch, victim);
                         spell_fear( gsn_fear, ch->level, ch, victim );
                         return TRUE;
 
@@ -4953,7 +4953,7 @@ bool spec_orange_grung (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison( gsn_poison, ch->level, ch, victim );
+                        spell_poison(gsn_venom, ch->level, ch, victim);
                         spell_fear( gsn_fear, ch->level, ch, victim );
                         return TRUE;
 
@@ -5055,7 +5055,7 @@ bool spec_gold_grung (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison( gsn_poison, ch->level, ch, victim );
+                        spell_poison(gsn_venom, ch->level, ch, victim);
                         act ("<220>$c's powerful will overrides your own, forcing you to stop fighting!<0>", ch, NULL, victim, TO_VICT);
                         do_peace(victim, "");
                         return TRUE;
@@ -5090,7 +5090,7 @@ bool spec_gold_grung (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison( gsn_poison, ch->level, ch, victim );
+                        spell_poison(gsn_venom, ch->level, ch, victim);
                         act ("<220>$c's powerful will overrides your own, forcing you to stop fighting!<0>", ch, NULL, victim, TO_VICT);
                         do_peace(victim, "");
                         return TRUE;

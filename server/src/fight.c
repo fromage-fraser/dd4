@@ -1578,14 +1578,31 @@ void damage(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 affect_strip(victim, gsn_berserk);
 
         /* poisoned weapons */
-        if (dam > 0 && dt > TYPE_HIT && poison && !saves_spell(ch->level, victim))
+        if (dam > 0
+        &&  dt > TYPE_HIT
+        &&  poison
+        &&  !saves_resistance_effect(
+                 ch->level,
+                 victim,
+                 RES_POISON))
         {
                 AFFECT_DATA af, *paf;
 
-                if (!IS_NPC(victim) && (number_percent() < victim->pcdata->learned[gsn_resist_toxin] || is_affected(victim, gsn_bonus_exotic)) && victim->gag < 2)
+                if (!IS_NPC(victim)
+                &&  (number_percent()
+                     < victim->pcdata->learned[gsn_resist_toxin]
+                ||   is_affected(victim, gsn_bonus_exotic)))
                 {
-                        sound_combat_resist_toxin_sfx( victim );
-                        send_to_char("<46>Yo<47>u r<48>es<49>is<48>t t<47>he <46>po<47>is<48>on <49>su<48>rg<47>in<46>g t<47>hr<48>ou<49>gh <48>yo<47>ur <46>ve<47>in<48>s.<0>\n\r", victim);
+                        if (victim->gag < 2)
+                        {
+                                sound_combat_resist_toxin_sfx(victim);
+                                send_to_char(
+                                    "<46>Yo<47>u r<48>es<49>is<48>t t<47>he "
+                                    "<46>po<47>is<48>on <49>su<48>rg<47>in<46>g "
+                                    "t<47>hr<48>ou<49>gh <48>yo<47>ur "
+                                    "<46>ve<47>in<48>s.<0>\n\r",
+                                    victim);
+                        }
                 }
                 else
                 {

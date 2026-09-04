@@ -300,6 +300,41 @@ int apply_resistance_to_damage(CHAR_DATA *victim,
 }
 
 /*
+ * Resolve a saving throw for a status effect carrying one or more RES_* types.
+ *
+ * Resistance and vulnerability modify the effective casting level rather than
+ * creating a second independent saving throw.
+ */
+bool saves_resistance_effect(int level,
+                             CHAR_DATA *victim,
+                             unsigned long int res_types)
+{
+        switch (get_resistance_result(victim, res_types))
+        {
+        case RES_RESULT_IMMUNE:
+                return TRUE;
+
+        case RES_RESULT_RESISTANT:
+                level = UMAX(
+                    1,
+                    level - RESISTANCE_SAVE_LEVEL_SHIFT);
+                break;
+
+        case RES_RESULT_VULNERABLE:
+                level = UMIN(
+                    MAX_LEVEL,
+                    level + RESISTANCE_SAVE_LEVEL_SHIFT);
+                break;
+
+        case RES_RESULT_NORMAL:
+        default:
+                break;
+        }
+
+        return saves_spell(level, victim);
+}
+
+/*
  * Compatibility helper for existing immunity checks.
  */
 bool is_immune_to(CHAR_DATA *victim, unsigned long int damtype)
@@ -655,7 +690,7 @@ void do_cast(CHAR_DATA *ch, char *argument)
                     == RES_RESULT_IMMUNE)
                 {
                         send_to_char(
-                            "They are immune to this type of damage!\n\r",
+                            "{WThey are immune to this spell's effects!{x\n\r\n\r",
                             ch);
 
                         /*
@@ -1452,7 +1487,7 @@ void spell_charm_person(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if (IS_AFFECTED(victim, AFF_CHARM) || IS_SET(victim->act, ACT_NOCHARM) || IS_AFFECTED(ch, AFF_CHARM) || level < victim->level || ch->mount == victim || victim->rider || IS_SET(victim->act, ACT_BANKER) || IS_SET(victim->act, ACT_CLAN_GUARD) || !mob_interacts_players(victim) || mob_is_quest_target(victim) || saves_spell(level, victim))
+        if (IS_AFFECTED(victim, AFF_CHARM) || IS_SET(victim->act, ACT_NOCHARM) || IS_AFFECTED(ch, AFF_CHARM) || level < victim->level || ch->mount == victim || victim->rider || IS_SET(victim->act, ACT_BANKER) || IS_SET(victim->act, ACT_CLAN_GUARD) || !mob_interacts_players(victim) || mob_is_quest_target(victim) || saves_resistance_effect(level, victim, skill_table[sn].res_type))
         {
                 send_to_char("Your charm failed.\n\r", ch);
                 return;
@@ -1483,7 +1518,13 @@ void spell_chill_touch(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = number_range(10, 20) + level;
 
-        if (!is_affected(victim, gsn_resist_cold) && !saves_spell(level, victim) && (!IS_NPC(victim) || (MAKES_CORPSE(victim) && !IS_INORGANIC(victim))))
+        if (!is_affected(victim, gsn_resist_cold)
+        &&  !saves_resistance_effect(
+                 level,
+                 victim,
+                 skill_table[sn].res_type)
+        &&  (!IS_NPC(victim)
+        ||   (MAKES_CORPSE(victim) && !IS_INORGANIC(victim))))
         {
                 af.type = sn;
                 af.duration = 6;
@@ -1950,14 +1991,23 @@ void spell_cure_poison(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (!IS_NPC(victim))
         {
-                if (((!is_affected(victim, gsn_poison)) && (!is_affected(victim, gsn_nausea))) && (victim->pcdata->condition[COND_DRUNK] <= 0))
+                if (!is_affected(victim, gsn_poison)
+                &&  !is_affected(victim, gsn_venom)
+                &&  !is_affected(victim, gsn_nausea)
+                &&  victim->pcdata->condition[COND_DRUNK] <= 0)
+                {
                         return;
+                }
         }
 
         if (IS_NPC(victim))
         {
-                if (((!is_affected(victim, gsn_poison)) && (!is_affected(victim, gsn_nausea))))
+                if (!is_affected(victim, gsn_poison)
+                &&  !is_affected(victim, gsn_venom)
+                &&  !is_affected(victim, gsn_nausea))
+                {
                         return;
+                }
         }
 
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
@@ -1968,6 +2018,9 @@ void spell_cure_poison(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (is_affected(victim, gsn_poison))
                 affect_strip(victim, gsn_poison);
+
+        if (is_affected(victim, gsn_venom))
+                affect_strip(victim, gsn_venom);
 
         if (is_affected(victim, gsn_nausea))
                 affect_strip(victim, gsn_nausea);
@@ -2304,7 +2357,11 @@ void spell_curse(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (IS_AFFECTED(victim, AFF_CURSE) || saves_spell(level, victim))
+        if (IS_AFFECTED(victim, AFF_CURSE)
+        ||  saves_resistance_effect(
+                level,
+                victim,
+                skill_table[sn].res_type))
         {
                 if (ch == victim)
                 {
@@ -3171,7 +3228,11 @@ void spell_energy_drain(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         int dam;
 
-        if (saves_spell(level, victim) || victim->edrain)
+        if (saves_resistance_effect(
+                level,
+                victim,
+                skill_table[sn].res_type)
+        ||  victim->edrain)
         {
                 damage(ch, victim, 0, sn, FALSE);
                 return;
@@ -3211,7 +3272,11 @@ void spell_entrapment(int sn, int level, CHAR_DATA *ch, void *vo)
         if (is_safe(ch, victim))
                 return;
 
-        if (victim->fighting || (!IS_NPC(victim) && saves_spell(level, victim)))
+        if (victim->fighting
+        ||  saves_resistance_effect(
+                level,
+                victim,
+                skill_table[sn].res_type))
         {
                 send_to_char("Your entrapment fails.\n\r", ch);
                 return;
@@ -4742,11 +4807,48 @@ void spell_poison(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        /* next bit for resist poison */
-        if (!IS_NPC(victim) && (number_percent() < victim->pcdata->learned[gsn_resist_toxin] || is_affected(victim, gsn_bonus_exotic)) && victim->gag < 2)
+         /*
+         * Preserve the existing PC Resist Toxin and Bonus Exotic checks.
+         * Message suppression must not determine whether resistance succeeds.
+         */
+        if (!IS_NPC(victim)
+        &&  (number_percent()
+             < victim->pcdata->learned[gsn_resist_toxin]
+        ||   is_affected(victim, gsn_bonus_exotic)))
         {
-                sound_combat_resist_toxin_sfx( victim );
-                send_to_char("<46>Yo<47>u r<48>es<49>is<48>t t<47>he <46>po<47>is<48>on <49>su<48>rg<47>in<46>g t<47>hr<48>ou<49>gh <48>yo<47>ur <46>ve<47>in<48>s.<0>\n\r", victim);
+                if (victim->gag < 2)
+                {
+                        sound_combat_resist_toxin_sfx(victim);
+                        send_to_char(
+                            "<46>Yo<47>u r<48>es<49>is<48>t t<47>he "
+                            "<46>po<47>is<48>on <49>su<48>rg<47>in<46>g "
+                            "t<47>hr<48>ou<49>gh <48>yo<47>ur "
+                            "<46>ve<47>in<48>s.<0>\n\r",
+                            victim);
+                }
+
+                return;
+        }
+
+        /*
+         * Apply the generic mob-type resistance rule after any existing
+         * player-specific resistance skill.
+         */
+        if (saves_resistance_effect(
+                level,
+                victim,
+                skill_table[sn].res_type))
+        {
+                if (ch != victim)
+                        send_to_char(
+                            "{GYour poison is resisted.{x\n\r",
+                            ch);
+
+                if (victim->gag < 2)
+                        send_to_char(
+                            "{GYou resist the poison.{x\n\r",
+                            victim);
+
                 return;
         }
 
@@ -4786,7 +4888,7 @@ void spell_poison(int sn, int level, CHAR_DATA *ch, void *vo)
 }
 
 /*
- * Similar to trap, abyssal hand  etc, but short-lived and useable during combat.
+ * Similar to trap, abyssal hand etc, but short-lived and useable during combat.
  * Mostly intended for mob use.
  * --Owl 29/3/24
  */
@@ -4797,6 +4899,24 @@ void spell_paralysis(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (IS_AFFECTED(victim, AFF_HOLD))
                 return;
+
+        if (saves_resistance_effect(
+                level,
+                victim,
+                skill_table[sn].res_type))
+        {
+                if (ch != victim)
+                        send_to_char(
+                            "Your paralysis is resisted.\n\r",
+                            ch);
+
+                if (victim->gag < 2)
+                        send_to_char(
+                            "You resist the paralysis.\n\r",
+                            victim);
+
+                return;
+        }
 
         af.type = sn;
         af.duration = 1 + level / 15;
@@ -5081,7 +5201,10 @@ void spell_sleep(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if (saves_spell(level, victim))
+        if (saves_resistance_effect(
+                level,
+                victim,
+                skill_table[sn].res_type))
         {
                 send_to_char("The sleep spell is resisted!\n\r", ch);
                 /* Shade 12.2.22 */
@@ -6131,9 +6254,15 @@ void spell_cell_adjustment(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         int well_count = 0;
 
-        if (is_affected(victim, gsn_poison))
+        if (is_affected(victim, gsn_poison)
+        ||  is_affected(victim, gsn_venom))
         {
-                affect_strip(victim, gsn_poison);
+                if (is_affected(victim, gsn_poison))
+                        affect_strip(victim, gsn_poison);
+
+                if (is_affected(victim, gsn_venom))
+                        affect_strip(victim, gsn_venom);
+
                 send_to_char("<229>A w<228>ar<227>m f<226>ee<220>li<226>ng <227>ru<228>ns <229>th<228>ro<227>ug<226>h y<220>ou<226>r b<227>od<228>y.<0>\n\r", victim);
                 act("$N looks better.", ch, NULL, victim, TO_NOTVICT);
                 well_count++;
@@ -8221,7 +8350,10 @@ void spell_hex(int sn, int level, CHAR_DATA *ch, void *vo)
                 }
         }
 
-        if (saves_spell(level, victim))
+        if (saves_resistance_effect(
+                level,
+                victim,
+                skill_table[sn].res_type))
         {
                 if (ch == victim)
                 {
