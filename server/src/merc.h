@@ -3307,6 +3307,18 @@ struct skill_type
 #define RES_CURSE BIT_19
 
 /*
+ * All currently defined RES_* categories.
+ */
+#define RES_VALID_MASK                                                    \
+        ((unsigned long int)(RES_FIRE | RES_COLD | RES_ELECTRICITY |     \
+                             RES_ENERGY | RES_BLUNT | RES_PIERCE |        \
+                             RES_SLASH | RES_ACID | RES_POISON |          \
+                             RES_DRAIN | RES_SLEEP | RES_CHARM |          \
+                             RES_HOLD | RES_NONMAGIC | RES_MAGIC |        \
+                             RES_PARALYSIS | RES_PSYCHIC | RES_HOLY |     \
+                             RES_DARK | RES_CURSE))
+
+/*
  * Effective response to one or more RES_* categories.
  */
 typedef enum resistance_result
@@ -5270,6 +5282,9 @@ RESISTANCE_RESULT get_resistance_result args((CHAR_DATA * victim, unsigned long 
 bool is_immune_to args((CHAR_DATA * victim, unsigned long int dam_type));
 void obj_cast_spell args((int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *obj));
 bool mob_interacts_players(CHAR_DATA *mob);
+
+/* mob.c */
+int validate_mob_resistance_table args((void));
 
 /* mob_commands.c */
 char *mprog_type_to_name args((int type));

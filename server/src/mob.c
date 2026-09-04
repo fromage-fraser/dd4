@@ -108,3 +108,184 @@ const struct mob_type mob_table [MAX_MOB] =
   }
 
 };
+
+/*
+ * Log unknown bits from one mob resistance field.
+ */
+static int log_unknown_resistance_bits(const char *mob_name,
+                                       const char *field_name,
+                                       unsigned long int bits)
+{
+        unsigned long int bit;
+        char buf[MAX_STRING_LENGTH];
+        int issues;
+
+        issues = 0;
+
+        for (bit = 1; bit > 0 && bit <= BIT_MAX; bit *= 2)
+        {
+                if (!IS_SET(bits, bit))
+                        continue;
+
+                sprintf(buf,
+                        "[MOB TYPE] '%s': unknown resistance bit %lu in %s.",
+                        mob_name,
+                        bit,
+                        field_name);
+                log_string(buf);
+                issues++;
+        }
+
+        return issues;
+}
+
+/*
+ * Log bits which appear in contradictory resistance fields.
+ */
+static int log_resistance_conflicts(const char *mob_name,
+                                    const char *description,
+                                    unsigned long int bits)
+{
+        unsigned long int bit;
+        char buf[MAX_STRING_LENGTH];
+        int issues;
+
+        issues = 0;
+
+        for (bit = 1; bit > 0 && bit <= BIT_MAX; bit *= 2)
+        {
+                if (!IS_SET(bits, bit))
+                        continue;
+
+                sprintf(buf,
+                        "[MOB TYPE] '%s': %s %s.",
+                        mob_name,
+                        description,
+                        resist_name(bit));
+                log_string(buf);
+                issues++;
+        }
+
+        return issues;
+}
+
+/*
+ * Validate mob_table resistance, vulnerability and immunity masks.
+ *
+ * Runtime precedence remains:
+ *
+ *   immunity overrides everything;
+ *   resistance plus vulnerability resolves to normal;
+ *   otherwise the single matching state applies.
+ */
+int validate_mob_resistance_table(void)
+{
+        unsigned long int unknown_bits;
+        unsigned long int overlap;
+        char buf[MAX_STRING_LENGTH];
+        int mob_type;
+        int other;
+        int issues;
+
+        issues = 0;
+
+        for (mob_type = 0; mob_type < MAX_MOB; mob_type++)
+        {
+                if (!mob_table[mob_type].name
+                ||  mob_table[mob_type].name[0] == '\0')
+                {
+                        sprintf(buf,
+                                "[MOB TYPE] entry %d has no name.",
+                                mob_type);
+                        log_string(buf);
+                        issues++;
+                        continue;
+                }
+
+                /*
+                 * Duplicate names make mob_type_sn() resolution ambiguous.
+                 */
+                for (other = mob_type + 1; other < MAX_MOB; other++)
+                {
+                        if (!mob_table[other].name
+                        ||  mob_table[other].name[0] == '\0')
+                                continue;
+
+                        if (!str_cmp(mob_table[mob_type].name,
+                                     mob_table[other].name))
+                        {
+                                sprintf(buf,
+                                        "[MOB TYPE] duplicate name '%s' at entries %d and %d.",
+                                        mob_table[mob_type].name,
+                                        mob_type,
+                                        other);
+                                log_string(buf);
+                                issues++;
+                        }
+                }
+
+                unknown_bits =
+                    mob_table[mob_type].resists & ~RES_VALID_MASK;
+                issues += log_unknown_resistance_bits(
+                    mob_table[mob_type].name,
+                    "resists",
+                    unknown_bits);
+
+                unknown_bits =
+                    mob_table[mob_type].vulnerabilities & ~RES_VALID_MASK;
+                issues += log_unknown_resistance_bits(
+                    mob_table[mob_type].name,
+                    "vulnerabilities",
+                    unknown_bits);
+
+                unknown_bits =
+                    mob_table[mob_type].immunes & ~RES_VALID_MASK;
+                issues += log_unknown_resistance_bits(
+                    mob_table[mob_type].name,
+                    "immunes",
+                    unknown_bits);
+
+                overlap =
+                    (mob_table[mob_type].resists
+                     & mob_table[mob_type].vulnerabilities)
+                    & RES_VALID_MASK;
+                issues += log_resistance_conflicts(
+                    mob_table[mob_type].name,
+                    "both resistant and vulnerable to",
+                    overlap);
+
+                overlap =
+                    (mob_table[mob_type].resists
+                     & mob_table[mob_type].immunes)
+                    & RES_VALID_MASK;
+                issues += log_resistance_conflicts(
+                    mob_table[mob_type].name,
+                    "both resistant and immune to",
+                    overlap);
+
+                overlap =
+                    (mob_table[mob_type].vulnerabilities
+                     & mob_table[mob_type].immunes)
+                    & RES_VALID_MASK;
+                issues += log_resistance_conflicts(
+                    mob_table[mob_type].name,
+                    "both vulnerable and immune to",
+                    overlap);
+        }
+
+        if (issues == 0)
+        {
+                log_string(
+                    "[MOB TYPE] Resistance validation complete: no issues found.");
+        }
+        else
+        {
+                sprintf(buf,
+                        "[MOB TYPE] Resistance validation complete: %d issue%s found.",
+                        issues,
+                        issues == 1 ? "" : "s");
+                log_string(buf);
+        }
+
+        return issues;
+}

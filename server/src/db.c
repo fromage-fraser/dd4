@@ -1019,6 +1019,14 @@ void boot_db(void)
         }
 
         /*
+         * Validate the static mob-type resistance definitions before
+         * loading mobiles which refer to them.
+         */
+        {
+                validate_mob_resistance_table();
+        }
+
+        /*
          * Read in all the area files.
          */
         {
@@ -1822,22 +1830,19 @@ void load_area_special(FILE *fp)
 int mob_lookup(const char *name)
 {
         int sn;
-        char buf2[100];
+
+        if (!name || name[0] == '\0')
+                return -1;
+
         for (sn = 0; sn < MAX_MOB; sn++)
         {
-
                 if (!mob_table[sn].name)
-                        break;
+                        continue;
 
                 if (!str_cmp(name, mob_table[sn].name))
-                {
-
                         return sn;
-                }
         }
-        sprintf(buf2, "[*****] BUG: Cant do mob_lookup: %s: %s, %d",
-                name, mob_table[sn].name, sn);
-        log_string(buf2);
+
         return -1;
 }
 
