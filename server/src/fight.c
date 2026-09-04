@@ -1180,6 +1180,25 @@ void damage(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 return;
         }
 
+        /*
+         * Apply mob-type resistance data to spell damage.
+         *
+         * Spell functions have already applied their own saving throws and
+         * existing PC resistance effects before calling damage(). Physical
+         * attacks are handled separately in a later implementation chunk.
+         */
+        if (dam > 0
+        &&  dt >= 0
+        &&  dt < MAX_SKILL
+        &&  skill_table[dt].spell_fun
+        &&  IS_SPELL(dt))
+        {
+                dam = apply_resistance_to_damage(
+                    victim,
+                    dam,
+                    skill_table[dt].res_type);
+        }
+
         if (!IS_NPC(ch))
                 ch->pcdata->dam_per_fight += dam;
 
