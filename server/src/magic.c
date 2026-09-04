@@ -213,81 +213,59 @@ void say_spell(CHAR_DATA *ch, int sn)
         }
 }
 
+/*
+ * Resolve a character's response to one or more RES_* categories.
+ *
+ * Any matching immunity takes precedence.  If the supplied attack categories
+ * match both a resistance and a vulnerability, they cancel to normal.
+ *
+ * mob_table is currently the only source of these traits.  Later species,
+ * individual-mobile and player traits can be incorporated here without
+ * changing callers.
+ */
+RESISTANCE_RESULT get_resistance_result(CHAR_DATA *victim, unsigned long int res_types)
+{
+        int mob_type;
+        bool resistant;
+        bool vulnerable;
+
+        if (!victim || res_types == 0)
+                return RES_RESULT_NORMAL;
+
+        if (!IS_NPC(victim) || !victim->mobspec)
+                return RES_RESULT_NORMAL;
+
+        mob_type = mob_type_sn(victim);
+
+        if (mob_type < 0
+        ||  mob_type >= MAX_MOB
+        ||  !mob_table[mob_type].name)
+                return RES_RESULT_NORMAL;
+
+        if (IS_SET(mob_table[mob_type].immunes, res_types))
+                return RES_RESULT_IMMUNE;
+
+        resistant = IS_SET(mob_table[mob_type].resists, res_types);
+        vulnerable = IS_SET(mob_table[mob_type].vulnerabilities, res_types);
+
+        if (resistant && vulnerable)
+                return RES_RESULT_NORMAL;
+
+        if (resistant)
+                return RES_RESULT_RESISTANT;
+
+        if (vulnerable)
+                return RES_RESULT_VULNERABLE;
+
+        return RES_RESULT_NORMAL;
+}
+
+/*
+ * Compatibility helper for existing immunity checks.
+ */
 bool is_immune_to(CHAR_DATA *victim, unsigned long int damtype)
 {
-        if (victim == NULL)
-        {
-                return FALSE;
-        }
-
-        /* This part to check the mobs spec - Will need another section for character */
-        if (victim->mobspec && IS_NPC(victim))
-        {
-                int ms;
-                for (ms = 0; ms < MAX_MOB; ms++)
-                {
-                        if (!mob_table[ms].name)
-                                break;
-
-                        if (!str_cmp(victim->mobspec, mob_table[ms].name)) /* our victim has a mob spec */
-                        {
-
-                                switch (damtype)
-                                {
-                                case RES_FIRE:
-                                        if (IS_SET(mob_table[ms].immunes, RES_FIRE))
-                                                return TRUE;
-                                case RES_COLD:
-                                        if (IS_SET(mob_table[ms].immunes, RES_COLD))
-                                                return TRUE;
-                                case RES_ELECTRICITY:
-                                        if (IS_SET(mob_table[ms].immunes, RES_ELECTRICITY))
-                                                return TRUE;
-                                case RES_ENERGY:
-                                        if (IS_SET(mob_table[ms].immunes, RES_ENERGY))
-                                                return TRUE;
-                                case RES_ACID:
-                                        if (IS_SET(mob_table[ms].immunes, RES_ACID))
-                                                return TRUE;
-                                case RES_POISON:
-                                        if (IS_SET(mob_table[ms].immunes, RES_POISON))
-                                                return TRUE;
-                                case RES_DRAIN:
-                                        if (IS_SET(mob_table[ms].immunes, RES_DRAIN))
-                                                return TRUE;
-                                case RES_SLEEP:
-                                        if (IS_SET(mob_table[ms].immunes, RES_SLEEP))
-                                                return TRUE;
-                                case RES_CHARM:
-                                        if (IS_SET(mob_table[ms].immunes, RES_CHARM))
-                                                return TRUE;
-                                case RES_HOLD:
-                                        if (IS_SET(mob_table[ms].immunes, RES_HOLD))
-                                                return TRUE;
-                                case RES_MAGIC:
-                                        if (IS_SET(mob_table[ms].immunes, RES_MAGIC))
-                                                return TRUE;
-                                case RES_PSYCHIC:
-                                        if (IS_SET(mob_table[ms].immunes, RES_PSYCHIC))
-                                                return TRUE;
-                                case RES_HOLY:
-                                        if (IS_SET(mob_table[ms].immunes, RES_HOLY))
-                                                return TRUE;
-                                case RES_DARK:
-                                        if (IS_SET(mob_table[ms].immunes, RES_DARK))
-                                                return TRUE;
-                                case RES_CURSE:
-                                        if (IS_SET(mob_table[ms].immunes, RES_CURSE))
-                                                return TRUE;
-                                case RES_PARALYSIS:
-                                        if (IS_SET(mob_table[ms].immunes, RES_PARALYSIS))
-                                                return TRUE;
-                                        return FALSE;
-                                }
-                        }
-                }
-        }
-        return FALSE;
+        return get_resistance_result(victim, damtype) == RES_RESULT_IMMUNE;
 }
 
 /*

@@ -3895,6 +3895,7 @@ char* created_name( int created)
                 default:                        return "pre dd5 code";
         }
 }
+
 char* resist_name (unsigned long int vector)
 {
         switch (vector)
@@ -3915,8 +3916,12 @@ char* resist_name (unsigned long int vector)
                 case RES_NONMAGIC:      return "non_magic";
                 case RES_MAGIC:         return "magic";
                 case RES_PARALYSIS:     return "paralysis";
+                case RES_PSYCHIC:       return "psychic";
+                case RES_HOLY:          return "holy";
+                case RES_DARK:          return "dark";
+                case RES_CURSE:         return "curse";
 
-                default: return "none";
+                default:                return "(unknown)";
         }
 }
 
