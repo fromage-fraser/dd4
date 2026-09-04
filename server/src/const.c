@@ -2717,7 +2717,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "<556><196>+*(<15>holy word<196>)*+<557>", "!Holy Word!"},
 
         {"unholy word", &gsn_unholy_word,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_DRAIN | RES_DARK,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC | RES_DARK,
          spell_unholy_word, 20, 12,
          "<556><55>un<56>ho<57>ly <56>wo<55>rd<0>", "!Unholy Word!"},
 
@@ -2742,7 +2742,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Pattern!"},
 
         {"bless", &gsn_bless,
-         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC | RES_HOLY,
          spell_bless, 5, 1,
          "", "<136>You feel less righteous.<0>"},
 
@@ -2802,7 +2802,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "<198>c<201>o<12>l<33>o<14>u<49>r <34>s<106>p<11>r<202>a<196>y<0>", "!Colour Spray!"},
 
         {"continual light", &gsn_continual_light,
-         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_HOLY,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC | RES_HOLY,
          spell_continual_light, 7, 12,
          "", "!Continual Light!"},
 
@@ -2902,7 +2902,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Dispel Magic!"},
 
         {"earthquake", &gsn_earthquake,
-         TYPE_INT, TAR_IGNORE, POS_FIGHTING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_FIGHTING, RES_BLUNT | RES_MAGIC,
          spell_earthquake, 15, 12,
          "earthquake", "!Earthquake!"},
 
@@ -2942,7 +2942,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "<196>fi<202>r<11>e<15>sh<11>i<202>e<196>ld<0>", "<88>The flames around your body fizzle out.<0>"},
 
         {"flamestrike", &gsn_flamestrike,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_FIRE | RES_MAGIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_FIRE | RES_MAGIC | RES_HOLY,
          spell_flamestrike, 20, 12,
          "<196>fl<202>a<11>me<15>s<11>tr<202>i<196>ke<0>", "!Flamestrike!"},
 
@@ -3001,12 +3001,12 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "You no longer see in the dark."},
 
         {"intimidate", &gsn_intimidate,
-         TYPE_STR, TAR_CHAR_SELF, POS_STANDING, 0,
+         TYPE_STR, TAR_CHAR_SELF, POS_STANDING, RES_NONMAGIC | RES_PSYCHIC,
          spell_null, 0, 0,
          "", "You no longer feel invincible."},
 
         {"extort", &gsn_extort,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC | RES_PSYCHIC,
          spell_null, 0, 0,
          "", "!Extort!"},
 
@@ -3071,12 +3071,12 @@ const struct skill_type skill_table[MAX_SKILL] =
          "refresh", "!Refresh!"},
 
         {"remove curse", &gsn_remove_curse,
-         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC | RES_HOLY,
          spell_remove_curse, 5, 1,
          "", "!Remove Curse!"},
 
         {"sanctuary", &gsn_sanctuary,
-         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC | RES_HOLY,
          spell_sanctuary, 75, 12,
          "", "<15>Th<255>e w<254>hi<253>te <252>au<251>ra<250> ar<249>ou<248>nd <247>yo<246>ur<245> bo<244>dy<243> fa<242>de<241>s.<0>"},
 
@@ -3096,7 +3096,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "You feel vulnerable once again."},
 
         {"shocking grasp", &gsn_shocking_grasp,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_ENERGY | RES_MAGIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_ELECTRICITY | RES_MAGIC,
          spell_shocking_grasp, 15, 12,
          "<21>s<27>h<14>o<226>c<228>k<15>ing <228>g<226>r<14>a<27>s<21>p<0>", "!Shocking Grasp!"},
 
@@ -3131,7 +3131,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Ventriloquate!"},
 
         {"weaken", &gsn_weaken,
-         TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, RES_DRAIN | RES_MAGIC,
          spell_weaken, 20, 12,
          "spell", "You feel stronger."},
 
@@ -3151,27 +3151,27 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Scribe!"},
 
         {"acid breath", &gsn_acid_breath,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_ACID | RES_MAGIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_ACID,
          spell_acid_breath, 50, 12,
          "<112>bl<76>as<40>t of <76>ac<112>id<0>", "!Acid Breath!"},
 
         {"fire breath", &gsn_fire_breath,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_FIRE | RES_MAGIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_FIRE,
          spell_fire_breath, 50, 12,
          "<202>b<196>l<160>a<124>s<88>t<52> of <88>f<124>l<160>a<196>m<202>e<0>", "!Fire Breath!"},
 
         {"frost breath", &gsn_frost_breath,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_COLD | RES_MAGIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_COLD,
          spell_frost_breath, 50, 12,
          "<14>bl<87>a<159>s<195>t <15>o<195>f<159> f<87>ro<14>st<0>", "!Frost Breath!"},
 
         {"gas breath", &gsn_gas_breath,
-         TYPE_INT, TAR_IGNORE, POS_FIGHTING, RES_POISON | RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_FIGHTING, RES_POISON,
          spell_gas_breath, 50, 12,
          "<201>b<165>l<129>a<93>s<57>t o<93>f <129>g<165>a<201>s<0>", "!Gas Breath!"},
 
         {"lightning breath", &gsn_lightning_breath,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_ELECTRICITY | RES_MAGIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_ELECTRICITY,
          spell_lightning_breath, 50, 12,
          "<21>b<27>l<51>a<159>s<51>t o<159>f l<51>i<195>g<15>htn<51>i<27>n<21>g<0>", "!Lightning Breath!"},
 
@@ -3191,52 +3191,52 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Advanced Consider!"},
 
         {"assassinate", &gsn_assassinate,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_PIERCE | RES_NONMAGIC,
          spell_null, 0, 24,
          "assassination attempt", "!Assassinate!"},
 
         {"backstab", &gsn_backstab,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_PIERCE | RES_NONMAGIC,
          spell_null, 0, 24,
          "backstab", "!Backstab!"},
 
         {"joust", &gsn_joust,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_PIERCE | RES_NONMAGIC,
          spell_null, 0, 18,
          "joust", "!Joust!"},
 
         {"double backstab", &gsn_double_backstab,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_PIERCE | RES_NONMAGIC,
          spell_null, 0, 0,
          "second backstab", "!Double Backstab!"},
 
         {"circle", &gsn_circle,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_PIERCE | RES_NONMAGIC,
          spell_null, 0, 24,
          "circle", "!Circle!"},
 
         {"second circle", &gsn_second_circle,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_PIERCE | RES_NONMAGIC,
          spell_null, 0, 24,
          "second circle", "!Second Circle!"},
 
         {"climb", &gsn_climb,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 12,
          "slip up", "!Climb!"},
 
         {"bash door", &gsn_bash,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 24,
          "bash", "!Bash Door!"},
 
         {"berserk", &gsn_berserk,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 12,
          "", "!Berserk!"},
 
         {"decapitate", &gsn_decapitate,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_SLASH | RES_NONMAGIC,
          spell_null, 0, 12,
          "decapitation", "!Decapitate!"},
 
@@ -3246,7 +3246,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "dirt kick", "You wipe the dirt from your eyes."},
 
         {"disable", &gsn_disable,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 12,
          "slip up", "!Disable!"},
 
@@ -3256,47 +3256,47 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Disarm!"},
 
         {"blink", &gsn_blink,
-         TYPE_INT, TAR_IGNORE, POS_FIGHTING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 10, 0,
          "", "!Blink!"},
 
         {"dodge", &gsn_dodge,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "", "!Dodge!"},
 
         {"acrobatics", &gsn_acrobatics,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "", "!Acrobatics!"},
 
         {"dual", &gsn_dual,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!Dual!"},
 
         {"enhanced damage", &gsn_enhanced_damage,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "", "!Enhanced Damage!"},
 
         {"enhanced hit", &gsn_enhanced_hit,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "", "!Enhanced Hit!"},
 
         {"fast healing", &gsn_fast_healing,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!Fast Healing!"},
 
         {"find traps", &gsn_find_traps,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!Find Traps!"},
 
         {"fourth attack", &gsn_fourth_attack,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "", "!Fourth Attack!"},
 
@@ -3306,22 +3306,22 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Feint!"},
 
         {"focus", &gsn_focus,
-         TYPE_INT, TAR_IGNORE, POS_FIGHTING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 12,
          "", "!Focus!"},
 
         {"second spell", &gsn_second_spell,
-         TYPE_INT, TAR_IGNORE, POS_FIGHTING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "", "!Second Spell!"},
 
         {"third spell", &gsn_third_spell,
-         TYPE_INT, TAR_IGNORE, POS_FIGHTING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "", "!Third Spell!"},
 
         {"fourth spell", &gsn_fourth_spell,
-         TYPE_INT, TAR_IGNORE, POS_FIGHTING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "", "!Fourth Spell!"},
 
@@ -3341,7 +3341,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Transport!"},
 
         {"grip", &gsn_grip,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "", "!Grip!"},
 
@@ -3376,142 +3376,142 @@ const struct skill_type skill_table[MAX_SKILL] =
          "combo of moves", "!Combo4!"},
 
         {"atemi", &gsn_atemi,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_BLUNT | RES_NONMAGIC,
          spell_null, 0, 8,
          "<15><556>strike<0>", "!Atemi!"},
 
         {"kansetsu", &gsn_kansetsu,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_HOLD | RES_NONMAGIC,
          spell_null, 0, 8,
          "<15><556>arm lock<0>", "!Kansetsu!"},
 
         {"tetsui", &gsn_tetsui,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_BLUNT | RES_NONMAGIC,
          spell_null, 0, 8,
          "<15><556>hammer fist<0>", "!Tetsui!"},
 
         {"shuto", &gsn_shuto,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_BLUNT | RES_NONMAGIC,
          spell_null, 0, 8,
          "<15><556>knife hand strike<0>", "!Shuto!"},
 
         {"yokogeri", &gsn_yokogeri,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_BLUNT | RES_NONMAGIC,
          spell_null, 0, 8,
          "<11><556>side kick<0>", "!Yokogeri!"},
 
         {"mawasigeri", &gsn_mawasigeri,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_BLUNT | RES_NONMAGIC,
          spell_null, 0, 8,
          "<11><556>round house<0>", "!Mawasigeri!"},
 
         {"headbutt", &gsn_headbutt,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_BLUNT | RES_NONMAGIC,
          spell_null, 0, 24,
          "headbutt", "!Headbutt!"},
 
         {"second headbutt", &gsn_second_headbutt,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_BLUNT | RES_NONMAGIC,
          spell_null, 0, 24,
          "second headbutt", "!Headbutt!"},
 
         {"hide", &gsn_hide,
-         TYPE_STR, TAR_IGNORE, POS_RESTING, RES_MAGIC,
+         TYPE_STR, TAR_IGNORE, POS_RESTING, 0,
          spell_null, 0, 12,
          "", "!Hide!"},
 
         {"hunt", &gsn_hunt,
-         TYPE_STR, TAR_IGNORE, POS_RESTING, RES_MAGIC,
+         TYPE_STR, TAR_IGNORE, POS_RESTING, 0,
          spell_null, 0, 12,
          "", "!Hunt!"},
 
         {"kick", &gsn_kick,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_BLUNT | RES_NONMAGIC,
          spell_null, 0, 8,
          "kick", "!Kick!"},
 
         {"punch", &gsn_punch,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_BLUNT | RES_NONMAGIC,
          spell_null, 0, 8,
          "punch", "!Punch!"},
 
         {"push", &gsn_push,
-         TYPE_STR, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_BLUNT | RES_NONMAGIC,
          spell_null, 0, 8,
          "push", "!Push!"},
 
         {"choke", &gsn_choke,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_STANDING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_STANDING, RES_HOLD | RES_NONMAGIC,
          spell_null, 0, 8,
          "choker hold", "You regain consciousness."},
 
         {"break wrist", &gsn_break_wrist,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_STANDING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_STANDING, RES_BLUNT | RES_NONMAGIC,
          spell_null, 0, 16,
          "wrist break", "!Break Wrist!"},
 
         {"snap_neck", &gsn_snap_neck,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_BLUNT | RES_NONMAGIC,
          spell_null, 0, 16,
          "wrench", "!Snap Neck!"},
 
         {"grapple", &gsn_grapple,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_HOLD | RES_NONMAGIC,
          spell_null, 0, 8,
          "extra attack", "{WYou recover from the grapple, and get back to your feet.{x"},
 
         {"fly", &gsn_flight,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 8,
          "fly", "!Fly!"},
 
         {"flying headbutt", &gsn_flying_headbutt,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_BLUNT | RES_NONMAGIC,
          spell_null, 0, 8,
          "flying headbutt", "!Flying Headbutt!"},
 
         {"gouge", &gsn_gouge,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_STANDING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_STANDING, RES_BLUNT | RES_NONMAGIC,
          spell_null, 0, 12,
          "gouge", "Your vision returns."},
 
         {"pugilism", &gsn_pugalism,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "pugilism", "!Pugilism!"},
 
         {"grab", &gsn_grab,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_STANDING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_STANDING, RES_HOLD | RES_NONMAGIC,
          spell_null, 0, 8,
          "", "!Grab!"},
 
         {"mount", &gsn_mount,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 12,
          "mount", "!Mount!"},
 
         {"dismount", &gsn_dismount,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 12,
          "dismount", "!Dismount!"},
 
         {"battle aura", &gsn_battle_aura,
-         TYPE_STR, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_SELF, POS_STANDING, 0,
          spell_null, 0, 1,
          "", "You feel less sure of yourself."},
 
         {"second punch", &gsn_second_punch,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_BLUNT | RES_NONMAGIC,
          spell_null, 0, 8,
          "second punch", "!Second Punch!"},
 
         {"meditate", &gsn_meditate,
-         TYPE_STR, TAR_IGNORE, POS_RESTING, RES_MAGIC,
+         TYPE_STR, TAR_IGNORE, POS_RESTING, 0,
          spell_null, 0, 1,
          "", "You awaken from your trance."},
 
         {"parry", &gsn_parry,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "", "!Parry!"},
 
@@ -3521,122 +3521,122 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Pre-empt!"},
 
         {"peek", &gsn_peek,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!Peek!"},
 
         {"pick lock", &gsn_pick_lock,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 12,
          "", "!Pick!"},
 
         {"bladethirst", &gsn_bladethirst,
-         TYPE_STR, TAR_OBJ_INV, POS_STANDING, RES_MAGIC,
+         TYPE_STR, TAR_OBJ_INV, POS_STANDING, 0,
          spell_null, 0, 12,
          "concoction", "!Bladethirst!"},
 
         {"poison weapon", &gsn_poison_weapon,
-         TYPE_STR, TAR_OBJ_INV, POS_STANDING, RES_MAGIC,
+         TYPE_STR, TAR_OBJ_INV, POS_STANDING, 0,
          spell_null, 0, 12,
          "poisonous concoction", "!Poison Weapon!"},
 
         {"forge", &gsn_forge,
-         TYPE_STR, TAR_OBJ_INV, POS_STANDING, RES_MAGIC,
+         TYPE_STR, TAR_OBJ_INV, POS_STANDING, 0,
          spell_null, 0, 12,
          "slip", "!Forge!"},
 
         {"sharpen", &gsn_sharpen,
-         TYPE_STR, TAR_OBJ_INV, POS_STANDING, RES_MAGIC,
+         TYPE_STR, TAR_OBJ_INV, POS_STANDING, 0,
          spell_null, 0, 12,
          "sharp blade", "!Sharpen!"},
 
         {"rescue", &gsn_rescue,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 12,
          "", "!Rescue!"},
 
         {"second attack", &gsn_second_attack,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "", "!Second Attack!"},
 
         {"shield block", &gsn_shield_block,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "", "!Shield Block!"},
 
         {"smash", &gsn_smash,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_BLUNT | RES_NONMAGIC,
          spell_null, 0, 24,
          "extra attack", "!Smash!"},
 
         {"sneak", &gsn_sneak,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 1,
          "", NULL},
 
         {"tail", &gsn_tail,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 12,
          "", NULL},
 
         {"stalk", &gsn_stalk,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 12,
          "", NULL},
 
         {"steal", &gsn_steal,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 24,
          "", "!Steal!"},
 
         {"stun", &gsn_stun,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_BLUNT | RES_NONMAGIC | RES_PARALYSIS,
          spell_null, 0, 0,
          "attempted stun", "Your head stops ringing."},
 
         {"suck", &gsn_suck,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC | RES_DRAIN,
          spell_null, 0, 24,
          "suck", "!Suck!"},
 
         {"third attack", &gsn_third_attack,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "", "!Third Attack!"},
 
         {"transfix", &gsn_transfix,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_CHARM | RES_NONMAGIC | RES_PSYCHIC,
          spell_null, 0, 0,
          "terrifying gaze", "You shake free from the trance."},
 
         {"trap", &gsn_trap,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_HOLD | RES_NONMAGIC,
          spell_null, 0, 0,
          "slip up", "You finally break free from the trap!"},
 
         {"trip", &gsn_trip,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_BLUNT | RES_NONMAGIC,
          spell_null, 0, 18,
          "", "<15>You get back on your feet.<0>"},
 
         {"unarmed combat", &gsn_unarmed_combat,
-         TYPE_STR, TAR_IGNORE, POS_DEAD, RES_DRAIN,
+         TYPE_STR, TAR_IGNORE, POS_DEAD, 0,
          spell_null, 0, 0,
          "", "The kill satisfies your lust for combat."},
 
         {"warcry", &gsn_warcry,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "You are no longer enraged."},
 
         {"rage", &gsn_rage,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "You are no longer furious."},
 
         {"howl", &gsn_howl,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC | RES_PSYCHIC,
          spell_null, 0, 0,
          "howl", "!Howl!"},
 
@@ -3646,17 +3646,17 @@ const struct skill_type skill_table[MAX_SKILL] =
          "whirlwind", "You feel less angry."},
 
         {"flight", &gsn_flight,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 18, 18,
          "flight", "You fold your wings and settle on the ground."},
 
         {"general purpose", NULL,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_ENERGY | RES_MAGIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_ENERGY | RES_NONMAGIC,
          spell_general_purpose, 0, 12,
          "general purpose ammo", "!General Purpose Ammo!"},
 
         {"high explosive", NULL,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_ENERGY | RES_MAGIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_ENERGY | RES_NONMAGIC,
          spell_high_explosive, 0, 12,
          "high explosive ammo", "!High Explosive Ammo!"},
 
@@ -3961,7 +3961,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Zones!"},
 
         {"adrenaline control", &gsn_adrenaline_control,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_PSYCHIC,
          spell_adrenaline_control, 6, 1,
          "", "The adrenaline rush wears off."},
 
@@ -3971,12 +3971,12 @@ const struct skill_type skill_table[MAX_SKILL] =
          "agitation", "!Agitation!"},
 
         {"aura sight", &gsn_aura_sight,
-         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_PSYCHIC,
          spell_aura_sight, 9, 12,
          "", "!Aura Sight!"},
 
         {"awe", &gsn_awe,
-         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, RES_PSYCHIC,
          spell_awe, 35, 12,
          "", "!Awe!"},
 
@@ -3986,22 +3986,22 @@ const struct skill_type skill_table[MAX_SKILL] =
          "ballistic attack", "!Ballistic Attack!"},
 
         {"biofeedback", &gsn_biofeedback,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_PSYCHIC,
          spell_biofeedback, 75, 12,
          "", "<15>Yo<255>ur <254>bi<253>of<252>ee<251>db<250>ac<249>k i<248>s n<247>o l<246>on<245>ge<244>r e<243>ff<242>ec<241>ti<240>ve<239>.<0>"},
 
         {"cell adjustment", &gsn_cell_adjustment,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC | RES_PSYCHIC,
          spell_cell_adjustment, 8, 1,
          "", "!Cell Adjustment!"},
 
         {"chameleon power", &gsn_chameleon_power,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_PSYCHIC,
          spell_null, 0, 1,
          "", "!Chameleon Power!"},
 
         {"combat mind", &gsn_combat_mind,
-         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_PSYCHIC,
          spell_combat_mind, 15, 1,
          "", "Your battle sense has faded."},
 
@@ -4016,12 +4016,12 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Vitalize!"},
 
         {"complete healing", &gsn_complete_healing,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC | RES_HOLY,
          spell_complete_healing, 100, 1,
          "", "!Complete Healing!"},
 
         {"control flames", &gsn_control_flames,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_FIRE | RES_MAGIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_FIRE | RES_PSYCHIC,
          spell_control_flames, 15, 12,
          "tongue of flame", "!Control Flames!"},
 
@@ -4031,7 +4031,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Create Sound!"},
 
         {"death field", &gsn_death_field,
-         TYPE_INT, TAR_IGNORE, POS_FIGHTING, RES_MAGIC | RES_DARK,
+         TYPE_INT, TAR_IGNORE, POS_FIGHTING, RES_DRAIN | RES_PSYCHIC | RES_DARK,
          spell_death_field, 200, 18,
          "field of death", "!Death Field!"},
 
@@ -4051,27 +4051,27 @@ const struct skill_type skill_table[MAX_SKILL] =
          "disintegration", "!Disintegrate!"},
 
         {"displacement", &gsn_displacement,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC | RES_PSYCHIC,
          spell_displacement, 10, 1,
          "", "You are no longer displaced."},
 
         {"domination", &gsn_domination,
-         TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, RES_CHARM | RES_PSYCHIC,
          spell_domination, 5, 12,
          "", "You regain control of your body."},
 
         {"ectoplasmic form", &gsn_ectoplasmic_form,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC | RES_PSYCHIC,
          spell_ectoplasmic_form, 20, 1,
          "", "You feel solid again."},
 
         {"ego whip", &gsn_ego_whip,
-         TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, RES_MAGIC | RES_PSYCHIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, RES_PSYCHIC,
          spell_ego_whip, 20, 12,
          "", "You feel more confident."},
 
         {"energy containment", &gsn_energy_containment,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC | RES_PSYCHIC,
          spell_energy_containment, 10, 1,
          "", "You no longer absorb energy."},
 
@@ -4081,92 +4081,92 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Enhance Armor!"},
 
         {"enhanced strength", &gsn_enhanced_strength,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_PSYCHIC,
          spell_enhanced_strength, 20, 1,
          "", "Your strength is no longer enhanced."},
 
         {"flesh armor", &gsn_flesh_armor,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC | RES_PSYCHIC,
          spell_flesh_armor, 15, 1,
          "", "<81>Your skin returns to normal.<0>"},
 
         {"heighten senses", &gsn_heighten,
-         TYPE_STR, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_SELF, POS_STANDING, RES_PSYCHIC | RES_NONMAGIC,
          spell_null, 0, 0,
          "", "Your senses return to normal."},
 
         {"inertial barrier", &gsn_inertial_barrier,
-         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC | RES_PSYCHIC,
          spell_inertial_barrier, 40, 18,
          "", "Your inertial barrier dissipates."},
 
         {"inflict pain", &gsn_inflict_pain,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC | RES_PSYCHIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_PSYCHIC,
          spell_inflict_pain, 10, 12,
          "mindpower", "!Inflict Pain!"},
 
         {"intellect fortress", &gsn_intellect_fortress,
-         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_PSYCHIC,
          spell_intellect_fortress, 25, 1,
          "", "Your intellectual fortress crumbles."},
 
         {"lend health", &gsn_lend_health,
-         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_PSYCHIC,
          spell_lend_health, 10, 1,
          "", "!Lend Health!"},
 
         {"levitation", &gsn_levitation,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC | RES_PSYCHIC,
          spell_levitation, 10, 1,
          "", "The sensation of gravity gently returns to your body."},
 
         {"mental barrier", &gsn_mental_barrier,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_PSYCHIC,
          spell_mental_barrier, 8, 1,
          "", "Your mental barrier breaks down."},
 
         {"mind thrust", &gsn_mind_thrust,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC | RES_PSYCHIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_PSYCHIC,
          spell_mind_thrust, 8, 12,
          "mind thrust", "!Mind Thrust!"},
 
         {"project force", &gsn_project_force,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC | RES_PSYCHIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_BLUNT | RES_PSYCHIC,
          spell_project_force, 18, 12,
          "projected force", "!Project Force!"},
 
         {"psionic blast", &gsn_psionic_blast,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC | RES_PSYCHIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_PSYCHIC,
          spell_psionic_blast, 15, 12,
          "psionic blast", "!Psionic Blast!"},
 
         {"psychic crush", &gsn_psychic_crush,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC | RES_PSYCHIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_PSYCHIC,
          spell_psychic_crush, 15, 12,
          "psychic crush", "!Psychic Crush!"},
 
         {"psychic drain", &gsn_psychic_drain,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC | RES_PSYCHIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_DRAIN | RES_MAGIC | RES_PSYCHIC,
          spell_psychic_drain, 20, 12,
          "", "You no longer feel drained."},
 
         {"psychic healing", &gsn_psychic_healing,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_PSYCHIC,
          spell_psychic_healing, 20, 1,
          "", "!Psychic Healing!"},
 
         {"shadow form", &gsn_shadow_form,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_PSYCHIC,
          spell_null, 0, 1,
          "", "You no longer move in the shadows."},
 
         {"share strength", &gsn_share_strength,
-         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_PSYCHIC,
          spell_share_strength, 8, 1,
          "", "You no longer share strength with another."},
 
         {"thought shield", &gsn_thought_shield,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_PSYCHIC,
          spell_thought_shield, 5, 1,
          "", "You no longer feel so protected."},
 
@@ -4181,7 +4181,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "god", "!Wrath Of God!"},
 
         {"feeblemind", &gsn_feeblemind,
-         TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, RES_MAGIC | RES_PSYCHIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, RES_PSYCHIC,
          spell_feeblemind, 25, 12,
          "", "You feel less dizzy."},
 
@@ -4191,7 +4191,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "You feel more able."},
 
         {"wither", &gsn_wither,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC | RES_DARK,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC | RES_DARK | RES_DRAIN,
          spell_wither, 20, 12,
          "<112>w<76>i<40>t<11>h<227>e<254>r<15>in<254>g <227>g<11>r<40>a<76>s<112>p<0>", "You feel less brittle."},
 
@@ -4201,12 +4201,12 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Lore!"},
 
         {"hex", &gsn_hex,
-         TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, RES_CURSE | RES_MAGIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, RES_CURSE | RES_MAGIC | RES_DARK,
          spell_hex, 30, 12,
          "hex", "You are no longer hexed."},
 
         {"animate dead", &gsn_animate_dead,
-         TYPE_INT, TAR_OBJ_ROOM, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_OBJ_ROOM, POS_STANDING, RES_MAGIC | RES_DARK,
          spell_animate_dead, 100, 12,
          "", "!Animate Dead!"},
 
@@ -4231,27 +4231,27 @@ const struct skill_type skill_table[MAX_SKILL] =
          "<214>s<220>u<11>n r<220>a<214>y<0>", "!sunray!"},
 
         {"prayer", &gsn_prayer,
-         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC | RES_HOLY,
          spell_prayer, 50, 12,
          "", "You feel your prayer cease."},
 
         {"frenzy", &gsn_frenzy,
-         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC | RES_HOLY,
          spell_frenzy, 100, 24,
          "", "Slowly you release the rage as it threatens to overwhelm you."},
 
         {"mass heal", &gsn_mass_heal,
-         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC | RES_HOLY,
          spell_mass_heal, 150, 20,
          "", "!Mass Heal!"},
 
         {"mass power heal", &gsn_mass_power_heal,
-         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC | RES_HOLY,
          spell_mass_power_heal, 300, 32,
          "", "!Mass Power Heal!"},
 
         {"mass sanctuary", &gsn_mass_sanctuary,
-         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC | RES_HOLY,
          spell_mass_sanctuary, 200, 24,
          "", "<15>Th<255>e w<254>hi<253>te <252>au<251>ra<250> ar<249>ou<248>nd <247>yo<246>ur<245> bo<244>dy<243> fa<242>de<241>s.<0>"},
 
@@ -4261,7 +4261,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "<208>The globe about you implodes.<0>"},
 
         {"dark globe", &gsn_dark_globe,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC | RES_DARK,
          spell_dark_globe, 120, 12,
          "", "<58>The dark globe about you implodes.<0>"},
 
@@ -4276,7 +4276,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "<196>me<202>te<11>o<214>r <196>st<202>or<11>m<0>", "!Meteor storm!"},
 
         {"bless weapon", &gsn_bless_weapon,
-         TYPE_INT, TAR_OBJ_INV, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_OBJ_INV, POS_STANDING, RES_MAGIC | RES_HOLY,
          spell_bless_weapon, 100, 24,
          "", "!Bless Weapon!"},
 
@@ -4286,12 +4286,12 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Recharge Item!"},
 
         {"kiai", &gsn_kiai,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_PSYCHIC | RES_ENERGY,
          spell_null, 20, 12,
          "<11>f<227>o<229>r<230>c<15>e-<230>b<229>a<227>l<11>l<0>", "!Kiai!"},
 
         {"possession", &gsn_possession,
-         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_CHARM | RES_MAGIC | RES_PSYCHIC,
          spell_possession, 25, 12,
          "attempted possession", "You return to your own body."},
 
@@ -4301,27 +4301,27 @@ const struct skill_type skill_table[MAX_SKILL] =
          "horde of demons", "You feel less tormented."},
 
         {"steal strength", &gsn_steal_strength,
-         TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, RES_DRAIN | RES_MAGIC,
          spell_steal_strength, 25, 12,
          "spell", "You feel less strong."},
 
         {"infernal fury", &gsn_infernal_fury,
-         TYPE_INT, TAR_IGNORE, POS_FIGHTING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_FIGHTING, RES_MAGIC | RES_DARK,
          spell_infernal_fury, 25, 12,
          "summoned <124>d<160>e<196>v<160>i<124>l<0>", "!Infernal_Fury!"},
 
         {"abyssal hand", &gsn_abyssal_hand,
-         TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, RES_HOLD | RES_MAGIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, RES_HOLD | RES_MAGIC | RES_DARK,
          spell_abyssal_hand, 100, 12,
          "abyssal hand", "You break free from the black hand that holds you."},
 
         {"steal soul", &gsn_steal_soul,
-         TYPE_INT, TAR_OBJ_ROOM, POS_STANDING, RES_MAGIC | RES_DARK,
+         TYPE_INT, TAR_OBJ_ROOM, POS_STANDING, RES_MAGIC | RES_DARK | RES_DRAIN,
          spell_steal_soul, 25, 4,
          "", "!Steal Soul!"},
 
         {"summon demon", &gsn_summon_demon,
-         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC | RES_DARK,
          spell_summon_demon, 100, 4,
          "", "!Summon Demon!"},
 
@@ -4516,7 +4516,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Group Body Control!"},
 
         {"morph", &gsn_morph,
-         TYPE_STR, TAR_IGNORE, POS_DEAD, RES_DRAIN,
+         TYPE_STR, TAR_IGNORE, POS_DEAD, 0,
          spell_null, 20, 4,
          "", "!Morph!"},
 
@@ -4571,7 +4571,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Group Pugilism!"},
 
         {"fear", &gsn_fear,
-         TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, RES_MAGIC | RES_PARALYSIS,
+         TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, RES_MAGIC | RES_PSYCHIC,
          spell_fear, 5, 12,
          "spell", "You feel less afraid."},
 
@@ -4586,7 +4586,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "You rematerialise in the physical plane."},
 
         {"mist walk", &gsn_mist_walk,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 5, 1,
          "", "Your body reverts to its normal state."},
 
@@ -4596,7 +4596,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "You feel less astute."},
 
         {"resist toxin", &gsn_resist_toxin,
-         TYPE_INT, TAR_IGNORE, POS_FIGHTING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "", "!Resist Toxin!"},
 
@@ -4611,7 +4611,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Summon Avatar!"},
 
         {"feed", &gsn_feed,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_DRAIN | RES_NONMAGIC,
          spell_null, 0, 12,
          "", "!Feed!"},
 
@@ -4621,7 +4621,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "bloodthirsty assault", "!Lunge!"},
 
         {"aura of fear", &gsn_aura_of_fear,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_PSYCHIC,
          spell_null, 0, 1,
          "aura of fear", "!Aura Of Fear!"},
 
@@ -4721,7 +4721,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Form Elemental Air!"},
 
         {"elemental fire form", &gsn_form_elemental_fire,
-         TYPE_INT, TAR_IGNORE, POS_DEAD, RES_FIRE,
+         TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
          spell_null, 100, 0,
          "", "!Form Elemental Fire!"},
 
@@ -4736,57 +4736,57 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Form Elemental Earth!"},
 
         {"coil", &gsn_coil,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_HOLD | RES_NONMAGIC,
          spell_null, 0, 24,
          "coil", "!Coil!"},
 
         {"constrict", &gsn_constrict,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_HOLD | RES_NONMAGIC,
          spell_null, 0, 10,
          "constriction", "!Constrict!"},
 
         {"strangle", &gsn_strangle,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_HOLD | RES_NONMAGIC,
          spell_null, 0, 30,
          "strangle", "!Strangle!"},
 
         {"swim", &gsn_swim,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!Swim!"},
 
         {"spy", &gsn_spy,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!Spy!"},
 
         {"forage", &gsn_forage,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 10,
          "", "!Forage!"},
 
         {"bite", &gsn_bite,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_PIERCE | RES_NONMAGIC,
          spell_null, 0, 10,
          "bite", "!Bite!"},
 
         {"maul", &gsn_maul,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_SLASH | RES_NONMAGIC,
          spell_null, 0, 18,
          "frenzied attack", "!Maul!"},
 
         {"wolfbite", &gsn_wolfbite,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_PIERCE | RES_NONMAGIC,
          spell_null, 0, 10,
          "wolfbite", "!Wolfbite!"},
 
         {"ravage", &gsn_ravage,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_SLASH | RES_NONMAGIC,
          spell_null, 0, 18,
          "frenzied attack", "!Ravage!"},
 
         {"web", &gsn_web,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_HOLD | RES_NONMAGIC,
          spell_null, 0, 12,
          "slip up", "You break free from the sticky webbing."},
 
@@ -4796,87 +4796,87 @@ const struct skill_type skill_table[MAX_SKILL] =
          "poisoned bite", "!Venom!"},
 
         {"breathe", &gsn_breathe,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, 0,
          spell_null, 50, 12,
          "breath", "!Breathe!"},
 
         {"dive", &gsn_dive,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_BLUNT | RES_NONMAGIC,
          spell_null, 0, 18,
          "airborne assault", "!Dive!"},
 
         {"tailwhip", &gsn_tailwhip,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_BLUNT | RES_NONMAGIC,
          spell_null, 0, 24,
          "tailwhip", "!Tailwhip!"},
 
         {"dragon aura", &gsn_dragon_aura,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 24,
          "", "Your dragon aura fades."},
 
         {"spellcraft", &gsn_spellcraft,
-         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!Spy!"},
 
         {"dowse", &gsn_dowse,
-         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "dowse", "!Dowse!"},
 
         {"thrust", &gsn_thrust,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_PIERCE | RES_NONMAGIC,
          spell_null, 0, 0,
          "thrust", "!Thrust!"},
 
         {"shoot", &gsn_shoot,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_STANDING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_STANDING, RES_PIERCE | RES_NONMAGIC,
          spell_null, 0, 0,
          "shot", "!Shoot!"},
 
         {"second shot", &gsn_second_shot,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_PIERCE | RES_NONMAGIC,
          spell_null, 0, 0,
          "second shot", "!Second shot!"},
 
         {"third shot", &gsn_third_shot,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_PIERCE | RES_NONMAGIC,
          spell_null, 0, 0,
          "third shot", "!Third shot!"},
 
         {"accuracy", &gsn_accuracy,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "accuracy", "!Accuracy!"},
 
         {"snare", &gsn_snare,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_HOLD | RES_NONMAGIC,
          spell_null, 0, 0,
          "slip up", "You finally break free from the snare!"},
 
         {"classify", &gsn_classify,
-         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "classify", "!classify!"},
 
         {"gather", &gsn_gather_herbs,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "gather", "!Gather!"},
 
         {"archery knowledge", &gsn_group_archery,
-         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "archery knowledge", "!Archery Knowledge!"},
 
         {"musicianship", &gsn_group_music,
-         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "musicianship", "!Musicianship!"},
 
         {"herb lore", &gsn_group_herb_lore,
-         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "herb lore", "!Herb Lore!"},
 
@@ -4926,17 +4926,17 @@ const struct skill_type skill_table[MAX_SKILL] =
          "chant of vigour", "Your chant of vigour ends."},
 
         {"chant of enfeeblement", &gsn_chant_of_enfeeblement,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC | RES_PARALYSIS,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_DRAIN | RES_MAGIC,
          spell_null, 0, 0,
          "chant of enfeeblement", "!Chant of Enfeeblement!"},
 
         {"chant of pain", &gsn_chant_of_pain,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_ENERGY | RES_MAGIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_PSYCHIC | RES_MAGIC,
          spell_null, 0, 0,
          "chant of pain", "!Chant of Pain!"},
 
         {"wizbrew", &gsn_wizbrew,
-         TYPE_WIZ, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_WIZ, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "wizbrew", "!wizbrew!"},
 
@@ -4971,47 +4971,47 @@ const struct skill_type skill_table[MAX_SKILL] =
          "holy prayer of free passage", "Your holy prayer's power wavers and ends."},
 
         {"divine curse", &gsn_prayer_weaken,
-         TYPE_INT, TAR_IGNORE, POS_DEAD, RES_CURSE,
+         TYPE_INT, TAR_IGNORE, POS_DEAD, RES_HOLY | RES_CURSE,
          spell_null, 0, 0,
          "divine curse", "You are no longer cursed by the gods."},
 
         {"resist heat", &gsn_resist_heat,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_FIRE | RES_MAGIC,
          spell_resist_heat, 15, 1,
          "resist heat", "<199>You feel more vulnerable to heat and flame.<0>"},
 
         {"resist cold", &gsn_resist_cold,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_COLD | RES_MAGIC,
          spell_resist_cold, 15, 1,
          "resist cold", "<117>You feel more vulnerable to cold and ice.<0>"},
 
         {"resist lightning", &gsn_resist_lightning,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_ELECTRICITY,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_ELECTRICITY | RES_MAGIC,
          spell_resist_lightning, 15, 1,
          "resist lightning", "<195>You feel more vulnerable to electricity.<0>"},
 
         {"resist acid", &gsn_resist_acid,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_ACID,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_ACID | RES_MAGIC,
          spell_resist_acid, 15, 1,
          "resist acid", "<192>You feel more vulnerable to acid.<0>"},
 
         {"hellfire", &gsn_hells_fire,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_FIRE | RES_MAGIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_FIRE | RES_MAGIC | RES_DARK,
          spell_hells_fire, 20, 12,
          "<160>h<124>e<88>l<124>l<160>f<124>i<88>r<124>e<0>", "!Hellfire!"},
 
         {"holy prayer of destruction", &gsn_prayer_destruction,
-         TYPE_INT, TAR_IGNORE, POS_DEAD, 0,
+         TYPE_INT, TAR_IGNORE, POS_DEAD, RES_HOLY,
          spell_null, 0, 0,
          "<556><196>+*(<15>deity<196>)*+<557>", "!holy prayer of destruction"},
 
         {"plague", &gsn_prayer_plague,
-         TYPE_INT, TAR_IGNORE, POS_DEAD, RES_CURSE,
+         TYPE_INT, TAR_IGNORE, POS_DEAD, RES_CURSE | RES_POISON,
          spell_null, 0, 0,
          "plague", "You have recovered from your illness."},
 
         {"resistance magiks", &gsn_group_resistance,
-         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "resistance magiks", "!Group Resistance!"},
 
@@ -5021,17 +5021,17 @@ const struct skill_type skill_table[MAX_SKILL] =
          "magical assault", ""},
 
         {"dual parry", &gsn_dual_parry,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "", "!Parry!"},
 
         {"addqp", &gsn_addqp,
-         TYPE_STR, TAR_IGNORE, POS_DEAD, RES_DRAIN,
+         TYPE_STR, TAR_IGNORE, POS_DEAD, 0,
          spell_null, 0, 0,
          "", "!Addqp!"},
 
         {"chaos blast", &gsn_chaos_blast,
-         TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, RES_ENERGY | RES_MAGIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, RES_ENERGY | RES_MAGIC | RES_DARK,
          spell_chaos_blast, 5, 12,
          "<242>c<251>h<242>a<251>o<242>s<0> <242>b<251>l<242>a<251>s<242>t<0>", "!Chaos Blast!"},
 
@@ -5041,7 +5041,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "You no longer feel an affinity for the accursed."},
 
         {"knife toss", &gsn_knife_toss,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_PIERCE | RES_NONMAGIC,
          spell_null, 0, 8,
          "knife toss", "!Knife Toss!"},
 
@@ -5051,32 +5051,32 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Soar!"},
 
         {"bomb", &gsn_bomb,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_ENERGY | RES_NONMAGIC,
          spell_null, 0, 8,
          "bomb", "!Bomb!"},
 
         {"snap shot", &gsn_snap_shot,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_PIERCE | RES_NONMAGIC,
          spell_null, 0, 24,
          "snap shot", "!Snap Shot!"},
 
         {"crush", &gsn_crush,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_BLUNT | RES_NONMAGIC,
          spell_null, 0, 18,
          "crush", "!Crush!"},
 
         {"swoop", &gsn_swoop,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_SLASH | RES_NONMAGIC,
          spell_null, 0, 18,
          "swoop", "!Swoop!"},
 
         {"smelt", &gsn_smelt,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "smelt", "!Smelt!"},
 
         {"imbue", &gsn_imbue,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "imbue", "!Imbue!"},
 
@@ -5091,7 +5091,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "turret module", "!Trigger!"},
 
         {"dart", &gsn_dart,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_PIERCE | RES_NONMAGIC,
          spell_null, 0, 0,
          "dart module", "!Dart!"},
 
@@ -5118,32 +5118,32 @@ const struct skill_type skill_table[MAX_SKILL] =
         },
 
         {"arrow module", &gsn_arrow,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_PIERCE | RES_NONMAGIC,
          spell_null, 0, 0,
          "arrow module", "!Arrow!"},
 
         {"turret", &gsn_turret,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "turret base", "!Turret!"},
 
         {"uncommon set", &gsn_uncommon_set,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "uncommon set", "!Uncommon_set!"},
 
         {"rare set", &gsn_rare_set,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "rare set", "!Rare_set!"},
 
         {"bloodforged set", &gsn_bloodforged_set,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "bloodforged set", "!Bloodforged_set!"},
 
         {"astral set", &gsn_astral_set,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "astral set", "!Astral_set!"},
 
@@ -5158,27 +5158,27 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Group Armoursmith!"},
 
         {"weaponchain", &gsn_weaponchain,
-         TYPE_STR, TAR_IGNORE, POS_DEAD, RES_DRAIN,
+         TYPE_STR, TAR_IGNORE, POS_DEAD, 0,
          spell_null, 0, 0,
          "chained weapon", "!Weaponchain!"},
 
         {"shieldchain", &gsn_shieldchain,
-         TYPE_STR, TAR_IGNORE, POS_DEAD, RES_DRAIN,
+         TYPE_STR, TAR_IGNORE, POS_DEAD, 0,
          spell_null, 0, 0,
          "chained shield", "!Shieldchain!"},
 
         {"strengthen", &gsn_strengthen,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "strengthen", "!Strengthen!"},
 
         {"steel broadsword", &gsn_steel_broadsword,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_SLASH | RES_NONMAGIC,
          spell_null, 0, 0,
          "steel broadsword", "!Steel_Broadsword!"},
 
         {"titanium rapier", &gsn_titanium_rapier,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_PIERCE | RES_NONMAGIC,
          spell_null, 0, 0,
          "titanium rapier", "!Titanium_rapier!"},
 
@@ -5193,17 +5193,17 @@ const struct skill_type skill_table[MAX_SKILL] =
          "spell", "Your body returns to its normal state."},
 
         {"engrave", &gsn_engrave,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 24,
          "engrave", "!Engrave!"},
 
         {"discharge", &gsn_discharge,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_ENERGY | RES_MAGIC,
          spell_null, 0, 24,
          "discharge", "!Discharge!"},
 
         {"steel cache", &gsn_steel_cache,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "steel cache", "!Steel_cache!"},
 
@@ -5213,17 +5213,17 @@ const struct skill_type skill_table[MAX_SKILL] =
          "flukeslap", "!Flukeslap!"},
 
         {"swallow", &gsn_swallow,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_HOLD | RES_NONMAGIC,
          spell_null, 0, 24,
          "<132>s<168>w<204>a<204>l<203>l<168>o<132>w<0>", "You escape from the insides of the creature."},
 
         {"serrate", &gsn_serrate,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_SLASH | RES_NONMAGIC,
          spell_null, 0, 0,
          "<231>bl<225>ee<219>d e<213>ff<207>ec<201>t<0>", "!Serrate!"},
 
         {"innate knowledge", &gsn_innate_knowledge,
-         TYPE_INT, TAR_IGNORE, POS_RESTING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_RESTING, 0,
          spell_null, 0, 0,
          "innate knowledge", "!Innate Knowledge!"},
 
@@ -5233,17 +5233,17 @@ const struct skill_type skill_table[MAX_SKILL] =
          "<236>e<237>x<238>p<239>e<240>c<241>t<242>o<243>r<245>a<246>t<247>e<248>d <249>m<250>u<251>c<252>u<253>s<0>", "You regain autonomy over your body."},
 
         {"steam breath", &gsn_steam_breath,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_FIRE | RES_MAGIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_FIRE,
          spell_steam_breath, 50, 12,
          "<51>j<87>e<123>t<159> o<195>f<253> s<254>t<255>e<15>a<556>m<0>", "!Steam Breath!"},
 
         {"mech tech", &gsn_group_mech_tech,
-         TYPE_STR, TAR_IGNORE, POS_DEAD, RES_DRAIN,
+         TYPE_STR, TAR_IGNORE, POS_DEAD, 0,
          spell_null, 0, 0,
          "", "!Group MechTech!"},
 
         {"turret tech", &gsn_group_turret_tech,
-         TYPE_STR, TAR_IGNORE, POS_DEAD, RES_DRAIN,
+         TYPE_STR, TAR_IGNORE, POS_DEAD, 0,
          spell_null, 0, 0,
          "", "!Group TurretTech!"},
 
@@ -5268,97 +5268,97 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Group Weapon Lore!"},
 
         {"blade module", &gsn_blade_module,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_SLASH | RES_NONMAGIC,
          spell_null, 0, 0,
          "razor blade", "!Blade Module!"},
 
         {"shuriken module", &gsn_shuriken_module,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_PIERCE | RES_NONMAGIC,
          spell_null, 0, 0,
          "shuriken", "!Shuriken Module!"},
 
         {"spear module", &gsn_spear_module,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_PIERCE | RES_NONMAGIC,
          spell_null, 0, 0,
          "sharpened spear", "!Spear Module!"},
 
         {"arrestor module", &gsn_arrestor_module,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_HOLD | RES_NONMAGIC,
          spell_null, 0, 0,
          "", "!Arrestor Module!"},
 
         {"driver module", &gsn_driver_module,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_BLUNT | RES_NONMAGIC,
          spell_null, 0, 0,
          "", "!DRiver Module!"},
 
         {"reflector module", &gsn_reflector_module,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "reflected spell", "!DRiver Module!"},
 
         {"shield module", &gsn_shield_module,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 0,
          "", "!Shield Module!"},
 
         {"adamantite katana", &gsn_adamantite_katana,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_SLASH | RES_NONMAGIC,
          spell_null, 0, 0,
          "", "!Titanium_rapier!"},
 
         {"electrum sword", &gsn_electrum_sword,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_SLASH | RES_NONMAGIC,
          spell_null, 0, 0,
          "", "!Electrum sword!"},
 
         {"starmetal dual blade", &gsn_starmetal_dual_blade,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_SLASH | RES_NONMAGIC,
          spell_null, 0, 0,
          "", "!Starmetal dual blade!"},
 
         {"inscribe", &gsn_inscribe,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, 0,
          spell_null, 0, 24,
          "inscribe", "!Inscribe!"},
 
         {"adamantite runic blade", &gsn_adamantite_runic_blade,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_SLASH | RES_MAGIC,
          spell_null, 0, 0,
          "runic blade", "!Adamantite runic blade!"},
 
         {"electrum runic blade", &gsn_electrum_runic_blade,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_SLASH | RES_MAGIC,
          spell_null, 0, 0,
          "runic blade", "!Electrum runic blade!"},
 
         {"starmetal runic blade", &gsn_starmetal_runic_blade,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_SLASH | RES_MAGIC,
          spell_null, 0, 0,
          "runic blade", "!Starmetal runic blade!"},
 
         {"pyro rune", &gsn_pyro_rune,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_FIRE,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_FIRE | RES_MAGIC,
          spell_runic_flames, 0, 0,
          "runic flames", "!Pyro rune!"},
 
         {"cryo rune", &gsn_cryo_rune,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_COLD,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_COLD | RES_MAGIC,
          spell_runic_frost, 0, 0,
          "runic frost", "!Cryo rune!"},
 
         {"bolt rune", &gsn_bolt_rune,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_ELECTRICITY,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_ELECTRICITY | RES_MAGIC,
          spell_runic_bolts, 0, 0,
          "runic bolts", "!Bolt rune!"},
 
         {"stab rune", &gsn_stab_rune,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_PIERCE,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_PIERCE | RES_MAGIC,
          spell_runic_stab, 0, 0,
          "runic stab", "!Pyro rune!"},
 
         {"rend rune", &gsn_rend_rune,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_SLASH,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_SLASH | RES_MAGIC,
          spell_runic_rend, 0, 0,
          "runic rend", "!Rend rune!"},
 
@@ -5388,45 +5388,55 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!OScore!"},
 
         {"reforge", &gsn_reforge,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "reforge", "!Reforge!"},
+
         {"tfind", &gsn_tfind,
          TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
          spell_null, 0, 0,
          "", "!Tfind!"},
+
         {"rfind", &gsn_rfind,
          TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
          spell_null, 0, 0,
          "", "!Rfind!"},
+
         {"enhanced swiftness", &gsn_enhanced_swiftness,
          TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
          spell_null, 0, 0,
          "", "!Enhanced Swiftness!"},
+
         {"enhanced critical", &gsn_enhanced_critical,
          TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_NONMAGIC,
          spell_null, 0, 0,
          "", "!Enhanced Critical!"},
+
         {"traplist", &gsn_traplist,
          TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
          spell_null, 0, 0,
          "", "!Traplist!"},
+
         {"trapset", &gsn_trapset,
          TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
          spell_null, 0, 0,
          "", "!Trapset!"},
+
         {"trapstat", &gsn_trapstat,
          TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
          spell_null, 0, 0,
          "", "!Trapstat!"},
+
         {"trapremove", &gsn_trapremove,
          TYPE_WIZ, TAR_IGNORE, POS_DEAD, 0,
          spell_null, 0, 0,
          "", "!Trapremove!"},
+
         {"psychometry", &gsn_psychometry,
-         TYPE_INT, TAR_OBJ_INV, POS_STANDING, 0,
+         TYPE_INT, TAR_OBJ_INV, POS_STANDING, RES_PSYCHIC,
          spell_psychometry, 12, 12,
          "", "!Psychometry!"},
+
         {"nausea", &gsn_nausea,
          TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_POISON | RES_MAGIC,
          spell_nausea, 10, 12,
@@ -5458,7 +5468,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "blazing inferno", "!Conflagration!"},
 
         {"flood", &gsn_flood,
-         TYPE_INT, TAR_IGNORE, POS_FIGHTING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_FIGHTING, RES_BLUNT | RES_MAGIC,
          spell_flood, 15, 12,
          "tsunami", "!Flood!"},
 
@@ -5473,12 +5483,12 @@ const struct skill_type skill_table[MAX_SKILL] =
          "emancipating incantation", "!Freedom!"},
 
         {"fleshrot", &gsn_fleshrot,
-         TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, RES_ENERGY | RES_MAGIC | RES_DARK,
+         TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING, RES_POISON | RES_MAGIC | RES_DARK | RES_CURSE,
          spell_fleshrot, 5, 12,
          "<0><22>ro<28>tt<35>in<49>g m<35>al<28>ed<22>ic<28>ti<35>on<0>", "<79>Your flesh stops rotting.<0>"},
 
         {"target", &gsn_target,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_NONMAGIC,
          spell_null, 0, 24,
          "targeted strike", "!Target!"},
 
@@ -5488,62 +5498,62 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Regenerate!"},
 
         {"eye trauma", &gsn_eye_trauma,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_PIERCE | RES_NONMAGIC,
          spell_null, 0, 24,
          "", "!Eye Trauma!"},
 
         {"head trauma", &gsn_head_trauma,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_BLUNT | RES_NONMAGIC,
          spell_null, 0, 24,
          "vicious cranial attack", "<147>The ringing in your ears fades.<0>"},
 
         {"arm trauma", &gsn_arm_trauma,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_NONMAGIC,
          spell_null, 0, 24,
          "", "!Arm Trauma!"},
 
         {"leg trauma", &gsn_leg_trauma,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_NONMAGIC,
          spell_null, 0, 24,
          "", "!Leg Trauma!"},
 
         {"heart trauma", &gsn_heart_trauma,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_PIERCE | RES_NONMAGIC,
          spell_null, 0, 24,
          "<124>ca<160>rd<9>iac tr<160>au<124>ma<0>", "<160>Your heart resumes beating.<0>"},
 
         {"tail trauma", &gsn_tail_trauma,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_NONMAGIC,
          spell_null, 0, 24,
          "", "!Tail Trauma!"},
 
         {"torso trauma", &gsn_torso_trauma,
-         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_NONMAGIC,
          spell_null, 0, 24,
          "<173>brutal gut wound<0>", "!Torso Trauma!"},
 
         {"harvest", &gsn_harvest,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "harvest", "!Harvest!"},
 
         {"carve", &gsn_carve,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "carve", "!Carve!"},
 
         {"release", &gsn_release,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC | RES_DARK,
          spell_release, 15, 1,
          "", "!Release!"},
 
         {"clairvoyance", &gsn_clairvoyance,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_PSYCHIC,
          spell_clairvoyance, 5, 1,
          "", "<215>Your extrasensory awareness fades.<0>"},
 
         {"quicken", &gsn_quicken,
-         TYPE_STR, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_STR, TAR_CHAR_SELF, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "You no longer move with preternatural speed."},
 
@@ -5563,27 +5573,27 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Resolve!"},
 
         {"bonus damage", &gsn_bonus_damage,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 0,
          spell_null, 0, 0,
          "bonus damage", "Your attacking power fades somewhat."},
 
         {"bonus attack", &gsn_bonus_attack,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 0,
          spell_null, 0, 0,
          "bonus attack", "You no longer receive a bonus attack."},
 
         {"bonus resilience", &gsn_bonus_resilience,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 0,
          spell_null, 0, 0,
          "bonus resilience", "You feel more vulnerable to harm."},
 
         {"bonus exotic", &gsn_bonus_exotic,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 0,
          spell_null, 0, 0,
          "bonus exotic", "You feel more vulnerable to exotic damage."},
 
         {"bonus initiate", &gsn_bonus_initiate,
-         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, 0,
          spell_null, 0, 0,
          "bonus initiate", "Your opening attack reduces in potency."},
 
@@ -5617,47 +5627,47 @@ const struct skill_type skill_table[MAX_SKILL] =
          */
 
         {"mage base", &gsn_mage_base,
-            TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+            TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
             spell_null, 0, 0,
             "", "!-mage base-!"},
 
         {"cleric base", &gsn_cleric_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-cleric base-!"},
 
         {"thief base", &gsn_thief_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-thief base-!"},
 
         {"warrior base", &gsn_warrior_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-warrior base-!"},
 
         {"psionic base", &gsn_psionic_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-psionic base-!"},
 
         {"shifter base", &gsn_shifter_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-shifter base-!"},
 
         {"brawler base", &gsn_brawler_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-brawler base-!"},
 
         {"ranger base", &gsn_ranger_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-ranger base-!"},
 
         {"smithy base", &gsn_smithy_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-smithy base-!"},
 
@@ -5666,93 +5676,92 @@ const struct skill_type skill_table[MAX_SKILL] =
          * and set LAST_BASE_CLASS_INDEX in merc.h to its value.
          */
 
-        {
-            "necro base", &gsn_necro_base,
-            TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
-            spell_null, 0, 0,
-            "", "!-necro base-!"},
+        {"necro base", &gsn_necro_base,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
+         spell_null, 0, 0,
+         "", "!-necro base-!"},
 
         {"warlock base", &gsn_warlock_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-warlock base-!"},
 
         {"templar base", &gsn_templar_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-templar base-!"},
 
         {"druid base", &gsn_druid_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-druid base-!"},
 
         {"ninja base", &gsn_ninja_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-ninja base-!"},
 
         {"bounty base", &gsn_bounty_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-bounty base-!"},
 
         {"thug base", &gsn_thug_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-thug base-!"},
 
         {"knight base", &gsn_knight_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-knight base-!"},
 
         {"infernalist base", &gsn_infernalist_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-infernalist base-!"},
         {"witch base", &gsn_witch_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-witch base-!"},
 
         {"werewolf base", &gsn_werewolf_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-werewolf base-!"},
 
         {"vampire base", &gsn_vampire_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-vampire base-!"},
 
         {"monk base", &gsn_monk_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-monk base-!"},
 
         {"artist base", &gsn_martist_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-martial artist base-!"},
 
         {"barbarian base", &gsn_barbarian_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-barbarian base-!"},
 
         {"bard base", &gsn_bard_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-bard base-!"},
 
         {"engineer base", &gsn_engineer_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-engineer base-!"},
 
         {"runesmith base", &gsn_runesmith_base,
-         TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
          spell_null, 0, 0,
          "", "!-runesmith base-!"},
 
@@ -5769,7 +5778,7 @@ const struct skill_type skill_table[MAX_SKILL] =
 
         {
             "teacher base", &gsn_teacher_base,
-            TYPE_NULL, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+            TYPE_NULL, TAR_IGNORE, POS_STANDING, 0,
             spell_null, 0, 0,
             "", "!-teacher base-!"}};
 
