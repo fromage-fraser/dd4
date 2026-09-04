@@ -98,7 +98,10 @@ const struct mob_type mob_table [MAX_MOB] =
 
   {
           "fire_elemental", "elemental", "icon1", "icon2",
-          16|32|64, 2, 1,       /*resists, vulnerabilites, immunes*/
+          RES_BLUNT | RES_PIERCE | RES_SLASH | RES_SLEEP,
+          RES_COLD | RES_CURSE,
+          RES_FIRE | RES_POISON | RES_PARALYSIS
+                   | RES_HOLD | RES_DRAIN,       /*resists, vulnerabilites, immunes*/
           0, 0, 0, 20,          /*hp %gain, dam % gain, crit % gain, haste % gain*/
           2, 20, 3,             /*height, weight, size*/
           0, 0, 1,              /*body_parts, attack_parts, language,*/

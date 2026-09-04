@@ -3283,6 +3283,12 @@ struct skill_type
 };
 
 /*
+ * Resistance or vulnerability shifts the effective casting level by five.
+ * saves_spell() changes its result by four percentage points per level.
+ */
+#define RESISTANCE_SAVE_LEVEL_SHIFT 5
+
+/*
  * Resistant Immune Susceptible flags
  */
 #define RES_FIRE BIT_0
@@ -5278,6 +5284,7 @@ bool wiz_do args((CHAR_DATA * ch, char *command));
 /* magic.c */
 int skill_lookup args((const char *name));
 bool saves_spell args((int level, CHAR_DATA *victim));
+bool saves_resistance_effect args((int level, CHAR_DATA *victim, unsigned long int res_types));
 RESISTANCE_RESULT get_resistance_result args((CHAR_DATA * victim, unsigned long int res_types));
 int apply_resistance_to_damage args((CHAR_DATA * victim, int dam, unsigned long int res_types));
 bool is_immune_to args((CHAR_DATA * victim, unsigned long int dam_type));
