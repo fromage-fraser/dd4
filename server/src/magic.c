@@ -269,6 +269,37 @@ RESISTANCE_RESULT get_resistance_result(CHAR_DATA *victim, unsigned long int res
 }
 
 /*
+ * Apply an effective resistance result to positive damage.
+ *
+ * Multiple RES_* categories have already been combined into one result by
+ * get_resistance_result(), so resistance and vulnerability never stack more
+ * than once for a single damage event.
+ */
+int apply_resistance_to_damage(CHAR_DATA *victim,
+                               int dam,
+                               unsigned long int res_types)
+{
+        if (dam <= 0)
+                return dam;
+
+        switch (get_resistance_result(victim, res_types))
+        {
+        case RES_RESULT_IMMUNE:
+                return 0;
+
+        case RES_RESULT_RESISTANT:
+                return dam / 2;
+
+        case RES_RESULT_VULNERABLE:
+                return dam + (dam / 2);
+
+        case RES_RESULT_NORMAL:
+        default:
+                return dam;
+        }
+}
+
+/*
  * Compatibility helper for existing immunity checks.
  */
 bool is_immune_to(CHAR_DATA *victim, unsigned long int damtype)
@@ -604,7 +635,7 @@ void do_cast(CHAR_DATA *ch, char *argument)
         else
         {
                 int chance;
-                unsigned long int res;
+
                 spell_attack_number = 1;
                 ch->mana -= mana;
 
@@ -613,28 +644,32 @@ void do_cast(CHAR_DATA *ch, char *argument)
                         ch->mana = 1;
                 }
 
-                if (skill_table[sn].target == TAR_CHAR_OFFENSIVE || skill_table[sn].target == TAR_CHAR_OFFENSIVE_SINGLE)
+                /*
+                 * Preserve the existing pre-cast immunity behaviour for direct
+                 * offensive casting. Resolve the spell's complete resistance
+                 * mask once rather than checking each bit independently.
+                 */
+                if ((skill_table[sn].target == TAR_CHAR_OFFENSIVE
+                ||   skill_table[sn].target == TAR_CHAR_OFFENSIVE_SINGLE)
+                &&  get_resistance_result(victim, skill_table[sn].res_type)
+                    == RES_RESULT_IMMUNE)
                 {
-                        /* Check for immunities/resists/vuln */
-                        bit_explode(ch, buf, skill_table[sn].res_type);
-                        for (res = 1; res > 0 && res <= BIT_MAX; res *= 2)
+                        send_to_char(
+                            "They are immune to this type of damage!\n\r",
+                            ch);
+
+                        /*
+                         * Kick off combat even if the spell is ineffective.
+                         */
+                        if (victim->master != ch
+                        &&  victim != ch
+                        &&  IS_AWAKE(victim)
+                        &&  !victim->fighting)
                         {
-                                if (IS_SET(skill_table[sn].res_type, res))
-                                {
-
-                                        if (is_immune_to(victim, res))
-                                        {
-                                                send_to_char("They are immune to this type of damage!\n\r", ch);
-
-                                                /* Kick off Combat even if immune */
-                                                if (victim->master != ch && victim != ch && IS_AWAKE(victim) && !victim->fighting)
-                                                {
-                                                        multi_hit(victim, ch, TYPE_UNDEFINED);
-                                                }
-                                                return;
-                                        }
-                                }
+                                multi_hit(victim, ch, TYPE_UNDEFINED);
                         }
+
+                        return;
                 }
 
 
