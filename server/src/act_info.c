@@ -1093,40 +1093,37 @@ int rank_sn_index(MOB_INDEX_DATA *pMobIndex)
         return 1;
 }
 
-/* Return the species index number for a character */
+/*
+ * Return the creature-archetype table index for a character.
+ */
 int mob_type_sn(CHAR_DATA *ch)
 {
-        if (ch->mobspec)
+        if (!ch
+        ||  !ch->mobspec
+        ||  ch->mobspec[0] == '\0')
         {
-                int sn;
-                for (sn = 0; sn < MAX_MOB; sn++)
-                {
-                        if (!strcmp(ch->mobspec, mob_table[sn].name))
-                                return sn;
-                }
                 return -1;
         }
-        return -1;
+
+        return mob_lookup(ch->mobspec);
 }
 
-/* REturn the species index number for a character */
+/*
+ * Return the body-species table index for a character.
+ */
 int species_sn(CHAR_DATA *ch)
 {
-        /* make sure the mob has a mob_type first*/
-        if (mob_type_sn(ch))
-        {
-                int sn;
-                for (sn = 0; sn < MAX_SPECIES; sn++)
-                {
-                        /*        sprintf(buf, "%s %s",species_table[sn].species, ch->mobspec );
-                               bug(buf, 0);   */
-                        /* compare the mob_table species name and the species_table*/
-                        if (!strcmp(mob_table[mob_type_sn(ch)].species, species_table[sn].species))
-                                return sn;
-                }
+        int mob_type;
+
+        if (!ch)
                 return -1;
-        }
-        return -1;
+
+        mob_type = mob_type_sn(ch);
+
+        if (mob_type < 0 || mob_type >= MAX_MOB)
+                return -1;
+
+        return species_lookup(mob_table[mob_type].species);
 }
 
 bool check_blind(CHAR_DATA *ch)

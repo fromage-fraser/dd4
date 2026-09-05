@@ -111,6 +111,146 @@ const struct mob_type mob_table [MAX_MOB] =
 };
 
 /*
+ * Return the body-species table index for a species name.
+ */
+int species_lookup(const char *name)
+{
+        int sn;
+
+        if (!name || name[0] == '\0')
+                return -1;
+
+        for (sn = 0; sn < MAX_SPECIES; sn++)
+        {
+                if (!species_table[sn].species)
+                        continue;
+
+                if (!str_cmp(name, species_table[sn].species))
+                        return sn;
+        }
+
+        return -1;
+}
+
+/*
+ * Validate body-species names and creature-archetype relationships.
+ */
+int validate_mob_template_tables(void)
+{
+        char buf[MAX_STRING_LENGTH];
+        int issues;
+        int mob_type;
+        int other;
+        int species;
+
+        issues = 0;
+
+        /*
+         * Validate the body-species table itself.
+         */
+        for (species = 0; species < MAX_SPECIES; species++)
+        {
+                if (!species_table[species].species
+                ||  species_table[species].species[0] == '\0')
+                {
+                        sprintf(
+                            buf,
+                            "[MOB TEMPLATE] Body-species entry %d has no name.",
+                            species);
+                        log_string(buf);
+                        issues++;
+                        continue;
+                }
+
+                for (other = species + 1;
+                     other < MAX_SPECIES;
+                     other++)
+                {
+                        if (!species_table[other].species
+                        ||  species_table[other].species[0] == '\0')
+                        {
+                                continue;
+                        }
+
+                        if (!str_cmp(
+                                species_table[species].species,
+                                species_table[other].species))
+                        {
+                                sprintf(
+                                    buf,
+                                    "[MOB TEMPLATE] Duplicate body-species "
+                                    "name '%s' at entries %d and %d.",
+                                    species_table[species].species,
+                                    species,
+                                    other);
+                                log_string(buf);
+                                issues++;
+                        }
+                }
+        }
+
+        /*
+         * Every creature archetype must refer to an existing body species.
+         */
+        for (mob_type = 0; mob_type < MAX_MOB; mob_type++)
+        {
+                if (!mob_table[mob_type].name
+                ||  mob_table[mob_type].name[0] == '\0')
+                {
+                        /*
+                         * The existing mob resistance validator reports
+                         * unnamed archetype entries.
+                         */
+                        continue;
+                }
+
+                if (!mob_table[mob_type].species
+                ||  mob_table[mob_type].species[0] == '\0')
+                {
+                        sprintf(
+                            buf,
+                            "[MOB TEMPLATE] Creature archetype '%s' has "
+                            "no body-species name.",
+                            mob_table[mob_type].name);
+                        log_string(buf);
+                        issues++;
+                        continue;
+                }
+
+                if (species_lookup(mob_table[mob_type].species) < 0)
+                {
+                        sprintf(
+                            buf,
+                            "[MOB TEMPLATE] Creature archetype '%s' "
+                            "references unknown body species '%s'.",
+                            mob_table[mob_type].name,
+                            mob_table[mob_type].species);
+                        log_string(buf);
+                        issues++;
+                }
+        }
+
+        if (issues == 0)
+        {
+                log_string(
+                    "[MOB TEMPLATE] Relationship validation complete: "
+                    "no issues found.");
+        }
+        else
+        {
+                sprintf(
+                    buf,
+                    "[MOB TEMPLATE] Relationship validation complete: "
+                    "%d issue%s found.",
+                    issues,
+                    issues == 1 ? "" : "s");
+                log_string(buf);
+        }
+
+        return issues;
+}
+
+/*
  * Log unknown bits from one mob resistance field.
  */
 static int log_unknown_resistance_bits(const char *mob_name,
