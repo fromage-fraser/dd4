@@ -1181,17 +1181,16 @@ void damage(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
         }
 
         /*
-         * Apply mob-type resistance data to spell damage.
+         * Apply resistance data to damage identified by a skill-table entry.
          *
-         * Spell functions have already applied their own saving throws and
-         * existing PC resistance effects before calling damage(). Physical
-         * attacks are handled separately in a later implementation chunk.
+         * This covers both spells and non-spell skills. Ordinary attacks
+         * represented by TYPE_HIT plus a weapon or natural-attack type are
+         * classified separately in the next implementation chunk.
          */
         if (dam > 0
         &&  dt >= 0
         &&  dt < MAX_SKILL
-        &&  skill_table[dt].spell_fun
-        &&  IS_SPELL(dt))
+        &&  skill_table[dt].res_type != 0)
         {
                 dam = apply_resistance_to_damage(
                     victim,
