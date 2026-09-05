@@ -1023,6 +1023,7 @@ void boot_db(void)
          * loading mobiles which refer to them.
          */
         {
+                validate_mob_template_tables();
                 validate_mob_resistance_table();
         }
 

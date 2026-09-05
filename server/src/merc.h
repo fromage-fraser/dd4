@@ -5075,6 +5075,7 @@ void reverse_char_array(char arr[], int n);
 /* db.c */
 void boot_db args((void));
 void cache_prerequisites args((void));
+int mob_lookup args((const char *name));
 void area_update args((void));
 CD *create_mobile args((MOB_INDEX_DATA * pMobIndex));
 OD *create_object args((OBJ_INDEX_DATA * pObjIndex, int level, char *rank, int randomise));
@@ -5292,6 +5293,8 @@ void obj_cast_spell args((int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, O
 bool mob_interacts_players(CHAR_DATA *mob);
 
 /* mob.c */
+int species_lookup args((const char *name));
+int validate_mob_template_tables args((void));
 int validate_mob_resistance_table args((void));
 
 /* mob_commands.c */
