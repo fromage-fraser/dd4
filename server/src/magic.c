@@ -5716,7 +5716,19 @@ void spell_weaken(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (is_affected(victim, sn) || saves_spell(level, victim))
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char(
+                    "It has no physical strength to remove.\n\r",
+                    ch);
+                return;
+        }
+
+        if (is_affected(victim, sn)
+        ||  saves_resistance_effect(
+                level,
+                victim,
+                skill_table[sn].res_type))
         {
                 return;
         }
@@ -6185,7 +6197,11 @@ void spell_awe(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if (victim->fighting == ch && !saves_spell(level, victim))
+        if (victim->fighting == ch
+        &&  !saves_resistance_effect(
+                 level,
+                 victim,
+                 skill_table[sn].res_type))
         {
                 stop_fighting(victim, TRUE);
                 act("$N is in AWE of you, and refuses to continue fighting!", ch, NULL, victim, TO_CHAR);
@@ -6790,8 +6806,22 @@ void spell_ego_whip(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (is_affected(victim, sn) || saves_spell(level, victim))
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char(
+                    "It has no ego to crush.\n\r",
+                    ch);
                 return;
+        }
+
+        if (is_affected(victim, sn)
+        ||  saves_resistance_effect(
+                level,
+                victim,
+                skill_table[sn].res_type))
+        {
+                return;
+        }
 
         af.type = sn;
         af.duration = level;
@@ -7126,12 +7156,20 @@ void spell_psychic_drain(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (is_affected(victim, sn) || saves_spell(level, victim))
-                return;
-
-        if (IS_NPC(victim) && (IS_SET(victim->act, ACT_OBJECT)))
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
         {
-                send_to_char("Objects have no strength to drain.\n\r", ch);
+                send_to_char(
+                    "Objects have no strength to drain.\n\r",
+                    ch);
+                return;
+        }
+
+        if (is_affected(victim, sn)
+        ||  saves_resistance_effect(
+                level,
+                victim,
+                skill_table[sn].res_type))
+        {
                 return;
         }
 
@@ -7309,15 +7347,24 @@ void spell_spiritwrack(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if (saves_spell(level, victim) && (ch != victim))
+        if (saves_resistance_effect(
+                level,
+                victim,
+                skill_table[sn].res_type))
         {
-                send_to_char("Your victim resists your spirits!\n\r", ch);
-                return;
-        }
+                if (ch != victim)
+                {
+                        send_to_char(
+                            "Your victim resists your spirits!\n\r",
+                            ch);
+                }
+                else
+                {
+                        send_to_char(
+                            "You resist the torment of hateful spirits!\n\r",
+                            ch);
+                }
 
-        if (saves_spell(level, victim) && (ch == victim))
-        {
-                send_to_char("You resist the torment of hateful spirits!\n\r", ch);
                 return;
         }
 
@@ -7362,6 +7409,28 @@ void spell_feeblemind(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (is_affected(victim, sn))
                 return;
+
+        if (saves_resistance_effect(
+                level,
+                victim,
+                skill_table[sn].res_type))
+        {
+                if (ch != victim)
+                {
+                        send_to_char(
+                            "Your attempt to enfeeble your victim's mind is resisted.\n\r",
+                            ch);
+                }
+
+                if (victim->gag < 2)
+                {
+                        send_to_char(
+                            "You resist the assault on your mind.\n\r",
+                            victim);
+                }
+
+                return;
+        }
 
         af.type = sn;
         af.duration = level / 4;
@@ -8508,15 +8577,16 @@ void spell_possession(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if (!IS_NPC(victim) || ((ch->level - victim->level) < -5) || (saves_spell(level, victim)))
+        if (!IS_NPC(victim)
+        ||  (ch->level - victim->level) < -5
+        ||  saves_resistance_effect(
+                level,
+                victim,
+                skill_table[sn].res_type))
         {
-                send_to_char("Your possession is resisted--their will is too strong!\n\r", ch);
-                return;
-        }
-
-        if (victim->desc)
-        {
-                send_to_char("They are already possessed.\n\r", ch);
+                send_to_char(
+                    "Your possession is resisted--their will is too strong!\n\r",
+                    ch);
                 return;
         }
 
@@ -8585,15 +8655,23 @@ void spell_steal_strength(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (is_affected(victim, sn) || saves_spell(level, victim))
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
         {
-                send_to_char("Your spell has no effect.\n\r", ch);
+                send_to_char(
+                    "Objects have no strength to steal.\n\r",
+                    ch);
                 return;
         }
 
-        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        if (is_affected(victim, sn)
+        ||  saves_resistance_effect(
+                level,
+                victim,
+                skill_table[sn].res_type))
         {
-                send_to_char("Objects have no strength to steal.\n\r", ch);
+                send_to_char(
+                    "Your spell has no effect.\n\r",
+                    ch);
                 return;
         }
 
@@ -8693,6 +8771,28 @@ void spell_abyssal_hand(int sn, int level, CHAR_DATA *ch, void *vo)
         if (is_safe(ch, victim))
                 return;
 
+        if (saves_resistance_effect(
+                level,
+                victim,
+                skill_table[sn].res_type))
+        {
+                if (ch != victim)
+                {
+                        send_to_char(
+                            "The dark hand fails to secure its grip.\n\r",
+                            ch);
+                }
+
+                if (victim->gag < 2)
+                {
+                        send_to_char(
+                            "You resist the grasp of the conjured hand.\n\r",
+                            victim);
+                }
+
+                return;
+        }
+
         af.type = sn;
         af.duration = level / 10;
         af.location = APPLY_HITROLL;
@@ -8727,9 +8827,14 @@ void spell_fear(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if (saves_spell(ch->level, victim))
+        if (saves_resistance_effect(
+                level,
+                victim,
+                skill_table[sn].res_type))
         {
-                send_to_char("You failed.\n\r", ch);
+                send_to_char(
+                    "You failed.\n\r",
+                    ch);
                 return;
         }
 
@@ -8892,7 +8997,10 @@ void spell_slow(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 if (victim != ch)
                 {
-                        if (saves_spell(level, victim))
+                        if (saves_resistance_effect(
+                                level,
+                                victim,
+                                skill_table[sn].res_type))
                         {
                                 send_to_char("Your spell fails to slow them down.\n\r", ch);
                                 act("The spell fails to slow $n down.", victim, NULL, NULL, TO_ROOM);
@@ -8920,7 +9028,10 @@ void spell_slow(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 if (victim != ch)
                 {
-                        if (saves_spell(level, victim))
+                        if (saves_resistance_effect(
+                                level,
+                                victim,
+                                skill_table[sn].res_type))
                         {
                                 send_to_char("Your spell fails to slow them down.\n\r", ch);
                                 act("The spell fails to slow $n down.", victim, NULL, NULL, TO_ROOM);
@@ -8944,7 +9055,10 @@ void spell_slow(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if (saves_spell(level, victim))
+        if (saves_resistance_effect(
+                level,
+                victim,
+                skill_table[sn].res_type))
         {
                 send_to_char("The spell fails to slow you down.\n\r", victim);
                 act("The spell fails to slow $n down.", victim, NULL, NULL, TO_ROOM);
