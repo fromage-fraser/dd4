@@ -1498,7 +1498,7 @@ static void damage_internal(CHAR_DATA *ch,
                         int leveldiff = ch->level - victim->level;
 
                         /* mob: disarm */
-                        if (IS_NPC(ch) && get_eq_char(ch, WEAR_WIELD) && number_percent() < (leveldiff < -5 ? ch->level / 2 : UMAX(10, leveldiff)) && dam == 0)
+                        if (IS_NPC(ch) && get_eq_char(ch, WEAR_WIELD) && number_percent() < (leveldiff < -5 ? ch->level / 2 : UMAX(10, leveldiff)) && dam == 0 && resistance_result != RES_RESULT_IMMUNE)
                         {
                                 if (!IS_SET(ch->in_room->room_flags, ROOM_NO_DROP))
                                 {
@@ -1507,7 +1507,7 @@ static void damage_internal(CHAR_DATA *ch,
                         }
 
                         /* mob: trip  */
-                        if (IS_NPC(ch) && !IS_AFFECTED(victim, AFF_FLYING) && (ch->level < 5) && !IS_AFFECTED(ch, AFF_PRONE) && !is_affected(victim, gsn_haste) && !is_affected(victim, gsn_quicken) && !is_affected(victim, gsn_bonus_attack) && !is_affected(victim, gsn_fly) && !is_affected(victim, gsn_levitation) && number_percent() < (leveldiff < -5 ? ch->level / 2 : UMAX(20, leveldiff)) && dam == 0)
+                        if (IS_NPC(ch) && !IS_AFFECTED(victim, AFF_FLYING) && (ch->level < 5) && !IS_AFFECTED(ch, AFF_PRONE) && !is_affected(victim, gsn_haste) && !is_affected(victim, gsn_quicken) && !is_affected(victim, gsn_bonus_attack) && !is_affected(victim, gsn_fly) && !is_affected(victim, gsn_levitation) && number_percent() < (leveldiff < -5 ? ch->level / 2 : UMAX(20, leveldiff)) && dam == 0 && resistance_result != RES_RESULT_IMMUNE)
                         {
                                 trip(ch, victim);
                         }
@@ -1667,7 +1667,11 @@ static void damage_internal(CHAR_DATA *ch,
         }
 
         /* if we get here add a stack of serrate */
-        if ((!IS_NPC(ch) && ch->pcdata->learned[gsn_serrate] > 0) && (get_eq_char(ch, WEAR_WIELD)) && (dt != gsn_serrate))
+        if (dam > 0
+        &&  !IS_NPC(ch)
+        &&  ch->pcdata->learned[gsn_serrate] > 0
+        &&  get_eq_char(ch, WEAR_WIELD)
+        &&  dt != gsn_serrate)
         {
                 OBJ_DATA *wield2;
                 wield2 = get_eq_char(ch, WEAR_WIELD);
