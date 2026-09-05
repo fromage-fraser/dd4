@@ -288,7 +288,7 @@ int apply_resistance_to_damage(CHAR_DATA *victim,
                 return 0;
 
         case RES_RESULT_RESISTANT:
-                return dam / 2;
+                return UMAX(1, dam / 2);
 
         case RES_RESULT_VULNERABLE:
                 return dam + (dam / 2);
