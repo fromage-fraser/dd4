@@ -8590,6 +8590,18 @@ void spell_possession(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
+        /*
+         * Do not overwrite the descriptor of an NPC which is already
+         * switched into or possessed.
+         */
+        if (victim->desc)
+        {
+                send_to_char(
+                    "They are already possessed.\n\r",
+                    ch);
+                return;
+        }
+
         ch->pcdata->switched = TRUE;
         ch->desc->character = victim;
         ch->desc->original = ch;
