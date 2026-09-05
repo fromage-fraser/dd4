@@ -38,7 +38,7 @@ bool check_acrobatics args((CHAR_DATA * ch, CHAR_DATA *victim));
 bool check_aura_of_fear args((CHAR_DATA * ch, CHAR_DATA *victim));
 void check_killer args((CHAR_DATA * ch, CHAR_DATA *victim));
 bool check_parry args((CHAR_DATA * ch, CHAR_DATA *victim));
-void dam_message args((CHAR_DATA * ch, CHAR_DATA *victim, int dam, int dt, bool poison, bool crit));
+void dam_message args((CHAR_DATA * ch, CHAR_DATA *victim, int dam, int dt, bool poison, bool crit, RESISTANCE_RESULT resistance_result));
 bool check_shield_block args((CHAR_DATA * ch, CHAR_DATA *victim));
 void death_cry args((CHAR_DATA * ch));
 void group_gain args((CHAR_DATA * ch, CHAR_DATA *victim, bool mob_called));
@@ -51,6 +51,8 @@ bool check_arrestor_unit args((CHAR_DATA * ch, CHAR_DATA *victim, int dt));
 bool check_shield_unit args((CHAR_DATA * ch, CHAR_DATA *victim, int dt));
 bool check_driver_unit args((CHAR_DATA * ch, CHAR_DATA *victim));
 bool remove_bodypart args((CHAR_DATA * ch, int iWear, bool fReplace));
+static unsigned long int ordinary_attack_resistance_types args((int dt, OBJ_DATA *weapon));
+static void damage_internal args((CHAR_DATA * ch, CHAR_DATA *victim, int dam, int dt, bool poison, unsigned long int res_types));
 
 /*
  * Death blurb
@@ -691,6 +693,80 @@ void multi_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 }
 
 /*
+ * Return the resistance categories for an ordinary TYPE_HIT-based attack.
+ *
+ * For wielded weapons, dt - TYPE_HIT is the damage type stored in the
+ * weapon's value[3]. Unarmed and generic natural attacks use type zero
+ * ("hit"). The physical category is combined with the attack source:
+ * ITEM_MAGIC weapons are magical; all other ordinary attacks are
+ * nonmagical.
+ */
+static unsigned long int ordinary_attack_resistance_types(int dt,
+                                                          OBJ_DATA *weapon)
+{
+        unsigned long int res_types;
+        int attack_type;
+
+        if (dt < TYPE_HIT)
+                return 0;
+
+        attack_type = dt - TYPE_HIT;
+
+        switch (attack_type)
+        {
+        case 0:  /* hit */
+        case 7:  /* pound */
+        case 8:  /* crush */
+        case 9:  /* grep */
+        case 17: /* scoop */
+        case 18: /* mash */
+                res_types = RES_BLUNT;
+                break;
+
+        case 1:  /* slice */
+        case 3:  /* slash */
+        case 4:  /* whip */
+        case 5:  /* claw */
+        case 13: /* chop */
+        case 14: /* rake */
+        case 15: /* swipe */
+        case 19: /* hack */
+                res_types = RES_SLASH;
+                break;
+
+        case 2:  /* stab */
+        case 10: /* bite */
+        case 11: /* pierce */
+        case 16: /* sting */
+                res_types = RES_PIERCE;
+                break;
+
+        case 6:  /* blast */
+                res_types = RES_ENERGY;
+                break;
+
+        case 12: /* suction */
+                res_types = RES_DRAIN;
+                break;
+
+        default:
+                /*
+                 * Preserve source resistance even if an unfamiliar attack
+                 * type is encountered.
+                 */
+                res_types = 0;
+                break;
+        }
+
+        if (weapon && IS_OBJ_STAT(weapon, ITEM_MAGIC))
+                res_types |= RES_MAGIC;
+        else
+                res_types |= RES_NONMAGIC;
+
+        return res_types;
+}
+
+/*
  *  Attack with primary and/or secondary weapon.
  */
 bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
@@ -1047,7 +1123,27 @@ bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                 if (dam <= 0)
                         dam = 1;
 
-                damage(ch, victim, dam, dt, poison);
+                /*
+                 * For an ordinary attack, one_hit() still knows the exact
+                 * primary or secondary weapon which caused the hit. Supply
+                 * that attack's resistance categories to the internal damage
+                 * path so it can preserve an immunity result for messaging.
+                 */
+                if (dt >= TYPE_HIT)
+                {
+                        damage_internal(
+                            ch,
+                            victim,
+                            dam,
+                            dt,
+                            poison,
+                            ordinary_attack_resistance_types(dt, wield));
+                }
+                else
+                {
+                        damage(ch, victim, dam, dt, poison);
+                }
+
                 tail_chain();
         }
 
@@ -1158,10 +1254,32 @@ void death_penalty(CHAR_DATA *ch, CHAR_DATA *victim)
         }
 }
 
-/*
- * Damage!
- */
 void damage(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
+{
+        unsigned long int res_types;
+
+        res_types = 0;
+
+        /*
+         * Skill-indexed damage obtains its resistance categories from the
+         * skill table. Ordinary weapon attacks supply their categories
+         * directly from one_hit(), where the responsible weapon is known.
+         */
+        if (dt >= 0
+        &&  dt < MAX_SKILL)
+        {
+                res_types = skill_table[dt].res_type;
+        }
+
+        damage_internal(ch, victim, dam, dt, poison, res_types);
+}
+
+static void damage_internal(CHAR_DATA *ch,
+                            CHAR_DATA *victim,
+                            int dam,
+                            int dt,
+                            bool poison,
+                            unsigned long int res_types)
 {
         CHAR_DATA *fighter;
         CHAR_DATA *opponent;
@@ -1170,6 +1288,8 @@ void damage(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
         OBJ_DATA *turret_unit;
         int reflected_dam = 0;
         bool crit = FALSE;
+        RESISTANCE_RESULT resistance_result;
+        resistance_result = RES_RESULT_NORMAL;
 
         if (victim->position == POS_DEAD)
                 return;
@@ -1181,21 +1301,20 @@ void damage(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
         }
 
         /*
-         * Apply resistance data to damage identified by a skill-table entry.
-         *
-         * This covers both spells and non-spell skills. Ordinary attacks
-         * represented by TYPE_HIT plus a weapon or natural-attack type are
-         * classified separately in the next implementation chunk.
+         * Preserve the reason that positive damage became zero. A true miss
+         * enters with dam == 0 and therefore remains RES_RESULT_NORMAL. An
+         * immune hit enters with positive damage and is explicitly marked
+         * RES_RESULT_IMMUNE before its damage is reduced to zero.
          */
-        if (dam > 0
-        &&  dt >= 0
-        &&  dt < MAX_SKILL
-        &&  skill_table[dt].res_type != 0)
+        if (dam > 0 && res_types != 0)
         {
+                resistance_result =
+                    get_resistance_result(victim, res_types);
+
                 dam = apply_resistance_to_damage(
                     victim,
                     dam,
-                    skill_table[dt].res_type);
+                    res_types);
         }
 
         if (!IS_NPC(ch))
@@ -1489,13 +1608,27 @@ void damage(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
         */
         if (dt != TYPE_UNDEFINED)
         {
-                dam_message(ch, victim, dam, dt, poison, crit);
+                dam_message(
+                    ch,
+                    victim,
+                    dam,
+                    dt,
+                    poison,
+                    crit,
+                    resistance_result);
         }
 
         /* Reflector Unit (Smithy) */
         if ((turret_unit) && (reflected_dam > 0) && (IS_SPELL(dt)) && (ch != victim) && (!IS_NPC(victim)))
         {
-                dam_message(victim, ch, reflected_dam, gsn_reflector_module, FALSE, FALSE);
+                dam_message(
+                    victim,
+                    ch,
+                    reflected_dam,
+                    gsn_reflector_module,
+                    FALSE,
+                    FALSE,
+                    RES_RESULT_NORMAL);
                 ch->hit -= reflected_dam;
 
                 if (IS_NPC(ch) && IS_SET(ch->act, ACT_UNKILLABLE) && ch->hit < 1)
@@ -1516,7 +1649,14 @@ void damage(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 if (is_affected(ch, gsn_resist_heat))
                         firedam *= 0.8;
 
-                dam_message(victim, ch, firedam, gsn_fireshield, FALSE, FALSE);
+                dam_message(
+                    victim,
+                    ch,
+                    firedam,
+                    gsn_fireshield,
+                    FALSE,
+                    FALSE,
+                    RES_RESULT_NORMAL);
                 ch->hit -= firedam;
 
                 if (IS_NPC(ch) && IS_SET(ch->act, ACT_UNKILLABLE) && ch->hit < 1)
@@ -3384,7 +3524,13 @@ int xp_compute(CHAR_DATA *gch, CHAR_DATA *victim)
         return xp;
 }
 
-void dam_message(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison, bool crit)
+void dam_message(CHAR_DATA *ch,
+                 CHAR_DATA *victim,
+                 int dam,
+                 int dt,
+                 bool poison,
+                 bool crit,
+                 RESISTANCE_RESULT resistance_result)
 {
         static char *const attack_table[] =
             {
@@ -3420,6 +3566,133 @@ void dam_message(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison,
         char buf5[256];
         char buf9[256];
         char punct;
+
+                /*
+         * The attack successfully connected, but the target was immune.
+         * Handle this before zero damage is translated into the normal
+         * "miss" verb and miss sound.
+         */
+        if (resistance_result == RES_RESULT_IMMUNE)
+        {
+                if (dt >= 0 && dt < MAX_SKILL)
+                {
+                        attack = skill_table[dt].noun_damage;
+                }
+                else if (dt >= TYPE_HIT
+                     &&  dt < TYPE_HIT
+                              + sizeof(attack_table)
+                                / sizeof(attack_table[0]))
+                {
+                        attack = attack_table[dt - TYPE_HIT];
+                }
+                else
+                {
+                        attack = "attack";
+                }
+
+                if (!attack || attack[0] == '\0')
+                        attack = "attack";
+
+                /*
+                 * Use a low-tier impact sound rather than the miss sound for
+                 * ordinary weapon and unarmed attacks.
+                 */
+                if (dt == gsn_shoot)
+                {
+                        sound_combat_hit_sfx(
+                            ch,
+                            victim,
+                            1,
+                            TYPE_BOW_HIT);
+                }
+                else if (dt >= TYPE_HIT)
+                {
+                        sound_combat_hit_sfx(
+                            ch,
+                            victim,
+                            1,
+                            dt);
+                }
+
+                if (victim != ch)
+                {
+                        if (dt == TYPE_HIT)
+                        {
+                                strcpy(
+                                    buf1,
+                                    "{WYou strike $N, but $E is immune "
+                                    "to your attack.{x");
+
+                                strcpy(
+                                    buf2,
+                                    "{W$c strikes you, but you are immune "
+                                    "to the attack.{x");
+
+                                strcpy(
+                                    buf3,
+                                    "{W$c strikes $N, but the attack has "
+                                    "no effect.{x");
+                        }
+                        else
+                        {
+                                sprintf(
+                                    buf1,
+                                    "{WYour %s connects with $N, but $E "
+                                    "is immune to it.{x",
+                                    attack);
+
+                                sprintf(
+                                    buf2,
+                                    "{W$c's %s connects with you, but you "
+                                    "are immune to it.{x",
+                                    attack);
+
+                                sprintf(
+                                    buf3,
+                                    "{W$c's %s connects with $N, but has "
+                                    "no effect.{x",
+                                    attack);
+                        }
+
+                        act(buf1, ch, NULL, victim, TO_CHAR);
+                        act(buf2, ch, NULL, victim, TO_VICT);
+                        act(buf3, ch, NULL, victim, TO_NOTVICT);
+                }
+                else
+                {
+                        if (dt == TYPE_HIT)
+                        {
+                                strcpy(
+                                    buf4,
+                                    "{WYou strike yourself, but are immune "
+                                    "to your own attack.{x");
+
+                                strcpy(
+                                    buf5,
+                                    "{W$c strikes $mself, but is "
+                                    "unharmed.{x");
+                        }
+                        else
+                        {
+                                sprintf(
+                                    buf4,
+                                    "{WYour %s affects you, but you are "
+                                    "immune to it.{x",
+                                    attack);
+
+                                sprintf(
+                                    buf5,
+                                    "{W$c's %s affects $m, but has no "
+                                    "effect.{x",
+                                    attack);
+                        }
+
+                        act(buf4, ch, NULL, victim, TO_CHAR);
+                        act(buf5, ch, NULL, victim, TO_ROOM);
+                }
+
+                return;
+        }
 
         vs = get_damage_string(dam, TRUE);
         vp = get_damage_string(dam, FALSE);
