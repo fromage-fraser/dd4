@@ -2631,6 +2631,27 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                         unsigned long int unknown_resistance_bits;
                         int sn;
 
+                        /*
+                         * Do not allow malformed table data to produce an
+                         * invalid species_table index in mstat.
+                         */
+                        if (species < 0 || species >= MAX_SPECIES)
+                        {
+                                sprintf(
+                                    buf,
+                                    "\n\r{RInvalid body-species relationship "
+                                    "for creature archetype '%s'. "
+                                    "See boot log.{x\n\r",
+                                    victim->mobspec);
+                                strcat(buf1, buf);
+
+                                /*
+                                 * The reserved entry contains no inherited
+                                 * body or attack parts and is safe to display.
+                                 */
+                                species = 0;
+                        }
+
                         for (sn = 0; sn < MAX_MOB; sn++)
                         {
                                 if (!mob_table[sn].name)
