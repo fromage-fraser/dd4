@@ -1220,6 +1220,10 @@ foreach (0 .. $#mobs) {
         $mob_errors{$mob{'line'}}++;
     }
 
+    # Mobile act/aff/bf values remain raw individual masks.
+    # The server applies template XOR inheritance when loading the mobile.
+    # Do not pre-expand inherited defaults into these exported fields.
+
     if ($msg = &get_multiple_flags(\%mob, 'act', \%mob_act, '')) {
         print "$err $msg\n";
         $mob_errors{$mob{'line'}}++;

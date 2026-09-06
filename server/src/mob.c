@@ -140,7 +140,7 @@ const struct mob_type mob_table[MAX_MOB] =
 
         {
                 "fire_elemental", "elemental", "icon1", "icon2",
-                0, 0,
+                ACT_UNDEAD, AFF_DETECT_MAGIC,
                 0, 0,
                 0, 0,
                 RES_FIRE | RES_COLD | RES_POISON | RES_PARALYSIS
@@ -337,6 +337,109 @@ bool resolve_mob_template(int mob_type,
         resolved->xp_mod = archetype->xp_mod;
 
         return TRUE;
+}
+
+/*
+ * Report inherited bits explicitly cancelled by the individual mobile.
+ * Protected engine bits are removed from the supplied masks by the caller.
+ */
+static void log_mob_flag_cancellations(
+    MOB_INDEX_DATA *index,
+    const char *field,
+    unsigned long int inherited,
+    unsigned long int individual,
+    char *(*flag_name)(unsigned long int))
+{
+        unsigned long int cancelled;
+        unsigned long int bit;
+        char buf[MAX_STRING_LENGTH];
+
+        cancelled = inherited & individual;
+
+        for (bit = 1; bit != 0; bit <<= 1)
+        {
+                if (!(cancelled & bit))
+                        continue;
+
+                snprintf(
+                    buf,
+                    sizeof(buf),
+                    "[MOB TEMPLATE] vnum %d (%s): %s flag '%s' "
+                    "(bit %lu), inherited via '%s', overridden OFF "
+                    "by #MOBILES.",
+                    index->vnum,
+                    index->short_descr ? index->short_descr : "unnamed",
+                    field,
+                    flag_name(bit),
+                    bit,
+                    index->mobspec ? index->mobspec : "none");
+                log_string(buf);
+        }
+}
+
+/*
+ * Initialise prototype flags from the resolved template and original area
+ * masks. Call once at the end of load_mobiles() for each complete entry.
+ * Never XOR an already-resolved prototype or live character in place.
+ */
+void initialise_mob_index_flags(MOB_INDEX_DATA *index)
+{
+        MOB_TEMPLATE_DATA inherited;
+        char buf[MAX_STRING_LENGTH];
+
+        if (!index)
+                return;
+
+        memset(&inherited, 0, sizeof(inherited));
+
+        if (index->mobspec && index->mobspec[0] != '\0')
+        {
+                if (!resolve_mob_template(
+                        mob_lookup(index->mobspec),
+                        &inherited))
+                {
+                        memset(&inherited, 0, sizeof(inherited));
+                        snprintf(
+                            buf,
+                            sizeof(buf),
+                            "[MOB TEMPLATE] vnum %d: cannot resolve '%s'; "
+                            "using individual area flags only.",
+                            index->vnum,
+                            index->mobspec);
+                        log_string(buf);
+                }
+        }
+
+        index->act =
+            (inherited.act ^ index->area_act) | ACT_IS_NPC;
+
+        index->affected_by =
+            (inherited.affected_by ^ index->area_affected_by)
+            & ~(unsigned long int)AFF_CHARM;
+
+        index->body_form =
+            inherited.body_form ^ index->area_body_form;
+
+        log_mob_flag_cancellations(
+            index,
+            "ACT",
+            inherited.act & ~(unsigned long int)ACT_IS_NPC,
+            index->area_act,
+            act_bit_name);
+
+        log_mob_flag_cancellations(
+            index,
+            "AFF",
+            inherited.affected_by & ~(unsigned long int)AFF_CHARM,
+            index->area_affected_by,
+            affect_bit_name);
+
+        log_mob_flag_cancellations(
+            index,
+            "BODY",
+            inherited.body_form,
+            index->area_body_form,
+            body_form_name);
 }
 
 /*

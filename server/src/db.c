@@ -1978,9 +1978,15 @@ void load_mobiles(FILE *fp)
                 pMobIndex->long_descr[0] = UPPER(pMobIndex->long_descr[0]);
                 pMobIndex->description[0] = UPPER(pMobIndex->description[0]);
 
-                pMobIndex->act = fread_number64(fp, &stat) | ACT_IS_NPC;
+                /*
+                 * Retain the original individual masks before applying
+                 * engine restrictions or template inheritance.
+                 */
+                pMobIndex->area_act = fread_number64(fp, &stat);
+                pMobIndex->act = pMobIndex->area_act | ACT_IS_NPC;
 
-                pMobIndex->affected_by = fread_number64(fp, &stat);
+                pMobIndex->area_affected_by = fread_number64(fp, &stat);
+                pMobIndex->affected_by = pMobIndex->area_affected_by;
                 REMOVE_BIT(pMobIndex->affected_by, AFF_CHARM);
 
                 pMobIndex->pShop = NULL;
@@ -2002,7 +2008,8 @@ void load_mobiles(FILE *fp)
                 fread_letter(fp);        /* Unused */
                 fread_number(fp, &stat); /* Unused */
 
-                pMobIndex->body_form = fread_number64(fp, &stat); /* Gezhp 99 */
+                pMobIndex->area_body_form = fread_number64(fp, &stat);
+                pMobIndex->body_form = pMobIndex->area_body_form;
 
                 fread_number(fp, &stat); /* Unused */
                 fread_number(fp, &stat); /* Unused */
@@ -2104,6 +2111,12 @@ void load_mobiles(FILE *fp)
                                 fread_to_eol(fp);
                         }
                 }
+
+                /*
+                 * The complete entry, including its optional mob-spec,
+                 * has now been read. Resolve its effective flag state.
+                 */
+                initialise_mob_index_flags(pMobIndex);
 
                 iHash = vnum % MAX_KEY_HASH;
                 pMobIndex->next = mob_index_hash[iHash];
