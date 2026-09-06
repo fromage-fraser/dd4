@@ -2027,6 +2027,94 @@ void do_osstat(CHAR_DATA *ch, char *argument)
         send_to_char(buf1, ch);
 }
 
+/* Print one flag mask without extending do_mstat's main output buffer. */
+static void mstat_flag_row(
+    CHAR_DATA *ch,
+    const char *label,
+    unsigned long int flags,
+    char *(*flag_name)(unsigned long int))
+{
+        char buf[160];
+        unsigned long int bit;
+
+        snprintf(buf, sizeof(buf), "  %-13s {W%lu{x:", label, flags);
+        send_to_char(buf, ch);
+
+        if (flags == 0)
+                send_to_char(" none", ch);
+
+        for (bit = 1; bit != 0; bit <<= 1)
+        {
+                if (!(flags & bit))
+                        continue;
+
+                send_to_char(" ", ch);
+                send_to_char(flag_name(bit), ch);
+        }
+
+        send_to_char("\n\r", ch);
+}
+
+/* Show the three flag layers currently applied to live mobiles. */
+static void mstat_flag_layers(CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        MOB_TEMPLATE_DATA inherited;
+        MOB_INDEX_DATA *index;
+
+        if (!IS_NPC(victim) || !victim->pIndexData)
+                return;
+
+        index = victim->pIndexData;
+        memset(&inherited, 0, sizeof(inherited));
+
+        if (index->mobspec && index->mobspec[0] != '\0')
+        {
+                if (!resolve_mob_template(
+                        mob_lookup(index->mobspec),
+                        &inherited))
+                {
+                        send_to_char(
+                            "\n\r{RFlag layers unavailable: invalid template.{x\n\r",
+                            ch);
+                        return;
+                }
+        }
+
+        send_to_char("\n\r{WACT flag layers{x\n\r", ch);
+        mstat_flag_row(ch, "Template", inherited.act, act_bit_name);
+        mstat_flag_row(ch, "#MOBILES", index->area_act, act_bit_name);
+        mstat_flag_row(ch, "XOR removed",
+                       inherited.act & index->area_act
+                           & ~(unsigned long int)ACT_IS_NPC,
+                       act_bit_name);
+        mstat_flag_row(ch, "Prototype", index->act, act_bit_name);
+        mstat_flag_row(ch, "Live", victim->act, act_bit_name);
+
+        send_to_char("\n\r{WAFF flag layers{x\n\r", ch);
+        mstat_flag_row(ch, "Template", inherited.affected_by, affect_bit_name);
+        mstat_flag_row(ch, "#MOBILES", index->area_affected_by, affect_bit_name);
+        mstat_flag_row(ch, "XOR removed",
+                       inherited.affected_by & index->area_affected_by
+                           & ~(unsigned long int)AFF_CHARM,
+                       affect_bit_name);
+        mstat_flag_row(ch, "Prototype", index->affected_by, affect_bit_name);
+        mstat_flag_row(ch, "Live", victim->affected_by, affect_bit_name);
+
+        send_to_char("\n\r{WBODY flag layers{x\n\r", ch);
+        mstat_flag_row(ch, "Template", inherited.body_form, body_form_name);
+        mstat_flag_row(ch, "#MOBILES", index->area_body_form, body_form_name);
+        mstat_flag_row(ch, "XOR removed",
+                       inherited.body_form & index->area_body_form,
+                       body_form_name);
+        mstat_flag_row(ch, "Prototype", index->body_form, body_form_name);
+        mstat_flag_row(ch, "Live", victim->body_form, body_form_name);
+
+        send_to_char(
+            "\n\rACT_IS_NPC is always on; prototype AFF_CHARM is always off.\n\r"
+            "Live flags may also include reset, equipment, spell, or mset changes.\n\r",
+            ch);
+}
+
 void do_mstat(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *rch;
@@ -2670,8 +2758,9 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                             buf1,
                                             "Template resolution: "
                                             "{Wbody species XOR archetype{x\n\r"
-                                            "{DIndividual #MOBILES overrides "
-                                            "are not included yet.{x\n\r");
+                                            "{DACT, AFF and body-form individual "
+                                            "overrides are shown below. Other "
+                                            "fields remain template values.{x\n\r");
 
                                         sprintf(
                                             buf,
@@ -2852,12 +2941,12 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                         strcat(buf1, buf);
 
                                         /* body parts from Species Table */
-                                        sprintf(buf, "Body Form (num): {W");
+                                        sprintf(buf, "Template Body Form (num):{W");
                                         strcat(buf1, buf);
                                         bit_explode(ch, buf, resolved.body_form);
                                         strcat(buf1, buf);
                                         strcat(buf1, "{x\n\r");
-                                        strcat(buf1, "Body Form (txt):{R");
+                                        strcat(buf1, "Template Body Form (txt):{R");
 
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
@@ -2910,6 +2999,7 @@ void do_mstat(CHAR_DATA *ch, char *argument)
         }
 
         send_to_char(buf1, ch);
+        mstat_flag_layers(ch, victim);
         return;
 }
 

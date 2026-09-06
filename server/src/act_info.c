@@ -3757,11 +3757,11 @@ void do_consider(CHAR_DATA *ch, char *argument)
                                         }
                                         strcat(buf1, "{x\n\r");
 
-                                        strcat(buf1, "Body Parts:{W");
+                                        strcat(buf1, "Body Form:{W");
 
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
-                                                if (IS_SET(resolved.body_form, next))
+                                                if (IS_SET(victim->body_form, next))
                                                 {
                                                         strcat(buf1, " ");
                                                         strcat(buf1, body_form_name(next));

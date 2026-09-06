@@ -697,6 +697,8 @@ Gezhp, Owl and Shade
   Identifying such an object reveals its undead nature.
 - Sonic and water resistance categories added.
 - Creature archetypes can now supply an additional XP bonus or penalty.
+- Mobile ACT, AFF and body-form defaults now support individual XOR overrides.
+  mstat shows inherited, individual, cancelled, prototype and live flags.
 
 ~
 

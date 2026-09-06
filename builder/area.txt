@@ -566,7 +566,34 @@ FStepInside sfx.foley.mob.27318.inside~
 |
 < reserved~ boss~
 
+==Individual mobile flag overrides
 
+For a mobile with a mob-spec archetype, its ordinary ACT, AFF and body-form
+fields are XOR masks applied over the resolved body-species/archetype
+defaults.
+
+A bit absent from the inherited template is added when present in the
+individual field. A bit already present in the inherited template is removed
+when present in the individual field.
+
+An individual mask of zero inherits the template unchanged. Mobiles without
+a mob-spec retain the ordinary meaning of these fields.
+
+The server preserves the original individual masks separately from the
+resolved prototype flags. Runtime changes affect the live mobile and are
+not repeatedly XORed against the template.
+
+ACT_IS_NPC is always enabled on NPC prototypes. AFF_CHARM is always removed
+from the initial prototype; charm remains a runtime relationship.
+
+Scribe's act, aff and bf fields continue to emit the individual masks.
+Do not expand inherited defaults into those fields during export.
+
+When converting an existing mobile to inheritance, remove duplicated flags
+from its individual mask unless cancellation is intended.
+
+mstat shows Template, #MOBILES, XOR removed, Prototype and Live values for
+each of these three flag groups.
 
 === The #OBJECTS section
 

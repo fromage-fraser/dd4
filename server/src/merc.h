@@ -2729,6 +2729,16 @@ struct mob_index_data
         int progtypes;
         unsigned long int body_form;
         int spec_fun_exp_modifier;
+
+        /*
+         * Original individual #MOBILES masks.
+         *
+         * Keep these separate from the resolved prototype fields above.
+         * They are input masks, not the resulting inherited state.
+         */
+        unsigned long int area_act;
+        unsigned long int area_affected_by;
+        unsigned long int area_body_form;
 };
 
 /*
@@ -5393,6 +5403,7 @@ bool mob_interacts_players(CHAR_DATA *mob);
 int species_lookup args((const char *name));
 bool resolve_mob_template args((int mob_type,
                                 MOB_TEMPLATE_DATA *resolved));
+void initialise_mob_index_flags args((MOB_INDEX_DATA *index));
 int get_mob_exp_modifier args((CHAR_DATA *mob));
 int validate_mob_template_tables args((void));
 int validate_mob_resistance_table args((void));
