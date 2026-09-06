@@ -2817,12 +2817,12 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Create Food!"},
 
         {"create spring", &gsn_create_spring,
-         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC | RES_WATER,
          spell_create_spring, 20, 12,
          "", "!Create Spring!"},
 
         {"create water", &gsn_create_water,
-         TYPE_INT, TAR_OBJ_INV, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_OBJ_INV, POS_STANDING, RES_MAGIC | RES_WATER,
          spell_create_water, 5, 12,
          "", "!Create Water!"},
 
@@ -3126,7 +3126,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Teleport!"},
 
         {"ventriloquate", &gsn_ventriloquate,
-         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC | RES_SONIC,
          spell_ventriloquate, 5, 1,
          "", "!Ventriloquate!"},
 
@@ -3636,7 +3636,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "You are no longer furious."},
 
         {"howl", &gsn_howl,
-         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC | RES_PSYCHIC,
+         TYPE_STR, TAR_IGNORE, POS_STANDING, RES_NONMAGIC | RES_PSYCHIC | RES_SONIC,
          spell_null, 0, 0,
          "howl", "!Howl!"},
 
@@ -4881,57 +4881,57 @@ const struct skill_type skill_table[MAX_SKILL] =
          "herb lore", "!Herb Lore!"},
 
         {"song of revelation", &gsn_song_of_revelation,
-         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC | RES_SONIC,
          spell_null, 0, 0,
          "song of revelation", "!Song of Revelation!"},
 
         {"song of rejuvenation", &gsn_song_of_rejuvenation,
-         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC | RES_SONIC,
          spell_null, 0, 0,
          "song of rejuvenation", "!Song of Rejuvenation!"},
 
         {"song of tranquility", &gsn_song_of_tranquility,
-         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC | RES_SONIC,
          spell_null, 0, 0,
          "song of tranquility", "!Song of Tranquility!"},
 
         {"song of shadows", &gsn_song_of_shadows,
-         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC | RES_SONIC,
          spell_null, 0, 0,
          "song of shadows", "!Song of Shadows!"},
 
         {"song of sustenance", &gsn_song_of_sustenance,
-         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC | RES_SONIC,
          spell_null, 0, 0,
          "song of sustenance", "!Song of Sustenance!"},
 
         {"song of flight", &gsn_song_of_flight,
-         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC | RES_SONIC,
          spell_null, 0, 0,
          "song of flight", "!Song of Flight!"},
 
         {"chant of protection", &gsn_chant_of_protection,
-         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC | RES_SONIC,
          spell_null, 0, 0,
          "chant of protection", "Your chant of protection ceases."},
 
         {"chant of battle", &gsn_chant_of_battle,
-         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC | RES_SONIC,
          spell_null, 0, 0,
          "chant of battle", "Your battle chant ends."},
 
         {"chant of vigour", &gsn_chant_of_vigour,
-         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC | RES_SONIC,
          spell_null, 0, 0,
          "chant of vigour", "Your chant of vigour ends."},
 
         {"chant of enfeeblement", &gsn_chant_of_enfeeblement,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_DRAIN | RES_MAGIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_DRAIN | RES_MAGIC | RES_SONIC,
          spell_null, 0, 0,
          "chant of enfeeblement", "!Chant of Enfeeblement!"},
 
         {"chant of pain", &gsn_chant_of_pain,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_PSYCHIC | RES_MAGIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_PSYCHIC | RES_MAGIC | RES_SONIC,
          spell_null, 0, 0,
          "chant of pain", "!Chant of Pain!"},
 
@@ -5233,7 +5233,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "<236>e<237>x<238>p<239>e<240>c<241>t<242>o<243>r<245>a<246>t<247>e<248>d <249>m<250>u<251>c<252>u<253>s<0>", "You regain autonomy over your body."},
 
         {"steam breath", &gsn_steam_breath,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_FIRE,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_FIRE | RES_WATER,
          spell_steam_breath, 50, 12,
          "<51>j<87>e<123>t<159> o<195>f<253> s<254>t<255>e<15>a<556>m<0>", "!Steam Breath!"},
 
@@ -5468,7 +5468,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "blazing inferno", "!Conflagration!"},
 
         {"flood", &gsn_flood,
-         TYPE_INT, TAR_IGNORE, POS_FIGHTING, RES_BLUNT | RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_FIGHTING, RES_BLUNT | RES_MAGIC | RES_WATER,
          spell_flood, 15, 12,
          "tsunami", "!Flood!"},
 
@@ -5603,12 +5603,12 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "Your judgment weakens."},
 
         {"sonic blast", &gsn_sonic_blast,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_ENERGY | RES_MAGIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_SONIC | RES_MAGIC,
          spell_sonic_blast, 25, 12,
          "<45>sonic <39>blast<0>", "The ringing in your ears slowly fades away, and your stomach settles."},
 
         {"bubble jet", &gsn_bubble_jet,
-         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_BLUNT | RES_NONMAGIC,
+         TYPE_STR, TAR_IGNORE, POS_FIGHTING, RES_BLUNT | RES_NONMAGIC | RES_WATER,
          spell_null, 0, 24,
          "bubble jet", "!Bubble Jet!"},
 

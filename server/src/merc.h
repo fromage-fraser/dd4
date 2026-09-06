@@ -18,6 +18,7 @@
  *  around, comes around.                                                  *
  ***************************************************************************/
 #pragma once
+#include <limits.h>
 #include <math.h>
 #include <stdint.h>
 #include <unistd.h>
@@ -161,6 +162,7 @@ typedef struct kill_data KILL_DATA;
 typedef struct learned_data LEARNED_DATA;
 typedef struct mob_spec_data MOB_SPEC_DATA;
 typedef struct mob_species_data MOB_SPECIES_DATA;
+typedef struct mob_template_data MOB_TEMPLATE_DATA;
 typedef struct mob_index_data MOB_INDEX_DATA;
 typedef struct note_data NOTE_DATA;
 typedef struct obj_data OBJ_DATA;
@@ -3311,18 +3313,21 @@ struct skill_type
 #define RES_HOLY BIT_17
 #define RES_DARK BIT_18
 #define RES_CURSE BIT_19
+#define RES_SONIC BIT_20
+#define RES_WATER BIT_21
 
 /*
  * All currently defined RES_* categories.
  */
-#define RES_VALID_MASK                                                    \
-        ((unsigned long int)(RES_FIRE | RES_COLD | RES_ELECTRICITY |     \
-                             RES_ENERGY | RES_BLUNT | RES_PIERCE |        \
-                             RES_SLASH | RES_ACID | RES_POISON |          \
-                             RES_DRAIN | RES_SLEEP | RES_CHARM |          \
-                             RES_HOLD | RES_NONMAGIC | RES_MAGIC |        \
-                             RES_PARALYSIS | RES_PSYCHIC | RES_HOLY |     \
-                             RES_DARK | RES_CURSE))
+#define RES_VALID_MASK                                                   \
+        ((unsigned long int)(RES_FIRE | RES_COLD | RES_ELECTRICITY |      \
+                             RES_ENERGY | RES_BLUNT | RES_PIERCE |       \
+                             RES_SLASH | RES_ACID | RES_POISON |         \
+                             RES_DRAIN | RES_SLEEP | RES_CHARM |         \
+                             RES_HOLD | RES_NONMAGIC | RES_MAGIC |       \
+                             RES_PARALYSIS | RES_PSYCHIC | RES_HOLY |    \
+                             RES_DARK | RES_CURSE | RES_SONIC |          \
+                             RES_WATER))
 
 /*
  * Effective response to one or more RES_* categories.
@@ -3345,36 +3350,128 @@ struct mob_spec_data
         char *learned;
 };
 
-struct mob_type
-{
+/*
+ * Scalar table fields use this value to mean "inherit from the preceding
+ * template layer". A literal zero therefore remains available as an explicit
+ * override value.
+ */
+#define MOB_TEMPLATE_UNSET INT_MIN
 
-        char *name;                        /* name of spec e.g. fire_elemental */
-        char *species;                     /* species e.g. elemental */
-        char *icon_m;                      /* Male Icon name */
-        char *icon_f;                      /* Female icon name */
-        unsigned long int resists;         /* lists of resists */
-        unsigned long int vulnerabilities; /* vulberable to */
-        unsigned long int immunes;         /* immune to */
-        int hp_mod;                        /* hp modifier ( in %) */
-        int dam_mod;                       /* dam modifier ( in %) */
-        int crit_mod;                      /* crit modifier ( in %) */
-        int haste_mod;                     /* haste modifier ( in %) */
+/*
+ * Fully resolved body-species and creature-archetype template.
+ *
+ * This contains no table identity fields. It contains only the traits which
+ * later layers can inherit or override.
+ */
+struct mob_template_data
+{
+        unsigned long int act;
+        unsigned long int affected_by;
+        unsigned long int body_form;
+        unsigned long int attack_parts;
+
+        unsigned long int resists;
+        unsigned long int vulnerabilities;
+        unsigned long int immunes;
+
+        int hp_mod;
+        int dam_mod;
+        int crit_mod;
+        int haste_mod;
+
         int height;
         int weight;
         int size;
-        unsigned long int body_parts;   /* body parts they have */
-        unsigned long int attack_parts; /* body parts race attacks with */
-        int language;                   /* future use */
-        char *spec_fun1;                /* a attack spec */
-        char *spec_fun2;                /* a 2nd attack spec */
-        char *spec_boss;                /* a 3rd/boss attack spec */
+        int language;
+
+        const char *spec_fun1;
+        const char *spec_fun2;
+        const char *spec_boss;
+
+        /*
+         * Archetype XP adjustment in percentage points.
+         * Zero means no adjustment.
+         */
+        int xp_mod;
 };
 
+/*
+ * Specific creature archetype/template.
+ *
+ * Bitfields are XOR masks applied over the selected body species.
+ * MOB_TEMPLATE_UNSET means that a scalar inherits the body-species value.
+ * NULL special names inherit; an empty string explicitly clears an inherited
+ * special.
+ */
+struct mob_type
+{
+        char *name;
+        char *species;
+        char *icon_m;
+        char *icon_f;
+
+        unsigned long int act;
+        unsigned long int affected_by;
+        unsigned long int body_form;
+        unsigned long int attack_parts;
+
+        unsigned long int resists;
+        unsigned long int vulnerabilities;
+        unsigned long int immunes;
+
+        int hp_mod;
+        int dam_mod;
+        int crit_mod;
+        int haste_mod;
+
+        int height;
+        int weight;
+        int size;
+        int language;
+
+        char *spec_fun1;
+        char *spec_fun2;
+        char *spec_boss;
+
+        /*
+         * Added to the existing area, special-function, and equipment
+         * XP modifier. This is not a separate multiplier.
+         */
+        int xp_mod;
+};
+
+/*
+ * Broad physical body species.
+ *
+ * Bitfields establish the base layer. Scalars may be left as
+ * MOB_TEMPLATE_UNSET when the body species supplies no default.
+ */
 struct species_type
 {
-        char *species;                  /* species e.g. elemental */
-        unsigned long int body_parts;   /* body parts they have */
-        unsigned long int attack_parts; /* body parts race attacks with */
+        char *species;
+
+        unsigned long int act;
+        unsigned long int affected_by;
+        unsigned long int body_form;
+        unsigned long int attack_parts;
+
+        unsigned long int resists;
+        unsigned long int vulnerabilities;
+        unsigned long int immunes;
+
+        int hp_mod;
+        int dam_mod;
+        int crit_mod;
+        int haste_mod;
+
+        int height;
+        int weight;
+        int size;
+        int language;
+
+        char *spec_fun1;
+        char *spec_fun2;
+        char *spec_boss;
 };
 
 struct rank
@@ -5294,6 +5391,9 @@ bool mob_interacts_players(CHAR_DATA *mob);
 
 /* mob.c */
 int species_lookup args((const char *name));
+bool resolve_mob_template args((int mob_type,
+                                MOB_TEMPLATE_DATA *resolved));
+int get_mob_exp_modifier args((CHAR_DATA *mob));
 int validate_mob_template_tables args((void));
 int validate_mob_resistance_table args((void));
 

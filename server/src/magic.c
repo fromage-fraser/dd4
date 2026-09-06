@@ -216,15 +216,19 @@ void say_spell(CHAR_DATA *ch, int sn)
 /*
  * Resolve a character's response to one or more RES_* categories.
  *
- * Any matching immunity takes precedence.  If the supplied attack categories
+ * Any matching immunity takes precedence. If the supplied attack categories
  * match both a resistance and a vulnerability, they cancel to normal.
  *
- * mob_table is currently the only source of these traits.  Later species,
- * individual-mobile and player traits can be incorporated here without
- * changing callers.
+ * NPC resistance data currently comes from the fully resolved body-species
+ * and creature-archetype template. Individual-mobile and runtime layers are
+ * added in the next implementation chunk.
  */
-RESISTANCE_RESULT get_resistance_result(CHAR_DATA *victim, unsigned long int res_types)
+
+RESISTANCE_RESULT get_resistance_result(
+    CHAR_DATA *victim,
+    unsigned long int res_types)
 {
+        MOB_TEMPLATE_DATA resolved;
         int mob_type;
         bool resistant;
         bool vulnerable;
@@ -232,9 +236,6 @@ RESISTANCE_RESULT get_resistance_result(CHAR_DATA *victim, unsigned long int res
         if (!victim)
                 return RES_RESULT_NORMAL;
 
-        /*
-         * Unknown or reserved bits must not affect runtime resolution.
-         */
         res_types &= RES_VALID_MASK;
 
         if (res_types == 0)
@@ -245,16 +246,21 @@ RESISTANCE_RESULT get_resistance_result(CHAR_DATA *victim, unsigned long int res
 
         mob_type = mob_type_sn(victim);
 
-        if (mob_type < 0
-        ||  mob_type >= MAX_MOB
-        ||  !mob_table[mob_type].name)
+        if (!resolve_mob_template(
+                mob_type,
+                &resolved))
+        {
                 return RES_RESULT_NORMAL;
+        }
 
-        if (IS_SET(mob_table[mob_type].immunes, res_types))
+        if (IS_SET(resolved.immunes, res_types))
                 return RES_RESULT_IMMUNE;
 
-        resistant = IS_SET(mob_table[mob_type].resists, res_types);
-        vulnerable = IS_SET(mob_table[mob_type].vulnerabilities, res_types);
+        resistant =
+            IS_SET(resolved.resists, res_types);
+
+        vulnerable =
+            IS_SET(resolved.vulnerabilities, res_types);
 
         if (resistant && vulnerable)
                 return RES_RESULT_NORMAL;
@@ -10288,6 +10294,7 @@ static void spell_sonic_blast_victim(int sn, int level, CHAR_DATA *ch, CHAR_DATA
         AFFECT_DATA  af;
         bool         saved;
         bool         can_affect;
+        bool         immune;
         int          dam;
         int          confusion_duration;
         int          dot_duration;
@@ -10299,13 +10306,32 @@ static void spell_sonic_blast_victim(int sn, int level, CHAR_DATA *ch, CHAR_DATA
         dam = dice(level, 3);
         saved = saves_spell(level, victim);
 
-        if ( saved )
+        immune =
+            get_resistance_result(
+                victim,
+                skill_table[sn].res_type)
+            == RES_RESULT_IMMUNE;
+
+        if (saved)
                 dam /= 2;
 
+        /*
+         * Let damage() handle damage scaling, combat, and the immunity
+         * message. Do not apply the damage multiplier again here.
+         */
         damage(ch, victim, dam, sn, FALSE);
 
-        if ( saved || victim->position == POS_DEAD )
+        /*
+         * An immune target must not receive the secondary nausea,
+         * ongoing damage, or confusion effects.
+         */
+        if (saved
+        ||  immune
+        ||  victim->deleted
+        ||  victim->position == POS_DEAD)
+        {
                 return;
+        }
 
         can_affect = TRUE;
 

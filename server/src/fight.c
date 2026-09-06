@@ -3300,7 +3300,7 @@ void group_gain(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called)
                 {
                         fame = UMAX(1, victim->level / (5 * members));
 
-                        if (victim->exp_modifier < 100)
+                        if (get_mob_exp_modifier(victim) < 100)
                                 fame /= 2;
 
                         if (!(gch->exp == (level_table[gch->level].exp_total - 1) && !check_questpoints_allow_level_gain(gch, FALSE)))
@@ -3484,8 +3484,10 @@ int xp_compute(CHAR_DATA *gch, CHAR_DATA *victim)
 
         xp = (victim->level + 10) * (victim->level + 10);
         xp -= URANGE(-4, gch->level - victim->level, 11) * 3 * (victim->level + 10);
-        /* xp *= victim->exp_modifier / 100; */
-        xp *= victim->exp_modifier;
+        /*
+         * Apply the combined existing and archetype XP percentage once.
+         */
+        xp *= get_mob_exp_modifier(victim);
         xp /= 100;
 
         align_delta = gch->alignment - victim->alignment;
@@ -8744,6 +8746,7 @@ void do_bubble_jet(CHAR_DATA *ch, char *argument)
         int          chance;
         int          dam;
         int          duration;
+        bool         immune;
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_bubble_jet))
         {
@@ -8799,10 +8802,26 @@ void do_bubble_jet(CHAR_DATA *ch, char *argument)
         sound_emit_room(ch->in_room, "sfx.skill.bubble_jet", -1, NULL);
 
         dam = number_range(1, UMAX(2, ch->level / 8));
+
+        immune =
+            get_resistance_result(
+                victim,
+                skill_table[gsn_bubble_jet].res_type)
+            == RES_RESULT_IMMUNE;
+
         damage(ch, victim, dam, gsn_bubble_jet, FALSE);
 
-        if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
+        /*
+         * A resisted damage event still reaches the normal combat pipeline.
+         * Immunity additionally prevents the secondary disorientation.
+         */
+        if (immune
+        ||  victim->deleted
+        ||  victim->position == POS_DEAD
+        ||  ch->in_room != victim->in_room)
+        {
                 return;
+        }
 
         duration = number_range(1, 3);
 

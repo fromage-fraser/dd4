@@ -695,6 +695,8 @@ Gezhp, Owl and Shade
 - ITEM_UNDEAD object extra flag added. Corpses, remains, and generated body
   parts originating from undead characters are now tagged automatically.
   Identifying such an object reveals its undead nature.
+- Sonic and water resistance categories added.
+- Creature archetypes can now supply an additional XP bonus or penalty.
 
 ~
 

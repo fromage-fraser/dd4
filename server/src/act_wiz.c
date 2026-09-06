@@ -2420,11 +2420,14 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                         victim->swiftness);
                 strcat(buf1, buf);
 
-                sprintf(buf, "Position: {G%d{x [{W%s{x]  Wimpy: {W%d{x  Exp modifier: {W%d{x\n\r",
-                        victim->position,
-                        position_name(victim->position),
-                        victim->wimpy,
-                        victim->exp_modifier);
+                sprintf(
+                    buf,
+                    "Position: {G%d{x [{W%s{x]  Wimpy: {W%d{x  "
+                    "Exp modifier: {W%d%%{x\n\r",
+                    victim->position,
+                    position_name(victim->position),
+                    victim->wimpy,
+                    get_mob_exp_modifier(victim));
                 strcat(buf1, buf);
 
                 sprintf(buf, "Class: {W%d{x ({G%s{x)  SubCl: {W%d{x ({G%s{x)\n\rRace: {W%d{x ({G%s{x)  Age: {W%d{x  Form: {W%s{x\n\r",
@@ -2623,33 +2626,10 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                 /* Pull out the species specific info for this mob - Brutus Sept 2022 */
                 if (victim->mobspec)
                 {
+                        MOB_TEMPLATE_DATA resolved;
                         unsigned long int resistance_conflicts;
                         unsigned long int unknown_resistance_bits;
                         int sn;
-                        int species;
-
-                        species = species_sn(victim);
-
-                        /*
-                         * Do not allow malformed table data to produce an
-                         * invalid species_table index in mstat.
-                         */
-                        if (species < 0 || species >= MAX_SPECIES)
-                        {
-                                sprintf(
-                                    buf,
-                                    "\n\r{RInvalid body-species relationship "
-                                    "for creature archetype '%s'. "
-                                    "See boot log.{x\n\r",
-                                    victim->mobspec);
-                                strcat(buf1, buf);
-
-                                /*
-                                 * The reserved entry contains no inherited
-                                 * body or attack parts and is safe to display.
-                                 */
-                                species = 0;
-                        }
 
                         for (sn = 0; sn < MAX_MOB; sn++)
                         {
@@ -2658,6 +2638,20 @@ void do_mstat(CHAR_DATA *ch, char *argument)
 
                                 if (!str_cmp(victim->mobspec, mob_table[sn].name))
                                 {
+
+                                        if (!resolve_mob_template(
+                                                    sn,
+                                                    &resolved))
+                                        {
+                                            sprintf(
+                                                buf,
+                                                "\n\r{RUnable to resolve "
+                                                "creature archetype '%s'. "
+                                                "See boot log.{x\n\r",
+                                                victim->mobspec);
+                                            strcat(buf1, buf);
+                                            break;
+                                        }
                                         strcpy(
                                             buf,
                                             "\n\r{WCreature archetype / "
@@ -2672,16 +2666,95 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                             mob_table[sn].species);
                                         strcat(buf1, buf);
 
+                                        strcat(
+                                            buf1,
+                                            "Template resolution: "
+                                            "{Wbody species XOR archetype{x\n\r"
+                                            "{DIndividual #MOBILES overrides "
+                                            "are not included yet.{x\n\r");
+
+                                        sprintf(
+                                            buf,
+                                            "XP modifier: existing {W%d%%{x "
+                                            "+ archetype {W%+d points{x "
+                                            "= effective {W%d%%{x\n\r",
+                                            victim->exp_modifier,
+                                            resolved.xp_mod,
+                                            get_mob_exp_modifier(victim));
+                                        strcat(buf1, buf);
+
+                                        strcat(
+                                            buf1,
+                                            "Template ACT flags (num): {W");
+                                        bit_explode(
+                                            ch,
+                                            buf,
+                                            resolved.act);
+                                        strcat(buf1, buf);
+                                        strcat(buf1, "{x\n\r");
+
+                                        strcat(
+                                            buf1,
+                                            "Template ACT flags (txt):{R");
+                                        for (next = 1;
+                                             next > 0
+                                             && next <= BIT_MAX;
+                                             next *= 2)
+                                        {
+                                                if (IS_SET(
+                                                        resolved.act,
+                                                        next))
+                                                {
+                                                        strcat(buf1, " ");
+                                                        strcat(
+                                                            buf1,
+                                                            act_bit_name(
+                                                                next));
+                                                }
+                                        }
+                                        strcat(buf1, "{x\n\r");
+
+                                        strcat(
+                                            buf1,
+                                            "Template AFF flags (num): {W");
+                                        bit_explode(
+                                            ch,
+                                            buf,
+                                            resolved.affected_by);
+                                        strcat(buf1, buf);
+                                        strcat(buf1, "{x\n\r");
+
+                                        strcat(
+                                            buf1,
+                                            "Template AFF flags (txt):{R");
+                                        for (next = 1;
+                                             next > 0
+                                             && next <= BIT_MAX;
+                                             next *= 2)
+                                        {
+                                                if (IS_SET(
+                                                        resolved.affected_by,
+                                                        next))
+                                                {
+                                                        strcat(buf1, " ");
+                                                        strcat(
+                                                            buf1,
+                                                            affect_bit_name(
+                                                                next));
+                                                }
+                                        }
+                                        strcat(buf1, "{x\n\r");
+
                                         /* resists */
                                         sprintf(buf, "Resistant to (num): {W");
                                         strcat(buf1, buf);
-                                        bit_explode(ch, buf, mob_table[sn].resists);
+                                        bit_explode(ch, buf, resolved.resists);
                                         strcat(buf1, buf);
                                         strcat(buf1, "{x\n\r");
                                         strcat(buf1, "Resistant To (txt):{R");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
-                                                if (IS_SET(mob_table[sn].resists, next))
+                                                if (IS_SET(resolved.resists, next))
                                                 {
                                                         strcat(buf1, " ");
                                                         strcat(buf1, resist_name(next));
@@ -2692,13 +2765,13 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                         /* Vulnerable */
                                         sprintf(buf, "Vulnerable to (num): {W");
                                         strcat(buf1, buf);
-                                        bit_explode(ch, buf, mob_table[sn].vulnerabilities);
+                                        bit_explode(ch, buf, resolved.vulnerabilities);
                                         strcat(buf1, buf);
                                         strcat(buf1, "{x\n\r");
                                         strcat(buf1, "Vulnerable To (txt):{R");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
-                                                if (IS_SET(mob_table[sn].vulnerabilities, next))
+                                                if (IS_SET(resolved.vulnerabilities, next))
                                                 {
                                                         strcat(buf1, " ");
                                                         strcat(buf1, resist_name(next));
@@ -2709,13 +2782,13 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                         /*  Immune */
                                         sprintf(buf, "Immune to (num): {W");
                                         strcat(buf1, buf);
-                                        bit_explode(ch, buf, mob_table[sn].immunes);
+                                        bit_explode(ch, buf, resolved.immunes);
                                         strcat(buf1, buf);
                                         strcat(buf1, "{x\n\r");
                                         strcat(buf1, "Immune To (txt):{R");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
-                                                if (IS_SET(mob_table[sn].immunes, next))
+                                                if (IS_SET(resolved.immunes, next))
                                                 {
                                                         strcat(buf1, " ");
                                                         strcat(buf1, resist_name(next));
@@ -2724,51 +2797,71 @@ void do_mstat(CHAR_DATA *ch, char *argument)
 
                                         strcat(buf1, "{x\n\r");
 
+                                         /*
+                                         * Check the resolved body-species and
+                                         * archetype resistance state, not the
+                                         * raw archetype XOR masks.
+                                         */
                                         resistance_conflicts =
-                                            ((mob_table[sn].resists
-                                              & mob_table[sn].vulnerabilities)
-                                             | (mob_table[sn].resists
-                                                & mob_table[sn].immunes)
-                                             | (mob_table[sn].vulnerabilities
-                                                & mob_table[sn].immunes))
+                                            ((resolved.resists
+                                              & resolved.vulnerabilities)
+                                             | (resolved.resists
+                                                & resolved.immunes)
+                                             | (resolved.vulnerabilities
+                                                & resolved.immunes))
                                             & RES_VALID_MASK;
 
                                         unknown_resistance_bits =
-                                            (mob_table[sn].resists
-                                             | mob_table[sn].vulnerabilities
-                                             | mob_table[sn].immunes)
+                                            (resolved.resists
+                                             | resolved.vulnerabilities
+                                             | resolved.immunes)
                                             & ~RES_VALID_MASK;
 
                                         if (resistance_conflicts == 0
                                         &&  unknown_resistance_bits == 0)
                                         {
-                                                strcat(buf1,
-                                                       "Resistance data: {Gvalid{x\n\r");
+                                                strcat(
+                                                    buf1,
+                                                    "Resistance data: "
+                                                    "{Gvalid{x\n\r");
                                         }
                                         else
                                         {
-                                                strcat(buf1,
-                                                       "Resistance data: {RINVALID -- see boot log{x\n\r");
+                                                strcat(
+                                                    buf1,
+                                                    "Resistance data: "
+                                                    "{RINVALID -- see boot log"
+                                                    "{x\n\r");
                                         }
 
-                                        sprintf(buf, "HP Mod: %d Dam Mod: %d Crit Mod: %d Swiftness Mod: %d\n\r",
-                                                mob_table[sn].hp_mod, mob_table[sn].dam_mod, mob_table[sn].crit_mod, mob_table[sn].haste_mod);
+                                        sprintf(
+                                            buf,
+                                            "HP Mod: %d Dam Mod: %d "
+                                            "Crit Mod: %d Swiftness Mod: %d\n\r",
+                                            resolved.hp_mod,
+                                            resolved.dam_mod,
+                                            resolved.crit_mod,
+                                            resolved.haste_mod);
                                         strcat(buf1, buf);
-                                        sprintf(buf, "Height: %d Weight: %d Size: %d\n\r",
-                                                mob_table[sn].height, mob_table[sn].weight, mob_table[sn].size);
+                                        sprintf(
+                                            buf,
+                                            "Height: %d Weight: %d Size: %d\n\r",
+                                            resolved.height,
+                                            resolved.weight,
+                                            resolved.size);
                                         strcat(buf1, buf);
 
                                         /* body parts from Species Table */
-                                        sprintf(buf, "Body Parts (num): {W");
+                                        sprintf(buf, "Body Form (num): {W");
                                         strcat(buf1, buf);
-                                        bit_explode(ch, buf, species_table[species].body_parts);
+                                        bit_explode(ch, buf, resolved.body_form);
                                         strcat(buf1, buf);
                                         strcat(buf1, "{x\n\r");
-                                        strcat(buf1, "Body Parts (txt):{R");
+                                        strcat(buf1, "Body Form (txt):{R");
 
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
-                                                if (IS_SET(species_table[species].body_parts, next))
+                                                if (IS_SET(resolved.body_form, next))
                                                 {
                                                         strcat(buf1, " ");
                                                         strcat(buf1, body_form_name(next));
@@ -2779,13 +2872,13 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                         /* Attack Parts  from Species Table*/
                                         sprintf(buf, "Attack Parts (num): {W");
                                         strcat(buf1, buf);
-                                        bit_explode(ch, buf, species_table[species].attack_parts);
+                                        bit_explode(ch, buf, resolved.attack_parts);
                                         strcat(buf1, buf);
                                         strcat(buf1, "{x\n\r");
                                         strcat(buf1, "Attack Parts (txt):{R");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
-                                                if (IS_SET(species_table[species].attack_parts, next))
+                                                if (IS_SET(resolved.attack_parts, next))
                                                 {
                                                         strcat(buf1, " ");
                                                         strcat(buf1, body_form_name(next));
@@ -2793,8 +2886,22 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                         }
                                         strcat(buf1, "{x\n\r");
 
-                                        sprintf(buf, "Lang: %d\n\r Spec_1: %s\n\r Spec_2: %s\n\r Spec_3: %s\n\r",
-                                                mob_table[sn].language, mob_table[sn].spec_fun1, mob_table[sn].spec_fun2, mob_table[sn].spec_boss);
+                                        sprintf(
+                                            buf,
+                                            "Lang: %d\n\r"
+                                            "Spec_1: %s\n\r"
+                                            "Spec_2: %s\n\r"
+                                            "Spec_3: %s\n\r",
+                                            resolved.language,
+                                            resolved.spec_fun1
+                                                ? resolved.spec_fun1
+                                                : "none",
+                                            resolved.spec_fun2
+                                                ? resolved.spec_fun2
+                                                : "none",
+                                            resolved.spec_boss
+                                                ? resolved.spec_boss
+                                                : "none");
                                         strcat(buf1, buf);
                                         break;
                                 }

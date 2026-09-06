@@ -1,11 +1,11 @@
 /***************************************************************************
  *  mob.c
  *
- *  Mob Specs & Species types go here.
+ *  Mob Specs & Species types & related stuff go here.
  *
  *
  *
- * Brutus 2022.
+ * Brutus 2022 / Owl 2026.
  *
  ***************************************************************************/
 #if defined( macintosh )
@@ -14,6 +14,7 @@
 #include <sys/types.h>
 #endif
 #include <stdio.h>
+#include <string.h>
 #include <time.h>
 #include "merc.h"
 
@@ -28,86 +29,128 @@ const struct rank       rank_table [ MAX_RANK ] =
         { "world",      5,     30,      "<81>[WO<75>RL<69>D B<75>OS<81>S]<0> "}
 };
 
-const struct species_type  species_table [ MAX_SPECIES ] =
+const struct species_type species_table[MAX_SPECIES] =
 {
-        /* species, body parts, attack parts */
+        /*
+         * name
+         * ACT defaults, AFF defaults
+         * body-form defaults, natural attack-part defaults
+         * resists, vulnerabilities, immunities
+         * hp, damage, critical and haste modifier defaults
+         * height, weight, size and language defaults
+         * default special-function names
+         */
 
         {
                 "reserved",
-                0,
-                0
+                0, 0,
+                0, 0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL
         },
 
         {
                 "humanoid",
-                1024|4096|32768|BIT_15|BIT_18|BIT_19|BIT_20|BIT_21|BIT_22|BIT_23|BIT_24|BIT_25,
-                0
+                0, 0,
+                PART_HEAD | PART_ARMS | PART_2_LEGS | PART_HEART
+                    | PART_BRAINS | PART_GUTS | PART_HANDS | PART_FEET
+                    | PART_FINGERS | PART_EAR | PART_EYE,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL
         },
 
         {
                 "elemental",
-                4|8|16|256|1024, /* body parts */
-                0                /* attack parts */
+                0, 0,
+                BODY_NO_ARMS | BODY_NO_LEGS | BODY_NO_HEART
+                    | BODY_INORGANIC | PART_HEAD,
+                0,
+                0, 0, RES_COLD,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL
         },
 
         {
                 "farm_mammal",
-                BIT_10|BIT_15|BIT_16|BIT_18|BIT_19|BIT_20|BIT_24|BIT_25, /* body parts */
-                BIT_41                  /* attack parts */
+                0, 0,
+                PART_HEAD | PART_2_LEGS | PART_4_LEGS | PART_HEART
+                    | PART_BRAINS | PART_GUTS | PART_EAR | PART_EYE,
+                PART_HOOVES,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL
         }
-
 };
 
 /*
- *  Skill table
+ * Specific creature archetypes.
  */
-const struct mob_type mob_table [MAX_MOB] =
+const struct mob_type mob_table[MAX_MOB] =
 {
-  /*
-    * name, species, male_icon, female_icon
-    * resists, vulnerabilities, immunes,
-    * hp %gain, dam % gain, crit % gain, haste % gain
-    * height, weight, size
-    * body_parts, attack_parts, language,
-    * spec1, spec2, spec_boss
-    *
-    *
-    *
-    */
-  {
-          "reserved", "reserved", "icon1", "icon2",
-          0, 0, 0,
-          0, 0, 0, 0,
-          0, 0, 0,
-          0, 0, 0,
-          "NULL",
-          "NULL",
-          "NULL"
-  },
+        /*
+         * name, body species, male icon, female icon
+         * ACT XOR mask, AFF XOR mask
+         * body-form XOR mask, attack-part XOR mask
+         * resistance XOR masks
+         * hp, damage, critical and haste scalar overrides
+         * height, weight, size and language scalar overrides
+         * default special-function overrides
+         */
 
-  {
-          "goat", "farm_mammal", "icon1", "icon2",
-          0, 1|2|4|8, 0,        /*resists, vulnerabilites, immunes*/
-          20, 20, -10, -2,      /*hp %gain, dam % gain, crit % gain, haste % gain*/
-          1, 30, 100,           /*height, weight, size*/
-          0, 0, 3,            /*body_parts, attack_parts, language,*/
-          "spec_fido",
-          "NULL",
-          "NULL"
-  },
+        {
+                "reserved", "reserved", "icon1", "icon2",
+                0, 0,
+                0, 0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                0                       /* XP adjustment: percentage points */
+        },
 
-  {
-          "fire_elemental", "elemental", "icon1", "icon2",
-          0, 0, RES_FIRE | RES_POISON | RES_PARALYSIS
-                   | RES_HOLD | RES_DRAIN | RES_NONMAGIC,     /*resists, vulnerabilites, immunes*/
-          0, 0, 0, 20,          /*hp %gain, dam % gain, crit % gain, haste % gain*/
-          2, 20, 3,             /*height, weight, size*/
-          0, 0, 1,              /*body_parts, attack_parts, language,*/
-          "spec_breath_fire",
-          "NULL",
-          "NULL"
-  }
+        {
+                "goat", "farm_mammal", "icon1", "icon2",
+                0, 0,
+                0, 0,
+                0,
+                RES_FIRE | RES_COLD | RES_ELECTRICITY | RES_ENERGY,
+                0,
+                20, 20, -10, -2,
+                1, 30, 100, 3,
+                "spec_fido", NULL, NULL,
+                0                       /* XP adjustment: percentage points */
+        },
 
+        {
+                "fire_elemental", "elemental", "icon1", "icon2",
+                0, 0,
+                0, 0,
+                0, 0,
+                RES_FIRE | RES_COLD | RES_POISON | RES_PARALYSIS
+                    | RES_HOLD | RES_DRAIN | RES_NONMAGIC,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, 20,
+                2, 20, 3, 1,
+                "spec_breath_fire", NULL, NULL,
+                5                       /* XP adjustment: percentage points */
+        }
 };
 
 /*
@@ -133,7 +176,256 @@ int species_lookup(const char *name)
 }
 
 /*
- * Validate body-species names and creature-archetype relationships.
+ * Resolve one scalar through the body-species and archetype layers.
+ */
+static int resolve_template_scalar(int species_value,
+                                   int archetype_value)
+{
+        if (archetype_value != MOB_TEMPLATE_UNSET)
+                return archetype_value;
+
+        if (species_value != MOB_TEMPLATE_UNSET)
+                return species_value;
+
+        return 0;
+}
+
+/*
+ * Resolve one default special-function name.
+ *
+ * NULL means inherit.
+ * An empty string means explicitly clear the inherited value.
+ * A non-empty string replaces the inherited value.
+ */
+static const char *resolve_template_special(
+    const char *species_special,
+    const char *archetype_special)
+{
+        if (archetype_special)
+        {
+                if (archetype_special[0] == '\0')
+                        return NULL;
+
+                return archetype_special;
+        }
+
+        if (species_special && species_special[0] != '\0')
+                return species_special;
+
+        return NULL;
+}
+
+/*
+ * Resolve body species followed by creature archetype.
+ *
+ * Bitfields use XOR so that an archetype can both add defaults and cancel
+ * inappropriate body-species defaults. Scalar values use explicit inheritance.
+ */
+bool resolve_mob_template(int mob_type,
+                          MOB_TEMPLATE_DATA *resolved)
+{
+        const struct mob_type *archetype;
+        const struct species_type *body_species;
+        int species;
+
+        if (!resolved)
+                return FALSE;
+
+        memset(resolved, 0, sizeof(*resolved));
+
+        if (mob_type < 0 || mob_type >= MAX_MOB)
+                return FALSE;
+
+        archetype = &mob_table[mob_type];
+
+        if (!archetype->name
+        ||  archetype->name[0] == '\0'
+        ||  !archetype->species
+        ||  archetype->species[0] == '\0')
+        {
+                return FALSE;
+        }
+
+        species = species_lookup(archetype->species);
+
+        if (species < 0 || species >= MAX_SPECIES)
+                return FALSE;
+
+        body_species = &species_table[species];
+
+        resolved->act =
+            body_species->act ^ archetype->act;
+
+        resolved->affected_by =
+            body_species->affected_by ^ archetype->affected_by;
+
+        resolved->body_form =
+            body_species->body_form ^ archetype->body_form;
+
+        resolved->attack_parts =
+            body_species->attack_parts ^ archetype->attack_parts;
+
+        resolved->resists =
+            body_species->resists ^ archetype->resists;
+
+        resolved->vulnerabilities =
+            body_species->vulnerabilities
+            ^ archetype->vulnerabilities;
+
+        resolved->immunes =
+            body_species->immunes ^ archetype->immunes;
+
+        resolved->hp_mod =
+            resolve_template_scalar(
+                body_species->hp_mod,
+                archetype->hp_mod);
+
+        resolved->dam_mod =
+            resolve_template_scalar(
+                body_species->dam_mod,
+                archetype->dam_mod);
+
+        resolved->crit_mod =
+            resolve_template_scalar(
+                body_species->crit_mod,
+                archetype->crit_mod);
+
+        resolved->haste_mod =
+            resolve_template_scalar(
+                body_species->haste_mod,
+                archetype->haste_mod);
+
+        resolved->height =
+            resolve_template_scalar(
+                body_species->height,
+                archetype->height);
+
+        resolved->weight =
+            resolve_template_scalar(
+                body_species->weight,
+                archetype->weight);
+
+        resolved->size =
+            resolve_template_scalar(
+                body_species->size,
+                archetype->size);
+
+        resolved->language =
+            resolve_template_scalar(
+                body_species->language,
+                archetype->language);
+
+        resolved->spec_fun1 =
+            resolve_template_special(
+                body_species->spec_fun1,
+                archetype->spec_fun1);
+
+        resolved->spec_fun2 =
+            resolve_template_special(
+                body_species->spec_fun2,
+                archetype->spec_fun2);
+
+        resolved->spec_boss =
+            resolve_template_special(
+                body_species->spec_boss,
+                archetype->spec_boss);
+
+        /*
+         * XP adjustment belongs to the creature archetype.
+         * It is a signed scalar, not an XOR mask.
+         */
+        resolved->xp_mod = archetype->xp_mod;
+
+        return TRUE;
+}
+
+/*
+ * Return the effective XP percentage for a character.
+ *
+ * exp_modifier already contains the existing XP contributions assigned by
+ * the normal creation/reset machinery. Add the archetype adjustment once,
+ * without changing the stored value.
+ *
+ * Keeping this calculation separate prevents repeated queries from adding
+ * the archetype bonus repeatedly, and prevents reset assignments from
+ * accidentally overwriting it.
+ */
+int get_mob_exp_modifier(CHAR_DATA *mob)
+{
+        MOB_TEMPLATE_DATA resolved;
+        int64_t modifier;
+
+        if (!mob)
+                return 0;
+
+        /*
+         * This extension does not change player XP-modifier behaviour.
+         */
+        if (!IS_NPC(mob))
+                return mob->exp_modifier;
+
+        modifier = mob->exp_modifier;
+
+        if (resolve_mob_template(
+                mob_type_sn(mob),
+                &resolved))
+        {
+                modifier += resolved.xp_mod;
+        }
+
+        /*
+         * Negative percentages must not turn a kill reward into an
+         * XP deduction. Existing minimum-reward rules remain separate.
+         */
+        if (modifier < 0)
+                return 0;
+
+        if (modifier > INT_MAX)
+                return INT_MAX;
+
+        return (int)modifier;
+}
+
+
+
+/*
+ * Validate one non-empty default special-function name.
+ *
+ * NULL means inherit.
+ * An empty string means explicitly clear an inherited special.
+ */
+static int validate_template_special(
+    const char *owner_type,
+    const char *owner_name,
+    const char *slot_name,
+    const char *special_name)
+{
+        char buf[MAX_STRING_LENGTH];
+
+        if (!special_name || special_name[0] == '\0')
+                return 0;
+
+        if (spec_lookup(special_name))
+                return 0;
+
+        sprintf(
+            buf,
+            "[MOB TEMPLATE] %s '%s' references unknown %s '%s'.",
+            owner_type,
+            owner_name,
+            slot_name,
+            special_name);
+        log_string(buf);
+
+        return 1;
+}
+
+/*
+ * Validate body-species names, creature-archetype relationships,
+ * and default special-function names.
+ *
+ * Resistance masks are validated separately by
+ * validate_mob_resistance_table().
  */
 int validate_mob_template_tables(void)
 {
@@ -146,7 +438,7 @@ int validate_mob_template_tables(void)
         issues = 0;
 
         /*
-         * Validate the body-species table itself.
+         * Validate the body-species table.
          */
         for (species = 0; species < MAX_SPECIES; species++)
         {
@@ -155,13 +447,17 @@ int validate_mob_template_tables(void)
                 {
                         sprintf(
                             buf,
-                            "[MOB TEMPLATE] Body-species entry %d has no name.",
+                            "[MOB TEMPLATE] Body-species entry %d "
+                            "has no name.",
                             species);
                         log_string(buf);
                         issues++;
                         continue;
                 }
 
+                /*
+                 * Body-species names must be unique.
+                 */
                 for (other = species + 1;
                      other < MAX_SPECIES;
                      other++)
@@ -187,10 +483,32 @@ int validate_mob_template_tables(void)
                                 issues++;
                         }
                 }
+
+                /*
+                 * Validate all three default special-function slots
+                 * for this body species.
+                 */
+                issues += validate_template_special(
+                    "Body species",
+                    species_table[species].species,
+                    "spec_fun1",
+                    species_table[species].spec_fun1);
+
+                issues += validate_template_special(
+                    "Body species",
+                    species_table[species].species,
+                    "spec_fun2",
+                    species_table[species].spec_fun2);
+
+                issues += validate_template_special(
+                    "Body species",
+                    species_table[species].species,
+                    "spec_boss",
+                    species_table[species].spec_boss);
         }
 
         /*
-         * Every creature archetype must refer to an existing body species.
+         * Validate creature-archetype relationships and default specials.
          */
         for (mob_type = 0; mob_type < MAX_MOB; mob_type++)
         {
@@ -198,8 +516,8 @@ int validate_mob_template_tables(void)
                 ||  mob_table[mob_type].name[0] == '\0')
                 {
                         /*
-                         * The existing mob resistance validator reports
-                         * unnamed archetype entries.
+                         * The mob resistance validator already reports
+                         * unnamed and duplicate archetype entries.
                          */
                         continue;
                 }
@@ -209,8 +527,8 @@ int validate_mob_template_tables(void)
                 {
                         sprintf(
                             buf,
-                            "[MOB TEMPLATE] Creature archetype '%s' has "
-                            "no body-species name.",
+                            "[MOB TEMPLATE] Creature archetype '%s' "
+                            "has no body-species name.",
                             mob_table[mob_type].name);
                         log_string(buf);
                         issues++;
@@ -228,6 +546,28 @@ int validate_mob_template_tables(void)
                         log_string(buf);
                         issues++;
                 }
+
+                /*
+                 * Validate all three default special-function slots
+                 * for this creature archetype.
+                 */
+                issues += validate_template_special(
+                    "Creature archetype",
+                    mob_table[mob_type].name,
+                    "spec_fun1",
+                    mob_table[mob_type].spec_fun1);
+
+                issues += validate_template_special(
+                    "Creature archetype",
+                    mob_table[mob_type].name,
+                    "spec_fun2",
+                    mob_table[mob_type].spec_fun2);
+
+                issues += validate_template_special(
+                    "Creature archetype",
+                    mob_table[mob_type].name,
+                    "spec_boss",
+                    mob_table[mob_type].spec_boss);
         }
 
         if (issues == 0)
@@ -310,121 +650,209 @@ static int log_resistance_conflicts(const char *mob_name,
         return issues;
 }
 
-/*
- * Validate mob_table resistance, vulnerability and immunity masks.
- *
- * Runtime precedence remains:
- *
- *   immunity overrides everything;
- *   resistance plus vulnerability resolves to normal;
- *   otherwise the single matching state applies.
- */
 int validate_mob_resistance_table(void)
 {
+        MOB_TEMPLATE_DATA resolved;
         unsigned long int unknown_bits;
         unsigned long int overlap;
         char buf[MAX_STRING_LENGTH];
         int mob_type;
         int other;
+        int species;
         int issues;
 
         issues = 0;
+
+        /*
+         * Body-species resistance data is a base state, so contradictions
+         * within this layer are always invalid.
+         */
+        for (species = 0; species < MAX_SPECIES; species++)
+        {
+                if (!species_table[species].species
+                ||  species_table[species].species[0] == '\0')
+                {
+                        continue;
+                }
+
+                unknown_bits =
+                    species_table[species].resists
+                    & ~RES_VALID_MASK;
+                issues += log_unknown_resistance_bits(
+                    species_table[species].species,
+                    "body-species resists",
+                    unknown_bits);
+
+                unknown_bits =
+                    species_table[species].vulnerabilities
+                    & ~RES_VALID_MASK;
+                issues += log_unknown_resistance_bits(
+                    species_table[species].species,
+                    "body-species vulnerabilities",
+                    unknown_bits);
+
+                unknown_bits =
+                    species_table[species].immunes
+                    & ~RES_VALID_MASK;
+                issues += log_unknown_resistance_bits(
+                    species_table[species].species,
+                    "body-species immunes",
+                    unknown_bits);
+
+                overlap =
+                    (species_table[species].resists
+                     & species_table[species].vulnerabilities)
+                    & RES_VALID_MASK;
+                issues += log_resistance_conflicts(
+                    species_table[species].species,
+                    "body species is both resistant and vulnerable to",
+                    overlap);
+
+                overlap =
+                    (species_table[species].resists
+                     & species_table[species].immunes)
+                    & RES_VALID_MASK;
+                issues += log_resistance_conflicts(
+                    species_table[species].species,
+                    "body species is both resistant and immune to",
+                    overlap);
+
+                overlap =
+                    (species_table[species].vulnerabilities
+                     & species_table[species].immunes)
+                    & RES_VALID_MASK;
+                issues += log_resistance_conflicts(
+                    species_table[species].species,
+                    "body species is both vulnerable and immune to",
+                    overlap);
+        }
 
         for (mob_type = 0; mob_type < MAX_MOB; mob_type++)
         {
                 if (!mob_table[mob_type].name
                 ||  mob_table[mob_type].name[0] == '\0')
                 {
-                        sprintf(buf,
-                                "[MOB TYPE] entry %d has no name.",
-                                mob_type);
+                        sprintf(
+                            buf,
+                            "[MOB TYPE] entry %d has no name.",
+                            mob_type);
                         log_string(buf);
                         issues++;
                         continue;
                 }
 
                 /*
-                 * Duplicate names make mob_type_sn() resolution ambiguous.
+                 * Duplicate names make archetype lookup ambiguous.
                  */
-                for (other = mob_type + 1; other < MAX_MOB; other++)
+                for (other = mob_type + 1;
+                     other < MAX_MOB;
+                     other++)
                 {
                         if (!mob_table[other].name
                         ||  mob_table[other].name[0] == '\0')
-                                continue;
-
-                        if (!str_cmp(mob_table[mob_type].name,
-                                     mob_table[other].name))
                         {
-                                sprintf(buf,
-                                        "[MOB TYPE] duplicate name '%s' at entries %d and %d.",
-                                        mob_table[mob_type].name,
-                                        mob_type,
-                                        other);
+                                continue;
+                        }
+
+                        if (!str_cmp(
+                                mob_table[mob_type].name,
+                                mob_table[other].name))
+                        {
+                                sprintf(
+                                    buf,
+                                    "[MOB TYPE] duplicate name '%s' at "
+                                    "entries %d and %d.",
+                                    mob_table[mob_type].name,
+                                    mob_type,
+                                    other);
                                 log_string(buf);
                                 issues++;
                         }
                 }
 
+                /*
+                 * Raw archetype masks are XOR masks. They may legitimately
+                 * contain a bit in two fields when moving that bit from one
+                 * inherited category to another. Validate unknown bits here,
+                 * then validate contradictions only after full resolution.
+                 */
                 unknown_bits =
-                    mob_table[mob_type].resists & ~RES_VALID_MASK;
+                    mob_table[mob_type].resists
+                    & ~RES_VALID_MASK;
                 issues += log_unknown_resistance_bits(
                     mob_table[mob_type].name,
-                    "resists",
+                    "archetype resists",
                     unknown_bits);
 
                 unknown_bits =
-                    mob_table[mob_type].vulnerabilities & ~RES_VALID_MASK;
+                    mob_table[mob_type].vulnerabilities
+                    & ~RES_VALID_MASK;
                 issues += log_unknown_resistance_bits(
                     mob_table[mob_type].name,
-                    "vulnerabilities",
+                    "archetype vulnerabilities",
                     unknown_bits);
 
                 unknown_bits =
-                    mob_table[mob_type].immunes & ~RES_VALID_MASK;
+                    mob_table[mob_type].immunes
+                    & ~RES_VALID_MASK;
                 issues += log_unknown_resistance_bits(
                     mob_table[mob_type].name,
-                    "immunes",
+                    "archetype immunes",
                     unknown_bits);
+
+                /*
+                 * Structural relationship errors were already reported by
+                 * validate_mob_template_tables().
+                 */
+                if (!resolve_mob_template(
+                        mob_type,
+                        &resolved))
+                {
+                        continue;
+                }
 
                 overlap =
-                    (mob_table[mob_type].resists
-                     & mob_table[mob_type].vulnerabilities)
+                    (resolved.resists
+                     & resolved.vulnerabilities)
                     & RES_VALID_MASK;
                 issues += log_resistance_conflicts(
                     mob_table[mob_type].name,
-                    "both resistant and vulnerable to",
+                    "resolved template is both resistant and vulnerable to",
                     overlap);
 
                 overlap =
-                    (mob_table[mob_type].resists
-                     & mob_table[mob_type].immunes)
+                    (resolved.resists
+                     & resolved.immunes)
                     & RES_VALID_MASK;
                 issues += log_resistance_conflicts(
                     mob_table[mob_type].name,
-                    "both resistant and immune to",
+                    "resolved template is both resistant and immune to",
                     overlap);
 
                 overlap =
-                    (mob_table[mob_type].vulnerabilities
-                     & mob_table[mob_type].immunes)
+                    (resolved.vulnerabilities
+                     & resolved.immunes)
                     & RES_VALID_MASK;
                 issues += log_resistance_conflicts(
                     mob_table[mob_type].name,
-                    "both vulnerable and immune to",
+                    "resolved template is both vulnerable and immune to",
                     overlap);
         }
 
         if (issues == 0)
         {
                 log_string(
-                    "[MOB TYPE] Resistance validation complete: no issues found.");
+                    "[MOB TYPE] Resistance validation complete: "
+                    "no issues found.");
         }
         else
         {
-                sprintf(buf,
-                        "[MOB TYPE] Resistance validation complete: %d issue%s found.",
-                        issues,
-                        issues == 1 ? "" : "s");
+                sprintf(
+                    buf,
+                    "[MOB TYPE] Resistance validation complete: "
+                    "%d issue%s found.",
+                    issues,
+                    issues == 1 ? "" : "s");
                 log_string(buf);
         }
 
