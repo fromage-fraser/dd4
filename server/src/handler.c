@@ -3920,6 +3920,8 @@ char* resist_name (unsigned long int vector)
                 case RES_HOLY:          return "holy";
                 case RES_DARK:          return "dark";
                 case RES_CURSE:         return "curse";
+                case RES_SONIC:         return "sonic";
+                case RES_WATER:         return "water";
 
                 default:                return "(unknown)";
         }

@@ -3686,19 +3686,17 @@ void do_consider(CHAR_DATA *ch, char *argument)
                 act("{WYou suspect $N has some unusual capabilities.{x", ch,
                     NULL, victim, TO_CHAR);
 
-        /* Commenting out below until it is working --Owl 3/12/23
         if ( IS_NPC( victim ) && rank_sn(victim) > 1 )
                 act ("$N seems {Wmore powerful{x than your usual adversaries.", ch, NULL, victim, TO_CHAR );
 
 
         if ( victim->mobspec )
         {
+                MOB_TEMPLATE_DATA resolved;
                 int sn;
-                int species;
-                char buf [MAX_STRING_LENGTH];
-                char buf1 [MAX_STRING_LENGTH];
-                unsigned long int       next;
-                species = species_sn(victim);
+                char buf[MAX_STRING_LENGTH];
+                char buf1[MAX_STRING_LENGTH];
+                unsigned long int next;
                 buf1[0] = '\0';
                 buf[0] = '\0';
 
@@ -3709,6 +3707,13 @@ void do_consider(CHAR_DATA *ch, char *argument)
 
                                 if ( !str_cmp(victim->mobspec, mob_table[sn].name))
                                 {
+                                        if (!resolve_mob_template(
+                                                sn,
+                                                &resolved))
+                                        {
+                                                break;
+                                        }
+
                                         strcat(buf, "<74>Your experiance and insights provide additional detail:<0>\n\r");
                                         strcat( buf1, buf );
                                         sprintf( buf, "Species: {W%s{x\n\r",
@@ -3718,7 +3723,7 @@ void do_consider(CHAR_DATA *ch, char *argument)
                                         strcat(buf1, "<556>Vulnerable To:<0><15>");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
-                                                if (IS_SET(mob_table[sn].vulnerabilities, next))
+                                                if (IS_SET(resolved.vulnerabilities, next))
                                                 {
 
                                                         strcat(buf1, " ");
@@ -3731,7 +3736,7 @@ void do_consider(CHAR_DATA *ch, char *argument)
                                         strcat(buf1, "Resistant To:{W");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
-                                                if (IS_SET(mob_table[sn].resists, next))
+                                                if (IS_SET(resolved.resists, next))
                                                 {
                                                         strcat(buf1, " ");
                                                         strcat(buf1, resist_name(next));
@@ -3743,7 +3748,7 @@ void do_consider(CHAR_DATA *ch, char *argument)
                                         strcat(buf1, "Immune To:{W");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
-                                                if (IS_SET(mob_table[sn].immunes, next))
+                                                if (IS_SET(resolved.immunes, next))
                                                 {
                                                         strcat(buf1, " ");
                                                         strcat(buf1, resist_name(next));
@@ -3756,7 +3761,7 @@ void do_consider(CHAR_DATA *ch, char *argument)
 
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
-                                                if (IS_SET(species_table[species].body_parts, next))
+                                                if (IS_SET(resolved.body_form, next))
                                                 {
                                                         strcat(buf1, " ");
                                                         strcat(buf1, body_form_name(next));
@@ -3768,7 +3773,7 @@ void do_consider(CHAR_DATA *ch, char *argument)
                                         strcat(buf1, "Attack Parts:{W");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
-                                                if (IS_SET(species_table[species].attack_parts, next))
+                                                if (IS_SET(resolved.attack_parts, next))
                                                 {
                                                         strcat(buf1, " ");
                                                         strcat(buf1, body_form_name(next));
@@ -3782,7 +3787,6 @@ void do_consider(CHAR_DATA *ch, char *argument)
 
                 return;
         }
-        */
 }
 
 void set_title(CHAR_DATA *ch, char *title)
