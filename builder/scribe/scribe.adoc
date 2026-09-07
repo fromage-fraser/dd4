@@ -1,0 +1,3948 @@
+:data-uri:
+:imagesdir: ascd_img
+
+`scribe.adoc`
+
+== DD Area Scribe Users Manual [[dd-area-scribe-users-manual]]
+
+_Original manual: version 1.3.w, July 2025._
+
+_AsciiDoc documentation update: 7 September 2026._
+
+[[scribe-documentation-status]]
+=== Documentation status — September 2026
+
+This AsciiDoc revision supplements the original version 1.3.w manual with the
+undead, mobile-template, resistance and XP work documented in this project.
+The existing sixteen numbered sections and their cross-reference targets are
+retained.
+
+The verified repository baseline is DD4 `master`, commit
+`900c61592875771c701beaf70e4e83654d029d66` (PR #707), checked on 7 September
+2026. This identifies source-code availability; it does not establish which
+executable is running on a particular server.
+
+[cols="<2,<5",options="header"]
+|===
+| Feature | Documentation status
+| Undead classification and object provenance
+| Implemented in the verified baseline: `ACT_UNDEAD`, the common
+`IS_UNDEAD()` test, `ITEM_UNDEAD`, automatic death-generated object tagging,
+and identification/immortal inspection.
+| Body species, creature archetypes and existing individual flags
+| Implemented: template resolution, individual ACT/AFF/body-form XOR masks,
+prototype initialisation, cancellation logging and `mstat` flag layers.
+| Resistance categories and archetype XP
+| Implemented: the 22 `RES_*` categories, including sonic and water;
+resistance-aware damage and selected status-effect paths; and additive
+archetype `xp_mod`.
+| Individual and live NPC resistance masks
+| *Step 4C2 interface.* Documented here to accompany the latest supplied
+implementation chunk. Its `res`, `vuln` and `imm` Scribe fields,
+`MobResists`/`MobVulnerabilities`/`MobImmunes` area fields, and live-resistance
+`mset` commands are not present in the verified baseline. Their installation,
+merge and runtime tests have not yet been confirmed.
+| Further template integration
+| Individual attack-part inputs, individual scalar overrides, automatic
+application of the remaining template scalar defaults, and execution of
+multiple inherited special functions are not supplied by these chunks.
+|===
+
+IMPORTANT: Sections marked *Step 4C2* require both the corresponding Scribe
+changes and the matching DD4 server changes. An older script rejects the new
+source fields, and an older server does not apply the new area fields. Adding
+them to this manual does not install the feature.
+
+This manual distinguishes a Scribe source field, a generated `.are` field,
+and a server-side table field. A name in `mob_table` or `merc.h` is not
+automatically a valid Scribe keyword. In particular, do not invent a source
+field named `xp_mod`, `species`, or `archetype`; see
+<<scribe-template-selection,selecting an archetype>> and
+<<scribe-template-xp,archetype XP adjustments>>.
+
+=== Contents
+
+* <<scribe-introduction,1. Introduction>> — _What is Scribe? Why use Scribe?_
+* <<scribe-usage,2. Usage>> — _How to use the script._
+* <<scribe-perl,3. What's Perl?>> — _What to do if you can't run the script._
+* <<scribe-source-files,4. Producing source files>> — _General format of Scribe source files._
+* <<scribe-area-header,5. Area header and base vnum definition>>
+* <<scribe-recall-header,6. Recall header>>
+* <<scribe-area-special,7. Area special header>>
+* <<scribe-mobiles,8. Mobiles>>
+** <<scribe-mobile-inheritance,Body species, archetypes and XOR overrides>>
+** <<scribe-mobile-undead,Undead classification>>
+** <<scribe-individual-resistances,Individual resistance fields (Step 4C2)>>
+** <<scribe-resistance-flags,Resistance categories and behaviour>>
+** <<scribe-template-xp,Archetype XP adjustments>>
+** <<scribe-mobile-diagnostics,Validation, mstat and live editing>>
+* <<scribe-objects,9. Objects>>
+** <<scribe-weapon-resistance,Ordinary weapon resistance categories>>
+** <<scribe-object-undead,Undead objects and death-generated provenance>>
+* <<scribe-object-sets,10. Object sets>>
+* <<scribe-rooms,11. Rooms>>
+* <<scribe-mobile-resets,12. Mobile resets>>
+* <<scribe-object-resets,13. Object resets>>
+* <<scribe-games,14. Games>>
+* <<scribe-helps,15. Helps>>
+* <<scribe-shops,16. Shops>>
+* <<scribe-documentation-status,Documentation status>>
+* <<scribe-revision-notes,Revision notes and source baseline>>
+
+=== 1. Introduction [[scribe-introduction]]
+
+_DD Area Scribe_ or _Scribe_ is a tool for producing formatted area files for the Dragons Domain Envy-style MUD. DD area files retain the Envy MUD format, with changes to the `#AREA` header information and the addition of new variables and flag values to other sections.
+
+Scribe is a script that reads a simplified text source file containing all area information, validates the information, and if no serious errors are found, outputs a formatted area file. Scribe is written in Perl and is run from the command line (see Section 2).
+
+Scribe was written as an alternative to writing area files by hand or by using the existing Windows tool _MZF_. The advantages and disadvantages of each of these systems might be summarised:
+
+==== Writing areas by hand
+
+Laborious; lots of redundant variables to include. Unsafe; no error or format checking.
+
+==== Using the MZF tool
+
+Easy to use; convenient and simple user interface. Format and variable checking provides some safety. Buggy; contains known bugs and bizarre behaviours. Incompatible with DD; MZF does not contain DD's special flags and values; output requires hand-editing. Win16/32 executable only.
+
+==== Using the Scribe tool
+
+Fairly laborious; all data hand written, although in a friendly, human-readable format. Safe; variable checking and correct formatting. Compatible; contains all DD special variables and flags. Requires Perl 5 for compilation.
+
+Scribe meets writing areas by hand and using MZF midway, providing full DD-server compatibility and error checking, but not including a simple to use graphical interface.
+
+=== 2. Usage [[scribe-usage]]
+
+Producing an area file with Scribe involves the following steps:
+
+==== 1. Source file is written
+
+The area source file contains all of the relevant information to be included in the final, correctly formatted area file. It is a text file with a simple, human-readable format that is easy to edit. Information can be added to the source file in any order.
+
+==== 2. Scribe is used to check the source file and write the area
+
+Scribe is used to process the area source file. It reads through the source file checking for obvious formatting errors and then validates this information, filling in any missing variables where it can. If there are serious errors then Scribe will indicate where they occur in the source file and then exit. If there are no serious errors, then the area is formatted and written to file.
+
+Scribe is a Perl script that is run from the command:
+
+`scribe.pl` _<source file> <destination file>_
+
+For example,
+
+[source, text]
+----
+scribe.pl kahsis.src kahsis.are
+----
+
+Area files traditionally have the `.are` extension. Both source and destination files must be indicated for the script to run. Scribe will create a backup copy of any existing destination file.
+
+=== 3. What's Perl? [[scribe-perl]]
+
+If you are not able to run Perl but would like to use this script to produce your areas, you can write your source files and send them to one of the DD Immortals, who will test the file and inform you of any errors.
+
+=== 4. Producing source files [[scribe-source-files]]
+
+The area source file consists of discrete blocks of data that each define area information (area name, author, etc), one mob (mobile, creature), one room, one object, one mobile reset, one object reset, one shop or one help file entry. Some reset information (e.g. shutting doors and mob special functions) are included in the above blocks. Blocks may occur in any order within the source file.
+
+A *block* consists of a *header* indicating the type of data it defines, followed by a list of *field* and *value* pairs. Fields are short keywords representing room, object, mobile or area variables. A block is terminated by the start of another block or the end of the source file.
+
+*Headers* are single words preceded by a dollar sign `$` and occupy one line. Field keywords and values are separated at least one space or tab (one tab is nice). Field/value pairs occupy one line unless they define multiple-line text blocks, in which case they are terminated by a line containing a single tilde `~`. You should not terminate single line strings of text with a tilde: these will be automatically added by Scribe.
+
+Blocks have the following format:
+
+[source, text]
+----
+$header
+field1          value1
+multiple_line_field
+<lines of text>
+~
+field2          value2
+...
+fieldN          valueN
+----
+
+For example, the following block defines the name, short name, long name, description, sex, affect flags, vnum, level and act flags variables for a mobile:
+
+[source, text]
+----
+$mob
+nm  octopus
+sh  an octopus
+lo  An octopus crawls along the coral.
+de
+The octopus' slimy body is purple with bright red blotches.
+It crawls over the coral, its tentacles writhing horribly.
+~
+sx  female
+aff hide sneak
+vn  1
+lv  5
+act scavenger wimpy stay_area
+----
+
+(Field/value pairs for each type of block are discussed in detail in Section 5 onwards.)
+
+Field/value pairs can be arranged in any order within the block. Multiple definition of the same field can be made, although only the last instance will be used. The dollar sign `$` at the beginning of a line indicates the beginning of a new block, so should be avoided.
+
+Your source file will consist of a series of blocks of any type in any order. Use your favourite text editor to produce the source file. All text before the first block header is ignored, so you can add comments if you wish. Your source file must contain an *$area* block in order to be compiled without error.
+
+Source file format:
+
+[source, text]
+----
+Any number of comments at the start of the file.
+$area   <area header information>
+$...    <mobile, room, object, etc blocks as desired>
+----
+
+You may add comments at any point in your area file by prefixing them with a non-alphanumeric symbol that is not a dollar sign `$`, e.g. `#`, `;` or whatever symbol you prefer.
+
+[source, text]
+----
+. This is a comment
+# So is this
+; The line below is a header
+$mob
+. This is a comment within a $mob block
+----
+
+==== Note
+
+Make sure that you hard-wrap lines of text in multi-line text blocks to under 80 columns, i.e. supply a carriage-return at the end of every line. Make sure your text editor isn't soft-wrapping your text!
+
+=== 5. Area header and base vnum definition [[scribe-area-header]]
+
+The *area header* block defines the `#AREA` section of the final area file. It describes the name and author of the area, and character access information. One definition is required, or your source file will produce errors.
+
+==== Note on Vnums
+
+_Vnums_, or _virtual numbers_, are the unique identification numbers for the mobiles, rooms and objects in your area. No blocks of the same type (mobs versus rooms versus objects) may share the same vnum; blocks of different types may share a particular vnum. Vnums are indicated as relative numbers in the area source file (usually beginning at zero).
+
+Scribe uses _relative vnums_: the vnums used in the source file are numbered from 0 upwards. A base vnum is defined in the area header block and is used to calculate absolute vnums from the relative values:
+
+[.text-center]
+`Final vnum in area file = base vnum + relative vnum`
+
+If you have been allocated a range of vnums from the DD Immortals for use in your area (e.g. 2600-2799), use the lowest vnum as your base (2600), and number your mobs, rooms and objects from zero upwards. If you haven't been given a range of vnums, you should still number mobs, rooms and objects from zero up, and just use any value for your base value. The use of a base value allows you to easily renumber your area if necessary, e.g. when you are finally given some to use by those lazy Imms.
+
+If you need to use vnums for rooms, mobiles or objects that are not defined in the same source file (i.e. are defined in other areas), you need to use temporary holding values and manually edit the formatted area file produced by Scribe.
+
+*Header:* `$area`
+
+.Fields
+[cols="1,3,2",options="header"]
+|===
+| Field | Description | Type
+| `au`
+| author
+| text
+| `ti`
+| title
+| text
+| `ls`
+| lower level suggested
+| number
+| `us`
+| upper level suggested
+| number
+| `le`
+| lower level enforced
+| number
+| `ue`
+| upper level enforced
+| number
+| `bv`
+| base vnum
+| number
+|===
+
+*`au` — Author*
+
+_Line of text_
+
+The person or people responsible for writing the area.
+
+*`ti` — Title*
+
+_Line of text_
+
+The name of the area. Don't make it too long (25 characters maximum).
+
+*`ls us` — Suggested level range*
+
+_Number: 0 or higher_
+
+The suggested level range for travelling to your area, as shown in the online _AREAS_ command. Use these values to indicate what level of character would profit from visiting your area; don't use them to indicate the lowest and highest level mobs (1, 100 is fairly unhelpful).
+
+*`le ue` — Enforced level range*
+
+_Number: 0 or higher_
+
+The level range for permitted entry to your area. Characters outside this range may not access the area and get the ‘God prevents you from entering there’ message when they try.
+
+Note: only the lower level limit is currently enforced.
+
+*`bv` — Base vnum*
+
+_Number: 0 or higher_
+
+The base value used to calculate absolute vnums from relative vnums. Note that if your area links to other areas in the MUD and you want to be able to have these links active while you build, it may be best to set this to 0 and use absolute vnums in your .src file, for convenience’s sake.
+
+*Example*
+
+[source, text]
+----
+$area
+ti  The Planet Vulcan
+au  Mr Spock
+ls  75
+us  90
+le  0
+ue  100
+bv  2600
+----
+
+=== 6. Recall header [[scribe-recall-header]]
+
+The *recall header* block defines the `#RECALL` section of the final area file. It provides the author with an opportunity to override the default recall room location for a player who is adventuring in the area.
+
+*Header:* `$recall`
+
+.Fields
+[cols="1,3,2",options="header"]
+|===
+| Field | Description | Type
+| `rl`
+| recall location
+| number
+|===
+
+*`rl` — Recall location*
+
+_Number: vnum of a room in the MUD_
+
+The vnum of a room a character in this area should recall to by default. Does not have to be in the current area. If the character has multiple recalls available and is using a non-default one, they will recall there, and not to the #RECALL location.
+
+*Example*
+
+[source, text]
+----
+$recall
+rl  27347
+----
+
+=== 7. Area special header [[scribe-area-special]]
+
+The area special block defines the #AREA_SPECIAL section of the area file. This section can be used to add supported area-wide features.
+
+*Header:* `$special`
+
+.Fields
+[cols="1,3,2",options="header"]
+|===
+| Field | Description | Type
+| `af`
+| area flags
+| keyword list
+| `xp`
+| experience modifier
+| number
+| `rm`
+| reset message
+| text
+| `rs`
+| reset sound file path
+| text
+| `rv`
+| reset sound volume
+| number, 0–100
+| `am`
+| area ambient sound file path
+| text
+| `av`
+| area ambient sound volume
+| number, 0–100
+| `mu`
+| area music file path
+| text
+| `mv`
+| area music volume
+| number, 0–100
+|===
+
+*`af` — area flags*
+
+_Line of text_
+
+Flags that produce area-wide effects. They include:
+
+[source, text]
+----
+school  area is a MUD SCHOOL (new character
+    beginning area)
+no_quest    no mobs in this area may be auto-quest
+    targets
+hidden  the “areas” command will not show this area,
+    and DD’s mapmaker will not generate maps
+    for it
+safe    pkilling cannot happen in this area
+no_teleport a player cannot teleport into this area
+no_magic    magic cannot be used in this area
+----
+
+[source, text]
+----
+E.g.    af  hidden no_teleport safe
+----
+
+*`xp` — experience modifier*
+
+_Number: 0 or higher_
+
+An area-wide contribution to the mobile XP percentage. `100` is the neutral
+area value, `50` is half and `200` is double at this percentage stage when no
+other contributions alter the total. Normal resets also include the existing
+special-function and equipment adjustments; the creature archetype's
+`xp_mod` is added to that same percentage rather than multiplied separately.
+See <<scribe-template-xp,Archetype XP bonuses and penalties>> for the combined
+calculation and the existing minimum-reward qualification.
+
+[source, text]
+----
+E.g.    xp  125
+----
+
+*`rm` — reset message*
+
+_Line of text_
+
+A custom reset message for the area (seen by players and imms in an area when it resets, or by an imm using the ‘reset’ command).
+
+[source, text]
+----
+E.g.    rm  Water swirls through the ruins.
+----
+
+*`rs` — area reset sound file path*
+
+_Line of text_
+
+An optional replacement for the default one-shot notification sound played when the area reset message is shown. The path is relative to the MUD audio directory, must contain no spaces, and should normally begin with notify/.
+
+If this field is omitted, the default reset sound is: notify/area_reset.mp3
+
+[source, text]
+----
+E.g.    rs notify/area/swamp_reset.mp3
+----
+
+*`rv` — area reset sound volume*
+
+_Number: 0 to 100_
+
+Source volume for the area reset notification sound. A value of 0 disables the reset sound for this area. Values from 1 to 100 override the default source volume. If this field is omitted, the default volume of 60 is used. The rv field may be used without rs to change the volume of the default reset sound. The final volume is scaled by the player's master and notification volume settings.
+
+[source, text]
+----
+E.g.    rv 55
+----
+
+*`am` — area ambient sound file path*
+
+_Line of text_
+
+Relative path to an ambient sound file to use for atmospheric sound for the area. This will play throughout the area on loop unless a room sound file exists.
+
+[source, text]
+----
+E.g.    am ambient/area/crypt.mp3
+
+----
+
+*`av` — area ambient volume*
+
+_Number: 0 to 100_
+
+Volume setting for ambient loop. Will be scaled by player master volume level.
+
+[source, text]
+----
+E.g.    av 25
+----
+
+*`mu` — area music sound file path*
+
+_Line of text_
+
+Relative path to a music sound file to use for background music for the area. This will play throughout the area on loop unless a room music file exists, and independently of the ambient sound layer.
+
+[source, text]
+----
+E.g.    mu music/area/crypt.mp3
+
+----
+
+*`mv` — area music volume*
+
+_Number: 0 to 100_
+
+Volume setting for the area music loop. It is scaled by the player's master and music volume settings.
+
+[source, text]
+----
+E.g.    mv 25
+----
+
+*Example*
+
+[source, text]
+----
+$special
+af hidden no_teleport
+xp 125
+rm Water swirls through the ruins.
+rs notify/area/ruins_reset.mp3
+rv 55
+am ambient/area/crypt.mp3
+av 25
+mu music/area/crypt.mp3
+mv 20
+----
+
+=== 8. Mobiles [[scribe-mobiles]]
+
+Mobiles are the creatures that populate your area. They are defined in the `#MOBILES` section of the final area file. You don't have to define any mobs in your area for it to be valid. Mobs are individually defined in single blocks. You can have as many mobile blocks as you wish. Mobiles may not share the same vnum: this will produce an error when you run Scribe over your source file. Remember to format your descriptive text fields to fit within an 80-column screen!
+
+*Block header:* `$mob` or `$mobile`
+
+.Fields
+[cols="1,3,2",options="header"]
+|===
+| Field | Description | Type
+| `nm`
+| name (keywords)
+| text
+| `sh`
+| short description
+| text
+| `lo`
+| long description
+| text
+| `de`
+| description
+| multi-line text block
+| `vn`
+| vnum
+| number
+| `lv`
+| level
+| number
+| `al`
+| alignment
+| number
+| `sx`
+| sex
+| keyword
+| `bf`
+| body form
+| keyword list
+| `act`
+| act flags
+| keyword list
+| `aff`
+| affect flags
+| keyword list
+| `sp`
+| special function
+| keyword
+| `rnk`
+| “rank” of mob
+| keyword
+| `mp`
+| mob program
+| multi-line text block
+| `te`
+| teacher skill
+| text
+| `ff`
+| terrain-specific footstep foley override; repeatable
+| keyword
+| `res`
+| individual resistance XOR mask — Step 4C2
+| keyword list or decimal mask
+| `vuln`
+| individual vulnerability XOR mask — Step 4C2
+| keyword list or decimal mask
+| `imm`
+| individual immunity XOR mask — Step 4C2
+| keyword list or decimal mask
+|===
+
+[[scribe-mobile-inheritance]]
+==== Body species, creature archetypes and individual mobile flags
+
+A *body species* describes a broad physical form, such as `humanoid`,
+`elemental` or `farm_mammal`. A *creature archetype* is a more specific entry
+in the server's `mob_table`, such as `goat` or `fire_elemental`, which refers
+to one body species. A particular `#MOBILES` entry supplies the individual
+mobile's descriptions, level, flags and other area-authored values.
+
+For the ACT, AFF and body-form flags already supported by Scribe, the server
+resolves the layers in this order:
+
+[source,text]
+----
+body-species defaults XOR creature-archetype masks
+    = inherited template
+
+inherited template XOR original individual #MOBILES mask
+    = effective prototype flags
+
+copy prototype flags when an NPC is created
+    = initial live flags
+----
+
+Runtime spells, equipment, resets and immortal commands can subsequently
+change the live instance. They do not repeatedly reapply XOR to that instance.
+The original individual masks are retained separately from the prototype's
+effective values.
+
+===== Adding and removing inherited flags
+
+For one flag, the individual mask has the following meaning:
+
+[cols="<1,<1,<1,<3",options="header"]
+|===
+| Inherited bit | Individual bit | Effective bit | Result
+| Off | Off | Off | Leave the flag absent.
+| Off | On | On | Add the flag.
+| On | Off | On | Keep the inherited flag.
+| On | On | Off | Cancel the inherited flag.
+|===
+
+`none`, `zero`, `0`, or omission of an existing flag field means an empty
+*individual* mask. On a templated mobile, that inherits the corresponding
+template unchanged; it does not clear all inherited flags. On an untemplated
+mobile, the inherited mask is zero, so the existing ordinary flag behaviour
+is preserved.
+
+Example: suppose an archetype supplies `ACT_UNDEAD`. Its individual Scribe
+field `act undead` cancels that classification. The same field gives an
+untemplated mobile the undead classification. The meaning depends on the
+selected template, not on the flag word alone.
+
+[source,text]
+----
+# Keep an inherited undead flag and add sentinel:
+act sentinel
+
+# Cancel an inherited undead flag and add sentinel:
+act undead sentinel
+----
+
+These lines illustrate the individual mask only. The archetype must also be
+selected in the generated area entry as described below. They do not define
+or select a skeleton archetype by themselves.
+
+Within a single field, flags form one mask. Repeating a word within the field
+is not another inheritance layer. Repeating the same source field replaces
+its earlier definition; it is not an additional XOR operation. The server
+logs bits cancelled at the template-to-individual boundary, rather than
+requiring builders to discover those cancellations through combat.
+
+===== Protected engine flags
+
+`ACT_IS_NPC` is always enabled on an NPC prototype. It cannot be cancelled
+through inheritance. `AFF_CHARM` is always removed from the initial prototype:
+charm is a runtime relationship, not a safe way to create a pre-charmed mobile
+by listing `aff charmed`. Scribe can recognise the word, but recognising it
+does not override this server restriction.
+
+===== Body-form masks and migration
+
+The body-form mask contains both `BODY_*` restrictions and positive `PART_*`
+flags. They are independent bits. To remove an inherited heart represented by
+`PART_HEART`, cancel that bit and add `BODY_NO_HEART` where the intended
+anatomy requires it. Adding a negative flag does not automatically remove a
+positive part flag, and removing a positive part flag does not necessarily
+satisfy the engine's negative-flag anatomy tests.
+
+The Scribe `bf` keyword list remains the list documented below; template
+support does not automatically add every `PART_*` C constant as a Scribe
+keyword. A combined non-negative decimal mask can be used for supported bits
+whose textual names are not in Scribe. Consult `merc.h` for their values.
+
+When moving an existing mobile onto a template, inspect its old individual
+flags before regenerating the area. Duplicated defaults now mean cancellation.
+For example, the elemental template supplies `BODY_NO_ARMS` and
+`BODY_NO_LEGS`. An old individual body mask of `12` (4 + 8) cancels both;
+changing that individual mask to `0` retains the inherited restrictions.
+
+Do not put the final expanded flags back into `act`, `aff`, or `bf` on export.
+Doing so can cancel the very defaults the editor intended to preserve.
+
+[[scribe-template-selection]]
+===== Selecting an archetype: `.are` syntax versus Scribe syntax
+
+The server reads an optional mob-spec/rank line in a mobile's `.are` entry:
+
+[source,text]
+----
+< fire_elemental~ elite~
+----
+
+The first string selects the creature archetype; the second selects the rank.
+The archetype in turn names its body species. Template definitions are
+server-side C tables and require a server rebuild when changed.
+
+The verified Scribe script does *not* provide a source field for choosing a
+creature archetype. Its `sp` field chooses a special function, and `rnk`
+chooses a rank. For a non-default rank, Scribe currently emits a line such as:
+
+[source,text]
+----
+< reserved~ elite~
+----
+
+A workflow using Scribe must therefore preserve or apply the desired archetype
+in the generated `.are` file after generation, replacing that `reserved`
+selection when necessary. Do not put the literal `< ...~ ...~` line into a
+Scribe `$mob` source block and expect it to be recognised. Regenerating the
+area can overwrite a hand-edited archetype selection.
+
+Step 4C2 adds resistance fields but does not add a source-level archetype
+selector. DD Builder integration must preserve this distinction too.
+
+===== Template fields which are not yet live defaults
+
+The resolved template contains ACT, AFF, body form, attack parts, resistance
+masks, HP/damage/critical/haste modifiers, dimensions, size, language, special
+names and the archetype XP adjustment. The presence of a value in a template
+diagnostic is not proof that it is already applied to a live mobile.
+
+In this implementation stage, ACT/AFF/body flags are applied at prototype
+loading; resistance data drives the resistance system; and `xp_mod` is used
+by the XP helper. Attack parts and the remaining template scalar defaults
+are resolved and displayed, but their subsequent live integration is still
+separate work. The special-function names are resolved and validated without
+automatically activating all three slots.
+
+For the template scalar fields using `MOB_TEMPLATE_UNSET`, an archetype value
+inherits when it is unset; otherwise it replaces the body-species value.
+Literal zero is an explicit scalar value. If neither layer supplies a value,
+the resolver returns zero. This is a C-table convention, not new Scribe input
+syntax.
+
+For template special names, `NULL` means inherit, an empty string explicitly
+clears an inherited name, and a non-empty string replaces it. The existing
+single active `sp` special remains the builder-facing mechanism until active
+special inheritance is implemented. `xp_mod` has its own zero-based additive
+rule, described in <<scribe-template-xp,Archetype XP>>.
+
+==== Mobile source fields
+
+*`nm` — Name (keywords)*
+
+_Line of text_
+
+The keywords that can be used to indicate the mob.
+
+[source, text]
+----
+E.g.    nm  wraith hazy shadow
+----
+
+*`sh` — Short description*
+
+_Line of text_
+
+The short name of the mob, used whenever an action is performed involving the mob. Don't capitalise any leading ‘a’, ‘the’, ‘an’, etc: the DD server does automatically where necessary.
+
+[source, text]
+----
+E.g.    sh  an alligator
+sh  the Gatekeeper
+sh  Mycroft
+----
+
+*`lo` — Long description*
+
+_Line of text_
+
+The description of the mob as it appears in room after the _LOOK_ command is issued. Capitalise the initial letter and don't make the description too long if the mob will have many affect flag labels like _(White Aura)_ and _(Flaming)_. Remember full stops etc.
+
+[source, text]
+----
+E.g.    lo  A snake lurks in the grass.
+----
+
+*`de` — Description*
+
+_Multiple-line text block_
+
+The description of the mob as it appears after the _LOOK <mobile>_ command is issued. Descriptions can span multiple lines; the `de` text block is terminated by a line containing a single tilde ~. Text on the same line after the `de` keyword is ignored. It is best to justify your text hard up against the left margin. Leading space before the first character in the block is removed by the DD server.
+
+[source, text]
+----
+E.g.    de
+The alligator is immense and ferocious,
+thrashing its tail in the water and
+baring its razor-like teeth.
+~
+----
+
+*`vn` — Vnum*
+
+_Number: 0 or higher_
+
+The virtual number of the mob: its unique identifier. Remember this is a relative value, and will most likely begin at 0 (see Section 5).
+
+*`lv` — Level*
+
+_Number: 0 or higher_
+
+The level of the mob.
+
+*`al` — Alignment*
+
+_Number: -1000 to 1000_
+
+_Default: 0_
+
+How good or evil the mob is. -1000 is absolutely evil, 0 is true neutral, 1000 is absolutely good. Defaults to zero if not indicated.
+
+*`sx` — Sex*
+
+_Keyword_
+
+_Default: neuter_
+
+The sex of the mob. Defaults to neuter (sexless) if not present. Indicated by a single keyword:
+
+[source, text]
+----
+neuter
+male
+female
+E.g.    sx  female
+----
+
+*`bf` — Body form*
+
+_Keyword list_
+
+_Default: none_
+
+Describes the morphology (physical structure) of the mob. Without an
+archetype, the zero mask retains the traditional normal-sized, speaking,
+flesh-and-blood humanoid assumptions. With an archetype, `none` is an empty
+individual mask: the inherited body form remains in effect. See
+<<scribe-mobile-inheritance,body-form inheritance and migration>>.
+
+Body form controls carnage and corpse production upon the mobile’s death, and affects what combat manoeuvres the mob may use or have used against it.
+
+Body form is set using a list of any of the following keywords:
+
+[source, text]
+----
+none    default value
+no_head has no head
+no_eyes has no eyes
+no_arms has no arms
+no_legs     has no legs
+no_heart    has no heart
+no_speech   cannot speak the common language
+no_corpse   does not produce a corpse: body disappears
+    upon death and loot falls to the ground
+huge    enormous in size
+inorganic   not made of flesh and blood
+has_tail    has a tail
+E.g.    bf  no_arms no_speech
+bf  no_heart inorganic no_speech huge
+----
+
+*`act` — Act flags*
+
+_Keyword list_
+
+_Default: none_
+
+Act flags define how the mobile behaves within the MUD world. Without an
+archetype, an omitted field uses the traditional `none` defaults. With an
+archetype, omission or `none` leaves the inherited ACT flags unchanged, and
+listing an inherited flag cancels it. `ACT_IS_NPC` remains protected. The
+following Scribe keywords may be used:
+
+[source, text]
+----
+none, zero  no flags
+sentinel    stays in one place
+scavenger   picks up objects from ground
+questmaster can give players random quests
+aggressive  aggressive: attacks players within sensible
+    range
+stay_area   does not leave the area
+wimpy   flees from combat if hurt
+no_quest    will not be selected as a target for a quest
+practice    can train players
+regenerator heals much faster than normal
+no_charm    cannot be charmed
+healer  is a healing mob
+famous  fame rewarded if killed
+lose_fame   fame subtracted if killed
+wizinvis    undetectable by players
+mount   can be mounted
+tinker  repair damaged items for money
+banker  runs a bank for players
+identify    identifies objects for players
+die_if_master_gone  will die if its master is not in the same room
+clan_guard  guards a clan HQ
+no_summon   cannot be magically summoned
+no_experience   does not give experience if killed
+no_heal cannot heal damage inflicted on it
+cannot_fight    won’t fight back when attacked
+objectlike  for mobs you want to behave like destructible
+    objects
+    invulnerable cannot be physically damaged
+blink    Access to the "blink" ability (defensive)
+undead         Marks mobile as undead
+unkillable  will not die, no matter how much damage is
+    done to it
+
+E.g.    act aggro scavenger
+    act no_charm no_quest lose_fame
+    act mount
+----
+
+*`aff` — Affect flags*
+
+_Keyword list_
+
+_Default: none_
+
+Affect flags define special abilities or magical/supernatural effects on the
+mob. Without an archetype, an omitted field uses `none`. With an archetype,
+omission or `none` leaves inherited AFF flags unchanged, and listing an
+inherited flag cancels it. Some entries represent runtime conditions rather
+than sensible creation defaults. In particular, `charmed` is recognised by
+Scribe but the server removes `AFF_CHARM` from the initial prototype.
+
+[source, text]
+----
+none, zero  no flags
+blind   cannot see
+sneak   movement not reported
+hide    cannot be seen if still
+passdoor    may move through closed doors
+invis   is invisible (normal invis)
+infrared    has infrared vision
+det_evil    can detect evil mobs or players
+det_invis   can detect invis
+det_magic   can detect magic
+det_hidden  can detect hidden mobs or players
+det_good    can detect good mobs or players
+det_curse   detects cursed targets for relevant mob behaviour
+det_traps   can detect traps
+det_sneak   can detect sneaking mobs or players
+hold    is trapped, cannot move
+sanctuary   has sanctuary spell
+globe   has globe spell
+protection  has protection spell
+faerie_fire has faerie fire spell
+flaming has fireshield spell
+meditate    is meditating
+fly is flying
+cursed  can’t recall, attacked by mobs with det_curse
+poison  is poisoned
+sleep   is asleep
+charmed is charmed
+battle_aura has battle aura (damage reduction)
+deter   affected by deter spell
+swim    is swimming
+plague  is affected by the plague prayer
+non_corporeal   does not interact with the world much
+swallowed   has been swallowed by a large creature
+no_recall      can’t recall (but not cursed!)
+DOT takes damage every tick update
+prone   can’t use skills, can still cast
+dazed   can’t do anything
+confusion   is confused; may wander despite sentinel
+slow    has been slowed (many negative effects)
+
+E.g.    aff sneak hide invis infrared
+    aff globe sanctuary flaming fly
+    aff poison
+----
+
+*`sp` — Special function*
+
+_Keyword_
+
+_Special functions_ give extra behaviours to mobs either during combat or outside of combat. If you don't wish to give your mob a special function, do not include the `sp` field at all; if you include an `sp` field and leave it blank you will produce an error.
+
+Only one special function may be granted per mob:
+
+This statement refers to the active `sp`/`#SPECIALS` mechanism. It is separate
+from the three default special-name slots stored in the new templates; those
+slots are currently resolved and validated but not all executed as inherited
+specials. `sp` is not an archetype selector. See
+<<scribe-template-selection,Selecting an archetype>>.
+
+
+[source, text]
+----
+spec_breath_acid    breathes acid [combat]
+spec_breath_fire    breathes fire [combat]
+spec_breath_frost   breathes frost [combat]
+spec_breath_gas breathes gas [combat]
+spec_breath_lightning   breathes lightning [combat]
+spec_breath_steam   breathes steam [combat]
+spec_breath_any breathes any of the above at random
+spec_buddha random breath weapons and cleric
+    spells [combat]
+spec_guard  attacks killers, thieves or evil
+    players
+spec_kungfu_poison  poison-palm technique [combat]
+spec_warrior    warrior skills [combat]
+spec_vampire    vampire skills [combat]
+spec_mast_vampire   powerful vampire skills [combat]
+----
+
+[source, text]
+----
+spec_bloodsucker    sucks blood [combat]
+spec_clan_guard guards clan entrance
+spec_cast_adept healer
+spec_cast_hooker    sexy healer ;)
+spec_cast_druid casts druid spells [combat]
+spec_cast_water_sprite  casts cleric/mage/psionic spells
+    [combat]
+spec_cast_cleric    casts cleric spells [combat]
+spec_cast_ghost undead ghost; appears only during
+    night
+spec_cast_judge fires explosive bullets (a la Dredd)
+    [combat]
+spec_cast_mage  casts mage spells [combat]
+spec_cast_psionicist    casts psionic spells [combat]
+spec_cast_undead    casts undead spells [combat]
+spec_cast_orb   powerful healer
+spec_cast_archmage  casts powerful mage spells
+    [combat]
+spec_cast_priestess casts powerful cleric spells
+    [combat]
+spec_cast_chill casts spell chill touch [combat]
+spec_executioner    attacks thieves and killers
+spec_fido   eats corpses
+spec_guard  cityguard
+spec_janitor    gathers rubbish from ground
+spec_poison poisonous bite [combat]
+spec_repairman  repairs broken doors
+spec_thief  steals coins
+spec_assassin   assassin skills [combat]
+spec_bounty old grail spec (deprecated)
+spec_grail  teleporting healer and thief/killer
+    assassin
+spec_scavenger  gets objects from ground
+spec_cleaner           gathers rubbish from ground
+spec_spectral_minion   teleporting mob spec for
+    bastion.are—not for general use
+spec_celestial_repairman a better broken door repairman
+    (teleports)
+spec_sahuagin   sahuagin-based skills/spells
+    [combat]
+spec_evil_evil_gezhp    give to mobs you don’t want
+    players messing with
+spec_demon    demon/infernal spells [combat]
+spec_cast_electric     electricity-based attacks [combat]
+spec_small_whale    flukeslaps [combat]
+spec_large_whale    flukeslaps and swallows [combat]
+spec_kappa  kappa skills/spells [combat]
+spec_aboleth    aboleth skills/spells [combat]
+spec_laghathti  laghathti skills/spells [combat]
+spec_superwimpy        tries very hard to escape combat
+spec_uzollru           uzollru skills/spells [combat]
+spec_sahuagin_baron    sahuagin baron skills/spells
+    [combat]
+spec_sahuagin_prince   sahuagin prince skills/spells
+    [combat]
+spec_green_grung    green grung skills/spells
+    [combat]
+spec_sahuagin_infantry sahuagin infantry skills/spells
+    [combat]
+spec_sahuagin_cavalry  sahuagin cavalry skills/spells
+    [combat]
+spec_sahuagin_guard    sahuagin guard skills/spells
+    [combat]
+spec_sahuagin_lieutenant sahuagin lieutenant skills/spells
+    [combat]
+spec_sahuagin_cleric sahuagin cleric skills/spells [combat]
+spec_sahuagin_high_cleric sahuagin high priest/shaman
+    skills/spells [combat]
+spec_red_grung  red grung (mage) skills/spells
+    [combat]
+spec_blue_grung     blue grung skills/spells
+    [combat]
+spec_purple_grung   purple grung skills/spells
+    [combat]
+spec_orange_grung   orange grung skills/spells
+    [combat]
+spec_gold_grung     gold grung skills/spells
+    [combat]
+
+E.g.    sp  spec_cast_adept
+----
+
+*`mp` — Mob program*
+
+_Multi-line text block_
+
+_Mob programs_ (_mob progs_, _mprogs_) are scripts that add special functionality to mobs. What mob progs are available and what syntax they use is not discussed here, but up to date documentation is distributed with the MUD’s source, and can be read online https://dragons-domain.org/main/building/mobprogram.txt[here].
+
+A single mob prog is defined by each `mp` tag; you can have as many `mp` tags per mobile as you like. Mob progs are defined using the following format:
+
+[source, text]
+----
+mp  <mob prog name and arguments>
+<mob prog code>
+~
+E.g.    mp  death_prog 100
+        mpecho The water begins to thrash!
+        mpmload 2601
+        mpmload 2601
+----
+
+*`rnk` — Rank*
+
+_Keyword_
+
+Mobs may be of rank common (default), rare, elite, boss, and world (in increasing order of power). Common is assumed if this field is absent. Higher ranks increase the probability of dropping more powerful equipment and give a hitpoint bonus to mobiles.
+
+Rank and creature archetype are separate selections. The current Scribe rank
+export uses `reserved` as the archetype in its generated mob-spec line; it does
+not infer an archetype from the mob's name or `sp` field. Preserve the intended
+archetype selection when regenerating a ranked mobile's area entry.
+
+
+[source, text]
+----
+E.g.    rnk world
+----
+
+*`te` — Teacher skill*
+
+_Line of text_
+
+Some mobs are able to train particular skills for players. The mob must have the `practice` act flag set or these fields will be ignored. You can define as many teacher fields as you like per mob. Use the following format:
+
+[source, text]
+----
+te  <percentage>  <skill name>
+----
+
+_Percentage_ must be a number that is 0 or higher. Do not quote skill names if they contain multiple words.
+
+[source, text]
+----
+E.g.    te  100 divine magiks
+te  75 flamestrike
+----
+
+*`ff` — Footstep foley override*
+
+_Line of text_
+
+Defines a terrain-specific footstep foley override for this mobile. This causes scribe to generate an FStep field in the formatted area file, using the mobile’s final absolute vnum.
+
+Use one terrain keyword per `ff` field. You may define as many `ff` fields as required for a mobile.
+
+Valid keywords:
+
+[source, text]
+----
+inside
+city
+field
+forest
+hills
+mountain
+water or water_swim
+noswim, no_swim, or water_no_swim
+underwater
+air
+desert
+swamp
+underwater_ground
+----
+
+The generated sound key has this form:
+
+[source, text]
+----
+sfx.foley.mob.<absolute mob vnum>.<terrain>
+----
+
+Note: The area creator will have to ensure the key exists in sound_const.c and the foley sound files have been uploaded to the appropriate location on the server.
+
+*Examples*
+
+[source, text]
+----
+$mob
+nm  imp horrible
+sh  an imp
+lo  A horrible imp prances about the room.
+de
+The imp looks horrible, its hairless body a dirty brown
+colour and its eyes a mucky yellow.
+~
+vn  0
+lv  2
+
+$mob
+nm  gezhp mighty warrior dwarf dwarven
+sh  Gezhp
+lo  Gezhp the mighty dwarven warrior stands afore!
+de
+What a fearsome yet attractive fellow this dwarven warrior
+is... such a magnificent beard, etc.
+~
+vn  1
+lv  150
+act sentinel famous no_charm practice
+aff sanctuary globe flaming det_evil
+bf  no_heart
+sx  male
+rnk    rare
+te  100 headbutt
+te  100 charm
+te  100 dwarven wrestling
+al  750
+mp  rand_prog 10
+    say Dwarvish?  You're not wrong!
+~
+mp  death_prog 100
+    shout AIEE!  I'm done for!
+~
+sp  spec_warrior
+----
+
+[[scribe-mobile-undead]]
+==== Undead mobile classification
+
+`act undead` represents `ACT_UNDEAD` (`BIT_30`, decimal `1073741824`). It
+classifies an NPC as undead; it does not automatically assign an alignment,
+anatomy, mindlessness, spell immunity, or an entire skeleton/vampire behaviour
+package. Supply those traits separately through the relevant flags and
+archetype definition.
+
+The common server test is `IS_UNDEAD(character)`. For NPCs it checks the live
+`ACT_UNDEAD` flag. For PCs the currently supported case is
+`SUBCLASS_VAMPIRE`; this work does not introduce a general `PLR_UNDEAD`
+builder flag.
+
+Use the same <<scribe-mobile-inheritance,XOR rule>> when an archetype already
+supplies `ACT_UNDEAD`. `mstat` is the way to distinguish an inherited flag,
+an individual cancellation and the actual live classification.
+
+[source,text]
+----
+$mob
+vn  7
+nm  revenant watchman
+sh  a revenant watchman
+lo  A revenant watchman stands motionless beside the gate.
+de
+The watchman's ruined face turns slowly towards you.
+~
+lv  25
+act undead sentinel
+----
+
+This example directly flags an otherwise untemplated mobile. It does not
+select a new creature archetype or grant any implicit resistance package.
+
+Object provenance uses the separate `ex undead` flag, documented under
+<<scribe-object-undead,Undead objects and generated remains>>. Giving an
+object that flag does not make its holder undead.
+
+[[scribe-individual-resistances]]
+==== Individual resistance fields — Step 4C2
+
+IMPORTANT: This subsection documents the supplied Step 4C2 interface. It is
+not present in the verified PR #707 baseline. Install the matching Scribe and
+server changes before using these fields; see
+<<scribe-documentation-status,Documentation status>>.
+
+*`res` — Resistance XOR mask*
+
+_Keyword list or combined non-negative decimal mask_
+
+_Default: omitted; inherit without change_
+
+Adds or cancels bits in the inherited resistance mask.
+
+*`vuln` — Vulnerability XOR mask*
+
+_Keyword list or combined non-negative decimal mask_
+
+_Default: omitted; inherit without change_
+
+Adds or cancels bits in the inherited vulnerability mask.
+
+*`imm` — Immunity XOR mask*
+
+_Keyword list or combined non-negative decimal mask_
+
+_Default: omitted; inherit without change_
+
+Adds or cancels bits in the inherited immunity mask.
+
+Each field is resolved independently. A zero mask inherits that category; it
+does not clear it. A mobile without an archetype has zero inherited masks,
+so these fields can directly give it resistances, vulnerabilities or immunities.
+
+Scribe accepts keywords separated by spaces, or one combined decimal number:
+
+[source,text]
+----
+res cold sonic
+vuln fire
+imm poison paralysis
+----
+
+Use the <<scribe-resistance-flags,resistance keyword reference>> below.
+`none` and `zero` are aliases for an empty mask. A blank, explicitly supplied
+field is invalid. Numeric masks must contain only defined resistance bits.
+There is no `RES_NONE` C macro; zero is the empty mask.
+
+A compact expression such as `1|256` is server `.are`/`mset` syntax, not a
+Scribe keyword list. For Scribe use `fire poison` or the combined number
+`257`. Repeating the same Scribe field uses its last definition.
+
+===== Generated area fields and placement
+
+[cols="<1,<2,<4",options="header"]
+|===
+| Scribe field | Generated `.are` field | Meaning
+| `res` | `MobResists` | Individual resistance XOR mask.
+| `vuln` | `MobVulnerabilities` | Individual vulnerability XOR mask.
+| `imm` | `MobImmunes` | Individual immunity XOR mask.
+|===
+
+The generated fields follow the ordinary mobile data, any mob programs,
+the optional archetype/rank line and teacher entries. They may accompany the
+optional `FStep...` fields, before the next mobile entry or `#0` terminator.
+They do not use a tilde terminator.
+
+[source,text]
+----
+< fire_elemental~ elite~
+MobResists 2
+MobVulnerabilities 1
+MobImmunes 1
+----
+
+This is an *area-file tail*, not a Scribe source block. The values above add
+cold resistance, add fire vulnerability, and cancel inherited fire immunity.
+It assumes the selected template starts with fire immunity and no conflicting
+cold resistance state.
+
+The `.are` parser accepts a decimal mask or decimal values joined by `|`
+without spaces. Values within that one mask are ORed together. Repeating an
+area field replaces its earlier individual mask; it does not toggle the
+inherited state a second time.
+
+Negative numbers, unknown bits, overflow and malformed expressions are
+rejected. For example, `4194304` is bit 22 and is undefined in this revision.
+
+===== Moving a category between resistance states
+
+Suppose the inherited template is immune to fire. This Scribe input changes
+that category to vulnerability:
+
+[source,text]
+----
+vuln fire
+imm fire
+----
+
+The repeated fire bit in `imm` removes inherited immunity; the fire bit in
+`vuln` adds vulnerability. Overlap between these *input* masks is intentional.
+Only the fully resolved state must be free of contradictory categories.
+
+Adding `vuln fire` alone leaves the inherited immunity active and creates a
+conflicting effective definition. The boot diagnostic reports the conflict;
+the established runtime resolver still gives immunity precedence.
+
+Raw masks remain builder input. The server resolves a prototype once and
+copies its effective masks into independent live instances. It does not
+re-XOR the template on each attack. Live edits therefore affect only the
+chosen instance, as described under <<scribe-mobile-diagnostics,inspection
+and live editing>>.
+
+[[scribe-resistance-flags]]
+==== Resistance category reference
+
+The 22 categories below are available to the server's template and effect
+masks. The Scribe keywords in the first column are supplied by Step 4C2 for
+`res`, `vuln` and `imm`. Earlier `act`, `aff`, `bf` and object `ex` lists use
+separate flag namespaces and must not use these numeric values interchangeably.
+
+[cols="<2,<2,<1,<4",options="header"]
+|===
+| Scribe keyword | C flag | Decimal bit | Category
+| `fire` | `RES_FIRE` | 1 | Fire and heat effects.
+| `cold` | `RES_COLD` | 2 | Cold and freezing effects.
+| `electricity` | `RES_ELECTRICITY` | 4 | Electrical effects.
+| `energy` | `RES_ENERGY` | 8 | Effects explicitly classified as generic energy.
+| `blunt` | `RES_BLUNT` | 16 | Impact and crushing attacks.
+| `pierce`, `piercing` | `RES_PIERCE` | 32 | Piercing attacks.
+| `slash`, `slashing` | `RES_SLASH` | 64 | Slashing attacks.
+| `acid` | `RES_ACID` | 128 | Acid effects.
+| `poison` | `RES_POISON` | 256 | Poison/toxin-classified effects.
+| `drain` | `RES_DRAIN` | 512 | Draining effects.
+| `sleep` | `RES_SLEEP` | 1024 | Sleep effects.
+| `charm` | `RES_CHARM` | 2048 | Charm/control-classified effects.
+| `hold` | `RES_HOLD` | 4096 | Holding and restraint effects.
+| `nonmagic`, `non_magic` | `RES_NONMAGIC` | 8192 | Nonmagical-source attacks.
+| `magic` | `RES_MAGIC` | 16384 | Magical-source effects.
+| `paralysis` | `RES_PARALYSIS` | 32768 | Paralysis and other explicitly classified effects, including Slow.
+| `psychic` | `RES_PSYCHIC` | 65536 | Psychic/mental-classified effects.
+| `holy` | `RES_HOLY` | 131072 | Holy-classified effects.
+| `dark` | `RES_DARK` | 262144 | Dark-classified effects.
+| `curse` | `RES_CURSE` | 524288 | Curse effects.
+| `sonic` | `RES_SONIC` | 1048576 | Sonic-classified harmful effects; added as `BIT_20`.
+| `water` | `RES_WATER` | 2097152 | Water-classified harmful effects; added as `BIT_21`.
+|===
+
+The combined valid mask in this revision is `4194303` (bits 0 through 21).
+This is the set of currently defined bits, not a separate resistance kind or
+a recommendation to give every category to a mobile.
+
+===== Damage and status-effect behaviour
+
+The attack/effect supplies a mask and the target supplies its resistance
+state. Multiple matching categories produce *one* result for that damage or
+status resolution:
+
+[cols="<2,<5",options="header"]
+|===
+| Result | Behaviour in the resistance helper
+| Immune | A matching immunity wins over resistance or vulnerability; positive damage becomes zero.
+| Resistant | With no matching vulnerability or immunity, positive damage is halved, with a minimum of one point.
+| Normal | No category matches, or the attack matches both resistance and vulnerability without matching immunity; the helper leaves damage unchanged.
+| Vulnerable | With no matching resistance or immunity, positive damage becomes the original damage plus half that damage, rounded down.
+|===
+
+These percentages describe the resistance adjustment, not every later combat
+modifier. A genuine miss enters with zero damage and remains a miss. An attack
+which connects but is nullified by immunity receives a distinct immunity
+message. Other mitigation systems can still affect the final damage.
+
+For a combined attack such as `RES_FIRE | RES_MAGIC`, fire immunity or magic
+immunity can negate the whole damage event. Resistance to magic and
+vulnerability to fire cancel to normal. Being vulnerable to both categories
+still applies the vulnerability adjustment only once, not twice.
+
+Selected status-effect paths use `saves_resistance_effect()`. Immunity makes
+that resistance-aware save succeed; resistance gives a five-level effective
+caster penalty, and vulnerability a five-level effective caster bonus. This
+corresponds to a nominal 20-percentage-point saving-throw shift away from
+level/chance clamps, not an unconditional 20-point shift at every level.
+The existing save limits and other saving-throw rules still apply.
+
+A flag in `skill_table` does not by itself make every bespoke skill, rider,
+room effect or direct resource change consult the resistance system. Check
+the relevant implementation and test both damage and secondary effects.
+The generic NPC system also does not replace existing PC resistance skills
+and spells, even when the PC is a vampire.
+
+[[scribe-sonic-water]]
+===== Sonic and water categories
+
+The added categories have specific, already-selected uses:
+
+[cols="<2,<3,<4",options="header"]
+|===
+| Ability | Effect categories | Implementation qualification
+| Sonic Blast | `RES_SONIC` and `RES_MAGIC`
+| Sonic replaces the previous generic energy classification. The supplied
+immunity guard also blocks its secondary nausea, confusion and ongoing effect.
+| Bubble Jet | `RES_BLUNT`, `RES_NONMAGIC` and `RES_WATER`
+| Water is added without removing impact/source categories. Its immunity guard
+also blocks the subsequent disorientation effects.
+| Flood | `RES_BLUNT`, `RES_MAGIC` and `RES_WATER`
+| The water classification is metadata for this implementation stage. Flood
+changes the room; the flag does not automatically prevent flooding or drowning.
+|===
+
+Water resistance is not underwater breathing, cold resistance or acid
+resistance. Sonic resistance is not a blanket counter to every spell with a
+spoken word, chant or vocal casting component. Additional ability
+classifications require deliberate changes and, where necessary, additional
+runtime checks. Earlier candidate suggestions for other abilities are not
+newly enabled rules in this manual.
+
+[[scribe-template-xp]]
+==== Archetype XP bonuses and penalties
+
+A creature archetype can supply `xp_mod`, a signed adjustment in *percentage
+points*. It is the final field of the server-side `mob_table` entry and is
+carried into the resolved template. It is not an ordinary Scribe `$mob`
+field, not an individual `.are` field, and not a body-species field in this
+implementation.
+
+[cols="<1,<4",options="header"]
+|===
+| `xp_mod` | Meaning
+| `0` | No archetype adjustment. Use this rather than `MOB_TEMPLATE_UNSET`.
+| `25` | Add 25 percentage points to the existing XP modifier.
+| `-25` | Subtract 25 percentage points from the existing XP modifier.
+|===
+
+The effective percentage is calculated by `get_mob_exp_modifier()`:
+
+[source,text]
+----
+effective XP percentage = existing stored modifier + archetype xp_mod
+
+XP at this calculation stage = base XP * effective percentage / 100
+----
+
+The existing stored modifier includes whatever the normal creation/reset
+path assigned, including area, special-function and equipment contributions.
+The archetype adjustment is added to that same base percentage once. It is
+not a second multiplier, and the special-function modifier is not added again.
+
+[source,text]
+----
+Existing percentage    Archetype adjustment    Effective percentage
+120                    +25                     145
+120                    -25                      95
+100                      0                     100
+----
+
+Negative effective percentages are clamped to zero. Later XP adjustments,
+randomisation and existing minimum-reward rules still apply, so a very large
+penalty or an area `xp` value of zero does not necessarily mean zero final XP.
+Use the existing `act no_experience` flag for a mobile intended to award no
+experience, allowing for its XOR meaning on a templated mobile.
+
+The existing fame rule which halves fame below an XP modifier of 100 now
+consults the effective percentage too. An archetype adjustment which crosses
+that threshold can therefore change that existing fame reduction.
+
+`mstat` shows the stored, archetype and effective contributions separately:
+
+[source,text]
+----
+XP modifier: existing 120% + archetype +25 points = effective 145%
+----
+
+For reward testing, compare normally reset-spawned mobiles, not only `mload`
+instances. Their stored area/special/equipment contributions can differ.
+The template's other numerical modifiers are not substitutes for `xp_mod`.
+
+[[scribe-mobile-diagnostics]]
+==== Template diagnostics, validation and live editing
+
+The server validates body-species names, archetype-to-species relationships,
+special-function names and resistance definitions during startup. Typical
+successful messages include:
+
+[source,text]
+----
+[MOB TEMPLATE] Relationship validation complete: no issues found.
+[MOB TYPE] Resistance validation complete: no issues found.
+----
+
+These messages report the checks performed by those validators, not a full
+gameplay test. Unknown bits must be checked on raw template layers as well
+as resolved masks: identical invalid bits could otherwise cancel through XOR.
+Raw archetype XOR masks are not checked for overlap as though they were an
+already-resolved creature state.
+
+For an individual flag cancellation, the load log includes the vnum, flag
+group, bit, inherited archetype and the fact that `#MOBILES` removed it.
+`mstat` exposes the same distinction through separate rows:
+
+[cols="<2,<5",options="header"]
+|===
+| Row | Meaning
+| Template | Body-species defaults after applying the archetype's XOR masks.
+| #MOBILES | Original individual input mask, retained separately from the result.
+| XOR removed | Bits present in both the inherited mask and the individual mask, excluding protected engine bits where applicable.
+| Prototype | Effective initial values from which new NPCs are created.
+| Live | Values on the particular NPC being inspected, including subsequent runtime changes.
+|===
+
+ACT, AFF and BODY layers are implemented in the verified baseline. Step 4C2
+adds the corresponding RESISTANCE, VULNERABILITY and IMMUNITY groups, plus
+separate prototype/live resistance-validity results. Labels beginning with
+`Template` describe the inherited layer, not the final NPC state.
+
+Advanced Consider uses the live body form after the ACT/AFF/body integration.
+Step 4C2 changes the resistance lists in its existing archetype-information
+block to use live resistance masks. This is not a promise that the current
+Consider command displays every new field for every untemplated mobile.
+
+===== Live resistance commands — Step 4C2
+
+[source,text]
+----
+mset <mobile> resists <mask>
+mset <mobile> vulnerabilities <mask>
+mset <mobile> immunes <mask>
+----
+
+These are immortal commands for NPCs only. The value is a complete replacement
+mask, using decimal numbers or compact `|` expressions without spaces; it is
+not a keyword list and is not XORed against the prototype.
+
+[source,text]
+----
+mset filler resists 2
+mset filler immunes 1|256
+mset filler immunes 0
+----
+
+The last command clears the live immunity mask. It does not clear the
+prototype, edit the source, or change any other copy of the mobile. A newly
+loaded copy receives the prototype state again. These live changes are not
+persisted back to the area definition.
+
+Unknown bits and conflicting live categories are rejected. To move a fire
+bit from immunity to vulnerability, first remove it from the live immunity
+mask, retaining the other intended immunity bits, then replace the live
+vulnerability mask. The command does not automatically edit the other two
+categories for you.
+
+===== Builder verification
+
+Check the template, individual, prototype and live rows before testing
+combat. Then test inherited defaults, one deliberate cancellation, an
+ordinary untemplated mobile, and a temporary live change followed by a fresh
+spawn. For an effect with secondary penalties, inspect both HP changes and
+active affects. An immunity message alone is not evidence that every rider
+was blocked.
+
+Scribe, the server parser and any DD Builder exporter must agree on the
+input format. DD Builder must preserve raw individual masks, offer inherited
+and effective values separately, and defer cross-category overlap decisions
+until the masks have been resolved. The sonic/water categories and signed
+archetype XP adjustment also need corresponding editor support; this manual
+does not claim that a separate DD Builder implementation has already shipped.
+
+=== 9. Objects [[scribe-objects]]
+
+Objects are the items found in your area; they are either carried or equipped by mobiles or are placed in rooms or container objects; they can be carried and worn by players or be immovable fixtures or features of a room; they can also be trapped (or be traps themselves). They are defined in the `#OBJECTS` section of the final area file. You don't have to define any objects in your area for it to be valid. Objects are individually defined in single blocks. You can have as many object blocks as you wish. Objects may not share the same vnum: this will produce an error when you run Scribe over your source file.
+
+*Block header:* `$obj` or `$object`
+
+.Fields
+[cols="1,3,2",options="header"]
+|===
+| Field | Description | Type
+| `nm`
+| name (keywords)
+| text
+| `sh`
+| short description
+| text
+| `lo`
+| long description
+| text
+| `vn`
+| vnum
+| number
+| `ty`
+| type
+| keyword
+| `v0`
+| value0
+| variable
+| `v1`
+| value1
+| variable
+| `v2`
+| value2
+| variable
+| `v3`
+| value3
+| variable
+| `wg`
+| weight
+| number
+| `osl`
+| object shop level
+| number
+| `mi`
+| maximum instances
+| number
+| `ex`
+| extra flags
+| keyword list
+| `we`
+| wear flags
+| keyword list
+| `ed`
+| extra description
+| multi-line text block
+| `ap`
+| apply effect
+| text
+| `trt`
+| trap trigger
+| keyword list
+| `trd`
+| trap damage type
+| keyword
+| `trc`
+| trap charges
+| number
+|===
+
+*`nm` — Name (keywords)*
+
+_Line of text_
+
+The keywords that can be used to indicate the object for manipulation.
+
+[source, text]
+----
+E.g.    nm  potion red bubbling
+----
+
+*`sh` — Short description*
+
+_Line of text_
+
+The description of the object as it appears when manipulated or in a character's inventory. Don't capitalise any leading ‘a’, ‘the’, ‘an’ etc.
+
+[source, text]
+----
+E.g.    sh  a bubbling red potion
+----
+
+*`lo` — Long description*
+
+_Line of text_
+
+The description of the object as it appears in the room after a _LOOK_ command. Capitalise and terminate with a full stop, etc.
+
+[source, text]
+----
+E.g.    lo  A bubbling red potion lies here.
+----
+
+*`vn` — Vnum*
+
+_Number: 0 or higher_
+
+Relative vnum of the object. The first object would usually be zero.
+
+*`ty` — Type*
+
+_Keyword_
+
+The object's type; one of the following:
+
+[source, text]
+----
+light   light source
+scroll  recite for spells
+wand    zap for spells
+paint   smear for spells
+staff   brandish for spells
+potion  quaff for spells
+pill    eat for spells
+smokeable           smoke for spells
+hoard    buried container
+digging_implement    for digging up hoards
+weapon
+armour
+money   coins
+treasure    valuables (not coins)
+furniture
+trash
+container   holds other items
+drink_container holds liquids
+key
+food
+boat
+npc_corpse  can be used as a container
+fountain    water fountain
+climbing_eq for scaling walls, cliffs
+anvil   used for refining armour
+auction_ticket  allows participation in an auction
+clan    clan healing item
+portal  portal to other location
+poison_powder   for poisoning weapons
+lockpick    for picking locks
+instrument           for singing songs (Bards)
+armourers_hammer    for forging armour
+mithril    for crafting a bladethirst weapon
+whetstone    for sharpening weapons
+craft    bonus to crafting skills if  object is in
+    room
+spellcraft          bonus to spellcrafting skills if object is
+    in room
+turret_module       for engineer skills
+forge    for smithy skills
+arrestor_unit       for engineer skills
+driver_unit         for engineer skills
+reflector_unit      for engineer skills
+shield_unit         for engineer skills
+turret    for engineer skills
+defensive_turret_module  for engineer skills
+combat_pulse        for engineer skills
+defensive_pulse     for engineer skills
+pipe    to use smokeable substances
+pipe_cleaner        for cleaning pipes
+remains    left behind by objectlike mobs when
+    they are destroyed (similar function to
+    NPC corpse)
+----
+
+[source, text]
+----
+E.g. ty  potion
+----
+
+*`v0-v3` — Values*
+
+_Numbers or text_
+
+The four value fields `v0`, `v1`, `v2` and `v3` are used by some types of object. Some object types do not use any value fields, and you will not have to include them in the *$object* block. Other types expect certain value definitions and Scribe will report errors if they are absent or invalid. You must supply the relevant value fields for the following objects:
+
+==== Lights
+
+*`v2` — Hours of light provided*
+
+_Number_
+
+A value below zero indicates infinite hours of light.
+
+[source, text]
+----
+E.g.    ty  light
+v2  -1
+----
+
+==== Scrolls, potions, paints and pills
+
+*`v0` — Level of spell(s)*
+
+_Number: 1 or higher_
+
+*`v1-v3` — Name of spell(s)*
+
+_Text_
+
+You should indicate between 1 and 3 spells.
+
+[source, text]
+----
+E.g.    ty  potion
+v0  10
+v1  heal
+v2  cure poison
+----
+
+==== Wands and staves
+
+*`v0` — Level of spell*
+
+_Number: 1 or higher_
+
+*`v1` — Maximum charges*
+
+_Number: 0 or higher_
+
+*`v2` — Current charges*
+
+_Number: 0 or higher_
+
+*`v3` — Name of spell*
+
+_Text_
+
+[source, text]
+----
+E.g.    ty  wand
+v0  30
+v1  5
+v2  3
+v3  combat mind
+----
+
+==== Digging implements
+
+*`v0` — Wait state*
+
+_Number: 0 or higher_
+
+*`v1` — Minimum “dig” damage*
+
+_Number: 0 or higher_
+
+*`v2` — Maximum “dig” damage*
+
+_Number: 0 or higher_
+
+*`v3` — Movement cost per use*
+
+_Number: 0 or higher_
+
+[source, text]
+----
+E.g.    ty  digging_implement
+v0  30
+v1  25
+v2  55
+v3  80
+----
+
+==== Hoards
+
+*`v0` — Weight capacity*
+
+_Number: 0 or higher_
+
+*`v1` — Flag 1: buried, 2: unearthed*
+
+_Number: 1 or 2_
+
+*`v2` — Current “hitpoints” of damage that the hoard can take until it has been unearthed*
+
+_Number: 0 or higher_
+
+*`v3` — Maximum “hitpoints” the hoard can have*
+
+_Number: 0 or higher_
+
+[source, text]
+----
+E.g.    ty  hoard
+v0  100
+v1  1
+v2  150
+v3  150
+----
+
+==== Weapons
+
+*`v3` — Attack type*
+
+_Keyword_
+
+One of the following:
+
+[source, text]
+----
+hit     slice       stab
+slash       whip        claw
+blast       pound       crush
+grep        bite        pierce
+suction chop        rake
+swipe       sting       scoop
+mash         hack
+----
+
+[source, text]
+----
+E.g.    ty  weapon
+v3  pound
+----
+
+[[scribe-weapon-resistance]]
+===== Ordinary weapon attack categories
+
+For ordinary `TYPE_HIT`-based attacks, the weapon's `v3` attack type determines
+its damage category:
+
+[cols="<3,<2",options="header"]
+|===
+| `v3` keywords | Resistance category
+| `hit`, `pound`, `crush`, `grep`, `scoop`, `mash` | `RES_BLUNT`
+| `slice`, `slash`, `whip`, `claw`, `chop`, `rake`, `swipe`, `hack` | `RES_SLASH`
+| `stab`, `bite`, `pierce`, `sting` | `RES_PIERCE`
+| `blast` | `RES_ENERGY`
+| `suction` | `RES_DRAIN`
+|===
+
+The source category is added separately. A weapon with `ex magic`
+(`ITEM_MAGIC`) produces `RES_MAGIC` ordinary attacks. Other ordinary weapons
+and generic unarmed attacks use `RES_NONMAGIC`. Having numerical `ap` bonuses
+is not the test used here; the object magic flag is. Primary and secondary
+weapons are classified using the actual weapon responsible for each hit.
+
+`ex blessed` and `ex cursed` do not automatically change this ordinary attack
+mask into holy or dark damage. The planned blessed/cursed anti-undead rules
+are separate work. A special skill's damage may use its fixed `skill_table`
+mask instead of this ordinary-weapon classification, even while the character
+is wielding a magical weapon.
+
+See <<scribe-resistance-flags,Resistance category reference>> for the combined
+mask rule. Immunity which nullifies a connected ordinary hit has a distinct
+combat message; it is not reported as a genuine miss.
+
+==== Containers
+
+*`v0` — Capacity*
+
+_Number: 0 or higher_
+
+How much weight (in pounds) the container can hold.
+
+*`v1` — Lid flags*
+
+_Keyword list_
+
+Whether the container has a lid, and whether the lid is closed or locked:
+
+[source, text]
+----
+none        open, no lid
+closeable   has a lid
+pickproof   lock can't be picked
+closed  lid is closed
+locked  lid is locked
+----
+
+Weirdness can result if the flags are incorrectly set (e.g. locked but with no lid).
+
+*`v2` — Key*
+
+_Number: -1 or higher_
+
+The relative vnum of any key. Use -1 to indicate no key exists.
+
+[source, text]
+----
+E.g.    ty  container
+v0  50
+v1  closeable closed locked
+v2  4
+----
+
+==== Drink containers
+
+*`v0` — Capacity*
+
+_Number: 0 or higher_
+
+The maximum number of draughts the container can hold.
+
+*`v1` — Current capacity*
+
+_Number: 0 or higher_
+
+Current number of draughts in the container.
+
+*`v2` — Liquid type*
+
+_Keyword_
+
+One of the following:
+
+[source, text]
+----
+water       beer        wine
+ale     dark_ale    whisky
+lemonade    firebreather    local
+slime_mould milk        tea
+coffee  blood       salt_water
+cola
+----
+
+*`v3` — Poison*
+
+_Number_
+
+[source, text]
+----
+zero        not poisoned
+non-zero    poisoned
+----
+
+[source, text]
+----
+E.g.    ty  drink_container
+v0  5
+v1  4
+v2  blood
+v3  0
+----
+
+==== Fountains
+
+*`v2` — Liquid type*
+
+_Keyword_
+
+One of the following:
+
+[source, text]
+----
+water       beer        wine
+ale     dark_ale    whisky
+lemonade    firebreather    local
+slime_mould milk        tea
+coffee  blood       salt_water
+cola
+----
+
+*`v3` — Poison*
+
+_Number_
+
+[source, text]
+----
+zero        not poisoned
+non-zero    poisoned
+----
+
+[source, text]
+----
+E.g.    ty  fountain
+v2  milk
+v3  1
+----
+
+==== Key
+
+*`v0` — Vnum of room/container unlocked*
+
+_Number: 0 or higher_
+
+_Default: 0_
+
+Only a convention; not required.
+
+==== Food
+
+*`v0` — Hours of nourishment*
+
+_Number: 0 or higher_
+
+*`v3` — Poison*
+
+_Number_
+
+[source, text]
+----
+zero        not poisoned
+non-zero    poisoned
+----
+
+[source, text]
+----
+E.g.    ty  food
+v0  0
+v3  -1
+----
+
+==== Crafting item
+
+*`v0` — Crafting bonus*
+
+_Number: 0 or higher_
+
+Will be the percentage bonus given to crafting that takes place in the same room, i.e. “5” == +5% bonus.
+
+[source, text]
+----
+E.g.    ty  craft
+v0  15
+----
+
+==== Spellcrafting item
+
+*`v0` — Spellcrafting bonus*
+
+_Number: 0 or higher_
+
+Will be the percentage bonus given to relevant spells that are cast in the same room, i.e. “5” == +5% bonus.
+
+[source, text]
+----
+E.g.    ty  spellcraft
+v0  25
+----
+
+==== Money
+
+All coin amounts are fuzzy unless the pure flag is also applied to the money item.
+
+*`v0` — Copper coins*
+
+_Number: 0 or higher_
+
+_Default: 0_
+
+*`v1` — Silver coins*
+
+_Number: 0 or higher_
+
+_Default: 0_
+
+*`v2` — Gold coins*
+
+_Number: 0 or higher_
+
+_Default: 0_
+
+*`v3` — Platinum coins*
+
+_Number: 0 or higher_
+
+_Default: 0_
+
+[source, text]
+----
+E.g.    ty  money
+v2  50
+v1  200
+----
+
+==== Turret Module
+
+*`v0` — Lower damage range*
+
+_Number: 0 or higher_
+
+*`v1` — Upper damage range*
+
+_Number: 0 or higher_
+
+*`v2` — Current charges*
+
+_Number: 0 or higher_
+
+*`v3` — Maximum charges*
+
+_Number: 0 or higher_
+
+[source, text]
+----
+E.g.    ty  turret_module
+V0  50
+v1  200
+v2  7
+v3  9
+----
+
+==== Driver unit
+
+*`v0` — Number of uses*
+
+_Number: 0 or higher_
+
+_Default: 0_
+
+[source, text]
+----
+E.g.    ty  driver_unit
+v0  79
+----
+
+==== Shield unit
+
+*`v0` — Number of uses*
+
+_Number: 0 or higher_
+
+_Default: 0_
+
+[source, text]
+----
+E.g.    ty  shield_unit
+v0  7
+----
+
+==== Defensive turret module
+
+*`v2` — Module capacity*
+
+_Number: 0 or higher_
+
+[source, text]
+----
+E.g.    ty  defensive_turret_module
+v2  7
+----
+
+==== Combat pulse
+
+*`v0` — Current charges*
+
+_Number: 0 or higher_
+
+*`v1` — Max charges*
+
+_Number: 0 or higher_
+
+*`v2` — Spell level*
+
+_Number: 0 or higher_
+
+*`v3` — Spell*
+
+_Text_
+
+[source, text]
+----
+E.g.    ty  combat_pulse
+v0  5
+v1  7
+v2  40
+v3  fireball
+----
+
+==== Defensive pulse
+
+*`v0` — Current charges*
+
+_Number: 0 or higher_
+
+*`v1` — Max charges*
+
+_Number: 0 or higher_
+
+*`v2` — Spell level*
+
+_Number: 0 or higher_
+
+*`v3` — Spell*
+
+_Text_
+
+[source, text]
+----
+E.g.    ty  defensive_pulse
+v0  5
+v1  7
+v2  40
+v3  protection
+----
+
+==== Pipe
+
+*`v0` — Current benefit*
+
+_Number: 0 or higher_
+
+How much positive or negative benefit your pipe applies to the smokeable when used.
+
+*`v1` — Max benefit*
+
+_Number: 0 or higher_
+
+The maximum positive or negative benefit your pipe can apply to the smokeable (if in top condition).
+
+*`v2` — Effect on thirst*
+
+_Number: 0 or higher_
+
+How thirsty smoking the pipe makes you. Lower number is better.
+
+*`v3` — Speed*
+
+_Number: 0 or higher_
+
+The speed of the pipe—how fast you can smoke with it. Lower is better.
+
+[source, text]
+----
+E.g.    ty  pipe
+v0  90
+v1  95
+v2  170
+v3  30
+----
+
+==== Pipe cleaner
+
+*`v0` — Current uses*
+
+_Number: 0 or higher_
+
+*`v1` — Maximum uses*
+
+_Number: 0 or higher_
+
+*`v2` — Current effectiveness*
+
+_Number: 0 or higher_
+
+How good the cleaner is at cleaning pipes.
+
+*`v3` — Maximum effectiveness*
+
+_Number: 0 or higher_
+
+The best the pipe cleaner can be at cleaning pipes.
+
+[source, text]
+----
+E.g.    ty  pipe
+v0  17
+v1  18
+v2  41
+v3  52
+----
+
+==== Portal
+
+*`v0` — Room vnum low*
+
+_Number: 0 or higher_
+
+The lowest vnum the portal can travel to. If v1 is 0, this will be the destination. If < 1 the portal is nonfunctional.
+
+*`v1` — Room vnum high*
+
+_Number: 0 or higher_
+
+_Default: 0_
+
+The highest vnum the portal can travel to. If > 0 the portal will go to a random room between v0 and v1.
+
+*`v2` — Lower use limit*
+
+_Number: 0 or higher_
+
+_Default: 0_
+
+The lowest level a character can be to use the portal.
+
+*`v3` — Upper use limit*
+
+_Number: 0 or higher_
+
+_Default: 0_
+
+The highest level a character can be to use the portal.
+
+[source, text]
+----
+E.g.    ty  portal
+v0  2570
+v1  5055
+v2  2
+v3  70
+----
+
+==== Smokeable
+
+By convention, a smokeable has 3 spells on it, and the third one is harmful to the smoker. This is not server-enforced.
+
+*`v0` — Uses remaining*
+
+_Number: 0 or higher_
+
+*`v1` — Spell*
+
+_Text_
+
+*`v2` — Spell*
+
+_Text_
+
+*`v3` — Spell*
+
+_Text_
+
+[source, text]
+----
+E.g.    ty  smokeable
+v0  7
+v1  armor
+v2  mental barrier
+v3  poison
+----
+
+==== Remains
+
+`ITEM_REMAINS` is the existing objectlike-mobile remains type, not an undead
+classification. Remains from an undead source receive `ITEM_UNDEAD` in
+addition to their type. `BODY_INORGANIC` alone is not the type-selection rule;
+see <<scribe-object-undead,Undead objects and generated remains>>.
+
+*`v0` — Weight capacity*
+
+_Number: 0 or higher_
+
+*`v1` — “Lid” flags*
+
+_Keyword list_
+
+_Default: 0_
+
+Whether the remains can be closed, and if they are closed:
+
+[source, text]
+----
+closeable   can be closed
+closed  are closed
+----
+
+[source, text]
+----
+E.g.    ty  remains
+v0  5
+v1  closeable
+----
+
+All types not listed above do not require any values to be defined; all relevant variables are calculated by the DD server based on the item’s level.
+
+*`wg` — Weight*
+
+_Number: 0 or higher_
+
+The weight of the object in pounds.
+
+*`osl` — Object Shop Level*
+
+_Number: 0 or higher_
+
+This is the approximate level an item will be if loaded into a shopkeeper’s inventory. Defaults to 0 if not set, which will mean the game sets it using its own algorithm. Apply the ‘pure’ flag to the object if you want this number to be the exact level it loads in a shop at (with no random ‘wobble’).
+
+*`ex` — Extra flags*
+
+_Keyword list_
+
+Any special properties of the object are indicated using the following keywords:
+
+[source, text]
+----
+none, zero  no extra flags
+glow    glows (visual effect)
+hum hums (visual effect)
+ego an ego item
+evil    is evil
+invis   is invisible
+magic   is magical
+trapped is trapped
+donated has been donated
+no_drop cannot be dropped
+no_remove   cannot be removed
+blessed has been blessed (weapon)
+anti_good   cannot be worn by good players
+anti_neutral    cannot be worn by neutral players
+anti_evil   cannot be worn by evil players
+inventory   is a shopkeeper’s inventory item
+poison  is poisoned (extra damage if an item is a weapon)
+anti_mage   cannot be used by mages, warlocks or necromancers
+anti_cleric cannot be used by clerics, templars or druids
+anti_thief  cannot be used by thieves, bounty hunters or ninjas
+anti_warrior    cannot be used by warriors, thugs or knights
+anti_psionic    cannot be used by psionicists, witches or satanists
+anti_ranger cannot be used by rangers, barbarians or bards
+anti_brawler    cannot be used by brawlers, monks or martial artists
+anti_shifter    cannot be used by shapeshifters, vampires or werewolves
+anti_smithy cannot be used by smithies
+vorpal  can be used to decapitate with
+sharp   has been sharpened (weapon)
+bladethirst is thirsty (weapon)
+forged  has been forged (armour)
+body_part   is a body part; may not be disarmed in combat
+lance   can be used to joust with
+bow can be used to shoot with
+undead  undead nature or provenance; revealed by identification
+deployed    item has been deployed (engineer)
+rune    item has had a rune inscribed on it (runesmith)
+pure    item is not randomised at all by server
+steady  item is only weakly randomised by server
+fickle  item will have its randomness (or lack thereof)     randomly determined
+cursed  item is cursed; mobs with det_curse will attack holder
+----
+
+[source, text]
+----
+E.g.    ex  glow magic evil
+----
+
+[source, text]
+----
+ex  poison anti_cleric anti_good
+----
+
+For `ex undead`, see <<scribe-object-undead,Undead objects and generated remains>>.
+
+Note that for weapon and light items flagged with body_part, v0 should also be set on them to one of the following to indicate what ‘part’ of the body it is. armour types should use the v1 value instead.
+
+This is used by the “target” skill to potentially “disarm” such body parts. If this is not done the body part defaults to the not-disarmable default (0).
+
+*`v0/v1` — Body part type*
+
+_Keyword_
+
+One of the following:
+
+[source, text]
+----
+default      head       eye      arm
+leg           heart       tail        torso
+----
+
+*E.g.*
+
+[source, text]
+----
+$obj
+nm  fangs
+sh  a large pair of fangs
+lo  The huge fangs of a creature lie here.
+vn  28400
+ty  weapon
+v0  head
+v3  bite
+wg  30
+ex  body_part sharp
+we  take
+ap  damroll 10
+ap  crit    10
+----
+
+*`we` — Wear flags*
+
+_Keyword list_
+
+Wear location information for the object. Any number of the below locations can be given, but to avoid weirdness, choose one of the following combinations:
+
+[source, text]
+----
+none    cannot be picked up or worn;
+take    can be picked up, cannot be worn;
+----
+
+`take` _<pos>_ can be taken and worn in position _pos_ (only one position is given).
+
+The following keywords can be used:
+
+[source, text]
+----
+none, zero  cannot be taken or worn
+take    can be taken
+finger
+neck
+body    usually heavy, e.g. armour
+about_body  usually light, e.g. shirt
+head
+legs
+feet
+hands
+arms
+shield
+waist
+wrist
+wield   weapons except for lances and bows
+ranged  for lances and bows (required for joust and shoot to work)
+hold    held in hand
+float   orbits about head
+pouch   belt-pouch
+E.g.    sh  a huge cast iron stove
+we  none
+sh  a sharp dagger
+we  take weapon
+sh  a longbow
+we  take ranged
+sh  a small potted plant
+we  take hold
+----
+
+*`ed` — Extra description*
+
+_Multi-line text block_
+
+Extra descriptions are descriptive text seen by characters who examine the item. Extra descriptions consist of a list of keywords and a text block. The text block is printed when a character enters _LOOK <keyword>_ when the item is visible to her. They have the following format:
+
+[source, text]
+----
+ed  <keyword list>
+<lines of text>
+~
+----
+
+The terminating tilde is required. You can give multiple extra descriptions to items.
+
+[source, text]
+----
+E.g.    ed  pot plant cactus
+    A small ceramic pot contains a squat,
+    prickly cactus.  A large pink flower
+    blooms from its spiny crown.
+    ~
+ed  pink flower
+    The flower sprouting from the top of
+    the cactus is pretty and fragrant.
+    ~
+----
+
+*`ap` — Apply effect*
+
+_Line of text_
+
+Applied effects are bonuses, penalties or special enhancements given to characters when they wear an item. They have the following format:
+
+[source, text]
+----
+ap  <apply type>  <modifier>
+----
+
+_Apply type_ is one keyword from the list below; _modifier_ is any number. Note some of these (marked with a red [red]#*#) are unimplemented, so applying them to an object is currently purely decorative (will show up on _identify_, for example).
+
+[cols="2,5",options="header"]
+|===
+| Keyword | Description
+| `str`
+| strength
+| `int`
+| intelligence
+| `wis`
+| wisdom
+| `dex`
+| dexterity
+| `con`
+| constitution
+| `sex`
+| [red]#*#
+| `class`
+| [red]#*#
+| `level`
+| [red]#*#
+| `age`
+| [red]#*#
+| `height`
+| [red]#*#
+| `weight`
+| [red]#*#
+| `gold`
+| [red]#*#
+| `exp`
+| [red]#*#
+| `hp`
+| hit point maximum
+| `mana`
+| mana point maximum
+| `move`
+| movement point maximum
+| `ac`
+| armour class
+| `hitroll`
+| to-hit modifier
+| `damroll`
+| damage bonus
+| `save_para`
+| currently just sums with save_spell
+| `save_rod`
+| currently just sums with save_spell
+| `save_petri`
+| currently just sums with save_spell
+| `save_breath`
+| currently just sums with save_spell
+| `save_spell`
+| save versus spell
+| `save_breath`
+| save versus breath
+| `fly`
+| flight *
+| `sneak`
+| move undetected *
+| `pass_door`
+| pass through doors *
+| `invis`
+| invisibility *
+| `det_invis`
+| detect invis mobs or players *
+| `det_hidden`
+| detect hidden mobs or players *
+| `flaming`
+| _fireshield_ spell *
+| `protect`
+| _protection_ spell *
+| `globe`
+| _globe_ spell *
+| `sanc`
+| _sanctuary_ spell *
+| `dragon_aura`
+| _dragon aura_ spell *
+| `resist_heat`
+| _resist heat_ spell *
+| `resist_cold`
+| _resist cold_ spell *
+| `resist_lightning`
+| _resist lightning_ spell *
+| `resist_acid`
+| _resist acid_ spell *
+| `breathe_water`
+| _breathe water_ spell *
+| `balance`
+| for smithy skill
+| `set_uncommon`
+| object set related
+| `set_rare`
+| object set related
+| `set_epic`
+| object set related
+| `set_legendary`
+| object set related
+| `strengthen`
+| for smithy skill
+| `engraved`
+| for smithy skill
+| `serrated`
+| for smithy skill
+| `incribed`
+| for smithy skill
+| `crit`
+| increases chance of critical hit
+| `swiftness`
+| increases chance of bonus attack
+|===
+
+(*) The value of the modifier for these applies is not important; `1` is usually used.
+
+You may give an item as many applies as you wish.
+
+[source, text]
+----
+E.g.    ap  hitroll -4
+ap  int 5
+ap  fly 1
+----
+
+*`mi` — Maximum instances*
+
+_Number: 0 or higher_
+
+This number determines the maximum number of the associated object that can be created in the MUD on a per-runtime basis. Any attempt to load or create copies of the item after this will fail, creating deleted (invisible) dummy objects instead that will not interact with the game. This number is set to 0 if the flag is inot present, meaning unlimited copies may be made.
+
+[source, text]
+----
+mi  <number>
+
+----
+
+*`trt` — Trap trigger*
+
+_Keyword list_
+
+_[Required if trap extra flag set]_
+
+The event which will trigger a trap installed in the object. This field will be ignored if the `trap` extra flag has not been given to the object. Use one of the following triggers:
+
+[source, text]
+----
+room    trap will affect everyone in room
+move    movement in any direction triggers trap
+north   movement north triggers trap
+south   movement south triggers trap
+east    movement east triggers trap
+west    movement west triggers trap
+up  movement up triggers trap
+down    movement down triggers trap
+object  Trap triggered on GET <object> or PUT <object>
+open    Trap triggered on OPEN <object>
+E.g.    trt room open
+----
+
+*`trd` — Trap damage type*
+
+_Single keyword_
+
+_[Required if trap extra flag set]_
+
+The type of effect the trap produces after it is triggered.
+
+[source, text]
+----
+sleep   victim sleeps
+teleport    teleports victim away
+poison  poisons victim
+fire
+cold
+acid
+energy  damage inflicted for these types
+blunt
+pierce
+slash
+snare   ensnares victim
+curse   curses victim
+hex curses victim INTENSELY
+spirit  summons vengeful spirit
+
+----
+
+*`trc` — Trap charges*
+
+_Number: 0 or higher_
+
+_[Required if trap extra flag set]_
+
+Number of charges left in the trap.
+
+*Examples*
+
+[source, text]
+----
+$obj
+vn  0
+ty  armour
+nm  wooden shield
+sh  a wooden shield
+lo  A wooden shield has been left here.
+we  take shield
+wg  20
+
+$obj
+vn  1
+nm  jewellery box golden
+sh  a golden jewellery box
+lo  A golden jewellery box rests on the floor.
+we  take hold
+wg  10
+ty  container
+ex  trap
+v0  8
+v1  closeable closed locked
+v2  3
+trt open
+trc 1
+trd poison
+
+$obj
+vn  2
+ty  staff
+nm  staff serpent golden snake
+sh  the Staff of the Serpent
+lo  You see a long golden staff fashioned as a snake.
+we  take hold
+wg  35
+ex  glow magic anti_good anti_evil
+v0  75
+v1  5
+v2  5
+v3  gas breath
+ed  staff serpent golden snake
+The staff is made of solid gold with small emeralds inset
+along the shaft.  The top end has been fashioned into a
+beautiful cobra's head, with a gaping jaw and long
+protruding fangs.  Large emeralds serve as the staff's
+eyes, and the instrument glows softly.
+~
+ap  int 5
+ap  wis 5
+ap  hp –100
+----
+
+[[scribe-object-undead]]
+==== Undead objects, corpses, remains and body parts
+
+`ex undead` represents the object extra flag `ITEM_UNDEAD` (`BIT_31`, decimal
+`2147483648`). It marks undead nature or undead provenance and may be applied
+to *any* object type, including flavour items. It is not a new object type.
+
+[source,text]
+----
+$obj
+vn  8
+nm  relic black bone
+sh  a black bone relic
+lo  A black bone relic lies here.
+ty  treasure
+wg  1
+we  take
+ex  undead
+----
+
+This does not animate the object, give it creature resistances, make its
+holder undead, or turn a treasure into a corpse. A downstream spell or skill
+must explicitly interpret the flag for it to affect that mechanic.
+
+===== Automatic provenance on death-generated objects
+
+When the dying character satisfies `IS_UNDEAD()`, the death-generation paths
+add `ITEM_UNDEAD` to the corpse/remains object and generated body-part objects.
+This includes NPC corpses, PC corpses (including vampire PCs), objectlike
+mobile remains and the generated fragments/body parts appropriate to the
+source's anatomy.
+
+[cols="<2,<5",options="header"]
+|===
+| Existing object kind | Interaction with the provenance flag
+| `ITEM_CORPSE_NPC` | An undead NPC's generated corpse is tagged.
+| `ITEM_CORPSE_PC` | An undead PC's generated corpse is tagged; currently the common PC undead classification is vampire.
+| `ITEM_REMAINS` | An undead objectlike mobile's generated remains are tagged.
+| Generated body-part or fragment objects | Receive the tag from the undead source even when their object type is not a corpse type.
+| Existing carried equipment and loot | Do not become undead merely because their owner died or because they are placed inside a tagged corpse.
+|===
+
+`ACT_OBJECT` (`act objectlike`) selects the objectlike remains path.
+`BODY_INORGANIC` is a separate anatomical property and is not, by itself, the
+switch from an NPC corpse to `ITEM_REMAINS`. Existing body-form tests also
+affect which death descriptions and body fragments are generated.
+
+`BODY_NO_CORPSE` suppresses corpse production. There is then no corpse/remains
+container to tag, and dropped belongings retain their own flags. The
+classification is captured when an object is generated; it is not reconstructed
+later from a character which no longer exists.
+
+===== Visibility and immortal inspection
+
+Identification reveals the object's undead extra flag. Ordinary room and
+inventory descriptions do not gain an automatic visible `(Undead)` marker
+from this addition. `ostat` displays the extra flag for immortal inspection.
+`oset` retains its existing whole-mask extra-flags interface; this change does
+not add a new text-based toggle command.
+
+The proposed Detect Undead display, corpse-feeding restrictions, soul checks,
+Animate Dead recycling rules, healing inversions, holy-water attacks and Turn
+Undead behaviour are not automatically enabled by adding the provenance flag.
+They require their own subsequent implementation. An object with `ex undead`
+can therefore be authored now without implying those future mechanics exist.
+
+=== 10. Object sets [[scribe-object-sets]]
+
+Object sets are groups of related wearable objects that grant extra bonuses when enough pieces are worn together. Define the objects normally using `$obj` blocks, then define the set itself with an `$objset` block.
+
+*Block header:* `$objset` or `$objectset`
+
+*`vn` — Vnum*
+
+_Number: 0 or higher_
+
+The relative vnum of the object set. Scribe adds the area base vnum when writing the final #OBJECT_SETS section.
+
+*`nm` — Name / keywords*
+
+_Line of text_
+
+The identifying name or keywords for the set. This is written as the set keyword string.
+
+*`de` — Description*
+
+_Multi-line text block_
+
+The description of the object set. Terminate the block with a single tilde.
+
+*`ob` — Set member object*
+
+_Number: 0 or higher_
+
+The relative vnum of an object belonging to this set. Use one ob line per set item. Scribe writes up to five members. Missing members are written as 0.
+
+*`bt` — Bonus threshold*
+
+_Number: 0 or higher_
+
+Defines how many worn set pieces are required for the corresponding bonus tier. Use one bt line per possible bonus. Scribe writes up to five thresholds. Missing thresholds are written as 0.
+
+*`ap` — Apply effect*
+
+_Line of text_
+
+Defines a bonus applied by the set. Use the same apply keywords as normal object ap fields.
+
+Important: set bonuses are applied in reverse order by the game, so put the strongest bonus first.
+
+The below example writes an `#OBJECT_SETS` entry with two set members. When enough pieces are worn, the set grants the listed apply bonus.
+
+[source, text]
+----
+$objset
+vn      2
+nm      uncommon crow
+de
+The Smithy's Set of the Crow.
+~
+ob      4
+ob      5
+bt      2
+bt      2
+ap      fly -1
+----
+
+=== 11. Rooms [[scribe-rooms]]
+
+Rooms are distinct locations within your area, and need not be rooms in a literal sense (inside space with walls, ceiling, floor and doors). They are defined in the `#ROOMS` section of the final area file. You don't have to define any rooms in your area for it to be valid, although you'll probably want rooms if you want people to adventure in your area! Rooms are individually defined in single blocks. You can have as many room blocks as you wish. Rooms may not share the same vnum: this will produce an error when you run Scribe over your source file.
+
+*Block header:* `$room`
+
+.Fields
+[cols="1,3,2",options="header"]
+|===
+| Field | Description | Type
+| `vn`
+| vnum
+| number
+| `nm`
+| name (title)
+| text
+| `de`
+| description
+| multi-line text block
+| `st`
+| sector type
+| keyword
+| `rf`
+| room flags
+| keyword list
+| `ed`
+| extra description
+| multi-line text block
+| `rnd`
+| random exits
+| keyword
+| `am`
+| room ambient sound file path
+| text
+| `av`
+| room ambient sound volume
+| number, 0–100
+| `mu`
+| room music file path
+| text
+| `mv`
+| room music volume
+| number, 0–100
+|===
+
+In the following list, the symbol ? is replaced by n, s, e, w, u or d for north, south, east, west, upwards or downwards exits.
+
+.Exit fields
+[cols="1,3,2",options="header"]
+|===
+| Field | Description | Type
+| `?`
+| exit
+| number
+| `?nm`
+| exit name (keywords)
+| text
+| `?de`
+| exit description
+| multi-line text block
+| `?lo`
+| exit locks
+| keyword list
+| `?ke`
+| exit keys
+| number
+| `?ds`
+| exit door state
+| keyword
+|===
+
+*`nm` — Name (title)*
+
+_Line of text_
+
+The title of the room as it appears after the _LOOK_ command is issued. Don't use terminating punctuation. Capitalise as desired (although make the initial letter a capital).
+
+[source, text]
+----
+E.g.    nm  The Dark Gate
+nm  A narrow, overgrown forest path
+----
+
+*`de` — Description*
+
+_Multi-line text block_
+
+The descriptive blurb that is shown after the _LOOK_ command is given.
+
+*`st` — Sector type*
+
+_Single keyword_
+
+_Default: inside_
+
+Describes the type of terrain that room has; used to calculate movement penalties, among other effects. Use one keyword from the following list:
+
+[source, text]
+----
+inside  (You probably want to set the indoors room flag too)
+city
+field
+forest
+hills
+mountain
+water_swim      Don't need boat/flight to enter
+water_no_swim   Need boat/flight to enter
+underwater      Will drown unless you can breathe
+    underwater
+air     Need flight to enter
+desert
+swamp
+underwater_ground As underwater, but some attacks possible
+    that are not in regular underwater sectors
+
+----
+
+*`rf` — Room flags*
+
+_Keyword list_
+
+_Default: none_
+
+Defines any special properties of the room. Use a list of any of the following keywords:
+
+[source, text]
+----
+none, zero  no room flags
+dark    need light source
+no_mob  mobs may not enter
+indoors  sheltered from weather, sunlight
+vault    player’s vault can be manipulated
+craft    bonus to crafting
+spellcraft        bonus to spellcrafting
+private space for only two creatures
+safe    can't pkill
+solitary    space for only one creature
+pet_shop    pet store
+no_recall   can't recall
+silence can't cast spells
+arena   anyone can pkill, without penalty
+healing accelerated healing within room
+freezing    players take cold damage per tick
+burning         players take heat damage per tick
+no_mount          room may not be entered while mounted
+toxic    healing slowed, chance of being poisoned
+no_weather        weather effects prevented in room
+no_drop           objects may not be dropped in room
+E.g.    rf  safe healing no_mob
+----
+
+*`ed` — Extra description*
+
+_Multi-line text block_
+
+Extra descriptions are descriptive text seen by characters who examine the room. Extra descriptions consist of a list of keywords and a text block. The text block is printed when a character enters _LOOK <keyword>_ within the room. They have the following format:
+
+[source, text]
+----
+ed  <keyword list>
+<lines of text>
+~
+E.g.    ed  writing wall
+    You read the writing on the wall:
+    "Dwarves do it standing up."
+    ~
+----
+
+*`rnd` — Random exits*
+
+_Keyword_
+
+Randomise the exits in the room, so that the room becomes a maze. Use one of the following keywords:
+
+[source, text]
+----
+2d  two-dimensional maze (north, south, east and west exist scrambled)
+3d  three-dimensional maze (north, south, east, west, up and down exits)
+E.g.    rnd 2d
+----
+
+This field will also accept numbers from 0 to 6 if you require (although it is recommended you use the `2d` or `3d` keywords). You should avoid using random exits if you are going to include door resets (see below); these resets may produce unexpected results.
+
+==== Exits
+
+There are six possible exits from each room; each room may contain between 0 and 6 exits.
+
+.Exit directions
+[cols="2,5",options="header"]
+|===
+| Keyword | Description
+| `n`
+| north
+| `s`
+| south
+| `e`
+| east
+| `w`
+| west
+| `u`
+| upwards
+| `d`
+| downwards
+|===
+
+To create an exit simply add the following to your *$room* block:
+
+[source, text]
+----
+<exit code> <destination room relative vnum>
+E.g.
+n   0
+u   23
+----
+
+If you don't want a room to have an exit in a particular direction, just leave out the relevant field. If you do not add any further information for your exit it will be valid; however, it won't have a door or any form of description.
+
+The following fields can be used to further define exits. They should be used in the following manner:
+
+[source, text]
+----
+<exit code><field>  <data>
+----
+
+There is no space between _exit code_ and _field_.
+
+*`?nm` — Exit name (keywords)*
+
+_Line of text_
+
+A list of keywords that describe the exit. Usually used to indicate a door. The first name on the list will be used for generating messages by the MUD server.
+
+[source, text]
+----
+E.g.    wnm door iron reinforced
+    unm reinforced iron door
+    dnm path overgrown
+----
+
+Regarding the first two examples above, the first is preferred to the second, as any messages from the MUD look more natural:
+
+[source, text]
+----
+Cf. "Crash!  You bash open the door!"
+"Crash!  You bash open the reinforced!"
+----
+
+*`?de` — Exit description*
+
+_Multi-line text block_
+
+The description of the exit given after the _LOOK <direction>_ or _LOOK <exit keyword>_ is given.
+
+[source, text]
+----
+E.g.    wde
+    The small trail wanders west into the
+    heavy forest.
+    ~
+----
+
+*`?lo` — Exit locks*
+
+_Keyword_
+
+This value is used to indicate whether an exit is a door, and whether the door can be forced open if locked or passed through if closed. It can also be used to indicate whether an exit is a wall or if it is secret (doesn't show up on _SCAN_ etc). Due to the way the _locks_ value is read by the server, the keywords used by this field are rather awkward. You may enter one of the following keywords; you can also use the relevant number between 0 and 12.
+
+[source, text]
+----
+0   none        no door
+1   door        door
+2   pick        pick-proof door
+3   bash        bash-proof door
+4   pick_bash       pick-, bash-proof door
+5   pass        pass-proof door
+6   pick_pass       pick-, pass-proof door
+7   bash_pass       bash-, pass-proof door
+8   pick_bash_pass  pick-, bash-, pass-proof  door
+9   wall        wall, able to be scaled using climb
+10  door_secret     hidden door
+11  door_secret_pbp pick-, bash-, pass-proof hidden door
+12  secret      hidden exit (not a door)
+----
+
+Door resets will be ignored if you fail to indicate that the exit is a door with one of these flags (all are doors except for `none`, `wall` and `secret`).
+
+*`?ke` — Exit key*
+
+_Number: -1 or higher_
+
+_Default: -1_
+
+The relative vnum of the object that can be used to unlock the door. Use `–1` if you wish there to be no key in existence. Any value above `–1` indicates a relative vnum (including 0).
+
+[source, text]
+----
+E.g.    eke -1
+    nke 4
+----
+
+*`?ds` — Door state*
+
+_Keyword_
+
+This field produces a door reset, i.e. will update the position of the door every time your area is reset. Indicate one of the following actions:
+
+[source, text]
+----
+open    open and unlocked
+close   closed and unlocked
+lock    closed and locked
+----
+
+The reset will only be used if the relevant exit has been defined and that exit is a door.
+
+[source, text]
+----
+E.g.    e   2
+    elo door
+    eds close
+----
+
+Unless otherwise desired (e.g. one-way doors), use the same door reset in both rooms sharing a door for consistency.
+
+*`am` — Room ambient sound file path*
+
+_Line of text_
+
+Relative path to a room-specific ambient sound file. This overrides area and sector ambience.
+
+*`av` — Room ambient volume*
+
+_Number: 0 to 100_
+
+Volume for the room ambient loop. Defaults to 25 if am is set and av is omitted.
+
+*`mu` — Room music file path*
+
+_Line of text_
+
+Relative path to room-specific music. The path must contain no spaces and must begin with music/. This replaces the area music while the player remains in the room.
+
+[source, text]
+----
+E.g.    mu    music/room/submerged_temple.mp3
+----
+
+*`mv` — Room music volume*
+
+_Number: 0 to 100_
+
+Volume for the room music layer. Defaults to 25 if mu is set and mv is omitted.
+
+*Examples*
+
+[source, text]
+----
+$room
+vn  1
+nm  The Void
+de
+You float in the inky darkness of the Void.
+~
+
+$room
+vn  10
+nm  A small, empty room
+de
+This tiny room is entirely empty except for a few pieces
+of litter against the walls.  You may return to the main
+corridor through the southern archway.
+~
+st  inside
+rf  indoors private dark
+s   9
+
+$room
+vn  11
+nm  At the base of the Outpost Tower
+de
+You cross the courtyard to the base of the northern wall.
+The lean stone tower rises above you; a sturdy wooden door
+in the centre of the wall leads into its heart.
+     You may head north through the door into the tower,
+or head west, south or east back across the courtyard.
+~
+ed  tower outpost
+The tower rises high into the air; it is at least half
+a dozen stories high.  Flashes of light flicker from its
+peak every now and then.
+~
+st  city
+am     ambient/room/sewer_drip.mp3
+av     35
+n   12
+nlo pick_bash
+nke 23
+nds lock
+nnm door sturdy wooden
+nde
+The door leading into the tower is reinforced with heavy
+iron bands.  It looks very solid, and is covered in sharp
+studs.  You see a large keyhole in its centre.
+~
+w   9
+e   8
+s   6
+----
+
+=== 12. Mobile resets [[scribe-mobile-resets]]
+
+A _reset_ refers to an action performed by the MUD to manipulate and update the world's areas. Mobile resets determine how mobiles are loaded into your area: what rooms they appear in, how many may appear and what objects they are wearing or carrying. The $*addmob* block is used to describe a single mobile reset. You may have as many $*addmob* blocks as you like in your area. You do not need to have any mobile resets for your area to be valid. You may use any particular rooms and mobs as many times as you wish.
+
+*Block header:* `$addmob` or `$addmobile`
+
+.Fields
+[cols="1,3,2",options="header"]
+|===
+| Field | Description | Type
+| `mb`
+| mobile vnum
+| number
+| `rm`
+| room vnum
+| number
+| `num`
+| maximum mobile number
+| number
+| `inv`
+| item in inventory
+| number
+| `*`
+| equip item
+| number
+|===
+
+`*` See below for list of _equip_ fields.
+
+*`mb` — Mobile vnum*
+
+_Number: 0 or higher_
+
+The relative vnum of the mobile you wish to load. A mob using this vnum must be defined otherwise Scribe will indicate an error.
+
+*`rm` — Room vnum*
+
+_Number: 0 or higher_
+
+The relative number of the room you wish to load the mobile into. A room using this vnum must also be defined otherwise an error will result.
+
+You can add as many `rm` fields as you like to a single $*addmob* block, and identical mobiles carrying and wearing all equipment specified will be loaded into each room (up until the limit specified by the `num` field).
+
+*`num` — Maximum mobile number*
+
+_Number: 1 or higher_
+
+_Default: 1_
+
+The maximum number of mobiles with this vnum that can be loaded into the world (all areas) at any one time.
+
+*`inv` — Item in inventory*
+
+_Number: 0 or higher_
+
+The relative vnum of any object you wish the mob to carry. An object using this must be defined otherwise an error will result. You do not have to include any `inv` fields in your reset; you may give a reset as many `inv` fields as you like.
+
+*`*` — Equip an item*
+
+_Number: 0 or higher_
+
+Equip an object on the mob. The following format is used:
+
+_<position> <relative vnum>_
+
+_Position_ is any of the following:
+
+[source, text]
+----
+light   light source
+finger1
+finger2
+neck1
+neck2
+body
+on body
+head
+legs
+feet
+hands
+arms
+shield
+about   about body
+waist
+wrist1
+wrist2
+wield   primary weapon
+dual    secondary weapon
+ranged  ranged weapon (lance, bow)
+hold    held in hand
+float   orbiting head
+pouch   belt pouch
+----
+
+You may equip as many items as you wish; if you indicate the same position more than once, the last instance defined will be used.
+
+*Examples*
+
+_Load a single naked mob to a room:_
+
+[source, text]
+----
+$addmob
+mb  1
+rm  3
+----
+
+_Load a naked mob to rooms 30, 32 and 33 (relative vnums); keep adding a mobile to these rooms every time the area resets until there are 6 mobs in the MUD:_
+
+[source, text]
+----
+$addmob
+mb  4
+rm  30
+rm  32
+rm  33
+num 6
+----
+
+_Load and equip a mob:_
+
+[source, text]
+----
+$addmob
+rm  3
+mb  3
+wield   7
+inv 6
+shield  9
+body    8
+inv 5
+inv 5
+----
+
+=== 13. Object resets [[scribe-object-resets]]
+
+Object resets determine how objects other than those given to mobiles are loaded into your area: objects that appear on the ground in rooms, and objects that are placed inside other objects. The *$addobj* block is used to describe a single object reset. You may have as many *$addobj* blocks as you like in your area. You do not need to have any object resets for your area to be valid. You may use any particular rooms and objects as many times as you wish.
+
+*Block header:* `$addobj` or `$addobject`
+
+.Fields
+[cols="1,3,2",options="header"]
+|===
+| Field | Description | Type
+| `ob`
+| object vnum
+| number
+| `rm`
+| room vnum
+| number
+| `lv`
+| level of object
+| number
+| `con`
+| container object vnum
+| number
+|===
+
+*`ob` — object vnum*
+
+_Number: 0 or higher_
+
+The relative vnum of the object you wish to load.
+
+*`rm` — Room vnum*
+
+_Number: 0 or higher_
+
+The relative number of a room you wish to load the object into. A room using this vnum must also be defined otherwise an error will result.
+
+*`lv` — Level of object*
+
+_Number: 0 or higher_
+
+The level you wish the object to be. *Only applies if the object is reset to the ground and NOT to a mob or container*.
+
+*`con` — Container vnum*
+
+_Number: 0 or higher_
+
+The relative number of a container object you wish to place the item in. A container object with this vnum must be defined for the reset to be valid.
+
+Only one of each kind of object may occupy any single container. The object is loaded to the most recently loaded container with the specified vnum. For best results, only load one of each container object into your area.
+
+You need to have at least one `rm` or one `con` fields for the *$addobj* block to be valid.
+
+*Examples*
+
+[source, text]
+----
+$addobj
+ob  4
+rm  12
+
+$addobj
+ob  2
+rm  6
+rm  7
+con 12
+----
+
+=== 14. Games [[scribe-games]]
+
+You can allow mobiles to host gambling games in the MUD.
+
+*Block header:* `$game`
+
+.Fields
+[cols="1,3,2",options="header"]
+|===
+| Field | Description | Type
+| `mb`
+| mobile vnum
+| number
+| `gm`
+| game name
+| text
+| `br`
+| bankroll
+| number
+| `mw`
+| max wait time
+| number
+| `ch`
+| cheat value
+| number
+|===
+
+*`mb` — Mobile vnum*
+
+_Number:1 or higher_
+
+Number of the mobile in charge of the game (dealer or croupier, for example)
+
+*`gm` — Name of game*
+
+_Line of text_
+
+The name of the game. Current games available are
+
+[source, text]
+----
+ult     Upper-Lower-Triple, a dice game
+highdice    High dice, a dice game
+seven       Seven, a dice game
+----
+
+*`br` — Bankroll*
+
+_Number: 0 or higher_
+
+the amount of gold that the mob running the game has when it is loaded. When the bankroll goes below zero, the mob shuts down its game. Currently games can only be conducted with gold pieces.
+
+*`mw` — Max wait time*
+
+_Number: 0 or higher_
+_Default: 8_
+
+The number of PULSE_MOBILEs the croupier will wait for each person to make a decision for interactive games (currently unimplemented).
+
+*`ch` — Cheat value*
+
+_Numbe: 0 or higher_
+
+Whether the mobile running the game will cheat or not. If the cheat value is non-zero, he will cheat.
+
+`mb`, `gm`, `br`, and `ch` values are required for a $game block to be valid.
+
+*Example*
+
+[source, text]
+----
+$game
+mb  3001
+gm  ult
+br  50000
+mw    24
+ch    0
+----
+
+=== 15. Helps [[scribe-helps]]
+
+You can define help file entries in your area using the *$help* block. You don't have to include any *$help* blocks in your area for it to be valid.
+
+*Block header:* `$help`
+
+.Fields
+[cols="1,3,2",options="header"]
+|===
+| Field | Description | Type
+| `he`
+| Help text
+| Multi-line text block
+| `lv`
+| Level restriction
+| number
+|===
+
+*`he` — Help text*
+
+_Multi-line text block_
+
+Define the help entry keywords and body text using the `he` field:
+
+[source, text]
+----
+he  <keywords or phrases>
+<help text>
+~
+----
+
+The _keywords or phrases_ string is automatically capitalised by Scribe.
+
+[source, text]
+----
+E.g.    he  fly levitate
+This is the text displayed whenever the
+commands HELP FLY or HELP LEVITATE
+are entered.
+~
+
+he  'aura of fear'
+This is the text displayed whenever the
+command HELP 'AURA OF FEAR' is issued.
+~
+----
+
+*`lv` — Level restriction*
+
+_Number: -1 or higher_
+
+The minimum level a character has to be in order to access the help entry. `0` is used for general help entries. Use `–1` if you want the help entry keyword header to be hidden.
+
+=== 16. Shops [[scribe-shops]]
+
+Mobiles can be made to run shops: the inventory of the shop is the inventory of the mobile. So long as the mobile is alive, players can attempt to buy and sell items from the shop.
+
+*Block header:* `$shop`
+
+.Fields
+[cols="1,3,2",options="header"]
+|===
+| Field | Description | Type
+| `vn`
+| Vnum of shopkeeper
+| number
+| `t1`
+| Traded item type 1
+| keyword
+| `t2`
+| Traded item type 2
+| keyword
+| `t3`
+| Traded item type 3
+| keyword
+| `t4`
+| Traded item type 4
+| keyword
+| `t5`
+| Traded item type 5
+| keyword
+| `ps`
+| Profit-sell
+| number
+| `pb`
+| Profit-buy
+| number
+| `oh`
+| Opening hour
+| number
+| `ch`
+| Closing hour
+| number
+|===
+
+*`vn` — Vnum of shopkeeper*
+
+_Number: 0 or higher_
+
+The relative vnum of the mobile that will run the shop.
+
+*`t1-t5` — Traded item types*
+
+_Keyword_
+
+The item types that the shopkeeper will be prepared to buy from players. You may indicate up to five types; you don’t have to specify any types for the shop to be valid. Use the same keywords used to define item types.
+
+[source, text]
+----
+E.g.    t1  weapon
+t2  armour
+----
+
+*`ps` — Profit-sell*
+
+_Number: 0 or higher_
+
+The percentage markdown on items sold to the shopkeeper. `100` is the intrinsic value of the item, `75` is a 25% markdown, etc. This value should be at most 100%.
+
+*`pb` — Profit-buy*
+
+_Number: 0 or higher_
+
+The percentage mark-up on items bought from the shopkeeper. `100` is the intrinsic value of the item, `150` is a 50% mark-up, etc. This value should be at least 100%.
+
+*`oh ch` — Opening and closing hours*
+
+_Number: 0 - 23_
+
+The times when the store opens and closes (`0` = midnight).
+
+*Example*
+
+[source, text]
+----
+$shop
+vn  0
+t1  wand
+t2  staff
+t3  potion
+t4  scroll
+oh  7
+ch  18
+ps  85
+pb  120
+----
+
+[[scribe-revision-notes]]
+=== Documentation revision notes and source baseline
+
+This revision adds the missing documentation for the work described through
+Step 4C2 while preserving the original sixteen numbered sections. New material
+is integrated into the existing mobile, object, weapon and area-XP sections.
+The field summaries also include already-described reset/audio/foley fields
+which were absent from their summary tables.
+
+The baseline was checked against
+https://github.com/fromage-fraser/dd4/tree/900c61592875771c701beaf70e4e83654d029d66[DD4 master at PR #707].
+The following files are the implementation references for the added material:
+
+[cols="<2,<5",options="header"]
+|===
+| Source | Relevance
+| https://github.com/fromage-fraser/dd4/blob/900c61592875771c701beaf70e4e83654d029d66/builder/scribe/scribe.pl[`builder/scribe/scribe.pl`]
+| Accepted source keywords, flag dictionaries, validation, single-special/rank export, and the absence of the Step 4C2 fields in this baseline.
+| https://github.com/fromage-fraser/dd4/blob/900c61592875771c701beaf70e4e83654d029d66/server/src/merc.h[`server/src/merc.h`]
+| ACT/object/resistance flag definitions and template/prototype structures.
+| https://github.com/fromage-fraser/dd4/blob/900c61592875771c701beaf70e4e83654d029d66/server/src/mob.c[`server/src/mob.c`]
+| Template XOR/scalar/special-name resolution, original-mask handling, validation and additive XP helper.
+| https://github.com/fromage-fraser/dd4/blob/900c61592875771c701beaf70e4e83654d029d66/server/src/db.c[`server/src/db.c`]
+| Mobile loading, optional archetype/rank syntax and copying prototype state into a new mobile.
+| https://github.com/fromage-fraser/dd4/blob/900c61592875771c701beaf70e4e83654d029d66/server/src/magic.c[`server/src/magic.c`] and https://github.com/fromage-fraser/dd4/blob/900c61592875771c701beaf70e4e83654d029d66/server/src/fight.c[`server/src/fight.c`]
+| Resistance adjustment, selected status helpers, ordinary-attack categories, damage messaging, death provenance and XP use.
+| https://github.com/fromage-fraser/dd4/blob/900c61592875771c701beaf70e4e83654d029d66/server/src/act_wiz.c[`server/src/act_wiz.c`] and https://github.com/fromage-fraser/dd4/blob/900c61592875771c701beaf70e4e83654d029d66/server/src/act_info.c[`server/src/act_info.c`]
+| Immortal flag-layer diagnostics and the updated body-form display.
+| https://github.com/fromage-fraser/dd4/blob/900c61592875771c701beaf70e4e83654d029d66/server/src/const.c[`server/src/const.c`] and https://github.com/fromage-fraser/dd4/blob/900c61592875771c701beaf70e4e83654d029d66/server/src/handler.c[`server/src/handler.c`]
+| Effect classifications and text names for resistance/object flags.
+| Step 4C2 implementation instructions supplied in this project
+| Basis for the explicitly marked individual/live resistance interface. No merge or installed-runtime verification is claimed for that chunk here.
+|===
+
+The retained `fire_elemental` test archetype is not a general setting rule:
+in this baseline it carries `ACT_UNDEAD` and `AFF_DETECT_MAGIC`, an XP
+adjustment of `+5`, and test resistance data. Its body species supplies cold
+immunity and the archetype repeats cold immunity, so cold cancels through
+XOR. Do not infer universal elemental or undead traits from that test entry.
+
+Other existing sections have been retained rather than subjected to an
+unrelated whole-engine behaviour audit. In particular, adding this
+documentation does not enable planned undead spells, extend Scribe's
+archetype selector, or execute inherited special-function slots.
