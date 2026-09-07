@@ -214,26 +214,21 @@ void say_spell(CHAR_DATA *ch, int sn)
 }
 
 /*
- * Resolve a character's response to one or more RES_* categories.
+ * Resolve a target's response using its effective live NPC resistance masks.
  *
- * Any matching immunity takes precedence. If the supplied attack categories
- * match both a resistance and a vulnerability, they cancel to normal.
+ * Templates and individual XOR masks are resolved when the prototype loads.
+ * create_mobile() copies that state into each independent live instance.
  *
- * NPC resistance data currently comes from the fully resolved body-species
- * and creature-archetype template. Individual-mobile and runtime layers are
- * added in the next implementation chunk.
+ * Existing PC resistance skills and effects remain separate.
  */
-
 RESISTANCE_RESULT get_resistance_result(
     CHAR_DATA *victim,
     unsigned long int res_types)
 {
-        MOB_TEMPLATE_DATA resolved;
-        int mob_type;
         bool resistant;
         bool vulnerable;
 
-        if (!victim)
+        if (!victim || !IS_NPC(victim))
                 return RES_RESULT_NORMAL;
 
         res_types &= RES_VALID_MASK;
@@ -241,26 +236,14 @@ RESISTANCE_RESULT get_resistance_result(
         if (res_types == 0)
                 return RES_RESULT_NORMAL;
 
-        if (!IS_NPC(victim) || !victim->mobspec)
-                return RES_RESULT_NORMAL;
-
-        mob_type = mob_type_sn(victim);
-
-        if (!resolve_mob_template(
-                mob_type,
-                &resolved))
-        {
-                return RES_RESULT_NORMAL;
-        }
-
-        if (IS_SET(resolved.immunes, res_types))
+        if ((victim->immunes & res_types) != 0)
                 return RES_RESULT_IMMUNE;
 
         resistant =
-            IS_SET(resolved.resists, res_types);
+            (victim->resists & res_types) != 0;
 
         vulnerable =
-            IS_SET(resolved.vulnerabilities, res_types);
+            (victim->vulnerabilities & res_types) != 0;
 
         if (resistant && vulnerable)
                 return RES_RESULT_NORMAL;

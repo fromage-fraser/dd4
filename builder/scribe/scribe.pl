@@ -154,6 +154,42 @@ my %mob_bf = (
         has_tail  => 512,
 );
 
+my %mob_resistance = (
+        none        => 0,
+        zero        => 0,
+        fire        => 1,
+        cold        => 2,
+        electricity => 4,
+        energy      => 8,
+        blunt       => 16,
+        pierce      => 32,
+        piercing    => 32,
+        slash       => 64,
+        slashing    => 64,
+        acid        => 128,
+        poison      => 256,
+        drain       => 512,
+        sleep       => 1024,
+        charm       => 2048,
+        hold        => 4096,
+        nonmagic    => 8192,
+        non_magic   => 8192,
+        magic       => 16384,
+        paralysis   => 32768,
+        psychic     => 65536,
+        holy        => 131072,
+        dark        => 262144,
+        curse       => 524288,
+        sonic       => 1048576,
+        water       => 2097152,
+);
+
+my $mob_resistance_valid_mask = 0;
+
+foreach my $bit (values %mob_resistance) {
+    $mob_resistance_valid_mask |= $bit;
+}
+
 my @mob_spec = qw/
 
     spec_breath_any	        spec_cast_druid	        spec_warrior	          spec_aboleth
@@ -625,7 +661,9 @@ while (1) {
                 next;
             }
 
-            next if &add_field_data(\%mob, $field, $data, 'sp vn nm sh lo lv act aff bf sx al rnk');
+            next if &add_field_data(
+                    \%mob, $field, $data,
+                    'sp vn nm sh lo lv act aff bf sx al rnk res vuln imm');
             print "    line $line: mob: unknown field '$field'\n";
         }
 
@@ -1232,6 +1270,29 @@ foreach (0 .. $#mobs) {
     if ($msg = &get_multiple_flags(\%mob, 'aff', \%mob_aff, '')) {
         print "$err $msg\n";
         $mob_errors{$mob{'line'}}++;
+    }
+
+    # Optional individual resistance XOR masks.
+    # Raw masks may overlap because they modify inherited categories.
+
+    foreach my $field (qw/res vuln imm/) {
+        next unless exists $mob{$field};
+
+        if (&is_number($mob{$field})
+        && ($mob{$field} < 0
+        ||  $mob{$field} > $mob_resistance_valid_mask
+        || (int($mob{$field}) & ~$mob_resistance_valid_mask))) {
+            print "$err field '$field' contains invalid resistance bits: "
+                    . "$mob{$field}\n";
+            $mob_errors{$mob{'line'}}++;
+            next;
+        }
+
+        if ($msg = &get_multiple_flags(
+                \%mob, $field, \%mob_resistance, '')) {
+            print "$err $msg\n";
+            $mob_errors{$mob{'line'}}++;
+        }
     }
 
     if (exists $mob{'sp'}) {
@@ -2743,6 +2804,15 @@ if (@mobs) {
 
             print AREA "$field sfx.foley.mob.$full_vnum.$suffix~\n";
         }
+
+        print AREA "MobResists $mob{'res'}\n"
+                if exists $mob{'res'};
+
+        print AREA "MobVulnerabilities $mob{'vuln'}\n"
+                if exists $mob{'vuln'};
+
+        print AREA "MobImmunes $mob{'imm'}\n"
+                if exists $mob{'imm'};
     }
 
     print AREA "#0\n\n";

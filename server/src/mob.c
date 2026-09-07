@@ -340,6 +340,77 @@ bool resolve_mob_template(int mob_type,
 }
 
 /*
+ * Parse one decimal mask or a compact '|' expression.
+ *
+ * Only currently defined RES_* bits are accepted.
+ * On failure, the caller's output value remains unchanged.
+ */
+bool parse_mob_resistance_mask(const char *text,
+                                unsigned long int *mask)
+{
+        const char *p;
+        unsigned long int result;
+        unsigned long int value;
+        unsigned long int digit;
+
+        if (!text || !mask || text[0] == '\0')
+                return FALSE;
+
+        p = text;
+        result = 0;
+
+        for (;;)
+        {
+                if (*p < '0' || *p > '9')
+                        return FALSE;
+
+                value = 0;
+
+                do
+                {
+                        digit = (unsigned long int)(*p - '0');
+
+                        if (value > (ULONG_MAX - digit) / 10)
+                                return FALSE;
+
+                        value = value * 10 + digit;
+                        p++;
+                }
+                while (*p >= '0' && *p <= '9');
+
+                if (value & ~RES_VALID_MASK)
+                        return FALSE;
+
+                result |= value;
+
+                if (*p == '\0')
+                        break;
+
+                if (*p != '|')
+                        return FALSE;
+
+                p++;
+        }
+
+        *mask = result;
+        return TRUE;
+}
+
+/*
+ * Validate an effective resistance state, not raw XOR input masks.
+ */
+bool mob_resistance_masks_valid(unsigned long int resists,
+                                unsigned long int vulnerabilities,
+                                unsigned long int immunes)
+{
+        return (((resists | vulnerabilities | immunes)
+                 & ~RES_VALID_MASK) == 0
+             && (resists & vulnerabilities) == 0
+             && (resists & immunes) == 0
+             && (vulnerabilities & immunes) == 0);
+}
+
+/*
  * Report inherited bits explicitly cancelled by the individual mobile.
  * Protected engine bits are removed from the supplied masks by the caller.
  */
@@ -385,6 +456,8 @@ static void log_mob_flag_cancellations(
 void initialise_mob_index_flags(MOB_INDEX_DATA *index)
 {
         MOB_TEMPLATE_DATA inherited;
+        unsigned long int invalid;
+        unsigned long int bit;
         char buf[MAX_STRING_LENGTH];
 
         if (!index)
@@ -399,6 +472,7 @@ void initialise_mob_index_flags(MOB_INDEX_DATA *index)
                         &inherited))
                 {
                         memset(&inherited, 0, sizeof(inherited));
+
                         snprintf(
                             buf,
                             sizeof(buf),
@@ -420,6 +494,15 @@ void initialise_mob_index_flags(MOB_INDEX_DATA *index)
         index->body_form =
             inherited.body_form ^ index->area_body_form;
 
+        index->resists =
+            inherited.resists ^ index->area_resists;
+
+        index->vulnerabilities =
+            inherited.vulnerabilities ^ index->area_vulnerabilities;
+
+        index->immunes =
+            inherited.immunes ^ index->area_immunes;
+
         log_mob_flag_cancellations(
             index,
             "ACT",
@@ -440,6 +523,57 @@ void initialise_mob_index_flags(MOB_INDEX_DATA *index)
             inherited.body_form,
             index->area_body_form,
             body_form_name);
+
+        log_mob_flag_cancellations(
+            index,
+            "RESIST",
+            inherited.resists,
+            index->area_resists,
+            resist_name);
+
+        log_mob_flag_cancellations(
+            index,
+            "VULNERABILITY",
+            inherited.vulnerabilities,
+            index->area_vulnerabilities,
+            resist_name);
+
+        log_mob_flag_cancellations(
+            index,
+            "IMMUNITY",
+            inherited.immunes,
+            index->area_immunes,
+            resist_name);
+
+        /*
+         * Input masks may overlap legitimately. The final effective state
+         * must not contain unknown bits or contradictory categories.
+         */
+        invalid =
+            (index->resists & index->vulnerabilities)
+            | (index->resists & index->immunes)
+            | (index->vulnerabilities & index->immunes)
+            | ((index->resists | index->vulnerabilities | index->immunes)
+               & ~RES_VALID_MASK);
+
+        for (bit = 1; bit != 0; bit <<= 1)
+        {
+                if (!(invalid & bit))
+                        continue;
+
+                snprintf(
+                    buf,
+                    sizeof(buf),
+                    "[MOB TEMPLATE] vnum %d: invalid effective resistance "
+                    "'%s' (bit %lu): %s. See mstat resistance layers.",
+                    index->vnum,
+                    resist_name(bit),
+                    bit,
+                    (bit & RES_VALID_MASK)
+                        ? "present in multiple categories"
+                        : "undefined resistance bit");
+                log_string(buf);
+        }
 }
 
 /*

@@ -699,6 +699,9 @@ Gezhp, Owl and Shade
 - Creature archetypes can now supply an additional XP bonus or penalty.
 - Mobile ACT, AFF and body-form defaults now support individual XOR overrides.
   mstat shows inherited, individual, cancelled, prototype and live flags.
+- Individual mobile resistance, vulnerability and immunity overrides added.
+  Scribe supports res/vuln/imm; mstat shows all layers and mset can change
+  the effective masks of a live NPC.
 
 ~
 

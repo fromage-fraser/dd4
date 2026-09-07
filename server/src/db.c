@@ -1923,6 +1923,38 @@ void load_teacher(FILE *fp, MOB_INDEX_DATA *pMobIndex)
 }
 
 /*
+ * Read a resistance-mask token from an optional mobile field.
+ */
+static unsigned long int read_mob_resistance_mask(
+    FILE *fp,
+    MOB_INDEX_DATA *index,
+    const char *field)
+{
+        const char *text;
+        unsigned long int mask;
+        char buf[MAX_STRING_LENGTH];
+
+        text = fread_word(fp);
+
+        if (!parse_mob_resistance_mask(text, &mask))
+        {
+                snprintf(
+                    buf,
+                    sizeof(buf),
+                    "[MOB TEMPLATE] vnum %d: invalid %s value '%s'. "
+                    "Use defined RES_* values as decimal numbers, "
+                    "optionally joined by '|', without spaces.",
+                    index->vnum,
+                    field,
+                    text);
+                log_string(buf);
+                exit(1);
+        }
+
+        return mask;
+}
+
+/*
  * Snarf a mob section.
  */
 void load_mobiles(FILE *fp)
@@ -1958,6 +1990,10 @@ void load_mobiles(FILE *fp)
 
                 pMobIndex = alloc_perm(sizeof(*pMobIndex));
                 pMobIndex->vnum = vnum;
+
+                pMobIndex->area_resists = 0;
+                pMobIndex->area_vulnerabilities = 0;
+                pMobIndex->area_immunes = 0;
 
                 for (stat = 0; stat < SECT_MAX; stat++)
                         pMobIndex->footstep_key[stat] = NULL;
@@ -2079,7 +2115,25 @@ void load_mobiles(FILE *fp)
                         ungetc(letter, fp);
                         word = fread_word(fp);
 
-                        if (!str_cmp(word, "FStepInside"))
+                        if (!str_cmp(word, "MobResists"))
+                        {
+                                pMobIndex->area_resists =
+                                    read_mob_resistance_mask(
+                                        fp, pMobIndex, "MobResists");
+                        }
+                        else if (!str_cmp(word, "MobVulnerabilities"))
+                        {
+                                pMobIndex->area_vulnerabilities =
+                                    read_mob_resistance_mask(
+                                        fp, pMobIndex, "MobVulnerabilities");
+                        }
+                        else if (!str_cmp(word, "MobImmunes"))
+                        {
+                                pMobIndex->area_immunes =
+                                    read_mob_resistance_mask(
+                                        fp, pMobIndex, "MobImmunes");
+                        }
+                        else if (!str_cmp(word, "FStepInside"))
                                 pMobIndex->footstep_key[SECT_INSIDE] = fread_string(fp);
                         else if (!str_cmp(word, "FStepCity"))
                                 pMobIndex->footstep_key[SECT_CITY] = fread_string(fp);
@@ -2107,7 +2161,7 @@ void load_mobiles(FILE *fp)
                                 pMobIndex->footstep_key[SECT_UNDERWATER_GROUND] = fread_string(fp);
                         else
                         {
-                                bug("Load_mobiles: unknown mob foley field.", 0);
+                                bug("Load_mobiles: unknown optional mobile field.", 0);
                                 fread_to_eol(fp);
                         }
                 }
@@ -4031,6 +4085,11 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA *pMobIndex)
         mob->alignment = pMobIndex->alignment;
         mob->sex = pMobIndex->sex;
         mob->body_form = pMobIndex->body_form;
+
+        mob->resists = pMobIndex->resists;
+        mob->vulnerabilities = pMobIndex->vulnerabilities;
+        mob->immunes = pMobIndex->immunes;
+
         mob->armor = interpolate(mob->level, 100, -100);
 
         mob->max_hit = mob->level * 8 + number_range(mob->level * mob->level / 4, mob->level * mob->level);
