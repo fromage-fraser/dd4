@@ -3723,7 +3723,7 @@ void do_consider(CHAR_DATA *ch, char *argument)
                                         strcat(buf1, "<556>Vulnerable To:<0><15>");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
-                                                if (IS_SET(resolved.vulnerabilities, next))
+                                                if (IS_SET(victim->vulnerabilities, next))
                                                 {
 
                                                         strcat(buf1, " ");
@@ -3736,7 +3736,7 @@ void do_consider(CHAR_DATA *ch, char *argument)
                                         strcat(buf1, "Resistant To:{W");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
-                                                if (IS_SET(resolved.resists, next))
+                                                if (IS_SET(victim->resists, next))
                                                 {
                                                         strcat(buf1, " ");
                                                         strcat(buf1, resist_name(next));
@@ -3748,7 +3748,7 @@ void do_consider(CHAR_DATA *ch, char *argument)
                                         strcat(buf1, "Immune To:{W");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
-                                                if (IS_SET(resolved.immunes, next))
+                                                if (IS_SET(victim->immunes, next))
                                                 {
                                                         strcat(buf1, " ");
                                                         strcat(buf1, resist_name(next));

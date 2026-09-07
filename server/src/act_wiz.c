@@ -2115,6 +2115,90 @@ static void mstat_flag_layers(CHAR_DATA *ch, CHAR_DATA *victim)
             ch);
 }
 
+static void mstat_resistance_group(
+    CHAR_DATA *ch,
+    const char *heading,
+    unsigned long int inherited,
+    unsigned long int individual,
+    unsigned long int prototype,
+    unsigned long int live)
+{
+        send_to_char("\n\r{W", ch);
+        send_to_char(heading, ch);
+        send_to_char("{x\n\r", ch);
+
+        mstat_flag_row(ch, "Template", inherited, resist_name);
+        mstat_flag_row(ch, "#MOBILES", individual, resist_name);
+        mstat_flag_row(ch, "XOR removed",
+                       inherited & individual, resist_name);
+        mstat_flag_row(ch, "Prototype", prototype, resist_name);
+        mstat_flag_row(ch, "Live", live, resist_name);
+}
+
+static void mstat_resistance_layers(CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        MOB_TEMPLATE_DATA inherited;
+        MOB_INDEX_DATA *index;
+
+        if (!IS_NPC(victim) || !victim->pIndexData)
+                return;
+
+        index = victim->pIndexData;
+        memset(&inherited, 0, sizeof(inherited));
+
+        if (index->mobspec && index->mobspec[0] != '\0')
+        {
+                if (!resolve_mob_template(
+                        mob_lookup(index->mobspec),
+                        &inherited))
+                {
+                        send_to_char(
+                            "\n\r{RResistance layers unavailable: "
+                            "invalid template.{x\n\r",
+                            ch);
+                        return;
+                }
+        }
+
+        mstat_resistance_group(
+            ch,
+            "RESISTANCE layers",
+            inherited.resists,
+            index->area_resists,
+            index->resists,
+            victim->resists);
+
+        mstat_resistance_group(
+            ch,
+            "VULNERABILITY layers",
+            inherited.vulnerabilities,
+            index->area_vulnerabilities,
+            index->vulnerabilities,
+            victim->vulnerabilities);
+
+        mstat_resistance_group(
+            ch,
+            "IMMUNITY layers",
+            inherited.immunes,
+            index->area_immunes,
+            index->immunes,
+            victim->immunes);
+
+        send_to_char(
+            mob_resistance_masks_valid(
+                index->resists, index->vulnerabilities, index->immunes)
+                ? "Prototype resistance data: {Gvalid{x\n\r"
+                : "Prototype resistance data: {RINVALID{x\n\r",
+            ch);
+
+        send_to_char(
+            mob_resistance_masks_valid(
+                victim->resists, victim->vulnerabilities, victim->immunes)
+                ? "Live resistance data: {Gvalid{x\n\r"
+                : "Live resistance data: {RINVALID{x\n\r",
+            ch);
+}
+
 void do_mstat(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *rch;
@@ -2758,9 +2842,9 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                             buf1,
                                             "Template resolution: "
                                             "{Wbody species XOR archetype{x\n\r"
-                                            "{DACT, AFF and body-form individual "
-                                            "overrides are shown below. Other "
-                                            "fields remain template values.{x\n\r");
+                                            "{DThese are template values. "
+                                            "Individual flag and resistance "
+                                            "layers follow below.{x\n\r");
 
                                         sprintf(
                                             buf,
@@ -2835,12 +2919,12 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                         strcat(buf1, "{x\n\r");
 
                                         /* resists */
-                                        sprintf(buf, "Resistant to (num): {W");
+                                        sprintf(buf, "Template Resistant to (num): {W");
                                         strcat(buf1, buf);
                                         bit_explode(ch, buf, resolved.resists);
                                         strcat(buf1, buf);
                                         strcat(buf1, "{x\n\r");
-                                        strcat(buf1, "Resistant To (txt):{R");
+                                        strcat(buf1, "Template Resistant To (txt):{R");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
                                                 if (IS_SET(resolved.resists, next))
@@ -2852,12 +2936,12 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                         strcat(buf1, "{x\n\r");
 
                                         /* Vulnerable */
-                                        sprintf(buf, "Vulnerable to (num): {W");
+                                        sprintf(buf, "Template Vulnerable to (num): {W");
                                         strcat(buf1, buf);
                                         bit_explode(ch, buf, resolved.vulnerabilities);
                                         strcat(buf1, buf);
                                         strcat(buf1, "{x\n\r");
-                                        strcat(buf1, "Vulnerable To (txt):{R");
+                                        strcat(buf1, "Template Vulnerable To (txt):{R");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
                                                 if (IS_SET(resolved.vulnerabilities, next))
@@ -2869,12 +2953,12 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                         strcat(buf1, "{x\n\r");
 
                                         /*  Immune */
-                                        sprintf(buf, "Immune to (num): {W");
+                                        sprintf(buf, "Template Immune to (num): {W");
                                         strcat(buf1, buf);
                                         bit_explode(ch, buf, resolved.immunes);
                                         strcat(buf1, buf);
                                         strcat(buf1, "{x\n\r");
-                                        strcat(buf1, "Immune To (txt):{R");
+                                        strcat(buf1, "Template Immune To (txt):{R");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
                                                 if (IS_SET(resolved.immunes, next))
@@ -2911,14 +2995,14 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                         {
                                                 strcat(
                                                     buf1,
-                                                    "Resistance data: "
+                                                    "Template resistance data: "
                                                     "{Gvalid{x\n\r");
                                         }
                                         else
                                         {
                                                 strcat(
                                                     buf1,
-                                                    "Resistance data: "
+                                                    "Template resistance data: "
                                                     "{RINVALID -- see boot log"
                                                     "{x\n\r");
                                         }
@@ -3000,6 +3084,7 @@ void do_mstat(CHAR_DATA *ch, char *argument)
 
         send_to_char(buf1, ch);
         mstat_flag_layers(ch, victim);
+        mstat_resistance_layers(ch, victim);
         return;
 }
 
@@ -5379,7 +5464,8 @@ void do_mset(CHAR_DATA *ch, char *argument)
                              "  act crit swiftness bonus max_bonus slept\n\r"
                              "  steel titanium adamantite electrum starmetal \n\r"
                              "String being one of:\n\r"
-                             "  name short long title spec\n\r",
+                             "  name short long title spec resists \n\r"
+                             "  vulnerabilities immunes \n\r",
                              ch);
                 return;
         }
@@ -5387,6 +5473,74 @@ void do_mset(CHAR_DATA *ch, char *argument)
         if (!(victim = get_char_world(ch, arg1)))
         {
                 send_to_char("They aren't here.\n\r", ch);
+                return;
+        }
+
+        /*
+         * Resistance fields replace a live NPC mask directly.
+         * They do not modify the prototype or its original XOR inputs.
+         */
+        if (!str_cmp(arg2, "resists")
+        ||  !str_cmp(arg2, "vulnerabilities")
+        ||  !str_cmp(arg2, "immunes"))
+        {
+                unsigned long int mask;
+                unsigned long int resists;
+                unsigned long int vulnerabilities;
+                unsigned long int immunes;
+
+                if (!IS_NPC(victim))
+                {
+                        send_to_char(
+                            "These resistance fields are currently NPC-only.\n\r",
+                            ch);
+                        return;
+                }
+
+                if (!parse_mob_resistance_mask(arg3, &mask))
+                {
+                        send_to_char(
+                            "Invalid resistance mask. Use defined decimal "
+                            "RES_* values, optionally joined by '|', "
+                            "without spaces.\n\r",
+                            ch);
+                        return;
+                }
+
+                resists = victim->resists;
+                vulnerabilities = victim->vulnerabilities;
+                immunes = victim->immunes;
+
+                if (!str_cmp(arg2, "resists"))
+                        resists = mask;
+                else if (!str_cmp(arg2, "vulnerabilities"))
+                        vulnerabilities = mask;
+                else
+                        immunes = mask;
+
+                if (!mob_resistance_masks_valid(
+                        resists, vulnerabilities, immunes))
+                {
+                        send_to_char(
+                            "That would create conflicting resistance "
+                            "categories. Clear the conflicting live bit "
+                            "from its other category first.\n\r",
+                            ch);
+                        return;
+                }
+
+                victim->resists = resists;
+                victim->vulnerabilities = vulnerabilities;
+                victim->immunes = immunes;
+
+                snprintf(
+                    buf,
+                    sizeof(buf),
+                    "Live %s mask set to %lu. "
+                    "Prototype and area data are unchanged.\n\r",
+                    arg2,
+                    mask);
+                send_to_char(buf, ch);
                 return;
         }
 

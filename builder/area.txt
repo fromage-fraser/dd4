@@ -595,6 +595,59 @@ from its individual mask unless cancellation is intended.
 mstat shows Template, #MOBILES, XOR removed, Prototype and Live values for
 each of these three flag groups.
 
+Individual resistance overrides
+
+Optional #MOBILES tail fields:
+
+    MobResists <mask>
+    MobVulnerabilities <mask>
+    MobImmunes <mask>
+
+Place these after the ordinary mobile data, mob programs, optional
+archetype/rank entry, and teacher entries. They can accompany the optional
+footstep fields. No tilde terminator is used.
+
+The corresponding Scribe fields are:
+
+    res     resistance XOR mask
+    vuln    vulnerability XOR mask
+    imm     immunity XOR mask
+
+Scribe accepts resistance keywords separated by spaces, or a combined decimal
+mask. The .are fields accept decimal masks or decimal values joined by '|'
+without spaces.
+
+Omitted fields and zero masks inherit the corresponding template unchanged.
+A repeated inherited bit is removed; a previously absent bit is added.
+
+Values within a single mask are ORed together. XOR applies between the
+template and individual layers, not between repeated words in one field.
+
+If a tail field is declared more than once, the last declaration replaces
+that individual input mask; repeated declarations do not toggle it again.
+
+Raw resistance, vulnerability and immunity masks may overlap legitimately.
+For example, converting inherited fire immunity to fire vulnerability
+requires fire in both the individual immunity and vulnerability masks.
+
+The resolved prototype must not contain contradictory categories. Invalid
+effective combinations produce boot diagnostics. Existing runtime precedence
+remains immunity first, with resistance and vulnerability cancelling.
+
+Each spawned NPC receives its own copy of the effective prototype masks.
+mstat displays Template, #MOBILES, XOR removed, Prototype and Live values.
+
+The immortal commands:
+
+    mset <mobile> resists <mask>
+    mset <mobile> vulnerabilities <mask>
+    mset <mobile> immunes <mask>
+
+replace a complete live mask. They are not XOR operations and do not change
+the prototype, area file, other existing instances, or future spawns.
+
+These generic live resistance fields currently apply to NPCs only.
+
 === The #OBJECTS section
 
 These are the items the people who journey through your area will keep and use,

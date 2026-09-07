@@ -2739,6 +2739,20 @@ struct mob_index_data
         unsigned long int area_act;
         unsigned long int area_affected_by;
         unsigned long int area_body_form;
+
+        /*
+         * Original individual resistance XOR masks.
+         */
+        unsigned long int area_resists;
+        unsigned long int area_vulnerabilities;
+        unsigned long int area_immunes;
+
+        /*
+         * Effective prototype resistance masks.
+         */
+        unsigned long int resists;
+        unsigned long int vulnerabilities;
+        unsigned long int immunes;
 };
 
 /*
@@ -2836,6 +2850,15 @@ struct char_data
         int backstab;
         int edrain;
         unsigned long int body_form;
+
+        /*
+         * Effective live NPC resistance masks.
+         * These do not replace the existing PC resistance skills/effects.
+         */
+        unsigned long int resists;
+        unsigned long int vulnerabilities;
+        unsigned long int immunes;
+
         int tournament_team; /* mobs can use this too */
         int exp_modifier;
         int damage_mitigation;
@@ -5407,6 +5430,11 @@ void initialise_mob_index_flags args((MOB_INDEX_DATA *index));
 int get_mob_exp_modifier args((CHAR_DATA *mob));
 int validate_mob_template_tables args((void));
 int validate_mob_resistance_table args((void));
+bool parse_mob_resistance_mask args((const char *text,
+                                    unsigned long int *mask));
+bool mob_resistance_masks_valid args((unsigned long int resists,
+                                      unsigned long int vulnerabilities,
+                                      unsigned long int immunes));
 
 /* mob_commands.c */
 char *mprog_type_to_name args((int type));
