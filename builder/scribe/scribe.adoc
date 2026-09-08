@@ -18,7 +18,7 @@ The existing sixteen numbered sections and their cross-reference targets are
 retained.
 
 The verified repository baseline is DD4 `master`, commit
-`900c61592875771c701beaf70e4e83654d029d66` (PR #707), checked on 7 September
+`5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb` (PR #709), checked on 7 September
 2026. This identifies source-code availability; it does not establish which
 executable is running on a particular server.
 
@@ -37,21 +37,26 @@ prototype initialisation, cancellation logging and `mstat` flag layers.
 resistance-aware damage and selected status-effect paths; and additive
 archetype `xp_mod`.
 | Individual and live NPC resistance masks
-| *Step 4C2 interface.* Documented here to accompany the latest supplied
-implementation chunk. Its `res`, `vuln` and `imm` Scribe fields,
-`MobResists`/`MobVulnerabilities`/`MobImmunes` area fields, and live-resistance
-`mset` commands are not present in the verified baseline. Their installation,
-merge and runtime tests have not yet been confirmed.
+| Implemented in the verified baseline through PR #708: `res`, `vuln` and
+`imm` source fields, the corresponding optional area fields, independent live
+NPC resistance masks, and resistance-layer inspection/editing. A merged source
+revision does not by itself confirm the executable deployed to a server.
+| Individual and live attack-part masks
+| *Step 4C3a interface.* This revision accompanies the new `atk` source field,
+`MobAttackParts` area field, prototype/live attack-part masks, validation and
+immortal diagnostics. Install the accompanying code before using these fields.
+Automatic selection or scheduling of combat attacks from this mask is separate
+work; this data/inspection chunk does not grant combat skills or extra attacks.
 | Further template integration
-| Individual attack-part inputs, individual scalar overrides, automatic
+| Automatic combat use of attack parts, individual scalar overrides,
 application of the remaining template scalar defaults, and execution of
-multiple inherited special functions are not supplied by these chunks.
+multiple inherited special functions remain separate work.
 |===
 
-IMPORTANT: Sections marked *Step 4C2* require both the corresponding Scribe
-changes and the matching DD4 server changes. An older script rejects the new
-source fields, and an older server does not apply the new area fields. Adding
-them to this manual does not install the feature.
+IMPORTANT: Step 4C2 is merged. Sections marked *Step 4C3a* describe the next
+supplied code chunk and require its matching Scribe and DD4 server changes.
+Adding these fields to the manual alone does not install them. Use matching
+versions of the script, server and builder exporter.
 
 This manual distinguishes a Scribe source field, a generated `.are` field,
 and a server-side table field. A name in `mob_table` or `merc.h` is not
@@ -72,7 +77,8 @@ field named `xp_mod`, `species`, or `archetype`; see
 * <<scribe-mobiles,8. Mobiles>>
 ** <<scribe-mobile-inheritance,Body species, archetypes and XOR overrides>>
 ** <<scribe-mobile-undead,Undead classification>>
-** <<scribe-individual-resistances,Individual resistance fields (Step 4C2)>>
+** <<scribe-individual-resistances,Individual resistance fields>>
+** <<scribe-individual-attack-parts,Individual attack-part masks (Step 4C3a)>>
 ** <<scribe-resistance-flags,Resistance categories and behaviour>>
 ** <<scribe-template-xp,Archetype XP adjustments>>
 ** <<scribe-mobile-diagnostics,Validation, mstat and live editing>>
@@ -569,13 +575,16 @@ Mobiles are the creatures that populate your area. They are defined in the `#MOB
 | terrain-specific footstep foley override; repeatable
 | keyword
 | `res`
-| individual resistance XOR mask — Step 4C2
+| individual resistance XOR mask
 | keyword list or decimal mask
 | `vuln`
-| individual vulnerability XOR mask — Step 4C2
+| individual vulnerability XOR mask
 | keyword list or decimal mask
 | `imm`
-| individual immunity XOR mask — Step 4C2
+| individual immunity XOR mask
+| keyword list or decimal mask
+| `atk`
+| individual attack-part XOR mask — Step 4C3a
 | keyword list or decimal mask
 |===
 
@@ -711,8 +720,8 @@ selection when necessary. Do not put the literal `< ...~ ...~` line into a
 Scribe `$mob` source block and expect it to be recognised. Regenerating the
 area can overwrite a hand-edited archetype selection.
 
-Step 4C2 adds resistance fields but does not add a source-level archetype
-selector. DD Builder integration must preserve this distinction too.
+The resistance and attack-part field additions do not add a source-level
+archetype selector. DD Builder integration must preserve this distinction too.
 
 ===== Template fields which are not yet live defaults
 
@@ -721,12 +730,15 @@ masks, HP/damage/critical/haste modifiers, dimensions, size, language, special
 names and the archetype XP adjustment. The presence of a value in a template
 diagnostic is not proof that it is already applied to a live mobile.
 
-In this implementation stage, ACT/AFF/body flags are applied at prototype
-loading; resistance data drives the resistance system; and `xp_mod` is used
-by the XP helper. Attack parts and the remaining template scalar defaults
-are resolved and displayed, but their subsequent live integration is still
-separate work. The special-function names are resolved and validated without
-automatically activating all three slots.
+In the verified baseline, ACT/AFF/body and resistance masks are resolved at
+prototype loading and copied into live NPCs; resistance calculations read the
+live masks; and `xp_mod` is used by the XP helper.
+
+Step 4C3a adds prototype/live storage and individual overrides for attack parts.
+This does not yet connect those parts to automatic attack selection, damage
+calculation, equipment creation or new skill permissions. The remaining template
+scalar defaults still require live application. Special-function names are
+resolved and validated without automatically activating all three slots.
 
 For the template scalar fields using `MOB_TEMPLATE_UNSET`, an archetype value
 inherits when it is unset; otherwise it replaces the body-species value.
@@ -1267,11 +1279,10 @@ Object provenance uses the separate `ex undead` flag, documented under
 object that flag does not make its holder undead.
 
 [[scribe-individual-resistances]]
-==== Individual resistance fields — Step 4C2
+==== Individual resistance fields
 
-IMPORTANT: This subsection documents the supplied Step 4C2 interface. It is
-not present in the verified PR #707 baseline. Install the matching Scribe and
-server changes before using these fields; see
+These fields were merged in PR #708 and are present in the verified baseline.
+Use a server and Scribe script containing those changes; see
 <<scribe-documentation-status,Documentation status>>.
 
 *`res` — Resistance XOR mask*
@@ -1381,12 +1392,122 @@ re-XOR the template on each attack. Live edits therefore affect only the
 chosen instance, as described under <<scribe-mobile-diagnostics,inspection
 and live editing>>.
 
+[[scribe-individual-attack-parts]]
+==== Individual attack-part masks — Step 4C3a
+
+IMPORTANT: This section accompanies the Step 4C3a code changes. It is not a
+claim that those changes were present in PR #709. Install the server and
+Scribe additions before using `atk` or `MobAttackParts`.
+
+*`atk` — Attack-part XOR mask*
+
+_Keyword list or combined non-negative decimal mask_
+
+_Default: omitted; inherit without change_
+
+An attack-part mask records natural offensive body features separately from
+`bf` (general morphology). The server first resolves body-species and archetype
+attack parts with XOR, then XORs the individual `atk` mask over that result.
+The raw input, effective prototype and each live instance remain separate.
+
+The accepted values are the existing `PART_*` combat group in `merc.h`, not
+new low-order flags. In particular, these numbers must not be treated as
+resistance values or converted through a 32-bit integer.
+
+[cols="<2,<2,<2",options="header"]
+|===
+| Scribe keyword | C flag | Decimal bit
+| `claws` | `PART_CLAWS` | 8589934592
+| `fangs` | `PART_FANGS` | 17179869184
+| `horns` | `PART_HORNS` | 34359738368
+| `tusks` | `PART_TUSKS` | 68719476736
+| `tail` | `PART_TAILATTACK` | 137438953472
+| `sharp_scales` | `PART_SHARPSCALES` | 274877906944
+| `beak` | `PART_BEAK` | 549755813888
+| `haunch` | `PART_HAUNCH` | 1099511627776
+| `hooves` | `PART_HOOVES` | 2199023255552
+| `paws` | `PART_PAWS` | 4398046511104
+| `forelegs` | `PART_FORELEGS` | 8796093022208
+| `feathers` | `PART_FEATHERS` | 17592186044416
+| `husk_shell` | `PART_HUSK_SHELL` | 35184372088832
+| `none`, `zero` | Empty mask | 0
+|===
+
+Here `tail` means `PART_TAILATTACK`, not the general `PART_TAIL` morphology bit.
+Other general body parts, negative `BODY_NO_*` flags and undefined bits are not
+accepted in `atk`. This step does not expand the separate `bf` keyword list.
+
+[source,text]
+----
+atk claws fangs
+----
+
+Scribe writes the combined decimal value:
+
+[source,text]
+----
+MobAttackParts 25769803776
+----
+
+Use the optional field in the mobile's final tail, after any mob programs,
+archetype/rank line and teacher declarations. It can accompany `FStep...` and
+`MobResists`/`MobVulnerabilities`/`MobImmunes`. Do not add a tilde terminator.
+The server also accepts a compact numeric OR expression such as
+`8589934592|17179869184`; Scribe source uses keywords or one combined number,
+not that expression syntax.
+
+Within one field, repeated parts are ORed together, not toggled. Repeating the
+field itself uses its last value. An omitted field, `atk none` or `atk 0` leaves
+the inherited mask unchanged; it does not erase inherited natural features.
+
+For example, if the template supplies claws, `atk claws fangs` removes the
+inherited claws and adds fangs. If the template supplies no attack parts,
+the same input adds both. An untemplated mobile has an empty inherited mask.
+
+===== Live inspection and editing
+
+`mstat` adds an ATTACK PART group with Template, #MOBILES, XOR removed,
+Prototype and Live rows. Cancelled inherited parts are also reported at load
+time. A separate table validator rejects no source silently: it reports
+undefined raw species/archetype attack bits, including bits that would cancel
+out when the two layers are XORed. Malformed optional area masks stop loading
+with a vnum-specific error.
+
+[source,text]
+----
+mset filler attack_parts 17179869184
+mset filler attack_parts 0
+----
+
+These NPC-only commands replace the entire live mask. Zero clears the live
+mask. They do not modify the raw input, template, prototype, another live
+instance or future spawns. The command uses decimal masks or compact `|`
+expressions, not Scribe keywords. Unknown bits are rejected.
+
+===== Behavioural boundary
+
+Step 4C3a provides the input, resolution, live storage and inspection/editing
+mechanics. It does not select new natural attacks, add attacks per round,
+create body-part equipment, grant a poison or breath special, change player
+forms, or replace the existing combat skills. A zero live attack-part mask
+also does not prevent the creature from fighting with its existing combat
+mechanics. Wiring natural attack selection to these data is a separate chunk.
+
+`bf` and `atk` are not automatically ORed together. An attack-part declaration
+does not silently repair missing anatomy or override a body-form restriction.
+Subsequent combat consumers must apply their own anatomical and trauma checks.
+
+DD Builder must expose the same `atk` values and preserve the raw individual
+mask. Display inherited and effective values separately. Export `MobAttackParts`
+without pre-expanding the template; do not use the effective mask as the next
+individual input.
+
 [[scribe-resistance-flags]]
 ==== Resistance category reference
 
 The 22 categories below are available to the server's template and effect
-masks. The Scribe keywords in the first column are supplied by Step 4C2 for
-`res`, `vuln` and `imm`. Earlier `act`, `aff`, `bf` and object `ex` lists use
+masks. The Scribe keywords in the first column are available for
+`res`, `vuln` and `imm`. The `atk`, `act`, `aff`, `bf` and object `ex` lists use
 separate flag namespaces and must not use these numeric values interchangeably.
 
 [cols="<2,<2,<1,<4",options="header"]
@@ -1577,17 +1698,17 @@ group, bit, inherited archetype and the fact that `#MOBILES` removed it.
 | Live | Values on the particular NPC being inspected, including subsequent runtime changes.
 |===
 
-ACT, AFF and BODY layers are implemented in the verified baseline. Step 4C2
-adds the corresponding RESISTANCE, VULNERABILITY and IMMUNITY groups, plus
-separate prototype/live resistance-validity results. Labels beginning with
-`Template` describe the inherited layer, not the final NPC state.
+ACT, AFF, BODY, RESISTANCE, VULNERABILITY and IMMUNITY layers are implemented
+in the verified baseline, along with separate prototype/live resistance-validity
+results. Step 4C3a adds ATTACK PART layers. Labels beginning with `Template`
+describe the inherited layer, not the final NPC state.
 
-Advanced Consider uses the live body form after the ACT/AFF/body integration.
-Step 4C2 changes the resistance lists in its existing archetype-information
-block to use live resistance masks. This is not a promise that the current
-Consider command displays every new field for every untemplated mobile.
+Advanced Consider uses live body-form and resistance masks in its existing
+archetype-information block. Step 4C3a changes that block's attack-part list to
+use the live mask too. This is not a promise that Consider displays every new
+field for every untemplated mobile.
 
-===== Live resistance commands — Step 4C2
+===== Live resistance commands
 
 [source,text]
 ----
@@ -3905,35 +4026,36 @@ pb  120
 [[scribe-revision-notes]]
 === Documentation revision notes and source baseline
 
-This revision adds the missing documentation for the work described through
-Step 4C2 while preserving the original sixteen numbered sections. New material
+This revision confirms the merged Step 4C2 and AsciiDoc changes and documents
+the accompanying Step 4C3a attack-part data interface, while preserving the
+original sixteen numbered sections. New material
 is integrated into the existing mobile, object, weapon and area-XP sections.
 The field summaries also include already-described reset/audio/foley fields
 which were absent from their summary tables.
 
 The baseline was checked against
-https://github.com/fromage-fraser/dd4/tree/900c61592875771c701beaf70e4e83654d029d66[DD4 master at PR #707].
+https://github.com/fromage-fraser/dd4/tree/5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb[DD4 master at PR #709].
 The following files are the implementation references for the added material:
 
 [cols="<2,<5",options="header"]
 |===
 | Source | Relevance
-| https://github.com/fromage-fraser/dd4/blob/900c61592875771c701beaf70e4e83654d029d66/builder/scribe/scribe.pl[`builder/scribe/scribe.pl`]
-| Accepted source keywords, flag dictionaries, validation, single-special/rank export, and the absence of the Step 4C2 fields in this baseline.
-| https://github.com/fromage-fraser/dd4/blob/900c61592875771c701beaf70e4e83654d029d66/server/src/merc.h[`server/src/merc.h`]
+| https://github.com/fromage-fraser/dd4/blob/5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb/builder/scribe/scribe.pl[`builder/scribe/scribe.pl`]
+| Accepted source keywords, flag dictionaries, validation, single-special/rank export, and merged Step 4C2 resistance fields. Step 4C3a extends this script separately.
+| https://github.com/fromage-fraser/dd4/blob/5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb/server/src/merc.h[`server/src/merc.h`]
 | ACT/object/resistance flag definitions and template/prototype structures.
-| https://github.com/fromage-fraser/dd4/blob/900c61592875771c701beaf70e4e83654d029d66/server/src/mob.c[`server/src/mob.c`]
+| https://github.com/fromage-fraser/dd4/blob/5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb/server/src/mob.c[`server/src/mob.c`]
 | Template XOR/scalar/special-name resolution, original-mask handling, validation and additive XP helper.
-| https://github.com/fromage-fraser/dd4/blob/900c61592875771c701beaf70e4e83654d029d66/server/src/db.c[`server/src/db.c`]
+| https://github.com/fromage-fraser/dd4/blob/5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb/server/src/db.c[`server/src/db.c`]
 | Mobile loading, optional archetype/rank syntax and copying prototype state into a new mobile.
-| https://github.com/fromage-fraser/dd4/blob/900c61592875771c701beaf70e4e83654d029d66/server/src/magic.c[`server/src/magic.c`] and https://github.com/fromage-fraser/dd4/blob/900c61592875771c701beaf70e4e83654d029d66/server/src/fight.c[`server/src/fight.c`]
+| https://github.com/fromage-fraser/dd4/blob/5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb/server/src/magic.c[`server/src/magic.c`] and https://github.com/fromage-fraser/dd4/blob/5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb/server/src/fight.c[`server/src/fight.c`]
 | Resistance adjustment, selected status helpers, ordinary-attack categories, damage messaging, death provenance and XP use.
-| https://github.com/fromage-fraser/dd4/blob/900c61592875771c701beaf70e4e83654d029d66/server/src/act_wiz.c[`server/src/act_wiz.c`] and https://github.com/fromage-fraser/dd4/blob/900c61592875771c701beaf70e4e83654d029d66/server/src/act_info.c[`server/src/act_info.c`]
-| Immortal flag-layer diagnostics and the updated body-form display.
-| https://github.com/fromage-fraser/dd4/blob/900c61592875771c701beaf70e4e83654d029d66/server/src/const.c[`server/src/const.c`] and https://github.com/fromage-fraser/dd4/blob/900c61592875771c701beaf70e4e83654d029d66/server/src/handler.c[`server/src/handler.c`]
+| https://github.com/fromage-fraser/dd4/blob/5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb/server/src/act_wiz.c[`server/src/act_wiz.c`] and https://github.com/fromage-fraser/dd4/blob/5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb/server/src/act_info.c[`server/src/act_info.c`]
+| Immortal flag/resistance-layer diagnostics, live resistance editing and body-form/resistance displays.
+| https://github.com/fromage-fraser/dd4/blob/5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb/server/src/const.c[`server/src/const.c`] and https://github.com/fromage-fraser/dd4/blob/5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb/server/src/handler.c[`server/src/handler.c`]
 | Effect classifications and text names for resistance/object flags.
-| Step 4C2 implementation instructions supplied in this project
-| Basis for the explicitly marked individual/live resistance interface. No merge or installed-runtime verification is claimed for that chunk here.
+| Step 4C3a implementation instructions supplied in this project
+| Basis for the explicitly marked individual/live attack-part interface. These additions require the accompanying code; no merge or installed-runtime verification is claimed for Step 4C3a.
 |===
 
 The retained `fire_elemental` test archetype is not a general setting rule:

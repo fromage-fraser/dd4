@@ -2055,7 +2055,7 @@ static void mstat_flag_row(
         send_to_char("\n\r", ch);
 }
 
-/* Show the three flag layers currently applied to live mobiles. */
+/* Show inherited, individual, prototype and live mobile flag masks. */
 static void mstat_flag_layers(CHAR_DATA *ch, CHAR_DATA *victim)
 {
         MOB_TEMPLATE_DATA inherited;
@@ -2108,6 +2108,34 @@ static void mstat_flag_layers(CHAR_DATA *ch, CHAR_DATA *victim)
                        body_form_name);
         mstat_flag_row(ch, "Prototype", index->body_form, body_form_name);
         mstat_flag_row(ch, "Live", victim->body_form, body_form_name);
+
+        send_to_char("\n\r{WATTACK PART layers{x\n\r", ch);
+        mstat_flag_row(ch, "Template",
+                       inherited.attack_parts, body_form_name);
+        mstat_flag_row(ch, "#MOBILES",
+                       index->area_attack_parts, body_form_name);
+        mstat_flag_row(ch, "XOR removed",
+                       inherited.attack_parts & index->area_attack_parts,
+                       body_form_name);
+        mstat_flag_row(ch, "Prototype",
+                       index->attack_parts, body_form_name);
+        mstat_flag_row(ch, "Live",
+                       victim->attack_parts, body_form_name);
+
+        if (((index->attack_parts | victim->attack_parts)
+             & ~MOB_ATTACK_PARTS_VALID_MASK) == 0)
+        {
+                send_to_char(
+                    "Prototype/live attack-part data: {Gvalid{x\n\r",
+                    ch);
+        }
+        else
+        {
+                send_to_char(
+                    "Prototype/live attack-part data: "
+                    "{RINVALID -- undefined bits{x\n\r",
+                    ch);
+        }
 
         send_to_char(
             "\n\rACT_IS_NPC is always on; prototype AFF_CHARM is always off.\n\r"
@@ -3043,12 +3071,12 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                         strcat(buf1, "{x\n\r");
 
                                         /* Attack Parts  from Species Table*/
-                                        sprintf(buf, "Attack Parts (num): {W");
+                                        sprintf(buf, "Template Attack Parts (num):{W");
                                         strcat(buf1, buf);
                                         bit_explode(ch, buf, resolved.attack_parts);
                                         strcat(buf1, buf);
                                         strcat(buf1, "{x\n\r");
-                                        strcat(buf1, "Attack Parts (txt):{R");
+                                        strcat(buf1, "Template Attack Parts (txt):{R");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
                                                 if (IS_SET(resolved.attack_parts, next))
@@ -5463,9 +5491,9 @@ void do_mset(CHAR_DATA *ch, char *argument)
                              "  bank plat gold silver copper age rage spec\n\r"
                              "  act crit swiftness bonus max_bonus slept\n\r"
                              "  steel titanium adamantite electrum starmetal \n\r"
+                             "  resists vulnerabilities immunes attack_parts\n\r"
                              "String being one of:\n\r"
-                             "  name short long title spec resists \n\r"
-                             "  vulnerabilities immunes \n\r",
+                             "  name short long title spec\n\r",
                              ch);
                 return;
         }
@@ -5473,6 +5501,45 @@ void do_mset(CHAR_DATA *ch, char *argument)
         if (!(victim = get_char_world(ch, arg1)))
         {
                 send_to_char("They aren't here.\n\r", ch);
+                return;
+        }
+
+        /*
+         * Replace the complete live NPC attack-part mask.
+         * This is an absolute assignment, not an inheritance operation.
+         */
+
+        if (!str_cmp(arg2, "attack_parts"))
+        {
+                unsigned long int mask;
+
+                if (!IS_NPC(victim))
+                {
+                        send_to_char(
+                            "The attack_parts field is currently NPC-only.\n\r",
+                            ch);
+                        return;
+                }
+
+                if (!parse_mob_attack_parts_mask(arg3, &mask))
+                {
+                        send_to_char(
+                            "Invalid attack-part mask. Use defined combat "
+                            "PART_* values as decimal numbers, optionally "
+                            "joined by '|', without spaces.\n\r",
+                            ch);
+                        return;
+                }
+
+                victim->attack_parts = mask;
+
+                snprintf(
+                    buf,
+                    sizeof(buf),
+                    "Live attack_parts mask set to %lu. "
+                    "Prototype and area data are unchanged.\n\r",
+                    mask);
+                send_to_char(buf, ch);
                 return;
         }
 

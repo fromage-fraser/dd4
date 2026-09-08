@@ -6,12 +6,13 @@
 #  DD4 Area File Scribe
 #
 #  Format area files for DD4 Envy-style Mud from simplified text source.
-#  Refer to 'scribe.docx' for information about how to use this tool to
+#  Refer to 'scribe.adoc' for information about how to use this tool to
 #  create area files for DD4.
 
 use strict;
 use warnings;
-print "DD4 Area File Scribe version 0.8\n";
+use Math::BigInt;
+print "DD4 Area File Scribe version 0.9\n";
 
 
 #############################################################################
@@ -188,6 +189,30 @@ my $mob_resistance_valid_mask = 0;
 
 foreach my $bit (values %mob_resistance) {
     $mob_resistance_valid_mask |= $bit;
+}
+
+my %mob_attack_parts = (
+        none         => '0',
+        zero         => '0',
+        claws        => '8589934592',
+        fangs        => '17179869184',
+        horns        => '34359738368',
+        tusks        => '68719476736',
+        tail         => '137438953472',
+        sharp_scales => '274877906944',
+        beak         => '549755813888',
+        haunch       => '1099511627776',
+        hooves       => '2199023255552',
+        paws         => '4398046511104',
+        forelegs     => '8796093022208',
+        feathers     => '17592186044416',
+        husk_shell   => '35184372088832',
+);
+
+my $mob_attack_parts_valid_mask = Math::BigInt->new(0);
+
+foreach my $bit (values %mob_attack_parts) {
+    $mob_attack_parts_valid_mask->bior($bit);
 }
 
 my @mob_spec = qw/
@@ -663,7 +688,7 @@ while (1) {
 
             next if &add_field_data(
                     \%mob, $field, $data,
-                    'sp vn nm sh lo lv act aff bf sx al rnk res vuln imm');
+                    'sp vn nm sh lo lv act aff bf sx al rnk res vuln imm atk');
             print "    line $line: mob: unknown field '$field'\n";
         }
 
@@ -1270,6 +1295,15 @@ foreach (0 .. $#mobs) {
     if ($msg = &get_multiple_flags(\%mob, 'aff', \%mob_aff, '')) {
         print "$err $msg\n";
         $mob_errors{$mob{'line'}}++;
+    }
+
+    # Optional individual natural attack-part XOR mask.
+
+    if (exists $mob{'atk'}) {
+        if ($msg = &get_attack_part_flags(\%mob, 'atk')) {
+            print "$err $msg\n";
+            $mob_errors{$mob{'line'}}++;
+        }
     }
 
     # Optional individual resistance XOR masks.
@@ -2450,6 +2484,40 @@ sub clear_field(\%$) {
 #  Subroutine:  Find multiple values for a field
 #
 
+# Parse attack-part keywords or one combined decimal mask exactly.
+sub get_attack_part_flags(\%$) {
+    my ($var, $field) = @_;
+
+    return "field '$field' is missing" unless exists $$var{$field};
+
+    my $text = $$var{$field};
+    return "field '$field' is empty"
+            if !defined($text) || $text =~ /\A\s*\z/;
+
+    my $mask = Math::BigInt->new(0);
+
+    if ($text =~ /\A[0-9]+\z/) {
+        $mask = Math::BigInt->new($text);
+    }
+    else {
+        foreach my $name (split /\s+/, $text) {
+            next if $name eq '';
+
+            return "field '$field' has invalid attack part: $name"
+                    unless exists $mob_attack_parts{$name};
+
+            $mask->bior($mob_attack_parts{$name});
+        }
+    }
+
+    if ($mask->copy()->band($mob_attack_parts_valid_mask)->bcmp($mask) != 0) {
+        return "field '$field' contains undefined attack-part bits: $text";
+    }
+
+    $$var{$field} = $mask->bstr();
+    return 0;
+}
+
 sub get_multiple_flags(\%$\%$) {
     my ($var, $field, $list, $sum) = @_;
     my %flags = ();
@@ -2813,6 +2881,9 @@ if (@mobs) {
 
         print AREA "MobImmunes $mob{'imm'}\n"
                 if exists $mob{'imm'};
+
+        print AREA "MobAttackParts $mob{'atk'}\n"
+                if exists $mob{'atk'};
     }
 
     print AREA "#0\n\n";

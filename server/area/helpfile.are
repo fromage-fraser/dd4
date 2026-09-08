@@ -702,6 +702,9 @@ Gezhp, Owl and Shade
 - Individual mobile resistance, vulnerability and immunity overrides added.
   Scribe supports res/vuln/imm; mstat shows all layers and mset can change
   the effective masks of a live NPC.
+- Individual attack-part masks added through MobAttackParts and Scribe's atk.
+  mstat shows the inheritance layers; mset can change a live NPC's mask.
+  Automatic combat use of these masks remains a separate implementation step.
 
 ~
 
