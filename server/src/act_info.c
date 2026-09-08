@@ -3773,7 +3773,7 @@ void do_consider(CHAR_DATA *ch, char *argument)
                                         strcat(buf1, "Attack Parts:{W");
                                         for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                                         {
-                                                if (IS_SET(resolved.attack_parts, next))
+                                                if (IS_SET(victim->attack_parts, next))
                                                 {
                                                         strcat(buf1, " ");
                                                         strcat(buf1, body_form_name(next));

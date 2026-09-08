@@ -141,7 +141,7 @@ const struct mob_type mob_table[MAX_MOB] =
         {
                 "fire_elemental", "elemental", "icon1", "icon2",
                 ACT_UNDEAD, AFF_DETECT_MAGIC,
-                0, 0,
+                0, PART_CLAWS,
                 0, 0,
                 RES_FIRE | RES_COLD | RES_POISON | RES_PARALYSIS
                     | RES_HOLD | RES_DRAIN | RES_NONMAGIC,
@@ -342,10 +342,11 @@ bool resolve_mob_template(int mob_type,
 /*
  * Parse one decimal mask or a compact '|' expression.
  *
- * Only currently defined RES_* bits are accepted.
+ * valid_mask determines which flag namespace is accepted.
  * On failure, the caller's output value remains unchanged.
  */
-bool parse_mob_resistance_mask(const char *text,
+static bool parse_mob_flag_mask(const char *text,
+                                unsigned long int valid_mask,
                                 unsigned long int *mask)
 {
         const char *p;
@@ -378,7 +379,7 @@ bool parse_mob_resistance_mask(const char *text,
                 }
                 while (*p >= '0' && *p <= '9');
 
-                if (value & ~RES_VALID_MASK)
+                if (value & ~valid_mask)
                         return FALSE;
 
                 result |= value;
@@ -394,6 +395,104 @@ bool parse_mob_resistance_mask(const char *text,
 
         *mask = result;
         return TRUE;
+}
+
+/*
+ * Preserve the existing resistance-parser interface.
+ */
+bool parse_mob_resistance_mask(const char *text,
+                                unsigned long int *mask)
+{
+        return parse_mob_flag_mask(text, RES_VALID_MASK, mask);
+}
+
+/*
+ * Parse the separate natural attack-part namespace.
+ */
+bool parse_mob_attack_parts_mask(const char *text,
+                                 unsigned long int *mask)
+{
+        return parse_mob_flag_mask(text, MOB_ATTACK_PARTS_VALID_MASK, mask);
+}
+
+/*
+ * Validate raw body-species and archetype attack-part masks.
+ *
+ * Validate both raw layers: identical undefined bits could otherwise
+ * cancel during XOR and disappear from the resolved result.
+ */
+int validate_mob_attack_part_tables(void)
+{
+        unsigned long int invalid;
+        char buf[MAX_STRING_LENGTH];
+        int sn;
+        int issues;
+
+        issues = 0;
+
+        for (sn = 0; sn < MAX_SPECIES; sn++)
+        {
+                invalid =
+                    species_table[sn].attack_parts
+                    & ~MOB_ATTACK_PARTS_VALID_MASK;
+
+                if (invalid == 0)
+                        continue;
+
+                snprintf(
+                    buf,
+                    sizeof(buf),
+                    "[MOB TEMPLATE] Body species '%s' has undefined "
+                    "attack-part bits: %lu.",
+                    species_table[sn].species
+                        ? species_table[sn].species
+                        : "unnamed",
+                    invalid);
+                log_string(buf);
+                issues++;
+        }
+
+        for (sn = 0; sn < MAX_MOB; sn++)
+        {
+                invalid =
+                    mob_table[sn].attack_parts
+                    & ~MOB_ATTACK_PARTS_VALID_MASK;
+
+                if (invalid == 0)
+                        continue;
+
+                snprintf(
+                    buf,
+                    sizeof(buf),
+                    "[MOB TEMPLATE] Creature archetype '%s' has undefined "
+                    "attack-part bits: %lu.",
+                    mob_table[sn].name
+                        ? mob_table[sn].name
+                        : "unnamed",
+                    invalid);
+                log_string(buf);
+                issues++;
+        }
+
+        if (issues == 0)
+        {
+                log_string(
+                    "[MOB TEMPLATE] Attack-part validation complete: "
+                    "no issues found.");
+        }
+        else
+        {
+                snprintf(
+                    buf,
+                    sizeof(buf),
+                    "[MOB TEMPLATE] Attack-part validation complete: "
+                    "%d issue%s found.",
+                    issues,
+                    issues == 1 ? "" : "s");
+                log_string(buf);
+        }
+
+        return issues;
 }
 
 /*
@@ -494,6 +593,9 @@ void initialise_mob_index_flags(MOB_INDEX_DATA *index)
         index->body_form =
             inherited.body_form ^ index->area_body_form;
 
+        index->attack_parts =
+            inherited.attack_parts ^ index->area_attack_parts;
+
         index->resists =
             inherited.resists ^ index->area_resists;
 
@@ -522,6 +624,13 @@ void initialise_mob_index_flags(MOB_INDEX_DATA *index)
             "BODY",
             inherited.body_form,
             index->area_body_form,
+            body_form_name);
+
+        log_mob_flag_cancellations(
+            index,
+            "ATTACK PART",
+            inherited.attack_parts,
+            index->area_attack_parts,
             body_form_name);
 
         log_mob_flag_cancellations(

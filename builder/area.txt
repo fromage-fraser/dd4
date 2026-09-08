@@ -648,6 +648,43 @@ the prototype, area file, other existing instances, or future spawns.
 
 These generic live resistance fields currently apply to NPCs only.
 
+Individual attack-part overrides
+
+Optional #MOBILES tail field:
+
+    MobAttackParts <mask>
+
+The corresponding Scribe field is:
+
+    atk <attack-part keywords or combined decimal mask>
+
+This field uses the existing combat PART_* bits from PART_CLAWS through
+PART_HUSK_SHELL. It does not use RES_* values or general BODY_* flags.
+See the Scribe manual for the complete keyword and numeric-value table.
+
+Place MobAttackParts after ordinary mobile data, mob programs, the optional
+archetype/rank entry and teacher entries. It may accompany the optional
+footstep and resistance fields. No tilde terminator is used.
+
+An omitted field or zero inherits the template unchanged. A repeated
+inherited bit is cancelled; a previously absent bit is added. Values within
+one mask are ORed together. Repeated field declarations use the last value.
+
+The effective prototype mask is copied into each live NPC. mstat shows
+Template, #MOBILES, XOR removed, Prototype and Live values.
+
+    mset <mobile> attack_parts <mask>
+
+replaces the complete live mask. Zero clears that live mask. This does not
+change the prototype, other live instances, or future spawns.
+
+Step 4C3a supplies the data, inheritance, live storage and diagnostics.
+It does not yet select attacks, add attacks per round, create equipment,
+grant combat skills, or modify player forms.
+
+Body form and attack parts remain separate masks. An attack-part flag does
+not automatically add or repair the corresponding general anatomy.
+
 === The #OBJECTS section
 
 These are the items the people who journey through your area will keep and use,

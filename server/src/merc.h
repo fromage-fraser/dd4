@@ -946,6 +946,17 @@ struct descriptor_data
 #define PART_FEATHERS BIT_44
 #define PART_HUSK_SHELL BIT_45
 
+/*
+ * Existing PART_* flags designated for natural combat features.
+ * These retain their original bit positions; they are not RES_* flags.
+ */
+#define MOB_ATTACK_PARTS_VALID_MASK                                      \
+        ((unsigned long int)(PART_CLAWS | PART_FANGS | PART_HORNS |       \
+                             PART_TUSKS | PART_TAILATTACK |              \
+                             PART_SHARPSCALES | PART_BEAK | PART_HAUNCH |\
+                             PART_HOOVES | PART_PAWS | PART_FORELEGS |   \
+                             PART_FEATHERS | PART_HUSK_SHELL))
+
 #define HAS_HEAD(ch) (!(ch->body_form & BODY_NO_HEAD) || (ch->body_form & PART_HEAD) || (ch->body_form & PART_MANY_HEAD))
 #define HAS_EYES(ch) (!(ch->body_form & BODY_NO_EYES) || (ch->body_form & PART_EYE))
 #define HAS_ARMS(ch) (!(ch->body_form & BODY_NO_ARMS) || (ch->body_form & PART_ARMS) || (ch->body_form & PART_MANY_ARMS))
@@ -2753,6 +2764,12 @@ struct mob_index_data
         unsigned long int resists;
         unsigned long int vulnerabilities;
         unsigned long int immunes;
+
+        /*
+         * Original individual attack-part XOR mask and resolved result.
+         */
+        unsigned long int area_attack_parts;
+        unsigned long int attack_parts;
 };
 
 /*
@@ -2858,6 +2875,9 @@ struct char_data
         unsigned long int resists;
         unsigned long int vulnerabilities;
         unsigned long int immunes;
+
+        /* Effective natural attack-part mask for this live NPC. */
+        unsigned long int attack_parts;
 
         int tournament_team; /* mobs can use this too */
         int exp_modifier;
@@ -5435,6 +5455,9 @@ bool parse_mob_resistance_mask args((const char *text,
 bool mob_resistance_masks_valid args((unsigned long int resists,
                                       unsigned long int vulnerabilities,
                                       unsigned long int immunes));
+bool parse_mob_attack_parts_mask args((const char *text,
+                                      unsigned long int *mask));
+int validate_mob_attack_part_tables args((void));
 
 /* mob_commands.c */
 char *mprog_type_to_name args((int type));

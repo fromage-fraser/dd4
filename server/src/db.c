@@ -1024,6 +1024,7 @@ void boot_db(void)
          */
         {
                 validate_mob_template_tables();
+                validate_mob_attack_part_tables();
                 validate_mob_resistance_table();
         }
 
@@ -1955,6 +1956,37 @@ static unsigned long int read_mob_resistance_mask(
 }
 
 /*
+ * Read an attack-part mask from an optional mobile field.
+ */
+static unsigned long int read_mob_attack_parts_mask(
+    FILE *fp,
+    MOB_INDEX_DATA *index)
+{
+        const char *text;
+        unsigned long int mask;
+        char buf[MAX_STRING_LENGTH];
+
+        text = fread_word(fp);
+
+        if (!parse_mob_attack_parts_mask(text, &mask))
+        {
+                snprintf(
+                    buf,
+                    sizeof(buf),
+                    "[MOB TEMPLATE] vnum %d: invalid MobAttackParts "
+                    "value '%s'. Use defined combat PART_* values as "
+                    "decimal numbers, optionally joined by '|', "
+                    "without spaces.",
+                    index->vnum,
+                    text);
+                log_string(buf);
+                exit(1);
+        }
+
+        return mask;
+}
+
+/*
  * Snarf a mob section.
  */
 void load_mobiles(FILE *fp)
@@ -1994,6 +2026,7 @@ void load_mobiles(FILE *fp)
                 pMobIndex->area_resists = 0;
                 pMobIndex->area_vulnerabilities = 0;
                 pMobIndex->area_immunes = 0;
+                pMobIndex->area_attack_parts = 0;
 
                 for (stat = 0; stat < SECT_MAX; stat++)
                         pMobIndex->footstep_key[stat] = NULL;
@@ -2132,6 +2165,12 @@ void load_mobiles(FILE *fp)
                                 pMobIndex->area_immunes =
                                     read_mob_resistance_mask(
                                         fp, pMobIndex, "MobImmunes");
+                        }
+                        else if (!str_cmp(word, "MobAttackParts"))
+                        {
+                                pMobIndex->area_attack_parts =
+                                    read_mob_attack_parts_mask(
+                                        fp, pMobIndex);
                         }
                         else if (!str_cmp(word, "FStepInside"))
                                 pMobIndex->footstep_key[SECT_INSIDE] = fread_string(fp);
@@ -4089,6 +4128,7 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA *pMobIndex)
         mob->resists = pMobIndex->resists;
         mob->vulnerabilities = pMobIndex->vulnerabilities;
         mob->immunes = pMobIndex->immunes;
+        mob->attack_parts = pMobIndex->attack_parts;
 
         mob->armor = interpolate(mob->level, 100, -100);
 
