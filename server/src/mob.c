@@ -496,6 +496,102 @@ int validate_mob_attack_part_tables(void)
 }
 
 /*
+ * Return the configured natural attacks which the NPC can currently use.
+ * This is a read-only anatomical filter; do not alter the stored live mask.
+ */
+unsigned long int mob_usable_attack_parts(CHAR_DATA *mob)
+{
+        unsigned long int parts;
+        bool arms_usable;
+        bool legs_usable;
+
+        if (!mob || !IS_NPC(mob))
+                return 0;
+
+        parts = mob->attack_parts & MOB_ATTACK_PARTS_VALID_MASK;
+
+        /* These features have no ordinary offensive action in this chunk. */
+        parts &= ~(PART_FEATHERS | PART_HUSK_SHELL);
+
+        if (!HAS_HEAD(mob))
+                parts &= ~(PART_FANGS | PART_HORNS | PART_TUSKS | PART_BEAK);
+
+        arms_usable =
+            HAS_ARMS(mob) && !IS_AFFECTED(mob, AFF_ARM_TRAUMA);
+
+        legs_usable =
+            HAS_LEGS(mob) && !IS_AFFECTED(mob, AFF_LEG_TRAUMA);
+
+        /* Claws and paws may belong to either usable limb group. */
+        if (!arms_usable && !legs_usable)
+                parts &= ~(PART_CLAWS | PART_PAWS);
+
+        if (!legs_usable)
+                parts &= ~(PART_HAUNCH | PART_HOOVES | PART_FORELEGS);
+
+        if (!HAS_TAIL(mob) || IS_AFFECTED(mob, AFF_TAIL_TRAUMA))
+                parts &= ~PART_TAILATTACK;
+
+        return parts;
+}
+
+/*
+ * Choose one ordinary damage type from the usable natural attack parts.
+ * One configured part is one candidate; this never creates an extra attack.
+ * The caller remains responsible for weapon precedence and attack timing.
+ */
+int mob_natural_attack_type(CHAR_DATA *mob)
+{
+        static const struct
+        {
+                unsigned long int part;
+                int damage_type;
+        } attacks[] =
+        {
+                { PART_CLAWS,       TYPE_HIT + 5  }, /* claw: slash */
+                { PART_FANGS,       TYPE_HIT + 10 }, /* bite: pierce */
+                { PART_HORNS,       TYPE_HIT + 11 }, /* pierce */
+                { PART_TUSKS,       TYPE_HIT + 11 }, /* pierce */
+                { PART_TAILATTACK,  TYPE_HIT + 7  }, /* pound: blunt */
+                { PART_SHARPSCALES, TYPE_HIT + 14 }, /* rake: slash */
+                { PART_BEAK,        TYPE_HIT + 11 }, /* pierce */
+                { PART_HAUNCH,      TYPE_HIT + 8  }, /* crush: blunt */
+                { PART_HOOVES,      TYPE_HIT + 7  }, /* pound: blunt */
+                { PART_PAWS,        TYPE_HIT + 7  }, /* pound: blunt */
+                { PART_FORELEGS,    TYPE_HIT + 7  }  /* pound: blunt */
+        };
+        unsigned long int parts;
+        size_t i;
+        int count;
+        int choice;
+
+        parts = mob_usable_attack_parts(mob);
+        count = 0;
+
+        for (i = 0; i < sizeof(attacks) / sizeof(attacks[0]); i++)
+        {
+                if (parts & attacks[i].part)
+                        count++;
+        }
+
+        if (count == 0)
+                return TYPE_HIT;
+
+        choice = count == 1 ? 1 : number_range(1, count);
+
+        for (i = 0; i < sizeof(attacks) / sizeof(attacks[0]); i++)
+        {
+                if (!(parts & attacks[i].part))
+                        continue;
+
+                if (--choice == 0)
+                        return attacks[i].damage_type;
+        }
+
+        return TYPE_HIT;
+}
+
+/*
  * Validate an effective resistance state, not raw XOR input masks.
  */
 bool mob_resistance_masks_valid(unsigned long int resists,

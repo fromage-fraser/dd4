@@ -679,8 +679,41 @@ replaces the complete live mask. Zero clears that live mask. This does not
 change the prototype, other live instances, or future spawns.
 
 Step 4C3a supplies the data, inheritance, live storage and diagnostics.
-It does not yet select attacks, add attacks per round, create equipment,
-grant combat skills, or modify player forms.
+Step 4C3b uses the live mask when selecting the type of an ordinary NPC
+attack with an empty attacking weapon slot.
+
+An equipped weapon, including an existing body-part weapon object, retains
+its own type and magical classification. Explicit primary attack identifiers
+and player attacks/forms remain unchanged.
+
+Natural mappings:
+
+    claws                        claw       slashing
+    fangs                        bite       piercing
+    horns, tusks, beak           pierce     piercing
+    tail, hooves, paws, forelegs pound      blunt
+    sharp_scales                 rake       slashing
+    haunch                       crush      blunt
+
+Feathers and husk_shell remain stored features without an ordinary offensive
+mapping. They do not automatically grant armour or reflected damage.
+
+Each eligible part is one selection candidate. Only the chosen attack's
+resistance category applies. Objectless natural attacks are nonmagical.
+No attacks per round, new damage formula, equipment or skill permissions
+are added.
+
+Head-based attacks require a head. Hooves, haunches and forelegs require
+usable legs. Claws and paws require usable arms or usable legs. Arm/leg
+trauma excludes the corresponding limb group. Tail attacks require an
+existing tail without tail trauma.
+
+The filter uses the existing HAS_* anatomy macros and does not alter the
+stored mask. mstat adds Eligible and Inactive rows. Equipped weapons can
+still take precedence over eligible natural parts.
+
+If no offensive part is eligible, the previous generic hit remains
+available. An empty attack-part mask is not a no-combat flag.
 
 Body form and attack parts remain separate masks. An attack-part flag does
 not automatically add or repair the corresponding general anatomy.

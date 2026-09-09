@@ -695,11 +695,12 @@ void multi_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 /*
  * Return the resistance categories for an ordinary TYPE_HIT-based attack.
  *
- * For wielded weapons, dt - TYPE_HIT is the damage type stored in the
- * weapon's value[3]. Unarmed and generic natural attacks use type zero
- * ("hit"). The physical category is combined with the attack source:
- * ITEM_MAGIC weapons are magical; all other ordinary attacks are
- * nonmagical.
+ * Wielded weapons supply their value[3] attack type. An NPC with an empty
+ * attacking weapon slot may instead supply a selected natural attack type.
+ * Other generic unarmed attacks use type zero ("hit").
+ *
+ * ITEM_MAGIC weapons are magical. Objectless natural attacks and other
+ * ordinary attacks without an ITEM_MAGIC weapon are nonmagical.
  */
 static unsigned long int ordinary_attack_resistance_types(int dt,
                                                           OBJ_DATA *weapon)
@@ -872,7 +873,11 @@ bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                 }
 
                 /*
-                 * Figure out the type of damage message.
+                 * Figure out the ordinary attack type.
+                 *
+                 * A weapon retains its own type. With an empty attacking
+                 * weapon slot, an NPC may use one eligible natural part.
+                 * Explicit primary skill/attack identifiers are unchanged.
                  */
                 poison = FALSE;
                 wield = get_eq_char(ch, weapon_pos);
@@ -883,6 +888,8 @@ bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
 
                         if (wield && wield->item_type == ITEM_WEAPON)
                                 dt += wield->value[3];
+                        else if (!wield && IS_NPC(ch))
+                                dt = mob_natural_attack_type(ch);
 
                         if (wield && IS_SET(wield->extra_flags, ITEM_POISONED))
                                 poison = TRUE;

@@ -704,7 +704,9 @@ Gezhp, Owl and Shade
   the effective masks of a live NPC.
 - Individual attack-part masks added through MobAttackParts and Scribe's atk.
   mstat shows the inheritance layers; mset can change a live NPC's mask.
-  Automatic combat use of these masks remains a separate implementation step.
+- Ordinary NPC attacks with an empty attacking weapon slot can now select
+  an anatomically usable natural attack. Equipped weapons retain precedence.
+  mstat shows eligible and inactive parts. Attack frequency is unchanged.
 
 ~
 

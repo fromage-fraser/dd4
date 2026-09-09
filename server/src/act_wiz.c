@@ -2060,6 +2060,7 @@ static void mstat_flag_layers(CHAR_DATA *ch, CHAR_DATA *victim)
 {
         MOB_TEMPLATE_DATA inherited;
         MOB_INDEX_DATA *index;
+        unsigned long int usable_attack_parts;
 
         if (!IS_NPC(victim) || !victim->pIndexData)
                 return;
@@ -2121,6 +2122,20 @@ static void mstat_flag_layers(CHAR_DATA *ch, CHAR_DATA *victim)
                        index->attack_parts, body_form_name);
         mstat_flag_row(ch, "Live",
                        victim->attack_parts, body_form_name);
+
+        usable_attack_parts = mob_usable_attack_parts(victim);
+
+        mstat_flag_row(ch, "Eligible",
+                       usable_attack_parts, body_form_name);
+
+        mstat_flag_row(ch, "Inactive",
+                       victim->attack_parts & ~usable_attack_parts,
+                       body_form_name);
+
+        send_to_char(
+            "Eligibility is anatomical; an equipped weapon still takes "
+            "precedence over natural selection.\n\r",
+            ch);
 
         if (((index->attack_parts | victim->attack_parts)
              & ~MOB_ATTACK_PARTS_VALID_MASK) == 0)
