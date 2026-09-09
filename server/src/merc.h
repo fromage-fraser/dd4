@@ -5458,6 +5458,8 @@ bool mob_resistance_masks_valid args((unsigned long int resists,
 bool parse_mob_attack_parts_mask args((const char *text,
                                       unsigned long int *mask));
 int validate_mob_attack_part_tables args((void));
+unsigned long int mob_usable_attack_parts args((CHAR_DATA *mob));
+int mob_natural_attack_type args((CHAR_DATA *mob));
 
 /* mob_commands.c */
 char *mprog_type_to_name args((int type));

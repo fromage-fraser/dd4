@@ -7,7 +7,7 @@
 
 _Original manual: version 1.3.w, July 2025._
 
-_AsciiDoc documentation update: 7 September 2026._
+_AsciiDoc documentation update: 8 September 2026._
 
 [[scribe-documentation-status]]
 === Documentation status — September 2026
@@ -18,7 +18,7 @@ The existing sixteen numbered sections and their cross-reference targets are
 retained.
 
 The verified repository baseline is DD4 `master`, commit
-`5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb` (PR #709), checked on 7 September
+`bb1473b58f625b6661f56b223a832b5720263464` (PR #710), checked on 8 September
 2026. This identifies source-code availability; it does not establish which
 executable is running on a particular server.
 
@@ -42,21 +42,23 @@ archetype `xp_mod`.
 NPC resistance masks, and resistance-layer inspection/editing. A merged source
 revision does not by itself confirm the executable deployed to a server.
 | Individual and live attack-part masks
-| *Step 4C3a interface.* This revision accompanies the new `atk` source field,
-`MobAttackParts` area field, prototype/live attack-part masks, validation and
-immortal diagnostics. Install the accompanying code before using these fields.
-Automatic selection or scheduling of combat attacks from this mask is separate
-work; this data/inspection chunk does not grant combat skills or extra attacks.
+| Implemented through PR #710: `atk`, `MobAttackParts`, prototype/live storage,
+raw-mask validation, cancellation logging and immortal inspection/editing.
+| Ordinary NPC natural attacks
+| *Step 4C3b implementation.* The accompanying code selects an anatomically
+usable attack part for an ordinary NPC attack when its attacking weapon slot
+is empty. This is documented separately from the verified PR #710 baseline;
+install and test the matching server changes before expecting this behaviour.
 | Further template integration
-| Automatic combat use of attack parts, individual scalar overrides,
-application of the remaining template scalar defaults, and execution of
-multiple inherited special functions remain separate work.
+| Individual scalar overrides, application of the remaining template scalar
+defaults, and execution of multiple inherited special functions remain
+separate work.
 |===
 
-IMPORTANT: Step 4C2 is merged. Sections marked *Step 4C3a* describe the next
-supplied code chunk and require its matching Scribe and DD4 server changes.
-Adding these fields to the manual alone does not install them. Use matching
-versions of the script, server and builder exporter.
+IMPORTANT: Steps 4C2 and 4C3a are merged. Sections marked *Step 4C3b* describe
+the accompanying server-code changes, not behaviour verified in PR #710.
+The `atk` input syntax does not change in Step 4C3b. A documentation update
+alone does not change the running executable.
 
 This manual distinguishes a Scribe source field, a generated `.are` field,
 and a server-side table field. A name in `mob_table` or `merc.h` is not
@@ -78,7 +80,8 @@ field named `xp_mod`, `species`, or `archetype`; see
 ** <<scribe-mobile-inheritance,Body species, archetypes and XOR overrides>>
 ** <<scribe-mobile-undead,Undead classification>>
 ** <<scribe-individual-resistances,Individual resistance fields>>
-** <<scribe-individual-attack-parts,Individual attack-part masks (Step 4C3a)>>
+** <<scribe-individual-attack-parts,Individual attack-part masks>>
+** <<scribe-natural-attacks,Ordinary NPC natural attacks (Step 4C3b)>>
 ** <<scribe-resistance-flags,Resistance categories and behaviour>>
 ** <<scribe-template-xp,Archetype XP adjustments>>
 ** <<scribe-mobile-diagnostics,Validation, mstat and live editing>>
@@ -584,7 +587,7 @@ Mobiles are the creatures that populate your area. They are defined in the `#MOB
 | individual immunity XOR mask
 | keyword list or decimal mask
 | `atk`
-| individual attack-part XOR mask — Step 4C3a
+| individual attack-part XOR mask
 | keyword list or decimal mask
 |===
 
@@ -734,11 +737,12 @@ In the verified baseline, ACT/AFF/body and resistance masks are resolved at
 prototype loading and copied into live NPCs; resistance calculations read the
 live masks; and `xp_mod` is used by the XP helper.
 
-Step 4C3a adds prototype/live storage and individual overrides for attack parts.
-This does not yet connect those parts to automatic attack selection, damage
-calculation, equipment creation or new skill permissions. The remaining template
-scalar defaults still require live application. Special-function names are
-resolved and validated without automatically activating all three slots.
+PR #710 adds prototype/live storage and individual overrides for attack parts.
+Step 4C3b, described below, connects usable parts to ordinary unarmed NPC
+attack-type selection. It does not add attacks, a new damage formula, equipment
+creation or skill permissions. The remaining template scalar defaults still
+require live application. Special-function names are resolved and validated
+without automatically activating all three slots.
 
 For the template scalar fields using `MOB_TEMPLATE_UNSET`, an archetype value
 inherits when it is unset; otherwise it replaces the body-species value.
@@ -1393,11 +1397,11 @@ chosen instance, as described under <<scribe-mobile-diagnostics,inspection
 and live editing>>.
 
 [[scribe-individual-attack-parts]]
-==== Individual attack-part masks — Step 4C3a
+==== Individual attack-part masks
 
-IMPORTANT: This section accompanies the Step 4C3a code changes. It is not a
-claim that those changes were present in PR #709. Install the server and
-Scribe additions before using `atk` or `MobAttackParts`.
+The input, storage and editing interface in this section was merged in PR
+#710. Its first ordinary-combat consumer is the separate
+<<scribe-natural-attacks,Step 4C3b implementation>> below.
 
 *`atk` — Attack-part XOR mask*
 
@@ -1486,21 +1490,135 @@ expressions, not Scribe keywords. Unknown bits are rejected.
 
 ===== Behavioural boundary
 
-Step 4C3a provides the input, resolution, live storage and inspection/editing
-mechanics. It does not select new natural attacks, add attacks per round,
-create body-part equipment, grant a poison or breath special, change player
-forms, or replace the existing combat skills. A zero live attack-part mask
-also does not prevent the creature from fighting with its existing combat
-mechanics. Wiring natural attack selection to these data is a separate chunk.
+The merged data layer does not itself select combat actions. Step 4C3b adds
+ordinary attack-type selection using the live mask, as described below.
+Neither chunk adds attacks per round, creates body-part equipment, grants
+poison/breath specials, changes player forms, or grants new combat skills.
+A zero live attack-part mask does not prevent the creature from fighting.
 
-`bf` and `atk` are not automatically ORed together. An attack-part declaration
-does not silently repair missing anatomy or override a body-form restriction.
-Subsequent combat consumers must apply their own anatomical and trauma checks.
+`bf` and `atk` remain separate. An attack-part declaration does not repair
+missing anatomy or overwrite a body-form restriction. Eligibility is computed
+from the current body form and relevant trauma flags without modifying the
+configured attack-part mask.
 
 DD Builder must expose the same `atk` values and preserve the raw individual
 mask. Display inherited and effective values separately. Export `MobAttackParts`
 without pre-expanding the template; do not use the effective mask as the next
 individual input.
+
+[[scribe-natural-attacks]]
+==== Ordinary NPC natural attacks — Step 4C3b
+
+IMPORTANT: This section specifies the server changes accompanying this manual.
+PR #710 contains the input/storage layer only. Confirm the matching Step
+4C3b executable is running before relying on natural-attack selection.
+
+===== Selection and weapon precedence
+
+For each ordinary NPC attack attempt, the server uses the weapon actually
+occupying that attack's weapon slot. A wielded weapon, including an existing
+`ITEM_BODY_PART` weapon, retains its own attack type and magical/nonmagical
+classification. If the slot is occupied by another item, this new natural
+fallback is not used.
+
+When the slot is empty and the attack would otherwise receive its default
+ordinary type, one usable configured attack part supplies that type. The
+choice occurs before the existing to-hit roll: the attack can still miss.
+The existing hit chance, damage calculation, defenses, attack scheduling,
+death handling and immunity messaging remain in use.
+
+Each eligible part is one equally selectable candidate. Horns and tusks
+remain separate candidates even though both map to piercing. Selection is
+not based on the victim's weaknesses. The resistance mask describes only the
+chosen attack, not a union of all configured parts.
+
+An empty mask, or a mask with no currently usable offensive parts, falls back
+to the previous generic `hit`. This does not suppress combat; `ACT_NO_FIGHT`
+and existing action restrictions remain separate. Adding more parts gives
+more choices, not additional attacks per round.
+
+Player attacks/forms and explicitly supplied primary attack identifiers are
+unchanged. Skill-indexed attacks retain their skill definitions. Existing
+secondary-weapon scheduling remains unchanged; no unarmed off-hand attack is
+newly granted to an NPC.
+
+===== Default attack mapping
+
+These are mapping decisions introduced by Step 4C3b, using the existing
+ordinary attack vocabulary rather than new skill-table entries.
+
+[cols="<2,<2,<2,<4",options="header"]
+|===
+| Attack part | Ordinary type | Physical category | Eligibility
+| `claws` | `claw` | `RES_SLASH` | A usable arm or leg group.
+| `fangs` | `bite` | `RES_PIERCE` | An existing head.
+| `horns` | `pierce` | `RES_PIERCE` | An existing head.
+| `tusks` | `pierce` | `RES_PIERCE` | An existing head.
+| `tail` | `pound` | `RES_BLUNT` | An existing tail without tail trauma.
+| `sharp_scales` | `rake` | `RES_SLASH` | The configured feature; no additional limb requirement.
+| `beak` | `pierce` | `RES_PIERCE` | An existing head.
+| `haunch` | `crush` | `RES_BLUNT` | Usable legs.
+| `hooves` | `pound` | `RES_BLUNT` | Usable legs.
+| `paws` | `pound` | `RES_BLUNT` | A usable arm or leg group.
+| `forelegs` | `pound` | `RES_BLUNT` | Usable legs.
+| `feathers` | Not selected | None | Retained data; no ordinary offensive action supplied.
+| `husk_shell` | Not selected | None | Retained data; no ordinary offensive action supplied.
+|===
+
+These objectless attacks also carry `RES_NONMAGIC`. Being undead, having an
+archetype, or carrying a magical item elsewhere does not make this selected
+attack magical. Fangs do not automatically poison or drain; a tail attack
+does not invoke the Tailwhip skill. Feathers and a shell grant no automatic
+armour or reflected damage through this feature.
+
+===== Anatomy and trauma
+
+The filter uses DD4's existing `HAS_HEAD`, `HAS_ARMS`, `HAS_LEGS` and
+`HAS_TAIL` tests. It preserves those macros' existing positive/negative body
+flag interpretation; it does not reconcile contradictory body flags.
+
+Usable arms require arms and the absence of `AFF_ARM_TRAUMA`. Usable legs
+require legs and the absence of `AFF_LEG_TRAUMA`. Because `atk` does not
+specify whether claws or paws belong to hands or feet, either usable limb
+group is sufficient for those two features. Hooves, haunches and forelegs
+require the leg group specifically.
+
+A tail candidate requires `BODY_HAS_TAIL` or `PART_TAIL` in the live body
+form, as recognised by `HAS_TAIL`, and no `AFF_TAIL_TRAUMA`. Merely adding
+`PART_TAILATTACK` to `atk` does not create that anatomy. Head-based candidates
+require `HAS_HEAD`; this chunk does not introduce an additional all-or-nothing
+head-trauma exclusion. Existing general combat penalties remain separate.
+
+Filtering never removes a bit from the live mask. Removing a relevant trauma
+affect or repairing the live body form makes a still-configured feature
+eligible again. A complete `mset attack_parts` assignment takes effect on the
+next applicable ordinary attack without changing the prototype.
+
+===== Inspection and verification
+
+`mstat` retains the configured ATTACK PART layers and adds:
+
+[cols="<2,<5",options="header"]
+|===
+| Row | Meaning
+| `Eligible` | Configured offensive parts passing the current anatomical/trauma filter.
+| `Inactive` | Other configured bits, including unsupported offensive mappings or anatomy/trauma exclusions.
+|===
+
+These rows describe eligibility independently of equipment. A weapon can
+still take precedence over every eligible natural part. Inspecting a mobile
+does not choose an attack or consume a combat random roll.
+
+For a deterministic test, give a suitable live NPC only `fangs`, leave its
+primary weapon slot empty, and give an ordinary target live piercing immunity.
+Its successful bite rolls should produce the existing immunity-contact
+message. Switch the attacker to eligible claws: piercing immunity alone must
+not block the slashing claw attack. Test mixed masks, an equipped weapon,
+anatomical exclusion and an empty mask separately.
+
+No Scribe syntax changes are needed beyond the merged `atk` interface. DD
+Builder should describe these behaviours without changing the stored/exported
+raw mask, granting skill permissions or inventing extra attacks.
 
 [[scribe-resistance-flags]]
 ==== Resistance category reference
@@ -1700,12 +1818,14 @@ group, bit, inherited archetype and the fact that `#MOBILES` removed it.
 
 ACT, AFF, BODY, RESISTANCE, VULNERABILITY and IMMUNITY layers are implemented
 in the verified baseline, along with separate prototype/live resistance-validity
-results. Step 4C3a adds ATTACK PART layers. Labels beginning with `Template`
+results. PR #710 also adds ATTACK PART layers. Step 4C3b adds the read-only
+`Eligible` and `Inactive` attack-part rows. Labels beginning with `Template`
 describe the inherited layer, not the final NPC state.
 
 Advanced Consider uses live body-form and resistance masks in its existing
-archetype-information block. Step 4C3a changes that block's attack-part list to
-use the live mask too. This is not a promise that Consider displays every new
+archetype-information block. Its attack-part list also uses the live configured
+mask. It is not the new filtered `Eligible` mask. This is not a promise that
+Consider displays every new
 field for every untemplated mobile.
 
 ===== Live resistance commands
@@ -2079,6 +2199,11 @@ v3  pound
 
 [[scribe-weapon-resistance]]
 ===== Ordinary weapon attack categories
+
+For NPC attacks with an empty weapon slot, the accompanying
+<<scribe-natural-attacks,Step 4C3b natural-attack selector>> can supply the
+ordinary attack type from the live `atk` mask. It does not alter actual weapon
+items or their fields.
 
 For ordinary `TYPE_HIT`-based attacks, the weapon's `v3` attack type determines
 its damage category:
@@ -4026,36 +4151,36 @@ pb  120
 [[scribe-revision-notes]]
 === Documentation revision notes and source baseline
 
-This revision confirms the merged Step 4C2 and AsciiDoc changes and documents
-the accompanying Step 4C3a attack-part data interface, while preserving the
-original sixteen numbered sections. New material
+This revision confirms the merged Step 4C3a attack-part data interface and
+documents the accompanying Step 4C3b ordinary NPC natural-attack selection,
+while preserving the original sixteen numbered sections. New material
 is integrated into the existing mobile, object, weapon and area-XP sections.
 The field summaries also include already-described reset/audio/foley fields
 which were absent from their summary tables.
 
 The baseline was checked against
-https://github.com/fromage-fraser/dd4/tree/5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb[DD4 master at PR #709].
+https://github.com/fromage-fraser/dd4/tree/bb1473b58f625b6661f56b223a832b5720263464[DD4 master at PR #710].
 The following files are the implementation references for the added material:
 
 [cols="<2,<5",options="header"]
 |===
 | Source | Relevance
-| https://github.com/fromage-fraser/dd4/blob/5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb/builder/scribe/scribe.pl[`builder/scribe/scribe.pl`]
-| Accepted source keywords, flag dictionaries, validation, single-special/rank export, and merged Step 4C2 resistance fields. Step 4C3a extends this script separately.
-| https://github.com/fromage-fraser/dd4/blob/5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb/server/src/merc.h[`server/src/merc.h`]
+| https://github.com/fromage-fraser/dd4/blob/bb1473b58f625b6661f56b223a832b5720263464/builder/scribe/scribe.pl[`builder/scribe/scribe.pl`]
+| Accepted source keywords, flag dictionaries, validation, single-special/rank export, resistance fields and the merged exact-integer `atk` parser.
+| https://github.com/fromage-fraser/dd4/blob/bb1473b58f625b6661f56b223a832b5720263464/server/src/merc.h[`server/src/merc.h`]
 | ACT/object/resistance flag definitions and template/prototype structures.
-| https://github.com/fromage-fraser/dd4/blob/5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb/server/src/mob.c[`server/src/mob.c`]
+| https://github.com/fromage-fraser/dd4/blob/bb1473b58f625b6661f56b223a832b5720263464/server/src/mob.c[`server/src/mob.c`]
 | Template XOR/scalar/special-name resolution, original-mask handling, validation and additive XP helper.
-| https://github.com/fromage-fraser/dd4/blob/5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb/server/src/db.c[`server/src/db.c`]
+| https://github.com/fromage-fraser/dd4/blob/bb1473b58f625b6661f56b223a832b5720263464/server/src/db.c[`server/src/db.c`]
 | Mobile loading, optional archetype/rank syntax and copying prototype state into a new mobile.
-| https://github.com/fromage-fraser/dd4/blob/5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb/server/src/magic.c[`server/src/magic.c`] and https://github.com/fromage-fraser/dd4/blob/5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb/server/src/fight.c[`server/src/fight.c`]
+| https://github.com/fromage-fraser/dd4/blob/bb1473b58f625b6661f56b223a832b5720263464/server/src/magic.c[`server/src/magic.c`] and https://github.com/fromage-fraser/dd4/blob/bb1473b58f625b6661f56b223a832b5720263464/server/src/fight.c[`server/src/fight.c`]
 | Resistance adjustment, selected status helpers, ordinary-attack categories, damage messaging, death provenance and XP use.
-| https://github.com/fromage-fraser/dd4/blob/5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb/server/src/act_wiz.c[`server/src/act_wiz.c`] and https://github.com/fromage-fraser/dd4/blob/5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb/server/src/act_info.c[`server/src/act_info.c`]
+| https://github.com/fromage-fraser/dd4/blob/bb1473b58f625b6661f56b223a832b5720263464/server/src/act_wiz.c[`server/src/act_wiz.c`] and https://github.com/fromage-fraser/dd4/blob/bb1473b58f625b6661f56b223a832b5720263464/server/src/act_info.c[`server/src/act_info.c`]
 | Immortal flag/resistance-layer diagnostics, live resistance editing and body-form/resistance displays.
-| https://github.com/fromage-fraser/dd4/blob/5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb/server/src/const.c[`server/src/const.c`] and https://github.com/fromage-fraser/dd4/blob/5fffa4d3f36d2bd6b35dd3e222dc163bcba58efb/server/src/handler.c[`server/src/handler.c`]
+| https://github.com/fromage-fraser/dd4/blob/bb1473b58f625b6661f56b223a832b5720263464/server/src/const.c[`server/src/const.c`] and https://github.com/fromage-fraser/dd4/blob/bb1473b58f625b6661f56b223a832b5720263464/server/src/handler.c[`server/src/handler.c`]
 | Effect classifications and text names for resistance/object flags.
-| Step 4C3a implementation instructions supplied in this project
-| Basis for the explicitly marked individual/live attack-part interface. These additions require the accompanying code; no merge or installed-runtime verification is claimed for Step 4C3a.
+| Step 4C3b implementation instructions supplied in this project
+| Basis for the explicitly marked ordinary natural-attack selection and eligibility diagnostics. These require the accompanying server code; the pinned PR #710 sources predate that behaviour.
 |===
 
 The retained `fire_elemental` test archetype is not a general setting rule:
