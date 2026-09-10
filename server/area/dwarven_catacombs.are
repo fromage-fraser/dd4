@@ -220,6 +220,8 @@ A suit of plate mail hewn from granite stands by itself in the corner.~
 9 512|2 9
 9~ 0~ 0~ 0~
 55 42300 1000
+T
+granite~
 A
 2 -1
 #2003
@@ -230,6 +232,8 @@ A ring with a very dark onyx stone in it has been left in the dirt.~
 9 512 3
 5~ 0~ 0~ 0~
 1 11010 200
+T
+granite~
 A
 4 1
 #2004
@@ -240,6 +244,8 @@ A long thin sword with a wide blade makes you wonder.~
 5 2|512|1024 8193
 0~ 4~ 5~ 3~
 9 3304 99
+T
+steel/wood/leather~
 A
 18 1
 A
@@ -252,6 +258,8 @@ A sword gleams by the light of its magical silvery blade.~
 5 1|64|1024|2048 8193
 0~ 5~ 4~ 3~
 15 12157 50
+T
+silver~
 A
 18 3
 A
@@ -288,6 +296,8 @@ A nice suit of chain mail has been left behind.~
 9 256 9
 5~ 0~ 0~ 0~
 20 1111 25
+T
+steel~
 #2010
 white cape~
 a white cape~
@@ -296,6 +306,8 @@ A blazing cape of white lies in a careful pile.~
 9 1 5
 5~ 0~ 0~ 0~
 3 5000 10
+T
+leather~
 A
 18 1
 #2011
@@ -306,6 +318,8 @@ A large shield lies protecting the ground.~
 9 64 513
 15~ 0~ 0~ 0~
 15 33000 212
+T
+steel/wood~
 A
 12 10
 A
@@ -322,6 +336,8 @@ A shield from from the scales of a large dragon lies here.~
 9 0 513
 8~ 0~ 0~ 0~
 18 8000 100
+T
+dragonscale~
 A
 23 3
 #2013
@@ -340,6 +356,8 @@ The shadows in the corner of the room seems strange ...~
 9 64 1025
 10~ 0~ 0~ 0~
 1 4000 1
+T
+cloth~
 A
 14 -30
 #2015
@@ -358,6 +376,8 @@ A sword made of wood has been left here.~
 5 256 8193
 0~ 2~ 6~ 3~
 6 2900 50
+T
+wood~
 A
 18 1
 #0

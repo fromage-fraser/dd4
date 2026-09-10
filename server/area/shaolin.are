@@ -370,6 +370,8 @@ A huge sabre with a dragon motif is planted firmly in the ground.~
 5 1|2|32|128|1024|2048 1|8192
 15~ 20~ 0~ 1~
 20 0 0
+T
+dragonscale~
 E
 sabre dragon~
 This heavy weapon glows and hums as you lay it upon your laps. The dragon
@@ -388,6 +390,8 @@ A massive knife is lying on the table.~
 5 0 1|8192
 10~ 20~ 0~ 1~
 50 0 0
+T
+steel~
 E
 half moon knife~
 Shaped like a half moon, this knife can be deadly in the hands of a skilled
@@ -402,6 +406,8 @@ A whip made of chains is left on the floor.~
 5 2|64 1|8192
 12~ 20~ 0~ 4~
 50 0 0
+T
+leather~
 E
 chain whip~
 Written on it : Made in Shaolin Temple.
@@ -419,6 +425,8 @@ A long slim spear leans against the wall.~
 5 64|134217728 1|8192
 10~ 18~ 0~ 11~
 25 0 0
+T
+iron/wood~
 E
 horse spear~
 Used during the ancient times for hunting horses, it can be just as effective
@@ -454,6 +462,8 @@ A material of some sort is left here.~
 9 2 1|32
 10~ 0~ 0~ 0~
 10 0 0
+T
+leather~
 A
 2 1
 A
@@ -467,6 +477,8 @@ A rough and cheap looking piece of cloth is discarded here.~
 9 0 1|1024
 10~ 0~ 0~ 0~
 20 0 0
+T
+cloth~
 A
 5 1
 A
@@ -480,6 +492,8 @@ A suit of cane armor stands here.~
 9 64 1|8
 10~ 0~ 0~ 0~
 30 0 0
+T
+steel~
 A
 17 -10
 
@@ -491,6 +505,8 @@ A pile of golden and red cloth lies here.~
 9 1|64 1|1024
 10~ 0~ 0~ 0~
 25 0 0
+T
+gold~
 E
 jiasha Jiasha robe~
 This robe was tailor-made for the Abbot of Shaolin Temple by Boom's Workshop.
@@ -510,6 +526,8 @@ A necklace made of big black beads is dumped here.~
 9 2|64 1|4
 10~ 0~ 0~ 0~
 10 0 0
+T
+silver~
 E
 fozhu necklace~
 Written on it: FOR EXPORT ONLY.
@@ -529,6 +547,8 @@ A staff made entirely of solid gold stands here.~
 9 2|64 1|16384
 10~ 10~ 10~ 208~
 0 0 0
+T
+gold~
 
 E
 staff Abbot~
@@ -583,6 +603,8 @@ A disc made of cane lies in the mud.~
 9 2|64 1|512
 10~ 0~ 0~ 0~
 35 0 0
+T
+steel/wood~
 A
 4 2
 A

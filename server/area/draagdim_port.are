@@ -172,6 +172,8 @@ A silver great sword rests here.~
 5 1|2|64|1024|2048 1|8192
 0~ 30~ 72~ 13~
 1 0 0
+T
+silver~
 A
 1 2
 A
@@ -206,6 +208,8 @@ A metal scale shirt lies here.~
 9 0 1|8
 0~ 1~ 6~ 11~
 7 0 0
+T
+leather~
 #28203
 ~
 .44 Magnum Desert Eagle~
@@ -214,6 +218,8 @@ A metal scale shirt lies here.~
 5 0 8192
 0~ 100~ 600~ 6~
 5 0 0
+T
+steel/wood/leather~
 A
 18 100
 A
@@ -226,6 +232,8 @@ A blunt dagger rests here.~
 5 0 1|8192
 0~ 1~ 6~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 19 -1
 #28205
@@ -236,6 +244,8 @@ A sword rests here.~
 5 0 1|8192
 0~ 1~ 6~ 3~
 5 0 0
+T
+steel/wood/leather~
 #28206
 flamberge sword~
 a flamberge~
@@ -244,6 +254,8 @@ A long, wavy-bladed sword lies here.~
 5 64 1|8192
 0~ 1~ 6~ 1~
 5 15 10
+T
+steel/wood/leather~
 A
 2 1
 A
@@ -256,6 +268,8 @@ A heavy mace rests here.~
 5 0 1|8192
 0~ 1~ 6~ 7~
 8 0 0
+T
+iron/wood~
 A
 19 3
 A
@@ -268,6 +282,8 @@ A battle axe rests here.~
 5 0 1|8192
 0~ 1~ 6~ 13~
 5 0 0
+T
+steel/wood~
 A
 19 4
 A
@@ -282,6 +298,8 @@ A steel helm rests here.~
 9 0 1|16
 0~ 1~ 6~ 11~
 2 0 0
+T
+steel/wood/leather~
 #28210
 gauntlets leather~
 leather gauntlets~
@@ -290,6 +308,8 @@ A pair of leather gauntlets lie here.~
 9 0 1|128
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 #28211
 plate platemail breast breastplate~
 a platemail breastplate~
@@ -298,6 +318,8 @@ A shiny breastplate lies here.~
 9 0 1|8
 0~ 1~ 6~ 11~
 10 0 0
+T
+steel~
 A
 2 -1
 A
@@ -310,6 +332,8 @@ A pair of leather greaves rest here.~
 9 0 1|32
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #28213
 beer~
 a pint of beer~
@@ -352,6 +376,8 @@ A cloak rests here.~
 9 64 1|1024
 0~ 1~ 6~ 11~
 5 0 5
+T
+cloth~
 A
 2 1
 A
@@ -370,6 +396,8 @@ A nildaeth rests here.~
 5 1 1|8192
 0~ 1~ 6~ 11~
 1 0 10
+T
+steel/wood/leather~
 A
 1 1
 A

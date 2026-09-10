@@ -385,6 +385,8 @@ Sharp deadly looking talons have been hacked from some creature and left on the 
 5 2|16384|67108864 1|8192
 1~ 0~ 0~ 5~
 5 0 0
+T
+steel/wood/leather~
 A
 19 40
 A
@@ -435,6 +437,8 @@ A beautiful jewel encrusted crown has been carelessly dropped here.~
 9 1|64|1024|2048 1|16
 0~ 0~ 0~ 0~
 8 0 0
+T
+gold~
 A
 19 10
 A
@@ -453,6 +457,8 @@ Lavish white cloth decorated with pearls has been dropped in a pile on the floor
 9 64|2048 1|8
 0~ 0~ 0~ 0~
 3 0 0
+T
+cloth~
 A
 12 400
 A
@@ -469,6 +475,8 @@ A pair of delicate crystal slippers have been left here.~
 9 32|64|1024|2048 1|64
 0~ 0~ 0~ 0~
 5 0 0
+T
+quartz~
 A
 13 100
 A
@@ -491,6 +499,8 @@ A crystal ball is hovering in the air here.~
 5 1|32|64|67108864 1|8192
 0~ 0~ 0~ 6~
 5 0 0
+T
+quartz~
 A
 19 20
 A
@@ -505,6 +515,8 @@ A finely woven gold chain is lying on the ground.~
 9 64 1|4
 0~ 0~ 0~ 0~
 5 0 0
+T
+gold~
 A
 17 -10
 A
@@ -517,6 +529,8 @@ A pair of very sharp gardening shears have been left here.~
 5 16777216 1|8192
 0~ 0~ 0~ 13~
 5 0 0
+T
+steel/wood/leather~
 A
 1 0
 #11312
@@ -527,6 +541,8 @@ A pair of green overalls have been left on the ground here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 2 0
 #11313
@@ -537,6 +553,8 @@ A pair of work boots have been left here.~
 9 0 1|64
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 14 100
 A
@@ -573,6 +591,8 @@ The hacked-off wings of some unfortunate fairy lie here.~
 9 2|64|2048 1|1024
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 27 -1
 #11318
@@ -583,6 +603,8 @@ The hacked-off wings of some unfortunate fairy lie here.~
 9 2|64|2048 1|1024
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 27 -1
 #11319
@@ -593,6 +615,8 @@ The hacked-off wings of some unfortunate fairy lie here.~
 9 2|64|2048 1|1024
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 27 -1
 #11320
@@ -603,6 +627,8 @@ The hacked-off wings of some unfortunate fairy lie here.~
 9 2|64|2048 1|1024
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 27 -1
 #11321
@@ -613,6 +639,8 @@ A magical ring of enchantment lies at your feet.~
 9 64 1|2
 0~ 0~ 0~ 0~
 0 0 0
+T
+silver~
 A
 17 -50
 A
@@ -636,6 +664,8 @@ A pair of green stockings have been discarded here.~
 9 0 1|32
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 #11324
 buckled shoes~
 buckled shoes~
@@ -644,6 +674,8 @@ A pair of buckled shoes are have been left here.~
 9 64 1|64
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 2 0
 #11325
@@ -654,6 +686,8 @@ A peaked cap is on the ground here.~
 9 0 1|16
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 #11326
 bright red tunic~
 a bright-red tunic~
@@ -662,6 +696,8 @@ A bright-red tunic has been left here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 2 0 0
+T
+cloth~
 #11327
 gloves~
 gardening gloves~
@@ -670,6 +706,8 @@ A pair of gardening gloves are here.~
 9 0 1|128
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 17 0
 #11328
@@ -680,6 +718,8 @@ A garland of flowers lies on the ground.~
 9 0 1|16
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 #11329
 gown~
 a sparkly gown~
@@ -688,6 +728,8 @@ A beautiful sparkly gown has been left here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 #11330
 fountain~
 a fountain~
@@ -736,6 +778,8 @@ A homespun bright green tunic has been left here.~
 9 64|2048 1|8
 0~ 0~ 0~ 0~
 4 0 0
+T
+cloth~
 A
 23 2
 A
@@ -750,6 +794,8 @@ A green puritan style hat with a gold buckle sits here.~
 9 64|2048 1|16
 0~ 0~ 0~ 0~
 3 0 0
+T
+gold~
 A
 4 2
 A
@@ -762,6 +808,8 @@ A pair of sturdy green breeches have been neatly folded up here.~
 9 64|2048 1|32
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 17 -10
 A
@@ -774,6 +822,8 @@ A brown belt with a shiny gold buckle has been dropped here.~
 9 64|2048 1|2048
 0~ 0~ 0~ 0~
 2 0 0
+T
+gold~
 A
 13 130
 A
@@ -786,6 +836,8 @@ A pair of green boots with bright gold buckles have been left here.~
 9 64|2048 1|64
 0~ 0~ 0~ 0~
 3 0 0
+T
+gold~
 A
 27 -1
 #11340
@@ -814,6 +866,8 @@ A pile of tree bark lies here.~
 9 67108864 1|8
 0~ 7~ 0~ 0~
 4 0 0
+T
+leather~
 A
 17 -200
 A
@@ -826,6 +880,8 @@ The hide of a drake lies here.~
 9 64|2048|67108864 1|8
 0~ 7~ 0~ 0~
 4 0 0
+T
+leather~
 A
 19 30
 A

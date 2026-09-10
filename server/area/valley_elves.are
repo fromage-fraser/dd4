@@ -208,6 +208,8 @@ A shiny metallic shirt is on the floor.~
 9 0 1|8
 4~ 0~ 0~ 0~
 3 50 50
+T
+steel~
 #7801
 boots~
 elven boots~
@@ -216,6 +218,8 @@ Some soft boots are on the floor.~
 9 0 1|64
 3~ 0~ 0~ 0~
 3 10 10
+T
+leather~
 A
 14 50
 #7802
@@ -226,6 +230,8 @@ A shiny blade is on the floor.~
 5 64 1|8192
 0~ 3~ 3~ 3~
 3 50 50
+T
+steel/wood/leather~
 A
 18 1
 #7803
@@ -236,6 +242,8 @@ A pile of brown cloth is on the floor.~
 9 64 1|4
 3~ 0~ 0~ 0~
 3 50 50
+T
+cloth~
 A
 2 1
 #7804
@@ -262,6 +270,8 @@ A shiny ring is on the floor.~
 9 64 1|2
 3~ 0~ 0~ 0~
 1 1000 10
+T
+gold~
 A
 12 10
 #7807
@@ -272,6 +282,8 @@ A quarterstaff is on the floor.~
 5 64 1|8192
 0~ 4~ 4~ 8~
 5 1000 10
+T
+wood~
 A
 19 2
 #7808

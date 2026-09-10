@@ -275,6 +275,8 @@ A shiny dagger emits a rainbow of colour.~
 5 32|64 1|8192
 0~ 1~ 6~ 11~
 5 0 0
+T
+quartz~
 A
 18 5
 A
@@ -287,6 +289,8 @@ Some crystal sleeves lay in a pile.~
 9 32|64 1|256
 0~ 1~ 6~ 11~
 5 0 0
+T
+quartz~
 A
 17 -25
 #11202
@@ -297,6 +301,8 @@ A gleaming bracer sits here.~
 9 32 1|4096
 0~ 1~ 6~ 11~
 5 0 0
+T
+quartz~
 A
 1 1
 A
@@ -319,6 +325,8 @@ A  pair of ruby slippers have been left here.~
 9 1|32|64 1|64
 6~ 1~ 6~ 11~
 5 0 0
+T
+ruby~
 A
 12 150
 A
@@ -341,6 +349,8 @@ Pieces of sharp looking crystal sit on the ground.~
 5 64 1|8192
 0~ 1~ 6~ 11~
 5 0 0
+T
+quartz~
 A
 18 10
 A
@@ -382,6 +392,8 @@ A shiny cross sparkles in the light.~
 9 1|64 1|16384
 100~ 1~ 1~ 0~
 5 0 0
+T
+silver~
 A
 12 50
 A
@@ -448,6 +460,8 @@ A pile of dark cloth lies on the ground.~
 9 16|64|512|2048 1|8
 0~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 A
 18 5
 A
@@ -466,6 +480,8 @@ A leather vest is on the ground.~
 9 0 1|8
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 17 -10
 #11215
@@ -476,6 +492,8 @@ A small brown wing lies here bleeding.~
 9 0 1|16384
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 4 2
 #11216

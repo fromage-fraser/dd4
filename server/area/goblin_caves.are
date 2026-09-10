@@ -270,6 +270,8 @@ A plain but affective Goblin Sword lies here.~
 5 512 8192|1
 0~ 10~ 25~ 3~
 20 100 3
+T
+steel/wood/leather~
 A
 19 1
 
@@ -281,6 +283,8 @@ Some plain looking armor lies here.~
 9 512 8|1
 0~ 0~ 0~ 0~
 20 100 3
+T
+steel~
 
 #20006
 sword~
@@ -290,6 +294,8 @@ A deadly looking Goblin Sentry'sword~
 5 1024 8192|1
 0~ 10~ 25~ 3~
 20 100 3
+T
+steel/wood/leather~
 A
 19 3
 #0

@@ -840,6 +840,8 @@ A wet soggy mop is here on the ground.~
 5 0 1|8192
 0~ 1~ 25~ 4~
 3 10000 0
+T
+steel/wood/leather~
 #10702
 soap bottle~
 soap~
@@ -856,6 +858,8 @@ A string of prayer beads is here.~
 9 0 1|4
 5~ 0~ 0~ 0~
 1 10000 0
+T
+silver~
 A
 24 -5
 A
@@ -870,6 +874,8 @@ A large chinese broadsword lies on the ground.~
 5 0 1|8192
 0~ 1~ 45~ 3~
 7 10000 0
+T
+steel/wood/leather~
 #10705
 white lotus shield~
 white lotus shield~
@@ -878,6 +884,8 @@ A medium size wooden shield with a picture of a white lotus is here.~
 9 64 1|512
 10~ 0~ 0~ 0~
 3 10000 0
+T
+wood~
 A
 22 -5
 #10706
@@ -888,6 +896,8 @@ A very large chinese cleaver is stuck in the ground.~
 5 0 1|8192
 0~ 1~ 15~ 1~
 2 10000 0
+T
+steel/wood/leather~
 #10707
 chopsticks chopstick ivory pair~
 pair of chopsticks~
@@ -952,6 +962,8 @@ A big knife is laying on the ground here.~
 5 0 1|8192
 0~ 1~ 46~ 11~
 3 10000 0
+T
+steel~
 #10715
 poison clan insignia coin~
 poison clan insignia~
@@ -960,6 +972,8 @@ A small insignia coin is laying here on the ground.~
 9 2|64 1|16384
 0~ 0~ 0~ 7~
 1 10000 0
+T
+leather~
 A
 18 1
 A
@@ -974,6 +988,8 @@ You see a small book with a small scorpion on the cover here.~
 5 0 1|8192
 0~ 1~ 70~ 8~
 1 10000 0
+T
+steel/wood/leather~
 A
 18 1
 A
@@ -996,6 +1012,8 @@ You see a small book with a small centipede on the cover here.~
 5 0 1|8192
 0~ 1~ 66~ 5~
 1 10000 0
+T
+steel/wood/leather~
 A
 2 2
 A
@@ -1010,6 +1028,8 @@ You see a small book with a small lizard on the cover here.~
 5 0 1|8192
 0~ 1~ 64~ 5~
 1 10000 0
+T
+steel/wood/leather~
 A
 14 50
 A
@@ -1040,6 +1060,8 @@ You see a small book with the iron monk technique written in it.~
 5 64 1|16384
 0~ 1~ 67~ 5~
 1 10000 0
+T
+iron/wood/leather~
 A
 17 -5
 A
@@ -1054,6 +1076,8 @@ You see a small book of kung fu laying on the ground here.~
 5 64 1|8192
 0~ 1~ 90~ 7~
 1 10000 0
+T
+steel/wood/leather~
 A
 17 -10
 #10724
@@ -1064,6 +1088,8 @@ A shiny white chinese longsword is stuck in the ground here.~
 5 64 1|8192
 0~ 1~ 75~ 1~
 3 10000 0
+T
+steel/wood/leather~
 #10725
 key chambers~
 key to the 36 chambers~
@@ -1104,6 +1130,8 @@ A small book teaching the Whirlwind Kick style is here.~
 5 0 1|8192
 0~ 1~ 64~ 7~
 1 10000 0
+T
+steel/wood/leather~
 #10730
 key 5th chamber~
 key to the 5th chamber~
@@ -1120,6 +1148,8 @@ A small book teaching the chin kang palm style is here.~
 5 0 1|8192
 0~ 1~ 65~ 6~
 1 10000 0
+T
+steel/wood/leather~
 #10732
 key 6th chamber~
 key to the 6th chamber~
@@ -1136,6 +1166,8 @@ A small book teaching the lizard style is here.~
 5 0 1|8192
 0~ 1~ 66~ 12~
 1 10000 0
+T
+steel/wood/leather~
 #10734
 key 7th chamber~
 key to the 7th chamber~
@@ -1152,6 +1184,8 @@ A small book teaching the crane style is here.~
 5 0 1|8192
 0~ 1~ 67~ 11~
 1 10000 0
+T
+steel/wood/leather~
 #10736
 key 8th chamber~
 key to the 8th chamber~
@@ -1168,6 +1202,8 @@ A small book teaching the dragon style is here.~
 5 0 1|8192
 0~ 1~ 68~ 10~
 1 10000 0
+T
+dragonscale~
 #10738
 key 9th chamber~
 key to the 9th chamber~
@@ -1184,6 +1220,8 @@ A small book teaching the tiger style is here.~
 5 0 1|8192
 0~ 1~ 69~ 5~
 1 10000 0
+T
+steel/wood/leather~
 #10740
 key 10th chamber~
 key to the 10th chamber~
@@ -1200,6 +1238,8 @@ A small book teaching the scorpion style is here.~
 5 0 1|8192
 0~ 1~ 70~ 8~
 1 10000 0
+T
+steel/wood/leather~
 #10742
 key 11th chamber~
 key to the 11th chamber~
@@ -1224,6 +1264,8 @@ A small book teaching the snake style is here.~
 5 0 1|8192
 0~ 1~ 71~ 11~
 1 10000 0
+T
+steel/wood/leather~
 #10745
 key 13th chamber~
 key to the 13th chamber~
@@ -1240,6 +1282,8 @@ A small book teaching the centipede style is here.~
 5 0 1|8192
 0~ 1~ 72~ 4~
 1 10000 0
+T
+steel/wood/leather~
 #10747
 key 14th chamber~
 key to the 14th chamber~
@@ -1256,6 +1300,8 @@ A small book teaching the toad style is here.~
 9 0 1|8
 10~ 0~ 0~ 0~
 1 10000 0
+T
+leather~
 A
 17 -10
 A
@@ -1294,6 +1340,8 @@ A small book teaching the iron monk style is here.~
 5 0 1|8192
 0~ 1~ 75~ 7~
 1 10000 0
+T
+iron/wood/leather~
 #10753
 key 17th chamber~
 key to the 17th chamber~
@@ -1310,6 +1358,8 @@ A small book teaching the hawk style is here.~
 5 0 1|8192
 0~ 1~ 76~ 5~
 1 10000 0
+T
+steel/wood/leather~
 #10755
 key 18th chamber~
 key to the 18th chamber~
@@ -1326,6 +1376,8 @@ A small book teaching the quivering palm style is here.~
 5 0 1|8192
 0~ 1~ 77~ 6~
 1 10000 0
+T
+steel/wood/leather~
 #10757
 key 20th chamber~
 key to the 20th chamber~
@@ -1358,6 +1410,8 @@ A small book teaching the weightless boxing style is here.~
 5 0 1|8192
 0~ 1~ 79~ 6~
 1 10000 0
+T
+steel/wood/leather~
 #10761
 key 23rd chamber~
 key to the 23rd chamber~
@@ -1374,6 +1428,8 @@ A small book teaching the lightning strike style is here.~
 5 0 1|8192
 0~ 1~ 80~ 6~
 1 10000 0
+T
+steel/wood/leather~
 #10763
 key 24th chamber~
 key to the 24th chamber~
@@ -1390,6 +1446,8 @@ A small book teaching the iron skin technique is here.~
 5 0 1|8192
 0~ 1~ 81~ 6~
 1 10000 0
+T
+iron/wood/leather~
 A
 17 -15
 #10765
@@ -1408,6 +1466,8 @@ A small book teaching the chinese longsword technique is here.~
 5 0 1|8192
 0~ 1~ 82~ 1~
 5 10000 0
+T
+steel/wood/leather~
 #10767
 key 25th chamber~
 key to the 25th chamber~
@@ -1424,6 +1484,8 @@ A small book teaching the chinese butterfly sword technique is here.~
 5 0 1|8192
 0~ 1~ 83~ 1~
 6 10000 0
+T
+steel/wood/leather~
 #10769
 key 26th chamber~
 key to the 26th chamber~
@@ -1440,6 +1502,8 @@ A small book teaching the chinese long spear technique is here.~
 5 134217728 1|8192
 0~ 1~ 84~ 11~
 1 10000 0
+T
+iron/wood~
 #10771
 key 27th chamber~
 key to the 27th chamber~
@@ -1456,6 +1520,8 @@ A small book teaching the deadly palm style is here.~
 5 0 1|8192
 0~ 1~ 85~ 6~
 1 10000 0
+T
+steel/wood/leather~
 #10773
 key 28th chamber~
 key to the 28th chamber~
@@ -1472,6 +1538,8 @@ A small book teaching the flying buddha style is here.~
 5 0 1|8192
 0~ 1~ 86~ 1~
 1 10000 0
+T
+steel/wood/leather~
 #10775
 key 29th chamber~
 key to the 29th chamber~
@@ -1488,6 +1556,8 @@ A small book teaching the angry buddha style is here.~
 5 0 1|8192
 0~ 1~ 87~ 1~
 1 10000 0
+T
+steel/wood/leather~
 A
 18 3
 #10777
@@ -1554,6 +1624,8 @@ A large polearm with a mace on top is here.~
 5 0 1|8192
 0~ 1~ 90~ 7~
 6 10000 0
+T
+iron/wood~
 #10785
 Hand of buddha~
 hand of Buddha~
@@ -1562,6 +1634,8 @@ The enormous Hand of Buddha is floating above you.~
 5 1|2|64|256 1|8192
 0~ 1~ 100~ 6~
 7 10000 0
+T
+steel/wood/leather~
 A
 18 3
 A
@@ -1594,6 +1668,8 @@ A small book teaching the five pace palm style is here.~
 5 0 1|8192
 0~ 1~ 78~ 6~
 1 10000 0
+T
+steel/wood/leather~
 #10789
 rice cake~
 rice cake~
@@ -1610,6 +1686,8 @@ A small book teaching the chinese butterfly sword technique is here.~
 5 0 1|16384
 0~ 1~ 83~ 1~
 5 10000 0
+T
+steel/wood/leather~
 #10791
 chinese longsword technique light~
 chinese longsword~
@@ -1618,6 +1696,8 @@ A small book teaching the chinese longsword technique is here.~
 5 0 1|8192
 0~ 1~ 82~ 1~
 4 10000 0
+T
+steel/wood/leather~
 #10792
 ring white lotus chambers~
 ring of the 36 chambers~
@@ -1626,6 +1706,8 @@ A ring of the 36 chambers of the White Lotus is here.~
 9 1|2|64|128|256|4096 1|2
 20~ 0~ 0~ 0~
 2 10000 0
+T
+silver~
 A
 1 1
 A

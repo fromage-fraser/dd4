@@ -86,6 +86,8 @@ An expertly-crafted wrench glows faintly.~
 9 0 1|16384
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 3 0
 #2705
@@ -96,6 +98,8 @@ A cloak with splayed, metallic fan blades rests here.~
 9 0 1|1024
 0~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 A
 2 0
 #2706
@@ -114,6 +118,8 @@ Finely-crafted gloves rest here.~
 9 0 1|128
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 2 2
 A
@@ -126,6 +132,8 @@ A finely-crafted belt rests here~
 9 0 1|2048
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 2 2
 A
@@ -140,6 +148,8 @@ A pair of finely-crafted boots are here.~
 9 0 1|64
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 2 2
 A
@@ -154,6 +164,8 @@ A red-tinged helm rests here.~
 9 0 1|16
 9~ 1~ 6~ 11~
 4 0 0
+T
+steel~
 A
 2 3
 A
@@ -170,6 +182,8 @@ Bloodforged swiftboots rest here.~
 9 0 1|64
 6~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 2 0
 A
@@ -182,6 +196,8 @@ A pair of blood-red spiked leggings lie in a heap.~
 9 0 1|32
 6~ 0~ 0~ 0~
 5 0 0
+T
+steel~
 A
 19 3
 #2713
@@ -192,6 +208,8 @@ Bloodforged grips lie here.~
 9 0 1|128
 5~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 18 0
 #2714
@@ -202,6 +220,8 @@ A semi-translucent shield vibrates in the corner.~
 9 64 1|512
 12~ 0~ 0~ 0~
 5 0 0
+T
+steel/wood~
 A
 1 2
 A
@@ -214,6 +234,8 @@ A wrap's aura draws you to it.~
 9 1 1|1024
 12~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 13 100
 #2716
@@ -232,6 +254,8 @@ A shimmering metallic field hovers before you.~
 9 0 1|64
 4~ 0~ 0~ 0~
 2 0 0
+T
+silver~
 A
 14 0
 #2718
@@ -242,6 +266,8 @@ A translucent metallic rod rests here.~
 9 1 1|16384
 7~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 2 1
 A

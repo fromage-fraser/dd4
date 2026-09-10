@@ -441,6 +441,8 @@ A lamia collar is on the ground.~
 9 0 5
 3~ 0~ 0~ 0~
 5 100 50
+T
+leather~
 #5301
 breast plate iron~
 a beautiful iron breast plate~
@@ -449,6 +451,8 @@ A beautiful iron breast plate lies here.~
 9 0 9
 7~ 0~ 0~ 0~
 125 20000 1500
+T
+iron/wood/leather~
 A
 18 1
 #5302
@@ -588,6 +592,8 @@ You see an imperial sword here.~
 5 64 8193
 0~ 3~ 4~ 3~
 5 0 500
+T
+steel/wood/leather~
 E
 sword~
 You see a sword of great craftsmanship.  Imprinted on the side is:
@@ -605,6 +611,8 @@ You see an imperial mace here.~
 5 64 8193
 0~ 4~ 4~ 7~
 5 0 500
+T
+iron/wood~
 E
 mace~
 You see a mace of great craftsmanship.  Imprinted on the side is:
@@ -622,6 +630,8 @@ You see an imperial chest plate here.~
 9 0 9
 5~ 0~ 0~ 0~
 5 0 500
+T
+steel~
 E
 chest plate~
 You see a chest plate of great craftsmanship.  Stamped on the side is:
@@ -635,6 +645,8 @@ You see an imperial shield here.~
 9 0 513
 5~ 0~ 0~ 0~
 5 0 500
+T
+steel/wood~
 E
 shield~
 You see a shield of great craftsmanship.  Imprinted on the side is:
@@ -648,6 +660,8 @@ You see an imperial cloak here.~
 9 0 5
 5~ 0~ 0~ 0~
 5 0 500
+T
+cloth~
 E
 cloak~
 You see a cloak of great craftsmanship.  Imprinted on the side is:
@@ -661,6 +675,8 @@ You see an imperial helm here.~
 9 0 17
 5~ 0~ 0~ 0~
 5 0 500
+T
+steel~
 E
 helm~
 You see a helm of great craftsmanship.  Imprinted on the side is:
@@ -674,6 +690,8 @@ You see a pair of imperial plate leggings here.~
 9 0 33
 5~ 0~ 0~ 0~
 5 0 500
+T
+steel~
 E
 plate leggings~
 You see plate leggings of great craftsmanship.  Imprinted on the side is:
@@ -687,6 +705,8 @@ You see a pair of imperial plate boots here.~
 9 0 65
 5~ 0~ 0~ 0~
 5 0 500
+T
+leather~
 E
 plate boots~
 You see plate boots of great craftsmanship.  Imprinted on the side is:
@@ -700,6 +720,8 @@ You see a pair of imperial plate gloves here.~
 9 0 129
 5~ 0~ 0~ 0~
 5 0 500
+T
+leather~
 E
 plate gloves~
 You see plate gloves of great craftsmanship.  Imprinted on the side is:
@@ -713,6 +735,8 @@ You see a pair of imperial plate sleeves here.~
 9 0 257
 5~ 0~ 0~ 0~
 5 0 500
+T
+steel~
 E
 plate sleeves~
 You see plate sleeves of great craftsmanship.  Imprinted on the side is:
@@ -726,6 +750,8 @@ You see an imperial cape here.~
 9 0 1025
 5~ 0~ 0~ 0~
 5 0 500
+T
+leather~
 E
 cape~
 You see a cape of great craftsmanship.  Imprinted on the side is:
@@ -739,6 +765,8 @@ You see an imperial belt here.~
 9 0 2049
 5~ 0~ 0~ 0~
 5 0 500
+T
+leather~
 E
 belt~
 You see a belt of great craftsmanship.  Imprinted on the side is:
@@ -752,6 +780,8 @@ You see an imperial metal bracer here.~
 9 0 4097
 5~ 0~ 0~ 0~
 5 0 500
+T
+steel~
 E
 metal bracer~
 You see a metal bracer of great craftsmanship.  Imprinted on the side is:
@@ -765,6 +795,8 @@ You see a ring with a strange symbol on the floor.~
 9 64 3
 0~ 0~ 0~ 0~
 1 0 10000
+T
+silver~
 A
 17 -6
 A

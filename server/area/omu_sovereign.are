@@ -904,6 +904,8 @@ A well-used and maintained long silver spear rests here.~
 5 0 1|8192
 0~ 0~ 0~ 11~
 11 0 0
+T
+silver~
 A
 18 6
 A
@@ -917,6 +919,8 @@ A suit of bright orange armour made of rock is here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 14 0 0
+T
+steel~
 A
 17 -20
 A
@@ -934,6 +938,8 @@ An orange helm made of rock sits here.~
 9 0 1|16
 0~ 0~ 0~ 0~
 6 0 0
+T
+steel~
 A
 17 -25
 A
@@ -1039,6 +1045,8 @@ A dark cloak lies here, flickering and shimmering.~
 9 274877906944 1|1024
 0~ 0~ 0~ 0~
 2 0 0
+T
+cloth~
 A
 28 -1
 A
@@ -1052,6 +1060,8 @@ A well-used and maintained masterwork silver spear rests here.~
 5 0 1|8192
 0~ 0~ 0~ 11~
 11 0 0
+T
+silver~
 A
 18 10
 A
@@ -1065,6 +1075,8 @@ A golden circlet lies here.~
 9 64|274877906944 1|16
 0~ 0~ 0~ 0~
 1 0 0
+T
+gold~
 A
 17 -3
 A
@@ -1078,6 +1090,8 @@ A luxurious brown robe lies here in a heap.~
 9 0 1|1024
 0~ 0~ 0~ 0~
 2 0 0
+T
+cloth~
 
 #28717
 golden key~
@@ -1124,6 +1138,8 @@ Sharp teeth lie scattered here.~
 5 67108864 8192
 1~ 0~ 0~ 10~
 1 0 0
+T
+steel/wood/leather~
 A
 18 7
 A
@@ -1146,6 +1162,8 @@ An elaborate crown fashioned from coral lies here.~
 9 64|274877906944 1|16
 0~ 0~ 0~ 0~
 6 0 0
+T
+gold~
 E
 coral crown~
 This crown is crafted entirely from vibrant, naturally sculpted coral, its
@@ -1169,6 +1187,8 @@ A suit of golden scaled armour is here.~
 9 64|274877906944 1|8
 0~ 0~ 0~ 0~
 10 0 0
+T
+gold~
 E
 sharkscale armour golden~
 Forged from the gleaming scales of deep-sea golden sharks, this armour shimmers
@@ -1194,6 +1214,8 @@ A beautiful wristband made from polished bone is here.~
 9 274877906944 1|4096
 0~ 0~ 0~ 0~
 2 0 0
+T
+bone~
 E
 polished bone wristband~
 This polished bone wristband is smooth to the touch, its pale surface gleaming
@@ -1233,6 +1255,8 @@ A belt set with topaz gemstones lies in a heap here.~
 9 64|274877906944 1|2048
 0~ 0~ 0~ 0~
 2 0 0
+T
+granite~
 E
 topaz belt~
 This striking belt is set with gleaming topaz gemstones, each one faceted to
@@ -1254,6 +1278,8 @@ A dagger carved from a cowrie shell and inlaid with gemstones is here.~
 5 64|1048576|16777216|274877906944 1|8192
 0~ 0~ 0~ 11~
 1 0 0
+T
+granite~
 E
 dagger cowrie jewelled~
 This jewelled cowrie dagger is a delicate yet deadly weapon, its curved blade
@@ -1323,6 +1349,8 @@ A deep purple cloak lies here in a heap.~
 9 64|137438953472 1|1024
 0~ 0~ 0~ 0~
 2 0 0
+T
+cloth~
 A
 19 9
 A
