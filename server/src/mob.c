@@ -13,7 +13,9 @@
 #else
 #include <sys/types.h>
 #endif
+#include <errno.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <time.h>
 #include "merc.h"
@@ -145,7 +147,7 @@ const struct mob_type mob_table[MAX_MOB] =
                 0, 0,
                 RES_FIRE | RES_COLD | RES_POISON | RES_PARALYSIS
                     | RES_HOLD | RES_DRAIN | RES_NONMAGIC,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                50, MOB_TEMPLATE_UNSET,
                 MOB_TEMPLATE_UNSET, 20,
                 2, 20, 3, 1,
                 "spec_breath_fire", NULL, NULL,
@@ -337,6 +339,152 @@ bool resolve_mob_template(int mob_type,
         resolved->xp_mod = archetype->xp_mod;
 
         return TRUE;
+}
+
+/*
+ * Parse a signed HP percentage adjustment or the inheritance keyword.
+ * A literal zero is an explicit neutral override, not an inheritance marker.
+ * The output remains unchanged when parsing fails.
+ */
+bool parse_mob_hp_modifier(const char *text, int *modifier)
+{
+        const char *p;
+        char *end;
+        long value;
+
+        if (!text || !modifier || text[0] == '\0')
+                return FALSE;
+
+        if (!str_cmp(text, "inherit"))
+        {
+                *modifier = MOB_TEMPLATE_UNSET;
+                return TRUE;
+        }
+
+        p = text;
+        if (*p == '+' || *p == '-')
+                p++;
+
+        if (*p < '0' || *p > '9')
+                return FALSE;
+
+        while (*p >= '0' && *p <= '9')
+                p++;
+
+        if (*p != '\0')
+                return FALSE;
+
+        errno = 0;
+        value = strtol(text, &end, 10);
+
+        if (errno == ERANGE
+        ||  end == text
+        ||  *end != '\0'
+        ||  value < MOB_HP_MOD_MIN
+        ||  value > INT_MAX)
+        {
+                return FALSE;
+        }
+
+        *modifier = (int)value;
+        return TRUE;
+}
+
+/*
+ * Check raw template HP adjustments before any mobile is instantiated.
+ * An unset scalar is valid; an adjustment below -99 is not.
+ */
+int validate_mob_hp_modifiers(void)
+{
+        char buf[MAX_STRING_LENGTH];
+        int sn;
+        int value;
+        int issues;
+
+        issues = 0;
+
+        for (sn = 0; sn < MAX_SPECIES; sn++)
+        {
+                value = species_table[sn].hp_mod;
+
+                if (value == MOB_TEMPLATE_UNSET || value >= MOB_HP_MOD_MIN)
+                        continue;
+
+                snprintf(
+                    buf, sizeof(buf),
+                    "[MOB TEMPLATE] Body species '%s' has invalid hp_mod %d; "
+                    "use MOB_TEMPLATE_UNSET or a value from %d to %d.",
+                    species_table[sn].species
+                        ? species_table[sn].species : "unnamed",
+                    value, MOB_HP_MOD_MIN, INT_MAX);
+                log_string(buf);
+                issues++;
+        }
+
+        for (sn = 0; sn < MAX_MOB; sn++)
+        {
+                value = mob_table[sn].hp_mod;
+
+                if (value == MOB_TEMPLATE_UNSET || value >= MOB_HP_MOD_MIN)
+                        continue;
+
+                snprintf(
+                    buf, sizeof(buf),
+                    "[MOB TEMPLATE] Creature archetype '%s' has invalid "
+                    "hp_mod %d; use MOB_TEMPLATE_UNSET or a value "
+                    "from %d to %d.",
+                    mob_table[sn].name ? mob_table[sn].name : "unnamed",
+                    value, MOB_HP_MOD_MIN, INT_MAX);
+                log_string(buf);
+                issues++;
+        }
+
+        if (issues == 0)
+        {
+                log_string(
+                    "[MOB TEMPLATE] HP-modifier validation complete: "
+                    "no issues found.");
+        }
+        else
+        {
+                snprintf(
+                    buf, sizeof(buf),
+                    "[MOB TEMPLATE] HP-modifier validation complete: "
+                    "%d issue%s found.",
+                    issues, issues == 1 ? "" : "s");
+                log_string(buf);
+        }
+
+        return issues;
+}
+
+/*
+ * Apply a resolved HP adjustment to the normal level/rank-derived spawn HP.
+ * Call once during creation, before equipment or later scripted adjustments.
+ */
+int apply_mob_hp_modifier(int base_hp, int modifier)
+{
+        int64_t scaled;
+
+        /* Defensive handling for callers outside the validated loader. */
+        if (modifier == MOB_TEMPLATE_UNSET)
+                modifier = 0;
+
+        if (modifier < MOB_HP_MOD_MIN)
+                modifier = MOB_HP_MOD_MIN;
+
+        if (base_hp < 1)
+                base_hp = 1;
+
+        scaled = (int64_t)base_hp * ((int64_t)100 + modifier) / 100;
+
+        if (scaled < 1)
+                return 1;
+
+        if (scaled > MOB_SPAWN_HP_LIMIT)
+                return MOB_SPAWN_HP_LIMIT;
+
+        return (int)scaled;
 }
 
 /*
@@ -691,6 +839,15 @@ void initialise_mob_index_flags(MOB_INDEX_DATA *index)
 
         index->attack_parts =
             inherited.attack_parts ^ index->area_attack_parts;
+
+        /*
+         * Scalars replace inherited values; they are not XOR masks.
+         * The existing scalar resolver preserves explicit zero.
+         */
+        index->hp_mod =
+            resolve_template_scalar(
+                inherited.hp_mod,
+                index->area_hp_mod);
 
         index->resists =
             inherited.resists ^ index->area_resists;

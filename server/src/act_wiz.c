@@ -2242,6 +2242,72 @@ static void mstat_resistance_layers(CHAR_DATA *ch, CHAR_DATA *victim)
             ch);
 }
 
+/* Show scalar inheritance and immutable creation snapshots separately. */
+static void mstat_hp_modifier_layers(CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        MOB_TEMPLATE_DATA inherited;
+        MOB_INDEX_DATA *index;
+        char buf[MAX_STRING_LENGTH];
+
+        if (!IS_NPC(victim) || !victim->pIndexData)
+                return;
+
+        index = victim->pIndexData;
+        memset(&inherited, 0, sizeof(inherited));
+
+        if (index->mobspec && index->mobspec[0] != '\0')
+        {
+                if (!resolve_mob_template(
+                        mob_lookup(index->mobspec), &inherited))
+                {
+                        send_to_char(
+                            "\n\r{RHP modifier layers unavailable: "
+                            "invalid template.{x\n\r", ch);
+                        return;
+                }
+        }
+
+        snprintf(
+            buf, sizeof(buf),
+            "\n\r{WHP modifier layers{x\n\r"
+            "  Template:          %+d%%\n\r",
+            inherited.hp_mod);
+        send_to_char(buf, ch);
+
+        if (index->area_hp_mod == MOB_TEMPLATE_UNSET)
+        {
+                send_to_char("  #MOBILES:          inherit\n\r", ch);
+        }
+        else
+        {
+                snprintf(
+                    buf, sizeof(buf),
+                    "  #MOBILES:          %+d%% (replacement)\n\r",
+                    index->area_hp_mod);
+                send_to_char(buf, ch);
+        }
+
+        snprintf(
+            buf, sizeof(buf),
+            "  Prototype:         %+d%%\n\r"
+            "  Spawn base HP:     %d (after level/rank)\n\r"
+            "  Spawn adjustment:  %+d%%\n\r"
+            "  Spawn initial HP:  %d\n\r"
+            "  Current HP / max:  %d / %d\n\r"
+            "  Spawn HP limits:   1 to %d\n\r",
+            index->hp_mod,
+            victim->spawn_base_hit,
+            victim->spawn_hp_mod,
+            victim->spawn_max_hit,
+            victim->hit, victim->max_hit,
+            MOB_SPAWN_HP_LIMIT);
+        send_to_char(buf, ch);
+        send_to_char(
+            "Spawn values are creation snapshots. Equipment, spells, scripts "
+            "and live edits can subsequently change current HP/max.\n\r",
+            ch);
+}
+
 void do_mstat(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *rch;
@@ -3128,6 +3194,7 @@ void do_mstat(CHAR_DATA *ch, char *argument)
         send_to_char(buf1, ch);
         mstat_flag_layers(ch, victim);
         mstat_resistance_layers(ch, victim);
+        mstat_hp_modifier_layers(ch, victim);
         return;
 }
 

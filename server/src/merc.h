@@ -2770,6 +2770,13 @@ struct mob_index_data
          */
         unsigned long int area_attack_parts;
         unsigned long int attack_parts;
+
+        /*
+         * Original individual HP adjustment and resolved prototype value.
+         * area_hp_mod uses MOB_TEMPLATE_UNSET to mean inherit.
+         */
+        int area_hp_mod;
+        int hp_mod;
 };
 
 /*
@@ -2827,6 +2834,16 @@ struct char_data
         int wait;
         int hit;
         int max_hit;
+
+        /*
+         * NPC creation snapshots for diagnostics.
+         * Later equipment, spells, scripts and live edits do not recalculate
+         * these values.
+         */
+        int spawn_base_hit;
+        int spawn_hp_mod;
+        int spawn_max_hit;
+
         int aggro_dam;
         int mana;
         int max_mana;
@@ -3409,6 +3426,18 @@ struct mob_spec_data
  * override value.
  */
 #define MOB_TEMPLATE_UNSET INT_MIN
+
+/*
+ * HP modifiers are signed percentage adjustments.
+ * -99 retains at least one percent of normal HP.
+ */
+#define MOB_HP_MOD_MIN (-99)
+
+/*
+ * Leave headroom for existing integer calculations using 100 * hit.
+ * This limits generated spawn HP, not all subsequent live adjustments.
+ */
+#define MOB_SPAWN_HP_LIMIT (INT_MAX / 100)
 
 /*
  * Fully resolved body-species and creature-archetype template.
@@ -5460,6 +5489,9 @@ bool parse_mob_attack_parts_mask args((const char *text,
 int validate_mob_attack_part_tables args((void));
 unsigned long int mob_usable_attack_parts args((CHAR_DATA *mob));
 int mob_natural_attack_type args((CHAR_DATA *mob));
+bool parse_mob_hp_modifier args((const char *text, int *modifier));
+int validate_mob_hp_modifiers args((void));
+int apply_mob_hp_modifier args((int base_hp, int modifier));
 
 /* mob_commands.c */
 char *mprog_type_to_name args((int type));
