@@ -707,6 +707,9 @@ Gezhp, Owl and Shade
 - Ordinary NPC attacks with an empty attacking weapon slot can now select
   an anatomically usable natural attack. Equipped weapons retain precedence.
   mstat shows eligible and inactive parts. Attack frequency is unchanged.
+- Mobile template HP adjustments now apply during normal creation.
+  Scribe hpmod and MobHPMod support individual scalar overrides.
+  mstat shows HP inheritance and the recorded spawn calculation.
 
 ~
 

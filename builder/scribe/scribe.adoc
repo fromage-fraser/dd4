@@ -7,7 +7,7 @@
 
 _Original manual: version 1.3.w, July 2025._
 
-_AsciiDoc documentation update: 8 September 2026._
+_AsciiDoc documentation update: 9 September 2026._
 
 [[scribe-documentation-status]]
 === Documentation status — September 2026
@@ -18,7 +18,7 @@ The existing sixteen numbered sections and their cross-reference targets are
 retained.
 
 The verified repository baseline is DD4 `master`, commit
-`bb1473b58f625b6661f56b223a832b5720263464` (PR #710), checked on 8 September
+`8ae2f7453b09a2afbf7a407d01444f784e5560b3` (PR #711), checked on 9 September
 2026. This identifies source-code availability; it does not establish which
 executable is running on a particular server.
 
@@ -45,20 +45,24 @@ revision does not by itself confirm the executable deployed to a server.
 | Implemented through PR #710: `atk`, `MobAttackParts`, prototype/live storage,
 raw-mask validation, cancellation logging and immortal inspection/editing.
 | Ordinary NPC natural attacks
-| *Step 4C3b implementation.* The accompanying code selects an anatomically
-usable attack part for an ordinary NPC attack when its attacking weapon slot
-is empty. This is documented separately from the verified PR #710 baseline;
-install and test the matching server changes before expecting this behaviour.
+| Implemented through PR #711: an ordinary NPC attack with an empty attacking
+weapon slot can select a currently usable natural attack. Equipment precedence,
+anatomical filtering and the read-only Eligible/Inactive diagnostics are included.
+| HP modifier inheritance and individual overrides
+| *Step 4C4a implementation.* The accompanying code applies resolved `hp_mod`
+to normal level/rank-derived spawn HP, adds Scribe `hpmod` and area `MobHPMod`,
+and records creation snapshots for `mstat`. This behaviour is not in the pinned
+PR #711 baseline; install the matching server and Scribe changes together.
 | Further template integration
-| Individual scalar overrides, application of the remaining template scalar
-defaults, and execution of multiple inherited special functions remain
-separate work.
+| Damage, critical and swiftness modifiers, dimensions/size/language defaults,
+their individual overrides, and execution of inherited special-function slots
+remain separate work.
 |===
 
-IMPORTANT: Steps 4C2 and 4C3a are merged. Sections marked *Step 4C3b* describe
-the accompanying server-code changes, not behaviour verified in PR #710.
-The `atk` input syntax does not change in Step 4C3b. A documentation update
-alone does not change the running executable.
+IMPORTANT: Steps 4C2, 4C3a and 4C3b are merged. Sections marked *Step 4C4a*
+describe the accompanying HP-modifier code and require both its server and
+Scribe changes. A documentation update alone does not install a feature or
+identify the executable currently running on a server.
 
 This manual distinguishes a Scribe source field, a generated `.are` field,
 and a server-side table field. A name in `mob_table` or `merc.h` is not
@@ -81,7 +85,8 @@ field named `xp_mod`, `species`, or `archetype`; see
 ** <<scribe-mobile-undead,Undead classification>>
 ** <<scribe-individual-resistances,Individual resistance fields>>
 ** <<scribe-individual-attack-parts,Individual attack-part masks>>
-** <<scribe-natural-attacks,Ordinary NPC natural attacks (Step 4C3b)>>
+** <<scribe-natural-attacks,Ordinary NPC natural attacks>>
+** <<scribe-mobile-hp-modifier,HP modifier inheritance and overrides (Step 4C4a)>>
 ** <<scribe-resistance-flags,Resistance categories and behaviour>>
 ** <<scribe-template-xp,Archetype XP adjustments>>
 ** <<scribe-mobile-diagnostics,Validation, mstat and live editing>>
@@ -589,6 +594,9 @@ Mobiles are the creatures that populate your area. They are defined in the `#MOB
 | `atk`
 | individual attack-part XOR mask
 | keyword list or decimal mask
+| `hpmod`
+| HP percentage adjustment replacing the inherited value — Step 4C4a
+| signed decimal integer or `inherit`
 |===
 
 [[scribe-mobile-inheritance]]
@@ -726,7 +734,7 @@ area can overwrite a hand-edited archetype selection.
 The resistance and attack-part field additions do not add a source-level
 archetype selector. DD Builder integration must preserve this distinction too.
 
-===== Template fields which are not yet live defaults
+===== Template fields and live-application status
 
 The resolved template contains ACT, AFF, body form, attack parts, resistance
 masks, HP/damage/critical/haste modifiers, dimensions, size, language, special
@@ -738,17 +746,20 @@ prototype loading and copied into live NPCs; resistance calculations read the
 live masks; and `xp_mod` is used by the XP helper.
 
 PR #710 adds prototype/live storage and individual overrides for attack parts.
-Step 4C3b, described below, connects usable parts to ordinary unarmed NPC
-attack-type selection. It does not add attacks, a new damage formula, equipment
-creation or skill permissions. The remaining template scalar defaults still
-require live application. Special-function names are resolved and validated
-without automatically activating all three slots.
+PR #711 connects usable parts to ordinary unarmed NPC attack-type selection.
+It adds neither extra attacks nor equipment or skill permissions.
+
+The accompanying <<scribe-mobile-hp-modifier,Step 4C4a>> activates the HP scalar
+and adds its individual override. The other template scalar defaults still
+require separate live integration. Special-function names are resolved and
+validated without automatically activating all three slots.
 
 For the template scalar fields using `MOB_TEMPLATE_UNSET`, an archetype value
 inherits when it is unset; otherwise it replaces the body-species value.
 Literal zero is an explicit scalar value. If neither layer supplies a value,
-the resolver returns zero. This is a C-table convention, not new Scribe input
-syntax.
+the resolver returns zero. These sentinels are C-table conventions: do not
+write `MOB_TEMPLATE_UNSET` in a Scribe source file. Step 4C4a supplies the
+separate source keyword `hpmod inherit` for the HP scalar.
 
 For template special names, `NULL` means inherit, an empty string explicitly
 clears an inherited name, and a non-empty string replaces it. The existing
@@ -1400,8 +1411,8 @@ and live editing>>.
 ==== Individual attack-part masks
 
 The input, storage and editing interface in this section was merged in PR
-#710. Its first ordinary-combat consumer is the separate
-<<scribe-natural-attacks,Step 4C3b implementation>> below.
+#710. Its ordinary-combat consumer was merged in PR #711; see
+<<scribe-natural-attacks,ordinary NPC natural attacks>> below.
 
 *`atk` — Attack-part XOR mask*
 
@@ -1490,8 +1501,9 @@ expressions, not Scribe keywords. Unknown bits are rejected.
 
 ===== Behavioural boundary
 
-The merged data layer does not itself select combat actions. Step 4C3b adds
-ordinary attack-type selection using the live mask, as described below.
+The data layer introduced in PR #710 does not itself select combat actions.
+PR #711 adds ordinary attack-type selection using the live mask, as described
+below.
 Neither chunk adds attacks per round, creates body-part equipment, grants
 poison/breath specials, changes player forms, or grants new combat skills.
 A zero live attack-part mask does not prevent the creature from fighting.
@@ -1507,11 +1519,11 @@ without pre-expanding the template; do not use the effective mask as the next
 individual input.
 
 [[scribe-natural-attacks]]
-==== Ordinary NPC natural attacks — Step 4C3b
+==== Ordinary NPC natural attacks
 
-IMPORTANT: This section specifies the server changes accompanying this manual.
-PR #710 contains the input/storage layer only. Confirm the matching Step
-4C3b executable is running before relying on natural-attack selection.
+The selection and eligibility behaviour in this section was merged in PR #711.
+The earlier PR #710 contains the input/storage layer. Running-server behaviour
+still depends on the executable deployed, not on the manual revision.
 
 ===== Selection and weapon precedence
 
@@ -1619,6 +1631,163 @@ anatomical exclusion and an empty mask separately.
 No Scribe syntax changes are needed beyond the merged `atk` interface. DD
 Builder should describe these behaviours without changing the stored/exported
 raw mask, granting skill permissions or inventing extra attacks.
+
+[[scribe-mobile-hp-modifier]]
+==== HP modifier inheritance and overrides — Step 4C4a
+
+IMPORTANT: This section accompanies Step 4C4a. The pinned PR #711 baseline
+contains the template `hp_mod` field but does not apply it in ordinary mobile
+creation. Install the corresponding server and Scribe changes before using
+`hpmod` or expecting template HP adjustments to take effect.
+
+*`hpmod` — Individual HP percentage adjustment*
+
+_Signed decimal integer from -99 to 2147483647, or `inherit`_
+
+_Default: omitted; inherit the resolved body-species/archetype value_
+
+`hp_mod` is an adjustment to the normal generated HP, not a direct HP total.
+The ordinary level-derived HP and rank multiplier are calculated first.
+The HP adjustment is applied once to that result:
+
+[source,text]
+----
+spawn HP = floor(normal level/rank HP * (100 + effective hp_mod) / 100)
+----
+
+The final spawn result is limited to at least one hit point and at most
+`MOB_SPAWN_HP_LIMIT`, defined as `INT_MAX / 100` (21,474,836 with the current
+32-bit `int`). The multiplication uses a 64-bit intermediate. The upper limit
+leaves room for existing integer percentage calculations; it is a spawn-time
+bound, not a universal cap on every subsequent scripted or live HP edit.
+
+[cols="<2,<4,<2",options="header"]
+|===
+| Effective adjustment | Meaning | Result from base HP 1000
+| `0` | No percentage change. | 1000
+| `25` | Increase by 25 percent. | 1250
+| `-25` | Reduce by 25 percent. | 750
+| `100` | Increase by 100 percent. | 2000
+| `-99` | Retain one percent, subject to minimum one HP. | 10
+|===
+
+Very large accepted positive values reach the spawn ceiling rather than
+wrapping around. `-100` and lower numeric adjustments are rejected; a scalar
+field cannot be used to create an initially dead mobile.
+
+===== Scalar precedence
+
+Unlike `act`, `aff`, `bf`, `res`, `vuln`, `imm` and `atk`, `hpmod` is not XORed.
+A specified value replaces the inherited adjustment; adjustments from the
+three layers are not summed or multiplied independently.
+
+[source,text]
+----
+body species hp_mod
+    -> archetype hp_mod, unless MOB_TEMPLATE_UNSET
+    -> individual hpmod, unless omitted or inherit
+    -> one adjustment to normal spawn HP
+----
+
+For the table layers, `MOB_TEMPLATE_UNSET` means inherit and zero is an
+explicit neutral value. If neither table supplies a value, the resolved
+adjustment is zero. For the individual layer:
+
+[cols="<2,<4",options="header"]
+|===
+| Input | Result when the template supplies `+50`
+| Omit `hpmod` | Inherit `+50`.
+| `hpmod inherit` | Inherit `+50`.
+| `hpmod 0` | Replace the inherited bonus with zero: normal HP.
+| `hpmod 25` | Use `+25`, not `+75` and not two multipliers.
+| `hpmod -25` | Use `-25`: 75 percent of normal HP.
+|===
+
+An untemplated mobile can use the field too; its inherited adjustment is zero.
+In the retained tables, the goat archetype already has `hp_mod = 20`. Installing
+Step 4C4a activates that existing default for newly created goat-archetype NPCs.
+Do not change other table values merely to install the scalar mechanism.
+
+===== Scribe and area syntax
+
+[source,text]
+----
+hpmod 25
+----
+
+Scribe emits:
+
+[source,text]
+----
+MobHPMod 25
+----
+
+The alternative declarations `hpmod -25`, `hpmod 0` and `hpmod inherit` emit
+the corresponding values. An omitted source field emits no area declaration.
+Leading plus signs and decimal leading zeros are accepted and normalised.
+Use one integer, not a numeric `|` expression, decimal fraction or percent
+suffix. The keyword `inherit` is case-insensitive.
+
+`MobHPMod` belongs in the same optional mobile tail as `MobAttackParts` and
+the resistance declarations, after any mob programs, archetype/rank selection
+and teacher entries. It has no tilde terminator. Repeated declarations use the
+last value, including a final `inherit` which restores inheritance.
+
+The source keyword is `hpmod`, the area keyword is `MobHPMod`, and the server
+table member is `hp_mod`. They are not interchangeable. Scribe still does not
+acquire an archetype selector through this addition.
+
+===== Creation and runtime changes
+
+The original individual scalar is preserved on the prototype separately from
+its resolved value. Initialisation always starts from those inputs. Spawning
+copies the resolved adjustment; it never interprets the already-resolved
+number as a new layer.
+
+During normal `create_mobile()` processing, the server records:
+
+[cols="<2,<4",options="header"]
+|===
+| Snapshot | Meaning
+| `spawn_base_hit` | Ordinary generated HP after the rank multiplier, before `hp_mod`.
+| `spawn_hp_mod` | Effective percentage adjustment applied to this instance at creation.
+| `spawn_max_hit` | Initial adjusted maximum, after the minimum/ceiling bounds.
+|===
+
+These snapshots exist for inspection. They are not recalculated by `mstat`,
+healing, equipment changes, or combat. Current HP starts at the initial maximum.
+Existing equipment and affect handling can then change the current maximum
+without being multiplied again.
+
+Later code that deliberately replaces a summoned mobile's level or maximum HP
+continues to do so. Step 4C4a does not intercept or reapply a multiplier to such
+absolute assignments; a creation snapshot can therefore differ from the final
+customised mobile. Existing live `mset hp` behaviour also remains unchanged.
+A fresh spawn uses its prototype defaults, not another instance's live edits.
+There is no new live `mset hpmod` command in this chunk.
+
+This HP adjustment is independent of `xp_mod`. The existing XP-percentage helper,
+area/spec/equipment XP contributions and XP award formula are not edited here.
+Damage, critical, swiftness, dimension and language defaults remain separate
+integration steps. No extra attack or inherited special-function execution is
+introduced.
+
+===== Validation and builder integration
+
+Raw species/archetype HP adjustments are checked during boot. An unset value
+is permitted; an out-of-range numeric value is reported and stops loading.
+Malformed `MobHPMod` input also stops loading with the mobile vnum in the error.
+Scribe checks the same numeric bounds using exact integer arithmetic.
+
+`mstat` adds HP modifier layers plus the three spawn snapshots and current HP.
+Use the recorded spawn base for tests: two independently generated NPCs may
+have different random base HP even when they use the same prototype.
+
+DD Builder must preserve the distinction between an inherited scalar and an
+explicit zero. Store/export the individual `hpmod` value or inheritance state,
+not a calculated HP total. Do not pre-expand template values, XOR the integer,
+or add the layers together. The exporter must retain `hpmod 0` rather than
+silently omitting it.
 
 [[scribe-resistance-flags]]
 ==== Resistance category reference
@@ -1818,9 +1987,14 @@ group, bit, inherited archetype and the fact that `#MOBILES` removed it.
 
 ACT, AFF, BODY, RESISTANCE, VULNERABILITY and IMMUNITY layers are implemented
 in the verified baseline, along with separate prototype/live resistance-validity
-results. PR #710 also adds ATTACK PART layers. Step 4C3b adds the read-only
+results. PR #710 also adds ATTACK PART layers, and PR #711 adds the read-only
 `Eligible` and `Inactive` attack-part rows. Labels beginning with `Template`
 describe the inherited layer, not the final NPC state.
+
+Step 4C4a adds an HP modifier section. It distinguishes the inherited and
+individual scalar values from the effective prototype value, recorded spawn
+base/adjustment/initial HP, and the current live HP/maximum. It does not treat
+this scalar as a flag mask or reapply it when inspected.
 
 Advanced Consider uses live body-form and resistance masks in its existing
 archetype-information block. Its attack-part list also uses the live configured
@@ -4151,41 +4325,43 @@ pb  120
 [[scribe-revision-notes]]
 === Documentation revision notes and source baseline
 
-This revision confirms the merged Step 4C3a attack-part data interface and
-documents the accompanying Step 4C3b ordinary NPC natural-attack selection,
-while preserving the original sixteen numbered sections. New material
+This revision confirms the merged Step 4C3b ordinary NPC natural attacks and
+documents the accompanying Step 4C4a HP modifier inheritance and individual
+overrides. The original sixteen numbered sections remain in order. New material
 is integrated into the existing mobile, object, weapon and area-XP sections.
 The field summaries also include already-described reset/audio/foley fields
 which were absent from their summary tables.
 
 The baseline was checked against
-https://github.com/fromage-fraser/dd4/tree/bb1473b58f625b6661f56b223a832b5720263464[DD4 master at PR #710].
+https://github.com/fromage-fraser/dd4/tree/8ae2f7453b09a2afbf7a407d01444f784e5560b3[DD4 master at PR #711].
 The following files are the implementation references for the added material:
 
 [cols="<2,<5",options="header"]
 |===
 | Source | Relevance
-| https://github.com/fromage-fraser/dd4/blob/bb1473b58f625b6661f56b223a832b5720263464/builder/scribe/scribe.pl[`builder/scribe/scribe.pl`]
+| https://github.com/fromage-fraser/dd4/blob/8ae2f7453b09a2afbf7a407d01444f784e5560b3/builder/scribe/scribe.pl[`builder/scribe/scribe.pl`]
 | Accepted source keywords, flag dictionaries, validation, single-special/rank export, resistance fields and the merged exact-integer `atk` parser.
-| https://github.com/fromage-fraser/dd4/blob/bb1473b58f625b6661f56b223a832b5720263464/server/src/merc.h[`server/src/merc.h`]
+| https://github.com/fromage-fraser/dd4/blob/8ae2f7453b09a2afbf7a407d01444f784e5560b3/server/src/merc.h[`server/src/merc.h`]
 | ACT/object/resistance flag definitions and template/prototype structures.
-| https://github.com/fromage-fraser/dd4/blob/bb1473b58f625b6661f56b223a832b5720263464/server/src/mob.c[`server/src/mob.c`]
+| https://github.com/fromage-fraser/dd4/blob/8ae2f7453b09a2afbf7a407d01444f784e5560b3/server/src/mob.c[`server/src/mob.c`]
 | Template XOR/scalar/special-name resolution, original-mask handling, validation and additive XP helper.
-| https://github.com/fromage-fraser/dd4/blob/bb1473b58f625b6661f56b223a832b5720263464/server/src/db.c[`server/src/db.c`]
+| https://github.com/fromage-fraser/dd4/blob/8ae2f7453b09a2afbf7a407d01444f784e5560b3/server/src/db.c[`server/src/db.c`]
 | Mobile loading, optional archetype/rank syntax and copying prototype state into a new mobile.
-| https://github.com/fromage-fraser/dd4/blob/bb1473b58f625b6661f56b223a832b5720263464/server/src/magic.c[`server/src/magic.c`] and https://github.com/fromage-fraser/dd4/blob/bb1473b58f625b6661f56b223a832b5720263464/server/src/fight.c[`server/src/fight.c`]
+| https://github.com/fromage-fraser/dd4/blob/8ae2f7453b09a2afbf7a407d01444f784e5560b3/server/src/magic.c[`server/src/magic.c`] and https://github.com/fromage-fraser/dd4/blob/8ae2f7453b09a2afbf7a407d01444f784e5560b3/server/src/fight.c[`server/src/fight.c`]
 | Resistance adjustment, selected status helpers, ordinary-attack categories, damage messaging, death provenance and XP use.
-| https://github.com/fromage-fraser/dd4/blob/bb1473b58f625b6661f56b223a832b5720263464/server/src/act_wiz.c[`server/src/act_wiz.c`] and https://github.com/fromage-fraser/dd4/blob/bb1473b58f625b6661f56b223a832b5720263464/server/src/act_info.c[`server/src/act_info.c`]
+| https://github.com/fromage-fraser/dd4/blob/8ae2f7453b09a2afbf7a407d01444f784e5560b3/server/src/act_wiz.c[`server/src/act_wiz.c`] and https://github.com/fromage-fraser/dd4/blob/8ae2f7453b09a2afbf7a407d01444f784e5560b3/server/src/act_info.c[`server/src/act_info.c`]
 | Immortal flag/resistance-layer diagnostics, live resistance editing and body-form/resistance displays.
-| https://github.com/fromage-fraser/dd4/blob/bb1473b58f625b6661f56b223a832b5720263464/server/src/const.c[`server/src/const.c`] and https://github.com/fromage-fraser/dd4/blob/bb1473b58f625b6661f56b223a832b5720263464/server/src/handler.c[`server/src/handler.c`]
+| https://github.com/fromage-fraser/dd4/blob/8ae2f7453b09a2afbf7a407d01444f784e5560b3/server/src/const.c[`server/src/const.c`] and https://github.com/fromage-fraser/dd4/blob/8ae2f7453b09a2afbf7a407d01444f784e5560b3/server/src/handler.c[`server/src/handler.c`]
 | Effect classifications and text names for resistance/object flags.
-| Step 4C3b implementation instructions supplied in this project
-| Basis for the explicitly marked ordinary natural-attack selection and eligibility diagnostics. These require the accompanying server code; the pinned PR #710 sources predate that behaviour.
+| Step 4C4a implementation instructions supplied in this project
+| Basis for the explicitly marked HP scalar, `hpmod`/`MobHPMod` interface, creation snapshots and diagnostics. The pinned PR #711 sources predate those additions; the rest of the baseline references describe merged code.
 |===
 
 The retained `fire_elemental` test archetype is not a general setting rule:
-in this baseline it carries `ACT_UNDEAD` and `AFF_DETECT_MAGIC`, an XP
-adjustment of `+5`, and test resistance data. Its body species supplies cold
+in this baseline it carries `ACT_UNDEAD`, `AFF_DETECT_MAGIC` and configured
+`PART_CLAWS`, an XP adjustment of `+5`, and test resistance data. Its default
+body form has no arms or legs, so the configured claws are normally inactive
+unless the body form is changed. Its body species supplies cold
 immunity and the archetype repeats cold immunity, so cold cancels through
 XOR. Do not infer universal elemental or undead traits from that test entry.
 

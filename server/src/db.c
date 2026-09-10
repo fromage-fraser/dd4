@@ -1025,6 +1025,10 @@ void boot_db(void)
         {
                 validate_mob_template_tables();
                 validate_mob_attack_part_tables();
+
+                if (validate_mob_hp_modifiers() != 0)
+                        exit(1);
+
                 validate_mob_resistance_table();
         }
 
@@ -1987,6 +1991,34 @@ static unsigned long int read_mob_attack_parts_mask(
 }
 
 /*
+ * Read one individual HP adjustment from an optional mobile field.
+ */
+static int read_mob_hp_modifier(FILE *fp, MOB_INDEX_DATA *index)
+{
+        const char *text;
+        int modifier;
+        char buf[MAX_STRING_LENGTH];
+
+        text = fread_word(fp);
+
+        if (!parse_mob_hp_modifier(text, &modifier))
+        {
+                snprintf(
+                    buf, sizeof(buf),
+                    "[MOB TEMPLATE] vnum %d: invalid MobHPMod value '%s'. "
+                    "Use inherit or a signed decimal integer from %d to %d.",
+                    index->vnum,
+                    text ? text : "(missing)",
+                    MOB_HP_MOD_MIN,
+                    INT_MAX);
+                log_string(buf);
+                exit(1);
+        }
+
+        return modifier;
+}
+
+/*
  * Snarf a mob section.
  */
 void load_mobiles(FILE *fp)
@@ -2027,6 +2059,7 @@ void load_mobiles(FILE *fp)
                 pMobIndex->area_vulnerabilities = 0;
                 pMobIndex->area_immunes = 0;
                 pMobIndex->area_attack_parts = 0;
+                pMobIndex->area_hp_mod = MOB_TEMPLATE_UNSET;
 
                 for (stat = 0; stat < SECT_MAX; stat++)
                         pMobIndex->footstep_key[stat] = NULL;
@@ -2171,6 +2204,11 @@ void load_mobiles(FILE *fp)
                                 pMobIndex->area_attack_parts =
                                     read_mob_attack_parts_mask(
                                         fp, pMobIndex);
+                        }
+                        else if (!str_cmp(word, "MobHPMod"))
+                        {
+                                pMobIndex->area_hp_mod =
+                                    read_mob_hp_modifier(fp, pMobIndex);
                         }
                         else if (!str_cmp(word, "FStepInside"))
                                 pMobIndex->footstep_key[SECT_INSIDE] = fread_string(fp);
@@ -4132,11 +4170,29 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA *pMobIndex)
 
         mob->armor = interpolate(mob->level, 100, -100);
 
-        mob->max_hit = mob->level * 8 + number_range(mob->level * mob->level / 4, mob->level * mob->level);
-        /* mob->max_hit *= rank_bonus; */
-        mob->max_hit *= rank_table[rank_sn_index(pMobIndex)].hp_bonus;
+        mob->max_hit =
+            mob->level * 8
+            + number_range(
+                mob->level * mob->level / 4,
+                mob->level * mob->level);
 
+        mob->max_hit *=
+            rank_table[rank_sn_index(pMobIndex)].hp_bonus;
+
+        /*
+         * Apply the resolved HP scalar exactly once, after normal level
+         * and rank HP generation. Preserve the inputs/result for mstat.
+         */
+        mob->spawn_base_hit = mob->max_hit;
+        mob->spawn_hp_mod = pMobIndex->hp_mod;
+
+        mob->max_hit = apply_mob_hp_modifier(
+            mob->spawn_base_hit,
+            mob->spawn_hp_mod);
+
+        mob->spawn_max_hit = mob->max_hit;
         mob->hit = mob->max_hit;
+
         mob->crit = 5;
         mob->swiftness = 5;
 

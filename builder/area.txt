@@ -595,7 +595,7 @@ from its individual mask unless cancellation is intended.
 mstat shows Template, #MOBILES, XOR removed, Prototype and Live values for
 each of these three flag groups.
 
-Individual resistance overrides
+==Individual resistance overrides
 
 Optional #MOBILES tail fields:
 
@@ -648,7 +648,7 @@ the prototype, area file, other existing instances, or future spawns.
 
 These generic live resistance fields currently apply to NPCs only.
 
-Individual attack-part overrides
+==Individual attack-part overrides
 
 Optional #MOBILES tail field:
 
@@ -717,6 +717,57 @@ available. An empty attack-part mask is not a no-combat flag.
 
 Body form and attack parts remain separate masks. An attack-part flag does
 not automatically add or repair the corresponding general anatomy.
+
+==Individual HP modifier overrides
+
+Optional #MOBILES tail field:
+
+    MobHPMod <signed integer or inherit>
+
+The corresponding Scribe field is:
+
+    hpmod <signed integer or inherit>
+
+This is a percentage adjustment to ordinary generated HP after the existing
+level and rank calculation:
+
+    spawn HP = normal level/rank HP * (100 + effective hp_mod) / 100
+
+Integer division rounds down. Final generated HP is bounded to at least 1
+and at most MOB_SPAWN_HP_LIMIT (INT_MAX / 100).
+
+Examples:
+    0       no adjustment
+    25      increase by 25 percent
+    -25     decrease by 25 percent
+    100     double normal HP
+
+The allowed numeric adjustment is -99 through INT_MAX. Scribe currently
+uses the corresponding signed 32-bit upper limit, 2147483647.
+
+This is a scalar replacement, not an XOR mask. Omission or inherit uses the
+resolved body-species/archetype value. Explicit zero suppresses an inherited
+bonus or penalty. A specified number replaces the inherited number; the
+layers are not added together.
+
+Place MobHPMod in the optional mobile tail with the resistance and attack-part
+fields, after any mob programs, archetype/rank entry and teachers. There is
+no tilde terminator. Repeated declarations use the last value.
+
+The original individual value and resolved prototype value remain separate.
+The adjustment is applied once during ordinary mobile creation, before
+subsequent equipment or scripted changes.
+
+mstat shows the template, individual and prototype adjustments, plus recorded
+spawn base HP, applied adjustment, initial adjusted HP and current HP/maximum.
+Inspection does not recalculate or reapply the adjustment.
+
+Later code which explicitly replaces a summoned mobile's HP continues to do
+so. Existing live mset hp behaviour is unchanged. There is no mset hpmod
+command in this chunk.
+
+This does not change xp_mod, damage/critical/swiftness modifiers, dimensions,
+language, or special-function execution.
 
 === The #OBJECTS section
 
