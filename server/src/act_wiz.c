@@ -2376,6 +2376,93 @@ static void mstat_damage_modifier_layers(
             ch);
 }
 
+/* Display one scalar's inheritance, creation snapshot and current score. */
+static void mstat_combat_modifier_group(
+    CHAR_DATA *ch,
+    const char *heading,
+    int inherited,
+    int individual,
+    int prototype,
+    int base_score,
+    int spawn_modifier,
+    int spawn_score,
+    int live_score)
+{
+        char buf[MAX_STRING_LENGTH];
+
+        snprintf(
+            buf, sizeof(buf),
+            "\n\r{W%s{x\n\r  Template adjustment: %+d points\n\r",
+            heading, inherited);
+        send_to_char(buf, ch);
+
+        if (individual == MOB_TEMPLATE_UNSET)
+        {
+                send_to_char("  #MOBILES:            inherit\n\r", ch);
+        }
+        else
+        {
+                snprintf(
+                    buf, sizeof(buf),
+                    "  #MOBILES:            %+d points (replacement)\n\r",
+                    individual);
+                send_to_char(buf, ch);
+        }
+
+        snprintf(
+            buf, sizeof(buf),
+            "  Prototype adjustment: %+d points\n\r"
+            "  Spawn base score:    %d\n\r"
+            "  Spawn adjustment:    %+d points\n\r"
+            "  Spawn initial score: %d\n\r"
+            "  Current live score:  %d\n\r",
+            prototype, base_score, spawn_modifier, spawn_score, live_score);
+        send_to_char(buf, ch);
+}
+
+static void mstat_combat_modifier_layers(CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        MOB_TEMPLATE_DATA inherited;
+        MOB_INDEX_DATA *index;
+
+        if (!IS_NPC(victim) || !victim->pIndexData)
+                return;
+
+        index = victim->pIndexData;
+        memset(&inherited, 0, sizeof(inherited));
+
+        if (index->mobspec && index->mobspec[0] != '\0')
+        {
+                if (!resolve_mob_template(
+                        mob_lookup(index->mobspec), &inherited))
+                {
+                        send_to_char(
+                            "\n\r{RCombat-score layers unavailable: "
+                            "invalid template.{x\n\r", ch);
+                        return;
+                }
+        }
+
+        mstat_combat_modifier_group(
+            ch, "Critical score layers",
+            inherited.crit_mod, index->area_crit_mod, index->crit_mod,
+            MOB_SPAWN_BASE_CRIT,
+            victim->spawn_crit_mod, victim->spawn_crit, victim->crit);
+
+        mstat_combat_modifier_group(
+            ch, "Swiftness score layers",
+            inherited.haste_mod, index->area_haste_mod, index->haste_mod,
+            MOB_SPAWN_BASE_SWIFTNESS,
+            victim->spawn_haste_mod, victim->spawn_swiftness,
+            victim->swiftness);
+
+        send_to_char(
+            "These adjustments add score points, not percentage multipliers.\n\r"
+            "Equipment, effects and mset can change live scores after creation.\n\r"
+            "Existing roll comparisons and Haste/Quicken mechanics are unchanged.\n\r",
+            ch);
+}
+
 void do_mstat(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *rch;
@@ -3264,6 +3351,7 @@ void do_mstat(CHAR_DATA *ch, char *argument)
         mstat_resistance_layers(ch, victim);
         mstat_hp_modifier_layers(ch, victim);
         mstat_damage_modifier_layers(ch, victim);
+        mstat_combat_modifier_layers(ch, victim);
         return;
 }
 

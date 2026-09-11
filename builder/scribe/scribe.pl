@@ -688,7 +688,7 @@ while (1) {
 
             next if &add_field_data(
                     \%mob, $field, $data,
-                    'sp vn nm sh lo lv act aff bf sx al rnk res vuln imm atk hpmod dammod');
+                    'sp vn nm sh lo lv act aff bf sx al rnk res vuln imm atk hpmod dammod critmod swiftmod');
             print "    line $line: mob: unknown field '$field'\n";
         }
 
@@ -1303,6 +1303,17 @@ foreach (0 .. $#mobs) {
         next unless exists $mob{$field};
 
         if ($msg = &get_mob_percent_modifier(\%mob, $field)) {
+            print "$err $msg\n";
+            $mob_errors{$mob{'line'}}++;
+        }
+    }
+
+    # Optional critical/swiftness score adjustments.
+
+    foreach my $field (qw/critmod swiftmod/) {
+        next unless exists $mob{$field};
+
+        if ($msg = &get_mob_combat_modifier(\%mob, $field)) {
             print "$err $msg\n";
             $mob_errors{$mob{'line'}}++;
         }
@@ -2524,6 +2535,34 @@ sub get_mob_percent_modifier(\%$) {
     return 0;
 }
 
+# Critical/swiftness adjustments are score points, not HP/damage percentages.
+sub get_mob_combat_modifier(\%$) {
+    my ($var, $field) = @_;
+
+    return "field '$field' is missing" unless exists $$var{$field};
+
+    my $text = $$var{$field};
+    return "field '$field' is empty"
+            if !defined($text) || $text eq '';
+
+    if ($text =~ /\Ainherit\z/i) {
+        $$var{$field} = 'inherit';
+        return 0;
+    }
+
+    return "field '$field' requires a signed decimal integer or inherit"
+            unless $text =~ /\A[+-]?[0-9]+\z/;
+
+    my $value = Math::BigInt->new($text);
+
+    if ($value->bcmp('-100') < 0 || $value->bcmp('100') > 0) {
+        return "field '$field' must be between -100 and 100, or inherit";
+    }
+
+    $$var{$field} = $value->bstr();
+    return 0;
+}
+
 # Parse attack-part keywords or one combined decimal mask exactly.
 sub get_attack_part_flags(\%$) {
     my ($var, $field) = @_;
@@ -2928,8 +2967,11 @@ if (@mobs) {
         print AREA "MobHPMod $mob{'hpmod'}\n"
                 if exists $mob{'hpmod'};
 
-        print AREA "MobDamMod $mob{'dammod'}\n"
-                if exists $mob{'dammod'};
+        print AREA "MobCritMod $mob{'critmod'}\n"
+                if exists $mob{'critmod'};
+
+        print AREA "MobSwiftMod $mob{'swiftmod'}\n"
+                if exists $mob{'swiftmod'};
     }
 
     print AREA "#0\n\n";

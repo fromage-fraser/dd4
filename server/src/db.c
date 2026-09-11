@@ -1032,6 +1032,9 @@ void boot_db(void)
                 if (validate_mob_damage_modifiers() != 0)
                         exit(1);
 
+                if (validate_mob_combat_modifiers() != 0)
+                        exit(1);
+
                 validate_mob_resistance_table();
         }
 
@@ -2050,6 +2053,38 @@ static int read_mob_damage_modifier(FILE *fp, MOB_INDEX_DATA *index)
 }
 
 /*
+ * Read one individual critical/swiftness score adjustment.
+ */
+static int read_mob_combat_modifier(
+    FILE *fp,
+    MOB_INDEX_DATA *index,
+    const char *field)
+{
+        const char *text;
+        int modifier;
+        char buf[MAX_STRING_LENGTH];
+
+        text = fread_word(fp);
+
+        if (!parse_mob_combat_modifier(text, &modifier))
+        {
+                snprintf(
+                    buf, sizeof(buf),
+                    "[MOB TEMPLATE] vnum %d: invalid %s value '%s'. "
+                    "Use inherit or a signed decimal integer from %d to %d.",
+                    index->vnum,
+                    field,
+                    text ? text : "(missing)",
+                    MOB_COMBAT_MOD_MIN,
+                    MOB_COMBAT_MOD_MAX);
+                log_string(buf);
+                exit(1);
+        }
+
+        return modifier;
+}
+
+/*
  * Snarf a mob section.
  */
 void load_mobiles(FILE *fp)
@@ -2092,6 +2127,8 @@ void load_mobiles(FILE *fp)
                 pMobIndex->area_attack_parts = 0;
                 pMobIndex->area_hp_mod = MOB_TEMPLATE_UNSET;
                 pMobIndex->area_dam_mod = MOB_TEMPLATE_UNSET;
+                pMobIndex->area_crit_mod = MOB_TEMPLATE_UNSET;
+                pMobIndex->area_haste_mod = MOB_TEMPLATE_UNSET;
 
                 for (stat = 0; stat < SECT_MAX; stat++)
                         pMobIndex->footstep_key[stat] = NULL;
@@ -2246,6 +2283,18 @@ void load_mobiles(FILE *fp)
                         {
                                 pMobIndex->area_dam_mod =
                                     read_mob_damage_modifier(fp, pMobIndex);
+                        }
+                        else if (!str_cmp(word, "MobCritMod"))
+                        {
+                                pMobIndex->area_crit_mod =
+                                    read_mob_combat_modifier(
+                                        fp, pMobIndex, "MobCritMod");
+                        }
+                        else if (!str_cmp(word, "MobSwiftMod"))
+                        {
+                                pMobIndex->area_haste_mod =
+                                    read_mob_combat_modifier(
+                                        fp, pMobIndex, "MobSwiftMod");
                         }
                         else if (!str_cmp(word, "FStepInside"))
                                 pMobIndex->footstep_key[SECT_INSIDE] = fread_string(fp);
@@ -4231,8 +4280,20 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA *pMobIndex)
         mob->spawn_max_hit = mob->max_hit;
         mob->hit = mob->max_hit;
 
-        mob->crit = 5;
-        mob->swiftness = 5;
+        /*
+         * Apply resolved score adjustments once during creation.
+         * Preserve negative values so later equipment bonuses do not
+         * erase part of a configured penalty.
+         */
+        mob->spawn_crit_mod = pMobIndex->crit_mod;
+        mob->spawn_haste_mod = pMobIndex->haste_mod;
+
+        mob->crit = MOB_SPAWN_BASE_CRIT + mob->spawn_crit_mod;
+        mob->swiftness =
+            MOB_SPAWN_BASE_SWIFTNESS + mob->spawn_haste_mod;
+
+        mob->spawn_crit = mob->crit;
+        mob->spawn_swiftness = mob->swiftness;
 
         if (IS_SET(mob->act, ACT_CLAN_GUARD))
                 REMOVE_BIT(mob->affected_by, AFF_HIDE);
