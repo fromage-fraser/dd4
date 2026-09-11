@@ -769,6 +769,66 @@ command in this chunk.
 This does not change xp_mod, damage/critical/swiftness modifiers, dimensions,
 language, or special-function execution.
 
+==Individual attack damage modifier overrides
+
+Optional #MOBILES tail field:
+
+    MobDamMod <signed integer or inherit>
+
+The corresponding Scribe field is:
+
+    dammod <signed integer or inherit>
+
+This is a percentage adjustment to NPC attacks resolved through one_hit().
+It includes ordinary weapon/natural/unarmed attacks and manoeuvres which
+use that function. It is not a universal modifier for every spell or skill.
+
+The existing attacker-side calculation runs first. Apply the live adjustment
+once before target resistance and defense processing:
+
+    adjusted attack = calculated attack * (100 + live dam_mod) / 100
+
+Integer division rounds down. A positive input remains at least one at this
+stage; later immunity or defenses can still prevent damage.
+
+The helper uses a 64-bit intermediate and bounds its output to
+MOB_ATTACK_DAMAGE_LIMIT (INT_MAX / 1000). The existing final MAX_DAMAGE
+rule remains separate.
+
+Examples:
+    0       no adjustment
+    25      increase by 25 percent
+    -25     decrease by 25 percent
+    100     double calculated attack damage
+
+Allowed numeric adjustments are -99 through INT_MAX. Scribe uses the
+corresponding signed 32-bit upper limit, 2147483647.
+
+Omission or inherit preserves the resolved template adjustment. An explicit
+number replaces it, including zero. The inheritance layers are not XORed,
+added together, or applied as separate multipliers.
+
+Place MobDamMod in the optional mobile tail with MobHPMod, resistance and
+attack-part fields. No tilde terminator is used. Repeated declarations use
+the last value.
+
+The prototype value is copied into each live NPC. Combat reads that live
+value without changing it. mstat shows template, individual, prototype and
+live adjustments, plus an illustrative scaling sample before defenses.
+
+    mset <mobile> dammod <number>
+
+replaces the live adjustment only. It does not accept inherit, alter the
+prototype, or affect other instances or future spawns. Existing damroll
+editing remains a separate flat bonus.
+
+Player attacks and independent damage paths outside one_hit() are not newly
+scaled. Effects already derived from a triggering hit can still reflect its
+adjusted amount; do not apply another multiplier to them.
+
+HP, XP, critical/swiftness defaults, dimensions, language and inherited
+special execution are unchanged.
+
 === The #OBJECTS section
 
 These are the items the people who journey through your area will keep and use,

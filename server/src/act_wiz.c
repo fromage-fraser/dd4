@@ -2308,6 +2308,74 @@ static void mstat_hp_modifier_layers(CHAR_DATA *ch, CHAR_DATA *victim)
             ch);
 }
 
+/*
+ * Show inheritance and the independently editable live attack modifier.
+ * The sample uses no random numbers and does not perform an attack.
+ */
+static void mstat_damage_modifier_layers(
+    CHAR_DATA *ch,
+    CHAR_DATA *victim)
+{
+        MOB_TEMPLATE_DATA inherited;
+        MOB_INDEX_DATA *index;
+        char buf[MAX_STRING_LENGTH];
+
+        if (!IS_NPC(victim) || !victim->pIndexData)
+                return;
+
+        index = victim->pIndexData;
+        memset(&inherited, 0, sizeof(inherited));
+
+        if (index->mobspec && index->mobspec[0] != '\0')
+        {
+                if (!resolve_mob_template(
+                        mob_lookup(index->mobspec), &inherited))
+                {
+                        send_to_char(
+                            "\n\r{RAttack damage layers unavailable: "
+                            "invalid template.{x\n\r",
+                            ch);
+                        return;
+                }
+        }
+
+        snprintf(
+            buf, sizeof(buf),
+            "\n\r{WAttack damage modifier layers{x\n\r"
+            "  Template:          %+d%%\n\r",
+            inherited.dam_mod);
+        send_to_char(buf, ch);
+
+        if (index->area_dam_mod == MOB_TEMPLATE_UNSET)
+        {
+                send_to_char("  #MOBILES:          inherit\n\r", ch);
+        }
+        else
+        {
+                snprintf(
+                    buf, sizeof(buf),
+                    "  #MOBILES:          %+d%% (replacement)\n\r",
+                    index->area_dam_mod);
+                send_to_char(buf, ch);
+        }
+
+        snprintf(
+            buf, sizeof(buf),
+            "  Prototype:         %+d%%\n\r"
+            "  Live:              %+d%%\n\r"
+            "  Scaling sample:    100 -> %d\n\r",
+            index->dam_mod,
+            victim->dam_mod,
+            apply_mob_damage_modifier(victim, 100));
+        send_to_char(buf, ch);
+
+        send_to_char(
+            "Applies once to NPC attacks through one_hit(). "
+            "The sample is before target defenses and later combat "
+            "adjustments; it is not the last hit.\n\r",
+            ch);
+}
+
 void do_mstat(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *rch;
@@ -3195,6 +3263,7 @@ void do_mstat(CHAR_DATA *ch, char *argument)
         mstat_flag_layers(ch, victim);
         mstat_resistance_layers(ch, victim);
         mstat_hp_modifier_layers(ch, victim);
+        mstat_damage_modifier_layers(ch, victim);
         return;
 }
 
@@ -5566,14 +5635,14 @@ void do_mset(CHAR_DATA *ch, char *argument)
                              "or:     mset <<victim> <<string> <<value>\n\r\n\r"
                              "Field being one of:\n\r"
                              "  str int wis dex con class level body_form\n\r"
-                             "  hp mana move str_prac int_prac align\n\r"
-                             "  thirst drunk full sub_class form race \n\r"
-                             "  bounty fame questpoints totalqp questtime\n\r"
-                             "  patron deity_timer deity_flags affected_by\n\r"
-                             "  bank plat gold silver copper age rage spec\n\r"
-                             "  act crit swiftness bonus max_bonus slept\n\r"
-                             "  steel titanium adamantite electrum starmetal \n\r"
-                             "  resists vulnerabilities immunes attack_parts\n\r"
+                             "  hp mana move str_prac int_prac align thirst\n\r"
+                             "  drunk full sub_class form race bounty fame\n\r"
+                             "  questpoints totalqp questtime patron deity_timer\n\r"
+                             "  deity_flags affected_by bank plat gold silver\n\r"
+                             "  copper age rage spec act crit swiftness bonus\n\r"
+                             "  max_bonus slept steel titanium adamantite\n\r"
+                             "  electrum starmetal resists vulnerabilities \n\r"
+                             "  immunes attack_parts dammod\n\r"
                              "String being one of:\n\r"
                              "  name short long title spec\n\r",
                              ch);
@@ -5583,6 +5652,46 @@ void do_mset(CHAR_DATA *ch, char *argument)
         if (!(victim = get_char_world(ch, arg1)))
         {
                 send_to_char("They aren't here.\n\r", ch);
+                return;
+        }
+
+        /*
+         * Replace the complete live NPC attack-damage adjustment.
+         * Inheritance is resolved for prototypes, not by this live command.
+         */
+        if (!str_cmp(arg2, "dammod"))
+        {
+                int modifier;
+
+                if (!IS_NPC(victim))
+                {
+                        send_to_char(
+                            "The dammod field is currently NPC-only.\n\r",
+                            ch);
+                        return;
+                }
+
+                if (!parse_mob_damage_modifier(arg3, &modifier)
+                ||  modifier == MOB_TEMPLATE_UNSET)
+                {
+                        snprintf(
+                            buf, sizeof(buf),
+                            "Use a signed decimal integer from %d to %d. "
+                            "The live command does not accept inherit.\n\r",
+                            MOB_DAMAGE_MOD_MIN,
+                            INT_MAX);
+                        send_to_char(buf, ch);
+                        return;
+                }
+
+                victim->dam_mod = modifier;
+
+                snprintf(
+                    buf, sizeof(buf),
+                    "Live attack damage adjustment set to %+d%%. "
+                    "Prototype and area data are unchanged.\n\r",
+                    modifier);
+                send_to_char(buf, ch);
                 return;
         }
 

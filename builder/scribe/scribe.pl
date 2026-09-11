@@ -688,7 +688,7 @@ while (1) {
 
             next if &add_field_data(
                     \%mob, $field, $data,
-                    'sp vn nm sh lo lv act aff bf sx al rnk res vuln imm atk hpmod');
+                    'sp vn nm sh lo lv act aff bf sx al rnk res vuln imm atk hpmod dammod');
             print "    line $line: mob: unknown field '$field'\n";
         }
 
@@ -1297,10 +1297,12 @@ foreach (0 .. $#mobs) {
         $mob_errors{$mob{'line'}}++;
     }
 
-    # Optional individual HP scalar. Omission means inherit, not zero.
+    # Optional percentage scalars. Omission means inherit, not zero.
 
-    if (exists $mob{'hpmod'}) {
-        if ($msg = &get_hp_modifier(\%mob, 'hpmod')) {
+    foreach my $field (qw/hpmod dammod/) {
+        next unless exists $mob{$field};
+
+        if ($msg = &get_mob_percent_modifier(\%mob, $field)) {
             print "$err $msg\n";
             $mob_errors{$mob{'line'}}++;
         }
@@ -2493,8 +2495,8 @@ sub clear_field(\%$) {
 #  Subroutine:  Find multiple values for a field
 #
 
-# Normalise one HP modifier without confusing explicit zero with inheritance.
-sub get_hp_modifier(\%$) {
+# Normalise an individual HP or attack-damage percentage adjustment.
+sub get_mob_percent_modifier(\%$) {
     my ($var, $field) = @_;
 
     return "field '$field' is missing" unless exists $$var{$field};
@@ -2925,6 +2927,9 @@ if (@mobs) {
 
         print AREA "MobHPMod $mob{'hpmod'}\n"
                 if exists $mob{'hpmod'};
+
+        print AREA "MobDamMod $mob{'dammod'}\n"
+                if exists $mob{'dammod'};
     }
 
     print AREA "#0\n\n";

@@ -1029,6 +1029,9 @@ void boot_db(void)
                 if (validate_mob_hp_modifiers() != 0)
                         exit(1);
 
+                if (validate_mob_damage_modifiers() != 0)
+                        exit(1);
+
                 validate_mob_resistance_table();
         }
 
@@ -2019,6 +2022,34 @@ static int read_mob_hp_modifier(FILE *fp, MOB_INDEX_DATA *index)
 }
 
 /*
+ * Read one individual attack-damage adjustment.
+ */
+static int read_mob_damage_modifier(FILE *fp, MOB_INDEX_DATA *index)
+{
+        const char *text;
+        int modifier;
+        char buf[MAX_STRING_LENGTH];
+
+        text = fread_word(fp);
+
+        if (!parse_mob_damage_modifier(text, &modifier))
+        {
+                snprintf(
+                    buf, sizeof(buf),
+                    "[MOB TEMPLATE] vnum %d: invalid MobDamMod value '%s'. "
+                    "Use inherit or a signed decimal integer from %d to %d.",
+                    index->vnum,
+                    text ? text : "(missing)",
+                    MOB_DAMAGE_MOD_MIN,
+                    INT_MAX);
+                log_string(buf);
+                exit(1);
+        }
+
+        return modifier;
+}
+
+/*
  * Snarf a mob section.
  */
 void load_mobiles(FILE *fp)
@@ -2060,6 +2091,7 @@ void load_mobiles(FILE *fp)
                 pMobIndex->area_immunes = 0;
                 pMobIndex->area_attack_parts = 0;
                 pMobIndex->area_hp_mod = MOB_TEMPLATE_UNSET;
+                pMobIndex->area_dam_mod = MOB_TEMPLATE_UNSET;
 
                 for (stat = 0; stat < SECT_MAX; stat++)
                         pMobIndex->footstep_key[stat] = NULL;
@@ -2209,6 +2241,11 @@ void load_mobiles(FILE *fp)
                         {
                                 pMobIndex->area_hp_mod =
                                     read_mob_hp_modifier(fp, pMobIndex);
+                        }
+                        else if (!str_cmp(word, "MobDamMod"))
+                        {
+                                pMobIndex->area_dam_mod =
+                                    read_mob_damage_modifier(fp, pMobIndex);
                         }
                         else if (!str_cmp(word, "FStepInside"))
                                 pMobIndex->footstep_key[SECT_INSIDE] = fread_string(fp);
@@ -4167,6 +4204,7 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA *pMobIndex)
         mob->vulnerabilities = pMobIndex->vulnerabilities;
         mob->immunes = pMobIndex->immunes;
         mob->attack_parts = pMobIndex->attack_parts;
+        mob->dam_mod = pMobIndex->dam_mod;
 
         mob->armor = interpolate(mob->level, 100, -100);
 

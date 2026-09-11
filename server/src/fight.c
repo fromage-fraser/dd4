@@ -1131,6 +1131,13 @@ bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                         dam = 1;
 
                 /*
+                 * Apply the live NPC attack adjustment once, after the
+                 * existing attacker/skill calculation and before target
+                 * resistance and defense handling. PCs are unchanged.
+                 */
+                dam = apply_mob_damage_modifier(ch, dam);
+
+                /*
                  * For an ordinary attack, one_hit() still knows the exact
                  * primary or secondary weapon which caused the hit. Supply
                  * that attack's resistance categories to the internal damage

@@ -342,11 +342,12 @@ bool resolve_mob_template(int mob_type,
 }
 
 /*
- * Parse a signed HP percentage adjustment or the inheritance keyword.
- * A literal zero is an explicit neutral override, not an inheritance marker.
- * The output remains unchanged when parsing fails.
+ * Parse a signed scalar or inherit. Output is unchanged on failure.
+ * The caller supplies the lower bound for its particular modifier.
  */
-bool parse_mob_hp_modifier(const char *text, int *modifier)
+static bool parse_mob_percent_modifier(const char *text,
+                                       int minimum,
+                                       int *modifier)
 {
         const char *p;
         char *end;
@@ -377,11 +378,8 @@ bool parse_mob_hp_modifier(const char *text, int *modifier)
         errno = 0;
         value = strtol(text, &end, 10);
 
-        if (errno == ERANGE
-        ||  end == text
-        ||  *end != '\0'
-        ||  value < MOB_HP_MOD_MIN
-        ||  value > INT_MAX)
+        if (errno == ERANGE || end == text || *end != '\0'
+        ||  value < minimum || value > INT_MAX)
         {
                 return FALSE;
         }
@@ -390,6 +388,23 @@ bool parse_mob_hp_modifier(const char *text, int *modifier)
         return TRUE;
 }
 
+/*
+ * Preserve the existing HP parser's interface and accepted values.
+ */
+bool parse_mob_hp_modifier(const char *text, int *modifier)
+{
+        return parse_mob_percent_modifier(
+            text, MOB_HP_MOD_MIN, modifier);
+}
+
+/*
+ * Parse an individual attack-damage adjustment.
+ */
+bool parse_mob_damage_modifier(const char *text, int *modifier)
+{
+        return parse_mob_percent_modifier(
+            text, MOB_DAMAGE_MOD_MIN, modifier);
+}
 /*
  * Check raw template HP adjustments before any mobile is instantiated.
  * An unset scalar is valid; an adjustment below -99 is not.
@@ -483,6 +498,111 @@ int apply_mob_hp_modifier(int base_hp, int modifier)
 
         if (scaled > MOB_SPAWN_HP_LIMIT)
                 return MOB_SPAWN_HP_LIMIT;
+
+        return (int)scaled;
+}
+
+/*
+ * Validate both raw table layers before loading individual mobiles.
+ */
+int validate_mob_damage_modifiers(void)
+{
+        char buf[MAX_STRING_LENGTH];
+        int sn;
+        int value;
+        int issues;
+
+        issues = 0;
+
+        for (sn = 0; sn < MAX_SPECIES; sn++)
+        {
+                value = species_table[sn].dam_mod;
+
+                if (value == MOB_TEMPLATE_UNSET
+                ||  value >= MOB_DAMAGE_MOD_MIN)
+                {
+                        continue;
+                }
+
+                snprintf(
+                    buf, sizeof(buf),
+                    "[MOB TEMPLATE] Body species '%s' has invalid dam_mod %d; "
+                    "use MOB_TEMPLATE_UNSET or a value from %d to %d.",
+                    species_table[sn].species
+                        ? species_table[sn].species : "unnamed",
+                    value, MOB_DAMAGE_MOD_MIN, INT_MAX);
+                log_string(buf);
+                issues++;
+        }
+
+        for (sn = 0; sn < MAX_MOB; sn++)
+        {
+                value = mob_table[sn].dam_mod;
+
+                if (value == MOB_TEMPLATE_UNSET
+                ||  value >= MOB_DAMAGE_MOD_MIN)
+                {
+                        continue;
+                }
+
+                snprintf(
+                    buf, sizeof(buf),
+                    "[MOB TEMPLATE] Creature archetype '%s' has invalid "
+                    "dam_mod %d; use MOB_TEMPLATE_UNSET or a value "
+                    "from %d to %d.",
+                    mob_table[sn].name ? mob_table[sn].name : "unnamed",
+                    value, MOB_DAMAGE_MOD_MIN, INT_MAX);
+                log_string(buf);
+                issues++;
+        }
+
+        if (issues == 0)
+        {
+                log_string(
+                    "[MOB TEMPLATE] Damage-modifier validation complete: "
+                    "no issues found.");
+        }
+        else
+        {
+                snprintf(
+                    buf, sizeof(buf),
+                    "[MOB TEMPLATE] Damage-modifier validation complete: "
+                    "%d issue%s found.",
+                    issues, issues == 1 ? "" : "s");
+                log_string(buf);
+        }
+
+        return issues;
+}
+
+/*
+ * Scale one NPC attack resolved through one_hit(). Call once, before the
+ * resistance/defence pipeline. This does not alter the stored modifier.
+ */
+int apply_mob_damage_modifier(CHAR_DATA *mob, int damage)
+{
+        int modifier;
+        int64_t scaled;
+
+        if (!mob || !IS_NPC(mob) || damage <= 0)
+                return damage;
+
+        modifier = mob->dam_mod;
+
+        if (modifier == MOB_TEMPLATE_UNSET)
+                modifier = 0;
+
+        if (modifier < MOB_DAMAGE_MOD_MIN)
+                modifier = MOB_DAMAGE_MOD_MIN;
+
+        scaled =
+            (int64_t)damage * ((int64_t)100 + modifier) / 100;
+
+        if (scaled < 1)
+                return 1;
+
+        if (scaled > MOB_ATTACK_DAMAGE_LIMIT)
+                return MOB_ATTACK_DAMAGE_LIMIT;
 
         return (int)scaled;
 }
@@ -848,6 +968,11 @@ void initialise_mob_index_flags(MOB_INDEX_DATA *index)
             resolve_template_scalar(
                 inherited.hp_mod,
                 index->area_hp_mod);
+
+        index->dam_mod =
+            resolve_template_scalar(
+                inherited.dam_mod,
+                index->area_dam_mod);
 
         index->resists =
             inherited.resists ^ index->area_resists;

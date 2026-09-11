@@ -7,7 +7,7 @@
 
 _Original manual: version 1.3.w, July 2025._
 
-_AsciiDoc documentation update: 9 September 2026._
+_AsciiDoc documentation update: 10 September 2026._
 
 [[scribe-documentation-status]]
 === Documentation status — September 2026
@@ -18,7 +18,7 @@ The existing sixteen numbered sections and their cross-reference targets are
 retained.
 
 The verified repository baseline is DD4 `master`, commit
-`8ae2f7453b09a2afbf7a407d01444f784e5560b3` (PR #711), checked on 9 September
+`1cd1ad579f96c83aad0931e978a51ef24ce3fac6` (PR #712), checked on 10 September
 2026. This identifies source-code availability; it does not establish which
 executable is running on a particular server.
 
@@ -49,18 +49,22 @@ raw-mask validation, cancellation logging and immortal inspection/editing.
 weapon slot can select a currently usable natural attack. Equipment precedence,
 anatomical filtering and the read-only Eligible/Inactive diagnostics are included.
 | HP modifier inheritance and individual overrides
-| *Step 4C4a implementation.* The accompanying code applies resolved `hp_mod`
-to normal level/rank-derived spawn HP, adds Scribe `hpmod` and area `MobHPMod`,
-and records creation snapshots for `mstat`. This behaviour is not in the pinned
-PR #711 baseline; install the matching server and Scribe changes together.
+| Implemented through PR #712: resolved `hp_mod` applies once to normal
+level/rank-derived spawn HP, with Scribe `hpmod`, area `MobHPMod`, explicit
+inheritance versus zero, and creation snapshots in `mstat`.
+| NPC attack damage modifier
+| *Step 4C4b implementation.* The accompanying changes activate `dam_mod` for
+NPC attacks routed through `one_hit()`, with Scribe `dammod`, area `MobDamMod`,
+and independent live inspection/editing. This is not yet in the pinned PR #712
+baseline; install the matching server and Scribe code before using it.
 | Further template integration
-| Damage, critical and swiftness modifiers, dimensions/size/language defaults,
-their individual overrides, and execution of inherited special-function slots
-remain separate work.
+| Critical and swiftness modifiers, dimensions/size/language defaults, their
+individual overrides, and execution of inherited special-function slots remain
+separate work.
 |===
 
-IMPORTANT: Steps 4C2, 4C3a and 4C3b are merged. Sections marked *Step 4C4a*
-describe the accompanying HP-modifier code and require both its server and
+IMPORTANT: Steps through 4C4a are merged. Sections marked *Step 4C4b* describe
+the accompanying NPC attack-modifier code and require its matching server and
 Scribe changes. A documentation update alone does not install a feature or
 identify the executable currently running on a server.
 
@@ -86,7 +90,8 @@ field named `xp_mod`, `species`, or `archetype`; see
 ** <<scribe-individual-resistances,Individual resistance fields>>
 ** <<scribe-individual-attack-parts,Individual attack-part masks>>
 ** <<scribe-natural-attacks,Ordinary NPC natural attacks>>
-** <<scribe-mobile-hp-modifier,HP modifier inheritance and overrides (Step 4C4a)>>
+** <<scribe-mobile-hp-modifier,HP modifier inheritance and overrides>>
+** <<scribe-mobile-damage-modifier,NPC attack damage modifier (Step 4C4b)>>
 ** <<scribe-resistance-flags,Resistance categories and behaviour>>
 ** <<scribe-template-xp,Archetype XP adjustments>>
 ** <<scribe-mobile-diagnostics,Validation, mstat and live editing>>
@@ -595,7 +600,10 @@ Mobiles are the creatures that populate your area. They are defined in the `#MOB
 | individual attack-part XOR mask
 | keyword list or decimal mask
 | `hpmod`
-| HP percentage adjustment replacing the inherited value — Step 4C4a
+| HP percentage adjustment replacing the inherited value
+| signed decimal integer or `inherit`
+| `dammod`
+| NPC attack percentage adjustment replacing the inherited value — Step 4C4b
 | signed decimal integer or `inherit`
 |===
 
@@ -749,17 +757,18 @@ PR #710 adds prototype/live storage and individual overrides for attack parts.
 PR #711 connects usable parts to ordinary unarmed NPC attack-type selection.
 It adds neither extra attacks nor equipment or skill permissions.
 
-The accompanying <<scribe-mobile-hp-modifier,Step 4C4a>> activates the HP scalar
-and adds its individual override. The other template scalar defaults still
-require separate live integration. Special-function names are resolved and
-validated without automatically activating all three slots.
+PR #712 activates the <<scribe-mobile-hp-modifier,HP scalar>> and its individual
+override. The accompanying <<scribe-mobile-damage-modifier,Step 4C4b>> activates
+the attack damage scalar for NPC attacks using `one_hit()`. Other template
+scalar defaults still require separate live integration. Special-function
+names are resolved and validated without automatically activating all slots.
 
 For the template scalar fields using `MOB_TEMPLATE_UNSET`, an archetype value
 inherits when it is unset; otherwise it replaces the body-species value.
 Literal zero is an explicit scalar value. If neither layer supplies a value,
 the resolver returns zero. These sentinels are C-table conventions: do not
-write `MOB_TEMPLATE_UNSET` in a Scribe source file. Step 4C4a supplies the
-separate source keyword `hpmod inherit` for the HP scalar.
+write `MOB_TEMPLATE_UNSET` in a Scribe source file. Use `hpmod inherit` for HP;
+the accompanying damage addition similarly accepts `dammod inherit`.
 
 For template special names, `NULL` means inherit, an empty string explicitly
 clears an inherited name, and a non-empty string replaces it. The existing
@@ -1633,12 +1642,11 @@ Builder should describe these behaviours without changing the stored/exported
 raw mask, granting skill permissions or inventing extra attacks.
 
 [[scribe-mobile-hp-modifier]]
-==== HP modifier inheritance and overrides — Step 4C4a
+==== HP modifier inheritance and overrides
 
-IMPORTANT: This section accompanies Step 4C4a. The pinned PR #711 baseline
-contains the template `hp_mod` field but does not apply it in ordinary mobile
-creation. Install the corresponding server and Scribe changes before using
-`hpmod` or expecting template HP adjustments to take effect.
+This feature was merged in PR #712 and is present in the verified baseline.
+Use matching server and Scribe versions for `hpmod` and template HP adjustments;
+a merged revision alone does not confirm which executable is deployed.
 
 *`hpmod` — Individual HP percentage adjustment*
 
@@ -1768,7 +1776,8 @@ There is no new live `mset hpmod` command in this chunk.
 
 This HP adjustment is independent of `xp_mod`. The existing XP-percentage helper,
 area/spec/equipment XP contributions and XP award formula are not edited here.
-Damage, critical, swiftness, dimension and language defaults remain separate
+The attack damage addition is documented separately below. Critical, swiftness,
+dimension and language defaults remain separate
 integration steps. No extra attack or inherited special-function execution is
 introduced.
 
@@ -1788,6 +1797,154 @@ explicit zero. Store/export the individual `hpmod` value or inheritance state,
 not a calculated HP total. Do not pre-expand template values, XOR the integer,
 or add the layers together. The exporter must retain `hpmod 0` rather than
 silently omitting it.
+
+[[scribe-mobile-damage-modifier]]
+==== NPC attack damage modifier — Step 4C4b
+
+IMPORTANT: This section accompanies the Step 4C4b server and Scribe changes.
+The verified PR #712 baseline resolves the template `dam_mod` value but does
+not apply it to live attacks. Install the matching code before using `dammod`
+or expecting these adjustments to affect combat.
+
+*`dammod` — Individual NPC attack damage percentage adjustment*
+
+_Signed decimal integer from -99 to 2147483647, or `inherit`_
+
+_Default: omitted; inherit the resolved body-species/archetype value_
+
+===== Scope and calculation
+
+This implementation applies `dam_mod` once to NPC attacks resolved through
+`one_hit()`. It includes ordinary weapon, natural and generic unarmed attacks,
+and weapon manoeuvres which actually use that function. It does not classify
+an ability by its name or assume that every physical skill follows this path.
+
+The existing attack roll and attacker-side damage calculation run first,
+including the existing flat damage roll and any skill multiplier inside
+`one_hit()`. A successful attack's positive damage is then adjusted before
+being passed to the existing resistance, critical-hit and target-defense
+machinery:
+
+[source,text]
+----
+attack damage = floor(calculated one_hit damage * (100 + live dam_mod) / 100)
+----
+
+At this stage, positive damage remains at least one. A zero or negative input
+is not converted into a hit by the helper. Later immunity, mitigation, or a
+successful defense can still prevent damage. A penalty is not immunity, and
+an arbitrarily large bonus does not bypass immunity.
+
+[cols="<2,<3,<2",options="header"]
+|===
+| Live adjustment | Meaning | Result from an input of 100
+| `0` | No percentage adjustment. | 100
+| `25` | Add 25 percent. | 125
+| `-25` | Remove 25 percent. | 75
+| `100` | Double this attack's calculated damage. | 200
+| `-99` | Retain one percent, subject to minimum one. | 1
+|===
+
+The multiplication uses a 64-bit intermediate. The helper bounds its result to
+`MOB_ATTACK_DAMAGE_LIMIT`, defined as `INT_MAX / 1000` (2,147,483 with the current
+32-bit `int`), leaving headroom for later combat arithmetic. This is an early
+arithmetic bound, not a replacement for the existing final `MAX_DAMAGE` rule.
+The later pipeline can further reduce or modify the amount.
+
+Player attacks are unchanged. Independent spells, breath weapons, direct-damage
+skills such as Kick, damage-over-time events and reflected/module damage are
+not newly multiplied by this field merely because an NPC is involved. Effects
+which already derive an amount from a triggering attack can still reflect that
+attack's adjusted amount; this chunk does not apply a second multiplier to them.
+Skill-specific and secondary-effect behavior otherwise remains separate.
+
+The name in the tables remains `dam_mod`. For this implementation, read it as
+an attack modifier with the explicit `one_hit()` scope above, not a universal
+bonus to every harmful action. It grants no attacks, changes no skill-table
+entries or resistance categories, and does not execute additional specials.
+
+===== Scalar inheritance and input
+
+The existing body-species and archetype `dam_mod` values are resolved using
+`MOB_TEMPLATE_UNSET` to inherit. An individual supplied number replaces that
+resolved value; it is not XORed, added, or independently compounded.
+
+[cols="<2,<4",options="header"]
+|===
+| Individual input | Result when the template supplies `+50`
+| Omit `dammod` | Inherit `+50`.
+| `dammod inherit` | Inherit `+50`.
+| `dammod 0` | Use zero: no percentage adjustment.
+| `dammod 25` | Use `+25`, not `+75` or two multipliers.
+| `dammod -25` | Use `-25`.
+|===
+
+If no template supplies a value, the inherited adjustment is zero. Mobiles
+without an archetype may use the individual field. The retained goat archetype
+has a `dam_mod` of `20`; installing this chunk activates that default for its
+applicable attacks. Other archetype values need not be changed to install it.
+
+[source,text]
+----
+dammod 25
+----
+
+Scribe emits:
+
+[source,text]
+----
+MobDamMod 25
+----
+
+The source name is `dammod`, the optional area keyword is `MobDamMod`, and the
+C-table member is `dam_mod`. Place the area field in the optional mobile tail
+with `MobHPMod`, attack parts and resistance declarations, after any mob
+programs, archetype/rank line and teachers. It has no tilde terminator.
+
+Omission emits no line. Explicit zero emits `MobDamMod 0`; it must not be lost
+through a truth-value test. The keyword `inherit` is case-insensitive. A leading
+plus and decimal leading zeros are accepted and normalised. Fractions, percent
+suffixes, `|` expressions, and adjustments below -99 are invalid. Repeated
+field declarations use their last value, including a final `inherit`.
+
+Raw table values are validated at boot. An invalid adjustment stops loading
+with a diagnostic. The individual parser similarly rejects invalid input
+rather than silently supplying a different value.
+
+===== Prototype, live state and diagnostics
+
+The original individual value is stored separately from the resolved prototype
+adjustment. `create_mobile()` copies the prototype value into the new live
+NPC's `dam_mod`. Combat reads that live value; it does not re-resolve templates
+or mutate the stored adjustment on each hit.
+
+`mstat` adds an attack damage section with Template, #MOBILES, Prototype and
+Live values. It also displays the helper's result for an illustrative input of
+100, before target defenses and later combat adjustments. This sample is not
+the last hit, a damage-per-round estimate, or a guarantee of the NPC's actual
+damage. Inspection neither rolls a random attack nor changes the live value.
+
+[source,text]
+----
+mset filler dammod 100
+mset filler dammod 0
+----
+
+These NPC-only assignments replace the complete live percentage adjustment.
+They do not modify the template, individual input, prototype, other instances,
+or future spawns. The effect begins on the next applicable attack. The live
+command accepts numbers only: `inherit` is an area/template concept and is
+rejected here. A fresh instance receives the prototype value again.
+
+`mset damroll` retains its existing meaning as a flat damage bonus. It is not
+a synonym for `mset dammod`. Existing HP creation snapshots, HP modifiers, XP
+calculation, critical/swiftness defaults, dimensions, language and special
+execution are not changed by this addition.
+
+DD Builder must preserve an explicit inheritance state separately from zero,
+export the raw individual scalar, and avoid calculating or combining layers
+on export. Use the same numeric limits as Scribe. Keep HP and attack damage
+controls separate; neither field is a resistance mask or a direct stat total.
 
 [[scribe-resistance-flags]]
 ==== Resistance category reference
@@ -1991,7 +2148,7 @@ results. PR #710 also adds ATTACK PART layers, and PR #711 adds the read-only
 `Eligible` and `Inactive` attack-part rows. Labels beginning with `Template`
 describe the inherited layer, not the final NPC state.
 
-Step 4C4a adds an HP modifier section. It distinguishes the inherited and
+PR #712 adds an HP modifier section. It distinguishes the inherited and
 individual scalar values from the effective prototype value, recorded spawn
 base/adjustment/initial HP, and the current live HP/maximum. It does not treat
 this scalar as a flag mask or reapply it when inspected.
@@ -2048,6 +2205,10 @@ and effective values separately, and defer cross-category overlap decisions
 until the masks have been resolved. The sonic/water categories and signed
 archetype XP adjustment also need corresponding editor support; this manual
 does not claim that a separate DD Builder implementation has already shipped.
+
+The accompanying <<scribe-mobile-damage-modifier,attack damage modifier>> adds
+a separate percentage-layer display, an illustrative pre-defense scaling sample,
+and NPC-only `mset dammod`. These do not recalculate the recorded HP snapshots.
 
 === 9. Objects [[scribe-objects]]
 
@@ -4325,43 +4486,44 @@ pb  120
 [[scribe-revision-notes]]
 === Documentation revision notes and source baseline
 
-This revision confirms the merged Step 4C3b ordinary NPC natural attacks and
-documents the accompanying Step 4C4a HP modifier inheritance and individual
-overrides. The original sixteen numbered sections remain in order. New material
+This revision confirms the merged Step 4C4a HP modifier inheritance and
+documents the accompanying Step 4C4b NPC attack damage scalar, individual
+overrides and live editing. The original sixteen numbered sections remain in order. New material
 is integrated into the existing mobile, object, weapon and area-XP sections.
 The field summaries also include already-described reset/audio/foley fields
 which were absent from their summary tables.
 
 The baseline was checked against
-https://github.com/fromage-fraser/dd4/tree/8ae2f7453b09a2afbf7a407d01444f784e5560b3[DD4 master at PR #711].
+https://github.com/fromage-fraser/dd4/tree/1cd1ad579f96c83aad0931e978a51ef24ce3fac6[DD4 master at PR #712].
 The following files are the implementation references for the added material:
 
 [cols="<2,<5",options="header"]
 |===
 | Source | Relevance
-| https://github.com/fromage-fraser/dd4/blob/8ae2f7453b09a2afbf7a407d01444f784e5560b3/builder/scribe/scribe.pl[`builder/scribe/scribe.pl`]
-| Accepted source keywords, flag dictionaries, validation, single-special/rank export, resistance fields and the merged exact-integer `atk` parser.
-| https://github.com/fromage-fraser/dd4/blob/8ae2f7453b09a2afbf7a407d01444f784e5560b3/server/src/merc.h[`server/src/merc.h`]
+| https://github.com/fromage-fraser/dd4/blob/1cd1ad579f96c83aad0931e978a51ef24ce3fac6/builder/scribe/scribe.pl[`builder/scribe/scribe.pl`]
+| Accepted source keywords, flag dictionaries, validation, single-special/rank export, resistance fields, exact-integer `atk` parsing and `hpmod` inheritance.
+| https://github.com/fromage-fraser/dd4/blob/1cd1ad579f96c83aad0931e978a51ef24ce3fac6/server/src/merc.h[`server/src/merc.h`]
 | ACT/object/resistance flag definitions and template/prototype structures.
-| https://github.com/fromage-fraser/dd4/blob/8ae2f7453b09a2afbf7a407d01444f784e5560b3/server/src/mob.c[`server/src/mob.c`]
+| https://github.com/fromage-fraser/dd4/blob/1cd1ad579f96c83aad0931e978a51ef24ce3fac6/server/src/mob.c[`server/src/mob.c`]
 | Template XOR/scalar/special-name resolution, original-mask handling, validation and additive XP helper.
-| https://github.com/fromage-fraser/dd4/blob/8ae2f7453b09a2afbf7a407d01444f784e5560b3/server/src/db.c[`server/src/db.c`]
-| Mobile loading, optional archetype/rank syntax and copying prototype state into a new mobile.
-| https://github.com/fromage-fraser/dd4/blob/8ae2f7453b09a2afbf7a407d01444f784e5560b3/server/src/magic.c[`server/src/magic.c`] and https://github.com/fromage-fraser/dd4/blob/8ae2f7453b09a2afbf7a407d01444f784e5560b3/server/src/fight.c[`server/src/fight.c`]
+| https://github.com/fromage-fraser/dd4/blob/1cd1ad579f96c83aad0931e978a51ef24ce3fac6/server/src/db.c[`server/src/db.c`]
+| Mobile loading, optional archetype/rank syntax, copying prototype state into a new mobile, and the merged HP adjustment with creation snapshots.
+| https://github.com/fromage-fraser/dd4/blob/1cd1ad579f96c83aad0931e978a51ef24ce3fac6/server/src/magic.c[`server/src/magic.c`] and https://github.com/fromage-fraser/dd4/blob/1cd1ad579f96c83aad0931e978a51ef24ce3fac6/server/src/fight.c[`server/src/fight.c`]
 | Resistance adjustment, selected status helpers, ordinary-attack categories, damage messaging, death provenance and XP use.
-| https://github.com/fromage-fraser/dd4/blob/8ae2f7453b09a2afbf7a407d01444f784e5560b3/server/src/act_wiz.c[`server/src/act_wiz.c`] and https://github.com/fromage-fraser/dd4/blob/8ae2f7453b09a2afbf7a407d01444f784e5560b3/server/src/act_info.c[`server/src/act_info.c`]
-| Immortal flag/resistance-layer diagnostics, live resistance editing and body-form/resistance displays.
-| https://github.com/fromage-fraser/dd4/blob/8ae2f7453b09a2afbf7a407d01444f784e5560b3/server/src/const.c[`server/src/const.c`] and https://github.com/fromage-fraser/dd4/blob/8ae2f7453b09a2afbf7a407d01444f784e5560b3/server/src/handler.c[`server/src/handler.c`]
+| https://github.com/fromage-fraser/dd4/blob/1cd1ad579f96c83aad0931e978a51ef24ce3fac6/server/src/act_wiz.c[`server/src/act_wiz.c`] and https://github.com/fromage-fraser/dd4/blob/1cd1ad579f96c83aad0931e978a51ef24ce3fac6/server/src/act_info.c[`server/src/act_info.c`]
+| Immortal flag/resistance/attack-part diagnostics, HP snapshots, live mask editing and body-form/resistance displays.
+| https://github.com/fromage-fraser/dd4/blob/1cd1ad579f96c83aad0931e978a51ef24ce3fac6/server/src/const.c[`server/src/const.c`] and https://github.com/fromage-fraser/dd4/blob/1cd1ad579f96c83aad0931e978a51ef24ce3fac6/server/src/handler.c[`server/src/handler.c`]
 | Effect classifications and text names for resistance/object flags.
-| Step 4C4a implementation instructions supplied in this project
-| Basis for the explicitly marked HP scalar, `hpmod`/`MobHPMod` interface, creation snapshots and diagnostics. The pinned PR #711 sources predate those additions; the rest of the baseline references describe merged code.
+| Step 4C4b implementation instructions supplied in this project
+| Basis for the explicitly marked attack scalar, `dammod`/`MobDamMod`, bounded per-attack scaling, diagnostics and live editing. The pinned PR #712 sources predate these additions; their HP and earlier systems are already merged.
 |===
 
 The retained `fire_elemental` test archetype is not a general setting rule:
 in this baseline it carries `ACT_UNDEAD`, `AFF_DETECT_MAGIC` and configured
 `PART_CLAWS`, an XP adjustment of `+5`, and test resistance data. Its default
 body form has no arms or legs, so the configured claws are normally inactive
-unless the body form is changed. Its body species supplies cold
+unless the body form is changed. The merged test archetype has `hp_mod = 50`,
+while mobile #2700 explicitly replaces that with `MobHPMod 25`. Its body species supplies cold
 immunity and the archetype repeats cold immunity, so cold cancels through
 XOR. Do not infer universal elemental or undead traits from that test entry.
 
