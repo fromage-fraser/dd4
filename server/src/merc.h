@@ -2777,6 +2777,13 @@ struct mob_index_data
          */
         int area_hp_mod;
         int hp_mod;
+
+        /*
+         * Original individual attack-damage adjustment and resolved value.
+         * area_dam_mod uses MOB_TEMPLATE_UNSET to mean inherit.
+         */
+        int area_dam_mod;
+        int dam_mod;
 };
 
 /*
@@ -2843,6 +2850,12 @@ struct char_data
         int spawn_base_hit;
         int spawn_hp_mod;
         int spawn_max_hit;
+
+        /*
+         * Effective live NPC attack-damage percentage adjustment.
+         * Applied to attacks routed through one_hit().
+         */
+        int dam_mod;
 
         int aggro_dam;
         int mana;
@@ -3438,6 +3451,18 @@ struct mob_spec_data
  * This limits generated spawn HP, not all subsequent live adjustments.
  */
 #define MOB_SPAWN_HP_LIMIT (INT_MAX / 100)
+
+/*
+ * Attack damage modifiers are signed percentage adjustments.
+ * Positive attack damage remains at least one before target defenses.
+ */
+#define MOB_DAMAGE_MOD_MIN (-99)
+
+/*
+ * Bound the adjusted attack before subsequent combat arithmetic.
+ * The existing final MAX_DAMAGE rule remains separate.
+ */
+#define MOB_ATTACK_DAMAGE_LIMIT (INT_MAX / 1000)
 
 /*
  * Fully resolved body-species and creature-archetype template.
@@ -5492,6 +5517,9 @@ int mob_natural_attack_type args((CHAR_DATA *mob));
 bool parse_mob_hp_modifier args((const char *text, int *modifier));
 int validate_mob_hp_modifiers args((void));
 int apply_mob_hp_modifier args((int base_hp, int modifier));
+bool parse_mob_damage_modifier args((const char *text, int *modifier));
+int validate_mob_damage_modifiers args((void));
+int apply_mob_damage_modifier args((CHAR_DATA *mob, int damage));
 
 /* mob_commands.c */
 char *mprog_type_to_name args((int type));

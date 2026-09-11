@@ -710,6 +710,9 @@ Gezhp, Owl and Shade
 - Mobile template HP adjustments now apply during normal creation.
   Scribe hpmod and MobHPMod support individual scalar overrides.
   mstat shows HP inheritance and the recorded spawn calculation.
+- Mobile attack damage modifiers now support template inheritance and
+  individual dammod/MobDamMod overrides. mset dammod edits a live NPC's
+  adjustment; mstat shows all scalar layers. Applies to one_hit attacks.
 
 ~
 
