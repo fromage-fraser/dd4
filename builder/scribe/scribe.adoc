@@ -7,7 +7,7 @@
 
 _Original manual: version 1.3.w, July 2025._
 
-_AsciiDoc documentation update: 10 September 2026._
+_AsciiDoc documentation update: 12 September 2026._
 
 [[scribe-documentation-status]]
 === Documentation status — September 2026
@@ -18,7 +18,7 @@ The existing sixteen numbered sections and their cross-reference targets are
 retained.
 
 The verified repository baseline is DD4 `master`, commit
-`1cd1ad579f96c83aad0931e978a51ef24ce3fac6` (PR #712), checked on 10 September
+`c8c4ddc5284add02a60a91cc81b28d5e6d15de36` (PR #713), checked on 12 September
 2026. This identifies source-code availability; it does not establish which
 executable is running on a particular server.
 
@@ -53,20 +53,23 @@ anatomical filtering and the read-only Eligible/Inactive diagnostics are include
 level/rank-derived spawn HP, with Scribe `hpmod`, area `MobHPMod`, explicit
 inheritance versus zero, and creation snapshots in `mstat`.
 | NPC attack damage modifier
-| *Step 4C4b implementation.* The accompanying changes activate `dam_mod` for
-NPC attacks routed through `one_hit()`, with Scribe `dammod`, area `MobDamMod`,
-and independent live inspection/editing. This is not yet in the pinned PR #712
-baseline; install the matching server and Scribe code before using it.
+| Implemented through PR #713: `dam_mod` adjusts NPC attacks routed through
+`one_hit()`, with `dammod` / `MobDamMod`, independent live values, and
+inspection/editing. It is not a universal multiplier for every damage path.
+| Critical and swiftness score defaults
+| *Step 4C4c implementation.* The accompanying code initialises the existing
+live critical/swiftness scores using resolved template and individual
+adjustments. It adds `critmod` / `swiftmod`, area input, validation and creation
+snapshots. This feature is not attributed to the pinned PR #713 baseline.
 | Further template integration
-| Critical and swiftness modifiers, dimensions/size/language defaults, their
-individual overrides, and execution of inherited special-function slots remain
-separate work.
+| Dimensions/size/language defaults, their individual overrides, and execution
+of inherited special-function slots remain separate work.
 |===
 
-IMPORTANT: Steps through 4C4a are merged. Sections marked *Step 4C4b* describe
-the accompanying NPC attack-modifier code and require its matching server and
-Scribe changes. A documentation update alone does not install a feature or
-identify the executable currently running on a server.
+IMPORTANT: Steps through 4C4b are merged. Sections marked *Step 4C4c* describe
+the accompanying critical/swiftness default changes and require matching
+server and Scribe code. A manual update alone does not install the feature or
+identify the executable running on a server.
 
 This manual distinguishes a Scribe source field, a generated `.are` field,
 and a server-side table field. A name in `mob_table` or `merc.h` is not
@@ -91,7 +94,8 @@ field named `xp_mod`, `species`, or `archetype`; see
 ** <<scribe-individual-attack-parts,Individual attack-part masks>>
 ** <<scribe-natural-attacks,Ordinary NPC natural attacks>>
 ** <<scribe-mobile-hp-modifier,HP modifier inheritance and overrides>>
-** <<scribe-mobile-damage-modifier,NPC attack damage modifier (Step 4C4b)>>
+** <<scribe-mobile-damage-modifier,NPC attack damage modifier>>
+** <<scribe-mobile-combat-modifiers,Critical and swiftness defaults (Step 4C4c)>>
 ** <<scribe-resistance-flags,Resistance categories and behaviour>>
 ** <<scribe-template-xp,Archetype XP adjustments>>
 ** <<scribe-mobile-diagnostics,Validation, mstat and live editing>>
@@ -603,8 +607,14 @@ Mobiles are the creatures that populate your area. They are defined in the `#MOB
 | HP percentage adjustment replacing the inherited value
 | signed decimal integer or `inherit`
 | `dammod`
-| NPC attack percentage adjustment replacing the inherited value — Step 4C4b
+| NPC attack percentage adjustment replacing the inherited value
 | signed decimal integer or `inherit`
+| `critmod`
+| Critical score-point adjustment replacing the inherited value — Step 4C4c
+| integer from -100 to 100, or `inherit`
+| `swiftmod`
+| Swiftness score-point adjustment replacing the inherited value — Step 4C4c
+| integer from -100 to 100, or `inherit`
 |===
 
 [[scribe-mobile-inheritance]]
@@ -758,17 +768,20 @@ PR #711 connects usable parts to ordinary unarmed NPC attack-type selection.
 It adds neither extra attacks nor equipment or skill permissions.
 
 PR #712 activates the <<scribe-mobile-hp-modifier,HP scalar>> and its individual
-override. The accompanying <<scribe-mobile-damage-modifier,Step 4C4b>> activates
-the attack damage scalar for NPC attacks using `one_hit()`. Other template
-scalar defaults still require separate live integration. Special-function
-names are resolved and validated without automatically activating all slots.
+override. PR #713 activates the <<scribe-mobile-damage-modifier,attack damage
+scalar>> for NPC attacks using `one_hit()`. The accompanying
+<<scribe-mobile-combat-modifiers,Step 4C4c>> initialises critical and swiftness
+scores. Dimensions/size/language still require separate integration.
+Special-function names are resolved and validated without automatically
+activating all slots.
 
 For the template scalar fields using `MOB_TEMPLATE_UNSET`, an archetype value
 inherits when it is unset; otherwise it replaces the body-species value.
 Literal zero is an explicit scalar value. If neither layer supplies a value,
 the resolver returns zero. These sentinels are C-table conventions: do not
-write `MOB_TEMPLATE_UNSET` in a Scribe source file. Use `hpmod inherit` for HP;
-the accompanying damage addition similarly accepts `dammod inherit`.
+write `MOB_TEMPLATE_UNSET` in a Scribe source file. Use `hpmod inherit` or
+`dammod inherit` for those scalars. Step 4C4c similarly accepts `critmod inherit`
+and `swiftmod inherit`. Their score-point units differ from HP/damage percentages.
 
 For template special names, `NULL` means inherit, an empty string explicitly
 clears an inherited name, and a non-empty string replaces it. The existing
@@ -1776,10 +1789,9 @@ There is no new live `mset hpmod` command in this chunk.
 
 This HP adjustment is independent of `xp_mod`. The existing XP-percentage helper,
 area/spec/equipment XP contributions and XP award formula are not edited here.
-The attack damage addition is documented separately below. Critical, swiftness,
-dimension and language defaults remain separate
-integration steps. No extra attack or inherited special-function execution is
-introduced.
+Attack damage and the accompanying critical/swiftness defaults are documented
+separately below. Dimension and language defaults remain separate integration
+steps. The HP mechanism itself adds no attacks or inherited special execution.
 
 ===== Validation and builder integration
 
@@ -1799,12 +1811,11 @@ or add the layers together. The exporter must retain `hpmod 0` rather than
 silently omitting it.
 
 [[scribe-mobile-damage-modifier]]
-==== NPC attack damage modifier — Step 4C4b
+==== NPC attack damage modifier
 
-IMPORTANT: This section accompanies the Step 4C4b server and Scribe changes.
-The verified PR #712 baseline resolves the template `dam_mod` value but does
-not apply it to live attacks. Install the matching code before using `dammod`
-or expecting these adjustments to affect combat.
+This feature was merged in PR #713 and is present in the verified baseline.
+Use matching server and Scribe versions; the merge alone does not identify the
+executable currently running on a particular server.
 
 *`dammod` — Individual NPC attack damage percentage adjustment*
 
@@ -1945,6 +1956,184 @@ DD Builder must preserve an explicit inheritance state separately from zero,
 export the raw individual scalar, and avoid calculating or combining layers
 on export. Use the same numeric limits as Scribe. Keep HP and attack damage
 controls separate; neither field is a resistance mask or a direct stat total.
+
+[[scribe-mobile-combat-modifiers]]
+==== Critical and swiftness defaults — Step 4C4c
+
+IMPORTANT: This section accompanies the Step 4C4c server and Scribe changes.
+The pinned PR #713 baseline resolves `crit_mod` and `haste_mod` in templates,
+but still initialises both live scores to 5. Install the corresponding code
+before expecting these defaults or individual overrides to operate.
+
+*`critmod` — Individual critical-score adjustment*
+
+*`swiftmod` — Individual swiftness-score adjustment*
+
+_Signed decimal integer from -100 to 100, or `inherit`_
+
+_Default: omitted; inherit the resolved body-species/archetype adjustment_
+
+===== Units and initialisation
+
+These fields add whole score points to the existing base score. They are not
+percentage multipliers like `hpmod` or `dammod`:
+
+[source,text]
+----
+initial critical score = 5 + resolved crit_mod
+initial swiftness score = 5 + resolved haste_mod
+----
+
+The table field `haste_mod` is retained for compatibility with existing table
+initialisers. It now supplies the swiftness score adjustment. It does not cast
+the Haste spell, apply a Haste/Quicken affect, or guarantee an additional attack
+independently of the existing swiftness check.
+
+[cols="<2,<2,<4",options="header"]
+|===
+| Resolved adjustment | Initial score | Meaning
+| `0` | 5 | Preserve the old base score.
+| `20` | 25 | Add twenty score points, not twenty percent of five.
+| `-5` | 0 | A zero score cannot beat a positive percentile roll.
+| `-10` | -5 | Retain the full penalty before later equipment/effects.
+| `100` | 105 | A score above the ordinary percentile range.
+|===
+
+Both adjustments are validated from -100 through 100. `MOB_TEMPLATE_UNSET`
+is also allowed in the C table layers as their inheritance sentinel; it is
+not an alternative numeric input in an area or Scribe source file. These
+bounds do not change the larger allowed ranges for HP/damage adjustments.
+
+No zero-to-one-hundred clamp is applied to the initial live scores. A negative
+penalty must remain available for subsequent additive equipment changes:
+base 5 plus `crit_mod = -10` yields -5; an item contributing +10 then yields 5,
+and removing it returns the score to -5. Clamping the initial score to zero
+would lose part of the penalty. This change does not redesign equipment code.
+
+===== Scalar inheritance and syntax
+
+The three template/individual layers choose one adjustment; they are not
+added together or XORed. The base score is added only after that choice:
+
+[source,text]
+----
+body species crit_mod / haste_mod
+    -> archetype replacement unless MOB_TEMPLATE_UNSET
+    -> individual replacement unless omitted / inherit
+    -> add the chosen adjustment to base score 5 once during creation
+----
+
+For an inherited adjustment of +20:
+
+[cols="<2,<3,<2",options="header"]
+|===
+| Individual input | Effective adjustment | Initial score
+| Omitted or `inherit` | +20 | 25
+| `0` | 0 | 5
+| `10` | +10 | 15
+| `-5` | -5 | 0
+|===
+
+An untemplated mobile starts with an inherited adjustment of zero and can use
+these fields too. Existing table values are retained: goat supplies -10 critical
+and -2 swiftness points, producing initial scores -5 and 3; fire_elemental
+supplies an unset critical adjustment and +20 swiftness points, producing 5
+and 25 with no individual overrides. Installing the chunk activates those
+previously inactive defaults.
+
+[source,text]
+----
+critmod 20
+swiftmod 0
+----
+
+Scribe emits:
+
+[source,text]
+----
+MobCritMod 20
+MobSwiftMod 0
+----
+
+The server members are `crit_mod` and `haste_mod`; the source fields are
+`critmod` and `swiftmod`; the generated fields are `MobCritMod` and
+`MobSwiftMod`. These names are deliberately distinguished. Do not use
+`haste_mod` as a Scribe keyword or `MobHasteMod` as an area keyword.
+
+Place both optional area fields in the mobile tail with `MobHPMod`,
+`MobDamMod`, attack parts and resistance declarations, after mob programs,
+archetype/rank selection and teachers. No tilde terminator is used.
+Repeated declarations use the last value. Omitting a source field emits no
+line. Explicit zero emits a zero, not an omitted field. `inherit` is
+case-insensitive; leading signs and decimal leading zeros are normalised.
+Fractions, percent suffixes, numeric `|` expressions and out-of-range values
+are rejected. Raw species and archetype values are checked even when a later
+layer would replace them. Invalid template values or area inputs stop loading
+with a diagnostic.
+
+===== Existing combat semantics remain in use
+
+NPC critical handling currently tests `number_percent() < ch->crit` within
+`damage_internal()` and doubles damage on its successful branch. That existing
+critical path is broader than `one_hit()`; this chunk does not impose the
+separate `dammod` scope on critical hits or add a second critical roll.
+
+The existing NPC swiftness branch in `multi_hit()` similarly tests
+`number_percent() < ch->swiftness` before its bonus `one_hit()` call. Initialising
+a higher score increases the chance of that existing branch; it does not
+create another scheduler or a new independent attack. Earlier exits, existing
+status/action restrictions and other attack sources remain in effect.
+
+Keep these as scores rather than presenting them as exact percent chances.
+The existing strict `<` comparisons are not changed to `<=`. On a percentile
+range of 1 through 100, a score of 25 accepts rolls 1 through 24. The random
+number generator and player enhanced-skill/attribute calculations are unchanged.
+
+The existing `crit` and `swiftness` fields remain live values. Equipment and
+other existing consumers continue to see them. In particular, this chunk
+does not restrict swiftness to combat or rewrite the movement/digging code
+which already consults it. HP, attack damage and XP adjustments remain separate.
+
+===== Creation snapshots and live editing
+
+The original individual adjustments and resolved prototype adjustments are
+stored separately. Creation applies them once and records the applied
+adjustments and initial scores. Later equipment, spells, scripts or immortal
+edits can change live `crit` / `swiftness` without rewriting those snapshots.
+
+`mstat` adds Critical score and Swiftness score groups showing the template,
+original individual value, resolved prototype adjustment, base score, creation
+adjustment, creation score and current live score. Inspection performs no
+random roll and never reapplies the adjustment.
+
+Existing live commands remain absolute score assignments:
+
+[source,text]
+----
+mset filler crit 10
+mset filler swiftness 0
+----
+
+These mean live scores 10 and 0, not +10 or +0 adjustments. They do not change
+the template, prototype, snapshots, other live instances or future spawns.
+There are no new live `mset critmod` or `mset swiftmod` commands in this chunk.
+
+The inherited legacy command limits remain unchanged: `mset crit` accepts
+0 through 99, despite its existing error message saying 0 to 100;
+`mset swiftness` accepts 0 through 100. Those live-command ranges differ from
+the -100 to 100 adjustment fields and the possible -95 to 105 spawn scores.
+No command accepts `inherit` for a live absolute score.
+
+For testing, compare a fresh unmodified fire-elemental instance (scores 5/25)
+with one using individual adjustments 20/0 (scores 25/5). Change a live score
+with the existing commands, confirm snapshots are unchanged, then purge and
+reload to confirm the prototype values return. Test zero and inherit separately.
+
+DD Builder must expose two signed score-point adjustments with an explicit
+inheritance state. Export the raw individual values without adding five,
+adding template layers, XORing, or converting them into percentages. Preserve
+explicit zero. The archetype editor maps swiftness to the existing `haste_mod`
+member, not to a new spell or affect.
 
 [[scribe-resistance-flags]]
 ==== Resistance category reference
@@ -2119,9 +2308,14 @@ successful messages include:
 [source,text]
 ----
 [MOB TEMPLATE] Relationship validation complete: no issues found.
+[MOB TEMPLATE] Attack-part validation complete: no issues found.
+[MOB TEMPLATE] HP-modifier validation complete: no issues found.
+[MOB TEMPLATE] Damage-modifier validation complete: no issues found.
+[MOB TEMPLATE] Combat-score validation complete: no issues found.
 [MOB TYPE] Resistance validation complete: no issues found.
 ----
 
+The Combat-score line is supplied by the accompanying Step 4C4c code.
 These messages report the checks performed by those validators, not a full
 gameplay test. Unknown bits must be checked on raw template layers as well
 as resolved masks: identical invalid bits could otherwise cancel through XOR.
@@ -2152,6 +2346,11 @@ PR #712 adds an HP modifier section. It distinguishes the inherited and
 individual scalar values from the effective prototype value, recorded spawn
 base/adjustment/initial HP, and the current live HP/maximum. It does not treat
 this scalar as a flag mask or reapply it when inspected.
+
+PR #713 adds attack-damage modifier layers and a deterministic scaling sample.
+The accompanying Step 4C4c adds critical/swiftness modifier layers and creation
+snapshots. These are scalar diagnostics, not XOR removal reports. Current live
+scores may differ from their creation values after equipment or live edits.
 
 Advanced Consider uses live body-form and resistance masks in its existing
 archetype-information block. Its attack-part list also uses the live configured
@@ -4486,36 +4685,37 @@ pb  120
 [[scribe-revision-notes]]
 === Documentation revision notes and source baseline
 
-This revision confirms the merged Step 4C4a HP modifier inheritance and
-documents the accompanying Step 4C4b NPC attack damage scalar, individual
-overrides and live editing. The original sixteen numbered sections remain in order. New material
+This revision confirms the merged Step 4C4b NPC attack damage modifier and
+documents the accompanying Step 4C4c critical/swiftness score defaults,
+individual overrides and creation snapshots. The original sixteen numbered
+sections remain in order. New material
 is integrated into the existing mobile, object, weapon and area-XP sections.
 The field summaries also include already-described reset/audio/foley fields
 which were absent from their summary tables.
 
 The baseline was checked against
-https://github.com/fromage-fraser/dd4/tree/1cd1ad579f96c83aad0931e978a51ef24ce3fac6[DD4 master at PR #712].
+https://github.com/fromage-fraser/dd4/tree/c8c4ddc5284add02a60a91cc81b28d5e6d15de36[DD4 master at PR #713].
 The following files are the implementation references for the added material:
 
 [cols="<2,<5",options="header"]
 |===
 | Source | Relevance
-| https://github.com/fromage-fraser/dd4/blob/1cd1ad579f96c83aad0931e978a51ef24ce3fac6/builder/scribe/scribe.pl[`builder/scribe/scribe.pl`]
-| Accepted source keywords, flag dictionaries, validation, single-special/rank export, resistance fields, exact-integer `atk` parsing and `hpmod` inheritance.
-| https://github.com/fromage-fraser/dd4/blob/1cd1ad579f96c83aad0931e978a51ef24ce3fac6/server/src/merc.h[`server/src/merc.h`]
+| https://github.com/fromage-fraser/dd4/blob/c8c4ddc5284add02a60a91cc81b28d5e6d15de36/builder/scribe/scribe.pl[`builder/scribe/scribe.pl`]
+| Accepted source keywords, flag dictionaries, validation, single-special/rank export, resistance fields, exact-integer `atk` parsing and `hpmod` / `dammod` inheritance.
+| https://github.com/fromage-fraser/dd4/blob/c8c4ddc5284add02a60a91cc81b28d5e6d15de36/server/src/merc.h[`server/src/merc.h`]
 | ACT/object/resistance flag definitions and template/prototype structures.
-| https://github.com/fromage-fraser/dd4/blob/1cd1ad579f96c83aad0931e978a51ef24ce3fac6/server/src/mob.c[`server/src/mob.c`]
+| https://github.com/fromage-fraser/dd4/blob/c8c4ddc5284add02a60a91cc81b28d5e6d15de36/server/src/mob.c[`server/src/mob.c`]
 | Template XOR/scalar/special-name resolution, original-mask handling, validation and additive XP helper.
-| https://github.com/fromage-fraser/dd4/blob/1cd1ad579f96c83aad0931e978a51ef24ce3fac6/server/src/db.c[`server/src/db.c`]
+| https://github.com/fromage-fraser/dd4/blob/c8c4ddc5284add02a60a91cc81b28d5e6d15de36/server/src/db.c[`server/src/db.c`]
 | Mobile loading, optional archetype/rank syntax, copying prototype state into a new mobile, and the merged HP adjustment with creation snapshots.
-| https://github.com/fromage-fraser/dd4/blob/1cd1ad579f96c83aad0931e978a51ef24ce3fac6/server/src/magic.c[`server/src/magic.c`] and https://github.com/fromage-fraser/dd4/blob/1cd1ad579f96c83aad0931e978a51ef24ce3fac6/server/src/fight.c[`server/src/fight.c`]
+| https://github.com/fromage-fraser/dd4/blob/c8c4ddc5284add02a60a91cc81b28d5e6d15de36/server/src/magic.c[`server/src/magic.c`] and https://github.com/fromage-fraser/dd4/blob/c8c4ddc5284add02a60a91cc81b28d5e6d15de36/server/src/fight.c[`server/src/fight.c`]
 | Resistance adjustment, selected status helpers, ordinary-attack categories, damage messaging, death provenance and XP use.
-| https://github.com/fromage-fraser/dd4/blob/1cd1ad579f96c83aad0931e978a51ef24ce3fac6/server/src/act_wiz.c[`server/src/act_wiz.c`] and https://github.com/fromage-fraser/dd4/blob/1cd1ad579f96c83aad0931e978a51ef24ce3fac6/server/src/act_info.c[`server/src/act_info.c`]
+| https://github.com/fromage-fraser/dd4/blob/c8c4ddc5284add02a60a91cc81b28d5e6d15de36/server/src/act_wiz.c[`server/src/act_wiz.c`] and https://github.com/fromage-fraser/dd4/blob/c8c4ddc5284add02a60a91cc81b28d5e6d15de36/server/src/act_info.c[`server/src/act_info.c`]
 | Immortal flag/resistance/attack-part diagnostics, HP snapshots, live mask editing and body-form/resistance displays.
-| https://github.com/fromage-fraser/dd4/blob/1cd1ad579f96c83aad0931e978a51ef24ce3fac6/server/src/const.c[`server/src/const.c`] and https://github.com/fromage-fraser/dd4/blob/1cd1ad579f96c83aad0931e978a51ef24ce3fac6/server/src/handler.c[`server/src/handler.c`]
+| https://github.com/fromage-fraser/dd4/blob/c8c4ddc5284add02a60a91cc81b28d5e6d15de36/server/src/const.c[`server/src/const.c`] and https://github.com/fromage-fraser/dd4/blob/c8c4ddc5284add02a60a91cc81b28d5e6d15de36/server/src/handler.c[`server/src/handler.c`]
 | Effect classifications and text names for resistance/object flags.
-| Step 4C4b implementation instructions supplied in this project
-| Basis for the explicitly marked attack scalar, `dammod`/`MobDamMod`, bounded per-attack scaling, diagnostics and live editing. The pinned PR #712 sources predate these additions; their HP and earlier systems are already merged.
+| Step 4C4c implementation instructions supplied in this project
+| Basis for the explicitly marked critical/swiftness score adjustments, `critmod`/`swiftmod` input, prototype resolution, one-time creation initialisation and snapshots. The pinned PR #713 sources predate these score-default additions; HP and attack-damage modifiers are already merged.
 |===
 
 The retained `fire_elemental` test archetype is not a general setting rule:

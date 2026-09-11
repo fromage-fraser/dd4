@@ -829,6 +829,60 @@ adjusted amount; do not apply another multiplier to them.
 HP, XP, critical/swiftness defaults, dimensions, language and inherited
 special execution are unchanged.
 
+==Individual critical and swiftness modifier overrides
+
+Optional #MOBILES tail fields:
+
+    MobCritMod <signed integer or inherit>
+    MobSwiftMod <signed integer or inherit>
+
+Corresponding Scribe fields:
+
+    critmod <signed integer or inherit>
+    swiftmod <signed integer or inherit>
+
+These are additions to the existing NPC scores, not percentage multipliers:
+
+    initial critical score = 5 + resolved crit_mod
+    initial swiftness score = 5 + resolved haste_mod
+
+The existing table member haste_mod supplies the swiftness adjustment.
+It does not cast Haste or apply a Haste/Quicken affect.
+
+Allowed adjustments are -100 through 100. Omission or inherit preserves the
+resolved template adjustment. An explicit number replaces it, including zero.
+The inheritance layers are not XORed, summed or independently multiplied.
+
+An adjustment of 20 produces an initial score of 25. An adjustment of -5
+produces zero. Negative initial scores are retained so that subsequent
+equipment bonuses do not erase part of a configured penalty.
+
+Place both fields in the optional mobile tail with HP, damage, resistance
+and attack-part declarations. No tilde terminator is used. Repeated fields
+use the last value. Explicit zero must not disappear during export.
+
+The resolved adjustments initialise the existing live crit and swiftness
+fields once during creation, before later equipment or scripted changes.
+mstat records the template/individual/prototype values, creation adjustments,
+initial scores and current live scores.
+
+The existing critical and swiftness roll comparisons remain unchanged.
+These are scores, not promises of exact percentage chances. No new critical
+roll or independent attack scheduler is added. Raising swiftness affects the
+existing bonus-attack check; it does not grant an additional Haste spell.
+
+Existing live commands remain absolute assignments:
+
+    mset <mobile> crit <score>
+    mset <mobile> swiftness <score>
+
+They do not modify prototype values or creation snapshots. There are no new
+live critmod/swiftmod commands. The legacy mset crit range is 0 through 99;
+the legacy mset swiftness range is 0 through 100.
+
+HP, attack damage, XP, dimensions, language and inherited special execution
+remain separate. Player initialisation and combat formulas are unchanged.
+
 === The #OBJECTS section
 
 These are the items the people who journey through your area will keep and use,

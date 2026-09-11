@@ -405,6 +405,106 @@ bool parse_mob_damage_modifier(const char *text, int *modifier)
         return parse_mob_percent_modifier(
             text, MOB_DAMAGE_MOD_MIN, modifier);
 }
+
+/*
+ * Parse a critical/swiftness score adjustment, preserving explicit zero.
+ * The output remains unchanged on failure.
+ */
+bool parse_mob_combat_modifier(const char *text, int *modifier)
+{
+        int value;
+
+        if (!modifier)
+                return FALSE;
+
+        if (!parse_mob_percent_modifier(text, MOB_COMBAT_MOD_MIN, &value))
+                return FALSE;
+
+        if (value != MOB_TEMPLATE_UNSET && value > MOB_COMBAT_MOD_MAX)
+                return FALSE;
+
+        *modifier = value;
+        return TRUE;
+}
+
+/*
+ * Check one raw table value. An unset value means inherit.
+ */
+static int validate_mob_combat_modifier_value(
+    const char *owner,
+    const char *name,
+    const char *field,
+    int value)
+{
+        char buf[MAX_STRING_LENGTH];
+
+        if (value == MOB_TEMPLATE_UNSET
+        ||  (value >= MOB_COMBAT_MOD_MIN && value <= MOB_COMBAT_MOD_MAX))
+        {
+                return 0;
+        }
+
+        snprintf(
+            buf, sizeof(buf),
+            "[MOB TEMPLATE] %s '%s' has invalid %s %d; "
+            "use MOB_TEMPLATE_UNSET or a value from %d to %d.",
+            owner, name ? name : "unnamed", field, value,
+            MOB_COMBAT_MOD_MIN, MOB_COMBAT_MOD_MAX);
+        log_string(buf);
+        return 1;
+}
+
+/*
+ * Validate both raw layers, including values hidden by later overrides.
+ */
+int validate_mob_combat_modifiers(void)
+{
+        char buf[MAX_STRING_LENGTH];
+        int sn;
+        int issues;
+
+        issues = 0;
+
+        for (sn = 0; sn < MAX_SPECIES; sn++)
+        {
+                issues += validate_mob_combat_modifier_value(
+                    "Body species", species_table[sn].species,
+                    "crit_mod", species_table[sn].crit_mod);
+
+                issues += validate_mob_combat_modifier_value(
+                    "Body species", species_table[sn].species,
+                    "haste_mod", species_table[sn].haste_mod);
+        }
+
+        for (sn = 0; sn < MAX_MOB; sn++)
+        {
+                issues += validate_mob_combat_modifier_value(
+                    "Creature archetype", mob_table[sn].name,
+                    "crit_mod", mob_table[sn].crit_mod);
+
+                issues += validate_mob_combat_modifier_value(
+                    "Creature archetype", mob_table[sn].name,
+                    "haste_mod", mob_table[sn].haste_mod);
+        }
+
+        if (issues == 0)
+        {
+                log_string(
+                    "[MOB TEMPLATE] Combat-score validation complete: "
+                    "no issues found.");
+        }
+        else
+        {
+                snprintf(
+                    buf, sizeof(buf),
+                    "[MOB TEMPLATE] Combat-score validation complete: "
+                    "%d issue%s found.",
+                    issues, issues == 1 ? "" : "s");
+                log_string(buf);
+        }
+
+        return issues;
+}
 /*
  * Check raw template HP adjustments before any mobile is instantiated.
  * An unset scalar is valid; an adjustment below -99 is not.
@@ -973,6 +1073,16 @@ void initialise_mob_index_flags(MOB_INDEX_DATA *index)
             resolve_template_scalar(
                 inherited.dam_mod,
                 index->area_dam_mod);
+
+        index->crit_mod =
+            resolve_template_scalar(
+                inherited.crit_mod,
+                index->area_crit_mod);
+
+        index->haste_mod =
+            resolve_template_scalar(
+                inherited.haste_mod,
+                index->area_haste_mod);
 
         index->resists =
             inherited.resists ^ index->area_resists;

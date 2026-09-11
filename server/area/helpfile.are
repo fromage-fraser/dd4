@@ -696,24 +696,8 @@ Gezhp, Owl and Shade
   parts originating from undead characters are now tagged automatically.
   Identifying such an object reveals its undead nature.
 - Sonic and water resistance categories added.
-- Creature archetypes can now supply an additional XP bonus or penalty.
-- Mobile ACT, AFF and body-form defaults now support individual XOR overrides.
-  mstat shows inherited, individual, cancelled, prototype and live flags.
-- Individual mobile resistance, vulnerability and immunity overrides added.
-  Scribe supports res/vuln/imm; mstat shows all layers and mset can change
-  the effective masks of a live NPC.
-- Individual attack-part masks added through MobAttackParts and Scribe's atk.
-  mstat shows the inheritance layers; mset can change a live NPC's mask.
-- Ordinary NPC attacks with an empty attacking weapon slot can now select
-  an anatomically usable natural attack. Equipped weapons retain precedence.
-  mstat shows eligible and inactive parts. Attack frequency is unchanged.
-- Mobile template HP adjustments now apply during normal creation.
-  Scribe hpmod and MobHPMod support individual scalar overrides.
-  mstat shows HP inheritance and the recorded spawn calculation.
-- Mobile attack damage modifiers now support template inheritance and
-  individual dammod/MobDamMod overrides. mset dammod edits a live NPC's
-  adjustment; mstat shows all scalar layers. Applies to one_hit attacks.
-
+- Extensive work done on mob archetypes/species/#MOBILES overrides/inheritance
+  for these values
 ~
 
 0 MULTIPLAYING MULTIPLAYERS~

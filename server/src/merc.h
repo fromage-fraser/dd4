@@ -2784,6 +2784,15 @@ struct mob_index_data
          */
         int area_dam_mod;
         int dam_mod;
+
+        /*
+         * Original individual score adjustments and resolved prototype
+         * values. Individual MOB_TEMPLATE_UNSET means inherit.
+         */
+        int area_crit_mod;
+        int crit_mod;
+        int area_haste_mod;
+        int haste_mod;
 };
 
 /*
@@ -2850,6 +2859,15 @@ struct char_data
         int spawn_base_hit;
         int spawn_hp_mod;
         int spawn_max_hit;
+
+        /*
+         * NPC critical/swiftness creation snapshots.
+         * The existing crit and swiftness fields remain the live scores.
+         */
+        int spawn_crit_mod;
+        int spawn_haste_mod;
+        int spawn_crit;
+        int spawn_swiftness;
 
         /*
          * Effective live NPC attack-damage percentage adjustment.
@@ -3433,36 +3451,17 @@ struct mob_spec_data
         char *learned;
 };
 
-/*
- * Scalar table fields use this value to mean "inherit from the preceding
- * template layer". A literal zero therefore remains available as an explicit
- * override value.
- */
+/* Mob species constants */
+
 #define MOB_TEMPLATE_UNSET INT_MIN
-
-/*
- * HP modifiers are signed percentage adjustments.
- * -99 retains at least one percent of normal HP.
- */
 #define MOB_HP_MOD_MIN (-99)
-
-/*
- * Leave headroom for existing integer calculations using 100 * hit.
- * This limits generated spawn HP, not all subsequent live adjustments.
- */
 #define MOB_SPAWN_HP_LIMIT (INT_MAX / 100)
-
-/*
- * Attack damage modifiers are signed percentage adjustments.
- * Positive attack damage remains at least one before target defenses.
- */
 #define MOB_DAMAGE_MOD_MIN (-99)
-
-/*
- * Bound the adjusted attack before subsequent combat arithmetic.
- * The existing final MAX_DAMAGE rule remains separate.
- */
 #define MOB_ATTACK_DAMAGE_LIMIT (INT_MAX / 1000)
+#define MOB_COMBAT_MOD_MIN (-100)
+#define MOB_COMBAT_MOD_MAX 100
+#define MOB_SPAWN_BASE_CRIT 5
+#define MOB_SPAWN_BASE_SWIFTNESS 5
 
 /*
  * Fully resolved body-species and creature-archetype template.
@@ -5520,6 +5519,8 @@ int apply_mob_hp_modifier args((int base_hp, int modifier));
 bool parse_mob_damage_modifier args((const char *text, int *modifier));
 int validate_mob_damage_modifiers args((void));
 int apply_mob_damage_modifier args((CHAR_DATA *mob, int damage));
+bool parse_mob_combat_modifier args((const char *text, int *modifier));
+int validate_mob_combat_modifiers args((void));
 
 /* mob_commands.c */
 char *mprog_type_to_name args((int type));
