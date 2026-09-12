@@ -3682,7 +3682,7 @@ void do_consider(CHAR_DATA *ch, char *argument)
         }
 
         /*  A "sizing up" ability for thugs?  Re-enabled and edited for sanity 5/3/22 -- Owl */
-        if (IS_NPC(victim) && ch->sub_class == 7 && victim->spec_fun != 0)
+        if (IS_NPC(victim) &&  ch->sub_class == 7 &&  mob_has_specials(victim))
                 act("{WYou suspect $N has some unusual capabilities.{x", ch,
                     NULL, victim, TO_CHAR);
 

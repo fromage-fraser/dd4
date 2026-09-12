@@ -2010,7 +2010,8 @@ void do_focus (CHAR_DATA *ch, char *argument)
         CHAR_DATA *fch;
         char arg [ MAX_INPUT_LENGTH ];
 
-        if ( IS_NPC( ch ) && !(ch->spec_fun == spec_lookup("spec_grail")))
+        if (IS_NPC(ch)
+        && !mob_has_special(ch, spec_lookup("spec_grail")))
                 return;
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_focus))
@@ -2088,8 +2089,8 @@ void do_suck (CHAR_DATA *ch, char *argument)
         char       arg [ MAX_INPUT_LENGTH ];
 
         if (IS_NPC(ch)
-        && !( ch->spec_fun == spec_lookup("spec_laghathti") )
-        && !( ch->spec_fun == spec_lookup("spec_uzollru") ) )
+        && !mob_has_special(ch, spec_lookup("spec_laghathti"))
+        && !mob_has_special(ch, spec_lookup("spec_uzollru")))
                 return;
 
         if ( !IS_NPC(ch)
@@ -3227,12 +3228,12 @@ void do_extort (CHAR_DATA *extortionist, char *targetList)
 
         store = victim->pIndexData->pShop;
 
-        if( store
-           || IS_SET( victim->pIndexData->act, ACT_BANKER)
-           || IS_SET( victim->pIndexData->act, ACT_IS_HEALER)
-           || ( victim->pIndexData->pGame->game_fun != 0 )
-           || victim->spec_fun == spec_lookup("spec_cast_hooker")
-           || victim->spec_fun == spec_lookup("spec_thief"))
+        if (store
+        ||  IS_SET(victim->pIndexData->act, ACT_BANKER)
+        ||  IS_SET(victim->pIndexData->act, ACT_IS_HEALER)
+        ||  (victim->pIndexData->pGame->game_fun != 0)
+        ||  mob_has_special(victim, spec_lookup("spec_cast_hooker"))
+        ||  mob_has_special(victim, spec_lookup("spec_thief")))
         {
                 /* is there a guard in the room? */
                 for (guardian_mob = extortionist->in_room->people;
@@ -3241,9 +3242,14 @@ void do_extort (CHAR_DATA *extortionist, char *targetList)
                 {
                         if( guardian_mob->deleted)
                                 continue;
-                        if( IS_NPC( guardian_mob)
-                           && IS_AWAKE( guardian_mob)
-                           &&  ( guardian_mob->spec_fun == spec_lookup("spec_guard") ||  guardian_mob->spec_fun == spec_lookup("spec_sahuagin_guard") ) )
+                        if (IS_NPC(guardian_mob)
+                        &&  IS_AWAKE(guardian_mob)
+                        &&  (mob_has_special(
+                                 guardian_mob,
+                                 spec_lookup("spec_guard"))
+                             || mob_has_special(
+                                 guardian_mob,
+                                 spec_lookup("spec_sahuagin_guard"))))
                         {
                                 act("You commend $N on their staunch vigil against crime, and decide to return when they are not around.\n\r ", extortionist, NULL, guardian_mob, TO_CHAR);
                                 return;

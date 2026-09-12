@@ -512,9 +512,9 @@ void do_coil (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if ( ch->form != FORM_SNAKE
-        && !( ch->spec_fun == spec_lookup("spec_laghathti") )
-        && !( ch->spec_fun == spec_lookup("spec_uzollru") )  )
+        if (ch->form != FORM_SNAKE
+        && !mob_has_special(ch, spec_lookup("spec_laghathti"))
+        && !mob_has_special(ch, spec_lookup("spec_uzollru")))
         {
                 send_to_char("You are not in the correct form.\n\r", ch);
                 return;
@@ -595,9 +595,9 @@ void do_constrict (CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
 
-        if ( IS_NPC( ch )
-        && !( ch->spec_fun == spec_lookup("spec_laghathti") )
-        && !( ch->spec_fun == spec_lookup("spec_uzollru") )  )
+        if (IS_NPC(ch)
+        && !mob_has_special(ch, spec_lookup("spec_laghathti"))
+        && !mob_has_special(ch, spec_lookup("spec_uzollru")))
                 return;
 
         if ( !IS_NPC( ch)
@@ -608,8 +608,8 @@ void do_constrict (CHAR_DATA *ch, char *argument)
         }
 
         if (ch->form != FORM_SNAKE
-        && !( ch->spec_fun == spec_lookup("spec_laghathti") )
-        && !( ch->spec_fun == spec_lookup("spec_uzollru") ) )
+        && !mob_has_special(ch, spec_lookup("spec_laghathti"))
+        && !mob_has_special(ch, spec_lookup("spec_uzollru")))
         {
                 send_to_char("You are not in the correct form.\n\r", ch);
                 return;
@@ -646,9 +646,9 @@ void do_strangle (CHAR_DATA *ch, char *argument)
         CHAR_DATA *victim;
         int base_damage;
 
-        if ( IS_NPC( ch )
-        && !( ch->spec_fun == spec_lookup("spec_laghathti") )
-        && !( ch->spec_fun == spec_lookup("spec_uzollru") ) )
+        if (IS_NPC(ch)
+        && !mob_has_special(ch, spec_lookup("spec_laghathti"))
+        && !mob_has_special(ch, spec_lookup("spec_uzollru")))
                 return;
 
         if ( !IS_NPC( ch)
@@ -659,8 +659,8 @@ void do_strangle (CHAR_DATA *ch, char *argument)
         }
 
         if (ch->form != FORM_SNAKE
-        && !( ch->spec_fun == spec_lookup("spec_laghathti") )
-        && !( ch->spec_fun == spec_lookup("spec_uzollru") ) )
+        && !mob_has_special(ch, spec_lookup("spec_laghathti"))
+        && !mob_has_special(ch, spec_lookup("spec_uzollru")))
         {
                 send_to_char("You are not in the correct form.\n\r", ch);
                 return;
@@ -682,9 +682,9 @@ void do_strangle (CHAR_DATA *ch, char *argument)
 
         base_damage = number_range (2 * ch->level, 5 * ch->level);
 
-        if ( ( victim->hit > (victim->max_hit / 2) )
-        &&  !( ch->spec_fun == spec_lookup("spec_laghathti") )
-        &&  !( ch->spec_fun == spec_lookup("spec_uzollru") ) )
+        if (victim->hit > (victim->max_hit / 2)
+        && !mob_has_special(ch, spec_lookup("spec_laghathti"))
+        && !mob_has_special(ch, spec_lookup("spec_uzollru")))
         {
                 send_to_char("You try to strangle your victim but they are currently too strong, and resist!\n\r",ch);
                 return;
@@ -1141,24 +1141,24 @@ void do_bite (CHAR_DATA *ch, char *argument)
         CHAR_DATA *victim;
 
         if (IS_NPC(ch)
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") )
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_prince") ) )
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_lieutenant"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_baron"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_prince")))
                 return;
 
         if (!CAN_DO(ch, gsn_bite)
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") )
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_prince") ) )
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_lieutenant"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_baron"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_prince")))
         {
                 send_to_char("What do you think you are, a tiger?\n\r", ch);
                 return;
         }
 
-        if (!(ch->form == FORM_TIGER)
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") )
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_prince") ) )
+        if (ch->form != FORM_TIGER
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_lieutenant"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_baron"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_prince")))
         {
                 send_to_char("You are not in the correct form.\n\r", ch);
                 return;
@@ -1309,24 +1309,24 @@ void do_maul (CHAR_DATA *ch, char *argument)
         int count;
 
         if (IS_NPC(ch)
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") )
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_prince") ) )
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_lieutenant"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_baron"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_prince")))
                 return;
 
         if (!CAN_DO(ch, gsn_maul)
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") )
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_prince") ))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_lieutenant"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_baron"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_prince")))
         {
                 send_to_char("What do you think you are, a tiger?\n\r", ch);
                 return;
         }
 
-        if ( (!(ch->form == FORM_TIGER || ch->form == FORM_GRIFFIN) )
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant") )
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_baron") )
-        && !( ch->spec_fun == spec_lookup("spec_sahuagin_prince") ) )
+        if (!(ch->form == FORM_TIGER || ch->form == FORM_GRIFFIN)
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_lieutenant"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_baron"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_prince")))
         {
                 send_to_char("You are not in the correct form.\n\r",ch);
                 return;

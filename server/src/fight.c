@@ -5534,7 +5534,9 @@ void do_lunge(CHAR_DATA *ch, char *argument)
         char arg[MAX_INPUT_LENGTH];
         int chance;
 
-        if (IS_NPC(ch) && !(ch->spec_fun == spec_lookup("spec_mast_vampire") || ch->pIndexData->vnum == BOT_VNUM))
+        if (IS_NPC(ch)
+        && !mob_has_special(ch, spec_lookup("spec_mast_vampire"))
+        && ch->pIndexData->vnum != BOT_VNUM)
                 return;
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_lunge))
@@ -6008,7 +6010,7 @@ void do_bomb(CHAR_DATA *ch, char *argument)
         int door;
         AFFECT_DATA af;
 
-        if ((IS_NPC(ch) && !(ch->spec_fun == spec_lookup("spec_superwimpy"))))
+        if (IS_NPC(ch) && !mob_has_special(ch, spec_lookup("spec_superwimpy")))
                 return;
 
         if (!(victim = ch->fighting))
@@ -6534,7 +6536,8 @@ void do_trap(CHAR_DATA *ch, char *argument)
         char arg[MAX_INPUT_LENGTH];
         int chance;
 
-        if (IS_NPC(ch) && !(ch->spec_fun == spec_lookup("spec_uzollru")))
+        if (IS_NPC(ch)
+        && !mob_has_special(ch, spec_lookup("spec_uzollru")))
         {
                 if (ch->pIndexData->vnum != BOT_VNUM)
                         return;
@@ -6745,7 +6748,8 @@ void do_transfix(CHAR_DATA *ch, char *argument)
         char arg[MAX_INPUT_LENGTH];
         int chance;
 
-        if (IS_NPC(ch) && !(ch->spec_fun == spec_lookup("spec_laghathti")))
+        if (IS_NPC(ch)
+        && !mob_has_special(ch, spec_lookup("spec_laghathti")))
                 return;
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_transfix))
@@ -7660,7 +7664,18 @@ void do_grapple(CHAR_DATA *ch, char *argument)
         CHAR_DATA *victim;
         int chance;
 
-        if (IS_NPC(ch) && !(ch->spec_fun == spec_lookup("spec_kappa")) && !(ch->spec_fun == spec_lookup("spec_laghathti")) && !(ch->spec_fun == spec_lookup("spec_green_grung")) && !(ch->spec_fun == spec_lookup("spec_purple_grung")) && !(ch->spec_fun == spec_lookup("spec_orange_grung")) && !(ch->spec_fun == spec_lookup("spec_gold_grung")) && !(ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant")) && !(ch->spec_fun == spec_lookup("spec_sahuagin_infantry")) && !(ch->spec_fun == spec_lookup("spec_sahuagin_cavalry")) && !(ch->spec_fun == spec_lookup("spec_sahuagin_baron")) && !(ch->spec_fun == spec_lookup("spec_sahuagin_prince")))
+        if (IS_NPC(ch)
+        && !mob_has_special(ch, spec_lookup("spec_kappa"))
+        && !mob_has_special(ch, spec_lookup("spec_laghathti"))
+        && !mob_has_special(ch, spec_lookup("spec_green_grung"))
+        && !mob_has_special(ch, spec_lookup("spec_purple_grung"))
+        && !mob_has_special(ch, spec_lookup("spec_orange_grung"))
+        && !mob_has_special(ch, spec_lookup("spec_gold_grung"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_lieutenant"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_infantry"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_cavalry"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_baron"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_prince")))
                 return;
 
         one_argument(argument, arg);
@@ -7778,7 +7793,17 @@ void do_flying_headbutt(CHAR_DATA *ch, char *argument)
         CHAR_DATA *victim;
         int chance;
 
-        if (IS_NPC(ch) && !(ch->spec_fun == spec_lookup("spec_kappa")) && !(ch->spec_fun == spec_lookup("spec_green_grung")) && !(ch->spec_fun == spec_lookup("spec_purple_grung")) && !(ch->spec_fun == spec_lookup("spec_orange_grung")) && !(ch->spec_fun == spec_lookup("spec_gold_grung")) && !(ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant")) && !(ch->spec_fun == spec_lookup("spec_sahuagin_infantry")) && !(ch->spec_fun == spec_lookup("spec_sahuagin_cavalry")) && !(ch->spec_fun == spec_lookup("spec_sahuagin_baron")) && !(ch->spec_fun == spec_lookup("spec_sahuagin_prince")))
+        if (IS_NPC(ch)
+        && !mob_has_special(ch, spec_lookup("spec_kappa"))
+        && !mob_has_special(ch, spec_lookup("spec_green_grung"))
+        && !mob_has_special(ch, spec_lookup("spec_purple_grung"))
+        && !mob_has_special(ch, spec_lookup("spec_orange_grung"))
+        && !mob_has_special(ch, spec_lookup("spec_gold_grung"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_lieutenant"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_infantry"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_cavalry"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_baron"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_prince")))
                 return;
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_flying_headbutt))
@@ -8139,7 +8164,11 @@ void do_whirlwind(CHAR_DATA *ch, char *argument)
         CHAR_DATA *vch_next;
         int count = 0;
 
-        if (IS_NPC(ch) && !(ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant")) && !(ch->spec_fun == spec_lookup("spec_sahuagin_baron")) && !(ch->spec_fun == spec_lookup("spec_orange_grung")) && !(ch->spec_fun == spec_lookup("spec_sahuagin_prince")))
+        if (IS_NPC(ch)
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_lieutenant"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_baron"))
+        && !mob_has_special(ch, spec_lookup("spec_orange_grung"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_prince")))
                 return;
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_whirlwind) && ch->form != FORM_HYDRA)

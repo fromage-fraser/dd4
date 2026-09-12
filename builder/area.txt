@@ -2277,14 +2277,93 @@ The syntax of this section is:
     }
     {
      M <mob-vnum:number> <spec-fun:word> <comment:to_eol>
+     N <mob-vnum:number> <slot:1..3> <name:word> <comment:to_eol>
+     P <mob-vnum:number> <p1:number> <p2:number> <p3:number>
+     P <mob-vnum:number> <auto-or-inherit:word>
     }
     S
 
 Like the #RESETS section, the #SPECIALS section has one command per line.
 
-The 'M' command assigns 'spec-fun' to all mobiles of with virtual number
-'mob-vnum'.  All spec-funs are assigned by name.  An 'M' line may have a
-comment at the end.
+The legacy M record replaces the whole special set with a single named
+function at 100%, or with complete none/inherit selection.
+
+N overrides one numbered slot name. P overrides the complete probability
+vector. All function names must be registered. Normal trailing comments
+are allowed.
+
+==Three weighted special functions
+
+A mobile supports up to three configured specials. At each existing special
+opportunity, at most one routine is selected. Percentages are integers from
+0 through 100. A set containing functions must total exactly 100.
+
+A zero-percent function is configured but disabled. An empty slot must have
+zero probability. Only an entirely empty set may use 0/0/0.
+
+Selection does not bypass a routine's own conditions or random checks.
+If the selected routine returns FALSE, another slot is not tried.
+
+Scribe fields:
+
+    sp <name, none or inherit>
+    sp2 <name, none or inherit>
+    sp3 <name, none or inherit>
+    spchance <p1 p2 p3, auto or inherit>
+
+Standalone sp preserves legacy singleton M output. Using sp2, sp3 or spchance
+selects extended N/P output, where sp addresses only slot 1.
+
+Name inheritance is independent per slot. C-table NULL inherits, an empty
+string clears, and a non-empty name replaces. The existing spec_fun1,
+spec_fun2 and spec_boss fields map to slots 1, 2 and 3. Slot 3 has no new
+rank restriction.
+
+The final C-table spec_chance member inherits or replaces as one vector.
+MOB_SPECIAL_CHANCES_INHERIT inherits; MOB_SPECIAL_CHANCES_AUTO requests
+automatic allocation. A literal vector supplies explicit percentages.
+Do not mix sentinel markers and ordinary percentages.
+
+Auto divides 100 over occupied slots: 100, 50/50, or 34/33/33. Remainders
+go to earlier occupied slots. Invalid explicit totals are not normalised.
+
+Repeating a name in multiple slots is permitted. Its selection probabilities
+add, but the dispatcher still invokes only one selected slot per opportunity.
+A zero-percent occurrence does not enable a function by itself.
+
+The effective set is resolved after all area sections load and before resets.
+Each live NPC receives its own copy. Capability checks inspect every enabled
+slot, not only slot 1.
+
+The special-XP contribution is the rounded weighted mean of the existing
+per-function bonuses:
+
+    floor((p1*bonus1 + p2*bonus2 + p3*bonus3 + 50) / 100)
+
+This contribution enters the existing area-reset XP calculation once.
+Archetype xp_mod remains a separate additive adjustment. Live edits do not
+recalculate an already assigned exp_modifier.
+
+Immortal commands:
+
+    mset <mob> specials <name1> <p1> <name2> <p2> <name3> <p3>
+    mset <mob> specials none
+    mset <mob> specials inherit
+    mset <mob> spec <name>
+
+Use none 0 for an empty slot in the full tuple. The complete replacement
+is validated before any change. The live inherit command restores the
+effective prototype, including individual overrides. The legacy spec command
+installs a singleton at 100% and also accepts whole-set none/inherit.
+
+mstat shows template and individual name/policy inputs, prototype/live slots,
+percentages, invocation counters and the prototype special-XP contribution.
+Counters measure calls, including routines returning FALSE, not successful
+effects. Live replacement resets them. The older one-name summary shows
+only the first enabled slot.
+
+No new update schedule, skill-table entries or automatic multi-cast loop
+is introduced.
 
 Certain special functions make mobiles much more challenging to fight, and an
 experience bonus is added to reflect this. They currently range from no bonus

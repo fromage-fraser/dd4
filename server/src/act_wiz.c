@@ -2601,6 +2601,312 @@ static void mstat_language_layers(CHAR_DATA *ch, CHAR_DATA *victim)
             ch);
 }
 
+/*
+ * Display a whole probability policy without consuming a random number.
+ */
+static void mstat_special_policy(
+    CHAR_DATA *ch,
+    const char *label,
+    const int *p)
+{
+        char buf[200];
+
+        if (p[0] == MOB_TEMPLATE_UNSET)
+        {
+                snprintf(
+                    buf, sizeof(buf),
+                    "  %s: inherit\n\r",
+                    label);
+        }
+        else if (p[0] == MOB_SPECIAL_AUTO)
+        {
+                snprintf(
+                    buf, sizeof(buf),
+                    "  %s: auto\n\r",
+                    label);
+        }
+        else
+        {
+                snprintf(
+                    buf, sizeof(buf),
+                    "  %s: %d / %d / %d\n\r",
+                    label, p[0], p[1], p[2]);
+        }
+
+        send_to_char(buf, ch);
+}
+
+static void mstat_weighted_specials(
+    CHAR_DATA *ch,
+    CHAR_DATA *victim)
+{
+        MOB_TEMPLATE_DATA data;
+        MOB_INDEX_DATA *index;
+        const char *names[MOB_SPECIAL_SLOTS];
+        const char *individual;
+        char buf[MAX_STRING_LENGTH];
+        int i;
+
+        if (!IS_NPC(victim) || !victim->pIndexData)
+                return;
+
+        index = victim->pIndexData;
+        memset(&data, 0, sizeof(data));
+
+        for (i = 0; i < MOB_SPECIAL_SLOTS; i++)
+                data.spec_chance[i] = MOB_SPECIAL_AUTO;
+
+        if (index->mobspec && index->mobspec[0]
+        &&  !resolve_mob_template(mob_lookup(index->mobspec), &data))
+        {
+                send_to_char(
+                    "\n\r{RSpecial layers: invalid template.{x\n\r",
+                    ch);
+                return;
+        }
+
+        mob_template_special_names(&data, names);
+
+        send_to_char(
+            "\n\r{WWeighted special-function layers{x\n\r",
+            ch);
+
+        mstat_special_policy(
+            ch,
+            "Template probability policy",
+            data.spec_chance);
+
+        mstat_special_policy(
+            ch,
+            "Individual probability policy",
+            index->area_spec_chance);
+
+        for (i = 0; i < MOB_SPECIAL_SLOTS; i++)
+        {
+                individual =
+                    !index->area_special_name[i]
+                    ? "inherit"
+                    : index->area_special_name[i][0]
+                        ? index->area_special_name[i]
+                        : "none";
+
+                snprintf(
+                    buf, sizeof(buf),
+                    "  Slot %d\n\r"
+                    "    Template:   %s\n\r"
+                    "    Individual: %s\n\r"
+                    "    Prototype:  %s (%d%%)\n\r"
+                    "    Live:       %s (%d%%), calls %lu\n\r",
+                    i + 1,
+                    names[i] && names[i][0] ? names[i] : "none",
+                    individual,
+                    mob_special_name(index->specials.fun[i]),
+                    index->specials.chance[i],
+                    mob_special_name(victim->specials.fun[i]),
+                    victim->specials.chance[i],
+                    victim->special_calls[i]);
+
+                send_to_char(buf, ch);
+        }
+
+        snprintf(
+            buf, sizeof(buf),
+            "  Prototype special XP adjustment: %+d points\n\r"
+            "  Live configuration: %s\n\r",
+            index->spec_fun_exp_modifier,
+            mob_specials_valid(&victim->specials)
+                ? "valid"
+                : "INVALID");
+        send_to_char(buf, ch);
+
+        send_to_char(
+            "One routine is selected per existing opportunity; "
+            "internal checks still apply.\n\r"
+            "Calls count invocations, not successful effects, "
+            "since spawn or last live edit.\n\r"
+            "The old one-name summary shows the first enabled slot. "
+            "Slot 3 is not rank-gated.\n\r"
+            "Live edits leave the stored XP modifier unchanged.\n\r",
+            ch);
+}
+
+/*
+ * Bounded whitespace-token reader for the atomic live tuple command.
+ */
+static bool mset_special_token(
+    const char **input,
+    char *out,
+    size_t capacity)
+{
+        const char *p;
+        size_t length;
+
+        p = *input;
+
+        while (*p == ' ' || *p == '\t' || *p == '\r' || *p == '\n')
+                p++;
+
+        length = 0;
+
+        while (*p
+        &&     *p != ' '
+        &&     *p != '\t'
+        &&     *p != '\r'
+        &&     *p != '\n')
+        {
+                if (length + 1 >= capacity)
+                        return FALSE;
+
+                out[length++] = *p++;
+        }
+
+        out[length] = '\0';
+        *input = p;
+
+        return length != 0;
+}
+
+/*
+ * Validate a complete replacement before changing the live configuration.
+ */
+static void mset_weighted_specials(
+    CHAR_DATA *ch,
+    CHAR_DATA *victim,
+    const char *field,
+    const char *argument)
+{
+        MOB_SPECIAL_DATA next;
+        char name[MOB_SPECIAL_SLOTS][MAX_INPUT_LENGTH];
+        const char *names[MOB_SPECIAL_SLOTS];
+        int chance[MOB_SPECIAL_SLOTS];
+        char token[MAX_INPUT_LENGTH];
+        char error[MAX_STRING_LENGTH];
+        char buf[MAX_STRING_LENGTH];
+        const char *p;
+        SPEC_FUN *special;
+        int i;
+
+        if (!IS_NPC(victim))
+        {
+                send_to_char(
+                    "Special-function editing is NPC-only.\n\r",
+                    ch);
+                return;
+        }
+
+        memset(&next, 0, sizeof(next));
+
+        if (!str_cmp(argument, "inherit"))
+        {
+                if (!victim->pIndexData)
+                {
+                        send_to_char(
+                            "No prototype is available.\n\r",
+                            ch);
+                        return;
+                }
+
+                next = victim->pIndexData->specials;
+        }
+        else if (!str_cmp(argument, "none"))
+        {
+                /*
+                 * The empty zeroed configuration disables every slot.
+                 */
+        }
+        else if (!str_cmp(field, "spec"))
+        {
+                special = spec_lookup(argument);
+
+                if (!special)
+                {
+                        send_to_char(
+                            "No such special. "
+                            "Live configuration unchanged.\n\r",
+                            ch);
+                        return;
+                }
+
+                next.fun[0] = special;
+                next.chance[0] = 100;
+        }
+        else
+        {
+                p = argument;
+
+                for (i = 0; i < MOB_SPECIAL_SLOTS; i++)
+                {
+                        if (!mset_special_token(
+                                &p, name[i], sizeof(name[i]))
+                        ||  !mset_special_token(
+                                &p, token, sizeof(token))
+                        ||  !parse_mob_special_percent(
+                                token, &chance[i]))
+                        {
+                                send_to_char(
+                                    "Use: mset <mob> specials "
+                                    "<name1> <p1> <name2> <p2> "
+                                    "<name3> <p3>\n\r"
+                                    "Use none 0 for an empty slot. "
+                                    "Percentages must total 100.\n\r",
+                                    ch);
+                                return;
+                        }
+
+                        names[i] =
+                            !str_cmp(name[i], "none")
+                            ? NULL
+                            : name[i];
+                }
+
+                while (*p == ' '
+                ||     *p == '\t'
+                ||     *p == '\r'
+                ||     *p == '\n')
+                {
+                        p++;
+                }
+
+                if (*p)
+                {
+                        send_to_char(
+                            "Exactly three name/percentage pairs "
+                            "are required.\n\r",
+                            ch);
+                        return;
+                }
+
+                if (!build_mob_specials(
+                        names,
+                        chance,
+                        &next,
+                        error,
+                        sizeof(error)))
+                {
+                        snprintf(
+                            buf, sizeof(buf),
+                            "Invalid specials: %.700s. Unchanged.\n\r",
+                            error);
+                        send_to_char(buf, ch);
+                        return;
+                }
+        }
+
+        if (!set_mob_specials(victim, &next))
+        {
+                send_to_char(
+                    "Invalid prototype/live configuration; unchanged.\n\r",
+                    ch);
+                return;
+        }
+
+        send_to_char(
+            "Live special set replaced; call counters reset. "
+            "Prototype, area data and stored XP modifier "
+            "are unchanged.\n\r",
+            ch);
+}
+
 void do_mstat(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *rch;
@@ -3465,9 +3771,9 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                         sprintf(
                                             buf,
                                             "Template language code: %d\n\r"
-                                            "Spec_1: %s\n\r"
-                                            "Spec_2: %s\n\r"
-                                            "Spec_3: %s\n\r",
+                                            "Template slot 1: %s\n\r"
+                                            "Template slot 2: %s\n\r"
+                                            "Template slot 3: %s\n\r",
                                             resolved.language,
                                             resolved.spec_fun1
                                                 ? resolved.spec_fun1
@@ -3493,6 +3799,7 @@ void do_mstat(CHAR_DATA *ch, char *argument)
         mstat_combat_modifier_layers(ch, victim);
         mstat_dimension_layers(ch, victim);
         mstat_language_layers(ch, victim);
+        mstat_weighted_specials(ch, victim);
         return;
 }
 
@@ -5456,7 +5763,7 @@ void do_peace(CHAR_DATA *ch, char *argument)
 
         rch = get_char(ch);
 
-        if (!authorized(rch, gsn_peace) && !(ch->spec_fun == spec_lookup("spec_gold_grung")))
+        if (!authorized(rch, gsn_peace) && !mob_has_special(ch, spec_lookup("spec_gold_grung")))
                 return;
 
         /* Yes, we are reusing rch.  -Kahn */
@@ -5874,7 +6181,7 @@ void do_mset(CHAR_DATA *ch, char *argument)
                              "  immunes attack_parts dammod height weight size\n\r"
                              "  language\n\r"
                              "String being one of:\n\r"
-                             "  name short long title spec\n\r",
+                             "  name short long title spec specials\n\r",
                              ch);
                 return;
         }
@@ -5882,6 +6189,13 @@ void do_mset(CHAR_DATA *ch, char *argument)
         if (!(victim = get_char_world(ch, arg1)))
         {
                 send_to_char("They aren't here.\n\r", ch);
+                return;
+        }
+
+        if (!str_cmp(arg2, "spec")
+        ||  !str_cmp(arg2, "specials"))
+        {
+                mset_weighted_specials(ch, victim, arg2, arg3);
                 return;
         }
 
@@ -6830,22 +7144,6 @@ void do_mset(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (!str_cmp(arg2, "spec"))
-        {
-                if (!IS_NPC(victim))
-                {
-                        send_to_char("Not on PCs.\n\r", ch);
-                        return;
-                }
-
-                if (!(victim->spec_fun = spec_lookup(arg3)))
-                {
-                        send_to_char("No such spec fun.\n\r", ch);
-                        return;
-                }
-
-                return;
-        }
 
         if (!strcmp(arg2, "patron"))
         {

@@ -7,7 +7,7 @@
 
 _Original manual: version 1.3.w, July 2025._
 
-_AsciiDoc documentation update: 12 September 2026._
+_AsciiDoc documentation update: 13 September 2026._
 
 [[scribe-documentation-status]]
 === Documentation status — September 2026
@@ -18,7 +18,7 @@ The existing sixteen numbered sections and their cross-reference targets are
 retained.
 
 The verified repository baseline is DD4 `master`, commit
-`fa3baecdce63f6b67b2b43057dd7b31d0fa3b054` (PR #715), checked on 12 September
+`622d5de4abf2f761c0ab66af2da7d25025903904` (PR #716), checked on 13 September
 2026. This identifies source-code availability; it does not establish which
 executable is running on a particular server.
 
@@ -67,22 +67,23 @@ classification or new physical gameplay effects are introduced.
 | Scribe damage-modifier export
 | Restored in PR #715 after its accidental removal in PR #714.
 | Scribe swiftness source field
-| PR #715 accidentally removed `swiftmod` from the mobile input whitelist.
-The accompanying Step 4C4e restores it. The server field, Scribe validator
-and output statement remain present in the pinned baseline.
+| Restored by PR #716 after its accidental omission in PR #715.
 | Raw language-code data
-| *Step 4C4e implementation.* Adds individual and live language-code metadata,
-validation and immortal inspection/editing. No language-name mapping,
-comprehension or speech-permission changes are introduced.
-| Further template integration
-| Inherited special-function execution remains separate work. Language
-semantics, dimension units and their gameplay consumers are not defined here.
+| Implemented through PR #716: individual and live language-code metadata,
+validation and immortal inspection/editing; no named-language or speech rules.
+| Three weighted specials
+| *Replacement Step 4C5 implementation.* Activates all three template slots,
+individual name/probability overrides, weighted single dispatch, capability
+checks, XP, Scribe and immortal editing. Requires the accompanying full code.
+| Further integration
+| Language semantics, dimension units and their physical gameplay consumers
+remain outside this chunk. The third special slot is not newly rank-gated.
 |===
 
-IMPORTANT: Steps through 4C4d are merged, subject to the `swiftmod` input
-regression noted above. Sections marked *Step 4C4e* require the accompanying
-server and Scribe changes. Restore the input field before regenerating sources
-using `swiftmod`. A manual update does not change a running executable.
+IMPORTANT: Steps through 4C4e are merged in the pinned PR #716 baseline.
+The three-weighted-special implementation below replaces the earlier
+primary-only Step 4C5a proposal. Install the complete matching code, not both
+proposals layered together. A manual update does not change a running binary.
 
 This manual distinguishes a Scribe source field, a generated `.are` field,
 and a server-side table field. A name in `mob_table` or `merc.h` is not
@@ -110,7 +111,8 @@ field named `xp_mod`, `species`, or `archetype`; see
 ** <<scribe-mobile-damage-modifier,NPC attack damage modifier>>
 ** <<scribe-mobile-combat-modifiers,Critical and swiftness defaults>>
 ** <<scribe-mobile-dimensions,Dimension data and overrides>>
-** <<scribe-mobile-language,Raw language-code data (Step 4C4e)>>
+** <<scribe-mobile-language,Raw language-code data>>
+** <<scribe-weighted-specials,Three weighted special functions (replacement Step 4C5)>>
 ** <<scribe-resistance-flags,Resistance categories and behaviour>>
 ** <<scribe-template-xp,Archetype XP adjustments>>
 ** <<scribe-mobile-diagnostics,Validation, mstat and live editing>>
@@ -640,8 +642,14 @@ Mobiles are the creatures that populate your area. They are defined in the `#MOB
 | Raw size value replacing the inherited value
 | nonnegative integer or `inherit`
 | `language`
-| Raw language code replacing the inherited value — Step 4C4e
+| Raw language code replacing the inherited value
 | nonnegative integer or `inherit`
+| `sp2` / `sp3`
+| Second/third special slot — replacement Step 4C5
+| registered name, `none` or `inherit`
+| `spchance`
+| Complete selection-probability vector — replacement Step 4C5
+| three integer percentages, `auto` or `inherit`
 |===
 
 [[scribe-mobile-inheritance]]
@@ -800,10 +808,10 @@ scalar>> for NPC attacks using `one_hit()`. PR #714 initialises the
 <<scribe-mobile-combat-modifiers,critical and swiftness scores>>. PR #715 adds
 <<scribe-mobile-dimensions,raw dimension data>> to prototypes and live NPCs,
 without assigning units or physical gameplay rules, and restores the damage
-export. The accompanying <<scribe-mobile-language,Step 4C4e>> adds raw language
-codes and restores the `swiftmod` input field omitted in PR #715. Language
-behaviour and inherited special execution remain separate from these data
-layers.
+export. PR #716 adds <<scribe-mobile-language,raw language codes>> and restores
+`swiftmod`. The accompanying <<scribe-weighted-specials,weighted-specials
+chunk>> activates all three special slots through one weighted dispatcher.
+Language behaviour remains separate from its data layer.
 
 For the template scalar fields using `MOB_TEMPLATE_UNSET`, an archetype value
 inherits when it is unset; otherwise it replaces the body-species value.
@@ -812,13 +820,14 @@ the resolver returns zero. These sentinels are C-table conventions: do not
 write `MOB_TEMPLATE_UNSET` in a Scribe source file. Use `hpmod inherit` or
 `dammod inherit` for those scalars, and `critmod inherit` / `swiftmod inherit`
 for score-point adjustments. The dimension fields also accept `inherit`.
-Step 4C4e adds the same input distinction for `language`. These scalar groups
+PR #716 adds the same input distinction for `language`. These scalar groups
 have different meanings; language codes are not scores or bitmasks.
 
-For template special names, `NULL` means inherit, an empty string explicitly
-clears an inherited name, and a non-empty string replaces it. The existing
-single active `sp` special remains the builder-facing mechanism until active
-special inheritance is implemented. `xp_mod` has its own zero-based additive
+For template special names, `NULL` inherits, an empty string clears, and a
+non-empty string replaces. The accompanying weighted-specials chunk retains
+that rule per slot and introduces complete-vector percentage inheritance.
+Legacy standalone `sp` remains a singleton override; extended `sp2`, `sp3`
+and `spchance` use slot-aware records. `xp_mod` keeps its independent additive
 rule, described in <<scribe-template-xp,Archetype XP>>.
 
 ==== Mobile source fields
@@ -1060,9 +1069,15 @@ E.g.    aff sneak hide invis infrared
 
 _Keyword_
 
-_Special functions_ give extra behaviours to mobs either during combat or outside of combat. If you don't wish to give your mob a special function, do not include the `sp` field at all; if you include an `sp` field and leave it blank you will produce an error.
+_Special functions_ give extra behaviours to mobs during or outside combat.
+In the verified PR #716 baseline, `sp` selects one routine. The accompanying
+<<scribe-weighted-specials,replacement Step 4C5>> supports up to three weighted
+slots. With that code installed, omission inherits the template set and
+standalone `sp none` disables it; a blank field is still invalid.
 
-Only one special function may be granted per mob:
+The following legacy list of special descriptions is retained. Accepted names
+are checked against Scribe's registry and the server's `spec_lookup()`; this
+chunk does not introduce new special routines:
 
 This statement refers to the active `sp`/`#SPECIALS` mechanism. It is separate
 from the three default special-name slots stored in the new templates; those
@@ -1822,7 +1837,7 @@ There is no new live `mset hpmod` command in this chunk.
 This HP adjustment is independent of `xp_mod`. The existing XP-percentage helper,
 area/spec/equipment XP contributions and XP award formula are not edited here.
 Attack damage and critical/swiftness defaults are documented
-separately below. PR #715 supplies raw dimension data; Step 4C4e supplies raw
+separately below. PR #715 supplies raw dimension data; PR #716 supplies raw
 language codes. Their gameplay semantics remain separate. The HP mechanism
 itself adds no attacks or inherited special execution.
 
@@ -2212,8 +2227,8 @@ remove `BODY_HUGE`; changing `weight` does not edit inventory weight.
 The legacy `APPLY_HEIGHT` and `APPLY_WEIGHT` equipment applies remain inactive.
 Adding live data members alone does not activate those effects. Player
 initialisation, player-file persistence and player forms are unchanged.
-The accompanying Step 4C4e stores language codes separately. Language behaviour
-and inherited special execution remain distinct work. Measurement units and
+PR #716 stores language codes separately. Language behaviour remains separate; special execution is addressed by
+the accompanying weighted-specials chunk. Measurement units and
 physical gameplay consumers must be defined explicitly before using the
 numeric dimensions in those systems.
 
@@ -2315,7 +2330,7 @@ server; this is an exporter regression, not removal of the server feature.
 
 Explicit zero must remain distinct from an omitted field. PR #715 also
 accidentally drops `swiftmod` from the mobile input whitelist, so having its
-output statement alone is insufficient. Step 4C4e restores that input.
+output statement alone is insufficient. PR #716 restores that input.
 
 ===== DD Builder requirements
 
@@ -2328,12 +2343,10 @@ is established. Preserve the `MobDamMod` export when extending scalar output.
 
 
 [[scribe-mobile-language]]
-==== Raw language-code data — Step 4C4e
+==== Raw language-code data
 
-IMPORTANT: This section accompanies Step 4C4e. The pinned PR #715 baseline
-resolves `language` in body-species/archetype templates but does not retain
-individual or live language codes. Install the matching server and Scribe
-changes, including the `swiftmod` input repair, before using these additions.
+This feature and the `swiftmod` input repair were merged in PR #716 and are
+present in the verified baseline. Use matching server and Scribe versions.
 
 *`language` — Individual raw language code*
 
@@ -2440,7 +2453,7 @@ Advanced Consider or GMCP language output is introduced.
 PR #715 correctly restores `MobDamMod` output but accidentally removes
 `swiftmod` from the mobile input whitelist. The field then produces an
 unknown-field message and is not retained for normal export, even though
-its validation/output code is still present. Step 4C4e restores the whitelist
+its validation/output code was still present. PR #716 restores the whitelist
 entry while adding `language`.
 
 ===== DD Builder requirements
@@ -2452,8 +2465,292 @@ a named-language dropdown from assumed meanings of the legacy numbers.
 Preserve all seven earlier scalar inputs and exports, including `swiftmod`
 and `MobDamMod`.
 
-Inherited special-function execution remains the next separate template
-integration task. Adding language metadata does not activate those slots.
+Language metadata does not activate special slots. The accompanying
+weighted-specials implementation handles their execution separately below.
+
+[[scribe-weighted-specials]]
+==== Three weighted special functions — replacement Step 4C5
+
+IMPORTANT: This section requires the complete weighted-specials code supplied
+with this revision. It replaces the earlier primary-only Step 4C5a proposal;
+do not install the two proposals on top of one another. The pinned PR #716
+baseline still has one live special pointer.
+
+===== Source fields and a working example
+
+A mobile can have up to three configured special functions. The new source
+fields supplement the existing `sp` field:
+
+[cols="<2,<4,<3",options="header"]
+|===
+| Field | Meaning | Input
+| `sp` | First slot, or legacy singleton selection when used alone | Registered name, `none`, `inherit`
+| `sp2` | Second slot | Registered name, `none`, `inherit`
+| `sp3` | Third slot | Registered name, `none`, `inherit`
+| `spchance` | Complete selection-percentage vector | Three integers, `auto`, or `inherit`
+|===
+
+[source,text]
+----
+sp spec_breath_fire
+sp2 spec_breath_frost
+sp3 spec_poison
+spchance 60 30 10
+----
+
+At each existing special opportunity, the dispatcher chooses one slot: rolls
+1–60 select fire breath, 61–90 select frost breath, and 91–100 select poison.
+These are mutually exclusive selections, not three independent firing rolls.
+The selection is followed by that function's existing implementation.
+
+A percentage is an integer from 0 to 100. Configurations containing functions
+must total exactly 100. A named slot at 0% is retained for configuration but
+is not selected and does not enable special-gated capabilities or contribute
+to the weighted XP bonus. If the same routine is also present in another
+positive-weight slot, that enabled occurrence still enables it.
+
+An entirely empty set has three empty slots and 0/0/0. This is the sole
+all-zero exception. Three *named* slots at 0/0/0 is invalid; clear the names
+with `none` to disable the entire configuration.
+
+===== Selection is not a promise of a visible action
+
+A 0% slot is never selected. This does not rewrite another special's internals:
+for example, an enabled `spec_breath_any` can still call a breath routine
+internally even if that same routine occupies a separate 0% slot.
+
+The chosen routine can still refuse to act because it is not fighting, has
+no suitable target, fails an internal random roll, or fails another existing
+condition. There is no retry with a different special after a FALSE return.
+There is no pre-filtering and renormalising of percentages based on internal
+eligibility. Consequently, a 60% selection weight need not produce a visible
+fire breath on 60% of all ticks.
+
+The existing `mobile_update()` cadence, charm/mount/rider checks and bot
+branch remain the scheduling source. This change does not add a new
+per-combat-round scheduler or call all three functions in sequence. A single
+selected function can still perform whatever internal actions it already
+performs; the wrapper does not redefine those routines.
+
+The dispatcher does not consume an extra selection random number for a
+single 100% choice. It stops the current update after a callback deletes or
+moves its actor, even if that callback returned FALSE. Recursive dispatch on
+the same actor is blocked. It never temporarily changes a mob's configured
+identity to make an old single-pointer permission check pass.
+
+===== Template and individual inheritance
+
+The existing C-table names map directly to three ordinary slots:
+
+[cols="<1,<2,<4",options="header"]
+|===
+| Slot | Existing C member | Meaning
+| 1 | `spec_fun1` | First function
+| 2 | `spec_fun2` | Second function
+| 3 | `spec_boss` | Third function; *no new boss/world rank restriction*
+|===
+
+Name inheritance remains slot-by-slot: `NULL` inherits, `""` clears, and a
+non-empty registered name replaces. Scribe/area inputs use `inherit` and
+`none`, not C pointer constants.
+
+A new final `spec_chance` member contains a three-integer vector in each
+body-species/archetype definition. The vector is inherited or replaced as a
+*whole*. Individual numeric components are not inherited separately, added,
+or XORed. These valid C-table forms are:
+
+[source,c]
+----
+MOB_SPECIAL_CHANCES_INHERIT
+MOB_SPECIAL_CHANCES_AUTO
+{ 60, 30, 10 }
+----
+
+The inheritance macro expands to three `MOB_TEMPLATE_UNSET` values. The auto
+macro expands to three `MOB_SPECIAL_AUTO` values. A mixture of sentinels and
+percentages is invalid. The manual implementation steps append the inheritance
+macro to all existing table entries; their existing field positions and values
+remain unchanged.
+
+In `mob_table`, the new field comes *after* the existing `xp_mod`. For example,
+the final fields of an archetype can be:
+
+[source,c]
+----
+"spec_cast_mage", "spec_breath_fire", "spec_poison",
+5,                      /* independent additive xp_mod */
+{ 60, 30, 10 }           /* selection percentages */
+----
+
+In `species_table`, the new vector follows the three special-name fields;
+there is no species `xp_mod` field to insert.
+
+If no layer supplies explicit percentages, the policy is `auto`. After the
+final names are known, automatic allocation is 100 for one occupied slot,
+50/50 for two, and 34/33/33 for three. Remainders go to earlier occupied slots.
+Empty slots receive zero. This is a named automatic policy, not silent
+normalisation of invalid explicit input.
+
+An explicit vector must remain compatible with the final slot names. Clearing
+a slot with a positive inherited percentage therefore also requires updating
+the vector or selecting `auto`. A positive percentage on an empty slot is an
+error. Changing only a name retains the inherited vector unless it is
+explicitly replaced.
+
+Multiple slots may name the same function. Their selection probabilities
+add, but only one call is made per opportunity. This does not multiply that
+function's permission grants or charge its full XP bonus several times.
+
+===== Legacy `sp` compatibility and extended area records
+
+A source containing only `sp <name>` continues to emit the legacy `M` record.
+That record selects a singleton configuration at 100%, clearing other slots.
+This preserves old area definitions even if their archetype later acquires
+more functions. Standalone `sp none` clears all slots; standalone `sp inherit`
+restores complete template inheritance. Omitting all special fields also
+inherits the template.
+
+Using any of `sp2`, `sp3`, or `spchance` switches that mobile to the extended
+format. In this mode `sp` addresses only slot 1; omitted names inherit their
+respective slots. To replace only slot 1 without clearing other inherited
+slots, write:
+
+[source,text]
+----
+sp spec_fido
+spchance inherit
+----
+
+For the three-function example above, Scribe emits:
+
+[source,text]
+----
+#SPECIALS
+N 2700 1 spec_breath_fire
+N 2700 2 spec_breath_frost
+N 2700 3 spec_poison
+P 2700 60 30 10
+S
+----
+
+The example uses absolute vnum 2700; Scribe still adds the area's base vnum to
+the mobile's relative `vn` as usual. These records belong in `#SPECIALS`,
+not in the optional `#MOBILES` tail.
+
+`N <vnum> <slot> <name>` addresses slots 1–3 and accepts a registered name,
+`none`, or `inherit`. `P <vnum> <p1> <p2> <p3>` replaces the entire percentage
+vector. `P <vnum> auto` and `P <vnum> inherit` select the corresponding policies.
+The existing `M` record is retained for whole-set singleton/none/inherit
+selection. There are no tilde terminators. Trailing end-of-line comments are
+ignored. Repeated N/P records use the last declaration for that name/vector;
+a later M record deliberately resets the whole individual configuration.
+
+Scribe accepts lowercase `none`, `inherit`, and `auto`, and the exact
+registered special names in its existing dictionary. A numeric `spchance`
+requires exactly three nonnegative decimal integers, each at most 100.
+Fractional values, signs, percent symbols, missing values and a fourth
+percentage are rejected. The server repeats range/total validation and checks
+the final names after inheritance; Scribe does not know the compiled templates.
+
+The previous eight scalar inputs and exports are not replaced or regenerated
+by this feature. In particular, `swiftmod`, `MobDamMod`, and `language` remain
+in their existing parser/export paths.
+
+===== Boot finalisation and live state
+
+Original individual names and the original probability policy are retained
+separately from the effective three-slot prototype. Final resolution runs
+only after every area and `#SPECIALS` section has been read, before the first
+area reset. It does not reapply XOR to existing prototype flags.
+
+Each new NPC receives an independent copy of the effective set. Existing
+code which deliberately assigns a single runtime function (for example bot
+creation) uses a singleton setter, clearing other slots and setting the named
+routine to 100%. The old singleton field is removed rather than left as a
+second, conflicting source of truth.
+
+All existing executable special-identity comparisons are migrated to
+`mob_has_special()`; presence checks use `mob_has_specials()`. They inspect
+all positive-weight slots. This matters for routines whose spells or skills
+explicitly require particular NPC special identities. Slot 2 or 3 must not
+silently fail those checks because only the former primary pointer was tested.
+
+===== XP treatment
+
+Each routine retains its old special-XP bonus. The combined prototype
+contribution is the rounded weighted mean, because the scheduler selects one
+routine rather than running all three:
+
+[source,text]
+----
+weighted special bonus =
+    floor((p1*bonus1 + p2*bonus2 + p3*bonus3 + 50) / 100)
+----
+
+For fire breath (+10) at 60%, frost breath (+10) at 30%, and poison (+5) at
+10%, the result is +10 points after rounding 9.5. It is not +25 points.
+A zero-weight slot contributes zero. An empty set contributes zero. A legacy
+single function at 100% receives exactly its old bonus.
+
+The existing area-reset assignment adds this special bonus in the same place
+as before. The existing area/equipment contributions and separate archetype
+`xp_mod` are still added once. A +5 archetype adjustment with the example
+weighted bonus contributes +15 points in total before the other existing
+contributions; it is not a second multiplier.
+
+Live special edits do not recalculate the already stored `exp_modifier`.
+The prototype diagnostic reports the contribution that ordinary area resets
+use; it does not claim that an immortal-loaded or specially constructed NPC
+has the same existing XP baseline as a reset-spawned one.
+
+===== Immortal inspection and atomic editing
+
+`mstat` shows the template names and probability policy, original individual
+names and probability policy, effective prototype names/percentages, live
+names/percentages, per-slot call counts, and prototype special-XP adjustment.
+The older one-name summary reports the first enabled slot only; use the new
+three-slot section for the full state.
+
+Call counts record invocations, including callbacks which returned FALSE.
+They measure selection, not successful attacks or spells. They start at zero
+on creation and reset when a live configuration is replaced. Inspecting a
+mobile neither rolls probabilities nor executes a special.
+
+[source,text]
+----
+mset filler specials spec_breath_fire 60 spec_breath_frost 30 spec_poison 10
+mset filler specials spec_breath_fire 100 none 0 none 0
+mset filler specials none
+mset filler specials inherit
+mset filler spec spec_fido
+----
+
+The complete tuple is validated before changing the live set. Invalid names,
+incorrect sums, negative percentages, positive empty slots, or a fourth pair
+leave the existing live configuration untouched. The full live tuple accepts
+only names/`none` and numeric percentages, not per-slot `inherit` or `auto`.
+Whole-set `specials inherit` restores the effective prototype, including its
+individual overrides. `specials none` clears all slots.
+
+The legacy `spec <name>` command installs a singleton at 100%, and also
+accepts whole-set `none` and `inherit`. These operations reset call counters,
+not prototypes, other live instances, future spawns, area files, or stored XP.
+They do not reverse effects that a routine has already caused.
+
+===== DD Builder requirements
+
+Provide three name controls (inherit, none, registered function) and a
+separate whole-vector probability control (inherit, auto, three integers).
+Map slots 1/2/3 to the existing template names, including `spec_boss` for
+slot 3 without a rank gate. Keep each original individual setting separate
+from its resolved preview. Use the legacy M format for a standalone `sp`
+selection and N/P for extended definitions as described above.
+
+Explicit percentages must total 100 after slot resolution; empty slots need
+zero, and the all-empty set needs 0/0/0. Do not silently normalise invalid
+input, invent percentages for disabled slots, turn selection weights into
+three independent rolls, or export inherited values as explicit overrides.
+No scalar regression-test script is introduced or required by this chunk.
 
 [[scribe-resistance-flags]]
 ==== Resistance category reference
@@ -2638,7 +2935,8 @@ successful messages include:
 ----
 
 The Combat-score line is implemented through PR #714 and the Dimension line
-through PR #715. The Language-code line accompanies Step 4C4e.
+through PR #716. Weighted-special validation/finalisation messages require
+the accompanying replacement Step 4C5 code.
 These messages report the checks performed by those validators, not a full
 gameplay test. Unknown bits must be checked on raw template layers as well
 as resolved masks: identical invalid bits could otherwise cancel through XOR.
@@ -2673,7 +2971,7 @@ this scalar as a flag mask or reapply it when inspected.
 PR #713 adds attack-damage modifier layers and a deterministic scaling sample.
 PR #714 adds critical/swiftness modifier layers and creation snapshots.
 PR #715 adds separate dimension groups showing template, individual,
-prototype and live values. Step 4C4e adds the same layers for a raw language
+prototype and live values. PR #716 adds the same layers for a raw language
 code. These are scalar diagnostics, not XOR removal reports. Current live
 scores can differ from their creation values; dimensions and language codes
 can be edited independently without changing their prototypes.
@@ -5011,38 +5309,37 @@ pb  120
 [[scribe-revision-notes]]
 === Documentation revision notes and source baseline
 
-This revision confirms raw dimension data and the damage-export repair
-through PR #715, records the new `swiftmod` input regression in that merge,
-and documents the accompanying Step 4C4e language-code data and input
-repair. The original sixteen numbered sections remain in order.
+This revision confirms the language-code data and `swiftmod` input repair
+through PR #716. It documents the complete replacement Step 4C5 for three
+weighted specials, superseding the earlier primary-only proposal. The original sixteen numbered sections remain in order.
 New material is integrated into the existing mobile, object, weapon and
 area-XP sections.
 The field summaries also include already-described reset/audio/foley fields
 which were absent from their summary tables.
 
 The baseline was checked against
-https://github.com/fromage-fraser/dd4/tree/fa3baecdce63f6b67b2b43057dd7b31d0fa3b054[DD4 master at PR #715].
+https://github.com/fromage-fraser/dd4/tree/622d5de4abf2f761c0ab66af2da7d25025903904[DD4 master at PR #716].
 The following files are the implementation references for the added material:
 
 [cols="<2,<5",options="header"]
 |===
 | Source | Relevance
-| https://github.com/fromage-fraser/dd4/blob/fa3baecdce63f6b67b2b43057dd7b31d0fa3b054/builder/scribe/scribe.pl[`builder/scribe/scribe.pl`]
-| Accepted source fields, validation, single-special/rank export, exact-integer masks and scalar input. PR #715 restores `MobDamMod` output but omits `swiftmod` from the input whitelist; Step 4C4e restores that input and adds language metadata.
-| https://github.com/fromage-fraser/dd4/blob/fa3baecdce63f6b67b2b43057dd7b31d0fa3b054/server/src/merc.h[`server/src/merc.h`]
+| https://github.com/fromage-fraser/dd4/blob/622d5de4abf2f761c0ab66af2da7d25025903904/builder/scribe/scribe.pl[`builder/scribe/scribe.pl`]
+| Accepted source fields, validation, legacy single-special/rank export, exact-integer masks and scalar input. PR #716 restores `swiftmod` and adds language metadata. Extended special exports require the accompanying code.
+| https://github.com/fromage-fraser/dd4/blob/622d5de4abf2f761c0ab66af2da7d25025903904/server/src/merc.h[`server/src/merc.h`]
 | ACT/object/resistance flag definitions and template/prototype structures.
-| https://github.com/fromage-fraser/dd4/blob/fa3baecdce63f6b67b2b43057dd7b31d0fa3b054/server/src/mob.c[`server/src/mob.c`]
+| https://github.com/fromage-fraser/dd4/blob/622d5de4abf2f761c0ab66af2da7d25025903904/server/src/mob.c[`server/src/mob.c`]
 | Template XOR/scalar/special-name resolution, original-mask handling, validation and additive XP helper.
-| https://github.com/fromage-fraser/dd4/blob/fa3baecdce63f6b67b2b43057dd7b31d0fa3b054/server/src/db.c[`server/src/db.c`]
+| https://github.com/fromage-fraser/dd4/blob/622d5de4abf2f761c0ab66af2da7d25025903904/server/src/db.c[`server/src/db.c`]
 | Mobile loading, optional archetype/rank syntax, prototype/live copying, HP and attack-damage scalars, and critical/swiftness initialisation with creation snapshots.
-| https://github.com/fromage-fraser/dd4/blob/fa3baecdce63f6b67b2b43057dd7b31d0fa3b054/server/src/magic.c[`server/src/magic.c`] and https://github.com/fromage-fraser/dd4/blob/fa3baecdce63f6b67b2b43057dd7b31d0fa3b054/server/src/fight.c[`server/src/fight.c`]
+| https://github.com/fromage-fraser/dd4/blob/622d5de4abf2f761c0ab66af2da7d25025903904/server/src/magic.c[`server/src/magic.c`] and https://github.com/fromage-fraser/dd4/blob/622d5de4abf2f761c0ab66af2da7d25025903904/server/src/fight.c[`server/src/fight.c`]
 | Resistance adjustment, selected status helpers, ordinary-attack categories, damage messaging, death provenance and XP use.
-| https://github.com/fromage-fraser/dd4/blob/fa3baecdce63f6b67b2b43057dd7b31d0fa3b054/server/src/act_wiz.c[`server/src/act_wiz.c`] and https://github.com/fromage-fraser/dd4/blob/fa3baecdce63f6b67b2b43057dd7b31d0fa3b054/server/src/act_info.c[`server/src/act_info.c`]
+| https://github.com/fromage-fraser/dd4/blob/622d5de4abf2f761c0ab66af2da7d25025903904/server/src/act_wiz.c[`server/src/act_wiz.c`] and https://github.com/fromage-fraser/dd4/blob/622d5de4abf2f761c0ab66af2da7d25025903904/server/src/act_info.c[`server/src/act_info.c`]
 | Immortal flag/resistance/attack-part diagnostics, HP snapshots, live mask editing and body-form/resistance displays.
-| https://github.com/fromage-fraser/dd4/blob/fa3baecdce63f6b67b2b43057dd7b31d0fa3b054/server/src/const.c[`server/src/const.c`] and https://github.com/fromage-fraser/dd4/blob/fa3baecdce63f6b67b2b43057dd7b31d0fa3b054/server/src/handler.c[`server/src/handler.c`]
+| https://github.com/fromage-fraser/dd4/blob/622d5de4abf2f761c0ab66af2da7d25025903904/server/src/const.c[`server/src/const.c`] and https://github.com/fromage-fraser/dd4/blob/622d5de4abf2f761c0ab66af2da7d25025903904/server/src/handler.c[`server/src/handler.c`]
 | Effect classifications and text names for resistance/object flags.
-| Step 4C4e implementation instructions supplied in this project
-| Basis for the explicitly marked language-code input, prototype/live storage, validation, immortal editing, and `swiftmod` input repair. Language-name meanings and communication rules are not invented or activated.
+| Replacement Step 4C5 manual implementation instructions accompanying this manual
+| Basis for the explicitly marked three-slot inheritance, weight selection, runtime capability checks, weighted XP, Scribe exports and immortal editing. This is not attributed to the pinned PR #716 tree.
 |===
 
 The retained `fire_elemental` test archetype is not a general setting rule:
@@ -5056,5 +5353,5 @@ XOR. Do not infer universal elemental or undead traits from that test entry.
 
 Other existing sections have been retained rather than subjected to an
 unrelated whole-engine behaviour audit. In particular, adding this
-documentation does not enable planned undead spells, extend Scribe's
-archetype selector, or execute inherited special-function slots.
+documentation alone does not enable planned undead spells, extend Scribe's
+archetype selector, or execute weighted specials without the matching code.

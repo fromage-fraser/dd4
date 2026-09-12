@@ -604,7 +604,9 @@ CHAR_DATA* create_bot (int id, int level)
         if (IS_SET(bot_template_table[id].bot_flags, BOT_FLAG_DAMROLL_BONUS))
                 bot->damroll *= 1.5;
 
-        bot->spec_fun = spec_lookup(bot_template_table[id].special);
+        set_mob_single_special(
+            bot,
+            spec_lookup(bot_template_table[id].special));
 
         bot->act = (ACT_IS_NPC
                     | ACT_SENTINEL

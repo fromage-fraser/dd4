@@ -214,7 +214,32 @@ typedef struct mapbook_data MAPBOOK_DATA; /* This struct is whole pc map book */
  * Function types.
  */
 typedef void DO_FUN args((CHAR_DATA * ch, char *argument));
+
 typedef bool SPEC_FUN args((CHAR_DATA * ch));
+
+/*
+ * One weighted choice is made at each existing special opportunity.
+ */
+#define MOB_SPECIAL_SLOTS 3
+#define MOB_SPECIAL_AUTO (-1)
+
+#define MOB_SPECIAL_CHANCES_INHERIT \
+        { MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET }
+
+#define MOB_SPECIAL_CHANCES_AUTO \
+        { MOB_SPECIAL_AUTO, MOB_SPECIAL_AUTO, MOB_SPECIAL_AUTO }
+
+/*
+ * Effective executable configuration.
+ *
+ * Empty function slots have a zero chance. Configured sets total 100;
+ * a completely empty set contains three NULL pointers and three zeroes.
+ */
+typedef struct mob_special_data
+{
+        SPEC_FUN *fun[MOB_SPECIAL_SLOTS];
+        int chance[MOB_SPECIAL_SLOTS];
+} MOB_SPECIAL_DATA;
 typedef void SPELL_FUN args((int sn, int level, CHAR_DATA *ch, void *vo));
 typedef void GAME_FUN args((CHAR_DATA * ch, CHAR_DATA *croupier, int amount, int cheat, char *argument));
 typedef void CONSTRUCT_FUN args((int sn, int level, CHAR_DATA *ch));
@@ -2716,7 +2741,7 @@ struct learned_data
 struct mob_index_data
 {
         MOB_INDEX_DATA *next;
-        SPEC_FUN *spec_fun;
+        MOB_SPECIAL_DATA specials;
         GAME_DATA *pGame;
         SHOP_DATA *pShop;
         MPROG_DATA *mobprogs;
@@ -2813,6 +2838,21 @@ struct mob_index_data
          */
         int area_language;
         int language;
+
+        /*
+         * Original individual #SPECIALS choices.
+         *
+         * NULL name: inherit that slot.
+         * Empty string: explicitly clear that slot.
+         * Non-empty name: replace that slot.
+         */
+        char *area_special_name[MOB_SPECIAL_SLOTS];
+
+        /*
+         * Original individual probability policy.
+         * The three values inherit or replace as one vector.
+         */
+        int area_spec_chance[MOB_SPECIAL_SLOTS];
 };
 
 /*
@@ -2830,7 +2870,9 @@ struct char_data
         CHAR_DATA *reply;
         CHAR_DATA *mount;
         CHAR_DATA *rider;
-        SPEC_FUN *spec_fun;
+        MOB_SPECIAL_DATA specials;
+        bool special_running;
+        unsigned long int special_calls[MOB_SPECIAL_SLOTS];
         MOB_INDEX_DATA *pIndexData;
         DESCRIPTOR_DATA *desc;
         AFFECT_DATA *affected;
@@ -3533,6 +3575,11 @@ struct mob_template_data
          * Zero means no adjustment.
          */
         int xp_mod;
+        /*
+         * Whole-vector inheritance/auto marker, or three explicit
+         * selection percentages.
+         */
+        int spec_chance[MOB_SPECIAL_SLOTS];
 };
 
 /*
@@ -3578,6 +3625,11 @@ struct mob_type
          * XP modifier. This is not a separate multiplier.
          */
         int xp_mod;
+        /*
+         * Whole-vector inheritance/auto marker, or three explicit
+         * selection percentages.
+         */
+        int spec_chance[MOB_SPECIAL_SLOTS];
 };
 
 /*
@@ -3612,6 +3664,11 @@ struct species_type
         char *spec_fun1;
         char *spec_fun2;
         char *spec_boss;
+        /*
+         * Whole-vector inheritance/auto marker, or three explicit
+         * selection percentages.
+         */
+        int spec_chance[MOB_SPECIAL_SLOTS];
 };
 
 struct rank
@@ -5559,6 +5616,36 @@ bool parse_mob_dimension args((const char *text, int *value));
 int validate_mob_dimensions args((void));
 bool parse_mob_language args((const char *text, int *value));
 int validate_mob_languages args((void));
+/* Three-slot weighted mobile special configuration. */
+bool mob_special_policy_valid args((const int *chance));
+bool parse_mob_special_percent args((const char *text, int *value));
+
+bool build_mob_specials args((const char *const *names,
+                              const int *chance,
+                              MOB_SPECIAL_DATA *result,
+                              char *error,
+                              size_t error_size));
+
+bool mob_specials_valid args((const MOB_SPECIAL_DATA *set));
+bool mob_has_special args((CHAR_DATA *mob, SPEC_FUN *special));
+bool mob_has_specials args((CHAR_DATA *mob));
+
+bool set_mob_specials args((CHAR_DATA *mob,
+                            const MOB_SPECIAL_DATA *set));
+
+void set_mob_single_special args((CHAR_DATA *mob, SPEC_FUN *special));
+bool run_mob_special args((CHAR_DATA *mob));
+
+void mob_template_special_names args((const MOB_TEMPLATE_DATA *data,
+                                      const char **names));
+
+bool resolve_mob_index_specials args((MOB_INDEX_DATA *index,
+                                      char *error,
+                                      size_t error_size));
+
+int validate_mob_special_templates args((void));
+int mob_specials_exp_bonus args((const MOB_SPECIAL_DATA *set));
+const char *mob_special_name args((SPEC_FUN *special));
 
 /* mob_commands.c */
 char *mprog_type_to_name args((int type));
