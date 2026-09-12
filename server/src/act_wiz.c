@@ -2463,6 +2463,87 @@ static void mstat_combat_modifier_layers(CHAR_DATA *ch, CHAR_DATA *victim)
             ch);
 }
 
+/* Display a raw dimension through the template, prototype and live layers. */
+static void mstat_dimension_group(
+    CHAR_DATA *ch,
+    const char *heading,
+    int inherited,
+    int individual,
+    int prototype,
+    int live)
+{
+        char buf[MAX_STRING_LENGTH];
+
+        snprintf(
+            buf, sizeof(buf),
+            "\n\r{W%s{x\n\r  Template:  %d\n\r",
+            heading, inherited);
+        send_to_char(buf, ch);
+
+        if (individual == MOB_TEMPLATE_UNSET)
+        {
+                send_to_char("  #MOBILES:  inherit\n\r", ch);
+        }
+        else
+        {
+                snprintf(
+                    buf, sizeof(buf),
+                    "  #MOBILES:  %d (replacement)\n\r", individual);
+                send_to_char(buf, ch);
+        }
+
+        snprintf(
+            buf, sizeof(buf),
+            "  Prototype: %d\n\r  Live:      %d\n\r",
+            prototype, live);
+        send_to_char(buf, ch);
+}
+
+static void mstat_dimension_layers(CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        MOB_TEMPLATE_DATA inherited;
+        MOB_INDEX_DATA *index;
+
+        if (!IS_NPC(victim) || !victim->pIndexData)
+                return;
+
+        index = victim->pIndexData;
+        memset(&inherited, 0, sizeof(inherited));
+
+        if (index->mobspec && index->mobspec[0] != '\0')
+        {
+                if (!resolve_mob_template(
+                        mob_lookup(index->mobspec), &inherited))
+                {
+                        send_to_char(
+                            "\n\r{RDimension layers unavailable: "
+                            "invalid template.{x\n\r", ch);
+                        return;
+                }
+        }
+
+        mstat_dimension_group(
+            ch, "Height layers",
+            inherited.height, index->area_height,
+            index->height, victim->height);
+
+        mstat_dimension_group(
+            ch, "Weight layers",
+            inherited.weight, index->area_weight,
+            index->weight, victim->weight);
+
+        mstat_dimension_group(
+            ch, "Size layers",
+            inherited.size, index->area_size,
+            index->size, victim->size);
+
+        send_to_char(
+            "Raw dimension data: 0 means unspecified. "
+            "This layer performs no unit conversion or size classification.\n\r"
+            "Changing these values does not alter body flags, carrying, "
+            "equipment fit, or combat.\n\r", ch);
+}
+
 void do_mstat(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *rch;
@@ -3282,7 +3363,8 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                         strcat(buf1, buf);
                                         sprintf(
                                             buf,
-                                            "Height: %d Weight: %d Size: %d\n\r",
+                                            "Template dimensions (raw): "
+                                            "height %d weight %d size %d\n\r",
                                             resolved.height,
                                             resolved.weight,
                                             resolved.size);
@@ -3352,6 +3434,7 @@ void do_mstat(CHAR_DATA *ch, char *argument)
         mstat_hp_modifier_layers(ch, victim);
         mstat_damage_modifier_layers(ch, victim);
         mstat_combat_modifier_layers(ch, victim);
+        mstat_dimension_layers(ch, victim);
         return;
 }
 
@@ -5730,7 +5813,7 @@ void do_mset(CHAR_DATA *ch, char *argument)
                              "  copper age rage spec act crit swiftness bonus\n\r"
                              "  max_bonus slept steel titanium adamantite\n\r"
                              "  electrum starmetal resists vulnerabilities \n\r"
-                             "  immunes attack_parts dammod\n\r"
+                             "  immunes attack_parts dammod height weight size\n\r"
                              "String being one of:\n\r"
                              "  name short long title spec\n\r",
                              ch);
@@ -5743,6 +5826,48 @@ void do_mset(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+                /* Absolute live NPC metadata; this does not re-resolve inheritance. */
+        if (!str_cmp(arg2, "height")
+        ||  !str_cmp(arg2, "weight")
+        ||  !str_cmp(arg2, "size"))
+        {
+                int dimension;
+
+                if (!IS_NPC(victim))
+                {
+                        send_to_char(
+                            "These dimension fields are currently NPC-only.\n\r",
+                            ch);
+                        return;
+                }
+
+                if (!parse_mob_dimension(arg3, &dimension)
+                ||  dimension == MOB_TEMPLATE_UNSET)
+                {
+                        snprintf(
+                            buf, sizeof(buf),
+                            "Use a decimal integer from 0 to %d. "
+                            "The live command does not accept inherit.\n\r",
+                            INT_MAX);
+                        send_to_char(buf, ch);
+                        return;
+                }
+
+                if (!str_cmp(arg2, "height"))
+                        victim->height = dimension;
+                else if (!str_cmp(arg2, "weight"))
+                        victim->weight = dimension;
+                else
+                        victim->size = dimension;
+
+                snprintf(
+                    buf, sizeof(buf),
+                    "Live %s set to %d. Prototype and area data are unchanged; "
+                    "no physical gameplay rules are recalculated.\n\r",
+                    arg2, dimension);
+                send_to_char(buf, ch);
+                return;
+        }
         /*
          * Replace the complete live NPC attack-damage adjustment.
          * Inheritance is resolved for prototypes, not by this live command.
