@@ -688,7 +688,9 @@ while (1) {
 
             next if &add_field_data(
                     \%mob, $field, $data,
-                    'sp vn nm sh lo lv act aff bf sx al rnk res vuln imm atk hpmod dammod critmod  height weight size');
+                    'sp vn nm sh lo lv act aff bf sx al rnk res vuln imm atk '
+                    . 'hpmod dammod critmod swiftmod '
+                    . 'height weight size language');
             print "    line $line: mob: unknown field '$field'\n";
         }
 
@@ -1319,12 +1321,12 @@ foreach (0 .. $#mobs) {
         }
     }
 
-    # Optional absolute dimension metadata. Omission means inherit.
+    # Optional absolute metadata. Omission means inherit, not zero.
 
-    foreach my $field (qw/height weight size/) {
+    foreach my $field (qw/height weight size language/) {
         next unless exists $mob{$field};
 
-        if ($msg = &get_mob_dimension(\%mob, $field)) {
+        if ($msg = &get_mob_nonnegative_scalar(\%mob, $field)) {
             print "$err $msg\n";
             $mob_errors{$mob{'line'}}++;
         }
@@ -2574,8 +2576,8 @@ sub get_mob_combat_modifier(\%$) {
     return 0;
 }
 
-# Preserve an individual raw dimension separately from its inheritance state.
-sub get_mob_dimension(\%$) {
+# Normalise absolute dimension values and raw language codes.
+sub get_mob_nonnegative_scalar(\%$) {
     my ($var, $field) = @_;
 
     return "field '$field' is missing" unless exists $$var{$field};
@@ -3023,6 +3025,9 @@ if (@mobs) {
 
         print AREA "MobSize $mob{'size'}\n"
                 if exists $mob{'size'};
+
+        print AREA "MobLanguage $mob{'language'}\n"
+                if exists $mob{'language'};
     }
 
     print AREA "#0\n\n";

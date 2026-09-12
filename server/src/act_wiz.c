@@ -2544,6 +2544,63 @@ static void mstat_dimension_layers(CHAR_DATA *ch, CHAR_DATA *victim)
             "equipment fit, or combat.\n\r", ch);
 }
 
+/* Display the raw language code without interpreting it as a skill or flag. */
+static void mstat_language_layers(CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        MOB_TEMPLATE_DATA inherited;
+        MOB_INDEX_DATA *index;
+        char buf[MAX_STRING_LENGTH];
+
+        if (!IS_NPC(victim) || !victim->pIndexData)
+                return;
+
+        index = victim->pIndexData;
+        memset(&inherited, 0, sizeof(inherited));
+
+        if (index->mobspec && index->mobspec[0] != '\0')
+        {
+                if (!resolve_mob_template(
+                        mob_lookup(index->mobspec), &inherited))
+                {
+                        send_to_char(
+                            "\n\r{RLanguage layers unavailable: "
+                            "invalid template.{x\n\r", ch);
+                        return;
+                }
+        }
+
+        snprintf(
+            buf, sizeof(buf),
+            "\n\r{WLanguage code layers{x\n\r"
+            "  Template:  %d\n\r",
+            inherited.language);
+        send_to_char(buf, ch);
+
+        if (index->area_language == MOB_TEMPLATE_UNSET)
+        {
+                send_to_char("  #MOBILES:  inherit\n\r", ch);
+        }
+        else
+        {
+                snprintf(
+                    buf, sizeof(buf),
+                    "  #MOBILES:  %d (replacement)\n\r",
+                    index->area_language);
+                send_to_char(buf, ch);
+        }
+
+        snprintf(
+            buf, sizeof(buf),
+            "  Prototype: %d\n\r  Live:      %d\n\r",
+            index->language, victim->language);
+        send_to_char(buf, ch);
+        send_to_char(
+            "Raw language code: 0 means unspecified. "
+            "No language names or comprehension rules are assigned here.\n\r"
+            "This value does not change speech permissions or BODY_NO_SPEECH.\n\r",
+            ch);
+}
+
 void do_mstat(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *rch;
@@ -3407,7 +3464,7 @@ void do_mstat(CHAR_DATA *ch, char *argument)
 
                                         sprintf(
                                             buf,
-                                            "Lang: %d\n\r"
+                                            "Template language code: %d\n\r"
                                             "Spec_1: %s\n\r"
                                             "Spec_2: %s\n\r"
                                             "Spec_3: %s\n\r",
@@ -3435,6 +3492,7 @@ void do_mstat(CHAR_DATA *ch, char *argument)
         mstat_damage_modifier_layers(ch, victim);
         mstat_combat_modifier_layers(ch, victim);
         mstat_dimension_layers(ch, victim);
+        mstat_language_layers(ch, victim);
         return;
 }
 
@@ -5814,6 +5872,7 @@ void do_mset(CHAR_DATA *ch, char *argument)
                              "  max_bonus slept steel titanium adamantite\n\r"
                              "  electrum starmetal resists vulnerabilities \n\r"
                              "  immunes attack_parts dammod height weight size\n\r"
+                             "  language\n\r"
                              "String being one of:\n\r"
                              "  name short long title spec\n\r",
                              ch);
@@ -5826,7 +5885,43 @@ void do_mset(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-                /* Absolute live NPC metadata; this does not re-resolve inheritance. */
+        /* Absolute live NPC metadata, separate from speech permissions. */
+        if (!str_cmp(arg2, "language"))
+        {
+                int language;
+
+                if (!IS_NPC(victim))
+                {
+                        send_to_char(
+                            "The language field is currently NPC-only.\n\r",
+                            ch);
+                        return;
+                }
+
+                if (!parse_mob_language(arg3, &language)
+                ||  language == MOB_TEMPLATE_UNSET)
+                {
+                        snprintf(
+                            buf, sizeof(buf),
+                            "Use a decimal integer from 0 to %d. "
+                            "The live command does not accept inherit.\n\r",
+                            INT_MAX);
+                        send_to_char(buf, ch);
+                        return;
+                }
+
+                victim->language = language;
+
+                snprintf(
+                    buf, sizeof(buf),
+                    "Live language code set to %d. Prototype and area data "
+                    "are unchanged; speech permissions are unchanged.\n\r",
+                    language);
+                send_to_char(buf, ch);
+                return;
+        }
+
+        /* Absolute live NPC metadata; this does not re-resolve inheritance. */
         if (!str_cmp(arg2, "height")
         ||  !str_cmp(arg2, "weight")
         ||  !str_cmp(arg2, "size"))

@@ -590,6 +590,76 @@ int validate_mob_dimensions(void)
 }
 
 /*
+ * Parse one raw language code or inherit.
+ * Reuse integer syntax only; this is not a percentage adjustment.
+ */
+bool parse_mob_language(const char *text, int *value)
+{
+        return parse_mob_percent_modifier(text, 0, value);
+}
+
+/* Validate stored codes, not membership of a language-name dictionary. */
+static int validate_mob_language_value(
+    const char *owner,
+    const char *name,
+    int value)
+{
+        char buf[MAX_STRING_LENGTH];
+
+        if (value == MOB_TEMPLATE_UNSET || value >= 0)
+                return 0;
+
+        snprintf(
+            buf, sizeof(buf),
+            "[MOB TEMPLATE] %s '%s' has invalid language code %d; "
+            "use MOB_TEMPLATE_UNSET or a value from 0 to %d.",
+            owner, name ? name : "unnamed", value, INT_MAX);
+        log_string(buf);
+        return 1;
+}
+
+int validate_mob_languages(void)
+{
+        char buf[MAX_STRING_LENGTH];
+        int sn;
+        int issues;
+
+        issues = 0;
+
+        for (sn = 0; sn < MAX_SPECIES; sn++)
+        {
+                issues += validate_mob_language_value(
+                    "Body species", species_table[sn].species,
+                    species_table[sn].language);
+        }
+
+        for (sn = 0; sn < MAX_MOB; sn++)
+        {
+                issues += validate_mob_language_value(
+                    "Creature archetype", mob_table[sn].name,
+                    mob_table[sn].language);
+        }
+
+        if (issues == 0)
+        {
+                log_string(
+                    "[MOB TEMPLATE] Language-code validation complete: "
+                    "no issues found.");
+        }
+        else
+        {
+                snprintf(
+                    buf, sizeof(buf),
+                    "[MOB TEMPLATE] Language-code validation complete: "
+                    "%d issue%s found.",
+                    issues, issues == 1 ? "" : "s");
+                log_string(buf);
+        }
+
+        return issues;
+}
+
+/*
  * Check raw template HP adjustments before any mobile is instantiated.
  * An unset scalar is valid; an adjustment below -99 is not.
  */
@@ -1182,6 +1252,11 @@ void initialise_mob_index_flags(MOB_INDEX_DATA *index)
             resolve_template_scalar(
                 inherited.size,
                 index->area_size);
+
+        index->language =
+            resolve_template_scalar(
+                inherited.language,
+                index->area_language);
 
         index->resists =
             inherited.resists ^ index->area_resists;

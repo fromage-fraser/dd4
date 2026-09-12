@@ -1038,6 +1038,9 @@ void boot_db(void)
                 if (validate_mob_dimensions() != 0)
                         exit(1);
 
+                if (validate_mob_languages() != 0)
+                        exit(1);
+
                 validate_mob_resistance_table();
         }
 
@@ -2114,6 +2117,29 @@ static int read_mob_dimension(
         return value;
 }
 
+/* Read one optional raw language code or the inheritance keyword. */
+static int read_mob_language(FILE *fp, MOB_INDEX_DATA *index)
+{
+        const char *text;
+        int value;
+        char buf[MAX_STRING_LENGTH];
+
+        text = fread_word(fp);
+
+        if (!parse_mob_language(text, &value))
+        {
+                snprintf(
+                    buf, sizeof(buf),
+                    "[MOB TEMPLATE] vnum %d: invalid MobLanguage value '%s'. "
+                    "Use inherit or a decimal integer from 0 to %d.",
+                    index->vnum, text ? text : "(missing)", INT_MAX);
+                log_string(buf);
+                exit(1);
+        }
+
+        return value;
+}
+
 /*
  * Snarf a mob section.
  */
@@ -2162,6 +2188,7 @@ void load_mobiles(FILE *fp)
                 pMobIndex->area_height = MOB_TEMPLATE_UNSET;
                 pMobIndex->area_weight = MOB_TEMPLATE_UNSET;
                 pMobIndex->area_size = MOB_TEMPLATE_UNSET;
+                pMobIndex->area_language = MOB_TEMPLATE_UNSET;
 
                 for (stat = 0; stat < SECT_MAX; stat++)
                         pMobIndex->footstep_key[stat] = NULL;
@@ -2341,11 +2368,17 @@ void load_mobiles(FILE *fp)
                                     read_mob_dimension(
                                         fp, pMobIndex, "MobWeight");
                         }
+
                         else if (!str_cmp(word, "MobSize"))
                         {
                                 pMobIndex->area_size =
                                     read_mob_dimension(
                                         fp, pMobIndex, "MobSize");
+                        }
+                        else if (!str_cmp(word, "MobLanguage"))
+                        {
+                                pMobIndex->area_language =
+                                    read_mob_language(fp, pMobIndex);
                         }
                         else if (!str_cmp(word, "FStepInside"))
                                 pMobIndex->footstep_key[SECT_INSIDE] = fread_string(fp);
@@ -4309,6 +4342,7 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA *pMobIndex)
         mob->height = pMobIndex->height;
         mob->weight = pMobIndex->weight;
         mob->size = pMobIndex->size;
+        mob->language = pMobIndex->language;
 
         mob->armor = interpolate(mob->level, 100, -100);
 
