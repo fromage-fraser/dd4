@@ -8723,7 +8723,8 @@ void spell_infernal_fury(int sn, int level, CHAR_DATA *ch, void *vo)
         int dam;
         int hpch;
 
-        if (IS_NPC(ch) && !(ch->spec_fun == spec_lookup("spec_orange_grung")))
+        if (IS_NPC(ch)
+        && !mob_has_special(ch, spec_lookup("spec_orange_grung")))
                 return;
 
         if (!IS_EVIL(ch))

@@ -41,7 +41,8 @@ void wear_obj           args( ( CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace ) );
 /*
  * The following special functions are available for mobiles.
  *
- * REMEMBER: check xp bonus in load_specials in db.c and update spec_fun_name() and spec_lookup() if you add a special
+ * REMEMBER: check mob_special_exp_bonus() in mob.c and update
+ * mob_special_name() and spec_lookup() if you add a special.
  */
 
 DECLARE_SPEC_FUN( spec_breath_any           );
@@ -185,85 +186,102 @@ SPEC_FUN *spec_lookup (const char *name )
 }
 
 /*
-* Get text string for a mobile's spec_fun, used in mstat --Owl 22/2/22
-*
-*/
-char* spec_fun_name (CHAR_DATA *ch)
+ * Return the canonical name for one function pointer.
+ */
+const char *mob_special_name(SPEC_FUN *special)
 {
-    /* fprintf(stderr, "has spec fun var: %p\r\n", ch->spec_fun); */
-    /* fprintf(stderr, "spec lookup var: %p\r\n", spec_lookup("spec_cast_hooker")); */
+        if (!special)
+                return "none";
 
-    if ( IS_NPC(ch)
-         &&   ch->spec_fun )
-    {
-        if (ch->spec_fun == spec_lookup("spec_breath_any"))           return "spec_breath_any";
-        if (ch->spec_fun == spec_lookup("spec_breath_acid"))          return "spec_breath_acid";
-        if (ch->spec_fun == spec_lookup("spec_breath_fire"))          return "spec_breath_fire";
-        if (ch->spec_fun == spec_lookup("spec_breath_frost"))         return "spec_breath_frost";
-        if (ch->spec_fun == spec_lookup("spec_breath_gas"))           return "spec_breath_gas";
-        if (ch->spec_fun == spec_lookup("spec_breath_lightning"))     return "spec_breath_lightning";
-        if (ch->spec_fun == spec_lookup("spec_breath_steam"))         return "spec_breath_steam";
-        if (ch->spec_fun == spec_lookup("spec_cast_adept"))           return "spec_cast_adept";
-        if (ch->spec_fun == spec_lookup("spec_cast_hooker"))          return "spec_cast_hooker";
-        if (ch->spec_fun == spec_lookup("spec_buddha"))               return "spec_buddha";
-        if (ch->spec_fun == spec_lookup("spec_kungfu_poison"))        return "spec_kungfu_poison";
-        if (ch->spec_fun == spec_lookup("spec_cast_cleric"))          return "spec_cast_cleric";
-        if (ch->spec_fun == spec_lookup("spec_cast_judge"))           return "spec_cast_judge";
-        if (ch->spec_fun == spec_lookup("spec_cast_mage"))            return "spec_cast_mage";
-        if (ch->spec_fun == spec_lookup("spec_cast_druid"))           return "spec_cast_druid";
-        if (ch->spec_fun == spec_lookup("spec_cast_water_sprite"))    return "spec_cast_water_sprite";
-        if (ch->spec_fun == spec_lookup("spec_cast_psionicist"))      return "spec_cast_psionicist";
-        if (ch->spec_fun == spec_lookup("spec_cast_undead"))          return "spec_cast_undead";
-        if (ch->spec_fun == spec_lookup("spec_executioner"))          return "spec_executioner";
-        if (ch->spec_fun == spec_lookup("spec_fido"))                 return "spec_fido";
-        if (ch->spec_fun == spec_lookup("spec_clan_guard"))           return "spec_clan_guard";
-        if (ch->spec_fun == spec_lookup("spec_guard"))                return "spec_guard";
-        if (ch->spec_fun == spec_lookup("spec_janitor"))              return "spec_janitor";
-        if (ch->spec_fun == spec_lookup("spec_poison"))               return "spec_poison";
-        if (ch->spec_fun == spec_lookup("spec_repairman"))            return "spec_repairman";
-        if (ch->spec_fun == spec_lookup("spec_thief"))                return "spec_thief";
-        if (ch->spec_fun == spec_lookup("spec_bounty"))               return "spec_bounty";
-        if (ch->spec_fun == spec_lookup("spec_grail"))                return "spec_grail";
-        if (ch->spec_fun == spec_lookup("spec_cast_orb"))             return "spec_cast_orb";
-        if (ch->spec_fun == spec_lookup("spec_assassin"))             return "spec_assassin";
-        if (ch->spec_fun == spec_lookup("spec_warrior"))              return "spec_warrior";
-        if (ch->spec_fun == spec_lookup("spec_vampire"))              return "spec_vampire";
-        if (ch->spec_fun == spec_lookup("spec_cast_archmage"))        return "spec_cast_archmage";
-        if (ch->spec_fun == spec_lookup("spec_cast_priestess"))       return "spec_cast_priestess";
-        if (ch->spec_fun == spec_lookup("spec_mast_vampire"))         return "spec_mast_vampire";
-        if (ch->spec_fun == spec_lookup("spec_bloodsucker"))          return "spec_bloodsucker";
-        if (ch->spec_fun == spec_lookup("spec_spectral_minion"))      return "spec_spectral_minion";
-        if (ch->spec_fun == spec_lookup("spec_celestial_repairman"))  return "spec_celestial_repairman";
-        if (ch->spec_fun == spec_lookup("spec_sahuagin"))             return "spec_sahuagin";
-        if (ch->spec_fun == spec_lookup("spec_evil_evil_gezhp"))      return "spec_evil_evil_gezhp";
-        if (ch->spec_fun == spec_lookup("spec_demon"))                return "spec_demon";
-        if (ch->spec_fun == spec_lookup("spec_cast_electric"))        return "spec_cast_electric";
-        if (ch->spec_fun == spec_lookup("spec_small_whale"))          return "spec_small_whale";
-        if (ch->spec_fun == spec_lookup("spec_large_whale"))          return "spec_large_whale";
-        if (ch->spec_fun == spec_lookup("spec_kappa"))                return "spec_kappa";
-        if (ch->spec_fun == spec_lookup("spec_aboleth"))              return "spec_aboleth";
-        if (ch->spec_fun == spec_lookup("spec_laghathti"))            return "spec_laghathti";
-        if (ch->spec_fun == spec_lookup("spec_superwimpy"))           return "spec_superwimpy";
-        if (ch->spec_fun == spec_lookup("spec_uzollru"))              return "spec_uzollru";
-        if (ch->spec_fun == spec_lookup("spec_sahuagin_baron"))       return "spec_sahuagin_baron";
-        if (ch->spec_fun == spec_lookup("spec_sahuagin_prince"))      return "spec_sahuagin_prince";
-        if (ch->spec_fun == spec_lookup("spec_green_grung"))          return "spec_green_grung";
-        if (ch->spec_fun == spec_lookup("spec_sahuagin_infantry"))    return "spec_sahuagin_infantry";
-        if (ch->spec_fun == spec_lookup("spec_sahuagin_cavalry"))     return "spec_sahuagin_cavalry";
-        if (ch->spec_fun == spec_lookup("spec_sahuagin_guard"))       return "spec_sahuagin_guard";
-        if (ch->spec_fun == spec_lookup("spec_sahuagin_lieutenant"))  return "spec_sahuagin_lieutenant";
-        if (ch->spec_fun == spec_lookup("spec_sahuagin_cleric"))      return "spec_sahuagin_cleric";
-        if (ch->spec_fun == spec_lookup("spec_sahuagin_high_cleric")) return "spec_sahuagin_high_cleric";
-        if (ch->spec_fun == spec_lookup("spec_red_grung"))            return "spec_red_grung";
-        if (ch->spec_fun == spec_lookup("spec_blue_grung"))           return "spec_blue_grung";
-        if (ch->spec_fun == spec_lookup("spec_purple_grung"))         return "spec_purple_grung";
-        if (ch->spec_fun == spec_lookup("spec_orange_grung"))         return "spec_orange_grung";
-        if (ch->spec_fun == spec_lookup("spec_gold_grung"))           return "spec_gold_grung";
-    }
-    else {
+        if (special == spec_breath_any) return "spec_breath_any";
+        if (special == spec_breath_acid) return "spec_breath_acid";
+        if (special == spec_breath_fire) return "spec_breath_fire";
+        if (special == spec_breath_frost) return "spec_breath_frost";
+        if (special == spec_breath_gas) return "spec_breath_gas";
+        if (special == spec_breath_lightning) return "spec_breath_lightning";
+        if (special == spec_breath_steam) return "spec_breath_steam";
+        if (special == spec_cast_adept) return "spec_cast_adept";
+        if (special == spec_cast_hooker) return "spec_cast_hooker";
+        if (special == spec_buddha) return "spec_buddha";
+        if (special == spec_kungfu_poison) return "spec_kungfu_poison";
+        if (special == spec_cast_cleric) return "spec_cast_cleric";
+        if (special == spec_cast_judge) return "spec_cast_judge";
+        if (special == spec_cast_mage) return "spec_cast_mage";
+        if (special == spec_cast_druid) return "spec_cast_druid";
+        if (special == spec_cast_water_sprite) return "spec_cast_water_sprite";
+        if (special == spec_cast_psionicist) return "spec_cast_psionicist";
+        if (special == spec_cast_undead) return "spec_cast_undead";
+        if (special == spec_executioner) return "spec_executioner";
+        if (special == spec_fido) return "spec_fido";
+        if (special == spec_clan_guard) return "spec_clan_guard";
+        if (special == spec_guard) return "spec_guard";
+        if (special == spec_janitor) return "spec_janitor";
+        if (special == spec_poison) return "spec_poison";
+        if (special == spec_repairman) return "spec_repairman";
+        if (special == spec_thief) return "spec_thief";
+        if (special == spec_bounty) return "spec_bounty";
+        if (special == spec_grail) return "spec_grail";
+        if (special == spec_cast_orb) return "spec_cast_orb";
+        if (special == spec_assassin) return "spec_assassin";
+        if (special == spec_warrior) return "spec_warrior";
+        if (special == spec_vampire) return "spec_vampire";
+        if (special == spec_cast_archmage) return "spec_cast_archmage";
+        if (special == spec_cast_priestess) return "spec_cast_priestess";
+        if (special == spec_mast_vampire) return "spec_mast_vampire";
+        if (special == spec_bloodsucker) return "spec_bloodsucker";
+        if (special == spec_spectral_minion) return "spec_spectral_minion";
+        if (special == spec_celestial_repairman) return "spec_celestial_repairman";
+        if (special == spec_sahuagin) return "spec_sahuagin";
+        if (special == spec_evil_evil_gezhp) return "spec_evil_evil_gezhp";
+        if (special == spec_demon) return "spec_demon";
+        if (special == spec_cast_electric) return "spec_cast_electric";
+        if (special == spec_small_whale) return "spec_small_whale";
+        if (special == spec_large_whale) return "spec_large_whale";
+        if (special == spec_kappa) return "spec_kappa";
+        if (special == spec_aboleth) return "spec_aboleth";
+        if (special == spec_laghathti) return "spec_laghathti";
+        if (special == spec_superwimpy) return "spec_superwimpy";
+        if (special == spec_uzollru) return "spec_uzollru";
+        if (special == spec_sahuagin_baron) return "spec_sahuagin_baron";
+        if (special == spec_sahuagin_prince) return "spec_sahuagin_prince";
+        if (special == spec_green_grung) return "spec_green_grung";
+        if (special == spec_sahuagin_infantry) return "spec_sahuagin_infantry";
+        if (special == spec_sahuagin_cavalry) return "spec_sahuagin_cavalry";
+        if (special == spec_sahuagin_guard) return "spec_sahuagin_guard";
+        if (special == spec_sahuagin_lieutenant) return "spec_sahuagin_lieutenant";
+        if (special == spec_sahuagin_cleric) return "spec_sahuagin_cleric";
+        if (special == spec_sahuagin_high_cleric) return "spec_sahuagin_high_cleric";
+        if (special == spec_red_grung) return "spec_red_grung";
+        if (special == spec_blue_grung) return "spec_blue_grung";
+        if (special == spec_purple_grung) return "spec_purple_grung";
+        if (special == spec_orange_grung) return "spec_orange_grung";
+        if (special == spec_gold_grung) return "spec_gold_grung";
+
+        return "(unregistered)";
+}
+
+/*
+ * Preserve the legacy one-name display interface.
+ * Complete three-slot diagnostics are provided separately by mstat.
+ */
+char *spec_fun_name(CHAR_DATA *ch)
+{
+        int i;
+
+        if (ch && IS_NPC(ch))
+        {
+                for (i = 0; i < MOB_SPECIAL_SLOTS; i++)
+                {
+                        if (ch->specials.fun[i]
+                        &&  ch->specials.chance[i] > 0)
+                        {
+                                return (char *)mob_special_name(
+                                    ch->specials.fun[i]);
+                        }
+                }
+        }
+
         return "none";
-    }
-    return "none";
 }
 
 

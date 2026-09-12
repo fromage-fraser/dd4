@@ -688,7 +688,7 @@ while (1) {
 
             next if &add_field_data(
                     \%mob, $field, $data,
-                    'sp vn nm sh lo lv act aff bf sx al rnk res vuln imm atk '
+                    'sp sp2 sp3 spchance vn nm sh lo lv act aff bf sx al rnk res vuln imm atk '
                     . 'hpmod dammod critmod swiftmod '
                     . 'height weight size language');
             print "    line $line: mob: unknown field '$field'\n";
@@ -1364,21 +1364,18 @@ foreach (0 .. $#mobs) {
         }
     }
 
-    if (exists $mob{'sp'}) {
-        my $found = 0;
+    # Standalone sp retains singleton compatibility.
+    # Explicit slots or probabilities use N/P records.
+    if (grep { exists $mob{$_} } qw/sp sp2 sp3 spchance/) {
+        my ($special_error, $records) =
+                format_mob_specials(\%mob, $mob{'vn'} + $area{'bv'});
 
-        foreach (@mob_spec) {
-            if ($mob{'sp'} eq $_) {
-                push @specials, "M " . ($mob{'vn'} + $area{'bv'})
-                        . " $mob{'sp'} \t$mob{'sh'}\n";
-                $found = 1;
-                last;
-            }
-        }
-
-        if (!$found) {
-            print "$err invalid special function: $mob{'sp'}\n";
+        if ($special_error) {
+            print "$err $special_error\n";
             $mob_errors{$mob{'line'}}++;
+        }
+        else {
+            push @specials, @$records;
         }
     }
 
@@ -2574,6 +2571,94 @@ sub get_mob_combat_modifier(\%$) {
 
     $$var{$field} = $value->bstr();
     return 0;
+}
+
+# Build legacy singleton or explicit slot/percentage records.
+# The server, not Scribe, expands template inheritance.
+sub format_mob_specials {
+    my ($mob, $vnum) = @_;
+    my @records;
+    my %registered = map { $_ => 1 } @mob_spec;
+    my @fields = qw/sp sp2 sp3/;
+
+    foreach my $field (@fields) {
+        next unless exists $mob->{$field};
+
+        my $name = $mob->{$field};
+
+        return (
+                "field '$field' requires a special name, none or inherit",
+                [])
+                if !defined($name) || $name eq '';
+
+        return ("invalid special in '$field': $name", [])
+                unless $name eq 'none'
+                    || $name eq 'inherit'
+                    || $registered{$name};
+    }
+
+    my $extended = exists($mob->{'sp2'})
+                || exists($mob->{'sp3'})
+                || exists($mob->{'spchance'});
+
+    if (!$extended) {
+        push @records, "M $vnum $mob->{'sp'}\t$mob->{'sh'}\n"
+                if exists $mob->{'sp'};
+
+        return (undef, \@records);
+    }
+
+    for my $slot (0 .. 2) {
+        my $field = $fields[$slot];
+
+        push @records,
+                'N ' . $vnum . ' ' . ($slot + 1)
+                . " $mob->{$field}\n"
+                if exists $mob->{$field};
+    }
+
+    if (exists $mob->{'spchance'}) {
+        my $text = $mob->{'spchance'};
+
+        if (defined($text)
+        && ($text eq 'inherit' || $text eq 'auto')) {
+            push @records, "P $vnum $text\n";
+        }
+        elsif (defined($text)
+        && $text =~ /\A([0-9]+)\s+([0-9]+)\s+([0-9]+)\z/) {
+            my @p = map { Math::BigInt->new($_) } ($1, $2, $3);
+
+            foreach my $p (@p) {
+                return (
+                        "spchance entries must be integers from 0 to 100",
+                        [])
+                        if $p->bcmp('100') > 0;
+            }
+
+            my $total = 0;
+            $total += $_->numify() foreach @p;
+
+            return (
+                    "spchance must total 100 "
+                    . "(0/0/0 only for an empty set)",
+                    [])
+                    if $total != 100 && $total != 0;
+
+            push @records,
+                    "P $vnum "
+                    . join(' ', map { $_->bstr() } @p)
+                    . "\n";
+        }
+        else {
+            return (
+                    "spchance requires three integer percentages, "
+                    . "auto or inherit",
+                    []);
+        }
+    }
+
+    # Final compatibility with inherited names/weights is checked by DD4.
+    return (undef, \@records);
 }
 
 # Normalise absolute dimension values and raw language codes.

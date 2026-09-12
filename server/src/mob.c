@@ -52,7 +52,8 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                NULL, NULL, NULL
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT
         },
 
         {
@@ -67,7 +68,8 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                NULL, NULL, NULL
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT
         },
 
         {
@@ -81,7 +83,8 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                NULL, NULL, NULL
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT
         },
 
         {
@@ -95,7 +98,8 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                NULL, NULL, NULL
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT
         }
 };
 
@@ -124,7 +128,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 NULL, NULL, NULL,
-                0                       /* XP adjustment: percentage points */
+                0,                        /* XP adjustment: percentage points */
+                MOB_SPECIAL_CHANCES_INHERIT
         },
 
         {
@@ -136,8 +141,9 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 20, 20, -10, -2,
                 1, 30, 100, 3,
-                "spec_fido", NULL, NULL,
-                0                       /* XP adjustment: percentage points */
+                "spec_fido", "spec_poison", NULL,
+                0,
+                MOB_SPECIAL_CHANCES_AUTO
         },
 
         {
@@ -150,8 +156,9 @@ const struct mob_type mob_table[MAX_MOB] =
                 50, MOB_TEMPLATE_UNSET,
                 MOB_TEMPLATE_UNSET, 20,
                 2, 20, 3, 1,
-                "spec_breath_fire", NULL, NULL,
-                5                       /* XP adjustment: percentage points */
+                "spec_breath_fire", "spec_breath_frost", "spec_poison",
+                5,
+                { 60, 30, 10 }
         }
 };
 
@@ -229,6 +236,7 @@ bool resolve_mob_template(int mob_type,
         const struct mob_type *archetype;
         const struct species_type *body_species;
         int species;
+        int special_slot;
 
         if (!resolved)
                 return FALSE;
@@ -337,6 +345,31 @@ bool resolve_mob_template(int mob_type,
          * It is a signed scalar, not an XOR mask.
          */
         resolved->xp_mod = archetype->xp_mod;
+
+        /*
+         * Probability policies inherit as one vector.
+         * Never inherit individual percentage components separately.
+         */
+        for (special_slot = 0;
+             special_slot < MOB_SPECIAL_SLOTS;
+             special_slot++)
+        {
+                if (archetype->spec_chance[0] != MOB_TEMPLATE_UNSET)
+                {
+                        resolved->spec_chance[special_slot] =
+                            archetype->spec_chance[special_slot];
+                }
+                else if (body_species->spec_chance[0] != MOB_TEMPLATE_UNSET)
+                {
+                        resolved->spec_chance[special_slot] =
+                            body_species->spec_chance[special_slot];
+                }
+                else
+                {
+                        resolved->spec_chance[special_slot] =
+                            MOB_SPECIAL_AUTO;
+                }
+        }
 
         return TRUE;
 }
@@ -1865,4 +1898,716 @@ int validate_mob_resistance_table(void)
         }
 
         return issues;
+}
+
+/*
+ * Three-slot mobile specials.
+ *
+ * Percentages choose one routine per existing special opportunity.
+ * They do not bypass that routine's own conditions or cause retries
+ * when it returns FALSE.
+ */
+
+/*
+ * A whole-vector inheritance or automatic marker must occupy
+ * all three components.
+ */
+static bool special_policy_is(const int *chance, int value)
+{
+        int i;
+
+        for (i = 0; i < MOB_SPECIAL_SLOTS; i++)
+        {
+                if (chance[i] != value)
+                        return FALSE;
+        }
+
+        return TRUE;
+}
+
+bool mob_special_policy_valid(const int *chance)
+{
+        int i;
+        int total;
+
+        if (!chance)
+                return FALSE;
+
+        if (special_policy_is(chance, MOB_TEMPLATE_UNSET)
+        ||  special_policy_is(chance, MOB_SPECIAL_AUTO))
+        {
+                return TRUE;
+        }
+
+        total = 0;
+
+        for (i = 0; i < MOB_SPECIAL_SLOTS; i++)
+        {
+                if (chance[i] < 0 || chance[i] > 100)
+                        return FALSE;
+
+                total += chance[i];
+        }
+
+        /*
+         * An all-zero vector is valid only for an empty final set.
+         * build_mob_specials() checks that relationship.
+         */
+        return total == 100 || total == 0;
+}
+
+bool parse_mob_special_percent(const char *text, int *value)
+{
+        const char *p;
+        int result;
+
+        if (!text || !value || text[0] == '\0')
+                return FALSE;
+
+        result = 0;
+
+        for (p = text; *p; p++)
+        {
+                if (*p < '0' || *p > '9')
+                        return FALSE;
+
+                result = result * 10 + (*p - '0');
+
+                if (result > 100)
+                        return FALSE;
+        }
+
+        *value = result;
+        return TRUE;
+}
+
+/*
+ * Resolve names and a complete probability policy into executable data.
+ *
+ * NULL or empty names mean an empty final slot. Name inheritance must
+ * already have been resolved by the caller.
+ *
+ * The caller's result is unchanged on failure.
+ */
+bool build_mob_specials(const char *const *names,
+                        const int *chance,
+                        MOB_SPECIAL_DATA *result,
+                        char *error,
+                        size_t error_size)
+{
+        MOB_SPECIAL_DATA next;
+        int i;
+        int count;
+        int remaining;
+        int total;
+        bool automatic;
+
+        if (!names || !chance || !result || !error || error_size == 0)
+                return FALSE;
+
+        error[0] = '\0';
+        memset(&next, 0, sizeof(next));
+        count = 0;
+
+        if (!mob_special_policy_valid(chance))
+        {
+                snprintf(
+                    error, error_size,
+                    "percentages must be 0..100 and total 100; "
+                    "use a complete inherit/auto policy, not mixed markers");
+                return FALSE;
+        }
+
+        for (i = 0; i < MOB_SPECIAL_SLOTS; i++)
+        {
+                if (!names[i] || names[i][0] == '\0')
+                        continue;
+
+                next.fun[i] = spec_lookup(names[i]);
+
+                if (!next.fun[i])
+                {
+                        snprintf(
+                            error, error_size,
+                            "unknown function in slot %d: '%s'",
+                            i + 1, names[i]);
+                        return FALSE;
+                }
+
+                count++;
+        }
+
+        automatic =
+            special_policy_is(chance, MOB_SPECIAL_AUTO)
+            || special_policy_is(chance, MOB_TEMPLATE_UNSET);
+
+        remaining = count ? 100 % count : 0;
+        total = 0;
+
+        for (i = 0; i < MOB_SPECIAL_SLOTS; i++)
+        {
+                if (automatic)
+                {
+                        next.chance[i] =
+                            next.fun[i] ? 100 / count : 0;
+
+                        if (next.fun[i] && remaining > 0)
+                        {
+                                next.chance[i]++;
+                                remaining--;
+                        }
+                }
+                else
+                {
+                        next.chance[i] = chance[i];
+                }
+
+                if (!next.fun[i] && next.chance[i] != 0)
+                {
+                        snprintf(
+                            error, error_size,
+                            "empty slot %d must have 0 percent",
+                            i + 1);
+                        return FALSE;
+                }
+
+                total += next.chance[i];
+        }
+
+        if ((count > 0 && total != 100)
+        ||  (count == 0 && total != 0))
+        {
+                snprintf(
+                    error, error_size,
+                    "configured functions require total 100; "
+                    "an entirely empty set requires 0/0/0 (got %d)",
+                    total);
+                return FALSE;
+        }
+
+        *result = next;
+        return TRUE;
+}
+
+/*
+ * Validate an effective executable configuration.
+ */
+bool mob_specials_valid(const MOB_SPECIAL_DATA *set)
+{
+        int i;
+        int count;
+        int total;
+
+        if (!set)
+                return FALSE;
+
+        count = 0;
+        total = 0;
+
+        for (i = 0; i < MOB_SPECIAL_SLOTS; i++)
+        {
+                if (set->chance[i] < 0 || set->chance[i] > 100
+                ||  (!set->fun[i] && set->chance[i] != 0))
+                {
+                        return FALSE;
+                }
+
+                if (set->fun[i])
+                        count++;
+
+                total += set->chance[i];
+        }
+
+        return count ? total == 100 : total == 0;
+}
+
+/*
+ * Disabled slots do not grant special-gated capabilities.
+ */
+bool mob_has_special(CHAR_DATA *mob, SPEC_FUN *special)
+{
+        int i;
+
+        if (!mob || !IS_NPC(mob) || !special)
+                return FALSE;
+
+        for (i = 0; i < MOB_SPECIAL_SLOTS; i++)
+        {
+                if (mob->specials.chance[i] > 0
+                &&  mob->specials.fun[i] == special)
+                {
+                        return TRUE;
+                }
+        }
+
+        return FALSE;
+}
+
+bool mob_has_specials(CHAR_DATA *mob)
+{
+        int i;
+
+        if (!mob || !IS_NPC(mob))
+                return FALSE;
+
+        for (i = 0; i < MOB_SPECIAL_SLOTS; i++)
+        {
+                if (mob->specials.fun[i]
+                &&  mob->specials.chance[i] > 0)
+                {
+                        return TRUE;
+                }
+        }
+
+        return FALSE;
+}
+
+/*
+ * Replace a complete live configuration atomically.
+ *
+ * Do not release special_running here: a callback may replace its own
+ * configuration while its current invocation is still running.
+ */
+bool set_mob_specials(CHAR_DATA *mob, const MOB_SPECIAL_DATA *set)
+{
+        if (!mob || !mob_specials_valid(set))
+                return FALSE;
+
+        mob->specials = *set;
+        memset(mob->special_calls, 0, sizeof(mob->special_calls));
+
+        return TRUE;
+}
+
+/*
+ * Preserve existing code that deliberately assigns one runtime special.
+ * A singleton occupies slot 1 at 100 percent; other slots are cleared.
+ */
+void set_mob_single_special(CHAR_DATA *mob, SPEC_FUN *special)
+{
+        MOB_SPECIAL_DATA next;
+
+        if (!mob)
+                return;
+
+        memset(&next, 0, sizeof(next));
+        next.fun[0] = special;
+        next.chance[0] = special ? 100 : 0;
+
+        set_mob_specials(mob, &next);
+}
+
+/*
+ * Invoke at most one routine.
+ *
+ * Capability checks inspect all enabled slots. Do not temporarily replace
+ * the mobile's identity with whichever function was selected.
+ */
+bool run_mob_special(CHAR_DATA *mob)
+{
+        ROOM_INDEX_DATA *room;
+        SPEC_FUN *selected;
+        int i;
+        int slot;
+        int draw;
+        bool handled;
+
+        if (!mob || !IS_NPC(mob))
+                return FALSE;
+
+        if (mob->deleted
+        ||  !mob->in_room
+        ||  mob->position == POS_DEAD)
+        {
+                return TRUE;
+        }
+
+        if (mob->special_running)
+                return TRUE;
+
+        if (!mob_specials_valid(&mob->specials))
+        {
+                bug(
+                    "Run_mob_special: invalid live distribution for vnum %d.",
+                    mob->pIndexData ? mob->pIndexData->vnum : 0);
+                return FALSE;
+        }
+
+        if (!mob_has_specials(mob))
+                return FALSE;
+
+        slot = -1;
+
+        /*
+         * A single 100-percent choice needs no additional random draw.
+         * This preserves the old random-number cadence for singleton sets.
+         */
+        for (i = 0; i < MOB_SPECIAL_SLOTS; i++)
+        {
+                if (mob->specials.chance[i] == 100)
+                        slot = i;
+        }
+
+        if (slot < 0)
+        {
+                draw = number_range(1, 100);
+
+                for (i = 0; i < MOB_SPECIAL_SLOTS; i++)
+                {
+                        if (draw <= mob->specials.chance[i])
+                        {
+                                slot = i;
+                                break;
+                        }
+
+                        draw -= mob->specials.chance[i];
+                }
+        }
+
+        if (slot < 0 || !mob->specials.fun[slot])
+                return FALSE;
+
+        selected = mob->specials.fun[slot];
+        room = mob->in_room;
+
+        if (mob->special_calls[slot] < ULONG_MAX)
+                mob->special_calls[slot]++;
+
+        mob->special_running = TRUE;
+        handled = (*selected)(mob);
+        mob->special_running = FALSE;
+
+        /*
+         * DD4 defers reclaiming extracted characters. Stop this update
+         * after a callback deletes, kills, or relocates its mobile.
+         */
+        return handled
+            || mob->deleted
+            || mob->position == POS_DEAD
+            || mob->in_room != room;
+}
+
+/*
+ * Map the existing template names onto the three ordinary slots.
+ * The historical spec_boss name does not impose a rank restriction.
+ */
+void mob_template_special_names(const MOB_TEMPLATE_DATA *data,
+                                 const char **names)
+{
+        names[0] = data->spec_fun1;
+        names[1] = data->spec_fun2;
+        names[2] = data->spec_boss;
+}
+
+/*
+ * Resolve individual names and the complete probability policy.
+ * Called after all #MOBILES and #SPECIALS sections have loaded.
+ */
+bool resolve_mob_index_specials(MOB_INDEX_DATA *index,
+                                 char *error,
+                                 size_t error_size)
+{
+        MOB_TEMPLATE_DATA data;
+        const char *names[MOB_SPECIAL_SLOTS];
+        const int *chance;
+        MOB_SPECIAL_DATA result;
+        int i;
+
+        if (!index || !error || error_size == 0)
+                return FALSE;
+
+        memset(&data, 0, sizeof(data));
+
+        for (i = 0; i < MOB_SPECIAL_SLOTS; i++)
+                data.spec_chance[i] = MOB_SPECIAL_AUTO;
+
+        if (index->mobspec && index->mobspec[0]
+        &&  !resolve_mob_template(mob_lookup(index->mobspec), &data))
+        {
+                snprintf(
+                    error, error_size,
+                    "invalid archetype '%s'",
+                    index->mobspec);
+                return FALSE;
+        }
+
+        mob_template_special_names(&data, names);
+
+        for (i = 0; i < MOB_SPECIAL_SLOTS; i++)
+        {
+                if (index->area_special_name[i])
+                        names[i] = index->area_special_name[i];
+        }
+
+        chance =
+            special_policy_is(
+                index->area_spec_chance,
+                MOB_TEMPLATE_UNSET)
+            ? data.spec_chance
+            : index->area_spec_chance;
+
+        if (!build_mob_specials(
+                names, chance, &result, error, error_size))
+        {
+                return FALSE;
+        }
+
+        index->specials = result;
+        return TRUE;
+}
+
+/*
+ * Validate names even when their slot has zero probability or a later
+ * inheritance layer would replace them.
+ */
+static int validate_raw_special_name(
+    const char *owner,
+    const char *name,
+    const char *special)
+{
+        char buf[MAX_STRING_LENGTH];
+
+        if (!special || !special[0] || spec_lookup(special))
+                return 0;
+
+        snprintf(
+            buf, sizeof(buf),
+            "[MOB SPECIALS] %s '%s': unknown function '%s'.",
+            owner, name ? name : "unnamed", special);
+        log_string(buf);
+
+        return 1;
+}
+
+/*
+ * Validate raw policies and fully resolved archetype configurations.
+ */
+int validate_mob_special_templates(void)
+{
+        MOB_TEMPLATE_DATA data;
+        MOB_SPECIAL_DATA set;
+        const char *names[MOB_SPECIAL_SLOTS];
+        char error[MAX_STRING_LENGTH];
+        char buf[MAX_STRING_LENGTH];
+        int i;
+        int issues;
+
+        issues = 0;
+
+        for (i = 0; i < MAX_SPECIES; i++)
+        {
+                issues += validate_raw_special_name(
+                    "Species",
+                    species_table[i].species,
+                    species_table[i].spec_fun1);
+
+                issues += validate_raw_special_name(
+                    "Species",
+                    species_table[i].species,
+                    species_table[i].spec_fun2);
+
+                issues += validate_raw_special_name(
+                    "Species",
+                    species_table[i].species,
+                    species_table[i].spec_boss);
+
+                if (!mob_special_policy_valid(
+                        species_table[i].spec_chance))
+                {
+                        snprintf(
+                            buf, sizeof(buf),
+                            "[MOB SPECIALS] Invalid probability policy "
+                            "on species '%s'.",
+                            species_table[i].species
+                                ? species_table[i].species
+                                : "unnamed");
+                        log_string(buf);
+                        issues++;
+                }
+        }
+
+        for (i = 0; i < MAX_MOB; i++)
+        {
+                issues += validate_raw_special_name(
+                    "Archetype",
+                    mob_table[i].name,
+                    mob_table[i].spec_fun1);
+
+                issues += validate_raw_special_name(
+                    "Archetype",
+                    mob_table[i].name,
+                    mob_table[i].spec_fun2);
+
+                issues += validate_raw_special_name(
+                    "Archetype",
+                    mob_table[i].name,
+                    mob_table[i].spec_boss);
+
+                if (!mob_special_policy_valid(
+                        mob_table[i].spec_chance))
+                {
+                        snprintf(
+                            buf, sizeof(buf),
+                            "[MOB SPECIALS] Invalid probability policy "
+                            "on archetype '%s'.",
+                            mob_table[i].name
+                                ? mob_table[i].name
+                                : "unnamed");
+                        log_string(buf);
+                        issues++;
+                        continue;
+                }
+
+                if (!resolve_mob_template(i, &data))
+                {
+                        snprintf(
+                            buf, sizeof(buf),
+                            "[MOB SPECIALS] Cannot resolve "
+                            "archetype entry %d.",
+                            i);
+                        log_string(buf);
+                        issues++;
+                        continue;
+                }
+
+                mob_template_special_names(&data, names);
+
+                if (!build_mob_specials(
+                        names,
+                        data.spec_chance,
+                        &set,
+                        error,
+                        sizeof(error)))
+                {
+                        snprintf(
+                            buf, sizeof(buf),
+                            "[MOB SPECIALS] Archetype '%s': %.700s.",
+                            mob_table[i].name,
+                            error);
+                        log_string(buf);
+                        issues++;
+                }
+        }
+
+        snprintf(
+            buf, sizeof(buf),
+            "[MOB SPECIALS] Template validation complete: %d issue%s.",
+            issues,
+            issues == 1 ? "" : "s");
+        log_string(buf);
+
+        return issues;
+}
+
+/*
+ * Preserve the existing per-special XP schedule.
+ * Only the method of combining multiple specials is new.
+ */
+static int mob_special_exp_bonus(SPEC_FUN *special)
+{
+        static const struct
+        {
+                const char *name;
+                int bonus;
+        } exceptions[] =
+        {
+                { "spec_fido", 0 },
+                { "spec_thief", 0 },
+                { "spec_janitor", 0 },
+                { "spec_repairman", 0 },
+                { "spec_celestial_repairman", 0 },
+                { "spec_cast_adept", 0 },
+                { "spec_cast_hooker", 0 },
+                { "spec_clan_guard", 0 },
+                { "spec_bounty", 0 },
+                { "spec_executioner", 0 },
+                { "spec_cast_orb", 0 },
+
+                { "spec_poison", 5 },
+                { "spec_bloodsucker", 5 },
+                { "spec_superwimpy", 5 },
+                { "spec_spectral_minion", 5 },
+                { "spec_kungfu_poison", 5 },
+                { "spec_guard", 5 },
+                { "spec_sahuagin_guard", 5 },
+                { "spec_cast_judge", 5 },
+
+                { "spec_small_whale", 10 },
+                { "spec_large_whale", 10 },
+                { "spec_kappa", 10 },
+                { "spec_laghathti", 10 },
+                { "spec_uzollru", 10 },
+                { "spec_warrior", 10 },
+                { "spec_sahuagin_infantry", 10 },
+                { "spec_sahuagin_cavalry", 10 },
+                { "spec_sahuagin_cleric", 10 },
+                { "spec_green_grung", 10 },
+                { "spec_blue_grung", 10 },
+
+                { "spec_cast_druid", 15 },
+                { "spec_demon", 15 },
+                { "spec_cast_electric", 15 },
+                { "spec_assassin", 15 },
+                { "spec_aboleth", 15 },
+                { "spec_sahuagin_baron", 15 },
+                { "spec_sahuagin_lieutenant", 15 },
+                { "spec_red_grung", 15 },
+                { "spec_purple_grung", 15 },
+                { "spec_orange_grung", 15 },
+                { "spec_cast_water_sprite", 15 },
+
+                /*
+                 * Preserve the legacy spelling/lookup here rather than
+                 * silently changing the existing XP balance.
+                 */
+                { "spec_priestess", 20 },
+                { "spec_sahuagin_high_cleric", 20 },
+                { "spec_mast_vampire", 20 },
+                { "spec_evil_evil_gezhp", 20 },
+                { "spec_grail", 20 },
+                { "spec_gold_grung", 20 },
+                { "spec_cast_archmage", 20 },
+                { "spec_sahuagin_prince", 20 }
+        };
+        size_t i;
+        int bonus;
+
+        if (!special)
+                return 0;
+
+        bonus = 10;
+
+        for (i = 0;
+             i < sizeof(exceptions) / sizeof(exceptions[0]);
+             i++)
+        {
+                if (special == spec_lookup(exceptions[i].name))
+                        bonus = exceptions[i].bonus;
+        }
+
+        return bonus;
+}
+
+int mob_specials_exp_bonus(const MOB_SPECIAL_DATA *set)
+{
+        int i;
+        int weighted;
+
+        if (!mob_specials_valid(set))
+                return 0;
+
+        weighted = 0;
+
+        for (i = 0; i < MOB_SPECIAL_SLOTS; i++)
+        {
+                weighted +=
+                    set->chance[i]
+                    * mob_special_exp_bonus(set->fun[i]);
+        }
+
+        /*
+         * Percentage-point adjustment rounded to the nearest integer.
+         * Do not sum three full special bonuses.
+         */
+        return (weighted + 50) / 100;
 }

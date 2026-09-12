@@ -2860,7 +2860,7 @@ void prayer_reveal (CHAR_DATA *ch, char *text)
 
         if (IS_NPC(victim))
         {
-                if (victim->spec_fun)
+                if (mob_has_specials(victim))
                         strcat(buf, "Has special powers.\n\r");
 
                 if (IS_SET(victim->act, ACT_AGGRESSIVE))

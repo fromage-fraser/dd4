@@ -1854,15 +1854,19 @@ void mobile_update(void)
                                         extract_char(ch, TRUE);
                                 }
 
-                                else if (ch->spec_fun)
-                                        (*ch->spec_fun)(ch);
+                                else if (mob_has_specials(ch))
+                                        run_mob_special(ch);
 
                                 continue;
                         }
                 }
 
-                /* Return after special function returns success */
-                if (ch->spec_fun && (*ch->spec_fun)(ch))
+                /*
+                 * Select at most one configured special at this existing
+                 * opportunity. A handled, deleted or moved mobile stops
+                 * processing for this update.
+                 */
+                if (mob_has_specials(ch) && run_mob_special(ch))
                         continue;
 
                 if (ch->in_room->area->nplayer > 0)

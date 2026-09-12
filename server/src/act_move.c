@@ -3401,7 +3401,12 @@ void do_warcry(CHAR_DATA *ch, char *argument)
         AFFECT_DATA af;
         int temp;
 
-        if (IS_NPC(ch) && !(ch->spec_fun == spec_lookup("spec_green_grung")) && !(ch->spec_fun == spec_lookup("spec_blue_grung")) && !(ch->spec_fun == spec_lookup("spec_purple_grung")) && !(ch->spec_fun == spec_lookup("spec_sahuagin_baron")) && !(ch->spec_fun == spec_lookup("spec_sahuagin_prince")))
+        if (IS_NPC(ch)
+        && !mob_has_special(ch, spec_lookup("spec_green_grung"))
+        && !mob_has_special(ch, spec_lookup("spec_blue_grung"))
+        && !mob_has_special(ch, spec_lookup("spec_purple_grung"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_baron"))
+        && !mob_has_special(ch, spec_lookup("spec_sahuagin_prince")))
                 return;
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_warcry))

@@ -899,6 +899,7 @@ void load_games args((FILE * fp));
 void load_notes args((void));
 void load_down_time args((void));
 void fix_exits args((void));
+static void initialise_mob_specials args((void));
 
 /*
  * Big mama top level function.
@@ -1024,6 +1025,10 @@ void boot_db(void)
          */
         {
                 validate_mob_template_tables();
+
+                if (validate_mob_special_templates() != 0)
+                        exit(1);
+
                 validate_mob_attack_part_tables();
 
                 if (validate_mob_hp_modifiers() != 0)
@@ -1132,6 +1137,12 @@ void boot_db(void)
                 }
                 fclose(fpList);
         }
+
+        /*
+         * All #MOBILES and #SPECIALS sections are available.
+         * Resolve effective special sets before the first area resets.
+         */
+        initialise_mob_specials();
 
         /*
          * Init fame table
@@ -2189,6 +2200,20 @@ void load_mobiles(FILE *fp)
                 pMobIndex->area_weight = MOB_TEMPLATE_UNSET;
                 pMobIndex->area_size = MOB_TEMPLATE_UNSET;
                 pMobIndex->area_language = MOB_TEMPLATE_UNSET;
+
+                for (stat = 0; stat < MOB_SPECIAL_SLOTS; stat++)
+                {
+                        pMobIndex->area_special_name[stat] = NULL;
+                        pMobIndex->area_spec_chance[stat] =
+                            MOB_TEMPLATE_UNSET;
+                }
+
+                memset(
+                    &pMobIndex->specials,
+                    0,
+                    sizeof(pMobIndex->specials));
+
+                pMobIndex->spec_fun_exp_modifier = 0;
 
                 for (stat = 0; stat < SECT_MAX; stat++)
                         pMobIndex->footstep_key[stat] = NULL;
@@ -3537,87 +3562,225 @@ void load_shops(FILE *fp)
 }
 
 /*
- * Snarf spec proc declarations.
+ * Read and retain one individual name choice.
  *
- * Modified to give xp bonuses April 2001 Shade / Gezhp
+ * NULL means inherit.
+ * An allocated empty string means explicitly none.
  */
-
-void load_specials(FILE *fp)
+static char *read_mob_special_name(FILE *fp, int vnum)
 {
-        int bonus;
-        int stat;
+        const char *name;
+        char buf[MAX_STRING_LENGTH];
 
-        for (;;)
+        name = fread_word(fp);
+
+        if (!str_cmp(name, "inherit"))
+                return NULL;
+
+        if (!str_cmp(name, "none"))
+                return str_dup("");
+
+        if (!spec_lookup(name))
         {
-                MOB_INDEX_DATA *pMobIndex;
-                char letter;
+                snprintf(
+                    buf, sizeof(buf),
+                    "[MOB SPECIALS] vnum %d: unknown function '%s'.",
+                    vnum, name);
+                log_string(buf);
+                exit(1);
+        }
 
-                switch (letter = fread_letter(fp))
+        return str_dup(name);
+}
+
+/*
+ * Finalise all prototypes after every area section has loaded,
+ * before the first area reset creates live mobiles.
+ */
+static void initialise_mob_specials(void)
+{
+        MOB_INDEX_DATA *index;
+        char error[MAX_STRING_LENGTH];
+        char buf[MAX_STRING_LENGTH];
+        int hash;
+
+        for (hash = 0; hash < MAX_KEY_HASH; hash++)
+        {
+                for (index = mob_index_hash[hash];
+                     index;
+                     index = index->next)
                 {
-                default:
-                        bug("Load_specials: letter '%c' not *MS.", letter);
-                        exit(1);
-
-                case 'S':
-                        return;
-
-                case '*':
-                        break;
-
-                case 'M':
-                        pMobIndex = get_mob_index(fread_number(fp, &stat));
-                        pMobIndex->spec_fun = spec_lookup(fread_word(fp));
-
-                        if (pMobIndex->spec_fun == 0)
+                        if (!resolve_mob_index_specials(
+                                index, error, sizeof(error)))
                         {
-                                bug("Load_specials: 'M': vnum %d.", pMobIndex->vnum);
+                                snprintf(
+                                    buf, sizeof(buf),
+                                    "[MOB SPECIALS] vnum %d: %.700s.",
+                                    index->vnum, error);
+                                log_string(buf);
                                 exit(1);
                         }
 
-                        /*
-                         * average combat specials
-                         */
+                        index->spec_fun_exp_modifier =
+                            mob_specials_exp_bonus(&index->specials);
+                }
+        }
 
-                        bonus = 10;
+        log_string(
+            "[MOB SPECIALS] Three-slot initialisation complete.");
+}
 
-                        /*
-                         * non combat specials
-                         */
+/*
+ * M: legacy whole-set singleton/none/inherit selection.
+ * N: replace one individual slot name.
+ * P: replace the complete individual probability policy.
+ *
+ * All choices remain unresolved until all area sections have loaded.
+ */
+void load_specials(FILE *fp)
+{
+        MOB_INDEX_DATA *index;
+        const char *text;
+        char *name;
+        char letter;
+        char buf[MAX_STRING_LENGTH];
+        int chance[MOB_SPECIAL_SLOTS];
+        int vnum;
+        int stat;
+        int i;
+        int slot;
 
-                        if (pMobIndex->spec_fun == spec_lookup("spec_fido") || pMobIndex->spec_fun == spec_lookup("spec_thief") || pMobIndex->spec_fun == spec_lookup("spec_janitor") || pMobIndex->spec_fun == spec_lookup("spec_repairman") || pMobIndex->spec_fun == spec_lookup("spec_celestial_repairman") || pMobIndex->spec_fun == spec_lookup("spec_cast_adept") || pMobIndex->spec_fun == spec_lookup("spec_cast_hooker") || pMobIndex->spec_fun == spec_lookup("spec_clan_guard") || pMobIndex->spec_fun == spec_lookup("spec_bounty") || pMobIndex->spec_fun == spec_lookup("spec_executioner") || pMobIndex->spec_fun == spec_lookup("spec_cast_orb"))
-                                bonus = 0;
+        for (;;)
+        {
+                letter = fread_letter(fp);
 
-                        /*
-                         * weak combat specials
-                         */
+                if (letter == 'S')
+                        return;
 
-                        if (pMobIndex->spec_fun == spec_lookup("spec_poison") || pMobIndex->spec_fun == spec_lookup("spec_bloodsucker") || pMobIndex->spec_fun == spec_lookup("spec_superwimpy") || pMobIndex->spec_fun == spec_lookup("spec_spectral_minion") || pMobIndex->spec_fun == spec_lookup("spec_kungfu_poison") || pMobIndex->spec_fun == spec_lookup("spec_guard") || pMobIndex->spec_fun == spec_lookup("spec_sahuagin_guard") || pMobIndex->spec_fun == spec_lookup("spec_cast_judge"))
-                                bonus = 5;
+                if (letter == '*')
+                {
+                        fread_to_eol(fp);
+                        continue;
+                }
 
-                        /*
-                         * moderate combat specials
-                         */
+                if (letter != 'M'
+                &&  letter != 'N'
+                &&  letter != 'P')
+                {
+                        bug(
+                            "Load_specials: letter '%c' not *MNPS.",
+                            letter);
+                        exit(1);
+                }
 
-                        if (pMobIndex->spec_fun == spec_lookup("spec_small_whale") || pMobIndex->spec_fun == spec_lookup("spec_large_whale") || pMobIndex->spec_fun == spec_lookup("spec_kappa") || pMobIndex->spec_fun == spec_lookup("spec_laghathti") || pMobIndex->spec_fun == spec_lookup("spec_uzollru") || pMobIndex->spec_fun == spec_lookup("spec_warrior") || pMobIndex->spec_fun == spec_lookup("spec_sahuagin_infantry") || pMobIndex->spec_fun == spec_lookup("spec_sahuagin_cavalry") || pMobIndex->spec_fun == spec_lookup("spec_sahuagin_cleric") || pMobIndex->spec_fun == spec_lookup("spec_green_grung") || pMobIndex->spec_fun == spec_lookup("spec_blue_grung"))
-                                bonus = 10;
+                vnum = fread_number(fp, &stat);
+                index = get_mob_index(vnum);
 
-                        /*
-                         * strong combat specials
-                         */
+                if (!index)
+                {
+                        bug("Load_specials: unknown mobile %d.", vnum);
+                        exit(1);
+                }
 
-                        if (pMobIndex->spec_fun == spec_lookup("spec_cast_druid") || pMobIndex->spec_fun == spec_lookup("spec_demon") || pMobIndex->spec_fun == spec_lookup("spec_cast_electric") || pMobIndex->spec_fun == spec_lookup("spec_assassin") || pMobIndex->spec_fun == spec_lookup("spec_aboleth") || pMobIndex->spec_fun == spec_lookup("spec_sahuagin_baron") || pMobIndex->spec_fun == spec_lookup("spec_sahuagin_lieutenant") || pMobIndex->spec_fun == spec_lookup("spec_red_grung") || pMobIndex->spec_fun == spec_lookup("spec_purple_grung") || pMobIndex->spec_fun == spec_lookup("spec_orange_grung") || pMobIndex->spec_fun == spec_lookup("spec_cast_water_sprite"))
-                                bonus = 15;
+                if (letter == 'M')
+                {
+                        name = read_mob_special_name(fp, vnum);
 
-                        /*
-                         * bad ass combat specials
-                         */
+                        for (i = 0; i < MOB_SPECIAL_SLOTS; i++)
+                        {
+                                if (index->area_special_name[i])
+                                {
+                                        free_string(
+                                            index->area_special_name[i]);
+                                }
 
-                        if (pMobIndex->spec_fun == spec_lookup("spec_priestess") || pMobIndex->spec_fun == spec_lookup("spec_sahuagin_high_cleric") || pMobIndex->spec_fun == spec_lookup("spec_mast_vampire") || pMobIndex->spec_fun == spec_lookup("spec_evil_evil_gezhp") || pMobIndex->spec_fun == spec_lookup("spec_grail") || pMobIndex->spec_fun == spec_lookup("spec_gold_grung") || pMobIndex->spec_fun == spec_lookup("spec_cast_archmage") || pMobIndex->spec_fun == spec_lookup("spec_sahuagin_prince"))
-                                bonus = 20;
+                                index->area_special_name[i] =
+                                    name ? str_dup("") : NULL;
 
-                        pMobIndex->spec_fun_exp_modifier = bonus;
+                                index->area_spec_chance[i] =
+                                    name ? 0 : MOB_TEMPLATE_UNSET;
+                        }
 
-                        break;
+                        if (name)
+                        {
+                                free_string(index->area_special_name[0]);
+                                index->area_special_name[0] = name;
+
+                                index->area_spec_chance[0] =
+                                    name[0] ? 100 : 0;
+                        }
+                }
+                else if (letter == 'N')
+                {
+                        slot = fread_number(fp, &stat);
+
+                        if (slot < 1 || slot > MOB_SPECIAL_SLOTS)
+                        {
+                                bug(
+                                    "Load_specials: slot must be 1..3 "
+                                    "for vnum %d.",
+                                    vnum);
+                                exit(1);
+                        }
+
+                        name = read_mob_special_name(fp, vnum);
+
+                        if (index->area_special_name[slot - 1])
+                        {
+                                free_string(
+                                    index->area_special_name[slot - 1]);
+                        }
+
+                        index->area_special_name[slot - 1] = name;
+                }
+                else
+                {
+                        text = fread_word(fp);
+
+                        if (!str_cmp(text, "inherit")
+                        ||  !str_cmp(text, "auto"))
+                        {
+                                for (i = 0; i < MOB_SPECIAL_SLOTS; i++)
+                                {
+                                        chance[i] =
+                                            !str_cmp(text, "inherit")
+                                            ? MOB_TEMPLATE_UNSET
+                                            : MOB_SPECIAL_AUTO;
+                                }
+                        }
+                        else
+                        {
+                                for (i = 0; i < MOB_SPECIAL_SLOTS; i++)
+                                {
+                                        if (i > 0)
+                                                text = fread_word(fp);
+
+                                        if (!parse_mob_special_percent(
+                                                text, &chance[i]))
+                                        {
+                                                snprintf(
+                                                    buf, sizeof(buf),
+                                                    "[MOB SPECIALS] vnum %d: "
+                                                    "invalid probability '%s'.",
+                                                    vnum, text);
+                                                log_string(buf);
+                                                exit(1);
+                                        }
+                                }
+                        }
+
+                        if (!mob_special_policy_valid(chance))
+                        {
+                                bug(
+                                    "Load_specials: probabilities must "
+                                    "total 100 (or all-zero for an empty "
+                                    "set), vnum %d.",
+                                    vnum);
+                                exit(1);
+                        }
+
+                        for (i = 0; i < MOB_SPECIAL_SLOTS; i++)
+                                index->area_spec_chance[i] = chance[i];
                 }
 
                 fread_to_eol(fp);
@@ -4323,7 +4486,7 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA *pMobIndex)
         mob->long_descr = pMobIndex->long_descr;
         mob->description = pMobIndex->description;
         mob->mobspec = pMobIndex->mobspec;
-        mob->spec_fun = pMobIndex->spec_fun;
+        mob->specials = pMobIndex->specials;
         mob->prompt = str_dup("<%hhp %mm %vmv> ");
         mob->rank = pMobIndex->rank;
         mob->level = number_fuzzy(pMobIndex->level);
