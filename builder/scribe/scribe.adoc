@@ -18,7 +18,7 @@ The existing sixteen numbered sections and their cross-reference targets are
 retained.
 
 The verified repository baseline is DD4 `master`, commit
-`c4e7a2a7a992ef6c27100fa9ab45579ad392481c` (PR #714), checked on 12 September
+`fa3baecdce63f6b67b2b43057dd7b31d0fa3b054` (PR #715), checked on 12 September
 2026. This identifies source-code availability; it does not establish which
 executable is running on a particular server.
 
@@ -61,21 +61,28 @@ inspection/editing. It is not a universal multiplier for every damage path.
 live critical and swiftness scores, with `critmod` / `swiftmod`, validation and
 creation snapshots.
 | Height, weight and size data
-| *Step 4C4d implementation.* Adds individual and live raw dimension values,
-validation and immortal inspection/editing. No measurement-unit conversion,
-size classification or new physical gameplay effects are introduced.
+| Implemented through PR #715: individual and live raw dimension values,
+validation and immortal inspection/editing. No measurement units, size
+classification or new physical gameplay effects are introduced.
 | Scribe damage-modifier export
-| PR #714 retained `dammod` parsing but accidentally removed its `MobDamMod`
-output. The accompanying Step 4C4d includes the exporter repair.
+| Restored in PR #715 after its accidental removal in PR #714.
+| Scribe swiftness source field
+| PR #715 accidentally removed `swiftmod` from the mobile input whitelist.
+The accompanying Step 4C4e restores it. The server field, Scribe validator
+and output statement remain present in the pinned baseline.
+| Raw language-code data
+| *Step 4C4e implementation.* Adds individual and live language-code metadata,
+validation and immortal inspection/editing. No language-name mapping,
+comprehension or speech-permission changes are introduced.
 | Further template integration
-| Language defaults and inherited special-function execution remain separate
-work. Dimension units and physical gameplay consumers are not defined here.
+| Inherited special-function execution remains separate work. Language
+semantics, dimension units and their gameplay consumers are not defined here.
 |===
 
-IMPORTANT: Steps through 4C4c are merged, subject to the Scribe damage-export
-regression noted above. Sections marked *Step 4C4d* require the accompanying
-server and Scribe changes. Install the export repair before regenerating areas
-which use `dammod`. The manual alone does not change a running executable.
+IMPORTANT: Steps through 4C4d are merged, subject to the `swiftmod` input
+regression noted above. Sections marked *Step 4C4e* require the accompanying
+server and Scribe changes. Restore the input field before regenerating sources
+using `swiftmod`. A manual update does not change a running executable.
 
 This manual distinguishes a Scribe source field, a generated `.are` field,
 and a server-side table field. A name in `mob_table` or `merc.h` is not
@@ -102,7 +109,8 @@ field named `xp_mod`, `species`, or `archetype`; see
 ** <<scribe-mobile-hp-modifier,HP modifier inheritance and overrides>>
 ** <<scribe-mobile-damage-modifier,NPC attack damage modifier>>
 ** <<scribe-mobile-combat-modifiers,Critical and swiftness defaults>>
-** <<scribe-mobile-dimensions,Dimension data and overrides (Step 4C4d)>>
+** <<scribe-mobile-dimensions,Dimension data and overrides>>
+** <<scribe-mobile-language,Raw language-code data (Step 4C4e)>>
 ** <<scribe-resistance-flags,Resistance categories and behaviour>>
 ** <<scribe-template-xp,Archetype XP adjustments>>
 ** <<scribe-mobile-diagnostics,Validation, mstat and live editing>>
@@ -623,13 +631,16 @@ Mobiles are the creatures that populate your area. They are defined in the `#MOB
 | Swiftness score-point adjustment replacing the inherited value
 | integer from -100 to 100, or `inherit`
 | `height`
-| Raw height value replacing the inherited value — Step 4C4d
+| Raw height value replacing the inherited value
 | nonnegative integer or `inherit`
 | `weight`
-| Raw weight value replacing the inherited value — Step 4C4d
+| Raw weight value replacing the inherited value
 | nonnegative integer or `inherit`
 | `size`
-| Raw size value replacing the inherited value — Step 4C4d
+| Raw size value replacing the inherited value
+| nonnegative integer or `inherit`
+| `language`
+| Raw language code replacing the inherited value — Step 4C4e
 | nonnegative integer or `inherit`
 |===
 
@@ -786,12 +797,13 @@ It adds neither extra attacks nor equipment or skill permissions.
 PR #712 activates the <<scribe-mobile-hp-modifier,HP scalar>> and its individual
 override. PR #713 activates the <<scribe-mobile-damage-modifier,attack damage
 scalar>> for NPC attacks using `one_hit()`. PR #714 initialises the
-<<scribe-mobile-combat-modifiers,critical and swiftness scores>>. The accompanying
-<<scribe-mobile-dimensions,Step 4C4d>> copies raw dimension data into prototypes
-and live NPCs and supplies individual overrides. It does not assign measurement
-units or activate physical gameplay rules. Language and special execution
-remain separate. The Step 4C4d Scribe patch also repairs the damage-field export
-regression introduced in PR #714.
+<<scribe-mobile-combat-modifiers,critical and swiftness scores>>. PR #715 adds
+<<scribe-mobile-dimensions,raw dimension data>> to prototypes and live NPCs,
+without assigning units or physical gameplay rules, and restores the damage
+export. The accompanying <<scribe-mobile-language,Step 4C4e>> adds raw language
+codes and restores the `swiftmod` input field omitted in PR #715. Language
+behaviour and inherited special execution remain separate from these data
+layers.
 
 For the template scalar fields using `MOB_TEMPLATE_UNSET`, an archetype value
 inherits when it is unset; otherwise it replaces the body-species value.
@@ -799,8 +811,9 @@ Literal zero is an explicit scalar value. If neither layer supplies a value,
 the resolver returns zero. These sentinels are C-table conventions: do not
 write `MOB_TEMPLATE_UNSET` in a Scribe source file. Use `hpmod inherit` or
 `dammod inherit` for those scalars, and `critmod inherit` / `swiftmod inherit`
-for score-point adjustments. Step 4C4d similarly accepts `inherit` for each raw
-dimension. These three scalar groups have different meanings and units.
+for score-point adjustments. The dimension fields also accept `inherit`.
+Step 4C4e adds the same input distinction for `language`. These scalar groups
+have different meanings; language codes are not scores or bitmasks.
 
 For template special names, `NULL` means inherit, an empty string explicitly
 clears an inherited name, and a non-empty string replaces it. The existing
@@ -1809,8 +1822,9 @@ There is no new live `mset hpmod` command in this chunk.
 This HP adjustment is independent of `xp_mod`. The existing XP-percentage helper,
 area/spec/equipment XP contributions and XP award formula are not edited here.
 Attack damage and critical/swiftness defaults are documented
-separately below. Dimension and language defaults remain separate integration
-steps. The HP mechanism itself adds no attacks or inherited special execution.
+separately below. PR #715 supplies raw dimension data; Step 4C4e supplies raw
+language codes. Their gameplay semantics remain separate. The HP mechanism
+itself adds no attacks or inherited special execution.
 
 ===== Validation and builder integration
 
@@ -1832,11 +1846,9 @@ silently omitting it.
 [[scribe-mobile-damage-modifier]]
 ==== NPC attack damage modifier
 
-The server feature was merged in PR #713 and is present in the verified
-baseline. However, PR #714 removed the Scribe `MobDamMod` export statement.
-The accompanying Step 4C4d restores it; see <<scribe-mobile-dimensions,the
-regression check>>. Existing area declarations remain supported by the server.
-Use the corrected exporter before regenerating sources containing `dammod`.
+The server feature was merged in PR #713. PR #714 accidentally removed its
+Scribe `MobDamMod` export statement; PR #715 restores it in the verified
+baseline. Existing area declarations remain supported.
 
 *`dammod` — Individual NPC attack damage percentage adjustment*
 
@@ -2156,12 +2168,11 @@ explicit zero. The archetype editor maps swiftness to the existing `haste_mod`
 member, not to a new spell or affect.
 
 [[scribe-mobile-dimensions]]
-==== Dimension data and overrides — Step 4C4d
+==== Dimension data and overrides
 
-IMPORTANT: This section accompanies Step 4C4d. The pinned PR #714 baseline
-resolves height, weight and size in templates but does not store these values
-on each prototype and live NPC. Install the corresponding server and Scribe
-changes before using the new source fields or live commands.
+This feature was merged in PR #715 and is present in the verified baseline.
+Use matching server and Scribe versions. These fields store metadata; they
+do not implement physical units or new gameplay calculations.
 
 *`height`, `weight`, `size` — Individual raw dimension values*
 
@@ -2201,9 +2212,10 @@ remove `BODY_HUGE`; changing `weight` does not edit inventory weight.
 The legacy `APPLY_HEIGHT` and `APPLY_WEIGHT` equipment applies remain inactive.
 Adding live data members alone does not activate those effects. Player
 initialisation, player-file persistence and player forms are unchanged.
-Language defaults and inherited special-function execution remain separate
-work. Measurement units and any gameplay consumers must be defined explicitly
-before those systems begin using these values.
+The accompanying Step 4C4e stores language codes separately. Language behaviour
+and inherited special execution remain distinct work. Measurement units and
+physical gameplay consumers must be defined explicitly before using the
+numeric dimensions in those systems.
 
 ===== Scalar precedence and syntax
 
@@ -2292,31 +2304,18 @@ There is no new Advanced Consider, GMCP or player-score dimension output in
 this chunk. Do not infer additional interface support from the presence of
 the live data fields.
 
-===== Scribe regression check
+===== Scribe export compatibility
 
 PR #714 accidentally removed the `MobDamMod` output statement while retaining
-the source-field parser and server support. Step 4C4d restores that statement.
+the source-field parser and server support. PR #715 restores that statement.
 Do not regenerate an area containing `dammod` with the uncorrected PR #714
 exporter: the individual damage adjustment would be omitted from its output.
 A hand-authored or existing area `MobDamMod` line is still supported by the
 server; this is an exporter regression, not removal of the server feature.
 
-Check all seven scalar exports together, not only the new fields:
-
-[source,text]
-----
-MobHPMod 0
-MobDamMod 0
-MobCritMod 0
-MobSwiftMod 0
-MobHeight 0
-MobWeight 20
-MobSize inherit
-----
-
-The corrected exporter must retain every explicit zero above. Omitted fields
-must remain omitted. This combined check protects the existing HP, damage
-and score controls while the dimension controls are added.
+Explicit zero must remain distinct from an omitted field. PR #715 also
+accidentally drops `swiftmod` from the mobile input whitelist, so having its
+output statement alone is insufficient. Step 4C4e restores that input.
 
 ===== DD Builder requirements
 
@@ -2327,6 +2326,134 @@ assigning size categories. Do not generate body-form flags from these fields.
 Label the values as legacy dimension data until a unit and gameplay contract
 is established. Preserve the `MobDamMod` export when extending scalar output.
 
+
+[[scribe-mobile-language]]
+==== Raw language-code data — Step 4C4e
+
+IMPORTANT: This section accompanies Step 4C4e. The pinned PR #715 baseline
+resolves `language` in body-species/archetype templates but does not retain
+individual or live language codes. Install the matching server and Scribe
+changes, including the `swiftmod` input repair, before using these additions.
+
+*`language` — Individual raw language code*
+
+_Decimal integer from 0 to 2147483647, or `inherit`_
+
+_Default: omitted; inherit the resolved body-species/archetype value_
+
+===== Meaning and boundaries
+
+The existing table member is an integer. Its retained values are `1` for
+`fire_elemental` and `3` for `goat`. This data layer preserves those codes;
+it does not assign language names to them or treat them as indexes into a
+new language-name table. Do not infer that code 1 means Common, or that code
+3 identifies any particular named language.
+
+For this interface, `0` means unspecified metadata. It does not mean mute,
+unable to understand, unable to cast, or unable to communicate. A nonzero
+code also does not grant speech or a language proficiency.
+
+The existing `CAN_SPEAK(ch)` macro remains based on `BODY_NO_SPEECH`.
+Changing a language code does not add or remove that body flag. Existing
+speech, tell, channel, spell-incantation and mob-program behaviour remains
+unchanged. This chunk adds no translation, language-learning skill,
+listener-comprehension test, player language data, or NPC conversation AI.
+
+The code is an absolute scalar, not a score, percentage adjustment or bitmask.
+The parser checks numeric range and syntax only. There is no dictionary of
+valid named languages and no current language-name membership validation.
+Using a large accepted code does not imply that a matching language exists.
+Future language semantics will require an explicit code-to-name contract and
+migration of legacy values before gameplay starts interpreting these codes.
+
+===== Inheritance and syntax
+
+[source,text]
+----
+body species language
+    -> archetype replacement unless MOB_TEMPLATE_UNSET
+    -> individual replacement unless omitted / inherit
+    -> effective prototype code copied into each new NPC
+----
+
+For the retained fire-elemental template code 1:
+
+[cols="<2,<2,<4",options="header"]
+|===
+| Individual source | Prototype code | Meaning
+| Omitted or `language inherit` | 1 | Keep the template code.
+| `language 7` | 7 | Replace the code, not add seven to it.
+| `language 0` | 0 | Explicitly clear the code to unspecified.
+|===
+
+Example:
+
+[source,text]
+----
+language 7
+----
+
+Scribe emits:
+
+[source,text]
+----
+MobLanguage 7
+----
+
+Place `MobLanguage` in the optional mobile tail after any mob programs,
+archetype/rank selection and teacher entries, alongside the other scalar,
+resistance, attack-part and footstep fields. No tilde terminator is used.
+Repeated declarations use the last value, including a final `inherit`.
+
+Omission emits no line. Explicit zero must be exported. `inherit` is
+case-insensitive. Leading plus signs and decimal leading zeros are accepted
+and normalised. Negative zero normalises to zero. Negative numeric values,
+fractions, named languages, suffixes, numeric `|` expressions and integer
+overflow are rejected. The C limit is `INT_MAX`; Scribe uses the current
+signed 32-bit limit of 2147483647.
+
+Both raw template layers are checked even when a later layer would override
+them. C tables can use `MOB_TEMPLATE_UNSET`; source/area fields must use the
+word `inherit` instead. Invalid template values or area declarations stop
+loading with a diagnostic. An untemplated mobile begins with inherited code
+zero and can also supply an individual code.
+
+===== Inspection and live editing
+
+`mstat` adds Language code layers with Template, #MOBILES, Prototype and
+Live rows. The older template-only label becomes Template language code.
+Inspection neither re-resolves the live NPC nor changes its speech flags.
+
+[source,text]
+----
+mset filler language 42
+mset filler language 0
+----
+
+These are absolute NPC-only live assignments. They do not accept `inherit`,
+modify the prototype or source input, affect other instances, or change
+future spawns. A new NPC receives the prototype code again. No new player,
+Advanced Consider or GMCP language output is introduced.
+
+===== Scribe input compatibility
+
+PR #715 correctly restores `MobDamMod` output but accidentally removes
+`swiftmod` from the mobile input whitelist. The field then produces an
+unknown-field message and is not retained for normal export, even though
+its validation/output code is still present. Step 4C4e restores the whitelist
+entry while adding `language`.
+
+===== DD Builder requirements
+
+Add one nonnegative raw `language` code control with an explicit inheritance
+state. Export it as `MobLanguage` without resolving the template or changing
+zero into omission. Use the same numeric bounds as Scribe. Do not populate
+a named-language dropdown from assumed meanings of the legacy numbers.
+Preserve all seven earlier scalar inputs and exports, including `swiftmod`
+and `MobDamMod`.
+
+Inherited special-function execution remains the next separate template
+integration task. Adding language metadata does not activate those slots.
 
 [[scribe-resistance-flags]]
 ==== Resistance category reference
@@ -2506,11 +2633,12 @@ successful messages include:
 [MOB TEMPLATE] Damage-modifier validation complete: no issues found.
 [MOB TEMPLATE] Combat-score validation complete: no issues found.
 [MOB TEMPLATE] Dimension validation complete: no issues found.
+[MOB TEMPLATE] Language-code validation complete: no issues found.
 [MOB TYPE] Resistance validation complete: no issues found.
 ----
 
-The Combat-score line is implemented through PR #714. The Dimension line
-is supplied by the accompanying Step 4C4d code.
+The Combat-score line is implemented through PR #714 and the Dimension line
+through PR #715. The Language-code line accompanies Step 4C4e.
 These messages report the checks performed by those validators, not a full
 gameplay test. Unknown bits must be checked on raw template layers as well
 as resolved masks: identical invalid bits could otherwise cancel through XOR.
@@ -2544,10 +2672,11 @@ this scalar as a flag mask or reapply it when inspected.
 
 PR #713 adds attack-damage modifier layers and a deterministic scaling sample.
 PR #714 adds critical/swiftness modifier layers and creation snapshots.
-Step 4C4d adds separate dimension groups showing template, individual,
-prototype and live values. These are scalar diagnostics, not XOR removal
-reports. Current live scores can differ from their creation values; raw
-live dimensions can be edited independently without changing their prototypes.
+PR #715 adds separate dimension groups showing template, individual,
+prototype and live values. Step 4C4e adds the same layers for a raw language
+code. These are scalar diagnostics, not XOR removal reports. Current live
+scores can differ from their creation values; dimensions and language codes
+can be edited independently without changing their prototypes.
 
 Advanced Consider uses live body-form and resistance masks in its existing
 archetype-information block. Its attack-part list also uses the live configured
@@ -4882,38 +5011,38 @@ pb  120
 [[scribe-revision-notes]]
 === Documentation revision notes and source baseline
 
-This revision confirms Step 4C4c critical/swiftness defaults through PR #714,
-records that merge's Scribe damage-export regression, and documents the
-accompanying Step 4C4d raw dimension data, individual overrides, inspection
-and export repair. The original sixteen numbered sections remain in order.
+This revision confirms raw dimension data and the damage-export repair
+through PR #715, records the new `swiftmod` input regression in that merge,
+and documents the accompanying Step 4C4e language-code data and input
+repair. The original sixteen numbered sections remain in order.
 New material is integrated into the existing mobile, object, weapon and
 area-XP sections.
 The field summaries also include already-described reset/audio/foley fields
 which were absent from their summary tables.
 
 The baseline was checked against
-https://github.com/fromage-fraser/dd4/tree/c4e7a2a7a992ef6c27100fa9ab45579ad392481c[DD4 master at PR #714].
+https://github.com/fromage-fraser/dd4/tree/fa3baecdce63f6b67b2b43057dd7b31d0fa3b054[DD4 master at PR #715].
 The following files are the implementation references for the added material:
 
 [cols="<2,<5",options="header"]
 |===
 | Source | Relevance
-| https://github.com/fromage-fraser/dd4/blob/c4e7a2a7a992ef6c27100fa9ab45579ad392481c/builder/scribe/scribe.pl[`builder/scribe/scribe.pl`]
-| Accepted source fields, validation, single-special/rank export, exact-integer masks and scalar input. In this pinned revision the `dammod` parser remains but its `MobDamMod` output is missing; Step 4C4d repairs that regression.
-| https://github.com/fromage-fraser/dd4/blob/c4e7a2a7a992ef6c27100fa9ab45579ad392481c/server/src/merc.h[`server/src/merc.h`]
+| https://github.com/fromage-fraser/dd4/blob/fa3baecdce63f6b67b2b43057dd7b31d0fa3b054/builder/scribe/scribe.pl[`builder/scribe/scribe.pl`]
+| Accepted source fields, validation, single-special/rank export, exact-integer masks and scalar input. PR #715 restores `MobDamMod` output but omits `swiftmod` from the input whitelist; Step 4C4e restores that input and adds language metadata.
+| https://github.com/fromage-fraser/dd4/blob/fa3baecdce63f6b67b2b43057dd7b31d0fa3b054/server/src/merc.h[`server/src/merc.h`]
 | ACT/object/resistance flag definitions and template/prototype structures.
-| https://github.com/fromage-fraser/dd4/blob/c4e7a2a7a992ef6c27100fa9ab45579ad392481c/server/src/mob.c[`server/src/mob.c`]
+| https://github.com/fromage-fraser/dd4/blob/fa3baecdce63f6b67b2b43057dd7b31d0fa3b054/server/src/mob.c[`server/src/mob.c`]
 | Template XOR/scalar/special-name resolution, original-mask handling, validation and additive XP helper.
-| https://github.com/fromage-fraser/dd4/blob/c4e7a2a7a992ef6c27100fa9ab45579ad392481c/server/src/db.c[`server/src/db.c`]
+| https://github.com/fromage-fraser/dd4/blob/fa3baecdce63f6b67b2b43057dd7b31d0fa3b054/server/src/db.c[`server/src/db.c`]
 | Mobile loading, optional archetype/rank syntax, prototype/live copying, HP and attack-damage scalars, and critical/swiftness initialisation with creation snapshots.
-| https://github.com/fromage-fraser/dd4/blob/c4e7a2a7a992ef6c27100fa9ab45579ad392481c/server/src/magic.c[`server/src/magic.c`] and https://github.com/fromage-fraser/dd4/blob/c4e7a2a7a992ef6c27100fa9ab45579ad392481c/server/src/fight.c[`server/src/fight.c`]
+| https://github.com/fromage-fraser/dd4/blob/fa3baecdce63f6b67b2b43057dd7b31d0fa3b054/server/src/magic.c[`server/src/magic.c`] and https://github.com/fromage-fraser/dd4/blob/fa3baecdce63f6b67b2b43057dd7b31d0fa3b054/server/src/fight.c[`server/src/fight.c`]
 | Resistance adjustment, selected status helpers, ordinary-attack categories, damage messaging, death provenance and XP use.
-| https://github.com/fromage-fraser/dd4/blob/c4e7a2a7a992ef6c27100fa9ab45579ad392481c/server/src/act_wiz.c[`server/src/act_wiz.c`] and https://github.com/fromage-fraser/dd4/blob/c4e7a2a7a992ef6c27100fa9ab45579ad392481c/server/src/act_info.c[`server/src/act_info.c`]
+| https://github.com/fromage-fraser/dd4/blob/fa3baecdce63f6b67b2b43057dd7b31d0fa3b054/server/src/act_wiz.c[`server/src/act_wiz.c`] and https://github.com/fromage-fraser/dd4/blob/fa3baecdce63f6b67b2b43057dd7b31d0fa3b054/server/src/act_info.c[`server/src/act_info.c`]
 | Immortal flag/resistance/attack-part diagnostics, HP snapshots, live mask editing and body-form/resistance displays.
-| https://github.com/fromage-fraser/dd4/blob/c4e7a2a7a992ef6c27100fa9ab45579ad392481c/server/src/const.c[`server/src/const.c`] and https://github.com/fromage-fraser/dd4/blob/c4e7a2a7a992ef6c27100fa9ab45579ad392481c/server/src/handler.c[`server/src/handler.c`]
+| https://github.com/fromage-fraser/dd4/blob/fa3baecdce63f6b67b2b43057dd7b31d0fa3b054/server/src/const.c[`server/src/const.c`] and https://github.com/fromage-fraser/dd4/blob/fa3baecdce63f6b67b2b43057dd7b31d0fa3b054/server/src/handler.c[`server/src/handler.c`]
 | Effect classifications and text names for resistance/object flags.
-| Step 4C4d implementation instructions supplied in this project
-| Basis for the explicitly marked dimension inputs, prototype/live storage, validation and immortal editing, plus restoration of the omitted `MobDamMod` export. Raw numeric dimensions are not assigned physical units or new gameplay effects.
+| Step 4C4e implementation instructions supplied in this project
+| Basis for the explicitly marked language-code input, prototype/live storage, validation, immortal editing, and `swiftmod` input repair. Language-name meanings and communication rules are not invented or activated.
 |===
 
 The retained `fire_elemental` test archetype is not a general setting rule:

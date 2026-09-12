@@ -938,6 +938,49 @@ The accompanying Scribe update also restores the MobDamMod export statement
 accidentally removed in PR #714. Verify all existing scalar exports when
 testing the new fields.
 
+==Individual language-code overrides
+
+Optional #MOBILES tail field:
+
+    MobLanguage <non-negative integer or inherit>
+
+Corresponding Scribe field:
+
+    language <non-negative integer or inherit>
+
+This is an absolute raw code, not a modifier, bitmask or language skill.
+Omission or inherit preserves the resolved template code. An explicit number
+replaces it. Zero means unspecified metadata; it does not mean mute.
+
+Allowed values are zero through INT_MAX. Scribe uses the current signed
+32-bit upper limit, 2147483647. C templates can also use MOB_TEMPLATE_UNSET;
+source and area files use the word inherit instead.
+
+The existing codes are preserved: fire_elemental uses 1 and goat uses 3.
+This data layer assigns no language names to those numbers. It validates
+numeric range and syntax, not membership of a language-name table.
+
+Place MobLanguage in the optional mobile tail with the other scalar,
+resistance, attack-part and footstep fields, after any mob programs,
+archetype/rank selection and teachers. There is no tilde terminator.
+Repeated declarations use the last value. Explicit zero must be exported.
+
+The original individual code and effective prototype code remain separate.
+Each spawned NPC receives its own copy of the prototype code.
+
+mstat shows Template, #MOBILES, Prototype and Live language-code values.
+
+    mset <mobile> language <number>
+
+replaces only the live NPC code. It does not accept inherit or modify
+prototypes, other instances, source files or future spawns.
+
+No speech, translation, comprehension, channel, spellcasting, mob-program
+or player-language rules are added. CAN_SPEAK and BODY_NO_SPEECH remain
+unchanged. Positive codes do not grant speech; zero does not remove it.
+
+Inherited special-function execution remains a separate implementation step.
+
 === The #OBJECTS section
 
 These are the items the people who journey through your area will keep and use,

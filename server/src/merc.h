@@ -2806,6 +2806,13 @@ struct mob_index_data
         int height;
         int weight;
         int size;
+
+        /*
+         * Original individual language code and effective prototype code.
+         * MOB_TEMPLATE_UNSET means inherit; zero is explicitly unspecified.
+         */
+        int area_language;
+        int language;
 };
 
 /*
@@ -2895,6 +2902,12 @@ struct char_data
         int height;
         int weight;
         int size;
+
+        /*
+         * Raw live NPC language code.
+         * This does not control speech permissions or comprehension.
+         */
+        int language;
 
         int aggro_dam;
         int mana;
@@ -5544,6 +5557,8 @@ bool parse_mob_combat_modifier args((const char *text, int *modifier));
 int validate_mob_combat_modifiers args((void));
 bool parse_mob_dimension args((const char *text, int *value));
 int validate_mob_dimensions args((void));
+bool parse_mob_language args((const char *text, int *value));
+int validate_mob_languages args((void));
 
 /* mob_commands.c */
 char *mprog_type_to_name args((int type));

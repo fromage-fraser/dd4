@@ -697,7 +697,7 @@ Gezhp, Owl and Shade
   Identifying such an object reveals its undead nature.
 - Sonic and water resistance categories added.
 - Extensive work done on mob archetypes/species/#MOBILES overrides/inheritance
-  for these values etc.
+  for these values etc.  Language codes added, but not implemented beyond this.
 ~
 
 0 MULTIPLAYING MULTIPLAYERS~
