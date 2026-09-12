@@ -2793,6 +2793,19 @@ struct mob_index_data
         int crit_mod;
         int area_haste_mod;
         int haste_mod;
+
+        /*
+         * Original individual dimension values.
+         * MOB_TEMPLATE_UNSET means inherit; zero is explicit.
+         */
+        int area_height;
+        int area_weight;
+        int area_size;
+
+        /* Effective prototype dimension data. */
+        int height;
+        int weight;
+        int size;
 };
 
 /*
@@ -2874,6 +2887,14 @@ struct char_data
          * Applied to attacks routed through one_hit().
          */
         int dam_mod;
+
+        /*
+         * Effective live NPC dimension metadata.
+         * These fields do not yet drive physical gameplay calculations.
+         */
+        int height;
+        int weight;
+        int size;
 
         int aggro_dam;
         int mana;
@@ -5521,6 +5542,8 @@ int validate_mob_damage_modifiers args((void));
 int apply_mob_damage_modifier args((CHAR_DATA *mob, int damage));
 bool parse_mob_combat_modifier args((const char *text, int *modifier));
 int validate_mob_combat_modifiers args((void));
+bool parse_mob_dimension args((const char *text, int *value));
+int validate_mob_dimensions args((void));
 
 /* mob_commands.c */
 char *mprog_type_to_name args((int type));

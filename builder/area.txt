@@ -883,6 +883,61 @@ the legacy mset swiftness range is 0 through 100.
 HP, attack damage, XP, dimensions, language and inherited special execution
 remain separate. Player initialisation and combat formulas are unchanged.
 
+==Individual dimension data overrides
+
+Optional #MOBILES tail fields:
+
+    MobHeight <non-negative integer or inherit>
+    MobWeight <non-negative integer or inherit>
+    MobSize <non-negative integer or inherit>
+
+Corresponding Scribe fields:
+
+    height <non-negative integer or inherit>
+    weight <non-negative integer or inherit>
+    size <non-negative integer or inherit>
+
+These are absolute raw metadata values, not modifiers or bitmasks.
+Omission or inherit uses the resolved template value. A supplied number
+replaces that value. Explicit zero means the dimension is unspecified;
+it does not describe a physically massless or zero-sized creature.
+
+Each field resolves independently. The layers are not added, multiplied
+or XORed. Values range from zero through INT_MAX; Scribe uses the current
+signed 32-bit upper limit, 2147483647.
+
+The existing table values are preserved without assigning measurement units
+or a categorical size scale. For example, goat's raw dimensions are 1/30/100
+and fire_elemental's are 2/20/3. Do not interpret these as a newly defined
+physical unit system or size enumeration.
+
+Place the fields in the optional mobile tail with the other scalar,
+resistance and attack-part declarations. No tilde terminator is used.
+Repeated declarations use the last value. Explicit zero must be exported.
+
+Raw template values and individual inputs are validated before creation.
+Each live NPC receives an independent copy of its effective prototype values.
+
+mstat shows Template, #MOBILES, Prototype and Live values for each dimension.
+
+    mset <mobile> height <number>
+    mset <mobile> weight <number>
+    mset <mobile> size <number>
+
+replace one live value. These commands are NPC-only and do not accept
+inherit. They do not modify prototypes, other instances or future spawns.
+
+This data layer does not change combat, carrying, mounting, corpse weight,
+equipment fit, room access, movement, body-form flags or natural-attack
+eligibility. BODY_HUGE remains independent. APPLY_HEIGHT and APPLY_WEIGHT
+remain inactive. Player initialisation and persistence are unchanged.
+
+Language and inherited special-function execution remain separate work.
+
+The accompanying Scribe update also restores the MobDamMod export statement
+accidentally removed in PR #714. Verify all existing scalar exports when
+testing the new fields.
+
 === The #OBJECTS section
 
 These are the items the people who journey through your area will keep and use,

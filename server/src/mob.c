@@ -505,6 +505,90 @@ int validate_mob_combat_modifiers(void)
 
         return issues;
 }
+
+/*
+ * Parse one non-negative dimension value or inherit.
+ * This reuses integer parsing only; no percentage arithmetic is involved.
+ */
+bool parse_mob_dimension(const char *text, int *value)
+{
+        return parse_mob_percent_modifier(text, 0, value);
+}
+
+/* Validate a raw template value even when a later layer overrides it. */
+static int validate_mob_dimension_value(
+    const char *owner,
+    const char *name,
+    const char *field,
+    int value)
+{
+        char buf[MAX_STRING_LENGTH];
+
+        if (value == MOB_TEMPLATE_UNSET || value >= 0)
+                return 0;
+
+        snprintf(
+            buf, sizeof(buf),
+            "[MOB TEMPLATE] %s '%s' has invalid %s %d; "
+            "use MOB_TEMPLATE_UNSET or a value from 0 to %d.",
+            owner, name ? name : "unnamed", field, value, INT_MAX);
+        log_string(buf);
+        return 1;
+}
+
+int validate_mob_dimensions(void)
+{
+        char buf[MAX_STRING_LENGTH];
+        int sn;
+        int issues;
+
+        issues = 0;
+
+        for (sn = 0; sn < MAX_SPECIES; sn++)
+        {
+                issues += validate_mob_dimension_value(
+                    "Body species", species_table[sn].species,
+                    "height", species_table[sn].height);
+                issues += validate_mob_dimension_value(
+                    "Body species", species_table[sn].species,
+                    "weight", species_table[sn].weight);
+                issues += validate_mob_dimension_value(
+                    "Body species", species_table[sn].species,
+                    "size", species_table[sn].size);
+        }
+
+        for (sn = 0; sn < MAX_MOB; sn++)
+        {
+                issues += validate_mob_dimension_value(
+                    "Creature archetype", mob_table[sn].name,
+                    "height", mob_table[sn].height);
+                issues += validate_mob_dimension_value(
+                    "Creature archetype", mob_table[sn].name,
+                    "weight", mob_table[sn].weight);
+                issues += validate_mob_dimension_value(
+                    "Creature archetype", mob_table[sn].name,
+                    "size", mob_table[sn].size);
+        }
+
+        if (issues == 0)
+        {
+                log_string(
+                    "[MOB TEMPLATE] Dimension validation complete: "
+                    "no issues found.");
+        }
+        else
+        {
+                snprintf(
+                    buf, sizeof(buf),
+                    "[MOB TEMPLATE] Dimension validation complete: "
+                    "%d issue%s found.",
+                    issues, issues == 1 ? "" : "s");
+                log_string(buf);
+        }
+
+        return issues;
+}
+
 /*
  * Check raw template HP adjustments before any mobile is instantiated.
  * An unset scalar is valid; an adjustment below -99 is not.
@@ -1079,10 +1163,25 @@ void initialise_mob_index_flags(MOB_INDEX_DATA *index)
                 inherited.crit_mod,
                 index->area_crit_mod);
 
-        index->haste_mod =
+                index->haste_mod =
             resolve_template_scalar(
                 inherited.haste_mod,
                 index->area_haste_mod);
+
+        index->height =
+            resolve_template_scalar(
+                inherited.height,
+                index->area_height);
+
+        index->weight =
+            resolve_template_scalar(
+                inherited.weight,
+                index->area_weight);
+
+        index->size =
+            resolve_template_scalar(
+                inherited.size,
+                index->area_size);
 
         index->resists =
             inherited.resists ^ index->area_resists;

@@ -1035,6 +1035,9 @@ void boot_db(void)
                 if (validate_mob_combat_modifiers() != 0)
                         exit(1);
 
+                if (validate_mob_dimensions() != 0)
+                        exit(1);
+
                 validate_mob_resistance_table();
         }
 
@@ -2084,6 +2087,33 @@ static int read_mob_combat_modifier(
         return modifier;
 }
 
+/* Read one optional, absolute dimension value or the inheritance keyword. */
+static int read_mob_dimension(
+    FILE *fp,
+    MOB_INDEX_DATA *index,
+    const char *field)
+{
+        const char *text;
+        int value;
+        char buf[MAX_STRING_LENGTH];
+
+        text = fread_word(fp);
+
+        if (!parse_mob_dimension(text, &value))
+        {
+                snprintf(
+                    buf, sizeof(buf),
+                    "[MOB TEMPLATE] vnum %d: invalid %s value '%s'. "
+                    "Use inherit or a decimal integer from 0 to %d.",
+                    index->vnum, field,
+                    text ? text : "(missing)", INT_MAX);
+                log_string(buf);
+                exit(1);
+        }
+
+        return value;
+}
+
 /*
  * Snarf a mob section.
  */
@@ -2129,6 +2159,9 @@ void load_mobiles(FILE *fp)
                 pMobIndex->area_dam_mod = MOB_TEMPLATE_UNSET;
                 pMobIndex->area_crit_mod = MOB_TEMPLATE_UNSET;
                 pMobIndex->area_haste_mod = MOB_TEMPLATE_UNSET;
+                pMobIndex->area_height = MOB_TEMPLATE_UNSET;
+                pMobIndex->area_weight = MOB_TEMPLATE_UNSET;
+                pMobIndex->area_size = MOB_TEMPLATE_UNSET;
 
                 for (stat = 0; stat < SECT_MAX; stat++)
                         pMobIndex->footstep_key[stat] = NULL;
@@ -2295,6 +2328,24 @@ void load_mobiles(FILE *fp)
                                 pMobIndex->area_haste_mod =
                                     read_mob_combat_modifier(
                                         fp, pMobIndex, "MobSwiftMod");
+                        }
+                        else if (!str_cmp(word, "MobHeight"))
+                        {
+                                pMobIndex->area_height =
+                                    read_mob_dimension(
+                                        fp, pMobIndex, "MobHeight");
+                        }
+                        else if (!str_cmp(word, "MobWeight"))
+                        {
+                                pMobIndex->area_weight =
+                                    read_mob_dimension(
+                                        fp, pMobIndex, "MobWeight");
+                        }
+                        else if (!str_cmp(word, "MobSize"))
+                        {
+                                pMobIndex->area_size =
+                                    read_mob_dimension(
+                                        fp, pMobIndex, "MobSize");
                         }
                         else if (!str_cmp(word, "FStepInside"))
                                 pMobIndex->footstep_key[SECT_INSIDE] = fread_string(fp);
@@ -4254,6 +4305,10 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA *pMobIndex)
         mob->immunes = pMobIndex->immunes;
         mob->attack_parts = pMobIndex->attack_parts;
         mob->dam_mod = pMobIndex->dam_mod;
+
+        mob->height = pMobIndex->height;
+        mob->weight = pMobIndex->weight;
+        mob->size = pMobIndex->size;
 
         mob->armor = interpolate(mob->level, 100, -100);
 
