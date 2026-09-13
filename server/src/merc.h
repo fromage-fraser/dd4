@@ -2047,6 +2047,7 @@ extern WANTED_DATA *wanted_list_last;
 #define AFF_BONUS_RESILIENCE BIT_46 /* Weaker sanc-like bonus effect */
 #define AFF_BONUS_EXOTIC BIT_47     /* Reduction/immunity to exotic damage types */
 #define AFF_BONUS_INITIATE BIT_48   /* Gives bonus damage to "initiation" attacks--backstab, lunge etc */
+#define AFF_MINDLESS BIT_49         /* Lacks a mind */
 #define AFF_SLOW BIT_63             /* last */
 
 /* forms - Brutus */
@@ -5520,6 +5521,8 @@ char *item_type_name args((OBJ_DATA * obj));
 int item_name_type args((char *name));
 char *affect_loc_name args((int location));
 char *affect_loc_name args((int location));
+bool is_mindless args((CHAR_DATA *ch));
+bool reject_mindless_target args((CHAR_DATA *ch, CHAR_DATA *victim));
 char *affect_bit_name args((unsigned long int vector));
 char *affect_bit_name_nice args((unsigned long int vector));
 char *act_bit_name args((unsigned long int vector));

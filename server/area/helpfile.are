@@ -701,6 +701,7 @@ Gezhp, Owl and Shade
 - Mobs may now have up to 3 specials.  Percentages may be assigned to each one
   to determine how often they fire.
 - Scribe support for archetype field
+- Added AFF_MINDLESS and supporting code
 ~
 
 0 MULTIPLAYING MULTIPLAYERS~

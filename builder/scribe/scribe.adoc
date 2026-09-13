@@ -18,7 +18,7 @@ The existing sixteen numbered sections and their cross-reference targets are
 retained.
 
 The verified repository baseline is DD4 `master`, commit
-`2da2fed74de2b61c6dda452b877182ec665087ac` (PR #717), checked on 13 September
+`b52b032badb0a09e290c53813ef6d5105a1044e5` (PR #721), checked on 13 September
 2026. This identifies source-code availability; it does not establish which
 executable is running on a particular server.
 
@@ -76,23 +76,26 @@ validation and immortal inspection/editing; no named-language or speech rules.
 name/probability overrides, weighted single dispatch, capability checks,
 weighted special XP, Scribe fields and immortal editing.
 | Scribe creature-archetype selection
-| *Step 4D, supplied with this revision.* Adds the `archetype` source field
-and rank-independent export using the existing server syntax. Requires the
-accompanying Scribe edits; it is not part of the pinned PR #717 script.
-| Mindlessness and the skeleton reference archetype
-| Agreed for subsequent implementation. `AFF_MINDLESS` and `skeleton` are
-not introduced by the archetype-selection change. See
-<<scribe-skeleton-pilot-plan,approved skeleton pilot specification>>.
+| Implemented through PR #718. PR #721 restores rank keyword conversion and
+removes the duplicate archetype-validation block, preserving independent
+archetype/rank selection.
+| Mindlessness
+| *Step 4E, supplied with this revision.* Adds `AFF_MINDLESS`, Scribe
+`aff mindless`, named inspection, live editing, and the specific mind-dependent
+consumers listed in <<scribe-mobile-mindlessness,Mindlessness>>. Requires the
+accompanying C and Scribe edits; it is not part of the pinned PR #721 code.
+| Skeleton reference archetype
+| Still pending. See <<scribe-skeleton-pilot-plan,approved skeleton pilot
+specification>>. Step 4E does not add or register `skeleton`.
 | Further integration
 | Language semantics, dimension units and their physical gameplay consumers
 remain outside this chunk. The third special slot is not newly rank-gated.
 |===
 
-IMPORTANT: Steps through the three-weighted-special implementation are
-merged in the pinned PR #717 baseline. The `archetype` source field described
-in Step 4D requires this revision's accompanying Scribe changes. It selects
-existing server-defined archetypes; it does not create new ones. A manual
-update alone does not change Scribe or a running server binary.
+IMPORTANT: Archetype selection and its rank-conversion repair are merged in
+the pinned PR #721 baseline. The mindlessness feature in Step 4E requires the
+accompanying C and Scribe edits. The skeleton archetype remains a separate
+implementation. A manual update does not change a script or running binary.
 
 This manual distinguishes a Scribe source field, a generated `.are` field,
 and a server-side table field. A name in `mob_table` or `merc.h` is not
@@ -114,6 +117,7 @@ automatically a valid Scribe keyword. Step 4D explicitly adds `archetype`;
 ** <<scribe-mobile-inheritance,Body species, archetypes and XOR overrides>>
 ** <<scribe-template-selection,Selecting a creature archetype — Step 4D>>
 ** <<scribe-mobile-undead,Undead classification>>
+** <<scribe-mobile-mindlessness,Mindlessness — Step 4E>>
 ** <<scribe-individual-resistances,Individual resistance fields>>
 ** <<scribe-individual-attack-parts,Individual attack-part masks>>
 ** <<scribe-natural-attacks,Ordinary NPC natural attacks>>
@@ -771,8 +775,8 @@ Doing so can cancel the very defaults the editor intended to preserve.
 [[scribe-template-selection]]
 ===== Selecting a creature archetype — Step 4D
 
-IMPORTANT: The server syntax is already implemented in PR #717. The
-`archetype` Scribe input below requires the accompanying Step 4D script edits.
+The server syntax and `archetype` Scribe input are implemented. PR #721
+restores the separate rank keyword conversion used by this exporter.
 
 *`archetype` — Creature archetype*
 
@@ -856,7 +860,7 @@ not expanded effective values. Its list must track the server's archetype
 names. Displaying inherited traits is a preview, not an export operation.
 
 [[scribe-skeleton-pilot-plan]]
-===== Approved skeleton pilot — not implemented by Step 4D
+===== Approved skeleton pilot — not implemented by Step 4E
 
 The next creature implementation uses a humanoid body species and a skeleton
 archetype, with the following agreed defaults. This is a specification, not
@@ -866,7 +870,7 @@ an assertion that the current server or Scribe already supports `skeleton`.
 |===
 | Property | Agreed direction
 | Classification | `ACT_UNDEAD`.
-| Mindlessness | Add `AFF_MINDLESS` and define its effects separately from undead status.
+| Mindlessness | Use `AFF_MINDLESS` from the accompanying Step 4E implementation, independently of undead status.
 | Resistances | `RES_PIERCE`, `RES_SLASH`, `RES_DARK`.
 | Vulnerabilities | `RES_BLUNT`, `RES_HOLY`.
 | Initial immunity categories | Poison, sleep, paralysis and drain; mindlessness-specific protections require their own implemented checks.
@@ -877,9 +881,10 @@ an assertion that the current server or Scribe already supports `skeleton`.
 
 Neither undead classification nor mindlessness should imply a global rule
 for every other undead creature. Physiology and mindlessness remain separate.
-The pending mindlessness change must implement its actual consumers rather
-than merely adding a label. Animate Dead, Turn/Detect Undead and other spell
-integrations remain separate work.
+The accompanying mindlessness change implements the specific consumers
+listed below rather than merely adding a label. It does not blanket-block
+all psionic effects. Animate Dead, Turn/Detect Undead and other integrations
+remain separate work.
 
 ===== Template fields and live-application status
 
@@ -1152,6 +1157,7 @@ DOT takes damage every tick update
 prone   can’t use skills, can still cast
 dazed   can’t do anything
 confusion   is confused; may wander despite sentinel
+mindless    lacks a mind; see the Step 4E consumer list below
 slow    has been slowed (many negative effects)
 
 E.g.    aff sneak hide invis infrared
@@ -1454,6 +1460,108 @@ select a new creature archetype or grant any implicit resistance package.
 Object provenance uses the separate `ex undead` flag, documented under
 <<scribe-object-undead,Undead objects and generated remains>>. Giving an
 object that flag does not make its holder undead.
+
+[[scribe-mobile-mindlessness]]
+==== Mindlessness — Step 4E
+
+IMPORTANT: This subsection describes the accompanying Step 4E C/Scribe edits.
+They are not part of the pinned PR #721 baseline.
+
+`aff mindless` represents `AFF_MINDLESS`, `BIT_49`, decimal
+`562949953421312`. It is a trait flag in the existing affected-by mask, not a
+new spell, a low intelligence score, a body-part flag, or undead classification.
+A living creature can be mindless and an undead creature can retain a mind.
+No existing archetype is automatically assigned the new flag in this chunk.
+
+[source,text]
+----
+aff mindless
+----
+
+The ordinary AFF inheritance rules apply. An untemplated individual can add
+the bit directly. When a template already supplies it, repeating `mindless`
+in the individual `aff` mask cancels it. Omission, `none`, or a zero input
+mask leaves an inherited bit unchanged. No additional area-tail field is
+introduced; the flag is exported in the existing affected-flags position.
+Do not export an expanded effective mask as the individual mask.
+
+===== Implemented effect checks
+
+The following existing routines reject a mindless target before applying
+their mind-dependent effect:
+
+[cols="<2,<5",options="header"]
+|===
+| Category | Routines covered
+| Mental attacks
+| Synaptic Blast, Inflict Pain, Mind Thrust, Psionic Blast, Psychic Crush,
+and each otherwise eligible target of Ultrablast.
+| Influence and cognitive effects
+| Charm Person, Awe, Ego Whip, Feeblemind, Psychic Drain, Fear, Confusion,
+and Possession.
+| Cognitive enhancement
+| Combat Mind also requires a mind to affect.
+| Combat abilities
+| Transfix rejects a mindless target. Aura of Fear cannot prevent a mindless
+attacker's attack; that passive check is silent.
+|===
+
+Checks are in the individual effect routines, so direct calls by mobile
+specials or item casting receive the same gate. The shared C predicate is
+`is_mindless(character)`; `reject_mindless_target(actor, target)` adds a
+failure message for an explicitly attempted effect. These helpers do not
+perform a saving throw, consume a random roll, or mutate resistance masks.
+
+`RES_PSYCHIC` is not automatically added to the immunity mask. The current
+classification includes physical psionic effects such as Ballistic Attack,
+which throws a stone, as well as attacks on a mind. Ballistic Attack,
+Project Force, Detonate, Disintegrate and other nonlisted routines retain
+their existing handling. Source classifications in the skill table are not
+changed by this chunk. The table above is the implemented consumer list,
+not a claim that every psionic or psychologically named ability is covered.
+
+Ordinary target selection, spell costs, lag and any surrounding retaliation
+remain in place. Rejecting a mental effect is not a ceasefire or a refund.
+Other creatures affected by an area spell retain their existing processing.
+Domination's existing unconditional return is not removed or re-enabled.
+
+===== Inspection, editing and boundaries
+
+The existing `mstat` AFF layers show the named flag at template, individual,
+prototype and live levels. Standard affect name formatting is also updated.
+The bit does not fabricate `RES_CHARM` or `RES_PSYCHIC` in resistance rows.
+
+[source,text]
+----
+mset <mobile> mindless on
+mset <mobile> mindless off
+----
+
+These NPC-only live commands set or clear only the mindlessness bit. Repeating
+`on` or `off` is idempotent. Invalid values change nothing. Prototype data,
+other flags, other live copies, existing followers and future spawns remain
+unchanged. The predicate itself reads a character's flag, including a player
+flagged by other existing mechanisms; no player is flagged automatically.
+
+Changing the trait does not retroactively remove existing effects or undo
+possession, charms, equipment or follower relationships. It prevents the
+listed future effects while present. No generic `affect_to_char()` or
+`add_follower()` rejection is added: necromantic servants can still use the
+existing follower/AFF_CHARM machinery without being susceptible to Charm
+Person. This chunk does not alter Animate Dead.
+
+There is no duration associated with the directly stored trait bit. It is
+not created as a timed spell affect. Existing whole-character resets or
+explicit flag edits retain their normal authority over character state.
+Mindlessness does not automatically remove a brain part, disable special
+functions, reduce INT/WIS, grant poison/sleep/paralysis immunity, prevent all
+movement or flight, or change speech permissions. Physiology and the planned
+skeleton immunity package remain separate.
+
+DD Builder must add `mindless` to its AFF choices using the same 64-bit value.
+Keep inherited previews and original individual XOR masks distinct. Do not
+convert mindlessness into undead status, body-part removals or a resistance
+mask, and do not change the special-function probability editor.
 
 [[scribe-individual-resistances]]
 ==== Individual resistance fields

@@ -2555,6 +2555,13 @@ bool check_aura_of_fear(CHAR_DATA *ch, CHAR_DATA *victim)
 {
         int chance;
 
+        /*
+         * ch is the attacker who would be deterred by the victim's aura.
+         * Keep this passive check silent to avoid per-attack message spam.
+         */
+        if (is_mindless(ch))
+                return FALSE;
+
         chance = victim->pcdata->learned[gsn_aura_of_fear] / 3;
 
         if (!chance)
@@ -6817,6 +6824,9 @@ void do_transfix(CHAR_DATA *ch, char *argument)
         }
 
         if (is_safe(ch, victim))
+                return;
+
+        if (reject_mindless_target(ch, victim))
                 return;
 
         WAIT_STATE(ch, skill_table[gsn_transfix].beats);
