@@ -1284,6 +1284,11 @@ foreach (0 .. $#mobs) {
         $mob_errors{$mob{'line'}}++;
     }
 
+    if ($msg = &get_single_flag(\%mob, 'rnk', \@mob_rank)) {
+        print "$err $msg\n";
+        $mob_errors{$mob{'line'}}++;
+    }
+
     # Optional creature archetype, independent of rank and special functions.
     # Keep the selected name as text; do not convert it to a table index.
 
