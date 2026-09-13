@@ -1279,26 +1279,14 @@ foreach (0 .. $#mobs) {
         $mob_errors{$mob{'line'}}++;
     }
 
-    if ($msg = &get_single_flag(\%mob, 'sx', \@mob_sx)) {
+        if ($msg = &get_single_flag(\%mob, 'sx', \@mob_sx)) {
         print "$err $msg\n";
         $mob_errors{$mob{'line'}}++;
     }
 
-    # Optional creature archetype, independent of rank and special functions.
-    # Keep the selected name as text; do not convert it to a table index.
-
-    if (exists $mob{'archetype'}) {
-        my $archetype = defined $mob{'archetype'}
-                ? lc $mob{'archetype'} : '';
-
-        if (!exists $mob_archetype{$archetype}) {
-            print "$err invalid archetype '$archetype'; use one of: "
-                    . join(', ', sort keys %mob_archetype) . "\n";
-            $mob_errors{$mob{'line'}}++;
-        }
-        else {
-            $mob{'archetype'} = $archetype;
-        }
+    if ($msg = &get_single_flag(\%mob, 'rnk', \@mob_rank)) {
+        print "$err $msg\n";
+        $mob_errors{$mob{'line'}}++;
     }
 
     # Optional creature archetype, independent of rank and special functions.
