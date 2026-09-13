@@ -3624,6 +3624,44 @@ int item_name_type( char *name )
 
 }
 
+/*
+ * Mindlessness is an explicit trait.
+ * Do not infer it from undead status, anatomy or intelligence.
+ */
+bool is_mindless(CHAR_DATA *ch)
+{
+        return ch && IS_AFFECTED(ch, AFF_MINDLESS);
+}
+
+/*
+ * Reject an effect which requires a mind to influence.
+ *
+ * This does not change resistance masks, roll a saving throw, remove
+ * existing effects, or alter follower relationships.
+ */
+bool reject_mindless_target(CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        if (!is_mindless(victim))
+                return FALSE;
+
+        if (ch)
+        {
+                if (ch == victim)
+                {
+                        send_to_char(
+                            "You have no mind for that effect to influence.\n\r",
+                            ch);
+                }
+                else
+                {
+                        act(
+                            "$N has no mind for that effect to influence.",
+                            ch, NULL, victim, TO_CHAR);
+                }
+        }
+
+        return TRUE;
+}
 
 /*
  * Return ascii name of an affect bit vector.
@@ -3681,6 +3719,7 @@ char *affect_bit_name (unsigned long int vector)
         if ( vector & AFF_BONUS_RESILIENCE  ) return "extra_resilience";
         if ( vector & AFF_BONUS_EXOTIC      ) return "exotic_reduction";
         if ( vector & AFF_BONUS_INITIATE    ) return "initiation_bonus";
+        if ( vector & AFF_MINDLESS          ) return "mindless";
 
         return "none";
 }
@@ -3740,6 +3779,7 @@ char* affect_bit_name_nice (unsigned long int vector)
         if ( vector & AFF_BONUS_RESILIENCE  ) return "extra resilience";
         if ( vector & AFF_BONUS_EXOTIC      ) return "exotic reduction";
         if ( vector & AFF_BONUS_INITIATE    ) return "initiation bonus";
+        if ( vector & AFF_MINDLESS          ) return "mindlessness";
 
         return "some unknown effect";
 }

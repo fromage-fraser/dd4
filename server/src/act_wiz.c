@@ -6179,7 +6179,7 @@ void do_mset(CHAR_DATA *ch, char *argument)
                              "  max_bonus slept steel titanium adamantite\n\r"
                              "  electrum starmetal resists vulnerabilities \n\r"
                              "  immunes attack_parts dammod height weight size\n\r"
-                             "  language\n\r"
+                             "  language mindless(on/off)\n\r"
                              "String being one of:\n\r"
                              "  name short long title spec specials\n\r",
                              ch);
@@ -6196,6 +6196,54 @@ void do_mset(CHAR_DATA *ch, char *argument)
         ||  !str_cmp(arg2, "specials"))
         {
                 mset_weighted_specials(ch, victim, arg2, arg3);
+                return;
+        }
+
+        /*
+         * Set or clear only this live NPC's mindlessness trait.
+         * Do not replace the complete affected_by mask or alter followers.
+         */
+        if (!str_cmp(arg2, "mindless"))
+        {
+                bool enabled;
+
+                if (!IS_NPC(victim))
+                {
+                        send_to_char(
+                            "The mindless field is currently NPC-only.\n\r",
+                            ch);
+                        return;
+                }
+
+                if (!str_cmp(arg3, "on"))
+                {
+                        enabled = TRUE;
+                }
+                else if (!str_cmp(arg3, "off"))
+                {
+                        enabled = FALSE;
+                }
+                else
+                {
+                        send_to_char(
+                            "Use: mset <mobile> mindless on|off\n\r"
+                            "The live flags are unchanged.\n\r",
+                            ch);
+                        return;
+                }
+
+                if (enabled)
+                        SET_BIT(victim->affected_by, AFF_MINDLESS);
+                else
+                        REMOVE_BIT(victim->affected_by, AFF_MINDLESS);
+
+                snprintf(
+                    buf, sizeof(buf),
+                    "Live mindlessness is now %s. "
+                    "Other flags, prototype data and existing effects "
+                    "are unchanged.\n\r",
+                    enabled ? "ON" : "OFF");
+                send_to_char(buf, ch);
                 return;
         }
 

@@ -462,7 +462,66 @@ AFF_ flags:
     AFF_PRONE               BIT_34     Can't do skills, can cast
     AFF_DAZED               BIT_35     Can't do anything
     AFF_CONFUSION           BIT_36     Wanders
+    AFF_MINDLESS            BIT_49     Lacks a mind. See "Mindlessness" below.
     AFF_SLOW                BIT_63     Slowed down. Many negative consequences.
+
+==Mindlessness
+
+AFF_MINDLESS uses BIT_49, decimal 562949953421312.
+Scribe supplies it through the existing affect field:
+
+    aff mindless
+
+This is an explicit trait, independent of undead classification, anatomy,
+intelligence scores and physiology. No existing archetype is automatically
+assigned it by this chunk.
+
+The ordinary AFF XOR rules apply. An individual bit adds mindlessness when
+it is absent from the template, or cancels it when already inherited.
+Omission or zero preserves an inherited bit.
+
+Implemented mind-dependent consumers:
+
+    Synaptic Blast, Inflict Pain, Mind Thrust, Psionic Blast,
+    Psychic Crush, and each otherwise eligible Ultrablast target.
+
+    Charm Person, Awe, Ego Whip, Feeblemind, Psychic Drain,
+    Fear, Confusion, and Possession.
+
+    Combat Mind, which requires a mind to enhance.
+
+    Transfix, and the defensive Aura of Fear check against its attacker.
+
+The target checks occur before the effect is applied. They do not roll a
+saving throw or modify the resistance masks.
+
+Mindlessness does not automatically grant RES_PSYCHIC immunity. Physical
+psionic effects such as Ballistic Attack and Project Force retain their
+existing handling. The list above defines this chunk's implemented consumers;
+it is not a blanket rule for all psionic or psychologically named abilities.
+
+Existing casting costs, lag, target restrictions and surrounding retaliation
+remain in place. Rejecting the effect is not a ceasefire or a mana refund.
+Domination's existing disabled implementation is not re-enabled.
+
+mstat's existing AFF layers display the named flag. Live editing uses:
+
+    mset <mobile> mindless on
+    mset <mobile> mindless off
+
+These NPC-only commands set or clear only this live bit. They do not change
+the prototype, other flags, other instances or future spawns. Repeating the
+same setting is idempotent. Invalid settings change nothing.
+
+Adding the trait does not retroactively remove existing effects or follower
+relationships. No generic rejection is added to affect_to_char() or
+add_follower(): necromantic servants may still use the existing AFF_CHARM
+and follower machinery.
+
+Mindlessness does not itself grant poison, sleep, paralysis or drain immunity,
+remove body parts, change INT/WIS, disable special functions or prevent speech.
+The skeleton's physiology and resistance package remain separate work.
+
 
 The 'alignment' of the mobile ranges from -1000 to +1000.  Keep in mind that
 certain spells give characters fighting oppositely-aligned monsters an

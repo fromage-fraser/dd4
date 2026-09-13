@@ -1029,6 +1029,9 @@ void spell_synaptic_blast(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         int dam;
 
+        if (reject_mindless_target(ch, victim))
+                return;
+
         if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
         {
                 send_to_char("Your brain isn't working well enough to use this spell.\n\r", ch);
@@ -1455,6 +1458,9 @@ void spell_charm_person(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
+
+        if (reject_mindless_target(ch, victim))
+                return;
 
         /* return;  Re-enabled 22/09/2018.  I too like to live dangerously. --Owl */
 
@@ -6174,6 +6180,9 @@ void spell_awe(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
 
+        if (reject_mindless_target(ch, victim))
+                return;
+
         if (ch == victim)
         {
                 send_to_char("You are awestruck by your own brilliance!\n\r", ch);
@@ -6327,6 +6336,9 @@ void spell_combat_mind(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
+
+        if (reject_mindless_target(ch, victim))
+                return;
 
         if (is_affected(victim, sn))
         {
@@ -6795,6 +6807,9 @@ void spell_ego_whip(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
+        if (reject_mindless_target(ch, victim))
+                return;
+
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
         {
                 send_to_char(
@@ -7000,7 +7015,12 @@ void spell_inertial_barrier(int sn, int level, CHAR_DATA *ch, void *vo)
 
 void spell_inflict_pain(int sn, int level, CHAR_DATA *ch, void *vo)
 {
-        damage(ch, (CHAR_DATA *)vo, dice(2, 10) + level / 2, sn, FALSE);
+        CHAR_DATA *victim = (CHAR_DATA *)vo;
+
+        if (reject_mindless_target(ch, victim))
+                return;
+
+        damage(ch, victim, dice(2, 10) + level / 2, sn, FALSE);
         return;
 }
 
@@ -7114,7 +7134,12 @@ void spell_mental_barrier(int sn, int level, CHAR_DATA *ch, void *vo)
 
 void spell_mind_thrust(int sn, int level, CHAR_DATA *ch, void *vo)
 {
-        damage(ch, (CHAR_DATA *)vo, dice(1, 10) + level / 2, sn, FALSE);
+        CHAR_DATA *victim = (CHAR_DATA *)vo;
+
+        if (reject_mindless_target(ch, victim))
+                return;
+
+        damage(ch, victim, dice(1, 10) + level / 2, sn, FALSE);
 }
 
 void spell_project_force(int sn, int level, CHAR_DATA *ch, void *vo)
@@ -7127,6 +7152,9 @@ void spell_psionic_blast(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         int dam;
 
+        if (reject_mindless_target(ch, victim))
+                return;
+
         dam = number_range(20, 30) + dice(level, 4);
 
         if (saves_spell(level, victim))
@@ -7137,13 +7165,21 @@ void spell_psionic_blast(int sn, int level, CHAR_DATA *ch, void *vo)
 
 void spell_psychic_crush(int sn, int level, CHAR_DATA *ch, void *vo)
 {
-        damage(ch, (CHAR_DATA *)vo, dice(3, 5) + level, sn, FALSE);
+        CHAR_DATA *victim = (CHAR_DATA *)vo;
+
+        if (reject_mindless_target(ch, victim))
+                return;
+
+        damage(ch, victim, dice(3, 5) + level, sn, FALSE);
 }
 
 void spell_psychic_drain(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
+
+        if (reject_mindless_target(ch, victim))
+                return;
 
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
         {
@@ -7278,6 +7314,9 @@ void spell_ultrablast(int sn, int level, CHAR_DATA *ch, void *vo)
 
                 if (IS_NPC(ch) ? !IS_NPC(vch) : IS_NPC(vch))
                 {
+                        if (reject_mindless_target(ch, vch))
+                                continue;
+
                         hpch = UMAX(10, ch->hit);
                         dam = number_range(hpch / 8 + 1, hpch / 4);
 
@@ -7389,6 +7428,9 @@ void spell_feeblemind(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
+
+        if (reject_mindless_target(ch, victim))
+                return;
 
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
         {
@@ -8545,6 +8587,9 @@ void spell_possession(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
 
+        if (reject_mindless_target(ch, victim))
+                return;
+
         if (!ch->desc)
                 return;
 
@@ -8815,6 +8860,9 @@ void spell_abyssal_hand(int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_fear(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
+
+        if (reject_mindless_target(ch, victim))
+                return;
 
         if (ch == victim)
         {
@@ -10054,6 +10102,9 @@ void spell_confusion(int sn, int level, CHAR_DATA *ch, void *vo)
 
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
+
+        if (reject_mindless_target(ch, victim))
+                return;
 
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
         {
